@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: cfd4d65b07cf255ac2b60d6bf8376723a997374e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "77025087"
 ---
 # <a name="azure-network-connections-overview"></a>Azure ağ bağlantılarına genel bakış
@@ -25,7 +25,7 @@ Bir bölgede CloudSimple hizmeti oluştururken ve düğümleri oluştururken şu
 
 ExpressRoute bağlantısı, düşük gecikme süresine sahip yüksek bant genişliğidir.
 
-## <a name="benefits"></a>Yararları
+## <a name="benefits"></a>Avantajlar
 
 Azure ağ bağlantısı şunları yapmanıza olanak sağlar:
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 0035d367017c92bd151c27e14d744ef41eace069
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85800157"
 ---
 # <a name="moderate-with-custom-image-lists-in-the-api-console"></a>API konsolundaki özel görüntü listeleriyle orta
@@ -46,7 +46,7 @@ Bir görüntü listesinde değişiklik yaptıktan sonra, gelecekteki taramalara 
 
    **Görüntü listeleri-arama dizinini Yenile** sayfası açılır.
 
-2. **Open API test konsolu**için, konumunuzu en iyi şekilde açıklayan bölgeyi seçin. 
+2. **Open API test konsolu** için, konumunuzu en iyi şekilde açıklayan bölgeyi seçin. 
  
     ![Görüntü listeleri-arama dizini sayfa bölgesi seçimini Yenile](images/test-drive-region.png)
 
@@ -63,7 +63,7 @@ Bir görüntü listesinde değişiklik yaptıktan sonra, gelecekteki taramalara 
 
    **Görüntü listeleri-oluştur** sayfası açılır. 
 
-3. **Open API test konsolu**için, konumunuzu en iyi şekilde açıklayan bölgeyi seçin.
+3. **Open API test konsolu** için, konumunuzu en iyi şekilde açıklayan bölgeyi seçin.
 
    ![Görüntü listeleri-sayfa bölgesi seçimi oluşturma](images/test-drive-region.png)
 
@@ -71,7 +71,7 @@ Bir görüntü listesinde değişiklik yaptıktan sonra, gelecekteki taramalara 
  
 4. **OCP-apim-Subscription-Key** kutusuna abonelik anahtarınızı girin.
 
-5. **İstek gövdesi** kutusuna **ad** (örneğin, myList) ve **Açıklama**değerlerini girin.
+5. **İstek gövdesi** kutusuna **ad** (örneğin, myList) ve **Açıklama** değerlerini girin.
 
    ![Görüntü listeleri-konsol Isteği gövdesi adı ve açıklaması oluşturma](images/try-terms-list-create-1.png)
 
@@ -99,7 +99,7 @@ Bir görüntü listesinde değişiklik yaptıktan sonra, gelecekteki taramalara 
 
    **Resim ekle** sayfası açılır. 
 
-9. **Open API test konsolu**için, konumunuzu en iyi şekilde açıklayan bölgeyi seçin.
+9. **Open API test konsolu** için, konumunuzu en iyi şekilde açıklayan bölgeyi seçin.
 
    ![Görüntü-görüntü sayfası bölge seçimi ekleme](images/test-drive-region.png)
 
@@ -131,7 +131,7 @@ Bu örnek tek bir görüntüyü siler:
 
    **Görüntü silme** sayfası açılır.
 
-2. **Open API test konsolu**için, konumunuzu en iyi şekilde açıklayan bölgeyi seçin. 
+2. **Open API test konsolu** için, konumunuzu en iyi şekilde açıklayan bölgeyi seçin. 
 
    ![Görüntü-sayfa bölgesi seçimini silme](images/test-drive-region.png)
  
@@ -139,7 +139,7 @@ Bu örnek tek bir görüntüyü siler:
  
 3. **ListId** kutusuna bir görüntünün SILINECEĞI listenin kimliğini girin.  Bu, MyList için **Image-tüm görüntü kimliklerini al** konsolunda döndürülen sayıdır. Ardından, silinecek görüntünün **ImageID** 'sini girin. 
 
-Örneğimizde, liste KIMLIĞI, **ContentSource**değeri **58953**' dir. Görüntü KIMLIĞI, **ContentID 'ler**için değer **59021**' dir.
+Örneğimizde, liste KIMLIĞI, **ContentSource** değeri **58953**' dir. Görüntü KIMLIĞI, **ContentID 'ler** için değer **59021**' dir.
 
 1. Abonelik anahtarınızı girin ve ardından **Gönder**' i seçin.
 
@@ -153,7 +153,7 @@ Bir listenin adını ve açıklamasını düzenleyebilir ve meta veri öğeleri 
 
    **Görüntü listeleri-Güncelleştirme ayrıntıları** sayfası açılır.
 
-2. **Open API test konsolu**için, konumunuzu en iyi şekilde açıklayan bölgeyi seçin.  
+2. **Open API test konsolu** için, konumunuzu en iyi şekilde açıklayan bölgeyi seçin.  
 
     ![Görüntü listeleri-Güncelleştirme ayrıntıları sayfa bölge seçimi](images/test-drive-region.png)
 

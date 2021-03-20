@@ -8,10 +8,10 @@ author: emuench
 ms.author: mingshen
 ms.date: 10/19/2020
 ms.openlocfilehash: 281553782774c31ec8cfaf614542fd739c4d3dd9
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94629538"
 ---
 # <a name="how-to-configure-virtual-machine-offer-properties"></a>Sanal Makine teklifi özelliklerini yapılandırma
@@ -24,7 +24,7 @@ Teklifinizi uygun Azure Marketi arama alanlarında yerleştirmek için kategoril
 
 - Birincil bir kategori seçin.
 - İkinci bir isteğe bağlı kategori (Ikincil) eklemek için **+ Kategoriler** bağlantısını seçin.
-- Birincil ve/veya Ikincil kategori için en fazla iki alt kategori seçin. Teklifiniz için geçerli bir alt kategori yoksa, **geçerli değil** ' i seçin. İkinci bir alt kategori seçmek için CTRL + tıklama tuşlarını kullanın.
+- Birincil ve/veya Ikincil kategori için en fazla iki alt kategori seçin. Teklifiniz için geçerli bir alt kategori yoksa, **geçerli değil**' i seçin. İkinci bir alt kategori seçmek için CTRL + tıklama tuşlarını kullanın.
 
 [Teklif listesi En Iyi uygulamalarında](gtm-offer-listing-best-practices.md)kategorilerin ve alt kategorilerin tam listesini görebilirsiniz. Sanal makine teklifleri her zaman Azure Marketi 'ndeki **işlem** kategorisi altında görünür.
 
@@ -45,7 +45,7 @@ Müşteriler için satın alma sürecini basitleştirmek ve yazılım satıcıla
 
    ![Microsoft 'un ticari Market için standart sözleşmeyi kullan onay kutusunu gösterir.](partner-center-portal/media/use-standard-contract.png)
 
-1. **Onay** Iletişim kutusunda **kabul et** ' i seçin. Ekranınızın boyutuna bağlı olarak, onu görmek için yukarı doğru kaydırma yapmanız gerekebilir.
+1. **Onay** Iletişim kutusunda **kabul et**' i seçin. Ekranınızın boyutuna bağlı olarak, onu görmek için yukarı doğru kaydırma yapmanız gerekebilir.
 1. Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
    > [!NOTE]
@@ -61,12 +61,12 @@ Müşteriler için satın alma sürecini basitleştirmek ve yazılım satıcıla
 
 ##### <a name="add-one-or-more-custom-amendments"></a>Bir veya daha fazla özel değişiklik ekleyin
 
-1. **Microsoft 'un ticari Market 'e yönelik standart sözleşmeye yönelik özel değişiklik koşulları** ' nın altında, **özel düzeltme dönemi Ekle (en fazla 10)** bağlantısını seçin.
+1. **Microsoft 'un ticari Market 'e yönelik standart sözleşmeye yönelik özel değişiklik koşulları**' nın altında, **özel düzeltme dönemi Ekle (en fazla 10)** bağlantısını seçin.
 2. Özel değişiklik **koşullarınızı** kutuya girin.
 3. Kutuya **KIRACı kimliğini** girin. Yalnızca bu özel şartlar için belirttiğiniz kiracı kimlikleri ile ilişkili müşteriler, Azure portal teklifin satın alma akışında görür.
 
    > [!TIP]
-   > Bir Kiracı kimliği, Azure 'da müşterinizin kimliğini tanımlar. Müşterinize bu kimliği sorabilir ve [**https://portal.azure.com**](https://portal.azure.com)  >  **Azure Active Directory**  >  **özellikleri** ' ne giderek bulabilirler. Dizin KIMLIĞI değeri kiracı KIMLIĞIDIR (örneğin, `50c464d3-4930-494c-963c-1e951d15360e` ). Ayrıca, [Microsoft Azure ve Office 365 KIRACı kimliği olan](https://www.whatismytenantid.com/)etki alanı adı URL 'sini kullanarak KURULUŞUNUZUN Kiracı kimliğini de arayabilirsiniz.
+   > Bir Kiracı kimliği, Azure 'da müşterinizin kimliğini tanımlar. Müşterinize bu kimliği sorabilir ve [**https://portal.azure.com**](https://portal.azure.com)  >  **Azure Active Directory**  >  **özellikleri**' ne giderek bulabilirler. Dizin KIMLIĞI değeri kiracı KIMLIĞIDIR (örneğin, `50c464d3-4930-494c-963c-1e951d15360e` ). Ayrıca, [Microsoft Azure ve Office 365 KIRACı kimliği olan](https://www.whatismytenantid.com/)etki alanı adı URL 'sini kullanarak KURULUŞUNUZUN Kiracı kimliğini de arayabilirsiniz.
 
 4. İsteğe bağlı olarak, kiracı KIMLIĞI için kolay bir **Açıklama** girin. Bu açıklama, değişiklik yaparken hedeflediğiniz müşteriyi belirlemenize yardımcı olur.
 5. Başka bir kiracı KIMLIĞI eklemek için **müşterinin KIRACı kimliğini Ekle (en fazla 10)** bağlantısını seçin ve 3. ve 4. adımları yineleyin. En fazla 20 Kiracı kimliği ekleyebilirsiniz.
@@ -77,13 +77,13 @@ Müşteriler için satın alma sürecini basitleştirmek ve yazılım satıcıla
 
 Standart sözleşme yerine kendi hüküm ve koşullarınızı sağlamayı tercih edebilirsiniz. Müşterilerinizin teklifinizi deneyebilmeleri için önce bu koşulları kabul etmesi gerekir.
 
-1. **Yasal** ' ın altında, **Microsoft 'un ticari Market Için standart sözleşmeyi kullan** onay kutusunu temizleyin.
+1. **Yasal**' ın altında, **Microsoft 'un ticari Market Için standart sözleşmeyi kullan** onay kutusunu temizleyin.
 1. **Hüküm ve koşullar** kutusunda en fazla 10.000 karakter girin.
 
    > [!NOTE]
    > Daha uzun bir açıklamaya ihtiyacınız varsa, hüküm ve koşullarınızın nerede bulunmalarından işaret eden tek bir Web adresi girin. Bu, müşterilere etkin bir bağlantı olarak görüntülenecektir.
 
-1. Sol gezinti menüsünde, **teklif listesi** ' nde bir sonraki sekmeye geçmeden önce **Taslağı kaydet** ' i seçin.
+1. Sol gezinti menüsünde, **teklif listesi**' nde bir sonraki sekmeye geçmeden önce **Taslağı kaydet** ' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

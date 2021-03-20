@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 09/28/2020
 ms.author: Zhchia
 ms.openlocfilehash: dbed4eaabda34c1f35c21b8fe69db72c07f6d03f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96180160"
 ---
 # <a name="tutorial-configure-cinode-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Cincode yapılandırma
@@ -34,7 +34,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Cincod
 > * Kullanıcı özniteliklerinin Azure AD ile Cinode arasında eşitlenmiş olmasını sağlama
 > * Cincode 'da grupları ve grup üyeliklerini sağlama
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 

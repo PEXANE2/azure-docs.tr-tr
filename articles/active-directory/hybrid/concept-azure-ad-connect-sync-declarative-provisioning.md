@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 59dc94e37dfa1ef8b0b079bf5d78d0504e0cb8c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91313629"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect eşitleme: bildirime dayalı sağlamayı anlama
@@ -53,7 +53,7 @@ Bu resimdeki kapsam (departman = IT ve ülke = Danimarka) veya (ülke = Isveç) 
 
 Kapsam modülü aşağıdaki işlemleri destekler.
 
-| İşlem | Açıklama |
+| İşlem | Description |
 | --- | --- |
 | EŞITTIR, NOTEQUAL |Değerin öznitelikteki değere eşit olup olmadığını değerlendiren bir dize karşılaştırması. Birden çok değerli öznitelikler için bkz. ııN ve ıSNOTıN. |
 | LESSTHAN, LESSTHAN_OR_EQUAL |Değerin öznitelikteki değerden küçük olup olmadığını değerlendiren bir dize karşılaştırması. |
@@ -77,7 +77,7 @@ Birleşimler bir veya daha fazla grup olarak tanımlanır. Bir grup içinde yan 
 ![Birleştir tanımı](./media/concept-azure-ad-connect-sync-declarative-provisioning/join2.png)  
 Bu resimdeki birleştirmeler üstten alta işlenir. İlk olarak eşitleme işlem hattı, ÇalışanNo üzerinde bir eşleşme olup olmadığını görür. Aksi takdirde, ikinci kural, hesap adının nesnelere birlikte katılması için kullanılabilir olup olmadığını görür. Bu bir eşleşme değilse, üçüncü ve son kural Kullanıcı adı kullanılarak daha belirsiz bir eşleşmedir.
 
-Tüm JOIN kuralları değerlendiriliyorsa ve tam olarak bir eşleşme yoksa, **Açıklama** sayfasındaki **bağlantı türü** kullanılır. Bu seçenek **sağlama**olarak ayarlandıysa, hedefteki yeni bir nesne oluşturulur.  
+Tüm JOIN kuralları değerlendiriliyorsa ve tam olarak bir eşleşme yoksa, **Açıklama** sayfasındaki **bağlantı türü** kullanılır. Bu seçenek **sağlama** olarak ayarlandıysa, hedefteki yeni bir nesne oluşturulur.  
 !["Bağlantı türü" açılan menüsünün açık olduğunu gösteren ekran görüntüsü.](./media/concept-azure-ad-connect-sync-declarative-provisioning/join3.png)  
 
 Bir nesne, kapsamdaki JOIN kurallarına sahip tek bir eşitleme kuralına sahip olmalıdır. Birleştirmenin tanımlandığı birden fazla eşitleme kuralı varsa, bir hata oluşur. Öncelik, JOIN çakışmalarını çözmek için kullanılmaz. Bir nesnenin aynı gelen/giden yönle akacak özniteliklerin kapsamında bir JOIN kuralı olmalıdır. Hem gelen hem de giden özniteliklerini aynı nesneye akıtmak gerekirse, JOIN ile hem gelen hem de giden eşitleme kuralına sahip olmanız gerekir.
@@ -87,12 +87,12 @@ Giden birleşimin, hedef bağlayıcı alanına bir nesne sağlamayı denediğind
 JOIN modülü, yeni bir eşitleme kuralı kapsama geldiğinde yalnızca bir kez değerlendirilir. Bir nesne katıldığında, birleştirme ölçütü artık karşılanmasa bile bu, katılmaz. Bir nesnenin katılmasını sağlamak istiyorsanız, nesneleri birleştiren eşitleme kuralının kapsam dışında olması gerekir.
 
 ### <a name="metaverse-delete"></a>Meta veri deposu silme
-Bir meta veri deposu nesnesi, **bağlantı türü** **sağlama** veya **StickyJoin**olarak ayarlanan kapsamda tek bir eşitleme kuralı olduğu sürece kalır. Bir bağlayıcının meta veri deposuna yeni bir nesne sağlamasına izin verilmediği, ancak katıldığı zaman, meta veri deposu nesnesi silinmeden önce kaynakta silinmesi gerekir.
+Bir meta veri deposu nesnesi, **bağlantı türü** **sağlama** veya **StickyJoin** olarak ayarlanan kapsamda tek bir eşitleme kuralı olduğu sürece kalır. Bir bağlayıcının meta veri deposuna yeni bir nesne sağlamasına izin verilmediği, ancak katıldığı zaman, meta veri deposu nesnesi silinmeden önce kaynakta silinmesi gerekir.
 
 Meta veri deposu nesnesi silindiğinde, **sağlama** için işaretlenen bir giden eşitleme kuralıyla ilişkili tüm nesneler silme için işaretlenir.
 
 ## <a name="transformations"></a>Dönüşümler
-Dönüşümler, özniteliklerin kaynaktan hedefe nasıl akacağınızı tanımlamak için kullanılır. Akışlar şu **akış türlerinden**birine sahip olabilir: doğrudan, sabit veya ifade. Doğrudan akış, öznitelik değerini ek dönüşümlere sahip olmayan olarak akar. Sabit değer belirtilen değeri ayarlar. Bir ifade, dönüştürmenin nasıl olması gerektiğini ifade etmek için bildirim temelli sağlama ifade dilini kullanır. İfade dilinin ayrıntıları, [bildirime dayalı sağlama ifade dilini anlama](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md) konusunda bulunabilir.
+Dönüşümler, özniteliklerin kaynaktan hedefe nasıl akacağınızı tanımlamak için kullanılır. Akışlar şu **akış türlerinden** birine sahip olabilir: doğrudan, sabit veya ifade. Doğrudan akış, öznitelik değerini ek dönüşümlere sahip olmayan olarak akar. Sabit değer belirtilen değeri ayarlar. Bir ifade, dönüştürmenin nasıl olması gerektiğini ifade etmek için bildirim temelli sağlama ifade dilini kullanır. İfade dilinin ayrıntıları, [bildirime dayalı sağlama ifade dilini anlama](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md) konusunda bulunabilir.
 
 ![Sağlama veya katma](./media/concept-azure-ad-connect-sync-declarative-provisioning/transformations1.png)  
 
@@ -105,9 +105,9 @@ Dönüşümler, özniteliklerin kaynaktan hedefe nasıl akacağınızı tanımla
 
 Ayrıca **merge** ve **mergecaseduyarsızdır**. Bu seçenekler, farklı kaynaklardaki değerleri birleştirmenizi sağlar. Örneğin, çeşitli farklı ormanlardan üye veya proxyAddresses özniteliğini birleştirmek için kullanılabilir. Bu seçeneği kullandığınızda, bir nesnenin kapsamındaki tüm eşitleme kurallarının aynı birleştirme türünü kullanması gerekir. Bir bağlayıcıdan **güncelleştirme** tanımlayamazsınız ve başka bir bağlayıcıya **birleştiremezsiniz** . Deneme yaparsanız bir hata alırsınız.
 
-**Merge** ve **mergecaseduyarsız** arasındaki fark, yinelenen öznitelik değerlerini işleme işlemidir. Eşitleme altyapısı, yinelenen değerlerin hedef özniteliğe eklenmediğinden emin olmanızı sağlar. **Mergecaseduyarsız**ile yinelenen değerler yalnızca büyük/küçük harf farklılığı olmayacak. Örneğin, SMTP:bob@contoso.com hedef özniteliğinde hem "" hem de "" öğesini görmemelisiniz smtp:bob@contoso.com . **Birleştirme** yalnızca tam değerlere ve yalnızca büyük/küçük harfli bir farklılık olduğunu fark eden birden fazla değere bakıyor.
+**Merge** ve **mergecaseduyarsız** arasındaki fark, yinelenen öznitelik değerlerini işleme işlemidir. Eşitleme altyapısı, yinelenen değerlerin hedef özniteliğe eklenmediğinden emin olmanızı sağlar. **Mergecaseduyarsız** ile yinelenen değerler yalnızca büyük/küçük harf farklılığı olmayacak. Örneğin, SMTP:bob@contoso.com hedef özniteliğinde hem "" hem de "" öğesini görmemelisiniz smtp:bob@contoso.com . **Birleştirme** yalnızca tam değerlere ve yalnızca büyük/küçük harfli bir farklılık olduğunu fark eden birden fazla değere bakıyor.
 
-**Replace** seçeneği **güncelleştirmesiyle**aynıdır, ancak kullanılmaz.
+**Replace** seçeneği **güncelleştirmesiyle** aynıdır, ancak kullanılmaz.
 
 ### <a name="control-the-attribute-flow-process"></a>Öznitelik akışı işlemini denetleme
 Birden çok gelen eşitleme kuralı aynı meta veri deposu özniteliğine katkıda bulunmak üzere yapılandırıldığında, kazanan kişiyi tespit etmek için öncelik kullanılır. En yüksek önceliğe sahip eşitleme kuralı (en düşük sayısal değer) değeri katkıda bulunacak. Giden kuralları için de aynı olur. En yüksek önceliğe sahip eşitleme kuralı kazanır ve değeri bağlı dizine katkıda bulunun.
@@ -118,7 +118,7 @@ Gelen eşitleme kuralları için, **null** değeri akışın katkıda bulunmak i
 
 **AuthoritativeNull** değişmez değeri **null** ile benzerdir, ancak daha düşük öncelikli kuralların bir değer katkıda bulunabilmesine neden olan farkla aynıdır.
 
-Öznitelik akışı, **ıgnorethisflow**da kullanabilir. Katkıda bulunmak için bir şey olmadığını belirten, NULL değere benzer. Fark, hedefte zaten varolan bir değeri kaldırmıyor. Öznitelik akışının hiç olmadığı anlaşılıyor.
+Öznitelik akışı, **ıgnorethisflow** da kullanabilir. Katkıda bulunmak için bir şey olmadığını belirten, NULL değere benzer. Fark, hedefte zaten varolan bir değeri kaldırmıyor. Öznitelik akışının hiç olmadığı anlaşılıyor.
 
 Aşağıda bir örnek verilmiştir:
 
@@ -132,7 +132,7 @@ Bu ifade şöyle okunmalıdır: Kullanıcı posta kutusu Azure AD 'de bulunuyors
 
 Genellikle eşitleme sırasında bir öznitelik beklenen değeri, henüz dışarı aktarılmamış olsa bile veya dışa aktarma sırasında ("Tower 'ın üstü") bir hata alındı olarak kullanır. Bir gelen eşitleme, bağlı bir dizine henüz ulaşan bir özniteliğin o zaman ona ulaştığını varsayar. Bazı durumlarda, yalnızca bağlı dizin ("hologram ve Delta içeri aktarma Kulesi") tarafından onaylanan bir değeri eşitlenmesi önemlidir.
 
-Bu işleve örnek *olarak, ad – kullanıcının Exchange 'de ortak olduğu, içindeki*kullanıma hazır eşitleme kuralında bulabilirsiniz. Karma Exchange 'de, Exchange Online tarafından eklenen değerin yalnızca değerin başarıyla verildiğini teyit edildiğinde eşitlenmesi gerekir:  
+Bu işleve örnek *olarak, ad – kullanıcının Exchange 'de ortak olduğu, içindeki* kullanıma hazır eşitleme kuralında bulabilirsiniz. Karma Exchange 'de, Exchange Online tarafından eklenen değerin yalnızca değerin başarıyla verildiğini teyit edildiğinde eşitlenmesi gerekir:  
 `proxyAddresses` <- `RemoveDuplicates(Trim(ImportedValue("proxyAddresses")))`
 
 ## <a name="precedence"></a>Önceliği

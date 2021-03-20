@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/03/2020
 ms.openlocfilehash: cb0fd5464f7025d71dd384c56233aefa6a6cd364
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98218731"
 ---
 # <a name="quickstart-transform-data-using-mapping-data-flows"></a>Hızlı başlangıç: veri akışlarını eşleme kullanarak verileri dönüştürme
@@ -27,7 +27,7 @@ Bu hızlı başlangıçta aşağıdaki adımları uygulayın:
 > * İşlem hattında test çalıştırması yapma.
 > * Veri akışı etkinliğini izleme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * **Azure aboneliği**: Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 * **Azure SYNAPSE çalışma alanı**: [hızlı başlangıç: bir Synapse çalışma alanı oluşturma](quickstart-create-workspace.md)yönergelerini takip eden Azure Portal kullanarak bir Synapse çalışma alanı oluşturun.

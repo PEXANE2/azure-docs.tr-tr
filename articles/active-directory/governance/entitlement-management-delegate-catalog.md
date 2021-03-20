@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e41f372cd0105896765d5a267456b6bda767dd4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87798435"
 ---
 # <a name="delegate-access-governance-to-catalog-creators-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde Katalog oluşturucuları için erişim yönetimine temsilci seçme
@@ -35,7 +35,7 @@ Bir kullanıcıyı Katalog Oluşturucu rolüne atamak için aşağıdaki adımla
 
 **Önkoşul rolü:** Genel yönetici veya Kullanıcı Yöneticisi
 
-1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
+1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik** Yönetimi ' ne tıklayın.
 
 1. Sol taraftaki menüde, **Yetkilendirme Yönetimi** bölümünde, **Ayarlar**' a tıklayın.
 
@@ -59,7 +59,7 @@ Katalog oluşturucuları ve erişim paket yöneticileri gibi temsilci rollere iz
 
 1. Sol taraftaki menüden **Kullanıcı ayarları**' na tıklayın.
 
-1. **Azure AD Yönetim Portalı 'na erişimi kısıtla** ' nın **Hayır**olarak ayarlandığından emin olun.
+1. **Azure AD Yönetim Portalı 'na erişimi kısıtla** ' nın **Hayır** olarak ayarlandığından emin olun.
 
     ![Azure AD Kullanıcı ayarları-yönetim portalı](./media/entitlement-management-delegate-catalog/user-settings.png)
 

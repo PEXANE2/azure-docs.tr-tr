@@ -4,10 +4,10 @@ description: Microsoft Visual Studio kullanarak Service Fabric uygulamasını y�
 ms.topic: conceptual
 ms.date: 06/29/2017
 ms.openlocfilehash: 11df0387db07669ebacdba2e3d850e32903da133
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96573689"
 ---
 # <a name="configure-the-upgrade-of-a-service-fabric-application-in-visual-studio"></a>Visual Studio 'da Service Fabric uygulamasının yükseltmesini yapılandırma
@@ -20,7 +20,7 @@ Azure Service Fabric için Visual Studio Araçları, yerel veya uzak kümelerdek
 ## <a name="parameters-needed-to-upgrade"></a>Yükseltmek için gereken parametreler
 İki tür dağıtım arasından seçim yapabilirsiniz: normal veya yükseltme. Düzenli dağıtım, kümedeki önceki dağıtım bilgilerini ve verileri siler, bu da bir yükseltme dağıtımı tarafından korunur. Visual Studio 'da bir Service Fabric uygulamasını yükselttiğinizde, uygulama yükseltme parametreleri ve sistem durumu denetim ilkeleri sağlamanız gerekir. Uygulama yükseltme parametreleri yükseltmeyi denetlemeye yardımcı olur, ancak sistem durumu denetim ilkeleri yükseltmenin başarılı olup olmadığını belirtir. Daha fazla ayrıntı için bkz. [Service Fabric uygulama yükseltme: yükseltme parametreleri](service-fabric-application-upgrade-parameters.md) .
 
-Üç yükseltme modu vardır: Izlenen, Izlenemez *toredauto* ve *Iziztoredmanual*. *Monitored*
+Üç yükseltme modu vardır: Izlenen, Izlenemez *toredauto* ve *Iziztoredmanual*. 
 
 * Izlenen bir yükseltme, yükseltme ve uygulama sistem durumu denetimini otomatikleştirir.
 * Tasmesiz yükseltme, yükseltmeyi otomatikleştirir, ancak uygulama sistem durumu denetimini atlar.

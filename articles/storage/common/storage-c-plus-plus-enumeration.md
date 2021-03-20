@@ -9,10 +9,10 @@ ms.subservice: common
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.openlocfilehash: 8c8e2d2ddf6899e62bc95bc1e52c84eccdc3a91e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92784108"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>Azure Depolama Kaynaklarını C++ dilinde listeleme
@@ -34,7 +34,7 @@ Bu yöntemlerin her biri farklı senaryolar için farklı aşırı yüklemeler k
 
 ## <a name="asynchronous-versus-synchronous"></a>Zaman uyumsuz ve zaman uyumlu
 
-C++ için depolama Istemci kitaplığı, [C++ Rest kitaplığının](https://github.com/Microsoft/cpprestsdk)üzerine oluşturulduğundan, zaman uyumsuz işlemleri [pplx:: Task](https://microsoft.github.io/cpprestsdk/classpplx_1_1task.html)kullanarak bir şekilde destekliyoruz. Örneğin:
+C++ için depolama Istemci kitaplığı, [C++ Rest kitaplığının](https://github.com/Microsoft/cpprestsdk)üzerine oluşturulduğundan, zaman uyumsuz işlemleri [pplx:: Task](https://microsoft.github.io/cpprestsdk/classpplx_1_1task.html)kullanarak bir şekilde destekliyoruz. Örnek:
 
 ```cpp
 pplx::task<list_blob_item_segment> list_blobs_segmented_async(continuation_token& token) const;
@@ -59,8 +59,8 @@ Bu nedenle, tüm nesneleri tek bir yanıtta listelemek pratik değildir. Bunun y
 
 Bölümlenmiş bir listeleme işleminin yanıtı şunları içerir:
 
-* liste API 'sine tek bir çağrı için döndürülen sonuç kümesini içeren *_segment* .
-* sonraki sonuçların bir sonraki sayfasına ulaşmak için bir sonraki çağrıya geçirilen *continuation_token* . Döndürülecek daha fazla sonuç olmadığında devamlılık belirteci null olur.
+* liste API 'sine tek bir çağrı için döndürülen sonuç kümesini içeren *_segment*.
+* sonraki sonuçların bir sonraki sayfasına ulaşmak için bir sonraki çağrıya geçirilen *continuation_token*. Döndürülecek daha fazla sonuç olmadığında devamlılık belirteci null olur.
 
 Örneğin, bir kapsayıcıdaki tüm Blobları listelemek için tipik bir çağrı aşağıdaki kod parçacığı gibi görünebilir. Kod, [örneklerimizde](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted.cpp)mevcuttur:
 

@@ -8,10 +8,10 @@ ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 488e7c84e481edd1b136fe90ab948d3cfb51ed2c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89230790"
 ---
 # <a name="quickstart-create-a-server---portal"></a>Hızlı başlangıç: Sunucu oluşturma - Portal
@@ -30,7 +30,7 @@ Bu hızlı başlangıçta, portalı kullanarak Azure aboneliğinizde bir Analysi
 
 ## <a name="create-a-server"></a>Sunucu oluşturma
 
-1. **+ Kaynak**  >  **Analizi**  >  **Analysis Services**oluştur ' a tıklayın.
+1. **+ Kaynak**  >  **Analizi**  >  **Analysis Services** oluştur ' a tıklayın.
 
     ![Portal](./media/analysis-services-create-server/aas-create-server-portal.png)
 
@@ -45,7 +45,7 @@ Bu hızlı başlangıçta, portalı kullanarak Azure aboneliğinizde bir Analysi
    * **Yedekleme Depolama Alanı**: İsteğe bağlıdır. [Depolama hesabınız](../storage/common/storage-introduction.md) varsa model yedekleme veritabanı olarak varsayılan yapabilirsiniz. [Yedekleme ve geri yükleme](analysis-services-backup.md) ayarlarını daha sonra da yapabilirsiniz.
    * **Depo anahtarı süre sonu**: İsteğe bağlıdır. Depo anahtarı için süre sonu belirtin.
 
-Sunucunun oluşturulması genellikle bir dakikadan kısa sürer. **Portala Ekle**'yi seçtiyseniz yeni sunucunuzu görmek için portalınıza gidin. Ya da, **All services**  >  sunucunuzun hazırlanın olup olmadığını görmek için tüm hizmetler**Analysis Services** gidin. Sunucular, 1200 ve daha yüksek uyumluluk düzeylerinde tablo modellerini destekler. Model uyumluluk düzeyi, Visual Studio veya SSMS 'de belirtilmiştir.
+Sunucunun oluşturulması genellikle bir dakikadan kısa sürer. **Portala Ekle**'yi seçtiyseniz yeni sunucunuzu görmek için portalınıza gidin. Ya da,   >  sunucunuzun hazırlanın olup olmadığını görmek için tüm hizmetler **Analysis Services** gidin. Sunucular, 1200 ve daha yüksek uyumluluk düzeylerinde tablo modellerini destekler. Model uyumluluk düzeyi, Visual Studio veya SSMS 'de belirtilmiştir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -58,4 +58,4 @@ Sunucunun oluşturulması genellikle bir dakikadan kısa sürer. **Portala Ekle*
 Bu hızlı başlangıçta Azure aboneliğinizde sunucu oluşturmayı öğrendiniz. Sunucuyu oluşturduğunuza göre bir sunucu güvenlik duvarı yapılandırarak (isteğe bağlı) güvenliğinin sağlanmasına yardımcı olacaksınız. Sunucunuza doğrudan portaldan örnek bir veri modeli de ekleyebilirsiniz. Örnek modelin olması, model veritabanı rollerini yapılandırma ve istemci bağlantılarını test etme işlemlerini öğrenme konusunda yardımcı olur. Daha fazla bilgi edinmek için, örnek model ekleme öğreticisiyle devam edin.
 
 > [!div class="nextstepaction"]
-> [Hızlı Başlangıç: Sunucu güvenlik duvarını yapılandırma - Portal](analysis-services-qs-firewall.md)   
+> [Hızlı başlangıç: Sunucu güvenlik duvarını yapılandırma - Portal](analysis-services-qs-firewall.md)   

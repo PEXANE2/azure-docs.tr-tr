@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/11/2019
 ms.author: jeedes
 ms.openlocfilehash: 2f7f017d773e7708b2206029769df7977b12e6f0
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92454346"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ebsco"></a>Öğretici: EBSCO ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, EBSCO 'yı Azure Active Directory (Azure AD) ile tümleştirmey
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -58,7 +58,7 @@ EBSCO 'nın tümleştirmesini Azure AD 'ye göre yapılandırmak için, galerini
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-ebsco"></a>EBSCO için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak EBSCO Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve EBSCO 'daki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak EBSCO Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve EBSCO 'daki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu EBSCO ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -175,7 +175,7 @@ Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](.
 
     ![Uygulamalar listesinde EBSCO oturum açma](./media/ebsco-tutorial/tutorial_ebsco_signin.png)
 
-1. **Mevcut MyEBSCOhost hesabınızı şimdi kurum hesabınıza bağlamak** veya **Yeni bir Myebscohost hesabı oluşturmak ve bunu kurum hesabınıza bağlamak**için tek seferlik bir istem alacaksınız. Hesap, EBSCOhost uygulamasında kişiselleştirme için kullanılır. **Yeni hesap oluştur** seçeneğini belirleyin ve aşağıdaki ekran görüntüsünde gösterildiği gibi, kişiselleştirme formunun SAML yanıtından alınan değerlerle önceden tamamlandığını görürsünüz. Bu seçimi kaydetmek için **' devam '** düğmesine tıklayın.
+1. **Mevcut MyEBSCOhost hesabınızı şimdi kurum hesabınıza bağlamak** veya **Yeni bir Myebscohost hesabı oluşturmak ve bunu kurum hesabınıza bağlamak** için tek seferlik bir istem alacaksınız. Hesap, EBSCOhost uygulamasında kişiselleştirme için kullanılır. **Yeni hesap oluştur** seçeneğini belirleyin ve aşağıdaki ekran görüntüsünde gösterildiği gibi, kişiselleştirme formunun SAML yanıtından alınan değerlerle önceden tamamlandığını görürsünüz. Bu seçimi kaydetmek için **' devam '** düğmesine tıklayın.
     
      ![Uygulamalar listesindeki EBSCO kullanıcısı](./media/ebsco-tutorial/tutorial_ebsco_user.png)
 

@@ -4,15 +4,15 @@ description: Azure Resource Manager şablonunun dağıtımı sırasında değerl
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.openlocfilehash: 2b6d942b21594fa608127bb8f403e72295671005
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89276669"
 ---
 # <a name="create-resource-manager-parameter-file"></a>Kaynak Yöneticisi parametre dosyası oluştur
 
-Komut dosyanıza satır içi değer olarak parametre geçirmek yerine, parametre değerlerini içeren bir JSON dosyası kullanmayı daha kolay bulabilirsiniz. Bu makalede parametre dosyasının nasıl oluşturulacağı gösterilmektedir.
+Parametreleri betiğinize satır içi değerler olarak geçirmek yerine parametre değerlerini içeren bir JSON dosyası kullanmak daha kolayınıza gelebilir. Bu makalede parametre dosyasının nasıl oluşturulacağı gösterilmektedir.
 
 ## <a name="parameter-file"></a>Parametre dosyası
 
@@ -213,7 +213,7 @@ Daha fazla bilgi için bkz. [ARM şablonlarıyla kaynak dağıtma ve Azure Power
 
 ## <a name="file-name"></a>Dosya adı
 
-Parametre dosyasını adlandırmak için genel kural, şablon adına **. parametreler** eklemektir. Örneğin, şablonunuz **azuredeploy.js**olarak adlandırılmışsa, parametre dosyanız ** üzerindeazuredeploy.parameters.js**olarak adlandırılır. Bu adlandırma kuralı, şablon ve parametreler arasındaki bağlantıyı görmenizi sağlar.
+Parametre dosyasını adlandırmak için genel kural, şablon adına **. parametreler** eklemektir. Örneğin, şablonunuz **azuredeploy.js** olarak adlandırılmışsa, parametre dosyanız **üzerindeazuredeploy.parameters.js** olarak adlandırılır. Bu adlandırma kuralı, şablon ve parametreler arasındaki bağlantıyı görmenizi sağlar.
 
 Farklı ortamlara dağıtmak için, birden fazla parametre dosyası oluşturun. Parametre dosyasını adlandırırken, kullanımını tanımlamak için bir yol ekleyin. Örneğin, **üzerindeazuredeploy.parameters-dev.js** ve **azuredeploy.parameters-prod.js** kullanın
 
@@ -225,7 +225,7 @@ Dosyaya URI sağlayarak bir dış parametre dosyası kullanmak mümkündür. Dı
 
 ## <a name="parameter-name-conflicts"></a>Parametre adı çakışmaları
 
-Şablonunuz PowerShell komutundaki parametrelerden biriyle aynı ada sahip bir parametre içeriyorsa, PowerShell, şablondaki parametreyi sonek **FromTemplate**ile gösterir. Örneğin, şablonunuzda **resourcegroupname** adlı bir parametre [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) cmdlet 'inin **resourcegroupname** parametresiyle çakışıyor. **Resourcegroupnamefromtemplate**için bir değer sağlamanız istenir. Dağıtım komutları için kullanılmayan parametre adlarını kullanarak bu karışıklık kullanmaktan kaçınabilirsiniz.
+Şablonunuz PowerShell komutundaki parametrelerden biriyle aynı ada sahip bir parametre içeriyorsa, PowerShell, şablondaki parametreyi sonek **FromTemplate** ile gösterir. Örneğin, şablonunuzda **resourcegroupname** adlı bir parametre [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) cmdlet 'inin **resourcegroupname** parametresiyle çakışıyor. **Resourcegroupnamefromtemplate** için bir değer sağlamanız istenir. Dağıtım komutları için kullanılmayan parametre adlarını kullanarak bu karışıklık kullanmaktan kaçınabilirsiniz.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

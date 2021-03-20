@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 9c734ff03b1cf277c7e0967d8b76b1941434f414
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86050279"
 ---
 Bu yordamda şunları yapmanız gerekir:
@@ -20,8 +20,8 @@ Bu yordamda şunları yapmanız gerekir:
 
 #### <a name="to-prepare-to-run-the-maintainer"></a>Bakımcı çalıştırmaya hazırlanmak için
 1. Web ön uç sunucusunda SharePoint 2013 Yönetim Kabuğu 'nu yönetici olarak açın.
-2. Klasör *önyükleme sürücüsüne*gidin: \Program Files\Microsoft SQL Remote blob Storage 10.50 olan \ bakımcı\.
-3. **Microsoft.Data.SqlRemoteBlobs.Maintainer.exe.config** **web.config**olarak yeniden adlandırın.
+2. Klasör *önyükleme sürücüsüne* gidin: \Program Files\Microsoft SQL Remote blob Storage 10.50 olan \ bakımcı\.
+3. **Microsoft.Data.SqlRemoteBlobs.Maintainer.exe.config** **web.config** olarak yeniden adlandırın.
 4. `aspnet_regiis -pdf connectionStrings`web.config dosyanın şifresini çözmek için kullanın.
 5. Şifresi çözülen web.config dosyasında, `connectionStrings` düğüm ALTıNA SQL Server Örneğiniz için bağlantı dizesini ve içerik veritabanı adını ekleyin. Aşağıdaki örneğe bakın.
    
@@ -38,7 +38,7 @@ Bu yordamda şunları yapmanız gerekir:
 
     `exec mssqlrbs.rbs_sp_set_config_value ‘delete_scan_period’ , ’time 00:00:00’`
 
-2. Web ön uç sunucusunda, **Merkezi Yönetim**altında, geri dönüşüm kutusu 'nu geçici olarak devre dışı bırakmak için, istenen Içerik veritabanının **Web uygulaması genel ayarlarını** düzenleyin. Bu eylem, ilgili site koleksiyonları için geri dönüşüm kutusu 'nu da boşaltacaktır. Bunu yapmak için **Merkezi Yönetim**  ->  **uygulama yönetimi**  ->  **Web uygulamaları (Web uygulamalarını yönet)**  ->  **SharePoint-80**  ->  **genel uygulama ayarları**' na tıklayın. **Geri dönüşüm kutusu durumunu** **kapalı**olarak ayarlayın.
+2. Web ön uç sunucusunda, **Merkezi Yönetim** altında, geri dönüşüm kutusu 'nu geçici olarak devre dışı bırakmak için, istenen Içerik veritabanının **Web uygulaması genel ayarlarını** düzenleyin. Bu eylem, ilgili site koleksiyonları için geri dönüşüm kutusu 'nu da boşaltacaktır. Bunu yapmak için **Merkezi Yönetim**  ->  **uygulama yönetimi**  ->  **Web uygulamaları (Web uygulamalarını yönet)**  ->  **SharePoint-80**  ->  **genel uygulama ayarları**' na tıklayın. **Geri dönüşüm kutusu durumunu** **kapalı** olarak ayarlayın.
    
     ![Web uygulaması genel ayarları](./media/storsimple-sharepoint-adapter-garbage-collection/HCS_WebApplicationGeneralSettings-include.png)
 
@@ -62,5 +62,5 @@ Bu yordamda şunları yapmanız gerekir:
       `exec mssqlrbs.rbs_sp_set_config_value ‘delete_scan_period’ , ’days 30’`
    
       `exec mssqlrbs.rbs_sp_set_config_value ‘orphan_scan_period’ , ’days 30’`
-2. Web ön uç sunucusunda, **Merkezi Yönetim**bölümünde, geri dönüşüm kutusu 'nu yeniden etkinleştirmek için istenen Içerik veritabanının **Web uygulaması genel ayarlarını** düzenleyin. Bunu yapmak için **Merkezi Yönetim**  ->  **uygulama yönetimi**  ->  **Web uygulamaları (Web uygulamalarını yönet)**  ->  **SharePoint-80**  ->  **genel uygulama ayarları**' na tıklayın. Geri dönüşüm kutusu durumunu **Açık**olarak ayarlayın.
+2. Web ön uç sunucusunda, **Merkezi Yönetim** bölümünde, geri dönüşüm kutusu 'nu yeniden etkinleştirmek için istenen Içerik veritabanının **Web uygulaması genel ayarlarını** düzenleyin. Bunu yapmak için **Merkezi Yönetim**  ->  **uygulama yönetimi**  ->  **Web uygulamaları (Web uygulamalarını yönet)**  ->  **SharePoint-80**  ->  **genel uygulama ayarları**' na tıklayın. Geri dönüşüm kutusu durumunu **Açık** olarak ayarlayın.
 

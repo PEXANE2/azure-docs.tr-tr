@@ -8,17 +8,17 @@ ms.date: 11/20/2020
 ms.author: cshoe
 ms.custom: contperf-fy21q2
 ms.openlocfilehash: 41b627259d84539c868f95eb3cf33db5dbdab52c
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97862399"
 ---
 # <a name="introduction-to-azure-functions"></a>Azure İşlevleri’ne Giriş
 
 Azure Işlevleri, daha az kod yazmanızı, daha az altyapı bulundurmasını ve maliyetlerden tasarruf etmenizi sağlayan sunucusuz bir çözümdür. Bulut altyapısı, sunucuları dağıtma ve sürdürme hakkında endişelenmek yerine, uygulamalarınızın çalışmasını sağlamak için gereken tüm güncel kaynakları sağlar.
 
-Sizin için büyük bir kod parçasına odaklanırsınız ve Azure Işlevleri Rest 'i işler.<br /><br />
+Siz en çok önem verdiğiniz kod parçalarına odaklanırken Azure İşlevleri gerisini halleder.<br /><br />
 
 > [!VIDEO https://www.youtube.com/embed/8-jz5f_JyEQ]
 

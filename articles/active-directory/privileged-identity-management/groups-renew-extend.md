@@ -17,10 +17,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0cfbb0be22dee4550050d6af10314f3a3bb1f583
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87505997"
 ---
 # <a name="extend-or-renew-privileged-access-group-assignments-preview-in-privileged-identity-management"></a>Privileged Identity Management 'da ayrıcalıklı erişim grubu atamalarını (Önizleme) genişletme veya yenileme
@@ -72,11 +72,11 @@ Yöneticiler, e-postadaki bağlantıyı izleyen bir ek olarak, Privileged Identi
 
 ![Ayrıcalıklı erişim grubu atamaları-istekleri onaylama sayfası istekleri ve onaylama veya reddetme bağlantıları](media/groups-renew-extend/group-assignment-extend-admin-approve.png)
 
-Yönetici **Onayla** veya **Reddet**seçeneğini belirlediğinde, istek ayrıntıları, denetim günlükleri için bir iş denetimi sağlamak üzere bir alanla birlikte gösterilir.
+Yönetici **Onayla** veya **Reddet** seçeneğini belirlediğinde, istek ayrıntıları, denetim günlükleri için bir iş denetimi sağlamak üzere bir alanla birlikte gösterilir.
 
 ![İstek sahibi nedeni, atama türü, başlangıç zamanı, bitiş zamanı ve nedenle Grup atama isteğini onaylama](media/groups-renew-extend/group-assignment-extend-admin-approve-reason.png)
 
-Grup atamasını genişletme isteği onaylanırken, kaynak yöneticileri yeni bir başlangıç tarihi, bitiş tarihi ve atama türü seçebilirler. Yönetici belirli bir görevi (örneğin, bir gün) tamamlamaya sınırlı erişim sağlamak isterse, atama türünü değiştirmek gerekli olabilir. Bu örnekte, yönetici atamayı **uygun** durumundan **etkin**olarak değiştirebilir. Bu, etkinleştirmelerine gerek kalmadan istek sahibine erişim sağlayabilecekleri anlamına gelir.
+Grup atamasını genişletme isteği onaylanırken, kaynak yöneticileri yeni bir başlangıç tarihi, bitiş tarihi ve atama türü seçebilirler. Yönetici belirli bir görevi (örneğin, bir gün) tamamlamaya sınırlı erişim sağlamak isterse, atama türünü değiştirmek gerekli olabilir. Bu örnekte, yönetici atamayı **uygun** durumundan **etkin** olarak değiştirebilir. Bu, etkinleştirmelerine gerek kalmadan istek sahibine erişim sağlayabilecekleri anlamına gelir.
 
 ### <a name="admin-initiated-extension"></a>Yönetici tarafından başlatılan uzantı
 
@@ -96,7 +96,7 @@ Artık kaynaklara erişemeyen kullanıcılar, en fazla 30 günlük atama geçmi�
 
 ![Rollerim sayfası-zaman aşımına uğradı atamalar sekmesi](media/groups-renew-extend/groups-renew-from-my-roles.png)
 
-Gösterilen atamaların listesi, **uygun atamalar**olarak varsayılan olarak gösterilir. Uygun ve etkin atamalar arasında geçiş yapmak için açılan menüyü kullanın.
+Gösterilen atamaların listesi, **uygun atamalar** olarak varsayılan olarak gösterilir. Uygun ve etkin atamalar arasında geçiş yapmak için açılan menüyü kullanın.
 
 Listedeki herhangi bir grup atamasının yenilenmesini istemek için **Yenile** eylemini seçin. Ardından istek için bir neden belirtin. Kaynak yöneticisinin onaylama veya reddetme kararı vermesine yardımcı olabilecek ek bağlam veya bir iş gerekçesinin yanı sıra bir süre sağlamak yararlı olur.
 
@@ -108,7 +108,7 @@ Listedeki herhangi bir grup atamasının yenilenmesini istemek için **Yenile** 
 
 Kaynak yöneticileri, e-posta bildiriminde bulunan bağlantıdan veya Azure portal Privileged Identity Management erişerek ve sol bölmeden **Istekleri Onayla** ' yı seçerek yenileme isteğine erişebilir.
 
-Yönetici **Onayla** veya **Reddet**seçeneğini belirlediğinde, denetim günlükleri için bir iş denetimi sağlamak üzere isteğin ayrıntıları bir alanla birlikte gösterilir.
+Yönetici **Onayla** veya **Reddet** seçeneğini belirlediğinde, denetim günlükleri için bir iş denetimi sağlamak üzere isteğin ayrıntıları bir alanla birlikte gösterilir.
 
 Bir grup atamasını yenileme isteği onaylanırken, kaynak yöneticileri yeni bir başlangıç tarihi, bitiş tarihi ve atama türü girmelidir.
 

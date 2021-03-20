@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
 ms.openlocfilehash: 1b9c9182b8ffc6e9ea2e05fd4863783f111f81dd
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98727157"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks-captive-portal"></a>Öğretici: Palo Alto Networks ile tümleştirme portalı Azure Active Directory tümleştirme
@@ -27,7 +27,7 @@ Azure AD ile Palo Alto Networks ile ağları tümleştirme portalı, aşağıdak
 * Kullanıcılarınızın Azure AD hesaplarıyla ağlar arası bir portala (çoklu oturum açma), avuçiçi bilgisayarlara otomatik olarak oturum açmasını sağlayabilirsiniz.
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD 'yi Palo Alto ağları açıklamalı portalı ile tümleştirmek için aşağıdaki öğeler gereklidir:
 

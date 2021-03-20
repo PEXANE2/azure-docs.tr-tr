@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 07/23/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: c053a7830e02eb7c460bd030ca3c6a10c00ea78a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91323646"
 ---
 # <a name="understand-app-and-deployment-in-azure-spring-cloud"></a>Azure yay bulutu 'nda uygulamayı ve dağıtımı anlama
 
 **Bu makale şu şekilde geçerlidir:** ✔️ Java ✔️ C #
 
-**Uygulama** ve **dağıtım** , Azure Spring Cloud 'ın kaynak modelinde iki temel kavramlardır. Azure Spring Cloud 'da, bir *uygulama* bir iş uygulamasının veya bir mikro hizmetin soyutlamasıdır.  *Uygulama* olarak dağıtılan bir kod veya ikili dosya sürümü bir *dağıtımda*çalışır.  Uygulamalar, daha sonra gösterildiği gibi bir *Azure Spring Cloud Service örneğinde*veya yalnızca *hizmet örneğinde*çalışır.
+**Uygulama** ve **dağıtım** , Azure Spring Cloud 'ın kaynak modelinde iki temel kavramlardır. Azure Spring Cloud 'da, bir *uygulama* bir iş uygulamasının veya bir mikro hizmetin soyutlamasıdır.  *Uygulama* olarak dağıtılan bir kod veya ikili dosya sürümü bir *dağıtımda* çalışır.  Uygulamalar, daha sonra gösterildiği gibi bir *Azure Spring Cloud Service örneğinde* veya yalnızca *hizmet örneğinde* çalışır.
 
  ![Uygulamalar ve dağıtımlar](./media/spring-cloud-app-and-deployment/app-deployment-rev.png)
 
@@ -29,9 +29,9 @@ Azure yay bulutu standart katmanı, bir uygulamanın bir üretim dağıtımına 
 ## <a name="app"></a>Uygulama
 Aşağıdaki özellikler/Özellikler uygulama düzeyinde tanımlanmıştır.
 
-| Özellikler | Açıklama |
+| Özellikler | Description |
 |:--|:----------------|
-| Ortak</br>Uç Noktası | Uygulamaya erişmek için URL |
+| Genel</br>Uç Nokta | Uygulamaya erişmek için URL |
 | Özel</br>Etki alanı | Özel etki alanının güvenliğini sağlayan CNAME kaydı |
 | Hizmet</br>Bağlama | Diğer Azure hizmetleriyle kullanıma hazır bağlantı |
 | Yönetilen</br>Kimlik | Azure Active Directory tarafından yönetilen kimlik, uygulamanızın Azure Key Vault gibi diğer Azure AD korumalı kaynaklara kolayca erişmesini sağlar |
@@ -45,11 +45,11 @@ Aşağıdaki özellikler/özellikler dağıtım düzeyinde tanımlanmıştır ve
 |:--|:----------------|
 | CPU | Uygulama örneği başına sanal çekirdek sayısı |
 | Bellek | Uygulama örneği başına GB bellek|
-| Örnek</br>Sayı | Uygulama örneklerinin sayısı, el ile veya otomatik olarak ayarlanır |
+| Örnek</br>Count | Uygulama örneklerinin sayısı, el ile veya otomatik olarak ayarlanır |
 | Otomatik ölçeklendirme | Önceden tanımlanmış kurallara ve zamanlamaya göre örnek sayısını otomatik olarak Ölçeklendir |
 | JVM</br>Seçenekler | JVM seçeneklerini ayarlama  |
 | Ortam</br>Değişkenler | Ortam değişkenlerini ayarlama |
-| Çalışma zamanı</br>Sürüm | Java 8/Java 11|
+| Çalışma Zamanı</br>Sürüm | Java 8/Java 11|
 
 ## <a name="restrictions"></a>Kısıtlamalar
 

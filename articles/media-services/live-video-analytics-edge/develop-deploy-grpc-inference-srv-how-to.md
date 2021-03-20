@@ -4,10 +4,10 @@ description: Bu makalede, bir gRPC çıkarım sunucusu geliştirme ve dağıtma 
 ms.topic: how-to
 ms.date: 12/02/2020
 ms.openlocfilehash: 6184a369e73c26d3a8a716f9daf1c0420a5239fe
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98881661"
 ---
 # <a name="how-to-guide--develop-and-deploy-a-grpc-inference-server"></a>Nasıl yapılır Kılavuzu – gRPC çıkarım sunucusu geliştirme ve dağıtma
@@ -148,7 +148,7 @@ GRPC sunucusunun nasıl geliştirildiği hakkındaki ayrıntıları anlamak içi
 1. VSCode 'u başlatın ve/src/edge/modules/grpcExtension klasörüne gidin.
 1. Dosyaları hızlı bir şekilde gözden geçirelim:
 
-    1. **Program.cs**: Bu, uygulamanın giriş noktasıdır. Bir konak olarak görev yapacak gRPC sunucusunu başlatmaktan ve yönetmekten sorumludur. Örneğimizde, üzerinde AppConfig.jsgrpcBindings yapılandırma öğesi tarafından bir gRPC istemcisinden (örneğin, canlı video analizi) gelen gRPC iletilerini dinlemek için bağlantı noktası belirtilir.
+    1. **Program. cs**: uygulamanın giriş noktasıdır. Bir konak olarak görev yapacak gRPC sunucusunu başlatmaktan ve yönetmekten sorumludur. Örneğimizde, üzerinde AppConfig.jsgrpcBindings yapılandırma öğesi tarafından bir gRPC istemcisinden (örneğin, canlı video analizi) gelen gRPC iletilerini dinlemek için bağlantı noktası belirtilir.
     
         ```json    
         {
@@ -191,7 +191,7 @@ GRPC sunucu bağlantı noktası bağlantılarını yapılandırdığımıza ve k
               }
             }
             ```
-        * Appconfig.jsüzerindeki batchSize değerine bağlı olarak, sunucunuz iletileri almaya devam eder ve video çerçevelerini bir listede depolar. BatchSize sınırına ulaşıldığında, işlev işlevi veya görüntüyü işleyecek dosyayı çağırır. Bu durumda, yöntemi BatchImageProcessor.cs adlı bir dosya çağırır
+        * Appconfig.jsüzerindeki batchSize değerine bağlı olarak, sunucunuz iletileri almaya devam eder ve video çerçevelerini bir listede depolar. BatchSize sınırına ulaşıldığında, işlev işlevi veya görüntüyü işleyecek dosyayı çağırır. Bu durumda, yöntemi Batchımageprocessor. cs adlı bir dosya çağırır
     1. **Processors\batchımageprocessor.cs**: Bu sınıf, görüntü (ler) i işlemekten sorumludur. Bu örnekte bir görüntü sınıflandırma modeli kullandık. İşlenecek her görüntü için, kullanılan algoritma aşağıda verilmiştir:
 
         1. Bir bayt dizisindeki görüntüyü işlenmek üzere dönüştürür. Bkz. yöntemi: `GetBytes(Bitmap image)`
@@ -207,7 +207,7 @@ GRPC sunucu bağlantı noktası bağlantılarını yapılandırdığımıza ve k
     IEnumerable<Inference> ProcessImage(List<Image> images) 
     ```
 
-    Yeni sınıfı ekledikten sonra, MediaGraphExtensionService.cs 'yi güncelleştirmeniz ve işlem mantığınızı çalıştırmak için, üzerinde ProcessImage yöntemini çağırmaları gerekir. 
+    Yeni sınıfı ekledikten sonra, MediaGraphExtensionService. cs ' yi güncelleştirmeniz gerekir. bu nedenle, sınıfınızı bir kez başlatır ve işlem mantığınızı çalıştırmak için üzerinde ProcessImage yöntemini çağırır. 
 
 ## <a name="connect-with-live-video-analytics-module"></a>Live video Analytics modülü ile bağlanma
 
@@ -228,7 +228,7 @@ GRPC uzantı modülünüzü oluşturdığınıza göre artık medya grafiği top
 
     * C2D-Console-App. csproj-Visual Studio Code için proje dosyası.
     * operations.js, programın çalıştırmasını istediğiniz işlemlerin bir listesi.
-    * Program.cs-örnek program kodu. Bu kod:
+    * Program. cs-örnek program kodu. Bu kod:
 
         * Uygulama ayarlarını yükler.
         * IoT Edge modülündeki canlı video analizinin sunduğu doğrudan yöntemleri çağırır. [Doğrudan yöntemlerini](direct-methods.md)çağırarak canlı video akışlarını çözümlemek için modülünü kullanabilirsiniz.

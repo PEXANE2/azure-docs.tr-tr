@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -9,10 +9,10 @@ ms.date: 10/10/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 0fc6a62a94f31617209bcc60bfaa95bc8927551a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86050334"
 ---
 ## <a name="deploy-event-grid-iot-edge-module"></a>Event Grid IoT Edge modülünü dağıt
@@ -35,7 +35,7 @@ IoT Edge bir cihaza modül dağıtmanın birkaç yolu vardır ve bunların hepsi
 
 ### <a name="configure-a-deployment-manifest"></a>Dağıtım bildirimi yapılandırma
 
-Dağıtım bildirimi, hangi modüllerin dağıtılacağını, modüller arasında verilerin nasıl akacağını ve modül TWINS 'in istenen özelliklerini tanımlayan bir JSON belgesidir. Azure portal, JSON belgesini el ile oluşturmak yerine bir dağıtım bildirimi oluşturma konusunda size yol gösteren bir sihirbaza sahiptir.  Üç adım vardır: **modüller ekleme**, **rotalar belirtme**ve **dağıtımı İnceleme**.
+Dağıtım bildirimi, hangi modüllerin dağıtılacağını, modüller arasında verilerin nasıl akacağını ve modül TWINS 'in istenen özelliklerini tanımlayan bir JSON belgesidir. Azure portal, JSON belgesini el ile oluşturmak yerine bir dağıtım bildirimi oluşturma konusunda size yol gösteren bir sihirbaza sahiptir.  Üç adım vardır: **modüller ekleme**, **rotalar belirtme** ve **dağıtımı İnceleme**.
 
 ### <a name="add-modules"></a>Modül ekle
 
@@ -87,6 +87,6 @@ Dağıtım bildirimi, hangi modüllerin dağıtılacağını, modüller arasınd
 
 1. Dağıtımı gönderdikten sonra IoT Hub 'ınızın IoT Edge sayfasına dönersiniz.
 1. Bilgilerini açmak için dağıtıma hedeflenmiş **IoT Edge cihazı** seçin.
-1. Cihaz ayrıntılarında Event Grid modülünün hem **dağıtımda** hem de **cihaz tarafından raporlanarak**listelendiğinden emin olun.
+1. Cihaz ayrıntılarında Event Grid modülünün hem **dağıtımda** hem de **cihaz tarafından raporlanarak** listelendiğinden emin olun.
 
 Modülün cihazda başlatılması ve sonra IoT Hub geri bildirilmesi birkaç dakika sürebilir. Güncelleştirilmiş durumu görmek için sayfayı yenileyin.

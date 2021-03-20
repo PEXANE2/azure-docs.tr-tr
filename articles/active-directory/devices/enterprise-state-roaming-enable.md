@@ -13,10 +13,10 @@ ms.reviewer: na
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 34b554fbef63f23b3540fe49e5c45976122add25
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89268613"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Azure Active Directory'de Kurumsal Durumda Dolaşımı etkinleştirme
@@ -31,7 +31,7 @@ Enterprise State Roaming etkinleştirdiğinizde, kuruluşunuza Azure Rights Mana
 ## <a name="to-enable-enterprise-state-roaming"></a>Enterprise State Roaming etkinleştirmek için
 
 1. [Azure AD Yönetim Merkezi](https://aad.portal.azure.com/)' nde oturum açın.
-1. **Azure Active Directory**  >  **cihazları**  >  **Enterprise State Roaming**seçin.
+1. **Azure Active Directory**  >  **cihazları**  >  **Enterprise State Roaming** seçin.
 1. **Kullanıcılar ayarları ve uygulama verilerini cihazlar arasında eşitleyebilir '** i seçin. Daha fazla bilgi için bkz. [cihaz ayarlarını yapılandırma](./device-management-azure-portal.md).
   
    ![Kullanıcılar, cihazlar arasında ayarları ve uygulama verilerini eşitleyebileceği cihaz ayarı görüntüsü](./media/enterprise-state-roaming-enable/device-settings.png)
@@ -40,7 +40,7 @@ Windows 10 cihazının Enterprise State Roaming hizmetini kullanabilmesi için c
 
 ## <a name="data-storage"></a>Veri depolama
 
-Enterprise State Roaming veriler, Azure Active Directory örneğinde ayarlanan ülke/bölge değeri ile en iyi şekilde hizalaan bir veya daha fazla [Azure](https://azure.microsoft.com/regions/) bölgesinde barındırılır. Enterprise State Roaming veriler üç önemli coğrafi bölgeye göre bölümlenmiştir: Kuzey Amerika, EMEA ve APAC. Kiracının Enterprise State Roaming verileri, coğrafi bölge ile yerel olarak bulunur ve bölgeler arasında çoğaltılmaz.  Örneğin:
+Enterprise State Roaming veriler, Azure Active Directory örneğinde ayarlanan ülke/bölge değeri ile en iyi şekilde hizalaan bir veya daha fazla [Azure](https://azure.microsoft.com/regions/) bölgesinde barındırılır. Enterprise State Roaming veriler üç önemli coğrafi bölgeye göre bölümlenmiştir: Kuzey Amerika, EMEA ve APAC. Kiracının Enterprise State Roaming verileri, coğrafi bölge ile yerel olarak bulunur ve bölgeler arasında çoğaltılmaz.  Örnek:
 
 | Ülke/bölge değeri | içinde barındırılan verileri vardır |
 | -------------------- | ------------------------ |
@@ -58,7 +58,7 @@ Kullanıcı başına cihaz eşitleme durumu raporunu görüntülemek için bu ad
 1. [Azure AD Yönetim Merkezi](https://aad.portal.azure.com/)' nde oturum açın.
 1. **Azure Active Directory**  >  **kullanıcıları**  >  **tüm kullanıcılar**' ı seçin.
 1. Kullanıcıyı seçin ve ardından **cihazlar**' ı seçin.
-1. **Göster**altında, eşitleme durumunu göstermek için **ayarları ve uygulama verilerini eşitleyen cihazlar** ' ı seçin.
+1. **Göster** altında, eşitleme durumunu göstermek için **ayarları ve uygulama verilerini eşitleyen cihazlar** ' ı seçin.
   
    ![cihaz eşitleme verileri ayarının görüntüsü](./media/enterprise-state-roaming-enable/sync-status.png)
   
@@ -80,7 +80,7 @@ Açık silme, bir Azure Yöneticisi bir kullanıcıyı veya dizini sildiğinde y
 
 ### <a name="stale-data-deletion"></a>Eski verileri silme
 
-Bir yıl boyunca erişilmeyen veriler ("Bekletme dönemi") eski olarak değerlendirilir ve Microsoft bulutunda silinebilir. Saklama süresi değişebilir, ancak 90 günden daha az olmayacaktır. Eski veriler belirli bir Windows/uygulama ayarları kümesi veya bir kullanıcıya ait tüm ayarlar olabilir. Örneğin:
+Bir yıl boyunca erişilmeyen veriler ("Bekletme dönemi") eski olarak değerlendirilir ve Microsoft bulutunda silinebilir. Saklama süresi değişebilir, ancak 90 günden daha az olmayacaktır. Eski veriler belirli bir Windows/uygulama ayarları kümesi veya bir kullanıcıya ait tüm ayarlar olabilir. Örnek:
 
 * Hiçbir cihaz belirli bir ayarlar koleksiyonuna erişiyorsa (örneğin, bir uygulama cihazdan kaldırılırsa veya bir kullanıcının aygıtları için "Tema" gibi bir ayar grubu devre dışı bırakılmışsa), bu koleksiyon saklama süresinden sonra eski hale gelir ve silinebilir. 
 * Bir Kullanıcı, tüm cihazlarında ayarları eşitlemeyi kapatmışsa, ayar verilerinin hiçbirine erişilmeyecektir ve bu kullanıcının tüm ayar verileri eskimiş olur ve saklama süresinden sonra silinebilir. 

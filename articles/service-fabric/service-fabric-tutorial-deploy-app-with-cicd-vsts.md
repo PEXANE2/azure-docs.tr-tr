@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: a26cfaca466e01b154c65b27895f3004f6320e5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91326346"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Öğretici: Service Fabric kümesine CI/CD ile uygulama dağıtma
@@ -61,7 +61,7 @@ Sürekli tümleştirme iş akışınızda kullanmak üzere uygulama projenizin i
 
 Derlemeler oluşturabilmek için uygulamanızın kaynak dosyalarını Azure DevOps’daki bir projede paylaşın.
 
-**Add to Source Control**  ->  Visual Studio 'nun sağ alt köşesindeki durum çubuğunda kaynak denetimine Ekle**Git** ' i seçerek projeniz için yeni bir yerel Git deposu oluşturun.
+  ->  Visual Studio 'nun sağ alt köşesindeki durum çubuğunda kaynak denetimine Ekle **Git** ' i seçerek projeniz için yeni bir yerel Git deposu oluşturun.
 
 **Takım Gezgini**’ndeki **Gönderim** görünümünde **Azure DevOps’a Gönder**’in altında yer alan **Git Deposunda Yayımla** düğmesini seçin.
 
@@ -83,7 +83,7 @@ Bir Azure Pipelines yayın işlem hattı, kümeye uygulama paketi dağıtan bir 
 
 Web tarayıcısını açın ve şu adresteki yeni projenize gidin: [https://&lt;myaccount&gt;.visualstudio.com/Voting/Voting%20Team/_git/Voting](https://myaccount.visualstudio.com/Voting/Voting%20Team/_git/Voting).
 
-İşlem **hatları** sekmesini seçin ve ardından **Yeni işlem hattı**' na tıklayın. **Builds**
+İşlem **hatları** sekmesini seçin ve ardından **Yeni işlem hattı**' na tıklayın. 
 
 ![Yeni İşlem Hattı][new-pipeline]
 
@@ -95,11 +95,11 @@ El ile ve zamanlanan derlemeler için kaynak olarak **Git Azure Repos** , **Oyla
 
 ![Derleme şablonu seçme][select-build-template]
 
-**Görevler**' de, **Aracı havuzu**olarak "barındırılan VS2017" yazın.
+**Görevler**' de, **Aracı havuzu** olarak "barındırılan VS2017" yazın.
 
 ![Görevleri seçme][save-and-queue]
 
-**Tetikleyiciler**’in altında **Sürekli tümleştirmeyi etkinleştir**'i işaretleyerek sürekli tümleştirmeyi etkinleştirin. **Dal filtreleri**içinde **dal belirtimi** varsayılan olarak **Master**' dir. Derlemeyi el ile başlatmak için **Kaydet ve kuyruğa al**’ı seçin.
+**Tetikleyiciler**’in altında **Sürekli tümleştirmeyi etkinleştir**'i işaretleyerek sürekli tümleştirmeyi etkinleştirin. **Dal filtreleri** içinde **dal belirtimi** varsayılan olarak **Master**' dir. Derlemeyi el ile başlatmak için **Kaydet ve kuyruğa al**’ı seçin.
 
 ![Tetikleyicileri seçme][save-and-queue2]
 
@@ -107,11 +107,11 @@ Derlemeler gönderme veya iade işlemleriyle de tetiklenir. Derleme ilerleme dur
 
 ### <a name="create-a-release-pipeline"></a>Yayın işlem hattı oluşturma
 
-İşlem **hatları** sekmesini seçin, sonra **yayınlar**ve **+ Yeni işlem hattı**' nı seçin.  **Şablon seç** alanında, listeden **Azure Service Fabric Dağıtımı** şablonunu ve sonra da **Uygula**'yı seçin.
+İşlem **hatları** sekmesini seçin, sonra **yayınlar** ve **+ Yeni işlem hattı**' nı seçin.  **Şablon seç** alanında, listeden **Azure Service Fabric Dağıtımı** şablonunu ve sonra da **Uygula**'yı seçin.
 
 ![Yayın şablonunu seçme][select-release-template]
 
-**Tasks** -> Yeni bir küme bağlantısı eklemek için görevler**ortam 1** ve sonra **+ Yeni** ' yi seçin.
+ -> Yeni bir küme bağlantısı eklemek için görevler **ortam 1** ve sonra **+ Yeni** ' yi seçin.
 
 ![Küme bağlantısı ekleme][add-cluster-connection]
 
@@ -131,7 +131,7 @@ Derleme tamamlandığında otomatik olarak bir yayın oluşturulması için sür
 
 ![Tetikleyici etkinleştirme][enable-trigger]
 
-**+ Release**  ->  Bir yayını el ile oluşturmak için + yayın**Oluştur oluştur**' u seçin  ->  **Create** . Yayının ilerleme durumunu **Yayınlar** sekmesinden takip edebilirsiniz.
+  ->  Bir yayını el ile oluşturmak için + yayın **Oluştur oluştur**' u seçin  ->   . Yayının ilerleme durumunu **Yayınlar** sekmesinden takip edebilirsiniz.
 
 Dağıtımın başarılı olduğunu ve uygulamanın kümede çalıştığını doğrulayın.  Bir web tarayıcısı açın ve `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/` sayfasına gidin.  Uygulama sürümünü not alın (bu örnekte "1.0.0.20170616.3").
 

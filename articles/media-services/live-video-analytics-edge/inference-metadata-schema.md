@@ -4,10 +4,10 @@ description: Bu makalede, çıkarım meta verileri şeması hakkında bilgi edin
 ms.topic: overview
 ms.date: 09/14/2020
 ms.openlocfilehash: 2de437577dc00692fb98c46fec32bfaa6612dc99
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92019503"
 ---
 # <a name="inference-metadata-schema"></a>Çıkarım meta verileri şeması 
@@ -18,7 +18,7 @@ HTTP tabanlı sözleşmenin veya gRPC tabanlı sözleşmenin kullanılmasıyla b
 
 ![Nesne modeli](./media/inference-metadata-schema/object-model.png)
  
-|Tür Tanımı|Açıklama|
+|Tür Tanımı|Description|
 |---|---|
 |Etiket|Sonuçla ilişkili etiket veya etiket. Etiketlemeyle, etiketle ilişkilendirilmiş güvenirlik değerini de alırsınız.|
 |Öznitelik|Sonuçla ilişkili ek öznitelikler. Güvenimme altyapısından ve güvenirlik değeriyle aldığınız yeni öznitelikleri ekleyebilirsiniz.|

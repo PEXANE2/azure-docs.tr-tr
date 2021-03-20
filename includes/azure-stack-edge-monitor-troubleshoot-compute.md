@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/30/2020
 ms.author: alkohli
 ms.openlocfilehash: 92ccb6127e624ace9e719ffd23324b3a1b971f72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89272163"
 ---
 İşlem rolü yapılandırılmış bir Azure Stack Edge cihazında, iki farklı komut kümesi kullanarak cihazı sorun gidermeye veya izlemeye izleyebilirsiniz.
@@ -36,7 +36,7 @@ Commands:
 
 Aşağıdaki tabloda, için kullanılabilen komutların kısa bir açıklaması verilmiştir `iotedge` :
 
-|command  |Açıklama |
+|command  |Description |
 |---------|---------|
 |`check`     | Ortak yapılandırma ve bağlantı sorunları için otomatikleştirilmiş denetimleri gerçekleştirme       |
 |`list`     | Modülleri listeleme         |
@@ -72,7 +72,7 @@ Commands:
 ```
 Aşağıdaki tabloda, için kullanılabilen komutların kısa bir açıklaması verilmiştir `dkrdbe` :
 
-|command  |Açıklama |
+|command  |Description |
 |---------|---------|
 |`image`     | Görüntüleri yönetin. Kullanılmayan görüntüleri kaldırmak için şunu kullanın: `dkrdbe image prune -a -f`       |
 |`images`     | Resimleri Listele         |

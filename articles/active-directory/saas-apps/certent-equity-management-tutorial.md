@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/16/2020
 ms.author: jeedes
 ms.openlocfilehash: 360aad288b4f91cb784e0f0e0cfd7dea47a140fc
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98727948"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-certent-equity-management"></a>Öğretici: sertifika başına varlık yönetimiyle çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -26,7 +26,7 @@ Bu öğreticide, Cerkatlanmış hisse senedi yönetimini Azure Active Directory 
 * Kullanıcılarınızın Azure AD hesaplarıyla, ön varlık yönetimine otomatik olarak kaydolmalarına olanak tanır.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 

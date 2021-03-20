@@ -4,10 +4,10 @@ description: Bu makalede bir Service Fabric uygulaması dağıtma, kodu değişt
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: acde2f4e51bee29d2eefb0d5fbb54fbe421a41f1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95996245"
 ---
 # <a name="service-fabric-application-upgrade-tutorial-using-visual-studio"></a>Visual Studio kullanarak uygulama yükseltme öğreticisini Service Fabric
@@ -37,7 +37,7 @@ Artık iletişim kutusunda **Yayımla** ' ya tıklayabilirsiniz. [Kümeyi ve uyg
 ## <a name="step-2-update-the-visual-objects-sample"></a>2. Adım: görsel nesneler örneğini güncelleştirme
 Adım 1 ' de dağıtılan sürümde, görsel nesnelerin döndürüleceğini fark edebilirsiniz. Bu uygulamayı görsel nesnelerin de her yerde de döndürelim.
 
-VisualObjects çözüm içindeki VisualObjects. ActorService projesini seçin ve **VisualObjectActor.cs** dosyasını açın. Bu dosya içinde yöntemine gidin `MoveObject` , yorum yapın ve açıklama ekleyin `visualObject.Move(false)` `visualObject.Move(true)` . Bu kod değişikliği, hizmet yükseltildikten sonra nesneleri döndürür.  Artık değiştirilen projeleri oluşturan **çözümü oluşturabilir (yeniden derlenemez)**. *Tümünü yeniden derle*' yi seçerseniz, tüm projelerin sürümlerini güncelleştirmeniz gerekir.
+Visualobjects çözüm içindeki VisualObjects. ActorService projesini seçin ve **Visualobjectactor. cs** dosyasını açın. Bu dosya içinde yöntemine gidin `MoveObject` , yorum yapın ve açıklama ekleyin `visualObject.Move(false)` `visualObject.Move(true)` . Bu kod değişikliği, hizmet yükseltildikten sonra nesneleri döndürür.  Artık değiştirilen projeleri oluşturan **çözümü oluşturabilir (yeniden derlenemez)**. *Tümünü yeniden derle*' yi seçerseniz, tüm projelerin sürümlerini güncelleştirmeniz gerekir.
 
 Uygulamamız da bizim için de gereklidir. **Visualobjects** projesine sağ tıkladıktan sonra sürüm değişikliği yapmak Için, Visual Studio **bildirim sürümlerini Düzenle** seçeneğini kullanabilirsiniz. Bu seçeneğin belirlenmesi, sürüm sürümleri için iletişim kutusunu aşağıdaki şekilde getirir:
 

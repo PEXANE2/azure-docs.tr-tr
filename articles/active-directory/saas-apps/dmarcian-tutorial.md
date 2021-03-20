@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/01/2019
 ms.author: jeedes
 ms.openlocfilehash: 4a5ea47352bfbe86fe194821da0b6bf10818caf9
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92454737"
 ---
 # <a name="tutorial-integrate-dmarcian-with-azure-active-directory"></a>Öğretici: dmarcıa 'yu Azure Active Directory tümleştirme
@@ -28,7 +28,7 @@ Bu öğreticide, dmarcıa 'yı Azure Active Directory (Azure AD) ile tümleştir
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -55,7 +55,7 @@ Dmarcıa 'nın tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galer
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak dmarcıa Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, dmarcıa 'da bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak dmarcıa Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, dmarcıa 'da bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Dmarcıa ile Azure AD SSO 'yu yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -113,7 +113,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 ### <a name="configure-dmarcian-sso"></a>Dmarcia SSO 'yu yapılandırma
 
-1. Dmarcıa içindeki yapılandırmayı otomatikleştirmek için, **uzantıyı yüklemek**üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
+1. Dmarcıa içindeki yapılandırmayı otomatikleştirmek için, **uzantıyı yüklemek** üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 
     ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
 
@@ -200,7 +200,7 @@ Azure AD kullanıcılarının dmarcıa 'da oturum açmasını sağlamak için, d
 
     ![Yeni Kullanıcı](./media/dmarcian-tutorial/tutorial_dmarcian_save.png)
 
-    a. **Yeni Kullanıcı e-posta** metin kutusunda, kullanıcının e-postasını, **brittasıon \@ contoso.com**gibi girin.
+    a. **Yeni Kullanıcı e-posta** metin kutusunda, kullanıcının e-postasını, **brittasıon \@ contoso.com** gibi girin.
 
     b. Kullanıcıya yönetici hakları vermek istiyorsanız, **kullanıcıyı yönetici yap**' ı seçin.
 

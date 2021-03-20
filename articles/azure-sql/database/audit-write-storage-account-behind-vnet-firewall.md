@@ -11,10 +11,10 @@ ms.reviewer: vanto
 ms.date: 06/17/2020
 ms.custom: azure-synapse
 ms.openlocfilehash: 908c9f1d05c83eaa58f77b79a32d956898c35076
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93348262"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>VNet ve güvenlik duvarının arkasındaki depolama hesabına yönelik denetim yazma
@@ -50,7 +50,7 @@ Aboneliğinizle [Azure Portal](https://portal.azure.com) bağlayın. Kaynak grub
 
 1. Güvenlik başlığı altında **Denetim** ' e tıklayın. **Açık** seçeneğini belirleyin.
 
-2. **Depolama** ’yı seçin. Günlüklerin kaydedileceği depolama hesabını seçin. Depolama hesabı, [Önkoşullar](#prerequisites)bölümünde listelenen gereksinimlere uymalıdır.
+2. **Depolama**’yı seçin. Günlüklerin kaydedileceği depolama hesabını seçin. Depolama hesabı, [Önkoşullar](#prerequisites)bölümünde listelenen gereksinimlere uymalıdır.
 
 3. Açık **depolama ayrıntıları**
 
@@ -61,7 +61,7 @@ Aboneliğinizle [Azure Portal](https://portal.azure.com) bağlayın. Kaynak grub
   >
   >Bu iletiyi görmüyorsanız, depolama hesabı bir sanal ağın arkasında değildir.
 
-4. Bekletme dönemi için gün sayısını seçin. Daha sonra, **Tamam** 'a tıklayın. Saklama süresinden daha eski Günlükler silinir.
+4. Bekletme dönemi için gün sayısını seçin. Daha sonra, **Tamam**'a tıklayın. Saklama süresinden daha eski Günlükler silinir.
 
 5. Denetim ayarlarınızda **Kaydet** ' i seçin.
 
@@ -118,7 +118,7 @@ SQL denetimini, bir VNet veya güvenlik duvarının arkasındaki bir depolama he
    }
    ```
 
-2. [Azure portalını](https://portal.azure.com) açın. Depolama hesabınıza gidin. **Access Control (IAM)** öğesini bulun ve **rol ataması Ekle** ' ye tıklayın. Önceki adımda olduğu gibi Azure Active Directory (Azure AD) ile kaydettiğiniz veritabanını barındıran sunucuya **Depolama Blobu verileri katılımcısı** Azure rolü atayın.
+2. [Azure portalını](https://portal.azure.com) açın. Depolama hesabınıza gidin. **Access Control (IAM)** öğesini bulun ve **rol ataması Ekle**' ye tıklayın. Önceki adımda olduğu gibi Azure Active Directory (Azure AD) ile kaydettiğiniz veritabanını barındıran sunucuya **Depolama Blobu verileri katılımcısı** Azure rolü atayın.
 
    > [!NOTE]
    > Yalnızca sahibi ayrıcalığına sahip Üyeler bu adımı gerçekleştirebilir. Çeşitli Azure yerleşik rolleri için [Azure yerleşik rolleri](../../role-based-access-control/built-in-roles.md)' ne bakın.

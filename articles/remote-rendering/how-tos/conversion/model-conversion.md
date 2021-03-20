@@ -6,15 +6,15 @@ ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
 ms.openlocfilehash: e899b249261ea3238695a2e2be6001cb6a9bc763
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91318067"
 ---
 # <a name="convert-models"></a>Modelleri dönüştürme
 
-Azure uzaktan Işleme, çok karmaşık modeller oluşturmanıza olanak sağlar. En yüksek performans elde etmek için, verilerin en uygun biçimde olması için önceden işlenmesi gerekir. Veri miktarına bağlı olarak, bu adım biraz zaman alabilir. Bu süre, model yüklemesi sırasında harcandıysa pratik hale gelir. Ayrıca, birden çok oturum için bu işlemi tekrarlamak de beklenebilir. Bu nedenlerden dolayı ARR hizmeti, zaman içinde çalıştırabileceğiniz özel bir *dönüştürme hizmeti*sağlar.
+Azure uzaktan Işleme, çok karmaşık modeller oluşturmanıza olanak sağlar. En yüksek performans elde etmek için, verilerin en uygun biçimde olması için önceden işlenmesi gerekir. Veri miktarına bağlı olarak, bu adım biraz zaman alabilir. Bu süre, model yüklemesi sırasında harcandıysa pratik hale gelir. Ayrıca, birden çok oturum için bu işlemi tekrarlamak de beklenebilir. Bu nedenlerden dolayı ARR hizmeti, zaman içinde çalıştırabileceğiniz özel bir *dönüştürme hizmeti* sağlar.
 Dönüştürüldükten sonra bir model Azure Storage hesabından yüklenebilir.
 
 ## <a name="supported-source-formats"></a>Desteklenen kaynak biçimleri

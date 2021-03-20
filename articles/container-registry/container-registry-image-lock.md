@@ -4,10 +4,10 @@ description: Bir Azure Container Registry 'de silinememesi veya üzerine yazılm
 ms.topic: article
 ms.date: 09/30/2019
 ms.openlocfilehash: da84767523bb6d948b71b1c1ad2ddaffb628354a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "77659705"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>Azure Container Registry 'de kapsayıcı görüntüsünü kilitleme
@@ -59,7 +59,7 @@ az acr repository show \
 
 ### <a name="lock-an-image-by-tag"></a>Resmi etikete göre kilitle
 
-*Myrepo/MyImage:* *myregistry*içindeki Tag Image etiketini kilitlemek için şu [az ACR Repository Update][az-acr-repository-update] komutunu çalıştırın:
+*Myrepo/MyImage:* *myregistry* içindeki Tag Image etiketini kilitlemek için şu [az ACR Repository Update][az-acr-repository-update] komutunu çalıştırın:
 
 ```azurecli
 az acr repository update \

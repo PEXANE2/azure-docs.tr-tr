@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 10/28/2020
 ms.openlocfilehash: a15c3e0fb3550c6e50b3fba2279611fdba25bc84
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98945562"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Azure HDInsight’ta Apache Hive sorgularını iyileştirme
@@ -127,7 +127,7 @@ Daha fazla bilgi için bkz. [bölümlenmiş tablolar](https://cwiki.apache.org/c
 
 ## <a name="use-the-orcfile-format"></a>ORCFile biçimini kullanın
 
-Hive farklı dosya biçimlerini destekler. Örneğin:
+Hive farklı dosya biçimlerini destekler. Örnek:
 
 * **Metin**: varsayılan dosya biçimi ve çoğu senaryolarla birlikte kullanılır.
 * **Avro**: birlikte çalışabilirlik senaryolarında iyi sonuç verir.
@@ -153,7 +153,7 @@ PARTITIONED BY(L_SHIPDATE STRING)
 STORED AS ORC;
 ```
 
-Ardından, hazırlama tablosundan ORC tablosuna veri eklersiniz. Örneğin:
+Ardından, hazırlama tablosundan ORC tablosuna veri eklersiniz. Örnek:
 
 ```sql
 INSERT INTO TABLE lineitem_orc

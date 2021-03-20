@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: zhchia
 ms.openlocfilehash: bc05e83ac6c7f0f7c5e9a571c1fa7397af858f44
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96180133"
 ---
 # <a name="tutorial-configure-cisco-webex-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Cisco WebEx 'ı yapılandırma
@@ -27,7 +27,7 @@ Bu öğreticinin amacı Cisco WebEx ve Azure Active Directory (Azure AD) ' de ge
 >
 > Bu bağlayıcı Şu anda önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 

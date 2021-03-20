@@ -16,10 +16,10 @@ ms.date: 11/03/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 653159c2e40d3375a422f0da14274f57130de1fe
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93359689"
 ---
 # <a name="use-a-linux-vm-system-assigned-managed-identity-to-access-azure-resource-manager"></a>Azure Resource Manager’a erişmek için Linux VM sistem tarafından atanan yönetilen kimliği kullanma
@@ -46,10 +46,10 @@ Azure kaynakları için yönetilen kimlikler kullanıldığında kodunuz Azure A
 1. **Kaynak Grupları** sekmesine gidin.
 2. Sanal makineniz için kullandığınız belirli **kaynak grubunu** seçin.
 3. Sol paneldeki **Erişim denetimi (IAM)** öğesine gidin.
-4. VM’nize yeni rol ataması eklemek için **Ekle** ’ye tıklayın. **Rol** olarak **Okuyucu** 'yu seçin.
-5. Sonraki açılan listede **Erişimin atanacağı hedef** olarak **Sanal Makine** ’yi seçin.
-6. Ardından, **Abonelik** açılan listesinde uygun aboneliğin listelendiğinden emin olun. **Kaynak Grubu** için de **Tüm kaynak grupları** 'nı seçin.
-7. Son olarak **Seç** alanındaki açılan listeden Linux Sanal Makinenizi seçin ve **Kaydet** ’e tıklayın.
+4. VM’nize yeni rol ataması eklemek için **Ekle**’ye tıklayın. **Rol** olarak **Okuyucu**'yu seçin.
+5. Sonraki açılan listede **Erişimin atanacağı hedef** olarak **Sanal Makine**’yi seçin.
+6. Ardından, **Abonelik** açılan listesinde uygun aboneliğin listelendiğinden emin olun. **Kaynak Grubu** için de **Tüm kaynak grupları**'nı seçin.
+7. Son olarak **Seç** alanındaki açılan listeden Linux Sanal Makinenizi seçin ve **Kaydet**’e tıklayın.
 
     ![Alternatif resim metni](media/msi-tutorial-linux-vm-access-arm/msi-permission-linux.png)
 
@@ -57,7 +57,7 @@ Azure kaynakları için yönetilen kimlikler kullanıldığında kodunuz Azure A
 
 Bu adımları tamamlamak bir SSH istemciniz olmalıdır. Windows kullanıyorsanız, [Linux için Windows Alt Sistemi](/windows/wsl/about)'ndeki SSH istemcisini kullanabilirsiniz. SSSH istemcinizin anahtarlarını yapılandırmak için yardıma ihtiyacınız olursa, bkz. [Azure'da Windows ile SSH anahtarlarını kullanma](../../virtual-machines/linux/ssh-from-windows.md) veya [Azure’da Linux VM’ler için SSH ortak ve özel anahtar çifti oluşturma](../../virtual-machines/linux/mac-create-ssh-keys.md).
 
-1. Portalda Linux VM’nize gidin ve **Genel Bakış** ’ta **Bağlan** ’a tıklayın.  
+1. Portalda Linux VM’nize gidin ve **Genel Bakış**’ta **Bağlan**’a tıklayın.  
 2. Tercih ettiğiniz SSH istemciyle VM'ye **bağlanın**. 
 3. Terminal penceresinde, kullanarak `curl` , Azure Resource Manager için bir erişim belirteci almak üzere Azure kaynakları için yerel yönetilen kimliklere bir istek yapın.  
  

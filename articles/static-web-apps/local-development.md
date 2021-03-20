@@ -9,10 +9,10 @@ ms.date: 05/08/2020
 ms.author: buhollan
 ms.custom: devx-track-js
 ms.openlocfilehash: 4d6dae8a4f4ed83af3103e95e711bacdb62cf522
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91326176"
 ---
 # <a name="set-up-local-development-for-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemesi için yerel geliştirmeyi ayarlama
@@ -28,7 +28,7 @@ Bu makalede, aşağıdaki kavramlar dahil olmak üzere yerel geliştirme için �
 - Hata ayıklama ve uygulamayı çalıştırma
 - Uygulamanızın dosya ve klasör yapısına yönelik en iyi uygulamalar
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Visual Studio Code](https://code.visualstudio.com/)
 - Visual Studio Code için [Azure işlevleri uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
@@ -65,7 +65,7 @@ Visual Studio Code için canlı sunucu uzantısı, statik içerik sunan yerel bi
 
 #### <a name="create-a-repository"></a>Depo oluşturma
 
-1. GitHub 'da oturum açtığınızdan emin olun ve [https://github.com/staticwebdev/vanilla-api/generate](https://github.com/staticwebdev/vanilla-api/generate) Bu şablonu kullanarak **Vanilla-API**adlı yeni bir GitHub projesi oluşturun ve ' a gidin.
+1. GitHub 'da oturum açtığınızdan emin olun ve [https://github.com/staticwebdev/vanilla-api/generate](https://github.com/staticwebdev/vanilla-api/generate) Bu şablonu kullanarak **Vanilla-API** adlı yeni bir GitHub projesi oluşturun ve ' a gidin.
 
     :::image type="content" source="media/local-development/vanilla-api.png" alt-text="GitHub yeni depo penceresi":::
 
@@ -75,9 +75,9 @@ Visual Studio Code için canlı sunucu uzantısı, statik içerik sunan yerel bi
 
 1. Arama kutusuna **kopya** yazın ve **Git: Kopyala**' yı seçin.
 
-    :::image type="content" source="media/local-development/command-palette-git-clone.png" alt-text="GitHub yeni depo penceresi":::
+    :::image type="content" source="media/local-development/command-palette-git-clone.png" alt-text="Visual Studio Code git kopyalama seçeneği":::
 
-1. **Depo URL 'si**için aşağıdaki değeri girin.
+1. **Depo URL 'si** için aşağıdaki değeri girin.
 
    ```http
    git@github.com:<YOUR_GITHUB_ACCOUNT>/vanilla-api.git
@@ -85,9 +85,9 @@ Visual Studio Code için canlı sunucu uzantısı, statik içerik sunan yerel bi
 
 1. Yeni proje için bir klasör konumu seçin.
 
-1. Kopyalanmış depoyu açmak isteyip istemediğiniz sorulduğunda **Aç**' ı seçin.
+1. Klonlanan depoyu açmanız istendiğinde **Aç**’ı seçin.
 
-    :::image type="content" source="media/local-development/open-new-window.png" alt-text="GitHub yeni depo penceresi":::
+    :::image type="content" source="media/local-development/open-new-window.png" alt-text="Yeni pencerede aç":::
 
 Visual Studio Code klonlanan projeyi düzenleyicide açar.
 
@@ -99,7 +99,7 @@ Visual Studio Code klonlanan projeyi düzenleyicide açar.
 
     Uygulamayı göstermek için bir tarayıcı sekmesi açılır.
 
-    :::image type="content" source="media/local-development/vanilla-api-site.png" alt-text="GitHub yeni depo penceresi":::
+    :::image type="content" source="media/local-development/vanilla-api-site.png" alt-text="Tarayıcıda çalışan basit statik site":::
 
     Bu uygulama uç noktaya bir HTTP isteği oluşturur `api/message` . Şu anda, bu uygulamanın API bölümünün başlatılması gerektiğinden bu istek başarısız oluyor.
 
@@ -113,13 +113,13 @@ API oluşturma sürecinin bir parçası olarak Visual Studio Code için bir baş
 
 1. API derleme işlemindeki çıktıyı gösteren yeni bir Terminal örneği açılır.
 
-    :::image type="content" source="media/local-development/terminal-api-debug.png" alt-text="GitHub yeni depo penceresi":::
+    :::image type="content" source="media/local-development/terminal-api-debug.png" alt-text="Visual Studio Code terminalde çalışan API":::
 
    Visual Studio Code durum çubuğu artık turuncu. Bu renk, API 'nin artık çalıştığını ve hata ayıklayıcının ekli olduğunu gösterir.
 
 1. Ardından, **Ctrl/Cmd** tuşlarına basın ve, API 'yi çağıran bir tarayıcı penceresi açmak için TERMINALDEKI URL 'ye tıklayın.
 
-    :::image type="content" source="media/local-development/hello-from-api-endpoint.png" alt-text="GitHub yeni depo penceresi":::
+    :::image type="content" source="media/local-development/hello-from-api-endpoint.png" alt-text="Tarayıcı API çağrısının sonucunu görüntüleme":::
 
 ### <a name="debugging-the-api"></a>API 'de hata ayıklama
 
@@ -127,19 +127,19 @@ API oluşturma sürecinin bir parçası olarak Visual Studio Code için bir baş
 
 1. Kesme noktası ayarlamak için 2. satırdaki sol kenar boşluğuna tıklayın. Kesme noktasının ayarlandığını belirten kırmızı bir nokta görünür.
 
-    :::image type="content" source="media/local-development/breakpoint-set.png" alt-text="GitHub yeni depo penceresi":::
+    :::image type="content" source="media/local-development/breakpoint-set.png" alt-text="Visual Studio Code kesme noktası":::
 
 1. Tarayıcıda, konumundaki çalıştıran sayfayı yenileyin <http://127.0.0.1:7071/api/message> .
 
 1. Kesme noktası Visual Studio Code, program yürütme duraklatıldı.
 
-   :::image type="content" source="media/local-development/breakpoint-hit.png" alt-text="GitHub yeni depo penceresi":::
+   :::image type="content" source="media/local-development/breakpoint-hit.png" alt-text="Kesme noktası isabet Visual Studio Code":::
 
    API 'niz için [Visual Studio Code, tüm hata ayıklama deneyimi mevcuttur](https://code.visualstudio.com/Docs/editor/debugging) .
 
 1. Yürütmeye devam etmek için hata ayıklama çubuğundaki **devam** düğmesine basın.
 
-    :::image type="content" source="media/local-development/continue-button.png" alt-text="GitHub yeni depo penceresi":::
+    :::image type="content" source="media/local-development/continue-button.png" alt-text="Visual Studio Code 'de devam düğmesi":::
 
 ### <a name="calling-the-api-from-the-application"></a>Uygulamadan API çağırma
 
@@ -192,7 +192,7 @@ CLı, sitenizi geliştirme modunda çalıştırmak veya üretim için siteyi olu
 
 1. **Canlı sunucu** yazın ve **canlı sunucu: canlı sunucuyu durdur**' u seçin.
 
-    :::image type="content" source="media/local-development/stop-live-server.png" alt-text="GitHub yeni depo penceresi":::
+    :::image type="content" source="media/local-development/stop-live-server.png" alt-text="Visual Studio komut paletinde canlı sunucu komutunu durdur":::
 
 1. Komut Paletini açmak için **F1** tuşuna basın.
 
@@ -200,7 +200,7 @@ CLı, sitenizi geliştirme modunda çalıştırmak veya üretim için siteyi olu
 
 1. Üzerinde çalışan uygulamayı yenileyin `http://locahost:3000` . Tarayıcı artık API 'den döndürülen iletiyi görüntüler.
 
-    :::image type="content" source="media/local-development/hello-from-api.png" alt-text="GitHub yeni depo penceresi":::
+    :::image type="content" source="media/local-development/hello-from-api.png" alt-text="Tarayıcıda görünen API 'den Merhaba":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

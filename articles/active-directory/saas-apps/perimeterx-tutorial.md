@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/27/2020
 ms.author: jeedes
 ms.openlocfilehash: 29ffaaa1b1b6efbcd5523a76018c92645e13d187
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96181807"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-perimeterx"></a>Öğretici: PerimeterX ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -26,7 +26,7 @@ Bu öğreticide, PerimeterX 'i Azure Active Directory (Azure AD) ile tümleştir
 * Kullanıcılarınızın Azure AD hesaplarıyla PerimeterX otomatik olarak oturum açmalarına olanak tanıyın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -84,7 +84,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. PerimeterX uygulaması, yukarıdakine ek olarak, aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
     
-    | Adı | Kaynak özniteliği|
+    | Name | Kaynak özniteliği|
     | ------------ | --------- |
     | firstName | Kullanıcı. |
     | lastName  | User. soyadı |
@@ -106,7 +106,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**'a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

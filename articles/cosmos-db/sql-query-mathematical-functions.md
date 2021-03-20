@@ -9,10 +9,10 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 63d349c8cfff52932d51ce7143aba33521c43890
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96549200"
 ---
 # <a name="mathematical-functions-azure-cosmos-db"></a>Matematik işlevleri (Azure Cosmos DB)  
@@ -57,7 +57,7 @@ Aşağıdaki desteklenen yerleşik matematik işlevleri, genellikle giriş bağ�
 * [SIGN](sql-query-sign.md)
 * [SIN](sql-query-sin.md)
 * [SQRT](sql-query-sqrt.md)
-* [KARE](sql-query-square.md)
+* [SQUARE](sql-query-square.md)
 * [TAN](sql-query-tan.md)
 * [TRUNC](sql-query-trunc.md)
 

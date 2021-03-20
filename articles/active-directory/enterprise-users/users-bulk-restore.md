@@ -14,10 +14,10 @@ ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: be3947e3de18f8ccaf47382c4035e187521ac710
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96571513"
 ---
 # <a name="bulk-restore-deleted-users-in-azure-active-directory"></a>Azure Active Directory silinen kullanıcıları toplu geri yükleme
@@ -48,7 +48,7 @@ Azure AD kullanıcılarını toplu olarak başarıyla geri yüklemenize yardımc
 ## <a name="to-bulk-restore-users"></a>Kullanıcıları toplu geri yüklemek için
 
 1. Azure AD kuruluşunda Kullanıcı Yöneticisi olan bir hesapla [Azure AD kuruluşunuzda oturum açın](https://aad.portal.azure.com) .
-1. Azure AD 'de, silinen **Kullanıcılar**' ı seçin  >  **Deleted**.
+1. Azure AD 'de, silinen **Kullanıcılar**' ı seçin  >  .
 1. **Silinen kullanıcılar** sayfasında, kullanıcıların geri yüklenecek GEÇERLI bir CSV dosyasını karşıya yüklemek için **toplu geri yükleme** ' yi seçin.
 
     ![Silinen kullanıcılar sayfasında toplu geri yükleme komutunu seçin](./media/users-bulk-restore/bulk-restore.png)
@@ -62,7 +62,7 @@ Azure AD kullanıcılarını toplu olarak başarıyla geri yüklemenize yardımc
 1. Dosyanız doğrulamayı geçtiğinde, kullanıcıları geri yükleyen Azure toplu işlemini başlatmak için **Gönder** ' i seçin.
 1. Geri yükleme işlemi tamamlandığında toplu işlemin başarılı olduğunu belirten bir bildirim görürsünüz.
 
-Hatalar varsa, sonuçlar dosyasını **toplu işlem sonuçları** sayfasında indirebilir ve görüntüleyebilirsiniz. Dosya her hatanın nedenini içerir.
+Hatalar varsa, sonuçlar dosyasını **toplu işlem sonuçları** sayfasında indirebilir ve görüntüleyebilirsiniz. Bu dosyada her hatanın nedeni belirtilir.
 
 ## <a name="check-status"></a>Durumu kontrol etme
 

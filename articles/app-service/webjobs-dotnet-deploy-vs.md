@@ -9,10 +9,10 @@ ms.date: 07/30/2020
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
 ms.openlocfilehash: de10903be86b52b3415b57a53be81e7fd1661f63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89226038"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio"></a>Visual Studio kullanarak Web Işleri geliştirme ve dağıtma
@@ -53,7 +53,7 @@ Bir projeyi kendi başına WebJob olarak dağıtın veya Web projesini her dağ�
 
 ![Web projesine yönelik WebJob projesi bağlantısını gösteren diyagram](./media/webjobs-dotnet-deploy-vs/link.png)
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 [Azure geliştirme iş yüküyle](/visualstudio/install/install-visual-studio#step-4---choose-workloads)visual Studio 2017 veya visual Studio 2019 ' ü yükler.
 
@@ -71,7 +71,7 @@ Bir projeyi kendi başına WebJob olarak dağıtın veya Web projesini her dağ�
 
 #### <a name="enable-automatic-webjobs-deployment-with-a-web-project"></a><a id="convertlink"></a> Web projesi ile otomatik Web Işleri dağıtımını etkinleştirme
 
-1. **Çözüm Gezgini**web projesine sağ tıklayın ve ardından **Add**  >  **mevcut projeyi Azure WebJob olarak**Ekle ' yi seçin.
+1. **Çözüm Gezgini** web projesine sağ tıklayın ve ardından   >  **mevcut projeyi Azure WebJob olarak** Ekle ' yi seçin.
    
     ![Azure WebJob olarak mevcut proje](./media/webjobs-dotnet-deploy-vs/eawj.png)
    
@@ -102,7 +102,7 @@ Yeni bir WebJobs özellikli proje oluşturmak için konsol uygulaması proje şa
     Aynı çözümde bir Web projesi dağıtırken, WebJob olarak otomatik olarak dağıtılacak şekilde yapılandırılan bir proje oluşturun. WebJob uygulamanızı ilgili Web uygulamasını çalıştırdığınız Web uygulamasında çalıştırmak istediğinizde bu seçeneği kullanın.
 
 > [!NOTE]
-> Web Işleri yeni-proje şablonu, NuGet paketlerini otomatik olarak kurar ve [Web İşleri SDK 'sı](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs)için *program.cs* içinde kod içerir. WebJobs SDK 'sını kullanmak istemiyorsanız, `host.RunAndBlock` *program.cs*içindeki ifadeyi kaldırın veya değiştirin.
+> Web Işleri yeni-proje şablonu, NuGet paketlerini otomatik olarak kurar ve [Web İşleri SDK 'sı](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs)için *program. cs* dosyasında kod içerir. WebJobs SDK 'sını kullanmak istemiyorsanız, `host.RunAndBlock` *program. cs*' deki ifadeyi kaldırın veya değiştirin.
 > 
 > 
 
@@ -112,7 +112,7 @@ Yeni bir WebJobs özellikli proje oluşturmak için konsol uygulaması proje şa
 2. [Konsol uygulama projesini bağımsız bir WebJobs projesi haline getirmek](#convertnolink)için önceki yönleri izleyin.
 
 #### <a name="use-the-webjobs-new-project-template-for-a-webjob-linked-to-a-web-project"></a><a id="createlink"></a> Web projesine bağlı bir WebJob için WebJobs yeni-proje şablonunu kullanın
-1. **Çözüm Gezgini**web projesine sağ tıklayın ve ardından **Add**  >  **yeni Azure WebJob projesi**Ekle ' yi seçin.
+1. **Çözüm Gezgini** web projesine sağ tıklayın ve ardından   >  **yeni Azure WebJob projesi** Ekle ' yi seçin.
    
     ![Yeni Azure WebJob projesi menü girdisi](./media/webjobs-dotnet-deploy-vs/nawj.png)
    
@@ -182,11 +182,11 @@ WebJob dağıtım bilgileri:
 
 ## <a name="webjob-types"></a>WebJob türleri
 
-WebJob türü *tetiklenebilir* ya da *sürekli*olabilir:
+WebJob türü *tetiklenebilir* ya da *sürekli* olabilir:
 
 - Tetiklenen (varsayılan): tetiklenen bir WebJob, bağlama olayına, [zamanlamaya](#scheduling-a-triggered-webjob)göre veya el ile (isteğe bağlı) tetiklendiğinde başlar. Web uygulamasının üzerinde çalıştığı tek bir örnek üzerinde çalışır.
 
-- Sürekli: [sürekli](#continuous-execution) WebJob, WebJob oluşturulduğunda hemen başlar. Tüm Web uygulaması ölçeklendirilen örnekleri varsayılan olarak çalışır, ancak *Settings. job*aracılığıyla tek bir örnek olarak çalışacak şekilde yapılandırılabilir.
+- Sürekli: [sürekli](#continuous-execution) WebJob, WebJob oluşturulduğunda hemen başlar. Tüm Web uygulaması ölçeklendirilen örnekleri varsayılan olarak çalışır, ancak *Settings. job* aracılığıyla tek bir örnek olarak çalışacak şekilde yapılandırılabilir.
 
 [!INCLUDE [webjobs-alwayson-note](../../includes/webjobs-always-on-note.md)]
 
@@ -233,7 +233,7 @@ Azure 'da **her zaman açık** ' ı etkinleştirirseniz, WebJob 'u sürekli çal
 
 1. **Yayımla** sekmesinde **Düzenle**' yi seçin. 
 
-1. **Profil ayarları** iletişim kutusunda, **WebJob türü**için **sürekli** ' i seçin ve ardından **Kaydet**' i seçin.
+1. **Profil ayarları** iletişim kutusunda, **WebJob türü** için **sürekli** ' i seçin ve ardından **Kaydet**' i seçin.
 
     ![WebJob için ayarları Yayımla iletişim kutusu](./media/webjobs-dotnet-deploy-vs/publish-settings.png)
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
 ms.openlocfilehash: 22e237a3451c87fd4867949b9aa94d19b6fcbbdf
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98729453"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-teamzskill"></a>Öğretici: Teamzyetenile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -26,7 +26,7 @@ Bu öğreticide, Teamzyeteneğin Azure Active Directory (Azure AD) ile nasıl t�
 * Kullanıcılarınızın Azure AD hesaplarıyla Teamzyeteneğe otomatik olarak oturum açmalarına olanak tanıyın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 

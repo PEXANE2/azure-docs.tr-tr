@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 10/27/2020
 ms.openlocfilehash: e9a0b2fe883fa46010fda74c58908128d05919e6
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92754572"
 ---
 # <a name="how-to-create-a-consulting-service-offer-in-the-commercial-marketplace"></a>Ticari Market 'te danışmanlık hizmeti teklifi oluşturma
@@ -26,8 +26,8 @@ Bir danışmanlık hizmeti teklifi yayımlamak için, alanındaki uzmanlığı g
 ## <a name="create-a-new-consulting-service-offer"></a>Yeni bir danışmanlık hizmeti teklifi oluşturun
 
 1. [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/home)' nde oturum açın.
-2.  Sol gezinti menüsünde **ticari Market**  >  **genel bakış** ' ı seçin.
-3.  Genel Bakış sekmesinde **+ yeni teklif**  >  **danışmanlık hizmeti** ' ni seçin.
+2.  Sol gezinti menüsünde **ticari Market**  >  **genel bakış**' ı seçin.
+3.  Genel Bakış sekmesinde **+ yeni teklif**  >  **danışmanlık hizmeti**' ni seçin.
 
     ![Sol gezinti menüsünü gösterir.](./media/new-offer-consulting-service.png)
 
@@ -35,10 +35,10 @@ Bir danışmanlık hizmeti teklifi yayımlamak için, alanındaki uzmanlığı g
 
     * Hesabınızdaki her teklifin benzersiz bir teklif KIMLIĞI olmalıdır.
     * Yalnızca küçük harfleri ve rakamları kullanın. Teklif KIMLIĞI, kısa çizgi ve alt çizgi içerebilir, ancak boşluk içeremez ve 50 karakterle sınırlıdır.
-    * Teklif KIMLIĞI, **Oluştur** ' u seçtikten sonra değiştirilemez.
+    * Teklif KIMLIĞI, **Oluştur**' u seçtikten sonra değiştirilemez.
 
 5. Bir **teklif diğer adı** girin. Bu, Iş Ortağı Merkezi 'nde teklif için kullanılan addır. Çevrimiçi mağazalarda görünmez ve müşteriler tarafından gösterilen teklif adından farklıdır.
-6. Teklifi oluşturmak ve devam etmek için **Oluştur** ' u seçin.
+6. Teklifi oluşturmak ve devam etmek için **Oluştur**' u seçin.
 
 ## <a name="configure-lead-management"></a>Müşteri adayı yönetimini yapılandırma
 
@@ -58,8 +58,8 @@ Iş Ortağı Merkezi 'nde lider yönetimini yapılandırmak için:
     * [Teklifinizi Salesforce 'a göndermek için teklifinizi yapılandırma](./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md#configure-your-offer-to-send-leads-to-salesforce)
 
 5.  Verdiğiniz yapılandırmayı doğrulamak için **doğrula bağlantısını** seçin.
-6.  Bağlantı ayrıntılarını yapılandırdığınızda, **Bağlan** ' ı seçin.
-7.  **Taslağı kaydet** 'i seçin.
+6.  Bağlantı ayrıntılarını yapılandırdığınızda, **Bağlan**' ı seçin.
+7.  **Taslağı kaydet**'i seçin.
 
 Teklifinizi Iş Ortağı Merkezi 'ne gönderdikten sonra, bağlantıyı doğrulayacağız ve size bir test lideri göndereceğiz. Teklifi canlı olmadan önce önizlerken, teklifi önizleme ortamında satın almaya çalışırken lider bağlantınızı test edin.
 

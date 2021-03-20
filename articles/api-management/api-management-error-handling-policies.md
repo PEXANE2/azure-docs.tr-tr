@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
 ms.openlocfilehash: a3b6f90d0aa26b478c0f2fcefac55dcd509da437
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92070954"
 ---
 # <a name="error-handling-in-api-management-policies"></a>API Management ilkelerinde hata işleme
@@ -82,13 +82,13 @@ Bir hata oluştuğunda ve denetim ilke bölümüne atdığında `on-error` , hat
 
 | Ad       | Tür   | Açıklama                                                                                               | Gerekli |
 | ---------- | ------ | --------------------------------------------------------------------------------------------------------- | -------- |
-| `Source`   | dize | Hatanın oluştuğu öğeyi adlandırır. İlke ya da yerleşik bir ardışık düzen adımı adı olabilir.      | Yes      |
-| `Reason`   | dize | Hata işlemede kullanılabilecek makine dostu hata kodu.                                       | No       |
-| `Message`  | dize | İnsan tarafından okunabilen hata açıklaması.                                                                         | Yes      |
-| `Scope`    | dize | Hatanın oluştuğu kapsamın adı ve "genel", "ürün", "API" veya "işlem" olabilir | No       |
-| `Section`  | dize | Hatanın oluştuğu bölüm adı. Olası değerler: "gelen", "arka uç", "giden" veya "hata üzerinde".      | No       |
-| `Path`     | dize | İç içe geçmiş ilkeyi belirtir, örneğin "SELECT [3]/, [2]".                                                 | No       |
-| `PolicyId` | dize | `id`Hatanın oluştuğu ilkede, müşteri tarafından belirtilmişse özniteliğin değeri             | No       |
+| `Source`   | string | Hatanın oluştuğu öğeyi adlandırır. İlke ya da yerleşik bir ardışık düzen adımı adı olabilir.      | Yes      |
+| `Reason`   | string | Hata işlemede kullanılabilecek makine dostu hata kodu.                                       | No       |
+| `Message`  | string | İnsan tarafından okunabilen hata açıklaması.                                                                         | Yes      |
+| `Scope`    | string | Hatanın oluştuğu kapsamın adı ve "genel", "ürün", "API" veya "işlem" olabilir | No       |
+| `Section`  | string | Hatanın oluştuğu bölüm adı. Olası değerler: "gelen", "arka uç", "giden" veya "hata üzerinde".      | No       |
+| `Path`     | string | İç içe geçmiş ilkeyi belirtir, örneğin "SELECT [3]/, [2]".                                                 | No       |
+| `PolicyId` | string | `id`Hatanın oluştuğu ilkede, müşteri tarafından belirtilmişse özniteliğin değeri             | No       |
 
 > [!TIP]
 > Durum koduna bağlam aracılığıyla erişebilirsiniz. Response. StatusCode.
@@ -100,7 +100,7 @@ Bir hata oluştuğunda ve denetim ilke bölümüne atdığında `on-error` , hat
 
 Aşağıdaki hatalar, yerleşik işleme adımlarının değerlendirmesi sırasında oluşabilecek hata koşulları için önceden tanımlanmıştır.
 
-| Kaynak        | Koşul                                 | Neden                  | İleti                                                                                                                |
+| Kaynak        | Koşul                                 | Nedeni                  | İleti                                                                                                                |
 | ------------- | ----------------------------------------- | ----------------------- | ---------------------------------------------------------------------------------------------------------------------- |
 | yapılandırma | URI, herhangi bir API veya Işlemle eşleşmiyor | OperationNotFound       | Gelen istek bir işleme dönüştürülemiyor.                                                                      |
 | yetkilendirme | Abonelik anahtarı sağlanmadı             | SubscriptionKeyNotFound | Eksik abonelik anahtarı nedeniyle erişim reddedildi. Bu API 'ye istek yaparken abonelik anahtarını eklediğinizden emin olun. |
@@ -113,7 +113,7 @@ Aşağıdaki hatalar, yerleşik işleme adımlarının değerlendirmesi sırası
 
 Aşağıdaki hatalar, ilke değerlendirmesi sırasında oluşabilecek hata koşulları için önceden tanımlanmıştır.
 
-| Kaynak       | Koşul                                                       | Neden                    | İleti                                                                                                                              |
+| Kaynak       | Koşul                                                       | Nedeni                    | İleti                                                                                                                              |
 | ------------ | --------------------------------------------------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | hız limiti   | Hız sınırı aşıldı                                             | Ratelimitexcebaşında         | Hız sınırı aşıldı                                                                                                               |
 | kota        | Kota aşıldı                                                  | Quotaaştı             | Çağrı hacmi kotası aşıldı. Kota xx: xx: xx içinde replenished olacaktır. -veya-bant genişliği kotası. Kota xx: xx: xx içinde replenished olacaktır. |

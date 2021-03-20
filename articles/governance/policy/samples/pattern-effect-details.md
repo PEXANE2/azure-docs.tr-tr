@@ -4,10 +4,10 @@ description: Bu Azure Ilke deseninin farklı etkileri bir ilke tanımının nas�
 ms.date: 10/14/2020
 ms.topic: sample
 ms.openlocfilehash: f1da9bd153707db35c07ed3c176542797a694d7a
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92073045"
 ---
 # <a name="azure-policy-pattern-effects"></a>Azure Ilke stili: efektler
@@ -16,7 +16,7 @@ Azure Ilkesinde, hizmetin uyumlu olmayan kaynaklar için nasıl yeniden davranma
 
 ## <a name="sample-1-simple-effect"></a>Örnek 1: basit efekt
 
-Bu ilke tanımı, değerlendirilen kaynakta, **TagName** parametresinde tanımlanan etiketin mevcut olup olmadığını denetler. Etiket henüz yoksa, etiket etiketi **etiketli değeri olan**etiketi eklemek için [değiştirme](../concepts/effects.md#modify) efekti tetiklenir.
+Bu ilke tanımı, değerlendirilen kaynakta, **TagName** parametresinde tanımlanan etiketin mevcut olup olmadığını denetler. Etiket henüz yoksa, etiket etiketi **etiketli değeri olan** etiketi eklemek için [değiştirme](../concepts/effects.md#modify) efekti tetiklenir.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-effect-details-1.json":::
 
@@ -24,11 +24,11 @@ Bu ilke tanımı, değerlendirilen kaynakta, **TagName** parametresinde tanımla
 
 :::code language="json" source="~/policy-templates/patterns/pattern-effect-details-1.json" range="40-50":::
 
-Bir **değiştirme** etkisi, **roledefinitionıds** ve **işlemlerini**tanımlayan **policyrule. then. Details** bloğunu gerektirir. Bu parametreler, Azure Ilkesine etiketi eklemek ve kaynağı düzeltmek için gereken rolleri ve kullanılacak **değiştirme** işlemini bildirir. Bu örnekte, etiketi ve değerini ayarlamak için _Add_ **işlemi** ve parametreleri kullanılır.
+Bir **değiştirme** etkisi, **roledefinitionıds** ve **işlemlerini** tanımlayan **policyrule. then. Details** bloğunu gerektirir. Bu parametreler, Azure Ilkesine etiketi eklemek ve kaynağı düzeltmek için gereken rolleri ve kullanılacak **değiştirme** işlemini bildirir. Bu örnekte, etiketi ve değerini ayarlamak için _Add_ **işlemi** ve parametreleri kullanılır.
 
 ## <a name="sample-2-complex-effect"></a>Örnek 2: karmaşık efekt
 
-Bu ilke tanımı, **Yayımcı** ve **tür**parametrelerinde tanımlanan bir uzantı yoksa her sanal makineyi denetler. Tanımlı parametrelerle eşleşen bir örnek olup olmadığını görmek üzere sanal makineyle ilgili bir kaynağı denetlemek için [Auditınotexists](../concepts/effects.md#auditifnotexists) kullanır. Bu örnek, **Uzantılar** türünü denetler.
+Bu ilke tanımı, **Yayımcı** ve **tür** parametrelerinde tanımlanan bir uzantı yoksa her sanal makineyi denetler. Tanımlı parametrelerle eşleşen bir örnek olup olmadığını görmek üzere sanal makineyle ilgili bir kaynağı denetlemek için [Auditınotexists](../concepts/effects.md#auditifnotexists) kullanır. Bu örnek, **Uzantılar** türünü denetler.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-effect-details-2.json":::
 

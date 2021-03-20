@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/28/2020
 ms.author: jeedes
 ms.openlocfilehash: 3280c97e735e68aa36f018a8de59964ade9567b7
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96181926"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nitro-productivity-suite"></a>Öğretici: Nitro üretkenlik paketiyle çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -26,7 +26,7 @@ Bu öğreticide, Nitro üretkenlik paketini Azure Active Directory (Azure AD) il
 * Kullanıcılarınızın Azure AD hesaplarıyla Nitro üretkenlik Suite 'te otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin: Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için gerekli olanlar:
 
@@ -114,7 +114,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Önceki özniteliklere ek olarak, Nitro üretkenlik Suite uygulaması, SAML yanıtına birkaç özniteliğin daha geri geçirilmesini bekler. Bu öznitelikler önceden doldurulur, ancak gereksinimlerinize göre gözden geçirebilirsiniz.
     
-    | Adı  |  Kaynak özniteliği|
+    | Name  |  Kaynak özniteliği|
     | ---------------| --------------- |
     | employeeNumber |  User. ObjectID |
 
@@ -123,7 +123,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure Portal sol bölmeden, kullanıcılar **Azure Active Directory**  >  **Users**  >  **tüm kullanıcılar**' ı seçin.
+1. Azure Portal sol bölmeden, kullanıcılar **Azure Active Directory**  >    >  **tüm kullanıcılar**' ı seçin.
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  

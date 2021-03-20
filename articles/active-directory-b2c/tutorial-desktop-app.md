@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 06d27c3a3daa4702653a2063d0ac70fd094e2d74
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "78186208"
 ---
 # <a name="tutorial-authenticate-users-in-a-native-desktop-client-using-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C kullanarak yerel masaüstü istemcisinde kullanıcıların kimliğini doğrulama
@@ -31,7 +31,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Uygulamanızdaki kullanıcı deneyimlerini etkinleştirmek için [Kullanıcı akışları oluşturun](tutorial-create-user-flows.md) .
 - **.Net masaüstü geliştirme** ve **ASP.net ve Web geliştirme** Iş yükleriyle [Visual Studio 2019](https://www.visualstudio.com/downloads/) ' ü yükler.
@@ -53,7 +53,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop.g
 Uygulamayı Azure AD B2C kiracınızla çalışacak şekilde güncelleştirmek ve varsayılan demo kiracısında olanlar yerine Kullanıcı akışlarını çağırmak için:
 
 1. Visual Studio 'da **Active-Directory-B2C-WPF** çözümünü ( `active-directory-b2c-wpf.sln` ) açın.
-2. **Active-Directory-B2C-WPF** projesinde, *app.xaml.cs* dosyasını açın ve aşağıdaki değişken tanımlarını bulun. `{your-tenant-name}`Azure AD B2C kiracı adınızla ve `{application-ID}` daha önce KAYDETTIĞINIZ uygulama kimliğiyle değiştirin.
+2. **Active-Directory-B2C-WPF** projesinde *app. xaml. cs* dosyasını açın ve aşağıdaki değişken tanımlarını bulun. `{your-tenant-name}`Azure AD B2C kiracı adınızla ve `{application-ID}` daha önce KAYDETTIĞINIZ uygulama kimliğiyle değiştirin.
 
     ```csharp
     private static readonly string Tenant = "{your-tenant-name}.onmicrosoft.com";

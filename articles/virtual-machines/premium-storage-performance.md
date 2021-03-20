@@ -8,10 +8,10 @@ ms.date: 10/05/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 7e93c659ad58db8d82e68380ab6a0855af27e1bf
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98882391"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Depolama: yüksek performans için tasarım
@@ -155,7 +155,7 @@ VM boyutları hakkında daha fazla bilgi ve her bir sanal makine türü için ı
 | **Disk boyutu** |Uygulama gereksiniminden daha büyük ıOPS sağlayan bir disk boyutu kullanın. |Uygulama gereksiniminden daha büyük aktarım hızı sınırı ile disk boyutu kullanın. |Uygulama gereksiniminden daha büyük ölçek sınırları sunan bir disk boyutu kullanın. |
 | **VM ve disk ölçek sınırları** |Seçilen VM boyutunun ıOPS sınırı, kendisine bağlı depolama disklerinin yönettiği toplam ıOPS 'den büyük olmalıdır. |Seçilen VM boyutunun aktarım hızı sınırı, kendisine bağlı olan Premium Depolama disklerinin toplam aktarım hızına eşit olmalıdır. |Seçilen VM boyutunun ölçek sınırları, ekli Premium Depolama disklerinin toplam ölçek limitinden büyük olmalıdır. |
 | **Disk önbelleğe alma** |Daha yüksek okuma ıOPS sağlamak için Premium Depolama disklerinde, okuma ağır işlemleri olan salt okunur önbelleği etkinleştirin. | &nbsp; |Çok düşük okuma gecikmeleri sağlamak için, Premium Depolama disklerinde, Premium Depolama disklerinde salt okunur önbelleği etkinleştirin. |
-| **Disk şeridi** |Daha yüksek bir ıOPS ve aktarım hızı sınırı almak için birden çok disk kullanın ve bunları birlikte toplayın. VM başına Birleşik Sınır, ekli Premium disklerin birleştirilmiş limitlerinden daha yüksek olmalıdır. | &nbsp; | &nbsp; |
+| **Disk Bölümleme** |Daha yüksek bir ıOPS ve aktarım hızı sınırı almak için birden çok disk kullanın ve bunları birlikte toplayın. VM başına Birleşik Sınır, ekli Premium disklerin birleştirilmiş limitlerinden daha yüksek olmalıdır. | &nbsp; | &nbsp; |
 | **Şerit boyutu** |OLTP uygulamalarında görülen rastgele küçük GÇ deseninin daha küçük şerit boyutu. Örneğin, SQL Server OLTP uygulaması için 64 KB 'lık Stripe boyutunu kullanın. |Veri ambarı uygulamalarında görülen sıralı büyük GÇ deseninin daha büyük şerit boyutu. Örneğin, SQL Server veri ambarı uygulaması için 256 KB 'lık dizili boyut kullanın. | &nbsp; |
 | **Çoklu iş parçacığı kullanımı** |Daha yüksek ıOPS ve aktarım hızına yol açacak Premium depolamaya daha yüksek sayıda istek göndermek için çoklu iş parçacığı kullanımı kullanın. Örneğin, SQL Server üzerinde SQL Server daha fazla CPU ayırmak için yüksek bir MAXDOP değeri ayarlayın. | &nbsp; | &nbsp; |
 | **Sıra derinliği** |Daha büyük sıra derinliği, ıOPS 'yi verir. |Daha büyük sıra derinliği daha yüksek aktarım hızı verir. |Daha küçük sıra derinliği daha düşük gecikme süreleri verir. |

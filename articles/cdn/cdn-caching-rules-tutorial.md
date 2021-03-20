@@ -15,10 +15,10 @@ ms.date: 04/20/2018
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: ae217352b83617600fd983a747d578f8f28e7ddd
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92779246"
 ---
 # <a name="tutorial-set-azure-cdn-caching-rules"></a>Öğretici: Azure CDN önbelleğe alma kurallarını ayarlama
@@ -32,7 +32,7 @@ Bu öğreticide, Azure Content Delivery Network (CDN) önbelleğe alma kurallar�
 
 - Özel önbelleğe alma kuralları: Profilinizdeki her uç nokta için bir veya daha fazla özel önbelleğe alma kuralı ayarlayabilirsiniz. Özel önbelleğe alma kuralları ayarlandığında belirli yollar ve dosya uzantılarıyla eşleşir, sırasıyla işlenir ve genel önbelleğe alma kuralını geçersiz kılar. 
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > - Önbelleğe alma kuralları sayfasını açın.
 > - Genel önbelleğe alma kuralı oluşturun.
@@ -40,7 +40,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticideki adımları tamamlayabilmeniz için öncelikle bir CDN profili ve en az bir CDN uç noktası oluşturmanız gerekir. Daha fazla bilgi için bkz. [Hızlı Başlangıç: Azure CDN profili ve uç noktası oluşturma](cdn-create-new-endpoint.md).
 
@@ -48,7 +48,7 @@ Bu öğreticideki adımları tamamlayabilmeniz için öncelikle bir CDN profili 
 
 1. [Azure portalında](https://portal.azure.com) bir CDN profili ve ardından bir uç nokta seçin.
 
-2. Ayarların altındaki sol bölmede **Önbelleğe alma kuralları** ’nı seçin.
+2. Ayarların altındaki sol bölmede **Önbelleğe alma kuralları**’nı seçin.
 
    ![CDN Önbelleğe alma kuralları düğmesi](./media/cdn-caching-rules/cdn-caching-rules-btn.png)
 
@@ -61,7 +61,7 @@ Bu öğreticideki adımları tamamlayabilmeniz için öncelikle bir CDN profili 
 
 Aşağıda gösterilen şekilde bir genel önbelleğe alma kuralı oluşturun:
 
-1. **Genel önbelleğe alma kuralları** ’nın altında **Sorgu dizesi önbelleğe alma davranışı** seçeneğini **Sorgu dizelerini yoksay** olarak ayarlayın.
+1. **Genel önbelleğe alma kuralları**’nın altında **Sorgu dizesi önbelleğe alma davranışı** seçeneğini **Sorgu dizelerini yoksay** olarak ayarlayın.
 
 2. **Önbelleğe alma davranışı** seçeneğini **Eksikse ayarla** olarak ayarlayın.
        
@@ -90,15 +90,15 @@ Aşağıda gösterilen şekilde bir özel önbelleğe alma kuralı oluşturun:
  
 1. Bir CDN profili ve ardından kaldırmak istediğiniz önbelleğe alma kurallarını içeren uç noktayı seçin.
 
-2. Ayarların altındaki sol bölmede **Önbelleğe alma kuralları** ’nı seçin.
+2. Ayarların altındaki sol bölmede **Önbelleğe alma kuralları**’nı seçin.
 
 3. **Genel önbelleğe alma kuralları** altında **Önbelleğe alma davranışı** seçeneğini **Ayarlı değil** olarak ayarlayın.
  
 4. **Özel önbelleğe alma kuralları** altında, silmek istediğiniz kuralın yanındaki onay kutusunu seçin.
 
-5. **Sil** ’i seçin.
+5. **Sil**’i seçin.
 
-6. Sayfanın üst kısmından **Kaydet** ’i seçin.
+6. Sayfanın üst kısmından **Kaydet**’i seçin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -12,10 +12,10 @@ ms.date: 10/19/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 12b9639342e2e35b9229aa15bb9cfb4695427606
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97881200"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure AD B2C özel ilkesinde bir kerelik parola teknik profili tanımlama
@@ -67,19 +67,19 @@ Bu teknik profilin ilk modu bir kod oluşturmak. Bu mod için yapılandırılabi
 
 **Outputclaimstransformations** öğesi, çıkış taleplerini değiştirmek veya yenilerini oluşturmak için kullanılan bir **outputclaimstransreference** öğeleri koleksiyonu içerebilir.
 
-### <a name="metadata"></a>Meta Veriler
+### <a name="metadata"></a>Meta veri
 
 Kod oluşturma modunu yapılandırmak için aşağıdaki ayarlar kullanılabilir:
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Codeexpirationınseconds | Hayır | Süre sonuna kadar saniye cinsinden süre. En az: `60` ; En fazla: `1200` ; Varsayılan: `600` . Bir kod sağlandığı her seferinde ( `ReuseSameCode` veya yeni bir kod kullanılarak aynı kod), kod süre sonu genişletilir. Bu zaman, yeniden deneme zaman aşımını ayarlamak için de kullanılır (en fazla denemeye ulaşıldığında, Kullanıcı bu süre sona erene kadar yeni kodlar almaya çalışırken kilitlenir) |
-| Kod uzunluğu | Hayır | Kodun uzunluğu. `6` varsayılan değerdir. |
-| CharacterSet | Hayır | Bir normal ifadede kullanılmak üzere biçimlendirilen kodun karakter kümesi. Örneğin, `a-z0-9A-Z`. `0-9` varsayılan değerdir. Karakter kümesi belirtilen küme içinde en az 10 farklı karakter içermelidir. |
-| NumRetryAttempts | Hayır | Kod geçersiz kabul edilmeden önce yapılan doğrulama denemesi sayısı. `5` varsayılan değerdir. |
-| Numcodegenerationdenemeler | Hayır | Tanımlayıcı başına maksimum kod oluşturma denemesi sayısı. Belirtilmemişse, varsayılan değer 10 ' dur. |
-| Çalışma | Yes | Gerçekleştirilecek işlem. Olası değer: `GenerateCode` . |
-| ReuseSameCode | Hayır | Verilen kodun süresi dolmamışsa ve hala geçerli olduğunda, yeni bir kod oluşturmak yerine aynı kodun verilmesi gerekip gerekmediğini belirtir. `false` varsayılan değerdir.  |
+| Codeexpirationınseconds | No | Süre sonuna kadar saniye cinsinden süre. En az: `60` ; En fazla: `1200` ; Varsayılan: `600` . Bir kod sağlandığı her seferinde ( `ReuseSameCode` veya yeni bir kod kullanılarak aynı kod), kod süre sonu genişletilir. Bu zaman, yeniden deneme zaman aşımını ayarlamak için de kullanılır (en fazla denemeye ulaşıldığında, Kullanıcı bu süre sona erene kadar yeni kodlar almaya çalışırken kilitlenir) |
+| Kod uzunluğu | No | Kodun uzunluğu. `6` varsayılan değerdir. |
+| CharacterSet | No | Bir normal ifadede kullanılmak üzere biçimlendirilen kodun karakter kümesi. Örneğin, `a-z0-9A-Z`. `0-9` varsayılan değerdir. Karakter kümesi belirtilen küme içinde en az 10 farklı karakter içermelidir. |
+| NumRetryAttempts | No | Kod geçersiz kabul edilmeden önce yapılan doğrulama denemesi sayısı. `5` varsayılan değerdir. |
+| Numcodegenerationdenemeler | No | Tanımlayıcı başına maksimum kod oluşturma denemesi sayısı. Belirtilmemişse, varsayılan değer 10 ' dur. |
+| İşlem | Yes | Gerçekleştirilecek işlem. Olası değer: `GenerateCode` . |
+| ReuseSameCode | No | Verilen kodun süresi dolmamışsa ve hala geçerli olduğunda, yeni bir kod oluşturmak yerine aynı kodun verilmesi gerekip gerekmediğini belirtir. `false` varsayılan değerdir.  |
 
 
 
@@ -130,13 +130,13 @@ Bu protokol sağlayıcısının kod doğrulaması sırasında belirtilen çıkı
 
 **Outputclaimstransformations** öğesi, çıkış taleplerini değiştirmek veya yenilerini oluşturmak için kullanılan bir **outputclaimstransreference** öğeleri koleksiyonu içerebilir.
 
-### <a name="metadata"></a>Meta Veriler
+### <a name="metadata"></a>Meta veri
 
 Aşağıdaki ayarlar, doğrulama modunu kod için kullanılabilir:
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Çalışma | Yes | Gerçekleştirilecek işlem. Olası değer: `VerifyCode` . |
+| İşlem | Yes | Gerçekleştirilecek işlem. Olası değer: `VerifyCode` . |
 
 
 ### <a name="ui-elements"></a>Kullanıcı arabirimi öğeleri
@@ -145,12 +145,12 @@ Aşağıdaki meta veriler, kod doğrulama hatası üzerine görüntülenecek hat
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Usermessageifsessionffnotexist | Hayır | Kod doğrulama oturumunun süresi dolmuşsa kullanıcıya görüntülenecek ileti. Kodun süresi dolmuştur veya kod belirli bir tanımlayıcı için hiçbir zaman üretilmemiş olabilir. |
-| UserMessageIfMaxRetryAttempted | Hayır | İzin verilen en fazla doğrulama denemesini aşarsa kullanıcıya görüntülenecek ileti. |
-| UserMessageIfMaxNumberOfCodeGenerated | Hayır | Kod üretimi izin verilen en fazla deneme sayısını aşarsa kullanıcıya görüntülenecek ileti. |
-| Usermessageifınvalidcode | Hayır | Geçersiz bir kod sağladıklarında kullanıcıya görüntülenecek ileti. |
-| UserMessageIfVerificationFailedRetryAllowed | Hayır | Geçersiz bir kod sağladıklarında kullanıcıya görüntülenecek ileti ve kullanıcının doğru kodu sağlamasına izin verilir.  |
-|UserMessageIfSessionConflict|Hayır| Kod doğrulanamazsa kullanıcıya görüntülenecek ileti.|
+| Usermessageifsessionffnotexist | No | Kod doğrulama oturumunun süresi dolmuşsa kullanıcıya görüntülenecek ileti. Kodun süresi dolmuştur veya kod belirli bir tanımlayıcı için hiçbir zaman üretilmemiş olabilir. |
+| UserMessageIfMaxRetryAttempted | No | İzin verilen en fazla doğrulama denemesini aşarsa kullanıcıya görüntülenecek ileti. |
+| UserMessageIfMaxNumberOfCodeGenerated | No | Kod üretimi izin verilen en fazla deneme sayısını aşarsa kullanıcıya görüntülenecek ileti. |
+| Usermessageifınvalidcode | No | Geçersiz bir kod sağladıklarında kullanıcıya görüntülenecek ileti. |
+| UserMessageIfVerificationFailedRetryAllowed | No | Geçersiz bir kod sağladıklarında kullanıcıya görüntülenecek ileti ve kullanıcının doğru kodu sağlamasına izin verilir.  |
+|UserMessageIfSessionConflict|No| Kod doğrulanamazsa kullanıcıya görüntülenecek ileti.|
 
 ### <a name="example"></a>Örnek
 
