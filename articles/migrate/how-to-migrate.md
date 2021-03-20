@@ -7,10 +7,10 @@ ms.manager: bsiva
 ms.topic: how-to
 ms.date: 11/23/2020
 ms.openlocfilehash: 97051e97ec9868f6941b579241e16e62fdd2162b
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96751793"
 ---
 # <a name="add-migration-tools"></a>Geçiş araçları ekleme
@@ -67,7 +67,7 @@ Portalda **veritabanını değerlendir ve geçir** seçeneğini kullanarak bir A
 
 ## <a name="select-a-web-app-migration-tool"></a>Web uygulaması geçiş aracı seçin
 
-Portalda **daha fazla keşfet** webapps seçeneğini kullanarak bir Azure geçişi projesi oluşturduysanız  >  **WebApps** , Web uygulaması geçiş aracı projeye otomatik olarak eklenir. 
+Portalda **daha fazla keşfet** webapps seçeneğini kullanarak bir Azure geçişi projesi oluşturduysanız  >   , Web uygulaması geçiş aracı projeye otomatik olarak eklenir. 
 
 1. Web uygulaması geçiş aracı projede değilse, **Web Apps**  >  **değerlendirme araçları**' nda **buraya tıklayın ' ı** seçin.
 

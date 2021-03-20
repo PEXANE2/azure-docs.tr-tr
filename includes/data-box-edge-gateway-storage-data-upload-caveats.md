@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 09/25/2020
 ms.author: alkohli
 ms.openlocfilehash: 6dc201af2271909de15af9bac1a2e2bb68faed1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91401105"
 ---
 Aşağıdaki uyarılar, Azure 'a taşırken veriler için geçerlidir.
@@ -16,8 +16,8 @@ Aşağıdaki uyarılar, Azure 'a taşırken veriler için geçerlidir.
 - Birden fazla cihazın aynı kapsayıcıya yazmamalıdır.
 - Bulutta, Kopyalanmakta olan nesneyle aynı ada sahip mevcut bir Azure nesneniz (blob veya bir dosya gibi) varsa, cihaz buluttaki dosyanın üzerine yazar.
 - Klasörleri paylaşma altında oluşturulan boş bir dizin hiyerarşisi (herhangi bir dosya olmadan) blob kapsayıcılarına yüklenemez.
-- Dosya Gezgini ile veya komut satırı aracılığıyla sürükle ve bırak kullanarak verileri kopyalayabilirsiniz. Kopyalanan dosyaların toplam boyutu 10 GB 'den büyükse Robocopy veya rsync gibi bir toplu kopyalama programı kullanmanızı öneririz. Toplu kopyalama araçları, zaman aralıklı hatalar için kopyalama işlemini yeniden dener ve ek dayanıklılık sağlar.
-- Azure depolama kapsayıcısı ile ilişkilendirilen paylaşımın, oluşturma sırasında, paylaşma için tanımlanan Blobların türüyle eşleşmeyen Blobları karşıya yüklediğinde, bu tür Bloblar güncellenmez. Örneğin, cihazda bir Blok Blobu paylaşma oluşturursunuz. Paylaşma, sayfa Blobları olan mevcut bir bulut kapsayıcısı ile ilişkilendirin. Dosyaları indirmek için bu paylaşımın yenilenmesini yapın. Bulutta sayfa Blobları olarak zaten depolanmış olan yenilenmiş dosyalardan bazılarını değiştirin. Karşıya yükleme başarısızlıklarını görürsünüz.
+- Verileri Dosya Gezgini'yle sürükleyip bırakarak veya komut satırı aracılığıyla kopyalayabilirsiniz. Kopyalanmakta olan dosyaların toplam boyutu 10 GB'tan büyükse Robocopy veya rsync gibi bir toplu kopyalama programı kullanmanızı öneririz. Toplu kopyalama araçları aralıklı hatalar oluştuğunda kopyalama işlemini yeniden dener ve ek dayanıklılık sağlar.
+- Azure depolama kapsayıcısı ile ilişkilendirilen paylaşımın, oluşturma sırasında, paylaşma için tanımlanan Blobların türüyle eşleşmeyen Blobları karşıya yüklediğinde, bu tür Bloblar güncellenmez. Örneğin cihazda bir blok blobu paylaşımı oluşturun. Paylaşımı sayfa blobları içeren mevcut bir bulut kapsayıcısıyla ilişkilendirin. Dosyaları indirmek için paylaşımı yenileyin. Bulutta zaten sayfa blobu olarak depolanan, yenilenmiş dosyalardan bazılarında değişiklik yapın. Karşıya yükleme hataları görürsünüz.
 - Paylaşımlardaki bir dosya oluşturulduktan sonra dosyanın yeniden adlandırılması desteklenmez.
 - Paylaşımdan dosya silindiğinde, depolama hesabındaki girdi silinmez.
 - Verileri kopyalamak için rsync kullanılıyorsa, `rsync -a` seçeneği desteklenmez.

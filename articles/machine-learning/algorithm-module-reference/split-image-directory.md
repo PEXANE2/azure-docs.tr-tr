@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
 ms.openlocfilehash: 3ee4dd9b2e344ecb3e1a6424ce7310270e7cd076
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93421201"
 ---
 # <a name="split-image-directory"></a>Görüntü Dizinini Bölme
@@ -35,19 +35,19 @@ Bu modül, görüntü verilerini eğitim ve test kümelerine ayırmanız gerekti
 
 ### <a name="expected-inputs"></a>Beklenen girişler
 
-| Ad                  | Tür           | Açıklama              |
+| Ad                  | Tür           | Description              |
 | --------------------- | -------------- | ------------------------ |
 | Giriş resmi dizini | ImageDirectory | Bölünecek görüntü dizini |
 
 ### <a name="module-parameters"></a>Modül parametreleri
 
-| Ad                                   | Tür  | Aralık | İsteğe Bağlı | Açıklama                            | Varsayılan |
+| Ad                                   | Tür  | Aralık | İsteğe Bağlı | Description                            | Varsayılan |
 | -------------------------------------- | ----- | ----- | -------- | -------------------------------------- | ------- |
 | İlk çıktıda görüntülerin kesri | Float | 0-1   | Gerekli | İlk çıktıda görüntülerin kesri | 0,9     |
 
 ### <a name="outputs"></a>Çıkışlar
 
-| Ad                    | Tür           | Açıklama                              |
+| Ad                    | Tür           | Description                              |
 | ----------------------- | -------------- | ---------------------------------------- |
 | Çıkış resmi Directory1 | ImageDirectory | Seçili görüntüleri içeren görüntü dizini |
 | Çıkış resmi directory2 | ImageDirectory | Diğer tüm görüntüleri içeren görüntü dizini |

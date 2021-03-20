@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/31/2019
 ms.author: allensu
 ms.openlocfilehash: 2475bdce3ab8f153cc837601964bf4a2e90a470c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "81260426"
 ---
 # <a name="debug-http-header-for-azure-cdn-from-microsoft"></a>Microsoft 'tan Azure CDN için HTTP üst bilgisinde hata ayıkla
@@ -26,7 +26,7 @@ Hata ayıklama yanıt üst bilgisi, `X-Cache` içerik tarafından HANGI CDN yı�
 
 ### <a name="response-header-format"></a>Yanıt üst bilgisi biçimi
 
-Üst bilgi | Açıklama
+Üst bilgi | Description
 -------|------------
 X-önbellek: TCP_HIT | Bu üst bilgi, içerik CDN Edge önbelleğinden sunulduğunda döndürülür. 
 X-önbellek: TCP_REMOTE_HIT | Bu üst bilgi, içerik CDN bölgesel önbelleğinden (kaynak kalkan katmanı) sunulduğunda döndürülür

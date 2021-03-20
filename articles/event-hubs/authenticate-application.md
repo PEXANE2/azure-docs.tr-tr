@@ -4,10 +4,10 @@ description: Bu makale, Azure Event Hubs kaynaklarına erişmek için Azure Acti
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.openlocfilehash: 25ec5f11ca7b5e801e18155f1a3da6474c8e66e2
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92913322"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>Event Hubs kaynaklara erişmek için Azure Active Directory ile bir uygulamanın kimliğini doğrulama
@@ -43,7 +43,7 @@ Event Hubs kaynaklarını yetkilendirmek için Azure AD kullanmanın ilk adımı
 
 Aşağıdaki görüntüler, bir Web uygulamasını kaydetme adımlarını göstermektedir:
 
-![Uygulamayı kaydetme](./media/authenticate-application/app-registrations-register.png)
+![Bir uygulamayı kaydetme](./media/authenticate-application/app-registrations-register.png)
 
 > [!Note]
 > Uygulamanızı yerel bir uygulama olarak kaydettiğinizde, yeniden yönlendirme URI 'SI için geçerli bir URI belirtebilirsiniz. Yerel uygulamalar için, bu değerin gerçek bir URL olması gerekmez. Web uygulamaları için, yeniden yönlendirme URI 'si, belirteçlerin sağlandığı URL 'YI belirttiğinden geçerli bir URI olmalıdır.
@@ -75,7 +75,7 @@ Uygulamayı kaydettikten sonra, uygulamanın hizmet sorumlusunu [Azure Için der
 
     ![Olay Hub 'ınızı seçin](./media/authenticate-application/select-event-hub.png)
 1. Olay Hub 'ı için erişim denetimi ayarlarını göstermek üzere **Access Control (IAM)** öğesini seçin. 
-1. Rol atamalarının listesini görmek için **rol atamaları** sekmesini seçin. Araç çubuğunda **Ekle** düğmesini seçin ve ardından **rol ataması Ekle** ' yi seçin. 
+1. Rol atamalarının listesini görmek için **rol atamaları** sekmesini seçin. Araç çubuğunda **Ekle** düğmesini seçin ve ardından **rol ataması Ekle**' yi seçin. 
 
     ![Araç çubuğuna düğme Ekle](./media/authenticate-application/role-assignments-add-button.png)
 1. **Rol ataması Ekle** sayfasında, aşağıdaki adımları uygulayın:

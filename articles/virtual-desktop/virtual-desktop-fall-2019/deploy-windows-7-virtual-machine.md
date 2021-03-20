@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 259e49fbdd6a0eb392ddf6a3cd3c318798cfabd0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88005061"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop-classic"></a>Windows Virtual Desktop 'ta Windows 7 sanal makinesi dağıtma (klasik)
@@ -20,7 +20,7 @@ ms.locfileid: "88005061"
 
 Windows sanal masaüstü üzerinde bir Windows 7 sanal makinesi (VM) dağıtma işlemi, Windows 'un sonraki sürümlerini çalıştıran VM 'lerden biraz farklıdır. Bu kılavuzda, Windows 7 ' nin nasıl dağıtılacağı açıklanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, bir konak havuzu oluşturmak için [PowerShell ile konak havuzu oluşturma](create-host-pools-powershell-2019.md) ' daki yönergeleri izleyin. Bundan sonra, Masaüstü uygulama grubuna bir veya daha fazla kullanıcı atamak için [Azure Marketi 'nde konak havuzları oluşturma](create-host-pools-azure-marketplace-2019.md#optional-assign-additional-users-to-the-desktop-application-group) ' daki yönergeleri izleyin.
 
@@ -37,7 +37,7 @@ Windows sanal masaüstü 'nde Windows 7 VM ayarlamak için:
 5. SANAL makinenizde Windows Update gidin.
 6. Tüm Windows güncelleştirmelerini önemli kategoride yükler.
 7. Tüm Windows güncelleştirmelerini Isteğe bağlı kategoride (dil paketleri hariç) yükler. Bu, bu yönergeleri tamamlayabilmeniz için ihtiyaç duyduğunuz Uzak Masaüstü Protokolü 8,0 güncelleştirmesini ([KB2592687](https://www.microsoft.com/download/details.aspx?id=35387)) yüklüyor.
-8. Yerel Grup İlkesi Düzenleyicisi açın ve **Computer Configuration**  >  **Administrative Templates**  >  **Windows Components**  >  **Remote Desktop Services**  >  **Uzak Masaüstü oturumu ana bilgisayarı**  >  **uzak oturum ortamı**Uzak Masaüstü Hizmetleri Windows bileşenleri Yönetim Şablonları bilgisayar yapılandırması ' na gidin.
+8. Yerel Grup İlkesi Düzenleyicisi açın ve   >    >    >    >  **Uzak Masaüstü oturumu ana bilgisayarı**  >  **uzak oturum ortamı** Uzak Masaüstü Hizmetleri Windows bileşenleri Yönetim Şablonları bilgisayar yapılandırması ' na gidin.
 9. Uzak Masaüstü Protokolü 8,0 ilkesini etkinleştirin.
 10. Bu sanal makineyi Active Directory etki alanınıza ekleyin.
 11. Aşağıdaki komutu çalıştırarak sanal makineyi yeniden başlatın:

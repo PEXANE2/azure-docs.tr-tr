@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
 ms.openlocfilehash: c23dca40d50c5837bd9ff45bc3c3d7fb2581685b
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93420759"
 ---
 # <a name="join-data"></a>Verileri birleştirme
@@ -47,15 +47,15 @@ Bu makalede, bir veritabanı stili birleştirme işlemi kullanarak iki veri küm
    
 1. Veri kümelerinin nasıl birleştirildiğini belirtmek için **JOIN türü** açılan listesini kullanın.  
   
-    * **Iç birleşim** : bir *iç birleşim* en yaygın birleşim işlemidir. Yalnızca anahtar sütunlarının değerleri eşleşiyorsa Birleşik satırları döndürür.  
+    * **Iç birleşim**: bir *iç birleşim* en yaygın birleşim işlemidir. Yalnızca anahtar sütunlarının değerleri eşleşiyorsa Birleşik satırları döndürür.  
   
-    * **Sol dış birleşim** : sol *dış birleşim* , sol tablodaki tüm satırlar için birleştirilmiş satırları döndürür. Sol tablodaki bir satır sağ tabloda eşleşen satır içermiyorsa, döndürülen satırda doğru tablodan gelen tüm sütunlar için eksik değerler bulunur. Eksik değerler için de bir değiştirme değeri belirtebilirsiniz.  
+    * **Sol dış birleşim**: sol *dış birleşim* , sol tablodaki tüm satırlar için birleştirilmiş satırları döndürür. Sol tablodaki bir satır sağ tabloda eşleşen satır içermiyorsa, döndürülen satırda doğru tablodan gelen tüm sütunlar için eksik değerler bulunur. Eksik değerler için de bir değiştirme değeri belirtebilirsiniz.  
   
-    * **Tam dış birleşim** : *tam dış birleşim* , sol tablodaki ( **Table1** ) ve sağ tablodaki ( **Table2** ) tüm satırları döndürür.  
+    * **Tam dış birleşim**: *tam dış birleşim* , sol tablodaki (**Table1**) ve sağ tablodaki (**Table2**) tüm satırları döndürür.  
   
          Herhangi bir tabloda, birbirleriyle eşleşen satırları olmayan her bir satır için, sonuç eksik değerler içeren bir satır içerir.  
   
-    * **Sol yarı ekleme** : *sol yarı JOIN* yalnızca, anahtar sütunlarının değerleri eşleşiyorsa sol tablodaki değerleri döndürür.  
+    * **Sol yarı ekleme**: *sol yarı JOIN* yalnızca, anahtar sütunlarının değerleri eşleşiyorsa sol tablodaki değerleri döndürür.  
 
 1. **Birleşik tablodaki doğru anahtar sütunları tut** seçeneği için:
 
@@ -64,7 +64,7 @@ Bu makalede, bir veritabanı stili birleştirme işlemi kullanarak iki veri küm
 
 1. İşlem hattını gönderme.
 
-1. Sonuçları görüntülemek için, **verileri Birleştir** ' e sağ tıklayın ve **Görselleştir** ' i seçin.
+1. Sonuçları görüntülemek için, **verileri Birleştir** ' e sağ tıklayın ve **Görselleştir**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,10 +7,10 @@ ms.date: 07/28/2020
 ms.author: masnider
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 5d27a09f0ff38ec7422636ef0933552aa310c387
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92911775"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>Küme kullanarak bir Service Fabric kümesini açıkla Kaynak Yöneticisi
@@ -64,7 +64,7 @@ Hata etki alanı hiyerarşisindeki her bir derinlik düzeyinde aynı sayıda dü
 
 Azure 'da, bir düğüm içeren hata etki alanının seçimi sizin için yönetilir. Ancak, sağladığınız düğüm sayısına bağlı olarak, diğer düğümlerde daha fazla düğüme sahip hata etki alanları ile de devam edebilirsiniz.
 
-Örneğin, kümede beş hata etki alanı olduğunu ancak düğüm türü ( **NodeType** ) için yedi düğüm sağladığınızı varsayalım. Bu durumda, ilk iki hata etki alanı daha fazla düğüm ile biter. Yalnızca birkaç örnek ile daha fazla **NodeType** örneği dağıtmaya devam ederseniz, sorun daha kötü olur. Bu nedenle, her düğüm türündeki düğüm sayısının hata etki alanı sayısının katı olması önerilir.
+Örneğin, kümede beş hata etki alanı olduğunu ancak düğüm türü (**NodeType**) için yedi düğüm sağladığınızı varsayalım. Bu durumda, ilk iki hata etki alanı daha fazla düğüm ile biter. Yalnızca birkaç örnek ile daha fazla **NodeType** örneği dağıtmaya devam ederseniz, sorun daha kötü olur. Bu nedenle, her düğüm türündeki düğüm sayısının hata etki alanı sayısının katı olması önerilir.
 
 ## <a name="upgrade-domains"></a>Yükseltme etki alanları
 
@@ -119,7 +119,7 @@ Bu kısıtlamanın "en yüksek fark" garantisi sağladığını varsayalım. Hat
 | **UD3** | | | |N4 | |
 | **UD4** | | | | |N5 düğümünde |
 
-Şimdi, bir **Targetreplicasetsize** (veya durum bilgisiz hizmeti, **InstanceCount** ) değeri için beş olan bir hizmet oluşturduğunuzu varsayalım. Çoğaltmalar, N1-N5 düğümünde üzerinde yer alır. Aslında, bunun gibi kaç hizmetin oluşturulduğuna bakılmaksızın N6 hiçbir şekilde kullanılmaz. Ancak neden? Geçerli düzen arasındaki farka ve N6 seçilirse ne olacağını inceleyelim.
+Şimdi, bir **Targetreplicasetsize** (veya durum bilgisiz hizmeti, **InstanceCount**) değeri için beş olan bir hizmet oluşturduğunuzu varsayalım. Çoğaltmalar, N1-N5 düğümünde üzerinde yer alır. Aslında, bunun gibi kaç hizmetin oluşturulduğuna bakılmaksızın N6 hiçbir şekilde kullanılmaz. Ancak neden? Geçerli düzen arasındaki farka ve N6 seçilirse ne olacağını inceleyelim.
 
 Hata ve yükseltme etki alanı başına aldığımız düzen ve toplam çoğaltma sayısı aşağıda verilmiştir:
 
@@ -343,7 +343,7 @@ Bazen (aslında çoğu zaman) belirli iş yüklerinin yalnızca kümedeki belirl
 
 Belirli iş yükleri için donanım hedeflemek için harika bir örnek neredeyse her n katmanlı mimaridir. Bazı makineler uygulamanın ön uç veya API hizmet tarafı olarak hizmet verir ve istemcilere ya da internet 'e sunulur. Genellikle farklı donanım kaynakları olan farklı makineler, işlem veya depolama katmanlarının çalışmasını işler. Bunlar genellikle istemcilere veya internet _'e doğrudan gösterilmez_ .
 
-Service Fabric, bazı durumlarda belirli iş yüklerinin belirli donanım yapılandırmalarında çalıştırılması gerekebilir. Örneğin:
+Service Fabric, bazı durumlarda belirli iş yüklerinin belirli donanım yapılandırmalarında çalıştırılması gerekebilir. Örnek:
 
 * Var olan n katmanlı bir uygulama, bir Service Fabric ortamına "yükseltilmemiş ve" kaydırmıştır.
 * Performans, ölçek veya güvenlik yalıtımı nedenleriyle belirli bir donanımda iş yükünün çalıştırılması gerekir.
@@ -355,7 +355,7 @@ Bu yapılandırma türlerini desteklemek için Service Fabric düğümlere uygul
 
 ### <a name="built-in-node-properties"></a>Yerleşik düğüm özellikleri
 
-Service Fabric, otomatik olarak kullanılabilecek bazı varsayılan düğüm özelliklerini tanımlar, böylece bunları tanımlamanız gerekmez. Her düğümde tanımlanan varsayılan Özellikler **NodeType** ve **düğüdir** .
+Service Fabric, otomatik olarak kullanılabilecek bazı varsayılan düğüm özelliklerini tanımlar, böylece bunları tanımlamanız gerekmez. Her düğümde tanımlanan varsayılan Özellikler **NodeType** ve **düğüdir**.
 
 Örneğin, olarak bir yerleştirme kısıtlaması yazabilirsiniz `"(NodeType == NodeType03)"` . **NodeType** yaygın olarak kullanılan bir özelliktir. Bir makine türü ile 1:1 ' a karşılık geldiği için yararlıdır. Her makine türü geleneksel n katmanlı bir uygulamadaki bir iş yükü türüne karşılık gelir.
 

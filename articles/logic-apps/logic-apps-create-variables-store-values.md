@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.openlocfilehash: b486b94a74d98f5630bd0bf40ebf0864c2ec5ab8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91333911"
 ---
 # <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>Azure Logic Apps'te değişkenleri kullanarak değer depolama ve yönetme
@@ -20,7 +20,7 @@ Bu makalede, mantıksal uygulamanızda değerleri depolamak için kullandığın
 Integer, float, Boolean, String, Array ve Object gibi veri türleri için değişkenler oluşturabilirsiniz. Bir değişken oluşturduktan sonra, diğer görevleri yerine getirebilirsiniz, örneğin:
 
 * Değişkenin değerine erişin veya başvurun.
-* Değişkeni *artırma* ve *azaltma*olarak da bilinen sabit bir değer ile artırın veya azaltın.
+* Değişkeni *artırma* ve *azaltma* olarak da bilinen sabit bir değer ile artırın veya azaltın.
 * Değişkenine farklı bir değer atayın.
 * Değişkenin değerini bir dize veya dizide son öğe olarak *ekleyin veya ekleyin* .
 
@@ -59,7 +59,7 @@ Bir değişken oluşturabilir ve veri türünü ve başlangıç değerini, mant�
 
    * Adımlar arasında bir eylem eklemek için, artı işareti () görünecek şekilde farenizi bağlama okuna taşıyın **+** . Artı işaretini seçin ve ardından **Eylem Ekle**' yi seçin.
 
-1. **Eylem seçin**altında, arama kutusuna `variables` filtreniz olarak girin. Eylemler listesinden, **değişkeni Başlat**' ı seçin.
+1. **Eylem seçin** altında, arama kutusuna `variables` filtreniz olarak girin. Eylemler listesinden, **değişkeni Başlat**' ı seçin.
 
    ![Eylem Seç](./media/logic-apps-create-variables-store-values/select-initialize-variable-action.png)
 
@@ -67,12 +67,12 @@ Bir değişken oluşturabilir ve veri türünü ve başlangıç değerini, mant�
 
    | Özellik | Gerekli | Değer |  Açıklama |
    |----------|----------|-------|--------------|
-   | **Ad** | Evet | <*değişken adı*> | Artış değişkeninin adı |
-   | **Tür** | Evet | <*değişken türü*> | Değişken için veri türü |
-   | **Değer** | Hayır | <*başlangıç-değer*> | Değişkeninizin ilk değeri <p><p>**İpucu**: isteğe bağlı olarak, bu değeri en iyi uygulama olarak ayarlarsanız, değişkeninizin başlangıç değerini her zaman bilirsiniz. |
+   | **Ad** | Yes | <*değişken adı*> | Artış değişkeninin adı |
+   | **Tür** | Yes | <*değişken türü*> | Değişken için veri türü |
+   | **Değer** | No | <*başlangıç-değer*> | Değişkeninizin ilk değeri <p><p>**İpucu**: isteğe bağlı olarak, bu değeri en iyi uygulama olarak ayarlarsanız, değişkeninizin başlangıç değerini her zaman bilirsiniz. |
    |||||
 
-   Örneğin:
+   Örnek:
 
    ![Değişkeni Başlat](./media/logic-apps-create-variables-store-values/initialize-variable.png)
 
@@ -207,11 +207,11 @@ Bir değişkeni sabit *bir değere göre artırmak veya arttırmak* için, mant�
 
    | Özellik | Gerekli | Değer |  Açıklama |
    |----------|----------|-------|--------------|
-   | **Ad** | Evet | <*değişken adı*> | Artış değişkeninin adı |
-   | **Değer** | Hayır | <*artış değeri*> | Değişkeni artırma için kullanılan değer. Varsayılan değer bir değeridir. <p><p>**İpucu**: isteğe bağlı olarak, bu değeri en iyi uygulama olarak ayarlarsanız, değişkeninizi arttırmanın her zaman belirli bir değerini bilirsiniz. |
+   | **Ad** | Yes | <*değişken adı*> | Artış değişkeninin adı |
+   | **Değer** | No | <*artış değeri*> | Değişkeni artırma için kullanılan değer. Varsayılan değer bir değeridir. <p><p>**İpucu**: isteğe bağlı olarak, bu değeri en iyi uygulama olarak ayarlarsanız, değişkeninizi arttırmanın her zaman belirli bir değerini bilirsiniz. |
    ||||
 
-   Örneğin:
+   Örnek:
 
    ![Artış değeri örneği](./media/logic-apps-create-variables-store-values/increment-variable-action-information.png)
 
@@ -238,7 +238,7 @@ Değişkenler, bir döngünün kaç kez çalışacağını saymak için yaygın 
 
 1. Azure portal, boş bir mantıksal uygulama oluşturun. Yeni e-posta ve ekleri denetleyen bir tetikleyici ekleyin.
 
-   Bu örnek, **Yeni bir e-posta geldiğinde**Office 365 Outlook tetikleyicisini kullanır. Bu tetikleyiciyi yalnızca e-postada ekleri olduğunda harekete getirebilirsiniz. Ancak, Outlook.com Bağlayıcısı gibi ekleri olan yeni e-postaları denetleyen herhangi bir bağlayıcıyı kullanabilirsiniz.
+   Bu örnek, **Yeni bir e-posta geldiğinde** Office 365 Outlook tetikleyicisini kullanır. Bu tetikleyiciyi yalnızca e-postada ekleri olduğunda harekete getirebilirsiniz. Ancak, Outlook.com Bağlayıcısı gibi ekleri olan yeni e-postaları denetleyen herhangi bir bağlayıcıyı kullanabilirsiniz.
 
 1. Tetikleyicide, ekleri denetlemek ve bu ekleri mantıksal uygulamanızın iş akışına iletmek için şu özellikler için **Evet** ' i seçin:
 
@@ -255,7 +255,7 @@ Değişkenler, bir döngünün kaç kez çalışacağını saymak için yaygın 
 
    1. **Değişken başlatma** eyleminin altında **yeni adım**' ı seçin.
 
-   1. **Eylem seçin**altında, **yerleşik**' i seçin. Arama kutusuna `for each` arama filtrenizi olarak girin ve **her biri için**öğesini seçin.
+   1. **Eylem seçin** altında, **yerleşik**' i seçin. Arama kutusuna `for each` arama filtrenizi olarak girin ve **her biri için** öğesini seçin.
 
       !["For each" döngüsü Ekle](./media/logic-apps-create-variables-store-values/add-loop.png)
 
@@ -328,8 +328,8 @@ Bir değişkeni sabit *bir değere göre azaltmak veya azaltmak* için, değişk
 
 | Özellik | Gerekli | Değer |  Açıklama |
 |----------|----------|-------|--------------|
-| **Ad** | Evet | <*değişken adı*> | Azaltılacak değişkenin adı | 
-| **Değer** | Hayır | <*artış değeri*> | Değişkeni azaltma değeri. Varsayılan değer bir değeridir. <p><p>**İpucu**: isteğe bağlı olarak, bu değeri en iyi uygulama olarak ayarlarsanız, değişkeninizi azaltma için her zaman belirli bir değeri bilirsiniz. |
+| **Ad** | Yes | <*değişken adı*> | Azaltılacak değişkenin adı | 
+| **Değer** | No | <*artış değeri*> | Değişkeni azaltma değeri. Varsayılan değer bir değeridir. <p><p>**İpucu**: isteğe bağlı olarak, bu değeri en iyi uygulama olarak ayarlarsanız, değişkeninizi azaltma için her zaman belirli bir değeri bilirsiniz. |
 ||||| 
 
 Tasarımcıdan kod görünümü düzenleyicisine geçiş yaparsanız, **azaltma değişkeni** EYLEMININ, JSON biçiminde olan mantıksal uygulama tanımınızda görünme yolu vardır.
@@ -361,8 +361,8 @@ Varolan bir değişkene farklı bir değer atamak için, [bir değişkeni](#incr
 
 | Özellik | Gerekli | Değer |  Açıklama |
 |----------|----------|-------|--------------|
-| **Ad** | Evet | <*değişken adı*> | Değiştirilecek değişkenin adı |
-| **Değer** | Evet | <*Yeni değer*> | Değişkeni atamak istediğiniz değer. Her ikisi de aynı veri türüne sahip olmalıdır. |
+| **Ad** | Yes | <*değişken adı*> | Değiştirilecek değişkenin adı |
+| **Değer** | Yes | <*Yeni değer*> | Değişkeni atamak istediğiniz değer. Her ikisi de aynı veri türüne sahip olmalıdır. |
 ||||| 
 
 > [!NOTE]
@@ -370,7 +370,7 @@ Varolan bir değişkene farklı bir değer atamak için, [bir değişkeni](#incr
 >
 > 1. Döngünüz sağ üst köşesinde üç nokta (**...**) düğmesini ve ardından **Ayarlar**' ı seçin.
 > 
-> 2. **Eşzamanlılık denetimi**altında, **geçersiz kılma varsayılan** ayarını **Açık**olarak değiştirin.
+> 2. **Eşzamanlılık denetimi** altında, **geçersiz kılma varsayılan** ayarını **Açık** olarak değiştirin.
 >
 > 3. **Paralellik** sürgüsünün derecesini **1**' e sürükleyin.
 
@@ -419,8 +419,8 @@ Dizeleri veya dizileri depolayan değişkenler için, değişkenin değerini bu 
 
 | Özellik | Gerekli | Değer |  Açıklama |
 |----------|----------|-------|--------------|
-| **Ad** | Evet | <*değişken adı*> | Değiştirilecek değişkenin adı |
-| **Değer** | Evet | <*Append-değer*> | Eklemek istediğiniz değer, herhangi bir tür içerebilir |
+| **Ad** | Yes | <*değişken adı*> | Değiştirilecek değişkenin adı |
+| **Değer** | Yes | <*Append-değer*> | Eklemek istediğiniz değer, herhangi bir tür içerebilir |
 |||||
 
 Tasarımcıdan kod görünümü düzenleyicisine geçiş yaparsanız, **dizi değişkenine Ekle** eyleminin JSON biçiminde olan mantıksal uygulama tanımınızın içinde görünme yolu vardır. Bu örnek, bir dizi değişkeni oluşturur ve dizideki son öğe olarak başka bir değer ekler. Sonuçlarınız, bu diziyi içeren güncelleştirilmiş bir değişkendir: `[1,2,3,"red"]`

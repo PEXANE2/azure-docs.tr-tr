@@ -7,10 +7,10 @@ ms.date: 02/28/2020
 ms.author: gopalv
 ms.custom: devx-track-python, devx-track-azurepowershell
 ms.openlocfilehash: 8891c29e5d8d06df6292d06ec06e5e57fb9880e7
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93422850"
 ---
 # <a name="tutorial-deploy-a-pre-trained-image-classification-model-to-azure-functions-with-pytorch"></a>Öğretici: PyTorch ile Azure Işlevlerine önceden eğitilen bir görüntü sınıflandırma modeli dağıtın
@@ -21,9 +21,9 @@ Bu makalede, bir görüntüyü içeriğine göre sınıflandırmak için öncede
 > * Python 'da Azure Işlevleri geliştirmek için yerel bir ortam başlatın.
 > * Önceden eğitilen PyTorch makinesi öğrenme modelini bir işlev uygulamasına aktarın.
 > * Bir görüntüyü 1000 ImageNet [sınıflarından](https://gist.github.com/yrevar/942d3a0ac09ec9e5eb3a)biri olarak sınıflandırmak için SUNUCUSUZ bir HTTP API 'si oluşturun.
-> * API 'YI bir Web uygulamasından tüketme.
+> * Web uygulamasından API’yi kullanma.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - [Python 3.7.4 veya üzeri](https://www.python.org/downloads/release/python-374/). (Python 3.8. x ve Python 3.6. x de Azure Işlevleri ile doğrulanır.)
@@ -128,7 +128,7 @@ Azure Işlevlerinde bir işlev projesi, her birinin belirli bir tetikleyiciye ya
 
 1. `classify`Uç noktanın çıktıda göründüğünü gördüğünüzde URL 'ye gidin ```http://localhost:7071/api/classify?name=Azure``` . "Merhaba Azure!" iletisi çıktıda görünmelidir.
 
-1. **Ctrl** - Konağı durdurmak için CTRL **C** 'yi kullanın.
+1.  - Konağı durdurmak için CTRL **C** 'yi kullanın.
 
 
 ## <a name="import-the-pytorch-model-and-add-helper-code"></a>PyTorch modelini içeri aktarın ve yardımcı kodu ekleyin

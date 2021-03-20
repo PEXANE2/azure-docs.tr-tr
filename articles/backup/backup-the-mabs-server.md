@@ -4,10 +4,10 @@ description: Microsoft Azure Backup sunucusunu (MABS) nasıl yedekleyeceğinizi 
 ms.topic: conceptual
 ms.date: 09/24/2020
 ms.openlocfilehash: 81a6ee005e15b1d7ab7b11a938b8ab14143818f4
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92172121"
 ---
 # <a name="back-up-the-mabs-server"></a>MABS sunucusunu yedekleme
@@ -72,7 +72,7 @@ Azure Backup kasasında kayıtlı olan MABS sunucusunu kullanarak Azure 'dan ver
 
 2. Kasa kimlik bilgilerini sağlayın (Azure Backup kasasından indirin). Kimlik bilgilerinin yalnızca iki gün için geçerli olduğunu unutmayın.
 
-3. **Kurtarma Için dış Mabs Seç**bölümünde, veritabanını kurtarmak istediğiniz mabs sunucusunu seçin, şifreleme parolasını yazın ve Tamam ' ı seçin **.**
+3. **Kurtarma Için dış Mabs Seç** bölümünde, veritabanını kurtarmak istediğiniz mabs sunucusunu seçin, şifreleme parolasını yazın ve Tamam ' ı seçin **.**
 
 4. Kullanılabilir noktalar listesinden kullanmak istediğiniz kurtarma noktasını seçin. Yerel MABS görünümüne dönmek için **dış Mabs seçimini temizle** ' yi seçin.
 
@@ -196,7 +196,7 @@ Bu yedekleme seçeneği, MABS veritabanını bir paylaşıma yedeklemek için ye
 
 1. SQL Server, bir yedeğin tek bir kopyasını tutmak için yeterli boş alana sahip bir sürücü üzerinde bir klasör oluşturun. Örneğin: `C:\MABSBACKUP`.
 
-1. Klasörü paylaşın. Örneğin, `C:\MABSBACKUP` klasörünü *DPMBackup*olarak paylaşın.
+1. Klasörü paylaşın. Örneğin, `C:\MABSBACKUP` klasörünü *DPMBackup* olarak paylaşın.
 
 1. Aşağıdaki OSQL komutunu kopyalayıp Not defteri 'ne yapıştırın ve adlı bir dosyaya kaydedin `C:\MABSACKUP\bkupdb.cmd` . . Txt uzantısının bulunmadığından emin olun. SQL_Instance_name ve DPMDB_NAME, MABS sunucunuz tarafından kullanılan örnek ve DPMDB adıyla eşleşecek şekilde değiştirin.
 
@@ -204,7 +204,7 @@ Bu yedekleme seçeneği, MABS veritabanını bir paylaşıma yedeklemek için ye
     OSQL -E -S localhost\SQL_INSTANCE_NAME -Q "BACKUP DATABASE DPMDB_NAME TO DISK='C:\DPMBACKUP\dpmdb.bak' WITH FORMAT"
     ```
 
-1. Not defteri 'ni kullanarak, **ScriptingConfig.xml** `C:\Program Files\Microsoft System Center\DPM\DPM\Scripting` mabs sunucusundaki klasörünün altında bulunanScriptingConfig.xmldosyasını açın.
+1. Not defteri 'ni kullanarak,  `C:\Program Files\Microsoft System Center\DPM\DPM\Scripting` mabs sunucusundaki klasörünün altında bulunanScriptingConfig.xmldosyasını açın.
 
 1. **ScriptingConfig.xml** değiştirin ve **DATASOURCENAME =** değerini dpmdbbackup klasörünü/payını içeren sürücü harfi olacak şekilde değiştirin. PreBackupScript girişini, adım 3 ' te kaydedilen **BkUpDB. cmd** ' nin tam yolu ve adı olarak değiştirin.
 
@@ -220,7 +220,7 @@ Bu yedekleme seçeneği, MABS veritabanını bir paylaşıma yedeklemek için ye
     </ScriptConfiguration>
     ```
 
-1. Değişiklikleri **ScriptingConfig.xml**kaydedin.
+1. Değişiklikleri **ScriptingConfig.xml** kaydedin.
 
 1. C:\MABSBACKUP klasörünü veya `\sqlservername\MABSBACKUP` MABS kullanarak paylaşmayı koruyun ve ilk çoğaltmanın oluşturulmasını bekleyin. Daha sonra da MABS çoğaltmasına kopyalandığı yedekleme öncesi betiğin çalıştığı bir sonuç olarak C:\MABSBACKUP klasöründe bir **DPMDB. bak** olmalıdır.
 
@@ -228,7 +228,7 @@ Bu yedekleme seçeneği, MABS veritabanını bir paylaşıma yedeklemek için ye
 
     1. MABS konsolundaki **koruma**>, MABSBACKUP veri kaynağını bulup seçin. Ayrıntılar bölümünde, çoğaltma yolunun bağlantısı üzerindeki **ayrıntıları görüntülemek Için tıklayın ' ı** seçin ve yolu not defteri 'ne kopyalayın. Kaynak yolunu kaldırın ve hedef yolunu tutun. Yol şuna benzer olmalıdır: `C:\Program Files\Microsoft System Center\DPM\DPM\Volumes\Replica\File System\vol_c9aea05f-31e6-45e5-880c-92ce5fba0a58\454d81a0-0d9d-4e07-9617-d49e3f2aa5de\Full\DPMBACKUP` .
 
-    2. **Mabsservername-DPMDB**adlı paylaşımın adını kullanarak bu yola bir paylaşma yapın. Bir yönetici komut isteminden aşağıdaki Net Share komutunu kullanabilirsiniz.
+    2. **Mabsservername-DPMDB** adlı paylaşımın adını kullanarak bu yola bir paylaşma yapın. Bir yönetici komut isteminden aşağıdaki Net Share komutunu kullanabilirsiniz.
 
         ```cmd
         Net Share MABSSERVERNAME-dpmdb="C:\Program Files\Microsoft System Center\DPM\DPM\Volumes\Replica\File System\vol_c9aea05f-31e6-45e5-880c-92ce5fba0a58\454d81a0-0d9d-4e07-9617-d49e3f2aa5de\Full\DPMBACKUP"

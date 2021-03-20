@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: subject-armqs
 ms.openlocfilehash: 1e623405faa89ff41eccdaa57578bc8ac94cd78c
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93422833"
 ---
 # <a name="quickstart-create-and-deploy-azure-functions-resources-from-an-arm-template"></a>Hızlı başlangıç: ARM şablonundan Azure Işlevleri kaynaklarını oluşturma ve dağıtma
@@ -121,13 +121,13 @@ Projenizi yeni Azure kaynaklarında yayımlamak için aşağıdaki adımları ku
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. **Çözüm Gezgini** 'nde projeye sağ tıklayın ve **Yayımla** 'yı seçin.
+1. **Çözüm Gezgini**'nde projeye sağ tıklayın ve **Yayımla**'yı seçin.
 
-1. **Bir yayımlama hedefi** seçin bölümünde, **mevcut Seç** ' ın bulunduğu **Azure işlevleri tüketim planı** ' nı seçin ve **Profil oluştur** ' u
+1. **Bir yayımlama hedefi** seçin bölümünde, **mevcut Seç** ' ın bulunduğu **Azure işlevleri tüketim planı** ' nı seçin ve **Profil oluştur**' u
 
     :::image type="content" source="media/functions-create-first-function-arm/choose-publish-target-visual-studio.png" alt-text="Mevcut bir yayımlama hedefi seçin":::
 
-1. **Aboneliğinizi** seçin, kaynak grubunu genişletin, işlev uygulamanızı seçin ve **Tamam** ' ı seçin.
+1. **Aboneliğinizi** seçin, kaynak grubunu genişletin, işlev uygulamanızı seçin ve **Tamam**' ı seçin.
 
 1. Yayımlama işlemi tamamlandıktan sonra, **site URL 'sini** kopyalayın.
 

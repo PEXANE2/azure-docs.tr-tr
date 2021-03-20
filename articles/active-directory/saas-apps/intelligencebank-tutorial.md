@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/15/2020
 ms.author: jeedes
 ms.openlocfilehash: 9887c435c2aa8dc7ba8cab9481cf30195c4b334e
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92459943"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-intelligencebank"></a>Öğretici: ıntelligencebank ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, ıntelligencebank 'ı Azure Active Directory (Azure AD) ile tü
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -57,7 +57,7 @@ Intelligencebank tümleştirmesini Azure AD ile yapılandırmak için, Galeriden
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-intelligencebank"></a>Intelligencebank için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak ıntelligencebank Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve ıntelligencebank içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak ıntelligencebank Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve ıntelligencebank içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu ıntelligencebank ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -147,7 +147,7 @@ Bu bölümde, ıntelligencebank erişimi vererek Azure çoklu oturum açma özel
 
     b. **Açıklama** metin kutusuna geçerli bir açıklama girin.
 
-    c. **Tür**olarak açılan listeden **SAML** ' yi seçin.
+    c. **Tür** olarak açılan listeden **SAML** ' yi seçin.
 
     d. **Uzak URL** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
@@ -163,7 +163,7 @@ Bu bölümde, ıntelligencebank erişimi vererek Azure çoklu oturum açma özel
 
 1. Farklı bir Web tarayıcısı penceresinde, ıntelligencebank şirket sitenizde yönetici olarak oturum açın.
 
-1. **Yönetici**  ->  **Kullanıcılar** ' a gidin ve **kullanıcıyı**eklemek için **Yeni Kullanıcı Ekle simgesini** seçin.
+1. **Yönetici**  ->  **Kullanıcılar** ' a gidin ve **kullanıcıyı** eklemek için **Yeni Kullanıcı Ekle simgesini** seçin.
 
     ![Ekran görüntüsü Kullanıcılar sekmesinde seçilen kullanıcılar simgesini gösterir.](./media/intelligencebank-tutorial/creating-user.PNG)
 

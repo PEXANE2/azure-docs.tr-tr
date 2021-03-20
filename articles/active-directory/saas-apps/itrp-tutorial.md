@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 2dff68f98e2922d5fc7a4fca1e6de8740bc2ae68
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92459688"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>Öğretici: IRP ile tümleştirme Azure Active Directory
@@ -225,7 +225,7 @@ Bir kullanıcı hesabı oluşturmak için şu adımları uygulayın:
 
 1. **+** Yeni bir kişi eklemek için artı işaretini () seçin:
 
-    ![Artı işaretini seçin](./media/itrp-tutorial/ic775576.png "Artı işaretini seçin")
+    ![Artı işaretini seçerek](./media/itrp-tutorial/ic775576.png "Artı işaretini seçerek")
 
 1. **Yeni kişi ekle** iletişim kutusunda aşağıdaki adımları uygulayın.
 

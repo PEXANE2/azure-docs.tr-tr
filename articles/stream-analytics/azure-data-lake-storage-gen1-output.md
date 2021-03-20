@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
 ms.openlocfilehash: 629a154c89ad301a3e200b1d6cd04c62057d9959
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98016550"
 ---
 # <a name="azure-data-lake-storage-gen-1-output-from-azure-stream-analytics"></a>Azure Stream Analytics Azure Data Lake Storage Gen 1 çıkışı
@@ -23,7 +23,7 @@ Azure Çin 21Vianet ve Azure Almanya (T-Systems Uluslararası) bölgelerinde Str
 
 Aşağıdaki tabloda Data Lake Storage Gen 1 çıktı yapılandırmak için özellik adları ve açıklamaları listelenmektedir.
 
-| Özellik adı | Açıklama |
+| Özellik adı | Description |
 | --- | --- |
 | Çıktı diğer adı | Sorgu çıkışını Data Lake Store yönlendirmek için sorgularda kullanılan kolay bir ad. |
 | Abonelik | Azure Data Lake Storage hesabınızı içeren abonelik. |

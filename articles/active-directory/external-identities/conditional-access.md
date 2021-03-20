@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 74bfa4987f584bbd3490bc5f4f187dee5bc1bd87
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101646291"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>B2B işbirliği kullanıcıları için koşullu erişim
@@ -28,7 +28,7 @@ Bu makalede, kuruluşların, B2B Konuk kullanıcılarına kaynaklarına erişmes
 
 Aşağıdaki diyagramda akış gösterilmektedir: görüntü, ![ B2B Konuk kullanıcıları için bir dış dizinden kimlik doğrulama akışını gösterir](./media/conditional-access-b2b/authentication-flow-b2b-guests.png)
 
-| Adım | Açıklama |
+| Adım | Description |
 |--------------|-----------------------|
 | 1. | B2B Konuk Kullanıcı, bir kaynağa erişim ister. Kaynak, kullanıcıyı güvenilir bir IDP olan kaynak kiracıya yönlendirir.|
 | 2. | Kaynak kiracı kullanıcıyı dış olarak tanımlar ve kullanıcıyı B2B Konuk kullanıcısının IDP 'ye yönlendirir. Kullanıcı IDP 'de birincil kimlik doğrulaması gerçekleştirir.
@@ -39,7 +39,7 @@ Aşağıdaki diyagramda akış gösterilmektedir: görüntü, ![ B2B Konuk kulla
 
 Aşağıdaki diyagramda akış gösterilmektedir: ![ görüntüde bir kerelik geçiş kodu bulunan B2B Konuk kullanıcıları Için kimlik doğrulama akışı gösterilmektedir](./media/conditional-access-b2b/authentication-flow-b2b-guests-otp.png)
 
-| Adım | Açıklama |
+| Adım | Description |
 |--------------|-----------------------|
 | 1. |Kullanıcı başka bir Kiracıdaki bir kaynağa erişim istiyor. Kaynak, kullanıcıyı güvenilir bir IDP olan kaynak kiracıya yönlendirir.|
 | 2. | Kaynak kiracısı, kullanıcıyı [dış e-posta bir kerelik geçiş kodu (OTP) kullanıcısı](./one-time-passcode.md) olarak tanımlar ve kullanıcıya OTP ile bir e-posta gönderir.|

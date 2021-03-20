@@ -9,10 +9,10 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/15/2016
 ms.openlocfilehash: 0a8d79af9f45731971cb1be1f39fc193f9d0f0d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80878978"
 ---
 # <a name="outbound-authentication-for-azure-scheduler"></a>Azure Scheduler için giden kimlik doğrulaması
@@ -48,9 +48,9 @@ Modeli kullanarak kimlik doğrulaması eklerken `ClientCertificate` , istek göv
 | Öğe | Gerekli | Açıklama |
 |---------|----------|-------------|
 | **kimlik doğrulaması** (üst öğe) | SSL/TLS istemci sertifikası kullanmaya yönelik kimlik doğrulama nesnesi |
-| **türüyle** | Evet | Kimlik doğrulama türü. SSL/TLS istemci sertifikaları için değer `ClientCertificate` . |
-| **Türk** | Evet | PFX dosyasının Base64 ile kodlanmış içeriği |
-| **parola** | Evet | PFX dosyasına erişim parolası |
+| **türüyle** | Yes | Kimlik doğrulama türü. SSL/TLS istemci sertifikaları için değer `ClientCertificate` . |
+| **Türk** | Yes | PFX dosyasının Base64 ile kodlanmış içeriği |
+| **parola** | Yes | PFX dosyasına erişim parolası |
 ||| 
 
 ### <a name="response-body---client-certificate"></a>Yanıt gövdesi-Istemci sertifikası 
@@ -168,9 +168,9 @@ Modeli kullanarak kimlik doğrulaması eklerken `Basic` , istek gövdesinde bu e
 | Öğe | Gerekli | Açıklama |
 |---------|----------|-------------|
 | **kimlik doğrulaması** (üst öğe) | Temel kimlik doğrulaması kullanmak için kimlik doğrulama nesnesi | 
-| **türüyle** | Evet | Kimlik doğrulama türü. Temel kimlik doğrulaması için değer `Basic` . | 
-| **nitelen** | Evet | Kimlik doğrulama için Kullanıcı adı | 
-| **parola** | Evet | Kimlik doğrulaması için parola |
+| **türüyle** | Yes | Kimlik doğrulama türü. Temel kimlik doğrulaması için değer `Basic` . | 
+| **nitelen** | Yes | Kimlik doğrulama için Kullanıcı adı | 
+| **parola** | Yes | Kimlik doğrulaması için parola |
 |||| 
 
 ### <a name="response-body---basic"></a>Yanıt gövdesi-temel
@@ -285,12 +285,12 @@ Modeli kullanarak kimlik doğrulaması eklerken `ActiveDirectoryOAuth` , istek g
 
 | Öğe | Gerekli | Açıklama |
 |---------|----------|-------------|
-| **kimlik doğrulaması** (üst öğe) | Evet | ActiveDirectoryOAuth kimlik doğrulamasını kullanmaya yönelik kimlik doğrulama nesnesi |
-| **türüyle** | Evet | Kimlik doğrulama türü. ActiveDirectoryOAuth kimlik doğrulaması için değer `ActiveDirectoryOAuth` . |
-| **tenant** | Evet | Azure AD kiracısı için kiracı tanımlayıcısı. Azure AD kiracının kiracı tanımlayıcısını bulmak için Azure PowerShell ' de çalıştırın `Get-AzureAccount` . |
-| **grubu** | Evet | Bu değer olarak ayarlanır `https://management.core.windows.net/` . | 
-| **ClientID** | Evet | Azure AD uygulaması için istemci tanımlayıcısı | 
-| **gizlilikle** | Evet | Belirteci isteyen istemcinin parolası | 
+| **kimlik doğrulaması** (üst öğe) | Yes | ActiveDirectoryOAuth kimlik doğrulamasını kullanmaya yönelik kimlik doğrulama nesnesi |
+| **türüyle** | Yes | Kimlik doğrulama türü. ActiveDirectoryOAuth kimlik doğrulaması için değer `ActiveDirectoryOAuth` . |
+| **tenant** | Yes | Azure AD kiracısı için kiracı tanımlayıcısı. Azure AD kiracının kiracı tanımlayıcısını bulmak için Azure PowerShell ' de çalıştırın `Get-AzureAccount` . |
+| **grubu** | Yes | Bu değer olarak ayarlanır `https://management.core.windows.net/` . | 
+| **ClientID** | Yes | Azure AD uygulaması için istemci tanımlayıcısı | 
+| **gizli dizi** | Yes | Belirteci isteyen istemcinin parolası | 
 |||| 
 
 ### <a name="response-body---active-directory-oauth"></a>Yanıt gövdesi-Active Directory OAuth

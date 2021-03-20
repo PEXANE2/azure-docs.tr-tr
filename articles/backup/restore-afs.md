@@ -4,17 +4,17 @@ description: Bir dosya paylaşımının tamamını veya belirli dosyaları Azure
 ms.topic: conceptual
 ms.date: 01/12/2020
 ms.openlocfilehash: 35ca0936ae6efba716adb51f43326cdd5bfa2d98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89376783"
 ---
 # <a name="restore-azure-file-shares"></a>Azure dosya paylaşımlarını geri yükleme
 
 Bu makalede, [Azure Backup](./backup-overview.md)tarafından oluşturulan bir geri yükleme noktasından bir dosya paylaşımının tamamını veya belirli dosyaları geri yüklemek için Azure Portal nasıl kullanılacağı açıklanmaktadır.
 
-Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
+Bu makalede şunları yapmayı öğreneceksiniz:
 
 * Tam bir Azure dosya paylaşımının geri yüklenmesi.
 * Dosya veya klasörleri tek tek geri yükleyin.
@@ -36,7 +36,7 @@ Geri yükleme işlemi gerçekleştirmek için aşağıdaki adımları izleyin.
 
     ![Yedekleme yönetim türleri](./media/restore-afs/backup-management.png)
 
-1. **Yedekleme öğeleri** bölmesinde, **yedekleme yönetimi türü**altında **Azure depolama (Azure dosyaları)** öğesini seçin. Bu kasa kullanılarak yedeklenen tüm dosya paylaşımlarının ve bunlara karşılık gelen depolama hesaplarının bir listesini görürsünüz.
+1. **Yedekleme öğeleri** bölmesinde, **yedekleme yönetimi türü** altında **Azure depolama (Azure dosyaları)** öğesini seçin. Bu kasa kullanılarak yedeklenen tüm dosya paylaşımlarının ve bunlara karşılık gelen depolama hesaplarının bir listesini görürsünüz.
 
     ![Tüm dosya paylaşımlarının listesi](./media/restore-afs/file-shares.png)
 
@@ -61,14 +61,14 @@ Dosya paylaşımının tamamını özgün konuma veya alternatif bir konuma geri
     >[!NOTE]
     >Varsayılan olarak, **geri yükleme noktası seç** bölmesi son 30 günden geri yükleme noktalarını listeler. Belirli bir süre içinde oluşturulan geri yükleme noktalarına bakmak isterseniz, uygun **başlangıç saatini** ve **bitiş saatini** seçerek aralığı belirtin ve **Yenile** düğmesini seçin.
 
-1. Sonraki adım **geri yükleme konumunu**seçdir. **Kurtarma hedefi** bölümünde, verilerin nereye veya nasıl geri yükleneceğini belirtin. İki seçenekten birini, iki durumlu düğmeyi kullanarak seçin:
+1. Sonraki adım **geri yükleme konumunu** seçdir. **Kurtarma hedefi** bölümünde, verilerin nereye veya nasıl geri yükleneceğini belirtin. İki seçenekten birini, iki durumlu düğmeyi kullanarak seçin:
 
     * **Özgün konum**: dosya paylaşımının tamamını özgün kaynakla aynı konuma geri yükleyin.
     * **Alternatif konum**: dosya paylaşımının tamamını alternatif bir konuma geri yükleyin ve özgün dosya paylaşımının olduğu gibi tutun.
 
 #### <a name="restore-to-the-original-location-full-share-recovery"></a>Özgün konuma geri yükleme (tam paylaşma kurtarması)
 
-1. **Kurtarma hedefi**olarak **özgün konum** ' u seçin ve çakışmalar varsa, **Çakışma** durumunda ilgili seçeneği seçerek, çakışmalar olup olmayacağını veya üzerine yaz ' ı seçin.
+1. **Kurtarma hedefi** olarak **özgün konum** ' u seçin ve çakışmalar varsa, **Çakışma** durumunda ilgili seçeneği seçerek, çakışmalar olup olmayacağını veya üzerine yaz ' ı seçin.
 
 1. Geri yükleme işlemini başlatmak için **geri yükle ' yi seçin.**
 
@@ -76,7 +76,7 @@ Dosya paylaşımının tamamını özgün konuma veya alternatif bir konuma geri
 
 #### <a name="restore-to-an-alternate-location-full-share-recovery"></a>Alternatif bir konuma geri yükleme (tam paylaşma kurtarması)
 
-1. **Kurtarma hedefi**olarak **alternatif konum** ' u seçin.
+1. **Kurtarma hedefi** olarak **alternatif konum** ' u seçin.
 1. Yedeklenen içeriği **depolama hesabı** açılır listesinden geri yüklemek istediğiniz hedef depolama hesabını seçin.
 1. **Dosya Paylaşımı Seç** açılan listesi, adım 2 ' de seçtiğiniz depolama hesabında bulunan dosya paylaşımlarını görüntüler. Yedeklenen içeriği geri yüklemek istediğiniz dosya payını seçin.
 1. **Klasör adı** kutusunda, geri yüklenen içerikle hedef dosya paylaşımında oluşturmak istediğiniz bir klasör adı belirtin.
@@ -101,14 +101,14 @@ Dosya paylaşımının tamamını özgün konuma veya alternatif bir konuma geri
 
     ![Geri yükleme noktası seç](./media/restore-afs/restore-point.png)
 
-1. Sonraki adım **geri yükleme konumunu**seçdir. **Kurtarma hedefi** bölümünde, verilerin nereye veya nasıl geri yükleneceğini belirtin. İki seçenekten birini, iki durumlu düğmeyi kullanarak seçin:
+1. Sonraki adım **geri yükleme konumunu** seçdir. **Kurtarma hedefi** bölümünde, verilerin nereye veya nasıl geri yükleneceğini belirtin. İki seçenekten birini, iki durumlu düğmeyi kullanarak seçin:
 
     * **Özgün konum**: seçili dosya veya klasörleri özgün kaynakla aynı dosya paylaşımında geri yükleyin.
     * **Alternatif konum**: seçili dosya veya klasörleri alternatif bir konuma geri yükleyin ve özgün dosya paylaşma içeriğini olduğu gibi tutun.
 
 #### <a name="restore-to-the-original-location-item-level-recovery"></a>Özgün konuma geri yükleme (öğe düzeyinde kurtarma)
 
-1. **Kurtarma hedefi**olarak **özgün konum** ' u seçin ve **Çakışmalar söz konusu olduğunda, çakışmalar söz konusu** olduğunda ilgili seçeneği belirleyip, çakışmalar varsa üzerine yaz ' ı seçin.
+1. **Kurtarma hedefi** olarak **özgün konum** ' u seçin ve **Çakışmalar söz konusu olduğunda, çakışmalar söz konusu** olduğunda ilgili seçeneği belirleyip, çakışmalar varsa üzerine yaz ' ı seçin.
 
     ![Öğe düzeyinde kurtarma için özgün konum](./media/restore-afs/original-location-item-level.png)
 
@@ -127,7 +127,7 @@ Dosya paylaşımının tamamını özgün konuma veya alternatif bir konuma geri
 
 #### <a name="restore-to-an-alternate-location-item-level-recovery"></a>Alternatif bir konuma geri yükleme (öğe düzeyinde kurtarma)
 
-1. **Kurtarma hedefi**olarak **alternatif konum** ' u seçin.
+1. **Kurtarma hedefi** olarak **alternatif konum** ' u seçin.
 1. Yedeklenen içeriği **depolama hesabı** açılır listesinden geri yüklemek istediğiniz hedef depolama hesabını seçin.
 1. **Dosya Paylaşımı Seç** açılan listesi, adım 2 ' de seçtiğiniz depolama hesabında bulunan dosya paylaşımlarını görüntüler. Yedeklenen içeriği geri yüklemek istediğiniz dosya payını seçin.
 1. **Klasör adı** kutusunda, geri yüklenen içerikle hedef dosya paylaşımında oluşturmak istediğiniz bir klasör adı belirtin.
@@ -158,7 +158,7 @@ Kurtarma Hizmetleri kasasından geri yükleme ilerlemesini de izleyebilirsiniz:
 
     ![Yedekleme Işlerini seçin](./media/restore-afs/backup-jobs.png)
 
-1. Geri yükleme işlemi hakkında, **aktarılan veriler** ve **geri yüklenen dosya sayısı**gibi daha fazla ayrıntı görüntülemek için dosya paylaşımınıza karşılık gelen iş yükü adını seçin.
+1. Geri yükleme işlemi hakkında, **aktarılan veriler** ve **geri yüklenen dosya sayısı** gibi daha fazla ayrıntı görüntülemek için dosya paylaşımınıza karşılık gelen iş yükü adını seçin.
 
     ![Geri yüklenen Ayrıntıları gör](./media/restore-afs/restore-details.png)
 

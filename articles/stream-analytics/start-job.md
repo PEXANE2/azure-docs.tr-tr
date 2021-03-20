@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 04/03/2019
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 79149d8e9862ece24b4b2da4c2ca4afcceb23d63
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98016261"
 ---
 # <a name="how-to-start-an-azure-stream-analytics-job"></a>Azure Stream Analytics işi başlatma
@@ -28,7 +28,7 @@ Bir işi başlatmak için aşağıdaki üç seçenek mevcuttur. Aşağıda bahse
 * **Son durdurulduğunda**. Bu seçenek, iş daha önce başlatıldığında kullanılabilir ancak el ile veya başarısız olarak durdurulur. Bu seçeneği seçerken Azure Stream Analytics, bir veri kaybolmayacak şekilde işi yeniden başlatmak için son çıkış süresini kullanır. Önceki seçeneklere benzer şekilde, Azure Stream Analytics zamana bağlı bir operatör kullanılıyorsa, bu zamandan önce verileri otomatik olarak okur. Birkaç giriş bölümünün saati farklı olabileceğinden, tüm bölümlerin en erken durma saati kullanılır, bu nedenle çıktıda bazı yinelemeler görülebilir. Tam bir kez işleme hakkında daha fazla bilgi için, [olay teslim garantisi](/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics)sayfasında kullanılabilir.
 
 
-## <a name="azure-portal"></a>Azure portal
+## <a name="azure-portal"></a>Azure portalı
 
 Azure portal işinize gidin ve genel bakış sayfasında **Başlat** ' ı seçin. Bir **iş çıkışı başlangıç zamanı** seçin ve ardından **Başlat**' ı seçin.
 

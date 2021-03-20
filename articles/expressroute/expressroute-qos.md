@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: duau
 ms.openlocfilehash: 7f14f43fa341df40ecd35340b7311e1acd18004c
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92204717"
 ---
 # <a name="expressroute-qos-requirements"></a>ExpressRoute QoS gereksinimleri
@@ -29,9 +29,9 @@ Aşağıdaki tabloda, Microsoft ekipleri ve Skype Kurumsal tarafından kullanıl
 | **Trafik Sınıfı** | **İşleme (DSCP İşaretleme)** | **Microsoft ekipleri ve Skype Kurumsal iş yükleri** |
 | --- | --- | --- |
 | **Ses** |EF (46) |Skype/Microsoft ekipleri/Lync Voice |
-| **LiDE** |AF41 (34) |Video, VBSS |
+| **Etkileşimli** |AF41 (34) |Video, VBSS |
 | |AF21 (18) |Uygulama paylaşımı | 
-| **Varsayılan** |AF11 (10) |Dosya aktarımı |
+| **Varsayılanını** |AF11 (10) |Dosya aktarımı |
 | |CS0 (0) |Diğer |
 
 * İş yükleri sınıflandırmanız ve doğru DSCP değerlerini işaretlemeniz gerekir. Ağınızda DSCP işaretlerini ayarlamak için [burada](/SkypeForBusiness/manage/network-management/qos/configuring-port-ranges-for-your-skype-clients#configure-quality-of-service-policies-for-clients-running-on-windows-10) sağlanan yönergeleri izleyin.

@@ -5,15 +5,15 @@ ms.date: 09/24/2020
 ms.topic: quickstart
 ms.custom: devx-track-js
 ms.openlocfilehash: 7548053e4bd5be214bf7de3eef3dc4c6c95442d4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91349183"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-javascript"></a>Hızlı başlangıç: JavaScript kullanarak uyumlu olmayan kaynakları belirlemek için bir ilke ataması oluşturma
 
-Azure’da uyumluluğu anlamanın ilk adımı, kaynaklarınızın durumunu belirlemektir. Bu hızlı başlangıçta, yönetilen disk kullanmayan sanal makineleri belirlemek için bir ilke ataması oluşturacaksınız. Bu tamamlandığında, _uyumlu olmayan_sanal makineleri tanımlayacaksınız.
+Azure’da uyumluluğu anlamanın ilk adımı, kaynaklarınızın durumunu belirlemektir. Bu hızlı başlangıçta, yönetilen disk kullanmayan sanal makineleri belirlemek için bir ilke ataması oluşturacaksınız. Bu tamamlandığında, _uyumlu olmayan_ sanal makineleri tanımlayacaksınız.
 
 JavaScript kitaplığı, Azure kaynaklarını komut satırından veya betiklerden yönetmek için kullanılır. Bu kılavuzda, bir ilke ataması oluşturmak için JavaScript kitaplığı 'nın nasıl kullanılacağı açıklanmaktadır.
 
@@ -109,13 +109,13 @@ Bu hızlı başlangıçta, bir ilke ataması oluşturup yönetilen diskler () ta
 Yukarıdaki komutlarda aşağıdaki bilgiler kullanılmaktadır:
 
 - **Subıd** -kimlik doğrulama bağlamı IÇIN abonelik kimliği. Aboneliğiniz ile değiştirdiğinizden emin olun `{subscriptionId}` .
-- **ad** -ilke atama nesnesinin benzersiz adı. Yukarıdaki örnekte _audit-VM-manageddisks_kullanılır.
-- **DisplayName** -ilke ataması için görünen ad. Bu durumda, _yönetilen disk ataması olmadan VM 'Leri denetleme_kullanıyorsunuz demektir.
+- **ad** -ilke atama nesnesinin benzersiz adı. Yukarıdaki örnekte _audit-VM-manageddisks_ kullanılır.
+- **DisplayName** -ilke ataması için görünen ad. Bu durumda, _yönetilen disk ataması olmadan VM 'Leri denetleme_ kullanıyorsunuz demektir.
 - **Policydeıd** : atamayı oluşturmak için kullandığınız ilke tanım yolu. Bu durumda, _yönetilen diskleri kullanmayan ilke tanımı denetim VM_'lerinin kimliğidir.
 - **Açıklama** -ilkenin ne yaptığını veya neden bu kapsama atandığını daha derin bir açıklama.
 - **kapsam** -bir kapsam, ilke atamasının hangi kaynaklarda veya gruplandırmaya uygulanacağını belirler. Bir yönetim grubundan tek bir kaynağa kadar değişebilir. `{scope}`Aşağıdaki desenlerden biriyle değiştirdiğinizden emin olun:
   - Yönetim grubu: `/providers/Microsoft.Management/managementGroups/{managementGroup}`
-  - Aboneliğiniz `/subscriptions/{subscriptionId}`
+  - Abonelik: `/subscriptions/{subscriptionId}`
   - Kaynak grubu: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}`
   - Kaynak `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]`
 

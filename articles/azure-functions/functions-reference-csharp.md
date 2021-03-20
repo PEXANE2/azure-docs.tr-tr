@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 12/12/2017
 ms.author: cshoe
 ms.openlocfilehash: 48614640660da6d85face5ea416d267fa9f59515
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92164848"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Işlevleri C# betiği (. CSX) geliştirici başvurusu
@@ -213,13 +213,13 @@ Yönergeyle göreli bir yol kullanabilirsiniz `#load` :
 
 * `#load "mylogger.csx"` işlev klasöründe bulunan bir dosyayı yükler.
 * `#load "loadedfiles\mylogger.csx"` işlev klasöründeki bir klasörde bulunan bir dosyayı yükler.
-* `#load "..\shared\mylogger.csx"` bir klasörde bulunan bir dosyayı işlev klasörüyle aynı düzeyde, yani doğrudan *Wwwroot*altında yükler.
+* `#load "..\shared\mylogger.csx"` bir klasörde bulunan bir dosyayı işlev klasörüyle aynı düzeyde, yani doğrudan *Wwwroot* altında yükler.
 
 `#load`Yönergesi *. cs* dosyalarıyla değil yalnızca *. CSX* dosyaları ile birlikte kullanılabilir.
 
 ## <a name="binding-to-method-return-value"></a>Metot dönüş değerine bağlama
 
-function.jsüzerindeki adı kullanarak bir çıkış bağlaması için bir yöntem dönüş değeri kullanabilirsiniz `$return` . *function.json* Örnekler için bkz. [Tetikleyiciler ve bağlamalar](./functions-bindings-return-value.md).
+function.jsüzerindeki adı kullanarak bir çıkış bağlaması için bir yöntem dönüş değeri kullanabilirsiniz `$return` .  Örnekler için bkz. [Tetikleyiciler ve bağlamalar](./functions-bindings-return-value.md).
 
 Dönüş değerini yalnızca başarılı bir işlev yürütmesi her zaman çıkış bağlamasına geçirilecek bir dönüş değeri ile sonuçlanırsa kullanın. Aksi takdirde, `ICollector` `IAsyncCollector` aşağıdaki bölümde gösterildiği gibi, veya kullanın.
 

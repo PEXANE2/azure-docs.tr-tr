@@ -13,15 +13,15 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 ms.openlocfilehash: 0e0ca8a787145fb40087a2d99be85607404eebfa
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92152124"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Eylemleri tetiklemek için Event Grid kullanarak IoT Hub olaylara tepki verme
 
-Azure IoT Hub, Azure Event Grid ile tümleştirilerek diğer hizmetlere olay bildirimleri göndermenizi ve aşağı akış işlemleri tetiklemenizi sağlar. Kritik olaylara güvenilir, ölçeklenebilir ve güvenli bir şekilde yanıt vermek için, iş uygulamalarınızı IoT Hub olaylarını dinleyecek şekilde yapılandırın.Örneğin, bir veritabanını güncelleştiren, bir iş bileti oluşturan ve IoT Hub’ınıza yeni bir IoT cihazı her kaydedildiğinde bir e-posta bildirimi gönderen bir uygulama oluşturun.
+Azure IoT Hub, Azure Event Grid ile tümleştirilerek diğer hizmetlere olay bildirimleri göndermenizi ve aşağı akış işlemleri tetiklemenizi sağlar. Kritik olaylara güvenilir, ölçeklenebilir ve güvenli bir şekilde yanıt vermek için, iş uygulamalarınızı IoT Hub olaylarını dinleyecek şekilde yapılandırın. Örneğin, bir veritabanını güncelleştiren, bir iş bileti oluşturan ve IoT Hub’ınıza yeni bir IoT cihazı her kaydedildiğinde bir e-posta bildirimi gönderen bir uygulama oluşturun.
 
 [Azure Event Grid](../event-grid/overview.md) , yayımlama-abonelik modeli kullanan tam olarak yönetilen bir olay yönlendirme hizmetidir. Event Grid Azure [işlevleri](../azure-functions/functions-overview.md) ve [Azure Logic Apps](../logic-apps/logic-apps-overview.md)gibi Azure hizmetleri için yerleşik desteğe sahiptir ve Web kancalarını kullanarak Azure olmayan hizmetlere olay uyarıları sunabilir. Event Grid desteklediği olay işleyicilerinin tüm listesi için bkz. [Azure Event Grid giriş](../event-grid/overview.md).
 

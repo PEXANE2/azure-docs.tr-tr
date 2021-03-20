@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
 ms.openlocfilehash: 9ba22c51c7a6c26a232ed20aec21fc83d2c54b37
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92171465"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>REST API aracılığıyla Azure Backup kullanarak bir Azure VM 'yi yedekleme
@@ -41,7 +41,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 Başka bir işlem oluşturulduğunda 202 (kabul edildi) ve bu işlem tamamlandığında 200 (Tamam) iki yanıt döndürür.
 
-|Ad  |Tür  |Açıklama  |
+|Ad  |Tür  |Description  |
 |---------|---------|---------|
 |204 Içerik yok     |         |  Hiçbir içerik döndürülmeden Tamam      |
 |202 kabul edildi     |         |     Kabul edildi    |
@@ -104,7 +104,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 #### <a name="responses-to-get-operation"></a>İşlemin yanıtlarını al
 
-|Ad  |Tür  |Açıklama  |
+|Ad  |Tür  |Description  |
 |---------|---------|---------|
 |200 TAMAM     | [Workloadkorunabilir Tableıtemresourcelist](/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       Tamam |
 
@@ -180,7 +180,7 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 Korumalı bir öğe oluşturmak için, istek gövdesinin bileşenleri aşağıda verilmiştir.
 
-|Ad  |Tür  |Açıklama  |
+|Ad  |Tür  |Description  |
 |---------|---------|---------|
 |properties     | AzureIaaSVMProtectedItem        |Korunabilir kaynak özellikleri         |
 
@@ -208,7 +208,7 @@ Korumalı bir öğenin oluşturulması [zaman uyumsuz bir işlemdir](../azure-re
 
 Başka bir işlem oluşturulduğunda 202 (kabul edildi) ve bu işlem tamamlandığında 200 (Tamam) iki yanıt döndürür.
 
-|Ad  |Tür  |Açıklama  |
+|Ad  |Tür  |Description  |
 |---------|---------|---------|
 |200 TAMAM     |    [Korunabilir kaynak](/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  Tamam       |
 |202 kabul edildi     |         |     Kabul edildi    |
@@ -298,10 +298,10 @@ Yukarıdaki istek gövdesinde, yedeklenecek disklerin listesi Genişletilmiş Ö
 
 |Özellik  |Değer  |
 |---------|---------|
-|diskLunList     | Disk LUN listesi, *veri disklerinin LUN*'ların bir listesidir. **Işletim sistemi diski her zaman yedeklenir ve Bahsedilmek zorunda**değildir.        |
-|Ibılıst ıonlist     | LUN 'ların yedekleme sırasında dahil edilecek şekilde **doğru** olması gerekir. **Yanlış**ise, belirtilen LUN 'lar dışarıda bırakılır.         |
+|diskLunList     | Disk LUN listesi, *veri disklerinin LUN*'ların bir listesidir. **Işletim sistemi diski her zaman yedeklenir ve Bahsedilmek zorunda** değildir.        |
+|Ibılıst ıonlist     | LUN 'ların yedekleme sırasında dahil edilecek şekilde **doğru** olması gerekir. **Yanlış** ise, belirtilen LUN 'lar dışarıda bırakılır.         |
 
-Bu nedenle, gereksinim yalnızca işletim sistemi diskini yedeklemenizin, _Tüm_ veri disklerinin dışlanması gerekir. Daha kolay bir yol, hiçbir veri diski dahil edilmemelidir. Bu nedenle, disk LUN listesi boş olacak ve **ıbıary ıonlist** **doğru**olacaktır. Benzer şekilde, bir alt küme seçmenin ne kadar kolay olduğunu düşünün: birkaç disk her zaman dışlanmalı veya birkaç disk her zaman eklenmelidir. LUN listesini ve Boole değişkeni değerini uygun şekilde seçin.
+Bu nedenle, gereksinim yalnızca işletim sistemi diskini yedeklemenizin, _Tüm_ veri disklerinin dışlanması gerekir. Daha kolay bir yol, hiçbir veri diski dahil edilmemelidir. Bu nedenle, disk LUN listesi boş olacak ve **ıbıary ıonlist** **doğru** olacaktır. Benzer şekilde, bir alt küme seçmenin ne kadar kolay olduğunu düşünün: birkaç disk her zaman dışlanmalı veya birkaç disk her zaman eklenmelidir. LUN listesini ve Boole değişkeni değerini uygun şekilde seçin.
 
 ## <a name="trigger-an-on-demand-backup-for-a-protected-azure-vm"></a>Korumalı bir Azure VM için isteğe bağlı yedekleme tetikleyin
 
@@ -323,7 +323,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 İsteğe bağlı bir yedeklemeyi tetiklemek için, istek gövdesinin bileşenleri aşağıda verilmiştir.
 
-|Ad  |Tür  |Açıklama  |
+|Ad  |Tür  |Description  |
 |---------|---------|---------|
 |properties     | [Iaasvmbackuprequest](/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |BackupRequestResource özellikleri         |
 
@@ -348,7 +348,7 @@ Aşağıdaki istek gövdesi, korumalı bir öğe için bir yedeklemeyi tetikleme
 
 Başka bir işlem oluşturulduğunda 202 (kabul edildi) ve bu işlem tamamlandığında 200 (Tamam) iki yanıt döndürür.
 
-|Ad  |Tür  |Açıklama  |
+|Ad  |Tür  |Description  |
 |---------|---------|---------|
 |202 kabul edildi     |         |     Kabul edildi    |
 
@@ -477,7 +477,7 @@ Korumayı *silme* [işlemi zaman uyumsuz bir işlemdir](../azure-resource-manage
 
 Bu, başka bir işlem oluşturulduğunda 202 (kabul edildi) ve bu işlem tamamlandığında 204 (NoContent) olarak iki yanıt döndürür.
 
-|Ad  |Tür  |Açıklama  |
+|Ad  |Tür  |Description  |
 |---------|---------|---------|
 |204 NoContent     |         |  NoContent       |
 |202 kabul edildi     |         |     Kabul edildi    |

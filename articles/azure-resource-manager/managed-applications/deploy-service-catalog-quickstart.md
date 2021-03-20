@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: tomfitz
 ms.openlocfilehash: ce58fc69496f54c078b0a0a55a8a3c7cad82a051
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "81391702"
 ---
 # <a name="quickstart-deploy-service-catalog-app-through-azure-portal"></a>Hızlı başlangıç: Azure portal aracılığıyla Hizmet kataloğu uygulaması dağıtma
@@ -36,7 +36,7 @@ Azure portal, aşağıdaki adımları kullanın:
 
    ![Dağıtılacak tanımı seçin](./media/deploy-service-catalog-quickstart/select-definition.png)
 
-1. **Temel bilgiler** sekmesi için değerler sağlayın. Hizmet kataloğu uygulamanızı dağıtmak için Azure aboneliğini seçin. **Applicationgroup**adlı yeni bir kaynak grubu oluşturun. Uygulamanız için bir konum seçin. İşiniz bittiğinde **Tamam**' ı seçin.
+1. **Temel bilgiler** sekmesi için değerler sağlayın. Hizmet kataloğu uygulamanızı dağıtmak için Azure aboneliğini seçin. **Applicationgroup** adlı yeni bir kaynak grubu oluşturun. Uygulamanız için bir konum seçin. İşiniz bittiğinde **Tamam**' ı seçin.
 
    ![Temel için değer sağlama](./media/deploy-service-catalog-quickstart/provide-basics.png)
 

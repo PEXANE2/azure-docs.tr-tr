@@ -10,10 +10,10 @@ ms.date: 09/22/2020
 ms.author: jomore
 ms.custom: fasttrack-new
 ms.openlocfilehash: cc8e7314c941035207ecf809a9d85ef46bd58379
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92913764"
 ---
 # <a name="use-private-link-in-virtual-wan"></a>Sanal WAN 'da özel bağlantı kullan
@@ -38,11 +38,11 @@ Birçok farklı hizmet için özel bir bağlantı uç noktası oluşturabilirsin
 
 Azure SQL veritabanını oluşturduktan sonra özel uç nokta IP adresini özel uç noktalarınıza göz atarak doğrulayabilirsiniz:
 
-:::image type="content" source="./media/howto-private-link/endpoints.png" alt-text="özel bağlantı oluştur" lightbox="./media/howto-private-link/endpoints.png":::
+:::image type="content" source="./media/howto-private-link/endpoints.png" alt-text="özel uç noktalar" lightbox="./media/howto-private-link/endpoints.png":::
 
 Oluşturduğumuz özel uç noktasına tıkladığınızda, özel IP adresinin yanı sıra tam etki alanı adını (FQDN) görmeniz gerekir. Özel uç noktanın dağıtıldığı VNet aralığında bir IP adresi olduğunu unutmayın (10.1.3.0/24):
 
-:::image type="content" source="./media/howto-private-link/sql-endpoint.png" alt-text="özel bağlantı oluştur" lightbox="./media/howto-private-link/sql-endpoint.png":::
+:::image type="content" source="./media/howto-private-link/sql-endpoint.png" alt-text="SQL uç noktası" lightbox="./media/howto-private-link/sql-endpoint.png":::
 
 ## <a name="verify-connectivity-from-the-same-vnet"></a><a name="connectivity"></a>Aynı VNet 'ten gelen bağlantıyı doğrulama
 
@@ -61,7 +61,7 @@ Address: 10.1.3.228
 
 Önceki çıktıda görebileceğiniz gibi, FQDN, özel `wantest.database.windows.net` `wantest.privatelink.database.windows.net` uç nokta ile oluşturulan özel DNS BÖLGESININ özel IP adresine çözümlendiğine yönelik olarak eşlenir `10.1.3.228` . Özel DNS bölgesine bakmak, özel IP adresine eşlenmiş özel uç nokta için bir kayıt olduğunu doğrulayacaktır:
 
-:::image type="content" source="./media/howto-private-link/dns-zone.png" alt-text="özel bağlantı oluştur" lightbox="./media/howto-private-link/dns-zone.png":::
+:::image type="content" source="./media/howto-private-link/dns-zone.png" alt-text="DNS bölgesi" lightbox="./media/howto-private-link/dns-zone.png":::
 
 Doğru DNS çözümlemesini doğruladıktan sonra veritabanına bağlanmayı deneyebiliriz:
 
@@ -87,7 +87,7 @@ VNet veya dal arasında özel uç noktanın dağıtıldığı VNet arasında ba�
 
 Bu örnekte, farklı bir VNet 'ten bağlanacağız. bu nedenle, iş yüklerinin Azure SQL veritabanı tam etki alanı adını özel IP adresine çözümleyebilmesi için, ilk olarak özel DNS bölgesini yeni VNet 'e bağlayacağız. Bu, özel DNS bölgesinin yeni VNet 'e bağlanması sırasında yapılır:
 
-:::image type="content" source="./media/howto-private-link/dns-link.png" alt-text="özel bağlantı oluştur" lightbox="./media/howto-private-link/dns-link.png":::
+:::image type="content" source="./media/howto-private-link/dns-link.png" alt-text="DNS bağlantısı" lightbox="./media/howto-private-link/dns-link.png":::
 
 Artık bağlı VNet 'teki tüm sanal makineler, Azure SQL veritabanı FQDN 'sini özel bağlantının özel IP adresine doğru şekilde çözmelidir:
 
@@ -104,7 +104,7 @@ Address: 10.1.3.228
 
 Bu sanal ağın (10.1.1.0/24), Özel uç noktanın yapılandırıldığı orijinal VNet 'e bağlantısının olduğunu (10.1.3.0/24) sağlamak için, VNet 'teki herhangi bir sanal makinede etkin yol tablosunu doğrulayabilirsiniz:
 
-:::image type="content" source="./media/howto-private-link/effective-routes.png" alt-text="özel bağlantı oluştur" lightbox="./media/howto-private-link/effective-routes.png":::
+:::image type="content" source="./media/howto-private-link/effective-routes.png" alt-text="geçerli rotalar" lightbox="./media/howto-private-link/effective-routes.png":::
 
 Gördüğünüz gibi, Azure sanal WAN 'daki sanal ağ geçitleri tarafından eklenen VNet 10.1.3.0/24 ' e işaret eden bir yol vardır. Artık son olarak veritabanına bağlantıyı test edebilirsiniz:
 

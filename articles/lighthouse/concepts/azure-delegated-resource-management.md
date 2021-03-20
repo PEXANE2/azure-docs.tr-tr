@@ -4,10 +4,10 @@ description: Azure Temsilcili kaynak yönetimi, Azure Athouse 'ın önemli bir p
 ms.date: 10/19/2020
 ms.topic: conceptual
 ms.openlocfilehash: d484e61fc4ab3714eb362b26d64d449890065888
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92203866"
 ---
 # <a name="azure-delegated-resource-management"></a>Azure tarafından atanan temsilcinin kaynak yönetimi
@@ -43,7 +43,7 @@ Yüksek düzeyde, Azure tarafından atanan kaynak yönetiminin nasıl çalışt�
 
 ## <a name="support-for-azure-delegated-resource-management"></a>Azure tarafından yetkilendirilen kaynak yönetimi desteği
 
-Azure Temsilcili kaynak yönetimiyle ilgili yardıma ihtiyacınız varsa Azure portal bir destek isteği açabilirsiniz. **Sorun türü**için **Teknik**' i seçin. Bir **abonelik seçin ve ardından açık (** **& yönetimi**altında) seçeneğini belirleyin.
+Azure Temsilcili kaynak yönetimiyle ilgili yardıma ihtiyacınız varsa Azure portal bir destek isteği açabilirsiniz. **Sorun türü** için **Teknik**' i seçin. Bir **abonelik seçin ve ardından açık (** **& yönetimi** altında) seçeneğini belirleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

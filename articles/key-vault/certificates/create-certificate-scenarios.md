@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 02e13ce81ed2f11c0bb69015a4864c4a1ad55593
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "81430974"
 ---
 # <a name="monitor-and-manage-certificate-creation"></a>Sertifika oluşturmayı izleme ve yönetme
@@ -414,7 +414,7 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 
 |Öğe adı|Gerekli|Tür|Sürüm|Açıklama|
 |------------------|--------------|----------|-------------|-----------------|
-|x5c|Evet|array|\<introducing version>|X509 sertifika zinciri temel 64 dize dizisi olarak.|
+|x5c|Yes|array|\<introducing version>|X509 sertifika zinciri temel 64 dize dizisi olarak.|
 
 ### <a name="response"></a>Yanıt
 

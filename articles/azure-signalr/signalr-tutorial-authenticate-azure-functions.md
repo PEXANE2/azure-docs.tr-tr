@@ -8,10 +8,10 @@ ms.date: 03/01/2019
 ms.author: zhshang
 ms.custom: devx-track-js
 ms.openlocfilehash: 6df47d3fd62083a5d0940a1d6da50ac5d7d955f4
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92150904"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>Öğretici: Azure İşlevleri ile Azure SignalR Hizmeti kimlik doğrulaması
@@ -67,7 +67,7 @@ Azure İşlevleri uygulamasını yerel ortamda derleyecek ve test edeceksiniz. U
 
 1. **Oluştur**’a tıklayın.
 
-1. Örnek dağıtıldıktan sonra portalda açın ve ayarlar sayfasını bulun. Hizmet modu ayarını *sunucusuz*olarak değiştirin.
+1. Örnek dağıtıldıktan sonra portalda açın ve ayarlar sayfasını bulun. Hizmet modu ayarını *sunucusuz* olarak değiştirin.
 
     ![SignalR hizmeti modu](media/signalr-concept-azure-functions/signalr-service-mode.png)
     
@@ -338,17 +338,17 @@ Azure depolama hesabı, Azure 'da çalışan bir işlev uygulaması için gerekl
     | Çoğaltma | Yerel olarak yedekli depolama (LRS) |
     | Erişim katmanı | Sık Erişimli |
 
-1. **Gözden geçir + oluştur**ve sonra **Oluştur**' a tıklayın.
+1. **Gözden geçir + oluştur** ve sonra **Oluştur**' a tıklayın.
 
 ### <a name="configure-static-websites"></a>Statik Web sitelerini yapılandırma
 
 1. Depolama hesabı oluşturulduktan sonra, Azure portal açın.
 
-1. **Statik Web sitesi**seçin.
+1. **Statik Web sitesi** seçin.
 
 1. Statik Web sitesi özelliğini etkinleştirmek için **etkin** ' i seçin.
 
-1. **Dizin belgesi adı**alanına *index.html*yazın.
+1. **Dizin belgesi adı** alanına *index.html* yazın.
 
 1. **Kaydet**’e tıklayın.
 
@@ -360,7 +360,7 @@ Azure depolama hesabı, Azure 'da çalışan bir işlev uygulaması için gerekl
 
 İleti gönderirken uygulama bağlı tüm istemcilere veya yalnızca belirli bir kullanıcı için kimliği doğrulanmış olan istemcilere gönderme seçenekleri arasında seçim yapabilir.
 
-1. VS Code, **üzerinde anlaş/function.js**açın.
+1. VS Code, **üzerinde anlaş/function.js** açın.
 
 1. *SignalRConnectionInfo* bağlamasının *userId* özelliğine bir [bağlama ifadesi](../azure-functions/functions-triggers-bindings.md) ekleyin: `{headers.x-ms-client-principal-name}`. Bu ifade değeri kimliği doğrulanmış kullanıcının kullanıcı adı olarak ayarlar. Öznitelik şimdi aşağıdaki gibi görünmelidir.
 
