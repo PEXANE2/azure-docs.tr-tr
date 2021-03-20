@@ -9,10 +9,10 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.openlocfilehash: 89dc36a9b1b1fee9ad10d55945c7fc17bf72f476
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90948489"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---flexible-server"></a>Hızlı başlangıç: PostgreSQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için Python kullanma-esnek sunucu
@@ -44,7 +44,7 @@ Yüklemek için `psycopg2` bir Terminal veya komut istemi açın ve komutunu ça
 PostgreSQL için Azure veritabanı 'na bağlanma-esnek sunucu, tam sunucu adı ve oturum açma kimlik bilgilerini gerektirir. Bu bilgileri Azure portal alabilirsiniz.
 
 1. [Azure Portal](https://portal.azure.com/), esnek sunucu adınızı arayıp seçin. 
-2. Sunucunun **genel bakış** sayfasında, tam **sunucu adı** ve **Yönetici Kullanıcı adı**' nı kopyalayın. Tam **sunucu adı** her zaman * \<my-server-name> . Postgres.Database.Azure.com*biçiminde olur.
+2. Sunucunun **genel bakış** sayfasında, tam **sunucu adı** ve **Yönetici Kullanıcı adı**' nı kopyalayın. Tam **sunucu adı** her zaman *\<my-server-name> . Postgres.Database.Azure.com* biçiminde olur.
 
    Yönetici parolanızla de ihtiyacınız vardır. Unutursanız, genel bakış sayfasından sıfırlayabilirsiniz. 
 
@@ -61,7 +61,7 @@ Bu makaledeki her kod örneği için:
    - `<admin-password>` Sunucu parolanızla birlikte.
    - `<database-name>` PostgreSQL için Azure veritabanınızın adıyla (esnek sunucu veritabanı). Sunucunuzu oluştururken *Postgres* adlı varsayılan veritabanı otomatik olarak oluşturulmuştur. Bu veritabanını yeniden adlandırabilir veya SQL komutlarını kullanarak yeni bir veritabanı oluşturabilirsiniz. 
 
-1. Dosyayı, *Postgres-insert.py*gibi bir *. Kopyala* uzantısıyla birlikte proje klasörünüze kaydedin. Windows için, dosyayı kaydettiğinizde UTF-8 kodlamasının seçildiğinden emin olun. 
+1. Dosyayı, *Postgres-insert.py* gibi bir *. Kopyala* uzantısıyla birlikte proje klasörünüze kaydedin. Windows için, dosyayı kaydettiğinizde UTF-8 kodlamasının seçildiğinden emin olun. 
 
 1. Dosyayı çalıştırmak için, bir komut satırı arabirimindeki proje klasörünüze geçin ve `python` ardından dosya adını (örneğin,) yazın `python postgres-insert.py` .
 

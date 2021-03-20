@@ -10,10 +10,10 @@ ms.date: 10/08/2020
 ms.author: allensu
 ms.custom: ''
 ms.openlocfilehash: d2d3bd43a0f17167e855d7e678a96cd79fe42237
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92777750"
 ---
 # <a name="failover-across-multiple-endpoints-with-azure-traffic-manager"></a>Azure Traffic Manager ile birden fazla uç nokta arasında yük devretme
@@ -62,12 +62,12 @@ Azure Traffic Manager profili oluşturun ve CDN uç noktalarınızda yük dengel
 
 1. [Traffic Manager profili oluşturma](../traffic-manager/quickstart-create-traffic-manager-profile.md)bölümündeki adımları Izleyerek bir Azure Traffic Manager profili oluşturun. 
 
-    * **Yönlendirme yöntemi** , **Öncelik** ' i seçin.
+    * **Yönlendirme yöntemi**, **Öncelik**' i seçin.
 
 2. [Traffic Manager uç noktaları ekleme](../traffic-manager/quickstart-create-traffic-manager-profile.md#add-traffic-manager-endpoints) bölümündeki adımları izleyerek TRAFFIC Manager profilinize CDN uç noktalarınızı ekleyin
 
-    * **Yazın** , **dış uç noktaları** ' nı seçin.
-    * **Öncelik** , bir sayı girin.
+    * **Yazın**, **dış uç noktaları**' nı seçin.
+    * **Öncelik**, bir sayı girin.
 
     Örneğin, önceliği **2** olan **1** ve **cdndemo101verizon.azureedge.net** ile **cdndemo101akamai.azureedge.net** oluşturun.
 
@@ -75,19 +75,19 @@ Azure Traffic Manager profili oluşturun ve CDN uç noktalarınızda yük dengel
 
 
 ## <a name="configure-custom-domain-on-azure-cdn-and-azure-traffic-manager"></a>Azure CDN ve Azure 'da özel etki alanı yapılandırma Traffic Manager
-CDN ve Traffic Manager profillerinizi yapılandırdıktan sonra, DNS eşlemesi eklemek ve CDN uç noktalarına özel etki alanını kaydetmek için aşağıdaki adımları izleyin. Bu örnekte, özel etki alanı adı **cdndemo101. alacatydogpetilgilen. Online** olur.
+CDN ve Traffic Manager profillerinizi yapılandırdıktan sonra, DNS eşlemesi eklemek ve CDN uç noktalarına özel etki alanını kaydetmek için aşağıdaki adımları izleyin. Bu örnekte, özel etki alanı adı **cdndemo101.dustydogpetcare.Online**' dir.
 
 1. GoDaddy gibi özel etki alanının etki alanı sağlayıcısı için Web sitesine gidin ve iki DNS CNAME girişi oluşturun. 
 
     a. İlk CNAME girişi için, cdnverify alt etki alanı ile özel etki alanınızı CDN uç noktanıza eşleyin. Bu giriş, adım 2 ' de Traffic Manager eklenen CDN uç noktasına özel etki alanını kaydetmek için gerekli bir adımdır.
 
-      Örneğin: 
+      Örnek: 
 
       `cdnverify.cdndemo101.dustydogpetcare.online  CNAME  cdnverify.cdndemo101akamai.azureedge.net`  
 
     b. İkinci CNAME girdisi için, cdnverify alt etki alanı olmadan özel etki alanınızı CDN uç noktanıza eşleyin. Bu giriş, Traffic Manager özel etki alanını eşler. 
 
-      Örneğin: 
+      Örnek: 
       
       `cdndemo101.dustydogpetcare.online  CNAME  cdndemo101.trafficmanager.net`   
 
@@ -96,7 +96,7 @@ CDN ve Traffic Manager profillerinizi yapılandırdıktan sonra, DNS eşlemesi e
     >
 
 
-2.  Azure CDN profilinizde, ilk CDN uç noktasını (Akamai) seçin. **Özel etki alanı Ekle** ve Input **cdndemo101. alacatydogpetilgilen. Online** öğesini seçin. Özel etki alanını doğrulama onay işareti yeşil olduğunu doğrulayın. 
+2.  Azure CDN profilinizde, ilk CDN uç noktasını (Akamai) seçin. **Özel etki alanı Ekle** ve giriş **cdndemo101.dustydogpetcare.Online**' ı seçin. Özel etki alanını doğrulama onay işareti yeşil olduğunu doğrulayın. 
 
     Azure CDN, bu kayıt işlemini tamamlaması için DNS eşlemesini doğrulamak üzere **cdnverify** alt etki alanını kullanır. Daha fazla bilgi için bkz. [CNAME DNS kaydı oluşturma](cdn-map-content-to-custom-domain.md#create-a-cname-dns-record). Bu adım Azure CDN, isteklerine yanıt verebilmeleri için özel etki alanını tanımasını sağlar.
     
@@ -106,11 +106,11 @@ CDN ve Traffic Manager profillerinizi yapılandırdıktan sonra, DNS eşlemesi e
 
 3.  Özel etki alanının etki alanı sağlayıcısı için Web sitesine geri dönün. Oluşturduğunuz ilk DNS eşlemesini güncelleştirin. Özel etki alanını ikinci CDN uç noktanızla eşleyin.
                              
-    Örneğin: 
+    Örnek: 
 
     `cdnverify.cdndemo101.dustydogpetcare.online  CNAME  cdnverify.cdndemo101verizon.azureedge.net`  
 
-4. Azure CDN profilinizde ikinci CDN uç noktasını (Verizon) seçin ve 2. adımı tekrarlayın. **Özel etki alanı Ekle** ' yi seçin ve **cdndemo101. alacatydogpetilgilen. Online** girin.
+4. Azure CDN profilinizde ikinci CDN uç noktasını (Verizon) seçin ve 2. adımı tekrarlayın. **Özel etki alanı Ekle**' yi seçin ve **cdndemo101.dustydogpetcare.Online** girin.
  
 Bu adımları tamamladıktan sonra, yük devretme özelliklerine sahip çoklu CDN hizmetiniz Azure Traffic Manager ile yapılandırılır. 
 

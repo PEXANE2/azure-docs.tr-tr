@@ -11,10 +11,10 @@ ms.subservice: common
 ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 0fd693573858df095b62a7a7917563141ac19c5b
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94579343"
 ---
 # <a name="get-storage-account-type-and-sku-name-with-net"></a>.NET ile depolama hesabı türü ve SKU adı alın
@@ -23,9 +23,9 @@ Bu makalede, [.net Için Azure Storage istemci kitaplığı](/dotnet/api/overvie
 
 ## <a name="about-account-type-and-sku-name"></a>Hesap türü ve SKU adı hakkında
 
-**Hesap türü** : geçerli hesap türleri,,, `BlobStorage` `BlockBlobStorage` ve içerir `FileStorage` `Storage` `StorageV2` . [Azure depolama hesabına genel bakış](storage-account-overview.md) , çeşitli depolama hesaplarının açıklamaları dahil olmak üzere daha fazla bilgi içerir.
+**Hesap türü**: geçerli hesap türleri,,, `BlobStorage` `BlockBlobStorage` ve içerir `FileStorage` `Storage` `StorageV2` . [Azure depolama hesabına genel bakış](storage-account-overview.md) , çeşitli depolama hesaplarının açıklamaları dahil olmak üzere daha fazla bilgi içerir.
 
-**SKU adı** : geçerli SKU adları,,,,, `Premium_LRS` `Premium_ZRS` `Standard_GRS` `Standard_GZRS` `Standard_LRS` `Standard_RAGRS` , `Standard_RAGZRS` , ve içerir `Standard_ZRS` . SKU adları büyük/küçük harfe duyarlıdır ve [Skuname sınıfında](/dotnet/api/microsoft.azure.management.storage.models.skuname)dize alanlarıdır.
+**SKU adı**: geçerli SKU adları,,,,, `Premium_LRS` `Premium_ZRS` `Standard_GRS` `Standard_GZRS` `Standard_LRS` `Standard_RAGRS` , `Standard_RAGZRS` , ve içerir `Standard_ZRS` . SKU adları büyük/küçük harfe duyarlıdır ve [Skuname sınıfında](/dotnet/api/microsoft.azure.management.storage.models.skuname)dize alanlarıdır.
 
 ## <a name="retrieve-account-information"></a>Hesap bilgilerini al
 

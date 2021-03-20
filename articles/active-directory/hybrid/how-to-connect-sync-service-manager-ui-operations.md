@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 64ab5901ad54e37fc05d7da757ce7f31d42fe3b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85357112"
 ---
 # <a name="using-the-sync-service-manager-operations-tab"></a>Eşitleme Service Manager Işlemler sekmesini kullanma
@@ -43,7 +43,7 @@ ms.locfileid: "85357112"
 | tamamlandı- \* -Uyarılar |Çalıştırma tamamlandı, ancak bazı veriler beklenen durumda değil. Hatalar varsa, bu ileti genellikle yalnızca bir belirtidir. Hataları giderene kadar uyarıları araştırmamalıdır. |
 | başarılı |Sorun yok. |
 
-Bir satırı seçtiğinizde, o çalıştırmanın ayrıntılarını göstermek için en alttaki güncelleştirmeler. En alttaki, **# adımını**belirten bir listeniz olabilir. Bu liste yalnızca, ormanınızda her etki alanının bir adımla temsil edildiği birden fazla etki alanınız varsa görüntülenir. Etki alanı adı, başlık **bölümünün**altında bulunabilir. **Eşitleme istatistikleri**altında, işlenen değişiklik sayısı hakkında daha fazla bilgi edinebilirsiniz. Değiştirilen nesnelerin bir listesini almak için bağlantılara tıklayabilirsiniz. Hatalı nesneler varsa, bu hatalar **Eşitleme hataları**altında görünür.
+Bir satırı seçtiğinizde, o çalıştırmanın ayrıntılarını göstermek için en alttaki güncelleştirmeler. En alttaki, **# adımını** belirten bir listeniz olabilir. Bu liste yalnızca, ormanınızda her etki alanının bir adımla temsil edildiği birden fazla etki alanınız varsa görüntülenir. Etki alanı adı, başlık **bölümünün** altında bulunabilir. **Eşitleme istatistikleri** altında, işlenen değişiklik sayısı hakkında daha fazla bilgi edinebilirsiniz. Değiştirilen nesnelerin bir listesini almak için bağlantılara tıklayabilirsiniz. Hatalı nesneler varsa, bu hatalar **Eşitleme hataları** altında görünür.
 
 Daha fazla bilgi için bkz. eşitlenmeyen [bir nesneyle ilgili sorunları giderme](tshoot-connect-object-not-syncing.md)
 

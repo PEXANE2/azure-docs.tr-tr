@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.author: danlep
 ms.date: 10/09/2020
 ms.openlocfilehash: 1610c51b613712c06410247e2eb673a50a9988b3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792251"
 ---
 # <a name="quickstart-create-a-new-azure-api-management-service-instance-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak yeni bir Azure API Management hizmet örneği oluşturma
@@ -50,25 +50,25 @@ Aşağıdaki kaynak şablonda tanımlanmıştır:
     Bu örnekte, örnek geliştirici katmanında yapılandırılır ve Azure API Management değerlendirmek için ekonomik bir seçenektir. Bu katman üretim kullanımı için değildir. API Management katmanlarını ölçeklendirme hakkında daha fazla bilgi için bkz. [yükseltme ve ölçeklendirme](upgrade-and-scale.md).
 
 1. Aşağıdaki değerleri seçin veya girin.
-    - **Abonelik** : Bir Azure aboneliği seçin.
-    - **Kaynak grubu** : **Yeni oluştur** ' u seçin, kaynak grubu için benzersiz bir ad girin ve **Tamam** ' ı seçin.
-    - **Bölge** : kaynak grubu için bir konum seçin. Örnek: **Orta ABD** .
-    - **Yayımcı e-postası** : bildirimleri almak için bir e-posta adresi girin.
-    - **Yayımcı adı** : API yayımcısı için seçtiğiniz bir ad girin.
-    - **SKU** : **geliştiricinin** varsayılan değerini kabul edin.
-    - **SKU sayısı** : varsayılan değeri kabul edin.
-    - **Konum** : API Management hizmeti için üretilen konumu kabul edin.
+    - **Abonelik**: Bir Azure aboneliği seçin.
+    - **Kaynak grubu**: **Yeni oluştur**' u seçin, kaynak grubu için benzersiz bir ad girin ve **Tamam**' ı seçin.
+    - **Bölge**: kaynak grubu için bir konum seçin. Örnek: **Orta ABD**.
+    - **Yayımcı e-postası**: bildirimleri almak için bir e-posta adresi girin.
+    - **Yayımcı adı**: API yayımcısı için seçtiğiniz bir ad girin.
+    - **SKU**: **geliştiricinin** varsayılan değerini kabul edin.
+    - **SKU sayısı**: varsayılan değeri kabul edin.
+    - **Konum**: API Management hizmeti için üretilen konumu kabul edin.
 
     :::image type="content" source="media/quickstart-arm-template/create-instance-template.png" alt-text="API Management şablonu özellikleri":::
 
-1. **Gözden geçir + oluştur** ' u seçin ve hüküm ve koşulları gözden geçirin. Kabul ediyorsanız **Oluştur** ' u seçin.
+1. **Gözden geçir + oluştur**' u seçin ve hüküm ve koşulları gözden geçirin. Kabul ediyorsanız **Oluştur**' u seçin.
 
     > [!TIP]
     >  Geliştirici katmanında bir API Management hizmeti oluşturmak ve etkinleştirmek için 30 ila 40 dakika sürebilir.
 
 1. Örnek başarıyla oluşturulduktan sonra bir bildirim alırsınız:
 
-    :::image type="content" source="media/quickstart-arm-template/deployment-notification.png" alt-text="API Management şablonu özellikleri":::
+    :::image type="content" source="media/quickstart-arm-template/deployment-notification.png" alt-text="Dağıtım bildirimi":::
 
  Şablonu dağıtmak için Azure portalı kullanılır. Azure portal ek olarak, Azure PowerShell, Azure CLı ve REST API de kullanabilirsiniz. Diğer dağıtım yöntemlerini öğrenmek için bkz. [şablonları dağıtma](../azure-resource-manager/templates/deploy-cli.md).
 
@@ -79,7 +79,7 @@ Dağıtılan kaynakları denetlemek için Azure portal kullanın veya dağıtıl
 1. [Azure Portal](https://portal.azure.com), **API Management Hizmetleri** arayıp seçin ve oluşturduğunuz hizmet örneğini seçin.
 1. **Genel bakış** sayfasında hizmetinizin özelliklerini gözden geçirin.
 
-:::image type="content" source="media/quickstart-arm-template/service-instance-created.png" alt-text="API Management şablonu özellikleri":::
+:::image type="content" source="media/quickstart-arm-template/service-instance-created.png" alt-text="Hizmete genel bakış sayfası":::
 
 API Management hizmet örneğiniz çevrimiçi olduğunda, bunu kullanmaya hazırsınız demektir. İlk API 'nizi [içeri aktarma ve yayımlama](import-and-publish.md) öğreticisiyle başlayın.
 
@@ -89,10 +89,10 @@ Sonraki öğreticilerle çalışmaya devam etmeyi planlıyorsanız API Managemen
 
 1. [Azure Portal](https://portal.azure.com), **kaynak gruplarını** arayıp seçin. **Giriş** sayfasında **kaynak grupları** ' nı da seçebilirsiniz.
 1. **Kaynak grupları** sayfasında, kaynak grubunuzu seçin.
-1. Kaynak grubu sayfasında, **kaynak grubunu sil** ' i seçin.
+1. Kaynak grubu sayfasında, **kaynak grubunu sil**' i seçin.
 
-    :::image type="content" source="media/quickstart-arm-template/delete-resource-group.png" alt-text="API Management şablonu özellikleri":::
-1. Kaynak grubunuzun adını yazın ve ardından **Sil** ' i seçin.
+    :::image type="content" source="media/quickstart-arm-template/delete-resource-group.png" alt-text="Kaynak grubunu silme":::
+1. Kaynak grubunuzun adını yazın ve ardından **Sil**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

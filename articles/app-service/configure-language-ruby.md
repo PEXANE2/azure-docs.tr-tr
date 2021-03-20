@@ -6,10 +6,10 @@ ms.date: 06/18/2020
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-azurecli
 ms.openlocfilehash: 038d62573b491325adc60647debf17fa87e06cfe
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92743687"
 ---
 # <a name="configure-a-linux-ruby-app-for-azure-app-service"></a>Azure App Service için Linux Ruby uygulaması yapılandırma
@@ -111,7 +111,7 @@ Başlatma sürecini aşağıdaki şekillerde özelleştirebilirsiniz:
 Ruby kapsayıcısındaki Rails sunucusu varsayılan olarak üretim modunda çalışır ve [varlıkların önceden derlendiğini ve web sunucunuz tarafından sunulduğunu kabul eder](https://guides.rubyonrails.org/asset_pipeline.html#in-production). Rails sunucusundan statik varlık sunmak için yapmanız gereken iki işlem vardır:
 
 - **Varlıkları önceden derleyin** - [Statik varlıkları yerel ortamda önceden derleyin](https://guides.rubyonrails.org/asset_pipeline.html#local-precompilation) ve el ile dağıtın. Ya da bu işi dağıtım altyapısına bırakın (bkz. [Varlıklar için ön derleme](#precompile-assets).
-- **Statik dosya sunmayı etkinleştirme** : Ruby kapsayıcısından statik varlık sunmak için [`RAILS_SERVE_STATIC_FILES` uygulama ayarını](configure-common.md#configure-app-settings) `true` yapın. Örnek:
+- **Statik dosya sunmayı etkinleştirme**: Ruby kapsayıcısından statik varlık sunmak için [`RAILS_SERVE_STATIC_FILES` uygulama ayarını](configure-common.md#configure-app-settings) `true` yapın. Örnek:
 
     ```azurecli-interactive
     az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings RAILS_SERVE_STATIC_FILES=true

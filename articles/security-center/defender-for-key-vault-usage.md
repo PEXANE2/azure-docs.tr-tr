@@ -1,5 +1,5 @@
 ---
-title: Key Vault uyarılar için Azure Defender 'a yanıt verme
+title: Key Vault için Azure Defender uyarılarına yanıt verme
 description: Key Vault için Azure Defender 'daki uyarılara yanıt vermek için gereken adımlar hakkında bilgi edinin.
 author: memildin
 ms.author: memildin
@@ -8,22 +8,22 @@ ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
 ms.openlocfilehash: 67c556e44f07240b1ad1bcde61f40042da46def8
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96122209"
 ---
 # <a name="respond-to-azure-defender-for-key-vault-alerts"></a>Key Vault için Azure Defender uyarılarına yanıt verme
-Key Vault için Azure Defender 'dan bir uyarı aldığınızda, uyarıyı araştırıp aşağıda açıklandığı gibi uyarmanızı öneririz. Key Vault için Azure Defender, uygulamaları ve kimlik bilgilerini korur. bu nedenle, uyarıyı tetikleyen uygulama veya Kullanıcı hakkında bilgi sahibi olsanız bile, her uyarının çevresindeki durumu doğrulamak önemlidir.  
+Key Vault için Azure Defender 'dan bir uyarı aldığınızda, uyarıyı araştırıp aşağıda açıklandığı gibi uyarmanızı öneririz. Key Vault için Azure Defender uygulamaları ve kimlik bilgilerini korur, dolayısıyla uyarıyı tetikleyen uygulamayı veya kullanıcıyı tanıyor olsanız bile her uyarıyı çevreleyen durumu doğrulamanız önemlidir.  
 
 Key Vault için Azure Defender 'daki her uyarı, aşağıdaki öğeleri içerir:
 
-- Nesne Kimliği
+- Nesne kimliği
 - Şüpheli kaynağın Kullanıcı asıl adı veya IP adresi
 
 > [!TIP]
-> Oluşan erişim *türüne* göre bazı alanlar kullanılamayabilir. Örneğin, anahtar kasanıza bir uygulama tarafından erişiliyorsa, ilişkili bir Kullanıcı asıl adı görmezsiniz. Trafiğin Azure dışından kaynağı varsa, bir nesne KIMLIĞI görmezsiniz.
+> Oluşan erişim *türüne* göre bazı alanlar kullanılamayabilir. Örneğin anahtar kasanıza bir uygulama erişiyorsa, ilişkili Kullanıcı Asıl Adını görmezsiniz. Trafik Azure'ın dışından kaynaklandıysa Nesne Kimliğini görmezsiniz.
 
 ## <a name="step-1-contact"></a>Adım 1. İletişim
 

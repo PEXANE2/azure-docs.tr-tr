@@ -7,10 +7,10 @@ ms.date: 10/09/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: b65560a3b10d04887040c4da1e137912810b3095
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91929600"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Yeni oturum Konakları ile mevcut bir konak havuzunu Genişlet
@@ -26,7 +26,7 @@ Bu makalede, mevcut bir konak havuzunu yeni oturum Konakları ile nasıl genişl
 
 Başlamadan önce, aşağıdaki yöntemlerden birini kullanarak bir konak havuzu ve oturum ana bilgisayarı sanal makineleri (VM 'Ler) oluşturduğunuzdan emin olun:
 
-- [Azure portalındaki](./create-host-pools-azure-marketplace.md)
+- [Azure portalı](./create-host-pools-azure-marketplace.md)
 - [PowerShell ile ana bilgisayar havuzu oluşturma](./create-host-pools-powershell.md)
 
 Konak havuzunu ve oturum ana bilgisayar VM 'lerini ilk oluşturduğunuzda aşağıdaki bilgilere de ihtiyacınız olacaktır:
@@ -39,9 +39,9 @@ Konak havuzunu ve oturum ana bilgisayar VM 'lerini ilk oluşturduğunuzda aşağ
 
 Sanal makineler ekleyerek konak havuzunuzu genişletmek için:
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 
-2. **Windows sanal masaüstü**araması yapın ve seçin.
+2. **Windows sanal masaüstü** araması yapın ve seçin.
 
 3. Ekranın sol tarafındaki menüde **konak havuzları**' nı seçin ve ardından sanal makineleri eklemek istediğiniz konak havuzunun adını seçin.
 
@@ -53,14 +53,14 @@ Sanal makineler ekleyerek konak havuzunuzu genişletmek için:
 
 7. VM 'Leri oluşturmak istediğiniz kaynak grubunu seçin, ardından bölgeyi seçin. Kullanmakta olduğunuz geçerli bölgeyi veya yeni bir bölgeyi seçebilirsiniz.
 
-8. Konak havuzunuza eklemek istediğiniz oturum ana bilgisayarlarının sayısını **VM sayısına**girin. Örneğin, ana bilgisayar havuzunuzu beş ana bilgisayar ile genişlettiğiniz takdirde **5**girin.
+8. Konak havuzunuza eklemek istediğiniz oturum ana bilgisayarlarının sayısını **VM sayısına** girin. Örneğin, ana bilgisayar havuzunuzu beş ana bilgisayar ile genişlettiğiniz takdirde **5** girin.
 
     >[!NOTE]
     >VM 'lerin görüntüsünü ve önekini düzenlemek mümkün olsa da, aynı konak havuzunda farklı görüntülere sahip VM 'Ler varsa bunları düzenlemenizi öneririz. Yalnızca etkilenen konak havuzundaki eski görüntülerle VM 'Leri kaldırmayı planlıyorsanız görüntüyü ve ön eki düzenleyin.
 
-9. Sanal **ağ bilgileri**için, sanal makinelerin katılmasını istediğiniz sanal ağı ve alt ağı seçin. Mevcut makinelerinizdeki aynı sanal ağı seçebilir veya adım 7 ' de seçtiğiniz bölgeye daha uygun olan farklı bir tane seçebilirsiniz.
+9. Sanal **ağ bilgileri** için, sanal makinelerin katılmasını istediğiniz sanal ağı ve alt ağı seçin. Mevcut makinelerinizdeki aynı sanal ağı seçebilir veya adım 7 ' de seçtiğiniz bölgeye daha uygun olan farklı bir tane seçebilirsiniz.
 
-10. **Yönetici hesabı**için, seçtiğiniz sanal ağla ilişkili Active Directory etki alanı Kullanıcı adı ve parolasını girin. Bu kimlik bilgileri, sanal makineleri sanal ağa katmak için kullanılacaktır.
+10. **Yönetici hesabı** için, seçtiğiniz sanal ağla ilişkili Active Directory etki alanı Kullanıcı adı ve parolasını girin. Bu kimlik bilgileri, sanal makineleri sanal ağa katmak için kullanılacaktır.
 
       >[!NOTE]
       >Yönetici adlarınızın burada verilen bilgiyle uyumlu olduğundan emin olun. Hesapta etkin bir MFA yok.

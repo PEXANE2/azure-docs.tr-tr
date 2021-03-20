@@ -4,10 +4,10 @@ description: Azure Active Directory hizmet sorumlusu kullanarak Azure Container 
 ms.topic: article
 ms.date: 04/23/2018
 ms.openlocfilehash: b1bc8119c495dea99c6bdc4923db198d041a1e9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74456511"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>Azure Container Instances Azure Container Registry ile kimlik doğrulama
@@ -18,7 +18,7 @@ Bu makalede, Kayıt defterinize yönelik *çekme* Izinleriyle BIR Azure AD hizme
 
 ## <a name="when-to-use-a-service-principal"></a>Hizmet sorumlusu ne zaman kullanılır?
 
-Bir hizmet sorumlusu kullanarak, bir otomatik veya başka şekilde katılımsız bir şekilde kapsayıcı örnekleri oluşturan uygulama veya hizmetlerde gibi, **gözetimsiz senaryolarda**kimlik doğrulaması için bir hizmet sorumlusu kullanmanız gerekir.
+Bir hizmet sorumlusu kullanarak, bir otomatik veya başka şekilde katılımsız bir şekilde kapsayıcı örnekleri oluşturan uygulama veya hizmetlerde gibi, **gözetimsiz senaryolarda** kimlik doğrulaması için bir hizmet sorumlusu kullanmanız gerekir.
 
 Örneğin, gecelik çalıştıran bir otomatik betiğe sahipseniz ve bazı verileri işlemek için [görev tabanlı bir kapsayıcı örneği](../container-instances/container-instances-restart-policy.md) oluşturursa, kayıt defterinde kimlik doğrulamak için yalnızca çekme izinleriyle bir hizmet sorumlusu kullanabilir. Daha sonra hizmet sorumlusunun kimlik bilgilerini döndürebilir veya diğer hizmetleri ve uygulamaları etkilemeden erişimi tamamen iptal edebilirsiniz.
 

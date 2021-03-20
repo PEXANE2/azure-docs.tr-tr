@@ -4,10 +4,10 @@ description: Azure Application Insights ve Genel Bakış Panosu işlevselliğine
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 1b0708fa70d3a3ecb406f1d974bb1f2b47e55b40
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97504109"
 ---
 # <a name="application-insights-overview-dashboard"></a>Application Insights Genel Bakış Panosu
@@ -58,6 +58,6 @@ Genel Bakış deneyimine geri gitmek için yalnızca şunları seçin:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Huniler](./usage-funnels.md)
-- [Bekletme](./usage-retention.md)
+- [Deposuna](./usage-retention.md)
 - [Kullanıcı Akışları](./usage-flows.md)
 

@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: dddf56edf2037d87a28589a59834db32f8d04a4c
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98598358"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Azure haritalar arama hizmetlerini kullanarak bir konum arayın
@@ -27,7 +27,7 @@ Bu makalede şunları yapmayı öğreneceksiniz:
 * Koordinat konumunu cadde adresine çevirmek için [ters adres araması](/rest/api/maps/search/getsearchaddressreverse) yapın.
 * Koordinat konumunu, [arama adresi geriye yönelik arama API 'sini](/rest/api/maps/search/getsearchaddressreversecrossstreet)kullanarak, bir insan genelindeki bir merkezden karşılıklı olarak çevirin.  Genellikle, bu, bir cihazdan veya varlıktan GPS akışı alan uygulamaları izlemek ve koordinat nerede bulunduğunu bildirmek için gereklidir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 1. [Azure haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)
 2. Birincil anahtar veya abonelik anahtarı olarak da bilinen [birincil bir abonelik anahtarı alın](quick-demo-map-app.md#get-the-primary-key-for-your-account).

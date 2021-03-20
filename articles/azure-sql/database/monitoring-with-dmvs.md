@@ -11,13 +11,13 @@ ms.topic: how-to
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
-ms.date: 1/14/2021
-ms.openlocfilehash: b87d0a2446eb2b65c20ae0bef408320686cb5165
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.date: 03/15/2021
+ms.openlocfilehash: 5c0de2c1589bfa495ab6ad287b998c403041674c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219141"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592175"
 ---
 # <a name="monitoring-microsoft-azure-sql-database-and-azure-sql-managed-instance-performance-using-dynamic-management-views"></a>Dinamik yönetim görünümlerini kullanarak Microsoft Azure SQL Veritabanı'nın ve Azure SQL Yönetilen Örneği'nin performansını izleme
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -31,6 +31,10 @@ Microsoft Azure SQL Veritabanı ve Azure SQL yönetilen örneği, dinamik yönet
 - İşlemle ilgili dinamik yönetim görünümleri.
 
 Dinamik yönetim görünümleri hakkında ayrıntılı bilgi için bkz. [dinamik yönetim görünümleri ve işlevleri (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views).
+
+## <a name="monitor-with-sql-insights"></a>SQL Insights ile izleme
+
+Azure [IZLEYICI SQL öngörüleri](../../azure-monitor/insights/sql-insights-overview.md) , Azure SQL VM 'lerinde Azure SQL yönetilen örnekleri, Azure SQL veritabanları ve SQL Server örneklerini izlemeye yönelik bir araçtır. Bu hizmet, dinamik yönetim görünümlerindeki (DMVs) verileri yakalamak ve verileri Azure Log Analytics yönlendirdiğinde, burada izlenebileceğiniz ve çözümlenebileceği bir uzak Aracı kullanır. Bu verileri, [Azure izleyici](../../azure-monitor/overview.md) 'den belirtilen görünümlerde görüntüleyebilir veya sorguları çalıştırmak ve eğilimleri çözümlemek için günlük verilerine doğrudan erişebilirsiniz. Azure Izleyici SQL öngörülerini kullanmaya başlamak için bkz. [SQL Insights 'ı etkinleştirme](../../azure-monitor/insights/sql-insights-enable.md).
 
 ## <a name="permissions"></a>İzinler
 

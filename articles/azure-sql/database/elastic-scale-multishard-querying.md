@@ -10,10 +10,10 @@ author: stevestein
 ms.author: sstein
 ms.date: 01/25/2019
 ms.openlocfilehash: 5a0dd12efb9d94bda264b3bd04b05cdc3df917e5
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92786641"
 ---
 # <a name="multi-shard-querying-using-elastic-database-tools"></a>Elastik veritabanı araçlarını kullanarak çok parçalı sorgulama
@@ -23,12 +23,12 @@ ms.locfileid: "92786641"
 
 [Elastik veritabanı araçlarıyla](elastic-scale-introduction.md), parçalı veritabanı çözümleri oluşturabilirsiniz. **Çok parçalı sorgulama** , çeşitli parçalar arasında bir sorgu çalıştırmayı gerektiren veri toplama/raporlama gibi görevler için kullanılır. (Bunu, tek parça üzerinde tüm işleri gerçekleştiren [veriye bağımlı yönlendirmeye](elastic-scale-data-dependent-routing.md)tersine getirir.)
 
-1. **Trygetrangeshardmap** [(Java, .net](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetrangeshardmap) [),](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetrangeshardmap) **Trygetlistshardmap** ( [Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetlistshardmap), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetlistshardmap)) veya **Getshardmap** ( [Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.getshardmap) [, .net) metodunu](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getshardmap)kullanarak bir **rangeshardmap** [(Java, .net](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap)) veya **listshardmap** ( [Java](/java/api/com.microsoft.azure.elasticdb.shard.map.listshardmap), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.listshardmap-1) [) alın](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1). Bkz. [bir ShardMapManager](elastic-scale-shard-map-management.md#constructing-a-shardmapmanager) oluşturma ve [bir rangeshardmap veya listshardmap 'i edinme](elastic-scale-shard-map-management.md#get-a-rangeshardmap-or-listshardmap).
-2. **Multishardconnection** ( [Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardconnection), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardconnection)) nesnesi oluşturun.
-3. **Multishardor ve MultiShardCommand** ( [Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardstatement), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand)) oluşturun.
-4. **CommandText özelliğini** ( [Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardstatement), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand)) bir T-SQL komutuna ayarlayın.
-5. **Executequeryasync veya ExecuteReader** ( [Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardstatement.executeQueryAsync), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand)) yöntemini çağırarak komutunu yürütün.
-6. **Multishardresultset veya MultiShardDataReader** ( [Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardresultset), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multisharddatareader)) sınıfını kullanarak sonuçları görüntüleyin.
+1. **Trygetrangeshardmap** [(Java, .net](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetrangeshardmap) [),](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetrangeshardmap) **Trygetlistshardmap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetlistshardmap), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetlistshardmap)) veya **Getshardmap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.getshardmap) [, .net) metodunu](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getshardmap)kullanarak bir **rangeshardmap** [(Java, .net](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap)) veya **listshardmap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.listshardmap), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.listshardmap-1) [) alın](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1). Bkz. [bir ShardMapManager](elastic-scale-shard-map-management.md#constructing-a-shardmapmanager) oluşturma ve [bir rangeshardmap veya listshardmap 'i edinme](elastic-scale-shard-map-management.md#get-a-rangeshardmap-or-listshardmap).
+2. **Multishardconnection** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardconnection), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardconnection)) nesnesi oluşturun.
+3. **Multishardor ve MultiShardCommand** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardstatement), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand)) oluşturun.
+4. **CommandText özelliğini** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardstatement), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand)) bir T-SQL komutuna ayarlayın.
+5. **Executequeryasync veya ExecuteReader** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardstatement.executeQueryAsync), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand)) yöntemini çağırarak komutunu yürütün.
+6. **Multishardresultset veya MultiShardDataReader** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardresultset), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multisharddatareader)) sınıfını kullanarak sonuçları görüntüleyin.
 
 ## <a name="example"></a>Örnek
 

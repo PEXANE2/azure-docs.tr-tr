@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
 ms.openlocfilehash: b8e59e96d5ecb65933120ecaa4aa43fe4d59d367
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98567540"
 ---
 # <a name="tutorial-assess-physical-servers-for-migration-to-azure"></a>Öğretici: Azure 'a geçiş için fiziksel sunucuları değerlendirme
@@ -21,7 +21,7 @@ Azure 'a geçiş sürecinizin bir parçası olarak, bulut hazırlığını ölç
 Bu makalede, Azure geçişi: Sunucu değerlendirmesi Aracı kullanılarak Azure 'a geçiş için şirket içi fiziksel sunucuların nasıl değerlendirireceğiniz gösterilmektedir.
 
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 - Makine meta verileri ve yapılandırma bilgilerine göre bir değerlendirme çalıştırın.
 - Performans verilerine göre bir değerlendirme çalıştırın.

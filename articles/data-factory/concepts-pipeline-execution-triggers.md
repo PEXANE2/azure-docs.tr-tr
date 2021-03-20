@@ -7,12 +7,12 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 07/05/2018
-ms.openlocfilehash: bd36b589424a0d890fc5e1bbab3f234e9b3264c6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2dba9e4f727b56e5093171c2ea59382075563f31
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100374788"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592073"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure Data Factory'de işlem hattı çalıştırma ve tetikleyiciler
 
@@ -323,13 +323,8 @@ Atlayan pencere tetikleyicileri, durumu korurken belirtilen bir başlangıç zam
 
 Atlayan pencere Tetikleyicileri hakkında daha fazla bilgi için ve örnekler için bkz. [pencere tetikleyicisi oluşturma](how-to-create-tumbling-window-trigger.md).
 
-## <a name="event-based-trigger"></a>Olay tabanlı tetikleyici
-
-Olay tabanlı tetikleyici, bir dosyanın yanıtı veya Azure Blob depolama alanında bir dosyanın silinmesi gibi bir olaya yanıt olarak işlem hatlarını çalıştırır.
-
-Olay tabanlı tetikleyiciler hakkında daha fazla bilgi için bkz. [Bir olaya yanıt olarak işlem hattı çalıştıran bir tetikleyici oluşturma](how-to-create-event-trigger.md).
-
 ## <a name="examples-of-trigger-recurrence-schedules"></a>Tetikleyici yineleme zamanlaması örnekleri
+
 Bu bölümde yineleme zamanlaması örnekleri sağlanır. **schedule** nesnesine ve onun öğelerine odaklanılmıştır.
 
 Örneklerde, **Aralık** değerinin 1 olduğunu ve **Sıklık** değerinin zamanlama tanımına göre doğru olduğunu varsaymaktadır. Örneğin, hem "day" şeklinde bir **frequency** değeriniz hem de **schedule** nesnesinde bir **monthDays** değişikliğiniz olamaz. Bu tür kısıtlamalar önceki bölümde verilen tabloda açıklanmıştır.
@@ -364,6 +359,7 @@ Bu bölümde yineleme zamanlaması örnekleri sağlanır. **schedule** nesnesine
 | `{"minutes":[15,45], "hours":[5,17], "monthlyOccurrences":[{"day":"wednesday", "occurrence":3}]}` | Her ayın üçüncü Çarşamba günü 05.15, 05.45, 17.15 ve 17.45’te çalıştır. |
 
 ## <a name="trigger-type-comparison"></a>Tetikleyici türü karşılaştırması
+
 Hem atlayan pencere tetikleyicisi hem de zamanlama tetikleyicisi zaman sinyalleriyle çalışıyor. Bunların birbirinden farkı nedir?
 
 > [!NOTE]
@@ -380,7 +376,17 @@ Aşağıdaki tabloda atlayan pencere tetikleyicisi ile zamanlama tetikleyicisini
 | **Sistem değişkenleri** | @trigger(). Scheduledtime ve @trigger (). StartTime ile birlikte, **Windowstart** ve **windowend** sistem değişkenlerinin kullanımını da destekler. Kullanıcılar, tetikleyici tanımında tetikleyici sistem değişkenleri olarak `trigger().outputs.windowStartTime` ve `trigger().outputs.windowEndTime` değişkenine erişebilir. Değerler sırasıyla aralık başlangıç zamanı ve aralık bitiş zamanı olarak kullanılır. Örneğin, saat başı çalışan bir atlayan pencere tetikleyicisi için 01.00 ile 02.00 arası aralığın tanımı `trigger().outputs.windowStartTime = 2017-09-01T01:00:00Z` ve `trigger().outputs.windowEndTime = 2017-09-01T02:00:00Z` şeklinde olur. | Yalnızca Default @trigger (). scheduledtime ve @trigger (). StartTime değişkenlerini destekler. |
 | **İşlem hattı-tetikleyici ilişkisi** | Bire bir ilişkileri destekler. Yalnızca bir işlem hattı tetiklenebilir. | Çoka çok ilişkileri destekler. Birden çok tetikleyici tek bir işlem hattını başlatabilir. Tek bir tetikleyici birden fazla işlem hattını başlatabilir. |
 
+## <a name="event-based-trigger"></a>Olay tabanlı tetikleyici
+
+Olay tabanlı tetikleyici, bir olaya yanıt olarak işlem hatlarını çalıştırır. Olay tabanlı tetikleyicilerden oluşan iki sınıf vardır.
+
+* _Depolama olayı tetikleyicisi_ , bir dosyanın varışı veya Azure Blob depolama hesabındaki bir dosyanın silinmesi gibi bir depolama hesabında oluşan olaylara karşı bir işlem hattı çalıştırır.
+* _Özel olay tetikleyicisi_ , Event Grid [özel konuları](../event-grid/custom-topics.md) işler ve işler
+
+Olay tabanlı tetikleyiciler hakkında daha fazla bilgi için bkz. [depolama olay tetikleyicisi](how-to-create-event-trigger.md) ve [özel olay tetikleyicisi](how-to-create-custom-event-trigger.md).
+
 ## <a name="next-steps"></a>Sonraki adımlar
+
 Aşağıdaki öğreticilere bakın:
 
 - [Hızlı başlangıç: .NET SDK kullanarak veri fabrikası oluşturma](quickstart-create-data-factory-dot-net.md)

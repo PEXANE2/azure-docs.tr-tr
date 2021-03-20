@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: jeedes
 ms.openlocfilehash: d24cac8f992d781eb59f91717c0b1a80b6be82a8
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92453894"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eventfinity"></a>Öğretici: Eventfınity ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile Eventfinsellik tümleşti
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -59,7 +59,7 @@ Eventfinity 'in Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeride
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-eventfinity"></a>Eventfınity için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Eventfınity ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Eventfınity ile ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Eventfınity ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Eventfınity ile ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu yapılandırmak ve Eventfınity ile test etmek için aşağıdaki yapı taşlarını doldurun:
 

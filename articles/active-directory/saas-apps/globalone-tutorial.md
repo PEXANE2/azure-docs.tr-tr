@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/07/2020
 ms.author: jeedes
 ms.openlocfilehash: a248718d12abf90abd80c9210b994e7d74ab111b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92448750"
 ---
 # <a name="tutorial-integrate-ey-globalone-with-azure-active-directory"></a>Öğretici: EY GlobalOne 'i Azure Active Directory tümleştirme
@@ -28,7 +28,7 @@ Bu öğreticide, EY GlobalOne 'i Azure Active Directory (Azure AD) ile tümleşt
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -55,7 +55,7 @@ EY GlobalOne tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galerid
 
 ## <a name="configure-and-test-azure-ad-sso-for-ey-globalone"></a>EY GlobalOne için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test KULLANıCıSı kullanarak Ey GlobalOne Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve EY GlobalOne 'deki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test KULLANıCıSı kullanarak Ey GlobalOne Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve EY GlobalOne 'deki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu EY GlobalOne ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -101,7 +101,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     c. **Ad alanını** boş bırakın.
 
-    d. **Öznitelik**olarak kaynak seçin.
+    d. **Öznitelik** olarak kaynak seçin.
 
     e. **Kaynak özniteliği** listesinde, bu satır için gösterilen öznitelik değerini yazın.
 

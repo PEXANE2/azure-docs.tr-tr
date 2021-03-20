@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/19/2019
 ms.author: tehnoonr
 ms.openlocfilehash: a09c15466a4a9f62b2696b087cb7ab23cc767379
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75430588"
 ---
 # <a name="failed-to-update-api-management-service-hostnames"></a>API Management hizmeti ana bilgisayar adları güncelleştirilemedi
@@ -38,10 +38,10 @@ API Management hizmetin, özel etki alanı için kullanmaya çalıştığınız 
 
 Bu sorunu çözmek için şu adımları izleyin:
 
-1. [Azure Portal](Https://portal.azure.com)gidin, API Management örneğinizi seçin ve ardından **Yönetilen kimlikler**' i seçin. **Azure Active Directory Ile kaydet** seçeneğinin **Evet**olarak ayarlandığından emin olun. 
+1. [Azure Portal](Https://portal.azure.com)gidin, API Management örneğinizi seçin ve ardından **Yönetilen kimlikler**' i seçin. **Azure Active Directory Ile kaydet** seçeneğinin **Evet** olarak ayarlandığından emin olun. 
     ![Azure Active Director ile kaydetme](./media/api-management-troubleshoot-cannot-add-custom-domain/register-with-aad.png)
 1. Azure portal, **anahtar** Kasası hizmetini açın ve özel etki alanı için kullanmaya çalıştığınız anahtar kasasını seçin.
-1. **Erişim ilkeleri**' ni seçin ve API Management hizmet örneğinin adıyla eşleşen bir hizmet sorumlusu olup olmadığını kontrol edin. Varsa, hizmet sorumlusu ' nı seçin ve **gizli izinler**altında, izin **Al** ' ın altında bulunan izinleri doğrulayın.  
+1. **Erişim ilkeleri**' ni seçin ve API Management hizmet örneğinin adıyla eşleşen bir hizmet sorumlusu olup olmadığını kontrol edin. Varsa, hizmet sorumlusu ' nı seçin ve **gizli izinler** altında, izin **Al** ' ın altında bulunan izinleri doğrulayın.  
     ![Hizmet sorumlusu için erişim ilkesi ekleme](./media/api-management-troubleshoot-cannot-add-custom-domain/access-policy.png)
 1. API Management hizmet listede yoksa, **erişim Ilkesi Ekle**' yi seçin ve ardından aşağıdaki erişim ilkesini oluşturun:
     - **Şablondan Yapılandır**: yok

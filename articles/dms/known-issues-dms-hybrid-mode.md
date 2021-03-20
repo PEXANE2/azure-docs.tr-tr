@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
 ms.openlocfilehash: 819fe5ced6c91819c817065305a31fca456ea5c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91291852"
 ---
 # <a name="known-issuesmigration-limitations-with-using-hybrid-mode"></a>Karma mod kullanımıyla ilgili bilinen sorunlar/geçiş sınırlamaları
@@ -32,7 +32,7 @@ Yükleme işlemi başarıyla tamamlandıktan sonra hizmet çevrimdışı olarak 
 
 1. Azure veritabanı geçiş hizmeti örneğinizin Azure portal, **karma** Ayarlar sekmesine gidin ve kayıtlı çalışanların kılavuzunu denetleyerek çalışanın kayıtlı olduğunu doğrulayın.
 
-    Bu çalışanın durumu **çevrimiçi**olmalıdır, ancak bir sorun varsa **çevrimdışı** olarak görünür.
+    Bu çalışanın durumu **çevrimiçi** olmalıdır, ancak bir sorun varsa **çevrimdışı** olarak görünür.
 
 2. Çalışan bilgisayarda, aşağıdaki PowerShell komutunu çalıştırarak hizmetin durumunu denetleyin:
 
@@ -51,7 +51,7 @@ Yükleme işlemi başarıyla tamamlandıktan sonra hizmet çevrimdışı olarak 
 3. Windows hizmeti çalışır ve durdurulmuş arasında döngü alıyorsa, çalışan çalışırken sorunlarla karşılaştı. Sorunu öğrenmek için Azure veritabanı geçiş hizmeti karma çalışan günlükleri ' ne bakın.
 
     - Yükleme işlemi günlükleri, yükleyici yürütülebilir dosyasının çalıştırıldığı klasörün içindeki "Günlükler" klasöründe depolanır.
-    - Azure veritabanı geçiş hizmeti karma çalışan günlükleri, çalışan tarafından yüklendiği klasördeki **Workerlogs** klasöründe depolanır. Karma çalışan günlük dosyaları için varsayılan konum **C:\Program Files\DatabaseMigrationServiceHybrid\WorkerLogs**şeklindedir.
+    - Azure veritabanı geçiş hizmeti karma çalışan günlükleri, çalışan tarafından yüklendiği klasördeki **Workerlogs** klasöründe depolanır. Karma çalışan günlük dosyaları için varsayılan konum **C:\Program Files\DatabaseMigrationServiceHybrid\WorkerLogs** şeklindedir.
 
 ## <a name="using-your-own-signed-certificate"></a>Kendi imzalı sertifikanızı kullanma
 
@@ -85,7 +85,7 @@ Artık çalışan bilgisayara erişiminiz yoksa, aşağıdaki adımları uygulay
 
 1. Azure portal Azure veritabanı geçiş hizmeti örneğinize gidin ve **karma** ayarlar sayfasına gidin.
 
-   Çalışan girdiniz listede görünür, durumu **çevrimdışı**olarak gösterir.
+   Çalışan girdiniz listede görünür, durumu **çevrimdışı** olarak gösterir.
 
 2. Çalışan girdisi listesinin en sağında, üç noktayı seçin ve ardından **kaydı sil**' i seçin.
 

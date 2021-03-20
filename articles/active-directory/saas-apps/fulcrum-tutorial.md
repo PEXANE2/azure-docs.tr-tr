@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: jeedes
 ms.openlocfilehash: d7569f690d054deaec1c81299463cf4b12f73601
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92450620"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fulcrum"></a>Öğretici: Fulcrud ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, Fulcrud 'yi Azure Active Directory (Azure AD) ile tümleştirme
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -61,7 +61,7 @@ Fulcrud 'yi Azure AD 'ye tümleştirmeyi yapılandırmak için, Galeriden yönet
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-fulcrum"></a>Fulcrud için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Fulcrum ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Fulcrud içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Fulcrum ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Fulcrud içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Fulcrud ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 

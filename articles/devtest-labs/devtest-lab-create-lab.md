@@ -4,17 +4,17 @@ description: Bu makale, Azure portal ve Azure DevTest Labs kullanarak laboratuva
 ms.topic: article
 ms.date: 10/12/2020
 ms.openlocfilehash: 9fa33a59dd35bfe3469f30f2349f8a08c45bd5e3
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92058438"
 ---
 # <a name="create-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs'de laboratuvar oluşturma
 
 Azure DevTest Labs'deki bir laboratuvar, Sanal Makineler (VM'ler) gibi kaynaklardan oluşan grupları kapsayan ve limitlerin yanı sıra kotalar belirleyerek söz konusu kaynakları daha iyi yönetmenizi sağlayan bir altyapıdır. Bu makalede, Azure portalını kullanarak laboratuvar oluşturma işlemi ayrıntılı olarak açıklanmıştır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Laboratuvar oluşturmak için aşağıdakilere ihtiyacınız vardır:
 
@@ -31,7 +31,7 @@ Aşağıdaki bağlantıya tıklayarak, Azure DevTest Labs yeni bir laboratuvar o
 **DevTest Labs oluşturma** sayfasında, aşağıdaki ayarları doldurun.
 
 > [!TIP]
-> Her sayfanın en altında, **Otomasyon için bir şablon indirmeyi**sağlayan bir bağlantı bulacaksınız.
+> Her sayfanın en altında, **Otomasyon için bir şablon indirmeyi** sağlayan bir bağlantı bulacaksınız.
 
 ### <a name="basic-settings"></a>Temel ayarlar
 

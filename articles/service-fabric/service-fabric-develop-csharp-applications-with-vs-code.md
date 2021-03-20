@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
 ms.openlocfilehash: 5fbd523a38b3c4860316e45b8b7c03a17de19499
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92678339"
 ---
 # <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>Visual Studio Code ile C# Service Fabric uygulamaları geliştirme
@@ -18,7 +18,7 @@ ms.locfileid: "92678339"
 
 Bu makalede Visual Studio Code kullanarak bir .NET Core Service Fabric uygulamasının nasıl oluşturulacağı, dağıtılacağı ve hata ayıklamanın nasıl yapılacağı gösterilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede, VS Code için Service Fabric Reliable Services uzantısı ve geliştirme ortamınız için gereken tüm bağımlılıklar VS Code, zaten yüklemiş olduğunuz varsayılır. Daha fazla bilgi için bkz [. Başlarken](./service-fabric-get-started-vs-code.md#prerequisites).
 
@@ -34,7 +34,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-st
 ## <a name="open-the-application-in-vs-code"></a>Uygulamayı VS Code açın
 
 ### <a name="windows"></a>Windows
-Başlat menüsünde VS Code simgesine sağ tıklayın ve **yönetici olarak çalıştır** ' ı seçin. Hata ayıklayıcıyı hizmetlerinize eklemek için VS Code yönetici olarak çalıştırmanız gerekir.
+Başlat menüsünde VS Code simgesine sağ tıklayın ve **yönetici olarak çalıştır**' ı seçin. Hata ayıklayıcıyı hizmetlerinize eklemek için VS Code yönetici olarak çalıştırmanız gerekir.
 
 ### <a name="linux"></a>Linux
 Terminal kullanarak, uygulamanın yerel olarak kopyalandığı dizinden/service-fabric-dotnet-core-getting-started/Services/CounterService yoluna gidin.
@@ -101,7 +101,7 @@ Bir kesme noktası ve hata ayıklama ayarlamak için aşağıdaki adımları izl
 
    ![Birincil Işlem](./media/service-fabric-develop-csharp-applications-with-vs-code/select-process.png)
 
-5. *CounterService.cs* dosyasındaki kesme noktası çok çabuk olacaktır. Daha sonra yerel değişkenlerin değerlerini keşfedebilirsiniz. Yürütmeye devam etmek, satırlarda adımla, yöntemlere adımla veya geçerli yöntemin dışına adımlamak için VS Code en üstündeki hata ayıklama araç çubuğunu kullanın. 
+5. *CounterService. cs* dosyasındaki kesme noktası çok çabuk olacak. Daha sonra yerel değişkenlerin değerlerini keşfedebilirsiniz. Yürütmeye devam etmek, satırlarda adımla, yöntemlere adımla veya geçerli yöntemin dışına adımlamak için VS Code en üstündeki hata ayıklama araç çubuğunu kullanın. 
 
    ![Hata ayıklama değerleri](./media/service-fabric-develop-csharp-applications-with-vs-code/breakpoint-hit.png)
 

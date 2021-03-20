@@ -4,10 +4,10 @@ description: Linux 'ta kabuk betiği oluşturmaya yönelik bir laboratuvarı aya
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: ba14f2fb5263367014b57741c78d6e509df044b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85444973"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>Linux 'ta kabuk betiği oluşturmaya yönelik bir laboratuvar kurun
@@ -69,7 +69,7 @@ Bu bölümde, birkaç metin Düzenleyicisi 'nin nasıl yükleneceği gösterilme
 
     Şablon artık güncellenir ve Laboratuvarı tamamlaması için gereken programlama diline ve geliştirme araçlarına sahiptir. Şablon görüntüsü artık laboratuvara yayımlanabilir. Şablonu laboratuvarda yayımlamak için şablon sayfasında **Yayımla** düğmesini seçin.  
 
-## <a name="cost"></a>Cost 
+## <a name="cost"></a>Maliyet 
 Bu laboratuvarın maliyetini tahmin etmek isterseniz, aşağıdaki örneği kullanabilirsiniz:
  
 20 saatlik zamanlanan sınıf süresi ve ev ödevi veya atamalar için 10 saatlik kota içeren 25 öğrenciye sahip bir sınıf için, laboratuvar fiyatı şöyle olacaktır: 

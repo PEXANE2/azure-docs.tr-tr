@@ -4,10 +4,10 @@ description: Bu öğreticide, bir eğitimci tarafından ayarlanan bir sınıf la
 ms.topic: tutorial
 ms.date: 06/26/2020
 ms.openlocfilehash: dacfa34c0d3ab637ef513342bc5ce5fe81038e11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85443477"
 ---
 # <a name="tutorial-access-a-classroom-lab-in-azure-lab-services"></a>Öğretici: Azure Lab Services’teki bir sınıf laboratuvarına erişme
@@ -33,11 +33,11 @@ Bu öğreticide, aşağıdaki eylemleri gerçekleştireceksiniz:
 
     ![Erişilebilir VM 'Ler](./media/tutorial-connect-vm-in-classroom-lab/accessible-vms.png)
 1. Sanal makine hazırlanana kadar bekleyin. VM kutucuğunda aşağıdaki alanlara dikkat edin:
-    1. Kutucuğun en üstünde, **laboratuvarın adını**görürsünüz.
+    1. Kutucuğun en üstünde, **laboratuvarın adını** görürsünüz.
     1. Sağ tarafta, VM 'nin **işletim sistemini (OS)** temsil eden simgeyi görürsünüz. Bu örnekte, Windows işletim sistemi. 
     1. Kutucukta ilerleme çubuğu, size atanan [Kota saati](how-to-configure-student-usage.md#set-quotas-for-users) sayısına göre kullanılan saat sayısını gösterir. Bu süre, laboratuvarın zamanlanan saatine ek olarak size ayrılan ek süredir. 
     1. Sanal makineyi başlatmak/durdurmak ve sanal makineye bağlanmak için kutucuğun altında simgeler/düğmeler görürsünüz. 
-    1. Düğmelerin sağında VM 'nin durumunu görürsünüz. VM 'nin durumunun **durdurulmuş**olduğunu görtığınızdan emin olun. 
+    1. Düğmelerin sağında VM 'nin durumunu görürsünüz. VM 'nin durumunun **durdurulmuş** olduğunu görtığınızdan emin olun. 
 
         ![Durdurulmuş durumda VM](./media/tutorial-connect-vm-in-classroom-lab/vm-in-stopped-state.png)
 
@@ -45,7 +45,7 @@ Bu öğreticide, aşağıdaki eylemleri gerçekleştireceksiniz:
 1. Aşağıdaki görüntüde gösterildiği gibi ilk düğmeyi seçerek VM 'yi **başlatın** . Bu işlem biraz zaman alır.  
 
     ![VM’yi başlatma](./media/tutorial-connect-vm-in-classroom-lab/start-vm.png)
-4. VM durumunun **çalışıyor**olarak ayarlandığını onaylayın. 
+4. VM durumunun **çalışıyor** olarak ayarlandığını onaylayın. 
 
     ![Çalışır durumda VM](./media/tutorial-connect-vm-in-classroom-lab/vm-running.png)
 

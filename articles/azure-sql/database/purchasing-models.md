@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/28/2020
 ms.openlocfilehash: 8883263d6ddb2fb8ddc809f464288fcd282531bd
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92788834"
 ---
 # <a name="choose-between-the-vcore-and-dtu-purchasing-models---azure-sql-database-and-sql-managed-instance"></a>VCore ve DTU satın alma modelleri arasında seçim yapın-Azure SQL veritabanı ve SQL yönetilen örneği
@@ -104,7 +104,7 @@ Bu kaynaklar arasındaki oran başlangıçta gerçek dünya OLTP iş yüklerinde
 
 ![Sınırlayıcı kutusu](./media/purchasing-models/bounding-box.png)
 
-DTU 'lar, farklı işlem boyutlarında ve hizmet katmanlarında veritabanları için ayrılan göreli kaynakları anlamak için kullanışlıdır. Örneğin:
+DTU 'lar, farklı işlem boyutlarında ve hizmet katmanlarında veritabanları için ayrılan göreli kaynakları anlamak için kullanışlıdır. Örnek:
 
 - Bir veritabanının işlem boyutunu artırarak, bu veritabanı için kullanılabilir kaynak kümesini ikiye katlayarak DTU 'ları katlama.
 - 1750 DTU içeren bir Premium hizmet katmanı P11 veritabanı, 5 DTU ile temel bir hizmet katmanı veritabanından 350 kat daha fazla DTU işlem gücü sağlar.  
@@ -162,11 +162,11 @@ Donanım değişiklikleri veya veritabanları için donanım oluşturma seçimin
 
 ### <a name="do-i-need-to-take-my-application-offline-to-convert-from-a-dtu-based-service-tier-to-a-vcore-based-service-tier"></a>DTU tabanlı bir hizmet katmanından sanal çekirdek tabanlı hizmet katmanına dönüştürmek için uygulamamı çevrimdışına alma yapmam gerekir mi?
 
-Hayır. Uygulamayı çevrimdışına almanız gerekmez. Yeni hizmet katmanları, mevcut veritabanlarını standart, Premium hizmet katmanına ve diğer şekilde yükseltme sürecine benzer basit bir çevrimiçi dönüştürme yöntemi sunar. Azure portal, PowerShell, Azure CLı, T-SQL veya REST API kullanarak bu dönüştürmeyi başlatabilirsiniz. Bkz. [tek veritabanlarını yönetme](single-database-scale.md) ve [elastik havuzları yönetme](elastic-pool-overview.md).
+Hayır. Uygulamayı çevrimdışına almanız gerekmez. Yeni hizmet katmanları, mevcut veritabanlarını standart, Premium hizmet katmanına ve diğer şekilde yükseltme sürecine benzer basit bir çevrimiçi dönüştürme yöntemi sunar. Azure portal, PowerShell, Azure CLı, T-SQL veya REST API kullanarak bu dönüştürmeyi başlatabilirsiniz. Bkz. [Tek veritabanlarını yönetme](single-database-scale.md) ve [Elastik havuzları yönetme](elastic-pool-overview.md).
 
 ### <a name="can-i-convert-a-database-from-a-service-tier-in-the-vcore-based-purchasing-model-to-a-service-tier-in-the-dtu-based-purchasing-model"></a>Sanal çekirdek tabanlı satın alma modelindeki hizmet katmanından bir veritabanını DTU tabanlı satın alma modelindeki bir hizmet katmanına dönüştürebilir miyim?
 
-Evet, Azure portal, PowerShell, Azure CLı, T-SQL veya REST API kullanarak veritabanınızı desteklenen herhangi bir performans hedefine kolayca dönüştürebilirsiniz. Bkz. [tek veritabanlarını yönetme](single-database-scale.md) ve [elastik havuzları yönetme](elastic-pool-overview.md).
+Evet, Azure portal, PowerShell, Azure CLı, T-SQL veya REST API kullanarak veritabanınızı desteklenen herhangi bir performans hedefine kolayca dönüştürebilirsiniz. Bkz. [Tek veritabanlarını yönetme](single-database-scale.md) ve [Elastik havuzları yönetme](elastic-pool-overview.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

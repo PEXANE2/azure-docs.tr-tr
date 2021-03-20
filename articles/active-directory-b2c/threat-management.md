@@ -12,10 +12,10 @@ ms.date: 09/26/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: e5184698cab1874f327173fb30cf527feee48cad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85384983"
 ---
 # <a name="manage-threats-to-resources-and-data-in-azure-active-directory-b2c"></a>Azure Active Directory B2C kaynakları ve verileri tehditlere karşı yönetme
@@ -40,12 +40,12 @@ Kilitleme eşiği dahil parola koruma ayarlarını yönetmek için:
 
 1. [Azure portalda](https://portal.azure.com) oturum açma
 1. Azure AD B2C kiracınızı içeren dizini seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın.
-1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
-1. **Güvenlik**altında **kimlik doğrulama yöntemleri (Önizleme)** öğesini seçin ve **parola koruması**' nı seçin.
+1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C** seçin.
+1. **Güvenlik** altında **kimlik doğrulama yöntemleri (Önizleme)** öğesini seçin ve **parola koruması**' nı seçin.
 1. İstediğiniz parola koruma ayarlarınızı girip **Kaydet**' i seçin.
 
     ![Azure AD ayarlarındaki Azure portal parola koruma sayfası](./media/threat-management/portal-02-password-protection.png)
-    <br />* **Parola koruma** ayarlarında kilitleme eşiğini 5 olarak ayarlama*.
+    <br />***Parola koruma** ayarlarında kilitleme eşiğini 5 olarak ayarlama*.
 
 ## <a name="view-locked-out-accounts"></a>Kilitli hesapları görüntüleme
 

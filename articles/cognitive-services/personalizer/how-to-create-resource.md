@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 0c75d917f1abe72af2f4aa56b0f67dbb7bcd24a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91303565"
 ---
 # <a name="create-a-personalizer-resource"></a>Bir kişiselleştirici kaynağı oluşturma
@@ -55,7 +55,7 @@ Her geri bildirim döngüsü için bir kişiselleştirici kaynağı oluşturun.
         --location westus2
     ```
 
-1. Mevcut bir kaynak grubu için aşağıdaki komutla yeni bir kişiselleştirici kaynak ve _öğrenme döngüsü_oluşturun.
+1. Mevcut bir kaynak grubu için aşağıdaki komutla yeni bir kişiselleştirici kaynak ve _öğrenme döngüsü_ oluşturun.
 
     ```azurecli-interactive
     az cognitiveservices account create \
@@ -67,9 +67,9 @@ Her geri bildirim döngüsü için bir kişiselleştirici kaynağı oluşturun.
         --yes
     ```
 
-    Bu, **Kaynak uç**noktanızı IÇEREN bir JSON nesnesi döndürür.
+    Bu, **Kaynak uç** noktanızı IÇEREN bir JSON nesnesi döndürür.
 
-1. **Kaynak anahtarınızı**almak Için AŞAĞıDAKI Azure CLI komutunu kullanın.
+1. **Kaynak anahtarınızı** almak Için AŞAĞıDAKI Azure CLI komutunu kullanın.
 
     ```azurecli-interactive
         az cognitiveservices account keys list \

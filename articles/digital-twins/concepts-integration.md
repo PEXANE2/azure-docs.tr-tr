@@ -8,10 +8,10 @@ ms.date: 3/16/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ms.openlocfilehash: 118b02ab694d27dbe4e13cbfa1a617a56b052772
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92043077"
 ---
 # <a name="integrate-azure-digital-twins-with-other-services"></a>Azure dijital TWINS 'i diğer hizmetlerle tümleştirme
@@ -34,14 +34,14 @@ Ayrıca [*bkz. nasıl yapılır: Logic Apps Ile tümleştirme Ile*](how-to-integ
 
 ## <a name="data-egress-services"></a>Veri çıkış Hizmetleri
 
-Azure dijital TWINS, bağlı **uç noktalara**veri gönderebilir. Desteklenen uç noktalar şu olabilir:
+Azure dijital TWINS, bağlı **uç noktalara** veri gönderebilir. Desteklenen uç noktalar şu olabilir:
 * [Olay Hub’ı](../event-hubs/event-hubs-about.md)
 * [Event Grid](../event-grid/overview.md)
 * [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)
 
-Uç noktalar, yönetim API 'Leri veya Azure portal kullanılarak Azure dijital TWINS 'e eklenir. [*Nasıl yapılır: uç noktaları ve yolları yönetme*](how-to-manage-routes-apis-cli.md)bölümünde Azure dijital TWINS 'e bir uç nokta iliştirme hakkında daha fazla bilgi edinin.
+Uç noktalar, yönetim API'leri veya Azure portalı kullanılarak Azure Digital Twins'e eklenir. [*Nasıl yapılır: uç noktaları ve yolları yönetme*](how-to-manage-routes-apis-cli.md)bölümünde Azure dijital TWINS 'e bir uç nokta iliştirme hakkında daha fazla bilgi edinin.
 
-Verilerinizi [Azure depolama](../storage/common/storage-introduction.md), [azure Maps](../azure-maps/about-azure-maps.md)veya [Time Series Insights](../time-series-insights/overview-what-is-tsi.md)gibi son olarak yönlendirmek isteyebileceğiniz birçok farklı hizmet vardır. Verilerinizi bunlar gibi hizmetlere göndermek için, hedef hizmeti bir uç noktaya bağlayın.
+[Azure Depolama](../storage/common/storage-introduction.md), [Azure Haritalar](../azure-maps/about-azure-maps.md) veya [Time Series Insights](../time-series-insights/overview-what-is-tsi.md) gibi verilerinizi yönlendirmek isteyebileceğiniz birçok farklı hizmet vardır. Verilerinizi bunlar gibi hizmetlere göndermek için, hedef hizmeti bir uç noktaya bağlayın.
 
 Örneğin, Azure haritalar 'ı da kullanıyorsanız ve Azure dijital TWINS [ikizi Graf](concepts-twins-graph.md)ile konum ilişkilendirmek istiyorsanız, dağıtımınızdaki tüm hizmetler arasında iletişim kurmak için Event Grid Ile Azure işlevleri 'ni kullanabilirsiniz. Bu konuda daha fazla bilgi edinmek [ *Için nasıl yapılır: Azure haritalar giriş eşlemesini güncelleştirmek Için Azure dijital TWINS kullanma*](how-to-integrate-maps.md)
 

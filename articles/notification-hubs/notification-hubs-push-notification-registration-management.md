@@ -18,10 +18,10 @@ ms.reviewer: thsomasu
 ms.lastreviewed: 04/08/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 7807d28da459656938acb399eb8c621e4c292372
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89001578"
 ---
 # <a name="registration-management"></a>Kayıt yönetimi
@@ -30,7 +30,7 @@ Bu konuda, anında iletme bildirimleri almak için cihazların Notification Hub 
 
 ## <a name="what-is-device-registration"></a>Cihaz kaydı nedir?
 
-Bir Bildirim Hub 'ına sahip cihaz kaydı, **kayıt** veya **yükleme**kullanılarak gerçekleştirilir.
+Bir Bildirim Hub 'ına sahip cihaz kaydı, **kayıt** veya **yükleme** kullanılarak gerçekleştirilir.
 
 ### <a name="registrations"></a>Kayıtlar
 
@@ -318,7 +318,7 @@ public async Task<HttpResponseMessage> Put(DeviceInstallation deviceUpdate)
 
 ### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-a-registration-id"></a>Kayıt KIMLIĞI kullanarak bir cihazdan Bildirim Hub 'ına kaydolmak için örnek kod
 
-Uygulama arka ucunuzdaki kayıtlar üzerinde temel CRUDS işlemlerini gerçekleştirebilirsiniz. Örneğin:
+Uygulama arka ucunuzdaki kayıtlar üzerinde temel CRUDS işlemlerini gerçekleştirebilirsiniz. Örnek:
 
 ```csharp
 var hub = NotificationHubClient.CreateClientFromConnectionString("{connectionString}", "hubName");

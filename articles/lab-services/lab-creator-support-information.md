@@ -4,10 +4,10 @@ description: Bu makalede, laboratuvar oluşturucularının yardım almak için k
 ms.date: 06/26/2020
 ms.topic: how-to
 ms.openlocfilehash: 3e04245c3f2d9b0a4f4e98ae21287983cf679ec6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85445058"
 ---
 # <a name="view-support-information-lab-creator-in-azure-lab-services"></a>Destek bilgilerini görüntüleme (Azure Lab Services 'da laboratuvar Oluşturucu)
@@ -24,7 +24,7 @@ Laboratuvar hesabında laboratuvar oluştururken herhangi bir teknik sorunla ça
 ## <a name="view-support-information"></a>Destek bilgilerini görüntüle
 1. [Azure Lab Services portalında](https://labs.azure.com)oturum açın.
 2. Sayfanın sağ üst köşesindeki soru işareti (**?**) seçeneğini belirleyin. 
-3. **Destek Web sitesi**, **e-posta desteği**ve **destek telefon numarasını**görüntüle bağlantısını görtığınızdan emin olun.
+3. **Destek Web sitesi**, **e-posta desteği** ve **destek telefon numarasını** görüntüle bağlantısını görtığınızdan emin olun.
 
     ![Destek bilgilerini görüntüle](./media/lab-creator-support-information/support-information.png)
 

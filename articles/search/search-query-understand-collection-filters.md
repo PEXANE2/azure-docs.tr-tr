@@ -20,15 +20,15 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 6af0f2b5221a737687578e939c14cecf3be14509
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88932925"
 ---
 # <a name="understanding-odata-collection-filters-in-azure-cognitive-search"></a>Azure Bilişsel Arama OData koleksiyon filtrelerini anlama
 
-Azure Bilişsel Arama 'de koleksiyon alanlarını [filtrelemek](query-odata-filter-orderby-syntax.md) için, [ `any` ve `all` işleçlerini](search-query-odata-collection-operators.md) **lambda ifadeleriyle**birlikte kullanabilirsiniz. Lambda ifadeleri, bir **Aralık değişkenine**başvuran Boole ifadeleridir. `any`Ve `all` işleçleri `for` çoğu programlama dilinde bir döngüye benzer, döngü değişkeninin rolünü alan Aralık değişkeni ve döngünün gövdesi olarak lambda ifadesi. Aralık değişkeni, döngünün yinelemesi sırasında koleksiyonun "Current" değerini alır.
+Azure Bilişsel Arama 'de koleksiyon alanlarını [filtrelemek](query-odata-filter-orderby-syntax.md) için, [ `any` ve `all` işleçlerini](search-query-odata-collection-operators.md) **lambda ifadeleriyle** birlikte kullanabilirsiniz. Lambda ifadeleri, bir **Aralık değişkenine** başvuran Boole ifadeleridir. `any`Ve `all` işleçleri `for` çoğu programlama dilinde bir döngüye benzer, döngü değişkeninin rolünü alan Aralık değişkeni ve döngünün gövdesi olarak lambda ifadesi. Aralık değişkeni, döngünün yinelemesi sırasında koleksiyonun "Current" değerini alır.
 
 En azından bu, kavramsal olarak nasıl çalıştığı. Azure Bilişsel Arama, döngülerin nasıl çalıştığı konusunda filtreleri çok farklı bir şekilde uygular `for` . İdeal olarak, bu fark sizin için görünmez, ancak bazı durumlarda değildir. Nihai sonuç, lambda ifadeleri yazarken izlemeniz gereken kurallar vardır.
 
@@ -48,13 +48,13 @@ Tüm filtre özelliklerinin tüm koleksiyon türleri için desteklenmemesinin ü
 
 ## <a name="correlated-versus-uncorrelated-search"></a>Bağıntılı ve bağıntılı olmayan arama
 
-Karmaşık nesneler koleksiyonuna birden çok filtre ölçütü uygulanırken, *koleksiyonda her bir nesne*için uygulandıklarından, ölçütler **bağıntılı** bir şekilde yapılır. Örneğin, aşağıdaki filtre 100 ' dan düşük bir fiyata sahip en az bir Deluxe Oda olan oteller döndürür:
+Karmaşık nesneler koleksiyonuna birden çok filtre ölçütü uygulanırken, *koleksiyonda her bir nesne* için uygulandıklarından, ölçütler **bağıntılı** bir şekilde yapılır. Örneğin, aşağıdaki filtre 100 ' dan düşük bir fiyata sahip en az bir Deluxe Oda olan oteller döndürür:
 
 ```odata-filter-expr
     Rooms/any(room: room/Type eq 'Deluxe Room' and room/BaseRate lt 100)
 ```
 
-Filtreleme *bağıntısız*ise yukarıdaki filtre, bir odanın Deluxe olduğu ve farklı bir odanın 100 ' den düşük bir taban oranına sahip olan oteller döndürebilir. Yani, lambda ifadesinin her iki yan tümcesi de aynı Aralık değişkenine uygulandığından bu anlamlı değildir `room` . Bu, bu tür filtrelerin bağıntılı olmasının nedenleridir.
+Filtreleme *bağıntısız* ise yukarıdaki filtre, bir odanın Deluxe olduğu ve farklı bir odanın 100 ' den düşük bir taban oranına sahip olan oteller döndürebilir. Yani, lambda ifadesinin her iki yan tümcesi de aynı Aralık değişkenine uygulandığından bu anlamlı değildir `room` . Bu, bu tür filtrelerin bağıntılı olmasının nedenleridir.
 
 Ancak, tam metin arama için belirli bir Aralık değişkenine başvurmanız mümkün değildir. Bu şekilde, [tam bir Lucene sorgusu](query-lucene-syntax.md) vermek için kullanılabilir arama kullanıyorsanız:
 
@@ -140,7 +140,7 @@ Karmaşık koleksiyonlar üzerinde, vb. gibi basit koleksiyonlar için çok daha
 }
 ```
 
-Alanın değerleri ters bir `seasons` **Dizin**adlı bir yapıda depolanır ve şuna benzer bir şekilde görünür:
+Alanın değerleri ters bir `seasons` **Dizin** adlı bir yapıda depolanır ve şuna benzer bir şekilde görünür:
 
 | Süre | Belge kimlikleri |
 | --- | --- |

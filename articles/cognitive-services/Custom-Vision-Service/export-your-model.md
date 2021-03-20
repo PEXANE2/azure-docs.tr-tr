@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
 ms.openlocfilehash: be28a10f8a96d21d64d08cfacee4543c065168ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85391766"
 ---
 # <a name="export-your-model-for-use-with-mobile-devices"></a>Modelinizi mobil cihazlarla kullanılmak üzere dışarı aktarma
@@ -25,9 +25,9 @@ ms.locfileid: "85391766"
 
 Özel Görüntü İşleme Hizmeti aşağıdaki dışarı aktarmaları destekler:
 
-* __Android__Için __TensorFlow__ .
-* __İOS11__Için __coreml__ .
-* __WINDOWS ml__Için __onnx__ .
+* __Android__ Için __TensorFlow__ .
+* __İOS11__ Için __coreml__ .
+* __WINDOWS ml__ Için __onnx__ .
 * __[VISION AI geliştirici seti](https://azure.github.io/Vision-AI-DevKit-Pages/)__.
 * Windows, Linux veya ARM mimarisi için bir __Docker kapsayıcısı__ . Kapsayıcı, Özel Görüntü İşleme API 'sini kullanmak için bir TensorFlow modeli ve hizmet kodu içerir.
 

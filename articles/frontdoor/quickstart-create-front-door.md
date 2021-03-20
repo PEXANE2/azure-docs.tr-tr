@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 09/16/2020
 ms.author: duau
 ms.openlocfilehash: 4846438f8479fe622570aa515a4d8b40cccc57b8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91252315"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>Hızlı başlangıç: Yüksek oranda kullanılabilir global web uygulaması için Front Door oluşturma
@@ -38,7 +38,7 @@ Henüz bir Web uygulamanız yoksa, örnek Web uygulamaları ayarlamak için aşa
 
 1. https://portal.azure.com adresinden Azure portalında oturum açın.
 
-1. Ekranın sol üst kısmında **kaynak oluştur**  >   **WebApp**öğesini seçin.
+1. Ekranın sol üst kısmında **kaynak oluştur**  >   **WebApp** öğesini seçin.
 
     :::image type="content" source="media/quickstart-create-front-door/front-door-create-web-app.png" alt-text="Azure portalında web uygulaması oluşturma":::
 
@@ -49,16 +49,16 @@ Henüz bir Web uygulamanız yoksa, örnek Web uygulamaları ayarlamak için aşa
     | **Abonelik**               | Aboneliğinizi seçin. |    
     | **Kaynak grubu**       | **Yeni oluştur** ' u seçin ve metin kutusuna *FrontDoorQS_rg1* girin.|
     | **Ad**                   | Web uygulamanız için benzersiz bir **ad** girin. Bu örnek *Webappcontoso-1*' i kullanır. |
-    | **Yayımlama** | **Kod**’u seçin. |
+    | **Yayımla** | **Kod**’u seçin. |
     | **Çalışma zamanı yığını**         | **.NET Core 2,1 (LTS)** seçeneğini belirleyin. |
     | **İşletim Sistemi**          | **Windows**' u seçin. |
-    | **Bölge**           | **Orta ABD**seçin. |
+    | **Bölge**           | **Orta ABD** seçin. |
     | **Windows Planı** | **Yeni oluştur** ' u seçin ve metin kutusuna *Myappserviceplanmerkezileştirmi* yazın. |
-    | **Sku ve boyut** | **Standart S1 100 total acu, 1,75 GB bellek ' i**seçin. |
+    | **Sku ve boyut** | **Standart S1 100 total acu, 1,75 GB bellek ' i** seçin. |
 
-1. **Gözden geçir + oluştur**' u seçin, **Özeti**gözden geçirin ve ardından **Oluştur**' u seçin. Dağıtımın tamamlanması birkaç dakika sürebilir.
+1. **Gözden geçir + oluştur**' u seçin, **Özeti** gözden geçirin ve ardından **Oluştur**' u seçin. Dağıtımın tamamlanması birkaç dakika sürebilir.
 
-    :::image type="content" source="media/quickstart-create-front-door/create-web-app.png" alt-text="Azure portalında web uygulaması oluşturma":::
+    :::image type="content" source="media/quickstart-create-front-door/create-web-app.png" alt-text="Web uygulaması için Özeti gözden geçirme":::
 
 Dağıtımınız tamamlandıktan sonra ikinci bir Web uygulaması oluşturun. Aynı yordamı, aşağıdaki değerler dışında aynı değerlerle kullanın:
 
@@ -73,7 +73,7 @@ Dağıtımınız tamamlandıktan sonra ikinci bir Web uygulaması oluşturun. Ay
 
 İki Web Apps sunucusu arasındaki en düşük gecikme süresine göre Kullanıcı trafiğini yönlendirmek için Azure ön kapısını yapılandırın. Başlamak için, Azure ön kapısının ön uç konağını ekleyin.
 
-1. Giriş sayfasından veya Azure menüsünde **kaynak oluştur**' u seçin. **Ağ**,  >  **Tüm**  >  **ön kapıyı**göster ' i seçin.
+1. Giriş sayfasından veya Azure menüsünde **kaynak oluştur**' u seçin. **Ağ**,  >  **Tüm**  >  **ön kapıyı** göster ' i seçin.
 
 1. **Ön kapı oluştur** sayfasındaki **temel bilgiler** sekmesinde aşağıdaki bilgileri girin veya seçin ve ardından **İleri: yapılandırma**' yı seçin.
 
@@ -81,21 +81,21 @@ Dağıtımınız tamamlandıktan sonra ikinci bir Web uygulaması oluşturun. Ay
     | --- | --- |
     | **Abonelik** | Aboneliğinizi seçin. |    
     | **Kaynak grubu** | **Yeni oluştur** ' u seçin ve metin kutusuna *FrontDoorQS_rg0* girin.|
-    | **Kaynak grubu konumu** | **Orta ABD**seçin. |
+    | **Kaynak grubu konumu** | **Orta ABD** seçin. |
 
-1. **Frontends/domains** **+** **Ön uç konak Ekle**' yi açmak için ön uçlar/etki alanları ' nı seçin.
+1.  **+** **Ön uç konak Ekle**' yi açmak için ön uçlar/etki alanları ' nı seçin.
 
-1. **Ana bilgisayar adı**için, genel olarak benzersiz bir ana bilgisayar adı girin. Bu örnek *contoso-ön uç*kullanır. **Ekle**’yi seçin.
+1. **Ana bilgisayar adı** için, genel olarak benzersiz bir ana bilgisayar adı girin. Bu örnek *contoso-ön uç* kullanır. **Add (Ekle)** seçeneğini belirleyin.
 
-    :::image type="content" source="media/quickstart-create-front-door/add-frontend-host-azure-front-door.png" alt-text="Azure portalında web uygulaması oluşturma":::
+    :::image type="content" source="media/quickstart-create-front-door/add-frontend-host-azure-front-door.png" alt-text="Azure ön kapısı için bir ön uç konağı ekleme":::
 
 Sonra, iki Web uygulaması içeren bir arka uç havuzu oluşturun.
 
 1. Hala **ön kapı oluşturun**, **arka uç havuzlarında**, **+** **arka uç Havuzu Ekle**' yi seçin.
 
-1. **Ad**Için *Mybackendpool*yazın ve ardından **arka uç Ekle**' yi seçin.
+1. **Ad** Için *Mybackendpool* yazın ve ardından **arka uç Ekle**' yi seçin.
 
-    :::image type="content" source="media/quickstart-create-front-door/front-door-add-backend-pool.png" alt-text="Azure portalında web uygulaması oluşturma":::
+    :::image type="content" source="media/quickstart-create-front-door/front-door-add-backend-pool.png" alt-text="Arka uç Havuzu Ekle":::
 
 1. **Arka uç Ekle** dikey penceresinde aşağıdaki bilgileri seçin ve **Ekle**' yi seçin.
 
@@ -103,11 +103,11 @@ Sonra, iki Web uygulaması içeren bir arka uç havuzu oluşturun.
     | --- | --- |
     | **Arka uç konak türü** | **App Service**'i seçin. |   
     | **Abonelik** | Aboneliğinizi seçin. |    
-    | **Arka uç konak adı** | Oluşturduğunuz ilk Web uygulamasını seçin. Bu örnekte, Web uygulaması *Webappcontoso-1*idi. |
+    | **Arka uç konak adı** | Oluşturduğunuz ilk Web uygulamasını seçin. Bu örnekte, Web uygulaması *Webappcontoso-1* idi. |
 
     **Tüm diğer alanları varsayılan olarak bırakın.*
 
-    :::image type="content" source="media/quickstart-create-front-door/front-door-add-a-backend.png" alt-text="Azure portalında web uygulaması oluşturma":::
+    :::image type="content" source="media/quickstart-create-front-door/front-door-add-a-backend.png" alt-text="Ön kapıya bir arka uç konağı ekleme":::
 
 1. **Arka uç Ekle** ' yi seçin. Aşağıdaki bilgileri seçin ve **Ekle**' yi seçin.
 
@@ -115,28 +115,28 @@ Sonra, iki Web uygulaması içeren bir arka uç havuzu oluşturun.
     | --- | --- |
     | **Arka uç konak türü** | **App Service**'i seçin. |   
     | **Abonelik** | Aboneliğinizi seçin. |    
-    | **Arka uç konak adı** | Oluşturduğunuz ikinci Web uygulamasını seçin. Bu örnekte, Web uygulaması *Webappcontoso-2*idi. |
+    | **Arka uç konak adı** | Oluşturduğunuz ikinci Web uygulamasını seçin. Bu örnekte, Web uygulaması *Webappcontoso-2* idi. |
 
     **Tüm diğer alanları varsayılan olarak bırakın.*
 
 1. Arka uç havuzu yapılandırmasını gerçekleştirmek için **arka uç Havuzu Ekle** dikey penceresinde **Ekle** ' yi seçin.
 
-    :::image type="content" source="media/quickstart-create-front-door/front-door-add-backend-pool-complete.png" alt-text="Azure portalında web uygulaması oluşturma":::
+    :::image type="content" source="media/quickstart-create-front-door/front-door-add-backend-pool-complete.png" alt-text="Azure ön kapısı için bir arka uç havuzu ekleme":::
 
-Son olarak, bir yönlendirme kuralı ekleyin. Bir yönlendirme kuralı, ön uç konunuzu arka uç havuzuna eşler. Kural, için bir isteği `contoso-frontend.azurefd.net` **Mybackendpool**öğesine iletir.
+Son olarak, bir yönlendirme kuralı ekleyin. Bir yönlendirme kuralı, ön uç konunuzu arka uç havuzuna eşler. Kural, için bir isteği `contoso-frontend.azurefd.net` **Mybackendpool** öğesine iletir.
 
 1. Hala **ön kapı oluştur**' da, **yönlendirme kuralları**' nda **+** bir yönlendirme kuralı yapılandırmak için öğesini seçin.
 
-1. **Kural Ekle**' de, **ad**için *locationrule*yazın. Varsayılan değerleri kabul edin ve sonra yönlendirme kuralını eklemek için **Ekle** ' yi seçin.
+1. **Kural Ekle**' de, **ad** için *locationrule* yazın. Varsayılan değerleri kabul edin ve sonra yönlendirme kuralını eklemek için **Ekle** ' yi seçin.
 
-    :::image type="content" source="media/quickstart-create-front-door/front-door-add-a-rule.png" alt-text="Azure portalında web uygulaması oluşturma":::
+    :::image type="content" source="media/quickstart-create-front-door/front-door-add-a-rule.png" alt-text="Ön Kapıınıza bir kural ekleyin":::
 
    >[!WARNING]
    > Ön kapıdaki her bir ön uç konağın, kendisiyle ilişkilendirilmiş bir yönlendirme kuralına sahip olduğundan emin **olmanız gerekir** `\*` . Diğer bir deyişle, tüm yönlendirme kurallarınızın tamamında, varsayılan yolda () tanımlanan ön uç konaklarınızın her biri için en az bir yönlendirme kuralı olmalıdır `\*` . Bunun başarısız olması, Son Kullanıcı trafiğinizin doğru şekilde yönlendirilmemesi sonucunu verebilir.
 
 1. **Gözden geçir + oluştur**' u ve ardından **Oluştur**' u seçin.
 
-    :::image type="content" source="media/quickstart-create-front-door/configuration-azure-front-door.png" alt-text="Azure portalında web uygulaması oluşturma":::
+    :::image type="content" source="media/quickstart-create-front-door/configuration-azure-front-door.png" alt-text="Yapılandırılmış Azure ön kapısı":::
 
 ## <a name="view-azure-front-door-in-action"></a>Azure ön kapısını görüntüleme işlemi
 
@@ -161,15 +161,15 @@ Hızlı genel yük devretmeyi işlem sırasında test etmek için aşağıdaki a
 
 1. Tarayıcınızı yenileyin. Bu kez bir hata iletisi görmeniz gerekir.
 
-   :::image type="content" source="media/quickstart-create-front-door/web-app-stopped-message.png" alt-text="Azure portalında web uygulaması oluşturma":::
+   :::image type="content" source="media/quickstart-create-front-door/web-app-stopped-message.png" alt-text="Her iki Web uygulaması örneği de durduruldu":::
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 İşiniz bittiğinde, oluşturduğunuz tüm öğeleri kaldırabilirsiniz. Kaynak grubunun silinmesi, içeriğini de siler. Bu ön kapıyı kullanmayı düşünmüyorsanız gereksiz ücretlerden kaçınmak için kaynakları kaldırmanız gerekir.
 
-1. Azure portal, **kaynak gruplarını**arayıp seçin ya da Azure Portal menüsünden **kaynak grupları** ' nı seçin.
+1. Azure portal, **kaynak gruplarını** arayıp seçin ya da Azure Portal menüsünden **kaynak grupları** ' nı seçin.
 
-1. **FrontDoorQS_rg0**gibi bir kaynak grubu bulmak için filtre uygulayın veya aşağı kaydırın.
+1. **FrontDoorQS_rg0** gibi bir kaynak grubu bulmak için filtre uygulayın veya aşağı kaydırın.
 
 1. Kaynak grubunu seçin ve **kaynak grubunu sil**' i seçin.
 

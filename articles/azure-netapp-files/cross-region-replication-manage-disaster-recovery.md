@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 03/10/2021
 ms.author: b-juche
-ms.openlocfilehash: eab55f881c250c2e07717604d4ba00587a8b6031
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 5b1c1a5216b7a1ad5b23167e776f2b0bbb0a578f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95243214"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104591002"
 ---
 # <a name="manage-disaster-recovery-using-cross-region-replication"></a>Çapraz bölge çoğaltmasını kullanarak olağanüstü durum kurtarmayı yönetme 
 
@@ -38,10 +38,10 @@ Hedef birimi etkinleştirmeniz gerektiğinde (örneğin, hedef bölgeye yük dev
 1. Çoğaltma eşlemesini bölmek için hedef birimi seçin. Depolama hizmeti altında **çoğaltma** ' ya tıklayın.  
 
 2.  Devam etmeden önce aşağıdaki alanları kontrol edin:  
-    * Yansıtma durumunun ***yansıtmalı** _ ' i belirttiğinden emin olun.   
-        Yansıtma durumu _Uninitialized * gösteriyorsa çoğaltma eşlemesini kesmeyi denemeyin.
-    * Ilişki durumunun ***Idle** _ ' i belirttiğinden emin olun.   
-        Ilişki durumu _Transferring * gösteriyorsa çoğaltma eşlemesini kesmeyi denemeyin.   
+    * Yansıtma durumunun ***yansıtmalı*** olduğundan emin olun.   
+        Yansıtma durumu *başlatılmamış* olarak görünüyorsa çoğaltma eşlemesini kesmeyi denemeyin.
+    * Ilişki durumunun ***Boşta*** gösterildiğinden emin olun.   
+        Ilişki durumu *aktarmayı* gösteriyorsa çoğaltma eşlemesini kesmeyi denemeyin.   
 
     Bkz. [çoğaltma ilişkisinin sistem durumunu görüntüleme](cross-region-replication-display-health-status.md). 
 
@@ -80,10 +80,10 @@ Hedefin kaynağa yeniden eşitleme işlemi tamamlandıktan sonra, kaynaktan hede
 1. Çoğaltma eşlemesini kes:  
     a. *Hedef* birimi seçin. Depolama hizmeti altında **çoğaltma** ' ya tıklayın.  
     b. Devam etmeden önce aşağıdaki alanları kontrol edin:   
-    * Yansıtma durumunun ***yansıtmalı** _ ' i belirttiğinden emin olun.   
-    Yansıtma durumu _uninitialized * gösteriyorsa çoğaltma eşlemesini kesmeyi denemeyin.  
-    * Ilişki durumunun ***Idle** _ ' i belirttiğinden emin olun.   
-    Ilişki durumu _transferring * gösteriyorsa çoğaltma eşlemesini kesmeyi denemeyin.    
+    * Yansıtma durumunun ***yansıtmalı*** olduğundan emin olun.   
+    Yansıtma durumu *başlatılmamış* olarak görünüyorsa çoğaltma eşlemesini kesmeyi denemeyin.  
+    * Ilişki durumunun ***Boşta*** gösterildiğinden emin olun.   
+    Ilişki durumu *aktarmayı* gösteriyorsa çoğaltma eşlemesini kesmeyi denemeyin.    
 
         Bkz. [çoğaltma ilişkisinin sistem durumunu görüntüleme](cross-region-replication-display-health-status.md). 
 
@@ -102,7 +102,8 @@ Hedefin kaynağa yeniden eşitleme işlemi tamamlandıktan sonra, kaynaktan hede
 * [Bölgeler arası çoğaltma](cross-region-replication-introduction.md)
 * [Bölgeler arası çoğaltmayı kullanma gereksinimleri ve konuları](cross-region-replication-requirements-considerations.md)
 * [Çoğaltma ilişkisinin uygunluk durumunu görüntüleme](cross-region-replication-display-health-status.md)
+* [Çapraz bölge çoğaltma hedef birimini yeniden boyutlandırma](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-cross-region-replication-destination-volume)
 * [Birim çoğaltma ölçümleri](azure-netapp-files-metrics.md#replication)
-* [Birim çoğaltmaları veya birimleri silme](cross-region-replication-delete.md)
+* [Birim çoğaltmalarını veya birimleri silme](cross-region-replication-delete.md)
 * [Bölgeler arası çoğaltma sorunlarını giderme](troubleshoot-cross-region-replication.md)
 

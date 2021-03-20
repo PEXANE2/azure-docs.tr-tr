@@ -10,10 +10,10 @@ ms.reviewer: jowargo
 ms.lastreviewed: 10/16/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: df8560bec3671a9f05628ee6ed8ea95c31e9b16f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88998059"
 ---
 # <a name="azure-notification-hubs-updates-for-ios-13"></a>İOS 13 için Azure Notification Hubs güncelleştirmeleri
@@ -65,7 +65,7 @@ Bu geçiş sırasında size yardımcı olmak için, Azure Notification Hubs küm
 
 Başka bir küçük değişiklik, ancak bildirim gönderen arka uç uygulamasında bir değişiklik gerektiren bir arka plan bildirimleri için `apns-priority` üst bilginin 5 olarak ayarlanması gerekir. Birçok uygulama `apns-priority` , üst bilgiyi 10 ' a (hemen teslim olduğunu gösterir) ya da ayarlamazsanız ve varsayılan değeri (aynı zamanda 10) alır.
 
-Arka plan bildirimleri için bu değerin 10 olarak ayarlanmasına artık izin verilmez ve her istek için değeri ayarlamanız gerekir. Bu değer eksikse Apple, arka plan bildirimleri teslim etmez. Örneğin:
+Arka plan bildirimleri için bu değerin 10 olarak ayarlanmasına artık izin verilmez ve her istek için değeri ayarlamanız gerekir. Bu değer eksikse Apple, arka plan bildirimleri teslim etmez. Örnek:
 
 ```csharp
 var hub = NotificationHubClient.CreateFromConnectionString(...);

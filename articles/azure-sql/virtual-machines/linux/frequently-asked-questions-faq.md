@@ -12,10 +12,10 @@ ms.date: 12/13/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: ad991974df30060e552d21a44d5796cd2ba165e2
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792557"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-linux-virtual-machines"></a>Linux üzerinde SQL Server sanal makineler için sık sorulan sorular
@@ -95,13 +95,13 @@ Bu makalede [Linux üzerinde SQL Server sanal makineler](sql-server-on-linux-vm-
 
 ## <a name="resources"></a>Kaynaklar
 
-**Linux VM 'leri** :
+**Linux VM 'leri**:
 
 * [Linux VM 'de SQL Server genel bakış](sql-server-on-linux-vm-what-is-iaas-overview.md)
 * [Linux VM üzerinde SQL Server sağlama](sql-vm-create-portal-quickstart.md)
 * [Linux üzerinde SQL Server belgeleri](/sql/linux/sql-server-linux-overview)
 
-**Windows VM 'leri** :
+**Windows VM 'leri**:
 
 * [Windows VM 'de SQL Server genel bakış](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Windows VM 'de SQL Server sağlama](../windows/sql-vm-create-portal-quickstart.md)

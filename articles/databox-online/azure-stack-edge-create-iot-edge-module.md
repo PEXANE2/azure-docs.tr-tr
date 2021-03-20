@@ -10,10 +10,10 @@ ms.date: 08/06/2019
 ms.author: alkohli
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 96a6692524eca3a2845d648ab3df2932d00ce823
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91951154"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-with-azure-stack-edge-pro"></a>Dosyaları Azure Stack Edge Pro ile taşımak için C# IoT Edge modülünü geliştirme
@@ -42,7 +42,7 @@ Azure Stack Edge Pro cihazınız, IoT Edge modülleri dağıtabilir ve çalışt
 
 Dosya bulut paylaşımından olduktan sonra otomatik olarak Azure depolama hesabınıza yüklenir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce aşağıdakilere sahip olduğunuzdan emin olun:
 
@@ -65,15 +65,15 @@ Başlamadan önce aşağıdakilere sahip olduğunuzdan emin olun:
 Azure kapsayıcı kayıt defteri, Azure’da özel Docker kapsayıcısı görüntülerinizi depolayıp yönetebileceğiniz özel bir Docker kayıt defteridir. Bulutta bulunan iki popüler Docker kayıt defteri hizmeti Azure Container Registry ve Docker Hub 'lardır. Bu makale Container Registry kullanır.
 
 1. [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
-2. **Container Registry > kaynak > kapsayıcıları oluştur**' u seçin. **Oluştur**'a tıklayın.
+2. **Container Registry > kaynak > kapsayıcıları oluştur**' u seçin. **Oluştur**’a tıklayın.
 3. Girmelisiniz
 
    1. Azure 'da 5 ile 50 alfasayısal karakter içeren benzersiz bir **kayıt defteri adı** .
-   2. Bir **abonelik**seçin.
-   3. Yeni oluşturun veya var olan bir **kaynak grubunu**seçin.
-   4. Bir **konum**seçin. Bu konumun Azure Stack Edge kaynağıyla ilişkili ile aynı olmasını öneririz.
+   2. Bir **abonelik** seçin.
+   3. Yeni oluşturun veya var olan bir **kaynak grubunu** seçin.
+   4. Bir **konum** seçin. Bu konumun Azure Stack Edge kaynağıyla ilişkili ile aynı olmasını öneririz.
    5. **Yönetici kullanıcı** ayarını **Etkinleştir**'e getirin.
-   6. SKU 'YU **temel**olarak ayarlayın.
+   6. SKU 'YU **temel** olarak ayarlayın.
 
       ![Kapsayıcı kayıt defteri oluşturma](./media/azure-stack-edge-create-iot-edge-module/create-container-registry-1.png)
  
@@ -103,7 +103,7 @@ Kendi yazacağınız kodla özelleştirebileceğiniz bir C# çözüm şablonu ol
         ![Yeni çözüm oluştur 1](./media/azure-stack-edge-create-iot-edge-module/create-new-solution-1.png)
 
     3. Modül şablonu olarak **C# Module** girişini seçin.
-    4. Varsayılan modül adını atamak istediğiniz adla değiştirin, bu durumda **Filecopymodule**olur.
+    4. Varsayılan modül adını atamak istediğiniz adla değiştirin, bu durumda **Filecopymodule** olur.
     
         ![Yeni çözüm oluştur 2](./media/azure-stack-edge-create-iot-edge-module/create-new-solution-2.png)
 
@@ -125,8 +125,8 @@ Kendi yazacağınız kodla özelleştirebileceğiniz bir C# çözüm şablonu ol
 
 ### <a name="update-the-module-with-custom-code"></a>Modülü özel kodla güncelleştirme
 
-1. VS Code Gezgini 'nde, **> FileCopyModule > modülleri**' ni açın.
-2. **Filecopymodule ad alanının**en üstünde, daha sonra kullanılan türler için aşağıdaki using deyimlerini ekleyin. **Microsoft. Azure. Devices. Client. Transport. MQTT** , IoT Edge hub 'ına ileti göndermek için bir protokoldür.
+1. VS Code Gezgini 'nde, **> FileCopyModule > program. cs adlı modülleri** açın.
+2. **Filecopymodule ad alanının** en üstünde, daha sonra kullanılan türler için aşağıdaki using deyimlerini ekleyin. **Microsoft. Azure. Devices. Client. Transport. MQTT** , IoT Edge hub 'ına ileti göndermek için bir protokoldür.
 
     ```
     namespace FileCopyModule
@@ -182,7 +182,7 @@ Kendi yazacağınız kodla özelleştirebileceğiniz bir C# çözüm şablonu ol
     }
     ```
 
-6. **Pipemessage yöntemi** için kodu kaldırın ve onun yerine, **FileCopy**için kodu ekleyin.
+6. **Pipemessage yöntemi** için kodu kaldırın ve onun yerine, **FileCopy** için kodu ekleyin.
 
     ```
         /// <summary>
@@ -240,7 +240,7 @@ Kendi yazacağınız kodla özelleştirebileceğiniz bir C# çözüm şablonu ol
     ```
 
 7. Bu dosyayı kaydedin.
-8. Ayrıca, bu proje için [varolan bir kod örneğini indirebilirsiniz](https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/?cdn=disable) . Daha sonra, kaydettiğiniz dosyayı bu örnekteki **program.cs** dosyasına göre doğrulayabilirsiniz.
+8. Ayrıca, bu proje için [varolan bir kod örneğini indirebilirsiniz](https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/?cdn=disable) . Daha sonra, kaydettiğiniz dosyayı bu örnekteki **program. cs** dosyasına göre doğrulayabilirsiniz.
 
 ## <a name="build-your-iot-edge-solution"></a>IoT Edge çözümünüzü derleyin
 
@@ -257,7 +257,7 @@ Kendi yazacağınız kodla özelleştirebileceğiniz bir C# çözüm şablonu ol
 
 2. Parola istendiğinde parolayı girin. Ayrıca, oturum açma sunucusu, Kullanıcı adı ve parola değerlerini, Azure portal kapsayıcı kayıt defterinizde **erişim tuşlarından** alabilirsiniz.
  
-3. Kimlik bilgileri sağlandığında modül görüntünüzü Azure Container Registry 'nize gönderebilirsiniz. VS Code Gezgini 'nde, dosya ** üzerindemodule.js** sağ tıklayın ve **Build ve push IoT Edge çözümünü**seçin.
+3. Kimlik bilgileri sağlandığında modül görüntünüzü Azure Container Registry 'nize gönderebilirsiniz. VS Code Gezgini 'nde, dosya **üzerindemodule.js** sağ tıklayın ve **Build ve push IoT Edge çözümünü** seçin.
 
     ![Derleme ve gönderme IoT Edge çözüm 2](./media/azure-stack-edge-create-iot-edge-module/build-iot-edge-solution-2.png)
  

@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/03/2019
 ms.openlocfilehash: 148c4828309738a18dbda5fd35ea634e8384bfde
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792115"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>Ölçekli bulut veritabanları genelinde raporlama (Önizleme)
@@ -29,7 +29,7 @@ Hızlı başlangıç için bkz. [ölçekli bulut veritabanları genelinde raporl
 
 Parçalı olmayan veritabanları için bkz. [farklı şemalarla bulut veritabanları genelinde sorgulama](elastic-query-vertical-partitioning.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Elastik veritabanı istemci kitaplığını kullanarak bir parça haritası oluşturun. bkz. parça [eşleme yönetimi](elastic-scale-shard-map-management.md). Ya da [elastik veritabanı araçlarını kullanmaya başlama](elastic-scale-get-started.md)bölümünde örnek uygulamayı kullanın.
 * Alternatif olarak, bkz. [var olan veritabanlarını ölçekli veritabanlarına geçirme](elastic-convert-to-use-elastic-tools.md).
@@ -163,9 +163,9 @@ DAĞıTıM yan tümcesi, bu tablo için kullanılan veri dağılımını belirti
 2. **Çoğaltılan** , tablonun aynı kopyalarının her veritabanında bulunduğu anlamına gelir. Çoğaltmalarınızın veritabanları genelinde özdeş olmasını sağlamak sizin sorumluluğunuzdadır.
 3. **Yuvarlak \_ Bir kez deneme** , bir uygulamaya bağımlı dağıtım yöntemi kullanılarak tablonun yatay olarak bölümlenmesi anlamına gelir.
 
-**Veri katmanı başvurusu** : dış tablo DDL, bir dış veri kaynağını ifade eder. Dış veri kaynağı, dış tabloya, veri katmanınızda tüm veritabanlarını bulmak için gereken bilgileri sağlayan bir parça Haritası belirtir.
+**Veri katmanı başvurusu**: dış tablo DDL, bir dış veri kaynağını ifade eder. Dış veri kaynağı, dış tabloya, veri katmanınızda tüm veritabanlarını bulmak için gereken bilgileri sağlayan bir parça Haritası belirtir.
 
-### <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
+### <a name="security-considerations"></a>Güvenlik konuları
 
 Dış tabloya erişimi olan kullanıcılar, dış veri kaynağı tanımında verilen kimlik bilgileri altındaki temeldeki uzak tablolara otomatik olarak erişim elde edebilir. Dış veri kaynağının kimlik bilgileri aracılığıyla, ayrıcalıkların istenmeyen ayrıcalıklarından kaçının. Bir dış tablo için, normal bir tablo olmasına rağmen ızın verme veya Iptal etme kullanın.  
 

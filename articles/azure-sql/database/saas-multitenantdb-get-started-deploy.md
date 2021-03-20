@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/16/2018
 ms.openlocfilehash: 4de7e428bff0feaafdec00b0c0014bbaf6acb917
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92790976"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Parçalı bir çok kiracılı uygulamayı dağıtma ve araştırma
@@ -47,7 +47,7 @@ Herkes, [GitHub deposundan][link-github-wingtip-multitenantdb-55g]Wingtip biletl
 
 Bu ilk dağıtımı üzerine inşa eden bir dizi ilgili öğretici vardır. Öğreticiler bir dizi SaaS tasarımı ve yönetim desenini keşfedebilir. Öğreticilerde çalışırken, farklı SaaS desenlerinin nasıl uygulandığını görmek için, belirtilen betiklerin içinde ilerletirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdaki ön koşulların karşılandığından emin olun:
 
@@ -73,19 +73,19 @@ Adlarınızı şimdi seçin ve bunları aşağı yazın.
 1. Dağıtım için gerekli parametre değerlerini girin.
 
     > [!IMPORTANT]
-    > Bu gösterim için, önceden mevcut kaynak grupları, sunucular veya havuzlar kullanmayın. Bunun yerine, **Yeni kaynak grubu oluştur** ' u seçin. İlgili faturalandırmayı durdurmak için uygulamayla işiniz bittiğinde bu kaynak grubunu silin.
+    > Bu gösterim için, önceden mevcut kaynak grupları, sunucular veya havuzlar kullanmayın. Bunun yerine, **Yeni kaynak grubu oluştur**' u seçin. İlgili faturalandırmayı durdurmak için uygulamayla işiniz bittiğinde bu kaynak grubunu silin.
     > Üretim için bu uygulamayı veya oluşturduğu kaynakları kullanmayın. Kimlik doğrulamanın bazı yönleri ve sunucu güvenlik duvarı ayarları, tanıtımı kolaylaştırmak için uygulamada bilinçli olarak güvenli değildir.
 
-    - **Kaynak grubu** için, **Yeni oluştur** ' u seçin ve kaynak grubu için bir **ad** belirtin (büyük/küçük harfe duyarlı).
+    - **Kaynak grubu** için, **Yeni oluştur**' u seçin ve kaynak grubu için bir **ad** belirtin (büyük/küçük harfe duyarlı).
         - Açılan listeden bir **konum** seçin.
     - **Kullanıcı** için, kısa bir **Kullanıcı** değeri seçmenizi öneririz.
 
-1. **Uygulamayı dağıtın** .
+1. **Uygulamayı dağıtın**.
 
     - Hüküm ve koşulları kabul etmek için tıklayın.
-    - **Satın al** ’a tıklayın.
+    - **Satın al**’a tıklayın.
 
-1. Arama kutusunun sağındaki zil simgesi olan **Bildirimler** ' e tıklayarak dağıtım durumunu izleyin. Wingtip App 'in dağıtımı yaklaşık beş dakika sürer.
+1. Arama kutusunun sağındaki zil simgesi olan **Bildirimler**' e tıklayarak dağıtım durumunu izleyin. Wingtip App 'in dağıtımı yaklaşık beş dakika sürer.
 
    ![dağıtım başarılı](./media/saas-multitenantdb-get-started-deploy/succeeded.png)
 
@@ -97,11 +97,11 @@ Uygulama dağıtıldığında, uygulama kaynak kodunu ve yönetim betikleri ' ni
 > ZIP dosyaları bir dış kaynaktan indirilip ayıklandığında, yürütülebilir içerikler (betikler, dll 'Ler) Windows tarafından engellenebilir. Bir zip dosyasından betikleri ayıkladığınızda, Ayıklamadan önce. zip dosyasının engelini kaldırmak için aşağıdaki adımları kullanın. . Zip dosyasının engellemesini kaldırarak betiklerin çalışmasına izin verildiğinden emin olursunuz.
 
 1. [WingtipTicketsSaaS-MultiTenantDb GitHub](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)deposuna gidin.
-2. **Kopyala veya indir** ' e tıklayın.
+2. **Kopyala veya indir**' e tıklayın.
 3. **ZIP 'ı indir** ' e tıklayın ve dosyayı kaydedin.
-4. **WingtipTicketsSaaS-MultiTenantDb-master.zip** dosyasına sağ tıklayın ve **Özellikler** ' i seçin.
-5. **Genel** sekmesinde **Engellemeyi kaldır** ' ı seçin ve **Uygula** ' ya tıklayın.
-6. **Tamam** ’a tıklayın.
+4. **WingtipTicketsSaaS-MultiTenantDb-master.zip** dosyasına sağ tıklayın ve **Özellikler**' i seçin.
+5. **Genel** sekmesinde **Engellemeyi kaldır**' ı seçin ve **Uygula**' ya tıklayın.
+6. **Tamam**'a tıklayın.
 7. Dosyaları ayıklayın.
 
 Betikler içinde bulunur *. \\ Wingtipbilet ssaas-MultiTenantDb-Master \\ Learning modüller \\* klasörü.
@@ -110,7 +110,7 @@ Betikler içinde bulunur *. \\ Wingtipbilet ssaas-MultiTenantDb-Master \\ Learni
 
 Herhangi bir komut dosyasını çalıştırmadan önce, **userconfig. psm1** içindeki *kaynak grubunu* ve *Kullanıcı* değerlerini ayarlayın. Bu değişkenleri, dağıtım sırasında ayarladığınız aynı değerlere ayarlayın.
 
-1. Aç... \\ \\ *PowerShell ISE* 'de öğrenme modülleri *userconfig. psm1* .
+1. Aç... \\ \\ *PowerShell ISE*'de öğrenme modülleri *userconfig. psm1* .
 2. *Resourcegroupname* ve *ad* 'yi dağıtımınızın belirli değerleriyle güncelleştirin (yalnızca 10 ve 11. satır).
 3. Değişiklikleri kaydedin.
 
@@ -129,15 +129,15 @@ Merkezi bir **Olay Hub 'ı** Web sayfası, belirli dağıtımınızdaki kiracıl
 
      ![olay hub’ı](./media/saas-multitenantdb-get-started-deploy/events-hub.png)
 
-2. **Olay Hub’ında****Fabrikam Caz Kulübü** ’ne tıklayın.
+2. **Olay Hub’ında****Fabrikam Caz Kulübü**’ne tıklayın.
 
-   ![Olaylar](./media/saas-multitenantdb-get-started-deploy/fabrikam.png)
+   ![Ekinlikler](./media/saas-multitenantdb-get-started-deploy/fabrikam.png)
 
 ### <a name="azure-traffic-manager"></a>Azure Traffic Manager
 
 Gelen isteklerin dağıtımını denetlemek için, Wingtip uygulaması [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md)kullanır. Her kiracının Olaylar sayfasında, URL 'sindeki kiracı adı yer alır. Her URL ayrıca belirli kullanıcı değerini içerir. Her URL, aşağıdaki adımları kullanarak gösterilen biçime uyar:
 
-- http://events.wingtip-mt.&lt; user &gt; . trafficmanager.net/ *fabrikamjazzclub*
+- http://events.wingtip-mt.&lt; user &gt; . trafficmanager.net/*fabrikamjazzclub*
 
 1. Olaylar uygulaması, kiracı adını URL 'den ayrıştırır. Kiracı adı, önceki örnek URL 'de *fabrikamjazzclub* .
 2. Uygulama daha sonra, parça [eşleme yönetimi](elastic-scale-shard-map-management.md)kullanarak bir kataloğa erişmek üzere bir anahtar oluşturmak için kiracı adını karma hale getirir.
@@ -155,8 +155,8 @@ Bir üretim ortamında, genellikle [Şirket İnternet etki alanını](../../traf
 
 Artık uygulama dağıtıldığına göre, şimdi çalışacak şekilde koyalım! *Demo-LoadGenerator* PowerShell betiği, her kiracı için çalışan bir iş yükünü başlatır. Birçok SaaS uygulamasında gerçek dünyada yük, genellikle sporda ve öngörülemeyen bir şekilde yapılır. Bu tür yükün benzetimini yapmak için, Oluşturucu tüm kiracılara dağıtılmış bir yük oluşturur. Yük, rastgele aralıklarda oluşan her bir kiracıda rastgele artışlarıyla içerir. Yük deseninin ortaya geçmesi birkaç dakika sürer. bu nedenle, yüklemeyi izlemeden önce oluşturucunun en az üç veya dört dakika çalışmasını sağlamak en iyisidir.
 
-1. *PowerShell ISE* 'de,... \\ öğesini açın. Öğrenme modülleri \\ yardımcı programları \\ *Demo-LoadGenerator.ps1* betiği.
-2. Betiği çalıştırmak ve yük oluşturucuyu başlatmak için **F5** ’e basın (şimdilik varsayılan parametre değerlerini bırakın).
+1. *PowerShell ISE*'de,... \\ öğesini açın. Öğrenme modülleri \\ yardımcı programları \\ *Demo-LoadGenerator.ps1* betiği.
+2. Betiği çalıştırmak ve yük oluşturucuyu başlatmak için **F5**’e basın (şimdilik varsayılan parametre değerlerini bırakın).
 
 *Demo-LoadGenerator.ps1* betiği, yük oluşturucunun çalıştığı başka bir PowerShell oturumu açar. Yük Oluşturucu bu oturumda, her kiracı için bir tane olmak üzere arka plan yük oluşturma işlerini çağıran bir ön plan görevi olarak çalışır.
 
@@ -170,7 +170,7 @@ Farklı parametre değerlerini kullanmak için Load Generator oturumunu yeniden 
 
 İlk dağıtım, *Tenants1* veritabanında üç örnek kiracı içerir. Daha sonra başka bir kiracı oluşturalım ve bu uygulamayı dağıtılan uygulama üzerinde gözlemleyeceksiniz. Bu adımda, yeni bir kiracı oluşturmak için bir tuşa basın:
 
-1. Aç... \\ \\ \\ *PowerShell ISE* 'de öğrenme modülleri sağlama ve Katalog *Demo-ProvisionTenants.ps1* .
+1. Aç... \\ \\ \\ *PowerShell ISE*'de öğrenme modülleri sağlama ve Katalog *Demo-ProvisionTenants.ps1* .
 2. Betiği çalıştırmak için **F5** ( **F8** değil) tuşuna basın (şimdilik varsayılan değerleri bırakın).
 
    > [!NOTE]
@@ -193,7 +193,7 @@ Parçalı çok kiracılı model, diğer kiracıların bulunduğu bir veritabanı
 
 Daha sonra, bu kez kendi veritabanında başka bir kiracı sağladık:
 
-1. İçinde.. \\ . Öğrenme modülleri \\ sağlama ve katalog \\ *Demo-ProvisionTenants.ps1* , **salx salsa** 'ya *$VenueType* *$TenantName* , **dans** ve *$Scenario* **2** olarak değiştirme.
+1. İçinde.. \\ . Öğrenme modülleri \\ sağlama ve katalog \\ *Demo-ProvisionTenants.ps1*, **salx salsa**'ya *$VenueType* *$TenantName* , **dans** ve *$Scenario* **2** olarak değiştirme.
 
 2. Betiği yeniden çalıştırmak için **F5** tuşuna basın.
     - Bu **F5** tuþuna, yeni kiracıyı ayrı bir veritabanında sağlar. Veritabanı ve kiracı kataloğa kaydedilir. Ardından tarayıcı, kiracının Olaylar sayfasında açılır.

@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 5755e14e53d359fd8b322939bf1325d21536d593
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89020193"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>Örnek: Bing Varlık Arama API'si kullanarak özel bir yetenek oluşturma
 
 Bu örnekte, bir Web API 'SI özel yeteneği oluşturmayı öğrenin. Bu beceri konumları, genel rakamları ve kuruluşları kabul eder ve bunların açıklamalarını döndürür. Örnek, [Bing varlık arama API'si](https://azure.microsoft.com/services/cognitive-services/bing-entity-search-api/) özel beceri arabirimini uygulayan şekilde kaydırmak Için bir [Azure işlevi](https://azure.microsoft.com/services/functions/) kullanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + Özel bir yeteneğin uygulaması gereken giriş/çıkış arabirimini bilmiyorsanız [özel beceri arabirimi](cognitive-search-custom-skill-interface.md) makalesi hakkında bilgi edinin.
 
@@ -34,7 +34,7 @@ Bu örnek, bir Web API 'sini barındırmak için bir Azure Işlevi kullansa da g
 
 ### <a name="create-a-function-app"></a>İşlev uygulaması oluşturma
 
-1. Visual Studio 'da Dosya menüsünden **Yeni**  >  **Proje** ' yi seçin.
+1. Visual Studio'da Dosya menüsünden **Yeni** > **Proje**’yi seçin.
 
 1. Yeni proje iletişim kutusunda, **yüklü**' i seçin, **Visual C#**  >  **bulutu**' nı genişletin, **Azure işlevleri**' ni seçin, projeniz için bir ad yazın ve **Tamam**' ı seçin. İşlev uygulaması adının bir C# ad alanı olarak geçerli olması gerekir, bu nedenle alt çizgi, kısa çizgi veya alfasayısal olmayan herhangi bir karakter kullanmayın.
 
@@ -50,7 +50,7 @@ Bu örnek, bir Web API 'sini barındırmak için bir Azure Işlevi kullansa da g
 
 Visual Studio bir proje oluşturur ve bu projenin içinde seçili işlev türü için ortak kod içeren bir sınıf bulunur. Metottaki *FunctionName* özniteliği işlevin adını ayarlar. *HttpTrigger* özniteliği, işlevin bir HTTP isteği tarafından tetiklenip tetiklenmediğini belirtir.
 
-Şimdi, *function1.cs* dosyasının tüm içeriğini aşağıdaki kodla değiştirin:
+Şimdi, *işlev1. cs* dosyasının tüm içeriğini şu kodla değiştirin:
 
 ```csharp
 using System;
@@ -312,7 +312,7 @@ namespace SampleSkills
 }
 ```
 
-*key* `key` Bing varlık arama API 'sine kaydolurken aldığınız anahtara bağlı olarak, kendi anahtar değerini sabit değere girdiğinizden emin olun.
+ `key` Bing varlık arama API 'sine kaydolurken aldığınız anahtara bağlı olarak, kendi anahtar değerini sabit değere girdiğinizden emin olun.
 
 Bu örnek, kolay bir şekilde tek bir dosyadaki tüm gerekli kodu içerir. [Power becerileri deposunda](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Text/BingEntitySearch)aynı becerinin biraz daha yapısal bir sürümünü bulabilirsiniz.
 
@@ -376,7 +376,7 @@ Aşağıdaki örneğe benzer bir yanıt görmeniz gerekir:
 
 İşlev davranışından memnun kaldığınızda, bunu yayımlayabilirsiniz.
 
-1. **Çözüm Gezgini**'nde projeye sağ tıklayın ve **Yayımla**'yı seçin. **Yeni**  >  **Yayımlama**oluştur öğesini seçin.
+1. **Çözüm Gezgini**'nde projeye sağ tıklayın ve **Yayımla**'yı seçin. **Yeni**  >  **Yayımlama** oluştur öğesini seçin.
 
 1. Zaten Visual Studio 'Yu Azure hesabınıza bağladıysanız **Hesap Ekle...** seçeneğini belirleyin.
 

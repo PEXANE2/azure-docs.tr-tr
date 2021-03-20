@@ -9,15 +9,15 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.openlocfilehash: d7734fde529c24e8113ea3b019d343b7223f0122
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91929651"
 ---
 # <a name="upgrade-to-the-latest-rest-api-in-azure-cognitive-search"></a>Azure Bilişsel Arama en son REST API yükseltin
 
-[**Arama REST API**](/rest/api/searchservice/)daha önceki bir sürümünü kullanıyorsanız, bu makale uygulamanızı en yenı **2020-06-30**API sürümüne yükseltmenize yardımcı olur.
+[**Arama REST API**](/rest/api/searchservice/)daha önceki bir sürümünü kullanıyorsanız, bu makale uygulamanızı en yenı **2020-06-30** API sürümüne yükseltmenize yardımcı olur.
 
 Sürüm 2020-06-30 önemli bir yeni Özellik ([bilgi deposu](knowledge-store-concept-intro.md)) içerir ve birkaç küçük davranış değişikliği sunar. Bu nedenle, önceki sürümden yükseltiyorsanız (2019-05-06) kod değişikliklerinin en az olması için bu sürüm büyük ölçüde uyumludur.
 

@@ -13,10 +13,10 @@ ms.workload: identity
 ms.date: 02/27/2017
 ROBOTS: NOINDEX
 ms.openlocfilehash: ad5595f7eebc8feca2f00a6f95e10c547ded9529
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85383743"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Azure Active Directory kimlik doğrulaması kitaplığı (ADAL) istemcileri için en iyi yöntemler işlenirken hata oluştu
@@ -51,7 +51,7 @@ AcquireTokenSilent, son kullanıcının bir kullanıcı arabirimi (UI) görmedi�
 
 Temelde, AcquireTokenSilent hataların iki durumu vardır:
 
-| Case (Olay) | Açıklama |
+| Case (Olay) | Description |
 |------|-------------|
 | **Durum 1**: etkileşimli bir oturum açma ile hata çözülebilir | Geçerli belirteçlerin olmamasından kaynaklanan hatalar için, etkileşimli bir istek gereklidir. Özellikle, önbellek araması ve geçersiz/zaman aşımına uğradı yenileme belirteci, çözümlemek için bir AcquireToken çağrısı gerektirir.<br><br>Bu durumlarda, son kullanıcıdan oturum açması istenir. Uygulama, Son Kullanıcı etkileşiminden sonra etkileşimli bir istek yapmayı tercih edebilir (bir oturum açma düğmesine veya daha sonra bir oturum açma düğmesine vurmayın). Seçim, uygulamanın istenen davranışına bağlıdır.<br><br>Bu özel durum ve bunu tanılayan hatalar için aşağıdaki bölümde yer alan koda bakın.|
 | **Durum 2**: hataya etkileşimli bir oturum açma ile çözümlenemez | Ağ ve geçici/geçici hatalar veya diğer hatalar için, etkileşimli bir AcquireToken isteği gerçekleştirmek sorunu çözmez. Gereksiz oturum açma istemlerinin yanı sıra son kullanıcıları da rahatsız edebilir. ADAL, AcquireTokenSilent hatalarıyla ilgili birçok hata için otomatik olarak tek bir yeniden denemeye çalışır.<br><br>İstemci uygulaması, daha sonraki bir noktada yeniden denemeye da deneyebilir, ancak uygulama davranışına ve istenen son kullanıcı deneyimine ne zaman ve nasıl bağlı olur. Örneğin, uygulama birkaç dakika sonra veya son kullanıcı eylemine yanıt olarak bir AcquireTokenSilent yeniden deneme gerçekleştirebilir. Anında yeniden deneme uygulamanın azaltılmakta olmasının yanı sıra denenmemelidir.<br><br>Aynı hatayla başarısız olan sonraki bir yeniden deneme, hatayı çözemediğinden, istemcinin AcquireToken kullanan etkileşimli bir istek yapması gerektiği anlamına gelmez.<br><br>Bu özel durum ve bunu tanılayan hatalar için aşağıdaki bölümde yer alan koda bakın. |

@@ -7,10 +7,10 @@ ms.topic: troubleshooting
 ms.date: 08/18/2020
 ms.author: yunjchoi
 ms.openlocfilehash: a409ac944c51d893fc344f82ae83d97559e055ef
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92070665"
 ---
 # <a name="check-for-resource-health-events-impacting-your-aks-cluster-preview"></a>AKS kümenizi etkileyen Kaynak Durumu olaylarını kontrol edin (Önizleme)
@@ -39,15 +39,15 @@ AKS üzerinde kapsayıcı iş yüklerinizi çalıştırırken, iş yüklerinizin
 
 Azure Kaynak Durumu, Azure kaynaklarınızı etkileyen hizmet sorunlarını tanılamanıza ve destek almanıza yardımcı olur. Kaynaklarınızın geçerli ve geçmiş durumu hakkında raporlar Kaynak Durumu ve sorunun Kullanıcı tarafından başlatılan bir eylem veya platform olayından kaynaklanıp kaynaklanmadığını belirlemenize yardımcı olur.
 
-Kaynak Durumu, kümenin sistem durumunu tespit etmek üzere yönetilen kümeniz için sinyaller alır. AKS kümenizin sistem durumu ve her bir sistem durumu sinyali için gereken raporlar eylemleri incelenir. Bu sinyaller, otomatik çözüm sorunları, planlı güncelleştirmeler, planlanmamış sistem olayları ve Kullanıcı tarafından başlatılan eylemlerden kaynaklanan kullanım dışı durumlardır. Bu sinyaller Azure Kaynak Durumu sistem durumu kullanılarak sınıflandırılır: *kullanılabilir*, *kullanılamaz*, *bilinmiyor*ve *düşürülmüş*.
+Kaynak Durumu, kümenin sistem durumunu tespit etmek üzere yönetilen kümeniz için sinyaller alır. AKS kümenizin sistem durumu ve her bir sistem durumu sinyali için gereken raporlar eylemleri incelenir. Bu sinyaller, otomatik çözüm sorunları, planlı güncelleştirmeler, planlanmamış sistem olayları ve Kullanıcı tarafından başlatılan eylemlerden kaynaklanan kullanım dışı durumlardır. Bu sinyaller Azure Kaynak Durumu sistem durumu kullanılarak sınıflandırılır: *kullanılabilir*, *kullanılamaz*, *bilinmiyor* ve *düşürülmüş*.
 
-- **Kullanılabilir**: kümenizin sistem durumunu etkileyen bilinen bir sorun yoksa kaynak durumu kümenizi *kullanılabilir*olarak raporlar.
+- **Kullanılabilir**: kümenizin sistem durumunu etkileyen bilinen bir sorun yoksa kaynak durumu kümenizi *kullanılabilir* olarak raporlar.
 
-- **Kullanılamaz**: kümenizin sistem durumunu etkileyen bir platform veya platform dışı olay olduğunda, kümenizi *kullanılamıyor*olarak raporlar kaynak durumu.
+- **Kullanılamaz**: kümenizin sistem durumunu etkileyen bir platform veya platform dışı olay olduğunda, kümenizi *kullanılamıyor* olarak raporlar kaynak durumu.
 
-- **Bilinmiyor**: kümenizin sistem durumu ölçümlerine geçici bir bağlantı kaybı olduğunda, kümenizi *bilinmiyor*olarak raporlar kaynak durumu.
+- **Bilinmiyor**: kümenizin sistem durumu ölçümlerine geçici bir bağlantı kaybı olduğunda, kümenizi *bilinmiyor* olarak raporlar kaynak durumu.
 
-- **Düşürülmüş**: eyleminizi gerektiren bir sistem durumu sorunu olduğunda, kümenizi *düşürülmüş*olarak rapor kaynak durumu.
+- **Düşürülmüş**: eyleminizi gerektiren bir sistem durumu sorunu olduğunda, kümenizi *düşürülmüş* olarak rapor kaynak durumu.
 
 Her sistem durumunun gösterdiği diğer ayrıntılar için [kaynak durumu genel bakış](../service-health/resource-health-overview.md#health-status)' ı ziyaret edin.
 

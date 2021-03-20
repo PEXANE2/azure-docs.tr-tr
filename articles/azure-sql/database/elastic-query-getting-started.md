@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 10/10/2019
 ms.openlocfilehash: 586dad7439cc57ed2c863ee5f6692e12f7a78c50
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92781235"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>Ölçekli bulut veritabanları arasında rapor (Önizleme)
@@ -27,7 +27,7 @@ Var olan bir veritabanınız varsa, bkz. [var olan veritabanlarını ölçekli v
 
 Sorgulamak için gereken SQL nesnelerini anlamak için bkz. [yatay bölümlenmiş veritabanlarında sorgulama](elastic-query-horizontal-partitioning.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Esnek veritabanı araçları](elastic-scale-get-started.md)'nı kullanmaya başlama örneğini indirip çalıştırın.
 
@@ -121,13 +121,13 @@ Sorgunun tüm parçalardan sonuçları topladığına ve aşağıdaki çıktıy�
 
 1. Excel 2013 ' i başlatın.
 2. **Veri** şeridine gidin.
-3. **Diğer kaynaklardan** öğesine tıklayın ve **SQL Server** ' ye tıklayın.
+3. **Diğer kaynaklardan** öğesine tıklayın ve **SQL Server**' ye tıklayın.
 
    ![Diğer kaynaklardan Excel içeri aktarma][5]
-4. **Veri bağlantısı Sihirbazı** 'nda sunucu adını ve oturum açma kimlik bilgilerini yazın. Ardından **İleri** 'ye tıklayın.
-5. İletişim kutusunda istediğiniz **verileri içeren veritabanını seçin** , **Elaun dbquery** veritabanını seçin.
-6. Liste görünümünde **Customers** tablosunu seçin ve **İleri** ' ye tıklayın. Ardından, **Son** 'a tıklayın.
-7. **Veri al** formunda, **çalışma kitabınızda bu verileri nasıl görüntülemek Istediğinizi seçin** altında **tablo** ' yı seçin ve **Tamam** ' ı tıklatın.
+4. **Veri bağlantısı Sihirbazı** 'nda sunucu adını ve oturum açma kimlik bilgilerini yazın. Ardından **İleri**'ye tıklayın.
+5. İletişim kutusunda istediğiniz **verileri içeren veritabanını seçin**, **Elaun dbquery** veritabanını seçin.
+6. Liste görünümünde **Customers** tablosunu seçin ve **İleri**' ye tıklayın. Ardından, **Son**'a tıklayın.
+7. **Veri al** formunda, **çalışma kitabınızda bu verileri nasıl görüntülemek Istediğinizi seçin** altında **tablo** ' yı seçin ve **Tamam**' ı tıklatın.
 
 **Müşteriler** tablosundaki tüm satırlar, farklı parçalar halinde saklanan Excel sayfasını doldurur.
 

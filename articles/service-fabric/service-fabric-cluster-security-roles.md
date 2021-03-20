@@ -4,10 +4,10 @@ description: Bu makalede, iki istemci rolü ve rollere sunulan izinler açıklan
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: abca19e686d39338fcaa2e0b0c8126913135170b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75451892"
 ---
 # <a name="role-based-access-control-for-service-fabric-clients"></a>Service Fabric istemcileri için rol tabanlı erişim denetimi
@@ -89,7 +89,7 @@ Kullanıcı erişim denetimi türü, varsayılan olarak aşağıdaki işlemlerle
 Yönetici erişim denetimi, önceki işlemlere de erişebilir.
 
 ## <a name="changing-default-settings-for-client-roles"></a>İstemci rolleri için varsayılan ayarları değiştirme
-Küme bildirim dosyasında, gerekirse istemciye yönetici özellikleri sağlayabilirsiniz. [Küme oluşturma](service-fabric-cluster-creation-via-portal.md)sırasında **doku ayarları** seçeneğine giderek Varsayılanları değiştirebilir ve **ad**, **yönetici**, **Kullanıcı**ve **değer** alanlarında önceki ayarları sağlayabilirsiniz.
+Küme bildirim dosyasında, gerekirse istemciye yönetici özellikleri sağlayabilirsiniz. [Küme oluşturma](service-fabric-cluster-creation-via-portal.md)sırasında **doku ayarları** seçeneğine giderek Varsayılanları değiştirebilir ve **ad**, **yönetici**, **Kullanıcı** ve **değer** alanlarında önceki ayarları sağlayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Service Fabric küme güvenliği](service-fabric-cluster-security.md)

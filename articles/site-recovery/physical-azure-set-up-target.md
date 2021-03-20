@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ramamill
 ms.openlocfilehash: 685f04b27cd315b04ef5c45e155e825eebe2747b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "73953893"
 ---
 # <a name="prepare-target-vmware-to-azure"></a>Hedefi hazırla (VMware 'den Azure 'a)
@@ -21,7 +21,7 @@ Bu makalede, Azure ortamınızı Windows veya Linux çalıştıran fiziksel sunu
 ## <a name="prerequisites"></a>Önkoşullar
 
 Makalede şunları varsayılmaktadır:
-- Fiziksel sunucularınızı korumak için bir kurtarma hizmetleri Kasası oluşturdunuz. [Azure Portal](https://portal.azure.com "Azure portal")bir kurtarma hizmetleri Kasası oluşturabilirsiniz.
+- Fiziksel sunucularınızı korumak için bir kurtarma hizmetleri Kasası oluşturdunuz. [Azure Portal](https://portal.azure.com "Azure portalı")bir kurtarma hizmetleri Kasası oluşturabilirsiniz.
 - [Şirket içi ortamınızı](physical-azure-disaster-recovery.md) fiziksel sunucuları Azure 'a çoğaltmak için ayarlayın.
 
 ## <a name="prepare-target"></a>Hedefi hazırla

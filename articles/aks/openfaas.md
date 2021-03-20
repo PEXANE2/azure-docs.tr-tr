@@ -7,17 +7,17 @@ ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 319107127b79383fc3b49f0eeb856a0e6c5b09f8
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92747760"
 ---
 # <a name="using-openfaas-on-aks"></a>AKS üzerinde OpenFaaS kullanma
 
 [Openfaas][open-faas] , kapsayıcıların kullanımı aracılığıyla sunucusuz işlevler oluşturmaya yönelik bir çerçevedir. Açık kaynak proje olarak, topluluk içinde büyük ölçekli benimseme kazanımıştır. Bu belge, Azure Kubernetes Service (AKS) kümesine OpenFaas yükleme ve kullanma ayrıntılarını inceleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları tamamlayabilmeniz için aşağıdakiler gerekir.
 
@@ -132,7 +132,7 @@ echo -n $PASSWORD | ./faas-cli login -g $OPENFAAS_URL -u admin --password-stdin
 
 OpenFaaS işletimsel olduğuna göre, OpenFaas portalını kullanarak bir işlev oluşturun.
 
-**Yeni Işlev Dağıt ' a** tıklayın ve **figlet** için arama yapın. Figlet işlevini seçin ve **Dağıt** ' a tıklayın.
+**Yeni Işlev Dağıt ' a** tıklayın ve **figlet** için arama yapın. Figlet işlevini seçin ve **Dağıt**' a tıklayın.
 
 ![Ekran görüntüsü, arama satırında figlet metin ile yeni bir Işlev Dağıt iletişim kutusu gösterir.](media/container-service-serverless/figlet.png)
 

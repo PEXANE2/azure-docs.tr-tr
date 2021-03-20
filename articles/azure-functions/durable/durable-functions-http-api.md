@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 4e4081ecca4714c713d105d363a83a4f96a0d3fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84697852"
 ---
 # <a name="http-api-reference"></a>HTTP API başvurusu
@@ -18,13 +18,13 @@ Dayanıklı İşlevler uzantısı, düzenlemeler, [varlıklar](durable-functions
 
 Uzantı tarafından uygulanan tüm HTTP API 'Leri aşağıdaki parametreleri gerektirir. Tüm parametrelerin veri türü `string` .
 
-| Parametre        | Parametre türü  | Açıklama |
+| Parametre        | Parametre türü  | Description |
 |------------------|-----------------|-------------|
 | **`taskHub`**    | Sorgu dizesi    | [Görev hub 'ının](durable-functions-task-hubs.md)adı. Belirtilmemişse, geçerli işlev uygulamasının görev hub 'ı adı varsayılır. |
 | **`connection`** | Sorgu dizesi    | Depolama hesabı için bağlantı dizesinin **adı** . Belirtilmemişse, işlev uygulaması için varsayılan bağlantı dizesi varsayılır. |
 | **`systemKey`**  | Sorgu dizesi    | API 'YI çağırmak için gereken yetkilendirme anahtarı. |
 
-`systemKey` , Azure Işlevleri ana bilgisayarı tarafından oluşturulan bir yetkilendirme anahtarıdır. Bu, özellikle dayanıklı görev uzantısı API 'Lerine erişim verir ve [diğer yetkilendirme anahtarlarıyla](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API)aynı şekilde yönetilebilir. `taskHub` `connection` `systemKey` [orchestration client binding](durable-functions-bindings.md#orchestration-client) `CreateCheckStatusResponse` `CreateHttpManagementPayload` .Net 'teki ve API 'leri ya da `createCheckStatusResponse` JavaScript 'teki API 'ler gibi Orchestration istemci bağlama API 'lerini kullanarak doğru, ve sorgu dizesi değerlerini içeren URL 'ler oluşturabilirsiniz `createHttpManagementPayload` .
+`systemKey` , Azure Işlevleri ana bilgisayarı tarafından oluşturulan bir yetkilendirme anahtarıdır. Bu, özellikle dayanıklı görev uzantısı API 'Lerine erişim verir ve [diğer yetkilendirme anahtarlarıyla](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API)aynı şekilde yönetilebilir. `taskHub` `connection` `systemKey` [](durable-functions-bindings.md#orchestration-client) `CreateCheckStatusResponse` `CreateHttpManagementPayload` .Net 'teki ve API 'leri ya da `createCheckStatusResponse` JavaScript 'teki API 'ler gibi Orchestration istemci bağlama API 'lerini kullanarak doğru, ve sorgu dizesi değerlerini içeren URL 'ler oluşturabilirsiniz `createHttpManagementPayload` .
 
 Sonraki birkaç bölümde uzantı tarafından desteklenen belirli HTTP API 'Leri ele alınmaktadır ve bunların nasıl kullanılacağına ilişkin örnekler sağlanmaktadır.
 
@@ -105,10 +105,10 @@ Aşağıda, `abc123` kimliği (okunabilirlik için biçimlendirilen) olan bir Or
 }
 ```
 
-HTTP yanıtının *yoklama tüketici düzeniyle*uyumlu olması amaçlanmıştır. Ayrıca, aşağıdaki önemli yanıt üstbilgilerini de içerir:
+HTTP yanıtının *yoklama tüketici düzeniyle* uyumlu olması amaçlanmıştır. Ayrıca, aşağıdaki önemli yanıt üstbilgilerini de içerir:
 
 * **Konum**: durum uç noktasının URL 'si. Bu URL, alanla aynı değeri içerir `statusQueryGetUri` .
-* **Yeniden deneme-sonra**: yoklama işlemleri arasında beklenecek saniye sayısı. Varsayılan değer: `10`.
+* **Yeniden deneme-sonra**: yoklama işlemleri arasında beklenecek saniye sayısı. `10` varsayılan değerdir.
 
 Zaman uyumsuz HTTP yoklama düzeniyle ilgili daha fazla bilgi için bkz. [http zaman uyumsuz işlem izleme](durable-functions-http-features.md#async-operation-tracking) belgeleri.
 
@@ -166,9 +166,9 @@ Olası birkaç durum kodu değeri döndürülebilir.
 
 **Http 200** ve **http 202** örnekleri için yanıt yükü AŞAĞıDAKI alanları içeren bir JSON nesnesidir:
 
-| Alan                 | Veri türü | Açıklama |
+| Alan                 | Veri türü | Description |
 |-----------------------|-----------|-------------|
-| **`runtimeStatus`**   | dize    | Örneğin çalışma zamanı durumu. Değerler *çalışıyor*, *bekliyor*, *başarısız*, *iptal edildi*, *sonlandırıldı*, *tamamlandı*olarak verilebilir. |
+| **`runtimeStatus`**   | dize    | Örneğin çalışma zamanı durumu. Değerler *çalışıyor*, *bekliyor*, *başarısız*, *iptal edildi*, *sonlandırıldı*, *tamamlandı* olarak verilebilir. |
 | **`input`**           | JSON      | Örneği başlatmak için kullanılan JSON verileri. Bu alan, `null` `showInput` sorgu dizesi parametresi olarak ayarlanmışsa olur `false` .|
 | **`customStatus`**    | JSON      | Özel düzenleme durumu için kullanılan JSON verileri. Bu alan `null` ayarlanmamışsa. |
 | **`output`**          | JSON      | Örneğin JSON çıktısı. Bu alan, `null` Örneğin tamamlanmış durumda olmaması durumunda olur. |
@@ -427,7 +427,7 @@ DELETE /runtime/webhooks/durabletask/instances
 
 Bu API için istek parametreleri, daha önce belirtilen varsayılan kümeyi ve aşağıdaki benzersiz parametreleri içerir:
 
-| Alan                 | Parametre türü  | Açıklama |
+| Alan                 | Parametre türü  | Description |
 |-----------------------|-----------------|-------------|
 | **`createdTimeFrom`** | Sorgu dizesi    | Verilen ıSO8601 zaman damgasında veya bundan sonra oluşturulan temizlenen örneklerin listesini filtreler.|
 | **`createdTimeTo`**   | Sorgu dizesi    | İsteğe bağlı parametre. Belirtildiğinde, belirtilen ıSO8601 zaman damgasında veya daha önce oluşturulan temizlenen örneklerin listesini filtreler.|
@@ -498,7 +498,7 @@ Olası birkaç durum kodu değeri döndürülebilir.
 * **HTTP 404 (bulunamadı)**: belirtilen örnek bulunamadı.
 * **HTTP 410 (kayıp)**: belirtilen örnek tamamlandı veya başarısız oldu ve herhangi bir oluşturulan olay işlenemiyor.
 
-İşte bir `"incr"` olay adlı **işlem**için bekleyen bir örneğe JSON dizesi gönderen örnek bir istek:
+İşte bir `"incr"` olay adlı **işlem** için bekleyen bir örneğe JSON dizesi gönderen örnek bir istek:
 
 ```http
 POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/raiseEvent/operation?taskHub=DurableFunctionsHub&connection=Storage&code=XXX
@@ -551,7 +551,7 @@ Olası birkaç durum kodu değeri döndürülebilir.
 * **HTTP 404 (bulunamadı)**: belirtilen örnek bulunamadı.
 * **HTTP 410 (kayıp)**: belirtilen örnek tamamlandı veya başarısız oldu.
 
-İşte çalışan bir örneği sonlandıran ve **önemlidir**nedenini belirten bir örnek istek aşağıdadır:
+İşte çalışan bir örneği sonlandıran ve **önemlidir** nedenini belirten bir örnek istek aşağıdadır:
 
 ```
 POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/terminate?reason=buggy&taskHub=DurableFunctionsHub&connection=Storage&code=XXX
@@ -600,7 +600,7 @@ Olası birkaç durum kodu değeri döndürülebilir.
 * **HTTP 404 (bulunamadı)**: belirtilen örnek bulunamadı.
 * **HTTP 410 (kayıp)**: belirtilen örnek tamamlandı veya sonlandırıldı.
 
-Aşağıda, başarısız bir örneği yeniden denetleyen ve bir **sabit**neden belirten örnek bir istek verilmiştir:
+Aşağıda, başarısız bir örneği yeniden denetleyen ve bir **sabit** neden belirten örnek bir istek verilmiştir:
 
 ```http
 POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/rewind?reason=fixed&taskHub=DurableFunctionsHub&connection=Storage&code=XXX
