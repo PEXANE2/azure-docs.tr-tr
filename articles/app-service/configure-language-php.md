@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
 ms.openlocfilehash: afac8273b5729bcf5470be471145214426dc7dab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90055308"
 ---
 # <a name="configure-a-php-app-for-azure-app-service"></a>Azure App Service için bir PHP uygulaması yapılandırma
@@ -119,7 +119,7 @@ Tüm değişikliklerinizi işleyin ve git kullanarak kodunuzu dağıtın veya de
 
 App Service, Grsıt, Bower veya Gulp gibi popüler Otomasyon araçlarını dağıtım zamanında çalıştırmak istiyorsanız, [özel bir dağıtım betiği](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)sağlamanız gerekir. App Service, git ile dağıtırken veya derleme Otomasyonu etkinken [ZIP dağıtımıyla](deploy-zip.md) , bu betiği çalıştırır. 
 
-Bu araçları çalıştırmak üzere deponuzu etkinleştirmek için, bunlarıpackage.jsiçindeki bağımlılıklara eklemeniz gerekir * .* Örneğin:
+Bu araçları çalıştırmak üzere deponuzu etkinleştirmek için, bunlarıpackage.jsiçindeki bağımlılıklara eklemeniz gerekir *.* Örnek:
 
 ```json
 "dependencies": {
@@ -203,7 +203,7 @@ fi
 Uygulamanızı, derleme Otomasyonu açıkken git veya ZIP paketleri kullanarak dağıtırsanız, App Service aşağıdaki sırayla Otomasyon adımları oluşturun:
 
 1. Tarafından belirtilmişse özel betiği çalıştırın `PRE_BUILD_SCRIPT_PATH` .
-1. `php composer.phar install` komutunu çalıştırın.
+1. `php composer.phar install` öğesini çalıştırın.
 1. Tarafından belirtilmişse özel betiği çalıştırın `POST_BUILD_SCRIPT_PATH` .
 
 `PRE_BUILD_COMMAND` ve `POST_BUILD_COMMAND` Varsayılan olarak boş olan ortam değişkenleridir. Oluşturma öncesi komutları çalıştırmak için, tanımlayın `PRE_BUILD_COMMAND` . Oluşturma sonrası komutları çalıştırmak için, tanımlayın `POST_BUILD_COMMAND` .
@@ -318,7 +318,7 @@ Bir dosya kullanımına alternatif olarak `.user.ini` , bu PHP_INI_SYSTEM olmaya
 
 PHP_INI_USER, PHP_INI_PERDIR ve PHP_INI_ALL yönergelerini özelleştirmek için (bkz. [php.ini yönergeleri](https://www.php.net/manual/ini.list.php)), uygulamanızın kök dizinine bir *. htaccess* dosyası ekleyin.
 
-*. Htaccess* dosyasında, söz dizimini kullanarak yönergeleri ekleyin `php_value <directive-name> <value>` . Örneğin:
+*. Htaccess* dosyasında, söz dizimini kullanarak yönergeleri ekleyin `php_value <directive-name> <value>` . Örnek:
 
 ```
 php_value upload_max_filesize 1000M
@@ -332,7 +332,7 @@ php_value upload_max_filesize 10M
 
 Değişiklikleri ile uygulamanızı yeniden dağıtın ve yeniden başlatın. Kudu ile dağıtırsanız (örneğin, [Git](deploy-local-git.md)kullanarak), dağıtımdan sonra otomatik olarak yeniden başlatılır.
 
-*. Htaccess*kullanımına alternatif olarak, bu PHP_INI_SYSTEM olmayan yönergeleri özelleştirmek için uygulamanızdaki [ini_set ()](https://www.php.net/manual/function.ini-set.php) kullanabilirsiniz.
+*. Htaccess* kullanımına alternatif olarak, bu PHP_INI_SYSTEM olmayan yönergeleri özelleştirmek için uygulamanızdaki [ini_set ()](https://www.php.net/manual/function.ini-set.php) kullanabilirsiniz.
 
 ::: zone-end
 
@@ -350,7 +350,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 Kudu konsoluna gidin ( `https://<app-name>.scm.azurewebsites.net/DebugConsole` ) ve adresine gidin `d:\home\site` .
 
-Çağrılan bir dizin oluşturun `d:\home\site` `ini` ve ardından *.ini* `d:\home\site\ini` dizinde (örneğin, *settings.ini)* özelleştirmek istediğiniz yönergeleri kullanarak bir. ini dosyası oluşturun. *php.ini* dosyasında kullanacağınız söz dizimini kullanın. 
+Çağrılan bir dizin oluşturun `d:\home\site` `ini` ve ardından  `d:\home\site\ini` dizinde (örneğin, *settings.ini)* özelleştirmek istediğiniz yönergeleri kullanarak bir. ini dosyası oluşturun. *php.ini* dosyasında kullanacağınız söz dizimini kullanın. 
 
 Örneğin, [expose_php](https://php.net/manual/ini.core.php#ini.expose-php) değerini değiştirmek için aşağıdaki komutları çalıştırın:
 
@@ -378,7 +378,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 Linux kapsayıcınızda () Web SSH oturumuna gidin `https://<app-name>.scm.azurewebsites.net/webssh/host` .
 
-Çağrılan bir dizin oluşturun `/home/site` `ini` ve ardından *.ini* `/home/site/ini` dizinde (örneğin, *settings.ini)* özelleştirmek istediğiniz yönergeleri kullanarak bir. ini dosyası oluşturun. *php.ini* dosyasında kullanacağınız söz dizimini kullanın. 
+Çağrılan bir dizin oluşturun `/home/site` `ini` ve ardından  `/home/site/ini` dizinde (örneğin, *settings.ini)* özelleştirmek istediğiniz yönergeleri kullanarak bir. ini dosyası oluşturun. *php.ini* dosyasında kullanacağınız söz dizimini kullanın. 
 
 > [!TIP]
 > App Service 'daki yerleşik Linux kapsayıcılarında, */Home* kalıcı paylaşılan depolama alanı olarak kullanılır. 
@@ -469,8 +469,8 @@ Tanılama günlüklerinizin Azure App Service görünmesini sağlamak için stan
 Çalışan bir PHP uygulaması App Service veya hata durumunda farklı davrandığı zaman, aşağıdakileri deneyin:
 
 - [Günlük akışına erişin](#access-diagnostic-logs).
-- Uygulamayı üretim modunda yerel olarak test edin. App Service uygulamanızı üretim modunda çalıştırır, bu nedenle projenizin üretim modunda yerel olarak beklendiği gibi çalıştığından emin olmanız gerekir. Örneğin:
-    - *composer.js*bağlı olarak, üretim modu ( `require` vs.) için farklı paketler yüklenebilir `require-dev` .
+- Uygulamayı üretim modunda yerel olarak test edin. App Service uygulamanızı üretim modunda çalıştırır, bu nedenle projenizin üretim modunda yerel olarak beklendiği gibi çalıştığından emin olmanız gerekir. Örnek:
+    - *composer.js* bağlı olarak, üretim modu ( `require` vs.) için farklı paketler yüklenebilir `require-dev` .
     - Bazı Web çerçeveleri, statik dosyaları üretim modunda farklı şekilde dağıtabilir.
     - Belirli Web çerçeveleri, üretim modunda çalışırken özel başlatma betikleri kullanabilir.
 - Uygulamanızı hata ayıklama modunda App Service çalıştırın. Örneğin, [Laraesin](https://meanjs.org/)içinde, uygulama [ `APP_DEBUG` ayarını `true` olarak ayarlayarak ](configure-common.md#configure-app-settings)uygulamanızı üretim sırasında hata ayıklama iletilerini verecek şekilde yapılandırabilirsiniz.

@@ -9,17 +9,17 @@ ms.topic: quickstart
 ms.date: 10/20/2020
 ms.author: rohink
 ms.openlocfilehash: be76a7902c2747c7a8dc1bfc21d58ae88f3ff343
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92282159"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak Azure DNS bir bölge ve kayıt oluşturma
 
-Azure DNS'yi, genel etki alanınızdaki ana bilgisayar adlarını çözümleyecek şekilde yapılandırabilirsiniz. Örneğin, *contoso. xyz* etki alanı adını bir etki alanı adı kaydedicisinde satın aldıysanız, *contoso. xyz* etki alanını barındıracak Azure DNS yapılandırabilir ve *`www.contoso.xyz`* Web sunucunuzun veya Web uygulamanızın IP adresine çözebilirsiniz.
+Azure DNS'yi, genel etki alanınızdaki ana bilgisayar adlarını çözümleyecek şekilde yapılandırabilirsiniz. Örneğin, *contoso.xyz* etki alanı adını bir etki alanı adı kaydedicisinde satın aldıysanız, *contoso.xyz* etki alanını barındıracak ve *`www.contoso.xyz`* Web sunucunuzun veya web uygulamanızın IP adresine çözülecek Azure DNS yapılandırabilirsiniz.
 
-Bu hızlı başlangıçta, bir sınama etki alanı oluşturacak ve ardından *www* 'ı *10.10.10.10*IP adresine çözümlemek için bir adres kaydı oluşturacaksınız.
+Bu hızlı başlangıçta, bir sınama etki alanı oluşturacak ve ardından *www* 'ı *10.10.10.10* IP adresine çözümlemek için bir adres kaydı oluşturacaksınız.
 
 >[!IMPORTANT]
 >Bu hızlı başlangıçtaki tüm adlar ve IP adresleri, gerçek dünyada senaryoları temsil etmediği örneklerdir.
@@ -32,7 +32,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Tüm Portal adımları için [Azure Portal](https://portal.azure.com)oturum açın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -50,8 +50,8 @@ Bir DNS bölgesi, bir etki alanı için DNS girdilerini içerir. Etki alanınız
 
 1. **DNS bölgesi oluştur** sayfasında, aşağıdaki değerleri yazın veya seçin:
 
-   - **Ad**: Bu hızlı başlangıç örneği için *contoso. xyz* yazın. DNS bölgesi adı, Azure DNS sunucularında önceden yapılandırılmamış herhangi bir değer olabilir. Gerçek dünyada etki alanı adı kayıt kuruluşunuzdan satın aldığınız etki alanını kullanmanız gerekir.
-   - **Kaynak grubu**: **Yeni oluştur**' u seçin, *myresourcegroup*girin ve **Tamam**' ı seçin. Kaynak grubu adı, Azure aboneliği dahilinde benzersiz olmalıdır. 
+   - **Ad**: Bu hızlı başlangıç örneği için *contoso.xyz* yazın. DNS bölgesi adı, Azure DNS sunucularında önceden yapılandırılmamış herhangi bir değer olabilir. Gerçek dünyada etki alanı adı kayıt kuruluşunuzdan satın aldığınız etki alanını kullanmanız gerekir.
+   - **Kaynak grubu**: **Yeni oluştur**' u seçin, *myresourcegroup* girin ve **Tamam**' ı seçin. Kaynak grubu adı, Azure aboneliği dahilinde benzersiz olmalıdır. 
 
 1. **Oluştur**’u seçin.
 
@@ -65,27 +65,27 @@ DNS girişleri veya DNS bölgesi içinde etki alanınız için kayıtlar oluştu
 
 **' A ' kaydı oluşturmak için:**
 
-1. Azure portal, **tüm kaynaklar**altında, **myresourcegroup** kaynak grubundaki **contoso. xyz** DNS bölgesini açın. Daha kolay bulmak için **ada göre filtrele** kutusuna *contoso. xyz* girebilirsiniz.
+1. Azure portal, **tüm kaynaklar** altında, **myresourcegroup** kaynak grubundaki **contoso.xyz** DNS bölgesini açın. Daha kolay bulmak için **ada göre filtrele** kutusuna *contoso.xyz* yazabilirsiniz.
 
 1. **DNS bölgesi** sayfasının en üstünde **+ kayıt kümesi**' ni seçin.
 
 1. **Kayıt kümesi Ekle** sayfasında aşağıdaki değerleri yazın veya seçin:
 
-   - **Ad**: *www*yazın. Kayıt adı, belirtilen IP adresine çözümlemek istediğiniz ana bilgisayar adıdır.
-   - **Yazın**: **bir**seçin. ' A ' kayıtları en sık kullanılan, ancak posta sunucuları (' MX '), IP V6 adresleri (' AAAA ') ve benzeri diğer kayıt türleri vardır. 
+   - **Ad**: *www* yazın. Kayıt adı, belirtilen IP adresine çözümlemek istediğiniz ana bilgisayar adıdır.
+   - **Yazın**: **bir** seçin. ' A ' kayıtları en sık kullanılan, ancak posta sunucuları (' MX '), IP V6 adresleri (' AAAA ') ve benzeri diğer kayıt türleri vardır. 
    - **TTL**: tür *1*. DNS isteğinin *yaşam süresi* , DNS sunucularının ve istemcilerinin bir yanıtı ne kadar süreyle önbellekte isteyekullanabileceğinizi belirtir.
-   - **TTL birimi**: **saatleri**seçin. Bu, **TTL** değeri için zaman birimidir. 
-   - **IP adresi**: Bu hızlı başlangıç örneği için *10.10.10.10*yazın. Bu değer, kayıt adının olarak çözümlediği IP adresidir. Gerçek dünya senaryosunda, web sunucunuz için genel IP adresini girersiniz.
+   - **TTL birimi**: **saatleri** seçin. Bu, **TTL** değeri için zaman birimidir. 
+   - **IP adresi**: Bu hızlı başlangıç örneği için *10.10.10.10* yazın. Bu değer, kayıt adının olarak çözümlediği IP adresidir. Gerçek dünya senaryosunda, web sunucunuz için genel IP adresini girersiniz.
 
 Bu hızlı başlangıç yalnızca hızlı test amaçlı olduğundan, bir etki alanı ad kaydedicisinde Azure DNS ad sunucularını yapılandırmaya gerek yoktur. Gerçek bir üretim etki alanı ile Internet üzerindeki herkesin, Web sunucunuza veya uygulamanıza bağlanmak için ana bilgisayar adını çözümlemesine isteyeceksiniz. Ad sunucusu kayıtlarını Azure DNS ad sunucularıyla değiştirmek için etki alanı adı kaydedicinizi ziyaret edeceksiniz. Daha fazla bilgi için bkz. [öğretici: etki alanınızı Azure DNS barındırın](dns-delegate-domain-azure-dns.md#delegate-the-domain).
 
 ## <a name="test-the-name-resolution"></a>Ad çözümlemesini test etme
 
-Test ' A ' kaydıyla bir test DNS bölgesine sahip olduğunuza göre, ad çözümlemesini *nslookup*adlı bir araçla test edebilirsiniz. 
+Test ' A ' kaydıyla bir test DNS bölgesine sahip olduğunuza göre, ad çözümlemesini *nslookup* adlı bir araçla test edebilirsiniz. 
 
 **DNS ad çözümlemesini test etmek için:**
 
-1. Azure portal, **tüm kaynaklar**altında, **myresourcegroup** kaynak grubundaki **contoso. xyz** DNS bölgesini açın. Daha kolay bulmak için **ada göre filtrele** kutusuna *contoso. xyz* girebilirsiniz.
+1. Azure portal, **tüm kaynaklar** altında, **myresourcegroup** kaynak grubundaki **contoso.xyz** DNS bölgesini açın. Daha kolay bulmak için **ada göre filtrele** kutusuna *contoso.xyz* yazabilirsiniz.
 
 1. Ad sunucusu adlarından birini **genel bakış** sayfasındaki ad sunucusu listesinden kopyalayın. 
 
@@ -97,7 +97,7 @@ Test ' A ' kaydıyla bir test DNS bölgesine sahip olduğunuza göre, ad çözü
    nslookup www.contoso.xyz <name server name>
    ```
 
-   Örneğin:
+   Örnek:
 
    ```
    nslookup www.contoso.xyz ns1-08.azure-dns.com.
@@ -107,7 +107,7 @@ Test ' A ' kaydıyla bir test DNS bölgesine sahip olduğunuza göre, ad çözü
 
    ![Ekran görüntüsü, bir n s arama komutu ve sunucu, adres, ad ve adres değerlerini içeren bir komut istemi penceresi gösterir.](media/dns-getstarted-portal/nslookup.PNG)
 
-**Www \. contoso. xyz** ana bilgisayar adı, yalnızca yapılandırdığınız gibi **10.10.10.10**olarak çözümlenir. Bu sonuç, ad çözümlemenin doğru çalıştığını doğrular. 
+**Www \. contoso.xyz** ana bilgisayar adı, yalnızca yapılandırdığınız gibi **10.10.10.10** olarak çözümlenir. Bu sonuç, ad çözümlemenin doğru çalıştığını doğrular. 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

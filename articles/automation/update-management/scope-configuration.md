@@ -6,10 +6,10 @@ ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
 ms.openlocfilehash: 76063c479950d12985d5f3f52393f9bb0d5ecd8d
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92222941"
 ---
 # <a name="limit-update-management-deployment-scope"></a>Güncelleştirme Yönetimi dağıtım kapsamını sınırla
@@ -24,17 +24,17 @@ Kapsam yapılandırması, Güncelleştirme Yönetimi kapsamını belirli bilgisa
 
 Güncelleştirme Yönetimi dağıtımınızın kapsamını sınırlandırmak için:
 
-1. Otomasyon hesabınızda **ilgili kaynaklar**altında **bağlantılı çalışma alanı** ' nı seçin.
+1. Otomasyon hesabınızda **ilgili kaynaklar** altında **bağlantılı çalışma alanı** ' nı seçin.
 
 2. **Çalışma alanına git**' i seçin.
 
-3. **Çalışma alanı veri kaynakları**altında **kapsam yapılandırma (Önizleme)** öğesini seçin.
+3. **Çalışma alanı veri kaynakları** altında **kapsam yapılandırma (Önizleme)** öğesini seçin.
 
 4. Kapsam yapılandırmasının sağ tarafındaki üç noktayı seçin  `MicrosoftDefaultScopeConfig-Updates` ve **Düzenle**' yi seçin.
 
 5. Düzen bölmesinde **bilgisayar grupları seç**' i genişletin. Bilgisayar grupları bölmesi, kapsam yapılandırmasını oluşturmak için kullanılan kaydedilmiş aramaları gösterir. Güncelleştirme Yönetimi tarafından kullanılan kayıtlı arama:
 
-    |Ad     |Kategori  |Diğer ad  |
+    |Name     |Kategori  |Diğer ad  |
     |---------|---------|---------|
     |MicrosoftDefaultComputerGroup     | Güncelleştirmeler        | Updates__MicrosoftDefaultComputerGroup         |
 

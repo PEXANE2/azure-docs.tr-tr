@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
 ms.openlocfilehash: 81782f63199a9fe8f43f56aeefcd1c68951d57a4
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96852261"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure App Service yerel önbelleğe genel bakış
@@ -52,7 +52,7 @@ Azure App Service yerel önbellek özelliği, içeriğinizin bir Web rolü gör�
 
 Yerel önbelleği, ayrılmış uygulama ayarları birleşimini kullanarak yapılandırırsınız. Aşağıdaki yöntemleri kullanarak bu uygulama ayarlarını yapılandırabilirsiniz:
 
-* [Azure Portal](#Configure-Local-Cache-Portal)
+* [Azure portalı](#Configure-Local-Cache-Portal)
 * [Azure Resource Manager](#Configure-Local-Cache-ARM)
 
 ### <a name="configure-local-cache-by-using-the-azure-portal"></a>Azure portal kullanarak yerel önbelleği yapılandırma
@@ -92,7 +92,7 @@ Varsayılan olarak, yerel önbellek boyutu **1 GB**'tır. Bu, içerik deposundan
 ## <a name="best-practices-for-using-app-service-local-cache"></a>App Service yerel önbellek kullanmaya yönelik en iyi uygulamalar
 Yerel önbelleği, [hazırlama ortamları](../app-service/deploy-staging-slots.md) özelliğiyle birlikte kullanmanızı öneririz.
 
-* *sticky* `WEBSITE_LOCAL_CACHE_OPTION` Değeri `Always` **Üretim** yuvasına ekleyerek Yapışkan uygulama ayarını ekleyin. Kullanıyorsanız `WEBSITE_LOCAL_CACHE_SIZEINMB` , üretim yuvasına yapışkan bir ayar olarak da ekleyin.
+*  `WEBSITE_LOCAL_CACHE_OPTION` Değeri `Always` **Üretim** yuvasına ekleyerek Yapışkan uygulama ayarını ekleyin. Kullanıyorsanız `WEBSITE_LOCAL_CACHE_SIZEINMB` , üretim yuvasına yapışkan bir ayar olarak da ekleyin.
 * **Hazırlama** yuvası oluşturun ve hazırlama yuvalamanıza yayımlayın. Hazırlama yuvasını, üretim yuvası için yerel önbelleğin avantajlarından yararlanmanız durumunda, hazırlama için sorunsuz bir yapı-dağıtma-test yaşam döngüsünü etkinleştirmek üzere yerel önbellek kullanacak şekilde ayarlayamazsınız.
 * Sitenizi hazırlama yuvasıyla test edin.  
 * Hazırsanız, hazırlama ve üretim yuvalarınız arasında bir [değiştirme işlemi](../app-service/deploy-staging-slots.md#Swap) yapın.  

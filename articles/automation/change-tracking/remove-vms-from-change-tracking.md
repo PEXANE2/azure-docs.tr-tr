@@ -6,10 +6,10 @@ ms.subservice: change-inventory-management
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.openlocfilehash: 0b79fa22d3203504e63161aba03b32830d74d016
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93131284"
 ---
 # <a name="remove-vms-from-change-tracking-and-inventory"></a>Değişiklik İzleme ve Stok özelliğinden VM’leri kaldırma
@@ -30,7 +30,7 @@ Ortamınızdaki VM 'lerde yapılan değişiklikleri izlemeyi tamamladığınızd
     az vm show -g MyResourceGroup -n MyVm -d
     ```
 
-3. Azure portal, **Log Analytics çalışma alanları** ' na gidin. Listeden çalışma alanınızı seçin.
+3. Azure portal, **Log Analytics çalışma alanları**' na gidin. Listeden çalışma alanınızı seçin.
 
 4. Log Analytics çalışma alanınızda **Günlükler** ' i seçin ve ardından üstteki Eylemler menüsünden **sorgu Gezgini** ' ni seçin.
 

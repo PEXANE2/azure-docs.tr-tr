@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
 ms.openlocfilehash: 83f2f72bd910c6ebf5bd154bc68ed68d39961eca
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92520158"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workpath"></a>Öğretici: Iş yoluyla çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -59,7 +59,7 @@ Iş yolunun Azure AD ile tümleştirilmesini yapılandırmak için, galerideki I
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-workpath"></a>Iş yolu için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu iş yoluyla yapılandırın ve test edin. SSO 'nun çalışması için, iş yolundaki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu iş yoluyla yapılandırın ve test edin. SSO 'nun çalışması için, iş yolundaki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Iş yoluyla yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -99,7 +99,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Yukarıdaki şekilde, Iş yolu uygulaması, daha az sayıda özniteliğin aşağıda gösterilen SAML yanıtına geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksiniminize göre bunları gözden geçirebilirsiniz.
 
-    | Adı | Kaynak özniteliği|
+    | Name | Kaynak özniteliği|
     | ------------------- | -------------------- |    
     | first_name | Kullanıcı. |
     | last_name | User. soyadı |

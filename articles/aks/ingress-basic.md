@@ -6,10 +6,10 @@ services: container-service
 ms.topic: article
 ms.date: 08/17/2020
 ms.openlocfilehash: 9b51ee2767a9595f5732f558cfa25f5064944e49
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93131199"
 ---
 # <a name="create-an-ingress-controller-in-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmeti 'nde (AKS) giriş denetleyicisi oluşturma
@@ -33,7 +33,7 @@ Bu makalede, Azure CLı sürüm 2.0.64 veya üstünü de çalıştırıyor olman
 
 ## <a name="create-an-ingress-controller"></a>Giriş denetleyicisi oluşturma
 
-Giriş denetleyicisini oluşturmak için Held 'yi kullanarak *NGINX-giriş* 'yi kullanın. Daha fazla yedeklilik sağlamak için `--set controller.replicaCount` parametresiyle iki NGINX giriş denetleyicisi çoğaltması dağıtılır. Giriş denetleyicisinin Çoğaltmalarından tamamen yararlanmak için AKS kümenizde birden fazla düğüm olduğundan emin olun.
+Giriş denetleyicisini oluşturmak için Held 'yi kullanarak *NGINX-giriş*'yi kullanın. Daha fazla yedeklilik sağlamak için `--set controller.replicaCount` parametresiyle iki NGINX giriş denetleyicisi çoğaltması dağıtılır. Giriş denetleyicisinin Çoğaltmalarından tamamen yararlanmak için AKS kümenizde birden fazla düğüm olduğundan emin olun.
 
 Ayrıca giriş denetleyicisinin bir Linux düğümü üzerinde zamanlanması gerekir. Giriş denetleyicisi, Windows Server düğümlerinde çalıştırılmamalıdır. Kubernetes zamanlayıcısına NGINX giriş denetleyicisini Linux tabanlı bir düğümde çalıştırmasını söylemek için `--set nodeSelector` parametresi kullanılarak bir düğüm seçici belirtilir.
 
@@ -227,7 +227,7 @@ Giriş denetleyicisinin yollarını test etmek için iki uygulamaya gidin. *EXTE
 
 ![Giriş denetleyicisinin arkasında çalışan ilk uygulama](media/ingress-basic/app-one.png)
 
-Şimdi */Hello-World-iki* yolunu IP adresine ekleyin, örneğin *EXTERNAL_IP/Hello-World-2* . Özel başlığa sahip ikinci demo uygulaması görüntülenir:
+Şimdi */Hello-World-iki* yolunu IP adresine ekleyin, örneğin *EXTERNAL_IP/Hello-World-2*. Özel başlığa sahip ikinci demo uygulaması görüntülenir:
 
 ![Giriş denetleyicisinin arkasında çalışan ikinci uygulama](media/ingress-basic/app-two.png)
 

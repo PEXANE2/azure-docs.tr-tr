@@ -4,17 +4,17 @@ description: Bu makalede, laboratuvar Oluşturucu 'nun Azure Lab Services labora
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 5c81c8d7a15d67055729a29e98f5b7e30f3d0764
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96434745"
 ---
 # <a name="specify-marketplace-images-available-to-lab-creators"></a>Laboratuvar oluşturucuları için kullanılabilen Market görüntülerini belirtme
 Laboratuvar sahibi olarak laboratuvar oluşturucuların laboratuvar hesabında laboratuvar oluşturmak için kullanacağı Market görüntülerini belirtebilirsiniz. 
 
 ## <a name="select-images-available-for-labs"></a>Labs için kullanılabilen görüntüleri seçme
-Sol taraftaki menüden **Market görüntüleri**'ni seçin. Listede varsayılan olarak tüm görüntüler (hem etkin hem devre dışı) yer alır. **Enabled only** / En üstteki aşağı açılan listeden yalnızca etkin yalnızca **devre dışı** seçeneğini belirleyerek yalnızca etkin/devre dışı görüntüleri görmek için listeyi filtreleyebilirsiniz. 
+Sol taraftaki menüden **Market görüntüleri**'ni seçin. Listede varsayılan olarak tüm görüntüler (hem etkin hem devre dışı) yer alır.  / En üstteki aşağı açılan listeden yalnızca etkin yalnızca **devre dışı** seçeneğini belirleyerek yalnızca etkin/devre dışı görüntüleri görmek için listeyi filtreleyebilirsiniz. 
     
 ![Market görüntüleri sayfası](./media/tutorial-setup-lab-account/marketplace-images-page.png)
 

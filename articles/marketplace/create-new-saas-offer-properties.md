@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.openlocfilehash: 7d90c9b9b2c9aa97083e17d5ab7d20fc6b471658
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94492132"
 ---
 # <a name="how-to-configure-your-saas-offer-properties"></a>SaaS teklif özelliklerinizi yapılandırma
@@ -57,7 +57,7 @@ Müşteriler için satın alma sürecini basitleştirmek ve yazılım satıcıla
 1. **Microsoft 'un ticari Market Için standart sözleşmeyi kullan** onay kutusunu seçin.
 
    ![Microsoft 'un ticari Market için standart sözleşmeyi kullan onay kutusunu gösterir.](partner-center-portal/media/use-standard-contract.png)
-1. **Onay** Iletişim kutusunda **kabul et** ' i seçin. Bunu görmek için yukarı kaydırmanız gerekebilir.
+1. **Onay** Iletişim kutusunda **kabul et**' i seçin. Bunu görmek için yukarı kaydırmanız gerekebilir.
 1. Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
    > [!NOTE]
@@ -73,11 +73,11 @@ Müşteriler için satın alma sürecini basitleştirmek ve yazılım satıcıla
 
 #### <a name="add-one-or-more-custom-amendments"></a>Bir veya daha fazla özel değişiklik ekleyin
 
-1. **Microsoft 'un ticari Market 'e yönelik standart sözleşmeye yönelik özel değişiklik koşulları** ' nın altında, **özel düzeltme dönemi Ekle (en fazla 10)** bağlantısını seçin.
+1. **Microsoft 'un ticari Market 'e yönelik standart sözleşmeye yönelik özel değişiklik koşulları**' nın altında, **özel düzeltme dönemi Ekle (en fazla 10)** bağlantısını seçin.
 1. Özel değişiklik **Koşulları** kutusunda, düzeltme koşullarınızı girin.
 1. **KIRACı kimliği** kutusuna BIR Kiracı kimliği girin. Yalnızca bu özel şartlar için belirttiğiniz kiracı kimlikleri ile ilişkili müşteriler, Azure portal teklifin satın alma akışında görür.
    > [!TIP]
-   > Bir Kiracı kimliği, Azure 'da müşterinizin kimliğini tanımlar. Müşterinize bu kimliği sorabilir ve [**https://portal.azure.com**](https://portal.azure.com)  >  **Azure Active Directory**  >  **özellikleri** ' ne giderek bulabilirler. Dizin KIMLIĞI değeri kiracı KIMLIĞIDIR (örneğin, `50c464d3-4930-494c-963c-1e951d15360e` ). Ayrıca, [Microsoft Azure ve Office 365 KIRACı kimliği olan](https://www.whatismytenantid.com/)etki alanı adı URL 'sini kullanarak KURULUŞUNUZUN Kiracı kimliğini de arayabilirsiniz.
+   > Bir Kiracı kimliği, Azure 'da müşterinizin kimliğini tanımlar. Müşterinize bu kimliği sorabilir ve [**https://portal.azure.com**](https://portal.azure.com)  >  **Azure Active Directory**  >  **özellikleri**' ne giderek bulabilirler. Dizin KIMLIĞI değeri kiracı KIMLIĞIDIR (örneğin, `50c464d3-4930-494c-963c-1e951d15360e` ). Ayrıca, [Microsoft Azure ve Office 365 KIRACı kimliği olan](https://www.whatismytenantid.com/)etki alanı adı URL 'sini kullanarak KURULUŞUNUZUN Kiracı kimliğini de arayabilirsiniz.
 1. **Açıklama** kutusunda, isteğe bağlı olarak Kiracı kimliği için kolay bir açıklama girin. Bu açıklama, değişiklik yaparken hedeflediğiniz müşteriyi belirlemenize yardımcı olur.
 1. Başka bir kiracı KIMLIĞI eklemek için **müşterinin KIRACı kimliğini Ekle** bağlantısını seçin ve 3. ve 4. adımları yineleyin. En fazla 20 Kiracı kimliği ekleyebilirsiniz.
 1. Başka bir düzeltme dönemi eklemek için 1 ile 5 arasındaki adımları yineleyin. Teklif başına en fazla on özel düzeltme terimi sağlayabilirsiniz. 
@@ -87,7 +87,7 @@ Müşteriler için satın alma sürecini basitleştirmek ve yazılım satıcıla
 
 Standart sözleşme yerine kendi hüküm ve koşullarınızı sağlamayı tercih edebilirsiniz. Müşterilerinizin teklifinizi deneyebilmeleri için önce bu koşulları kabul etmesi gerekir.
 
-1. **Yasal** ' ın altında, **Microsoft 'un ticari Market Için standart sözleşmeyi kullan** onay kutusunun temizlenmiş olduğundan emin olun.
+1. **Yasal**' ın altında, **Microsoft 'un ticari Market Için standart sözleşmeyi kullan** onay kutusunun temizlenmiş olduğundan emin olun.
 1. **Hüküm ve koşullar** kutusunda en fazla 10.000 karakter girin.
 1. Bir sonraki sekmeye devam etmeden önce **Taslağı kaydet** ' i seçin, **teklif listesi**.
 

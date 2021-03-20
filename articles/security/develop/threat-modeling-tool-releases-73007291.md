@@ -7,10 +7,10 @@ ms.service: security
 ms.topic: article
 ms.date: 07/29/2020
 ms.openlocfilehash: 3e6fcd52ad9cb6c127c14bac2f33223fb921519e
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94516382"
 ---
 # <a name="threat-modeling-tool-update-release-73007291---07292020"></a>Threat Modeling Tool güncelleştirme sürümü 7.3.00729.1-07/29/2020
@@ -37,7 +37,7 @@ Bu hata, bazı tarayıcıların ClickOnce yüklemesini yerel olarak desteklemedi
 
 Bu hata, TMT7. Application dosyasına çift tıklanarak Threat Modeling Tool başlatıldığında görünmeye devam edecektir. Bununla birlikte, araç normal olarak işlev görür. TMT7. Application dosyasına çift tıklayarak Threat Modeling Tool başlatmak yerine, kullanıcılar, yükleme sırasında Windows menüsünde oluşturulan kısayolları Threat Modeling Tool başlatmak üzere kullanmalıdır.
 
-## <a name="system-requirements"></a>Sistem gereksinimleri
+## <a name="system-requirements"></a>Sistem Gereksinimleri
 
 - Desteklenen İşletim Sistemleri
   - [Microsoft Windows 10 yıldönümü güncelleştirmesi](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97) veya üzeri

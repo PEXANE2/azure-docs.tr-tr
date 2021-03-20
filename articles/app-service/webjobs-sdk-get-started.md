@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
 ms.openlocfilehash: 4a22602dd9638b981cfe3d8bae9b5cdaacbf90dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91652049"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Olay temelli arka plan işleme için Azure Web İşleri SDK'sını kullanmaya başlama
@@ -20,7 +20,7 @@ Bu makalede, Visual Studio 2019 kullanarak bir Azure WebJobs SDK projesi oluştu
 
 Bu makalede, Web Işlerinin bir .NET Core konsol uygulaması olarak nasıl dağıtılacağı gösterilir. Web Işlerini .NET Framework konsol uygulaması olarak dağıtmak için bkz. [WebJobs as .NET Framework konsol Apps](webjobs-dotnet-deploy-vs.md#webjobs-as-net-framework-console-apps). Yalnızca .NET Framework destekleyen WebJobs SDK sürüm 2. x ile ilgileniyorsanız, bkz. [Visual Studio kullanarak Web Işleri geliştirme ve dağıtma-Azure App Service](webjobs-dotnet-deploy-vs.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * **Azure geliştirme** iş yüküyle [Visual Studio 2019 ' ü yükler](/visualstudio/install/) . Zaten Visual Studio 'Ya sahipseniz ancak iş yükünüz yoksa, araçları **ve özellikleri almak > araçlar**' ı seçerek iş yükünü ekleyin.
 
@@ -32,7 +32,7 @@ Bu makalede, Web Işlerinin bir .NET Core konsol uygulaması olarak nasıl dağ�
 
 2. **Konsol uygulaması (.NET Core)** seçeneğini belirleyin.
 
-3. Projeyi *Webjobssdksample*olarak adlandırın ve **Oluştur**' u seçin.
+3. Projeyi *Webjobssdksample* olarak adlandırın ve **Oluştur**' u seçin.
 
    ![Yeni Proje iletişim kutusu](./media/webjobs-sdk-get-started/new-project.png)
 
@@ -52,7 +52,7 @@ Bu makalede, Web Işlerinin bir .NET Core konsol uygulaması olarak nasıl dağ�
 
 Konak, Tetikleyicileri ve çağrı işlevlerini dinleyen işlevlere yönelik çalışma zamanı kapsayıcısıdır. Aşağıdaki adımlarda [`IHost`](/dotnet/api/microsoft.extensions.hosting.ihost) , ASP.NET Core ' deki genel ana bilgisayar olan, uygulayan bir konak oluşturulur.
 
-1. *Program.cs*' de şu `using` deyimleri ekleyin:
+1. *Program. cs*' de şu `using` deyimleri ekleyin:
 
     ```cs
     using System.Threading.Tasks;
@@ -92,7 +92,7 @@ Bu bölümde, [ASP.NET Core günlük çerçevesini](/aspnet/core/fundamentals/lo
    ```
    Bu komutta, yerine `<3_X_VERSION>` paketin desteklenen 3. x sürümünü koyun.
 
-1. *Program.cs*içinde bir ifade ekleyin `using` :
+1. *Program. cs*' de bir `using` ifade ekleyin:
 
    ```cs
    using Microsoft.Extensions.Logging;
@@ -162,9 +162,9 @@ Sürüm 3. x ile başlayarak, Web Işleri SDK 'Sı tarafından gerekli olan depo
 
 ## <a name="create-a-function"></a>İşlev oluşturma
 
-1. Projeye sağ tıklayın, **Add**  >  **Yeni öğe Ekle...** öğesini seçin, **sınıf**' ı seçin, yeni C# sınıf dosyasını *Functions.cs*olarak adlandırın ve **Ekle**' yi seçin.
+1. Projeye sağ tıklayın,   >  **Yeni öğe Ekle...** öğesini seçin, **sınıf**' i seçin, yeni C# sınıf dosyasını adlandırın *. cs* ve **Ekle**' yi seçin.
 
-1. Functions.cs ' de, oluşturulan şablonu şu kodla değiştirin:
+1. Functions. cs dosyasında, oluşturulan şablonu aşağıdaki kodla değiştirin:
     
     ```cs
     using Microsoft.Azure.WebJobs;
@@ -194,7 +194,7 @@ Yerel olarak çalışan Azure depolama öykünücüsü, Web Işleri SDK 'sının
 
    ![Azure'da oturum açma](./media/webjobs-sdk-get-started/sign-in.png)
 
-1. **Sunucu Gezgini**içindeki **Azure** düğümü altında **depolama**' ya sağ tıklayın ve ardından **depolama hesabı oluştur**' u seçin.
+1. **Sunucu Gezgini** içindeki **Azure** düğümü altında **depolama**' ya sağ tıklayın ve ardından **depolama hesabı oluştur**' u seçin.
 
    ![Depolama hesabı oluştur menüsü](./media/webjobs-sdk-get-started/create-storage-account-menu.png)
 
@@ -218,7 +218,7 @@ Yerel olarak çalışan Azure depolama öykünücüsü, Web Işleri SDK 'sının
 
 Web Işleri SDK 'Sı, Azure 'daki uygulama ayarlarındaki depolama bağlantı dizesini arar. Yerel olarak çalıştırdığınızda bu değer yerel yapılandırma dosyasında veya ortam değişkenlerinde bu değere bakar.
 
-1. Projeye sağ tıklayın, **Add**  >  **Yeni öğe Ekle...**' yi seçin, **JavaScript JSON yapılandırma dosyası**' nı seçin, yeni dosya *appsettings.js* dosyaya adlandırın ve **Ekle**' yi seçin. 
+1. Projeye sağ tıklayın,   >  **Yeni öğe Ekle...**' yi seçin, **JavaScript JSON yapılandırma dosyası**' nı seçin, yeni dosya *appsettings.js* dosyaya adlandırın ve **Ekle**' yi seçin. 
 
 1. Yeni dosyada, `AzureWebJobsStorage` Aşağıdaki örnekte olduğu gibi bir alan ekleyin:
 
@@ -230,7 +230,7 @@ Web Işleri SDK 'Sı, Azure 'daki uygulama ayarlarındaki depolama bağlantı di
 
 1. *{Storage bağlantı dizesi}* öğesini daha önce kopyaladığınız bağlantı dizesiyle değiştirin.
 
-1. Çözüm Gezgini dosyasında *appsettings.js* seçin ve **Özellikler** penceresinde, **daha yeniyse kopyalamak**için **Çıkış Dizinine Kopyala** ' yı ayarlayın.
+1. Çözüm Gezgini dosyasında *appsettings.js* seçin ve **Özellikler** penceresinde, **daha yeniyse kopyalamak** için **Çıkış Dizinine Kopyala** ' yı ayarlayın.
 
 Daha sonra, Azure App Service ' de uygulamanıza aynı bağlantı dizesi uygulaması ayarını eklersiniz.
 
@@ -272,7 +272,7 @@ Bu bölümde, projeyi yerel olarak oluşturup çalıştırın ve bir kuyruk ilet
 
    ![Ileti Ekle simgesini vurgulayan ekran görüntüsü.](./media/webjobs-sdk-get-started/create-queue-message.png)
 
-1. **Ileti Ekle** iletişim kutusunda *Merhaba dünya girin!* **ileti metni**olarak **Tamam**' ı seçin. Kuyrukta artık bir ileti var.
+1. **Ileti Ekle** iletişim kutusunda *Merhaba dünya girin!* **ileti metni** olarak **Tamam**' ı seçin. Kuyrukta artık bir ileti var.
 
    ![Sıra oluştur](./media/webjobs-sdk-get-started/hello-world-text.png)
 
@@ -313,13 +313,13 @@ Bu bölümde, Azure 'a dağıtmadan önce Application Insights günlüğü ayarl
 
 1. Kullanabileceğiniz bir App Service uygulaması yoksa [bir tane oluşturun](quickstart-dotnet-framework.md). Uygulamanızı oluşturduğunuzda bağlı bir Application Insights kaynağı da oluşturabilirsiniz. Bunu yaptığınızda, `APPINSIGHTS_INSTRUMENTATIONKEY` uygulamanızda sizin için ayarlanır.
 
-1. Kullanabileceğiniz bir Application Insights kaynağınız yoksa [bir tane oluşturun](../azure-monitor/app/create-new-resource.md ). **Uygulama türünü** **genel**olarak ayarlayın ve izleme **anahtarını Kopyala**' nın altındaki bölümleri atlayın.
+1. Kullanabileceğiniz bir Application Insights kaynağınız yoksa [bir tane oluşturun](../azure-monitor/app/create-new-resource.md ). **Uygulama türünü** **genel** olarak ayarlayın ve izleme **anahtarını Kopyala**' nın altındaki bölümleri atlayın.
 
 1. Kullanmak istediğiniz bir Application Insights kaynağınız zaten varsa, [izleme anahtarını kopyalayın](../azure-monitor/app/create-new-resource.md#copy-the-instrumentation-key).
 
 ### <a name="configure-app-settings"></a>Uygulama ayarlarını yapılandırma 
 
-1. Visual Studio 'da **Sunucu Gezgini** ' de **Azure**altındaki **App Service** düğümünü genişletin.
+1. Visual Studio 'da **Sunucu Gezgini** ' de **Azure** altındaki **App Service** düğümünü genişletin.
 
 1. App Service uygulamanızın bulunduğu kaynak grubunu genişletin ve ardından App Service uygulamanıza sağ tıklayın.
 
@@ -327,7 +327,7 @@ Bu bölümde, Azure 'a dağıtmadan önce Application Insights günlüğü ayarl
 
 1. **Bağlantı dizeleri** kutusuna aşağıdaki girişi ekleyin.
 
-   |Adı  |bağlantı dizesi  |Veritabanı türü|
+   |Name  |bağlantı dizesi  |Veritabanı türü|
    |---------|---------|------|
    |AzureWebJobsStorage | {daha önce kopyaladığınız depolama bağlantı dizesi}|Özel|
 
@@ -370,7 +370,7 @@ Günlüğe kaydetme [Application Insights](../azure-monitor/app/app-insights-ove
    ```
     Bu komutta, yerine `<3_X_VERSION>` paketin desteklenen bir sürümü ile değiştirin.
 
-1. *Program.cs* ' i açın ve `Main` yöntemindeki kodu aşağıdaki kodla değiştirin:
+1. *Program. cs* ' i açın ve `Main` yöntemindeki kodu aşağıdaki kodla değiştirin:
 
     ```cs
     static async Task Main()
@@ -415,7 +415,7 @@ Bu bölümde, günlüğe kaydetme verilerinin artık Application Insights ve kon
 
 1. Konsol penceresini kapatın.
 
-1. Application Insights kaynağınızı görüntülemek için [Azure Portal](https://portal.azure.com/) gidin. Arama yapın ve **Application Insights**seçin.
+1. Application Insights kaynağınızı görüntülemek için [Azure Portal](https://portal.azure.com/) gidin. Arama yapın ve **Application Insights** seçin.
 
 1. Application Insights örneğinizi seçin.
 
@@ -429,7 +429,7 @@ Bu bölümde, günlüğe kaydetme verilerinin artık Application Insights ve kon
 
 1. Konsol penceresini kapatın.
 
-## <a name="deploy-to-azure"></a><a name="deploy-as-a-webjob"></a>Azure’a dağıtma
+## <a name="deploy-to-azure"></a><a name="deploy-as-a-webjob"></a>Azure’a dağıtın
 
 Dağıtım sırasında, işlevlerinizin çalıştırılacağı bir App Service örneği oluşturursunuz. Azure 'da App Service için bir .NET Core konsol uygulaması yayımladığınızda, otomatik olarak bir WebJob olarak çalıştırılır. Yayımlama hakkında daha fazla bilgi edinmek için bkz. [Visual Studio kullanarak Web Işleri geliştirme ve dağıtma](webjobs-dotnet-deploy-vs.md).
 
@@ -460,7 +460,7 @@ Dağıtım sırasında, işlevlerinizin çalıştırılacağı bir App Service �
 
 Giriş bağlamaları, verileri okuyan kodu basitleştirir. Bu örnekte, kuyruk iletisi bir blob adı olacaktır ve Azure Storage 'da blob bulmak ve okumak için blob adını kullanacaksınız.
 
-1. *Functions.cs*içinde, `ProcessQueueMessage` yöntemini aşağıdaki kodla değiştirin:
+1. *Functions. cs* dosyasında, `ProcessQueueMessage` yöntemini aşağıdaki kodla değiştirin:
 
    ```cs
    public static void ProcessQueueMessage(
@@ -486,7 +486,7 @@ Giriş bağlamaları, verileri okuyan kodu basitleştirir. Bu örnekte, kuyruk i
 
    b. **BLOB kapsayıcısı oluştur** iletişim kutusunda kapsayıcı adı olarak *kapsayıcı* yazın ve ardından **Tamam**' a tıklayın.
 
-1. *Program.cs* dosyasını blob kapsayıcısına yükleyin. (Bu dosya burada bir örnek olarak kullanılır; herhangi bir metin dosyasını karşıya yükleyebilir ve dosyanın adıyla bir kuyruk iletisi oluşturabilirsiniz.)
+1. *Program. cs* dosyasını blob kapsayıcısına yükleyin. (Bu dosya burada bir örnek olarak kullanılır; herhangi bir metin dosyasını karşıya yükleyebilir ve dosyanın adıyla bir kuyruk iletisi oluşturabilirsiniz.)
 
    a. **Sunucu Gezgini**, oluşturduğunuz kapsayıcının düğümüne çift tıklayın.
 
@@ -494,11 +494,11 @@ Giriş bağlamaları, verileri okuyan kodu basitleştirir. Bu örnekte, kuyruk i
 
    ![Blob karşıya yükleme düğmesi](./media/webjobs-sdk-get-started/blob-upload-button.png)
 
-   c. *Program.cs*bulun ve seçin ve ardından **Tamam**' ı seçin.
+   c. *Program. cs* bulun ve seçin ve ardından **Tamam**' ı seçin.
 
-1. Daha önce oluşturduğunuz sırada, iletinin metni olarak *program.cs* ile bir kuyruk iletisi oluşturun.
+1. Daha önce oluşturduğunuz sırada *program. cs* ile ileti metni olarak bir kuyruk iletisi oluşturun.
 
-   ![Kuyruk iletisi Program.cs](./media/webjobs-sdk-get-started/queue-msg-program-cs.png)
+   ![İleti programını sıraya al. cs](./media/webjobs-sdk-get-started/queue-msg-program-cs.png)
 
 1. Projeyi yerel olarak çalıştırın.
 
@@ -532,11 +532,11 @@ Giriş bağlamaları, verileri okuyan kodu basitleştirir. Bu örnekte, kuyruk i
    }
    ```
 
-1. İleti metni olarak *program.cs* ile başka bir sıra iletisi oluşturun.
+1. İleti metni olarak *program. cs* ile başka bir kuyruk iletisi oluşturun.
 
 1. Projeyi yerel olarak çalıştırın.
 
-   Kuyruk iletisi işlevi tetikler, sonra blobu okur, uzunluğunu günlüğe kaydeder ve yeni bir blob oluşturur. Konsol çıkışı aynıdır, ancak blob kapsayıcı penceresine gidip **Yenile**' yi seçtiğinizde, Copy-program.cs adlı yeni bir blob görürsünüz *.*
+   Kuyruk iletisi işlevi tetikler, sonra blobu okur, uzunluğunu günlüğe kaydeder ve yeni bir blob oluşturur. Konsol çıkışı aynıdır, ancak blob kapsayıcı penceresine gidip **Yenile**' yi seçtiğinizde, *Copy-program. cs* adlı yeni bir blob görürsünüz.
 
 ## <a name="republish-the-updates-to-azure"></a>Güncelleştirmeleri Azure 'da yeniden yayımlayın
 

@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 03/04/2019
 ms.openlocfilehash: 46a7fff86d3a8c4539b77a0f271179d68e7a26d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91541688"
 ---
 # <a name="common-api-response-codes-and-their-meaning"></a>Ortak API yanıt kodları ve anlamları
@@ -33,9 +33,9 @@ Aşağıdaki tabloda, [yazma](https://go.microsoft.com/fwlink/?linkid=2092087) v
 |401|Yazma|sahibi veya ortak çalışan değilsiniz|
 |401|Yazma|geçersiz API çağrıları sırası|
 |403|Yazma, uç nokta|toplam aylık anahtar kota sınırı aşıldı|
-|409|Uç Noktası|uygulama hala yükleniyor|
-|410|Uç Noktası|uygulamanın geri çekilmesi ve yeniden yayımlanması gerekir|
-|414|Uç Noktası|sorgu maksimum karakter sınırını aşıyor|
+|409|Uç Nokta|uygulama hala yükleniyor|
+|410|Uç Nokta|uygulamanın geri çekilmesi ve yeniden yayımlanması gerekir|
+|414|Uç Nokta|sorgu maksimum karakter sınırını aşıyor|
 |429|Yazma, uç nokta|Hız sınırı aşıldı (istek/saniye)|
 
 ## <a name="next-steps"></a>Sonraki adımlar

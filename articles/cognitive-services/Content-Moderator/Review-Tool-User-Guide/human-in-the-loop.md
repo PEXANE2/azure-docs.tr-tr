@@ -11,10 +11,10 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.author: pafarley
 ms.openlocfilehash: ddf4d17cd2631f5bc299e392c46bd9065bb13744
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93146646"
 ---
 # <a name="content-moderator-review-tool"></a>Content Moderator Inceleme aracı
@@ -47,7 +47,7 @@ Panonun sağ üst köşesindeki metne tıkladığınızda her bir içerik türü
 
 ## <a name="review-tool-credentials"></a>Araç kimlik bilgilerini gözden geçirme
 
-[İnceleme aracı](https://contentmoderator.cognitive.microsoft.com)ile kaydolduğunuzda, hesabınız Için bir Azure bölgesi seçmeniz istenir. Bunun nedeni, [Gözden geçirme aracının](https://contentmoderator.cognitive.microsoft.com) Azure Content moderator Hizmetleri için ücretsiz bir deneme anahtarı üretmesine neden olur. Bu anahtar, bir REST çağrısından veya istemci SDK 'sından hizmetlerden herhangi birine erişmek için gereklidir. Anahtar ve API uç nokta URL 'nizi, **yönetici**  >  **kimlik bilgileri** ' ni seçerek görüntüleyebilirsiniz.
+[İnceleme aracı](https://contentmoderator.cognitive.microsoft.com)ile kaydolduğunuzda, hesabınız Için bir Azure bölgesi seçmeniz istenir. Bunun nedeni, [Gözden geçirme aracının](https://contentmoderator.cognitive.microsoft.com) Azure Content moderator Hizmetleri için ücretsiz bir deneme anahtarı üretmesine neden olur. Bu anahtar, bir REST çağrısından veya istemci SDK 'sından hizmetlerden herhangi birine erişmek için gereklidir. Anahtar ve API uç nokta URL 'nizi, **yönetici**  >  **kimlik bilgileri**' ni seçerek görüntüleyebilirsiniz.
 
 > [!div class="mx-imgBorder"]
 > ![Content Moderator kimlik bilgileri](images/settings-6-credentials.png)

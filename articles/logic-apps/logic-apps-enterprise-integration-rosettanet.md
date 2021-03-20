@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
 ms.openlocfilehash: f02cbdc7ca8822c5fcc91b106856d7f8f547536b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91565114"
 ---
 # <a name="exchange-rosettanet-messages-for-b2b-enterprise-integration-in-azure-logic-apps"></a>Azure Logic Apps 'de B2B kurumsal tümleştirme için Exchange RosettaNet iletileri
@@ -75,15 +75,15 @@ Tümleştirme hesabınıza bir PıP işlem yapılandırması eklemek için aşa�
 
    ![RosettaNet kutucuğunu seçin](media/logic-apps-enterprise-integration-rosettanet/select-rosettanet-tile.png)
 
-1. **RosettaNet PIP**altında **Ekle**' yi seçin. PıP ayrıntılarınızı sağlayın.
+1. **RosettaNet PIP** altında **Ekle**' yi seçin. PıP ayrıntılarınızı sağlayın.
 
    ![RosettaNet PıP ayrıntıları ekleme](media/logic-apps-enterprise-integration-rosettanet/add-rosettanet-pip.png)
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **Ad** | Evet | PıP adınız |
-   | **PıP kodu** | Evet | PıP üç basamaklı kod. Daha fazla bilgi için bkz. [RosettaNet PII](/biztalk/adapters-and-accelerators/accelerator-rosettanet/rosettanet-pips). |
-   | **PıP sürümü** | Evet | Seçtiğiniz PıP kodunuz temelinde kullanılabilir olan PıP sürüm numarası |
+   | **Ad** | Yes | PıP adınız |
+   | **PıP kodu** | Yes | PıP üç basamaklı kod. Daha fazla bilgi için bkz. [RosettaNet PII](/biztalk/adapters-and-accelerators/accelerator-rosettanet/rosettanet-pips). |
+   | **PıP sürümü** | Yes | Seçtiğiniz PıP kodunuz temelinde kullanılabilir olan PıP sürüm numarası |
    ||||
 
    Bu PıP özellikleri hakkında daha fazla bilgi için, [RosettaNet Web sitesini](https://resources.gs1us.org/RosettaNet-Standards/Standards-Library/PIP-Directory#1043208-pipsreg)ziyaret edin.
@@ -106,34 +106,34 @@ Tümleştirme hesabınıza bir PıP işlem yapılandırması eklemek için aşa�
 
    ![Anlaşmalar kutucuğunu seçin](media/logic-apps-enterprise-integration-rosettanet/select-agreement-tile.png)
 
-1. **Sözleşmeler**altında **Ekle**' yi seçin. Anlaşma ayrıntılarınızı belirtin.
+1. **Sözleşmeler** altında **Ekle**' yi seçin. Anlaşma ayrıntılarınızı belirtin.
 
    ![Anlaşma ayrıntıları Ekle](media/logic-apps-enterprise-integration-rosettanet/add-agreement-details.png)
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **Ad** | Evet | Sözleşmenin adı |
-   | **Anlaşma türü** | Evet | **RosettaNet**' i seçin. |
-   | **Ana bilgisayar ortağı** | Evet | Bir anlaşma hem konak hem de Konuk iş ortağı gerektirir. Ana bilgisayar ortağı, sözleşmeyi yapılandıran kuruluşu temsil eder. |
-   | **Ana bilgisayar kimliği** | Evet | Ana bilgisayar ortağı için bir tanımlayıcı |
-   | **Konuk Iş ortağı** | Evet | Bir anlaşma hem konak hem de Konuk iş ortağı gerektirir. Konuk iş ortağı, ana bilgisayar ortağıyla iş yapan kuruluşu temsil eder. |
-   | **Konuk kimliği** | Evet | Konuk iş ortağı için bir tanımlayıcı |
+   | **Ad** | Yes | Sözleşmenin adı |
+   | **Anlaşma türü** | Yes | **RosettaNet**' i seçin. |
+   | **Ana bilgisayar ortağı** | Yes | Bir anlaşma hem konak hem de Konuk iş ortağı gerektirir. Ana bilgisayar ortağı, sözleşmeyi yapılandıran kuruluşu temsil eder. |
+   | **Ana bilgisayar kimliği** | Yes | Ana bilgisayar ortağı için bir tanımlayıcı |
+   | **Konuk Iş ortağı** | Yes | Bir anlaşma hem konak hem de Konuk iş ortağı gerektirir. Konuk iş ortağı, ana bilgisayar ortağıyla iş yapan kuruluşu temsil eder. |
+   | **Konuk kimliği** | Yes | Konuk iş ortağı için bir tanımlayıcı |
    | **Ayarları al** | Değişir | Bu özellikler, ana bilgisayar ortağı tarafından alınan tüm iletiler için geçerlidir |
    | **Ayarları gönder** | Değişir | Bu özellikler, ana bilgisayar ortağı tarafından gönderilen tüm iletiler için geçerlidir |  
-   | **RosettaNet PıP başvuruları** | Evet | Anlaşmanın PıP başvuruları. Tüm RosettaNet iletileri, PıP yapılandırması gerektirir. |
+   | **RosettaNet PıP başvuruları** | Yes | Anlaşmanın PıP başvuruları. Tüm RosettaNet iletileri, PıP yapılandırması gerektirir. |
    ||||
 
 1. Konuk iş ortağından gelen iletileri alma sözleşmenizi ayarlamak için, **alma ayarları**' nı seçin.
 
    ![Ayarları al](media/logic-apps-enterprise-integration-rosettanet/add-agreement-receive-details.png)
 
-   1. Gelen iletilerde imzalamayı veya şifrelemeyi etkinleştirmek için **iletiler**altında **ileti Imzalı** olmalıdır veya **ileti sırasıyla şifrelenmelidir** .
+   1. Gelen iletilerde imzalamayı veya şifrelemeyi etkinleştirmek için **iletiler** altında **ileti Imzalı** olmalıdır veya **ileti sırasıyla şifrelenmelidir** .
 
       | Özellik | Gerekli | Açıklama |
       |----------|----------|-------------|
-      | **İleti imzalanmalıdır** | Hayır | Seçili sertifikayla gelen iletileri imzala. |
+      | **İleti imzalanmalıdır** | No | Seçili sertifikayla gelen iletileri imzala. |
       | **Sertifika** | Evet, imzalama etkinse | İmzalama için kullanılacak sertifika |
-      | **İleti şifrelemesini etkinleştir** | Hayır | Seçilen sertifikayla gelen iletileri şifreleyin. |
+      | **İleti şifrelemesini etkinleştir** | No | Seçilen sertifikayla gelen iletileri şifreleyin. |
       | **Sertifika** | Evet, şifreleme etkinse | Şifreleme için kullanılacak sertifika |
       ||||
 
@@ -143,31 +143,31 @@ Tümleştirme hesabınıza bir PıP işlem yapılandırması eklemek için aşa�
 
    ![Ayarları gönder](media/logic-apps-enterprise-integration-rosettanet/add-agreement-send-details.png)
 
-   1. Giden iletiler için imzalamayı veya şifrelemeyi etkinleştirmek üzere **iletiler**altında **ileti imzalamayı etkinleştir** veya **ileti şifrelemeyi etkinleştir** ' i seçin. Her seçim altında, imzalama veya şifreleme için kullanmak üzere daha önce tümleştirme hesabınıza eklediğiniz ilgili algoritmayı ve [sertifikayı](./logic-apps-enterprise-integration-certificates.md)seçin.
+   1. Giden iletiler için imzalamayı veya şifrelemeyi etkinleştirmek üzere **iletiler** altında **ileti imzalamayı etkinleştir** veya **ileti şifrelemeyi etkinleştir** ' i seçin. Her seçim altında, imzalama veya şifreleme için kullanmak üzere daha önce tümleştirme hesabınıza eklediğiniz ilgili algoritmayı ve [sertifikayı](./logic-apps-enterprise-integration-certificates.md)seçin.
 
       | Özellik | Gerekli | Açıklama |
       |----------|----------|-------------|
-      | **İleti imzalamayı etkinleştir** | Hayır | Giden iletileri seçilen imzalama algoritması ve sertifikasıyla imzalayın. |
+      | **İleti imzalamayı etkinleştir** | No | Giden iletileri seçilen imzalama algoritması ve sertifikasıyla imzalayın. |
       | **İmzalama algoritması** | Evet, imzalama etkinse | Seçilen sertifikaya göre kullanılacak imzalama algoritması |
       | **Sertifika** | Evet, imzalama etkinse | İmzalama için kullanılacak sertifika |
-      | **İleti şifrelemesini etkinleştir** | Hayır | Seçili şifreleme algoritması ve sertifikasıyla giden bir şekilde şifreleyin. |
+      | **İleti şifrelemesini etkinleştir** | No | Seçili şifreleme algoritması ve sertifikasıyla giden bir şekilde şifreleyin. |
       | **Şifreleme algoritması** | Evet, şifreleme etkinse | Seçilen sertifikaya göre kullanılacak şifreleme algoritması |
       | **Sertifika** | Evet, şifreleme etkinse | Şifreleme için kullanılacak sertifika |
       ||||
 
-   1. **Uç noktalar**altında, eylem iletileri ve bildirimleri göndermek için kullanılacak gerekli URL 'leri belirtin.
+   1. **Uç noktalar** altında, eylem iletileri ve bildirimleri göndermek için kullanılacak gerekli URL 'leri belirtin.
 
       | Özellik | Gerekli | Açıklama |
       |----------|----------|-------------|
-      | **Eylem URL 'SI** |  Evet | Eylem iletilerini göndermek için kullanılacak URL. URL, hem zaman uyumlu hem de zaman uyumsuz iletiler için gerekli bir alandır. |
-      | **Bildirim URL 'SI** | Evet | Bildirim iletilerini göndermek için kullanılacak URL. URL, zaman uyumsuz iletiler için gerekli bir alandır. |
+      | **Eylem URL 'SI** |  Yes | Eylem iletilerini göndermek için kullanılacak URL. URL, hem zaman uyumlu hem de zaman uyumsuz iletiler için gerekli bir alandır. |
+      | **Bildirim URL 'SI** | Yes | Bildirim iletilerini göndermek için kullanılacak URL. URL, zaman uyumsuz iletiler için gerekli bir alandır. |
       ||||
 
-1. İş ortakları için RosettaNet PıP başvuruları ile sözleşmenizi ayarlamak için **ROSETTANET PIP başvuruları**' nı seçin. **PIP adı**altında, önceden oluşturduğunuz PIP adı ' nı seçin.
+1. İş ortakları için RosettaNet PıP başvuruları ile sözleşmenizi ayarlamak için **ROSETTANET PIP başvuruları**' nı seçin. **PIP adı** altında, önceden oluşturduğunuz PIP adı ' nı seçin.
 
    ![PıP başvuruları](media/logic-apps-enterprise-integration-rosettanet/add-agreement-pip-details.png)
 
-   Seçiminiz, tümleştirme hesabınızda ayarladığınız PıP 'yi temel alan kalan özellikleri doldurur. Gerekirse, **PIP rolünü**değiştirebilirsiniz.
+   Seçiminiz, tümleştirme hesabınızda ayarladığınız PıP 'yi temel alan kalan özellikleri doldurur. Gerekirse, **PIP rolünü** değiştirebilirsiniz.
 
    ![Seçili PıP](media/logic-apps-enterprise-integration-rosettanet/add-agreement-selected-pip.png)
 
@@ -201,12 +201,12 @@ Geliştirme sürecini hızlandırmak ve tümleştirme desenleri önermek için, 
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **İleti** | Evet | Kodu çözülecek RosettaNet iletisi  |
-   | **Üst bilgiler** | Evet | RNZE sürümü olan sürüm için değerler sağlayan HTTP üstbilgileri ve iş ortakları arasındaki iletişim türünü gösteren ve zaman uyumlu veya zaman uyumsuz olabilecek yanıt türü. |
-   | **Role** | Evet | PıP 'de ana bilgisayar ortağının rolü |
+   | **İleti** | Yes | Kodu çözülecek RosettaNet iletisi  |
+   | **Üst Bilgiler** | Yes | RNZE sürümü olan sürüm için değerler sağlayan HTTP üstbilgileri ve iş ortakları arasındaki iletişim türünü gösteren ve zaman uyumlu veya zaman uyumsuz olabilecek yanıt türü. |
+   | **Role** | Yes | PıP 'de ana bilgisayar ortağının rolü |
    ||||
 
-   RosettaNet kod çözme eyleminde, çıkış, diğer özelliklerle birlikte, kodlamayı kodlamak ve geri dönmek ya da bu çıktıda başka bir işlem yapmak için seçebileceğiniz **giden sinyali**içerir.
+   RosettaNet kod çözme eyleminde, çıkış, diğer özelliklerle birlikte, kodlamayı kodlamak ve geri dönmek ya da bu çıktıda başka bir işlem yapmak için seçebileceğiniz **giden sinyali** içerir.
 
 ## <a name="send-or-encode-rosettanet-messages"></a>RosettaNet iletileri gönderin veya kodlayın
 
@@ -230,14 +230,14 @@ Geliştirme sürecini hızlandırmak ve tümleştirme desenleri önermek için, 
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **İleti** | Evet | Kodlanacak RosettaNet iletisi  |
-   | **Ana bilgisayar ortağı** | Evet | Ana bilgisayar iş ortağı adı |
-   | **Konuk iş ortağı** | Evet | Konuk iş ortağı adı |
-   | **PıP kodu** | Evet | PıP kodu |
-   | **PıP sürümü** | Evet | PıP sürümü |  
-   | **PıP örnek kimliği** | Evet | Bu PıP iletisi için benzersiz tanımlayıcı |  
-   | **Mesaj türü** | Evet | Kodlanacak iletinin türü |  
-   | **Role** | Evet | Ana bilgisayar ortağının rolü |
+   | **İleti** | Yes | Kodlanacak RosettaNet iletisi  |
+   | **Ana bilgisayar ortağı** | Yes | Ana bilgisayar iş ortağı adı |
+   | **Konuk iş ortağı** | Yes | Konuk iş ortağı adı |
+   | **PıP kodu** | Yes | PıP kodu |
+   | **PıP sürümü** | Yes | PıP sürümü |  
+   | **PıP örnek kimliği** | Yes | Bu PıP iletisi için benzersiz tanımlayıcı |  
+   | **Mesaj türü** | Yes | Kodlanacak iletinin türü |  
+   | **Role** | Yes | Ana bilgisayar ortağının rolü |
    ||||
 
    Kodlanmış ileti artık iş ortağına gönderilmeye hazırdır.

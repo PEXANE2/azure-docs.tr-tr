@@ -8,10 +8,10 @@ ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
 ms.openlocfilehash: 39a0830806d2d9c7358d175cae703e9c81c45b02
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93130026"
 ---
 # <a name="register-a-saas-application"></a>SaaS uygulaması kaydetme
@@ -28,22 +28,22 @@ Azure AD'nin özelliklerini kullanmak isteyen her uygulama önce bir Azure AD ki
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Hesabınız birden fazla erişim veriyorsa, sağ üst köşedeki hesabınıza tıklayın ve Portal oturumunuzu istenen Azure AD kiracısı olarak ayarlayın.
-3. Sol taraftaki Gezinti bölmesinde **Azure Active Directory** hizmetine tıklayın, **uygulama kayıtları** ' a tıklayın ve **Yeni uygulama kaydı** ' na tıklayın.
+3. Sol taraftaki Gezinti bölmesinde **Azure Active Directory** hizmetine tıklayın, **uygulama kayıtları**' a tıklayın ve **Yeni uygulama kaydı**' na tıklayın.
 
     ![SaaS AD uygulama kayıtları](./media/saas-offer-app-registration-v1.png)
 
 4. Oluştur sayfasında, uygulamanızın \' kayıt bilgilerini girin:
-    -   **Ad** : anlamlı bir uygulama adı girin
-    -   **Uygulama türü** :  
+    -   **Ad**: anlamlı bir uygulama adı girin
+    -   **Uygulama türü**:  
         
         Güvenli bir sunucuda yüklü olan [istemci uygulamaları](../../active-directory/develop/developer-glossary.md#client-application)için **Web uygulaması/API** 'LERI ve [kaynak/API uygulamaları](../../active-directory/develop/developer-glossary.md#resource-server)' nı seçin. Bu ayar, OAuth gizli [Web istemcileri](../../active-directory/develop/developer-glossary.md#web-client)için ve genel [Kullanıcı Aracısı tabanlı istemciler](../../active-directory/develop/developer-glossary.md#user-agent-based-client)için kullanılır).
         Aynı uygulama gerek bir istemciyi, gerekse kaynağı/API'yi sunabilir.
 
         Belirli Web uygulamalarına örnek olarak, [Azure AD geliştiricileri Kılavuzu](../../active-directory/develop/index.yml)' nu [kullanmaya başlama](../../active-directory/develop/quickstart-create-new-tenant.md) bölümünde bulunan hızlı başlangıç destekli kurulumları inceleyin.
 
-5. İşiniz bittiğinde **Kaydet** ' e tıklayın.  Azure AD, yeni uygulamanıza benzersiz bir *uygulama kimliği* atar. Yalnızca API 'ye ve tek bir kiracıya erişen bir uygulamanın kaydolmalarını öneririz.
+5. İşiniz bittiğinde **Kaydet**' e tıklayın.  Azure AD, yeni uygulamanıza benzersiz bir *uygulama kimliği* atar. Yalnızca API 'ye ve tek bir kiracıya erişen bir uygulamanın kaydolmalarını öneririz.
 
-6. İstemci parolası oluşturmak için **sertifikalar & gizlilikler sayfasına** gidin ve **+ yeni istemci parolası** ' na tıklayın.  Kodunuzda kullanmak için gizli değeri kopyalamadığınızdan emin olun.
+6. İstemci parolası oluşturmak için **sertifikalar & gizlilikler sayfasına** gidin ve **+ yeni istemci parolası**' na tıklayın.  Kodunuzda kullanmak için gizli değeri kopyalamadığınızdan emin olun.
 
 **Azure AD uygulama kimliği** , yayımcı Kimliğinizle ilişkilidir, bu nedenle tüm tekliflerinizi aynı *uygulama kimliğinin* kullanıldığından emin olun.
 
@@ -89,7 +89,7 @@ Gönderi<br>
 
 ##### <a name="response"></a>*Response*
 
-|  Ad     |  Tür         |  Açıklama |
+|  Ad     |  Tür         |  Description |
 |  ------   |  ---------------  | ------------ |
 |  200 TAMAM   |  TokenResponse    |  İstek başarılı oldu. |
 

@@ -13,15 +13,15 @@ ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
 ms.openlocfilehash: a7032c64efa486c65830e013373239647a368540
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92311149"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-api-management-instance"></a>Azure API Management örneğiniz için özel bir etki alanı adı yapılandırma
 
-Azure API Management hizmet örneği oluşturduğunuzda, Azure bu alt etki alanını `azure-api.net` (örneğin, `apim-service-name.azure-api.net` ) atar. Ancak, **contoso.com**gibi kendi özel etki alanı adınızı kullanarak API Management uç noktalarınızı kullanıma sunabilirsiniz. Bu öğreticide, mevcut bir özel DNS adını API Management örneği tarafından sunulan uç noktalara nasıl eşleyebileceğiniz gösterilmektedir.
+Azure API Management hizmet örneği oluşturduğunuzda, Azure bu alt etki alanını `azure-api.net` (örneğin, `apim-service-name.azure-api.net` ) atar. Ancak, **contoso.com** gibi kendi özel etki alanı adınızı kullanarak API Management uç noktalarınızı kullanıma sunabilirsiniz. Bu öğreticide, mevcut bir özel DNS adını API Management örneği tarafından sunulan uç noktalara nasıl eşleyebileceğiniz gösterilmektedir.
 
 > [!IMPORTANT]
 > API Management, yalnızca varsayılan etki alanı adı veya yapılandırılmış özel etki alanı adlarından eşleşen [ana bilgisayar üstbilgi](https://tools.ietf.org/html/rfc2616#section-14.23) değerlerine sahip istekleri kabul eder.
@@ -29,7 +29,7 @@ Azure API Management hizmet örneği oluşturduğunuzda, Azure bu alt etki alan�
 > [!WARNING]
 > Uygulamalarının güvenliğini geliştirmek için sertifika sabitleme kullanmak isteyen müşterilerin, varsayılan sertifikayı değil, yönettikleri özel bir etki alanı adı ve sertifika kullanması gerekir. Bunun yerine varsayılan sertifikayı sabitletirecek müşteriler, denetolmadıkları sertifikanın özelliklerine, bu önerilen bir uygulama değildir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede açıklanan adımları gerçekleştirmek için şunları yapmanız gerekir:
 
@@ -45,7 +45,7 @@ Bu makalede açıklanan adımları gerçekleştirmek için şunları yapmanız g
 ## <a name="use-the-azure-portal-to-set-a-custom-domain-name"></a>Özel bir etki alanı adı ayarlamak için Azure portal kullanın
 
 1. [Azure portal](https://portal.azure.com/)API Management örneğine gidin.
-1. **Özel etki alanları ' nı**seçin.
+1. **Özel etki alanları ' nı** seçin.
 
     Özel bir etki alanı adı atayabilmeniz için birkaç uç nokta vardır. Şu anda aşağıdaki uç noktalar kullanılabilir:
 
@@ -62,17 +62,17 @@ Bu makalede açıklanan adımları gerçekleştirmek için şunları yapmanız g
     > **Premium** katmanı, **ağ geçidi** uç noktası için birden çok konak adı ayarlamayı destekler.
 
 1. Güncelleştirmek istediğiniz uç noktayı seçin.
-1. Sağdaki pencerede **Özel ' e**tıklayın.
+1. Sağdaki pencerede **Özel ' e** tıklayın.
 
     - **Özel etki alanı adı**' nda, kullanmak istediğiniz adı belirtin. Örneğin, `api.contoso.com`.
-    - **Sertifikada**Key Vault bir sertifika seçin. Geçerli bir de yükleyebilirsiniz. Sertifika bir parolayla korunuyorsa PFX dosyası ve **parolasını**girin.
+    - **Sertifikada** Key Vault bir sertifika seçin. Geçerli bir de yükleyebilirsiniz. Sertifika bir parolayla korunuyorsa PFX dosyası ve **parolasını** girin.
 
     > [!NOTE]
     > Joker karakter etki alanı adları, örn. `*.contoso.com` Tüketim katmanı hariç tüm katmanlarda desteklenir.
 
     > [!TIP]
     > Sertifikaları yönetmek ve bunları autorenew olarak ayarlamak [için Azure Key Vault](../key-vault/certificates/about-certificates.md) kullanmanızı öneririz.
-    > Özel etki alanı TLS/SSL sertifikasını yönetmek için Azure Key Vault kullanırsanız, sertifikanın _gizli_değil, [ _sertifika_olarak](/rest/api/keyvault/createcertificate/createcertificate)Key Vault yerleştirildiğinden emin olun.
+    > Özel etki alanı TLS/SSL sertifikasını yönetmek için Azure Key Vault kullanırsanız, sertifikanın _gizli_ değil, [ _sertifika_ olarak](/rest/api/keyvault/createcertificate/createcertificate)Key Vault yerleştirildiğinden emin olun.
     >
     > Bir TLS/SSL sertifikası getirmek için API Management, sertifikayı içeren Azure Key Vault liste ve parolaları al izinlerine sahip olmalıdır. Azure portal kullanırken, tüm gerekli yapılandırma adımları otomatik olarak tamamlanır. Komut satırı araçları veya yönetim API 'SI kullanılırken, bu izinlerin el ile verilmesi gerekir. Bu iki adımda yapılır. İlk olarak, yönetilen kimliğin etkin olduğundan emin olmak için API Management örnekte Yönetilen kimlikler sayfasını kullanın ve bu sayfada gösterilen asıl kimliği bir yere göz önünde yapın. İkincisi, izin listesini verin ve sertifikayı içeren Azure Key Vault bu asıl kimliğe gizli dizi izinleri alın.
     >

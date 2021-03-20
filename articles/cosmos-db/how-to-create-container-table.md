@@ -9,10 +9,10 @@ ms.date: 10/16/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
 ms.openlocfilehash: fde3145e7bd7f4e53ae7a0c44f02e066c28ec785
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93101587"
 ---
 # <a name="create-a-container-in-azure-cosmos-db-table-api"></a>Azure Cosmos DB Tablo API'si bir kapsayıcı oluşturma
@@ -31,11 +31,11 @@ Bu makalede, Azure Cosmos DB Tablo API'si bir kapsayıcı oluşturmanın farklı
 
 1. [Yeni bir Azure Cosmos hesabı oluşturun](create-table-dotnet.md#create-a-database-account)veya var olan bir hesabı seçin.
 
-1. **Veri Gezgini** bölmesini açın ve **Yeni tablo** ' yı seçin. Ardından, aşağıdaki ayrıntıları sağlayın:
+1. **Veri Gezgini** bölmesini açın ve **Yeni tablo**' yı seçin. Ardından, aşağıdaki ayrıntıları sağlayın:
 
    * Tablo KIMLIĞI girin.
    * Sağlanacak bir üretilen iş (örneğin, 1000 ru) girin.
-   * **Tamam** ’ı seçin.
+   * **Tamam**’ı seçin.
 
     :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-table.png" alt-text="Tablo API'si, tablo Ekle iletişim kutusunun ekran görüntüsü":::
 

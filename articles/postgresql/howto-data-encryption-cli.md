@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 757782e8842fbcaca9c8d95ec8086dd5791a817b
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93240622"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-cli"></a>Azure CLı kullanarak PostgreSQL için Azure veritabanı için veri şifreleme tek sunucu
@@ -46,10 +46,10 @@ Azure CLı kullanarak PostgreSQL için Azure veritabanı tek sunucu için veri �
       az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true
       ```
 
-* Anahtar, müşteri tarafından yönetilen anahtar olarak kullanmak için aşağıdaki özniteliklere sahip olmalıdır:
-  * Sona erme tarihi yok
-  * Devre dışı değil
-  * Get, **Wrap** ve **geri saral** işlemlerini gerçekleştirin **get**
+* Müşteri tarafından yönetilen anahtar olarak kullanılabilmesi için anahtarın aşağıdaki özniteliklere sahip olması gerekir:
+  * Son kullanma tarihi yok
+  * Devre dışı bırakılmadı
+  * Get, **Wrap** ve **geri saral** işlemlerini gerçekleştirin 
 
 ## <a name="set-the-right-permissions-for-key-operations"></a>Anahtar işlemleri için doğru izinleri ayarla
 
@@ -67,7 +67,7 @@ Azure CLı kullanarak PostgreSQL için Azure veritabanı tek sunucu için veri �
     az postgres server update --resource-group <resource_group> --name <server_name> --assign-identity
     ```
 
-2. **Ana** Için PostgreSQL tek sunucu sunucusunun adı olan **anahtar izinlerini** ( **Get** , **Wrap** , **Unwrap** ) ayarlayın.
+2. **Ana** Için PostgreSQL tek sunucu sunucusunun adı olan **anahtar izinlerini** (**Get**, **Wrap**, **Unwrap**) ayarlayın.
 
     ```azurecli-interactive
     az keyvault set-policy --name -g <resource_group> --key-permissions get unwrapKey wrapKey --object-id <principal id of the server>

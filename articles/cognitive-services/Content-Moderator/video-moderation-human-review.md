@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: pafarley
 ms.openlocfilehash: 05ece4d8ea24fb9da106ec3daa2cc1a63706dab9
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96853507"
 ---
 # <a name="video-moderation-with-the-review-tool"></a>Inceleme aracı ile video denetleme
@@ -50,7 +50,7 @@ Bu Content-obscuring efektlerini ayarlamak için **Tümünü Bulanıklaştır** 
 **Ayrıntı** görünümünde sağ bölmede, size video hakkında ayrıntılar veren çeşitli sekmeler gösterilir.
 
 * Videolarınıza özel notlar eklemek için **Notlar** sekmesini seçin.
-* **Transcript** &mdash; Hizmetin videodaki herhangi bir konuşmayı otomatik olarak çıkaran video dökümünü görmek için dökümü sekmesini seçin. Metnin bir bölümünü seçtiğinizde video oynatıcı videonun bu bölümüne atlayacaktır.
+*  &mdash; Hizmetin videodaki herhangi bir konuşmayı otomatik olarak çıkaran video dökümünü görmek için dökümü sekmesini seçin. Metnin bir bölümünü seçtiğinizde video oynatıcı videonun bu bölümüne atlayacaktır.
 * Video dosyası meta verilerini görüntülemek için **meta veri** sekmesini seçin.
 * İnceleme geçmişini (oluşturulduğu tarih ve nasıl değiştirildiği gibi) görmek için **Geçmiş** sekmesini seçin.
 

@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
 ms.openlocfilehash: 1e913e3a5356ad7f49d8b3066f5bd3da7eddd2c2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93308773"
 ---
 # <a name="publisher-verification"></a>Yayımcı doğrulaması
@@ -31,13 +31,13 @@ Azure AD onay istemi ve diğer ekranlarda mavi "doğrulanan" bir rozet görünü
 
 Bu özellik, birincil olarak, OAuth 2,0 'den yararlanan çok kiracılı uygulamalar oluşturan geliştiriciler ve [Microsoft Identity platformu](v2-overview.md)Ile [OpenID Connect 'e](active-directory-v2-protocols.md) yöneliktir. Bu uygulamalar, OpenID Connect kullanarak kullanıcıları imzalayabilirler veya [Microsoft Graph](https://developer.microsoft.com/graph/)gibi API 'leri kullanarak verilere erişim Istemek için OAuth 2,0 kullanabilirler.
 
-## <a name="benefits"></a>Yararları
+## <a name="benefits"></a>Avantajlar
 Yayımcı doğrulaması aşağıdaki avantajları sağlar:
-- **Müşteriler Için daha fazla saydamlık ve risk azaltma** -bu özellik, müşterilerin kuruluşlarında kullanılan uygulamaları öğrendikleri geliştiriciler tarafından yayımlandığını anlamalarına yardımcı olur. 
+- **Müşteriler Için daha fazla saydamlık ve risk azaltma**-bu özellik, müşterilerin kuruluşlarında kullanılan uygulamaları öğrendikleri geliştiriciler tarafından yayımlandığını anlamalarına yardımcı olur. 
 
-- **Geliştirilmiş marka** -Azure AD [onay Istemi](application-consent-experience.md), kurumsal uygulamalar sayfasında ve son kullanıcılar ve YÖNETICILER tarafından kullanılan ek UX yüzeyleri üzerinde "doğrulanan" bir rozet görüntülenir. 
+- **Geliştirilmiş marka**-Azure AD [onay Istemi](application-consent-experience.md), kurumsal uygulamalar sayfasında ve son kullanıcılar ve YÖNETICILER tarafından kullanılan ek UX yüzeyleri üzerinde "doğrulanan" bir rozet görüntülenir. 
 
-- **Daha yumuşak bir kurumsal benimseme** -Yöneticiler, [Kullanıcı onay ilkelerini](../manage-apps/configure-user-consent.md), birincil ilke ölçütlerinden biri olarak yayımcı doğrulama durumuyla yapılandırabilir.
+- **Daha yumuşak bir kurumsal benimseme**-Yöneticiler, [Kullanıcı onay ilkelerini](../manage-apps/configure-user-consent.md), birincil ilke ölçütlerinden biri olarak yayımcı doğrulama durumuyla yapılandırabilir.
 
 > [!NOTE]
 > Son kullanıcılar artık 2020 Kasım 'Dan başlayarak, yeni kayıtlı çok kiracılı uygulamalara daha fazla yayımcı olmadan onay veremeyecektir. Bu, 8 Kasım 2020 ' den sonra kaydedilen uygulamalar için geçerlidir, temel oturum açma ve kullanıcı profilini okuma ötesinde izin istemek ve uygulamanın kaydolduktan farklı kiracılardaki kullanıcılardan izin istemek için OAuth 2.0 'ı kullanın. Onay ekranında, kullanıcılara bu uygulamaların riskli olduğunu ve doğrulanmamış yayımcıların olduğunu bildiren bir uyarı görüntülenir.    

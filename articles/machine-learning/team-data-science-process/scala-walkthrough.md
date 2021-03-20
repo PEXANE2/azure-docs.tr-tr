@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 9ae4549fe343422bbf60275a97768ca407f2dc7c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93321381"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Azure üzerinde Scala ve Spark kullanan Veri Bilimi
@@ -52,7 +52,7 @@ Bu makaledeki kurulum adımları ve kodu, Azure HDInsight 3,4 Spark 1,6 içindir
 NYC TAXI seyahat verilerinin açıklaması ve Spark kümesindeki bir Jupyter Not defterinden kod yürütme yönergeleri için bkz. [Azure HDInsight 'Ta Spark kullanarak veri bilimine genel bakış](spark-overview.md)konusundaki ilgili bölümler.  
 
 ## <a name="execute-scala-code-from-a-jupyter-notebook-on-the-spark-cluster"></a>Spark kümesindeki bir Jupyter Not defterinden Scala kodu yürütün
-Azure portal bir Jupyter Not defteri başlatabilirsiniz. Panonuzda Spark kümesini bulun ve ardından kümenize ait yönetim sayfasını girmek için tıklayın. Ardından, **küme panoları** ' na tıklayın ve ardından **Jupyter Notebook** ' a tıklayarak Spark kümesiyle ilişkili Not defterini açın.
+Azure portal bir Jupyter Not defteri başlatabilirsiniz. Panonuzda Spark kümesini bulun ve ardından kümenize ait yönetim sayfasını girmek için tıklayın. Ardından, **küme panoları**' na tıklayın ve ardından **Jupyter Notebook** ' a tıklayarak Spark kümesiyle ilişkili Not defterini açın.
 
 ![Küme panosu ve Jupyıter Not defterleri](./media/scala-walkthrough/spark-jupyter-on-portal.png)
 
@@ -62,7 +62,7 @@ Ayrıca, https:// &lt; clustername. azurehdinsight.net/Jupyter adresinden jupi n
 
 PySpark API kullanan önceden paketlenmiş not defterlerine örnek bir dizin görmek için **Scala** ' yı seçin. Bu Spark konuları paketine yönelik kod örneklerini içeren Scala. ipynb Not defterini kullanan keşif modelleme ve Puanlama, [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/Scala)' da kullanılabilir.
 
-Not defterini doğrudan GitHub 'dan Spark kümenizdeki Jupyter Notebook sunucusuna yükleyebilirsiniz. Jupyıter giriş sayfanızda **karşıya yükle** düğmesine tıklayın. Dosya Gezgini 'nde, Scala Not defterinin GitHub (ham içerik) URL 'sini yapıştırın ve **Aç** ' a tıklayın. Scala Not defteri Şu URL 'de kullanılabilir:
+Not defterini doğrudan GitHub 'dan Spark kümenizdeki Jupyter Notebook sunucusuna yükleyebilirsiniz. Jupyıter giriş sayfanızda **karşıya yükle** düğmesine tıklayın. Dosya Gezgini 'nde, Scala Not defterinin GitHub (ham içerik) URL 'sini yapıştırın ve **Aç**' a tıklayın. Scala Not defteri Şu URL 'de kullanılabilir:
 
 [Araştırma-modelleme ve Puanlama-kullanma-Scala. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration-Modeling-and-Scoring-using-Scala.ipynb)
 
@@ -257,9 +257,9 @@ sqlResultsDF.show(3)
 
 | fare_amount | passenger_count | tip_amount | eğik |
 | --- | --- | --- | --- |
-|        13,5 |1,0 |2.9 |1,0 |
-|        16,0 |2,0 |3.4 |1,0 |
-|        10,5 |2,0 |1,0 |1,0 |
+|        13.5 |1.0 |2.9 |1.0 |
+|        16,0 |2.0 |3.4 |1.0 |
+|        10,5 |2.0 |1.0 |1.0 |
 
 ## <a name="data-exploration-and-visualization"></a>Veri araştırması ve görselleştirme
 Verileri Spark 'a geçirdikten sonra, veri bilimi sürecinin bir sonraki adımı, keşif ve görselleştirme aracılığıyla verilerin daha derin bir şekilde anlaşılmasıdır. Bu bölümde, SQL sorgularını kullanarak TAXI verilerini inceleyeceksiniz. Ardından, otomatik görselleştirme jupi özelliğini kullanarak hedef değişkenleri ve görsel inceleme için olası özellikleri çizmek üzere sonuçları bir veri çerçevesine aktarın.
@@ -353,7 +353,7 @@ Spark ML ve MLlib 'den ağaç tabanlı modelleme işlevleri için, çözümleme,
 1. Saat demetlerini, trafik zaman demetlerine **ekleyerek yeni** bir özellik oluşturun.
 2. Kategorik özelliklerine **Dizin oluşturma ve tek yönlü kodlama** uygulayın.
 3. Veri kümesini eğitim ve test kesirleri olarak **örnekle ve böler** .
-4. **Eğitim değişkeni ve özelliklerini belirtin** , ardından dizinlenmiş veya tek yönlü kodlanmış eğitim ve işaret eden dayanıklı Dağıtılmış veri kümeleri (rdds) veya veri çerçeveleri etiketli test girişi oluşturun.
+4. **Eğitim değişkeni ve özelliklerini belirtin**, ardından dizinlenmiş veya tek yönlü kodlanmış eğitim ve işaret eden dayanıklı Dağıtılmış veri kümeleri (rdds) veya veri çerçeveleri etiketli test girişi oluşturun.
 5. Makine öğrenimi modelleriyle ilgili giriş olarak kullanılacak **özellikleri ve hedefleri otomatik olarak kategorilere ayırın ve vektörleştirme** .
 
 ### <a name="create-a-new-feature-by-binning-hours-into-traffic-time-buckets"></a>Saatleri trafik zaman demetlerine ekleyerek yeni bir özellik oluşturun

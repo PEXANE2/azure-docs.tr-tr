@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 06/18/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a9ece3fe54ca8596f610439f8a0dd228ae1ef907
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92220916"
 ---
 # <a name="manage-azure-data-lake-analytics-a-net-app"></a>.NET uygulaması ile Azure Data Lake Analytics’i yönetme
@@ -54,7 +54,7 @@ string rg == "<value>"; // Resource  group name
 string clientid = "1950a258-227b-4e31-a9cf-717495945fc2"; // Sample client ID (this will work, but you should pick your own)
 ```
 
-## <a name="authentication"></a>Kimlik doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulaması
 
 Azure Data Lake Analytics oturum açma için birden çok seçeneğiniz vardır. Aşağıdaki kod parçacığında bir açılır pencere ile etkileşimli kullanıcı kimlik doğrulaması ile bir kimlik doğrulaması örneği gösterilmektedir.
 
@@ -217,7 +217,7 @@ if (adlaClient.Account.Exists(rg, adla))
 Data Lake Analytics Şu anda aşağıdaki veri kaynaklarını desteklemektedir:
 
 * [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
-* [Azure Depolama Hesabı](../storage/common/storage-introduction.md)
+* [Azure depolama hesabı](../storage/common/storage-introduction.md)
 
 ### <a name="link-to-an-azure-storage-account"></a>Azure depolama hesabına bağlantı
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 13f05005529d3983e042398f5274fd7f981b8c8c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92516605"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-questetra-bpm-suite"></a>Öğretici: Sorgtetra BPM Suite ile tümleştirme Azure Active Directory
@@ -61,13 +61,13 @@ Sorgtetra BPM Suite 'in Azure AD ile tümleştirilmesini yapılandırmak için, 
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **SORGTETRA BPM Suite**yazın, sonuç panelinden **Sorgtetra BPM Suite** ' i seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
+4. Arama kutusuna **SORGTETRA BPM Suite** yazın, sonuç panelinden **Sorgtetra BPM Suite** ' i seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
 
      ![Sonuçlar listesinde sorgtetra BPM Suite](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına dayalı olarak, Sorgtetra Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
+Bu bölümde, **Britta Simon** adlı bir test kullanıcısına dayalı olarak, Sorgtetra Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve Sorgtetra BPM Suite içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açmayı, Sorgtetra BPM Suite ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -136,9 +136,9 @@ Azure AD 'de, Sorgtetra BPM Suite ile çoklu oturum açmayı yapılandırmak iç
 
 4. **Sorgtetra BPM Suite** şirket sitenizde, **SP bilgileri** bölümünde aşağıdaki adımları uygulayın:
 
-    a. **ACS URL 'sini**kopyalayın ve ardından Azure Portal ' den **temel SAML YAPıLANDıRMASı** bölümünde bulunan **URL 'yi oturum aç** metin kutusuna yapıştırın.
+    a. **ACS URL 'sini** kopyalayın ve ardından Azure Portal ' den **temel SAML YAPıLANDıRMASı** bölümünde bulunan **URL 'yi oturum aç** metin kutusuna yapıştırın.
     
-    b. **VARLıK kimliğini**kopyalayın ve ardından Azure Portal **temel SAML yapılandırması** bölümündeki **tanımlayıcı** metin kutusuna yapıştırın.
+    b. **VARLıK kimliğini** kopyalayın ve ardından Azure Portal **temel SAML yapılandırması** bölümündeki **tanımlayıcı** metin kutusuna yapıştırın.
 
 5. **Sorgtetra BPM Suite** şirket sitenizde aşağıdaki adımları gerçekleştirin: 
    
@@ -174,7 +174,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
     b. **Kullanıcı adı** alanına yazın brittasimon@yourcompanydomain.extension . Örneğin, BrittaSimon@contoso.com
 

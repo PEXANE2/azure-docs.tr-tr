@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/12/2020
 ms.author: jeedes
 ms.openlocfilehash: cdd712495d09f45054d046693833a7f6efee2c6a
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92516571"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-protoio"></a>Öğretici: Proto.io ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -57,7 +57,7 @@ Proto.io tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden P
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-protoio"></a>Proto.io için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu proto.io ile yapılandırın ve test edin. SSO 'nun çalışması için, Proto.io içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu proto.io ile yapılandırın ve test edin. SSO 'nun çalışması için, Proto.io içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Proto.io ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -97,7 +97,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Proto.io uygulaması, yukarıdakine ek olarak, aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
     
-    | Adı | Kaynak özniteliği|
+    | Name | Kaynak özniteliği|
     | --------------- | --------- |
     | e-posta | Kullanıcı. Mail |
     | fname | Kullanıcı. |

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: e76386c8c276c6c8c07751474b3718f98af18f4b
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92519461"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sprinklr"></a>Öğretici: Sprınklr ile tümleştirme Azure Active Directory
@@ -61,13 +61,13 @@ Sprınklr 'in Azure AD 'ye tümleştirilmesini yapılandırmak için, galerisind
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **sprınklr**yazın, sonuç panelinden **sprınklr** ' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **sprınklr** yazın, sonuç panelinden **sprınklr** ' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
      ![Sonuçlar listesinde sprınklr](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına bağlı olarak Sprınklr Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
+Bu bölümde, **Britta Simon** adlı bir test kullanıcısına bağlı olarak Sprınklr Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve Sprınklr içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açma 'yı Sprınklr ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -134,7 +134,7 @@ Azure AD çoklu oturum açmayı Sprınklr ile yapılandırmak için aşağıdaki
 
     ![Iş ortağını Yönet](./media/sprinklr-tutorial/ic782908.png "Iş ortağını Yönet")
 
-1. **+ Çoklu oturum açma Ekle**seçeneğine tıklayın.
+1. **+ Çoklu oturum açma Ekle** seçeneğine tıklayın.
 
     ![Ekran görüntüsünde çoklu oturum açma Ekle düğmesi gösterilir.](./media/sprinklr-tutorial/ic782909.png "Tek Sign-Ons")
 
@@ -156,9 +156,9 @@ Azure AD çoklu oturum açmayı Sprınklr ile yapılandırmak için aşağıdaki
 
     örneğin: Azure portalından kopyaladığınız **oturum kapatma URL 'si** değerini **ıDENTITY Provider Logout URL** metin kutusuna yapıştırın.
 
-    h. **SAML Kullanıcı kimliği türü**olarak, onaylama ' nın **kullanıcının Sprinklr.com Kullanıcı adını içerdiğini**seçin.
+    h. **SAML Kullanıcı kimliği türü** olarak, onaylama ' nın **kullanıcının Sprinklr.com Kullanıcı adını içerdiğini** seçin.
 
-    i. **SAML Kullanıcı kimliği konumu**olarak, **Konu bildiriminin ad tanımlayıcı öğesinde kullanıcı kimliği**' ni seçin.
+    i. **SAML Kullanıcı kimliği konumu** olarak, **Konu bildiriminin ad tanımlayıcı öğesinde kullanıcı kimliği**' ni seçin.
 
     j. **Kaydet**’e tıklayın.
 
@@ -180,9 +180,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alan türü**brittasimon@yourcompanydomain.extension**  
+    b. **Kullanıcı adı** alan türü **brittasimon@yourcompanydomain.extension**  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
@@ -237,18 +237,18 @@ Bu bölümde, Sprınklr 'e erişim vererek Azure çoklu oturum açma özelliğin
 
     a. **E-postada** **adı** ve **Soyadı** metın kutularına sağlamak istediğiniz bir Azure AD Kullanıcı hesabının bilgilerini yazın.
 
-    b. **Parola devre dışı**seçeneğini belirleyin.
+    b. **Parola devre dışı** seçeneğini belirleyin.
 
-    c. **Dil**seçin.
+    c. **Dil** seçin.
 
-    d. **Kullanıcı türünü**seçin.
+    d. **Kullanıcı türünü** seçin.
 
     e. **Güncelleştir**’e tıklayın.
 
     > [!IMPORTANT]
     > Kullanıcının bir kimlik sağlayıcısı aracılığıyla oturum açmasını sağlamak için **parolanın devre dışı bırakılması** seçilmelidir. 
 
-1. **Role**gidin ve aşağıdaki adımları gerçekleştirin:
+1. **Role** gidin ve aşağıdaki adımları gerçekleştirin:
 
     ![İş ortağı rolleri](./media/sprinklr-tutorial/ic782917.png "İş ortağı rolleri")
 

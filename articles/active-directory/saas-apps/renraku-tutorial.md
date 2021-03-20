@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/12/2019
 ms.author: jeedes
 ms.openlocfilehash: 83bf6c6a9c8d6f344b881e2603246fe9c0ead7cc
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92518490"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-renraku"></a>Öğretici: RENRAYKU ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -54,7 +54,7 @@ RENKıKU 'ın Azure AD ile tümleştirilmesini yapılandırmak için Galeriden, 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-renraku"></a>RENRAMPAIÇIN Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak renrayku Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile RENKıKU içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak renrayku Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile RENKıKU içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu RENRAYKU ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 

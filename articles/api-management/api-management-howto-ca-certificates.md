@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 08/20/2018
 ms.author: apimpm
 ms.openlocfilehash: 124bc053aa2c6e59e205bb6f33a9a96190799499
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93102046"
 ---
 # <a name="how-to-add-a-custom-ca-certificate-in-azure-api-management"></a>Azure API Management özel CA sertifikası ekleme
@@ -47,7 +47,7 @@ Yeni bir CA sertifikasını karşıya yüklemek için aşağıdaki adımları iz
 
     ![Sertifikaya nasıl gözatakullanacağınızı gösteren ekran görüntüsü.](media/api-management-howto-ca-certificates/02.png)  
 
-5. **Kaydet** ’e tıklayın. Bu işlem birkaç dakika sürebilir.
+5. **Kaydet**’e tıklayın. Bu işlem birkaç dakika sürebilir.
 
     ![Sertifikanın nasıl kaydedileceğini gösteren ekran görüntüsü.](media/api-management-howto-ca-certificates/03.png)  
 

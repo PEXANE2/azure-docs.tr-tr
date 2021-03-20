@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 09/21/2020
 ms.openlocfilehash: 062d53fcb122ebacd004d7dca5e11f5a883354cd
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93241965"
 ---
 # <a name="point-in-time-restore-of-a-azure-database-for-mysql---flexible-server-preview"></a>MySQL için Azure veritabanı-esnek sunucu (Önizleme) için bir noktadan noktaya geri yükleme
@@ -35,7 +35,7 @@ En eski mevcut yedeği kullanarak esnek sunucunuzu geri yüklemek için bu adım
 
 2.  Sol panelde **Genel Bakış ' a** tıklayın.
 
-3.  Genel Bakış sayfasında **geri yükle** ' ye tıklayın.
+3.  Genel Bakış sayfasında **geri yükle**' ye tıklayın.
 
     Tutucu
 
@@ -48,7 +48,7 @@ En eski mevcut yedeği kullanarak esnek sunucunuzu geri yüklemek için bu adım
 
     :::image type="content" source="./media/concept-backup-restore/restore-blade-latest.png" alt-text="En erken geri yükleme süresi":::
 
-8.  **Tamam** ’a tıklayın.
+8.  **Tamam**'a tıklayın.
 
 9.  Geri yükleme işleminin başlatıldığı bir bildirim gösterilir.
 
@@ -58,7 +58,7 @@ En eski mevcut yedeği kullanarak esnek sunucunuzu geri yüklemek için bu adım
 
 1.  [Azure Portal](https://portal.azure.com/), yedeği geri yüklemek istediğiniz esnek sunucunuzu seçin.
 
-2.  Genel Bakış sayfasında **geri yükle** ' ye tıklayın.
+2.  Genel Bakış sayfasında **geri yükle**' ye tıklayın.
 
     Tutucu
 
@@ -74,7 +74,7 @@ En eski mevcut yedeği kullanarak esnek sunucunuzu geri yüklemek için bu adım
    
     :::image type="content" source="./media/concept-backup-restore/restore-blade-custom.png" alt-text="genel bakışı görüntüle":::
  
-7.  **Tamam** ’a tıklayın.
+7.  **Tamam**'a tıklayın.
 
 8.  Geri yükleme işleminin başlatıldığı bir bildirim gösterilir.
 

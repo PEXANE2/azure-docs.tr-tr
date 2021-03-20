@@ -6,10 +6,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 12/05/2016
 ms.openlocfilehash: 11efdb727bacadb674fb49374ef1c70fcc788ecc
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92219998"
 ---
 # <a name="develop-u-sql-user-defined-operators-udos"></a>U-SQL Kullanıcı tanımlı işleçler (UDOs) geliştirme
@@ -19,9 +19,9 @@ Bu makalede, bir U-SQL işinde verileri işlemek için Kullanıcı tanımlı iş
 
 ### <a name="to-create-and-submit-a-u-sql-job"></a>Bir U-SQL işi oluşturmak ve göndermek için
 
-1. Visual Studio 'da **yeni > project > U-SQL projesi > dosya**seçin.
+1. Visual Studio 'da **yeni > project > U-SQL projesi > dosya** seçin.
 2. **Tamam**'a tıklayın. Visual Studio, Script.usql dosyasıyla bir çözüm oluşturur.
-3. **Çözüm Gezgini**, Script. usql öğesini genişletin ve ardından **Script.usql.cs**öğesine çift tıklayın.
+3. **Çözüm Gezgini**' den Script. usql ' i genişletin ve ardından **Script. usql. cs**' ye çift tıklayın.
 4. Aşağıdaki kodu dosyaya yapıştırın:
 
    ```usql
@@ -77,7 +77,7 @@ Bu makalede, bir U-SQL işinde verileri işlemek için Kullanıcı tanımlı iş
    }
    ```
 
-5. **Script. usql dosyasını**açın ve şu U-SQL betiğini yapıştırın:
+5. **Script. usql dosyasını** açın ve şu U-SQL betiğini yapıştırın:
 
    ```usql
    @drivers =

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/04/2020
 ms.author: jeedes
 ms.openlocfilehash: b6dda20487caf6fe3ba49578cfdc0b65434a8dfa
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92520566"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-splashtop"></a>Öğretici: Splashtop ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -57,7 +57,7 @@ Splashtop 'ın Azure AD ile tümleştirilmesini yapılandırmak için, galeriniz
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-splashtop"></a>Splashtop için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Splashtop ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı ile Splashtop arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Splashtop ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı ile Splashtop arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu, Splashtop ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -82,7 +82,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     **Oturum açma URL** 'si metin kutusuna URL 'yi yazın:`https://my.splashtop.com/login/sso`
 
-1. Splashtop uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir, ancak **NameIdentifier** **User. UserPrincipalName**ile eşlenir. Bilet Yöneticisi uygulaması, **NameIdentifier** 'ın **User. Mail**ile eşlenmesini bekliyor, bu nedenle, **Düzenle** simgesine tıklayarak ve öznitelik eşlemesini değiştirerek öznitelik eşlemesini düzenlemeniz gerekir.
+1. Splashtop uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir, ancak **NameIdentifier** **User. UserPrincipalName** ile eşlenir. Bilet Yöneticisi uygulaması, **NameIdentifier** 'ın **User. Mail** ile eşlenmesini bekliyor, bu nedenle, **Düzenle** simgesine tıklayarak ve öznitelik eşlemesini değiştirerek öznitelik eşlemesini düzenlemeniz gerekir.
 
     ![Ekran görüntüsü, düzenleme simgesi seçili olan kullanıcı özniteliklerini gösterir.](common/edit-attribute.png)
 
@@ -131,7 +131,7 @@ Bu bölümde, [Splashtop Web portalından](https://my.splashtop.com/login)yenı 
 
     ![Ekran görüntüsü, yeni S S yöntemi için Uygula ' yı seçebileceğiniz çoklu oturum açma sayfasını gösterir.](media/splashtop-tutorial/apply-for-new-SSO-method.png)
 
-1. Uygulanan penceresinde bir **SSO adı**verin. Örneğin, yeni Azure, ıDP türü olarak **Azure** ' ı seçin ve Azure Portal ' de Azure AD tanımlayıcısı ' nı ve ' de Splashtop uygulamasından kopyalanmış **Azure ad tanımlayıcısını** **ekleyin.**
+1. Uygulanan penceresinde bir **SSO adı** verin. Örneğin, yeni Azure, ıDP türü olarak **Azure** ' ı seçin ve Azure Portal ' de Azure AD tanımlayıcısı ' nı ve ' de Splashtop uygulamasından kopyalanmış **Azure ad tanımlayıcısını** **ekleyin.**
 
     ![Ekran görüntüsü, bir ad ve diğer bilgileri girebileceğiniz S S O yöntemi için geçerlidir sayfasını gösterir.](media/splashtop-tutorial/azure-sso-1.png)
 

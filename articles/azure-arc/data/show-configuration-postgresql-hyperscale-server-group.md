@@ -11,10 +11,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: a268cd6b2fa3da6846554e3d1b170298abec7f18
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93279410"
 ---
 # <a name="show-the-configuration-of-an-arc-enabled-postgresql-hyperscale-server-group"></a>Bir yay etkin PostgreSQL hiper ölçek sunucu grubu yapılandırmasını göster
@@ -36,7 +36,7 @@ Postgres türündeki Kubernetes kaynaklarını listeleyin. Şu komutu çalışt�
 kubectl get postgresqls [-n <namespace name>]
 ```
 
-Bu komutun çıktısı oluşturulan sunucu gruplarının listesini gösterir. Her biri için, pods sayısını belirtir. Örneğin:
+Bu komutun çıktısı oluşturulan sunucu gruplarının listesini gösterir. Her biri için, pods sayısını belirtir. Örnek:
 
 ```output
 NAME                                             STATE   READY-PODS   EXTERNAL-ENDPOINT   AGE
@@ -54,7 +54,7 @@ Bu örnek, 2 sunucu grubunun oluşturulduğunu ve her birinin 3 Pod 'de (1 düze
 kubectl get pods [-n <namespace name>]
 ```
 
-Bu, pods listesini döndürür. Bu sunucu gruplarına verdiğiniz adlara göre, sunucu gruplarınız tarafından kullanılan Pod 'leri görürsünüz. Örneğin:
+Bu, pods listesini döndürür. Bu sunucu gruplarına verdiğiniz adlara göre, sunucu gruplarınız tarafından kullanılan Pod 'leri görürsünüz. Örnek:
 
 ```console 
 NAME                 READY   STATUS    RESTARTS   AGE
@@ -108,7 +108,7 @@ Varsayılan olarak, bir PVC adının öneki kullanımını gösterir:
 - `data-`...: veri dosyaları için kullanılan PVC
 - `logs-`...: işlem günlükleri/WAL dosyaları için kullanılan bir PVC
 
-Örneğin:
+Örnek:
 
 ```output
 NAME                                            STATUS   VOLUME              CAPACITY   ACCESS MODES   STORAGECLASS    AGE
@@ -183,7 +183,7 @@ Bu komutun genel biçimi:
 kubectl describe <CRD name>/<server group name> [-n <namespace name>]
 ```
 
-Örneğin:
+Örnek:
 
 ```console
 kubectl describe postgresql-12/postgres02
@@ -289,7 +289,7 @@ Komutun genel biçimi:
 azdata arc postgres server show -n <server group name>
 ```
 
-Örneğin:
+Örnek:
 
 ```console
 azdata arc postgres server show -n postgres02

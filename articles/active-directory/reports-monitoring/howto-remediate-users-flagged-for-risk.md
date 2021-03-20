@@ -16,10 +16,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 23bd7a26bc6215f50a2860ab4aac84f1b46301f5
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92308954"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Azure Active Directory portalında riskli olarak işaretlenmiş kullanıcıları düzeltme
@@ -44,14 +44,14 @@ Daha fazla bilgi için bkz. [risk için Işaretlenen kullanıcılar güvenlik ra
 
 ### <a name="azure-ad-subscription-for-microsoft-365-customers"></a>Microsoft 365 müşterileri için Azure AD aboneliği
 
-**Azure yönetim merkezine**erişmek için Microsoft 365 kimlik bilgilerinizi de kullanabilirsiniz. Azure AD’ye erişiminizi etkinleştirdikten sonra, Azure AD portalına yeniden yönlendirilirsiniz. Temel abonelik düzeyinde, raporlarda sağlanan ayrıntı miktarı sınırlıdır. Ek veriler ve analizler, Azure Premium abonelerine sağlanır.
+**Azure yönetim merkezine** erişmek için Microsoft 365 kimlik bilgilerinizi de kullanabilirsiniz. Azure AD’ye erişiminizi etkinleştirdikten sonra, Azure AD portalına yeniden yönlendirilirsiniz. Temel abonelik düzeyinde, raporlarda sağlanan ayrıntı miktarı sınırlıdır. Ek veriler ve analizler, Azure Premium abonelerine sağlanır.
 
 Microsoft 365 Yönetim merkezinde **risk raporları için Işaretlenen kullanıcılara** erişmek için:
 
 1.  Sol taraftaki gezinti menüsünde, **Yönetim Merkezleri**' ni seçin. 
 2.  **Azure AD**'yi seçin.
 3.  **Azure Active Directory yönetim merkezi**'nde oturum açın.
-4.  Sayfanın üst kısmında **Yeni portalın kullanıma hazır**olduğunu belirten bir başlık görüntüleniyorsa bağlantıyı seçin.
+4.  Sayfanın üst kısmında **Yeni portalın kullanıma hazır** olduğunu belirten bir başlık görüntüleniyorsa bağlantıyı seçin.
 4.  Sol taraftaki gezinti menüsünde **Azure Active Directory**' yi seçin. 
 5.  Gezinti bölmesinde, **güvenlik** bölümünde **risk olarak işaretlenen kullanıcıları** seçin.
 

@@ -12,10 +12,10 @@ ms.author: bonova
 ms.reviewer: sstein
 ms.date: 06/26/2019
 ms.openlocfilehash: ea037d12417c8fad9d80b77df69285ed2c8df31b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91618667"
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde zamana bağlı tabloları kullanmaya başlama
@@ -27,7 +27,7 @@ Zamana bağlı tablolar, Azure SQL veritabanı ve Azure SQL yönetilen örneği 
 
 Bu makalede, bir uygulama senaryosunda zamana bağlı tabloları kullanma adımları gösterilmektedir. Kullanıcı etkinliğini, sıfırdan veya Kullanıcı etkinliği analiziyle genişletmek istediğiniz var olan bir Web sitesinde geliştirmekte olan yeni bir Web sitesinde izlemek istediğinizi varsayalım. Bu basitleştirilmiş örnekte, bir süre boyunca ziyaret edilen Web sayfaları sayısının Azure SQL veritabanı veya Azure SQL yönetilen örneği üzerinde barındırılan Web sitesi veritabanında yakalanmasının ve izlenmesi gereken bir gösterge olduğunu varsaytık. Kullanıcı etkinliğinin geçmiş analizinin amacı, Web sitesini yeniden tasarlayacağınız ve ziyaretçiler için daha iyi deneyim sağlayacak girişleri sağlamaktır.
 
-Bu senaryonun veritabanı modeli çok basit-kullanıcı etkinliği ölçüsünün tek bir tamsayı alanı ile temsil edildiği, **Pageziyaret**edildiği ve kullanıcı profilindeki temel bilgilerle birlikte yakalanmasıdır. Bunlara ek olarak, zaman tabanlı analiz için her bir kullanıcı için her bir satır için belirli bir süre içinde belirli bir kullanıcının ziyaret ettiği sayfa sayısını temsil eden bir dizi satır tutabilirsiniz.
+Bu senaryonun veritabanı modeli çok basit-kullanıcı etkinliği ölçüsünün tek bir tamsayı alanı ile temsil edildiği, **Pageziyaret** edildiği ve kullanıcı profilindeki temel bilgilerle birlikte yakalanmasıdır. Bunlara ek olarak, zaman tabanlı analiz için her bir kullanıcı için her bir satır için belirli bir süre içinde belirli bir kullanıcının ziyaret ettiği sayfa sayısını temsil eden bir dizi satır tutabilirsiniz.
 
 ![Şema](./media/temporal-tables/AzureTemporal1.png)
 

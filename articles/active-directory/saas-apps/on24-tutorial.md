@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
 ms.openlocfilehash: 30fd3843b50ac6b075d33e961986b94ee2496fef
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92518539"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-on24-virtual-environment-saml-connection"></a>Öğretici: ON24 sanal ortamı SAML bağlantısı ile Azure Active Directory tümleştirme
@@ -61,13 +61,13 @@ ON24 sanal ortam SAML bağlantısı 'nın Azure AD 'ye tümleştirilmesini yapı
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **ON24 sanal ortam SAML bağlantısı**yazın, sonuç panelinden **ON24 sanal ortam SAML bağlantısı** ' nı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna **ON24 sanal ortam SAML bağlantısı** yazın, sonuç panelinden **ON24 sanal ortam SAML bağlantısı** ' nı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
      ![ON24 sanal ortamı SAML Connection for Results List](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test KULLANıCıSıNA göre ON24 sanal ortamı SAML bağlantısı Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
+Bu bölümde, **Britta Simon** adlı bir test KULLANıCıSıNA göre ON24 sanal ortamı SAML bağlantısı Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve ON24 sanal ortamındaki ilgili Kullanıcı ile ilgili bir bağlantı ilişkisi SAML bağlantısı kurulması gerekir.
 
 Azure AD çoklu oturum açma 'yı ON24 sanal ortam SAML bağlantısıyla yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -188,9 +188,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.

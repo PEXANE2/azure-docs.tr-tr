@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/21/2020
 ms.custom: references_regions
 ms.openlocfilehash: d65b074385311e74444929ef74901e402e29ec03
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93241744"
 ---
 # <a name="manage-zone-redundant-high-availability-in-azure-database-for-mysql-flexible-server-preview"></a>MySQL için Azure veritabanı esnek sunucusu 'nda bölge yedekli yüksek kullanılabilirliği yönetme (Önizleme)
@@ -32,18 +32,18 @@ Bu sayfa, yüksek kullanılabilirliği nasıl etkinleştirebilirim veya devre d�
 
 Bu bölüm, özellikle de HA ile ilgili alanlar için ayrıntılar sağlar. Esnek sunucunuzu oluştururken yüksek kullanılabilirlik dağıtmak için bu adımları izleyebilirsiniz.
 
-1.  [Azure Portal](https://portal.azure.com/)esnek sunucu ' yı seçin ve **Oluştur** ' a tıklayın.  **Abonelik** , **kaynak grubu** , **sunucu adı** , **bölge** ve diğer alanlar gibi ayrıntıların nasıl doldurulması gerektiği hakkında ayrıntılı bilgi için bkz. sunucu oluşturma için nasıl yapılır belgeleri.
+1.  [Azure Portal](https://portal.azure.com/)esnek sunucu ' yı seçin ve **Oluştur**' a tıklayın.  **Abonelik**, **kaynak grubu**, **sunucu adı**, **bölge** ve diğer alanlar gibi ayrıntıların nasıl doldurulması gerektiği hakkında ayrıntılı bilgi için bkz. sunucu oluşturma için nasıl yapılır belgeleri.
 
 2.  Kullanılabilirlik seçeneğinde **bölge yedekli yüksek kullanılabilirlik** onay kutusuna tıklayın.
 
-3.  Varsayılan işlem ve depolamayı değiştirmek istiyorsanız,  **sunucuyu Yapılandır** ' a tıklayın.
+3.  Varsayılan işlem ve depolamayı değiştirmek istiyorsanız,  **sunucuyu Yapılandır**' a tıklayın.
 
 4.  Yüksek kullanılabilirlik seçeneği işaretliyse, Burstable katman seçim için kullanılamaz. **Genel amaçlı** ya da **bellek için iyileştirilmiş** işlem katmanları seçebilirsiniz.
 
     > [!IMPORTANT]
-    > * *_Genel amaçlı_* ve _*_bellek için iyileştirilmiş_*_ fiyatlandırma katmanı için yalnızca bölge yedekli yüksek kullanılabilirliğini destekliyoruz.
+    > ***Genel amaçlı** _ ve _ *_bellek için iyileştirilmiş_** fiyatlandırma katmanı için yalnızca bölge yedekli yüksek kullanılabilirliğini destekliyoruz.
 
-5.  Açılan listeden tercih ettiğiniz _ *işlem boyutu* * ' nu seçin.
+5.  Açılır menüden istediğiniz **işlem boyutunu** seçin.
 
 6.  Kayan çubuğu kullanarak GiB 'de **depolama boyutu** ' nu seçin ve **yedekleme saklama süresini** 7 gün ile 35 gün arasında seçin.   
 

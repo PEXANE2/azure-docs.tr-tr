@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: ambapat
 ms.openlocfilehash: ca5842fb268c20f8ae58eb5f683229c4ae3919f4
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93289169"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>Güvenlik duvarının ardındayken Azure Anahtar Kasası’na erişme
@@ -56,7 +56,7 @@ Anahtar Kasası yönetimi için (CRUD ve erişim ilkesi ayarı), anahtar kasası
 
 ## <a name="key-vault-operations"></a>Anahtar Kasası işlemleri
 
-Tüm anahtar kasası nesne (anahtarlar ve gizli anahtarlar) yönetimi ve şifreleme işlemleri için, anahtar kasası istemcisinin anahtar kasası uç noktasına erişmesi gerekir. Uç nokta DNS soneki, anahtar kasanızın konumuna bağlı olarak farklılık gösterir. Anahtar kasası uç noktası, aşağıdaki tabloda gösterildiği gibi *vault-name*. *region-specific-dns-suffix* biçimindedir.  
+Tüm anahtar kasası nesne (anahtarlar ve gizli anahtarlar) yönetimi ve şifreleme işlemleri için, anahtar kasası istemcisinin anahtar kasası uç noktasına erişmesi gerekir. Uç nokta DNS soneki, anahtar kasanızın konumuna bağlı olarak farklılık gösterir. Anahtar kasası uç noktası, aşağıdaki tabloda gösterildiği gibi *vault-name*.*region-specific-dns-suffix* biçimindedir.  
 
 | İşlem türü | Uç nokta:bağlantı noktası |
 | --- | --- |
@@ -65,7 +65,7 @@ Tüm anahtar kasası nesne (anahtarlar ve gizli anahtarlar) yönetimi ve şifrel
 ## <a name="ip-address-ranges"></a>IP adresi aralıkları
 
 Anahtar Kasası hizmeti, PaaS altyapısı gibi diğer Azure kaynaklarını kullanır. Bu nedenle, Anahtar Kasası hizmet uç noktalarının belirli bir zamanda sahip olacağı IP adresleri için özel bir aralık belirtmek mümkün değildir. Güvenlik duvarınız yalnızca IP adresi aralıklarını destekliyorsa, şu adreste bulunan Microsoft Azure veri merkezi IP aralıkları belgelerine başvurun:
-* [Geneldir](https://www.microsoft.com/en-us/download/details.aspx?id=56519)
+* [Genel](https://www.microsoft.com/en-us/download/details.aspx?id=56519)
 * [US Gov](https://www.microsoft.com/en-us/download/details.aspx?id=57063)
 * [Almanya](https://www.microsoft.com/en-us/download/details.aspx?id=57064)
 * [Çin](https://www.microsoft.com/en-us/download/details.aspx?id=57062)

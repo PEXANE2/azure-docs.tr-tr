@@ -12,10 +12,10 @@ ms.author: bonova
 ms.reviewer: sstein
 ms.date: 09/25/2018
 ms.openlocfilehash: 1d68163a9fba3ba3bcd4c0c0f3fb5f442296e781
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91619398"
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>Bekletme ilkesiyle zamana bağlı tablolardaki geçmiş verileri yönetme
@@ -35,7 +35,7 @@ Yukarıdaki örnekte, **ValidTo** sütununun SYSTEM_TIME döneminin sonuna karş
 
 ## <a name="how-to-configure-retention-policy"></a>Saklama ilkesini yapılandırma
 
-Zamana bağlı bir tablo için bekletme ilkesini yapılandırmadan önce, *veritabanı düzeyinde*zamana bağlı geçmiş saklama özelliğinin etkinleştirilip etkinleştirilmediğini denetleyin.
+Zamana bağlı bir tablo için bekletme ilkesini yapılandırmadan önce, *veritabanı düzeyinde* zamana bağlı geçmiş saklama özelliğinin etkinleştirilip etkinleştirilmediğini denetleyin.
 
 ```sql
 SELECT is_temporal_history_retention_enabled, name
@@ -103,8 +103,8 @@ ON T1.history_table_id = T2.object_id WHERE T1.temporal_type = 2
 
 ## <a name="how-ages-rows-are-deleted"></a>Yaş satırları nasıl silinir
 
-Temizleme işlemi, geçmiş tablosunun Dizin düzenine bağlıdır. *Yalnızca kümelenmiş dizine (B-ağacı veya columnstore) sahip geçmiş tablolarının sınırlı bekletme ilkesi yapılandırıldığını*fark etmek önemlidir. Sınırlı saklama süresine sahip tüm zamana bağlı tablolar için eski veri temizleme işlemini gerçekleştirmek üzere bir arka plan görevi oluşturulur.
-Rowstore (B-ağacı) kümelenmiş dizini için Temizleme mantığı, daha küçük öbeklerdeki eski satırı (10.000 'ye kadar) siler ve veritabanı günlüğü ve GÇ alt sistemi üzerindeki basınç en aza indirir. Temizleme mantığı gerekli B-ağacı dizinini kullanmasına karşın, saklama süresinden eski olan satırlarda silme işlemlerinin sırası en kesin garanti edilemez. Bu nedenle, *uygulamalarınızda Temizleme sırası üzerinde hiçbir bağımlılık*kullanmayın.
+Temizleme işlemi, geçmiş tablosunun Dizin düzenine bağlıdır. *Yalnızca kümelenmiş dizine (B-ağacı veya columnstore) sahip geçmiş tablolarının sınırlı bekletme ilkesi yapılandırıldığını* fark etmek önemlidir. Sınırlı saklama süresine sahip tüm zamana bağlı tablolar için eski veri temizleme işlemini gerçekleştirmek üzere bir arka plan görevi oluşturulur.
+Rowstore (B-ağacı) kümelenmiş dizini için Temizleme mantığı, daha küçük öbeklerdeki eski satırı (10.000 'ye kadar) siler ve veritabanı günlüğü ve GÇ alt sistemi üzerindeki basınç en aza indirir. Temizleme mantığı gerekli B-ağacı dizinini kullanmasına karşın, saklama süresinden eski olan satırlarda silme işlemlerinin sırası en kesin garanti edilemez. Bu nedenle, *uygulamalarınızda Temizleme sırası üzerinde hiçbir bağımlılık* kullanmayın.
 
 Kümelenmiş columnstore için temizleme görevi tüm [satır gruplarını](/sql/relational-databases/indexes/columnstore-indexes-overview) tek seferde kaldırır (genellikle 1.000.000 satır içerir), özellikle de geçmiş veriler yüksek bir hızda oluşturulduktan sonra oldukça etkilidir.
 
@@ -148,7 +148,7 @@ Yukarıdaki deyimin yürütülmesi girişimi aşağıdaki hatayla başarısız o
 
 ## <a name="querying-tables-with-retention-policy"></a>Tabloları bekletme ilkesiyle sorgulama
 
-Eski satırlar temizleme görevi tarafından *herhangi bir zamanda ve isteğe bağlı*olarak silinebildiğinden, geçici tablodaki tüm sorgular sonlu bekletme ilkesiyle eşleşen geçmiş satırları otomatik olarak filtreler.
+Eski satırlar temizleme görevi tarafından *herhangi bir zamanda ve isteğe bağlı* olarak silinebildiğinden, geçici tablodaki tüm sorgular sonlu bekletme ilkesiyle eşleşen geçmiş satırları otomatik olarak filtreler.
 
 Aşağıdaki resimde basit bir sorgu için sorgu planı gösterilmektedir:
 
@@ -168,7 +168,7 @@ Tutarsız veya beklenmedik sonuçlar elde ettiğiniz için, saklama süresinden 
 
 ## <a name="point-in-time-restore-considerations"></a>Zaman içindeki bir noktaya geri yükleme konuları
 
-[Mevcut veritabanını belirli bir noktaya geri yükleyerek](recovery-using-backups.md)yeni veritabanı oluşturduğunuzda, veritabanı düzeyinde zamana bağlı saklama devre dışıdır. (**is_temporal_history_retention_enabled** bayrak kapalı olarak ayarlanır). Bu işlevsellik, geri yükleme sırasında geçmiş tüm satırları inceleyerek, eski satırlar sorgulanmadan önce kaldırılmalarını kaygılanmadan incelemenizi sağlar. Bu işlemi, *geçmiş verileri yapılandırılan bekletme döneminin ötesinde incelemek*için kullanabilirsiniz.
+[Mevcut veritabanını belirli bir noktaya geri yükleyerek](recovery-using-backups.md)yeni veritabanı oluşturduğunuzda, veritabanı düzeyinde zamana bağlı saklama devre dışıdır. (**is_temporal_history_retention_enabled** bayrak kapalı olarak ayarlanır). Bu işlevsellik, geri yükleme sırasında geçmiş tüm satırları inceleyerek, eski satırlar sorgulanmadan önce kaldırılmalarını kaygılanmadan incelemenizi sağlar. Bu işlemi, *geçmiş verileri yapılandırılan bekletme döneminin ötesinde incelemek* için kullanabilirsiniz.
 
 Zamana bağlı bir tabloda bir ay Bekletme dönemi olduğunu varsayalım. Veritabanınız Premium hizmet katmanında oluşturulduysa, son olarak 35 güne kadar veritabanı durumu ile veritabanı kopyası oluşturabilirsiniz. Bu, geçmiş tablosunu doğrudan sorgulayarak 65 güne kadar eski olan geçmiş satırları analiz etmenize olanak tanır.
 

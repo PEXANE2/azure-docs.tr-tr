@@ -1,18 +1,18 @@
 ---
-title: Azure Otomasyonu Güncelleştirme Yönetimi Windows Update ayarlarını yapılandırma
+title: Azure Otomasyonu Güncelleştirme Yönetimi için Windows Update ayarlarını yapılandırma
 description: Bu makalede Windows Update ayarlarının Azure Otomasyonu Güncelleştirme Yönetimi ile çalışması için nasıl yapılandırılacağı açıklanır.
 services: automation
 ms.subservice: update-management
 ms.date: 05/04/2020
 ms.topic: conceptual
 ms.openlocfilehash: a1f95ca856223628974a9519b7c4811bde43965e
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92222922"
 ---
-# <a name="configure-windows-update-settings-for-azure-automation-update-management"></a>Azure Otomasyonu Güncelleştirme Yönetimi Windows Update ayarlarını yapılandırma
+# <a name="configure-windows-update-settings-for-azure-automation-update-management"></a>Azure Otomasyonu Güncelleştirme Yönetimi için Windows Update ayarlarını yapılandırma
 
 Azure Otomasyonu Güncelleştirme Yönetimi, Windows güncelleştirmelerini indirmek ve yüklemek için [Windows Update istemcisine](/windows/deployment/update/windows-update-overview) bağımlıdır. Windows Server Update Services (WSUS) veya Windows Update bağlanırken Windows Update istemcisi tarafından kullanılan belirli ayarlar vardır. Bu ayarların birçoğu, ile yönetilebilir:
 

@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: VERITAS Enterprise kasası ile tümleştirme Azure Active Directory. Cloud SSO | Microsoft Docs'
-description: Azure Active Directory ve VERITAS Enterprise Kasası arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin. Cloud SSO.
+title: 'Öğretici: VERITAS Enterprise Vault.cloud SSO ile Azure Active Directory tümleştirme | Microsoft Docs'
+description: Azure Active Directory ve VERITAS Enterprise Vault.cloud SSO arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -12,19 +12,19 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 5e777a27e793b1f4ef5489248c170824d69d615c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92517693"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-veritas-enterprise-vaultcloud-sso"></a>Öğretici: VERITAS Enterprise kasası ile tümleştirme Azure Active Directory. Cloud SSO
+# <a name="tutorial-azure-active-directory-integration-with-veritas-enterprise-vaultcloud-sso"></a>Öğretici: VERITAS Enterprise Vault.cloud SSO ile tümleştirme Azure Active Directory
 
-Bu öğreticide, VERITAS Enterprise kasasını tümleştirme hakkında bilgi edinebilirsiniz. Cloud SSO 'yu Azure Active Directory (Azure AD) ile.
-VERITAS Enterprise kasasını tümleştirme. Azure AD ile bulut SSO 'SU aşağıdaki avantajları sağlar:
+Bu öğreticide, VERITAS Enterprise Vault.cloud SSO 'yu Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
+VERITAS Enterprise Vault.cloud SSO 'yu Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 
-* Azure AD 'de, VERITAS Enterprise Kasası 'na erişimi olan bir denetim yapabilirsiniz. Cloud SSO.
-* Kullanıcılarınızın Azure AD hesaplarıyla, Veritas Enterprise kasasında otomatik olarak oturum açmasını sağlayabilirsiniz. Cloud SSO (çoklu oturum açma).
+* Azure AD 'de VERITAS Enterprise Vault.cloud SSO 'ya erişimi olan bir denetim yapabilirsiniz.
+* Kullanıcılarınızın Azure AD hesaplarıyla VERITAS Enterprise Vault.cloud SSO (çoklu oturum açma) ile otomatik olarak oturum açmasını sağlayabilirsiniz.
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
@@ -32,22 +32,22 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Azure AD tümleştirmesini VERITAS Enterprise Kasası. Cloud SSO ile yapılandırmak için aşağıdaki öğeler gereklidir:
+Azure AD tümleştirmesini VERITAS Enterprise Vault.cloud SSO ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
 * Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) alabilirsiniz
-* VERITAS Enterprise Kasası. Cloud SSO çoklu oturum açma etkin abonelik
+* VERITAS Enterprise Vault.cloud SSO çoklu oturum açma etkin aboneliği
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
 Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
-* VERITAS Enterprise Kasası. Cloud SSO, **SP** tarafından başlatılan SSO 'yu destekler
+* VERITAS Enterprise Vault.cloud SSO, **SP** tarafından başlatılan SSO 'yu destekler
 
-## <a name="adding-veritas-enterprise-vaultcloud-sso-from-the-gallery"></a>Galerideki VERITAS Enterprise Kasası. Cloud SSO 'SU ekleme
+## <a name="adding-veritas-enterprise-vaultcloud-sso-from-the-gallery"></a>Galeriden VERITAS Enterprise Vault.cloud SSO 'SU ekleme
 
-VERITAS Enterprise Kasası. Cloud SSO 'yu Azure AD 'ye tümleştirmeyi yapılandırmak için, galerideki VERITAS Enterprise Kasası. Cloud SSO ' yı yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
+VERITAS Enterprise Vault.cloud SSO 'yu Azure AD 'ye tümleştirmeyi yapılandırmak için, Galeriden VERITAS Enterprise Vault.cloud SSO 'SU ile yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
 
-**Galerideki VERITAS Enterprise Kasası. Cloud SSO 'SU eklemek için aşağıdaki adımları uygulayın:**
+**Galeriden VERITAS Enterprise Vault.cloud SSO eklemek için aşağıdaki adımları uygulayın:**
 
 1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
 
@@ -61,31 +61,31 @@ VERITAS Enterprise Kasası. Cloud SSO 'yu Azure AD 'ye tümleştirmeyi yapıland
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **VERITAS Enterprise Kasası. Cloud SSO**yazın, **VERITAS Enterprise Kasası** ' nı seçin. sonuç panelinden Cloud SSO 'yu, sonra da uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna **VERITAS enterprise Vault.Cloud SSO** yazın, sonuç panelinden **VERıTAS Enterprise Vault.Cloud SSO** ' yı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
-     ![VERITAS Enterprise Kasası. Cloud SSO, sonuçlar listesinde](common/search-new-app.png)
+     ![Sonuçlar listesinde VERITAS Enterprise Vault.cloud SSO](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, Veritas, **Simon**adlı bir test kullanıcısına bağlı olarak VERITAS Enterprise Kasası. Cloud SSO ile yapılandırıp test edersiniz.
-Çoklu oturum açma için, bir Azure AD kullanıcısı ve VERITAS Enterprise kasasındaki ilgili Kullanıcı arasındaki bağlantı ilişkisi. Cloud SSO 'nun kurulması gerekir.
+Bu bölümde, **Britta Simon** adlı bir test kullanıcısına göre verıtas ENTERPRISE Vault.Cloud SSO Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
+Çoklu oturum açma için, bir Azure AD kullanıcısı ve VERITAS Enterprise Vault.cloud SSO 'daki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
-Azure AD çoklu oturum açma 'yı VERITAS Enterprise kasası ile yapılandırmak ve test etmek için, aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
+Azure AD çoklu oturum açma 'yı VERITAS Enterprise Vault.cloud SSO ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[VERITAS Enterprise kasasını yapılandırma. Cloud SSO çoklu oturum açma](#configure-veritas-enterprise-vaultcloud-sso-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
+2. **[VERITAS Enterprise Vault.Cloud SSO 'Yu tek oturum açma yapılandırma](#configure-veritas-enterprise-vaultcloud-sso-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
-5. **[VERITAS Enterprise Kasası oluşturun. Cloud SSO test kullanıcısı](#create-veritas-enterprise-vaultcloud-sso-test-user)** -VERITAS Enterprise kasasında bir Britta Simon, kullanıcının Azure AD gösterimine bağlı olan bulut SSO 'su.
+5. Veritas Enterprise **[Vault.Cloud SSO test kullanıcısı oluşturma](#create-veritas-enterprise-vaultcloud-sso-test-user)** -kullanıcının Azure AD gösterimine bağlı olan verıtas ENTERPRISE Vault.Cloud SSO 'Da Britta Simon 'a sahip olmak için.
 6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
 
 Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
 
-Azure AD çoklu oturum açmayı VERITAS Enterprise Kasası. Cloud SSO ile yapılandırmak için aşağıdaki adımları uygulayın:
+Azure AD çoklu oturum açmayı VERITAS Enterprise Vault.cloud SSO ile yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com/), **VERITAS Enterprise KASASı. Cloud SSO** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
+1. [Azure Portal](https://portal.azure.com/), **VERıTAS Enterprise Vault.Cloud SSO** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
 
     ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
@@ -99,7 +99,7 @@ Azure AD çoklu oturum açmayı VERITAS Enterprise Kasası. Cloud SSO ile yapıl
 
 4. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![VERITAS Enterprise Kasası. Cloud SSO etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/sp-identifier-reply.png)
+    ![VERITAS Enterprise Vault.cloud SSO etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/sp-identifier-reply.png)
 
     a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://personal.ap.archive.veritas.com/CID=<CUSTOMERID>`
 
@@ -120,13 +120,13 @@ Azure AD çoklu oturum açmayı VERITAS Enterprise Kasası. Cloud SSO ile yapıl
     | Asya Pasifik| `https://auth.syd.archivecloud.net`|
 
     > [!NOTE]
-    > Bu değer gerçek değil. Bu değeri gerçek Sign-On URL 'siyle güncelleştirin. Bu değeri almak için [VERITAS Enterprise Kasası. Cloud SSO istemci desteği ekibine](https://www.veritas.com/support/.html) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değer gerçek değil. Bu değeri gerçek Sign-On URL 'siyle güncelleştirin. Bu değeri almak için [VERITAS Enterprise Vault.Cloud SSO istemci destek ekibine](https://www.veritas.com/support/.html) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
 5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-6. **VERITAS Enterprise Kasası ayarlama. Cloud SSO** bölümünde, uygun URL 'leri gereksiniminize göre kopyalayın.
+6. **VERITAS Enterprise Vault.Cloud SSO 'Yu ayarla** bölümünde, uygun URL 'leri gereksiniminize göre kopyalayın.
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
@@ -136,9 +136,9 @@ Azure AD çoklu oturum açmayı VERITAS Enterprise Kasası. Cloud SSO ile yapıl
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-veritas-enterprise-vaultcloud-sso-single-sign-on"></a>VERITAS Enterprise kasasını yapılandırma. Cloud SSO tek Sign-On
+### <a name="configure-veritas-enterprise-vaultcloud-sso-single-sign-on"></a>Veritas Enterprise Vault.cloud SSO tek Sign-On yapılandırma
 
-**VERITAS Enterprise kasasında** çoklu oturum açma 'yı yapılandırmak için. Cloud SSO tarafında, indirilen **sertifikayı (Base64)** ve Azure Portal ' den Veritas Enterprise Kasası 'Na uygun şekilde kopyalanmış URL 'leri GÖNDERMENIZ gerekir. [bulut SSO destek ekibi](https://www.veritas.com/support/.html). Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+**VERITAS enterprise Vault.Cloud SSO** tarafında çoklu oturum açmayı yapılandırmak için, indirilen **sertifikayı (Base64)** ve Azure Portal ' den [Veritas Enterprise Vault.Cloud SSO destek ekibine](https://www.veritas.com/support/.html)uygun olarak kopyalanmış URL 'leri göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
@@ -156,7 +156,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
     b. **Kullanıcı adı** alanına yazın brittasimon@yourcompanydomain.extension . Örneğin, BrittaSimon@contoso.com
 
@@ -166,15 +166,15 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Veritas Enterprise Kasası 'na erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
+Bu bölümde, Veritas Enterprise Vault.cloud SSO 'ya erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **VERıTAS Enterprise Kasası. Cloud SSO**' yı seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **VERITAS Enterprise Vault.Cloud SSO**' yı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **VERITAS Enterprise Kasası. Cloud SSO**' yı seçin.
+2. Uygulamalar listesinde, **VERITAS Enterprise Vault.Cloud SSO**' yı seçin.
 
-    ![Uygulamalar listesindeki VERITAS Enterprise Kasası. Cloud SSO bağlantısı](common/all-applications.png)
+    ![Uygulamalar listesindeki VERITAS Enterprise Vault.cloud SSO bağlantısı](common/all-applications.png)
 
 3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
 
@@ -190,15 +190,15 @@ Bu bölümde, Veritas Enterprise Kasası 'na erişim vererek Azure çoklu oturum
 
 7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="create-veritas-enterprise-vaultcloud-sso-test-user"></a>VERITAS Enterprise Kasası oluşturma. Cloud SSO test kullanıcısı
+### <a name="create-veritas-enterprise-vaultcloud-sso-test-user"></a>VERITAS Enterprise Vault.cloud SSO test kullanıcısı oluşturma
 
-Bu bölümde, VERITAS Enterprise kasasında Britta Simon adlı bir Kullanıcı oluşturacaksınız. Cloud SSO. VERITAS Enterprise kasası ile çalışma [. Cloud SSO destek ekibi](https://www.veritas.com/support/.html) , kullanıcıları VERITAS Enterprise kasasında ekleme. Cloud SSO platformu. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, VERITAS Enterprise Vault.cloud SSO 'da Britta Simon adlı bir Kullanıcı oluşturacaksınız. VERITAS Enterprise Vault.cloud SSO platformunda kullanıcıları eklemek için [VERITAS enterprise Vault.Cloud SSO destek ekibi](https://www.veritas.com/support/.html) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde VERITAS Enterprise Kasası. Cloud SSO kutucuğuna tıkladığınızda otomatik olarak VERITAS Enterprise kasasında oturum açmanız gerekir. SSO 'yu ayarladığınız bulut SSO 'SU. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+Erişim panelinde VERITAS Enterprise Vault.cloud SSO kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız VERITAS Enterprise Vault.cloud SSO 'su için otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 

@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
 ms.openlocfilehash: 2d69427f9f11a47cedeccb4b1da38b770952f029
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93240775"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql-flexible-server-preview"></a>MySQL için Azure veritabanı esnek sunucusu 'nda yedekleme ve geri yükleme (Önizleme)
@@ -18,7 +18,7 @@ ms.locfileid: "93240775"
 > [!IMPORTANT] 
 > MySQL için Azure veritabanı-esnek sunucu şu anda genel önizlemededir.
 
-MySQL için Azure veritabanı esnek sunucu, otomatik olarak sunucu yedeklemeleri oluşturur ve bunları bölge içinde yerel olarak yedekli depolama alanında güvenli bir şekilde depolar. Sunucunuzu belirli bir noktaya geri yüklemek için yedeklemeler kullanılabilir. Yedekleme ve geri yükleme, verilerinizi yanlışlıkla bozulmasından veya silmekten koruyan bir iş sürekliliği stratejisinin önemli bir parçasıdır.
+MySQL için Azure veritabanı esnek sunucu, otomatik olarak sunucu yedeklemeleri oluşturur ve bunları bölge içinde yerel olarak yedekli depolama alanında güvenli bir şekilde depolar. Sunucunuzu belirli bir noktaya geri yüklemek için yedeklemeler kullanılabilir. Yedekleme ve geri yükleme her iş sürekliliği stratejisinin temel parçalarıdır çünkü bunlar verilerinizi yanlışlıkla bozulmalara veya silmelere karşı korur.
 
 ## <a name="backup-overview"></a>Backup’a genel bakış
 
@@ -68,8 +68,8 @@ Bir noktadan noktaya geri yükleme, birden çok senaryoda faydalıdır. Yaygın 
 
 [Azure Portal](how-to-restore-server-portal.md)aracılığıyla en son geri yükleme noktası ve özel geri yükleme noktası arasında seçim yapabilirsiniz.
 
--   **En son geri yükleme noktası** : en son geri yükleme noktası, sunucuyu kaynak sunucuda gerçekleştirilen son yedeklemeye geri yüklemenize yardımcı olur. Geri yükleme için zaman damgası portalda da görüntülenir. Bu seçenek, sunucuyu en güncel duruma hızlıca geri yüklemek için yararlıdır.
--   **Özel geri yükleme noktası** : Bu, bu esnek sunucu için tanımlanan Bekletme dönemi içinde herhangi bir noktayı seçmenizi sağlar. Bu seçenek, bir kullanıcı hatasından kurtarmak üzere sunucunun kesin bir noktada geri yüklenmesi için yararlıdır.
+-   **En son geri yükleme noktası**: en son geri yükleme noktası, sunucuyu kaynak sunucuda gerçekleştirilen son yedeklemeye geri yüklemenize yardımcı olur. Geri yükleme için zaman damgası portalda da görüntülenir. Bu seçenek, sunucuyu en güncel duruma hızlıca geri yüklemek için yararlıdır.
+-   **Özel geri yükleme noktası**: Bu, bu esnek sunucu için tanımlanan Bekletme dönemi içinde herhangi bir noktayı seçmenizi sağlar. Bu seçenek, bir kullanıcı hatasından kurtarmak üzere sunucunun kesin bir noktada geri yüklenmesi için yararlıdır.
 
 Tahmini kurtarma süresi, veritabanı boyutları, işlem günlüğü yedekleme boyutu, SKU 'nun işlem boyutu ve geri yükleme saati gibi çeşitli faktörlere bağlıdır. İşlem günlüğü kurtarma işlemi, geri yükleme işleminin bir parçası olarak en çok zaman alır. Geri yükleme süresi tam veya fark anlık görüntü yedekleme zamanlamalarına yakınsa, işlem günlüğü uygulaması en düşük olduğundan geri yüklemeler daha hızlıdır. Sunucunuza yönelik doğru kurtarma süresini tahmin etmek için, ortamınızda çok sayıda ortama özel değişken olduğu için test etmenizi kesinlikle öneririz.
 

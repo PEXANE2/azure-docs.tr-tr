@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 10/22/2020
 ms.author: sudbalas
 ms.openlocfilehash: c55c87cd8ab1b2cd1dbaf2c877eb341744d822ef
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93287467"
 ---
 # <a name="azure-key-vault-backup"></a>Azure Key Vault yedekleme
@@ -67,11 +67,11 @@ Azure portal kullanarak nesneleri yedeklemek ve geri yüklemek için bu bölümd
     ![Anahtar kasasındaki anahtarlar ayarının ve bir nesnenin nerede seçileceğini gösteren ekran görüntüsü.](../media/backup-1.png)
 
 4. Nesneyi seçin.
-5. **Yedeklemeyi indir** ' i seçin.
+5. **Yedeklemeyi indir**' i seçin.
 
     ![Anahtar kasasında yedeği Indir düğmesinin nerede seçileceğini gösteren ekran görüntüsü.](../media/backup-2.png)
     
-6. **İndir** 'i seçin.
+6. **İndir**'i seçin.
 
     ![Anahtar kasasında Indir düğmesinin nerede seçileceğini gösteren ekran görüntüsü.](../media/backup-3.png)
     
@@ -82,12 +82,12 @@ Azure portal kullanarak nesneleri yedeklemek ve geri yüklemek için bu bölümd
 1. Azure portala gidin.
 2. Anahtar kasanızı seçin.
 3. Geri yüklemek istediğiniz nesne türüne (gizli, anahtar veya sertifika) gidin.
-4. **Yedeği geri yükle** ' yi seçin.
+4. **Yedeği geri yükle**' yi seçin.
 
     ![Anahtar kasasında yedeklemenin geri yükleme seçimini gösteren ekran görüntüsü.](../media/backup-4.png)
     
 5. Şifrelenmiş blob 'u depoladığınız konuma gidin.
-6. **Tamam** ’ı seçin.
+6. **Tamam**’ı seçin.
 
 ## <a name="back-up-and-restore-from-the-azure-cli"></a>Azure CLı 'dan yedekleme ve geri yükleme
 

@@ -15,10 +15,10 @@ ms.date: 10/15/2020
 ms.author: hahamil
 ms.reviewer: marsma
 ms.openlocfilehash: f3d4ec8db89e9bebfdcd594e842a6c19d3d66d54
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100104102"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-msal"></a>Nasıl yapılır: MSAL kullanarak Android üzerinde uygulamalar arası SSO etkinleştirme
@@ -81,7 +81,7 @@ Bir cihazda zaten yüklü bir aracı uygulaması yoksa, MSAL, uygulamanın bir b
 
 Bir aracı bir cihaza yüklendiğinde, sonraki tüm etkileşimli Belirteç istekleri (öğesine çağrılar `acquireToken()` ), msal tarafından yerel olarak değil, aracı tarafından işlenir. Daha önce MSAL için kullanılabilir olan tüm SSO durumları, aracıda kullanılamaz. Sonuç olarak, kullanıcının yeniden kimlik doğrulaması yapması veya cihaz tarafından bilinen mevcut hesapların listesinden bir hesap seçmeniz gerekir.
 
-Bir aracı yüklemek için kullanıcının yeniden oturum açması gerekmez. Yalnızca kullanıcının bir sorunu çözmesi gerektiğinde, bir `MsalUiRequiredException` sonraki istek aracıya gider. `MsalUiRequiredException` çeşitli nedenlerle oluşturulabilir ve etkileşimli olarak çözülmesi gerekir. Örneğin:
+Bir aracı yüklemek için kullanıcının yeniden oturum açması gerekmez. Yalnızca kullanıcının bir sorunu çözmesi gerektiğinde, bir `MsalUiRequiredException` sonraki istek aracıya gider. `MsalUiRequiredException` çeşitli nedenlerle oluşturulabilir ve etkileşimli olarak çözülmesi gerekir. Örnek:
 
 - Kullanıcı, hesabıyla ilişkili parolayı değiştirdi.
 - Kullanıcının hesabı artık bir koşullu erişim ilkesini karşılamamaktadır.
