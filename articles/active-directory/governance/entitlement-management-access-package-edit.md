@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 22aa97c6e627c2072636ca2e079877ff0f608b68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87798809"
 ---
 # <a name="hide-or-delete-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde erişim paketini gizleme veya silme
@@ -35,7 +35,7 @@ Bir erişim paketinin **gizli** ayarını değiştirmek için bu adımları izle
 
 **Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
 
-1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
+1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik** Yönetimi ' ne tıklayın.
 
 1. Sol menüde, **erişim paketleri** ' ne tıklayın ve ardından erişim paketini açın.
 
@@ -43,9 +43,9 @@ Bir erişim paketinin **gizli** ayarını değiştirmek için bu adımları izle
 
 1. **Gizli** ayarını ayarlayın.
 
-    **Hayır**olarak ayarlanırsa, erişim paketi kullanıcının erişim portalında listelenir.
+    **Hayır** olarak ayarlanırsa, erişim paketi kullanıcının erişim portalında listelenir.
 
-    **Evet**olarak ayarlanırsa, erişim paketi kullanıcının erişim portalı 'nda listelenmez. Bir kullanıcının erişim paketine doğrudan **erişim portalı bağlantısı** varsa, erişim paketini görüntüleyebilecekleri tek yöntem. Daha fazla bilgi için bkz. [erişim paketi istemek için bağlantıyı paylaşma](entitlement-management-access-package-settings.md).
+    **Evet** olarak ayarlanırsa, erişim paketi kullanıcının erişim portalı 'nda listelenmez. Bir kullanıcının erişim paketine doğrudan **erişim portalı bağlantısı** varsa, erişim paketini görüntüleyebilecekleri tek yöntem. Daha fazla bilgi için bkz. [erişim paketi istemek için bağlantıyı paylaşma](entitlement-management-access-package-settings.md).
 
 ## <a name="delete-an-access-package"></a>Erişim paketini silme
 
@@ -53,7 +53,7 @@ Erişim paketi yalnızca etkin kullanıcı atamaları yoksa silinebilir. Bir eri
 
 **Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
 
-1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
+1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik** Yönetimi ' ne tıklayın.
 
 1. Sol menüde, **erişim paketleri** ' ne tıklayın ve ardından erişim paketini açın.
 

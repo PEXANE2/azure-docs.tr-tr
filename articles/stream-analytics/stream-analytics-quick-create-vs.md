@@ -7,10 +7,10 @@ ms.date: 06/11/2019
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.openlocfilehash: 7a02d0914ae111d6e2e00493fe27613e27d836b1
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98012368"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>Hızlı başlangıç: Visual Studio 'Yu kullanarak Azure Stream Analytics işi oluşturma
@@ -24,7 +24,7 @@ Bu hızlı başlangıçta Visual Studio için Azure Stream Analytics araçların
 
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-* [Azure Portal](https://portal.azure.com/) oturum açın.
+* [Azure portalında](https://portal.azure.com/) oturum açın.
 
 * Visual Studio 2019, Visual Studio 2015 veya Visual Studio 2013 Güncelleştirme 4 'i yükler. Enterprise (Ultimate/Premium), Professional ve Community sürümleri desteklenir. Express sürümü desteklenmez.
 
@@ -34,7 +34,7 @@ Bu hızlı başlangıçta Visual Studio için Azure Stream Analytics araçların
 
 Stream Analytics işini tanımlamadan önce, daha sonra iş girişi olarak yapılandırılmış olan verileri hazırlamanız gerekir. İş için gereken giriş verilerini hazırlamak için aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 2. IoT Hub **nesnelerin interneti kaynak oluştur**' u seçin  >    >  .
 
@@ -112,7 +112,7 @@ Azure Stream Analytics projesine dahil edilen öğelere dikkat edin.
 
    |**Ayar**  |**Önerilen değer**  |**Açıklama**   |
    |---------|---------|---------|
-   |Girdi Diğer Adı  |  Girdi   |  İşin girdisini tanımlamak için bir ad girin.   |
+   |Girdi Diğer Adı  |  Giriş   |  İşin girdisini tanımlamak için bir ad girin.   |
    |Kaynak Türü   |  Veri Akışı |  Uygun giriş kaynağını seçin: Veri Akışı veya Başvuru Verileri.   |
    |Kaynak  |  IoT Hub |  Uygun giriş kaynağını seçin.   |
    |Kaynak  | Geçerli hesaptaki veri kaynağını seçin | Verileri el ile girin veya var olan bir hesabı seçin.   |

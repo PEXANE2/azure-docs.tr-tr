@@ -1,5 +1,5 @@
 ---
-title: Azure Blob depolama için maliyetleri planlayın ve yönetin
+title: Azure Blob depolama maliyetlerini planlama ve yönetme
 description: Azure portal ' de maliyet analizini kullanarak Azure Blob depolama için maliyetleri nasıl planlayacağınızı ve yöneteceğinizi öğrenin.
 services: storage
 author: normesta
@@ -10,13 +10,13 @@ ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
 ms.openlocfilehash: 0bad4637f13bbcf02047416499e4f82fdc53eb4f
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98601306"
 ---
-# <a name="plan-and-manage-costs-for-azure-blob-storage"></a>Azure Blob depolama için maliyetleri planlayın ve yönetin
+# <a name="plan-and-manage-costs-for-azure-blob-storage"></a>Azure Blob depolama maliyetlerini planlama ve yönetme
 
 Bu makale, Azure Blob depolama için maliyetleri planlayıp yönetmenize yardımcı olur. İlk olarak, Azure fiyatlandırma hesaplayıcısını kullanarak maliyetleri tahmin edin. Depolama hesabınızı oluşturduktan sonra, yalnızca ihtiyacınız olanlar için ödeme yapmak üzere hesabı iyileştirin. Maliyet yönetimi özelliklerini kullanarak bütçeleri ayarlayın ve maliyetleri izleyin. Ayrıca Tahmini maliyetleri gözden geçirebilir ve hareket etmek isteyebileceğiniz yerleri belirlemek için harcama eğilimlerini izleyebilirsiniz.
 
@@ -88,7 +88,7 @@ Maliyet analizini kullandığınızda, Azure depolama maliyetlerini grafik ve ta
 
 Azure depolama maliyetlerini maliyet analizi 'nde görüntülemek için:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure portal](https://portal.azure.com) oturum açın.
 
 2. **Maliyet yönetimi + faturalandırma** penceresini açın, menüden **maliyet yönetimi** ' ni seçin ve ardından **Maliyet Analizi**' ni seçin. Daha sonra **kapsam** açılan listesinden belirli bir aboneliğin kapsamını değiştirebilirsiniz.
 

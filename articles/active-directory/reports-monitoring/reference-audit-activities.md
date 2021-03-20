@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 56f9976faf2a803e747bce8b851a3555e6d746b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89231155"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Azure AD denetim etkinliği başvurusu
@@ -32,11 +32,11 @@ Azure AD'nin raporlama mimarisi aşağıdaki bileşenlerden oluşur:
 
 - **Etkinlik raporları** 
     - [Oturum açma](concept-sign-ins.md) işlemleri – yönetilen uygulamaların kullanımı ve Kullanıcı oturum açma etkinlikleri hakkında bilgi sağlar
-    - [Denetim günlükleri](concept-audit-logs.md) - Azure AD içindeki çeşitli özellikler tarafından yapılan tüm değişiklikler için günlükler aracılığıyla izlenebilirlik sağlar. 
+    - [Denetim günlükleri](concept-audit-logs.md) -Azure AD içindeki çeşitli özelliklerle yapılan tüm değişiklikler için Günlükler aracılığıyla izlenebilirlik sağlar. 
     
 - **Güvenlik raporları** 
-    - [Riskli oturum açma işlemleri](../identity-protection/overview-identity-protection.md) - Riskli oturum açma işlemi bir kullanıcı hesabının meşru sahibi olmayan bir kişi tarafından gerçekleştirilmiş olabilecek oturum açma girişiminin göstergesidir. 
-    - [Riskli oldukları belirlenen kullanıcılar](../identity-protection/overview-identity-protection.md) - Riskli kullanıcı, güvenliği tehlikeye girmiş olabilecek bir kullanıcı hesabının göstergesidir. 
+    - [Riskli oturum](../identity-protection/overview-identity-protection.md) açma işlemleri-riskli oturum açma, bir kullanıcı hesabının meşru sahibi olmayan birisi tarafından gerçekleştirilmiş olabilecek oturum açma girişimine yönelik bir göstergedir. 
+    - [Risk için Işaretlenen kullanıcılar](../identity-protection/overview-identity-protection.md) -riskli bir Kullanıcı, tehlikeye girmiş olabilecek bir kullanıcı hesabı göstergesidir. 
 
 Bu makalede, denetim günlüklerinize kaydedilebilecek denetim etkinlikleri listelenir.
 

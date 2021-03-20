@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
 ms.openlocfilehash: 5cf4dc5123040fd2af8efe54153867a8709fe1ef
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97652237"
 ---
-# <a name="vmware-to-azure-disaster-recovery-architecture"></a>VMware'den Azure'a olağanüstü durum kurtarma mimarisi
+# <a name="vmware-to-azure-disaster-recovery-architecture"></a>VMware 'den Azure 'a olağanüstü durum kurtarma mimarisi
 
 Bu makalede, [Azure Site Recovery](site-recovery-overview.md) hizmetini kullanarak şirket Içi bir VMware sitesi ve Azure arasında VMware sanal makinelerini (VM 'ler) kullanarak bir olağanüstü durum kurtarma çoğaltması, yük devretme ve kurtarma işlemi gerçekleştirdiğinizde kullanılan mimari ve süreçler açıklanmaktadır.
 
@@ -89,7 +89,7 @@ Giden bağlantıyı denetlemek için URL tabanlı bir güvenlik duvarı proxy 's
 
 Azure VM çoğaltmasını etkinleştirdiğinizde, varsayılan olarak Site Recovery tabloda özetlenen varsayılan ayarlarla yeni bir çoğaltma ilkesi oluşturur.
 
-**İlke ayarı** | **Ayrıntılar** | **Varsayılan**
+**İlke ayarı** | **Ayrıntılar** | **Varsayılanını**
 --- | --- | ---
 **Kurtarma noktası bekletme** | Site Recovery kurtarma noktalarını ne kadar süreyle tutacağını belirtir | 24 saat
 **Uygulamayla tutarlı anlık görüntü sıklığı** | Site Recovery ne sıklıkta uygulamayla tutarlı bir anlık görüntü alır. | Her dört saatte bir

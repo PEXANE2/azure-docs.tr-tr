@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 7195a126938deabf542e6fa3e52b72c2efdddac2
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92515228"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-recognize"></a>Öğretici: tanıma sahip Azure Active Directory tümleştirme
@@ -61,13 +61,13 @@ Tanılamayı Azure AD 'ye yönelik olarak yapılandırmak için, Galeriden yöne
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Recognize**yazın, sonuç panelinden **Recognize** ' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **Recognize** yazın, sonuç panelinden **Recognize** ' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
      ![Sonuçlar listesinde tanı](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre tanıma ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre tanıma ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve tanılamada ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
 Azure AD çoklu oturum açmayı tanıma ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -97,7 +97,7 @@ Azure AD çoklu oturum açmayı tanıma ile yapılandırmak için aşağıdaki a
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. **Temel SAML yapılandırması** bölümünde, **hizmet sağlayıcısı meta verileri dosyanız**varsa, aşağıdaki adımları uygulayın:
+4. **Temel SAML yapılandırması** bölümünde, **hizmet sağlayıcısı meta verileri dosyanız** varsa, aşağıdaki adımları uygulayın:
 
     >[!NOTE]
     >**Hizmet sağlayıcı meta veri dosyasını** öğreticinin **tek oturum açma tanıma ' yı yapılandırma** bölümünden alacaksınız.
@@ -149,7 +149,7 @@ Azure AD çoklu oturum açmayı tanıma ile yapılandırmak için aşağıdaki a
    
     ![Ekran görüntüsü, tanımlanan değerleri girebileceğiniz, S S O ayarlarını gösterir.](./media/recognize-tutorial/tutorial_recognize_002.png)
     
-    a. **SSO 'Yu etkinleştirmek**için **Açık**seçeneğini belirleyin.
+    a. **SSO 'Yu etkinleştirmek** için **Açık** seçeneğini belirleyin.
 
     b. **IDP VARLıK kimliği** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının** değerini yapıştırın.
     
@@ -161,7 +161,7 @@ Azure AD çoklu oturum açmayı tanıma ile yapılandırmak için aşağıdaki a
     
     f. **Ayarları Kaydet** düğmesine tıklayın. 
 
-5. **SSO ayarları** bölümünün yanında, URL 'Yi **hizmet sağlayıcısı meta veri URL 'si**altına kopyalayın.
+5. **SSO ayarları** bölümünün yanında, URL 'Yi **hizmet sağlayıcısı meta veri URL 'si** altına kopyalayın.
    
     ![Ekran görüntüsünde, hizmet sağlayıcısı meta verilerini kopyalayabileceğiniz notlar gösterilir.](./media/recognize-tutorial/tutorial_recognize_003.png)
 
@@ -185,7 +185,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
     b. **Kullanıcı adı** alanına yazın brittasimon@yourcompanydomain.extension . Örneğin, BrittaSimon@contoso.com
 

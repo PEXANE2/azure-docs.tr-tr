@@ -4,10 +4,10 @@ description: Bir Premium kayıt defterindeki belirli depolara kapsamlı, görün
 ms.topic: article
 ms.date: 02/04/2021
 ms.openlocfilehash: ceec69d746f77ea7a23bc70d029c8b3736e7f292
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99988267"
 ---
 # <a name="create-a-token-with-repository-scoped-permissions"></a>Depo kapsamlı izinlerle belirteç oluşturma
@@ -341,7 +341,7 @@ az acr repository show-tags \
 
 ### <a name="list-scope-maps"></a>Kapsam haritalarını Listele
 
-Bir kayıt defterinde yapılandırılmış tüm kapsam haritalarını listelemek için [az ACR Scope-Map List][az-acr-scope-map-list] komutunu veya portaldaki **kapsam haritaları (Önizleme)** ekranını kullanın. Örneğin:
+Bir kayıt defterinde yapılandırılmış tüm kapsam haritalarını listelemek için [az ACR Scope-Map List][az-acr-scope-map-list] komutunu veya portaldaki **kapsam haritaları (Önizleme)** ekranını kullanın. Örnek:
 
 ```azurecli
 az acr scope-map list \
@@ -361,14 +361,14 @@ MyScopeMap           UserDefined    2019-11-15T21:17:34Z  Sample scope map
 
 ### <a name="show-token-details"></a>Belirteç ayrıntılarını göster
 
-Durum ve parola süre sonu tarihleri gibi bir belirtecin ayrıntılarını görüntülemek için [az ACR Token Show][az-acr-token-show] komutunu çalıştırın veya portalda **belirteçler (Önizleme)** ekranında belirteci seçin. Örneğin:
+Durum ve parola süre sonu tarihleri gibi bir belirtecin ayrıntılarını görüntülemek için [az ACR Token Show][az-acr-token-show] komutunu çalıştırın veya portalda **belirteçler (Önizleme)** ekranında belirteci seçin. Örnek:
 
 ```azurecli
 az acr scope-map show \
   --name MyScopeMap --registry myregistry
 ```
 
-Bir kayıt defterinde yapılandırılan tüm belirteçleri listelemek için [az ACR Token List][az-acr-token-list] komutunu veya portalda **belirteçler (Önizleme)** ekranını kullanın. Örneğin:
+Bir kayıt defterinde yapılandırılan tüm belirteçleri listelemek için [az ACR Token List][az-acr-token-list] komutunu veya portalda **belirteçler (Önizleme)** ekranını kullanın. Örnek:
 
 ```azurecli
 az acr token list --registry myregistry --output table
@@ -390,7 +390,7 @@ Belirteç parolası oluşturmak için Azure portal kullanmak için, bu makalenin
 
 ### <a name="update-token-with-new-scope-map"></a>Belirteci yeni kapsam eşlemesiyle Güncelleştir
 
-Farklı bir kapsam eşlemesine sahip bir belirteci güncelleştirmek istiyorsanız [az ACR Token Update][az-acr-token-update] ' i çalıştırın ve yeni kapsam haritasını belirtin. Örneğin:
+Farklı bir kapsam eşlemesine sahip bir belirteci güncelleştirmek istiyorsanız [az ACR Token Update][az-acr-token-update] ' i çalıştırın ve yeni kapsam haritasını belirtin. Örnek:
 
 ```azurecli
 az acr token update --name MyToken --registry myregistry \

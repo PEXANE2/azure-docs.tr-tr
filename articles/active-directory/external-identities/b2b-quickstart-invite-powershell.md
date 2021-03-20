@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b0faaf0394bddc2e443afc194bbd0ecef72625f9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87906135"
 ---
 # <a name="quickstart-add-a-guest-user-with-powershell"></a>Hızlı Başlangıç: PowerShell ile konuk kullanıcı ekleme
@@ -91,7 +91,7 @@ Connect-AzureAD -TenantDomain "<Tenant_Domain_Name>"
    ```powershell
    Get-AzureADUser -Filter "UserType eq 'Guest'"
    ```
-3. Davet ettiğiniz kullanıcının, bir Kullanıcı asıl adı (UPN) ile *emadresi*#EXT # etki biçiminde listelendiğinden emin olmak için çıktıyı denetleyin \@ *domain*. Örneğin, *sanda_fabrikam. com # ext # \@ contoso.onmicrosoft.com*, burada contoso.onmicrosoft.com, davetleri gönderdiğiniz kuruluştur.
+3. Davet ettiğiniz kullanıcının, bir Kullanıcı asıl adı (UPN) ile *emadresi*#EXT # etki biçiminde listelendiğinden emin olmak için çıktıyı denetleyin \@ . Örneğin, *sanda_fabrikam. com # ext # \@ contoso.onmicrosoft.com*, burada contoso.onmicrosoft.com, davetleri gönderdiğiniz kuruluştur.
 
    ![Eklenen konuk kullanıcıyı gösteren PowerShell çıktısı](media/quickstart-invite-powershell/powershell-guest-user-added.png)
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/23/2020
 ms.author: jeedes
 ms.openlocfilehash: 50cf98a2646d88360ea9d48d2d84d98ad237a099
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92514971"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-retail-zipline"></a>Öğretici: perakende Zipline ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -54,7 +54,7 @@ Perakende Zipline 'ın Azure AD ile tümleştirilmesini yapılandırmak için, g
 
 ## <a name="configure-and-test-azure-ad-sso-for-retail-zipline"></a>Retail Zipline için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu perakende Zipline ile yapılandırın ve test edin. SSO 'nun çalışması için, Retail Zipline 'da bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu perakende Zipline ile yapılandırın ve test edin. SSO 'nun çalışması için, Retail Zipline 'da bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu perakende Zipline ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
@@ -94,7 +94,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Perakende Zipline uygulaması, yukarıdakine ek olarak, aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
     
-    | Adı |  Kaynak özniteliği|
+    | Name |  Kaynak özniteliği|
     | ----------------- | --------- |
     | employee_number | User. EmployeeID |
     | e-posta | Kullanıcı. Mail |

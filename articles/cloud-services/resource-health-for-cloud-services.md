@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 37294e681066eb27ace69bcacee3a813b750b8eb
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98743517"
 ---
 # <a name="resource-health-check-rhc-support-for-azure-cloud-services-classic"></a>Azure Cloud Services için Kaynak Durumu denetimi (RHC) desteği (klasik)
@@ -50,7 +50,7 @@ Bilinmiyor, bulut hizmeti dağıtımının toplu sistem durumunun belirlenemedi�
 Rol örnekleri temelde sanal makineler olduğundan ve VM 'Ler için sistem durumu denetimi rol örnekleri için yeniden kullanıldığından, VM terimi rol örneklerini temsil etmek için kullanılır. 
 
 ## <a name="cloud-services-deployment-level-annotations--their-meanings"></a>Cloud Services (dağıtım düzeyi) ek açıklamaları anlamları &
-| Ek Açıklama | Açıklama | 
+| Ek Açıklama | Description | 
 | --- | --- | 
 | Kullanılabilir| Bu bulut hizmeti dağıtımını etkileyen bilinen bir Azure platformu sorunu yok |
 | Bilinmiyor | Şu anda bu bulut hizmeti dağıtımının sistem durumunu belirleyemiyoruz | 
@@ -63,7 +63,7 @@ Rol örnekleri temelde sanal makineler olduğundan ve VM 'Ler için sistem durum
 | Bilinmiyor ve etkilenmiş olabilir | Şu anda bu bulut hizmeti dağıtımının sistem durumunu belirleyemedik. Bunun nedeni, bu sanal makineyi etkileyebilecek devam eden bir Azure hizmet kesintisi olabilir ve bu durum, kesinti çözümlendiğinde otomatik olarak kurtarılır |
 
 ## <a name="cloud-services-role-instance-level-annotations--their-meanings"></a>Cloud Services (rol örneği düzeyi) ek açıklamaları anlamları &
-| Ek Açıklama | Açıklama | 
+| Ek Açıklama | Description | 
 | --- | --- | 
 | Kullanılabilir | Bu sanal makineyi etkileyen bilinen bir Azure platformu sorunu yok | 
 | Bilinmiyor | Şu anda bu sanal makinenin durumunu belirleyemedik |

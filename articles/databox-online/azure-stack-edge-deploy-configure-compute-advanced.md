@@ -10,10 +10,10 @@ ms.date: 01/06/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro for advanced deployment flow so I can use it to transform the data before sending it to Azure.
 ms.openlocfilehash: 8946dfca9a416009effb45cad1e81348dd900f98
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97968300"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-pro-for-advanced-deployment-flow"></a>Öğretici: gelişmiş dağıtım akışı için Azure Stack Edge Pro ile veri dönüştürme
@@ -68,11 +68,11 @@ Azure Stack Edge Pro ortamınızda işlem yapılandırmak için bir IoT Hub kayn
     |Abonelik     |IoT Hub kaynağınız için bir abonelik seçin. Azure Stack Edge kaynağı tarafından kullanılan aboneliğin aynısını seçebilirsiniz.        |
     |Kaynak grubu     |IoT Hub kaynağınız için kaynak grubu için bir ad girin. Azure Stack Edge kaynağı tarafından kullanılan kaynak grubunu seçebilirsiniz.         |
     |IoT Hub     | **Yeni** veya **mevcut** seçeneklerinden birini belirleyin. <br> Varsayılan olarak IoT kaynağı oluşturulurken Standart katmanı (S1) kullanılır. Bir ücretsiz katman IoT kaynağı kullanmak için kaynağı oluşturun ve sonra da mevcut kaynağı seçin.      |
-    |Ad     |Varsayılan adı kabul edin veya IoT Hub kaynağınız için bir ad girin.         |
+    |Name     |Varsayılan adı kabul edin veya IoT Hub kaynağınız için bir ad girin.         |
 
     ![İşlem 3 ' ü kullanmaya başlama](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-3.png)
 
-4. **Gözden geçir + oluştur**' u seçin. IoT Hub kaynak oluşturma birkaç dakika sürer. IoT Hub kaynağı oluşturulduktan sonra, **genel bakış** , IoT Edge hizmetinin çalıştığını göstermek için güncelleştirilir. 
+4. **Gözden geçir + Oluştur**’u seçin. IoT Hub kaynak oluşturma birkaç dakika sürer. IoT Hub kaynağı oluşturulduktan sonra, **genel bakış** , IoT Edge hizmetinin çalıştığını göstermek için güncelleştirilir. 
 
     Sınır cihazında IoT Edge hizmeti yapılandırıldığında, iki cihaz oluşturur: bir IoT cihazı ve bir IoT Edge cihaz. Her iki cihaz de IoT Hub kaynağında görüntülenebilir. Bu IoT Edge cihazında aynı zamanda bir IoT Edge çalışma zamanı çalışıyor. Bu noktada, IoT Edge cihazınız için yalnızca Linux platformu kullanılabilir.
 

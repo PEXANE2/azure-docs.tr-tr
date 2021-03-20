@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
 ms.openlocfilehash: c0c939a6a8323dfdfafddb46ccdb7d7ef3dd2f2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89653025"
 ---
 # <a name="application-gateway-http-settings-configuration"></a>Application Gateway HTTP ayarları yapılandırması
@@ -76,7 +76,7 @@ Bu ayar, istek arka uca iletildiğinde kullanılacak isteğe bağlı bir özel i
 
 ## <a name="use-for-app-service"></a>App Service için kullanın
 
-Bu yalnızca Azure App Service arka ucu için gereken iki ayarı seçen bir UI kısayoludur. **Ana bilgisayar adının arka uç adresinden seçim**yapmasına izin verebilir ve henüz yoksa yeni bir özel araştırma oluşturur. (Daha fazla bilgi için bu makalenin [arka uç adres ayarından konak adını seçin](#pick-host-name-from-back-end-address)bölümüne bakın.) Yeni bir araştırma oluşturulur ve araştırma üst bilgisi arka uç üyesinin adresinden çekilir.
+Bu yalnızca Azure App Service arka ucu için gereken iki ayarı seçen bir UI kısayoludur. **Ana bilgisayar adının arka uç adresinden seçim** yapmasına izin verebilir ve henüz yoksa yeni bir özel araştırma oluşturur. (Daha fazla bilgi için bu makalenin [arka uç adres ayarından konak adını seçin](#pick-host-name-from-back-end-address)bölümüne bakın.) Yeni bir araştırma oluşturulur ve araştırma üst bilgisi arka uç üyesinin adresinden çekilir.
 
 ## <a name="use-custom-probe"></a>Özel araştırma kullan
 

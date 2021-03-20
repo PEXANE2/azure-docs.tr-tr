@@ -8,17 +8,17 @@ ms.topic: overview
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: 2512092c69390ce604c26ab6c5dd000afafc7c05
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91360897"
 ---
 # <a name="what-is-internet-analyzer-preview"></a>Internet Çözümleyicisi nedir? (Önizleme)
 
 Internet Çözümleyicisi, ağ altyapısı değişikliklerinin müşterilerinizin performansını nasıl etkilediğini test etmek için bir istemci tarafı ölçüm platformudur. Şirket içinden Azure'a geçerken veya yeni bir Azure hizmetini değerlendirirken, Internet Analyzer kullanıcılarınızın verilerinden ve Microsoft'un zengin analiz özelliklerinden edindiğiniz bilgilerle geçiş öncesinde Azure'ın yardımıyla ağ mimarinizi daha iyi anlamanızı ve iyileştirmenizi sağlar.
 
-Internet Çözümleyicisi, son kullanıcılarınızın seçtiğiniz ağ hedefleri kümesine yönelik gecikme süresini ölçmek için Web uygulamanızda Embedded küçük bir JavaScript istemcisi kullanır, _uç noktaları_çağırıyoruz. Internet Çözümleyicisi, altyapı ve müşteri gereksinimleriniz geliştikçe çeşitli senaryoları değerlendirmenizi sağlayan birden çok yan yana test ayarlamanıza olanak sağlar. Internet Çözümleyicisi, son kullanıcılarınız için güvenilir performans kararları vermek için hem kolaylık hem de esneklik sağlayan özel ve önceden yapılandırılmış uç noktalar sağlar. 
+Internet Çözümleyicisi, son kullanıcılarınızın seçtiğiniz ağ hedefleri kümesine yönelik gecikme süresini ölçmek için Web uygulamanızda Embedded küçük bir JavaScript istemcisi kullanır, _uç noktaları_ çağırıyoruz. Internet Çözümleyicisi, altyapı ve müşteri gereksinimleriniz geliştikçe çeşitli senaryoları değerlendirmenizi sağlayan birden çok yan yana test ayarlamanıza olanak sağlar. Internet Çözümleyicisi, son kullanıcılarınız için güvenilir performans kararları vermek için hem kolaylık hem de esneklik sağlayan özel ve önceden yapılandırılmış uç noktalar sağlar. 
 
 
 > [!IMPORTANT]
@@ -36,14 +36,14 @@ Kendi özel uç noktanızı yapılandırabilir ya da önceden yapılandırılmı
 Önizleme sırasında, aşağıdaki önceden yapılandırılmış uç noktalar kullanılabilir: 
 
 * **Azure bölgeleri**
-    * Brezilya Güney
+    * Güney Brezilya
     * Orta Hindistan
     * Central US
     * Doğu Asya
     * Doğu ABD
     * Batı Japonya
     * Kuzey Avrupa
-    * Güney Afrika Kuzey
+    * Güney Afrika - Kuzey
     * Güneydoğu Asya 
     * BAE Kuzey
     * Batı Birleşik Krallık  

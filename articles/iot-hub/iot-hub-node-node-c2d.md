@@ -14,10 +14,10 @@ ms.custom:
 - mqtt
 - devx-track-js
 ms.openlocfilehash: e398138f12c38e5235a0004679d9574dbde607db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91446878"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-nodejs"></a>IoT Hub ile buluttan cihaza iletileri gönderme (Node.js)
@@ -40,13 +40,13 @@ Bu öğreticinin sonunda, iki Node.js konsol uygulaması çalıştırırsınız:
 
 * **SimulatedDevice**, bir cihazdan Telemetriyi, IoT Hub 'ınıza bağlanan ve buluttan cihaza iletileri alan bir [IoT Hub 'ına bir cihaz aracılığıyla göndererek](quickstart-send-telemetry-node.md)oluşturulan bir uygulama sürümüdür.
 
-* IoT Hub aracılığıyla sanal cihaz uygulamasına buluttan cihaza ileti gönderen **Sendcloudtodevicemessage**ve sonra teslim onayını alır.
+* IoT Hub aracılığıyla sanal cihaz uygulamasına buluttan cihaza ileti gönderen **Sendcloudtodevicemessage** ve sonra teslim onayını alır.
 
 > [!NOTE]
 > IoT Hub, Azure IoT cihaz SDK 'Ları aracılığıyla birçok cihaz platformu ve dili (C, Java, Python ve JavaScript dahil) için SDK desteğine sahiptir. Cihazınızı Bu öğreticinin koduna bağlama ve genellikle Azure IoT Hub 'e yönelik adım adım yönergeler için bkz. [Azure IoT Geliştirici Merkezi](https://azure.microsoft.com/develop/iot).
 >
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Node.js 10.0. x veya üzeri sürümü. [Geliştirme ortamınızı hazırlama](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) Bu öğretici Için Node.js Windows veya Linux 'ta nasıl yükleneceğini açıklar.
 
@@ -84,7 +84,7 @@ AMQP ve HTTPS ile, ancak MQTT ile cihaz de şunları yapabilir:
 * İleti, gelecekteki tüketim için cihaz sırasındaki iletiyi saklamaya IoT Hub neden olan bir iletiyi iptal edin.
 * İletiyi, cihaz sırasından kalıcı olarak kaldıran bir iletiyi reddedin.
 
-Cihazın iletiyi tamamlamasını, çıkarmasını veya reddetmesini önleyen bir sorun oluşursa IoT Hub, sabit bir zaman aşımı süresinden sonra iletiyi teslim için yeniden kuyruğa alır. Bu nedenle, cihaz uygulamasındaki ileti işleme mantığı *ıdempotent*olmalıdır, böylece aynı iletiyi birden çok kez almak aynı sonucu üretir.
+Cihazın iletiyi tamamlamasını, çıkarmasını veya reddetmesini önleyen bir sorun oluşursa IoT Hub, sabit bir zaman aşımı süresinden sonra iletiyi teslim için yeniden kuyruğa alır. Bu nedenle, cihaz uygulamasındaki ileti işleme mantığı *ıdempotent* olmalıdır, böylece aynı iletiyi birden çok kez almak aynı sonucu üretir.
 
 Bulut-cihaz ileti yaşam döngüsünün ayrıntıları dahil IoT Hub, buluttan cihaza iletileri nasıl işlediği hakkında daha ayrıntılı bilgi için bkz. [IoT Hub 'ından buluttan cihaza Ileti gönderme](iot-hub-devguide-messages-c2d.md).
   
@@ -102,7 +102,7 @@ Bu makalede, [bir cihazdan IoT Hub 'ına telemetri gönderme](quickstart-send-te
 
 Bu bölümde, sanal cihaz uygulamasına buluttan cihaza iletiler gönderen bir Node.js konsol uygulaması oluşturacaksınız. [Bir cihazdan IoT Hub 'ına bir cihazdan Telemetriyi gönder](quickstart-send-telemetry-node.md) hızlı başlangıç bölümünde eklediğiniz CIHAZıN cihaz kimliği gereklidir. [IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)bölümünde daha önce kopyaladığınız IoT Hub bağlantı dizesine de ihtiyacınız vardır.
 
-1. **Sendcloudtodevicemessage**adlı boş bir klasör oluşturun. Komut isteminizde aşağıdaki komutu kullanarak **sendcloudtodevicemessage** klasöründe package.jsbir dosya oluşturun. Tüm varsayılanları kabul edin:
+1. **Sendcloudtodevicemessage** adlı boş bir klasör oluşturun. Komut isteminizde aşağıdaki komutu kullanarak **sendcloudtodevicemessage** klasöründe package.jsbir dosya oluşturun. Tüm varsayılanları kabul edin:
 
     ```shell
     npm init

@@ -11,10 +11,10 @@ ms.date: 03/07/2018
 ms.author: liydu
 ms.custom: devx-track-csharp
 ms.openlocfilehash: af1685f6455c0642800cba7dd604fcc836bcd7a4
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92147900"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Tweet için sallayın, sallayın, Azure Işlevleri ile Twitter iletisi alın
@@ -50,10 +50,10 @@ Proje klasörünü açarak başlayın.
 
 ### <a name="open-the-arduino-examples-folder"></a>Arduino örnekleri klasörünü açın
 
-Sol taraftaki **Arduino örnekleri** bölümünü GENIŞLETIN, **mxyongaAZ3166 > AzureIoT için örneklere**gidin ve **ShakeShake**' yi seçin. Proje klasörünü görüntüleyen yeni bir VS Code penceresi açılır. MXYONGAAZ3166 bölümünü göremiyorsanız, cihazınızın doğru bir şekilde bağlı olduğundan emin olun ve Visual Studio Code yeniden başlatın.  
+Sol taraftaki **Arduino örnekleri** bölümünü GENIŞLETIN, **mxyongaAZ3166 > AzureIoT için örneklere** gidin ve **ShakeShake**' yi seçin. Proje klasörünü görüntüleyen yeni bir VS Code penceresi açılır. MXYONGAAZ3166 bölümünü göremiyorsanız, cihazınızın doğru bir şekilde bağlı olduğundan emin olun ve Visual Studio Code yeniden başlatın.  
 ![mini çözüm-örnekler](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/vscode_examples.png)
 
-Örnek projeyi komut paletinden da açabilirsiniz. `Ctrl+Shift+P`Komut paletini açmak için (MacOS:) seçeneğine tıklayın `Cmd+Shift+P` , **Arduino**yazın ve ardından **Arduino: örnekleri**bulun ve seçin.
+Örnek projeyi komut paletinden da açabilirsiniz. `Ctrl+Shift+P`Komut paletini açmak için (MacOS:) seçeneğine tıklayın `Cmd+Shift+P` , **Arduino** yazın ve ardından **Arduino: örnekleri** bulun ve seçin.
 
 ## <a name="provision-azure-services"></a>Azure hizmetlerini sağlama
 
@@ -101,7 +101,7 @@ Sonra, cihaz kodunu derleyin ve karşıya yükleyin.
 
 3. Bu ekranda DevKit KIMLIĞI ve ' Configuration ' görüntülenir.
 
-### <a name="macos"></a>macOS
+### <a name="macos"></a>Mac OS
 
 1. DevKit 'ı yapılandırma moduna alın:
 

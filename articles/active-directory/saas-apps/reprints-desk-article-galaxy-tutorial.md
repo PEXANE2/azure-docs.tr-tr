@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/21/2020
 ms.author: jeedes
 ms.openlocfilehash: e28281b783c66f8dbb0bc4842679eeec43755508
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92515011"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-reprints-desk---article-galaxy"></a>Öğretici: yeniden yazdırma sırasında çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory-article Galaxy
@@ -59,7 +59,7 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-reprints-desk---article-galaxy"></a>Yeniden yazdırma sırasında Azure AD çoklu oturum açma yapılandırma ve test etme-makalesi Galaxy
 
-**B. Simon**adlı bir test kullanıcısı kullanarak, BIR Azure AD SSO 'Yu yeniden yazdırır ve bu şekilde çalışma masası makalesi Galaxy 'i yapılandırın SSO 'nun çalışması için, bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak, BIR Azure AD SSO 'Yu yeniden yazdırır ve bu şekilde çalışma masası makalesi Galaxy 'i yapılandırın SSO 'nun çalışması için, bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu yeniden yazdırma masası Galaxy ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -89,7 +89,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Bu makalenin yanı sıra, çalışma masası makalesi Galaxy uygulaması, daha fazla özniteliğin aşağıda gösterilen SAML yanıtına geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Adı | Kaynak özniteliği|
+    | Name | Kaynak özniteliği|
     | ------------ | --------- |
     | FirstName | Kullanıcı. |
     | Soyadı | User. soyadı |

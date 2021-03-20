@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: reference
 ms.date: 08/10/2020
 ms.openlocfilehash: 07f966c7b0be542f848f1a0a4eaf2b5549735b4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91336250"
 ---
 # <a name="server-parameters"></a>Sunucu parametreleri
@@ -53,7 +53,7 @@ Dağıtılmış kilitlenme algılamayla ilgili işlemenin sunucu günlüğünde 
 
 #### <a name="citusdistributed_deadlock_detection_factor-floating-point"></a>citus. dağıtılmış \_ kilitlenme \_ algılama \_ faktörü (kayan nokta)
 
-Dağıtılmış kilitlenmeleri denetlemeden önce beklenecek süreyi ayarlar. Bu değer özellikle bekleme süresi, PostgreSQL \' s [kilitlenme \_ zaman aşımı](https://www.postgresql.org/docs/current/static/runtime-config-locks.html) ayarıyla çarpılacak. Varsayılan değer: `2`. Değeri, `-1` Dağıtılmış kilitlenme algılamasını devre dışı bırakır.
+Dağıtılmış kilitlenmeleri denetlemeden önce beklenecek süreyi ayarlar. Bu değer özellikle bekleme süresi, PostgreSQL \' s [kilitlenme \_ zaman aşımı](https://www.postgresql.org/docs/current/static/runtime-config-locks.html) ayarıyla çarpılacak. `2` varsayılan değerdir. Değeri, `-1` Dağıtılmış kilitlenme algılamasını devre dışı bırakır.
 
 #### <a name="citusnode_connection_timeout-integer"></a>citus. Node \_ bağlantısı \_ zaman aşımı (tamsayı)
 

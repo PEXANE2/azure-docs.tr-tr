@@ -7,10 +7,10 @@ ms.date: 08/18/2017
 ms.author: masnider
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 2a7dedea2937c9cafb4216da3628aa1360ad6993
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92172998"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Ölçümlerle Service Fabric kaynak tüketimini yönetme ve yükleme
@@ -25,7 +25,7 @@ Bellek, disk ve CPU kullanımı gibi şeyler, ölçüm örnekleridir. Bu ölçü
   - ReplicaCount-düğümdeki toplam durum bilgisi olan çoğaltma sayısı
   - Düğüm üzerindeki tüm hizmet nesnelerinin sayısı (durum bilgisiz ve durum bilgisi olmayan)
 
-| Ölçüm | Durum bilgisi olmayan örnek yükü | Durum bilgisi olan Ikincil yük | Durum bilgisi olan birincil yük | Ağırlık |
+| Metric | Durum bilgisi olmayan örnek yükü | Durum bilgisi olan Ikincil yük | Durum bilgisi olan birincil yük | Ağırlık |
 | --- | --- | --- | --- | --- |
 | PrimaryCount |0 |0 |1 |Yüksek |
 | ReplicaCount |0 |1 |1 |Orta |
@@ -138,11 +138,11 @@ Anımsatıcı olarak: yalnızca varsayılan ölçümleri kullanmak istiyorsanız
 ## <a name="load"></a>Yükleme
 Ölçümlerin tanımlanmasıyla bir bütün yük temsil edilir. *Yük* , belirli bir düğümdeki bazı hizmet örneği veya çoğaltma tarafından tüketilen bir metriğin ne kadarının tüketildiğini yükler. Yükleme, neredeyse her noktada yapılandırılabilir. Örnek:
 
-  - Yükleme, bir hizmet oluşturulduğunda tanımlanabilir. Bu tür yük yapılandırması _varsayılan yükleme_olarak adlandırılır.
-  - Hizmet için varsayılan yüklemeler dahil ölçüm bilgileri, hizmet oluşturulduktan sonra güncelleştirilebilen olabilir. Bu ölçüm güncelleştirmesi _bir hizmet güncelleştirilerek_yapılır.
-  - Belirli bir bölümün yükleri bu hizmet için varsayılan değerlere sıfırlanabilir. Bu ölçüm güncelleştirmesi, _bölüm yükünü sıfırlama_olarak adlandırılır.
-  - Yük, çalışma zamanında dinamik olarak bir hizmet nesnesi başına rapor edilebilir. Bu ölçüm güncelleştirmesine _Raporlama yükü_denir.
-  - Bölümün çoğaltmaları veya örnekleri için yük, yapı API çağrısı aracılığıyla yük değerleriyle de yapılandırılabilir. Bu ölçüm güncelleştirmesine _bir bölüm için raporlama yükü_denir.
+  - Yükleme, bir hizmet oluşturulduğunda tanımlanabilir. Bu tür yük yapılandırması _varsayılan yükleme_ olarak adlandırılır.
+  - Hizmet için varsayılan yüklemeler dahil ölçüm bilgileri, hizmet oluşturulduktan sonra güncelleştirilebilen olabilir. Bu ölçüm güncelleştirmesi _bir hizmet güncelleştirilerek_ yapılır.
+  - Belirli bir bölümün yükleri bu hizmet için varsayılan değerlere sıfırlanabilir. Bu ölçüm güncelleştirmesi, _bölüm yükünü sıfırlama_ olarak adlandırılır.
+  - Yük, çalışma zamanında dinamik olarak bir hizmet nesnesi başına rapor edilebilir. Bu ölçüm güncelleştirmesine _Raporlama yükü_ denir.
+  - Bölümün çoğaltmaları veya örnekleri için yük, yapı API çağrısı aracılığıyla yük değerleriyle de yapılandırılabilir. Bu ölçüm güncelleştirmesine _bir bölüm için raporlama yükü_ denir.
 
 Bu stratejilerin hepsi ömrü boyunca aynı hizmet içinde kullanılabilir.
 
@@ -236,7 +236,7 @@ OperationResult<UpdatePartitionLoadResultList> updatePartitionLoadResults =
         cancellationToken);
 ```
 
-Bu örnekte, _53df3d7f-5471-403b-B736-bde6ad584f42_bölümünde bildirilen son yükün güncelleştirilmesini gerçekleştirirsiniz. Ölçüm _CustomMetricName0_ için birincil çoğaltma yükü 100 değeriyle güncelleştirilir. Aynı zamanda, _NodeName0_düğümünde bulunan belirli bir ikincil çoğaltma için aynı ölçüm için yük, 200 değeriyle güncelleştirilir.
+Bu örnekte, _53df3d7f-5471-403b-B736-bde6ad584f42_ bölümünde bildirilen son yükün güncelleştirilmesini gerçekleştirirsiniz. Ölçüm _CustomMetricName0_ için birincil çoğaltma yükü 100 değeriyle güncelleştirilir. Aynı zamanda, _NodeName0_ düğümünde bulunan belirli bir ikincil çoğaltma için aynı ölçüm için yük, 200 değeriyle güncelleştirilir.
 
 ### <a name="updating-a-services-metric-configuration"></a>Hizmetin ölçüm yapılandırmasını güncelleştirme
 Hizmetle ilişkili ölçümlerin listesi ve bu ölçümlerin özellikleri, hizmet canlı olduğu sürece dinamik olarak güncellenebilir. Bu, deneme ve esneklik sağlar. Bunun yararlı olması için bazı örnekler şunlardır:

@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: ccff5b4dc6ed5a571e25ab0569b9fa92674e1340
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88140743"
 ---
 # <a name="provision-nodes-for-azure-vmware-solution-by-cloudsimple"></a>CloudSimple tarafından Azure VMware çözümü için düğüm sağlama
@@ -25,12 +25,12 @@ Azure portal düğümleri sağlayın. Daha sonra, CloudSimple özel bulut ortam�
 
 ## <a name="add-a-node-to-your-cloudsimple-private-cloud"></a>CloudSimple özel buluta bir düğüm ekleyin
 
-1. **Tüm hizmetler**’i seçin.
-2. **Cloudsimple düğümleri**için arama yapın.
+1. **Tüm Hizmetler**’i seçin.
+2. **Cloudsimple düğümleri** için arama yapın.
 
    ![CloudSimple düğümlerinde arama yapın](media/create-cloudsimple-node-search.png)
 
-3. **Cloudsimple düğümlerini**seçin.
+3. **Cloudsimple düğümlerini** seçin.
 4. Düğüm oluşturmak için **Ekle** ' ye tıklayın.
 
     ![CloudSimple düğümleri ekleme](media/create-cloudsimple-node-add.png)
@@ -42,7 +42,7 @@ Azure portal düğümleri sağlayın. Daha sonra, CloudSimple özel bulut ortam�
 9. Düğüm kaynaklarını barındıracak ayrılmış konumu seçin.
 10. [Düğüm türünü](cloudsimple-node.md)seçin.
 11. Sağlanacak düğüm sayısını seçin.
-12. **Gözden geçir + oluştur**' u seçin.
+12. **Gözden geçir + Oluştur**’u seçin.
 13. Ayarları gözden geçirin. Ayarları değiştirmek için **önceki**'ni tıklatın.
 14. **Oluştur**’u seçin.
 

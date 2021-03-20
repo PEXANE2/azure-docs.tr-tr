@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 08/07/2020
 ms.openlocfilehash: 23af7b3f7cfd5ec0531c5cac73cf8a334ef4aa62
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99096449"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>IoT Edge modül teklifi oluşturma
@@ -48,7 +48,7 @@ Teklifi oluşturmak için **Oluştur** ' u seçin ve devam edin.
 
 **Teklif genel bakış** sayfasında, bu teklifi yayımlamak için gereken adımların görsel bir gösterimi gösterilir (hem tamamlandı hem de yakında) ve her adımın tamamlanması gereken süre.
 
-Bu sayfa, yaptığınız seçime bağlı olarak bu teklif üzerinde işlem gerçekleştirme bağlantılarını içerir. Örneğin:
+Bu sayfa, yaptığınız seçime bağlı olarak bu teklif üzerinde işlem gerçekleştirme bağlantılarını içerir. Örnek:
 
 - Teklif bir taslak-silme taslağı tekliftir
 - Teklif canlı ise, [teklifi satmaya](update-existing-offer.md#stop-selling-an-offer-or-plan)

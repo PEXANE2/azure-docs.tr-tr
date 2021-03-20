@@ -12,10 +12,10 @@ ms.author: joke
 ms.reviewer: sstein
 ms.date: 03/13/2019
 ms.openlocfilehash: e8c222d7cdcdb203cd323cde38818e5b51643159
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91443372"
 ---
 # <a name="migrate-to-the-new-elastic-database-jobs-preview"></a>Yeni Elastik Veritabanı işleri geçir (Önizleme)
@@ -26,7 +26,7 @@ ms.locfileid: "91443372"
 Esnek veritabanı Işlerinin mevcut bir müşteri barındırılan sürümüne sahipseniz, en son sürüme kolayca geçiş yapmak için geçiş cmdlet 'leri ve komut dosyaları sağlanır.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Elastik Veritabanı işleri yükseltilen sürümünde, geçiş sırasında kullanılmak üzere yeni bir PowerShell cmdlet 'leri kümesi vardır. Bu yeni cmdlet 'ler, tüm mevcut iş kimlik bilgilerinizi, hedefleri (veritabanları, sunucular, özel koleksiyonlar dahil), iş Tetikleyicileri, iş zamanlamaları, iş içerikleri ve işleri yeni bir elastik Iş aracısına aktarır.
 
@@ -46,7 +46,7 @@ Find-Package PowerShellGet -RequiredVersion 1.6.5 | Install-Package -Force
 # Restart your powershell session with administrative access
 
 # Places Az.Sql preview cmdlets side by side with existing Az.Sql version
-Install-Module -Name Az.Sql -RequiredVersion 1.1.1-preview -AllowPrerelease
+Install-Module -Name Az.Sql -RequiredVersion 1.1.1-preview -AllowPrerelease
 
 # Import the Az.Sql module
 Import-Module Az.Sql -RequiredVersion 1.1.1
@@ -91,7 +91,7 @@ Use-AzureSqlJobConnection -CurrentAzureSubscription -Credential (Get-Credential)
 
 ## <a name="migration"></a>Geçiş
 
-Artık hem eski hem de yeni elastik Işler cmdlet 'leri başlatıldığına göre, iş kimlik bilgilerinizi, hedeflerinizi ve işlerinizi yeni *iş veritabanına*geçirin.
+Artık hem eski hem de yeni elastik Işler cmdlet 'leri başlatıldığına göre, iş kimlik bilgilerinizi, hedeflerinizi ve işlerinizi yeni *iş veritabanına* geçirin.
 
 ### <a name="setup"></a>Kurulum
 

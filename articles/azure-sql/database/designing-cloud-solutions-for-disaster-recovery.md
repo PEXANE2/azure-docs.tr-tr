@@ -13,10 +13,10 @@ ms.author: sashan
 ms.reviewer: sstein
 ms.date: 07/28/2020
 ms.openlocfilehash: be632ba06edc858e7eadcd6e57a4f7769f69f2cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91321688"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>Azure SQL veritabanı 'nı kullanarak küresel olarak kullanılabilir hizmetler tasarlama
@@ -36,7 +36,7 @@ Bu senaryoda, uygulamalar aşağıdaki özelliklere sahiptir:
 * Gecikme ve trafik maliyetini azaltmak için Web katmanı ve veri katmanının birlikte bulunması gerekir
 * Temelde, kapalı kalma süresi bu uygulamalar için veri kaybına kıyasla daha yüksek bir iş riskidir
 
-Bu durumda, uygulama dağıtım topolojisi, tüm uygulama bileşenlerinin birlikte yük devri yapması gerektiğinde bölgesel olağanüstü durumları işlemek için iyileştirilmiştir. Aşağıdaki diyagramda bu topoloji gösterilmektedir. Coğrafi artıklık için, uygulamanın kaynakları A ve B bölgesine dağıtılır. Ancak, bölge B 'deki kaynaklar başarısız olana kadar kullanılmaz. Veritabanı bağlantısı, çoğaltma ve yük devretme yönetimi için iki bölge arasında bir yük devretme grubu yapılandırılır. Her iki bölgedeki Web hizmeti, okuma-yazma dinleyicisi ** &lt; yük devretmesi-Group-name &gt; . Database.Windows.net** (1) yoluyla veritabanına erişecek şekilde yapılandırılmıştır. Azure Traffic Manager, [Öncelik yönlendirme yöntemini](../../traffic-manager/traffic-manager-configure-priority-routing-method.md) (2) kullanacak şekilde ayarlanmıştır.  
+Bu durumda, uygulama dağıtım topolojisi, tüm uygulama bileşenlerinin birlikte yük devri yapması gerektiğinde bölgesel olağanüstü durumları işlemek için iyileştirilmiştir. Aşağıdaki diyagramda bu topoloji gösterilmektedir. Coğrafi artıklık için, uygulamanın kaynakları A ve B bölgesine dağıtılır. Ancak, bölge B 'deki kaynaklar başarısız olana kadar kullanılmaz. Veritabanı bağlantısı, çoğaltma ve yük devretme yönetimi için iki bölge arasında bir yük devretme grubu yapılandırılır. Her iki bölgedeki Web hizmeti, okuma-yazma dinleyicisi **&lt; yük devretmesi-Group-name &gt; . Database.Windows.net** (1) yoluyla veritabanına erişecek şekilde yapılandırılmıştır. Azure Traffic Manager, [Öncelik yönlendirme yöntemini](../../traffic-manager/traffic-manager-configure-priority-routing-method.md) (2) kullanacak şekilde ayarlanmıştır.  
 
 > [!NOTE]
 > [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) , bu makale boyunca yalnızca çizim amaçlarıyla kullanılır. Öncelik yönlendirme yöntemini destekleyen herhangi bir yük dengeleme çözümünü kullanabilirsiniz.
@@ -101,7 +101,7 @@ B bölgesinde bir kesinti olursa Traffic Manager, B bölgesinde Web-App-2 bitiş
 
 Kesinti azaltıldıktan sonra, ikincil veritabanı hemen birincil ile eşitlenir ve salt okuma dinleyicisi B bölgesinde ikincil veritabanına geri getirilir. Birincil öğesinin eşitleme performansı sırasında eşitlenmesi gereken veri miktarına bağlı olarak biraz etkilenebilir.
 
-Bu tasarım deseninin çeşitli **avantajları**vardır:
+Bu tasarım deseninin çeşitli **avantajları** vardır:
 
 * Geçici kesintiler sırasında veri kaybını önler.
 * Kesinti süresi, yalnızca ne kadar hızlı Traffic Manager bağlantı hatasını algıladığına bağlıdır ve bu yapılandırılabilir.
@@ -117,9 +117,9 @@ Bu senaryoda, uygulama aşağıdaki özelliklere sahiptir:
 * Verilere yazma erişimi, kullanıcıların çoğunluğu için aynı coğrafya içinde desteklenmelidir
 * Son Kullanıcı deneyimi için okuma gecikmesi kritiktir
 
-Bu gereksinimleri karşılamak için, Kullanıcı cihazının, veri tarama, analiz vb. gibi salt okuma işlemleri için aynı coğrafya 'da dağıtılan uygulamaya **her zaman** bağlandığından emin olmanız gerekir. OLTP işlemleri **zaman**içinde aynı coğrafya içinde işlenir. Örneğin, OLTP işlemlerinin gün içinde aynı coğrafya 'da işlendiği, ancak kapalı saatlerde farklı bir Coğrafya içinde işlenebilecekleri zaman içinde. Son Kullanıcı etkinliği çoğunlukla çalışma saatlerinde gerçekleşdiğinde, çoğu kullanıcının çoğu için en iyi performansı garanti edebilirsiniz. Aşağıdaki diyagramda bu topoloji gösterilmektedir.
+Bu gereksinimleri karşılamak için, Kullanıcı cihazının, veri tarama, analiz vb. gibi salt okuma işlemleri için aynı coğrafya 'da dağıtılan uygulamaya **her zaman** bağlandığından emin olmanız gerekir. OLTP işlemleri **zaman** içinde aynı coğrafya içinde işlenir. Örneğin, OLTP işlemlerinin gün içinde aynı coğrafya 'da işlendiği, ancak kapalı saatlerde farklı bir Coğrafya içinde işlenebilecekleri zaman içinde. Son Kullanıcı etkinliği çoğunlukla çalışma saatlerinde gerçekleşdiğinde, çoğu kullanıcının çoğu için en iyi performansı garanti edebilirsiniz. Aşağıdaki diyagramda bu topoloji gösterilmektedir.
 
-Uygulamanın kaynakları, önemli kullanım talebi olan her bir Coğrafya üzerinde dağıtılmalıdır. Örneğin, uygulamanız Birleşik Devletler etkin olarak kullanılıyorsa, Avrupa Birliği ve Güney Doğu Asya, uygulamanın tüm bu coğrafi ormallara dağıtılması gerekir. Birincil veritabanı, çalışma saatlerinin sonunda bir Coğrafya 'dan bir sonrakine dinamik olarak yerleştirilmelidir. Bu yöntem "Güneş izle" olarak adlandırılır. OLTP iş yükü, her zaman okuma-yazma dinleyicisi ** &lt; yük devretmesi-grup-adı &gt; . Database.Windows.net** (1) yoluyla veritabanına bağlanır. Salt okuma iş yükü, veritabanı sunucusu uç nokta ** &lt; sunucusu-adı &gt; . Database.Windows.net** (2) kullanarak doğrudan yerel veritabanına bağlanır. Traffic Manager, [performans yönlendirme yöntemiyle](../../traffic-manager/traffic-manager-configure-performance-routing-method.md)yapılandırılır. Son Kullanıcı cihazının en yakın bölgede Web hizmetine bağlı olmasını sağlar. Traffic Manager her Web hizmeti uç noktası (3) için uç nokta izleme etkinleştirilmiş olarak ayarlanmalıdır.
+Uygulamanın kaynakları, önemli kullanım talebi olan her bir Coğrafya üzerinde dağıtılmalıdır. Örneğin, uygulamanız Birleşik Devletler etkin olarak kullanılıyorsa, Avrupa Birliği ve Güney Doğu Asya, uygulamanın tüm bu coğrafi ormallara dağıtılması gerekir. Birincil veritabanı, çalışma saatlerinin sonunda bir Coğrafya 'dan bir sonrakine dinamik olarak yerleştirilmelidir. Bu yöntem "Güneş izle" olarak adlandırılır. OLTP iş yükü, her zaman okuma-yazma dinleyicisi **&lt; yük devretmesi-grup-adı &gt; . Database.Windows.net** (1) yoluyla veritabanına bağlanır. Salt okuma iş yükü, veritabanı sunucusu uç nokta **&lt; sunucusu-adı &gt; . Database.Windows.net** (2) kullanarak doğrudan yerel veritabanına bağlanır. Traffic Manager, [performans yönlendirme yöntemiyle](../../traffic-manager/traffic-manager-configure-performance-routing-method.md)yapılandırılır. Son Kullanıcı cihazının en yakın bölgede Web hizmetine bağlı olmasını sağlar. Traffic Manager her Web hizmeti uç noktası (3) için uç nokta izleme etkinleştirilmiş olarak ayarlanmalıdır.
 
 > [!NOTE]
 > Yük devretme grubu yapılandırması, yük devretme için hangi bölgenin kullanıldığını tanımlar. Yeni birincil konum farklı bir Coğrafya içinde olduğundan, etkilenen bölge yeniden çevrimiçi olana kadar hem OLTP hem de salt okuma iş yükleri için yük devretme sonuçları daha uzun gecikme süresine sahiptir.
@@ -150,7 +150,7 @@ Bu tasarımın başlıca **avantajları** şunlardır:
 * Okuma-yazma uygulaması iş yükü, her Coğrafya 'daki en yüksek Etkinliğin süresi boyunca en yakın bölgedeki verilere erişir
 * Uygulama birden çok bölgeye dağıtıldığından, önemli kapalı kalma süresi olmadan bölgelerden birinin kaybedilmesi devam edebilir.
 
-Ancak bazı **dengeler**vardır:
+Ancak bazı **dengeler** vardır:
 
 * Bölgesel bir kesinti, Coğrafya 'nın daha uzun bir gecikmeyle etkilenmesine neden olur. Okuma-yazma ve salt okuma iş yükleri, uygulama tarafından farklı bir Coğrafya içinde sunulur.
 * Salt okuma iş yükleri her bölgede farklı bir uç noktasına bağlanmalıdır.

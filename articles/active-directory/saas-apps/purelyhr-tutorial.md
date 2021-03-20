@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 344e0c142b905558bffbf339c8e7a29c92113c23
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92515194"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-purelyhr"></a>Öğretici: PurelyHR ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -55,7 +55,7 @@ PurelyHR 'ın Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-purelyhr"></a>PurelyHR için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Porelyhr Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve PurelyHR içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Porelyhr Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve PurelyHR içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu PurelyHR ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -127,7 +127,7 @@ Bu bölümde, PurelyHR 'a erişim vererek Azure çoklu oturum açma özelliğini
 
 ## <a name="configure-purelyhr-sso"></a>PurelyHR SSO 'yu yapılandırma
 
-1. PurelyHR içindeki yapılandırmayı otomatikleştirmek için, **uzantıyı yüklemek**üzere **uygulamalarımı güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
+1. PurelyHR içindeki yapılandırmayı otomatikleştirmek için, **uzantıyı yüklemek** üzere **uygulamalarımı güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 
     ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
 

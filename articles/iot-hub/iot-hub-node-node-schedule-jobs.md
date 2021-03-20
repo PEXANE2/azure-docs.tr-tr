@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/16/2019
 ms.custom: mqtt, devx-track-js
 ms.openlocfilehash: e1992c806619154fa7b3c33500b2e54fbc919f20
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92151427"
 ---
 # <a name="schedule-and-broadcast-jobs-nodejs"></a>İşleri zamanlama ve yayınlama (Node.js)
@@ -39,7 +39,7 @@ Bu makalelerdeki her bir özellik hakkında daha fazla bilgi edinin:
 
 Bu öğretici şunların nasıl yapıldığını gösterir:
 
-* Çözüm arka ucu tarafından çağrılabilen **Lockkapısı**sağlayan doğrudan bir yöntemi olan Node.js sanal cihaz uygulaması oluşturun.
+* Çözüm arka ucu tarafından çağrılabilen **Lockkapısı** sağlayan doğrudan bir yöntemi olan Node.js sanal cihaz uygulaması oluşturun.
 
 * Bir iş kullanarak sanal cihaz uygulamasındaki **Lockkapısı** doğrudan yöntemini çağıran ve bir cihaz işi kullanarak istenen özellikleri güncelleştiren bir Node.js konsol uygulaması oluşturun.
 
@@ -69,7 +69,7 @@ Bu öğreticinin sonunda iki Node.js uygulamanız vardır:
 
 Bu bölümde, bulut tarafından çağrılan doğrudan bir yönteme yanıt veren bir Node.js konsol uygulaması oluşturacaksınız ve bu da sanal bir **Lockkapısı** metodunu tetikler.
 
-1. **Simdevice**adlı yeni bir boş klasör oluşturun.  **Simdevice** klasöründe komut istemindeki aşağıdaki komutu kullanarak dosya package.jsoluşturun.  Tüm varsayılanları kabul edin:
+1. **Simdevice** adlı yeni bir boş klasör oluşturun.  **Simdevice** klasöründe komut istemindeki aşağıdaki komutu kullanarak dosya package.jsoluşturun.  Tüm varsayılanları kabul edin:
 
    ```console
    npm init
@@ -146,7 +146,7 @@ Bu bölümde, bulut tarafından çağrılan doğrudan bir yönteme yanıt veren 
 
 Bu bölümde, doğrudan bir yöntemi kullanarak bir cihazda uzak **Lockkapısı** Başlatan Node.js konsol uygulaması oluşturursunuz ve Device ikizi 'in özelliklerini güncelleştirebilirsiniz.
 
-1. **Schedulejobservice**adlı yeni bir boş klasör oluşturun.  Komut istemindeki aşağıdaki komutu kullanarak **Schedulejobservice** klasöründe bir package.jsoluşturun.  Tüm varsayılanları kabul edin:
+1. **Schedulejobservice** adlı yeni bir boş klasör oluşturun.  Komut istemindeki aşağıdaki komutu kullanarak **Schedulejobservice** klasöründe bir package.jsoluşturun.  Tüm varsayılanları kabul edin:
 
     ```console
     npm init

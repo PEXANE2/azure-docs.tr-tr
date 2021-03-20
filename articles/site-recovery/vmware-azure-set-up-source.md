@@ -9,17 +9,17 @@ ms.topic: article
 ms.date: 04/14/2019
 ms.author: ramamill
 ms.openlocfilehash: afd3979690b8952c915a49099ee04b3d416031fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88189741"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>VMware 'den Azure 'a çoğaltma için kaynak ortamı ayarlama
 
 Bu makalede, VMware VM 'lerini Azure 'a çoğaltmak için kaynak şirket içi ortamınızı ayarlama açıklanmaktadır. Makale, çoğaltma senaryonuzu seçme, Site Recovery yapılandırma sunucusu olarak şirket içi makine ayarlama ve şirket içi VM 'Leri otomatik olarak bulma adımlarını içerir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Makalesinde zaten sahip olduğunuz varsayılır:
 
@@ -29,11 +29,11 @@ Makalesinde zaten sahip olduğunuz varsayılır:
 
 ## <a name="choose-your-protection-goals"></a>Koruma hedeflerinizi seçin
 
-1. **Kurtarma Hizmetleri kasaları** bölümünde kasa adını seçin. Bu senaryo için**ContosoVMVault**’u kullanıyoruz.
+1. **Kurtarma Hizmetleri kasaları** bölümünde kasa adını seçin. Bu senaryo için **ContosoVMVault**’u kullanıyoruz.
 2. **Başlarken** bölümünde Site Recovery’yi seçin. Daha sonra **Altyapıyı Hazırlama**’yı seçin.
-3. Makinelerinizin bulunduğu **koruma hedefi**bölümünde  >  **Where are your machines located** **Şirket içi**' ı seçin.
+3. Makinelerinizin bulunduğu **koruma hedefi** bölümünde  >   **Şirket içi**' ı seçin.
 4. **Makinelerinizi nereye çoğaltmak istiyorsunuz** bölümünde **Azure’a** seçeneğini belirleyin.
-5. **Makineleriniz sanallaştırıldı mı** bölümünde **Evet, VMware vSphere Hypervisor ile** seçeneğini belirleyin. Ardından **Tamam**'ı seçin.
+5. **Makineleriniz sanallaştırıldı mı** bölümünde **Evet, VMware vSphere Hypervisor ile** seçeneğini belirleyin. Ardından **Tamam**’ı seçin.
 
 ## <a name="set-up-the-configuration-server"></a>Yapılandırma sunucusunu ayarlama
 

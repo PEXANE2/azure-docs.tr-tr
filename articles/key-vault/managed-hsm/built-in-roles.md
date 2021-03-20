@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
 ms.openlocfilehash: a5ecd8f13a3255a565168f62f358a6a38e3cbab4
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94445226"
 ---
 # <a name="managed-hsm-local-rbac-built-in-roles"></a>Yönetilen HSM yerel RBAC yerleşik rolleri
@@ -21,7 +21,7 @@ Yönetilen HSM yerel RBAC, kullanıcılara, hizmet sorumlularına, gruplara ve y
 
 ## <a name="built-in-roles"></a>Yerleşik roller
 
-|Rol Adı|Açıklama|ID|
+|Rol Adı|Description|ID|
 |---|---|---|
 |Yönetilen HSM Yöneticisi| Tüm veri eylemlerine tam erişim verir.|a290e904-7015-4bba-90c8-60543313cdb4|
 |Yönetilen HSM şifre müdürü| Tüm anahtar yönetimine ve anahtar şifreleme işlemlerine tam erişim verir|515eb02d-2335-4d2d-92f2-b1cbdf9c3778|

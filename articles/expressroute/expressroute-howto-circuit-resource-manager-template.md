@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: duau
 ms.openlocfilehash: 2e9b6ddc9da4467590946af12a47f1473a4ea494
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92202064"
 ---
 # <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak bir ExpressRoute devresi oluşturma
@@ -63,8 +63,8 @@ Bir şablonu dağıtarak bir ExpressRoute devresi oluşturmak için:
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-   * **SKU katmanı** , bir ExpressRoute devresinin [Yerel](expressroute-faqs.md#expressroute-local), standart veya [Premium](expressroute-faqs.md#expressroute-premium)olduğunu belirler. *Yerel*, * standart veya *Premium*belirtebilirsiniz. SKU 'YU *Standart/Premium* 'dan *Yerel*olarak değiştiremezsiniz.
-   * **SKU ailesi** Faturalandırma türünü belirler. Tarifeli veri planı için *Metereddata* , sınırsız bir veri planı Için de *unlimiteddata* belirtebilirsiniz. Faturalandırma türünü *Metereddata* 'Den *unlimiteddata*olarak değiştirebilirsiniz, ancak türü *Unlimiteddata* iken *Metereddata*olarak değiştiremezsiniz. *Yerel* devre yalnızca *limiteddata* ' dır.
+   * **SKU katmanı** , bir ExpressRoute devresinin [Yerel](expressroute-faqs.md#expressroute-local), standart veya [Premium](expressroute-faqs.md#expressroute-premium)olduğunu belirler. *Yerel*, * standart veya *Premium* belirtebilirsiniz. SKU 'YU *Standart/Premium* 'dan *Yerel* olarak değiştiremezsiniz.
+   * **SKU ailesi** Faturalandırma türünü belirler. Tarifeli veri planı için *Metereddata* , sınırsız bir veri planı Için de *unlimiteddata* belirtebilirsiniz. Faturalandırma türünü *Metereddata* 'Den *unlimiteddata* olarak değiştirebilirsiniz, ancak türü *Unlimiteddata* iken *Metereddata* olarak değiştiremezsiniz. *Yerel* devre yalnızca *limiteddata* ' dır.
    * **Eşleme konumu** , Microsoft ile eşolduğunuz fiziksel konumdur.
 
      > [!IMPORTANT]
@@ -88,8 +88,8 @@ Azure PowerShell, bu öğreticide şablonu dağıtmak için kullanılır. Diğer
 ExpressRoute devrenizi **Sil** simgesini seçerek silebilirsiniz. Aşağıdaki bilgileri not edin:
 
 * ExpressRoute bağlantı hattınızdaki tüm sanal ağların bağlantısını kaldırmanız gerekir. Bu işlem başarısız olursa, herhangi bir sanal ağın bağlantı hattına bağlanıp bağlanmadığını denetleyin.
-* ExpressRoute bağlantı hattı hizmeti sağlayıcısı sağlama **durumu sağlandıysa veya** sağlanmışsa **Provisioned** , devre dışı bırakmak için hizmet sağlayıcınızla birlikte çalışmanız gerekir. Hizmet sağlayıcısı, devre sağlamasını kaldırmayı ve bize haber verene kadar, kaynakları ayırmaya ve sizi faturalandırmaya devam ediyoruz.
-* Hizmet sağlayıcı devre sağlamasını kaldırmışsa (hizmet sağlayıcı sağlama durumu **sağlanmadı**olarak ayarlandıysa), devresini silebilirsiniz. Bu durumda bağlantı hattının faturalandırılması durdurulur.
+* ExpressRoute bağlantı hattı hizmeti sağlayıcısı sağlama **durumu sağlandıysa veya** sağlanmışsa  , devre dışı bırakmak için hizmet sağlayıcınızla birlikte çalışmanız gerekir. Hizmet sağlayıcısı, devre sağlamasını kaldırmayı ve bize haber verene kadar, kaynakları ayırmaya ve sizi faturalandırmaya devam ediyoruz.
+* Hizmet sağlayıcı devre sağlamasını kaldırmışsa (hizmet sağlayıcı sağlama durumu **sağlanmadı** olarak ayarlandıysa), devresini silebilirsiniz. Bu durumda bağlantı hattının faturalandırılması durdurulur.
 
 Aşağıdaki PowerShell komutunu çalıştırarak ExpressRoute devrenizi silebilirsiniz:
 

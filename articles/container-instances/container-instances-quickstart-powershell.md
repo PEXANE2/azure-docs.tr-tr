@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 03/21/2019
 ms.custom: seodec18, mvc
 ms.openlocfilehash: c7002d8a83e58a9089ee3c3840b0397d63e2f198
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89565591"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak Azure 'da kapsayıcı örneği dağıtma
@@ -40,7 +40,7 @@ Tüm Azure kaynakları gibi Azure kapsayıcı örneklerinin de bir kaynak grubun
 New-AzResourceGroup -Name myResourceGroup -Location EastUS
 ```
 
-## <a name="create-a-container"></a>Bir kapsayıcı oluşturma
+## <a name="create-a-container"></a>Kapsayıcı oluşturma
 
 Artık bir kaynak grubuna sahip olduğunuza göre Azure'da kapsayıcı çalıştırabilirsiniz. Azure PowerShell bir kapsayıcı örneği oluşturmak için, [New-AzContainerGroup][New-AzContainerGroup] cmdlet 'ine bir kaynak grubu adı, kapsayıcı örneği adı ve Docker kapsayıcı görüntüsü sağlayın. Bu hızlı başlangıçta, ortak `mcr.microsoft.com/windows/servercore/iis:nanoserver` görüntüyü kullanırsınız. Bu görüntü, nano sunucu 'da çalıştırılacak Microsoft Internet Information Services (IIS) paketleri.
 

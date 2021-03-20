@@ -9,10 +9,10 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: b3907882df09bfae1d6453fbffbd3e7562554f7c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96010886"
 ---
 * **Policybased:** PolicyBased VPN 'Ler, daha önce klasik dağıtım modelinde statik yönlendirme ağ geçitleri olarak adlandırılmıştı. İlke tabanlı VPN 'Ler, şirket içi ağınız ve Azure VNet arasındaki adres ön ekleri birleşimleriyle yapılandırılmış IPSec ilkelerine bağlı olarak paketleri IPSec tünellerine göre şifreler ve yönlendirir. İlke (veya trafik seçici) çoğunlukla VPN cihazı yapılandırmasında bir erişim listesi olarak tanımlanır. PolicyBased VPN türü için değer *Policybased*' dir. PolicyBased VPN kullanırken aşağıdaki sınırlamaları aklınızda bulundurun:

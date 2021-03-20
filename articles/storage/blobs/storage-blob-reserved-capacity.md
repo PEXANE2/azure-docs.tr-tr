@@ -10,10 +10,10 @@ ms.date: 10/08/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 6fd791495602846b95e2dd3e99423db5505f5307
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98600924"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>Ayrılmış kapasite ile Blob depolama maliyetlerini iyileştirme
@@ -88,7 +88,7 @@ Ayrılmış kapasiteyi satın almak için aşağıdaki adımları izleyin:
    | **Yedeklilik** | Ayırma için artıklık seçeneği. Seçenekler *LRS*, *ZRS*, *GRS*, *GZRS*, *RA-GRS* ve *ra-GZRS*' i içerir. Artıklık seçenekleri hakkında daha fazla bilgi için bkz. [Azure depolama artıklığı](../common/storage-redundancy.md). |
    | **Faturalandırma sıklığı** | Hesabın rezervasyon için ne sıklıkta faturalandırıldığını gösterir. Seçenekler *ayda* veya *önünde* bulunur. |
    | **Boyut** | Ayrılacak kapasite miktarı. |
-   |**Terim**  | Bir yıl veya üç yıl.   |
+   |**Süre**  | Bir yıl veya üç yıl.   |
 
 1. Rezervasyonunuzun parametrelerini seçtikten sonra Azure portal maliyeti görüntüler. Portal Ayrıca Kullandıkça Öde faturalandırmasına göre indirim yüzdesini gösterir.
 

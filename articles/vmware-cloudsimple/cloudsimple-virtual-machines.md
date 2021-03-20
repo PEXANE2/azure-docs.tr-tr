@@ -10,10 +10,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 6f9be035978667287b8b88ec1bb64b3882b0f929
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88141985"
 ---
 # <a name="cloudsimple-virtual-machines-overview"></a>CloudSimple sanal makinelerine genel bakış
@@ -22,7 +22,7 @@ CloudSimple, Azure portal VMware sanal makinelerini (VM) yönetmenizi sağlar.  
 
 Azure 'dan CloudSimple VM oluşturmak için özel bulut vCenter 'unuzda bir VM şablonu bulunmalıdır.  Şablon, işletim sistemini ve uygulamaları özelleştirmek için kullanılır.  Kurumsal güvenlik ilkelerini karşılamak için şablon sanal makinesi sağlamlaştırılmış olabilir.  Sanal makine oluşturmak ve ardından bir self servis modeli kullanarak Azure portal kullanmak için şablonu kullanabilirsiniz.
 
-## <a name="benefits"></a>Yararları
+## <a name="benefits"></a>Avantajlar
 
 Azure portal CloudSimple sanal makineleri, kullanıcıların VMware sanal makinelerini oluşturmalarına ve yönetmesine yönelik bir self servis mekanizması sağlar.
 

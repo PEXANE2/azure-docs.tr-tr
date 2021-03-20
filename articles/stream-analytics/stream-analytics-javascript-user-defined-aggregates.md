@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/28/2017
 ms.custom: devx-track-js
 ms.openlocfilehash: e9695a268d1c6ec43a737afd36536e4ec2a41a41
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98012487"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates"></a>JavaScript Kullanıcı tanımlı toplamaları Azure Stream Analytics
@@ -173,7 +173,7 @@ Aşağıda, portaldan UDA oluşturma işlemini yürüyoruz. Burada kullandığı
 
 ## <a name="calling-javascript-uda-in-asa-query"></a>ASA sorgusunda JavaScript UDA çağırma
 
-Azure portal ve işinizi açın, sorguyu düzenleyin ve "uda." mantarih önekiyle birlikte TWA () işlevini çağırın. Örneğin:
+Azure portal ve işinizi açın, sorguyu düzenleyin ve "uda." mantarih önekiyle birlikte TWA () işlevini çağırın. Örnek:
 
 ```SQL
 WITH value AS

@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.openlocfilehash: cd21197d6d1559b681ae622b974f6eb7ba95ad3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91397377"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>Çok kiracılı SaaS uygulamaları ve Azure Bilişsel Arama için tasarım desenleri
@@ -26,9 +26,9 @@ Bir hizmet olarak arama çözümü olan [Azure bilişsel arama](search-what-is-a
 
 Tasarım düzenlerini tartışmadan önce, birkaç temel kavramın anlaşılması önemlidir.
 
-Azure Bilişsel Arama kullanırken bir *arama hizmetine*abone olur. Veriler Azure Bilişsel Arama karşıya yüklendiği için arama hizmeti içindeki bir *dizinde* depolanır. Tek bir hizmet içinde çok sayıda dizin olabilir. Veritabanlarının tanıdık kavramlarını kullanmak için, bir hizmet içindeki dizinler bir veritabanı içindeki tablolara beğenilirken arama hizmeti bir veritabanına eklenebilir.
+Azure Bilişsel Arama kullanırken bir *arama hizmetine* abone olur. Veriler Azure Bilişsel Arama karşıya yüklendiği için arama hizmeti içindeki bir *dizinde* depolanır. Tek bir hizmet içinde çok sayıda dizin olabilir. Veritabanlarının tanıdık kavramlarını kullanmak için, bir hizmet içindeki dizinler bir veritabanı içindeki tablolara beğenilirken arama hizmeti bir veritabanına eklenebilir.
 
-Bir arama hizmeti içindeki her dizin kendi şemasına sahiptir ve bu bir dizi özelleştirilebilir *alan*tarafından tanımlanır. Veriler bir Azure Bilişsel Arama dizinine tek tek *Belgeler*biçiminde eklenir. Her belge belirli bir dizine yüklenmelidir ve bu dizinin şemasına sığması gerekir. Azure Bilişsel Arama kullanarak veri ararken tam metin arama sorguları belirli bir dizine göre verilir.  Bu kavramları bir veritabanınızla karşılaştırmak için, alanlar bir tablodaki sütunlara eklenebilir ve belgeler satırlara eklenebilir.
+Bir arama hizmeti içindeki her dizin kendi şemasına sahiptir ve bu bir dizi özelleştirilebilir *alan* tarafından tanımlanır. Veriler bir Azure Bilişsel Arama dizinine tek tek *Belgeler* biçiminde eklenir. Her belge belirli bir dizine yüklenmelidir ve bu dizinin şemasına sığması gerekir. Azure Bilişsel Arama kullanarak veri ararken tam metin arama sorguları belirli bir dizine göre verilir.  Bu kavramları bir veritabanınızla karşılaştırmak için, alanlar bir tablodaki sütunlara eklenebilir ve belgeler satırlara eklenebilir.
 
 ### <a name="scalability"></a>Ölçeklenebilirlik
 Standart [fiyatlandırma katmanındaki](https://azure.microsoft.com/pricing/details/search/) herhangi bir Azure bilişsel arama hizmeti, iki boyutta ölçeklendirilebilir: depolama ve kullanılabilirlik.
@@ -95,7 +95,7 @@ Toplam dizin sayısı tek bir hizmet için çok büyük büyürse, yeni kiracıl
 
 ## <a name="2-service-per-tenant"></a>2. kiracı başına hizmet
 
-:::image type="content" source="media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png" alt-text="Kiracı başına Dizin modeline ait bir portrayal" border="false":::
+:::image type="content" source="media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png" alt-text="Kiracı başına hizmet modeline ait bir portrayal" border="false":::
 
 Her kiracının hizmet başına bir mimaride kendi arama hizmeti vardır.
 

@@ -5,10 +5,10 @@ ms.date: 08/31/2020
 ms.topic: how-to
 ms.reviewer: caleteet
 ms.openlocfilehash: 411337908553e58c252a0ed1a42d17f76195c720
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96763800"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>Azure Logic Apps ile Ethereum blok zinciri bağlayıcısını kullanın
@@ -177,7 +177,7 @@ Blok zinciri ağına bağlanmak için Azure blok zinciri hizmeti RPC uç noktas�
 
 **Azure portal kullanmak için:**
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Azure blok zinciri hizmeti üyesine gidin. **İşlem düğümleri** ve varsayılan işlem düğümü bağlantısı ' nı seçin.
 
     ![İşlem düğümleri sayfası (varsayılan düğüm) seçimi](./media/ethereum-logic-app/transaction-nodes.png)

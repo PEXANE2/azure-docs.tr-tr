@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
 ms.openlocfilehash: 54790795aab8aac247e17198159130d7139dd38c
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96754746"
 ---
-# <a name="respond-to-azure-defender-for-resource-manager-alerts"></a>Kaynak Yöneticisi uyarılar için Azure Defender 'a yanıt verme
+# <a name="respond-to-azure-defender-for-resource-manager-alerts"></a>Resource Manager için Azure Defender uyarılarına yanıt verme
 
 Kaynak Yöneticisi için Azure Defender 'dan bir uyarı aldığınızda, uyarıyı araştırıp aşağıda açıklandığı gibi uyarmanızı öneririz. Kaynak Yöneticisi için Azure Defender tüm bağlı kaynakları korur, bu nedenle uyarıyı tetikleyen uygulama veya Kullanıcı hakkında bilgi sahibi olsanız bile, her uyarının çevresindeki durumu doğrulamak önemlidir.  
 

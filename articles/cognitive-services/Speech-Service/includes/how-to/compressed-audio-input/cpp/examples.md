@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: trbye
 ms.openlocfilehash: ad32204739d728006362ef55657a2f433be7aefc
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97978877"
 ---
 Konuşma SDK 'sını sıkıştırılmış ses girişini kabul edecek şekilde yapılandırmak için, `PullAudioInputStream` veya oluşturun `PushAudioInputStream` . Daha sonra akış `AudioConfig` sınıfınızın bir örneğinden oluşturun ve akışın sıkıştırma biçimini belirtin.

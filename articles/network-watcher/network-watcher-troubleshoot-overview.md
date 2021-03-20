@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
 ms.openlocfilehash: 0d0597c2df8731171505a090de6959d8a112c004
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98569989"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Azure ağ Izleyicisi 'nde kaynak sorunlarını gidermeye giriş
@@ -54,9 +54,9 @@ Aşağıdaki tablolarda, kullanılabilir olan farklı hata türleri (önceki lis
 | PlannedMaintenance |  Ağ Geçidi örneği bakımda  |Hayır|
 | UserDrivenUpdate | Bu hata bir kullanıcı güncelleştirmesi devam ederken oluşur. Güncelleştirme bir yeniden boyutlandırma işlemi olabilir. | Hayır |
 | VipUnResponsive | Bu hata, ağ geçidinin birincil örneğine bir sistem durumu yoklama hatası nedeniyle ulaşılamadığında oluşur. | Hayır |
-| PlatformInActive | Platform ile ilgili bir sorun var. | Hayır|
-| ServiceNotRunning | Temel alınan hizmet çalışmıyor. | Hayır|
-| Noconnectionsdökümforgateway | Ağ geçidinde bağlantı yok. Bu hata yalnızca bir uyarıdır.| Hayır|
+| PlatformInActive | Platform ile ilgili bir sorun var. | No|
+| ServiceNotRunning | Temel alınan hizmet çalışmıyor. | No|
+| Noconnectionsdökümforgateway | Ağ geçidinde bağlantı yok. Bu hata yalnızca bir uyarıdır.| No|
 | ConnectionsNotConnected | Bağlantılar bağlı değil. Bu hata yalnızca bir uyarıdır.| Yes|
 | Gatewaycpuusageaşıldı | Geçerli ağ geçidi CPU kullanımı %95 >. | Yes |
 
@@ -68,9 +68,9 @@ Aşağıdaki tablolarda, kullanılabilir olan farklı hata türleri (önceki lis
 | GatewayNotFound | Ağ Geçidi bulunamıyor veya ağ geçidi sağlanmadı |Hayır|
 | PlannedMaintenance | Ağ Geçidi örneği bakımda  |Hayır|
 | UserDrivenUpdate | Bu hata bir kullanıcı güncelleştirmesi devam ederken oluşur. Güncelleştirme bir yeniden boyutlandırma işlemi olabilir.  | Hayır |
-| VipUnResponsive | Bu hata, ağ geçidinin birincil örneğine bir sistem durumu yoklama hatası nedeniyle ulaşılamadığında oluşur. | Hayır |
-| ConnectionEntityNotFound | Bağlantı yapılandırması eksik | Hayır |
-| Connectionımarkedconnected | Bağlantı "bağlantısı kesildi" olarak işaretlendi |Hayır|
+| VipUnResponsive | Bu hata, ağ geçidinin birincil örneğine bir sistem durumu yoklama hatası nedeniyle ulaşılamadığında oluşur. | No |
+| ConnectionEntityNotFound | Bağlantı yapılandırması eksik | No |
+| Connectionımarkedconnected | Bağlantı "bağlantısı kesildi" olarak işaretlendi |No|
 | ConnectionNotConfiguredOnGateway | Temeldeki hizmette bağlantı yapılandırılmamış. | Yes |
 | ConnectionMarkedStandby | Temel alınan hizmet bekleme olarak işaretlendi.| Yes|
 | Kimlik Doğrulaması | Önceden paylaşılmış anahtar uyumsuzluğu | Yes|

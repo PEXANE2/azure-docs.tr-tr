@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 03/21/2018
 ms.custom: seodec18, mvc, devx-track-azurecli
 ms.openlocfilehash: 2ea3d285f00d38df84587d9a7c15242fff38453b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87500581"
 ---
 # <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>Öğretici: Azure Container Instances bir kapsayıcı uygulaması dağıtma
@@ -34,7 +34,7 @@ Bu bölümde, [birinci öğreticide](container-instances-tutorial-prepare-app.md
 
 [İkinci öğreticide](container-instances-tutorial-prepare-acr.md)oluşturulan gibi özel bir Azure Container Registry 'de barındırılan bir görüntüyü dağıtırken, kayıt defterine erişmek için kimlik bilgilerini sağlamanız gerekir. 
 
-Birçok senaryo için en iyi yöntem, Kayıt defterinize yönelik *çekme* izinleriyle Azure Active Directory hizmet sorumlusu oluşturmak ve yapılandırmak olacaktır. Gerekli izinlere sahip bir hizmet sorumlusu oluşturmak için örnek betikler için [Azure Container Instances Azure Container Registry Ile kimlik doğrulama](../container-registry/container-registry-auth-aci.md) konusuna bakın. *Hizmet sorumlusu kimliği* ve *hizmet sorumlusu parolasını*göz önünde yararlanın. Bu kimlik bilgilerini, kapsayıcıyı dağıtırken kayıt defterine erişmek için kullanırsınız.
+Birçok senaryo için en iyi yöntem, Kayıt defterinize yönelik *çekme* izinleriyle Azure Active Directory hizmet sorumlusu oluşturmak ve yapılandırmak olacaktır. Gerekli izinlere sahip bir hizmet sorumlusu oluşturmak için örnek betikler için [Azure Container Instances Azure Container Registry Ile kimlik doğrulama](../container-registry/container-registry-auth-aci.md) konusuna bakın. *Hizmet sorumlusu kimliği* ve *hizmet sorumlusu parolasını* göz önünde yararlanın. Bu kimlik bilgilerini, kapsayıcıyı dağıtırken kayıt defterine erişmek için kullanırsınız.
 
 Ayrıca, kapsayıcı kayıt defteri oturum açma sunucusunun tam adına de ihtiyacınız vardır ( `<acrName>` kayıt defterinizin adıyla değiştirin):
 

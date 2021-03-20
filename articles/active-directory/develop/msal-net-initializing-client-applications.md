@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 6616b0573019703f287d3be521569f5953aeb032
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98600295"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>MSAL.NET kullanarak istemci uygulamalarını başlatma
@@ -25,7 +25,7 @@ Bu makalede, .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) kull
 
 MSAL.NET 3. x ile bir uygulamayı başlatmak için önerilen yol, uygulama oluşturucularını kullanmaktır: `PublicClientApplicationBuilder` ve `ConfidentialClientApplicationBuilder` . Bu kişiler, uygulamayı koddan veya bir yapılandırma dosyasından yapılandırmak için güçlü bir mekanizma sunar ve hatta her iki yaklaşımı de karıştırarak sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Uygulamayı başlatmadan önce, uygulamanızın Microsoft Identity platformu ile tümleştirilebilmesi için öncelikle [kaydetmeniz](quickstart-register-app.md) gerekir.  Kayıttan sonra, aşağıdaki bilgiler (Azure portal bulunabilir) gerekebilir:
 
 - İstemci KIMLIĞI (bir GUID 'YI temsil eden dize)
@@ -96,7 +96,7 @@ Uygulama oluşturucularını kullanan kod parçacıkları içinde, bir dizi `.Wi
 
 Ortak bir istemcide veya gizli istemci uygulama tasarımcısında ayarlayabileceğiniz değiştiriciler şunlardır:
 
-|Değiştirici | Açıklama|
+|Değiştirici | Description|
 |--------- | --------- |
 |`.WithAuthority()` 7 geçersiz kılmalar | Azure bulutu, hedef kitlesi, kiracı (kiracı KIMLIĞI veya etki alanı adı) veya doğrudan yetkili URI sağlama olasılığa sahip olan uygulama varsayılan yetkilisini bir Azure AD yetkilisine ayarlar.|
 |`.WithAdfsAuthority(string)` | Uygulamanın varsayılan yetkilisini bir ADFS yetkilisi olacak şekilde ayarlar.|
@@ -115,7 +115,7 @@ Ortak bir istemcide veya gizli istemci uygulama tasarımcısında ayarlayabilece
 
 Xamarin. iOS üzerinde ortak bir istemci uygulama Oluşturucusu üzerinde ayarlayabileceğiniz değiştiriciler şunlardır:
 
-|Değiştirici | Açıklama|
+|Değiştirici | Description|
 |--------- | --------- |
 |`.WithIosKeychainSecurityGroup()` | **Yalnızca Xamarin. iOS**: iOS anahtar zinciri güvenlik grubunu ayarlar (önbellek kalıcılığı için).|
 
@@ -123,7 +123,7 @@ Xamarin. iOS üzerinde ortak bir istemci uygulama Oluşturucusu üzerinde ayarla
 
 Gizli bir istemci uygulama Oluşturucusu üzerinde ayarlayabileceğiniz değiştiriciler şunlardır:
 
-|Değiştirici | Açıklama|
+|Değiştirici | Description|
 |--------- | --------- |
 |`.WithCertificate(X509Certificate2 certificate)` | Azure AD ile uygulamayı tanımlayan sertifikayı ayarlar.|
 |`.WithClientSecret(string clientSecret)` | Uygulamayı Azure AD ile tanımlayan istemci gizli anahtarını (uygulama parolası) ayarlar.|

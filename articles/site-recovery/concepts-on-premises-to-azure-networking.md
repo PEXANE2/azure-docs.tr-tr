@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: harshacs
 ms.openlocfilehash: 123a68885346062b9e8a53b8d5066204b6b20f5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89568787"
 ---
 # <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>Şirket içinden yük devretmeden sonra Azure VM 'lerine bağlanma 
@@ -37,7 +37,7 @@ Azure VM 'lerine bağlantı sağlamak için, yük devretmeden önce şirket içi
 
 Şirket içi Windows makinelerde şunları yapın:
 
-1. Windows ayarlarını yapılandırın. Bunlar, statik kalıcı yolların veya WinHTTP proxy 'nin kaldırılmasını ve disk SAN ilkesinin **OnlineAll**olarak ayarlanmasını içerir. Bu yönergeleri [izleyin](../virtual-machines/windows/prepare-for-upload-vhd-image.md#set-windows-configurations-for-azure) .
+1. Windows ayarlarını yapılandırın. Bunlar, statik kalıcı yolların veya WinHTTP proxy 'nin kaldırılmasını ve disk SAN ilkesinin **OnlineAll** olarak ayarlanmasını içerir. Bu yönergeleri [izleyin](../virtual-machines/windows/prepare-for-upload-vhd-image.md#set-windows-configurations-for-azure) .
 
 2. [Bu hizmetlerin](../virtual-machines/windows/prepare-for-upload-vhd-image.md#check-the-windows-services) çalıştığından emin olun.
 
@@ -96,7 +96,7 @@ IP adreslerini koruma aşağıdaki adımları gerektirir:
 
 ### <a name="failover-example"></a>Yük devretme örneği
 
-Bir örneğe bakalım.
+Bir örneğe göz atalım.
 
 - Kurgusal şirket Woodgrove Bank, mobil uygulamalarını Azure 'da barındırdıkları kurumsal uygulamaları barındırır.
 - Şirket içinden siteden siteye VPN üzerinden Azure 'a bağlanır. 
@@ -112,7 +112,7 @@ Bir örneğe bakalım.
 
 Adresleri bekletmek için şu şekilde yapılır.
 
-1. Çoğaltma etkinleştirildiklerinde, makinelerin **Azure ağına**çoğaltılması gerektiğini belirtir.
+1. Çoğaltma etkinleştirildiklerinde, makinelerin **Azure ağına** çoğaltılması gerektiğini belirtir.
 2. Azure 'da **Kurtarma ağı** oluşturur. Bu sanal ağ, şirket içi ağındaki 192.168.1.0/24 alt ağını yansıtır.
 3. Woodgrove iki ağ arasında [VNET-VNet bağlantısı](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) kurar. 
 
@@ -141,7 +141,7 @@ Yük devretmeden önce, hedef Azure VM için ağ ayarlarını ve IP adresini bel
 2. Makinenin **işlem ve ağ** sayfasında, hedef Azure VM 'nin ağ ve bağdaştırıcı ayarlarını yapılandırmak için **Düzenle**' ye tıklayın.
 3. **Ağ özellikleri**' nde, yük devretmeden sonra oluşturulduğu zaman Azure VM 'nin konum olarak bulunduğu hedef ağı seçin.
 4. **Ağ arabirimleri**' nde, hedef ağdaki ağ bağdaştırıcılarını yapılandırın. Varsayılan olarak Site Recovery, şirket içi makinede algılanan tüm NIC 'Leri gösterir.
-    - Hedef ağ **arabirim türü** ' nde, hedef ağda belirli NIC 'ye ihtiyacınız yoksa her bir NIC 'yi **birincil**, **İkincil**veya **oluşturma** ' ya ayarlayabilirsiniz. Yük devretme için bir ağ bağdaştırıcısının birincil olarak ayarlanması gerekir. Hedef ağın değiştirilmesi, Azure VM için tüm NIC 'Leri etkilediğini unutmayın.
+    - Hedef ağ **arabirim türü** ' nde, hedef ağda belirli NIC 'ye ihtiyacınız yoksa her bir NIC 'yi **birincil**, **İkincil** veya **oluşturma** ' ya ayarlayabilirsiniz. Yük devretme için bir ağ bağdaştırıcısının birincil olarak ayarlanması gerekir. Hedef ağın değiştirilmesi, Azure VM için tüm NIC 'Leri etkilediğini unutmayın.
     - Azure VM 'nin dağıtılacağı alt ağı belirtmek için NIC adına tıklayın.
     - Hedef Azure VM 'sine atamak istediğiniz özel IP adresi ile **dinamik** olarak üzerine yazın. Bir IP adresi belirtilmezse Site Recovery yük devretmede alt ağdaki bir sonraki kullanılabilir IP adresini NIC 'ye atayacaktır.
     - Şirket içi Azure 'a yük devretme için NIC 'Leri yönetme hakkında [daha fazla bilgi edinin](site-recovery-manage-network-interfaces-on-premises-to-azure.md) .
@@ -151,7 +151,7 @@ Yük devretmeden önce, hedef Azure VM için ağ ayarlarını ve IP adresini bel
 
 Bu senaryoda, yük devretmeden sonra Azure VM yeni bir IP adresi alır. Yük devretmeden sonra oluşturulan sanal makine için yeni bir IP adresi ayarlamak için aşağıdaki adımlara başvurulabilir
 
-1. **Çoğaltılan öğelere**gidin.
+1. **Çoğaltılan öğelere** gidin.
 2. İstediğiniz Azure sanal makinesini seçin.
 3. **İşlem ve ağ** ' ı seçin ve **Düzenle**' yi seçin.
 

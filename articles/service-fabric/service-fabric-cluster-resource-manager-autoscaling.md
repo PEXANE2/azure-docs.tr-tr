@@ -7,10 +7,10 @@ ms.date: 04/17/2018
 ms.author: miradic
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 060bb9dcdd504846c76ab4c782b2857fdddfa394
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91354811"
 ---
 # <a name="introduction-to-auto-scaling"></a>Otomatik ölçeklendirmeye giriş
@@ -40,7 +40,7 @@ Otomatik ölçeklendirme için şu anda desteklenen iki mekanizma vardır. Birin
 ## <a name="average-partition-load-trigger-with-instance-based-scaling"></a>Örnek tabanlı ölçeklendirmeyle ortalama bölüm yükleme tetikleyicisi
 İlk tetikleyici türü, durum bilgisi olmayan bir hizmet bölümündeki örneklerin yükünü temel alır. Ölçüm yüklemeleri, bir bölümün her örneğinin yükünü elde etmek için ilk kez düzgünleştirilir ve bu değerler bölümün tüm örneklerinde ortalaması alınır. Hizmetin ne zaman ölçekleneceğini tespit eden üç etken vardır:
 
-* _Alt yük eşiği_ , hizmetin ne zaman **ölçeklendirileceğini**belirleyen bir değerdir. Bölümlerin tüm örneklerinin ortalama yükü bu değerden düşükse, hizmet içinde ölçeklendirilecektir.
+* _Alt yük eşiği_ , hizmetin ne zaman **ölçeklendirileceğini** belirleyen bir değerdir. Bölümlerin tüm örneklerinin ortalama yükü bu değerden düşükse, hizmet içinde ölçeklendirilecektir.
 * _Büyük yük eşiği_ , hizmetin ne zaman gösterileceğini belirleyen bir **değerdir.** Bölümün tüm örneklerinin ortalama yükü bu değerden yüksekse, hizmet dışa ayarlanır.
 * _Ölçeklendirme aralığı_ , tetikleyicinin ne sıklıkta denetleneceğini belirler. Tetikleyici denetlendikten sonra, ölçeklendirilmesi gerekiyorsa mekanizmanın uygulanması gerekir. Ölçeklendirme gerekmiyorsa, hiçbir eylem yapılmaz. Her iki durumda da, ölçeklendirmenin zaman aşımı süresi dolmadan önce tetikleyici yeniden denetlenmeyecektir.
 
@@ -110,7 +110,7 @@ Update-ServiceFabricService -Stateless -ServiceName "fabric:/AppName/ServiceName
 ## <a name="average-service-load-trigger-with-partition-based-scaling"></a>Bölüm tabanlı ölçeklendirmeyle ortalama hizmet yükleme tetikleyicisi
 İkinci tetikleyici, bir hizmetin tüm bölümlerinin yükünü temel alır. Ölçüm yüklemeleri, bir bölümün her çoğaltması veya örneği için yük almak üzere ilk olarak düzgünleştirilir. Durum bilgisi olan hizmetler için, Bölüm yükü birincil çoğaltmanın yükü olarak kabul edilir, ancak durum bilgisiz Hizmetleri için bölüm yükü bölümün tüm örneklerinin ortalama yüklerdir. Bu değerler, hizmetin tüm bölümlerinde ortalaması alınır ve bu değer otomatik ölçeklendirmeyi tetiklemek için kullanılır. Önceki mekanizmasıyla aynı şekilde, hizmetin ne zaman ölçekleneceğini tespit eden üç etken vardır:
 
-* _Alt yük eşiği_ , hizmetin ne zaman **ölçeklendirileceğini**belirleyen bir değerdir. Hizmetin tüm bölümlerinin ortalama yükü bu değerden düşükse, hizmet içinde ölçeklendirilir.
+* _Alt yük eşiği_ , hizmetin ne zaman **ölçeklendirileceğini** belirleyen bir değerdir. Hizmetin tüm bölümlerinin ortalama yükü bu değerden düşükse, hizmet içinde ölçeklendirilir.
 * _Büyük yük eşiği_ , hizmetin ne zaman gösterileceğini belirleyen bir **değerdir.** Hizmetin tüm bölümlerinin ortalama yükü bu değerden yüksekse, hizmet dışa ayarlanır.
 * _Ölçeklendirme aralığı_ , tetikleyicinin ne sıklıkta denetleneceğini belirler. Tetikleyici denetlendikten sonra, ölçeklendirilmesi gerekiyorsa mekanizmanın uygulanması gerekir. Ölçeklendirme gerekmiyorsa, hiçbir eylem yapılmaz. Her iki durumda da, ölçeklendirmenin zaman aşımı süresi dolmadan önce tetikleyici yeniden denetlenmeyecektir.
 
@@ -131,7 +131,7 @@ Gerçekleştirilen gerçek otomatik ölçeklendirme işlemi, bu adlandırma düz
 * _Minimum örnek sayısı_ ölçekleme için alt sınırı tanımlar. Hizmetin bölüm sayısı bu sınıra ulaşırsa, yük ne olursa olsun hizmet bu sınıra göre ölçeklenmez.
 
 > [!WARNING] 
-> AddRemoveIncrementalNamedPartitionScalingMechanism, durum bilgisi olmayan hizmetlerle kullanıldığında, Service Fabric **bildirim veya uyarı olmaksızın**bölüm ekler veya kaldırır. Ölçeklendirme mekanizması tetiklendiğinde verilerin yeniden bölümlenmesi gerçekleştirilmeyecektir. Ölçeği genişletme işlemi durumunda, yeni bölümler boş olur ve çalışma sırasında ölçekleme durumunda, **bölüm içerdiği tüm verilerle birlikte silinir**.
+> AddRemoveIncrementalNamedPartitionScalingMechanism, durum bilgisi olmayan hizmetlerle kullanıldığında, Service Fabric **bildirim veya uyarı olmaksızın** bölüm ekler veya kaldırır. Ölçeklendirme mekanizması tetiklendiğinde verilerin yeniden bölümlenmesi gerçekleştirilmeyecektir. Ölçeği genişletme işlemi durumunda, yeni bölümler boş olur ve çalışma sırasında ölçekleme durumunda, **bölüm içerdiği tüm verilerle birlikte silinir**.
 
 ## <a name="setting-auto-scaling-policy-for-partition-based-scaling"></a>Bölüm tabanlı ölçeklendirme için otomatik ölçeklendirme ilkesi ayarlanıyor
 

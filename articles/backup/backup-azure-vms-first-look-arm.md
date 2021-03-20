@@ -4,10 +4,10 @@ description: Bu makalede, Azure Backup hizmetiyle tek bir Azure VM veya birden f
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.openlocfilehash: 55b71d2a2901cdde984df3ebfd68a2a643b78b74
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89667513"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>VM ayarlarından bir Azure VM 'yi yedekleme
@@ -32,16 +32,16 @@ Azure VM 'lerini yedeklemek için, Azure Backup makinede çalışan VM aracısı
 ## <a name="back-up-from-azure-vm-settings"></a>Azure VM ayarlarından yedekleme
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
-2. **Tüm hizmetler** ' i seçin, **sanal makineler**yazın ve ardından **sanal makineler**' i seçin.
+2. **Tüm hizmetler** ' i seçin, **sanal makineler** yazın ve ardından **sanal makineler**' i seçin.
 3. VM 'Ler listesinden yedeklemek istediğiniz VM 'yi seçin.
 4. VM menüsünde, **Yedekle**' yi seçin.
-5. **Kurtarma Hizmetleri kasasında**şunları yapın:
+5. **Kurtarma Hizmetleri kasasında** şunları yapın:
    - Zaten bir kasanız varsa, **Varolanı Seç**' i seçin ve bir kasa seçin.
    - Kasanız yoksa **Yeni oluştur**' u seçin. Kasa için bir ad belirtin. Bu, VM ile aynı bölgede ve kaynak grubunda oluşturulur. Yedeklemeyi doğrudan VM ayarlarından etkinleştirdiğinizde bu ayarları değiştiremezsiniz.
 
         ![Yedekleme Sihirbazını Etkinleştirme](./media/backup-azure-vms-first-look-arm/vm-menu-enable-backup-small.png)
 
-6. **Yedekleme Ilkesini seçin**bölümünde aşağıdakilerden birini yapın:
+6. **Yedekleme Ilkesini seçin** bölümünde aşağıdakilerden birini yapın:
 
    - Varsayılan ilkeyi bırakın. Bu, VM 'yi belirtilen zamanda günde bir kez yedekler ve kasadaki yedeklemeleri 30 gün boyunca tutar.
    - Varsa, var olan bir yedekleme ilkesi seçin.
@@ -49,7 +49,7 @@ Azure VM 'lerini yedeklemek için, Azure Backup makinede çalışan VM aracısı
 
        ![Yedekleme ilkesini seçme](./media/backup-azure-vms-first-look-arm/set-backup-policy.png)
 
-7. **Yedeklemeyi Etkinleştirme**’yi seçin. Bu, yedekleme ilkesini VM ile ilişkilendirir.
+7. **Yedeklemeyi Etkinleştir**’i seçin. Bu, yedekleme ilkesini VM ile ilişkilendirir.
 
     ![Yedeklemeyi Etkinleştir düğmesi](./media/backup-azure-vms-first-look-arm/vm-management-menu-enable-backup-button.png)
 
