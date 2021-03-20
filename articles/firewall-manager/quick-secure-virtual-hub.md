@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.date: 08/28/2020
 ms.author: victorh
 ms.openlocfilehash: 050dfa737ad04127f8c72158fbecb2e8e70e05c1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89075350"
 ---
 # <a name="quickstart-secure-your-virtual-hub-using-azure-firewall-manager---arm-template"></a>Hızlı başlangıç: Azure Güvenlik Duvarı Yöneticisi-ARM şablonunu kullanarak sanal hub 'ınızı güvenli hale getirme
@@ -46,7 +46,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablo
 - [**Microsoft. Network/firewallPolicies**](/azure/templates/microsoft.network/firewallPolicies)
 - [**Microsoft. Network/azureFirewalls**](/azure/templates/microsoft.network/azureFirewalls)
 - [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
-- [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
+- [**Microsoft. COMPUTE/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
 - [**Microsoft. Storage/storageAccounts**](/azure/templates/microsoft.storage/storageAccounts)
 - [**Microsoft. Network/NetworkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)
 - [**Microsoft. Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
@@ -78,7 +78,7 @@ ARM şablonunu Azure 'a dağıtma:
 2. Uzak bir masaüstünü, **Atsrv** sanal makinesine bağlayın ve oturum açın. Buradan, **Iş yükü-SRV** özel IP adresine bir Uzak Masaüstü bağlantısı açın.
 
 3. Internet Explorer'ı açın ve `www.microsoft.com` adresine gidin.
-4. **OK**  >  Internet Explorer güvenlik uyarıları 'nda Tamam**Kapat** ' ı seçin.
+4.   >  Internet Explorer güvenlik uyarıları 'nda Tamam **Kapat** ' ı seçin.
 
    Microsoft giriş sayfasını görmeniz gerekir.
 

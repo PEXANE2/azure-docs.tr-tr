@@ -6,19 +6,19 @@ ms.topic: include
 ms.date: 02/12/2020
 ms.author: mimart
 ms.openlocfilehash: f8c972bdb9195008c2983d3993e8d9369749b284
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85200167"
 ---
 #### <a name="app-registrations"></a>[Uygulama kayıtları](#tab/app-reg-ga/) 
 
-1. **Yönet**altında **API izinleri**' ni seçin.
-1. **Yapılandırılan izinler**altında **izin Ekle**' yi seçin.
+1. **Yönet** altında **API izinleri**' ni seçin.
+1. **Yapılandırılan izinler** altında **izin Ekle**' yi seçin.
 1. **Microsoft API 'leri** sekmesini seçin ve ardından **Microsoft Graph**' yi seçin.
 1. **Uygulama izinleri**' ni seçin.
-1. Uygun izin grubunu genişletin ve yönetim uygulamanıza verilecek iznin onay kutusunu seçin. Örneğin:
+1. Uygun izin grubunu genişletin ve yönetim uygulamanıza verilecek iznin onay kutusunu seçin. Örnek:
     * **AuditLog**  >  **Denetimgünlüğü. Read. All**: dizinin denetim günlüklerini okumak için.
     * **Dizin**  >  **Directory. ReadWrite. All**: Kullanıcı geçişi veya Kullanıcı yönetimi senaryoları için.
     * **İlke**  >  **Policy. ReadWrite. TrustFramework**: sürekli tümleştirme/sürekli teslım (CI/CD) senaryoları için. Örneğin, Azure Pipelines ile özel ilke dağıtımı.
@@ -30,9 +30,9 @@ ms.locfileid: "85200167"
 #### <a name="applications-legacy"></a>[Uygulamalar (eski)](#tab/applications-legacy/)
 
 1. **Kayıtlı uygulamaya** Genel Bakış sayfasında, **Ayarlar**' ı seçin.
-1. **API erişimi**altında **gerekli izinler**' i seçin.
-1. **Microsoft Graph**seçin.
-1. **Uygulama izinleri**altında, yönetim uygulamanıza verilecek iznin onay kutusunu seçin. Örneğin:
+1. **API erişimi** altında **gerekli izinler**' i seçin.
+1. **Microsoft Graph** seçin.
+1. **Uygulama izinleri** altında, yönetim uygulamanıza verilecek iznin onay kutusunu seçin. Örnek:
     * **Tüm denetim günlüğü verilerini okuyun**: dizinin denetim günlüklerini okumak için bu izni seçin.
     * **Dizin verilerini okuma ve yazma**: Kullanıcı geçişi veya Kullanıcı yönetimi senaryoları için bu izni seçin.
     * **Kuruluşunuzun güven çerçevesi Ilkelerini okuyun ve yazın**: sürekli tümleştirme/sürekli teslım (CI/CD) senaryoları için bu izni seçin. Örneğin, Azure Pipelines ile özel ilke dağıtımı.

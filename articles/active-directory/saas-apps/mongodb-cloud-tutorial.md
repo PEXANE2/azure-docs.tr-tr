@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/03/2020
 ms.author: jeedes
 ms.openlocfilehash: af1c0702929e7cd700c8d19ab24e40f9c6f43a21
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96602198"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mongodb-cloud"></a>Öğretici: MongoDB bulutu ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -97,7 +97,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Önceki özniteliklere ek olarak, MongoDB Cloud uygulaması, SAML yanıtına daha fazla özniteliğin geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre gözden geçirebilirsiniz.
     
-    | Ad | Kaynak özniteliği|
+    | Name | Kaynak özniteliği|
     | ---------------| --------- |
     | e-posta | User. UserPrincipalName |
     | firstName | Kullanıcı. |
@@ -114,7 +114,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure Portal sol bölmeden, kullanıcılar **Azure Active Directory**  >  **Users**  >  **tüm kullanıcılar**' ı seçin.
+1. Azure Portal sol bölmeden, kullanıcılar **Azure Active Directory**  >    >  **tüm kullanıcılar**' ı seçin.
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  

@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a93ce1c4274f63a863880e932b247726639e5cd9
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98614686"
 ---
 # <a name="tutorial-integrate-a-single-forest-with-a-single-azure-ad-tenant"></a>Öğretici: tek bir Azure AD kiracısı ile tek bir ormanı tümleştirme
@@ -55,7 +55,7 @@ Bu öğreticide oluşturduğunuz ortamı test için veya bulut eşitlemesine dah
 2. Yalnızca bulutta bulunan genel yönetici kimlik bilgilerini kullanarak Azure portal oturum açın.
 3. Sol tarafta **Azure Active Directory**' ı seçin, **Azure AD Connect**' a tıklayın ve ortadaki **bulut eşitlemesini Yönet**' i seçin.
 
-   ![Azure portal](media/how-to-install/install-6.png)
+   ![Azure portalı](media/how-to-install/install-6.png)
 
 4. **Aracıyı indir**' e tıklayın.
 5. Azure AD Connect sağlama aracısını çalıştırın.
@@ -83,7 +83,7 @@ Aracı doğrulaması Azure portal ve aracıyı çalıştıran yerel sunucu üzer
 ### <a name="azure-portal-agent-verification"></a>Aracı doğrulama Azure portal
 Aracının Azure tarafından görüldüğünü doğrulamak için şu adımları izleyin:
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 2. Sol tarafta **Azure Active Directory**' ı seçin, **Azure AD Connect** ' a tıklayın ve ardından **bulut eşitlemesini Yönet**' i seçin.</br>
 ![Azure portalda](media/how-to-install/install-6.png)</br>
 

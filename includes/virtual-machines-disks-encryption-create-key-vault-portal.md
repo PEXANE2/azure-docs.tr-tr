@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -9,18 +9,18 @@ ms.date: 03/23/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: a967777b65c06cf23239a47e8e691fb3a29231b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88815479"
 ---
 Diskleriniz için müşteri tarafından yönetilen anahtarların kurulması, ilk kez yapıyorsanız, belirli bir sırada kaynak oluşturmanızı gerektirir. İlk olarak, bir Azure Key Vault oluşturmanız ve ayarlamanız gerekecektir.
 
 ## <a name="set-up-your-azure-key-vault"></a>Azure Key Vault ayarlama
 
-1. [Azure portalında](https://aka.ms/diskencryptionupdates) oturum açın.
-1. **Anahtar kasaları**arayın ve seçin.
+1. [Azure portal](https://aka.ms/diskencryptionupdates) oturum açın.
+1. **Anahtar kasaları** arayın ve seçin.
 
     [![Arama iletişim kutusu genişletilmiş Azure portal ekran görüntüsü.](./media/virtual-machines-disk-encryption-portal/server-side-encryption-key-vault-portal-search.png)](./media/virtual-machines-disk-encryption-portal/sever-side-encryption-key-vault-portal-search-expanded.png#lightbox)
 
@@ -39,12 +39,12 @@ Diskleriniz için müşteri tarafından yönetilen anahtarların kurulması, ilk
     ![Azure Key Vault oluşturma deneyiminin ekran görüntüsü. Oluşturduğunuz belirli değerleri gösterme](./media/virtual-machines-disk-encryption-portal/server-side-encryption-create-a-key-vault.png)
 
 1. Anahtar kasanızın dağıtımı tamamlandıktan sonra, bunu seçin.
-1. **Ayarlar**altında **anahtarlar** ' ı seçin.
+1. **Ayarlar** altında **anahtarlar** ' ı seçin.
 1. **Oluştur/Içeri aktar**' ı seçin.
 
     ![Key Vault kaynak ayarları bölmesinin ekran görüntüsü. Ayarlar içinde oluştur/Al düğmesini gösterir.](./media/virtual-machines-disk-encryption-portal/sever-side-encryption-key-vault-generate-settings.png)
 
-1. Her iki **anahtar türünü** **RSA** ve **RSA anahtar boyutu** **2048**olarak ayarlayın.
+1. Her iki **anahtar türünü** **RSA** ve **RSA anahtar boyutu** **2048** olarak ayarlayın.
 1. Kalan seçimleri istediğiniz gibi doldurup **Oluştur**' u seçin.
 
     ![Oluştur/Al düğmesine bir kez görüntülenen anahtar oluştur dikey penceresinin ekran görüntüsü seçilir](./media/virtual-machines-disk-encryption-portal/server-side-encryption-create-a-key-generate.png)
@@ -57,12 +57,12 @@ Diskleriniz için müşteri tarafından yönetilen anahtarların kurulması, ilk
     ![Disk şifreleme portalı ana ekranının ekran görüntüsü. Ekle düğmesini vurgulama](./media/virtual-machines-disk-encryption-portal/sever-side-encryption-create-disk-encryption-set.png)
 
 1. Kaynak grubunuzu seçin, şifreleme kümesini adlandırın ve anahtar kasanız ile aynı bölgeyi seçin.
-1. **Şifreleme türü** için **müşteri tarafından yönetilen bir anahtarla Rest 'i**seçin.
+1. **Şifreleme türü** için **müşteri tarafından yönetilen bir anahtarla Rest 'i** seçin.
 
     > [!NOTE]
     > Belirli bir şifreleme türüyle bir disk şifreleme kümesi oluşturduktan sonra, bu değişiklik değiştirilemez. Farklı bir şifreleme türü kullanmak istiyorsanız, yeni bir disk şifreleme kümesi oluşturmanız gerekir.
 
-1. **Bir anahtar seçmek Için tıklayın ' ı**seçin.
+1. **Bir anahtar seçmek Için tıklayın ' ı** seçin.
 1. Daha önce oluşturduğunuz anahtar kasasını ve anahtarı ve sürümü seçin.
 1. **Seç**' e basın.
 1. **Gözden Geçir ve Oluştur**’u ve sonra **Oluştur**’u seçin.

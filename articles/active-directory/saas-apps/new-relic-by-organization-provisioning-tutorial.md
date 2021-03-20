@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: Zhchia
 ms.openlocfilehash: 6d196f7037fe9c0209e66e9d6e9ab25bdf807b59
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96181918"
 ---
 # <a name="tutorial-configure-new-relic-by-organization-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için kuruluşa göre yeni relik yapılandırma
@@ -31,7 +31,7 @@ Bu öğreticide, otomatik Kullanıcı sağlamayı yapılandırmak için kuruluş
 > * Kuruluşa göre yeni relik 'de gruplar ve grup üyelikleri sağlama
 > * Kuruluşa göre yeni depoda [Çoklu oturum açma](./new-relic-limited-release-tutorial.md) (önerilir)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 

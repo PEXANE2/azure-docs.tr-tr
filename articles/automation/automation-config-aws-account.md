@@ -7,10 +7,10 @@ ms.subservice: process-automation
 ms.date: 04/23/2020
 ms.topic: conceptual
 ms.openlocfilehash: acb056fb959fda320a14059e2b36a0f5e3fb0b37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83837203"
 ---
 # <a name="authenticate-runbooks-with-amazon-web-services"></a>Amazon Web Services ile kimlik doğrulaması runbook’ları
@@ -33,7 +33,7 @@ AWS kimlik bilgilerini Azure Otomasyonu 'nda varlıklar olarak depolamanız gere
 
 AWS güvenlik anahtarlarınızı oluşturup kopyaladıktan sonra, Otomasyon hesabıyla bir kimlik bilgisi varlığı oluşturmanız gerekir. Varlık AWS anahtarlarını güvenli bir şekilde depolamanızı ve Runbook 'larınızda bunlara başvurmalarını sağlar. Bkz. [Azure Portal yeni bir kimlik bilgisi varlığı oluşturma](shared-resources/credentials.md#create-a-new-credential-asset-with-the-azure-portal). Belirtilen alanlara aşağıdaki AWS bilgilerini girin:
     
-* **Ad**  -  **Awscred**veya adlandırma standartlarınızı takip eden uygun bir değer
+* **Ad**  -  **Awscred** veya adlandırma standartlarınızı takip eden uygun bir değer
 * **Kullanıcı adı** -erişim kimliğiniz
 * **Parola** -gizli anahtarınızın adı 
 

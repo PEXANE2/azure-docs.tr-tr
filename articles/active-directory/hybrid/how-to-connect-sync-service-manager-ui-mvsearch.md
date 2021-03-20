@@ -17,17 +17,17 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 963c59cc002fec7ad0d882db19a83f4299a506c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85357163"
 ---
 # <a name="sync-service-manager-metaverse-search"></a>Service Manager meta veri deposu aramasını Eşitle
 
 ![Eşitleme Service Manager](./media/how-to-connect-sync-service-manager-ui-mvsearch/mvsearch.png)
 
-Metadize arama sekmesi, verilerle ilgili sorunları gidermek için kullanışlıdır. Üst yarısında, özniteliklerin birleşimini temel alarak bir sorgu oluşturabilirsiniz. Sorgunuzun memnun olduğunuzda **Ara**' ya tıklayın. Sonuç, alt kılavuzda görünür. **Sütun ayarlarıyla**hangi sütunların görünür olacağını seçebilirsiniz.
+Metadize arama sekmesi, verilerle ilgili sorunları gidermek için kullanışlıdır. Üst yarısında, özniteliklerin birleşimini temel alarak bir sorgu oluşturabilirsiniz. Sorgunuzun memnun olduğunuzda **Ara**' ya tıklayın. Sonuç, alt kılavuzda görünür. **Sütun ayarlarıyla** hangi sütunların görünür olacağını seçebilirsiniz.
 
 Arama sonuçlarında, [metadize nesne özelliklerini](tshoot-connect-object-not-syncing.md#metaverse-object-properties)görmek için bir nesne ve **Özellikler** seçin.
 

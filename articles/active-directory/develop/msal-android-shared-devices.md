@@ -1,7 +1,7 @@
 ---
 title: Android cihazlar için paylaşılan cihaz modu
 titleSuffix: Microsoft identity platform | Azure
-description: Firstline çalışanlarının bir Android cihazını paylaşmasına izin vermek için paylaşılan cihaz modunu etkinleştirmeyi öğrenin
+description: Frontline çalışanlarının bir Android cihazını paylaşmasına izin vermek için paylaşılan cihaz modunu etkinleştirmeyi öğrenin
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,16 +13,16 @@ ms.date: 03/31/2020
 ms.author: marsma
 ms.reviewer: hahamil
 ms.custom: aaddev, identitypla | Azuretformtop40
-ms.openlocfilehash: a67e0d851ab544f737097eff9a884752cff9f5fc
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: bafd6dade626376f216a271c7b3cadc9b429989a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103491578"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578830"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>Android cihazlar için paylaşılan cihaz modu
 
-Retail Associates, uçuş ekibi üyeleri ve alan hizmeti çalışanları gibi Firstline çalışanları genellikle işlerini yapmak için paylaşılan bir mobil cihaz kullanır. Bu, paylaşılan cihazdaki müşteri ve iş verilerine erişmek üzere parolaları paylaşmaya veya PIN numaralarını açtıklarında sorunlu hale gelir.
+Retail Associates, uçuş ekibi üyeleri ve alan hizmeti çalışanları gibi Frontline çalışanları genellikle işlerini yapmak için paylaşılan bir mobil cihaz kullanır. Bu, paylaşılan cihazdaki müşteri ve iş verilerine erişmek üzere parolaları paylaşmaya veya PIN numaralarını açtıklarında sorunlu hale gelir.
 
 Paylaşılan cihaz modu, bir Android cihazını birden çok çalışan tarafından kolayca paylaşılabilecek şekilde yapılandırmanıza olanak tanır. Çalışanlar oturum açabilir ve müşteri bilgilerine hızlıca erişebilir. Bunlar, vardiyası veya göreviyle bitdiklerinde cihazda oturum açabilir ve bir sonraki çalışanın kullanması için hemen hazır olacaktır.
 
@@ -85,7 +85,7 @@ Aşağıdaki farklar, uygulamanızın paylaşılan veya kişisel bir cihazda ça
 
 ## <a name="why-you-may-want-to-only-support-single-account-mode"></a>Neden yalnızca tek hesap modunu desteklemek isteyebilirsiniz
 
-Yalnızca bir paylaşılan cihaz kullanan ilk satır çalışanları için kullanılacak bir uygulama yazıyorsanız, uygulamanızı yalnızca tek hesap modunu destekleyecek şekilde yazmanızı öneririz. Bu, tıp kayıtları uygulamaları, fatura uygulamaları ve çoğu iş kolu uygulaması gibi görev odaklı birçok uygulamayı içerir. Çoklu hesap uygulamalarının parçası olan ek özellikleri uygulamanız gerekmediğinden, yalnızca tek hesap modunu desteklemek geliştirmeyi basitleştirir.
+Yalnızca paylaşılan bir cihaz kullanan saflarda çalışanları için kullanılacak bir uygulama yazıyorsanız, uygulamanızı yalnızca tek hesap modunu destekleyecek şekilde yazmanızı öneririz. Bu, tıp kayıtları uygulamaları, fatura uygulamaları ve çoğu iş kolu uygulaması gibi görev odaklı birçok uygulamayı içerir. Çoklu hesap uygulamalarının parçası olan ek özellikleri uygulamanız gerekmediğinden, yalnızca tek hesap modunu desteklemek geliştirmeyi basitleştirir.
 
 ## <a name="what-happens-when-the-device-mode-changes"></a>Cihaz modu değiştiğinde ne olur?
 
@@ -103,4 +103,4 @@ Aşağıdaki diyagramda, uygulamanız çalışırken ortaya çıkabilecek genel 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir Firstline çalışan uygulamasının paylaşılan mod Android cihazında nasıl çalıştırılacağını gösteren [Android uygulama öğreticinizdeki paylaşılan cihaz modunu kullanın '](tutorial-v2-shared-device-mode.md) i deneyin.
+Android uygulamanızda bir paylaşılan mod Android cihazında, saflarda çalışan uygulamasının nasıl çalıştırılacağını gösteren [paylaşılan cihaz modunu kullanma öğreticinizi](tutorial-v2-shared-device-mode.md) deneyin.

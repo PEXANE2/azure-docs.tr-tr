@@ -16,13 +16,13 @@ ms.workload: na
 ms.date: 06/14/2020
 ms.author: yelevin
 ms.openlocfilehash: 14928d3c94ced8d1cd0c12e76428be73b68b91d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84783172"
 ---
-# <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>Tehditleri algılamak için Azure Sentinel 'de canlı akışı 'i kullanma
+# <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>Tehditleri algılamak için Azure Sentinel'de avlanma canlı akışını kullanma
 
 Yeni oluşturulan sorguları olay meydana geldiğinde test etmenize olanak sağlayan etkileşimli oturumlar oluşturmak, bir eşleşme bulunduğunda oturumlardan bildirimler almak ve gerekirse araştırmalar başlatmak için canlı akışı 'i kullanın. Herhangi bir Log Analytics sorgusunu kullanarak hızlı bir şekilde canlı akış oturumu oluşturabilirsiniz.
 
@@ -48,7 +48,7 @@ Mevcut bir arama sorgusundan canlı akışı oturumu oluşturabilir veya oturumu
 1. Bir hunme sorgusundan canlı akış oturumu oluşturmak için:
     
     1. **Sorgular** sekmesinden kullanılacak arama sorgusunu bulun.
-    1. Sorguya sağ tıklayın ve **canlı akışı 'e Ekle**' yi seçin. Örneğin:
+    1. Sorguya sağ tıklayın ve **canlı akışı 'e Ekle**' yi seçin. Örnek:
     
     > [!div class="mx-imgBorder"]
     > ![Azure Sentinel arama sorgusundan Livestream oturumu oluşturma](./media/livestream/livestream-from-query.png)
@@ -76,9 +76,9 @@ Mevcut bir arama sorgusundan canlı akışı oturumu oluşturabilir veya oturumu
 
 ## <a name="view-your-livestream-sessions"></a>Canlı akışı oturumlarınızı görüntüleyin
 
-1. Azure Portal, **Sentinel**  >  **tehdit yönetimi**için  >  **Hunting**  >  **Livestream** sekmesine gidin.
+1. Azure Portal, **Sentinel**  >  **tehdit yönetimi** için  >    >  **Livestream** sekmesine gidin.
 
-1. Görüntülemek veya düzenlemek istediğiniz canlı akışı oturumunu seçin. Örneğin:
+1. Görüntülemek veya düzenlemek istediğiniz canlı akışı oturumunu seçin. Örnek:
     
     > [!div class="mx-imgBorder"]
     > ![Azure Sentinel arama sorgusundan canlı akışı oturumu oluşturma](./media/livestream/livestream-tab.png)
@@ -87,7 +87,7 @@ Mevcut bir arama sorgusundan canlı akışı oturumu oluşturabilir veya oturumu
 
 ## <a name="receive-notifications-when-new-events-occur"></a>Yeni olaylar gerçekleştiğinde bildirim alın
 
-Yeni olaylar için canlı akışı bildirimleri Azure Portal bildirimleri kullandığından, Azure Portal her kullanışınızda bu bildirimleri görürsünüz. Örneğin:
+Yeni olaylar için canlı akışı bildirimleri Azure Portal bildirimleri kullandığından, Azure Portal her kullanışınızda bu bildirimleri görürsünüz. Örnek:
 
 ![Canlı akışı için Azure Portal bildirimi](./media/livestream/notification.png)
 

@@ -19,10 +19,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cc0c8c40e370579100c562e0289c97e3f5ce4236
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91274121"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Active Directory Federasyon Hizmetleri (AD FS) Azure AD Connect kullanarak yönetin ve özelleştirin
@@ -158,7 +158,7 @@ AD FS için alternatif oturum açma KIMLIĞINI yapılandırmak iki ana adımdan 
 
 Azure AD Connect kullanarak Azure AD ile Federasyon oluşturulacak bir etki alanı kolayca eklenebilir. Azure AD Connect, Federasyon için etki alanı ekler ve Azure AD ile federe birden fazla etki alanınız olduğunda sertifikayı vereni doğru şekilde yansıtmak için talep kurallarını değiştirir.
 
-1. Bir Federasyon etki alanı eklemek için, **ek bir Azure AD etki alanı Ekle**görevini seçin.
+1. Bir Federasyon etki alanı eklemek için, **ek bir Azure AD etki alanı Ekle** görevini seçin.
 
    ![Ek Azure AD etki alanı](./media/how-to-connect-fed-management/AdditionalDomain1.PNG)
 
@@ -200,7 +200,7 @@ Set-AdfsWebTheme -TargetName default -Logo @{path="c:\Contoso\logo.PNG"}
 > *TargetName* parametresi gereklidir. AD FS ile yayınlanan varsayılan tema varsayılan olarak adlandırılır.
 
 ## <a name="add-a-sign-in-description"></a><a name="addsignindescription"></a>Oturum açma açıklaması ekle 
-**Oturum açma sayfasına**bir oturum açma sayfası açıklaması eklemek Için aşağıdaki Windows PowerShell cmdlet 'ini ve sözdizimini kullanın.
+**Oturum açma sayfasına** bir oturum açma sayfası açıklaması eklemek Için aşağıdaki Windows PowerShell cmdlet 'ini ve sözdizimini kullanın.
 
 ```azurepowershell-interactive
 Set-AdfsGlobalWebContent -SignInPageDescriptionText "<p>Sign-in to Contoso requires device registration. Click <A href='http://fs1.contoso.com/deviceregistration/'>here</A> for more information.</p>"
@@ -223,9 +223,9 @@ c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccou
 => add(store = "Active Directory", types = ("http://contoso.com/ws/2016/02/identity/claims/objectguid", "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"), query = "; objectGuid,ms-ds-consistencyguid;{0}", param = c.Value);
 ```
 
-Bu kuralda, kullanıcının Active Directory için **MS-DS-ımlıguıd** ve **Objectguıd** değerlerini sorgulıyoruz. Mağaza adını AD FS dağıtımınızda uygun bir mağaza adıyla değiştirin. Ayrıca, **Objectguıd** ve **MS-DS-ımıbu GUID**için tanımlanan şekilde, talep türünü Federasyonun uygun bir talep türüyle değiştirin.
+Bu kuralda, kullanıcının Active Directory için **MS-DS-ımlıguıd** ve **Objectguıd** değerlerini sorgulıyoruz. Mağaza adını AD FS dağıtımınızda uygun bir mağaza adıyla değiştirin. Ayrıca, **Objectguıd** ve **MS-DS-ımıbu GUID** için tanımlanan şekilde, talep türünü Federasyonun uygun bir talep türüyle değiştirin.
 
-Ayrıca, **Ekle** ve **Hayır ' ı**kullanarak varlık için giden bir sorun eklemekten kaçının ve değerleri ara değer olarak kullanabilir. Sabit KIMLIK olarak kullanılacak değeri belirledikten sonra talebi sonraki bir kuralda verirsiniz.
+Ayrıca, **Ekle** ve **Hayır ' ı** kullanarak varlık için giden bir sorun eklemekten kaçının ve değerleri ara değer olarak kullanabilir. Sabit KIMLIK olarak kullanılacak değeri belirledikten sonra talebi sonraki bir kuralda verirsiniz.
 
 **Kural 2: Kullanıcı için ms-DS-ımfbu GUID olup olmadığını denetleyin**
 
@@ -234,7 +234,7 @@ NOT EXISTS([Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsisten
 => add(Type = "urn:anandmsft:tmp/idflag", Value = "useguid");
 ```
 
-Bu kural, Kullanıcı için doldurulmuş bir **MS-DS-ımıbu GUID** yoksa **useguıd** olarak ayarlanan **ıdflag** adlı geçici bir bayrak tanımlar. Bunun arkasındaki mantık AD FS, boş talepler için izin vermediği bir olgu olur. Bu nedenle, talepler eklediğinizde `http://contoso.com/ws/2016/02/identity/claims/objectguid` ve `http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid` Kural 1 ' de, yalnızca değerin Kullanıcı için doldurulması durumunda bir **msdsıse, GUID** talebi ile sona erdir. Doldurulmamışsa, AD FS boş bir değere sahip olacağını görür ve hemen bırakır. Tüm nesneler **Objectguıd**değerini alacak, bu nedenle kural 1 yürütüldükten sonra talep her zaman olur.
+Bu kural, Kullanıcı için doldurulmuş bir **MS-DS-ımıbu GUID** yoksa **useguıd** olarak ayarlanan **ıdflag** adlı geçici bir bayrak tanımlar. Bunun arkasındaki mantık AD FS, boş talepler için izin vermediği bir olgu olur. Bu nedenle, talepler eklediğinizde `http://contoso.com/ws/2016/02/identity/claims/objectguid` ve `http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid` Kural 1 ' de, yalnızca değerin Kullanıcı için doldurulması durumunda bir **msdsıse, GUID** talebi ile sona erdir. Doldurulmamışsa, AD FS boş bir değere sahip olacağını görür ve hemen bırakır. Tüm nesneler **Objectguıd** değerini alacak, bu nedenle kural 1 yürütüldükten sonra talep her zaman olur.
 
 **Kural 3: varsa, ms-DS-ımıdnbu GUID 'yi sabit KIMLIK olarak verme**
 

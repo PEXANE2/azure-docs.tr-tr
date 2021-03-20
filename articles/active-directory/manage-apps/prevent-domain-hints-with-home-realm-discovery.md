@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/12/2021
 ms.author: hirsin
-ms.openlocfilehash: 67cb1003e139a085d45d01617cd44647bad420f5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 53dfdfaf37695059d6d52428c2ba109970d9f7f7
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693246"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589387"
 ---
 # <a name="disable-auto-acceleration-to-a-federated-idp-during-user-sign-in-with-home-realm-discovery-policy"></a>Giriş bölgesi bulma ilkesiyle Kullanıcı oturumu sırasında bir federe ıDP 'ye otomatik hızlandırmayı devre dışı bırak
 
-[Ana bölge bulma ilkesi](https://docs.microsoft.com/graph/api/resources/homeRealmDiscoveryPolicy) (HRD) yöneticilere kullanıcıların kimliklerini nasıl ve nerede doğrulayacağını denetlemek için birden çok yol sunar. `domainHintPolicy`HRD ilkesinin bölümü, Federasyon kullanıcılarını her zaman Azure AD oturum açma sayfasını ziyaret ettiğinden ve etki alanı ipuçları nedeniyle federe IDP 'ye otomatik olarak hızlandırılmayan şekilde [Fido](../authentication/howto-authentication-passwordless-security-key.md)gibi bulut tarafından yönetilen kimlik bilgilerine geçirmeye yardımcı olmak için kullanılır.
+[Ana bölge bulma ilkesi](/graph/api/resources/homeRealmDiscoveryPolicy) (HRD) yöneticilere kullanıcıların kimliklerini nasıl ve nerede doğrulayacağını denetlemek için birden çok yol sunar. `domainHintPolicy`HRD ilkesinin bölümü, Federasyon kullanıcılarını her zaman Azure AD oturum açma sayfasını ziyaret ettiğinden ve etki alanı ipuçları nedeniyle federe IDP 'ye otomatik olarak hızlandırılmayan şekilde [Fido](../authentication/howto-authentication-passwordless-security-key.md)gibi bulut tarafından yönetilen kimlik bilgilerine geçirmeye yardımcı olmak için kullanılır.
 
 Bu ilke, uygulamaların bir yöneticinin oturum açma işlemi sırasında etki alanı Ekle ipuçlarını denetleyemediği veya güncelleştiremediği durumlarda gereklidir.  Örneğin, kullanıcıyı `outlook.com/contoso.com` `&domain_hint=contoso.com` doğrudan etki alanı için Federal IDP 'ye otomatik olarak hızlandırmak üzere eklenen parametresi ile bir oturum açma sayfasına gönderir `contoso.com` . Federal ıDP 'ye gönderilen yönetilen kimlik bilgilerine sahip kullanıcılar, yönetilen kimlik bilgilerini kullanarak oturum açıp rastgele oturum açma deneyimleri olan güvenliği ve sinir bozucu kullanıcıları azaltır. Yöneticilerin yönetilen kimlik bilgilerini kullanıma almasını sağlayan Yöneticiler, kullanıcıların her zaman yönetilen kimlik bilgilerini kullanmasını sağlamak için [Bu ilkeyi de ayarlamanıza](#suggested-use-within-a-tenant) olanak sağlar.
 
@@ -101,7 +101,7 @@ Federasyon etki alanlarının yöneticileri, HRD ilkesinin bu bölümünü dört
 
 ## <a name="configuring-policy-through-graph-explorer"></a>Graph Explorer aracılığıyla ilke yapılandırma
 
-Microsoft Graph kullanarak [HRD ilkesini](https://docs.microsoft.com/graph/api/resources/homeRealmDiscoveryPolicy) her zamanki gibi ayarlayın.  
+Microsoft Graph kullanarak [HRD ilkesini](/graph/api/resources/homeRealmDiscoveryPolicy) her zamanki gibi ayarlayın.  
 
 1. [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)'da Policy. ReadWrite. ApplicationConfiguration iznini verin.  
 1. URL 'YI kullan `https://graph.microsoft.com/v1.0/policies/homeRealmDiscoveryPolicies`

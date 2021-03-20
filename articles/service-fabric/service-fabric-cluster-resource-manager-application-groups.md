@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 988c7ce52125800c16aa785d5b1458604a927ecd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75452143"
 ---
 # <a name="introduction-to-application-groups"></a>Uygulama gruplarına giriş
@@ -177,7 +177,7 @@ ApplicationLoad sorgusu, uygulama için belirtilen uygulama kapasitesi hakkında
 * Uygulama kapasitesi: uygulama yükünün izin verilen en yüksek değeri.
 
 ## <a name="removing-application-capacity"></a>Uygulama kapasitesini kaldırma
-Uygulama kapasitesi parametreleri bir uygulama için ayarlandıktan sonra, uygulama API 'Lerini veya PowerShell cmdlet 'lerini kullanarak bu uygulamalar kaldırılabilir. Örneğin:
+Uygulama kapasitesi parametreleri bir uygulama için ayarlandıktan sonra, uygulama API 'Lerini veya PowerShell cmdlet 'lerini kullanarak bu uygulamalar kaldırılabilir. Örnek:
 
 ``` posh
 Update-ServiceFabricApplication –Name fabric:/MyApplication1 –RemoveApplicationCapacity

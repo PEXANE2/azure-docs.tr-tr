@@ -7,10 +7,10 @@ ms.date: 06/20/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 ms.openlocfilehash: bafebcc54e4cbde87e8deb776eff227fc99035cc
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98623863"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-azure-sql-database-app-in-azure-app-service"></a>Öğretici: Azure App Service ASP.NET Core ve Azure SQL veritabanı uygulaması oluşturma
@@ -29,7 +29,7 @@ ms.locfileid: "98623863"
 
 ![App Service’te çalışan uygulama](./media/tutorial-dotnetcore-sqldb-app/azure-app-in-browser.png)
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure’da SQL Veritabanı oluşturma
@@ -462,7 +462,7 @@ ASP.NET Core uygulama Azure App Service çalışırken konsol günlüklerini Clo
 Örnek proje, iki yapılandırma değişikliğiyle [Azure 'da ASP.NET Core oturum açma](/aspnet/core/fundamentals/logging#azure-app-service-provider) kılavuzundaki kılavuza zaten uyar:
 
 - `Microsoft.Extensions.Logging.AzureAppServices` *Dotnetcoressqldb. csproj* içinde öğesine bir başvuru içerir.
-- `loggerFactory.AddAzureWebAppDiagnostics()` *Program.cs* içindeki çağrılar.
+- `loggerFactory.AddAzureWebAppDiagnostics()` *Program. cs* içindeki çağrılar.
 
 App Service ASP.NET Core [günlük düzeyini](/aspnet/core/fundamentals/logging#log-level) varsayılan düzeyden olarak ayarlamak için `Information` `Error` , [`az webapp log config`](/cli/azure/webapp/log#az-webapp-log-config) Cloud Shell komutunu kullanın.
 

@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, Azure, algılayıcı, SDK, derinlik Kamerası, TOF, ilkeler, performans, ınvalidation
 ms.openlocfilehash: 22f04b983ed7c6a2ab19a5c1c709621655ee31c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85277667"
 ---
 # <a name="azure-kinect-dk-depth-camera"></a>Azure Kinect DK derinlik Kamerası
@@ -44,7 +44,7 @@ Derinlik kameranın teknik özellikleri şunlardır:
 
 Derinlik Kamerası, ham modüle edilmiş IR görüntülerini ana BILGISAYARA iletir. BILGISAYARDA, GPU hızlandırılmış derinlik altyapısı yazılımı, Ham sinyali derinlik haritalarına dönüştürür.Derinlik Kamerası, çeşitli modları destekler. **Görünüm (FoV) modlarının dar alanı** X ve Y boyutlarındaki daha küçük kapsamlar, ancak Z boyutunda daha büyük kapsamlar içeren sahneler için idealdir. Sahnenin büyük X ve Y kapsamları varsa, ancak daha küçük bir Z aralığı varsa, **geniş FoV modları** daha uygundur.
 
-Derinlik Kamerası, uygun **olmayan modlar**Ile Karşılaştırılacak Z aralığını genişletmek için **2x2 özellikli modlarını** destekler. Atma işlemi, görüntü çözünürlüğünü düşürmek için yapılır. Tüm modlar, en fazla 15 fps kare hızında çalışan 1 megapel (MP) modu dışında, saniyede 30 ' a kadar kare (fps) ile çalıştırılabilir. Derinlik Kamerası Ayrıca **Pasif BIR IR modu**sağlar. Bu modda, kameradaki aydınlatma etkin değildir ve yalnızca çevresel aydınlatma izlenir.
+Derinlik Kamerası, uygun **olmayan modlar** Ile Karşılaştırılacak Z aralığını genişletmek için **2x2 özellikli modlarını** destekler. Atma işlemi, görüntü çözünürlüğünü düşürmek için yapılır. Tüm modlar, en fazla 15 fps kare hızında çalışan 1 megapel (MP) modu dışında, saniyede 30 ' a kadar kare (fps) ile çalıştırılabilir. Derinlik Kamerası Ayrıca **Pasif BIR IR modu** sağlar. Bu modda, kameradaki aydınlatma etkin değildir ve yalnızca çevresel aydınlatma izlenir.
 
 ## <a name="camera-performance"></a>Kamera performansı
 
@@ -56,7 +56,7 @@ Sistematik hata, gürültü kaldırma sonrasında ölçülen derinlik ve doğru 
 
 ![Derinlik sistematik hata](./media/concepts/depth-camera-systematic-error.png)
 
-Burada *d<sub>t</sub> * , *t*zamanında ölçü derinliğini, *N* ise ortalama yordamda kullanılan çerçeve sayısını ve *d<sub>gt</sub> * 'nin taban bir derinlik olduğunu gösterir.
+Burada *d <sub>t</sub>* , *t* zamanında ölçü derinliğini, *N* ise ortalama yordamda kullanılan çerçeve sayısını ve *d <sub>gt</sub>* 'nin taban bir derinlik olduğunu gösterir.
 
 Derinlik kameranın sistematik hata belirtimi çok yollu girişim 'yi (MPı) dışlanıyor. MPı, bir algılayıcı pikselin birden fazla nesne tarafından yansıtılan ışığı tümleştirtiği bir. MPı daha sonra daha sonra açıklayacağımızı derinlemesine bir şekilde daha yüksek modülasyon sıklıklarıyla birlikte derinlemesine bir şekilde azalmaktadır.
 
@@ -66,7 +66,7 @@ Kamerayı taşımadan aynı nesnenin 100 görüntüsünü ele alalım. Nesnenin 
 
 ![Derinlik rastgele hatası](./media/concepts/depth-camera-random-error.png)
 
-Burada *N* , *derinlik ölçümlerinin sayısını belirtir. d<sub>t</sub>* *<sub>t</sub> * , *t* ve *d* tüm derinlik ölçümlerine göre hesaplanan ortalama değeri gösterir.
+Burada *N* , *derinlik ölçümlerinin sayısını belirtir. d <sub></sub>* *<sub>t</sub>* , *t* ve *d* tüm derinlik ölçümlerine göre hesaplanan ortalama değeri gösterir.
 
 ## <a name="invalidation"></a>Geçersiz kılma
 

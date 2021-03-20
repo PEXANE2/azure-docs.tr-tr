@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
 ms.openlocfilehash: b3806d768e8335801e2dd097eac7a440b157de38
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92444766"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-highgear"></a>Öğretici: Highdişli ile tümleştirme Azure Active Directory
@@ -30,7 +30,7 @@ Highdişli 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Highdişli ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -61,13 +61,13 @@ Highdişli 'ın Azure AD ile tümleştirilmesini yapılandırmak için galeridek
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **highdişli**yazın, sonuç panelinden **highdişli** ' ı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna **highdişli** yazın, sonuç panelinden **highdişli** ' ı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
      ![Sonuçlar listesinde Highdişli](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre highdişli SISTEMINIZLE Azure AD çoklu oturum açmayı yapılandırma ve test etme hakkında bilgi edinebilirsiniz.
+Bu bölümde, **Britta Simon** adlı bir test kullanıcısına göre highdişli SISTEMINIZLE Azure AD çoklu oturum açmayı yapılandırma ve test etme hakkında bilgi edinebilirsiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasındaki bir bağlantı ilişkisinin, üst düzey sisteminizin kurulması gerekir.
 
 Azure AD çoklu oturum açma 'yı Highdişli sisteminizle yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -175,9 +175,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.

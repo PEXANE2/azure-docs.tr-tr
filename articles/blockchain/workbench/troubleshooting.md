@@ -5,10 +5,10 @@ ms.date: 10/14/2019
 ms.topic: troubleshooting
 ms.reviewer: brendal
 ms.openlocfilehash: 20c0f9bdd6f820a73b1ba6660de805268c0d8714
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85212862"
 ---
 # <a name="azure-blockchain-workbench-preview-troubleshooting"></a>Azure blok zinciri ekranı önizleme sorunlarını giderme
@@ -35,7 +35,7 @@ git clone https://github.com/Azure-Samples/blockchain.git
 ## <a name="run-the-script"></a>Betiği çalıştırın
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
-`collectBlockchainWorkbenchTroubleshooting.ps1`Günlükleri toplamak ve sorun giderme bilgileri klasörünü içeren BIR ZIP dosyası oluşturmak için betiği çalıştırın. Örneğin:
+`collectBlockchainWorkbenchTroubleshooting.ps1`Günlükleri toplamak ve sorun giderme bilgileri klasörünü içeren BIR ZIP dosyası oluşturmak için betiği çalıştırın. Örnek:
 
 ``` powershell
 collectBlockchainWorkbenchTroubleshooting.ps1 -SubscriptionID "<subscription_id>" -ResourceGroupName "workbench-resource-group-name"
@@ -44,19 +44,19 @@ Betik aşağıdaki parametreleri kabul eder:
 
 | Parametre  | Açıklama | Gerekli |
 |---------|---------|----|
-| SubscriptionID | Tüm kaynakları oluşturmak veya bulmak için SubscriptionID. | Evet |
-| ResourceGroupName | Blok zinciri çalışma ekranının dağıtıldığı Azure Kaynak grubunun adı. | Evet |
-| OutputDirectory | Çıktının oluşturulacağı yol. ZIP dosyası. Belirtilmezse, varsayılan olarak geçerli dizini alır. | Hayır |
-| Geriye yönelik saat | Telemetri çekme sırasında kullanılacak saat sayısı. Varsayılan değer 24 saattir. Maksimum değer 90 saattir | Hayır |
-| Omssubscriptionıd | Azure Izleyici günlüklerinin dağıtıldığı abonelik KIMLIĞI. Bu parametreyi yalnızca blok zinciri ağı için Azure Izleyici günlükleri blok zinciri çalışma ekranının kaynak grubu dışında dağıtılırsa geçirin.| Hayır |
-| OmsResourceGroup |Azure Izleyici günlüklerinin dağıtıldığı kaynak grubu. Bu parametreyi yalnızca blok zinciri ağı için Azure Izleyici günlükleri blok zinciri çalışma ekranının kaynak grubu dışında dağıtılırsa geçirin.| Hayır |
-| Omsçalışmaalanıadı | Log Analytics çalışma alanı adı. Bu parametreyi yalnızca blok zinciri ağı için Azure Izleyici günlüklerinin, blok zinciri çalışma ekranının kaynak grubu dışında dağıtılırsa geçirin | Hayır |
+| SubscriptionID | Tüm kaynakları oluşturmak veya bulmak için SubscriptionID. | Yes |
+| ResourceGroupName | Blok zinciri çalışma ekranının dağıtıldığı Azure Kaynak grubunun adı. | Yes |
+| OutputDirectory | Çıktının oluşturulacağı yol. ZIP dosyası. Belirtilmezse, varsayılan olarak geçerli dizini alır. | No |
+| Geriye yönelik saat | Telemetri çekme sırasında kullanılacak saat sayısı. Varsayılan değer 24 saattir. Maksimum değer 90 saattir | No |
+| Omssubscriptionıd | Azure Izleyici günlüklerinin dağıtıldığı abonelik KIMLIĞI. Bu parametreyi yalnızca blok zinciri ağı için Azure Izleyici günlükleri blok zinciri çalışma ekranının kaynak grubu dışında dağıtılırsa geçirin.| No |
+| OmsResourceGroup |Azure Izleyici günlüklerinin dağıtıldığı kaynak grubu. Bu parametreyi yalnızca blok zinciri ağı için Azure Izleyici günlükleri blok zinciri çalışma ekranının kaynak grubu dışında dağıtılırsa geçirin.| No |
+| Omsçalışmaalanıadı | Log Analytics çalışma alanı adı. Bu parametreyi yalnızca blok zinciri ağı için Azure Izleyici günlüklerinin, blok zinciri çalışma ekranının kaynak grubu dışında dağıtılırsa geçirin | No |
 
 ## <a name="what-is-collected"></a>Ne toplanır?
 
 Çıkış ZIP dosyası aşağıdaki klasör yapısını içerir:
 
-| Klasör veya dosya | Açıklama  |
+| Klasör veya dosya | Description  |
 |---------|---------|
 | \Summary.txt | Sistemin Özeti |
 | \Metrics\blockzinciri | Blok zinciri hakkında ölçümler |

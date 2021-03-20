@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: df8722e8160538daa1535711092790dbb2405097
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84807027"
 ---
 # <a name="use-certificates-with-letsencryptorg-on-application-gateway-for-aks-clusters"></a>AKS kümeleri için Application Gateway on LetsEncrypt.org ile Sertifikalar kullanma
@@ -58,7 +58,7 @@ Mevcut AKS kümenize [CERT-Manager](https://docs.cert-manager.io) yüklemek içi
 
     Bir `ClusterIssuer` kaynak oluşturun. `cert-manager` `Lets Encrypt` İmzalı sertifikaların elde edildiği sertifika yetkilisini göstermek için bu gereklidir.
 
-    `ClusterIssuer`Sertifika Yöneticisi, gösterilemez olmayan kaynağı kullanarak birden çok ad alanından tüketilen sertifikalar verecek. `Let’s Encrypt` , belirli bir etki alanı adını kontrol ettiğini ve size bir sertifika verildiğinizi doğrulamak için ACME protokolünü kullanır. Burada özellikleri yapılandırma hakkında daha fazla bilgi `ClusterIssuer` . [here](https://docs.cert-manager.io/en/latest/tasks/issuers/index.html) `ClusterIssuer``cert-manager`, `Lets Encrypt` sınama için kullanılan hazırlama ortamını (tarayıcı/istemci güven depolarında bulunmayan kök sertifika) kullanarak sertifika vermesini yönlendirir.
+    `ClusterIssuer`Sertifika Yöneticisi, gösterilemez olmayan kaynağı kullanarak birden çok ad alanından tüketilen sertifikalar verecek. `Let’s Encrypt` , belirli bir etki alanı adını kontrol ettiğini ve size bir sertifika verildiğinizi doğrulamak için ACME protokolünü kullanır. Burada özellikleri yapılandırma hakkında daha fazla bilgi `ClusterIssuer` . [](https://docs.cert-manager.io/en/latest/tasks/issuers/index.html) `ClusterIssuer``cert-manager`, `Lets Encrypt` sınama için kullanılan hazırlama ortamını (tarayıcı/istemci güven depolarında bulunmayan kök sertifika) kullanarak sertifika vermesini yönlendirir.
 
     Aşağıdaki YAML 'de varsayılan sınama türü ' dir `http01` . Diğer sorunlar [letsencrypt.org-Challenge türlerinde](https://letsencrypt.org/docs/challenge-types/) belgelenmiştir
 

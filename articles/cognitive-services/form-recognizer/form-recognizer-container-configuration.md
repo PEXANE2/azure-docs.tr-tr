@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: aahi
 ms.openlocfilehash: 324b70fc810acc4faba4f488f821049f7eb0875e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86538012"
 ---
 # <a name="configure-form-recognizer-containers"></a>Form tanıyıcı kapsayıcılarını yapılandırma
@@ -35,7 +35,7 @@ Form tanıyıcı kapsayıcısı çalışma zamanı ortamını `docker run` komut
 
 `ApiKey`Ayar, kapsayıcının fatura bilgilerini izlemek için kullanılan Azure Kaynak anahtarını belirtir. ApiKey değeri, "Faturalandırma yapılandırma ayarı" bölümünde için belirtilen _form tanıyıcı_ kaynağı için geçerli bir anahtar olmalıdır `Billing` .
 
-Bu ayarı, Azure portal, **anahtarlar**altında, **form tanıyıcı kaynak yönetimi**' nde bulabilirsiniz.
+Bu ayarı, Azure portal, **anahtarlar** altında, **form tanıyıcı kaynak yönetimi**' nde bulabilirsiniz.
 
 ## <a name="applicationinsights-setting"></a>ApplicationInsights ayarı
 
@@ -45,9 +45,9 @@ Bu ayarı, Azure portal, **anahtarlar**altında, **form tanıyıcı kaynak yöne
 
 `Billing`Ayar, Azure 'da kapsayıcı için fatura bilgilerini ölçmek için kullanılan _form tanıyıcı_ KAYNAĞıNıN uç nokta URI 'sini belirtir. Bu yapılandırma ayarının değeri, Azure 'daki bir _form tanıyıcı_ kaynağı için geçerli bir uç nokta URI 'si olmalıdır. Kapsayıcı her 10 ila 15 dakikada bir kullanım raporu sağlar.
 
-Bu ayarı, Azure portal, **uç nokta**altında **form tanıyıcıya genel bakış**' da bulabilirsiniz.
+Bu ayarı, Azure portal, **uç nokta** altında **form tanıyıcıya genel bakış**' da bulabilirsiniz.
 
-|Gerekli| Adı | Veri türü | Açıklama |
+|Gerekli| Name | Veri türü | Açıklama |
 |--|------|-----------|-------------|
 |Evet| `Billing` | Dize | Faturalama uç noktası URI 'SI. Faturalandırma URI 'sini alma hakkında daha fazla bilgi için bkz. [gerekli parametreleri toplama](form-recognizer-container-howto.md#gathering-required-parameters). Daha fazla bilgi ve bölgesel uç noktaların tamamen listesi için bkz. bilişsel [Hizmetler Için özel alt etki alanı adları](../cognitive-services-custom-subdomains.md). |
 
@@ -76,10 +76,10 @@ Form tanıyıcı kapsayıcısı, bir giriş bağlama ve çıkış bağlama gerek
 
 Konak bağlama konumunun tam sözdizimi, ana bilgisayar işletim sistemine bağlı olarak değişir. Ayrıca, Docker hizmet hesabı izinleri ile konak bağlama konumu izinleri arasındaki bir çakışma nedeniyle [ana bilgisayarın](form-recognizer-container-howto.md#the-host-computer) bağlama konumuna erişilemiyor olabilir.
 
-|İsteğe Bağlı| Adı | Veri türü | Açıklama |
+|İsteğe Bağlı| Name | Veri türü | Açıklama |
 |-------|------|-----------|-------------|
-|Gerekli| `Input` | Dize | Giriş bağlama hedefi. Varsayılan değer: `/input`.    <br><br>Örnek:<br>`--mount type=bind,src=c:\input,target=/input`|
-|Gerekli| `Output` | Dize | Çıkış bağlama hedefi. Varsayılan değer: `/output`.  <br><br>Örnek:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Gerekli| `Input` | Dize | Giriş bağlama hedefi. `/input` varsayılan değerdir.    <br><br>Örnek:<br>`--mount type=bind,src=c:\input,target=/input`|
+|Gerekli| `Output` | Dize | Çıkış bağlama hedefi. `/output` varsayılan değerdir.  <br><br>Örnek:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Örnek Docker Run komutları
 

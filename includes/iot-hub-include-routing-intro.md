@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -9,10 +9,10 @@ ms.date: 03/05/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 552a40be0c069d1002ebc7ea4dafe0d6f93a5755
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85128199"
 ---
 [İleti yönlendirme](../articles/iot-hub/iot-hub-devguide-messages-d2c.md) , IoT cihazlarınızdaki telemetri verilerini, yerleşik Olay Hub 'ı ile uyumlu uç noktalara veya blob depolama, Service Bus kuyrukları, Service Bus konuları ve Event Hubs gibi özel uç noktalara göndermeye olanak sağlar. Özel ileti yönlendirmeyi yapılandırmak için, belirli bir koşulla eşleşen yolu özelleştirmek üzere [yönlendirme sorguları](../articles/iot-hub/iot-hub-devguide-routing-query-syntax.md) oluşturursunuz. Ayarlandıktan sonra, gelen veriler IoT Hub'ı tarafından otomatik olarak uç noktalara yönlendirilir. Bir ileti tanımlanmış yönlendirme sorgularının hiçbiriyle eşleşmezse, varsayılan uç noktaya yönlendirilir.
@@ -36,7 +36,7 @@ Bu öğreticinin 1. ve 2. kısmını tamamlamak için aşağıdaki görevleri ge
 > * PowerBI görselleştirmesinde ...
 > * ...sonuçları görüntüleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bu öğreticinin 1. bölümü için:
   - Bir Azure aboneliğiniz olmalıdır. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.

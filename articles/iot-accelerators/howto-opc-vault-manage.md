@@ -9,10 +9,10 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 0829d4b3fca068ddb0db2df53dd635ab7ad80bed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91281924"
 ---
 # <a name="manage-the-opc-vault-certificate-service"></a>OPC Kasası sertifika hizmetini yönetme
@@ -29,8 +29,8 @@ OPC kasasını dağıttıktan sonra kök CA sertifikası oluşturmalısınız. G
 > Yönetici rolü, veren CA sertifikasını oluşturmak veya yenilemek için gereklidir.
 
 1. Sertifika hizmetinizi adresinde açın `https://myResourceGroup-app.azurewebsites.net` ve oturum açın.
-2. **Sertifika gruplarına**gidin.
-3. Listelenen bir varsayılan sertifika grubu vardır. **Düzenle**’yi seçin.
+2. **Sertifika gruplarına** gidin.
+3. Listelenen bir varsayılan sertifika grubu vardır. **Düzenle**'yi seçin.
 4. **Sertifika grubu ayrıntılarını Düzenle**' de, CA ve uygulama sertifikalarınızın konu adını ve ömrünü değiştirebilirsiniz. Konu ve yaşam süreleri yalnızca ilk CA sertifikası verilmeden önce bir kez ayarlanmalıdır. İşlemler sırasında yaşam süresi değişiklikleri, verilen sertifikaların ve CRL 'lerin tutarsız ömürleri oluşmasına neden olabilirler.
 5. Geçerli bir konu girin (örneğin, `CN=My CA Root, O=MyCompany, OU=MyDepartment` ).<br>
    > [!IMPORTANT]
@@ -38,8 +38,8 @@ OPC kasasını dağıttıktan sonra kök CA sertifikası oluşturmalısınız. G
 6. **Kaydet**’i seçin.
 7. Bu noktada "yasak" hatasıyla karşılaşırsanız, Kullanıcı kimlik bilgilerinizin yeni bir kök sertifika değiştirme veya oluşturma izni yoktur. Varsayılan olarak, hizmeti dağıtan kullanıcının hizmeti ile yönetici ve imzalama rolleri vardır. Diğer kullanıcıların, Azure Active Directory (Azure AD) uygulama kaydında uygun şekilde onaylayan, yazıcı veya yönetici rollerine eklenmesi gerekir.
 8. **Ayrıntılar**' ı seçin. Bu, güncelleştirilmiş bilgileri göstermelidir.
-9. İlk veren CA sertifikasını vermek veya veren sertifikasını yenilemek için **CA sertifikasını Yenile** ' yi seçin. Ardından **Tamam**'ı seçin.
-10. Birkaç saniye sonra **sertifika ayrıntılarını**görürsünüz. OPC UA uygulamalarınıza dağıtılmak üzere en son CA sertifikasını ve CRL 'yi indirmek için **veren** veya **CRL**' yi seçin.
+9. İlk veren CA sertifikasını vermek veya veren sertifikasını yenilemek için **CA sertifikasını Yenile** ' yi seçin. Ardından **Tamam**’ı seçin.
+10. Birkaç saniye sonra **sertifika ayrıntılarını** görürsünüz. OPC UA uygulamalarınıza dağıtılmak üzere en son CA sertifikasını ve CRL 'yi indirmek için **veren** veya **CRL**' yi seçin.
 
 Artık OPC UA sertifika yönetimi hizmeti OPC UA uygulamalarına yönelik sertifikalar vermek için hazırdır.
 
@@ -58,7 +58,7 @@ Aşağıdaki iş akışında, silinen durumlardaki tüm sertifika istekleri, ver
 2. **Sertifika grupları** sayfasına gidin.
 3. **Ayrıntılar**' ı seçin. Bu, geçerli sertifika ve CRL bilgilerini göstermelidir.
 4. OPC kasa depolama alanındaki tüm etkin veren sertifikaları için güncelleştirilmiş bir CRL vermek üzere **CRL Iptal listesini (CRL) Güncelleştir** ' i seçin.
-5. Birkaç saniye sonra **sertifika ayrıntılarını**görürsünüz. OPC UA uygulamalarınıza dağıtılmak üzere en son CA sertifikasını ve CRL 'yi indirmek için **veren** veya **CRL**' yi seçin.
+5. Birkaç saniye sonra **sertifika ayrıntılarını** görürsünüz. OPC UA uygulamalarınıza dağıtılmak üzere en son CA sertifikasını ve CRL 'yi indirmek için **veren** veya **CRL**' yi seçin.
 
 ## <a name="manage-user-roles"></a>Kullanıcı rollerini yönetme
 
@@ -69,7 +69,7 @@ Varsayılan olarak, Kiracıdaki kimliği doğrulanmış bir Kullanıcı hizmette
 ### <a name="add-user"></a>Kullanıcı ekleme
 
 1. Azure portalını açın.
-2. **Azure Active Directory**  >  **kurumsal uygulamalara**gidin.
+2. **Azure Active Directory**  >  **kurumsal uygulamalara** gidin.
 3. OPC Kasası mikro hizmetinin (varsayılan olarak, sizin) kaydını seçin `resourceGroupName-service` .
 4. **Kullanıcılar ve gruplar**'a gidin.
 5. **Kullanıcı Ekle**' yi seçin.
@@ -81,7 +81,7 @@ Varsayılan olarak, Kiracıdaki kimliği doğrulanmış bir Kullanıcı hizmette
 ### <a name="remove-user"></a>Kullanıcı kaldırma
 
 1. Azure portalını açın.
-2. **Azure Active Directory**  >  **kurumsal uygulamalara**gidin.
+2. **Azure Active Directory**  >  **kurumsal uygulamalara** gidin.
 3. OPC Kasası mikro hizmetinin (varsayılan olarak, sizin) kaydını seçin `resourceGroupName-service` .
 4. **Kullanıcılar ve gruplar**'a gidin.
 5. Kaldırılacak rolü olan bir kullanıcı seçin ve ardından **Kaldır**' ı seçin.
@@ -102,9 +102,9 @@ Varsayılan olarak, hizmet kimliği, yükseltilmiş işlemleri veya değişiklik
 5. **Yeni Ekle**' yi seçin.
 6. Şablonu atlayın. Gereksinimlerle eşleşen bir şablon yok.
 7. **Sorumluyu Seç**' i seçin ve eklenecek kullanıcıyı seçin veya kiracıya yeni bir kullanıcı davet edin.
-8. Şu **anahtar izinlerini**seçin: **Al**, **Listele**ve **imzala**.
-9. Şu **gizli izinleri**seçin: **Al**, **Listele**, **Ayarla**ve **Sil**.
-10. Aşağıdaki **Sertifika izinlerini**seçin: **Al** ve **Listele**.
+8. Şu **anahtar izinlerini** seçin: **Al**, **Listele** ve **imzala**.
+9. Şu **gizli izinleri** seçin: **Al**, **Listele**, **Ayarla** ve **Sil**.
+10. Aşağıdaki **Sertifika izinlerini** seçin: **Al** ve **Listele**.
 11. **Tamam**' ı seçin ve **Kaydet**' i seçin.
 
 #### <a name="for-an-administrator-role-the-following-permissions-must-be-added-to-key-vault"></a>Yönetici rolü için aşağıdaki izinler Key Vault eklenmelidir
@@ -116,9 +116,9 @@ Varsayılan olarak, hizmet kimliği, yükseltilmiş işlemleri veya değişiklik
 5. **Yeni Ekle**' yi seçin.
 6. Şablonu atlayın. Gereksinimlerle eşleşen bir şablon yok.
 7. **Sorumluyu Seç**' i seçin ve eklenecek kullanıcıyı seçin veya kiracıya yeni bir kullanıcı davet edin.
-8. Şu **anahtar izinlerini**seçin: **Al**, **Listele**ve **imzala**.
-9. Şu **gizli izinleri**seçin: **Al**, **Listele**, **Ayarla**ve **Sil**.
-10. Şu **Sertifika izinlerini**seçin: **alma**, **Listeleme**, **güncelleştirme**, **oluşturma**ve **içeri aktarma**.
+8. Şu **anahtar izinlerini** seçin: **Al**, **Listele** ve **imzala**.
+9. Şu **gizli izinleri** seçin: **Al**, **Listele**, **Ayarla** ve **Sil**.
+10. Şu **Sertifika izinlerini** seçin: **alma**, **Listeleme**, **güncelleştirme**, **oluşturma** ve **içeri aktarma**.
 11. **Tamam**' ı seçin ve **Kaydet**' i seçin.
 
 ### <a name="remove-user-access-policy-from-azure-key-vault"></a>Azure Key Vault Kullanıcı erişim ilkesini kaldırma

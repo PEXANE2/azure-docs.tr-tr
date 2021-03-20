@@ -4,10 +4,10 @@ description: Azure portal kullanarak Azure DevTest Labs lisanslı bir görüntü
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: e2b6e495be2257548782143517f5a970b424860c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91276365"
 ---
 # <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>Azure DevTest Labs 'da laboratuvarınızda lisanslı bir görüntüyü etkinleştirin
@@ -43,9 +43,9 @@ Lisanslı bir görüntünün laboratuvar kullanıcıları tarafından kullanıla
 
 Aşağıdaki adımları izleyerek, lisanslı bir görüntü için programlı dağıtımı etkinleştirebilirsiniz:
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) **Market görüntüleri**listesine gidin.
+1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) **Market görüntüleri** listesine gidin.
 
-1. Kullanıcıların erişimine sahip olmasını istediğiniz ancak koşulları kabul edilmeyen bir lisanslı görüntü belirler. Örneğin, **kabul edilen koşulların** veya **koşulların gözden geçirdiğine**ilişkin bir durumu gösteren bir veri bilimi sanal makinesi görebilirsiniz.
+1. Kullanıcıların erişimine sahip olmasını istediğiniz ancak koşulları kabul edilmeyen bir lisanslı görüntü belirler. Örneğin, **kabul edilen koşulların** veya **koşulların gözden geçirdiğine** ilişkin bir durumu gösteren bir veri bilimi sanal makinesi görebilirsiniz.
 
     ![Teklif durumu '/"kabul edildi" ve "hüküm incelemesi gerekiyor" olan Veri Bilimi Sanal Makinesi görüntülerini gösteren ekran görüntüsü](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-licensed-images.png)
 

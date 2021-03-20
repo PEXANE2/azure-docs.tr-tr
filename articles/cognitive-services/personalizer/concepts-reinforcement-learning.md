@@ -9,10 +9,10 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.openlocfilehash: 8b97221de4921e06ddfab610618f37683b990181
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87132747"
 ---
 # <a name="what-is-reinforcement-learning"></a>Pekiştirmeye dayalı Learning nedir?
@@ -29,13 +29,13 @@ Pekiştirmeye dayalı Learning 'in birçok alt türleri ve stilleri olsa da, kav
 
 * Uygulamanız, alternatifler listesinden bir içerik parçasını gösterme fırsatı sağlar.
 * Uygulamanız, her bir alternatif ve kullanıcının bağlamı hakkında bilgi sağlar.
-* Uygulamanız bir _ödül puanı_hesaplar.
+* Uygulamanız bir _ödül puanı_ hesaplar.
 
 Pekiştirmeye dayalı Learning 'teki bazı yaklaşımlardan farklı olarak, kişiselleştirici içinde çalışmak için bir benzetim gerektirmez. Öğrenme algoritmaları, bir dış dünyaya yanıt vermek için tasarlanmıştır (denetimi buna karşı) ve her bir veri noktasından, oluşturulacak maliyet süresi ve para (olası bir tepki kaybı) olduğunu anlamak için, bir dış dünyaya yönelik olarak tasarlanmıştır.
 
 ## <a name="what-type-of-reinforcement-learning-algorithms-does-personalizer-use"></a>Kişiselleştirici ne tür bir pekiştirmeye dayalı öğrenme algoritması kullanıyor?
 
-Geçerli kişiselleştirici sürümü, belirli bir bağlamda ayrı eylemler arasında kararlar veya seçimler yapma etrafında çerçeveli bir pekiştirmeye dayalı öğrenimine yönelik **bağlamsal Bandits**kullanır.
+Geçerli kişiselleştirici sürümü, belirli bir bağlamda ayrı eylemler arasında kararlar veya seçimler yapma etrafında çerçeveli bir pekiştirmeye dayalı öğrenimine yönelik **bağlamsal Bandits** kullanır.
 
 _Karar belleği_, bir bağlam verildiğinde mümkün olan en iyi kararı yakalamak için eğitilen model, doğrusal modeller kümesi kullanır. Bunlar, sürekli olarak çok hızlı bir şekilde gösterilen iş sonuçları ve kendini kanıtlamış bir yaklaşım, kısmen de gerçek dünyadan çok hızlı bir şekilde eğitim sağlayabildiğinden ve kısmen denetlenen öğrenme modellerini ve derin sinir ağ modellerini tamamlayabilir.
 

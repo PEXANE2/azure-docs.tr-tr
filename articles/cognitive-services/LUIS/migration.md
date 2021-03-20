@@ -6,17 +6,17 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/22/2020
 ms.openlocfilehash: d6ecacf9aa1a7e650de74a412ed4f161ed0e0790
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91253811"
 ---
 # <a name="migration-in-luis"></a>LUSıS 'e geçiş
 
 Birçok öğe bir geçiş yolunda bulunur. Nelerin etkilendiğini ve ne zaman geçiş yapmanız gerektiğini anlamak için aşağıdaki tabloyu kullanın.
 
-|Alan|Açıklama|Geçiş tamamlanma tarihi|
+|Alan|Description|Geçiş tamamlanma tarihi|
 |--|--|--|
 |[Tahmin API 'Leri](luis-migration-api-v3.md)|V3 API 'ye geçiş yapın.|TBD|
 |[Yazma API’leri](luis-migration-authoring-entities.md)|V3 API 'ye geçiş yapın.|TBD|

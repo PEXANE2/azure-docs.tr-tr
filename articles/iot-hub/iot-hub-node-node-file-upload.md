@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/28/2017
 ms.custom: mqtt, devx-track-js
 ms.openlocfilehash: db4f78e14696c421adaedd16b0b3f8d598f12846
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91251907"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-nodejs"></a>IoT Hub (Node.js) ile cihazınızdan buluta dosya yükleme
@@ -27,7 +27,7 @@ Bu öğretici, [Azure Blob depolamaya](../storage/index.yml)bir dosyayı karşı
 
 * Uygulama arka uçtaki dosyayı işlemeyi tetiklemek için karşıya dosya yükleme bildirimlerini IoT Hub kullanın.
 
-[Bir cihazdan IoT Hub 'ına hızlı başlangıç Telemetriyi](quickstart-send-telemetry-node.md) , IoT Hub temel cihazdan buluta mesajlaşma işlevlerini gösterir. Ancak, bazı senaryolarda, cihazlarınızın IoT Hub kabul ettiği görece küçük cihazdan buluta iletileri içine gönderdikleri verileri kolayca eşleyemezsiniz. Örneğin:
+[Bir cihazdan IoT Hub 'ına hızlı başlangıç Telemetriyi](quickstart-send-telemetry-node.md) , IoT Hub temel cihazdan buluta mesajlaşma işlevlerini gösterir. Ancak, bazı senaryolarda, cihazlarınızın IoT Hub kabul ettiği görece küçük cihazdan buluta iletileri içine gönderdikleri verileri kolayca eşleyemezsiniz. Örnek:
 
 * Görüntü içeren büyük dosyalar
 * Videolar
@@ -47,7 +47,7 @@ Bu öğreticinin sonunda iki Node.js konsol uygulaması çalıştırırsınız:
 
 [!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Node.js 10.0. x veya üzeri sürümü. [Geliştirme ortamınızı hazırlama](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) Bu öğretici Için Node.js Windows veya Linux 'ta nasıl yükleneceğini açıklar.
 

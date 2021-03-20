@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: fd14af6c95654708f339f4a68cd333d0e3162553
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89078189"
 ---
 # <a name="scale-windows-virtual-desktop-classic-session-hosts-using-azure-automation"></a>Azure Otomasyonu 'Nu kullanarak Windows sanal masaüstü (klasik) oturum konaklarına ölçeklendirme
@@ -59,7 +59,7 @@ Ancak, araç aşağıdaki sınırlamalara de sahiptir:
 >[!NOTE]
 >Ölçeklendirme Aracı, şu anda ölçeklendirildiği konak havuzunun yük dengeleme modunu denetler. Araç, hem yoğun hem de yoğun olmayan saatlerde, birinci düzey Yük Dengeleme modunu kullanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Ölçeklendirme aracı 'nı ayarlamaya başlamadan önce, aşağıdaki şeyleri hazırlamış olduğunuzdan emin olun:
 
@@ -138,7 +138,7 @@ Abonelik yöneticileri rolünün üyesi olan bir Kullanıcı ve aboneliğin orta
 
 Azure Otomasyonu hesabınızda bir farklı çalıştır hesabı oluşturmak için:
 
-1. Azure portal, **tüm hizmetler**' i seçin. Kaynak listesinde **Otomasyon hesapları**girin ve seçin.
+1. Azure portal, **tüm hizmetler**' i seçin. Kaynak listesinde **Otomasyon hesapları** girin ve seçin.
 
 2. **Otomasyon hesapları** sayfasında, Azure Otomasyonu hesabınızın adını seçin.
 
@@ -148,7 +148,7 @@ Azure Otomasyonu hesabınızda bir farklı çalıştır hesabı oluşturmak içi
 
 5. Azure 'un farklı çalıştır hesabını oluşturması için birkaç dakika bekleyin. Oluşturma ilerleme durumunu menüdeki Bildirimler bölümünde izleyebilirsiniz.
 
-6. İşlem tamamlandığında, belirtilen Azure Otomasyonu hesabında **Azurerunasconnection** adlı bir varlık oluşturur. **Azure farklı çalıştır hesabı**' nı seçin. Bağlantı varlığı uygulama KIMLIĞI, kiracı KIMLIĞI, abonelik KIMLIĞI ve sertifika parmak izini barındırır. Daha sonra kullanacağınız için uygulama KIMLIĞINI unutmayın. Ayrıca, **Bağlantılar** sayfasında aynı bilgileri de bulabilirsiniz. Bu sayfaya gitmek için pencerenin sol tarafındaki bölmede, **paylaşılan kaynaklar** bölümünün altındaki **Bağlantılar** ' ı seçin ve **azurerunasconnection**adlı bağlantı varlığına tıklayın.
+6. İşlem tamamlandığında, belirtilen Azure Otomasyonu hesabında **Azurerunasconnection** adlı bir varlık oluşturur. **Azure farklı çalıştır hesabı**' nı seçin. Bağlantı varlığı uygulama KIMLIĞI, kiracı KIMLIĞI, abonelik KIMLIĞI ve sertifika parmak izini barındırır. Daha sonra kullanacağınız için uygulama KIMLIĞINI unutmayın. Ayrıca, **Bağlantılar** sayfasında aynı bilgileri de bulabilirsiniz. Bu sayfaya gitmek için pencerenin sol tarafındaki bölmede, **paylaşılan kaynaklar** bölümünün altındaki **Bağlantılar** ' ı seçin ve **azurerunasconnection** adlı bağlantı varlığına tıklayın.
 
 ### <a name="create-a-role-assignment-in-windows-virtual-desktop"></a>Windows sanal masaüstünde rol ataması oluşturma
 
@@ -292,7 +292,7 @@ Seçtiğiniz Azure Otomasyonu hesabınızın sağında, "Iş Istatistikleri" bö
 
 Runbook 'unuzu açıp işi seçerek genişleme ve ölçek işlemleri işlemlerini izleyebilirsiniz.
 
-Azure Otomasyonu hesabını barındıran kaynak grubunuzda runbook 'a gidin ve **Genel Bakış ' ı**seçin. Genel Bakış sayfasında, aşağıdaki görüntüde gösterildiği gibi, ölçek aracı çıktısını görüntülemek için **son işler** altında bir iş seçin.
+Azure Otomasyonu hesabını barındıran kaynak grubunuzda runbook 'a gidin ve **Genel Bakış ' ı** seçin. Genel Bakış sayfasında, aşağıdaki görüntüde gösterildiği gibi, ölçek aracı çıktısını görüntülemek için **son işler** altında bir iş seçin.
 
 >[!div class="mx-imgBorder"]
 >![Ölçeklendirme aracı için çıkış penceresinin bir görüntüsü.](media/tool-output.png)
@@ -317,7 +317,7 @@ Bir sorunu bildirmenizde, sorun gidermenize yardımcı olması için aşağıdak
     - OMSIngestionAPI
     - Microsoft. RDInfra. RDPowershell
 
-- [Farklı Çalıştır hesabınız](#create-an-azure-automation-run-as-account)için sona erme tarihi. Bunu bulmak için Azure Otomasyonu hesabınızı açın ve pencerenin sol tarafındaki bölmede **Hesap ayarları** altında **Farklı Çalıştır hesapları** ' nı seçin. Sona erme tarihi, **Azure farklı çalıştır hesabı**altında olmalıdır.
+- [Farklı Çalıştır hesabınız](#create-an-azure-automation-run-as-account)için sona erme tarihi. Bunu bulmak için Azure Otomasyonu hesabınızı açın ve pencerenin sol tarafındaki bölmede **Hesap ayarları** altında **Farklı Çalıştır hesapları** ' nı seçin. Sona erme tarihi, **Azure farklı çalıştır hesabı** altında olmalıdır.
 
 ### <a name="log-analytics"></a>Log Analytics
 

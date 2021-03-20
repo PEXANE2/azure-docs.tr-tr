@@ -9,14 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 03/16/2021
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9e248c10c15ba0318c6b23fcbf88be04dd9896a2
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: 1255c4962de1fce19efa9c0b0e1d28fc348463ef
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103573073"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580156"
 ---
 # <a name="embedded-sign-in-experience"></a>Ekli oturum açma deneyimi
 
@@ -35,7 +36,7 @@ Daha basit bir oturum açma deneyimi için, kullanıcıların ayrı bir oturum a
 - Yerleşik oturum açma yalnızca yerel hesapları destekler. Çoğu sosyal kimlik sağlayıcısı (örneğin, Google ve Facebook), oturum açma sayfalarının satır içi çerçevelerde işlenmesini engeller.
 - Bir iframe içindeki Azure AD B2C oturum tanımlama bilgileri üçüncü taraf tanımlama bilgileri olarak kabul edildiğinden, bazı tarayıcılar (ör. ınbilito modunda Safari veya Chrome) Bu tanımlama bilgilerini engeller ya da temizler, böylece istenmeyen bir kullanıcı deneyimi elde edilir. Bu sorunu engellemek için, uygulama etki alanı adınızın ve Azure AD B2C etki alanının *aynı kaynağa* sahip olduğundan emin olun. Aynı kaynağı kullanmak için, Azure AD B2C kiracı için [özel etki alanlarını etkinleştirin](custom-domain.md) ve sonra Web uygulamanızı aynı kaynaktan yapılandırın. Örneğin, üzerinde barındırılan bir uygulama https://app.contoso.com üzerinde çalışan Azure AD B2C aynı kaynağa sahiptir https://login.contoso.com .
 
-## <a name="perquisites"></a>Önkoşulları denetle
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Active Directory B2C içindeki özel ilkeleri kullanmaya başlama](custom-policy-get-started.md)adımlarını izleyin.
 * İlkeleriniz için [özel etki alanlarını etkinleştirin](custom-domain.md) .
@@ -87,7 +88,7 @@ div.api_container{
 
 Bazı durumlarda, uygulamanız için Azure AD B2C sayfanın hangi sırada gösterilmekte olduğunu bildirmek isteyebilirsiniz. Örneğin, bir Kullanıcı kaydolma seçeneğini seçtiğinde, bir sosyal hesapla oturum açma veya iframe boyutunu ayarlama bağlantılarını gizleyerek uygulamanın yanıt vermesini isteyebilirsiniz.
 
-Geçerli Azure AD B2C sayfasında uygulamanızı bilgilendirmek için, [JavaScript için ilkenizi etkinleştirin](javascript-samples.md)ve sonra HTML5 Post iletileri kullanın. Aşağıdaki JavaScript kodu, ile uygulamaya bir gönderi iletisi gönderir `signUp` :
+Geçerli Azure AD B2C sayfasında uygulamanızı bilgilendirmek için, [JavaScript için ilkenizi etkinleştirin](./javascript-and-page-layout.md)ve sonra HTML5 Post iletileri kullanın. Aşağıdaki JavaScript kodu, ile uygulamaya bir gönderi iletisi gönderir `signUp` :
 
 ```javascript
 window.parent.postMessage("signUp", '*');
@@ -155,5 +156,5 @@ Aşağıdaki ilgili makalelere bakın:
 
 - [Kullanıcı arabirimini özelleştirme](customize-ui.md)
 - [RelyingParty](relyingparty.md) öğesi başvurusu
-- [JavaScript için ilkenizi etkinleştirme](javascript-samples.md)
+- [JavaScript için ilkenizi etkinleştirme](./javascript-and-page-layout.md)
 - [Kod örnekleri](code-samples.md)

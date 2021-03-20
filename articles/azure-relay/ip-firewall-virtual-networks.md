@@ -4,10 +4,10 @@ description: Bu makalede, belirli IP adreslerinden Azure Relay ad alanlarına ba
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: ad8feed5df49dcc4503226a5fae50195bb9d48aa
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91999510"
 ---
 # <a name="configure-ip-firewall-for-an-azure-relay-namespace"></a>Azure Relay ad alanı için IP güvenlik duvarını yapılandırma
@@ -32,7 +32,7 @@ Bu bölümde, bir ad alanı için IP güvenlik duvarı kuralları oluşturmak ü
     ![Ekran görüntüsü ağ sayfasını tüm ağlar seçeneğinin seçili olduğunu gösterir.](./media/ip-firewall/all-networks-selected.png)
 1. Belirli ağlara ve IP adreslerine erişimi kısıtlamak için **Seçili ağlar** seçeneğini belirleyin. **Güvenlik duvarı** bölümünde şu adımları izleyin:
     1. Geçerli istemci IP 'nize ad alanına erişim sağlamak için **ISTEMCI IP adresi ekle** seçeneğini belirleyin. 
-    2. **Adres aralığı**IÇIN, CIDR gösteriminde belirli bir IPv4 adresi veya bir IPv4 adresi aralığı girin. 
+    2. **Adres aralığı** IÇIN, CIDR gösteriminde belirli bir IPv4 adresi veya bir IPv4 adresi aralığı girin. 
 
         ![Güvenlik Duvarı-tüm ağlar seçeneği seçildi](./media/ip-firewall/selected-networks-trusted-access-disabled.png)
 3. Ayarları kaydetmek için araç çubuğunda **Kaydet** ' i seçin. Onayın Portal bildirimlerinde gösterilmesi için birkaç dakika bekleyin.
@@ -51,7 +51,7 @@ Aşağıdaki Kaynak Yöneticisi şablonu, var olan bir geçiş ad alanına bir I
 > ```json
 > "defaultAction": "Allow"
 > ```
-> şöyle değiştirin:
+> kullanıcısı
 > ```json
 > "defaultAction": "Deny"
 > ```

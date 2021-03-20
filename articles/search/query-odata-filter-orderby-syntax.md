@@ -20,15 +20,15 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: d04311fce81d147a0830918aee1d4a2a9c0808d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88923407"
 ---
 # <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>`$filter` `$orderby` `$select` Azure bilişsel arama için OData diline genel bakış
 
-Azure Bilişsel Arama, **$Filter**, **$OrderBy**ve **$Select** ifadelerine yönelik OData ifade sözdiziminin bir alt kümesini destekler. Filtre ifadeleri sorgu ayrıştırma sırasında değerlendirilir, aramayı belirli alanlara kısıtlama veya dizin taramaları sırasında kullanılan eşleşme ölçütlerini ekleme. Sıra ifadeleri, döndürülen belgeleri sıralamak için bir sonuç kümesi üzerinde bir işleme sonrası adımı olarak uygulanır. Sonuç kümesinde hangi belge alanlarının ekleneceğini belirleyen ifadeleri seçin. Bu ifadelerin sözdizimi, **arama** parametresinde kullanılan [basit](query-simple-syntax.md) veya [tam](query-lucene-syntax.md) sorgu sözdiziminden farklıdır, ancak başvuru alanlarına yönelik sözdiziminde bir çakışma olabilir.
+Azure Bilişsel Arama, **$Filter**, **$OrderBy** ve **$Select** ifadelerine yönelik OData ifade sözdiziminin bir alt kümesini destekler. Filtre ifadeleri sorgu ayrıştırma sırasında değerlendirilir, aramayı belirli alanlara kısıtlama veya dizin taramaları sırasında kullanılan eşleşme ölçütlerini ekleme. Sıra ifadeleri, döndürülen belgeleri sıralamak için bir sonuç kümesi üzerinde bir işleme sonrası adımı olarak uygulanır. Sonuç kümesinde hangi belge alanlarının ekleneceğini belirleyen ifadeleri seçin. Bu ifadelerin sözdizimi, **arama** parametresinde kullanılan [basit](query-simple-syntax.md) veya [tam](query-lucene-syntax.md) sorgu sözdiziminden farklıdır, ancak başvuru alanlarına yönelik sözdiziminde bir çakışma olabilir.
 
 Bu makalede, filtrelerde, sıralamada ve Select ifadelerinde kullanılan OData ifade diline ilişkin bir genel bakış sunulmaktadır. Dil, en temel öğelerle başlayarak ve üzerinde oluşturma için "aşağıdan yukarıya" sunulmuştur. Her parametre için en üst düzey sözdizimi ayrı bir makalede açıklanmıştır:
 
@@ -42,7 +42,7 @@ OData ifadeleri basit ve çok karmaşık olarak değişir, ancak bunların hepsi
 - Belirli bir veri türünün değişmez değeri olan **sabitler**.
 
 > [!NOTE]
-> Azure Bilişsel Arama terminoloji, [OData standbundan](https://www.odata.org/documentation/) birkaç yolla farklıdır. Azure Bilişsel Arama bir **alanı** çağırdığımız OData içinde **özellik** olarak adlandırılır ve benzer şekilde **alan yolu** ve **özellik yolu**için. Azure Bilişsel Arama 'de **belge** içeren bir **Dizin** , OData içinde **varlıkları**içeren bir **varlık kümesi** olarak daha genel olarak adlandırılır. Azure Bilişsel Arama terimleri bu başvuru boyunca kullanılır.
+> Azure Bilişsel Arama terminoloji, [OData standbundan](https://www.odata.org/documentation/) birkaç yolla farklıdır. Azure Bilişsel Arama bir **alanı** çağırdığımız OData içinde **özellik** olarak adlandırılır ve benzer şekilde **alan yolu** ve **özellik yolu** için. Azure Bilişsel Arama 'de **belge** içeren bir **Dizin** , OData içinde **varlıkları** içeren bir **varlık kümesi** olarak daha genel olarak adlandırılır. Azure Bilişsel Arama terimleri bu başvuru boyunca kullanılır.
 
 ## <a name="field-paths"></a>Alan yolları
 
@@ -70,7 +70,7 @@ Bir tanımlayıcı, bir alanın adına veya bir filtre içindeki bir [koleksiyon
 
 Alan yollarının örnekleri aşağıdaki tabloda gösterilmiştir:
 
-| Alan yolu | Açıklama |
+| Alan yolu | Description |
 | --- | --- |
 | `HotelName` | Dizinin en üst düzey alanını ifade eder |
 | `Address/City` | `City`Dizindeki bir karmaşık alanın alt alanına başvurur; `Address` `Edm.ComplexType` Bu örnekte türdür |
@@ -79,7 +79,7 @@ Alan yollarının örnekleri aşağıdaki tabloda gösterilmiştir:
 | `room/Type` | `Type` `room` Aralık değişkeninin alt alanına, örneğin, filtre ifadesinde başvurur`Rooms/any(room: room/Type eq 'deluxe')` |
 | `store/Address/Country` | `Country`Aralık değişkeninin alt alanının alt alanına başvurur `Address` `store` , örneğin, filtre ifadesi`Stores/any(store: store/Address/Country eq 'Canada')` |
 
-Bir alan yolunun anlamı, bağlama göre farklılık gösterir. Filtrelerdeki bir alan yolu, geçerli belgedeki bir alanın tek bir *örneğinin* değerini ifade eder. **$OrderBy**, **$Select**gibi diğer bağlamlarda veya [tam Lucene sözdiziminde ara](query-lucene-syntax.md#bkmk_fields)alanları, alan yolu alanın kendisini ifade eder. Bu fark, filtrelerdeki alan yollarını nasıl kullandığınız hakkında bazı sonuçlar içerir.
+Bir alan yolunun anlamı, bağlama göre farklılık gösterir. Filtrelerdeki bir alan yolu, geçerli belgedeki bir alanın tek bir *örneğinin* değerini ifade eder. **$OrderBy**, **$Select** gibi diğer bağlamlarda veya [tam Lucene sözdiziminde ara](query-lucene-syntax.md#bkmk_fields)alanları, alan yolu alanın kendisini ifade eder. Bu fark, filtrelerdeki alan yollarını nasıl kullandığınız hakkında bazı sonuçlar içerir.
 
 Alan yolunu göz önünde bulundurun `Address/City` . Filtre içinde, bu, "San Francisco" gibi geçerli belge için tek bir şehir anlamına gelir. Buna karşılık, `Rooms/Type` `Type` birçok Oda için alt alanı (örneğin, ilk odadaki "standart", ikinci odanın "Deluxe" gibi) ifade eder. `Rooms/Type`Alt alanın *tek bir örneğine* başvurmadığından `Type` , bu, doğrudan bir filtrede kullanılamaz. Bunun yerine, Oda türünü filtrelemek için, bir Aralık değişkeni ile bir [lambda ifadesi](search-query-odata-collection-operators.md) kullanırsınız, örneğin:
 
@@ -207,11 +207,11 @@ Etkileşimli bir sözdizimi diyagramı da kullanılabilir:
 
 ## <a name="building-expressions-from-field-paths-and-constants"></a>Alan yollarından ve sabitlerden ifadeler oluşturma
 
-Alan yolları ve sabitler, bir OData ifadesinin en temel kısmıdır, ancak bunlar zaten tam ifadelerdir. Aslında, Azure Bilişsel Arama **$Select** parametresi Nothing, ancak alan yollarının virgülle ayrılmış bir listesidir ve **$OrderBy** **$Select**kıyasla daha karmaşık değildir. Dizininizdeki türünde bir alanınız varsa `Edm.Boolean` , bu alanın yolu ancak hiçbir şey olmayan bir filtre de yazabilirsiniz. Sabitler `true` ve `false` aynı şekilde geçerli filtrelerdir.
+Alan yolları ve sabitler, bir OData ifadesinin en temel kısmıdır, ancak bunlar zaten tam ifadelerdir. Aslında, Azure Bilişsel Arama **$Select** parametresi Nothing, ancak alan yollarının virgülle ayrılmış bir listesidir ve **$OrderBy** **$Select** kıyasla daha karmaşık değildir. Dizininizdeki türünde bir alanınız varsa `Edm.Boolean` , bu alanın yolu ancak hiçbir şey olmayan bir filtre de yazabilirsiniz. Sabitler `true` ve `false` aynı şekilde geçerli filtrelerdir.
 
 Ancak, çoğu zaman birden fazla alana ve sabitine başvuran daha karmaşık deyimler gerekecektir. Bu ifadeler parametreye bağlı olarak farklı şekillerde oluşturulmuştur.
 
-Aşağıdaki EBNF ([genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) **$Filter**, **$OrderBy**ve **$Select** parametrelerine yönelik dilbilgisini tanımlar. Bunlar alan yollarına ve sabitlere başvuran daha basit ifadelerden oluşturulmuştur:
+Aşağıdaki EBNF ([genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) **$Filter**, **$OrderBy** ve **$Select** parametrelerine yönelik dilbilgisini tanımlar. Bunlar alan yollarına ve sabitlere başvuran daha basit ifadelerden oluşturulmuştur:
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -233,7 +233,7 @@ Etkileşimli bir sözdizimi diyagramı da kullanılabilir:
 
 **$OrderBy** ve **$Select** parametreleri, daha basit ifadelerin virgülle ayrılmış listeleridir. **$Filter** parametresi, daha basit alt ifadelerden oluşan bir Boolean ifadedir. Bu alt ifadeler [ `and` ,, `or` `not` ve ](search-query-odata-logical-operators.md)gibi mantıksal işleçler kullanılarak birleştirilir,, ve gibi karşılaştırma işleçleri ve [ `any` ve `all` ](search-query-odata-collection-operators.md)gibi koleksiyon işleçleri. [ `eq` `lt` `gt` ](search-query-odata-comparison-operators.md)
 
-**$Filter**, **$OrderBy**ve **$Select** parametreleri aşağıdaki makalelerde daha ayrıntılı bir şekilde araştırılabilir:
+**$Filter**, **$OrderBy** ve **$Select** parametreleri aşağıdaki makalelerde daha ayrıntılı bir şekilde araştırılabilir:
 
 - [Azure Bilişsel Arama 'de OData $filter söz dizimi](search-query-odata-filter.md)
 - [Azure Bilişsel Arama 'de OData $orderby söz dizimi](search-query-odata-orderby.md)

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/11/2020
 ms.author: alkohli
 ms.openlocfilehash: 2984f7990b9570c5ec57633de7f7e50162fb6f46
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96583021"
 ---
 # <a name="azure-data-box-edgeazure-data-box-gateway-general-availability-release-notes"></a>Azure Data Box Edge/Azure Data Box Gateway genel kullanılabilirlik sürüm notları
@@ -40,7 +40,7 @@ GA sürümü yazılım sürümlerine karşılık gelir:
 
 Aşağıdaki tabloda, sürüm çalıştıran Data Box Gateway için bilinen sorunların bir özeti verilmiştir.
 
-| Hayır. | Öne çıkan özelliği | Sorun | Geçici çözüm/açıklamalar |
+| Hayır. | Özellik | Sorun | Geçici çözüm/açıklamalar |
 | --- | --- | --- | --- |
 | **1.** |Dosya türleri | Şu dosya türleri desteklenmez: karakter dosyaları, blok dosyaları, yuvalar, kanallar, sembolik bağlantılar.  |Bu dosyaların kopyalanması, NFS paylaşımında oluşturulan 0 uzunluklu dosyalara neden olur. Bu dosyalar bir hata durumunda kalır ve *error.xml* de raporlanır. <br> Dizinlerin simgesel bağlantıları, dizinlerde hiçbir şekilde çevrimdışı olarak işaretlenmez. Sonuç olarak, dizinlerin çevrimdışı olduğunu ve ilişkili tüm içeriğin Azure 'a tamamen yüklendiğini gösteren dizinler üzerinde gri bir işlem görmeyebilirsiniz. |
 | **2.** |Silme | Bu sürümdeki bir hata nedeniyle, bir NFS paylaşma silinirse, paylaşma silinmeyebilir. Paylaşma durumu, *silme* öğesini görüntüleyecektir.  |Bu yalnızca, paylaşımın desteklenmeyen bir dosya adı kullandığı zaman gerçekleşir. |

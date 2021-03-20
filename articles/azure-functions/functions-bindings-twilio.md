@@ -7,10 +7,10 @@ ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, H1Hack27Feb2017
 ms.openlocfilehash: 31d5c528112ccacab47282729b1b5f8a72f19af0
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91999286"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Azure Işlevleri için Twilio bağlama
@@ -203,7 +203,7 @@ module.exports = function (context, myQueueItem) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Aşağıdaki örnek, * üzerinde aşağıdakifunction.js*tanımlanan şekilde çıkış BAĞLAMAYı kullanarak SMS iletisinin nasıl gönderileceğini gösterir.
+Aşağıdaki örnek, *üzerinde aşağıdakifunction.js* tanımlanan şekilde çıkış BAĞLAMAYı kullanarak SMS iletisinin nasıl gönderileceğini gösterir.
 
 ```json
     {
@@ -327,15 +327,15 @@ Tüm örnek için bkz. [C# örneği](#example).
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `TwilioSms` .
 
-| Özellik üzerinde v1 function.js | özelliğindeki v2 function.js | Öznitelik özelliği |Açıklama|
+| Özellik üzerinde v1 function.js | özelliğindeki v2 function.js | Öznitelik özelliği |Description|
 |---------|---------|---------|----------------------|
-|**tür**|**tür**| olarak ayarlanmalıdır `twilioSms` .|
+|**türüyle**|**türüyle**| olarak ayarlanmalıdır `twilioSms` .|
 |**Görünüm**|**Görünüm**| olarak ayarlanmalıdır `out` .|
 |**ada**|**ada**| Twilio SMS metin mesajı için işlev kodunda kullanılan değişken adı. |
 |**accountSid**|**Accountsıdsetting**| **AccountSidSetting**| Bu değer, Twilio hesabı SID 'nizi () tutan bir uygulama ayarının adına ayarlanmalıdır `TwilioAccountSid` . Ayarlanmamışsa, varsayılan uygulama ayarı adı "AzureWebJobsTwilioAccountSid" olur. |
 |**authToken**|**authTokenSetting**|**AuthTokenSetting**| Bu değer, Twilio kimlik doğrulama belirtecinizi () tutan bir uygulama ayarının adına ayarlanmalıdır `TwilioAccountAuthToken` . Ayarlanmamışsa, varsayılan uygulama ayarı adı "AzureWebJobsTwilioAuthToken" olur. |
-|**Hedef**| Yok-kodda belirt | **Amaç**| Bu değer, SMS metninin gönderildiği telefon numarası olarak ayarlanır.|
-|**Kaynak**|**Kaynak** | **Kaynak**| Bu değer, SMS metninin gönderildiği telefon numarası olarak ayarlanır.|
+|**kullanıcısı**| Yok-kodda belirt | **Kime**| Bu değer, SMS metninin gönderildiği telefon numarası olarak ayarlanır.|
+|**Kaynak**|**Kaynak** | **Kimden**| Bu değer, SMS metninin gönderildiği telefon numarası olarak ayarlanır.|
 |**bölümü**|**bölümü** | **Gövde**| Bu değer, işlevinizin kodunda dinamik olarak ayarlamanız gerekmiyorsa SMS metin iletisini sabit koda almak için kullanılabilir. |  
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

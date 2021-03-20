@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/28/2018
 ms.custom: seodec18
 ms.openlocfilehash: 2be4bc92dde278b054bd04f412f937440027ece7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74671676"
 ---
 # <a name="how-to-prepare-for-an-outbound-ip-address-change"></a>Giden IP adresi değişikliğine hazırlanma
@@ -35,7 +35,7 @@ Yeni giden IP adresleri, portalda etkili olmadan önce görüntülenir. Azure ye
 
 1.  Uygulama bir işlev uygulamadır, bkz. [işlev uygulaması gıden IP adresleri](../azure-functions/ip-addresses.md#find-outbound-ip-addresses).
 
-4.  **Ayarlar** üst bilgisinde, sol gezinti bölmesinde **Özellikler** ' e tıklayın ve **giden IP adresleri**etiketli bölümü bulun.
+4.  **Ayarlar** üst bilgisinde, sol gezinti bölmesinde **Özellikler** ' e tıklayın ve **giden IP adresleri** etiketli bölümü bulun.
 
 5. IP adreslerini kopyalayın ve bir filtre veya izin verilenler listesi gibi giden trafiğinizi özel işleme ekleyin. Listedeki mevcut IP adreslerini silmeyin.
 

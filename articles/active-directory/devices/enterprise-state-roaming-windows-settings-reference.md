@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6048ee9237640799b7bec37083e607fc74ffb8e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85252976"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10 dolaşım ayarları başvurusu
@@ -26,12 +26,12 @@ Windows 10 ' da dolaşılabilir veya yedeklenecek ayarların bir listesi aşağ�
 
 Windows 10 ' da eşitleme, yedekleme ve geri yükleme çerçevesi tarafından desteklenen cihazların ve hesap türlerinin Özeti için aşağıdaki tabloya bakın.
 
-| Hesap türü ve işlem | Masaüstü | Cep telefonu |
+| Hesap türü ve işlem | Masaüstü | Mobil |
 | --- | --- | --- |
-| Azure Active Directory: eşitleme |Evet |Hayır |
+| Azure Active Directory: eşitleme |Yes |Hayır |
 | Azure Active Directory: yedekleme/geri yükleme |Hayır |Hayır |
-| Microsoft hesabı: eşitleme |Evet |Evet |
-| Microsoft hesabı: yedekleme/geri yükleme |Hayır |Evet |
+| Microsoft hesabı: eşitleme |Yes |Yes |
+| Microsoft hesabı: yedekleme/geri yükleme |Hayır |Yes |
 
 ## <a name="what-is-backup"></a>Yedekleme nedir?
 
@@ -69,7 +69,7 @@ Aşağıdaki tabloda, ayarlar grubu sütunundaki diğer girişler ayarlar > hesa
 Ayarlar Grup sütunundaki iç girişler yalnızca uygulamanın kendisi içinde eşitlenmesi devre dışı bırakılabilecek veya mobil cihaz yönetimi (MDM) veya grup ilkesi ayarları kullanılarak tüm cihazın eşitlemesini devre dışı bırakarak, ayarlar ve uygulamalar bölümüne başvurur.
 Dolaşımda olmayan veya eşitlenmeyecek ayarlar bir gruba ait değil.
 
-| Ayarlar | Masaüstü | Cep telefonu | Grup |
+| Ayarlar | Masaüstü | Mobil | Grup |
 | --- | --- | --- | --- |
 | **Hesaplar**: hesap resmi |eşitleme |X |Tema |
 | **Hesaplar**: diğer hesap ayarları |X |X | |

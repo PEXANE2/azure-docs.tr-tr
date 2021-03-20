@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/25/2020
 ms.author: cynthn
 ms.openlocfilehash: abc9a2ae130d987c90ce87ffaecbf2bb44b06010
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88929456"
 ---
 # <a name="generate-and-store-ssh-keys-in-the-azure-portal"></a>Azure portal SSH anahtarları oluşturma ve depolama
@@ -28,7 +28,7 @@ Linux VM 'Leri ile SSH anahtarları oluşturma ve kullanma hakkında daha ayrın
 
 1. [Azure portalını](https://portal.azure.com) açın.
 
-1. Sayfanın üst kısmında aramak için *SSH* yazın. **Market**altında **SSH anahtarları**' nı seçin.
+1. Sayfanın üst kısmında aramak için *SSH* yazın. **Market** altında **SSH anahtarları**' nı seçin.
 
 1. **SSH anahtarı** sayfasında **Oluştur**' u seçin.
 
@@ -38,7 +38,7 @@ Linux VM 'Leri ile SSH anahtarları oluşturma ve kullanma hakkında daha ayrın
 
 1. **Bölgede** , anahtarlarınızı depolamak için bir bölge seçin. Anahtarları herhangi bir bölgede kullanabilirsiniz, bu yalnızca depolanacağı bölgedir.
 
-1. Anahtar **çifti adında**anahtarınız için bir ad yazın.
+1. Anahtar **çifti adında** anahtarınız için bir ad yazın.
 
 1. **SSH ortak anahtar kaynağı**' nda **ortak anahtar kaynağı oluştur**' u seçin. 
 
@@ -48,7 +48,7 @@ Linux VM 'Leri ile SSH anahtarları oluşturma ve kullanma hakkında daha ayrın
 
 1. Ardından, için bir açılır pencere alacaksınız, **özel anahtarı indir ve kaynak oluştur**' u seçin. Bu işlem SSH anahtarını bir. pek dosyası olarak indirir.
 
-   :::image type="content" source="./media/ssh-keys/download-key.png" alt-text="Yeni bir kaynak grubu oluştur ve bir SSH anahtar çifti oluştur":::
+   :::image type="content" source="./media/ssh-keys/download-key.png" alt-text="Özel anahtarı bir. pek dosyası olarak indirin":::
 
 1. . Pek dosyası indirildikten sonra, bilgisayarınıza SSH istemcinizden kolayca işaret etmek için daha kolay bir yere taşımak isteyebilirsiniz.
 
@@ -70,17 +70,17 @@ Ayrıca, Azure 'da depolanacak ortak bir SSH anahtarını da yükleyebilirsiniz.
 
 1. [Azure portalını](https://portal.azure.com) açın.
 
-1. Sayfanın üst kısmında aramak için *SSH* yazın. **Market*altında **SSH anahtarları**' nı seçin.
+1. Sayfanın üst kısmında aramak için *SSH* yazın. **Market* altında **SSH anahtarları**' nı seçin.
 
 1. **SSH anahtarı** sayfasında **Oluştur**' u seçin.
 
-   :::image type="content" source="./media/ssh-keys/upload.png" alt-text="Yeni bir kaynak grubu oluştur ve bir SSH anahtar çifti oluştur":::
+   :::image type="content" source="./media/ssh-keys/upload.png" alt-text="Azure 'da depolanacak SSH ortak anahtarını karşıya yükleme":::
 
 1. Anahtarlarınızın depolandığı yeni bir kaynak grubu oluşturmak için **kaynak grubu** ' nda **Yeni oluştur** ' u seçin. Kaynak grubunuz için bir ad yazın ve **Tamam**' ı seçin.
 
 1. **Bölgede** , anahtarlarınızı depolamak için bir bölge seçin. Anahtarları herhangi bir bölgede kullanabilirsiniz, bu yalnızca depolanacağı bölgedir.
 
-1. Anahtar **çifti adında**anahtarınız için bir ad yazın.
+1. Anahtar **çifti adında** anahtarınız için bir ad yazın.
 
 1. **SSH ortak anahtar kaynağı**' nda **mevcut ortak anahtarı karşıya yükle**' yi seçin. 
 
@@ -98,7 +98,7 @@ Portalda oluşturulan SSH anahtarları kaynak olarak depolanır, bu sayede kayna
 1. Filtrelerdeki **tür**' i seçin, listeyi temizlemek Için **Tümünü Seç** seçeneğinin seçimini kaldırın.
 1. Filtreye **SSH** yazın ve **SSH anahtarı**' nı seçin.
 
-   :::image type="content" source="./media/ssh-keys/filter.png" alt-text="Yeni bir kaynak grubu oluştur ve bir SSH anahtar çifti oluştur":::
+   :::image type="content" source="./media/ssh-keys/filter.png" alt-text="Tüm SSH anahtarlarınızı görmek için listenin nasıl filtreleneceği ekran görüntüsü.":::
 
 ## <a name="get-the-public-key"></a>Ortak anahtarı al
 

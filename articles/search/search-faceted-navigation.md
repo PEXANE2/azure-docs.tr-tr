@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 05be5295ae5f8c73c916a21bba7dbc98ab0c5e87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89002802"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Azure Bilişsel Arama çok yönlü gezintiyi uygulama
@@ -233,7 +233,7 @@ SearchParameters sp = new SearchParameters()
 
 Bir model sorgu parametresi bir alana ayarlanır ve veri türüne bağlı olarak,,, ve içeren virgülle ayrılmış liste ile daha fazla parametreli olabilir `count:<integer>` `sort:<>` `interval:<integer>` `values:<list>` . Aralıklar ayarlanırken sayısal veriler için bir değerler listesi desteklenir. Kullanım ayrıntıları için bkz. [arama belgeleri (Azure BILIŞSEL arama API)](/rest/api/searchservice/Search-Documents) .
 
-Modellerle birlikte, uygulamanız tarafından formül oluşturan istek, bir model değer seçimine dayalı olarak aday belgeler kümesini daraltmak için de filtreler derlemelidir. Bir Bisiklet Mağazası için, çok yönlü gezinme *hangi renkler, üreticiler ve bisiklet türlerinin kullanılabildiği*gibi sorulara ipuçları sağlar. Filtreleme, *Bu fiyat aralığında tam Bisikletler kırmızı, Sıradağlar bisikletleri*gibi sorulara yanıt veriyor mu? Yalnızca kırmızı ürünlerin gösterilmesi gerektiğini belirtmek için "kırmızı" düğmesine tıkladığınızda, uygulamanın gönderdiği sonraki sorgu de buna dahildir `$filter=Color eq 'Red'` .
+Modellerle birlikte, uygulamanız tarafından formül oluşturan istek, bir model değer seçimine dayalı olarak aday belgeler kümesini daraltmak için de filtreler derlemelidir. Bir Bisiklet Mağazası için, çok yönlü gezinme *hangi renkler, üreticiler ve bisiklet türlerinin kullanılabildiği* gibi sorulara ipuçları sağlar. Filtreleme, *Bu fiyat aralığında tam Bisikletler kırmızı, Sıradağlar bisikletleri* gibi sorulara yanıt veriyor mu? Yalnızca kırmızı ürünlerin gösterilmesi gerektiğini belirtmek için "kırmızı" düğmesine tıkladığınızda, uygulamanın gönderdiği sonraki sorgu de buna dahildir `$filter=Color eq 'Red'` .
 
 Aşağıdaki kod parçacığı, `JobsSearch.cs` Iş başlığı modeli 'nden bir değer seçerseniz, seçili Iş başlığını filtreye ekler.
 
@@ -255,7 +255,7 @@ Uygulamanız özel olarak çok yönlü gezinme kullanıyorsa (yani arama kutusu 
 
 Dizin şemasının, bir model olarak kullanılabilecek alanları belirlediğini unutmayın. Bir alanın çok yönlü olduğunu varsayarsak, sorgu hangi alanların model olarak olduğunu belirtir. Seçtiğiniz alan, etiketin altında görünen değerleri sağlar. 
 
-Her etiket altında görünen değerler dizinden alınır. Örneğin, model alanı *renk*ise, ek filtreleme için kullanılabilen değerler bu alanın kırmızı, siyah ve benzeri değerleri olur.
+Her etiket altında görünen değerler dizinden alınır. Örneğin, model alanı *renk* ise, ek filtreleme için kullanılabilen değerler bu alanın kırmızı, siyah ve benzeri değerleri olur.
 
 Yalnızca sayısal ve tarih saat değerleri için model alanında (örneğin,) değerleri açık bir şekilde ayarlayabilirsiniz `facet=Rating,values:1|2|3|4|5` . Bu alan türleri için değer listesine izin verilir. model sonuçlarının bitişik aralıklar halinde ayrılmasını basitleştirir (sayısal değerlere veya zaman dönemlerine göre aralıklar). 
 
@@ -283,7 +283,7 @@ Arama için aday belgeler kümesini daraltmak ve bunları derecelendirmeden hari
 
 **Model sonuçlarını daha fazla filtreye göre Kırp**
 
-Model sonuçları, bir model terimiyle eşleşen arama sonuçlarında bulunan belgelerdir. Aşağıdaki örnekte, *bulut bilgi işlem*için arama sonuçlarında, 254 öğe de bir içerik türü olarak *iç belirtime* sahiptir. Öğelerin birbirini karşılıklı olarak dışlamalı olması gerekmez. Bir öğe her iki filtrenin ölçütlerine uyuyorsa, her birinde sayılır. Bu çoğaltma `Collection(Edm.String)` , genellikle belge etiketlemesini uygulamak için kullanılan alanlar üzerinde bir değer oluşturduğunuzda mümkündür.
+Model sonuçları, bir model terimiyle eşleşen arama sonuçlarında bulunan belgelerdir. Aşağıdaki örnekte, *bulut bilgi işlem* için arama sonuçlarında, 254 öğe de bir içerik türü olarak *iç belirtime* sahiptir. Öğelerin birbirini karşılıklı olarak dışlamalı olması gerekmez. Bir öğe her iki filtrenin ölçütlerine uyuyorsa, her birinde sayılır. Bu çoğaltma `Collection(Edm.String)` , genellikle belge etiketlemesini uygulamak için kullanılan alanlar üzerinde bir değer oluşturduğunuzda mümkündür.
 
 ```output
 Search term: "cloud computing"
@@ -362,7 +362,7 @@ Belgelerinizi seçtiğiniz bir aralığa göre filtrelemek için, `"ge"` ve `"lt
 ## <a name="filter-based-on-distance"></a>Mesafeden göre filtrele
 Geçerli konumunuza yakınlık temelinde bir mağaza, Restoran veya hedef seçmenize yardımcı olan filtreleri görmek yaygındır. Bu tür bir filtre çok yönlü gezinme gibi görünebilir, ancak yalnızca bir filtredir. Özellikle söz konusu tasarım sorunu için uygulama önerisi arayan sizin için burada bahsettik.
 
-Azure Bilişsel Arama, **coğrafi. uzaklık** ve **coğrafi. kesişme**üzerinde iki Jeo-uzamsal işlev vardır.
+Azure Bilişsel Arama, **coğrafi. uzaklık** ve **coğrafi. kesişme** üzerinde iki Jeo-uzamsal işlev vardır.
 
 * **Coğrafi. Distance** işlevi iki noktaya arasındaki mesafeyi kilometre cinsinden döndürür. Bir nokta bir alandır ve diğeri, filtrenin bir parçası olarak geçirilen bir sabittir. 
 * **Coğrafi. kesişme** işlevi, belirli bir çokgen belirli bir çokgen içindeyse true değerini döndürür. Nokta bir alandır ve bu, filtrenin bir parçası olarak geçirilen koordinatların sabit listesi olarak belirtilir.

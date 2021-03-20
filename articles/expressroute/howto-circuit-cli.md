@@ -9,17 +9,17 @@ ms.date: 10/05/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: a1d50c3f8f94fbfd7dbcb9b25e051b7f2951c518
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91969101"
 ---
 # <a name="quickstart-create-and-modify-an-expressroute-circuit-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak bir ExpressRoute bağlantı hattı oluşturma ve değiştirme
 
 Bu hızlı başlangıçta, komut satırı arabirimini (CLı) kullanarak Azure ExpressRoute bağlantı hattı oluşturma açıklanmaktadır. Bu makalede ayrıca, durumu denetleme, güncelleştirme veya silme ve devre sağlamayı kaldırma işlemlerinin nasıl yapılacağı gösterilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Yapılandırmaya başlamadan önce [önkoşulları](expressroute-prerequisites.md) ve [iş akışlarını](expressroute-workflows.md) gözden geçirin.
 * Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -135,8 +135,8 @@ Aşağıdaki örnek, bir 200 Mbps ExpressRoute bağlantı hattının, Silicon Va
 
 Doğru SKU katmanını ve SKU ailesini belirttiğinizden emin olun:
 
-* SKU katmanı, bir ExpressRoute devresinin [Yerel](expressroute-faqs.md#expressroute-local), standart veya [Premium](expressroute-faqs.md#expressroute-premium)olduğunu belirler. *Yerel*, * standart veya *Premium*belirtebilirsiniz. SKU 'YU *Standart/Premium* 'dan *Yerel*olarak değiştiremezsiniz.
-* SKU ailesi Faturalandırma türünü belirler. Tarifeli veri planı için *MeteredData* , sınırsız bir veri planı Için de *unlimiteddata* belirtebilirsiniz. Faturalandırma türünü *MeteredData* 'Den *unlimiteddata*olarak değiştirebilirsiniz, ancak türü *Unlimiteddata* iken *MeteredData*olarak değiştiremezsiniz. *Yerel* devre yalnızca *limiteddata* ' dır.
+* SKU katmanı, bir ExpressRoute devresinin [Yerel](expressroute-faqs.md#expressroute-local), standart veya [Premium](expressroute-faqs.md#expressroute-premium)olduğunu belirler. *Yerel*, * standart veya *Premium* belirtebilirsiniz. SKU 'YU *Standart/Premium* 'dan *Yerel* olarak değiştiremezsiniz.
+* SKU ailesi Faturalandırma türünü belirler. Tarifeli veri planı için *MeteredData* , sınırsız bir veri planı Için de *unlimiteddata* belirtebilirsiniz. Faturalandırma türünü *MeteredData* 'Den *unlimiteddata* olarak değiştirebilirsiniz, ancak türü *Unlimiteddata* iken *MeteredData* olarak değiştiremezsiniz. *Yerel* devre yalnızca *limiteddata* ' dır.
 
 
 ExpressRoute bağlantı hattı, hizmet anahtarının verildiği andan itibaren faturalandırılır. Aşağıdaki örnek, yeni bir hizmet anahtarı isteği örneğidir:
@@ -219,7 +219,7 @@ ExpressRoute devresini kullanmak için, aşağıdaki durumda olmalıdır:
 
 ### <a name="periodically-check-the-status-and-the-state-of-the-circuit-key"></a>Devre anahtarının durumunu ve durumunu düzenli olarak denetleyin
 
-Hizmet anahtarının durumunun ve durumunun denetlenmesi, sağlayıcınızın devrenizi ne zaman sağladığından haberdar etmenize olanak tanır. Devre yapılandırıldıktan sonra, aşağıdaki örnekte gösterildiği gibi *Serviceproviderprovisioningstate* *sağlandı*olarak görünür:
+Hizmet anahtarının durumunun ve durumunun denetlenmesi, sağlayıcınızın devrenizi ne zaman sağladığından haberdar etmenize olanak tanır. Devre yapılandırıldıktan sonra, aşağıdaki örnekte gösterildiği gibi *Serviceproviderprovisioningstate* *sağlandı* olarak görünür:
 
 ```azurecli-interactive
 az network express-route show --resource-group ExpressRouteResourceGroup --name MyCircuit
@@ -344,8 +344,8 @@ az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --sku-
 Bir ExpressRoute devresini sağlamayı ve silmeyi kaldırmak için aşağıdaki ölçütleri anladığınızdan emin olun:
 
 * Tüm sanal ağların ExpressRoute bağlantı hattı 'ndan bağlantısı kaldırılmalıdır. Bu işlem başarısız olursa, devline bağlı sanal ağların olup olmadığını denetleyin.
-* ExpressRoute bağlantı hattı hizmeti sağlayıcısı sağlama **durumu sağlandıysa veya** sağlanmışsa **Provisioned** , devre dışı bırakmak için hizmet sağlayıcınızla birlikte çalışmanız gerekir. Hizmet sağlayıcısı, devre sağlamasını kaldırmayı ve bize haber verene kadar, kaynakları ayırmaya ve sizi faturalandırmaya devam ediyoruz.
-* Hizmet sağlayıcı, hizmet sağlayıcısı sağlama durumunun **sağlanmamış**olarak ayarlandığı anlamına gelen devre sağlamasını kaldırdıysa, devreyi silebilirsiniz. Devre için faturalandırma daha sonra durur.
+* ExpressRoute bağlantı hattı hizmeti sağlayıcısı sağlama **durumu sağlandıysa veya** sağlanmışsa  , devre dışı bırakmak için hizmet sağlayıcınızla birlikte çalışmanız gerekir. Hizmet sağlayıcısı, devre sağlamasını kaldırmayı ve bize haber verene kadar, kaynakları ayırmaya ve sizi faturalandırmaya devam ediyoruz.
+* Hizmet sağlayıcı, hizmet sağlayıcısı sağlama durumunun **sağlanmamış** olarak ayarlandığı anlamına gelen devre sağlamasını kaldırdıysa, devreyi silebilirsiniz. Devre için faturalandırma daha sonra durur.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

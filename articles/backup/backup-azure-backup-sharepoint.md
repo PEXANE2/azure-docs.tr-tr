@@ -4,10 +4,10 @@ description: Bu makalede, Azure 'da bir SharePoint grubunun DPM/Azure Backup sun
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.openlocfilehash: 7661d64e487c8b8badca240852d17bcf736ba8cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91254440"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>DPM ile bir SharePoint grubunu Azure 'a yedekleme
@@ -24,7 +24,7 @@ Desteklenen SharePoint sürümleri ve bunları yedeklemek için gereken DPM sür
 
 Bir SharePoint grubunu Azure 'a yedeklemebilmeniz için öncelikle onaylamanız gereken birkaç nokta vardır.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Devam etmeden önce, iş yüklerini korumak için [Microsoft Azure Backup kullanmaya yönelik tüm önkoşulları](backup-azure-dpm-introduction.md#prerequisites-and-limitations) karşıladığınızdan emin olun. Önkoşullar için bazı görevler şunlardır: bir yedekleme Kasası oluşturma, kasa kimlik bilgilerini indirme, Azure Backup Aracısı yükleme ve DPM/Azure Backup Sunucusu 'i kasaya kaydetme.
 
@@ -61,7 +61,7 @@ DPM ile bir diskten bir SharePoint öğesini geri yüklemeyi öğrenmek için bk
 
     ![DPM SharePoint Protection11](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection13.png)
 
-    Kataloglama tamamlandıktan sonra durum *başarılı*olarak değişir. **Kapat**’ı seçin.
+    Kataloglama tamamlandıktan sonra durum *başarılı* olarak değişir. **Kapat**’ı seçin.
 
     ![DPM SharePoint Protection12](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection14.png)
 4. İçerik veritabanı yapısını almak için DPM **Kurtarma** sekmesinde gösterilen SharePoint nesnesini seçin. Öğeye sağ tıklayın ve ardından **kurtar**' ı seçin.

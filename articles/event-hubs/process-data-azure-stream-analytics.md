@@ -4,10 +4,10 @@ description: Bu makalede, Azure Event hub 'ınızdaki verileri bir Azure Stream 
 ms.date: 06/23/2020
 ms.topic: article
 ms.openlocfilehash: 2db4fba59a1a06a24ee2939c51ecdf65aa06cef3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85312889"
 ---
 # <a name="process-data-from-your-event-hub-using-azure-stream-analytics"></a>Azure Stream Analytics kullanarak Olay Hub 'ınızdaki verileri işleme 
@@ -21,8 +21,8 @@ Azure Event Hubs ve Azure Stream Analytics tümleştirmenin temel avantajları a
 
 ## <a name="end-to-end-flow"></a>Uçtan uca akış
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. 
-1. **Event Hubs ad alanına** gidin ve ardından gelen verileri içeren **Olay Hub 'ına**gidin. 
+1. [Azure portalında](https://portal.azure.com) oturum açın. 
+1. **Event Hubs ad alanına** gidin ve ardından gelen verileri içeren **Olay Hub 'ına** gidin. 
 1. Olay Hub 'ı sayfasında **Işlem verileri** ' ni seçin.  
 
     ![İşlem verileri kutucuğu](./media/process-data-azure-stream-analytics/process-data-tile.png)
@@ -44,9 +44,9 @@ Azure Event Hubs ve Azure Stream Analytics tümleştirmenin temel avantajları a
     - Gelen verileri tablo biçiminde veya ham biçimde önizleyebilirsiniz. 
     - Gösterilen veriniz güncel değilse, en son olayları görmek için **Yenile** ' yi seçin. 
 
-        **Tablo**biçiminde bir veri örneği aşağıda verilmiştir: ![ tablo biçiminde sonuçlar](./media/process-data-azure-stream-analytics/snapshot-results.png)
+        **Tablo** biçiminde bir veri örneği aşağıda verilmiştir: ![ tablo biçiminde sonuçlar](./media/process-data-azure-stream-analytics/snapshot-results.png)
 
-        **Ham biçimdeki**verilerin bir örneği aşağıda verilmiştir: 
+        **Ham biçimdeki** verilerin bir örneği aşağıda verilmiştir: 
 
         ![Ham biçimde sonuçlar](./media/process-data-azure-stream-analytics/snapshot-results-raw-format.png)
 1. Test **sonuçları** sekmesinde sorgunuzun test sonuçlarının anlık görüntüsünü görmek için **Test sorgusu** ' nu seçin. Sonuçları da indirebilirsiniz.

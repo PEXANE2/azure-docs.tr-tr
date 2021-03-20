@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 3ebff5a40528e9e3ea0e75c4b51529638de34b5d
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: a9394a5e117a577c903eccdf91cf22d0c359df2b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102505775"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581125"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 hakkında sık sorulan sorular
 
@@ -86,12 +86,12 @@ Web uygulamanız, tarayıcıyı kapattıkları için yayını sonlandırmak isti
 
 #### <a name="server-side"></a>Sunucu tarafı
 
-Canlı olayları, Azure Event Grid olaylarına abone olarak izleyebilirsiniz. Daha fazla bilgi için bkz. [Eventgrid olay şeması](media-services-event-schemas.md#live-event-types).
+Canlı olayları, Azure Event Grid olaylarına abone olarak izleyebilirsiniz. Daha fazla bilgi için bkz. [Eventgrid olay şeması](monitoring/media-services-event-schemas.md#live-event-types).
 
 Şunlardan birini yapabilirsiniz:
 
-* Canlı olaylarınızı durdurmak ve silmek için bir süre içinde hiçbir yeniden bağlantı gelmediğinden, akış düzeyi [Microsoft. Media. Liveeventencoderconnected](media-services-event-schemas.md#liveeventencoderdisconnected) olayları ve Izleyicisine [abone olun](reacting-to-media-services-events.md) .
-* İzleme düzeyi [sinyal](media-services-event-schemas.md#liveeventingestheartbeat) olaylarına [abone olun](reacting-to-media-services-events.md) . Tüm izlemelerin 0 ' a bir bit hızı veya son zaman damgası artık artmazsa, canlı olayı güvenle kapatabilirsiniz. Sinyal olayları her iz için her 20 saniyede bir gelir; bu nedenle biraz ayrıntılıdır.
+* Canlı olaylarınızı durdurmak ve silmek için bir süre içinde hiçbir yeniden bağlantı gelmediğinden, akış düzeyi [Microsoft. Media. Liveeventencoderconnected](monitoring/media-services-event-schemas.md#liveeventencoderdisconnected) olayları ve Izleyicisine [abone olun](monitoring/reacting-to-media-services-events.md) .
+* İzleme düzeyi [sinyal](monitoring/media-services-event-schemas.md#liveeventingestheartbeat) olaylarına [abone olun](monitoring/reacting-to-media-services-events.md) . Tüm izlemelerin 0 ' a bir bit hızı veya son zaman damgası artık artmazsa, canlı olayı güvenle kapatabilirsiniz. Sinyal olayları her iz için her 20 saniyede bir gelir; bu nedenle biraz ayrıntılıdır.
 
 ###  <a name="how-do-i-insert-breaksvideos-and-image-slates-during-a-live-stream"></a>Canlı akış sırasında kesmeler/videolar ve görüntü SLA 'ları eklemek Nasıl yaparım??
 
@@ -117,7 +117,7 @@ Daha fazla bilgi için bkz. [Media Services dinamik şifrelemeyi kullanarak Içe
 
 ### <a name="how-and-where-did-i-get-a-jwt-token-before-using-it-to-request-a-license-or-key"></a>Bir lisans veya anahtar istemek için kullanmadan önce bir JWT belirteci aldım?
 
-Üretim için, HTTPS isteği üzerinde bir JWT belirteci veren güvenli belirteç hizmeti (yani, bir Web hizmeti) olması gerekir. Test için, `GetTokenAsync` [program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs)içinde tanımlanan yöntemde gösterilen kodu kullanabilirsiniz.
+Üretim için, HTTPS isteği üzerinde bir JWT belirteci veren güvenli belirteç hizmeti (yani, bir Web hizmeti) olması gerekir. Test için, `GetTokenAsync` [program. cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs)' de tanımlanan yöntemde gösterilen kodu kullanabilirsiniz.
 
 Oynatıcı, bir kullanıcının kimliği doğrulandıktan sonra bu tür bir belirteç için STS 'ye bir istek yapar ve bunu belirtecin değeri olarak atar. [Azure MEDIA Player API](https://amp.azure.net/libs/amp/latest/docs/)'sini kullanabilirsiniz.
 

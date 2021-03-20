@@ -16,10 +16,10 @@ ms.reviewer: brandwe
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 08b018082c753b9524cb12a72d637fe5458d9114
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85383708"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Nasıl yapılır: ADAL kullanarak iOS 'ta uygulamalar arası SSO 'yu etkinleştirme
@@ -50,7 +50,7 @@ Bu şekilde nasıl yapılacağını bildiğiniz varsayılır:
 
 ### <a name="identity-brokers"></a>Kimlik aracıları
 
-Microsoft, farklı satıcılardan uygulamalar arasında kimlik bilgilerinin köprülemesini ve kimlik bilgilerinin doğrulanması için tek bir güvenli yer gerektiren gelişmiş özellikler için tüm mobil platformlar için uygulamalar sağlar. Bunlar **aracılar**olarak adlandırılır.
+Microsoft, farklı satıcılardan uygulamalar arasında kimlik bilgilerinin köprülemesini ve kimlik bilgilerinin doğrulanması için tek bir güvenli yer gerektiren gelişmiş özellikler için tüm mobil platformlar için uygulamalar sağlar. Bunlar **aracılar** olarak adlandırılır.
 
 İOS ve Android 'de aracılar, müşterilerin çalışanlara ait cihazların bazılarını veya tümünü yöneten bir şirket tarafından bağımsız olarak yüklemiş veya cihaza itilbileceği indirilebilir uygulamalar aracılığıyla sağlanır. Aracılar, güvenlik yönetimini yalnızca bazı uygulamalar için veya BT Yöneticisi yapılandırmasına bağlı olarak tüm cihaz için destekler. Bu işlevsellik, Windows 'ta, teknik olarak Web kimlik doğrulama Aracısı olarak bilinen, işletim sisteminde yerleşik bir hesap Seçicisi tarafından sağlanır.
 
@@ -239,11 +239,11 @@ defaultKeychainSharingGroup=@"com.myapp.mycache";
 > [!WARNING]
 > Uygulamalarınız genelinde bir anahtarlık paylaştığınızda, herhangi bir uygulama kullanıcıları silebilir veya uygulamanızdaki tüm belirteçleri daha kötü bir şekilde silebilir. Arka plan işlerini yapmak için belirteçlere güvenen uygulamalarınız varsa, bu özellikle felaket. Anahtarlık paylaşımı, kimlik SDK 'Ları aracılığıyla herhangi bir ve tüm kaldırma işlemlerine çok dikkatli olmanız gerektiği anlamına gelir.
 
-Hepsi bu! SDK artık tüm uygulamalarınızda kimlik bilgilerini paylaşacaktır. Kullanıcı listesi ayrıca uygulama örnekleri arasında paylaşılır.
+İşte bu kadar! SDK artık tüm uygulamalarınızda kimlik bilgilerini paylaşacaktır. Kullanıcı listesi ayrıca uygulama örnekleri arasında paylaşılır.
 
 ### <a name="turning-on-sso-for-broker-assisted-sso"></a>Aracı yardımlı SSO için SSO 'yu açma
 
-Uygulamanın cihazda yüklü olan herhangi bir aracıyı kullanma yeteneği **Varsayılan olarak**kapalıdır. Uygulamanızı aracıda kullanabilmek için bazı ek yapılandırmalar yapmanız ve uygulamanıza bazı kodlar eklemeniz gerekir.
+Uygulamanın cihazda yüklü olan herhangi bir aracıyı kullanma yeteneği **Varsayılan olarak** kapalıdır. Uygulamanızı aracıda kullanabilmek için bazı ek yapılandırmalar yapmanız ve uygulamanıza bazı kodlar eklemeniz gerekir.
 
 İzlenecek adımlar şunlardır:
 

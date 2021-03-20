@@ -9,17 +9,17 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
 ms.openlocfilehash: 473e87904742395eca6b7eeba0875cd93789104d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91978994"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>Bir VHD 'yi Azure 'a yükleme veya yönetilen bir diski başka bir bölgeye kopyalama-Azure CLı
 
 [!INCLUDE [disks-upload-vhd-to-disk-intro](../../../includes/disks-upload-vhd-to-disk-intro.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [AzCopy ile v10 arasındaki 'ın](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy)en son sürümünü indirin.
 - [Azure CLI 'Yı yükler](/cli/azure/install-azure-cli).
@@ -55,7 +55,7 @@ Bir [disk oluşturma](/cli/azure/disk#az-disk-create) cmdlet 'inde-- **for-uploa
 az disk create -n <yourdiskname> -g <yourresourcegroupname> -l <yourregion> --for-upload --upload-size-bytes 34359738880 --sku standard_lrs
 ```
 
-Premium SSD veya standart SSD yüklemek isterseniz, **standard_lrs** **premium_LRS** veya **standardssd_lrs**ile değiştirin. Günümüzde Ultra diskler desteklenmez.
+Premium SSD veya standart SSD yüklemek isterseniz, **standard_lrs** **premium_LRS** veya **standardssd_lrs** ile değiştirin. Günümüzde Ultra diskler desteklenmez.
 
 Karşıya yükleme işlemi için yapılandırılmış boş bir yönetilen disk oluşturduğunuza göre, buna bir VHD yükleyebilirsiniz. Bir VHD 'yi diske yüklemek için, bir yazılabilir SAS gerekir, bu sayede karşıya yüklemenizin hedefi olarak başvurabilirsiniz.
 

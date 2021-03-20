@@ -4,10 +4,10 @@ description: Azure İşlev Proxy'leri kullanmaya genel bakış
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.openlocfilehash: fb263239f99bcb4ec4c893b700d5c1cce078659f
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96601382"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Azure İşlev Proxy'leri çalışın
@@ -241,7 +241,7 @@ Değerler uygulama ayarlarına, özgün istemci isteğinden parametrelere ve ark
 > [!NOTE] 
 > Bu örnekte, yanıt gövdesi doğrudan ayarlanır, bu nedenle hiçbir `backendUri` özellik gerekmez. Örnek, sahte işlem API 'leri için Azure işlev proxy'leri nasıl kullanabileceğinizi gösterir.
 
-[Azure Portal]: https://portal.azure.com
+[Azure portalı]: https://portal.azure.com
 [HTTP Tetikleyicileri]: ./functions-bindings-http-webhook.md
 [Modify the back-end request]: #modify-backend-request
 [Modify the response]: #modify-response

@@ -9,10 +9,10 @@ ms.custom: devx-track-python
 ms.date: 9/17/2020
 ms.author: drewbat
 ms.openlocfilehash: 954f4edcd10d701d00d9cd23280aaac7c287992d
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91997473"
 ---
 # <a name="quickstart-create-a-python-app-with-azure-app-configuration"></a>Hızlı başlangıç: Azure Uygulama yapılandırmasıyla bir Python uygulaması oluşturma
@@ -28,7 +28,7 @@ Bu hızlı başlangıçta, [Python Için Azure uygulama yapılandırma istemci k
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-7. **Configuration Explorer**  >  **Create**  >  Aşağıdaki anahtar-değer çiftlerini eklemek için yapılandırma Gezgini**anahtar değeri** oluştur ' u seçin:
+7.   >    >  Aşağıdaki anahtar-değer çiftlerini eklemek için yapılandırma Gezgini **anahtar değeri** oluştur ' u seçin:
 
     | Anahtar | Değer |
     |---|---|
@@ -36,11 +36,11 @@ Bu hızlı başlangıçta, [Python Için Azure uygulama yapılandırma istemci k
 
     **Etiket** ve **içerik türü** şimdilik boş bırakın.
 
-8. **Apply** (Uygula) seçeneğini belirleyin.
+8. **Uygula**’yı seçin.
 
 ## <a name="setting-up-the-python-app"></a>Python uygulamasını ayarlama
 
-1. Bu öğreticide *uygulama-yapılandırma-hızlı başlangıç*adlı proje için yeni bir dizin oluşturacaksınız.
+1. Bu öğreticide *uygulama-yapılandırma-hızlı başlangıç* adlı proje için yeni bir dizin oluşturacaksınız.
 
     ```console
     mkdir app-configuration-quickstart
@@ -77,7 +77,7 @@ Bu hızlı başlangıçta, [Python Için Azure uygulama yapılandırma istemci k
 
 ## <a name="configure-your-app-configuration-connection-string"></a>Uygulama yapılandırma Bağlantı dizenizi yapılandırma
 
-1. **AZURE_APP_CONFIG_CONNECTION_STRING**adlı bir ortam değişkeni ayarlayın ve bunu uygulama yapılandırma deponuzu için erişim anahtarı olarak ayarlayın. Komut satırında aşağıdaki komutu çalıştırın:
+1. **AZURE_APP_CONFIG_CONNECTION_STRING** adlı bir ortam değişkeni ayarlayın ve bunu uygulama yapılandırma deponuzu için erişim anahtarı olarak ayarlayın. Komut satırında aşağıdaki komutu çalıştırın:
 
     ```cmd
     setx AZURE_APP_CONFIG_CONNECTION_STRING "connection-string-of-your-app-configuration-store"
@@ -102,7 +102,7 @@ Bu hızlı başlangıçta, [Python Için Azure uygulama yapılandırma istemci k
 Bu bölümdeki örnek kod parçacıkları, Python için uygulama yapılandırması istemci kitaplığı ile genel işlemleri nasıl gerçekleştirekullanacağınızı göstermektedir. Bu kod parçacıklarını `try` daha önce oluşturduğunuz *App-Configuration-QuickStart.py* dosyasındaki bloğa ekleyin.
 
 > [!NOTE]
-> Uygulama Yapılandırması istemci kitaplığı, anahtar-değer nesnesini olarak ifade eder `ConfigurationSetting` . Bu nedenle, bu makalede, uygulama yapılandırma deposundaki **Anahtar değerlere** **yapılandırma ayarları**denir.
+> Uygulama Yapılandırması istemci kitaplığı, anahtar-değer nesnesini olarak ifade eder `ConfigurationSetting` . Bu nedenle, bu makalede, uygulama yapılandırma deposundaki **Anahtar değerlere** **yapılandırma ayarları** denir.
 
 * [Uygulama yapılandırma deposuna bağlanma](#connect-to-an-app-configuration-store)
 * [Yapılandırma ayarı al](#get-a-configuration-setting)

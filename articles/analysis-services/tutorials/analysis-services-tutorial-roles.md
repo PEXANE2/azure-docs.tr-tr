@@ -8,10 +8,10 @@ ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: owend
 ms.openlocfilehash: aea2196671a136145671b977a6d925849b635b73
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92018704"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Öğretici: Sunucu yöneticisi ve kullanıcı rollerini yapılandırma
@@ -27,7 +27,7 @@ ms.locfileid: "92018704"
 
 Azure Analysis Services'de kullanıcı güvenliği hakkında daha fazla bilgi edinmek için bkz: [Kimlik doğrulaması ve kullanıcı izinleri](../analysis-services-manage-users.md). 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Aboneliğinizde bir Azure Active Directory.
 - Aboneliğinizde bir [Azure Analysis Services sunucusu](../analysis-services-create-server.md) oluşturmuş olmanız.
@@ -130,7 +130,7 @@ Bu görevde yeni bir Internet Satış Genel rolü oluşturmak için bir TMSL bet
 ## <a name="verify-your-changes"></a>Değişikliklerinizi doğrulama
 
 1. **Nesne Gezgini**'nde, servername'inize tıklayın, sonra **Yenile**'yi tıklayın ve **F5**'e basın.
-2. **Veritabanları**  >  **AdventureWorks**  >  **rollerini**genişletin. Önceki görevlerde eklediğiniz kullanıcı hesabının ve yeni rol değişikliklerinin göründüğünü doğrulayın.   
+2. **Veritabanları**  >  **AdventureWorks**  >  **rollerini** genişletin. Önceki görevlerde eklediğiniz kullanıcı hesabının ve yeni rol değişikliklerinin göründüğünü doğrulayın.   
 
     ![Nesne Gezgini'nde doğrulama](./media/analysis-services-tutorial-roles/aas-connect-ssms-verify.png)
 

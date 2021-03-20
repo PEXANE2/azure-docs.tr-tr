@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 02/19/2015
 ms.author: gwallace
 ms.custom: devx-track-python
-ms.openlocfilehash: ba93591ade730c4e9c9bdb6a42232e71e10d6469
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b4b9cd0db2a3a99aca80f42b6d69485a542bbadb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000445"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580971"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>Python 'da ses ve SMS özellikleri için Twilio kullanma
 Bu kılavuzda, Azure 'da Twilio API hizmetiyle ortak programlama görevlerinin nasıl gerçekleştirileceği gösterilmektedir. Kapsanan senaryolar, telefon araması yapmayı ve kısa mesaj hizmeti (SMS) iletisi göndermeyi içerir. Twilio hakkında daha fazla bilgi edinmek ve uygulamalarınızda sesli ve SMS kullanma hakkında daha fazla bilgi için [sonraki adımlar](#NextSteps) bölümüne bakın.
@@ -86,7 +86,7 @@ Twilio hizmetini kullanan ve Azure 'da çalışan bir Python uygulaması, Twilio
 ### <a name="add-an-incoming-rule"></a>Gelen kuralı ekleme
   1. [Ağ güvenlik grubu] [azure_nsg] sayfasına gidin.
   2. Sanal makinenize karşılık gelen ağ güvenlik grubunu seçin.
-  3. **80 numaralı bağlantı noktası** için ekleme ve **giden kuralı** . Herhangi bir adresten gelen bir adrese izin vermeyi unutmayın.
+  3. **80 numaralı bağlantı noktasına** **giden bir kural** ekleyin. Herhangi bir adresten gelen bir adrese izin vermeyi unutmayın.
 
 ### <a name="set-the-dns-name-label"></a>DNS adı etiketini ayarla
   1. [Genel IP Adresleri] [azure_ips] sayfasına gidin.
@@ -151,6 +151,9 @@ call = client.calls.create(to=to_number,
                            url=url + urlencode({'Message': message}))
 print(call.sid)
 ```
+
+> [!IMPORTANT]
+> Telefon numaraları bir ' + ' ve ülke kodu ile biçimlendirilmelidir. Örneğin, + 16175551212 (E. 164 biçimi). Twilio, biçimlendirilmemiş ABD numaralarını da kabul eder. Örneğin, (415) 555-1212 veya 415-555-1212.
 
 Belirtildiği gibi, bu kod TwiML yanıtını döndürmek için Twilio tarafından sağlanmış bir site kullanır. Bunun yerine, TwiML yanıtı sağlamak için kendi sitenizi kullanabilirsiniz; daha fazla bilgi için, [kendi web sitenizde TwiML yanıtları sağlama](#howto_provide_twiml_responses)konusuna bakın.
 

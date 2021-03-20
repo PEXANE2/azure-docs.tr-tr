@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 10/01/2020
 ms.author: Zhchia
 ms.openlocfilehash: 2f31eddab1070d073d3fd5a4761dad597e42a2e0
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96181911"
 ---
 # <a name="tutorial-configure-opentext-directory-services-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için OpenText dizin hizmetlerini yapılandırma
@@ -35,7 +35,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem OpenTe
 > * OpenText dizin hizmetlerinde grupları ve grup üyeliklerini sağlama
 > * OpenText dizin hizmetlerinde [Çoklu oturum açma](./opentext-directory-services-tutorial.md) (önerilir)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 

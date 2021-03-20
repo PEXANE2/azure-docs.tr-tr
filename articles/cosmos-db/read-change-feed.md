@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/27/2020
 ms.reviewer: sngun
 ms.openlocfilehash: 7021367e1230573343ddf57ccd399d998ad5280e
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93339283"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Azure Cosmos DB değişiklik akışını okuma
@@ -29,7 +29,7 @@ Azure Cosmos DB değişiklik akışından okurken, endişelenmenize gerek duymay
 - Değişiklikleri kullanan birden çok istemci arasında yük dengeleme. Örneğin, bir istemci, değişiklikleri işlemeye devam edemiyor ve diğeri kullanılabilir kapasiteye sahip olamaz.
 - [Hataları işleme](change-feed-processor.md#error-handling). Örneğin, kodda işlenmeyen bir özel durum veya geçici ağ sorunu sonrasında doğru şekilde işlenen başarısız değişiklikleri otomatik olarak yeniden deniyor.
 
-Azure Cosmos DB değişiklik akışını kullanan senaryoların çoğu, push model seçeneklerinden birini kullanacaktır. Ancak, çekme modelinin ek düşük düzey denetimini isteyebileceğiniz bazı senaryolar vardır. Bunlar:
+Azure Cosmos DB değişiklik akışını kullanan senaryoların çoğu, push model seçeneklerinden birini kullanacaktır. Ancak, çekme modelinin ek düşük düzey denetimini isteyebileceğiniz bazı senaryolar vardır. Bu modüller şunlardır:
 
 - Belirli bir bölüm anahtarından değişiklikler okunuyor
 - İstemcinizin işlenmek üzere değişiklikleri alacağı hızların denetlenmesi

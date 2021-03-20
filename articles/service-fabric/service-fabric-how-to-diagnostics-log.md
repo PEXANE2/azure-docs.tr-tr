@@ -7,10 +7,10 @@ ms.date: 03/27/2018
 ms.author: srrengar
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a36425acf42a469c7f48b2e954bdacfdfcce1b10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89011489"
 ---
 # <a name="add-logging-to-your-service-fabric-application"></a>Service Fabric uygulamanıza günlük kaydı ekleme
@@ -93,7 +93,7 @@ internal sealed class ServiceEventSource : EventSource
 
 Yapılandırılmış ve genel bir izleme karma bir şekilde kullanılması iyi bir şekilde çalışabilir. Yapılandırılmış izleme hataları ve ölçümleri raporlamak için kullanılır. Genel olaylar, sorun giderme için mühendisler tarafından tüketilen ayrıntılı günlük kaydı için kullanılabilir.
 
-## <a name="microsoftextensionslogging"></a>Microsoft. Extensions. Logging
+## <a name="microsoftextensionslogging"></a>Microsoft.Extensions.Logging
 
 ASP.NET Core günlüğü ([Microsoft. Extensions. Logging NuGet paketi](https://www.nuget.org/packages/Microsoft.Extensions.Logging)), uygulamanız için standart bir günlüğe kaydetme API 'si sağlayan bir günlük çerçevesidir. Diğer günlük arka uçları için destek, ASP.NET Core günlüğe takılabilir. Bu, çok sayıda kodu değiştirmek zorunda kalmadan, uygulamanızda günlüğe kaydetme için çok çeşitli destek sağlar.
 
@@ -126,7 +126,7 @@ ASP.NET Core günlüğü ([Microsoft. Extensions. Logging NuGet paketi](https://
 
 Bazı üçüncü taraf sağlayıcılar, [Serilog](https://serilog.net/), [NLog](https://nlog-project.org/)ve [loggr](https://github.com/imobile3/Loggr.Extensions.Logging)gibi önceki bölümde açıklanan yaklaşımı kullanır. Bunların her birini ASP.NET Core günlüğe ekleyebilir veya bunları ayrı ayrı kullanabilirsiniz. Serilog, bir günlükçü tarafından gönderilen tüm iletileri zenginleştirir. Bu özellik, hizmet adı, tür ve bölüm bilgilerinin çıktısı için yararlı olabilir. ASP.NET Core altyapısında bu özelliği kullanmak için şu adımları uygulayın:
 
-1. **Serilog**, **Serilog. Extensions. Logging**, **Serilog. havuzlar. Literate**ve **Serilog. havuzlar. Observable** NuGet paketlerini projeye ekleyin. 
+1. **Serilog**, **Serilog. Extensions. Logging**, **Serilog. havuzlar. Literate** ve **Serilog. havuzlar. Observable** NuGet paketlerini projeye ekleyin. 
 2. `LoggerConfiguration`Ve günlükçü örneği oluşturun.
 
    ```csharp
@@ -139,7 +139,7 @@ Bazı üçüncü taraf sağlayıcılar, [Serilog](https://serilog.net/), [NLog](
    ServiceRuntime.RegisterServiceAsync("StatelessType", context => new Stateless(context, Log.Logger)).GetAwaiter().GetResult();
    ```
 
-4. Hizmet oluşturucusunda, **ServiceTypeName**, **ServiceName**, **PartitionID**ve **InstanceId**için özellik zenginler oluşturur.
+4. Hizmet oluşturucusunda, **ServiceTypeName**, **ServiceName**, **PartitionID** ve **InstanceId** için özellik zenginler oluşturur.
 
    ```csharp
    public Stateless(StatelessServiceContext context, Serilog.ILogger serilog)

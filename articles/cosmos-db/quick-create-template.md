@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 06/01/2020
 ms.custom: subject-armqs
 ms.openlocfilehash: b97702bb84eb38d185fe97ffcc596e374f28fbe2
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93339674"
 ---
 # <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak Azure Cosmos DB ve kapsayıcı oluşturma
@@ -27,7 +27,7 @@ Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakk�
 
 [:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Azure 'a dağıtma":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql%2Fazuredeploy.json)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir Azure aboneliği veya ücretsiz Azure Cosmos DB deneme hesabı
 
@@ -63,22 +63,22 @@ Daha fazla Azure Cosmos DB Şablon örneği [hızlı başlangıç şablonu galer
 
     Belirtilmediği takdirde, Azure Cosmos kaynaklarını oluşturmak için varsayılan değerleri kullanın.
 
-    * **Abonelik** : Bir Azure aboneliği seçin.
-    * **Kaynak grubu** : **Yeni oluştur** ' u seçin, kaynak grubu için benzersiz bir ad girin ve ardından **Tamam** ' a tıklayın.
-    * **Konum** : Bir konum seçin.  Örneğin **Orta ABD**.
-    * **Hesap adı** : Azure Cosmos hesabı için bir ad girin. Bu, genel olarak benzersiz olmalıdır.
-    * **Konum** : Azure Cosmos hesabınızı oluşturmak istediğiniz konumu girin. Azure Cosmos hesabı, kaynak grubuyla aynı konumda olabilir.
-    * **Birincil bölge** : Azure Cosmos hesabının birincil çoğaltma bölgesi.
-    * **İkincil bölge** : Azure Cosmos hesabı için ikincil çoğaltma bölgesi.
-    * **Varsayılan tutarlılık düzeyi** : Azure Cosmos hesabı için varsayılan tutarlılık düzeyi.
-    * **Maksimum Eskime durumu ön eki** : en fazla eski istek. Boundedstalet için gereklidir.
-    * **Saniye cinsinden en fazla zaman aralığı** : en fazla gecikme süresi. Boundedstalet için gereklidir.
-    * **Veritabanı adı** : Azure Cosmos veritabanının adı.
-    * **Kapsayıcı adı** : Azure Cosmos kapsayıcısının adı.
-    * **Aktarım hızı** : kapsayıcı için aktarım hızı, en düşük aktarım hızı DEĞERI 400 ru/sn 'dir.
-    * **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum** : Bunu seçin.
+    * **Abonelik**: Bir Azure aboneliği seçin.
+    * **Kaynak grubu**: **Yeni oluştur**' u seçin, kaynak grubu için benzersiz bir ad girin ve ardından **Tamam**' a tıklayın.
+    * **Konum**: Bir konum seçin.  Örneğin **Orta ABD**.
+    * **Hesap adı**: Azure Cosmos hesabı için bir ad girin. Bu, genel olarak benzersiz olmalıdır.
+    * **Konum**: Azure Cosmos hesabınızı oluşturmak istediğiniz konumu girin. Azure Cosmos hesabı, kaynak grubuyla aynı konumda olabilir.
+    * **Birincil bölge**: Azure Cosmos hesabının birincil çoğaltma bölgesi.
+    * **İkincil bölge**: Azure Cosmos hesabı için ikincil çoğaltma bölgesi.
+    * **Varsayılan tutarlılık düzeyi**: Azure Cosmos hesabı için varsayılan tutarlılık düzeyi.
+    * **Maksimum Eskime durumu ön eki**: en fazla eski istek. Boundedstalet için gereklidir.
+    * **Saniye cinsinden en fazla zaman aralığı**: en fazla gecikme süresi. Boundedstalet için gereklidir.
+    * **Veritabanı adı**: Azure Cosmos veritabanının adı.
+    * **Kapsayıcı adı**: Azure Cosmos kapsayıcısının adı.
+    * **Aktarım hızı**: kapsayıcı için aktarım hızı, en düşük aktarım hızı DEĞERI 400 ru/sn 'dir.
+    * **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum**: Bunu seçin.
 
-3. **Satın al** 'ı seçin. Azure Cosmos hesabı başarıyla dağıtıldıktan sonra bir bildirim alırsınız:
+3. **Satın al**'ı seçin. Azure Cosmos hesabı başarıyla dağıtıldıktan sonra bir bildirim alırsınız:
 
    :::image type="content" source="./media/quick-create-template/resource-manager-template-portal-deployment-notification.png" alt-text="ARM şablonu, Cosmos DB tümleştirme, Portal dağıtma bildirimi":::
 

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4f082ec896bf0542b63c8c1d0257679681334050
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85358676"
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>SQL yönetici temsilcisi izinlerini kullanarak Azure AD Connect'i yükleme
@@ -41,10 +41,10 @@ Azure AD Connect Yöneticisi|, Azure AD Connect yüklenir ve özel yükleme sır
 Veritabanını bant dışı sağlamak ve veritabanı sahibi izinleriyle Azure AD Connect yüklemek için aşağıdaki adımları kullanın.
 
 >[!NOTE]
->Gerekli olmasa da, veritabanı oluşturulurken Latin1_General_CI_AS harmanlama **highly recommended** seçilmelidir.
+>Gerekli olmasa da, veritabanı oluşturulurken Latin1_General_CI_AS harmanlama  seçilmelidir.
 
 
-1. SQL Yöneticisi 'nin, büyük/küçük harfe duyarsız harmanlama sırası **(Latin1_General_CI_AS)** Ile ADSync veritabanını oluşturmasını sağlayabilirsiniz.  Veritabanının **ADSync**olarak adlandırılması gerekir.  Kurtarma modeli, uyumluluk düzeyi ve içerme türü Azure AD Connect yüklenirken doğru değerlere güncelleştirilir.  Ancak harmanlama sırasının SQL Yöneticisi tarafından doğru şekilde ayarlanması gerekir, aksi takdirde Azure AD Connect yüklemeyi engeller.  Bu SA 'yı kurtarmak için, veritabanını silip yeniden oluşturmanız gerekir.
+1. SQL Yöneticisi 'nin, büyük/küçük harfe duyarsız harmanlama sırası **(Latin1_General_CI_AS)** Ile ADSync veritabanını oluşturmasını sağlayabilirsiniz.  Veritabanının **ADSync** olarak adlandırılması gerekir.  Kurtarma modeli, uyumluluk düzeyi ve içerme türü Azure AD Connect yüklenirken doğru değerlere güncelleştirilir.  Ancak harmanlama sırasının SQL Yöneticisi tarafından doğru şekilde ayarlanması gerekir, aksi takdirde Azure AD Connect yüklemeyi engeller.  Bu SA 'yı kurtarmak için, veritabanını silip yeniden oluşturmanız gerekir.
  
    ![Harmanlama](./media/how-to-connect-install-sql-delegation/sql4.png)
 2. Azure AD Connect yöneticisine ve etki alanı hizmeti hesabına aşağıdaki izinleri verin:

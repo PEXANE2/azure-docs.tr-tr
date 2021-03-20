@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: amsriva
-ms.openlocfilehash: 164e06024844fb5262586450b737db9c807e373a
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 36cb5720e409c86fcb4bc1a97863e5d3523cd3bc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101100455"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588758"
 ---
 # <a name="create-a-custom-domain-on-azure-front-door-standardpremium-sku-preview-using-the-azure-portal"></a>Azure ön kapısı Standart/Premium SKU 'da (Önizleme) Azure portal kullanarak özel bir etki alanı oluşturun
 
@@ -38,6 +38,9 @@ Azure ön kapısının Standart/Premium profilini oluşturduktan sonra varsayıl
 * [DNS etki alanlarınızı](../../dns/dns-overview.md)barındırmak için Azure kullanıyorsanız, etki alanı sağlayıcının etki alanı adı sistemi 'NI (DNS) bir Azure DNS temsilci olarak oluşturmanız gerekir. Daha fazla bilgi için bkz. [Bir etki alanını Azure DNS'ye devretme](../../dns/dns-delegate-domain-azure-dns.md). Aksi takdirde, DNS etki alanınızı işlemek için bir etki alanı sağlayıcısı kullanıyorsanız, istenen DNS TXT kayıtlarını girerek etki alanını el ile doğrulamanız gerekir.
 
 ## <a name="add-a-new-custom-domain"></a>Yeni bir özel etki alanı Ekle
+
+> [!NOTE]
+> Genel önizlemede, tepesinde etki alanları oluşturmak için Azure DNS kullanılması, Azure ön kapı Standart/Premium üzerinde desteklenmez. TEPESINDE etki alanlarının Azure ön kapısının Standart/Premium için kullanılmasına izin veren CNAME düzleştirme veya DNS ile izleme desteği sunan başka DNS sağlayıcıları vardır.
 
 Özel bir etki alanı, portalda etki alanları tarafından yönetilir. Bir uç noktayla ilişkilendirmeden önce özel bir etki alanı oluşturulup doğrulanabilir. Özel etki alanı ve alt etki alanları aynı anda yalnızca tek bir uç nokta ile ilişkilendirilebilir. Ancak, farklı ön kapılar için aynı özel etki alanından farklı alt etki alanlarını kullanabilirsiniz. Ayrıca, özel etki alanlarını aynı ön kapı uç noktasına farklı alt etki alanlarıyla eşleyebilirsiniz.
 

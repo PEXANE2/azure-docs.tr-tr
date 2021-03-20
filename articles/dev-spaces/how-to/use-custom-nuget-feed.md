@@ -9,10 +9,10 @@ description: Azure dev alanında NuGet paketlerine erişmek ve bunları kullanma
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kapsayıcılar
 manager: gwallace
 ms.openlocfilehash: d60d7142d9b9979be76eebb3d324a448bd76638f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91960227"
 ---
 # <a name="use-a-custom-nuget-feed-with-azure-dev-spaces"></a>Azure Dev Spaces ile özel bir NuGet akışı kullanma

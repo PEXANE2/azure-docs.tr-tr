@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 7f4903cf29f15132db91e47d78efe5a556efd937
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93340252"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB ve Azure Işlevleri ile sunucusuz olay tabanlı mimariler
@@ -31,8 +31,8 @@ Azure Işlevleri, [değişiklik akışına](change-feed.md)bağlanmak için en k
 
 Sunucusuz bir olay tabanlı akış uygulamak için şunlar gerekir:
 
-* **İzlenen kapsayıcı** : izlenen kapsayıcı, Izlenen Azure Cosmos kapsayıcısıdır ve değişiklik beslemenin oluşturulduğu verileri depolar. Tüm ekler, izlenen kapsayıcıya yapılan güncelleştirmeler kapsayıcının değişiklik akışına yansıtılır.
-* **Kira kapsayıcısı** : kira kapsayıcısı, birden çok ve dinamik sunucusuz Azure işlev örneğinde durum tutar ve dinamik ölçeklendirmeyi sağlar. Bu Kiralama kapsayıcısı, Cosmos DB için Azure Işlevleri tetikleyicisi tarafından el ile veya otomatik olarak oluşturulabilir. Kira kapsayıcısını otomatik olarak oluşturmak için, [yapılandırmada](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) *Createleasecollectionifnotexists* bayrağını ayarlayın. Bölümlenmiş kira kapsayıcıları, bölüm anahtarı tanımına sahip olmak için gereklidir `/id` .
+* **İzlenen kapsayıcı**: izlenen kapsayıcı, Izlenen Azure Cosmos kapsayıcısıdır ve değişiklik beslemenin oluşturulduğu verileri depolar. Tüm ekler, izlenen kapsayıcıya yapılan güncelleştirmeler kapsayıcının değişiklik akışına yansıtılır.
+* **Kira kapsayıcısı**: kira kapsayıcısı, birden çok ve dinamik sunucusuz Azure işlev örneğinde durum tutar ve dinamik ölçeklendirmeyi sağlar. Bu Kiralama kapsayıcısı, Cosmos DB için Azure Işlevleri tetikleyicisi tarafından el ile veya otomatik olarak oluşturulabilir. Kira kapsayıcısını otomatik olarak oluşturmak için, [yapılandırmada](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) *Createleasecollectionifnotexists* bayrağını ayarlayın. Bölümlenmiş kira kapsayıcıları, bölüm anahtarı tanımına sahip olmak için gereklidir `/id` .
 
 ## <a name="create-your-azure-functions-trigger-for-cosmos-db"></a>Cosmos DB için Azure Işlevleri tetiklerinizi oluşturma
 

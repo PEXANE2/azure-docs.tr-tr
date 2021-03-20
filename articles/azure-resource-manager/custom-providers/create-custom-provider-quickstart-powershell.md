@@ -8,10 +8,10 @@ ms.devlang: azurepowershell
 ms.date: 09/22/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 6912f7f6fdc88c5d611bfbfd78f15e5f7a949f70
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91951851"
 ---
 # <a name="quickstart-create-an-azure-custom-resource-provider-with-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell bir Azure özel kaynak sağlayıcısı oluşturma
@@ -19,7 +19,7 @@ ms.locfileid: "91951851"
 Bu hızlı başlangıçta, [az. CustomProviders](/powershell/module/az.customproviders) PowerShell modülünü kullanarak kendi Azure özel kaynak sağlayıcınızı oluşturmayı öğreneceksiniz.
 
 > [!CAUTION]
-> Azure özel sağlayıcılar Şu anda genel önizlemededir. Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sunulmaktadır. Üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Azure özel sağlayıcılar Şu anda genel önizlemededir. Bu önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır. Üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="requirements"></a>Gereksinimler
 

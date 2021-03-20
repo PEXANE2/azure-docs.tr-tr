@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
 ms.openlocfilehash: 292374bcce90da042dc6bd672feaad3750759aa9
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92674512"
 ---
 # <a name="azure-farmbeats-apis"></a>Azure Farmtempts API 'Leri
@@ -29,7 +29,7 @@ Farmtts API 'Leri Swagger teknik belgelerini içerir. Tüm API 'Ler ve bunların
 
 Aşağıdaki tabloda, Farmrets veri hub 'ında bulunan tüm nesneler ve kaynaklar özetlenmektedir:
 
-| Nesneler ve kaynaklar | Açıklama
+| Nesneler ve kaynaklar | Description
 --- | ---|
 Çiftlik | Grup, Farmtts sistemi içinde ilgilendiğiniz fiziksel bir konuma karşılık gelir. Her grubun bir grup adı ve benzersiz bir grup KIMLIĞI vardır. |
 Cihaz  | Cihaz, grupta bulunan bir fiziksel cihaza karşılık gelir. Her cihazın benzersiz bir cihaz KIMLIĞI vardır. Bir cihaz genellikle Grup KIMLIĞI olan bir gruba sağlanır.
@@ -107,7 +107,7 @@ REST GET çağrıları için, istek URI 'sinde bir veya daha fazla sorgu paramet
 
 Azure Farmrets veri hub 'ı API 'Leri, standart HTTP hatalarını döndürür. En yaygın hata kodları şunlardır:
 
- |Hata kodu             | Açıklama |
+ |Hata kodu             | Description |
  |---                    | --- |
  |200                    | Başarılı |
  |201                    | Oluşturma (post) başarılı |
@@ -143,13 +143,13 @@ Bu örnekte, bir grup oluşturulduğunda, giriş yükünde "ad" zorunlu alanı b
 
 Azure Farmtts API 'Lerine, Azure Active Directory bir kullanıcı veya uygulama kaydı tarafından erişilebilir. Azure Active Directory bir uygulama kaydı oluşturmak için aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com)gidin ve **Azure Active Directory**  >  **App registrations**  >  **Yeni kayıt** uygulama kayıtları Azure Active Directory seçin. Alternatif olarak, mevcut bir hesabı kullanabilirsiniz.
+1. [Azure Portal](https://portal.azure.com)gidin ve   >    >  **Yeni kayıt** uygulama kayıtları Azure Active Directory seçin. Alternatif olarak, mevcut bir hesabı kullanabilirsiniz.
 2. Yeni bir hesap için aşağıdakileri yapın:
 
     - Bir ad girin.
     - **Yalnızca bu kuruluş dizinindeki hesapları (tek kiracı)** seçin.
     - Alanların geri kalanında varsayılan değerleri kullanın.
-    - **Kaydet** ’i seçin.
+    - **Kaydet**’i seçin.
 
 3. Yeni ve var olan uygulama kaydına **genel bakış** bölmesinde şunları yapın:
 
@@ -159,7 +159,7 @@ Azure Farmtts API 'Lerine, Azure Active Directory bir kullanıcı veya uygulama 
     - **Nesne kimliğini** yakalamak için **Özellikler** ' e gidin.
 
 4. Veri hub Swagger (https:// <yourdatahub> . azurewebsites.net/swagger/index.html) sayfasına gidin ve şunları yapın:
-    - **Roleatama API** 'sine gidin.
+    - **Roleatama API**'sine gidin.
     - Yeni oluşturduğunuz **nesne kimliği** Için bir **roleatama** NESNESI oluşturmak üzere bir gönderi gerçekleştirin.
  
 ```json

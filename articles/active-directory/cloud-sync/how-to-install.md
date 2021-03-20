@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 742b9fc79489feba8192b6e62a6431bb37f55ad4
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98614240"
 ---
 # <a name="install-the-azure-ad-connect-provisioning-agent"></a>Azure AD Connect sağlama aracısını yükler
@@ -74,10 +74,10 @@ Aracı doğrulaması Azure portal ve aracıyı çalıştıran yerel sunucu üzer
 ### <a name="azure-portal-agent-verification"></a>Aracı doğrulama Azure portal
 Aracının Azure tarafından görüldüğünü doğrulamak için aşağıdaki adımları izleyin.
 
- 1. Azure Portal’da oturum açın.
+ 1. Azure portalında oturum açın.
  2. Sol tarafta **Azure Active Directory**  >  **Azure AD Connect**' yı seçin. Ortasında, **bulut eşitlemesini Yönet**' i seçin.
 
-   ![Azure portal](media/how-to-install/install-6.png)</br>
+   ![Azure portalı](media/how-to-install/install-6.png)</br>
 
  3.  **Azure AD Connect bulut eşitleme** ekranında **tüm aracıları gözden geçir**' i seçin.
 

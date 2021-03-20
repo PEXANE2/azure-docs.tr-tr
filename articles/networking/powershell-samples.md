@@ -15,17 +15,17 @@ ms.workload: infrastructure
 ms.date: 05/24/2017
 ms.author: gwallace
 ms.openlocfilehash: aa3304cbabb183368f0e47415e64120854f43535
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87282084"
 ---
 # <a name="azure-powershell-samples-for-networking"></a>Ağ için Azure PowerShell örnekleri
 
 Aşağıdaki tabloda Azure PowerShell kullanılarak oluşturulan betiklerin bağlantıları yer almaktadır.
 
-| Komut Dosyası | Açıklama |
+| Komut Dosyası | Description |
 |-|-|
 |**Azure kaynakları arasında bağlantı**||
 | [Çok katmanlı uygulamalar için sanal ağ oluşturma](./scripts/virtual-network-powershell-sample-multi-tier-application.md?toc=%2fazure%2fnetworking%2ftoc.json) | Ön uç ve arka uç alt ağları ile sanal ağ oluşturur. 1433 numaralı bağlantı noktası için, ön uç alt ağına giden trafik HTTP ile sınırlıyken, arka uç alt ağına giden trafik SQL ile sınırlıdır. |

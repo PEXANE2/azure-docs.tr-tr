@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 84bbec783630aadc68a9632c90ee90f4a8cc98d3
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92446710"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-grovo"></a>Öğretici: Grovo ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, Grovo 'ı Azure Active Directory (Azure AD) ile tümleştirmeyi
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -55,7 +55,7 @@ Grovo 'ın Azure AD 'ye tümleştirmesini yapılandırmak için, Galeriden yöne
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-grovo"></a>Grovo için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu grovo ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Grovo içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu grovo ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Grovo içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Grovo ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -118,7 +118,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 Bu bölümde, Grovo 'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde **Grovo**öğesini seçin.
+1. Uygulamalar listesinde **Grovo** öğesini seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
@@ -135,7 +135,7 @@ Bu bölümde, Grovo 'e erişim vererek Azure çoklu oturum açma özelliğini ku
 
 1. Farklı bir Web tarayıcısı penceresinde, Grovo 'da yönetici olarak oturum açın.
 
-2. **Yönetici**  >  **tümleştirmelerine**gidin.
+2. **Yönetici**  >  **tümleştirmelerine** gidin.
  
     !["Tümleştirmeler" seçiliyken "Yönetici" menüsünü gösteren ekran görüntüsü.](./media/grovo-tutorial/tutorial_grovo_admin.png) 
 
@@ -147,9 +147,9 @@ Bu bölümde, Grovo 'e erişim vererek Azure çoklu oturum açma özelliğini ku
 
     ![Grovo yapılandırması](./media/grovo-tutorial/tutorial_grovo_saml.png)
 
-    a. **VARLıK kimliği** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının**değerini yapıştırın.
+    a. **VARLıK kimliği** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının** değerini yapıştırın.
 
-    b. **Çoklu oturum açma hizmeti uç noktası** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
+    b. **Çoklu oturum açma hizmeti uç noktası** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
     c. **Çoklu oturum açma hizmeti uç noktası bağlamayı** farklı seçin `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect` .
     

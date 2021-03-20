@@ -8,12 +8,12 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: e56473ae935ec58a6cf6f0ea30fe5f7ccfec3f80
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: f82169c084fc65fd483119bb84f29198ed288019
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103017214"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580326"
 ---
 # <a name="use-the-azure-powershell-module-to-enable-end-to-end-encryption-using-encryption-at-host"></a>Konakta şifrelemeyi kullanarak uçtan uca şifrelemeyi etkinleştirmek için Azure PowerShell modülünü kullanın
 
@@ -32,7 +32,20 @@ Ayrıca, VM boyutlarını programlı bir şekilde bulabilirsiniz. Programlı ola
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-VM 'niz veya sanal makine ölçek kümeleriniz için konakta şifrelemeyi kullanabilmeniz için, özelliği aboneliğinizde etkinleştirilmiş olarak almanız gerekir. encryptionAtHost@microsoft.comAbonelikleriniz için etkin özelliği sağlamak üzere abonelik kimliklerinizle e-posta gönderin.
+VM/VMSS 'niz için EncryptionAtHost özelliğini kullanmadan önce aboneliğiniz için özelliği etkinleştirmeniz gerekir. Aboneliğiniz için özelliği etkinleştirmek üzere lütfen aşağıdaki adımları izleyin:
+
+1.  Aboneliğinizi için özelliği kaydetmek üzere aşağıdaki komutu yürütün
+
+    ```powershell
+     Register-AzProviderFeature -FeatureName "EncryptionAtHost" -ProviderNamespace "Microsoft.Compute" 
+    ```
+
+2.  Özelliği denemeden önce aşağıdaki komutu kullanarak kayıt durumunun kayıtlı olduğundan (birkaç dakika sürer) emin olun.
+
+    ```powershell
+     Get-AzProviderFeature -FeatureName "EncryptionAtHost" -ProviderNamespace "Microsoft.Compute"  
+    ```
+
 
 ### <a name="create-an-azure-key-vault-and-diskencryptionset"></a>Azure Key Vault ve DiskEncryptionSet oluşturma
 

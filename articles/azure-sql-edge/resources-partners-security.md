@@ -11,10 +11,10 @@ ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 10/09/2020
 ms.openlocfilehash: 5dbf425bfc5c03bb9c6c86f10758332ef8dd3602
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91941345"
 ---
 # <a name="azure-sql-edge-security-partners"></a>Azure SQL Edge güvenlik iş ortakları
@@ -23,7 +23,7 @@ Bu makalede, Azure SQL Edge kullanarak IoT Edge dağıtımlarınız için uçtan
 
 ## <a name="security-partners"></a>Güvenlik iş ortakları
  
-| İş Ortağı| Açıklama | Bağlantılar |
+| İş Ortağı| Description | Bağlantılar |
 |-----|-----|-----|
 |![DH2i](media/resources/dh2i-logo.png)|DH2i, kuruluşları yazılım tanımlı çevre (SDP) Always-Secure ve BT altyapısını Always-On etkinleştirerek ağ bağlantısına yönelik yenilikçi yeni bir yaklaşım alır. IoT için DxOdyssey, sınır cihazlarından veri merkezine ve buluta sorunsuz bir şekilde erişim sağlayan bu uçtan uca cihazları genişletir. Bu SDP modülü, x64 ve arm64 mimarisinde bir kapsayıcıdaki herhangi bir IoT cihazında çalışır. Kuruluşlar, etkinleştirildikten sonra, bir VPN gereksinimi olmadan veya genel kullanıma açık bağlantı noktaları olmadan cihazlar ve hub 'lar arasında güvenli, özel uygulama düzeyi tüneller oluşturabilir. Bu SDP modülü, uç cihazların diğer cihazlar, kaynaklar, uygulamalar veya bulutlarla iletişim kurması gereken IoT kullanım durumları için oluşturulmuştur. En düşük donanım gereksinimleri: Linux x64 ve arm64 OS, 1 GB RAM, 100 MB depolama| [Web sitesi](https://dh2i.com/) [marketi](https://ms.portal.azure.com/#blade/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home) [belge](https://dh2i.com/dxodyssey-for-iot/) [desteği](https://dh2i.com/support/)
 

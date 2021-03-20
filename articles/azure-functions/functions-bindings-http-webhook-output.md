@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.openlocfilehash: a25658677e436edf4d001599bb4981f527016596
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84697451"
 ---
 # <a name="azure-functions-http-output-bindings"></a>Azure Işlevleri HTTP çıkış bağlamaları
@@ -64,7 +64,7 @@ Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen gene
 }
 ```
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılan | Description |
 |---------|---------|---------| 
 | customHeaders|yok|HTTP yanıtında özel üstbilgiler ayarlamanıza olanak sağlar. Önceki örnek, `X-Content-Type-Options` içerik türü algılaması olmaması için üst bilgiyi yanıta ekler. |
 |dynamicThrottlesEnabled|değeri<sup>\*</sup>|Bu ayar etkinleştirildiğinde, istek işleme işlem hattının benzer bir şekilde sistem performans sayaçlarını denetlemesini sağlar `connections/threads/processes/memory/cpu/etc` ve bu sayaçlardan herhangi biri yerleşik yüksek eşikten (%80%) olursa, sayaçlar `429 "Too Busy"` normal düzeylere dönene kadar istekler yanıt vererek reddedilir.<br/><sup>\*</sup>Bir tüketim planında varsayılan değer `true` . Adanmış bir planda varsayılan değer `false` .|
