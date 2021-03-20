@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/02/2020
 ms.openlocfilehash: 2d8c4d1915e22ccabf193f1b34c5fc4797ead549
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93040234"
 ---
 # <a name="select-transformation-in-mapping-data-flow"></a>Eşleme veri akışında dönüştürmeyi seçin
@@ -44,7 +44,7 @@ Sabit eşlemeler, hiyerarşik bir sütunun alt sütununu en üst düzey bir süt
 
 Birden çok sütunu aynı anda eşlemek veya düzeltebilecekler sütunları aşağı akış olarak geçirmek istiyorsanız, sütun düzenlerini kullanarak eşlemelerinizi tanımlamak için kural tabanlı eşleme kullanın. ,,, Ve sütunlarını temel alarak eşleştirin `name` `type` `stream` `position` . Sabit ve kural tabanlı eşlemelerin herhangi bir birleşimini kullanabilirsiniz. Varsayılan olarak, 50 'den büyük sütunları olan tüm projeksiyonlar varsayılan olarak, her sütunda eşleşen ve giriş yapan adı izleyen kural tabanlı bir eşleme olur. 
 
-Kural tabanlı eşleme eklemek için **eşleme Ekle** ' ye tıklayın ve **kural tabanlı eşleme** ' yi seçin.
+Kural tabanlı eşleme eklemek için **eşleme Ekle** ' ye tıklayın ve **kural tabanlı eşleme**' yi seçin.
 
 ![Ekran görüntüsünde, eşleme Ekle ' den seçilen kural tabanlı eşleme gösterilmektedir.](media/data-flow/rule2.png "Kural tabanlı eşleme")
 

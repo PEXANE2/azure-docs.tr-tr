@@ -4,10 +4,10 @@ description: Farklı yapılandırmalarda Azure Container Instances dağıtmak i�
 ms.topic: article
 ms.date: 03/07/2019
 ms.openlocfilehash: 6c487087b39244178643fd81364150ceb3ac4a63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86169655"
 ---
 # <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Azure Container Instances için Azure Resource Manager Şablonlar
@@ -18,15 +18,15 @@ Dağıtım seçenekleri için [dağıtım](#deployment) bölümüne bakın. Kend
 
 ## <a name="sample-templates"></a>Örnek şablonlar
 
-| Şablon | Açıklama |
+| Şablon | Description |
 |-|-|
 | **Uygulamalar** ||
 | [WordPress][app-wp] | Bir bir WordPress web sitesi ve bir kapsayıcı grubunda MySQL veritabanı oluşturur. WordPress sitesi içeriği ve MySQL veritabanı, bir Azure dosya paylaşımında kalıcı hale getirilir. Ayrıca, WordPress 'e genel ağ erişimini açığa çıkarmak için bir uygulama ağ geçidi oluşturur. |
 | [SQL Server ve IIS ile MS NAV][app-nav] | Tam özellikli bir yerleşik Dynamics NAV/Dynamics 365 Business Central ortamıyla tek bir Windows kapsayıcısını dağıtır. |
-| **Dörtten** ||
+| **Birimler** ||
 | [emptyDir][vol-emptydir] | Bir emptyDir birimini paylaşan iki Linux kapsayıcısı dağıtır. |
 | [gitRepo][vol-gitrepo] | GitHub deposunun klontığı bir Linux kapsayıcısını dağıtır ve onu bir birim olarak takar. |
-| [gizlilikle][vol-secret] | Gizli bir birim olarak bağlanmış bir PFX sertifikası ile Linux kapsayıcısı dağıtır. |
+| [gizli dizi][vol-secret] | Gizli bir birim olarak bağlanmış bir PFX sertifikası ile Linux kapsayıcısı dağıtır. |
 | **Ağ** ||
 | [UDP tarafından sunulan kapsayıcı][net-udp] | UDP bağlantı noktasını kullanıma sunan bir Windows veya Linux kapsayıcısı dağıtır. |
 | [Ortak IP ile Linux kapsayıcısı][net-publicip] | Genel IP aracılığıyla erişilebilen tek bir Linux kapsayıcısını dağıtır. |
@@ -42,7 +42,7 @@ Kaynak Yöneticisi şablonlarıyla kaynak dağıtmaya yönelik çeşitli seçene
 
 [Azure PowerShell][deploy-powershell]
 
-[Azure portalındaki][deploy-portal]
+[Azure portalı][deploy-portal]
 
 [REST API][deploy-rest]
 

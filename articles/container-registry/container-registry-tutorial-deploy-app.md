@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 08/20/2018
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 7a203bfc9b1317bc258e4a93ae4ac03ecbdc7a15
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92148426"
 ---
 # <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Öğretici: coğrafi olarak çoğaltılan bir Azure Container Registry 'den Web uygulaması dağıtma
@@ -96,7 +96,7 @@ Daha önce olduğu gibi, çalıştırılan uygulamanın URL’sine tarayıcını
 
 Portalda **Uygulama Hizmetleri** seçeneğini belirleyin ve önceki adımda sağladığınız web uygulamasını seçin. Bu örnekte, web uygulaması *uniqueregistryname-eastus* olarak adlandırılmıştır.
 
-Çalıştırılan uygulamayı tarayıcınızda görüntülemek için, **App Service** genel bakışının sağ üst kısmında web uygulamasının köprülü URL’sini seçin.
+Tarayıcınızda çalışan uygulamayı görüntülemek için **App Service genel bakış** ' ın sağ üst kısmında Web uygulamasının köprülü URL 'sini seçin.
 
 ![Azure portalında Linux yapılandırmasındaki web uygulaması][deploy-app-portal-07]
 

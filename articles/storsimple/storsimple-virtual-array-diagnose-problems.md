@@ -1,6 +1,6 @@
 ---
 title: StorSimple Sanal dizisi sorunlarını giderme | Microsoft Docs
-description: StorSimple Aygıt Yöneticisi hizmeti içinde sunulan self servis sorun giderme özelliği hakkında bilgi edinin.
+description: StorSimple Device Manager hizmeti içinde sunulan self servis sorun giderme özelliği hakkında bilgi edinin.
 services: storsimple
 documentationcenter: ''
 author: manuaery
@@ -15,26 +15,26 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: 6cb78a7042ca3acbb27f510207783b97f733cfb0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96005852"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-troubleshoot-the-storsimple-virtual-array"></a>StorSimple Sanal Dizisi sorunlarını gidermek için StorSimple Device Manager hizmetini kullanma
 ## <a name="overview"></a>Genel Bakış
 
-StorSimple Aygıt Yöneticisi, hizmet Özeti dikey penceresinde bir **Tanılama ve çözme sorunları** sağlar ve bu da sanal dizenize ve bunları nasıl çözebileceğiniz yaygın olarak oluşan bazı sorunları vurgular. Bu öğreticide, StorSimple Aygıt Yöneticisi hizmeti içinde sunulan self servis sorun giderme özelliği tanıtılmaktadır.
+StorSimple Device Manager, hizmet Özeti dikey penceresinde bir **Tanılama ve çözme sorunları** sağlar ve bu da sanal dizenize ve bunları nasıl çözebileceğiniz yaygın olarak oluşan bazı sorunları vurgular. Bu öğreticide, StorSimple Device Manager hizmeti içinde sunulan self servis sorun giderme özelliği tanıtılmaktadır.
 
 ![Sorunları tanılayın ve çözün](./media/storsimple-virtual-array-diagnose-problems/diagnose-problems-main.png)
 
 ## <a name="diagnose-and-solve-issues"></a>Sorunları tanılama ve çözme
 
-StorSimple Sanal dizisiyle ilgili yaygın sorunlardan bazılarını görüntüleyebilir ve bu sorunların çözümlerini StorSimple Aygıt Yöneticisi hizmeti Özet dikey penceresinizden doğrudan gözden geçirebilirsiniz.
+StorSimple Sanal dizisiyle ilgili yaygın sorunlardan bazılarını görüntüleyebilir ve bu sorunların çözümlerini StorSimple Device Manager hizmeti Özet dikey penceresinizden doğrudan gözden geçirebilirsiniz.
 
 #### <a name="to-diagnose-an-issue-with-your-virtual-array"></a>Sanal diziniz ile ilgili bir sorunu tanılamak için
 
-1. Ortak sorunların bir listesini görüntülemek için StorSimple Aygıt Yöneticisi hizmet Özeti dikey pencerenizin sol bölmesindeki **sorunları Tanıla ve çöz** ' e tıklayın.
+1. Ortak sorunların bir listesini görüntülemek için StorSimple Device Manager hizmet Özeti dikey pencerenizin sol bölmesindeki **sorunları Tanıla ve çöz** ' e tıklayın.
 
 2. Sorunu gidermeye yardımcı olmak için **Önerilen adımları** gözden geçirmek için, karşılaştığdaki sorunun belirtisini **genişletin** . İsterseniz, daha fazla başvuru için sağlanan ayrıntılı belge bağlantılarını da gözden geçirebilirsiniz.
    

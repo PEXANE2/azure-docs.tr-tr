@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.openlocfilehash: 9bdf907ede2c09f7e314df619cd81059956f17dc
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98567744"
 ---
 # <a name="server-assessment-overview-migrate-to-azure-vms"></a>Sunucu değerlendirmesi genel bakış (Azure VM 'lerine geçiş)

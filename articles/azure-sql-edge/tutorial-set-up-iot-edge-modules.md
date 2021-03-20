@@ -10,10 +10,10 @@ ms.author: vakrishn
 ms.reviewer: sourabha, sstein
 ms.date: 09/22/2020
 ms.openlocfilehash: 75e6ebaea4c5ba883820d2309212b35fed128142
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93422136"
 ---
 # <a name="set-up-iot-edge-modules-and-connections"></a>IoT Edge modülleri ve bağlantıları ayarlama
@@ -36,7 +36,7 @@ Modül görüntülerinin barındırıldığı kapsayıcı kayıt defterlerinin k
 
 1. Kaynak grubunuzda oluşturulan IoT Hub 'ına gidin.
 
-2. **Otomatik cihaz yönetimi** altındaki **IoT Edge** bölümünde **cihaz kimliği** ' ne tıklayın. Bu öğretici için KIMLIK `IronOrePredictionDevice` .
+2. **Otomatik cihaz yönetimi** altındaki **IoT Edge** bölümünde **cihaz kimliği**' ne tıklayın. Bu öğretici için KIMLIK `IronOrePredictionDevice` .
 
 3. **Modülleri ayarla** bölümünü seçin.
 
@@ -44,7 +44,7 @@ Modül görüntülerinin barındırıldığı kapsayıcı kayıt defterlerinin k
 
    _Alan_|_Değer_
    -------|-------
-   Ad|Kayıt defteri adı
+   Name|Kayıt defteri adı
    Adres|Oturum açma sunucusu
    User Name|Kullanıcı adı
    Parola|Parola
@@ -76,9 +76,9 @@ Modül görüntülerinin barındırıldığı kapsayıcı kayıt defterlerinin k
 
 ## <a name="deploy-the-azure-sql-edge-module"></a>Azure SQL Edge modülünü dağıtma
 
-1. Azure SQL Edge modülünü **+ Ekle** ' ye ve ardından **Market modülü** ' ne tıklayarak dağıtın. 
+1. Azure SQL Edge modülünü **+ Ekle** ' ye ve ardından **Market modülü**' ne tıklayarak dağıtın. 
 
-2. **IoT Edge modülü marketi** dikey PENCERESINDE *Azure SQL Edge* ' i arayın ve *Azure SQL Edge geliştiricisi* ' ni seçin. 
+2. **IoT Edge modülü marketi** dikey PENCERESINDE *Azure SQL Edge* ' i arayın ve *Azure SQL Edge geliştiricisi*' ni seçin. 
 
 3. Azure SQL Edge modülünü yapılandırmak için **IoT Edge modüller** altında yeni eklenen *Azure SQL Edge* modülüne tıklayın. Yapılandırma seçenekleri hakkında daha fazla bilgi için bkz. [Azure SQL Edge 'ı dağıtma](./deploy-portal.md).
 

@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
 ms.openlocfilehash: 417819cad3bc2ee258381426dfcee7c800b69d42
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98929182"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Azure HDInsight 'ta Apache Storm topolojileri dağıtma ve yönetme
@@ -208,7 +208,7 @@ Fırtınası topolojisi Özet sayfası, bu Web sayfasına benzer şekilde görü
 | Devre dışı bırak | Çalışan bir topolojiyi duraklatır. |
 | Dengeleme | Topolojinin paralelliğini ayarlar. Kümedeki düğüm sayısını değiştirdikten sonra çalışan topolojileri yeniden dengelemeniz gerekir. Bu işlem, topolojinin kümedeki ek veya azaltılan düğüm sayısını dengelemek üzere paralellik ayarlamasını sağlar.<br/><br/>Daha fazla bilgi için bkz. <a href="https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">Apache Storm topolojisinin paralelliğini anlama</a>.
 | Kapatmayın | Belirtilen zaman aşımından sonra bir fırtınası topolojisini sonlandırır. |
-| Hata ayıklama | Çalışan topoloji için bir hata ayıklama oturumu başlatır. |
+| Hata Ayıklama | Çalışan topoloji için bir hata ayıklama oturumu başlatır. |
 | Hata ayıklamayı Durdur | Çalışan topoloji için hata ayıklama oturumunu sonlandırır. |
 | Günlük düzeyini Değiştir | Hata ayıklama günlüğü düzeyini değiştirir. |
 

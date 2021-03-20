@@ -4,10 +4,10 @@ description: Azure DevTest Labs laboratuvar tarafından kullanılan Azure depola
 ms.topic: how-to
 ms.date: 07/29/2020
 ms.openlocfilehash: dcede89fb23c532742e41121688bcb51a5a73833
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92149314"
 ---
 # <a name="encrypt-azure-storage-used-by-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs 'da laboratuvar tarafından kullanılan Azure depolama alanını şifreleyin
@@ -28,15 +28,15 @@ Azure DevTest Labs ' de oluşturulan her laboratuvar, ilişkili bir Azure depola
     :::image type="content" source="./media/encrypt-storage/overview-resource-group-link.png" alt-text="Genel Bakış sayfasında kaynak grubu ' nu seçin":::
 1. Laboratuvarın Azure Storage hesabını seçin. Laboratuvar depolama hesabı için adlandırma kuralı: `a<labNameWithoutInvalidCharacters><4-digit number>` . Örneğin, laboratuvar adı ise `contosolab` , depolama hesabı adı olabilir `acontosolab7576` . 
 
-    :::image type="content" source="./media/encrypt-storage/select-storage-account.png" alt-text="Genel Bakış sayfasında kaynak grubu ' nu seçin":::
+    :::image type="content" source="./media/encrypt-storage/select-storage-account.png" alt-text="Laboratuvarın kaynak grubunda depolama hesabı seçin":::
 3. **Depolama hesabı** sayfasında, soldaki menüden **Depolama Gezgini (Önizleme)** öğesini seçin ve ardından laboratuarda ilgili Ilgili IÇERIĞI bulmak için **BLOB kapsayıcıları** ' nı seçin. 
 
-   :::image type="content" source="./media/encrypt-storage/storage-explorer.png" alt-text="Genel Bakış sayfasında kaynak grubu ' nu seçin" lightbox="./media/encrypt-storage/storage-explorer.png":::
+   :::image type="content" source="./media/encrypt-storage/storage-explorer.png" alt-text="Depolama Gezgini (Önizleme)" lightbox="./media/encrypt-storage/storage-explorer.png":::
 
 ## <a name="encrypt-the-lab-storage-account"></a>Laboratuvar depolama hesabını şifreleyin
 Azure depolama, bulutta kalıcı olduğunda verilerinizi otomatik olarak şifreler. Azure depolama şifrelemesi verilerinizi korur ve kurumsal güvenlik ve uyumluluk taahhütlerinizi karşılamanıza yardımcı olur. Daha fazla bilgi için bkz. [bekleyen veriler Için Azure depolama şifrelemesi](../storage/common/storage-service-encryption.md).
 
-Laboratuvar depolama hesabındaki veriler, **Microsoft tarafından yönetilen bir anahtarla**şifrelenir. Verilerinizin şifrelenmesi için Microsoft tarafından yönetilen anahtarları kullanabilir veya kendi anahtarlarınız ile şifrelemeyi yönetebilirsiniz. Laboratuvarın depolama hesabı için kendi anahtarlarınız ile şifrelemeyi yönetmeyi seçerseniz, blob depolamada ve Azure dosyalarında verileri şifrelemek/şifrelerini çözmek için Azure Key Vault ile **müşteri tarafından yönetilen bir anahtar** belirtebilirsiniz. Müşteri tarafından yönetilen anahtarlar hakkında daha fazla bilgi için bkz. [Azure depolama şifrelemesini yönetmek için Azure Key Vault ile müşteri tarafından yönetilen anahtarları kullanma](../storage/common/customer-managed-keys-overview.md).
+Laboratuvar depolama hesabındaki veriler, **Microsoft tarafından yönetilen bir anahtarla** şifrelenir. Verilerinizin şifrelenmesi için Microsoft tarafından yönetilen anahtarları kullanabilir veya kendi anahtarlarınız ile şifrelemeyi yönetebilirsiniz. Laboratuvarın depolama hesabı için kendi anahtarlarınız ile şifrelemeyi yönetmeyi seçerseniz, blob depolamada ve Azure dosyalarında verileri şifrelemek/şifrelerini çözmek için Azure Key Vault ile **müşteri tarafından yönetilen bir anahtar** belirtebilirsiniz. Müşteri tarafından yönetilen anahtarlar hakkında daha fazla bilgi için bkz. [Azure depolama şifrelemesini yönetmek için Azure Key Vault ile müşteri tarafından yönetilen anahtarları kullanma](../storage/common/customer-managed-keys-overview.md).
 
 Azure depolama şifrelemesi için müşteri tarafından yönetilen anahtarların nasıl yapılandırılacağını öğrenmek için aşağıdaki makalelere bakın: 
 

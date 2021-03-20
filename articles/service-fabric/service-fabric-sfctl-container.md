@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: f82883b68ab911fb0b89fc117d9a9d77e05a781a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86245900"
 ---
 # <a name="sfctl-container"></a>sfctl container
@@ -27,7 +27,7 @@ Verilen kod paketi için bir Service Fabric düğümüne dağıtılan bir kapsay
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Uygulama kimliği [gerekli] | Uygulamanın kimliği. <br><br> Bu genellikle uygulamanın ' Fabric \: ' URI şeması olmadan tam adıdır. Sürüm 6,0 ' den başlayarak, hiyerarşik adlar " \~ " karakteriyle sınırlandırılmıştır. Örneğin, uygulama adı "Fabric \: /MyApp/APP1" ise, uygulama kimliği \~ önceki sürümlerde "MyApp APP1" ve 6.0 + "MyApp/APP1" şeklinde olur. |
 | --Code-Package-Instance-id [gerekli] | Service Fabric düğümüne dağıtılan bir kod paketi örneğini benzersiz bir şekilde tanımlayan KIMLIK. <br><br> ' Service Code-Package-List ' tarafından alınabilir. |
@@ -42,7 +42,7 @@ Verilen kod paketi için bir Service Fabric düğümüne dağıtılan bir kapsay
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -55,7 +55,7 @@ Service Fabric düğümüne dağıtılan kapsayıcının kapsayıcı günlükler
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Uygulama kimliği [gerekli] | Uygulamanın kimliği. <br><br> Bu genellikle uygulamanın ' Fabric \: ' URI şeması olmadan tam adıdır. Sürüm 6,0 ' den başlayarak, hiyerarşik adlar " \~ " karakteriyle sınırlandırılmıştır. Örneğin, uygulama adı "Fabric \: /MyApp/APP1" ise, uygulama kimliği \~ önceki sürümlerde "MyApp APP1" ve 6.0 + "MyApp/APP1" şeklinde olur. |
 | --Code-Package-Instance-id [gerekli] | ' Hizmet kodu-paket-listesi ' tarafından alınabilecek kod paketi örnek KIMLIĞI. |
@@ -67,7 +67,7 @@ Service Fabric düğümüne dağıtılan kapsayıcının kapsayıcı günlükler
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |

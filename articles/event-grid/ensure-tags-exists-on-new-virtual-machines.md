@@ -10,10 +10,10 @@ ms.workload: infrastructure-services
 ms.date: 07/07/2020
 ms.author: eamono
 ms.openlocfilehash: 3b9b49a4d38566891f442a3d2d7eac9bf1d36465
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87462012"
 ---
 # <a name="tutorial-integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>Öğretici: Azure Otomasyonu 'Nu Event Grid ve Microsoft ekipleriyle tümleştirin
@@ -29,7 +29,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 

@@ -4,10 +4,10 @@ description: Azure DevTest Labs bir sanal makineye bir veri diski eklemeyi veya 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 8eebfbda421233bcec780d441a4020acce740618
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91328522"
 ---
 # <a name="attach-or-detach-a-data-disk-to-a-virtual-machine-in-azure-devtest-labs"></a>Azure DevTest Labs bir sanal makineye bir veri diski iliştirme veya ayırma
@@ -27,7 +27,7 @@ Azure DevTest Labs ' de bir VM 'ye yeni bir yönetilen veri diski oluşturup ekl
 1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
 1. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 1. Laboratuvarlar listesinden istediğiniz Laboratuvarı seçin. 
-1. **Sanal makinelerimin**listesinden çalışan bir VM seçin.
+1. **Sanal makinelerimin** listesinden çalışan bir VM seçin.
 1. Soldaki menüden **diskler**' i seçin.
 1. Yeni bir veri diski oluşturmak ve VM 'ye eklemek için **Yeni Ekle** ' yi seçin.
 
@@ -62,7 +62,7 @@ Diskte var olan verileri yeniden kullanmak istiyorsanız, onu aynı sanal makine
 ### <a name="detach-from-the-vms-management-pane"></a>VM 'nin Yönetim bölmesinden ayır
 1. Sanal makineler listenizden, bağlı bir veri diskine sahip bir VM seçin.
 1. Soldaki menüden **diskler**' i seçin.
-1. **Veri diskleri**listesinden, ayırmak istediğiniz veri diskini seçin.
+1. **Veri diskleri** listesinden, ayırmak istediğiniz veri diskini seçin.
 
     ![Bir sanal makine için veri disklerini seçin](./media/devtest-lab-attach-detach-data-disk/devtest-lab-detach-button.png) 
 1. Diskin ayrıntılar bölmesinin en üstünden **Ayır** ' ı seçin.

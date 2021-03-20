@@ -11,17 +11,17 @@ ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 60b7bb33dfbf29b7e448887ce992d03009133b2e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94953500"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Azure AD B2C ile Azure API Management API 'sinin güvenliğini sağlama
 
 Azure API Management (APıM) API 'nize erişimi, Azure Active Directory B2C (Azure AD B2C) ile kimliği doğrulanan istemcilere nasıl kısıtlayacağınızı öğrenin. Bu makaledeki adımları izleyerek, erişimi yalnızca geçerli bir Azure AD B2C verilen erişim belirteci içeren isteklerle sınırlayan APıM 'de bir gelen ilke oluşturun ve test edin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımlarla devam etmeden önce aşağıdaki kaynaklara sahip olmanız gerekir:
 

@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: corywink
 ms.openlocfilehash: b2ac4bbf1457144d23a91c4e83b554b3ee806119
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87337237"
 ---
 # <a name="create-webhook-actions-on-rules-in-azure-iot-central"></a>Azure IoT Central'da kurallar üzerinde web kancası eylemleri oluşturma
@@ -27,7 +27,7 @@ Bu örnekte, kurallar Web kancaları kullanılarak başlatıldığında bildirim
 
 1. [Requestbin](https://requestbin.net/)'i açın.
 
-1. Yeni bir RequestBin oluşturun ve **BIN URL 'sini**kopyalayın.
+1. Yeni bir RequestBin oluşturun ve **BIN URL 'sini** kopyalayın.
 
 1. [Telemetri kuralı](tutorial-create-telemetry-rules.md)oluşturun. Kuralı kaydedin ve yeni bir eylem ekleyin.
 

@@ -13,10 +13,10 @@ ms.author: urmilano
 ms.reviewer: sstein, MashaMSFT
 ms.date: 07/10/2020
 ms.openlocfilehash: 2da7311e61aa39be69a6a0a29eff686baaad7ebf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91323201"
 ---
 # <a name="overview-of-azure-sql-managed-instance-management-operations"></a>Azure SQL Yönetilen Örneği yönetim işlemlerine genel bakış
@@ -89,7 +89,7 @@ geçerli yapılandırma <sup>1</sup>12 saat, ancak gelecekte değiştirilebilir.
 
 ## <a name="instance-availability"></a>Örnek kullanılabilirliği
 
-Güncelleştirme **işlemleri SıRASıNDA**SQL yönetilen örneği, güncelleştirmenin sonunda gerçekleşen yük devretmenin neden olduğu kısa bir kesinti haricinde kullanılabilir. Genellikle, uzun süreli işlemler kesintiye uğratıldığında, [hızlandırılmış veritabanı kurtarması](../accelerated-database-recovery.md)sayesinde 10 saniyeye kadar sürer.
+Güncelleştirme **işlemleri SıRASıNDA** SQL yönetilen örneği, güncelleştirmenin sonunda gerçekleşen yük devretmenin neden olduğu kısa bir kesinti haricinde kullanılabilir. Genellikle, uzun süreli işlemler kesintiye uğratıldığında, [hızlandırılmış veritabanı kurtarması](../accelerated-database-recovery.md)sayesinde 10 saniyeye kadar sürer.
 
 SQL yönetilen örneği, dağıtım ve silme işlemleri sırasında istemci uygulamaları için kullanılamaz.
 
@@ -116,7 +116,7 @@ Yönetim işlemleri birden çok adımdan oluşur. [Operations API 'si](managemen
 |Sanal küme yeniden boyutlandırma/oluşturma |Alt ağın durumuna bağlı olarak, sanal küme oluşturma veya yeniden boyutlandırma durumuna geçer. |
 |Yeni SQL örneği başlatma | SQL işlemi, dağıtılan sanal kümede başlatılır. |
 |Dengeli veritabanı dosyaları/veritabanı dosyalarını iliştirme |Güncelleştirme işleminin türüne bağlı olarak, veritabanı dengeli veya ekleme veritabanı dosyaları gerçekleştirilir. |
-|Yük devretme ve yük devretme hazırlanıyor |Verilerin hazırlanması veya veritabanı dosyaları yeniden iliştirilmesi sırasında, sistem yük devretme için hazırlanmaktadır. Her şey ayarlandığında, yük devretme **kısa bir kapalı kalma**süresiyle gerçekleştirilir. |
+|Yük devretme ve yük devretme hazırlanıyor |Verilerin hazırlanması veya veritabanı dosyaları yeniden iliştirilmesi sırasında, sistem yük devretme için hazırlanmaktadır. Her şey ayarlandığında, yük devretme **kısa bir kapalı kalma** süresiyle gerçekleştirilir. |
 |Eski SQL örneği Temizleme |Eski SQL işlemi sanal kümeden kaldırılıyor |
 
 > [!NOTE]

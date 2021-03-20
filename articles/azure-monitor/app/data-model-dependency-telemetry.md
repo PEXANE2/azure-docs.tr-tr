@@ -5,17 +5,17 @@ ms.topic: conceptual
 ms.date: 04/17/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: 0f9fc96479569c3411024068ed614d422035ab17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87315980"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>Bağımlılık telemetrisi: Application Insights veri modeli
 
 Bağımlılık telemetrisi ( [Application Insights](./app-insights-overview.md)), IZLENEN bileşenin SQL veya HTTP uç noktası gibi uzak bir bileşenle bir etkileşimini temsil eder.
 
-## <a name="name"></a>Adı
+## <a name="name"></a>Name
 
 Bu bağımlılık çağrısıyla başlatılan komutun adı. Düşük kardinalite değeri. Örnekler, saklı yordam adı ve URL yolu şablonudur.
 

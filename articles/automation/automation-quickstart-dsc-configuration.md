@@ -8,10 +8,10 @@ ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
 ms.openlocfilehash: e7fec2bee61844ac294e5463bd5bc88ec3fb5e98
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86186087"
 ---
 # <a name="configure-a-vm-with-desired-state-configuration"></a>Istenen durum yapılandırması ile VM yapılandırma
@@ -48,7 +48,7 @@ Bir makineyi durum yapılandırma özelliği için etkinleştirmek üzere birço
 
 Modüller DSC kaynakları içerir ve [PowerShell Galerisi](https://www.powershellgallery.com)birçok bulunabilir. Yapılandırlarınızda kullanılan kaynakların, derlenmeden önce Otomasyon hesabına aktarılması gerekir. Bu öğretici için **nx** adlı modülün kullanılması gerekir.
 
-1. Otomasyon hesabının sol bölmesinde, **paylaşılan kaynaklar**altında **modüller Galerisi** ' ni seçin.
+1. Otomasyon hesabının sol bölmesinde, **paylaşılan kaynaklar** altında **modüller Galerisi** ' ni seçin.
 1. Adının bir bölümünü yazarak içeri aktarılacak modülü arayın: `nx` .
 1. İçeri aktarılacak modüle tıklayın.
 1. **İçeri Aktar**’a tıklayın.
@@ -59,7 +59,7 @@ Modüller DSC kaynakları içerir ve [PowerShell Galerisi](https://www.powershel
 
 Bu hızlı başlangıçta makinede Apache HTTP Server, MySQL ve PHP yapılandırması gerçekleştiren bir DSC yapılandırması kullanılmaktadır. Bkz. [DSC yapılandırması](/powershell/scripting/dsc/configurations/configurations).
 
-Bir metin düzenleyicisinde aşağıdakini yazın ve **AMPServer.ps1**olarak yerel olarak kaydedin.
+Bir metin düzenleyicisinde aşağıdakini yazın ve **AMPServer.ps1** olarak yerel olarak kaydedin.
 
 ```powershell-interactive
 configuration LAMPServer {
@@ -95,7 +95,7 @@ configuration LAMPServer {
 Yapılandırmayı içeri aktarmak için:
 
 1. Otomasyon hesabının sol bölmesinde **Durum yapılandırması (DSC)** öğesini seçin ve ardından **Yapılandırmalar** sekmesine tıklayın.
-2. **+ Ekle**’ye tıklayın.
+2. **+ Ekle**'ye tıklayın.
 3. Önceki adımda kaydettiğiniz yapılandırma dosyasını seçin.
 4. **Tamam**'a tıklayın.
 

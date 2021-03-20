@@ -4,10 +4,10 @@ description: Azure Event Grid özel konuları açıklar.
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 8f48824989c8ec51b766385188ad99e9e59cf621
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86113794"
 ---
 # <a name="custom-topics-in-azure-event-grid"></a>Azure Event Grid özel konular
@@ -15,7 +15,7 @@ Olay Kılavuzu konusu, kaynağın olayları gönderdiği bir uç nokta sağlar. 
 
 **Özel konular** uygulama ve üçüncü taraf konulardır. Özel konu başlığı oluşturduğunuzda veya özel konu başlığına erişim için atandığınızda, aboneliğinizde özel konu başlığını görürsünüz. 
 
-Uygulamanızı tasarlarken, kaç tane konu oluşturacağına karar verirken esneklik elde edersiniz. Büyük çözümler için **ilgili olayların her kategorisi**için **özel bir konu** oluşturun. Örneğin, kullanıcı hesaplarını değiştirme ve siparişleri işleme ile ilgili olaylar gönderen bir uygulamayı ele alalım. Herhangi bir olay işleyicisinin her iki olay kategorisini de istemesi pek olası değildir. İki özel konu başlığı oluşturun ve olay işleyicilerinin ilgilendikleri konu başlığına abone olmalarına izin verin. Küçük çözümler için tüm olayları tek bir konuya göndermenizi tercih edebilirsiniz. Olay aboneleri istedikleri olay türlerini filtreleyebilir.
+Uygulamanızı tasarlarken, kaç tane konu oluşturacağına karar verirken esneklik elde edersiniz. Büyük çözümler için **ilgili olayların her kategorisi** için **özel bir konu** oluşturun. Örneğin, kullanıcı hesaplarını değiştirme ve siparişleri işleme ile ilgili olaylar gönderen bir uygulamayı ele alalım. Herhangi bir olay işleyicisinin her iki olay kategorisini de istemesi pek olası değildir. İki özel konu başlığı oluşturun ve olay işleyicilerinin ilgilendikleri konu başlığına abone olmalarına izin verin. Küçük çözümler için tüm olayları tek bir konuya göndermenizi tercih edebilirsiniz. Olay aboneleri istedikleri olay türlerini filtreleyebilir.
 
 ## <a name="event-schema"></a>Olay şeması
 Olay şemasına ilişkin ayrıntılı bir genel bakış için bkz. [Azure Event Grid olay şeması](event-schema.md). Özel konularda, Olay Yayımcısı **veri** nesnesini belirler. En üst düzey veriler standart kaynak tanımlı olaylarla aynı alanlara sahip olmalıdır.
@@ -71,5 +71,5 @@ Aşağıdaki bölümlerde Azure portal, CLı, PowerShell ve Azure Resource Manag
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makalelere bakın: 
 
-- [Sistem konuları](system-topics.md)
+- [Sistem konu başlıkları](system-topics.md)
 - [Etki Alanları](event-domains.md)

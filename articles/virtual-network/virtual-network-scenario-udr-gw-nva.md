@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2016
 ms.author: kumud
 ms.openlocfilehash: 1d2dde4e77a39b114f721cd6d2be250141984e7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86231718"
 ---
 # <a name="virtual-appliance-scenario"></a>Sanal Gereç senaryosu
@@ -57,7 +57,7 @@ Bu örnekte, aşağıdakileri içeren bir abonelik vardır:
 * Aşağıda listelenen bir şirket içi veri merkezini taklit etmek için kullanılan **onpremvnet** adlı VNET.
   * **onpremsn1**. Ubuntu çalıştıran ve şirket içi bir sunucuyu taklit eden bir sanal makine (VM) içeren alt ağ.
   * **onpremsn2**. Bir yönetici tarafından kullanılan şirket içi bir bilgisayarı taklit etmek için Ubuntu çalıştıran bir VM içeren alt ağ.
-* **Azurevnet**için bir tüneli sürdürmek üzere kullanılan **onpremvnet** üzerinde **opfw** adlı bir güvenlik duvarı sanal gereci vardır.
+* **Azurevnet** için bir tüneli sürdürmek üzere kullanılan **onpremvnet** üzerinde **opfw** adlı bir güvenlik duvarı sanal gereci vardır.
 * Aşağıda listelenen **azurevnet** adlı bir sanal ağ.
   * **azsn1**. Harici güvenlik duvarı için özel olarak kullanılan dış güvenlik duvarı alt ağı. Tüm Internet trafiği bu alt ağ üzerinden gönderilir. Bu alt ağ yalnızca dış güvenlik duvarıyla bağlantılı bir NIC içerir.
   * **azsn2**. Internet 'ten erişilecek bir Web sunucusu olarak çalışan bir VM barındıran ön uç alt ağı.
@@ -66,16 +66,16 @@ Bu örnekte, aşağıdakileri içeren bir abonelik vardır:
   * **GatewaySubnet**. Azure sanal ağları ve diğer ağlar arasında bağlantı sağlamak için ExpressRoute ve VPN Gateway için Azure hibrit bağlantı alt ağı gerekir. 
 * **Azurevnet** ağında 3 güvenlik duvarı sanal aygıtı vardır. 
   * **AZF1**. Azure 'da genel bir IP adresi kaynağı kullanarak genel Internet 'e sunulan dış güvenlik duvarı. Market 'ten veya doğrudan gereç satıcınızdan (3 NIC Sanal Gereç sağlayan) bir şablonunuz olduğundan emin olmanız gerekir.
-  * **AZF2**. **Azsn2** ve **azsn3**arasındaki trafiği denetlemek için kullanılan iç güvenlik duvarı. Bu, ayrıca 3 NIC sanal gerectir.
+  * **AZF2**. **Azsn2** ve **azsn3** arasındaki trafiği denetlemek için kullanılan iç güvenlik duvarı. Bu, ayrıca 3 NIC sanal gerectir.
   * **AZF3**. Şirket içi veri merkezinden yöneticiler tarafından erişilebilen yönetim güvenlik duvarı ve tüm güvenlik duvarı gereçlerini yönetmek için kullanılan bir yönetim alt ağına bağlı. Market 'te 2 NIC Sanal Gereç şablonları bulabilir veya doğrudan gereç satıcınızdan bir tane talep edebilirsiniz.
 
 ## <a name="user-defined-routing-udr"></a>Kullanıcı tanımlı yönlendirme (UDR)
 Azure 'daki her alt ağ, bu alt ağda başlatılan trafiğin nasıl yönlendirildiğini tanımlamak için kullanılan bir UDR tablosuna bağlanabilir. UDRs tanımlanmazsa Azure, trafiğin bir alt ağdan diğerine akmasını sağlamak için varsayılan yolları kullanır. UDRs 'yi daha iyi anlamak için [Kullanıcı tanımlı yollar ve IP Iletimi nedir?](virtual-networks-udr-overview.md)sayfasını ziyaret edin.
 
-Yukarıdaki son gereksinime göre doğru güvenlik duvarı gereci üzerinden iletişimin yapıldığından emin olmak için, **azurevnet**Içinde udrs 'yi içeren aşağıdaki yol tablosunu oluşturmanız gerekir.
+Yukarıdaki son gereksinime göre doğru güvenlik duvarı gereci üzerinden iletişimin yapıldığından emin olmak için, **azurevnet** Içinde udrs 'yi içeren aşağıdaki yol tablosunu oluşturmanız gerekir.
 
 ### <a name="azgwudr"></a>azgwudr
-Bu senaryoda, Şirket içinden Azure 'a akan tek trafik, **AZF3**adresine bağlanarak güvenlik duvarlarını yönetmek için kullanılır ve bu trafiğin iç güvenlik duvarı, **AZF2**ile geçmesi gerekir. Bu nedenle, **Gatewaysubnet** içinde aşağıda gösterildiği gibi yalnızca bir yol gereklidir.
+Bu senaryoda, Şirket içinden Azure 'a akan tek trafik, **AZF3** adresine bağlanarak güvenlik duvarlarını yönetmek için kullanılır ve bu trafiğin iç güvenlik duvarı, **AZF2** ile geçmesi gerekir. Bu nedenle, **Gatewaysubnet** içinde aşağıda gösterildiği gibi yalnızca bir yol gereklidir.
 
 | Hedef | Sonraki atlama | Açıklama |
 | --- | --- | --- |
@@ -114,18 +114,18 @@ IP Iletimi hakkında daha fazla bilgi edinmek için [Kullanıcı tanımlı yolla
 
 Örnek olarak, bir Azure VNET 'te aşağıdaki kuruluma sahip olduğunu düşünün:
 
-* **Onpremsn1** alt ağı **ONPREMVM1**adlı bir VM içerir.
-* **Onpremsn2** alt ağı **ONPREMVM2**adlı bir VM içerir.
+* **Onpremsn1** alt ağı **ONPREMVM1** adlı bir VM içerir.
+* **Onpremsn2** alt ağı **ONPREMVM2** adlı bir VM içerir.
 * **Opfw** adlı sanal gereç **onpremsn1** ve **onpremsn2**'e bağlıdır.
 * **Onpremsn1** ile bağlantılı Kullanıcı tanımlı yol, **onpremsn2** 'e giden tüm trafiğin **opfw**'a gönderilmesi gerektiğini belirtir.
 
-Bu noktada, **onpremvm1** **onpremvm2**ile bir bağlantı kurmaya çalışırsa UDR kullanılır ve sonraki atlama olarak **opfw** 'e trafik gönderilir. Gerçek paket hedefinin değiştirilmediğinden emin olmak için hedefin **onpremvm2** olduğunu göz önünde bulundurun. 
+Bu noktada, **onpremvm1** **onpremvm2** ile bir bağlantı kurmaya çalışırsa UDR kullanılır ve sonraki atlama olarak **opfw** 'e trafik gönderilir. Gerçek paket hedefinin değiştirilmediğinden emin olmak için hedefin **onpremvm2** olduğunu göz önünde bulundurun. 
 
-**Opfw**Için IP iletimi etkinleştirilmeden, Azure sanal ağ mantığı paketleri bırakacak, çünkü VM 'nin IP adresi paketin hedefi ise, yalnızca PAKETLERIN bir VM 'ye gönderilmesine izin verir.
+**Opfw** Için IP iletimi etkinleştirilmeden, Azure sanal ağ mantığı paketleri bırakacak, çünkü VM 'nin IP adresi paketin hedefi ise, yalnızca PAKETLERIN bir VM 'ye gönderilmesine izin verir.
 
 IP Iletimi ile Azure sanal ağ mantığı, özgün hedef adresini değiştirmeden paketleri OPFW 'e iletir. **Opfw** paketleri işlemeli ve bunlarla ne yapılacağını belirlemelidir.
 
-Yukarıdaki senaryonun çalışması için, **yönlendirme için kullanılan** **AZF1**, **AZF2**ve **AZF3** için NIC 'lerde IP iletmeyi etkinleştirmeniz gerekir (Yönetim alt ağına bağlı olanlar hariç tüm NIC 'ler). 
+Yukarıdaki senaryonun çalışması için, **yönlendirme için kullanılan** **AZF1**, **AZF2** ve **AZF3** için NIC 'lerde IP iletmeyi etkinleştirmeniz gerekir (Yönetim alt ağına bağlı olanlar hariç tüm NIC 'ler). 
 
 ## <a name="firewall-rules"></a>Güvenlik Duvarı Kuralları
 Yukarıda açıklandığı gibi, IP Iletimi yalnızca paketlerin sanal gereçlere gönderilmesini sağlar. Gerecinizin yine de bu paketlerle ne yapacağına karar verilmesi gerekiyor. Yukarıdaki senaryoda, gereçleriniz için aşağıdaki kuralları oluşturmanız gerekir:
@@ -133,19 +133,19 @@ Yukarıda açıklandığı gibi, IP Iletimi yalnızca paketlerin sanal gereçler
 ### <a name="opfw"></a>OPFW
 OPFW aşağıdaki kuralları içeren bir şirket içi cihazı temsil eder:
 
-* **Yol**: 10.0.0.0/16 (**azurevnet**) öğesine giden tüm trafik, **onprelaure**ile gönderilmelidir.
-* **İlke**: **PORT2** Ile **onprelaure**arasındaki tüm çift yönlü trafiğe izin verin.
+* **Yol**: 10.0.0.0/16 (**azurevnet**) öğesine giden tüm trafik, **onprelaure** ile gönderilmelidir.
+* **İlke**: **PORT2** Ile **onprelaure** arasındaki tüm çift yönlü trafiğe izin verin.
 
 ### <a name="azf1"></a>AZF1
 AZF1 aşağıdaki kuralları içeren bir Azure sanal gerecini temsil eder:
 
-* **İlke**: **PORT1** ve **PORT2**arasındaki tüm çift yönlü trafiğe izin ver.
+* **İlke**: **PORT1** ve **PORT2** arasındaki tüm çift yönlü trafiğe izin ver.
 
 ### <a name="azf2"></a>AZF2
 AZF2 aşağıdaki kuralları içeren bir Azure sanal gerecini temsil eder:
 
-* **Yol**: 10.0.0.0/16 (**onpremvnet**) öğesine giden tüm trafik, **PORT1**üzerinden Azure Gateway IP adresine (10.0.0.1) gönderilmelidir.
-* **İlke**: **PORT1** ve **PORT2**arasındaki tüm çift yönlü trafiğe izin ver.
+* **Yol**: 10.0.0.0/16 (**onpremvnet**) öğesine giden tüm trafik, **PORT1** üzerinden Azure Gateway IP adresine (10.0.0.1) gönderilmelidir.
+* **İlke**: **PORT1** ve **PORT2** arasındaki tüm çift yönlü trafiğe izin ver.
 
 ## <a name="network-security-groups-nsgs"></a>Ağ güvenlik grupları (NSG 'ler)
 Bu senaryoda NSG 'ler kullanılmıyor. Ancak, gelen ve giden trafiği kısıtlamak için her alt ağa NSG 'ler uygulayabilirsiniz. Örneğin, dış FW alt ağına aşağıdaki NSG kurallarını uygulayabilirsiniz.
@@ -166,5 +166,5 @@ Bu senaryoyu dağıtmak için aşağıdaki üst düzey adımları izleyin.
 2. Şirket içi ağı taklit etmek için bir VNet dağıtmak istiyorsanız **Onpremrg**'nin parçası olan kaynakları sağlayın.
 3. **AZURERG**'in parçası olan kaynakları sağlayın.
 4. **Onpremvnet** 'ten **azurevnet**'e tünel sağlayın.
-5. Tüm kaynaklar sağlandıktan sonra **onpremsn2** ve **azsn3**arasındaki bağlantıyı sınamak için **onpremvm2** ve ping 10.0.3.101 ' de oturum açın.
+5. Tüm kaynaklar sağlandıktan sonra **onpremsn2** ve **azsn3** arasındaki bağlantıyı sınamak için **onpremvm2** ve ping 10.0.3.101 ' de oturum açın.
 

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.openlocfilehash: 50dbe9ab649a708fb36b1c9e4fe89bccadc7ea90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86209980"
 ---
 # <a name="audit-logs-for-your-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box ve Azure Data Box Heavy için denetim günlükleri
@@ -65,9 +65,9 @@ Aşağıdaki güvenlik günlüğü olay kimlikleri Data Box güvenlik denetim g�
 
 Aşağıdaki uygulama günlüğü olay kimlikleri, Data Box paket denetim günlüklerinin bir parçası olarak toplanır.     
 
-- **Microsoft-Azure-DataBox-OOBE-Auditing** -yerel kullanıcı arabiriminde oluşan olayları içerir. 
+- **Microsoft-Azure-DataBox-OOBE-Auditing** -yerel kullanıcı arabiriminde oluşan olayları içerir. 
 - **Microsoft-Azure-DataBox-reprovision-Audit** -Data Box cihazının yeniden sağlanmasından ilgili olayları içerir. Data Box yeniden sağlanması cihaz, yerel kullanıcı arabirimi aracılığıyla sıfırlandığında oluşur. Bu seçeneği, var olan paylaşımları kaldırarak ve yeniden sağlama ya da cihaz sıfırlamasının parçası olarak paylaşımları yeniden oluşturarak kopyaladığınız verileri silmek istediğinizde seçersiniz.
-- **Microsoft-Azure-DataBox-HcsMgmt-Audit** -yalnızca cihaz Azure veri merkezine gönderilmeden önce **sevk hazırlığı** adımla ilgili olayları içerir. 
+- **Microsoft-Azure-DataBox-HcsMgmt-Audit** -yalnızca cihaz Azure veri merkezine gönderilmeden önce **sevk hazırlığı** adımla ilgili olayları içerir. 
 - **Microsoft-Azure-DataBox-IfxAudit** -iş hakkında ürünün farklı varlıkları tarafından günlüğe kaydedilen iletileri içerir, bazı akışlarda neler olduğu hakkında daha fazla bilgi gösteren Günlükler.
 
 İşte, çeşitli olay sağlayıcılarını ve her durumda toplanan ilgili olay kimliklerini özetleyen bir tablo.

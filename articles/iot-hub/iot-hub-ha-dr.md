@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: philmea
 ms.openlocfilehash: c665e30ed9b284f7c93cf8588b710c9f22457a0a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92151673"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT Hub yüksek kullanılabilirlik ve olağanüstü durum kurtarma
@@ -62,7 +62,7 @@ IoT Hub 'ı için yük devretme işlemi tamamlandıktan sonra, cihazdaki ve arka
 > [!CAUTION]
 > - IoT Hub yerleşik olaylar uç noktasının Olay Hub 'ı ile uyumlu adı ve uç noktası, yük devretmeden sonra değişir. Olay Hub 'ı istemcisini ya da olay işlemcisi konağını kullanarak yerleşik uç noktadan telemetri iletileri alırken, bağlantıyı kurmak için [IoT Hub bağlantı dizesini kullanmanız](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) gerekir. Bu, arka uç uygulamalarınızın el ile müdahale sonrası yük devretmeye gerek kalmadan çalışmaya devam etmesini sağlar. Uygulamanızda doğrudan olay hub 'ı ile uyumlu ad ve uç nokta kullanırsanız, devam etmek için yük devretmeden sonra [Yeni Olay Hub 'ı ile uyumlu uç noktasını](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) almanız gerekir. 
 >
-> - Yerleşik olaylar uç noktasına bağlanmak için Azure Işlevleri veya Azure Stream Analytics kullanıyorsanız, **yeniden başlatma**gerçekleştirmeniz gerekebilir. Bunun nedeni yük devretme sırasında önceki uzaklıklar artık geçerli değildir.
+> - Yerleşik olaylar uç noktasına bağlanmak için Azure Işlevleri veya Azure Stream Analytics kullanıyorsanız, **yeniden başlatma** gerçekleştirmeniz gerekebilir. Bunun nedeni yük devretme sırasında önceki uzaklıklar artık geçerli değildir.
 >
 > - Depolama alanına yönlendirirken, tüm Blobların veya dosyaların bölüm üzerinde herhangi bir varsayımından okunmalarını sağlamak için Blobları veya dosyaları listeleyip daha sonra bunları yinelemenizi öneririz. Bölüm aralığı, Microsoft tarafından başlatılan bir yük devretme veya el ile yük devretme sırasında değişebilir. Dosya listesi için Blobların listesini veya [ADLS 2. API](/rest/api/storageservices/datalakestoragegen2/path/list) listesini listelemek Için, [LISTE bloblarını API](/rest/api/storageservices/list-blobs) 'sini kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure depolama, yönlendirme uç noktası olarak](iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint).
 
@@ -134,8 +134,8 @@ Bu makalede sunulan HA/DR seçeneklerinin Özeti, çözümünüz için uygun ola
 
 | HA/DR seçeneği | RTO | RPO | El ile müdahale gerektiriyor mu? | Uygulama karmaşıklığı | Ek maliyet etkisi|
 | --- | --- | --- | --- | --- | --- |
-| Microsoft tarafından başlatılan yük devretme |2-26 saat|Yukarıdaki RPO tablosuna başvurun|No|Hiçbiri|Hiçbiri|
-| El ile yük devretme |10 dk-2 saat|Yukarıdaki RPO tablosuna başvurun|Yes|Çok düşük. Bu işlemi yalnızca portaldan tetiklemeniz gerekir.|Hiçbiri|
+| Microsoft tarafından başlatılan yük devretme |2-26 saat|Yukarıdaki RPO tablosuna başvurun|No|Yok|Yok|
+| El ile yük devretme |10 dk-2 saat|Yukarıdaki RPO tablosuna başvurun|Yes|Çok düşük. Bu işlemi yalnızca portaldan tetiklemeniz gerekir.|Yok|
 | Çapraz bölge HA |< 1 dk|Özel HA çözümünüzün çoğaltma sıklığına bağlıdır|No|Yüksek|> 1x, 1 IoT Hub 'ın maliyeti|
 
 ## <a name="next-steps"></a>Sonraki adımlar

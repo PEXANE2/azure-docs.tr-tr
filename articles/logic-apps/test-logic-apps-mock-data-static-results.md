@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/13/2019
 ms.openlocfilehash: 711d753203aeaeba50cea692053a37fcab2e9c7b
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93027712"
 ---
 # <a name="test-logic-apps-with-mock-data-by-setting-up-static-results"></a>Statik sonuçlar ayarlayarak sahte verilerle mantıksal uygulamaları test edin
@@ -37,11 +37,11 @@ Logic Apps 'i sınarken, çeşitli nedenlerle uygulamalar, hizmetler ve sistemle
 
 1. Statik sonuçları ayarlamak istediğiniz eylemde, şu adımları izleyin: 
 
-   1. Eylemin sağ üst köşesinde üç nokta ( *...* ) düğmesini seçin ve **statik sonuç** ' i seçin, örneğin:
+   1. Eylemin sağ üst köşesinde üç nokta (*...*) düğmesini seçin ve **statik sonuç**' i seçin, örneğin:
 
       !["Statik sonuç" > "statik sonucu etkinleştir" i seçin](./media/test-logic-apps-mock-data-static-results/select-static-result.png)
 
-   1. **Statik sonucu etkinleştir** ' i seçin. Gerekli (*) Özellikler için, eylemin yanıtı için döndürmek istediğiniz sahte çıkış değerlerini belirtin.
+   1. **Statik sonucu etkinleştir**' i seçin. Gerekli (*) Özellikler için, eylemin yanıtı için döndürmek istediğiniz sahte çıkış değerlerini belirtin.
 
       Örneğin, HTTP eylemi için gereken özellikler şunlardır:
 
@@ -60,7 +60,7 @@ Logic Apps 'i sınarken, çeşitli nedenlerle uygulamalar, hizmetler ve sistemle
 
       ![İsteğe bağlı özellikleri seçin](./media/test-logic-apps-mock-data-static-results/optional-properties.png)
 
-1. Kaydetmeye hazırsanız **bitti** ' yi seçin.
+1. Kaydetmeye hazırsanız **bitti**' yi seçin.
 
    Eylemin sağ üst köşesinde bulunan başlık çubuğu artık ![ ](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png) statik sonuçları etkinleştirdiğini belirten bir test Beaker simgesi (statik sonuçlar simgesi) gösterir.
 
@@ -76,7 +76,7 @@ Mantıksal uygulamanızın çıkış içeren önceki bir çalıştırması varsa
 
 1. Henüz yapmadıysanız, [Azure portal](https://portal.azure.com)Logic Apps tasarımcısında mantıksal uygulamanızı açın.
 
-1. Mantıksal uygulamanızın ana menüsünde **genel bakış** ' ı seçin.
+1. Mantıksal uygulamanızın ana menüsünde **genel bakış**' ı seçin.
 
 1. **Çalıştırma geçmişi** bölümünde, istediğiniz mantıksal uygulama çalıştırmasını seçin.
 
@@ -102,7 +102,7 @@ Mantıksal uygulamanızın çıkış içeren önceki bir çalıştırması varsa
 
    ![JSON modu](./media/test-logic-apps-mock-data-static-results/json-editing-mode.png)
 
-1. İşiniz bittiğinde **Bitti** 'yi seçin. Ya da tasarımcıya dönmek için **Düzenleyici modunu değiştir** ' i seçin ( ![ "Düzenleyici modunu değiştir" i seçin ](./media/test-logic-apps-mock-data-static-results/switch-editor-mode-button.png) ).
+1. İşiniz bittiğinde **Bitti**'yi seçin. Ya da tasarımcıya dönmek için **Düzenleyici modunu değiştir** ' i seçin ( ![ "Düzenleyici modunu değiştir" i seçin ](./media/test-logic-apps-mock-data-static-results/switch-editor-mode-button.png) ).
 
 <a name="find-runs-mock-data"></a>
 
@@ -110,7 +110,7 @@ Mantıksal uygulamanızın çıkış içeren önceki bir çalıştırması varsa
 
 Mantıksal uygulamanızın çalışma geçmişi, eylemlerin statik sonuçlar kullanacağı çalıştırmaları tanımlar. Bu çalışmaları bulmak için şu adımları izleyin:
 
-1. Mantıksal uygulamanızın ana menüsünde **genel bakış** ' ı seçin. 
+1. Mantıksal uygulamanızın ana menüsünde **genel bakış**' ı seçin. 
 
 1. Sağ bölmede, **çalışma geçmişi** altında, **statik sonuçlar** sütununu bulun. 
 
@@ -132,7 +132,7 @@ Statik sonuçları kapatmak, son kurulumdan değerleri oluşturmaz. Bu nedenle, 
 
    ![Ekran görüntüsü, test Beaker simgesini seçebileceğiniz bir H T T eylemi gösterir.](./media/test-logic-apps-mock-data-static-results/disable-static-results.png)
 
-1. **Statik sonucu devre dışı bırak** seçeneğini belirleyin  >  **Done** .
+1. **Statik sonucu devre dışı bırak** seçeneğini belirleyin  >  .
 
    ![Ekran görüntüsü seçebileceğiniz statik sonucu devre dışı bırak seçeneğini gösterir.](./media/test-logic-apps-mock-data-static-results/disable-static-results-button.png)
 

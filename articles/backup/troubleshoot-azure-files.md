@@ -4,10 +4,10 @@ description: Bu makalede, Azure dosya paylaşımlarınızın korunması sırası
 ms.date: 02/10/2020
 ms.topic: troubleshooting
 ms.openlocfilehash: 4908b8ed97bad43d9d24427660a8691ee43d7eaf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89376987"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Azure dosya paylaşımlarını yedeklerken sorunları giderme
@@ -51,7 +51,7 @@ Kaydı yeniden deneyin. Sorun devam ederse desteğe başvurun.
 
 ### <a name="unable-to-delete-the-recovery-services-vault-after-unprotecting-a-file-share"></a>Dosya paylaşımının korumasını kaldırdıktan sonra kurtarma hizmetleri Kasası silinemiyor
 
-Azure Portal, **kasa**  >  **Yedekleme altyapısı**  >  **depolama hesaplarınızı**açın. Kurtarma Hizmetleri kasasından depolama hesaplarını kaldırmak için **kaydı** Kaldır ' ı seçin.
+Azure Portal, **kasa**  >  **Yedekleme altyapısı**  >  **depolama hesaplarınızı** açın. Kurtarma Hizmetleri kasasından depolama hesaplarını kaldırmak için **kaydı** Kaldır ' ı seçin.
 
 >[!NOTE]
 >Kurtarma Hizmetleri Kasası, yalnızca kasaya kayıtlı tüm depolama hesaplarının kaydı kaldırıldıktan sonra silinebilir.
@@ -261,7 +261,7 @@ Hata kodu: UserErrorAnotherRestoreInProgressOnSameTarget
 
 Hata Iletisi: başka bir geri yükleme işi aynı hedef dosya paylaşımında devam ediyor
 
-Farklı bir hedef dosya paylaşma kullanın. Alternatif olarak, iptal edebilir veya diğer geri yüklemenin tamamlanmasını bekleyebilirsiniz.
+Farklı bir hedef dosya paylaşma kullanın. Alternatif olarak işleminizi iptal edebilir veya diğer geri yükleme işleminin tamamlanmasını bekleyebilirsiniz.
 
 ## <a name="common-modify-policy-errors"></a>Ortak ilke hatalarını değiştirme
 

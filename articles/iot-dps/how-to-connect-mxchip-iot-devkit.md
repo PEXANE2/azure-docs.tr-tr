@@ -9,15 +9,15 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
 ms.openlocfilehash: d6b6649d03da319171b24baa24983972bf270679
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94954554"
 ---
 # <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>Mxyonga IoT DevKit 'i IoT Hub kaydetmek için Azure IoT Hub cihaz sağlama hizmeti 'ni otomatik sağlama
 
-Bu makalede, Azure IoT Hub cihaz sağlama hizmeti 'nin bir Azure IoT Hub Mxyonga IoT DevKit 'i [sağlaması](about-iot-dps.md#provisioning-process) için nasıl kullanılacağı açıklanır. Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu makalede, Azure IoT Hub cihaz sağlama hizmeti 'nin bir Azure IoT Hub Mxyonga IoT DevKit 'i [sağlaması](about-iot-dps.md#provisioning-process) için nasıl kullanılacağı açıklanır. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 * Cihazda cihaz sağlama hizmetinin genel uç noktasını yapılandırın.
 * Bir X. 509.440 sertifikası oluşturmak için benzersiz bir cihaz gizli dizisi (UDS) kullanın.

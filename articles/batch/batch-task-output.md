@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 11/14/2018
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4ebe0b6d57225eff9f3f1251d5e491c95e9b7ffc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85965119"
 ---
 # <a name="persist-job-and-task-output"></a>İş ve görev çıktılarını kalıcı hale getirme
@@ -73,7 +73,7 @@ Batch çözümünüzü tasarlarken iş ve görev çıkışları ile ilgili aşa�
 
 - **Çıkış alımı**: görev çıkışını doğrudan havuzunuzdaki işlem düğümlerinden veya kalıcı görev çıktılarınız varsa Azure depolama alanından veya başka bir veri deposundan alabilirsiniz. Bir görevin çıkışını doğrudan bir işlem düğümünden almak için, düğüm üzerinde dosya adı ve çıkış konumuna ihtiyacınız vardır. Görev çıktısını Azure depolama 'ya kalıcı hale getirmeniz durumunda çıkış dosyalarını Azure Storage SDK ile indirmek için Azure Storage 'daki dosyanın tam yolu gereklidir.
 
-- **Çıktıyı görüntüleme**: Azure Portal bir Batch görevine gittiğinizde ve **düğümdeki dosyaları**seçtiğinizde, yalnızca ilgilendiğiniz çıkış dosyalarını değil görevle ilişkili tüm dosyalar sunulur. Yine, işlem düğümlerinde bulunan dosyalar yalnızca düğüm mevcut olduğunda ve yalnızca görev için ayarladığınız dosya saklama süresi içinde kullanılabilir. Azure depolama 'da kalıcı olan görev çıktısını görüntülemek için, Azure portal veya [Azure Depolama Gezgini][storage_explorer]gibi bir Azure Storage istemci uygulaması kullanabilirsiniz. Azure depolama 'daki çıkış verilerini portal veya başka bir araçla görüntülemek için dosyanın konumunu bilmeniz ve doğrudan buna gitmeniz gerekir.
+- **Çıktıyı görüntüleme**: Azure Portal bir Batch görevine gittiğinizde ve **düğümdeki dosyaları** seçtiğinizde, yalnızca ilgilendiğiniz çıkış dosyalarını değil görevle ilişkili tüm dosyalar sunulur. Yine, işlem düğümlerinde bulunan dosyalar yalnızca düğüm mevcut olduğunda ve yalnızca görev için ayarladığınız dosya saklama süresi içinde kullanılabilir. Azure depolama 'da kalıcı olan görev çıktısını görüntülemek için, Azure portal veya [Azure Depolama Gezgini][storage_explorer]gibi bir Azure Storage istemci uygulaması kullanabilirsiniz. Azure depolama 'daki çıkış verilerini portal veya başka bir araçla görüntülemek için dosyanın konumunu bilmeniz ve doğrudan buna gitmeniz gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

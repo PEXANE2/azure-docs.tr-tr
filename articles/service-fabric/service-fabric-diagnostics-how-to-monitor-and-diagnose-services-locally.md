@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
 ms.openlocfilehash: 58319b47c78a85b4f06c2c834db20f6c42cc1939
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86247430"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Yerel makine geliştirme kurulumundaki hizmetleri izleme ve tanılama
@@ -43,15 +43,15 @@ Service Fabric Visual Studio proje şablonları örnek kod içerir. Kod, Service
 **Hizmet şablonlarından** oluşturulan projeler (durum bilgisiz veya durum bilgisi) için yalnızca uygulamayı arayın `RunAsync` :
 
 1. Yönteminde öğesine yapılan çağrı, `ServiceEventSource.Current.ServiceMessage` `RunAsync` uygulama kodundan özel bir ETW izleme örneği gösterir.
-2. **ServiceEventSource.cs** dosyasında, `ServiceEventSource.ServiceMessage` Performans nedenlerinden dolayı yüksek frekanslı olaylar için kullanılması gereken yöntemi için bir aşırı yükleme bulacaksınız.
+2. **Serviceeventsource. cs** dosyasında, `ServiceEventSource.ServiceMessage` Performans nedenlerinden dolayı yüksek frekanslı olaylar için kullanılması gereken yöntemi için bir aşırı yükleme bulacaksınız.
 
 **Aktör şablonlarından** oluşturulan projeler için (durum bilgisiz veya Stateful):
 
 1. *ProjectName* 'In Visual Studio projeniz için seçtiğiniz ad olduğu **"ProjectName". cs** dosyasını açın.  
 2. `ActorEventSource.Current.ActorMessage(this, "Doing Work");` *Doworkasync* yönteminde kodu bulun.  Bu, uygulama kodundan yazılmış özel bir ETW izleme örneğidir.  
-3. Dosya **ActorEventSource.cs**' de, `ActorEventSource.ActorMessage` Performans nedenlerinden dolayı yüksek frekanslı olaylar için kullanılması gereken yöntemi için bir aşırı yükleme bulacaksınız.
+3. **ActorEventSource. cs** dosyasında, `ActorEventSource.ActorMessage` Performans nedenlerinden dolayı yüksek frekanslı olaylar için kullanılması gereken yöntemi için bir aşırı yükleme bulacaksınız.
 
-Hizmet kodunuza özel ETW izleme ekledikten sonra, tanılama olayları görüntüleyicisinde olaylarınızı görmek için uygulamayı yeniden oluşturabilir, dağıtabilir ve çalıştırabilirsiniz. **F5**ile uygulamada hata ayıklaması yaparsanız, tanılama olayları Görüntüleyicisi otomatik olarak açılır.
+Hizmet kodunuza özel ETW izleme ekledikten sonra, tanılama olayları görüntüleyicisinde olaylarınızı görmek için uygulamayı yeniden oluşturabilir, dağıtabilir ve çalıştırabilirsiniz. **F5** ile uygulamada hata ayıklaması yaparsanız, tanılama olayları Görüntüleyicisi otomatik olarak açılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Yerel Tanılama için yukarıdaki uygulamanıza eklediğiniz izleme kodu, uygulamanızı bir Azure kümesinde çalıştırırken bu olayları görüntülemek için kullanabileceğiniz araçlarla birlikte çalışacaktır. Araçların farklı seçeneklerini tartışan bu makalelere göz atın ve bunları nasıl ayarlayabileceğini açıklayabiliriz.

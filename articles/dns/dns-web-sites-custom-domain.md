@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 10/20/2020
 ms.author: rohink
 ms.openlocfilehash: 369c7dab174f0269797b10635882a6821ade8311
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94952956"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Öğretici: Bir web uygulaması için özel etki alanında DNS kaydı oluşturma 
@@ -29,7 +29,7 @@ Bunu yapmak için üç kayıt oluşturmanız gerekir:
 
 Azure'daki web uygulamanız için bir A kaydı oluşturduğunuzda web uygulamasının IP adresi her değiştiğinde bu A kaydının da değiştirilmesi gerektiğini unutmayın.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Özel etki alanınız için A ve TXT kaydı oluşturma
@@ -38,7 +38,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > * Web uygulamanıza özel ana bilgisayar adları ekleyin
 > * Özel ana bilgisayar adlarını test etme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 

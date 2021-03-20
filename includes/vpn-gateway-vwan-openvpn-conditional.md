@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -9,10 +9,10 @@ ms.date: 02/14/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 410570302eec418f1e4bcb75d6413936a96b5171
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "77471585"
 ---
 Koşullu erişim, uygulama başına ayrıntılı erişim denetimi sağlar. Koşullu erişimi kullanabilmeniz için, koşullu erişim kurallarına tabi olacak kullanıcılara Azure AD Premium 1 veya daha büyük bir lisanslama uygulanmış olmalıdır.
@@ -24,7 +24,7 @@ Koşullu erişim, uygulama başına ayrıntılı erişim denetimi sağlar. Koşu
 2. **Yeni** bölmede, **atamalar-> kullanıcılar ve gruplar**' a gidin. **Kullanıcılar ve gruplar->** **ekleme** sekmesi:
 
    - **Kullanıcıları ve grupları seç**' e tıklayın.
-   - **Kullanıcıları ve grupları**denetleyin.
+   - **Kullanıcıları ve grupları** denetleyin.
    - MFA 'dan etkilenecek bir grup veya kullanıcı kümesi seçmek için **Seç** ' e tıklayın.
    - **Bitti**’ye tıklayın.
 
@@ -39,7 +39,7 @@ Koşullu erişim, uygulama başına ayrıntılı erişim denetimi sağlar. Koşu
    ![Erişim verme-MFA](./media/vpn-gateway-vwan-openvpn-azure-ad-mfa/mfa-ca-grant-mfa.png)
 4. **Ilkeyi etkinleştir** bölümünde:
 
-   - **Açık**seçeneğini belirleyin.
+   - **Açık** seçeneğini belirleyin.
    - **Oluştur**’a tıklayın.
 
    ![Ilkeyi etkinleştir](./media/vpn-gateway-vwan-openvpn-azure-ad-mfa/mfa-ca-enable-policy.png)

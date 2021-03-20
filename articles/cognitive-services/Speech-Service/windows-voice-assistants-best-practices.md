@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/1/2020
 ms.author: adamwa
 ms.openlocfilehash: 76a29af80891142fcf7f56f93f5c7acc5c58ab04
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92165154"
 ---
 # <a name="design-assistant-experiences-for-windows-10"></a>Windows 10 için Tasarım Yardımcısı deneyimleri
@@ -116,7 +116,7 @@ Bu bölümde, müşterilerin Windows bilgisayarlarını bir dahaki sefer daha ko
 
 Birçok bilgisayar taşınabilir ancak her zaman müşteri erişim dahilinde değildir. Bunlar, diğer kişilerin fiziksel erişimi olduğu otel odaları, uçak veya çalışma alanları için kısa bir süre içinde olabilir. Kilidin üzerinde etkinleştirilmiş yardımcılar hazırlanmamışsa, bu, bu, yani &quot; [kapalı MAID](https://en.wikipedia.org/wiki/Evil_maid_attack) &quot; saldırılarına maruz kalabilir.
 
-Bu nedenle, yardımcılar deneyim güvende tutmaya yardımcı olmak için bu bölümdeki yönergeleri izlemelidir. Yukarıdaki etkileşim, Windows kullanıcısı kimliği doğrulanmamış olduğunda oluşur. Bu, genel olarak, **yardımcının girişinin de kimliği doğrulanmamış olarak kabul**edilmesidir.
+Bu nedenle, yardımcılar deneyim güvende tutmaya yardımcı olmak için bu bölümdeki yönergeleri izlemelidir. Yukarıdaki etkileşim, Windows kullanıcısı kimliği doğrulanmamış olduğunda oluşur. Bu, genel olarak, **yardımcının girişinin de kimliği doğrulanmamış olarak kabul** edilmesidir.
 
 - Yardımcılar, güvenli ve güvenle kilidin üzerine erişilmek üzere **onaylanan becerileri belirlemek için bir yetenek izin verilenler listesi uygulamalıdır** .
 - Konuşmacı KIMLIĞI teknolojileri, hafifletmesini bazı riskler halinde bir rol oynayabilir, ancak konuşmacı KIMLIĞI Windows kimlik doğrulaması için uygun bir değişiklik değildir.

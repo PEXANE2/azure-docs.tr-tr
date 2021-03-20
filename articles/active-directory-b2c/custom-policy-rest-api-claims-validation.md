@@ -12,10 +12,10 @@ ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 761bc4db7760ef5e84e3fc3c8a5deea5d4508f51
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94951936"
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-to-validate-user-input"></a>İzlenecek yol: Kullanıcı girişini doğrulamak için Azure AD B2C Kullanıcı yolculuğunda REST API talep alışverişlerinde tümleştirin
@@ -28,7 +28,7 @@ Bu senaryoda, kullanıcıların Azure AD B2C kaydolma sayfasına bağlılık pro
 
 Ayrıca, etkileşimi bir düzenleme adımı olarak tasarlayabilirler. Bu, REST API ekranda verileri doğrulamadan ve her zaman talepler döndürecek şekilde uygundur. Daha fazla bilgi için bkz. [Izlenecek yol: Azure AD B2C Kullanıcı yolculuğunda düzenleme adımı olarak REST API talep alışverişlerinde tümleştirme](custom-policy-rest-api-claims-exchange.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Özel ilkelerle çalışmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın. Kaydolma ve yerel hesaplarla oturum açma için çalışan bir özel ilkenize sahip olmanız gerekir.
 - [Azure AD B2C özel ilkenizde REST API talep değişimlerinin nasıl tümleştirileceğini](custom-policy-rest-api-intro.md)öğrenin.

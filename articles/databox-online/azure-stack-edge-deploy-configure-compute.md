@@ -10,10 +10,10 @@ ms.date: 01/06/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
 ms.openlocfilehash: 10741fbf2deb61d63f444ff9e2247bc59f41af38
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97968810"
 ---
 # <a name="tutorial-transform-the-data-with-azure-stack-edge-pro"></a>Öğretici: Azure Stack Edge Pro ile verileri dönüştürme
@@ -57,12 +57,12 @@ Azure Stack Edge Pro ortamınızda işlem yapılandırmak için bir IoT Hub kayn
     |---------|---------|
     |Abonelik     |IoT Hub kaynağınız için bir abonelik seçin. Azure Stack Edge kaynağı tarafından kullanılan aboneliğin aynısını kullanabilirsiniz.         |
     |Kaynak grubu     |IoT Hub kaynağınız için bir kaynak grubu seçin. Azure Stack Edge kaynağı tarafından kullanılan aynı kaynak grubunu kullanabilirsiniz.         |
-    |IoT Hub     | **Yeni** veya **mevcut** seçeneklerinden birini belirleyin. <br> Varsayılan olarak IoT kaynağı oluşturulurken Standart katmanı (S1) kullanılır. Bir ücretsiz katman IoT kaynağı kullanmak için kaynağı oluşturun ve sonra da mevcut kaynağı seçin. <br> Her durumda IoT Hub kaynak, Azure Stack Edge kaynağı tarafından kullanılan aynı abonelik ve kaynak grubunu kullanır.     |
-    |Ad     |IoT Hub kaynağınız için bir ad girin.         |
+    |IoT Hub     | **Yeni** veya **mevcut** seçeneklerinden birini belirleyin. <br> Varsayılan olarak IoT kaynağı oluşturulurken Standart katmanı (S1) kullanılır. Bir ücretsiz katman IoT kaynağı kullanmak için kaynağı oluşturun ve sonra da mevcut kaynağı seçin. <br> Her durumda IoT Hub kaynağı, Azure Stack Edge kaynağıyla aynı aboneliği ve kaynak grubunu kullanır.     |
+    |Name     |IoT Hub kaynağınız için bir ad girin.         |
 
     ![İşlem 3 ' ü kullanmaya başlama](./media/azure-stack-edge-deploy-configure-compute/configure-compute-3.png)
 
-4. **Gözden geçir + oluştur**' u seçin. IoT Hub kaynak oluşturma birkaç dakika sürer. IoT Hub kaynağı oluşturulduktan sonra, **genel bakış** , IoT Edge hizmetinin çalıştığını göstermek için güncelleştirilir. 
+4. **Gözden geçir + Oluştur**’u seçin. IoT Hub kaynak oluşturma birkaç dakika sürer. IoT Hub kaynağı oluşturulduktan sonra, **genel bakış** , IoT Edge hizmetinin çalıştığını göstermek için güncelleştirilir. 
 
     ![İşlem 4 ' ü kullanmaya başlama](./media/azure-stack-edge-deploy-configure-compute/configure-compute-4.png)    
     
@@ -127,7 +127,7 @@ Bu bölümde, [Azure Stack Edge Pro Için C# modülü geliştirme](azure-stack-e
 
     ![Modül ekleme ve yapılandırma](./media/azure-stack-edge-deploy-configure-compute/add-module-1.png)
 
-3. **Ekle**’yi seçin. Modül eklendi. **IoT Edge > genel bakış** sayfası, modülün dağıtıldığını belirtecek şekilde güncelleştirilir. 
+3. **Add (Ekle)** seçeneğini belirleyin. Modül eklendi. **IoT Edge > genel bakış** sayfası, modülün dağıtıldığını belirtecek şekilde güncelleştirilir. 
 
     ![Modül dağıtıldı](./media/azure-stack-edge-deploy-configure-compute/add-module-2.png)
 

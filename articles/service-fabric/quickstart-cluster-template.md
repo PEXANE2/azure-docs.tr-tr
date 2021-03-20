@@ -8,10 +8,10 @@ ms.custom: subject-armqs
 ms.author: edoyle
 ms.date: 07/29/2020
 ms.openlocfilehash: 359b527733ee8eebf7e1e7d12c40a0c74ec1c9bd
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87460312"
 ---
 # <a name="quickstart-create-a-service-fabric-cluster-using-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Service Fabric kümesi oluşturma
@@ -111,7 +111,7 @@ Azure Service Fabric ile ilgili daha fazla şablon bulmak için bkz. [Azure hız
 * **clusterName** , küme sertifikanızı oluştururken *certdnsname* için sağladığınız değerle eşleşir
 * **AdminUserName** varsayılan *Gen-UNIQUE* Token dışında bir değerdir
 * **adminPassword** varsayılan *genel parola* belirtecinden farklı bir değerdir
-* **certificateThumbprint**, **Sourcevaultresourceıd**ve **certificateurlvalue** tüm boş dizlardır ( `""` )
+* **certificateThumbprint**, **Sourcevaultresourceıd** ve **certificateurlvalue** tüm boş dizlardır ( `""` )
 
 Örnek:
 

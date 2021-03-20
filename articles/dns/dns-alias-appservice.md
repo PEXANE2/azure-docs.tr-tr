@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 08/10/2019
 ms.author: rohink
 ms.openlocfilehash: 72adb2732eb0832589cbc25fb7e4288eb1899214
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94954520"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>Tepesinde bölgesinde yük dengeli Azure Web uygulamaları barındırın
@@ -26,7 +26,7 @@ Bu makalede, etki alanı tepesinde için bir diğer ad kaydı oluşturmayı ve W
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Birlikte test edilecek Azure DNS içinde barındırabileceğiniz bir etki alanı adınızın olması gerekir. Bu etki alanı üzerinde tam denetime sahip olmanız gerekir. Tam denetim, etki alanı için ad sunucusu (NS) kayıtlarını ayarlama olanağını kapsar.
 
@@ -43,7 +43,7 @@ Bu makalede kullanılan tüm kaynakları barındıracak bir kaynak grubu oluştu
 Yapılandırma bilgileri için aşağıdaki tabloyu kullanarak kaynak grubunuzda iki Web App Service planı oluşturun. App Service planı oluşturma hakkında daha fazla bilgi için bkz. [Azure 'da App Service planını yönetme](../app-service/app-service-plan-manage.md).
 
 
-|Name  |İşletim Sistemi  |Konum  |Fiyatlandırma Katmanı  |
+|Name  |Operating System  |Konum  |Fiyatlandırma Katmanı  |
 |---------|---------|---------|---------|
 |ASP-01     |Windows|Doğu ABD|Geliştirme ve test D1-Shared|
 |ASP-02     |Windows|Central US|Geliştirme ve test D1-Shared|
@@ -84,7 +84,7 @@ Artık iki Web uygulaması için uç noktalar oluşturabilirsiniz.
 
 1. Kaynak grubunuzu açın ve Traffic Manager profilinizi seçin.
 2. Sol sütunda **bitiş noktaları**' nı seçin.
-3. **Ekle**’yi seçin.
+3. **Add (Ekle)** seçeneğini belirleyin.
 4. Uç noktaları yapılandırmak için aşağıdaki tabloyu kullanın:
 
    |Tür  |Name  |Hedef  |Konum  |Özel üstbilgi ayarları|

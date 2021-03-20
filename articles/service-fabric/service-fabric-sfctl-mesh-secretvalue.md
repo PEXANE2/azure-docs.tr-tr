@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 985fb505aae96f4ebd1ba8aeb61679081f303243
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86245781"
 ---
 # <a name="sfctl-mesh-secretvalue"></a>sfctl mesh secretvalue
@@ -30,14 +30,14 @@ Ad tarafından tanımlanan gizli değer kaynağını siler. Kaynağın adı gene
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Secret-adı-n [gerekli] | Gizli kaynağın adı. |
 | --sürüm-v [gerekli] | Gizli dizi sürümünün adı. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -52,13 +52,13 @@ Belirtilen gizli kaynağın tüm gizli değer kaynakları hakkında bilgi alır.
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Secret-adı-n [gerekli] | Gizli kaynağın adı. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
@@ -71,7 +71,7 @@ Gizli kaynağın belirtilen değerini listeler.
 
 ### <a name="arguments"></a>Bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Secret-adı-n [gerekli] | Gizli kaynağın adı. |
 | --sürüm-v [gerekli] | Gizli dizi sürümünün adı. |
@@ -79,7 +79,7 @@ Gizli kaynağın belirtilen değerini listeler.
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |

@@ -4,10 +4,10 @@ description: Lab Services’in geliştiriciler, test uzmanları, eğitimciler, �
 ms.topic: overview
 ms.date: 09/16/2020
 ms.openlocfilehash: ad17ebb3a803a15d1ac9ef8cb71cf8ca7976243b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91333945"
 ---
 # <a name="an-introduction-to-azure-lab-services"></a>Azure Lab Services’a giriş
@@ -20,18 +20,18 @@ Azure Lab Services aşağıdaki temel özellikleri destekler:
 - **Laboratuvar kullanıcıları için basitleştirilmiş deneyim**. Laboratuvar kullanıcıları, kayıt kodu olan bir laboratuvara kaydedebilir ve laboratuvar kaynaklarını kullanmak için her zaman laboratuvara erişebilir. 
 - **Maliyet iyileştirme ve analizi**. Laboratuvar sahibi, sanal makineleri otomatik olarak kapatmak ve başlatmak için laboratuvar zamanlamaları ayarlayabilir. Laboratuvar sahibi, laboratuvarın sanal makinelerini kullanıcılara erişilebilen zaman yuvalarını belirlemek için bir zamanlama ayarlayabilir ve maliyeti iyileştirmek için Kullanıcı başına veya laboratuvar başına kullanım ilkeleri ayarlayabilir. 
 
-Yalnızca bir laboratuvarda ihtiyacınız olanları girmek ve hizmetin laboratuvar için gereken altyapıyı ayarlayıp yönetmesine izin vermek istiyorsanız, **yönetilen laboratuvar türlerinden**birini seçin. Şu anda, **sınıf laboratuvarı** Azure Lab Services oluşturabileceğiniz tek yönetilen laboratuvar türüdür.
+Yalnızca bir laboratuvarda ihtiyacınız olanları girmek ve hizmetin laboratuvar için gereken altyapıyı ayarlayıp yönetmesine izin vermek istiyorsanız, **yönetilen laboratuvar türlerinden** birini seçin. Şu anda, **sınıf laboratuvarı** Azure Lab Services oluşturabileceğiniz tek yönetilen laboratuvar türüdür.
 
 Aşağıdaki bölümlerde bu laboratuvarlar hakkında daha ayrıntılı bilgi verilmektedir. 
 
 ## <a name="managed-lab-types"></a>Yönetilen laboratuvar türleri
 Azure Lab Services, altyapısı Azure tarafından yönetilen laboratuvarlar oluşturmanızı sağlar. Bu makale, bunlara yönetilen laboratuvar türleri olarak başvurur. Yönetilen laboratuvar türleri, özel gereksinimlerinize uyan farklı türde laboratuvarlar sunar. Şu anda desteklenen tek yönetilen laboratuvar türü, **sınıf laboratuvarıdır**. 
 
-Yönetilen laboratuvar türleri, en az kurulum ile hemen çalışmaya başlamanızı sağlar. Hizmetin kendisi, laboratuvar için altyapının tüm yönetimini işler ve VM 'Leri hataları işlemeye ve altyapıyı ölçeklendirmeye yönelik olarak çalışır.Sınıf Laboratuvarı gibi bir yönetilen laboratuvar türü oluşturmak için önce kuruluşunuz için bir laboratuar hesabı oluşturmanız gerekir. Laboratuvar hesabı, kuruluştaki tüm laboratuvarların yönetildiği merkezi hesap olarak görev yapar. 
+Yönetilen laboratuvar türleri, en az kurulum ile hemen çalışmaya başlamanızı sağlar. Hizmetin kendisi, laboratuvar için altyapının tüm yönetimini işler ve VM 'Leri hataları işlemeye ve altyapıyı ölçeklendirmeye yönelik olarak çalışır. Sınıf Laboratuvarı gibi bir yönetilen laboratuvar türü oluşturmak için önce kuruluşunuz için bir laboratuar hesabı oluşturmanız gerekir. Laboratuvar hesabı, kuruluştaki tüm laboratuvarların yönetildiği merkezi hesap olarak görev yapar. 
 
-Azure kaynaklarını oluşturduğunuz ve bu yönetilen laboratuvar türlerinde kullandığınızda hizmet, iç Microsoft aboneliklerinde kaynakları oluşturur ve yönetir. Bunlar sizin Azure aboneliğinizde oluşturulmaz. Hizmet bu kaynakların dahili Microsoft aboneliklerindeki kullanımını takip eder. Bu kullanım, laboratuvar hesabını içeren Azure aboneliğinize faturalanır.   
+Azure kaynaklarını oluşturduğunuz ve bu yönetilen laboratuvar türlerinde kullandığınızda hizmet, iç Microsoft aboneliklerinde kaynakları oluşturur ve yönetir. Bunlar sizin Azure aboneliğinizde oluşturulmaz. Hizmet bu kaynakların dahili Microsoft aboneliklerindeki kullanımını takip eder. Bu kullanım, laboratuvar hesabını içeren Azure aboneliğinize faturalanır.   
 
-**Yönetilen laboratuvar türleri için kullanım örneklerinin**bazıları şunlardır: 
+**Yönetilen laboratuvar türleri için kullanım örneklerinin** bazıları şunlardır: 
 
 - Öğrencilere tam olarak bir sınıfın gereksinimleriyle yapılandırılmış sanal makinelerden oluşan bir laboratuvar sağlayın. Her öğrenciye, ev ödevi veya kişisel projeleri için VM’leri kullanabilecekleri sınırlı sayıda saat verin.
 - İşlem yoğunluklu veya grafik yoğunluklu araştırmalar gerçekleştirmek üzere yüksek performanslı işlem VM’leri içeren bir havuz oluşturun. Gerektiğinde VM’leri çalıştırın ve işiniz bittikten sonra makineleri temizleyin. 

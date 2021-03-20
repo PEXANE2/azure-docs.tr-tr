@@ -4,10 +4,10 @@ description: Service Fabric uygulamaları ve hizmetleri anlatmak için bildiriml
 ms.topic: conceptual
 ms.date: 8/12/2019
 ms.openlocfilehash: fcf4c7611f0a6f52c28b234717b9244ac58ad2d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86248229"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Uygulama ve hizmet bildirimlerini Service Fabric
@@ -61,9 +61,9 @@ Hizmet bildirimi, hizmet türünü ve sürümü bildirimli olarak tanımlar. Hiz
 
 **ServiceType** , bu bildirimde **codepackages** tarafından desteklenen hizmet türlerini bildirir. Bu hizmet türlerinden birine karşı bir hizmet örneği oluşturulduğunda, bu bildirimde belirtilen tüm kod paketleri giriş noktaları çalıştırılarak etkinleştirilir. Elde edilen işlemlerin, çalışma zamanında desteklenen hizmet türlerini kaydetmesi beklenmektedir. Hizmet türleri, kod paketi düzeyi değil, bildirim düzeyinde belirtilir. Bu nedenle, birden çok kod paketi olduğunda, her sistem, belirtilen hizmet türlerinden birini her ararken etkinleştirilir.
 
-**Giriş noktası** tarafından belirtilen yürütülebilir dosya genellikle uzun süre çalışan hizmet ana bilgisayarı. **Setupentrypoint** , diğer herhangi bir giriş noktasından önce Service Fabric (genellikle *LocalSystem* hesabı) ile aynı kimlik bilgileriyle çalışan ayrıcalıklı bir giriş noktasıdır.  Ayrı bir kurulum giriş noktasının varlığı, hizmet ana bilgisayarını uzun süreler boyunca yüksek ayrıcalıklarla çalıştırmak zorunda kalmaktan kaçınır. **Giriş noktası** tarafından belirtilen yürütülebilir dosya, **setupentrypoint** başarıyla çıktıktan sonra çalıştırılır. İşlem sonlandırıldığında veya kilitlenirse, sonuçta elde edilen işlem izlenir ve yeniden başlatılır ( **Setupentrypoint**ile yeniden başlar).  
+**Giriş noktası** tarafından belirtilen yürütülebilir dosya genellikle uzun süre çalışan hizmet ana bilgisayarı. **Setupentrypoint** , diğer herhangi bir giriş noktasından önce Service Fabric (genellikle *LocalSystem* hesabı) ile aynı kimlik bilgileriyle çalışan ayrıcalıklı bir giriş noktasıdır.  Ayrı bir kurulum giriş noktasının varlığı, hizmet ana bilgisayarını uzun süreler boyunca yüksek ayrıcalıklarla çalıştırmak zorunda kalmaktan kaçınır. **Giriş noktası** tarafından belirtilen yürütülebilir dosya, **setupentrypoint** başarıyla çıktıktan sonra çalıştırılır. İşlem sonlandırıldığında veya kilitlenirse, sonuçta elde edilen işlem izlenir ve yeniden başlatılır ( **Setupentrypoint** ile yeniden başlar).  
 
-**Setupentrypoint** kullanmaya yönelik tipik senaryolar, hizmet başlamadan önce bir yürütülebilir dosya çalıştırdığınızda veya yükseltilmiş ayrıcalıklarla bir işlem gerçekleştirdiğinizde yapılır. Örneğin:
+**Setupentrypoint** kullanmaya yönelik tipik senaryolar, hizmet başlamadan önce bir yürütülebilir dosya çalıştırdığınızda veya yükseltilmiş ayrıcalıklarla bir işlem gerçekleştirdiğinizde yapılır. Örnek:
 
 * Hizmet yürütülebilir dosyasının ihtiyaç duyacağı ortam değişkenlerini ayarlama ve başlatma. Bu, yalnızca Service Fabric programlama modelleriyle yazılmış yürütülebilir dosyalar ile sınırlı değildir. Örneğin npm.exe, bir node.js uygulamasının dağıtımı için yapılandırılmış bazı ortam değişkenlerine ihtiyaç duyuyor.
 * Güvenlik sertifikaları yükleyerek erişim denetimini ayarlama.
@@ -151,7 +151,7 @@ Hizmet bildirimleri gibi, **Sürüm** öznitelikleri yapılandırılmamış dize
 
 **Parametreler** , uygulama bildirimi boyunca kullanılan parametreleri tanımlar. Uygulama örneği oluşturulduğunda ve uygulama veya hizmet yapılandırma ayarlarını geçersiz kılabildiğinden, bu parametrelerin değerleri sağlanabilir.  Varsayılan parametre değeri, uygulama örneği oluşturma sırasında değer değiştirilmez kullanılır. Ayrı ortamlar için farklı uygulama ve hizmet parametrelerinin nasıl korunmasını öğrenmek için bkz. [birden çok ortam için uygulama parametrelerini yönetme](service-fabric-manage-multiple-environment-app-configuration.md).
 
-**Servicemanifestımport** bu uygulama türünü oluşturan hizmet bildirimlerine başvurular içeriyor. Bir uygulama bildirimi birden fazla hizmet bildirimi içeri aktarmaları içerebilir, her biri bağımsız olarak sürümlenebilir. İçeri aktarılan hizmet bildirimleri bu uygulama türü içinde geçerli olan hizmet türlerini belirlenir. Servicemanifestımport içinde, Settings.xml ve ortam değişkenlerinin yapılandırma değerlerini ServiceManifest.xml dosyalardaki geçersiz kılabilirsiniz. **Policies** Son nokta bağlama, güvenlik ve erişim ve paket paylaşımı, içeri aktarılan hizmet bildirimlerinde ayarlanabilir.  Daha fazla bilgi için bkz. [uygulamanız için güvenlik Ilkelerini yapılandırma](service-fabric-application-runas-security.md).
+**Servicemanifestımport** bu uygulama türünü oluşturan hizmet bildirimlerine başvurular içeriyor. Bir uygulama bildirimi birden fazla hizmet bildirimi içeri aktarmaları içerebilir, her biri bağımsız olarak sürümlenebilir. İçeri aktarılan hizmet bildirimleri bu uygulama türü içinde geçerli olan hizmet türlerini belirlenir. Servicemanifestımport içinde, Settings.xml ve ortam değişkenlerinin yapılandırma değerlerini ServiceManifest.xml dosyalardaki geçersiz kılabilirsiniz.  Son nokta bağlama, güvenlik ve erişim ve paket paylaşımı, içeri aktarılan hizmet bildirimlerinde ayarlanabilir.  Daha fazla bilgi için bkz. [uygulamanız için güvenlik Ilkelerini yapılandırma](service-fabric-application-runas-security.md).
 
 **DefaultServices** , bu uygulama türüne karşı her uygulama oluşturulduğunda otomatik olarak oluşturulan hizmet örneklerini bildirir. Varsayılan hizmetler, yalnızca bir kolaydır ve oluşturulduktan sonra her bakımdan normal hizmetler gibi davranır. Bunlar, uygulama örneğindeki diğer hizmetlerle birlikte yükseltilecektir ve de kaldırılabilir. Bir uygulama bildiriminde birden çok varsayılan hizmet bulunabilir.
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: bf0570cd62a2c329407cfb6dd087020f53cdc991
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94954078"
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>8000 serisi cihaz sorunlarını gidermek için StorSimple Tanılama aracını kullanın
@@ -418,7 +418,7 @@ Aşağıda, sistem bilgileri 'ndeki çeşitli Windows PowerShell parametrelerini
 |-------------------------|------------------|
 | Örnek Kimliği             | Her denetleyicinin benzersiz bir tanımlayıcısı veya onunla ilişkili bir GUID 'SI vardır.|
 | Name                    | Cihaz dağıtımı sırasında Azure portal tarafından yapılandırılan cihazın kolay adı. Varsayılan kolay ad, cihaz seri numarasıdır. |
-| Model                   | StorSimple 8000 serisi cihazınızın modeli. Model 8100 veya 8600 olabilir.|
+| Modelleme                   | StorSimple 8000 serisi cihazınızın modeli. Model 8100 veya 8600 olabilir.|
 | SerialNumber            | Cihaz seri numarası fabrikada atanır ve 15 karakter uzunluğundadır. Örneğin, 8600-SHX0991003G44HT şunu gösterir:<br> 8600 – cihaz modelidir.<br>SHX – üretim sitesidir.<br> 0991003-belirli bir üründür. <br> G44HT-son 5 basamak, benzersiz seri numaraları oluşturmak için artırılır. Bu sıralı bir küme olmayabilir.|
 | TimeZone                | Cihaz dağıtımı sırasında Azure portal yapılandırılan cihaz saat dilimi.|
 | CurrentController       | StorSimple cihazınızın Windows PowerShell arabirimi aracılığıyla bağlandığınız denetleyici.|

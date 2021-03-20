@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: Zhchia
 ms.openlocfilehash: f015718c59178b8094f535280edadd641d22a806
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98741936"
 ---
 # <a name="tutorial-configure-webroot-security-awareness-training-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Webroot güvenlik tanıma eğitimini yapılandırma
@@ -34,7 +34,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Webroo
 > * Kullanıcı özniteliklerinin Azure AD ile Webroot güvenlik tanıma eğitimi arasında eşitlenmiş olmasını sağlama
 > * Webroot güvenlik tanıma eğitiminde grupları ve grup üyeliklerini sağlama
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 

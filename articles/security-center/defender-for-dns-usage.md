@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
 ms.openlocfilehash: 375a81127a000741ca5e0397642800794610bcda
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96754771"
 ---
-# <a name="respond-to-azure-defender-for-dns-alerts"></a>DNS uyarıları için Azure Defender 'a yanıt verme
+# <a name="respond-to-azure-defender-for-dns-alerts"></a>DNS için Azure Defender uyarılarına yanıt verme
 
 DNS için Azure Defender 'dan bir uyarı aldığınızda, uyarıları aşağıda açıklandığı gibi araştırıp yanıtlamanız önerilir. DNS için Azure Defender tüm bağlı kaynakları koruduğunda, uyarıyı tetikleyen uygulama veya Kullanıcı hakkında bilgi sahibi olsanız bile, her uyarının çevresindeki durumu doğrulamak önemlidir.  
 
