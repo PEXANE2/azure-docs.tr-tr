@@ -8,10 +8,10 @@ ms.date: 11/14/2019
 ms.author: ant
 ms.topic: conceptual
 ms.openlocfilehash: 483d261a8cc107d01cfb7a405eac43667d7efcc6
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92131845"
 ---
 # <a name="troubleshoot-web-application-firewall-waf-for-azure-application-gateway"></a>Azure Application Gateway Web uygulaması güvenlik duvarı (WAF) sorunlarını giderme
@@ -154,7 +154,7 @@ Bazen, belirli parametrelerin WAF 'ye, sezgisel olmayan bir şekilde geçirilme 
 
 ![Dışlamalar](../media/web-application-firewall-troubleshoot/exclusion-list.png)
 
-Bu örnekte, bir *Metin1*değerine eşit olan **istek özniteliği adını** dışlamak istiyorsunuz. Bu, güvenlik duvarı günlüklerinde öznitelik adını görebileceğiniz için görünür: **veri: eşleşen veriler: 1 = 1 bağımsız değişkenler içinde bulundu: Metin1:1 = 1**. Özniteliği **Metin1**. Bu öznitelik adını birkaç farklı yolla de bulabilirsiniz, bkz. [istek özniteliği adlarını bulma](#finding-request-attribute-names).
+Bu örnekte, bir *Metin1* değerine eşit olan **istek özniteliği adını** dışlamak istiyorsunuz. Bu, güvenlik duvarı günlüklerinde öznitelik adını görebileceğiniz için görünür: **veri: eşleşen veriler: 1 = 1 bağımsız değişkenler içinde bulundu: Metin1:1 = 1**. Özniteliği **Metin1**. Bu öznitelik adını birkaç farklı yolla de bulabilirsiniz, bkz. [istek özniteliği adlarını bulma](#finding-request-attribute-names).
 
 ![WAF dışlama listeleri](../media/web-application-firewall-troubleshoot/waf-config.png)
 
@@ -172,7 +172,7 @@ Azure PowerShell kullanmak istiyorsanız, bkz. [PowerShell aracılığıyla Web 
 
 [Fiddler](https://www.telerik.com/fiddler)'ın yardımıyla, bireysel istekleri inceleyeceksiniz ve bir Web sayfasındaki belirli alanları belirlersiniz. Bu, belirli alanların dışlama listeleri kullanılarak incelemeden dışlanmasına yardımcı olabilir.
 
-Bu örnekte, *1 = 1* dizesinin girildiği alanın **Metin1**olarak adlandırıldığını görebilirsiniz.
+Bu örnekte, *1 = 1* dizesinin girildiği alanın **Metin1** olarak adlandırıldığını görebilirsiniz.
 
 :::image type="content" source="../media/web-application-firewall-troubleshoot/fiddler-1.png" alt-text="Progress Telerik Fiddler Web hata ayıklayıcının ekran görüntüsü. Ham sekmesinde 1 = 1, Metin1 adından sonra görünür." border="false":::
 
@@ -293,15 +293,15 @@ Bir anomali Puanlama sistemi ile birlikte çalışma hakkında bilgi sahibi 3,0 
 
 Kullanıcı, Application Gateway gezinmek için sayısal bir IP adresi kullandığından, ilk giriş günlüğe kaydedilir ve bu durumda yok sayılabilir.
 
-İkinci bir tane (kural 942130) ilginç bir değer. Ayrıntıların bir Düzenle eşleştiğini (1 = 1) görebilirsiniz ve alan **Metin1**olarak adlandırılır. **1 = 1** **değerine eşit** olan **istek özniteliği adını** dışlamak için aynı önceki adımları izleyin.
+İkinci bir tane (kural 942130) ilginç bir değer. Ayrıntıların bir Düzenle eşleştiğini (1 = 1) görebilirsiniz ve alan **Metin1** olarak adlandırılır. **1 = 1** **değerine eşit** olan **istek özniteliği adını** dışlamak için aynı önceki adımları izleyin.
 
 ## <a name="finding-request-header-names"></a>İstek üst bilgisi adlarını bulma
 
-Fiddler, istek üst bilgisi adlarını bulmak için bir kez yararlı bir araçtır. Aşağıdaki ekran görüntüsünde, *Içerik türü*, *Kullanıcı-aracı*vb. dahIl olmak üzere bu GET isteğinin üst bilgilerini görebilirsiniz.
+Fiddler, istek üst bilgisi adlarını bulmak için bir kez yararlı bir araçtır. Aşağıdaki ekran görüntüsünde, *Içerik türü*, *Kullanıcı-aracı* vb. dahIl olmak üzere bu GET isteğinin üst bilgilerini görebilirsiniz.
 
 :::image type="content" source="../media/web-application-firewall-troubleshoot/fiddler-2.png" alt-text="Progress Telerik Fiddler Web hata ayıklayıcının ekran görüntüsü. RAW sekmesi bağlantı, içerik türü ve Kullanıcı Aracısı gibi istek üst bilgisi ayrıntılarını listeler." border="false":::
 
-İstek ve yanıt üst bilgilerini görüntülemenin bir başka yolu da Chrome Geliştirici araçlarının içine bakmedir. F12 tuşuna basarak veya sağ tıklama > **Inspect**  ->  **Geliştirici Araçları**İnceleme ' ye basabilir ve **ağ** sekmesini seçebilirsiniz. bir Web sayfası yükleyin ve incelemek istediğiniz isteğe tıklayın.
+İstek ve yanıt üst bilgilerini görüntülemenin bir başka yolu da Chrome Geliştirici araçlarının içine bakmedir. F12 tuşuna basarak veya sağ tıklama >   ->  **Geliştirici Araçları** İnceleme ' ye basabilir ve **ağ** sekmesini seçebilirsiniz. bir Web sayfası yükleyin ve incelemek istediğiniz isteğe tıklayın.
 
 ![Chrome F12](../media/web-application-firewall-troubleshoot/chrome-f12.png)
 

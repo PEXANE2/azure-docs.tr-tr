@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/08/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 2f393701b97be76acab49a627a195b337018fa29
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92144425"
 ---
 # <a name="create-an-iot-hub-using-the-resource-provider-rest-api-net"></a>Kaynak sağlayıcısı REST API (.NET) kullanarak IoT Hub 'ı oluşturma
@@ -36,15 +36,15 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 ## <a name="prepare-your-visual-studio-project"></a>Visual Studio projenizi hazırlama
 
-1. Visual Studio 'da **konsol uygulaması (.NET Framework)** proje şablonunu kullanarak bir Visual C# Windows Klasik Masaüstü projesi oluşturun. Projeyi **Createiothubrest**olarak adlandırın.
+1. Visual Studio 'da **konsol uygulaması (.NET Framework)** proje şablonunu kullanarak bir Visual C# Windows Klasik Masaüstü projesi oluşturun. Projeyi **Createiothubrest** olarak adlandırın.
 
 2. Çözüm Gezgini, projenize sağ tıklayın ve ardından **NuGet Paketlerini Yönet**' e tıklayın.
 
-3. NuGet Paket Yöneticisi ' nde, **ön sürümü dahil**et ' i Işaretleyin ve **Microsoft. Azure. Management. ResourceManager**için **göz at** sayfasında arama yapın. Paketi seçin, ardından, **Gözden geçirme değişiklikleri** **' nde** **Tamam**' ı tıklatın ve lisansları kabul etmek için **kabul ediyorum** ' a tıklayın.
+3. NuGet Paket Yöneticisi ' nde, **ön sürümü dahil** et ' i Işaretleyin ve **Microsoft. Azure. Management. ResourceManager** için **göz at** sayfasında arama yapın. Paketi seçin, ardından, **Gözden geçirme değişiklikleri** **' nde** **Tamam**' ı tıklatın ve lisansları kabul etmek için **kabul ediyorum** ' a tıklayın.
 
-4. NuGet Paket Yöneticisi ' nde **Microsoft. IdentityModel. clients. ActiveDirectory**için arama yapın.  **Tamam**' a tıklayın, **değişiklikleri gözden geçir** **' e**tıklayın, ardından **kabul ediyorum** ' a tıklayarak lisansı kabul edin.
+4. NuGet Paket Yöneticisi ' nde **Microsoft. IdentityModel. clients. ActiveDirectory** için arama yapın.  **Tamam**' a tıklayın, **değişiklikleri gözden geçir** **' e** tıklayın, ardından **kabul ediyorum** ' a tıklayarak lisansı kabul edin.
 
-5. Program.cs ' de, var olan **using** deyimlerini aşağıdaki kodla değiştirin:
+5. Program. cs ' de, var olan **using** deyimlerini aşağıdaki kodla değiştirin:
 
     ```csharp
     using System;
@@ -60,7 +60,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
     using System.Threading;
     ```
 
-6. Program.cs ' de, yer tutucu değerlerini değiştirerek aşağıdaki statik değişkenleri ekleyin. Bu öğreticide, **ApplicationId**, **SubscriptionID**, **tenantıd**ve **parola** hakkında daha önce bir değişiklik yaptınız. **Kaynak grubu adı** , IoT Hub 'ını oluştururken kullandığınız kaynak grubunun adıdır. Önceden var olan veya yeni bir kaynak grubu kullanabilirsiniz. **IoT Hub ad** , oluşturduğunuz IoT Hub (örneğin, **MyIoTHub**) adıdır. IoT Hub 'ınızın adı genel olarak benzersiz olmalıdır. **Dağıtım adı** , dağıtım için **Deployment_01**gibi bir addır.
+6. Program. cs ' de, yer tutucu değerlerini değiştirerek aşağıdaki statik değişkenleri ekleyin. Bu öğreticide, **ApplicationId**, **SubscriptionID**, **tenantıd** ve **parola** hakkında daha önce bir değişiklik yaptınız. **Kaynak grubu adı** , IoT Hub 'ını oluştururken kullandığınız kaynak grubunun adıdır. Önceden var olan veya yeni bir kaynak grubu kullanabilirsiniz. **IoT Hub ad** , oluşturduğunuz IoT Hub (örneğin, **MyIoTHub**) adıdır. IoT Hub 'ınızın adı genel olarak benzersiz olmalıdır. **Dağıtım adı** , dağıtım için **Deployment_01** gibi bir addır.
 
     ```csharp
     static string applicationId = "{Your ApplicationId}";
@@ -80,7 +80,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 Kaynak grubunuzda bir IoT Hub 'ı oluşturmak için [REST API IoT Hub kaynak sağlayıcısını](/rest/api/iothub/iothubresource) kullanın. Ayrıca, var olan bir IoT Hub 'ında değişiklik yapmak için kaynak sağlayıcısı REST API de kullanabilirsiniz.
 
-1. Program.cs 'e aşağıdaki yöntemi ekleyin:
+1. Program. cs ' ye aşağıdaki yöntemi ekleyin:
 
     ```csharp
     static void CreateIoTHub(string token)

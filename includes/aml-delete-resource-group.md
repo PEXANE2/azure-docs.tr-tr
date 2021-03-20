@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: machine-learning
 ms.service: machine-learning
 ms.custom: include file
@@ -9,10 +9,10 @@ author: j-martens
 ms.author: jmartens
 ms.date: 12/04/2018
 ms.openlocfilehash: 9c6d29287f86cd6334692e2be5376caf9dd98bdd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91372586"
 ---
 >[!IMPORTANT]
@@ -23,10 +23,10 @@ Oluşturduğunuz kaynakları kullanmayı planlamıyorsanız, ücretlendirmeniz i
 
 1. Azure portalının en sol tarafındaki **Kaynak gruplarını** seçin.
  
-1. Listeden, oluşturduğunuz kaynak grubunu seçin.
+1. Listeden oluşturduğunuz kaynak grubunu seçin.
 
 1. **Kaynak grubunu sil**'i seçin.
 
-   ![Azure portal bir kaynak grubunu silmeye yönelik seçimlerin ekran görüntüsü.](./media/aml-delete-resource-group/delete-resources.png)
+   ![Azure portalda kaynak grubu silmek için yapılan seçimlerin ekran görüntüsü.](./media/aml-delete-resource-group/delete-resources.png)
 
 1. Kaynak grubu adını girin. Ardından **Sil**’i seçin.

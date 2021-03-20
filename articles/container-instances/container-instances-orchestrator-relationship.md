@@ -5,15 +5,15 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.custom: mvc
 ms.openlocfilehash: c7faeecfcc3a1d006cc923b48339a1242a0b9e9b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92148601"
 ---
 # <a name="azure-container-instances-and-container-orchestrators"></a>Azure Container Instances ve kapsayıcı yöneticileri
 
-Küçük boyut ve uygulama yönü nedeniyle, kapsayıcılar çevik teslim ortamları ve mikro hizmet tabanlı mimarilere uygundur. Çok sayıda kapsayıcıyı otomatikleştirme ve yönetme görevi ve bunların nasıl etkileşimde bulunduğu, *düzenleme*olarak bilinir. Popüler kapsayıcı yöneticileri Kubernetes, DC/OS ve Docker Sısınma içerir.
+Küçük boyut ve uygulama yönü nedeniyle, kapsayıcılar çevik teslim ortamları ve mikro hizmet tabanlı mimarilere uygundur. Çok sayıda kapsayıcıyı otomatikleştirme ve yönetme görevi ve bunların nasıl etkileşimde bulunduğu, *düzenleme* olarak bilinir. Popüler kapsayıcı yöneticileri Kubernetes, DC/OS ve Docker Sısınma içerir.
 
 Azure Container Instances, düzenleme platformlarının bazı temel zamanlama yeteneklerini sağlar. Ayrıca, bu platformların sağladığı daha yüksek değerli Hizmetleri kapsamadığından, Azure Container Instances bunlara yönelik tamamlayıcı olabilir. Bu makalede, Azure Container Instances ne tür tanıtıcılarının kapsamı ve tam kapsayıcı yöneticileri ile nasıl etkileşime girebileceği açıklanmaktadır.
 

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: scottwhi
 ms.openlocfilehash: 32c3279cacddf10e77e8d245ba525ab766efd6fd
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96351887"
 ---
 # <a name="using-decoration-markers-to-highlight-text"></a>Metin vurgulamak için düzenleme işaretçileri kullanma
@@ -56,7 +56,7 @@ Bing birkaç farklı metin süslede döndürebilir. Örneğin, bir `Computation`
 
 `textDecorations`İse `true` , Bing yanıtların görüntüleme dizelerinde aşağıdaki işaretçileri içerebilir. Eşdeğer HTML etiketi yoksa tablo hücresi boştur.
 
-|Unicode|HTML|Açıklama
+|Unicode|HTML|Description
 |-|-|-
 |U + E000|\<b>|Sorgu teriminin başlangıcını (isabet vurgulama) işaretler
 |U + E001|\</b>|Sorgu teriminin sonunu işaretler

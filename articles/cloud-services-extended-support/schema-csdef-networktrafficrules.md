@@ -9,10 +9,10 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 0064794701e87419da086c458673f7ccee4f37dd
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98744797"
 ---
 # <a name="azure-cloud-services-extended-support-definition-networktrafficrules-schema"></a>Azure Cloud Services (genişletilmiş destek) tanım NetworkTrafficRules şeması
@@ -72,7 +72,7 @@ Ağ trafiği tanımlarını içeren bir hizmet tanımı dosyasının temel biçi
 ##  <a name="roleendpoint-element"></a><a name="RoleEndpoint"></a> RoleEndpoint öğesi
 `RoleEndpoint`Öğesi, ile iletişime izin vermek üzere bir rol üzerinde bir uç nokta tanımlar. `RoleEndpoint`Rol üzerinde birden fazla uç nokta varsa birden çok öğe belirtebilirsiniz.
 
-| Öznitelik      | Tür     | Açıklama |
+| Öznitelik      | Tür     | Description |
 | -------------- | -------- | ----------- |
 | `endpointName` | `string` | Gereklidir. Trafiğe izin verilecek uç noktanın adı.|
 | `roleName`     | `string` | Gereklidir. İletişime izin verilecek Web rolünün adı.|
@@ -83,14 +83,14 @@ Ağ trafiği tanımlarını içeren bir hizmet tanımı dosyasının temel biçi
 ##  <a name="whensource-element"></a><a name="WhenSource"></a> WhenSource öğesi
 `WhenSource`Öğesi, düğümünde tanımlanan uç noktalarla iletişim kurabildiğinden rol koleksiyonunu açıklar `Destinations` .
 
-| Öznitelik | Tür     | Açıklama |
+| Öznitelik | Tür     | Description |
 | --------- | -------- | ----------- |
 | `matches` | `string` | Gereklidir. İletişime izin verirken uygulanacak kuralı belirtir. Geçerli olan tek değer şu anda `AnyRule` .|
   
 ##  <a name="fromrole-element"></a><a name="FromRole"></a> FromRole öğesi
 `FromRole`Öğesi, düğümünde tanımlanan uç noktalarla iletişim kurabilen rolleri belirtir `Destinations` . `FromRole`Uç noktalarla iletişim kurabilen birden fazla rol varsa birden çok öğe belirtebilirsiniz.
 
-| Öznitelik  | Tür     | Açıklama |
+| Öznitelik  | Tür     | Description |
 | ---------- | -------- | ----------- |
 | `roleName` | `string` | Gereklidir. İletişime izin verilecek rolün adı.|
 

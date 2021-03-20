@@ -7,10 +7,10 @@ ms.date: 05/23/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: dc5c6499fa47a1e32a517032d5cc2a97b3f2677f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88007175"
 ---
 # <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>Uzak Masaüstü 'nde grafik performans sorunlarını tanılama
@@ -33,7 +33,7 @@ Grafik performans sayaçlarını belirlemek için uzak oturum adınızın olmas�
 
 Uzak oturum adınızı belirledikten sonra, uzak oturumunuz için RemoteFX grafik performans sayaçlarını toplamak üzere aşağıdaki yönergeleri izleyin.
 
-1. **Start**  >  **Yönetim Araçları**  >  **Performans izleyicisini**Başlat ' ı seçin.
+1.   >  **Yönetim Araçları**  >  **Performans izleyicisini** Başlat ' ı seçin.
 2. **Performans İzleyicisi** Iletişim kutusunda **izleme araçları**' nı genişletin, **Performans İzleyicisi**' ni seçin ve ardından **Ekle**' yi seçin.
 3. **Sayaç Ekle** iletişim kutusunda, **kullanılabilir sayaçlar** listesinden, RemoteFX grafikleri bölümünü genişletin.
 4. İzlenecek sayaçları seçin.

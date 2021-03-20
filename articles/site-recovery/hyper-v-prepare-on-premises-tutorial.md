@@ -8,10 +8,10 @@ ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 6f24a259d2d71aa6599f6dd417d5e9fc99734e99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86135654"
 ---
 # <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>Şirket içi Hyper-V sunucularını Azure’a olağanüstü durum kurtarma için hazırlama
@@ -85,7 +85,7 @@ Yük devretme senaryosu sırasında, çoğaltılan şirket içi ağınıza bağl
 Yük devretmeden sonra RDP kullanarak Windows VM 'lerine bağlanmak için aşağıdaki gibi erişime izin verin:
 
 1. İnternet üzerinden erişmek için, yük devretmeden önce şirket içi VM’de RDP’yi etkinleştirin. **Genel** profil için TCP ve UDP kurallarının eklendiğinden ve tüm profiller için **Windows Güvenlik Duvarı**'nda  >  **izin verilen uygulamalarda** RDP 'ye izin verildiğinden emin olun.
-2. Siteden siteye VPN üzerinden erişmek için, şirket içi makinede RDP’yi etkinleştirin. **Windows Firewall**  ->  **Etki alanı ve özel** ağlar için Windows Güvenlik Duvarı**izin verilen uygulamalar ve özelliklerde** RDP 'ye izin verilmelidir.
+2. Siteden siteye VPN üzerinden erişmek için, şirket içi makinede RDP’yi etkinleştirin.   ->  **Etki alanı ve özel** ağlar için Windows Güvenlik Duvarı **izin verilen uygulamalar ve özelliklerde** RDP 'ye izin verilmelidir.
    İşletim sisteminin SAN ilkesinin **OnlineAll** olarak ayarlandığından emin olun. [Daha fazla bilgi edinin](https://support.microsoft.com/kb/3031135). Bir yük devretme tetiklediğinizde VM’de bekleyen Windows güncelleştirmelerinin olmaması gerekir. Varsa, güncelleştirme tamamlanana kadar sanal makinede oturum açamazsınız.
 3. Yük devretmeden sonra Windows Azure VM’sinde, VM’nin bir ekran görüntüsünü görmek için **Önyükleme tanılaması**’nı kontrol edin. Bağlanamıyorsanız, VM’nin çalıştığından emin olun ve şu [sorun giderme ipuçlarını](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx) gözden geçirin.
 

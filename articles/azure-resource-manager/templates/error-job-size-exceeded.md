@@ -4,10 +4,10 @@ description: İş boyutu veya şablon çok büyük olduğunda hata giderme işle
 ms.topic: troubleshooting
 ms.date: 01/19/2021
 ms.openlocfilehash: 1fde4918aff6e3bf494876f83c5b4313b3c5f3d2
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98610412"
 ---
 # <a name="resolve-errors-for-job-size-exceeded"></a>İş boyutu için hataları çözümleme aşıldı
@@ -22,10 +22,10 @@ Bir şablonu dağıttığınızda, dağıtımın sınırları aştığını beli
 
 Dağıtım izin verilen limitlerden birini aştığında bu hatayı alırsınız. Genellikle, şablonunuz veya dağıtımı çalıştıran iş çok büyük olduğunda bu hatayı görürsünüz.
 
-Dağıtım işi 1 MB 'ı aşamaz. İş, istekle ilgili meta veriler içeriyor. Büyük şablonlar için, şablonla birleştirilmiş meta veriler, bir iş için izin verilen boyutu aşabilir.
+Dağıtım işi 1 MB 'ı aşamaz. İş, istek hakkındaki meta verileri içerir. Büyük şablonlar söz konusu olduğunda, şablonla birlikte meta veriler iş için izin verilen boyutu aşabilir.
 
 
-Şablon 4 MB 'ı aşamaz. 4 MB sınırı, çok sayıda örnek oluşturmak için [kopyayı](copy-resources.md) kullanan kaynak tanımları için genişletildikten sonra şablonun son durumuna uygulanır. Son durum ayrıca değişkenler ve parametreler için çözümlenen değerleri de içerir.
+Şablon 4 MB'ı aşamaz. 4 MB sınırı, çok sayıda örnek oluşturmak için [kopyayı](copy-resources.md) kullanan kaynak tanımları için genişletildikten sonra şablonun son durumuna uygulanır. Son durum değişkenler ve parametreler için çözümlenen değerleri de içerir.
 
 Şablon için diğer sınırlar şunlardır:
 

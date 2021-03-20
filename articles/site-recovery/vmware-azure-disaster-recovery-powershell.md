@@ -8,10 +8,10 @@ ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: sutalasi
 ms.openlocfilehash: de25a3f9df04b09a7337dc889a688a171d98db28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86129904"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>PowerShell ile VMware VM'lerinin Azure'a olağanüstü durum kurtarmayı ayarlama
@@ -105,7 +105,7 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
 Set-ASRVaultContext cmdlet 'ini kullanarak kasa bağlamını ayarlayın. Bir kez ayarlandıktan sonra, PowerShell oturumunda izleyen Azure Site Recovery işlemleri seçili kasa bağlamında gerçekleştirilir.
 
 > [!TIP]
-> Azure Site Recovery PowerShell modülü (az. RecoveryServices modülü) çoğu cmdlet için kullanımı kolay diğer adlarla birlikte gelir. Modüldeki cmdlet 'ler * \<Operation> - **azrecoveryservicesasr** \<Object> * formunu alır ve * \<Operation> - **ASR** \<Object> *formunu alan eşdeğer diğer adlara sahiptir. Kullanım kolaylığı için cmdlet diğer adlarını değiştirebilirsiniz.
+> Azure Site Recovery PowerShell modülü (az. RecoveryServices modülü) çoğu cmdlet için kullanımı kolay diğer adlarla birlikte gelir. Modüldeki cmdlet 'ler *\<Operation> - **azrecoveryservicesasr** \<Object>* formunu alır ve *\<Operation> - **ASR** \<Object>* formunu alan eşdeğer diğer adlara sahiptir. Kullanım kolaylığı için cmdlet diğer adlarını değiştirebilirsiniz.
 
 Aşağıdaki örnekte, $vault değişkeninden gelen kasa ayrıntıları, PowerShell oturumunun kasa bağlamını belirtmek için kullanılır.
 
@@ -118,7 +118,7 @@ Aşağıdaki örnekte, $vault değişkeninden gelen kasa ayrıntıları, PowerSh
    VMwareDRToAzurePs VMwareDRToAzurePs Microsoft.RecoveryServices vaults
    ```
 
-Set-ASRVaultContext cmdlet 'ine alternatif olarak, bir diğeri de kasa bağlamını ayarlamak için Import-AzRecoveryServicesAsrVaultSettingsFile cmdlet 'ini kullanabilir. Import-AzRecoveryServicesAsrVaultSettingsFile cmdlet 'inin-path parametresi olarak kasa kayıt anahtarı dosyasının bulunduğu yolu belirtin. Örneğin:
+Set-ASRVaultContext cmdlet 'ine alternatif olarak, bir diğeri de kasa bağlamını ayarlamak için Import-AzRecoveryServicesAsrVaultSettingsFile cmdlet 'ini kullanabilir. Import-AzRecoveryServicesAsrVaultSettingsFile cmdlet 'inin-path parametresi olarak kasa kayıt anahtarı dosyasının bulunduğu yolu belirtin. Örnek:
 
    ```azurepowershell
    Get-AzRecoveryServicesVaultSettingsFile -SiteRecovery -Vault $Vault -Path "C:\Work\"
@@ -172,7 +172,7 @@ Bu örnekte, şunlar vardır:
    1     ConfigurationServer
    ```
 
-   Yukarıdaki çıktıdan ***$ProcessServers [0]*** , *scaleout-processserver* 'a karşılık gelir ve ***$ProcessServers [1]*** , *configurationserver* 'daki işlem sunucusu rolüne karşılık gelir
+   Yukarıdaki çıkışta ***$ProcessServers [0]** _, _scaleout-processserver * ve ***$ProcessServers [1]**_ , _ConfigurationServer * üzerindeki işlem sunucusu rolüne karşılık geliyor
 
 3. Yapılandırma sunucusunda ayarlanan hesapları belirleyin.
 
@@ -189,7 +189,7 @@ Bu örnekte, şunlar vardır:
    3         LinuxAccount
    ```
 
-   Yukarıdaki çıkışta ***$AccountHandles [0]*** , hesap *vCenter_account*, ***[1]*** öğesini *WindowsAccount*hesabına $AccountHandles ve ***$AccountHandles [2]*** , *linuxaccount* hesabına karşılık geliyor
+   Yukarıdaki çıkışta ***$AccountHandles [0]** _ vCenter_account * hesabına karşılık gelir * _**$AccountHandles [1]**_ hesabına _windowsaccount * hesabı ve ***$AccountHandles [2]**_ hesabı _LinuxAccount
 
 ## <a name="create-a-replication-policy"></a>Çoğaltma ilkesi oluşturma
 
@@ -342,7 +342,7 @@ Bulunan bir sanal makineyi korumak için aşağıdaki ayrıntılara ihtiyacını
 * Çoğaltılacak korunabilir öğe.
 * Sanal makineyi çoğaltmaya yönelik depolama hesabı (yalnızca depolama hesabına çoğaltma yapıyorsanız). 
 * Bir günlük depolama alanı, sanal makineleri bir Premium depolama hesabına veya yönetilen bir diske karşı korumak için gereklidir.
-* Çoğaltma için kullanılacak Işlem sunucusu. Kullanılabilir işlem sunucularının listesi, ***$ProcessServers [0]***  *(scaleout-processserver)* ve ***$ProcessServers [1]*** *(configurationserver)* değişkenlerine alındı ve kaydedildi.
+* Çoğaltma için kullanılacak Işlem sunucusu. Kullanılabilir işlem sunucularının listesi, ***$ProcessServers [0]** _ _(scaleout-processserver) * ve ***$ProcessServers [1]**_ _ (configurationserver) * değişkenlerine alındı ve kaydedildi.
 * Mobility hizmeti yazılımını makinelere göndermek için kullanılacak hesap. Kullanılabilir hesapların listesi alındı ve ***$AccountHandles*** değişkeninde depolandı.
 * Çoğaltma için kullanılacak çoğaltma ilkesi için koruma kapsayıcısı eşlemesi.
 * Yük devretmede sanal makinelerin oluşturulması gereken kaynak grubu.

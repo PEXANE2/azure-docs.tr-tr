@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb, martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 12f722977329bd5d79d4d0e410a29c730faf00c5
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92145092"
 ---
 # <a name="troubleshooting-sign-in-problems-with-conditional-access"></a>Koşullu Erişimle ilgili oturum açma sorunlarını giderme
@@ -24,7 +24,7 @@ Bu makaledeki bilgiler, hata iletileri ve Azure AD oturum açma günlüğü kull
 
 ## <a name="select-all-consequences"></a>"Tüm" sonuçları ' nı seçin
 
-Koşullu erişim çerçevesi size harika bir yapılandırma esnekliği sağlar. Ancak harika esneklik, istenmeyen sonuçlara engel olmak için, her yapılandırma ilkesini serbest bırakmadan önce dikkatli bir şekilde incelemeniz gerektiği anlamına da gelir. Bu bağlamda, **tüm kullanıcılar/gruplar/bulut uygulamaları gibi tüm grupları**etkileyen atamalara özel dikkat etmeniz gerekir.
+Koşullu erişim çerçevesi size harika bir yapılandırma esnekliği sağlar. Ancak harika esneklik, istenmeyen sonuçlara engel olmak için, her yapılandırma ilkesini serbest bırakmadan önce dikkatli bir şekilde incelemeniz gerektiği anlamına da gelir. Bu bağlamda, **tüm kullanıcılar/gruplar/bulut uygulamaları gibi tüm grupları** etkileyen atamalara özel dikkat etmeniz gerekir.
 
 Kuruluşlar aşağıdaki yapılandırmalardan kaçınmalıdır:
 
@@ -58,7 +58,7 @@ Oturum açma kesintisini hakkında ayrıntılı bilgi almak için ikinci yöntem
 Hangi koşullu erişim ilkesinin veya ilkelerinin uygulanacağını ve bunun nedenini nasıl yapabileceğinizi öğrenmek için.
 
 1. **Azure Portal** genel yönetici, güvenlik yöneticisi veya küresel okuyucu olarak oturum açın.
-1. **Azure Active Directory**  >  **oturum açma**işlemlerini inceleyin.
+1. **Azure Active Directory**  >  **oturum açma** işlemlerini inceleyin.
 1. Gözden geçirilecek oturum açma için olayı bulun. Gereksiz bilgileri filtrelemek için filtre ve sütun ekleyin veya kaldırın.
    1. Kapsamı daraltmak için filtre ekleyin:
       1. Araştırmanız için özel bir olaylarınızın olduğu **BAĞıNTı kimliği** .
@@ -70,8 +70,8 @@ Hangi koşullu erişim ilkesinin veya ilkelerinin uygulanacağını ve bunun ned
 
 1. Kullanıcının oturum açma hatasına karşılık gelen oturum açma olayı bulunursa **koşullu erişim** sekmesini seçin. Koşullu erişim sekmesi, oturum açma kesintiye neden olan belirli ilke veya ilkeleri gösterir.
    1. **Sorun giderme ve destek** sekmesindeki bilgiler, bir oturum açma nedeninin, uyumluluk gereksinimlerini karşılamayan bir cihaz gibi neden başarısız olduğu konusunda açık bir neden sağlayabilir.
-   1. Daha fazla araştırmak için, **Ilke adına**tıklayarak ilkelerin yapılandırmasında ayrıntıya gidin. **Ilke adına** tıkladığınızda, seçilen ilke için ilke yapılandırma kullanıcı arabirimi gözden geçirme ve düzenlemeyle gösterilir.
-   1. Koşullu erişim ilkesi değerlendirmesi için kullanılan **istemci kullanıcı** ve **cihaz ayrıntıları** **temel bilgiler**, **konum**, **cihaz bilgileri**, **kimlik doğrulama ayrıntıları**ve oturum açma olayının **ek ayrıntılar** sekmelerinde da kullanılabilir.
+   1. Daha fazla araştırmak için, **Ilke adına** tıklayarak ilkelerin yapılandırmasında ayrıntıya gidin. **Ilke adına** tıkladığınızda, seçilen ilke için ilke yapılandırma kullanıcı arabirimi gözden geçirme ve düzenlemeyle gösterilir.
+   1. Koşullu erişim ilkesi değerlendirmesi için kullanılan **istemci kullanıcı** ve **cihaz ayrıntıları** **temel bilgiler**, **konum**, **cihaz bilgileri**, **kimlik doğrulama ayrıntıları** ve oturum açma olayının **ek ayrıntılar** sekmelerinde da kullanılabilir.
 
 ### <a name="policy-details"></a>İlke ayrıntıları
 

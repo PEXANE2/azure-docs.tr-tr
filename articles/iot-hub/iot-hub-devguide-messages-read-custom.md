@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/09/2018
 ms.openlocfilehash: 8aebb5b6f6a3ac53bc49fd1d2f75de88667865fb
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92147645"
 ---
 # <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>Cihazdan buluta iletiler için ileti yollarını ve özel uç noktaları kullanın
@@ -26,7 +26,7 @@ IoT Hub [Ileti yönlendirme](iot-hub-devguide-routing-query-syntax.md) , kullan�
 | **Ad**      | Sorguyu tanımlayan benzersiz ad. |
 | **Kaynak**    | Üzerinde işlem yapılacak veri akışının kaynağı. Örneğin, cihaz telemetrisi. |
 | **Condition** | İleti uygulama özellikleri, sistem özellikleri, ileti gövdesi, cihaz ikizi etiketleri ve cihaz ikizi özelliklerine karşı çalıştırılan ve bu, uç nokta için bir eşleşme olup olmadığını belirleme sorgusu ifadesi. Sorgu oluşturma hakkında daha fazla bilgi için bkz. [ileti yönlendirme sorgusu sözdizimi](iot-hub-devguide-routing-query-syntax.md) |
-| **Uç Noktası**  | IoT Hub sorguyla eşleşen iletileri gönderdiği bitiş noktasının adı. IoT Hub 'ınız ile aynı bölgede bir uç nokta seçmenizi öneririz. |
+| **Uç Nokta**  | IoT Hub sorguyla eşleşen iletileri gönderdiği bitiş noktasının adı. IoT Hub 'ınız ile aynı bölgede bir uç nokta seçmenizi öneririz. |
 
 Tek bir ileti birden çok yönlendirme sorgusunda koşulla eşleşir, bu durumda IoT Hub iletiyi eşleşen her sorguyla ilişkili uç noktaya teslim eder. IoT Hub Ayrıca ileti teslimini otomatik olarak kaldırır, bu nedenle bir ileti aynı hedefe sahip birden çok sorguyla eşleşirse, bu hedefe yalnızca bir kez yazılır.
 

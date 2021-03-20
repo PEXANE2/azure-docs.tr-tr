@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/05/2020
 ms.author: mbullwin
 ms.openlocfilehash: 0c4c296cb1454ed89eef102732533589b1c8ca0d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93420968"
 ---
 # <a name="metrics-advisor-frequently-asked-questions"></a>Ölçüm Danışmanı sık sorulan sorular
@@ -116,7 +116,7 @@ Ayrıntılar için lütfen [anomali algılama yapılandırmalarına](how-tos/con
 
 
 5.  Bu işlem, yayma izinlerinin bir dakika kadar sürebilir. Ardından, ölçüm Danışmanı çalışma alanınızı seçin ve sol gezinti panelinde **e-posta ayarı** seçeneğini belirleyin. Gerekli öğeleri, özellikle SMTP ile ilgili bilgileri olarak girin. 
-6.  **Kaydet** ' i seçin, ardından e-posta yapılandırması ile birlikte hazırsınız demektir. Yeni kancalar oluşturabilir ve neredeyse gerçek zamanlı uyarılar için ölçüm bozuklularına abone olabilirsiniz. 
+6.  **Kaydet**' i seçin, ardından e-posta yapılandırması ile birlikte hazırsınız demektir. Yeni kancalar oluşturabilir ve neredeyse gerçek zamanlı uyarılar için ölçüm bozuklularına abone olabilirsiniz. 
 
 ## <a name="advanced-concepts"></a>Gelişmiş kavramlar
 

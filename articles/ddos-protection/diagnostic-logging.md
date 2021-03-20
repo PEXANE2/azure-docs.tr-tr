@@ -12,15 +12,15 @@ ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
 ms.openlocfilehash: cc5b3b85d6d13fda532da0993fa7f733126b8eae
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100591881"
 ---
 # <a name="view-and-configure-ddos-diagnostic-logging"></a>DDoS tanılama günlüğünü görüntüleme ve yapılandırma
 
-Azure DDoS koruması standardı, DDoS saldırı analiziyle ayrıntılı saldırı öngörüleri ve görselleştirmeleri sağlar. Sanal ağlarını DDoS saldırılarına karşı koruyan müşteriler, saldırı saldırılarına karşı saldırı ve risk azaltma & raporları aracılığıyla saldırının etkilerini azaltmak için gerçekleştirilen saldırı ve eylemler hakkında ayrıntılı görünürlük sağlar. Zengin telemetri, DDoS saldırısının süresi boyunca ayrıntılı ölçümler dahil olmak üzere Azure Izleyici aracılığıyla sunulur. DDoS koruması tarafından sunulan Azure Izleyici ölçümlerinden herhangi biri için uyarı yapılandırılabilir. Günlüğe kaydetme, Azure Izleme tanılama arabirimi aracılığıyla [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md), splunk (Azure Event Hubs), OMS Log Analytics ve gelişmiş analiz Için Azure depolama ile daha da tümleştirilebilir.
+Azure DDoS koruması standardı, DDoS saldırı analiziyle ayrıntılı saldırı öngörüleri ve görselleştirmeleri sağlar. Sanal ağlarını DDoS saldırılarına karşı koruyan müşteriler, saldırı saldırılarına karşı saldırı ve risk azaltma & raporları aracılığıyla saldırının etkilerini azaltmak için gerçekleştirilen saldırı ve eylemler hakkında ayrıntılı görünürlük sağlar. Zengin telemetri, DDoS saldırısının süresi boyunca ayrıntılı ölçümler dahil olmak üzere Azure Izleyici aracılığıyla sunulur. DDos Koruması tarafından sunulan tüm Azure İzleyici ölçümleri için uyarı yapılandırılabilir. Günlüğe kaydetme, Azure Izleme tanılama arabirimi aracılığıyla [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md), splunk (Azure Event Hubs), OMS Log Analytics ve gelişmiş analiz Için Azure depolama ile daha da tümleştirilebilir.
 
 Aşağıdaki tanılama günlükleri Azure DDoS koruma standardı için kullanılabilir: 
 
@@ -40,18 +40,18 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 - Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 - Bu öğreticideki adımları tamamlayabilmeniz için önce bir [Azure DDoS standart koruma planı](manage-ddos-protection.md) oluşturmanız ve DDoS koruma standardının bir sanal ağ üzerinde etkinleştirilmesi gerekir.
-- DDoS, bir sanal ağ içindeki kaynaklara atanan genel IP adreslerini izler. Sanal ağda genel IP adresleri olan kaynaklarınız yoksa, önce genel IP adresine sahip bir kaynak oluşturmanız gerekir. Azure App Service ortamları dışında, [Azure hizmetleri Için sanal ağda](../virtual-network/virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network) (arka uç sanal makinelerin sanal ağda bulunduğu Azure yük dengeleyiciler dahil) (klasik değil), Kaynak Yöneticisi aracılığıyla dağıtılan tüm KAYNAKLARıN genel IP adresini izleyebilirsiniz. Bu öğreticiye devam etmek için hızlı bir şekilde [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) veya [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) sanal makinesi oluşturabilirsiniz.    
+- DDoS, bir sanal ağ içindeki kaynaklara atanan genel IP adreslerini izler. Sanal ağda genel IP adresi olan hiç kaynağınız yoksa önce genel IP adresiyle bir kaynak oluşturmanız gerekir. Azure App Service ortamları dışında, [Azure hizmetleri Için sanal ağda](../virtual-network/virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network) (arka uç sanal makinelerin sanal ağda bulunduğu Azure yük dengeleyiciler dahil) (klasik değil), Kaynak Yöneticisi aracılığıyla dağıtılan tüm KAYNAKLARıN genel IP adresini izleyebilirsiniz. Bu öğreticiye devam etmek için hızlı bir şekilde [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) veya [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) sanal makinesi oluşturabilirsiniz.    
 
 ## <a name="configure-ddos-diagnostic-logs"></a>DDoS tanılama günlüklerini yapılandırma
 
 Bir ortamdaki tüm genel IP 'lerde tanılama günlüğünü otomatik olarak etkinleştirmek istiyorsanız, [tüm genel IP 'lerde tanılama günlüğünü etkinleştir](#enable-diagnostic-logging-on-all-public-ips)' i atlayın.
 
-1. Portalın sol tarafındaki **tüm hizmetler** ' i seçin.
-2. **Filtre** kutusuna *izleyiciyi* girin. Sonuçlarda **izleyici** göründüğünde seçin.
-3. **Ayarlar** altında **Tanılama ayarları**' nı seçin.
-4. Günlüğe kaydetmek istediğiniz genel IP adresini içeren **aboneliği** ve **kaynak grubunu** seçin.
+1. Portalın sol üst kısmında **Tüm hizmetler**'i seçin.
+2. *Filtre* kutusuna **İzleyici**'yi girin. Sonuçlarda **İzleyici** görüntülendiğinde bunu seçin.
+3. **Ayarlar**'ın altında **Tanılama Ayarları**'nı seçin.
+4. Günlüğe kaydetmek istediğiniz genel IP'yi içeren **Abonelik** ve **Kaynak grubunu** seçin.
 5. **Kaynak türü** IÇIN **genel IP adresi** ' ni seçin ve ardından günlükleri ETKINLEŞTIRMEK istediğiniz belirli genel IP adresini seçin.
-6. **Tanılama ayarı ekle**’yi seçin. **Kategori ayrıntıları**' nın altında, gerekli olan aşağıdaki seçeneklerin çoğunu seçin ve ardından **Kaydet**' i seçin.
+6. **Tanılama ayarı ekle**’yi seçin. **Kategori Ayrıntıları**'nın altında size gereken tüm seçenekleri belirtin ve ardından **Kaydet**'i seçin.
 
     ![DDoS Tanılama ayarları](./media/ddos-attack-telemetry/ddos-diagnostic-settings.png)
 

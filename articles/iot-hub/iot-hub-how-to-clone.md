@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: robinsh
 ms.openlocfilehash: 370ea2f16632ae18142f0770742e5a52d3cabae0
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92151653"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>Azure IoT Hub 'ı başka bir bölgeye kopyalama
@@ -107,7 +107,7 @@ Bu bölüm, hub 'ı geçirmeye yönelik özel yönergeler sağlar.
 
 ### <a name="find-the-original-hub-and-export-it-to-a-resource-template"></a>Özgün hub 'ı bulun ve bir kaynak şablonuna dışarı aktarın.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. 
+1. [Azure portal](https://portal.azure.com) oturum açın. 
 
 1. **Kaynak grupları** ' na gidin ve taşımak istediğiniz hub 'ı içeren kaynak grubunu seçin. Ayrıca **kaynaklar** ' a gidebilir ve bu şekilde hub 'ı bulabilirsiniz. Hub 'ı seçin.
 
@@ -123,7 +123,7 @@ Bu bölüm, hub 'ı geçirmeye yönelik özel yönergeler sağlar.
 
 1. Indirmeler klasörüne (veya şablonu aktardığınızda kullandığınız klasöre) gidin ve ZIP dosyasını bulun. ZIP dosyasını açın ve adlı dosyayı bulun `template.json` . Bunu seçin, sonra şablonu kopyalamak için CTRL + C ' yi seçin. ZIP dosyasında olmayan farklı bir klasöre gidin ve dosyayı (Ctrl + V) yapıştırın. Artık düzenleme yapabilirsiniz.
  
-    Aşağıdaki örnek, Yönlendirme yapılandırması olmayan bir genel hub içindir. **Westus**bölgesinde **ContosoTestHub29358** adlı bir S1 katman hub 'ı (1 birim ile). Aşağıda, aktarılmış şablon verilmiştir.
+    Aşağıdaki örnek, Yönlendirme yapılandırması olmayan bir genel hub içindir. **Westus** bölgesinde **ContosoTestHub29358** adlı bir S1 katman hub 'ı (1 birim ile). Aşağıda, aktarılmış şablon verilmiştir.
 
     ``` json
     {
@@ -266,7 +266,7 @@ Yeni bölgede yeni hub oluşturmak için şablonu kullanabilmeniz için önce ba
     "location": "eastus",
     ```
 
-    Daha sonra, **yol** değerlerinin eski hub adını içerdiğini göreceksiniz. Yeni birini kullanacak şekilde değiştirin. Bunlar, **olay** ve **Operationsmonitoringevents**adlı **eventhubendpoints** altındaki yol değerleridir.
+    Daha sonra, **yol** değerlerinin eski hub adını içerdiğini göreceksiniz. Yeni birini kullanacak şekilde değiştirin. Bunlar, **olay** ve **Operationsmonitoringevents** adlı **eventhubendpoints** altındaki yol değerleridir.
 
     İşiniz bittiğinde, Olay Hub 'ı uç noktaları bölümleriniz şöyle görünmelidir:
 
@@ -347,7 +347,7 @@ Artık, yönlendirmeyi işlemeye nasıl karar verdiğinize bağlı olarak, eski 
 
 Yeni bir yerde şablonu kullanarak yeni hub 'ı oluşturun. Taşıyacağınız yönlendirme kaynaklarınız varsa, kaynakların yeni konumda ayarlanması ve şablondaki başvuruların eşleşecek şekilde güncelleştirilmiş olması gerekir. Yönlendirme kaynaklarını taşıdıysanız, güncelleştirilmiş anahtarlarla şablonda olmaları gerekir.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure portal](https://portal.azure.com) oturum açın.
 
 1. **Kaynak oluştur**’u seçin. 
 
@@ -526,7 +526,7 @@ Artık SET komutlarıyla bir dosyada ortam değişkenlerine sahipsiniz ve komut 
     
 1. *Importexportdevicessample* projesine sağ tıklayın ve **Başlangıç projesi olarak ayarla**' yı seçin.    
     
-1. Beş seçenek için ımportexportdevicessample klasöründeki Program.cs en üstünde bulunan değişkenleri ayarlayın.
+1. Beş seçenek için ımportexportdevicessample klasöründeki program. cs ' nin en üstünde bulunan değişkenleri ayarlayın.
 
    ``` csharp
    // Add randomly created devices to the source hub.

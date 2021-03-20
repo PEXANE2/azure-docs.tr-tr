@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
 ms.openlocfilehash: b0df55e59bd519a816c4022f2434edfcd4460780
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96006532"
 ---
 # <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps'te B2B kurumsal tümleştirme için EDIFACT iletilerini gönderme ve alma
@@ -36,7 +36,7 @@ Azure Logic Apps için EDIOLGU iletilerini değiş tokuş etmeden önce, bir EDI
 
 ## <a name="create-an-edifact-agreement"></a>EDIOLGU sözleşmesi oluşturma 
 
-1. [Azure portalında](https://portal.azure.com "Azure portal") oturum açın. 
+1. [Azure portalında](https://portal.azure.com "Azure portalı") oturum açın. 
 
 2. Ana Azure menüsünde **tüm hizmetler**' i seçin. Arama kutusuna "tümleştirme" yazın ve ardından **tümleştirme hesapları**' nı seçin.
 

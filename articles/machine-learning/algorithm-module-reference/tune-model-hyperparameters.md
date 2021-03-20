@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/10/2020
 ms.openlocfilehash: 2bbf75ba5de4ad20e11261bdcfd1204b1a0b0766
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93420640"
 ---
 # <a name="tune-model-hyperparameters"></a>Model Hiper Parametrelerini Ayarlama
@@ -49,19 +49,19 @@ Bu bölümde, model hiper parametreleri ayarla modülünü kullanarak bir modeli
 
 3.  Eğitim için kullanmak istediğiniz veri kümesini ekleyin ve bunu ayarlama modeli hiper parametrelerinin orta girişine bağlayın.  
 
-    İsteğe bağlı olarak, etiketli bir veri kümeniz varsa, bunu en sağdaki giriş bağlantı noktasına ( **Isteğe bağlı doğrulama veri kümesi** ) bağlayabilirsiniz. Bu, eğitim ve ayarlama sırasında doğruluğu ölçmenize olanak tanır.
+    İsteğe bağlı olarak, etiketli bir veri kümeniz varsa, bunu en sağdaki giriş bağlantı noktasına (**Isteğe bağlı doğrulama veri kümesi**) bağlayabilirsiniz. Bu, eğitim ve ayarlama sırasında doğruluğu ölçmenize olanak tanır.
 
 4.  Model hiper parametrelerini ayarla ' nın sağ panelinde, **parametre swemodu** için bir değer seçin. Bu seçenek parametrelerin nasıl seçili olduğunu denetler.
 
-    - **Tüm ızgara** : Bu seçeneği belirlediğinizde, modül, sistem tarafından önceden tanımlanmış bir kılavuz üzerinde döngü gerçekleştirerek farklı birleşimler deneyebilir ve en iyi öğrenme kimliğini belirler. Bu seçenek, en iyi parametre ayarlarının ne olabileceğini bilmiyorsanız ve tüm olası değer birleşimlerini denemek istediğinizde faydalıdır.
+    - **Tüm ızgara**: Bu seçeneği belirlediğinizde, modül, sistem tarafından önceden tanımlanmış bir kılavuz üzerinde döngü gerçekleştirerek farklı birleşimler deneyebilir ve en iyi öğrenme kimliğini belirler. Bu seçenek, en iyi parametre ayarlarının ne olabileceğini bilmiyorsanız ve tüm olası değer birleşimlerini denemek istediğinizde faydalıdır.
 
-    - **Rastgele tarama** : Bu seçeneği belirlediğinizde modül, sistem tarafından tanımlanan bir aralıktaki parametre değerlerini rastgele seçer. Modülün yürütmesini istediğiniz en fazla çalıştırma sayısını belirtmeniz gerekir. Bu seçenek, tercih ettiğiniz ölçümleri kullanarak model performansını artırmak, ancak bilgi işlem kaynaklarını korumak istediğinizde yararlıdır.    
+    - **Rastgele tarama**: Bu seçeneği belirlediğinizde modül, sistem tarafından tanımlanan bir aralıktaki parametre değerlerini rastgele seçer. Modülün yürütmesini istediğiniz en fazla çalıştırma sayısını belirtmeniz gerekir. Bu seçenek, tercih ettiğiniz ölçümleri kullanarak model performansını artırmak, ancak bilgi işlem kaynaklarını korumak istediğinizde yararlıdır.    
 
 5.  **Etiket sütunu** için, tek bir etiket sütunu seçmek üzere sütun seçiciyi açın.
 
 6.  Çalıştırma sayısını seçin:
 
-    - **Rastgele tarama sırasında en fazla çalışma sayısı** : rastgele bir tarama seçerseniz, parametre değerlerinin rastgele bir birleşimini kullanarak modelin kaç kez eğitilmek gerektiğini belirtebilirsiniz.
+    - **Rastgele tarama sırasında en fazla çalışma sayısı**: rastgele bir tarama seçerseniz, parametre değerlerinin rastgele bir birleşimini kullanarak modelin kaç kez eğitilmek gerektiğini belirtebilirsiniz.
 
 7.  **Sıralama** için, modelleri derecelendirerek kullanılacak tek bir ölçüm seçin.
 
@@ -77,7 +77,7 @@ Bu bölümde, model hiper parametreleri ayarla modülünü kullanarak bir modeli
 
 Eğitim tamamlandığında:
 
-+ Tarama sonuçlarını görüntülemek için, modüle sağ tıklayıp **Görselleştir** ' i seçebilir ya da görselleştirilecek modülün sol çıkış bağlantı noktasına sağ tıklayabilirsiniz.
++ Tarama sonuçlarını görüntülemek için, modüle sağ tıklayıp **Görselleştir**' i seçebilir ya da görselleştirilecek modülün sol çıkış bağlantı noktasına sağ tıklayabilirsiniz.
 
     **Tarama sonuçları** , model türü için uygulanan tüm parametre tarama ve doğruluk ölçümlerini içerir ve sıralama için seçtiğiniz ölçüm hangi modelin "en iyi" kabul edileceğini belirler.
 
@@ -92,11 +92,11 @@ Bu bölüm uygulama ayrıntılarını ve ipuçlarını içerir.
 
 Bir parametre süpürme ayarladığınızda, aramanızın kapsamını tanımlarsınız. Arama, rastgele seçilmiş sınırlı sayıda parametre kullanabilir. Ya da tanımladığınız bir parametre alanı üzerinde kapsamlı bir arama olabilir.
 
-+ **Rastgele tarama** : Bu seçenek, bir dizi yinelemenin sayısını kullanarak bir modeli ister. 
++ **Rastgele tarama**: Bu seçenek, bir dizi yinelemenin sayısını kullanarak bir modeli ister. 
 
   Yinelemek için bir Aralık değeri belirtirsiniz ve modül bu değerlerin rastgele seçilmiş bir alt kümesini kullanır. Değerler değiştirme ile seçilir, yani önceden rastgele seçilmiş olan sayıların kullanılabilir sayı havuzundan kaldırılmadığı anlamına gelir. Bu nedenle, seçilen herhangi bir değer tüm geçişlerde aynı kalır.  
 
-+ **Tüm ızgara** : kılavuzun tamamını kullanma seçeneği, her birleşimin test edileceği anlamına gelir. Bu seçenek en kapsamlı seçenektir, ancak en çok bir süre gerektirir. 
++ **Tüm ızgara**: kılavuzun tamamını kullanma seçeneği, her birleşimin test edileceği anlamına gelir. Bu seçenek en kapsamlı seçenektir, ancak en çok bir süre gerektirir. 
 
 ### <a name="controlling-the-length-and-complexity-of-training"></a>Eğitimin uzunluğunu ve karmaşıklığını denetleme
 
@@ -142,7 +142,7 @@ Ancak eğitim sırasında, ayarlama işlemi sırasında oluşturulan modelleri d
 
 -   **Göreli kare** oluşan hata, tahmin edilen değerlerin toplam kare dışı hatası ile ayırarak toplam kare içinde hatayı normalleştirir.  
 
--   **Belirleme katsayısı** , verilerin modele ne kadar iyi uyduğunu gösteren tek bir sayıdır. Bir değeri, modelin verilerle tam olarak eşleştiği anlamına gelir. Sıfır değeri, verilerin rastgele olması veya başka türlü modele sığamayacak olması anlamına gelir. Genellikle *r <sup>2</sup>* , *r <sup>2</sup>* veya *r-kare* olarak adlandırılır.  
+-   **Belirleme katsayısı** , verilerin modele ne kadar iyi uyduğunu gösteren tek bir sayıdır. Bir değeri, modelin verilerle tam olarak eşleştiği anlamına gelir. Sıfır değeri, verilerin rastgele olması veya başka türlü modele sığamayacak olması anlamına gelir. Genellikle *r <sup>2</sup>*, *r <sup>2</sup>* veya *r-kare* olarak adlandırılır.  
 
 ### <a name="modules-that-dont-support-a-parameter-sweep"></a>Parametre süpürme desteği olmayan modüller
 

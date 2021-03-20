@@ -4,10 +4,10 @@ description: Kaynak özelliklerinin nasıl aranacağını açıklar.
 ms.topic: conceptual
 ms.date: 06/10/2020
 ms.openlocfilehash: c8bbe0dcb1bc9dc9751a1dc0d0b98a6368473546
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91327757"
 ---
 # <a name="discover-resource-properties"></a>Kaynak özelliklerini bulma
@@ -76,11 +76,11 @@ Kaynak Gezgini Azure portal katıştırılır. Bu yöntemi kullanmadan önce bir
 
     ![Ekran görüntüsünde, Azure portal Kaynak Gezgini araması gösterilmektedir.](./media/view-resources/azure-portal-resource-explorer.png)
 
-1. Solda, **abonelikler**' i genişletin ve ardından Azure aboneliğinizi genişletin. Depolama hesabını **sağlayıcılar** ya da **ResourceGroups**altında bulabilirsiniz.
+1. Solda, **abonelikler**' i genişletin ve ardından Azure aboneliğinizi genişletin. Depolama hesabını **sağlayıcılar** ya da **ResourceGroups** altında bulabilirsiniz.
 
     ![Azure portal Kaynak Gezgini](./media/view-resources/azure-portal-resource-explorer-home.png)
 
-    - **Sağlayıcılar**: **Providers**  ->  **Microsoft. Storage**  ->  **storageaccounts**sağlayıcıları ' nı genişletin ve ardından depolama hesabınızı seçin.
+    - **Sağlayıcılar**:   ->  **Microsoft. Storage**  ->  **storageaccounts** sağlayıcıları ' nı genişletin ve ardından depolama hesabınızı seçin.
     - **ResourceGroups**: depolama hesabını içeren kaynak grubunu seçin, **kaynaklar**' ı seçin ve ardından Depolama hesabını seçin.
 
     Sağ tarafta, var olan depolama hesabının SKU yapılandırmasını şuna benzer şekilde görürsünüz:
@@ -105,9 +105,9 @@ Bu aracı kullanarak şema bilgilerinin nasıl alınacağını göstermek için 
     ![resource.azure.com API eşlemesi](./media/view-resources/resources-azure-com-api-mapping.png)
 
     Soldaki düğüm sağ taraftaki API çağrısıyla eşleşir. **Al** DÜĞMESINI seçerek API çağrısını yapabilirsiniz.
-1. Solda, **abonelikler**' i genişletin ve ardından Azure aboneliğinizi genişletin. Depolama hesabını **sağlayıcılar** ya da **ResourceGroups**altında bulabilirsiniz.
+1. Solda, **abonelikler**' i genişletin ve ardından Azure aboneliğinizi genişletin. Depolama hesabını **sağlayıcılar** ya da **ResourceGroups** altında bulabilirsiniz.
 
-    - **Sağlayıcılar**: **Providers**  ->  **Microsoft. Storage**  ->  **storageaccounts**sağlayıcıları ' nı genişletin ve depolama hesabına gidin.
+    - **Sağlayıcılar**:   ->  **Microsoft. Storage**  ->  **storageaccounts** sağlayıcıları ' nı genişletin ve depolama hesabına gidin.
     - **ResourceGroups**: depolama hesabını içeren kaynak grubunu seçin ve ardından **kaynaklar**' ı seçin.
 
     Sağ tarafta, var olan depolama hesabının SKU yapılandırmasını şuna benzer şekilde görürsünüz:

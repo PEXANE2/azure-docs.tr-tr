@@ -12,15 +12,15 @@ ms.custom:
 - amqp
 - 'Role: Cloud Development'
 ms.openlocfilehash: 4bb33721625f4fc752745ce2b43051c90b3aaa74
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92147685"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Cihazdan buluta iletilerini yerleşik uç noktadan okuma
 
-Varsayılan olarak, iletiler, [Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/)uyumlu yerleşik hizmete yönelik uç noktaya (**iletiler/olaylar**) yönlendirilir. Bu uç nokta şu anda yalnızca bağlantı noktası 5671 üzerinde [AMQP](https://www.amqp.org/) protokolü kullanılarak kullanıma sunuldu. IoT Hub 'ı, yerleşik Olay Hub 'ı ile uyumlu mesajlaşma uç nokta **iletilerini/olaylarını**denetlemenize olanak tanımak için aşağıdaki özellikleri kullanıma sunar.
+Varsayılan olarak, iletiler, [Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/)uyumlu yerleşik hizmete yönelik uç noktaya (**iletiler/olaylar**) yönlendirilir. Bu uç nokta şu anda yalnızca bağlantı noktası 5671 üzerinde [AMQP](https://www.amqp.org/) protokolü kullanılarak kullanıma sunuldu. IoT Hub 'ı, yerleşik Olay Hub 'ı ile uyumlu mesajlaşma uç nokta **iletilerini/olaylarını** denetlemenize olanak tanımak için aşağıdaki özellikleri kullanıma sunar.
 
 | Özellik            | Açıklama |
 | ------------------- | ----------- |
@@ -47,7 +47,7 @@ IoT Hub farkında olmayan Event Hubs SDK 'Ları veya ürün tümleştirmelerini 
 
 2. **Yerleşik uç noktalar**' a tıklayın.
 
-3. **Olaylar** bölümü şu değerleri Içerir: **bölümler**, **Olay Hub 'ı Ile uyumlu ad**, **Olay Hub 'ı ile uyumlu uç nokta**, **saklama süresi**ve **tüketici grupları**.
+3. **Olaylar** bölümü şu değerleri Içerir: **bölümler**, **Olay Hub 'ı Ile uyumlu ad**, **Olay Hub 'ı ile uyumlu uç nokta**, **saklama süresi** ve **tüketici grupları**.
 
     ![Cihazdan buluta ayarları](./media/iot-hub-devguide-messages-read-builtin/eventhubcompatible.png)
 
@@ -55,7 +55,7 @@ Portalda, Olay Hub 'ı ile uyumlu uç nokta alanı, şunun gibi görünen bir ta
 
 | Name | Değer |
 | ---- | ----- |
-| Uç Noktası | sb://abcd1234namespace.servicebus.windows.net/ |
+| Uç Nokta | sb://abcd1234namespace.servicebus.windows.net/ |
 | Konak adı | abcd1234namespace.servicebus.windows.net |
 | Ad Alanı | abcd1234namespace |
 

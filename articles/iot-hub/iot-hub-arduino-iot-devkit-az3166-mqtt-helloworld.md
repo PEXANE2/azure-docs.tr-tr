@@ -11,10 +11,10 @@ ms.date: 04/02/2018
 ms.author: liydu
 ms.custom: mqtt
 ms.openlocfilehash: fb8bf593568825793a1a205a2955599b16fa78cf
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92151757"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>Bir MQTT sunucusuna ileti gönderme
@@ -46,10 +46,10 @@ Bu projede şunları öğrenirsiniz:
 
 ## <a name="open-the-mqttclient-sample"></a>MQTTClient örneğini açın
 
-Sol taraf **Arduino örnekleri** bölümünü GENIŞLETIN, **mxyongaAZ3166 > MQTT örneklerine**gidin ve **mqttclient**' ı seçin. İçindeki bir proje klasörüyle yeni bir VS Code penceresi açılır.
+Sol taraf **Arduino örnekleri** bölümünü GENIŞLETIN, **mxyongaAZ3166 > MQTT örneklerine** gidin ve **mqttclient**' ı seçin. İçindeki bir proje klasörüyle yeni bir VS Code penceresi açılır.
 
 > [!NOTE]
-> Ayrıca, komut paletinden örnek de açabilirsiniz. `Ctrl+Shift+P` `Cmd+Shift+P` Komut paletini açmak için (MacOS:) kullanın, **Arduino**yazın ve **Arduino: örnekleri**bulun ve seçin.
+> Ayrıca, komut paletinden örnek de açabilirsiniz. `Ctrl+Shift+P` `Cmd+Shift+P` Komut paletini açmak için (MacOS:) kullanın, **Arduino** yazın ve **Arduino: örnekleri** bulun ve seçin.
 
 ## <a name="build-and-upload-the-arduino-sketch-to-the-devkit"></a>Arduino taslağı oluşturun ve DevKit 'e yükleyin
 

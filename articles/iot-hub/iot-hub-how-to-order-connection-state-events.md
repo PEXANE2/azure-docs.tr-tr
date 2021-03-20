@@ -9,10 +9,10 @@ ms.date: 04/11/2019
 ms.author: asrastog
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 90b7b6aebfce1c37bef76d371d829048d755e39e
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92147269"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Azure Cosmos DB'yi kullanarak Azure IoT Hub cihaz bağlantısı olaylarını sıralama
@@ -39,7 +39,7 @@ Sıra numarası, onaltılık bir sayının dize gösterimidir. Daha büyük say�
 
    ![Saklı yordam oluştur](./media/iot-hub-how-to-order-connection-state-events/create-stored-procedure.png)
 
-2. Saklı yordam KIMLIĞI için **Latestdeviceconnectionstate** girin ve **saklı yordam gövdesinde**aşağıdakileri yapıştırın. Bu kodun, saklı yordam gövdesinde var olan herhangi bir kodu değiştirmesini unutmayın. Bu kod, cihaz KIMLIĞI başına bir satır tutar ve en yüksek sıra numarasını tanımlayarak bu cihaz KIMLIĞININ en son bağlantı durumunu kaydeder.
+2. Saklı yordam KIMLIĞI için **Latestdeviceconnectionstate** girin ve **saklı yordam gövdesinde** aşağıdakileri yapıştırın. Bu kodun, saklı yordam gövdesinde var olan herhangi bir kodu değiştirmesini unutmayın. Bu kod, cihaz KIMLIĞI başına bir satır tutar ve en yüksek sıra numarasını tanımlayarak bu cihaz KIMLIĞININ en son bağlantı durumunu kaydeder.
 
     ```javascript
     // SAMPLE STORED PROCEDURE
@@ -201,7 +201,7 @@ Tetikleyici, mantıksal uygulamanızı başlatan belirli bir olaydır. Bu öğre
 
 Mantıksal uygulama iş akışınızda, koşullar belirli bir koşulu geçirdikten sonra belirli eylemleri çalıştırmaya yardımcı olur. Koşul karşılandığında, istenen bir eylem tanımlanabilir. Bu öğretici için koşul, eventType tarafından cihazın bağlı veya cihazın bağlantısının kesilmediğini denetledir. Bu eylem, saklı yordamı veritabanınızda yürütmek olacaktır.
 
-1. **+ Yeni adım** **' ı seçin ve ardından** **koşulu**bulun ve seçin. **Bir değer Seç** ' e tıklayın ve dinamik içerik ' i gösteren bir kutu açılır ve seçilebilir alanlar görüntülenir. Yalnızca cihaza bağlı ve cihaz bağlantısı kesik olayları için bunu yürütmek üzere alanları aşağıda gösterildiği gibi girin:
+1. **+ Yeni adım** **' ı seçin ve ardından** **koşulu** bulun ve seçin. **Bir değer Seç** ' e tıklayın ve dinamik içerik ' i gösteren bir kutu açılır ve seçilebilir alanlar görüntülenir. Yalnızca cihaza bağlı ve cihaz bağlantısı kesik olayları için bunu yürütmek üzere alanları aşağıda gösterildiği gibi girin:
 
    * Değer seçin: **EventType** --bu alana tıkladığınızda görüntülenen dinamik içerikte bulunan alanlardan bunu seçin.
    * **İle biten**"eşittir" olarak değiştirin.
@@ -233,7 +233,7 @@ Mantıksal uygulama iş akışınızda, koşullar belirli bir koşulu geçirdikt
 
    ![Ekran görüntüsünde, girilmiş parametrelere sahip bir Execute saklı yordam öğesi gösterilir.](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure-2.png)
 
-7. Bölmenin **her biri için**bulduğu en üst kısmında, **önceki adımlardan bir çıkış seçin**altında BT  **gövdesinin** seçili olduğundan emin olun.
+7. Bölmenin **her biri için** bulduğu en üst kısmında, **önceki adımlardan bir çıkış seçin** altında BT  **gövdesinin** seçili olduğundan emin olun.
 
    ![mantıksal uygulamayı her biri için doldur](./media/iot-hub-how-to-order-connection-state-events/logicapp-foreach-body.png)
 
@@ -265,13 +265,13 @@ Bu bölümde, IoT Hub'ınızı gerçekleşen olayları yayımlamak için yapıla
 
    ![Yeni olay aboneliği oluşturma](./media/iot-hub-how-to-order-connection-state-events/event-subscription.png)
 
-4. **Olay aboneliği ayrıntılarını**doldur: açıklayıcı bir ad belirtin ve **Event Grid şeması**' nı seçin.
+4. **Olay aboneliği ayrıntılarını** doldur: açıklayıcı bir ad belirtin ve **Event Grid şeması**' nı seçin.
 
 5. **Olay türleri** alanlarını girin. Açılan listede, yalnızca **cihaz** bağlantısı ' nı seçin ve menüden **cihaz bağlantısı kesildi** ' ı seçin. Ekranda başka bir yere tıklayarak listeyi kapatın ve seçimlerinizi kaydedin.
 
    ![Aranacak olay türlerini ayarla](./media/iot-hub-how-to-order-connection-state-events/set-event-types.png)
 
-6. **Uç nokta ayrıntıları**Için uç nokta türünü **Web kancası** olarak seçin ve uç nokta seç ' e tıklayın ve mantıksal uygulamanızdan kopyaladığınız URL 'yi yapıştırın ve seçimi onaylayın.
+6. **Uç nokta ayrıntıları** Için uç nokta türünü **Web kancası** olarak seçin ve uç nokta seç ' e tıklayın ve mantıksal uygulamanızdan kopyaladığınız URL 'yi yapıştırın ve seçimi onaylayın.
 
    ![Uç nokta URL 'si seçin](./media/iot-hub-how-to-order-connection-state-events/endpoint-select.png)
 
@@ -333,7 +333,7 @@ Yürütülen saklı yordamın sonuçlarını Cosmos DB belgenizde görebilirsini
 
    ![Outcome](./media/iot-hub-how-to-order-connection-state-events/cosmosDB-outcome.png)
 
-## <a name="use-the-azure-cli"></a>Azure CLI'yi kullanma
+## <a name="use-the-azure-cli"></a>Azure CLI kullanma
 
 [Azure Portal](https://portal.azure.com)kullanmak yerine, IoT Hub ADıMLARı Azure CLI kullanarak gerçekleştirebilirsiniz. Ayrıntılar için, [olay aboneliği oluşturmak](/cli/azure/eventgrid/event-subscription) ve [IoT cihazı oluşturmak](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create)için Azure CLI sayfalarına bakın.
 

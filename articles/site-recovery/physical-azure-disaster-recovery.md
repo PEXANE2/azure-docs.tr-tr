@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: 9b05d9952628e550beae5cedc49e051936a9d633
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87927292"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Şirket içi fiziksel sunucular için Azure 'da olağanüstü durum kurtarmayı ayarlama
@@ -27,7 +27,7 @@ Bu öğreticide, şirket içi fiziksel Windows ve Linux sunucularının Azure 'a
 > * Çoğaltma ilkesi oluşturma
 > * Sunucu için çoğaltmayı etkinleştirme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -84,7 +84,7 @@ Bir [Azure depolama hesabı](../storage/common/storage-account-create.md)ayarlay
 Mobility hizmeti, çoğaltmak istediğiniz her bir sunucuda yüklü olmalıdır. Site Recovery, sunucu için çoğaltmayı etkinleştirdiğinizde bu hizmeti otomatik olarak yüklüyor. Otomatik olarak yüklemek için Site Recovery sunucuya erişmek üzere kullanacağı bir hesap hazırlamanız gerekir.
 
 - Bir etki alanı veya yerel hesap kullanabilirsiniz
-- Windows VM 'Ler için, bir etki alanı hesabı kullanmıyorsanız yerel makinede uzak kullanıcı erişim denetimini devre dışı bırakın. Bunu yapmak için, kayıt **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System**altında, **LocalAccountTokenFilterPolicy**DWORD girişini 1 değeri ile ekleyin.
+- Windows VM 'Ler için, bir etki alanı hesabı kullanmıyorsanız yerel makinede uzak kullanıcı erişim denetimini devre dışı bırakın. Bunu yapmak için, kayıt **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** altında, **LocalAccountTokenFilterPolicy** DWORD girişini 1 değeri ile ekleyin.
 - Bir CLı 'dan ayarı devre dışı bırakmak üzere kayıt defteri girdisini eklemek için şunu yazın:       ``REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1.``
 - Linux için hesap, kaynak Linux sunucusunda kök olmalıdır.
 
@@ -98,14 +98,14 @@ Mobility hizmeti, çoğaltmak istediğiniz her bir sunucuda yüklü olmalıdır.
 Çoğaltılacak öğeleri seçin ve ' a çoğaltın.
 
 1. **Kurtarma Hizmetleri kasaları** > kasa öğesine tıklayın.
-2. Kaynak menüsünde, **Site Recovery**  >  **altyapı**  >  **koruma hedefini**hazırla ' ya tıklayın.
+2. Kaynak menüsünde, **Site Recovery**  >  **altyapı**  >  **koruma hedefini** hazırla ' ya tıklayın.
 3. **Koruma hedefi**' nde, **Azure**  >  **sanallaştırılmamış/diğer**' i seçin.
 
 ## <a name="set-up-the-source-environment"></a>Kaynak ortamı ayarlama
 
 Yapılandırma sunucusunu ayarlayın, kasaya kaydedin ve VM 'Leri bulun.
 
-1. **Site Recovery**  >  **Altyapı**  >  **kaynağı**hazırlama Site Recovery ' ye tıklayın.
+1.   >  **Altyapı**  >  **kaynağı** hazırlama Site Recovery ' ye tıklayın.
 2. Bir yapılandırma sunucunuz yoksa **+ yapılandırma sunucusu**' na tıklayın.
 3. **Sunucu Ekle**' de, **sunucu türü**' nde **Configuration Server** ' ın göründüğünden emin olun.
 4. Site Recovery Birleşik kurulum yükleme dosyasını indirin.
@@ -141,7 +141,7 @@ Yapılandırma sunucusunu yüklemek için Birleşik kurulumu yerel yönetici ola
 
 Hedef kaynaklarını seçin ve doğrulayın.
 
-1. **Altyapı hedefini hazırla**' ya tıklayın  >  **Target**ve kullanmak istediğiniz Azure aboneliğini seçin.
+1. **Altyapı hedefini hazırla**' ya tıklayın  >  ve kullanmak istediğiniz Azure aboneliğini seçin.
 2. Hedef dağıtım modelini belirtin.
 3. Site Recovery, bir veya birden çok uyumlu Azure depolama hesabınızın ve ağınızın olup olmadığını denetler.
 
@@ -168,21 +168,21 @@ Her sunucu için çoğaltmayı etkinleştirin.
 - Site Recovery, çoğaltma etkinleştirildiğinde Mobility hizmetini yükleyecek.
 - Bir sunucu için çoğaltmayı etkinleştirdiğinizde, değişikliklerin etkili olması 15 dakika veya daha uzun sürebilir ve portalda görüntülenir.
 
-1. **Uygulama kaynağını Çoğalt**' a tıklayın  >  **Source**.
+1. **Uygulama kaynağını Çoğalt**' a tıklayın  >  .
 2. **Kaynak** bölümünde yapılandırma sunucusunu seçin.
 3. **Makine türü**' nde **fiziksel makineler**' i seçin.
 4. İşlem sunucusunu (yapılandırma sunucusu) seçin. Daha sonra, **Tamam**'a tıklayın.
-5. **Hedef**bölümünde, yük devretmeden sonra Azure VM 'leri oluşturmak istediğiniz aboneliği ve kaynak grubunu seçin. Azure 'da kullanmak istediğiniz dağıtım modelini (klasik veya kaynak yönetimi) seçin.
+5. **Hedef** bölümünde, yük devretmeden sonra Azure VM 'leri oluşturmak istediğiniz aboneliği ve kaynak grubunu seçin. Azure 'da kullanmak istediğiniz dağıtım modelini (klasik veya kaynak yönetimi) seçin.
 6. Verileri çoğaltmak için kullanmak istediğiniz Azure depolama hesabını seçin. 
 7. Yük devretme sonrasında oluşturulan Azure VM'lerinin bağlanacağı Azure ağını ve alt ağını seçin.
 8. Koruma için seçtiğiniz tüm makinelere ağ ayarını uygulamak için **Seçili makineler için Şimdi Yapılandır**' ı seçin. Makineler için Azure ağını ayrı ayrı seçmek için **Daha sonra yapılandır**'ı seçin. 
-9. **Fiziksel makinelerde**ve **+ fiziksel makine**' ye tıklayın. Adı ve IP adresini belirtin. Çoğaltmak istediğiniz makinenin işletim sistemini seçin. Sunucuların bulunması ve listelenmesi birkaç dakika sürer. 
+9. **Fiziksel makinelerde** ve **+ fiziksel makine**' ye tıklayın. Adı ve IP adresini belirtin. Çoğaltmak istediğiniz makinenin işletim sistemini seçin. Sunucuların bulunması ve listelenmesi birkaç dakika sürer. 
 10. **Özellikler**  >  **yapılandırma özellikleri**' nde, Mobility hizmetini makineye otomatik olarak yüklemek için işlem sunucusu tarafından kullanılacak hesabı seçin.
-11. **Çoğaltma ayarları**  >  **çoğaltma ayarlarını yapılandır**bölümünde doğru çoğaltma ilkesinin seçildiğini doğrulayın. 
+11. **Çoğaltma ayarları**  >  **çoğaltma ayarlarını yapılandır** bölümünde doğru çoğaltma ilkesinin seçildiğini doğrulayın. 
 12. **Çoğaltmayı Etkinleştir**’e tıklayın. **Ayarlar** > **İşler** > **Site Recovery İşleri** bölümünden **Korumayı Etkinleştir** işinin ilerleme durumunu izleyebilirsiniz. **Korumayı Sonlandır** işi çalıştırıldıktan sonra makine yük devretme için hazırdır.
 
 
-Eklediğiniz sunucuları izlemek için, **yapılandırma sunucuları**  >  **son iletişim**kutusunda bu süre için son keşfedilen zamanı kontrol edebilirsiniz. Zamanlanan bulma süresini beklemeden makineler eklemek için yapılandırma sunucusunu vurgulayın (tıklamayın) ve **Yenile**' ye tıklayın.
+Eklediğiniz sunucuları izlemek için, **yapılandırma sunucuları**  >  **son iletişim** kutusunda bu süre için son keşfedilen zamanı kontrol edebilirsiniz. Zamanlanan bulma süresini beklemeden makineler eklemek için yapılandırma sunucusunu vurgulayın (tıklamayın) ve **Yenile**' ye tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

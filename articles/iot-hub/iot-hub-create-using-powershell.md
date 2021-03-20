@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: robinsh
 ms.openlocfilehash: da021e3ba0fd93a182ea76a1ba4b7042b325aacc
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92142378"
 ---
 # <a name="create-an-iot-hub-using-the-new-aziothub-cmdlet"></a>New-AzIotHub cmdlet 'ini kullanarak IoT Hub 'ı oluşturma
@@ -39,7 +39,7 @@ Login-AzAccount
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-IoT Hub 'ı dağıtmak için bir kaynak grubuna ihtiyacınız vardır. Var olan bir kaynak grubunu kullanabilir veya yeni bir tane oluşturabilirsiniz.
+IoT Hub 'ı dağıtmak için bir kaynak grubuna ihtiyacınız vardır. Mevcut bir kaynak grubunu kullanabilir ya da yeni bir kaynak grubu oluşturabilirsiniz.
 
 IoT Hub 'ınız için bir kaynak grubu oluşturmak için [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup) komutunu kullanın. Bu örnek **Doğu ABD** bölgesinde **MyIoTRG1** adlı bir kaynak grubu oluşturur:
 

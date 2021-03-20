@@ -10,10 +10,10 @@ ms.date: 08/07/2019
 ms.author: menchi
 ms.custom: amqp, devx-track-csharp
 ms.openlocfilehash: daba400b9daadf464c4c125ad266745237e71367
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92142514"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-net"></a>IoT Hub Module kimliği ve modülü ikizi (.NET) ile çalışmaya başlama
@@ -54,17 +54,17 @@ Bu öğreticinin sonunda iki .NET konsol uygulamanız olacak:
 
 Bu bölümde, modül ikizi tarafından raporlanan özelliklerini güncelleştiren simülasyon cihazınızda bir .NET konsol uygulaması oluşturursunuz.
 
-Başlamadan önce modül Bağlantı dizenizi alın. [Azure portalında](https://portal.azure.com/) oturum açın. Hub 'ınıza gidip **IoT cihazları**' nı seçin. **Myfirstdevice**bul. Dosyayı açmak için **Myfirstdevice** ' ı seçin ve ardından dosyayı açmak Için **myfirstmodule** ' ü seçin. **Modül kimliği ayrıntıları**' nda, aşağıdaki yordamda gerektiğinde **bağlantı dizesini (birincil anahtar)** kopyalayın.
+Başlamadan önce modül Bağlantı dizenizi alın. [Azure portalında](https://portal.azure.com/) oturum açın. Hub 'ınıza gidip **IoT cihazları**' nı seçin. **Myfirstdevice** bul. Dosyayı açmak için **Myfirstdevice** ' ı seçin ve ardından dosyayı açmak Için **myfirstmodule** ' ü seçin. **Modül kimliği ayrıntıları**' nda, aşağıdaki yordamda gerektiğinde **bağlantı dizesini (birincil anahtar)** kopyalayın.
 
    ![Azure portalı modül ayrıntısı](./media/iot-hub-csharp-csharp-module-twin-getstarted/module-identity-detail.png)
 
 1. Visual Studio 'da **Dosya**  >  **Yeni**  >  **Proje**' yi seçerek çözümünüze yeni bir proje ekleyin. Yeni proje oluştur ' da **konsol uygulaması (.NET Framework)** öğesini seçin ve **İleri**' yi seçin.
 
-1. Projeye *UpdateModuleTwinReportedProperties* adını verin. **Çözüm**Için **çözüme Ekle**' yi seçin. .NET Framework sürümünün 4.6.1 veya sonraki bir sürüm olduğundan emin olun.
+1. Projeye *UpdateModuleTwinReportedProperties* adını verin. **Çözüm** Için **çözüme Ekle**' yi seçin. .NET Framework sürümünün 4.6.1 veya sonraki bir sürüm olduğundan emin olun.
 
     ![Visual Studio projesi oluşturma](./media/iot-hub-csharp-csharp-module-twin-getstarted/configure-update-twins-csharp1.png)
 
-1. Projenizi oluşturmak için **Oluştur** ' u seçin.
+1. Projenizi oluşturmak için **Oluştur**'u seçin.
 
 1. Visual Studio 'da **Araçlar**  >  **NuGet Paket Yöneticisi**  >  **çözüm için NuGet Paketlerini Yönet**' i açın. **Gözat** sekmesini seçin.
 
@@ -169,9 +169,9 @@ Artık uygulamaları çalıştırabilirsiniz.
 
 1. Visual Studio 'da **Çözüm Gezgini**' de çözümünüze sağ tıklayın ve ardından **Başlangıç projelerini ayarla**' yı seçin.
 
-1. **Ortak özellikler**altında **Başlangıç projesi** ' ni seçin.
+1. **Ortak özellikler** altında **Başlangıç projesi** ' ni seçin.
 
-1. **Birden çok başlangıç projesi**seçin ve ardından uygulamalar için eylem olarak **Başlat** ' ı ve değişikliklerinizi kabul etmek için **Tamam** ' ı seçin.
+1. **Birden çok başlangıç projesi** seçin ve ardından uygulamalar için eylem olarak **Başlat** ' ı ve değişikliklerinizi kabul etmek için **Tamam** ' ı seçin.
 
 1. Uygulamaları başlatmak için **F5** tuşuna basın.
 

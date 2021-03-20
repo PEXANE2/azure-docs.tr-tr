@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
 ms.openlocfilehash: 517fed0dd9eb1736344546bde9f79e52ee17182f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91333112"
 ---
 # <a name="troubleshooting-azure-sql-edge-deployments"></a>Azure SQL Edge dağıtımları sorunlarını giderme 
@@ -58,7 +58,7 @@ SQL Edge kapsayıcısı çalışamazsa, aşağıdaki testleri deneyin:
 
 - Docker veya Kubernetes tabanlı dağıtım kullanıyorsanız, `docker run` komutun doğru biçimlendirildiğinden emin olun. Daha fazla bilgi için [Azure SQL Edge 'ı Docker Ile dağıtma](disconnected-deployment.md) ve [Kubernetes 'Te Azure SQL Edge kapsayıcısı dağıtma](deploy-kubernetes.md)konusuna bakın.
 
-- Gibi bir hata alırsanız `failed to create endpoint CONTAINER_NAME on network bridge. Error starting proxy: listen tcp 0.0.0.0:1433 bind: address already in use.` , 1433 kapsayıcı bağlantı noktasını zaten kullanımda olan bir bağlantı noktasıyla eşlemeye çalışıyorsunuz. Bu durum, ana makinede SQL Edge 'i yerel olarak çalıştırıyorsanız gerçekleşebilir. İki SQL Edge kapsayıcısı başlatırsanız ve bunları aynı ana bilgisayar bağlantı noktasına eşlemenize çalışırsanız da bu durum oluşabilir. Bu durumda, `-p` 1433 kapsayıcı bağlantı noktasını farklı bir ana bilgisayar bağlantı noktasına eşlemek için parametresini kullanın. Örneğin: 
+- Gibi bir hata alırsanız `failed to create endpoint CONTAINER_NAME on network bridge. Error starting proxy: listen tcp 0.0.0.0:1433 bind: address already in use.` , 1433 kapsayıcı bağlantı noktasını zaten kullanımda olan bir bağlantı noktasıyla eşlemeye çalışıyorsunuz. Bu durum, ana makinede SQL Edge 'i yerel olarak çalıştırıyorsanız gerçekleşebilir. İki SQL Edge kapsayıcısı başlatırsanız ve bunları aynı ana bilgisayar bağlantı noktasına eşlemenize çalışırsanız da bu durum oluşabilir. Bu durumda, `-p` 1433 kapsayıcı bağlantı noktasını farklı bir ana bilgisayar bağlantı noktasına eşlemek için parametresini kullanın. Örnek: 
 
     ```bash
     sudo docker run --cap-add SYS_PTRACE -e 'ACCEPT_EULA=1' -e 'MSSQL_SA_PASSWORD=yourStrong(!)Password' -p 1433:1433 --name azuresqledge -d mcr.microsoft.com/azure-sql-edge-developer.

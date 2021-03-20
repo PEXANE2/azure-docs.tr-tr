@@ -8,10 +8,10 @@ ms.date: 10/23/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 1d2a0d79a5cdd53f8376c088fc986c20908575eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91329474"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>Öğretici: Windows dosya sunucularını Azure Dosya Eşitleme ile genişletme
@@ -30,7 +30,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure Portal](https://portal.azure.com)’ında oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="prepare-your-environment"></a>Ortamınızı hazırlama
 
@@ -61,7 +61,7 @@ Bir Azure depolama hesabı dağıttıktan sonra bir dosya paylaşma oluşturursu
 
     ![Dosya paylaşma Ekle düğmesini seçin](./media/storage-sync-files-extend-servers/create-file-share-portal2.png)
 
-1. Yeni dosya paylaşımı _afsfileshare_olarak adlandırın. **Kota**için "1" girin ve ardından **Oluştur**' u seçin. Kota en fazla 5 TiB olabilir, ancak bu öğretici için yalnızca 1 GB gerekir.
+1. Yeni dosya paylaşımı _afsfileshare_ olarak adlandırın. **Kota** için "1" girin ve ardından **Oluştur**' u seçin. Kota en fazla 5 TiB olabilir, ancak bu öğretici için yalnızca 1 GB gerekir.
 
     ![Yeni dosya paylaşımı için bir ad ve kota belirtin](./media/storage-sync-files-extend-servers/create-file-share-portal3.png)
 
@@ -84,9 +84,9 @@ Bu noktada, bir depolama hesabı ve dosyada bir dosya paylaşma oluşturdunuz. A
    ![Portal dikey penceresinde VM 'niz hakkındaki temel bilgileri girin](./media/storage-sync-files-extend-servers/vm-resource-group-and-subscription.png)
 
 1. **Örnek ayrıntıları**' nın altında bir VM adı belirtin. Örneğin, _Myvm_' yi kullanın.
-1. **Bölge**, **kullanılabilirlik seçenekleri**, **görüntü**ve **Boyut**için varsayılan ayarları değiştirmeyin.
+1. **Bölge**, **kullanılabilirlik seçenekleri**, **görüntü** ve **Boyut** için varsayılan ayarları değiştirmeyin.
 1. **Yönetici hesabı** altında VM için bir **Kullanıcı adı** ve **Parola** girin.
-1. **Gelen bağlantı noktası kuralları**altında **Seçili bağlantı noktalarına izin ver** ' i seçin ve ardından açılan menüden **RDP (3389)** ve **http** ' yi seçin.
+1. **Gelen bağlantı noktası kuralları** altında **Seçili bağlantı noktalarına izin ver** ' i seçin ve ardından açılan menüden **RDP (3389)** ve **http** ' yi seçin.
 
 1. VM’yi oluşturmadan önce bir veri diski oluşturmanız gerekir.
 
@@ -94,8 +94,8 @@ Bu noktada, bir depolama hesabı ve dosyada bir dosya paylaşma oluşturdunuz. A
 
       ![Veri diski ekleme](./media/storage-sync-files-extend-servers/vm-add-data-disk.png)
 
-   1. **Diskler** sekmesinde, **Disk seçenekleri**altında, varsayılan değerleri bırakın.
-   1. **VERI diskleri**altında **Oluştur ve yeni bir disk Ekle**' yi seçin.
+   1. **Diskler** sekmesinde, **Disk seçenekleri** altında, varsayılan değerleri bırakın.
+   1. **VERI diskleri** altında **Oluştur ve yeni bir disk Ekle**' yi seçin.
 
    1. Bu öğretici için **1 GB** olarak değiştirebileceğiniz **Boyut (gib)** dışında varsayılan ayarları kullanın.
 
@@ -105,7 +105,7 @@ Bu noktada, bir depolama hesabı ve dosyada bir dosya paylaşma oluşturdunuz. A
 1. **Gözden geçir ve oluştur**’u seçin.
 1. **Oluştur**’u seçin.
 
-   **Dağıtım ilerlemesini**Izlemek için **Bildirimler** simgesini seçebilirsiniz. Yeni bir VM oluşturma işleminin tamamlanması birkaç dakika sürebilir.
+   **Dağıtım ilerlemesini** Izlemek için **Bildirimler** simgesini seçebilirsiniz. Yeni bir VM oluşturma işleminin tamamlanması birkaç dakika sürebilir.
 
 1. VM dağıtımınız tamamlandıktan sonra **Kaynağa Git**' i seçin.
 
@@ -119,12 +119,12 @@ Bu noktada yeni bir sanal makine oluşturdunuz ve bir veri diskini kullanıma a�
 
    ![Portaldan bir Azure sanal makinesine bağlanma](./media/storage-sync-files-extend-servers/connect-vm.png)
 
-1. **Sanal makineye bağlan** sayfasında, bağlantı noktası 3389 üzerinden **IP adresine** göre bağlanmak için varsayılan seçenekleri değiştirmeyin. **RDP dosyasını indir**' i seçin.
+1. **Sanal makineye bağlan** sayfasında, bağlantı noktası 3389 üzerinden **IP adresine** göre bağlanmak için varsayılan seçenekleri değiştirmeyin. **RDP dosyasını indir**’i seçin.
 
    ![RDP dosyasını indirme](./media/storage-sync-files-extend-servers/download-rdp.png)
 
 1. İndirilen RDP dosyasını açın ve istendiğinde **Bağlan** ' ı seçin.
-1. **Windows Güvenliği** penceresinde **Diğer seçenekler**'i ve ardından **Başka bir hesap kullanın**'ı seçin. Kullanıcı adını *localhost\username*olarak yazın, sanal makine için oluşturduğunuz parolayı girin ve ardından **Tamam**' ı seçin.
+1. **Windows Güvenliği** penceresinde **Diğer seçenekler**'i ve ardından **Başka bir hesap kullanın**'ı seçin. Kullanıcı adını *localhost\username* olarak yazın, sanal makine için oluşturduğunuz parolayı girin ve ardından **Tamam**' ı seçin.
 
    ![Diğer seçenekler](./media/storage-sync-files-extend-servers/local-host2.png)
 
@@ -140,7 +140,7 @@ Windows Server 2016 Datacenter VM 'de Sunucu Yöneticisi otomatik olarak açıl�
 
    ![Sunucu Yöneticisi kullanıcı arabiriminin sol tarafındaki "Yerel Sunucu"](media/storage-sync-files-extend-servers/prepare-server-disable-ieesc-1.png)
 
-1. **Özellikler** bölmesinde, **IE artırılmış güvenlik yapılandırması**bağlantısını seçin.  
+1. **Özellikler** bölmesinde, **IE artırılmış güvenlik yapılandırması** bağlantısını seçin.  
 
     ![Sunucu Yöneticisi kullanıcı arabirimindeki "IE Artırılmış Güvenlik Yapılandırması" bölmesi](media/storage-sync-files-extend-servers/prepare-server-disable-ieesc-2.png)
 
@@ -170,7 +170,7 @@ Windows Server 2016 Datacenter VM 'de Sunucu Yöneticisi otomatik olarak açıl�
 
     ![Yeni metin dosyası ekleme](media/storage-sync-files-extend-servers/new-file.png)
 
-1. **Dosya Gezgini** 'ni ve **Sunucu Yöneticisi**kapatın.
+1. **Dosya Gezgini** 'ni ve **Sunucu Yöneticisi** kapatın.
 
 ### <a name="download-the-azure-powershell-module"></a>Azure PowerShell modülünü indirin
 
@@ -207,7 +207,7 @@ Bu noktada, ortamınızı öğretici için ayarlarsınız. Depolama eşitleme hi
 
 Azure Dosya Eşitleme dağıtmak için, önce seçtiğiniz abonelik için bir kaynak grubuna bir **depolama eşitleme hizmeti** kaynağı yerleştirebilirsiniz. Depolama eşitleme hizmeti, erişim izinlerini aboneliğinden ve kaynak grubundan devralır.
 
-1. Azure portal, **kaynak oluştur** ' u seçin ve ardından **Azure dosya eşitleme**arayın.
+1. Azure portal, **kaynak oluştur** ' u seçin ve ardından **Azure dosya eşitleme** arayın.
 1. Arama sonuçlarında **Azure Dosya Eşitleme**’yi seçin.
 1. **Oluştur**’u seçerek **Depolama Eşitleme’yi Dağıt** sekmesini açın.
 
@@ -234,15 +234,15 @@ Azure Dosya Eşitleme aracısı, Windows Server’ın bir Azure dosya paylaşım
 
    ![Eşitleme aracısını indirme](media/storage-sync-files-extend-servers/sync-agent-download.png)
 
-1. **StorageSyncAgent_V3_WS2016.EXE** onay kutusunu seçin ve **İleri ' yi**seçin.
+1. **StorageSyncAgent_V3_WS2016.EXE** onay kutusunu seçin ve **İleri ' yi** seçin.
 
    ![Aracı seçme](media/storage-sync-files-extend-servers/select-agent.png)
 
-1. Açık **çalışmaya başladıktan sonra izin ver**' i seçin  >  **Run**  >  **Open**.
+1. Açık **çalışmaya başladıktan sonra izin ver**' i seçin  >    >  .
 1. Henüz yapmadıysanız, PowerShell penceresini kapatın.
 1. **Depolama Eşitleme Aracısı Kurulum Sihirbazı**’nda varsayılan ayarları kabul edin.
 1. **Yükle**'yi seçin.
-1. **Son**’u seçin.
+1. **Son**'u seçin.
 
 Azure Eşitleme Hizmeti’ni dağıttınız ve aracıyı Windows Server 2016 Datacenter sanal makinesine yüklediniz. Şimdi VM’yi Depolama Eşitleme Hizmeti’ne kaydetmeniz gerekir.
 
@@ -266,7 +266,7 @@ Sunucu kayıt kullanıcı arabirimi, Azure Dosya Eşitleme aracısını yükledi
    | **Depolama Eşitleme Hizmeti** | Depolama eşitleme hizmeti adı. Bu öğretici için _afssyncservice02_ kullanın. |
 
 1. Sunucu kaydını gerçekleştirmek için **Kaydol** ' u seçin.
-1. Kayıt sürecinin bir parçası olarak, sizden ek oturum açmanız istenir. Oturum açın ve **İleri ' yi**seçin.
+1. Kayıt sürecinin bir parçası olarak, sizden ek oturum açmanız istenir. Oturum açın ve **İleri ' yi** seçin.
 1. **Tamam**’ı seçin.
 
 ## <a name="create-a-sync-group"></a>Eşitleme grubu oluşturma
@@ -283,7 +283,7 @@ Eşitleme grubu, bir dosya kümesi için eşitleme topolojisini tanımlar. Bir e
    | ----- | ----- |
    | **Eşitleme grubu adı** | Bu ad Depolama Eşitleme Hizmetinde benzersiz olmalıdır, ancak size mantıklı gelen herhangi bir ad olabilir. Bu öğretici için *afssyncgroup* kullanın.|
    | **Abonelik** | Bu öğretici için Depolama Eşitleme Hizmetini dağıttığınız abonelik. |
-   | **Depolama hesabı** | **Depolama hesabı Seç ' i**seçin. Görüntülenen bölmede, oluşturduğunuz Azure dosya paylaşımının bulunduğu depolama hesabını seçin. Bu öğretici için *afsstoracct101918* kullanın. |
+   | **Depolama hesabı** | **Depolama hesabı Seç ' i** seçin. Görüntülenen bölmede, oluşturduğunuz Azure dosya paylaşımının bulunduğu depolama hesabını seçin. Bu öğretici için *afsstoracct101918* kullanın. |
    | **Azure dosya paylaşma** | Oluşturduğunuz Azure dosya paylaşımının adı. Bu öğretici için *afsfileshare* kullanın. |
 
 1. **Oluştur**’u seçin.

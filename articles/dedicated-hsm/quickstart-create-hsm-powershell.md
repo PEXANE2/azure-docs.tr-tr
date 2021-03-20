@@ -1,6 +1,6 @@
 ---
 title: 'Hızlı başlangıç: Azure PowerShell Azure ayrılmış HSM oluşturma'
-description: Azure PowerShell ile Azure ayrılmış HSM oluşturma
+description: Azure PowerShell ile Azure Ayrılmış HSM oluşturma
 services: dedicated-hsm
 author: msmbaldwin
 ms.author: mbaldwin
@@ -10,10 +10,10 @@ ms.devlang: azurepowershell
 ms.date: 11/13/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: eebfb257d0324cf2771bd3af979ddbebb8429fb7
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94905633"
 ---
 # <a name="quickstart-create-an-azure-dedicated-hsm-with-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell Azure ayrılmış HSM oluşturma
@@ -27,7 +27,7 @@ Bu makalede, [az. ayrılmış Atedhsm](/powershell/module/az.dedicatedhsm) Power
 [!INCLUDE [azure-powershell-requirements-no-header.md](../../includes/azure-powershell-requirements-no-header.md)]
 
   > [!IMPORTANT]
-  > **Az. ayrılmış Atedhsm** PowerShell modülü önizlemedeyken, cmdlet 'ini kullanarak ayrı olarak yüklemelisiniz `Install-Module` . Bu PowerShell modülü genel kullanıma sunulduğunda, gelecekteki az PowerShell modülü sürümlerinin bir parçası olur ve Azure Cloud Shell içinden varsayılan olarak kullanılabilir.
+  > **Az. ayrılmış Atedhsm** PowerShell modülü önizlemedeyken, cmdlet 'ini kullanarak ayrı olarak yüklemelisiniz `Install-Module` . Bu PowerShell modülü genel kullanıma sunulduktan sonra, gelecekteki Az PowerShell modülü sürümlerinin bir parçası haline gelecek ve Azure Cloud Shell içinden varsayılan olarak sağlanacaktır.
 
   ```azurepowershell-interactive
   Install-Module -Name Az.DedicatedHsm

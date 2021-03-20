@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: kenchen
 ms.openlocfilehash: 60f1ab0440120cb9a96e6c05a4fc1987ead29188
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92143253"
 ---
 # <a name="service-mode-in-azure-signalr-service"></a>Azure SignalR hizmetinde hizmet modu
@@ -21,7 +21,7 @@ Hizmet modu, Azure SignalR hizmeti 'nde önemli bir kavramdır. Yeni bir SignalR
 
 Bunu daha sonra Ayarlar menüsünde de değiştirebilirsiniz:
 
-:::image type="content" source="media/concept-service-mode/update.png" alt-text="Oluşturma sırasında hizmet modunu seç":::
+:::image type="content" source="media/concept-service-mode/update.png" alt-text="Hizmet modunu Güncelleştir":::
 
 Azure SignalR hizmeti şu anda üç hizmet modunu desteklemektedir: **varsayılan**, **sunucusuz** ve **Klasik**. SignalR kaynağınız farklı modlarda farklı davranacaktır. Bu makalede, kendi farklılıklarını ve senaryonuza bağlı olarak doğru hizmet modunu nasıl seçebileceğinizi öğreneceksiniz.
 
@@ -29,7 +29,7 @@ Azure SignalR hizmeti şu anda üç hizmet modunu desteklemektedir: **varsayıla
 
 Yeni bir SignalR kaynağı oluşturduğunuzda varsayılan mod, hizmet modu için varsayılan değerdir. Bu modda, uygulamanız tipik bir ASP.NET Core (veya ASP.NET) SignalR uygulaması olarak çalışarak hub 'ı barındıran bir Web sunucunuz (burada hub sunucusu adı verilir) ve istemciler hub sunucusu ile çift yönlü gerçek zamanlı iletişime sahip olabilir. Tek fark, istemci ve sunucuyu doğrudan bağlamak yerine, istemci ve sunucu her ikisi de SignalR hizmetine bağlanır ve hizmeti bir proxy olarak kullanır. Varsayılan modda tipik uygulama yapısını gösteren bir diyagram aşağıda verilmiştir:
 
-:::image type="content" source="media/concept-service-mode/default.png" alt-text="Oluşturma sırasında hizmet modunu seç":::
+:::image type="content" source="media/concept-service-mode/default.png" alt-text="Varsayılan modda uygulama yapısı":::
 
 Bu nedenle, bir SignalR uygulamanız varsa ve SignalR hizmeti ile tümleştirme istiyorsanız, çoğu durumda varsayılan mod doğru seçim olmalıdır.
 
@@ -59,7 +59,7 @@ Yukarı akışı yapılandırma hakkında daha fazla bilgi için bu [belgeye](./
 
 Sunucusuz modunun nasıl çalıştığını gösteren bir diyagram aşağıda verilmiştir:
 
-:::image type="content" source="media/concept-service-mode/serverless.png" alt-text="Oluşturma sırasında hizmet modunu seç":::
+:::image type="content" source="media/concept-service-mode/serverless.png" alt-text="Sunucusuz modda uygulama yapısı":::
 
 > [!NOTE]
 > Lütfen varsayılan modda, hub sunucusu üzerinden gitmek istemiyorsanız istemciye doğrudan ileti göndermek için REST API/Yönetim SDK/işlev bağlamayı da kullanabilirsiniz. Ancak varsayılan modda istemci bağlantıları, hub sunucuları tarafından hala işlenir ve yukarı akış bu modda çalışmaz.

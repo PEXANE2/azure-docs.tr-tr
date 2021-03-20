@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: mayg
 ms.openlocfilehash: 528a24bb64aa8d323b5d63a27af0a52ccdf1abb6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86132322"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Active Directory ve DNS için olağanüstü durum kurtarmayı ayarlama
@@ -79,7 +79,7 @@ Ardından, sanal ağın DNS sunucusunu Azure 'da DNS sunucusunu kullanacak şeki
 1. Yalıtılmış ağ oluşturun. Azure 'da oluşturduğunuz herhangi bir sanal ağ, varsayılan olarak diğer ağlardan yalıtılmıştır. Üretim ağınızda kullandığınız bu ağ için aynı IP adresi aralığını kullanmanızı öneririz. Bu ağda siteden siteye bağlantıyı etkinleştirmeyin.
 1. Yalıtılmış ağda bir DNS IP adresi sağlayın. DNS sanal makinesinin almasını beklediğinizi belirten IP adresini kullanın. Azure 'a çoğaltma yapıyorsanız, yük devretmede kullanılan sanal makinenin IP adresini belirtin. IP adresini girmek için, çoğaltılan sanal makinede, **işlem ve ağ** ayarları ' nda **hedef IP** ayarlarını seçin.
 
-   :::image type="content" source="./media/site-recovery-active-directory/azure-test-network.png" alt-text="Azure Ağı":::
+   :::image type="content" source="./media/site-recovery-active-directory/azure-test-network.png" alt-text="Azure test ağı":::
 
    > [!TIP]
    > Site Recovery, aynı ada sahip bir alt ağda ve sanal makinenin **işlem ve ağ** AYARLARıNDA belirtilen IP adresini kullanarak test sanal makineleri oluşturmaya çalışır. Yük devretme testi için sağlanan Azure sanal ağında aynı ada sahip bir alt ağ yoksa, test sanal makinesi alfabetik olarak ilk alt ağda oluşturulur.
@@ -102,7 +102,7 @@ Yük devretme testi başlattığınızda, test ağındaki tüm etki alanı denet
 > [!IMPORTANT]
 > Bu bölümde açıklanan yapılandırmalardan bazıları standart veya varsayılan etki alanı denetleyicisi yapılandırması değildir. Bu değişiklikleri bir üretim etki alanı denetleyicisinde yapmak istemiyorsanız, yük devretme testi için kullanmak üzere Site Recovery için ayrılmış bir etki alanı denetleyicisi oluşturabilirsiniz. Bu değişiklikleri yalnızca bu etki alanı denetleyicisi için yapın.
 
-Windows Server 2012 ' den başlayarak [ek korumalar Active Directory Domain Services (AD DS) yerleşik olarak bulunur](/windows-server/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100). Bu korumalar, temeldeki hiper yönetici platformu **VM-GenerationID 'yi**destekliyorsa, sanallaştırılmış etki alanı denetleyicilerini güncelleştirme sıra numarası (USN) geri göndermeler ile korumanıza yardımcı olur. Azure, **VM-GenerationID 'yi**destekler. Bu nedenle, Azure sanal makinelerinde Windows Server 2012 veya üstünü çalıştıran etki alanı denetleyicilerinin bu ek korumaları vardır.
+Windows Server 2012 ' den başlayarak [ek korumalar Active Directory Domain Services (AD DS) yerleşik olarak bulunur](/windows-server/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100). Bu korumalar, temeldeki hiper yönetici platformu **VM-GenerationID 'yi** destekliyorsa, sanallaştırılmış etki alanı denetleyicilerini güncelleştirme sıra numarası (USN) geri göndermeler ile korumanıza yardımcı olur. Azure, **VM-GenerationID 'yi** destekler. Bu nedenle, Azure sanal makinelerinde Windows Server 2012 veya üstünü çalıştıran etki alanı denetleyicilerinin bu ek korumaları vardır.
 
 **VM-GenerationID** sıfırlandığında AD DS veritabanının **ınvocationıd** değeri de sıfırlanır. Buna ek olarak, göreli KIMLIK (RID) havuzu atılır ve `SYSVOL` klasör yetkili değil olarak işaretlenir. Daha fazla bilgi için bkz. [Active Directory Domain Services sanallaştırmaya giriş](/windows-server/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100) ve [Dağıtılmış dosya SISTEMI çoğaltmayı (DFSR) güvenle sanallaştırmayı kullanma](https://techcommunity.microsoft.com/t5/storage-at-microsoft/safely-virtualizing-dfsr/ba-p/424671).
 
@@ -118,21 +118,21 @@ Bir test yük devretmesinin ardından sanallaştırma korumaları tetikleniyorsa
 
 - **GenerationID** değeri değişir:
 
-  :::image type="content" source="./media/site-recovery-active-directory/Event2170.png" alt-text="Azure Ağı":::
+  :::image type="content" source="./media/site-recovery-active-directory/Event2170.png" alt-text="Oluşturma KIMLIĞI değişikliği":::
 
 - **Invocationıd** değeri değişir:
 
-  :::image type="content" source="./media/site-recovery-active-directory/Event1109.png" alt-text="Azure Ağı":::
+  :::image type="content" source="./media/site-recovery-active-directory/Event1109.png" alt-text="Çağırma KIMLIĞI değişikliği":::
 
 - `SYSVOL` klasör ve `NETLOGON` Paylaşımlar kullanılamıyor.
 
-  :::image type="content" source="./media/site-recovery-active-directory/sysvolshare.png" alt-text="Azure Ağı":::
+  :::image type="content" source="./media/site-recovery-active-directory/sysvolshare.png" alt-text="SYSVOL klasörü paylaşma":::
 
-  :::image type="content" source="./media/site-recovery-active-directory/Event13565.png" alt-text="Azure Ağı":::
+  :::image type="content" source="./media/site-recovery-active-directory/Event13565.png" alt-text="NtFrs SYSVOL klasörü":::
 
 - DFSR veritabanları silinir.
 
-  :::image type="content" source="./media/site-recovery-active-directory/Event2208.png" alt-text="Azure Ağı":::
+  :::image type="content" source="./media/site-recovery-active-directory/Event2208.png" alt-text="DFSR veritabanları silindi":::
 
 ### <a name="troubleshoot-domain-controller-issues-during-test-failover"></a>Yük devretme testi sırasında etki alanı denetleyicisi sorunlarını giderme
 
@@ -171,7 +171,7 @@ Yukarıdaki koşullar karşılanmıyorsa, büyük olasılıkla etki alanı denet
 
    Daha fazla bilgi için bkz. [DNS olay kimliği 4013 sorunlarını giderme: DNS sunucusu ad ile TÜMLEŞIK DNS bölgelerini yükleyemedi](https://support.microsoft.com/kb/2001093).
 
-1. Kullanıcı oturum açma bilgilerini doğrulamak için bir genel katalog sunucusunun kullanılabilir olması gereksinimini devre dışı bırakın. Bunu yapmak için, şirket içi etki alanı denetleyicisinde aşağıdaki kayıt defteri anahtarını **1**olarak ayarlayın. Yoksa `DWORD` , **LSA** düğümü altında oluşturabilirsiniz.
+1. Kullanıcı oturum açma bilgilerini doğrulamak için bir genel katalog sunucusunun kullanılabilir olması gereksinimini devre dışı bırakın. Bunu yapmak için, şirket içi etki alanı denetleyicisinde aşağıdaki kayıt defteri anahtarını **1** olarak ayarlayın. Yoksa `DWORD` , **LSA** düğümü altında oluşturabilirsiniz.
 
    `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\IgnoreGCFailures`
 

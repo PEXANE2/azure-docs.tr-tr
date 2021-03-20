@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/08/2019
 ms.author: sutalasi
 ms.openlocfilehash: fa4d61599e102f9a2580e704ee7a02486067daa2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86135799"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Azure Disk Şifrelemesi'nin etkinleştirildiği sanal makineleri başka bir Azure bölgesine çoğaltma
@@ -40,7 +40,7 @@ Azure portal disk şifrelemesi etkin VM 'lerinin çoğaltılmasını etkinleşti
     - Şifreleme Işlemleri
         - Şifre çözme ve şifreleme
 
-İzinleri yönetmek için, portalda Anahtar Kasası kaynağına gidin. Kullanıcı için gerekli izinleri ekleyin. Aşağıdaki örnek, kaynak bölgedeki Anahtar Kasası *ContosoWeb2Keyvault*için izinlerin nasıl etkinleştirileceğini gösterir.
+İzinleri yönetmek için, portalda Anahtar Kasası kaynağına gidin. Kullanıcı için gerekli izinleri ekleyin. Aşağıdaki örnek, kaynak bölgedeki Anahtar Kasası *ContosoWeb2Keyvault* için izinlerin nasıl etkinleştirileceğini gösterir.
 
 1. **Giriş**  >  **keyvaults**  >  **ContosoWeb2KeyVault > erişim ilkeleri**' ne gidin.
 
@@ -60,14 +60,14 @@ Olağanüstü durum kurtarma (DR) etkinleştiren kullanıcının anahtarları ko
 ## <a name="copy-disk-encryption-keys-to-the-dr-region-by-using-the-powershell-script"></a>PowerShell betiğini kullanarak disk şifreleme anahtarlarını DR bölgesine kopyalama
 
 1. ["CopyKeys" ham betik kodunu açın](https://aka.ms/ade-asr-copy-keys-code).
-2. Betiği bir dosyaya kopyalayın ve **Copy-keys.ps1**olarak adlandırın.
+2. Betiği bir dosyaya kopyalayın ve **Copy-keys.ps1** olarak adlandırın.
 3. Windows PowerShell uygulamasını açın ve dosyayı kaydettiğiniz klasöre gidin.
 4. Copy-keys.ps1 yürütün.
 5. Oturum açmak için Azure kimlik bilgilerini sağlayın.
 6. Sanal makinelerinizin **Azure aboneliğini** seçin.
 7. Kaynak gruplarının yüklenmesini bekleyin ve ardından sanal makinelerinizin **kaynak grubunu** seçin.
 8. Görüntülenen listeden VM 'Leri seçin. Yalnızca disk şifrelemesi için etkinleştirilen VM 'Ler listede bulunur.
-9. **Hedef konumu**seçin.
+9. **Hedef konumu** seçin.
 
     - **Disk şifreleme anahtarı kasaları**
     - **Anahtar şifreleme anahtar kasaları**
@@ -80,13 +80,13 @@ Bu örnekte, birincil Azure Bölgesi Doğu Asya ve ikincil bölge Güney Doğu A
 
 1. Kasada **+ Çoğalt**' ı seçin.
 2. Aşağıdaki alanlara göz önünde edin.
-    - **Kaynak**: Bu örnekte **Azure**olan VM 'lerin kaynak noktası.
+    - **Kaynak**: Bu örnekte **Azure** olan VM 'lerin kaynak noktası.
     - **Kaynak konumu**: sanal makinelerinizi korumak istediğiniz Azure bölgesi. Bu örnekte, kaynak konumu "Doğu Asya" dir.
     - **Dağıtım modeli**: kaynak makinelerin Azure dağıtım modeli.
     - **Kaynak aboneliği**: kaynak sanal makinelerinizin ait olduğu abonelik. Kurtarma Hizmetleri kasasıyla aynı Azure Active Directory kiracısındaki herhangi bir abonelik olabilir.
     - **Kaynak grubu**: kaynak sanal makinelerinizin ait olduğu kaynak grubu. Seçilen kaynak grubundaki tüm VM 'Ler, bir sonraki adımda koruma için listelenir.
 
-3. Sanal **makineler**  >  ' de**sanal makineler**' i seçin, çoğaltmak istediğiniz her VM 'yi seçin. Yalnızca çoğaltmanın etkinleştirildiği makineleri seçebilirsiniz. Ardından **Tamam**' ı seçin.
+3. Sanal **makineler**  >  ' de **sanal makineler**' i seçin, çoğaltmak istediğiniz her VM 'yi seçin. Yalnızca çoğaltmanın etkinleştirildiği makineleri seçebilirsiniz. Ardından **Tamam**'ı seçin.
 
 4. **Ayarlar**' da, aşağıdaki hedef site ayarlarını yapılandırabilirsiniz.
 
@@ -109,17 +109,17 @@ Site Recovery varsayılan hedef ayarlarını değiştirmek için aşağıdaki ad
 1. Varsayılan hedef aboneliği değiştirmek için "hedef abonelik" yanındaki **Özelleştir** ' i seçin. Azure AD kiracısında bulunan abonelikler listesinden aboneliği seçin.
 
 2. Aşağıdaki varsayılan ayarları değiştirmek için "kaynak grubu, ağ, depolama ve kullanılabilirlik kümeleri" yanındaki **Özelleştir** ' i seçin:
-    - **Hedef kaynak grubu**için, aboneliğin hedef konumundaki kaynak grupları listesinden kaynak grubunu seçin.
-    - **Hedef sanal ağ**için, hedef konumdaki sanal ağlar listesinden ağı seçin.
-    - **Kullanılabilirlik**kümesi için, kaynak bölgedeki bir kullanılabilirlik KÜMESININ parçasıysa VM 'ye kullanılabilirlik kümesi ayarları ekleyebilirsiniz.
-    - **Hedef depolama hesapları**için kullanılacak hesabı seçin.
+    - **Hedef kaynak grubu** için, aboneliğin hedef konumundaki kaynak grupları listesinden kaynak grubunu seçin.
+    - **Hedef sanal ağ** için, hedef konumdaki sanal ağlar listesinden ağı seçin.
+    - **Kullanılabilirlik** kümesi için, kaynak bölgedeki bir kullanılabilirlik KÜMESININ parçasıysa VM 'ye kullanılabilirlik kümesi ayarları ekleyebilirsiniz.
+    - **Hedef depolama hesapları** için kullanılacak hesabı seçin.
 
 2. Aşağıdaki varsayılan ayarları değiştirmek için "şifreleme ayarları" nın yanındaki **Özelleştir** ' i seçin:
-   - **Hedef disk şifreleme anahtar kasası**için, aboneliğin hedef konumundaki anahtar kasaları listesinden hedef disk şifreleme anahtarı kasasını seçin.
-   - **Hedef anahtar şifreleme anahtar kasası**için, aboneliğin hedef konumundaki anahtar kasaları listesinden hedef anahtar şifreleme anahtar kasasını seçin.
+   - **Hedef disk şifreleme anahtar kasası** için, aboneliğin hedef konumundaki anahtar kasaları listesinden hedef disk şifreleme anahtarı kasasını seçin.
+   - **Hedef anahtar şifreleme anahtar kasası** için, aboneliğin hedef konumundaki anahtar kasaları listesinden hedef anahtar şifreleme anahtar kasasını seçin.
 
 3. **Hedef kaynağı oluşturma**  >  **çoğaltmasını etkinleştir**' i seçin.
-4. VM 'Ler çoğaltma için etkinleştirildikten sonra, **çoğaltılan öğeler**altında VM 'lerin sistem durumunu kontrol edebilirsiniz.
+4. VM 'Ler çoğaltma için etkinleştirildikten sonra, **çoğaltılan öğeler** altında VM 'lerin sistem durumunu kontrol edebilirsiniz.
 
 >[!NOTE]
 >İlk çoğaltma sırasında durum, görünür ilerleme olmadan yenilenmesi biraz zaman alabilir. En son durumu almak için **Yenile**  ' ye tıklayın.

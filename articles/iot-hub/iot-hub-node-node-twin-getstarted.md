@@ -10,10 +10,10 @@ ms.date: 08/26/2019
 ms.author: elioda
 ms.custom: mqtt, devx-track-js
 ms.openlocfilehash: 65ced3812072bd2650fc36bbb7a7b0f3f75e0def
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91336794"
 ---
 # <a name="get-started-with-device-twins-nodejs"></a>Cihaz ikizlerini kullanmaya başlama (Node.js)
@@ -30,7 +30,7 @@ Bu öğreticinin sonunda iki Node.js konsol uygulamanız olacaktır:
 > [Azure IoT SDK 'ları](iot-hub-devguide-sdks.md) makalesi, hem cihaz hem de arka uç uygulamaları oluşturmak Için kullanabileceğiniz Azure IoT SDK 'ları hakkında bilgi sağlar.
 >
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
@@ -40,7 +40,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 * Güvenlik duvarınızdaki 8883 numaralı bağlantı noktasını açık olduğundan emin olun. Bu makaledeki cihaz örneği, 8883 numaralı bağlantı noktası üzerinden iletişim kuran MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağ ortamlarında engellenebilir. Bu sorunu geçici olarak çözmek için daha fazla bilgi ve IoT Hub bkz. [bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-## <a name="create-an-iot-hub"></a>IoT hub’ı oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -56,9 +56,9 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 ## <a name="create-the-service-app"></a>Hizmet uygulaması oluşturma
 
-Bu bölümde, **Mydeviceıd**ile ilişkili cihaz ikizi konum meta verilerini ekleyen bir Node.js konsol uygulaması oluşturacaksınız. Daha sonra, IoT Hub 'ında depolanan cihaz TWINS 'sini, ABD 'de bulunan cihazları ve ardından hücresel bağlantı bildirdikleri sorgular.
+Bu bölümde, **Mydeviceıd** ile ilişkili cihaz ikizi konum meta verilerini ekleyen bir Node.js konsol uygulaması oluşturacaksınız. Daha sonra, IoT Hub 'ında depolanan cihaz TWINS 'sini, ABD 'de bulunan cihazları ve ardından hücresel bağlantı bildirdikleri sorgular.
 
-1. **Addtagsandqueryapp**adlı yeni bir boş klasör oluşturun. Komut isteminizdeki aşağıdaki komutu kullanarak **addtagsandqueryapp** klasöründe yeni bir package.jsoluşturun. `--yes`Parametresi tüm varsayılanları kabul eder.
+1. **Addtagsandqueryapp** adlı yeni bir boş klasör oluşturun. Komut isteminizdeki aşağıdaki komutu kullanarak **addtagsandqueryapp** klasöründe yeni bir package.jsoluşturun. `--yes`Parametresi tüm varsayılanları kabul eder.
 
     ```cmd/sh
     npm init --yes
@@ -105,7 +105,7 @@ Bu bölümde, **Mydeviceıd**ile ilişkili cihaz ikizi konum meta verilerini ekl
         });
    ```
 
-    **Kayıt defteri** nesnesi, hizmetten cihaz ikikiyle etkileşimde bulunmak için gereken tüm yöntemleri kullanıma sunar. Önceki kod, **kayıt defteri** nesnesini ilk kez başlatır, sonra **mydeviceıd**için Device ikizi alır ve son olarak etiketlerini istenen konum bilgileriyle güncelleştirir.
+    **Kayıt defteri** nesnesi, hizmetten cihaz ikikiyle etkileşimde bulunmak için gereken tüm yöntemleri kullanıma sunar. Önceki kod, **kayıt defteri** nesnesini ilk kez başlatır, sonra **mydeviceıd** için Device ikizi alır ve son olarak etiketlerini istenen konum bilgileriyle güncelleştirir.
 
     Etiketler güncelleştirildikten sonra **Querytwins** işlevini çağırır.
 
@@ -151,15 +151,15 @@ Sonraki bölümde, bağlantı bilgilerini raporlayan ve önceki bölümde sorgun
 
 ## <a name="create-the-device-app"></a>Cihaz uygulamasını oluşturma
 
-Bu bölümde, hub 'ınıza **Mydeviceıd**olarak bağlanan bir Node.js konsol uygulaması oluşturursunuz ve ardından Device ikizi 'in bildirilen özelliklerini bir hücresel ağ kullanılarak bağlı olduğu bilgileri içerecek şekilde güncelleştirir.
+Bu bölümde, hub 'ınıza **Mydeviceıd** olarak bağlanan bir Node.js konsol uygulaması oluşturursunuz ve ardından Device ikizi 'in bildirilen özelliklerini bir hücresel ağ kullanılarak bağlı olduğu bilgileri içerecek şekilde güncelleştirir.
 
-1. **Reportconnectivity**adlı yeni bir boş klasör oluşturun. **Reportconnectivity** klasöründe komut istemindeki aşağıdaki komutu kullanarak dosya üzerinde yeni bir package.jsoluşturun. `--yes`Parametresi tüm varsayılanları kabul eder.
+1. **Reportconnectivity** adlı yeni bir boş klasör oluşturun. **Reportconnectivity** klasöründe komut istemindeki aşağıdaki komutu kullanarak dosya üzerinde yeni bir package.jsoluşturun. `--yes`Parametresi tüm varsayılanları kabul eder.
 
     ```cmd/sh
     npm init --yes
     ```
 
-2. **Reportconnectivity** klasöründe komut istemindeki **Azure-IoT-Device**ve **Azure-IoT-Device-MQTT** paketlerini yüklemek için aşağıdaki komutu çalıştırın:
+2. **Reportconnectivity** klasöründe komut istemindeki **Azure-IoT-Device** ve **Azure-IoT-Device-MQTT** paketlerini yüklemek için aşağıdaki komutu çalıştırın:
 
     ```cmd/sh
     npm install azure-iot-device azure-iot-device-mqtt --save

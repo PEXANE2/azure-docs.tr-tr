@@ -4,10 +4,10 @@ description: Bu makalede, Azure aboneliğinizde Event Grid aboneliklerinin nası
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 3d700f543bc5e3c7add2a346c10acf975e1c2462
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86120458"
 ---
 # <a name="query-event-grid-subscriptions"></a>Event Grid abonelikleri sorgula 
@@ -36,7 +36,7 @@ Set-AzContext -Subscription "My Azure Subscription"
 Get-AzEventGridSubscription
 ```
 
-Bir Azure aboneliğine yönelik olay Kılavuzu abonelikleri almak için **Microsoft. resources. aboneliklerinin**konu türünü belirtin.
+Bir Azure aboneliğine yönelik olay Kılavuzu abonelikleri almak için **Microsoft. resources. aboneliklerinin** konu türünü belirtin.
 
 Azure CLI için şunu kullanın:
 
@@ -50,7 +50,7 @@ PowerShell için şunu kullanın:
 Get-AzEventGridSubscription -TopicTypeName "Microsoft.Resources.Subscriptions"
 ```
 
-Bir Azure aboneliği içindeki tüm kaynak grupları için Event Grid abonelikleri almak için **Microsoft. resources. ResourceGroups**konu türünü belirtin.
+Bir Azure aboneliği içindeki tüm kaynak grupları için Event Grid abonelikleri almak için **Microsoft. resources. ResourceGroups** konu türünü belirtin.
 
 Azure CLI için şunu kullanın:
 
@@ -110,7 +110,7 @@ PowerShell için şunu kullanın:
 Get-AzEventGridSubscription -TopicTypeName "Microsoft.EventGrid.Topics" -Location westus2
 ```
 
-Bir konum için depolama hesaplarına abonelikler almak üzere **Microsoft. Storage. StorageAccounts**konumunu ve konu türünü belirtin.
+Bir konum için depolama hesaplarına abonelikler almak üzere **Microsoft. Storage. StorageAccounts** konumunu ve konu türünü belirtin.
 
 Azure CLI için şunu kullanın:
 

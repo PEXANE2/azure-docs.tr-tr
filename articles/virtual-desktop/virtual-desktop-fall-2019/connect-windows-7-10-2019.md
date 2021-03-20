@@ -7,10 +7,10 @@ ms.date: 07/16/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 420c507361e3e2437366e6ccf2d46a8b78684e59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88008378"
 ---
 # <a name="connect-with-the-windows-desktop-classic-client"></a>Windows Masaüstü (klasik) istemcisiyle bağlantı
@@ -41,7 +41,7 @@ Windows sürümünüzle eşleşen istemciyi seçin:
 
 Yönetici hakları gerektirmeyen geçerli kullanıcı için istemcisini yükleyebilir veya yöneticiniz, cihazdaki tüm kullanıcıların erişebilmesi için istemciyi yükleyip yapılandırabilir.
 
-Yüklendikten sonra istemci, **Uzak Masaüstü**araması yaparak başlangıç menüsünden başlatılabilir.
+Yüklendikten sonra istemci, **Uzak Masaüstü** araması yaparak başlangıç menüsünden başlatılabilir.
 
 ## <a name="subscribe-to-a-workspace"></a>Çalışma alanına abone olma
 
@@ -60,7 +60,7 @@ Bir çalışma alanına abone olabileceğiniz iki yol vardır. İstemci, iş vey
 
 1. İstemcinin ana sayfasında **URL Ile abone ol**' u seçin.
 2. Çalışma alanı URL 'sini veya e-posta adresinizi girin:
-   - **Çalışma alanı URL 'sini**kullanıyorsanız, yöneticinizin size verdiği bir tane kullanın. Windows sanal masaüstünden kaynaklara erişim için aşağıdaki URL 'Lerden birini kullanabilirsiniz:
+   - **Çalışma alanı URL 'sini** kullanıyorsanız, yöneticinizin size verdiği bir tane kullanın. Windows sanal masaüstünden kaynaklara erişim için aşağıdaki URL 'Lerden birini kullanabilirsiniz:
      - Windows sanal masaüstü (klasik): `https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`
      - Windows sanal masaüstü: `https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`
    - Bunun yerine **e-posta** alanını kullanıyorsanız, e-posta adresinizi girin. Bu, yönetici [e-posta bulmayı](/windows-server/remote/remote-desktop-services/rds-email-discovery)ayarlamışsa, istemciye e-posta adresinizle ILIŞKILI bir URL aramasını söyler.

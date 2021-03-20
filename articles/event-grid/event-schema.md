@@ -1,20 +1,20 @@
 ---
 title: Azure Event Grid olay şeması
-description: Tüm olaylar için mevcut olan özellikleri ve şemayı açıklar.Olaylar, beş gerekli dize özelliği ve gerekli bir veri nesnesi kümesinden oluşur.
+description: Tüm olaylar için mevcut olan özellikleri ve şemayı açıklar. Olaylar, beş gerekli dize özelliği ve gerekli bir veri nesnesi kümesinden oluşur.
 ms.topic: reference
 ms.date: 07/07/2020
 ms.openlocfilehash: 7ddc7c78c5a9e5ba2a57b21c45fb9fab65056ee9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86105889"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure Event Grid olay şeması
 
-Bu makalede, tüm olaylar için mevcut olan özellikler ve şema açıklanmaktadır.Olaylar, beş gerekli dize özelliği ve gerekli bir veri nesnesi kümesinden oluşur. Özellikler, herhangi bir yayımcının tüm olayları için ortaktır. Veri nesnesi, her yayımcıya özgü özelliklere sahiptir. Sistem konuları için, bu özellikler kaynak sağlayıcısına (örneğin, Azure depolama veya Azure Event Hubs) özgüdür.
+Bu makalede, tüm olaylar için mevcut olan özellikler ve şema açıklanmaktadır. Olaylar, beş gerekli dize özelliği ve gerekli bir veri nesnesi kümesinden oluşur. Özellikler, herhangi bir yayımcının tüm olayları için ortaktır. Veri nesnesi, her yayımcıya özgü özelliklere sahiptir. Sistem konuları için, bu özellikler kaynak sağlayıcısına (örneğin, Azure depolama veya Azure Event Hubs) özgüdür.
 
-Olay kaynakları, çeşitli olay nesnelerine sahip olabilen bir dizide Azure Event Grid olayları gönderir. Olayları bir Event Grid konusuna naklederken, dizi toplam boyutu 1 MB olabilir. Dizideki her olay 1 MB ile sınırlıdır. Bir olay veya dizi boyut limitinden büyükse, yanıt **413 yükünü çok büyük**olarak alırsınız. İşlemler, 64 KB 'lik artışlarla ücretlendirilir. Bu nedenle, 64 KB üzerindeki olaylar birden çok olaymış gibi işlemler ücretlerine neden olur. Örneğin, 130 KB olan bir olay 3 ayrı olay gibi işlemler için işlem yapmış olur.
+Olay kaynakları, çeşitli olay nesnelerine sahip olabilen bir dizide Azure Event Grid olayları gönderir. Olayları bir Event Grid konusuna naklederken, dizi toplam boyutu 1 MB olabilir. Dizideki her olay 1 MB ile sınırlıdır. Bir olay veya dizi boyut limitinden büyükse, yanıt **413 yükünü çok büyük** olarak alırsınız. İşlemler, 64 KB 'lik artışlarla ücretlendirilir. Bu nedenle, 64 KB üzerindeki olaylar birden çok olaymış gibi işlemler ücretlerine neden olur. Örneğin, 130 KB olan bir olay 3 ayrı olay gibi işlemler için işlem yapmış olur.
 
 Event Grid, olayları tek bir olaya sahip olan bir dizide abonelere gönderir. Bu davranış daha sonra değişebilir.
 
@@ -78,11 +78,11 @@ Tüm olaylar en üst düzey verilere sahiptir:
 | Özellik | Tür | Gerekli | Açıklama |
 | -------- | ---- | -------- | ----------- |
 | konu başlığı | string | Hayır, ancak dahil ediliyorsa, KIMLIK Azure Resource Manager Event Grid konusuyla aynı olmalıdır. Dahil edilmediğinden, Event Grid olayın üzerine damgası eklenir. | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
-| subject | string | Evet | Olay konusunun yayımcı tarafından tanımlanan yolu. |
-| eventType | string | Evet | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
-| eventTime | string | Evet | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
-| kimlik | string | Evet | Etkinliğin benzersiz tanımlayıcısı. |
-| veriler | object | Hayır | Kaynak sağlayıcısına özel olay verileri. |
+| subject | string | Yes | Olay konusunun yayımcı tarafından tanımlanan yolu. |
+| eventType | string | Yes | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
+| eventTime | string | Yes | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
+| kimlik | string | Yes | Etkinliğin benzersiz tanımlayıcısı. |
+| veriler | object | No | Kaynak sağlayıcısına özel olay verileri. |
 | dataVersion | string | Hayır, ancak boş bir değerle damgalı olacak. | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
 | metadataVersion | string | Gerekli değildir, ancak dahil ise Event Grid şeması ile `metadataVersion` tam olarak eşleşmelidir (Şu anda yalnızca `1` ). Dahil edilmediğinden, Event Grid olayın üzerine damgası eklenir. | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
 

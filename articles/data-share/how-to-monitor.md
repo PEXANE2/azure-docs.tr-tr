@@ -7,10 +7,10 @@ ms.service: data-share
 ms.topic: how-to
 ms.date: 07/30/2020
 ms.openlocfilehash: cc400922115f348090677661cd1b30434be19b72
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92910483"
 ---
 # <a name="monitor-azure-data-share"></a>Azure Veri Paylaşımı’nı izleme  
@@ -36,7 +36,7 @@ Davetinizin bulunabileceği üç durum vardır:
 
 ## <a name="monitor-share-subscriptions"></a>Paylaşma aboneliklerini izleme
 
-Gönderilen paylaşımlar-> paylaşma aboneliklerine giderek paylaşım aboneliklerinizin durumunu görüntüleyin. Bu, davetinizi kabul ettikten sonra veri Tüketicileriniz tarafından oluşturulan etkin abonelikler hakkındaki ayrıntıları verir. Paylaşma aboneliğini seçerek ve *Iptal et* ' i seçerek veri tüketicinizin gelecekteki güncelleştirmelerini durdurabilirsiniz. 
+Gönderilen paylaşımlar-> paylaşma aboneliklerine giderek paylaşım aboneliklerinizin durumunu görüntüleyin. Bu, davetinizi kabul ettikten sonra veri Tüketicileriniz tarafından oluşturulan etkin abonelikler hakkındaki ayrıntıları verir. Paylaşma aboneliğini seçerek ve *Iptal et*' i seçerek veri tüketicinizin gelecekteki güncelleştirmelerini durdurabilirsiniz. 
 
 ## <a name="snapshot-history"></a>Anlık görüntü geçmişi 
 
@@ -50,7 +50,7 @@ En fazla 30 günlük anlık görüntü geçmişi görüntülenir. 30 günden faz
 
 ## <a name="diagnostic-setting"></a>Tanılama ayarı
 
-Günlük verilerini veya olaylarını kaydetmek için tanılama ayarını yapılandırabilirsiniz. Izleme-> Tanılama Ayarları ' na gidin ve **Tanılama ayarı Ekle** ' yi seçin. İlgilendiğiniz günlük verilerini veya olayları ve bunları nerede depolamak veya göndermek istediğinizi seçin. 
+Günlük verilerini veya olaylarını kaydetmek için tanılama ayarını yapılandırabilirsiniz. Izleme-> Tanılama Ayarları ' na gidin ve **Tanılama ayarı Ekle**' yi seçin. İlgilendiğiniz günlük verilerini veya olayları ve bunları nerede depolamak veya göndermek istediğinizi seçin. 
 
 ![Ekran görüntüsü Azure portal Tanılama Ayarları sayfasını gösterir.](./media/diagnostic-settings.png "Tanılama ayarları") 
 

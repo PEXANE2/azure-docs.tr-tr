@@ -8,13 +8,13 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 0196522618d4b61f615f7cc6faeacbe9a8c7c5b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86171355"
 ---
-# <a name="common-issues"></a>Genel Sorunlar
+# <a name="common-issues"></a>Sık Karşılaşılan Sorunlar
 
 Ortamınızdaki IoT Edge Azure Event Grid kullanarak sorunlarla karşılaşırsanız sorun giderme ve çözümleme için bu makaleyi kılavuz olarak kullanın.
 
@@ -36,7 +36,7 @@ sudo docker logs eventgridmodule
 
 ## <a name="unable-to-make-https-requests"></a>HTTPS istekleri yapılamıyor
 
-* İlk olarak Event Grid modülün **gelen: serverAuth: tlsPolicy** **Strict** veya **Enabled**olarak ayarlanmış olduğundan emin olun.
+* İlk olarak Event Grid modülün **gelen: serverAuth: tlsPolicy** **Strict** veya **Enabled** olarak ayarlanmış olduğundan emin olun.
 
 * Modülün modüle iletişimler iletişim varsa, bağlantı noktası **4438** ' de çağrıyı yaptığınızdan ve modülün adı dağıtılan ile eşleştiğinden emin olun. 
 
@@ -58,7 +58,7 @@ sudo docker logs eventgridmodule
 
 ## <a name="unable-to-make-http-requests"></a>HTTP istekleri yapılamıyor
 
-* İlk olarak Event Grid modülün **gelen: serverAuth: tlsPolicy** özelliğinin **etkin** veya **devre dışı**olarak ayarlandığını doğrulayın.
+* İlk olarak Event Grid modülün **gelen: serverAuth: tlsPolicy** özelliğinin **etkin** veya **devre dışı** olarak ayarlandığını doğrulayın.
 
 * Modülün modüle iletişimler iletişim varsa, bağlantı noktası **5888** ' de çağrıyı yaptığınızdan ve modülün adı dağıtılan ile eşleştiğinden emin olun. 
 

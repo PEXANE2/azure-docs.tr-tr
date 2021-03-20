@@ -16,10 +16,10 @@ ms.custom:
 - 'Role: IoT Device'
 - devx-track-csharp
 ms.openlocfilehash: d8df9884c0104792240d85d9ebd4235ef2a18741
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92142349"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>IoT Hub (.NET) ile buluttan cihazınıza ileti gönderme
@@ -89,7 +89,7 @@ Bu bölümde, IoT Hub 'ından buluttan cihaza iletileri almak için [bir cihazda
    ReceiveC2dAsync();
    ```
 
-`ReceiveAsync`Yöntemi, cihaz tarafından alındığı sırada alınan iletiyi zaman uyumsuz olarak döndürür. Belirli bir zaman aşımı süresinden sonra *null* değerini döndürür. Bu örnekte, bir dakikalık varsayılan değer kullanılır. Uygulama *null*aldığında yeni iletileri beklemeye devam etmelidir. Bu gereksinim, çizginin nedenidir `if (receivedMessage == null) continue` .
+`ReceiveAsync`Yöntemi, cihaz tarafından alındığı sırada alınan iletiyi zaman uyumsuz olarak döndürür. Belirli bir zaman aşımı süresinden sonra *null* değerini döndürür. Bu örnekte, bir dakikalık varsayılan değer kullanılır. Uygulama *null* aldığında yeni iletileri beklemeye devam etmelidir. Bu gereksinim, çizginin nedenidir `if (receivedMessage == null) continue` .
 
 ' A yapılan çağrı, `CompleteAsync()` iletinin başarıyla işlendiğini ve iletinin cihaz sırasından güvenle kaldırılabileceği IoT Hub bildirir. İşlem, kullandığı Protokolden bağımsız olarak işlemi başarıyla tamamlandığında cihaz bu yöntemi çağırmalıdır.
 
@@ -98,7 +98,7 @@ AMQP ve HTTPS ile, ancak MQTT ile cihaz de şunları yapabilir:
 * İleti, gelecekteki tüketim için cihaz sırasındaki iletiyi saklamaya IoT Hub neden olan bir iletiyi iptal edin.
 * İletiyi, cihaz sırasından kalıcı olarak kaldıran bir iletiyi reddedin.
 
-Cihazın iletiyi tamamlamasını, çıkarmasını veya reddetmesini önleyen bir sorun oluşursa IoT Hub, sabit bir zaman aşımı süresinden sonra iletiyi teslim için yeniden kuyruğa alır. Bu nedenle, cihaz uygulamasındaki ileti işleme mantığı *ıdempotent*olmalıdır, böylece aynı iletiyi birden çok kez almak aynı sonucu üretir.
+Cihazın iletiyi tamamlamasını, çıkarmasını veya reddetmesini önleyen bir sorun oluşursa IoT Hub, sabit bir zaman aşımı süresinden sonra iletiyi teslim için yeniden kuyruğa alır. Bu nedenle, cihaz uygulamasındaki ileti işleme mantığı *ıdempotent* olmalıdır, böylece aynı iletiyi birden çok kez almak aynı sonucu üretir.
 
 Bulut-cihaz ileti yaşam döngüsünün ayrıntıları dahil IoT Hub, buluttan cihaza iletileri nasıl işlediği hakkında daha ayrıntılı bilgi için bkz. [IoT Hub 'ından buluttan cihaza Ileti gönderme](iot-hub-devguide-messages-c2d.md).
 
@@ -118,17 +118,17 @@ Bu bölümde, sanal cihaz uygulamasına buluttan cihaza iletiler gönderen bir .
 
 1. Geçerli Visual Studio çözümünde **Dosya**  >  **Yeni**  >  **Proje**' yi seçin. **Yeni proje oluştur**' da **konsol uygulaması (.NET Framework)** öğesini seçin ve ardından **İleri**' yi seçin.
 
-1. Projeyi *Sendcloudtodevice*olarak adlandırın. **Çözüm**altında **çözüme Ekle** ' yi seçin ve .NET Framework en son sürümünü kabul edin. Projeyi oluşturmak için **Oluştur**'u seçin.
+1. Projeyi *Sendcloudtodevice* olarak adlandırın. **Çözüm** altında **çözüme Ekle** ' yi seçin ve .NET Framework en son sürümünü kabul edin. Projeyi oluşturmak için **Oluştur**'u seçin.
 
    ![Visual Studio 'da yeni bir proje yapılandırma](./media/iot-hub-csharp-csharp-c2d/sendcloudtodevice-project-configure.png)
 
 1. Çözüm Gezgini ' de, yeni projeye sağ tıklayın ve ardından **NuGet Paketlerini Yönet**' i seçin.
 
-1. **NuGet Paketlerini Yönet**bölümünde, **Araştır**' ı seçin ve ardından **Microsoft. Azure. Devices**' i arayıp seçin. **Yüklemeyi**seçin.
+1. **NuGet Paketlerini Yönet** bölümünde, **Araştır**' ı seçin ve ardından **Microsoft. Azure. Devices**' i arayıp seçin. **Yüklemeyi** seçin.
 
    Bu adım, [Azure IoT hizmeti SDK 'Sı NuGet paketi](https://www.nuget.org/packages/Microsoft.Azure.Devices/)'ni indirir, yükler ve buna bir başvuru ekler.
 
-1. `using` **Program.cs** dosyasının en üstüne aşağıdaki ifadeyi ekleyin.
+1. Aşağıdaki `using` Ifadeyi **program. cs** dosyasının üst kısmına ekleyin.
 
    ``` csharp
    using Microsoft.Azure.Devices;
@@ -167,9 +167,9 @@ Bu bölümde, sanal cihaz uygulamasına buluttan cihaza iletiler gönderen bir .
 
 1. Çözüm Gezgini 'nde çözümünüze sağ tıklayın ve **Başlangıç projelerini ayarla**' yı seçin.
 
-1. **Ortak özellikler**  >  **Başlangıç projesinde** **birden çok başlangıç**projesi ' ni seçin ve ardından **SimulatedDevice** ve **sendcloudtodevice**için **başlatma** eylemini seçin. Değişikliklerinizi kaydetmek için **Tamam**’ı seçin.
+1. **Ortak özellikler**  >  **Başlangıç projesinde** **birden çok başlangıç** projesi ' ni seçin ve ardından **SimulatedDevice** ve **sendcloudtodevice** için **başlatma** eylemini seçin. Değişikliklerinizi kaydetmek için **Tamam**’ı seçin.
 
-1. **F5**tuşuna basın. Her iki uygulama da başlamalıdır. **Sendcloudtodevice** penceresini seçin ve **ENTER**tuşuna basın. Cihaz uygulaması tarafından alınan iletiyi görmeniz gerekir.
+1. **F5** tuşuna basın. Her iki uygulama da başlamalıdır. **Sendcloudtodevice** penceresini seçin ve **ENTER** tuşuna basın. Cihaz uygulaması tarafından alınan iletiyi görmeniz gerekir.
 
    ![Cihaz uygulaması alma iletisi](./media/iot-hub-csharp-csharp-c2d/sendc2d1.png)
 
@@ -216,7 +216,7 @@ Bu bölümde, **Sendcloudtodevice** uygulamasını, geri bildirim Isteyecek ve I
    commandMessage.Ack = DeliveryAcknowledgement.Full;
    ```
 
-1. **F5**tuşuna basarak uygulamaları çalıştırın. Her iki uygulamanın da başlatılmasını görmeniz gerekir. **Sendcloudtodevice** penceresini seçin ve **ENTER**tuşuna basın. Cihaz uygulaması tarafından alınan iletiyi ve birkaç saniye sonra, **Sendcloudtodevice** uygulamanız tarafından alınan geri bildirim iletisini görmeniz gerekir.
+1. **F5** tuşuna basarak uygulamaları çalıştırın. Her iki uygulamanın da başlatılmasını görmeniz gerekir. **Sendcloudtodevice** penceresini seçin ve **ENTER** tuşuna basın. Cihaz uygulaması tarafından alınan iletiyi ve birkaç saniye sonra, **Sendcloudtodevice** uygulamanız tarafından alınan geri bildirim iletisini görmeniz gerekir.
 
    ![Cihaz uygulaması ileti ve hizmet uygulaması geri bildirimi alma](./media/iot-hub-csharp-csharp-c2d/sendc2d2.png)
 

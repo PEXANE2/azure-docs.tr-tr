@@ -10,10 +10,10 @@ ms.date: 08/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-csharp
 ms.openlocfilehash: 0391afe5562238f488fde7e50d914c46a5c32944
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92142452"
 ---
 # <a name="schedule-and-broadcast-jobs-net"></a>İşleri zamanlama ve yayınlama (.NET)
@@ -40,7 +40,7 @@ Bu yeteneklerin her biri hakkında daha fazla bilgi edinmek için bkz.:
 
 Bu öğretici şunların nasıl yapıldığını gösterir:
 
-* Arka uç uygulaması tarafından çağrılabilen **Lockkapısı**adlı doğrudan bir yöntemi uygulayan bir cihaz uygulaması oluşturun.
+* Arka uç uygulaması tarafından çağrılabilen **Lockkapısı** adlı doğrudan bir yöntemi uygulayan bir cihaz uygulaması oluşturun.
 
 * Birden çok cihazda **Lockkapısı** doğrudan yöntemini çağırmak için bir iş oluşturan bir arka uç uygulaması oluşturun. Başka bir iş, istenen özellik güncelleştirmelerini birden çok cihaza gönderir.
 
@@ -72,7 +72,7 @@ Bu bölümde, çözüm arka ucu tarafından çağrılan doğrudan bir yönteme y
 
 1. Visual Studio 'da **Yeni proje oluştur**' u seçin ve ardından **konsol uygulaması (.NET Framework)** proje şablonunu seçin. Devam etmek için **İleri** seçeneğini belirleyin.
 
-1. **Yeni projenizi yapılandırın**bölümünde projeyi *SimulateDeviceMethods*olarak adlandırın ve ardından **Oluştur**' u seçin.
+1. **Yeni projenizi yapılandırın** bölümünde projeyi *SimulateDeviceMethods* olarak adlandırın ve ardından **Oluştur**' u seçin.
 
     ![SimulateDeviceMethods projenizi yapılandırma](./media/iot-hub-csharp-csharp-schedule-jobs/configure-device-app.png)
 
@@ -169,7 +169,7 @@ Bu bölümde, **Lockkapısı** doğrudan yöntemini çağırmak ve istenen özel
 
 1. Visual Studio 'da **Dosya**  >  **Yeni**  >  **Proje**' yi seçin. **Yeni proje oluştur**' da **konsol uygulaması (.NET Framework)** öğesini seçin ve ardından **İleri**' yi seçin.
 
-1. **Yeni projenizi yapılandırın**bölümünde proje *schedulejob*' u adlandırın. **Çözüm**Için **çözüme Ekle**' yi seçin ve ardından **Oluştur**' u seçin.
+1. **Yeni projenizi yapılandırın** bölümünde proje *schedulejob*' u adlandırın. **Çözüm** Için **çözüme Ekle**' yi seçin ve ardından **Oluştur**' u seçin.
 
     ![Zamanlama Işi projenizi adlandırın ve yapılandırın](./media/iot-hub-csharp-csharp-schedule-jobs/config-schedule-job-app.png)
 
@@ -295,7 +295,7 @@ Bu bölümde, **Lockkapısı** doğrudan yöntemini çağırmak ve istenen özel
 
 1. Visual Studio Çözüm Gezgini çözümünüze sağ tıklayın ve ardından **Başlangıç projelerini ayarla**' yı seçin.
 
-1. **Ortak özellikler**  >  **Başlangıç projesi**' ni seçin ve ardından **birden çok başlangıç**projesi ' ni seçin.
+1. **Ortak özellikler**  >  **Başlangıç projesi**' ni seçin ve ardından **birden çok başlangıç** projesi ' ni seçin.
 
 1. `SimulateDeviceMethods`Listenin en üstünde ve sonrasında olduğundan emin olun `ScheduleJob` . Her iki eylemini **Başlangıç** olarak ayarlayın ve **Tamam**' ı seçin.
 
