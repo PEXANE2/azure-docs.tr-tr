@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: 801197a171b5be2cfe46c249398381e1b25857ff
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92515364"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-price-reporting"></a>Öğretici: Predictıx fiyat raporlama ile tümleştirme Azure Active Directory
@@ -61,7 +61,7 @@ Tahmine TIX fiyat raporlama 'nın Azure AD 'ye tümleştirmesini ayarlamak için
 
     ![Yeni uygulama seçin](common/add-new-app.png)
 
-4. Arama kutusuna tahmine **TIX fiyat raporlama**girin. Arama sonuçlarında **Predictix fiyat raporlama** ' yı seçin ve ardından **Ekle**' yi seçin.
+4. Arama kutusuna tahmine **TIX fiyat raporlama** girin. Arama sonuçlarında **Predictix fiyat raporlama** ' yı seçin ve ardından **Ekle**' yi seçin.
 
      ![Arama sonuçları](common/search-new-app.png)
 
@@ -149,9 +149,9 @@ Bu bölümde, Azure portal Britta Simon adlı bir test kullanıcısı oluşturac
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    1. **Ad** kutusuna **Brittasıon**yazın.
+    1. **Ad** kutusuna **Brittasıon** yazın.
   
-    1. **Kullanıcı adı** kutusuna **BrittaSimon@ girin \<yourcompanydomain> . \<extension> ** (Örneğin, BrittaSimon@contoso.com .)
+    1. **Kullanıcı adı** kutusuna **BrittaSimon@ girin \<yourcompanydomain> . \<extension>** (Örneğin, BrittaSimon@contoso.com .)
 
     1. **Parolayı göster**' i seçin ve ardından **parola** kutusunda değer ' i yazın.
 

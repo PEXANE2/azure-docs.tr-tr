@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: acacf617d3f1d9ab891d08b32fc2dfb14deb64a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91540532"
 ---
 # <a name="pii-detection-cognitive-skill"></a>PII algılama Bilişsel Beceri
 
 > [!IMPORTANT] 
-> Bu yetenek Şu anda genel önizlemededir. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Şu anda portal veya .NET SDK desteği yok.
+> Bu yetenek Şu anda genel önizlemededir. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Şu anda portal veya .NET SDK desteği yok.
 
 **PII algılama** becerisi, kişisel bilgileri bir giriş metinden ayıklar ve bunu maskeleme seçeneği sunar. Bu beceri bilişsel hizmetler 'de [metin analizi](../cognitive-services/text-analytics/overview.md) tarafından sunulan makine öğrenimi modellerini kullanır.
 
@@ -48,14 +48,14 @@ Parametreler büyük/küçük harfe duyarlıdır ve tümü isteğe bağlıdır.
 
 ## <a name="skill-inputs"></a>Beceri girişleri
 
-| Giriş adı      | Açıklama                   |
+| Giriş adı      | Description                   |
 |---------------|-------------------------------|
 | `languageCode`    | İsteğe bağlı. `en` varsayılan değerdir.  |
 | `text`          | Çözümlenecek metin.          |
 
 ## <a name="skill-outputs"></a>Yetenek çıkışları
 
-| Çıkış adı      | Açıklama                   |
+| Çıkış adı      | Description                   |
 |---------------|-------------------------------|
 | `piiEntities` | Aşağıdaki alanları içeren karmaşık türlerin dizisi: <ul><li>metin (ayıklanan olarak gerçek PII)</li> <li>tür</li><li>subType</li><li>Score (daha yüksek değer, gerçek bir varlık olma olasılığı daha yüksektir)</li><li>fark (giriş metnine)</li><li>length</li></ul> </br> [Olası türler ve alt türler burada bulunabilir.](../cognitive-services/text-analytics/named-entity-types.md?tabs=personal) |
 | `maskedText` | , Dışında `maskingMode` bir değere ayarlanırsa `none` , bu çıktı, seçili tarafından açıklandığı şekilde giriş metninde gerçekleştirilen maskelemenin dize sonucu olacaktır `maskingMode` .  `maskingMode`Olarak ayarlanırsa `none` , bu çıkış mevcut olmayacaktır. |

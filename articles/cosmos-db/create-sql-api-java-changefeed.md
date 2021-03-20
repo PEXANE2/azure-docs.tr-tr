@@ -10,10 +10,10 @@ ms.date: 06/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
 ms.openlocfilehash: 765fd3afc7fe688d3e6b0e3394e7dc8c39af69b3
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93096861"
 ---
 # <a name="how-to-create-a-java-application-that-uses-azure-cosmos-db-sql-api-and-change-feed-processor"></a>SQL API Azure Cosmos DB kullanan bir Java uygulaması oluşturma ve akış işlemcisini değiştirme
@@ -57,7 +57,7 @@ mvn clean package
 
 ## <a name="walkthrough"></a>Kılavuz
 
-1. İlk denetim olarak bir Azure Cosmos DB hesabınızın olması gerekir. Tarayıcınızda **Azure Portal** açın, Azure Cosmos DB hesabınıza gidin ve sol bölmedeki **Veri Gezgini** ' a gidin.
+1. İlk denetim olarak bir Azure Cosmos DB hesabınızın olması gerekir. Tarayıcınızda **Azure Portal** açın, Azure Cosmos DB hesabınıza gidin ve sol bölmedeki **Veri Gezgini**' a gidin.
 
    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_account_empty.JPG" alt-text="Azure Cosmos DB hesabı":::
 
@@ -79,7 +79,7 @@ mvn clean package
     * **Inventorycontainer-pktype** -stok kaydının gerçekleştirilmiş bir görünümü, öğe üzerindeki sorgular için iyileştirilmiştir ```type```
     * **Inventorycontainer-kiralamalar** -her zaman değişiklik akışı için bir kiralama kapsayıcısı gereklidir; kiralamalar değişiklik akışını okurken uygulamanın ilerlemesini izler.
 
-    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_account_resources_lease_empty.JPG" alt-text="Azure Cosmos DB hesabı":::
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_account_resources_lease_empty.JPG" alt-text="Boş kapsayıcılar":::
 
 1. Terminalde, şimdi bir istem görmeniz gerekir
 
@@ -95,9 +95,9 @@ mvn clean package
 
     ```"SampleHost_1"``` , değişiklik akışı işlemci çalışanının adıdır. ```changeFeedProcessorInstance.start()``` Değişiklik akışı işlemcisini asıl olarak başlatır.
 
-    Tarayıcınızda Azure portal Veri Gezgini geri dönün. **Inventorycontainer-kiralamalar** kapsayıcısının altında, içeriğini görmek için **öğeler** ' e tıklayın. Değişiklik akışı Işlemcisinin kira kapsayıcısını doldurduğuna, yani işlemcinin ```SampleHost_1``` bir çalışan tarafından **ınventorycontainer** 'in bazı bölümlerinde bir kira atamasıyla karşılaşırsınız.
+    Tarayıcınızda Azure portal Veri Gezgini geri dönün. **Inventorycontainer-kiralamalar** kapsayıcısının altında, içeriğini görmek için **öğeler** ' e tıklayın. Değişiklik akışı Işlemcisinin kira kapsayıcısını doldurduğuna, yani işlemcinin ```SampleHost_1``` bir çalışan tarafından **ınventorycontainer**'in bazı bölümlerinde bir kira atamasıyla karşılaşırsınız.
 
-    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_leases.JPG" alt-text="Azure Cosmos DB hesabı":::
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_leases.JPG" alt-text="Lamalarını":::
 
 1. Terminalde ENTER tuşuna basın. Bu işlem, 10 belgeyi **ınventorycontainer** içine eklenecek şekilde tetikler. Her belge ekleme, değişiklik akışında JSON olarak görünür; Aşağıdaki geri çağırma kodu, JSON belgelerini gerçekleştirilmiş bir görünüme yansıtarak bu olayları işler:
 
@@ -107,15 +107,15 @@ mvn clean package
 
 1. Kodun 5-10sn çalışmasına izin verin. Ardından Azure portal Veri Gezgini geri dönüp **ınventorycontainer > öğelerine** gidin. Öğelerin envanter kapsayıcısına eklenmekte olduğunu görmeniz gerekir; bölüm anahtarına () göz önünde ```id``` .
 
-    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_items.JPG" alt-text="Azure Cosmos DB hesabı":::
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_items.JPG" alt-text="Akış kapsayıcısı":::
 
 1. Şimdi Veri Gezgini ' de, **ınventorycontainer-pktype > öğelerine** gidin. Bu, bu kapsayıcıdaki öğeler, değişiklik akışı tarafından program aracılığıyla eklendiklerinden, bu kapsayıcıdaki öğelerin, **ınventorycontainer** yansıtmasının gerçekleştirilmiş görünümüdür. Bölüm anahtarına () göz önünde ```type``` . Bu gerçekleştirilmiş görünüm ```type``` , üzerinde bölümlenmiş olduğundan **ınventorycontainer** üzerinde verimsiz olacak sorgular üzerinde filtreleme için en iyi duruma getirilmiştir ```id``` .
 
-    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview2.JPG" alt-text="Azure Cosmos DB hesabı":::
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview2.JPG" alt-text="Ekran görüntüsü, seçili öğeler içeren bir Azure Cosmos D B hesabının Veri Gezgini sayfasını gösterir.":::
 
 1. Yalnızca tek bir çağrı kullanarak hem **ınventorycontainer** hem de **ınventorycontainer-pktype** öğesinden bir belgeyi silelim ```upsertItem()``` . İlk olarak, Azure portal Veri Gezgini göz atın. Belgeyi, ```/type == "plums"``` aşağıda kırmızı renkte olduğu gibi sileceğiz
 
-    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview-emph-todelete.JPG" alt-text="Azure Cosmos DB hesabı":::
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview-emph-todelete.JPG" alt-text="Ekran görüntüsünde, belirli bir öğe I seçiliyken bir Azure Cosmos D B hesabının Veri Gezgini sayfası gösterilir.":::
 
     Örnek kodda işlevi çağırmak için yeniden ENTER tuşuna basın ```deleteDocument()``` . Aşağıda gösterilen bu işlev, belge ```/ttl == 5``` yaşam süresi (TTL) ile 5 sn arasında olan belgenin yeni bir sürümünü kaplamıştır. 
     

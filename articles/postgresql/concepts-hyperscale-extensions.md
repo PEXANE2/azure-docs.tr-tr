@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.openlocfilehash: 000f8a1457298901dcfc94bc5e0923e94ba35dc7
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96620911"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nda PostgreSQL uzantıları – hiper ölçek (Citus)
@@ -31,7 +31,7 @@ Aşağıdaki tablolarda, şu anda PostgreSQL için Azure veritabanı tarafından
 ### <a name="data-types-extensions"></a>Veri türleri uzantıları
 
 > [!div class="mx-tableFixed"]
-> | **Uzantı** | **Açıklama** |
+> | **Dahili numara** | **Açıklama** |
 > |---|---|
 > | [citext](https://www.postgresql.org/docs/current/static/citext.html) | Büyük/küçük harf duyarsız bir karakter dizesi türü sağlar. |
 > | [ünüzde](https://www.postgresql.org/docs/current/static/cube.html) | Çok boyutlu küpler için bir veri türü sağlar. |
@@ -47,7 +47,7 @@ Aşağıdaki tablolarda, şu anda PostgreSQL için Azure veritabanı tarafından
 ### <a name="full-text-search-extensions"></a>Tam metin arama uzantıları
 
 > [!div class="mx-tableFixed"]
-> | **Uzantı** | **Açıklama** |
+> | **Dahili numara** | **Açıklama** |
 > |---|---|
 > | [Dict \_ int](https://www.postgresql.org/docs/current/static/dict-int.html) | Tamsayılar için bir metin arama sözlüğü şablonu sağlar. |
 > | [Dict \_ xsyn](https://www.postgresql.org/docs/current/dict-xsyn.html) | Genişletilmiş eş anlamlı işleme için metin arama sözlüğü şablonu. |
@@ -56,7 +56,7 @@ Aşağıdaki tablolarda, şu anda PostgreSQL için Azure veritabanı tarafından
 ### <a name="functions-extensions"></a>İşlev uzantıları
 
 > [!div class="mx-tableFixed"]
-> | **Uzantı** | **Açıklama** |
+> | **Dahili numara** | **Açıklama** |
 > |---|---|
 > | [Oto](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.7) | Alanları tekrar arttırın işlevleri. |
 > | [earthdistance](https://www.postgresql.org/docs/current/static/earthdistance.html) | Dünya yüzeyinde büyük daire mesafelerini hesaplamak için bir yol sağlar. |
@@ -78,14 +78,14 @@ Aşağıdaki tablolarda, şu anda PostgreSQL için Azure veritabanı tarafından
 ### <a name="hyperscale-citus-extensions"></a>Hyperscale (Citus) uzantıları
 
 > [!div class="mx-tableFixed"]
-> | **Uzantı** | **Açıklama** |
+> | **Dahili numara** | **Açıklama** |
 > |---|---|
 > | [citus](https://github.com/citusdata/citus) | Citus dağıtılmış veritabanı. |
 
 ### <a name="index-types-extensions"></a>Dizin türleri uzantıları
 
 > [!div class="mx-tableFixed"]
-> | **Uzantı** | **Açıklama** |
+> | **Dahili numara** | **Açıklama** |
 > |---|---|
 > | [Bloom](https://www.postgresql.org/docs/current/bloom.html) | Bloom erişim yöntemi-imza dosya tabanlı dizin. |
 > | [BTREE \_ gın](https://www.postgresql.org/docs/current/static/btree-gin.html) | Belirli veri türleri için B-ağacı benzeri davranışı uygulayan örnek bir işleç sınıfları sağlar. |
@@ -94,14 +94,14 @@ Aşağıdaki tablolarda, şu anda PostgreSQL için Azure veritabanı tarafından
 ### <a name="language-extensions"></a>Dil uzantıları
 
 > [!div class="mx-tableFixed"]
-> | **Uzantı** | **Açıklama** |
+> | **Dahili numara** | **Açıklama** |
 > |---|---|
 > | [plpgsql](https://www.postgresql.org/docs/current/static/plpgsql.html) | PL/pgSQL yüklenebilir yordam dili. |
 
 ### <a name="miscellaneous-extensions"></a>Çeşitli uzantılar
 
 > [!div class="mx-tableFixed"]
-> | **Uzantı** | **Açıklama** |
+> | **Dahili numara** | **Açıklama** |
 > |---|---|
 > | [Yönetim Paketi](https://www.postgresql.org/docs/current/adminpack.html) | PostgreSQL için yönetim işlevleri. |
 > | [amcheck](https://www.postgresql.org/docs/current/amcheck.html) | İlişki bütünlüğünü doğrulamaya yönelik işlevler. |
@@ -126,7 +126,7 @@ Aşağıdaki tablolarda, şu anda PostgreSQL için Azure veritabanı tarafından
 ### <a name="postgis-extensions"></a>PostGIS uzantıları
 
 > [!div class="mx-tableFixed"]
-> | **Uzantı** | **Açıklama** |
+> | **Dahili numara** | **Açıklama** |
 > |---|---|
 > | [PostGIS](https://www.postgis.net/), PostGIS \_ topolojisi, \_ \_ postgıal Tiger Geocoder, \_ postgısfcgal | PostgreSQL için uzamsal ve coğrafi nesneler. |
 > | Adres \_ standartlayıcı, adres \_ standartlayıcısı \_ veri \_ ABD | Bir adresi bileşen öğelerine ayrıştırmak için kullanılır. Coğrafi kodlama adres normalleştirme adımını desteklemek için kullanılır. |

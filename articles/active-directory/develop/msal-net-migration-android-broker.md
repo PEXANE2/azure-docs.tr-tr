@@ -13,10 +13,10 @@ ms.author: aiwang
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 01af0e620ecb100839f7b1101e5ff9fcfc874eea
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92206678"
 ---
 # <a name="migrate-android-applications-that-use-a-broker-from-adalnet-to-msalnet"></a>ADAL.NET 'den MSAL.NET 'e aracı kullanan Android uygulamalarını geçirme
@@ -115,13 +115,13 @@ MSAL.NET ' de, Android için etkinliği ayarlamak için iki şey yapın:
 
 **Örneğin:**
 
-*App.cs*içinde:
+*App. cs*'de:
 
 ```CSharp
    public static object RootViewController { get; set; }
 ```
 
-*MainActivity.cs*içinde:
+*MainActivity. cs* dosyasında:
 
 ```CSharp
    LoadApplication(new App());

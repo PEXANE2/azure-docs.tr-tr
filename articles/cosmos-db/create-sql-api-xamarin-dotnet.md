@@ -10,10 +10,10 @@ ms.date: 10/09/2020
 ms.author: anfeldma
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 91e89eaf215468f171974e5f3fd383691fdd6ebe
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93096993"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Hızlı başlangıç: Azure Cosmos DB SQL API hesabı kullanarak Xamarin ile ToDo uygulaması oluşturma
@@ -90,20 +90,20 @@ Mac kullanıyorsanız, **ücretsiz** [Mac için Visual Studio](https://www.visua
 
 Azure portalına geri dönerek API anahtarı bilgilerini alın ve uygulamaya kopyalayın.
 
-1. [Azure portalında](https://portal.azure.com/), Azure Cosmos DB SQL API hesabınızın sol taraftaki gezinti menüsünden **Anahtarlar** 'a ve ardından **Okuma/Yazma Anahtarları** 'na tıklayın. Ekranın sağ tarafındaki kopyalama düğmelerini kullanarak URI ve Birincil Anahtar değerlerini kopyalayarak sonraki adımda APIKeys.cs dosyasına yapıştırın.
+1. [Azure portalında](https://portal.azure.com/), Azure Cosmos DB SQL API hesabınızın sol taraftaki gezinti menüsünden **Anahtarlar**'a ve ardından **Okuma/Yazma Anahtarları**'na tıklayın. Ekranın sağ tarafındaki kopyalama düğmelerini kullanarak URI ve Birincil Anahtar değerlerini kopyalayarak sonraki adımda APIKeys.cs dosyasına yapıştırın.
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/keys.png" alt-text="iOS’ta çalışan Xamarin todo uygulaması":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/keys.png" alt-text="Azure portalında erişim anahtarı görüntüleme ve kopyalama, Anahtarlar dikey penceresi":::
 
 2. Visual Studio 'da **todoıtems. Core/yardımcılar/APIKeys. cs** öğesini açın.
 
-3. Azure portalında, Kopyala düğmesini kullanarak **URI** değerini kopyalayın ve `CosmosEndpointUrl` APIKeys.cs içinde değişkenin değeri yapın.
+3. Azure portalında, Kopyala düğmesini kullanarak **URI** değerini kopyalayın ve `CosmosEndpointUrl` apikeys. cs içindeki değişkenin değerini yapın.
 
     ```csharp
     //#error Enter the URL of your Azure Cosmos DB endpoint here
             public static readonly string CosmosEndpointUrl = "[URI Copied from Azure Portal]";
     ```
 
-4. Azure portalında, Kopyala düğmesini kullanarak, **BIRINCIL anahtar** değerini kopyalayın ve `Cosmos Auth Key` APIKeys.cs içindeki değeri yapın.
+4. Azure portalında, Kopyala düğmesini kullanarak, **BIRINCIL anahtar** değerini kopyalayın ve `Cosmos Auth Key` ' ın apikeys. cs içindeki değerini yapın.
 
     ```csharp
     //#error Enter the read/write authentication key of your Azure Cosmos DB endpoint here
@@ -116,7 +116,7 @@ Azure portalına geri dönerek API anahtarı bilgilerini alın ve uygulamaya kop
 
 Bu çözüm, Azure Cosmos DB SQL API ve Xamarin.Forms kullanarak bir ToDo uygulaması oluşturma işlemini gösterir. Uygulamada iki sekme bulunur; birinci sekme henüz tamamlanmamış todo öğelerini gösteren bir liste görünümü içerir. İkinci sekme tamamlanmış todo öğelerini gösterir. Birinci sekmede tamamlanmamış todo öğelerini görüntülemeye ek olarak yeni todo öğeleri ekleyebilir, var olanları düzenleyebilir ve öğeleri tamamlandı olarak işaretleyebilirsiniz.
 
-:::image type="content" source="./media/create-sql-api-xamarin-dotnet/android-todo-screen.png" alt-text="iOS’ta çalışan Xamarin todo uygulaması":::
+:::image type="content" source="./media/create-sql-api-xamarin-dotnet/android-todo-screen.png" alt-text="Azure portalında JSON verilerini kopyalayın ve Veri Gezgini'ne kaydedin":::
 
 ToDoItems çözümündeki kod şunları içerir:
 
@@ -182,27 +182,27 @@ Aşağıdaki adımlarda, Mac için Visual Studio hata ayıklayıcısı kullanıl
 
 1. İlk olarak vurgulanan açılır listeye tıklayarak ve iOS için ToDoItems.iOS, Android için ToDoItems.Android öğesini seçerek hedeflemek istediğiniz platformu seçin.
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ide-select-platform.png" alt-text="iOS’ta çalışan Xamarin todo uygulaması":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ide-select-platform.png" alt-text="Mac için Visual Studio'da hata ayıklamak için platform seçme":::
 
 2. Uygulamada hata ayıklamaya başlamak için cmd+Enter tuşlarına basın veya oynat düğmesine tıklayın.
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ide-start-debug.png" alt-text="iOS’ta çalışan Xamarin todo uygulaması":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ide-start-debug.png" alt-text="Mac için Visual Studio'da hata ayıklamayı başlatma":::
 
 3. iOS simülatörü veya Android öykünücüsü başlatma işlemini tamamladığında, uygulama iOS için alt ekranda ve Android için üst ekranda 2 sekme gösterir. Birinci sekme tamamlanmamış todo öğelerini, ikinci sekme ise tamamlanmış todo öğelerini gösterir.
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ios-droid-started.png" alt-text="iOS’ta çalışan Xamarin todo uygulaması":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ios-droid-started.png" alt-text="ToDo uygulamasının başlatma ekranı":::
 
 4. iOS’ta bir todo öğesini tamamlamak için sola kaydırın > **Tamamla** düğmesine dokunun. Android’de bir todo öğesini tamamlamak için öğeye uzun basın > ardından tamamla düğmesine dokunun.
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-complete.png" alt-text="iOS’ta çalışan Xamarin todo uygulaması":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-complete.png" alt-text="Todo öğesini tamamlama":::
 
 5. Bir todo öğesini düzenlemek için > öğeye dokunun > yeni değerler girmenize olanak tanıyan yeni bir ekran görüntülenir. Kaydet düğmesine dokunduğunuzda değişiklikler Azure Cosmos DB’de kalıcı hale gelir.
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-edit.png" alt-text="iOS’ta çalışan Xamarin todo uygulaması":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-edit.png" alt-text="Todo öğesini düzenleme":::
 
 6. Bir todo öğesi eklemek için > giriş ekranının sağ üst köşesindeki **Ekle** düğmesine dokunun > yeni ve boş bir düzenleme sayfası görüntülenir.
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-add.png" alt-text="iOS’ta çalışan Xamarin todo uygulaması":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-add.png" alt-text="Todo öğesi ekleme":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure portalında SLA'ları gözden geçirme
 

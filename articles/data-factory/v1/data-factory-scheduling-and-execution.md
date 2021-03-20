@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: bfdae688f7736149fe7ddf04cd3833d9adf30818
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100382727"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Data Factory zamanlama ve yürütme
@@ -691,7 +691,7 @@ CopyActivity2 yalnızca CopyActivity1 başarıyla çalıştırılmışsa ve Data
 
 Örnekte, ilk kopyalama etkinliğinin çıkış veri kümesinin (DataSet2) ikinci etkinlik için giriş olarak belirtildiğine dikkat edin. Bu nedenle, ikinci etkinlik yalnızca ilk etkinliğin çıkış veri kümesi hazırlanışında çalışır.  
 
-Örnekte, CopyActivity2 gibi farklı bir girişi olabilir, ancak CopyActivity2 'e giriş olarak DataSet2 belirtirseniz, bu nedenle CopyActivity1 bitene kadar etkinlik çalıştırılmaz. Örneğin:
+Örnekte, CopyActivity2 gibi farklı bir girişi olabilir, ancak CopyActivity2 'e giriş olarak DataSet2 belirtirseniz, bu nedenle CopyActivity1 bitene kadar etkinlik çalıştırılmaz. Örnek:
 
 CopyActivity1
 

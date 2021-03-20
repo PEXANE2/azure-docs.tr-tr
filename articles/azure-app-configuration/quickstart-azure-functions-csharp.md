@@ -9,17 +9,17 @@ ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: alkemper
 ms.openlocfilehash: 9d378b21132e6646329c459401255ef9a3ed9426
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98724256"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>Hızlı başlangıç: Azure Uygulama yapılandırması ile Azure Işlevleri uygulaması oluşturma
 
 Bu hızlı başlangıçta, Azure App Configuration hizmetini bir Azure Işlevleri uygulamasına, tüm uygulama ayarlarınızı kodınızdan ayrı olarak depolamayı ve yönetimini merkezileştirmek için kullanacaksınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/dotnet)
 - **Azure geliştirme** iş yüküyle [Visual Studio 2019](https://visualstudio.microsoft.com/vs) .
@@ -50,7 +50,7 @@ Bu proje, [.net Azure işlevlerine bağımlılık ekleme](../azure-functions/fun
    - [Microsoft.Extensions.Configurlama. AzureAppConfiguration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureAppConfiguration/) sürümü 4.1.0 veya üzeri
    - [Microsoft. Azure. Functions. Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/) sürüm 1.1.0 veya üzeri 
 
-2. Aşağıdaki kodla, *Startup.cs* adlı yeni bir dosya ekleyin. Soyut sınıfı uygulayan adlı bir sınıfı tanımlar `Startup` `FunctionsStartup` . Azure Işlevleri başlatılırken kullanılan tür adını belirtmek için bir derleme özniteliği kullanılır.
+2. Aşağıdaki kodla, *Startup. cs* adlı yeni bir dosya ekleyin. Soyut sınıfı uygulayan adlı bir sınıfı tanımlar `Startup` `FunctionsStartup` . Azure Işlevleri başlatılırken kullanılan tür adını belirtmek için bir derleme özniteliği kullanılır.
 
     `ConfigureAppConfiguration`Yöntemi geçersiz kılınır ve Azure uygulama yapılandırma sağlayıcısı, çağırarak ek bir yapılandırma kaynağı olarak eklenir `AddAzureAppConfiguration()` . `Configure`Bu noktada herhangi bir hizmeti kaydetmeniz gerekmiyorsa yöntem boş bırakılır.
     
@@ -78,7 +78,7 @@ Bu proje, [.net Azure işlevlerine bağımlılık ekleme](../azure-functions/fun
     }
     ```
 
-3. *Function1.cs* açın ve aşağıdaki ad alanını ekleyin.
+3. *İşlev1. cs*' yi açın ve aşağıdaki ad alanını ekleyin.
 
     ```csharp
     using Microsoft.Extensions.Configuration;

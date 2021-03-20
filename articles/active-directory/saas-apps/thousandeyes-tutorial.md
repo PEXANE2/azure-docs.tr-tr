@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/04/2019
 ms.author: jeedes
 ms.openlocfilehash: aa3c5115a5255d30decbc66691878ffbe2579a06
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92514597"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-thousandeyes"></a>Öğretici: ThousandEyes ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -58,7 +58,7 @@ ThousandEyes tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galerid
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-thousandeyes"></a>ThousandEyes için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu ThousandEyes ile yapılandırın ve test edin. SSO 'nun çalışması için, ThousandEyes içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu ThousandEyes ile yapılandırın ve test edin. SSO 'nun çalışması için, ThousandEyes içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu ThousandEyes ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -145,11 +145,11 @@ Bu bölümde, ThousandEyes 'e erişim vererek Azure çoklu oturum açma özelli�
 
     a. **Çoklu oturum açmayı etkinleştir '** i seçin.
 
-    b. **Oturum açma sayfası URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'sini**yapıştırın.
+    b. **Oturum açma sayfası URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'sini** yapıştırın.
 
-    c. **Oturum kapatma sayfası URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum kapatma URL 'sini**yapıştırın.
+    c. **Oturum kapatma sayfası URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum kapatma URL 'sini** yapıştırın.
 
-    d. **Kimlik sağlayıcısı veren** metin kutusu, Azure Portal KOPYALADıĞıNıZ **Azure ad tanımlayıcısını**yapıştırın.
+    d. **Kimlik sağlayıcısı veren** metin kutusu, Azure Portal KOPYALADıĞıNıZ **Azure ad tanımlayıcısını** yapıştırın.
 
     e. **Doğrulama sertifikası**' nda **Dosya Seç**' e tıklayın ve ardından Azure Portal indirdiğiniz sertifikayı karşıya yükleyin.
 
@@ -179,7 +179,7 @@ Bu bölümün amacı, ThousandEyes ' de Britta Simon adlı bir Kullanıcı oluş
 
     ![Kullanıcı hesapları ekleme](./media/thousandeyes-tutorial/IC790074.png "Kullanıcı hesapları ekleme")
 
-    a. **Ad** metin kutusuna **B. Simon**gibi kullanıcının adını yazın.
+    a. **Ad** metin kutusuna **B. Simon** gibi kullanıcının adını yazın.
 
     b. **E-posta** metin kutusuna kullanıcının e-postasını yazın b.simon@contoso.com .
 

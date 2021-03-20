@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: 3b424ece9207328d87068160f78ebc78a3bd1a8d
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93395232"
 ---
 # <a name="configure-replication-to-azure-sql-edge"></a>Azure SQL Edge 'e çoğaltmayı yapılandırma 
@@ -83,7 +83,7 @@ Azure SQL Edge abonelikleri için aşağıdaki seçenekler desteklenmez:
 Yayın ve gönderme temelli bir abonelik oluşturun. Daha fazla bilgi için bkz.
   
 - [Yayın oluşturma](/sql/relational-databases/replication/publish/create-a-publication)
-- Azure SQL Edge sunucu adı ve IP 'si (örneğin, **Myedgeınstance, 1433** ) ve Azure SQL Edge örneğindeki hedef veritabanı (örneğin, **AdventureWorks** ) olarak bir veritabanı adı kullanarak [bir anında iletme aboneliği oluşturun](/sql/relational-databases/replication/create-a-push-subscription/) .  
+- Azure SQL Edge sunucu adı ve IP 'si (örneğin, **Myedgeınstance, 1433**) ve Azure SQL Edge örneğindeki hedef veritabanı (örneğin, **AdventureWorks**) olarak bir veritabanı adı kullanarak [bir anında iletme aboneliği oluşturun](/sql/relational-databases/replication/create-a-push-subscription/) .  
 
 ## <a name="next-steps"></a>Sonraki adımlar  
 

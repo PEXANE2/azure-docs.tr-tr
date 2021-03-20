@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/17/2020
 ms.openlocfilehash: e7ec71220b75647e789508c760e50957b3b497fa
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93090044"
 ---
 # <a name="how-to-request-quota-increase-for-azure-cosmos-db-resources"></a>Azure Cosmos DB kaynaklar için kota artışı isteme
@@ -24,7 +24,7 @@ Kota artışı istemek için iş yükü ayrıntılarınız ile yeni bir destek i
 
 1. Azure Portal’da oturum açın.
 
-1. Sol taraftaki menüden **Yardım + Destek** ' i seçin ve ardından **Yeni destek isteği** ' ni seçin.
+1. Sol taraftaki menüden **Yardım + Destek** ' i seçin ve ardından **Yeni destek isteği**' ni seçin.
 
 1. **Temel bilgiler** sekmesinde aşağıdaki ayrıntıları girin:
 
@@ -38,7 +38,7 @@ Kota artışı istemek için iş yükü ayrıntılarınız ile yeni bir destek i
 
 1. Aşağıdaki ayrıntıları bu biçimde doldur:
 
-   * **Açıklama** : isteğiniz için iş yükünüz gibi, varsayılan değerlerin neden yeterli olmadığı hakkında kısa bir açıklama sağlayın. Kota artışı istediğiniz kaynak türüne bağlı olarak, **Açıklama** alanı içinde aşağıdaki ayrıntıları sağlamanız zorunludur:
+   * **Açıklama**: isteğiniz için iş yükünüz gibi, varsayılan değerlerin neden yeterli olmadığı hakkında kısa bir açıklama sağlayın. Kota artışı istediğiniz kaynak türüne bağlı olarak, **Açıklama** alanı içinde aşağıdaki ayrıntıları sağlamanız zorunludur:
 
      **Bölge istekleri** İsteğiniz izin verilenler listesine bir bölge eklemeye karşılık geliyorsa, aşağıdaki değerleri sağladığınızdan emin olun:
 
@@ -56,15 +56,15 @@ Kota artışı istemek için iş yükü ayrıntılarınız ile yeni bir destek i
        * Abonelik Kimliği
        * Yeni veritabanı hesabı sınırı
 
-   * **Karşıya dosya yükleme** : tanılama dosyalarını veya destek isteğiyle ilgili olduğunu düşündüğünüz diğer dosyaları karşıya yükleyin. Karşıya dosya yükleme kılavuzu hakkında daha fazla bilgi edinmek için bkz. [Azure destek]( ../azure-portal/supportability/how-to-manage-azure-support-request.md#upload-files) makalesi.
+   * **Karşıya dosya yükleme**: tanılama dosyalarını veya destek isteğiyle ilgili olduğunu düşündüğünüz diğer dosyaları karşıya yükleyin. Karşıya dosya yükleme kılavuzu hakkında daha fazla bilgi edinmek için bkz. [Azure destek]( ../azure-portal/supportability/how-to-manage-azure-support-request.md#upload-files) makalesi.
 
-   * **Önem derecesi** : iş etkisini temel alarak kullanılabilir önem düzeylerinden birini seçin.
+   * **Önem derecesi**: iş etkisini temel alarak kullanılabilir önem düzeylerinden birini seçin.
 
-   * **Tercih edilen iletişim yöntemi** : **e-posta** veya **telefonla** iletişim kurulmasını seçebilirsiniz.
+   * **Tercih edilen iletişim yöntemi**: **e-posta** veya **telefonla** iletişim kurulmasını seçebilirsiniz.
 
 1. Formda kullanılabilirlik, destek dili, iletişim bilgileri, e-posta ve telefon numarası gibi kalan ayrıntıları doldurun.
 
-1. **İleri ' yi seçin: gözden geçir + oluştur** . Destek isteği oluşturmak için, belirtilen bilgileri doğrulayın ve **Oluştur** ' u seçin.
+1. **İleri ' yi seçin: gözden geçir + oluştur**. Destek isteği oluşturmak için, belirtilen bilgileri doğrulayın ve **Oluştur** ' u seçin.
 
 Azure Cosmos DB destek ekibi, 24 saat içinde isteğinizi değerlendirir ve size geri gönderilir.
 

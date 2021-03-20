@@ -14,10 +14,10 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bd4d42e1cafa58aaf6a47188c9e86c24ac175047
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92514398"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Azure Active Directory kullanarak yakın zamanda silinen bir kullanıcıyı geri yükleme veya kaldırma
@@ -45,7 +45,7 @@ Kullanıcıları geri yüklemek ve kalıcı olarak silmek için aşağıdaki rol
 ### <a name="to-view-your-restorable-users"></a>Geri yüklenebilen kullanıcılarınızı görüntülemek için
 1. Kuruluşun genel yönetici hesabını kullanarak [Azure Portal](https://portal.azure.com/) oturum açın.
 
-2. **Azure Active Directory**seçin, **Kullanıcılar**' ı seçin ve ardından **silinen kullanıcılar**' ı seçin.
+2. **Azure Active Directory** seçin, **Kullanıcılar**' ı seçin ve ardından **silinen kullanıcılar**' ı seçin.
 
     Geri yükleme için kullanılabilen kullanıcıların listesini gözden geçirin.
 

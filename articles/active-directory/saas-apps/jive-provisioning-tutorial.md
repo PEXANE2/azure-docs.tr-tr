@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.openlocfilehash: ebee5d986007e07d497056620f0cfc437b2da4d1
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94356408"
 ---
 # <a name="tutorial-configure-jive-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için Jive 'yi yapılandırma
@@ -61,7 +61,7 @@ Bu yordamın bir parçası olarak, Jive.com ' den istemeniz gereken bir Kullanı
 
 1. Jive örneğinizi seçin, sonra **sağlama** sekmesini seçin.
 
-1. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın. 
+1. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın. 
 
     ![Ekran görüntüsü, sağlama modu otomatik ve ayarlayabileceğiniz diğer değerlere ayarlanmış olan Jive sağlama sayfasını gösterir.](./media/jive-provisioning-tutorial/provisioning.png)
 

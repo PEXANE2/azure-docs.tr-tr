@@ -4,10 +4,10 @@ description: Azure Container Registry 'deki kaynaklara yönelik ayrıntılı izi
 ms.topic: article
 ms.date: 10/14/2020
 ms.openlocfilehash: 097ccf89caf63d2a504d072cf04c2b534a57a031
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92207963"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry roller ve izinler
@@ -24,7 +24,7 @@ Azure Container Registry hizmeti, bir Azure Container Registry 'ye farklı düze
 | AcrDelete |  |  |  |  | X |  |  |
 | Acrimageimzalayan |  |  |  |  |  |  | X |
 
-## <a name="assign-roles"></a>Rol atama
+## <a name="assign-roles"></a>Rolleri atama
 
 Mevcut bir Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimliğe rol ataması eklemek için üst düzey adımlar için [rol ataması ekleme adımlarına](../role-based-access-control/role-assignments-steps.md) bakın. Azure portal, Azure CLı veya diğer Azure araçlarını kullanabilirsiniz.
 

@@ -6,10 +6,10 @@ ms.subservice: change-inventory-management
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.openlocfilehash: 2e3e5abdfbb2bf2e9d7a12a677422adc67336775
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92210456"
 ---
 # <a name="remove-change-tracking-and-inventory-from-automation-account"></a>Otomasyon hesabından Değişiklik İzleme ve stoku kaldırma
@@ -52,7 +52,7 @@ Alternatif olarak, Log Analytics çalışma alanınızın, çalışma alanının
 
 1. Azure Portal'da **Log Analytics**'i seçin.
 
-2. Çalışma alanından **Ilgili kaynaklar**altında **Otomasyon hesabı** ' nı seçin.
+2. Çalışma alanından **Ilgili kaynaklar** altında **Otomasyon hesabı** ' nı seçin.
 
 3. Otomasyon hesabı sayfasında **Hesap bağlantısını kaldır**' ı seçin.
 

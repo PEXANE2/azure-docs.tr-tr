@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: rohogue
 ms.openlocfilehash: 0b23bd81f7b527f578bfd0adcedc79caed7c60fe
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92217380"
 ---
 # <a name="open-a-support-ticket-for-the-azure-fxt-edge-filer"></a>Azure FXT Edge fili için bir destek bileti açın
@@ -28,8 +28,8 @@ Microsoft Müşteri Hizmetleri ve desteği ile bir destek bileti açmak için Az
 1. İstek formunu doldurun.  
     1. **Temel bilgiler** sekmesinde, **sorun türünü** seçin ``Technical`` .
     1. Aboneliğinizi seçin.
-    1. **Hizmet**altında **Azure FXT Edge Filer**' ı seçin. Bulmak için **tüm hizmetler** filtre denetimine tıklamanız gerekebilir.
-    1. Bir **Özet** girin ve **sorun türünü**seçin.
+    1. **Hizmet** altında **Azure FXT Edge Filer**' ı seçin. Bulmak için **tüm hizmetler** filtre denetimine tıklamanız gerekebilir.
+    1. Bir **Özet** girin ve **sorun türünü** seçin.
     ![Boş destek isteği formunun ekran görüntüsü](media/fxt-support-populated.png)
     1. Devam etmek için **İleri**'ye tıklayın.
 1. **Ayrıntılar** sekmesinde, sorun ve sizinle iletişim kurma hakkında daha fazla bilgi ekleyin. Sorunla ilgili bir dosyayı karşıya yükleyebilirsiniz.

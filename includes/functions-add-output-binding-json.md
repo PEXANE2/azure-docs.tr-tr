@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 09/23/2019
 ms.author: glenga
 ms.openlocfilehash: 9b3859d854b3900cc30eda6a95b8425da6763e59
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94340950"
 ---
 Bağlama öznitelikleri, dosyasında function.jsdoğrudan tanımlanmıştır. Bağlama türüne bağlı olarak ek özellikler gerekli olabilir. [Kuyruk çıkış yapılandırması](../articles/azure-functions/functions-bindings-storage-queue-output.md#configuration) , bir Azure depolama kuyruğu bağlaması için gereken alanları açıklar. Uzantı, dosyadaki function.jsbağlama eklemeyi kolaylaştırır. 

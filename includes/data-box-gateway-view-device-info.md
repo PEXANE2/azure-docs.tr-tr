@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.author: alkohli
 ms.openlocfilehash: ca060e75e50a3e2327fc0516c3cfc9550afbf90f
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96582758"
 ---
 1. [PowerShell arabirimine bağlanın](#connect-to-the-powershell-interface).
@@ -49,7 +49,7 @@ ms.locfileid: "96582758"
     |-----------|-------------|
     | FriendlyName                   | Cihaz dağıtımı sırasında yerel Web Kullanıcı arabirimi aracılığıyla yapılandırılan cihazın kolay adı. Varsayılan kolay ad, cihaz seri numarasıdır.  |
     | SerialNumber                   | Cihaz seri numarası, fabrikada atanan benzersiz bir sayıdır.                                                                             |
-    | Model                          | Cihazınızın modeli. Model Data Box Gateway için sanal.                   |
+    | Modelleme                          | Cihazınızın modeli. Model Data Box Gateway için sanal.                   |
     | Daha önce yazılım sürümü        | Cihaz yazılımı sürümüne karşılık gelen kolay dize. Önizleme çalıştıran bir sistem için, kolay yazılım sürümü Data Box Edge 1902 olur. |
     | HcsVersion                     | Cihazınızda çalışan HCS yazılım sürümü. Örneğin, 1902 Data Box Edge karşılık gelen HCS yazılım sürümü 1.4.771.324 ' dir.            |
     | Localcapacityınmb              | Cihazın megabit 'daki toplam yerel kapasitesi.                                                                                                        |

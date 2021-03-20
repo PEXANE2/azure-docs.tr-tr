@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/24/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 25c87971455ed3c5f59c92748794720d61e599e3
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96339617"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps-using-azure-cognitive-search"></a>Azure Bilişsel Arama kullanarak istemci uygulamalarına otomatik tamamlama ve öneriler ekleme
@@ -117,7 +117,7 @@ $(function () {
 });
 ```
 
-`source`JQuery kullanıcı arabirimi otomatik tamamlama işlevine, arama kutusu altında gösterilecek öğelerin listesinin nereden alınacağını söyler. Bu proje bir MVC projesi olduğundan, sorgu önerilerini döndürme mantığını içeren **HomeController.cs** içinde **önerme** işlevini çağırır. Bu işlev, vurguları, belirsiz eşleştirmeyi ve terimi denetlemek için birkaç parametreyi de geçirir. AutoComplete JavaScript API 'SI, term parametresini ekler.
+`source`JQuery kullanıcı arabirimi otomatik tamamlama işlevine, arama kutusu altında gösterilecek öğelerin listesinin nereden alınacağını söyler. Bu proje bir MVC projesi olduğundan, sorgu önerilerini döndürme mantığını içeren **HomeController. cs** içindeki **önerme** işlevini çağırır. Bu işlev, vurguları, belirsiz eşleştirmeyi ve terimi denetlemek için birkaç parametreyi de geçirir. AutoComplete JavaScript API 'SI, term parametresini ekler.
 
 , `minLength: 3` Arama kutusunda yalnızca en az üç karakter olduğunda önerilerin gösterilmesi sağlanır.
 
@@ -139,7 +139,7 @@ source: "/home/suggest?highlights=true&fuzzy=true&",
 
 ### <a name="suggest-function"></a>Öner işlevi
 
-C# ve MVC uygulaması kullanıyorsanız, **HomeController.cs** dosyası denetleyiciler dizini altında, önerilen sonuçlar için bir sınıf oluşturabileceğiniz yerdir. .NET ' te, bir önerme işlevi, [mübir tasync yöntemi](/dotnet/api/azure.search.documents.searchclient.suggestasync)temel alır. .NET SDK hakkında daha fazla bilgi için bkz. [.NET uygulamasından Azure bilişsel arama kullanma](search-howto-dotnet-sdk.md).
+C# kullanıyorsanız ve MVC uygulaması, denetleyiciler dizini altındaki **HomeController. cs** dosyası, önerilen sonuçlar için bir sınıf oluşturabileceğiniz yerdir. .NET ' te, bir önerme işlevi, [mübir tasync yöntemi](/dotnet/api/azure.search.documents.searchclient.suggestasync)temel alır. .NET SDK hakkında daha fazla bilgi için bkz. [.NET uygulamasından Azure bilişsel arama kullanma](search-howto-dotnet-sdk.md).
 
 `InitSearch`Yöntemi, Azure bilişsel arama hizmetine kimliği doğrulanmış BIR http Dizin istemcisi oluşturur. [Mür TOptions](/dotnet/api/azure.search.documents.suggestoptions) sınıfının özellikleri, sonuçlarda hangi alanların arandığını ve döndürüleceğini, eşleşmelerin sayısını ve belirsiz eşleşme kullanılıp kullanılmadığını belirleme. 
 
@@ -218,7 +218,7 @@ $(function () {
 
 ### <a name="autocomplete-function"></a>AutoComplete işlevi
 
-AutoComplete, otomatik olarak oluşturulan [Teasync yöntemini](/dotnet/api/azure.search.documents.searchclient.autocompleteasync)temel alır. Önerilerle birlikte bu kod bloğu **HomeController.cs** dosyasına gidebilirler.
+AutoComplete, otomatik olarak oluşturulan [Teasync yöntemini](/dotnet/api/azure.search.documents.searchclient.autocompleteasync)temel alır. Önerilerle birlikte bu kod bloğu **HomeController. cs** dosyasına gider.
 
 ```csharp
 public async Task<ActionResult> AutoCompleteAsync(string term)

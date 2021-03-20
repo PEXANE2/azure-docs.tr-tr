@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: Zhchia
 ms.openlocfilehash: 8b4bfa7e9bf457d79c6c4a0b5255bce4fe36dff4
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94358703"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Pdee 'yi yapılandırma
@@ -57,7 +57,7 @@ Azure AD 'yi kullanarak otomatik Kullanıcı sağlaması için Pdee 'yi yapılan
 
     :::image type="content" source="media/Foodee-provisioning-tutorial/tenant.png" alt-text="Pdee Enterprise portalının ana menüsünün ekran görüntüsü. Bir Kiracı kimliği yer tutucusu, menüde görünür." border="false":::
 
-1. **Enterprise Portal** altında **Çoklu oturum açma** ' yı seçin.
+1. **Enterprise Portal** altında **Çoklu oturum açma**' yı seçin.
 
     ![Alt Enterprise Portal sol bölmedeki menü](media/Foodee-provisioning-tutorial/scim.png)
 
@@ -71,11 +71,11 @@ Azure AD 'yi kullanarak otomatik Kullanıcı sağlaması için Pdee 'yi yapılan
 
 Azure AD uygulama galerisinden Pdee eklemek için aşağıdakileri yapın:
 
-1. [Azure Portal](https://portal.azure.com)sol bölmedeki **Azure Active Directory** ' ı seçin.
+1. [Azure Portal](https://portal.azure.com)sol bölmedeki **Azure Active Directory**' ı seçin.
 
     ![Azure Active Directory komutu](common/select-azuread.png)
 
-1. **Kurumsal uygulamalar**  >  **tüm uygulamalar** ' ı seçin.
+1. **Kurumsal uygulamalar**  >  **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar bölmesi](common/enterprise-applications.png)
 
@@ -96,11 +96,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı veya grup 
 
 Aşağıdaki işlemleri gerçekleştirerek Azure AD 'de Pdee için otomatik Kullanıcı sağlamayı yapılandırın:
 
-1. [Azure Portal](https://portal.azure.com) **Kurumsal uygulamalar**  >  **tüm uygulamalar** ' ı seçin.
+1. [Azure Portal](https://portal.azure.com) **Kurumsal uygulamalar**  >  **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar bölmesi](common/enterprise-applications.png)
 
-1. **Uygulamalar** listesinde, **pdee** ' yi seçin.
+1. **Uygulamalar** listesinde, **pdee**' yi seçin.
 
     ![Uygulamalar listesindeki Pdee bağlantısı](common/all-applications.png)
 
@@ -108,7 +108,7 @@ Aşağıdaki işlemleri gerçekleştirerek Azure AD 'de Pdee için otomatik Kull
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-1. **Sağlama modu** aşağı açılan listesinde **Otomatik** ' i seçin.
+1. **Sağlama modu** aşağı açılan listesinde **Otomatik**' i seçin.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
@@ -118,7 +118,7 @@ Aşağıdaki işlemleri gerçekleştirerek Azure AD 'de Pdee için otomatik Kull
 
    b. **Gizli belirteç** kutusunda, daha önce aldığınız **API belirteç** değerini girin.
    
-   c. Azure AD 'nin, Pdee 'ye bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' yı seçin. Bağlantı başarısız olursa, Pdee hesabınızın yönetici izinlerine sahip olduğundan emin olun ve sonra yeniden deneyin.
+   c. Azure AD 'nin, Pdee 'ye bağlanabildiğinden emin olmak için **Bağlantıyı Sına**' yı seçin. Bağlantı başarısız olursa, Pdee hesabınızın yönetici izinlerine sahip olduğundan emin olun ve sonra yeniden deneyin.
 
     ![Sınama bağlantısı bağlantısı](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -126,9 +126,9 @@ Aşağıdaki işlemleri gerçekleştirerek Azure AD 'de Pdee için otomatik Kull
 
     ![Bildirim e-postası metin kutusu](common/provisioning-notification-email.png)
 
-1. **Kaydet** ’i seçin.
+1. **Kaydet**’i seçin.
 
-1. **Eşlemeler** ' in altında **Azure Active Directory Kullanıcıları kadee olarak eşitlemeyi** seçin.
+1. **Eşlemeler**' in altında **Azure Active Directory Kullanıcıları kadee olarak eşitlemeyi** seçin.
 
     :::image type="content" source="media/Foodee-provisioning-tutorial/usermapping.png" alt-text="Eşlemeler bölümünün ekran görüntüsü. Ad ' ın altında, Azure Active Directory Kullanıcıları kadee ile eşitler." border="false":::
 
@@ -136,8 +136,8 @@ Aşağıdaki işlemleri gerçekleştirerek Azure AD 'de Pdee için otomatik Kull
 
     :::image type="content" source="media/Foodee-provisioning-tutorial/userattribute.png" alt-text="Öznitelik eşlemeleri sayfasının ekran görüntüsü. Tablo, Azure Active Directory ve Pdee özniteliklerini ve eşleşen önceliği listeler." border="false":::
 
-1. Değişikliklerinizi uygulamak için **Kaydet** ' i seçin.
-1. **Eşlemeler** ' in altında, **Azure Active Directory gruplarını Pdee ile eşitler** ' ı seçin.
+1. Değişikliklerinizi uygulamak için **Kaydet**' i seçin.
+1. **Eşlemeler**' in altında, **Azure Active Directory gruplarını Pdee ile eşitler**' ı seçin.
 
     :::image type="content" source="media/Foodee-provisioning-tutorial/groupmapping.png" alt-text="Eşlemeler bölümünün ekran görüntüsü. Ad ' ın altında, Azure Active Directory grupları kadee ile eşitler." border="false":::
 
@@ -145,18 +145,18 @@ Aşağıdaki işlemleri gerçekleştirerek Azure AD 'de Pdee için otomatik Kull
 
     :::image type="content" source="media/Foodee-provisioning-tutorial/groupattribute.png" alt-text="Öznitelik eşlemeleri sayfasının ekran görüntüsü. Tablo, Azure Active Directory özniteliklerini, Pdee özniteliklerini ve eşleşen önceliği listeler." border="false":::
 
-1. Değişikliklerinizi uygulamak için **Kaydet** ' i seçin.
+1. Değişikliklerinizi uygulamak için **Kaydet**' i seçin.
 1. Kapsam filtrelerini yapılandırın. Nasıl yapılacağını öğrenmek için [kapsam filtresi öğreticisindeki](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)yönergelere bakın.
 
 1. Pdee için Azure AD sağlama hizmetini etkinleştirmek üzere, **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
     ![Sağlama durumu anahtarı](common/provisioning-toggle-on.png)
 
-1. **Ayarlar** ' ın altında, **kapsam** açılan listesinde, pdee 'ye sağlamak istediğiniz kullanıcıları veya grupları tanımlayın.
+1. **Ayarlar**' ın altında, **kapsam** açılan listesinde, pdee 'ye sağlamak istediğiniz kullanıcıları veya grupları tanımlayın.
 
     ![Sağlama kapsamı açılan listesi](common/provisioning-scope.png)
 
-1. Sağlamaya hazırsanız **Kaydet** ' i seçin.
+1. Sağlamaya hazırsanız **Kaydet**' i seçin.
 
     ![Sağlama yapılandırma Kaydet düğmesi](common/provisioning-configuration-save.png)
 

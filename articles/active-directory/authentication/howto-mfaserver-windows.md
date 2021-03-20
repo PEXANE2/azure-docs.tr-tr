@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 962f022e5ed38e5c60f327fa4f85a5edc872b938
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96742060"
 ---
 # <a name="windows-authentication-and-azure-multi-factor-authentication-server"></a>Windows Kimlik Doğrulaması ve Azure Multi-Factor Authentication Sunucusu
@@ -42,14 +42,14 @@ Uygulamalara yönelik Windows kimlik doğrulamasını etkinleştirmek ve yapıla
    ![MFA sunucusunda Windows kimlik doğrulaması](./media/howto-mfaserver-windows/windowsauth.png)
 2. **Windows Kimlik Doğrulamasını Etkinleştir** onay kutusunu işaretleyin. Varsayılan olarak, bu kutu işaretlenmemiştir.
 3. Uygulamalar sekmesi yöneticinin Windows Kimlik Doğrulaması için bir veya daha fazla uygulamayı yapılandırmasını sağlar.
-4. Bir sunucu veya uygulama seçin – sunucusu/uygulama etkin olup olmadığını belirtin. **Tamam** düğmesine tıklayın.
+4. Bir sunucu veya uygulama seçin – sunucusu/uygulama etkin olup olmadığını belirtin. **Tamam**'a tıklayın.
 5. **Ekle...** öğesine tıklayın
 6. Güvenilen IP'ler sekmesi belirli IP'lerden gelen Windows oturumları için Azure Multi-Factor Authentication’ı atlamanızı sağlar. Örneğin, çalışanlar ofiste ve evden uygulama kullanıyorsa, ofisteyken Azure Multi-Factor Authentication için telefonlarının çalmasını istemediğinize karar verebilirsiniz. Bunun için ofis alt ağını Güvenilen IP’ler girişi olarak belirtebilirsiniz.
 7. **Ekle...** öğesine tıklayın
 8. Tek bir IP adresini atlamak istiyorsanız, **tek IP** ' yi seçin.
 9. Tüm IP aralığını atlamak istiyorsanız **IP aralığı** ' nı seçin. Örnek: 10.63.193.1-10.63.193.100.
 10. Alt ağ gösterimini kullanarak bir IP aralığı belirtmek istiyorsanız **alt ağ** ' ı seçin. Alt ağın başlangıç IP’sini girin ve açılır listede uygun ağ maskesini seçin.
-11. **Tamam** düğmesine tıklayın.
+11. **Tamam**'a tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

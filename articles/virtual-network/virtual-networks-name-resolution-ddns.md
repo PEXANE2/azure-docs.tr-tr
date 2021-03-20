@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/23/2017
 ms.author: subsarma
 ms.openlocfilehash: ad91eb94aedcdd0e4e715162e3ae064a1d2fb1ea
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98220431"
 ---
 # <a name="use-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>Kendi DNS sunucunuzda ana bilgisayar adlarını kaydetmek için dinamik DNS kullanma
@@ -35,7 +35,7 @@ Etki alanına katılmış Windows istemcileri, IP adreslerini güvenli DDNS kull
 ## <a name="linux-clients"></a>Linux istemcileri
 Linux istemcileri başlangıçta DNS sunucusuna kayıt yaptırmaz, DHCP sunucusunun bunu yaptığı varsayılmaktadır. Azure 'un DHCP sunucularının, DNS sunucunuzdaki kayıtları kaydetme kimlik bilgileri yoktur. `nsupdate`DDNS güncelleştirmelerini göndermek için, bağlama paketine dahil edilen adlı bir aracı kullanabilirsiniz. DDNS Protokolü standartlaştırılmış olduğundan, `nsupdate` DNS sunucusunda bağlama kullanmadığınız durumlarda bile kullanabilirsiniz.
 
-DHCP istemcisi tarafından, DNS sunucusunda ana bilgisayar adı girişini oluşturmak ve korumak için sunulan kancaları kullanabilirsiniz. DHCP çevrimi sırasında istemci, komut dosyalarını */etc/DHCP/dhclient-Exit-kancas.d/* içinde yürütür. Kullanarak yeni IP adresini kaydetmek için kancaları kullanabilirsiniz `nsupdate` . Örneğin:
+DHCP istemcisi tarafından, DNS sunucusunda ana bilgisayar adı girişini oluşturmak ve korumak için sunulan kancaları kullanabilirsiniz. DHCP çevrimi sırasında istemci, komut dosyalarını */etc/DHCP/dhclient-Exit-kancas.d/* içinde yürütür. Kullanarak yeni IP adresini kaydetmek için kancaları kullanabilirsiniz `nsupdate` . Örnek:
 
 ```bash
 #!/bin/sh

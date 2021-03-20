@@ -6,10 +6,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 12/05/2016
 ms.openlocfilehash: c1057478d9ae7d63bef9477a0b1297fa2c507ffa
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92218434"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Azure Data Lake Analytics'i Azure portalını kullanarak yönetme
@@ -52,7 +52,7 @@ Bir Data Lake Analytics hesabını silmeden önce varsayılan Data Lake Store he
 Data Lake Analytics aşağıdaki veri kaynaklarını destekler:
 
 * Data Lake Storage
-* Azure Depolama
+* Azure Storage
 
 Veri kaynaklarına gitmek ve temel dosya yönetimi işlemlerini gerçekleştirmek için Veri Gezgini kullanabilirsiniz. 
 
@@ -81,7 +81,7 @@ Azure Data Factory veya VM 'Ler gibi diğer Azure Hizmetleri Data Lake Analytics
 Yeni Data Lake kullanıcılarını kolayca sağlamak için **Kullanıcı ekleme sihirbazını** kullanabilirsiniz.
 
 1. Azure portal Data Lake Analytics hesabınıza gidin.
-2. Sol tarafta, **Başlarken**altında **Kullanıcı Ekleme Sihirbazı**' na tıklayın.
+2. Sol tarafta, **Başlarken** altında **Kullanıcı Ekleme Sihirbazı**' na tıklayın.
 3. Bir kullanıcı seçin ve ardından **Seç**' e tıklayın.
 4. Bir rol seçin ve ardından **Seç**' e tıklayın. Azure Data Lake kullanmak üzere yeni bir geliştirici ayarlamak için **Data Lake Analytics geliştirici** rolünü seçin.
 5. U-SQL veritabanlarının erişim denetim listelerini (ACL 'Ler) seçin. Seçimlerinizden memnun olduğunuzda **Seç**' e tıklayın.
@@ -125,7 +125,7 @@ U-SQL geliştiricilerinin Data Lake Analytics hizmetini kullanmasını sağlamak
 
 1. Azure portal Data Lake Analytics hesabınıza gidin.
 
-2. **Yeni iş**öğesine tıklayın. Her iş için aşağıdakileri yapılandırın:
+2. **Yeni iş** öğesine tıklayın. Her iş için aşağıdakileri yapılandırın:
 
     1. **Iş adı**: işin adı.
     2. **Öncelik**: düşük sayıların önceliği daha yüksektir. İki iş sıraya alınmışsa, daha düşük öncelikli bir değer önce çalışır.
@@ -137,7 +137,7 @@ U-SQL geliştiricilerinin Data Lake Analytics hizmetini kullanmasını sağlamak
 
 1. Azure portal Data Lake Analytics hesabınıza gidin.
 2. **Tüm Işleri görüntüle**' ye tıklayın. Hesaptaki tüm etkin ve son tamamlanan işlerin bir listesi gösterilir.
-3. İsteğe bağlı olarak, **zaman aralığı**, **Iş adı**ve **Yazar** değerlerine göre işleri bulmanıza yardımcı olması için **filtre** ' ye tıklayın. 
+3. İsteğe bağlı olarak, **zaman aralığı**, **Iş adı** ve **Yazar** değerlerine göre işleri bulmanıza yardımcı olması için **filtre** ' ye tıklayın. 
 
 ### <a name="monitoring-pipeline-jobs"></a>İşlem hattı işlerini izleme
 Bir işlem hattının parçası olan işler, belirli bir senaryoyu gerçekleştirmek için genellikle sıralı olarak birlikte çalışır. Örneğin, müşteri öngörüleri için kullanımı Temizleme, çıkaran, dönüştüren bir işlem hattına sahip olabilirsiniz. İşlem hattı işleri, iş gönderildiğinde "ardışık düzen" özelliği kullanılarak tanımlanır. ADF v2 kullanılarak zamanlanan işler, bu özelliği otomatik olarak dolduracaktır. 

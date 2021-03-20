@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 090b7711ab061b989eae13113fe7048e8dd875ee
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97895198"
 ---
 # <a name="manage-your-cloudsimple-private-cloud-virtual-machines-in-azure"></a>Azure 'da CloudSimple özel bulut sanal makinelerinizi yönetin
@@ -23,9 +23,9 @@ ms.locfileid: "97895198"
 
 Aşağıdaki denetimler, seçtiğiniz sanal makinenizin **genel bakış** sayfasında bulunur.
 
-| Denetim | Açıklama |
+| Denetim | Description |
 | ------------ | ------------- |
-| Bağlan | Belirtilen VM 'ye bağlanın.  |
+| Bağlanma | Belirtilen VM 'ye bağlanın.  |
 | Başlangıç | Belirtilen VM 'yi başlatın.  |
 | Yeniden başlat | Kapatın ve ardından belirtilen VM 'yi kapatın.  |
 | Durdur | Belirli bir sanal makineyi kapatın.  |

@@ -13,15 +13,15 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 06253b571fd71623501c27fd5b0d9d4013727fc2
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94840208"
 ---
-# <a name="user-flows-in-azure-active-directory-b2c"></a>Azure Active Directory B2C Kullanıcı akışları
+# <a name="user-flows-in-azure-active-directory-b2c"></a>Azure Active Directory B2C'de kullanıcı akışları
 
-Uygulamalarınız için en yaygın kimlik görevlerini ayarlamanıza yardımcı olması için Azure AD B2C portalı, **Kullanıcı akışları** adlı önceden tanımlanmış ve yapılandırılabilir ilkeler içerir. Bir Kullanıcı akışı, kullanıcıların oturum açma, kaydolma, profil düzenleme veya bir parolayı sıfırlama gibi şeyler yaparken uygulamanızla nasıl etkileşime gireceğini belirlemenizi sağlar. Kullanıcı akışları ile aşağıdaki özellikleri kontrol edebilirsiniz:
+Uygulamalarınızın en yaygın kimlik görevlerini ayarlamanıza yardımcı olmak için Azure AD B2C portalı **kullanıcı akışları** olarak adlandırılan önceden tanımlanmış, yapılandırılabilir ilkeler içerir. Bir Kullanıcı akışı, kullanıcıların oturum açma, kaydolma, profil düzenleme veya bir parolayı sıfırlama gibi şeyler yaparken uygulamanızla nasıl etkileşime gireceğini belirlemenizi sağlar. Kullanıcı akışları ile aşağıdaki özellikleri kontrol edebilirsiniz:
 
 - Facebook veya yerel hesaplar gibi sosyal hesaplar gibi, oturum açma için kullanılan hesap türleri
 - Tüketiciden toplanacak öznitelikler (örneğin, ilk ad, posta kodu ve ayakkabı boyutu)
@@ -68,7 +68,7 @@ Azure AD B2C çeşitli Kullanıcı akışı türlerini içerir:
 Çoğu Kullanıcı akış türü hem **Önerilen** bir sürüme hem de **Standart** sürüme sahiptir. Ayrıntılar için bkz. [Kullanıcı akış sürümleri](user-flow-versions.md).
 
 > [!IMPORTANT]
-> Daha önce Azure AD B2C Kullanıcı akışları ile çalıştıysanız, Kullanıcı akışı sürümlerine başvurduğumuz şekilde değiştirildiğini fark edeceksiniz. Daha önce v1 (üretime Ready) sürümleri ve V 1.1 ve v2 (Önizleme) sürümlerini sunuyoruz. Artık Kullanıcı akışlarını iki sürüme birleştiriyoruz:
+> Daha önce Azure AD B2C Kullanıcı akışları ile çalıştıysanız, Kullanıcı akışı sürümlerine başvurduğumuz şekilde değiştirildiğini fark edeceksiniz. Daha önce V1 (üretime hazır) sürümleriyle V1.1 ve V2 (önizleme) sürümlerini sunduk. Artık Kullanıcı akışlarını iki sürüme birleştiriyoruz:
 >
 >- **Önerilen** Kullanıcı akışları, Kullanıcı akışlarının yeni önizleme sürümlerindedir. Kapsamlı olarak test edilmiştir ve eski **v2** ve **v 1.1** sürümlerinin tüm özelliklerini birleştirirler. İleri giderek, önerilen yeni Kullanıcı akışları korunur ve güncelleştirilir. Bu yeni önerilen Kullanıcı akışlarına taşıdıktan sonra, serbest bırakılanlar gibi yeni özelliklere erişebilirsiniz.
 >- Daha önce **v1** olarak bilinen **Standart** Kullanıcı akışları, genel olarak kullanılabilir, üretime hazır Kullanıcı akışıdır. Kullanıcı akışlarınız görev açısından kritiktir ve yüksek oranda kararlı sürümlere bağlıysa, standart Kullanıcı akışlarını kullanmaya devam edebilirsiniz ve bu sürümlerin korunmayacağını ve güncelleştirilmediğini da sürdürmez.

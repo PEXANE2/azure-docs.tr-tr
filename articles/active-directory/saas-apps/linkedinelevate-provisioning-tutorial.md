@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: arvinh
 ms.openlocfilehash: 5e972475530ad36a188f73990bb9eca35748c36c
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94358958"
 ---
 # <a name="tutorial-configure-linkedin-elevate-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için LinkedIn yükseltmeyi yapılandırma
@@ -77,7 +77,7 @@ Bu bölümde Azure AD 'nizi LinkedIn 'in SCıM Kullanıcı hesabı sağlama API 
 
     ![Ekran görüntüsü S C I M kurulum sayfasını gösterir.](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate2.PNG)
 
-5. **Belirteç oluştur** ' a tıklayın. Erişim belirteci, erişim **belirteci** alanının altında görüntülenir.
+5. **Belirteç oluştur**' a tıklayın. Erişim belirteci, erişim **belirteci** alanının altında görüntülenir.
 
 6. Sayfadan çıkmadan önce erişim belirtecinizi panonuza veya bilgisayarınıza kaydedin.
 
@@ -87,7 +87,7 @@ Bu bölümde Azure AD 'nizi LinkedIn 'in SCıM Kullanıcı hesabı sağlama API 
 
 9. LinkedIn yükseltme örneğinizi seçin, sonra **sağlama** sekmesini seçin.
 
-10. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
+10. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
     ![Ekran görüntüsünde LinkedIn hazırlama sağlama sayfası gösterilmektedir.](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate3.PNG)
 
@@ -101,7 +101,7 @@ Bu bölümde Azure AD 'nizi LinkedIn 'in SCıM Kullanıcı hesabı sağlama API 
 
 12. **Bildirim e-postası** alanında sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve aşağıdaki onay kutusunu işaretleyin.
 
-13. **Kaydet** ’e tıklayın.
+13. **Kaydet**’e tıklayın.
 
 14. **Öznitelik eşlemeleri** bölümünde, Azure AD 'Den LinkedIn yükseltmesine eşitlenecek Kullanıcı ve grup özniteliklerini gözden geçirin. Güncelleştirme işlemleri için, **eşleşen** özellikler olarak seçilen özniteliklerin LinkedIn yükseltme içindeki kullanıcı hesaplarını ve grupları eşleştirmek için kullanılacağını unutmayın. Değişiklikleri uygulamak için Kaydet düğmesini seçin.
 
@@ -109,7 +109,7 @@ Bu bölümde Azure AD 'nizi LinkedIn 'in SCıM Kullanıcı hesabı sağlama API 
 
 15. LinkedIn 'in Azure AD sağlama hizmetini etkinleştirmek için **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin
 
-16. **Kaydet** ’e tıklayın.
+16. **Kaydet**’e tıklayın.
 
 Bu, kullanıcılar ve Gruplar bölümünde LinkedIn 'e atanan tüm Kullanıcı ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, hizmetin çalıştığı sürece yaklaşık 40 dakikada bir gerçekleşen sonraki eşitlemeler yerine daha uzun süreceğini unutmayın. Eşitleme ayrıntıları bölümünü izlemek ve LinkedIn uygulamanızın sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan etkinlik günlüklerinin sağlanması için bağlantıları izlemek üzere **eşitleme ayrıntıları** bölümünü kullanabilirsiniz.
 

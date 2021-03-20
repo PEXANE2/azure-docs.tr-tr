@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.openlocfilehash: 753d214b520affb59722bc29dbabc50c6e5968f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91538730"
 ---
 # <a name="iterative-app-design-for-luis"></a>LUSıS için yinelemeli uygulama tasarımı
@@ -33,7 +33,7 @@ Language Understanding (LUSıS) uygulaması, yineleme ile en verimli şekilde ö
 
 ## <a name="building-a-luis-schema"></a>LUSıS şeması oluşturma
 
-Bir uygulamanın şeması, kullanıcının ne sorabileceğini ( _Amaç_ veya _Amaç_ ) ve amacının hangi bölümlerinin yanıt belirlemek için kullanılan ayrıntıları ( _varlıklar_olarak adlandırılır) sağlar.
+Bir uygulamanın şeması, kullanıcının ne sorabileceğini ( _Amaç_ veya _Amaç_ ) ve amacının hangi bölümlerinin yanıt belirlemek için kullanılan ayrıntıları ( _varlıklar_ olarak adlandırılır) sağlar.
 
 Uygulama şemasının, ilgili kelimeleri ve tümcecikleri ve tipik sözcük sıralamasını belirlemesi için uygulama etki alanlarına özel olması gerekir.
 
@@ -61,12 +61,12 @@ En güçlü ve olgun şeması, eksiksiz bir varlık ve özellik aralığına sah
 
 ## <a name="add-example-utterances-to-intents"></a>Amaçlar için örnek ekleme
 
-LUO 'NUN her bir **Amaç**için birkaç örnek elde etmek gerekir. Örnek söyleyler, hangi Amaçın hangi amaca yönelik olduğunu belirleyebilmek için yeterli sözcük seçimi ve sözcük sırası çeşitlemesine gerek duyar.
+LUO 'NUN her bir **Amaç** için birkaç örnek elde etmek gerekir. Örnek söyleyler, hangi Amaçın hangi amaca yönelik olduğunu belirleyebilmek için yeterli sözcük seçimi ve sözcük sırası çeşitlemesine gerek duyar.
 
 > [!CAUTION]
 > Toplu olarak örnek eklemeyin. 15 ila 30 ' a ve değişen örneklerle başlayın.
 
-Her örnek söylenişi 'in, **varlıklar**ile tasarlanıp etiketlenmesi **için gerekli verilerin** olması gerekir.
+Her örnek söylenişi 'in, **varlıklar** ile tasarlanıp etiketlenmesi **için gerekli verilerin** olması gerekir.
 
 |Anahtar öğesi|Amaç|
 |--|--|
@@ -103,7 +103,7 @@ Her yeni sürüm için başlangıç noktası olarak kullanmak üzere var olan bi
 
 Aşama ve/veya üretim yuvalarında yayımlayabilirsiniz. Her yuva farklı bir sürüme veya aynı sürüme sahip olabilir. Bu, robotların veya başka bir LUıN uygulama çağıran uygulamalar tarafından kullanılabilen üretime yayımlamadan önce değişiklikleri doğrulamak için yararlıdır.
 
-Eğitilen sürümler, LUSıS uygulamanızın [uç noktasında](luis-glossary.md#endpoint)otomatik olarak kullanılamaz. LUSıS uygulama uç noktanıza kullanılabilmesi için bir sürümü [yayımlamanız](luis-how-to-publish-app.md) veya yeniden yayımlamanız gerekir. **Hazırlama** ve **üretime**yayınlayabilirsiniz ve bu sayede, uç noktada uygulamanın iki sürümünü kullanabilirsiniz. Bir uç noktada uygulamanın daha fazla sürümünün kullanılabilir olması gerekiyorsa, sürümü dışarı aktarıp yeni bir uygulamaya yeniden içeri aktarmanız gerekir. Yeni uygulamanın farklı bir uygulama KIMLIĞI vardır.
+Eğitilen sürümler, LUSıS uygulamanızın [uç noktasında](luis-glossary.md#endpoint)otomatik olarak kullanılamaz. LUSıS uygulama uç noktanıza kullanılabilmesi için bir sürümü [yayımlamanız](luis-how-to-publish-app.md) veya yeniden yayımlamanız gerekir. **Hazırlama** ve **üretime** yayınlayabilirsiniz ve bu sayede, uç noktada uygulamanın iki sürümünü kullanabilirsiniz. Bir uç noktada uygulamanın daha fazla sürümünün kullanılabilir olması gerekiyorsa, sürümü dışarı aktarıp yeni bir uygulamaya yeniden içeri aktarmanız gerekir. Yeni uygulamanın farklı bir uygulama KIMLIĞI vardır.
 
 ### <a name="import-a-version"></a>Bir sürümü içeri aktar
 

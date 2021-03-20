@@ -12,17 +12,17 @@ ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: e81ac35555e6653cecb602e5af2f19aa3e2f05e9
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94840602"
 ---
 # <a name="define-an-azure-ad-mfa-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure AD B2C özel ilkesinde bir Azure AD MFA teknik profili tanımlama
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C), Azure AD Multi-Factor Authentication (MFA) kullanarak telefon numarasını doğrulamaya yönelik destek sağlar. Bir telefon numarasına kod oluşturup göndermek için bu teknik profili kullanın ve ardından kodu doğrulayın. Azure AD MFA teknik profili de bir hata iletisi döndürebilir.  Doğrulama teknik profili, Kullanıcı yolculuğu devam etmeden önce Kullanıcı tarafından belirtilen verileri doğrular. Doğrulama teknik profiliyle, otomatik olarak onaylanan bir sayfada bir hata iletisi görüntülenir.
+Azure Active Directory B2C (Azure AD B2C), AD Multi-Factor Authentication (MFA) kullanarak telefon numarasını doğrulamak için destek sağlar. Kod üretip telefon numarasına göndermek ve ardından kodu doğrulamak için bu teknik profili kullanın. Azure AD MFA teknik profili de bir hata iletisi döndürebilir.  Doğrulama teknik profili, Kullanıcı yolculuğu devam etmeden önce Kullanıcı tarafından belirtilen verileri doğrular. Doğrulama teknik profiliyle, otomatik olarak onaylanan bir sayfada bir hata iletisi görüntülenir.
 
 Bu teknik profil:
 
@@ -72,7 +72,7 @@ Azure AD MFA protokol sağlayıcısı herhangi bir **Outputclaim** döndürmüyo
 
 **Outputclaimstransformations** öğesi, çıkış taleplerini değiştirmek veya yenilerini oluşturmak için kullanılan bir **outputclaimstransreference** öğeleri koleksiyonu içerebilir.
 
-### <a name="metadata"></a>Meta Veriler
+### <a name="metadata"></a>Meta veri
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
@@ -132,7 +132,7 @@ Azure AD MFA protokol sağlayıcısı herhangi bir **Outputclaim** döndürmüyo
 
 **Outputclaimstransformations** öğesi, çıkış taleplerini değiştirmek veya yenilerini oluşturmak için kullanılan bir **outputclaimstransreference** öğeleri koleksiyonu içerebilir.
 
-### <a name="metadata"></a>Meta Veriler
+### <a name="metadata"></a>Meta veri
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |

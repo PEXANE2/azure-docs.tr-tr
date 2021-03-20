@@ -9,10 +9,10 @@ ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
 ms.openlocfilehash: a78aec8c18f3b89629bbf696de3a097397ac59bc
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94337925"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Azure Spring Cloud ile dağıtılmış izleme kullanma
@@ -37,7 +37,7 @@ Steeltoe 3.0.0 için aşağıdaki NuGet paketini ekleyin:
 
 * [Steeltoe. Management. TracingCore](https://www.nuget.org/packages/Steeltoe.Management.TracingCore/)
 
-## <a name="update-startupcs"></a>Startup.cs Güncelleştir
+## <a name="update-startupcs"></a>Güncelleştirme başlangıcı. cs
 
 1. Steeltoe 2.4.4 için yöntemini çağırın `AddDistributedTracing` `AddZipkinExporter` `ConfigureServices` .
 
@@ -79,7 +79,7 @@ Aşağıdaki ayarları, uygulama Azure yay bulutu 'nda çalıştırıldığında
 
 1. `management.tracing.alwaysSample` değerini true olarak ayarlayın.
 
-2. Eureka sunucusu, yapılandırma sunucusu ve kullanıcı uygulamaları arasında gönderilen izlenen yayılmaları görmek isterseniz: `management.tracing.egressIgnorePattern` "/api/v2/birleþi |/v2/Apps/" olarak ayarlayın. */Permissions |/Eureka/.* | /OAuth/. * ".
+2. Eureka sunucusu, yapılandırma sunucusu ve kullanıcı uygulamaları arasında gönderilen izlenen yayılmaları görmek isterseniz: `management.tracing.egressIgnorePattern` "/api/v2/birleþi |/v2/Apps/" olarak ayarlayın.*/Permissions |/Eureka/.*| /OAuth/. * ".
 
 Örneğin, *appsettings.js* , aşağıdaki özellikleri içerir:
  
@@ -155,7 +155,7 @@ Zaten bir uygulama oluşturup dağıttıysanız, örnek hızı değiştirebilirs
 ## <a name="enable-application-insights"></a>Application Insights'ı etkinleştirme
 
 1. Azure portal Azure Spring Cloud Service sayfanıza gidin.
-1. **İzleme** sayfasında, **Dağıtılmış izleme** ' yi seçin.
+1. **İzleme** sayfasında, **Dağıtılmış izleme**' yi seçin.
 1. Düzenlemek veya yeni bir ayar eklemek için **ayarı Düzenle** ' yi seçin.
 1. Yeni bir Application Insights sorgusu oluşturun veya var olan bir sorgu seçin.
 1. İzlemek istediğiniz günlüğe kaydetme kategorisini seçin ve bekletme süresini gün olarak belirtin.
@@ -163,11 +163,11 @@ Zaten bir uygulama oluşturup dağıttıysanız, örnek hızı değiştirebilirs
 
 ## <a name="view-the-application-map"></a>Uygulama haritasını görüntüleme
 
-**Dağıtılmış izleme** sayfasına dönün ve **uygulama haritasını görüntüle** ' yi seçin. Uygulamanızın ve izleme ayarlarının görsel temsilini gözden geçirin. Uygulama haritasını nasıl kullanacağınızı öğrenmek için bkz. [uygulama Haritası: dağıtılmış uygulamaları önceliklendirme](../azure-monitor/app/app-map.md).
+**Dağıtılmış izleme** sayfasına dönün ve **uygulama haritasını görüntüle**' yi seçin. Uygulamanızın ve izleme ayarlarının görsel temsilini gözden geçirin. Uygulama haritasını nasıl kullanacağınızı öğrenmek için bkz. [uygulama Haritası: dağıtılmış uygulamaları önceliklendirme](../azure-monitor/app/app-map.md).
 
 ## <a name="use-search"></a>Aramayı Kullanma
 
-Diğer belirli telemetri öğelerini sorgulamak için Search işlevini kullanın. **Dağıtılmış izleme** sayfasında, **Ara** ' yı seçin. Arama işlevini kullanma hakkında daha fazla bilgi için bkz. [Application Insights arama kullanma](../azure-monitor/app/diagnostic-search.md).
+Diğer belirli telemetri öğelerini sorgulamak için Search işlevini kullanın. **Dağıtılmış izleme** sayfasında, **Ara**' yı seçin. Arama işlevini kullanma hakkında daha fazla bilgi için bkz. [Application Insights arama kullanma](../azure-monitor/app/diagnostic-search.md).
 
 ## <a name="use-application-insights"></a>Application Insights kullan
 
@@ -176,7 +176,7 @@ Application Insights, uygulama eşlemesi ve arama işlevine ek olarak izleme öz
 ## <a name="disable-application-insights"></a>Application Insights devre dışı bırak
 
 1. Azure portal Azure Spring Cloud Service sayfanıza gidin.
-1. **İzleme** sırasında **Dağıtılmış izleme** ' yi seçin.
+1. **İzleme** sırasında **Dağıtılmış izleme**' yi seçin.
 1. Application Insights devre dışı bırakmak için **Disable** ' ı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar

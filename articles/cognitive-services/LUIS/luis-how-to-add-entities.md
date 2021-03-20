@@ -9,10 +9,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
 ms.openlocfilehash: c5c6836c2d68036bf2b9c5abe191943537349b8d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91540974"
 ---
 # <a name="add-entities-to-extract-data"></a>Verileri ayıklamak için varlık ekleme
@@ -125,7 +125,7 @@ Bir liste varlığı oluşturmak için yordamını kullanın. Liste varlığı o
 1. **Uygulamalarım** sayfasında adını seçerek uygulamanızı açın.
 1. **Derleme** bölümünde, sol paneldeki **varlıklar** ' ı seçin ve ardından **+ Oluştur**' u seçin.
 
-1. **Varlık türü oluştur** iletişim kutusunda, varlık adını girin, örneğin `Colors` ve **liste**seçin.
+1. **Varlık türü oluştur** iletişim kutusunda, varlık adını girin, örneğin `Colors` ve **liste** seçin.
 1. **Liste varlığı oluştur** iletişim kutusunda **Yeni alt liste ekle...** öğesine, gibi bir liste öğesi adı girip `Green` eş anlamlılar ekleyin.
 
     > [!div class="mx-imgBorder"]
@@ -158,7 +158,7 @@ Bu yordamda, `origin` `destination` önceden oluşturulmuş bir geographyV2 varl
     Pattern.any içerdiğinde deseninizin varlıkları yanlış ayıkladığını fark ederseniz bu sorunu gidermek için [açık liste](reference-pattern-syntax.md#explicit-lists) kullanın.
 
 1. **Varlıklar sayfa listesinden** yeni eklenen önceden oluşturulmuş geographyV2 varlığını seçin.
-1. Yeni bir rol eklemek için, **+** **hiçbir rolün eklenmediyse**ileri ' yi seçin.
+1. Yeni bir rol eklemek için, **+** **hiçbir rolün eklenmediyse** ileri ' yi seçin.
 1. **Rol...** metin kutusuna rolün adını girin ve `Origin` ardından ENTER tuşuna yazın. İkinci bir rol adı ekleyin ve `Destination` ardından girin.
 
     > [!div class="mx-imgBorder"]
@@ -211,7 +211,7 @@ Aşağıdakiler hakkında daha fazla bilgi edinin:
 * [Yayımlama](luis-how-to-publish-app.md)
 * Lıklarını
     * [Kavramlar](luis-concept-patterns.md)
-    * [Sözdizimi](reference-pattern-syntax.md)
+    * [Syntax](reference-pattern-syntax.md)
 * [Önceden oluşturulmuş varlıklar GitHub deposu](https://github.com/Microsoft/Recognizers-Text)
 * [Veri ayıklama kavramları](luis-concept-data-extraction.md)
 

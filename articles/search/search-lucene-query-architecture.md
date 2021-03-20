@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 50a1656fcb92d9777d4a9476ef2a4c1fd2f2efc6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96002757"
 ---
 # <a name="full-text-search-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de tam metin araması
@@ -96,7 +96,7 @@ Sorgu ayrıştırıcısı, arama motoruna geçiş yaptığı bir *sorgu ağacın
 
 ### <a name="supported-parsers-simple-and-full-lucene"></a>Desteklenen çözümleyiciler: Simple ve Full Lucene 
 
- Azure Bilişsel Arama, iki farklı sorgu dili sunar, `simple` (varsayılan) ve `full` . `queryType`Parametresini arama isteğinizle birlikte ayarlayarak, sorgu ayrıştırıcısına, işleç ve sözdiziminin nasıl yorumlanacağını anlayabilmesi için hangi sorgu dilini istediğinizi söyleirsiniz. [Basit sorgu dili](/rest/api/searchservice/simple-query-syntax-in-azure-search) sezgisel ve sağlam olduğundan, genellikle kullanıcı girişini istemci tarafı işleme olmadan olduğu gibi yorumlamak için uygundur. Web araması altyapılarından tanıdık gelen sorgu işleçlerini destekler. Ayarla [Full Lucene query language](/rest/api/searchservice/lucene-query-syntax-in-azure-search), `queryType=full` benzer, Regex ve alan kapsamlı sorgular gibi daha fazla işleç ve sorgu türü için destek ekleyerek varsayılan basit sorgu dilini genişleterek, bu ayarı yaparak alacağınız tam Lucene sorgu dili. Örneğin, basit sorgu sözdiziminde gönderilen normal ifade bir ifade değil sorgu dizesi olarak yorumlanır. Bu makaledeki örnek istek, tam Lucene sorgu dilini kullanır.
+ Azure Bilişsel Arama, iki farklı sorgu dili sunar, `simple` (varsayılan) ve `full` . `queryType`Parametresini arama isteğinizle birlikte ayarlayarak, sorgu ayrıştırıcısına, işleç ve sözdiziminin nasıl yorumlanacağını anlayabilmesi için hangi sorgu dilini istediğinizi söyleirsiniz. [Basit sorgu dili](/rest/api/searchservice/simple-query-syntax-in-azure-search) sezgisel ve sağlam olduğundan, genellikle kullanıcı girişini istemci tarafı işleme olmadan olduğu gibi yorumlamak için uygundur. Web araması altyapılarından tanıdık gelen sorgu işleçlerini destekler. Ayarla [](/rest/api/searchservice/lucene-query-syntax-in-azure-search), `queryType=full` benzer, Regex ve alan kapsamlı sorgular gibi daha fazla işleç ve sorgu türü için destek ekleyerek varsayılan basit sorgu dilini genişleterek, bu ayarı yaparak alacağınız tam Lucene sorgu dili. Örneğin, basit sorgu sözdiziminde gönderilen normal ifade bir ifade değil sorgu dizesi olarak yorumlanır. Bu makaledeki örnek istek, tam Lucene sorgu dilini kullanır.
 
 ### <a name="impact-of-searchmode-on-the-parser"></a>Ayrıştırıcıda searchMode etkisi 
 
@@ -108,7 +108,7 @@ Ne zaman `searchMode=any` , varsayılan olarak, spacemli ve hava durumu arasınd
 Spacious,||air-condition*+"Ocean view" 
 ```
 
-İçindeki gibi açık işleçler, `+` `+"Ocean view"` Boole sorgu oluşturma (terimi eşleşmelidir) için net değildir. *must* Daha az belirgin, kalan koşulları yorumlama: spacve Hava durumu gibi. Arama altyapısının okyanus görünümü *ve* spacemli *ve* Hava durumu ile eşleşmeleri bulması gerekir mi? Ya da okyanus görünümü ve kalan terimlerden *birini* bulmalıdır mi? 
+İçindeki gibi açık işleçler, `+` `+"Ocean view"` Boole sorgu oluşturma (terimi eşleşmelidir) için net değildir.  Daha az belirgin, kalan koşulları yorumlama: spacve Hava durumu gibi. Arama altyapısının okyanus görünümü *ve* spacemli *ve* Hava durumu ile eşleşmeleri bulması gerekir mi? Ya da okyanus görünümü ve kalan terimlerden *birini* bulmalıdır mi? 
 
 Varsayılan olarak ( `searchMode=any` ), arama motoru daha geniş yorumu kabul eder. Her iki alanın de eşleşmesi, yansıtılırken "veya" semantiğinin olması *gerekir* . Daha önce gösterilen ilk sorgu ağacı, iki "i" işlemi ile, varsayılan olarak gösterilir.  
 
@@ -251,7 +251,7 @@ Bu, arama ve dizin oluşturma işlemlerinde aynı Çözümleyicileri kullanmak i
 
 Örneğimize dönerek, **başlık** alanı için ters dizin şöyle görünür:
 
-| Terim | Belge listesi |
+| Süre | Belge listesi |
 |------|---------------|
 | atman | 1 |
 | unun | 2 |
@@ -265,7 +265,7 @@ Başlık alanında, yalnızca *otel* iki belgede görünür: 1, 3.
 
 **Açıklama** alanı için dizin aşağıdaki gibidir:
 
-| Terim | Belge listesi |
+| Süre | Belge listesi |
 |------|---------------|
 | te | 3
 | ve | 4
@@ -286,7 +286,7 @@ Başlık alanında, yalnızca *otel* iki belgede görünür: 1, 3.
 | kısa bir | 2
 | spacmerak | 1
 | şunu | 1, 2
-| şöyle değiştirin: | 1
+| kullanıcısı | 1
 | görüntüle | 1, 2, 3
 | İzlenecek | 1
 | örneklerini şununla değiştirin: | 3

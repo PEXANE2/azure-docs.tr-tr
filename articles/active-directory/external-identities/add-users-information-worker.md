@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 345cbe2efb644fe2b84d4a6021ff962337e29285
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98219921"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>Kuruluşunuzdaki kullanıcıların bir uygulamaya Konuk kullanıcıları davet edebilir
@@ -73,7 +73,7 @@ Bir uygulama self servis için yapılandırıldıktan sonra, uygulama sahipleri 
 7. Daveti Konuk kullanıcıya otomatik olarak göndermek için **Ekle** ' yi seçin. Daveti göndermenizin ardından kullanıcı hesabı otomatik olarak dizine konuk olarak eklenir.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Self Servis uygulama yönetimi, bir genel yönetici ve bir Azure AD yöneticisi tarafından bazı ilk kurulum gerektirir. Bu kurulumun bir parçası olarak, uygulamayı self servis için yapılandıracaksınız ve uygulama sahibinin yönetebileceği uygulamaya bir grup atamalısınız. Ayrıca grubu, herkesin üyelik istemesine izin verecek ancak Grup sahibinin onayını gerektirme amacıyla de yapılandırabilirsiniz. ( [Self servis grup yönetimi](../enterprise-users/groups-self-service-management.md)hakkında daha fazla bilgi edinin.) 
 

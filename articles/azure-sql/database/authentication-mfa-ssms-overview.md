@@ -14,10 +14,10 @@ ms.reviewer: vanto
 ms.date: 09/28/2020
 tags: azure-synapse
 ms.openlocfilehash: 9afad44bcf67478a81e75c17d0ff8ffc6d8c65aa
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94841142"
 ---
 # <a name="using-multi-factor-azure-active-directory-authentication"></a>Multi-Factor Azure Active Directory kimlik doğrulamasını kullanma
@@ -45,10 +45,10 @@ Azure AD Multi-Factor Authentication (MFA) de destekleyen etkileşimli yöntem �
 
 - `Azure Active Directory - Universal with MFA`
 
-Azure AD MFA, kullanıcıların basit bir oturum açma işlemi taleplerini karşılarken, verilere ve uygulamalara erişimi korumaya yardımcı olur. Kolay doğrulama seçenekleriyle (telefon araması, SMS mesajı, PIN ile akıllı kartlar veya mobil uygulama bildirimi), kullanıcıların tercih ettikleri yöntemi seçebilmesine olanak tanıyan güçlü kimlik doğrulaması sağlar. Azure AD ile etkileşimli MFA, doğrulama için bir açılır iletişim kutusu ile sonuçlanabilir.
+Azure AD MFA, kullanıcıların oturum açmaya yönelik basit işlem taleplerini karşılarken, verilere ve uygulamalara erişimi korumaya da yardımcı olur. Kolay doğrulama seçenekleriyle (telefon araması, SMS mesajı, PIN ile akıllı kartlar veya mobil uygulama bildirimi), kullanıcıların tercih ettikleri yöntemi seçebilmesine olanak tanıyan güçlü kimlik doğrulaması sağlar. Azure AD ile etkileşimli MFA, doğrulama için bir açılır iletişim kutusu ile sonuçlanabilir.
 
 Azure AD Multi-Factor Authentication 'nin bir açıklaması için bkz. [Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md).
-Yapılandırma adımları için bkz. [SQL Server Management Studio Için Azure SQL veritabanı Multi-Factor Authentication 'ı yapılandırma](authentication-mfa-ssms-configure.md).
+Yapılandırma adımları için bkz. [SQL Server Management Studio için Azure SQL Veritabanı çok faktörlü kimlik doğrulamasını yapılandırma](authentication-mfa-ssms-configure.md).
 
 ### <a name="azure-ad-domain-name-or-tenant-id-parameter"></a>Azure AD etki alanı adı veya kiracı KIMLIĞI parametresi
 
@@ -90,7 +90,7 @@ Veritabanı kullanıcısı oluşturulduktan sonra, Kullanıcı `steve@gmail.com`
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Yapılandırma adımları için bkz. [SQL Server Management Studio Için Azure SQL veritabanı Multi-Factor Authentication 'ı yapılandırma](authentication-mfa-ssms-configure.md).
+- Yapılandırma adımları için bkz. [SQL Server Management Studio için Azure SQL Veritabanı çok faktörlü kimlik doğrulamasını yapılandırma](authentication-mfa-ssms-configure.md).
 - Veritabanınıza başkalarının erişmesine izin verme: [SQL veritabanı kimlik doğrulaması ve yetkilendirme: erişim verme](logins-create-manage.md)  
 - Başkalarının güvenlik duvarından bağlanmasına emin olun: [Azure Portal kullanarak sunucu düzeyinde güvenlik duvarı kuralı yapılandırma](firewall-configure.md)  
 - [Azure Active Directory kimlik doğrulamasını SQL veritabanı veya Azure SYNAPSE ile yapılandırma ve yönetme](authentication-aad-configure.md)

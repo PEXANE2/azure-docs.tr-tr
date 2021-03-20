@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
 ms.openlocfilehash: be52d220848a27c1307e71fdb7cc4dccfaeb9618
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92509492"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-userecho"></a>Öğretici: UserEcho ile Azure Active Directory tümleştirme
@@ -61,13 +61,13 @@ UserEcho 'in Azure AD 'ye tümleştirmesini yapılandırmak için, Galeriden Kul
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **UserEcho**yazın, sonuç panelinden **UserEcho** ' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **UserEcho** yazın, sonuç panelinden **UserEcho** ' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
      ![Sonuçlar listesinde UserEcho](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre UserEcho ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre UserEcho ile yapılandırıp test edersiniz.
 Çoklu oturum açma 'nın çalışması için, bir Azure AD kullanıcısı ve UserEcho içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 UserEcho ile Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -142,11 +142,11 @@ Azure AD çoklu oturum açmayı UserEcho ile yapılandırmak için aşağıdaki 
    
     ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz çoklu oturum açma SAML sayfasını gösterir.](./media/userecho-tutorial/tutorial_userecho_09.png)
     
-    a. **SAML**özellikli olarak **Evet**' i seçin.
+    a. **SAML** özellikli olarak **Evet**' i seçin.
     
-    b. Azure portal **SAML SSO URL** metin kutusuna kopyaladığınız **oturum açma URL 'sini**yapıştırın.
+    b. Azure portal **SAML SSO URL** metin kutusuna kopyaladığınız **oturum açma URL 'sini** yapıştırın.
     
-    c. Azure portal 'den **uzak oturum kapatma URL 'si** metin kutusuna kopyaladığınız **oturum kapatma URL 'sini**yapıştırın.
+    c. Azure portal 'den **uzak oturum kapatma URL 'si** metin kutusuna kopyaladığınız **oturum kapatma URL 'sini** yapıştırın.
     
     d. İndirilen sertifikanızı Not defteri 'nde açın, içeriği kopyalayın ve **X. 509.952 Certificate** metin kutusuna yapıştırın.
     
@@ -168,7 +168,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
     b. **Kullanıcı adı** alanına yazın brittasimon@yourcompanydomain.extension . Örneğin, BrittaSimon@contoso.com
 
@@ -184,7 +184,7 @@ Bu bölümde, UserEcho erişimi vererek Azure çoklu oturum açma özelliğini k
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **UserEcho**öğesini seçin.
+2. Uygulamalar listesinde, **UserEcho** öğesini seçin.
 
     ![Uygulamalar listesindeki UserEcho bağlantısı](common/all-applications.png)
 

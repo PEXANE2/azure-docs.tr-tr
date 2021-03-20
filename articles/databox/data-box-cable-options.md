@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/24/2018
 ms.author: alkohli
 ms.openlocfilehash: a2c4cce492c48ebe6e09ad142f97bc6377a8a5e1
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94334625"
 ---
 # <a name="cabling-options-for-your-azure-data-box"></a>Azure Data Box cihazınız için kablolama seçenekleri
@@ -36,8 +36,8 @@ Cihazınızın kablolarını bağlamak için aşağıdaki adımları gerçekleş
 
 2. Sunucuda şu ayarları yapın:
 
-    - **IP adresi** : 192.168.100.5
-    - **Alt ağ** : 255.255.255.0
+    - **IP adresi**: 192.168.100.5
+    - **Alt ağ**: 255.255.255.0
 
 3. Cihazın yerel web kullanıcı arabirimine erişmek için şu adrese gidin: 192.168.100.10. Azure portaldan aldığınız kilit açma parolasını kullanarak Data Box'ta oturum açın ve cihazın kilidini açın.
 
@@ -62,8 +62,8 @@ Cihazınızın kablolarını bağlamak için aşağıdaki adımları gerçekleş
 2. DATA 3 için bir RJ45 veya DATA 1 ya da DATA 2 için SFP+ kabloları kullanarak veri kaynağı olarak kullanılan sunucuya bağlantı yapın. Yüksek performans için 10 GbE destekli DATA 1 veya DATA 2 bağlantı noktalarını kullanmanızı öneririz.
 3. Sunucuda şu ayarları yapın:
 
-   - **IP adresi** : 192.168.100.5
-   - **Alt ağ** : 255.255.255.0
+   - **IP adresi**: 192.168.100.5
+   - **Alt ağ**: 255.255.255.0
 
      ![İki bağlantı noktası kurulumu](media/data-box-cable-options/cabling-2-port-setup.png)
 
@@ -78,8 +78,8 @@ Cihazınızın kablolarını bağlamak için aşağıdaki adımları gerçekleş
 2. DATA 3 için bir RJ45 veya DATA 1 ya da DATA 2 için SFP+ kabloları kullanarak sunucuya bağlantı yapın. Yüksek performans için 10 GbE destekli DATA 1 veya DATA 2 bağlantı noktalarını kullanmanızı öneririz. Veri bağlantı noktalarını verilerin bulunduğu sunucuya 10 GbE anahtar üzerinden bağlayın.
 3. Kullanmakta olduğunuz dizüstü bilgisayardaki Ethernet bağdaştırıcısını şu ayarlarla yapılandırın:
 
-   - **IP adresi** : 192.168.100.5
-   - **Alt ağ** : 255.255.255.0
+   - **IP adresi**: 192.168.100.5
+   - **Alt ağ**: 255.255.255.0
   
    ![Anahtar ile iki bağlantı noktası kurulumu](media/data-box-cable-options/cabling-with-static-ip.png)
 
@@ -102,8 +102,8 @@ Cihazınızın kablolarını bağlamak için aşağıdaki adımları gerçekleş
 2. DATA 3 için bir RJ45 veya DATA 1 ya da DATA 2 için SFP+ kabloları kullanarak sunucuya bağlantı yapın. Yüksek performans için 10 GbE destekli DATA 1 veya DATA 2 bağlantı noktalarını kullanmanızı öneririz.
 3. Kullanmakta olduğunuz dizüstü bilgisayardaki Ethernet bağdaştırıcısını şu ayarlarla yapılandırın:
 
-   - **IP adresi** : 192.168.100.5
-   - **Alt ağ** : 255.255.255.0
+   - **IP adresi**: 192.168.100.5
+   - **Alt ağ**: 255.255.255.0
 
      ![Anahtar 2 ile iki bağlantı noktası kurulumu](media/data-box-cable-options/cabling-with-switch-static-ip.png)
 

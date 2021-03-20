@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: jeedes
 ms.openlocfilehash: 4ff8196ff4e30aa6ed036cabe00a72bfa8a5c51f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92515330"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-prezi"></a>Öğretici: Prezi ile çoklu oturum açma tümleştirmesi Azure Active Directory
@@ -76,13 +76,13 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için:
 
 1. [Azure Portal](https://portal.azure.com/), **PREZI** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırmasındaki**ayarları düzenlemek için **Düzenle** simgesini seçin.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırmasındaki** ayarları düzenlemek için **Düzenle** simgesini seçin.
 
    ![Temel SAML yapılandırma ayarlarını Düzenle](common/edit-urls.png)
 
 1. **Temel SAML yapılandırması** bölümünde, uygulama zaten Azure ile önceden tümleştirildiği için kullanıcının herhangi bir adım yapması gerekmez.
 
-1. **Ek URL 'Ler ayarla**' yı seçin ve uygulamayı **SP**tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları izleyin:
+1. **Ek URL 'Ler ayarla**' yı seçin ve uygulamayı **SP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları izleyin:
 
     **Oturum açma URL** 'si kutusuna URL 'yi girin: `https://prezi.com/login/sso/` .
 
@@ -94,7 +94,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için:
 
 1. PREZI uygulaması, burada gösterildiği gibi, daha fazla özniteliğin SAML yanıtına geri geçirilmesini de bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
     
-    | Adı | Kaynak özniteliği|
+    | Name | Kaynak özniteliği|
     | ---------------| --------------- |
     | given_name | Kullanıcı. |
     | family_name | User. soyadı |
@@ -114,7 +114,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Azure portal en soldaki bölmede **Azure Active Directory**' i seçin. **Kullanıcılar**' a gidin ve ardından **tüm kullanıcılar**' ı seçin.
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. Kullanıcı Özellikleri ' nde şu adımları izleyin:
-   1. **Ad** kutusuna **B. Simon**girin.
+   1. **Ad** kutusuna **B. Simon** girin.
    1. **Kullanıcı adı** kutusuna, `username@companydomain.extension` Örneğin, girin `B.Simon@contoso.com` .
    1. **Parolayı göster** onay kutusunu seçin. **Parola** kutusunda görüntülenen değeri yazın.
    1. **Oluştur**’u seçin.
@@ -124,7 +124,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 Bu bölümde, Prezi 'e erişim vererek B. Simon 'u Azure SSO 'yu kullanmaya etkinleştirirsiniz.
 
 1. Azure Portal **Kurumsal uygulamalar**  >  **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde, **PREZI**öğesini seçin.
+1. Uygulamalar listesinde, **PREZI** öğesini seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    ![Kullanıcılar ve gruplar bağlantısı](common/users-groups-blade.png)

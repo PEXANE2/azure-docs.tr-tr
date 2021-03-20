@@ -6,10 +6,10 @@ ms.date: 12/14/2020
 ms.topic: quickstart
 ms.author: tomfitz
 ms.openlocfilehash: 1d3e7c6ee6d19d4d2cd3828d5abf95ccb5457e76
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97511357"
 ---
 # <a name="quickstart-create-and-deploy-template-spec-preview"></a>Hızlı başlangıç: şablon belirtimini oluşturma ve dağıtma (Önizleme)
@@ -91,7 +91,7 @@ Yerel şablondan bir şablon belirtimi oluşturursunuz. Aşağıdaki şablonu ko
     :::image type="content" source="./media/quickstart-create-template-specs/open-folder.png" alt-text="klasörü aç":::
 
 1. Kaydettiğiniz yerel şablona gidip seçin. **Aç**’ı seçin.
-1. **İçeri Aktar**'ı seçin.
+1. **İçeri aktar**'ı seçin.
 
     :::image type="content" source="./media/quickstart-create-template-specs/select-import.png" alt-text="İçeri aktarma seçeneğini belirleyin":::
 
@@ -103,10 +103,10 @@ Yerel şablondan bir şablon belirtimi oluşturursunuz. Aşağıdaki şablonu ko
     - **Konum**: kaynak grubu için bir konum seçin. Örneğin,  **Batı ABD 2**.
     - **Sürüm**: şablon belirtimi için bir sürüm girin. **1,0** kullanın.
 
-1. **Gözden geçir + oluştur**' u seçin.
+1. **Gözden geçir + Oluştur**’u seçin.
 1. **Oluştur**’u seçin.
 
-# <a name="arm-template"></a>[ARM şablonu](#tab/azure-resource-manager)
+# <a name="arm-template"></a>[ARM Şablonu](#tab/azure-resource-manager)
 
 > [!NOTE]
 > Bir ARM şablonu kullanmak yerine, şablon belirtimini oluşturmak için PowerShell veya CLı kullanmanızı öneririz. Bu araçlar, bağlantılı şablonları ana şablonlarınıza bağlı yapıtlar otomatik olarak dönüştürür. Şablon belirtimini oluşturmak için ARM şablonu kullandığınızda, bu bağlantılı şablonları karmaşık olabilecek yapıtlar olarak el ile eklemeniz gerekir.
@@ -321,7 +321,7 @@ Bir şablon belirtimini dağıtmak için, bir şablon dağıtmak için kullandı
 1. **Gözden geçir ve oluştur**’u seçin.
 1. **Oluştur**’u seçin.
 
-# <a name="arm-template"></a>[ARM şablonu](#tab/azure-resource-manager)
+# <a name="arm-template"></a>[ARM Şablonu](#tab/azure-resource-manager)
 
 1. Aşağıdaki şablonu kopyalayın ve **storage.js** adlı bir dosyaya yerel olarak kaydedin.
 
@@ -476,7 +476,7 @@ Düzeltilen şablon için yeni bir şablon belirtimi oluşturmak yerine, var ola
 1. **Gözden geçir ve oluştur**’u seçin.
 1. **Oluştur**’u seçin.
 
-# <a name="arm-template"></a>[ARM şablonu](#tab/azure-resource-manager)
+# <a name="arm-template"></a>[ARM Şablonu](#tab/azure-resource-manager)
 
 1. Ayrıca, şablon özelliklerine sahip olmak için yerel şablonunuzda bazı değişiklikler yapmanız gerekir. Aşağıdaki şablonu kopyalayın ve azuredeploy.jsolarak yerel olarak kaydedin.
 

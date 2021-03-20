@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.openlocfilehash: 8721c0eb728f568521e86baecb658dc9c869a7f6
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93097592"
 ---
 # <a name="options-to-migrate-your-on-premises-or-cloud-data-to-azure-cosmos-db"></a>Şirket içi veya bulut verilerinizi Azure Cosmos DB 'e geçirmeye yönelik seçenekler
@@ -29,15 +29,15 @@ Azure Cosmos DB için çeşitli veri kaynaklarından veri yükleyebilirsiniz. Az
 
 Aşağıdaki faktörler geçiş aracı seçiminde belirleyici rol oynar:
 
-* **Çevrimiçi veya çevrimdışı geçiş** : Birçok geçiş aracı yalnızca bir kerelik geçiş yapmak için yol sağlar. Diğer bir deyişle veritabanına erişen uygulamalar belirli bir kapalı kalma süresiyle karşılaşabilir. Bazı geçiş çözümleri, kaynak ile hedef arasında bir çoğaltma işlem hattının ayarlandığı dinamik bir geçiş yapmanın yolunu sağlar.
+* **Çevrimiçi veya çevrimdışı geçiş**: Birçok geçiş aracı yalnızca bir kerelik geçiş yapmak için yol sağlar. Diğer bir deyişle veritabanına erişen uygulamalar belirli bir kapalı kalma süresiyle karşılaşabilir. Bazı geçiş çözümleri, kaynak ile hedef arasında bir çoğaltma işlem hattının ayarlandığı dinamik bir geçiş yapmanın yolunu sağlar.
 
-* **Veri kaynağı** : mevcut VERILER Oracle DB2, DataStax Cassanda, Azure SQL veritabanı, PostgreSQL vb. gibi çeşitli veri kaynaklarında bulunabilir. Veriler de mevcut bir Azure Cosmos DB hesabında olabilir ve geçiş amacı veri modelini değiştirebilir veya bir kapsayıcıdaki verileri farklı bir bölüm anahtarıyla yeniden bölümleyebilir.
+* **Veri kaynağı**: mevcut VERILER Oracle DB2, DataStax Cassanda, Azure SQL veritabanı, PostgreSQL vb. gibi çeşitli veri kaynaklarında bulunabilir. Veriler de mevcut bir Azure Cosmos DB hesabında olabilir ve geçiş amacı veri modelini değiştirebilir veya bir kapsayıcıdaki verileri farklı bir bölüm anahtarıyla yeniden bölümleyebilir.
 
-* **Azure Cosmos DB API** : Azure Cosmos DB'deki SQL API için, Azure Cosmos DB ekibinin geliştirdiği ve farklı geçiş senaryolarına yardımcı olacak çeşitli araçlar vardır. Diğer tüm API'lerin topluluk tarafından geliştirilen özelleştirilmiş kendi araç kümesi bulunur. Azure Cosmos DB bu API'leri kablo protokolü düzeyinde desteklediğinden, verileri Azure Cosmos DB'ye geçirirken de bu araçlar oldukları gibi çalışmalıdır. Öte yandan kısıtlamalar için özel işlem gerektirebilir çünkü bu kavram Azure Cosmos DB'ye özgüdür.
+* **Azure Cosmos DB API**: Azure Cosmos DB'deki SQL API için, Azure Cosmos DB ekibinin geliştirdiği ve farklı geçiş senaryolarına yardımcı olacak çeşitli araçlar vardır. Diğer tüm API'lerin topluluk tarafından geliştirilen özelleştirilmiş kendi araç kümesi bulunur. Azure Cosmos DB bu API'leri kablo protokolü düzeyinde desteklediğinden, verileri Azure Cosmos DB'ye geçirirken de bu araçlar oldukları gibi çalışmalıdır. Öte yandan kısıtlamalar için özel işlem gerektirebilir çünkü bu kavram Azure Cosmos DB'ye özgüdür.
 
-* **Verilerin boyutu** : Geçiş araçlarının çoğu daha küçük veri kümelerinde çok iyi çalışır. Veri kümesi birkaç yüz gigabaytı aştığında geçiş aracı seçenekleri sınırlıdır. 
+* **Verilerin boyutu**: Geçiş araçlarının çoğu daha küçük veri kümelerinde çok iyi çalışır. Veri kümesi birkaç yüz gigabaytı aştığında geçiş aracı seçenekleri sınırlıdır. 
 
-* **Beklenen geçiş süresi** : Geçişler az aktarım hızı kullanacak şeklide yavaş, küçük artışlarla yapılacak şekilde yapılandırılabilir veya hedef Azure Cosmos DB kapsayıcısında sağlanan aktarım hızının tamamını kullanarak daha kısa sürede tamamlanabilir.
+* **Beklenen geçiş süresi**: Geçişler az aktarım hızı kullanacak şeklide yavaş, küçük artışlarla yapılacak şekilde yapılandırılabilir veya hedef Azure Cosmos DB kapsayıcısında sağlanan aktarım hızının tamamını kullanarak daha kısa sürede tamamlanabilir.
 
 ## <a name="azure-cosmos-db-sql-api"></a>Azure Cosmos DB SQL API
 
@@ -78,7 +78,7 @@ SQL API, Mongo API ve Cassandra API dışındaki API 'Ler için, her API 'nin me
 * [Veri Geçişi Aracı](table-import.md#data-migration-tool)
 * [AzCopy](table-import.md#migrate-data-by-using-azcopy)
 
-**Gremlin API 'SI**
+**Gremlin API**
 
 * [Graph toplu yürütücü kitaplığı](bulk-executor-graph-dotnet.md)
 * [Gremlin Spark](https://github.com/Azure/azure-cosmosdb-spark/blob/2.4/samples/graphframes/main.scala) 

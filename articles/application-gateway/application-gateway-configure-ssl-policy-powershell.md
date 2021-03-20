@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: cb0f9ef64cb8032c02f2ccd4b42028103b6d3ec6
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397935"
 ---
-# <a name="configure-tls-policy-versions-and-cipher-suites-on-application-gateway"></a>Application Gateway 'de TLS ilkesi sürümlerini ve şifre paketlerini yapılandırma
+# <a name="configure-tls-policy-versions-and-cipher-suites-on-application-gateway"></a>Application Gateway’de TLS ilke sürümlerini ve şifreleme paketlerini yapılandırma
 
 Application Gateway 'de TLS/SSL ilke sürümlerinin ve şifre paketlerinin nasıl yapılandırılacağını öğrenin. TLS ilkesi sürümlerinin farklı yapılandırmalarının ve şifre paketlerinin etkin olduğu önceden tanımlanmış ilkelerin listesinden seçim yapabilirsiniz. Gereksinimlerinize göre [Özel BIR TLS ilkesi](#configure-a-custom-tls-policy) de tanımlayabilirsiniz.
 
@@ -191,7 +191,7 @@ $appgw = New-AzApplicationGateway -Name appgwtest -ResourceGroupName $rg.Resourc
 
 ## <a name="update-an-existing-application-gateway-with-a-pre-defined-tls-policy"></a>Mevcut bir uygulama ağ geçidini önceden tanımlı bir TLS ilkesiyle güncelleştirme
 
-Özel bir TLS ilkesi ayarlamak için şu parametreleri geçirin: **PolicyType** , **MinProtocolVersion** , **ciphersuite** ve **applicationgateway**. Önceden tanımlanmış bir TLS ilkesi ayarlamak için şu parametreleri geçirin: **PolicyType** , **PolicyName** ve **applicationgateway**. Diğer parametreleri geçirmeye çalışırsanız, Application Gateway oluştururken veya güncelleştirirken bir hata alırsınız.
+Özel bir TLS ilkesi ayarlamak için şu parametreleri geçirin: **PolicyType**, **MinProtocolVersion**, **ciphersuite** ve **applicationgateway**. Önceden tanımlanmış bir TLS ilkesi ayarlamak için şu parametreleri geçirin: **PolicyType**, **PolicyName** ve **applicationgateway**. Diğer parametreleri geçirmeye çalışırsanız, Application Gateway oluştururken veya güncelleştirirken bir hata alırsınız.
 
 Aşağıdaki örnekte, hem özel Ilke hem de önceden tanımlanmış Ilke için kod örnekleri mevcuttur. Kullanmak istediğiniz ilkenin açıklamasını kaldırın.
 

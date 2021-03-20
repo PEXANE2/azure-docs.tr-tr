@@ -10,17 +10,17 @@ ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
 ms.openlocfilehash: af6afa2b0285fe741241183ed99712a132953a30
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98220125"
 ---
 # <a name="secure-a-linked-service-with-private-links"></a>Bağlı bir hizmetin özel bağlantılarla güvenliğini sağlama
 
 Bu makalede, SYNAPSE ' de bir özel uç nokta ile bağlı bir hizmetin nasıl güvenliğini sağlayacağınızı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * **Azure aboneliği**: Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 * **Azure depolama hesabı**: Azure Data Lake Gen 2 ' nı *kaynak* veri deposu olarak kullanırsınız. Depolama hesabınız yoksa, oluşturma adımları için bkz. [Azure depolama hesabı oluşturma](../../storage/common/storage-account-create.md) . Depolama hesabının buna erişmek için SYNAPSE Studio IP filtrelemesine sahip olduğundan ve yalnızca **Seçili ağların** depolama hesabına erişmesine izin verdiğinizden emin olun. Dikey pencere **güvenlik duvarları ve sanal ağlar** altındaki ayar aşağıdaki resim gibi görünmelidir.
@@ -62,7 +62,7 @@ Yukarıdaki bağlantıyı sınarken köprü içine seçmezseniz aşağıdaki yol
 ## <a name="check-the-connection-works"></a>Bağlantının çalışıp çalışmadığını denetleyin
 1. **Yönet** sekmesine gidin ve oluşturduğunuz bağlı hizmeti seçin.
 1. **Etkileşimli yazmanın** etkin olduğundan emin olun.
-1. **Bağlantıyı Sına**' yı seçin. Bağlantının başarılı olduğunu görmeniz gerekir.
+1. **Bağlantıyı sına**’yı seçin. Bağlantının başarılı olduğunu görmeniz gerekir.
 
 Artık SYNAPSE ile bağlı hizmetiniz arasında güvenli ve özel bir bağlantı oluşturdunuz.
 

@@ -5,10 +5,10 @@ ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.openlocfilehash: 3ea470c2e732b7e0ef46e9e5fa78c744aa30c955
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98704372"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Azure Backup çevrimdışı yedekleme iş akışı
@@ -42,7 +42,7 @@ Aşağıdaki Azure Backup özellikleri veya iş yükleri, için çevrimdışı y
 
 [!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
   > [!NOTE]
   > Aşağıdaki Önkoşullar ve iş akışı yalnızca [en son Azure kurtarma hizmetleri Aracısı](https://aka.ms/azurebackup_agent)kullanılarak dosya ve klasörlerin çevrimdışı yedeklemesi için geçerlidir. System Center DPM veya Azure Backup Sunucusu kullanarak iş yükleri için çevrimdışı yedeklemeler gerçekleştirmek için bkz. [DPM ve Azure Backup sunucusu Için çevrimdışı yedekleme iş akışı](backup-azure-backup-server-import-export.md).

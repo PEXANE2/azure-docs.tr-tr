@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: d8c3f64e5cb5269bfe7e555615f874ac3443c6eb
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94357836"
 ---
 # <a name="tutorial-configure-bonusly-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için priminin yapılandırın
@@ -81,11 +81,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Kullanıcı ve/veya grupl
 
 ### <a name="to-configure-automatic-user-provisioning-for-bonusly-in-azure-ad"></a>Azure AD 'de otomatik Kullanıcı sağlamasını yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın ve **Kurumsal uygulamalar** ' ı seçin, **tüm uygulamalar** ' ı seçin, sonra da **primi** ' yi seçin
+1. [Azure Portal](https://portal.azure.com) oturum açın ve **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin, sonra da **primi**' yi seçin
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **primi** ' yi seçin.
+2. Uygulamalar listesinde, **primi**' yi seçin.
 
     ![Uygulamalar listesindeki primi bağlantısı](common/all-applications.png)
 
@@ -93,7 +93,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Kullanıcı ve/veya grupl
 
     :::image type="content" source="./media/bonusly-provisioning-tutorial/ProvisioningTab.png" alt-text="Primi sağlama sekmesinin ekran görüntüsü. Yönet ' in altında sağlama vurgulanır." border="false":::
 
-4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
     :::image type="content" source="./media/bonusly-provisioning-tutorial/ProvisioningCredentials.png" alt-text="Otomatik olarak seçili ve vurgulanmış bir sağlama modu liste kutusu gösteren ekran görüntüsü." border="false":::
 
@@ -109,7 +109,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Kullanıcı ve/veya grupl
 
     :::image type="content" source="./media/bonusly-provisioning-tutorial/CreateToken.png" alt-text="Primi sitesinin ekran görüntüsü. Hizmetler sekmesi açıktır. P 'm erişim Belirteçleriniz altında, yeni bir P. erişim belirteci oluştur vurgulanacaktır." border="false":::
 
-7. Aşağıdaki ekranda, erişim belirteci için, girilen metin kutusuna bir ad yazın ve ardından **API anahtarı oluştur** ' a basın. Yeni erişim belirteci açılan pencerede birkaç saniye görünür.
+7. Aşağıdaki ekranda, erişim belirteci için, girilen metin kutusuna bir ad yazın ve ardından **API anahtarı oluştur**' a basın. Yeni erişim belirteci açılan pencerede birkaç saniye görünür.
 
     :::image type="content" source="./media/bonusly-provisioning-tutorial/Token01.png" alt-text="Primi sitesinin yeni erişim belirteci sayfasının ekran görüntüsü. Etiketli olmayan bir kutu belirtemi içerir ve P + anahtar oluştur düğmesi vurgulanır." border="false":::
 
@@ -123,9 +123,9 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Kullanıcı ve/veya grupl
 
     :::image type="content" source="./media/bonusly-provisioning-tutorial/EmailNotification.png" alt-text="Boş bir bildirim e-posta kutusunu gösteren ekran görüntüsü. Bir hata oluştuğunda e-posta bildirimi gönder etiketli bir seçenek görünür." border="false":::
 
-10. **Kaydet** ’e tıklayın.
+10. **Kaydet**’e tıklayın.
 
-11. **Eşlemeler** bölümünde, **kullanıcıları Azure Active Directory eşitler** ' ı seçin.
+11. **Eşlemeler** bölümünde, **kullanıcıları Azure Active Directory eşitler**' ı seçin.
 
     :::image type="content" source="./media/bonusly-provisioning-tutorial/UserMappings.png" alt-text="Eşlemeler bölümünün ekran görüntüsü. Ad ' ın altında, Azure Active Directory Kullanıcıları primi olarak eşitlemeniz vurgulanır." border="false":::
 
@@ -143,7 +143,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Kullanıcı ve/veya grupl
 
     :::image type="content" source="./media/bonusly-provisioning-tutorial/ScopeSync.png" alt-text="Kapsam liste kutusunu gösteren ekran görüntüsü. Yalnızca atanan kullanıcıları ve grupları Eşitle kutusunda seçilir." border="false":::
 
-16. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
+16. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
 
     :::image type="content" source="./media/bonusly-provisioning-tutorial/SaveProvisioning.png" alt-text="Kaydet düğmesi vurgulanmış şekilde, primi sağlama sayfasının ekran görüntüsü." border="false":::
 

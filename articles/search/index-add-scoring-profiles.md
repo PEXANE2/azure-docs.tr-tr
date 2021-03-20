@@ -9,17 +9,17 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.openlocfilehash: 97797e309c32c6ea996d5ae1901b9a266a683173
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91537642"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>Azure Bilişsel Arama dizinine puanlama profilleri ekleme
 
 *Puanlama* , sıralı bir sonuç kümesindeki her öğe için bir arama puanı hesaplar. Bir arama sonuç kümesindeki her öğeye bir arama puanı atanır ve en yüksek düzeye en düşüğe göre sıralanır.
 
- Azure Bilişsel Arama, bir başlangıç Puanını hesaplamak için varsayılan Puanlama kullanır, ancak hesaplamayı bir *Puanlama profili*aracılığıyla özelleştirebilirsiniz. Puanlama profilleri, arama sonuçlarında öğelerin derecelendirmesi üzerinde daha fazla denetim sağlar. Örneğin, gelir potansiyelini temel alarak öğeleri artırmak, daha yeni öğeleri yükseltmek ya da envanterdeki çok uzun olan öğeleri artırmak isteyebilirsiniz.  
+ Azure Bilişsel Arama, bir başlangıç Puanını hesaplamak için varsayılan Puanlama kullanır, ancak hesaplamayı bir *Puanlama profili* aracılığıyla özelleştirebilirsiniz. Puanlama profilleri, arama sonuçlarında öğelerin derecelendirmesi üzerinde daha fazla denetim sağlar. Örneğin, gelir potansiyelini temel alarak öğeleri artırmak, daha yeni öğeleri yükseltmek ya da envanterdeki çok uzun olan öğeleri artırmak isteyebilirsiniz.  
 
  Aşağıdaki video segmenti, Puanlama profillerinin Azure Bilişsel Arama nasıl çalıştığı konusunda hızlı bir şekilde iletir.
  
@@ -36,24 +36,24 @@ ms.locfileid: "91537642"
 "scoringProfiles": [
   {  
     "name":"geo",
-    "text": {  
-      "weights": {  
-        "hotelName": 5
-      }                              
+    "text": {  
+      "weights": {  
+        "hotelName": 5
+      }                              
     },
     "functions": [
       {  
         "type": "distance",
-        "boost": 5,
-        "fieldName": "location",
-        "interpolation": "logarithmic",
-        "distance": {
-          "referencePointParameter": "currentLocation",
-          "boostingDistance": 10
-        }                        
-      }                                      
-    ]                     
-  }            
+        "boost": 5,
+        "fieldName": "location",
+        "interpolation": "logarithmic",
+        "distance": {
+          "referencePointParameter": "currentLocation",
+          "boostingDistance": 10
+        }                        
+      }                                      
+    ]                     
+  }            
 ]
 ```  
 
@@ -254,7 +254,7 @@ Arama puanı, verilerin istatistiksel özelliklerine ve sorgusuna göre hesaplan
 ##  <a name="set-interpolations"></a><a name="bkmk_interpolation"></a> Enterpolasyonlarını ayarla  
  Ara değer, Puanlama için kullanılan eğim şeklini ayarlamanıza olanak sağlar. Puanlama yüksek ve düşük olduğundan, eğim her zaman azalabilir, ancak ilişkilendirme, aşağı doğru eğim eğrisini belirler. Aşağıdaki enterpolasyonda kullanılabilir:  
 
-| İlişkilendirme | Açıklama |  
+| İlişkilendirme | Description |  
 |-|-|  
 |`linear`|En büyük ve en düşük aralıktaki öğeler için, öğeye uygulanan arttırma sürekli azalan bir miktarda yapılır. Doğrusal, bir Puanlama profili için varsayılan enterpolasyon.|  
 |`constant`|Başlangıç ve bitiş aralığı içinde olan öğeler için, derece sonuçlarına sabit bir artırma uygulanır.|  
@@ -281,6 +281,6 @@ Arama puanı, verilerin istatistiksel özelliklerine ve sorgusuna göre hesaplan
 
 ## <a name="see-also"></a>Ayrıca bkz.  
 
-+ [REST API Başvurusu](/rest/api/searchservice/)
++ [REST API başvurusu](/rest/api/searchservice/)
 + [Dizin API 'SI oluştur](/rest/api/searchservice/create-index)
 + [Azure Bilişsel Arama .NET SDK](/dotnet/api/overview/azure/search?)

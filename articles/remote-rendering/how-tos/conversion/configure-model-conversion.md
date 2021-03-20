@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
 ms.openlocfilehash: 1cb5312e164bac09930497c377f1590b6a77ca05
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92205328"
 ---
 # <a name="configure-the-model-conversion"></a>Model dönüştürmeyi yapılandırma
@@ -207,10 +207,10 @@ Biçimlerin bellek yazmalar aşağıdaki gibidir:
 #### <a name="best-practices-for-component-format-changes"></a>Bileşen biçimi değişiklikleri için en iyi yöntemler
 
 * `position`: Azaltılmış doğruluk yeterlidir. **16_16_16_16_FLOAT** , küçük modeller için bile fark edilebilir quantileştirme yapıtları sunar.
-* `normal`, `tangent` , `binormal` : Genellikle bu değerler birlikte değiştirilir. Normal bir quantiktan kaynaklanan fark edilebilir ışık yapıtları olmadığı için, doğruluğunu arttırmanın bir nedeni yoktur. Ancak bazı durumlarda, bu bileşenler **none**olarak ayarlanabilir:
+* `normal`, `tangent` , `binormal` : Genellikle bu değerler birlikte değiştirilir. Normal bir quantiktan kaynaklanan fark edilebilir ışık yapıtları olmadığı için, doğruluğunu arttırmanın bir nedeni yoktur. Ancak bazı durumlarda, bu bileşenler **none** olarak ayarlanabilir:
   * `normal`, `tangent` ve `binormal` yalnızca modeldeki en az bir malzemenin aydınlatılmış olması durumunda gereklidir. ARR 'de, modelde herhangi bir zamanda bir [PBR malzemesi](../../overview/features/pbr-materials.md) kullanıldığında bu durum söz konusu olur.
   * `tangent` ve `binormal` yalnızca herhangi bir aydınlatma malzemelerinden biri normal harita dokusunu kullandığında gereklidir.
-* `texcoord0``texcoord1`: Doku koordinatları, değerleri aralıkta kaladığında ve**16_16_FLOAT**bahsedilen `[0; 1]` dokuların 2048 x 2048 piksellik en büyük boyuta sahip olduğunda, daha az doğruluk (16_16_FLOAT) kullanabilir. Bu sınırlar aşılırsa, doku eşlemenin kalitesi de düşer.
+* `texcoord0``texcoord1`: Doku koordinatları, değerleri aralıkta kaladığında vebahsedilen `[0; 1]` dokuların 2048 x 2048 piksellik en büyük boyuta sahip olduğunda, daha az doğruluk (16_16_FLOAT) kullanabilir. Bu sınırlar aşılırsa, doku eşlemenin kalitesi de düşer.
 
 #### <a name="example"></a>Örnek
 

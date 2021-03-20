@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 12/03/2018
 ms.custom: seodec18
 ms.openlocfilehash: bd2d27addb6860e49ac12eb36d8b625b8bf92001
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93100414"
 ---
 # <a name="tutorial-migrate-your-data-to-cassandra-api-account-in-azure-cosmos-db"></a>Öğretici: verilerinizi Azure Cosmos DB Cassandra API hesaba geçirin
@@ -25,13 +25,13 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 > [!div class="checklist"]
 > * Geçiş planlaması
-> * Geçiş için önkoşullar
+> * Geçiş önkoşulları
 > * cqlsh COPY komutunu kullanarak verileri geçirme
 > * Spark'ı kullanarak verileri geçirme
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites-for-migration"></a>Geçiş için önkoşullar
+## <a name="prerequisites-for-migration"></a>Geçiş önkoşulları
 
 * **Verimlilik Ihtiyaçlarınızı tahmin edin:** Azure Cosmos DB Cassandra API hesabına veri geçirmeden önce, iş yükünüzün işleme ihtiyaçlarını tahmin etmeniz gerekir. Genel olarak, CRUD işlemlerine gereken ortalama aktarım hızıyla başlamanız ve ardından Ayıklama Dönüştürme Yükleme (ETL) için veya öngörülemeyen işlemler için gereken fazladan aktarım hızını eklemeniz önerilir. Geçişi planlamak için şu ayrıntılara ihtiyacınız vardır: 
 
@@ -106,7 +106,7 @@ Azure sanal makinelerinde veya başka bir bulutta mevcut bir kümede bulunan ver
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli olmadığında, kaynak grubunu, Azure Cosmos hesabını ve ilgili tüm kaynakları silebilirsiniz. Bunu yapmak için, sanal makine için kaynak grubunu seçin, **Sil** ' i seçin ve ardından silinecek kaynak grubunun adını onaylayın.
+Artık gerekli olmadığında, kaynak grubunu, Azure Cosmos hesabını ve ilgili tüm kaynakları silebilirsiniz. Bunu yapmak için, sanal makine için kaynak grubunu seçin, **Sil**' i seçin ve ardından silinecek kaynak grubunun adını onaylayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

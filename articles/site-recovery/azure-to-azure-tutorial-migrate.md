@@ -9,10 +9,10 @@ ms.date: 01/28/2019
 ms.author: sharrai
 ms.custom: MVC
 ms.openlocfilehash: 076adbfd4cecf7dae9ffc490e911fcb7ffce48e6
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93394841"
 ---
 # <a name="move-vms-to-another-azure-region"></a>VM 'Leri başka bir Azure bölgesine taşıma
@@ -46,7 +46,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!NOTE]
 > Bu öğreticide, Azure sanal makinelerini bir bölgeden diğerine nasıl taşıyacağınız gösterilmektedir. Bir kullanılabilirlik kümesindeki VM 'Leri farklı bir bölgedeki bölge sabitlenmiş VM 'lere taşıyarak kullanılabilirliği iyileştirmenize gerek varsa bkz. [Azure sanal makinelerini kullanılabilirlik alanları öğreticisine taşıma](move-azure-vms-avset-azone.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure VM 'lerinin, taşımak istediğiniz Azure bölgesinde olduğundan emin olun.
 - [Kaynak bölgesi hedef bölgesi bileşiminin desteklendiğinden](./azure-to-azure-support-matrix.md#region-support)emin olun ve hedef bölge hakkında bilinçli bir karar alın.
@@ -100,9 +100,9 @@ Aşağıdaki adımlarda, bir çözüm olarak Azure Site Recovery kullanarak sana
 1. **Ad** bölümünde **ContosoVMVault** kolay adını belirtin. Birden fazla aboneliğiniz varsa uygun olanı seçin.
 1. **ContosoRG** kaynak grubunu oluşturun.
 1. Bir Azure bölgesi belirtin. Desteklenen bölgeleri denetlemek için [Azure Site Recovery fiyatlandırma ayrıntılarında](https://azure.microsoft.com/pricing/details/site-recovery/)coğrafi kullanılabilirlik bölümüne bakın.
-1. **Kurtarma Hizmetleri kasalarında** **contosovmkasaçoğaltılan**  >  **öğeleri**  >  **+ Çoğalt** ' ı seçin.
-1. Açılan menüde **Azure sanal makineler** ' i seçin.
-1. **Kaynak konumu** ’nda, VM’lerinizin çalışmakta olduğu kaynak Azure bölgesini seçin.
+1. **Kurtarma Hizmetleri kasalarında** **contosovmkasaçoğaltılan**  >  **öğeleri**  >  **+ Çoğalt**' ı seçin.
+1. Açılan menüde **Azure sanal makineler**' i seçin.
+1. **Kaynak konumu**’nda, VM’lerinizin çalışmakta olduğu kaynak Azure bölgesini seçin.
 1. Kaynak Yöneticisi dağıtım modelini seçin. Ardından **kaynak aboneliği** ve **kaynak kaynak grubunu** seçin.
 1. Ayarları kaydetmek için **Tamam ' ı** seçin.
 
@@ -110,8 +110,8 @@ Aşağıdaki adımlarda, bir çözüm olarak Azure Site Recovery kullanarak sana
 
 Site Recovery, abonelikle ve kaynak grubuyla ilişkili VM 'lerin listesini alır.
 
-1. Sonraki adımda, taşımak istediğiniz VM 'yi seçin ve ardından **Tamam** ' ı seçin.
-1. **Ayarlar** ' da, **olağanüstü durum kurtarma** ' yı seçin.
+1. Sonraki adımda, taşımak istediğiniz VM 'yi seçin ve ardından **Tamam**' ı seçin.
+1. **Ayarlar**' da, **olağanüstü durum kurtarma**' yı seçin.
 1. **Olağanüstü durumdan kurtarma yapılandırma** > **Hedef bölge** bölümünde, çoğaltma yapacağınız hedef bölgeyi seçin.
 1. Bu öğretici için diğer varsayılan ayarları kabul edin.
 1. **Çoğaltmayı etkinleştir** seçeneğini belirleyin. Bu adım VM için çoğaltmayı etkinleştirmek üzere bir iş başlatır.
@@ -122,7 +122,7 @@ Site Recovery, abonelikle ve kaynak grubuyla ilişkili VM 'lerin listesini alır
 
 Aşağıdaki adımlarda, hedef bölgeye taşımanın nasıl gerçekleştirileceği gösterilmektedir.
 
-1. Kasaya gidin. **Ayarlar**  >  **çoğaltılan öğeler** ' de VM ' yi seçin ve ardından **Yük devretme** ' yı seçin.
+1. Kasaya gidin. **Ayarlar**  >  **çoğaltılan öğeler**' de VM ' yi seçin ve ardından **Yük devretme**' yı seçin.
 2. **Yük devretme** bölümünde **En geç** seçeneğini belirleyin.
 3. **Yük devretmeyi başlatmadan önce makineyi kapatın** seçeneğini belirleyin. Site Recovery, yük devretmeyi tetiklemeden önce kaynak sanal makineyi kapatmaya çalışır. Kapatma işlemi başarısız olsa bile yük devretme devam eder. **İşler** sayfasında yük devretme ilerlemesini izleyebilirsiniz.
 4. İş bittikten sonra, sanal makinenin hedef Azure bölgesinde beklenen şekilde göründüğünden emin olun.
@@ -135,7 +135,7 @@ Taşınan VM 'yi denetlediyseniz ve yük devretme noktası olarak değiştirilme
 
 ## <a name="commit"></a>İşleme 
 
-Taşınan sanal makineyi denetledikten ve değişikliği kaydetmeye hazırladıktan sonra, **çoğaltılan öğelerde** , VM > **Kaydet** ' i sağ seçin. Bu adım, hedef bölgeye taşıma işlemini tamamlar. Tamamlama işi bitene kadar bekleyin.
+Taşınan sanal makineyi denetledikten ve değişikliği kaydetmeye hazırladıktan sonra, **çoğaltılan öğelerde**, VM > **Kaydet**' i sağ seçin. Bu adım, hedef bölgeye taşıma işlemini tamamlar. Tamamlama işi bitene kadar bekleyin.
 
 ## <a name="clean-up"></a>Temizleme
 

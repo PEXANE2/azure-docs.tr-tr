@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 10/23/2020
 ms.author: dech
 ms.openlocfilehash: 1cee4d2ad1bc7f362a045a5991624ec43521b8d2
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96341657"
 ---
 # <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Öğretici: Verilerinizi Azure Cosmos DB'ye geçirmek için Veri Geçiş Aracı'nı kullanma
@@ -39,7 +39,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 Bu makaledeki yönergeleri uygulamadan önce aşağıdaki adımları belirttiğinizden emin olun:
 
-* **Install** [Microsoft .NET Framework 4,51](https://www.microsoft.com/download/developer-tools.aspx) veya üstünü yükler.
+*  [Microsoft .NET Framework 4,51](https://www.microsoft.com/download/developer-tools.aspx) veya üstünü yükler.
 
 * **Aktarım hızını artır:** Veri geçişinizin süresi, tek bir koleksiyon veya koleksiyonlar kümesi için ayarladığınız üretilen iş miktarına bağlıdır. Büyük veri geçişleri için aktarım hızını artırdığınızdan emin olun. Geçişi tamamladıktan sonra maliyet tasarrufu sağlamak için aktarım hızını azaltın. Azure portal aktarım hızını artırma hakkında daha fazla bilgi için, bkz. Azure Cosmos DB [performans düzeyleri](performance-levels.md) ve [fiyatlandırma katmanları](https://azure.microsoft.com/pricing/details/cosmos-db/) .
 

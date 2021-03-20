@@ -11,10 +11,10 @@ ms.date: 08/31/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: b4e268d35a2e31db0ce92ff61e66fd23bce68e38
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97516355"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Azure Active Directory B2C belirteçlere genel bakış
@@ -62,7 +62,7 @@ Aşağıdaki tabloda, KIMLIK belirteçleri ve Azure AD B2C tarafından verilen e
 | Erişim belirteci karması | `at_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | Yalnızca belirteç bir OAuth 2,0 erişim belirteciyle birlikte verildiğinde, KIMLIK belirtecine eklenen bir erişim belirteci karması. Erişim belirteci karması, bir erişim belirtecinin orijinalliğini doğrulamak için kullanılabilir. Bu doğrulamanın nasıl gerçekleştirileceği hakkında daha fazla bilgi için, [OpenID Connect belirtimine](https://openid.net/specs/openid-connect-core-1_0.html) bakın  |
 | Nonce | `nonce` | `12345` | Nonce, belirteç yeniden yürütme saldırılarını azaltmak için kullanılan bir stratejidir. Uygulamanız, sorgu parametresini kullanarak bir yetkilendirme isteğinde bir kerelik anahtar belirtebilir `nonce` . İstekte sağladığınız değer, `nonce` yalnızca BIR kimlik belirtecinin talebine değiştirilmemiş şekilde yayılır. Bu talep, uygulamanızın değeri istekte belirtilen değerle doğrulamasını sağlar. Uygulamanız, KIMLIK belirteci doğrulama işlemi sırasında bu doğrulamayı gerçekleştirmelidir. |
 | Konu | `sub` | `884408e1-2918-4cz0-b12d-3aa027d7563b` | Belirtecin, bir uygulamanın kullanıcısı gibi bilgilerin hangi sorumluya ait olduğunu belirten sorumlu. Bu değer sabittir ve yeniden atanamaz veya tekrar kullanılamaz. Bu, belirtecin bir kaynağa erişmek için ne zaman kullanıldığı gibi, güvenli bir şekilde, yetkilendirme denetimleri gerçekleştirmek için de kullanılabilir. Varsayılan olarak, konu talebi, dizindeki kullanıcının nesne KIMLIĞIYLE doldurulur. |
-| Kimlik doğrulama bağlamı sınıfı başvurusu | `acr` | Geçerli değil | Yalnızca eski ilkelerle kullanılır. |
+| Kimlik doğrulama bağlamı sınıfı başvurusu | `acr` | Uygulanamaz | Yalnızca eski ilkelerle kullanılır. |
 | Güven çerçevesi ilkesi | `tfp` | `b2c_1_signupsignin1` | KIMLIK belirtecini almak için kullanılan ilkenin adı. |
 | Kimlik doğrulama zamanı | `auth_time` | `1438535543` | Bir kullanıcının en son girilen kimlik bilgileri dönem içinde temsil edildiği zaman. Bu kimlik doğrulaması arasında yeni bir oturum açma, çoklu oturum açma (SSO) oturumu veya başka bir oturum açma türü gibi bir ayırt edici yok. `auth_time`Uygulamanın (veya kullanıcının) Azure AD B2C karşı bir kimlik doğrulama denemesi başlattığı son zaman. Kimlik doğrulaması için kullanılan yöntem farklılaştırmıyor. |
 | Kapsam | `scp` | `Read`| Erişim belirteci için kaynağa verilen izinler. Verilen birden fazla izin boşlukla ayrılır. |

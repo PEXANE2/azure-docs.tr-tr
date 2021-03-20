@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/17/2020
 ms.openlocfilehash: 3225013f09abd326c619b67caf77918889a64859
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94741816"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal Azure Bilişsel Arama bilgi deposu oluşturma
@@ -101,7 +101,7 @@ Bu sihirbaz adımında Bilişsel Beceri bilişsel becerileri ile bir beceri olu�
 1. **Zenginleştirme ayrıntı düzeyi** için **sayfalar (5000 karakter öbekleri)** seçeneğini belirleyin
 
 1. Bu bilişsel becerileri seçin:
-    + **Anahtar tümceleri Ayıkla**
+    + **Anahtar ifadeleri ayıklama**
     + **Metin çevirme**
     + **Yaklaşımı Algıla**
 
