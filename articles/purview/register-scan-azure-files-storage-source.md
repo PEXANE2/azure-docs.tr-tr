@@ -8,19 +8,19 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/01/2020
 ms.openlocfilehash: a0bd7a4cd8afafc16f05b4a37cd5723304ad931e
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96555477"
 ---
 # <a name="register-and-scan-azure-files"></a>Azure dosyalarını kaydetme ve tarama
 
-## <a name="supported-capabilities"></a>Desteklenen yetenekler
+## <a name="supported-capabilities"></a>Desteklenen özellikler
 
 Azure dosyaları, meta verileri yakalamak ve sistem ve müşteri sınıflandırmalarına bağlı olarak meta verilerde sınıflandırmalar uygulamak için tam ve artımlı taramaları destekler.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Veri kaynaklarını kaydetmeden önce bir Azure purview hesabı oluşturun. Bir purview hesabı oluşturma hakkında daha fazla bilgi için bkz. [hızlı başlangıç: Azure purview hesabı oluşturma](create-catalog-portal.md).
 - Taramaları ayarlamak ve zamanlamak için bir veri kaynağı Yöneticisi olmanız gerekir, Ayrıntılar için lütfen [Katalog izinleri](catalog-permissions.md) bölümüne bakın.

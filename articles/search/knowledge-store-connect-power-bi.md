@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.openlocfilehash: 91e75b60f5324288c9f1adac59e31b9c1a1b0e9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89289180"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Bilgi deposunu Power BI bağlama
@@ -47,39 +47,39 @@ Bu makalede Power BI Desktop uygulamasındaki Power Query kullanarak bir bilgi d
 
 1. **Bağlan**'a tıklayın.
 
-1. **Hesap adı veya URL 'si**Için Azure depolama hesabınızın adını girin (sizin IÇIN tam URL oluşturulur).
+1. **Hesap adı veya URL 'si** Için Azure depolama hesabınızın adını girin (sizin IÇIN tam URL oluşturulur).
 
 1. İstenirse, depolama hesabı anahtarını girin.
 
 1. Önceki gözden geçirmeler tarafından oluşturulan otel verilerini içeren tabloları seçin. 
 
-   + Portal Kılavuzu için, tablo adları *hotelgözden geçiricsdocument*, *hotelmpl sssentities*, *HotelReviewsSsKeyPhrases*ve *hotelcode ssspages*' dır. 
+   + Portal Kılavuzu için, tablo adları *hotelgözden geçiricsdocument*, *hotelmpl sssentities*, *HotelReviewsSsKeyPhrases* ve *hotelcode ssspages*' dır. 
    
-   + REST Kılavuzu için, tablo adları *hotelgözden geçiricsdocument*, *hotelgözden geçiricspages*, *HotelReviewsKeyPhrases*ve *hotelincelemesi ssentiment*.
+   + REST Kılavuzu için, tablo adları *hotelgözden geçiricsdocument*, *hotelgözden geçiricspages*, *HotelReviewsKeyPhrases* ve *hotelincelemesi ssentiment*.
 
 1. **Yükle**' ye tıklayın.
 
-1. **Power Query düzenleyicisini**açmak için üst şeritte **sorguları Düzenle** ' ye tıklayın.
+1. **Power Query düzenleyicisini** açmak için üst şeritte **sorguları Düzenle** ' ye tıklayın.
 
    ![Power Query açın](media/knowledge-store-connect-power-bi/powerbi-edit-queries.png "Power Query açın")
 
-1. *Hotelcode Ssındocument*' ı seçin ve ardından *partitionkey*, *rowkey*ve *timestamp* sütunlarını kaldırın. 
+1. *Hotelcode Ssındocument*' ı seçin ve ardından *partitionkey*, *rowkey* ve *timestamp* sütunlarını kaldırın. 
    ![Tabloları Düzenle](media/knowledge-store-connect-power-bi/powerbi-edit-table.png "Tabloları Düzenle")
 
-1. *İçeriği*genişletmek için tablonun sağ üst tarafındaki karşıt oklu simgeye tıklayın. Sütun listesi göründüğünde, tüm sütunlar ' ı seçin ve ardından ' Metadata ' ile başlayan sütunların seçimini kaldırın. Seçilen sütunları göstermek için **Tamam** ' ı tıklatın.
+1. *İçeriği* genişletmek için tablonun sağ üst tarafındaki karşıt oklu simgeye tıklayın. Sütun listesi göründüğünde, tüm sütunlar ' ı seçin ve ardından ' Metadata ' ile başlayan sütunların seçimini kaldırın. Seçilen sütunları göstermek için **Tamam** ' ı tıklatın.
 
    ![İçeriği Genişlet](media/knowledge-store-connect-power-bi/powerbi-expand-content-table.png "İçeriği Genişlet")
 
 1. Sütunun sol üst kısmındaki ABC-123 simgesine tıklayarak aşağıdaki sütunlar için veri türünü değiştirin.
 
-   + *Content. Enlem* ve *Content. Boylam*için **ondalık sayı**' yı seçin.
-   + *Content.reviews_date* ve *Content.reviews_dateAdded*için **Tarih/saat**' i seçin.
+   + *Content. Enlem* ve *Content. Boylam* için **ondalık sayı**' yı seçin.
+   + *Content.reviews_date* ve *Content.reviews_dateAdded* için **Tarih/saat**' i seçin.
 
    ![Veri türlerini değiştirme](media/knowledge-store-connect-power-bi/powerbi-change-type.png "Veri türlerini değiştirme")
 
-1. *Hotelcode Ssspages*öğesini seçin ve ardından 9 ve 10. adımları yineleyerek sütunları silip *içeriği*genişletin.
-1. *Content. Sentımentscore* için veri türünü **ondalık sayı**olarak değiştirin.
-1. *HotelReviewsSsKeyPhrases* ' ı seçin ve sütunları silip *içeriği*genişletmek için 9. ve 10. adımları yineleyin. Bu tablo için veri türü değişikliği yok.
+1. *Hotelcode Ssspages* öğesini seçin ve ardından 9 ve 10. adımları yineleyerek sütunları silip *içeriği* genişletin.
+1. *Content. Sentımentscore* için veri türünü **ondalık sayı** olarak değiştirin.
+1. *HotelReviewsSsKeyPhrases* ' ı seçin ve sütunları silip *içeriği* genişletmek için 9. ve 10. adımları yineleyin. Bu tablo için veri türü değişikliği yok.
 
 1. Komut çubuğunda **Kapat ve Uygula**' ya tıklayın.
 
@@ -87,7 +87,7 @@ Bu makalede Power BI Desktop uygulamasındaki Power Query kullanarak bir bilgi d
 
    ![İlişkileri doğrula](media/knowledge-store-connect-power-bi/powerbi-relationships.png "İlişkileri doğrula")
 
-1. Her bir ilişkiye çift tıklayın ve **çapraz filtre yönünün** **her ikisine de**ayarlandığından emin olun.  Bu, bir filtre uygulandığında görsellerinizin yenilenmesini sağlar.
+1. Her bir ilişkiye çift tıklayın ve **çapraz filtre yönünün** **her ikisine de** ayarlandığından emin olun.  Bu, bir filtre uygulandığında görsellerinizin yenilenmesini sağlar.
 
 1. Görsel öğeler aracılığıyla verileri araştırmak için sol gezinti bölmesindeki rapor kutucuğuna tıklayın. Metin alanları, tablolar ve kartlar yararlı görselleştirmelerdir. Tablo veya kartı doldurmanız için üç tablodaki her bir alandan alanları seçebilirsiniz. 
 

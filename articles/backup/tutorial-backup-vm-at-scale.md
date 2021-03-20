@@ -5,10 +5,10 @@ ms.date: 07/26/2020
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: a9517ffc1e37d50f7c0e57b9ed53fb8bcf55fd70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89180584"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Birden çok sanal makineyi yedeklemek için Azure portalını kullanma
@@ -24,7 +24,7 @@ Azure’da verileri yedeklediğinizde söz konusu veriler Kurtarma Hizmetleri ka
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/)’ında oturum açın.
+[Azure portalında](https://portal.azure.com/) oturum açın.
 
 ## <a name="create-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasası oluşturma
 
@@ -48,7 +48,7 @@ Kurtarma Hizmetleri kasası, yedekleme verilerini ve korumalı sanal makinelere 
 
     * **Ad** alanına *myRecoveryServicesVault* yazın.
     * **Abonelik** bölümünde geçerli abonelik kimliği görüntülenir. Ek abonelikleriniz varsa yeni kasa için başka bir abonelik seçebilirsiniz.
-    * **Kaynak grubu**için **var olanı kullan** ' ı seçin ve *myresourcegroup*öğesini seçin. *myResourceGroup* yoksa **Yeni oluştur**’u seçin ve *myResourceGroup* yazın.
+    * **Kaynak grubu** için **var olanı kullan** ' ı seçin ve *myresourcegroup* öğesini seçin. *myResourceGroup* yoksa **Yeni oluştur**’u seçin ve *myResourceGroup* yazın.
     * **Konum** açılan menüsünden *Batı Avrupa*’yı seçin.
 
     ![Kurtarma Hizmetleri Kasası değerleri](./media/tutorial-backup-vm-at-scale/review-and-create.png)
@@ -86,7 +86,7 @@ Kurtarma Hizmetleri kasasını oluşturduktan sonraki adım, veri türü için k
     ![Yeni ilke oluştur](./media/tutorial-backup-vm-at-scale/create-new-policy.png)
 
 1. **Yedekleme ilkesi** bölmesi açılır. Aşağıdaki ayrıntıları doldurun:
-   * **Ilke adı** türü *finans*için. Yedekleme ilkesi için aşağıdaki değişiklikleri girin:
+   * **Ilke adı** türü *finans* için. Yedekleme ilkesi için aşağıdaki değişiklikleri girin:
    * **Yedekleme sıklığı** için saat dilimini *Orta Amerika Saati* olarak ayarlayın. Spor tesisi Teksas’ta olduğundan, tesisin sahibi zamanlamanın yerel olarak ayarlanmasını istemektedir. Yedekleme sıklığını Günlük olarak saat 03:30'a ayarlanmış halde bırakın.
    * **Günlük yedekleme noktası bekletmesi** için süreyi 90 gün olarak ayarlayın.
    * **Haftalık yedekleme noktası bekletmesi** için *Pazartesi* geri yükleme noktasını kullanın ve 52 hafta boyunca tutun.
@@ -98,7 +98,7 @@ Kurtarma Hizmetleri kasasını oluşturduktan sonraki adım, veri türü için k
 
      Yedekleme ilkesini oluşturduktan sonra ilkeyi sanal makineler ile ilişkilendirin.
 
-1. **Sanal makineler**altında **Ekle**' yi seçin.
+1. **Sanal makineler** altında **Ekle**' yi seçin.
 
      ![Sanal makine Ekle](./media/tutorial-backup-vm-at-scale/add-virtual-machines.png)
 
@@ -118,7 +118,7 @@ Kurtarma Hizmetleri kasaları için yedeklemeyi etkinleştirdiniz, ancak bir ilk
 
 İsteğe bağlı yedekleme işi çalıştırmak için:
 
-1. Kasa panosunda, yedekleme öğeleri menüsünü açmak için **yedekleme öğeleri**altında **3** ' ü seçin.
+1. Kasa panosunda, yedekleme öğeleri menüsünü açmak için **yedekleme öğeleri** altında **3** ' ü seçin.
 
     ![Yedekleme öğeleri](./media/tutorial-backup-vm-at-scale/tutorial-vm-back-up-now.png)
 

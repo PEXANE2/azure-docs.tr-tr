@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 9e8625724f67caac99ae799674f9db9399e11ad8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89294263"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-managed-instance"></a>Azure Bilişsel Arama Dizin oluşturucudan SQL yönetilen örneği 'ne bağlantı yapılandırma
@@ -25,7 +25,7 @@ ms.locfileid: "89294263"
    ![Ortak uç noktayı etkinleştir](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/enable-public-endpoint.png "Ortak uç noktayı etkinleştir")
 
 ## <a name="enable-azure-sql-managed-instance-public-endpoint"></a>Azure SQL yönetilen örneği genel uç noktasını etkinleştir
-Ayrıca, mevcut bir SQL yönetilen örneği üzerinde **güvenlik**  >  **sanal ağı**  >  **genel uç nokta**  >  **Etkinleştir**altında ortak uç noktayı etkinleştirebilirsiniz.
+Ayrıca, mevcut bir SQL yönetilen örneği üzerinde **güvenlik**  >  **sanal ağı**  >  **genel uç nokta**  >  **Etkinleştir** altında ortak uç noktayı etkinleştirebilirsiniz.
 
    ![Yönetilen örnek VNET 'i kullanarak genel uç noktayı etkinleştirme](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/mi-vnet.png "Ortak uç noktayı etkinleştir")
 

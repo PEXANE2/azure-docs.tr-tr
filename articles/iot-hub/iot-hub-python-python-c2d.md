@@ -10,10 +10,10 @@ ms.date: 04/09/2020
 ms.author: robinsh
 ms.custom: mqtt, devx-track-python
 ms.openlocfilehash: ad6399a4713520ca0550d143cf3f19f87d55337c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87876810"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>IoT Hub (Python) ile buluttan cihaza iletileri gönderme
@@ -40,7 +40,7 @@ Bu öğreticinin sonunda, iki Python konsol uygulaması çalıştırırsınız:
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [iot-hub-include-python-v2-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
 
@@ -50,13 +50,13 @@ Bu öğreticinin sonunda, iki Python konsol uygulaması çalıştırırsınız:
 
 Bu bölümde, IoT Hub 'ından cihazın benzetimini yapmak ve buluttan cihaza iletileri almak için bir Python konsol uygulaması oluşturacaksınız.
 
-1. Çalışma dizininizde bir komut isteminden **Python Için Azure IoT Hub cihaz SDK 'sını**yükledikten sonra:
+1. Çalışma dizininizde bir komut isteminden **Python Için Azure IoT Hub cihaz SDK 'sını** yükledikten sonra:
 
     ```cmd/sh
     pip install azure-iot-device
     ```
 
-1. Bir metin düzenleyicisi kullanarak **SimulatedDevice.py**adlı bir dosya oluşturun.
+1. Bir metin düzenleyicisi kullanarak **SimulatedDevice.py** adlı bir dosya oluşturun.
 
 1. `import` **SimulatedDevice.py** dosyasının başlangıcında aşağıdaki deyimleri ve değişkenleri ekleyin:
 
@@ -132,13 +132,13 @@ Bu makalede, [bir cihazdan IoT Hub 'ına telemetri gönderme](quickstart-send-te
 
 Bu bölümde, sanal cihaz uygulamasına buluttan cihaza iletiler gönderen bir Python konsol uygulaması oluşturacaksınız. [Bir cihazdan IoT Hub 'ına bir cihazdan Telemetriyi gönder](quickstart-send-telemetry-python.md) hızlı başlangıç bölümünde eklediğiniz CIHAZıN cihaz kimliği gereklidir. [IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)bölümünde daha önce kopyaladığınız IoT Hub bağlantı dizesine de ihtiyacınız vardır.
 
-1. Çalışma dizininizde, bir komut istemi açın ve **Python Için Azure IoT Hub hizmet SDK 'sını**yükledikten sonra.
+1. Çalışma dizininizde, bir komut istemi açın ve **Python Için Azure IoT Hub hizmet SDK 'sını** yükledikten sonra.
 
    ```cmd/sh
    pip install azure-iot-hub
    ```
 
-1. Bir metin düzenleyicisi kullanarak **SendCloudToDeviceMessage.py**adlı bir dosya oluşturun.
+1. Bir metin düzenleyicisi kullanarak **SendCloudToDeviceMessage.py** adlı bir dosya oluşturun.
 
 1. `import` **SendCloudToDeviceMessage.py** dosyasının başlangıcında aşağıdaki deyimleri ve değişkenleri ekleyin:
 

@@ -16,10 +16,10 @@ ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 5670a29e86eb201a707e5ceef28043aafe4839d9
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97357985"
 ---
 # <a name="configure-azure-load-balancer-for-failover-cluster-instance-vnn"></a>Yük devretme kümesi örneği için Azure Load Balancer yapılandırın VNN
@@ -47,7 +47,7 @@ Yük dengeleyiciyi oluşturmak için [Azure Portal](https://portal.azure.com) ku
 
 1. Azure portal, sanal makineleri içeren kaynak grubuna gidin.
 
-1. **Ekle**’yi seçin. **Load Balancer** Için Azure Market 'te arama yapın. **Load Balancer** seçin.
+1. **Add (Ekle)** seçeneğini belirleyin. **Load Balancer** Için Azure Market 'te arama yapın. **Load Balancer** seçin.
 
 1. **Oluştur**’u seçin.
 
@@ -84,7 +84,7 @@ Yük dengeleyiciyi oluşturmak için [Azure Portal](https://portal.azure.com) ku
 
 1. Yük dengeleyici bölmesinde **sistem durumu araştırmaları**' nı seçin.
 
-1. **Ekle**’yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
 1. **Durum araştırma bölmesi Ekle** bölümünde aşağıdaki sistem <span id="probe"></span> durumu araştırma parametrelerini ayarlayın:
 
@@ -100,7 +100,7 @@ Yük dengeleyiciyi oluşturmak için [Azure Portal](https://portal.azure.com) ku
 
 1. Yük dengeleyici bölmesinde, **Yük Dengeleme kuralları**' nı seçin.
 
-1. **Ekle**’yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
 1. Yük Dengeleme kuralı parametrelerini ayarlayın:
 
@@ -138,8 +138,8 @@ Aşağıdaki tabloda, güncelleştirmeniz gereken değerler açıklanmaktadır:
 
 |**Değer**|**Açıklama**|
 |---------|---------|
-|`Cluster Network Name`| Ağ için Windows Server yük devretme kümesi adı. **Yük devretme kümesi Yöneticisi**  >  **ağlarda** ağa sağ tıklayıp **Özellikler**' i seçin. Doğru değer **genel** sekmesinde **ad** ' ın altında bulunur.|
-|`SQL Server FCI/AG listener IP Address Resource Name`|SQL Server FCı 'nın veya AG dinleyicisinin IP adresinin kaynak adı. **Yük devretme kümesi Yöneticisi**  >  **Roller**' de, SQL Server FCI rolü altında, **sunucu adı** altında, IP adresi kaynağına sağ tıklayın ve **Özellikler**' i seçin. Doğru değer **genel** sekmesinde **ad** ' ın altında bulunur.|
+|`Cluster Network Name`| Ağ için Windows Server yük devretme kümesi adı. **Yük devretme kümesi Yöneticisi**  >  **ağlarda** ağa sağ tıklayıp **Özellikler**' i seçin. Doğru değer **Genel** sekmesindeki **Ad**’ın altında yer alır.|
+|`SQL Server FCI/AG listener IP Address Resource Name`|SQL Server FCı 'nın veya AG dinleyicisinin IP adresinin kaynak adı. **Yük devretme kümesi Yöneticisi**  >  **Roller**' de, SQL Server FCI rolü altında, **sunucu adı** altında, IP adresi kaynağına sağ tıklayın ve **Özellikler**' i seçin. Doğru değer **Genel** sekmesindeki **Ad**’ın altında yer alır.|
 |`ILBIP`|İç yük dengeleyicinin (ıLB) IP adresi. Bu adres, Azure portal ıLB 'nin ön uç adresi olarak yapılandırılır. Bu Ayrıca, FCı 'nın IP adresidir SQL Server. **Yük devretme kümesi Yöneticisi** içinde bulduğunuz aynı Özellikler sayfasında bulabilirsiniz `<SQL Server FCI/AG listener IP Address Resource Name>` .|
 |`nnnnn`|Yük dengeleyicinin sistem durumu araştırmasına yapılandırdığınız araştırma bağlantı noktası. Kullanılmayan herhangi bir TCP bağlantı noktası geçerlidir.|
 |Altağ| Küme parametresi için alt ağ maskesi. TCP IP yayını adresi olmalıdır: `255.255.255.255` .| 

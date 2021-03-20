@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 02490839a9e35695ae2e8b3f750e139ad7413aa4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89280222"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect eşitleme: bildirim temelli sağlama Ifadelerini anlama
@@ -82,7 +82,7 @@ Aşağıdaki işleçler kullanılabilir:
 ## <a name="multi-valued-attributes"></a>Çoklu değerli öznitelikler
 İşlevler hem tek değerli hem de birden çok değerli öznitelikler üzerinde çalışabilir. Çoklu değerli özniteliklerde, işlev her değer üzerinde çalışır ve her değere aynı işlevi uygular.
 
-Örneğin:  
+Örnek:  
 `Trim([proxyAddresses])` ProxyAddress özniteliğinde her bir değerin kırpılıp bir bölümünü yapın.  
 `Word([proxyAddresses],1,"@") & "@contoso.com"` İle her değer için @-sign etki alanını ile değiştirin @contoso.com .  
 `IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])` SIP-Address ' i bulun ve değerlerden kaldırın.

@@ -7,10 +7,10 @@ ms.date: 05/02/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: b6369013d605ae538ad611a28a90e9c099bb7d80
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91326057"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>Ana VHD görüntüsü üzerinde Office yükleme
@@ -52,7 +52,7 @@ Bu örnek yapılandırma XML 'i şunları yapamayacaklarınız:
    - OneDrive 'ı Kullanıcı başına moda yükleyin. Daha fazla bilgi için bkz. [OneDrive 'ı makine başına moda yükleyin](#install-onedrive-in-per-machine-mode).
 
 >[!NOTE]
->Paylaşılan bilgisayar etkinleştirme, grup ilkesi nesneleri (GPO 'Lar) veya kayıt defteri ayarları aracılığıyla ayarlanabilir. GPO, ** \\ \\ Yönetim Şablonları \\ Microsoft Office 2016 (makine) \\ lisanslama ayarlarındaki bilgisayar yapılandırma ilkeleri** ' nde bulunur
+>Paylaşılan bilgisayar etkinleştirme, grup ilkesi nesneleri (GPO 'Lar) veya kayıt defteri ayarları aracılığıyla ayarlanabilir. GPO, **\\ \\ Yönetim Şablonları \\ Microsoft Office 2016 (makine) \\ lisanslama ayarlarındaki bilgisayar yapılandırma ilkeleri** ' nde bulunur
 
 Office dağıtım aracı setup.exe içerir. Office 'i yüklemek için komut satırında aşağıdaki komutu çalıştırın:
 

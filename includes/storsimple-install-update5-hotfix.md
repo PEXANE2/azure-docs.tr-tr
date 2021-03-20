@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: cbc7c82803115f71db233be94d62a857ba050b63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86050405"
 ---
 #### <a name="to-download-hotfixes"></a>Düzeltmeleri indirmek için
@@ -20,19 +20,19 @@ Microsoft Update Kataloğu'ndan yazılım güncelleştirmesi indirmek için aşa
 
     ![Katalog yükleme](./media/storsimple-install-update2-hotfix/HCS_InstallCatalog-include.png)
 
-3. Microsoft Update kataloğunun arama kutusuna, indirmek istediğiniz düzeltmenin Bilgi Bankası (KB) numarasını girin, örneğin **4037264**yazın ve ardından **Ara**' ya tıklayın.
+3. Microsoft Update kataloğunun arama kutusuna, indirmek istediğiniz düzeltmenin Bilgi Bankası (KB) numarasını girin, örneğin **4037264** yazın ve ardından **Ara**' ya tıklayın.
    
     Düzeltme listesi görüntülenir, örneğin, **StorSimple 8000 Serisi Için toplu yazılım paketi güncelleştirmesi 5,0**.
    
     ![Katalogda arama](./media/storsimple-install-update5-hotfix/update-catalog-search.png)
 
-4. **İndir**'e tıklayın. İndirilen öğelerin görünmesini istediğiniz yerel konumu belirtin veya **Gözat** seçeneğiyle konumu bulun. Belirtilen konuma ve klasöre indirmek için dosyalara tıklayın. Klasör, cihazdan erişilebilen bir ağ paylaşımına da kopyalanabilir.
+4. **İndir**’e tıklayın. İndirilen öğelerin görünmesini istediğiniz yerel konumu belirtin veya **Gözat** seçeneğiyle konumu bulun. Belirtilen konuma ve klasöre indirmek için dosyalara tıklayın. Klasör, cihazdan erişilebilen bir ağ paylaşımına da kopyalanabilir.
 5. Yukarıdaki tabloda listelenen ek düzeltmeleri arayın (**4037266**) ve ilgili dosyaları önceki tabloda listelendiği gibi belirli klasörlere indirin.
 
 > [!NOTE]
 > Her iki denetleyiciden de, eş denetleyicisinden gelen olası hata iletilerini algılamak için bu düzeltmelere erişilebilir olmalıdır.
 >
-> Düzeltmeler 3 ayrı klasöre kopyalanmalıdır. Örneğin, cihaz yazılımı/CIS/MDS Aracısı güncelleştirmesi _Firstorderupdate_ klasöründe kopyalanabilir, tüm kesintiye uğramayan güncelleştirmeler, ikinciorderupdate klasöründe kopyalanabilir ve _üçüncü_ olarak da iki _SecondOrderUpdate_ sunucudan kopyalanmış olan bakım modu güncelleştirmelerinde yer alabilir.
+> Düzeltmeler 3 ayrı klasöre kopyalanmalıdır. Örneğin, cihaz yazılımı/CIS/MDS Aracısı güncelleştirmesi _Firstorderupdate_ klasöründe kopyalanabilir, tüm kesintiye uğramayan güncelleştirmeler, ikinciorderupdate klasöründe kopyalanabilir ve _üçüncü_ olarak da iki  sunucudan kopyalanmış olan bakım modu güncelleştirmelerinde yer alabilir.
 
 #### <a name="to-install-and-verify-regular-mode-hotfixes"></a>Normal mod düzeltmelerini yüklemek ve doğrulamak için
 
@@ -180,7 +180,7 @@ Disk üretici yazılımı güncelleştirmelerini yüklemek için aşağıdaki y�
     ```
 
 3. `Get-HcsUpdateStatus` komutunu kullanarak yükleme ilerleme durumunu izleyin. `RunInProgress` değeri `False` olarak değiştiğinde güncelleştirme tamamlanır.
-4. Yükleme tamamlandıktan sonra, bakım modu düzeltmesinin yüklendiği denetleyici yeniden başlatılır. Seçenek 1 olarak oturum açın, **tam erişimle oturum açın**ve disk üretici yazılımı sürümünü doğrulayın. Şunu yazın:
+4. Yükleme tamamlandıktan sonra, bakım modu düzeltmesinin yüklendiği denetleyici yeniden başlatılır. Seçenek 1 olarak oturum açın, **tam erişimle oturum açın** ve disk üretici yazılımı sürümünü doğrulayın. Şunu yazın:
    
    `Get-HcsFirmwareVersion`
    

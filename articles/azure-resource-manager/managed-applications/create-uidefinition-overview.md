@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
 ms.openlocfilehash: 327fa1d7eb73d8e65bb4f81c1dff0fe2bec2913b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89319585"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>Azure tarafından yönetilen uygulamanın oluşturma deneyimi için CreateUiDefinition.json
@@ -107,7 +107,7 @@ Createuıdefinition 'nizi oluşturmak için bir JSON Düzenleyicisi kullanabilir
 
 `isWizard`Özelliği, bir sonraki adıma geçmeden önce her adımın başarılı bir şekilde doğrulanmasını zorunlu kılmanıza olanak sağlar. `isWizard`Özellik belirtilmediğinde, varsayılan değer **false**'dur ve adım adım doğrulama gerekli değildir.
 
-`isWizard`Etkinleştirildiğinde, **doğru**olarak ayarlandığında **temel kavramlar** sekmesi kullanılabilir ve diğer tüm sekmeler devre dışı bırakılır. Bir **sonraki** düğme seçildiğinde sekmenin simgesi, bir sekmenin doğrulamasının geçtiğini veya başarısız olduğunu gösterir. Sekmenin gerekli alanları tamamlandıktan ve doğrulandıktan sonra **İleri düğmesi bir sonraki sekmeye** gidilmesine izin verir. Tüm sekmeler doğrulamadan geçene zaman, **Gözden geçirme ve oluşturma** sayfasına gidebilir ve **Oluştur** düğmesini seçerek dağıtıma başlayabilirsiniz.
+`isWizard`Etkinleştirildiğinde, **doğru** olarak ayarlandığında **temel kavramlar** sekmesi kullanılabilir ve diğer tüm sekmeler devre dışı bırakılır. Bir **sonraki** düğme seçildiğinde sekmenin simgesi, bir sekmenin doğrulamasının geçtiğini veya başarısız olduğunu gösterir. Sekmenin gerekli alanları tamamlandıktan ve doğrulandıktan sonra **İleri düğmesi bir sonraki sekmeye** gidilmesine izin verir. Tüm sekmeler doğrulamadan geçene zaman, **Gözden geçirme ve oluşturma** sayfasına gidebilir ve **Oluştur** düğmesini seçerek dağıtıma başlayabilirsiniz.
 
 :::image type="content" source="./media/create-uidefinition-overview/tab-wizard.png" alt-text="Sekme Sihirbazı":::
 
@@ -119,7 +119,7 @@ Temel bilgiler yapılandırması, temel kavramlar adımını özelleştirmenize 
 
 `subscription`Ve `resourceGroup` öğeleri ek doğrulamalar belirtmenize olanak tanır. Doğrulamaları belirtmenin sözdizimi, [metin kutusu](microsoft-common-textbox.md)için özel doğrulama ile aynıdır. Ayrıca `permission` , abonelik veya kaynak grubunda doğrulama belirtebilirsiniz.  
 
-Abonelik denetimi, kaynak sağlayıcısı ad alanlarının listesini kabul eder. Örneğin, **Microsoft. COMPUTE**belirtebilirsiniz. Kullanıcı kaynak sağlayıcısını desteklemeyen bir abonelik seçtiğinde bir hata iletisi gösterir. Bu hata, kaynak sağlayıcısı bu abonelikte kayıtlı olmadığında ve kullanıcının kaynak sağlayıcısını kaydetme izni yoksa oluşur.  
+Abonelik denetimi, kaynak sağlayıcısı ad alanlarının listesini kabul eder. Örneğin, **Microsoft. COMPUTE** belirtebilirsiniz. Kullanıcı kaynak sağlayıcısını desteklemeyen bir abonelik seçtiğinde bir hata iletisi gösterir. Bu hata, kaynak sağlayıcısı bu abonelikte kayıtlı olmadığında ve kullanıcının kaynak sağlayıcısını kaydetme izni yoksa oluşur.  
 
 Kaynak grubu denetimi için bir seçeneği vardır `allowExisting` . Ne zaman `true` , kullanıcılar zaten kaynakları olan kaynak gruplarını seçebilir. Bu bayrak en çok çözüm şablonları için geçerlidir; burada varsayılan davranış, kullanıcıların yeni veya boş bir kaynak grubu seçmesini sağlamalıdır. Çoğu senaryoda, bu özelliğin belirtilmesi gerekli değildir.  
 
@@ -129,7 +129,7 @@ Kaynak grubu denetimi için bir seçeneği vardır `allowExisting` . Ne zaman `t
 
 **Temel kavramlar** adımı Azure Portal dosyayı ayrıştırdığında oluşturulan ilk adımdır. Varsayılan olarak, temel bilgiler, kullanıcıların dağıtım için abonelik, kaynak grubu ve konum seçmesini sağlar.
 
-:::image type="content" source="./media/create-uidefinition-overview/basics.png" alt-text="Sekme Sihirbazı":::
+:::image type="content" source="./media/create-uidefinition-overview/basics.png" alt-text="Temel bilgiler varsayılan":::
 
 Bu bölüme daha fazla öğe ekleyebilirsiniz. Mümkün olduğunda, küme veya yönetici kimlik bilgileri gibi dağıtım genelindeki parametreleri sorgulayan öğeleri ekleyin.
 

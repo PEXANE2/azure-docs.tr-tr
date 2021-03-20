@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: tamram
 ms.openlocfilehash: 27617da97ced9ac775beae71e4c25202944b2aba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "78942062"
 ---
 Aşağıdaki tabloda Tablo depolaması için kapasite, ölçeklenebilirlik ve performans hedefleri açıklanmaktadır.
@@ -20,7 +20,7 @@ Aşağıdaki tabloda Tablo depolaması için kapasite, ölçeklenebilirlik ve pe
 | Bir bölümdeki varlıkların sayısı | Yalnızca depolama hesabının kapasitesine göre sınırlandırılır |
 | Tek bir tablonun en büyük boyutu | 500 TiB |
 | Tüm özellik değerleri dahil olmak üzere tek bir varlığın en büyük boyutu | 1 MIB |
-| Bir tablo varlığındaki en fazla özellik sayısı | 255 (üç sistem özelliği, **Partitionkey**, **Rowkey**ve **timestamp**dahil) |
+| Bir tablo varlığındaki en fazla özellik sayısı | 255 (üç sistem özelliği, **Partitionkey**, **Rowkey** ve **timestamp** dahil) |
 | Bir varlıktaki tek bir özelliğin en büyük toplam boyutu | Özellik türüne göre farklılık gösterir. Daha fazla bilgi için bkz. [Tablo hizmeti veri modelini anlama](/rest/api/storageservices/understanding-the-table-service-data-model)Içindeki **özellik türleri** . |
 | **Partitionkey** boyutu | Boyutu 1 kıb 'ye kadar olan bir dize |
 | **Rowkey** boyutu | Boyutu 1 kıb 'ye kadar olan bir dize |

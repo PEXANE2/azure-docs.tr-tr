@@ -8,10 +8,10 @@ ms.date: 10/30/2019
 ms.author: chlound
 ms.custom: references_regions
 ms.openlocfilehash: 8a8d434fca7cab4432f38fc64093cf1fe060bd5f
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92019095"
 ---
 # <a name="refresh-with-logic-apps"></a>Logic Apps ile yenileme
@@ -29,7 +29,7 @@ Tüm çağrıların kimliği geçerli bir Azure Active Directory (OAuth 2) belir
 > [!IMPORTANT]
 > Aşağıdaki örneklerde Azure Analysis Services güvenlik duvarının devre dışı bırakıldığını kabul edilir. Güvenlik Duvarı etkinse, istek başlatıcısının genel IP adresi Azure Analysis Services güvenlik duvarında onaylanan listeye eklenmelidir. Bölge başına Azure Logic Apps IP aralıkları hakkında daha fazla bilgi için bkz. [Azure Logic Apps Için sınırlara ve yapılandırma bilgilerine](../logic-apps/logic-apps-limits-and-config.md#configuration)bakın.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 #### <a name="create-a-service-principal-spn"></a>Hizmet sorumlusu oluşturma (SPN)
 
@@ -45,13 +45,13 @@ Bu örnekte, mantıksal uygulama bir HTTP isteği alındığında tetiklemek üz
 
 Bir mantıksal uygulama oluşturduktan sonra:
 
-1. Mantıksal uygulama tasarımcısında, **BIR http isteği alındığında**ilk eylemi seçin.
+1. Mantıksal uygulama tasarımcısında, **BIR http isteği alındığında** ilk eylemi seçin.
 
    ![HTTP alındı etkinliği Ekle](./media/analysis-services-async-refresh-logic-app/1.png)
 
 Mantıksal uygulama kaydedildikten sonra bu adım HTTP POST URL 'SI ile doldurulur.
 
-2. Yeni bir adım ekleyin ve **http**araması yapın.  
+2. Yeni bir adım ekleyin ve **http** araması yapın.  
 
    !["HTTP" kutucuğunun seçili olduğu "Eylem Seç" bölümünün ekran görüntüsü.](./media/analysis-services-async-refresh-logic-app/9.png)
 
@@ -72,7 +72,7 @@ HTTP etkinliğini şu şekilde yapılandırın:
 |**Kimlik Doğrulaması**     |Active Directory OAuth         |
 |**Kiracı**     |Azure Active Directory Tenantıd 'nizi girin         |
 |**Hedef kitle**     |https://*. aşama zure. Windows. net         |
-|**İstemci KIMLIĞI**     |Hizmet asıl adı ClientID değerini girin         |
+|**İstemci Kimliği**     |Hizmet asıl adı ClientID değerini girin         |
 |**Kimlik bilgisi türü**     |Gizli dizi         |
 |**Gizlilikle**     |Hizmet sorumlusu adı gizli anahtarını girin         |
 
@@ -102,9 +102,9 @@ Yukarıdaki örneği kullanarak, ilk etkinliği silip bir **zamanlama** etkinli�
 
 !["Tetikleyiciler" sayfasını gösteren ekran görüntüsü.](./media/analysis-services-async-refresh-logic-app/13.png)
 
-Bu örnek, **yinelenme**kullanır.
+Bu örnek, **yinelenme** kullanır.
 
-Etkinlik eklendikten sonra aralığı ve sıklığı yapılandırın, sonra yeni bir parametre ekleyin ve **bu saatlere**seçin.
+Etkinlik eklendikten sonra aralığı ve sıklığı yapılandırın, sonra yeni bir parametre ekleyin ve **bu saatlere** seçin.
 
 !["Bu saatlerde" parametresi seçili "yinelenme" bölümünü gösteren ekran görüntüsü.](./media/analysis-services-async-refresh-logic-app/16.png)
 

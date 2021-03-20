@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
 ms.openlocfilehash: d12a7d52562fe32126e12a844c2d36c14cf01431
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96555474"
 ---
 # <a name="apply-classifications-on-assets-in-azure-purview"></a>Azure purview 'daki varlıklar üzerinde sınıflandırmalar uygulama
@@ -24,12 +24,12 @@ Sınıflandırmalar sistem veya özel türler olabilir. Sistem sınıflandırmal
 
 Bu belgede, verilerinize sınıflandırmaların nasıl uygulanacağı açıklanmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - İhtiyaya göre özel sınıflandırmalar oluşturun.
 - Veri kaynaklarınızın taramasını ayarlayın.
 
-## <a name="apply-classifications"></a>Sınıflandırmaları Uygula
+## <a name="apply-classifications"></a>Sınıflandırmaları uygulama
 Azure purview ' de bir dosya, tablo veya sütun varlığı üzerinde sistem veya özel sınıflandırmalar uygulayabilirsiniz. Bu makalede, varlıklarınıza sınıflandırmaların el ile uygulanması için gereken adımlar açıklanır.
 
 ### <a name="apply-classification-to-a-file-asset"></a>Bir dosya varlığına sınıflandırma uygulama
@@ -43,7 +43,7 @@ Bölüm kaynak kümesine özel veya sistem sınıflandırması eklemek için aş
 
     :::image type="content" source="./media/apply-classifications/asset-detail-page.png" alt-text="Varlık ayrıntısı sayfasını gösteren ekran görüntüsü.":::
 
-1. **Genel bakış** sekmesinde, mevcut sınıflandırmalar olup olmadığını görmek için **sınıflandırmalar** bölümünü görüntüleyin. **Düzenle**’yi seçin.
+1. **Genel bakış** sekmesinde, mevcut sınıflandırmalar olup olmadığını görmek için **sınıflandırmalar** bölümünü görüntüleyin. **Düzenle**'yi seçin.
 
 1. **Sınıflandırmalar** açılan listesinden ilgilendiğiniz belirli sınıflandırmaları seçin. Örneğin, bir özel sınıflandırma olan bir sistem sınıflandırması ve **Customeraccountıd** olan **kredi kartı numarası**.
 

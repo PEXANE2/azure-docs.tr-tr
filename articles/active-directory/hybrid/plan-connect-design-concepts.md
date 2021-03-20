@@ -18,17 +18,17 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: baa03499cc11bda24ead986dd64621572484cbb1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89279661"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: tasarım kavramları
 Bu belgenin amacı, Azure AD Connect uygulama tasarımı sırasında düşünülmesi gereken alanların tanımlanmasıdır. Bu belge, bazı alanlarda ayrıntılı bir bakış ve bu kavramlar diğer belgelerde kısaca açıklanmıştır.
 
 ## <a name="sourceanchor"></a>sourceAnchor
-Sourcetutturucu özniteliği bir *nesne ömrü boyunca sabit bir öznitelik*olarak tanımlanır. Bir nesneyi şirket içinde ve Azure AD 'de aynı nesne olarak benzersiz şekilde tanımlar. Özniteliği de **ImmutableID** olarak adlandırılır ve iki ad de birbirinin yerine kullanılır.
+Sourcetutturucu özniteliği bir *nesne ömrü boyunca sabit bir öznitelik* olarak tanımlanır. Bir nesneyi şirket içinde ve Azure AD 'de aynı nesne olarak benzersiz şekilde tanımlar. Özniteliği de **ImmutableID** olarak adlandırılır ve iki ad de birbirinin yerine kullanılır.
 
 "Değiştirilemez" sözcüğünün sabit sözcüğü, bu belge için önemlidir. Bu özniteliğin değeri ayarlandıktan sonra değiştirilelemediğinden, senaryonuzu destekleyen bir tasarım seçmek önemlidir.
 
@@ -62,7 +62,7 @@ Birden çok ormanınız varsa ve kullanıcıları ormanlar ve etki alanları ara
 
 Kullanıcıları ormanlar ve etki alanları arasında taşırsanız, taşıma sırasında kullanıcılardan değişmez veya taşınabilecek bir öznitelik bulmanız gerekir. Önerilen bir yaklaşım yapay bir öznitelik oluşturmaktır. GUID gibi görünen bir şeyi tutan bir öznitelik uygun olacaktır. Nesne oluşturma sırasında kullanıcı üzerinde yeni bir GUID oluşturulur ve damgalı olur. Bu değeri **Objectguıd** öğesine göre oluşturmak ve Ekle ' de seçili özniteliği güncelleştirmek için, eşitleme altyapısı sunucusunda özel bir eşitleme kuralı oluşturulabilir. Nesneyi taşıdığınızda, bu değerin içeriğini de kopyalamadığınızdan emin olun.
 
-Başka bir çözüm, değişmediğini bildiğiniz mevcut bir özniteliği seçeceğdir. Yaygın olarak kullanılan öznitelikler **EmployeeID**içerir. Harf içeren bir özniteliği düşünüyorsanız, (büyük/küçük harf ve küçük harf) özniteliğin değeri için değişiklik yapabilme olanağı olmadığından emin olun. Kullanılması gereken hatalı öznitelikler kullanıcı adına sahip olan öznitelikleri içerir. Evlilik veya Divorce içinde, bu öznitelik için izin verilmeyen adın değiştirilmesi beklenir. Bu Ayrıca, **userPrincipalName**, **mail**ve **targetAddress** gibi özniteliklerin Azure AD Connect Yükleme sihirbazında seçim yapmak için de mümkün olmasa da bir neden olur. Bu özniteliklere Ayrıca \@ , Sourcetutturucu içinde izin verilmeyen "" karakteri de bulunur.
+Başka bir çözüm, değişmediğini bildiğiniz mevcut bir özniteliği seçeceğdir. Yaygın olarak kullanılan öznitelikler **EmployeeID** içerir. Harf içeren bir özniteliği düşünüyorsanız, (büyük/küçük harf ve küçük harf) özniteliğin değeri için değişiklik yapabilme olanağı olmadığından emin olun. Kullanılması gereken hatalı öznitelikler kullanıcı adına sahip olan öznitelikleri içerir. Evlilik veya Divorce içinde, bu öznitelik için izin verilmeyen adın değiştirilmesi beklenir. Bu Ayrıca, **userPrincipalName**, **mail** ve **targetAddress** gibi özniteliklerin Azure AD Connect Yükleme sihirbazında seçim yapmak için de mümkün olmasa da bir neden olur. Bu özniteliklere Ayrıca \@ , Sourcetutturucu içinde izin verilmeyen "" karakteri de bulunur.
 
 ### <a name="changing-the-sourceanchor-attribute"></a>Sourcetutturucu özniteliğini değiştirme
 Sourcetutturucu öznitelik değeri, nesne Azure AD 'de oluşturulduktan ve kimlik eşitlendikten sonra değiştirilemez.

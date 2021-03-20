@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: jixin
 ms.openlocfilehash: 018033d3a6123948191a7261f5a1ee2ae526e25a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89295037"
 ---
 # <a name="audit-compliance-of-azure-signalr-service-resources-using-azure-policy"></a>Azure Ilkesi kullanarak Azure SignalR hizmeti kaynaklarının uyumluluğunu denetleme
@@ -44,7 +44,7 @@ Bir kaynak uyumsuz olduğunda birçok olası neden vardır. Nedenini öğrenmek 
 
 ### <a name="policy-compliance-in-the-portal"></a>Portalda ilke uyumluluğu:
 
-1. **Tüm hizmetler**' i seçin ve **ilke**araması yapın.
+1. **Tüm hizmetler**' i seçin ve **ilke** araması yapın.
 1. **Uyumluluk**' i seçin.
 1. Uyumluluk durumlarını sınırlamak veya ilkeleri aramak için filtreleri kullanın
    

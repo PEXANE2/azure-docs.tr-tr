@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: f1dfe88741a304da92901d3997c746654336ef54
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85800049"
 ---
 # <a name="moderate-with-custom-term-lists-in-the-api-console"></a>API konsolundaki Özel terim listeleriyle orta
@@ -48,7 +48,7 @@ Bir terim listesinde değişiklik yaptıktan sonra, gelecekteki taramalara dahil
 
    **Liste ara dizini Yenile** sayfası açılır.
 
-2. **Open API test konsolu**için, konumunuzu en iyi şekilde açıklayan bölgeyi seçin. 
+2. **Open API test konsolu** için, konumunuzu en iyi şekilde açıklayan bölgeyi seçin. 
 
    ![Terim listeleri-arama dizini sayfa bölgesi seçimini Yenile](images/test-drive-region.png)
 
@@ -63,7 +63,7 @@ Bir terim listesinde değişiklik yaptıktan sonra, gelecekteki taramalara dahil
 
    **Listeler-oluştur** sayfası açılır.
 
-2. **Open API test konsolu**için, konumunuzu en iyi şekilde açıklayan bölgeyi seçin. 
+2. **Open API test konsolu** için, konumunuzu en iyi şekilde açıklayan bölgeyi seçin. 
 
    ![Terim listeleri-sayfa bölgesi seçimi oluşturma](images/test-drive-region.png)
 
@@ -71,7 +71,7 @@ Bir terim listesinde değişiklik yaptıktan sonra, gelecekteki taramalara dahil
  
 3. **OCP-apim-Subscription-Key** kutusuna abonelik anahtarınızı girin.
 
-4. **İstek gövdesi** kutusuna **ad** (örneğin, myList) ve **Açıklama**değerlerini girin.
+4. **İstek gövdesi** kutusuna **ad** (örneğin, myList) ve **Açıklama** değerlerini girin.
 
    ![Terim listeleri-konsol Isteği gövdesi adı ve açıklaması oluşturma](images/try-terms-list-create-1.png)
 
@@ -99,13 +99,13 @@ Bir terim listesinde değişiklik yaptıktan sonra, gelecekteki taramalara dahil
 
    Terim **ekleme** terimi sayfası açılır. 
 
-8. **Open API test konsolu**için, konumunuzu en iyi şekilde açıklayan bölgeyi seçin. 
+8. **Open API test konsolu** için, konumunuzu en iyi şekilde açıklayan bölgeyi seçin. 
 
    ![Terim-terim Ekle sayfa bölge seçimi](images/test-drive-region.png)
 
    Terim **ekleme** API 'si konsolu açılır.
  
-9. **ListId** kutusunda, oluşturduğunuz liste kimliğini girin ve **dil**için bir değer seçin. Abonelik anahtarınızı girin ve ardından **Gönder**' i seçin.
+9. **ListId** kutusunda, oluşturduğunuz liste kimliğini girin ve **dil** için bir değer seçin. Abonelik anahtarınızı girin ve ardından **Gönder**' i seçin.
 
    ![Terim-terim konsolu sorgu parametreleri Ekle](images/try-terms-list-create-3.png)
  
@@ -135,7 +135,7 @@ Bu örnek tek bir terimi siler.
 
    **-Delete terimi** açılır.
 
-2. **Open API test konsolu**için, konumunuzu en iyi şekilde açıklayan bölgeyi seçin. 
+2. **Open API test konsolu** için, konumunuzu en iyi şekilde açıklayan bölgeyi seçin. 
 
    ![Terim-sayfa bölgesi seçimini silme](images/test-drive-region.png)
 
@@ -159,7 +159,7 @@ Bir listenin adını ve açıklamasını düzenleyebilir ve meta veri öğeleri 
 
    **Liste terimi-Güncelleştirme ayrıntıları** sayfası açılır.
 
-2. **Open API test konsolu**için, konumunuzu en iyi şekilde açıklayan bölgeyi seçin. 
+2. **Open API test konsolu** için, konumunuzu en iyi şekilde açıklayan bölgeyi seçin. 
 
    ![Terim listeleri-Güncelleştirme ayrıntıları sayfası bölge seçimi](images/test-drive-region.png)
 

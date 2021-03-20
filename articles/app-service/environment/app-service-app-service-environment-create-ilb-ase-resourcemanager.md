@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 2a03b791f37868010e107214ddcb7cf42174e4e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85833562"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>Azure Resource Manager Şablonlarını kullanarak ILB ASE oluşturma
@@ -52,12 +52,12 @@ New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-
 Azure Resource Manager şablonu gönderildikten sonra ıLB ATıCı 'in oluşturulması birkaç saat sürer.  Oluşturma işlemi tamamlandıktan sonra ıLB Ao, dağıtımı tetikleyen aboneliğin App Service ortamları listesindeki Portal UX 'ında görünür.
 
 ## <a name="uploading-and-configuring-the-default-tlsssl-certificate"></a>"Varsayılan" TLS/SSL sertifikasını karşıya yükleme ve yapılandırma
-ILB aşırı oluşturulduktan sonra, uygulamalara TLS/SSL bağlantıları kurmak için kullanılan "varsayılan" TLS/SSL sertifikası ile bir TLS/SSL sertifikası ile ilişkilendirilmesi gerekir.  Kuramsal contoso Corporation örneği ile devam ederseniz, ATıCı 'nin varsayılan DNS son eki *internal-contoso.com*ise, bir bağlantı, *`https://some-random-app.internal-contoso.com`* **. internal-contoso.com*için GEÇERLI olan bir TLS/SSL sertifikası gerektirir. 
+ILB aşırı oluşturulduktan sonra, uygulamalara TLS/SSL bağlantıları kurmak için kullanılan "varsayılan" TLS/SSL sertifikası ile bir TLS/SSL sertifikası ile ilişkilendirilmesi gerekir.  Kuramsal contoso Corporation örneği ile devam ederseniz, ATıCı 'nin varsayılan DNS son eki *internal-contoso.com* ise, bir bağlantı, *`https://some-random-app.internal-contoso.com`* **. internal-contoso.com* için GEÇERLI olan bir TLS/SSL sertifikası gerektirir. 
 
 İç CA 'Lar dahil olmak üzere geçerli bir TLS/SSL sertifikası alma, bir dış veren sertifikayı satın alma ve kendinden imzalı bir sertifika kullanma gibi çeşitli yollar vardır.  TLS/SSL sertifikasının kaynağından bağımsız olarak, aşağıdaki sertifika özniteliklerinin düzgün şekilde yapılandırılması gerekir:
 
 * *Konu*: Bu özniteliğin **. Your-root-Domain-here.com* olarak ayarlanması gerekir
-* *Konu diğer adı*: Bu öznitelik hem **. Your-root-Domain-here.com*hem de **. scm.Your-root-Domain-here.com*içermelidir.  İkinci girdinin nedeni, her uygulamayla ilişkili SCM/kudu sitesine yönelik TLS bağlantılarının *Your-app-name.scm.Your-root-Domain-here.com*biçiminde bir adres kullanılarak yapılır.
+* *Konu diğer adı*: Bu öznitelik hem **. Your-root-Domain-here.com* hem de **. scm.Your-root-Domain-here.com* içermelidir.  İkinci girdinin nedeni, her uygulamayla ilişkili SCM/kudu sitesine yönelik TLS bağlantılarının *Your-app-name.scm.Your-root-Domain-here.com* biçiminde bir adres kullanılarak yapılır.
 
 El ile geçerli bir TLS/SSL sertifikası ile, iki ek hazırlık adımı gerekir.  TLS/SSL sertifikasının bir. pfx dosyası olarak dönüştürülmesi/kaydedilmesi gerekir.  . Pfx dosyasının tüm ara ve kök sertifikaları içermesi gerektiğini ve ayrıca bir parolayla güvenli hale getirilmesi gerektiğini unutmayın.
 
@@ -87,7 +87,7 @@ Dosyadaki *azuredeploy.parameters.js* parametreler aşağıda listelenmiştir:
 * *Existingaselocation*: ıLB atıcı 'Nin dağıtıldığı Azure bölgesini içeren metin dizesi.  Örneğin: "Orta Güney ABD".
 * *Pfxblobstring*:. pfx dosyasının based64 kodlu dize temsili.  Daha önce gösterilen kod parçacığını kullanarak, "exportedcert. pfx. B64" içinde bulunan dizeyi kopyalayın ve bunu *Pfxblobstring* özniteliğinin değeri olarak içine yapıştırın.
 * *parola*:. pfx dosyasının güvenliğini sağlamak için kullanılan parola.
-* *certificateThumbprint*: sertifikanın parmak izi.  Bu değeri PowerShell 'den alırsanız (ör. *$Certificate. * Önceki kod parçacığındaki parmak izi), değerini olduğu gibi kullanabilirsiniz.  Ancak, Windows sertifikası iletişim kutusundan değeri kopyalarsanız, gereksiz alanları sökmesini unutmayın.  *CertificateThumbprint* şöyle GÖRÜNMELIDIR: AF3143EB61D43F6727842115BB7F17BBCECAECAE
+* *certificateThumbprint*: sertifikanın parmak izi.  Bu değeri PowerShell 'den alırsanız (ör. *$Certificate.* Önceki kod parçacığındaki parmak izi), değerini olduğu gibi kullanabilirsiniz.  Ancak, Windows sertifikası iletişim kutusundan değeri kopyalarsanız, gereksiz alanları sökmesini unutmayın.  *CertificateThumbprint* şöyle GÖRÜNMELIDIR: AF3143EB61D43F6727842115BB7F17BBCECAECAE
 * *CertificateName*: sertifikayı belirlemek için kullanılan seçtiğiniz kolay bir dize tanımlayıcısı.  Ad, TLS/SSL sertifikasını temsil eden *Microsoft. Web/Certificates* varlığı için benzersiz Azure Resource Manager tanımlayıcısının bir parçası olarak kullanılır.  Ad şu soneke sahip **olmalıdır** :  \_ yourASENameHere_InternalLoadBalancingASE.  Bu sonek, portal tarafından, bir ıLB özellikli bir AO 'nun güvenliğini sağlamak için sertifikanın kullanıldığı bir gösterge olarak kullanılır.
 
 Kısaltılmış bir *azuredeploy.parameters.js* örneği aşağıda gösterilmiştir:
@@ -130,7 +130,7 @@ New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-
 
 Azure Resource Manager şablonu gönderildikten sonra, değişikliği uygulamak için Ao ön ucu başına yaklaşık 40 dakika sürer.  Örneğin, iki ön uç kullanan varsayılan boyutta bir ATıCı ile, şablonun tamamlanması bir saat ve Yirmi dakika sürer.  Şablon çalışırken Ao ölçeği ölçeklenmez.  
 
-Şablon tamamlandığında, ıLB ASE 'deki uygulamalara HTTPS üzerinden erişilebilir ve bağlantılar varsayılan TLS/SSL sertifikası kullanılarak güvenliği sağlanır.  Varsayılan TLS/SSL sertifikası, ıLB Ao 'daki uygulamalar uygulama adının bir birleşimi ve varsayılan ana bilgisayar adı kullanılarak giderildiği zaman kullanılacaktır.  Örneğin *`https://mycustomapp.internal-contoso.com`* , **. internal-contoso.com*için varsayılan TLS/SSL sertifikasını kullanır.
+Şablon tamamlandığında, ıLB ASE 'deki uygulamalara HTTPS üzerinden erişilebilir ve bağlantılar varsayılan TLS/SSL sertifikası kullanılarak güvenliği sağlanır.  Varsayılan TLS/SSL sertifikası, ıLB Ao 'daki uygulamalar uygulama adının bir birleşimi ve varsayılan ana bilgisayar adı kullanılarak giderildiği zaman kullanılacaktır.  Örneğin *`https://mycustomapp.internal-contoso.com`* , **. internal-contoso.com* için varsayılan TLS/SSL sertifikasını kullanır.
 
 Ancak, genel çok kiracılı hizmette çalışan uygulamalar gibi geliştiriciler de tek tek uygulamalar için özel ana bilgisayar adları yapılandırabilir ve ardından ayrı uygulamalar için benzersiz SNı TLS/SSL sertifika bağlamaları yapılandırabilir.  
 

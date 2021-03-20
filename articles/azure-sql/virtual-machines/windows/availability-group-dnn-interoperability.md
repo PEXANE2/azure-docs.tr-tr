@@ -14,10 +14,10 @@ ms.workload: iaas-sql-server
 ms.date: 10/08/2020
 ms.author: mathoma
 ms.openlocfilehash: 19b4b7407468b19419e2f85193b1f8fb6ace39c3
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97359413"
 ---
 # <a name="feature-interoperability-with-ag-and-dnn-listener"></a>AG ve DNN dinleyicisi ile özellik birlikte çalışabilirliği 
@@ -125,7 +125,7 @@ Ağ DNN dinleyici adını ve bağlantı noktasını kullanarak bağlı sunucuyu 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için bkz: 
+Daha fazla bilgi için bkz. 
 
 - [Windows küme teknolojileri](/windows-server/failover-clustering/failover-clustering-overview)   
 - [Always on kullanılabilirlik grubu](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)

@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 08a73c2b1be4b17136ba19e7efb71c2b21359fdf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89280154"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory geçişli kimlik doğrulama güvenliğini derinlemesine bakış
@@ -144,7 +144,7 @@ Doğrudan kimlik doğrulaması, bir Kullanıcı oturum açma isteğini aşağıd
 8. Azure AD STS, Kullanıcı adı ve şifreli parola değerlerinden oluşan parola doğrulama isteğini kiracınıza özgü Service Bus kuyruğuna koyar.
 9. Başlatılmış kimlik doğrulama aracıları Service Bus kuyruğuna kalıcı olarak bağlandığından, kullanılabilir kimlik doğrulama aracılarından biri parola doğrulama isteğini alır.
 10. Kimlik doğrulama Aracısı ortak anahtarına özgü şifrelenmiş parola değerini bir tanımlayıcı kullanarak bulur ve onun özel anahtarını kullanarak şifresini çözer.
-11. Kimlik doğrulama Aracısı, **LOGON32_LOGON_NETWORK**olarak ayarlanan **dwlogontype** PARAMETRESI ile [Win32 LogonUser API](/windows/win32/api/winbase/nf-winbase-logonusera) 'sini kullanarak, kullanıcı adını ve parolayı şirket içi Active Directory karşı doğrulamaya çalışır. 
+11. Kimlik doğrulama Aracısı, **LOGON32_LOGON_NETWORK** olarak ayarlanan **dwlogontype** PARAMETRESI ile [Win32 LogonUser API](/windows/win32/api/winbase/nf-winbase-logonusera) 'sini kullanarak, kullanıcı adını ve parolayı şirket içi Active Directory karşı doğrulamaya çalışır. 
     - Bu API, kullanıcıların bir Federasyon oturum açma senaryosunda oturum açması için Active Directory Federasyon Hizmetleri (AD FS) (AD FS) tarafından kullanılan API 'dir.
     - Bu API, etki alanı denetleyicisini bulmak için Windows Server 'daki standart çözümleme işlemini kullanır.
 12. Kimlik doğrulama Aracısı başarı, Kullanıcı adı veya parola yanlış veya parolanın geçerliliği aşıldığı gibi Active Directory sonucunu alır.

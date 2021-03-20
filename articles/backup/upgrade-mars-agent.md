@@ -4,10 +4,10 @@ description: Microsoft Azure Kurtarma Hizmetleri (MARS) aracısını nasıl yük
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.openlocfilehash: a1ee26db962781643e9599069282647658301bac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89181485"
 ---
 # <a name="upgrade-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Kurtarma Hizmetleri (MARS) aracısını yükseltme
@@ -23,11 +23,11 @@ Azure Backup Aracısı ve Azure Backup sunucusu yüklemeleri için:
 
 1. Aracının daha eski sürümleri tarafından yedeklenmekte olan sunucuları kayıtlı olan kurtarma hizmetleri kasasına gidin. Azure 'daki Azure Backup güncelleştirme uyarılarında daha eski Azure Backup aracılarıyla temsili bir kasa listesi bulabilirsiniz.
 1. Kurtarma Hizmetleri kasasının sol taraftaki **Ayarlar** bölümünde, **Yönet** bölümünde **Yedekleme altyapısı** ' nı seçin.
-1. Azure Backup sunucu yüklemelerinin bir parçası olarak yüklenen Azure Backup aracılarını öğrenmek için **Yönetim sunucuları**altındaki **yedekleme yönetim sunucuları** ' na gidin. Bu, ilişkili Azure Backup aracısının sürüm numarasıyla birlikte Azure Backup Server yüklemelerine sahip sunucuları listeler.
+1. Azure Backup sunucu yüklemelerinin bir parçası olarak yüklenen Azure Backup aracılarını öğrenmek için **Yönetim sunucuları** altındaki **yedekleme yönetim sunucuları** ' na gidin. Bu, ilişkili Azure Backup aracısının sürüm numarasıyla birlikte Azure Backup Server yüklemelerine sahip sunucuları listeler.
 
     ![Azure Backup Server yüklemelerinin bir parçası olarak yüklenen MARS aracılarının listesi](./media/upgrade-mars-agent/backup-management-servers.png)
 
-1. Microsoft Azure Kurtarma Hizmetleri (MARS) aracı yüklemelerinin veya Azure Backup aracısının aracı sürümlerini denetlemek için **Yönetim sunucuları**altındaki **korumalı sunucular** ' a gidin. Ardından yedekleme yönetimi türü altında **Azure Backup Aracısı** ' nı seçin. Bu, yükleme için sürüm numarasıyla birlikte Azure Backup aracı yüklemelerine sahip sunucuları listeler.
+1. Microsoft Azure Kurtarma Hizmetleri (MARS) aracı yüklemelerinin veya Azure Backup aracısının aracı sürümlerini denetlemek için **Yönetim sunucuları** altındaki **korumalı sunucular** ' a gidin. Ardından yedekleme yönetimi türü altında **Azure Backup Aracısı** ' nı seçin. Bu, yükleme için sürüm numarasıyla birlikte Azure Backup aracı yüklemelerine sahip sunucuları listeler.
 
     ![MARS aracısının yüklü olduğu sunucu listesi](./media/upgrade-mars-agent/protected-servers.png)
 
@@ -73,7 +73,7 @@ Azure Backup aracısının güncelleştirilmesi gereken sunucuları tanımladık
 
 1. **İleri**’yi seçin.
 
-1. **Yükseltme**' yi seçin.
+1. **Yükselt**’i seçin.
 
     ![Microsoft Azure Kurtarma Hizmetleri aracısının yüklenmesi](./media/upgrade-mars-agent/upgrade-installation.png)
 

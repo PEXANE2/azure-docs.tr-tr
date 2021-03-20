@@ -4,10 +4,10 @@ description: Bu makalede, Azure DevTest Labs ' de sanal makineleri (VM) hızlı 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: d2bcbcbea613aa84da91789fb9f118afd7023fab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85482004"
 ---
 # <a name="restart-a-vm-in-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs bir laboratuvarda sanal makineyi yeniden başlatma
@@ -26,7 +26,7 @@ Bu makaledeki adımları izleyerek DevTest Labs 'de bir sanal makineyi hızlı v
    >
 
 ## <a name="steps-to-restart-a-vm-in-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs bir laboratuvarda sanal makineyi yeniden başlatma adımları
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)’ında oturum açın.
+1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
 1. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 1. Laboratuvarlar listesinden, yeniden başlatmak istediğiniz VM 'yi içeren Laboratuvarı seçin.
 1. Sol bölmede **sanal makinelerim**' ı seçin.
@@ -39,7 +39,7 @@ Bu makaledeki adımları izleyerek DevTest Labs 'de bir sanal makineyi hızlı v
 
     ![VM yeniden başlatma durumunu görüntüleme](./media/devtest-lab-restart-vm/devtest-lab-restart-notification.png)
 
-Çalışan bir VM 'yi, **sanal makinelerim**listesinde üç nokta (...) seçerek de yeniden başlatabilirsiniz.
+Çalışan bir VM 'yi, **sanal makinelerim** listesinde üç nokta (...) seçerek de yeniden başlatabilirsiniz.
 
 ![Üç nokta ile VM 'yi yeniden başlatma](./media/devtest-lab-restart-vm/devtest-lab-restart-elipses.png)
 

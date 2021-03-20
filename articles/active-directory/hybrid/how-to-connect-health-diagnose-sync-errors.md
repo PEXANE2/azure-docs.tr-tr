@@ -16,10 +16,10 @@ ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4fe6af43c9ca44095c328356e8171da10717875e
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98728246"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Yinelenen öznitelik eşitleme hatalarını tanılama ve düzeltme
@@ -142,7 +142,7 @@ Azure AD 'deki bulut tabanlı Kullanıcı kaynak tutturucusu içermemelidir. Bu 
 [Azure AD Connect Içindeki Usergeri yazma](./how-to-connect-preview.md#user-writeback) gibi belirli ayarlar desteklenmez. Lütfen ayarlarda devre dışı bırakın. 
 
 ## <a name="faq"></a>SSS
-**Ç.** **Uygulama düzeltmesinin** yürütülmesi başarısız olursa ne olur?  
+**S.** **Uygulama düzeltmesinin** yürütülmesi başarısız olursa ne olur?  
 **A.** Yürütme başarısız olursa, Azure AD Connect bir dışarı aktarma hatası çalıştırıyor olabilir. Portal sayfasını yenileyip bir sonraki eşitlemeden sonra yeniden deneyin. Varsayılan eşitleme çevrimi 30 dakikadır. 
 
 

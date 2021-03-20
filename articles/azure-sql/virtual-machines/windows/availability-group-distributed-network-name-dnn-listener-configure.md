@@ -16,10 +16,10 @@ ms.date: 10/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 07ce01304f27ded4e0a566777fcf7027f7a15e4b
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97359447"
 ---
 # <a name="configure-a-dnn-listener-for-an-availability-group"></a>Kullanılabilirlik grubu için DNN dinleyicisi yapılandırma
@@ -111,7 +111,7 @@ DNN dinleyicisini oluşturmak için, kullanılabilirlik grubu, dinleyici adı ve
 
 1. Komut istemi veya PowerShell gibi bir komut satırı arabirim aracı açın. 
 1. Betiği kaydettiğiniz yere gidin `.ps1` , örneğin c:\Documents. 
-1. Betiği yürütün: ```add_dnn_listener.ps1 <ag name> <listener-name> <listener port>``` . Örneğin: 
+1. Betiği yürütün: ```add_dnn_listener.ps1 <ag name> <listener-name> <listener port>``` . Örnek: 
 
    ```console
    c:\Documents> add_dnn_listener.ps1 ag1 dnnlsnr 6789

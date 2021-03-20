@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: bb38a76de41885b6f39a1c6dce7c44bcb52a4d60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86027452"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Spark tarafından oluşturulan Machine Learning modellerini çalıştırma
@@ -545,7 +545,7 @@ BoostedTreeRegressionFileLoc: GradientBoostingTreeRegression_2016-05-0317_23_56.
 Spark, toplu işleri veya etkileşimli sorguları, Livy adlı bir bileşen ile REST arabirimi aracılığıyla uzaktan göndermeye yönelik bir mekanizma sağlar. Livy, HDInsight Spark kümenizde varsayılan olarak etkindir. Livy hakkında daha fazla bilgi için bkz.: [Livy kullanarak Spark işlerini uzaktan gönderme](../../hdinsight/spark/apache-spark-livy-rest-interface.md). 
 
 Bir Azure blobuna depolanan bir dosyayı toplu olarak belirten bir işi uzaktan göndermek için Livy kullanabilir ve sonra sonuçları başka bir bloba yazar. Bunu yapmak için Python betiğini şuradan karşıya yüklersiniz  
-Spark kümesinin blobuna [GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) . Betiği küme blobuna kopyalamak için **Microsoft Azure Depolama Gezgini** veya **AzCopy** gibi bir araç kullanabilirsiniz. Bizim örneğimizde, betiği ***wasb:///example/Python/ConsumeGBNYCReg.py***dosyasına yükledik.   
+Spark kümesinin blobuna [GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) . Betiği küme blobuna kopyalamak için **Microsoft Azure Depolama Gezgini** veya **AzCopy** gibi bir araç kullanabilirsiniz. Bizim örneğimizde, betiği **_wasb:///example/Python/ConsumeGBNYCReg.py_** dosyasına yükledik.   
 
 > [!NOTE]
 > İhtiyaç duyduğunuz erişim anahtarları Spark kümesiyle ilişkili depolama hesabı için portalda bulunabilir. 
@@ -602,11 +602,11 @@ Blob 'u Zamanlayıcı, oluşturma veya güncelleştirme gibi çeşitli olaylara 
 Kod ücretsiz istemci deneyimini tercih ediyorsanız, **Logic Apps tasarımcısında** bir http eylemi tanımlayarak ve parametrelerini ayarlayarak Spark Batch Puanlama çağırmak için [Azure Logic Apps](https://azure.microsoft.com/documentation/services/app-service/logic/) kullanın. 
 
 * Azure Portal, **+ Yeni**  ->  **Web ve mobil**  ->  **Logic App**' i seçerek yeni bir mantıksal uygulama oluşturun. 
-* **Logic Apps tasarımcısını**getirmek Için mantıksal uygulamanın adını ve App Service planı girin.
+* **Logic Apps tasarımcısını** getirmek Için mantıksal uygulamanın adını ve App Service planı girin.
 * Bir HTTP eylemi seçin ve aşağıdaki şekilde gösterilen parametreleri girin:
 
 ![Logic Apps Tasarımcısı](./media/spark-model-consumption/spark-logica-app-client.png)
 
 ## <a name="whats-next"></a>Sırada ne var?
-**Çapraz doğrulama ve hiper parametre**kullanımı: modellerin çapraz doğrulama ve hiper parametre Tatkileri kullanılarak eğitilme hakkında [Spark ile gelişmiş veri araştırması ve modelleme](spark-advanced-data-exploration-modeling.md) konusuna bakın.
+**Çapraz doğrulama ve hiper parametre** kullanımı: modellerin çapraz doğrulama ve hiper parametre Tatkileri kullanılarak eğitilme hakkında [Spark ile gelişmiş veri araştırması ve modelleme](spark-advanced-data-exploration-modeling.md) konusuna bakın.
 

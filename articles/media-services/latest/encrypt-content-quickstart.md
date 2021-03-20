@@ -4,10 +4,10 @@ description: Bu hızlı başlangıçta, Azure portal Azure Media Services kullan
 ms.topic: quickstart
 ms.date: 08/31/2020
 ms.openlocfilehash: e42b2d4487f2f51c082f22068160a02b3dcbb0a5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89263646"
 ---
 # <a name="quickstart-use-portal-to-encrypt-content"></a>Hızlı başlangıç: içeriği şifrelemek için portalı kullanma
@@ -16,7 +16,7 @@ ms.locfileid: "89263646"
 
 Ortamınızı, depolama, işleme ve teslim aracılığıyla bilgisayarınızdan tamamen ayrılmaları için güvenli hale getirmek üzere Azure Media Services kullanın. Media Services ile canlı ve isteğe bağlı içeriğinizi Gelişmiş Şifreleme Standardı (AES-128) veya üç ana dijital hak yönetimi (DRM) sisteminden (Microsoft PlayReady, Google Widevine ve Apple FairPlay ile) dinamik olarak dağıtabilirsiniz. Media Services, yetkili istemcilere AES anahtarları ve DRM (PlayReady, Widevine ve FairPlay) lisanslarını sunmaya yönelik bir hizmet sağlar. 
  
-Akışunuzdaki şifreleme seçeneklerini (varsa) belirtmek için bir **akış ilkesi** kullanır ve bunu akış bulucuyu ilişkilendirirsiniz. İçerik anahtarının ( **varlıklarınıza**güvenli erişim sağlayan) son istemcilere teslim edildiğini yapılandırmak için **içerik anahtarı ilkesini** oluşturursunuz. Belirtilen yapılandırmaya sahip anahtarların istemcilere teslim edilebilmesi için karşılanması gereken içerik anahtarı ilkesinde gereksinimleri (kısıtlamalar) ayarlamanız gerekir. 
+Akışunuzdaki şifreleme seçeneklerini (varsa) belirtmek için bir **akış ilkesi** kullanır ve bunu akış bulucuyu ilişkilendirirsiniz. İçerik anahtarının ( **varlıklarınıza** güvenli erişim sağlayan) son istemcilere teslim edildiğini yapılandırmak için **içerik anahtarı ilkesini** oluşturursunuz. Belirtilen yapılandırmaya sahip anahtarların istemcilere teslim edilebilmesi için karşılanması gereken içerik anahtarı ilkesinde gereksinimleri (kısıtlamalar) ayarlamanız gerekir. 
 
 > [!NOTE]
 > İçerik anahtarı ilkesi, açık akış veya indirme için gerekli değildir.
@@ -38,7 +38,7 @@ Bu hızlı başlangıçta, akışa alma sırasında varlığınıza hangi şifre
 
 ## <a name="create-a-content-key-policy"></a>İçerik anahtarı ilkesi oluşturma
 
-İçerik anahtarının ( **varlıklarınıza**güvenli erişim sağlayan) son istemcilere teslim edildiğini yapılandırmak için **içerik anahtarı ilkesini** oluşturun.
+İçerik anahtarının ( **varlıklarınıza** güvenli erişim sağlayan) son istemcilere teslim edildiğini yapılandırmak için **içerik anahtarı ilkesini** oluşturun.
 
 1. [Azure portalda](https://portal.azure.com/) oturum açın.
 1. Media Services hesabınıza bulup tıklayın.

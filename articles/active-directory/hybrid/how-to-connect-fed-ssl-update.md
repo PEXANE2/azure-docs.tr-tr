@@ -17,10 +17,10 @@ ms.custom: seohack1
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 451b50e70b98849dfc4654566d09a5a961abe451
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89279916"
 ---
 # <a name="update-the-tlsssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>Active Directory Federasyon Hizmetleri (AD FS) (AD FS) grubu için TLS/SSL sertifikasını güncelleştirme
@@ -36,7 +36,7 @@ Tüm Federasyon ve Web uygulaması ara sunucusu (WAP) sunucularında AD FS grubu
 >[!NOTE]
 >AD FS tarafından kullanılan sertifikalar hakkında daha fazla bilgi için bkz. [AD FS tarafından kullanılan sertifikaları anlama](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc730660(v=ws.11)).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * **AD FS grubu**: AD FS grubunuzun Windows Server 2012 R2 tabanlı veya sonraki bir sürümü olduğundan emin olun.
 * **Azure AD Connect**: Azure AD Connect sürümünün 1.1.553.0 veya daha yüksek olduğundan emin olun. **AD FS SSL sertifikasını görev Güncelleştir**' i kullanacaksınız.

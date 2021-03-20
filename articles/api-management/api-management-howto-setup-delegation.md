@@ -1,5 +1,5 @@
 ---
-title: Kullanıcı kaydı ve ürün aboneliği temsilcisi seçme
+title: Kullanıcı kaydı ve ürün aboneliği için temsilci seçme
 description: Azure API Management 'de bir üçüncü tarafa Kullanıcı kaydı ve ürün aboneliği temsilcisi seçme hakkında bilgi edinin.
 services: api-management
 documentationcenter: ''
@@ -14,13 +14,13 @@ ms.topic: article
 ms.date: 10/15/2020
 ms.author: apimpm
 ms.openlocfilehash: 54193c9333c75fd8b973ebe33470fca3617e2f2d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93341850"
 ---
-# <a name="how-to-delegate-user-registration-and-product-subscription"></a>Kullanıcı kaydı ve ürün aboneliği temsilcisi seçme
+# <a name="how-to-delegate-user-registration-and-product-subscription"></a>Kullanıcı kaydı ve ürün aboneliği için temsilci seçme
 
 Temsili, geliştirici portalındaki yerleşik işlevselliği kullanmanın aksine, geliştirici oturum açma/kaydolma ve ürün aboneliklerinizi işlemek için mevcut Web sitenizi kullanmanıza olanak sağlar. Web sitenizin kullanıcı verilerine sahip olması ve bu adımların doğrulanmasını özel bir şekilde gerçekleştirmesini sağlar.
 
@@ -52,18 +52,18 @@ Başlamak için ilk olarak istekleri, yetkilendirme uç noktanız aracılığıy
    
     Oturum açma/kaydolma çalışması için sorgu parametreleri:
    
-   * **işlem** : ne tür bir temsilcinin olduğunu tanımlar; bu durumda yalnızca **oturum** açabilir
-   * **ReturnUrl** : kullanıcının oturum açma veya kaydolma bağlantısında tıklattığı sayfanın URL 'si
-   * **anahtar** : güvenlik karmasında işlem yapmak için kullanılan özel bir anahtar dizesi
-   * **SIG** : kendi hesaplanmış karmaınızla karşılaştırmak için kullanılacak bir hesaplanan güvenlik karması
+   * **işlem**: ne tür bir temsilcinin olduğunu tanımlar; bu durumda yalnızca **oturum** açabilir
+   * **ReturnUrl**: kullanıcının oturum açma veya kaydolma bağlantısında tıklattığı sayfanın URL 'si
+   * **anahtar**: güvenlik karmasında işlem yapmak için kullanılan özel bir anahtar dizesi
+   * **SIG**: kendi hesaplanmış karmaınızla karşılaştırmak için kullanılacak bir hesaplanan güvenlik karması
 2. İsteğin Azure API Management geldiğini doğrulayın (isteğe bağlı, ancak güvenlik için önemle önerilir)
    
-   * **ReturnUrl** ve **anahtar** sorgu PARAMETRELERINE göre BIR dizenin HMAC-SHA512 olur karmasını hesaplama ( [aşağıda belirtilen örnek kod]):
+   * **ReturnUrl** ve **anahtar** sorgu PARAMETRELERINE göre BIR dizenin HMAC-SHA512 olur karmasını hesaplama ([aşağıda belirtilen örnek kod]):
      
-     > HMAC ( **anahtar** + ' \n ' + **ReturnUrl** )
+     > HMAC (**anahtar** + ' \n ' + **ReturnUrl**)
 
    * Yukarıdaki hesaplanmış karmayı **SIG** sorgu parametresinin değeriyle karşılaştırın. İki karma eşleşiyorsa, sonraki adıma geçin, aksi takdirde isteği reddedin.
-3. Oturum açma/kaydolma için bir istek aldığınızı doğrulayın: **işlem** sorgu parametresi " **SignIn** " olarak ayarlanacak.
+3. Oturum açma/kaydolma için bir istek aldığınızı doğrulayın: **işlem** sorgu parametresi "**SignIn**" olarak ayarlanacak.
 4. Kullanıcıyı oturum açmak veya kaydolmak için kullanıcı ARABIRIMI ile sunun
 5. Kullanıcı kaydolduktan sonra, API Management için bunlara karşılık gelen bir hesap oluşturmanız gerekir. API Management REST API [bir kullanıcı oluşturun] . Bunu yaparken, kullanıcı KIMLIĞINI Kullanıcı deponuzdaki aynı değere veya izlediğiniz bir KIMLIĞE ayarlamış olduğunuzdan emin olun.
 6. Kullanıcının kimliği başarıyla doğrulandığında:
@@ -84,10 +84,10 @@ Başlamak için ilk olarak istekleri, yetkilendirme uç noktanız aracılığıy
 
 Hesap yönetimi işlemleri için aşağıdaki sorgu parametrelerini geçirmeniz gerekir.
 
-* **işlem** : ne tür bir temsili isteğin olduğunu tanımlar (ChangePassword, changeprofile veya closeaccount)
+* **işlem**: ne tür bir temsili isteğin olduğunu tanımlar (ChangePassword, changeprofile veya closeaccount)
 * **Kullanıcı** kimliği: yönetilecek HESABıN Kullanıcı kimliği
-* **anahtar** : güvenlik karmasında işlem yapmak için kullanılan özel bir anahtar dizesi
-* **SIG** : kendi hesaplanmış karmaınızla karşılaştırmak için kullanılacak bir hesaplanan güvenlik karması
+* **anahtar**: güvenlik karmasında işlem yapmak için kullanılan özel bir anahtar dizesi
+* **SIG**: kendi hesaplanmış karmaınızla karşılaştırmak için kullanılacak bir hesaplanan güvenlik karması
 
 ## <a name="delegating-product-subscription"></a><a name="delegate-product-subscription"> </a>Ürün aboneliğine temsilci seçme
 
@@ -97,7 +97,7 @@ Hesap yönetimi işlemleri için aşağıdaki sorgu parametrelerini geçirmeniz 
 2. Tarayıcı, yetkilendirme uç noktasına yönlendirilir.
 3. Yetkilendirme uç noktası gerekli ürün abonelik adımlarını gerçekleştirir. Adımları tasarlamak sizin için. Fatura bilgilerini istemek, ek sorular sormak veya yalnızca bilgileri depolamak ve herhangi bir kullanıcı eylemi gerektirmeksizin, başka bir sayfaya yönlendirmeyi de içerebilir.
 
-İşlevselliği etkinleştirmek için, **temsilci seçme** sayfasında **ürün aboneliğine temsilci seç** ' e tıklayın.
+İşlevselliği etkinleştirmek için, **temsilci seçme** sayfasında **ürün aboneliğine temsilci seç**' e tıklayın.
 
 Ardından, yetkilendirme uç noktasının aşağıdaki eylemleri kullandığından emin olun:
 
@@ -108,28 +108,28 @@ Ardından, yetkilendirme uç noktasının aşağıdaki eylemleri kullandığınd
    
     Ürün abonelik durumu için sorgu parametreleri:
    
-   * **işlem** : ne tür bir temsili isteğin olduğunu tanımlar. Ürün aboneliği istekleri için geçerli seçenekler şunlardır:
+   * **işlem**: ne tür bir temsili isteğin olduğunu tanımlar. Ürün aboneliği istekleri için geçerli seçenekler şunlardır:
      * "Abone ol": kullanıcıyı sağlanan KIMLIĞE sahip belirli bir ürüne abone olma isteği (aşağıya bakın)
      * "Abonelikten çıkma": bir kullanıcının üründen aboneliğini kaldırma isteği
      * "Yenile": bir aboneliği yenileme isteği (örneğin, süresi dolacak)
-   * **ProductID** : *Subscribe* -kullanıcının abone olması istediği ürünün kimliği
-   * **SubscriptionID** : *abonelik kaldırma* ve *yenileme* -ürün aboneliğinin kimliği
-   * **Kullanıcı kimliği** : *abone ol* -isteğin yapıldığı kullanıcının kimliği
-   * **anahtar** : güvenlik karmasında işlem yapmak için kullanılan özel bir anahtar dizesi
-   * **SIG** : kendi hesaplanmış karmaınızla karşılaştırmak için kullanılacak bir hesaplanan güvenlik karması
+   * **ProductID**: *Subscribe* -kullanıcının abone olması istediği ürünün kimliği
+   * **SubscriptionID**: *abonelik kaldırma* ve *yenileme* -ürün aboneliğinin kimliği
+   * **Kullanıcı kimliği**: *abone ol* -isteğin yapıldığı kullanıcının kimliği
+   * **anahtar**: güvenlik karmasında işlem yapmak için kullanılan özel bir anahtar dizesi
+   * **SIG**: kendi hesaplanmış karmaınızla karşılaştırmak için kullanılacak bir hesaplanan güvenlik karması
 
 2. İsteğin Azure API Management geldiğini doğrulayın (isteğe bağlı, ancak güvenlik için önemle önerilir)
    
-   * **ProductID** , **UserID** ve **anahtar** sorgu PARAMETRELERINE göre bir dizenin HMAC-SHA512 olur ' ı hesaplama:
+   * **ProductID**, **UserID** ve **anahtar** sorgu PARAMETRELERINE göre bir dizenin HMAC-SHA512 olur ' ı hesaplama:
      
-     > HMAC ( **anahtar** + ' \n ' + **ProductID** + ' \n ' + **Kullanıcı kimliği** )
+     > HMAC (**anahtar** + ' \n ' + **ProductID** + ' \n ' + **Kullanıcı kimliği**)
      > 
      > 
    * Yukarıdaki hesaplanmış karmayı **SIG** sorgu parametresinin değeriyle karşılaştırın. İki karma eşleşiyorsa, sonraki adıma geçin, aksi takdirde isteği reddedin.
 3. **İşlem** sırasında istenen işlem türüne göre ürün aboneliğini işleyin. Örneğin, faturalandırma, daha fazla soru vb.
 4. Kullanıcı, sizin tarafınızdan ürüne başarıyla abone olurken, [abonelikler için REST API çağırarak]kullanıcıyı API Management ürüne abone olun.
 
-## <a name="example-code"></a><a name="delegate-example-code"> </a> Örnek kod
+## <a name="example-code"></a><a name="delegate-example-code"></a> Örnek kod
 
 Bu kod örnekleri şunları gösterir:
 

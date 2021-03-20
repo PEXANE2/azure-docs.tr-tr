@@ -7,10 +7,10 @@ ms.date: 04/19/2020
 ms.topic: tutorial
 ms.custom: has-adal-ref, devx-track-python
 ms.openlocfilehash: e12327651165606e6a9b571d410f547a09a8ec8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87847933"
 ---
 # <a name="tutorial-create-a-python-runbook"></a>Öğretici: Python runbook 'u oluşturma
@@ -26,7 +26,7 @@ Bu öğreticide, Azure Otomasyonu 'nda bir [Python runbook](../automation-runboo
 > [!NOTE]
 > Python runbook 'u başlatmak için Web kancası kullanılması desteklenmez.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
@@ -36,7 +36,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 ## <a name="create-a-new-runbook"></a>Yeni runbook oluştur
 
-*Merhaba Dünya*metin çıkışı veren basit bir runbook oluşturarak başlayın.
+*Merhaba Dünya* metin çıkışı veren basit bir runbook oluşturarak başlayın.
 
 1. Azure portalında, Otomasyon hesabınızı açın.
 
@@ -46,9 +46,9 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 3. Yeni bir runbook oluşturmak için **runbook Ekle** ' yi seçin.
 
-4. Runbook **'A Myfirstrunbook-Python**adını verin.
+4. Runbook **'A Myfirstrunbook-Python** adını verin.
 
-5. **Runbook türü**için **Python 2** ' yi seçin.
+5. **Runbook türü** için **Python 2** ' yi seçin.
 
 6. Runbook’u oluşturmak için **Oluştur**’a tıklayın ve metin düzenleyicisini açın.
 
@@ -83,9 +83,9 @@ Oluşturduğunuz runbook hala Taslak modundadır. Bunu üretimde çalıştırmad
 
 1. Runbook’u yayımlamak için **Yayımla**’ya tıklayın ve sorulduğunda **Evet**’e tıklayın.
 
-2. Runbook 'u runbook 'Ları sayfasında görüntülemek için sola kaydırırsanız **yayımlanmış**bir **yazma durumu** görmeniz gerekir.
+2. Runbook 'u runbook 'Ları sayfasında görüntülemek için sola kaydırırsanız **yayımlanmış** bir **yazma durumu** görmeniz gerekir.
 
-3. **Myfirstrunbook-Python**bölmesini görüntülemek için sağa kaydırın.
+3. **Myfirstrunbook-Python** bölmesini görüntülemek için sağa kaydırın.
 
    Üstteki seçenekler, runbook 'u başlatabilir, runbook 'u görüntüleyebilir veya gelecekte bir süre sonra başlayacak şekilde zamanlayabilirsiniz.
 

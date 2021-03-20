@@ -8,10 +8,10 @@ ms.author: inhenkel
 author: IngridAtMicrosoft
 ms.date: 08/31/2020
 ms.openlocfilehash: 76bbb980b6430f7cffc23ec078e2c932128dc637
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89265278"
 ---
 # <a name="create-an-azure-media-services-live-stream"></a>Azure Media Services canlı akış oluşturma
@@ -51,7 +51,7 @@ Bu hızlı başlangıçta şunları ele alacağız:
 1. Yeni bir canlı akış olayı oluşturmak için **canlı etkinlik Ekle** ' yi seçin.
 
    ![Canlı olay simgesi ekle](media/live-events-wirecast-quickstart/add-live-event.png)
-1. Yeni olaylarınız için, **canlı olay adı** kutusuna *testliveevent*gibi bir ad girin.
+1. Yeni olaylarınız için, **canlı olay adı** kutusuna *testliveevent* gibi bir ad girin.
 
    ![Canlı olay adı kutusu](media/live-events-wirecast-quickstart/live-event-name.png)
 1. **Açıklama** kutusuna olay için isteğe bağlı bir açıklama girin.
@@ -59,7 +59,7 @@ Bu hızlı başlangıçta şunları ele alacağız:
 
    ![Bulut kodlama seçeneği](media/live-events-wirecast-quickstart/cloud-encoding.png)
 1. **RTMP** seçeneğini belirleyin.
-1. Canlı etkinlik için ücretsiz olarak faturalandırılmaya engel olmak için, **canlı etkinlik Başlat**için **Hayır** seçeneğinin seçildiğinden emin olun. (Faturalandırma, canlı etkinlik başlatıldığında başlayacaktır.)
+1. Canlı etkinlik için ücretsiz olarak faturalandırılmaya engel olmak için, **canlı etkinlik Başlat** için **Hayır** seçeneğinin seçildiğinden emin olun. (Faturalandırma, canlı etkinlik başlatıldığında başlayacaktır.)
 
    ![Canlı etkinlik seçeneğini Başlat](media/live-events-wirecast-quickstart/start-live-event-no.png)
 1. Ayarları gözden geçirmek için **gözden geçir + oluştur** düğmesini seçin.
@@ -97,7 +97,7 @@ Sonraki yordamda, çıkış ayarlarına girmek üzere giriş URL 'sini kopyalama
 1. Portalın Azure Media Services sayfasında, canlı akış olayını başlatmak için **Başlat** ' ı seçin. (Faturalandırma şimdi başlar.)
 
    ![Başlangıç simgesi](media/live-events-wirecast-quickstart/start.png)
-2. Güvenli **/güvenli değil** durumunu **güvenli değil**olarak ayarlayın. Bu adım, protokolü RTMPS yerine RTMP 'ye ayarlar.
+2. Güvenli **/güvenli değil** durumunu **güvenli değil** olarak ayarlayın. Bu adım, protokolü RTMPS yerine RTMP 'ye ayarlar.
 3. **Giriş URL 'si** kutusuna URL 'yi panonuza kopyalayın.
 
    ![Giriş URL 'SI](media/live-events-wirecast-quickstart/input-url.png)

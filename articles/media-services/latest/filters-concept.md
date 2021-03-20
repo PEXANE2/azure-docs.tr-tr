@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: bb5561ced93c3f5a899c6e48fdab0f14e52914bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89291560"
 ---
 # <a name="filters"></a>Filtreler
@@ -28,13 +28,13 @@ ms.locfileid: "89291560"
 
 Filtreler, müşterilerinizin şu gibi işlemler yapmasına izin veren sunucu tarafı kurallarıdır: 
 
-- Videonun yalnızca bir bölümünü kayıttan yürütün (videonun tamamını çalmak yerine). Örneğin:
+- Videonun yalnızca bir bölümünü kayıttan yürütün (videonun tamamını çalmak yerine). Örnek:
   - Canlı bir etkinliğin alt klibini ("alt klip filtrelemesi") göstermek için bildirimi azaltın veya
   - Videonun başlangıcını kırpın ("video kırpma").
 - İçeriği kayıttan yürütmek için kullanılan cihaz tarafından desteklenen yalnızca belirtilen çevirileri ve/veya belirtilen dil izlerini sunun ("yorumlama filtrelemesi"). 
 - Player 'da ("sunum penceresini ayarlama"), DVR penceresinde sınırlı bir uzunluk sağlamak için sunum penceresini (DVR) ayarlayın.
 
-Media Services, içeriğiniz için **hesap filtreleri** ve **varlık filtreleri** oluşturmanıza olanak sağlar. Ayrıca, önceden oluşturulmuş filtrelerinizi bir **akış Bulucu**ile ilişkilendirebilirsiniz.
+Media Services, içeriğiniz için **hesap filtreleri** ve **varlık filtreleri** oluşturmanıza olanak sağlar. Ayrıca, önceden oluşturulmuş filtrelerinizi bir **akış Bulucu** ile ilişkilendirebilirsiniz.
 
 ## <a name="defining-filters"></a>Filtreleri tanımlama
 
@@ -43,7 +43,7 @@ Media Services, içeriğiniz için **hesap filtreleri** ve **varlık filtreleri*
 * [Hesap filtreleri](/rest/api/media/accountfilters) (Global)-Azure Media Services hesabındaki herhangi bir varlığa uygulanabilir, hesabın kullanım ömrü vardır.
 * [Varlık filtreleri](/rest/api/media/assetfilters) (yerel)-yalnızca, oluşturulduktan sonra filtrenin ilişkilendirildiği bir varlığa uygulanabilir, varlığın kullanım ömrü vardır. 
 
-**Hesap filtreleri** ve **varlık filtreleri** türleri, filtre tanımlamak/açıklamak için tam olarak aynı özelliklere sahiptir. **Varlık filtresi**oluşturma dışında, filtre ilişkilendirmek istediğiniz varlık adını belirtmeniz gerekir.
+**Hesap filtreleri** ve **varlık filtreleri** türleri, filtre tanımlamak/açıklamak için tam olarak aynı özelliklere sahiptir. **Varlık filtresi** oluşturma dışında, filtre ilişkilendirmek istediğiniz varlık adını belirtmeniz gerekir.
 
 Senaryonuza bağlı olarak, hangi tür bir filtrenin daha uygun olduğuna karar verirsiniz (varlık filtresi veya hesap filtresi). Hesap filtreleri, belirli bir varlığı kırpmak için varlık filtrelerinin kullanılabileceği cihaz profilleri (işleme filtrelemesi) için uygundur.
 
@@ -57,7 +57,7 @@ Filtreleri anlatmak için aşağıdaki özellikleri kullanabilirsiniz.
 
 ### <a name="presentationtimerange"></a>presentationTimeRange
 
-Bu özelliği **varlık filtreleriyle**kullanın. Özelliği **Hesap filtreleriyle**ayarlamanız önerilmez.
+Bu özelliği **varlık filtreleriyle** kullanın. Özelliği **Hesap filtreleriyle** ayarlamanız önerilmez.
 
 |Ad|Açıklama|
 |---|---|
@@ -152,7 +152,7 @@ Aşağıdaki örneklere bakın:
  
 Filtreler güncelleştiriyorsa, **akış Konumlandırıcı** güncelleştirilemez. 
 
-Özellikle CDN etkinleştirildiğinde, etkin olarak yayımlanmış bir **akış bulucula**ilişkili filtrelerin tanımını güncelleştirmeniz önerilmez. Akış sunucuları ve CDNs, eski önbelleğe alınmış verilerin döndürülmesine neden olabilecek iç önbelleklere sahip olabilir. 
+Özellikle CDN etkinleştirildiğinde, etkin olarak yayımlanmış bir **akış bulucula** ilişkili filtrelerin tanımını güncelleştirmeniz önerilmez. Akış sunucuları ve CDNs, eski önbelleğe alınmış verilerin döndürülmesine neden olabilecek iç önbelleklere sahip olabilir. 
 
 Filtre tanımının değiştirilmesi gerekiyorsa, yeni bir filtre oluşturmayı ve **akış Bulucu** URL 'sine eklemeyi veya doğrudan filtreye başvuran yeni bir **akış Bulucu** yayımlamayı düşünün.
 

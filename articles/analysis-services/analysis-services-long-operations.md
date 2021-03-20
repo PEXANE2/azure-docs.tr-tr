@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: owend
 ms.openlocfilehash: 4e069effae0cb7f834b2c3dac696d05304d841a7
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92014843"
 ---
 # <a name="best-practices-for-long-running-operations"></a>Uzun süre çalışan işlemler için en iyi yöntemler
@@ -49,5 +49,5 @@ Salt okuma sorgu çoğaltmaları kullanarak, yenilemeler toplu olarak gerçekle�
 
 [REST API ile zaman uyumsuz yenileme](analysis-services-async-refresh.md)  
 [Azure Analysis Services ölçeğini genişletme](analysis-services-scale-out.md)  
-[Yüksek kullanılabilirlik Analysis Services](analysis-services-bcdr.md)  
+[Analysis Services ile yüksek kullanılabilirlik](analysis-services-bcdr.md)  
 [Azure hizmetleri için yeniden deneme Kılavuzu](/azure/architecture/best-practices/retry-service-specific)

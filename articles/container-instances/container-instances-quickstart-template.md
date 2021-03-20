@@ -7,10 +7,10 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-js
 ms.date: 04/30/2020
 ms.openlocfilehash: 621e3e1cef39e34656c094a39d218d5d5866fa26
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91309090"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak Azure 'da kapsayıcı örneği dağıtma
@@ -55,7 +55,7 @@ Daha fazla Azure Container Instances şablon örneği [hızlı başlangıç şab
 
     Kalan özellikler için varsayılan değerleri kabul edin.
 
-    Hüküm ve koşulları gözden geçirin. Kabul ediyorsanız, **yukarıda belirtilen hüküm ve koşulları kabul**ediyorum ' u seçin.
+    Hüküm ve koşulları gözden geçirin. Kabul ediyorsanız, **yukarıda belirtilen hüküm ve koşulları kabul** ediyorum ' u seçin.
 
     ![Şablon Özellikleri](media/container-instances-quickstart-template/template-properties.png)
 
@@ -71,11 +71,11 @@ Kapsayıcı örneğinin özelliklerini gözden geçirmek için Azure portal veya
 
 1. Portalda Container Instances araması yapın ve oluşturduğunuz kapsayıcı örneğini seçin.
 
-1. **Genel bakış** sayfasında, örneğin **durumunu** ve **IP adresini**aklınızda edin.
+1. **Genel bakış** sayfasında, örneğin **durumunu** ve **IP adresini** aklınızda edin.
 
     ![Örneğe genel bakış](media/container-instances-quickstart-template/aci-overview.png)
 
-2. Durumu *çalışmaya*başladıktan sonra tarayıcınızda IP adresine gidin. 
+2. Durumu *çalışmaya* başladıktan sonra tarayıcınızda IP adresine gidin. 
 
     ![Azure Container Instances kullanılarak dağıtılmış uygulama tarayıcıda görüntüleniyor](media/container-instances-quickstart-template/view-application-running-in-an-azure-container-instance.png)
 
@@ -83,7 +83,7 @@ Kapsayıcı örneğinin özelliklerini gözden geçirmek için Azure portal veya
 
 Kapsayıcı örneğinin günlüklerini görüntülemek, kapsayıcınızın veya çalıştırdığı uygulamanın sorunlarını gidermede yardımcı olur.
 
-Kapsayıcının günlüklerini görüntülemek için, **Ayarlar**altında **kapsayıcılar**  >  **Günlükler**' i seçin. Uygulamayı tarayıcınızda görüntülediğinizde HTTP GET isteğinin oluşturulduğunu görmeniz gerekir.
+Kapsayıcının günlüklerini görüntülemek için, **Ayarlar** altında **kapsayıcılar**  >  **Günlükler**' i seçin. Uygulamayı tarayıcınızda görüntülediğinizde HTTP GET isteğinin oluşturulduğunu görmeniz gerekir.
 
 ![Azure portalında kapsayıcı günlükleri](media/container-instances-quickstart-template/aci-logs.png)
 

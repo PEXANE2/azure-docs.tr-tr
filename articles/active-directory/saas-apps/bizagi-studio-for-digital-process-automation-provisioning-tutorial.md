@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/20/2020
 ms.author: Zhchia
 ms.openlocfilehash: 72e021f47bb8db4dedf0e434d0d94bb2118a4c00
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98728209"
 ---
 # <a name="tutorial-configure-bizagi-studio-for-digital-process-automation-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Bizagı Studio 'Yu dijital Işlem otomasyonu için yapılandırma
@@ -34,7 +34,7 @@ Bu öğreticide, otomatik Kullanıcı sağlamayı yapılandırmak için hem Biza
 > * Dijital Işlem otomasyonu için Azure AD ile Bizagı Studio arasında eşitlenmiş Kullanıcı özniteliklerini koruyun
 > * Dijital Işlem otomasyonu için Bizagı Studio ['Da çoklu oturum açma](./bizagi-studio-for-digital-process-automation-tutorial.md) (önerilir)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, zaten aşağıdakilere sahip olduğunuzu varsayar:
 
@@ -58,7 +58,7 @@ Azure AD ile sağlamayı desteklemek için Bizagı Studio 'Yu dijital Işlem oto
 
    ![OAuth 2 uygulamaları vurgulanmış olan Bizagı 'nin ekran görüntüsü.](media/bizagi-studio-for-digital-process-automation-provisioning-tutorial/admin.png)
 
-3. **Ekle**’yi seçin.
+3. **Add (Ekle)** seçeneğini belirleyin.
 4. **Verme türü** için **taşıyıcı belirteci**' ni seçin. **Izin verilen kapsam** için **API** ve **Kullanıcı eşitleme**' yi seçin. Sonra **Kaydet**'i seçin.
 
    ![Atama türü ve Izin verilen kapsam vurgulanmış şekilde, kayıt uygulamasının ekran görüntüsü.](media/bizagi-studio-for-digital-process-automation-provisioning-tutorial/token.png)

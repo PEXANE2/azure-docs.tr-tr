@@ -17,17 +17,17 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 012eefe9140703a62d7bb1074ab763191a0976cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87798520"
 ---
 # <a name="create-an-access-review-of-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde erişim paketi için erişim gözden geçirmesi oluşturma
 
 Eski erişim riskini azaltmak için, Azure AD yetkilendirme yönetiminde bir erişim paketine etkin atamaları olan kullanıcıların düzenli olarak incelemelerine izin verilmelidir. Yeni bir erişim paketi oluşturduğunuzda veya var olan bir erişim paketini düzenlerken İncelemeleri etkinleştirebilirsiniz. Bu makalede erişim paketlerinin erişim incelemelerinin nasıl etkinleştirileceği açıklanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Erişim paketleri incelemelerini etkinleştirmek için, erişim paketi oluşturma önkoşullarını karşılamanız gerekir:
 - Azure AD Premium P2
@@ -46,9 +46,9 @@ Daha fazla bilgi için bkz. [Lisans gereksinimleri](entitlement-management-overv
 
     ![Erişim gözden geçirmesini ekleme](./media/entitlement-management-access-reviews/access-reviews-pane.png)
 
-1. Gözden geçirmeler 'in başlaması için **izlenecek**tarihi belirtin.
+1. Gözden geçirmeler 'in başlaması için **izlenecek** tarihi belirtin.
 
-1. Ardından, **Gözden geçirme sıklığını** **yıllık**, **iki**yıllık, **üç** aylık veya **aylık**olarak ayarlayın.
+1. Ardından, **Gözden geçirme sıklığını** **yıllık**, **iki** yıllık, **üç** aylık veya **aylık** olarak ayarlayın.
 Bu ayar, erişim incelemelerinin ne sıklıkla gerçekleşeceğini belirler.
 
 1. Her bir yinelenen serinin her incelemesinin gözden geçirenlerden giriş için ne kadar gün açık olacağını tanımlamak için **süreyi** ayarlayın. Örneğin, 1 Ocak 'ta başlayan ve gözden geçirenlerin ayın sonuna kadar olan 30 gün boyunca incelenmesi için açık olan yıllık bir gözden geçirme zamanlayabilirsiniz.
@@ -70,7 +70,7 @@ Bu ayar, erişim incelemelerinin ne sıklıkla gerçekleşeceğini belirler.
 
 Başlangıç tarihinden sonra erişim gözden **geçirmeleri** bölümünde bir erişim incelemesi listelenecektir. Erişim gözden geçirmesi durumunu görüntülemek için aşağıdaki adımları izleyin:
 
-1. **Kimlik**Yönetimi ' nde, **erişim paketleri** ' ne tıklayın ve ardından denetlemek istediğiniz erişim gözden geçirme durumunu içeren erişim paketini seçin.   
+1. **Kimlik** Yönetimi ' nde, **erişim paketleri** ' ne tıklayın ve ardından denetlemek istediğiniz erişim gözden geçirme durumunu içeren erişim paketini seçin.   
 
 1. Erişim paketine genel bakış ' a ulaştıktan sonra sol menüdeki **erişim İncelemeleri** ' ne tıklayın.
     

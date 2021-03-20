@@ -4,10 +4,10 @@ description: Azure DevTest Labs, laboratuvar sanal makinelerinize erişmek için
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 36a5da1b2b6252d0adb480a622c461b33425e675
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85484103"
 ---
 # <a name="understand-shared-ip-addresses-in-azure-devtest-labs"></a>Azure DevTest Labs Paylaşılan IP adreslerini anlayın
@@ -16,13 +16,13 @@ Azure DevTest Labs, laboratuar sanal makinelerinize erişim için gereken genel 
 
 ## <a name="shared-ip-setting"></a>Paylaşılan IP ayarı
 
-Laboratuvar oluşturduğunuzda bir sanal ağın alt ağında oluşturulur.  Varsayılan olarak, bu alt ağ, **paylaşılan genel IP** kümesini *Evet*olarak etkinleştir seçeneğiyle oluşturulur.  Bu yapılandırma tüm alt ağ için tek bir genel IP adresi oluşturur.  Sanal ağları ve alt ağları yapılandırma hakkında daha fazla bilgi için bkz. [Azure DevTest Labs sanal ağı yapılandırma](devtest-lab-configure-vnet.md).
+Laboratuvar oluşturduğunuzda bir sanal ağın alt ağında oluşturulur.  Varsayılan olarak, bu alt ağ, **paylaşılan genel IP** kümesini *Evet* olarak etkinleştir seçeneğiyle oluşturulur.  Bu yapılandırma tüm alt ağ için tek bir genel IP adresi oluşturur.  Sanal ağları ve alt ağları yapılandırma hakkında daha fazla bilgi için bkz. [Azure DevTest Labs sanal ağı yapılandırma](devtest-lab-configure-vnet.md).
 
 ![Yeni laboratuvar alt ağı](media/devtest-lab-shared-ip/lab-subnet.png)
 
 Mevcut laboratuvarlarda, **sanal ağlar > yapılandırma ve ilkeler**' i seçerek bu seçeneği etkinleştirebilirsiniz. Ardından, listeden bir sanal ağ seçin ve seçili alt ağ için **PAYLAŞıLAN ortak IP 'Yi etkinleştir** ' i seçin. Laboratuvar VM 'Leri genelinde genel IP adresini paylaştırmak istemiyorsanız bu seçeneği herhangi bir laboratuvarda devre dışı bırakabilirsiniz.
 
-Bu laboratuvarda oluşturulan tüm sanal makineler, varsayılan olarak paylaşılan bir IP kullanmaktır.  VM oluştururken, bu ayar, **IP adresi yapılandırması**altındaki **Gelişmiş ayarlar** sayfasında gözlemlenebilir.
+Bu laboratuvarda oluşturulan tüm sanal makineler, varsayılan olarak paylaşılan bir IP kullanmaktır.  VM oluştururken, bu ayar, **IP adresi yapılandırması** altındaki **Gelişmiş ayarlar** sayfasında gözlemlenebilir.
 
 ![Yeni VM](media/devtest-lab-shared-ip/new-vm.png)
 

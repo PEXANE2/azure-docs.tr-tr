@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
 ms.openlocfilehash: a9bea0664f99a21ac734de666c802e9875ff00b5
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97359337"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Azure Key Vault kullanarak Azure Cosmos anahtarlarının güvenliğini sağlama 
@@ -61,7 +61,7 @@ Key Vault Azure Cosmos DB erişim anahtarlarını depolamak ve okumak için aşa
 
 1. Bir Azure Web uygulaması oluşturun veya uygulamayı [GitHub deposundan](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/Demo/keyvaultdemo)indirebilirsiniz. Bu basit bir MVC uygulamasıdır.  
 
-2. İndirilen uygulamayı sıkıştırmayı açın ve **HomeController.cs** dosyasını açın. Aşağıdaki satırdaki gizli KIMLIĞI güncelleştirin:
+2. İndirilen uygulamayı sıkıştırmayı açın ve **HomeController. cs** dosyasını açın. Aşağıdaki satırdaki gizli KIMLIĞI güncelleştirin:
 
    `var secret = await keyVaultClient.GetSecretAsync("<Your Key Vault’s secret identifier>")`
 

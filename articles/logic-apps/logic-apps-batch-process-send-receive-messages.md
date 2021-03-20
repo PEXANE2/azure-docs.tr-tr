@@ -9,10 +9,10 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.date: 07/31/2020
 ms.openlocfilehash: 0985afe3ddfd0d9de3c36ad6b030b6f259708c88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87458354"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Azure Logic Apps iletileri gönderme, alma ve toplu işleme
@@ -114,7 +114,7 @@ Bir toplu işe ileti gönderebilmeniz için önce bu toplu işin önce bu iletil
     ![Mantıksal uygulamanızı kaydetme](./media/logic-apps-batch-process-send-receive-messages/save-batch-receiver-logic-app.png)
 
    > [!IMPORTANT]
-   > Visual Studio kullanıyorsanız, sonraki bölüme geçmeden önce [toplu iş alıcı mantıksal uygulamanızı Azure 'a *dağıttığınızdan* ](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#deploy-logic-app-to-azure)emin olun. Aksi takdirde, Batch sender 'ı oluştururken Batch alıcısını seçemezsiniz.
+   > Visual Studio kullanıyorsanız, sonraki bölüme geçmeden önce [toplu iş alıcı mantıksal uygulamanızı Azure 'a *dağıttığınızdan*](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#deploy-logic-app-to-azure)emin olun. Aksi takdirde, Batch sender 'ı oluştururken Batch alıcısını seçemezsiniz.
 
 <a name="batch-sender"></a>
 
@@ -153,7 +153,7 @@ Bir toplu işe ileti gönderebilmeniz için önce bu toplu işin önce bu iletil
       > [!IMPORTANT]
       > Visual Studio kullanıyorsanız ve seçilecek toplu iş alıcılarını görmüyorsanız, Batch alıcılarınızı Azure 'da daha önce oluşturup dağıttığınızı kontrol edin. Yapmadıysanız, [Batch ahize mantıksal uygulamanızı Azure 'a dağıtmayı](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#deploy-logic-app-to-azure)öğrenin.
 
-   1. Eylemler listesinden şu eylemi seçin: **Batch_messages-<- *mantıksal uygulama-adı* > **
+   1. Eylemler listesinden şu eylemi seçin: **Batch_messages-<- *mantıksal uygulama-adı* >**
 
       ![Şu eylemi seçin: "Batch_messages-<-mantıksal uygulama>"](./media/logic-apps-batch-process-send-receive-messages/batch-sender-select-batch.png)
 
