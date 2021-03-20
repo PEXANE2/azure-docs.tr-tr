@@ -13,10 +13,10 @@ ms.custom:
 - devx-track-azurecli
 - devx-track-csharp
 ms.openlocfilehash: bf834a6dd648ffc8f4b1633dbb383f33cd99335f
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98625207"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-logs-with-an-iot-hub"></a>Öğretici: IoT Hub ile ölçümleri ve günlükleri ayarlama ve kullanma
@@ -333,7 +333,7 @@ Bu ayarlarla bir uyarı tetiklenir ve 5 dakikalık bir zaman dilimi içinde 1000
         await Task.Delay(1);
         ```
 
-    1. Değişikliklerinizi **SimulatedDevice.cs**'ye kaydedin.
+    1. **SimulatedDevice. cs**' ye yaptığınız değişiklikleri kaydedin.
 
 1. Yerel Terminal penceresinde, sanal cihaz uygulaması için gerekli paketleri yüklemek üzere aşağıdaki komutu çalıştırın:
 

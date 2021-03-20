@@ -9,10 +9,10 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.openlocfilehash: acf7198477ce0c55f9321fd3f8e57294a60c0961
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89652015"
 ---
 # <a name="create-an-app-service-app-and-deploy-a-private-endpoint-by-using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak App Service uygulaması oluşturma ve özel uç nokta dağıtma
@@ -40,7 +40,7 @@ Azure Resource Manager şablonunu Azure 'a dağıtma:
 1. Azure 'da oturum açmak ve şablonu açmak için şu bağlantıyı seçin:  [Azure 'A dağıtın](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-private-endpoint-webapp%2Fazuredeploy.json). Şablon, sanal ağ, Web uygulaması, Özel uç nokta ve özel DNS bölgesi oluşturur.
 2. Kaynak grubunuzu seçin veya oluşturun.
 3. Web uygulamanızın adını, Azure App Service planınızı ve özel uç noktasını girin.
-5. Hüküm ve koşullar hakkındaki ifadeyi okuyun. Kabul ediyorsanız, satın alma sırasında **belirtilen hüküm ve koşulları kabul**ediyorum ' u seçin  >  **Purchase**. Dağıtımın tamamlanması birkaç dakika sürebilir.
+5. Hüküm ve koşullar hakkındaki ifadeyi okuyun. Kabul ediyorsanız, satın alma sırasında **belirtilen hüküm ve koşulları kabul** ediyorum ' u seçin  >  . Dağıtımın tamamlanması birkaç dakika sürebilir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

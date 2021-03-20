@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.openlocfilehash: a6a7bf24571660d8e728c1acba29af2504539a18
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99219969"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Microsoft Identity platform en iyi uygulamaları ve önerileri
@@ -30,7 +30,7 @@ Uygulamanızın [Microsoft Identity platformu](./index.yml)ile etkin bir şekild
 > [!TIP]
 > Azure portal *tümleştirme Yardımcısı* , bu en iyi yöntemler ve önerilerin birçoğunu uygulamanıza yardımcı olabilir. Azure portal [uygulama kayıtlarınızın](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) birini seçin ve ardından yardımcı kullanmaya başlamak için **tümleştirme Yardımcısı** menü öğesini seçin.
 
-## <a name="basics"></a>Temel bilgiler
+## <a name="basics"></a>Temel Bilgiler
 
 ![onay kutusu ](./media/active-directory-integration-checklist/checkbox-two.svg) [Microsoft Platformu ilkelerini](/legal/microsoft-identity-platform/terms-of-use)okuyun ve anlayın. Uygulamanızın, kullanıcıları ve platformu korumak üzere tasarlandıkları koşullara uyduğundan emin olun.
 
@@ -94,7 +94,7 @@ Uygulamanızın [Microsoft Identity platformu](./index.yml)ile etkin bir şekild
 
 ![onay kutusu ](./media/active-directory-integration-checklist/checkbox-two.svg) [temiz bir çoklu oturum açma deneyimi](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-6-SignOut)uygulayın. Bu bir gizlilik ve güvenlik gereksinimidir ve iyi bir kullanıcı deneyimi sunar.
 
-## <a name="testing"></a>Sınama
+## <a name="testing"></a>Test Etme
 
 ![](./media/active-directory-integration-checklist/checkbox-two.svg)kullanıcılarınızın uygulamanızı kullanma yeteneğini etkileyebilecek [koşullu erişim ilkeleri](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-6-SignOut) için onay kutusu testi.
 

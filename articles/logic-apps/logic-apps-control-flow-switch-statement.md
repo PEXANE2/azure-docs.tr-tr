@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/08/2018
 ms.openlocfilehash: 62f147104cf9e0e1605b02a420cb6d20190361b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89657463"
 ---
 # <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Azure Logic Apps içindeki belirli değerlere göre iş akışı eylemlerini çalıştıran Switch deyimleri oluşturma
@@ -34,7 +34,7 @@ Nesnelerin, ifadelerin veya belirteçlerin değerlerine göre belirli eylemleri 
      !["Onay e-postası gönder" i seçin](./media/logic-apps-control-flow-switch-statement/send-approval-email-action.png)
 
   1. Onay e-postasını alan kişinin e-posta adresi gibi gerekli alanları sağlayın. 
-  **Kullanıcı seçenekleri**altında "Onayla, Reddet" yazın.
+  **Kullanıcı seçenekleri** altında "Onayla, Reddet" yazın.
 
      ![E-posta ayrıntılarını girin](./media/logic-apps-control-flow-switch-statement/send-approval-email-details.png)
 
@@ -57,7 +57,7 @@ Nesnelerin, ifadelerin veya belirteçlerin değerlerine göre belirli eylemleri 
 
    !["SelectedOption" öğesini seçin](./media/logic-apps-control-flow-switch-statement/select-selected-option.png)
 
-1. Onaylayanın veya seçtiği durumları işlemek için `Approve` `Reject` , **büyük/küçük harf** ve **varsayılan**arasında başka bir durum ekleyin. 
+1. Onaylayanın veya seçtiği durumları işlemek için `Approve` `Reject` , **büyük/küçük harf** ve **varsayılan** arasında başka bir durum ekleyin. 
 
    ![Başka bir durum ekleyin](./media/logic-apps-control-flow-switch-statement/switch-plus.png)
 
@@ -110,7 +110,7 @@ Artık bir switch ifadesini kullanarak bir mantıksal uygulama oluşturduğunuza
 }
 ```
 
-| Etiketle | Açıklama |
+| Etiketle | Description |
 |-------|-------------|
 | `"Switch"`         | Okunabilirlik için yeniden adlandırabileceği switch ifadesinin adı |
 | `"type": "Switch"` | Eylemin bir switch ifadesinin olduğunu belirtir |

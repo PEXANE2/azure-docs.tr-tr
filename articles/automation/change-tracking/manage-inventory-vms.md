@@ -7,10 +7,10 @@ keywords: stok, otomasyon, değişiklik, izleme
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.openlocfilehash: 2acf22ba76acdfa6152ef8966f4000aa325a9e91
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92210396"
 ---
 # <a name="manage-inventory-collection-from-vms"></a>VM’lerden stok koleksiyonunu yönetme
@@ -36,7 +36,7 @@ Bu makalede, Değişiklik İzleme ve envanteriyle etkinleştirilecek bir sanal m
 
 1. Azure portalının sol tarafında **Sanal makineler**'i seçin.
 2. VM 'Ler listesinde bir makine seçin.
-3. **Kaynak** menüsünde, **işlemler**altında **Envanter**' ı seçin.
+3. **Kaynak** menüsünde, **işlemler** altında **Envanter**' ı seçin.
 4. Veri günlüklerinizi depolamak için bir Log Analytics çalışma alanı seçin.
     Bu bölge için kullanabileceğiniz bir çalışma alanı yoksa, varsayılan bir çalışma alanı ve otomasyon hesabı oluşturmanız istenir.
 5. Bilgisayarınızı etkinleştirmeye başlamak için **Etkinleştir**' i seçin.
@@ -54,7 +54,7 @@ Dağıtım tamamlandığında durum çubuğu kaybolur. Sistem stok verilerini to
 Varsayılan olarak yazılım, Windows hizmetleri ve Linux daemon'ları toplama işlemi için yapılandırılmıştır. Windows kayıt defteri ve dosya stoğunu toplamak için stok toplama ayarlarını yapılandırın.
 
 1. Sayım sayfasında, sayfanın üst kısmındaki **Ayarları Düzenle** ' ye tıklayın.
-2. Yeni bir koleksiyon ayarı eklemek için **Windows kayıt defteri**, **Windows dosyaları**veya **Linux dosyaları** sekmesini seçerek eklemek istediğiniz ayar kategorisine gidin.
+2. Yeni bir koleksiyon ayarı eklemek için **Windows kayıt defteri**, **Windows dosyaları** veya **Linux dosyaları** sekmesini seçerek eklemek istediğiniz ayar kategorisine gidin.
 3. Uygun kategoriyi seçin ve sayfanın üst kısmındaki **Ekle** ' ye tıklayın.
 
 Aşağıdaki bölümlerde, çeşitli kategoriler için yapılandırılabilecek her bir özellik hakkında bilgi sağlanmaktadır.
@@ -106,7 +106,7 @@ Listeden bir makine grubu seçildiğinde makine grupları sayfası açılır. Bu
 
 Makine grubunu kopyalamak için **+ Kopyala** ' ya tıklayın. Gruba grup için yeni bir ad ve diğer ad vermeniz gerekir. Tanım şu anda değiştirilebilir. Sorguyu değiştirdikten sonra seçilecek makineleri önizlemek için **sorguyu doğrula** ' ya tıklayın. Gruptan memnun olduğunuzda, makine grubunu oluşturmak için **Oluştur** ' a tıklayın.
 
-Yeni bir makine grubu oluşturmak istiyorsanız **+ makine grubu oluştur ' a**tıklayın. Bu düğme, yeni grubunuzu tanımlayabileceğiniz **makine grubu oluştur** sayfasını açar. Grubu oluşturmak için **Oluştur**’a tıklayın.
+Yeni bir makine grubu oluşturmak istiyorsanız **+ makine grubu oluştur ' a** tıklayın. Bu düğme, yeni grubunuzu tanımlayabileceğiniz **makine grubu oluştur** sayfasını açar. Grubu oluşturmak için **Oluştur**’a tıklayın.
 
 ![Yeni makine grubu oluştur](./media/manage-inventory-vms/create-new-group.png)
 
@@ -116,7 +116,7 @@ VM 'nizi Değişiklik İzleme ve stok yönetiminden kaldırmak için:
 
 1. Azure portal sol bölmesinde **Log Analytics**' i seçin ve ardından VM 'nizi değişiklik izleme ve envanter için etkinleştirirken kullandığınız çalışma alanını seçin.
 2. **Log Analytics** sayfasında, **kaynak** menüsünü açın.
-3. **Çalışma alanı veri kaynakları**altında **sanal makineler** ' i seçin.
+3. **Çalışma alanı veri kaynakları** altında **sanal makineler** ' i seçin.
 4. Listede, bağlantısını kesmek istediğiniz VM 'yi seçin. Makinenin, **OMS bağlantı** sütununda **Bu çalışma alanının** yanında yeşil bir onay işareti vardır.
 
    >[!NOTE]

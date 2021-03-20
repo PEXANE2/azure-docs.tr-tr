@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: jeedes
 ms.openlocfilehash: 5c2ac2c7bb1b60c87075a1bc62241edab2fc310e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92516309"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tinfoil-security"></a>Öğretici: TINFOIL SECURITY ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -57,7 +57,7 @@ TINFOIL SECURITY 'nin Azure AD ile tümleştirilmesini yapılandırmak için, ga
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-tinfoil-security"></a>Azure AD çoklu oturum açmayı, TINFOIL SECURITY için yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'YU TINFOIL SECURITY ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı ile TINFOIL SECURITY arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'YU TINFOIL SECURITY ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı ile TINFOIL SECURITY arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu TINFOIL SECURITY ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -86,7 +86,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Visitly uygulaması, yukarıdakine ek olarak, aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Adı | Kaynak özniteliği |
+    | Name | Kaynak özniteliği |
     | ------------------- | -------------|
     | accountid | UıXXXXXXXXXXXXX |
 

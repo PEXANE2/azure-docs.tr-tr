@@ -7,10 +7,10 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.openlocfilehash: 7d10c6c1ce440b2ffe964dc78379ef3ab108e78e
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92217533"
 ---
 # <a name="tutorial-add-back-end-storage-and-configure-the-virtual-namespace"></a>Öğretici: arka uç depolama ekleme ve sanal ad alanını yapılandırma
@@ -56,7 +56,7 @@ Bir çekirdek fili ekledikten sonra, ayarlarını çekirdek Filer ayrıntıları
 
 ## <a name="add-a-core-filer"></a>Çekirdek fili ekleme
 
-Çekirdek **Create** **filu**  >  **yönetimi** ayarları sayfasında Oluştur düğmesine tıklayarak bir çekirdek filmi tanımlayın.
+Çekirdek  **filu**  >  **yönetimi** ayarları sayfasında Oluştur düğmesine tıklayarak bir çekirdek filmi tanımlayın.
 
 ![Çekirdek Dosyasıları yönetme sayfasındaki çekirdek dosyasıları listesinin üzerindeki Oluştur düğmesine tıklanın](media/fxt-cluster-config/create-core-filer-button.png)
 
@@ -130,7 +130,7 @@ Yeni bir vServer oluşturmak için aşağıdaki bilgilere ihtiyacınız vardır:
 
 * Ağınızda VLAN 'Lar varsa, bu vServer için kullanılacak VLAN
 
-**VServer**  >  Yeni bir vServer oluşturmak için vServer**vservers ayarlarını yönet** sayfasını kullanın. Ayrıntılar için küme yapılandırma kılavuzunda [bir VServer oluşturma](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_vserver_manage.html#creating-a-vserver) konusunu okuyun.
+  >  Yeni bir vServer oluşturmak için vServer **vservers ayarlarını yönet** sayfasını kullanın. Ayrıntılar için küme yapılandırma kılavuzunda [bir VServer oluşturma](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_vserver_manage.html#creating-a-vserver) konusunu okuyun.
 
 ![Yeni bir sanal sunucu oluşturmaya yönelik açılır pencere](media/fxt-cluster-config/new-vserver.png)
 
@@ -142,7 +142,7 @@ Bu sistemi, istemci bağlama noktalarında kullanılan yolu basitleştirmek ve t
 
 ![Doldurulan ayarlarla yeni birleşim Ekleme Sihirbazı sayfası](media/fxt-cluster-config/add-junction-full.png)
 
-Ad alanı birleşimi oluşturma hakkında ayrıntılı bilgi için, küme yapılandırma kılavuzundaki [ **vServer**  >  **ad alanına** ](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_namespace.html) bakın.
+Ad alanı birleşimi oluşturma hakkında ayrıntılı bilgi için, küme yapılandırma kılavuzundaki [ **vServer**  >  **ad alanına**](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_namespace.html) bakın.
 
 ![Bir birleşimin ayrıntılarını gösteren VServer > ad alanı ayarları sayfası](media/fxt-cluster-config/namespace-populated.png)
 
@@ -150,9 +150,9 @@ Ad alanı birleşimi oluşturma hakkında ayrıntılı bilgi için, küme yapıl
 
 Hem vServer hem de bir çekirdek filinize sahip olduktan sonra, istemcilerin çekirdek dosyalayıcı dışarı aktarmaları üzerindeki dosyalara nasıl erişebileceğini denetleyen dışarı aktarma kurallarını ve dışarı aktarma ilkelerini özelleştirmeniz gerekir.
 
-İlk olarak, **VServer**  >  yeni kurallar eklemek, varsayılan ilkeyi değiştirmek veya kendi özel dışa aktarma ilkenizi oluşturmak için, vServer**dışarı aktarma kuralları** sayfasını kullanın.
+İlk olarak,   >  yeni kurallar eklemek, varsayılan ilkeyi değiştirmek veya kendi özel dışa aktarma ilkenizi oluşturmak için, vServer **dışarı aktarma kuralları** sayfasını kullanın.
 
-İkinci olarak, **VServer**  >  Bu vServer aracılığıyla erişildiğinde, özelleştirilmiş ilkeyi çekirdek filinize dışarı aktarmalara uygulamak için vServer**ilke dışa aktarma** sayfasını kullanın.
+İkinci olarak,   >  Bu vServer aracılığıyla erişildiğinde, özelleştirilmiş ilkeyi çekirdek filinize dışarı aktarmalara uygulamak için vServer **ilke dışa aktarma** sayfasını kullanın.
 
 Ayrıntılar için [çekirdek Filer dışarı aktarımlarının erişimini denetleyen](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/export_rules_overview.html) küme yapılandırma kılavuzu makalesini okuyun.
 

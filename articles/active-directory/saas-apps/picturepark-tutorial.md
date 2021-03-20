@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 8a00cf11edfea2e732a18a392d465525b38ea45f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92520872"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-picturepark"></a>Öğretici: Picturepark ile Azure Active Directory tümleştirme
@@ -61,13 +61,13 @@ Picturepark 'nın Azure AD ile tümleştirilmesini yapılandırmak için, Galeri
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Picturepark**yazın, sonuç panelinden **Picturepark** ' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **Picturepark** yazın, sonuç panelinden **Picturepark** ' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
      ![Sonuçlar listesinde Picturepark](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre Picturepark ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre Picturepark ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve Picturepark alanındaki ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
 Azure AD çoklu oturum açma 'yı Picturepark ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurmanız gerekir:
@@ -122,7 +122,7 @@ Azure AD çoklu oturum açmayı Picturepark ile yapılandırmak için aşağıda
 
     ![Parmak Izi değerini Kopyala](common/copy-thumbprint.png)
 
-7. **Picturepark ayarlama** bölümünde uygun URL 'leri gereksiniminize göre kopyalayın. **Oturum açma URL 'si**için değeri aşağıdaki Düzenle kullanın:`https://login.microsoftonline.com/_my_directory_id_/wsfed`
+7. **Picturepark ayarlama** bölümünde uygun URL 'leri gereksiniminize göre kopyalayın. **Oturum açma URL 'si** için değeri aşağıdaki Düzenle kullanın:`https://login.microsoftonline.com/_my_directory_id_/wsfed`
 
     > [!Note]
     > _my_directory_id_ , Azure AD aboneliğinin kiracı kimliğidir.
@@ -159,7 +159,7 @@ Azure AD çoklu oturum açmayı Picturepark ile yapılandırmak için aşağıda
    
     e. **Güvenilen veren** parmak izi metin kutusunda, **SAML imzalama sertifikası** bölümünden kopyaladığınız **parmak izine** ait değeri yapıştırın. 
 
-5. **Joindefaultusersgroup**öğesine tıklayın.
+5. **Joindefaultusersgroup** öğesine tıklayın.
 
 6. **Talep** metin kutusunda **emapostaadresi** özniteliğini ayarlamak Için, yazın `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` ve **Kaydet**' e tıklayın.
 
@@ -181,7 +181,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
     b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension` . Örneğin, BrittaSimon@contoso.com
 
@@ -233,7 +233,7 @@ Azure AD kullanıcılarının, Picturepark ortamında oturum açmasını sağlam
 
 1. **Kullanıcı oluştur** iletişim kutusunda, sağlamak istediğiniz geçerli bir Azure Active Directory Kullanıcı için aşağıdaki adımları gerçekleştirin:
    
-    ![Kullanıcı Oluştur](./media/picturepark-tutorial/ic795069.png "Kullanıcı Oluştur")
+    ![Create User](./media/picturepark-tutorial/ic795069.png "Kullanıcı Oluştur")
    
     a. **E-posta adresi** metin kutusuna kullanıcının **e-posta adresini** yazın `BrittaSimon@contoso.com` .  
    
@@ -251,7 +251,7 @@ Azure AD kullanıcılarının, Picturepark ortamında oturum açmasını sağlam
    
     h. **Şehir** metin kutusuna kullanıcının **şehir adını** yazın.
 
-    i. Bir **dil**seçin.
+    i. Bir **dil** seçin.
    
     j. **Oluştur**’a tıklayın.
 

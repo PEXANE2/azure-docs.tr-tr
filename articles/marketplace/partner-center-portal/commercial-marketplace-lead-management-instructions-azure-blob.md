@@ -8,10 +8,10 @@ author: trkeya
 ms.author: trkeya
 ms.date: 05/01/2020
 ms.openlocfilehash: bd2f3d40b1aea1c0133f95e069ebfd527d30bd59
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94491112"
 ---
 # <a name="use-azure-blob-storage-to-manage-commercial-marketplace-leads"></a>Ticari Market müşteri adaylarını yönetmek için Azure Blob depolamayı kullanma
@@ -39,7 +39,7 @@ ms.locfileid: "94491112"
 
     Depolama hesapları hakkında daha fazla bilgi için bu [hızlı](../../storage/blobs/storage-quickstart-blobs-portal.md)başlangıca bakın.  Depolama fiyatlandırması hakkında daha fazla bilgi için bkz. [Depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/).
 
-4. Depolama Hesabınız sağlanana kadar bekleyin, genellikle birkaç dakika sürer.  Ardından, **Tüm kaynaklarınızı gör** ' i **Home** seçerek veya Azure Portal sol gezinti menü çubuğundan **tüm kaynakları** seçerek depolama hesabınıza Azure Portal.
+4. Depolama Hesabınız sağlanana kadar bekleyin, genellikle birkaç dakika sürer.  Ardından, **Tüm kaynaklarınızı gör** ' i  seçerek veya Azure Portal sol gezinti menü çubuğundan **tüm kaynakları** seçerek depolama hesabınıza Azure Portal.
 
     ![Azure depolama hesabınıza erişin](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-access.png)
 
@@ -53,7 +53,7 @@ ms.locfileid: "94491112"
 
     !["Bağlantı dizesi" metin kutusu vurgulanmış "erişim tuşları" sayfasını gösteren ekran görüntüsü.](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-keys-2.png)
 
-6. Depolama hesabı sayfasından **Bloblar** ' ı seçin.
+6. Depolama hesabı sayfasından **Bloblar**' ı seçin.
 
    ![Blob 'ların seçildiği Azure depolama hesabı sayfasının ekran görüntüsü](./media/commercial-marketplace-lead-management-instructions-azure-blob/select-blobs.png)
 
@@ -65,7 +65,7 @@ ms.locfileid: "94491112"
 
 9. Kapsayıcıya genel erişim düzeyini **özel (anonim erişim yok)** olarak ayarlayın.
 
-10. Kapsayıcıyı oluşturmak için **Tamam** 'ı seçin.
+10. Kapsayıcıyı oluşturmak için **Tamam**'ı seçin.
 
     ![Yeni kapsayıcı](./media/commercial-marketplace-lead-management-instructions-azure-blob/new-container.png)
 
@@ -74,7 +74,7 @@ ms.locfileid: "94491112"
 Yayımlama portalında teklifiniz için müşteri adayı yönetim bilgilerini yapılandırmaya hazırsanız, aşağıdaki adımları izleyin:
 
 1. Teklifiniz için **teklif kurulumu** sayfasına gidin.
-2. **Müşteri müşteri adayları** bölümünde **Bağlan** ' ı seçin.
+2. **Müşteri müşteri adayları** bölümünde **Bağlan**' ı seçin.
 
     :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-azure-blob/customer-leads.png" alt-text="Müşteri liderleri":::
 
@@ -87,7 +87,7 @@ Yayımlama portalında teklifiniz için müşteri adayı yönetim bilgilerini ya
     * Kapsayıcı adı örneği: `marketplaceleadcontainer`
     * Depolama hesabı bağlantı dizesi örneği: `DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net` ![ bağlantı ayrıntısı](./media/commercial-marketplace-lead-management-instructions-azure-blob/connection-details.png) 
 
-5. **Kaydet** ’i seçin.
+5. **Kaydet**’i seçin.
 
     > [!NOTE]
     > Teklif için müşteri adaylarını almadan önce teklifin geri kalanını yapılandırmayı ve bunu yayımlamanız gerekir.

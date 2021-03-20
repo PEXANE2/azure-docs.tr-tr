@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 9c912b7122a40ae39bcbb703e1387af25fff2bc8
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: efaf6060c0b09e071546038d9e30f2c8065059e7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029915"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "98600135"
 ---
 # <a name="what-are-security-defaults"></a>Güvenlik Varsayılanları nelerdir?
 
@@ -76,7 +76,7 @@ Yönetici hesaplarının, çok fazla kimlik doğrulama katmanı gerektiren tek h
 
 Bu saldırganlar erişim kazandıktan sonra, özgün hesap sahibi adına ayrıcalıklı bilgilere erişim talep edebilir. Hatta tüm kuruluşunuzda kimlik avı saldırısı gerçekleştirmek için tüm dizini indirebilir. 
 
-Tüm kullanıcılar için korumayı geliştirmenin yaygın bir yöntemi, herkes için Multi-Factor Authentication gibi daha güçlü bir hesap doğrulama biçimi gerektirmaktır. Kullanıcılar Multi-Factor Authentication kaydı tamamladıktan sonra gerektiğinde ek kimlik doğrulaması istenir. Bu işlevsellik, SaaS uygulamaları dahil olmak üzere Azure AD 'ye kayıtlı tüm uygulamaları korur.
+Tüm kullanıcılar için korumayı geliştirmenin yaygın bir yöntemi, herkes için Multi-Factor Authentication gibi daha güçlü bir hesap doğrulama biçimi gerektirmaktır. Kullanıcılar Multi-Factor Authentication kaydı tamamladıktan sonra gerektiğinde ek kimlik doğrulaması istenir. Kullanıcılar öncelikle yeni bir cihaz veya uygulama kullanarak kimlik doğrulaması yaparken veya kritik rol ve görevleri gerçekleştirirken istenir. Bu işlevsellik, SaaS uygulamaları dahil olmak üzere Azure AD 'ye kayıtlı tüm uygulamaları korur.
 
 ### <a name="blocking-legacy-authentication"></a>Eski kimlik doğrulaması engelleniyor
 
@@ -98,7 +98,7 @@ Kiracınızda güvenlik Varsayılanları etkinleştirildikten sonra, eski bir pr
 
 Kuruluşlar, aşağıdakiler dahil olmak üzere Azure Resource Manager API 'SI aracılığıyla yönetilen çeşitli Azure hizmetleri kullanır:
 
-- Azure portal 
+- Azure portalı 
 - Azure PowerShell 
 - Azure CLI
 
@@ -128,14 +128,14 @@ Bu ücretsiz güvenlik Varsayılanları **, bildirimleri kullanarak yalnızca Mi
 | Mobil uygulama veya donanım belirtecinden doğrulama kodu | X * * | X |
 | Telefona kısa mesaj |   | X |
 | Telefon çağrısı |   | X |
-| Uygulama parolaları |   | X * * _ |
+| Uygulama parolaları |   | X * * * |
 
-- _ * Kullanıcılar Microsoft Authenticator uygulamasındaki doğrulama kodlarını kullanabilir, ancak yalnızca bildirim seçeneğini kullanarak kaydolabilirsiniz.
-- * * _ Uygulama parolaları yalnızca yöneticiler tarafından etkinleştirildiyse eski kimlik doğrulama senaryolarıyla Kullanıcı başına MFA 'da kullanılabilir.
+- * * Kullanıcılar Microsoft Authenticator uygulamasındaki doğrulama kodlarını kullanabilir, ancak yalnızca bildirim seçeneğini kullanarak kaydolabilirsiniz.
+- Uygulama parolaları yalnızca yöneticiler tarafından etkinleştirildiyse eski kimlik doğrulama senaryolarıyla Kullanıcı başına MFA 'da kullanılabilir.
 
 ### <a name="disabled-mfa-status"></a>Devre dışı MFA durumu
 
-Kuruluşunuz, Kullanıcı başına tabanlı Azure AD Multi-Factor Authentication 'ın önceki bir kullanıcısı ise, Multi-Factor auth durum sayfasına bakarsanız bir _ *etkin** veya **Zorlanmış** durumda kullanıcıları görmeyen bir uyarıda yok. **Devre dışı** , güvenlik varsayılanlarını veya koşullu erişim tabanlı Azure AD Multi-Factor Authentication kullanan kullanıcılar için uygun durumlardır.
+Kuruluşunuz, Kullanıcı başına tabanlı Azure AD Multi-Factor Authentication 'ın önceki bir kullanıcısı ise, Multi-Factor auth durum sayfasına bakarsanız, **etkin** veya **Zorlanmış** bir durumda kullanıcıları görmeyen bir uyarıda yok. **Devre dışı** , güvenlik varsayılanlarını veya koşullu erişim tabanlı Azure AD Multi-Factor Authentication kullanan kullanıcılar için uygun durumlardır.
 
 ### <a name="conditional-access"></a>Koşullu Erişim
 

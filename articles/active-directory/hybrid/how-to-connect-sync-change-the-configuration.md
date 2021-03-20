@@ -13,10 +13,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2044653673da10de59d5ff125da44ac1f89e22f9
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96861859"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect eşitleme: Varsayılan yapılandırmada bir değişiklik yapın
@@ -230,7 +230,7 @@ Azure AD 'de istenmeyen değişiklikleri dışarı aktarmayı önlemek için, e�
 
  1. Azure AD Connect sunucusunda bir PowerShell oturumu başlatın.
  2. Cmdlet 'ini çalıştırarak zamanlanmış eşitlemeyi devre dışı bırakın `Set-ADSyncScheduler -SyncCycleEnabled $false` .
- 3. **Start**  >  **Eşitleme hizmeti**'ni başlatmak için Synchronization Service Manager açın.
+ 3.   >  **Eşitleme hizmeti**'ni başlatmak için Synchronization Service Manager açın.
  4. **İşlemler** sekmesine gidin ve *sürmekte* olan bir işlem olmadığından emin olun.
 
 ### <a name="step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema"></a>2. Adım: kaynak özniteliğini şirket içi AD bağlayıcı şemasına ekleme
@@ -257,7 +257,7 @@ Varsayılan olarak, UserType özniteliği Azure AD Connect alanına aktarılmaz.
 ### <a name="step-4-create-an-inbound-synchronization-rule-to-flow-the-attribute-value-from-on-premises-active-directory"></a>4. Adım: öznitelik değerini şirket içi Active Directory akıtmak için bir gelen eşitleme kuralı oluşturma
 Gelen eşitleme kuralı, öznitelik değerinin şirket içi Active Directory kaynak özniteliğinden metadize 'ye akmasını sağlar:
 
-1. Eşitleme kuralları düzenleyicisini **Başlat**' a giderek eşitleme kuralları düzenleyicisini açın  >  **Synchronization Rules Editor**.
+1. Eşitleme kuralları düzenleyicisini **Başlat**' a giderek eşitleme kuralları düzenleyicisini açın  >  .
 2. Arama filtresi **yönünü** **gelen** olarak ayarlayın.
 3. Yeni bir gelen kuralı oluşturmak için **Yeni kural ekle** düğmesine tıklayın.
 4. **Açıklama** sekmesinde aşağıdaki yapılandırmayı sağlayın:
@@ -276,7 +276,7 @@ Gelen eşitleme kuralı, öznitelik değerinin şirket içi Active Directory kay
 
     | Öznitelik | İşleç | Değer |
     | --- | --- | --- |
-    | adminDescription | NOTSTARTWITH | Kullanıcı\_ |
+    | adminDescription | NOTSTARTWITH | Kullanıcısını\_ |
 
     Kapsam filtresi, bu gelen eşitleme kuralının hangi şirket içi AD nesnelerini uygulanacağını belirler. Bu örnekte, Azure AD Kullanıcı geri yazma özelliği ile oluşturulan kullanıcı nesnelerine eşitleme kuralının uygulanmasını önleyen, *ad – Kullanıcı genel* kullanıma hazır eşitleme kuralındaki içinde kullanılan kapsam filtresini kullanırız. Azure AD Connect dağıtımınıza göre kapsam filtresini ince ayar gerekebilir.
 

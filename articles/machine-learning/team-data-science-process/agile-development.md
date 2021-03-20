@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 113c11b749b42bbaf9e5e40cdf63623288997a92
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89440295"
 ---
 # <a name="agile-development-of-data-science-projects"></a>Veri bilimi projelerinin çevik geliştirmesi
@@ -35,7 +35,7 @@ Aşağıdaki şekilde, bir veri bilimi projesi için tipik bir sprint planlama, 
 
 ##  <a name="work-item-types"></a><a name='Terminology-1'></a>İş öğesi türleri
 
-TDSP sprint planlama çerçevesinde, sık kullanılan dört *iş öğesi* türü vardır: *Özellikler*, *Kullanıcı hikayeleri*, *Görevler*ve *hatalar*. Tüm iş öğeleri için biriktirme listesi, git deposu düzeyi değil, proje düzeyidir. 
+TDSP sprint planlama çerçevesinde, sık kullanılan dört *iş öğesi* türü vardır: *Özellikler*, *Kullanıcı hikayeleri*, *Görevler* ve *hatalar*. Tüm iş öğeleri için biriktirme listesi, git deposu düzeyi değil, proje düzeyidir. 
 
 İşte iş öğesi türleri için tanımlar:
 
@@ -74,7 +74,7 @@ Projeniz ve proje kod deponuz oluşturulduktan sonra, projenize yönelik işi g�
 
 1. Proje sayfanızda, sol gezinti bölmesinde **panolar**  >  **biriktirme** listeleri ' ni seçin. 
    
-1. **Kapsam** sekmesinde, üstteki çubukta iş öğesi türü **hikayeler**Ise, açılan ve **Özellikler**' i seçin. Ardından **Yeni Iş öğesi** ' ni seçin.
+1. **Kapsam** sekmesinde, üstteki çubukta iş öğesi türü **hikayeler** Ise, açılan ve **Özellikler**' i seçin. Ardından **Yeni Iş öğesi** ' ni seçin.
    
    ![Yeni Iş Öğesi Seç](./media/agile-development/2-sprint-team-overview.png)
    
@@ -130,42 +130,42 @@ Veri bilimcileri, özellikleri, kullanıcı hikayelerini ve Işleri TDSP yaşam 
 
 1. Azure DevOps kuruluş ana sayfasından sol gezinti bölmesinde **kuruluş ayarları** ' nı seçin. 
    
-1. **Kuruluş ayarları** sol gezinti bölmesinde, **panolar**altında **işlem**' i seçin. 
+1. **Kuruluş ayarları** sol gezinti bölmesinde, **panolar** altında **işlem**' i seçin. 
    
 1. **Tüm işlemler** bölmesinde, **çevik**' ın yanındaki **...** öğesini seçin ve ardından **devralınan işlem oluştur**' u seçin.
    
    ![Çevik 'ten devralınan işlem oluşturma](./media/agile-development/10-settings.png) 
    
-1. **Çevik 'dan devralınan Işlem oluştur** iletişim kutusunda, *Agiledatabilimenceprocess*adlı adı girin ve **işlem oluştur**' u seçin.
+1. **Çevik 'dan devralınan Işlem oluştur** iletişim kutusunda, *Agiledatabilimenceprocess* adlı adı girin ve **işlem oluştur**' u seçin.
    
    ![Agiledatabilimenceprocess işlemi oluşturma](./media/agile-development/11-agileds.png)
    
 1. **Tüm işlemler**' de, yeni **Agiledatabilimenceprocess**' i seçin. 
    
-1. **İş öğesi türleri** sekmesinde, her bir öğenin yanındaki **...** ' i seçip **devre dışı bırak**' ı seçerek **Epic**, **özelliği**, **Kullanıcı hikayesini**ve **görevi** devre dışı bırakın. 
+1. **İş öğesi türleri** sekmesinde, her bir öğenin yanındaki **...** ' i seçip **devre dışı bırak**' ı seçerek **Epic**, **özelliği**, **Kullanıcı hikayesini** ve **görevi** devre dışı bırakın. 
    
    ![İş öğesi türlerini devre dışı bırak](./media/agile-development/12-disable.png)
    
-1. **Tüm Işlemlerde** **kapsam düzeyleri** sekmesini seçin. **Portföy biriktirme listeleri**altında **Epic (devre dışı)** seçeneğinin yanındaki **...** ' ı seçin ve ardından **Düzenle/yeniden adlandır**' ı seçin. 
+1. **Tüm Işlemlerde** **kapsam düzeyleri** sekmesini seçin. **Portföy biriktirme listeleri** altında **Epic (devre dışı)** seçeneğinin yanındaki **...** ' ı seçin ve ardından **Düzenle/yeniden adlandır**' ı seçin. 
    
 1. **Kapsam düzeyini Düzenle** iletişim kutusunda:
-   1. **Ad**' ın altında, **Epic** ile *TDSP projelerini*değiştirin. 
-   1. **Bu kapsam düzeyindeki iş öğesi türleri**altında **yeni iş öğesi türü**' nü seçin, *TDSP projesi*girin ve **Ekle**' yi seçin. 
-   1. **Varsayılan iş öğesi türü**altında, açılır ve **TDSP projesi**' ni seçin. 
+   1. **Ad**' ın altında, **Epic** ile *TDSP projelerini* değiştirin. 
+   1. **Bu kapsam düzeyindeki iş öğesi türleri** altında **yeni iş öğesi türü**' nü seçin, *TDSP projesi* girin ve **Ekle**' yi seçin. 
+   1. **Varsayılan iş öğesi türü** altında, açılır ve **TDSP projesi**' ni seçin. 
    1. **Kaydet**’i seçin.
    
    ![Portföy biriktirme listesi düzeyini ayarla](./media/agile-development/13-rename.png)  
    
-1. **Özellikleri** *TDSP aşamalarına*yeniden adlandırmak için aynı adımları izleyin ve aşağıdaki yeni iş öğesi türlerini ekleyin:
+1. **Özellikleri** *TDSP aşamalarına* yeniden adlandırmak için aynı adımları izleyin ve aşağıdaki yeni iş öğesi türlerini ekleyin:
    
    - *İş anlama*
    - *Veri alımı*
    - *Modelleme*
    - *Dağıtım*
    
-1. **Gereksinim biriktirme listesi**altında, **hikayeleri** *TDSP alt aşamalarına*yeniden adlandırın, yeni Iş öğesi türü *TDSP alt aşamasını*ekleyin ve varsayılan iş öğesi türünü **TDSP alt aşamasına**ayarlayın.
+1. **Gereksinim biriktirme listesi** altında, **hikayeleri** *TDSP alt aşamalarına* yeniden adlandırın, yeni Iş öğesi türü *TDSP alt aşamasını* ekleyin ve varsayılan iş öğesi türünü **TDSP alt aşamasına** ayarlayın.
    
-1. **Yineleme biriktirme listesi**altında, yeni bir iş öğesi türü *TDSP görevi*ekleyin ve varsayılan iş öğesi türü olarak ayarlayın. 
+1. **Yineleme biriktirme listesi** altında, yeni bir iş öğesi türü *TDSP görevi* ekleyin ve varsayılan iş öğesi türü olarak ayarlayın. 
    
 Adımları tamamladıktan sonra, kapsam düzeyleri şöyle görünmelidir:
    
@@ -179,7 +179,7 @@ TDSP projelerini oluşturmak ve TDSP yaşam döngüsü aşamasına karşılık g
    
 1. **Yeni proje oluştur** iletişim kutusunda projenize bir ad verin ve **Gelişmiş**' i seçin. 
    
-1. **Çalışma öğesi işlemi**altında, açılır ve **Agiledatabilimenceprocess**' i seçin ve ardından **Oluştur**' u seçin.
+1. **Çalışma öğesi işlemi** altında, açılır ve **Agiledatabilimenceprocess**' i seçin ve ardından **Oluştur**' u seçin.
    
    ![TDSP projesi oluşturma](./media/agile-development/15-newproject.png)
    

@@ -9,16 +9,16 @@ ms.topic: sample
 ms.custom: sample, mvc, devx-track-azurecli
 ms.date: 5/6/2019
 ms.openlocfilehash: f317734b7020002add710eb9d661028e8df34087
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91707651"
 ---
 # <a name="azure-cli-samples-for-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı Azure CLı örnekleri-tek sunucu
 Aşağıdaki tablo, PostgreSQL için Azure Veritabanı’na yönelik örnek Azure CLI betikleri bağlantılarını içerir.
 
-| Örnek bağlantı | Açıklama |
+| Örnek bağlantı | Description |
 |---|---|
 |**Sunucu oluşturma**||
 | [Sunucu ve güvenlik duvarı kuralı oluşturma](scripts/sample-create-server-and-firewall-rule.md?toc=%2fcli%2fazure%2ftoc.json) | PostgreSQL için Azure Veritabanı sunucusu oluşturan ve sunucu düzeyinde bir güvenlik duvarı kuralı yapılandıran Azure CLI betiği. |

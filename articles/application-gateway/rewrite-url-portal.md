@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 7/16/2020
 ms.author: surmb
 ms.openlocfilehash: ec58c6f97efdbcb91071bcea98bbbc614833246d
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92215782"
 ---
 # <a name="rewrite-url-with-azure-application-gateway---azure-portal-preview"></a>URL 'YI Azure Application Gateway yeniden yazma-Azure portal (Önizleme)
@@ -41,7 +41,7 @@ Aşağıdaki örnekte, istek URL 'si */article*' ı her IÇERDIĞINDE, URL yolu 
 
 2. Sol bölmedeki yeniden **yazma ' yı** seçin.
 
-3. **Yeniden yazma kümesi**seçin:
+3. **Yeniden yazma kümesi** seçin:
 
     :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-1.png" alt-text="Yeniden yazma kümesi Ekle":::
 
@@ -53,17 +53,17 @@ Aşağıdaki örnekte, istek URL 'si */article*' ı her IÇERDIĞINDE, URL yolu 
     
     c. **İleri**’yi seçin.
     
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-2.png" alt-text="Yeniden yazma kümesi Ekle":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-2.png" alt-text="Bir kuralla ilişkilendir":::
 
 5. Yeniden yazma kuralı oluştur:
 
     a. **Yeniden yazma kuralı ekle**' yi seçin.
     
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-3.png" alt-text="Yeniden yazma kümesi Ekle":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-3.png" alt-text="Vurguları yeniden yazma kuralı Ekle ' nin ekran görüntüsü.":::
     
     b. Yeniden yazma kuralı **adı** kutusuna yeniden yazma kuralı için bir ad girin. **Kural sırası** kutusuna bir sayı girin.
 
-6. Bu örnekte, URL yolunu ve URL sorgu dizesini yalnızca yol */article*içerdiğinde yeniden yazacağız. Bunu yapmak için, URL yolunun */article* içerip içermediğini değerlendirmek için bir koşul ekleyin
+6. Bu örnekte, URL yolunu ve URL sorgu dizesini yalnızca yol */article* içerdiğinde yeniden yazacağız. Bunu yapmak için, URL yolunun */article* içerip içermediğini değerlendirmek için bir koşul ekleyin
 
     a. **Koşul Ekle** ' yi seçin ve ardından **genişletme yönergelerini içeren** kutuyu seçin.
     
@@ -71,7 +71,7 @@ Aşağıdaki örnekte, istek URL 'si */article*' ı her IÇERDIĞINDE, URL yolu 
     
     c. **Sunucu değişkeni** listesinde uri_path ' yi seçin.
     
-    d. **Büyük/küçük harf duyarlı**altında **Hayır**' ı seçin.
+    d. **Büyük/küçük harf duyarlı** altında **Hayır**' ı seçin.
     
     e. **İşleç** listesinde, **eşittir (=)** seçeneğini belirleyin.
     
@@ -81,7 +81,7 @@ Aşağıdaki örnekte, istek URL 'si */article*' ı her IÇERDIĞINDE, URL yolu 
 
     örneğin: **Tamam**’ı seçin.
 
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-4.png" alt-text="Yeniden yazma kümesi Ekle":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-4.png" alt-text="Condition":::
 
  
 
@@ -91,23 +91,23 @@ Aşağıdaki örnekte, istek URL 'si */article*' ı her IÇERDIĞINDE, URL yolu 
 
    b. **Eylem türü** listesinde **Ayarla**' yı seçin.
 
-   c. **Bileşenler**altında **URL yolunu ve URL sorgu dizesini** seçin
+   c. **Bileşenler** altında **URL yolunu ve URL sorgu dizesini** seçin
 
-   d. **URL yol değeri**alanına yolun yeni değerini girin. Bu örnekte, **/article.aspx** kullanacağız 
+   d. **URL yol değeri** alanına yolun yeni değerini girin. Bu örnekte, **/article.aspx** kullanacağız 
 
-   e. **URL sorgu dizesi DEĞERINDE**URL sorgu dizesinin yeni değerini girin. Bu örnekte, **ID = {var_uri_path_1} &title = {var_uri_path_2}** kullanacağız
+   e. **URL sorgu dizesi DEĞERINDE** URL sorgu dizesinin yeni değerini girin. Bu örnekte, **ID = {var_uri_path_1} &title = {var_uri_path_2}** kullanacağız
     
     `{var_uri_path_1}` ve `{var_uri_path_1}` Bu ifadede koşul değerlendirilirken yakalanan alt dizeleri getirmek için kullanılır `.*article/(.*)/(.*)`
     
    f. **Tamam**’ı seçin.
 
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-5.png" alt-text="Yeniden yazma kümesi Ekle":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-5.png" alt-text="Eylem":::
 
 8. Yeniden yazma kümesini oluşturmak için **Oluştur** ' a tıklayın.
 
 9. Yeni yeniden yazma kümesinin yeniden yazma kümeleri listesinde göründüğünü doğrulayın
 
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-6.png" alt-text="Yeniden yazma kümesi Ekle":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-6.png" alt-text="Yeniden yazma kuralı ekle":::
 
 ## <a name="verify-url-rewrite-through-access-logs"></a>Erişim günlükleri aracılığıyla URL yeniden yazmayı doğrula
 

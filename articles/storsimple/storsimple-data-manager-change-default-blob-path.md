@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: 6af095c7abdb9aa61e57d543ff2ab2f9192dadc8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96011447"
 ---
 # <a name="change-a-blob-path-from-the-default-path"></a>Blob yolunu varsayılan yoldan değiştirme
@@ -25,13 +25,13 @@ StorSimple Veri Yöneticisi hizmetinizde doğru şekilde yapılandırılmış bi
 
 Bir Azure işlevi oluşturmak için aşağıdaki adımları gerçekleştirin:
 
-1. [Azure portalına](https://portal.azure.com/) gidin.
+1. [Azure Portal](https://portal.azure.com/) gidin.
 
 2. **+ Kaynak oluştur**’a tıklayın. **Arama** kutusuna **işlev uygulaması** yazın ve **ENTER** tuşuna basın. Görünen uygulamalar listesinden **işlev uygulaması** ' nı seçin ve tıklayın.
 
     ![Arama kutusuna "İşlev Uygulaması" yazın](./media/storsimple-data-manager-change-default-blob-path/search-function-app.png)
 
-3. **Oluştur**'a tıklayın.
+3. **Oluştur**’a tıklayın.
 
     ![İşlev Uygulaması penceresi "Oluştur" düğmesi](./media/storsimple-data-manager-change-default-blob-path/create-function-app.png)
 
@@ -46,7 +46,7 @@ Bir Azure işlevi oluşturmak için aşağıdaki adımları gerçekleştirin:
 
         ![Yeni İşlev Uygulaması yapılandırma verileri girin](./media/storsimple-data-manager-change-default-blob-path/function-app-parameters.png)
 
-    7. **Oluştur**'a tıklayın. İşlev uygulaması oluşturuldu.
+    7. **Oluştur**’a tıklayın. İşlev uygulaması oluşturuldu.
      
         ![İşlev Uygulaması oluşturuldu](./media/storsimple-data-manager-change-default-blob-path/function-app-created.png)
 
@@ -64,7 +64,7 @@ Bir Azure işlevi oluşturmak için aşağıdaki adımları gerçekleştirin:
 
         ![Yeni bir C# işlevi oluşturma](./media/storsimple-data-manager-change-default-blob-path/new-function-parameters.png)
 
-    4. **Oluştur**'a tıklayın. **İşlev** oluşturulur.
+    4. **Oluştur**’a tıklayın. **İşlev** oluşturulur.
 
      
 10. Işlev penceresinde _. CSX_ dosyasını çalıştırın.

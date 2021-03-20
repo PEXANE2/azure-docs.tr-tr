@@ -11,10 +11,10 @@ ms.workload: big-data
 ms.date: 10/02/2020
 ms.custom: seodec18
 ms.openlocfilehash: 9bf857a66643b1e95ea2559601761a7217babad4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91665336"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Parametreli URL'yi kullanarak özel görünümü paylaşma
@@ -34,7 +34,7 @@ Azure Time Series Insights Explorer, deneyimdeki görünümleri doğrudan URL 'd
 
 Örnek bir ortam kimliği parametresi olarak `?environmentId=10000000-0000-0000-0000-100000000108` verilebilir.
 
-## <a name="time"></a>Süre
+## <a name="time"></a>Saat
 
 Parametreli URL ile mutlak veya göreli zaman değerleri belirtebilirsiniz.
 
@@ -69,7 +69,7 @@ Kabul edilen değerler Azure Time Series Insights Explorer **hızlı zaman** men
 
 `timeSeriesDefinitions=<collection of term objects>`Parametresi bir Azure Time Series Insights görünümünde görünecek koşul koşullarını belirtir:
 
-| Parametre | URL öğesi | Açıklama |
+| Parametre | URL öğesi | Description |
 | --- | --- | --- |
 | **ada** | `\<string>` | *Dönem* adı. |
 | **Bölünmüş** | `\<string>` | *Bölme ölçütü* sütunun adı. |
@@ -86,11 +86,11 @@ Kabul edilen değerler Azure Time Series Insights Explorer **hızlı zaman** men
 * , `timeBucketUnit=<Unit>&timeBucketSize=<integer>` Grafiğin daha ayrıntılı veya daha yumuşak, daha toplanmış bir görünümünü sağlamak için Aralık kaydırıcısını ayarlamanıza olanak sağlar.  
 * `timezoneOffset=<integer>`Parametresi, grafiğin saat DILIMINI UTC 'ye bir uzaklığa göre görüntülenecek şekilde ayarlamanıza olanak sağlar.
 
-| Çift (ler) | Açıklama |
+| Çift (ler) | Description |
 | --- | --- |
 | `multiChartStack=false` | `true` Varsayılan olarak etkin olduğundan yığına geçirin `false` . |
 | `multiChartStack=false&multiChartSameScale=true` | Terimler arasında aynı Y ekseni ölçeğini kullanmak için yığın oluşturmanın etkinleştirilmesi gerekir.  `false`Bu, varsayılan olarak, geçirme `true` Bu işlevselliği sunar. |
-| `timeBucketUnit=<Unit>&timeBucketSize=<integer>` | Birimler = `days` , `hours` , `minutes` , `seconds` , `milliseconds` .  Her zaman birimin ilk harfini büyük yapın. </br> **TimeBucketSize**için istenen tamsayıyı geçirerek birim sayısını tanımlayın.  |
+| `timeBucketUnit=<Unit>&timeBucketSize=<integer>` | Birimler = `days` , `hours` , `minutes` , `seconds` , `milliseconds` .  Her zaman birimin ilk harfini büyük yapın. </br> **TimeBucketSize** için istenen tamsayıyı geçirerek birim sayısını tanımlayın.  |
 | `timezoneOffset=-<integer>` | Bu tamsayı her zaman milisaniye cinsindendir. |
 
 > [!NOTE]
@@ -110,7 +110,7 @@ Bir Azure Time Series Insights ortamına URL parametresi olarak zaman serisi tan
 
 * Ortam KIMLIĞI
 * Son 60 dakikalık veriler
-* İsteğe bağlı parametreleri oluşturan koşullar (**F1PressureID**, **F2TempStation**ve **F3VibrationPL**)
+* İsteğe bağlı parametreleri oluşturan koşullar (**F1PressureID**, **F2TempStation** ve **F3VibrationPL**)
 
 Bir görünüm için aşağıdaki parametreli URL 'YI oluşturabilirsiniz:
 

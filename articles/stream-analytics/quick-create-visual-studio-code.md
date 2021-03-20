@@ -8,10 +8,10 @@ ms.date: 01/18/2020
 ms.topic: quickstart
 ms.custom: mvc
 ms.openlocfilehash: 104dfe7b2ce253d7ae42c7484532cfd5b2993aec
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98014620"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-in-visual-studio-code-preview"></a>Hızlı başlangıç: Visual Studio Code Azure Stream Analytics işi oluşturma (Önizleme)
@@ -25,7 +25,7 @@ Bu hızlı başlangıçta, Visual Studio Code için Azure Stream Analytics araç
 
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-* [Azure Portal](https://portal.azure.com/) oturum açın.
+* [Azure portalında](https://portal.azure.com/) oturum açın.
 
 * [Visual Studio Code](https://code.visualstudio.com/)'i yükler.
 
@@ -43,7 +43,7 @@ Bu hızlı başlangıçta, Visual Studio Code için Azure Stream Analytics araç
 
 1. Visual Studio Code etkinlik çubuğunda **Azure** simgesini seçin. Yan çubukta **Stream Analytics** altında **Azure 'da oturum aç**' ı seçin.
 
-   ![Visual Studio Code 'de Azure 'da oturum açın](./media/quick-create-visual-studio-code/azure-sign-in.png)
+   ![Visual Studio Code’da Azure oturumu açma](./media/quick-create-visual-studio-code/azure-sign-in.png)
 
 2. Oturum açtığınızda, Azure hesabınızın adı Visual Studio Code penceresinin sol alt köşesindeki durum çubuğunda görüntülenir.
 
@@ -55,7 +55,7 @@ Bu hızlı başlangıçta, Visual Studio Code için Azure Stream Analytics araç
 
 Stream Analytics işini tanımladıktan önce, daha sonra iş girişi olarak yapılandırılmış verileri hazırlamanız gerekir. İş için gereken giriş verilerini hazırlamak için aşağıdaki adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 2. IoT Hub **nesnelerin interneti kaynak oluştur**' u seçin  >    >  .
 
@@ -170,7 +170,7 @@ Stream Analytics işini tanımladıktan önce, daha sonra iş girişi olarak yap
 
    |Ayar|Önerilen değer|Açıklama|
    |-------|---------------|-----------|
-   |Ad|Girdi|İşin girişini tanımlamak için bir ad girin.|
+   |Ad|Giriş|İşin girişini tanımlamak için bir ad girin.|
    |IotHubNamespace|MyASAIoTHub|IoT Hub 'ınızın adını seçin veya girin. IoT Hub adları, aynı abonelikte oluşturulduklarında otomatik olarak algılanır.|
    |SharedAccessPolicyName|iothubowner| |
 

@@ -16,10 +16,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0a3b6dad33ce678478a201dc8b7b612f4b8507c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91536996"
 ---
 # <a name="approve-activation-requests-for-privileged-access-group-members-and-owners-preview"></a>Ayrıcalıklı erişim grubu üyeleri ve sahipleri için etkinleştirme isteklerini onayla (Önizleme)
@@ -34,7 +34,7 @@ Bir temsilci onaylayıcı olarak, Onayınızı bekleyen bir Azure Kaynak rolü i
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
-1. **Azure AD Privileged Identity Management**açın.
+1. **Azure AD Privileged Identity Management** açın.
 
 1. **Istekleri Onayla**' yı seçin.
 
@@ -50,7 +50,7 @@ Bir temsilci onaylayıcı olarak, Onayınızı bekleyen bir Azure Kaynak rolü i
 
 1. **Gerekçe** kutusunda iş gerekçe ' nı girin.
 
-1. **Onayla**seçeneğini belirleyin. Onayınız tarafından bir Azure bildirimi oluşturulur.
+1. **Onayla** seçeneğini belirleyin. Onayınız tarafından bir Azure bildirimi oluşturulur.
 
 ## <a name="deny-requests"></a>Reddetme istekleri
 
@@ -60,7 +60,7 @@ Bir temsilci onaylayıcı olarak, Onayınızı bekleyen bir Azure Kaynak rolü i
 
 1. **Gerekçe** kutusunda iş gerekçe ' nı girin.
 
-1. **Onayla**seçeneğini belirleyin. Bir Azure bildirimi, reddetme tarafından oluşturulur.
+1. **Onayla** seçeneğini belirleyin. Bir Azure bildirimi, reddetme tarafından oluşturulur.
 
 ## <a name="workflow-notifications"></a>İş akışı bildirimleri
 

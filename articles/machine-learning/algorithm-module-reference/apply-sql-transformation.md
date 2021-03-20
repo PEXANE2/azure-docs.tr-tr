@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 11/12/2020
 ms.openlocfilehash: c66fbe59fd5b2660d02bfca285f78666d64569fe
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94555609"
 ---
 # <a name="apply-sql-transformation"></a>SQL Dönüşümü Uygulama
@@ -29,14 +29,14 @@ SQL dönüştürme modülünü Uygula ' yı kullanarak şunları yapabilirsiniz:
 -   Verileri filtrelemek veya değiştirmek ve sorgu sonuçlarını veri tablosu olarak döndürmek için SQL sorgu deyimlerini yürütün.  
 
 > [!IMPORTANT]
-> Bu modülde kullanılan SQL altyapısı **SQLite** ' dur. SQLite sözdizimi hakkında daha fazla bilgi için bkz. [SQLite tarafından anlaşıldığı gibi SQL](https://www.sqlite.org/index.html).
+> Bu modülde kullanılan SQL altyapısı **SQLite**' dur. SQLite sözdizimi hakkında daha fazla bilgi için bkz. [SQLite tarafından anlaşıldığı gibi SQL](https://www.sqlite.org/index.html).
 > Bu modül, verileri bellek DB 'de bulunan SQLite 'a çarpacaktır, bu nedenle modül yürütmesi çok daha fazla bellek gerektirir ve bir `Out of memory` hatayla karşılaşabilir. Bilgisayarınızda yeterli sayıda RAM bulunduğundan emin olun.
 
 ## <a name="how-to-configure-apply-sql-transformation"></a>SQL dönüşümünü Uygula ' yı yapılandırma  
 
 Modülün giriş olarak üç veri kümesi olabilir. Her giriş bağlantı noktasına bağlı veri kümelerine başvurduğunuzda, ve adlarını kullanmanız gerekir `t1` `t2` `t3` . Tablo numarası, giriş bağlantı noktasının dizinini gösterir.  
 
-Aşağıdaki örnek kod, iki tablonun nasıl birleştirileceğini gösterir. T1 ve T2, **SQL dönüşümünü Uygula** 'nın sol ve orta giriş bağlantı noktalarına bağlı iki veri kümeleridir:
+Aşağıdaki örnek kod, iki tablonun nasıl birleştirileceğini gösterir. T1 ve T2, **SQL dönüşümünü Uygula**'nın sol ve orta giriş bağlantı noktalarına bağlı iki veri kümeleridir:
 
 ```sql
 SELECT t1.*

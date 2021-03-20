@@ -4,16 +4,16 @@ description: Bu makalede, hizmetlerinize karşı hataları ve test senaryoların
 ms.topic: conceptual
 ms.date: 06/15/2017
 ms.openlocfilehash: 4e879b0b39d58f115b4661d47cf2ae564ba14e5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91531386"
 ---
 # <a name="introduction-to-the-fault-analysis-service"></a>Hata analiz hizmetine giriş
 Hata analiz hizmeti, Microsoft Azure Service Fabric oluşturulan Hizmetleri test etmek için tasarlanmıştır. Hata analiz hizmeti sayesinde, anlamlı hatalara ve tüm test senaryolarını uygulamalarınıza göre çalıştırabilirsiniz. Bu hatalar ve senaryolar, bir hizmetin yaşam süresi boyunca, denetimli, güvenli ve tutarlı bir şekilde deneyilecek çok sayıda durum ve geçiş yapar ve doğrular.
 
-Eylemler, test için bir hizmeti hedefleyen bireysel hatalardır. Bir hizmet geliştiricisi, bunları karmaşık senaryolar yazmak için yapı taşları olarak kullanabilir. Örneğin:
+Eylemler, test için bir hizmeti hedefleyen bireysel hatalardır. Bir hizmet geliştiricisi, bunları karmaşık senaryolar yazmak için yapı taşları olarak kullanabilir. Örnek:
 
 * Bir makinenin veya VM 'nin yeniden başlatıldığı sayıda durum benzetimi yapmak için bir düğümü yeniden başlatın.
 * Yük Dengeleme, yük devretme veya uygulama yükseltme benzetimi yapmak için durum bilgisi olan hizmetinizin bir çoğaltmasını taşıyın.

@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: e66bd0a4e56f63185d8361355d6cf8e0e29bc30b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93305931"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Ekip veri bilimi Işlemi, 1 TB 'lik bir veri kümesinde Azure HDInsight Hadoop kümesi kullanılarak yapılır.
@@ -50,11 +50,11 @@ Bu veri kümesindeki hem sayısal hem de kategorik sütunlarda eksik değerler v
 ## <a name="examples-of-prediction-tasks"></a><a name="mltasks"></a>Tahmin görevlerinin örnekleri
 Bu izlenecek yolda iki örnek tahmin sorunu giderilmiştir:
 
-1. **İkili sınıflandırma** : bir kullanıcının bir ekleme tıkladığını tahmin eder:
+1. **İkili sınıflandırma**: bir kullanıcının bir ekleme tıkladığını tahmin eder:
 
    * Sınıf 0: tıklama yok
    * Sınıf 1: tıklama
-2. **Gerileme** : Kullanıcı özelliklerinden bir ad tıklama olasılığını tahmin eder.
+2. **Gerileme**: Kullanıcı özelliklerinden bir ad tıklama olasılığını tahmin eder.
 
 ## <a name="set-up-an-hdinsight-hadoop-cluster-for-data-science"></a><a name="setup"></a>Veri bilimi için bir HDInsight Hadoop kümesi ayarlama
 > [!NOTE]
@@ -99,7 +99,7 @@ Sol tarafta, veri araştırması için çalışmamız olan "Hadoop komut satır�
 Şimdi ayarladığınız ve ilk kez başlamaya hazırsınız: Hive kullanarak veri araştırması ve Azure Machine Learning için hazır veri alma.
 
 ## <a name="create-hive-database-and-tables"></a><a name="hive-db-tables"></a> Hive veritabanı ve tabloları oluşturma
-Criteo veri kümeniz için Hive tabloları oluşturmak üzere baş düğümün masaüstündeki * *_Hadoop komut satırı_* _ ' i açın ve komutu girerek Hive dizinini girin
+Criteo veri kümeniz için Hive tabloları oluşturmak üzere baş düğümün masaüstündeki ***Hadoop komut satırını*** açın ve komutu girerek Hive dizinini girin
 
 ```console
 cd %hive_home%\bin
@@ -118,7 +118,7 @@ Hive REPL bir "Hive >" işareti ile görüntülendikten sonra, sorguyu yürütme
 
 Aşağıdaki kod, "Criteo" veritabanını oluşturur ve ardından dört tablo oluşturur:
 
-_ gün 00 ile 20 gün arasında oluşturulan *sayıları oluşturmak için bir tablo* \_ \_ ,
+* gün 00 ile 20 gün arasında oluşturulan *sayıları oluşturmak için bir tablo* \_ \_ ,
 * 21 *. günde oluşturulan eğitme veri kümesi olarak kullanılacak bir tablo* \_ ve
 * için iki tablo, sırasıyla 22 ve gün 23 gün içinde oluşturulmuş *test veri kümeleri olarak kullanılacak* \_ \_ .
 
@@ -161,7 +161,7 @@ Tüm bu tablolar, Azure Blob depolama (ILB) konumlarına işaret edebilmeniz iç
 
 **Hive sorgusu yürütmek için iki yol vardır:**
 
-* **HIVE REPL komut satırını kullanarak** : Birincisi bir "Hive" komutu vermektir ve Hive REPL komut satırına bir sorgu kopyalayıp yapıştırmaktır:
+* **HIVE REPL komut satırını kullanarak**: Birincisi bir "Hive" komutu vermektir ve Hive REPL komut satırına bir sorgu kopyalayıp yapıştırmaktır:
 
   ```console
   cd %hive_home%\bin
@@ -169,7 +169,7 @@ Tüm bu tablolar, Azure Blob depolama (ILB) konumlarına işaret edebilmeniz iç
   ```
 
      Şimdi REPL komut satırında, sorguyu kesip yapıştırarak yürütür.
-* **Sorguları bir dosyaya kaydetme ve komutu yürütme** : İkincisi, sorguları bir '. HQL ' dosyasına ( [örnek&#95;Hive&#95;&#95;criteo&#95;veritabanı&#95;ve&#95;tabloları. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql)) kaydederek sorguyu yürütmek için aşağıdaki komutu yayınlayamaz:
+* **Sorguları bir dosyaya kaydetme ve komutu yürütme**: İkincisi, sorguları bir '. HQL ' dosyasına ([örnek&#95;Hive&#95;&#95;criteo&#95;veritabanı&#95;ve&#95;tabloları. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql)) kaydederek sorguyu yürütmek için aşağıdaki komutu yayınlayamaz:
 
   ```console
   hive -f C:\temp\sample_hive_create_criteo_database_and_tables.hql
@@ -502,13 +502,13 @@ Yığın tablosundan veri alırken **Içeri aktarma verileri** şöyle görünü
 
 1. **Veri kaynağı** Için "Hive sorgusu" seçin
 2. **Hive veritabanı sorgu** kutusunda, veritabanınızın adını <basıt bir seçim * \_ \_ . \_ tablo \_ adı>-yeterlidir.
-3. **Hcatalog sunucusu URI 'si** : kümeniz "abc" ise, bu yalnızca: https: \/ /ABC.azurehdinsight.net
-4. **Hadoop Kullanıcı hesabı adı** : kümeyi komisyonlama sırasında seçilen Kullanıcı adı. (Uzaktan Erişim Kullanıcı adı DEĞIL!)
-5. **Hadoop Kullanıcı hesabı parolası** : kümeyi komisyonlama sırasında seçilen kullanıcı adının parolası. (Uzaktan erişim parolası DEĞIL!)
-6. **Çıkış verilerinin konumu** : "Azure" seçeneğini belirleyin
-7. **Azure depolama hesabı adı** : kümeyle ilişkili depolama hesabı
-8. **Azure depolama hesabı anahtarı** : kümeyle ilişkili depolama hesabının anahtarı.
-9. **Azure kapsayıcı adı** : küme adı "abc" ise, bu, genellikle "abc" olur.
+3. **Hcatalog sunucusu URI 'si**: kümeniz "abc" ise, bu yalnızca: https: \/ /ABC.azurehdinsight.net
+4. **Hadoop Kullanıcı hesabı adı**: kümeyi komisyonlama sırasında seçilen Kullanıcı adı. (Uzaktan Erişim Kullanıcı adı DEĞIL!)
+5. **Hadoop Kullanıcı hesabı parolası**: kümeyi komisyonlama sırasında seçilen kullanıcı adının parolası. (Uzaktan erişim parolası DEĞIL!)
+6. **Çıkış verilerinin konumu**: "Azure" seçeneğini belirleyin
+7. **Azure depolama hesabı adı**: kümeyle ilişkili depolama hesabı
+8. **Azure depolama hesabı anahtarı**: kümeyle ilişkili depolama hesabının anahtarı.
+9. **Azure kapsayıcı adı**: küme adı "abc" ise, bu, genellikle "abc" olur.
 
 **Içeri aktarma verileri** veri almayı tamamladığında (modülde yeşil onay işareti görürsünüz), bu verileri bir veri kümesi olarak (seçtiğiniz bir adla) kaydedin. Bu şöyle görünür:
 

@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.openlocfilehash: 7e68e9f8caad7d7e4bc44bc4e1e55150a78b4a98
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95026412"
 ---
 # <a name="pick-initial-size-for-hyperscale-citus-server-group"></a>Hiperscale (Citus) sunucu grubu için başlangıç boyutunu seç
@@ -29,7 +29,7 @@ Düzenleyici düğümü, çalışan olarak çok RAM gerektirmez, ancak RAM ve sa
 
 Toplam Vçekirdekler: RAM 'e uygun veri miktarı kullanıldığında, hiper ölçekte (Citus) bir doğrusal performans geliştirmesini, çalışan çekirdekleri sayısıyla orantılı olarak bekleyebilir. Gereksinimlerinize göre doğru sanal çekirdek sayısını öğrenmek için, tek düğümlü veritabanınızdaki sorgular için geçerli gecikme süresini ve hiper ölçekte gereken gecikme süresini göz önünde bulundurun (Citus). Geçerli gecikme süresini istenen gecikme süresine bölün ve sonucu yuvarlayın.
 
-Çalışan RAM'i: En iyi seçenek, çalışan kümesinin çoğunun belleğe sığabileceği kadar çok bellek sağlamak olacaktır. Uygulamanızın kullandığı sorguların türü bellek gereksinimlerini etkiler. Sorgu üzerinde analizine ilişkin AÇıKLA ' yı çalıştırarak, gereken bellek miktarını belirleyebilirsiniz. Sanal çekirdekler ve RAM 'in, [Hyperscale (Citus) yapılandırma seçenekleri](concepts-hyperscale-configuration-options.md) makalesinde açıklandığı şekilde birlikte ölçeklendirilmesini unutmayın.
+Çalışan RAM'i: En iyi seçenek, çalışan kümesinin çoğunun belleğe sığabileceği kadar çok bellek sağlamak olacaktır. Uygulamanızın kullandığı sorgu türleri bellek gereksinimlerini etkiler. Sorgu üzerinde analizine ilişkin AÇıKLA ' yı çalıştırarak, gereken bellek miktarını belirleyebilirsiniz. Sanal çekirdekler ve RAM 'in, [Hyperscale (Citus) yapılandırma seçenekleri](concepts-hyperscale-configuration-options.md) makalesinde açıklandığı şekilde birlikte ölçeklendirilmesini unutmayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

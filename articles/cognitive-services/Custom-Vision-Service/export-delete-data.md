@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
 ms.openlocfilehash: fe17fa4349085be47201974b418493fe8d912ece
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90527403"
 ---
 # <a name="view-or-delete-user-data-in-custom-vision"></a>Özel Görüntü İşleme Kullanıcı verilerini görüntüleme veya silme
@@ -32,6 +32,6 @@ ms.locfileid: "90527403"
 | Yineleme performansı ayrıntıları | [Getıterationperformance](https://go.microsoft.com/fwlink/?linkid=865446) | [Deleteıteration](https://go.microsoft.com/fwlink/?linkid=865446) | 
 | Yineleme listesi | [GetIterations](https://go.microsoft.com/fwlink/?linkid=865446) | [Deleteıteration](https://go.microsoft.com/fwlink/?linkid=865446) |
 | Projeler ve proje ayrıntıları | [GetProject](https://go.microsoft.com/fwlink/?linkid=865446) ve [getprojects](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteProject](https://go.microsoft.com/fwlink/?linkid=865446) | 
-| Resim etiketleri | [Gettag](https://go.microsoft.com/fwlink/?linkid=865446) ve [getTags](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteTag](https://go.microsoft.com/fwlink/?linkid=865446) | 
+| Görüntü etiketleri | [Gettag](https://go.microsoft.com/fwlink/?linkid=865446) ve [getTags](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteTag](https://go.microsoft.com/fwlink/?linkid=865446) | 
 | Görüntüler | [Gettaggedimages](https://go.microsoft.com/fwlink/?linkid=865446) (resim indirmesi için URI sağlar) ve [Getuntaggedimages](https://go.microsoft.com/fwlink/?linkid=865446) (görüntü indirmesi için URI sağlar) | [Deleteımages](https://go.microsoft.com/fwlink/?linkid=865446) | 
 | Aktarılmış yinelemeler | [GetExports](https://go.microsoft.com/fwlink/?linkid=865446) | Hesap silme işleminden sonra silindi |

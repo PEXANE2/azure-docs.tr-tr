@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
 ms.openlocfilehash: 61af7922318514a7b86a349d1970c59d4d168d85
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95023335"
 ---
 # <a name="create-a-new-azure-time-series-insights-gen1-environment-in-the-azure-portal"></a>Azure portal yeni bir Azure Time Series Insights Gen1 ortamı oluşturma
@@ -41,7 +41,7 @@ Ortam oluşturmak için aşağıdaki adımları izleyin:
 
 1. **Time Series Insights** sayfasında **Oluştur**' u seçin.
 
-1. Gerekli parametreleri girin. Aşağıdaki tabloda her bir parametre açıklanmaktadır:
+1. Gereken parametreleri doldurun. Aşağıdaki tabloda her bir parametre açıklanmaktadır:
 
    [![Azure Time Series Insights kaynak grubu oluşturma](media/time-series-insights-get-started/tsi-configure-and-create.png)](media/time-series-insights-get-started/tsi-configure-and-create.png#lightbox)
 

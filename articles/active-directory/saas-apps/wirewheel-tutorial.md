@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/04/2020
 ms.author: jeedes
 ms.openlocfilehash: 0ec50165ebdeaad83dd230ab378a9a31c9be508c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92519206"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wirewheel"></a>Öğretici: kablolu tekerlek ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -57,7 +57,7 @@ Kablodan Azure AD 'ye yönelik tümleştirmeyi yapılandırmak için, galerinin 
 
 ## <a name="configure-and-test-azure-ad-sso-for-wirewheel"></a>Kablolu tekerlek için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak, Azure AD SSO 'yu kablolarla birlikte yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile kablodaki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak, Azure AD SSO 'yu kablolarla birlikte yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile kablodaki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu kablolu tekerlek ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 

@@ -13,10 +13,10 @@ ms.date: 08/03/2018
 ms.author: curtand
 ms.reviewer: jairoc
 ms.openlocfilehash: efb3ee24add847baf8264eccdf71278be5ee9496
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91536979"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>İş cihazınızı kuruluşunuzun ağına ekleyin
@@ -57,11 +57,11 @@ Cihazınız yepyeni ve henüz ayarlanmamışsa, cihazınızı ağa katmak için 
 ## <a name="to-make-sure-youre-joined-new-device"></a>Katıldığınızdan emin olmak için (yeni cihaz)
 Ayarlarınıza bakarak katıldığınızdan emin olabilirsiniz.
 
-1. **Ayarları**açın ve ardından **hesaplar**' ı seçin.
+1. **Ayarları** açın ve ardından **hesaplar**' ı seçin.
 
     ![Ayarlar ekranındaki hesaplar](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. **İşe veya okula erişim**' i seçin ve ** *\<your_organization>* Azure AD 'ye bağlı**gibi bir şey belirten bir metin görtığınızdan emin olun.
+2. **İşe veya okula erişim**' i seçin ve ***\<your_organization>* Azure AD 'ye bağlı** gibi bir şey belirten bir metin görtığınızdan emin olun.
 
     !["İş veya okul bağlantısı" penceresini "bağlı olan (kuruluşunuz) Azure AD" hesabı seçiliyken gösteren ekran görüntüsü.](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
 
@@ -69,7 +69,7 @@ Ayarlarınıza bakarak katıldığınızdan emin olabilirsiniz.
 ## <a name="to-join-an-already-configured-windows-10-device"></a>Zaten yapılandırılmış bir Windows 10 cihazına katmak için
 Cihazınızda bir süredir varsa ve bu cihaz zaten ayarlandıysa, cihazınızı ağa katmak için aşağıdaki adımları izleyebilirsiniz.
 
-1. **Ayarları**açın ve ardından **hesaplar**' ı seçin.
+1. **Ayarları** açın ve ardından **hesaplar**' ı seçin.
 
 2. **İşe veya okula erişim**' i seçin ve ardından **Bağlan**' ı seçin.
 
@@ -102,11 +102,11 @@ Cihazınızda bir süredir varsa ve bu cihaz zaten ayarlandıysa, cihazınızı 
 ## <a name="to-make-sure-youre-joined"></a>Katıldığınızdan emin olmak için
 Ayarlarınıza bakarak katıldığınızdan emin olabilirsiniz.
 
-1. **Ayarları**açın ve ardından **hesaplar**' ı seçin.
+1. **Ayarları** açın ve ardından **hesaplar**' ı seçin.
 
     ![Ayarlar ekranındaki hesaplar](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. **İşe veya okula erişim**' i seçin ve ** *\<your_organization>* Azure AD 'ye bağlı**gibi bir şey belirten bir metin görtığınızdan emin olun.
+2. **İşe veya okula erişim**' i seçin ve ***\<your_organization>* Azure AD 'ye bağlı** gibi bir şey belirten bir metin görtığınızdan emin olun.
 
     ![Bağlı contoso hesabıyla iş veya okul ekranına erişin](./media/user-help-join-device-on-network/join-device-setup-verify.png)
 

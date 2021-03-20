@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f2bbc1c555824d4c632c5bf85a9cd0aa83087fc8
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101648735"
 ---
 # <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>Sorun giderme: şirket içi Azure AD parola koruması
@@ -328,7 +328,7 @@ Test-AzureADPasswordProtectionDCAgentHealth cmdlet 'i, tek tek çalıştırılab
 
 Aşağıdaki testlerin hepsi tek tek çalıştırılabilir ve kabul edilmez. Kısa bir açıklama
 
-|DC Aracısı sistem durumu sınaması|Açıklama|
+|DC Aracısı sistem durumu sınaması|Description|
 | --- | :---: |
 |-VerifyPasswordFilterDll|Parola filtresi dll 'sinin Şu anda yüklü olduğunu ve DC Aracısı hizmetini çağırabildiğini doğrular|
 |-VerifyForestRegistration|Ormanın Şu anda kayıtlı olduğunu doğrular|

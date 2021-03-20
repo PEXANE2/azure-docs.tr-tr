@@ -16,10 +16,10 @@ ms.date: 08/12/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c84c126e3b611b0bf37abec4f07ab7f3f187b1b9
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92517404"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zylo"></a>Öğretici: Zylo ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -64,7 +64,7 @@ Zylo 'nın tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden
 
 ## <a name="configure-and-test-azure-ad-sso-for-zylo"></a>Zylo için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak, Zylo Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Zylo içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak, Zylo Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Zylo içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Zylo ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -146,7 +146,7 @@ Bu bölümde, Zylo erişimi vererek Azure çoklu oturum açma özelliğini kulla
 
     ![Yapılandırma](./media/zylo-tutorial/saml-configuration-zylo.png)
 
-    a. **Zylo SAML yapılandırmasını** **Açık**olarak değiştirin.
+    a. **Zylo SAML yapılandırmasını** **Açık** olarak değiştirin.
 
     b. Açılan listeden **Azure AD** olarak **kimlik sağlayıcısını** seçin.
 

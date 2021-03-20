@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/10/2020
 ms.openlocfilehash: 58978f120578afeca129b0d8928713835def8418
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94497010"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql---flexible-server"></a>MySQL için Azure veritabanı 'nda sunucu parametreleri-esnek sunucu
@@ -71,7 +71,7 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MySQL belgelerini](https:
 
 MySQL, InnoDB tablosunu tablo oluşturma sırasında verdiğiniz yapılandırmaya göre farklı Tablespaces halinde depolar. [Sistem tablo](https://dev.mysql.com/doc/refman/5.7/en/innodb-system-tablespace.html) alanı, InnoDB veri sözlüğü için depolama alanıdır. [Tablo başına dosya tablosu](https://dev.mysql.com/doc/refman/5.7/en/innodb-file-per-table-tablespaces.html) , tek bir InnoDB tablosunun verilerini ve dizinlerini içerir ve dosya sisteminde kendi veri dosyasında depolanır. Bu davranış, `innodb_file_per_table` sunucu parametresi tarafından denetlenir. `innodb_file_per_table`İçin ayarı `OFF` , InnoDB 'in, sistem tablo tablosu 'nda tablo oluşturmasına neden olur. Aksi halde, InnoDB tablo başına tabloalanları içinde tablo oluşturur.
 
-MySQL için Azure veritabanı esnek sunucu, tek bir veri dosyasında en büyük, **4 TB** 'yi destekler. Veritabanınızın boyutu 4 TB 'den büyükse, tabloyu [innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) tablo alanında oluşturmanız gerekir. 4 TB 'tan büyük tek bir tablo boyutunuz varsa, bölüm tablosunu kullanmanız gerekir.
+MySQL için Azure veritabanı esnek sunucu, tek bir veri dosyasında en büyük, **4 TB**'yi destekler. Veritabanınızın boyutu 4 TB 'den büyükse, tabloyu [innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) tablo alanında oluşturmanız gerekir. 4 TB 'tan büyük tek bir tablo boyutunuz varsa, bölüm tablosunu kullanmanız gerekir.
 
 ### <a name="max_connections"></a>max_connections
 

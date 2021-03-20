@@ -13,10 +13,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, vanto
 ms.date: 11/09/2018
 ms.openlocfilehash: 3106ec1a45b307207624e5cd077a222acccc83d1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101692836"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>Uygulamanızı Azure SQL Yönetilen Örneği'ne bağlama
@@ -139,7 +139,7 @@ Bağlantı sorunlarını gidermek için aşağıdakileri gözden geçirin:
 
 - Azure App Service barındırılan bir uygulamayı bağlamak için sanal ağ eşlemesi kullanıyorsanız ve SQL yönetilen örnek sanal ağının ortak bir IP adresi aralığı varsa, barındırılan uygulama ayarlarınızın, giden trafiğinizin ortak IP ağlarına yönlendirilmesine izin verdiğinden emin olun. [Bölgesel sanal ağ tümleştirmesinde](../../app-service/web-sites-integrate-with-vnet.md#regional-vnet-integration)yönergeleri izleyin.
 
-## <a name="required-versions-of-drivers-and-tools"></a>Gerekli sürücü ve araç sürümleri
+## <a name="required-versions-of-drivers-and-tools"></a>Sürücülerin ve araçların gerekli sürümleri
 
 SQL yönetilen örneğine bağlanmak istiyorsanız, araçların ve sürücülerin aşağıdaki en düşük sürümleri önerilir:
 

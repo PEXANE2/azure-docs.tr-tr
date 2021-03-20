@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 05/10/2017
 ms.author: alkohli
 ms.openlocfilehash: 5723e8d9fc7b0a72393dda1b225ca073a6474a0a
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94534322"
 ---
 # <a name="install-update-05-on-your-storsimple-virtual-array"></a>StorSimple Sanal diziniz üzerinde 0,5 güncelleştirmesini yükler
@@ -36,13 +36,13 @@ Bir güncelleştirmeyi uygulamadan önce, önce konakta ve sonra da cihazda bulu
 >
 > - Güncelleştirme veya düzeltme yüklendiğinde cihazınızın yeniden başlatıldığını aklınızda bulundurun. StorSimple Sanal dizisi tek düğümlü bir cihaz olduğu için, devam eden g/ç işlemi bozulur ve cihazınız kesinti yaşar.
 
-## <a name="use-the-azure-portal"></a>Azure portalı kullanma
+## <a name="use-the-azure-portal"></a>Azure portalını kullanma
 
 Güncelleştirme 0,2 ve sonraki bir sürümü çalıştırıyorsanız, Azure portal aracılığıyla güncelleştirmeleri yüklemenizi öneririz. Portal yordamı, kullanıcının güncelleştirmeleri taramasını, indirmesini ve yüklemesini gerektirir. Bu yordamın tamamlanmasıyla yaklaşık 7 dakika sürer. Güncelleştirmeyi veya düzeltmeyi yüklemek için aşağıdaki adımları gerçekleştirin.
 
 [!INCLUDE [storsimple-virtual-array-install-update-via-portal](../../includes/storsimple-virtual-array-install-update-via-portal-04.md)]
 
-Yükleme tamamlandıktan sonra StorSimple Aygıt Yöneticisi hizmetinize gidin. **Cihazlar** ' ı seçin ve ardından yeni güncelleştirdiğiniz cihazı seçin ve tıklayın. **> cihaz güncelleştirmelerini yönetmek > ayarlar** ' a gidin. Görüntülenmiş yazılım sürümü **10.0.10290.0** olmalıdır.
+Yükleme tamamlandıktan sonra StorSimple Device Manager hizmetinize gidin. **Cihazlar** ' ı seçin ve ardından yeni güncelleştirdiğiniz cihazı seçin ve tıklayın. **> cihaz güncelleştirmelerini yönetmek > ayarlar**' a gidin. Görüntülenmiş yazılım sürümü **10.0.10290.0** olmalıdır.
 
 ## <a name="use-the-local-web-ui"></a>Yerel Web Kullanıcı arabirimini kullanma
 
@@ -59,15 +59,15 @@ Microsoft Update Kataloğu'ndan yazılım güncelleştirmesi indirmek için aşa
 
 1. Internet Explorer 'ı başlatın ve adresine gidin [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com) .
 
-2. Microsoft Update Kataloğu’nu bu bilgisayarda ilk kez kullanıyorsanız, sorulduğunda **Yükle** ’ye tıklayarak Microsoft Update Kataloğu eklentisini yükleyin.
+2. Microsoft Update Kataloğu’nu bu bilgisayarda ilk kez kullanıyorsanız, sorulduğunda **Yükle**’ye tıklayarak Microsoft Update Kataloğu eklentisini yükleyin.
 
-3. Microsoft Update kataloğunun arama kutusuna, indirmek istediğiniz düzeltmenin Bilgi Bankası (KB) numarasını girin. Güncelleştirme 0,5 için **4021576** girin ve ardından **Ara** ' ya tıklayın.
+3. Microsoft Update kataloğunun arama kutusuna, indirmek istediğiniz düzeltmenin Bilgi Bankası (KB) numarasını girin. Güncelleştirme 0,5 için **4021576** girin ve ardından **Ara**' ya tıklayın.
    
-    Düzeltme listesi (örneğin, **StorSimple Sanal dizisi güncelleştirme 0,5** ) görüntülenir.
+    Düzeltme listesi (örneğin, **StorSimple Sanal dizisi güncelleştirme 0,5**) görüntülenir.
    
     ![Katalogda arama](./media/storsimple-virtual-array-install-update-05/download1.png)
 
-4. **İndir** 'e tıklayın. 
+4. **İndir**’e tıklayın. 
 
 5. Bir *. msu* ve bir *. cab* dosyası indirmek için iki dosya görmeniz gerekir. Bu dosyaların her birini bir klasöre indirin. Klasör, cihazdan erişilebilen bir ağ paylaşımına da kopyalanabilir.
 
@@ -90,11 +90,11 @@ Bu yöntemi, GA çalıştıran bir cihaza güncelleştirme yüklemek veya 0,1 ya
 
 #### <a name="to-install-the-update-or-the-hotfix"></a>Güncelleştirmeyi veya düzeltmeyi yüklemek için
 
-1. Yerel Web Kullanıcı arabiriminde **bakım**  >  **yazılım güncelleştirmesi** ' ne gidin.
+1. Yerel Web Kullanıcı arabiriminde **bakım**  >  **yazılım güncelleştirmesi**' ne gidin.
    
     ![Ekran görüntüsü, bakım menüsündeki yazılım güncelleştirmesinin seçili olduğunu gösterir.](./media/storsimple-virtual-array-install-update-05/update1m.png)
 
-2. **Güncelleştirme dosyası yolu** ' nda, güncelleştirme veya düzeltme için dosya adını girin. Bir ağ paylaşımında yer alıyorsa güncelleştirme veya düzeltme yükleme dosyasına da gidebilirsiniz. **Uygula** 'ya tıklayın.
+2. **Güncelleştirme dosyası yolu**' nda, güncelleştirme veya düzeltme için dosya adını girin. Bir ağ paylaşımında yer alıyorsa güncelleştirme veya düzeltme yükleme dosyasına da gidebilirsiniz. **Uygula**’ya tıklayın.
    
     ![Ekran görüntüsü, yazılım güncelleştirme sayfasındaki dosya yolunu Güncelleştir metin kutusunu gösterir.](./media/storsimple-virtual-array-install-update-05/update2m.png)
 
@@ -106,7 +106,7 @@ Bu yöntemi, GA çalıştıran bir cihaza güncelleştirme yüklemek veya 0,1 ya
    
     ![Ekran görüntüsü güncelleştirme için bir başarı iletisi gösterir.](./media/storsimple-virtual-array-install-update-05/update5m.png)
 
-5. Yeniden başlatma işlemi tamamlandıktan sonra **oturum açma** sayfasına yönlendirilirsiniz. Cihaz yazılımının güncelleştirildiğini doğrulamak için, yerel Web Kullanıcı arabiriminde **bakım**  >  **yazılım güncelleştirmesi** ' ne gidin. Güncelleştirme 0,5 için, görüntülenmiş yazılım sürümü **10.0.0.0.0.10290.0** olmalıdır.
+5. Yeniden başlatma işlemi tamamlandıktan sonra **oturum açma** sayfasına yönlendirilirsiniz. Cihaz yazılımının güncelleştirildiğini doğrulamak için, yerel Web Kullanıcı arabiriminde **bakım**  >  **yazılım güncelleştirmesi**' ne gidin. Güncelleştirme 0,5 için, görüntülenmiş yazılım sürümü **10.0.0.0.0.10290.0** olmalıdır.
    
    > [!NOTE]
    > Yazılım sürümlerini yerel Web Kullanıcı arabiriminde ve Azure portal biraz farklı bir şekilde raporlarız. Örneğin, yerel Web Kullanıcı arabirimi raporları **10.0.0.0.0.10290** ve aynı sürüm için **10.0.10290.0** raporlar Azure Portal.

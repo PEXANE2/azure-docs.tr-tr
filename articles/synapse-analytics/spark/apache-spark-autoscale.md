@@ -10,21 +10,21 @@ ms.topic: conceptual
 ms.subservice: spark
 ms.date: 03/31/2020
 ms.openlocfilehash: f34bcfa8b743fbee6ee3b78fc1a042d1df0abfde
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93313635"
 ---
 # <a name="automatically-scale-azure-synapse-analytics-apache-spark-pools"></a>Azure SYNAPSE Analytics Apache Spark havuzlarını otomatik olarak ölçeklendirme
 
-Azure SYNAPSE Analytics havuzunun otomatik ölçeklendirme özelliği için Apache Spark, bir küme örneğindeki düğümlerin sayısını yukarı ve aşağı otomatik olarak ölçeklendirir. Azure SYNAPSE Analytics havuzu için yeni bir Apache Spark oluşturulması sırasında, otomatik ölçeklendirme seçildiğinde en düşük ve en fazla düğüm sayısı ayarlanabilir. Sonra otomatik ölçeklendirme, yükün kaynak gereksinimlerini izler ve düğüm sayısını yukarı veya aşağı ölçeklendirir. Bu özellik için ek ücret alınmaz.
+Azure Synapse Analytics için Apache Spark havuzunun Otomatik Ölçeklendirme özelliği bir küme örneğindeki düğüm sayısının ölçeğini otomatik olarak artırır ve azaltır. Yeni Azure Synapse Analytics için Apache Spark havuzunun oluşturulması sırasında Otomatik Ölçeklendirme seçildiğinde düğüm sayısı alt ve üst sınırı ayarlanabilir. Ardından Otomatik Ölçeklendirme yükün kaynak gereksinimlerini izler ve düğüm sayısını artırır veya azaltır. Bu özellik için ek bir ücret uygulanmamaktadır.
 
 ## <a name="metrics-monitoring"></a>Ölçüm izleme
 
 Otomatik ölçeklendirme Spark örneğini sürekli izler ve aşağıdaki ölçümleri toplar:
 
-|Ölçüm|Açıklama|
+|Metric|Açıklama|
 |---|---|
 |Toplam bekleyen CPU|Tüm bekleyen düğümlerin yürütülmesini başlatmak için gereken toplam çekirdek sayısı.|
 |Toplam bekleyen bellek|Tüm bekleyen düğümlerin yürütülmesini başlatmak için gereken toplam bellek (MB cinsinden).|

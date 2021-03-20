@@ -12,10 +12,10 @@ ms.date: 11/06/2020
 ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: 5bd938fce347d439c2acb4e3fcace04d5b27d770
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94447781"
 ---
 # <a name="configure-authentication-for-models-deployed-as-web-services"></a>Web Hizmetleri olarak dağıtılan modeller için kimlik doğrulamasını yapılandırma
@@ -24,8 +24,8 @@ Azure Machine Learning, eğitilen makine öğrenimi modellerinizi Web Hizmetleri
 
 Azure Machine Learning tarafından oluşturulan model dağıtımları iki kimlik doğrulama yönteminden birini kullanacak şekilde yapılandırılabilir:
 
-* **anahtar tabanlı** : Web hizmetinde kimlik doğrulaması yapmak için statik anahtar kullanılır.
-* **belirteç tabanlı** : bir geçici belirtecin Azure Machine Learning çalışma alanından alınması gerekir (Azure Active Directory kullanılarak) ve Web hizmetinde kimlik doğrulaması için kullanılır. Bu belirtecin bir süre sonra süresi dolar ve Web hizmetiyle çalışmaya devam etmek için yenilenmesi gerekir.
+* **anahtar tabanlı**: Web hizmetinde kimlik doğrulaması yapmak için statik anahtar kullanılır.
+* **belirteç tabanlı**: bir geçici belirtecin Azure Machine Learning çalışma alanından alınması gerekir (Azure Active Directory kullanılarak) ve Web hizmetinde kimlik doğrulaması için kullanılır. Bu belirtecin bir süre sonra süresi dolar ve Web hizmetiyle çalışmaya devam etmek için yenilenmesi gerekir.
 
     > [!NOTE]
     > Belirteç tabanlı kimlik doğrulaması yalnızca Azure Kubernetes hizmetine dağıtılmasında kullanılabilir.

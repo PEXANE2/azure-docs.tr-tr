@@ -12,17 +12,17 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 10/28/2020
 ms.openlocfilehash: 8aa0ea4b1e01cc7363f49d5897695c7c237b339b
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94535597"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-mysql"></a>Hızlı başlangıç: MySQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için Python kullanma
 
 Bu hızlı başlangıçta Python kullanarak MySQL için Azure veritabanı 'na bağlanırsınız. Ardından, Mac, Ubuntu Linux ve Windows platformlarındaki veritabanındaki verileri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini kullanın. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu hızlı başlangıç için şunlar gerekir:
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free).
@@ -70,7 +70,7 @@ Azure portal MySQL için Azure veritabanı 'na bağlanmak üzere gereken bağlan
    
    :::image type="content" source="./media/connect-python/1_server-overview-name-login.png" alt-text="MySQL için Azure Veritabanı sunucu adı":::
    
-1. Sunucunun **genel bakış** sayfasında **sunucu adı** ve **Sunucu Yöneticisi oturum açma adı** ' nı bir yere göz atın. Parolanızı unutursanız, bu sayfadan parolayı da sıfırlayabilirsiniz.
+1. Sunucunun **genel bakış** sayfasında **sunucu adı** ve **Sunucu Yöneticisi oturum açma adı**' nı bir yere göz atın. Parolanızı unutursanız, bu sayfadan parolayı da sıfırlayabilirsiniz.
    
    :::image type="content" source="./media/connect-python/azure-database-for-mysql-server-overview-name-login.png" alt-text="MySQL için Azure veritabanı sunucu adı 2":::
 

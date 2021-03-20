@@ -9,10 +9,10 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 06/25/2019
 ms.openlocfilehash: 019e6e738ea312b7e6a16c44354c7dcd54e24f2f
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93331905"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-azure-cli"></a>Öğretici: Azure CLı kullanarak bir PostgreSQL için Azure veritabanı tasarlama-tek sunucu 
@@ -28,7 +28,7 @@ Bu öğreticide, şunları nasıl yapacağınızı öğrenmek için Azure CLI (k
 
 Bu öğreticideki komutları çalıştırmak için tarayıcıda Azure Cloud Shell kullanabilir veya kendi bilgisayarınıza [Azure CLI]( /cli/azure/install-azure-cli) yükleyebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
@@ -121,7 +121,7 @@ Sonuç JSON biçimindedir. **administratorLogin** ve **fullyQualifiedDomainName*
 ```
 
 ## <a name="connect-to-azure-database-for-postgresql-database-using-psql"></a>psql kullanarak PostgreSQL için Azure Veritabanı veritabanına bağlanma
-İstemci bilgisayarınızda PostgreSQL yüklüyse, [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html)’nin yerel bir örneğini veya Azure Bulut Konsolu’nu kullanarak Azure PostgreSQL sunucusuna bağlanabilirsiniz. Şimdi PostgreSQL için Azure Veritabanı sunucusuna bağlanmak üzere psql komut satır yardımcı programını kullanalım.
+İstemci bilgisayarınızda PostgreSQL yüklüyse, bir Azure PostgreSQL sunucusuna bağlanmak için yerel bir [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html)örneği veya Azure bulut konsolu kullanabilirsiniz. Şimdi PostgreSQL için Azure Veritabanı sunucusuna bağlanmak üzere psql komut satır yardımcı programını kullanalım.
 
 1. PostgreSQL için Azure Veritabanı veritabanına bağlanmak üzere aşağıdaki psql komutunu çalıştırın:
    ```

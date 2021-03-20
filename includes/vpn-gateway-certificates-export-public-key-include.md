@@ -9,30 +9,30 @@ ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 12e9bec0c560f1b068b07a1b6afe218a112e439f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94553238"
 ---
 Otomatik olarak imzalanan bir kök sertifika oluşturduktan sonra kök sertifika ortak anahtar. cer dosyasını (özel anahtarı değil) dışarı aktarın. Daha sonra bu dosyayı Azure 'a yükleyeceksiniz. Aşağıdaki adımlar, otomatik olarak imzalanan kök sertifikanız için. cer dosyasını dışarı aktarmaya yardımcı olur:
 
-1. Sertifikadan bir .cer dosyası almak için **Kullanıcı sertifikalarını yönet** menüsünü açın. Otomatik olarak imzalanan kök sertifikayı bulun (genellikle 'Certificates - Current User\Personal\Certificates' konumundadır) ve sağ tıklayın. **Tüm Görevler** ’e tıklayın ve ardından **Dışarı Aktar** ’a tıklayın. **Sertifika Dışarı Aktarma Sihirbazı** açılır. Geçerli Kullanıcı \ kişisel \ sertifikalar altındaki sertifikayı bulamazsanız, yanlışlıkla "Sertifikalar-Geçerli Kullanıcı" yerine "Sertifikalar-Yerel bilgisayar" seçeneğini açmış olabilirsiniz. PowerShell kullanarak geçerli kullanıcı kapsamında sertifika yöneticisi 'ni açmak istiyorsanız konsol penceresine *certmgr* yazın.
+1. Sertifikadan bir .cer dosyası almak için **Kullanıcı sertifikalarını yönet** menüsünü açın. Otomatik olarak imzalanan kök sertifikayı bulun (genellikle 'Certificates - Current User\Personal\Certificates' konumundadır) ve sağ tıklayın. **Tüm Görevler**’e tıklayın ve ardından **Dışarı Aktar**’a tıklayın. **Sertifika Dışarı Aktarma Sihirbazı** açılır. Geçerli Kullanıcı \ kişisel \ sertifikalar altındaki sertifikayı bulamazsanız, yanlışlıkla "Sertifikalar-Geçerli Kullanıcı" yerine "Sertifikalar-Yerel bilgisayar" seçeneğini açmış olabilirsiniz. PowerShell kullanarak geçerli kullanıcı kapsamında sertifika yöneticisi 'ni açmak istiyorsanız konsol penceresine *certmgr* yazın.
 
    ![Ekran görüntüsü, geçerli kullanıcı için sertifikalar penceresini ve tüm görevlerden seçilen dışarı aktarma içeren bağlamsal menüyü gösterir.](./media/vpn-gateway-certificates-export-public-key-include/export.png)
-2. Sihirbazda, **İleri** ' ye tıklayın.
+2. Sihirbazda, **İleri**' ye tıklayın.
 
    ![Sertifikayı dışarı aktarma](./media/vpn-gateway-certificates-export-public-key-include/exportwizard.png)
-3. **Hayır, özel anahtarı dışarı aktarma** ’yı seçin ve **İleri** ’ye tıklayın.
+3. **Hayır, özel anahtarı dışarı aktarma**’yı seçin ve **İleri**’ye tıklayın.
 
    ![Özel anahtarı dışarı aktarma](./media/vpn-gateway-certificates-export-public-key-include/notprivatekey.png)
-4. **Dışarı Aktarma Dosyası Biçimi** sayfasında **Base-64 ile kodlanmış X.509 (.CER)** seçeneğini belirleyin ve **İleri** ’ye tıklayın.
+4. **Dışarı Aktarma Dosyası Biçimi** sayfasında **Base-64 ile kodlanmış X.509 (.CER)** seçeneğini belirleyin ve **İleri**’ye tıklayın.
 
    ![Base-64 kodlu](./media/vpn-gateway-certificates-export-public-key-include/base64.png)
-5. **Dışarı aktarılacak dosya** için, sertifikayı dışarı aktarmak istediğiniz konuma **gidin** . **Dosya adı** alanına, sertifika dosyası için bir ad girin. Ardından **İleri** ' ye tıklayın.
+5. **Dışarı aktarılacak dosya** için, sertifikayı dışarı aktarmak istediğiniz konuma **gidin** . **Dosya adı** alanına, sertifika dosyası için bir ad girin. Ardından **İleri**' ye tıklayın.
 
    ![Ekran görüntüsü, sertifika dışarı aktarma Sihirbazı 'Nı bir dosya adı metin kutusuyla ve bir tarama seçeneğiyle gösterir.](./media/vpn-gateway-certificates-export-public-key-include/browse.png)
-6. Sertifikayı dışarı aktarmak için **Son** 'a tıklayın.
+6. Sertifikayı dışarı aktarmak için **Son**'a tıklayın.
 
    ![Ekran görüntüsü, seçilen ayarlarla sertifika dışarı aktarma Sihirbazı ' nı gösterir.](./media/vpn-gateway-certificates-export-public-key-include/finish.png)
 7. Sertifikanız başarıyla verildi.

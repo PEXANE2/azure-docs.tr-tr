@@ -12,10 +12,10 @@ ms.date: 05/18/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4f98eac4305333ec7225c90da2777b7e02f050a0
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96853541"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>C 'de sakıncalı malzeme için video içeriğini analiz etme #
@@ -84,7 +84,7 @@ using System.Collections.Generic;
 
 ### <a name="set-up-resource-references"></a>Kaynak başvurularını ayarlama
 
-Aşağıdaki statik alanları _program.cs_ içindeki **Program** sınıfına ekleyin. Bu alanlar, AMS aboneliğinize bağlanmak için gereken bilgileri tutar. Bunları yukarıdaki adımlarda aldığınız değerlerle birlikte doldurabilirsiniz. `CLIENT_ID`Azure AD uygulamanızın **uygulama kimliği** değeri olduğunu ve `CLIENT_SECRET` Bu uygulama Için oluşturduğunuz "videomodkey" değerinin olduğunu unutmayın.
+Aşağıdaki statik alanları _program. cs_ içindeki **Program** sınıfına ekleyin. Bu alanlar, AMS aboneliğinize bağlanmak için gereken bilgileri tutar. Bunları yukarıdaki adımlarda aldığınız değerlerle birlikte doldurabilirsiniz. `CLIENT_ID`Azure AD uygulamanızın **uygulama kimliği** değeri olduğunu ve `CLIENT_SECRET` Bu uygulama Için oluşturduğunuz "videomodkey" değerinin olduğunu unutmayın.
 
 ```csharp
 // declare constants and globals

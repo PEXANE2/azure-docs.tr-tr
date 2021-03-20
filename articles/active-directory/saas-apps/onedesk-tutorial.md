@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 44d9bf446ff5d85c89bce729e17cbda129c8e4ce
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92518509"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-onedesk"></a>Öğretici: OneDesk ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -55,7 +55,7 @@ OneDesk 'yi Azure AD 'ye tümleştirmeyi yapılandırmak için, Galeriden yönet
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-onedesk"></a>OneDesk için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak OneDesk Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile OneDesk içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak OneDesk Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile OneDesk içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu OneDesk ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -129,7 +129,7 @@ Bu bölümde, OneDesk erişimi vererek Azure çoklu oturum açma özelliğini ku
 
 ## <a name="configure-onedesk-sso"></a>OneDesk SSO 'yu yapılandırma
 
-1. OneDesk içindeki yapılandırmayı otomatik hale getirmek için, **uzantıyı yüklemek**üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
+1. OneDesk içindeki yapılandırmayı otomatik hale getirmek için, **uzantıyı yüklemek** üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 
     ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
 

@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.openlocfilehash: a94afc1ab970c2cd3f509c86efba4e455d46fd13
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96012570"
 ---
 # <a name="optimize-autovacuum-on-an-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda oto vakum 'yi iyileştirin-tek sunucu
@@ -57,7 +57,7 @@ Burada, önceki sorulara göre ve bazı kılavuzlarla birlikte güncelleştirebi
 Parametre|Açıklama|Varsayılan değer
 ---|---|---
 autovacuum_vacuum_threshold|Herhangi bir tabloda vakum işleminin tetiklenmesi için gereken en az güncelleştirilmiş veya silinmiş tanımlama grubu sayısını belirtir. Varsayılan değer 50 ' dir. Bu parametreyi yalnızca PostgreSQL. conf dosyasında veya sunucu komut satırında ayarlayın. Tek tek tabloların ayarını geçersiz kılmak için tablo depolama parametrelerini değiştirin.|50
-autovacuum_vacuum_scale_factor|Bir vakum işleminin tetiklenmesi saptarken autovacuum_vacuum_threshold eklenecek tablo boyutunun bir bölümünü belirtir. Varsayılan değer, tablo boyutunun yüzde 20 ' si olan 0,2 ' dir. Bu parametreyi yalnızca PostgreSQL. conf dosyasında veya sunucu komut satırında ayarlayın. Tek tek tabloların ayarını geçersiz kılmak için tablo depolama parametrelerini değiştirin.|0.2
+autovacuum_vacuum_scale_factor|Bir vakum işleminin tetiklenmesi saptarken autovacuum_vacuum_threshold eklenecek tablo boyutunun bir bölümünü belirtir. Varsayılan değer, tablo boyutunun yüzde 20 ' si olan 0,2 ' dir. Bu parametreyi yalnızca PostgreSQL. conf dosyasında veya sunucu komut satırında ayarlayın. Tek tek tabloların ayarını geçersiz kılmak için tablo depolama parametrelerini değiştirin.|0,2
 autovacuum_vacuum_cost_limit|Otomatik Vakum işlemlerinde kullanılan maliyet sınırı değerini belirtir. -1 belirtilirse, varsayılan değer olan normal vacuum_cost_limit değeri kullanılır. Birden fazla çalışan varsa, bu değer çalışan bir oto çalışıya çalışanları arasında orantılı olarak dağıtılır. Her çalışan limitlerinin toplamı, bu değişkenin değerini aşamaz. Bu parametreyi yalnızca PostgreSQL. conf dosyasında veya sunucu komut satırında ayarlayın. Tek tek tabloların ayarını geçersiz kılmak için tablo depolama parametrelerini değiştirin.|-1
 autovacuum_vacuum_cost_delay|Otomatik Vakum işlemlerinde kullanılan maliyet gecikmesi değerini belirtir. -1 belirtilirse, normal vacuum_cost_delay değeri kullanılır. Varsayılan değer 20 milisaniyedir. Bu parametreyi yalnızca PostgreSQL. conf dosyasında veya sunucu komut satırında ayarlayın. Tek tek tabloların ayarını geçersiz kılmak için tablo depolama parametrelerini değiştirin.|20 MS
 autovacuum_naptime | Herhangi bir veritabanı üzerinde, oto vakum çalıştırmaları arasındaki en küçük gecikmeyi belirtir. Her turunda, Daemon, veritabanı ve sorunlar vakum ' i inceler ve bu veritabanındaki tablolar için gerektiğinde komutları çözümler. Gecikme saniye cinsinden ölçülür. Bu parametreyi yalnızca PostgreSQL. conf dosyasında veya sunucu komut satırında ayarlayın.| 15 s

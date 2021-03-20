@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 16d48cda87b8226ebc3bbab179c1034abf0a486f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90084618"
 ---
 # <a name="azure-ad-connect-sync-prevent-accidental-deletes"></a>Azure AD Connect Eşitleme: Yanlışlıkla Silmeleri Engelleme
@@ -52,9 +52,9 @@ Bu beklenmiyorsa, inceleyin ve düzeltici eylemler gerçekleştirin. Hangi nesne
 
 1. Başlangıç menüsünden **eşitleme hizmetini** başlatın.
 2. **Bağlayıcılar**'a gidin.
-3. **Azure Active Directory**türündeki bağlayıcıyı seçin.
+3. **Azure Active Directory** türündeki bağlayıcıyı seçin.
 4. Sağdaki **Eylemler** altında **bağlayıcı alanı ara**' yı seçin.
-5. **Kapsam**altındaki açılır pencerede, **bu yana bağlantısı kesildi** ' ı seçin ve geçmişte bir zaman seçin. **Ara**’ya tıklayın. Bu sayfa, silinecek tüm nesnelerin bir görünümünü sağlar. Her bir öğeye tıklayarak nesne hakkında ek bilgi edinebilirsiniz. Ayrıca, kılavuzda görünür olacak ek öznitelikler eklemek için **sütun ayarı** ' na de tıklayabilirsiniz.
+5. **Kapsam** altındaki açılır pencerede, **bu yana bağlantısı kesildi** ' ı seçin ve geçmişte bir zaman seçin. **Ara**’ya tıklayın. Bu sayfa, silinecek tüm nesnelerin bir görünümünü sağlar. Her bir öğeye tıklayarak nesne hakkında ek bilgi edinebilirsiniz. Ayrıca, kılavuzda görünür olacak ek öznitelikler eklemek için **sütun ayarı** ' na de tıklayabilirsiniz.
 
 ![Bağlayıcı alanını ara](./media/how-to-connect-sync-feature-prevent-accidental-deletes/searchcs.png)
 

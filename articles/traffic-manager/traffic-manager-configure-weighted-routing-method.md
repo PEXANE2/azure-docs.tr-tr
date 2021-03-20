@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 10/19/2020
 ms.author: duau
 ms.openlocfilehash: abcfce43b90c7371d5b38aa5b7a6d478e9d6a0dd
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92207848"
 ---
 # <a name="tutorial-configure-the-weighted-traffic-routing-method-in-traffic-manager"></a>Öğretici: Traffic Manager ' de ağırlıklı trafik yönlendirme yöntemini yapılandırma
@@ -25,7 +25,7 @@ Ortak trafik yönlendirme yöntemi, bulut hizmetleri ve Web siteleri dahil olmak
 > [!NOTE]
 > Azure Web App, bir Azure bölgesindeki (birden çok veri merkezini kapsayan) Web siteleri için hepsini bir kez deneme Yük Dengeleme işlevi sunmaktadır. Traffic Manager, farklı veri merkezlerinde Web siteleri arasında trafik dağıtmanıza izin verir.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > - Ağırlıklı yönlendirmeye sahip bir Traffic Manager profili oluşturun.
 > - Traffic Manager profilini kullanın.
@@ -60,23 +60,23 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 1. Yapılandırmayı gerçekleştirmek için **Kaydet** ' i seçin.
 
-    :::image type="content" source="./media/traffic-manager-weighted-routing-method/traffic-manager-weighted-configuration.png" alt-text="Traffic Manager profili arama"::: 
+    :::image type="content" source="./media/traffic-manager-weighted-routing-method/traffic-manager-weighted-configuration.png" alt-text="Traffic Manager ağırlıklı yapılandırma"::: 
 
 1. **Uç nokta** ' ı seçin ve her bitiş noktasının ağırlığını yapılandırın. Ağırlık 1-1000 arasında olabilir. Ağırlığa göre daha yüksek olan öncelik o kadar yüksektir.  
 
-    :::image type="content" source="./media/traffic-manager-weighted-routing-method/traffic-manager-configure-endpoints-weighted.png" alt-text="Traffic Manager profili arama"::: 
+    :::image type="content" source="./media/traffic-manager-weighted-routing-method/traffic-manager-configure-endpoints-weighted.png" alt-text="Traffic Manager ağırlıklı uç noktalar yapılandırması"::: 
 
 ## <a name="use-the-traffic-manager-profile"></a>Traffic Manager profilini kullanma
 
 **Traffic Manager profili** penceresinde yeni oluşturduğunuz Traffic Manager profilinin DNS adı görüntülenir. Ad, yönlendirme türü tarafından belirlendiği şekilde doğru uç noktaya yönlendirilmek için herhangi bir istemci tarafından (örneğin, bir Web tarayıcısı kullanılarak gezinilirken) kullanılabilir. Bu durumda, tüm istekler her bitiş noktasını hepsini bir kez kez yönlendirilir.
 
-:::image type="content" source="./media/traffic-manager-weighted-routing-method/traffic-manager-weighted-overview.png" alt-text="Traffic Manager profili arama"::: 
+:::image type="content" source="./media/traffic-manager-weighted-routing-method/traffic-manager-weighted-overview.png" alt-text="Traffic Manager ağırlıklı genel bakış"::: 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Traffic Manager profile artık ihtiyacınız yoksa, profili bulun ve **Profili Sil**' i seçin.
 
-:::image type="content" source="./media/traffic-manager-weighted-routing-method/delete-traffic-manager-weighted-profile.png" alt-text="Traffic Manager profili arama":::
+:::image type="content" source="./media/traffic-manager-weighted-routing-method/delete-traffic-manager-weighted-profile.png" alt-text="Traffic Manager ağırlıklı profili sil":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

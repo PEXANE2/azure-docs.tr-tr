@@ -4,10 +4,10 @@ description: 'Öğretici: Microsoft Azure gönderilen gerçek zamanlı olaylarda
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.openlocfilehash: bd08d611761e125fdd03173ce6027c60e82baed6
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98623467"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Öğretici: Azure Event Hubs'a gönderilen gerçek zamanlı olaylardaki veri anomalilerini görselleştirme
@@ -16,7 +16,7 @@ Azure Event Hubs ile Azure Stream Analytics'i kullanarak gelen verileri denetley
 
 Bu öğreticide bu örneğin simülasyonunu yapacaksınız. Kredi kartı işlemleri oluşturup bunları bir olay hub'ına gönderen bir uygulama çalıştıracaksınız. Ardından, geçerli işlemleri geçersiz işlemlere ayıran Azure Stream Analytics veri akışını gerçek zamanlı olarak okur ve sonra geçersiz olarak etiketlenen işlemleri görsel olarak tanımlamak için Power BI kullanırsınız.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Event Hubs ad alanı oluşturma
 > * Olay hub’ı oluşturma

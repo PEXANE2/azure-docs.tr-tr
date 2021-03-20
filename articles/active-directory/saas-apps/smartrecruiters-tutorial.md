@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: b7de874cc074faa63203c58638fb04cc5cb2282b
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92514937"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smartrecruiters"></a>Öğretici: akıllı Işe ıcılar Azure Active Directory tümleştirme
@@ -61,13 +61,13 @@ Akıllı Işveren 'nın Azure AD 'ye tümleştirilmesini yapılandırmak için, 
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **smartişveren**yazın, sonuç panelinden **akıllı işe ıcılar** ' nı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **smartişveren** yazın, sonuç panelinden **akıllı işe ıcılar** ' nı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
      ![Sonuçlar listesinde akıllı Işe ıcılar](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre smartişveren ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre smartişveren ile yapılandırıp test edersiniz.
 Çoklu oturum açma 'nın çalışması için, bir Azure AD kullanıcısı ve akıllı iş içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açma 'yı akıllı Işe yönelik olarak yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -132,7 +132,7 @@ Azure AD çoklu oturum açma 'yı akıllı Işe yönelik olarak yapılandırmak 
 
 1. Farklı bir Web tarayıcısı penceresinde, akıllı Işveren şirket sitenizde yönetici olarak oturum açın.
 
-1. **Ayarlar/yönetici**bölümüne gidin.
+1. **Ayarlar/yönetici** bölümüne gidin.
 
     ![Ekran görüntüsünde bir menüden Ayarlar/yönetici seçili görüntülenir.](./media/smartrecruiters-tutorial/configure.png)
 
@@ -170,9 +170,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alan türü**brittasimon@yourcompanydomain.extension**  
+    b. **Kullanıcı adı** alan türü **brittasimon@yourcompanydomain.extension**  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.

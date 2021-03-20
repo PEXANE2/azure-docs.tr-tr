@@ -7,11 +7,11 @@ ms.author: shhazam
 ms.date: 12/02/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 528ea5a6b05dea59cb397bf32297f05b6cdc9be2
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 0b71f7ca3f812de1514612f8b0dd5915f3f81bc4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100522742"
 ---
 # <a name="forward-alert-information"></a>Uyarı bilgilerini iletme
@@ -26,7 +26,7 @@ IoT yöneticileri için Defender 'ın iletme kurallarını kullanma izni vardır
 
 ## <a name="about-forwarded-alert-information"></a>İletilen uyarı bilgileri hakkında
 
-Uyarılar, çok çeşitli güvenlik ve işletimsel olaylar hakkında bilgi sağlar. Örneğin:
+Uyarılar, çok çeşitli güvenlik ve işletimsel olaylar hakkında bilgi sağlar. Örnek:
 
   - Uyarının tarih ve saati
 
@@ -112,7 +112,7 @@ Aşağıdaki parametreleri girin:
     
 :::image type="content" source="media/how-to-work-with-alerts-sensor/configure-encryption.png" alt-text="İletme kuralınız için şifrelemeyi yapılandırın.":::
 
-| Syslog metin iletisi çıkış alanları | Açıklama |
+| Syslog metin iletisi çıkış alanları | Description |
 |--|--|
 | Tarih ve saat | Syslog sunucusu makinesinin bilgileri aldığı tarih ve saat. |
 | Öncelik | Kullanıcı. Alert |
@@ -121,7 +121,7 @@ Aşağıdaki parametreleri girin:
 | İleti | Algılayıcı: algılayıcı adı.<br /> Uyarı: uyarının başlığı.<br /> Tür: uyarının türü. **Protokol ihlali**, **ilke ihlali**, **kötü amaçlı yazılım**, **anomali** veya **işletimsel** olabilir.<br /> Önem derecesi: uyarının önem derecesi. **Uyarı**, **İkincil**, **büyük** veya **kritik** olabilir.<br /> Kaynak: kaynak cihaz adı.<br /> Kaynak IP: kaynak cihaz IP adresi.<br /> Hedef: hedef cihaz adı.<br /> Hedef IP: hedef cihazın IP adresi.<br /> İleti: uyarının iletisi.<br /> Uyarı grubu: uyarıyla ilişkili olan uyarı grubu. |
 
 
-| Syslog nesne çıktısı | Açıklama |
+| Syslog nesne çıktısı | Description |
 |--|--|
 | Tarih ve Saat |   Syslog sunucusu makinesinin bilgileri aldığı tarih ve saat. |  
 | Öncelik |    Kullanıcı. Alert | 
@@ -129,14 +129,14 @@ Aşağıdaki parametreleri girin:
 | İleti | Algılayıcı adı: Gereç adı. <br /> Uyarı Zamanı: uyarının algılandığı zaman: Syslog Sunucu makinesi zamanından farklı olabilir ve iletme kuralının saat dilimi yapılandırmasına bağlıdır. <br /> Uyarı başlığı: uyarının başlığı. <br /> Uyarı iletisi: uyarının iletisi. <br /> Uyarı önem derecesi: uyarının önem derecesi: **Uyarı**, **İkincil**, **büyük** veya **kritik**. <br /> Uyarı türü: **protokol ihlali**, **ilke ihlali**, **kötü amaçlı yazılım**, **anomali** veya **işletimsel**. <br /> Protokol: uyarının protokolü.  <br /> **Source_MAC**: IP adresi, adı, satıcı veya kaynak cihazın işletim sistemi. <br /> Destination_MAC: IP adresi, adı, satıcı veya hedefin işletim sistemi. Veriler eksikse **değer yok olur.** <br /> alert_group: uyarıyla ilişkili olan uyarı grubu. |
 
 
-| Syslog CEF çıkış biçimi | Açıklama |
+| Syslog CEF çıkış biçimi | Description |
 |--|--|
 | Tarih ve saat | Syslog sunucusu makinesinin bilgileri aldığı tarih ve saat. |
 | Öncelik | Kullanıcı. Alert | 
 | Konak adı | Algılayıcı IP adresi |
 | İleti | CEF: 0 <br />IoT için Azure Defender <br />Algılayıcı adı: algılayıcı gerecinin adı. <br />Algılayıcı sürümü <br />Uyarı başlığı: uyarının başlığı. <br />Msg: uyarının iletisi. <br />protokol: uyarının protokolü. <br />önem derecesi: **Uyarı**, **İkincil**, **büyük** veya **kritik**. <br />Tür: **protokol ihlali**, **ilke ihlali**, **kötü amaçlı yazılım**, **anomali** veya **işletimsel**. <br /> başlangıç: uyarının algılandığı zaman. <br />Syslog Sunucu makinesi zamanından farklı olabilir ve iletme kuralının saat dilimi yapılandırmasına bağlıdır. <br />src_ip: kaynak cihazın IP adresi.  <br />dst_ip: hedef cihazın IP adresi.<br />Cat: uyarıyla ilişkili olan uyarı grubu.  |
 
-| Syslog LEEF çıkış biçimi | Açıklama |
+| Syslog LEEF çıkış biçimi | Description |
 |--|--|
 | Tarih ve saat |   Syslog sunucusu makinesinin bilgileri aldığı tarih ve saat. |  
 | Öncelik |    Kullanıcı. Alert | 
@@ -203,6 +203,6 @@ Yönetici, uyarı dışlama kuralları tanımlamış olabilir. Bu kurallar, yön
 
 Bu, tanımladığınız iletme kurallarının yöneticinizin oluşturduğu dışlama kuralları temel alınarak yoksayılacağı anlamına gelir. Dışlama kuralları, şirket içi yönetim konsolunda tanımlanmıştır.
 
-## <a name="next-steps"></a>Sonraki adımlar
+## <a name="see-also"></a>Ayrıca bkz.
 
 [Uyarı iş akışlarını hızlandırma](how-to-accelerate-alert-incident-response.md)
