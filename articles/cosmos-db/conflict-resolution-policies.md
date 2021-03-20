@@ -9,10 +9,10 @@ ms.date: 04/20/2020
 ms.author: mjbrown
 ms.reviewer: sngun
 ms.openlocfilehash: ba55d88de3a5a4087db30613b22a7d2441de9be1
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93334387"
 ---
 # <a name="conflict-types-and-resolution-policies-when-using-multiple-write-regions"></a>Birden çok yazma bölgesi kullanılırken çakışma türleri ve çözümleme ilkeleri
@@ -22,17 +22,17 @@ Azure Cosmos DB hesabınız birden çok yazma bölgesi ile yapılandırılmışs
 
 Birden fazla yazma bölgesi ile yapılandırılmış Azure Cosmos hesapları için, yazarlar aynı öğeyi birden çok bölgede aynı anda güncelleştirdiğinizde güncelleştirme çakışmaları ortaya çıkabilir. Güncelleştirme çakışmaları aşağıdaki üç türden olabilir:
 
-* **Çakışma Ekle** : bir uygulama aynı anda iki veya daha fazla bölgede aynı benzersiz dizine sahip iki veya daha fazla öğe eklediğinde bu çakışmalar meydana gelebilir. Örneğin, bu çakışma bir KIMLIK özelliği ile meydana gelebilir.
+* **Çakışma Ekle**: bir uygulama aynı anda iki veya daha fazla bölgede aynı benzersiz dizine sahip iki veya daha fazla öğe eklediğinde bu çakışmalar meydana gelebilir. Örneğin, bu çakışma bir KIMLIK özelliği ile meydana gelebilir.
 
-* **Çakışmaları Değiştir** : bir uygulama aynı öğeyi iki veya daha fazla bölgede aynı anda güncelleştirirken bu çakışmalar meydana gelebilir.
+* **Çakışmaları Değiştir**: bir uygulama aynı öğeyi iki veya daha fazla bölgede aynı anda güncelleştirirken bu çakışmalar meydana gelebilir.
 
-* **Çakışmaları Sil** : Bu çakışmalar, bir uygulama aynı anda bir bölgedeki öğeyi silerse ve onu başka bir bölgede güncelleştirdiğinde meydana gelebilir.
+* **Çakışmaları Sil**: Bu çakışmalar, bir uygulama aynı anda bir bölgedeki öğeyi silerse ve onu başka bir bölgede güncelleştirdiğinde meydana gelebilir.
 
 ## <a name="conflict-resolution-policies"></a>Çakışma çözümleme ilkeleri
 
 Azure Cosmos DB, yazma çakışmalarını çözmek için esnek ilke odaklı bir mekanizma sunar. Azure Cosmos kapsayıcısında iki çakışma çözümü ilkesi arasından seçim yapabilirsiniz:
 
-* **Son yazma WINS (LWW)** : Bu çözümleme ilkesi, varsayılan olarak sistem tanımlı bir zaman damgası özelliği kullanır. Zaman eşitleme saati protokolüne dayalıdır. SQL API 'sini kullanırsanız, çakışma çözümü için kullanılacak başka bir özel sayısal Özellik (örneğin, zaman damgası kavramı) belirtebilirsiniz. Özel bir sayısal özelliği de *çakışma çözümleme yolu* olarak adlandırılır. 
+* **Son yazma WINS (LWW)**: Bu çözümleme ilkesi, varsayılan olarak sistem tanımlı bir zaman damgası özelliği kullanır. Zaman eşitleme saati protokolüne dayalıdır. SQL API 'sini kullanırsanız, çakışma çözümü için kullanılacak başka bir özel sayısal Özellik (örneğin, zaman damgası kavramı) belirtebilirsiniz. Özel bir sayısal özelliği de *çakışma çözümleme yolu* olarak adlandırılır. 
 
   Ekleme veya değiştirme işlemlerinde iki veya daha fazla öğe çakışırsa, çakışma çözümleme yolu için en yüksek değere sahip öğe kazanan olur. Birden çok öğe, çakışma çözümleme yolu için aynı sayısal değere sahip ise, sistem kazanan kişiyi belirler. Tüm bölgeler tek bir yarışa yakınsayacak ve yürütülen öğenin aynı sürümüyle sona acaktır. Silme çakışmaları dahil edildiğinde, silinen sürüm her zaman ekleme veya değiştirme çakışmaları üzerinde kazanır. Çakışma çözümleme yolunun değeri ne olursa olsun bu sonuç oluşur.
 
@@ -41,7 +41,7 @@ Azure Cosmos DB, yazma çakışmalarını çözmek için esnek ilke odaklı bir 
 
   Daha fazla bilgi için bkz. [LWW çakışma çözümü ilkelerini kullanan örnekler](how-to-manage-conflicts.md).
 
-* **Özel** : Bu çözümleme ilkesi, çakışmaların mutabakatı için uygulama tanımlı semantik için tasarlanmıştır. Azure Cosmos kapsayıcıda Bu ilkeyi ayarladığınızda, *birleştirme saklı yordamını* da kaydetmeniz gerekir. Bu yordam, sunucudaki bir veritabanı işlemi altında çakışmalar algılandığında otomatik olarak çağrılır. Sistem, taahhüt protokolünün bir parçası olarak birleştirme yordamının yürütülmesi için tam olarak bir kez daha sağlar.  
+* **Özel**: Bu çözümleme ilkesi, çakışmaların mutabakatı için uygulama tanımlı semantik için tasarlanmıştır. Azure Cosmos kapsayıcıda Bu ilkeyi ayarladığınızda, *birleştirme saklı yordamını* da kaydetmeniz gerekir. Bu yordam, sunucudaki bir veritabanı işlemi altında çakışmalar algılandığında otomatik olarak çağrılır. Sistem, taahhüt protokolünün bir parçası olarak birleştirme yordamının yürütülmesi için tam olarak bir kez daha sağlar.  
 
   Özel çözüm seçeneğiyle kapsayıcınızı yapılandırırsanız ve bir birleştirme yordamını kapsayıcıya kaydetmeniz başarısız olursa veya birleştirme yordamı çalışma zamanında bir özel durum oluşturursa, çakışmalar *Çakışma akışına* yazılır. Daha sonra uygulamanız çakışma akışındaki çakışmaları el ile çözmaları gerekir. Daha fazla bilgi edinmek için bkz. [özel çözüm ilkesini kullanma ve çakışmalar akışını kullanma örnekleri](how-to-manage-conflicts.md).
 

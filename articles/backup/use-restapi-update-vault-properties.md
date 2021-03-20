@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
 ms.openlocfilehash: 19a335d17ee0aa5ff9f989556656f5cf20d2b1a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91567834"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>REST API kullanarak Azure kurtarma hizmetleri Kasası yapılandırmasını güncelleştirme
@@ -43,7 +43,7 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 ' GET ' işlemi için başarılı yanıt aşağıda gösterilmiştir:
 
-|Ad  |Tür  |Açıklama  |
+|Ad  |Tür  |Description  |
 |---------|---------|---------|
 |200 TAMAM     |   [BackupResourceVaultConfig](/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | Tamam        |
 
@@ -83,7 +83,7 @@ Aşağıdaki ortak tanımlar bir istek gövdesi oluşturmak için kullanılır
 
 Daha fazla ayrıntı için [REST API belgelerine](/rest/api/backup/backupresourcevaultconfigs/update#request-body) bakın
 
-|Adı  |Gerekli  |Tür  |Açıklama  |
+|Name  |Gerekli  |Tür  |Description  |
 |---------|---------|---------|---------|
 |Özelliği     |         |   Dize      |  İsteğe bağlı eTag       |
 |location     |  true       |Dize         |   Kaynak konumu      |
@@ -107,7 +107,7 @@ Aşağıdaki örnek, geçici silme durumunu ' Disabled ' olarak güncelleştirme
 
 ' PATCH ' işlemi için başarılı yanıt aşağıda gösterilmiştir:
 
-|Ad  |Tür  |Açıklama  |
+|Ad  |Tür  |Description  |
 |---------|---------|---------|
 |200 TAMAM     |   [BackupResourceVaultConfig](/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | Tamam        |
 

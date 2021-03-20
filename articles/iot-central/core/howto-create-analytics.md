@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: abjork
 ms.openlocfilehash: 8f329b6377915a3df6e3f3e212cbd8d41f9ed80d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90017669"
 ---
 # <a name="how-to-use-analytics-to-analyze-device-data"></a>Cihaz verilerini çözümlemek için Analytics 'i kullanma
@@ -35,7 +35,7 @@ Analiz Kullanıcı arabirimi üç ana bileşenden oluşur:
 
 ## <a name="querying-your-data"></a>Verilerinizi sorgulama
 
-Bir **cihaz grubunu**ve çözümlemek istediğiniz Telemetriyi seçerek başlamanız gerekir. İşiniz bittiğinde, verileri görselleştirmeye başlamak için **Çözümle** ' yi seçin.
+Bir **cihaz grubunu** ve çözümlemek istediğiniz Telemetriyi seçerek başlamanız gerekir. İşiniz bittiğinde, verileri görselleştirmeye başlamak için **Çözümle** ' yi seçin.
 
 - **Cihaz grubu:** [Cihaz grubu](tutorial-use-device-groups.md) , cihazlarınızın Kullanıcı tanımlı grubudur. Örneğin, Oakland 'deki tüm soğutma veya tüm sürüm 2,0 rüzgar türbines.
 

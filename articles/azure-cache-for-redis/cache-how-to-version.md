@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.openlocfilehash: d9f48de7ef5d9525a995af4ebbd12c5f14f40189
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93349146"
 ---
 # <a name="set-redis-version-for-azure-cache-for-redis-preview"></a>Redsıs için Azure önbelleği için Redsıs sürümünü ayarla (Önizleme)
@@ -22,9 +22,9 @@ Bu makalede, önbellek örneğinizle birlikte kullanılacak Redsıs yazılım s�
 ## <a name="create-a-cache"></a>Bir önbellek oluşturma
 Önbellek oluşturmak için aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın ve **kaynak oluştur** ' u seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın ve **kaynak oluştur**' u seçin.
   
-1. **Yeni** sayfada **veritabanları** ' nı seçin ve ardından **redsıs için Azure önbelleği** ' ni seçin.
+1. **Yeni** sayfada **veritabanları** ' nı seçin ve ardından **redsıs için Azure önbelleği**' ni seçin.
 
     :::image type="content" source="media/cache-create/new-cache-menu.png" alt-text="Redsıs için Azure önbelleği ' ni seçin.":::
    
@@ -42,7 +42,7 @@ Bu makalede, önbellek örneğinizle birlikte kullanılacak Redsıs yazılım s�
    
     :::image type="content" source="media/cache-how-to-version/select-redis-version.png" alt-text="Redsıs sürümü.":::
 
-1. **Oluştur** 'a tıklayın. 
+1. **Oluştur**’a tıklayın. 
    
     Önbelleğin oluşturulması biraz zaman alır. Redsıs **genel bakış** sayfasında ilerlemeyi izleyebilirsiniz. **Durum** **çalışıyor** olarak görüntülendiğinde, önbellek kullanıma hazırdır.
 

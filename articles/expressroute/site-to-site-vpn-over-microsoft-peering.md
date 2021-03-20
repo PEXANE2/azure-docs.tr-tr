@@ -9,10 +9,10 @@ ms.date: 02/25/2019
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 366f27a0e2a22e9aa10dda20e105bf644255bdd4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89393148"
 ---
 # <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>ExpressRoute Microsoft eşlemesi üzerinden siteden siteye VPN yapılandırma
@@ -143,7 +143,7 @@ Bu örnekte, değişken bildirimleri örnek ağa karşılık gelir. Değişkenle
 
 * **Localaddresspredüzeltmesini** değişkeni, IPSec tünellerini sonlandırmak için ŞIRKET içi IP adreslerinden oluşan bir dizidir.
 * **Gatewaysku** , VPN aktarım hızını belirler. GatewaySku ve vpnType hakkında daha fazla bilgi için bkz. [VPN Gateway Configuration Settings](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku). Fiyatlandırma için bkz. [VPN Gateway fiyatlandırması](https://azure.microsoft.com/pricing/details/vpn-gateway).
-* **Vpntype** 'ı **routebased**olarak ayarlayın.
+* **Vpntype** 'ı **routebased** olarak ayarlayın.
 
 ```json
 "variables": {
@@ -239,7 +239,7 @@ Bir VPN ağ geçidinin her örneği için genel bir IP adresi atayın.
 
 ### <a name="34-specify-the-on-premises-vpn-tunnel-termination-local-network-gateway"></a><a name="termination"></a>3,4 Şirket içi VPN tüneli sonlandırmasını belirtin (yerel ağ geçidi)
 
-Şirket içi VPN cihazları **yerel ağ geçidi**olarak adlandırılır. Aşağıdaki JSON kod parçacığı uzak BGP eş bilgilerini de belirtir:
+Şirket içi VPN cihazları **yerel ağ geçidi** olarak adlandırılır. Aşağıdaki JSON kod parçacığı uzak BGP eş bilgilerini de belirtir:
 
 ```json
 {

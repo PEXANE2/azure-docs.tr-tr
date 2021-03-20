@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/23/2020
 ms.author: jeedes
 ms.openlocfilehash: acdfd8b6c57ad2005f116ffb1e5a3c94a5cb87f2
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92522640"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-michigan-data-hub-single-sign-on"></a>Öğretici: tek oturum açma (SSO) Michigan veri merkezi tek Sign-On tümleştirmesi Azure Active Directory
@@ -56,7 +56,7 @@ Michigan Data hub tek Sign-On tümleştirmesini Azure AD 'ye göre yapılandırm
 
 ## <a name="configure-and-test-azure-ad-sso-for-michigan-data-hub-single-sign-on"></a>Michigan veri merkezi tekil Sign-On için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Michigan Data Hub tek Sign-On ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Michigan veri merkezi çoklu oturum açma içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Michigan Data Hub tek Sign-On ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Michigan veri merkezi çoklu oturum açma içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Michigan veri merkezi çoklu oturum açma ile Azure AD SSO 'yu yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 

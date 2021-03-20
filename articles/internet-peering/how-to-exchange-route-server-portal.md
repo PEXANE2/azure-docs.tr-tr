@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 5/19/2020
 ms.author: derekol
 ms.openlocfilehash: 7e10cd91eadd338217845b1504e8e9160bccfc98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91537200"
 ---
 # <a name="create-or-modify-an-exchange-peering-with-route-server-in-azure-portal"></a>Azure portal 'de rota sunucusuyla bir Exchange eşlemesi oluşturun veya değiştirin
@@ -66,12 +66,12 @@ Bir Internet Exchange sağlayıcısı olarak, [eşleme oluşturarak]( https://go
  
     * Eşleme türü için **doğrudan** ' yi seçin
     * Microsoft ağı için **Exchange Route Server Ile AS8075**' yi seçin. 
-    * SKU 'YU **temel ücretsiz**olarak seçin. Özel uygulamalar için ayrıldığından Premium ücretsiz olarak seçmeyin.
+    * SKU 'YU **temel ücretsiz** olarak seçin. Özel uygulamalar için ayrıldığından Premium ücretsiz olarak seçmeyin.
     * Eşlemeyi ayarlamak istediğiniz **Metro** konumunu seçin.
 
-1. **Eşleme bağlantıları**altında **Yeni oluştur** ' u seçin.
+1. **Eşleme bağlantıları** altında **Yeni oluştur** ' u seçin.
 
-1.  **Doğrudan eşleme bağlantısı**altında aşağıdaki BGP oturumu ayrıntılarını girin:
+1.  **Doğrudan eşleme bağlantısı** altında aşağıdaki BGP oturumu ayrıntılarını girin:
 
     > [!div class="mx-imgBorder"]
     > ![Ekran görüntüsü, ayrıntıları eklenen doğrudan eşleme bağlantı bölmesini gösterir.](./media/setup-exchange-conf-tab-direct-route.png)

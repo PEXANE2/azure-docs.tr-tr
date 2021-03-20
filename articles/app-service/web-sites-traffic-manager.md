@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 02/25/2016
 ms.custom: seodec18
 ms.openlocfilehash: 040f84288c66f4506919e775b9ea41324b617cfa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80437892"
 ---
 # <a name="controlling-azure-app-service-traffic-with-azure-traffic-manager"></a>Azure Traffic Manager Azure App Service trafiğini denetleme
@@ -24,10 +24,10 @@ Azure Traffic Manager'ı kullanarak web istemcilerinden gelen isteklerin Azure A
 ## <a name="routing-methods"></a>Yönlendirme yöntemleri
 Azure Traffic Manager dört farklı yönlendirme yöntemi kullanır. Bu yöntemler Azure App Service ilgili olarak aşağıdaki listede açıklanmaktadır.
 
-* ** [Öncelik](../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method):** tüm trafik için bir birincil uygulama kullanın ve birincil veya yedekleme uygulamalarının kullanılamadığı durumlarda yedeklemeler sağlayın.
-* ** [Ağırlıklı](../traffic-manager/traffic-manager-routing-methods.md#weighted):** bir dizi uygulama genelinde eşit veya ağırlığa göre trafiği dağıtın.
-* ** [Performans](../traffic-manager/traffic-manager-routing-methods.md#performance):** farklı coğrafi konumlarda uygulamalar varsa, en düşük ağ gecikmesi bakımından "en yakın" uygulamayı kullanın.
-* ** [Coğrafi](../traffic-manager/traffic-manager-routing-methods.md#geographic):** kullanıcıları, DNS sorgusunun kaynaklandığı coğrafi konuma göre belirli uygulamalara yönlendirin. 
+* **[Öncelik](../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method):** tüm trafik için bir birincil uygulama kullanın ve birincil veya yedekleme uygulamalarının kullanılamadığı durumlarda yedeklemeler sağlayın.
+* **[Ağırlıklı](../traffic-manager/traffic-manager-routing-methods.md#weighted):** bir dizi uygulama genelinde eşit veya ağırlığa göre trafiği dağıtın.
+* **[Performans](../traffic-manager/traffic-manager-routing-methods.md#performance):** farklı coğrafi konumlarda uygulamalar varsa, en düşük ağ gecikmesi bakımından "en yakın" uygulamayı kullanın.
+* **[Coğrafi](../traffic-manager/traffic-manager-routing-methods.md#geographic):** kullanıcıları, DNS sorgusunun kaynaklandığı coğrafi konuma göre belirli uygulamalara yönlendirin. 
 
 Daha fazla bilgi için bkz. [Traffic Manager yönlendirme yöntemleri](../traffic-manager/traffic-manager-routing-methods.md).
 

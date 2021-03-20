@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.date: 03/27/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: e96d205ef1a8f94baa3a0cfe6c5127b6cf570e5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80420969"
 ---
 Bu makalede, bir VHD 'YI yerel makinenizden Azure yönetilen diskine yükleme veya AzCopy kullanarak yönetilen bir diski başka bir bölgeye kopyalama işlemleri açıklanmaktadır. Bu işlem, doğrudan karşıya yükleme, bir VHD 'yi doğrudan yönetilen diske boyutundaki 32 TiB 'ye kadar karşıya yüklemenizi de sağlar. Şu anda, standart HDD, standart SSD ve Premium SSD tarafından yönetilen diskler için doğrudan karşıya yükleme desteklenir. Henüz Ultra diskler için desteklenmez.

@@ -13,10 +13,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 12/13/2018
 ms.openlocfilehash: e102aaace15d065d02e44fa06655827068020959
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91620231"
 ---
 # <a name="sync-networking-configuration-for-azure-app-service-hosting-plan-with-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği ile Azure App Service barındırma planı için eşitleme ağı yapılandırması
@@ -32,7 +32,7 @@ Bunu yapmak için şu adımları uygulayın:
 
    ![App Service planının ekran görüntüsü](./media/azure-app-sync-network-configuration/app-service-plan.png)
 
-2. **Ağ** ' ı seçin ve ardından **yönetmek Için buraya tıklayın ' ı**seçin.
+2. **Ağ** ' ı seçin ve ardından **yönetmek Için buraya tıklayın ' ı** seçin.
 
    ![Hizmet planını yönetme ekran görüntüsü](./media/azure-app-sync-network-configuration/manage-plan.png)
 

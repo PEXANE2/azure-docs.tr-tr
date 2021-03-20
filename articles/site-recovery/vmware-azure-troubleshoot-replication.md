@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
 ms.openlocfilehash: 8b44a1d6119cc658b9460e0a52fa0629f759964a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91336214"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>VMware VM’leri ve fiziksel sunucular için çoğaltma sorunlarını giderme
@@ -41,7 +41,7 @@ Bu sorunları çözmek için [bağlantı ve çoğaltmada sorun giderin](vmware-p
 
 Site Recovery kullanarak çoğaltmayı etkinleştirmek için kaynak makineyi seçmeyi denediğinizde, makine aşağıdaki nedenlerden biri için kullanılamayabilir:
 
-* **Aynı örnek UUID 'ye sahip iki sanal**makine: vCenter 'ın altındaki iki sanal makine aynı örnek UUID 'ye sahip ise, yapılandırma sunucusu tarafından bulunan ilk sanal makine Azure Portal gösterilir. Bu sorunu çözmek için, iki sanal makinenin aynı örnek UUID 'ye sahip olmadığından emin olun. Bu senaryo genellikle bir yedekleme VM 'sinin etkin olduğu ve bulma kayıtlarımızla oturum açtığı örneklerde görülür. VMware 'den [Azure 'a Azure Site Recovery başvurun: yinelenen veya eski girdileri](https://social.technet.microsoft.com/wiki/contents/articles/32026.asr-vmware-to-azure-how-to-cleanup-duplicatestale-entries.aspx) gidermek için temizleme.
+* **Aynı örnek UUID 'ye sahip iki sanal** makine: vCenter 'ın altındaki iki sanal makine aynı örnek UUID 'ye sahip ise, yapılandırma sunucusu tarafından bulunan ilk sanal makine Azure Portal gösterilir. Bu sorunu çözmek için, iki sanal makinenin aynı örnek UUID 'ye sahip olmadığından emin olun. Bu senaryo genellikle bir yedekleme VM 'sinin etkin olduğu ve bulma kayıtlarımızla oturum açtığı örneklerde görülür. VMware 'den [Azure 'a Azure Site Recovery başvurun: yinelenen veya eski girdileri](https://social.technet.microsoft.com/wiki/contents/articles/32026.asr-vmware-to-azure-how-to-cleanup-duplicatestale-entries.aspx) gidermek için temizleme.
 * **Geçersiz vCenter kullanıcısı kimlik bilgileri**: ovf şablonunu veya Birleşik kurulumu kullanarak yapılandırma sunucusunu ayarlarken doğru vCenter kimlik bilgilerini seçtiğinizden emin olun. Kurulum sırasında eklediğiniz kimlik bilgilerini doğrulamak için bkz. [otomatik bulma için kimlik bilgilerini değiştirme](vmware-azure-manage-configuration-server.md#modify-credentials-for-automatic-discovery).
 * **vCenter yetersiz ayrıcalıklar**: vCenter 'a erişim için belirtilen izinler gerekli izinlere sahip değilse, sanal makineleri bulma başarısız olabilir. [Otomatik bulma için bir hesap hazırlama](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery) bölümünde açıklanan izinlerin vCenter Kullanıcı hesabına eklendiğinden emin olun.
 * **Yönetim sunucuları Azure Site Recovery**: sanal makine, aşağıdaki roller-yapılandırma sunucusu/Scale-Out işlem sunucusu/ana hedef sunucusundan bir veya daha fazla yönetim sunucusu olarak kullanılıyorsa, portaldan sanal makineyi seçemeyeceksiniz. Managements sunucuları çoğaltılamaz.
@@ -118,7 +118,7 @@ Sorunu çözmek için, hizmet durumunu doğrulamak üzere aşağıdaki adımlar�
     - Hata ayrıntıları için konumdaki günlükleri kontrol edin:
 
         *C:\Program Files (x86) \Microsoft Azure Site Recovery\agent\svagents \* . log*
-3. Ana hedefi yapılandırma sunucusuna kaydetmek için **%ProgramData%\asr\agent**klasörüne gidin ve komut isteminde aşağıdaki komutu çalıştırın:
+3. Ana hedefi yapılandırma sunucusuna kaydetmek için **%ProgramData%\asr\agent** klasörüne gidin ve komut isteminde aşağıdaki komutu çalıştırın:
    ```
    cmd
    cdpcli.exe --registermt
@@ -172,7 +172,7 @@ Yukarıdaki örnekte **2147754994** , hatayı aşağıda gösterildiği gibi bil
 **Nasıl düzeltilir**: uygulama tutarlılığı etiketi oluşturmak için, Azure Site Recovery Microsoft birim gölge kopyası hizmeti 'NI (VSS) kullanır. Uygulama tutarlılığı anlık görüntülerini almak için işlemi için bir VSS sağlayıcısı yüklenir. Bu VSS sağlayıcısı bir hizmet olarak yüklendi. VSS sağlayıcısı hizmetinin devre dışı bırakılması durumunda, uygulama tutarlılığı anlık görüntüsü oluşturma işlemi hata KIMLIĞIYLE başarısız olur "belirtilen hizmet devre dışı bırakıldı ve başlatılamıyor (0x80070422)". </br>
 
 - VSS devre dışıysa,
-    - VSS sağlayıcı hizmetinin başlangıç türünün **Otomatik**olarak ayarlandığını doğrulayın.
+    - VSS sağlayıcı hizmetinin başlangıç türünün **Otomatik** olarak ayarlandığını doğrulayın.
     - Aşağıdaki hizmetleri yeniden başlatın:
         - VSS hizmeti
         - VSS sağlayıcısı Azure Site Recovery
@@ -187,7 +187,7 @@ Azure Site Recovery VSS sağlayıcısı hizmeti 'nin yüklü olup olmadığını
 - Mevcut sağlayıcıyı kaldır: C:\Program Files (x86) \Microsoft Azure Site Recovery\agent\ InMageVSSProvider_Uninstall. cmd
 - Yeniden yükle: C:\Program Files (x86) \Microsoft Azure Site Recovery\agent\ InMageVSSProvider_Install. cmd
 
-VSS sağlayıcı hizmetinin başlangıç türünün **Otomatik**olarak ayarlandığını doğrulayın.
+VSS sağlayıcı hizmetinin başlangıç türünün **Otomatik** olarak ayarlandığını doğrulayın.
     - Aşağıdaki hizmetleri yeniden başlatın:
         - VSS hizmeti
         - VSS sağlayıcısı Azure Site Recovery

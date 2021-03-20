@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0498ee1c57cfa661884fe3209d4e089b54996fae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89231070"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory raporlama gecikme süreleri
@@ -54,8 +54,8 @@ Aşağıdaki tabloda etkinlik raporları için gecikme bilgileri listelenmektedi
 
 İki tür güvenlik raporu vardır:
 
-- [Riskli oturum açma işlemleri](../identity-protection/overview-identity-protection.md) - Riskli oturum açma işlemi bir kullanıcı hesabının meşru sahibi olmayan bir kişi tarafından gerçekleştirilmiş olabilecek oturum açma girişiminin göstergesidir. 
-- [Riskli oldukları belirlenen kullanıcılar](../identity-protection/overview-identity-protection.md) - Riskli kullanıcı, güvenliği tehlikeye girmiş olabilecek bir kullanıcı hesabının göstergesidir. 
+- [Riskli oturum](../identity-protection/overview-identity-protection.md) açma işlemleri-riskli oturum açma, bir kullanıcı hesabının meşru sahibi olmayan birisi tarafından gerçekleştirilmiş olabilecek oturum açma girişimine yönelik bir göstergedir. 
+- [Risk için Işaretlenen kullanıcılar](../identity-protection/overview-identity-protection.md) -riskli bir Kullanıcı, tehlikeye girmiş olabilecek bir kullanıcı hesabı göstergesidir. 
 
 Aşağıdaki tabloda güvenlik raporlarının gecikme süresi bilgileri listelenmektedir.
 
@@ -66,7 +66,7 @@ Aşağıdaki tabloda güvenlik raporlarının gecikme süresi bilgileri listelen
 
 ## <a name="risk-detections"></a>Risk algılamaları
 
-Azure AD, kullanıcı hesaplarınızla ilgili şüpheli eylemleri algılamak için uyarlamalı makine öğrenimi algoritmaları ve buluşsal yöntemler kullanır. Algılanan her şüpheli eylem, **risk algılama**adlı bir kayıtta saklanır.
+Azure AD, kullanıcı hesaplarınızla ilgili şüpheli eylemleri algılamak için uyarlamalı makine öğrenimi algoritmaları ve buluşsal yöntemler kullanır. Algılanan her şüpheli eylem, **risk algılama** adlı bir kayıtta saklanır.
 
 Aşağıdaki tabloda risk algılamaları için gecikme bilgileri listelenmektedir.
 

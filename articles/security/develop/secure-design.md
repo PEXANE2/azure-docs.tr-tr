@@ -14,10 +14,10 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: 743412b7602e5781911cdf190e41a5ee15bfddd4
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96487686"
 ---
 # <a name="design-secure-applications-on-azure"></a>Azure 'da güvenli uygulamalar tasarlama
@@ -156,9 +156,9 @@ Uygulama tasarımını modelleme ve [ilerleme](https://docs.google.com/viewer?a=
 | Spoofing (Kimlik Sahtekarlığı)               | Kimlik Doğrulaması        | [HTTPS bağlantıları gerektir](/aspnet/core/security/enforcing-ssl?tabs=visual-studio&view=aspnetcore-2.1). |
 | Tampering (Kurcalama)              | Bütünlük             | SSL/TLS sertifikalarını doğrulayın. SSL/TLS kullanan uygulamaların, bağlandıkları varlıkların X. 509.440 sertifikalarını tam olarak doğrulaması gerekir. [X509 sertifikalarınızı yönetmek](../../key-vault/general/about-keys-secrets-certificates.md)için Azure Key Vault sertifikaları kullanın. |
 | Repudiation (İnkar)            | İnkar edilemez       | Azure [izleme ve tanılama 'yı](/azure/architecture/best-practices/monitoring)etkinleştirin.|
-| Information Disclosure (Bilgilerin Açığa Çıkması) | Gizlilik       | REST ve iletim [sırasında](../fundamentals/encryption-atrest.md) hassas verileri [in transit](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit)şifreleyin. |
+| Information Disclosure (Bilgilerin Açığa Çıkması) | Gizlilik       | REST ve iletim [sırasında](../fundamentals/encryption-atrest.md) hassas verileri [](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit)şifreleyin. |
 | Denial of Service (Hizmet Reddi)      | Kullanılabilirlik          | Olası hizmet reddi koşulları için performans ölçümlerini izleyin. Bağlantı filtrelerini uygulayın. [Azure DDoS koruması](../../ddos-protection/ddos-protection-overview.md#next-steps), uygulama tasarımı en iyi uygulamaları ile birlikte, DDoS saldırılarına karşı savunma sağlar.|
-| Elevation of Privilege (Ayrıcalık Yükseltme) | Yetkilendirme         | Azure Active Directory <span class="underline"> </span> [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)kullanın.|
+| Elevation of Privilege (Ayrıcalık Yükseltme) | Yetkilendirme         | Azure Active Directory <span class="underline"></span> [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)kullanın.|
 
 ### <a name="reduce-your-attack-surface"></a>Saldırı yüzeyinizi azaltma
 

@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 08/25/2020
 ms.custom: seodec18
 ms.openlocfilehash: e1b50675bef0f883ff617b3098a742d3491b3c13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89484316"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Etkin bir DNS adını Azure App Service geçirme
@@ -21,7 +21,7 @@ Canlı bir siteyi ve DNS etki alanı adını App Service 'e geçirdiğinizde, bu
 
 DNS çözümlemesindeki kapalı kalma süresi konusunda endişelendiğinizde, bkz. [Azure App Service bir özel DNS adını eşleme](app-service-web-tutorial-custom-domain.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır:
 

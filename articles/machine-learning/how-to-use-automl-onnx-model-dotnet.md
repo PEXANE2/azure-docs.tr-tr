@@ -11,10 +11,10 @@ ms.service: machine-learning
 ms.subservice: core
 ms.custom: how-to, automl
 ms.openlocfilehash: 4fb147dc5c57c3a98607a025f566fa583bf87460
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93358822"
 ---
 # <a name="make-predictions-with-an-automl-onnx-model-in-net"></a>.NET 'teki bir oto ml ONNX modeliyle tahminlere sahip olun
@@ -50,7 +50,7 @@ Bu örnekte, uygulamanızı oluşturmak için .NET Core CLI kullanırsınız anc
 
 ## <a name="add-software-packages"></a>Yazılım paketleri Ekle
 
-1. .NET Core CLI kullanarak **Microsoft.ml** , **Microsoft. ml. OnnxRuntime** ve **Microsoft. ml. onnxtransformer** NuGet paketlerini yükler.
+1. .NET Core CLI kullanarak **Microsoft.ml**, **Microsoft. ml. OnnxRuntime** ve **Microsoft. ml. onnxtransformer** NuGet paketlerini yükler.
 
     ```dotnetcli
     dotnet add package Microsoft.ML
@@ -60,7 +60,7 @@ Bu örnekte, uygulamanızı oluşturmak için .NET Core CLI kullanırsınız anc
 
     Bu paketler bir .NET uygulamasında ONNX modelini kullanmak için gereken bağımlılıkları içerir. ML.NET, tahminler için [Onnx çalışma zamanını](https://github.com/Microsoft/onnxruntime) kullanan bir API sağlar.
 
-1. *Program.cs* dosyasını açın ve `using` ilgili paketlere başvurmak için üst kısımdaki aşağıdaki deyimleri ekleyin.
+1. *Program. cs* dosyasını açın ve `using` ilgili paketlere başvurmak için en üst kısımdaki aşağıdaki deyimleri ekleyin.
 
     ```csharp
     using System.Linq;
@@ -86,9 +86,9 @@ Uygulamanızdaki ONNX model dosyanıza bir başvuru ekleyin
     </ItemGroup>
     ```
 
-    Bu durumda, ONNX model dosyasının adı, *oto ml-model. onnx* ' dir.
+    Bu durumda, ONNX model dosyasının adı, *oto ml-model. onnx*' dir.
 
-1. *Program.cs* dosyasını açın ve sınıfının içine aşağıdaki satırı ekleyin `Program` .
+1. *Program. cs* dosyasını açın ve sınıfının içine aşağıdaki satırı ekleyin `Program` .
 
     ```csharp
     static string ONNX_MODEL_PATH = "automl-model.onnx";
@@ -112,9 +112,9 @@ Bu örnekte kullanılan model, NYC TLC TAXI seyahat veri kümesindeki verileri k
 
 |vendor_id|rate_code|passenger_count|trip_time_in_secs|trip_distance|payment_type|fare_amount|
 |---|---|---|---|---|---|---|
-|VTS|1|1|1140|3,75|CRD|15,5|
-|VTS|1|1|480|2,72|CRD|10,0|
-|VTS|1|1|1680|7.8|CSH|26,5|
+|VTS|1|1|1140|3,75|CRD|15.5|
+|VTS|1|1|480|2,72|CRD|10.0|
+|VTS|1|1|1680|7.8|CSH|26.5|
 
 ### <a name="inspect-the-onnx-model-optional"></a>ONNX modelini İnceleme (isteğe bağlı)
 
@@ -130,7 +130,7 @@ Modelinizin giriş ve çıktılarını incelemek için netron gibi bir araç kul
 
 ### <a name="define-model-input-schema"></a>Model giriş şemasını tanımla
 
-`OnnxInput` *Program.cs* dosyasının içinde aşağıdaki özelliklerle çağrılan yeni bir sınıf oluşturun.
+`OnnxInput` *Program. cs* dosyası içinde aşağıdaki özelliklerle adlı yeni bir sınıf oluşturun.
 
 ```csharp
 public class OnnxInput
@@ -165,7 +165,7 @@ Veri öznitelikleri hakkında daha fazla bilgi için bkz. [ml.net Load Data Guid
 
 ### <a name="define-model-output-schema"></a>Model çıkış şemasını tanımla
 
-Veriler işlendikten sonra, belirli bir biçimin çıkışını üretir. Veri çıktı şemanızı tanımlayın. `OnnxOutput` *Program.cs* dosyasının içinde aşağıdaki özelliklerle çağrılan yeni bir sınıf oluşturun.
+Veriler işlendikten sonra, belirli bir biçimin çıkışını üretir. Veri çıktı şemanızı tanımlayın. `OnnxOutput` *Program. cs* dosyası içinde aşağıdaki özelliklerle adlı yeni bir sınıf oluşturun.
 
 ```csharp
 public class OnnxOutput

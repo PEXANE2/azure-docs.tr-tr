@@ -8,15 +8,15 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: aa0b3a05fb26f6be951b697145d7b22e03b7792d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86171627"
 ---
 # <a name="delivery-and-retry"></a>Teslim ve yeniden deneme
 
-Event Grid dayanıklı teslim sağlar. Her iletiyi her bir eşleşen abonelik için en az bir kez teslim etmeye çalışır. Bir abonenin uç noktası bir olayın alındığını kabul etmez veya bir hata oluşursa, yeniden deneme **çizelgesine** ve **yeniden deneme ilkesine**göre teslimi Event Grid.  Varsayılan olarak, Event Grid modülü abone için bir seferde bir olay sunar. Yük, ancak tek bir olay içeren bir dizidir. Çıkış toplu işleme özelliğini etkinleştirerek modülün bir seferde birden fazla olay sunabilmenize olanak sağlayabilirsiniz. Bu özellik hakkında daha fazla bilgi için bkz. [çıktıyı toplu işleme](delivery-output-batching.md).  
+Event Grid dayanıklı teslim sağlar. Her iletiyi her bir eşleşen abonelik için en az bir kez teslim etmeye çalışır. Bir abonenin uç noktası bir olayın alındığını kabul etmez veya bir hata oluşursa, yeniden deneme **çizelgesine** ve **yeniden deneme ilkesine** göre teslimi Event Grid.  Varsayılan olarak, Event Grid modülü abone için bir seferde bir olay sunar. Yük, ancak tek bir olay içeren bir dizidir. Çıkış toplu işleme özelliğini etkinleştirerek modülün bir seferde birden fazla olay sunabilmenize olanak sağlayabilirsiniz. Bu özellik hakkında daha fazla bilgi için bkz. [çıktıyı toplu işleme](delivery-output-batching.md).  
 
 > [!IMPORTANT]
 >Olay verileri için kalıcılık desteği yoktur. Bu, Event Grid modülün yeniden dağıtılması veya yeniden başlatılması, henüz teslim edilmemiş tüm olayları kaybetmenize neden olur.
@@ -27,7 +27,7 @@ Event Grid bir ileti teslim edildikten sonra yanıt için 60 saniyeye kadar bekl
 
 Yeniden deneneceği zamanlamayı belirleyen, önceden yapılandırılmış iki geri dönüş kuyruğu vardır. Bunlar:
 
-| Zamanla | Açıklama |
+| Zamanla | Description |
 | ---------| ------------ |
 | 1 dakika | Burada biten iletiler her dakikada denenir.
 | 10 dakika | Burada sona eklenen iletiler her 10 dakikada bir denenir.
@@ -52,7 +52,7 @@ Yeniden deneme ilkesinin limitlerinin herhangi birine ulaşıldığında bir ola
 
 İki özellik vardır: `brokers__defaultMaxDeliveryAttempts` ve `broker__defaultEventTimeToLiveInSeconds` Event Grid dağıtımının bir parçası olarak yapılandırılabilirler ve bu da tüm aboneler için yeniden deneme ilkesi varsayılanlarını denetler.
 
-| Özellik Adı | Açıklama |
+| Özellik Adı | Description |
 | ---------------- | ------------ |
 | `broker__defaultMaxDeliveryAttempts` | Bir olayı teslim etmeye yönelik deneme sayısı üst sınırı. Varsayılan değer: 30.
 | `broker__defaultEventTimeToLiveInSeconds` | Bir olayın teslim edilmeden önce bırakılması gereken saniye cinsinden olay TTL 'SI. Varsayılan değer: **7200** saniye

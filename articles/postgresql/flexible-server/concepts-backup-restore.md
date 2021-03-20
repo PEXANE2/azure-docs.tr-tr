@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: d0e79e42c7c004638336ada23de663bbe74b7e48
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92532654"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---flexible-server"></a>PostgreSQL için Azure veritabanı 'nda yedekleme ve geri yükleme-esnek sunucu
@@ -71,9 +71,9 @@ Bir noktadan noktaya geri yükleme, birden çok senaryoda faydalıdır. Örneği
 
 En erken geri yükleme noktası ve özel geri yükleme noktası arasında seçim yapabilirsiniz.
 
--   **En erken geri yükleme noktası** : saklama döneminize bağlı olarak, geri yükleme için en erken zaman olur. En eski yedekleme zamanı otomatik olarak seçilir ve portalda görüntülenir. Bu, zaman içinde belirli bir testi incelemek veya bir test yapmak istiyorsanız kullanışlıdır.
+-   **En erken geri yükleme noktası**: saklama döneminize bağlı olarak, geri yükleme için en erken zaman olur. En eski yedekleme zamanı otomatik olarak seçilir ve portalda görüntülenir. Bu, zaman içinde belirli bir testi incelemek veya bir test yapmak istiyorsanız kullanışlıdır.
 
--   **Özel geri yükleme noktası** : Bu seçenek, bu esnek sunucu için tanımlanan Bekletme dönemi içinde herhangi bir noktayı seçmenizi sağlar. Varsayılan olarak, UTC olarak en son zaman otomatik seçilir ve test amaçlarınız için en son kaydedilen işleme geri yüklemek istiyorsanız yararlı olur. İsteğe bağlı olarak başka günler ve saat seçebilirsiniz. 
+-   **Özel geri yükleme noktası**: Bu seçenek, bu esnek sunucu için tanımlanan Bekletme dönemi içinde herhangi bir noktayı seçmenizi sağlar. Varsayılan olarak, UTC olarak en son zaman otomatik seçilir ve test amaçlarınız için en son kaydedilen işleme geri yüklemek istiyorsanız yararlı olur. İsteğe bağlı olarak başka günler ve saat seçebilirsiniz. 
 
 Kurtarılacak tahmini süre, veritabanı boyutu, işlem günlüklerinin hacmi, ağ bant genişliği ve aynı bölgedeki aynı bölgede Kurtarılan toplam veritabanı sayısı gibi çeşitli faktörlere bağlıdır. Genel kurtarma süresi genellikle birkaç dakikadan birkaç saate kadar sürer.
 

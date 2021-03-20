@@ -7,10 +7,10 @@ ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.openlocfilehash: 63c7f226dcd99ec8040f2078ce12be0fe3c594df
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99548823"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure geçişi sunucu geçişi: sık sorulan sorular
@@ -134,7 +134,7 @@ Aracı tabanlı bir çoğaltma yöntemi için, dağıtım planlayıcısı ortam�
 
 ## <a name="how-do-i-throttle-replication-in-using-azure-migrate-appliance-for-agentless-vmware-replication"></a>Aracısız VMware çoğaltması için Azure geçişi aracı 'nı kullanarak çoğaltma Nasıl yaparım? kısıtlaması yapılsın mı?  
 
-NetQosPolicy kullanarak kısıtlama yapabilirsiniz. Örneğin:
+NetQosPolicy kullanarak kısıtlama yapabilirsiniz. Örnek:
 
 NetQosPolicy içinde kullanılacak AppNamePrefix "GatewayWindowsService.exe" dir. Bunun gibi bir ilke oluşturarak gerecden gelen çoğaltma trafiğini kısıtlamak için Azure geçişi gereci üzerinde bir ilke oluşturabilirsiniz:
 

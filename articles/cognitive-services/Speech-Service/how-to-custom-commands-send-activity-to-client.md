@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
 ms.openlocfilehash: 52a4dbc4ff01515af8cd7d2503877184a09f7e64
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94566104"
 ---
 # <a name="send-custom-commands-activity-to-client-application"></a>İstemci uygulamasına özel komutlar etkinliği gönder
@@ -26,7 +26,7 @@ Aşağıdaki görevleri tamamlayabilirsiniz:
 - Özel komutlar uygulamanızdan özel bir JSON yükü tanımlama ve gönderme
 - C# UWP konuşma SDK 'Sı istemci uygulamasından özel JSON yükü içeriğini alma ve görselleştirme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 > [!div class = "checklist"]
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) veya üzeri. Bu kılavuzda Visual Studio 2019 kullanılmaktadır
 > * Konuşma hizmeti için Azure abonelik anahtarı: [Ücretsiz edinin](overview.md#try-the-speech-service-for-free) veya [Azure portalından](https://portal.azure.com) oluşturun
@@ -85,8 +85,8 @@ Aşağıdaki görevleri tamamlayabilirsiniz:
 Bir JSON yükü oluşturduğunuzdan, seri durumdan çıkarmayı işlemek için [JSON.net](https://www.newtonsoft.com/json) kitaplığına bir başvuru eklemeniz gerekir.
 
 1. Çözümünüz için sağ istemci.
-1. **Çözüm Için NuGet Paketlerini Yönet** ' i seçin, **Araştır** ' ı seçin 
-1. **ÜzerindeNewtonsoft.js** zaten yüklüyse sürümünün en az 12.0.3 olduğundan emin olun. Aksi takdirde, **çözüm Için NuGet Paketlerini Yönet-güncelleştirmeler** ' e gidin, güncelleştirmek için **üzerindeNewtonsoft.js** arayın. Bu kılavuz, 12.0.3 sürümünü kullanıyor.
+1. **Çözüm Için NuGet Paketlerini Yönet**' i seçin, **Araştır** ' ı seçin 
+1. **ÜzerindeNewtonsoft.js** zaten yüklüyse sürümünün en az 12.0.3 olduğundan emin olun. Aksi takdirde, **çözüm Için NuGet Paketlerini Yönet-güncelleştirmeler**' e gidin, güncelleştirmek için **üzerindeNewtonsoft.js** arayın. Bu kılavuz, 12.0.3 sürümünü kullanıyor.
 
     > [!div class="mx-imgBorder"]
     > ![Etkinlik yükünü gönder](media/custom-commands/send-activity-to-client-json-nuget.png)

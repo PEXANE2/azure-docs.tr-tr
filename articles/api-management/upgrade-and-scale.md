@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
 ms.openlocfilehash: bd36434bbfe435a53567c46728610627f99f987f
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98127796"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Azure API Management örneğini yükseltme ve ölçeklendirme  
@@ -29,7 +29,7 @@ Her bir birimin fiyatı ve kullanılabilir Özellikler (örneğin, çok bölgeli
 >[!NOTE]
 >[Fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/api-management/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) makalesi her katmandaki birim kapasitesini yaklaşık olarak gösterir. Daha doğru sayılar almak için API 'leriniz için gerçekçi bir senaryoya bakmanız gerekir. [Azure API Management örneği 'Nin kapasitesine](api-management-capacity.md) bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları izleyerek şunları yapmanız gerekir:
 

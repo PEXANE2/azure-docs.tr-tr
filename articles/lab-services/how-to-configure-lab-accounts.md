@@ -4,16 +4,16 @@ description: Bu makalede laboratuvar hesabındaki sanal makinelerin otomatik ola
 ms.topic: article
 ms.date: 08/17/2020
 ms.openlocfilehash: c0a147a81aaed88313a1b9aa4b0754d9a3badcb5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91650043"
 ---
 # <a name="configure-automatic-shutdown-of-vms-for-a-lab-account"></a>Laboratuvar hesabı için sanal makinelerin otomatik olarak kapatılmasını yapılandırın
 
 Sanal makineler etkin bir şekilde kullanılmadığınızda, ek maliyetleri önceden engellemek için birkaç otomatik kapalı maliyet denetimi özelliği etkinleştirebilirsiniz. Aşağıdaki üç otomatik kapatılma ve bağlantı kesme özelliğinin birleşimi, kullanıcıların sanal makinelerini yanlışlıkla bırakması için gereken durumların çoğunu yakalar:
- 
+ 
 - İşletim sisteminin boşta kaldığı sanal makinelerle kullanıcıların bağlantısını otomatik olarak keser.
 - Kullanıcıların bağlantısı kesildiğinde sanal makineleri otomatik olarak kapat.
 - Başlatılan ancak kullanıcılar bağlanmadığında sanal makineleri otomatik olarak kapat.

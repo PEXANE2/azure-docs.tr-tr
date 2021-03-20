@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.openlocfilehash: fc2a2c557ff9738051b9d9f38ad8947d2edd6a36
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92319242"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-10000ft-plans"></a>Öğretici: 10, 000ft planlarıyla Azure Active Directory tümleştirme
@@ -30,7 +30,7 @@ Azure AD ile 10 GB 'lik planları tümleştirmek, aşağıdaki avantajları sağ
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini 10, 000ft planlarla yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -62,13 +62,13 @@ Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandı
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **10, 000ft planları**yazın, sonuç panelinden **10, 000ft planları** seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna **10, 000ft planları** yazın, sonuç panelinden **10, 000ft planları** seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
     ![Sonuç listesinde 10, 000ft plan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre 10, 000Ft planlarla yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre 10, 000Ft planlarla yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve 10 ' da ilgili Kullanıcı arasındaki bağlantı ilişkisi, 000ft planlarınızın oluşturulması gerekir.
 
 Azure AD çoklu oturum açma 'yı 10 GB 'lik planlarla yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -143,7 +143,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**yazın.
+    a. **Ad** alanına **Brittasıon** yazın.
   
     b. **Kullanıcı adı** alanına, yazın `brittasimon@yourcompanydomain.extension` . Örneğin, BrittaSimon@contoso.com
 

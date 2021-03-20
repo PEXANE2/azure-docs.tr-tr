@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
 ms.openlocfilehash: 8e3805fae5bf6cc5ad8cf759d3ba75220c6ddbd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91565080"
 ---
 # <a name="add-trading-partners-to-integration-accounts-for-azure-logic-apps"></a>Azure Logic Apps için tümleştirme hesaplarına ticari ortak ekleme
@@ -41,7 +41,7 @@ Bir anlaşmada, ana bilgisayar ortağının perspektifinden gelen ve giden ileti
 
    !["Tümleştirme hesapları" nı seçin](./media/logic-apps-enterprise-integration-partners/find-integration-accounts.png)
 
-1. **Tümleştirme hesapları**altında, iş ortaklarınızı eklemek istediğiniz tümleştirme hesabını seçin.
+1. **Tümleştirme hesapları** altında, iş ortaklarınızı eklemek istediğiniz tümleştirme hesabını seçin.
 
    ![Tümleştirme hesabı seçin](./media/logic-apps-enterprise-integration-partners/select-integration-account.png)
 
@@ -49,15 +49,15 @@ Bir anlaşmada, ana bilgisayar ortağının perspektifinden gelen ve giden ileti
 
    ![Iş ortakları kutucuğunu gösteren ekran görüntüsü.](./media/logic-apps-enterprise-integration-partners/choose-partners.png)
 
-1. **Iş ortakları**altında **Ekle**' yi seçin. **Iş ortağı Ekle**altında aşağıdaki tabloda açıklandığı gibi iş ortağının ayrıntılarını sağlayın.
+1. **Iş ortakları** altında **Ekle**' yi seçin. **Iş ortağı Ekle** altında aşağıdaki tabloda açıklandığı gibi iş ortağının ayrıntılarını sağlayın.
 
    !["Ekle" yi seçin ve iş ortağı ayrıntılarını sağlayın](./media/logic-apps-enterprise-integration-partners/add-partners.png)
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **Ad** | Evet | Ortağın adı |
-   | **Leyicisini** | Evet | Kuruluşlara benzersiz iş kimlikleri sağlayan kimlik doğrulama gövdesi (örneğin, **D-U-N-S (Dun & Bradstreet)**. <p>İş ortakları, karşılıklı tanımlanmış bir iş kimliğini kabul edebilir. Bu senaryolar için, x12 için **birlikte kullanılamayan** , ediolgu Için ve **karşılıklı tanımlanmış (x12)** seçeneğini belirleyin. <p>RosettaNet için, yalnızca standart olan **Dçalıştırır**' ı seçin. |
-   | **Değer** | Evet | Mantıksal uygulamalarınızın alacağı belgeleri tanımlayan bir değer. <p>RosettaNet için bu değer, dı numarasına karşılık gelen dokuz basamaklı bir sayı olmalıdır. |
+   | **Ad** | Yes | Ortağın adı |
+   | **Leyicisini** | Yes | Kuruluşlara benzersiz iş kimlikleri sağlayan kimlik doğrulama gövdesi (örneğin, **D-U-N-S (Dun & Bradstreet)**. <p>İş ortakları, karşılıklı tanımlanmış bir iş kimliğini kabul edebilir. Bu senaryolar için, x12 için **birlikte kullanılamayan** , ediolgu Için ve **karşılıklı tanımlanmış (x12)** seçeneğini belirleyin. <p>RosettaNet için, yalnızca standart olan **Dçalıştırır**' ı seçin. |
+   | **Değer** | Yes | Mantıksal uygulamalarınızın alacağı belgeleri tanımlayan bir değer. <p>RosettaNet için bu değer, dı numarasına karşılık gelen dokuz basamaklı bir sayı olmalıdır. |
    ||||
 
    > [!NOTE]
@@ -82,16 +82,16 @@ Bir anlaşmada, ana bilgisayar ortağının perspektifinden gelen ve giden ileti
 
    ![Değişikliklerinizi yapın ve kaydedin](./media/logic-apps-enterprise-integration-partners/edit-partner.png)
 
-   RosettaNet için, **RosettaNet Iş ortağı özellikleri**altında bu ek bilgileri belirtebilirsiniz:
+   RosettaNet için, **RosettaNet Iş ortağı özellikleri** altında bu ek bilgileri belirtebilirsiniz:
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **İş ortağı sınıflandırması** | Hayır | Ortağın kuruluş türü |
-   | **Tedarik zinciri kodu** | Hayır | Ortağın tedarik zinciri kodu, örneğin "bilgi teknolojisi" veya "elektronik bileşenler" |
-   | **Kişi adı** | Hayır | Ortağın ilgili kişi adı |
-   | **E-posta** | Hayır | Ortağın e-posta adresi |
-   | **Faks** | Hayır | Ortağın Faks numarası |
-   | **Telefon** | Hayır | Ortağın telefon numarası |
+   | **İş ortağı sınıflandırması** | No | Ortağın kuruluş türü |
+   | **Tedarik zinciri kodu** | No | Ortağın tedarik zinciri kodu, örneğin "bilgi teknolojisi" veya "elektronik bileşenler" |
+   | **Kişi adı** | No | Ortağın ilgili kişi adı |
+   | **E-posta** | No | Ortağın e-posta adresi |
+   | **Faks** | No | Ortağın Faks numarası |
+   | **Telefon** | No | Ortağın telefon numarası |
    ||||
 
 1. İşiniz bittiğinde, değişikliklerinizi kaydetmek için **Tamam** ' ı seçin.

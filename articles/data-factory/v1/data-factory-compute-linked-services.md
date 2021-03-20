@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 07e13036a427ff7ff4f0cbbd2dfd6fbe272bf915
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100377202"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory-version-1"></a>Azure Data Factory sürüm 1 tarafından desteklenen işlem ortamları
@@ -285,13 +285,13 @@ Batch hizmetini kullanmaya yeni çalışıyorsanız:
 }
 ```
 
-**AccountName** özelliği için, ekleyin **. \<region name\>** Batch hesabınızın adına. Örneğin:
+**AccountName** özelliği için, ekleyin **. \<region name\>** Batch hesabınızın adına. Örnek:
 
 ```json
 "accountName": "mybatchaccount.eastus"
 ```
 
-Diğer bir seçenek de **Batchuri** uç noktası sağlamaktır. Örneğin:
+Diğer bir seçenek de **Batchuri** uç noktası sağlamaktır. Örnek:
 
 ```json
 "accountName": "adfteam",

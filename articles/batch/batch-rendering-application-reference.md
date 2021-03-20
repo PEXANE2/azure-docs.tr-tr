@@ -6,10 +6,10 @@ ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
 ms.openlocfilehash: ace3fe7aee6b9ffc7226448b455bcfea1f931458
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85964881"
 ---
 # <a name="rendering-applications"></a>Uygulamaları işleme
@@ -31,7 +31,7 @@ Bu makalede, her bir işleme uygulamasının nasıl çalıştırılacağı hakk�
 
 `3dsmaxcmdio.exe`Bir havuz düğümünde komut satırı oluşturmayı gerçekleştirmek için uygulamayı çağırın.  Bu uygulama, görev çalıştırıldığında yol üzerinde bulunur. `3dsmaxcmdio.exe`Uygulama, uygulama ile aynı kullanılabilir parametrelere sahiptir `3dsmaxcmd.exe` ve bu, [3ds Max yardım belgelerinde](https://help.autodesk.com/view/3DSMAX/2018/ENU/) (işleme | Command-Line işleme bölümünde) belgelenmiştir.
 
-Örneğin:
+Örnek:
 
 ```
 3dsmaxcmdio.exe -v:5 -rfw:0 -start:{0} -end:{0} -bitmapPath:"%AZ_BATCH_JOB_PREP_WORKING_DIR%\sceneassets\images" -outputName:dragon.jpg -w:1280 -h:720 "%AZ_BATCH_JOB_PREP_WORKING_DIR%\scenes\dragon.max"

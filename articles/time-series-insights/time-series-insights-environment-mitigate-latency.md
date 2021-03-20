@@ -13,10 +13,10 @@ ms.topic: troubleshooting
 ms.date: 09/29/2020
 ms.custom: seodec18
 ms.openlocfilehash: e89189b22b144d9e92ee8315bc6fd9aabe699eec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91531658"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights-gen1"></a>Azure Time Series Insights Gen1 gecikme süresini azaltmak için azaltmayı izleyin ve azaltır
@@ -49,7 +49,7 @@ Uyarılar, ortamınızda oluşan gecikme sorunlarını tanılamanıza ve azaltma
 
    [![Azure Time Series Insights ortamınıza bir uyarı ekleme](media/environment-mitigate-latency/mitigate-latency-add-alert.png)](media/environment-mitigate-latency/mitigate-latency-add-alert.png#lightbox)
 
-1. **+ Yeni uyarı kuralı**'nı seçin. **Kural oluştur** paneli görüntülenir. **Koşul**altında **Ekle** ' yi seçin.
+1. **+ Yeni uyarı kuralı**'nı seçin. **Kural oluştur** paneli görüntülenir. **Koşul** altında **Ekle** ' yi seçin.
 
    [![Uyarı bölmesi Ekle](media/environment-mitigate-latency/mitigate-latency-add-pane.png)](media/environment-mitigate-latency/mitigate-latency-add-pane.png#lightbox)
 
@@ -59,15 +59,15 @@ Uyarılar, ortamınızda oluşan gecikme sorunlarını tanılamanıza ve azaltma
 
    Buradan, aşağıdaki koşullardan bazılarını kullanarak uyarılar yapılandırabilirsiniz:
 
-   |Ölçüm  |Açıklama  |
+   |Metric  |Açıklama  |
    |---------|---------|
    |**Alınan bayt sayısı**     | Olay kaynaklarından okunan ham bayt sayısı. Ham sayı genellikle özellik adını ve değerini içerir.  |  
    |**Giriş geçersiz Iletiler aldı**     | Tüm Azure Event Hubs veya Azure IoT Hub olay kaynaklarından okunan geçersiz iletilerin sayısı.      |
    |**Giriş alınan Iletiler**   | Tüm Event Hubs veya IoT Hub 'Ları olay kaynaklarından okunan ileti sayısı.        |
    |**Giriş depolanan baytlar**     | Sorgu için depolanan ve kullanılabilir olayların toplam boyutu. Boyut yalnızca özellik değeri üzerinde hesaplanır.        |
-   |Giriş **saklı olayları**    |   Depolanan ve sorgu için kullanılabilir düzleştirilmiş olay sayısı.      |
-   |**Alınan Ileti zaman gecikmesi alındı**   |  İleti olay kaynağında sıraya alındığı zaman ve giriş sırasında işlendiği zaman arasındaki saniye cinsinden fark.      |
-   |Giriş **alınan Ileti sayısı gecikmesi**   |  Olay kaynak bölümünde en son sıraya alınan iletinin sıra numarası ve giriş olarak işlenen iletinin sıra numarası arasındaki fark.      |
+   |**Giriş saklı olayları**     |   Depolanan ve sorgu için kullanılabilir düzleştirilmiş olay sayısı.      |
+   |**Alınan Ileti zaman gecikmesi alındı**    |  İleti olay kaynağında sıraya alındığı zaman ve giriş sırasında işlendiği zaman arasındaki saniye cinsinden fark.      |
+   |**Giriş alınan Ileti sayısı gecikmesi**    |  Olay kaynak bölümünde en son sıraya alınan iletinin sıra numarası ve giriş olarak işlenen iletinin sıra numarası arasındaki fark.      |
 
    **Bitti** seçeneğini belirleyin.
 
@@ -87,7 +87,7 @@ Uyarılar, ortamınızda oluşan gecikme sorunlarını tanılamanıza ve azaltma
 
   Örneğin, üç adet S1 birimi sağlanmışsa (veya bir dakika başına 2100 olay), 2 saat boyunca >= 1900 olay için bir giriş **saklı olayları** uyarısı ayarlayabilirsiniz. Bu eşiği sürekli aşdıysanız ve bu nedenle uyarınızı tetikleyerek, büyük olasılıkla sağlanmış olursunuz.  
 
-- Kısıtladığınızı kuşkulanıyorsanız, giriş **alınan iletilerinizi** olay kaynağınızın yumurtılan iletileriyle karşılaştırabilirsiniz.  Olay Hub 'ınız giriş **alınızdan**daha büyükse, Azure Time Series Insights muhtemelen kısıtlanıyor demektir.
+- Kısıtladığınızı kuşkulanıyorsanız, giriş **alınan iletilerinizi** olay kaynağınızın yumurtılan iletileriyle karşılaştırabilirsiniz.  Olay Hub 'ınız giriş **alınızdan** daha büyükse, Azure Time Series Insights muhtemelen kısıtlanıyor demektir.
 
 ## <a name="improving-performance"></a>Performansı artırma
 

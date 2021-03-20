@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 9/06/2020
 ms.author: allensu
 ms.openlocfilehash: 6e433950c04c4494201b090063b17a10e54a4822
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98685780"
 ---
 # <a name="azure-cdn-endpoint-multi-origin"></a>Azure CDN uç noktası çoklu kaynak
@@ -54,7 +54,7 @@ Bir veya daha fazla kaynak grubu kurun ve varsayılan bir kaynak grubu seçin. H
     
    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-3.png" alt-text="Kaynak Grubu Ekle" border="true":::
 
-6. **Ekle**’yi seçin.
+6. **Add (Ekle)** seçeneğini belirleyin.
 
 ## <a name="add-multiple-origins"></a>Birden çok çıkış Ekle
 
@@ -80,7 +80,7 @@ Bir veya daha fazla kaynak grubu kurun ve varsayılan bir kaynak grubu seçin. H
 
     :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-6.png" alt-text="Ek Kaynak Ekle" border="true":::
 
-3. **Ekle**’yi seçin.
+3. **Add (Ekle)** seçeneğini belirleyin.
 
 4. Tüm kaynaklar için kaynak yolunu ayarlamak üzere **Kaynağı Yapılandır** ' ı seçin:
 

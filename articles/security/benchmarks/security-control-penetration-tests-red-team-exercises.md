@@ -8,10 +8,10 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: fe9c672e53ea0f46328320daf75f65fd77f5db29
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "81408288"
 ---
 # <a name="security-control-penetration-tests-and-red-team-exercises"></a>Güvenlik denetimi: sızma testleri ve kırmızı takım alıştırmaları
@@ -22,13 +22,13 @@ Bir saldırganın amaçları ve eylemlerinin benzetimini yaparak bir kuruluşun 
 
 | Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
-| 11.1 | 20,1, 20,2, 20,3, 20,4, 20,5, 20,6, 20,7, 20,8 | Shared |
+| 11.1 | 20,1, 20,2, 20,3, 20,4, 20,5, 20,6, 20,7, 20,8 | Paylaşılan |
 
-Sızma testlerinizin Microsoft ilkelerini ihlal etmediğinden emin olmak için Microsoft katılım kurallarını izleyin. Microsoft 'un, Microsoft tarafından yönetilen bulut altyapısına, hizmetlerine ve uygulamalarına karşı kırmızı ekip oluşturma ve canlı site sızma testi stratejisini kullanın.
+Sızma testlerinizin Microsoft ilkelerini ihlal etmediğinden emin olmak için Microsoft katılım kurallarını izleyin. Microsoft tarafından yönetilen bulut altyapısına, hizmetlere ve uygulamalara yönelik kırmızı takım ve canlı site sızma testi gerçekleştirmek için Microsoft'un stratejisini ve yürütme sürecini kullanın.
 
-- [Katılım test kurallarını oyma](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
+- [Sızma Testi Etkileşim Kuralları](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
-- [Microsoft Bulut Kırmızı ekip oluşturma](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+- [Microsoft Bulut ile Kırmızı Takım Oluşturma](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

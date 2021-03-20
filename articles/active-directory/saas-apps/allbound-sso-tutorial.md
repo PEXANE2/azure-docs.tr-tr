@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.openlocfilehash: f6030e209b06dc7ae9acd8a13e6dcdf22b58f8c5
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92318872"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-allbound-sso"></a>Öğretici: Allbağlanacak SSO ile tümleştirme Azure Active Directory
@@ -30,7 +30,7 @@ Allbağlanacak SSO 'yu Azure AD ile tümleştirmek aşağıdaki avantajları sa�
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Allbağlanacak SSO ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -62,13 +62,13 @@ Allbağlanacak SSO 'nun tümleştirmesini Azure AD 'ye göre yapılandırmak iç
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Allbağlanacak SSO**yazın, sonuç panelinden **allbağlanacak SSO** ' yı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **Allbağlanacak SSO** yazın, sonuç panelinden **allbağlanacak SSO** ' yı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
     ![Sonuçlar listesinde allbağlanacak SSO](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre ALLBAĞLANACAK SSO ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre ALLBAĞLANACAK SSO ile yapılandırıp test edersiniz.
 Çoklu oturum açma 'nın çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasındaki bir bağlantı ilişkisinin oluşturulması gerekir.
 
 Azure AD çoklu oturum açmayı, Allbağlanacak SSO ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -149,7 +149,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**yazın.
+    a. **Ad** alanına **Brittasıon** yazın.
   
     b. **Kullanıcı adı** alanına **brittasıon \@ yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
@@ -189,7 +189,7 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak, Allbağlı SSO 
 Bu bölümde, Britta Simon adlı bir Kullanıcı Allbağlı SSO 'da oluşturulur. Allbağlanacak SSO, varsayılan olarak etkinleştirilen tam zamanında Kullanıcı sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir Kullanıcı Allbağlanacak SSO 'da zaten mevcut değilse, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
 
 > [!Note]
-> El ile bir kullanıcı oluşturmanız gerekiyorsa, [Allbağlanacak SSO destek ekibine](mailto:engineering@allbound.com)başvurun.
+> El ile bir kullanıcı oluşturmanız gerekiyorsa, [Allbağlanacak SSO destek ekibine](mailto:engineering@allbound.com)başvurun.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 

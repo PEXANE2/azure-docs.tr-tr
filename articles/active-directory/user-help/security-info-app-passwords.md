@@ -12,13 +12,13 @@ ms.topic: end-user-help
 ms.date: 02/13/2018
 ms.author: curtand
 ms.openlocfilehash: 84588130788e9be8d3be52a8ea0f3988dce7b952
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91537013"
 ---
-# <a name="create-app-passwords-from-the-security-info-preview-page"></a>Güvenlik bilgileri (Önizleme) sayfasından uygulama parolaları oluşturma
+# <a name="create-app-passwords-from-the-security-info-preview-page"></a>Güvenlik bilgileri (önizleme) sayfasında uygulama parolaları oluşturma
 
 Outlook 2010 gibi bazı uygulamalar iki aşamalı doğrulamayı desteklemez. Bu destek eksikliği, kuruluşunuzda iki aşamalı doğrulama kullanıyorsanız uygulamanın çalışmamasıdır. Bu sorunu çözmek için, her tarayıcı olmayan uygulamayla birlikte kullanmak üzere otomatik olarak oluşturulan bir parola oluşturarak normal parolanınızdan ayırabilirsiniz.
 
@@ -80,7 +80,7 @@ Uygulama parolası gerektiren bir uygulamayı artık kullanmanız gerekmiyorsa, 
 
     ![Güvenlik bilgilerinizden uygulama parolası yöntemini silmeye yönelik bağlantı](media/security-info/securityinfo-myprofile-password-appdelete.png)
 
-2. **Uygulama parolasını**silmek için onay kutusundan **Evet** ' i seçin. Uygulama parolası silindikten sonra, güvenlik bilgileriniz kaldırılır ve **güvenlik bilgileri** sayfasından kaybolur.
+2. **Uygulama parolasını** silmek için onay kutusundan **Evet** ' i seçin. Uygulama parolası silindikten sonra, güvenlik bilgileriniz kaldırılır ve **güvenlik bilgileri** sayfasından kaybolur.
 
 ## <a name="for-more-information"></a>Daha fazla bilgi edinmek için
 

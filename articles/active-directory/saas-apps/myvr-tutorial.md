@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/31/2019
 ms.author: jeedes
 ms.openlocfilehash: 7893d0fa113408378b832779d7ca2c38032e6f58
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92522555"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-myvr"></a>Öğretici: MyVR ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -61,7 +61,7 @@ MyVR 'nin tümleştirmesini Azure AD 'ye göre yapılandırmak için Galeriden M
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-myvr"></a>MyVR için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu myvr ile yapılandırın ve test edin. SSO 'nun çalışması için, MyVR 'deki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu myvr ile yapılandırın ve test edin. SSO 'nun çalışması için, MyVR 'deki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu MyVR ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -94,7 +94,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Yukarıdakilerin yanı sıra, MyVR uygulaması aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksiniminize göre bunları gözden geçirebilirsiniz.
 
-   | Adı | Kaynak özniteliği|
+   | Name | Kaynak özniteliği|
    | ---------------| --------------- |
    | çalışan | User. EmployeeID |
 

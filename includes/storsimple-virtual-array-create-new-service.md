@@ -9,10 +9,10 @@ ms.date: 09/15/2018
 ms.author: alkohli
 ms.custom: include file
 ms.openlocfilehash: 1be6a654962b513cfcf755d45e562b86067e7b25
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95995037"
 ---
 #### <a name="to-create-a-new-service"></a>Yeni hizmet oluşturmak için
@@ -23,7 +23,7 @@ ms.locfileid: "95995037"
 
     ![Yeni hizmet oluştur](./media/storsimple-virtual-array-create-new-service/createnewservice2.png) 
 
-3.  Açılan **StorSimple aygıt yöneticisi** dikey penceresinde aşağıdakileri yapın:
+3.  Açılan **StorSimple Device Manager** dikey penceresinde aşağıdakileri yapın:
 
     1.  Hizmetiniz için benzersiz bir **Kaynak adı** sağlayın. Kaynak adı, hizmeti tanımlamak için kullanılabilecek kolay bir addır. Ad harf, rakam ve tirelerden oluşan 2-50 karakter arası uzunlukta olabilir. Ad bir harf veya sayıyla başlamalı ve bitmelidir.
 
@@ -35,9 +35,9 @@ ms.locfileid: "95995037"
 
         -   Azure 'da StorSimple aygıtınızla dağıtmayı planladığınız mevcut iş yükleriniz varsa, bu veri merkezini kullanmanızı öneririz.
 
-        -   StorSimple Aygıt Yöneticisi ve Azure Storage iki ayrı konumda olabilir. Böyle bir durumda, StorSimple Cihaz Yöneticisi ve Azure Storage hesabını ayrı ayrı oluşturmanız gerekir. Bir Azure depolama hesabı oluşturmak için Azure portal Azure Storage ' a gidin ve [depolama hesabı oluşturma](../articles/storage/common/storage-account-create.md)bölümünde açıklanan adımları izleyin. Bu hesabı oluşturduktan sonra, [Hizmet için yeni bir depolama hesabı yapılandırma](../articles/storsimple/storsimple-virtual-array-manage-storage-accounts.md#add-a-storage-account-credential) konusundaki adımları uygulayarak bunu StorSimple Cihaz Yöneticisi hizmetine ekleyin.
+        -   StorSimple Device Manager ve Azure Storage iki ayrı konumda olabilir. Böyle bir durumda, StorSimple Cihaz Yöneticisi ve Azure Storage hesabını ayrı ayrı oluşturmanız gerekir. Bir Azure depolama hesabı oluşturmak için Azure portal Azure Storage ' a gidin ve [depolama hesabı oluşturma](../articles/storage/common/storage-account-create.md)bölümünde açıklanan adımları izleyin. Bu hesabı oluşturduktan sonra, [Hizmet için yeni bir depolama hesabı yapılandırma](../articles/storsimple/storsimple-virtual-array-manage-storage-accounts.md#add-a-storage-account-credential) konusundaki adımları uygulayarak bunu StorSimple Cihaz Yöneticisi hizmetine ekleyin.
 
-        -   Sanal cihazı kamu portalında dağıtıyorsanız, StorSimple Aygıt Yöneticisi hizmeti ABD Iowa ve ABD Virginia konumlarında kullanılabilir.
+        -   Sanal cihazı kamu portalında dağıtıyorsanız, StorSimple Device Manager hizmeti ABD Iowa ve ABD Virginia konumlarında kullanılabilir.
 
     5.  Hizmeti kullanarak otomatik olarak bir depolama hesabı oluşturmak için **Yeni bir Azure depolama hesabı oluştur** ' u seçin. Bir **depolama hesabı adı** belirtin. Verilerinizin farklı bir konumda olması gerekiyorsa bu kutunun işaretini kaldırın.
 
