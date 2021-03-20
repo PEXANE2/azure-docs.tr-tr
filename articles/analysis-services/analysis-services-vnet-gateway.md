@@ -8,10 +8,10 @@ ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 912dab16cd854ae940b7bbdfe88a8da7adf1c5e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84197187"
 ---
 # <a name="use-gateway-for-data-sources-on-an-azure-virtual-network-vnet"></a>Azure Sanal Ağı üzerindeki veri kaynakları için ağ geçidi kullanma
@@ -30,7 +30,7 @@ Azure SQL yönetilen örnek veri kaynakları, Azure sanal ağı 'nda özel bir I
 ## <a name="configure-alwaysusegateway-property"></a>AlwaysUseGateway özelliğini yapılandırma
 
 1. SSMS > Server > **özellikleri**  >  **genel**' te, **Gelişmiş (tümü) özelliklerini göster**' i seçin.
-2. **Aspaas\alwaysusegateway**içinde **true**seçeneğini belirleyin.
+2. **Aspaas\alwaysusegateway** içinde **true** seçeneğini belirleyin.
 
     ![Her zaman ağ geçidi özelliğini kullan](media/analysis-services-vnet-gateway/aas-ssms-always-property.png)
 

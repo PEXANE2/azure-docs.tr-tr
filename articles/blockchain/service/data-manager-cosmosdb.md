@@ -5,10 +5,10 @@ ms.date: 03/08/2020
 ms.topic: tutorial
 ms.reviewer: chroyal
 ms.openlocfilehash: 69790787bc888448f2f40178bd12ee7058cc5892
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91283471"
 ---
 # <a name="tutorial-use-blockchain-data-manager-to-send-data-to-azure-cosmos-db"></a>Öğretici: Azure Cosmos DB 'a veri göndermek için blok zinciri Veri Yöneticisi kullanma
@@ -41,9 +41,9 @@ Bu öğreticide şunları yaptınız:
 
 Bir blok zinciri Veri Yöneticisi örneği, bir Azure blok zinciri hizmeti işlem düğümünü bağlar ve izler. Örnek, işlem düğümünden tüm ham blok ve ham işlem verilerini yakalar. Giden bağlantı, blok zinciri verilerini Azure Event Grid gönderir. Örneği oluştururken tek bir giden bağlantı yapılandırırsınız.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
-1. Önkoşul hızlı başlangıcı ' nda oluşturduğunuz Azure blok zinciri hizmeti üyesine gidin [: Azure Portal kullanarak bir blok zinciri üyesi oluşturma](create-member.md). **Blok zinciri veri Yöneticisi**seçin.
-1. **Ekle**’yi seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. Önkoşul hızlı başlangıcı ' nda oluşturduğunuz Azure blok zinciri hizmeti üyesine gidin [: Azure Portal kullanarak bir blok zinciri üyesi oluşturma](create-member.md). **Blok zinciri veri Yöneticisi** seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
     ![Blok zinciri ekleme Veri Yöneticisi](./media/data-manager-cosmosdb/add-instance.png)
 
@@ -76,7 +76,7 @@ Sözleşme ABı, akıllı sözleşme arabirimlerini tanımlar. Akıllı sözleş
 
     Sözleşme ABı, panoya kopyalanır.
 
-1. **ABI** DIZISINI bir JSON dosyası olarak kaydedin. Örneğin, * üzerindeabi.js*. Dosyayı sonraki bir adımda kullanırsınız.
+1. **ABI** DIZISINI bir JSON dosyası olarak kaydedin. Örneğin, *üzerindeabi.js*. Dosyayı sonraki bir adımda kullanırsınız.
 
 Blok zinciri Veri Yöneticisi, akıllı sözleşme için dağıtılan bayt kodunu gerektirir. Dağıtılan bytecode, akıllı sözleşme bytecode değerinden farklı. Bytecode 'u panoya kopyalamak için Azure blok zinciri geliştirme seti uzantısını kullanın.
 
@@ -88,7 +88,7 @@ Blok zinciri Veri Yöneticisi, akıllı sözleşme için dağıtılan bayt kodun
 
     Bytecode, panoya kopyalanır.
 
-1. **Bytecode** DEĞERINI bir JSON dosyası olarak kaydedin. Örneğin, * üzerindebytecode.js*. Dosyayı sonraki bir adımda kullanırsınız.
+1. **Bytecode** DEĞERINI bir JSON dosyası olarak kaydedin. Örneğin, *üzerindebytecode.js*. Dosyayı sonraki bir adımda kullanırsınız.
 
 Aşağıdaki örnek, VS Code düzenleyicide açık olan dosyalar üzerinde *abi.js* ve *bytecode.js* gösterir. Dosyalarınız benzer görünmelidir.
 
@@ -104,7 +104,7 @@ Blok zinciri Veri Yöneticisi, bir uygulama eklenirken sözleşme ABı ve byteco
 
 #### <a name="upload-contract-files"></a>Sözleşme dosyalarını karşıya yükle
 
-1. Depolama hesabı için yeni bir kapsayıcı oluşturun. **Kapsayıcı > kapsayıcıları**seçin.
+1. Depolama hesabı için yeni bir kapsayıcı oluşturun. **Kapsayıcı > kapsayıcıları** seçin.
 
     ![Depolama hesabı kapsayıcısı oluşturma](./media/data-manager-cosmosdb/create-container.png)
 
@@ -127,7 +127,7 @@ Her blob için, paylaşılan erişim imzası oluşturun.
 
 1. ABı JSON blob 'unu seçin.
 1. **SAS oluştur** ' u seçin
-1. İstenen erişim imzası süre sonunu ayarlayın **ve ardından blob SAS belirteci oluştur ve URL 'yi**seçin.
+1. İstenen erişim imzası süre sonunu ayarlayın **ve ardından blob SAS belirteci oluştur ve URL 'yi** seçin.
 
     ![SAS belirteci oluştur](./media/data-manager-cosmosdb/generate-sas.png)
 
@@ -138,7 +138,7 @@ Her blob için, paylaşılan erişim imzası oluşturun.
 
 1. Örnek listesinden Blockzincirine Veri Yöneticisi örneğinizi seçin.
 1. **Blok zinciri uygulamaları**' nı seçin.
-1. **Ekle**’yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
     ![Blok zinciri uygulaması ekleme](./media/data-manager-cosmosdb/add-application.png)
 
@@ -190,14 +190,14 @@ Azure Logic Apps, sistemleri ve Hizmetleri tümleştirmeniz gerektiğinde iş s�
     Mantıksal uygulamalar oluşturma hakkında daha fazla bilgi için bkz. [Azure Logic Apps otomatik iş akışları oluşturma](../../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 1. Azure uygulamanızı dağıtduktan sonra mantıksal uygulama kaynağınızı seçin.
-1. Logic Apps tasarımcısında **Şablonlar**altında **boş mantıksal uygulama**' yı seçin.
+1. Logic Apps tasarımcısında **Şablonlar** altında **boş mantıksal uygulama**' yı seçin.
 
 ### <a name="add-event-grid-trigger"></a>Event Grid tetikleyicisi Ekle
 
 Her mantıksal uygulama, belirli bir olay gerçekleştiğinde ya da belirli bir koşul karşılandığında tetiklenen bir tetikleyiciyle başlamalıdır. Tetikleyici her etkinleştirildiğinde Logic Apps altyapısı iş akışınızı başlatan ve çalıştıran bir mantıksal uygulama örneği oluşturur. Event Grid blok zinciri işlem verilerini Cosmos DB 'e göndermesi için Azure Event Grid tetikleyicisi kullanın.
 
 1. Logic Apps tasarımcısında, **Azure Event Grid** bağlayıcısını arayıp seçin.
-1. **Tetikleyiciler** sekmesinden **bir kaynak olay meydana geldiğinde**öğesini seçin.
+1. **Tetikleyiciler** sekmesinden **bir kaynak olay meydana geldiğinde** öğesini seçin.
 1. Event Grid konusundan bir API bağlantısı oluşturun.
 
     ![Olay Kılavuzu tetikleyici ayarları](./media/data-manager-cosmosdb/event-grid-trigger.png)
@@ -213,7 +213,7 @@ Her mantıksal uygulama, belirli bir olay gerçekleştiğinde ya da belirli bir 
 Her işlem için Cosmos DB bir belge oluşturmak için bir eylem ekleyin. İletileri sınıflandırmak için bölüm anahtarı olarak işlem iletisi türünü kullanın.
 
 1. **Yeni adım**'ı seçin.
-1. **Bir eylem seçin**sayfasında **Azure Cosmos DB**aratın.
+1. **Bir eylem seçin** sayfasında **Azure Cosmos DB** aratın.
 1. **Belge oluştur veya güncelleştir > Azure Cosmos DB > eylemler**' i seçin.
 1. Cosmos DB veritabanınıza bir API bağlantısı oluşturun.
 
@@ -257,7 +257,7 @@ Sonra, oluşturduğunuz şeyi test etmek için blok zinciri defterine bir işlem
 
     ![SendRequest eylemini Yürüt](./media/data-manager-cosmosdb/sendrequest-action.png)
 
-SendRequest işlevi **RequestMessage** ve **State** alanlarını ayarlar. **RequestMessage** için geçerli durum, **Hello, blockzincirine**geçirilen bağımsız değişkendir. **Durum** alanı değeri **istek**olarak kalmaya devam eder.
+SendRequest işlevi **RequestMessage** ve **State** alanlarını ayarlar. **RequestMessage** için geçerli durum, **Hello, blockzincirine** geçirilen bağımsız değişkendir. **Durum** alanı değeri **istek** olarak kalmaya devam eder.
 
 ## <a name="view-transaction-data"></a>İşlem verilerini görüntüle
 

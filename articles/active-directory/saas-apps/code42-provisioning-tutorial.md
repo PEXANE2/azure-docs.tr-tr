@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 09/23/2020
 ms.author: Zhchia
 ms.openlocfilehash: ffae286437a476d5ebe08c3ee442d0d52af84eb7
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96179354"
 ---
 # <a name="tutorial-configure-code42-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Code42 yapılandırma
@@ -35,7 +35,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Code42
 > * Code42 'de grupları ve grup üyeliklerini sağlama
 > * Code42 ['de çoklu oturum açma](./code42-tutorial.md) (önerilir)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 

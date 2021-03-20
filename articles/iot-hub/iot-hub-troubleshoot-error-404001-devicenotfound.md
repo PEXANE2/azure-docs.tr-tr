@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.openlocfilehash: 15aa21c2ec2c11bb251f7208fd22c92ceb859d6d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "76960834"
 ---
 # <a name="404001-devicenotfound"></a>404001 DeviceNotFound
@@ -21,7 +21,7 @@ Bu makalede, **404001 DeviceNotFound** hatalarına yönelik nedenler ve çözüm
 
 ## <a name="symptoms"></a>Belirtiler
 
-C2D Message, ikizi Update veya Direct yöntemi gibi buluttan cihaza (C2D) iletişim sırasında, işlem **404001 DeviceNotFound**hatasıyla başarısız olur.
+C2D Message, ikizi Update veya Direct yöntemi gibi buluttan cihaza (C2D) iletişim sırasında, işlem **404001 DeviceNotFound** hatasıyla başarısız olur.
 
 ## <a name="cause"></a>Nedeni
 

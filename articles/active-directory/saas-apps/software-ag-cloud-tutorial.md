@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/09/2020
 ms.author: jeedes
 ms.openlocfilehash: c2a2446da0e1ccf1b3dab88fe898b179291ddaba
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98726176"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-software-ag-cloud"></a>Öğretici: Software AG bulutu ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -26,7 +26,7 @@ Bu öğreticide, yazılım AG bulutunu Azure Active Directory (Azure AD) ile tü
 * Kullanıcılarınızın Azure AD hesaplarıyla Software AG bulutuna otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 

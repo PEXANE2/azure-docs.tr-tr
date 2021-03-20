@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 09/21/2020
 ms.openlocfilehash: ca6e1c06b3ad90ef12c9bf375bae50d46c5f7c37
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98890653"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki yetkili IP adresi aralıklarını kullanarak API sunucusuna güvenli erişim
@@ -69,7 +69,7 @@ az aks create \
 
 ### <a name="specify-the-outbound-ips-for-the-standard-sku-load-balancer"></a>Standart SKU yük dengeleyici için giden IP 'Leri belirtin
 
-Bir AKS kümesi oluştururken, küme için giden IP adreslerini veya öneklerini belirtirseniz, bu adreslere veya öneklere de izin verilir. Örneğin:
+Bir AKS kümesi oluştururken, küme için giden IP adreslerini veya öneklerini belirtirseniz, bu adreslere veya öneklere de izin verilir. Örnek:
 
 ```azurecli-interactive
 az aks create \
@@ -121,7 +121,7 @@ Yalnızca standart SKU yük dengeleyicisinin genel IP 'sini belirtmek için para
 
 ## <a name="disable-authorized-ip-ranges"></a>Yetkili IP aralıklarını devre dışı bırak
 
-Yetkili IP aralıklarını devre dışı bırakmak için [az aks Update][az-aks-update] kullanın ve API sunucusu yetkilendirilmiş IP aralıklarını devre dışı bırakmak için boş bir Aralık belirtin. Örneğin:
+Yetkili IP aralıklarını devre dışı bırakmak için [az aks Update][az-aks-update] kullanın ve API sunucusu yetkilendirilmiş IP aralıklarını devre dışı bırakmak için boş bir Aralık belirtin. Örnek:
 
 ```azurecli-interactive
 az aks update \
@@ -132,7 +132,7 @@ az aks update \
 
 ## <a name="find-existing-authorized-ip-ranges"></a>Var olan yetkili IP aralıklarını bul
 
-Yetkilendirilmiş IP aralıklarını bulmak için [az aks Show][az-aks-show] kullanın ve kümenin adını ve kaynak grubunu belirtin. Örneğin:
+Yetkilendirilmiş IP aralıklarını bulmak için [az aks Show][az-aks-show] kullanın ve kümenin adını ve kaynak grubunu belirtin. Örnek:
 
 ```azurecli-interactive
 az aks show \

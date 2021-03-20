@@ -13,15 +13,15 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 33c22b5b68b6677e8cf271dc185007316ec44500
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "76844067"
 ---
 # <a name="use-next-hop-to-diagnose-virtual-machine-routing-problems"></a>Sanal makine yönlendirme sorunlarını tanılamak için sonraki atlamayı kullanın
 
-Bir sanal makineden (VM) gelen trafik, bir ağ arabirimi (NIC) ile ilişkili etkin yollara göre bir hedefe gönderilir. Sonraki atlama, belirli bir VM ve NIC 'den bir paketin sonraki atlama türünü ve IP adresini alır. Sonraki atlamanın bilinmesi, trafiğin hedeflenen hedefe yönlendirilip yönlendirilmediğini veya trafiğin ne yerde gönderilip gönderilmediğini belirlemenize yardımcı olur. Trafiğin şirket içi bir konuma veya sanal bir gereci yönlendirildiği, bağlantı sorunlarına yol açabilecek yolların yanlış yapılandırılması. Sonraki atlama Ayrıca sonraki atlama ile ilişkili yol tablosunu da döndürür. Yol, Kullanıcı tanımlı bir yol olarak tanımlanmışsa, bu yol döndürülür. Aksi halde, sonraki atlama **sistem yolu**döndürür.
+Bir sanal makineden (VM) gelen trafik, bir ağ arabirimi (NIC) ile ilişkili etkin yollara göre bir hedefe gönderilir. Sonraki atlama, belirli bir VM ve NIC 'den bir paketin sonraki atlama türünü ve IP adresini alır. Sonraki atlamanın bilinmesi, trafiğin hedeflenen hedefe yönlendirilip yönlendirilmediğini veya trafiğin ne yerde gönderilip gönderilmediğini belirlemenize yardımcı olur. Trafiğin şirket içi bir konuma veya sanal bir gereci yönlendirildiği, bağlantı sorunlarına yol açabilecek yolların yanlış yapılandırılması. Sonraki atlama Ayrıca sonraki atlama ile ilişkili yol tablosunu da döndürür. Yol, Kullanıcı tanımlı bir yol olarak tanımlanmışsa, bu yol döndürülür. Aksi halde, sonraki atlama **sistem yolu** döndürür.
 
 ![sonraki atlamaya genel bakış](./media/network-watcher-next-hop-overview/figure1.png)
 

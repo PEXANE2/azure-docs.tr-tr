@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 11/13/2020
 ms.openlocfilehash: 69d27c102ca059974da87224e44f0ad7aa103fff
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94592643"
 ---
 # <a name="import-data-module"></a>Veri modülünü içeri aktarma
@@ -54,14 +54,14 @@ Kaynak verileriniz değişirse, [verileri Içeri aktar](./import-data.md)' ı ye
 
 1. Sağ bölmeyi açmak için modülü seçin.
 
-1. **Veri kaynağı** ' nı seçin ve veri kaynağı türünü seçin. HTTP veya veri deposu olabilir.
+1. **Veri kaynağı**' nı seçin ve veri kaynağı türünü seçin. HTTP veya veri deposu olabilir.
 
     Veri deposu ' nu seçerseniz, Azure Machine Learning çalışma alanınıza zaten kayıtlı olan mevcut veri depolarını seçebilirsiniz veya yeni bir veri deposu oluşturabilirsiniz. Ardından veri deposuna aktarılacak verilerin yolunu tanımlayın. Yolu, yol seçimi iletişim kutusunu açan yolu araştır bağlantısına **tıklayarak yola kolayca gözatacaksınız** ![ .](media/module/import-data-path.png)
 
     > [!NOTE]
     > **Veri alma** modülü yalnızca **tablo** verileri içindir.
     > Birden çok tablolu veri dosyasını bir kez içeri aktarmak istiyorsanız, aşağıdaki koşulları gerektirir, aksi takdirde hatalar oluşur:
-    > 1. Tüm veri dosyalarını klasöre dahil etmek için, yol için giriş yapmanız gerekir `folder_name/**` . **Path**
+    > 1. Tüm veri dosyalarını klasöre dahil etmek için, yol için giriş yapmanız gerekir `folder_name/**` . 
     > 2. Tüm veri dosyaları Unicode-8 ile kodlanmalıdır.
     > 3. Tüm veri dosyaları aynı sütun numaralarına ve sütun adlarına sahip olmalıdır.
     > 4. Birden çok veri dosyasının içe aktarılması sonucunda, birden fazla dosyanın tüm satırları sırayla birleştiriliyor.
@@ -70,7 +70,7 @@ Kaynak verileriniz değişirse, [verileri Içeri aktar](./import-data.md)' ı ye
 
     ![İçeri aktarma-veri önizleme](media/module/import-data.png)
 
-1. Onay kutusu, **çıktıyı yeniden oluştur** , çalışma zamanında çıktıyı yeniden oluşturmak için modülün yürütülüp yürütülmeyeceğine karar verir. 
+1. Onay kutusu, **çıktıyı yeniden oluştur**, çalışma zamanında çıktıyı yeniden oluşturmak için modülün yürütülüp yürütülmeyeceğine karar verir. 
 
     Bu, varsayılan olarak seçili değildir, bu da modülün aynı parametrelerle daha önce yürütülmesi durumunda sistemin, çalışma süresini azaltmak için son çalıştırışınızda çıktıyı yeniden kullanacağı anlamına gelir. 
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
 ms.openlocfilehash: ea674981036b4be292329a4b30b43180ed26d642
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92092792"
 ---
 # <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>Azure API Management'ta geliştirici hesaplarını yönetmek için grup oluşturma ve kullanma
@@ -55,7 +55,7 @@ Bu bölümde, API Management hesabınıza yeni bir grup ekleme gösterilmektedir
 
     ![Yeni grup ekleme](./media/api-management-howto-create-groups/groups001.png)
 
-Grup oluşturulduktan sonra **gruplar** listesine eklenir. <br/>Grubun **adını** veya **açıklamasını** düzenlemek için Grup ve **ayarların**adına tıklayın.<br/>Grubu silmek için grubun adına tıklayın ve **Sil**' e basın.
+Grup oluşturulduktan sonra **gruplar** listesine eklenir. <br/>Grubun **adını** veya **açıklamasını** düzenlemek için Grup ve **ayarların** adına tıklayın.<br/>Grubu silmek için grubun adına tıklayın ve **Sil**' e basın.
 
 Artık grup oluşturuldığına göre, ürünler ve geliştiricilerle ilişkilendirilebilir.
 
@@ -63,7 +63,7 @@ Artık grup oluşturuldığına göre, ürünler ve geliştiricilerle ilişkilen
 
 1. Soldaki **Ürünler** sekmesini seçin.
 2. İstenen ürünün adına tıklayın.
-3. **Access Control**tuşuna basın.
+3. **Access Control** tuşuna basın.
 4. **+ Grup Ekle**' ye tıklayın.
 
     ![Grup Ekle düğmesini vurgulayan ekran görüntüsü.](./media/api-management-howto-create-groups/groups002.png)

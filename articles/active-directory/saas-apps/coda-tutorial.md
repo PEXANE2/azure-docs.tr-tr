@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/23/2020
 ms.author: jeedes
 ms.openlocfilehash: c78744538991e337b226e49a053807ef8174d507
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92455740"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-coda"></a>Öğretici: CODA ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, Coda 'yı Azure Active Directory (Azure AD) ile tümleştirmeyi
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -59,7 +59,7 @@ CODA tümleştirmesini Azure AD 'ye göre yapılandırmak için Galeriden, yöne
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-coda"></a>CODA için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu CODA ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Coda 'daki ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu CODA ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Coda 'daki ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
 Azure AD SSO 'yu CODA ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -83,11 +83,11 @@ Başlamak için Coda 'daki adımları izleyin.
 
    ![GDrive devre dışı](media/coda-tutorial/gdrive-off.png)
 
-1. **SSO (SAML) Ile kimlik doğrulaması**altında **SAML Yapılandır** seçeneğini belirleyin.
+1. **SSO (SAML) Ile kimlik doğrulaması** altında **SAML Yapılandır** seçeneğini belirleyin.
 
    ![SAML ayarları](media/coda-tutorial/saml-settings-link.png)
 
-1. Sonraki adımlarda ihtiyacınız olacak **VARLıK kimliği** ve **SAML yanıtı URL 'si**değerlerini aklınızda bulabilirsiniz.
+1. Sonraki adımlarda ihtiyacınız olacak **VARLıK kimliği** ve **SAML yanıtı URL 'si** değerlerini aklınızda bulabilirsiniz.
 
    ![Azure 'da kullanılacak varlık KIMLIĞI ve SAML yanıtı URL 'SI](media/coda-tutorial/azure-settings.png)
 
@@ -153,8 +153,8 @@ Bu bölümde, Coda erişimi vererek Azure çoklu oturum açma özelliğini kulla
 Kurulumu gerçekleştirmek için, Coda **SAML yapılandırma** paneline Azure Active Directory değerler girersiniz.
 
 1. CODA bölümünde **kuruluş ayarları** masasını açın.
-1. **SSO (SAML) Ile kimlik doğrulaması**altında **SAML Yapılandır** seçeneğini belirleyin.
-1. **SAML sağlayıcısını** **Azure Active Directory**olarak ayarlayın.
+1. **SSO (SAML) Ile kimlik doğrulaması** altında **SAML Yapılandır** seçeneğini belirleyin.
+1. **SAML sağlayıcısını** **Azure Active Directory** olarak ayarlayın.
 1. **Kimlik sağlayıcısı oturum açma URL 'si**' nde, Azure konsolundan **oturum açma URL** 'sini yapıştırın.
 1. **Kimlik sağlayıcısı yayımcısı**' nda Azure **ad tanımlayıcısını** Azure konsolundan yapıştırın.
 1. **Kimlik sağlayıcısı genel sertifikası**' nda **sertifikayı karşıya yükle** seçeneğini seçin ve daha önce indirdiğiniz sertifika dosyasını seçin.

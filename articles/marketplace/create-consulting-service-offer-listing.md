@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 10/27/2020
 ms.openlocfilehash: 2476d60cacc9690c24d7d3d2f7e21f04c6811500
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92754608"
 ---
 # <a name="how-to-configure-your-consulting-service-offer-listing-details"></a>Danışmanlık hizmeti teklifinizi listeleme ayrıntılarını yapılandırma
@@ -63,7 +63,7 @@ Teklif listelemeyi desteklemek için en az bir ve en fazla üç PDF belgesi ekle
 Teklifinizi gösteren en az bir ve en fazla beş görüntü ekleyin. Tüm görüntüler 1280 x 720 piksel boyutunda ve içinde olmalıdır. PNG biçimi.
 
 1. **Ekran görüntüleri** altında sürükleyip bırakın. Bir **ekran görüntüsü** kutusu üzerine PNG dosyası.
-2.  **Resim yazısı ekle** ' nin yanındaki **Düzenle** simgesini seçin.
+2.  **Resim yazısı ekle**' nin yanındaki **Düzenle** simgesini seçin.
 3.  Görüntülenen iletişim kutusunda bir başlık girin.
 4.  Ek ekran görüntüleri eklemek için 1 ile 3 arasındaki adımları yineleyin
 
@@ -71,13 +71,13 @@ Teklifinizi gösteren en az bir ve en fazla beş görüntü ekleyin. Tüm görü
 
 Teklifinizi gösteren YouTube veya Vimeo videolarınıza bağlantılar ekleyebilirsiniz. Bu videolar, teklifinizle birlikte müşterilere gösterilir. Videonun boyutunda ve içinde 1280 x 720 piksel boyutunda bir küçük resim görüntüsü girmeniz gerekir. PNG biçimi. Teklif başına en fazla dört video ekleyin.
 
-1.  **Videolar** ' ın altında, **video ekle** bağlantısını seçin.
+1.  **Videolar**' ın altında, **video ekle** bağlantısını seçin.
 2.  Görüntülenen kutulara videonuzun adını ve bağlantısını girin.
 3.  Sürükleyip bırakın. PNG dosyası (1280 x 720 piksel) gri küçük resim kutusuna sürükleyin.
 4.  Başka bir video eklemek için 1 ile 3 arasındaki adımları yineleyin.
 
-Sonraki sekmeye geçmeden önce **Taslağı kaydet** ' i seçin: **fiyatlandırma ve kullanılabilirlik** .
+Sonraki sekmeye geçmeden önce **Taslağı kaydet** ' i seçin: **fiyatlandırma ve kullanılabilirlik**.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Fiyatlandırma ve kullanılabilirliği yapılandırma](create-consulting-service-pricing-availability.md)
+* [Fiyatlandırmayı ve kullanılabilirliği yapılandırma](create-consulting-service-pricing-availability.md)

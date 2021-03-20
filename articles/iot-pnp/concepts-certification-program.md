@@ -9,10 +9,10 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: 1fcfc7a9e632e5db1fb809dba7a938c8641c9ddc
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92048109"
 ---
 # <a name="what-is-the-azure-certified-device-program"></a>Azure Sertifikalı cihaz programı nedir?
@@ -72,7 +72,7 @@ Azure Sertifikalı cihaz sertifikasında artımlı bir sertifika olan _ıot Tak 
 Azure Sertifikalı cihaz sertifikalarında artımlı bir sertifika olan _Edge tarafından yönetilen sertifika_, Windows, Linux veya RTOS çalıştıran Azure IoT cihazları için cihaz yönetim standartlarına odaklanır. Şu anda, bu program sertifikası modül dağıtımı ve yönetimi için Edge çalışma zamanı uyumluluğuna odaklanır.
 
 > [!TIP]
-> Bu program daha önce _IoT Edge sertifika programı_olarak biliniyordu.
+> Bu program daha önce _IoT Edge sertifika programı_ olarak biliniyordu.
 
 - Daha fazla bilgi edinmek için bkz. [sertifika gereksinimleri](https://aka.ms/acdedgemanagedrequirements).
 - IoT Edge hakkında daha fazla bilgi edinmek için bkz. [IoT Edge genel bakış](../iot-edge/about-iot-edge.md).

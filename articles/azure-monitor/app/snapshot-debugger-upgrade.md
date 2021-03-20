@@ -7,10 +7,10 @@ ms.author: pharring
 ms.date: 03/28/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 6991db6055ca8556adff67f194bac0f4aa04cb06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "77671401"
 ---
 # <a name="upgrading-the-snapshot-debugger"></a>Snapshot Debugger yükseltiliyor
@@ -20,12 +20,12 @@ Verileriniz için mümkün olan en iyi güvenliği sağlamak üzere Microsoft, b
 ## <a name="upgrading-the-site-extension"></a>Site uzantısını yükseltme
 
 > [!IMPORTANT]
-> Application Insights eski sürümleri _Azure App Service için Application Insights uzantısı_adlı bir özel site uzantısı kullandı. Geçerli Application Insights deneyimi, uygulama ayarları önceden yüklenmiş bir site uzantısını açık olacak şekilde ayarlanarak etkinleştirilir.
+> Application Insights eski sürümleri _Azure App Service için Application Insights uzantısı_ adlı bir özel site uzantısı kullandı. Geçerli Application Insights deneyimi, uygulama ayarları önceden yüklenmiş bir site uzantısını açık olacak şekilde ayarlanarak etkinleştirilir.
 > Sitenizin çalışmayı durdurmasına neden olabilecek çakışmaların önüne geçmek için, önce özel site uzantısının silinmesi önemlidir. Aşağıdaki 4. adıma bakın.
 
 Site uzantısını kullanarak anlık görüntü hata ayıklayıcısını etkinleştirdiyseniz, aşağıdaki yordamı kullanarak yükseltebilirsiniz:
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 2. Application Insights ve anlık görüntü hata ayıklayıcısı etkin olan kaynağınız için gidin. Örneğin, bir Web uygulaması için App Service kaynağına gidin:
 
    ![DiagService01 adlı tek bir App Service kaynağının ekran görüntüsü](./media/snapshot-debugger-upgrade/app-service-resource.png)

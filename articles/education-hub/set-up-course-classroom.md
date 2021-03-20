@@ -8,10 +8,10 @@ ms.date: 06/30/2020
 ms.service: azure-education
 ms.subservice: education-hub
 ms.openlocfilehash: 0b797e2416b4d8849da19e4e75127f86a6f17322
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87102360"
 ---
 # <a name="quickstart-set-up-a-course-and-create-a-classroom"></a>Hızlı başlangıç: Kurs ayarlama ve sınıf oluşturma
@@ -45,17 +45,17 @@ Abonelik düzeyinde, üst sınırı artırabilir veya azaltabilirsiniz ve deği�
 
 1. Oluşturma iş akışını başlatmak için tablonun sol üst köşesindeki **+ Ekle** simgesini seçin.
 
-    :::image type="content" source="media/set-up-course-classroom/courses-add.png" alt-text="Azure Eğitim Merkezi kursları sayfası" border="false":::
+    :::image type="content" source="media/set-up-course-classroom/courses-add.png" alt-text="Azure Eğitim Merkezi kurs ekleme" border="false":::
 
 1. İki yöntemi kullanarak bir kurs listesi oluşturabilirsiniz: bir listesi yükleyerek veya bir davet kodu kullanarak.
     - **Listesi**: tüm öğrencilerin adlarına ve oturum açma bilgilerine sahipseniz, bir listesi dosyasını doldurabilir ve karşıya yükleyebilirsiniz. Roster 'ın karşıya yüklenmesi için gereken. csv dosyasının örnek bir dosyasını indirmek için sağ üst köşedeki **örnek dosyayı indir** bağlantısını seçin.
     - **Davet kodu**: bir davet kodu kullanmayı seçerseniz, kaç kodun kullanılabileceğini ve ne zaman sona ereceğini belirleyin. Bu kodu kullanmak için öğrencilerinizi aşağıdaki bağlantıyı göndereceğiz: https://aka.ms/joinedu .
 
-      :::image type="content" source="media/set-up-course-classroom/enter-invitation-code.png" alt-text="Azure Eğitim Merkezi kursları sayfası" border="false":::
+      :::image type="content" source="media/set-up-course-classroom/enter-invitation-code.png" alt-text="Azure Eğitim Merkezi davet kodunuzu girin" border="false":::
 
 1. Sağ alt köşede **Sınıf Oluştur** ' u seçin. Bu işlem birkaç dakika sürebilir.
 
-   :::image type="content" source="media/set-up-course-classroom/create-classroom.png" alt-text="Azure Eğitim Merkezi kursları sayfası" border="false":::
+   :::image type="content" source="media/set-up-course-classroom/create-classroom.png" alt-text="Azure Eğitim Merkezi bir sınıf oluşturun" border="false":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2020
 ms.author: allensu
 ms.openlocfilehash: 8a6be588544883b77c3ff115c9dba5e6ecd5fbd7
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92747223"
 ---
 # <a name="configure-tcp-reset-and-idle-timeout-for-azure-load-balancer"></a>Azure Load Balancer için TCP sıfırlamayı ve boşta kalma zaman aşımını yapılandırma
@@ -37,15 +37,15 @@ Aşağıdaki bölümlerde, yük dengeleyici kaynakları için boşta kalma zaman
 
 Boşta kalma zaman aşımını ve bir yük dengeleyici için TCP sıfırlamayı ayarlamak için, yük dengeli kuralı düzenleyin. 
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
-2. Sol taraftaki menüde **kaynak grupları** ' nı seçin.
+2. Sol taraftaki menüde **kaynak grupları**' nı seçin.
 
 3. Yük dengeleyiciniz için kaynak grubunu seçin. Bu örnekte kaynak grubu **Myresourcegroup** olarak adlandırılmıştır.
 
 4. Yük dengeleyicinizi seçin. Bu örnekte, yük dengeleyici **Myloadbalancer** olarak adlandırılmıştır.
 
-5. **Ayarlar** bölümünde **Yük Dengeleme kuralları** ' nı seçin.
+5. **Ayarlar** bölümünde **Yük Dengeleme kuralları**' nı seçin.
 
      :::image type="content" source="./media/load-balancer-tcp-idle-timeout/portal-lb-rules.png" alt-text="Yük dengeleyici kurallarını düzenleyin." border="true":::
 
@@ -53,11 +53,11 @@ Boşta kalma zaman aşımını ve bir yük dengeleyici için TCP sıfırlamayı 
 
 7. Yük Dengeleme kuralında, kaydırıcıyı **boşta zaman aşımı (dakika)** cinsinden zaman aşımı değerine taşıyın.  
 
-8. **TCP sıfırlaması** altında **etkin** ' i seçin.
+8. **TCP sıfırlaması** altında **etkin**' i seçin.
 
-   :::image type="content" source="./media/load-balancer-tcp-idle-timeout/portal-lb-rules-tcp-reset.png" alt-text="Yük dengeleyici kurallarını düzenleyin." border="true":::
+   :::image type="content" source="./media/load-balancer-tcp-idle-timeout/portal-lb-rules-tcp-reset.png" alt-text="Boşta zaman aşımını ayarla ve TCP sıfırlaması." border="true":::
 
-9. **Kaydet** ’i seçin.
+9. **Kaydet**’i seçin.
 
 # <a name="powershell"></a>[**PowerShell**](#tab/tcp-reset-idle-powershell)
 
@@ -80,7 +80,7 @@ $lb.LoadBalancingRules[0].EnableTcpReset = 'true'
 Set-AzLoadBalancer -LoadBalancer $lb
 ```
 
-# <a name="azure-cli"></a>[**Azure CLI**](#tab/tcp-reset-idle-cli)
+# <a name="azure-cli"></a>[**Azure CLI’si**](#tab/tcp-reset-idle-cli)
 
 Boşta kalma zaman aşımını ve TCP sıfırlamayı ayarlamak için [az Network lb Rule Update](/cli/azure/network/lb/rule?az_network_lb_rule_update)için şu parametreleri kullanın:
 

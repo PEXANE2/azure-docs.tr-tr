@@ -7,10 +7,10 @@ ms.date: 01/15/2020
 ms.author: antchu
 ms.custom: mvc, devx-track-python, devx-track-azurepowershell
 ms.openlocfilehash: ca9ce27583168dfee1a597fce559afad38a3a8c7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95994613"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Öğretici: Python ve TensorFlow ile Azure Işlevleri 'nde makine öğrenimi modellerini uygulama
@@ -146,7 +146,7 @@ Azure Işlevlerinde bir işlev projesi, her birinin belirli bir tetikleyiciye ya
     
 1. `classify`Uç noktanın çıktıda göründüğünü gördüğünüzde URL 'ye gidin ```http://localhost:7071/api/classify?name=Azure``` . "Merhaba Azure!" iletisi çıktıda görünmelidir.
 
-1. **Ctrl** - Konağı durdurmak için CTRL **C** 'yi kullanın.
+1.  - Konağı durdurmak için CTRL **C** 'yi kullanın.
 
 
 ## <a name="import-the-tensorflow-model-and-add-helper-code"></a>TensorFlow modelini içeri aktarma ve yardımcı kodu ekleme

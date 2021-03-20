@@ -4,10 +4,10 @@ description: Gizli dizileri bir Azure Key Vault nasıl depolayacağınızı ve V
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 5714279ef183cb930d643575466dae3d6cb69bba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85481655"
 ---
 # <a name="store-secrets-in-a-key-vault-in-azure-devtest-labs"></a>Gizli dizileri Azure DevTest Labs bir anahtar kasasında depolayın
@@ -23,7 +23,7 @@ Gizli anahtarı Azure Key Vault kaydetmek için aşağıdaki adımları uygulay�
 
 1. Sol menüdeki **gizli dizilerimi** seçin.
 2. Gizli dizi için bir **ad** girin. Bu adı, sanal makine, formül veya ortam oluştururken açılan listede görürsünüz. 
-3. Parolayı **değer**olarak girin.
+3. Parolayı **değer** olarak girin.
 
     ![Saklama parolası](media/devtest-lab-store-secrets-in-key-vault/store-secret.png)
 
@@ -31,7 +31,7 @@ Gizli anahtarı Azure Key Vault kaydetmek için aşağıdaki adımları uygulay�
 Bir VM, formül veya ortam oluşturmak için bir parola girmeniz gerektiğinde, el ile gizli anahtar girebilir ya da anahtar kasasından kaydedilmiş bir gizli dizi seçebilirsiniz. Anahtar Kasanızda depolanan bir gizli dizi kullanmak için aşağıdaki işlemleri yapın:
 
 1. **Kaydedilmiş gizli dizi kullan**' ı seçin. 
-2. **Gizli dizi Seç**listesinden gizli anahtarı seçin. 
+2. **Gizli dizi Seç** listesinden gizli anahtarı seçin. 
 
     ![VM 'de gizli dizi kullanma](media/devtest-lab-store-secrets-in-key-vault/secret-store-pick-a-secret.png)
 

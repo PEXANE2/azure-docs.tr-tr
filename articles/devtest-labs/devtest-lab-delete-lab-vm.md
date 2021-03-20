@@ -4,10 +4,10 @@ description: Bu makalede, Azure DevTest Labs Azure portal kullanarak laboratuvar
 ms.topic: article
 ms.date: 01/24/2020
 ms.openlocfilehash: 495fb98f3da41a47d316dd64554ba616ede0af47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85481230"
 ---
 # <a name="delete-a-lab-or-vm-in-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs laboratuarda laboratuvar veya VM silme
@@ -21,7 +21,7 @@ Bir kaynak grubundan bir DevTest Labs örneğini sildiğinizde, DevTest Labs hiz
 
 Bir laboratuvarı silmek için aşağıdaki işlemleri yapın: 
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Sol taraftaki menüden **tüm kaynak** ' ı seçin, hizmet türü Için **DevTest Labs** ' i seçin ve Laboratuvarı seçin.
 
     ![Laboratuvarınızı seçin](media/devtest-lab-delete-lab-vm/select-lab.png)
@@ -46,7 +46,7 @@ Sanal makine, ağ arabirimi ve VM ile ilişkili disk silinir.
 
 Laboratuvara bir sanal makineyi silmek için aşağıdaki işlemleri yapın: 
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Sol taraftaki menüden **tüm kaynak** ' ı seçin, hizmet türü Için **DevTest Labs** ' i seçin ve Laboratuvarı seçin.
 
     ![Laboratuvarınızı seçin](media/devtest-lab-delete-lab-vm/select-lab.png)
@@ -56,7 +56,7 @@ Laboratuvara bir sanal makineyi silmek için aşağıdaki işlemleri yapın:
 4. **Onay** Iletişim kutusunda **Tamam**' ı seçin. 
 5. İşlemin durumunu görmek için **Bildirimler** simgesini (zil) seçin. 
 
-**Sanal makine sayfasından**bir VM 'yi silmek için, aşağıdaki görüntüde gösterildiği gibi araç çubuğundan **Sil** ' i seçin:
+**Sanal makine sayfasından** bir VM 'yi silmek için, aşağıdaki görüntüde gösterildiği gibi araç çubuğundan **Sil** ' i seçin:
 
 ![VM 'yi VM 'den silme sayfası](media/devtest-lab-delete-lab-vm/delete-from-vm-page.png) 
 

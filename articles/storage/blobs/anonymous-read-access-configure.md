@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
 ms.openlocfilehash: feac7b890c973b1541c5362f860432687082953f
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96533885"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>Kapsayıcılar ve BLOB 'lar için anonim genel okuma erişimini yapılandırma
@@ -55,7 +55,7 @@ Bir depolama hesabı için genel erişime izin vermek veya bu erişimi engelleme
 
 **Allowblobpublicaccess** özelliği bir depolama hesabı için varsayılan olarak ayarlı değildir ve açıkça ayarlanana kadar bir değer döndürmez. Özellik değeri **null** ya da **doğru** olduğunda depolama hesabı ortak erişime izin verir.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
 
 Azure portal bir depolama hesabı için genel erişime izin vermek veya bu erişimi engellemek için şu adımları izleyin:
 
@@ -190,7 +190,7 @@ Bir depolama hesabı için genel erişime izin verildiğinde, bir kapsayıcıyı
 
 Tek bir blob için genel erişim düzeyini değiştiremezsiniz. Genel erişim düzeyi yalnızca kapsayıcı düzeyinde ayarlanır. Kapsayıcıyı oluştururken kapsayıcının ortak erişim düzeyini ayarlayabilir veya var olan bir kapsayıcıdaki ayarı güncelleştirebilirsiniz.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
 
 Azure portal bir veya daha fazla mevcut kapsayıcının genel erişim düzeyini güncelleştirmek için şu adımları izleyin:
 

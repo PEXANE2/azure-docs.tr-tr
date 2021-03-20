@@ -6,13 +6,13 @@ ms.topic: article
 ms.date: 12/11/2020
 ms.custom: devx-track-csharp, seodec18
 ms.openlocfilehash: 6ceeb3d31652c04eb9a69c1c8bb4b114e6f38d52
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97347737"
 ---
-# <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Azure App Service için TLS karşılıklı kimlik doğrulamasını yapılandırma
+# <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Azure App Service için TLS karşılıklı kimlik doğrulamayı yapılandırma
 
 Azure App Service uygulamanıza erişimi, farklı kimlik doğrulama türlerini etkinleştirerek kısıtlayabilirsiniz. Bunu yapmanın bir yolu, istemci isteği TLS/SSL üzerinden olduğunda ve sertifikayı doğrulayacağından istemci sertifikası isteğidir. Bu mekanizmaya TLS karşılıklı kimlik doğrulaması veya istemci sertifikası kimlik doğrulaması adı verilir. Bu makalede, uygulamanızın istemci sertifikası kimlik doğrulamasını kullanmak üzere nasıl ayarlanacağı gösterilmektedir.
 

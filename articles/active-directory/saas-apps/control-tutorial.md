@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/16/2019
 ms.author: jeedes
 ms.openlocfilehash: d6b752b2c562944748d21aa1a28a177163a95aee
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92455298"
 ---
 # <a name="tutorial-integrate-continuity-control-with-azure-active-directory"></a>Öğretici: süreksizlik denetimini Azure Active Directory ile tümleştirin
@@ -28,7 +28,7 @@ Bu öğreticide, devamlılığı denetimini (denetim) Azure Active Directory (Az
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -52,7 +52,7 @@ Denetim tümleştirmesini Azure AD ile yapılandırmak için Galeriden yönetile
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Azure AD SSO 'yu, **Britta Simon**adlı bir test kullanıcısı kullanarak denetimle yapılandırın ve test edin. SSO 'nun çalışması için, denetim içindeki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+Azure AD SSO 'yu, **Britta Simon** adlı bir test kullanıcısı kullanarak denetimle yapılandırın ve test edin. SSO 'nun çalışması için, denetim içindeki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu denetim ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 

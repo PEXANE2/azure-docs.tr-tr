@@ -11,10 +11,10 @@ ms.date: 11/30/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ed393f721d4461ebadea41f8dad707d4881865cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "78183914"
 ---
 # <a name="azure-ad-b2c-authentication-protocols"></a>Azure AD B2C: kimlik doğrulama protokolleri
@@ -53,7 +53,7 @@ Neredeyse tüm OAuth ve OpenID Connect akışlarında dört taraf Exchange 'e da
 ## <a name="policies-and-user-flows"></a>İlkeler ve Kullanıcı akışları
 Arguya, Azure AD B2C ilkeleri hizmetin en önemli özellikleridir. Azure AD B2C, ilkeleri sunarak standart OAuth 2,0 ve OpenID Connect protokollerini genişletir. Bunlar, Azure AD B2C basit kimlik doğrulaması ve yetkilendirmeden çok daha fazlasını gerçekleştirmesine olanak tanır.
 
-En yaygın kimlik görevlerini ayarlamanıza yardımcı olması için Azure AD B2C portalı, **Kullanıcı akışları**adlı önceden tanımlanmış ve yapılandırılabilir ilkeler içerir. Kullanıcı akışları, kaydolma, oturum açma ve profil düzenlemesi dahil olmak üzere tüketici kimliği deneyimlerini tam olarak anlatmaktadır. Kullanıcı akışları, yönetim Kullanıcı arabiriminde tanımlanabilir. HTTP kimlik doğrulama isteklerinde özel bir sorgu parametresi kullanılarak yürütülenebilir.
+En yaygın kimlik görevlerini ayarlamanıza yardımcı olması için Azure AD B2C portalı, **Kullanıcı akışları** adlı önceden tanımlanmış ve yapılandırılabilir ilkeler içerir. Kullanıcı akışları, kaydolma, oturum açma ve profil düzenlemesi dahil olmak üzere tüketici kimliği deneyimlerini tam olarak anlatmaktadır. Kullanıcı akışları, yönetim Kullanıcı arabiriminde tanımlanabilir. HTTP kimlik doğrulama isteklerinde özel bir sorgu parametresi kullanılarak yürütülenebilir.
 
 İlkeler ve Kullanıcı akışları, OAuth 2,0 ve OpenID Connect 'in standart özellikleri değildir, bu nedenle bunları anlamak için zaman ayırın. Daha fazla bilgi için [Azure AD B2C Kullanıcı akışı başvuru kılavuzu](user-flow-overview.md)' na bakın.
 

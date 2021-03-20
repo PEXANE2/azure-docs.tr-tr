@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/09/2020
 ms.openlocfilehash: a480c8f2dfdda0ce7a1eb879554fb79c96adbe1e
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97347821"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB'deki tutarlılık düzeyleri
@@ -22,7 +22,7 @@ Günümüzde piyasada bulunan ticari olarak kullanılabilen dağıtılmış NoSQ
 
 - *Güçlü*
 - *Sınırlanmış Eskime durumu*
-- *Oturum*
+- *Oturumuna*
 - *Tutarlı ön ek*
 - *Son*
 
@@ -147,7 +147,7 @@ Tam RTT gecikmesi, hafif bir mesafe ve Azure ağ topolojisi 'nin bir işlevidir.
 |--|--|--|
 |**Güçlü**|Yerel Minınlık|Küresel çoğunluk|
 |**Sınırlanmış Eskime durumu**|Yerel Minınlık|Yerel çoğunluk|
-|**Oturum**|Tek çoğaltma (oturum belirtecini kullanarak)|Yerel çoğunluk|
+|**Oturumuna**|Tek çoğaltma (oturum belirtecini kullanarak)|Yerel çoğunluk|
 |**Tutarlı ön ek**|Tek çoğaltma|Yerel çoğunluk|
 |**Son**|Tek çoğaltma|Yerel çoğunluk|
 

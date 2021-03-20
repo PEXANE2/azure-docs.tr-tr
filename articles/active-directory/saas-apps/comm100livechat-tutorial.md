@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/22/2019
 ms.author: jeedes
 ms.openlocfilehash: 9636c8cbb517c7aece450f53cfc37e4ddd9803b7
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92455502"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-comm100-live-chat"></a>Öğretici: Comm100 Canlı sohbetle çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, Comm100 Live Chat 'i Azure Active Directory (Azure AD) ile tüm
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -58,7 +58,7 @@ Comm100 Live Chat 'in tümleştirmesini Azure AD 'ye göre yapılandırmak için
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-comm100-live-chat"></a>Comm100 Live Chat için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Comm100 Live Chat ile yapılandırın ve test edin. SSO 'nun çalışması için, Comm100 Live Chat 'teki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Comm100 Live Chat ile yapılandırın ve test edin. SSO 'nun çalışması için, Comm100 Live Chat 'teki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Comm100 Canlı sohbetle yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -152,11 +152,11 @@ Bu bölümde, Comm100 Live Chat 'e erişim vererek Azure çoklu oturum açma öz
 
    a. İlk vurgulanan bağlantıyı kopyalayıp Azure portal **temel SAML yapılandırması** bölümünde **oturum açma URL 'si** metin kutusuna yapıştırın.
 
-   b. **SAML SSO URL** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
+   b. **SAML SSO URL** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
-   c. **Uzaktan oturum kapatma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **Logout URL 'si**değerini yapıştırın.
+   c. **Uzaktan oturum kapatma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **Logout URL 'si** değerini yapıştırın.
 
-   d. Azure portal indirdiğiniz Base-64 kodlu sertifikayı **sertifikaya**yüklemek Için **Dosya Seç** ' e tıklayın.
+   d. Azure portal indirdiğiniz Base-64 kodlu sertifikayı **sertifikaya** yüklemek Için **Dosya Seç** ' e tıklayın.
 
    e. **Değişiklikleri Kaydet**’e tıklayın.
 
@@ -180,11 +180,11 @@ Azure AD kullanıcılarının Comm100 canlı sohbette oturum açmasını sağlam
 
     ![Comm100 canlı sohbet yeni aracı](./media/comm100livechat-tutorial/tutorial_comm100livechat_newagent.png)
 
-    a. a. **E-posta** metin kutusuna **B. Simon \@ contoso.com**gibi kullanıcının e-postasını girin.
+    a. a. **E-posta** metin kutusuna **B. Simon \@ contoso.com** gibi kullanıcının e-postasını girin.
 
-    b. **Ad** metin kutusuna **B**gibi kullanıcının adını girin.
+    b. **Ad** metin kutusuna **B** gibi kullanıcının adını girin.
 
-    c. **Soyadı** metin kutusuna, **Simon**gibi kullanıcı adının soyadını girin.
+    c. **Soyadı** metin kutusuna, **Simon** gibi kullanıcı adının soyadını girin.
 
     d. **Görünen ad** metin kutusuna **B. Simon** gibi kullanıcının görünen adını girin
 

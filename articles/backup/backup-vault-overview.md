@@ -4,10 +4,10 @@ description: Yedekleme kasalarına genel bakış.
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.openlocfilehash: c189997ecc4814917182246b35003649d317ac77
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92091296"
 ---
 # <a name="backup-vaults-overview"></a>Yedekleme kasaları genel bakış
@@ -49,12 +49,12 @@ Bir yedekleme Kasası oluşturmak için aşağıdaki adımları izleyin.
 1. Arama kutusuna **yedekleme kasaları** yazın.
 1. **Hizmetler**' in altında, **yedekleme kasaları**' nı seçin.
 1. **Yedekleme kasaları** sayfasında **Ekle**' yi seçin.
-1. **Temel bilgiler sekmesinde**, **proje ayrıntıları**altında, doğru aboneliğin seçildiğinden emin olun ve ardından yeni kaynak grubu **Oluştur** ' u seçin. Ad için *Myresourcegroup* yazın.
+1. **Temel bilgiler sekmesinde**, **proje ayrıntıları** altında, doğru aboneliğin seçildiğinden emin olun ve ardından yeni kaynak grubu **Oluştur** ' u seçin. Ad için *Myresourcegroup* yazın.
 
   ![Yeni kaynak grubu oluştur](./media/backup-vault-overview/new-resource-group.png)
 
-1. **Örnek ayrıntıları**' nın altında, **Yedekleme Kasası adı** için *mykasa* yazın ve **bölgeniz**için *Doğu ABD* Bu örnekte istediğiniz bölgeyi seçin.
-1. Şimdi **depolama yedeklerinizi**seçin. Depolama yedekliliği, öğeler kasada korunduktan sonra değiştirilemez.
+1. **Örnek ayrıntıları**' nın altında, **Yedekleme Kasası adı** için *mykasa* yazın ve **bölgeniz** için *Doğu ABD* Bu örnekte istediğiniz bölgeyi seçin.
+1. Şimdi **depolama yedeklerinizi** seçin. Depolama yedekliliği, öğeler kasada korunduktan sonra değiştirilemez.
 1. Azure 'u birincil yedek depolama uç noktası olarak kullanıyorsanız, varsayılan **coğrafi olarak yedekli** ayarını kullanmaya devam edebilirsiniz.
 1. Azure’u birincil yedek depolama uç noktası olarak kullanmıyorsanız, Azure depolama maliyetlerini azaltan **Yerel olarak yedekli** seçeneğini belirleyin.
 1. [Coğrafi](../storage/common/storage-redundancy.md#geo-redundant-storage) ve [Yerel](../storage/common/storage-redundancy.md#locally-redundant-storage) artıklık hakkında daha fazla bilgi edinin.
@@ -96,7 +96,7 @@ Bu adımları tamamladıktan sonra kasayı silmeye devam edebilirsiniz.
 
 Kasada daha fazla öğe yoksa, kasa panosunda **Sil** ' i seçin. Kasayı silmek isteyip istemediğinizi soran bir onay metni görürsünüz.
 
-![Kasayı Sil](./media/backup-vault-overview/delete-vault.png)
+![Kasayı silme](./media/backup-vault-overview/delete-vault.png)
 
 1. Kasayı silmek istediğinizi doğrulamak için **Evet** ' i seçin. Kasa silinir. Portal **Yeni** hizmet menüsüne geri döner.
 

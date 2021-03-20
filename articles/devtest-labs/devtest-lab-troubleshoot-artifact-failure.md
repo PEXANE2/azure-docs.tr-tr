@@ -4,10 +4,10 @@ description: DevTest Labs, bir yapıt hatasını tanılamak için kullanabilece�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 440ce6a537ac8d6a21ae8010bfbb3c38a82bf01e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85480822"
 ---
 # <a name="diagnose-artifact-failures-in-the-lab"></a>Laboratuvardaki yapıt başarısızlıklarını tanılama 
@@ -23,7 +23,7 @@ Bir yapıt oluşturduktan sonra, başarılı veya başarısız olup olmadığın
 
 1. Azure portal, kaynak listenizde laboratuvarınızı seçin.
 2. Araştırmak istediğiniz yapıtı içeren Windows sanal makinesini seçin.
-3. Sol bölmede, **genel**altında **yapıtlar**' ı seçin. Bu VM ile ilişkili yapıların listesi görüntülenir. Yapıt adı ve yapıt durumu belirtilir.
+3. Sol bölmede, **genel** altında **yapıtlar**' ı seçin. Bu VM ile ilişkili yapıların listesi görüntülenir. Yapıt adı ve yapıt durumu belirtilir.
 
    ![Yapıt durumu](./media/devtest-lab-troubleshoot-artifact-failure/devtest-lab-artifacts-failure-new.png)
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
 ms.openlocfilehash: 19378251408d55868ed844a5505ae48ece55dc3b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92451524"
 ---
 # <a name="tutorial-integrate-freedcamp-with-azure-active-directory"></a>Öğretici: Freedcamp ile tümleştirin Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, Freedcamp 'i Azure Active Directory (Azure AD) ile tümleştirm
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -52,7 +52,7 @@ Freedcamp tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**Britta Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Freedcamp ile yapılandırın ve test edin. SSO 'nun çalışması için, Freedcamp içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**Britta Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Freedcamp ile yapılandırın ve test edin. SSO 'nun çalışması için, Freedcamp içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Freedcamp ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -96,7 +96,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 ### <a name="configure-freedcamp"></a>Freedcamp yapılandırma
 
-1. Yapılandırmayı Freedcamp içinde otomatik hale getirmek için, **uzantıyı yüklemek**üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
+1. Yapılandırmayı Freedcamp içinde otomatik hale getirmek için, **uzantıyı yüklemek** üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 
     ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
 

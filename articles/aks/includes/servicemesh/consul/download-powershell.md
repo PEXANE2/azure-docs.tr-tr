@@ -4,10 +4,10 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: 8931ba97cf72891c78e20389be10178dd2c0317a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "77594303"
 ---
 Windows üzerinde PowerShell tabanlı bir kabukta, `Invoke-WebRequest` Tüketil Helm grafik sürümünü indirmek için kullanın ve ardından aşağıdaki gibi ile ayıklayın `Expand-Archive` :

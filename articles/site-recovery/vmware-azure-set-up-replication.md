@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: sutalasi
 ms.openlocfilehash: 45921bdf802a649b7b802f44d2842a543e44f02b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84699609"
 ---
 # <a name="configure-and-manage-replication-policies-for-vmware-disaster-recovery"></a>VMware olağanüstü durum kurtarma için çoğaltma ilkelerini yapılandırma ve yönetme
@@ -20,10 +20,10 @@ Bu makalede, [Azure Site Recovery](site-recovery-overview.md)kullanarak VMware V
 
 ## <a name="create-a-policy"></a>İlke oluşturma
 
-1. **Manage**  >  **Site Recovery altyapıyı**Yönet ' i seçin.
+1.   >  **Site Recovery altyapıyı** Yönet ' i seçin.
 2. **VMware ve fiziksel makineler için**, **çoğaltma ilkeleri**' ni seçin.
 3. **+ Çoğaltma İlkesi**' ne tıklayın ve ilke adını belirtin.
-4. **RPO eşiğine**göre RPO sınırını belirtin. Sürekli çoğaltma bu sınırı aştığında uyarılar oluşturulur.
+4. **RPO eşiğine** göre RPO sınırını belirtin. Sürekli çoğaltma bu sınırı aştığında uyarılar oluşturulur.
 5. **Kurtarma noktası bekletme** kısmında, her kurtarma noktası için bekletme süresini saat cinsinden belirtin. Korumalı makineler, bekletme penceresi içindeki herhangi bir noktaya kurtarılabilir. Premium depolama alanına çoğaltılan makineler için 24 saate kadar bekletme desteklenir. Standart depolama için en fazla 72 saat desteklenir.
 6. **Uygulamayla tutarlı anlık görüntü sıklığı**' nda, uygulama ile tutarlı anlık görüntüleri içeren kurtarma noktalarının ne sıklıkta (saat cinsinden) oluşturulması gerektiğini açılan listeden seçin. Uygulama tutarlılığı noktalarını oluşturmayı devre dışı bırakmak istiyorsanız, açılan listeden "kapalı" değerini seçin.
 7. **Tamam**'a tıklayın. İlke, 30 ila 60 saniye içinde oluşturulur.
@@ -49,10 +49,10 @@ Bir çoğaltma ilkesini oluşturduktan sonra değiştirebilirsiniz.
 - Çoğaltılan makineleri farklı bir çoğaltma ilkesiyle ilişkilendirmek istiyorsanız ilgili makineler için korumayı devre dışı bırakıp yeniden etkinleştirmeniz gerekir.
 
 İlkeyi aşağıdaki gibi düzenleyin:
-1. **Manage**  >  **Site Recovery altyapı**  >  **çoğaltma ilkelerini**Yönet ' i seçin.
+1.   >  **Site Recovery altyapı**  >  **çoğaltma ilkelerini** Yönet ' i seçin.
 2. Değiştirmek istediğiniz çoğaltma ilkesini seçin.
 3. **Ayarları Düzenle**' ye tıklayın ve RPO eşiği/kurtarma noktası bekletme saatleri/uygulamayla tutarlı anlık görüntü sıklığı alanlarını gerektiği şekilde güncelleştirin.
-4. Uygulama tutarlılığı noktalarını oluşturmayı devre dışı bırakmak istiyorsanız, **uygulamayla tutarlı anlık görüntü sıklığı**alanının açılan menüsünde "kapalı" değerini seçin.
+4. Uygulama tutarlılığı noktalarını oluşturmayı devre dışı bırakmak istiyorsanız, **uygulamayla tutarlı anlık görüntü sıklığı** alanının açılan menüsünde "kapalı" değerini seçin.
 5. **Kaydet**’e tıklayın. İlke, 30 ila 60 saniye içinde güncelleştirilmeleri gerekir.
 
 

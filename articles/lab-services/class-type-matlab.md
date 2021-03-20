@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
 ms.openlocfilehash: 137959f51b08dceee150962f77110ee2ac1dc193
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85445007"
 ---
 # <a name="setup-a-lab-to-teach-matlab"></a>MATLAB öğretmek için laboratuvar kurma
@@ -65,7 +65,7 @@ Yükleme dosyalarını indirmek ve lisans dosyasını ve dosya yükleme anahtar�
 7. **MathWorks hesabınızda oturum açın** sayfasında, MathWorks hesabınızı girin.
 8. **MathWorks lisans sözleşmesi** sayfasında, terimi kabul edin ve **İleri** düğmesine tıklayın.
 9. **Gelişmiş Seçenekler** açılan düğmesine tıklayın ve **yükleme yapmadan indirmek istiyorum**' u seçin.
-10. **Hedef Seç klasörü**üzerinde **İleri**' ye tıklayın.
+10. **Hedef Seç klasörü** üzerinde **İleri**' ye tıklayın.
 11. MATLAB 'yi yüklemekte olduğunuz bilgisayarın platformu olarak **Windows** ' u seçin.
 12. **Ürün Seç** SAYFASıNDA, MATLAB 'in yüklemek istediğiniz diğer tüm MathWorks ürünleriyle birlikte seçildiğinden emin olun.
 13. **Seçimleri ve Indirmeyi Onayla** sayfasında, **indirmeyi Başlat**' ı tıklatın.  

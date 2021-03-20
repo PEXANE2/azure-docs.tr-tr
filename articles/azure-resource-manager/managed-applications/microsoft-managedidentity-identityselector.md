@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tomfitz
 ms.openlocfilehash: 91e3cd0b99825fd72eb342ce7a8555b046455538
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87063396"
 ---
 # <a name="microsoftmanagedidentityidentityselector-ui-element"></a>Microsoft. Managedıdentity. ıdentityselector Kullanıcı arabirimi öğesi
@@ -75,8 +75,8 @@ Seçili kimlikler tabloda görüntülenir. Kullanıcı bu tablodan öğe ekleyeb
   - **Ononly** : kaynağa bir sistem tarafından atanan kimlik atanır. Kullanıcılar bu değeri dağıtım sırasında düzenleyemez.
   - **Yalnızca çevrimdışı** : kaynağa bir sistem tarafından atanan kimlik atanmaz. Kullanıcılar bu değeri dağıtım sırasında düzenleyemez.
 
-- **Options. Hidesystemassignedıdentity** **true**olarak ayarlanırsa, sistem tarafından atanan kimliği yapılandırmak için Kullanıcı arabirimi gösterilmez. Bu seçenek için varsayılan değer **false**'dur.
-- **Options. Hideuseratandıdentity** **değeri true**olarak ayarlanırsa, Kullanıcı tarafından atanan KIMLIĞI yapılandırmak için Kullanıcı arabirimi gösterilmez. Kaynağa Kullanıcı tarafından atanan bir kimlik atanmamıştır. Bu seçenek için varsayılan değer **false**'dur.
+- **Options. Hidesystemassignedıdentity** **true** olarak ayarlanırsa, sistem tarafından atanan kimliği yapılandırmak için Kullanıcı arabirimi gösterilmez. Bu seçenek için varsayılan değer **false**'dur.
+- **Options. Hideuseratandıdentity** **değeri true** olarak ayarlanırsa, Kullanıcı tarafından atanan KIMLIĞI yapılandırmak için Kullanıcı arabirimi gösterilmez. Kaynağa Kullanıcı tarafından atanan bir kimlik atanmamıştır. Bu seçenek için varsayılan değer **false**'dur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

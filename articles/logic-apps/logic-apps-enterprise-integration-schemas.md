@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
 ms.openlocfilehash: ade29318fdd1510d03ddd208534258a30b256e98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75979372"
 ---
 # <a name="validate-xml-with-schemas-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps’te şemalarla XML’i doğrulama
@@ -60,7 +60,7 @@ Tümleştirme hesapları ve şemalar gibi yapıtlarla ilgili sınırlar için, [
 
    ![Tümleştirme hesabı seçin](./media/logic-apps-enterprise-integration-schemas/select-integration-account.png)
 
-1. Tümleştirme hesabınızın **genel bakış** sayfasında, **Bileşenler**altında, **şemalar** kutucuğunu seçin.
+1. Tümleştirme hesabınızın **genel bakış** sayfasında, **Bileşenler** altında, **şemalar** kutucuğunu seçin.
 
    !["Şemalar" ı seçin](./media/logic-apps-enterprise-integration-schemas/select-schemas.png)
 
@@ -138,7 +138,7 @@ Daha büyük şemalar eklemek için, şemanızı Azure Storage hesabınızdaki b
 1. **Paylaşılan erişim imzası** bölmesinde **kapsayıcı düzeyinde paylaşılan erişim imzası URI**  >  **Oluştur**' u seçin. 
    SAS URL 'SI oluşturulduktan sonra, **URL** kutusunun yanındaki **Kopyala**' yı seçin.
 
-1. **Şema ekle** bölmesinin açık olduğu Azure Portal geri dönün. **Büyük dosya**seçin.
+1. **Şema ekle** bölmesinin açık olduğu Azure Portal geri dönün. **Büyük dosya** seçin.
 
    **İçerik URI 'si** kutusu artık **şema** kutusu yerine görüntülenir.
 
@@ -158,7 +158,7 @@ Mevcut bir şemayı güncelleştirmek için, istediğiniz değişiklikleri içer
 
 1. Şemanızı güncelleştirmek istediğiniz tümleştirme hesabını seçin.
 
-1. Tümleştirme hesabınızın **genel bakış** sayfasında, **Bileşenler**altında, **şemalar** kutucuğunu seçin.
+1. Tümleştirme hesabınızın **genel bakış** sayfasında, **Bileşenler** altında, **şemalar** kutucuğunu seçin.
 
 1. **Şemalar** sayfası açıldıktan sonra şemanızı seçin. 
    Önce şemayı indirmek ve düzenlemek için **İndir**' i seçin ve şemayı kaydedin.
@@ -178,7 +178,7 @@ Mevcut bir şemayı güncelleştirmek için, istediğiniz değişiklikleri içer
 
 1. Şemanızı silmek istediğiniz tümleştirme hesabını seçin.
 
-1. Tümleştirme hesabınızın **genel bakış** sayfasında, **Bileşenler**altında, **şemalar** kutucuğunu seçin.
+1. Tümleştirme hesabınızın **genel bakış** sayfasında, **Bileşenler** altında, **şemalar** kutucuğunu seçin.
 
 1. **Şemalar** sayfası açıldıktan sonra, şemanızı seçin ve **Sil**' i seçin.
 
