@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
 ms.openlocfilehash: 047ce9b33836e2c23a37b1383942323d7c382485
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397544"
 ---
 # <a name="application-gateway-request-routing-rules"></a>Application Gateway isteği yönlendirme kuralları
 
-Azure portal kullanarak bir uygulama ağ geçidi oluşturduğunuzda, varsayılan bir kural ( *rule1* ) oluşturursunuz. Bu kural varsayılan dinleyiciyi ( *Appgatewayhttplistener* ) varsayılan arka uç Havuzu ( *appgatewaybackendpool* ) ve varsayılan arka uç http ayarları ( *Appgatewaybackendhttpsettings* ) ile bağlar. Ağ geçidini oluşturduktan sonra, varsayılan kuralın ayarlarını düzenleyebilir veya yeni kurallar oluşturabilirsiniz.
+Azure portal kullanarak bir uygulama ağ geçidi oluşturduğunuzda, varsayılan bir kural (*rule1*) oluşturursunuz. Bu kural varsayılan dinleyiciyi (*Appgatewayhttplistener*) varsayılan arka uç Havuzu (*appgatewaybackendpool*) ve varsayılan arka uç http ayarları (*Appgatewaybackendhttpsettings*) ile bağlar. Ağ geçidini oluşturduktan sonra, varsayılan kuralın ayarlarını düzenleyebilir veya yeni kurallar oluşturabilirsiniz.
 
 ## <a name="rule-type"></a>Kural türü
 
@@ -57,7 +57,7 @@ Yeniden yönlendirmeler hakkında daha fazla bilgi için bkz. [Application Gatew
 
 ### <a name="redirection-type"></a>Yeniden yönlendirme türü
 
-Gereken yeniden yönlendirme türünü seçin: *kalıcı (301)* , *geçici (.)* , *bulunan (302* ) veya *diğer (303* ).
+Gereken yeniden yönlendirme türünü seçin: *kalıcı (301)*, *geçici (.)*, *bulunan (302*) veya *diğer (303*).
 
 ### <a name="redirection-target"></a>Yeniden yönlendirme hedefi
 

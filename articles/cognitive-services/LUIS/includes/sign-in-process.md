@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: cognitive-services
 manager: nitinme
 ms.custom: seodec18
@@ -9,10 +9,10 @@ ms.subservice: language-understanding
 ms.date: 10/30/2020
 ms.topic: include
 ms.openlocfilehash: e006f804b8ab6411f4949424147acf567dc2ed24
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97371329"
 ---
 ## <a name="sign-in-to-luis-portal"></a>LUIS portalında oturum açma

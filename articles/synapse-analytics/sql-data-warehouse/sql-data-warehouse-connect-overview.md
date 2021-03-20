@@ -12,10 +12,10 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: azure-synapse, seo-lt-2019, devx-track-csharp
 ms.openlocfilehash: 546c0c21762d0cfe10cf4f1b7a2e1b7d6691166e
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98685268"
 ---
 # <a name="connect-to-a-sql-pool-in-azure-synapse"></a>Azure 'da bir SQL havuzuna bağlanma SYNAPSE 
@@ -26,7 +26,7 @@ Azure 'da bir SQL havuzuna bağlanın SYNAPSE.
 
 Aşağıdaki örnekteki sunucu adı sqlpoolservername.database.windows.net ' dir. Tam sunucu adını bulmak için:
 
-1. [Azure portalına](https://portal.azure.com) gidin.
+1. [Azure Portal](https://portal.azure.com) gidin.
 2. **Azure SYNAPSE Analytics**' e tıklayın.
 3. Bağlanmak istediğiniz SQL havuzuna tıklayın.
 4. Tam sunucu adını bulun.

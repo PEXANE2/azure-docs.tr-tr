@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.openlocfilehash: 78395873457f9fe53d45dfbfd94aa9ccdccd614d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92485469"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure Veritabanı'ndaki PostgreSQL uzantıları - Tek Sunucu
@@ -241,7 +241,7 @@ TimescaleDB yüklemek için, bunu sunucunun paylaşılan önyükleme kitaplıkla
 
 3. Parametresi için arama yapın `shared_preload_libraries` .
 
-4. **TimescaleDB**öğesini seçin.
+4. **TimescaleDB** öğesini seçin.
 
 5. Değişikliklerinizi korumak için **Kaydet** ' i seçin. Değişiklik kaydedildikten sonra bir bildirim alırsınız. 
 

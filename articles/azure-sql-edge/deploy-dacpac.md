@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
 ms.openlocfilehash: 40bd0eda16f9f96dd356eef900369ab25854e9f9
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93392257"
 ---
 # <a name="sql-database-dacpac-and-bacpac-packages-in-sql-edge"></a>SQL Edge 'de SQL veritabanı DACPAC ve BACPAC paketleri
@@ -45,21 +45,21 @@ SQL veritabanı dacpac ve bacpac paketleri, ortam değişkeni kullanılarak SQL 
 
     1. Azure portal IoT Hub dağıtımınıza gidin.
 
-    2. Sol bölmede **IoT Edge** ' yi seçin.
+    2. Sol bölmede **IoT Edge**' yi seçin.
 
     3. **IoT Edge** SAYFASıNDA, SQL Edge modülünün dağıtıldığı IoT Edge bulun ve seçin.
 
-    4. Cihaz cihazı **IoT Edge** sayfasında, **modülü ayarla** ' yı seçin.
+    4. Cihaz cihazı **IoT Edge** sayfasında, **modülü ayarla**' yı seçin.
 
     5. **Modülleri ayarla** sayfasında, Azure SQL Edge modülüne tıklayın.
 
-    6. **IoT Edge modülü Güncelleştir** bölmesinde **ortam değişkenleri** ' ni seçin. Ortam değişkenini ekleyin `MSSQL_PACKAGE` ve yukarıdaki 3. adımda oluşturulan SAS URL 'sini ortam değişkeninin değeri olarak belirtin. 
+    6. **IoT Edge modülü Güncelleştir** bölmesinde **ortam değişkenleri**' ni seçin. Ortam değişkenini ekleyin `MSSQL_PACKAGE` ve yukarıdaki 3. adımda oluşturulan SAS URL 'sini ortam değişkeninin değeri olarak belirtin. 
 
-    7. **Güncelleştir** ’i seçin.
+    7. **Güncelleştir**’i seçin.
 
-    8. **Modülleri ayarla** sayfasında, **gözden geçir + oluştur** ' u seçin.
+    8. **Modülleri ayarla** sayfasında, **gözden geçir + oluştur**' u seçin.
 
-    9. **Modülleri ayarla** sayfasında **Oluştur** ' u seçin.
+    9. **Modülleri ayarla** sayfasında **Oluştur**' u seçin.
 
 5. Modül güncelleştirildikten sonra, paket dosyaları indirilir, sıkıştırıldı ve SQL Edge örneğine göre dağıtılır.
 

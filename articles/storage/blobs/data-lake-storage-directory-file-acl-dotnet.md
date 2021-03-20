@@ -10,10 +10,10 @@ ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 52e993a22a512a94c8b5b8b050205db0c4ce0b1b
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100650329"
 ---
 # <a name="use-net-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. içindeki dizinleri ve dosyaları yönetmek için .NET kullanın
@@ -148,4 +148,4 @@ Bu örnek, adlı bir dizinde bulunan her bir dosyanın adını yazdırır `my-di
 - [Örnekler](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake)
 - [Gen1 to Gen2 Mapping](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/GEN1_GEN2_MAPPING.md)
 - [Bilinen sorunlar](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
-- [Geri bildirimde bulunun](https://github.com/Azure/azure-sdk-for-net/issues)
+- [Görüş Bildirin](https://github.com/Azure/azure-sdk-for-net/issues)

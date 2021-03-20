@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: cherylmc
 ms.openlocfilehash: 0d81e0474d898ffee7f128c0bcea61f077c3d758
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92103229"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>VNet 'ten VNet 'e bağlantı yapılandırma (klasik)
@@ -38,7 +38,7 @@ VPN ağ geçidi kullanarak, bir sanal ağı klasik dağıtım modelinde başka b
 
 Bağlandığınız sanal ağlar farklı aboneliklerde ve farklı bölgelerde olabilir. VNet 'ten VNet 'e iletişimi çok siteli yapılandırmalara sahip bir şekilde birleştirebilirsiniz. Bu özellik şirket içi ve şirket dışı bağlantıyla ağ içi bağlantıyı birleştiren ağ topolojileri kurabilmenize olanak sağlar.
 
-:::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-portal-classic/aboutconnections.png" alt-text="Klasik VNet 'ten VNet 'e mimariyi gösteren diyagram":::
+:::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-portal-classic/aboutconnections.png" alt-text="Bağlantıları gösteren diyagram":::
 
 ### <a name="why-connect-virtual-networks"></a><a name="why"></a>Sanal ağları neden bağlamalıyız?
 
@@ -58,7 +58,7 @@ Sanal ağları aşağıdaki sebeplerden dolayı bağlamak isteyebilirsiniz:
 
 Sanal ağlar arası bağlantılar hakkında daha fazla bilgi için bu makalenin sonunda yer alan [Sanal ağdan sanal ağa dikkat edilecek noktalar](#faq) bölümünü inceleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Çoğu adım için portalı kullanıyoruz, ancak sanal ağlar arasındaki bağlantıları oluşturmak için PowerShell kullanmanız gerekir. Portalda paylaşılan anahtarı belirtmenin bir yolu olmadığından Azure portal kullanarak bağlantı oluşturamazsınız. [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
@@ -147,7 +147,7 @@ Yerel site genellikle şirket içi konumunuzu ifade eder. Bağlantı oluşturaca
 
 1. VNet 'iniz sayfasında, **Ayarlar**' ın altında, **siteden siteye bağlantılar**' ı seçin.
 1. Siteden siteye bağlantılar sayfasında **+ Ekle**' yi seçin.
-1. **VPN bağlantısı ve ağ geçidi yapılandırma** sayfasında, **bağlantı türü**için **siteden siteye** seçili bırakın.
+1. **VPN bağlantısı ve ağ geçidi yapılandırma** sayfasında, **bağlantı türü** için **siteden siteye** seçili bırakın.
 
    * **VPN ağ geçidi IP adresi:** Şirket içi ağınızdaki VPN cihazının genel IP adresidir. Bu alıştırmada, başka bir site için VPN ağ geçidinin IP adresine sahip olmadığınızdan bir kukla adres koyabilirsiniz. Örneğin, 5.4.3.2. Daha sonra, diğer VNet için ağ geçidini yapılandırdıktan sonra bu değeri ayarlayabilirsiniz.
 
@@ -173,7 +173,7 @@ TestVNet4 yapılandırmak için [bir site ve ağ geçidi oluşturma](#localsite)
 
 ## <a name="update-local-sites"></a><a name="updatelocal"></a>Yerel siteleri Güncelleştir
 
-Sanal ağ geçitleriniz her iki VNET için de oluşturulduktan sonra, **VPN Gateway IP adresi**için yerel site özelliklerini ayarlamanız gerekir.
+Sanal ağ geçitleriniz her iki VNET için de oluşturulduktan sonra, **VPN Gateway IP adresi** için yerel site özelliklerini ayarlamanız gerekir.
 
 |VNet adı|Bağlı site|Ağ geçidi IP adresi|
 |:--- |:--- |:--- |

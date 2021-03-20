@@ -15,15 +15,15 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 745aeb9844f1abad075d34b34735563200ea618b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90054951"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-backup-policies"></a>Yedekleme ilkeleri oluşturmak ve yönetmek için StorSimple Snapshot Manager kullanma
 ## <a name="overview"></a>Genel Bakış
-Yedekleme ilkesi birim verilerini yerel olarak veya bulutta yedeklemeye yönelik bir zamanlama oluşturur. Bir yedekleme ilkesi oluşturduğunuzda, bir bekletme ilkesi de belirtebilirsiniz. (En fazla 64 anlık görüntü tutabilirsiniz.) Yedekleme ilkeleri hakkında daha fazla bilgi için bkz. [StorSimple 8000 serisinde yedekleme türleri: karma bulut çözümü](storsimple-overview.md). [Backup types](storsimple-what-is-snapshot-manager.md#backup-types-and-backup-policies)
+Yedekleme ilkesi birim verilerini yerel olarak veya bulutta yedeklemeye yönelik bir zamanlama oluşturur. Bir yedekleme ilkesi oluşturduğunuzda, bir bekletme ilkesi de belirtebilirsiniz. (En fazla 64 anlık görüntü tutabilirsiniz.) Yedekleme ilkeleri hakkında daha fazla bilgi için bkz. [StorSimple 8000 serisinde yedekleme türleri: karma bulut çözümü](storsimple-overview.md). [](storsimple-what-is-snapshot-manager.md#backup-types-and-backup-policies)
 
 Bu öğreticide, aşağıdaki işlemlerin nasıl yapılacağı açıklanmaktadır:
 
@@ -47,7 +47,7 @@ Yeni bir yedekleme ilkesi oluşturmak için aşağıdaki yordamı kullanın.
 
    1. **Ad** metin kutusuna ilke için bir ad yazın.
    2. **Birim grubu** metin kutusuna ilkeyle ilişkili birim grubunun adını yazın.
-   3. **Yerel anlık görüntü** veya **bulut anlık görüntüsü**seçin.
+   3. **Yerel anlık görüntü** veya **bulut anlık görüntüsü** seçin.
    4. Tutulacak anlık görüntü sayısını seçin. **Tümü**' nü seçerseniz, 64 anlık görüntü korunur (maksimum).
 4. **Zamanlama** sekmesine tıklayın.
 
@@ -55,9 +55,9 @@ Yeni bir yedekleme ilkesi oluşturmak için aşağıdaki yordamı kullanın.
 5. **Zamanla** sekmesinde, aşağıdaki bilgileri doldurun:
 
    1. Sonraki yedeklemeyi zamanlamak için **Etkinleştir** onay kutusuna tıklayın.
-   2. **Ayarlar**altında **bir kez**, **günlük**, **haftalık**veya **aylık**' ı seçin.
+   2. **Ayarlar** altında **bir kez**, **günlük**, **haftalık** veya **aylık**' ı seçin.
    3. **Başlat** metin kutusunda Takvim simgesine tıklayın ve bir başlangıç tarihi seçin.
-   4. **Gelişmiş ayarlar**altında, isteğe bağlı yineleme zamanlamaları ve bitiş tarihi ayarlayabilirsiniz.
+   4. **Gelişmiş ayarlar** altında, isteğe bağlı yineleme zamanlamaları ve bitiş tarihi ayarlayabilirsiniz.
    5. **Tamam**'a tıklayın.
 
 Bir yedekleme ilkesi oluşturduktan sonra, **sonuçlar** bölmesinde aşağıdaki bilgiler görüntülenir:

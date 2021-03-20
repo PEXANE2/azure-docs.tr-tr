@@ -10,13 +10,13 @@ ms.date: 11/14/2019
 ms.author: absha
 ms.custom: mvc
 ms.openlocfilehash: 6e2d1828acefacb03cc2f42193b8cd8897578b6f
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397510"
 ---
-# <a name="configure-end-to-end-tls-by-using-application-gateway-with-the-portal"></a>Portal ile Application Gateway kullanarak uçtan uca TLS Yapılandırma
+# <a name="configure-end-to-end-tls-by-using-application-gateway-with-the-portal"></a>Portalla Application Gateway'i kullanarak uçtan uca TLS'yi yapılandırma
 
 Bu makalede, Azure Application Gateway v1 SKU 'SU aracılığıyla daha önce Güvenli Yuva Katmanı (SSL) şifreleme olarak bilinen uçtan uca Aktarım Katmanı Güvenliği (TLS) şifrelemesini yapılandırmak için Azure portal nasıl kullanılacağı açıklanır.
 
@@ -43,15 +43,15 @@ Daha fazla bilgi edinmek için bkz. [Yeni bir uygulama ağ geçidi oluştururken
 
 ### <a name="add-authenticationroot-certificates-of-back-end-servers"></a>Arka uç sunucularının kimlik doğrulama/kök sertifikalarını ekleyin
 
-1. **Tüm kaynaklar** ' ı ve ardından **myappgateway** ' i seçin.
+1. **Tüm kaynaklar**' ı ve ardından **myappgateway**' i seçin.
 
 2. Sol taraftaki menüden **http ayarları** ' nı seçin. Azure, uygulama ağ geçidini oluştururken **Appgatewaybackendhttpsettings** varsayılan HTTP ayarını otomatik olarak oluşturdu. 
 
 3. **Appgatewaybackendhttpsettings** öğesini seçin.
 
-4. **Protokol** altında **https** ' yi seçin. **Arka uç kimlik doğrulama sertifikaları veya güvenilen kök sertifikaların** bölmesi görüntülenir.
+4. **Protokol** altında **https**' yi seçin. **Arka uç kimlik doğrulama sertifikaları veya güvenilen kök sertifikaların** bölmesi görüntülenir.
 
-5. **Yeni oluştur** ’u seçin.
+5. **Yeni oluştur**’u seçin.
 
 6. **Ad** alanına uygun bir ad girin.
 
@@ -67,7 +67,7 @@ Daha fazla bilgi edinmek için bkz. [Yeni bir uygulama ağ geçidi oluştururken
 
    ![Kök sertifika](./media/end-to-end-ssl-portal/trustedrootcert.png)
 
-8. **Kaydet** ’i seçin.
+8. **Kaydet**’i seçin.
 
 ## <a name="enable-end-to-end-tls-for-an-existing-application-gateway"></a>Mevcut uygulama ağ geçidi için uçtan uca TLS 'yi etkinleştirme
 
@@ -78,13 +78,13 @@ TLS sonlandırmasını etkinleştirmek için HTTPS protokolü ve bir sertifika i
 İkinci seçeneği belirlerseniz, adımları aşağıdaki yordamda uygulayın.
 ### <a name="enable-tls-termination-in-an-existing-application-gateway"></a>Mevcut bir uygulama ağ geçidinde TLS sonlandırmasını etkinleştirme
 
-1. **Tüm kaynaklar** ' ı ve ardından **myappgateway** ' i seçin.
+1. **Tüm kaynaklar**' ı ve ardından **myappgateway**' i seçin.
 
 2. Sol taraftaki menüden **dinleyicileri** seçin.
 
 3. Gereksinimlerinize bağlı olarak **temel** veya **çok** siteli dinleyici ' i seçin.
 
-4. **Protokol** altında **https** ' yi seçin. Bir **sertifika** bölmesi görüntülenir.
+4. **Protokol** altında **https**' yi seçin. Bir **sertifika** bölmesi görüntülenir.
 
 5. İstemci ve uygulama ağ geçidi arasında TLS sonlandırma için kullanmayı düşündüğünüz PFX sertifikasını karşıya yükleyin.
 
@@ -93,19 +93,19 @@ TLS sonlandırmasını etkinleştirmek için HTTPS protokolü ve bir sertifika i
 
 6. Gereksinimlerinize bağlı olarak, **dinleyici** için gereken diğer ayarları ekleyin.
 
-7. Kaydetmek için **Tamam** ’ı seçin.
+7. Kaydetmek için **Tamam**’ı seçin.
 
 ### <a name="add-authenticationtrusted-root-certificates-of-back-end-servers"></a>Arka uç sunucularının kimlik doğrulaması/güvenilen kök sertifikalarını ekleyin
 
-1. **Tüm kaynaklar** ' ı ve ardından **myappgateway** ' i seçin.
+1. **Tüm kaynaklar**' ı ve ardından **myappgateway**' i seçin.
 
 2. Sol taraftaki menüden **http ayarları** ' nı seçin. Sertifikaları, Güvenli Alıcılar listesinde var olan bir arka uç HTTP ayarına yerleştirebilir veya yeni bir HTTP ayarı oluşturabilirsiniz. (Bir sonraki adımda, **Appgatewaybackendhttpsettings** varsayılan http ayarının sertifikası Güvenli Alıcılar listesine eklenir.)
 
 3. **Appgatewaybackendhttpsettings** öğesini seçin.
 
-4. **Protokol** altında **https** ' yi seçin. **Arka uç kimlik doğrulama sertifikaları veya güvenilen kök sertifikaların** bölmesi görüntülenir. 
+4. **Protokol** altında **https**' yi seçin. **Arka uç kimlik doğrulama sertifikaları veya güvenilen kök sertifikaların** bölmesi görüntülenir. 
 
-5. **Yeni oluştur** ’u seçin.
+5. **Yeni oluştur**’u seçin.
 
 6. **Ad** alanına uygun bir ad girin.
 
@@ -119,7 +119,7 @@ TLS sonlandırmasını etkinleştirmek için HTTPS protokolü ve bir sertifika i
 
    ![Güvenilen kök sertifika ekle](./media/end-to-end-ssl-portal/trustedrootcert-portal.png)
 
-8. **Kaydet** ’i seçin.
+8. **Kaydet**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

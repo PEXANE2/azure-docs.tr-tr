@@ -4,10 +4,10 @@ description: Seçilen ortak IP adreslerinden veya adres aralıklarından bir Azu
 ms.topic: article
 ms.date: 08/17/2020
 ms.openlocfilehash: 4e4ee817e2534bcca09cba89daafd379ff3f03f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89488771"
 ---
 # <a name="configure-public-ip-network-rules"></a>Genel IP ağ kurallarını yapılandırma
@@ -46,9 +46,9 @@ az acr network-rule add \
 ## <a name="access-from-selected-public-network---portal"></a>Seçili ortak ağdan erişim-Portal
 
 1. Portalda kapsayıcı Kayıt defterinize gidin.
-1. **Ayarlar**altında **ağ**' ı seçin.
-1. **Ortak erişim** sekmesinde, **Seçili ağlardan**ortak erişime izin ver ' i seçin.
-1. **Güvenlik duvarı**altında, bir sanal ağdaki VM 'nın genel IP adresi gibi BIR genel IP adresi girin. Ya da VM 'nin IP adresini içeren CıDR gösteriminde bir adres aralığı girin.
+1. **Ayarlar** altında **ağ**' ı seçin.
+1. **Ortak erişim** sekmesinde, **Seçili ağlardan** ortak erişime izin ver ' i seçin.
+1. **Güvenlik duvarı** altında, bir sanal ağdaki VM 'nın genel IP adresi gibi BIR genel IP adresi girin. Ya da VM 'nin IP adresini içeren CıDR gösteriminde bir adres aralığı girin.
 1. **Kaydet**’i seçin.
 
 ![Kapsayıcı kayıt defteri için güvenlik duvarı kuralını yapılandırma][acr-access-selected-networks]
@@ -77,7 +77,7 @@ az acr update --name myContainerRegistry --public-network-enabled false
 ### <a name="disable-public-access---portal"></a>Genel erişimi devre dışı bırak-Portal
 
 1. Portalda kapsayıcı Kayıt defterinize gidin ve **ayarlar > ağ**' ı seçin.
-1. **Genel erişim** sekmesinde, **genel ağ erişimine izin ver**' in altında **devre dışı**' yı seçin. Ardından **Kaydet**’i seçin.
+1. **Genel erişim** sekmesinde, **genel ağ erişimine izin ver**' in altında **devre dışı**' yı seçin. Sonra **Kaydet**'i seçin.
 
 ![Genel erişimi devre dışı bırak][acr-access-disabled]
 
@@ -100,7 +100,7 @@ az acr update --name myContainerRegistry --public-network-enabled true
 ### <a name="restore-public-access---portal"></a>Ortak erişimi geri yükleme-Portal
 
 1. Portalda kapsayıcı Kayıt defterinize gidin ve **ayarlar > ağ**' ı seçin.
-1. **Genel erişim** sekmesinde, **ortak ağ erişimine izin ver**' in altında **tüm ağlar**' ı seçin. Ardından **Kaydet**’i seçin.
+1. **Genel erişim** sekmesinde, **ortak ağ erişimine izin ver**' in altında **tüm ağlar**' ı seçin. Sonra **Kaydet**'i seçin.
 
 ![Tüm ağlardan ortak erişim][acr-access-all-networks]
 

@@ -10,17 +10,17 @@ ms.topic: article
 ms.author: apimpm
 ms.date: 04/23/2020
 ms.openlocfilehash: 023c2c89b90d6ddc71abc95db325dcdeb7684a2d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89500139"
 ---
 # <a name="deploy-a-self-hosted-gateway-to-kubernetes"></a>Şirket içinde barındırılan ağ geçidini Kubernetes'e dağıtma
 
 Bu makalede, Azure API Management şirket içinde barındırılan ağ geçidi bileşenini bir Kubernetes kümesine dağıtma adımları açıklanmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Şu hızlı başlangıcı tamamlayın: [Azure API Management örneği oluşturma](get-started-create-service-instance.md).
 - Bir Kubernetes kümesi oluşturun.
@@ -30,12 +30,12 @@ Bu makalede, Azure API Management şirket içinde barındırılan ağ geçidi bi
 
 ## <a name="deploy-to-kubernetes"></a>Kubernetes’e dağıtma
 
-1. **Dağıtım ve altyapı**altında **ağ geçitleri** ' ni seçin.
+1. **Dağıtım ve altyapı** altında **ağ geçitleri** ' ni seçin.
 2. Dağıtmak istediğiniz şirket içinde barındırılan ağ geçidi kaynağını seçin.
 3. **Dağıtım**' ı seçin.
 4. Varsayılan **süre sonu** ve **gizli anahtar** değerlerine bağlı olarak, **belirteç** metin kutusundaki bir erişim belirteci sizin için otomatik olarak oluşturulmuştur. Gerekirse, yeni bir belirteç oluşturmak için ya da her iki denetim içindeki değerleri seçin.
-5. **Dağıtım betikleri**altında **Kubernetes** sekmesini seçin.
-6. ** \<gateway-name\> . Yıml** dosyası bağlantısını seçin ve YAML dosyasını indirin.
+5. **Dağıtım betikleri** altında **Kubernetes** sekmesini seçin.
+6. **\<gateway-name\> . Yıml** dosyası bağlantısını seçin ve YAML dosyasını indirin.
 7. Komutları panoya kaydetmek için **Dağıt** metin kutusunun sağ alt köşesindeki **Kopyala** simgesini seçin `kubectl` .
 8. Komutları Terminal (veya komut) penceresine yapıştırın. İlk komut, 4. adımda oluşturulan erişim belirtecini içeren bir Kubernetes gizli anahtarı oluşturur. İkinci komut, adım 6 ' da indirilen yapılandırma dosyasını Kubernetes kümesine uygular ve dosyanın geçerli dizinde olmasını bekler.
 9. [Varsayılan ad](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) alanında gerekli Kubernetes nesnelerini oluşturmak ve Microsoft Container Registry indirilen [kapsayıcı görüntüsünden](https://aka.ms/apim/sputnik/dhub) şirket içinde barındırılan ağ geçidi Pod 'yi başlatmak için komutları çalıştırın.
@@ -108,11 +108,11 @@ Azure portal belirtilen YAML dosyası varsayılan [Clusterfirst](https://kuberne
 Kubernetes 'de ad çözümleme hakkında bilgi edinmek için bkz. [Kubernetes Web sitesi](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service). [DNS ilkesi](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) veya [DNS yapılandırmasını](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-config) , kuruluma uygun şekilde özelleştirmeyi düşünün.
 
 ### <a name="external-traffic-policy"></a>Dış trafik ilkesi
-Service nesnesindeki Azure portal Sets alanında olarak belirtilen YAML dosyası `externalTrafficPolicy` [Service](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#service-v1-core) `Local` . Bu, çağıran IP adresini ( [istek bağlamında](api-management-policy-expressions.md#ContextVariables)erişilebilir) korur ve çapraz düğüm yük dengelemesini devre dışı bırakır ve bunun neden olduğu ağ atlamalarını ortadan kaldırır. Bu ayarın, düğüm başına eşit olmayan ağ geçidi sayısı ile dağıtımlardaki trafiğin asimetrik dağıtımına neden olabileceğini unutmayın.
+Service nesnesindeki Azure portal Sets alanında olarak belirtilen YAML dosyası `externalTrafficPolicy` [](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#service-v1-core) `Local` . Bu, çağıran IP adresini ( [istek bağlamında](api-management-policy-expressions.md#ContextVariables)erişilebilir) korur ve çapraz düğüm yük dengelemesini devre dışı bırakır ve bunun neden olduğu ağ atlamalarını ortadan kaldırır. Bu ayarın, düğüm başına eşit olmayan ağ geçidi sayısı ile dağıtımlardaki trafiğin asimetrik dağıtımına neden olabileceğini unutmayın.
 
 ### <a name="custom-domain-names-and-ssl-certificates"></a>Özel etki alanı adları ve SSL sertifikaları
 
-API Management uç noktaları için özel etki alanı adları kullanıyorsanız, özellikle yönetim uç noktası için özel bir etki alanı adı kullanırsanız, `config.service.endpoint` varsayılan etki alanı adını özel etki alanı adıyla değiştirmek için ** \<gateway-name\> . YAML** dosyasındaki değerini güncelleştirmeniz gerekebilir. Yönetim uç noktasına, Kubernetes kümesindeki şirket içinde barındırılan ağ geçidinin Pod değerinden erişilebildiğinden emin olun.
+API Management uç noktaları için özel etki alanı adları kullanıyorsanız, özellikle yönetim uç noktası için özel bir etki alanı adı kullanırsanız, `config.service.endpoint` varsayılan etki alanı adını özel etki alanı adıyla değiştirmek için **\<gateway-name\> . YAML** dosyasındaki değerini güncelleştirmeniz gerekebilir. Yönetim uç noktasına, Kubernetes kümesindeki şirket içinde barındırılan ağ geçidinin Pod değerinden erişilebildiğinden emin olun.
 
 Bu senaryoda, yönetim uç noktası tarafından kullanılan SSL sertifikası iyi bilinen bir CA sertifikası tarafından imzalanmadıysa, CA sertifikasına şirket içinde barındırılan ağ geçidinin Pod 'u tarafından güvenildiğinden emin olmanız gerekir.
 

@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: duau
 ms.openlocfilehash: b76eab5771d724e4f0ec56b7d5acd5cf5f91edc0
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98183464"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Azure Traffic Manager’da düşürülmüş durum için sorun giderme
@@ -43,7 +43,7 @@ Traffic Manager sistem durumu **etkin olmayan** bir durum görüntülüyorsa, he
 Bir araştırma hatasıyla ilgili sorunları gidermek için, araştırma URL 'sinden döndürülen HTTP durum kodunu gösteren bir araca ihtiyacınız vardır. Ham HTTP yanıtını gösteren birçok araç mevcuttur.
 
 * [Fiddler](https://www.telerik.com/fiddler)
-* [kıvr](https://curl.haxx.se/)
+* [curl](https://curl.haxx.se/)
 * [wget](http://gnuwin32.sourceforge.net/packages/wget.htm)
 
 Ayrıca, HTTP yanıtlarını görüntülemek için Internet Explorer 'daki F12 hata ayıklama araçlarının ağ sekmesini de kullanabilirsiniz.

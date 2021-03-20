@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: sngun
 ms.openlocfilehash: b27bab9ea3029264143caaacf094f0a799894356
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97359872"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Power BI bağlayıcısını kullanarak Azure Cosmos DB verilerini görselleştirme
@@ -135,7 +135,7 @@ Azure Cosmos DB hesabından Volcano verilerini alıp etkileşimli bir Power BI r
 
 1. Yeni sütun için bir ad girin, örneğin, LatLong.
 
-1. Ardından, yeni sütun için özel formül belirtin.  Bizim örneğimizde, aşağıdaki formül kullanılarak aşağıda gösterildiği gibi bir virgülle ayrılmış Enlem ve boylam değerlerini birleştirilecek: `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})` . **Tamam** düğmesine tıklayın.
+1. Ardından, yeni sütun için özel formül belirtin.  Bizim örneğimizde, aşağıdaki formül kullanılarak aşağıda gösterildiği gibi bir virgülle ayrılmış Enlem ve boylam değerlerini birleştirilecek: `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})` . **Tamam**'a tıklayın.
    
    DAX işlevleri de dahil olmak üzere veri çözümleme Ifadeleri (DAX) hakkında daha fazla bilgi için lütfen [Power BI Desktop Içindeki Dax temel](/power-bi/desktop-quickstart-learn-dax-basics)bilgilerini ziyaret edin.
    

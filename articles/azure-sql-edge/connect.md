@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/25/2020
 ms.openlocfilehash: b56b65261950e9cf534a3755d214229ef7d5bb1e
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93395215"
 ---
 # <a name="connect-and-query-azure-sql-edge"></a>Azure SQL Edge 'i bağlama ve sorgulama
@@ -36,8 +36,8 @@ Azure SQL Edge örneği örneğine, bu ortak araçlardan herhangi birinden bağl
 
 Bir ağ makinesinden Azure SQL Edge veritabanı altyapısına bağlanmak için şunlar gerekir:
 
-- **Konak makinenin IP adresi veya ağ adı** : Bu, Azure SQL Edge kapsayıcısının çalıştığı ana makinedir.
-- **Azure SQL Edge kapsayıcı ana bilgisayar bağlantı noktası eşlemesi** : Bu, Docker kapsayıcı bağlantı noktasının konaktaki bir bağlantı noktasına yönelik eşlemedir. Kapsayıcı içinde Azure SQL Edge her zaman bağlantı noktası 1433 ' e eşlenir. İsterseniz bunu değiştirebilirsiniz. Bağlantı noktası numarasını değiştirmek için Azure IoT Edge Azure SQL Edge modülü için **kapsayıcı oluşturma seçeneklerini** güncelleştirin. Aşağıdaki örnekte, kapsayıcıda 1433 numaralı bağlantı noktası konaktaki bağlantı noktası 1600 ile eşleştirilir.
+- **Konak makinenin IP adresi veya ağ adı**: Bu, Azure SQL Edge kapsayıcısının çalıştığı ana makinedir.
+- **Azure SQL Edge kapsayıcı ana bilgisayar bağlantı noktası eşlemesi**: Bu, Docker kapsayıcı bağlantı noktasının konaktaki bir bağlantı noktasına yönelik eşlemedir. Kapsayıcı içinde Azure SQL Edge her zaman bağlantı noktası 1433 ' e eşlenir. İsterseniz bunu değiştirebilirsiniz. Bağlantı noktası numarasını değiştirmek için Azure IoT Edge Azure SQL Edge modülü için **kapsayıcı oluşturma seçeneklerini** güncelleştirin. Aşağıdaki örnekte, kapsayıcıda 1433 numaralı bağlantı noktası konaktaki bağlantı noktası 1600 ile eşleştirilir.
 
     ```JSON
     {
@@ -51,7 +51,7 @@ Bir ağ makinesinden Azure SQL Edge veritabanı altyapısına bağlanmak için �
     }
     ```
 
-- **Azure SQL Edge örneği Için sa parolası** : Bu, `SA_PASSWORD` Azure SQL Edge dağıtımı sırasında ortam değişkeni için belirtilen değerdir.
+- **Azure SQL Edge örneği Için sa parolası**: Bu, `SA_PASSWORD` Azure SQL Edge dağıtımı sırasında ortam değişkeni için belirtilen değerdir.
 
 ## <a name="connect-to-the-database-engine-from-within-the-container"></a>Kapsayıcı içinden veritabanı altyapısına bağlanma
 
@@ -94,7 +94,7 @@ conn = pyodbc.connect(db_connection_string, autocommit=True)
 
 ## <a name="connect-to-azure-sql-edge-from-another-network-machine"></a>Başka bir ağ makinesinden Azure SQL Edge 'e bağlanma
 
-Ağ üzerindeki başka bir makineden Azure SQL Edge örneğine bağlanmak isteyebilirsiniz. Bunu yapmak için, Docker konağının IP adresini ve Azure SQL Edge kapsayıcısının eşlendiği ana bilgisayar bağlantı noktasını kullanın. Örneğin, Docker konağının IP adresi *xxx.xxx.xxx.xxx* Ise ve Azure SQL Edge kapsayıcısı, ana bilgisayar bağlantı noktası *1600* ' e eşlenmişse, Azure SQL Edge örneği için sunucu adresi xxx. xxx *. xxx. xxx, 1600* olur. Güncelleştirilmiş Python betiği:
+Ağ üzerindeki başka bir makineden Azure SQL Edge örneğine bağlanmak isteyebilirsiniz. Bunu yapmak için, Docker konağının IP adresini ve Azure SQL Edge kapsayıcısının eşlendiği ana bilgisayar bağlantı noktasını kullanın. Örneğin, Docker konağının IP adresi *xxx.xxx.xxx.xxx* Ise ve Azure SQL Edge kapsayıcısı, ana bilgisayar bağlantı noktası *1600*' e eşlenmişse, Azure SQL Edge örneği için sunucu adresi xxx. xxx *. xxx. xxx, 1600* olur. Güncelleştirilmiş Python betiği:
 
 ```python
 

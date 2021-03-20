@@ -10,17 +10,17 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 335b564225bc2b7a4c2217c1d912f952239ecf24
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92127208"
 ---
 # <a name="tutorial-use-data-box-heavy-to-import-data-as-managed-disks-in-azure"></a>Öğretici: Azure 'da verileri yönetilen diskler olarak içeri aktarmak için Data Box Heavy kullanma
 
 Bu öğreticide, şirket içi VHD 'leri Azure 'da yönetilen disklere geçirmek için Azure Data Box Heavy nasıl kullanılacağı açıklanmaktadır. Şirket içi VM 'lerden VHD 'Ler, sayfa Blobları olarak Data Box Heavy kopyalanır ve yönetilen diskler olarak Azure 'a yüklenir. Bu yönetilen diskler daha sonra Azure VM 'lerine iliştirilebilir.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Önkoşulları inceleyin
@@ -81,7 +81,7 @@ Windows Server ana bilgisayarı kullanıyorsanız Data Box Heavy'ye bağlanmak i
     
     ![Paylaşım kimlik bilgilerini alma 2](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
 
-3. Ana bilgisayarınızdaki kaynakla ilişkili paylaşımlara (aşağıdaki örnekte*mydbmdrg1* ) erişmek için bir komut penceresi açın. Komut istemine şunları yazın:
+3. Ana bilgisayarınızdaki kaynakla ilişkili paylaşımlara (aşağıdaki örnekte *mydbmdrg1* ) erişmek için bir komut penceresi açın. Komut istemine şunları yazın:
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 

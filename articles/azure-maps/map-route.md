@@ -10,10 +10,10 @@ services: azure-maps
 manager: timlt
 ms.custom: codepen
 ms.openlocfilehash: 9d0197a16c8074ce961c2b403724149929f566f7
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92890726"
 ---
 # <a name="show-directions-from-a-to-b"></a>A'dan B'ye yönleri gösterme
@@ -24,7 +24,7 @@ Bunu iki şekilde yapabilirsiniz. İlk yöntem, [Azure Maps Route API](/rest/api
 
 ## <a name="query-the-route-via-service-module"></a>Yönlendirme hizmetini hizmet modülü aracılığıyla sorgulama
 
-<iframe height='500' scrolling='no' title='Bir haritadaki A 'dan B 'ye yönlendirmeler göster (hizmet modülü)' src='//codepen.io/azuremaps/embed/RBZbep/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen 'da Azure Maps () ile <a href='https://codepen.io/azuremaps/pen/RBZbep/'>haritada (hizmet modülü) bir haritadaki a 'Dan B 'ye yönlendirmeler göster</a> bölümüne bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+<iframe height='500' scrolling='no' title='Bir haritadaki A 'dan B 'ye yönlendirmeler göster (hizmet modülü)' src='//codepen.io/azuremaps/embed/RBZbep/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen 'da Azure Maps () ile <a href='https://codepen.io/azuremaps/pen/RBZbep/'>haritada (hizmet modülü) bir haritadaki a 'Dan B 'ye yönlendirmeler göster</a> bölümüne bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 Yukarıdaki kodda, ilk blok bir harita nesnesi oluşturur ve kimlik doğrulama mekanizmasını erişim belirtecini kullanacak şekilde ayarlar. Yönergeler için [bir harita oluşturma](./map-create.md) ' ya bakabilirsiniz.
@@ -47,7 +47,7 @@ Rota sorgusu, veri kaynağı, simge, çizgi katmanları ve kamera sınırları [
 
 ## <a name="query-the-route-via-fetch-api"></a>Fetch API aracılığıyla rotayı sorgulama
 
-<iframe height='500' scrolling='no' title='Haritada A 'dan B 'ye yönlendirmeler gösterme' src='//codepen.io/azuremaps/embed/zRyNmP/?height=469&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen 'da Azure Maps () ile <a href='https://codepen.io/azuremaps/pen/zRyNmP/'>haritada bir harita üzerinde a 'Dan B 'ye yönlendirmeler göster</a> bölümüne bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+<iframe height='500' scrolling='no' title='Haritada A 'dan B 'ye yönlendirmeler gösterme' src='//codepen.io/azuremaps/embed/zRyNmP/?height=469&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen 'da Azure Maps () ile <a href='https://codepen.io/azuremaps/pen/zRyNmP/'>haritada bir harita üzerinde a 'Dan B 'ye yönlendirmeler göster</a> bölümüne bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 Yukarıdaki kodda, ilk kod bloğu bir harita nesnesi oluşturur ve kimlik doğrulama mekanizmasını erişim belirtecini kullanacak şekilde ayarlar. Yönergeler için [bir harita oluşturma](./map-create.md) ' ya bakabilirsiniz.

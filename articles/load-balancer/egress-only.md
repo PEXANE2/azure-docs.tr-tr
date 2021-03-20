@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 08/07/2020
 ms.author: allensu
 ms.openlocfilehash: ee264a22de5ce094e8a4c1335ace77cbbba49270
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94695002"
 ---
 # <a name="outbound-only-load-balancer-configuration"></a>Yalnızca giden yük dengeleyici yapılandırması
@@ -156,9 +156,9 @@ Yeni Sanal ağda bir sanal makine oluşturun.
     | Ayar | Değer |
     |-|-|
     | **İzleme** |  |
-    | Önyükleme tanılaması | Seçme **kapalı** |
+    | Önyükleme tanılamaları | Seçme **kapalı** |
    
-7. **Gözden geçir + oluştur**’u seçin. 
+7. **Gözden geçir ve oluştur**’u seçin. 
   
 8. Ayarları gözden geçirin ve ardından **Oluştur**' u seçin.
 
@@ -181,7 +181,7 @@ Oluşturulan VM 'nizi her birinin arka uç havuzuna ekleyin.  Daha sonra yalnız
     | ---                     | ---                                                |
     | Abonelik               | Aboneliğinizi seçin.    |    
     | Kaynak grubu         | Önceki adımda oluşturulan **Myresourcegrouplb** öğesini seçin.|
-    | Ad                   | **Myınternalloadbalancer** girin                                   |
+    | Name                   | **Myınternalloadbalancer** girin                                   |
     | Region         | **Doğu ABD 2**’yi seçin.                                        |
     | Tür          | **Dahili**' ı seçin.                                        |
     | SKU           | **Standart** seçin |
@@ -203,7 +203,7 @@ Oluşturulan VM 'nizi her birinin arka uç havuzuna ekleyin.  Daha sonra yalnız
     | ---                     | ---                                                |
     | Abonelik               | Aboneliğinizi seçin.    |    
     | Kaynak grubu         | **Yeni oluştur** ' u seçin ve metin kutusuna **Myresourcegrouplb** yazın.|
-    | Ad                   | **Mypublicloadbalancer** girin                                   |
+    | Name                   | **Mypublicloadbalancer** girin                                   |
     | Region         | **Doğu ABD 2**’yi seçin.                                        |
     | Tür          | **Genel**’i seçin.                                        |
     | SKU           | **Standart** seçin |
@@ -281,7 +281,7 @@ Oluşturulan VM 'nizi her birinin arka uç havuzuna ekleyin.  Daha sonra yalnız
     | Arka uç havuzu | **Mypublicbackendpool** öğesini seçin.| |
     | Bağlantı noktası ayırma-> bağlantı noktası ayırma | **Varsayılan giden bağlantı noktası sayısını kullan** ' ı seçin |
 
-4. **Ekle**’yi seçin.
+4. **Add (Ekle)** seçeneğini belirleyin.
 
 ### <a name="test-connectivity-after-outbound-rule"></a>Giden kuraldan sonra Bağlantıyı Sına
 

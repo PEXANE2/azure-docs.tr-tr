@@ -7,10 +7,10 @@ ms.date: 02/16/2021
 ms.reviewer: dariac
 ms.custom: seodec18, devx-track-azurecli
 ms.openlocfilehash: 5dd6183bf88c167adb2f084c319cd90b94351dfb
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100560460"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Azure App Service için yerel git dağıtımı
@@ -43,7 +43,7 @@ Zaten bir App Service uygulamanız varsa ve yerel git dağıtımını yapıland�
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-[`az webapp create`](/cli/azure/webapp#az_webapp_create) `--deployment-local-git` Seçeneğiyle çalıştırın. Örneğin:
+[`az webapp create`](/cli/azure/webapp#az_webapp_create) `--deployment-local-git` Seçeneğiyle çalıştırın. Örnek:
 
 ```azurecli-interactive
 az webapp create --resource-group <group-name> --plan <plan-name> --name <app-name> --runtime "<runtime-flag>" --deployment-local-git
@@ -53,7 +53,7 @@ az webapp create --resource-group <group-name> --plan <plan-name> --name <app-na
 
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
 
-Git deponuzun kökünden [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) komutunu çalıştırın. Örneğin:
+Git deponuzun kökünden [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) komutunu çalıştırın. Örnek:
 
 ```azurepowershell-interactive
 New-AzWebApp -Name <app-name>
@@ -73,7 +73,7 @@ Henüz bir uygulama oluşturmadıysanız bunun yerine [Git etkin bir uygulama ol
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-Öğesini çalıştırın [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source#az-webapp-deployment-source-config-local-git) . Örneğin:
+Öğesini çalıştırın [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source#az-webapp-deployment-source-config-local-git) . Örnek:
 
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app-name> --resource-group <group-name>

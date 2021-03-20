@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.openlocfilehash: 8acb3c31a41521eace46e065c06f04e69d97a2e4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102037226"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>Bir Azure kaynağı için Azure Izleyici ölçüm deposuna bir REST API kullanarak özel ölçümler gönderme
@@ -98,7 +98,7 @@ Erişim belirtecini yanıttan kaydedin.
 
 ## <a name="view-your-metrics"></a>Ölçümlerinizi görüntüleme 
 
-1. Azure Portal’da oturum açın. 
+1. Azure portalında oturum açın. 
 
 1. Sol taraftaki menüde **izleyici**' yi seçin. 
 

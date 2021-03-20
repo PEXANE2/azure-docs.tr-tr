@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 297395fbd0a7fd3fc8959eed5c0aeabd7b8e5751
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92458714"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learnupon"></a>Öğretici: Learnon ile tümleştirme Azure Active Directory
@@ -30,7 +30,7 @@ Azure AD ile Learnon tümleştirme, aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Öğreniron ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -65,13 +65,13 @@ Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandı
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **öğrennon**yazın, sonuç panelinden **learnon** ' u seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
+4. Arama kutusuna **öğrennon** yazın, sonuç panelinden **learnon** ' u seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
 
     ![Sonuçlar listesinde Öğrenirme](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre learnon Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
+Bu bölümde, **Britta Simon** adlı bir test kullanıcısına göre learnon Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve Öğrennon içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açmayı Öğrennon ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -144,9 +144,9 @@ Azure AD çoklu oturum açmayı Öğrennon ile yapılandırmak için aşağıdak
 
     b. **Sürüm** olarak **2,0**' i seçin.
 
-    c. Koşulları **Hayır**olarak **Atla** ' yı seçin.
+    c. Koşulları **Hayır** olarak **Atla** ' yı seçin.
 
-    d. **SAML belirteci Post param Name** metin kutusuna, doğrulanacak ve kimlik doğrulaması yapılacak SAML onaylama, örneğin **SAMLResponse**gıbı, yukarıda belirtilen saml tüketicisi URL 'sine istek Post parametresinin adını yazın.
+    d. **SAML belirteci Post param Name** metin kutusuna, doğrulanacak ve kimlik doğrulaması yapılacak SAML onaylama, örneğin **SAMLResponse** gıbı, yukarıda belirtilen saml tüketicisi URL 'sine istek Post parametresinin adını yazın.
 
     e. **Ad tanımlayıcı biçimi** metin kutusuna, SAML onaylayıcın Kullanıcı tanımlayıcısı (e-posta adresi) nerede olduğunu belirten değeri yazın `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress` .
   
@@ -180,7 +180,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
     b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension` . Örneğin, BrittaSimon@contoso.com
 

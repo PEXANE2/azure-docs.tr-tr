@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla, dawoo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fc0be7e50c5cce511fafd7d8b407626bd57659bd
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98183141"
 ---
 # <a name="manage-user-authentication-methods-for-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication için Kullanıcı kimlik doğrulama yöntemlerini yönetme
@@ -44,12 +44,12 @@ Azure portal veya Microsoft Graph aracılığıyla bir kullanıcı için kimlik 
 
 Azure portal aracılığıyla bir kullanıcıya yönelik kimlik doğrulama yöntemleri eklemek için:  
 
-1. **Azure portalında** oturum açın. 
+1. **Azure portal** oturum açın. 
 1. **Azure Active Directory**  >  **kullanıcılara**  >  **tüm kullanıcılar**' a gidin. 
 1. Kimlik doğrulama yöntemi eklemek istediğiniz kullanıcıyı seçin ve **kimlik doğrulama yöntemlerini** seçin.  
 1. Pencerenin üst kısmında **+ kimlik doğrulama yöntemi ekle**' yi seçin.
    1. Bir Yöntem (telefon numarası veya e-posta) seçin. E-posta, kendi kendine parola sıfırlama için kullanılabilir ancak kimlik doğrulaması yok. Telefon numarası eklerken bir telefon türü seçin ve telefon numarasını geçerli biçime (ör. + 1 4255551234) girin.
-   1. **Ekle**’yi seçin.
+   1. **Add (Ekle)** seçeneğini belirleyin.
 
 > [!NOTE]
 > Önizleme deneyimi, yöneticilerin kullanıcılar için kullanılabilir kimlik doğrulama yöntemleri eklemesine izin verir, ancak özgün deneyim yalnızca telefon ve alternatif telefon yöntemlerinin güncelleştirilmesini sağlar.

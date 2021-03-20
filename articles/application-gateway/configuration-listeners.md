@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
 ms.openlocfilehash: 15f68e8cbca65e7b970944f7ca5ef1952140cc6b
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397652"
 ---
 # <a name="application-gateway-listener-configuration"></a>Application Gateway dinleyicisi yapılandırması
@@ -20,7 +20,7 @@ ms.locfileid: "93397652"
 
 Dinleyici, bağlantı noktası, protokol, konak ve IP adresini kullanarak gelen bağlantı isteklerini denetleyen mantıksal bir varlıktır. Dinleyiciyi yapılandırdığınızda, bunlar için ağ geçidinde gelen istekteki karşılık gelen değerlerle eşleşen değerler girmeniz gerekir.
 
-Azure portal kullanarak bir uygulama ağ geçidi oluşturduğunuzda, dinleyici için protokolü ve bağlantı noktasını seçerek de varsayılan bir dinleyici oluşturursunuz. HTTP2 desteğinin dinleyicide etkinleştirilip etkinleştirilmeyeceğini seçebilirsiniz. Uygulama ağ geçidini oluşturduktan sonra, bu varsayılan dinleyicinin ( *Appgatewayhttplistener* ) ayarlarını düzenleyebilir veya yeni dinleyiciler oluşturabilirsiniz.
+Azure portal kullanarak bir uygulama ağ geçidi oluşturduğunuzda, dinleyici için protokolü ve bağlantı noktasını seçerek de varsayılan bir dinleyici oluşturursunuz. HTTP2 desteğinin dinleyicide etkinleştirilip etkinleştirilmeyeceğini seçebilirsiniz. Uygulama ağ geçidini oluşturduktan sonra, bu varsayılan dinleyicinin (*Appgatewayhttplistener*) ayarlarını düzenleyebilir veya yeni dinleyiciler oluşturabilirsiniz.
 
 ## <a name="listener-type"></a>Dinleyici türü
 
@@ -87,7 +87,7 @@ Genel özel hata sayfasını yapılandırmak için, bkz. [Azure PowerShell Confi
 
 ## <a name="tls-policy"></a>TLS ilkesi
 
-Bir arka uç sunucu grubu için TLS/SSL sertifika yönetimini merkezileştirmek ve şifreleme şifre çözme ek yükünü azaltabilirsiniz. Merkezi TLS işleme, güvenlik gereksinimlerinize uygun bir merkezi TLS ilkesi belirtmenize de olanak tanır. *Varsayılan* , *önceden tanımlanmış* veya *özel* TLS ilkesi seçebilirsiniz.
+Bir arka uç sunucu grubu için TLS/SSL sertifika yönetimini merkezileştirmek ve şifreleme şifre çözme ek yükünü azaltabilirsiniz. Merkezi TLS işleme, güvenlik gereksinimlerinize uygun bir merkezi TLS ilkesi belirtmenize de olanak tanır. *Varsayılan*, *önceden tanımlanmış* veya *özel* TLS ilkesi seçebilirsiniz.
 
 TLS protokolü sürümlerini denetlemek için TLS ilkesi yapılandırırsınız. Bir uygulama ağ geçidini TLS 1.0, TLS 1.1 ve TLS 1.2 ile TLS el sıkışmaları için en düşük protokol sürümünü kullanacak şekilde yapılandırabilirsiniz. Varsayılan olarak, SSL 2,0 ve 3,0 devre dışıdır ve yapılandırılamaz. Daha fazla bilgi için bkz. [APPLICATION Gateway TLS ilkesine genel bakış](./application-gateway-ssl-policy-overview.md).
 

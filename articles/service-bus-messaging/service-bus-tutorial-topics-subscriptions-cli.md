@@ -6,10 +6,10 @@ ms.topic: quickstart
 author: spelluru
 ms.author: spelluru
 ms.openlocfilehash: 080b089efa276779420f6d9bc8e76272f1e65788
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90069705"
 ---
 # <a name="use-azure-cli-to-create-a-service-bus-topic-and-subscriptions-to-the-topic"></a>Konuya bir Service Bus konu ve abonelik oluşturmak için Azure CLı kullanma
@@ -32,7 +32,7 @@ Bu hızlı başlangıçta, Azure portal oturum açtıktan sonra başlatabilmeniz
 ## <a name="create-a-service-bus-topic-and-subscriptions"></a>Service Bus konu başlığı ve abonelikleri oluşturma
 Her [konu başlığı aboneliği](service-bus-messaging-overview.md#topics) her iletinin bir kopyasını alabilir. Konular, protokol ve anlam açılarından Service Bus kuyrukları ile tam olarak uyumludur. Service Bus konu başlıkları, filtreleme koşullarını ve ileti özelliklerini belirleyen veya değiştiren isteğe bağlı eylemleri olan geniş bir seçim kuralı yelpazesini destekler. Bir kural eşleştiğinde bir ileti oluşturulur. Kurallar, filtreler ve eylemler hakkında daha fazla bilgi edinmek için bu [bağlantıyı](topic-filters.md) izleyin.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure portal](https://portal.azure.com) oturum açın.
 2. Aşağıdaki görüntüde gösterilen simgeyi seçerek Azure Cloud Shell başlatın. Cloud Shell **PowerShell** modundaysa **Bash** moduna geçin. 
 
     :::image type="content" source="./media/service-bus-quickstart-powershell/launch-cloud-shell.png" alt-text="Cloud Shell Başlat":::

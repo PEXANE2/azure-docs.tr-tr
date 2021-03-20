@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 5504b9bc87f78682ff584006255d4e75e5e69fa7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793356"
 ---
 # <a name="distributed-transactions-across-cloud-databases-preview"></a>Bulut veritabanlarında dağıtılmış işlemler (önizleme)
@@ -238,9 +238,9 @@ Esnek veritabanı işlemleri, Azure SQL veritabanı 'ndaki farklı sunucular ara
 
 Elastik veritabanı işlemleri için çapraz sunucu iletişim ilişkilerini yönetmek üzere aşağıdaki PowerShell cmdlet 'lerini kullanın:
 
-* **New-AzSqlServerCommunicationLink** : Azure SQL veritabanı 'nda iki sunucu arasında yeni bir iletişim ilişkisi oluşturmak için bu cmdlet 'i kullanın. İlişki simetrik olduğundan, her iki sunucunun da diğer sunucu ile işlemleri başlatabileceği anlamına gelir.
-* **Get-AzSqlServerCommunicationLink** : var olan iletişim ilişkilerini ve bunların özelliklerini almak için bu cmdlet 'i kullanın.
-* **Remove-AzSqlServerCommunicationLink** : var olan bir iletişim ilişkisini kaldırmak için bu cmdlet 'i kullanın.
+* **New-AzSqlServerCommunicationLink**: Azure SQL veritabanı 'nda iki sunucu arasında yeni bir iletişim ilişkisi oluşturmak için bu cmdlet 'i kullanın. İlişki simetrik olduğundan, her iki sunucunun da diğer sunucu ile işlemleri başlatabileceği anlamına gelir.
+* **Get-AzSqlServerCommunicationLink**: var olan iletişim ilişkilerini ve bunların özelliklerini almak için bu cmdlet 'i kullanın.
+* **Remove-AzSqlServerCommunicationLink**: var olan bir iletişim ilişkisini kaldırmak için bu cmdlet 'i kullanın.
 
 ## <a name="transactions-across-multiple-servers-for-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği için birden çok sunucu arasında işlem
 
@@ -258,9 +258,9 @@ Devam eden elastik veritabanı işlemlerinizin durumunu ve ilerlemesini izlemek 
 
 Bu DMVs 'ler özellikle yararlıdır:
 
-* **sys.DM \_ Tran \_ etkin \_ işlemler** : etkin olan işlemleri ve bunların durumlarını listeler. UOW (Iş birimi) sütunu, aynı dağıtılmış işleme ait farklı alt işlemleri tanımlayabilir. Aynı dağıtılmış işlem içindeki tüm işlemler aynı UOW değerini taşır. Daha fazla bilgi için bkz. [DMV belgeleri](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-active-transactions-transact-sql).
-* **sys.DM \_ Tran \_ veritabanı \_ işlemleri** : işlemin günlüğe yerleştirilmesi gibi işlemler hakkında ek bilgiler sağlar. Daha fazla bilgi için bkz. [DMV belgeleri](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-database-transactions-transact-sql).
-* **sys.DM \_ Tran \_ kilitleri** : devam eden işlemler tarafından şu anda tutulan kilitler hakkında bilgi sağlar. Daha fazla bilgi için bkz. [DMV belgeleri](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql).
+* **sys.DM \_ Tran \_ etkin \_ işlemler**: etkin olan işlemleri ve bunların durumlarını listeler. UOW (Iş birimi) sütunu, aynı dağıtılmış işleme ait farklı alt işlemleri tanımlayabilir. Aynı dağıtılmış işlem içindeki tüm işlemler aynı UOW değerini taşır. Daha fazla bilgi için bkz. [DMV belgeleri](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-active-transactions-transact-sql).
+* **sys.DM \_ Tran \_ veritabanı \_ işlemleri**: işlemin günlüğe yerleştirilmesi gibi işlemler hakkında ek bilgiler sağlar. Daha fazla bilgi için bkz. [DMV belgeleri](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-database-transactions-transact-sql).
+* **sys.DM \_ Tran \_ kilitleri**: devam eden işlemler tarafından şu anda tutulan kilitler hakkında bilgi sağlar. Daha fazla bilgi için bkz. [DMV belgeleri](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql).
 
 ## <a name="limitations"></a>Sınırlamalar
 

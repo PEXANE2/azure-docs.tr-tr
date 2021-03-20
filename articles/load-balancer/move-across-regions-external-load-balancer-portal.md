@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: allensu
 ms.openlocfilehash: f83ff3d1d03354daef3466c1f48eaa505e378634
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94693758"
 ---
 # <a name="move-an-external-load-balancer-to-another-region-by-using-the-azure-portal"></a>Azure portal kullanarak dış yük dengeleyiciyi başka bir bölgeye taşıyın
@@ -45,7 +45,7 @@ Aşağıdaki yordamlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma i�
 2. Kaynak ortak IP 'yi içeren kaynak grubunu bulun ve seçin.
 3. **Ayarları**  >  **dışarı aktarma şablonu**' nu seçin.
 4. **Şablonu dışarı aktar** altında **Dağıt** ' ı seçin.
-5. **TEMPLATE**  >  Çevrimiçi düzenleyicide dosya parameters.jsaçmak için şablon **düzenleme parametrelerini** seçin.
+5.   >  Çevrimiçi düzenleyicide dosya parameters.jsaçmak için şablon **düzenleme parametrelerini** seçin.
 8. Genel IP adının parametresini düzenlemek için, **Parametreler** altındaki **değer** özelliğini kaynak genel IP adından hedef genel IP 'niz adına değiştirin. Adı tırnak işaretleri içine alın.
 
     ```json
@@ -63,7 +63,7 @@ Aşağıdaki yordamlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma i�
 
     Düzenleyicide **Kaydet** ' i seçin.
 
-9.  **TEMPLATE**  >  Çevrimiçi düzenleyicide dosya template.jsaçmak için şablon **düzenleme şablonu** ' nu seçin.
+9.    >  Çevrimiçi düzenleyicide dosya template.jsaçmak için şablon **düzenleme şablonu** ' nu seçin.
 
 10. Genel IP 'nin taşınacağı hedef bölgeyi düzenlemek için, **kaynaklar** altındaki **Location** özelliğini değiştirin:
 
@@ -141,11 +141,11 @@ Aşağıdaki yordamlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma i�
  
 13. Çevrimiçi düzenleyicide **Kaydet** ' i seçin.
 
-14. **BASICS**  >  Hedef genel IP 'nin dağıtılacağı aboneliği seçmek için temel bilgiler **aboneliğini** seçin.
+14.   >  Hedef genel IP 'nin dağıtılacağı aboneliği seçmek için temel bilgiler **aboneliğini** seçin.
 
-15. **BASICS**  >  Hedef genel IP 'nin dağıtılacağı kaynak grubunu seçmek için temel bilgiler **kaynak grubu** ' nu seçin. Hedef genel IP 'si için yeni bir kaynak grubu oluşturmak üzere **Yeni oluştur** ' u seçebilirsiniz. Adın mevcut kaynak genel IP 'nin kaynak kaynak grubuyla aynı olmadığından emin olun.
+15.   >  Hedef genel IP 'nin dağıtılacağı kaynak grubunu seçmek için temel bilgiler **kaynak grubu** ' nu seçin. Hedef genel IP 'si için yeni bir kaynak grubu oluşturmak üzere **Yeni oluştur** ' u seçebilirsiniz. Adın mevcut kaynak genel IP 'nin kaynak kaynak grubuyla aynı olmadığından emin olun.
 
-16. Temel bir **BASICS**  >  **konumun** , genel IP 'nin dağıtılmasını istediğiniz hedef konuma ayarlandığını doğrulayın.
+16. Temel bir   >  **konumun** , genel IP 'nin dağıtılmasını istediğiniz hedef konuma ayarlandığını doğrulayın.
 
 17. **Ayarlar**' ın altında, ad ' ın daha önce parametreler düzenleyicisinde girdiğiniz adla eşleştiğini doğrulayın.
 
@@ -161,7 +161,7 @@ Aşağıdaki yordamlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma i�
 2. Kaynak dış yük dengeleyiciyi içeren kaynak grubunu bulun ve seçin.
 3. **Ayarları**  >  **dışarı aktarma şablonu**' nu seçin.
 4. **Şablonu dışarı aktar** altında **Dağıt** ' ı seçin.
-5. **TEMPLATE**  >  Çevrimiçi düzenleyicide dosya parameters.jsaçmak için şablon **düzenleme parametrelerini** seçin.
+5.   >  Çevrimiçi düzenleyicide dosya parameters.jsaçmak için şablon **düzenleme parametrelerini** seçin.
 
 5. Dış yük dengeleyici adının parametresini düzenlemek için, kaynak dış yük dengeleyici adının **değer** özelliğini hedef dış yük dengeleyicinizin adıyla değiştirin. Adı tırnak işaretleri içine alın.
 
@@ -181,7 +181,7 @@ Aşağıdaki yordamlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma i�
 6.  Önceki adımlarda taşıdığınız hedef genel IP 'nin değerini düzenlemek için, önce kaynak KIMLIĞINI edinmeniz ve ardından dosyayı parameters.jsdosyasına yapıştırmanız gerekir. KIMLIĞI almak için:
 
     1. Başka bir tarayıcı sekmesi veya penceresinde, [Azure Portal](https://portal.azure.com) oturum açın ve **kaynak grupları**' nı seçin.
-    2. Önceki adımlarda taşıdığınız ortak IP 'yi içeren hedef kaynak grubunu bulun. Bu klasörü seçin.
+    2. Önceki adımlarda taşıdığınız ortak IP 'yi içeren hedef kaynak grubunu bulun. Kalem simgesini seçin.
     3. **Ayarlar** > **Özellikler**'i seçin.
     4. Sağ taraftaki dikey pencerede, **kaynak kimliğini** vurgulayın ve panoya kopyalayın. Alternatif olarak, **kaynak kimliği** yolunun sağında **Panoya Kopyala** ' yı seçebilirsiniz.
     5. Kaynak KIMLIĞINI, diğer tarayıcı penceresinde veya sekmesinde açık olan **parametreleri Düzenle** düzenleyicisinde **değer** özelliğine yapıştırın:
@@ -223,7 +223,7 @@ Aşağıdaki yordamlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma i�
         },
     ```
 
-8.  **TEMPLATE**  >  Çevrimiçi düzenleyicide dosya template.jsaçmak için şablon **düzenleme şablonu** ' nu seçin.
+8.    >  Çevrimiçi düzenleyicide dosya template.jsaçmak için şablon **düzenleme şablonu** ' nu seçin.
 9.  Dış yük dengeleyici yapılandırmasının taşınacağı hedef bölgeyi düzenlemek için, dosyadaki template.jsiçindeki **kaynaklar** altında **Location** özelliğini değiştirin:
 
     ```json
@@ -389,9 +389,9 @@ Aşağıdaki yordamlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma i�
 
 12. Çevrimiçi düzenleyicide **Kaydet** ' i seçin.
 
-13. **BASICS**  >  Hedef dış yük dengeleyicinin dağıtılacağı aboneliği seçmek için temel bilgiler **aboneliğini** seçin.
+13.   >  Hedef dış yük dengeleyicinin dağıtılacağı aboneliği seçmek için temel bilgiler **aboneliğini** seçin.
 
-15. **BASICS**  >  Hedef yük dengeleyicinin dağıtılacağı kaynak grubunu seçmek için temel bilgiler **kaynak grubu** ' nu seçin. Hedef dış yük dengeleyici için yeni bir kaynak grubu oluşturmak için **Yeni oluştur** ' u seçebilirsiniz. Ya da daha önce genel IP için oluşturduğunuz mevcut kaynak grubunu seçebilirsiniz. Adın mevcut kaynak dış yük dengeleyicinin kaynak kaynak grubuyla aynı olmadığından emin olun.
+15.   >  Hedef yük dengeleyicinin dağıtılacağı kaynak grubunu seçmek için temel bilgiler **kaynak grubu** ' nu seçin. Hedef dış yük dengeleyici için yeni bir kaynak grubu oluşturmak için **Yeni oluştur** ' u seçebilirsiniz. Ya da daha önce genel IP için oluşturduğunuz mevcut kaynak grubunu seçebilirsiniz. Adın mevcut kaynak dış yük dengeleyicinin kaynak kaynak grubuyla aynı olmadığından emin olun.
 
 16. **Temel bilgiler**  >  **konumunun** , dış yük dengeleyicinin dağıtılmasını istediğiniz hedef konuma ayarlandığını doğrulayın.
 

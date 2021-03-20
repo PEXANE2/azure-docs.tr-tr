@@ -10,10 +10,10 @@ ms.workload: identity
 ms.date: 02/15/2021
 ms.author: rolyon
 ms.openlocfilehash: 081335779ffc4b3a6ddf09e56b773c6d34b210be
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100556046"
 ---
 # <a name="steps-to-assign-an-azure-role"></a>Azure rolü atama adımları
@@ -62,7 +62,7 @@ Yerleşik rollerin diğerleri belirli Azure kaynakları için yönetim özellikl
 
 ![Rol ataması kapsamı](./media/shared/rbac-scope.png)
 
-Bir üst kapsamda bir rol atadığınızda, bu izinler alt kapsamlarına devralınır. Örneğin:
+Bir üst kapsamda bir rol atadığınızda, bu izinler alt kapsamlarına devralınır. Örnek:
 
 - [Okuyucu](built-in-roles.md#reader) rolünü yönetim grubu kapsamındaki bir kullanıcıya atarsanız, bu kullanıcı yönetim grubundaki tüm aboneliklerdeki her şeyi okuyabilir.
 - [Faturalandırma okuyucusu](built-in-roles.md#billing-reader) rolünü abonelik kapsamındaki bir gruba atarsanız, o grubun üyeleri abonelikteki her kaynak grubu ve kaynak için faturalandırma verilerini okuyabilir.

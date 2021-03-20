@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: jeedes
 ms.openlocfilehash: 91a50ed85b5802657a27c5a545de0013937e9da0
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92460573"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ibm-digital-business-automation-on-cloud"></a>Öğretici: bulutta IBM Digital Business Automation ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile IBM Digital Business Auto
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -56,7 +56,7 @@ Bulutta IBM Digital Business Automation 'ın Azure AD 'ye tümleştirilmesini ya
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-ibm-digital-business-automation-on-cloud"></a>Bulutta IBM Digital Business Automation için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'YU bulutta IBM Digital Business Automation ile yapılandırın ve test edin. SSO 'nun çalışması için, bulutta IBM Digital Business Automation 'da bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'YU bulutta IBM Digital Business Automation ile yapılandırın ve test edin. SSO 'nun çalışması için, bulutta IBM Digital Business Automation 'da bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu bulutta IBM Digital Business Automation ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -77,7 +77,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-1. **Temel SAML yapılandırması** bölümünde, **hizmet sağlayıcısı meta verileri dosyanız**varsa, aşağıdaki adımları uygulayın:
+1. **Temel SAML yapılandırması** bölümünde, **hizmet sağlayıcısı meta verileri dosyanız** varsa, aşağıdaki adımları uygulayın:
     
     a. **Meta veri dosyasını karşıya yükle**' ye tıklayın.
 
@@ -91,7 +91,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     > [!Note]
     > Müşteriler, bulut aboneliğine ait meta veri dosyasını [bulut istemci desteği ekibinin IBM Digital Business Automation](mailto:supportbpmoncloud@us.ibm.com)'dan elde edebilir.
 
-1. **Hizmet sağlayıcısı meta verileri dosyanız**yoksa, **temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki alanlar için değerleri girin:
+1. **Hizmet sağlayıcısı meta verileri dosyanız** yoksa, **temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki alanlar için değerleri girin:
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://www.automationcloud.ibm.com/isam/sps/<TENANT>/saml20`
 

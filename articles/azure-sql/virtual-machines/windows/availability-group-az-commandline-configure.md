@@ -15,10 +15,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019, devx-track-azurecli
 ms.openlocfilehash: 865ee3a5aeb8a2dd06d8759ba04d02259d2b4bee
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97359974"
 ---
 # <a name="use-powershell-or-az-cli-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Azure VM 'de SQL Server için bir kullanılabilirlik grubu yapılandırmak için PowerShell veya az CLı kullanın 
@@ -251,7 +251,7 @@ Kullanılabilirlik grubunu el ile oluşturduktan sonra [az SQL VM AG-Listener](/
    1. [Azure Portal](https://portal.azure.com)kaynak grubunuza gidin. 
    1. Sanal ağ kaynağını seçin. 
    1. **Ayarlar** bölmesinde **Özellikler** ' i seçin. 
-   1. Sanal ağın kaynak KIMLIĞINI belirleyip `/subnets/<subnetname>` alt ağ kaynak kimliği oluşturmak için sonuna ekleyin. Örneğin:
+   1. Sanal ağın kaynak KIMLIĞINI belirleyip `/subnets/<subnetname>` alt ağ kaynak kimliği oluşturmak için sonuna ekleyin. Örnek:
       - Sanal ağ kaynak KIMLIĞINIZ: `/subscriptions/a1a1-1a11a/resourceGroups/SQLVM-RG/providers/Microsoft.Network/virtualNetworks/SQLVMvNet`
       - Alt ağ adınız: `default`
       - Bu nedenle, alt ağ kaynak KIMLIĞINIZ: `/subscriptions/a1a1-1a11a/resourceGroups/SQLVM-RG/providers/Microsoft.Network/virtualNetworks/SQLVMvNet/subnets/default`

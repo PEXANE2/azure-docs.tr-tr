@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 02/05/2018
 ms.author: jejiang
 ms.openlocfilehash: 7f251e6ba2d94c0fcede3387ac12461951de40f1
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92108754"
 ---
 # <a name="manage-azure-data-lake-storage-gen1-resources-by-using-storage-explorer"></a>Depolama Gezgini kullanarak Azure Data Lake Storage 1. kaynaklarını yönetme
@@ -19,7 +19,7 @@ ms.locfileid: "92108754"
 
 Başka bir avantaj de Data Lake Storage 1. verilerini yönetmek için abonelik iznine sahip olmanız gerekmez. Depolama Gezgini, bir kullanıcı izin verdiği sürece, Data Lake Storage 1. yolunu **yerel ve bağlı** düğüme ekleyebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları tamamlayabilmeniz için şu önkoşullar gereklidir:
 
@@ -91,7 +91,7 @@ Aşağıdaki işlemleri yaparak Data Lake Storage 1. kaynaklarını yönetebilir
 
 * Birden çok Data Lake Storage 1. hesabı genelinde Data Lake Storage 1. kaynaklara göz atabilirsiniz.  
 * Data Lake Storage 1. doğrudan bağlanmak ve yönetmek için bir bağlantı dizesi kullanın.
-* **Yerel ve bağlı**bir ACL aracılığıyla başkaları tarafından paylaşılan Data Lake Storage 1. kaynaklarını görüntüleyin.
+* **Yerel ve bağlı** bir ACL aracılığıyla başkaları tarafından paylaşılan Data Lake Storage 1. kaynaklarını görüntüleyin.
 * Dosya ve klasör CRUD işlemlerini gerçekleştirin: özyinelemeli klasör ve çoklu seçimli dosya desteği.
 * En son konumlara hızlıca erişmek için bir klasörü sürükleyip bırakma ve ekleme. Bu işlem, masaüstü Dosya Gezgini deneyimini yansıtır.
 * Depolama Gezgini bir Data Lake Storage 1. köprüsünü tek tıklamayla kopyalayın ve açın.

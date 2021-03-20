@@ -7,15 +7,15 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/09/2018
 ms.openlocfilehash: 19f42270e37c42cf56bbde04f73c01027a56ff63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89657388"
 ---
 # <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>Azure Logic Apps iş akışı eylemlerini denetleyen koşullu deyimler oluşturma
 
-Mantıksal uygulamanızda belirli eylemleri yalnızca belirtilen bir koşulu geçirdikten sonra çalıştırmak için, *koşullu bir ifade*ekleyin. Bu denetim yapısı, iş akışınızdaki verileri belirli değerlerle veya alanlarla karşılaştırır. Daha sonra, verilerin koşulu karşılayıp karşılamadığını temel alarak çalışan farklı eylemler belirtebilirsiniz. Koşulları birbirine iç içe yerleştirebilirsiniz.
+Mantıksal uygulamanızda belirli eylemleri yalnızca belirtilen bir koşulu geçirdikten sonra çalıştırmak için, *koşullu bir ifade* ekleyin. Bu denetim yapısı, iş akışınızdaki verileri belirli değerlerle veya alanlarla karşılaştırır. Daha sonra, verilerin koşulu karşılayıp karşılamadığını temel alarak çalışan farklı eylemler belirtebilirsiniz. Koşulları birbirine iç içe yerleştirebilirsiniz.
 
 Örneğin, bir Web sitesinin RSS akışında yeni öğeler görüntülendiğinde çok fazla e-posta gönderen bir mantıksal uygulamanız olduğunu varsayalım. Yalnızca yeni öğe belirli bir dize içerdiğinde e-posta göndermek için koşullu bir ifade ekleyebilirsiniz. 
 
@@ -36,7 +36,7 @@ Mantıksal uygulamanızda belirli eylemleri yalnızca belirtilen bir koşulu ge�
 
 1. İstediğiniz konuma bir koşul ekleyin. 
 
-   Adımlar arasında bir koşul eklemek için işaretçiyi koşulu eklemek istediğiniz oka taşıyın. Görüntülenen **artı işaretini** () seçin ve **+** ardından **Eylem Ekle**' yi seçin. Örneğin:
+   Adımlar arasında bir koşul eklemek için işaretçiyi koşulu eklemek istediğiniz oka taşıyın. Görüntülenen **artı işaretini** () seçin ve **+** ardından **Eylem Ekle**' yi seçin. Örnek:
 
    ![Adımlar arasında eylem ekleme](./media/logic-apps-control-flow-conditional-statement/add-action.png)
 
@@ -65,11 +65,11 @@ Mantıksal uygulamanızda belirli eylemleri yalnızca belirtilen bir koşulu ge�
 
    ![Tamamlanan koşul](./media/logic-apps-control-flow-conditional-statement/edit-condition-2.png)
 
-   Koşulunuz için başka bir satır eklemek üzere **Add**  >  **satır ekle**Ekle ' yi seçin. 
+   Koşulunuz için başka bir satır eklemek üzere   >  **satır ekle** Ekle ' yi seçin. 
    Alt koşullara sahip bir **Grup eklemek için**  >  **Grup Ekle**' yi seçin. 
    Mevcut satırları gruplandırmak için, bu satırların onay kutularını seçin, herhangi bir satır için üç nokta (...) düğmesini seçin ve ardından **Grup Oluştur**' u seçin.
 
-1. **True ise** ve **false ise**, koşulun karşılanıp karşılanmadığını temel alarak gerçekleştirilecek adımları ekleyin. Örneğin:
+1. **True ise** ve **false ise**, koşulun karşılanıp karşılanmadığını temel alarak gerçekleştirilecek adımları ekleyin. Örnek:
 
    !["If true" ve "If false" yollarında koşul](./media/logic-apps-control-flow-conditional-statement/condition-yes-no-path.png)
 

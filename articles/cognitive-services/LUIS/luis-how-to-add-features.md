@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
 ms.openlocfilehash: 33435d2367b92f312d41f0e32fdbb3a93d59a9fd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95999935"
 ---
 # <a name="use-features-to-boost-signal-of-word-list"></a>Sözcük listesinin sinyalini artırmak için özellikleri kullanın
@@ -41,7 +41,7 @@ Bir özelliğin ne zaman ve neden kullanılacağını anlamak için [kavramları
 
 1. Tümcecik listesi, **genel** ayarı olan tüm uygulamaya veya belirli bir modele (amaç veya varlık) uygulanabilir. Tümcecik listesini bir amaç veya varlıktan bir _özellik_ olarak oluşturursanız, geçiş işlemi genel için ayarlanmadı. Bu durumda, iki durumlu özelliğin anlamı, uygulamanın _genel değil_ , bu modelde yalnızca yerel olduğu bir modeldir.
 
-1. **Bitti**'yi seçin. Yeni özellik **ml özellikleri** sayfasına eklenir.
+1. **Bitti** seçeneğini belirleyin. Yeni özellik **ml özellikleri** sayfasına eklenir.
 
 <a name="edit-phrase-list"></a>
 <a name="delete-phrase-list"></a>

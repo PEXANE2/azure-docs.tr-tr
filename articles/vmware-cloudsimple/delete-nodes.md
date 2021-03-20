@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 569bc6350b1bfa01228d49d28a1d12e2ab62f6f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88142273"
 ---
 # <a name="delete-nodes-from-azure-vmware-solution-by-cloudsimple"></a>CloudSimple tarafından Azure VMware çözümünden düğümleri silme
@@ -32,13 +32,13 @@ Düğüm, yalnızca aşağıdaki koşullarda silinebilir:
 
 ## <a name="delete-cloudsimple-node"></a>CloudSimple düğümünü Sil
 
-1. **Tüm hizmetler**’i seçin.
+1. **Tüm Hizmetler**’i seçin.
 
-2. **Cloudsimple düğümleri**için arama yapın.
+2. **Cloudsimple düğümleri** için arama yapın.
 
    ![CloudSimple düğümlerinde arama yapın](media/create-cloudsimple-node-search.png)
 
-3. **Cloudsimple düğümlerini**seçin.
+3. **Cloudsimple düğümlerini** seçin.
 
 4. Silinecek özel buluta ait olmayan düğümleri seçin.  **Özel bulut adı** sütunu, bir düğümün ait olduğu özel bulut adını gösterir.  Bir düğüm özel bir bulut tarafından kullanılmıyorsa, değer boş olur. 
 

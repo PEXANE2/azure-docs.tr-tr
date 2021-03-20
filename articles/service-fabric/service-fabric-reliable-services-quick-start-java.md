@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.custom: devx-track-javai
 ms.openlocfilehash: f67957d711958febdb01dfad0b3c44a92cb0bcfa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91535245"
 ---
 # <a name="get-started-with-reliable-services-in-java"></a>Java 'da Reliable Services kullanmaya başlama
@@ -39,7 +39,7 @@ Service Fabric bir uygulama oluşturarak başlayın. Linux için Service Fabric 
 $ yo azuresfjava
 ```
 
-**Güvenilir bir durum bilgisiz hizmeti**oluşturmak için yönergeleri izleyin. Bu öğreticide, "Merhaba Worldapplication" adlı uygulamayı ve "HelloWorld" hizmetini adlandırın. Sonuç, ve için dizinleri içerir `HelloWorldApplication` `HelloWorld` .
+**Güvenilir bir durum bilgisiz hizmeti** oluşturmak için yönergeleri izleyin. Bu öğreticide, "Merhaba Worldapplication" adlı uygulamayı ve "HelloWorld" hizmetini adlandırın. Sonuç, ve için dizinleri içerir `HelloWorldApplication` `HelloWorld` .
 
 ```bash
 HelloWorldApplication/
@@ -118,7 +118,7 @@ Bu düzenleme, hizmetinizi yüksek oranda kullanılabilir ve düzgün şekilde d
 
 `runAsync()` zaman uyumlu olarak engellenmemelidir. RunAsync uygulamanız, çalışma zamanının devam etmesine izin vermek için bir tamamlayıcı Tablefuture döndürmelidir. İş yükünüzün, bir uzun süre çalışan bir görevi, tamamlanmalı ve bu görevin tamamlanması gerekir.
 
-#### <a name="cancellation"></a>İptal Etme
+#### <a name="cancellation"></a>İptal
 İş yükünüzün iptali, belirtilen iptal belirteci tarafından düzenlenen bir işbirliği çabadır. Sistem, başlamadan önce görevin bitmesini bekler (başarılı tamamlama, iptal veya hata ile). İptal belirtecini dikkate almak, tüm işleri tamamlamak ve `runAsync()` sistem iptali istediğinde mümkün olduğunca hızlı bir şekilde çıkmak önemlidir. Aşağıdaki örnek, bir iptal olayının nasıl işleneceğini göstermektedir:
 
 ```java
@@ -156,7 +156,7 @@ Uygulamanızın Şu anda iki hizmeti olmalıdır: durum bilgisi olmayan hizmet H
 
 Durum bilgisi olan bir hizmet, durum bilgisi olmayan bir hizmetle aynı giriş noktalarına sahiptir. Temel fark, durumu güvenilir bir şekilde depolayabilen bir durum sağlayıcısının kullanılabilirliğinden oluşur. Service Fabric, güvenilir koleksiyonlar adlı bir durum sağlayıcısı uygulamasıyla birlikte gelir, bu da güvenilir durum Yöneticisi aracılığıyla çoğaltılan veri yapıları oluşturmanızı sağlar. Durum bilgisi olan güvenilir bir hizmet, varsayılan olarak bu durum sağlayıcısını kullanır.
 
-Aşağıdaki RunAsync metodunu içeren **Merhaba Dünya durum bilgisi olan > src**Içinde helloworldstateful. Java açın:
+Aşağıdaki RunAsync metodunu içeren **Merhaba Dünya durum bilgisi olan > src** Içinde helloworldstateful. Java açın:
 
 ```java
 @Override
@@ -193,7 +193,7 @@ ReliableHashMap<String,Long> map = this.stateManager.<String, Long>getOrAddRelia
 
 Güvenilir koleksiyonlar, özel türleriniz dahil olmak üzere herhangi bir Java türünü, birkaç uyarılarla saklayabilir:
 
-* Service Fabric, durumları düğümler arasında *çoğaltarak* ve güvenilir HashMap verilerinizi her çoğaltmada yerel diske depolar. Bu, güvenilir diyez eşlemelerinde depolanan her şeyin *seri hale getirilebilir*olması gerektiği anlamına gelir. 
+* Service Fabric, durumları düğümler arasında *çoğaltarak* ve güvenilir HashMap verilerinizi her çoğaltmada yerel diske depolar. Bu, güvenilir diyez eşlemelerinde depolanan her şeyin *seri hale getirilebilir* olması gerektiği anlamına gelir. 
 * İşlemleri güvenilir diyez eşlemelerde gerçekleştirdiğinizde, nesneler yüksek kullanılabilirlik için çoğaltılır. Güvenilir Karmaeşlemlerde depolanan nesneler, hizmetinizdeki yerel bellekte tutulur. Bu, nesnesine yerel bir başvurunuz olduğu anlamına gelir.
   
    Bir işlemdeki güvenilir koleksiyonda bir güncelleştirme işlemi gerçekleştirmeden, bu nesnelerin yerel örneklerini muanmamak önemlidir. Bunun nedeni, yerel nesne örneklerine yapılan değişikliklerin otomatik olarak çoğaltılmaması olabilir. Nesneyi sözlüğe yeniden eklemeniz veya sözlükteki *güncelleştirme* yöntemlerinden birini kullanmanız gerekir.
@@ -221,7 +221,7 @@ return map.computeAsync(tx, "counter", (k, v) -> {
 
 Güvenilir HashMaps üzerinde işlemler zaman uyumsuzdur. Bunun nedeni, güvenilir Koleksiyonlar içeren yazma işlemlerinin verileri diske çoğaltmak ve diskte kalıcı hale getirmek için g/ç işlemleri gerçekleştirmesini sağlar.
 
-Güvenilir HashMap işlemleri *işlem*halinde olduğundan, durumu birden çok güvenilir hashmaps ve işlem arasında tutarlı tutabilmenizi sağlayabilirsiniz. Örneğin, bir güvenilir sözlükten bir iş öğesi alabilir, üzerinde bir işlem gerçekleştirebilir ve sonucu tek bir işlem içinde başka bir güvenilir diyez eşlemesiyle kaydedebilirsiniz. Bu bir atomik işlem olarak değerlendirilir ve tüm işlemin başarılı olacağını veya işlemin tamamının geri alınmayacağını garanti eder. Öğeyi sıradan çıktıktan sonra bir hata oluşursa, ancak sonucu kaydetmeden önce, tüm işlem geri alınır ve öğe işlenmek üzere kuyrukta kalır.
+Güvenilir HashMap işlemleri *işlem* halinde olduğundan, durumu birden çok güvenilir hashmaps ve işlem arasında tutarlı tutabilmenizi sağlayabilirsiniz. Örneğin, bir güvenilir sözlükten bir iş öğesi alabilir, üzerinde bir işlem gerçekleştirebilir ve sonucu tek bir işlem içinde başka bir güvenilir diyez eşlemesiyle kaydedebilirsiniz. Bu bir atomik işlem olarak değerlendirilir ve tüm işlemin başarılı olacağını veya işlemin tamamının geri alınmayacağını garanti eder. Öğeyi sıradan çıktıktan sonra bir hata oluşursa, ancak sonucu kaydetmeden önce, tüm işlem geri alınır ve öğe işlenmek üzere kuyrukta kalır.
 
 
 ## <a name="build-the-application"></a>Uygulama oluşturma

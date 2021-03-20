@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: jeedes
 ms.openlocfilehash: ddc8cce7b56e0d9d4b3dc33dc1ad2d8c16582841
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92458719"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-leapsome"></a>Öğretici: Leapsome ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, Leapsome 'ı Azure Active Directory (Azure AD) ile tümleştirm
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -54,7 +54,7 @@ Leapsome 'ın Azure AD 'ye tümleştirilmesini yapılandırmak için, galerinizd
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-leapsome"></a>Leapsome için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak, Leapsome Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Leapsome ile ilgili Kullanıcı arasında bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak, Leapsome Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Leapsome ile ilgili Kullanıcı arasında bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Leapsome ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -161,7 +161,7 @@ Bu bölümde, Leapsome 'a erişim vererek Azure çoklu oturum açma özelliğini
 
     c. **Yanıt URL 'sini kopyalayın (kimlik sağlayıcınızdan yanıtı alır)** ve Azure Portal ÜZERINDEKI **temel SAML YAPıLANDıRMASı** bölümündeki **yanıt URL** metin kutusuna yapıştırın.
 
-    d. **SSO oturum açma URL 'si (kimlik sağlayıcısı tarafından sağlanmış)** metin kutusuna, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
+    d. **SSO oturum açma URL 'si (kimlik sağlayıcısı tarafından sağlanmış)** metin kutusuna, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
     e. İndirmiş olduğunuz sertifikayı açıklama olmadan Azure portal kopyalayın `--BEGIN CERTIFICATE and END CERTIFICATE--` ve **sertifikayı sertifikaya (kimlik sağlayıcısı tarafından sunulur)** metin kutusuna yapıştırın.
 

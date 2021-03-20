@@ -8,10 +8,10 @@ ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: has-adal-ref
 ms.openlocfilehash: a5272f7d580a3f8a68afda9150a1e95c1807eba6
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92103790"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Azure Active Directory kullanarak Azure Data Lake Storage 1. ile son kullanıcı kimlik doğrulaması
@@ -28,7 +28,7 @@ Azure Data Lake Storage 1., kimlik doğrulaması için Azure Active Directory ku
 
 Bu seçeneklerin her ikisi de, Data Lake Storage 1. veya Azure Data Lake Analytics yapılan her bir isteğe bağlı olan bir OAuth 2,0 belirteciyle birlikte sağlanmış olması ile sonuçlanır.
 
-Bu makalede, **Son Kullanıcı kimlik doğrulaması için bir Azure AD yerel uygulamasının**nasıl oluşturulacağı ele gösterilmektedir. Hizmetten hizmete kimlik doğrulaması için Azure AD uygulama yapılandırması yönergeleri için [Azure Active Directory kullanarak Data Lake Storage 1. Ile hizmetten hizmete kimlik doğrulaması](./data-lake-store-service-to-service-authenticate-using-active-directory.md)konusuna bakın.
+Bu makalede, **Son Kullanıcı kimlik doğrulaması için bir Azure AD yerel uygulamasının** nasıl oluşturulacağı ele gösterilmektedir. Hizmetten hizmete kimlik doğrulaması için Azure AD uygulama yapılandırması yönergeleri için [Azure Active Directory kullanarak Data Lake Storage 1. Ile hizmetten hizmete kimlik doğrulaması](./data-lake-store-service-to-service-authenticate-using-active-directory.md)konusuna bakın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 * Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
@@ -37,7 +37,7 @@ Bu makalede, **Son Kullanıcı kimlik doğrulaması için bir Azure AD yerel uyg
 
     ![Abonelik KIMLIĞINI al](./media/data-lake-store-end-user-authenticate-using-active-directory/get-subscription-id.png)
 
-* Azure AD etki alanı adınız. Fareyi, Azure portal sağ üst köşesine getirerek alabilirsiniz. Aşağıdaki ekran görüntüsünde, etki alanı adı **contoso.onmicrosoft.com**ve köşeli AYRAÇLAR içindeki GUID kiracı kimliğidir.
+* Azure AD etki alanı adınız. Fareyi, Azure portal sağ üst köşesine getirerek alabilirsiniz. Aşağıdaki ekran görüntüsünde, etki alanı adı **contoso.onmicrosoft.com** ve köşeli AYRAÇLAR içindeki GUID kiracı kimliğidir.
 
     ![AAD etki alanını al](./media/data-lake-store-end-user-authenticate-using-active-directory/get-aad-domain.png)
 
@@ -103,7 +103,7 @@ Yeniden yönlendirme URI 'sini almak için aşağıdaki adımları uygulayın.
 
     ![API erişimi ekle adlı bir API 'si seçeneği ve Azure Data Lake seçeneği ve Seç seçeneği ile bir API seçin dikey penceresi içeren ekran görüntüsü.](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-2.png)
 
-4.  **API erişimi ekle** dikey penceresinde **izinleri seç**' e tıklayın, **Data Lake Store tam erişim**vermek Için onay kutusunu işaretleyin ve ardından **Seç**' e tıklayın.
+4.  **API erişimi ekle** dikey penceresinde **izinleri seç**' e tıklayın, **Data Lake Store tam erişim** vermek Için onay kutusunu işaretleyin ve ardından **Seç**' e tıklayın.
 
     ![Adlandırılmış izinleri Seç seçeneği ile API erişimi ekle dikey penceresinin ekran görüntüsü ve Azure Data Lake hizmeti için tam erişime sahip olan erişimi etkinleştir dikey penceresi ve seçenek olarak adlandırılan seçim seçeneği.](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-3.png)
 

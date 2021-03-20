@@ -1,14 +1,14 @@
 ---
 ms.openlocfilehash: 0bae8946b7d81fbf45698cefe7c8b00bbc94d00c
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92168128"
 ---
 #### <a name="determine-memory-usage"></a>Bellek kullanımını belirleme 
 
-**İzleme**altında **Günlükler (Analiz)** öğesini seçin, ardından aşağıdaki telemetri sorgusunu kopyalayın ve sorgu penceresine yapıştırın ve **Çalıştır**' ı seçin. Bu sorgu, her örneklenmiş zamanda toplam bellek kullanımını döndürür.
+**İzleme** altında **Günlükler (Analiz)** öğesini seçin, ardından aşağıdaki telemetri sorgusunu kopyalayın ve sorgu penceresine yapıştırın ve **Çalıştır**' ı seçin. Bu sorgu, her örneklenmiş zamanda toplam bellek kullanımını döndürür.
 
 ```
 performanceCounters

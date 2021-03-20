@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
 ms.openlocfilehash: 07334d62cee94be8b5b8dd6188c1d6354c4d584b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792608"
 ---
 # <a name="how-to-use-batching-to-improve-azure-sql-database-and-azure-sql-managed-instance-application-performance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örnek uygulama performansını artırmak için toplu işlem kullanma
@@ -97,18 +97,18 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 Aşağıdaki tabloda bazı geçici test sonuçları gösterilmektedir. Testler, ve işlemleri olmadan aynı sıralı eklemeleri gerçekleştirdi. Daha fazla bakış için, ilk test kümesi bir dizüstü bilgisayardan Microsoft Azure içindeki veritabanına uzaktan çalışır. İkinci test kümesi, her ikisi de aynı Microsoft Azure veri merkezi (Batı ABD) içinde yer alan bir bulut hizmetinden ve veritabanından çalışır. Aşağıdaki tabloda, işlemleri ile ve olmayan sıralı ekleme süresinin milisaniye cinsinden gösterilmektedir.
 
-**Şirket Içinden Azure 'a** :
+**Şirket Içinden Azure 'a**:
 
-| İşlemler | İşlem yok (MS) | İşlem (MS) |
+| Operations | İşlem yok (MS) | İşlem (MS) |
 | --- | --- | --- |
 | 1 |130 |402 |
 | 10 |1208 |1226 |
 | 100 |12662 |10395 |
 | 1000 |128852 |102917 |
 
-**Azure 'Dan Azure 'a (aynı veri merkezi)** :
+**Azure 'Dan Azure 'a (aynı veri merkezi)**:
 
-| İşlemler | İşlem yok (MS) | İşlem (MS) |
+| Operations | İşlem yok (MS) | İşlem (MS) |
 | --- | --- | --- |
 | 1 |21 |26 |
 | 10 |220 |56 |
@@ -195,7 +195,7 @@ cmd.CommandType = CommandType.StoredProcedure;
 
 Aşağıdaki tabloda, tablo değerli parametrelerin kullanım için milisaniye cinsinden geçici test sonuçları gösterilmektedir.
 
-| İşlemler | Şirket içinden Azure 'a (MS) | Azure aynı veri merkezi (MS) |
+| Operations | Şirket içinden Azure 'a (MS) | Azure aynı veri merkezi (MS) |
 | --- | --- | --- |
 | 1 |124 |32 |
 | 10 |131 |25 |
@@ -212,7 +212,7 @@ Tablo değerli parametreler hakkında daha fazla bilgi için bkz. [tablo değerl
 
 ### <a name="sql-bulk-copy"></a>SQL toplu kopyalama
 
-SQL toplu kopyalama, bir hedef veritabanına büyük miktarlarda veri eklemenin başka bir yoludur. .NET uygulamaları toplu ekleme işlemleri gerçekleştirmek için **SqlBulkCopy** sınıfını kullanabilir. **SqlBulkCopy** işlevi, komut satırı aracına, **Bcp.exe** veya Transact-SQL bildirimine benzer **bulk INSERT** . Aşağıdaki kod örneği, kaynak **DataTable** , tablosundaki satırların, myTable hedef tablosuna nasıl toplu şekilde kopyalanacağını gösterir.
+SQL toplu kopyalama, bir hedef veritabanına büyük miktarlarda veri eklemenin başka bir yoludur. .NET uygulamaları toplu ekleme işlemleri gerçekleştirmek için **SqlBulkCopy** sınıfını kullanabilir. **SqlBulkCopy** işlevi, komut satırı aracına, **Bcp.exe** veya Transact-SQL bildirimine benzer **bulk INSERT**. Aşağıdaki kod örneği, kaynak **DataTable**, tablosundaki satırların, myTable hedef tablosuna nasıl toplu şekilde kopyalanacağını gösterir.
 
 ```csharp
 using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
@@ -233,7 +233,7 @@ Toplu kopyalamanın tablo değerli parametreler üzerinden tercih edildiği baz�
 
 Aşağıdaki geçici test sonuçları, her saniye içinde **SqlBulkCopy** ile toplu işleme performansını gösterir.
 
-| İşlemler | Şirket içinden Azure 'a (MS) | Azure aynı veri merkezi (MS) |
+| Operations | Şirket içinden Azure 'a (MS) | Azure aynı veri merkezi (MS) |
 | --- | --- | --- |
 | 1 |433 |57 |
 | 10 |441 |32 |
@@ -276,7 +276,7 @@ Bu örnek, temel kavramı göstermek için tasarlanmıştır. Daha gerçekçi bi
 
 Aşağıdaki geçici test sonuçları, bu tür INSERT deyimlerinin performansını milisaniye cinsinden gösterir.
 
-| İşlemler | Tablo değerli parametreler (MS) | Tek deyimli Insert (MS) |
+| Operations | Tablo değerli parametreler (MS) | Tek deyimli Insert (MS) |
 | --- | --- | --- |
 | 1 |32 |20 |
 | 10 |30 |25 |
@@ -321,7 +321,7 @@ Bu zorunluluğunu getirir nedeniyle, toplu işlem yaptığınız işlemlerin tü
 
 Testlerimizde, genellikle büyük toplu işleri küçük parçalara ayırma avantajı yoktur. Aslında, bu alt bölüm genellikle tek bir büyük toplu işlem gönderilmeden daha yavaş performansa neden olur. Örneğin, 1000 satır eklemek istediğiniz bir senaryoyu düşünün. Aşağıdaki tabloda, daha küçük toplu işlemlere ayrıldığınızda 1000 satır eklemek için tablo değerli parametrelerin ne kadar süreceği gösterilmektedir.
 
-| Toplu iş boyutu | Tekrarları | Tablo değerli parametreler (MS) |
+| Toplu iş boyutu | Yinelemeler | Tablo değerli parametreler (MS) |
 | --- | --- | --- |
 | 1000 |1 |347 |
 | 500 |2 |355 |

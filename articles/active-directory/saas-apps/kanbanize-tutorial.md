@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/09/2019
 ms.author: jeedes
 ms.openlocfilehash: 05ce0d3d3d5c66514edc07446aaf0a879657c10c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92459246"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kanbanize"></a>Öğretici: Kanbanize ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, Kanbanize Azure Active Directory (Azure AD) ile tümleştirmeyi
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -55,7 +55,7 @@ Kanbanize tümleştirmesini Azure AD ile yapılandırmak için, galerinizden yö
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-kanbanize"></a>Kanbanize için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Kanbanize Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Kanbanize içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Kanbanize Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Kanbanize içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Kanbanize ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -93,7 +93,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için [Kanbanize istemci destek ekibine](mailto:support@ms.kanbanize.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-1. Kanbanize uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde, NameIdentifier 'ın **User. UserPrincipalName**ile eşlendiği varsayılan özniteliklerin listesi gösterilmektedir. Kanbanize uygulaması NameIdentifier 'ın **User. Mail**ile eşlenmesini bekliyor, bu nedenle, Düzenle simgesine tıklayarak ve öznitelik eşlemesini değiştirerek öznitelik eşlemesini düzenlemeniz gerekir.
+1. Kanbanize uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde, NameIdentifier 'ın **User. UserPrincipalName** ile eşlendiği varsayılan özniteliklerin listesi gösterilmektedir. Kanbanize uygulaması NameIdentifier 'ın **User. Mail** ile eşlenmesini bekliyor, bu nedenle, Düzenle simgesine tıklayarak ve öznitelik eşlemesini değiştirerek öznitelik eşlemesini düzenlemeniz gerekir.
 
     ![image](common/edit-attribute.png)
 
@@ -137,7 +137,7 @@ Bu bölümde, Kanbanize erişimi vererek Azure çoklu oturum açma özelliğini 
 
 ## <a name="configure-kanbanize-sso"></a>Kanbanize SSO 'yu yapılandırma
 
-1. Kanbanize içindeki yapılandırmayı otomatikleştirmek için, **uzantıyı yüklemek**üzere **uygulamalarımı güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
+1. Kanbanize içindeki yapılandırmayı otomatikleştirmek için, **uzantıyı yüklemek** üzere **uygulamalarımı güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 
     ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
 
@@ -151,7 +151,7 @@ Bu bölümde, Kanbanize erişimi vererek Azure çoklu oturum açma özelliğini 
 
     ![Kanbanize ayarları](./media/kanbanize-tutorial/tutorial-kanbanize-set.png)
 
-5. Menünün sol tarafındaki yönetim paneli sayfasında, **tümleştirmeler** ' e tıklayın ve **Çoklu oturum açmayı**etkinleştirin.
+5. Menünün sol tarafındaki yönetim paneli sayfasında, **tümleştirmeler** ' e tıklayın ve **Çoklu oturum açmayı** etkinleştirin.
 
     ![Ekran görüntüsü, tümleştirme seçiliyken Yönetim panelini gösterir.](./media/kanbanize-tutorial/tutorial-kanbanize-admin.png)
 
@@ -159,15 +159,15 @@ Bu bölümde, Kanbanize erişimi vererek Azure çoklu oturum açma özelliğini 
 
     ![Kanbanize yapılandırması](./media/kanbanize-tutorial/tutorial-kanbanize-config.png)
 
-7. **Yapılandırma**altındaki **tek Sign-On tümleştirme** sayfasında, aşağıdaki adımları uygulayın:
+7. **Yapılandırma** altındaki **tek Sign-On tümleştirme** sayfasında, aşağıdaki adımları uygulayın:
 
     ![Ekran görüntüsü, bu adımdaki değerleri girebileceğiniz tek Sign-On tümleştirme sayfasını gösterir.](./media/kanbanize-tutorial/tutorial-kanbanize-save.png)
 
-    a. **IDP VARLıK kimliği** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının**değerini yapıştırın.
+    a. **IDP VARLıK kimliği** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının** değerini yapıştırın.
 
-    b. **IDP oturum açma uç noktası** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
+    b. **IDP oturum açma uç noktası** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
-    c. **IDP oturum kapatma uç noktası** metin kutusunda, Azure Portal kopyaladığınız **Logout URL 'si**değerini yapıştırın.
+    c. **IDP oturum kapatma uç noktası** metin kutusunda, Azure Portal kopyaladığınız **Logout URL 'si** değerini yapıştırın.
 
     d. **E-posta metin kutusu Için öznitelik adı** alanına bu değeri girin`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
 
@@ -180,7 +180,7 @@ Bu bölümde, Kanbanize erişimi vererek Azure çoklu oturum açma özelliğini 
 
     örneğin: Not defteri 'nde, Azure portal indirdiğiniz temel 64 kodlu sertifikayı açın, içeriğini kopyalayın (başlangıç ve bitiş işaretçileri olmadan) ve ardından onu **IDP X. 509.440 sertifika** kutusuna yapıştırın.
 
-    h. **SSO ve Kanbanize ile oturum açmayı etkinleştir ' i**işaretleyin.
+    h. **SSO ve Kanbanize ile oturum açmayı etkinleştir ' i** işaretleyin.
 
     i. **Ayarları Kaydet**' e tıklayın.
 

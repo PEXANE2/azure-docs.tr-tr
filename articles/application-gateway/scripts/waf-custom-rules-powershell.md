@@ -8,17 +8,17 @@ ms.date: 6/7/2019
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 312f052671036d8153dd19fcf4e559e825fd8464
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397000"
 ---
 # <a name="create-web-application-firewall-waf-custom-rules-with-azure-powershell"></a>Azure PowerShell Web uygulaması güvenlik duvarı (WAF) özel kuralları oluşturma
 
 Bu betik, özel kurallar kullanan bir Application Gateway Web uygulaması güvenlik duvarı oluşturur. İstek üst bilgisi User-Agent *evbot* içeriyorsa, özel kural trafiği engeller.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="azure-powershell-module"></a>Azure PowerShell modülü
 
