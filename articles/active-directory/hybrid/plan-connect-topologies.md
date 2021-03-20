@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8d3f8e9441064a5d2d1372e3f177534b8dfefb93
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92359841"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect için topolojiler
@@ -130,7 +130,7 @@ Daha büyük bir kurumunuzda [Microsoft 365 PreferredDataLocation](how-to-connec
 ## <a name="staging-server"></a>Hazırlama sunucusu
 ![Bir topolojide hazırlama sunucusu](./media/plan-connect-topologies/multiforeststaging.png)
 
-Azure AD Connect, *hazırlama modunda*ikinci bir sunucu yüklemeyi destekler. Bu moddaki bir sunucu, tüm bağlı dizinlerden verileri okur, ancak bağlı dizinlere herhangi bir şey yazmaz. Normal eşitleme döngüsünü kullanır ve bu nedenle kimlik verilerinin güncelleştirilmiş bir kopyasına sahiptir.
+Azure AD Connect, *hazırlama modunda* ikinci bir sunucu yüklemeyi destekler. Bu moddaki bir sunucu, tüm bağlı dizinlerden verileri okur, ancak bağlı dizinlere herhangi bir şey yazmaz. Normal eşitleme döngüsünü kullanır ve bu nedenle kimlik verilerinin güncelleştirilmiş bir kopyasına sahiptir.
 
 Birincil sunucunun başarısız olduğu bir olağanüstü durumda, hazırlama sunucusuna yük devretmek için yük devretme yapabilirsiniz. Bunu Azure AD Connect sihirbazında yapabilirsiniz. Birincil sunucuyla paylaşılan bir altyapı olmadığından, bu ikinci sunucu farklı bir veri merkezinde bulunabilir. Birincil sunucuda yapılan tüm yapılandırma değişikkisini ikinci sunucuya el ile kopyalamanız gerekir.
 

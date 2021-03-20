@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: e235bf90568a1382a5ecee3ff4d2283aaa32f10b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1eb4194354a07d5b580f07cfe5962785a4e100bd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93083225"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578031"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Hibrit Azure Active Directory'ye katılmış cihazlarla ilgili sorunları giderme
 
@@ -27,7 +27,7 @@ Diğer Windows istemcileri için bkz. [karma Azure Active Directory birleştiril
 
 Bu makalede, [karma Azure Active Directory katılmış cihazları](hybrid-azuread-join-plan.md) aşağıdaki senaryoları destekleyecek şekilde yapılandırdığınız varsayılır:
 
-- Cihaz tabanlı koşullu erişim
+- Cihaz tabanlı Koşullu Erişim
 - [Ayarların kurumsal dolaşımı](./enterprise-state-roaming-overview.md)
 - [İş İçin Windows Hello](/windows/security/identity-protection/hello-for-business/hello-identity-verification)
 
@@ -137,7 +137,7 @@ Ekleme hatalarıyla ilgili aşamayı ve hata kodunu bulmak için Olay Görüntü
 
 :::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/1.png" alt-text="Olay Görüntüleyicisi 'nin ekran görüntüsü. I D 304 içeren bir olay seçilidir ve bilgileri, hata kodu ve aşama vurgulanmış olarak görüntülenir." border="false":::
 
-:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/2.png" alt-text="Olay Görüntüleyicisi 'nin ekran görüntüsü. I D 304 içeren bir olay seçilidir ve bilgileri, hata kodu ve aşama vurgulanmış olarak görüntülenir." border="false":::
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/2.png" alt-text="Olay Görüntüleyicisi 'nin ekran görüntüsü. I D 305 ile bir olay görünür ve bu, bilgi, hata kodu vurgulanmış şekilde görüntülenir." border="false":::
 
 ### <a name="step-4-check-for-possible-causes-and-resolutions-from-the-lists-below"></a>4. Adım: Aşağıdaki listelerden olası nedenleri ve çözümleri denetleyin
 
@@ -210,7 +210,7 @@ Ekleme hatalarıyla ilgili aşamayı ve hata kodu hatasını bulmak için Olay G
 1. Olay Görüntüleyicisi 'nde **Kullanıcı cihaz kaydı** olay günlüklerini açın. **Uygulamalar ve hizmetler günlüğü**  >  **Microsoft**  >  **Windows**  >  **Kullanıcı cihaz kaydı** altında bulunur
 2. Aşağıdaki EventIDs 201 'e sahip olayları arayın
 
-:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/5.png" alt-text="Olay Görüntüleyicisi 'nin ekran görüntüsü. I D 304 içeren bir olay seçilidir ve bilgileri, hata kodu ve aşama vurgulanmış olarak görüntülenir." border="false":::
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/5.png" alt-text="Olay Görüntüleyicisi 'nin ekran görüntüsü. I D 201 içeren bir olay seçilidir ve bu bilgi, hata kodu vurgulanmış şekilde görüntülenir." border="false":::
 
 ###### <a name="network-errors"></a>Ağ hataları
 
@@ -255,7 +255,7 @@ Hata kodu, alt hata kodu, sunucu hata kodu ve sunucu hata iletisini bulmak için
 1. Olay Görüntüleyicisi 'nde **Kullanıcı cihaz kaydı** olay günlüklerini açın. **Uygulamalar ve hizmetler günlüğü**  >  **Microsoft**  >  **Windows**  >  **Kullanıcı cihaz kaydı** altında bulunur
 2. Aşağıdaki EventID 305 'e sahip olayları arayın
 
-:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/3.png" alt-text="Olay Görüntüleyicisi 'nin ekran görüntüsü. I D 304 içeren bir olay seçilidir ve bilgileri, hata kodu ve aşama vurgulanmış olarak görüntülenir." border="false":::
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/3.png" alt-text="Olay Görüntüleyicisi 'nin ekran görüntüsü. I D 305 içeren bir olay görünür. Bilgileri, D A L hata kodları ve durumu vurgulanmış şekilde görüntülenir." border="false":::
 
 ##### <a name="configuration-errors"></a>Yapılandırma hataları
 
@@ -330,7 +330,7 @@ Ekleme hatalarıyla ilgili aşamayı ve hata kodu hatasını bulmak için Olay G
 1. Olay Görüntüleyicisi 'nde **Kullanıcı cihaz kaydı** olay günlüklerini açın. **Uygulamalar ve hizmetler günlüğü**  >  **Microsoft**  >  **Windows**  >  **Kullanıcı cihaz kaydı** altında bulunur
 2. Aşağıdaki EventIDs 204 'e sahip olayları arayın
 
-:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/4.png" alt-text="Olay Görüntüleyicisi 'nin ekran görüntüsü. I D 304 içeren bir olay seçilidir ve bilgileri, hata kodu ve aşama vurgulanmış olarak görüntülenir." border="false":::
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/4.png" alt-text="Olay Görüntüleyicisi 'nin ekran görüntüsü. I D 204 ile bir olayla ilgili bilgiler, hata kodu, H t T P durumu ve ileti vurgulanmış olarak görüntülenir." border="false":::
 
 ##### <a name="http-errors-returned-from-drs-server"></a>DRS sunucusundan gelen HTTP hataları döndürüldü
 
@@ -387,14 +387,14 @@ Ekleme hatalarıyla ilgili aşamayı ve hata kodu hatasını bulmak için Olay G
 
 ### <a name="step-5-collect-logs-and-contact-microsoft-support"></a>5. Adım: günlükleri ve iletişim Microsoft Desteği toplayın
 
-Dosya Auth.zip şuradan indirin [https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH](https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH)
+Dosya Auth.zip şuradan indirin [https://github.com/CSS-Identity/DRS/tree/main/Auth](https://github.com/CSS-Identity/DRS/tree/main/Auth)
 
-1. Dosyaları sıkıştırmasını açın ve eklenen dosyaları **start-auth.txt** yeniden adlandırın ve **Start-Auth. cmd** ve **stop-auth. cmd** ' ye **stop-auth.txt** .
-1. Yükseltilmiş bir komut isteminden **Start-Auth. cmd** ' yi çalıştırın.
+1. Dosyaları sıkıştırmasını açın ve eklenen dosyaları **start-auth.txt** yeniden adlandırın ve **Start-Auth. cmd** ve **stop-auth. cmd**' ye **stop-auth.txt** .
+1. Yükseltilmiş bir komut isteminden **Start-Auth. cmd**' yi çalıştırın.
 1. Sorun kullanıcısı ile başka bir oturuma geçiş yapmak için anahtar hesabını kullanın.
 1. Sorunu yeniden üretin.
 1. İzlemeyi çalıştıran yönetici oturumuna geri dönmek için anahtar hesabını kullanın.
-1. Yükseltilmiş bir komut isteminden **stop-Auth. cmd** ' yi çalıştırın.
+1. Yükseltilmiş bir komut isteminden **stop-Auth. cmd**' yi çalıştırın.
 1. ZIP ve klasör **kimlik doğrulama günlüklerini** komut dosyalarının yürütüldüğü klasörden gönderin.
 
 ## <a name="troubleshoot-post-join-issues"></a>Ekleme sonrası sorunlar hakkında sorun giderme

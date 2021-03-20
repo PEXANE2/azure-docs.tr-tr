@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
 ms.openlocfilehash: a64d5cebfd8e70e2f54a66193a7041c47887c54a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90898912"
 ---
 # <a name="apply-image-transformation"></a>Görüntü Dönüşümü Uygulama 
@@ -34,11 +34,11 @@ Dönüştürmeyi belirtmek için bir [Init Image dönüşüm](init-image-transfo
 
 3. Dönüştürmek istediğiniz görüntü dizinini bağlayın.
 
-4. **Mod**için, giriş dönüşümünü hangi amaçla kullanacağınızı belirtin: ' eğitim için ' veya ' çıkarımı '. 
+4. **Mod** için, giriş dönüşümünü hangi amaçla kullanacağınızı belirtin: ' eğitim için ' veya ' çıkarımı '. 
 
    **Eğitim**' i seçerseniz, Init Image dönüşümünde belirttiğiniz tüm dönüştürme uygulanır.
 
-   **Çıkarımı**seçerseniz, yeni örnek oluşturma gibi dönüştürme, uygulanmadan önce dışlanır. Bunun nedeni, ' rastgele Yatay Çevir ' gibi yeni örnekler oluşturmak için kullanılan dönüşüm işlemlerinin, eğitimin içinde kaldırılması gereken ve çıkarım örnekleri doğru tahmin ve değerlendirme için düzeltilmesi gerektiğinden, bu, çıkarım 'de kaldırılması gereken bir veri genişletmesi için kullanılır.
+   **Çıkarımı** seçerseniz, yeni örnek oluşturma gibi dönüştürme, uygulanmadan önce dışlanır. Bunun nedeni, ' rastgele Yatay Çevir ' gibi yeni örnekler oluşturmak için kullanılan dönüşüm işlemlerinin, eğitimin içinde kaldırılması gereken ve çıkarım örnekleri doğru tahmin ve değerlendirme için düzeltilmesi gerektiğinden, bu, çıkarım 'de kaldırılması gereken bir veri genişletmesi için kullanılır.
 
    > [!NOTE]
    > **Çıkarımı** modunda tutulacak dönüştürmeler şunlardır: rastgele yeniden boyutlandırılmış kırpma, rastgele kırpma, rastgele yatay çevirme, rastgele Dikey çevirme, rastgele döndürme, rastgele bakış, rastgele gri tonlama, rastgele perspektif, rastgele silme.
@@ -47,20 +47,20 @@ Dönüştürmeyi belirtmek için bir [Init Image dönüşüm](init-image-transfo
 
 ### <a name="module-parameters"></a>Modül parametreleri
 
-| Adı | Aralık | Tür | Varsayılan                   | Açıklama                              |
+| Name | Aralık | Tür | Varsayılan                   | Description                              |
 | ---- | ----- | ---- | ------------------------- | ---------------------------------------- |
 | Mod | Herhangi biri   | Mod | (Kullanıcının belirtmesini gerektir) | Hangi amaçla giriş dönüşümünü kullanıyorsunuz? ' Rastgele ' dönüştürme işlemlerini çıkarımı hariç tutmanız gerekir, ancak bu işlemleri eğitimine karşı tutun |
 
 ### <a name="expected-inputs"></a>Beklenen girişler  
 
-| Ad                       | Tür                    | Açıklama                       |
+| Ad                       | Tür                    | Description                       |
 | -------------------------- | ----------------------- | --------------------------------- |
 | Giriş resmi dönüşümü | Dönüştürme Tiondirectory | Giriş resmi dönüşümü        |
 | Giriş resmi dizini      | ImageDirectory          | Dönüştürülecek görüntü dizini |
 
 ### <a name="outputs"></a>Çıkışlar  
 
-| Ad                   | Tür           | Açıklama            |
+| Ad                   | Tür           | Description            |
 | ---------------------- | -------------- | ---------------------- |
 | Çıkış resmi dizini | ImageDirectory | Çıkış resmi dizini |
 

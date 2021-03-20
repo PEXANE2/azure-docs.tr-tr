@@ -4,10 +4,10 @@ description: Bir sanal makine sağlamadıktan sonra uygulamaları dağıtmak ve 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 85acfcc3811e671e58fadab08a23951778e1323d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88270691"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>DevTest Labs sanal makineniz için özel yapılar oluşturma
@@ -44,15 +44,15 @@ Aşağıdaki örnek, bir tanım dosyasının temel yapısını oluşturan bölü
   }
 ```
 
-| Öğe adı | Gerekli mi? | Açıklama |
+| Öğe adı | Gerekli mi? | Description |
 | --- | --- | --- |
-| $schema |Hayır |JSON Şema dosyasının konumu. JSON şema dosyası, tanım dosyasının geçerliliğini test etmenize yardımcı olabilir. |
-| başlık |Evet |Laboratuvarda görünen yapıt adı. |
-| açıklama |Evet |Laboratuvarda görünen yapının açıklaması. |
-| ıconuri |Hayır |Laboratuvarda görünen simgenin URI 'SI. |
-| targetOsType |Evet |Yapıtın yüklendiği VM 'nin işletim sistemi. Desteklenen seçenekler Windows ve Linux. |
-| parameters |Hayır |Bir makinede yapıt install komutu çalıştırıldığında belirtilen değerler. Bu, yapıtı özelleştirmenize yardımcı olur. |
-| Eylemine |Evet |Bir VM üzerinde yürütülen yapıt install komutu. |
+| $schema |No |JSON Şema dosyasının konumu. JSON şema dosyası, tanım dosyasının geçerliliğini test etmenize yardımcı olabilir. |
+| başlık |Yes |Laboratuvarda görünen yapıt adı. |
+| açıklama |Yes |Laboratuvarda görünen yapının açıklaması. |
+| ıconuri |No |Laboratuvarda görünen simgenin URI 'SI. |
+| targetOsType |Yes |Yapıtın yüklendiği VM 'nin işletim sistemi. Desteklenen seçenekler Windows ve Linux. |
+| parameters |No |Bir makinede yapıt install komutu çalıştırıldığında belirtilen değerler. Bu, yapıtı özelleştirmenize yardımcı olur. |
+| Eylemine |Yes |Bir VM üzerinde yürütülen yapıt install komutu. |
 
 ### <a name="artifact-parameters"></a>Yapıt parametreleri
 Tanım dosyasının parametreler bölümünde, bir kullanıcının bir yapıtı yüklediklerinde hangi değerlere giriş yapabilir olduğunu belirtin. Yapıt install komutunda bu değerlere başvurabilirsiniz.
@@ -69,11 +69,11 @@ Parametreleri tanımlamak için aşağıdaki yapıyı kullanın:
   }
 ```
 
-| Öğe adı | Gerekli mi? | Açıklama |
+| Öğe adı | Gerekli mi? | Description |
 | --- | --- | --- |
-| tür |Evet |Parametre değerinin türü. İzin verilen türler için aşağıdaki listeye bakın. |
-| displayName |Evet |Laboratuvardaki bir kullanıcıya görüntülenen parametrenin adı. |
-| açıklama |Evet |Laboratuvarda görüntülenen parametrenin açıklaması. |
+| tür |Yes |Parametre değerinin türü. İzin verilen türler için aşağıdaki listeye bakın. |
+| displayName |Yes |Laboratuvardaki bir kullanıcıya görüntülenen parametrenin adı. |
+| açıklama |Yes |Laboratuvarda görüntülenen parametrenin açıklaması. |
 
 İzin verilen türler şunlardır:
 

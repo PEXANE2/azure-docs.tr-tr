@@ -4,10 +4,10 @@ description: Danışman izinleri ve bunların abonelikleri yapılandırma veya �
 ms.topic: article
 ms.date: 04/03/2019
 ms.openlocfilehash: 402a21c47c4cba8f747d5d4601f9c95034c99262
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91712928"
 ---
 # <a name="permissions-in-azure-advisor"></a>Azure Danışmanı izinleri
@@ -18,7 +18,7 @@ Azure Danışmanı, Azure kaynaklarınızın ve aboneliklerinizin kullanımını
 
 Aşağıdaki tabloda, Advisor içindeki roller ve erişim tanımları tanımlanmaktadır:
 
-| **Role** | **Önerileri görüntüleme** | **Kuralları Düzenle** | **Abonelik yapılandırmasını düzenle** | **Kaynak grubu yapılandırmasını düzenle**| **Önerileri kapat ve ertele**|
+| **Role** | **Önerileri görüntüleme** | **Kuralları düzenleme** | **Abonelik yapılandırmasını düzenle** | **Kaynak grubu yapılandırmasını düzenle**| **Önerileri kapat ve ertele**|
 |---|:---:|:---:|:---:|:---:|:---:|
 |Abonelik sahibi|**Sayı**|**Sayı**|**Sayı**|**Sayı**|**Sayı**|
 |Abonelik Katılımcısı|**Sayı**|**Sayı**|**Sayı**|**Sayı**|**Sayı**|

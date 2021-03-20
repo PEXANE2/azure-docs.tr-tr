@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2a0089d246169ad4215075662500794e7143940e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90601818"
 ---
 # <a name="conditional-access-session"></a>Koşullu erişim: oturum
@@ -62,7 +62,7 @@ Oturum açma sıklığı ayarı, standartlara göre OAUTH2 veya OıDC protokolle
 - SharePoint ve OneDrive
 - Takımlar Web istemcisi
 - Dynamics CRM Online
-- Azure portal
+- Azure portalı
 
 Daha fazla bilgi için, [koşullu erişimle kimlik doğrulama oturumu yönetimini yapılandırma](howto-conditional-access-session-lifetime.md#user-sign-in-frequency)makalesine bakın.
 

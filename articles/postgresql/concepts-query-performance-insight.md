@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.openlocfilehash: babf2c8208732a194184549dfa5ed3228b376d0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91710269"
 ---
 # <a name="query-performance-insight"></a>Sorgu Performansı İçgörüleri 
@@ -22,7 +22,7 @@ Sorgu Performansı İçgörüleri, en uzun çalışan sorguların ne olduğunu, 
 ## <a name="permissions"></a>İzinler
 Sorgu Performansı İçgörüleri’ndeki metni görünüm için **Sahip** veya **Katkıda bulunan** izinleri gereklidir. **Okuyucu**, grafikleri ve tabloları görüntüleyebilir ancak metni sorgulayamaz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Sorgu Performansı İçgörüleri çalışması için, verilerin [sorgu deposunda](concepts-query-store.md)bulunması gerekir.
 
 ## <a name="viewing-performance-insights"></a>Performans öngörülerini görüntüleme
@@ -40,7 +40,7 @@ Grafiğin altındaki tablo, bu zaman penceresinde uzun süreli sorgular hakkınd
 
 Sunucudaki beklemelerle ilgili görselleştirmeleri görüntülemek için **Bekleme İstatistikleri** sekmesini seçin.
 
-:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png" alt-text="Uzun süre çalışan sorguları Sorgu Performansı İçgörüleri":::
+:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png" alt-text="Sorgu Performansı İçgörüleri bekleyen istatistikler":::
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 * Sorgu Performansı İçgörüleri, [okuma çoğaltmaları](concepts-read-replicas.md)için kullanılamaz.

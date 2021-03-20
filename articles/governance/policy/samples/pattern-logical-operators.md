@@ -4,15 +4,15 @@ description: Bu Azure Ilke modelinde, mantıksal işleçlerin bir ilke tanımın
 ms.date: 08/17/2020
 ms.topic: sample
 ms.openlocfilehash: 3f644cdbfc45b06d1ad5db8e7727c0fa69742f00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88545599"
 ---
 # <a name="azure-policy-pattern-logical-operators"></a>Azure Ilke stili: mantıksal işleçler
 
-Bir ilke tanımı, birkaç koşullu deyim içerebilir. Her deyimin doğru olması veya yalnızca bazılarının doğru olması gerekir. Bu ihtiyaçları desteklemek için, dilin [mantıksal işleçleri](../concepts/definition-structure.md#logical-operators) **değildir**, **allof**ve **anyfor**. Bunlar isteğe bağlıdır ve karmaşık senaryolar oluşturmak için iç içe olabilir.
+Bir ilke tanımı, birkaç koşullu deyim içerebilir. Her deyimin doğru olması veya yalnızca bazılarının doğru olması gerekir. Bu ihtiyaçları desteklemek için, dilin [mantıksal işleçleri](../concepts/definition-structure.md#logical-operators) **değildir**, **allof** ve **anyfor**. Bunlar isteğe bağlıdır ve karmaşık senaryolar oluşturmak için iç içe olabilir.
 
 ## <a name="sample-1-one-logical-operator"></a>Örnek 1: bir mantıksal işleç
 
@@ -37,7 +37,7 @@ Bu ilke tanımı, bir adlandırma deseninin kaynaklarını değerlendirir. Bir k
 
 :::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-2.json" range="7-21" highlight="2,3,9":::
 
-Bu **Policyrule. If** bloğu tek bir **allof**de içeriyorsa, ancak her koşul mantıksal **olmayan** işleçle sarmalanır. **Not** Logical işlecinin içindeki koşul ilk olarak değerlendirilir ve sonra yan tümcesinin doğru mi yoksa yanlış mi olduğunu belirlememe sonucunu **vermez** . Her iki mantıksal işleç de true olarak **değerlendirilmiyorsa,** ilke efekti tetikler.
+Bu **Policyrule. If** bloğu tek bir **allof** de içeriyorsa, ancak her koşul mantıksal **olmayan** işleçle sarmalanır. **Not** Logical işlecinin içindeki koşul ilk olarak değerlendirilir ve sonra yan tümcesinin doğru mi yoksa yanlış mi olduğunu belirlememe sonucunu **vermez** . Her iki mantıksal işleç de true olarak **değerlendirilmiyorsa,** ilke efekti tetikler.
 
 ## <a name="sample-3-combining-logical-operators"></a>Örnek 3: mantıksal işleçleri birleştirme
 
@@ -49,7 +49,7 @@ Bu ilke tanımı, bir izlemenin etkin olup olmadığını veya izlemenin başar�
 
 :::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-3.json" range="6-28" highlight="3,8":::
 
-Bu **Policyrule. If** bloğu hem **allof** hem de **anyOf** mantıksal işleçleri içeriyorsa. Dahil edilen bir koşul doğru olduğu sürece, mantıksal işlecin **anydeğeri** true olarak değerlendirilir. _Türü_ , **allof**öğesinin çekirdeğünde olduğundan her zaman true olarak değerlendirilmelidir. _Türü_ ve **herhangi** bir koşuldaki koşullardan biri doğru ise, ilke efekti tetiklenir.
+Bu **Policyrule. If** bloğu hem **allof** hem de **anyOf** mantıksal işleçleri içeriyorsa. Dahil edilen bir koşul doğru olduğu sürece, mantıksal işlecin **anydeğeri** true olarak değerlendirilir. _Türü_ , **allof** öğesinin çekirdeğünde olduğundan her zaman true olarak değerlendirilmelidir. _Türü_ ve **herhangi** bir koşuldaki koşullardan biri doğru ise, ilke efekti tetiklenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: e9a5427f7c3a057f291067ac83d3d9032d7e693d
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: b71e5b1a8ba5f3ee8f883c71a7221e01d4af4fb6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102559367"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104597717"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>VM'leri çalışma saatleri dışında başlat/durdur genel bakış
 
@@ -91,7 +91,8 @@ Yeni bir Otomasyon hesabı ve Log Analytics çalışma alanı kullanarak VM'leri
 | Microsoft. Authorization/Permissions/Read |Abonelik|
 | Microsoft. Authorization/Roleatamalar/okuma | Abonelik |
 | Microsoft.Authorization/roleAssignments/write | Abonelik |
-| Microsoft. Authorization/Roleatamaları/silme | Abonelik || Microsoft. Automation/automationAccounts/Connections/Read | Kaynak Grubu |
+| Microsoft. Authorization/Roleatamaları/silme | Abonelik |
+| Microsoft. Automation/automationAccounts/Connections/Read | Kaynak Grubu |
 | Microsoft. Automation/automationAccounts/sertifikalar/okuma | Kaynak Grubu |
 | Microsoft. Automation/automationAccounts/Write | Kaynak Grubu |
 | Microsoft. Operationalınsights/çalışma alanları/yazma | Kaynak Grubu |
@@ -167,7 +168,7 @@ Tüm zamanlamaları etkinleştirmeyin, çünkü bu durum çakışan zamanlama ey
 |Scheduled_StopVM | Kullanıcı tanımlı, günlük | **ScheduledStopStart_Parent** runbook 'u `Stop` her gün belirtilen zamanda bir parametre ile çalıştırır. , Değişken varlıklar tarafından tanımlanan kuralları karşılayan tüm VM 'Leri otomatik olarak sonlandırır. **Zamanlanan-StartVM** ilgili zamanlamasını etkinleştirin.|
 |Scheduled_StartVM | Kullanıcı tanımlı, günlük | **ScheduledStopStart_Parent** runbook 'u, `Start` belirtilen saatte her gün bir parametre değeri ile çalıştırır. , Değişken varlıklar tarafından tanımlanan kuralları karşılayan tüm VM 'Leri otomatik olarak başlatır. İlgili zamanlamayı **Zamanlanmış-StopVM**' i etkinleştirin.|
 |Sequenced-StopVM | 1:00 (UTC), her Cuma | **Sequenced_StopStop_Parent** runbook 'U her Cuma için belirtilen zamanda bir parametre değeri ile çalıştırır `Stop` . Sıralı (artan), uygun değişkenler tarafından tanımlanan bir **SequenceStop** etiketine sahip tüm VM 'leri sonlandırır. Etiket değerleri ve varlık değişkenleri hakkında daha fazla bilgi için bkz. [runbook 'lar](#runbooks). **Sıralı-StartVM** ilgili zamanlamasını etkinleştirin.|
-|Sequenced-StartVM | 1:00 PM (UTC), her Pazartesi | **SequencedStopStart_Parent** runbook 'U her Pazartesi için belirtilen zamanda bir parametre değeri ile çalıştırır `Start` . Sıralı (azalan), uygun değişkenlerle tanımlanan **Sequencestart** etiketiyle tüm VM 'leri başlatır. Etiket değerleri ve değişken varlıklar hakkında daha fazla bilgi için bkz. [runbook 'lar](#runbooks). İlgili zamanlamayı, **sıralı-StopVM**'yi etkinleştirin.
+|Sequenced-StartVM | 1:00 PM (UTC), her Pazartesi | **SequencedStopStart_Parent** runbook 'U her Pazartesi için belirtilen zamanda bir parametre değeri ile çalıştırır `Start` . Sıralı (azalan), uygun değişkenlerle tanımlanan **Sequencestart** etiketiyle tüm VM 'leri başlatır. Etiket değerleri ve değişken varlıklar hakkında daha fazla bilgi için bkz. [runbook 'lar](#runbooks). İlgili zamanlamayı, **sıralı-StopVM**'yi etkinleştirin.|
 
 ## <a name="use-the-feature-with-classic-vms"></a>Klasik VM 'lerle özelliği kullanma
 

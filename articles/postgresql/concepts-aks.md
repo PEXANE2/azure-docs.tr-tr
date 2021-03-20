@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.date: 07/14/2020
 ms.topic: conceptual
 ms.openlocfilehash: 9b7da2fcc1310f03f894e048089658f25be3a149
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91708858"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-postgresql---single-server"></a>Azure Kubernetes hizmetini ve PostgreSQL için Azure veritabanı 'nı bağlama-tek sunucu
@@ -26,7 +26,7 @@ AKS, Kasım 2018 ' den bu desteklenen sanal makine örneklerinde hızlandırılm
 AKS kümenizin hızlandırılmış ağa sahip olup olmadığını doğrulayabilirsiniz:
 1. Azure portal gidin ve AKS kümenizi seçin.
 2. Özellikler sekmesini seçin.
-3. **Altyapı kaynak grubunun**adını kopyalayın.
+3. **Altyapı kaynak grubunun** adını kopyalayın.
 4. Altyapı kaynak grubunu bulmak ve açmak için Portal arama çubuğunu kullanın.
 5. Bu kaynak grubunda bir VM seçin.
 6. VM 'nin **ağ** sekmesine gidin.

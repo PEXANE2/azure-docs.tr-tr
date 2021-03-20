@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: alkohli
 ms.openlocfilehash: f59d1e297ba4d7607d7abd07a78da4784f55d20f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96023236"
 ---
 # <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>Bant genişliği düşük veya orta olduğunda küçük veri kümeleri için veri aktarımı
@@ -49,7 +49,7 @@ Bu senaryoda önerilen seçenekler şunlardır:
 
 Aşağıdaki tabloda, temel özellikler arasındaki farklar özetlenmiştir.
 
-| Özellik | Azure Depolama Gezgini | Azure portal | AzCopy<br>Azure PowerShell<br>Azure CLI | Azure depolama REST API 'Leri veya SDK 'Ları |
+| Özellik | Azure Depolama Gezgini | Azure portalı | AzCopy<br>Azure PowerShell<br>Azure CLI | Azure depolama REST API 'Leri veya SDK 'Ları |
 |---------|------------------------|--------------|-----------------------------------------|---------------------------------|
 | Kullanılabilirlik | İndirme ve yükleme <br>Tek başına aracı | Azure portal web tabanlı araştırma araçları | Komut satırı aracı |.NET, Java, Python, JavaScript, C++, Go, Ruby ve PHP 'de programlanabilir arabirimler |
 | Grafik arabirim | Yes | Yes | Hayır | Hayır |

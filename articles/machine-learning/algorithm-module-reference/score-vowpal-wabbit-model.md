@@ -9,10 +9,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 07/02/2020
 ms.openlocfilehash: 23dfee7b78f2606c54525391e1260af69a9b0779
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90898404"
 ---
 # <a name="score-vowpal-wabbit-model"></a>Vowpal Wabbit Modelini Puanlama
@@ -29,7 +29,7 @@ Bu modül Vowpal Wabbit Framework 'ün en son sürümünü (sürüm 8.8.1) sağl
     > [!NOTE]
     > Yalnızca Vowpal Wabbit 8.8.1 modelleri desteklenir; diğer algoritmalar kullanılarak eğitilen kaydedilmiş modellere bağlanamazsınız.
   
-3.  Test veri kümesini ekleyin ve sağ taraftaki giriş bağlantı noktasına bağlayın. Test veri kümesi, test veri dosyasını içeren bir dizindir, test veri dosyası adını test veri dosyası **adıyla**belirtin. Test veri kümesi tek bir dosya ise, **test veri dosyasının adını** boş bırakın.
+3.  Test veri kümesini ekleyin ve sağ taraftaki giriş bağlantı noktasına bağlayın. Test veri kümesi, test veri dosyasını içeren bir dizindir, test veri dosyası adını test veri dosyası **adıyla** belirtin. Test veri kümesi tek bir dosya ise, **test veri dosyasının adını** boş bırakın.
 
 4. **VW bağımsız değişkenleri** metin kutusunda, Vowpal Wabbit yürütülebilir dosyasına geçerli bir komut satırı bağımsız değişkeni kümesi yazın.  
 
@@ -46,7 +46,7 @@ Bu modül Vowpal Wabbit Framework 'ün en son sürümünü (sürüm 8.8.1) sağl
 
    Genellikle, metin verileri işlenirken Vowpal Wabbit etiketleri gerektirmez ve yalnızca her bir veri satırının puanlarını döndürür.  
 
-8. Ham puanları sonuçlarla birlikte çıkış yapmak istiyorsanız, **Ham puanları içeren fazladan bir sütun ekleyin**seçeneğini belirleyin.  
+8. Ham puanları sonuçlarla birlikte çıkış yapmak istiyorsanız, **Ham puanları içeren fazladan bir sütun ekleyin** seçeneğini belirleyin.  
 
 9. İşlem hattını gönderme.
 

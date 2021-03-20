@@ -1,17 +1,17 @@
 ---
 title: Azure yönetilen uygulamalar için yerleşik ilke tanımları
 description: Azure tarafından yönetilen uygulamalar için Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 03/10/2021
+ms.date: 03/17/2021
 ms.topic: reference
 author: tfitzmac
 ms.author: tomfitz
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 7fd85948cf71f9e18ccf3700bbf8e13170c9f3ce
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 42ded9b7753bfc0797162e3b3a71c667015e1be0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102607819"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587697"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-managed-applications"></a>Azure tarafından yönetilen uygulamalar için Azure Ilkesi yerleşik tanımları
 

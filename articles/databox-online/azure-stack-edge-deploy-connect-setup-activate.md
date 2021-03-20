@@ -10,10 +10,10 @@ ms.date: 03/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
 ms.openlocfilehash: 8a143dadffb3f89ef67dc20a2038bb3c9bf5a0e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91743344"
 ---
 # <a name="tutorial-connect-set-up-and-activate-azure-stack-edge-pro"></a>Öğretici: Azure Stack Edge Pro 'Yu bağlama, ayarlama ve etkinleştirme 
@@ -40,7 +40,7 @@ Azure Stack Edge Pro cihazınızı yapılandırmadan ve ayarlamadan önce şunla
 
 1. Bilgisayarınızda Ethernet bağdaştırıcısını, 192.168.100.5 ve alt ağ 255.255.255.0 statik IP adresiyle Azure Stack Edge Pro cihazına bağlanacak şekilde yapılandırın.
 
-2. Bilgisayarınızı cihazınızda bağlantı noktası 1 ' e bağlayın. Cihazınızda bağlantı noktası 1 ' i tanımlamak için aşağıdaki çizimi kullanın.
+2. Bilgisayarınızı cihazınızdaki PORT 1'e bağlayın. Cihazınızda PORT 1'i belirlemek için aşağıdaki çizimi kullanın.
 
     ![Kabloları takılmış bir cihazın arka yüzü](./media/azure-stack-edge-deploy-install/backplane-cabled.png)
 
@@ -59,13 +59,13 @@ Azure Stack Edge Pro cihazınızı yapılandırmadan ve ayarlamadan önce şunla
     ![Azure Stack Edge Pro cihaz oturum açma sayfası](./media/azure-stack-edge-deploy-connect-setup-activate/image3.png)
 
 6. İstem sırasında cihaz yönetici parolasını değiştirin.  
-    Yeni parola 8 ile 16 arasında karakter içermelidir. Şu karakterlerden üçünü içermelidir: büyük harf, küçük harf, sayısal ve özel karakterler.
+    Yeni parola 8 ile 16 arasında karakter içermelidir. Parola şu karakterlerden üçünü içermelidir: küçük harf, büyük harf, rakam ve özel karakterler.
 
 Artık cihazınızın panosundan hazırsınız.
 
 ## <a name="set-up-and-activate-the-physical-device"></a>Fiziksel cihazı ayarlama ve etkinleştirme
  
-Panonuz fiziksel cihazı Azure Stack Edge hizmeti ile yapılandırmak ve kaydetmek için gereken çeşitli ayarları görüntüler. **Cihaz adı**, **ağ ayarları**, **Web proxy ayarları**ve **zaman ayarları** isteğe bağlıdır. Yalnızca **bulut ayarları**gereklidir.
+Panonuz fiziksel cihazı Azure Stack Edge hizmeti ile yapılandırmak ve kaydetmek için gereken çeşitli ayarları görüntüler. **Cihaz adı**, **ağ ayarları**, **Web proxy ayarları** ve **zaman ayarları** isteğe bağlıdır. Yalnızca **bulut ayarları** gereklidir.
    
 ![Yerel Web Kullanıcı arabirimi "Pano" sayfası](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-1.png)
 
@@ -96,7 +96,7 @@ Panonuz fiziksel cihazı Azure Stack Edge hizmeti ile yapılandırmak ve kaydetm
    
    a. **Web proxy URL 'si** kutusuna URL 'yi şu biçimde girin: `http://host-IP address or FQDN:Port number` . HTTPS URL'leri desteklenmez.
 
-   b. **Kimlik doğrulaması**altında **hiçbiri** veya **NTLM**' yi seçin. İşlem ve Azure Stack Edge Pro cihazınızda IoT Edge modülü kullanıyorsanız, Web proxy kimlik doğrulamasını **none**olarak ayarlamanızı öneririz. **NTLM** desteklenmiyor.
+   b. **Kimlik Doğrulaması**'nın altında **Yok** veya **NTLM**'yi seçin. İşlem ve Azure Stack Edge Pro cihazınızda IoT Edge modülü kullanıyorsanız, Web proxy kimlik doğrulamasını **none** olarak ayarlamanızı öneririz. **NTLM** desteklenmiyor.
 
    c. Kimlik doğrulaması kullanıyorsanız, bir Kullanıcı adı ve parola girin.
 

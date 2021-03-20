@@ -8,10 +8,10 @@ ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
 ms.openlocfilehash: d66f3099ba225fbdd2bfc3d54db56ffd8ed2c43f
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94684041"
 ---
 # <a name="use-intelligent-routing-and-canary-releases-with-istio-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (aks) içinde istio ile akıllı yönlendirme ve kanarya sürümlerini kullanma
@@ -240,7 +240,7 @@ Aşağıdaki örnek çıktıda, sürümler arasında site anahtarları olarak d�
 > * Bir **hedef kural** , trafik ilkelerini ve sürüme özgü ilkeleri tanımlar.
 > * Bir **ilke** , iş yükleri üzerinde hangi kimlik doğrulama yöntemlerinin kabul edilebilir olduğunu tanımlar.
 
-İçindeki `kubectl apply` sanal hizmet tanımını değiştirmek `voting-app` ve diğer bileşenlere yönelik [hedef kuralları][istio-reference-destinationrule] ve [sanal Hizmetleri][istio-reference-virtualservice] eklemek için komutunu kullanın. [Policy][istio-reference-policy] `voting` Karşılıklı TLS ve istemci sertifikaları kullanılarak hizmetler arasındaki tüm iletişim güvenliğini sağlamak için ad alanına bir ilke ekleyeceksiniz.
+İçindeki `kubectl apply` sanal hizmet tanımını değiştirmek `voting-app` ve diğer bileşenlere yönelik [hedef kuralları][istio-reference-destinationrule] ve [sanal Hizmetleri][istio-reference-virtualservice] eklemek için komutunu kullanın. [][istio-reference-policy] `voting` Karşılıklı TLS ve istemci sertifikaları kullanılarak hizmetler arasındaki tüm iletişim güvenliğini sağlamak için ad alanına bir ilke ekleyeceksiniz.
 
 * Ilke, `peers.mtls.mode` `STRICT` ad alanındaki hizmetleriniz arasında karşılıklı TLS 'nin uygulanmasını sağlamak için olarak ayarlanmıştır `voting` .
 * Ayrıca, `trafficPolicy.tls.mode` `ISTIO_MUTUAL` tüm hedef kurallarımızda olarak ' i olarak ayarlandık. İstio, güçlü kimlikler içeren hizmetler sağlar ve karşılıklı olarak yönettiği karşılıklı TLS ve istemci sertifikalarını kullanarak hizmetler arasındaki iletişimin güvenliğini sağlar.

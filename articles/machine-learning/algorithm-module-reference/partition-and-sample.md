@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: a1f0a0dff4eb8a1aad0cd5e142959a636827a541
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90898490"
 ---
 # <a name="partition-and-sample-module"></a>Bölüm ve örnek modül
@@ -55,7 +55,7 @@ Yalnızca ilk *n* satırı almak için bu modu kullanın. Bu seçenek, bir işle
 
 1. Arabirimde **bölüm ve örnek** modülünü ekleyin ve veri kümesini bağlayın.  
 
-1. **Bölüm veya örnek modu**: Bu seçeneği **Head**olarak ayarlayın.
+1. **Bölüm veya örnek modu**: Bu seçeneği **Head** olarak ayarlayın.
 
 1. **Seçilecek satır sayısı**: Döndürülecek satır sayısını girin.
 
@@ -71,7 +71,7 @@ Bu seçenek, basit rastgele örnekleme veya düzensiz rastgele örneklemeyi dest
 
 1. İşlem hattınızı **bölüm ve örnek** modülünü ekleyin ve veri kümesini bağlayın.
 
-1. **Bölüm veya örnek modu**:  **örnekleme**için bu seçeneği ayarlayın.
+1. **Bölüm veya örnek modu**:  **örnekleme** için bu seçeneği ayarlayın.
 
 1. **Örnekleme oranı**: 0 ile 1 arasında bir değer girin. Bu değer, kaynak veri kümesinden çıktı veri kümesine dahil edilecek satırların yüzdesini belirtir.
 
@@ -85,7 +85,7 @@ Bu seçenek, basit rastgele örnekleme veya düzensiz rastgele örneklemeyi dest
 
 1. **Örnekleme için ayrılmış bölme**: veri kümesindeki satırların örnekleme öncesinde bazı anahtar sütunlara göre eşit olarak bölünebilmesi önemliyse bu seçeneği belirleyin.
 
-   **Örnekleme Için Stratification anahtar sütunu**için, veri kümesini bölmek üzere tek bir *konuşmasıyla Strata sütunu* seçin. Veri kümesindeki satırlar şu şekilde bölünür:
+   **Örnekleme Için Stratification anahtar sütunu** için, veri kümesini bölmek üzere tek bir *konuşmasıyla Strata sütunu* seçin. Veri kümesindeki satırlar şu şekilde bölünür:
 
    1. Tüm giriş satırları, belirtilen konuşmasıyla Strata sütunundaki değerler tarafından gruplandırılır (alt).
 
@@ -104,7 +104,7 @@ Veri kümesini verilerin alt kümelerine bölmek istediğinizde bu seçeneği ku
 
 1. İşlem hattınızı **bölüm ve örnek** modülünü ekleyin ve veri kümesini bağlayın.
 
-1. **Bölüm veya örnek mod**Için, **katlara ata**' yı seçin.
+1. **Bölüm veya örnek mod** Için, **katlara ata**' yı seçin.
 
 1. **Bölümlemede değiştirme kullan**: örneklenmiş satırın olası yeniden kullanım için satır havuzuna geri dönmesi istiyorsanız bu seçeneği belirleyin. Sonuç olarak, aynı satır birkaç katlara atanabilir.
 
@@ -126,11 +126,11 @@ Veri kümesini verilerin alt kümelerine bölmek istediğinizde bu seçeneği ku
 
      Tüm bölüm boyutlarının toplamı tam olarak 1 ' i içermelidir.
 
-     *1 ' den az*olan sayı girerseniz, kalan satırları tutmak için ek bir bölüm oluşturulur. Örneğin, **.2** ve **.3**değerlerini girerseniz, tüm satırların yüzde 50 ' unu tutmak üzere üçüncü bir bölüm oluşturulur.
+     *1 ' den az* olan sayı girerseniz, kalan satırları tutmak için ek bir bölüm oluşturulur. Örneğin, **.2** ve **.3** değerlerini girerseniz, tüm satırların yüzde 50 ' unu tutmak üzere üçüncü bir bölüm oluşturulur.
      
-     *1 ' den fazla*ekleyen sayılar girerseniz, işlem hattını çalıştırdığınızda bir hata oluşur.
+     *1 ' den fazla* ekleyen sayılar girerseniz, işlem hattını çalıştırdığınızda bir hata oluşur.
 
-1. Dikey **bölme**: satırların bölünmesi sırasında dikey olmasını istiyorsanız bu seçeneği belirleyin ve ardından _konuşmasıyla Strata sütununu_seçin.
+1. Dikey **bölme**: satırların bölünmesi sırasında dikey olmasını istiyorsanız bu seçeneği belirleyin ve ardından _konuşmasıyla Strata sütununu_ seçin.
 
 1. İşlem hattını gönderme.
 
@@ -142,9 +142,9 @@ Bir veri kümesini birden çok bölüme ayırdığınızda ve şimdi daha fazla 
 
 1. **Bölüm ve örnek** modülünü işlem hattına ekleyin.
 
-1. Modülü önceki **bölüm ve örnek**örneğinin çıkışına bağlayın. Bu örnek, birkaç bölüm oluşturmak için **katlara ata** seçeneğini kullanmış olmalıdır.
+1. Modülü önceki **bölüm ve örnek** örneğinin çıkışına bağlayın. Bu örnek, birkaç bölüm oluşturmak için **katlara ata** seçeneğini kullanmış olmalıdır.
 
-1. **Bölüm veya örnek modu**: **katlama**Seç ' i seçin.
+1. **Bölüm veya örnek modu**: **katlama** Seç ' i seçin.
 
 1. **Hangi katlamayı örnekleneceğini belirtin**: dizinini girerek kullanılacak bir bölüm seçin. Bölüm dizinleri 1 tabanlıdır. Örneğin, veri kümesini üç parçaya ayrılmışsa, bölümler 1, 2 ve 3 ' e sahip olur.
 
@@ -154,7 +154,7 @@ Bir veri kümesini birden çok bölüme ayırdığınızda ve şimdi daha fazla 
 
 1. Birden çok bölümle çalışıyorsanız, her bölümü işlemek için **bölüm ve örnek** modülün daha fazla örneğini eklemeniz gerekir.
 
-   Örneğin, ikinci satırdaki **bölüm ve örnek** modül, **katlara atanacak**şekilde ayarlanır ve üçüncü satırdaki modül **katlama Seç**olarak ayarlanır.   
+   Örneğin, ikinci satırdaki **bölüm ve örnek** modül, **katlara atanacak** şekilde ayarlanır ve üçüncü satırdaki modül **katlama Seç** olarak ayarlanır.   
 
    ![Bölüm ve örnek](./media/module/partition-and-sample.png)
 

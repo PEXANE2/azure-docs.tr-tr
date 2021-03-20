@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: fb3e09cefa7f87fe2eb1e5013854c7965ea9330e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b6d51e05598f60de0e9c8fb85472b7c14bba990e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101698850"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598397"
 ---
 # <a name="step-1---understand-the-benefits-of-migrating-to-media-services-api-v3"></a>Adım 1-Media Services API v3 'e geçiş avantajlarından yararlanın
 
@@ -58,8 +58,8 @@ V3 ile Media Services yönelik önemli iyileştirmeler yapılmıştır.
 |**İçerik koruma** ||
 | [İçerik koruma](content-key-policy-concept.md)   Çoklu anahtar özelliklerini destekler. | Müşteriler artık akış bulleyicileri üzerinde birden fazla içerik şifreleme anahtarı kullanabilir. |
 | **İzleme** | |
-| [Azure EventGrid](reacting-to-media-services-events.md) bildirim desteği | EventGrid bildirimleri daha zengin özelliktir. Daha fazla türde bildirim, kendi uygulamanızda bildirimleri almak için daha geniş SDK desteği ve olay işleyicileri gibi davranan mevcut Azure hizmetleri. |
-| [Azure portal Azure Izleyici desteği ve tümleştirmesi](monitor-events-portal-how-to.md) | Bu, müşterilerin Media Services hesap kota kullanımını, akış uç noktalarının gerçek zamanlı istatistiklerini ve canlı olaylar için alma ve arşivleme istatistiklerini görselleştirmesini sağlar. Müşteriler artık uyarıları ayarlayabiliyor ve gerçek zamanlı ölçüm verilerine göre gerekli eylemleri gerçekleştirebilir. |
+| [Azure EventGrid](monitoring/reacting-to-media-services-events.md) bildirim desteği | EventGrid bildirimleri daha zengin özelliktir. Daha fazla türde bildirim, kendi uygulamanızda bildirimleri almak için daha geniş SDK desteği ve olay işleyicileri gibi davranan mevcut Azure hizmetleri. |
+| [Azure portal Azure Izleyici desteği ve tümleştirmesi](monitoring/monitor-events-portal-how-to.md) | Bu, müşterilerin Media Services hesap kota kullanımını, akış uç noktalarının gerçek zamanlı istatistiklerini ve canlı olaylar için alma ve arşivleme istatistiklerini görselleştirmesini sağlar. Müşteriler artık uyarıları ayarlayabiliyor ve gerçek zamanlı ölçüm verilerine göre gerekli eylemleri gerçekleştirebilir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

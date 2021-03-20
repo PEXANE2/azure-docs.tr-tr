@@ -10,17 +10,17 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: 7926d5dd33df5538713f8de152dbbace2bc29864
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90890288"
 ---
 # <a name="select-columns-in-dataset-module"></a>Veri kümesi modülündeki sütunları seçme
 
 Bu makalede Azure Machine Learning tasarımcısında bir modül açıklanmaktadır.
 
-Aşağı akış işlemlerinde kullanılacak sütunların bir alt kümesini seçmek için bu modülü kullanın. Modül, kaynak veri kümesinden sütunları fiziksel olarak kaldırmaz; Bunun yerine, bir veritabanı *görünümü* veya *projeksiyonu*gibi sütunların bir alt kümesini oluşturur.
+Aşağı akış işlemlerinde kullanılacak sütunların bir alt kümesini seçmek için bu modülü kullanın. Modül, kaynak veri kümesinden sütunları fiziksel olarak kaldırmaz; Bunun yerine, bir veritabanı *görünümü* veya *projeksiyonu* gibi sütunların bir alt kümesini oluşturur.
 
 Bu modül, bir aşağı akış işlemi için kullanılabilir sütunları sınırlandırmanız gerektiğinde veya gereksiz sütunları kaldırarak veri kümesinin boyutunu azaltmak istediğinizde faydalıdır.
 
@@ -44,8 +44,8 @@ Modülde ada göre sütun seçmek için birden çok seçenek vardır:
 
     Sütunlar ' ı seçin ve sağ taraftaki bölmedeki seçili sütunları listeye taşımak için sağ ok düğmesine tıklayın.
 
-    + Sürekli sütun adları aralığını seçmek için **SHIFT + tıklama**tuşlarına basın.
-    + Seçime ayrı sütunlar eklemek için **CTRL + tıklama**tuşlarına basın.
+    + Sürekli sütun adları aralığını seçmek için **SHIFT + tıklama** tuşlarına basın.
+    + Seçime ayrı sütunlar eklemek için **CTRL + tıklama** tuşlarına basın.
 
     Kaydetmek ve kapatmak için onay işareti düğmesine tıklayın.
 

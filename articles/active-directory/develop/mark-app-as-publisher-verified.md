@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
 ms.openlocfilehash: 2b658cdc58777274bb14f9e8069cef2facdb0479
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92363462"
 ---
 # <a name="mark-your-app-as-publisher-verified"></a>Uygulamanızı yayımcısı doğrulandı olarak işaretleme
@@ -56,7 +56,7 @@ Belirli avantajlar, gereksinimler ve sık sorulan sorular hakkında daha fazla a
 
 1. Bir yayımcıyı sayfanın en altına yakın bir **şekilde doğrulamak için MPN kimliği Ekle** ' ye tıklayın. 
 
-1. **MPN kimliğinizi**girin. Bu MPN KIMLIĞI için olmalıdır: 
+1. **MPN kimliğinizi** girin. Bu MPN KIMLIĞI için olmalıdır: 
 
     - Doğrulama işlemini tamamlamış geçerli bir Microsoft İş Ortağı Ağı hesabı.  
 
@@ -66,7 +66,7 @@ Belirli avantajlar, gereksinimler ve sık sorulan sorular hakkında daha fazla a
 
 1. İsteğin işlenmesi için bekleyin, bu işlem birkaç dakika sürebilir. 
 
-1. Doğrulama başarılı olduysa, yayımcı doğrulama penceresi kapanır ve bu da marka dikey penceresine geri döner. Doğrulanmış **yayımcının görünen adının**yanında mavi doğrulanmış bir rozet görürsünüz. 
+1. Doğrulama başarılı olduysa, yayımcı doğrulama penceresi kapanır ve bu da marka dikey penceresine geri döner. Doğrulanmış **yayımcının görünen adının** yanında mavi doğrulanmış bir rozet görürsünüz. 
 
 1. Uygulamanızı onaylaması istenmeden kullananlar, bu işlemi başarılı bir şekilde tamamladıktan hemen sonra, bu işlem, sistem genelinde çoğaltılmasının biraz zaman alabilir. 
 

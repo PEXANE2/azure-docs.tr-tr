@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: sharrai
 ms.openlocfilehash: aeb89a9d18e4550fa1d6162920d60507fd50c208
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92359875"
 ---
 # <a name="monitoring-churn-patterns-on-virtual-machines"></a>Sanal makinelerde dalgalanma desenlerini izleme
@@ -29,13 +29,13 @@ Ayrıca kullanabileceğiniz bazı işletim sistemine özgü araçlar da vardır.
 
 Bir makineniz varsa veya Windows işletim sistemi çalıştıran şirket içi olmanız durumunda, daha fazla kullanılabilir araç daha vardır.
 
-Görev Yöneticisi 'nde disk kullanımını denetlemeye göre, **Kaynak İzleyicisi** ve **performans izleyicisine**her zaman başvurabilirsiniz. Bu araçlar Windows makinelerde zaten mevcuttur.
+Görev Yöneticisi 'nde disk kullanımını denetlemeye göre, **Kaynak İzleyicisi** ve **performans izleyicisine** her zaman başvurabilirsiniz. Bu araçlar Windows makinelerde zaten mevcuttur.
 
 ### <a name="resource-monitor"></a>Kaynak İzleyicisi
 
 **Kaynak İzleyicisi** , donanım ve yazılım kaynaklarının gerçek zamanlı kullanımı hakkındaki bilgileri görüntüler. Bir Windows makinesinde Kaynak İzleyicisi çalıştırmak için aşağıdaki adımları izleyin:
 
-1. Win + R tuşlarına basın ve _Resmon_yazın.
+1. Win + R tuşlarına basın ve _Resmon_ yazın.
 1. Resmon olduktan sonra, Kaynak İzleyicisi, pencere disk sekmesine geç ' i açar. Şu görünümü verir-
 
     ![Kaynak İzleyicisi disk sekmesi](./media/monitoring-high-churn/resmon-disk-tab.png)
@@ -48,7 +48,7 @@ Makinenizde yüksek karmaşıklığa neden olan uygulamaları tanımladıktan so
 
 **Performans İzleyicisi** , BIR bilgisayardaki CPU veya bellek kullanımı gibi çeşitli etkinlikleri izler. Bir Windows makinesinde performans Izleyicisini çalıştırmak için aşağıdaki adımları izleyin:
 
-1. Win + R tuşlarına basın ve _Perfmon_yazın.
+1. Win + R tuşlarına basın ve _Perfmon_ yazın.
 1. Perfmon, diğer bir deyişle performans Izleyicisi, pencere açıldığında, aşağıdaki görünüme sahiptir-
 
     ![Performans Izleyicisi adım](./media/monitoring-high-churn/perfmon-step1.png)

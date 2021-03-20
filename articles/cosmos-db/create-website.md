@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 06/19/2020
 ms.author: mjbrown
 ms.openlocfilehash: 55d58a6c4724bd01325db029ed75d77ccc96d0f8
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93333588"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-with-a-web-app-from-github-using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak GitHub 'dan bir Web uygulamasıyla Azure Cosmos DB ve Azure App Service dağıtma
@@ -29,7 +29,7 @@ Kaynak Yöneticisi şablonlar, oldukça esnektir ve Azure 'daki herhangi bir hiz
 
 Elde edilen dağıtımda, Azure Cosmos DB uç nokta URL 'sini veya Azure portal kimlik doğrulama anahtarlarını kesip yapıştırmaya gerek kalmadan Azure Cosmos DB bağlanabilir tam işlevli bir Web uygulaması vardır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 > [!TIP]
 > Bu öğretici Azure Resource Manager şablonları veya JSON ile önceki deneyimle karşılaşmadığından, başvurulan şablonları veya dağıtım seçeneklerini değiştirmek ister, bu alanların her biri için bilgi gereklidir.
@@ -78,7 +78,7 @@ Ardından, portalda Azure Cosmos hesabını açın. Aşağıdaki ekran görünt�
 
 Sonra kaynak grubundaki Azure App Service gidin. App Service uygulama ayarlarını görüntülemek için yapılandırma sekmesine tıklayın. Uygulama ayarları, Cosmos DB bağlanmak için gereken Cosmos DB hesabı ve birincil anahtar değerlerini ve şablon dağıtımından geçirilen veritabanı ve kapsayıcı adlarını içerir.
 
-:::image type="content" source="./media/create-website/application-settings.png" alt-text="Uygulama ayarları":::
+:::image type="content" source="./media/create-website/application-settings.png" alt-text="Uygulama Ayarları":::
 
 ### <a name="view-web-app-in-deployment-center"></a>Web uygulamasını dağıtım merkezi 'nde görüntüle
 
@@ -104,7 +104,7 @@ Bunun çalışması için gereken üç öğe vardır.
 
 ### <a name="using-special-azure-resource-management-functions"></a>Özel Azure Kaynak yönetimi işlevlerini kullanma
 
-Bu değerlerin dağıtıldığında uygulama için kullanılabilir olması için, Azure Resource Manager şablonu, Cosmos DB hesabından değerleri alan ve uygulama ayarları değerlerine, bu değerleri bir ' {section: Key} ' biçiminde Yukarıdaki [listKeys](../azure-resource-manager/templates/template-functions-resource.md#listkeys) uygulamada kullanılanlarla eşleşen anahtar adlarıyla [eklemek gibi özel](../azure-resource-manager/templates/template-functions-resource.md#reference) Azure kaynak yönetimi işlevleri kullanarak Cosmos DB hesabından bu değerleri isteyebilir. Örneğin, `CosmosDb:Account`.
+Bu değerlerin dağıtıldığında uygulama için kullanılabilir olması için, Azure Resource Manager şablonu, Cosmos DB hesabından değerleri alan ve uygulama ayarları değerlerine, bu değerleri bir ' {section: Key} ' biçiminde Yukarıdaki [](../azure-resource-manager/templates/template-functions-resource.md#listkeys) uygulamada kullanılanlarla eşleşen anahtar adlarıyla [eklemek gibi özel](../azure-resource-manager/templates/template-functions-resource.md#reference) Azure kaynak yönetimi işlevleri kullanarak Cosmos DB hesabından bu değerleri isteyebilir. Örneğin, `CosmosDb:Account`.
 
 :::image type="content" source="./media/create-website/template-keys.png" alt-text="Şablon anahtarları":::
 

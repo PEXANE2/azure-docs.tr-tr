@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/14/2019
 ms.author: rohogue
 ms.openlocfilehash: 93b99aa624a21d9312297e4279b1dcf053c79ae3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88272737"
 ---
 # <a name="enable-support-uploads"></a>Destek karşıya yüklemelerini etkinleştirme
@@ -28,14 +28,14 @@ Desteği etkinleştirmek için avere denetim masasından bu adımları izleyin. 
 
 1. Destek yapılandırması sayfasında, soldaki üçgene tıklayarak **Müşteri bilgileri** bölümünü açın.
 1. **Karşıya yükleme bilgilerini yeniden doğrula** düğmesine tıklayın.
-1. Kümenin destek adını **benzersiz küme adı**olarak ayarlayın. Bu adın, personeli desteklemek için kümenizi benzersiz bir şekilde tanımladığından emin olun.
-1. **Istatistik izleme**, **genel bilgiler karşıya yükleme**ve **kilitlenme bilgileri karşıya yükleme**kutularını işaretleyin.
+1. Kümenin destek adını **benzersiz küme adı** olarak ayarlayın. Bu adın, personeli desteklemek için kümenizi benzersiz bir şekilde tanımladığından emin olun.
+1. **Istatistik izleme**, **genel bilgiler karşıya yükleme** ve **kilitlenme bilgileri karşıya yükleme** kutularını işaretleyin.
 1. **Gönder**' e tıklayın.
 
    ![Destek ayarları sayfasının tamamlanan müşteri bilgisi bölümünün bulunduğu ekran görüntüsü](media/avere-vfxt-support-info.png)
 
 1. Bölümü genişletmek için **güvenli proaktif destek (SPS)** sol tarafındaki üçgeni tıklatın.
-1. **SPS 'Yi etkinleştir bağlantısının**kutusunu işaretleyin.
+1. **SPS 'Yi etkinleştir bağlantısının** kutusunu işaretleyin.
 1. **Gönder**' e tıklayın.
 
    ![Destek ayarları sayfasında tamamlanmış güvenli proaktif destek bölümünün bulunduğu ekran görüntüsü](media/avere-vfxt-support-sps.png)

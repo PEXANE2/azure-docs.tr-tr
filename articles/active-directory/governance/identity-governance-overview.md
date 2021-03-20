@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e02df83d4b7874a1d158aae45f1619eb543e0aec
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92362459"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Azure AD Identity Governance nedir?
@@ -88,7 +88,7 @@ Yukarıda listelenen özelliklere ek olarak, kimlik idare senaryolarını sağla
 |Ayrıcalıklı erişim|Azure AD rolleri (özel roller dahil) ve Azure Kaynak rolleri için tam zamanında ve zamanlanmış erişim, uyarı, onay iş akışları.|[Azure AD PıM](../privileged-identity-management/pim-configure.md)|
 |Denetim|Yöneticiler, yönetici hesaplarının oluşturulması hakkında uyarı verebilir.|[Azure AD PıM uyarıları](../privileged-identity-management/pim-how-to-configure-security-alerts.md)|
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 Yetkilendirme Yönetimi, erişim incelemeleri, Privileged Identity Management ve Kullanım koşulları kullanmaya başlamak için Azure portal **kimlik** yönetimi 'nin Başlarken sekmesine göz atın.
 

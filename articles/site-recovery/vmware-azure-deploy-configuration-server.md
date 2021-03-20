@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
 ms.openlocfilehash: a8ceb3df68ebe42f83c70ed62327bf59c0dfc225
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92359824"
 ---
 # <a name="deploy-a-configuration-server"></a>Yapılandırma sunucusunu dağıtma
@@ -26,7 +26,7 @@ VMware VM 'Leri ve fiziksel sunucuları Azure 'a olağanüstü durum kurtarması
 
 Yapılandırma sunucusu, belirli minimum donanım ve boyutlandırma gereksinimlerine sahip yüksek oranda kullanılabilir bir VMware VM 'si olarak ayarlanmalıdır. Kullanışlı ve kolay dağıtım için Site Recovery, burada listelenen tüm uygulanan gereksinimleriyle uyumlu yapılandırma sunucusunu ayarlamak için indirilebilir bir açık sanallaştırma uygulaması (OVA) şablonu sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir yapılandırma sunucusu için en düşük donanım gereksinimleri aşağıdaki bölümlerde özetlenmektedir.
 
@@ -42,9 +42,9 @@ Yapılandırma sunucusunu Azure Site Recovery Hizmetleri ile kaydetmek için Azu
     - Uygulama geliştirici rolünün kullanıcıya atandığını doğrulayın. Aksi takdirde, bu izinle bir Kullanıcı kullanın veya [izni etkinleştirmek için bir yöneticiye](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md#assign-roles)başvurun.
     
 2. Uygulama geliştirici rolü atanmadığından, kullanıcıların bir kimlik oluşturması için **kullanıcıların uygulamaları kaydedebilmesi** için, **doğru** olarak ayarlanmış olduğundan emin olun. Bu izinleri etkinleştirmek için:
-    - Azure Portal’da oturum açın.
+    - Azure portalında oturum açın.
     - **Azure Active Directory**  >  **Kullanıcı ayarları**' na gidin.
-    - **Uygulama kayıtları**altında **kullanıcılar uygulamaları kaydedebilir**, **Evet**' i seçin.
+    - **Uygulama kayıtları** altında **kullanıcılar uygulamaları kaydedebilir**, **Evet**' i seçin.
 
       ![Azure AD_application_permission](media/vmware-azure-deploy-configuration-server/AAD_application_permission.png)
 
@@ -53,7 +53,7 @@ Yapılandırma sunucusunu Azure Site Recovery Hizmetleri ile kaydetmek için Azu
 
 ## <a name="download-the-template"></a>Şablonu indirme
 
-1. Kasada, **altyapı kaynağı hazırlama**' ya gidin  >  **Source**.
+1. Kasada, **altyapı kaynağı hazırlama**' ya gidin  >  .
 2. **Kaynağı hazırla** bölümünde **+Yapılandırma sunucusu**’nu seçin.
 3. **Sunucu Ekle** bölümünde **Sunucu türü**’nde **VMware için yapılandırma sunucusu**’nun görüntülenip görüntülenmediğini kontrol edin.
 4. Yapılandırma sunucusu için OVA şablonunu indirin.
@@ -78,7 +78,7 @@ Yapılandırma sunucusunu Azure Site Recovery Hizmetleri ile kaydetmek için Azu
 7. Sihirbaz sayfalarının geri kalan kısmında varsayılan ayarları kabul edin.
 8. **Tamamlanmaya hazır** olduğunda:
 
-    * VM 'yi varsayılan ayarlarla ayarlamak için, **dağıtım bittikten sonra güç açma**' yı seçin  >  **Finish**.
+    * VM 'yi varsayılan ayarlarla ayarlamak için, **dağıtım bittikten sonra güç açma**' yı seçin  >  .
     * Ek bir ağ arabirimi eklemek için **dağıtımdan sonra Aç**' ı temizleyin ve ardından **son**' u seçin. Varsayılan olarak, yapılandırma sunucusu şablonu tek bir NIC ile dağıtılır. Dağıtımdan sonra daha fazla NIC ekleyebilirsiniz.
 
 > [!IMPORTANT]
@@ -112,7 +112,7 @@ Yapılandırma sunucusuna ek bir NIC eklemek istiyorsanız, sunucuyu kasaya kayd
 ### <a name="configure-settings"></a>Ayarları yapılandırma
 
 1. Yapılandırma sunucusu Yönetim Sihirbazı 'nda, **Kurulum bağlantısı**' nı seçin. Açılan kutudan önce, yerleşik işlem sunucusunun kaynak makinelere Mobility hizmeti bulma ve anında yükleme için kullandığı NIC 'i seçin. Ardından yapılandırma sunucusunun Azure ile bağlantı için kullandığı NIC 'ı seçin. **Kaydet**’i seçin. Bu ayar yapılandırıldıktan sonra değiştirilemez. Yapılandırma sunucusunun IP adresini değiştirmeyin. Yapılandırma sunucusuna atanan IP 'nin bir DHCP IP 'si değil statik IP olduğundan emin olun.
-2. **Kurtarma Hizmetleri kasasını Seç**sayfasında, [yapılandırma sunucusunu Azure Site Recovery hizmetleriyle kaydetme](#register-the-configuration-server-with-azure-site-recovery-services)adım 6 ' da kullanılan kimlik bilgileriyle Microsoft Azure için oturum açın.
+2. **Kurtarma Hizmetleri kasasını Seç** sayfasında, [yapılandırma sunucusunu Azure Site Recovery hizmetleriyle kaydetme](#register-the-configuration-server-with-azure-site-recovery-services)adım 6 ' da kullanılan kimlik bilgileriyle Microsoft Azure için oturum açın.
 3. Oturum açtıktan sonra Azure aboneliğinizi ve ilgili kaynak grubunu ve kasasını seçin.
 
     > [!NOTE]
@@ -123,16 +123,16 @@ Yapılandırma sunucusuna ek bir NIC eklemek istiyorsanız, sunucuyu kasaya kayd
 
     |Senaryo   |İzlenecek adımlar  |
     |---------|---------|
-    |MySQL 'i el ile indirebilir ve yükleyebilir miyim?     |  Evet. MySQL uygulamasını indirin, **C:\temp\asrsetup**klasörüne yerleştirip el ile yükleyin. Koşulları kabul ettikten ve **indir ve yükle**' yi seçtikten sonra portal *zaten yüklüdür*. Sonraki adıma geçebilirsiniz.       |
-    |MySQL 'i çevrimiçi indirmeyi önleyebilir miyim?     |   Evet. MySQL yükleyici uygulamanızı **C:\temp\asrsetup**klasörüne yerleştirin. Koşulları kabul edin, **indir ve yükle**' yi seçin ve Portal, uygulamayı yüklemek için eklediğiniz yükleyiciyi kullanır. Yükleme bittikten sonra, sonraki adıma geçin.    |
+    |MySQL 'i el ile indirebilir ve yükleyebilir miyim?     |  Evet. MySQL uygulamasını indirin, **C:\temp\asrsetup** klasörüne yerleştirip el ile yükleyin. Koşulları kabul ettikten ve **indir ve yükle**' yi seçtikten sonra portal *zaten yüklüdür*. Sonraki adıma geçebilirsiniz.       |
+    |MySQL 'i çevrimiçi indirmeyi önleyebilir miyim?     |   Evet. MySQL yükleyici uygulamanızı **C:\temp\asrsetup** klasörüne yerleştirin. Koşulları kabul edin, **indir ve yükle**' yi seçin ve Portal, uygulamayı yüklemek için eklediğiniz yükleyiciyi kullanır. Yükleme bittikten sonra, sonraki adıma geçin.    |
     |Azure Site Recovery aracılığıyla MySQL indirmek ve yüklemek istiyorum.    |  Lisans sözleşmesini kabul edin ve **indir ve yükle**' yi seçin. Yükleme bittikten sonra, sonraki adıma geçin.       |
 
-5. **Gereç yapılandırmasını Doğrula**sayfasında, devam etmeden önce Önkoşullar doğrulanır.
-6. **VCenter Server/vSphere ESXi sunucusunu yapılandır**sayfasında, çoğaltma yapmak Istediğiniz VM 'Lerin bulunduğu vCenter sunucusunun veya vSphere konağının FQDN 'SINI veya IP adresini girin. Sunucunun dinleme gerçekleştirdiği bağlantı noktasını girin. Kasadaki VMware sunucusu için kullanılacak bir kolay ad girin.
+5. **Gereç yapılandırmasını Doğrula** sayfasında, devam etmeden önce Önkoşullar doğrulanır.
+6. **VCenter Server/vSphere ESXi sunucusunu yapılandır** sayfasında, çoğaltma yapmak Istediğiniz VM 'Lerin bulunduğu vCenter sunucusunun veya vSphere konağının FQDN 'SINI veya IP adresini girin. Sunucunun dinleme gerçekleştirdiği bağlantı noktasını girin. Kasadaki VMware sunucusu için kullanılacak bir kolay ad girin.
 7. VMware sunucusu ile bağlantı için yapılandırma sunucusu tarafından kullanılacak kimlik bilgilerini girin. Site Recovery, bu kimlik bilgilerini çoğaltma için kullanılabilen VMware VM’lerini otomatik olarak bulmak üzere kullanır. **Ekle**  >  **devam et**' i seçin. Buraya girilen kimlik bilgileri yerel olarak kaydedilir.
-8. **Sanal makine kimlik bilgilerini Yapılandır**sayfasında, çoğaltma sırasında Mobility hizmetini otomatik olarak yüklemek için sanal makinelerin Kullanıcı adını ve parolasını girin. **Windows** makineleri için hesabın, çoğaltmak istediğiniz makinelerde yerel yönetici ayrıcalıklarına ihtiyacı vardır. **Linux**için kök hesabının ayrıntılarını sağlayın.
+8. **Sanal makine kimlik bilgilerini Yapılandır** sayfasında, çoğaltma sırasında Mobility hizmetini otomatik olarak yüklemek için sanal makinelerin Kullanıcı adını ve parolasını girin. **Windows** makineleri için hesabın, çoğaltmak istediğiniz makinelerde yerel yönetici ayrıcalıklarına ihtiyacı vardır. **Linux** için kök hesabının ayrıntılarını sağlayın.
 9. Kaydı tamamlamak için **Yapılandırmayı son haline getir** seçeneğini belirleyin.
-10. Kayıt tamamlandıktan sonra, Azure Portal açın ve yapılandırma sunucusunun ve VMware sunucusunun **Kurtarma Hizmetleri Kasası**'nda  >  **Manage**  >  **Site Recovery altyapı**  >  **yapılandırma sunucuları**' nı yönetme ' de listelendiğini doğrulayın.
+10. Kayıt tamamlandıktan sonra, Azure Portal açın ve yapılandırma sunucusunun ve VMware sunucusunun **Kurtarma Hizmetleri Kasası**'nda  >    >  **Site Recovery altyapı**  >  **yapılandırma sunucuları**' nı yönetme ' de listelendiğini doğrulayın.
 
 ## <a name="upgrade-the-configuration-server"></a>Yapılandırma sunucusunu yükseltme
 
@@ -175,7 +175,7 @@ Dağıtım & bağlantı sorunlarını gidermek için [sorun giderme makalemizi](
     Hayır. Yapılandırma sunucusunun parolasını değiştirmeyin. Parola değişikliği, korunan makinelerin çoğaltılmasını keser ve kritik bir sistem durumuna yol açar.
 * Kasa kayıt anahtarlarını nereden indirebilirim?
 
-    **Kurtarma Hizmetleri Kasası**'nda **Manage**  >  **Site Recovery altyapı**  >  **yapılandırma sunucularını**Yönet ' i seçin. **Sunucular**' da, kasa kimlik bilgileri dosyasını indirmek için **kayıt anahtarını indir** ' i seçin.
+    **Kurtarma Hizmetleri Kasası**'nda   >  **Site Recovery altyapı**  >  **yapılandırma sunucularını** Yönet ' i seçin. **Sunucular**' da, kasa kimlik bilgileri dosyasını indirmek için **kayıt anahtarını indir** ' i seçin.
 * Var olan bir yapılandırma sunucusunu kopyalayabilir ve çoğaltma düzenlemesi için kullanabilir miyim?
 
     Hayır. Kopyalanmış bir yapılandırma sunucusu bileşeninin kullanılması desteklenmez. Genişleme işlem sunucusu 'nun kopyalanması de desteklenmeyen bir senaryodur. Site Recovery bileşenlerin kopyalanması devam eden çoğaltmaları etkiler.

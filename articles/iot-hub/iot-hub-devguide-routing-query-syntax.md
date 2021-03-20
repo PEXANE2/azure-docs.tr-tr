@@ -11,10 +11,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 ms.openlocfilehash: 83c290adea02915db1dc52bd359b4d3165611522
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92547716"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT Hub ileti yönlendirme sorgusu söz dizimi
@@ -53,7 +53,7 @@ IoT Hub, protokollerde birlikte çalışabilirlik için tüm cihazdan buluta mes
 
 Sistem Özellikleri, iletilerin içeriğini ve kaynağını belirlemesine yardımcı olur. 
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
 | contentType | string | Kullanıcı iletinin içerik türünü belirtir. İleti gövdesinde sorguya izin vermek için bu değer Application/JSON olarak ayarlanmalıdır. |
 | Contentenkodlamaya | string | Kullanıcı iletinin kodlama türünü belirtir. ContentType Application/JSON olarak ayarlandıysa, izin verilen değerler UTF-8, UTF-16, UTF-32 olur. |
@@ -62,7 +62,7 @@ Sistem Özellikleri, iletilerin içeriğini ve kaynağını belirlemesine yardı
 | DT-DataSchema | string |  Bu değer, cihazdan buluta iletilerde IoT Hub tarafından ayarlanır. Cihaz bağlantısında ayarlanan cihaz modeli KIMLIĞINI içerir. Sorgulamak için kullanın `$dt-dataschema` . |
 | DT-konu | string | Cihazdan buluta iletileri gönderen bileşenin adı. Sorgulamak için kullanın `$dt-subject` . |
 
-[IoT Hub iletilerinde](iot-hub-devguide-messages-construct.md)açıklandığı gibi, bir iletide ek sistem özellikleri vardır. Önceki tablodaki özelliklerin yanı sıra **Connectiondeviceıd** , **connectionmoduleıd** ' yi de sorgulayabilirsiniz.
+[IoT Hub iletilerinde](iot-hub-devguide-messages-construct.md)açıklandığı gibi, bir iletide ek sistem özellikleri vardır. Önceki tablodaki özelliklerin yanı sıra **Connectiondeviceıd**, **connectionmoduleıd**' yi de sorgulayabilirsiniz.
 
 ### <a name="application-properties"></a>Uygulama özellikleri
 
@@ -70,7 +70,7 @@ Uygulama özellikleri, iletiye eklenebilen Kullanıcı tanımlı dizelerdir. Bu 
 
 ### <a name="query-expressions"></a>Sorgu ifadeleri
 
-İleti sistemi özelliklerindeki bir sorgunun, simgeye ön eki eklenmiş olması gerekir `$` . Uygulama özelliklerindeki sorgulara adlarıyla erişilir ve sembol önüne kullanılmamalıdır `$` . Bir uygulama özelliği adı ile başlıyorsa `$` , IoT Hub Sistem özelliklerinde arama yapılır ve bu, uygulama özelliklerine bakar. Örneğin: 
+İleti sistemi özelliklerindeki bir sorgunun, simgeye ön eki eklenmiş olması gerekir `$` . Uygulama özelliklerindeki sorgulara adlarıyla erişilir ve sembol önüne kullanılmamalıdır `$` . Bir uygulama özelliği adı ile başlıyorsa `$` , IoT Hub Sistem özelliklerinde arama yapılır ve bu, uygulama özelliklerine bakar. Örnek: 
 
 Sistem özelliği Çekiştenkodlamaya göre sorgulamak için 
 
@@ -146,7 +146,7 @@ deviceClient.sendEvent(message, (err, res) => {
 ```
 
 > [!NOTE] 
-> Bu, gövde kodlamasının JavaScript 'te nasıl işleneceğini gösterir. C# dilinde bir örnek görmek isterseniz, [Azure IoT C# örneklerini](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)indirin. master.zip dosyasını sıkıştırmayı açın. Visual Studio Solution *SimulatedDevice* 'ın program.cs dosyası, iletilerin nasıl kodlanacağını ve bir IoT Hub nasıl göndereceğini gösterir. İleti yönlendirme [öğreticisinde](tutorial-routing.md)açıklandığı gibi, ileti yönlendirmeyi test etmek için kullanılan aynı örnektir. Program.cs 'in en altında, kodlanmış dosyalardan birinde okuma, kodunu çözme ve bunu okuyabilmeniz için ASCII olarak yeniden yazma yöntemi de vardır. 
+> Bu, gövde kodlamasının JavaScript 'te nasıl işleneceğini gösterir. C# dilinde bir örnek görmek isterseniz, [Azure IoT C# örneklerini](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)indirin. master.zip dosyasını sıkıştırmayı açın. Visual Studio Solution *SimulatedDevice*'ın program. cs dosyası, bir IoT Hub iletilerin nasıl kodlanacağını ve gönderyapılacağını gösterir. İleti yönlendirme [öğreticisinde](tutorial-routing.md)açıklandığı gibi, ileti yönlendirmeyi test etmek için kullanılan aynı örnektir. Program. cs ' nin en altında, kodlanmış dosyalardan birinde okuma, kodunu çözme ve bunu okuyabilmeniz için ASCII olarak yeniden yazma yöntemi vardır. 
 
 
 ### <a name="query-expressions"></a>Sorgu ifadeleri

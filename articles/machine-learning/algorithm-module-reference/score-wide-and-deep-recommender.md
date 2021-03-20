@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 08/12/2020
 ms.openlocfilehash: 9a1a3892e6a47aabd9b5129ca551900494616bc8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90905169"
 ---
 # <a name="score-wide-and-deep-recommender"></a>Geniş ve Derin Öneren Puanlandırması
@@ -27,7 +27,7 @@ Geniş ve derin öneren iki farklı tahmin türü oluşturabilir:
 - [Belirli bir kullanıcıya öğe önerme](#recommend-items)
 
 
-Son tahmin türünü oluştururken, *üretim modunda* veya *değerlendirme modunda*çalıştırabilirsiniz.
+Son tahmin türünü oluştururken, *üretim modunda* veya *değerlendirme modunda* çalıştırabilirsiniz.
 
 - **Üretim modu** tüm kullanıcıları veya öğeleri değerlendirir ve genellikle bir Web hizmetinde kullanılır. Yalnızca eğitim sırasında görülen kullanıcıları değil, yeni kullanıcılar için puanlar oluşturabilirsiniz. 
 
@@ -46,30 +46,30 @@ Bu modül, her biri farklı gereksinimlere sahip farklı öneri türlerini deste
 
 Derecelendirmeleri tahmin ettiğinizde, model belirli bir kullanıcının eğitim verileri verilen belirli bir öğeye nasıl tepki verdiğini hesaplar. Bu nedenle, Puanlama için giriş verilerinin hem Kullanıcı hem de bir öğe sağlaması gerekir.
 
-1. Denemenize eğitim Wide & derin bir öneri modeli ekleyin ve bunu **eğitilen geniş ve derin öneri modeline**bağlayın.  Modeli, [tren genelinde ve derin öneren](train-wide-and-deep-recommender.md)kullanarak oluşturmanız gerekir.
+1. Denemenize eğitim Wide & derin bir öneri modeli ekleyin ve bunu **eğitilen geniş ve derin öneri modeline** bağlayın.  Modeli, [tren genelinde ve derin öneren](train-wide-and-deep-recommender.md)kullanarak oluşturmanız gerekir.
 
-2. **Öneren tahmin türü**: **Derecelendirme tahminini**seçin. Başka parametre gerekmez.
+2. **Öneren tahmin türü**: **Derecelendirme tahminini** seçin. Başka parametre gerekmez.
 
-3. Tahmine dayalı hale getirmek istediğiniz verileri ekleyin ve **skor olarak veri kümesine**bağlayın.
+3. Tahmine dayalı hale getirmek istediğiniz verileri ekleyin ve **skor olarak veri kümesine** bağlayın.
 
     Derecelendirmeleri tahmin etmek için, giriş veri kümesi Kullanıcı-öğe çiftleri içermelidir.
 
     Veri kümesi, birinci ve ikinci sütunlardaki Kullanıcı öğesi çifti için isteğe bağlı üçüncü bir derecelendirme sütunu içerebilir, ancak üçüncü sütun tahmin sırasında yok sayılır.
 
-4.  (İsteğe bağlı). Kullanıcı özellikleri veri kümeniz varsa, bunu **Kullanıcı özelliklerine**bağlayın.
+4.  (İsteğe bağlı). Kullanıcı özellikleri veri kümeniz varsa, bunu **Kullanıcı özelliklerine** bağlayın.
 
     Kullanıcı özelliklerinin veri kümesi ilk sütundaki kullanıcı tanımlayıcısını içermelidir. Kalan sütunlar, kullanıcılar, cinsiyeti, tercihleri, konumu vb. gibi kullanıcıları niteleyen değerler içermelidir.
   
-    Eğitim veri kümesindeki öğeleri derecelendirmiş kullanıcıların özellikleri, eğitim sırasında zaten öğrenildiği için, **puan Wide ve derin öneren**tarafından yok sayılır. Bu nedenle, veri kümenizi yalnızca *soğuk-start kullanıcılarını*veya herhangi bir öğeyi derecelendirmeden kullanıcıları içerecek şekilde önceden filtreleyin.
+    Eğitim veri kümesindeki öğeleri derecelendirmiş kullanıcıların özellikleri, eğitim sırasında zaten öğrenildiği için, **puan Wide ve derin öneren** tarafından yok sayılır. Bu nedenle, veri kümenizi yalnızca *soğuk-start kullanıcılarını* veya herhangi bir öğeyi derecelendirmeden kullanıcıları içerecek şekilde önceden filtreleyin.
 
     > [!WARNING]
     > Modelin Kullanıcı özellikleri kullanılmadan eğitilmesi durumunda, Puanlama sırasında kullanıcı özelliklerini belirtemezsiniz.
 
-5. Öğe özelliklerinin bir veri kümeniz varsa, bunu **öğe özelliklerine**bağlayabilirsiniz.
+5. Öğe özelliklerinin bir veri kümeniz varsa, bunu **öğe özelliklerine** bağlayabilirsiniz.
 
     Öğe özellikleri veri kümesi ilk sütunda bir öğe tanımlayıcısı içermelidir. Kalan sütunlar öğeleri niteleyen değerler içermelidir.
 
-    Eğitim veri kümesindeki derecelendirilmiş öğelerin özellikleri, eğitim sırasında zaten öğrenildiği için **Score Wide ve derin öneren** tarafından yok sayılır. Bu nedenle, Puanlama veri kümenizi *soğuk başlangıç öğeleri*veya herhangi bir kullanıcı tarafından Derecelendirilmedi olan öğeler ile sınırlayın.
+    Eğitim veri kümesindeki derecelendirilmiş öğelerin özellikleri, eğitim sırasında zaten öğrenildiği için **Score Wide ve derin öneren** tarafından yok sayılır. Bu nedenle, Puanlama veri kümenizi *soğuk başlangıç öğeleri* veya herhangi bir kullanıcı tarafından Derecelendirilmedi olan öğeler ile sınırlayın.
 
     > [!WARNING]
     > Model, öğe özelliklerini kullanmadan eğitilen, Puanlama sırasında öğe özelliklerini belirtemezsiniz.
@@ -89,22 +89,22 @@ Ayrıca, Puanlama sırasında aşağıdaki değişiklikler uygulanır:
 
 Kullanıcılara yönelik öğeleri önermek için, giriş olarak Kullanıcı ve öğe listesi sağlarsınız. Bu verilerden, model varolan öğeler ve kullanıcılar hakkında bilgisini kullanarak her bir kullanıcıya çok daha fazla bilgi sahibi olan öğelerin bir listesini oluşturur. Döndürülen önerilerin sayısını özelleştirebilir ve öneri oluşturmak için gereken önceki önerilerin sayısı için bir eşik ayarlayabilirsiniz.
 
-1. Denemenize eğitilen geniş ve derin bir öneri modeli ekleyin ve **eğitilen geniş ve derin öneri modeline**bağlayın.  Modeli, [tren genelinde ve derin öneren](train-wide-and-deep-recommender.md)kullanarak oluşturmanız gerekir.
+1. Denemenize eğitilen geniş ve derin bir öneri modeli ekleyin ve **eğitilen geniş ve derin öneri modeline** bağlayın.  Modeli, [tren genelinde ve derin öneren](train-wide-and-deep-recommender.md)kullanarak oluşturmanız gerekir.
 
-2. Belirli bir kullanıcı listesi için öğeleri önermek üzere **öneren tahmin türünü** **öğe önerisine**ayarlayın.
+2. Belirli bir kullanıcı listesi için öğeleri önermek üzere **öneren tahmin türünü** **öğe önerisine** ayarlayın.
 
 3. **Önerilen öğe seçimi**: şu değerlerden birini seçerek üretimde Puanlama modülünü mi yoksa model değerlendirmesi için mi kullandığınızı belirtin:
 
-    - **Derecelendirilen öğelerden (model değerlendirmesi için)**: bir modeli geliştirmekte veya test ediyorsanız bu seçeneği belirleyin. Bu seçenek **değerlendirme modunu**sağlar ve modül yalnızca, derecelendirilen giriş veri kümesindeki öğelerden öneriler sağlar.
-    - **Tüm öğeler**: Web hizmetinde veya üretimde kullanmak üzere bir deneme ayarlıyorsanız bu seçeneği belirleyin.  Bu seçenek **Üretim modunu**sağlar ve modül eğitim sırasında görülen tüm öğelerden öneriler sağlar.
+    - **Derecelendirilen öğelerden (model değerlendirmesi için)**: bir modeli geliştirmekte veya test ediyorsanız bu seçeneği belirleyin. Bu seçenek **değerlendirme modunu** sağlar ve modül yalnızca, derecelendirilen giriş veri kümesindeki öğelerden öneriler sağlar.
+    - **Tüm öğeler**: Web hizmetinde veya üretimde kullanmak üzere bir deneme ayarlıyorsanız bu seçeneği belirleyin.  Bu seçenek **Üretim modunu** sağlar ve modül eğitim sırasında görülen tüm öğelerden öneriler sağlar.
     - **Derecelendirilmemiş öğelerden (kullanıcılara yeni öğeler önermek için)**: modülün yalnızca eğitim veri kümesindeki öğelerin derecelendirilmemiş olan öğelerden öneriler yapmasını istiyorsanız bu seçeneği belirleyin. 
-4. Tahmin yapmak istediğiniz veri kümesini ekleyin ve **skor Için veri kümesine**bağlayın.
+4. Tahmin yapmak istediğiniz veri kümesini ekleyin ve **skor Için veri kümesine** bağlayın.
 
-    - Seçeneğini belirlerseniz, **tüm öğelerden**giriş veri kümesi, öneri yapılacak Kullanıcı tanımlayıcılarını içeren bir ve yalnızca bir sütundan oluşmalıdır.
+    - Seçeneğini belirlerseniz, **tüm öğelerden** giriş veri kümesi, öneri yapılacak Kullanıcı tanımlayıcılarını içeren bir ve yalnızca bir sütundan oluşmalıdır.
 
         Veri kümesi, öğe tanımlayıcılarının ve derecelendirmelerin fazladan iki sütununu içerebilir, ancak bu iki sütun yok sayılır. 
 
-    - **Derecelendirilen öğelerden (model değerlendirmesi için)** seçeneğini belirlerseniz, giriş veri kümesi, **Kullanıcı-öğe çiftlerinden**oluşmalıdır. İlk sütun **Kullanıcı** tanımlayıcısını içermelidir. İkinci sütun karşılık gelen **öğe** tanımlayıcılarını içermelidir.
+    - **Derecelendirilen öğelerden (model değerlendirmesi için)** seçeneğini belirlerseniz, giriş veri kümesi, **Kullanıcı-öğe çiftlerinden** oluşmalıdır. İlk sütun **Kullanıcı** tanımlayıcısını içermelidir. İkinci sütun karşılık gelen **öğe** tanımlayıcılarını içermelidir.
 
         Veri kümesi, Kullanıcı-öğe derecelendirmelerinin üçüncü sütununu içerebilir, ancak bu sütun yok sayılır.
         
@@ -112,20 +112,20 @@ Kullanıcılara yönelik öğeleri önermek için, giriş olarak Kullanıcı ve 
 
         Veri kümesi, Kullanıcı-öğe derecelendirmelerinin üçüncü sütununu içerebilir, ancak bu sütun yok sayılır.
 
-5. (İsteğe bağlı). **Kullanıcı özellikleri**veri kümeniz varsa, bunu **Kullanıcı özelliklerine**bağlayın.
+5. (İsteğe bağlı). **Kullanıcı özellikleri** veri kümeniz varsa, bunu **Kullanıcı özelliklerine** bağlayın.
 
     Kullanıcı özellikleri veri kümesindeki ilk sütun kullanıcı tanımlayıcısını içermelidir. Kalan sütunlar, kullanıcının cinsiyeti, tercihleri, konumu gibi özellikleri niteleyen değerler içermelidir.
 
-    Öğeleri derecelendirmiş kullanıcıların özellikleri, bu özellikler eğitim sırasında zaten öğrenildiği için **Score Wide ve derin öneren**tarafından yok sayılır. Bu nedenle, veri kümenizi yalnızca *soğuk-start kullanıcılarını*veya herhangi bir öğeyi derecelendirmeden kullanıcıları içerecek şekilde önceden filtreleyebilirsiniz.
+    Öğeleri derecelendirmiş kullanıcıların özellikleri, bu özellikler eğitim sırasında zaten öğrenildiği için **Score Wide ve derin öneren** tarafından yok sayılır. Bu nedenle, veri kümenizi yalnızca *soğuk-start kullanıcılarını* veya herhangi bir öğeyi derecelendirmeden kullanıcıları içerecek şekilde önceden filtreleyebilirsiniz.
 
     > [!WARNING]
     >  Model Kullanıcı özelliklerini kullanmadan eğitilolduysa, Puanlama sırasında özellikleri Uygula özelliğini kullanamazsınız.
 
-6. Seçim **Öğe özelliklerinin**bir veri kümeniz varsa, bunu **öğe özelliklerine**bağlayabilirsiniz.
+6. Seçim **Öğe özelliklerinin** bir veri kümeniz varsa, bunu **öğe özelliklerine** bağlayabilirsiniz.
 
     Öğe özellikleri veri kümesindeki ilk sütun, öğe tanımlayıcısı içermelidir. Kalan sütunlar öğeleri niteleyen değerler içermelidir.
 
-    Derecelendirilen öğelerin özellikleri, bu özellikler eğitim sırasında zaten öğrenildiği için **Score Wide ve derin öneren**tarafından yok sayılır. Bu nedenle, Puanlama veri kümenizi *soğuk başlangıç öğeleri*veya herhangi bir kullanıcı tarafından Derecelendirilmedi olan öğeler ile kısıtlayabilirsiniz.
+    Derecelendirilen öğelerin özellikleri, bu özellikler eğitim sırasında zaten öğrenildiği için **Score Wide ve derin öneren** tarafından yok sayılır. Bu nedenle, Puanlama veri kümenizi *soğuk başlangıç öğeleri* veya herhangi bir kullanıcı tarafından Derecelendirilmedi olan öğeler ile kısıtlayabilirsiniz.
 
     > [!WARNING]
     >  Model, öğe özelliklerini kullanmadan eğitilen, Puanlama sırasında öğe özelliklerini kullanmayın.  
@@ -136,7 +136,7 @@ Kullanıcılara yönelik öğeleri önermek için, giriş olarak Kullanıcı ve 
 
     Bu seçenek yalnızca değerlendirme modunda puandıysanız kullanılmalıdır. **Tüm öğeler** veya **derecelendirilmemiş öğelerden (kullanıcılara yeni öğeler önermek için)** seçeneğini belirlerseniz seçeneği kullanılamaz.
 
-9. **Derecelendirilmemiş öğelerin (kullanıcılara yeni öğeler önermek için)** için, tahmin sonuçlarından zaten derecelendirilmiş öğeleri kaldırmak Için **eğitim verileri**adlı üçüncü giriş bağlantı noktasını kullanın.
+9. **Derecelendirilmemiş öğelerin (kullanıcılara yeni öğeler önermek için)** için, tahmin sonuçlarından zaten derecelendirilmiş öğeleri kaldırmak Için **eğitim verileri** adlı üçüncü giriş bağlantı noktasını kullanın.
 
     Bu filtreyi uygulamak için, özgün eğitim veri kümesini giriş bağlantı noktasına bağlayın.
 
@@ -146,7 +146,7 @@ Kullanıcılara yönelik öğeleri önermek için, giriş olarak Kullanıcı ve 
 **Score Wide ve derin öneren** tarafından döndürülen puanlanmış veri kümesi, her kullanıcı için önerilen öğeleri listeler.
 
 - İlk sütunda kullanıcı tanımlayıcıları bulunur.
-- **Bir kullanıcı için önerilen en fazla öğe sayısı**için belirlediğiniz değere bağlı olarak, bir dizi ek sütun oluşturulur. Her sütunda önerilen bir öğe (tanımlayıcıya göre) bulunur. Öneriler, en çok benzeşim, **öğe 1**olan öğe ile Kullanıcı öğesi benzeşimi tarafından sıralanır.
+- **Bir kullanıcı için önerilen en fazla öğe sayısı** için belirlediğiniz değere bağlı olarak, bir dizi ek sütun oluşturulur. Her sütunda önerilen bir öğe (tanımlayıcıya göre) bulunur. Öneriler, en çok benzeşim, **öğe 1** olan öğe ile Kullanıcı öğesi benzeşimi tarafından sıralanır.
 
 ##  <a name="technical-notes"></a>Teknik notlar
 
@@ -158,7 +158,7 @@ Genellikle, öneriler oluşturmak için, bir kullanıcı KIMLIĞI de dahil olmak
 
 Bununla birlikte, yeni kullanıcılar için Kullanıcı KIMLIĞINIZ, yalnızca yaş, cinsiyet gibi bazı Kullanıcı özellikleri ve benzeri bir işlem olabilir.
 
-Sisteminiz için yeni öneriler oluşturmaya devam edebilir, bunları *soğuk başlatma kullanıcıları*olarak işleyerek. Bu tür kullanıcılar için, öneri algoritması geçmiş geçmişi veya önceki derecelendirmeleri değil yalnızca kullanıcı özelliklerini kullanmaz.
+Sisteminiz için yeni öneriler oluşturmaya devam edebilir, bunları *soğuk başlatma kullanıcıları* olarak işleyerek. Bu tür kullanıcılar için, öneri algoritması geçmiş geçmişi veya önceki derecelendirmeleri değil yalnızca kullanıcı özelliklerini kullanmaz.
 
 Tahmin amaçları doğrultusunda, soğuk başlatma kullanıcısı eğitim için kullanılmamış bir KIMLIĞE sahip bir kullanıcı olarak tanımlanır. Kimliklerin eğitiminde kullanılan kimliklere eşleşmediğinden emin olmak için yeni tanımlayıcılar oluşturabilirsiniz. Örneğin, belirli bir Aralık içinde rastgele kimlikler oluşturabilir veya soğuk başlangıç kullanıcıları için önceden bir dizi kimlik ayırabilirsiniz.
 

@@ -10,10 +10,10 @@ manager: rkarlin
 ms.date: 09/10/2019
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 3bced101516e91259ea9018fe3c4aa44f867cbe6
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96023117"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>Depolama hesabı anahtarlarını Key Vault ve Azure PowerShell yönetme
@@ -34,7 +34,7 @@ Yönetilen depolama hesabı anahtar özelliğini kullandığınızda, aşağıda
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="service-principal-application-id"></a>Hizmet sorumlusu uygulama KIMLIĞI
+## <a name="service-principal-application-id"></a>Hizmet sorumlusu uygulama kimliği
 
 Bir Azure AD kiracısı, kayıtlı her uygulamayı bir [hizmet sorumlusu](../../active-directory/develop/developer-glossary.md#service-principal-object)ile sağlar. Hizmet sorumlusu, Azure RBAC aracılığıyla diğer Azure kaynaklarına erişim için yetkilendirme kurulumu sırasında kullanılan uygulama KIMLIĞI olarak görev yapar.
 
@@ -44,14 +44,14 @@ Key Vault, tüm Azure AD kiracılarında önceden kaydedilmiş bir Microsoft uyg
 | --- | --- | --- |
 | Azure AD | Azure Kamu | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
 | Azure AD | Azure genel | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
-| Diğer  | Herhangi bir | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| Diğer  | Herhangi biri | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Bu kılavuzu gerçekleştirmek için, önce aşağıdakileri yapmanız gerekir:
 
 - [Azure PowerShell modülünü yükler](/powershell/azure/install-az-ps).
-- [Anahtar Kasası oluşturma](quick-create-powershell.md)
+- [Anahtar kasası oluşturma](quick-create-powershell.md)
 - [Bir Azure depolama hesabı oluşturun](../../storage/common/storage-account-create.md?tabs=azure-powershell). Depolama hesabı adı yalnızca küçük harfler ve rakamlar kullanmalıdır. Adın uzunluğu 3 ile 24 karakter arasında olmalıdır.
 
 

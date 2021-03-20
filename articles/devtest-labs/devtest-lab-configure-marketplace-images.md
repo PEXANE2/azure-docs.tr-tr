@@ -4,10 +4,10 @@ description: Azure DevTest Labs bir VM oluştururken hangi Azure Market görünt
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: a5158ed33bf253db1dbe0eb3232bc43d27ce15e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86512444"
 ---
 # <a name="configure-azure-marketplace-image-settings-in-azure-devtest-labs"></a>Azure DevTest Labs Azure Marketi görüntü ayarlarını yapılandırma
@@ -16,11 +16,11 @@ DevTest Labs, laboratuvarınızda kullanılacak Azure Marketi görüntülerini n
 ## <a name="specify-allowed-images-for-creating-vms"></a>VM 'Ler oluşturmak için izin verilen görüntüleri belirtme
 Bir VM oluştururken hangi Azure Marketi görüntülerinin izin verileceğini belirtmek için bu adımları takip edin. 
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)’ında oturum açın.
+1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
 2. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 3. Laboratuvarlar listesinden laboratuvarınızı seçin. 
 4. Laboratuvar sayfasının giriş sayfasında **yapılandırma ve ilkeler**' i seçin.
-5. Laboratuvarın **yapılandırma ve ilkeler** sayfasında, **sanal makine tabanları**altında **Market görüntüleri**' ni seçin.
+5. Laboratuvarın **yapılandırma ve ilkeler** sayfasında, **sanal makine tabanları** altında **Market görüntüleri**' ni seçin.
 6. Tüm Azure Marketi görüntülerinin yeni bir VM 'nin temeli olarak kullanılabilmesini isteyip istemediğinizi belirtin. **Evet**' i seçerseniz, laboratuvarda aşağıdaki ölçütlere uyan tüm Azure Market görüntülerine izin verilir:
    
    * Görüntü tek bir VM oluşturur **ve**

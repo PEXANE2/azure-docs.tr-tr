@@ -9,10 +9,10 @@ ms.date: 06/10/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: b0c03c2f5313605fbdf288a9262df0852e066efd
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93333487"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB'deki tutarlılık düzeylerini yönetme
@@ -26,9 +26,9 @@ Bu makalede, Azure Cosmos DB ' de tutarlılık düzeylerinin nasıl yönetilece�
 
 [Varsayılan tutarlılık düzeyi](consistency-levels.md) , istemcilerin varsayılan olarak kullandığı tutarlılık düzeyidir.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
 
-Varsayılan tutarlılık düzeyini görüntülemek veya değiştirmek için Azure portal oturum açın. Azure Cosmos hesabınızı bulun ve **varsayılan tutarlılık** bölmesini açın. Yeni varsayılan olarak istediğiniz tutarlılık düzeyini seçin ve ardından **Kaydet** ' i seçin. Azure portal Ayrıca, müzik notlarıyla farklı tutarlılık seviyelerinin bir görselleştirmesi sağlar. 
+Varsayılan tutarlılık düzeyini görüntülemek veya değiştirmek için Azure portal oturum açın. Azure Cosmos hesabınızı bulun ve **varsayılan tutarlılık** bölmesini açın. Yeni varsayılan olarak istediğiniz tutarlılık düzeyini seçin ve ardından **Kaydet**' i seçin. Azure portal Ayrıca, müzik notlarıyla farklı tutarlılık seviyelerinin bir görselleştirmesi sağlar. 
 
 :::image type="content" source="./media/how-to-manage-consistency/consistency-settings.png" alt-text="Azure portal tutarlılık menüsü":::
 
@@ -153,7 +153,7 @@ const client = new CosmosClient({
 const { body } = await item.read({ consistencyLevel: ConsistencyLevel.Eventual });
 ```
 
-### <a name="python-sdk"></a><a id="override-default-consistency-python"></a>Python SDK'sı
+### <a name="python-sdk"></a><a id="override-default-consistency-python"></a>Python SDK 'Sı
 
 ```python
 # Override consistency at the client level
@@ -265,7 +265,7 @@ const sessionToken = headers["x-ms-session-token"];
 const { body } = await item.read({ sessionToken });
 ```
 
-### <a name="python-sdk"></a><a id="utilize-session-tokens-python"></a>Python SDK'sı
+### <a name="python-sdk"></a><a id="utilize-session-tokens-python"></a>Python SDK 'Sı
 
 ```python
 // Get the session token from the last response headers

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88a7600239d6e960fa2e635c9e7d9049a7c02db3
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 4584b0a605bd63c1f71082014d3c0622ca7d2c37
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032367"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587840"
 ---
 # <a name="securing-managed-identities"></a>Yönetilen kimliklerin güvenliğini sağlama
 
@@ -50,11 +50,11 @@ Azure 'da bir denetim düzlemi ve bir veri düzlemi vardır. Denetim düzlemine 
 
 Hedef sistem, kimlik doğrulaması için belirteci kabul ettikten sonra Denetim düzlemi ve veri düzlemi için yetkilendirme için farklı mekanizmaları destekleyebilir.
 
-Azure 'un tüm denetim düzlemi işlemleri [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) tarafından yönetilir ve [azure rol tabanlı Access Control](https://docs.microsoft.com/azure/role-based-access-control/overview)kullanılır. Veri düzleinde, her hedef sistemin kendi yetkilendirme mekanizması vardır. Azure depolama, veri düzleminde Azure RBAC 'yi destekler. Örneğin, Azure App Services kullanan uygulamalar Azure depolama 'dan verileri okuyabilir ve Azure Kubernetes hizmetini kullanan uygulamalar Azure Key Vault depolanan gizli dizileri okuyabilir.
+Azure 'un tüm denetim düzlemi işlemleri [Azure Resource Manager](../../azure-resource-manager/management/overview.md) tarafından yönetilir ve [azure rol tabanlı Access Control](../../role-based-access-control/overview.md)kullanılır. Veri düzleinde, her hedef sistemin kendi yetkilendirme mekanizması vardır. Azure depolama, veri düzleminde Azure RBAC 'yi destekler. Örneğin, Azure App Services kullanan uygulamalar Azure depolama 'dan verileri okuyabilir ve Azure Kubernetes hizmetini kullanan uygulamalar Azure Key Vault depolanan gizli dizileri okuyabilir.
 
-Denetim ve veri düzlemleri hakkında daha fazla bilgi için bkz. [Denetim düzlemi ve veri düzlemi işlemleri-Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/control-plane-and-data-plane).
+Denetim ve veri düzlemleri hakkında daha fazla bilgi için bkz. [Denetim düzlemi ve veri düzlemi işlemleri-Azure Resource Manager](../../azure-resource-manager/management/control-plane-and-data-plane.md).
 
-Tüm Azure hizmetleri sonunda yönetilen kimlikleri destekleyecektir. Daha fazla bilgi için bkz. [Azure kaynakları için yönetilen kimlikleri destekleyen hizmetler](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities).
+Tüm Azure hizmetleri sonunda yönetilen kimlikleri destekleyecektir. Daha fazla bilgi için bkz. [Azure kaynakları için yönetilen kimlikleri destekleyen hizmetler](../managed-identities-azure-resources/services-support-managed-identities.md).
 
 ##  
 
@@ -116,7 +116,7 @@ Bunu, son derece ayrıcalıklı gruplarınızın üyelerini PowerShell ile numar
 
    `Get-AzureADGroupMember -ObjectId <String> [-All <Boolean>] [-Top <Int32>] [<CommonParameters>]`
 
-* [Yönetilen kimliğin hangi kaynaklara eriştiğini öğrendiğinizden emin olun](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-powershell).
+* [Yönetilen kimliğin hangi kaynaklara eriştiğini öğrendiğinizden emin olun](../../role-based-access-control/role-assignments-list-powershell.md).
 
 ## <a name="move-to-managed-identities"></a>Yönetilen kimliklere taşı
 
@@ -126,11 +126,11 @@ Bir hizmet sorumlusu veya bir Azure AD Kullanıcı hesabı kullanıyorsanız, ki
 
 **Yönetilen kimlikler oluşturma hakkında bilgi için bkz.** 
 
-[Kullanıcı tarafından atanan yönetilen kimlik oluşturun](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal). 
+[Kullanıcı tarafından atanan yönetilen kimlik oluşturun](../managed-identities-azure-resources/how-to-manage-ua-identity-portal.md). 
 
-[Kaynak oluşturma sırasında bir sistem tarafından atanmış yönetilen kimliği etkinleştirme](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
+[Kaynak oluşturma sırasında bir sistem tarafından atanmış yönetilen kimliği etkinleştirme](../managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 
-[Mevcut bir kaynak üzerinde sistem tarafından atanmış yönetilen kimliği etkinleştir](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
+[Mevcut bir kaynak üzerinde sistem tarafından atanmış yönetilen kimliği etkinleştir](../managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 
 **Hizmet hesapları hakkında daha fazla bilgi için bkz.**
 
@@ -146,4 +146,3 @@ Bir hizmet sorumlusu veya bir Azure AD Kullanıcı hesabı kullanıyorsanız, ki
 
  
 
- 

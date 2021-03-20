@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 01/14/2021
 ms.author: juliako
-ms.openlocfilehash: fe6be5778997f0ef4a3f53ae45d17352eca60d8e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 35d01fd60d0549a528a45013add48bd203b86d6e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101727269"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654688"
 ---
 # <a name="create-a-video-indexer-account"></a>Video Indexer hesabı oluşturma
 
@@ -203,7 +203,7 @@ Hesap oluşturma işleminin otomatik hale getirmek için iki adımdan oluşan bi
 
 -   [Azure Kamu](../../azure-government/index.yml)'da Azure aboneliği.
 - Azure Kamu 'da Azure AD hesabı.
-- Yukarıdaki [Azure 'a bağlanma önkoşulları](#prerequisites-for-connecting-to-azure)bölümünde açıklandığı gibi, izinlerin ve kaynakların tüm ön gereksinimleri.
+- Yukarıdaki [Azure 'a bağlanma önkoşulları](#prerequisites-for-connecting-to-azure)bölümünde açıklandığı gibi, izinlerin ve kaynakların tüm ön gereksinimleri. [Otomatik akış Için ek önkoşulları](#additional-prerequisites-for-automatic-flow) ve [El Ile akışa yönelik ek önkoşulları](#additional-prerequisites-for-manual-flow)denetlediğinizden emin olun.
 
 ### <a name="create-new-account-via-the-azure-government-portal"></a>Azure Kamu portalı aracılığıyla yeni hesap oluşturma
 

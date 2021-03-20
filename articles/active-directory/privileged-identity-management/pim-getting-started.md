@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5bcfb21ab15355653780355f1b5e459bc806ec8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90600730"
 ---
 # <a name="start-using-privileged-identity-management"></a>Privileged Identity Management'ı kullanmaya başlama
@@ -27,7 +27,7 @@ Bu makalede Privileged Identity Management (PıM) etkinleştirmeyi ve kullanmaya
 
 Azure Active Directory (Azure AD) kuruluşunuzda erişimi yönetmek, denetlemek ve izlemek için Privileged Identity Management (PıM) kullanın. PıM ile Azure kaynakları, Azure AD kaynakları ve Microsoft 365 veya Microsoft Intune gibi diğer Microsoft çevrimiçi hizmetler için gerekli ve anında erişim sağlayabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Privileged Identity Management kullanmak için aşağıdaki lisanslardan birine sahip olmanız gerekir:
 
@@ -67,7 +67,7 @@ Privileged Identity Management kurulduktan sonra, bunun nasıl yapılacağını 
 
 ![Görevleri gösterme ve seçenekleri yönetme Privileged Identity Management gezinti penceresi](./media/pim-getting-started/pim-quickstart-tasks.png)
 
-| Görev + Yönet | Açıklama |
+| Görev + Yönet | Description |
 | --- | --- |
 | **Rollerim**  | Size atanan uygun ve etkin rollerin listesini görüntüler. Burada atanan uygun rolleri etkinleştirebilirsiniz. |
 | **İsteklerim** | Uygun rol atamalarını etkinleştirmek için bekleyen isteklerinizi görüntüler. |
@@ -86,7 +86,7 @@ Privileged Identity Management açmayı kolaylaştırmak için Azure portal pano
 
     ![Tüm hizmetlerde Azure AD Privileged Identity Management](./media/pim-getting-started/pim-all-services-find.png)
 
-1. **Hızlı başlangıç**Privileged Identity Management seçin.
+1. **Hızlı başlangıç** Privileged Identity Management seçin.
 
 1. Privileged Identity Management **hızlı başlangıç** sayfasını panoya sabitlemek için **Dikey pencereyi panoya sabitle ' yi** seçin.
 

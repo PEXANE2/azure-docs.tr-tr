@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 09/15/2020
 ms.author: ambapat
 ms.openlocfilehash: 86d0a336a7d3f5d12ed8e53de802616f839f9eba
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91756832"
 ---
 # <a name="quickstart-provision-and-activate-a-managed-hsm-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak yönetilen bir HSM sağlama ve etkinleştirme
@@ -22,7 +22,7 @@ Azure Key Vault yönetilen HSM, **fıps 140-2 düzey 3** tarafından doğrulanan
 
 Bu hızlı başlangıçta, Azure CLı ile yönetilen bir HSM oluşturup etkinleştireceğinize sahip olursunuz. Bu işlemi tamamladıktan sonra bir gizli dizli depolayacaksınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları tamamlayabilmeniz için aşağıdaki öğelere sahip olmanız gerekir:
 
@@ -63,7 +63,7 @@ Yönetilen bir HSM kaynağı oluşturmak için aşağıdaki girişleri sağlaman
 - Azure konumu.
 - İlk yöneticilerin listesi.
 
-Aşağıdaki örnekte, **geçerli oturum açmış kullanıcıyla** tek yönetici olarak **Doğu ABD 2** konumunda bulunan **Contosoresourcegroup**kaynak grubunda **contosomhsm**adlı bir HSM oluşturulur.
+Aşağıdaki örnekte, **geçerli oturum açmış kullanıcıyla** tek yönetici olarak **Doğu ABD 2** konumunda bulunan **Contosoresourcegroup** kaynak grubunda **contosomhsm** adlı bir HSM oluşturulur.
 
 ```azurecli-interactive
 oid=$(az ad signed-in-user show --query objectId -o tsv)

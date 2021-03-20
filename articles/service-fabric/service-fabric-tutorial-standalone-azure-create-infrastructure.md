@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: e9f62f944fff331bcf2dad1b380161e563614219
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90561849"
 ---
 # <a name="tutorial-create-azure-vm-infrastructure-to-host-a-service-fabric-cluster"></a>Öğretici: Service Fabric kümesi barındırmak için Azure VM altyapısı oluşturma
@@ -39,15 +39,15 @@ Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir.  Hen
 
 3. **Temel bilgiler** sekmesinde, istediğiniz aboneliği ve kaynak grubunu seçtiğinizden emin olun (yeni bir kaynak grubu kullanarak önerilir).
 
-4. **Görüntü** türünü **Windows Server 2016 Datacenter**olarak değiştirin. 
+4. **Görüntü** türünü **Windows Server 2016 Datacenter** olarak değiştirin. 
  
-5. Örnek **boyutunu** **Standart DS2 v2**olarak değiştirin. Bir yönetici **Kullanıcı adı** ve **parola**ayarlayıp ne olduğunu belirterek belirleyin.
+5. Örnek **boyutunu** **Standart DS2 v2** olarak değiştirin. Bir yönetici **Kullanıcı adı** ve **parola** ayarlayıp ne olduğunu belirterek belirleyin.
 
 6. **Gelen bağlantı noktası kurallarını** şimdilik bloke bırakın; Sonraki bölümde bunları yapılandıracağız.
 
 7. **Ağ** sekmesinde, yeni bir **sanal ağ** oluşturun ve adını bir yere göz atın.
 
-8. Ardından, **NIC ağ güvenlik grubunu** **Gelişmiş**olarak ayarlayın. Adını belirterek yeni bir güvenlik grubu oluşturun ve herhangi bir kaynaktan gelen TCP trafiğine izin vermek için aşağıdaki kuralları oluşturun:
+8. Ardından, **NIC ağ güvenlik grubunu** **Gelişmiş** olarak ayarlayın. Adını belirterek yeni bir güvenlik grubu oluşturun ve herhangi bir kaynaktan gelen TCP trafiğine izin vermek için aşağıdaki kuralları oluşturun:
 
    ![Ekran görüntüsü, gelen TCP trafiğine izin veren kuralların oluşturulmasını gösterir.][sf-inbound]
 
@@ -59,7 +59,7 @@ Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir.  Hen
    > [!TIP]
    > Service Fabric’te sanal makinelerinizi birbirine bağlamak için, altyapınızı barındıran VM’lerin aynı kimlik bilgilerine sahip olması gerekir.  Tutarlı kimlik bilgileri elde etmenin iki yaygın yolu vardır: tümünü aynı etki alanına eklemek veya her sanal makinede aynı yönetici parolasını ayarlamak. Neyse ki, Azure aynı **sanal ağ** üzerindeki tüm sanal makinelerin kolayca bağlanmasına izin verir. bu nedenle, tüm örneklerimizi aynı ağ üzerinde sunduğunuzdan emin olun.
 
-9. Başka bir kural ekleyin. Kaynağı **hizmet etiketi** olarak ayarlayın ve kaynak hizmet etiketini **VirtualNetwork**olarak ayarlayın. Service Fabric, şu bağlantı noktalarının küme içindeki iletişim için açılmasını gerektiriyor: 135137-139, 445, 20.001-20031, 20606-20861.
+9. Başka bir kural ekleyin. Kaynağı **hizmet etiketi** olarak ayarlayın ve kaynak hizmet etiketini **VirtualNetwork** olarak ayarlayın. Service Fabric, şu bağlantı noktalarının küme içindeki iletişim için açılmasını gerektiriyor: 135137-139, 445, 20.001-20031, 20606-20861.
 
    ![Ekran görüntüsünde, bir küme için TCP trafiğine izin veren kuralların oluşturulması gösterilmektedir.][vnet-inbound]
 
@@ -67,7 +67,7 @@ Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir.  Hen
 
 ## <a name="creating-more-instances-for-your-service-fabric-cluster"></a>Service Fabric kümeniz için daha fazla örnek oluşturma
 
-Önceki bölümde özetlenen ayarların aynısını bulundurduğunuzdan emin olmak için, iki **sanal makine**başlatın. Özellikle de aynı Yönetici Kullanıcı adını ve parolasını koruyun. **Sanal ağ** ve **NIC ağ güvenlik grubu** yeniden oluşturulmamalıdır; açılır menüden zaten oluşturduğunuz olanları seçin. Her bir örneklerinizin dağıtılması birkaç dakika sürebilir.
+Önceki bölümde özetlenen ayarların aynısını bulundurduğunuzdan emin olmak için, iki **sanal makine** başlatın. Özellikle de aynı Yönetici Kullanıcı adını ve parolasını koruyun. **Sanal ağ** ve **NIC ağ güvenlik grubu** yeniden oluşturulmamalıdır; açılır menüden zaten oluşturduğunuz olanları seçin. Her bir örneklerinizin dağıtılması birkaç dakika sürebilir.
 
 ## <a name="connect-to-your-instances"></a>Örneklerinizi bağlama
 

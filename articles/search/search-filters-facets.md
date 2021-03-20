@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 9360fc000e01e1c52561cbaa3e2f2968e67e2fa2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91740879"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-cognitive-search"></a>Azure Bilişsel Arama bir model filtresi oluşturma 
@@ -29,8 +29,8 @@ ms.locfileid: "91740879"
 
 Modeller dinamiktir ve sorgu üzerinde döndürülür. Arama yanıtları, sonuçlarda gezinmek için kullanılan model kategorileriyle birlikte getirir. Modellerle ilgili bilginiz yoksa, aşağıdaki örnek bir model Gezinti yapısının bir temsilidir.
 
-:::image type="complex" source="media/search-filters-facets/facet-nav.png" alt-text="Filtrelenen arama sonuçları&quot;:::
-&quot;Filtrelenmiş arama sonuçlarıyla iş başlığına göre gruplanmış bir arama iletişim kutusu gösteren resim. Bir ok, sonuçların bir model gezinti yapısında görüntülenen modellerdir " :::image-end:::
+:::image type="complex" source="media/search-filters-facets/facet-nav.png" alt-text="Filtrelenen arama sonuçları":::
+"Filtrelenmiş arama sonuçlarıyla iş başlığına göre gruplanmış bir arama iletişim kutusu gösteren resim. Bir ok, sonuçların bir model gezinti yapısında görüntülenen modellerdir " :::image-end:::
 
 Çok yönlü gezinmede yeni ve daha fazla ayrıntı istiyor musunuz? Bkz. [Azure bilişsel arama 'da çok yönlü gezintiyi uygulama](search-faceted-navigation.md).
 

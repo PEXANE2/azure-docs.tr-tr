@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 75c80fb85d39298f1130537971bc700897c039d0
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96023744"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>HTTP uç noktasına olayları alma
@@ -24,7 +24,7 @@ HTTP ile tetiklenen bir işlev içeren bir işlev uygulamasına ihtiyacınız va
 
 ## <a name="add-dependencies"></a>Bağımlılık Ekle
 
-.NET sürümünde geliştirme yapıyorsanız NuGet paketi için işlevinizin [bir bağımlılığını ekleyin](../azure-functions/functions-reference-csharp.md#referencing-custom-assemblies) `Microsoft.Azure.EventGrid` [NuGet package](https://www.nuget.org/packages/Microsoft.Azure.EventGrid). Bu makaledeki örneklerde sürüm 1.4.0 veya üzeri bir sürüm gerekir.
+.NET sürümünde geliştirme yapıyorsanız NuGet paketi için işlevinizin [bir bağımlılığını ekleyin](../azure-functions/functions-reference-csharp.md#referencing-custom-assemblies) `Microsoft.Azure.EventGrid` [](https://www.nuget.org/packages/Microsoft.Azure.EventGrid). Bu makaledeki örneklerde sürüm 1.4.0 veya üzeri bir sürüm gerekir.
 
 Diğer dillere yönelik SDK 'lar, [SDK 'Ları Yayımla](./sdk-overview.md#data-plane-sdks) başvurusu aracılığıyla kullanılabilir. Bu paketler,, ve gibi yerel olay türleri için modeller `EventGridEvent` vardır `StorageBlobCreatedEventData` `EventHubCaptureFileCreatedEventData` .
 

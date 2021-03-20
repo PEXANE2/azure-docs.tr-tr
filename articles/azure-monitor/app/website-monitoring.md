@@ -2,14 +2,14 @@
 title: 'Hızlı başlangıç: Azure Izleyici Application Insights Web sitelerini Izleme'
 description: Bu hızlı başlangıçta, Azure Izleyici Application Insights ile istemci/tarayıcı tarafı Web sitesi izlemeyi ayarlamayı öğrenin.
 ms.topic: quickstart
-ms.date: 08/19/2020
+ms.date: 03/19/2021
 ms.custom: mvc
-ms.openlocfilehash: 1773ebb9c490420451a119c8343fb613ff50f029
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 0e10db39c8dbbf81087d696cfbb5b2ded1ae79ac
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102488588"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654943"
 ---
 # <a name="quickstart-start-monitoring-your-website-with-azure-monitor-application-insights"></a>Hızlı başlangıç: Azure Izleyici Application Insights Web sitenizi izlemeye başlayın
 
@@ -60,9 +60,9 @@ Application Insights, şirket içinde veya bulutta çalışan İnternet 'e bağl
 
 ## <a name="configure-application-insights-sdk"></a>SDK Application Insights yapılandırma
 
-1. **Genel bakış**  >  **temel** bileşenleri ' ni seçin ve ardından uygulamanızın **izleme anahtarını** kopyalayın.
+1. **Genel bakış** ' ı seçin ve ardından uygulamanızın **bağlantı dizesini** kopyalayın. Bu örnek için, bağlantı dizesinin yalnızca Izleme anahtarı bölümüne ihtiyacımız vardır `InstrumentationKey=00000000-0000-0000-0000-000000000000;` .
 
-   ![Yeni Application Insights kaynağı formu](media/website-monitoring/instrumentation-key-001.png)
+    :::image type="content" source="media/website-monitoring/keys.png" alt-text="İzleme anahtarı ve bağlantı dizesi içeren Genel Bakış sayfasının ekran görüntüsü.":::
 
 1. Aşağıdaki betiği, ``hello_world.html`` kapatma etiketinden önce dosyanıza ekleyin ``</head>`` :
 
@@ -76,7 +76,7 @@ Application Insights, şirket içinde veya bulutta çalışan İnternet 'e bağl
     crossOrigin: "anonymous", // When supplied this will add the provided value as the cross origin attribute on the script tag
     // onInit: null, // Once the application insights instance has loaded and initialized this callback function will be called with 1 argument -- the sdk instance (DO NOT ADD anything to the sdk.queue -- As they won't get called)
     cfg: { // Application Insights Configuration
-        instrumentationKey: "YOUR_INSTRUMENTATION_KEY_GOES_HERE"
+        connectionString:"InstrumentationKey=YOUR_INSTRUMENTATION_KEY_GOES_HERE;" 
         /* ...Other Configuration Options... */
     }});
     </script>
@@ -84,7 +84,7 @@ Application Insights, şirket içinde veya bulutta çalışan İnternet 'e bağl
 
     > [!NOTE]
     > Geçerli kod parçacığı (yukarıda listelenen) sürümü "5", sürüm kod parçacığında ZF: "#" olarak kodlanır ve [geçerli sürüm ve yapılandırma ayrıntıları GitHub 'da kullanılabilir](https://go.microsoft.com/fwlink/?linkid=2156318).
-   
+
 1. ``hello_world.html`` dosyasını düzenleyerek izleme anahtarınızı ekleyin.
 
 1. ``hello_world.html`` dosyasını yerel tarayıcı oturumunda açın. Bu eylem tek sayfalı bir görünüm oluşturur. Birden çok test-sayfa görünümü oluşturmak için tarayıcınızı yenileyebilirsiniz.
@@ -95,7 +95,7 @@ Application Insights, şirket içinde veya bulutta çalışan İnternet 'e bağl
 
    Genel bakış sayfasındaki dört varsayılan grafik, sunucu tarafı uygulama verilerini kapsar. JavaScript SDK 'Sı ile istemci/tarayıcı tarafı etkileşimlerini seçtiğimiz için, sunucu tarafı SDK 'Sı yüklü olmadığı müddetçe bu belirli görünüm uygulanmaz.
 
-1. **Analiz** ![ uygulama Haritası simgesini seçin ](media/website-monitoring/006.png) .  Bu eylem, Application Insights tarafından toplanan tüm verileri analiz etmek için zengin bir sorgu dili sağlayan **Analytics**'i açar. İstemci tarafı tarayıcı istekleriyle ilgili verileri görüntülemek için aşağıdaki sorguyu çalıştırın:
+1. **Günlükleri** seçin.  Bu eylem, Application Insights tarafından toplanan tüm verileri analiz etmek için zengin bir sorgu dili sağlayan **günlükleri** açar. İstemci tarafı tarayıcı istekleriyle ilgili verileri görüntülemek için aşağıdaki sorguyu çalıştırın:
 
     ```kusto
     // average pageView duration by name
@@ -112,19 +112,15 @@ Application Insights, şirket içinde veya bulutta çalışan İnternet 'e bağl
     | render timechart
     ```
 
-   ![Belirli bir süre içindeki kullanıcı isteklerinin analiz grafiği](./media/website-monitoring/analytics-query.png)
+   :::image type="content" source="media/website-monitoring/log-query.png" alt-text="Bir süre içinde kullanıcı isteklerinin Log Analytics grafiğinin ekran görüntüsü.":::
 
-1. **Genel Bakış** sayfasına geri gidin. **Araştır** üst bilgisi altında **tarayıcı**' yı seçin ve ardından **performans**' ı seçin.  Web sitenizin performansıyla ilgili ölçümler görüntülenir. Web sitenizde hataların ve özel durumların çözümlenmesi için karşılık gelen bir görünüm vardır. [Uçtan uca işlem ayrıntılarına](./transaction-diagnostics.md)erişmek için **örnekler** seçebilirsiniz.
+1. **Genel Bakış** sayfasına geri gidin. **Araştır** üst bilgisi altında **performans** ' ı seçin ve **tarayıcı** sekmesini seçin.  Web sitenizin performansıyla ilgili ölçümler görüntülenir. Web sitenizde hataların ve özel durumların çözümlenmesi için karşılık gelen bir görünüm vardır. [Uçtan uca işlem ayrıntılarına](./transaction-diagnostics.md)erişmek için **örnekler** seçebilirsiniz.
 
-   ![Sunucu ölçüm grafiği](./media/website-monitoring/browser-performance.png)
+     :::image type="content" source="media/website-monitoring/performance.png" alt-text="Tarayıcı ölçümleri grafiğinin performans sekmesinin ekran görüntüsü.":::
 
-1. Ana Application Insights menüsünde, **kullanım** üst bilgisi altında [**Kullanıcılar**](./usage-segmentation.md) ' ı seçerek [Kullanıcı davranışı analizi araçlarını](./usage-overview.md)keşfetmeye başlayabilirsiniz. Tek bir makineden test edildiğimiz için yalnızca bir kullanıcının verilerini görebiliriz. Canlı bir Web sitesi için kullanıcıların dağıtılması şöyle görünebilir:
-
-     ![Kullanıcı grafiği](./media/website-monitoring/usage-users.png)
+1. Ana Application Insights menüsünde, **kullanım** üst bilgisi altında [**Kullanıcılar**](./usage-segmentation.md) ' ı seçerek [Kullanıcı davranışı analizi araçlarını](./usage-overview.md)keşfetmeye başlayabilirsiniz. Tek bir makineden test edildiğimiz için yalnızca bir kullanıcının verilerini görebiliriz.
 
 1. Birden çok sayfa içeren daha karmaşık bir Web sitesi için, ziyaretçilerin web sitenizin çeşitli kısımlarını ele aldığı patika izlemek için [**Kullanıcı akışları**](./usage-flows.md) aracını kullanabilirsiniz.
-
-   ![Kullanıcı Akışları görselleştirmesi](./media/website-monitoring/user-flows.png)
 
 Web sitelerini izlemeye yönelik daha gelişmiş yapılandırma hakkında daha fazla bilgi edinmek için bkz. [JAVASCRIPT SDK API başvurusu](./javascript.md).
 

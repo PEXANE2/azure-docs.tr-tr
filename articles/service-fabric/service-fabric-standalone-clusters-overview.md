@@ -4,10 +4,10 @@ description: Service Fabric kümeler Windows Server ve Linux üzerinde çalış�
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.openlocfilehash: a3162a3d02510ce8efab6c5bcac0f1fdd2b2539b
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94684007"
 ---
 # <a name="overview-of-service-fabric-standalone-clusters"></a>Tek başına Service Fabric kümelerine genel bakış
@@ -54,7 +54,7 @@ Uygulama taleplerine zaman içinde değişiklik yapılır. Daha fazla uygulama i
 
 Daha fazla bilgi için [tek başına kümeleri ölçeklendirin](service-fabric-cluster-scaling-standalone.md).
 
-## <a name="upgrading"></a>Yükseltmenin
+## <a name="upgrading"></a>Yükseltme
 
 Tek başına küme, tamamen sahip olduğunuz bir kaynaktır. Temel alınan işletim sisteminde düzeltme eki uygulama ve doku yükseltmeleri başlatma konusunda siz sorumlusunuz. Kümenizi otomatik çalışma zamanı yükseltmeleri alacak şekilde ayarlayabilir, Microsoft yeni bir sürüm yayınlar veya istediğiniz desteklenen bir çalışma zamanı sürümünü seçmenizi sağlar. Doku yükseltmelerine ek olarak, işletim sistemini de değiştirebilir ve sertifikalar ya da uygulama bağlantı noktaları gibi küme yapılandırmasını güncelleştirebilirsiniz. 
 

@@ -13,16 +13,16 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f92625131a35dc91c860923ec6523c189830f65
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: bab8e8c6dfb944e496c636d53217e63175be9fbc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102552159"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587857"
 ---
 # <a name="securing-service-principals"></a>Hizmet sorumlularının güvenliğini sağlama
 
-Azure Active Directory (Azure AD) [hizmet sorumlusu](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) , tek bir Kiracıdaki veya dizindeki bir uygulama nesnesinin yerel gösterimidir.  Uygulama örneğinin kimliği olarak çalışır. Hizmet sorumluları, uygulamaya kimlerin erişebileceğini ve uygulamanın erişebileceği kaynakları tanımlar. Bir hizmet sorumlusu, uygulamanın kullanıldığı her bir kiracıda oluşturulur ve genel olarak benzersiz uygulama nesnesine başvurur. Kiracı, hizmet sorumlusunun oturum açma ve kaynaklara erişme güvenliğini sağlar.  
+Azure Active Directory (Azure AD) [hizmet sorumlusu](../develop/app-objects-and-service-principals.md) , tek bir Kiracıdaki veya dizindeki bir uygulama nesnesinin yerel gösterimidir.  Uygulama örneğinin kimliği olarak çalışır. Hizmet sorumluları, uygulamaya kimlerin erişebileceğini ve uygulamanın erişebileceği kaynakları tanımlar. Bir hizmet sorumlusu, uygulamanın kullanıldığı her bir kiracıda oluşturulur ve genel olarak benzersiz uygulama nesnesine başvurur. Kiracı, hizmet sorumlusunun oturum açma ve kaynaklara erişme güvenliğini sağlar.  
 
 ### <a name="tenant-service-principal-relationships"></a>Kiracı hizmeti sorumlusu ilişkileri
 Tek kiracılı bir uygulamanın, kendi ana kiracısında yalnızca bir hizmet sorumlusu vardır. Çok kiracılı bir Web uygulaması veya API, her kiracıda bir hizmet sorumlusu gerektirir. Bir hizmet sorumlusu, bu kiracıya ait bir kullanıcı uygulamanın veya API 'sinin kullanımına yeniden geldiğinde oluşturulur. Bu izin, çok kiracılı uygulama ile ilişkili hizmet sorumluları arasında bire çok bir ilişki oluşturur.
@@ -39,7 +39,7 @@ Belirli bir uygulama örneğinin iki farklı özelliği vardır: ApplicationId (
 
 ApplicationId, genel uygulamayı temsil eder ve kiracılar genelinde tüm uygulama örnekleri için aynıdır. ObjectID, bir uygulama nesnesi için benzersiz bir değerdir ve hizmet sorumlusunu temsil eder. Kullanıcılar, gruplar ve diğer kaynaklarda olduğu gibi objectID, Azure AD 'de bir uygulama örneğini benzersiz bir şekilde belirlemesine yardımcı olur.
 
-Bu konuyla ilgili daha ayrıntılı bilgi için bkz. [uygulama ve hizmet sorumlusu ilişkisi](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals).
+Bu konuyla ilgili daha ayrıntılı bilgi için bkz. [uygulama ve hizmet sorumlusu ilişkisi](../develop/app-objects-and-service-principals.md).
 
 Azure PowerShell, Azure CLı, Microsoft Graph, Azure portal ve diğer araçları kullanarak bir kiracıda bir uygulama ve hizmet sorumlusu nesnesi (ObjectID) oluşturabilirsiniz. 
 
@@ -63,7 +63,7 @@ Sertifikalar daha güvenlidir: mümkünse istemci sertifikalarını kullanın. �
 
 * Parolanız 
 
-Azure Key Vault hakkında daha fazla bilgi ve sertifika ve gizli yönetim için nasıl kullanılacağı hakkında daha fazla bilgi için, bkz. [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/overview) ve [Azure Portal kullanarak Key Vault erişim ilkesi atama](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal). 
+Azure Key Vault hakkında daha fazla bilgi ve sertifika ve gizli yönetim için nasıl kullanılacağı hakkında daha fazla bilgi için, bkz. [Azure Key Vault](../../key-vault/general/overview.md) ve [Azure Portal kullanarak Key Vault erişim ilkesi atama](../../key-vault/general/assign-access-policy-portal.md). 
 
  ### <a name="challenges-and-mitigations"></a>Güçlükler ve azaltmaları
 Aşağıdaki tabloda, hizmet sorumlularını kullanırken karşılaşabileceğiniz güçlüklere yönelik azaltmaları sunulmaktadır.
@@ -89,7 +89,7 @@ PowerShell’i kullanma
 `Get-AzureADServicePrincipal -All:$true` 
 
 
-Daha fazla bilgi için bkz. [Get-AzureADServicePrincipal](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipal)
+Daha fazla bilgi için bkz. [Get-AzureADServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal)
 
 ## <a name="assess-service-principal-security"></a>Hizmet sorumlusu güvenliğini değerlendir
 
@@ -105,7 +105,7 @@ Hizmet sorumlusu oturum açma, koşullu erişimle yönetiyoruz.| Azure AD oturum
 | Varsayılan Azure RBAC rolü katkıda bulunur. |İhtiyaçları değerlendirin ve bu gereksinimi karşılamak için en az olası izinlerle rolü uygulayın.|
 
 ## <a name="move-from-a-user-account-to-a-service-principal"></a>Bir kullanıcı hesabından hizmet sorumlusuna gitme  
-Hizmet sorumlusu olarak bir Azure Kullanıcı hesabı kullanıyorsanız, [yönetilen bir kimliğe](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet) veya hizmet sorumlusuna taşıyıp taşıyabileceğinizi değerlendirin. Yönetilen bir kimlik kullanmazsak, gerekli görevleri çalıştırmak için yeterli izinlere ve kapsama sahip bir hizmet sorumlusu sağlayın. Bir uygulamayı veya [PowerShell](https://docs.microsoft.com/azure/active-directory/develop/howto-authenticate-service-principal-powershell)'i [kaydederek](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)bir hizmet sorumlusu oluşturabilirsiniz.
+Hizmet sorumlusu olarak bir Azure Kullanıcı hesabı kullanıyorsanız, [yönetilen bir kimliğe](../../app-service/overview-managed-identity.md?tabs=dotnet) veya hizmet sorumlusuna taşıyıp taşıyabileceğinizi değerlendirin. Yönetilen bir kimlik kullanmazsak, gerekli görevleri çalıştırmak için yeterli izinlere ve kapsama sahip bir hizmet sorumlusu sağlayın. Bir uygulamayı veya [PowerShell](../develop/howto-authenticate-service-principal-powershell.md)'i [kaydederek](../develop/howto-create-service-principal-portal.md)bir hizmet sorumlusu oluşturabilirsiniz.
 
 Microsoft Graph kullanırken, [Bu örnekte olduğu gibi](/powershell/azure/create-azure-service-principal-azureps), belirli API 'nin belgelerini denetleyin ve uygulama için izin türünün desteklendiğinden emin olun.
 
@@ -115,7 +115,7 @@ Microsoft Graph kullanırken, [Bu örnekte olduğu gibi](/powershell/azure/creat
 
 [Hizmet sorumlusu oluşturma](../develop/howto-create-service-principal-portal.md)
 
- [Hizmet sorumlusu oturum açma işlemlerini izleme](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins#sign-ins-report)
+ [Hizmet sorumlusu oturum açma işlemlerini izleme](../reports-monitoring/concept-sign-ins.md#sign-ins-report)
 
 **Hizmet hesaplarının güvenliğini sağlama hakkında daha fazla bilgi için:**
 

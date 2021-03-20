@@ -10,17 +10,17 @@ ms.date: 08/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
 ms.openlocfilehash: f069f711ccf5672041ea6f3b15a52fa2b3ba2022
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90900040"
 ---
 # <a name="tutorial-connect-to-azure-stack-edge-pro-with-gpu"></a>Öğretici: GPU ile Azure Stack Edge Pro 'ya bağlanma
 
 Bu öğreticide, yerel Web Kullanıcı arabirimini kullanarak Azure Stack Edge Pro cihazınıza yerleşik bir GPU ile nasıl bağlanabileceğinizi açıklanmaktadır.
 
-Bağlantı işleminin tamamlanması 5 dakika sürebilir.
+Bağlantı işleminin tamamlanması 5 dakika kadar sürebilir.
 
 Bu öğreticide şunları öğrenirsiniz:
 
@@ -41,7 +41,7 @@ Azure Stack Edge Pro cihazınızı GPU ile yapılandırmadan ve ayarlamadan önc
 
 1. Bilgisayarınızda Ethernet bağdaştırıcısını, 192.168.100.5 ve alt ağ 255.255.255.0 statik IP adresiyle Azure Stack Edge Pro cihazına bağlanacak şekilde yapılandırın.
 
-2. Bilgisayarınızı cihazınızda bağlantı noktası 1 ' e bağlayın. Bilgisayarı doğrudan cihaza (anahtar olmadan) bağlıyorsanız, bir çapraz kablo veya USB Ethernet bağdaştırıcısı kullanın. Cihazınızda bağlantı noktası 1 ' i tanımlamak için aşağıdaki çizimi kullanın.
+2. Bilgisayarınızı cihazınızdaki PORT 1'e bağlayın. Bilgisayar cihaza doğrudan bağlanıyorsa (anahtar olmadan) çapraz bağlantılı kablo veya USB Ethernet bağdaştırıcısı kullanın. Cihazınızda PORT 1'i belirlemek için aşağıdaki çizimi kullanın.
 
     ![Kabloları takılmış bir cihazın arka yüzü](./media/azure-stack-edge-gpu-deploy-install/ase-two-pci-slots.png)
 
@@ -63,7 +63,7 @@ Azure Stack Edge Pro cihazınızı GPU ile yapılandırmadan ve ayarlamadan önc
     ![Azure Stack Edge Pro cihaz oturum açma sayfası](./media/azure-stack-edge-deploy-connect-setup-activate/image3.png)
 
 6. İstem sırasında cihaz yönetici parolasını değiştirin.  
-    Yeni parola 8 ile 16 arasında karakter içermelidir. Şu karakterlerden üçünü içermelidir: büyük harf, küçük harf, sayısal ve özel karakterler.
+    Yeni parola 8 ile 16 arasında karakter içermelidir. Parola şu karakterlerden üçünü içermelidir: küçük harf, büyük harf, rakam ve özel karakterler.
 
 Artık cihazınızın **genel bakış** sayfasında olursunuz. Bir sonraki adım, cihazınızın ağ ayarlarını yapılandırmaktır.
 

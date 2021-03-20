@@ -11,10 +11,10 @@ author: peterclu
 ms.date: 01/09/2020
 ms.custom: designer
 ms.openlocfilehash: 86cb5260a59f864658fbb7ac1c1da2d943c6253e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90893423"
 ---
 # <a name="use-a-keyboard-to-use-azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısını kullanmak için klavye kullanma
@@ -53,7 +53,7 @@ Modül özelliklerini ayarlamak için:
 
 ## <a name="navigation-shortcuts"></a>Gezinti kısayolları
 
-| U | Açıklama |
+| U | Description |
 |-|-|
 | Ctrl + F6 | Tuval ve modül ağacı arasında odağı değiştirme |
 | Ctrl + F1   | Modül ağacındaki bir düğüme odaklanan bilgi kartını açın |
@@ -68,7 +68,7 @@ Erişim anahtarıyla aşağıdaki kısayolları kullanın. Erişim anahtarları 
 | U | Eylem |
 |-|-|
 | Erişim tuşu + R | Çalıştır |
-| Erişim tuşu + P | Yayımla |
+| Erişim tuşu + P | Yayımlama |
 | Erişim tuşu + C | Kopyalama |
 | Erişim tuşu + D | Dağıtma |
 | Erişim tuşu + ı | Çıkarım ardışık düzeni oluştur/güncelleştir |

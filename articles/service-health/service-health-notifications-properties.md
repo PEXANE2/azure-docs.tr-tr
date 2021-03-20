@@ -4,10 +4,10 @@ description: Hizmet durumu bildirimleri Microsoft Azure tarafından yayınlanan 
 ms.topic: conceptual
 ms.date: 4/12/2018
 ms.openlocfilehash: 4f2b4a0779d775ed5be5bfa28831cccc68c33caf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86529021"
 ---
 # <a name="use-the-azure-portal-to-view-service-health-notifications"></a>Hizmet durumu bildirimlerini görüntülemek için Azure portal kullanma
@@ -24,7 +24,7 @@ Hizmet durumu bildirimleri Azure tarafından yayımlanır ve aboneliğinizdeki k
 
 Her hizmet durumu bildirimi, kapsamlarınızla ilgili ayrıntıları ve kaynaklarınızın etkisini içerir. Ayrıntılar şunları içerir:
 
-Özellik adı | Açıklama
+Özellik adı | Description
 -------- | -----------
 lardan | Şu değerlerden biri: **yönetici** veya **işlem**.
 correlationId | Genellikle dize biçimindeki bir GUID. Aynı eyleme ait olan olaylar genellikle aynı Bağıntıkimliği 'ı paylaşır.
@@ -37,18 +37,18 @@ Dosya | Genellikle karşılık gelen REST çağrısının HTTP durum kodu, ancak
 eventTimestamp | Olay, olaya karşılık gelen isteği işleyen Azure hizmeti tarafından oluşturulduğunda zaman damgası.
 submissionTimestamp | Olay sorgulama için kullanılabilir hale geldiğinde zaman damgası.
 subscriptionId | Bu olayın günlüğe kaydedildiği Azure aboneliği.
-durum | İşlemin durumunu açıklayan dize. Bazı ortak değerler şunlardır: **başlatıldı**, **devam ediyor**, **başarılı**, **başarısız**, **etkin**ve **çözümlendi**.
+durum | İşlemin durumunu açıklayan dize. Bazı ortak değerler şunlardır: **başlatıldı**, **devam ediyor**, **başarılı**, **başarısız**, **etkin** ve **çözümlendi**.
 operationName | İşlemin adı.
 category | Bu özellik her zaman **Servicehealth**' dır.
 resourceId | Etkilenen kaynağın kaynak KIMLIĞI.
 Properties. title | Bu iletişim için yerelleştirilmiş başlık. Varsayılan değer İngilizce 'dir.
 Properties. Communication | HTML işaretlemesi ile iletişimin yerelleştirilmiş ayrıntıları. Varsayılan değer İngilizce 'dir.
-Properties. incidentType | Şu değerlerden biri: **Actionrequired**, **bilgilendirici**, **olay**, **bakım**veya **güvenlik**.
+Properties. incidentType | Şu değerlerden biri: **Actionrequired**, **bilgilendirici**, **olay**, **bakım** veya **güvenlik**.
 Properties. Trackingıd | Bu olayın ilişkilendirildiği olay. Bir olayla ilgili olayları ilişkilendirmek için bunu kullanın.
-Properties. ımpactedservices | Olaydan etkilenen hizmetleri ve bölgeleri açıklayan, kaçan JSON blobu. Özelliği, her birinin bir **ServiceName**'e sahip olduğu hizmetlerin bir listesini ve her birinin bir **BölgeAdı**olan etkilenen bölgelerin bir listesini içerir.
+Properties. ımpactedservices | Olaydan etkilenen hizmetleri ve bölgeleri açıklayan, kaçan JSON blobu. Özelliği, her birinin bir **ServiceName**'e sahip olduğu hizmetlerin bir listesini ve her birinin bir **BölgeAdı** olan etkilenen bölgelerin bir listesini içerir.
 Properties. defaultLanguageTitle | Ingilizce olarak iletişim.
 Properties. defaultLanguageContent | HTML biçimlendirme veya düz metin olarak Ingilizce iletişim.
-Properties. aşama | **Olay**ve **güvenlik** için olası değerler **etkin,** **Çözümlenmiş** veya **RCA**. **Actionrequired** veya **bilgilendirme** için tek değer **etkindir.** **Bakım** Için: **etkin**, **planlı**, **sürüyor**, **iptal edildi**, yeniden **zamanlandı**, **çözümlendi**veya **tamamlanmıştır**.
+Properties. aşama | **Olay** ve **güvenlik** için olası değerler **etkin,** **Çözümlenmiş** veya **RCA**. **Actionrequired** veya **bilgilendirme** için tek değer **etkindir.** **Bakım** Için: **etkin**, **planlı**, **sürüyor**, **iptal edildi**, yeniden **zamanlandı**, **çözümlendi** veya **tamamlanmıştır**.
 Properties. Communicationıd | Bu olayın ilişkilendirildiği iletişim.
 
 ### <a name="details-on-service-health-level-information"></a>Hizmet durumu düzeyi bilgileri hakkındaki ayrıntılar

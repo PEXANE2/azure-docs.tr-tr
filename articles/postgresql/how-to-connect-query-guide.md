@@ -8,19 +8,19 @@ author: mksuni
 ms.author: sumuth
 ms.date: 09/21/2020
 ms.openlocfilehash: 413f5fc1f6579102b62042c1470816470c2e1449
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92546560"
 ---
-# <a name="connect-and-query-overview-for-azure-database-for-postgresql--single-server"></a>PostgreSQL için Azure veritabanı 'na bağlanma ve sorguya genel bakış-tek sunucu
+# <a name="connect-and-query-overview-for-azure-database-for-postgresql--single-server"></a>PostgreSQL için Azure Veritabanı bağlantı ve sorgulama süreçlerine genel bakış - Tek Sunucu
 
 Aşağıdaki belge, PostgreSQL için Azure veritabanı tek sunucu ile bağlanma ve sorgu oluşturmayı gösteren örneklere bağlantılar içerir. Bu kılavuzda, aşağıdaki desteklenen dillerde sunucusuna bağlanmak için kullanabileceğiniz TLS önerileri ve uzantısı da bulunur.
 
 ## <a name="quickstarts"></a>Hızlı Başlangıçlar
 
-| Hızlı Başlangıç | Açıklama |
+| Hızlı Başlangıç | Description |
 |---|---|
 |[PgAdmin](https://www.pgadmin.org/)|Sunucuya bağlanmak için pgAdmin kullanabilirsiniz ve veritabanı nesnelerinin oluşturulmasını, bakımını ve kullanımını basitleştirir.|
 |[Azure Cloud Shell 'de psql](quickstart-create-server-database-azure-cli.md#connect-to-the-azure-database-for-postgresql-server-by-using-psql)|Bu makalede, sunucunuzdaki verileri sorgulamak, eklemek, güncelleştirmek ve silmek için [Azure Cloud Shell](../cloud-shell/overview.md) [**psql**](https://www.postgresql.org/docs/current/static/app-psql.html) 'in nasıl çalıştırılacağı gösterilmektedir. Geliştirme ortamınızda yüklüyse **psql** 'i çalıştırabilirsiniz|

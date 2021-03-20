@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 09/14/2020
 ms.author: victorh
 ms.openlocfilehash: 71ff23e749139087f24da406474403167dcc1c0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90563157"
 ---
 # <a name="what-are-the-azure-firewall-manager-architecture-options"></a>Azure Güvenlik Duvarı Yöneticisi mimari seçenekleri nelerdir?
@@ -23,7 +23,7 @@ Azure Güvenlik Duvarı Yöneticisi, iki ağ mimarisi türü için güvenlik yö
    [Azure sanal WAN hub](../virtual-wan/virtual-wan-about.md#resources) 'ı, hub ve bağlı bileşen mimarilerini kolayca oluşturmanıza olanak tanıyan, Microsoft tarafından yönetilen bir kaynaktır. Güvenlik ve yönlendirme ilkeleri böyle bir hub ile ilişkilendirildiğinde, bu, *[güvenli bir sanal hub](secured-virtual-hub.md)* olarak adlandırılır. 
 - **Hub sanal ağı**
 
-   Bu, kendi oluşturduğunuz ve yönettiğiniz standart bir Azure sanal ağı. Güvenlik ilkeleri böyle bir hub ile ilişkilendirildiğinde, *hub sanal ağı*olarak adlandırılır. Şu anda yalnızca Azure Güvenlik Duvarı Ilkesi desteklenir. İş yükü sunucularınızı ve hizmetlerinizi içeren sanal ağları eşleyebilir. Ayrıca, herhangi bir bağlı ağa eşlenmiş olmayan tek başına sanal ağlarda güvenlik duvarlarını yönetebilirsiniz.
+   Bu, kendi oluşturduğunuz ve yönettiğiniz standart bir Azure sanal ağı. Güvenlik ilkeleri böyle bir hub ile ilişkilendirildiğinde, *hub sanal ağı* olarak adlandırılır. Şu anda yalnızca Azure Güvenlik Duvarı Ilkesi desteklenir. İş yükü sunucularınızı ve hizmetlerinizi içeren sanal ağları eşleyebilir. Ayrıca, herhangi bir bağlı ağa eşlenmiş olmayan tek başına sanal ağlarda güvenlik duvarlarını yönetebilirsiniz.
 
 ## <a name="comparison"></a>Karşılaştırma
 
@@ -44,7 +44,7 @@ Aşağıdaki tabloda bu iki mimari seçeneği karşılaştırılmaktadır ve kur
 |**Birden çok güvenlik sağlayıcısı desteği**|Üçüncü taraf güvenlik duvarlarına Zorlamalı tünel elle yapılandırılmış şekilde desteklenir|İki güvenlik sağlayıcısı için otomatik destek: özel trafik filtrelemesi için Azure Güvenlik Duvarı ve Internet filtreleme için üçüncü taraf|
 |**Application Gateway üzerinde Web Uygulaması Güvenlik Duvarı** |Sanal ağda destekleniyor|Şu anda bağlı olan ağda destekleniyor|
 |**Ağ sanal gereci**|Sanal ağda destekleniyor|Şu anda bağlı olan ağda destekleniyor|
-|**Azure DDoS koruması standart desteği**|Evet|Hayır|
+|**Azure DDoS koruması standart desteği**|Yes|Hayır|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
