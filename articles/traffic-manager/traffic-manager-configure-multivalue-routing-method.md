@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: duau
 ms.openlocfilehash: 85e088dda767a6f6c80ac0a9f6eed84e8802e5ee
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95994936"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>Traffic Manager çoklu değer yönlendirme yöntemini yapılandırma
@@ -37,7 +37,7 @@ Traffic Manager profili için bir kaynak grubu oluşturun.
 ## <a name="create-a-traffic-manager-profile"></a>Traffic Manager profili oluşturma
 En düşük gecikme süresine sahip bir uç noktaya göndererek Kullanıcı trafiğini yönlendiren bir Traffic Manager profili oluşturun.
 
-1. Ekranın sol üst kısmında, **Create a resource**  >  **Networking**  >  **profil**  >  **Oluştur** Traffic Manager kaynak ağı oluştur ' u seçin.
+1. Ekranın sol üst kısmında,   >    >  **profil**  >  **Oluştur** Traffic Manager kaynak ağı oluştur ' u seçin.
 2. **Traffic Manager profili oluştur**' da, aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin ve **Oluştur**' u seçin:
     
     | Ayar                 | Değer                                              |

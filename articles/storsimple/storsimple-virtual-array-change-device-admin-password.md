@@ -16,17 +16,17 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8bc8846d546faec194617ccb753cdbd105e16bf9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85513627"
 ---
-# <a name="change-the-storsimple-virtual-array-device-administrator-password-via-storsimple-device-manager"></a>StorSimple Sanal dizisi Cihaz Yöneticisi parolasını StorSimple ile değiştirin Aygıt Yöneticisi
+# <a name="change-the-storsimple-virtual-array-device-administrator-password-via-storsimple-device-manager"></a>StorSimple Sanal dizisi Cihaz Yöneticisi parolasını StorSimple ile değiştirin Device Manager
 
 ## <a name="overview"></a>Genel Bakış
 
-StorSimple Sanal dizisine erişmek için Windows PowerShell arabirimini kullandığınızda, bir cihaz yöneticisi parolası girmeniz gerekir. StorSimple cihazı ilk sağlandıysa ve başlatıldığında varsayılan parola *Parola1*olur. Verilerinizin güvenliği için, ilk kez oturum açtığınızda varsayılan parolanın süresi dolar ve bu parolayı değiştirmeniz gerekir.
+StorSimple Sanal dizisine erişmek için Windows PowerShell arabirimini kullandığınızda, bir cihaz yöneticisi parolası girmeniz gerekir. StorSimple cihazı ilk sağlandıysa ve başlatıldığında varsayılan parola *Parola1* olur. Verilerinizin güvenliği için, ilk kez oturum açtığınızda varsayılan parolanın süresi dolar ve bu parolayı değiştirmeniz gerekir.
 
 Cihaz yönetici parolasını, cihaz üretim ortamınızda dağıtıldıktan sonra dilediğiniz zaman değiştirmek için yerel Web Kullanıcı arabirimini veya Azure portal de kullanabilirsiniz. Bu yordamların her biri bu makalede açıklanmıştır.
 
@@ -63,8 +63,8 @@ Yerel Web Kullanıcı arabirimi aracılığıyla cihaz yöneticisi parolasını 
 1. Yerel Web Kullanıcı arabiriminde cihazınız için **bakım**  >  **parolası değiştirme** ' ye tıklayın.
    
     ![Parola1 Değiştir](./media/storsimple-virtual-array-change-device-admin-password/image40.png)
-2. **Geçerli parolayı**girin.
-3. Yeni bir **parola**belirtin. Parola en az 8 karakter uzunluğunda olmalıdır. Aşağıdakilerin 3/4 ' ü içermesi gerekir: büyük harf, küçük harf, sayısal ve özel karakterler.
+2. **Geçerli parolayı** girin.
+3. Yeni bir **parola** belirtin. Parola en az 8 karakter uzunluğunda olmalıdır. Aşağıdakilerin 3/4 ' ü içermesi gerekir: büyük harf, küçük harf, sayısal ve özel karakterler.
    
     Parolanızın son 24 parolayla aynı olamayacağını unutmayın.
 4. Onaylamak için parolayı yeniden girin.

@@ -11,10 +11,10 @@ ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
 ms.openlocfilehash: 5f408699cae9580188a3780fc8f8654eaa97c26b
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97108442"
 ---
 # <a name="tutorial-for-configuring-lexisnexis-with-azure-active-directory-b2c"></a>Lexisnexto yapılandırma öğreticisi Azure Active Directory B2C
@@ -49,7 +49,7 @@ Aşağıdaki mimari diyagram uygulamayı gösterir.
 
 ![LexisNexis-mimari-diyagram ekran görüntüsü](media/partner-lexisnexis/lexisnexis-architecture-diagram.png)
 
-|Adım | Açıklama |
+|Adım | Description |
 |:--------------|:-------------|
 |1. | Kullanıcı bir oturum açma sayfasına ulaştı. Kullanıcı, yeni bir hesap oluşturmak ve sayfaya bilgi girmek için kaydolma ' yı seçer. Azure AD B2C Kullanıcı özniteliklerini toplar.
 | 2. | Azure AD B2C orta katman API 'sini çağırır ve Kullanıcı özniteliklerine geçirir.

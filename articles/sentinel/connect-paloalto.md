@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: 245db436fc3216fe5c8c8f51c50c0ac03190f9eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85564553"
 ---
 # <a name="connect-palo-alto-networks-to-azure-sentinel"></a>Palo Alto ağlarını Azure Sentinel 'e bağlama
@@ -36,7 +36,7 @@ Azure çalışma alanınıza Syslog Aracısı aracılığıyla syslog iletilerin
 
 1.  [Syslog Izlemesini yapılandırma](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/configure-syslog-monitoring) bölümüne gidin ve Azure Sentinel 'e Palo Alto Networks GERECINDEN CEF olay iletmeyi yapılandırmak için adım 2 ve 3 ' ü izleyin.
 
-    1. **Syslog Sunucu biçimini** **BSD**olarak ayarladığınızdan emin olun.
+    1. **Syslog Sunucu biçimini** **BSD** olarak ayarladığınızdan emin olun.
 
        > [!NOTE]
        > PDF 'den Kopyala/yapıştır işlemleri metni değiştirebilir ve rastgele karakterler ekleyebilir. Bunu önlemek için, metni bir düzenleyiciye kopyalayın ve bu örnekte görebileceğiniz gibi, yapıştırmadan önce günlük biçimini bozabilecek tüm karakterleri kaldırın.

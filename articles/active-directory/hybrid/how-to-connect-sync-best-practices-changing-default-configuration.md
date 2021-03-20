@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 70e91ff8fa3666a2dfc5aaad07be7927852b08bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85357707"
 ---
 # <a name="azure-ad-connect-sync-best-practices-for-changing-the-default-configuration"></a>Azure AD Connect eşitleme: varsayılan yapılandırmayı değiştirmek için En Iyi uygulamalar
@@ -61,7 +61,7 @@ Bazı durumlarda, Yükleme Sihirbazı topolojiniz için çalışmayan bir yapıl
 Yukarıdaki resimde, Yükleme Sihirbazı hesap ormanında eski bir Exchange 2003 şeması buldu. Bu şema uzantısı, kaynak ormanı fabrikam ortamında sunulmadan önce eklendi. Eski Exchange uygulamasındaki hiçbir özniteliğin eşitlenmemesini sağlamak için, eşitleme kuralı gösterildiği gibi devre dışı bırakılmalıdır.
 
 ### <a name="change-an-out-of-box-rule"></a>Hazır olmayan kuralı değiştirme
-Yalnızca bir hazır kuralını değiştirmeniz gereken tek zaman, JOIN kuralını değiştirmeniz gerektiğinde olur. Bir öznitelik akışını değiştirmeniz gerekiyorsa, hazır kurallarından daha yüksek önceliğe sahip bir eşitleme kuralı oluşturmanız gerekir. Kopyalamanız gereken tek kural, **ad-Kullanıcı birleşimi içindeki**kuralıdır. Daha yüksek öncelikli bir kuralla, diğer tüm kuralları geçersiz kılabilirsiniz.
+Yalnızca bir hazır kuralını değiştirmeniz gereken tek zaman, JOIN kuralını değiştirmeniz gerektiğinde olur. Bir öznitelik akışını değiştirmeniz gerekiyorsa, hazır kurallarından daha yüksek önceliğe sahip bir eşitleme kuralı oluşturmanız gerekir. Kopyalamanız gereken tek kural, **ad-Kullanıcı birleşimi içindeki** kuralıdır. Daha yüksek öncelikli bir kuralla, diğer tüm kuralları geçersiz kılabilirsiniz.
 
 Kullanıma hazır bir kuralda değişiklik yapmanız gerekiyorsa, kutudan çıkan kuralın bir kopyasını oluşturmanız ve özgün kuralı devre dışı bırakmanız gerekir. Ardından klonlanan kuralda değişiklikleri yapın. Eşitleme kuralı Düzenleyicisi size bu adımlarla yardımcı oluyor. Hazır bir kuralı açtığınızda bu iletişim kutusuyla karşılaşırsınız:  
 ![Uyarı kutudan çıkış kuralı](./media/how-to-connect-sync-best-practices-changing-default-configuration/warningoutofboxrule.png)

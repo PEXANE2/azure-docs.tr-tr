@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: sharrai
 ms.openlocfilehash: ed4e52470264441a99c5ccf0a736bb00233510c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87423125"
 ---
 # <a name="troubleshoot-failback-to-on-premises-from-azure"></a>Azure’dan şirket içine yapılan yeniden çalışma işleminde sorun giderme
@@ -53,7 +53,7 @@ Bu hata şu durumlarda oluşur:
 Bu sorunu çözmek için:
 
 * Azure VM ağının, Azure VM 'nin şirket içi yapılandırma sunucusuyla iletişim kurmasına izin verdiğinden emin olun. Şirket içi veri merkeziniz için bir siteden siteye VPN ayarlayabilir veya Azure VM 'nin sanal ağı üzerinde özel eşleme ile bir Azure ExpressRoute bağlantısı yapılandırabilirsiniz.
-* VM, şirket içi yapılandırma sunucusuyla iletişim kurabiliyorsa, VM 'de oturum açın. Sonra InMage Scout uygulama hizmetini kontrol edin. Çalışmadığını görürseniz, hizmeti el ile başlatın. Hizmet başlatma türünün **Otomatik**olarak ayarlandığından emin olun.
+* VM, şirket içi yapılandırma sunucusuyla iletişim kurabiliyorsa, VM 'de oturum açın. Sonra InMage Scout uygulama hizmetini kontrol edin. Çalışmadığını görürseniz, hizmeti el ile başlatın. Hizmet başlatma türünün **Otomatik** olarak ayarlandığından emin olun.
 
 ### <a name="error-code-78052"></a>Hata kodu 78052
 

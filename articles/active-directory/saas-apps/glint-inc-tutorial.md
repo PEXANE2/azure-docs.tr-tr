@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
 ms.openlocfilehash: 9bf523fcc7699096b273b79d703770cbe71dcb35
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92448580"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-glint-inc"></a>Öğretici: Glint Inc ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -26,7 +26,7 @@ Bu öğreticide, Glint Inc Azure Active Directory (Azure AD) ile tümleştirmeyi
 * Kullanıcılarınızın Azure AD hesaplarıyla Glint Inc 'ye otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -53,7 +53,7 @@ Glint Inc 'nin tümleştirmesini Azure AD 'ye yapılandırmak için, Galeriden G
 
 ## <a name="configure-and-test-azure-ad-sso-for-glint-inc"></a>Glint Inc için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak, Glint Inc Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, Glint Inc 'deki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak, Glint Inc Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, Glint Inc 'deki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Glint Inc ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 

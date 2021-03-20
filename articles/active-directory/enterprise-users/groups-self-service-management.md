@@ -16,10 +16,10 @@ ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c6b2b8e3374c362f937aa5cfe106e8da9f9aa39f
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96548010"
 ---
 # <a name="set-up-self-service-group-management-in-azure-active-directory"></a>Azure Active Directory içinde Self Servis Grup yönetimini ayarlama 
@@ -33,7 +33,7 @@ Azure portal veya Azure AD PowerShell kullanılarak güvenlik grupları oluştur
 İçinde oluşturulan gruplar | Güvenlik grubu varsayılan davranışı | Microsoft 365 grubu varsayılan davranışı
 ------------------ | ------------------------------- | ---------------------------------
 [Azure AD PowerShell](../enterprise-users/groups-settings-cmdlets.md) | Üyeler yalnızca sahipler tarafından eklenebilir<br>Görünür ancak erişim paneli 'ne katılması için kullanılamaz | Tüm kullanıcılara katılması için aç
-[Azure Portal](https://portal.azure.com) | Üyeler yalnızca sahipler tarafından eklenebilir<br>Görünür ancak erişim paneli 'ne katılması için kullanılamaz<br>Grup oluşturma sırasında otomatik olarak sahip atanmadı | Tüm kullanıcılara katılması için aç
+[Azure portalı](https://portal.azure.com) | Üyeler yalnızca sahipler tarafından eklenebilir<br>Görünür ancak erişim paneli 'ne katılması için kullanılamaz<br>Grup oluşturma sırasında otomatik olarak sahip atanmadı | Tüm kullanıcılara katılması için aç
 [Erişim paneli](https://account.activedirectory.windowsazure.com/r#/joinGroups) | Tüm kullanıcılara katılması için aç<br>Grup oluşturulduğunda üyelik seçenekleri değiştirilebilir | Tüm kullanıcılara katılması için aç<br>Grup oluşturulduğunda üyelik seçenekleri değiştirilebilir
 
 ## <a name="self-service-group-management-scenarios"></a>Self Servis Grup yönetimi senaryoları

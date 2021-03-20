@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
 ms.openlocfilehash: 111fff6e35bed9c2af9c638549362039f25def12
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100386025"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Data Factory işlem hattında dallanma ve zincirleme etkinlikleri
@@ -87,7 +87,7 @@ C# .NET konsol uygulaması oluşturma:
 
 ### <a name="create-a-data-factory-client"></a>Veri fabrikası istemcisi oluşturma
 
-1. *Program.cs* açın ve aşağıdaki deyimleri ekleyin:
+1. *Program. cs* ' i açın ve aşağıdaki deyimleri ekleyin:
 
    ```csharp
    using System;
@@ -145,7 +145,7 @@ C# .NET konsol uygulaması oluşturma:
 
 ### <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
-1. `CreateOrUpdateDataFactory` *Program.cs* dosyanıza bir yöntem ekleyin:
+1. `CreateOrUpdateDataFactory` *Program. cs* dosyanıza bir yöntem ekleyin:
 
    ```csharp
    static Factory CreateOrUpdateDataFactory(DataFactoryManagementClient client)
@@ -178,7 +178,7 @@ C# .NET konsol uygulaması oluşturma:
 
 ## <a name="create-an-azure-storage-linked-service"></a>Azure Depolama bağlı hizmeti oluşturma
 
-1. `StorageLinkedServiceDefinition` *Program.cs* dosyanıza bir yöntem ekleyin:
+1. `StorageLinkedServiceDefinition` *Program. cs* dosyanıza bir yöntem ekleyin:
 
    ```csharp
    static LinkedServiceResource StorageLinkedServiceDefinition(DataFactoryManagementClient client)
@@ -210,7 +210,7 @@ Bu bölümde, biri kaynak ve bir havuz için olmak üzere iki veri kümesi oluş
 
 *Azure blob veri kümesi* oluşturan bir yöntem ekleyin. Desteklenen özellikler ve ayrıntılar hakkında daha fazla bilgi için bkz. [Azure blob veri kümesi özellikleri](connector-azure-blob-storage.md#dataset-properties).
 
-`SourceBlobDatasetDefinition` *Program.cs* dosyanıza bir yöntem ekleyin:
+`SourceBlobDatasetDefinition` *Program. cs* dosyanıza bir yöntem ekleyin:
 
 ```csharp
 static DatasetResource SourceBlobDatasetDefinition(DataFactoryManagementClient client)
@@ -237,7 +237,7 @@ Azure Blob’da kaynak verilerini temsil eden bir veri kümesi tanımlayın. Bu 
 
 ### <a name="create-a-dataset-for-a-sink-azure-blob"></a>Havuz Azure blobu için veri kümesi oluşturma
 
-1. `SourceBlobDatasetDefinition` *Program.cs* dosyanıza bir yöntem ekleyin:
+1. `SourceBlobDatasetDefinition` *Program. cs* dosyanıza bir yöntem ekleyin:
 
    ```csharp
    static DatasetResource SinkBlobDatasetDefinition(DataFactoryManagementClient client)

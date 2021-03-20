@@ -9,10 +9,10 @@ ms.date: 10/08/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: ac7fc5af21f11699331d41a074e88ae757170664
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91976003"
 ---
 # <a name="tutorial-configure-route-filters-for-microsoft-peering-azure-cli"></a>Öğretici: Microsoft eşlemesi için rota filtrelerini yapılandırma: Azure CLı
@@ -33,7 +33,7 @@ Tüm Azure ve Microsoft 365 hizmetlerine yönelik bağlantı, BGP aracılığıy
 
 * Rota filtrelerini tanımlayın ve bunları ExpressRoute devrenizi ile uygulayın. Yol filtresi, Microsoft eşlemesi aracılığıyla tüketmek üzere planladığınız hizmetlerin listesini seçmenize olanak sağlayan yeni bir kaynaktır. ExpressRoute yönlendiricileri yalnızca yol filtresinde tanımlanan hizmetlere ait olan ön eklerin listesini gönderir.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > - BGP topluluk değerlerini al.
 > - Rota filtresi ve filtre kuralı oluşturma.
@@ -51,7 +51,7 @@ Yönlendirme filtrelerini Microsoft 365 hizmetleriyle birlikte eklemek için, Ex
 > 1 Ağustos 2017 ' den önce yapılandırılmış ExpressRoute bağlantı hattı Microsoft eşlemesi, yol filtreleri tanımlanmasa bile Microsoft eşlemesi aracılığıyla tanıtılan tüm hizmet öneklerini alacak. 1 Ağustos 2017 ' de veya sonrasında yapılandırılan ExpressRoute devrelerinin Microsoft eşlemesi, bir yol filtresi devresine iliştirilene kadar tanıtılan öneklere sahip olmayacaktır.
 > 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Microsoft eşlemesi aracılığıyla hizmetlere başarıyla bağlanmak için aşağıdaki yapılandırma adımlarını gerçekleştirmeniz gerekir:
 

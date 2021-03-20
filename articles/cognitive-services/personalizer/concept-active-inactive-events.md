@@ -6,10 +6,10 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: 7d1044d02ceba1f3d0996b1fe1c8a9a44b31049b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91253658"
 ---
 # <a name="active-and-inactive-events"></a>Etkin olan ve olmayan olaylar
@@ -33,7 +33,7 @@ Genellikle, şu durumlarda bu senaryolar meydana gelir:
 * Kullanıcının görebileceğini veya görmeyebilirsiniz prerendering kullanıcı ARABIRIMI.
 * Uygulamanız, çok sayıda gerçek zamanlı bağlamla derecelendirme çağrılarının yapıldığı ve uygulamanın çıktıyı kullanmasının veya kullanmayabilir.
 
-Bu durumlarda, etkinliğin _devre dışı_olmasını isteyen derece çağrısı yapmak Için kişiselleştirici kullanın. Kişiselleştirici bu olay için bir ödül beklemez ve varsayılan bir ödül uygulamaz.
+Bu durumlarda, etkinliğin _devre dışı_ olmasını isteyen derece çağrısı yapmak Için kişiselleştirici kullanın. Kişiselleştirici bu olay için bir ödül beklemez ve varsayılan bir ödül uygulamaz.
 
 İş mantığınızdaki daha sonra uygulama, sıralama çağrısından bilgileri kullanıyorsa, olayı _etkinleştirmeniz_ yeterlidir. Etkinlik etkin olduğunda, kişiselleştirici bir olay yeniden bekliyor. Reward API 'sine açık bir çağrı yapılmıyorsa, kişiselleştirici varsayılan bir ödül uygular.
 

@@ -4,16 +4,16 @@ description: Azure DevTest Labs eklenen paylaşılan görüntü galerisinden bir
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 9421a1e21be9446b0e59328bd9a3730b57655274
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85483865"
 ---
 # <a name="add-a-vm-using-an-image-from-the-attached-shared-image-gallery"></a>Ekli paylaşılan görüntü galerisinden bir görüntü kullanarak VM ekleme
 Azure DevTest Labs, laboratuvarınızda paylaşılan bir görüntü Galerisi eklemenize ve ardından galerideki görüntüleri laboratuvarda oluşturduğunuz sanal makinelerin temeli olarak kullanmanıza olanak tanır. Laboratuvarınızda paylaşılan görüntü Galerisi 'ni nasıl ekleyeceğinizi öğrenmek için bkz. [paylaşılan görüntü galerisini yapılandırma](configure-shared-image-gallery.md). Bu makalede, ekli paylaşılan görüntü galerisindeki bir görüntüyü temel olarak kullanarak laboratuvara nasıl bir VM ekleyebileceğiniz gösterilmektedir. 
 
-## <a name="azure-portal"></a>Azure portal
+## <a name="azure-portal"></a>Azure portalı
 Bu bölümde, ekli paylaşılan görüntü galerisindeki bir görüntüye göre laboratuvarınızı bir VM 'ye eklemek için Azure portal nasıl kullanacağınızı öğreneceksiniz. Bu bölüm, Azure portal kullanarak VM oluşturmaya yönelik ayrıntılı adım adım yönergeler sağlamaz. Bu ayrıntılar için bkz. [VM oluşturma-Azure Portal](devtest-lab-add-vm.md). Bu yalnızca, ekli paylaşılan görüntü galerisinden bir görüntü seçtiğiniz ve bir görüntünün kullanmak istediğiniz bir sürümünü seçebileceğiniz adımları vurgular. 
 
 Laboratuvarınızda bir VM eklerken, ekli paylaşılan görüntü galerisinden temel görüntü olarak bir görüntü seçebilirsiniz: 

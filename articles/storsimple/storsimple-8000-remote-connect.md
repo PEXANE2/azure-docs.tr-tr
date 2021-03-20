@@ -8,10 +8,10 @@ ms.date: 01/02/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1da688dfb00b26ca6b561d5aa0fb548c221381c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85514567"
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>StorSimple 8000 serisi cihazınıza uzaktan bağlanma
@@ -53,7 +53,7 @@ HTTP üzerinden uzaktan yönetimi etkinleştirmek için Azure portal aşağıdak
 
 1. StorSimple Cihaz Yöneticisi hizmetinize gidin. **Cihazlar** ' ı seçin ve ardından uzaktan yönetim için yapılandırmak istediğiniz cihazı seçin ve tıklatın. **Cihaz ayarları > güvenlik**' e gidin.
 2. **Güvenlik ayarları** dikey penceresinde **Uzaktan Yönetim**' e tıklayın.
-3. **Uzaktan Yönetim** dikey penceresinde, **uzaktan yönetimi etkinleştir** ' i **Evet**olarak ayarlayın.
+3. **Uzaktan Yönetim** dikey penceresinde, **uzaktan yönetimi etkinleştir** ' i **Evet** olarak ayarlayın.
 4. Artık HTTP kullanarak bağlanmayı seçebilirsiniz. (Varsayılan, HTTPS üzerinden bağlandır.) HTTP 'nin seçili olduğundan emin olun.
    
    > [!NOTE]
@@ -67,7 +67,7 @@ Uzaktan yönetimi etkinleştirmek için cihaz seri konsolunda aşağıdaki adım
 #### <a name="to-enable-remote-management-through-the-device-serial-console"></a>Cihaz seri konsolu aracılığıyla uzaktan yönetimi etkinleştirmek için
 1. Seri konsol menüsünde, 1 seçeneğini belirleyin. Cihaza seri konsolu kullanma hakkında daha fazla bilgi için [cihaz seri konsolu aracılığıyla StorSimple için Windows PowerShell Bağlan](storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console)' a gidin.
 2. İsteminde şunu yazın: `Enable-HcsRemoteManagement –AllowHttp`
-3. Cihaza bağlanmak için HTTP kullanma güvenlik açıkları hakkında bildirim alırsınız. İstendiğinde, **Y**yazarak doğrulayın.
+3. Cihaza bağlanmak için HTTP kullanma güvenlik açıkları hakkında bildirim alırsınız. İstendiğinde, **Y** yazarak doğrulayın.
 4. Aşağıdakileri yazarak HTTP 'nin etkinleştirildiğini doğrulayın: `Get-HcsSystem`
 5. **Remotemanagementmode** alanında **Httpsandhttpenabled**' ın görüntülendiğini doğrulayın. Aşağıdaki çizimde, PuTTY içindeki bu ayarlar gösterilmektedir.
    
@@ -152,7 +152,7 @@ Uzaktan yönetimi etkinleştirmek için cihaz seri konsolunda aşağıdaki adım
    
      `Get-HcsSystem`
    
-    **Remotemanagementmode** alanında **httpsenabled**gösterildiğinizden emin olun. Aşağıdaki çizimde, PuTTY içindeki bu ayarlar gösterilmektedir.
+    **Remotemanagementmode** alanında **httpsenabled** gösterildiğinizden emin olun. Aşağıdaki çizimde, PuTTY içindeki bu ayarlar gösterilmektedir.
    
      ![Seri HTTPS etkin](./media/storsimple-remote-connect/HCS_SerialHttpsEnabled.png)
 4. Çıktısından `Get-HcsSystem` , cihazın seri numarasını kopyalayın ve daha sonra kullanmak üzere kaydedin.
@@ -185,7 +185,7 @@ Yukarıdaki yordamların her biri aşağıda açıklanmıştır.
 1. . Cer dosyasına sağ tıklayın ve **sertifikayı yükler**' i seçin. Bu, sertifika alma Sihirbazı 'nı başlatır.
    
     ![Sertifika Içeri aktarma Sihirbazı 1](./media/storsimple-remote-connect/HCS_CertificateImportWizard1.png)
-2. **Depo konumu**Için **yerel makine**' yi seçin ve ardından **İleri**' ye tıklayın.
+2. **Depo konumu** Için **yerel makine**' yi seçin ve ardından **İleri**' ye tıklayın.
 3. **Tüm sertifikaları aşağıdaki depolama alanına yerleştir**' i seçin ve ardından **görüntüle**' ye tıklayın. Uzak konağın kök deposuna gidin ve ardından **İleri**' ye tıklayın.
    
     ![Sertifika Içeri aktarma Sihirbazı 2](./media/storsimple-remote-connect/HCS_CertificateImportWizard2.png)
@@ -195,7 +195,7 @@ Yukarıdaki yordamların her biri aşağıda açıklanmıştır.
 
 #### <a name="to-add-device-serial-numbers-to-the-remote-host"></a>Uzak konağa cihaz seri numaraları eklemek için
 1. Not defteri 'Ni yönetici olarak başlatın ve \Windows\system32\drivers\etckonumunda bulunan Hosts dosyasını açın.
-2. Hosts dosyanıza aşağıdaki üç girişi ekleyin: **veri 0 IP adresi**, **DENETLEYICI 0 sabit IP adresi**ve **Denetleyici 1 sabit IP adresi**.
+2. Hosts dosyanıza aşağıdaki üç girişi ekleyin: **veri 0 IP adresi**, **DENETLEYICI 0 sabit IP adresi** ve **Denetleyici 1 sabit IP adresi**.
 3. Daha önce kaydettiğiniz cihaz seri numarasını girin. Bunu, aşağıdaki görüntüde gösterildiği gibi IP adresiyle eşleyin. Denetleyici 0 ve denetleyici 1 için, seri numarasının (CN adı) sonuna **Controller0** ve **Controller1** ekleyin.
    
     ![Hosts dosyasına CN adı ekleniyor](./media/storsimple-remote-connect/HCS_AddingCNNameToHostsFile.png)
@@ -239,5 +239,5 @@ Uzak Windows PowerShell bağlantısını yapmak istediğiniz bilgisayarda aşağ
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [StorSimple cihazınızı yönetmek Için Windows PowerShell kullanma](storsimple-8000-windows-powershell-administration.md)hakkında daha fazla bilgi edinin.
-* StorSimple [cihazınızı yönetmek Için storsimple Aygıt Yöneticisi hizmetini kullanma](storsimple-8000-manager-service-administration.md)hakkında daha fazla bilgi edinin.
+* StorSimple [cihazınızı yönetmek Için storsimple Device Manager hizmetini kullanma](storsimple-8000-manager-service-administration.md)hakkında daha fazla bilgi edinin.
 

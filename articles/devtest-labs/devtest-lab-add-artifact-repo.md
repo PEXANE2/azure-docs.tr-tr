@@ -4,10 +4,10 @@ description: Azure DevTest Labs içindeki özel yapıt kaynağınız için GitHu
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 225aae5e0a017b711f29a47829b06f8bb7a6a8ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85483151"
 ---
 # <a name="add-a-git-repository-to-store-custom-artifacts-and-resource-manager-templates"></a>Özel yapıtları ve Kaynak Yöneticisi şablonlarını depolamak için bir git deposu ekleme
@@ -36,7 +36,7 @@ Laboratuvarınıza bir depo eklemek için önce deponuzdan anahtar bilgileri al�
 4. GitHub ' ın sağ üst köşesinde profil görüntüsünü seçin ve ardından **Ayarlar**' ı seçin.
 5. Sol taraftaki **kişisel ayarlar** menüsünde **kişisel erişim belirteçleri**' ni seçin.
 6. **Yeni belirteç oluştur**' u seçin.
-7. **Yeni kişisel erişim belirteci** sayfasında, **belirteç açıklaması**altında bir açıklama girin. **Kapsamları Seç**altında varsayılan öğeleri kabul edin ve ardından **belirteç oluştur**' u seçin.
+7. **Yeni kişisel erişim belirteci** sayfasında, **belirteç açıklaması** altında bir açıklama girin. **Kapsamları Seç** altında varsayılan öğeleri kabul edin ve ardından **belirteç oluştur**' u seçin.
 8. Oluşturulan belirteci kaydedin. Belirteci daha sonra kullanırsınız.
 9. GitHub 'ı kapatın.   
 10. [Laboratuvarınızı depoya bağlama](#connect-your-lab-to-the-repository) bölümüne devam edin.
@@ -47,7 +47,7 @@ Laboratuvarınıza bir depo eklemek için önce deponuzdan anahtar bilgileri al�
 2. Proje giriş sayfasında **kod**' u seçin.
 3. Kopya URL 'sini görüntülemek için, proje **kodu** sayfasında, **Kopyala**' yı seçin.
 4. URL 'YI kaydedin. URL 'YI daha sonra kullanırsınız.
-5. Kişisel erişim belirteci oluşturmak için, Kullanıcı hesabı açılan menüsünde **profilimi**seçin.
+5. Kişisel erişim belirteci oluşturmak için, Kullanıcı hesabı açılan menüsünde **profilimi** seçin.
 6. Profil bilgileri sayfasında **güvenlik**' i seçin.
 7. **Güvenlik** sekmesinde, **Ekle**' yi seçin.
 8. **Kişisel erişim belirteci oluştur** sayfasında:
@@ -60,10 +60,10 @@ Laboratuvarınıza bir depo eklemek için önce deponuzdan anahtar bilgileri al�
 10. [Laboratuvarınızı depoya bağlama](#connect-your-lab-to-the-repository) bölümüne devam edin.
 
 ## <a name="connect-your-lab-to-the-repository"></a>Laboratuvarınızı depoya bağlama
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)’ında oturum açın.
+1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
 2. **Diğer hizmetler**' i seçin ve ardından hizmetler listesinden **DevTest Labs** ' i seçin.
 3. Laboratuvarlar listesinden laboratuvarınızı seçin. 
-4. **Yapılandırma ve ilke depoları ' nı ve**  >  **Repositories**  >  **Ekle**' yi seçin.
+4. **Yapılandırma ve ilke depoları ' nı ve**  >    >  **Ekle**' yi seçin.
 
     ![Depo Ekle düğmesi](./media/devtest-lab-add-repo/devtestlab-add-repo.png)
 5. İkinci **depolar** sayfasında, aşağıdaki bilgileri belirtin:

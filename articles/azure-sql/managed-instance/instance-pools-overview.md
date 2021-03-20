@@ -13,10 +13,10 @@ ms.author: bonova
 ms.reviewer: sstein
 ms.date: 09/05/2019
 ms.openlocfilehash: bc345509db1c2a14afb0ae781eccad8f77395c18
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97347073"
 ---
 # <a name="what-is-an-azure-sql-managed-instance-pool-preview"></a>Azure SQL yönetilen örnek Havuzu (Önizleme) nedir?
@@ -117,7 +117,7 @@ Belirli değerleri (örneğin, örnek düzeyi harmanlama, saat dilimi, veri traf
 
 Havuzlardaki yönetilen örneklerin ayrılmış sanal çekirdek ve RAM 'i olsa da, yerel disk (tempdb kullanımı için) ve ağ kaynakları paylaşır. Büyük olasılıkla, havuzda birden çok örnek aynı anda yüksek kaynak tüketimine sahip olursa *gürültülü komşu* efektini denemek mümkündür. Bu davranışı gözlemlerseniz, bu örnekleri daha büyük bir havuza veya tek örnek olarak dağıtmaya göz önünde bulundurun.
 
-## <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
+## <a name="security-considerations"></a>Güvenlik konuları
 
 Bir havuzda dağıtılan örnekler aynı sanal makineyi paylaştığından, daha yüksek güvenlik riskleri sunan özellikleri devre dışı bırakmayı veya bu özelliklere yönelik erişim izinlerini güvenli bir şekilde kontrol etmek isteyebilirsiniz. Örneğin, CLR tümleştirmesi, yerel yedekleme ve geri yükleme, veritabanı e-postası vb.
 

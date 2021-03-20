@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4860918fc4f995ad267fc35b142d3fcb460ce177
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89002836"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-11"></a>Azure Search .NET SDK sürüm 1,1 ' e yükseltin
@@ -198,7 +198,7 @@ sp.ScoringParameters =
 ```
 
 ### <a name="model-class-changes"></a>Model sınıfı değişiklikleri
-[İşlem yöntemi değişikliklerinde](#OperationMethodChanges)açıklanan imza değişikliklerinden dolayı, `Microsoft.Azure.Search.Models` ad alanındaki birçok sınıf yeniden adlandırıldı veya kaldırılmıştır. Örneğin:
+[İşlem yöntemi değişikliklerinde](#OperationMethodChanges)açıklanan imza değişikliklerinden dolayı, `Microsoft.Azure.Search.Models` ad alanındaki birçok sınıf yeniden adlandırıldı veya kaldırılmıştır. Örnek:
 
 * `IndexDefinitionResponse` değiştirdi `AzureOperationResponse<Index>`
 * `DocumentSearchResponse`, `DocumentSearchResult` olarak yeniden adlandırıldı

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: 32cbdabef4d89c7fabb47a52ebf0589690b7ab33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85566056"
 ---
 # <a name="connect-check-point-to-azure-sentinel"></a>Denetim noktasını Azure Sentinel 'e bağlama
@@ -35,7 +35,7 @@ Syslog Aracısı aracılığıyla CEF biçimindeki syslog iletilerini Azure çal
 1. **Temel dağıtıma** aşağı kaydırın ve aşağıdaki yönergeleri kullanarak bağlantıyı kurmak için yönergeleri izleyin:
    - **Syslog bağlantı noktasını** **514** olarak veya aracıda ayarladığınız bağlantı noktasını ayarlayın.
      - CLı 'daki **Name** ve **target-Server IP adresini** Syslog Aracısı adı ve IP adresi ile değiştirin.
-     - Biçimini **CEF**olarak ayarlayın.
+     - Biçimini **CEF** olarak ayarlayın.
 1. R 77.30 veya R 80.10 sürümünü kullanıyorsanız, **yüklemelere** kadar ilerleyin ve sürümünüz Için bir günlük dışarı aktarıcı yükleme yönergelerini izleyin.
 1. 3. [Adım: bağlantıyı doğrulama adımına](connect-cef-verify.md)geçin.
  

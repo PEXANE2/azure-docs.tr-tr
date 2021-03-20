@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: jeedes
 ms.openlocfilehash: 2c322983890c109251308b740c13d245b518a1a2
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92454079"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-elqano-sso"></a>Öğretici: Elqano SSO ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, Elqano SSO 'yu Azure Active Directory (Azure AD) ile tümleşti
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -55,7 +55,7 @@ Elqano SSO 'yu Azure AD 'ye tümleştirmeyi yapılandırmak için, Galeriden, y�
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-elqano-sso"></a>Elqano SSO 'SU için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Elqano SSO 'Su Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında Elqano SSO 'SU arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Elqano SSO 'Su Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında Elqano SSO 'SU arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Elqano SSO 'SU ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 

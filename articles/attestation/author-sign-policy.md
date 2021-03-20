@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 3e36de62b79788e2efdc3e9abf711924c4fba0c4
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93341816"
 ---
 # <a name="how-to-author-an-attestation-policy"></a>Kanıtlama ilkesi yazma
@@ -36,7 +36,7 @@ issuancerules
  
 İlke dosyası, yukarıda görüldüğü gibi üç parçaya sahiptir:
 
-- **Sürüm** : sürüm, izlenen dilbilgisinin sürüm numarasıdır. 
+- **Sürüm**: sürüm, izlenen dilbilgisinin sürüm numarasıdır. 
 
     ```
     version=MajorVersion.MinorVersion   
@@ -44,9 +44,9 @@ issuancerules
 
     Şu anda desteklenen tek sürüm 1,0 sürümüdür.
 
-- **authorizationrules** : Azure kanıtlama 'nın **ıssuancerules** 'e ilerlemeniz gerekip gerekmediğini belirlemek için, ilk olarak denetlenecek talep kuralları koleksiyonu. Talep kuralları tanımlandıkları sırada geçerlidir.
+- **authorizationrules**: Azure kanıtlama 'nın **ıssuancerules**'e ilerlemeniz gerekip gerekmediğini belirlemek için, ilk olarak denetlenecek talep kuralları koleksiyonu. Talep kuralları tanımlandıkları sırada geçerlidir.
 
-- **ıssuancerules** : ilkede tanımlanan kanıtlama sonucuna ek bilgi eklemek için değerlendirilecek bir talep kuralları koleksiyonu. Talep kuralları tanımlandıkları sırada uygulanır ve ayrıca isteğe bağlıdır.
+- **ıssuancerules**: ilkede tanımlanan kanıtlama sonucuna ek bilgi eklemek için değerlendirilecek bir talep kuralları koleksiyonu. Talep kuralları tanımlandıkları sırada uygulanır ve ayrıca isteğe bağlıdır.
 
 Daha fazla bilgi için bkz. [talep ve talep kuralları](claim-rule-grammar.md) .
    
@@ -84,9 +84,9 @@ Daha fazla bilgi için bkz. [talep ve talep kuralları](claim-rule-grammar.md) .
   };
   ```
 
-  Gelen talep kümesi, tür, değer ve veren ile eşleşen bir talep içeriyorsa, Permit () eylemi ilke altyapısına **ıssuancerules** 'yi işlemesini söyler.
+  Gelen talep kümesi, tür, değer ve veren ile eşleşen bir talep içeriyorsa, Permit () eylemi ilke altyapısına **ıssuancerules**'yi işlemesini söyler.
   
-5. **Issuancerules** 'e talep kuralları ekleyin.
+5. **Issuancerules**'e talep kuralları ekleyin.
 
   ```
   version=1.0;
@@ -128,8 +128,8 @@ Bir ilke dosyası oluşturduktan sonra, bir ilkeyi JWS biçiminde karşıya yük
      ```
 
 2. Seçim İlkeyi imzalayın. Azure kanıtlama aşağıdaki algoritmaları destekler:
-     - **Hiçbiri** : ilke yükünü imzamayın.
-     - **RS256** : ilke yükünü imzalamak için desteklenen algoritma
+     - **Hiçbiri**: ilke yükünü imzamayın.
+     - **RS256**: ilke yükünü imzalamak için desteklenen algoritma
 
 3. JWS 'yi karşıya yükleyin ve ilkeyi doğrulayın.
      - İlke dosyası sözdizimi hatalarından muaf değilse, ilke dosyası hizmet tarafından kabul edilir.

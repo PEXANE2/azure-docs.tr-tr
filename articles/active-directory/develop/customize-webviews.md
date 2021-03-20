@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.openlocfilehash: a8486ec87b5198231a33b1dab382ba457c8c8066
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85478136"
 ---
 # <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>Nasıl yapılır: iOS/macOS için tarayıcıları ve Web görünümlerini özelleştirme
@@ -74,11 +74,11 @@ Kullandığınız tarayıcı, tanımlama bilgilerini paylaşma nedeniyle SSO den
 
 | Teknoloji    | Tarayıcı türü  | iOS kullanılabilirliği | macOS kullanılabilirliği | Tanımlama bilgilerini ve diğer verileri paylaşır  | MSAL kullanılabilirliği | SSO |
 |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|-------------:|
-| [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) | Sistem | iOS12 ve yukarı | macOS 10,15 ve yukarı | Evet | iOS ve macOS 10.15 + | w/Safari örnekleri
-| [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | Sistem | iOS11 ve yukarı | Yok | Evet | Yalnızca iOS |  w/Safari örnekleri
-| [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | Sistem | iOS11 ve yukarı | Yok | Hayır | Yalnızca iOS | Hayır * *
-| **SFSafariViewController** | Sistem | iOS10 | Yok | Evet | Yalnızca iOS |  w/Safari örnekleri
-| **WKWebView**  | Uygulama içi | iOS8 ve yukarı | macOS 10,10 ve yukarı | Hayır | iOS ve macOS | Hayır * *
+| [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) | Sistem | iOS12 ve yukarı | macOS 10,15 ve yukarı | Yes | iOS ve macOS 10.15 + | w/Safari örnekleri
+| [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | Sistem | iOS11 ve yukarı | YOK | Evet | Yalnızca iOS |  w/Safari örnekleri
+| [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | Sistem | iOS11 ve yukarı | Yok | No | Yalnızca iOS | Hayır * *
+| **SFSafariViewController** | Sistem | iOS10 | YOK | Evet | Yalnızca iOS |  w/Safari örnekleri
+| **WKWebView**  | Uygulama içi | iOS8 ve yukarı | macOS 10,10 ve yukarı | No | iOS ve macOS | Hayır * *
 
 * * SSO 'nun çalışması için, belirteçlerin uygulamalar arasında paylaşılması gerekir. Bu, bir belirteç önbelleği veya iOS için Microsoft Authenticator gibi aracı uygulaması gerektirir.
 
@@ -96,7 +96,7 @@ Her istek, `MSALInteractiveTokenParameters.webviewParameters.webviewType` özell
 
 Ayrıca, MSAL özelliğini ayarlayarak özel bir geçirmeyi destekler `WKWebView` `MSALInteractiveTokenParameters.webviewParameters.customWebView` .
 
-Örneğin:
+Örnek:
 
 Objective-C
 ```objc

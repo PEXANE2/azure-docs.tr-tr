@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
 ms.openlocfilehash: 530cf3b20820e34913612419d0ffa731a70f6a58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85484018"
 ---
 # <a name="create-an-environment-with-self-contained-service-fabric-cluster-in-azure-devtest-labs"></a>Azure DevTest Labs içinde kendi içinde Service Fabric kümeyle bir ortam oluşturun
@@ -33,20 +33,20 @@ Service Fabric kümeler, DevTest Labs içindeki ortamlar kullanılarak oluşturu
 
     ![Listeden Service Fabric laboratuvar kümesi seçin](./media/create-environment-service-fabric-cluster/select-service-fabric-cluster.png)
 4. **Ayarları Yapılandır** sayfasında, aşağıdaki adımları uygulayın: 
-    1. Küme **ortamınız**için bir **ad** belirtin. Bu, Azure 'daki Service Fabric kümesinin oluşturulacağı kaynak grubunun adıdır. 
+    1. Küme **ortamınız** için bir **ad** belirtin. Bu, Azure 'daki Service Fabric kümesinin oluşturulacağı kaynak grubunun adıdır. 
     2. Küme sanal makineleri için **işletim sistemini (OS)** seçin. Varsayılan değer: **Windows**.
     3. Kümenin **Yöneticisi** için bir ad belirtin. 
     4. Yönetici için bir **parola** belirtin. 
-    5. **Sertifika**için sertifika bilgilerinizi Base64 olarak kodlanmış bir dize olarak girin. Bir sertifika oluşturmak için aşağıdaki adımları uygulayın:
+    5. **Sertifika** için sertifika bilgilerinizi Base64 olarak kodlanmış bir dize olarak girin. Bir sertifika oluşturmak için aşağıdaki adımları uygulayın:
         1. **Create-ClusterCertificate.ps1** dosyasını [Git deposundan](https://github.com/Azure/azure-devtestlab/tree/master/Environments/ServiceFabric-LabCluster)indirin. Alternatif olarak, depoyu makinenizde klonlayın. 
         2. **PowerShell**’i başlatın. 
         3. Komutunu kullanarak **ps1** dosyasını çalıştırın `.\Create-ClusterCertificate.ps1` . Not defteri 'nde açılan bir metin dosyası, bu sayfadaki sertifikayla ilgili alanları doldurmanız için gereken bilgileri görürsünüz. . 
-    6. **Sertifika için parolayı**girin.
+    6. **Sertifika için parolayı** girin.
     7. Sertifikanızın **parmak izini** belirtin.
     8. **Ayarları Yapılandır** sayfasında **Ekle** ' yi seçin. 
 
         ![Küme ayarlarını yapılandır](./media/create-environment-service-fabric-cluster/configure-settings.png)
-5. Küme oluşturulduktan sonra, önceki adımda belirttiğiniz ortam adına sahip bir kaynak grubu görürsünüz. Genişlettikten sonra Service Fabric kümeyi görürsünüz. Kaynak grubunun durumu **oluşturma**sırasında takılırsa, araç çubuğunda **Yenile** ' yi seçin. **Service Fabric küme** ortamı, Linux veya Windows üzerinde 5 düğümlü 1-NodeType kümesi oluşturur.
+5. Küme oluşturulduktan sonra, önceki adımda belirttiğiniz ortam adına sahip bir kaynak grubu görürsünüz. Genişlettikten sonra Service Fabric kümeyi görürsünüz. Kaynak grubunun durumu **oluşturma** sırasında takılırsa, araç çubuğunda **Yenile** ' yi seçin. **Service Fabric küme** ortamı, Linux veya Windows üzerinde 5 düğümlü 1-NodeType kümesi oluşturur.
 
     Aşağıdaki örnekte, **hayal fabricclusterrg** , Service Fabric kümesi için özel olarak oluşturulan kaynak grubunun adıdır. Laboratuvar ortamlarının oluşturuldukları kaynak grubu içinde kendi kendine dahil olduğunu unutmamak önemlidir. Bu, ortamı tanımlayan, yalnızca yeni oluşturulan kaynak grubu içindeki kaynaklara veya [Laboratuvar tarafından kullanılmak üzere yapılandırılmış sanal ağlara](devtest-lab-configure-vnet.md)erişebilecek olan şablona yol gösterir. Yukarıdaki bu örnek, aynı kaynak grubundaki tüm gerekli kaynakları oluşturur.
 
@@ -86,7 +86,7 @@ Service Fabric kümeler, bir zamanlamaya göre de başlatılabilir veya durdurul
 Başlatma zamanlamasını kabul etmek için aşağıdaki adımları uygulayın:
 
 1. Sol taraftaki menüden **otomatik başlatma** seçeneğini belirleyin
-2. **Bu Service Fabric kümesinin otomatik başlatma için zamanlanmasını Izin ver**Için **Açık '** ı seçin. Bu sayfa yalnızca laboratuvar sahibinin kullanıcıların sanal makinelerini veya Service Fabric kümelerini otomatik olarak otomatik olarak açmasına izin verdiği durumlarda etkinleştirilir.
+2. **Bu Service Fabric kümesinin otomatik başlatma için zamanlanmasını Izin ver** Için **Açık '** ı seçin. Bu sayfa yalnızca laboratuvar sahibinin kullanıcıların sanal makinelerini veya Service Fabric kümelerini otomatik olarak otomatik olarak açmasına izin verdiği durumlarda etkinleştirilir.
 3. Araç çubuğunda **Kaydet**’i seçin. 
 
     ![Otomatik yıldız sayfası](./media/create-environment-service-fabric-cluster/set-auto-start-settings.png)

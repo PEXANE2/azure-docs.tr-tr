@@ -4,10 +4,10 @@ description: Azure DevTest Labs ortamlarını Azure DevOps sürekli tümleştirm
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: be726b2a3f67fd3dada4fdc3cf794922a3c18d06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85483032"
 ---
 # <a name="integrate-environments-into-your-azure-devops-cicd-pipelines"></a>Ortamları Azure DevOps CI/CD işlem hatlarınızla tümleştirin
@@ -37,9 +37,9 @@ Yayın tanımı oluşturmak için aşağıdakileri yapın:
 3.  **Daha sonra Seç**' i seçin ve ardından **Oluştur** ' u seçerek bir varsayılan ortamla ve bağlı yapıtlara sahip yeni bir yayın tanımı oluşturun.
 4.  Kısayol menüsünü açmak için, yeni yayın tanımında, ortam adının yanındaki **üç nokta (...)** simgesini seçin ve ardından **değişkenleri Yapılandır**' ı seçin.
 5.  **Yapılandırma-ortamı** penceresinde, yayın tanımı görevlerinde kullandığınız değişkenler için aşağıdaki değerleri girin:
-1.  **Tınlogin**Için SQL yönetici oturum açma adını girin.
-2.  **Tınloginpassword**IÇIN, SQL Yöneticisi oturum açma tarafından kullanılacak parolayı girin. Parolayı gizlemek ve güvenli hale getirmek için "asma Lock" simgesini kullanın.
-3.  **DatabaseName**Için SQL veritabanı adını girin.
+1.  **Tınlogin** Için SQL yönetici oturum açma adını girin.
+2.  **Tınloginpassword** IÇIN, SQL Yöneticisi oturum açma tarafından kullanılacak parolayı girin. Parolayı gizlemek ve güvenli hale getirmek için "asma Lock" simgesini kullanın.
+3.  **DatabaseName** Için SQL veritabanı adını girin.
 4.  Bu değişkenler örnek ortamlara özgüdür, farklı ortamların farklı değişkenleri olabilir.
 
 ## <a name="create-an-environment"></a>Ortam oluşturma
@@ -47,12 +47,12 @@ Dağıtımın sonraki aşaması, geliştirme veya test amacıyla kullanılacak o
 
 1. Yayın tanımında, **Görev Ekle**' yi seçin.
 2. **Görevler** sekmesinde bir ortam oluşturma görevi Azure DevTest Labs ekleyin. Görevi şu şekilde yapılandırın:
-    1. **Azure RM aboneliği**Için, **kullanılabilir Azure hizmet bağlantıları** listesinden bir bağlantı seçin veya Azure aboneliğinize daha kısıtlı bir izinler bağlantısı oluşturun. Daha fazla bilgi için bkz. [Azure Resource Manager hizmeti uç noktası](/azure/devops/pipelines/library/service-endpoints).
-2. **Laboratuvar adı**için, daha önce oluşturduğunuz örneğin adını seçin.
-3. **Depo adı**için Kaynak Yöneticisi şablonunun (201) gönderildiği depoyu seçin.
-4. **Şablon adı**için, kaynak kodu deponuza kaydettiğiniz ortamın adını seçin *. 
-5. **Laboratuvar adı**, **Depo adı**ve **şablon adı** Azure Kaynak kimliklerinin kolay temsilleridir. Kolay adın el ile girilmesi hatalara neden olur, bilgileri seçmek için açılan listeleri kullanın.
-6. **Ortam adı**için, laboratuvar dahilinde ortam örneğini benzersiz bir şekilde tanımlamak için bir ad girin.  Laboratuvar dahilinde benzersiz olmalıdır.
+    1. **Azure RM aboneliği** Için, **kullanılabilir Azure hizmet bağlantıları** listesinden bir bağlantı seçin veya Azure aboneliğinize daha kısıtlı bir izinler bağlantısı oluşturun. Daha fazla bilgi için bkz. [Azure Resource Manager hizmeti uç noktası](/azure/devops/pipelines/library/service-endpoints).
+2. **Laboratuvar adı** için, daha önce oluşturduğunuz örneğin adını seçin.
+3. **Depo adı** için Kaynak Yöneticisi şablonunun (201) gönderildiği depoyu seçin.
+4. **Şablon adı** için, kaynak kodu deponuza kaydettiğiniz ortamın adını seçin *. 
+5. **Laboratuvar adı**, **Depo adı** ve **şablon adı** Azure Kaynak kimliklerinin kolay temsilleridir. Kolay adın el ile girilmesi hatalara neden olur, bilgileri seçmek için açılan listeleri kullanın.
+6. **Ortam adı** için, laboratuvar dahilinde ortam örneğini benzersiz bir şekilde tanımlamak için bir ad girin.  Laboratuvar dahilinde benzersiz olmalıdır.
 7. **Parametre dosyası** ve **Parametreler**, ortama özel parametrelerin geçirilmesine izin verir. Ya da her ikisi de parametre değerlerini ayarlamak için kullanılabilir. Bu örnek için parametreler bölümü kullanılacaktır. Ortamda tanımladığınız değişkenlerin adlarını kullanın, örneğin: `-administratorLogin "$(administratorLogin)" -administratorLoginPassword "$(administratorLoginPassword)" -databaseName "$(databaseName)" -cacheSKUCapacity 1`
 8. Ortam şablonundaki bilgiler, şablonun çıkış bölümünde geçirilebilirler. Diğer görevlerin verileri kullanabilmesi için **ortam şablonu çıktısına göre çıkış değişkenleri oluştur ' u** işaretleyin. `$(Reference name.Output Name)` İzlenecek modeldir. Örneğin, başvuru adı DTL ise ve şablondaki çıkış adı konumdaysa, değişken olur `$(DTL.location)` .
 
@@ -62,9 +62,9 @@ Son aşama Azure DevTest Labs örneğiniz için dağıttığınız ortamı silme
 Yayın tanımında, **Görev Ekle**' yi seçin ve ardından **Dağıt** sekmesine bir **ortamı sil Azure DevTest Labs** ekleyin. Bunu şu şekilde yapılandırın:
 
 1. VM 'yi silmek için bkz. [Azure DevTest Labs görevler](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks):
-    1. **Azure RM aboneliği**Için, **kullanılabilir Azure hizmet bağlantıları** listesinden bir bağlantı seçin veya Azure aboneliğinize daha kısıtlı bir izinler bağlantısı oluşturun. Daha fazla bilgi için bkz. [Azure Resource Manager hizmeti uç noktası](/azure/devops/pipelines/library/service-endpoints).
-    2. **Laboratuvar adı**için ortamın bulunduğu Laboratuvarı seçin.
-    3. **Ortam adı**için, kaldırılacak ortamın adını girin.
+    1. **Azure RM aboneliği** Için, **kullanılabilir Azure hizmet bağlantıları** listesinden bir bağlantı seçin veya Azure aboneliğinize daha kısıtlı bir izinler bağlantısı oluşturun. Daha fazla bilgi için bkz. [Azure Resource Manager hizmeti uç noktası](/azure/devops/pipelines/library/service-endpoints).
+    2. **Laboratuvar adı** için ortamın bulunduğu Laboratuvarı seçin.
+    3. **Ortam adı** için, kaldırılacak ortamın adını girin.
 2. Yayın tanımı için bir ad girin ve sonra kaydedin.
 
 ## <a name="next-steps"></a>Sonraki adımlar

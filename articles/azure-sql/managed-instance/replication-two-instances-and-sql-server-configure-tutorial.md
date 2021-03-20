@@ -11,10 +11,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 11/21/2019
 ms.openlocfilehash: d2b45f5b51f4656294632aa46f679a7a09c06ed3
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94593935"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>Öğretici: Azure SQL yönetilen örneği ve SQL Server arasında işlemsel çoğaltmayı yapılandırma
@@ -40,7 +40,7 @@ Bu öğretici, deneyimli bir hedef kitle için tasarlanmıştır ve kullanıcın
 > [!NOTE]
 > Bu makalede, Azure SQL yönetilen örneği 'nde [İşlemsel çoğaltmanın](/sql/relational-databases/replication/transactional/transactional-replication) kullanımı açıklanmaktadır. Her bir örnek için tamamen okunabilir çoğaltmalar oluşturmanıza olanak sağlayan bir Azure SQL yönetilen örnek özelliği olan [Yük devretme grupları](../database/auto-failover-group-overview.md)ile ilgisiz değildir. [Yük devretme gruplarıyla işlemsel çoğaltmayı](replication-transactional-overview.md#with-failover-groups)yapılandırırken ek hususlar vardır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Öğreticiyi tamamlayabilmeniz için aşağıdaki önkoşullara sahip olduğunuzdan emin olun:
 
@@ -146,7 +146,7 @@ VNet eşlemesi kurulduktan sonra, SQL Server SQL Server Management Studio (SSMS)
 
 ### <a name="create-a-private-dns-zone"></a>Özel bir DNS bölgesi oluşturma
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure portal](https://portal.azure.com) oturum açın.
 1. Yeni bir Azure kaynağı oluşturmak için **kaynak oluştur** ' u seçin.
 1. `private dns zone`Azure Marketi 'nde arayın.
 1. Microsoft tarafından yayımlanan **özel DNS bölge** kaynağını seçin ve ardından **Oluştur** ' u seçerek DNS bölgesini oluşturun.
@@ -155,11 +155,11 @@ VNet eşlemesi kurulduktan sonra, SQL Server SQL Server Management Studio (SSMS)
 
    ![Özel DNS bölgesi oluştur](./media/replication-two-instances-and-sql-server-configure-tutorial/create-private-dns-zone.png)
 
-1. **Gözden geçir + oluştur** ’u seçin. Özel DNS bölgeniz için parametreleri gözden geçirin ve ardından **Oluştur** ' u seçerek kaynağı oluşturun.
+1. **Gözden geçir ve oluştur**’u seçin. Özel DNS bölgeniz için parametreleri gözden geçirin ve ardından **Oluştur** ' u seçerek kaynağı oluşturun.
 
 ### <a name="create-an-a-record"></a>Bir kayıt oluştur
 
-1. Yeni **özel DNS bölgenize** gidin ve **genel bakış** ' ı seçin.
+1. Yeni **özel DNS bölgenize** gidin ve **genel bakış**' ı seçin.
 1. **+ Kayıt kümesi** ' ni seçerek yeni bir kayıt oluşturun.
 1. SQL Server VM adının yanı sıra özel iç IP adresini de belirtin.
 
@@ -169,8 +169,8 @@ VNet eşlemesi kurulduktan sonra, SQL Server SQL Server Management Studio (SSMS)
 
 ### <a name="link-the-virtual-network"></a>Sanal ağı bağlama
 
-1. Yeni **özel DNS bölgenize** gidin ve **sanal ağ bağlantıları** ' nı seçin.
-1. **+ Ekle** öğesini seçin.
+1. Yeni **özel DNS bölgenize** gidin ve **sanal ağ bağlantıları**' nı seçin.
+1. **+ Ekle**'yi seçin.
 1. Bağlantı için gibi bir ad girin `Pub-link` .
 1. Açılır listeden aboneliğinizi seçin ve ardından yayımcı yönetilen örneğiniz için sanal ağı seçin.
 1. **Otomatik kaydolmayı etkinleştir ' in** yanındaki kutuyu işaretleyin.
@@ -283,14 +283,14 @@ Dağıtım yapılandırıldıktan sonra yayını oluşturabilirsiniz. Bunu yapma
 
 1. SQL Server üzerinde SQL Server Management Studio başlatın.
 1. `sql-mi-publisher`Yönetilen örneğe bağlanın.
-1. **Nesne Gezgini** , **çoğaltma** düğümünü genişletin ve **Yerel yayın** klasörüne sağ tıklayın. **Yeni yayın seç...**.
+1. **Nesne Gezgini**, **çoğaltma** düğümünü genişletin ve **Yerel yayın** klasörüne sağ tıklayın. **Yeni yayın seç...**.
 1. **İleri ' yi** seçerek hoş geldiniz sayfasının ötesine geçin.
-1. **Yayın veritabanı** sayfasında, `ReplTutorial` daha önce oluşturduğunuz veritabanını seçin. **İleri** ’yi seçin.
-1. **Yayın türü** sayfasında **işlem yayını** ' nı seçin. **İleri** ’yi seçin.
-1. **Makaleler** sayfasında, **Tablolar** ' ın yanındaki kutuyu işaretleyin. **İleri** ’yi seçin.
+1. **Yayın veritabanı** sayfasında, `ReplTutorial` daha önce oluşturduğunuz veritabanını seçin. **İleri**’yi seçin.
+1. **Yayın türü** sayfasında **işlem yayını**' nı seçin. **İleri**’yi seçin.
+1. **Makaleler** sayfasında, **Tablolar**' ın yanındaki kutuyu işaretleyin. **İleri**’yi seçin.
 1. **Tablo satırlarını filtrele** sayfasında herhangi bir filtre eklemeden **İleri** ' yi seçin.
-1. Anlık görüntü **Aracısı** sayfasında, anlık görüntü oluştur ' un yanındaki kutuyu işaretleyin **ve abonelikleri başlatmak için anlık görüntüyü kullanılabilir tutun**. **İleri** ’yi seçin.
-1. **Aracı Güvenlik** sayfasında **güvenlik ayarları...** öğesini seçin. Anlık görüntü Aracısı için kullanmak üzere SQL Server oturum açma kimlik bilgilerini sağlayın ve yayımcıya bağlanın. **Anlık görüntü Aracısı güvenlik** sayfasını kapatmak için **Tamam ' ı** seçin. **İleri** ’yi seçin.
+1. Anlık görüntü **Aracısı** sayfasında, anlık görüntü oluştur ' un yanındaki kutuyu işaretleyin **ve abonelikleri başlatmak için anlık görüntüyü kullanılabilir tutun**. **İleri**’yi seçin.
+1. **Aracı Güvenlik** sayfasında **güvenlik ayarları...** öğesini seçin. Anlık görüntü Aracısı için kullanmak üzere SQL Server oturum açma kimlik bilgilerini sağlayın ve yayımcıya bağlanın. **Anlık görüntü Aracısı güvenlik** sayfasını kapatmak için **Tamam ' ı** seçin. **İleri**’yi seçin.
 
    ![Snapshot Agent güvenliğini yapılandırma](./media/replication-two-instances-and-sql-server-configure-tutorial/snapshot-agent-security.png)
 
@@ -352,10 +352,10 @@ INSERT INTO ReplTest (ID, c1) VALUES (15, 'pub')
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 1. [Azure Portal](https://portal.azure.com)kaynak grubunuza gidin.
-1. Yönetilen örnekleri seçin ve ardından **Sil** ' i seçin. `yes`Kaynağı silmek istediğinizi onaylamak için metin kutusunu yazın ve ardından **Sil** ' i seçin. Bu işlemin tamamlanması biraz zaman alabilir ve tamamlanana kadar *sanal kümeyi* ya da başka herhangi bir bağımlı kaynağı silemeyeceksiniz. Yönetilen örneğinizin silindiğini onaylamak için **etkinlik** sekmesindeki silmeyi izleyin.
-1. Yönetilen örnek silindikten sonra, *sanal kümeyi* kaynak grubunuzda seçip **Sil** ' i seçerek silin. `yes`Kaynağı silmek istediğinizi onaylamak için metin kutusunu yazın ve ardından **Sil** ' i seçin.
-1. Kalan kaynakları silin. `yes`Kaynağı silmek istediğinizi onaylamak için metin kutusunu yazın ve ardından **Sil** ' i seçin.
-1. Kaynak grubunu Sil ' i seçerek kaynak **grubunu Sil ' i seçin,** kaynak grubunun adını yazın ve Sil ' i `myResourceGroup` seçin. **Delete**
+1. Yönetilen örnekleri seçin ve ardından **Sil**' i seçin. `yes`Kaynağı silmek istediğinizi onaylamak için metin kutusunu yazın ve ardından **Sil**' i seçin. Bu işlemin tamamlanması biraz zaman alabilir ve tamamlanana kadar *sanal kümeyi* ya da başka herhangi bir bağımlı kaynağı silemeyeceksiniz. Yönetilen örneğinizin silindiğini onaylamak için **etkinlik** sekmesindeki silmeyi izleyin.
+1. Yönetilen örnek silindikten sonra, *sanal kümeyi* kaynak grubunuzda seçip **Sil**' i seçerek silin. `yes`Kaynağı silmek istediğinizi onaylamak için metin kutusunu yazın ve ardından **Sil**' i seçin.
+1. Kalan kaynakları silin. `yes`Kaynağı silmek istediğinizi onaylamak için metin kutusunu yazın ve ardından **Sil**' i seçin.
+1. Kaynak grubunu Sil ' i seçerek kaynak **grubunu Sil ' i seçin,** kaynak grubunun adını yazın ve Sil ' i `myResourceGroup` seçin. 
 
 ## <a name="known-errors"></a>Bilinen hatalar
 

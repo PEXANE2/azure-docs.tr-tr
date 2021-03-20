@@ -8,17 +8,17 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/25/2020
 ms.openlocfilehash: b27b46c68d018d2ddf79d284b20cc05b51640891
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98880650"
 ---
 # <a name="register-and-scan-azure-blob-storage"></a>Azure Blob Depolamayı kaydetme ve tarama
 
 Bu makalede bir Azure Blob depolama hesabının nasıl kaydedileceği ve bir tarama ayarlandığı özetlenmektedir.
 
-## <a name="supported-capabilities"></a>Desteklenen yetenekler
+## <a name="supported-capabilities"></a>Desteklenen özellikler
 
 Azure Blob depolama, meta verileri ve şemayı yakalamak için tam ve artımlı taramaları destekler. Ayrıca, verileri sistem ve özel sınıflandırma kurallarına göre otomatik olarak sınıflandırır.
 

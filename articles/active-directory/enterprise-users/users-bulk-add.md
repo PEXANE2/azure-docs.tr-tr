@@ -14,10 +14,10 @@ ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c653f3e8583ef3aadff26cb2b7a3266555d313a2
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96547823"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>Azure Active Directory Kullanıcıları toplu olarak oluşturma
@@ -70,7 +70,7 @@ Azure AD kullanıcılarını toplu olarak başarıyla oluşturmanıza yardımcı
 1. Dosyanız doğrulamayı geçtiğinde, yeni kullanıcıları içeri aktaran Azure toplu işlemini başlatmak için **Gönder** ' i seçin.
 1. İçeri aktarma işlemi tamamlandığında, toplu işlem iş durumunun bir bildirimini görürsünüz.
 
-Hatalar varsa, sonuçlar dosyasını **toplu işlem sonuçları** sayfasında indirebilir ve görüntüleyebilirsiniz. Dosya her hatanın nedenini içerir. Dosya gönderimi, belirtilen şablonla eşleşmelidir ve tam sütun adlarını içermelidir.
+Hatalar varsa, sonuçlar dosyasını **toplu işlem sonuçları** sayfasında indirebilir ve görüntüleyebilirsiniz. Bu dosyada her hatanın nedeni belirtilir. Dosya gönderimi, belirtilen şablonla eşleşmelidir ve tam sütun adlarını içermelidir.
 
 ## <a name="check-status"></a>Durumu kontrol etme
 

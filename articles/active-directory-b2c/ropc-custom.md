@@ -12,10 +12,10 @@ ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 5d6fb23d7325347a1b27165d3e9bc3bf33797682
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95994374"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Özel bir ilke kullanarak Azure Active Directory B2C kaynak sahibi parola kimlik bilgileri akışını yapılandırma
@@ -30,7 +30,7 @@ Azure Active Directory B2C (Azure AD B2C) ' de, kaynak sahibi parola kimlik bilg
 
 [Azure Active Directory B2C özel ilkeleri kullanmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın.
 
-## <a name="register-an-application"></a>Uygulamaları kaydetme
+## <a name="register-an-application"></a>Bir uygulamayı kaydetme
 
 [!INCLUDE [active-directory-b2c-appreg-ropc](../../includes/active-directory-b2c-appreg-ropc.md)]
 

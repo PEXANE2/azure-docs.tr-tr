@@ -12,10 +12,10 @@ ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ba7875caa6a1db7638bfeafcfea1efa7b2462152
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87489524"
 ---
 # <a name="configure-itsme-openid-connect-oidc-with-azure-active-directory-b2c"></a>Itsme OpenID Connect 'i (OıDC) Azure Active Directory B2C ile yapılandırma
@@ -61,7 +61,7 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
 2. Adresine bir e-posta göndererek, ıtsme hesabınızı etkinleştirin onboarding@itsme.be . B2C kurulumu için gerekli olacak bir **Iş ortağı kodu** ve **hizmet kodu** alacaksınız.
 
-3. Itsme iş ortağı hesabınızı etkinleştirdikten sonra, **istemci sırrı**için tek seferlik bir bağlantı içeren bir e-posta alacaksınız.
+3. Itsme iş ortağı hesabınızı etkinleştirdikten sonra, **istemci sırrı** için tek seferlik bir bağlantı içeren bir e-posta alacaksınız.
 
 4. Yapılandırmayı gerçekleştirmek için [itsme](https://business.itsme.be/en) içindeki yönergeleri izleyin.
 
@@ -74,7 +74,7 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
 1. Azure AD B2C kiracı içeren dizini kullandığınızdan emin olun. Üstteki menüden **Dizin + abonelik** filtresini seçin ve Azure AD B2C kiracınızı içeren dizini seçin.
 
-2. **Azure hizmetleri**altında **Azure AD B2C** ' yi seçin (veya **diğer hizmetler** ' i seçin ve *Azure AD B2C*aramak için **tüm hizmetler** arama kutusunu kullanın).
+2. **Azure hizmetleri** altında **Azure AD B2C** ' yi seçin (veya **diğer hizmetler** ' i seçin ve *Azure AD B2C* aramak için **tüm hizmetler** arama kutusunu kullanın).
 
 3. **Kimlik sağlayıcıları**' nı seçin ve ardından **Yeni OpenID Connect sağlayıcısı**' nı seçin.
 
@@ -82,7 +82,7 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
    |Özellik | Değer |
    |------------ |------- |
-   | Adı | itsme |
+   | Ad | itsme |
    | Meta veri URL 'SI | `https://oidc.<environment>.itsme.services/clientsecret-oidc/csapi/v0.1/.well-known/openid-configuration` <br>nerede `<environment>` `e2e` (test ortamı) ya da `prd` (üretim)  |
    | ClientID     | **ISTEMCI kimliğiniz**( **iş ortağı kodu** olarak da bilinir)  |
    | İstemci Gizli Anahtarı | **Client_secret** |
@@ -100,13 +100,13 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
 ### <a name="configure-a-user-flow"></a>Kullanıcı akışı yapılandırma
 
-1. Azure AD B2C kiracınızda **ilkeler**altında **Kullanıcı akışları**' nı seçin.
+1. Azure AD B2C kiracınızda **ilkeler** altında **Kullanıcı akışları**' nı seçin.
 
 2. **Yeni Kullanıcı akışı**' nı seçin.
 
 3. **Kaydolun ve oturum açın**' ı seçin, bir sürüm seçin ve ardından **Oluştur**' u seçin.
 
-4. Bir **ad**girin.
+4. Bir **ad** girin.
 
 5. **Kimlik sağlayıcıları** bölümünde, **ıtsme**' yi seçin.
 
@@ -117,15 +117,15 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 8. **Özellikler** ' i seçin ve aşağıdaki değerleri ayarlayın:
 
    * **Erişim & kimliği belirteci yaşam sürelerini (dakika)** **5**' e değiştirin.
-   * **Yenileme belirteci kayan pencere ömrünü** **süre sonu yok**olarak değiştirin.
+   * **Yenileme belirteci kayan pencere ömrünü** **süre sonu yok** olarak değiştirin.
 
 ### <a name="register-an-application"></a>Bir uygulamayı kaydetme
 
-1. B2C kiracınızda, **Yönet**altında **App registrations**  >  **Yeni kayıt**uygulama kayıtları ' yi seçin.
+1. B2C kiracınızda, **Yönet** altında   >  **Yeni kayıt** uygulama kayıtları ' yi seçin.
 
 2. Uygulama için bir **ad** girin ve **yeniden yönlendirme URI**'nizi girin. Sınama amacıyla, girin `https://jwt.ms` .
 
-3. Multi-Factor Authentication 'ın **devre dışı bırakıldığından**emin olun.
+3. Multi-Factor Authentication 'ın **devre dışı bırakıldığından** emin olun.
 
 4. **Kaydet**’i seçin.
 

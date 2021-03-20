@@ -1,6 +1,6 @@
 ---
-title: StorSimple Aygıt Yöneticisi hizmetini dağıtma | Microsoft Docs
-description: Azure portal StorSimple Aygıt Yöneticisi hizmeti oluşturmayı ve silmeyi açıklar ve hizmet kayıt anahtarının nasıl yönetileceğini açıklar.
+title: StorSimple Device Manager hizmetini dağıtma | Microsoft Docs
+description: Azure portal StorSimple Device Manager hizmeti oluşturmayı ve silmeyi açıklar ve hizmet kayıt anahtarının nasıl yönetileceğini açıklar.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,21 +15,21 @@ ms.workload: na
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 92041be4d3d5ef4d980c17fa0a5870b740c1784a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95995036"
 ---
-# <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>StorSimple Sanal dizisi için StorSimple Aygıt Yöneticisi hizmetini dağıtma
+# <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>StorSimple Sanal dizisi için StorSimple Device Manager hizmetini dağıtma
 
 ## <a name="overview"></a>Genel Bakış
 
 [!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
-StorSimple Aygıt Yöneticisi hizmeti Microsoft Azure ' de çalışır ve birden çok StorSimple cihaza bağlanır. Hizmeti oluşturduktan sonra, bir tarayıcıda çalışan Microsoft Azure portal cihazları yönetmek için kullanabilirsiniz. Bu, StorSimple Aygıt Yöneticisi hizmetine bağlı tüm cihazları tek ve merkezi bir konumdan izlemenize olanak tanır ve böylece yönetim yükünü en aza indirir.
+StorSimple Device Manager hizmeti Microsoft Azure ' de çalışır ve birden çok StorSimple cihaza bağlanır. Hizmeti oluşturduktan sonra, bir tarayıcıda çalışan Microsoft Azure portal cihazları yönetmek için kullanabilirsiniz. Bu, StorSimple Device Manager hizmetine bağlı tüm cihazları tek ve merkezi bir konumdan izlemenize olanak tanır ve böylece yönetim yükünü en aza indirir.
 
-StorSimple Aygıt Yöneticisi hizmetiyle ilgili ortak görevler şunlardır:
+StorSimple Device Manager hizmetiyle ilgili ortak görevler şunlardır:
 
 * Hizmet oluşturma
 * Hizmet silme
@@ -51,7 +51,7 @@ Hizmeti oluştururken bir depolama hesabı oluşturmayı da tercih edebilirsiniz
 Tek bir hizmet birden çok cihazı yönetebilir. Ancak, bir cihaz birden fazla hizmete yayılamaz. Büyük bir kuruluşun farklı abonelikler, kuruluşlar veya hatta dağıtım konumları ile çalışması için birden çok hizmet örneği olabilir.
 
 > [!NOTE]
-> StorSimple 8000 serisi cihazlarını ve StorSimple Sanal dizilerini yönetmek için StorSimple Aygıt Yöneticisi hizmetinin ayrı örneklerine ihtiyacınız vardır.
+> StorSimple 8000 serisi cihazlarını ve StorSimple Sanal dizilerini yönetmek için StorSimple Device Manager hizmetinin ayrı örneklerine ihtiyacınız vardır.
 
 
 Bir hizmet oluşturmak için aşağıdaki adımları gerçekleştirin.
@@ -70,7 +70,7 @@ Bir hizmeti silmek için aşağıdaki adımları gerçekleştirin.
 
 #### <a name="to-delete-a-service"></a>Bir hizmeti silmek için
 
-1. **Tüm kaynaklar**'a gidin. StorSimple Aygıt Yöneticisi hizmetinizi arayın. Silmek istediğiniz hizmeti seçin.
+1. **Tüm kaynaklar**'a gidin. StorSimple Device Manager hizmetinizi arayın. Silmek istediğiniz hizmeti seçin.
    
     ![Silinecek hizmeti seçin](./media/storsimple-virtual-array-manage-service/deleteservice2.png)
 2. Hizmete bağlı bir cihaz olmadığından emin olmak için hizmet panonuza gidin. Bu hizmete kayıtlı cihaz yoksa, efekte bir başlık iletisi de görürsünüz. **Sil**'e tıklayın.
@@ -94,7 +94,7 @@ Bir hizmeti başarıyla oluşturduktan sonra StorSimple cihazınızı hizmete ka
 Hizmet kayıt anahtarını almak için aşağıdaki adımları gerçekleştirin.
 
 #### <a name="to-get-the-service-registration-key"></a>Hizmet kayıt anahtarını almak için
-1. **StorSimple aygıt yöneticisi** dikey penceresinde **&gt; Yönetim** **anahtarlar**' a gidin.
+1. **StorSimple Device Manager** dikey penceresinde **&gt; Yönetim** **anahtarlar**' a gidin.
    
    ![Anahtarlar dikey penceresi](./media/storsimple-virtual-array-manage-service/getregkey2.png)
 2. **Anahtarlar** dikey penceresinde bir hizmet kayıt anahtarı görüntülenir. Kopyala simgesini kullanarak kayıt anahtarını kopyalayın. 
@@ -107,7 +107,7 @@ Anahtar dönüşü yapmanız gerekiyorsa veya hizmet yöneticileri listesi deği
 Hizmet kayıt anahtarını yeniden oluşturmak için aşağıdaki adımları gerçekleştirin.
 
 #### <a name="to-regenerate-the-service-registration-key"></a>Hizmet kayıt anahtarını yeniden oluşturmak için
-1. **StorSimple aygıt yöneticisi** dikey penceresinde **&gt; Yönetim** **anahtarlar**' a gidin.
+1. **StorSimple Device Manager** dikey penceresinde **&gt; Yönetim** **anahtarlar**' a gidin.
    
    ![Anahtarlar dikey penceresi yeniden](./media/storsimple-virtual-array-manage-service/getregkey2.png)
 2. **Anahtarlar** dikey penceresinde yeniden **Oluştur**' a tıklayın.

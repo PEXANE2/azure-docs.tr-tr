@@ -4,10 +4,10 @@ description: Azure portal kullanarak bir VHD dosyasından Azure DevTest Labs öz
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: cac812a9c38fc1dedfd31659a626b122f9527e63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87289398"
 ---
 # <a name="create-a-custom-image-from-a-vhd-file"></a>Bir VHD dosyasından özel görüntü oluşturma
@@ -22,7 +22,7 @@ ms.locfileid: "87289398"
 
 Aşağıdaki adımlar, Azure portal kullanarak bir VHD dosyasından özel görüntü oluşturma işleminde size yol gösterir:
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)’ında oturum açın.
+1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
 
 1. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 
@@ -40,12 +40,12 @@ Aşağıdaki adımlar, Azure portal kullanarak bir VHD dosyasından özel görü
 
 1. Özel görüntünün açıklamasını girin. Bu açıklama, bir VM oluştururken temel görüntüler listesinde görüntülenir.
 
-1. **Işletim sistemi türü**Için, **Windows** veya **Linux**' u seçin.
+1. **Işletim sistemi türü** Için, **Windows** veya **Linux**' u seçin.
 
     - **Windows**' u seçerseniz makinede *Sysprep* 'in çalıştırılıp çalıştırılmadığını onay kutusunu kullanarak belirtin. 
     - **Linux**' u seçerseniz, makinede *kaldırma* işlemi yapılıp çalıştırılmadığını onay kutusunu kullanarak belirtin. 
 
-1. Açılan menüden bir **VHD** seçin. Bu, yeni özel görüntüyü oluşturmak için kullanılacak VHD 'dir. Gerekirse, **PowerShell kullanarak BIR VHD 'Yi karşıya yüklemeyi**seçin.
+1. Açılan menüden bir **VHD** seçin. Bu, yeni özel görüntüyü oluşturmak için kullanılacak VHD 'dir. Gerekirse, **PowerShell kullanarak BIR VHD 'Yi karşıya yüklemeyi** seçin.
 
 1. Ayrıca, özel görüntü oluşturmak için kullanılan görüntü lisanslı bir görüntü değilse (Microsoft tarafından yayımlanan) bir plan adı, teklif planı ve yayımcı planı da girebilirsiniz.
 

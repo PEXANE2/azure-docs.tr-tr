@@ -4,10 +4,10 @@ description: Bu makalede, bir laboratuvar kullanıcısının veya eğitimci 'nin
 ms.date: 06/26/2020
 ms.topic: how-to
 ms.openlocfilehash: 8d0c8a3ad8ba92e606f19480bdb36483f377fa04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85443511"
 ---
 # <a name="view-support-information-lab-user-in-azure-lab-services"></a>Destek bilgilerini görüntüleme (Azure Lab Services laboratuvar kullanıcısı)
@@ -24,7 +24,7 @@ Laboratuvar hesabında laboratuvar kullanırken herhangi bir teknik sorunla çal
 ## <a name="view-support-information"></a>Destek bilgilerini görüntüle
 1. [Azure Lab Services portalında](https://labs.azure.com)oturum açın.
 2. Yardım almak istediğiniz **Laboratuvarı veya sanal makineyi** **seçin ve şunları seçin** sayfanın sağ üst köşesinde. 
-3. **Destek Web sitesi**, **e-posta desteği**ve **destek telefon numarasını**görüntüle bağlantısını görtığınızdan emin olun.
+3. **Destek Web sitesi**, **e-posta desteği** ve **destek telefon numarasını** görüntüle bağlantısını görtığınızdan emin olun.
 
     ![Destek bilgilerini görüntüle](./media/lab-user-support-information/support-information.png)
 4. Açılan listede bu laboratuvara geçerek, başka bir laboratuvarın destek iletişim bilgilerini görüntüleyebilirsiniz. 

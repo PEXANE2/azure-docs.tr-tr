@@ -15,13 +15,13 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4de9f5a21f38f741dcf65d285446d9482716d4f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85608135"
 ---
-# <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>Nasıl yapılır: Azure Active Directory raporlarını kullanarak oturum açma hatalarında sorun giderme
+# <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>Nasıl yapılır: Azure Active Directory raporlarını kullanarak oturum açma hatalarını giderme
 
 Azure Active Directory (Azure AD) içinde [oturum açma işlemleri raporu](concept-sign-ins.md) , kuruluşunuzda bulunan uygulamalara erişimi yönetme konusunda sorularınızın yanıtlarını bulmanıza olanak sağlar; örneğin:
 
@@ -37,7 +37,7 @@ Ayrıca, oturum açma işlemleri raporu, kuruluşunuzdaki kullanıcılar için o
 Gerekenler:
 
 * Premium (P1/P2) lisansına sahip bir Azure AD kiracısı. Azure Active Directory sürümünüzü yükseltmek için bkz. [Azure Active Directory Premium kullanmaya](../fundamentals/active-directory-get-started-premium.md) başlama.
-* Kiracı için **genel yönetici**, **Güvenlik Yöneticisi**, **güvenlik okuyucusu**veya **rapor okuyucu** rolünde olan bir kullanıcı. Ayrıca, herhangi bir Kullanıcı kendi oturum açma işlemleri için de erişebilir. 
+* Kiracı için **genel yönetici**, **Güvenlik Yöneticisi**, **güvenlik okuyucusu** veya **rapor okuyucu** rolünde olan bir kullanıcı. Ayrıca, herhangi bir Kullanıcı kendi oturum açma işlemleri için de erişebilir. 
 
 ## <a name="troubleshoot-sign-in-errors-using-the-sign-ins-report"></a>Oturum açma hatalarıyla ilgili sorun giderme raporu
 
@@ -47,7 +47,7 @@ Gerekenler:
 
     ![Sonuçları filtreleme](./media/howto-troubleshoot-sign-in-errors/filters.png)
         
-4. Araştırmak istediğiniz başarısız oturum açma kimliğini belirler. Başarısız oturum açma hakkında daha fazla bilgi içeren ek ayrıntılar penceresini açmak için bunu seçin. **Oturum açma hata kodunu** ve **hata nedenini**göz önünde edin. 
+4. Araştırmak istediğiniz başarısız oturum açma kimliğini belirler. Başarısız oturum açma hakkında daha fazla bilgi içeren ek ayrıntılar penceresini açmak için bunu seçin. **Oturum açma hata kodunu** ve **hata nedenini** göz önünde edin. 
 
     ![Kayıt Seç](./media/howto-troubleshoot-sign-in-errors/sign-in-failures.png)
         

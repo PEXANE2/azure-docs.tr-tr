@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: amishu
 ms.openlocfilehash: 6a73c238cde7fbddfb7aa4c7153b5de5b442e9b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87284242"
 ---
 ## <a name="upload-the-audio"></a>Sesi karşıya yükle
@@ -95,7 +95,7 @@ speechConfig.setServiceProperty("transcriptionMode", "RealTimeAndAsync", Service
 
 ## <a name="get-transcription-results"></a>Dökümü alma sonuçları
 
-Burada gösterilen kod için, Windows ve Linux 'ta yalnızca Java (1.8.0 veya üzeri) için desteklenen **uzak konuşma sürümü 1.8.0**gerekir. 
+Burada gösterilen kod için, Windows ve Linux 'ta yalnızca Java (1.8.0 veya üzeri) için desteklenen **uzak konuşma sürümü 1.8.0** gerekir. 
 
 ### <a name="obtaining-the-async-conversation-client-sdk"></a>Zaman uyumsuz konuşma istemci SDK 'sını alma
 
@@ -125,11 +125,11 @@ pom.xml dosyanızı aşağıdaki gibi düzenleyerek **uzak konuşmayı** elde ed
    </dependencies>
    ```
 
-3. Değişiklikleri Kaydet
+3. Değişiklikleri kaydedin
 
 ### <a name="sample-transcription-code"></a>Örnek dökümü kodu
 
-Daha sonra, `conversationId` zaman uyumsuz döküm durumunu sorgulamak için istemci uygulamada bir uzak konuşma dökümü Istemcisi **Remotetalk Tiontranscriptionclient** oluşturun. Bir [Pollerflox](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/polling/PollerFlux.java) nesnesi almak Için **Remotetalk Tiontranscriptionclient** Içinde **gettranscriptionoperation** metodunu kullanın. Pollerflox nesnesi, uzak işlem durumu **Remotetalk Tiontranscriptionoperation** ve nihai sonuç **Remotetalk tiontranscriptionresult**hakkında bilgi sahibi olacaktır. İşlem tamamlandıktan sonra, bir [Syncpoller](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/polling/SyncPoller.java)üzerinde **getfinalresult** çağırarak **Remotetalk tiontranscriptionresult** alın. Bu kodda, sonuç içeriğini sistem çıktısına yazdırdık.
+Daha sonra, `conversationId` zaman uyumsuz döküm durumunu sorgulamak için istemci uygulamada bir uzak konuşma dökümü Istemcisi **Remotetalk Tiontranscriptionclient** oluşturun. Bir [Pollerflox](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/polling/PollerFlux.java) nesnesi almak Için **Remotetalk Tiontranscriptionclient** Içinde **gettranscriptionoperation** metodunu kullanın. Pollerflox nesnesi, uzak işlem durumu **Remotetalk Tiontranscriptionoperation** ve nihai sonuç **Remotetalk tiontranscriptionresult** hakkında bilgi sahibi olacaktır. İşlem tamamlandıktan sonra, bir [Syncpoller](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/polling/SyncPoller.java)üzerinde **getfinalresult** çağırarak **Remotetalk tiontranscriptionresult** alın. Bu kodda, sonuç içeriğini sistem çıktısına yazdırdık.
 
 ```java
 // Create the speech config object

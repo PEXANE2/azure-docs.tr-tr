@@ -1,6 +1,6 @@
 ---
 title: StorSimple Sanal dizi paylaşımlarını yönetme | Microsoft Docs
-description: StorSimple Aygıt Yöneticisi açıklar ve StorSimple Sanal dizinizdeki paylaşımları yönetmek için nasıl kullanılacağını açıklar.
+description: StorSimple Device Manager açıklar ve StorSimple Sanal dizinizdeki paylaşımları yönetmek için nasıl kullanılacağını açıklar.
 services: storsimple
 documentationcenter: ''
 author: manuaery
@@ -15,19 +15,19 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: 340b910319cabe3379bdb1bad1c09bc71c17f072
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95994953"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-shares-on-the-storsimple-virtual-array"></a>StorSimple Sanal Dizisinde paylaşımları yönetmek için StorSimple Device Manager hizmetini kullanma
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu öğreticide, StorSimple Sanal dizinizdeki paylaşımları oluşturmak ve yönetmek için StorSimple Aygıt Yöneticisi hizmetinin nasıl kullanılacağı açıklanmaktadır.
+Bu öğreticide, StorSimple Sanal dizinizdeki paylaşımları oluşturmak ve yönetmek için StorSimple Device Manager hizmetinin nasıl kullanılacağı açıklanmaktadır.
 
-StorSimple Aygıt Yöneticisi hizmeti, StorSimple çözümünüzü tek bir web arabiriminden yönetmenizi sağlayan Azure portal bir uzantıdır. Paylaşımları ve birimleri yönetmeye ek olarak, StorSimple Aygıt Yöneticisi hizmetini kullanarak cihazları görüntüleyebilir ve yönetebilir, uyarıları görüntüleyebilir, yedekleme ilkelerini yönetebilir ve yedekleme kataloğunu yönetebilirsiniz.
+StorSimple Device Manager hizmeti, StorSimple çözümünüzü tek bir web arabiriminden yönetmenizi sağlayan Azure portal bir uzantıdır. Paylaşımları ve birimleri yönetmeye ek olarak, StorSimple Device Manager hizmetini kullanarak cihazları görüntüleyebilir ve yönetebilir, uyarıları görüntüleyebilir, yedekleme ilkelerini yönetebilir ve yedekleme kataloğunu yönetebilirsiniz.
 
 ## <a name="share-types"></a>Paylaşma türleri
 
@@ -40,7 +40,7 @@ StorSimple paylaşımları şu olabilir:
 
 Her bir paylaşma türü için sağlanan maksimum kapasite için aşağıdaki tabloya bakın.
 
-| **Sınır tanımlayıcı** | **Sınır** |
+| **Sınır tanımlayıcı** | **Sınırlı** |
 | --- | --- |
 | Katmanlı paylaşımın en küçük boyutu |500 GB |
 | Katmanlı paylaşımın en büyük boyutu |20 TB |

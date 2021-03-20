@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: 4135bfe528c33a2beaeb21438181deb5b19ad12e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85505503"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>Avere vFXT kümesini yönetme
@@ -23,7 +23,7 @@ Yönetim görevine bağlı olarak, üç farklı araçlardan birini kullanmanız 
 
 Bu tablo, her görev için hangi araçların kullanılabileceğini bir genel bakış sunar.
 
-| Eylem | Avere Denetim Masası | vfxt.py  | Azure portal |
+| Eylem | Avere Denetim Masası | vfxt.py  | Azure portalı |
 | --- | --- | --- | --- |
 | Küme düğümleri ekleme | hayır | evet | hayır |
 | Küme düğümlerini kaldır | evet | hayır | hayır |

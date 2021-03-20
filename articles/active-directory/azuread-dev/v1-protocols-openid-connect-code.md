@@ -15,10 +15,10 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: b719e866852d2e865c16c62fddd8c549ae505b7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85551552"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>OpenID Connect ve Azure Active Directory kullanarak web uygulamalarına erişim yetkisi verme
@@ -32,20 +32,20 @@ OpenID Connect, sunucuda barındırılan ve bir tarayıcı aracılığıyla eri�
 ## <a name="register-your-application-with-your-ad-tenant"></a>Uygulamanızı AD kiracınıza kaydetme
 İlk olarak, Azure Active Directory (Azure AD) kiracınızı kullanarak uygulamanızı kaydedin. Bu, uygulamanıza bir Uygulama Kimliği verir ve uygulamanızın belirteçleri alabilmesini sağlar.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
    
 1. Sayfanın sağ üst köşesindeki hesabınızı seçerek Azure AD kiracınızı seçin ve ardından **Dizin gezintisini Değiştir** ' i seçip uygun kiracıyı seçin. 
    - Hesabınız kapsamında yalnızca bir Azure AD kiracınız varsa veya uygun Azure AD kiracısını zaten seçtiyseniz bu adımı atlayın.
    
-1. Azure portal, araması yapın ve **Azure Active Directory**seçin.
+1. Azure portal, araması yapın ve **Azure Active Directory** seçin.
    
 1. **Azure Active Directory** sol menüsünde **uygulama kayıtları**' nı ve ardından **Yeni kayıt**' yi seçin.
    
 1. Talimatları izleyerek yeni bir uygulama oluşturun. Bu öğretici için bir Web uygulaması ya da bir genel istemci (mobil & Masaüstü) uygulaması olsa da, Web uygulamaları veya genel istemci uygulamalarına yönelik özel örnekler isterseniz [hızlı](v1-overview.md)başlangıçlarımızı inceleyin.
    
    - **Ad**, uygulamanın adıdır ve uygulamanızı son kullanıcılara açıklar.
-   - **Desteklenen hesap türleri**altında, **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesaplar**' ı seçin.
-   - **Yeniden yönlendirme URI 'si**sağlayın. Web uygulamaları için, bu, kullanıcıların oturum açabileceği uygulamanızın temel URL 'sidir.  Örneğin, `http://localhost:12345`. Ortak istemci (mobil & Masaüstü) için Azure AD, belirteç yanıtlarını döndürmek için bunu kullanır. Uygulamanıza özgü bir değer girin.  Örneğin, `http://MyFirstAADApp`.
+   - **Desteklenen hesap türleri** altında, **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesaplar**' ı seçin.
+   - **Yeniden yönlendirme URI 'si** sağlayın. Web uygulamaları için, bu, kullanıcıların oturum açabileceği uygulamanızın temel URL 'sidir.  Örneğin, `http://localhost:12345`. Ortak istemci (mobil & Masaüstü) için Azure AD, belirteç yanıtlarını döndürmek için bunu kullanır. Uygulamanıza özgü bir değer girin.  Örneğin, `http://MyFirstAADApp`.
    <!--TODO: add once App ID URI is configurable: The **App ID URI** is a unique identifier for your application. The convention is to use `https://<tenant-domain>/<app-name>`, e.g. `https://contoso.onmicrosoft.com/my-first-aad-app`-->  
    
 1. Kaydı tamamladıktan sonra, Azure AD, uygulamanıza benzersiz bir istemci tanımlayıcısı ( **uygulama kimliği**) atayacaktır. Sonraki bölümlerde bu değere ihtiyacınız olduğundan uygulama sayfasından kopyalayın.
@@ -108,7 +108,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &nonce=7362CAEA-9CA5-4B43-9BA3-34D7C303EBA7
 ```
 
-| Parametre | Tür | Açıklama |
+| Parametre | Tür | Description |
 | --- | --- | --- |
 | Kiracı |gerekli |`{tenant}`İsteğin yolundaki değeri, uygulamada kimlerin oturum açmasını denetlemek için kullanılabilir. İzin verilen değerler kiracı tanımlayıcılarıdır, örneğin `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` veya `contoso.onmicrosoft.com` `common` kiracı bağımsız belirteçler için |
 | client_id |gerekli |Azure AD ile kaydettiğinizde uygulamanıza atanan uygulama KIMLIĞI. Bunu Azure portal bulabilirsiniz. **Azure Active Directory**' ye tıklayın, uygulama **kayıtları**' na tıklayın, uygulamayı seçin ve uygulama sayfasında uygulama kimliği ' ni bulun. |
@@ -116,7 +116,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | scope | Önerilen | OpenID Connect belirtimi `openid` için, izin Kullanıcı arabirimindeki "oturum aç" iznine çeviren kapsam gerekir. Bu ve diğer OıDC kapsamları v 1.0 uç noktasında yok sayılır, ancak standartlarla uyumlu istemciler için en iyi uygulamadır. |
 | nonce |gerekli |Talep olarak ortaya çıkan, uygulama tarafından oluşturulan, istek içinde içerilen bir değer `id_token` . Daha sonra uygulama, belirteç yeniden yürütme saldırılarını azaltmak için bu değeri doğrulayabilirler. Değer genellikle, isteğin kaynağını belirlemek için kullanılabilecek rastgele bir, benzersiz dize veya GUID 'dir. |
 | redirect_uri | Önerilen |Uygulamanızın, kimlik doğrulama yanıtlarının sizin uygulamanız tarafından gönderilebileceği ve alınabileceği redirect_uri. Portalın, URL kodlamalı olması dışında, portalda kaydettiğiniz redirect_uris biriyle tam olarak eşleşmesi gerekir. Eksik ise, Kullanıcı Aracısı, rastgele bir uygulama için kaydedilen yeniden yönlendirme URI 'lerinden birine geri gönderilir. Maksimum uzunluk 255 bayttır |
-| response_mode |isteğe bağlı |Elde edilen authorization_code uygulamanıza geri göndermek için kullanılması gereken yöntemi belirtir. Desteklenen değerler `form_post` *http form gönderi* ve `fragment` *URL parçası*içindir. Web uygulamaları için, `response_mode=form_post` belirteçlerin uygulamanıza en güvenli şekilde aktarılmasını sağlamak üzere kullanmanızı öneririz. İd_token dahil olmak üzere herhangi bir akış için varsayılan değer `fragment` .|
+| response_mode |isteğe bağlı |Elde edilen authorization_code uygulamanıza geri göndermek için kullanılması gereken yöntemi belirtir. Desteklenen değerler `form_post` *http form gönderi* ve `fragment` *URL parçası* içindir. Web uygulamaları için, `response_mode=form_post` belirteçlerin uygulamanıza en güvenli şekilde aktarılmasını sağlamak üzere kullanmanızı öneririz. İd_token dahil olmak üzere herhangi bir akış için varsayılan değer `fragment` .|
 | state |Önerilen |Belirteç yanıtında döndürülen isteğe eklenen bir değer. Bu, istediğiniz herhangi bir içerik dizesi olabilir. Rastgele oluşturulan benzersiz bir değer genellikle [siteler arası istek sahteciliği saldırılarını önlemek](https://tools.ietf.org/html/rfc6749#section-10.12)için kullanılır. Durum Ayrıca, kullanıcının uygulamadaki durumu hakkında bilgi kodlamak için kullanılır; Örneğin, bulunan sayfa veya görünüm gibi kimlik doğrulama isteği gerçekleştirilmeden önce. |
 | isteme |isteğe bağlı |Gerekli kullanıcı etkileşiminin türünü gösterir. Şu anda yalnızca geçerli değerler ' login', ' none ' ve ' onay ' değerleridir. `prompt=login` kullanıcıyı bu istek üzerine kimlik bilgilerini girmeye zorlar, tek oturum açma işlemini negatifler. `prompt=none` bunun tersidir, kullanıcının herhangi bir etkileşimli istem ile sunulmamasını sağlar. İstek, tek oturum açma yoluyla sessizce tamamlanamaz, uç nokta bir hata döndürür. `prompt=consent` Kullanıcı oturum açtıktan sonra, kullanıcıdan uygulamaya izin vermesini isteyen OAuth onay iletişim kutusunu tetikler. |
 | login_hint |isteğe bağlı |Kullanıcı adının bir süre önce bilinerek Kullanıcı için oturum açma sayfasının Kullanıcı adı/e-posta adresi alanını önceden doldurmanız için kullanılabilir. Genellikle uygulamalar bu parametreyi yeniden kimlik doğrulama sırasında kullanır ve Kullanıcı adını, talebi kullanarak önceki bir oturum açma işleminden zaten ayıklamış olur `preferred_username` . |
@@ -161,7 +161,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 Aşağıdaki tabloda, hata yanıtının parametresinde döndürülebilecek çeşitli hata kodları açıklanmaktadır `error` .
 
-| Hata Kodu | Açıklama | İstemci eylemi |
+| Hata Kodu | Description | İstemci eylemi |
 | --- | --- | --- |
 | invalid_request |Eksik gerekli bir parametre gibi protokol hatası. |İsteği onarın ve yeniden gönderin. Bu bir geliştirme hatasıdır ve genellikle ilk test sırasında yakalanır. |
 | unauthorized_client |İstemci uygulamasının bir yetkilendirme kodu istemesine izin verilmiyor. |Bu durum genellikle istemci uygulaması Azure AD 'ye kaydedilmediğinde veya kullanıcının Azure AD kiracısına eklenmediğinde oluşur. Uygulama kullanıcıya uygulamayı yükleme ve Azure AD 'ye ekleme yönergesini isteyebilir. |
@@ -197,7 +197,7 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 ```
 
-| Parametre | Tür | Açıklama |
+| Parametre | Tür | Description |
 | --- | --- | --- |
 | post_logout_redirect_uri |Önerilen |Başarılı oturum kapatıldıktan sonra kullanıcının yeniden yönlendirilmesi gereken URL.  Bu URL, uygulama kayıt portalı 'nda uygulamanız için kayıtlı olan yeniden yönlendirme URI 'lerinden biriyle aynı olmalıdır.  *Post_logout_redirect_uri* dahil edilmezse, kullanıcıya genel bir ileti gösterilir. |
 

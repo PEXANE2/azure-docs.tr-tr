@@ -17,10 +17,10 @@ ms.author: barclayn
 ROBOTS: NOINDEX,NOFOLLOW
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 247b3c1b4341eff11069a6af324fff5cf1fba62c
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96546599"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-linux-vm-to-access-azure-resource-manager"></a>Öğretici: Azure Resource Manager’a erişmek için Linux VM’de kullanıcı tarafından atanan yönetilen kimliği kullanma
@@ -35,7 +35,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Azure Resource Manager’da Kaynak Grubuna kullanıcı tarafından atanan yönetilen kimlik için erişim verme 
 > * Kullanıcı tarafından atanan yönetilen kimliği kullanarak erişim belirteci alma ve Azure Resource Manager çağrısı yapmak için bunu kullanma 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Yönetilen kimliklerin anlaşılmasıdır. Azure kaynakları için yönetilen kimlikler özelliği hakkında bilgi sahibi değilseniz bu [genel bakışı](overview.md) inceleyin. 
 - Azure hesabı, [ücretsiz bir hesap için kaydolun](https://azure.microsoft.com/free/).

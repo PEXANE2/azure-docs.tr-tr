@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.openlocfilehash: 7b683029b7fd05078755d4e8cd027f55c805f991
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97107269"
 ---
 # <a name="storage-configuration"></a>Depolama Yapılandırması
@@ -175,14 +175,14 @@ Ya da kullanarak bir örnek oluştururken `azdata arc sql mi create` `azdata arc
 
 Aşağıdaki tabloda, veri ve Günlükler için kalıcı birimle eşlenen Azure SQL yönetilen örnek kapsayıcısının içindeki yollar listelenmiştir:
 
-|Parametre adı, kısa ad|MSSQL-mıaa kapsayıcısının içindeki yol|Açıklama|
+|Parametre adı, kısa ad|MSSQL-mıaa kapsayıcısının içindeki yol|Description|
 |---|---|---|
 |`--storage-class-data`, `-scd`|/var/opt|MSSQL yüklemesi ve diğer sistem işlemlerine yönelik dizinleri içerir. MSSQL dizini, varsayılan verileri (işlem günlükleri dahil), hata günlüğü & yedekleme dizinlerini içerir|
 |`--storage-class-logs`, `-scl`|/var/log|Konsol çıkışını (stderr, STDOUT) ve kapsayıcı içindeki işlemlerin diğer günlük bilgilerini depolayan dizinleri içerir|
 
 Aşağıdaki tabloda, veri ve Günlükler için kalıcı birimle eşlenen PostgreSQL örnek kapsayıcısının içindeki yollar listelenmiştir:
 
-|Parametre adı, kısa ad|Postgres kapsayıcısının içindeki yol|Açıklama|
+|Parametre adı, kısa ad|Postgres kapsayıcısının içindeki yol|Description|
 |---|---|---|
 |`--storage-class-data`, `-scd`|/var/seçenek/PostgreSQL|Postgres yüklemesi için veri ve günlük dizinleri içerir|
 |`--storage-class-logs`, `-scl`|/var/log|Konsol çıkışını (stderr, STDOUT) ve kapsayıcı içindeki işlemlerin diğer günlük bilgilerini depolayan dizinleri içerir|
@@ -222,7 +222,7 @@ Aşağıdaki tabloda, örnek dağıtım için gereken toplam kalıcı birim say�
 |Azure SQL Yönetilen Örnek|5|5 * 2 = 10|
 |PostgreSQL için Azure veritabanı örneği|5| 5 * 2 = 10|
 |Azure PostgreSQL hiper ölçek|2 (çalışan sayısı = örnek başına 4)|2 * 2 * (1 + 4) = 20|
-|***Toplam kalıcı birim sayısı** _||8 + 10 + 10 + 20 = 48|
+|***Toplam kalıcı birim sayısı***||8 + 10 + 10 + 20 = 48|
 
 Bu hesaplama, depolama hazırlayıcısı veya ortamına bağlı olarak Kubernetes kümeniz için depolamayı planlamak üzere kullanılabilir. Örneğin, beş (5) düğüm içeren bir Kubernetes kümesi için yerel depolama hazırlayıcısı kullanılıyorsa her düğümün üzerindeki örnek dağıtım için en az 10 kalıcı birim gerekir. Benzer şekilde, beş (5) düğüm içeren bir Azure Kubernetes hizmeti (AKS) kümesi sağlanırken, düğüm havuzu için 10 veri diski eklenebilecek uygun bir VM boyutu kullanıma alınırken önemlidir. AKS düğümlerine yönelik depolama ihtiyacı için düğümlerin nasıl boyutlandıralınacağını öğrenmek hakkında daha fazla ayrıntı [burada](../../aks/operator-best-practices-storage.md#size-the-nodes-for-storage-needs)bulabilirsiniz.
 
@@ -238,6 +238,6 @@ Genel bulut tabanlı, yönetilen Kubernetes Hizmetleri için aşağıdaki öneri
 
 |Genel bulut hizmeti|Öneri|
 |---|---|
-|_ *Azure Kubernetes hizmeti (AKS)**|Azure Kubernetes hizmeti (AKS), iki tür depolama-Azure dosyası ve Azure yönetilen diski vardır. Her depolama türünde iki fiyatlandırma/performans katmanı (HDD) ve Premium (SSD) vardır. Bu nedenle, AKS içinde sunulan dört depolama sınıfı `azurefile` (Azure dosyaları standart katmanı), (Azure `azurefile-premium` dosyaları Premium katmanı), `default` (Azure diskleri standart katmanı) ve `managed-premium` (Azure diskleri Premium katmanı). Varsayılan depolama sınıfı `default` (Azure diskleri standart katmanı). Kararlarınız için bir araya getirilmeli türler ve katmanlar arasında önemli miktarda **[fiyatlandırma farkı](https://azure.microsoft.com/en-us/pricing/details/storage/)** vardır. Yüksek performanslı gereksinimlere sahip üretim iş yükleri için, `managed-premium` tüm depolama sınıfları için kullanmanızı öneririz. Geliştirme ve test iş yükleri, kavram provaları vb. bir değerlendirme için `azurefile` en az maliyetli bir seçenektir. Tüm dört seçenek, Azure 'da ağa bağlı tüm depolama cihazlarıyla uzak, paylaşılan depolama gerektiren durumlar için kullanılabilir. [Aks depolaması](../../aks/concepts-storage.md)hakkında daha fazla bilgi edinin.|
+|**Azure Kubernetes Service (AKS)**|Azure Kubernetes hizmeti (AKS), iki tür depolama-Azure dosyası ve Azure yönetilen diski vardır. Her depolama türünde iki fiyatlandırma/performans katmanı (HDD) ve Premium (SSD) vardır. Bu nedenle, AKS içinde sunulan dört depolama sınıfı `azurefile` (Azure dosyaları standart katmanı), (Azure `azurefile-premium` dosyaları Premium katmanı), `default` (Azure diskleri standart katmanı) ve `managed-premium` (Azure diskleri Premium katmanı). Varsayılan depolama sınıfı `default` (Azure diskleri standart katmanı). Kararlarınız için bir araya getirilmeli türler ve katmanlar arasında önemli miktarda **[fiyatlandırma farkı](https://azure.microsoft.com/en-us/pricing/details/storage/)** vardır. Yüksek performanslı gereksinimlere sahip üretim iş yükleri için, `managed-premium` tüm depolama sınıfları için kullanmanızı öneririz. Geliştirme ve test iş yükleri, kavram provaları vb. bir değerlendirme için `azurefile` en az maliyetli bir seçenektir. Tüm dört seçenek, Azure 'da ağa bağlı tüm depolama cihazlarıyla uzak, paylaşılan depolama gerektiren durumlar için kullanılabilir. [Aks depolaması](../../aks/concepts-storage.md)hakkında daha fazla bilgi edinin.|
 |**AWS Elastic Kubernetes Service (EKS)**| Amazon 'ın elastik Kubernetes hizmetinde, [EBS CSI depolama sürücüsüne](https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html)göre bir birincil depolama sınıfı vardır. Bu, üretim iş yükleri için önerilir. Yeni bir depolama sürücüsü- [EFS CSI depolama sürücüsü](https://docs.aws.amazon.com/eks/latest/userguide/efs-csi.html) vardır. Bu, BIR EKS kümesine eklenebilir, ancak şu anda bir beta aşamasıdır ve değiştirilebilir. AWS, bu depolama sürücüsünün üretim için desteklendiğini söyseler de, hala beta sürümünde ve değişikliğe tabi olduğu için kullanılması önerilmez. EBS depolama sınıfı varsayılandır ve çağırılır `gp2` . [EKS depolama](https://docs.aws.amazon.com/eks/latest/userguide/storage-classes.html)hakkında daha fazla bilgi edinin.|
 |**Google Kubernetes Altyapısı (GKE)**|Google Kubernetes altyapısının (GKE) `standard` , [GCE kalıcı diskler](https://kubernetes.io/docs/concepts/storage/volumes/#gcepersistentdisk)için kullanılan yalnızca bir depolama sınıfına sahiptir. Tek bir tane olmak üzere varsayılan değer de vardır. GKE için doğrudan bağlı SSD 'Ler ile kullanabileceğiniz [yerel ve statik bir birim hazırlayıcı](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/local-ssd#run-local-volume-static-provisioner) olsa da, bunun beklendiği veya Google tarafından desteklenmediği için kullanılması önerilmez. [GKE depolama](https://cloud.google.com/kubernetes-engine/docs/concepts/persistent-volumes)hakkında daha fazla bilgi edinin.

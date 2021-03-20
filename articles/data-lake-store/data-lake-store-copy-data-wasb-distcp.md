@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/03/2020
 ms.author: twooley
 ms.openlocfilehash: c608f357eb1eff9fd36e583b98d26250a71cb923
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85515678"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen1"></a>Azure depolama Blobları ve Azure Data Lake Storage 1. arasında veri kopyalamak için DistCp kullanma
@@ -83,7 +83,7 @@ Aşağıda kullanabileceğiniz bazı yönergeler verilmiştir.
 
 * **1. Adım: Toplam Yarn bellek belirleme** -ilk adım, distcp işini çalıştırdığınız kümede bulunan Yarn belleğini belirlemektir. Bu bilgiler, kümeyle ilişkili olan ambarı portalında kullanılabilir. Yarn ' ye gidin ve YARN belleğini görmek için **configs** sekmesini görüntüleyin. Toplam YARN belleğini almak için, düğüm başına YARN belleğini, kümenizde sahip olduğunuz düğümlerin sayısıyla çarpın.
 
-* **2. Adım: mapcontroller sayısını hesaplama** -l DEĞERI, Yarn kapsayıcı boyutuna bölünen toplam Yarn bellek bölümüne eşittir. **m** YARN kapsayıcı boyutu bilgileri ayrıca, ambarı portalında da mevcuttur. YARN 'ye gidin ve **configs** sekmesini görüntüleyin. YARN kapsayıcı boyutu bu pencerede görüntülenir. Mapcontroller (**d**) sayısına ulaşacak denklem:
+* **2. Adım: mapcontroller sayısını hesaplama** -l DEĞERI, Yarn kapsayıcı boyutuna bölünen toplam Yarn bellek bölümüne eşittir.  YARN kapsayıcı boyutu bilgileri ayrıca, ambarı portalında da mevcuttur. YARN 'ye gidin ve **configs** sekmesini görüntüleyin. YARN kapsayıcı boyutu bu pencerede görüntülenir. Mapcontroller (**d**) sayısına ulaşacak denklem:
 
    `m = (number of nodes * YARN memory for each node) / YARN container size`
 

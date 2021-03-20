@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: jeedes
 ms.openlocfilehash: 9b7e5626eeb65b5bc92c27dbb0a772e85a54d4ff
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92453981"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-envoy"></a>Öğretici: Envoy ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile Envoy tümleştirme hakk�
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -59,7 +59,7 @@ Envoy 'nin tümleştirmesini Azure AD 'ye göre yapılandırmak için Galeriden 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-envoy"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Envoy ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Envoy içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Envoy ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Envoy içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Envoy ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -131,7 +131,7 @@ Bu bölümde, Envoy 'e erişim vererek Azure çoklu oturum açma özelliğini ku
 
 ## <a name="configure-envoy-sso"></a>Envoy SSO 'yu yapılandırma
 
-1. Yapılandırma işlemini otomatik hale getirmek için, **uzantıyı yüklemek**üzere **uygulamalarımı güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
+1. Yapılandırma işlemini otomatik hale getirmek için, **uzantıyı yüklemek** üzere **uygulamalarımı güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 
     ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
 

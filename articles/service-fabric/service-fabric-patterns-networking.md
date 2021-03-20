@@ -4,10 +4,10 @@ description: Service Fabric için ortak ağ düzenlerini ve Azure ağ özellikle
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.openlocfilehash: 20bd5e931307725016c3e2ad69dae91214b2caab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87421476"
 ---
 # <a name="service-fabric-networking-patterns"></a>Service Fabric ağ desenleri
@@ -38,7 +38,7 @@ Tüm Service Fabric şablonları [GitHub](https://github.com/Azure/service-fabri
 
 ### <a name="existing-virtual-network"></a>Var olan sanal ağ
 
-Aşağıdaki örnekte, **existingrg** kaynak grubunda existingrg-VNET adlı mevcut bir sanal ağ ile başlayacağız. Alt ağ varsayılan olarak adlandırılır. Bu varsayılan kaynaklar, bir standart sanal makine (VM) oluşturmak için Azure portal kullandığınızda oluşturulur. Sanal ağı ve alt ağı VM oluşturmadan oluşturabilirsiniz, ancak mevcut bir sanal ağa küme eklemenin ana hedefi, diğer VM 'lere ağ bağlantısı sağlamaktır. VM 'nin oluşturulması, mevcut bir sanal ağın genellikle nasıl kullanıldığına ilişkin iyi bir örnek sağlar. Service Fabric kümeniz, genel IP adresi olmadan yalnızca bir iç yük dengeleyici kullanıyorsa, VM 'yi ve genel IP 'sini güvenli bir geçiş *kutusu*olarak kullanabilirsiniz.
+Aşağıdaki örnekte, **existingrg** kaynak grubunda existingrg-VNET adlı mevcut bir sanal ağ ile başlayacağız. Alt ağ varsayılan olarak adlandırılır. Bu varsayılan kaynaklar, bir standart sanal makine (VM) oluşturmak için Azure portal kullandığınızda oluşturulur. Sanal ağı ve alt ağı VM oluşturmadan oluşturabilirsiniz, ancak mevcut bir sanal ağa küme eklemenin ana hedefi, diğer VM 'lere ağ bağlantısı sağlamaktır. VM 'nin oluşturulması, mevcut bir sanal ağın genellikle nasıl kullanıldığına ilişkin iyi bir örnek sağlar. Service Fabric kümeniz, genel IP adresi olmadan yalnızca bir iç yük dengeleyici kullanıyorsa, VM 'yi ve genel IP 'sini güvenli bir geçiş *kutusu* olarak kullanabilirsiniz.
 
 ### <a name="static-public-ip-address"></a>Statik genel IP adresi
 
@@ -342,7 +342,7 @@ Bu senaryo varsayılan Service Fabric şablonundaki dış yük dengeleyiciyi yal
                 ],
     ```
 
-5. `frontendIPConfigurations`Bir `publicIPAddress` alt ağ ve kullanarak yük dengeleyicinin ayarını a kullanarak değiştirin `privateIPAddress` . `privateIPAddress` önceden tanımlanmış bir statik iç IP adresi kullanır. Dinamik bir IP adresi kullanmak için, öğesini kaldırın `privateIPAddress` ve ardından `privateIPAllocationMethod` **dinamik**olarak değiştirin.
+5. `frontendIPConfigurations`Bir `publicIPAddress` alt ağ ve kullanarak yük dengeleyicinin ayarını a kullanarak değiştirin `privateIPAddress` . `privateIPAddress` önceden tanımlanmış bir statik iç IP adresi kullanır. Dinamik bir IP adresi kullanmak için, öğesini kaldırın `privateIPAddress` ve ardından `privateIPAllocationMethod` **dinamik** olarak değiştirin.
 
     ```json
                 "frontendIPConfigurations": [
