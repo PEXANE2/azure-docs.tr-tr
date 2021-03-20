@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.custom: devx-track-csharp
 ms.date: 06/23/2020
 ms.openlocfilehash: 0620f55650d0e4da0cd7a616649df952f3017455
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88922336"
 ---
 # <a name="tutorial-azure-wcf-relay-rest-tutorial"></a>Öğretici: Azure WCF Geçişi REST öğreticisi
@@ -53,22 +53,22 @@ Bir WCF sözleşmesi ile REST stili sözleşme arasındaki birincil fark, [Opera
 
 1. Microsoft Visual Studio yönetici olarak başlatın. Bunu yapmak için, Visual Studio program simgesine sağ tıklayın ve **yönetici olarak çalıştır**' ı seçin.
 1. Visual Studio 'da **Yeni proje oluştur**' u seçin.
-1. **Yeni proje oluştur**bölümünde C# için **konsol uygulaması (.NET Framework)** öğesini seçin ve **İleri**' yi seçin.
-1. Projeyi *ımagelistener*olarak adlandırın. Varsayılan **konumu**kullanın ve ardından **Oluştur**' u seçin.
+1. **Yeni proje oluştur** bölümünde C# için **konsol uygulaması (.NET Framework)** öğesini seçin ve **İleri**' yi seçin.
+1. Projeyi *ımagelistener* olarak adlandırın. Varsayılan **konumu** kullanın ve ardından **Oluştur**' u seçin.
 
-   C# projesi için, Visual Studio bir *program.cs* dosyası oluşturur. Bu sınıf, bir konsol uygulaması projesinin doğru şekilde derlenmesi için gerekli olan boş `Main()` yöntemi içerir.
+   C# projesi için, Visual Studio bir *program. cs* dosyası oluşturur. Bu sınıf, bir konsol uygulaması projesinin doğru şekilde derlenmesi için gerekli olan boş `Main()` yöntemi içerir.
 
 1. **Çözüm Gezgini**, **ımagelistener** projesine sağ tıklayın ve ardından **NuGet Paketlerini Yönet**' i seçin.
-1. **Araştır**' ı seçin, sonra **windowsazure. ServiceBus**öğesini arayıp seçin. **Yükler**' i seçin ve kullanım koşullarını kabul edin.
+1. **Araştır**' ı seçin, sonra **windowsazure. ServiceBus** öğesini arayıp seçin. **Yükler**' i seçin ve kullanım koşullarını kabul edin.
 
-    Bu adım Service Bus ve *System.ServiceModel.dll*başvuruları ekler. Bu paket otomatik olarak Service Bus kitaplıklarına ve WCF 'ye başvurular ekler `System.ServiceModel` .
+    Bu adım Service Bus ve *System.ServiceModel.dll* başvuruları ekler. Bu paket otomatik olarak Service Bus kitaplıklarına ve WCF 'ye başvurular ekler `System.ServiceModel` .
 
 1. Projeye açıkça bir başvuru ekleyin `System.ServiceModel.Web.dll` . **Çözüm Gezgini**, proje klasörü altındaki **Başvurular** ' a sağ tıklayın ve **Başvuru Ekle**' yi seçin.
 1. **Başvuru Ekle**' de **çerçeve** ' yi seçin ve **Search**'te *System. ServiceModel. Web* girin. **System.ServiceModel.Web** öğesinin onay kutusunu işaretleyin ve **Tamam**'a tıklayın.
 
 Ardından, projede aşağıdaki kod değişikliklerini yapın:
 
-1. `using` *Program.cs* dosyasının en üstüne aşağıdaki deyimleri ekleyin.
+1. `using` *Program. cs* dosyasının en üstüne aşağıdaki deyimleri ekleyin.
 
     ```csharp
     using System.ServiceModel;
@@ -130,7 +130,7 @@ Ardından, projede aşağıdaki kod değişikliklerini yapın:
 
    Kanal, hizmet ve istemcilerin bilgileri birbirlerine göndermek için kullandıkları WCF nesnesidir. Daha sonra, kanalı ana uygulamanızda oluşturursunuz. Azure Relay daha sonra bu kanalı kullanarak HTTP GET isteklerini tarayıcıdan `GetImage` uygulamanıza geçirin. Geçiş Ayrıca, `GetImage` dönüş değerini alıp istemci tarayıcısı için bir öğesine çevirecek kanalı kullanır `HTTP GETRESPONSE` .
 
-1. **Build**  >  İşin şu ana kadarki doğruluğunu onaylamak için derleme**Build Solution** ' ı seçin.
+1.   >  İşin şu ana kadarki doğruluğunu onaylamak için derleme **Build Solution** ' ı seçin.
 
 ### <a name="example-that-defines-a-wcf-relay-contract"></a>WCF Geçişi sözleşmesini tanımlayan örnek
 
@@ -185,7 +185,7 @@ REST stili WCF Geçişi bir hizmet oluşturmak için önce bir arabirim kullanar
 
     Diğer arabirim uygulamalarına benzer şekilde, tanımı farklı bir dosyada uygulayabilirsiniz. Ancak bu öğreticide uygulama, arabirim tanımı ve `Main()` yöntemiyle aynı dosyada görünmelidir.
 
-1. Sınıfın bir [ServiceBehaviorAttribute](/dotnet/api/system.servicemodel.servicebehaviorattribute) `IImageService` WCF sözleşmesinin bir uygulaması olduğunu göstermek için, bu sınıfa ServiceBehaviorAttribute özniteliğini uygulayın.
+1. Sınıfın bir [](/dotnet/api/system.servicemodel.servicebehaviorattribute) `IImageService` WCF sözleşmesinin bir uygulaması olduğunu göstermek için, bu sınıfa ServiceBehaviorAttribute özniteliğini uygulayın.
 
     ```csharp
     [ServiceBehavior(Name = "ImageService", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
@@ -202,9 +202,9 @@ REST stili WCF Geçişi bir hizmet oluşturmak için önce bir arabirim kullanar
    1. Ardından **Varolan öğe**' yi seçin.
    1. Uygun bir. jpg öğesine gitmek için **Varolan öğe Ekle** ' yi kullanın ve ardından **Ekle**' yi seçin. Dosya eklenirken **dosya adı**' nın yanındaki aşağı açılan listeden **tüm dosyalar** ' ı seçin.
 
-   Bu öğreticinin geri kalanı görüntünün adının *image.jpg*olduğunu varsayar. Farklı bir dosyanız varsa, görüntüyü yeniden adlandırmanız veya kodunuzu telafi olarak değiştirmeniz gerekir.
+   Bu öğreticinin geri kalanı görüntünün adının *image.jpg* olduğunu varsayar. Farklı bir dosyanız varsa, görüntüyü yeniden adlandırmanız veya kodunuzu telafi olarak değiştirmeniz gerekir.
 
-1. Çalışan Hizmetin görüntü dosyasını **bulaÇözüm Gezgini** emin olmak için, ' de görüntü dosyasına sağ tıklayın ve ardından **Özellikler**' i seçin. **Özellikler**' de, **daha yeniyse kopyalamak**için **Çıkış Dizinine Kopyala** ' yı ayarlayın.
+1. Çalışan Hizmetin görüntü dosyasını **bulaÇözüm Gezgini** emin olmak için, ' de görüntü dosyasına sağ tıklayın ve ardından **Özellikler**' i seçin. **Özellikler**' de, **daha yeniyse kopyalamak** için **Çıkış Dizinine Kopyala** ' yı ayarlayın.
 
 1. Projeye *System.Drawing.dll* derlemesine başvuru eklemek için [arabirimi olan bir anlaşma oluşturmak için](#to-create-a-contract-with-an-interface) içindeki yordamını kullanın.
 
@@ -248,9 +248,9 @@ REST stili WCF Geçişi bir hizmet oluşturmak için önce bir arabirim kullanar
     }
     ```
 
-    Bu uygulama `MemoryStream` , görüntüyü almak ve tarayıcıya akışa hazırlamak için kullanır. Akış konumunu sıfır olarak başlatır, akış içeriğini bir *. jpg*olarak bildirir ve bilgileri akışlar.
+    Bu uygulama `MemoryStream` , görüntüyü almak ve tarayıcıya akışa hazırlamak için kullanır. Akış konumunu sıfır olarak başlatır, akış içeriğini bir *. jpg* olarak bildirir ve bilgileri akışlar.
 
-1. Yapı **Build**  >  **Yapı çözümünü**seçin.
+1. Yapı   >  **Yapı çözümünü** seçin.
 
 ### <a name="to-define-the-configuration-for-running-the-web-service-on-service-bus"></a>Service Bus üzerinde web hizmetini çalıştırmak için yapılandırma tanımlama
 
@@ -325,7 +325,7 @@ REST stili WCF Geçişi bir hizmet oluşturmak için önce bir arabirim kullanar
     </appSettings>
     ```
 
-1. **Build**  >  Tüm çözümü derlemek için derleme**Yapı çözümünü** seçin.
+1.   >  Tüm çözümü derlemek için derleme **Yapı çözümünü** seçin.
 
 ### <a name="example-that-implements-the-rest-based-wcf-service-contract"></a>REST tabanlı WCF hizmet sözleşmesini uygulayan örnek
 
@@ -542,7 +542,7 @@ Hizmet ana bilgisayarı, ana bilgisayar uygulamasının örneğini oluşturan WC
 
 ### <a name="example-of-the-service-contract-and-implementation"></a>Hizmet sözleşmesi ve uygulama örneği
 
-Aşağıdaki örnek, hizmet sözleşmesini ve bu öğreticinin önceki kısımlarında yer alan uygulamayı içerir ve hizmeti bir konsol uygulamasında barındırır. Aşağıdaki kodu *ImageListener.exe*adlı bir yürütülebilir dosyada derleyin.
+Aşağıdaki örnek, hizmet sözleşmesini ve bu öğreticinin önceki kısımlarında yer alan uygulamayı içerir ve hizmeti bir konsol uygulamasında barındırır. Aşağıdaki kodu *ImageListener.exe* adlı bir yürütülebilir dosyada derleyin.
 
 ```csharp
 using System;

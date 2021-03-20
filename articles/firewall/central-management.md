@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: victorh
 ms.openlocfilehash: 23a7682d8a64de57db4ff9ae785ada90d4a06944
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87084679"
 ---
 # <a name="azure-firewall-central-management"></a>Azure Güvenlik duvarı merkezi yönetimi
@@ -27,9 +27,9 @@ Azure Güvenlik Duvarı Yöneticisi, bulut tabanlı güvenlik perimeters için m
 
 ### <a name="firewall-policy"></a>Güvenlik duvarı ilkesi
 
-Güvenlik duvarı ilkesi NAT, ağ ve uygulama kuralı koleksiyonlarını ve tehdit bilgileri ayarlarını içeren bir Azure kaynağıdır. Bu, *güvenli sanal hub 'larda* ve *hub sanal ağlarında*bulunan birden çok Azure Güvenlik Duvarı örneği genelinde kullanılabilen küresel bir kaynaktır. Yeni ilkeler sıfırdan oluşturulabilir veya var olan ilkelerden devralınabilir. Devralma DevOps 'ın kuruluş uygulanan temel ilkesi üzerinde yerel güvenlik duvarı ilkeleri oluşturmasına izin verir. İlkeler bölgeler ve abonelikler arasında çalışır.
+Güvenlik duvarı ilkesi NAT, ağ ve uygulama kuralı koleksiyonlarını ve tehdit bilgileri ayarlarını içeren bir Azure kaynağıdır. Bu, *güvenli sanal hub 'larda* ve *hub sanal ağlarında* bulunan birden çok Azure Güvenlik Duvarı örneği genelinde kullanılabilen küresel bir kaynaktır. Yeni ilkeler sıfırdan oluşturulabilir veya var olan ilkelerden devralınabilir. Devralma DevOps 'ın kuruluş uygulanan temel ilkesi üzerinde yerel güvenlik duvarı ilkeleri oluşturmasına izin verir. İlkeler bölgeler ve abonelikler arasında çalışır.
  
-Azure Güvenlik Duvarı Yöneticisi ile güvenlik duvarı Ilkesi ve ilişkilendirmeleri oluşturabilirsiniz. Ancak, REST API, şablonları, Azure PowerShell ve CLı kullanarak da bir ilke oluşturabilir ve yönetebilirsiniz. Bir ilke oluşturduktan sonra, bunu sanal bir WAN hub 'ında *güvenli bir sanal hub* ve/veya bir sanal ağ üzerinde bir güvenlik duvarı oluşturarak BT *hub 'ı sanal ağı*yapan bir güvenlik duvarıyla ilişkilendirebilirsiniz.
+Azure Güvenlik Duvarı Yöneticisi ile güvenlik duvarı Ilkesi ve ilişkilendirmeleri oluşturabilirsiniz. Ancak, REST API, şablonları, Azure PowerShell ve CLı kullanarak da bir ilke oluşturabilir ve yönetebilirsiniz. Bir ilke oluşturduktan sonra, bunu sanal bir WAN hub 'ında *güvenli bir sanal hub* ve/veya bir sanal ağ üzerinde bir güvenlik duvarı oluşturarak BT *hub 'ı sanal ağı* yapan bir güvenlik duvarıyla ilişkilendirebilirsiniz.
 
 ### <a name="pricing"></a>Fiyatlandırma
 

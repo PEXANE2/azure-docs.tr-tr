@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: b6689220873aaeb65337ba480e346e5d2c8020ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91707872"
 ---
 # <a name="logical-replication-and-logical-decoding-in-azure-database-for-postgresql---flexible-server"></a>PostgreSQL için Azure veritabanı 'nda mantıksal çoğaltma ve mantıksal kod çözme-esnek sunucu
@@ -53,8 +53,8 @@ Mantıksal kod çözme
 
 ### <a name="logical-replication"></a>Mantıksal çoğaltma
 Mantıksal çoğaltma ' Yayımcı ' ve ' abone ' koşullarını kullanır. 
-* Yayımcı **, verileri gönderdiğiniz**PostgreSQL veritabanıdır. 
-* Abone **, veri göndermekte**olduğunuz PostgreSQL veritabanıdır.
+* Yayımcı **, verileri gönderdiğiniz** PostgreSQL veritabanıdır. 
+* Abone **, veri göndermekte** olduğunuz PostgreSQL veritabanıdır.
 
 Aşağıda, mantıksal çoğaltmayı denemek için kullanabileceğiniz bazı örnek kodlar verilmiştir.
 
@@ -105,7 +105,7 @@ Aşağıdaki örnekte, SQL arabirimini wal2json eklentisi ile kullanıyoruz.
    SELECT * FROM pg_create_logical_replication_slot('test_slot', 'wal2json');
    ```
  
-2. SQL komutları verin. Örneğin:
+2. SQL komutları verin. Örnek:
    ```SQL
    CREATE TABLE a_table (
       id varchar(40) NOT NULL,

@@ -20,17 +20,17 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 54b6ae227fc4b3b951717799660543c02874dda0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88919667"
 ---
 # <a name="odata-select-syntax-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de OData $select söz dizimi
 
  Azure Bilişsel Arama arama sonuçlarına dahil edilecek alanları seçmek için [OData **$Select** parametresini](query-odata-filter-orderby-syntax.md) kullanabilirsiniz. Bu makalede **$Select** sözdizimi ayrıntılı olarak açıklanmaktadır. Arama sonuçlarını sunarken **$Select** kullanma hakkında daha fazla genel bilgi için bkz. [Azure bilişsel arama arama sonuçlarıyla çalışma](search-pagination-page-layout.md).
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 **$Select** parametresi, her belge için hangi alanların sorgu sonuç kümesinde döndürüleceğini belirler. Aşağıdaki EBNF ([genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) **$Select** parametresi için dilbilgisini tanımlar:
 
@@ -57,7 +57,7 @@ Etkileşimli bir sözdizimi diyagramı da kullanılabilir:
 
 İkinci formu kullanırken, yalnızca listede alınabilir alanları belirtebilirsiniz.
 
-Kendi alt alanlarını açıkça belirtmeden bir karmaşık alanı listelemiyorsanız, tüm alınabilir alt alanlar sorgu sonuç kümesine dahil edilir. Örneğin, dizininizin `Address` `Street` ,, `City` ve `Country` tüm alınabilir alt alanlar içeren bir alanı olduğunu varsayalım. `Address` **$Select**belirtirseniz, sorgu sonuçları üç alt alanı da içerir.
+Kendi alt alanlarını açıkça belirtmeden bir karmaşık alanı listelemiyorsanız, tüm alınabilir alt alanlar sorgu sonuç kümesine dahil edilir. Örneğin, dizininizin `Address` `Street` ,, `City` ve `Country` tüm alınabilir alt alanlar içeren bir alanı olduğunu varsayalım. `Address` **$Select** belirtirseniz, sorgu sonuçları üç alt alanı da içerir.
 
 ## <a name="examples"></a>Örnekler
 

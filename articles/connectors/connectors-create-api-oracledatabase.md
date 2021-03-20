@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/20/2020
 tags: connectors
 ms.openlocfilehash: 91873a2d6a498712773bfe721653e64c3364666f
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92674817"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Oracle Database bağlayıcısını kullanmaya başlama
@@ -30,7 +30,7 @@ Bu bağlayıcı aşağıdaki öğeleri desteklemez:
 
 Bu makalede, Oracle Database bağlayıcısının bir mantıksal uygulamada nasıl kullanılacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Desteklenen Oracle sürümleri: 
     * Oracle 9 ve üstü
@@ -60,9 +60,9 @@ Bu makalede, Oracle Database bağlayıcısının bir mantıksal uygulamada nası
 
     ![Bir iletişim kutusu, tüm Tetiklerde arama yapmak için bir kutu içerir. Ayrıca, "Istek/yanıt-Istek" adlı ve seçim düğmesi ile gösterilen tek bir tetikleyici de vardır.](./media/connectors-create-api-oracledatabase/request-trigger.png)
 
-3. **Kaydet** ’i seçin. Kaydettiğinizde, otomatik olarak bir istek URL 'SI oluşturulur. 
+3. **Kaydet**’i seçin. Kaydettiğinizde, otomatik olarak bir istek URL 'SI oluşturulur. 
 
-4. **Yeni adım** ’ı ve **Eylem ekle** ’yi seçin. `oracle`Kullanılabilir eylemleri görmek için yazın: 
+4. **Yeni adım**’ı ve **Eylem ekle**’yi seçin. `oracle`Kullanılabilir eylemleri görmek için yazın: 
 
     ![Arama kutusu "Oracle" içerir. Arama "Oracle Database" etiketli bir vuruş üretir. Sekmeli bir sayfa, bir sekme "TETIKLEYICILER (0)", başka bir deyişle "eylemler (6)" gösteriliyor. Altı eylem listelenir. Bunlardan ilki "satır önizlemesini al".](./media/connectors-create-api-oracledatabase/oracledb-actions.png)
 
@@ -83,7 +83,7 @@ Bu makalede, Oracle Database bağlayıcısının bir mantıksal uygulamada nası
 
     ![İki iletişim kutusu vardır. "E-posta kutusu gönder", e-postanın "gövde", "konu" ve "to" adresini belirtmek için kutular içerir. "Dinamik içerik Ekle" iletişim kutusu, akışın uygulama ve hizmetlerinden dinamik içerik araması sağlar.](./media/connectors-create-api-oracledatabase/oracle-send-email.png)
 
-8. Mantıksal uygulamanızı **kaydedin** ve sonra **Çalıştır** ' ı seçin. Tasarımcıyı kapatın ve durum için çalıştırma geçmişine bakın. Başarısız olursa, başarısız ileti satırını seçin. Tasarımcı açılır ve hangi adımın başarısız olduğunu gösterir ve ayrıca hata bilgilerini gösterir. Başarılı olursa, eklediğiniz bilgileri içeren bir e-posta almalısınız.
+8. Mantıksal uygulamanızı **kaydedin** ve sonra **Çalıştır**' ı seçin. Tasarımcıyı kapatın ve durum için çalıştırma geçmişine bakın. Başarısız olursa, başarısız ileti satırını seçin. Tasarımcı açılır ve hangi adımın başarısız olduğunu gösterir ve ayrıca hata bilgilerini gösterir. Başarılı olursa, eklediğiniz bilgileri içeren bir e-posta almalısınız.
 
 
 ### <a name="workflow-ideas"></a>İş akışı fikirleri
@@ -98,23 +98,23 @@ Bu makalede, Oracle Database bağlayıcısının bir mantıksal uygulamada nası
 
 ## <a name="common-errors"></a>Sık karşılaşılan hatalar
 
-#### <a name="error-cannot-reach-the-gateway"></a>**Hata** : ağ geçidine ulaşılamıyor
+#### <a name="error-cannot-reach-the-gateway"></a>**Hata**: ağ geçidine ulaşılamıyor
 
-**Neden** : şirket içi veri ağ geçidi buluta bağlanamıyor. 
+**Neden**: şirket içi veri ağ geçidi buluta bağlanamıyor. 
 
-**Risk azaltma** : ağ geçidinizin, yüklediğiniz şirket içi makinede çalıştığından ve internet 'e bağlanabildiğinden emin olun.  Ağ geçidini kapalı veya uyku moduna geçecek bir bilgisayara yüklememenizi öneririz. Şirket içi veri ağ geçidi hizmeti 'ni (Pbıegwservice) da yeniden başlatabilirsiniz.
+**Risk azaltma**: ağ geçidinizin, yüklediğiniz şirket içi makinede çalıştığından ve internet 'e bağlanabildiğinden emin olun.  Ağ geçidini kapalı veya uyku moduna geçecek bir bilgisayara yüklememenizi öneririz. Şirket içi veri ağ geçidi hizmeti 'ni (Pbıegwservice) da yeniden başlatabilirsiniz.
 
-#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**Hata** : kullanılan sağlayıcı kullanım dışı: ' System. Data. OracleClient, Oracle istemci yazılımı sürümü 8.1.7 veya daha üstünü gerektiriyor. '. [https://go.microsoft.com/fwlink/p/?LinkID=272376](/power-bi/connect-data/desktop-connect-oracle-database)Resmi sağlayıcıyı yüklemek için bkz..
+#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**Hata**: kullanılan sağlayıcı kullanım dışı: ' System. Data. OracleClient, Oracle istemci yazılımı sürümü 8.1.7 veya daha üstünü gerektiriyor. '. [https://go.microsoft.com/fwlink/p/?LinkID=272376](/power-bi/connect-data/desktop-connect-oracle-database)Resmi sağlayıcıyı yüklemek için bkz..
 
-**Neden** : Oracle istemci SDK 'sı, şirket içi veri ağ geçidinin çalıştığı makinede yüklü değil.  
+**Neden**: Oracle istemci SDK 'sı, şirket içi veri ağ geçidinin çalıştığı makinede yüklü değil.  
 
-**Çözüm** : Oracle istemci SDK 'sını, şirket içi veri ağ geçidiyle aynı bilgisayara indirin ve yükleyin.
+**Çözüm**: Oracle istemci SDK 'sını, şirket içi veri ağ geçidiyle aynı bilgisayara indirin ve yükleyin.
 
-#### <a name="error-table-tablename-does-not-define-any-key-columns"></a>**Hata** : ' [TableName] ' tablosu hiçbir anahtar sütun tanımlamıyor
+#### <a name="error-table-tablename-does-not-define-any-key-columns"></a>**Hata**: ' [TableName] ' tablosu hiçbir anahtar sütun tanımlamıyor
 
-**Neden** : tabloda birincil anahtar yok.  
+**Neden**: tabloda birincil anahtar yok.  
 
-**Çözüm** : Oracle Database Bağlayıcısı, birincil anahtar sütunu olan bir tablonun kullanılmasını gerektirir.
+**Çözüm**: Oracle Database Bağlayıcısı, birincil anahtar sütunu olan bir tablonun kullanılmasını gerektirir.
  
 ## <a name="connector-specific-details"></a>Bağlayıcıya özgü ayrıntılar
 

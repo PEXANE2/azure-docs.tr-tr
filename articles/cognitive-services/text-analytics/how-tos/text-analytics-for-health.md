@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/03/2021
+ms.date: 03/11/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: f7ba6363ec3a38d37ea3df0f76409289069638e8
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 80a943d235783852f57832363b5af8048f010575
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99537805"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599444"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>Nasıl yapılır: sistem durumu için Metin Analizi kullanma (Önizleme)
 
@@ -44,7 +44,7 @@ Adlandırılmış varlık tanıma, bir veya daha fazla anlamsal tür ile ilişki
 
 ### <a name="relation-extraction"></a>[İlişki ayıklama](#tab/relation-extraction)
 
-İlişki ayıklama metinde bahsedilen kavramlar arasındaki anlamlı bağlantıları tanımlar. Örneğin, bir koşul adı bir saat ile ilişkilendirerek bir "koşul süresi" ilişkisi bulunur. 
+İlişki ayıklama metinde bahsedilen kavramlar arasındaki anlamlı bağlantıları tanımlar. Örneğin, bir koşul adı bir zaman veya bir kısaltma ile tam açıklama arasında ilişkilendirerek bir "koşul süresi" ilişkisi bulunur.  
 
 > [!div class="mx-imgBorder"]
 > ![Sağlık YENIDEN](../media/ta-for-health/health-relation-extraction.png)
@@ -52,19 +52,23 @@ Adlandırılmış varlık tanıma, bir veya daha fazla anlamsal tür ile ilişki
 
 ### <a name="entity-linking"></a>[Varlık Bağlama](#tab/entity-linking)
 
-Varlık bağlama, metinde bahsedilen adlandırılmış varlıkları, önceden tanımlanmış bir kavram veritabanında bulunan kavramlara ilişkilendirerek ayrı varlıkların ayırt düzeyini ortadan kaldırarak ayırt ediyor. Örneğin, Birleşik Tıbbi dil sistemi (UMLS).
+Varlık bağlama, metinde bahsedilen adlandırılmış varlıkları Birleşik Tıbbi dil sistemi (UMLS) dahil olmak üzere önceden tanımlanmış bir kavram veritabanında bulunan kavramlara ilişkilendirerek benzersiz varlıkları ayırt ediyor. Tıbbi kavramlar, ek bir normalleştirme biçimi olarak tercih edilen adlandırma de atanır.
 
 > [!div class="mx-imgBorder"]
 > ![Sağlık EL](../media/ta-for-health/health-entity-linking.png)
 
 Sistem durumu Metin Analizi Birleşik Tıbbi dil sistemi ([Umls](https://www.nlm.nih.gov/research/umls/sourcereleasedocs/index.html)) Metaeşanlamlılar bilgi kaynağında bulunan sağlık ve biotıbbi sözcük dağarcıklarını bağlamayı destekler.
 
-### <a name="negation-detection"></a>[Algılama Olumsuzlaştırma](#tab/negation-detection) 
+### <a name="assertion-detection"></a>[Onaylama algılaması](#tab/assertion-detection) 
 
-Tıbbi içeriğin anlamı, yanlış tanılanıyor durumunda önemli bir engel olabilecek Olumsuzlaştırma gibi değiştiricilerin büyük ölçüde etkilenir. Sistem durumu Metin Analizi, metinde bahsedilen farklı varlıkların algılanmasını desteklemiyor. 
+Tıbbi içeriğin anlamı negatif veya koşullu Onaylamalar gibi değiştiriciler tarafından büyük ölçüde etkilenir. Bu, yanlış temsil edildiğinde kritik etkilere sahip olabilir. Sistem durumu Metin Analizi, metinde bulunan varlıklar için üç onay algılama kategorisini destekler: 
+
+* kesin olarak belirlenemeyeceğinden
+* Oluştur
+* ilişkilendirme
 
 > [!div class="mx-imgBorder"]
-> ![Sistem durumu NEG](../media/ta-for-health/health-negation.png)
+> ![Sistem durumu NEG](../media/ta-for-health/assertions.png)
 
 ---
 
@@ -137,20 +141,20 @@ example.json
 
 Bu POST isteği, zaman uyumsuz işlem için bir iş göndermek üzere kullanıldığından, yanıt nesnesinde bir metin yok.  Ancak, iş ve çıkış durumunu denetlemek için bir GET isteği oluşturmak üzere yanıt üst bilgilerinde işlem konumu ANAHTARıNıN değeri gereklidir.  POST isteğinin yanıt üstbilgisindeki Operation-location ANAHTARıNıN değerine bir örnek aşağıda verilmiştir:
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/health/jobs/<jobID>`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/entities/health/jobs/<jobID>`
 
 İş durumunu denetlemek için POST yanıtının Operation-location anahtar üstbilgisi değerindeki URL 'ye bir GET isteği yapın.  Aşağıdaki durumlar, bir işin durumunu yansıtmak için kullanılır: `NotStarted` , `running` ,,,, `succeeded` `failed` `rejected` `cancelling` , ve `cancelled` .  
 
 `NotStarted` `running` Get ISTEĞIYLE aynı URL 'ye BIR Delete http çağrısını içeren veya durumu ile bir işi iptal edebilirsiniz.  [Sistem durumu BARıNDıRıLAN API başvurusu için metin analizi](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/CancelHealthJob), silme çağrısı hakkında daha fazla bilgi bulunabilir.
 
-Bir GET isteğinin yanıtı örneği aşağıda verilmiştir.  Çıkışın, `expirationDateTime` çıktının temizlenmeden sonra geçen süre (örneğin, işin oluşturulduğu zamandan itibaren 24 saat) geçtiğinde, çıktının alınması için kullanılabilir olduğunu lütfen unutmayın.
+Bir GET isteğinin yanıtı örneği aşağıda verilmiştir.  Çıktı, `expirationDateTime` çıktının temizlenme zamanından sonra (işin oluşturulduğu zamandan itibaren 24 saat) geçtiğinde alınabilir.
 
 ```json
 {
-    "jobId": "b672c6f5-7c0d-4783-ba8c-4d0c47213454",
-    "lastUpdateDateTime": "2020-11-18T01:45:00Z",
-    "createdDateTime": "2020-11-18T01:44:55Z",
-    "expirationDateTime": "2020-11-19T01:44:55Z",
+    "jobId": "be437134-a76b-4e45-829e-9b37dcd209bf",
+    "lastUpdateDateTime": "2021-03-11T05:43:37Z",
+    "createdDateTime": "2021-03-11T05:42:32Z",
+    "expirationDateTime": "2021-03-12T05:42:32Z",
     "status": "succeeded",
     "errors": [],
     "results": {
@@ -163,8 +167,7 @@ Bir GET isteğinin yanıtı örneği aşağıda verilmiştir.  Çıkışın, `ex
                         "length": 5,
                         "text": "100mg",
                         "category": "Dosage",
-                        "confidenceScore": 1.0,
-                        "isNegated": false
+                        "confidenceScore": 1.0
                     },
                     {
                         "offset": 31,
@@ -172,15 +175,35 @@ Bir GET isteğinin yanıtı örneği aşağıda verilmiştir.  Çıkışın, `ex
                         "text": "remdesivir",
                         "category": "MedicationName",
                         "confidenceScore": 1.0,
-                        "isNegated": false,
+                        "name": "remdesivir",
                         "links": [
                             {
                                 "dataSource": "UMLS",
                                 "id": "C4726677"
                             },
                             {
+                                "dataSource": "DRUGBANK",
+                                "id": "DB14761"
+                            },
+                            {
+                                "dataSource": "GS",
+                                "id": "6192"
+                            },
+                            {
+                                "dataSource": "MEDCIN",
+                                "id": "398132"
+                            },
+                            {
+                                "dataSource": "MMSL",
+                                "id": "d09540"
+                            },
+                            {
                                 "dataSource": "MSH",
                                 "id": "C000606551"
+                            },
+                            {
+                                "dataSource": "MTHSPL",
+                                "id": "3QKI37EEHE"
                             },
                             {
                                 "dataSource": "NCI",
@@ -189,6 +212,22 @@ Bir GET isteğinin yanıtı örneği aşağıda verilmiştir.  Çıkışın, `ex
                             {
                                 "dataSource": "NCI_FDA",
                                 "id": "3QKI37EEHE"
+                            },
+                            {
+                                "dataSource": "NDDF",
+                                "id": "018308"
+                            },
+                            {
+                                "dataSource": "RXNORM",
+                                "id": "2284718"
+                            },
+                            {
+                                "dataSource": "SNOMEDCT_US",
+                                "id": "870592005"
+                            },
+                            {
+                                "dataSource": "VANDF",
+                                "id": "4039395"
                             }
                         ]
                     },
@@ -197,57 +236,62 @@ Bir GET isteğinin yanıtı örneği aşağıda verilmiştir.  Çıkışın, `ex
                         "length": 13,
                         "text": "intravenously",
                         "category": "MedicationRoute",
-                        "confidenceScore": 1.0,
-                        "isNegated": false
-                    },
-                    {
-                        "offset": 56,
-                        "length": 4,
-                        "text": "over",
-                        "category": "Time",
-                        "confidenceScore": 0.87,
-                        "isNegated": false
+                        "confidenceScore": 1.0
                     },
                     {
                         "offset": 73,
                         "length": 7,
                         "text": "120 min",
                         "category": "Time",
-                        "confidenceScore": 0.99,
-                        "isNegated": false
+                        "confidenceScore": 0.94
                     }
                 ],
                 "relations": [
                     {
                         "relationType": "DosageOfMedication",
-                        "bidirectional": false,
-                        "source": "#/results/documents/0/entities/0",
-                        "target": "#/results/documents/0/entities/1"
+                        "entities": [
+                            {
+                                "ref": "#/results/documents/0/entities/0",
+                                "role": "Dosage"
+                            },
+                            {
+                                "ref": "#/results/documents/0/entities/1",
+                                "role": "Medication"
+                            }
+                        ]
                     },
                     {
                         "relationType": "RouteOfMedication",
-                        "bidirectional": false,
-                        "source": "#/results/documents/0/entities/2",
-                        "target": "#/results/documents/0/entities/1"
+                        "entities": [
+                            {
+                                "ref": "#/results/documents/0/entities/1",
+                                "role": "Medication"
+                            },
+                            {
+                                "ref": "#/results/documents/0/entities/2",
+                                "role": "Route"
+                            }
+                        ]
                     },
                     {
                         "relationType": "TimeOfMedication",
-                        "bidirectional": false,
-                        "source": "#/results/documents/0/entities/3",
-                        "target": "#/results/documents/0/entities/1"
-                    },
-                    {
-                        "relationType": "TimeOfMedication",
-                        "bidirectional": false,
-                        "source": "#/results/documents/0/entities/4",
-                        "target": "#/results/documents/0/entities/1"
+                        "entities": [
+                            {
+                                "ref": "#/results/documents/0/entities/1",
+                                "role": "Medication"
+                            },
+                            {
+                                "ref": "#/results/documents/0/entities/3",
+                                "role": "Time"
+                            }
+                        ]
                     }
                 ],
                 "warnings": []
             }
         ],
         "errors": [],
-        "modelVersion": "2020-09-03"
+        "modelVersion": "2021-03-01"
     }
 }
 ```
@@ -294,30 +338,47 @@ Aşağıdaki JSON, Kapsayıcılı zaman uyumlu çağrıdan sistem durumu API 'SI
             "id": "1",
             "entities": [
                 {
-                    "id": "0",
                     "offset": 25,
                     "length": 5,
                     "text": "100mg",
                     "category": "Dosage",
-                    "confidenceScore": 1.0,
-                    "isNegated": false
+                    "confidenceScore": 1.0
                 },
                 {
-                    "id": "1",
                     "offset": 31,
                     "length": 10,
                     "text": "remdesivir",
                     "category": "MedicationName",
                     "confidenceScore": 1.0,
-                    "isNegated": false,
+                    "name": "remdesivir",
                     "links": [
                         {
                             "dataSource": "UMLS",
                             "id": "C4726677"
                         },
                         {
+                            "dataSource": "DRUGBANK",
+                            "id": "DB14761"
+                        },
+                        {
+                            "dataSource": "GS",
+                            "id": "6192"
+                        },
+                        {
+                            "dataSource": "MEDCIN",
+                            "id": "398132"
+                        },
+                        {
+                            "dataSource": "MMSL",
+                            "id": "d09540"
+                        },
+                        {
                             "dataSource": "MSH",
                             "id": "C000606551"
+                        },
+                        {
+                            "dataSource": "MTHSPL",
+                            "id": "3QKI37EEHE"
                         },
                         {
                             "dataSource": "NCI",
@@ -326,115 +387,215 @@ Aşağıdaki JSON, Kapsayıcılı zaman uyumlu çağrıdan sistem durumu API 'SI
                         {
                             "dataSource": "NCI_FDA",
                             "id": "3QKI37EEHE"
+                        },
+                        {
+                            "dataSource": "NDDF",
+                            "id": "018308"
+                        },
+                        {
+                            "dataSource": "RXNORM",
+                            "id": "2284718"
+                        },
+                        {
+                            "dataSource": "SNOMEDCT_US",
+                            "id": "870592005"
+                        },
+                        {
+                            "dataSource": "VANDF",
+                            "id": "4039395"
                         }
                     ]
                 },
                 {
-                    "id": "2",
                     "offset": 42,
                     "length": 13,
                     "text": "intravenously",
                     "category": "MedicationRoute",
-                    "confidenceScore": 1.0,
-                    "isNegated": false
+                    "confidenceScore": 1.0
                 },
                 {
-                    "id": "3",
-                    "offset": 56,
-                    "length": 4,
-                    "text": "over",
-                    "category": "Time",
-                    "confidenceScore": 0.87,
-                    "isNegated": false
-                },
-                {
-                    "id": "4",
                     "offset": 73,
                     "length": 7,
                     "text": "120 min",
                     "category": "Time",
-                    "confidenceScore": 0.99,
-                    "isNegated": false
+                    "confidenceScore": 0.94
                 }
             ],
             "relations": [
                 {
                     "relationType": "DosageOfMedication",
-                    "bidirectional": false,
-                    "source": "#/documents/0/entities/0",
-                    "target": "#/documents/0/entities/1"
+                    "entities": [
+                        {
+                            "ref": "#/documents/0/entities/0",
+                            "role": "Dosage"
+                        },
+                        {
+                            "ref": "#/documents/0/entities/1",
+                            "role": "Medication"
+                        }
+                    ]
                 },
                 {
                     "relationType": "RouteOfMedication",
-                    "bidirectional": false,
-                    "source": "#/documents/0/entities/2",
-                    "target": "#/documents/0/entities/1"
+                    "entities": [
+                        {
+                            "ref": "#/documents/0/entities/1",
+                            "role": "Medication"
+                        },
+                        {
+                            "ref": "#/documents/0/entities/2",
+                            "role": "Route"
+                        }
+                    ]
                 },
                 {
                     "relationType": "TimeOfMedication",
-                    "bidirectional": false,
-                    "source": "#/documents/0/entities/3",
-                    "target": "#/documents/0/entities/1"
-                },
-                {
-                    "relationType": "TimeOfMedication",
-                    "bidirectional": false,
-                    "source": "#/documents/0/entities/4",
-                    "target": "#/documents/0/entities/1"
+                    "entities": [
+                        {
+                            "ref": "#/documents/0/entities/1",
+                            "role": "Medication"
+                        },
+                        {
+                            "ref": "#/documents/0/entities/3",
+                            "role": "Time"
+                        }
+                    ]
                 }
-            ]
+            ],
+            "warnings": []
         }
     ],
     "errors": [],
-    "modelVersion": "2020-09-03"
+    "modelVersion": "2021-03-01"
 }
 ```
 
-### <a name="negation-detection-output"></a>Algılama çıkışının Olumsuzlaştırma
+### <a name="assertion-output"></a>Onaylama çıktısı
 
-Değilleme algılama kullanılırken, bazı durumlarda tek bir olumsuzlama bir kez birkaç terim ele alabilir. Tanınan bir varlığın değilleme, JSON çıktısında bayrağın Boolean değeri tarafından temsil edilir `isNegated` , örneğin:
+Sistem durumu için Metin Analizi, tıbbi kavramlara eklenen ve metin içinde kavramların bağlamını daha derin anlamak sağlayan bilgilendirici öznitelikler olan onaylama değiştiricileri. Bu değiştiriciler, her biri farklı bir boyut üzerinde odaklanan ve birbirini dışlayan değerler kümesi içeren üç kategoriye ayrılmıştır. Her bir varlığa kategori başına yalnızca bir değer atanır. Her kategori için en sık kullanılan değer varsayılan değerdir. Hizmetin çıkış yanıtı yalnızca varsayılan değerden farklı onaylama değiştiricileri içerir.
+
+**Belirsizlik**  : kavramın varlığı (mevcut ve yok) ile ilgili bilgiler ve ilgili metnin kendi varlığı ile nasıl ilişkili olduğu hakkında bilgi sağlar (belirli ve mümkün olan).
+*   **Pozitif** [varsayılan]: kavram var veya gerçekleşti.
+* **Negatif**: kavram artık mevcut değil veya hiç gerçekleşmedi.
+* **Positive_Possible**: kavram olasılığı vardır ancak bazı belirsizlik vardır.
+* **Negative_Possible**: kavramın varlığı çok düşüktür ancak bazı belirsizlik vardır.
+* **Neutral_Possible**: kavram, her iki tarafa de bir yandan bir arada olmadan olabilir veya bulunmayabilir.
+
+**Conditionitesi** : bir kavram varlığının belirli koşullara bağlı olup olmadığı hakkında bilgi sağlar. 
+*   **Hiçbiri** [varsayılan]: kavram, kuramsal değildir ve belirli koşullara bağlı değildir.
+*   **Kuramsal**: kavram gelecekte geliştirme veya oluşma olabilir.
+*   **Koşullu**: kavram var veya yalnızca belirli koşullar altında gerçekleşir.
+
+**İlişkilendirme** : kavramın metin veya başka birinin konusuyla ilişkili olup olmadığını açıklar.
+*   **Subject** [varsayılan]: kavram, genellikle hasta olan metnin konusuyla ilişkilendirilir.
+*   **Someone_Else**: kavram, metnin konusu olmayan biriyle ilişkilendirilir.
+
+
+Onaylama işlemi algılama, belirsizlik kategorisi için bir negatif değer olarak, iç içe varlıkları temsil eder, örneğin:
 
 ```json
 {
-  "id": "2",
-  "offset": 90,
-  "length": 10,
-  "text": "chest pain",
-  "category": "SymptomOrSign",
-  "score": 0.9972,
-  "isNegated": true,
-  "links": [
-    {
-      "dataSource": "UMLS",
-      "id": "C0008031"
-    },
-    {
-      "dataSource": "CHV",
-      "id": "0000023593"
-    },
+                        "offset": 381,
+                        "length": 3,
+                        "text": "SOB",
+                        "category": "SymptomOrSign",
+                        "confidenceScore": 0.98,
+                        "assertion": {
+                            "certainty": "negative"
+                        },
+                        "name": "Dyspnea",
+                        "links": [
+                            {
+                                "dataSource": "UMLS",
+                                "id": "C0013404"
+                            },
+                            {
+                                "dataSource": "AOD",
+                                "id": "0000005442"
+                            },
     ...
 ```
 
 ### <a name="relation-extraction-output"></a>İlişki ayıklama çıkışı
 
-İlişki ayıklama çıkışı, ilişkinin *kaynağına* ve *hedefine* URI başvuruları içerir. İlişki rolü olan varlıklar `ENTITY` `target` alana atanır. İlişki rolü olan varlıklar `ATTRIBUTE` `source` alana atanır. Kısaltma ilişkileri çift yönlü `source` ve `target` alanları içerir ve `bidirectional` olarak ayarlanır `true` . 
+Sistem durumu Metin Analizi, öznitelikler ve varlık arasındaki ilişkiler de dahil olmak üzere farklı kavramlar arasındaki ilişkileri tanır (örneğin, gövde yapısının yönü, yollara dozu) ve varlıklar arasında (örneğin, kısaltma algılama).
+
+**GRUBUNUN**
+
+**DIRECTION_OF_BODY_STRUCTURE**
+
+**DIRECTION_OF_CONDITION**
+
+**DIRECTION_OF_EXAMINATION**
+
+**DIRECTION_OF_TREATMENT**
+
+**DOSAGE_OF_MEDICATION**
+
+**FORM_OF_MEDICATION**
+
+**FREQUENCY_OF_MEDICATION**
+
+**FREQUENCY_OF_TREATMENT**
+
+**QUALIFIER_OF_CONDITION**
+
+**RELATION_OF_EXAMINATION**
+
+**ROUTE_OF_MEDICATION** 
+
+**TIME_OF_CONDITION**
+
+**TIME_OF_EVENT**
+
+**TIME_OF_EXAMINATION**
+
+**TIME_OF_MEDICATION**
+
+**TIME_OF_TREATMENT**
+
+**UNIT_OF_CONDITION**
+
+**UNIT_OF_EXAMINATION**
+
+**VALUE_OF_CONDITION**  
+
+**VALUE_OF_EXAMINATION**
+
+> [!NOTE]
+> * KOŞULA başvuran ilişkiler, tanılama varlık türüne veya SYMPTOM_OR_SIGN varlık türüne başvurabilir.
+> * YOLLARA 'e başvuran ilişkiler MEDICATION_NAME varlık türüne veya MEDICATION_CLASS varlık türüne başvurabilir.
+> * ZAMANA başvuran ilişkiler, zaman varlık türüne veya TARIH varlık türüne başvurabilir.
+
+İlişki ayıklama çıkışı, URI başvurularını ve ilişki türündeki varlıkların atanan rollerini içerir. Örnek:
 
 ```json
-"relations": [
-                {
-                    "relationType": "DosageOfMedication",
-                    "bidirectional": false,
-                    "source": "#/documents/1/entities/0",
-                    "target": "#/documents/1/entities/1"
-                },
-                {
-                    "relationType": "FrequencyOfMedication",
-                    "bidirectional": false,
-                    "source": "#/documents/1/entities/2",
-                    "target": "#/documents/1/entities/1"
-                }
-            ]
-  },
+                "relations": [
+                    {
+                        "relationType": "DosageOfMedication",
+                        "entities": [
+                            {
+                                "ref": "#/results/documents/0/entities/0",
+                                "role": "Dosage"
+                            },
+                            {
+                                "ref": "#/results/documents/0/entities/1",
+                                "role": "Medication"
+                            }
+                        ]
+                    },
+                    {
+                        "relationType": "RouteOfMedication",
+                        "entities": [
+                            {
+                                "ref": "#/results/documents/0/entities/1",
+                                "role": "Medication"
+                            },
+                            {
+                                "ref": "#/results/documents/0/entities/2",
+                                "role": "Route"
+                            }
+                        ]
 ...
 ]
 ```

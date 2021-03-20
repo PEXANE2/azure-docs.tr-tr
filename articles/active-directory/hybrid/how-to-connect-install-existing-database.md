@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a8324b82a05d7e78772e0b0b6de3a9bfaa183411
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91265400"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Azure AD Connect'i mevcut bir AD Eşitleme veritabanını kullanarak yükleme
@@ -67,7 +67,7 @@ Devam etmeden önce dikkat etmeniz gereken önemli notlar:
 ![PowerShell](./media/how-to-connect-install-existing-database/db2.png)
 1. Azure AD Connect'e Hoş Geldiniz ekranı açılır. Lisans koşullarını ve gizlilik bildirimini kabul ettikten sonra **Devam**'a tıklayın.
    !["Azure A Connect 'e hoş geldiniz" sayfasını gösteren ekran görüntüsü](./media/how-to-connect-install-existing-database/db3.png)
-1. **Gerekli bileşenleri yükleme** ekranında **Mevcut bir SQL Server'ı kullanma** seçeneği etkinleştirilir. AD Eşitleme veritabanını barındıran SQL sunucusunun adını belirtin. AD Eşitleme veritabanını barındırmak için kullanılan SQL altyapısı örneği SQL sunucusundaki varsayılan örnek değilse SQL altyapısı örneği adını belirtmeniz gerekir. Ayrıca SQL göz atma özelliği etkin değilse SQL altyapısı örneği bağlantı noktası numarasını da belirtmeniz gerekir. Örneğin:         
+1. **Gerekli bileşenleri yükleme** ekranında **Mevcut bir SQL Server'ı kullanma** seçeneği etkinleştirilir. AD Eşitleme veritabanını barındıran SQL sunucusunun adını belirtin. AD Eşitleme veritabanını barındırmak için kullanılan SQL altyapısı örneği SQL sunucusundaki varsayılan örnek değilse SQL altyapısı örneği adını belirtmeniz gerekir. Ayrıca SQL göz atma özelliği etkin değilse SQL altyapısı örneği bağlantı noktası numarasını da belirtmeniz gerekir. Örnek:         
    !["Gerekli bileşenleri yüklensin" sayfasını gösteren ekran görüntüsü.](./media/how-to-connect-install-existing-database/db4.png)           
 
 1. **Azure AD'ye bağlan** ekranında Azure AD dizininizin genel yöneticisinin kimlik bilgilerini girmeniz gerekir. Varsayılan onmicrosoft.com etki alanındaki bir hesabı kullanmanız önerilir. Bu hesap yalnızca Azure AD'de hizmet hesabı oluşturmak için kullanılır ve sihirbaz tamamlandıktan sonra kullanılmaz.
@@ -88,7 +88,7 @@ Devam etmeden önce dikkat etmeniz gereken önemli notlar:
 1. Yükleme tamamlandıktan sonra Azure AD Connect otomatik olarak Hazırlama Modunda etkinleştirilir. Hazırlama Modunu devre dışı bırakmadan önce sunucu yapılandırmasını ve bekleme durumundaki dışarı aktarma işlemlerini gözden geçirerek beklenmeyen değişikliklerin olup olmadığını kontrol etmeniz önerilir. 
 
 ## <a name="post-installation-tasks"></a>Yükleme sonrası görevler
-1.2.65.0 ' den önceki bir Azure AD Connect sürümü tarafından oluşturulan bir veritabanı yedeklemesini geri yüklerken, hazırlama sunucusu otomatik olarak **yapılandırma**için bir oturum açma yöntemi seçer. Parola karması eşitleme ve parola geri yazma tercihleri geri yüklenecek olsa da, oturum açma yöntemini daha sonra etkin eşitleme sunucunuz için geçerli olan diğer ilkelerle eşleşecek şekilde değiştirmeniz gerekir.  Bu adımların tamamlanamaması, bu sunucunun etkin hale gelmesi için kullanıcıların oturum açmasını önleyebilir.  
+1.2.65.0 ' den önceki bir Azure AD Connect sürümü tarafından oluşturulan bir veritabanı yedeklemesini geri yüklerken, hazırlama sunucusu otomatik olarak **yapılandırma** için bir oturum açma yöntemi seçer. Parola karması eşitleme ve parola geri yazma tercihleri geri yüklenecek olsa da, oturum açma yöntemini daha sonra etkin eşitleme sunucunuz için geçerli olan diğer ilkelerle eşleşecek şekilde değiştirmeniz gerekir.  Bu adımların tamamlanamaması, bu sunucunun etkin hale gelmesi için kullanıcıların oturum açmasını önleyebilir.  
 
 Gerekli olan ek adımları doğrulamak için aşağıdaki tabloyu kullanın.
 

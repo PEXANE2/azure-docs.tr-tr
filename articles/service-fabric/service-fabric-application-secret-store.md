@@ -4,10 +4,10 @@ description: Bu makalede, Azure Service Fabric 'da merkezi gizlilikler deposunun
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.openlocfilehash: e9fd435803ad5354b0eb2d4f5de50009a8cbbfe2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88869764"
 ---
 # <a name="central-secrets-store-in-azure-service-fabric"></a>Azure Service Fabric 'da merkezi gizlilikler Mağazası 
@@ -84,7 +84,7 @@ Service Fabric uygulamanızda gizli dizi kullanmak için bu adımları izleyin.
      </Section>
    ```
 
-1. **ApplicationManifest.xml**bölümünü içeri aktarın.
+1. **ApplicationManifest.xml** bölümünü içeri aktarın.
    ```xml
      <ServiceManifestImport>
        <ServiceManifestRef ServiceManifestName="testservicePkg" ServiceManifestVersion="1.0.0" />
@@ -120,7 +120,7 @@ Aşağıdaki kod parçacığı değiştirilen **ApplicationManifest.xml**.
    ```
    Gizli dizileri, kapsayıcının içindeki bağlama noktası altında bulunur.
 
-1. Belirterek bir işlem ortam değişkenine gizli dizi bağlayabilirsiniz `Type='SecretsStoreRef` . Aşağıdaki kod parçacığı, `supersecret` sürümü `ver1`ServiceManifest.xmlortam değişkenine bağlamaya bir örnektir `MySuperSecret` . ** **
+1. Belirterek bir işlem ortam değişkenine gizli dizi bağlayabilirsiniz `Type='SecretsStoreRef` . Aşağıdaki kod parçacığı, `supersecret` sürümü `ver1`ServiceManifest.xmlortam değişkenine bağlamaya bir örnektir `MySuperSecret` . ****
 
    ```xml
    <EnvironmentVariables>

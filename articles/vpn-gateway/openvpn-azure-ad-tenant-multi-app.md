@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: cherylmc
 ms.openlocfilehash: 1305ca603aef63dafcc7b055d55e3f0fe281f4fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91819681"
 ---
 # <a name="create-an-active-directory-ad-tenant-for-p2s-openvpn-protocol-connections"></a>P2S OpenVPN Protokolü bağlantıları için Active Directory (AD) kiracısı oluşturma
@@ -26,7 +26,7 @@ Sanal ağınıza bağlanırken sertifika tabanlı kimlik doğrulama veya RADIUS 
 
 Bu adımda, VPN ağ geçidinde Azure AD kimlik doğrulamasını etkinleştirecektir.
 
-1. **Noktadan siteye yapılandırmaya** giderek ve **tünel türü**olarak **OpenVPN (SSL)** seçerek VPN ağ geçidinde Azure AD kimlik doğrulamasını etkinleştirin. **Kimlik doğrulaması türü** olarak **Azure Active Directory** öğesini seçin, ardından **Azure Active Directory** bölümünün altındaki bilgileri girin.
+1. **Noktadan siteye yapılandırmaya** giderek ve **tünel türü** olarak **OpenVPN (SSL)** seçerek VPN ağ geçidinde Azure AD kimlik doğrulamasını etkinleştirin. **Kimlik doğrulaması türü** olarak **Azure Active Directory** öğesini seçin, ardından **Azure Active Directory** bölümünün altındaki bilgileri girin.
 
     ![Azure portal görünümü](./media/openvpn-azure-ad-tenant-multi-app/azure-ad-auth-portal.png)
 

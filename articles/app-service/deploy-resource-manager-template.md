@@ -7,10 +7,10 @@ ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
 ms.openlocfilehash: 1146b5979d81b91c6c6894aa54b2e0ca50c896c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88961627"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Web uygulamalarını dağıtma Kılavuzu
@@ -111,7 +111,7 @@ Web uygulamanızın adı genel olarak benzersiz olmalıdır. Benzersiz olabilece
 
 Şablonunuz TLS/SSL bağlaması için bir [Microsoft. Web/Certificates](/azure/templates/microsoft.web/certificates) kaynağı içeriyorsa ve sertifika bir Key Vault depolanıyorsa, App Service kimliğin sertifikaya erişebildiğinizden emin olmanız gerekir.
 
-Küresel Azure 'da App Service hizmet sorumlusu **ABFA0A7C-A6B6-4736-8310-5855508787CD**kimliğine sahiptir. App Service hizmet sorumlusu için Key Vault erişim vermek için şunu kullanın:
+Küresel Azure 'da App Service hizmet sorumlusu **ABFA0A7C-A6B6-4736-8310-5855508787CD** kimliğine sahiptir. App Service hizmet sorumlusu için Key Vault erişim vermek için şunu kullanın:
 
 ```azurepowershell-interactive
 Set-AzKeyVaultAccessPolicy `
@@ -121,7 +121,7 @@ Set-AzKeyVaultAccessPolicy `
   -PermissionsToCertificates get
 ```
 
-Azure Kamu 'da App Service hizmet sorumlusu, **6a02c803-dadfd-4136-b4c3-5a6f318b4714**kimliğine sahiptir. Yukarıdaki örnekte bu KIMLIĞI kullanın.
+Azure Kamu 'da App Service hizmet sorumlusu, **6a02c803-dadfd-4136-b4c3-5a6f318b4714** kimliğine sahiptir. Yukarıdaki örnekte bu KIMLIĞI kullanın.
 
 Key Vault **Sertifikalar** ' ı seçin ve sertifikayı karşıya yüklemek için **Oluştur/içeri aktar** ' a tıklayın.
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: 45f4ca6349c14f21ce48a1fcf34b7fc8998dd278
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 99af0ee46e2827ac8a5749d58bb19cf85f96aa46
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733525"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577470"
 ---
 # <a name="get-started-with-custom-voice"></a>Özel Ses’i kullanmaya başlama
 
@@ -69,7 +69,9 @@ Veriler, modeller, testler ve uç noktalar gibi içerikler, özel ses portalınd
 
 ## <a name="how-to-migrate-to-custom-neural-voice"></a>Özel sinir sesinize geçiş yapma
 
-Sinir olmayan (veya standart) özel bir ses kullanıyorsanız aşağıdaki adımları izleyerek hemen özel sinir sesinize geçiş yapmayı düşünün. Özel sinir sesine taşınmanız, daha fazla doğal konuşma arabirimleri için daha gerçekçi sesler geliştirmenize ve müşterilerinizin ve son kullanıcılarınızın en son metin okuma teknolojisinden sorumlu bir şekilde yararlanmasını sağlamanıza yardımcı olur. 
+Özel sesin standart/sinir olmayan eğitim katmanı (Uyarlamalı, istatistiksel parametrik, içsanya) kullanım dışı bırakılıyor. Annoulama, 2/28/2021 öncesi mevcut tüm konuşma aboneliklerine gönderilmiştir. Kullanımdan kaldırma süresi (3/1/2021-2/29/2024) sırasında, mevcut standart katman kullanıcıları sinir olmayan modelleri kullanmaya devam edebilir. Tüm yeni kullanıcılar/yeni konuşma kaynakları sinir Tier/Custom sinir sesinize taşınmalıdır. 2/29/2024 sonra tüm standart/sinir dışı özel sesler artık desteklenmeyecektir. 
+
+Sinir/standart olmayan özel ses kullanıyorsanız aşağıdaki adımları izleyerek hemen özel sinir sesinize geçirin. Özel sinir sesine taşınmanız, daha fazla doğal konuşma arabirimleri için daha gerçekçi sesler geliştirmenize ve müşterilerinizin ve son kullanıcılarınızın en son metin okuma teknolojisinden sorumlu bir şekilde yararlanmasını sağlamanıza yardımcı olur. 
 
 1. [Erişim sınırı](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) hakkında daha fazla bilgi edinin ve [burada uygulayın](https://aka.ms/customneural). Özel sinir Voice hizmetine erişimin, Microsoft 'un, uygunluk ölçütlerimize göre tek bir kararına tabi olduğunu unutmayın. Müşteriler, yalnızca uygulaması incelendikten sonra teknolojiye erişim elde edebilir ve [sorumlu AI](https://microsoft.com/ai/responsible-ai) ilkelerimizi ve [kullanım kuralları](/legal/cognitive-services/speech-service/tts-code-of-conduct?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)ile ilgili olarak bu BT 'yi kullanarak bu teknolojiyi kullanmaya kararlıdır. 
 2. Uygulamanız onaylandıktan sonra, "sinir" eğitim özelliğine erişim izni verilir. Uygulamanızda sağladığınız aynı Azure aboneliğini kullanarak [özel bir ses portalında](https://speech.microsoft.com/customvoice) oturum olduğunuzdan emin olun. 

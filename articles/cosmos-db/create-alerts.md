@@ -8,10 +8,10 @@ ms.devlang: dotnet
 ms.topic: how-to
 ms.date: 07/16/2020
 ms.openlocfilehash: e29db7e31438bc7f6ac609384d0d9b92c275e813
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93339555"
 ---
 # <a name="create-alerts-for-azure-cosmos-db-using-azure-monitor"></a>Azure Izleyici kullanarak Azure Cosmos DB uyarı oluşturma
@@ -33,7 +33,7 @@ Bu bölümde, istekler hız sınırlı olduğunda alınan 429 HTTP durum kodunu 
 
 1. Azure portal oturum açın [.](https://portal.azure.com/)
 
-1. Sol taraftaki Gezinti çubuğundan **izleyici** ' yi seçin ve **Uyarılar** ' ı seçin.
+1. Sol taraftaki Gezinti çubuğundan **izleyici** ' yi seçin ve **Uyarılar**' ı seçin.
 
 1. Uyarı kuralı oluştur bölmesini açmak için yeni uyarı kuralı düğmesini seçin.  
 
@@ -47,7 +47,7 @@ Bu bölümde, istekler hız sınırlı olduğunda alınan 429 HTTP durum kodunu 
 
    * Azure Cosmos hesabınızın **konumu** .
 
-   * Ayrıntıları doldurduktan sonra, seçilen kapsamdaki Azure Cosmos hesaplarının bir listesi görüntülenir. Uyarılarını yapılandırmak istediğiniz birini seçin ve **bitti** ' yi seçin.
+   * Ayrıntıları doldurduktan sonra, seçilen kapsamdaki Azure Cosmos hesaplarının bir listesi görüntülenir. Uyarılarını yapılandırmak istediğiniz birini seçin ve **bitti**' yi seçin.
 
 1. **Koşul** bölümünü doldurun:
 
@@ -67,7 +67,7 @@ Bu bölümde, istekler hız sınırlı olduğunda alınan 429 HTTP durum kodunu 
 
    * **İşleci** **,** **toplama türü** , **Toplam** ve **eşik değerini** **100** olarak ayarlayın. Bu mantığa, istemciniz 429 durum koduna sahip 100 ' den fazla istek görürse uyarı tetiklenir. Toplama türünü, toplama ayrıntı düzeyini ve değerlendirme sıklığını, gereksiniminize göre de yapılandırabilirsiniz.
 
-   * Formu doldurduktan sonra **bitti** ' yi seçin. Aşağıdaki ekran görüntüsünde, uyarı mantığının ayrıntıları gösterilmektedir:
+   * Formu doldurduktan sonra **bitti**' yi seçin. Aşağıdaki ekran görüntüsünde, uyarı mantığının ayrıntıları gösterilmektedir:
 
      :::image type="content" source="./media/create-alerts/configure-alert-logic.png" alt-text="Fiyat sınırlı/429 istekleri için uyarı almak üzere mantığı yapılandırma":::
 

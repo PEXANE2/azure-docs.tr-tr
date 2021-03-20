@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metang
 ms.openlocfilehash: f2f5c8193454a3b7fa6be1cea7a1236b613d6c8f
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92636536"
 ---
 # <a name="immersive-reader-javascript-sdk-reference-v11"></a>Modern okuyucu JavaScript SDK başvurusu (v 1.1)
@@ -115,7 +115,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 #### <a name="renderbuttons-parameters"></a>renderButtons parametreleri
 
-| Ad | Tür | Açıklama |
+| Ad | Tür | Description |
 | ---- | ---- |------------ |
 | `options` | [renderButtons seçenekleri](#renderbuttons-options) | RenderButtons işlevinin belirli davranışlarını yapılandırmaya yönelik seçenekler. İsteğe bağlı. |
 
@@ -131,7 +131,7 @@ Tam ekran okuyucu düğmelerini işleme seçenekleri.
 
 #### <a name="renderbuttons-options-parameters"></a>renderButtons seçenek parametreleri
 
-| Ayar | Tür | Açıklama |
+| Ayar | Tür | Description |
 | ------- | ---- | ----------- |
 | öğeler | HTMLDivElement [] | İçindeki derinlikli okuyucu düğmelerini işlemek için öğeleri. |
 
@@ -156,7 +156,7 @@ Required: false
 
 #### <a name="launchresponse-parameters"></a>LaunchResponse parametreleri
 
-| Ayar | Tür | Açıklama |
+| Ayar | Tür | Description |
 | ------- | ---- | ----------- |
 | kapsayıcı | HTMLDivElement | Tam ekran okuyucu iframe 'i içeren HTML öğesi. |
 | Kimliği | Dize | Bu oturum için, hata ayıklama için kullanılan genel benzersiz tanımlayıcı. |
@@ -174,14 +174,14 @@ Bir hata hakkındaki bilgileri içerir.
 
 #### <a name="error-parameters"></a>Hata parametreleri
 
-| Ayar | Tür | Açıklama |
+| Ayar | Tür | Description |
 | ------- | ---- | ----------- |
 | kod | Dize | Bir hata kodları kümesinden biri. Bkz. [hata kodları](#error-codes). |
 | message | Dize | Hatanın insan tarafından okunabilir gösterimi. |
 
 #### <a name="error-codes"></a>Hata kodları
 
-| Kod | Açıklama |
+| Kod | Description |
 | ---- | ----------- |
 | BadArgument | Sağlanan bağımsız değişken geçersiz, `message` [hata](#error)parametresine bakın. |
 | Zaman aşımı | Tam ekran okuyucusu belirtilen zaman aşımı süresi içinde yüklenemedi. |
@@ -192,7 +192,7 @@ Bir hata hakkındaki bilgileri içerir.
 
 ## <a name="types"></a>Türler
 
-### <a name="content"></a>İçerik
+### <a name="content"></a>Content
 
 Tam ekran okuyucu 'da gösterilecek içeriği içerir.
 
@@ -205,7 +205,7 @@ Tam ekran okuyucu 'da gösterilecek içeriği içerir.
 
 #### <a name="content-parameters"></a>İçerik parametreleri
 
-| Ad | Tür | Açıklama |
+| Ad | Tür | Description |
 | ---- | ---- |------------ |
 | başlık | Dize | Tam ekran okuyucunun en üstünde gösterilen başlık metni (isteğe bağlı) |
 | Öbek | [Öbek []](#chunk) | Öbeklerin dizisi |
@@ -240,7 +240,7 @@ Tam ekran okuyucu Içeriğine geçirilecek tek bir veri öbeği.
 
 #### <a name="chunk-parameters"></a>Öbek parametreleri
 
-| Ad | Tür | Açıklama |
+| Ad | Tür | Description |
 | ---- | ---- |------------ |
 | içerik | Dize | Tam ekran okuyucusuna gönderilen içeriği içeren dize. |
 | lang | Dize | Metnin dili, bu değer IETF BCP 47 dil etiketi biçimindedir, örn., ES-ES. Belirtilmezse, dil otomatik olarak algılanır. Bkz. [Desteklenen Diller](#supported-languages). |
@@ -269,10 +269,10 @@ Default value: "text/plain"
 
 #### <a name="supported-mime-types"></a>Desteklenen MIME türleri
 
-| MIME Türü | Açıklama |
+| MIME Türü | Description |
 | --------- | ----------- |
 | metin/düz | Düz metin. |
-| text/html | HTML içeriği. [Daha fazla bilgi](#html-support)|
+| text/html | HTML içeriği. [Daha fazla bilgi edinin](#html-support)|
 | Application/MathML + XML | Matematik biçimlendirme dili (MathML). [Daha fazla bilgi edinin](./how-to/display-math.md).
 | Uygulama/vnd.openxmlformats-officedocument.wordprocessingml.document | Microsoft Word. docx biçim belgesi.
 
@@ -305,7 +305,7 @@ Modern okuyucunun belirli davranışlarını yapılandıran özellikler içerir.
 
 #### <a name="options-parameters"></a>Seçenek parametreleri
 
-| Ad | Tür | Açıklama |
+| Ad | Tür | Description |
 | ---- | ---- |------------ |
 | UILang | Dize | Kullanıcı arabiriminin dili, bu değer IETF BCP 47 dil etiketi biçimindedir, örn., ES-ES. Belirtilmemişse, varsayılan olarak tarayıcı dili olur. |
 | timeout | Sayı | [LaunchAsync](#launchasync) Before zaman aşımı hatasıyla başarısız olan süre (milisaniye cinsinden) (varsayılan değer 15000 MS 'dir). Bu zaman aşımı yalnızca okuyucu sayfası açıldığında ve değer değiştirici başladığında başarıyı gözlemlenen okuyucu sayfasının ilk başlatması için geçerlidir. Zaman aşımı ayarlaması gerekli olmamalıdır. |
@@ -314,7 +314,7 @@ Modern okuyucunun belirli davranışlarını yapılandıran özellikler içerir.
 | onExit | İşlev | Modern okuyucu çıktığında yürütülür. |
 | allowFullscreen | Boole | Tam ekran geçiş özelliği (varsayılan değer true 'dur). |
 | hideExitButton | Boole | Tam ekran okuyucunun çıkış düğmesine okunun gizlenmeyeceğini belirtir (varsayılan değer false). Bu, yalnızca tam ekran okuyucudan çıkmak için bir alternatif mekanizma (örn. bir mobil araç çubuğunun geri oku) varsa doğru olmalıdır. |
-| Tanımlama, ıepolicy | [Tanımlama, ıepolicy](#cookiepolicy-options) | Derinlikli okuyucunun tanımlama bilgisi kullanımı için ayarlama (varsayılan, tanımlama bilgileri \ *ilke. Disable* ). Bu, ana bilgisayar uygulamasının, AB tanımlama bilgisi uyumluluk Ilkesine uygun olan tüm gerekli Kullanıcı onayını elde etmek için sorumluluğudur. Bkz. [tanımlama bilgisi Ilkesi seçenekleri](#cookiepolicy-options). |
+| Tanımlama, ıepolicy | [Tanımlama, ıepolicy](#cookiepolicy-options) | Derinlikli okuyucunun tanımlama bilgisi kullanımı için ayarlama (varsayılan, tanımlama bilgileri \ *ilke. Disable*). Bu, ana bilgisayar uygulamasının, AB tanımlama bilgisi uyumluluk Ilkesine uygun olan tüm gerekli Kullanıcı onayını elde etmek için sorumluluğudur. Bkz. [tanımlama bilgisi Ilkesi seçenekleri](#cookiepolicy-options). |
 | disableFirstRun | Boole | İlk çalıştırma deneyimini devre dışı bırakın. |
 | Readaloudoçen'lar | [Readaloudoçen'lar](#readaloudoptions) | Okumayı yüksek sesle yapılandırma seçenekleri. |
 | translationOptions | [TranslationOptions](#translationoptions) | Çeviri yapılandırma seçenekleri. |
@@ -390,7 +390,7 @@ type ReadAloudOptions = {
 
 #### <a name="readaloudoptions-parameters"></a>Readaloudoçenparametreleri
 
-| Ad | Tür | Açıklama |
+| Ad | Tür | Description |
 | ---- | ---- |------------ |
 | ses | Dize | Ses, "kadın" veya "erkek" olarak da. Tüm dillerin her iki genders de desteklemediğini unutmayın. |
 | hız | Sayı | Kayıttan yürütme hızı, 0,5 ve 2,5 (dahil) arasında olmalıdır. |
@@ -429,7 +429,7 @@ type TranslationOptions = {
 
 #### <a name="translationoptions-parameters"></a>TranslationOptions parametreleri
 
-| Ad | Tür | Açıklama |
+| Ad | Tür | Description |
 | ---- | ---- |------------ |
 | language | Dize | Çeviri dilini ayarlar, bu değer IETF BCP 47 dil etiketi biçimindedir, ör. fr-FR, es-MX, zh-Hans-CN. Sözcük veya belge çevirisini otomatik olarak etkinleştirmek için gereklidir. |
 | Oto Enabledocumenttranslation | Boole | Tüm belgeyi otomatik olarak çevir. |
@@ -457,7 +457,7 @@ type DisplayOptions = {
 
 #### <a name="displayoptions-parameters"></a>DisplayOptions parametreleri
 
-| Ad | Tür | Açıklama |
+| Ad | Tür | Description |
 | ---- | ---- |------------ |
 | TEXTSIZE | Sayı | Seçilen metin boyutunu ayarlar. |
 | ıncreasespacing | Boole | Metin aralıklarının açılıp kapanmadığını ayarlar. |
@@ -487,11 +487,11 @@ Values available: "Calibri", "Sitka", "ComicSans"
 enum CookiePolicy { Disable, Enable }
 ```
 
-**Aşağıda listelenen ayarlar yalnızca bilgilendirme amaçlıdır** . Tam ekran okuyucu ayarları veya Kullanıcı tercihlerini tanımlama bilgilerinde depolar. Bu *tanımlama* BILGILERI, AB tanımlama bilgisi uyumluluk yasaları ile uyumlu olması için varsayılan olarak tanımlama bilgilerinin kullanılmasını **devre dışı bırakır** . Tanımlama bilgilerini yeniden etkinleştirmek ve tam ekran okuyucusu Kullanıcı tercihleri için varsayılan işlevselliği geri yüklemek istediğinizde, Web sitenizin veya uygulamanızın tanımlama bilgilerini etkinleştirmek üzere kullanıcıdan uygun izni aldığından emin olmanız gerekir. Daha sonra, derinlikli okuyucudaki tanımlama bilgilerini yeniden etkinleştirmek için, kapsamlı bir okuyucu başlatırken *ıepolicy* *. Enable* seçeneğini açıkça ayarlamanız gerekir. Aşağıdaki tabloda, tanımlama bilgisi *ıepolicy* seçeneği etkinken tam ekran derinlikli okuyucu hangi ayarları depoladığını anlatmaktadır.
+**Aşağıda listelenen ayarlar yalnızca bilgilendirme amaçlıdır**. Tam ekran okuyucu ayarları veya Kullanıcı tercihlerini tanımlama bilgilerinde depolar. Bu *tanımlama* BILGILERI, AB tanımlama bilgisi uyumluluk yasaları ile uyumlu olması için varsayılan olarak tanımlama bilgilerinin kullanılmasını **devre dışı bırakır** . Tanımlama bilgilerini yeniden etkinleştirmek ve tam ekran okuyucusu Kullanıcı tercihleri için varsayılan işlevselliği geri yüklemek istediğinizde, Web sitenizin veya uygulamanızın tanımlama bilgilerini etkinleştirmek üzere kullanıcıdan uygun izni aldığından emin olmanız gerekir. Daha sonra, derinlikli okuyucudaki tanımlama bilgilerini yeniden etkinleştirmek için, kapsamlı bir okuyucu başlatırken *ıepolicy* *. Enable* seçeneğini açıkça ayarlamanız gerekir. Aşağıdaki tabloda, tanımlama bilgisi *ıepolicy* seçeneği etkinken tam ekran derinlikli okuyucu hangi ayarları depoladığını anlatmaktadır.
 
 #### <a name="settings-parameters"></a>Ayarlar parametreleri
 
-| Ayar | Tür | Açıklama |
+| Ayar | Tür | Description |
 | ------- | ---- | ----------- |
 | TEXTSIZE | Sayı | Seçilen metin boyutunu ayarlar. |
 | fontFamily | Dize | Seçilen yazı tipini ayarlar ("Calibri", "ComicSans" veya "Sıtka"). |

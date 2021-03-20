@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: tomfitz
 ms.openlocfilehash: 04f86883a75110985d1cbe050fe3fd3e0582986a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88893814"
 ---
 # <a name="microsoftcommoneditablegrid-ui-element"></a>Microsoft. Common. EditableGrid UI öğesi
@@ -128,14 +128,14 @@ Tablo girişi toplamaya yönelik bir denetim. Kılavuz içindeki tüm alanlar d�
 - `$rowIndex`Değişken yalnızca Grid 'in sütunlarının alt öğelerinde yer alan ifadelerde geçerlidir. Bu, öğenin göreli satır dizinini temsil eden bir tamsayıdır ve sayım bir ile başlar ve bir artar. Şemanın bölümünde gösterildiği gibi, `"columns":` `$rowIndex` doğrulama için kullanılır.
 - Değişken kullanılarak doğrulamalar gerçekleştirildiğinde `$rowIndex` , ve komutlarını birleştirerek geçerli satırın değerini almak mümkündür `last()` `take()` .
 
-  Örneğin:
+  Örnek:
 
   `last(take(<reference_to_grid>, $rowIndex))`
 
 - `label`Özelliği denetimin parçası olarak görünmez, ancak son sekme özetinde görüntülenir.
 - `ariaLabel`Özelliği, kılavuz için erişilebilirlik etikettir. Ekran okuyucuları kullanan kullanıcılar için yararlı metin belirtin.
 - `constraints.width`Özelliği, kılavuzun genel genişliğini ayarlamak için kullanılır. Seçenekler _dolu_, _Orta_, _küçük_. Varsayılan değer _dolu_' dır.
-- `width`Sütunların alt öğelerindeki özelliği sütun genişliğini belirler. Genişlikler, birimlere orantılı sütunlara ayrılan toplam alana sahip _3FR_gibi kesirli birimler kullanılarak belirtilir. Sütun genişliği belirtilmediyse, varsayılan değer _1FR_' dir.
+- `width`Sütunların alt öğelerindeki özelliği sütun genişliğini belirler. Genişlikler, birimlere orantılı sütunlara ayrılan toplam alana sahip _3FR_ gibi kesirli birimler kullanılarak belirtilir. Sütun genişliği belirtilmediyse, varsayılan değer _1FR_' dir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

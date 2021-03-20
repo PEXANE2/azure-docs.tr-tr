@@ -8,10 +8,10 @@ ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 9f8e288f771b9d584a0fd3430115f5fa60f68e47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88961814"
 ---
 # <a name="connect-securely-to-back-end-resources-from-an-app-service-environment"></a>App Service ortamından arka uç kaynaklarına güvenli bir şekilde bağlanma
@@ -42,7 +42,7 @@ Ortak bir SQL Server yapılandırmasında 1433 numaralı bağlantı noktasında 
 Bu uç noktayla trafiği kısıtlamak için iki yaklaşım vardır:
 
 * [Ağ Access Control listeleri][NetworkAccessControlLists] (ağ ACL 'leri)
-* [Ağ güvenlik grupları][NetworkSecurityGroups]
+* [Ağ Güvenlik Grupları][NetworkSecurityGroups]
 
 ## <a name="restricting-access-with-a-network-acl"></a>Ağ ACL 'SI Ile erişimi kısıtlama
 Bağlantı noktası 1433, bir ağ erişim denetimi listesi kullanılarak güvenli hale getirilir.  Aşağıdaki örnek, istemci adreslerinin bir sanal ağ içinden kaynaklandığı atama izinlerine ekler ve diğer tüm istemcilere erişimi engeller.

@@ -4,10 +4,10 @@ description: Linux sanal makinelerinizin Azure 'da uygulamayla tutarlı yedekler
 ms.topic: conceptual
 ms.date: 01/12/2018
 ms.openlocfilehash: 22053004026a2dd8976027359f11d50a5663b334
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88999249"
 ---
 # <a name="application-consistent-backup-of-azure-linux-vms"></a>Uygulama ile tutarlı Azure Linux VM yedekleri
@@ -52,7 +52,7 @@ Framework, VM anlık görüntülerini alırken özel betik ve son betik çalış
 
     - **Postscriptparams**: betiğe geçirilmesi gereken isteğe bağlı parametreleri sağlayın. Tüm parametrelerin tırnak içinde olması gerekir. Birden çok parametre kullanıyorsanız, parametreleri virgülle ayırın.
 
-    - Tüm denemeler: sonlandırmadan önce herhangi bir hata oluşursa, ön betiğin **yeniden**denenme sayısını ayarlayın. Sıfır, bir hata varsa yalnızca bir try ve retry denemesi anlamına gelir.
+    - Tüm denemeler: sonlandırmadan önce herhangi bir hata oluşursa, ön betiğin **yeniden** denenme sayısını ayarlayın. Sıfır, bir hata varsa yalnızca bir try ve retry denemesi anlamına gelir.
 
     - **Postscriptnoofdenemeler**: sonlandırmadan önce herhangi bir hata oluşursa, post-SCRIPT ' ın yeniden denenme sayısını ayarlayın. Sıfır, bir hata varsa yalnızca bir try ve retry denemesi anlamına gelir.
 

@@ -5,17 +5,17 @@ ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
 ms.openlocfilehash: 86389ef89ced74905db0fc8bfeaabcea6140762a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91263003"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Azure Backup Sunucusu bir Exchange Server 'ı Azure 'a yedekleme
 
 Bu makalede, Microsoft Exchange Server 'ı Azure 'a yedeklemek için Microsoft Azure Backup sunucusu 'nun (MABS) nasıl yapılandırılacağı açıklanmaktadır.  
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Devam etmeden önce Azure Backup Sunucusu [yüklendiğinden ve hazırlandığından](backup-azure-microsoft-azure-backup.md)emin olun.
 
@@ -30,8 +30,8 @@ MABS koruma aracısını Exchange sunucusuna yüklemek için şu adımları izle
 
 1. MABS Yönetici Konsolu, **koruma**' yı seçin ve ardından **yeni koruma grubu oluşturma** Sihirbazı 'nı açmak için araç şeridinde **Yeni** ' yi seçin.
 2. Sihirbazın **hoş geldiniz** ekranında **İleri**' yi seçin.
-3. **Koruma grubu türünü seçin** ekranında **sunucular** ' ı seçin ve ileri ' **yi**seçin.
-4. Korumak istediğiniz Exchange Server veritabanını seçin ve **İleri ' yi**seçin.
+3. **Koruma grubu türünü seçin** ekranında **sunucular** ' ı seçin ve ileri ' **yi** seçin.
+4. Korumak istediğiniz Exchange Server veritabanını seçin ve **İleri ' yi** seçin.
 
    > [!NOTE]
    > Exchange 2013 ' i koruyorsanız [exchange 2013 önkoşullarını](/system-center/dpm/back-up-exchange)kontrol edin.
@@ -58,20 +58,20 @@ MABS koruma aracısını Exchange sunucusuna yüklemek için şu adımları izle
    >
    >
 8. **İleri**’yi seçin.
-9. **Kopya yedeklemesi**için veritabanını seçin ve ardından **İleri**' yi seçin.
+9. **Kopya yedeklemesi** için veritabanını seçin ve ardından **İleri**' yi seçin.
 
    > [!NOTE]
    > Veritabanının en az bir DAG kopyası için "tam yedekleme" seçeneğini seçmezseniz Günlükler kesilmez.
    >
    >
-10. **Kısa vadeli yedekleme**için hedefleri yapılandırın ve ardından **İleri**' yi seçin.
+10. **Kısa vadeli yedekleme** için hedefleri yapılandırın ve ardından **İleri**' yi seçin.
 11. Kullanılabilir disk alanını gözden geçirin ve ardından **İleri**' yi seçin.
 12. MABS sunucusunun ilk çoğaltmayı oluşturmasının zamanı seçin ve ardından **İleri**' yi seçin.
 13. Tutarlılık denetimi seçeneklerini belirleyin ve ardından **İleri**' yi seçin.
-14. Azure 'a yedeklemek istediğiniz veritabanını seçin ve ardından **İleri**' yi seçin. Örneğin:
+14. Azure 'a yedeklemek istediğiniz veritabanını seçin ve ardından **İleri**' yi seçin. Örnek:
 
     ![Çevrimiçi koruma verilerini belirtin](./media/backup-azure-backup-exchange-server/specify-online-protection-data.png)
-15. **Azure Backup**için zamanlamayı tanımlayın ve ardından **İleri**' yi seçin. Örneğin:
+15. **Azure Backup** için zamanlamayı tanımlayın ve ardından **İleri**' yi seçin. Örnek:
 
     ![Çevrimiçi Yedekleme zamanlamasını belirtin](./media/backup-azure-backup-exchange-server/specify-online-backup-schedule.png)
 
@@ -79,8 +79,8 @@ MABS koruma aracısını Exchange sunucusuna yüklemek için şu adımları izle
     > Çevrimiçi kurtarma noktaları hızlı tam kurtarma noktalarına dayalıdır. Bu nedenle, hızlı tam kurtarma noktası için belirtilen süreden sonra çevrimiçi kurtarma noktasını zamanlamanız gerekir.
     >
     >
-16. **Azure Backup**için bekletme ilkesini yapılandırın ve ardından **İleri**' yi seçin.
-17. Çevrimiçi çoğaltma seçeneğini belirleyin ve Ileri ' **yi**seçin.
+16. **Azure Backup** için bekletme ilkesini yapılandırın ve ardından **İleri**' yi seçin.
+17. Çevrimiçi çoğaltma seçeneğini belirleyin ve Ileri ' **yi** seçin.
 
     Büyük bir veritabanınız varsa, ağ üzerinden ilk yedeklemenin oluşturulması uzun zaman alabilir. Bu sorundan kaçınmak için çevrimdışı yedekleme oluşturabilirsiniz.  
 
@@ -93,7 +93,7 @@ MABS koruma aracısını Exchange sunucusuna yüklemek için şu adımları izle
 1. Bir Exchange veritabanını kurtarmak için, MABS Yönetici Konsolu **Kurtarma** ' yı seçin.
 2. Kurtarmak istediğiniz Exchange veritabanını bulun.
 3. *Kurtarma zamanı* açılır listesinden bir çevrimiçi kurtarma noktası seçin.
-4. **Kurtarma Sihirbazı 'nı**başlatmak için **kurtar** ' ı seçin.
+4. **Kurtarma Sihirbazı 'nı** başlatmak için **kurtar** ' ı seçin.
 
 Çevrimiçi kurtarma noktaları için beş kurtarma türü vardır:
 

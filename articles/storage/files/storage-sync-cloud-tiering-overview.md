@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/4/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9ca8df21e0221d364f75eaeb26f0b2961d7e0b08
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: dcd58e966da7ca596a14ca1b2839cbeb6399a855
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102204473"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104576467"
 ---
 # <a name="cloud-tiering-overview"></a>Bulut katmanlaması genel bakış
 İsteğe bağlı bir Azure Dosya Eşitleme bulut katmanlaması, şirket içi dosya sunucusunun performansını korurken gereken yerel depolama miktarını azaltır.
@@ -39,7 +39,7 @@ Birim boş alan ilkesi 'nin, yeni bir sunucu uç noktası eklendiğinde ilk indi
 Tarih ilkesi ve birim boş alan ilkesinin birlikte nasıl çalıştığı hakkında daha fazla örnek için bkz. [Azure dosya eşitleme bulut katmanlama Ilkeleri seçme](storage-sync-choose-cloud-tiering-policies.md).
 
 ### <a name="windows-server-data-deduplication"></a>Windows Server yinelenen verileri kaldırma
-Yinelenen verileri kaldırma özelliği, Windows Server 2016 ile başlayarak bulut katmanlaması etkinleştirilmiş birimlerde desteklenir. Daha fazla ayrıntı için lütfen [Azure dosya eşitleme dağıtımı planlama](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#data-deduplication)konusuna bakın.
+Yinelenen verileri kaldırma özelliği, Windows Server 2016 ile başlayarak bulut katmanlaması etkinleştirilmiş birimlerde desteklenir. Daha fazla ayrıntı için lütfen [Azure dosya eşitleme dağıtımı planlama](./storage-sync-files-planning.md#data-deduplication)konusuna bakın.
 
 ### <a name="cloud-tiering-heatmap"></a>Bulut katmanlama ısı haritasını
 Azure Dosya Eşitleme, zaman içinde dosya erişimini (okuma ve yazma işlemleri) izler ve sık ve son erişimin ne kadar sık olduğunu, her dosyaya bir ısı puanı atar. Bu puanları, her sunucu uç noktasında ad alanınızı "heatmap" oluşturmak için kullanır. Bu ısı haritasını, bulut katmanlaması etkin olan bir konumda tüm eşitleme dosyalarının, ısı puanlarına göre sıralanmış bir listesidir. En son açılan dosyalar sık erişilen olarak kabul edilir, ancak belirli bir süre boyunca erişilen ve erişilemeyen dosyalar seyrek kabul edilir. 
@@ -109,4 +109,3 @@ Ayrıca, bir dosyanın kısmen katmanlı (veya kısmen geri çekilmiş) olması 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Azure Dosya Eşitleme bulut katmanlama ilkeleri seçin](storage-sync-choose-cloud-tiering-policies.md)
 * [Azure Dosya Eşitleme dağıtımı planlama](storage-sync-files-planning.md)
-

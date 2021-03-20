@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/27/2021
+ms.date: 03/18/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a39230cc65db6ef12b6fa4364454aeb434efddf6
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 2ec67669edeb52af1044c97c984eb6ba36fd1a0b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918220"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579646"
 ---
 # <a name="tutorial-register-a-web-application-in-azure-active-directory-b2c"></a>Öğretici: bir Web uygulamasını Azure Active Directory B2C kaydetme
 
@@ -80,7 +80,7 @@ Bir Web uygulamasını Azure AD B2C kiracınıza kaydetmek için yeni Birleşik 
 
 ## <a name="create-a-client-secret"></a>İstemci parolası oluşturma
 
-Bir Web uygulaması için bir uygulama gizli anahtarı oluşturmanız gerekir. Bu gizli anahtar, uygulamanız tarafından erişim belirtecinin yetkilendirme kodunu değiştirmek için kullanılacaktır.
+Bir Web uygulaması için bir uygulama gizli anahtarı oluşturmanız gerekir. İstemci parolası, *uygulama parolası* olarak da bilinir. Gizli anahtar, uygulamanız tarafından erişim belirtecinin yetkilendirme kodunu değiş tokuş etmek için kullanılacaktır.
 
 #### <a name="app-registrations"></a>[Uygulama kayıtları](#tab/app-reg-ga/)
 
@@ -89,7 +89,7 @@ Bir Web uygulaması için bir uygulama gizli anahtarı oluşturmanız gerekir. B
 1. **Yeni istemci gizli dizisi**’ni seçin.
 1. **Açıklama** kutusuna istemci parolası için bir açıklama girin. Örneğin, *clientsecret1*.
 1. **Süre sonu** altında, parolasının geçerli olduğu bir süre seçin ve ardından **Ekle**' yi seçin.
-1. Gizli dizi **değerini** kaydedin. Bu değeri, uygulamanızın kodunda uygulama gizli anahtarı olarak kullanırsınız.
+1. Gizli dizi **değerini** istemci uygulama kodunuzda kullanmak üzere kaydedin. Bu gizli değer bu sayfadan ayrıldıktan sonra hiçbir şekilde hiçbir şekilde gösterilmez. Bu değeri, uygulamanızın kodunda uygulama gizli anahtarı olarak kullanırsınız.
 
 #### <a name="applications-legacy"></a>[Uygulamalar (eski)](#tab/applications-legacy/)
 
@@ -98,6 +98,9 @@ Bir Web uygulaması için bir uygulama gizli anahtarı oluşturmanız gerekir. B
 1. Anahtarı görüntülemek için **Kaydet** ' i seçin. **Uygulama anahtarı** değerini not edin. Bu değeri, uygulamanızın kodunda uygulama gizli anahtarı olarak kullanırsınız.
 
 * * *
+
+> [!NOTE]
+> Güvenlik nedeniyle, uygulama gizliliğini düzenli olarak veya acil durumda anında alabilirsiniz. Azure AD B2C ile tümleştirilen tüm uygulamalar, ne sıklıkta gerçekleşebileceğini bağımsız olarak gizli bir rollover olayını işleyecek şekilde hazırlanmalıdır. Uygulama gizli anahtarı döndürme olayı sırasında uygulamanızın eski gizli dizileri kullanmaya devam etmesini sağlayarak iki uygulama parolası ayarlayabilirsiniz. Başka bir istemci parolası eklemek için bu bölümdeki adımları yineleyin. 
 
 ## <a name="enable-id-token-implicit-grant"></a>KIMLIK belirteci örtük izni etkinleştir
 

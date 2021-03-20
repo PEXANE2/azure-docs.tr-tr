@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: 6fb0b6f38869192e89bb849950e8822a157b23c8
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 1b272755652d018a0d5364e4d67c783774c68da8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93241948"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104655249"
 ---
 # <a name="ssltls-connectivity-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda SSL/TLS bağlantısı
 
@@ -63,7 +63,7 @@ MySQL için Azure veritabanı, istemci bağlantıları için TLS sürümünü zo
 >
 > En düşük TLS sürümünü zorladıktan sonra, en düşük sürüm zorlamayı devre dışı bırakabilirsiniz.
 
-MySQL için Azure veritabanınız için TLS ayarını ayarlamayı öğrenmek için bkz. [TLS ayarlarını yapılandırma](howto-tls-configurations.md).
+En düşük TLS sürümü ayarı, sunucu çevrimiçi olduğunda sunucunun yeniden başlatılmasını gerektirmez. MySQL için Azure veritabanınız için TLS ayarını ayarlamayı öğrenmek için bkz. [TLS ayarlarını yapılandırma](howto-tls-configurations.md).
 
 ## <a name="cipher-support-by-azure-database-for-mysql-single-server"></a>MySQL için Azure veritabanı tek sunucu tarafından şifreleme desteği
 

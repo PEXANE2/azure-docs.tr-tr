@@ -9,10 +9,10 @@ ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: 691cbd79e82432c8e919dcbb51642a76000296dc
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97607618"
 ---
 # <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>Azure App Service etki alanı ve TLS/SSL sertifikası sorunlarını giderme
@@ -201,8 +201,8 @@ App Service sertifikası, sertifika kullanıma hazırlanmadan önce etki alanı 
 #### <a name="solution"></a>Çözüm
 Bir TXT kaydı ekleyerek etki alanınızı el ile doğrulayın:
 
-1. Etki alanı adınızı barındıran etki alanı adı hizmeti (DNS) sağlayıcısına gidin.
-1. Etki alanınız için Azure portal gösterilen etki alanı belirtecinin değerini kullanan bir TXT kaydı ekleyin. 
+1. Etki alanı adınızı barındıran Etki Alanı Adı Sistemi (DNS) sağlayıcısına gidin.
+1. Etki alanınızda Azure portalda gösterilen etki alanı belirtecinin değerini kullanan bir TXT kaydı ekleyin. 
 
 DNS yayılması 'nın çalışması için birkaç dakika bekleyin ve ardından doğrulamayı tetiklemek için **Yenile** düğmesini seçin. 
 
@@ -259,7 +259,7 @@ Bu sorun aşağıdaki nedenlerden biriyle oluşur:
 
     **Çözüm**: CNAME veya bir kaydın doğru yapılandırıldığını doğrulayın. Özel bir etki alanını bir uygulamayla eşlemek için bir CNAME kaydı veya bir kayıt oluşturun. Kök etki alanı kullanmak istiyorsanız, ve TXT kayıtlarını kullanmanız gerekir:
 
-    |Kayıt türü|Yönetici|Üzerine gelin|
+    |Kayıt türü|Ana bilgisayar|Üzerine gelin|
     |------|------|-----|
     |A|@|Bir uygulama için IP adresi|
     |TXT|@|`<app-name>.azurewebsites.net`|

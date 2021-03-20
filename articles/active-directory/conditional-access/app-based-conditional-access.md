@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 122cc6a2be17cb35e77b638a60fc5fa4f035c0d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91266148"
 ---
 # <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>Nasıl yapılır: koşullu erişim ile Cloud App erişimi için onaylanan istemci uygulamaları gerektirme
@@ -44,18 +44,18 @@ Kuruluşlar, bir onaylanan istemci uygulamasının mobil cihazlarda kullanılmas
 1. **Azure Active Directory**  >  **güvenlik**  >  **koşullu erişimi**'ne gidin.
 1. **Yeni ilke**' yi seçin.
 1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
-1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Atamalar** altında **Kullanıcılar ve gruplar** ' ı seçin.
    1. **Ekle**' nin altında, **tüm kullanıcılar** ' ı veya bu Ilkeyi uygulamak istediğiniz belirli **kullanıcıları ve grupları** seçin. 
    1. **Bitti** seçeneğini belirleyin.
 1. **Bulut uygulamaları veya eylemleri**  >  **dahil**, **Office 365**' i seçin.
 1. **Koşullar**' ın altında **cihaz platformları**' nı seçin.
-   1. **Yapılandır** 'ı **Evet**olarak ayarlayın.
-   1. **Android** ve **iOS**dahil edin.
+   1. **Yapılandır** 'ı **Evet** olarak ayarlayın.
+   1. **Android** ve **iOS** dahil edin.
 1. **Koşullar**' ın altında **istemci uygulamaları ' nı (Önizleme)** seçin.
-   1. **Yapılandır** 'ı **Evet**olarak ayarlayın.
+   1. **Yapılandır** 'ı **Evet** olarak ayarlayın.
    1. **Mobil uygulamalar ve Masaüstü istemcileri** ve **modern kimlik doğrulama istemcileri**' ni seçin.
-1. **Erişim denetimleri**  >  **izni**altında **erişim ver**' i seçin, **onaylı istemci uygulaması gerektir**' i seçin ve **Seç**' i seçin
-1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
+1. **Erişim denetimleri**  >  **izni** altında **erişim ver**' i seçin, **onaylı istemci uygulaması gerektir**' i seçin ve **Seç**' i seçin
+1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık** olarak ayarlayın.
 1. İlkenizi oluşturmak ve etkinleştirmek için **Oluştur** ' u seçin.
 
 **2. Adım: ActiveSync (EAS) ile Exchange Online için bir Azure AD koşullu erişim ilkesi yapılandırma**
@@ -63,16 +63,16 @@ Kuruluşlar, bir onaylanan istemci uygulamasının mobil cihazlarda kullanılmas
 1. **Azure Active Directory**  >  **güvenlik**  >  **koşullu erişimi**'ne gidin.
 1. **Yeni ilke**' yi seçin.
 1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
-1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Atamalar** altında **Kullanıcılar ve gruplar** ' ı seçin.
    1. **Ekle**' nin altında, **tüm kullanıcılar** ' ı veya bu Ilkeyi uygulamak istediğiniz belirli **kullanıcıları ve grupları** seçin. 
    1. **Bitti** seçeneğini belirleyin.
 1. **Bulut uygulamaları veya eylemleri**  >  **dahil**, **Office 365 Exchange Online**' ı seçin.
-1. **Koşullar**altında:
+1. **Koşullar** altında:
    1. **İstemci uygulamaları (Önizleme)**:
-      1. **Yapılandır** 'ı **Evet**olarak ayarlayın.
+      1. **Yapılandır** 'ı **Evet** olarak ayarlayın.
       1. **Mobil uygulamalar ve Masaüstü istemcileri** ve **Exchange ActiveSync istemcileri**' ni seçin.
-1. **Erişim denetimleri**  >  **izni**altında **erişim ver**' i seçin, **onaylı istemci uygulaması gerektir**' i seçin ve **Seç**' i seçin
-1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
+1. **Erişim denetimleri**  >  **izni** altında **erişim ver**' i seçin, **onaylı istemci uygulaması gerektir**' i seçin ve **Seç**' i seçin
+1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık** olarak ayarlayın.
 1. İlkenizi oluşturmak ve etkinleştirmek için **Oluştur** ' u seçin.
 
 **3. Adım: iOS ve Android istemci uygulamaları için Intune uygulama koruma ilkesini yapılandırma.**
@@ -91,18 +91,18 @@ Kuruluşlar, bir onaylanan istemci uygulamasının mobil cihazlarda ve Exchange 
 1. **Azure Active Directory**  >  **güvenlik**  >  **koşullu erişimi**'ne gidin.
 1. **Yeni ilke**' yi seçin.
 1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
-1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Atamalar** altında **Kullanıcılar ve gruplar** ' ı seçin.
    1. **Ekle**' nin altında, **tüm kullanıcılar** ' ı veya bu Ilkeyi uygulamak istediğiniz belirli **kullanıcıları ve grupları** seçin. 
    1. **Bitti** seçeneğini belirleyin.
 1. **Bulut uygulamaları veya eylemleri**  >  **dahil**, **Office 365 Exchange Online** ve **Office 365 SharePoint Online**' ı seçin.
 1. **Koşullar**' ın altında **cihaz platformları**' nı seçin.
-   1. **Yapılandır** 'ı **Evet**olarak ayarlayın.
-   1. **Android** ve **iOS**dahil edin.
+   1. **Yapılandır** 'ı **Evet** olarak ayarlayın.
+   1. **Android** ve **iOS** dahil edin.
 1. **Koşullar**' ın altında **istemci uygulamaları ' nı (Önizleme)** seçin.
-   1. **Yapılandır** 'ı **Evet**olarak ayarlayın.
+   1. **Yapılandır** 'ı **Evet** olarak ayarlayın.
    1. **Mobil uygulamalar ve Masaüstü istemcileri** ve **modern kimlik doğrulama istemcileri**' ni seçin.
-1. **Erişim denetimleri**  >  **izni**altında **erişim ver**' i seçin, **onaylı istemci uygulaması gerektir**' i seçin ve **Seç**' i seçin
-1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
+1. **Erişim denetimleri**  >  **izni** altında **erişim ver**' i seçin, **onaylı istemci uygulaması gerektir**' i seçin ve **Seç**' i seçin
+1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık** olarak ayarlayın.
 1. İlkenizi oluşturmak ve etkinleştirmek için **Oluştur** ' u seçin.
 
 **2. Adım: onaylanmış bir istemci uygulamasının kullanılmasını gerektiren Exchange ActiveSync istemcileri için Ilke.**
@@ -110,16 +110,16 @@ Kuruluşlar, bir onaylanan istemci uygulamasının mobil cihazlarda ve Exchange 
 1. **Azure Active Directory**  >  **güvenlik**  >  **koşullu erişimi**'ne gidin.
 1. **Yeni ilke**' yi seçin.
 1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
-1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Atamalar** altında **Kullanıcılar ve gruplar** ' ı seçin.
    1. **Ekle**' nin altında, **tüm kullanıcılar** ' ı veya bu Ilkeyi uygulamak istediğiniz belirli **kullanıcıları ve grupları** seçin. 
    1. **Bitti** seçeneğini belirleyin.
 1. **Bulut uygulamaları veya eylemleri**  >  **dahil**, **Office 365 Exchange Online**' ı seçin.
-1. **Koşullar**altında:
+1. **Koşullar** altında:
    1. **İstemci uygulamaları (Önizleme)**:
-      1. **Yapılandır** 'ı **Evet**olarak ayarlayın.
+      1. **Yapılandır** 'ı **Evet** olarak ayarlayın.
       1. **Mobil uygulamalar ve Masaüstü istemcileri** ve **Exchange ActiveSync istemcileri**' ni seçin.
-1. **Erişim denetimleri**  >  **izni**altında **erişim ver**' i seçin, **onaylı istemci uygulaması gerektir**' i seçin ve **Seç**' i seçin
-1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
+1. **Erişim denetimleri**  >  **izni** altında **erişim ver**' i seçin, **onaylı istemci uygulaması gerektir**' i seçin ve **Seç**' i seçin
+1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık** olarak ayarlayın.
 1. İlkenizi oluşturmak ve etkinleştirmek için **Oluştur** ' u seçin.
 
 **3. Adım: iOS ve Android istemci uygulamaları için Intune uygulama koruma ilkesini yapılandırma.**
@@ -132,4 +132,4 @@ Android ve iOS için uygulama koruma ilkeleri oluşturma adımları için [Uygul
 
 [Koşullu erişim bileşenleri](concept-conditional-access-policies.md)
 
-[Sık kullanılan Koşullu Erişim İlkeleri](concept-conditional-access-policy-common.md)
+[Ortak koşullu erişim ilkeleri](concept-conditional-access-policy-common.md)

@@ -4,10 +4,10 @@ description: Bu makalede, Azure dosya paylaşımlarınızı Azure Backup hizmeti
 ms.date: 04/22/2020
 ms.topic: conceptual
 ms.openlocfilehash: e2b6afb25e189ee2848f25c0ba59d843baf37090
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91940844"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Azure Dosyalarını yedekleme ile ilgili sorular
@@ -80,7 +80,7 @@ Azure Backup tarafından alınan tüm anlık görüntülere Portal, PowerShell v
 
 Dosya paylaşma farklı bir aboneliğe taşındıktan sonra, Azure Backup tarafından yeni bir dosya paylaşma olarak kabul edilir. Önerilen adımlar şunlardır:
  
-Senaryo: abonelik *S1* 'teki bir dosya paylaşımının *FS1* olduğunu ve *v1* Kasası kullanılarak korunduğunu varsayalım. Şimdi dosya paylaşımınızı *S2*aboneliğine taşımak istiyorsunuz.
+Senaryo: abonelik *S1* 'teki bir dosya paylaşımının *FS1* olduğunu ve *v1* Kasası kullanılarak korunduğunu varsayalım. Şimdi dosya paylaşımınızı *S2* aboneliğine taşımak istiyorsunuz.
  
 1.  İstenen depolama hesabı ve dosya paylaşımının (FS1) farklı aboneliğe (S2) taşıyın.
 2.  V1 kasasında, FS1 için verileri silme ile korumayı durdur işlemini tetikleyin.
@@ -122,7 +122,7 @@ Bunun nasıl çalıştığını gösteren bir örnek aşağıda verilmiştir:
 | -------------- | ------------------------------ | --------- |
 | Günlük          | Her gün 9 saat              | 50 gün   |
 | Haftalık         | Pazar günü saat 9 ' da              | 3 hafta   |
-| Aylık olarak        | Son Pazartesi günü saat 9 ' da         | 1 ay   |
+| Aylık        | Son Pazartesi günü saat 9 ' da         | 1 ay   |
 | Yıllık         | Üçüncü Pazar günü saat 9 ' da | 4 yıl   |
 
 #### <a name="impact"></a>Etki
@@ -157,7 +157,7 @@ Bunun nasıl çalıştığını gösteren bir örnek aşağıda verilmiştir:
 | -------------- | ---------------------- | --------- |
 | Günlük          | Her gün 9 saat     | 10 gün   |
 | Haftalık         | Pazartesi günü saat 9 ' da      | 2 hafta   |
-| Aylık olarak        | Son Pazartesi günü saat 9 ' da | 2 ay  |
+| Aylık        | Son Pazartesi günü saat 9 ' da | 2 ay  |
 
 #### <a name="impact-of-change"></a>Değişikliğin etkisi
 

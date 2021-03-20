@@ -10,10 +10,10 @@ ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: dfaeee6a6e2a9728d7e63fb5681c487fbbd6139e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88959009"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure 'da Web Apps için uygulama performansı SSS
@@ -32,11 +32,11 @@ Yavaş uygulama performansına birçok etken katkıda bulunabilir. Ayrıntılı 
 
 ## <a name="how-do-i-troubleshoot-a-high-cpu-consumption-scenario"></a>Yüksek CPU tüketim senaryosunda sorun Nasıl yaparım? mi?
 
-Bazı yüksek CPU tüketimi senaryolarında, uygulamanız gerçekten daha fazla bilgi işlem kaynağı gerektirebilir.Bu durumda, uygulamanın ihtiyaç duyacağı tüm kaynakları alması için daha yüksek bir hizmet katmanına ölçeklendirmeyi değerlendirin. Diğer zamanlarda, yüksek CPU tüketimine hatalı bir döngü veya bir kodlama uygulaması neden olmuş olabilir. Artan CPU tüketiminin tetiklenmesi hakkında öngörüler elde etmek iki bölümden oluşan bir işlemdir. İlk olarak, bir işlem dökümü oluşturun ve ardından işlem dökümünü çözümleyin. Daha fazla bilgi için bkz. [Web Apps için yüksek CPU tüketimi için döküm dosyası yakalama ve çözümleme](/archive/blogs/asiatech/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app).
+Bazı yüksek CPU tüketimi senaryolarında, uygulamanız gerçekten daha fazla bilgi işlem kaynağı gerektirebilir. Bu durumda, uygulamanın ihtiyaç duyacağı tüm kaynakları alması için daha yüksek bir hizmet katmanına ölçeklendirmeyi değerlendirin. Diğer zamanlarda, yüksek CPU tüketimine hatalı bir döngü veya bir kodlama uygulaması neden olmuş olabilir. Artan CPU tüketiminin tetiklenmesi hakkında öngörüler elde etmek iki bölümden oluşan bir işlemdir. İlk olarak, bir işlem dökümü oluşturun ve ardından işlem dökümünü çözümleyin. Daha fazla bilgi için bkz. [Web Apps için yüksek CPU tüketimi için döküm dosyası yakalama ve çözümleme](/archive/blogs/asiatech/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app).
 
 ## <a name="how-do-i-troubleshoot-a-high-memory-consumption-scenario"></a>Yüksek bellek tüketim senaryosunda sorun Nasıl yaparım?.
 
-Bazı yüksek bellek tüketim senaryolarında, uygulamanız gerçekten daha fazla bilgi işlem kaynağı gerektirebilir.Bu durumda, uygulamanın ihtiyaç duyacağı tüm kaynakları alması için daha yüksek bir hizmet katmanına ölçeklendirmeyi değerlendirin. Diğer zamanlarda, koddaki bir hata bellek sızıntısına neden olabilir. Kodlama uygulaması da bellek tüketimini artırabilir.Yüksek bellek tüketiminin tetiklenmesi hakkında öngörü almak iki bölümden oluşan bir işlemdir. İlk olarak, bir işlem dökümü oluşturun ve ardından işlem dökümünü çözümleyin. Azure Site uzantısı galerisinden kilitlenme tanılayıcı, her iki adımı da etkili bir şekilde gerçekleştirebilir. Daha fazla bilgi için bkz. [Web Apps için aralıklı yüksek bellek için döküm dosyası yakalama ve çözümleme](/archive/blogs/asiatech/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app).
+Bazı yüksek bellek tüketim senaryolarında, uygulamanız gerçekten daha fazla bilgi işlem kaynağı gerektirebilir. Bu durumda, uygulamanın ihtiyaç duyacağı tüm kaynakları alması için daha yüksek bir hizmet katmanına ölçeklendirmeyi değerlendirin. Diğer zamanlarda, koddaki bir hata bellek sızıntısına neden olabilir. Kodlama uygulaması da bellek tüketimini artırabilir. Yüksek bellek tüketiminin tetiklenmesi hakkında öngörü almak iki bölümden oluşan bir işlemdir. İlk olarak, bir işlem dökümü oluşturun ve ardından işlem dökümünü çözümleyin. Azure Site uzantısı galerisinden kilitlenme tanılayıcı, her iki adımı da etkili bir şekilde gerçekleştirebilir. Daha fazla bilgi için bkz. [Web Apps için aralıklı yüksek bellek için döküm dosyası yakalama ve çözümleme](/archive/blogs/asiatech/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app).
 
 ## <a name="how-do-i-automate-app-service-web-apps-by-using-powershell"></a>PowerShell kullanarak App Service Web uygulamalarını otomatikleştirin Nasıl yaparım??
 
@@ -49,7 +49,7 @@ Web uygulamanızın olay günlüklerini görüntülemek için:
 1. **Kudu Web sitenizde** () oturum açın `https://*yourwebsitename*.scm.azurewebsites.net` .
 2. Menüsünde, **Hata Ayıkla konsol**  >  **cmd**' yi seçin.
 3. **LogFiles** klasörünü seçin.
-4. Olay günlüklerini görüntülemek için **eventlog.xml**yanındaki kurşun kalem simgesini seçin.
+4. Olay günlüklerini görüntülemek için **eventlog.xml** yanındaki kurşun kalem simgesini seçin.
 5. Günlükleri indirmek için PowerShell cmdlet 'ini çalıştırın `Save-AzureWebSiteLog -Name webappname` .
 
 ## <a name="how-do-i-capture-a-user-mode-memory-dump-of-my-web-app"></a>Web uygulamamın Kullanıcı modu bellek dökümünü Nasıl yaparım? yakalayın mi?
@@ -59,7 +59,7 @@ Web uygulamanızın kullanıcı modu bellek dökümünü yakalamak için:
 1. **Kudu Web sitenizde** () oturum açın `https://*yourwebsitename*.scm.azurewebsites.net` .
 2. **Işlem Gezgini** menüsünü seçin.
 3. **w3wp.exe** Işlemini veya WebJob işleminizi sağ tıklatın.
-4. **Bellek dökümünü yükle**  >  **tam dökümünü**Seç ' i seçin.
+4. **Bellek dökümünü yükle**  >  **tam dökümünü** Seç ' i seçin.
 
 ## <a name="how-do-i-view-process-level-info-for-my-web-app"></a>Web uygulamamın işlem düzeyi bilgisini Nasıl yaparım? görüntüle?
 
@@ -93,8 +93,8 @@ Varsayılan olarak, Web Apps, belirlenen süre boyunca boşta kalırsa kaldırı
 
 1. Azure portal web uygulamanıza gidin.
 2. **Yapılandırma** Seç
-3. **Genel ayarları**seçin.
-4. **Her zaman açık**için **Açık**seçeneğini belirleyin.
+3. **Genel ayarları** seçin.
+4. **Her zaman açık** için **Açık** seçeneğini belirleyin.
 
 ## <a name="how-do-i-turn-on-failed-request-tracing"></a>Başarısız istek izlemeyi açmak Nasıl yaparım? mı?
 
@@ -102,13 +102,13 @@ Başarısız istek izlemeyi açmak için:
 
 1. Azure portal web uygulamanıza gidin.
 3. **Tüm ayarlar**  >  **tanılama günlükleri**' ni seçin.
-4. **Başarısız Istek izleme**için **Açık**' ı seçin.
+4. **Başarısız Istek izleme** için **Açık**' ı seçin.
 5. **Kaydet**’i seçin.
 6. Web uygulaması dikey penceresinde **Araçlar**' ı seçin.
 7. **Visual Studio Online**' ı seçin.
-8. Ayar **Açık**değilse **Açık**' ı seçin.
+8. Ayar **Açık** değilse **Açık**' ı seçin.
 9. **Git**' i seçin.
-10. **Web.config**seçin.
+10. **Web.config** seçin.
 11. System. webServer içinde, bu yapılandırmayı ekleyin (belirli bir URL 'YI yakalamak için):
 
     ```xml
@@ -144,7 +144,7 @@ Başarısız istek izlemeyi açmak için:
 13. Başarısız istek izlemelerini indirmek için, [portalda](https://portal.azure.com)Web sitenize gidin.
 15. **Araçlar**  >  **kudu**  >  **Git**' i seçin.
 18. Menüsünde, **Hata Ayıkla konsol**  >  **cmd**' yi seçin.
-19. **LogFiles** klasörünü seçin ve ardından **W3SVC**ile başlayan bir adı olan klasörü seçin.
+19. **LogFiles** klasörünü seçin ve ardından **W3SVC** ile başlayan bir adı olan klasörü seçin.
 20. XML dosyasını görmek için kalem simgesini seçin.
 
 ## <a name="i-see-the-message-worker-process-requested-recycle-due-to-percent-memory-limit-how-do-i-address-this-issue"></a>"Bellek yüzdesi ' sınırı nedeniyle çalışan Işlemi geri dönüşümü istedi." iletisini görüyorum. " Nasıl yaparım? bu sorunu ele veriyor musunuz?

@@ -18,10 +18,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 67700ec643a27f8ae5c581fe9de8e3295a1925e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88998246"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-windows-phones-using-azure-notification-hubs"></a>Öğretici: Azure Notification Hubs kullanarak belirli Windows telefonlarına anında iletme bildirimleri gönderin
@@ -252,7 +252,7 @@ Bu adımlar, yerel depolama alanında depolanan kategorileri kullanarak başlatm
 > [!NOTE]
 > Microsoft Anında Bildirim Hizmeti (MPNS) tarafından atanan kanal URI’si her zaman değişebileceğinden, bildirim hatalarını önlemek için sık sık bildirimlere kaydolmanız gerekir. Bu örnek, uygulama her başlatıldığında bildirimlere kaydolur. Sık sık çalıştırılan uygulamalar için, önceki kayıttan bu yana bir günden az zaman geçtiyse bant genişliğini korumak için günde birkaç kere kaydı atlayabilirsiniz.
 
-1. App.xaml.cs dosyasını açın ve `async` yöntemine değiştiricisini ekleyin `Application_Launching` ve aşağıdaki kodla [Notification Hubs kullanmaya başlama] bölümünde eklediğiniz Notification Hubs kayıt kodunu değiştirin:
+1. App. xaml. cs dosyasını açın ve `async` metoduna değiştiricisini ekleyin `Application_Launching` ve aşağıdaki kodla [Notification Hubs kullanmaya başlama] bölümünde eklediğiniz Notification Hubs kayıt kodunu değiştirin:
 
     ```csharp
     private async void Application_Launching(object sender, LaunchingEventArgs e)
@@ -268,7 +268,7 @@ Bu adımlar, yerel depolama alanında depolanan kategorileri kullanarak başlatm
     ```
 
     Bu kod, uygulama her başlatıldığında uygulamanın yerel depolama alanından kategorileri aldığından ve bu kategorilere kayıt isteğinde bulunduğundan emin olur.
-2. MainPage.xaml.cs proje dosyasında, yöntemi uygulayan aşağıdaki kodu ekleyin `OnNavigatedTo` :
+2. MainPage. xaml. cs proje dosyasında, yöntemi uygulayan aşağıdaki kodu ekleyin `OnNavigatedTo` :
 
     ```csharp
     protected override void OnNavigatedTo(NavigationEventArgs e)

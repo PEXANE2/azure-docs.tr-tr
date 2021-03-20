@@ -9,10 +9,10 @@ ms.date: 11/07/2019
 ms.author: sethm
 ms.custom: include file
 ms.openlocfilehash: bfd5d42d83046c9c5b0bc3a78fabec08da5da646
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96028040"
 ---
 Bu bölümde, son dakika haberlerini .NET konsol uygulamasından etiketli şablon bildirimleri olarak yollarsınız.
@@ -31,7 +31,7 @@ Bu bölümde, son dakika haberlerini .NET konsol uygulamasından etiketli şablo
 
    Bu eylem, [Microsoft. Azure. Notificationhub] paketini kullanarak Azure Notification Hubs SDK 'sına bir başvuru ekler.
 
-1. *Program.cs* dosyasını açın ve aşağıdaki `using` ifadeyi ekleyin:
+1. *Program. cs* dosyasını açın ve aşağıdaki `using` ifadeyi ekleyin:
 
    ```csharp
    using Microsoft.Azure.NotificationHubs;

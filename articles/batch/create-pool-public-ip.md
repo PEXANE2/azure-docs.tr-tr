@@ -4,10 +4,10 @@ description: Kendi genel IP adreslerinizi kullanan bir Batch havuzu oluşturmay�
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.openlocfilehash: e822311718847e173763847d503335f71457308b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91849337"
 ---
 # <a name="create-an-azure-batch-pool-with-specified-public-ip-addresses"></a>Belirtilen genel IP adreslerine sahip bir Azure Batch havuzu oluşturun
@@ -18,7 +18,7 @@ Havuzunuzdaki sanal makinelerle birlikte kullanmak üzere statik genel IP adresl
 
 Genel IP adresleri olmayan havuzlar oluşturma hakkında bilgi için, [genel IP adresleri olmadan Azure Batch havuzu oluştur](./batch-pool-no-public-ip-address.md)' u okuyun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - **Kimlik doğrulaması**. Genel bir IP adresi kullanmak için Batch istemci API 'sinin [Azure Active Directory (ad) kimlik doğrulamasını](batch-aad-auth.md)kullanması gerekir.
 
@@ -34,8 +34,8 @@ Genel IP adresleri olmayan havuzlar oluşturma hakkında bilgi için, [genel IP 
 Genel IP adreslerinizi oluştururken aşağıdaki gereksinimleri göz önünde bulundurun:
 
 - Genel IP adresleri, havuzunuzu oluşturmak için kullandığınız Batch hesabıyla aynı abonelikte ve bölgede olmalıdır.
-- **IP adresi ataması** **statik**olarak ayarlanmalıdır.
-- **SKU** **Standart**olarak ayarlanmalıdır.
+- **IP adresi ataması** **statik** olarak ayarlanmalıdır.
+- **SKU** **Standart** olarak ayarlanmalıdır.
 - DNS adı belirtilmelidir.
 - Genel IP adreslerinin yalnızca sanal makine yapılandırma havuzları için kullanılması gerekir. Başka hiçbir kaynak bu IP adreslerini kullanmamalıdır veya havuz ayırma hatalarıyla karşılaşabilir.
 - Hiçbir güvenlik ilkesi veya kaynak kilidi, bir kullanıcının genel IP adresine erişimini kısıtlayamaz.

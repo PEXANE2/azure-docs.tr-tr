@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.openlocfilehash: 4bab8def514df21d948d67f3cfba846c43917be2
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96530944"
 ---
 # <a name="how-to-index-encrypted-blobs-using-blob-indexers-and-skillsets-in-azure-cognitive-search"></a>Azure Bilişsel Arama blob Dizinleyicileri ve becerileri kullanarak şifrelenmiş Blobların dizinini oluşturma
@@ -115,9 +115,9 @@ Postman yükleme ve ayarlama.
 ### <a name="download-and-install-postman"></a>Postman indirme ve yükleme
 
 1. [Postman koleksiyonu kaynak kodunu](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/index-encrypted-blobs/Index%20encrypted%20Blob%20files.postman_collection.json)indirin.
-1. **File**  >  Kaynak kodu Postman içine aktarmak için dosya **içeri aktarma** ' yı seçin.
+1.   >  Kaynak kodu Postman içine aktarmak için dosya **içeri aktarma** ' yı seçin.
 1. **Koleksiyonlar** sekmesini seçin ve ardından **...** (üç nokta) düğmesini seçin.
-1. **Düzenle**’yi seçin. 
+1. **Düzenle**'yi seçin. 
    
    ![Gezintiyi gösteren Postman uygulaması](media/indexing-encrypted-blob-files/postman-edit-menu.jpg "Postman 'daki düzenleme menüsüne git")
 1. **Düzenle** Iletişim kutusunda **değişkenler** sekmesini seçin. 

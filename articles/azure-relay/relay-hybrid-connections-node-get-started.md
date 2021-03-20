@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: b362caa6570d4a8e212ff7adf4310a0c63e8b755
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91263717"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-nodejs"></a>Node.js geçiş Karma Bağlantılar WebSockets ile çalışmaya başlama
@@ -25,7 +25,7 @@ Bu hızlı başlangıçta aşağıdaki adımları uygulayın:
 4. İleti göndermek için bir istemci (gönderen) konsol uygulaması yazma.
 5. Uygulamaları çalıştırın. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Node.js](https://nodejs.org/en/).
 - Azure aboneliği. Bir tane yoksa, başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .

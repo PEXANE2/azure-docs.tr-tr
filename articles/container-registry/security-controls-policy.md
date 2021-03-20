@@ -1,18 +1,18 @@
 ---
 title: Azure Container Registry için Azure Ilke mevzuat uyumluluk denetimleri
 description: Azure Container Registry için kullanılabilen Azure Ilke mevzuat uyumluluk denetimlerini listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızın uyumluluğunu yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 03/10/2021
+ms.date: 03/17/2021
 ms.topic: sample
 author: dlepow
 ms.author: danlep
 ms.service: container-registry
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 946617d010ef5c61aa74d2ef84d64da3c11133c2
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 9571a950dff1110b5cc53e8fa990b7106de82c83
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102636526"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577402"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-container-registry"></a>Azure Container Registry için Azure Ilke mevzuat uyumluluk denetimleri
 

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: tutorial
 ms.date: 02/09/2021
 ms.author: aahi
-ms.openlocfilehash: 8444ae08aa2c25c20723b2f8c571422af3b24bc8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 47feddb88fd7ddae1f8be54709019b4c339d177d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736687"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599179"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Öğretici: Metin Analizi Bilişsel Hizmeti ile Power BI’ı tümleştirme
 
@@ -190,7 +190,7 @@ Power BI Desktop kısa bir süre içinde gerekli HTTP isteklerini yapar. Tabloda
 > [!NOTE]
 > Kelime bulutu oluşturmak için her bir yorumun tam metni yerine neden ayıklanan anahtar ifadeleri kullanmalı? Anahtar ifadeler bize yalnızca müşteri yorumlarında yer alan *en sık kullanılan* sözcükleri değil, *önemli* sözcükleri de sunar. Ayrıca sonuçta elde edilen buluttaki sözcük boyutlandırması, bir kelimenin nispeten az sayıda yorumda sık olarak kullanılmasına göre şekillenmez.
 
-Henüz yapmadıysanız, Word Cloud özel görselini yükleyin. Çalışma alanının sağ tarafındaki Görsel Öğeler bölmesinde, üç nokta (**...**) simgesine tıklayın ve **Marketten içe aktarın** seçeneğini belirleyin. Ardından, "cloud" araması yapın ve Word Cloud görselinin yanındaki **Ekle** düğmesine tıklayın. Power BI, Sözcük Bulutu görselini yükler ve başarıyla yüklendiğini size bildirir.
+Henüz yapmadıysanız, Word Cloud özel görselini yükleyin. Çalışma alanının sağındaki görselleştirmeler panelinde, üç noktaya (**...**) tıklayın ve **marketten içeri aktar**' ı seçin. "Cloud" sözcüğünün listedeki görselleştirme araçları arasında olmaması halinde "Cloud" araması yapabilir ve Word bulutu görselini ileri ' ye tıklayabilirsiniz.  Power BI, Sözcük Bulutu görselini yükler ve başarıyla yüklendiğini size bildirir.
 
 ![[özel görsel ekleme]](../media/tutorials/power-bi/add-custom-visuals.png)<br><br>
 
@@ -200,7 +200,7 @@ Henüz yapmadıysanız, Word Cloud özel görselini yükleyin. Çalışma alanı
 
 Çalışma alanında yeni bir rapor görünür. Alanlar bölmesindeki `keyphrases` alanını Görsel Öğeler bölmesindeki Kategori alanına sürükleyin. Kelime bulutu raporda görünür.
 
-Şimdi de Görsel Öğeler bölmesinin Biçim sayfasına geçin. Durdurma Sözcükleri kategorisinde, "of" gibi kısa ve sık kullanılan sözcükleri buluttan kaldırmak için **Varsayılan Durdurma Sözcükleri**'ni etkinleştirin. 
+Şimdi de Görsel Öğeler bölmesinin Biçim sayfasına geçin. Durdurma Sözcükleri kategorisinde, "of" gibi kısa ve sık kullanılan sözcükleri buluttan kaldırmak için **Varsayılan Durdurma Sözcükleri**'ni etkinleştirin. Ancak, anahtar tümceleri görselleştirtireceğiz, durma sözcüklerini içermeyebilir.
 
 ![[varsayılan durdurma sözcüklerini etkinleştirme]](../media/tutorials/power-bi/default-stop-words.png)
 
@@ -232,8 +232,7 @@ Aşağıdaki Yaklaşım Analizi işlevi, metinde ifade edilen yaklaşımın ne �
     headers     = [#"Ocp-Apim-Subscription-Key" = apikey],
     bytesresp   = Web.Contents(endpoint, [Headers=headers, Content=bytesbody]),
     jsonresp    = Json.Document(bytesresp),
-    sentiment   = jsonresp[documents]{0}[confidenceScores]
-in  sentiment
+    sentiment   = jsonresp[documents]{0}[detectedLanguage][confidenceScore] in  sentiment
 ```
 
 Dil Algılama işlevine ilişkin iki sürüm aşağıda verilmiştir. İlk sürüm, ISO dil kodunu (örneğin, İngilizce için `en`), ikinci sürüm ise "kolay" adı (örneğin, `English`) döndürür. Bu iki sürüm arasında yalnızca gövdenin son satırının değişiklik gösterdiğine dikkat edin.
@@ -249,8 +248,7 @@ Dil Algılama işlevine ilişkin iki sürüm aşağıda verilmiştir. İlk sür�
     headers     = [#"Ocp-Apim-Subscription-Key" = apikey],
     bytesresp   = Web.Contents(endpoint, [Headers=headers, Content=bytesbody]),
     jsonresp    = Json.Document(bytesresp),
-    language    = jsonresp[documents]{0}[detectedLanguages]{0}[iso6391Name]
-in  language
+    language    = jsonresp [documents]{0}[detectedLanguage] [iso6391Name] in language 
 ```
 ```fsharp
 // Returns the name (for example, 'English') of the language in which the text is written
@@ -263,8 +261,7 @@ in  language
     headers     = [#"Ocp-Apim-Subscription-Key" = apikey],
     bytesresp   = Web.Contents(endpoint, [Headers=headers, Content=bytesbody]),
     jsonresp    = Json.Document(bytesresp),
-    language    = jsonresp[documents]{0}[detectedLanguages]{0}[name]
-in  language
+    language    jsonresp [documents]{0}[detectedLanguage] [iso6391Name] in language 
 ```
 
 Son olarak, sunulmuş olan Anahtar İfade Ayıklama işlevinin, virgülle ayrılan ifadelerden oluşan tek bir dize yerine ifadeleri liste nesnesi olarak döndüren bir değişkeni aşağıda verilmiştir. 

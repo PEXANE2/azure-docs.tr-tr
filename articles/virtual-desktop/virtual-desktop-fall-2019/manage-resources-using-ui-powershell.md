@@ -8,10 +8,10 @@ ms.author: helohr
 ms.custom: devx-track-azurepowershell
 manager: lizross
 ms.openlocfilehash: d7219751d584eb458cded9f4e30cccb1439dfa1b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89069026"
 ---
 # <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-powershell"></a>PowerShell ile Windows sanal masaüstü (klasik) Yönetim Aracı dağıtma
@@ -139,7 +139,7 @@ Artık Yönetim Aracı Web uygulamasını tam olarak yapılandırdığınıza g�
 Azure AD uygulama yapılandırmasını doğrulamak ve izin sağlamak için:
 
 1. Internet tarayıcınızı açın ve [Azure Portal](https://portal.azure.com/) Yönetici hesabınızla oturum açın.
-2. Azure portal en üstündeki arama çubuğundan **uygulama kayıtları** arayın ve **Hizmetler**altında öğeyi seçin.
+2. Azure portal en üstündeki arama çubuğundan **uygulama kayıtları** arayın ve **Hizmetler** altında öğeyi seçin.
 3. **Tüm uygulamalar** ' ı seçin ve [Azure Active Directory uygulama kaydı oluşturma](#create-an-azure-active-directory-app-registration)bölümünde PowerShell betiği için verdiğiniz benzersiz uygulama adını arayın.
 4. Tarayıcının sol tarafındaki panelde **kimlik doğrulaması** ' nı seçin ve aşağıdaki görüntüde gösterildiği gibi yeniden yönlendirme URI 'sinin yönetim aracının Web uygulaması URL 'siyle aynı olduğundan emin olun.
 

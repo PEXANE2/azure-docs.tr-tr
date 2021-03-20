@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.custom: references_regions
 ms.openlocfilehash: a8b70d4c8240d096c19e5a8d7449921557b8896c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89022250"
 ---
 # <a name="soft-delete-for-virtual-machines"></a>Sanal makineler için geçici silme
@@ -40,7 +40,7 @@ Geçici silme Şu anda Orta Batı ABD, Doğu Asya, Kanada Orta, Kanada Doğu, Fr
    > [!NOTE]
    > Kasada geçici olarak silinen yedekleme öğeleri varsa, kasa bu anda silinemez. Yedekleme öğeleri kalıcı olarak silindikten sonra kasayı silmeyi deneyin ve kasada geçici olarak silinmiş durumda bir öğe yok.
 
-4. Geçici olarak silinen VM 'yi geri yüklemek için önce silinmesi gerekir. Silmeyi geri almak için, geçici olarak silinen VM 'yi seçin ve sonra **silmeyi geri al**seçeneğini belirleyin.
+4. Geçici olarak silinen VM 'yi geri yüklemek için önce silinmesi gerekir. Silmeyi geri almak için, geçici olarak silinen VM 'yi seçin ve sonra **silmeyi geri al** seçeneğini belirleyin.
 
    ![Azure portal ekran görüntüsü, geri alma VM](./media/backup-azure-security-feature-cloud/choose-undelete.png)
 

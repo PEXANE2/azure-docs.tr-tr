@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/21/2020
 ms.author: jeedes
 ms.openlocfilehash: dc9c8e622840d30f1d18ab783cc20e2659a1b5e3
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98735569"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-yello-enterprise"></a>Öğretici: Sarılo Enterprise ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -26,7 +26,7 @@ Bu öğreticide, Sarılo Enterprise 'ı Azure Active Directory (Azure AD) ile t�
 * Kullanıcılarınızın Azure AD hesaplarıyla otomatik olarak Sarısa kurumsal oturum açmaya olanak sağlar.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 

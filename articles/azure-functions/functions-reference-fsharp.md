@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: syclebsc
 ms.openlocfilehash: f9b7b92fd21e12f1d86c5d5878e48c6ec6b0e748
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87088028"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Azure Işlevleri F # geliştirici başvurusu
@@ -51,7 +51,7 @@ FunctionsProject
 Çalışma zamanının [sürüm 2. x ve sonraki sürümlerinde](functions-versions.md) gerekli olan bağlama uzantıları, `extensions.csproj` dosyasında, klasördeki gerçek kitaplık dosyalarıyla birlikte tanımlanmıştır `bin` . Yerel olarak geliştirme yaparken, [bağlama uzantılarını kaydetmeniz](./functions-bindings-register.md#extension-bundles)gerekir. Azure portal işlevler geliştirirken, bu kayıt sizin için yapılır.
 
 ## <a name="binding-to-arguments"></a>Bağımsız değişkenlere bağlama
-Her bağlama, [Azure işlevleri Tetikleyicileri ve bağlamaları geliştirici başvurusu](functions-triggers-bindings.md)bölümünde açıklandığı gibi bazı bağımsız değişkenler kümesini destekler. Örneğin, bir blob tetikleyicisinin desteklediği bağımsız değişken bağlamalarından biri bir POCO, F # kaydı kullanılarak ifade edilebilir. Örneğin:
+Her bağlama, [Azure işlevleri Tetikleyicileri ve bağlamaları geliştirici başvurusu](functions-triggers-bindings.md)bölümünde açıklandığı gibi bazı bağımsız değişkenler kümesini destekler. Örneğin, bir blob tetikleyicisinin desteklediği bağımsız değişken bağlamalarından biri bir POCO, F # kaydı kullanılarak ifade edilebilir. Örnek:
 
 ```fsharp
 type Item = { Id: string }
@@ -61,11 +61,11 @@ let Run(blob: string, output: byref<Item>) =
     output <- item
 ```
 
-F # Azure işleviniz bir veya daha fazla bağımsız değişken alacak. Azure Işlevleri bağımsız değişkenleri hakkında konuşduğumuz zaman *giriş* bağımsız değişkenlerine ve *Çıkış* bağımsız değişkenlerine başvuracağız. Giriş bağımsız değişkeni tam olarak şu şekilde seslere sahiptir: F # Azure işlevlerinize giriş. *Çıkış* bağımsız değişkeni değişebilir veri veya `byref<>` işlevinizin geri dönmesi için bir yol görevi gören bir bağımsız değişkendir *out* .
+F # Azure işleviniz bir veya daha fazla bağımsız değişken alacak. Azure Işlevleri bağımsız değişkenleri hakkında konuşduğumuz zaman *giriş* bağımsız değişkenlerine ve *Çıkış* bağımsız değişkenlerine başvuracağız. Giriş bağımsız değişkeni tam olarak şu şekilde seslere sahiptir: F # Azure işlevlerinize giriş. *Çıkış* bağımsız değişkeni değişebilir veri veya `byref<>` işlevinizin geri dönmesi için bir yol görevi gören bir bağımsız değişkendir  .
 
 Yukarıdaki örnekte, `blob` bir giriş bağımsız değişkenidir ve `output` bir çıkış bağımsız değişkenidir. İçin kullandığımızda `byref<>` `output` (ek açıklama eklemeye gerek yoktur) dikkat edin `[<Out>]` . Bir `byref<>` tür kullanılması, işlevinizin, bağımsız değişkenin başvurduğu kaydı veya nesneyi değiştirmesini sağlar.
 
-Bir F # kaydı giriş türü olarak kullanıldığında, `[<CLIMutable>]` kaydı işlevinizin içine geçirmeden önce Azure işlevleri çerçevesinin alanları uygun şekilde ayarlayabilmesi için kayıt tanımının ile işaretlenmiş olması gerekir. Bu şekilde, `[<CLIMutable>]` kayıt özellikleri için ayarlayıcılar oluşturulur. Örneğin:
+Bir F # kaydı giriş türü olarak kullanıldığında, `[<CLIMutable>]` kaydı işlevinizin içine geçirmeden önce Azure işlevleri çerçevesinin alanları uygun şekilde ayarlayabilmesi için kayıt tanımının ile işaretlenmiş olması gerekir. Bu şekilde, `[<CLIMutable>]` kayıt özellikleri için ayarlayıcılar oluşturulur. Örnek:
 
 ```fsharp
 [<CLIMutable>]
@@ -77,7 +77,7 @@ let Run(req: TestObject, log: ILogger) =
     { req with Greeting = sprintf "Hello, %s" req.SenderName }
 ```
 
-F # sınıfı, hem ın hem de out bağımsız değişkenlerinde kullanılabilir. Bir sınıf için, özelliklerin genellikle alıcıları ve ayarlayıcıları gerekir. Örneğin:
+F # sınıfı, hem ın hem de out bağımsız değişkenlerinde kullanılabilir. Bir sınıf için, özelliklerin genellikle alıcıları ve ayarlayıcıları gerekir. Örnek:
 
 ```fsharp
 type Item() =
@@ -90,7 +90,7 @@ let Run(input: string, item: byref<Item>) =
 ```
 
 ## <a name="logging"></a>Günlüğe Kaydetme
-Çıktıyı F # içindeki [akış günlüklerinizi](../app-service/troubleshoot-diagnostic-logs.md) günlüğe kaydetmek için Işleviniz [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger)türünde bir bağımsız değişken almalıdır. Tutarlılık için, bu bağımsız değişkenin adlandırılmış olmasını öneririz `log` . Örneğin:
+Çıktıyı F # içindeki [akış günlüklerinizi](../app-service/troubleshoot-diagnostic-logs.md) günlüğe kaydetmek için Işleviniz [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger)türünde bir bağımsız değişken almalıdır. Tutarlılık için, bu bağımsız değişkenin adlandırılmış olmasını öneririz `log` . Örnek:
 
 ```fsharp
 let Run(blob: string, output: byref<string>, log: ILogger) =
@@ -182,7 +182,7 @@ Ayrıca, aşağıdaki derlemeler özeldir ve simpleName tarafından başvurulabi
 Özel bir derlemeye başvurmanız gerekirse, derleme dosyasını `bin` işleviniz ile ilişkili bir klasöre yükleyebilir ve dosya adını kullanarak buna başvurabilirsiniz (ör.  `#r "MyAssembly.dll"`). İşlev klasörünüze dosya yükleme hakkında daha fazla bilgi için bkz. Paket yönetimi üzerinde aşağıdaki bölüm.
 
 ## <a name="editor-prelude"></a>Düzenleyici Prelude
-F # derleyici hizmetlerini destekleyen bir düzenleyici, Azure Işlevlerinin otomatik olarak içerdiği ad alanları ve derlemeler hakkında farkında olmayacaktır. Bu nedenle, düzenleyicinin kullandığınız derlemeleri bulmasını ve ad alanlarını açıkça açmasını sağlayan bir Prelude eklemek yararlı olabilir. Örneğin:
+F # derleyici hizmetlerini destekleyen bir düzenleyici, Azure Işlevlerinin otomatik olarak içerdiği ad alanları ve derlemeler hakkında farkında olmayacaktır. Bu nedenle, düzenleyicinin kullandığınız derlemeleri bulmasını ve ad alanlarını açıkça açmasını sağlayan bir Prelude eklemek yararlı olabilir. Örnek:
 
 ```fsharp
 #if !COMPILED
@@ -258,7 +258,7 @@ let Run(timer: TimerInfo, log: ILogger) =
 ```
 
 ## <a name="reusing-fsx-code"></a>. FSX kodunu yeniden kullanma
-`.fsx`Bir yönergesi kullanarak diğer dosyalardaki kodu kullanabilirsiniz `#load` . Örneğin:
+`.fsx`Bir yönergesi kullanarak diğer dosyalardaki kodu kullanabilirsiniz `#load` . Örnek:
 
 `run.fsx`
 

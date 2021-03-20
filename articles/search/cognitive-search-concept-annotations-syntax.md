@@ -9,17 +9,17 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 03431d861ca6d469b894e45c36fe2a3d7904c3a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88935543"
 ---
 # <a name="how-to-reference-annotations-in-an-azure-cognitive-search-skillset"></a>Azure Bilişsel Arama Beceri ek açıklamalarına başvurma
 
 Bu makalede, çeşitli senaryoları göstermek için örnekler kullanarak yetenek tanımlarındaki ek açıklamaların nasıl başvurululacağını öğrenirsiniz. Bir belge içeriği bir yetenek kümesiyle akar, bu, ek açıklamalarla zenginleştirir. Ek açıklamalar, daha fazla aşağı akış zenginleştirme girişi olarak veya bir dizindeki bir çıkış alanına eşlenmiş olarak kullanılabilir. 
  
-Bu makaledeki örneklerde, belge çözme aşamasının bir parçası olarak [Azure Blob Dizin oluşturucular](search-howto-indexing-azure-blob-storage.md) tarafından otomatik olarak oluşturulan *içerik* alanı temel alınır. Blob kapsayıcısından gelen belgelere başvuru yaparken, gibi bir biçim kullanın `"/document/content"` , burada *içerik* alanı *belgenin*bir parçasıdır. 
+Bu makaledeki örneklerde, belge çözme aşamasının bir parçası olarak [Azure Blob Dizin oluşturucular](search-howto-indexing-azure-blob-storage.md) tarafından otomatik olarak oluşturulan *içerik* alanı temel alınır. Blob kapsayıcısından gelen belgelere başvuru yaparken, gibi bir biçim kullanın `"/document/content"` , burada *içerik* alanı *belgenin* bir parçasıdır. 
 
 ## <a name="background-concepts"></a>Arka plan kavramları
 

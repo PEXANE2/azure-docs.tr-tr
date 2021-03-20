@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
 ms.openlocfilehash: b0973dca980b65b85ac66cc1b3c9ed45f0f9c779
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93339215"
 ---
 # <a name="azure-cosmos-db-sql-query-constants"></a>SQL sorgu sabitlerini Azure Cosmos DB  
@@ -25,7 +25,7 @@ ms.locfileid: "93339215"
 |-|-|  
 |**Tanımlayan**|Tek değer: **tanımsız**|  
 |**Null**|Tek değer: **null**|  
-|**Boole**|Değerler: **false** , **true**.|  
+|**Boole**|Değerler: **false**, **true**.|  
 |**Sayı**|Bir çift duyarlıklı kayan noktalı sayı, IEEE 754 standardı.|  
 |**Dize**|Sıfır veya daha fazla Unicode karakterden oluşan bir dizi. Dizeler tek veya çift tırnak içine alınmalıdır.|  
 |**Dizide**|Sıfır veya daha fazla öğe dizisi. Her öğe, **tanımsız** bir değer hariç herhangi bir skaler veri türü değeri olabilir.|  
@@ -115,7 +115,7 @@ ms.locfileid: "93339215"
 |\f|Form akışı|U + 000C|  
 |\n|satır besleme|U + 000A|  
 |\r|satır başı|U + 000D|  
-|\t| sekme|U + 0009|  
+|\t|sekmesinde|U + 0009|  
 |\Uxxxx içinde|4 onaltılık basamakla tanımlanan bir Unicode karakteri.|U + XXXX|  
 
 ## <a name="next-steps"></a>Sonraki adımlar

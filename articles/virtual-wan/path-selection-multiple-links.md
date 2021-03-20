@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: f24696c0db3155a59106e1361b01454b9ac16a20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91267763"
 ---
 # <a name="azure-path-selection-across-multiple-isp-links"></a>Birden çok ISS bağlantısı üzerinde Azure yol seçimi
 
-Azure sanal WAN, bir kullanıcıya bir VPN sitesine bağlantı bilgilerini ekleme özelliği sunar. VPN/SD-WAN cihaz çözümünün, çeşitli bağlantılar genelinde trafiği Azure 'a dönüştürmek için dala özgü ilkeleri programleyebildiği senaryolara olanak tanır. Bu, **Azure yol seçimi**olarak adlandırılır.
+Azure sanal WAN, bir kullanıcıya bir VPN sitesine bağlantı bilgilerini ekleme özelliği sunar. VPN/SD-WAN cihaz çözümünün, çeşitli bağlantılar genelinde trafiği Azure 'a dönüştürmek için dala özgü ilkeleri programleyebildiği senaryolara olanak tanır. Bu, **Azure yol seçimi** olarak adlandırılır.
 
 ## <a name="architecture"></a>Mimari
 

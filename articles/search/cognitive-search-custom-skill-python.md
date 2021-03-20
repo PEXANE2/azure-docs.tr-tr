@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: 40e20ad4bab0275b44cd868521c7dc70dec52567
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88936138"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>Örnek: Python kullanarak özel bir yetenek oluşturma
@@ -22,7 +22,7 @@ Bu Azure Bilişsel Arama Beceri örneğinde, Python ve Visual Studio Code kullan
 
 Özel beceri tasarım tarafından basittir (iki dizeyi birleştirir), böylece Python 'da özel beceri geliştirme için kullanılan araçlara ve teknolojilere odaklanırsınız. Basit bir beceriyle başarılı olduktan sonra daha karmaşık senaryolara sahip olabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + Özel bir yeteneğin uygulanması gereken giriş/çıkış arabirimine giriş için [özel beceri arabirimini](cognitive-search-custom-skill-interface.md) gözden geçirin.
 
@@ -44,7 +44,7 @@ Visual Studio Code'daki Azure İşlevleri proje şablonu, Azure'daki bir işlev 
 
 1. Visual Studio Code ' de, F1 tuşuna basarak komut paletini açın. Komut paletinde, araması yapın ve seçin `Azure Functions: Create new project...` .
 
-1. Proje çalışma alanınız için bir dizin konumu seçin ve **Seç**' i seçin.
+1. Projenizin çalışma alanı için bir dizin konumu seçtikten sonra **Seç**'i belirleyin.
 
     > [!NOTE]
     > Bu adımlar, bir çalışma alanının dışında tamamlanacak şekilde tasarlandı. Bu nedenle, bir çalışma alanının parçası olan bir proje klasörü seçmeyin.
@@ -196,7 +196,7 @@ Hata ayıklamaya başladıktan sonra işleviniz yerel olarak çalışır. Localh
 
 Bu noktada, Azure 'da yeni Azure Işlevini barındırmak için Azure aboneliğinizde gerekli kaynaklar oluşturulacaktır. Dağıtımın tamamlanmasını bekleyin. Çıkış penceresinde, dağıtım sürecinin durumu gösterilir.
 
-1. [Azure Portal](https://portal.azure.com), **tüm kaynaklar** ' a gidin ve adıyla yayımladığınız işlevi bulun. **Concatenator**olarak adlandırdıysanız, kaynağı seçin.
+1. [Azure Portal](https://portal.azure.com), **tüm kaynaklar** ' a gidin ve adıyla yayımladığınız işlevi bulun. **Concatenator** olarak adlandırdıysanız, kaynağı seçin.
 
 1. **</> işlev URL 'Si al** düğmesine tıklayın. Bu, işlevi çağırmak için URL 'YI kopyalamanızı sağlar.
 

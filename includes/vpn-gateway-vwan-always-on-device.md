@@ -9,10 +9,10 @@ ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 34e841a5f17d589c4fbef54a4a8674a99ac6c640
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96027805"
 ---
 Bir cihaz tünelini başarıyla kurmak için aşağıdaki gereksinimlerin karşılanması gerekir:
@@ -28,7 +28,7 @@ Bir cihaz tünelini başarıyla kurmak için aşağıdaki gereksinimlerin karş�
 
 Sanal ağ geçidini yapılandırdıktan ve istemci sertifikasını Windows 10 istemcisindeki yerel makine deposuna yükledikten sonra, bir istemci cihaz tüneli yapılandırmak için aşağıdaki örnekleri kullanın:
 
-1. Aşağıdaki metni kopyalayın ve ***devicecert.ps1** _ olarak kaydedin.
+1. Aşağıdaki metni kopyalayın ve ***devicecert.ps1*** olarak kaydedin.
 
    ```
    Param(
@@ -80,7 +80,7 @@ Sanal ağ geçidini yapılandırdıktan ve istemci sertifikasını Windows 10 is
    $Message = "Complete."
    Write-Host "$Message"
    ```
-1. Aşağıdaki metni kopyalayın ve _ * devicecert.ps1 * * ile aynı klasöre _*_VPNProfile.xml_*_ olarak kaydedin. Ortamınıza uyması için aşağıdaki metni düzenleyin.
+1. Aşağıdaki metni kopyalayın ve _ * devicecert.ps1 * * ile aynı klasöre ***VPNProfile.xml** _ olarak kaydedin. Ortamınıza uyması için aşağıdaki metni düzenleyin.
 
    * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers> <= Can be found in the VpnSettings.xml in the downloaded profile zip file`
    * `<Address>192.168.3.5</Address> <= IP of resource in the vnet or the vnet address space`

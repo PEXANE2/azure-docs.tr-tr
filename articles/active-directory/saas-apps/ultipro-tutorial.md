@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/24/2020
 ms.author: jeedes
 ms.openlocfilehash: 8ae693d7f6974415eac294289288879d9668604c
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98735620"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ultipro"></a>Öğretici: UltiPro ile tümleştirme Azure Active Directory
@@ -27,7 +27,7 @@ Bu öğreticide, UltiPro 'Yu Azure Active Directory (Azure AD) ile tümleştirme
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 

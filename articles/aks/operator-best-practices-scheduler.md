@@ -5,10 +5,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.openlocfilehash: 087c1d2efc93b8460a3683a4e66916d73fd4e885
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87015689"
 ---
 # <a name="best-practices-for-basic-scheduler-features-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki temel Zamanlayıcı özellikleri için en iyi yöntemler
@@ -28,7 +28,7 @@ Bu en iyi yöntemler makalesi, küme işleçleri için temel Kubernetes zamanlam
 
 Kaynak istekleri ve limitleri Pod belirtimine yerleştirilir. Bu sınırlar, küme içinde kullanılabilir bir düğüm bulmak için dağıtım zamanında Kubernetes Zamanlayıcı tarafından kullanılır. Bu sınırlar ve istekler bireysel Pod düzeyinde çalışır. Bu değerlerin nasıl tanımlanacağı hakkında daha fazla bilgi için bkz. [Pod kaynak isteklerini ve sınırlarını tanımlama][resource-limits]
 
-Bir geliştirme takımı veya projesindeki kaynakları ayırabilmeniz ve sınırlandırmaya yönelik bir yol sağlamak için *kaynak kotalarını*kullanmanız gerekir. Bu kotalar bir ad alanında tanımlanmıştır ve kotaları aşağıdaki şekilde ayarlamak için kullanılabilir:
+Bir geliştirme takımı veya projesindeki kaynakları ayırabilmeniz ve sınırlandırmaya yönelik bir yol sağlamak için *kaynak kotalarını* kullanmanız gerekir. Bu kotalar bir ad alanında tanımlanmıştır ve kotaları aşağıdaki şekilde ayarlamak için kullanılabilir:
 
 * CPU ve bellek veya GPU 'Lar gibi **işlem kaynakları**.
 * **Depolama kaynakları**, belirli bir depolama sınıfı için toplam birim sayısını veya disk alanı miktarını içerir.
@@ -52,7 +52,7 @@ spec:
     pods: "10"
 ```
 
-Bu kaynak kotası, *geliştirme uygulamaları*gibi ad alanı belirtilerek uygulanabilir:
+Bu kaynak kotası, *geliştirme uygulamaları* gibi ad alanı belirtilerek uygulanabilir:
 
 ```console
 kubectl apply -f dev-app-team-quotas.yaml --namespace dev-apps
@@ -91,7 +91,7 @@ spec:
       app: nginx-frontend
 ```
 
-Ayrıca, küme sayısının ölçeğini ölçeklendirerek çoğaltma kümesini otomatik olarak telafi etmenizi sağlayan *%60*gibi bir yüzde de tanımlayabilirsiniz.
+Ayrıca, küme sayısının ölçeğini ölçeklendirerek çoğaltma kümesini otomatik olarak telafi etmenizi sağlayan *%60* gibi bir yüzde de tanımlayabilirsiniz.
 
 Bir çoğaltma kümesinde kullanılamayan en fazla örnek sayısını tanımlayabilirsiniz. Ayrıca, kullanılamayan en fazla sayıda pod için bir yüzde de tanımlanabilir. Aşağıdaki Pod kesintisi bütçesi YAML bildirimi, çoğaltma kümesinde ikiden fazla sayıda Pod olmadığını tanımlar:
 

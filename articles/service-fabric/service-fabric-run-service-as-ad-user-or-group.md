@@ -4,10 +4,10 @@ description: Bir hizmeti Service Fabric Windows bağımsız kümesinde Active Di
 ms.topic: conceptual
 ms.date: 03/29/2018
 ms.openlocfilehash: d4a7afc2ddb0f39014a7cf0fd006d7fe23673a95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91840736"
 ---
 # <a name="run-a-service-as-an-active-directory-user-or-group"></a>Bir hizmeti Active Directory Kullanıcı veya grup olarak çalıştırma
@@ -15,7 +15,7 @@ Windows Server tek başına kümesinde, RunAs ilkesini kullanarak bir hizmeti Ac
 
 Bir etki alanı kullanıcısı veya grubu kullanarak, izin verilen etki alanındaki diğer kaynaklara (örneğin, dosya paylaşımları) erişebilirsiniz.
 
-Aşağıdaki örnek, *Benimcert*adlı bir sertifika kullanarak etki alanı parolalarını şifreleyen *testuser* adlı bir Kullanıcı Active Directory gösterir. `Invoke-ServiceFabricEncryptText`Gizli şifreleme metnini oluşturmak için PowerShell komutunu kullanabilirsiniz. Ayrıntılar için bkz. [Service Fabric uygulamalarında gizli dizileri yönetme](service-fabric-application-secret-management.md) .
+Aşağıdaki örnek, *Benimcert* adlı bir sertifika kullanarak etki alanı parolalarını şifreleyen *testuser* adlı bir Kullanıcı Active Directory gösterir. `Invoke-ServiceFabricEncryptText`Gizli şifreleme metnini oluşturmak için PowerShell komutunu kullanabilirsiniz. Ayrıntılar için bkz. [Service Fabric uygulamalarında gizli dizileri yönetme](service-fabric-application-secret-management.md) .
 
 Bant dışı bir yöntem kullanarak yerel makineye parolanın şifresini çözmek için sertifikanın özel anahtarını dağıtmanız gerekir (Azure 'da bu, Azure Resource Manager aracılığıyla yapılır). Daha sonra, Service Fabric hizmet paketini makineye dağıttığında, bu kimlik bilgileri altında çalıştırmak için Active Directory ve (Kullanıcı adıyla birlikte) kimlik doğrulaması yapabilir.
 
@@ -35,7 +35,7 @@ Bant dışı bir yöntem kullanarak yerel makineye parolanın şifresini çözme
 ```
 
 > [!NOTE] 
-> Bir hizmete RunAs ilkesi uygularsanız ve hizmet bildirimi uç nokta kaynaklarını HTTP protokolüyle bildirirse, bir **Securityaccesspolicy**de belirtmeniz gerekir.  Daha fazla bilgi için bkz. [http ve HTTPS uç noktaları için güvenlik erişimi Ilkesi atama](service-fabric-assign-policy-to-endpoint.md). 
+> Bir hizmete RunAs ilkesi uygularsanız ve hizmet bildirimi uç nokta kaynaklarını HTTP protokolüyle bildirirse, bir **Securityaccesspolicy** de belirtmeniz gerekir.  Daha fazla bilgi için bkz. [http ve HTTPS uç noktaları için güvenlik erişimi Ilkesi atama](service-fabric-assign-policy-to-endpoint.md). 
 >
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->

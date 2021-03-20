@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 09/14/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 9904fb8c2142816196a1939a16445318bdb245d0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91262323"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-docker-cli"></a>Hızlı başlangıç: Docker CLı kullanarak Azure 'da kapsayıcı örneği dağıtma
@@ -24,11 +24,11 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap][azure-account]
 Bu hızlı başlangıçta, [Windows](https://desktop.docker.com/win/edge/Docker%20Desktop%20Installer.exe) veya [MacOS](https://desktop.docker.com/mac/edge/Docker.dmg)Için kullanılabilen Docker Desktop sürüm 2.3.0.5 veya üzeri bir sürümü gerekir. Veya [Linux Için Docker acı TÜMLEŞTIRMESI CLI](https://docs.docker.com/engine/context/aci-integration/#install-the-docker-aci-integration-cli-on-linux)'sını yükler. 
 
 > [!IMPORTANT]
-> Azure Container Instances özelliklerinin hepsi desteklenmez. [Aci-Integration-Beta](https://github.com/docker/aci-integration-beta) GitHub deposunda bir sorun oluşturarak Docker-Azure tümleştirmesi hakkında geri bildirim sağlayın.
+> Azure Container Instances özelliklerinin hepsi desteklenmez. [Aci-Integration-Beta](https://github.com/docker/aci-integration-beta) GitHub deposunda bir sorun oluşturarak Docker-Azure tümleştirme hakkında geri bildirim sağlayın.
 
 [!INCLUDE [container-instances-create-docker-context](../../includes/container-instances-create-docker-context.md)]
 
-## <a name="create-a-container"></a>Bir kapsayıcı oluşturma
+## <a name="create-a-container"></a>Kapsayıcı oluşturma
 
 Bir Docker bağlamı oluşturduktan sonra Azure 'da bir kapsayıcı oluşturabilirsiniz. Bu hızlı başlangıçta, ortak `mcr.microsoft.com/azuredocs/aci-helloworld` görüntüyü kullanırsınız. Bu görüntü, statik bir HTML sayfasına hizmet veren Node.js yazılmış küçük bir Web uygulamasını paketler.
 
@@ -60,7 +60,7 @@ docker ps
 ```
 
 
-Örnek çıkış, bu durumda *52.230.225.232*genel bir IP adresi gösterir:
+Örnek çıkış, bu durumda *52.230.225.232* genel bir IP adresi gösterir:
 
 ```
 CONTAINER ID        IMAGE                                        COMMAND             STATUS              PORTS

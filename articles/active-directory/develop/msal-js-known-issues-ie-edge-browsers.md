@@ -14,16 +14,16 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 2a471504b88791b5bfb6ce6cc7c81d60bfbe5028
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83772089"
 ---
 # <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Internet Explorer ve Microsoft Edge tarayıcılarında ilgili bilinen sorunlar (MSAL.js)
 
 ## <a name="issues-due-to-security-zones"></a>Güvenlik bölgeleri nedeniyle oluşan sorunlar
-IE ve Microsoft Edge 'de kimlik doğrulamasıyla ilgili birçok sorun raporu sunuyoruz ( *Microsoft Edge tarayıcı sürümü 40.15063.0.0 ' e*güncelliyoruz). Bunları izliyor ve Microsoft Edge ekibinin bilgilendirilmesi yaptık. Microsoft Edge bir çözünürlükte çalışırken, sık karşılaşılan sorunların ve uygulanabilecek olası geçici çözümlerin açıklaması aşağıda verilmiştir.
+IE ve Microsoft Edge 'de kimlik doğrulamasıyla ilgili birçok sorun raporu sunuyoruz ( *Microsoft Edge tarayıcı sürümü 40.15063.0.0 ' e* güncelliyoruz). Bunları izliyor ve Microsoft Edge ekibinin bilgilendirilmesi yaptık. Microsoft Edge bir çözünürlükte çalışırken, sık karşılaşılan sorunların ve uygulanabilecek olası geçici çözümlerin açıklaması aşağıda verilmiştir.
 
 ### <a name="cause"></a>Nedeni
 Bu sorunların büyük bir kısmının nedeni aşağıdaki gibidir. Oturum depolama ve yerel depolama, Microsoft Edge tarayıcısında güvenlik bölgelerine göre bölümlendirilir. Microsoft Edge 'in bu sürümünde, uygulama bölgeler arasında yeniden yönlendirildiğinde, oturum depolama ve yerel depolama temizlenir. Özellikle, oturum depolama, normal tarayıcı gezinmede temizlenir ve hem oturum hem de yerel depolama, tarayıcının InPrivate modunda temizlenir. MSAL.js, oturum depolama alanındaki belirli durumları kaydeder ve kimlik doğrulama akışları sırasında bu durumu denetlemeye bağımlıdır. Oturum depolama alanı kaldırıldığında, bu durum kaybedilir ve bu nedenle bozuk deneyimler oluşur.
@@ -51,7 +51,7 @@ Aşağıdaki geçici çözümleri kullanın.
 #### <a name="other-workarounds"></a>Diğer geçici çözümler
 Sorununuzun yalnızca Microsoft Edge tarayıcısının belirli bir sürümünde gerçekleştiğini ve bu geçici çözümleri benimseerek diğer tarayıcılarda çalışıp çalışmadığını test ettiğinizden emin olun.  
 1. Bu sorunları çözmek için ilk adım olarak, uygulama etki alanının ve kimlik doğrulama akışının yeniden yönlendirmelerine dahil olan diğer sitelerin, tarayıcının güvenlik ayarlarında güvenilen siteler olarak eklendiğinden emin olun, böylece aynı güvenlik bölgesine ait olmaları gerekir.
-Bunu yapmak için şu adımları uygulayın:
+Bunu yapmak için aşağıdaki adımları izleyin:
     - **Internet Explorer** 'ı açın ve sağ üst köşedeki **Ayarlar** ' a (dişli simgesi) tıklayın
     - **Internet seçeneklerini** belirleyin
     - **Güvenlik** sekmesini seçin
@@ -65,7 +65,7 @@ Not, bu, hem oturum hem de yerel depolama olmadığından, InPrivate Gözatma so
 
 IE veya Microsoft Edge 'de açılan pencereler engellendiğinde, örneğin [çok faktörlü kimlik doğrulaması](../authentication/concept-mfa-howitworks.md)sırasında ikinci bir açılan pencere oluştuğunda oluşan durumlar vardır. Tarayıcıda, açılan pencerede bir kez veya her zaman izin vermek için bir uyarı alırsınız. İzin vermeyi seçerseniz tarayıcı açılır pencereyi otomatik olarak açar ve `null` kendisi için bir tanıtıcı döndürür. Sonuç olarak, kitaplığın pencere için bir tutamacı yoktur ve açılır pencereyi kapatmak için bir yol yoktur. Aynı sorun, otomatik olarak bir açılan pencere açmadığından açılanları izin vermenizi isterse Chrome 'da gerçekleşmez.
 
-Geçici bir **çözüm**olarak, geliştiricilerin bu sorundan kaçınmak üzere uygulamalarını kullanmaya başlamadan önce IE ve Microsoft Edge 'de açılan pencerelere izin vermesi gerekir.
+Geçici bir **çözüm** olarak, geliştiricilerin bu sorundan kaçınmak üzere uygulamalarını kullanmaya başlamadan önce IE ve Microsoft Edge 'de açılan pencerelere izin vermesi gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Internet Explorer 'da MSAL.js kullanma](msal-js-use-ie-browser.md)hakkında daha fazla bilgi edinin.

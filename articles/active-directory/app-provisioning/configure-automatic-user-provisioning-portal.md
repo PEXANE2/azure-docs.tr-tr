@@ -1,23 +1,22 @@
 ---
-title: Azure AD 'de kurumsal uygulamalar için Kullanıcı sağlama yönetimi
-description: Azure Active Directory kullanarak kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetmeyi öğrenin
+title: Azure Active Directory 'de kurumsal uygulamalar için Kullanıcı sağlama yönetimi
+description: Azure Active Directory kullanarak kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetmeyi öğrenin.
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: how-to
 ms.workload: identity
-ms.date: 02/04/2020
+ms.date: 03/18/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 02d415bd957b0490857081b996c592f90365f031
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 5dceeb11ed9a4d6af88650a6146f58db412748d9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99555624"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579425"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Azure portal kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme
 
@@ -63,9 +62,7 @@ Sağlanan kimlik bilgilerini kullanarak Azure AD 'nin uygulamanın sağlama uygu
 
 Kullanıcı hesapları sağlandığında veya güncelleştirilirken Azure AD ile hedef uygulama arasında akan Kullanıcı özniteliklerini görüntülemek ve düzenlemek için **eşlemeler** ' i genişletin.
 
-Azure AD Kullanıcı nesneleri ile her bir SaaS uygulamasının Kullanıcı nesneleri arasında önceden yapılandırılmış bir eşlemeler kümesi vardır. Bazı uygulamalar Grup nesnelerini de yönetebilir. Eşleme düzenleyicisini sağ tarafta açmak için tabloda bir eşleme seçin; burada bunları görüntüleyebilir ve özelleştirebilirsiniz.
-
-![Öznitelik eşleme ekranını gösterir](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning-mapping.png)
+Azure AD Kullanıcı nesneleri ile her bir SaaS uygulamasının Kullanıcı nesneleri arasında önceden yapılandırılmış bir eşlemeler kümesi vardır. Bazı uygulamalar Grup nesnelerini de yönetebilir. Tabloda bir eşleme seçerek eşleme düzenleyicisini açın, burada bunları görüntüleyebilir ve özelleştirebilirsiniz.
 
 Desteklenen özelleştirmeler şunlardır:
 
@@ -79,10 +76,10 @@ Desteklenen özelleştirmeler şunlardır:
 
 ### <a name="settings"></a>Ayarlar
 
-**Hazırlama** ekranının **Ayarlar** alanında SEÇILI uygulama için Azure AD sağlama hizmetini başlatabilir ve durdurabilirsiniz. Sağlama önbelleğini kaldırmayı ve hizmeti yeniden başlatmayı da tercih edebilirsiniz.
+Bildirimleri alacak bir e-posta adresi ayarlamak ve hatalarda uyarı alıp almamanız için **Ayarlar** ' ı genişletin. Ayrıca, eşitlenecek kullanıcıların kapsamını da seçebilirsiniz. Tüm kullanıcıları ve grupları ya da yalnızca atanmış olanları eşitlemeyi seçebilirsiniz.
+
+### <a name="provisioning-status"></a>Sağlama durumu 
 
 Hazırlama işlemi bir uygulama için ilk kez etkinleştiriliyorsa, **sağlama durumunu** **Açık** olarak değiştirerek hizmeti açın. Bu değişiklik, Azure AD sağlama hizmeti 'nin bir başlangıç döngüsünü çalıştırmasına neden olur. **Kullanıcılar ve gruplar** bölümünde atanan kullanıcıları okur, hedef uygulamayı kendileri için sorgular ve ardından Azure AD **eşlemeleri** bölümünde tanımlanan sağlama eylemlerini çalıştırır. Bu işlem sırasında, sağlama hizmeti, hangi kullanıcı hesaplarının yönettiği hakkında önbelleğe alınmış verileri depolar, bu nedenle atama için kapsamda olmayan hedef uygulamalar içinde yönetilmeyen hesaplar, sağlama işlemlerinden etkilenmez. İlk döngüden sonra sağlama hizmeti, Kullanıcı ve Grup nesnelerini 40 dakikalık bir aralıkta otomatik olarak eşitler.
 
 Sağlama hizmetini duraklatmak için **sağlama durumunu** **kapalı**  olarak değiştirin. Bu durumda, Azure uygulamadaki hiçbir Kullanıcı veya Grup nesnesini oluşturmaz, güncelleştirmez veya kaldırmaz. Durumu yeniden **Açık** olarak değiştirin ve hizmet kaldığınız yerden gelir.
-
-**Geçerli durumu temizle ve yeniden başlatma eşitlemesi** bir başlangıç döngüsünü tetikler. Daha sonra hizmet, kaynak sistemdeki tüm kullanıcıları yeniden değerlendirir ve sağlama kapsamında olup olmadıklarını saptacaktır. Bu, uygulamanız Şu anda karantinaya alındı veya öznitelik eşlemelerinizde bir değişiklik yapmanız gerektiğinde yararlı olabilir. İlk döngüsünün değerlendirilmesi gereken nesne sayısı nedeniyle, tipik artımlı döngüden daha uzun sürdüğüne göz önünde unutmayın. [Burada](application-provisioning-when-will-provisioning-finish-specific-user.md)ilk ve artımlı döngülerin performansı hakkında daha fazla bilgi edinebilirsiniz.

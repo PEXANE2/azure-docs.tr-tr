@@ -10,10 +10,10 @@ ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 07/27/2020
 ms.openlocfilehash: 7a4d9fb9f803a497e84fa189d9a89c2d9097bb70
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92675047"
 ---
 # <a name="create-azure-ad-guest-users-and-set-as-an-azure-ad-admin"></a>Azure AD konuk kullanıcıları oluşturma ve bir Azure AD yöneticisi olarak ayarlama
@@ -21,9 +21,9 @@ ms.locfileid: "92675047"
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 > [!NOTE]
-> Bu makale **genel önizlemede** .
+> Bu makale **genel önizlemede**.
 
-Azure Active Directory (Azure AD) Konuk kullanıcılar, mevcut Azure AD 'ye diğer Azure Active Directory 'lerden veya bunun dışından aktarılmış kullanıcılardır. Örneğin, Konuk kullanıcılar diğer Azure Active Directory 'lerden veya *\@ Outlook.com* , *\@ hotmail.com* , *\@ Live.com* veya *\@ Gmail.com* gibi hesaplardan kullanıcıları içerebilir. Bu makalede, bir Azure AD Konuk kullanıcısının nasıl oluşturulacağı ve bu kullanıcının Azure SQL mantıksal sunucusu için Azure AD yöneticisi olarak nasıl ayarlanacağı, Konuk kullanıcının Azure AD içindeki bir grubun parçası olması gerekmeden nasıl yapılacağı gösterilir.
+Azure Active Directory (Azure AD) Konuk kullanıcılar, mevcut Azure AD 'ye diğer Azure Active Directory 'lerden veya bunun dışından aktarılmış kullanıcılardır. Örneğin, Konuk kullanıcılar diğer Azure Active Directory 'lerden veya *\@ Outlook.com*, *\@ hotmail.com*, *\@ Live.com* veya *\@ Gmail.com* gibi hesaplardan kullanıcıları içerebilir. Bu makalede, bir Azure AD Konuk kullanıcısının nasıl oluşturulacağı ve bu kullanıcının Azure SQL mantıksal sunucusu için Azure AD yöneticisi olarak nasıl ayarlanacağı, Konuk kullanıcının Azure AD içindeki bir grubun parçası olması gerekmeden nasıl yapılacağı gösterilir.
 
 ## <a name="feature-description"></a>Özellik açıklaması
 
@@ -133,7 +133,7 @@ Azure AD Konuk kullanıcısını SQL mantıksal sunucusu için Azure AD yönetic
 
 ## <a name="limitations"></a>Sınırlamalar
 
-Azure portal, SQL yönetilen örneği için Azure AD yöneticisi olarak bir Azure AD Konuk kullanıcısının seçilmesine engel olan bir sınırlama vardır. *\@ Outlook.com* , *\@ hotmail.com* , *\@ Live.com* veya *\@ Gmail.com* gibi Azure AD 'niz dışındaki Konuk hesaplarında, ad yönetici Seçicisi bu hesapları gösterir, ancak gri renkte görünür ve seçilemez. Azure AD yöneticisi 'ni ayarlamak için yukarıda listelenen [PowerShell veya CLI komutlarını](#setting-a-guest-user-as-an-azure-ad-admin) kullanın. Alternatif olarak, Konuk kullanıcıyı içeren bir Azure AD grubu, SQL yönetilen örneği için Azure AD yöneticisi olarak ayarlanabilir.
+Azure portal, SQL yönetilen örneği için Azure AD yöneticisi olarak bir Azure AD Konuk kullanıcısının seçilmesine engel olan bir sınırlama vardır. *\@ Outlook.com*, *\@ hotmail.com*, *\@ Live.com* veya *\@ Gmail.com* gibi Azure AD 'niz dışındaki Konuk hesaplarında, ad yönetici Seçicisi bu hesapları gösterir, ancak gri renkte görünür ve seçilemez. Azure AD yöneticisi 'ni ayarlamak için yukarıda listelenen [PowerShell veya CLI komutlarını](#setting-a-guest-user-as-an-azure-ad-admin) kullanın. Alternatif olarak, Konuk kullanıcıyı içeren bir Azure AD grubu, SQL yönetilen örneği için Azure AD yöneticisi olarak ayarlanabilir.
 
 Bu özelliğin genel kullanıma sunulmasından önce SQL yönetilen örneği için bu işlev etkinleştirilecek.
 

@@ -10,10 +10,10 @@ ms.reviewer: klam, estfan
 ms.topic: conceptual
 ms.date: 08/18/2016
 ms.openlocfilehash: 899c64e818896cde18e955d6abd82594734c4b57
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92368171"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Azure Scheduler kavramları, terminolojisi ve varlıkları
@@ -249,14 +249,14 @@ Birincil **eylemde** olduğu gibi, hata eylemi diğer eylemler temelinde basit y
 | Özellik | Gerekli | Değer | Açıklama | 
 |----------|----------|-------|-------------| 
 | **frequency** | **recurrence** kullanıldığında evet | "Minute", "Hour", "Day", "Week", "Month", "Year" | Yinelemeler arası zaman birimi | 
-| **interval** | No | 1-1000 arası, ikisi de dahil | **frequency** nesnesine göre yinelemeler arasındaki zaman birimi sayısını belirleyen pozitif tamsayı | 
+| **aralığında** | No | 1-1000 arası, ikisi de dahil | **frequency** nesnesine göre yinelemeler arasındaki zaman birimi sayısını belirleyen pozitif tamsayı | 
 | **çizelgesini** | No | Değişir | Daha karmaşık ve gelişmiş zamanlamaların ayrıntıları. Bkz. **hours**, **minutes**, **weekDays**, **months** ve **monthDays** | 
 | **saatlerinin** | No | 1-24 arası | İşin çalıştırılacağı saati belirten dizi | 
 | **dakika** | No | 0-59 | İşin çalıştırılacağı dakikayı belirten dizi | 
 | **aylar** | No | 1-12 arası | İşin çalıştırılacağı ayı belirten dizi | 
 | **monthDays** | No | Değişir | İşin çalıştırılacağı ayın gününü belirten dizi | 
 | **weekDays** | No | "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" | İşin çalıştırılacağı haftanın gününü belirten dizi | 
-| **biriktirme** | No | <*seçim*> | Yineleme sayısı. Varsayılan değer sonsuzdur. **count** ve **endTime** nesnelerini birlikte kullanamazsınız ancak ilk tamamlanan kural uygulanır. | 
+| **count** | No | <*seçim*> | Yineleme sayısı. Varsayılan değer sonsuzdur. **count** ve **endTime** nesnelerini birlikte kullanamazsınız ancak ilk tamamlanan kural uygulanır. | 
 | **endTime** | No | <*seçim*> | Yinelemenin durdurulacağı tarih ve saat. Varsayılan değer sonsuzdur. **count** ve **endTime** nesnelerini birlikte kullanamazsınız ancak ilk tamamlanan kural uygulanır. | 
 ||||
 
@@ -308,7 +308,7 @@ Bir iş başlatıldıktan sonra Scheduler, yalnızca Scheduler tarafından denet
 * Varsa başarısız işlem sayısı
 * Varsa hatalı işlem sayısı
 
-Örneğin:
+Örnek:
 
 ```json
 "status": {

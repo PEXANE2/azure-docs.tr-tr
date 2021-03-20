@@ -8,10 +8,10 @@ ms.subservice: education-hub
 ms.topic: overview
 ms.date: 06/30/2020
 ms.openlocfilehash: cb283380487310165c646c8615d10a545d1a923b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92675700"
 ---
 # <a name="frequently-asked-questions-about-the-education-hub"></a>Eğitim Merkezi hakkında sık sorulan sorular
@@ -252,8 +252,8 @@ Hala oturum açmadıysanız, abonelik yöneticinizle görüşün. Abonelik yöne
 
 ### <a name="how-do-i-find-my-subscriber-id"></a>Nasıl yaparım? abone kimliğimi bulun mi?
 
-- **Programa ilk kez kaydolmanız durumunda** : abone kimliği numaranız aldığınız abonelik hoş geldiniz e-postadır.
-- **Aboneliğinizi yenilediyseniz** : abone kimliğiniz, abonelik yöneticisinin aldığı yenileme e-postadır.
+- **Programa ilk kez kaydolmanız durumunda**: abone kimliği numaranız aldığınız abonelik hoş geldiniz e-postadır.
+- **Aboneliğinizi yenilediyseniz**: abone kimliğiniz, abonelik yöneticisinin aldığı yenileme e-postadır.
 
 Abone KIMLIĞINIZ aynı zamanda Visual Studio abonelik Portalı ' nda de bulunur. Oturum açtıktan sonra **Hesabım** sayfasında **Aboneliğimin** altına bakın.
 
@@ -282,7 +282,7 @@ Bu anımsatıcı e-postalarını almazsanız ve aboneliğinizin süreleri dolaca
 
 Alternatif olarak, [eğitim Için Azure geliştirme araçları-Yenile sayfasına](https://portal.azureforeducation.microsoft.com/)gidin ve yenileme işlemini tamamlayın.
 
-Aboneliğinizin sona erme tarihini denetlemek için [eğitim Için Azure geliştirme araçları portalı](https://azureforeducation.microsoft.com/account/Subscriptions)' na gidin ve **abonelikler** ' e bakın.
+Aboneliğinizin sona erme tarihini denetlemek için [eğitim Için Azure geliştirme araçları portalı](https://azureforeducation.microsoft.com/account/Subscriptions)' na gidin ve **abonelikler**' e bakın.
 
 ### <a name="what-if-i-need-more-help"></a>Daha fazla yardıma ihtiyacım varsa ne olur?
 

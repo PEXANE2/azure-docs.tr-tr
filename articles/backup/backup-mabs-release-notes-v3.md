@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/03/2020
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
 ms.openlocfilehash: 87bc415c125a387d98ac88255d77fb1867564acf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91254270"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Microsoft Azure Backup sunucusu için sürüm notları
@@ -50,7 +50,7 @@ Bu makalede Microsoft Azure Backup Server (MABS) v3 için bilinen sorunlar ve ge
 
 ## <a name="upgrade-to-mabs-v3-fails-in-russian-locale"></a>Rusça yerel ayarında MABS v3 'e yükseltme başarısız oluyor
 
-**Açıklama:** MABS v2 'den MABS v3 sürümüne yükseltme, Rusça yerel ayarında **4387**hata koduyla başarısız oluyor.
+**Açıklama:** MABS v2 'den MABS v3 sürümüne yükseltme, Rusça yerel ayarında **4387** hata koduyla başarısız oluyor.
 
 **Geçici çözüm:** Rusça Install paketini kullanarak MABS v3 'e yükseltmek için aşağıdaki adımları uygulayın:
 
@@ -89,7 +89,7 @@ Bu makalede Microsoft Azure Backup Server (MABS) v3 için bilinen sorunlar ve ge
 
     ![Bireysel rapor dosyalarının listesi](./media/backup-mabs-release-notes-v3/individual-report-files.png)
 
-1. **Raporla**bitmeyen rapor dosyalarını seçin, **seçeneğine** sağ tıklayıp **Yönet**' i seçin.
+1. **Raporla** bitmeyen rapor dosyalarını seçin, **seçeneğine** sağ tıklayıp **Yönet**' i seçin.
 
     ![Rapor dosyaları için Yönet ' i seçin](./media/backup-mabs-release-notes-v3/manage-files.png)
 
