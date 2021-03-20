@@ -14,10 +14,10 @@ ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c346877d29c5fef03b45c895cbf8d462f90d0979
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92369140"
 ---
 # <a name="edit-your-group-information-using-azure-active-directory"></a>Azure Active Directory kullanarak Grup bilgilerinizi düzenleme
@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) kullanarak, adını, açıklamasını veya üy
 
     ![Tüm gruplar sayfası, arama kutusunda arama metniyle](media/active-directory-groups-settings-azure-portal/search-for-specific-group.png)
 
-4. **MDM ilkesi-Batı**grubunu seçin ve ardından **Yönet** alanından **Özellikler** ' i seçin.
+4. **MDM ilkesi-Batı** grubunu seçin ve ardından **Yönet** alanından **Özellikler** ' i seçin.
 
     ![Gruba genel bakış sayfası, üye seçeneği ve bilgiler vurgulandı](media/active-directory-groups-settings-azure-portal/group-overview-blade.png)
 
@@ -49,7 +49,7 @@ Azure Active Directory (Azure AD) kullanarak, adını, açıklamasını veya üy
     
     - **Grup açıklaması.** Mevcut Grup açıklamasını düzenleyin.
 
-    - **Grup türü.** Oluşturulduktan sonra grup türünü değiştiremezsiniz. **Grup türünü**değiştirmek için, grubu silip yeni bir tane oluşturmanız gerekir.
+    - **Grup türü.** Oluşturulduktan sonra grup türünü değiştiremezsiniz. **Grup türünü** değiştirmek için, grubu silip yeni bir tane oluşturmanız gerekir.
     
     - **Üyelik türü.** Üyelik türünü değiştirin. Kullanılabilir çeşitli üyelik türleri hakkında daha fazla bilgi için bkz. [nasıl yapılır: temel Grup oluşturma ve Azure Active Directory portalını kullanarak üye ekleme](active-directory-groups-create-azure-portal.md).
     

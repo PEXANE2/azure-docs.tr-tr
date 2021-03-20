@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 12/04/2020
+ms.date: 03/09/2021
 ms.author: aahi
-ms.openlocfilehash: 6ea7b992a682537471ce0e78385b37674199d687
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: e9d8e7b514dca7d4930ad33bf08d4ceb07fb860d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673062"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599139"
 ---
 # <a name="how-to-sentiment-analysis-and-opinion-mining"></a>Nasıl yapılır: yaklaşım Analizi ve Görüşleme madenciliği
 
-Metin Analizi API'si Yaklaşım Analizi özelliği pozitif ve olumsuz yaklaşımı tespit etmek için iki yol sağlar. Bir Yaklaşım Analizi isteği gönderirseniz, API, tümce ve belge düzeyindeki yaklaşım etiketlerini ("negatif", "nötr" ve "pozitif") ve güvenirlik puanlarını döndürür. Ayrıca, metinde (ürünlerin veya hizmetlerin öznitelikleri gibi) konuyla ilgili ayrıntılı bilgiler sağlayan Yaklaşım Analizi uç noktası kullanarak bir istek araştırma isteği gönderebilirsiniz. 
+Metin Analizi API'si Yaklaşım Analizi özelliği pozitif ve olumsuz yaklaşımı tespit etmek için iki yol sağlar. Bir Yaklaşım Analizi isteği gönderirseniz, API, tümce ve belge düzeyindeki yaklaşım etiketlerini ("negatif", "nötr" ve "pozitif") ve güvenirlik puanlarını döndürür. Ayrıca, kelimeyle ilgili (ürünlerin veya hizmetlerin öznitelikleri gibi) sözcüklerle ilgili ayrıntılı bilgiler sağlayan Yaklaşım Analizi uç noktası kullanarak da bilgi araştırma istekleri gönderebilirsiniz. 
 
 API tarafından kullanılan AI modelleri hizmet tarafından sağlanır, yalnızca analiz için içerik göndermeniz gerekir.
 
@@ -49,9 +49,9 @@ Güvenirlik puanları 1 ile 0 arasındadır. 1 ' e yakın puan, etiketin sınıf
 
 ## <a name="opinion-mining"></a>Görüşün madenciliği
 
-Fikrinizi araştırma, 3,1 sürümünün önizlemeden başlayarak Yaklaşım Analizi özelliğidir. Doğal dil Işlemede (NLP) en boy tabanlı Yaklaşım Analizi olarak da bilinen bu özellik, metinle ilgili, özelliklerle (ürünlerin veya hizmetlerin öznitelikleri gibi) ilgili daha ayrıntılı bilgiler sağlar.
+Fikrinizi araştırma, 3,1 sürümünün önizlemeden başlayarak Yaklaşım Analizi özelliğidir. Doğal dil Işlemede (NLP) en boy tabanlı Yaklaşım Analizi olarak da bilinen bu özellik, metin içindeki ürünlerin veya hizmetlerin öznitelikleriyle ilgili daha ayrıntılı bilgiler sağlar. API yüzeyleri, bir hedef (ad veya fiil) ve bir değerlendirme (sıfatı) olarak opklarca.
 
-Örneğin, bir müşteri bir otel hakkında "Oda harika, ancak personelin kullanımı çok iyiydi" gibi bir otel hakkında geri bildirim bırakırsa, görüşmelerin araştırma metni ve bunlarla ilişkili ek ve yaklaşım gibi konuları bulur. Yaklaşım Analizi yalnızca negatif bir yaklaşım rapor edebilir.
+Örneğin, bir müşteri bir otel hakkında "Oda harika, ancak personelin kullanımı çok iyiydi" gibi bir otel hakkında geri bildirim bırakırsa, bu görüşmelerin, metindeki hedefleri (yönleri) ve bunlarla ilişkili değerlendirmeleri (oplarons) ve duygularını bulmaları gerekir. Yaklaşım Analizi yalnızca negatif bir yaklaşım rapor edebilir.
 
 :::image type="content" source="../media/how-tos/opinion-mining.png" alt-text="Fikrinizi araştırma örneği diyagramı" lightbox="../media/how-tos/opinion-mining.png":::
 
@@ -72,7 +72,7 @@ Belge boyutunun belge başına 5.120 karakter altında olması gerekir. Bir kole
 
 Bir POST isteği oluşturun. Hızlı bir şekilde yapısına ve gönderebilmeniz için aşağıdaki başvuru bağlantılarında [Postman](text-analytics-how-to-call-api.md) veya **API test konsolunu** kullanabilirsiniz. 
 
-#### <a name="version-31-preview3"></a>[Sürüm 3,1-Önizleme. 3](#tab/version-3-1)
+#### <a name="version-31-preview"></a>[Sürüm 3,1-Önizleme](#tab/version-3-1)
 
 [Yaklaşım Analizi v 3.1 başvurusu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Sentiment)
 
@@ -89,17 +89,17 @@ Azure 'da bir Metin Analizi kaynağı veya bir örneklenmiş [metin analizi kaps
 > [!NOTE]
 > Metin Analizi kaynağınız için anahtarınızı ve uç noktanızı Azure portal bulabilirsiniz. Kaynak **yönetimi** altında kaynağın **hızlı başlangıç** sayfasında yer alır. 
 
-#### <a name="version-31-preview3"></a>[Sürüm 3,1-Önizleme. 3](#tab/version-3-1)
+#### <a name="version-31-preview"></a>[Sürüm 3,1-Önizleme](#tab/version-3-1)
 
 **Yaklaşım Analizi**
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/sentiment`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/sentiment`
 
 **Görüşün madenciliği**
 
 Fikrinizi araştırma sonuçları almak için parametresini eklemeniz gerekir `opinionMining=true` . Örnek:
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/sentiment?opinionMining=true`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/sentiment?opinionMining=true`
 
 Bu parametre `false` Varsayılan olarak olarak ayarlanır. 
 
@@ -142,7 +142,7 @@ Metin Analizi API'si durum bilgisiz. Hesabınızda hiç veri depolanmaz ve sonu�
 
 Hemen çıktı döndürülür. Sonuçları JSON kabul eden bir uygulamaya veya çıktıyı yerel sistemdeki bir dosyaya kaydedebilirsiniz. Sonra çıktıyı, verileri sıralamak, aramak ve işlemek için kullanabileceğiniz bir uygulamaya içeri aktarın. Çok dilli ve Emoji desteği nedeniyle, yanıt metin uzaklıkları içerebilir. Daha fazla bilgi için bkz. [uzaklıkları işleme](../concepts/text-offsets.md) .
 
-#### <a name="version-31-preview3"></a>[Sürüm 3,1-Önizleme. 3](#tab/version-3-1)
+#### <a name="version-31-preview"></a>[Sürüm 3,1-Önizleme](#tab/version-3-1)
 
 ### <a name="sentiment-analysis-and-opinion-mining-example-response"></a>Yaklaşım Analizi ve görüşün Inceleme örneği yanıtı
 
@@ -151,97 +151,99 @@ Hemen çıktı döndürülür. Sonuçları JSON kabul eden bir uygulamaya veya �
 
 Yaklaşım Analizi v 3.1, hem Yaklaşım Analizi hem de görüşün madenciliği için yanıt nesneleri döndürebilir.
   
-Yaklaşım analizi, tüm belge ve içindeki her cümle için bir yaklaşım etiketi ve Güvenirlik puanı döndürür. 1 ' e yakın puan, etiketin sınıflandırmasında daha yüksek bir güven gösterir, ancak daha düşük puanlar daha düşük güvenilirliğe işaret ediyor. Bir belgede birden fazla tümce olabilir ve her belge veya tümce içindeki güven puanları 1 ' e kadar eklenebilir.
+Yaklaşım analizi, tüm belge ve içindeki her cümle için bir yaklaşım etiketi ve Güvenirlik puanı döndürür. 1 ' e yakın puan, etiketin sınıflandırmasında daha yüksek bir güven gösterir, ancak daha düşük puanlar daha düşük güvenilirliğe işaret ediyor. Bir belgede birden fazla tümce olabilir ve her belge veya tümce içindeki güven puanları 1 ' e kadar eklenebilir. değerlendirme 
 
-Görüşmelerin madenciliği, metin ve bunlarla ilişkili ek ve yaklaşım konularını bulur. Aşağıdaki yanıtta, *restorana tümce harika yiyecek içeriyordu ve garson kullanımı kolay* iki yöne sahiptir: *yiyecek* ve *garson*. Her bir en boy `relations` özelliği, `ref` ilişkili `documents` , `sentences` ve nesnelerine URI başvurusu olan bir değer içerir `opinions` .
+Fikrinizi Inceleme, metinde hedefleri (isimler veya fiiller) ve bunlarla ilişkili değerlendirmeyi (sıfatıcı) bulur. Aşağıdaki yanıtta, *restorana tümce harika yiyecek içeriyordu ve garson kullanımı kolay* iki hedefe sahiptir: *yiyecek* ve *garson*. Her bir hedefin `relations` özelliği, `ref` ilişkili `documents` , ve nesnelerine URI başvurusu olan bir değer içerir `sentences` `assessments` .
+
+API, bir hedef (ad veya fiil) ve bir değerlendirme (sıfatıcı) olarak opın 'leri döndürür.
 
 ```json
 {
-    "documents": [
+  "documents": [
+    {
+      "id": "1",
+      "sentiment": "positive",
+      "confidenceScores": {
+        "positive": 1,
+        "neutral": 0,
+        "negative": 0
+      },
+      "sentences": [
         {
-            "id": "1",
-            "sentiment": "positive",
-            "confidenceScores": {
-                "positive": 1.0,
-                "neutral": 0.0,
-                "negative": 0.0
-            },
-            "sentences": [
+          "sentiment": "positive",
+          "confidenceScores": {
+            "positive": 1,
+            "neutral": 0,
+            "negative": 0
+          },
+          "offset": 0,
+          "length": 58,
+          "text": "The restaurant had great food and our waiter was friendly.",
+          "targets": [
+            {
+              "sentiment": "positive",
+              "confidenceScores": {
+                "positive": 1,
+                "negative": 0
+              },
+              "offset": 25,
+              "length": 4,
+              "text": "food",
+              "relations": [
                 {
-                    "sentiment": "positive",
-                    "confidenceScores": {
-                        "positive": 1.0,
-                        "neutral": 0.0,
-                        "negative": 0.0
-                    },
-                    "offset": 0,
-                    "length": 58,
-                    "text": "The restaurant had great food and our waiter was friendly.",
-                    "aspects": [
-                        {
-                            "sentiment": "positive",
-                            "confidenceScores": {
-                                "positive": 1.0,
-                                "negative": 0.0
-                            },
-                            "offset": 25,
-                            "length": 4,
-                            "text": "food",
-                            "relations": [
-                                {
-                                    "relationType": "opinion",
-                                    "ref": "#/documents/0/sentences/0/opinions/0"
-                                }
-                            ]
-                        },
-                        {
-                            "sentiment": "positive",
-                            "confidenceScores": {
-                                "positive": 1.0,
-                                "negative": 0.0
-                            },
-                            "offset": 38,
-                            "length": 6,
-                            "text": "waiter",
-                            "relations": [
-                                {
-                                    "relationType": "opinion",
-                                    "ref": "#/documents/0/sentences/0/opinions/1"
-                                }
-                            ]
-                        }
-                    ],
-                    "opinions": [
-                        {
-                            "sentiment": "positive",
-                            "confidenceScores": {
-                                "positive": 1.0,
-                                "negative": 0.0
-                            },
-                            "offset": 19,
-                            "length": 5,
-                            "text": "great",
-                            "isNegated": false
-                        },
-                        {
-                            "sentiment": "positive",
-                            "confidenceScores": {
-                                "positive": 1.0,
-                                "negative": 0.0
-                            },
-                            "offset": 49,
-                            "length": 8,
-                            "text": "friendly",
-                            "isNegated": false
-                        }
-                    ]
+                  "relationType": "assessment",
+                  "ref": "#/documents/0/sentences/0/assessments/0"
                 }
-            ],
-            "warnings": []
+              ]
+            },
+            {
+              "sentiment": "positive",
+              "confidenceScores": {
+                "positive": 1,
+                "negative": 0
+              },
+              "offset": 38,
+              "length": 6,
+              "text": "waiter",
+              "relations": [
+                {
+                  "relationType": "assessment",
+                  "ref": "#/documents/0/sentences/0/assessments/1"
+                }
+              ]
+            }
+          ],
+          "assessments": [
+            {
+              "sentiment": "positive",
+              "confidenceScores": {
+                "positive": 1,
+                "negative": 0
+              },
+              "offset": 19,
+              "length": 5,
+              "text": "great",
+              "isNegated": false
+            },
+            {
+              "sentiment": "positive",
+              "confidenceScores": {
+                "positive": 1,
+                "negative": 0
+              },
+              "offset": 49,
+              "length": 8,
+              "text": "friendly",
+              "isNegated": false
+            }
+          ]
         }
-    ],
-    "errors": [],
-    "modelVersion": "2020-04-01"
+      ],
+      "warnings": []
+    }
+  ],
+  "errors": [],
+  "modelVersion": "2020-04-01"
 }
 ```
 

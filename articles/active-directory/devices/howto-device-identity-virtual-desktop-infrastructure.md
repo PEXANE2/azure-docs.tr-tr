@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c30ad26f079e6353dc4763b9ae968c33882d8ab6
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96029356"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Cihaz kimliği ve Masaüstü Sanallaştırması
@@ -69,7 +69,7 @@ VDı ortamınız için Azure AD 'de cihaz kimliklerini yapılandırmadan önce, 
 
 <sup>5</sup> **Windows için kalıcılık olmayan destek** , aşağıda belgelenen kılavuz bölümünde daha fazla dikkat gerektirir. Bu senaryo için Windows 10 1803, Windows Server 2019 veya Windows Server (yarı yıllık kanal) başlangıç sürümü 1803 gerekir
 
-<sup>6</sup> **Windows alt düzey için kalıcı olmayan 6 desteği** , kılavuz bölümünde aşağıda belgelenen şekilde daha fazla dikkat gerektirir.
+<sup></sup> **Windows alt düzey için kalıcı olmayan 6 desteği** , kılavuz bölümünde aşağıda belgelenen şekilde daha fazla dikkat gerektirir.
 
 
 ## <a name="microsofts-guidance"></a>Microsoft 'un Kılavuzu

@@ -4,10 +4,10 @@ description: Bir depolama hesabındaki dosya paylaşımları için geçici silme
 ms.topic: sample
 ms.date: 02/02/2020
 ms.openlocfilehash: 172a7bd19ffd07ca7900a457c447362343e5f185
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84122799"
 ---
 # <a name="disable-soft-delete-for-file-shares-in-a-storage-account"></a>Depolama hesabındaki dosya paylaşımları için geçici silmeyi devre dışı bırak
@@ -52,7 +52,7 @@ Bu belgede, bir depolama hesabındaki dosya paylaşımları için geçici silme 
 
 3. Depolama hesabı Azure Resource Manager (ARM) KIMLIĞINIZI kullanışlı tutun. Örnek: `/subscriptions/37aa2d43-d4f5-4322-bae0-6ee11c627f50/resourceGroups/afsshare/providers/Microsoft.Storage/storageAccounts/inquirytest`
 
-4. **Armclient oturumunu**çalıştırarak kimlik bilgilerinizi kullanarak oturum açın.
+4. **Armclient oturumunu** çalıştırarak kimlik bilgilerinizi kullanarak oturum açın.
 
 5. Depolama hesabındaki dosya paylaşımlarının geçerli geçici silme özelliklerini alın.
 

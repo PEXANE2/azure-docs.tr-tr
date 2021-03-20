@@ -9,10 +9,10 @@ ms.date: 07/27/2020
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 6cc0855d3a4540de780a566a4613b4dbc647cfc5
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92369497"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Windows Server 2008 çalıştıran sunucuları Azure'a geçirme
@@ -43,7 +43,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 ### <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 
 
-|İşletim Sistemi  | Ortam  |
+|Operating System  | Ortam  |
 |---------|---------|
 |Windows Server 2008 SP2 - 32 bit ve 64 bit (IA-32 ve x86-64)</br>- Standard</br>- Enterprise</br>- Datacenter   |     VMware VM'leri, Hyper-V VM'leri ve Fiziksel Sunucular    |
 |Windows Server 2008 R2 SP1 - 64 bit</br>- Standard</br>- Enterprise</br>- Datacenter     |     VMware VM'leri, Hyper-V VM'leri ve Fiziksel Sunucular|
@@ -53,7 +53,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > - Geçiş öncesinde en son hizmet paketini ve Windows güncelleştirmelerini yüklediğinizden emin olun.
 
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, [VMware ve fiziksel sunucu geçişi](vmware-azure-architecture.md) veya [Hyper-V sanal makine geçişi](hyper-v-azure-architecture.md) Azure Site Recovery mimarisini gözden geçirmeniz yararlı olabilir. 
 
@@ -99,8 +99,8 @@ Azure aboneliğini ve şirket içi VMware/Fiziksel ortamı hazırlamak için aş
 
 ### <a name="create-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasası oluşturma
 
-1. [Azure Portal](https://portal.azure.com)  >  **Kurtarma hizmetlerinde**oturum açın.
-2. **Kaynak**  >  **yönetimi araçları**  >  **yedeklemesi ve Site Recovery**oluştur ' a tıklayın.
+1. [Azure Portal](https://portal.azure.com)  >  **Kurtarma hizmetlerinde** oturum açın.
+2. **Kaynak**  >  **yönetimi araçları**  >  **yedeklemesi ve Site Recovery** oluştur ' a tıklayın.
 3. **Ad** bölümünde **W2K8-migration** kolay adını belirtin. Birden fazla aboneliğiniz varsa uygun olanı seçin.
 4. **w2k8migrate** adlı bir kaynak grubu oluşturun.
 5. Bir Azure bölgesi belirtin. Desteklenen bölgeleri kontrol etmek için [Azure Site Recovery Fiyatlandırma Ayrıntıları](https://azure.microsoft.com/pricing/details/site-recovery/) bölümündeki coğrafi kullanılabilirlik kısmına bakın.
@@ -120,7 +120,7 @@ Yeni kasa, **Pano**’da **Tüm kaynaklar** bölümüne ve ana **Kurtarma Hizmet
 
 Hedef kaynaklarını seçin ve doğrulayın.
 
-1. **Altyapı hedefini hazırla**' ya tıklayın  >  **Target**ve kullanmak istediğiniz Azure aboneliğini seçin.
+1. **Altyapı hedefini hazırla**' ya tıklayın  >  ve kullanmak istediğiniz Azure aboneliğini seçin.
 2. Kaynak Yöneticisi dağıtım modelini belirtin.
 3. Site Recovery, bir veya birden çok uyumlu Azure depolama hesabınızın ve ağınızın olup olmadığını denetler.
 

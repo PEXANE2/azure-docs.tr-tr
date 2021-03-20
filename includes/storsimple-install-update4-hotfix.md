@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: cc42c22579346c272ee5a6f41147e6b5b09643ba
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95553371"
 ---
 #### <a name="to-download-hotfixes"></a>Düzeltmeleri indirmek için
@@ -26,13 +26,13 @@ Microsoft Update Kataloğu'ndan yazılım güncelleştirmesi indirmek için aşa
    
     ![Katalogda arama](./media/storsimple-install-update2-hotfix/HCS_SearchCatalog1-include.png)
 
-4. **İndir**'e tıklayın. İndirilen öğelerin görünmesini istediğiniz yerel konumu belirtin veya **Gözat** seçeneğiyle konumu bulun. Belirtilen konuma ve klasöre indirmek için dosyalara tıklayın. Klasör, cihazdan erişilebilen bir ağ paylaşımına da kopyalanabilir.
+4. **İndir**’e tıklayın. İndirilen öğelerin görünmesini istediğiniz yerel konumu belirtin veya **Gözat** seçeneğiyle konumu bulun. Belirtilen konuma ve klasöre indirmek için dosyalara tıklayın. Klasör, cihazdan erişilebilen bir ağ paylaşımına da kopyalanabilir.
 5. Yukarıdaki tabloda listelenen ek düzeltmeleri arayın (**4011841**) ve ilgili dosyaları önceki tabloda listelendiği gibi belirli klasörlere indirin.
 
 > [!NOTE]
 > Her iki denetleyiciden de, eş denetleyicisinden gelen olası hata iletilerini algılamak için bu düzeltmelere erişilebilir olmalıdır.
 >
-> Düzeltmeler 3 ayrı klasöre kopyalanmalıdır. Örneğin, cihaz yazılımı/CIS/MDS Aracısı güncelleştirmesi _Firstorderupdate_ klasöründe kopyalanabilir, tüm kesintiye uğramayan güncelleştirmeler, ikinciorderupdate klasöründe kopyalanabilir ve _üçüncü_ olarak da iki _SecondOrderUpdate_ sunucudan kopyalanmış olan bakım modu güncelleştirmelerinde yer alabilir.
+> Düzeltmeler 3 ayrı klasöre kopyalanmalıdır. Örneğin, cihaz yazılımı/CIS/MDS Aracısı güncelleştirmesi _Firstorderupdate_ klasöründe kopyalanabilir, tüm kesintiye uğramayan güncelleştirmeler, ikinciorderupdate klasöründe kopyalanabilir ve _üçüncü_ olarak da iki  sunucudan kopyalanmış olan bakım modu güncelleştirmelerinde yer alabilir.
 
 #### <a name="to-install-and-verify-regular-mode-hotfixes"></a>Normal mod düzeltmelerini yüklemek ve doğrulamak için
 

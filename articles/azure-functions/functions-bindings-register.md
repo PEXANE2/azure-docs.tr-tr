@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 08/16/2020
 ms.author: cshoe
 ms.openlocfilehash: 942ca3229808b57894598c3477e9dc97e40e8c80
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88689584"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Azure Işlevleri bağlama uzantılarını kaydetme
@@ -22,7 +22,7 @@ Aşağıdaki tablo, bağlamaları ne zaman ve nasıl kaydedeceğinizi gösterir.
 
 | Geliştirme ortamı |Kayıt<br/> 1. x Işlevleri içinde  |Kayıt<br/> 3. x/2. x Işlevleri içinde  |
 |-------------------------|------------------------------------|------------------------------------|
-|Azure portal|Automatic|Otomatik<sup>*</sup>|
+|Azure portalı|Automatic|Otomatik<sup>*</sup>|
 |Non-.NET dilleri|Automatic|[Uzantı paketleri](#extension-bundles) kullan (önerilir) veya [uzantıları açıkça yükler](#explicitly-install-extensions)|
 |Visual Studio kullanarak C# sınıf kitaplığı|[NuGet araçlarını kullanma](#vs)|[NuGet araçlarını kullanma](#vs)|
 |Visual Studio Code kullanarak C# sınıf kitaplığı|Yok|[.NET Core CLI kullan](#vs-code)|
@@ -41,7 +41,7 @@ Uzantı paketlerini, sürüm 2. x ve sonraki sürümler çalışma zamanının s
 
 Uzantı paketleri sürümlüdür. Her sürüm birlikte çalışmak üzere doğrulanan belirli bir bağlama uzantıları kümesi içerir. Uygulamanızda ihtiyaç duyduğunuz uzantılara göre bir paket sürümü seçin.
 
-İşlev uygulamanıza Uzantı paketi eklemek için `extensionBundle` *host.js*bölümüne ekleyin. Çoğu durumda, Visual Studio Code ve Azure Functions Core Tools sizin için otomatik olarak ekler.
+İşlev uygulamanıza Uzantı paketi eklemek için `extensionBundle` *host.js* bölümüne ekleyin. Çoğu durumda, Visual Studio Code ve Azure Functions Core Tools sizin için otomatik olarak ekler.
 
 [!INCLUDE [functions-extension-bundles-json](../../includes/functions-extension-bundles-json.md)]
 

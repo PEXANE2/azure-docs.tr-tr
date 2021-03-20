@@ -16,10 +16,10 @@ ms.date: 01/23/2017
 ms.author: mazha
 ms.custom: has-adal-ref, devx-track-csharp
 ms.openlocfilehash: a812704c42a4da5ddf89fe6c5ba0c9a684047f75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88919497"
 ---
 # <a name="get-started-with-the-azure-cdn-library-for-net"></a>.NET için Azure CDN Kitaplığı ile çalışmaya başlama
@@ -55,14 +55,14 @@ Projemiz, NuGet paketlerinde bulunan bazı Azure kitaplıklarını kullanacak.  
 2. Paket Yöneticisi konsolunda, **Active Directory Authentication Library (ADAL)** yüklemek için aşağıdaki komutu yürütün:
 
     `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory`
-3. **Azure CDN yönetim kitaplığını**yüklemek için aşağıdakileri yürütün:
+3. **Azure CDN yönetim kitaplığını** yüklemek için aşağıdakileri yürütün:
 
     `Install-Package Microsoft.Azure.Management.Cdn`
 
 ## <a name="directives-constants-main-method-and-helper-methods"></a>Yönergeler, sabitler, Main yöntemi ve yardımcı yöntemleri
 Şimdi yazılan programımızın temel yapısını inceleyelim.
 
-1. Program.cs sekmesine döndüğünüzde, `using` üstteki yönergeleri aşağıdaki şekilde değiştirin:
+1. Program. cs sekmesine geri döndüğünüzde, `using` üstteki yönergeleri aşağıdaki şekilde değiştirin:
 
     ```csharp
     using System;
@@ -74,7 +74,7 @@ Projemiz, NuGet paketlerinde bulunan bazı Azure kitaplıklarını kullanacak.  
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     using Microsoft.Rest;
     ```
-2. Yöntemlerimizin kullanacağı bazı sabitleri tanımlamanız gerekiyor.  `Program`Sınıfında, ancak `Main` yönteminden önce aşağıdakileri ekleyin.  ** &lt; Açılı ayraçlar &gt; **dahil olmak üzere yer tutucuları, gerektiğinde kendi değerlerinizle değiştirdiğinizden emin olun.
+2. Yöntemlerimizin kullanacağı bazı sabitleri tanımlamanız gerekiyor.  `Program`Sınıfında, ancak `Main` yönteminden önce aşağıdakileri ekleyin.  **&lt; Açılı ayraçlar &gt;** dahil olmak üzere yer tutucuları, gerektiğinde kendi değerlerinizle değiştirdiğinizden emin olun.
 
     ```csharp
     //Tenant app constants
@@ -292,7 +292,7 @@ private static void PromptPurgeCdnEndpoint(CdnManagementClient cdn)
 ```
 
 > [!NOTE]
-> Yukarıdaki örnekte dize, `/*` uç nokta yolunun kökündeki her şeyi temizlemek istediğimizi gösterir.  Bu, tüm Azure portal "Temizleme" iletişim kutusunda **Temizleme** işlemi denetimi ile eşdeğerdir. Yönteminde, `CreateCdnProfile` Verizon profilinden kodu kullanarak profilimizi bir **Azure CDN** olarak oluşturdum `Sku = new Sku(SkuName.StandardVerizon)` , bu nedenle bu işlem başarılı olur.  Ancak, **Akamai profillerden Azure CDN** **Tümünü temizlemeyi**desteklemez, bu nedenle, bu öğretici için bir Akamai profili kullanırsam, temizlemek için belirli yollar eklemesi gerekir.
+> Yukarıdaki örnekte dize, `/*` uç nokta yolunun kökündeki her şeyi temizlemek istediğimizi gösterir.  Bu, tüm Azure portal "Temizleme" iletişim kutusunda **Temizleme** işlemi denetimi ile eşdeğerdir. Yönteminde, `CreateCdnProfile` Verizon profilinden kodu kullanarak profilimizi bir **Azure CDN** olarak oluşturdum `Sku = new Sku(SkuName.StandardVerizon)` , bu nedenle bu işlem başarılı olur.  Ancak, **Akamai profillerden Azure CDN** **Tümünü temizlemeyi** desteklemez, bu nedenle, bu öğretici için bir Akamai profili kullanırsam, temizlemek için belirli yollar eklemesi gerekir.
 >
 >
 

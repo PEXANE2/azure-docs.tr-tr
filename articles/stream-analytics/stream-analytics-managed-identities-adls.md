@@ -5,16 +5,16 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 04/08/2019
+ms.date: 03/16/2021
 ms.custom: seodec18
-ms.openlocfilehash: d7e9b1ecef9cfda804b89f0ba1beeb54d7d48b98
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: d5b406d260b1c6518d9227c51d84ab7eb3754329
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020358"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598159"
 ---
-# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities-preview"></a>Yönetilen kimlikler kullanarak Azure Data Lake Storage 1. Stream Analytics kimlik doğrulama (Önizleme)
+# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>Yönetilen kimlikleri kullanarak Azure Data Lake Storage 1. Stream Analytics kimlik doğrulama
 
 Azure Stream Analytics, Azure Data Lake Storage (ADLS) Gen1 çıkışıyla yönetilen kimlik kimlik doğrulamasını destekler. Kimlik, belirli bir Stream Analytics işini temsil eden Azure Active Directory kayıtlı yönetilen bir uygulamadır ve hedeflenen bir kaynağın kimliğini doğrulamak için kullanılabilir. Yönetilen kimlikler, her 90 günde bir oluşan parola değişiklikleri veya kullanıcı belirteci süre sonu nedeniyle yeniden kimlik doğrulaması yapılması gibi kullanıcı tabanlı kimlik doğrulama yöntemlerinin sınırlamalarını ortadan kaldırır. Ayrıca, Yönetilen kimlikler Azure Data Lake Storage 1. çıkış yapan Stream Analytics iş dağıtımlarının otomatikleştirilmesine yardımcı olur.
 
@@ -22,7 +22,7 @@ Bu makalede, Visual Studio için Azure portal, Azure Resource Manager şablon da
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="azure-portal"></a>Azure portal
+## <a name="azure-portal"></a>Azure portalı
 
 1. Yeni bir Stream Analytics işi oluşturarak veya mevcut bir işi Azure portal açarak başlatın. Ekranın sol tarafındaki menü çubuğundan **Yapılandır**' ın altında bulunan **yönetilen kimlik** ' i seçin.
 
@@ -36,7 +36,7 @@ Bu makalede, Visual Studio için Azure portal, Azure Resource Manager şablon da
  
    Hizmet sorumlusu Stream Analytics işle aynı ada sahiptir. Örneğin, işinizin adı **MyASAJob** ise oluşturulan hizmet sorumlusu adı da **MyASAJob** olur.
 
-3. ADLS 1. çıkış havuzunun çıkış özellikleri penceresinde, kimlik doğrulama modu açılan listesine tıklayın ve * * yönetilen kimlik * * öğesini seçin.
+3. ADLS 1. çıkış havuzunun çıkış özellikleri penceresinde, kimlik doğrulama modu açılan listesine tıklayın ve **yönetilen kimlik**' i seçin.
 
 4. Kalan özellikleri doldurun. Bir ADLS çıkışı oluşturma hakkında daha fazla bilgi edinmek için bkz. [Stream Analytics Ile Data Lake Store çıkışı oluşturma](../data-lake-store/data-lake-store-stream-analytics.md). İşiniz bittiğinde **Kaydet**’e tıklayın.
 
@@ -70,7 +70,7 @@ Bu makalede, Visual Studio için Azure portal, Azure Resource Manager şablon da
 
    ![Stream Analytics iş yapılandırması tarafından yönetilen kimlikler](./media/stream-analytics-managed-identities-adls/adls-mi-jobconfig-vs.png)
 
-2. ADLS 1. çıkış havuzunun çıkış özellikleri penceresinde, kimlik doğrulama modu açılan listesine tıklayın ve * * yönetilen kimlik * * öğesini seçin.
+2. ADLS 1. çıkış havuzunun çıkış özellikleri penceresinde, kimlik doğrulama modu açılan listesine tıklayın ve **yönetilen kimlik**' i seçin.
 
    ![ADLS çıkış Yönetilen kimlikler](./media/stream-analytics-managed-identities-adls/adls-mi-output-vs.png)
 

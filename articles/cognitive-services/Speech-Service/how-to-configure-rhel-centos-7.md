@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/02/2020
 ms.author: pankopon
 ms.openlocfilehash: ba531164e024f96d3bdd23912f3f6e90275edda4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83589746"
 ---
 # <a name="configure-rhelcentos-7-for-speech-sdk"></a>Konuşma SDK 'Sı için RHEL/CentOS 7 yapılandırma
@@ -65,10 +65,10 @@ CXXABI_1.3.7
 ...
 ```
 
-Konuşma SDK 'Sı **CXXABI_1.3.9** ve **GLIBCXX_3.4.21**gerektirir. Bu bilgileri `ldd libMicrosoft.CognitiveServices.Speech.core.so` Linux paketindeki konuşma SDK kitaplıkları üzerinde çalıştırarak bulabilirsiniz.
+Konuşma SDK 'Sı **CXXABI_1.3.9** ve **GLIBCXX_3.4.21** gerektirir. Bu bilgileri `ldd libMicrosoft.CognitiveServices.Speech.core.so` Linux paketindeki konuşma SDK kitaplıkları üzerinde çalıştırarak bulabilirsiniz.
 
 > [!NOTE]
-> Sistemde yüklü GCC sürümünün, eşleşen çalışma zamanı kitaplıklarıyla en az **5.4.0**olması önerilir.
+> Sistemde yüklü GCC sürümünün, eşleşen çalışma zamanı kitaplıklarıyla en az **5.4.0** olması önerilir.
 
 ## <a name="example"></a>Örnek
 

@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 9ad6f89392846564631b70f0acfb5658a050be80
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88922829"
 ---
 # <a name="odata-searchin-function-in-azure-cognitive-search"></a>`search.in`Azure bilişsel arama 'de OData işlevi
@@ -46,7 +46,7 @@ Ancak, işlevini kullanarak bunu yazmanın daha kısa bir yolu vardır `search.i
 > [!NOTE]
 > OData standardının 4,01 sürümü yakın zamanda, Azure Bilişsel Arama işlevi gibi benzer davranışa sahip olan [ `in` işlecini](https://docs.oasis-open.org/odata/odata/v4.01/cs01/part2-url-conventions/odata-v4.01-cs01-part2-url-conventions.html#_Toc505773230)kullanıma sunmuştur `search.in` . Ancak, Azure Bilişsel Arama bu işleci desteklemez, bu nedenle `search.in` bunun yerine işlevini kullanmanız gerekir.
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 Aşağıdaki EBNF ([genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) işlevin dilbilgisini tanımlar `search.in` :
 
@@ -74,7 +74,7 @@ Etkileşimli bir sözdizimi diyagramı da kullanılabilir:
 
 Parametreler aşağıdaki tabloda tanımlanmıştır:
 
-| Parametre adı | Tür | Açıklama |
+| Parametre adı | Tür | Description |
 | --- | --- | --- |
 | `variable` | `Edm.String` | Bir dize alanı başvurusu (veya bir veya ifadesi içinde kullanıldığı durumda bir dize koleksiyonu alanı üzerinde bir Aralık değişkeni `search.in` `any` `all` ). |
 | `valueList` | `Edm.String` | Parametresiyle eşleştirilecek bir değer listesi içeren bir dize `variable` . `delimiters`Parametresi belirtilmemişse, varsayılan sınırlayıcılar boşluk ve virgüldür. |

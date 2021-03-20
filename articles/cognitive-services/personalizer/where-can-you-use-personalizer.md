@@ -6,10 +6,10 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.openlocfilehash: 87179950c33a6facb59ce499aa0ae393e53fb37f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91777233"
 ---
 # <a name="where-and-how-to-use-personalizer"></a>Kişiselleştiriciye nerede ve nasıl kullanılacağı
@@ -20,7 +20,7 @@ Kişiselleştirici kullanıcıyı hangi eylemin (içerik) göstermek için peki�
 
 ## <a name="example-use-cases-for-personalizer"></a>Kişiselleştirici için örnek kullanım örnekleri
 
-* **Amaç açıklaması & belirsizliği ortadan**kaldırma: kişiselleştirilmiş bir seçenek sunarak kullanıcılarınızın amacı net bir deneyimle daha iyi bir deneyim sağlanmasına yardımcı olur.
+* **Amaç açıklaması & belirsizliği ortadan** kaldırma: kişiselleştirilmiş bir seçenek sunarak kullanıcılarınızın amacı net bir deneyimle daha iyi bir deneyim sağlanmasına yardımcı olur.
 * Menüler için **varsayılan öneriler** & seçenekler: bot 'ın, bir ımpersonal menüsü veya alternatifler listesi sunmak yerine, ilk adımla en olası öğeyi kişiselleştirilmiş bir şekilde önermesini sağlayabilirsiniz.
 * **Bot nitelikleri & tonu**: ton, ayrıntı ve yazma stili değişebilen botlar için, bu nitelikleri değiştirmeyi göz önünde bulundurun.
 * **Bildirim & uyarı içeriği**: kullanıcılara daha fazla etkileşim kurmak için uyarı için hangi metnin kullanılacağına karar verin.
@@ -34,7 +34,7 @@ Aşağıdaki yönergeleri karşıladığınız veya uygulayabileceğiniz durumla
 |Yönerge|Açıklama|
 |--|--|
 |İş hedefi|Uygulamanız için bir iş veya kullanılabilirlik hedefi vardır.|
-|İçerik|Uygulamanızda, kullanıcıların bu hedefi iyileştirebilecekleri bağlamsal kararı veren bir yerdir.|
+|Content|Uygulamanızda, kullanıcıların bu hedefi iyileştirebilecekleri bağlamsal kararı veren bir yerdir.|
 |İçerik miktarı|Çağrı başına sıralama için 50 taneden az eylem var.|
 |Verileri topla|En iyi seçenek, toplu Kullanıcı davranışından ve toplam ödül puanından öğrenilmesi gerekir.|
 |Ahlak kullanım|Kişiselleştirme için makine öğrenmesinin kullanımı, sizin belirlediğiniz [kullanım kılavuzları](ethics-responsible-use.md) ve seçimlerdir.
@@ -42,7 +42,7 @@ Aşağıdaki yönergeleri karşıladığınız veya uygulayabileceğiniz durumla
 |Puanlanmış sonuç|Uygulamanız için ne kadar uygun olan dereceli seçim, Kullanıcı davranışının bazı yönlerinin ölçüleceği ve bir _[ödül puanında](concept-rewards.md)_ ifade edilebilir.|
 |İlgili zamanlama|Ödül puanı, çok fazla sayıda bağlama veya dış etken getirmez. Deneme süresi, hala uygun olduğu sürece, yeniden elde edilen puanınızın hesaplanabileceği kadar düşüktür.|
 |Yeterli bağlam özellikleri|Doğru seçim yapmaya yardımcı olacağını düşündüğünüz ve kullanıcıya özel tanımlanabilir bilgileri içermeyen en az 5 [özellik](concepts-features.md) listesi olarak derece kapsamını ifade edebilirsiniz.|
-|Yeterli eylem özellikleri|Her içerik seçimi, eylem ve, kişiselleştirmenin doğru seçimi yapmasını sağlayacak en az 5 [özellik](concepts-features.md) listesi olarak, _eylem_hakkında bilgi sahibi olursunuz.|
+|Yeterli eylem özellikleri|Her içerik seçimi, eylem ve, kişiselleştirmenin doğru seçimi yapmasını sağlayacak en az 5 [özellik](concepts-features.md) listesi olarak, _eylem_ hakkında bilgi sahibi olursunuz.|
 |Günlük veriler|Sorun zaman içinde Drifts, en iyi kişiselleştirmeye devam etmek için yeterli olay vardır (haber veya şekilde Tercihler gibi). Kişiselleştirici gerçek dünyada sürekli değişikliğe uyum sağlar, ancak yeni desenleri bulma ve kapatma hakkında bilgi almak için yeterli olay ve veri yoksa sonuçlar en uygun olmayacaktır. Genellikle yeterince gerçekleşen bir kullanım durumu seçmeniz gerekir. Günde en az 500 kez gerçekleşen kullanım örneklerini aramak için göz önünde bulundurun.|
 |Geçmiş verileri|Uygulamanız, en az 100.000 etkileşimin geçmişini biriktirmek için verileri yeterince uzun bir süre koruyabilir. Bu, Kişiselleştiriciye çevrimdışı değerlendirmeler ve ilke iyileştirmesi gerçekleştirmek için yeterli veri toplamasına olanak sağlar.|
 

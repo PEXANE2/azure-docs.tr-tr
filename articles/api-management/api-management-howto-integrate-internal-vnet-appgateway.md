@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
 ms.openlocfilehash: 3db1c8bfc3a11151342589af0873d88e3d90c6a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91825619"
 ---
-# <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Application Gateway ile iç VNET 'te API Management tümleştirme
+# <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>API Management'ı Application Gateway ile için sanal ağda tümleştirme
 
-## <a name="overview"></a><a name="overview"> </a> Genel bakış
+## <a name="overview"></a><a name="overview"></a> Genel bakış
 
 API Management hizmeti, Sanal Ağa gelen iç modunda yapılandırılabilir ve bu, yalnızca sanal ağ içinden erişilebilir hale gelir. Azure Application Gateway, katman 7 yük dengeleyici sağlayan bir PAAS hizmetidir. Bir ters proxy hizmeti işlevi görür ve bir Web uygulaması güvenlik duvarı (WAF) teklifi arasında sağlar.
 
@@ -35,7 +35,7 @@ API Management hizmeti, Sanal Ağa gelen iç modunda yapılandırılabilir ve bu
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -47,7 +47,7 @@ Bu makalede açıklanan adımları izlemek için, şunları yapmanız gerekir:
 
 * Sertifikalar-API ana bilgisayar adının PFX ve cer ve geliştirici portalının konak adı için PFX.
 
-## <a name="scenario"></a><a name="scenario"> </a> Senaryo
+## <a name="scenario"></a><a name="scenario"></a> Senaryo
 
 Bu makalede hem iç hem de dış tüketiciler için tek bir API Management hizmetinin nasıl kullanılacağı ele alınmaktadır ve hem şirket içi hem de bulut API 'Lerinde tek bir ön uç işlevi görür. Ayrıca, Application Gateway ' de kullanılabilen yönlendirme işlevlerini kullanarak, API 'nizin yalnızca bir alt kümesini kullanıma sunma (yeşil renkle vurgulandığı örnekte) görürsünüz.
 
@@ -55,7 +55,7 @@ Bu makalede hem iç hem de dış tüketiciler için tek bir API Management hizme
 
 ![URL yolu](./media/api-management-howto-integrate-internal-vnet-appgateway/api-management-howto-integrate-internal-vnet-appgateway.png)
 
-## <a name="before-you-begin"></a><a name="before-you-begin"> </a> Başlamadan önce
+## <a name="before-you-begin"></a><a name="before-you-begin"></a> Başlamadan önce
 
 * Azure PowerShell’in en yeni sürümünü kullandığınızdan emin olun. Yükleme [Azure PowerShell](/powershell/azure/install-az-ps)yükleme yönergelerine bakın. 
 
@@ -69,7 +69,7 @@ Bu makalede hem iç hem de dış tüketiciler için tek bir API Management hizme
 * **Özel durum araştırması:** Application Gateway, varsayılan olarak, BackendAddressPool içindeki hangi sunucuların etkin olduğunu anlamak için IP adresi tabanlı araştırmaları kullanır. API Management hizmeti yalnızca doğru ana bilgisayar üst bilgisine sahip isteklere yanıt verir, bu nedenle varsayılan yoklamalar başarısız olur. Application Gateway 'in hizmetin etkin olduğunu ve istekleri iletmeli olduğunu belirlemesine yardımcı olmak için özel bir sistem durumu araştırması tanımlanmalıdır.
 * **Özel etki alanı sertifikaları:** API Management internet 'ten erişmek için, ana bilgisayar adının bir CNAME eşlemesini Application Gateway ön uç DNS adına oluşturmanız gerekir. Bu, API Management iletilen Application Gateway ana bilgisayar başlığı ve sertifikasının bir APıM 'in geçerli olarak tanıyabilmesini sağlar. Bu örnekte, arka uç ve geliştirici portalı için iki sertifika kullanacağız.  
 
-## <a name="steps-required-for-integrating-api-management-and-application-gateway"></a><a name="overview-steps"> </a> API Management ve Application Gateway tümleştirmek için gereken adımlar
+## <a name="steps-required-for-integrating-api-management-and-application-gateway"></a><a name="overview-steps"></a> API Management ve Application Gateway tümleştirmek için gereken adımlar
 
 1. Resource Manager için kaynak grubu oluşturun.
 2. Application Gateway için bir sanal ağ, alt ağ ve genel IP oluşturun. API Management için başka bir alt ağ oluşturun.
@@ -243,7 +243,7 @@ Tüm yapılandırma öğeleri, uygulama ağ geçidi oluşturulmadan önce ayarla
 
 ### <a name="step-1"></a>1. Adım
 
-**Gatewayıp01**adlı bir uygulama ağ geçidi IP yapılandırması oluşturun. Application Gateway başladığında, yapılandırılan alt ağdan bir IP adresi alır ve ağ trafiğini arka uç IP havuzundaki IP adreslerine yönlendirir. Her örneğin bir IP adresi aldığını göz önünde bulundurun.
+**Gatewayıp01** adlı bir uygulama ağ geçidi IP yapılandırması oluşturun. Application Gateway başladığında, yapılandırılan alt ağdan bir IP adresi alır ve ağ trafiğini arka uç IP havuzundaki IP adreslerine yönlendirir. Her örneğin bir IP adresi aldığını göz önünde bulundurun.
 
 ```powershell
 $gipconfig = New-AzApplicationGatewayIPConfiguration -Name "gatewayIP01" -Subnet $appgatewaysubnetdata
@@ -368,10 +368,10 @@ Application Gateway DNS adı, APıM proxy ana bilgisayar adını (örneğin `api
 Get-AzPublicIpAddress -ResourceGroupName $resGroupName -Name "publicIP01"
 ```
 
-## <a name="summary"></a><a name="summary"> </a> Özet
+## <a name="summary"></a><a name="summary"></a> Özet
 Bir sanal ağda yapılandırılan Azure API Management, şirket içinde veya bulutta barındırılıp barındırılmayacağı tüm yapılandırılmış API 'Ler için tek bir ağ geçidi arabirimi sağlar. Application Gateway API Management ile tümleştirmek, belirli API 'Lerin Internet üzerinde erişilebilir olmasını seçmeli olarak etkinleştirme esnekliği sağlar ve bir Web uygulaması güvenlik duvarını API Management örneğiniz için ön uç olarak sağlar.
 
-## <a name="next-steps"></a><a name="next-steps"> </a> Sonraki adımlar
+## <a name="next-steps"></a><a name="next-steps"></a> Sonraki adımlar
 * Azure Application Gateway hakkında daha fazla bilgi
   * [Application Gateway genel bakış](../application-gateway/overview.md)
   * [Application Gateway Web uygulaması güvenlik duvarı](../web-application-firewall/ag/ag-overview.md)

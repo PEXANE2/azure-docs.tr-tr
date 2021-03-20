@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: cherylmc
 ms.openlocfilehash: 39585a68c5cddc50cd04e82caca71209270f7b68
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91874127"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell-classic"></a>PowerShell kullanarak bir sanal ağ geçidini silme (klasik)
@@ -76,7 +76,7 @@ Bir sanal ağ geçidini sildiğinizde, cmdlet ağ yapılandırma dosyasını de�
 
 ### <a name="local-network-site-references"></a><a name="lnsref"></a>Yerel ağ sitesi başvuruları
 
-Site başvuru bilgilerini kaldırmak için **Connectionstolocalnetwork/LocalNetworkSiteRef**üzerinde yapılandırma değişiklikleri yapın. Yerel bir site başvurusunu kaldırma, bir tüneli silmek için Azure 'ı tetikler. Oluşturduğunuz yapılandırmaya bağlı olarak, listelenmiş bir **LocalNetworkSiteRef** bulunmayabilir.
+Site başvuru bilgilerini kaldırmak için **Connectionstolocalnetwork/LocalNetworkSiteRef** üzerinde yapılandırma değişiklikleri yapın. Yerel bir site başvurusunu kaldırma, bir tüneli silmek için Azure 'ı tetikler. Oluşturduğunuz yapılandırmaya bağlı olarak, listelenmiş bir **LocalNetworkSiteRef** bulunmayabilir.
 
 ```
 <Gateway>
@@ -133,7 +133,7 @@ Bu örnekte, yalnızca Site3 ' ı kaldırdık.
 
 ### <a name="client-addresspool"></a><a name="clientaddresss"></a>İstemci adres havuzu
 
-VNet 'iniz için P2S bağlantınız varsa, bir **Vpnclientaddresspool**olur. Sildiğiniz sanal ağ geçidine karşılık gelen istemci adresi havuzlarını kaldırın.
+VNet 'iniz için P2S bağlantınız varsa, bir **Vpnclientaddresspool** olur. Sildiğiniz sanal ağ geçidine karşılık gelen istemci adresi havuzlarını kaldırın.
 
 ```
 <Gateway>

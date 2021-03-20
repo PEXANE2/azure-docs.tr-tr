@@ -8,10 +8,10 @@ ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: 4b86d0c189bcf0687a703f2338188df2090feaf0
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92368035"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Azure 'da VMware olağanüstü durum kurtarma için kapasiteyi ve ölçeklendirmeyi planlayın
@@ -92,7 +92,7 @@ Sunucularınızı ölçeklendirmeniz, genişleme veya genişleme modeli için te
 
     ![Azure Backup özellikleri iletişim kutusunun ekran görüntüsü](./media/site-recovery-vmware-to-azure/throttle2.png)
 
-Ayrıca, azaltma ayarı için [Set-OBMachineSetting](/previous-versions/windows/powershell-scripting/hh770409(v=wps.640)) cmdlet'ini de kullanabilirsiniz. İşte bir örnek:
+Ayrıca, azaltma ayarı için [Set-OBMachineSetting](/previous-versions/windows/powershell-scripting/hh770409(v=wps.640)) cmdlet'ini de kullanabilirsiniz. Aşağıda bir örnek verilmiştir:
 
 ```azurepowershell-interactive
 $mon = [System.DayOfWeek]::Monday
@@ -105,8 +105,8 @@ Set-OBMachineSetting -WorkDay $mon, $tue -StartWorkHour "9:00:00" -EndWorkHour "
 ### <a name="alter-the-network-bandwidth-for-a-vm"></a>VM için ağ bant genişliğini değiştirme
 
 1. VM kayıt defterinde **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication**' a gidin.
-   * Çoğaltılan bir diskteki bant genişliği trafiğini değiştirmek için, **UploadThreadsPerVM**değerini değiştirin. Mevcut değilse anahtarı oluşturun.
-   * Azure 'dan yeniden çalışma trafiği için bant genişliğini değiştirmek üzere **DownloadThreadsPerVM**değerini değiştirin.
+   * Çoğaltılan bir diskteki bant genişliği trafiğini değiştirmek için, **UploadThreadsPerVM** değerini değiştirin. Mevcut değilse anahtarı oluşturun.
+   * Azure 'dan yeniden çalışma trafiği için bant genişliğini değiştirmek üzere **DownloadThreadsPerVM** değerini değiştirin.
 2. Her anahtar için varsayılan değer **4**' dir. "Fazla sağlanan" bir ağda, bu kayıt defteri anahtarlarının varsayılan değerlerinin değiştirilmesi gerekir. Kullanabileceğiniz en büyük değer **32**' dir. Değeri iyileştirmek için trafiği izleyin.
 
 ## <a name="set-up-the-site-recovery-infrastructure-to-protect-more-than-500-vms"></a>500 'den fazla VM 'yi korumak için Site Recovery altyapısını ayarlama
@@ -126,13 +126,13 @@ Dağıtımınızı 200 kaynak makineden daha fazla ölçeklendirebilir veya 2 TB
 
 ### <a name="migrate-machines-to-use-the-new-process-server"></a>Yeni işlem sunucusunu kullanmak için makineleri geçirme
 
-1. **Settings**  >  **Sunucular Site Recovery**ayarları ' nı seçin. Yapılandırma sunucusunu seçin ve ardından **işlem sunucuları**' nı genişletin.
+1.   >  **Sunucular Site Recovery** ayarları ' nı seçin. Yapılandırma sunucusunu seçin ve ardından **işlem sunucuları**' nı genişletin.
 
     ![Işlem sunucusu iletişim kutusunun ekran görüntüsü](./media/site-recovery-vmware-to-azure/migrate-ps2.png)
 2. Kullanımda olan işlem sunucusuna sağ tıklayın ve ardından **Değiştir**' i seçin.
 
     ![Yapılandırma sunucusu iletişim kutusunun ekran görüntüsü](./media/site-recovery-vmware-to-azure/migrate-ps3.png)
-3. **Hedef işlem sunucusunu seçin**bölümünde, kullanmak istediğiniz yeni işlem sunucusunu seçin. Ardından, sunucunun işleyeceği sanal makineleri seçin. Sunucu hakkında bilgi almak için bilgi simgesini seçin. Yük kararları almanıza yardımcı olmak için, seçilen her bir sanal makineyi yeni işlem sunucusuna çoğaltmak üzere gereken ortalama alan gösterilir. Yeni işlem sunucusuna Çoğaltmaya başlamak için onay işaretini seçin.
+3. **Hedef işlem sunucusunu seçin** bölümünde, kullanmak istediğiniz yeni işlem sunucusunu seçin. Ardından, sunucunun işleyeceği sanal makineleri seçin. Sunucu hakkında bilgi almak için bilgi simgesini seçin. Yük kararları almanıza yardımcı olmak için, seçilen her bir sanal makineyi yeni işlem sunucusuna çoğaltmak üzere gereken ortalama alan gösterilir. Yeni işlem sunucusuna Çoğaltmaya başlamak için onay işaretini seçin.
 
 ## <a name="deploy-additional-master-target-servers"></a>Ek ana hedef sunucuları dağıtma
 
@@ -146,7 +146,7 @@ Linux tabanlı bir sanal makine için ana hedef sunucu ekleme hakkında bilgi ed
 
 Windows tabanlı bir sanal makine için ana hedef sunucu eklemek için:
 
-1. **Kurtarma Hizmetleri Kasası**  >  **Site Recovery altyapı**  >  **yapılandırma sunucularına**gidin.
+1. **Kurtarma Hizmetleri Kasası**  >  **Site Recovery altyapı**  >  **yapılandırma sunucularına** gidin.
 2. Gerekli yapılandırma sunucusunu seçin ve ardından **ana hedef sunucusu**' nu seçin.
 
     ![Ana hedef sunucu Ekle düğmesini gösteren ekran görüntüsü](media/site-recovery-plan-capacity-vmware/add-master-target-server.png)
@@ -165,7 +165,7 @@ Windows tabanlı bir sanal makine için ana hedef sunucu eklemek için:
     ![Yapılandırma sunucusu için IP adresinin ve parolanın nereye girdiğinin gösterildiği ekran görüntüsü](media/site-recovery-plan-capacity-vmware/cs-ip-passphrase.PNG)
 8. **Kaydet**’i seçin. Kayıt tamamlandığında **son**' u seçin.
 
-Kayıt başarıyla tamamlandığında, sunucu, yapılandırma sunucusunun ana hedef sunucularında, **Kurtarma Hizmetleri kasasındaki**Azure Portal  >  **Site Recovery altyapı**  >  **yapılandırma sunucularında**listelenir.
+Kayıt başarıyla tamamlandığında, sunucu, yapılandırma sunucusunun ana hedef sunucularında, **Kurtarma Hizmetleri kasasındaki** Azure Portal  >  **Site Recovery altyapı**  >  **yapılandırma sunucularında** listelenir.
 
  > [!NOTE]
  > [Windows için ana hedef sunucu Birleşik kurulum dosyasının](https://aka.ms/latestmobsvc)en son sürümünü indirin.

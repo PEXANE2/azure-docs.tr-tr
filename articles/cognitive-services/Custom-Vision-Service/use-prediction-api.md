@@ -12,10 +12,10 @@ ms.date: 04/02/2019
 ms.author: pafarley
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 7f1939536e033d2cf964dd2f4ee562e4ee20061b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88934761"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>Tahmin API 'SI ile modelinizi kullanma
@@ -39,7 +39,7 @@ Modelinize başarıyla yayımlandıktan sonra, sol taraftaki kenar çubuğundan 
 
 ## <a name="get-the-url-and-prediction-key"></a>URL ve tahmin anahtarını alma
 
-Modeliniz yayımlandıktan sonra, __tahmin URL 'sini__seçerek gerekli bilgileri alabilirsiniz. Bu, tahmin __URL 'si__ ve __tahmin anahtarı__da dahil olmak üzere, tahmin API 'si kullanımıyla ilgili bilgileri içeren bir iletişim kutusu açar.
+Modeliniz yayımlandıktan sonra, __tahmin URL 'sini__ seçerek gerekli bilgileri alabilirsiniz. Bu, tahmin __URL 'si__ ve __tahmin anahtarı__ da dahil olmak üzere, tahmin API 'si kullanımıyla ilgili bilgileri içeren bir iletişim kutusu açar.
 
 ![Performans sekmesi, tahmin URL 'SI düğmesini çevreleyen kırmızı bir dikdörtgenle gösterilir.](./media/use-prediction-api/published-iteration-prediction-url.png)
 

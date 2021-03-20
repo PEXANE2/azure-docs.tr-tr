@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 12/17/2020
+ms.date: 03/01/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 9302bde13a303dda2107900dc0c10cc180669a18
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 3c6fb1ca23bcc9c57e73bcaf960e0387611fcff3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650737"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599223"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Metin Analizi nasıl çağrılacağını REST API
 
@@ -66,6 +66,7 @@ Hangi özelliklerin zaman uyumsuz olarak kullanılabileceğini görmek için aş
 | Görüşün madenciliği | ✔ |  |
 | Anahtar ifade ayıklama | ✔ | ✔* |
 | Adlandırılmış varlık tanıma (PII ve FI dahil) | ✔ | ✔* |
+| Varlık bağlama | ✔ | ✔* |
 | Sistem durumu için Metin Analizi (kapsayıcı) | ✔ |  |
 | Sistem durumu için Metin Analizi (API) |  | ✔  |
 
@@ -118,8 +119,9 @@ Aşağıda, zaman uyumlu Metin Analizi uç noktaları için bir API isteği örn
 
 `/analyze`Uç nokta, tek BIR API çağrısında kullanmak istediğiniz desteklenen metin analizi özelliklerinden hangisini seçmenizi sağlar. Bu uç nokta şu anda şunları destekler:
 
-* anahtar tümceciği ayıklama 
+* Anahtar İfade Ayıklama 
 * Adlandırılmış varlık tanıma (PII ve FI dahil)
+* Varlık Bağlama
 
 | Öğe | Geçerli değerler | Gerekli mi? | Kullanım |
 |---------|--------------|-----------|-------|
@@ -128,7 +130,7 @@ Aşağıda, zaman uyumlu Metin Analizi uç noktaları için bir API isteği örn
 |`documents` | `id` `text` Aşağıdaki ve alanlarını içerir | Gerekli | Gönderilen her belge için bilgileri ve belgenin ham metnini içerir. |
 |`id` | Dize | Gerekli | Sağladığınız kimlikler çıktıyı yapılandırmak için kullanılır. |
 |`text` | Yapılandırılmamış ham metin, en fazla 125.000 karakter. | Gerekli | Şu anda desteklenen tek dil olan Ingilizce dilde olmalıdır. |
-|`tasks` | Aşağıdaki Metin Analizi özelliklerini içerir: `entityRecognitionTasks` , `keyPhraseExtractionTasks` veya `entityRecognitionPiiTasks` . | Gerekli | Kullanmak istediğiniz bir veya daha fazla Metin Analizi özelliği. `entityRecognitionPiiTasks` `domain` Ya da olarak ayarlanabilir isteğe bağlı bir parametreye sahip olduğunu unutmayın `pii` `phi` . Belirtilmemişse, sistem varsayılan olarak olur `pii` . |
+|`tasks` | Aşağıdaki metin analizi özelliklerini içerir: `entityRecognitionTasks` , `entityLinkingTasks` , `keyPhraseExtractionTasks` veya `entityRecognitionPiiTasks` . | Gerekli | Kullanmak istediğiniz bir veya daha fazla Metin Analizi özelliği. `entityRecognitionPiiTasks` `domain` `pii` `phi` ' `pii-categories` Nin, seçilen varlık türlerinin algılanması için veya olarak ayarlanabilmesi için isteğe bağlı bir parametresinin olduğunu unutmayın. `domain`Parametresi belirtilmemişse, sistem varsayılan olarak öğesine ayarlanır `pii` . |
 |`parameters` | `model-version` `stringIndexType` Aşağıdaki ve alanlarını içerir | Gerekli | Bu alan, seçtiğiniz yukarıdaki özellik görevlerine dahil edilmiştir. Bunlar, kullanmak istediğiniz model sürümü ve Dizin türü hakkında bilgiler içerir. |
 |`model-version` | Dize | Gerekli | Hangi modelin kullanmak istediğinizi çağırmakta olduğunu belirtin.  |
 |`stringIndexType` | Dize | Gerekli | Programlama ortamınızla eşleşen metin kod çözücüsünü belirtin.  Desteklenen türler `textElement_v8` (varsayılan), `unicodeCodePoint` , `utf16CodeUnit` . Daha fazla bilgi için lütfen [metin uzaklık makalesine](../concepts/text-offsets.md#offsets-in-api-version-31-preview) bakın.  |
@@ -158,6 +160,14 @@ Aşağıda, zaman uyumlu Metin Analizi uç noktaları için bir API isteği örn
                 }
             }
         ],
+        "entityLinkingTasks": [
+            {
+                "parameters": {
+                    "model-version": "latest",
+                    "stringIndexType": "TextElements_v8"
+                }
+            }
+        ],
         "keyPhraseExtractionTasks": [{
             "parameters": {
                 "model-version": "latest"
@@ -165,7 +175,10 @@ Aşağıda, zaman uyumlu Metin Analizi uç noktaları için bir API isteği örn
         }],
         "entityRecognitionPiiTasks": [{
             "parameters": {
-                "model-version": "latest"
+                "model-version": "latest",
+                "stringIndexType": "TextElements_v8",
+                "domain": "phi",
+                "pii-categories":"default"
             }
         }]
     }
@@ -207,7 +220,7 @@ example.json
 
 ## <a name="set-up-a-request"></a>İstek ayarlama 
 
-Postman 'da (veya başka bir Web API test aracında) kullanmak istediğiniz özelliğin uç noktasını ekleyin. Uygun uç nokta biçimini bulmak için aşağıdaki tabloyu kullanın ve kaynak uç noktanızla değiştirin `<your-text-analytics-resource>` . Örneğin:
+Postman 'da (veya başka bir Web API test aracında) kullanmak istediğiniz özelliğin uç noktasını ekleyin. Uygun uç nokta biçimini bulmak için aşağıdaki tabloyu kullanın ve kaynak uç noktanızla değiştirin `<your-text-analytics-resource>` . Örnek:
 
 `https://my-resource.cognitiveservices.azure.com/text/analytics/v3.0/languages`
 
@@ -231,16 +244,16 @@ Postman 'da (veya başka bir Web API test aracında) kullanmak istediğiniz öze
 
 | Özellik | İstek türü | Kaynak uç noktaları |
 |--|--|--|
-| Analiz işini gönder | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/analyze` |
-| Çözümleme durumunu ve sonuçlarını al | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/analyze/jobs/<Operation-Location>` |
+| Analiz işini gönder | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/analyze` |
+| Çözümleme durumunu ve sonuçlarını al | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/analyze/jobs/<Operation-Location>` |
 
 ### <a name="endpoints-for-sending-asynchronous-requests-to-the-health-endpoint"></a>Uç noktaya zaman uyumsuz isteklerin gönderilmesi için uç noktalar `/health`
 
 | Özellik | İstek türü | Kaynak uç noktaları |
 |--|--|--|
-| Sistem durumu işi için Metin Analizi gönder  | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs` |
-| İş durumunu ve sonuçları al | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs/<Operation-Location>` |
-| İşi iptal et | DELETE | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs/<Operation-Location>` |
+| Sistem durumu işi için Metin Analizi gönder  | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/entities/health/jobs` |
+| İş durumunu ve sonuçları al | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/entities/health/jobs/<Operation-Location>` |
+| İşi iptal et | DELETE | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/entities/health/jobs/<Operation-Location>` |
 
 --- 
 
@@ -266,7 +279,7 @@ Uç noktanız, Postman 'da (veya başka bir Web API test aracında) oluşturuldu
 
       + [Dil algılama](text-analytics-how-to-language-detection.md)
       + [Anahtar tümceciği ayıklama](text-analytics-how-to-keyword-extraction.md)
-      + [Yaklaşım Analizi](text-analytics-how-to-sentiment-analysis.md)
+      + [Yaklaşım analizi](text-analytics-how-to-sentiment-analysis.md)
       + [Varlık tanıma](text-analytics-how-to-entity-linking.md)
 
 ## <a name="send-the-request"></a>İsteği gönder
@@ -276,9 +289,9 @@ API isteğini gönder. Zaman uyumlu bir uç noktaya çağrı yaptıysanız, yan�
 Zaman uyumsuz `/analyze` veya `/health` uç noktalara çağrı yaptıysanız, bir 202 yanıt kodu aldığınızı kontrol edin. sonuçları görüntülemek için yanıtı almanız gerekir:
 
 1. API yanıtında, `Operation-Location` API 'ye gönderdiğiniz işi tanımlayan üst bilgiden öğesini bulun. 
-2. Kullandığınız uç nokta için bir GET isteği oluşturun. uç nokta biçimi için [yukarıdaki tabloya](#set-up-a-request) başvurun ve [API başvuru belgelerini](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/AnalyzeStatus)gözden geçirin. Örneğin:
+2. Kullandığınız uç nokta için bir GET isteği oluşturun. uç nokta biçimi için [yukarıdaki tabloya](#set-up-a-request) başvurun ve [API başvuru belgelerini](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/AnalyzeStatus)gözden geçirin. Örnek:
 
-    `https://my-resource.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/analyze/jobs/<Operation-Location>`
+    `https://my-resource.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/analyze/jobs/<Operation-Location>`
 
 3. Öğesini `Operation-Location` isteğe ekleyin.
 
@@ -296,7 +309,7 @@ Zaman uyumlu uç nokta yanıtları kullandığınız uç noktaya göre değişir
 
 + [Dil algılama](text-analytics-how-to-language-detection.md#step-3-view-the-results)
 + [Anahtar tümceciği ayıklama](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
-+ [Yaklaşım Analizi](text-analytics-how-to-sentiment-analysis.md#view-the-results)
++ [Yaklaşım analizi](text-analytics-how-to-sentiment-analysis.md#view-the-results)
 + [Varlık tanıma](text-analytics-how-to-entity-linking.md#view-results)
 
 # <a name="asynchronous"></a>[Zaman uyumsuz](#tab/asynchronous)

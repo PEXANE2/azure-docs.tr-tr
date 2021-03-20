@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 09/10/2020
 ms.author: curtand
 ms.openlocfilehash: c47d573dab3e72a956f6f0b9d09a1dafadf0225c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91827770"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>Güvenlik bilgilerini kullanarak iş veya okul parolanızı sıfırlayın
@@ -55,7 +55,7 @@ Azure Active Directory (Azure AD) Hesabınıza erişemiyorsanız aşağıdakiler
 
 - **Bir e-posta adresi kullanarak parolanızı sıfırlayın.** Daha önce iki adımlı doğrulama veya güvenlik bilgilerinde ayarladığınız e-posta adresine bir e-posta gönderir. Yöneticiniz güvenlik bilgileri deneyimini etkinleştirmiştir, e-posta adresi ayarlama hakkında daha fazla bilgi edinmek [için güvenlik bilgilerini ayarla (Önizleme) makalesini kullanın](security-info-setup-email.md) . Henüz güvenlik bilgilerini kullanmıyorsanız, [iki adımlı doğrulama için hesabımı ayarla](multi-factor-authentication-end-user-first-time.md) ' da bir e-posta adresi ayarlama hakkında daha fazla bilgi edinebilirsiniz. 
 
-    1. Diğer e- **postam**i seçin ve ardından **e-posta**seçeneğini belirleyin.
+    1. Diğer e- **postam** i seçin ve ardından **e-posta** seçeneğini belirleyin.
 
     2. E-postadaki doğrulama kodunu kutuya yazın ve ardından **İleri**' yi seçin.
 
@@ -63,7 +63,7 @@ Azure Active Directory (Azure AD) Hesabınıza erişemiyorsanız aşağıdakiler
 
 - **Kısa mesaj kullanarak parolanızı sıfırlayın.** Daha önce güvenlik bilgilerinde ayarladığınız telefon numarasına bir kısa mesaj gönderir. Yöneticiniz güvenlik bilgileri deneyimini etkinleştirmiştir, SMS mesajı ayarlama hakkında daha fazla bilgi edinmek [için güvenlik bilgilerini ayarlama (Önizleme) makalesini kullanın](security-info-setup-text-msg.md) . Henüz güvenlik bilgilerini kullanmıyorsanız, [iki adımlı doğrulama için hesabımı ayarla](multi-factor-authentication-end-user-first-time.md) bölümünde metin iletilerini ayarlama hakkında daha fazla bilgi edinebilirsiniz.
 
-    1. **Cep telefonumu**seçin, telefon numaranızı yazın ve ardından **metin**' i seçin.
+    1. **Cep telefonumu** seçin, telefon numaranızı yazın ve ardından **metin**' i seçin.
 
     2. Metin iletisinden doğrulama kodunu kutuya yazın ve ardından **İleri**' yi seçin.
 
@@ -139,7 +139,7 @@ Yöneticiniz işlevselliği etkinleştirdiyseniz, Windows 7, Windows 8, Windows 
 
 1. Normal web tabanlı deneyimi kullanmak zorunda kalmadan parola sıfırlama işlemini başlatmak için **parola sıfırlama** bağlantısını seçin.
 
-2. Kullanıcı KIMLIĞINIZI doğrulayın ve Ileri ' **yi**seçin.
+2. Kullanıcı KIMLIĞINIZI doğrulayın ve Ileri ' **yi** seçin.
 
 3. Doğrulama için bir iletişim yöntemi seçin ve onaylayın. Gerekirse, gerekli bilgileri doldurarak, önceki bir kaynaktan farklı ikinci bir doğrulama seçeneği belirleyin.
 

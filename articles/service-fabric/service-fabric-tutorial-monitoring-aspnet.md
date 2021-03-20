@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/10/2019
 ms.custom: mvc, devx-track-csharp
 ms.openlocfilehash: e7fe68c2d0c51ffcc67693da722d9243ea3506f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91840804"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>Öğretici: Application Insights'ı kullanarak Service Fabric'te ASP.NET Core uygulamasını izleme ve tanılama
@@ -50,7 +50,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 Application Insights, Azure'un uygulama performansı yönetim platformu olduğu gibi, Service Fabric'in de uygulama izleme ve tanılama için önerilen platformudur.
 
-Application Insights kaynağı oluşturmak için [Azure Portal](https://portal.azure.com)'a gidin. Sol gezinti menüsünde **kaynak oluştur** ' u seçerek Azure Marketi ' ni açın. **İzleme ve yönetim** ve ardından **Application Insights**seçin.
+Application Insights kaynağı oluşturmak için [Azure Portal](https://portal.azure.com)'a gidin. Sol gezinti menüsünde **kaynak oluştur** ' u seçerek Azure Marketi ' ni açın. **İzleme ve yönetim** ve ardından **Application Insights** seçin.
 
 ![Yeni AI kaynağı oluşturma](./media/service-fabric-tutorial-monitoring-aspnet/new-ai-resource.png)
 
@@ -73,7 +73,7 @@ Hem VotingWeb hem de VotingData Hizmetleri için Application Insights yapıland�
 >[!NOTE]
 >Proje türüne bağlı olarak, hizmetin adına sağ tıkladığınızda, Add-> Application Insights Telemetri... seçeneğini belirlemeniz gerekebilir.
 
-2. **Kullanmaya**başlayın ' ı seçin.
+2. **Kullanmaya** başlayın ' ı seçin.
 3. Azure aboneliğiniz için kullandığınız hesapta oturum açın ve Application Insights kaynağını oluşturduğunuz aboneliği seçin. "Kaynak" açılan listesindeki *Mevcut Application Insights kaynağı*'nın altında kaynağı bulun. Hizmetinize Application Insights eklemek için **Kaydol** ' u seçin.
 
     ![AI kaynağını kaydetme](./media/service-fabric-tutorial-monitoring-aspnet/register-ai.png)
@@ -98,16 +98,16 @@ NuGet paketini ayarlama adımları aşağıda verilmiştir:
 3. `Microsoft.ApplicationInsights.ServiceFabric.Native`Uygun NuGet paketini arayın ve seçin.
 4. Sağ tarafta, uygulamadaki iki hizmetin yanında bulunan iki onay kutusunu **seçin ve** sonra da **Install** **' ı** seçin.
     ![AI sdk Nuget](./media/service-fabric-tutorial-monitoring-aspnet/ai-sdk-nuget-new.png)
-5. Görüntülenen *Değişiklikleri Önizle* Iletişim kutusunda **Tamam** ' ı seçin ve *Lisans kabulünü*kabul edin. Bu noktada NuGet'i hizmetlere ekleme işlemi tamamlanır.
-6. Şimdi iki hizmette telemetri başlatıcısını ayarlamanız gerekir. Bunu yapmak için, *VotingWeb.cs* ve *VotingData.cs*' yi açın. Her ikisinde de aşağıdaki iki adımı izleyin:
-    1. Bu iki *using* deyimini, var olan *using* deyimlerinden sonra her * \<ServiceName> . cs*' nin üst kısmına ekleyin:
+5. Görüntülenen *Değişiklikleri Önizle* Iletişim kutusunda **Tamam** ' ı seçin ve *Lisans kabulünü* kabul edin. Bu noktada NuGet'i hizmetlere ekleme işlemi tamamlanır.
+6. Şimdi iki hizmette telemetri başlatıcısını ayarlamanız gerekir. Bunu yapmak için *Votingweb. cs* ve *votingdata. cs*' yi açın. Her ikisinde de aşağıdaki iki adımı izleyin:
+    1. Bu iki *using* deyimini, var olan *using* deyimlerinden sonra her *\<ServiceName> . cs*' nin üst kısmına ekleyin:
 
     ```csharp
     using Microsoft.ApplicationInsights.Extensibility;
     using Microsoft.ApplicationInsights.ServiceFabric;
     ```
 
-    2. Her iki dosyada, *createserviceınstancelisteners ()* veya *CreateServiceReplicaListeners ()* iç içe geçmiş *Return* ifadesinde, *ConfigureServices*  >  *Services*altında, belirtilen diğer hizmet ile, şunu ekleyin:
+    2. Her iki dosyada, *createserviceınstancelisteners ()* veya *CreateServiceReplicaListeners ()* iç içe geçmiş *Return* ifadesinde, *ConfigureServices*  >  *Services* altında, belirtilen diğer hizmet ile, şunu ekleyin:
     ```csharp
     .AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext))
     ```
@@ -148,7 +148,7 @@ NuGet paketini ayarlama adımları aşağıda verilmiştir:
         .Build();
     ```
 
-`UseApplicationInsights()`Yöntemin, yukarıda gösterildiği gibi hem *VotingWeb.cs* hem de *VotingData.cs* 'de çağrıldığından emin olun.
+`UseApplicationInsights()`Metodun, yukarıda gösterildiği gibi *Votingweb. cs* ve *votingdata. cs* içinde çağrıldığından emin olun.
 
 >[!NOTE]
 >Bu örnek uygulama, hizmetlerin iletişim kurması için http’yi kullanır. Uzaktan İletişim V2 ile bir uygulama geliştirirseniz, yukarıdakiyle aynı yere aşağıdaki kod satırlarını da eklemeniz gerekir

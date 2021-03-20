@@ -4,10 +4,10 @@ description: Tek başına Service Fabric kümesi çalıştıran Azure Service Fa
 ms.topic: conceptual
 ms.date: 11/09/2018
 ms.openlocfilehash: 5831fcffe718e4966c3444a29d35c5bbd55e5f57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91842946"
 ---
 # <a name="upgrade-the-service-fabric-version-that-runs-on-your-cluster"></a>Kümenizde çalışan Service Fabric sürümünü yükseltme 
@@ -24,7 +24,7 @@ Kümenizi yalnızca, her Service Fabric düğümünün ayrı fiziksel veya sanal
 İki ayrı iş akışı, kümenizi en son sürüme veya desteklenen bir Service Fabric sürümüne yükseltebilirler. Tek bir iş akışı, en son sürümü otomatik olarak indirmek üzere bağlantısı olan kümelere yöneliktir. Diğer iş akışı, en son Service Fabric sürümünü indirmek üzere bağlantısı olmayan kümeler içindir.
 
 ## <a name="enable-auto-upgrade-of-the-service-fabric-version-of-your-cluster"></a>Kümenizin Service Fabric sürümünün otomatik yükseltmesini etkinleştirin
-Microsoft 'un yeni bir sürüm yayınlarsa Service Fabric güncelleştirmelerini indirmek üzere kümenizi ayarlamak için, `fabricClusterAutoupgradeEnabled` küme yapılandırmasını *doğru*olarak ayarlayın. Kümenizin açık olmasını istediğiniz Service Fabric desteklenen bir sürümünü el ile seçmek için, `fabricClusterAutoupgradeEnabled` küme yapılandırmasını *yanlış*olarak ayarlayın.
+Microsoft 'un yeni bir sürüm yayınlarsa Service Fabric güncelleştirmelerini indirmek üzere kümenizi ayarlamak için, `fabricClusterAutoupgradeEnabled` küme yapılandırmasını *doğru* olarak ayarlayın. Kümenizin açık olmasını istediğiniz Service Fabric desteklenen bir sürümünü el ile seçmek için, `fabricClusterAutoupgradeEnabled` küme yapılandırmasını *yanlış* olarak ayarlayın.
 
 ## <a name="upgrade-clusters-that-have-connectivity-to-download-the-latest-code-and-configuration"></a>En son kodu ve yapılandırmayı indirmek üzere bağlantısı olan kümeleri yükseltme
 Küme düğümlerinizin [Microsoft Indirme merkezi](https://download.microsoft.com)'ne internet bağlantısı varsa, kümenizi desteklenen bir sürüme yükseltmek için bu adımları kullanın.

@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 04/20/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: cd0b9d1369fb1c0e662de83b7056da0ff7c83bd1
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 50b09fd82461221ae6cd008f6918ac2f3a26fd94
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090837"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588395"
 ---
 # <a name="integrate-azure-spring-cloud-with-azure-load-balance-solutions"></a>Azure Spring Cloud’u Azure Load Balance Çözümleriyle tümleştirme
 
@@ -39,7 +39,7 @@ Azure Spring Cloud 'ı Traffic Manager ile tümleştirmek için, genel uç nokta
 
 ### <a name="add-endpoint-in-traffic-manager"></a>Uç nokta Ekle Traffic Manager
 Traffic Manager 'da uç noktalar ekleme:
-1.  *Dış uç nokta*olacak **tür** belirtin.
+1.  *Dış uç nokta* olacak **tür** belirtin.
 1.  Her Azure yay bulutu genel uç noktasının tam etki alanı adını (FQDN) girin.
 1. **Tamam**'a tıklayın.
 
@@ -58,7 +58,7 @@ Yapılandırmayı tamamlaması için:
 Azure Spring Cloud Service ile tümleştirme için aşağıdaki konfigürasyonları doldurun:
 
 ### <a name="configure-backend-pool"></a>Arka uç havuzunu yapılandırma
-1. **Hedef türü** olarak *IP adresi* veya *FQDN*belirtin.
+1. **Hedef türü** olarak *IP adresi* veya *FQDN* belirtin.
 1. Azure Spring Cloud genel uç noktalarınızı girin.
 
     ![Uygulama ağ geçidi 1](media/spring-cloud-load-balancers/app-gateway-1.png)
@@ -72,10 +72,21 @@ Azure Spring Cloud Service ile tümleştirme için aşağıdaki konfigürasyonla
 ### <a name="configure-http-setting"></a>Http ayarını Yapılandır
 1.  Http **ayarları** ' nı seçin ve ardından **Ekle** ' ye tıklayın.
 1.  **Yeni ana bilgisayar adıyla geçersiz kıl:** *Evet*' i seçin.
-1.  **Ana bilgisayar adı geçersiz kılma**: **arka uç hedefinden seçim ana bilgisayar adını**seçin.
+1.  **Ana bilgisayar adı geçersiz kılma**: **arka uç hedefinden seçim ana bilgisayar adını** seçin.
 1.  **Özel araştırma kullan**: *Evet* ' i seçin ve yukarıda oluşturulan özel araştırmayı seçin.
 
     ![Uygulama ağ geçidi 3](media/spring-cloud-load-balancers/app-gateway-3.png)
+
+### <a name="configure-rewrite-set"></a>Yeniden yazma kümesini Yapılandır
+1.  Yeniden **Yaz ' ı seçin** ve yeniden yazma kümesi eklemek Için **kümeyi yeniden yazın** .
+1.  İstekleri Azure yay bulutu genel uç noktalarına yönlendiren yönlendirme kurallarını seçin.
+1.  **Yeniden yazma kuralı yapılandırması** sekmesinde **yeniden yazma kuralı ekle**' yi seçin.
+1.  **Yeniden yazma türü**: **istek üst bilgisini** seçin
+1.  **Eylem türü**: **Sil** ' i seçin
+1.  **Üstbilgi adı**: **ortak üst bilgi** Seç
+1.  **Ortak üst bilgi**: **X-iletilen-proto** seçin
+
+    ![Uygulama ağ geçidi 4](media/spring-cloud-load-balancers/app-gateway-4.png)
 
 ## <a name="integrate-azure-spring-cloud-with-azure-front-door"></a>Azure yay bulutunu Azure ön kapısına tümleştirme
 
@@ -85,9 +96,9 @@ Azure Spring Cloud Service ile tümleştirme ve arka uç havuzunu yapılandırma
 
     ![Ön kapı 1](media/spring-cloud-load-balancers/front-door-1.png)
 
-1.  **Arka uç ana bilgisayar türünü** *özel ana bilgisayar*olarak belirtin.
+1.  **Arka uç ana bilgisayar türünü** *özel ana bilgisayar* olarak belirtin.
 1.  Azure Spring Cloud genel uç noktalarınızın giriş FQDN 'SI, **arka uç ana bilgisayar adıdır**.
-1.  Arka uç **ana bilgisayar** **adıyla**aynı olan varsayılanı kabul edin.
+1.  Arka uç **ana bilgisayar** **adıyla** aynı olan varsayılanı kabul edin.
 
     ![Ön kapı 2](media/spring-cloud-load-balancers/front-door-2.png)
 

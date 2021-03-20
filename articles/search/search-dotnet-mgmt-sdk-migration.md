@@ -10,10 +10,10 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 07/08/2020
 ms.openlocfilehash: 8648347eb48081389cf360fa949b31bbd0b8c71e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88936716"
 ---
 # <a name="upgrading-versions-of-the-azure-search-net-management-sdk"></a>Azure Search .NET Yönetim SDK 'sının sürümlerini yükseltme
@@ -26,9 +26,9 @@ Yönetim SDK 'Ları, yönetim REST API 'nin belirli bir sürümünü hedeflemeli
 
 | SDK sürümü | Karşılık gelen REST API sürümü | Özellik ekleme veya davranış değişikliği |
 |-------------|--------------------------------|-------------------------------------|
-| [3,0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/3.0.0) | api-Version = 2020-30-20 | Uç nokta güvenliği ekler (IP güvenlik duvarları ve [Azure özel bağlantısı](../private-link/private-endpoint-overview.md)ile tümleştirme) |
+| [3.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/3.0.0) | api-Version = 2020-30-20 | Uç nokta güvenliği ekler (IP güvenlik duvarları ve [Azure özel bağlantısı](../private-link/private-endpoint-overview.md)ile tümleştirme) |
 | [2.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/2.0.0) | api-Version = 2019-10-01 | Kullanılabilirlik geliştirmeleri. [Liste sorgu anahtarlarında](/rest/api/searchmanagement/querykeys/listbysearchservice) Son değişiklik (Get kullanımdan kaldırılmıştır). |
-| [1,0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/1.0.1) | api-Version = 2015-08-19  | İlk sürüm |
+| [1.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/1.0.1) | api-Version = 2015-08-19  | İlk sürüm |
 
 ## <a name="how-to-upgrade"></a>Yükseltme
 
@@ -60,7 +60,7 @@ Artık bir [liste sorgu anahtarları](/rest/api/searchmanagement/querykeys/listb
 
 ## <a name="upgrade-to-20"></a>2,0 sürümüne yükselt
 
-Azure Search .NET Yönetim SDK 'sının 2. sürümü küçük bir yükseltmedir, bu nedenle kodunuzun değiştirilmesi yalnızca en az çaba gerektirir. SDK 'nın üzerinde yapılan değişiklikler, SDK 'nın kullanılabilirliğini geliştirmek için kesinlikle istemci tarafı değişikliklerdir. Bu değişiklikler şunları içerir:
+Azure Search .NET Yönetim SDK 'sının 2. sürümü küçük bir yükseltmedir, bu nedenle kodunuzun değiştirilmesi yalnızca en az çaba gerektirir. SDK 'nın üzerinde yapılan değişiklikler, SDK 'nın kullanılabilirliğini geliştirmek için kesinlikle istemci tarafı değişikliklerdir. Bu değişiklikler, şunları kapsıyor:
 
 * `Services.CreateOrUpdate` ve zaman uyumsuz sürümleri artık sağlamayı otomatik olarak `SearchService` yoklamıştır ve hizmet sağlama tamamlanana kadar geri dönmez. Bu, sizi bir tür yoklama kodu yazmak zorunda kalmanızı sağlar.
 

@@ -4,15 +4,15 @@ description: Bu makalede, Azure 'da depolanan verileri Microsoft Azure Kurtarma 
 ms.topic: conceptual
 ms.date: 09/07/2018
 ms.openlocfilehash: 79a4d32d6dbca5ca5be5d46c6b44a07ef42de061
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91813262"
 ---
 # <a name="restore-files-to-windows-server-using-the-mars-agent"></a>MARS Aracısı 'nı kullanarak dosyaları Windows Server 'a geri yükleme
 
-Bu makalede, verileri bir yedekleme kasasından geri yükleme açıklanmaktadır. Verileri geri yüklemek için, Microsoft Azure Kurtarma Hizmetleri (MARS) aracısında verileri kurtar Sihirbazı 'nı kullanın. Şunları yapabilirsiniz:
+Bu makalede, verileri bir yedekleme kasasından geri yükleme açıklanmaktadır. Verileri geri yüklemek için, Microsoft Azure Kurtarma Hizmetleri (MARS) aracısında verileri kurtar Sihirbazı 'nı kullanın. Seçenekleriniz şunlardır:
 
 * Verileri yedeklerin alındığı makineye geri yükleyin.
 * Verileri alternatif bir makineye geri yükleme.
@@ -31,7 +31,7 @@ Azure portal kurtarma hizmetleri kasalarıyla anında geri yükleme kullanın. Y
 
 Yanlışlıkla bir dosyayı silmiş ve aynı makineye geri yüklemek istiyorsanız (yedeklemenin alındığı), aşağıdaki adımlar verileri kurtarmanıza yardımcı olur.
 
-1. **Microsoft Azure Backup** ek bileşenini açın. Ek bileşenin nerede yüklü olduğunu bilmiyorsanız, bilgisayarı veya sunucuyu **Microsoft Azure Backup**arayın.
+1. **Microsoft Azure Backup** ek bileşenini açın. Ek bileşenin nerede yüklü olduğunu bilmiyorsanız, bilgisayarı veya sunucuyu **Microsoft Azure Backup** arayın.
 
     Masaüstü uygulaması, arama sonuçlarında görünmelidir.
 
@@ -39,11 +39,11 @@ Yanlışlıkla bir dosyayı silmiş ve aynı makineye geri yüklemek istiyorsan�
 
     ![Azure Backup ekran görüntüsü, verileri kurtar vurgulanmış (aynı makineye geri yükle)](./media/backup-azure-restore-windows-server/recover.png)
 
-3. **Başlarken** sayfasında, verileri aynı sunucuya veya bilgisayara geri yüklemek için, ardından **Bu sunucuyu ( `<server name>` )** seçin  >  **Next**.
+3. **Başlarken** sayfasında, verileri aynı sunucuya veya bilgisayara geri yüklemek için, ardından **Bu sunucuyu ( `<server name>` )** seçin  >  .
 
     ![Veri Kurtarma Sihirbazı Başlarken sayfasının ekran görüntüsü (aynı makineye geri yükle)](./media/backup-azure-restore-windows-server/samemachine_gettingstarted_instantrestore.png)
 
-4. **Kurtarma modunu seç** sayfasında, ileri ' yi **tek tek dosya ve klasörler** ' i seçin > **Next**.
+4. **Kurtarma modunu seç** sayfasında, ileri ' yi **tek tek dosya ve klasörler** ' i seçin > .
 
     ![Veri kurtarma sihirbazının ekran görüntüsü kurtarma modunu seç sayfası (aynı makineye geri yükle)](./media/backup-azure-restore-windows-server/samemachine_selectrecoverymode_instantrestore.png)
    > [!IMPORTANT]
@@ -97,11 +97,11 @@ Bu adımlar aşağıdaki terminolojiyi içerir:
 
 2. Hedef makinenin ve kaynak makinenin aynı kurtarma hizmetleri kasasında kayıtlı olduğundan emin olun.
 
-3. Verileri kurtar **sihirbazını**açmak Için **verileri kurtar** ' ı seçin.
+3. Verileri kurtar **sihirbazını** açmak Için **verileri kurtar** ' ı seçin.
 
     ![Azure Backup ekran görüntüsü, verileri kurtar vurgulanmış (alternatif makineye geri yükle)](./media/backup-azure-restore-windows-server/recover.png)
 
-4. **Başlarken** sayfasında **başka bir sunucu**seçin.
+4. **Başlarken** sayfasında **başka bir sunucu** seçin.
 
     ![Veri Kurtarma Sihirbazı Başlarken sayfasının ekran görüntüsü (alternatif makineye geri yükle)](./media/backup-azure-restore-windows-server/alternatemachine_gettingstarted_instantrestore.png)
 
@@ -113,7 +113,7 @@ Bu adımlar aşağıdaki terminolojiyi içerir:
 
     ![Veri kurtarma sihirbazının ekran görüntüsü yedekleme sunucusunu seçin sayfası (alternatif makineye geri yükle)](./media/backup-azure-restore-windows-server/alternatemachine_selectmachine_instantrestore.png)
 
-7. **Kurtarma modunu seç** sayfasında, bir sonraki **dosyaları ve klasörleri**seçin  >  **Next**.
+7. **Kurtarma modunu seç** sayfasında, bir sonraki **dosyaları ve klasörleri** seçin  >  .
 
     ![Veri kurtarma sihirbazının ekran görüntüsü kurtarma modunu seç sayfası (alternatif makineye geri yükle)](./media/backup-azure-restore-windows-server/alternatemachine_selectrecoverymode_instantrestore.png)
 

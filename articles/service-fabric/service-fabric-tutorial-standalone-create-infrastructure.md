@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 05/11/2018
 ms.custom: mvc
 ms.openlocfilehash: c7a18b0dcdc04bdf66ac4b36ce7376ee018eb238
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91842912"
 ---
 # <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>Öğretici: Bir Service Fabric kümesini barındıracak AWS altyapısı oluşturma
@@ -31,7 +31,7 @@ Bu öğreticiyi tamamlamak için bir AWS hesabınızın olması gerekir.  Henüz
 
 ## <a name="create-ec2-instances"></a>EC2 örnekleri oluşturma
 
-AWS konsolunda oturum açın > > **EC2 sanal sunucuları** ara kutusuna **EC2**
+AWS konsolunda oturum açın > > **EC2 sanal sunucuları** ara kutusuna 
 
 ![AWS konsol araması][aws-console]
 

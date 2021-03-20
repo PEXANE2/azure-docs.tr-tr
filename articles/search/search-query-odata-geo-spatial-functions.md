@@ -20,22 +20,22 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 376cece922ca424ec78011224852b1fa5499da16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88934846"
 ---
 # <a name="odata-geo-spatial-functions-in-azure-cognitive-search---geodistance-and-geointersects"></a>Azure Bilişsel Arama OData coğrafi uzamsal işlevleri- `geo.distance` ve `geo.intersects`
 
 Azure Bilişsel Arama, ve işlevleri aracılığıyla [OData filtre ifadelerinde](query-odata-filter-orderby-syntax.md) coğrafi uzamsal sorguları destekler `geo.distance` `geo.intersects` . `geo.distance`İşlevi iki noktası arasındaki mesafeyi kilometre cinsinden, biri alan veya Aralık değişkeni, diğeri ise filtrenin bir parçası olarak geçen bir sabit değer olarak döndürür. Bu `geo.intersects` işlev, `true` belirli bir noktanın belirli bir çokgen içindeyse, noktanın bir alan veya Aralık değişkeni olduğu ve çokgenin, filtrenin bir parçası olarak geçirildiği bir sabit olarak belirtildiği şekilde belirtilir.
 
-`geo.distance`İşlev, arama sonuçlarını belirli bir noktadan uzaklığına göre sıralamak için [ **$OrderBy** parametresinde](search-query-odata-orderby.md) de kullanılabilir. `geo.distance` **$OrderBy** ' deki sözdizimi **$Filter**' deki ile aynıdır. $Orderby kullanılırken `geo.distance` , **$orderby**geçerli olduğu alan türünde olmalıdır `Edm.GeographyPoint` ve aynı zamanda **sıralanabilir**olmalıdır.
+`geo.distance`İşlev, arama sonuçlarını belirli bir noktadan uzaklığına göre sıralamak için [ **$OrderBy** parametresinde](search-query-odata-orderby.md) de kullanılabilir. `geo.distance` **$OrderBy** ' deki sözdizimi **$Filter**' deki ile aynıdır. $Orderby kullanılırken `geo.distance` , geçerli olduğu alan türünde olmalıdır `Edm.GeographyPoint` ve aynı zamanda **sıralanabilir** olmalıdır.
 
 > [!NOTE]
 > `geo.distance` **$OrderBy** parametresinde kullanırken, işleve geçirdiğiniz alan yalnızca tek bir coğrafi nokta içermelidir. Diğer bir deyişle, türünde olması gerekir `Edm.GeographyPoint` `Collection(Edm.GeographyPoint)` . Azure Bilişsel Arama 'de koleksiyon alanlarını sıralamak mümkün değildir.
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 Aşağıdaki EBNF ([genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)), `geo.distance` ve işlevlerinin dilbilgisini ve `geo.intersects` üzerinde çalıştıkları coğrafi uzamsal değerleri tanımlar:
 
@@ -97,7 +97,7 @@ Azure Bilişsel Arama, sorgu şekli dikdörtgen ise ve koordinatlarınız boylam
 Azure Bilişsel Arama içindeki diğer tüm koleksiyon olmayan alanlar gibi, türündeki alanlar `Edm.GeographyPoint` `null` değer içerebilir. Azure Bilişsel Arama, `geo.intersects` olan bir alanı değerlendirirken `null` , sonuç her zaman olur `false` . Bu durumda öğesinin davranışı, `geo.distance` bağlama göre değişir:
 
 - `geo.distance`Bir alanın filtrelerinde `null` sonucu olur `null` . Bu, `null` null olmayan hiçbir değere karşılık olarak değerlendirilmediği için belgenin eşleşmeyeceği anlamına gelir `false` .
-- Sonuçları **$OrderBy**kullanarak sıralarken, `geo.distance` bir `null` alanın en fazla olası uzaklığa neden olur. Bu alan içeren belgeler, sıralama yönü `asc` kullanıldığında (varsayılan) ve diğer tüm diğerlerine göre daha yükseği olduğunda, bu alana sahip olan belgeler diğerlerinden daha düşük sıralanır `desc` .
+- Sonuçları **$OrderBy** kullanarak sıralarken, `geo.distance` bir `null` alanın en fazla olası uzaklığa neden olur. Bu alan içeren belgeler, sıralama yönü `asc` kullanıldığında (varsayılan) ve diğer tüm diğerlerine göre daha yükseği olduğunda, bu alana sahip olan belgeler diğerlerinden daha düşük sıralanır `desc` .
 
 ## <a name="examples"></a>Örnekler
 

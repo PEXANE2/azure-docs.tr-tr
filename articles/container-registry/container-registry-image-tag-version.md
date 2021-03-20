@@ -6,18 +6,18 @@ ms.topic: article
 ms.date: 07/10/2019
 ms.author: stevelas
 ms.openlocfilehash: b483317960409fe1fbea181706f12375606fe659
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75445746"
 ---
 # <a name="recommendations-for-tagging-and-versioning-container-images"></a>Kapsayıcı görüntülerini etiketleme ve sürüm oluşturma önerileri
 
 Kapsayıcı görüntüleri bir kapsayıcı kayıt defterine dağıtmaya ve sonra dağıttıktan sonra, görüntü etiketleme ve sürüm oluşturma stratejisine ihtiyacınız vardır. Bu makalede, her birinin kapsayıcı yaşam döngüsü sırasında uygun olduğu iki yaklaşım ele alınmaktadır:
 
-* **Kararlı Etiketler** -Örneğin, *mycontainerımage: 1.0*gibi büyük veya küçük bir sürümü göstermek için yeniden kullandığınız Etiketler.
-* **Benzersiz Etiketler** -bir kayıt defterine gönderdiğiniz her görüntü için, *mycontainerımage: abc123*gibi farklı bir etiket.
+* **Kararlı Etiketler** -Örneğin, *mycontainerımage: 1.0* gibi büyük veya küçük bir sürümü göstermek için yeniden kullandığınız Etiketler.
+* **Benzersiz Etiketler** -bir kayıt defterine gönderdiğiniz her görüntü için, *mycontainerımage: abc123* gibi farklı bir etiket.
 
 ## <a name="stable-tags"></a>Kararlı Etiketler
 
@@ -44,12 +44,12 @@ Kararlı bir etiketi olan bir görüntü güncelleştirilirse, önceden etiketle
 
 ## <a name="unique-tags"></a>Benzersiz Etiketler
 
-**Öneri**: özellikle birden çok düğümde ölçeklenebilen bir ortamda **dağıtımlar**için benzersiz Etiketler kullanın. Büyük olasılıkla bileşenlerin tutarlı bir sürümünün bilinçli dağıtımlarını istersiniz. Kapsayıcınız yeniden başlatılırsa veya bir Orchestrator daha fazla örnek ölçeklendiyse, ana bilgisayarınız yanlışlıkla daha yeni bir sürüm çekmez ve diğer düğümlerle tutarsız.
+**Öneri**: özellikle birden çok düğümde ölçeklenebilen bir ortamda **dağıtımlar** için benzersiz Etiketler kullanın. Büyük olasılıkla bileşenlerin tutarlı bir sürümünün bilinçli dağıtımlarını istersiniz. Kapsayıcınız yeniden başlatılırsa veya bir Orchestrator daha fazla örnek ölçeklendiyse, ana bilgisayarınız yanlışlıkla daha yeni bir sürüm çekmez ve diğer düğümlerle tutarsız.
 
 Benzersiz etiketleme, bir kayıt defterine gönderilen her görüntünün benzersiz bir etiketi olduğu anlamına gelir. Etiketler yeniden kullanılmaz. Aşağıdakiler de dahil olmak üzere benzersiz Etiketler oluşturmak için izleyebileceğiniz çeşitli desenler vardır:
 
 * **Tarih-saat damgası** -bu yaklaşım oldukça yaygındır çünkü görüntünün ne zaman oluşturulduğunu açıkça anlayabilirsiniz. Ancak, derleme sisteminize nasıl geri bağıntılı? Aynı zamanda tamamlanan derlemeyi bulmanız gerekiyor mu? Hangi saat dilimini kullanıyorsunuz? Tüm derleme sistemleriniz UTC 'ye göre ayarlanmış mı?
-* **Git yürütmesi**  – bu yaklaşım, temel görüntü güncelleştirmelerini desteklemeye başlamadan işe yarar. Bir temel görüntü güncelleştirmesi gerçekleşdiğinde, derleme sisteminiz önceki derleme ile aynı git yürütmesiyle birlikte çıkar. Ancak, temel görüntüde yeni içerik bulunur. Genel olarak, bir git yürütmesi *yarı*kararlı bir etiket sağlar.
+* **Git yürütmesi**  – bu yaklaşım, temel görüntü güncelleştirmelerini desteklemeye başlamadan işe yarar. Bir temel görüntü güncelleştirmesi gerçekleşdiğinde, derleme sisteminiz önceki derleme ile aynı git yürütmesiyle birlikte çıkar. Ancak, temel görüntüde yeni içerik bulunur. Genel olarak, bir git yürütmesi *yarı* kararlı bir etiket sağlar.
 * **Bildirim Özeti** -bir kapsayıcı kayıt defterine gönderilen her kapsayıcı görüntüsü, BENZERSIZ bir SHA-256 karması veya Özet tarafından tanımlanan bir bildirimle ilişkilendirilir. Benzersiz olsa da Özet, derleme ortamınızla bağıntılı, okunması ve bağıntısız bir biçimde yapılır.
 * **Derleme kimliği** -Bu seçenek büyük olasılıkla artımlı olduğundan en iyi şekilde olabilir ve tüm yapıtları ve günlükleri bulmak için belirli bir yapıya geri ilişki kurmanıza olanak tanır. Bununla birlikte, bir bildirim Özeti gibi, insanların okuması zor olabilir.
 

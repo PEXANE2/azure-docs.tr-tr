@@ -7,18 +7,18 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: 62ca32ab4e348e1488fbb87672e582436b91d05d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 3111b3a102abd923169cf655f1d71e79b19f7d5d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98875018"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598142"
 ---
 # <a name="register-and-scan-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'i kaydetme ve tarama
 
 Bu makalede, Azure SYNAPSE Analytics 'in (eski adıyla SQL DW) bir örneğinin nasıl kaydedileceği ve taramanın nasıl yapılacağı açıklanır.
 
-## <a name="supported-capabilities"></a>Desteklenen yetenekler
+## <a name="supported-capabilities"></a>Desteklenen özellikler
 
 Azure SYNAPSE Analytics (eski adıyla SQL DW), meta verileri ve şemayı yakalamak için tam ve artımlı taramaları destekler. Taramalar Ayrıca verileri sistem ve özel sınıflandırma kurallarına göre otomatik olarak sınıflandırır.
 
@@ -127,7 +127,7 @@ Yeni bir Azure SYNAPSE Analytics sunucusunu veri kataloğunuza kaydetmek için a
 **Kaynakları Kaydet (Azure SYNAPSE Analytics)** ekranında şunları yapın:
 
 1. Veri kaynağının katalogda listelenecek bir **ad** girin.
-1. İstediğiniz depolama hesabınıza nasıl işaret etmek istediğinizi seçin:
+1. İstediğiniz mantıksal SQL Server nasıl işaret etmek istediğinizi seçin:
    1. **Azure aboneliği ' nden** seçim yapın, **Azure aboneliği** açılan kutusundan ilgili aboneliği ve **sunucu adı** açılan kutusundan uygun sunucuyu seçin.
    1. Veya **El Ile gir** ' i seçip **sunucu adı** girebilirsiniz.
 1. Veri kaynağını kaydetmek için **son** ' a gidin.

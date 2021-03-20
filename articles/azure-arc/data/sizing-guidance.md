@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 6e7f2e445c3e4e8df7420c0587e156968f3a2c92
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94542686"
 ---
 # <a name="sizing-guidance"></a>Boyutlandırma Kılavuzu
@@ -124,9 +124,9 @@ Her veritabanı örneği için istediğiniz çekirdekler ve belleğe ek olarak, 
 
 Gereksinimler:
 
-- **"SQL1"** : 16 GB RAM, 4 çekirdek IÇEREN 1 SQL yönetilen örneği
-- **"SQL2"** : 256 GB RAM, 16 çekirdek IÇEREN 1 SQL yönetilen örneği
-- **"Postgres1"** : 12 GB RAM, 4 çekirdek üzerinde 4 çalışan 1 PostgreSQL hiper ölçek sunucu grubu
+- **"SQL1"**: 16 GB RAM, 4 çekirdek IÇEREN 1 SQL yönetilen örneği
+- **"SQL2"**: 256 GB RAM, 16 çekirdek IÇEREN 1 SQL yönetilen örneği
+- **"Postgres1"**: 12 GB RAM, 4 çekirdek üzerinde 4 çalışan 1 PostgreSQL hiper ölçek sunucu grubu
 
 Boyutlandırma hesaplamaları:
 

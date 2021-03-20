@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: surmb
 ms.openlocfilehash: ebd06b0b78ee511dce535ff4220df03087fb6906
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88723325"
 ---
 # <a name="application-gateway-components"></a>Application Gateway bileşenleri
@@ -69,7 +69,7 @@ Daha fazla bilgi için bkz. [Application Gateway Için özel hata sayfaları](cu
 
 - **Temel**. Bu tür bir dinleyici, uygulama ağ geçidinin IP adresine tek bir DNS eşlemesinin bulunduğu tek bir etki alanı sitesini dinler. Bu dinleyici yapılandırması, bir uygulama ağ geçidinin arkasında tek bir site barındırdığınızda gereklidir.
 
-- **Çok**siteli. Aynı uygulama ağ geçidinde birden fazla Web uygulaması için ana bilgisayar adına veya etki alanı adına dayalı yönlendirmeyi yapılandırmak istediğinizde bu dinleyici yapılandırması gerekir. Bir uygulama ağ geçidine 100'den fazla web sitesi ekleyerek dağıtımlarınız için daha verimli bir topoloji yapılandırmanıza olanak tanır. Her web sitesi, kendi arka uç havuzuna yönlendirilebilir. Örneğin contoso.com, fabrikam.com ve adatum.com olmak üzere üç etki alanı, uygulama ağ geçidinin IP adresine işaret eder. Üç adet [çok siteli dinleyici](multiple-site-overview.md) oluşturup her dinleyiciyi ilgili bağlantı noktası ve protokol ayarı için yapılandırırsınız. 
+- **Çok** siteli. Aynı uygulama ağ geçidinde birden fazla Web uygulaması için ana bilgisayar adına veya etki alanı adına dayalı yönlendirmeyi yapılandırmak istediğinizde bu dinleyici yapılandırması gerekir. Bir uygulama ağ geçidine 100'den fazla web sitesi ekleyerek dağıtımlarınız için daha verimli bir topoloji yapılandırmanıza olanak tanır. Her web sitesi, kendi arka uç havuzuna yönlendirilebilir. Örneğin contoso.com, fabrikam.com ve adatum.com olmak üzere üç etki alanı, uygulama ağ geçidinin IP adresine işaret eder. Üç adet [çok siteli dinleyici](multiple-site-overview.md) oluşturup her dinleyiciyi ilgili bağlantı noktası ve protokol ayarı için yapılandırırsınız. 
 
     Ayrıca çoklu site dinleyicisinde joker karakter ana bilgisayar adı tanımlayabilir ve bunu dinleyici başına en fazla 5 ana bilgisayar adı için yapabilirsiniz. Daha fazla bilgi için bkz. [dinleyicide joker ana bilgisayar adları (Önizleme)](multiple-site-overview.md#wildcard-host-names-in-listener-preview).
 
@@ -140,7 +140,7 @@ Bir uygulama ağ geçidi, trafiğe izin veriliyorsa Azure ExpressRoute veya VPN 
 
 Farklı istek türleri için farklı arka uç havuzları oluşturabilirsiniz. Örneğin, genel istekler için bir arka uç havuzu oluşturun ve daha sonra uygulamanız için mikro hizmetlere istekler için bir arka uç havuzu oluşturun.
 
-## <a name="health-probes"></a>Sistem durumu araştırmaları
+## <a name="health-probes"></a>Durum araştırmaları
 
 Varsayılan olarak, bir uygulama ağ geçidi, arka uç havuzundaki tüm kaynakların sistem durumunu izler ve sağlıksız olanları otomatik olarak kaldırır. Ardından, sağlıksız örnekleri izler ve kullanılabilir hale geldiğinde ve sistem durumu araştırmalarına yanıt verdiklerinde yeniden sağlıklı arka uç havuzuna ekler.
 
@@ -152,6 +152,6 @@ Daha fazla bilgi için bkz. [uygulama ağ geçidinizin durumunu izleme](../appli
 
 Uygulama ağ geçidi oluşturma:
 
-* [Azure portalında](quick-create-portal.md)
+* [Azure portal](quick-create-portal.md)
 * [Azure PowerShell kullanarak](quick-create-powershell.md)
 * [Azure CLı kullanarak](quick-create-cli.md)

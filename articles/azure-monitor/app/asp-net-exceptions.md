@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/11/2019
 ms.openlocfilehash: 36e916eabfca8e997fc3d46ff10f6201203457cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88936512"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Application Insights ile web uygulamalarınızda özel durumları tanılama
@@ -76,7 +76,7 @@ Birkaç seçeneğiniz vardır:
 * [Trackexception ()](#exceptions) yığın izlemeleri gönderir. [Özel durumlar hakkında daha fazla](#exceptions)bilgi.
 * Log4Net veya NLog gibi bir günlük çerçevesini zaten kullanıyorsanız, [Bu günlükleri yakalayabilir](asp-net-trace-logs.md) ve istek ve özel durum verilerinin yanı sıra tanılama araması içinde görebilirsiniz.
 
-Bu olayları görmek için, sol menüden [Ara](./diagnostic-search.md) ' yı açın, açılan menü **olay türlerini**seçin ve ardından özel olay, izleme veya özel durum ' u seçin.
+Bu olayları görmek için, sol menüden [Ara](./diagnostic-search.md) ' yı açın, açılan menü **olay türlerini** seçin ve ardından özel olay, izleme veya özel durum ' u seçin.
 
 ![Detaylandırma](./media/asp-net-exceptions/customevents.png)
 
@@ -95,7 +95,7 @@ Bu olayları görmek için, sol menüden [Ara](./diagnostic-search.md) ' yı aç
 ## <a name="capturing-exceptions-and-related-diagnostic-data"></a><a name="exceptions"></a> Özel durumları ve ilgili tanılama verilerini yakalama
 İlk olarak, portalda hatalara neden olan tüm özel durumların portalda görmezsiniz. Herhangi bir tarayıcı özel durumu görürsünüz (Web sayfalarınızda [JavaScript SDK 'sını](./javascript.md) kullanıyorsanız). Ancak, çoğu sunucu özel durumu IIS tarafından yakalanır ve bunları görmek için bir kod yazmanız gerekir.
 
-Şunları yapabilirsiniz:
+Seçenekleriniz şunlardır:
 
 * Özel durumları raporlamak için özel durum işleyicilerinde kod ekleyerek **özel durumları açıkça günlüğe kaydedin** .
 * ASP.NET çerçevesini yapılandırarak **özel durumları otomatik olarak yakalayın** . Gerekli eklemeler farklı çerçeve türleri için farklıdır.
@@ -184,7 +184,7 @@ public class GoodController : ApiController
 ## <a name="web-forms"></a>Web formları
 Web Forms için HTTP modülü, CustomErrors ile yapılandırılmış yeniden yönlendirme olmadığında özel durumları toplayabilecektir.
 
-Ancak etkin yeniden yönlendirmelere sahipseniz, Global.asax.cs içindeki Application_Error işlevine aşağıdaki satırları ekleyin. (Henüz yoksa bir Global. asax dosyası ekleyin.)
+Ancak etkin yeniden yönlendirmelere sahipseniz, Global. asax. cs içindeki Application_Error işlevine aşağıdaki satırları ekleyin. (Henüz yoksa bir Global. asax dosyası ekleyin.)
 
 ```csharp
     void Application_Error(object sender, EventArgs e)
@@ -200,7 +200,7 @@ Ancak etkin yeniden yönlendirmelere sahipseniz, Global.asax.cs içindeki Applic
 ## <a name="mvc"></a>MVC
 Application Insights Web SDK 2,6 (Beta3 ve üzeri) sürümünden itibaren, Application Insights MVC 5 + denetleyiciler yöntemlerinde otomatik olarak oluşturulan işlenmeyen özel durumları toplar. Bu tür özel durumları izlemek için daha önce özel bir işleyici eklediyseniz (aşağıdaki örneklerde açıklandığı gibi), özel durumların çift izlemesini engellemek için bunu kaldırabilirsiniz.
 
-Özel durum filtrelerinden işleyememesi gereken birkaç durum vardır. Örneğin:
+Özel durum filtrelerinden işleyememesi gereken birkaç durum vardır. Örnek:
 
 * Denetleyici oluşturucularından gelen özel durumlar.
 * İleti işleyicilerinden oluşturulan özel durumlar.
@@ -259,7 +259,7 @@ HandleError özniteliğini denetleyicilerinizdeki yeni öznitelikle değiştirin
 [Örnek](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions)
 
 #### <a name="mvc-3"></a>MVC 3
-`AiHandleErrorAttribute`Global.asax.cs içinde genel filtre olarak Kaydet:
+`AiHandleErrorAttribute`Global. asax. cs dosyasında genel filtre olarak Kaydet:
 
 ```csharp
     public class MyMvcApplication : System.Web.HttpApplication
@@ -274,7 +274,7 @@ HandleError özniteliğini denetleyicilerinizdeki yeni öznitelikle değiştirin
 [Örnek](https://github.com/AppInsightsSamples/Mvc3UnhandledExceptionTelemetry)
 
 #### <a name="mvc-4-mvc5"></a>MVC 4, MVC5
-AiHandleErrorAttribute 'ı FilterConfig.cs içinde genel bir filtre olarak Kaydet:
+AiHandleErrorAttribute 'i FilterConfig. cs içinde genel bir filtre olarak Kaydet:
 
 ```csharp
     public class FilterConfig
@@ -292,7 +292,7 @@ AiHandleErrorAttribute 'ı FilterConfig.cs içinde genel bir filtre olarak Kayde
 ## <a name="web-api"></a>Web API
 Application Insights Web SDK 2,6 (Beta3 ve üzeri) sürümünden başlayarak, Application Insights, denetleyici yöntemlerinde otomatik olarak oluşturulan işlenmeyen özel durumları, WebAPI 2 + için otomatik olarak toplar. Bu tür özel durumları izlemek için daha önce özel bir işleyici eklediyseniz (aşağıdaki örneklerde açıklandığı gibi), özel durumların çift izlemesini engellemek için bunu kaldırabilirsiniz.
 
-Özel durum filtrelerinden işleyememesi gereken birkaç durum vardır. Örneğin:
+Özel durum filtrelerinden işleyememesi gereken birkaç durum vardır. Örnek:
 
 * Denetleyici oluşturucularından gelen özel durumlar.
 * İleti işleyicilerinden oluşturulan özel durumlar.

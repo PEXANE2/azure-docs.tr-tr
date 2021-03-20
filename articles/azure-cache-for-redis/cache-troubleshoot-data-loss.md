@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.openlocfilehash: 6db036752bab7b84b72a37b148eaec7aa5765ef3
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92538604"
 ---
 # <a name="troubleshoot-data-loss-in-azure-cache-for-redis"></a>Redis için Azure Cache'de veri kaybı sorunlarını giderme
@@ -27,7 +27,7 @@ Redsıs için Azure önbelleği, bellekte depolandıktan sonra anahtarları rast
 
 Bu anahtarların önbelleğinizi kaybolduğunu fark ederseniz, aşağıdaki olası nedenleri kontrol edin:
 
-| Nedeni | Açıklama |
+| Nedeni | Description |
 |---|---|
 | [Anahtar süre sonu](#key-expiration) | Anahtarlar, üzerinde ayarlanan zaman aşımları nedeniyle kaldırılır. |
 | [Anahtar çıkarma](#key-eviction) | Anahtarlar bellek baskısı altında kaldırılır. |
@@ -86,7 +86,7 @@ Standart veya Premium katmanda Redsıs örneği için herhangi bir Azure önbell
 
 En fazla veya tüm anahtarlar önbelleğinizi kaybolduysa, aşağıdaki olası nedenleri kontrol edin:
 
-| Nedeni | Açıklama |
+| Nedeni | Description |
 |---|---|
 | [Anahtar Temizleme](#key-flushing) | Anahtarlar el ile temizlendi. |
 | [Yanlış veritabanı seçimi](#incorrect-database-selection) | Redo için Azure önbelleği varsayılan olmayan bir veritabanı kullanacak şekilde ayarlanmıştır. |
@@ -106,7 +106,7 @@ cmdstat_flushdb:calls=1,usec=110,usec_per_call=52.00
 
 ### <a name="incorrect-database-selection"></a>Yanlış veritabanı seçimi
 
-Redsıs için Azure önbelleği varsayılan olarak **DB0** veritabanını kullanır. Başka bir veritabanına geçiş yaparsanız (örneğin, **DB1** ) ve bundan sonra anahtarları okumaya çalışırsanız, redin Için Azure önbelleği bunları orada bulamaz. Her veritabanı mantıksal olarak ayrı bir birimdir ve farklı bir veri kümesi tutar. Diğer kullanılabilir veritabanlarını kullanmak ve bunların her birinde anahtarları aramak için [Seç](https://redis.io/commands/select) komutunu kullanın.
+Redsıs için Azure önbelleği varsayılan olarak **DB0** veritabanını kullanır. Başka bir veritabanına geçiş yaparsanız (örneğin, **DB1**) ve bundan sonra anahtarları okumaya çalışırsanız, redin Için Azure önbelleği bunları orada bulamaz. Her veritabanı mantıksal olarak ayrı bir birimdir ve farklı bir veri kümesi tutar. Diğer kullanılabilir veritabanlarını kullanmak ve bunların her birinde anahtarları aramak için [Seç](https://redis.io/commands/select) komutunu kullanın.
 
 ### <a name="redis-instance-failure"></a>Redsıs örneği hatası
 

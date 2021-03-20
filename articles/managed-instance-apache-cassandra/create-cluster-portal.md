@@ -7,12 +7,12 @@ ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/02/2021
 ms.custom: references_regions
-ms.openlocfilehash: db3f188cc796642285d9b082b46371879491c632
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.openlocfilehash: cb555eefb19b5db7ed7eb0792a813c295a4bf38b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103225243"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588622"
 ---
 # <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-from-the-azure-portal-preview"></a>Hızlı başlangıç: Azure portal (Önizleme) Apache Cassandra kümesi için Azure yönetilen örneği oluşturma
  
@@ -89,7 +89,6 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
    :::image type="content" source="./media/create-cluster-portal/resources.png" alt-text="Küme kaynaklarını görüntüleyin." lightbox="./media/create-cluster-portal/resources.png" border="true":::
 
 
-
 ## <a name="connecting-to-your-cluster"></a>Kümenize bağlanma
 
 Apache Cassandra için Azure yönetilen örneği, genel IP adresleriyle düğüm oluşturmaz, bu nedenle yeni oluşturulan Cassandra kümenize bağlanmak için VNet içinde başka bir kaynak oluşturmanız gerekir. Bu bir uygulama veya Apache 'in açık kaynaklı sorgu aracı [Csqlsh](https://cassandra.apache.org/doc/latest/tools/cqlsh.html) 'in yüklü olduğu bir sanal makine olabilir. Bir Ubuntu sanal makinesini dağıtmak için bir [şablon](https://azure.microsoft.com/resources/templates/101-vm-simple-linux/) kullanabilirsiniz. Dağıtıldığında, makineye bağlanmak için SSH kullanın ve aşağıdaki komutları kullanarak CSQLSH 'i yüklemek için:
@@ -113,6 +112,15 @@ export SSL_VALIDATE=false
 host=("<IP>" "<IP>" "<IP>")
 cqlsh $host 9042 -u cassandra -p cassandra --ssl
 ```
+
+## <a name="troubleshooting"></a>Sorun giderme
+
+Sanal ağınıza izin uygularken bir hatayla karşılaşırsanız (örneğin, *' e5007d2c-4b13-4a74-9b6a-605d99f03501 ' için grafik veritabanında kullanıcı veya hizmet sorumlusu bulunamıyor*), Azure Portal aynı izni el ile uygulayabilirsiniz. Portaldan izinleri uygulamak için, var olan sanal ağınızın **erişim denetimi (IAM)** bölmesine gidin ve "Azure Cosmos DB" Için "Ağ Yöneticisi" rolüne bir rol ataması ekleyin. "Azure Cosmos DB" araması yaptığınızda iki giriş görünürse, aşağıdaki görüntüde gösterildiği gibi her iki girdiyi de ekleyin: 
+
+   :::image type="content" source="./media/create-cluster-cli/apply-permissions.png" alt-text="İzinleri Uygula" lightbox="./media/create-cluster-cli/apply-permissions.png" border="true":::
+
+> [!NOTE] 
+> Azure Cosmos DB rol ataması yalnızca dağıtım amacıyla kullanılır. Apache Cassandra için Azure yönetilen ınstanced Azure Cosmos DB için arka uç bağımlılığı yok.   
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

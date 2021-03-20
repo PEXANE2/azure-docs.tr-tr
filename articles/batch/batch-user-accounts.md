@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.custom: seodec18
 ms.openlocfilehash: cce374e7d7ffb513bed882b048ea54bcbad81b0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88719368"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Batch 'de Kullanıcı hesapları altında görevleri çalıştırma
@@ -44,7 +44,7 @@ Bir görevden dosya ve dizinlere erişme hakkında daha fazla bilgi için bkz. [
 
 Kullanıcı hesabının yükseltme düzeyi, bir görevin yükseltilmiş erişimle çalıştırılıp çalıştırılmadığını gösterir. Hem bir otomatik Kullanıcı hesabı hem de adlandırılmış bir kullanıcı hesabı, yükseltilmiş erişimle çalıştırılabilir. Yükseltme düzeyi için iki seçenek şunlardır:
 
-- **Yönetici olmayan:** Görev, yükseltilmiş erişim olmadan standart bir kullanıcı olarak çalışır. Batch Kullanıcı hesabı için varsayılan yükseltme düzeyi her zaman **yönetici olmayan**bir hesaptır.
+- **Yönetici olmayan:** Görev, yükseltilmiş erişim olmadan standart bir kullanıcı olarak çalışır. Batch Kullanıcı hesabı için varsayılan yükseltme düzeyi her zaman **yönetici olmayan** bir hesaptır.
 - **Yönetici:** Görev, yükseltilmiş erişimi olan bir kullanıcı olarak çalışır ve tam yönetici izinleriyle çalışır.
 
 ## <a name="auto-user-accounts"></a>Otomatik Kullanıcı hesapları
