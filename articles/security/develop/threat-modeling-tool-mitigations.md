@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: 748d10b994080b667885e5d0d5f4d688269e86ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "68728041"
 ---
 # <a name="microsoft-threat-modeling-tool-mitigations"></a>Microsoft Threat Modeling Tool azaltmaları
@@ -35,10 +35,10 @@ Threat Modeling Tool azaltmaları, aşağıdakilerden oluşan Web uygulaması g�
 | Kategori | Açıklama |
 | -------- | ----------- |
 | **[Denetleme ve günlüğe kaydetme](threat-modeling-tool-auditing-and-logging.md)** | Kim ve ne zaman? Denetim ve günlük kaydı, uygulamanızın güvenlikle ilgili olayları nasıl kayıtlarına başvurur |
-| **[Kimlik Doğrulaması](threat-modeling-tool-authentication.md)** | Kimsin? Kimlik doğrulaması, bir varlığın, genellikle Kullanıcı adı ve parola gibi kimlik bilgileri aracılığıyla başka bir varlığın kimliğini kanıtlayan işlemdir |
+| **[Yetkilendirmesi](threat-modeling-tool-authentication.md)** | Kimsiniz? Kimlik doğrulaması, bir varlığın, genellikle Kullanıcı adı ve parola gibi kimlik bilgileri aracılığıyla başka bir varlığın kimliğini kanıtlayan işlemdir |
 | **[Yetkilendirme](threat-modeling-tool-authorization.md)** | Ne yapabilirsiniz? Yetkilendirme, uygulamanızın kaynaklar ve işlemler için erişim denetimleri sağladığı bir uygulamadır |
 | **[İletişim güvenliği](threat-modeling-tool-communication-security.md)** | Kimler konuşuyor? İletişim güvenliği, yapılan tüm iletişimin olabildiğince güvenli olmasını sağlar |
-| **[Yapılandırma Yönetimi](threat-modeling-tool-configuration-management.md)** | Uygulamanız ne gibi çalışıyor? Hangi veritabanlarına bağlanır? Uygulamanız nasıl yönetilir? Bu ayarların güvenliği nasıl sağlanır? Yapılandırma yönetimi, uygulamanızın bu işlem sorunlarını nasıl işleyeceğini belirtir |
+| **[Yapılandırma yönetimi](threat-modeling-tool-configuration-management.md)** | Uygulamanız ne gibi çalışıyor? Hangi veritabanlarına bağlanır? Uygulamanız nasıl yönetilir? Bu ayarların güvenliği nasıl sağlanır? Yapılandırma yönetimi, uygulamanızın bu işlem sorunlarını nasıl işleyeceğini belirtir |
 | **[Şifreleme](threat-modeling-tool-cryptography.md)** | Gizli dizileri (Gizlilik) nasıl saklıyorsunuz? Verilerinizi veya kitaplıklarınızı (bütünlük) nasıl oynayabilir? Şifreleme açısından güçlü olması gereken rastgele değerler için çekirdekler nasıl sağlanır? Şifreleme, uygulamanızın gizliliği ve bütünlüğü nasıl zorladığı anlamına gelir |
 | **[Özel durum yönetimi](threat-modeling-tool-exception-management.md)** | Uygulamanızdaki bir yöntem çağrısı başarısız olursa, uygulamanız ne olur? Ne kadar açığa çıkar? Son kullanıcılara kolay hata bilgileri döndürüyor musunuz? Değerli özel durum bilgilerini çağırana geri iletmeniz mı? Uygulamanız düzgün şekilde başarısız mı? |
 | **[Giriş doğrulaması](threat-modeling-tool-input-validation.md)** | Uygulamanızın alacağı girişin geçerli ve güvenli olduğunu nasıl anlarsınız? Giriş doğrulaması, uygulamanızın ek işlemeden önce girişi nasıl filtreleyeceğini, itilen veya reddettiğini belirtir. Giriş noktaları aracılığıyla girişi kısıtlama ve çıkış noktaları aracılığıyla kodlama çıkışı yapmayı düşünün. Veritabanları ve dosya paylaşımları gibi kaynaklardaki verilere güveniyor musunuz? |
@@ -50,7 +50,7 @@ Bu, şunları belirlemenize yardımcı olur:
 * En yaygın hatalar nerede yapılır
 * En iyi işlem yapılabilir geliştirmeler nerede
 
-Sonuç olarak, giriş doğrulaması, kimlik doğrulama ve yetkilendirme kategorilerinde en yaygın güvenlik sorunlarının gerçekleşeceğinizi biliyorsanız, buradan başladıysanız, güvenlik çalışmalarınızı odaklamak ve önceliklendirmek için bu kategorileri kullanırsınız. Daha fazla bilgi için ** [Bu patent bağlantısını](https://www.google.com/patents/US7818788) ziyaret edin**
+Sonuç olarak, giriş doğrulaması, kimlik doğrulama ve yetkilendirme kategorilerinde en yaygın güvenlik sorunlarının gerçekleşeceğinizi biliyorsanız, buradan başladıysanız, güvenlik çalışmalarınızı odaklamak ve önceliklendirmek için bu kategorileri kullanırsınız. Daha fazla bilgi için **[Bu patent bağlantısını](https://www.google.com/patents/US7818788) ziyaret edin**
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

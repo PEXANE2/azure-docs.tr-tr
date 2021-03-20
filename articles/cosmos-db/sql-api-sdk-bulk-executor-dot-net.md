@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
-ms.openlocfilehash: 91fcfc614fed95c40aa3fed4368d17399255e8b5
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 23c0787b45a6e3f52dae58c24a33e00437f1e09c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102423920"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577198"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>.NET toplu yürütücü kitaplığı: Indirme bilgileri 
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -37,7 +37,7 @@ ms.locfileid: "102423920"
 > * [Toplu yürütücü - .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Toplu yürütücü - Java](sql-api-sdk-bulk-executor-java.md)
 
-| |  |
+| | Bağlantı/notlar |
 |---|---|
 | **Açıklama**| .NET toplu yürütücü kitaplığı, istemci uygulamalarının Azure Cosmos DB hesaplarında toplu işlemler gerçekleştirmesine olanak sağlar. Bu kitaplık, BulkImport, BulkUpdate ve BulkDelete ad alanları sağlar. BulkImport modülü, bir koleksiyon için sağlanan aktarım hızı en büyük ölçüde tüketilebilmesi için belgeleri en iyi duruma getirilmiş bir şekilde toplu Içe alabilir. BulkUpdate modülü Azure Cosmos kapsayıcılarındaki mevcut verileri düzeltme eki olarak toplu güncelleştirebilir. BulkDelete modülü, bir koleksiyon için sağlanan aktarım hızı en yüksek ölçüde tüketilebilmesi için belgeleri iyileştirilmiş bir şekilde toplu olarak silebilir.|
 |**SDK indirmesi**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/) |

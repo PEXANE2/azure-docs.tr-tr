@@ -6,14 +6,14 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: da9205f5d95eaf1b4dc655ee727ab8a4fe90893d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75563335"
 ---
 # <a name="introducing-the-service-fabric-cluster-resource-manager"></a>Service Fabric kümesi kaynak yöneticisi 'ne giriş
-Geleneksel olarak BT sistemlerini veya çevrimiçi hizmetler, belirli fiziksel veya sanal makineleri bu hizmetlere veya sistemlere ayırabilirsiniz. Hizmetler, katman olarak tasarlanmıştır. "Web" katmanı ve "veri" veya "depolama" katmanı vardır. Uygulamalar, isteklerin akan ve giden isteklerinin yanı sıra önbelleğe alma için ayrılmış bir makine kümesi olur. Her katmana veya iş yükü türüne ayrılmış belirli makineler vardı: veritabanı, kendisine ayrılmış bir dizi makineye sahiptir ve Web sunucuları birkaç tane olur. Belirli bir iş yükü türü, üzerinde çalıştığı makinelere çok sıcak bir yol varsa, o katmana aynı yapılandırmaya sahip daha fazla makine eklediniz. Ancak, tüm iş yükleri daha kolay bir şekilde, özellikle de veri katmanıyla birlikte, makineleri daha büyük makinelere sahip olacak şekilde ölçeklenmez. Kolay. Bir makine başarısız olursa, makinenin geri yükleneünceye kadar genel uygulamanın bu bölümü daha düşük kapasitede çalışır. Hala oldukça kolay (eğlenceli değilse).
+Geleneksel olarak BT sistemlerini veya çevrimiçi hizmetler, belirli fiziksel veya sanal makineleri bu hizmetlere veya sistemlere ayırabilirsiniz. Hizmetler, katman olarak tasarlanmıştır. "Web" katmanı ve "veri" veya "depolama" katmanı vardır. Uygulamalar, isteklerin akan ve giden isteklerinin yanı sıra önbelleğe alma için ayrılmış bir makine kümesi olur. Her katmana veya iş yükü türüne ayrılmış belirli makineler vardı: veritabanı, kendisine ayrılmış bir dizi makineye sahiptir ve Web sunucuları birkaç tane olur. Belirli bir iş yükü türü, üzerinde çalıştığı makinelere çok sıcak bir yol varsa, o katmana aynı yapılandırmaya sahip daha fazla makine eklediniz. Ancak, tüm iş yükleri daha kolay bir şekilde, özellikle de veri katmanıyla birlikte, makineleri daha büyük makinelere sahip olacak şekilde ölçeklenmez. Çok basit. Bir makine başarısız olursa, makinenin geri yükleneünceye kadar genel uygulamanın bu bölümü daha düşük kapasitede çalışır. Hala oldukça kolay (eğlenceli değilse).
 
 Ancak, hizmet ve yazılım mimarisinin dünyası değişmiştir. Uygulamaların bir genişleme tasarımını benimsemesi daha yaygındır. Kapsayıcılar veya mikro hizmetler (ya da her ikisi) ile uygulama oluşturma yaygındır. Artık yalnızca birkaç makineniz olabilir, ancak iş yükünün yalnızca tek bir örneğini çalıştırmazlar. Aynı anda birden çok farklı iş yükü de çalıştırıyor olabilirler. Artık, bu hizmetlerin yüzlerce farklı örneği olan düzinelerce farklı hizmet türlerine (bir tam makinenin kaynak adına sahip değil) sahip olursunuz. Her bir adlandırılmış örnek, yüksek kullanılabilirlik (HA) için bir veya daha fazla örneğe veya çoğaltmaya sahiptir. Bu iş yüklerinin boyutlarına ve ne kadar meşgul olduğuna bağlı olarak, kendinizi yüzlerce veya binlerce makine ile bulabilirsiniz. 
 

@@ -8,6 +8,8 @@
       href: core/overview-iot-central-tour.md
     - name: Son güncelleştirmeler
       items:
+        - name: Şubat 2021 yeni ve güncelleştirilmiş özellikleri
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-february-2021/'
         - name: Ocak 2021 yeni ve güncelleştirilmiş özellikler
           href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-january-2021/'
         - name: Kasım 2020 yeni ve güncelleştirilmiş özellikler
@@ -129,6 +131,8 @@
       href: core/concepts-architecture.md
     - name: Cihaz geliştirici kılavuzu
       href: core/overview-iot-central-developer.md
+    - name: Operatör Kılavuzu
+      href: core/overview-iot-central-operator.md
     - name: Çözüm Oluşturucu Kılavuzu
       href: core/overview-iot-central-solution-builder.md
     - name: Uygulama şablonları nedir?

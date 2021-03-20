@@ -9,10 +9,10 @@ ms.date: 1/17/2021
 ms.topic: article
 ms.service: azure
 ms.openlocfilehash: f2a4c3e79a762de19c6e8c029256cd70dedfe3dc
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98558733"
 ---
 # <a name="the-defender-for-iot-ics-management-application-for-servicenow"></a>ServiceNow için IoT ICS yönetim uygulaması Defender
@@ -153,7 +153,7 @@ Kuralı tanımlamak için:
 
 ### <a name="send-defender-for-iot-device-attributes"></a>IoT için Defender cihaz özniteliklerini gönder
 
-Bu makalede, IoT için Defender 'ın, ServiceNow tablolarına çok sayıda cihaz özniteliği göndermek için nasıl yapılandırılacağı açıklanır. ServiceNow 'a gönderilen bilgi türü hakkındaki ayrıntılar için bkz. **_Inventory Information_* _.
+Bu makalede, IoT için Defender 'ın, ServiceNow tablolarına çok sayıda cihaz özniteliği göndermek için nasıl yapılandırılacağı açıklanır. ServiceNow 'a gönderilen bilgi türü hakkındaki ayrıntılar için ***Envanter bilgilerine*** bakın.
 
 ServiceNow 'a öznitelikler göndermek için şirket içi yönetim konsolunuzu bir ServiceNow örneğine eşlemeniz gerekir. Bu sayede, IoT Platformu için Defender 'ın örnekle iletişim kurabildiğinden ve kimlik doğrulamasından geçmesini sağlar.
 
@@ -161,7 +161,7 @@ ServiceNow örneği eklemek için:
 
 1. IoT şirket içi yönetim konsolu için Defender ' da oturum açın.
 
-1. Şirket içi yönetim konsolu tümleştirme bölümünde _ *sistem ayarları** ' nı ve ardından **ServiceNow** ' ı seçin.
+1. Şirket içi yönetim konsolu tümleştirme bölümünden **sistem ayarları** ' nı ve ardından **ServiceNow** ' ı seçin.
 
       :::image type="content" source="media/integration-servicenow/servicenow.png" alt-text="ServiceNow düğmesini seçin.":::
 
@@ -329,7 +329,7 @@ Bu makalede ServiceNow 'a gönderilen cihaz uyarı bilgileri açıklanmaktadır.
 | Oluşturulan | Uyarının oluşturulduğu saat ve tarih. |
 | Altyapı | Olayı algılayan altyapı. |
 | Başlık | Uyarı başlığı. |
-| Açıklama | Uyarı açıklaması. |
+| Description | Uyarı açıklaması. |
 | Protokol | Trafikte algılanan protokol. |
 | Önem derecesi | IoT için Defender tarafından tanımlanan uyarı önem derecesi. |
 | Elektrikli | Trafiği algılayan algılayıcının adı. |
@@ -349,7 +349,7 @@ Uyarı bilgilerini bir formda görüntülemek için oluşturulan sütunda giriş
 
 Bu makalede, her altyapının tetiklediği uyarıların türü açıklanmaktadır.
 
-| Uyarı türü | Açıklama |
+| Uyarı türü | Description |
 |--|--|
 | İlke ihlali uyarıları | Ilke Ihlali altyapısı, daha önce öğrenilen trafikten sapma algıladığında tetiklenir. Örnek: <br /><br />-Yeni bir cihaz algılandı. <br /><br />-Bir cihazda yeni bir yapılandırma algılandı. <br /><br />-Programlama cihazı olarak tanımlanmayan bir cihaz, programlama değişikliğini yürütür. <br /><br />-Bir bellenim sürümü değişti. |
 | Protokol ihlali uyarıları | Protokol Ihlali altyapısı, protokol belirtimine uymayan bir paket yapıları veya alan değerleri algıladığında tetiklenir. |

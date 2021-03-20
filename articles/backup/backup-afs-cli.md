@@ -4,10 +4,10 @@ description: Azure CLı kullanarak kurtarma hizmetleri kasasındaki Azure dosya 
 ms.topic: conceptual
 ms.date: 01/14/2020
 ms.openlocfilehash: 34eea8daa6a0a8920c842178664055838b06a78a
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94565900"
 ---
 # <a name="back-up-azure-file-shares-with-azure-cli"></a>Azure CLı ile Azure dosya paylaşımlarını yedekleme
@@ -86,7 +86,7 @@ Yedekleme ilkesinin işi zamanlanan saatte çalıştırmasını beklemek yerine 
 * **--öğe-adı** , isteğe bağlı yedeklemeyi tetiklemek istediğiniz dosya paylaşımının adıdır. Yedeklenen öğenin **adını** veya **kolay adını** almak için [az Backup Item List](/cli/azure/backup/item#az-backup-item-list) komutunu kullanın.
 * **--sakla-Until** , kurtarma noktasını bekletene kadar olan tarihi belirtir. Değer UTC saat biçiminde ayarlanmalıdır (gg-aa-yyyy).
 
-Aşağıdaki örnek, *20-01-2020* 'e kadar bekletme ile *afsaccount* depolama hesabındaki *azurefiles* FileShare için isteğe bağlı bir yedeklemeyi tetikler.
+Aşağıdaki örnek, *20-01-2020*'e kadar bekletme ile *afsaccount* depolama hesabındaki *azurefiles* FileShare için isteğe bağlı bir yedeklemeyi tetikler.
 
 ```azurecli-interactive
 az backup protection backup-now --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --retain-until 20-01-2020 --output table

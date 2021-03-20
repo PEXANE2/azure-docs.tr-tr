@@ -9,10 +9,10 @@ ms.date: 1/17/2021
 ms.topic: article
 ms.service: azure
 ms.openlocfilehash: faa53c770d0d6caac471e770c80b4dfd5c5ff603
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98558623"
 ---
 # <a name="about-the-forescout-integration"></a>Forescout tümleştirmesi hakkında
@@ -110,7 +110,7 @@ Ayarlamak için:
    - **Sunucu adresi** -Forescout gereci tarafından sorgulanacak IoT algılayıcısı IÇIN Defender IP adresini girin.
    - **Erişim belirteci** -Forescout gerecine bağlanacak olan, IoT algılayıcısı için Defender için oluşturulan erişim belirtecini girin. Belirteç oluşturmak için bkz. [IoT Platformu Için Defender 'ı ayarlama](#set-up-the-defender-for-iot-platform).
 
-1. **Apply** (Uygula) seçeneğini belirleyin.
+1. **Uygula**’yı seçin.
 
 Forescout platformunun başka bir sensörle iletişim kurmasını istiyorsanız:
 

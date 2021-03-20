@@ -4,14 +4,14 @@ description: Service Fabric hizmetinizde HTTP veya HTTPS uç noktalarına güven
 ms.topic: conceptual
 ms.date: 03/21/2018
 ms.openlocfilehash: c7d30e85848f045b5724bb8bdc6e5c810102c044
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75614664"
 ---
 # <a name="assign-a-security-access-policy-for-http-and-https-endpoints"></a>HTTP ve HTTPS uç noktaları için bir güvenlik erişim ilkesi atama
-Bir farklı çalıştır ilkesi uygularsanız ve hizmet bildirimi HTTP uç noktası kaynaklarını bildiriyorsa, bir **Securityaccesspolicy**belirtmeniz gerekir.  **Securityaccesspolicy** , bu uç noktalara ayrılan bağlantı noktalarının hizmetin çalıştığı kullanıcı hesabıyla doğru bir şekilde kısıtlanmasını sağlar. Aksi takdirde, **http.sys** hizmete erişemez ve istemciden gelen çağrılarla ilgili hatalara sahip olursunuz. Aşağıdaki örnek, tam erişim hakları sağlayan **EndpointName**adlı bir uç noktaya Customer1 hesabını uygular.
+Bir farklı çalıştır ilkesi uygularsanız ve hizmet bildirimi HTTP uç noktası kaynaklarını bildiriyorsa, bir **Securityaccesspolicy** belirtmeniz gerekir.  **Securityaccesspolicy** , bu uç noktalara ayrılan bağlantı noktalarının hizmetin çalıştığı kullanıcı hesabıyla doğru bir şekilde kısıtlanmasını sağlar. Aksi takdirde, **http.sys** hizmete erişemez ve istemciden gelen çağrılarla ilgili hatalara sahip olursunuz. Aşağıdaki örnek, tam erişim hakları sağlayan **EndpointName** adlı bir uç noktaya Customer1 hesabını uygular.
 
 ```xml
 <Policies>
@@ -21,7 +21,7 @@ Bir farklı çalıştır ilkesi uygularsanız ve hizmet bildirimi HTTP uç nokta
 </Policies>
 ```
 
-Bir HTTPS uç noktası için, istemciye döndürülecek sertifikanın adını da belirtin. Bu sertifikaya **Endpointbindingpolicy**kullanarak başvurulamıyor.  Sertifika, uygulama bildiriminin **Sertifikalar** bölümünde tanımlanmıştır.
+Bir HTTPS uç noktası için, istemciye döndürülecek sertifikanın adını da belirtin. Bu sertifikaya **Endpointbindingpolicy** kullanarak başvurulamıyor.  Sertifika, uygulama bildiriminin **Sertifikalar** bölümünde tanımlanmıştır.
 
 ```xml
 <Policies>

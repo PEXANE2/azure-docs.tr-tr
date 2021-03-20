@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 10/12/2020
 ms.custom: references_regions, devx-track-azurecli
 ms.openlocfilehash: eeb9a71854f52da5c1a9f4befae93c377ad67b05
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98920316"
 ---
 # <a name="run-an-acr-task-on-a-dedicated-agent-pool"></a>Adanmış bir aracı havuzunda ACR görevi çalıştırma
@@ -95,11 +95,11 @@ Görev Aracısı havuzlarının aşağıdaki Azure hizmetlerine erişmesi gereki
 
 | Yön | Protokol | Kaynak         | Kaynak Bağlantı Noktası | Hedef          | Hedef bağlantı noktası | Kullanılan    |
 |-----------|----------|----------------|-------------|----------------------|-----------|---------|
-| Giden  | TCP      | VirtualNetwork | Herhangi bir         | AzureKeyVault        | 443       | Varsayılan |
-| Giden  | TCP      | VirtualNetwork | Herhangi bir         | Depolama              | 443       | Varsayılan |
-| Giden  | TCP      | VirtualNetwork | Herhangi bir         | EventHub             | 443       | Varsayılan |
-| Giden  | TCP      | VirtualNetwork | Herhangi bir         | AzureActiveDirectory | 443       | Varsayılan |
-| Giden  | TCP      | VirtualNetwork | Herhangi bir         | AzureMonitor         | 443       | Varsayılan |
+| Giden  | TCP      | VirtualNetwork | Herhangi biri         | AzureKeyVault        | 443       | Varsayılan |
+| Giden  | TCP      | VirtualNetwork | Herhangi biri         | Depolama              | 443       | Varsayılan |
+| Giden  | TCP      | VirtualNetwork | Herhangi biri         | EventHub             | 443       | Varsayılan |
+| Giden  | TCP      | VirtualNetwork | Herhangi biri         | AzureActiveDirectory | 443       | Varsayılan |
+| Giden  | TCP      | VirtualNetwork | Herhangi biri         | AzureMonitor         | 443       | Varsayılan |
 
 > [!NOTE]
 > Görevleriniz ortak internet 'ten ek kaynaklar gerektiriyorsa, karşılık gelen kuralları ekleyin. Örneğin, Docker Hub 'ından temel görüntüleri çeken bir Docker Build görevi çalıştırmak için ek kurallar gerekir veya bir NuGet paketini geri yükler.

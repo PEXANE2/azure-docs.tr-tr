@@ -9,10 +9,10 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 44a9d5b273e13886b0674b3b2e9f5f7a75e72fcc
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93338586"
 ---
 # <a name="log-azure-cosmos-db"></a>GÜNLÜK (Azure Cosmos DB)
@@ -42,7 +42,7 @@ LOG (<numeric_expr> [, <base>])
   
   Varsayılan olarak, LOG () doğal logaritmayı döndürür. İsteğe bağlı temel parametreyi kullanarak logaritmanın temelini başka bir değere değiştirebilirsiniz.  
   
-  Doğal logaritma, **e** 'nin bir ırrational sabiti olarak 2,718281828 'e eşit olduğu, taban **e** 'nin logaritmasına neden olur.  
+  Doğal logaritma, **e** 'nin bir ırrational sabiti olarak 2,718281828 'e eşit olduğu, taban **e**'nin logaritmasına neden olur.  
   
   Bir sayının üstel değerinin doğal logaritması, sayının kendisidir: LOG (EXP (n)) = n. Bir sayının doğal logaritmanın üstel değeri, sayının kendisidir: EXP (günlük (n)) = n.
 

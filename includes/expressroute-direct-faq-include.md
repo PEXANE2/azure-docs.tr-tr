@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: expressroute
 author: jaredr80
 ms.service: expressroute
@@ -9,21 +9,21 @@ ms.date: 10/29/2019
 ms.author: jaredro
 ms.custom: include file
 ms.openlocfilehash: 1f6c65d6d8da275d6c52ac2802092dbb5e4e507d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "73182294"
 ---
 ### <a name="what-is-expressroute-direct"></a>ExpressRoute Direct nedir?
 
 ExpressRoute Direct, müşterilere Microsoft’un dünya çapında stratejik noktalara yerleştirilmiş eşleme konumlarından oluşan küresel ağına doğrudan bağlanabilme olanağı sağlar. ExpressRoute Direct, ölçek üzerinde etkin/etkin bağlantıyı destekleyen iki 100 veya 10 Gbps bağlantı sağlar. 
 
-### <a name="how-do-customers-connect-to-expressroute-direct"></a>Müşteriler ExpressRoute Direct 'e nasıl bağlanır? 
+### <a name="how-do-customers-connect-to-expressroute-direct"></a>Müşteriler ExpressRoute Direct 'e nasıl bağlanır? 
 
 ExpressRoute Direct 'ten faydalanmak için müşterilerin ExpressRoute yönlendiricilerine bağlantı alması için yerel taşıyıcılar ve ortak konum sağlayıcılarıyla birlikte çalışması gerekecektir.
 
-### <a name="what-locations-currently-support-expressroute-direct"></a>Şu anda ExpressRoute Direct 'i hangi konumlarda destekliyor? 
+### <a name="what-locations-currently-support-expressroute-direct"></a>Şu anda ExpressRoute Direct 'i hangi konumlarda destekliyor? 
 
 Lütfen [konum sayfasında](../articles/expressroute/expressroute-locations-providers.md)kullanılabilirliği denetleyin. 
 
@@ -31,11 +31,11 @@ Lütfen [konum sayfasında](../articles/expressroute/expressroute-locations-prov
 
 ExpressRoute Direct, [ExpressRoute 'un kurumsal sınıf](https://azure.microsoft.com/support/legal/sla/expressroute/v1_3/)aynısını kullanır. 
 
-### <a name="what-scenarios-should-customers-consider-with-expressroute-direct"></a>Müşterilerin ExpressRoute Direct ile hangi senaryolar dikkate alınmalıdır?  
+### <a name="what-scenarios-should-customers-consider-with-expressroute-direct"></a>Müşterilerin ExpressRoute Direct ile hangi senaryolar dikkate alınmalıdır?  
 
-ExpressRoute Direct, müşterilere Microsoft Global omurgaya doğrudan 100 veya 10 Gbps bağlantı noktası çiftleri sağlar. Müşterilerimize en yüksek avantajları sağlayacak senaryolar şunlardır: büyük miktarda veri alma, düzenlenen pazarlar için fiziksel yalıtım ve işleme gibi veri bloğu senaryosu için adanmış kapasite. 
+ExpressRoute Direct, müşterilere Microsoft Global omurgaya doğrudan 100 veya 10 Gbps bağlantı noktası çiftleri sağlar. Müşterilerimize en yüksek avantajları sağlayacak senaryolar şunlardır: büyük miktarda veri alma, düzenlenen pazarlar için fiziksel yalıtım ve işleme gibi veri bloğu senaryosu için adanmış kapasite. 
 
-### <a name="what-is-the-billing-model-for-expressroute-direct"></a>ExpressRoute Direct için faturalandırma modeli nedir? 
+### <a name="what-is-the-billing-model-for-expressroute-direct"></a>ExpressRoute Direct için faturalandırma modeli nedir? 
 
 ExpressRoute Direct, bağlantı noktası çifti için sabit bir miktar olarak faturalandırılır. Standart devreler ek bir saat olmaksızın dahil edilir ve Premium, hafif bir eklenti ücretine sahip olur. Çıkış, eşleme konumunun bölgesine bağlı olarak her bir devre temelinde faturalandırılır.
 

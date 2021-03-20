@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: f55b225e615a3e7a5fbcf56b405054883d3b5413
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98741205"
 ---
 # <a name="common-cloud-service-classic-startup-tasks"></a>Ortak bulut hizmeti (klasik) başlangıç görevleri
@@ -87,7 +87,7 @@ Bu örnek, hata işleme ve günlüğe kaydetme ile, JSON için bir sıkıştırm
 *Startup. cmd* toplu iş dosyası, bir sıkıştırma bölümü ve JSON için *Web.config* dosyasına bir sıkıştırma girişi eklemek için *AppCmd.exe* kullanır. VERIFY.EXE komut satırı programı kullanılarak 183 için beklenen **ERRORLEVEL** 0 olarak ayarlanır. StartupErrorLog.txt için beklenmeyen errorlevels günlüğe kaydedilir.
 
 ```cmd
-REM   **_ Add a compression section to the Web.config file. _*_
+REM   *** Add a compression section to the Web.config file. ***
 %windir%\system32\inetsrv\appcmd set config /section:urlCompression /doDynamicCompression:True /commit:apphost >> "%TEMP%\StartupLog.txt" 2>&1
 
 REM   ERRORLEVEL 183 occurs when trying to add a section that already exists. This error is expected if this
@@ -102,7 +102,7 @@ IF %ERRORLEVEL% NEQ 0 (
     GOTO ErrorExit
 )
 
-REM   _*_ Add compression for json. _*_
+REM   *** Add compression for json. ***
 %windir%\system32\inetsrv\appcmd set config  -section:system.webServer/httpCompression /+"dynamicTypes.[mimeType='application/json; charset=utf-8',enabled='True']" /commit:apphost >> "%TEMP%\StartupLog.txt" 2>&1
 IF %ERRORLEVEL% EQU 183 VERIFY > NUL
 IF %ERRORLEVEL% NEQ 0 (
@@ -110,10 +110,10 @@ IF %ERRORLEVEL% NEQ 0 (
     GOTO ErrorExit
 )
 
-REM   _*_ Exit batch file. _*_
+REM   *** Exit batch file. ***
 EXIT /b 0
 
-REM   _*_ Log error and exit _*_
+REM   *** Log error and exit ***
 :ErrorExit
 REM   Report the date, time, and ERRORLEVEL of the error.
 DATE /T >> "%TEMP%\StartupLog.txt" 2>&1
@@ -129,7 +129,7 @@ Azure 'da, etkin olarak iki güvenlik duvarı vardır. İlk güvenlik duvarı, s
 
 Azure, rollerinizde başlatılan işlemlere yönelik güvenlik duvarı kuralları oluşturur. Örneğin, bir hizmet veya program başlattığınızda, Azure bu hizmetin Internet ile iletişim kurmasına izin vermek için gerekli güvenlik duvarı kurallarını otomatik olarak oluşturur. Ancak, rolünüzün dışındaki bir işlem (COM+ hizmeti veya Windows zamanlanmış görevi gibi) tarafından başlatılan bir hizmet oluşturursanız, bu hizmete erişime izin vermek için el ile bir güvenlik duvarı kuralı oluşturmanız gerekir. Bu güvenlik duvarı kuralları, bir başlangıç görevi kullanılarak oluşturulabilir.
 
-Güvenlik duvarı kuralı oluşturan bir başlangıç görevinin bir [ExecutionContext][görevi] _ * yükseltilmiş * * olmalıdır. Aşağıdaki başlangıç görevini [ServiceDefinition. csdef] dosyasına ekleyin.
+Bir güvenlik duvarı kuralı oluşturan bir başlangıç görevinin bir [ExecutionContext][görevi] **yükseltilmiş** olmalıdır. Aşağıdaki başlangıç görevini [ServiceDefinition. csdef] dosyasına ekleyin.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">

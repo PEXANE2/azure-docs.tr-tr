@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 05/13/2019
 ms.openlocfilehash: 277faa2d47df9fddd1762d90d9aa2fb5bf00d4df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "82508147"
 ---
 # <a name="azure-managed-application-with-managed-identity"></a>Yönetilen kimliğe sahip Azure yönetilen uygulaması
@@ -29,7 +29,7 @@ Uygulamanıza iki tür kimlik verilebilir:
 Yönetilen kimlik, yönetilen uygulamalar için birçok senaryoya izin vermez. Çözülebilinen bazı yaygın senaryolar şunlardır:
 
 - Mevcut Azure kaynaklarına bağlı bir yönetilen uygulama dağıtma. Bir örnek, [mevcut bir ağ arabirimine](../../virtual-network/virtual-network-network-interface-vm.md)bağlı yönetilen uygulama Içinde bir Azure sanal MAKINESI (VM) dağıtmakta bir örnektir.
-- Yönetilen uygulama ve yayımcı **tarafından yönetilen kaynak grubu**dışındaki Azure kaynaklarına erişim izni veriliyor.
+- Yönetilen uygulama ve yayımcı **tarafından yönetilen kaynak grubu** dışındaki Azure kaynaklarına erişim izni veriliyor.
 - Azure 'daki etkinlik günlüğü ve diğer hizmetler için yönetilen uygulamalar için işletimsel kimlik sağlama.
 
 ## <a name="adding-managed-identity"></a>Yönetilen kimlik ekleniyor
@@ -50,7 +50,7 @@ Yönetilen bir kimlikle yönetilen bir uygulama oluşturmak için Azure kaynağ�
 
 ### <a name="using-createuidefinition"></a>Createuıdefinition kullanma
 
-Yönetilen bir uygulama, [ üzerindeCreateUIDefinition.js](./create-uidefinition-overview.md)aracılığıyla yönetilen kimlik ile yapılandırılabilir. [Çıktılar bölümünde](./create-uidefinition-overview.md#outputs), anahtar, `managedIdentity` yönetilen uygulama şablonunun kimlik özelliğini geçersiz kılmak için kullanılabilir. Örnek olarak, yönetilen uygulama üzerinde **sistem tarafından atanan** kimlik etkinleştirilir. Daha karmaşık kimlik nesneleri, tüketiciden giriş istemek için Createuıdefinition öğeleri kullanılarak oluşturulabilir. Bu girişler, **Kullanıcı tarafından atanan kimlik**Ile yönetilen uygulamalar oluşturmak için kullanılabilir.
+Yönetilen bir uygulama, [ üzerindeCreateUIDefinition.js](./create-uidefinition-overview.md)aracılığıyla yönetilen kimlik ile yapılandırılabilir. [Çıktılar bölümünde](./create-uidefinition-overview.md#outputs), anahtar, `managedIdentity` yönetilen uygulama şablonunun kimlik özelliğini geçersiz kılmak için kullanılabilir. Örnek olarak, yönetilen uygulama üzerinde **sistem tarafından atanan** kimlik etkinleştirilir. Daha karmaşık kimlik nesneleri, tüketiciden giriş istemek için Createuıdefinition öğeleri kullanılarak oluşturulabilir. Bu girişler, **Kullanıcı tarafından atanan kimlik** Ile yönetilen uygulamalar oluşturmak için kullanılabilir.
 
 ```json
 "outputs": {
@@ -132,7 +132,7 @@ Createuıdefinition yerleşik bir [yönetilen kimlik denetimini](./microsoft-man
 > Market yönetilen uygulama şablonları, Azure portal oluşturma deneyiminden geçen müşteriler için otomatik olarak oluşturulur.
 > Bu senaryolar için `managedIdentity` Createuıdefinition üzerindeki çıkış anahtarının kimliği etkinleştirmek için kullanılması gerekir.
 
-Yönetilen kimlik Azure Resource Manager şablonlar aracılığıyla da etkinleştirilebilir. Örnek olarak, yönetilen uygulama üzerinde **sistem tarafından atanan** kimlik etkinleştirilir. Daha karmaşık kimlik nesneleri, giriş sağlamak için Azure Resource Manager şablon parametreleri kullanılarak oluşturulabilir. Bu girişler, **Kullanıcı tarafından atanan kimlik**Ile yönetilen uygulamalar oluşturmak için kullanılabilir.
+Yönetilen kimlik Azure Resource Manager şablonlar aracılığıyla da etkinleştirilebilir. Örnek olarak, yönetilen uygulama üzerinde **sistem tarafından atanan** kimlik etkinleştirilir. Daha karmaşık kimlik nesneleri, giriş sağlamak için Azure Resource Manager şablon parametreleri kullanılarak oluşturulabilir. Bu girişler, **Kullanıcı tarafından atanan kimlik** Ile yönetilen uygulamalar oluşturmak için kullanılabilir.
 
 #### <a name="when-to-use-azure-resource-manager-templates-for-managed-identity"></a>Yönetilen kimlik için Azure Resource Manager şablonları ne zaman kullanılır
 
@@ -166,7 +166,7 @@ Yönetilen bir uygulamayı **sistem tarafından atanan** kimliğe dağıtan teme
 
 ### <a name="userassigned-template"></a>Kullanıcı tarafından atanan şablon
 
-Yönetilen bir uygulamayı **Kullanıcı tarafından atanan bir kimlikle**dağıtan temel bir Azure Resource Manager şablonu.
+Yönetilen bir uygulamayı **Kullanıcı tarafından atanan bir kimlikle** dağıtan temel bir Azure Resource Manager şablonu.
 
 ```json
 "resources": [

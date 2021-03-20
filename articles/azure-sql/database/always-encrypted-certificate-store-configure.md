@@ -13,10 +13,10 @@ ms.author: vanto
 ms.reviwer: ''
 ms.date: 04/23/2020
 ms.openlocfilehash: 60dea826a12ea475806adb6db88faa88e26463a1
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92674834"
 ---
 # <a name="configure-always-encrypted-by-using-the-windows-certificate-store"></a>Windows sertifika deposu kullanarak Always Encrypted yapılandırma
@@ -37,7 +37,7 @@ SQL veritabanı veya SQL yönetilen örneği için Always Encrypted ayarlamayı 
 * Veritabanı tablosu oluşturun ve sütunları şifreleyin.
 * Şifrelenmiş sütunlardan veri ekleyen, seçen ve görüntüleyen bir uygulama oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide şunlar gerekir:
 
@@ -70,8 +70,8 @@ SQL Server Management Studio (SSMS) açın ve sunucuya bağlanın ya da veritaba
 
 Bu bölümde, hasta verilerini tutacak bir tablo oluşturacaksınız. Bu, başlangıçta normal bir tablo olacaktır ve bir sonraki bölümde şifrelemeyi yapılandıracaksınız.
 
-1. **Veritabanları** ' nı genişletin.
-2. **Clinic** veritabanına sağ tıklayın ve **Yeni sorgu** ' ya tıklayın.
+1. **Veritabanları**' nı genişletin.
+2. **Clinic** veritabanına sağ tıklayın ve **Yeni sorgu**' ya tıklayın.
 3. Aşağıdaki Transact-SQL (T-SQL) ' i yeni sorgu penceresine yapıştırın ve **yürütün** .
     
     ```tsql
@@ -94,12 +94,12 @@ Bu bölümde, hasta verilerini tutacak bir tablo oluşturacaksınız. Bu, başla
 
 SSMS, sizin için CMK, CEK ve şifrelenmiş sütunları ayarlayarak Always Encrypted kolayca yapılandırmak için bir sihirbaz sağlar.
 
-1. **Veritabanları**  >  **Clinic**  >  **tabloları** ' nı genişletin.
+1. **Veritabanları**  >  **Clinic**  >  **tabloları**' nı genişletin.
 2. **Hastalar** tablosuna sağ tıklayın ve Always Encrypted Sihirbazı 'nı açmak Için **sütunları şifreleyin** ' ı seçin:
 
     ![Şifreleme Harmanlemelerini gösteren ekran görüntüsü... Hastalar tablosunda menü seçeneği.](./media/always-encrypted-certificate-store-configure/encrypt-columns.png)
 
-Always Encrypted Sihirbazı aşağıdaki bölümleri içerir: **sütun seçimi** , **ana anahtar yapılandırması** (CMK), **doğrulama** ve **Özet** .
+Always Encrypted Sihirbazı aşağıdaki bölümleri içerir: **sütun seçimi**, **ana anahtar yapılandırması** (CMK), **doğrulama** ve **Özet**.
 
 ### <a name="column-selection"></a>Sütun seçimi
 
@@ -107,7 +107,7 @@ Always Encrypted Sihirbazı aşağıdaki bölümleri içerir: **sütun seçimi**
 
 Her hasta için **SSK** ve **Doğum tarihi** bilgilerini şifreleyin. **SSK** sütunu, eşitlik aramalarını, birleştirmeleri ve gruplama tarafından desteklenen belirleyici şifrelemeyi kullanır. **Doğum tarihi** sütunu, işlemleri desteklemeyen rastgele şifrelemeyi kullanır.
 
-**SSN** sütunu Için **şifreleme türünü** **belirleyici** ve **Doğum tarihi** sütununu **rastgele** olarak ayarlayın. **İleri** ’ye tıklayın.
+**SSN** sütunu Için **şifreleme türünü** **belirleyici** ve **Doğum tarihi** sütununu **rastgele** olarak ayarlayın. **İleri**’ye tıklayın.
 
 ![Sütunları şifreleyin](./media/always-encrypted-certificate-store-configure/column-selection.png)
 
@@ -115,13 +115,13 @@ Her hasta için **SSK** ve **Doğum tarihi** bilgilerini şifreleyin. **SSK** s�
 
 **Ana anahtar yapılandırma** sayfası, CMK 'nizi ayarladığınız ve CMK 'ın depolanacağı anahtar deposu sağlayıcısını seçtiğiniz yerdir. Şu anda, bir CMK 'yi Windows sertifika deposunda, Azure Key Vault veya bir donanım güvenlik modülünde (HSM) depolayabilmeniz gerekir. Bu öğreticide, anahtarlarınızı Windows sertifika depolama alanında nasıl depolayabileceği gösterilmektedir.
 
-**Windows sertifika deposunun** seçili olduğunu doğrulayın ve **İleri** ' ye tıklayın.
+**Windows sertifika deposunun** seçili olduğunu doğrulayın ve **İleri**' ye tıklayın.
 
 ![Ana anahtar yapılandırması](./media/always-encrypted-certificate-store-configure/master-key-configuration.png)
 
 ### <a name="validation"></a>Doğrulama
 
-Sütunları şimdi şifreleyebilir veya daha sonra çalıştırmak için bir PowerShell betiği kaydedebilirsiniz. Bu öğreticide **Şimdi sona ermesini sağlamak Için devam** 'ı seçin ve **İleri** ' ye tıklayın.
+Sütunları şimdi şifreleyebilir veya daha sonra çalıştırmak için bir PowerShell betiği kaydedebilirsiniz. Bu öğreticide **Şimdi sona ermesini sağlamak Için devam** 'ı seçin ve **İleri**' ye tıklayın.
 
 ### <a name="summary"></a>Özet
 
@@ -147,7 +147,7 @@ Always Encrypted ayarlandığına *göre,* şifrelenmiş sütunlarda *eklemeleri
 > Uygulamanızın, Always Encrypted sütunları ile sunucuya düz metin verileri geçirirken [SqlParameter](/dotnet/api/system.data.sqlclient.sqlparameter) nesneleri kullanması gerekir. SqlParameter nesneleri kullanılmadan değişmez değerler geçirilmesi bir özel durumla sonuçlanır.
 
 1. Visual Studio 'Yu açın ve yeni bir C# konsol uygulaması oluşturun. Projenizin **.NET Framework 4,6** veya üzeri bir sürüme ayarlandığından emin olun.
-2. Projeyi **Alwaysencryptedconsoleapp** olarak adlandırın ve **Tamam** ' a tıklayın.
+2. Projeyi **Alwaysencryptedconsoleapp** olarak adlandırın ve **Tamam**' a tıklayın.
 
 ![Yeni adlandırılmış AlwaysEncryptedConsoleApp projesini gösteren ekran görüntüsü.](./media/always-encrypted-certificate-store-configure/console-app.png)
 
@@ -157,7 +157,7 @@ Bu bölümde, veritabanı bağlantı dizeniz Always Encrypted nasıl etkinleşti
 
 Always Encrypted etkinleştirmek için, bağlantı dizeniz için **sütun şifreleme ayarı** anahtar sözcüğünü eklemeniz ve **etkin** olarak ayarlamanız gerekir.
 
-Bunu doğrudan bağlantı dizesinde ayarlayabilir veya bir [SqlConnectionStringBuilder](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder)kullanarak ayarlayabilirsiniz. Sonraki bölümde bulunan örnek uygulama, **SqlConnectionStringBuilder** 'ın nasıl kullanılacağını gösterir.
+Bunu doğrudan bağlantı dizesinde ayarlayabilir veya bir [SqlConnectionStringBuilder](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder)kullanarak ayarlayabilirsiniz. Sonraki bölümde bulunan örnek uygulama, **SqlConnectionStringBuilder**'ın nasıl kullanılacağını gösterir.
 
 > [!NOTE]
 > Bu, Always Encrypted özgü bir istemci uygulamasında gerekli tek değişikdir. Bağlantı dizesini dışarıdan depolayan mevcut bir uygulamanız varsa (yani bir yapılandırma dosyasında), herhangi bir kodu değiştirmeden Always Encrypted etkinleştirebilirsiniz.
@@ -190,7 +190,7 @@ Bu örnekte nasıl yapılacağı gösterilmektedir:
 * Şifrelenmiş sütunlara veri ekleyin.
 * Şifrelenmiş bir sütunda belirli bir değeri filtreleyerek bir kayıt seçin.
 
-**Program.cs** içeriğini aşağıdaki kodla değiştirin. Ana yöntemin üzerindeki genel connectionString değişkeni için bağlantı dizesini, Azure portal geçerli bağlantı dizeniz ile değiştirin. Bu kodda yapmanız gereken tek değişiklik budur.
+**Program. cs** ' nin içeriğini aşağıdaki kodla değiştirin. Ana yöntemin üzerindeki genel connectionString değişkeni için bağlantı dizesini, Azure portal geçerli bağlantı dizeniz ile değiştirin. Bu kodda yapmanız gereken tek değişiklik budur.
 
 Always Encrypted eylemi görmek için uygulamayı çalıştırın.
 
@@ -514,8 +514,8 @@ SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
 
 SSMS 'yi düz metin verilerine erişmek üzere kullanmak için, bağlantı **sütunu şifreleme ayarı = Enabled** parametresini bağlantıya ekleyebilirsiniz.
 
-1. SSMS 'de sunucunuza **Nesne Gezgini** sağ tıklayın ve ardından **bağlantıyı kes** ' e tıklayın.
-2. **Connect**  >  **Sunucuya Bağlan** penceresini açmak için **veritabanı altyapısını** bağla ' ya tıklayın ve ardından **Seçenekler** ' e tıklayın.
+1. SSMS 'de sunucunuza **Nesne Gezgini** sağ tıklayın ve ardından **bağlantıyı kes**' e tıklayın.
+2.   >  **Sunucuya Bağlan** penceresini açmak için **veritabanı altyapısını** bağla ' ya tıklayın ve ardından **Seçenekler**' e tıklayın.
 3. **Ek bağlantı parametreleri** ve tür **sütunu şifreleme ayarı = etkin** öğesine tıklayın.
 
     ![Kutuda sütun şifreleme ayarı = etkin olan ek bağlantı parametreleri sekmesini gösteren ekran görüntüsü.](./media/always-encrypted-certificate-store-configure/ssms-connection-parameter.png)

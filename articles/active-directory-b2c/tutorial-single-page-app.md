@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 6a9f3b864bd8aba2140c7d32d4b5474ff7b95f88
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96171237"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-with-azure-ad-b2c"></a>Öğretici: Azure AD B2C ile tek sayfalı bir uygulamada kimlik doğrulamasını etkinleştirme
@@ -36,7 +36,7 @@ Serideki [sonraki öğretici](tutorial-single-page-app-webapi.md) , kod ÖRNEĞI
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticideki adımlara devam etmeden önce aşağıdaki Azure AD B2C kaynaklara sahip olmanız gerekir:
 
@@ -57,7 +57,7 @@ Azure AD B2C kiracınızdaki bir uygulamayı güncelleştirmek için yeni Birle�
 
 #### <a name="app-registrations-auth-code-flow"></a>[Uygulama kayıtları (kimlik doğrulama kodu akışı)](#tab/app-reg-auth/)
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C** seçin.
 1. **Uygulama kayıtları** öğesini seçin, **sahip olunan uygulamalar** sekmesini seçin ve ardından *spaapp1* uygulamasını seçin.
@@ -68,7 +68,7 @@ Azure AD B2C kiracınızdaki bir uygulamayı güncelleştirmek için yeni Birle�
 
 #### <a name="app-registrations-implicit-flow"></a>[Uygulama kayıtları (örtük akış)](#tab/app-reg-implicit/)
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C** seçin.
 1. **Uygulama kayıtları** öğesini seçin, **sahip olunan uygulamalar** sekmesini seçin ve ardından *spaapp1* uygulamasını seçin.
@@ -79,7 +79,7 @@ Azure AD B2C kiracınızdaki bir uygulamayı güncelleştirmek için yeni Birle�
 
 #### <a name="applications-legacy"></a>[Uygulamalar (eski)](#tab/applications-legacy/)
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üst menüdeki **Dizin + abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve sonra **Azure AD B2C**' i arayıp seçin.
 1. **Uygulamalar (eski)** öğesini seçin ve ardından *spaapp1* uygulamasını seçin.

@@ -4,10 +4,10 @@ description: Hizmet durumunun size, kullandığınız bölgelerde Azure hizmetle
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.openlocfilehash: 8246b0ab93b95c13858e4ff96d0f24b255d05e55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90967795"
 ---
 # <a name="service-health-overview"></a>Hizmet durumuna genel bakış
@@ -44,7 +44,7 @@ Sahip olduğunuz ve sorundan etkilenmiş olabileceğiniz kaynakların belirli bi
 
 ## <a name="see-emerging-issues-which-may-impact-your-services"></a>Hizmetleri etkileyebilecek sorunları ortaya çıkan sorunlara bakın
 
-Etkilenen müşterilere hedeflenen iletişimin gönderilebilmesi için, yaygın olarak hizmet sorunlarının [Azure durum sayfasına](https://status.azure.com) nakledilebileceği durumlar vardır. Azure hizmet durumu 'nun sizi etkileyebilecek sorunların kapsamlı bir görünümünü sağladığından emin olmak için, etkin Azure durum sayfası sorunları, *gelişen sorunlar*olarak hizmet durumu 'nda ortaya çıkmış olabilir. Azure durum sayfasında etkin bir olay olduğunda, hizmet durumu 'nda ortaya çıkan bir sorun başlığı görüntülenir. Sorunun tüm ayrıntılarını görmek için başlık ' a tıklayın.
+Etkilenen müşterilere hedeflenen iletişimin gönderilebilmesi için, yaygın olarak hizmet sorunlarının [Azure durum sayfasına](https://status.azure.com) nakledilebileceği durumlar vardır. Azure hizmet durumu 'nun sizi etkileyebilecek sorunların kapsamlı bir görünümünü sağladığından emin olmak için, etkin Azure durum sayfası sorunları, *gelişen sorunlar* olarak hizmet durumu 'nda ortaya çıkmış olabilir. Azure durum sayfasında etkin bir olay olduğunda, hizmet durumu 'nda ortaya çıkan bir sorun başlığı görüntülenir. Sorunun tüm ayrıntılarını görmek için başlık ' a tıklayın.
 
 ![Gelişen hizmet sorunu](./media/service-health-overview/azure-service-health-emerging-issue.png)
 
@@ -54,7 +54,7 @@ Sorun yönetim sisteminizde kullanmak için sorun için bir bağlantı edinebili
 
 [![Hizmet sorununu yönetme-sorun yönetimi](./media/service-health-overview/azure-service-health-overview-3.png)](./media/service-health-overview/azure-service-health-overview-3.png#lightbox)
 
-## <a name="get-support-from-microsoft"></a>Microsoft 'tan destek alın
+## <a name="get-support-from-microsoft"></a>Microsoft’tan destek alma
 
 Sorun çözümlendikten sonra bile kaynağınız hatalı bir durumda bırakılırsa desteğe başvurun.  Sayfanın sağ tarafındaki destek bağlantılarını kullanın.  
 

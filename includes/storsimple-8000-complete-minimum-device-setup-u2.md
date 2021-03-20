@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 867cdc97ff91d5932230b733dee4d7660d499c39
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96028530"
 ---
 #### <a name="to-complete-the-minimum-storsimple-device-setup"></a>En düşük StorSimple cihaz kurulumunu tamamlamak için
@@ -36,7 +36,7 @@ ms.locfileid: "96028530"
 
             ![Yönlendirilebilir IP’leri gösteren Test HcsmConnection](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig3.png)
 
-1. **Tamam** düğmesine tıklayın. Cihaz yapılandırması başlar. Cihaz yapılandırması tamamlandığında size bildirilir. **Cihazlar** dikey penceresinde cihazın durumu **Çevrimiçi** olarak değişir.
+1. **Tamam**'a tıklayın. Cihaz yapılandırması başlar. Cihaz yapılandırması tamamlandığında size bildirilir. **Cihazlar** dikey penceresinde cihazın durumu **Çevrimiçi** olarak değişir.
 
     ![StorSimple en düşük cihaz kurulumu ağ arabirimleri 3](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig4.png)
 

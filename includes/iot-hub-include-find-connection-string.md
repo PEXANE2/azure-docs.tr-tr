@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -9,10 +9,10 @@ ms.date: 11/02/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 8d7ac457041474f4e774414b1d5e6f9ed09dc856
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "67188468"
 ---
 <!-- this tells how to get the connection string for your hub -->
@@ -24,7 +24,7 @@ Hub 'ınız oluşturulduktan sonra, Hub için bağlantı dizesini alın. Bu, cih
    
 2. **Paylaşılan erişim ilkeleri** içinde **iothubowner** ilkesini seçin. 
 
-3. **Paylaşılan erişim anahtarları**altında, daha sonra kullanılacak olan **bağlantı dizesini (birincil anahtar** ) kopyalayın.
+3. **Paylaşılan erişim anahtarları** altında, daha sonra kullanılacak olan **bağlantı dizesini (birincil anahtar** ) kopyalayın.
 
     ![Bağlantı dizesinin nasıl alınacağını göster](./media/iot-hub-include-find-connection-string/iot-hub-get-connection-string.png)
 

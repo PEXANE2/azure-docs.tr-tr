@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 05/20/2020
 ms.custom: contperf-fy21q1
 ms.openlocfilehash: 10f99bdc4a5d418ae1b432a6799c5979e473c5ed
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98926989"
 ---
 # <a name="data-storage-optimization-for-apache-spark"></a>Apache Spark için veri depolama iyileştirmesi
@@ -58,7 +58,7 @@ Yeni bir Spark kümesi oluşturduğunuzda, kümenizin varsayılan depolama alan�
 | Azure Blob depolama (güvenli) | fazla **BS:**// | **Standart** | Yes | Geçici küme |
 | Azure Data Lake Storage 2. Nesil| **ABFS:**// | **Lýdýr** | Yes | Geçici küme |
 | Azure Data Lake Storage 1. Nesil| **adl:**// | **Lýdýr** | Yes | Geçici küme |
-| Yerel olarak | Bu **:**// | **En hızlı** | Hayır | Etkileşimli 24/7 kümesi |
+| Yerel olarak | Bu **:**// | **En hızlı** | No | Etkileşimli 24/7 kümesi |
 
 Depolama seçeneklerinin tam açıklaması için bkz. [Azure HDInsight kümeleri ile kullanım için depolama seçeneklerini karşılaştırma](../hdinsight-hadoop-compare-storage-options.md).
 

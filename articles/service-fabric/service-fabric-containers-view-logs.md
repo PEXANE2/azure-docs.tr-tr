@@ -4,10 +4,10 @@ description: Service Fabric Explorer kullanılarak çalışan bir Service Fabric
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.openlocfilehash: c47a408b272f95dbfcf3d791c644bfeb52254a72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75458192"
 ---
 # <a name="view-logs-for-a-service-fabric-container-service"></a>Service Fabric kapsayıcı hizmeti için günlükleri görüntüleme
@@ -16,9 +16,9 @@ Azure Service Fabric bir kapsayıcı Orchestrator ve hem [Linux hem de Windows k
 ## <a name="access-the-logs-of-a-running-container"></a>Çalışan bir kapsayıcının günlüklerine erişin
 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)kullanılarak kapsayıcı günlüklerine erişilebilir.  Bir Web tarayıcısında, ' a giderek kümenin yönetim uç noktasından Service Fabric Explorer açın `http://mycluster.region.cloudapp.azure.com:19080/Explorer` .  
 
-Kapsayıcı günlükleri, kapsayıcı hizmeti örneğinin üzerinde çalıştığı küme düğümünde bulunur. Örnek olarak, [Linux oylama örnek uygulamasının](service-fabric-quickstart-containers-linux.md)Web ön uç kapsayıcısının günlüklerini alın. Ağaç görünümünde, **küme** > **uygulamaları** > **votingtype** > **Fabric:/oylama/azuiptal tefront**' ı genişletin.  Sonra bölümü genişletin (Bu örnekte d1aa737e-f22a-e347-be16-eec90be24bc1) ve kapsayıcının *_lnxvm_0*küme düğümünde çalıştığını görün.
+Kapsayıcı günlükleri, kapsayıcı hizmeti örneğinin üzerinde çalıştığı küme düğümünde bulunur. Örnek olarak, [Linux oylama örnek uygulamasının](service-fabric-quickstart-containers-linux.md)Web ön uç kapsayıcısının günlüklerini alın. Ağaç görünümünde, **küme** > **uygulamaları** > **votingtype** > **Fabric:/oylama/azuiptal tefront**' ı genişletin.  Sonra bölümü genişletin (Bu örnekte d1aa737e-f22a-e347-be16-eec90be24bc1) ve kapsayıcının *_lnxvm_0* küme düğümünde çalıştığını görün.
 
-Ağaç görünümünde **düğümleri**genişleterek *_lnxvm_0* düğümündeki kod paketini bulun > **_lnxvm_0** > **Fabric:/oylama** > **azuiptal tfrontptpkg** > **kod paketleri** > **kodu**.  Ardından kapsayıcı günlüklerini göstermek için **kapsayıcı günlükleri** seçeneğini belirleyin.
+Ağaç görünümünde **düğümleri** genişleterek *_lnxvm_0* düğümündeki kod paketini bulun > **_lnxvm_0** > **Fabric:/oylama** > **azuiptal tfrontptpkg** > **kod paketleri** > **kodu**.  Ardından kapsayıcı günlüklerini göstermek için **kapsayıcı günlükleri** seçeneğini belirleyin.
 
 ![Service Fabric platformu][Image1]
 

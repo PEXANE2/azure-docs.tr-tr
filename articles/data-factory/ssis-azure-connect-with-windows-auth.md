@@ -11,10 +11,10 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: maghan
 ms.openlocfilehash: 77283596e4b0d7e25d757c9de76c284ca4f5d4f2
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98556410"
 ---
 # <a name="access-data-stores-and-file-shares-with-windows-authentication-from-ssis-packages-in-azure"></a>Azure'da SSIS paketlerinden Windows kimlik doğrulaması ile veri depolarına ve dosya paylaşımlarına erişme
@@ -99,7 +99,7 @@ Bu makalede açıklandığı gibi verdiğiniz kimlik bilgilerini temizlemek ve k
 
 3. SSMS 'den, şirket içi SQL Server bağlanıp bağlanamaıp bağlanamayacağını denetleyin.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Azure 'da çalışan paketlerden şirket içi bir SQL Server erişmek için aşağıdaki işlemleri yapın:
 
@@ -126,7 +126,7 @@ Azure 'da çalışan paketlerden şirket içi bir SQL Server erişmek için aşa
 
 3. Şirket içindeki dosya paylaşımının dizin listesinin döndürülüp döndürülmediğini denetleyin.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Şirket içindeki bir dosya paylaşımıyla Azure 'da çalışan paketlerden erişmek için aşağıdaki işlemleri yapın:
 

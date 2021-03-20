@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 06/23/2020
 ms.openlocfilehash: 22b582634b623b39545eca225c8df0130606c2bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90983883"
 ---
 # <a name="expose-an-on-premises-wcf-service-to-a-web-application-in-the-cloud-by-using-azure-relay"></a>Azure Relay kullanarak bir şirket içi WCF hizmetini bulutta bir Web uygulamasına sunun
@@ -31,7 +31,7 @@ Bu öğreticide aşağıdaki görevleri gerçekleştirebilirsiniz:
 > * Web uygulamasını Azure 'a dağıtın.
 > * Uygulamayı Azure 'da çalıştırın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdaki önkoşulları karşılamanız gerekir:
 
@@ -78,20 +78,20 @@ Yükleme tamamlandıktan sonra, uygulamayı geliştirmeye başlamak için gereke
 
 1. Microsoft Visual Studio yönetici olarak başlatın. Bunu yapmak için, Visual Studio program simgesine sağ tıklayın ve **yönetici olarak çalıştır**' ı seçin.
 1. Visual Studio 'da **Yeni proje oluştur**' u seçin.
-1. **Yeni proje oluştur**bölümünde C# için **konsol uygulaması (.NET Framework)** öğesini seçin ve **İleri**' yi seçin.
+1. **Yeni proje oluştur** bölümünde C# için **konsol uygulaması (.NET Framework)** öğesini seçin ve **İleri**' yi seçin.
 1. Projeyi *Productsserver* olarak adlandırın ve **Oluştur**' u seçin.
 
    ![Yeni projenizi yapılandırın][11]
 
 1. **Çözüm Gezgini**, **productsserver** projesine sağ tıklayın ve ardından **NuGet Paketlerini Yönet**' i seçin.
-1. **Araştır**' ı seçin, sonra **windowsazure. ServiceBus**öğesini arayıp seçin. **Yükler**' i seçin ve kullanım koşullarını kabul edin.
+1. **Araştır**' ı seçin, sonra **windowsazure. ServiceBus** öğesini arayıp seçin. **Yükler**' i seçin ve kullanım koşullarını kabul edin.
 
    ![NuGet paketini Seç][13]
 
    Gerekli istemci derlemelerine artık başvuruluyor.
 
-1. Ürün sözleşmeniz için yeni bir sınıf ekleyin. **Çözüm Gezgini**, **productsserver** projesine sağ tıklayın ve sınıf **Ekle**' yi seçin  >  **Class**.
-1. **Ad**alanına *ProductsContract.cs* adını girin ve **Ekle**' yi seçin.
+1. Ürün sözleşmeniz için yeni bir sınıf ekleyin. **Çözüm Gezgini**, **productsserver** projesine sağ tıklayın ve sınıf **Ekle**' yi seçin  >  .
+1. **Ad** alanına *productscontract. cs* adını girin ve **Ekle**' yi seçin.
 
 Çözümünüzde aşağıdaki kod değişikliklerini yapın:
 
@@ -132,7 +132,7 @@ Yükleme tamamlandıktan sonra, uygulamayı geliştirmeye başlamak için gereke
     }
     ```
 
-1. *Program.cs*' de, ad alanı tanımını aşağıdaki kodla değiştirin, bu, profil hizmetini ve ana bilgisayarı ekler.
+1. *Program. cs*' de, ad alanı tanımını aşağıdaki kodla değiştirin ve bu, profil hizmetini ve ana bilgisayarı ekleyin.
 
     ```csharp
     namespace ProductsServer
@@ -214,7 +214,7 @@ Yükleme tamamlandıktan sonra, uygulamayı geliştirmeye başlamak için gereke
     > [!NOTE]
     > Hatanın nedeni `transportClientEndpointBehavior` yalnızca bir uyarıdır ve bu örnek için engelleyici bir sorun değildir.
 
-1. Hala *App.config*öğesinde, `<appSettings>` bağlantı dizesi değerini portaldan daha önce edindiğiniz bağlantı dizesiyle değiştirin.
+1. Hala *App.config* öğesinde, `<appSettings>` bağlantı dizesi değerini portaldan daha önce edindiğiniz bağlantı dizesiyle değiştirin.
 
     ```xml
     <appSettings>
@@ -234,9 +234,9 @@ Bu bölümde, ürün hizmetinizden alınan verileri görüntüleyen basit bir AS
 
 1. Visual Studio 'Nun yönetici olarak çalıştığından emin olun.
 1. Visual Studio 'da **Yeni proje oluştur**' u seçin.
-1. **Yeni proje oluştur**bölümünde C# için **ASP.NET Web uygulaması (.NET Framework)** öğesini seçin ve **İleri**' yi seçin.
+1. **Yeni proje oluştur** bölümünde C# için **ASP.NET Web uygulaması (.NET Framework)** öğesini seçin ve **İleri**' yi seçin.
 1. Projeyi *Productsportal* olarak adlandırın ve **Oluştur**' u seçin.
-1. **Yeni bir ASP.NET Web uygulaması oluşturma**bölümünde **MVC** ' yi seçin ve **kimlik doğrulaması**altında **Değiştir** ' i seçin.
+1. **Yeni bir ASP.NET Web uygulaması oluşturma** bölümünde **MVC** ' yi seçin ve **kimlik doğrulaması** altında **Değiştir** ' i seçin.
 
    ![ASP .NET Web uygulaması Seç][16]
 
@@ -246,14 +246,14 @@ Bu bölümde, ürün hizmetinizden alınan verileri görüntüleyen basit bir AS
 
 1. **Yeni bir ASP.NET Web uygulaması oluşturun**, MVC uygulamasını oluşturmak için **Oluştur** ' u seçin.
 1. Yeni bir Web uygulaması için Azure kaynaklarını yapılandırın. [Web uygulamanızı yayımlama](../app-service/quickstart-dotnet-framework.md#launch-the-publish-wizard)bölümündeki adımları izleyin. Ardından, Bu öğreticiye dönüp bir sonraki adımla devam edin.
-1. **Çözüm Gezgini**, **modeller** ' a sağ tıklayın ve ardından sınıf **Ekle**' yi seçin  >  **Class**.
-1. Sınıfı *Product.cs*olarak adlandırın, sonra **Ekle**' yi seçin.
+1. **Çözüm Gezgini**, **modeller** ' a sağ tıklayın ve ardından sınıf **Ekle**' yi seçin  >  .
+1. *Product. cs* sınıfını adlandırın ve **Ekle**' yi seçin.
 
     ![Ürün modeli oluştur][17]
 
 ### <a name="modify-the-web-application"></a>Web uygulamasını değiştirme
 
-1. Visual Studio 'daki *Product.cs* dosyasında, var olan ad alanı tanımını şu kodla değiştirin:
+1. Visual Studio 'daki *Product. cs* dosyasında, var olan ad alanı tanımını şu kodla değiştirin:
 
    ```csharp
     // Declare properties for the products inventory.
@@ -268,8 +268,8 @@ Bu bölümde, ürün hizmetinizden alınan verileri görüntüleyen basit bir AS
     }
     ```
 
-1. **Çözüm Gezgini**, **denetleyiciler**' i genişletin ve sonra **HomeController.cs** ' i çift tıklatarak dosyayı Visual Studio 'da açın.
-1. *HomeController.cs*' de, var olan ad alanı tanımını şu kodla değiştirin:
+1. **Çözüm Gezgini**, **denetleyiciler**' i genişletin ve sonra dosyayı Visual Studio 'Da açmak için **HomeController. cs** ' ye çift tıklayın.
+1. *HomeController. cs* dosyasında, var olan ad alanı tanımını şu kodla değiştirin:
 
     ```csharp
     namespace ProductsWeb.Controllers
@@ -291,8 +291,8 @@ Bu bölümde, ürün hizmetinizden alınan verileri görüntüleyen basit bir AS
     }
     ```
 
-1. **Çözüm Gezgini**' de, **paylaşılan görünümler**' i genişletin  >  **Shared**, sonra dosyayı Visual Studio düzenleyicisinde açmak için **_Layout. cshtml** ' ye çift tıklayın.
-1. Tüm yinelemelerini `My ASP.NET Application` *Northwind Traders ürünlerine*değiştirin.
+1. **Çözüm Gezgini**' de, **paylaşılan görünümler**' i genişletin  >  , sonra dosyayı Visual Studio düzenleyicisinde açmak için **_Layout. cshtml** ' ye çift tıklayın.
+1. Tüm yinelemelerini `My ASP.NET Application` *Northwind Traders ürünlerine* değiştirin.
 1. `Home`, `About` Ve `Contact` bağlantılarını kaldırın. Aşağıdaki örnekte vurgulanmış kodu silin.
 
     ![Oluşturulan liste öğelerini Sil][41]
@@ -353,12 +353,12 @@ Sonraki adım, şirket içi ürünlerin sunucusu ile ASP.NET uygulamasını birl
 1. Henüz açık değilse, Visual Studio 'da [ASP.NET uygulaması oluşturma](#create-an-aspnet-application) bölümünde oluşturduğunuz **productsportal** projesini açın.
 1. [Şirket içi sunucu oluşturma](#create-an-on-premises-server) bölümünde yer alan adıma benzer şekilde, proje başvurularına NuGet paketini ekleyin. **Çözüm Gezgini**, **productsportal** projesine sağ tıklayın ve ardından **NuGet Paketlerini Yönet**' i seçin.
 1. *WindowsAzure.ServiceBus* araması yapın ve **WindowsAzure.ServiceBus** öğesini seçin. Ardından yüklemeyi ve bu iletişim kutusunu kapatın.
-1. **Çözüm Gezgini**, **productsportal** projesine sağ tıklayın ve ardından **Add**  >  **Varolan öğe**Ekle ' yi seçin.
-1. **ProductsServer** konsol projesinden *ProductsContract.cs* dosyasına gidin. *ProductsContract.cs*vurgulayın. **Ekle**' nin yanındaki aşağı oku seçin, sonra **bağlantı olarak ekle**' yi seçin.
+1. **Çözüm Gezgini**, **productsportal** projesine sağ tıklayın ve ardından   >  **Varolan öğe** Ekle ' yi seçin.
+1. **ProductsServer** konsol projesinden *ProductsContract.cs* dosyasına gidin. *Productscontract. cs*' i vurgulayın. **Ekle**' nin yanındaki aşağı oku seçin, sonra **bağlantı olarak ekle**' yi seçin.
 
    ![Bağlantı olarak ekle][24]
 
-1. Şimdi Visual Studio düzenleyicisinde *HomeController.cs* dosyasını açın ve ad alanı tanımını aşağıdaki kodla değiştirin. `yourServiceNamespace`Öğesini hizmet ad alanınız ve `yourKey` SAS anahtarınızla değiştirdiğinizden emin olun. Bu kod, istemcinin şirket içi hizmeti aramasını sağlar ve çağrının sonucunu döndürür.
+1. Şimdi, Visual Studio düzenleyicisinde *HomeController. cs* dosyasını açın ve ad alanı tanımını aşağıdaki kodla değiştirin. `yourServiceNamespace`Öğesini hizmet ad alanınız ve `yourKey` SAS anahtarınızla değiştirdiğinizden emin olun. Bu kod, istemcinin şirket içi hizmeti aramasını sağlar ve çağrının sonucunu döndürür.
 
    ```csharp
    namespace ProductsWeb.Controllers
@@ -400,23 +400,23 @@ Sonraki adım, şirket içi ürünlerin sunucusu ile ASP.NET uygulamasını birl
    }
    ```
 
-1. **Çözüm Gezgini**, **productsportal** çözümüne sağ tıklayın. Projeye değil, çözüme sağ tıkladığınızdan emin olun. **Add**  >  **Varolan proje**Ekle ' yi seçin.
+1. **Çözüm Gezgini**, **productsportal** çözümüne sağ tıklayın. Projeye değil, çözüme sağ tıkladığınızdan emin olun.   >  **Varolan proje** Ekle ' yi seçin.
 1. **ProductsServer** projesine gidip *ProductsServer.csproj* çözümüne çift tıklayarak ekleyin.
-1. **Productsportal**üzerinde verileri göstermek Için **productsserver** çalışıyor olmalıdır. **Çözüm Gezgini**, **productsportal** çözümüne sağ tıklayın ve **Özellikler** ' i seçerek **özellik sayfalarını**görüntüleyin.
-1. **Ortak özellikler**  >  **Başlangıç projesi** ' ni seçin ve **birden çok başlangıç**projesi seçin. **Productsserver** ve **productsportal** 'in bu sırada göründüğünden ve her Ikisi için de **eylemin** **başlamadiğinden**emin olun.
+1. **Productsportal** üzerinde verileri göstermek Için **productsserver** çalışıyor olmalıdır. **Çözüm Gezgini**, **productsportal** çözümüne sağ tıklayın ve **Özellikler** ' i seçerek **özellik sayfalarını** görüntüleyin.
+1. **Ortak özellikler**  >  **Başlangıç projesi** ' ni seçin ve **birden çok başlangıç** projesi seçin. **Productsserver** ve **productsportal** 'in bu sırada göründüğünden ve her Ikisi için de **eylemin** **başlamadiğinden** emin olun.
 
       ![Birden çok başlangıç projesi][25]
 
 1. Sol taraftaki **ortak özellikler**  >  **Proje bağımlılıklarını** seçin.
-1. **Projeler**Için **productsportal**' i seçin. **ProductsServer** projesinin seçili olduğundan emin olun.
+1. **Projeler** Için **productsportal**' i seçin. **ProductsServer** projesinin seçili olduğundan emin olun.
 
     ![Proje bağımlılıkları][26]
 
-1. **Projeler**Için **productsserver**' ı seçin. **Productsportal** ' in seçili olmadığından emin olun ve ardından değişikliklerinizi kaydetmek için **Tamam** ' ı seçin.
+1. **Projeler** Için **productsserver**' ı seçin. **Productsportal** ' in seçili olmadığından emin olun ve ardından değişikliklerinizi kaydetmek için **Tamam** ' ı seçin.
 
 ## <a name="run-the-project-locally"></a>Projeyi yerel olarak çalıştırma
 
-Uygulamayı yerel olarak test etmek için, Visual Studio 'da F5 ' i seçin. Şirket içi sunucu, **productsserver**ilk kez başlamalıdır, sonra **productsportal** uygulaması bir tarayıcı penceresinde başlamalıdır. Bu kez, ürün envanterinde ürün hizmeti şirket içi sisteminden alınan verileri listeleyen görürsünüz.
+Uygulamayı yerel olarak test etmek için, Visual Studio 'da F5 ' i seçin. Şirket içi sunucu, **productsserver** ilk kez başlamalıdır, sonra **productsportal** uygulaması bir tarayıcı penceresinde başlamalıdır. Bu kez, ürün envanterinde ürün hizmeti şirket içi sisteminden alınan verileri listeleyen görürsünüz.
 
 ![Web uygulaması][10]
 
@@ -443,12 +443,12 @@ Sonraki adım Azure Web App **Productsportal** ön ucunun yeniden yayımlamaktı
 <a name="set-productsportal-as-web-app"></a>Uygulamayı bulutta çalıştırmadan önce, **Productsportal** 'In Visual Studio içinden bir Web uygulaması olarak başlatıldığından emin olmanız gerekir.
 
 1. Visual Studio 'da **Productsportal** projesine sağ tıklayın ve **Özellikler**' i seçin.
-1. **Web**'i seçin. **Başlatma eylemi**altında **URL 'yi Başlat**' ı seçin. Bu örnekte, önceden dağıtılmış Web uygulamanızın URL 'sini girin `https://productsportal20190906122808.azurewebsites.net/` .
+1. **Web**'i seçin. **Başlatma eylemi** altında **URL 'yi Başlat**' ı seçin. Bu örnekte, önceden dağıtılmış Web uygulamanızın URL 'sini girin `https://productsportal20190906122808.azurewebsites.net/` .
 
     ![Başlangıç URL 'SI][27]
 
 1. **Dosya**  >  **Tümünü Kaydet**' i seçin.
-1. **Derleme**  >  **yeniden oluşturma çözümünü**seçin.
+1. **Derleme**  >  **yeniden oluşturma çözümünü** seçin.
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 

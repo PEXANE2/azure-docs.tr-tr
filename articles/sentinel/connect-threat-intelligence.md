@@ -14,13 +14,13 @@ ms.workload: na
 ms.date: 11/22/2019
 ms.author: yelevin
 ms.openlocfilehash: 205cc6eea5d1ac3be2d0e266621067dc8e20d2f9
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96121739"
 ---
-# <a name="connect-data-from-threat-intelligence-providers"></a>Tehdit zekası sağlayıcılarından veri bağlama
+# <a name="connect-data-from-threat-intelligence-providers"></a>Tehdit analizi sağlayıcılarından verilere bağlanma
 
 > [!IMPORTANT]
 > Azure Sentinel 'deki tehdit bilgileri veri bağlayıcıları Şu anda genel önizleme aşamasındadır.
@@ -64,7 +64,7 @@ Sonraki bölümde listelenen tümleşik tehdit bilgileri platformu (tıp) ürün
 
 ## <a name="connect-azure-sentinel-to-your-threat-intelligence-platform"></a>Azure Sentinel 'i tehdit bilgileri platformunuza bağlama
 
-### <a name="prerequisites"></a>Ön koşullar  
+### <a name="prerequisites"></a>Önkoşullar  
 
 - Tıp ürününüzün veya güvenlik yöneticisi 'nin Microsoft Graph güvenlik Tiındicators API 'SI ile doğrudan tümleştirme kullanan özel uygulamanıza izin vermek için genel yönetici veya güvenlik yöneticisinin Azure AD rolü.
 
@@ -94,7 +94,7 @@ Sonraki bölümde listelenen tümleşik tehdit bilgileri platformu (tıp) ürün
 
 ## <a name="connect-azure-sentinel-to-taxii-servers"></a>Azure Sentinel 'i TAXıı sunucularına bağlama
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 - Tehdit göstergelerini depolamak için Azure Sentinel çalışma alanına yönelik okuma ve yazma izinleri.
 

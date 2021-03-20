@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: b5aa4bd061647f63ebcc70109f0ba21b39e814cc
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98741341"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>.NET ' te bir Web veya çalışan rolünün yaşam döngüsünü özelleştirme
@@ -37,7 +37,7 @@ Bir çalışan rolü oluşturduğunuzda, yaşam döngüsü olaylarına yanıt ve
 Rolünüzün başlatılması veya başlatma, meşgul ve durdurma durumları arasında geri dönüştürülmesi durumunda, kodunuz rol her yeniden başlatıldığında bir yaşam döngüsü olaylarında işlenmeyen bir özel durum verebilir. Bu durumda, özel durumun nedenini öğrenmek ve uygun şekilde işlemek için [UnhandledException](/dotnet/api/system.appdomain.unhandledexception) olayını kullanın. Rolünüz, rolün yeniden başlatılmasına neden olan [Run](/previous-versions/azure/reference/ee772746(v=azure.100)) yönteminden da döndürülemeyebilir. Dağıtım durumları hakkında daha fazla bilgi için bkz. [rollerin geri dönüştürülmesine neden olan yaygın sorunlar](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md).
 
 > [!NOTE]
-> Uygulamanızı geliştirmek için **Microsoft Visual Studio Için Azure araçlarını** kullanıyorsanız, rol proje şablonları, *WebRole.cs* ve *WorkerRole.cs* dosyalarındaki **roleentrypoint** sınıfını sizin için otomatik olarak genişletir.
+> Uygulamanızı geliştirmek için **Microsoft Visual Studio Için Azure araçlarını** kullanıyorsanız, rol proje şablonları, *WebRole. cs* ve *Workerrole. cs* dosyalarındaki **roleentrypoint** sınıfını sizin için otomatik olarak genişletir.
 > 
 > 
 

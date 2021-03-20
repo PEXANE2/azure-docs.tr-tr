@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: 64bbed9b558d4c20889b28a5247e2113d20daa77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "73501774"
 ---
 # <a name="create-an-internet-analyzer-test-using-portal-preview"></a>Portal kullanarak Internet çözümleyici testi oluşturma (Önizleme)
@@ -29,13 +29,13 @@ Genel Önizleme Genel kullanım için kullanılabilir; Ancak, veri depolama öni
 ## <a name="basics"></a>Temel Bilgiler
 
 1. **Önizlemeye katılmak nasıl yaparım?** , [Azure Internet Çözümleyicisi hakkında SSS](internet-analyzer-faq.md)bölümündeki yönergeleri izleyerek Internet Çözümleyicisi önizleme erişimi alın.
-2. [Azure Portal](https://preview.portal.azure.com)giriş sayfasından **+ kaynak oluştur ' a**tıklayın. Internet Çözümleyicisi şu anda yalnızca Azure portal önizleme sürümünde kullanılabilir.
+2. [Azure Portal](https://preview.portal.azure.com)giriş sayfasından **+ kaynak oluştur ' a** tıklayın. Internet Çözümleyicisi şu anda yalnızca Azure portal önizleme sürümünde kullanılabilir.
 3. **Yeni** sayfada *Market 'te arama* yapın alanında "Internet Analyzer" ifadesini aratın.
-4. **Internet Çözümleyicisi (Önizleme)** seçeneğine tıklayın. Yayımcının *Microsoft* olduğundan ve kategorinin *ağ*olduğundan emin olun.
+4. **Internet Çözümleyicisi (Önizleme)** seçeneğine tıklayın. Yayımcının *Microsoft* olduğundan ve kategorinin *ağ* olduğundan emin olun.
 5. Internet Çözümleyicisi **(Önizleme)** sayfasında, **Oluştur** ' a tıklayarak **Internet Çözümleyicisi oluştur** sayfasını açın.
 6. Internet Çözümleyicisi kaynağınız için aşağıdaki yapılandırma ayarlarını belirtin:
 
-    * **Abonelik:** Yeni Internet çözümleyici kaynağını barındırmak için Azure aboneliği. ***Önizleme erişimi istemek için kullanılan abonelik KIMLIĞINI kullanın.***
+    * **Abonelik:** Yeni Internet çözümleyici kaynağını barındırmak için Azure aboneliği. **_Önizleme erişimi istemek için kullanılan abonelik KIMLIĞINI kullanın._**
     * **Kaynak grubu:** Yeni Internet Çözümleyicisi kaynağının oluşturulacağı Azure Kaynak grubu. Mevcut bir kaynak grubunuz yoksa yeni bir tane oluşturabilirsiniz.
     * **Ad:** Yeni Internet Çözümleyicisi kaynak profilinin adı.
     * **Bölge:** Kaynağın oluşturulacağı Azure ortak bölgesi. Önizleme süresince yalnızca *ABD Batı 2* kullanılabilir.
@@ -65,7 +65,7 @@ Temel adımları tamamlamak, bir testi yapılandırma ve JavaScript istemcisini 
 4. Son noktayı testinize eklemek için **Ekle** ' ye tıklayın.
 5. İkinci uç noktanızı yapılandırmak için 1-4 arasındaki adımları yineleyin. Uç nokta B her zaman uç noktaya göre ölçülür-uç noktaları yapılandırırken, hangi uç noktanın test denetiminiz olması gerektiğini göz önünde bulundurun.
 6. Testinizi kaydetmek için **Kaydet** düğmesine tıklayın. Bir testi kaydettikten sonra, belirli bir testin uç noktalarını artık düzenleyemezsiniz.
-7. Başlatmak istediğiniz test (ler) i seçin ve **teste başla**' ya tıklayın. Bu, testinizin ***durumunu*** ***çalışır***olarak değiştirecek. Testleri dilediğiniz zaman başlatabilirsiniz, ancak testin ölçümleri toplamaya başlaması için JavaScript istemcisinin katıştırılması gerekir.
+7. Başlatmak istediğiniz test (ler) i seçin ve **teste başla**' ya tıklayın. Bu işlem, ***Test (ler) in _ durumunu _*_çalışıyor_ olarak** değiştirecek. Testleri dilediğiniz zaman başlatabilirsiniz, ancak testin ölçümleri toplamaya başlaması için JavaScript istemcisinin katıştırılması gerekir.
 8. Herhangi bir noktada daha fazla test ekleyin. Benzersiz JavaScript istemcisinin bir test oluşturuluncaya kadar oluşturulmadığını unutmayın.
 
 ## <a name="embed-client"></a>Istemciyi Ekle

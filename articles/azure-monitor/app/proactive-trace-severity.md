@@ -4,20 +4,20 @@ description: Akıllı algılama ile izleme telemetrisinde olağan dışı desenl
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.openlocfilehash: 2b27860adfc1652b58fe9c51d4d0b0a6c271fc0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86539882"
 ---
 # <a name="degradation-in-trace-severity-ratio-preview"></a>İzleme önem oranına göre düşme (Önizleme)
 
-İzlemeler, arka planda neler olduğunu söyleyecektir. uygulamalarda yaygın olarak kullanılır. İşlemler yanlış gittiğinde, izleme işlemleri istenmeyen duruma kadar olan olayların dizisine önemli görünürlük sağlar. İzlemeler genellikle yapılandırılmamış olsa da, bunların önem derecesindeki bir şekilde öğrenilmesi gereken bir şey vardır. Bir uygulamanın kararlı durumunda, "iyi" izlemeler (*bilgi* ve *ayrıntı*) ve "kötü" izlemeler (*Uyarı*, *hata*ve *kritik*) arasındaki oranı kararlı kalacak şekilde bekletireceğiz. Bu varsayımla, "kötü" izlemelerinin herhangi bir sayıda nedenden dolayı (örneğin geçici ağ sorunları) belirli bir ölçüde düzenli olarak gerçekleşebileceği varsayılır. Ancak gerçek bir sorun büyümeye başladığında, genellikle "kötü" izlemelerinin ve "iyi" izlemelerinin göreli oranındaki artış olarak bildirim yapılır. Application Insights akıllı algılama, uygulamanız tarafından günlüğe kaydedilen izlemeleri otomatik olarak analiz eder ve izleme telemetrinizin önem derecesine göre sizi olağan dışı desenler hakkında uyarabilir.
+İzlemeler, arka planda neler olduğunu söyleyecektir. uygulamalarda yaygın olarak kullanılır. İşlemler yanlış gittiğinde, izleme işlemleri istenmeyen duruma kadar olan olayların dizisine önemli görünürlük sağlar. İzlemeler genellikle yapılandırılmamış olsa da, bunların önem derecesindeki bir şekilde öğrenilmesi gereken bir şey vardır. Bir uygulamanın kararlı durumunda, "iyi" izlemeler (*bilgi* ve *ayrıntı*) ve "kötü" izlemeler (*Uyarı*, *hata* ve *kritik*) arasındaki oranı kararlı kalacak şekilde bekletireceğiz. Bu varsayımla, "kötü" izlemelerinin herhangi bir sayıda nedenden dolayı (örneğin geçici ağ sorunları) belirli bir ölçüde düzenli olarak gerçekleşebileceği varsayılır. Ancak gerçek bir sorun büyümeye başladığında, genellikle "kötü" izlemelerinin ve "iyi" izlemelerinin göreli oranındaki artış olarak bildirim yapılır. Application Insights akıllı algılama, uygulamanız tarafından günlüğe kaydedilen izlemeleri otomatik olarak analiz eder ve izleme telemetrinizin önem derecesine göre sizi olağan dışı desenler hakkında uyarabilir.
 
 Bu özellik, uygulamanız için izleme günlüğü yapılandırma dışında özel bir kurulum gerektirmez (bkz. [.net](./asp-net-trace-logs.md) veya [Java](./java-trace-logs.md)için izleme günlüğü dinleyicisini yapılandırma). Uygulamanız yeterli sayıda özel durum telemetrisi oluşturduğunda etkin olur.
 
 ## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Bu tür akıllı algılama bildirimini ne zaman alabilirim?
-"İyi" izlemeler (bir *bilgi* düzeyiyle günlüğe kaydedilmiş *izlemeler) ve*"kötü" izlemeler (bir *Uyarı*düzeyiyle günlüğe kaydedilmiş izlemeler, *hata*veya *önemli*) ile karşılaştırıldığında, önceki yedi gün içinde hesaplanan bir taban çizgisine kıyasla, bu tür bir bildirim elde edebilirsiniz.
+"İyi" izlemeler (bir *bilgi* düzeyiyle günlüğe kaydedilmiş *izlemeler) ve*"kötü" izlemeler (bir *Uyarı* düzeyiyle günlüğe kaydedilmiş izlemeler, *hata* veya *önemli*) ile karşılaştırıldığında, önceki yedi gün içinde hesaplanan bir taban çizgisine kıyasla, bu tür bir bildirim elde edebilirsiniz.
 
 ## <a name="does-my-app-definitely-have-a-problem"></a>Uygulamamın kesinlikle bir sorunu var mı?
 Hayır, bir bildirim uygulamanızın kesinlikle bir sorun olduğu anlamına gelmez. "İyi" ve "kötü" izlemeler arasındaki orandaki bir azalma bir uygulama sorunu belirtebilse de, bu oran değişikliği zararsız olabilir. Örneğin, artış, uygulamadaki yeni bir akışın var olan akışlardan daha fazla "kötü" izlemeler yaymasına neden olmuş olabilir.

@@ -14,10 +14,10 @@ ms.workload: tbd
 ms.date: 9/20/2017
 ms.author: raiye
 ms.openlocfilehash: fbe9b3379799fe3cf0a56d921ab257bc87606ca9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "68945443"
 ---
 # <a name="azure-guest-os-supportability-and-retirement-policy"></a>Azure Konuk işletim sistemi desteklenebilirlik ve emeklilik ilkesi
@@ -27,9 +27,9 @@ Microsoft 'un [Konuk işletim sistemi için yayımlanmış bir destek ilkesi](ht
 
 İlke
 
-1. Microsoft, **Konuk işletim sisteminin en az iki ailesinden birini**destekleyecektir. Bir aile devre dışı bırakıldığında, müşterilerin resmi kullanımdan kaldırma tarihinden itibaren daha yeni desteklenen bir konuk işletim sistemi ailesine güncelleştirilmesi için 12 ay daha vardır.
-2. Microsoft, **Desteklenen Konuk işletim sistemi ailelerinin en az iki sürümünü**destekleyecektir.
-3. Microsoft, **en azından Azure SDK 'nın en son iki sürümünü**destekleyecektir. SDK 'nın bir sürümü kullanımdan kaldırıldığında müşterilerin daha yeni bir sürüme güncelleştirilmesi için resmi kullanımdan kaldırma tarihinden itibaren 12 ay olur.
+1. Microsoft, **Konuk işletim sisteminin en az iki ailesinden birini** destekleyecektir. Bir aile devre dışı bırakıldığında, müşterilerin resmi kullanımdan kaldırma tarihinden itibaren daha yeni desteklenen bir konuk işletim sistemi ailesine güncelleştirilmesi için 12 ay daha vardır.
+2. Microsoft, **Desteklenen Konuk işletim sistemi ailelerinin en az iki sürümünü** destekleyecektir.
+3. Microsoft, **en azından Azure SDK 'nın en son iki sürümünü** destekleyecektir. SDK 'nın bir sürümü kullanımdan kaldırıldığında müşterilerin daha yeni bir sürüme güncelleştirilmesi için resmi kullanımdan kaldırma tarihinden itibaren 12 ay olur.
 
 Her zaman iki aileden veya yayınların daha fazlası desteklenebilir. Resmi Konuk işletim sistemi destek bilgileri, [Azure Konuk işletim sistemi sürümleri ve SDK uyumluluk matrisi](cloud-services-guestos-update-matrix.md)'nde görünür.
 

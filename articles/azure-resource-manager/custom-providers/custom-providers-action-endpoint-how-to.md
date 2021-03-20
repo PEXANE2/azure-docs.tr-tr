@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: 6110a7952b7c29609d2b98e135b61032aec3fa52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75650402"
 ---
 # <a name="adding-custom-actions-to-azure-rest-api"></a>Azure REST API özel eylemler ekleme
@@ -113,10 +113,10 @@ Content-Type: application/json; charset=utf-8
 
 Özel bir eylemi özel bir kaynak sağlayıcısında çağırmanın iki ana yöntemi vardır:
 
-- Azure CLI
+- Azure CLI’si
 - Azure Resource Manager Şablonları
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 ```azurecli-interactive
 az resource invoke-action --action {actionName} \
@@ -134,7 +134,7 @@ Parametre | Gerekli | Açıklama
 ---|---|---
 eylem | *Yes* | **ResourceProvider**'da tanımlanan eylemin adı.
 ayrılacak | *Yes* | **ResourceProvider**'ıN kaynak kimliği.
-İstek gövdesi | *eşleşen* | **Uç noktaya**gönderilecek istek gövdesi.
+İstek gövdesi | *eşleşen* | **Uç noktaya** gönderilecek istek gövdesi.
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager Şablonu
 
@@ -188,7 +188,7 @@ Parametre | Gerekli | Açıklama
 ---|---|---
 ResourceIdentifier kimlikli | *Yes* | **ResourceProvider**'ıN kaynak kimliği.
 apiVersion | *Yes* | Kaynak çalışma zamanının API sürümü. Bu her zaman "2018-09-01-Önizleme" olmalıdır.
-functionValues | *eşleşen* | **Uç noktaya**gönderilecek istek gövdesi.
+functionValues | *eşleşen* | **Uç noktaya** gönderilecek istek gövdesi.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/27/2019
 ms.author: tamram
 ms.openlocfilehash: 9a60c624b181a1efd2f6deebd349daa82214a8a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "67188046"
 ---
 <!--created by Robin Shahan to go in the articles for table storage w/powershell.
@@ -18,7 +18,7 @@ ms.locfileid: "67188046"
 
 Artık bir tablonuz olduğuna göre, tablodaki varlıkları veya satırları nasıl yönetebileceğinizi inceleyelim. 
 
-Varlıklar üç sistem özelliği de dahil olmak üzere en fazla 255 özelliğe sahip olabilir: **Partitionkey**, **Rowkey**ve **timestamp**. **Partitionkey** ve **rowkey**değerlerini eklemekten ve güncelleştirmekten siz sorumlusunuz. Sunucu, değiştirilemeyen **zaman damgası**değerini yönetir. **Partitionkey** ve **rowkey** birlikte bir tablo içindeki her varlığı benzersiz şekilde tanımlar.
+Varlıklar üç sistem özelliği de dahil olmak üzere en fazla 255 özelliğe sahip olabilir: **Partitionkey**, **Rowkey** ve **timestamp**. **Partitionkey** ve **rowkey** değerlerini eklemekten ve güncelleştirmekten siz sorumlusunuz. Sunucu, değiştirilemeyen **zaman damgası** değerini yönetir. **Partitionkey** ve **rowkey** birlikte bir tablo içindeki her varlığı benzersiz şekilde tanımlar.
 
 * **Partitionkey**: varlığın depolandığı bölümü belirler.
 * **Rowkey**: varlığı bölüm içinde benzersiz şekilde tanımlar.
@@ -27,7 +27,7 @@ Bir varlık için en fazla 252 özel özellik tanımlayabilirsiniz.
 
 ### <a name="add-table-entities"></a>Tablo varlıkları ekleme
 
-**Add-AzTableRow**kullanarak bir tabloya varlık ekleyin. Bu örnekler, bölüm anahtarlarını değerleri `partition1` ve `partition2` ve satır anahtarlarıyla durum kısaltmalara eşit olarak kullanır. Her varlıktaki Özellikler `username` ve ' dir `userid` . 
+**Add-AzTableRow** kullanarak bir tabloya varlık ekleyin. Bu örnekler, bölüm anahtarlarını değerleri `partition1` ve `partition2` ve satır anahtarlarıyla durum kısaltmalara eşit olarak kullanır. Her varlıktaki Özellikler `username` ve ' dir `userid` . 
 
 ```powershell
 $partitionKey1 = "partition1"
@@ -60,7 +60,7 @@ Add-AzTableRow `
 **Get-AzTableRow** komutunu kullanarak bir tablodaki varlıkları sorgulayabilirsiniz.
 
 > [!NOTE]
-> **Get-Azurestopagetablerowall**, Get-Azurestokgetablerowbypartitionkey, **Get-Azurestokgetablerowbycolumnname**ve Get-Azurestokgetablerowbycustomfilter cmdlet 'leri kullanımdan kaldırılmıştır ve gelecekteki bir sürüm güncelleştirmesinde kaldırılacaktır. **Get-AzureStorageTableRowByPartitionKey** **Get-AzureStorageTableRowByCustomFilter**
+> **Get-Azurestopagetablerowall**, Get-Azurestokgetablerowbypartitionkey, **Get-Azurestokgetablerowbycolumnname** ve Get-Azurestokgetablerowbycustomfilter cmdlet 'leri kullanımdan kaldırılmıştır ve gelecekteki bir sürüm güncelleştirmesinde kaldırılacaktır.  
 
 #### <a name="retrieve-all-entities"></a>Tüm varlıkları al
 
@@ -127,7 +127,7 @@ Bu sorgu bir kayıt alır.
 
 ### <a name="updating-entities"></a>Varlıklar güncelleştiriliyor 
 
-Varlıkları güncelleştirmek için üç adım vardır. İlk olarak, değiştirilecek varlığı alın. İkinci olarak, değişikliği yapın. Üçüncü olarak, **Update-AzTableRow**kullanarak değişikliği yürütün.
+Varlıkları güncelleştirmek için üç adım vardır. İlk olarak, değiştirilecek varlığı alın. İkinci olarak, değişikliği yapın. Üçüncü olarak, **Update-AzTableRow** kullanarak değişikliği yürütün.
 
 Username = ' JESSIE ' olan varlığı username = ' Jessie2 ' olacak şekilde güncelleştirin. Bu örnek ayrıca .NET türlerini kullanarak özel bir filtre oluşturmanın başka bir yolunu da gösterir.
 

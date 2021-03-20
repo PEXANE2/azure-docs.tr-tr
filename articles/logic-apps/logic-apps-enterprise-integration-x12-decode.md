@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/27/2017
 ms.openlocfilehash: 918516a5629f8570d54c641ffc29f2367937266f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74792361"
 ---
 # <a name="decode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps’te X12 iletilerinin kodunu çözme
@@ -34,7 +34,7 @@ Kod Çözme X12 ileti bağlayıcısıyla zarfı ticari ortak sözleşmesiyle do�
 
 2. Kod çözme x12 ileti bağlayıcısının tetikleyicisi yoktur, bu nedenle mantıksal uygulamanızı başlatmak için bir Istek tetikleyicisi gibi bir tetikleyici eklemeniz gerekir. Mantıksal uygulama tasarımcısında bir tetikleyici ekleyin ve sonra mantıksal uygulamanıza bir eylem ekleyin.
 
-3.  Arama kutusuna filtreniz için "x12" yazın. **X12-kodunu çöz x12 iletisini**seçin.
+3.  Arama kutusuna filtreniz için "x12" yazın. **X12-kodunu çöz x12 iletisini** seçin.
    
     !["X12" araması yapın](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage1.png)  
 
@@ -57,7 +57,7 @@ Kod Çözme X12 ileti bağlayıcısıyla zarfı ticari ortak sözleşmesiyle do�
 
     ![Tümleştirme hesabı bağlantısı oluşturuldu](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage6.png) 
 
-    Örneğin:
+    Örnek:
 
     ![Kod çözme için x12 düz dosya iletisi seçin](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage7.png) 
 

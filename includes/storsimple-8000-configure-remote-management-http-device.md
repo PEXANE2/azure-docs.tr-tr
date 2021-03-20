@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 473bc0a58fe49c7f454c81402b57ddce7fc745b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "67188432"
 ---
 #### <a name="to-configure-remote-management-on-cloud-appliance"></a>Bulut gerecinde uzaktan yönetimi yapılandırmak için
@@ -20,7 +20,7 @@ ms.locfileid: "67188432"
 
      ![StorSimple güvenlik ayarları](./media/storsimple-8000-configure-remote-management-http-device/sca-remote-manage2.png)
 
-3. **Uzaktan Yönetim** bölümüne gidin. **Uzaktan yönetim ** kutusuna tıklayın.
+3. **Uzaktan Yönetim** bölümüne gidin. **Uzaktan yönetim** kutusuna tıklayın.
      ![StorSimple uzaktan yönetimi](./media/storsimple-8000-configure-remote-management-http-device/sca-remote-manage3.png)
 
 4. **Uzaktan yönetim** dikey penceresinde:

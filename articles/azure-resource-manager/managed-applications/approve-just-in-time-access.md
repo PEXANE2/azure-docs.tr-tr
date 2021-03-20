@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: evanhi
 ms.openlocfilehash: 4a3604a3256fb2d3f4253891bbc28c7685748cd2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75651026"
 ---
 # <a name="configure-and-approve-just-in-time-access-for-azure-managed-applications"></a>Azure yönetilen uygulamalar için tam zamanında erişimi yapılandırma ve onaylama
@@ -35,11 +35,11 @@ Bu makale, kullanıcılara JıT erişimini etkinleştirmek ve istekleri onaylama
 
 ## <a name="enable-during-deployment"></a>Dağıtım sırasında etkinleştir
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Yönetilen bir uygulama için JıT özellikli bir market girişi bulun. **Oluştur**’u seçin.
 
-1. Yeni yönetilen uygulama için değer sağlarken **JIT yapılandırma** adımı yönetilen uygulama için JIT erişimini etkinleştirmenizi veya devre dışı bırakmanızı sağlar. **JIT erişimini etkinleştirmek**için **Evet** ' i seçin. Bu seçenek, Market 'te JıT etkin ile tanımlanan yönetilen uygulamalar için varsayılan olarak seçilidir.
+1. Yeni yönetilen uygulama için değer sağlarken **JIT yapılandırma** adımı yönetilen uygulama için JIT erişimini etkinleştirmenizi veya devre dışı bırakmanızı sağlar. **JIT erişimini etkinleştirmek** için **Evet** ' i seçin. Bu seçenek, Market 'te JıT etkin ile tanımlanan yönetilen uygulamalar için varsayılan olarak seçilidir.
 
    ![Erişimi yapılandırma](./media/approve-just-in-time-access/configure-jit-access.png)
 
@@ -55,7 +55,7 @@ Bu makale, kullanıcılara JıT erişimini etkinleştirmek ve istekleri onaylama
    * Maksimum erişim süresi – 8 saat
    * Onaylayanlar – yok
 
-   Onay modu **Otomatik**olarak ayarlandığında, onaylayanlar her istek için bir bildirim alır, ancak istek otomatik olarak onaylanır. **El ile**olarak ayarlandığında, onaylayanlar her istek için bir bildirim alır ve bunlardan biri onu onaylaması gerekir.
+   Onay modu **Otomatik** olarak ayarlandığında, onaylayanlar her istek için bir bildirim alır, ancak istek otomatik olarak onaylanır. **El ile** olarak ayarlandığında, onaylayanlar her istek için bir bildirim alır ve bunlardan biri onu onaylaması gerekir.
 
    Etkinleştirme en uzun süre, bir yayımcının yönetilen kaynak grubuna erişim isteyemediği maksimum süreyi belirtir.
 
@@ -95,7 +95,7 @@ Yönetilen uygulama aracılığıyla istekleri onaylamak için:
 
 İstekleri Azure AD Privileged Identity Management ile onaylamak için:
 
-1. **Tüm hizmetler** ' i seçin ve **Azure AD Privileged Identity Management**aramaya başlayın. Kullanılabilir seçeneklerden seçin.
+1. **Tüm hizmetler** ' i seçin ve **Azure AD Privileged Identity Management** aramaya başlayın. Kullanılabilir seçeneklerden seçin.
 
    ![Hizmet ara](./media/approve-just-in-time-access/search.png)
 

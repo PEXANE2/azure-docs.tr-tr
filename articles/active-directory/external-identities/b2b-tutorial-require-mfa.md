@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1f5f7f823d6c5f5860c2e78fe8cacdd1d788c581
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95974128"
 ---
 # <a name="tutorial-enforce-multi-factor-authentication-for-b2b-guest-users"></a>Öğretici: B2B konuk kullanıcıları için çok faktörlü kimlik doğrulamasını zorlama
@@ -81,7 +81,7 @@ Bu öğreticide senaryoyu tamamlamak için şunlar gereklidir:
 7.  **Kullanıcılar ve gruplar** sayfasında **Kullanıcı ve grupları seçin** ve sonra **Tüm konuk kullanıcılar (önizleme)** seçeneğini belirleyin.
 
     ![Tüm konuk kullanıcıları seçmeyi gösteren ekran görüntüsü](media/tutorial-mfa/tutorial-mfa-policy-6.png)
-9.  **Bitti**'yi seçin.
+9.  **Bitti** seçeneğini belirleyin.
 10. **Yeni** sayfasında **Atamalar** bölümünde **Bulut uygulamaları**’nı seçin.
 11. **Bulut uygulamaları** sayfasında **Uygulama seç**’i ve sonra **Seç** öğesini seçin.
 
@@ -123,7 +123,7 @@ Bu öğreticide senaryoyu tamamlamak için şunlar gereklidir:
 
     ![Durum seçeneğinin nerede seçileceğini gösteren ekran görüntüsü](media/tutorial-mfa/tutorial-mfa-whatif-4.png)
 
-## <a name="test-your-conditional-access-policy"></a>Koşullu erişim ilkenizi test etme
+## <a name="test-your-conditional-access-policy"></a>Koşullu Erişim ilkenizi test etme
 1.  [Azure portalınızda](https://portal.azure.com/) oturum açmak için test kullanıcı adınızı ve parolanızı kullanın.
 2.  Ek kimlik doğrulama yöntemlerine yönelik bir istek görmeniz gerekir. İlkenin geçerli olmasının biraz zaman alabileceğini unutmayın.
 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: aprameyr
 ms.openlocfilehash: bd46a7776495624affef77a44fcf68334750ba17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75610004"
 ---
 # <a name="reconfiguration-in-azure-service-fabric"></a>Azure Service Fabric yeniden yapılandırma
@@ -23,7 +23,7 @@ Yük Devretme Yöneticisi, sistemdeki farklı olaylara yanıt olarak yeniden yap
 Yeniden yapılandırma iki tür olarak sınıflandırılabilirler:
 
 - Birincil 'ın değişmekte olduğu yeniden yapılandırma:
-    - **Yük devretme: yük devretme**işlemleri, çalışan bir birincil hataya yanıt olarak yeniden yapılandırmalara sahiptir.
+    - **Yük devretme: yük devretme** işlemleri, çalışan bir birincil hataya yanıt olarak yeniden yapılandırmalara sahiptir.
     - **SwapPrimary**: takas, genellikle yük dengelemeye veya yükseltmeye yanıt olarak, Service Fabric çalışan bir birincili bir düğümden diğerine taşınması gereken yeniden yapılandırlardır.
 
 - Birincil değişiklik olmayan yeniden yapılandırma.

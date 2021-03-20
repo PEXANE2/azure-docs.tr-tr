@@ -9,10 +9,10 @@ ms.date: 08/01/2016
 ms.author: bwren
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: 4962d5f048cf41eca50a77a0dedad3cef48ac1f0
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98740083"
 ---
 # <a name="store-and-view-diagnostic-data-in-azure-storage"></a>Azure Depolama’daki tanılama verilerini depolama ve görüntüleme
@@ -75,7 +75,7 @@ Günlük verileri, aşağıdaki adlara sahip blob veya tablo depolama alanında 
 * **"Custom"** – tanılama İzleyicisi tarafından izlenen dizinleri yapılandırmaya dayalı özel bir kapsayıcı.  Bu blob kapsayıcısının adı WADDirectoriesTable içinde belirtilecektir.
 
 ## <a name="tools-to-view-diagnostic-data"></a>Tanılama verilerini görüntülemek için Araçlar
-Verileri depolama alanına aktarıldıktan sonra görüntülemek için kullanabileceğiniz çeşitli araçlar vardır. Örneğin:
+Verileri depolama alanına aktarıldıktan sonra görüntülemek için kullanabileceğiniz çeşitli araçlar vardır. Örnek:
 
 * Visual Studio 'da Sunucu Gezgini-Azure araçlarını Microsoft Visual Studio yüklediyseniz, Azure depolama hesaplarınızdan salt okunurdur blob ve tablo verilerini görüntülemek için Sunucu Gezgini Azure Storage düğümünü kullanabilirsiniz. Yerel depolama öykünücü hesabınızdan ve ayrıca Azure için oluşturduğunuz depolama hesaplarından verileri görüntüleyebilirsiniz. Daha fazla bilgi için bkz. [Sunucu Gezgini Ile depolama kaynaklarına göz atma ve yönetme](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage).
 * [Microsoft Azure Depolama Gezgini](../vs-azure-tools-storage-manage-with-storage-explorer.md) , Windows, OSX ve Linux 'Ta Azure Depolama verileriyle kolayca çalışabilmenizi sağlayan tek başına bir uygulamadır.
