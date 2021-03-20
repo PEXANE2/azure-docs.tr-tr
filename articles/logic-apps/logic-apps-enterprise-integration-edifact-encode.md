@@ -9,10 +9,10 @@ ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
 ms.openlocfilehash: cee97fddc619840de821ebb70d32e0cab1bbe040
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "82106534"
 ---
 # <a name="encode-edifact-messages-for-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps için EDIOLGU iletilerini kodla
@@ -39,7 +39,7 @@ Bu bağlayıcıyı kullanmak için bunu mantıksal uygulamanızdaki tetikleyicil
 
 2. , EDIOLGU ileti bağlayıcısının tetikleyicisi yoktur, bu nedenle bir Istek tetikleyicisi gibi mantıksal uygulamanızı başlatmak için bir tetikleyici eklemeniz gerekir. Mantıksal uygulama tasarımcısında bir tetikleyici ekleyin ve sonra mantıksal uygulamanıza bir eylem ekleyin.
 
-3.  Arama kutusuna filtreniz olarak "EDIOLGU" yazın. **Anlaşma adına göre EDIOLGU Iletisini kodla** veya **KIMLIKLERE göre Ediolgu iletisine kodlayarak**öğesini seçin.
+3.  Arama kutusuna filtreniz olarak "EDIOLGU" yazın. **Anlaşma adına göre EDIOLGU Iletisini kodla** veya **KIMLIKLERE göre Ediolgu iletisine kodlayarak** öğesini seçin.
    
     ![EDIOLGU ara](media/logic-apps-enterprise-integration-edifact-encode/edifactdecodeimage1.png)  
 

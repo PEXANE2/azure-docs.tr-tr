@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Güç Azure Dev Spaces ve yönlendirmenin nasıl çalıştığına ilişkin süreçler açıklanmaktadır
 keywords: Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar
 ms.openlocfilehash: 2d2c6f336222b4ae0907d6579289a8cad8d73aa6
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91977978"
 ---
 # <a name="how-routing-works-with-azure-dev-spaces"></a>Yönlendirmenin nasıl çalıştığı Azure Dev Spaces
@@ -28,17 +28,17 @@ Küme dışından bir hizmete HTTP isteği yapıldığında, istek giriş denetl
 
 Küme içindeki başka bir hizmetten bir hizmete HTTP isteği yapıldığında, istek ilk olarak çağıran hizmetin devspaces-proxy kapsayıcısından geçer. Devspaces-proxy kapsayıcısı HTTP isteğine bakar ve `azds-route-as` üstbilgiyi denetler. Üst bilgiye bağlı olarak, devspaces-proxy kapsayıcısı, üst bilgi değeriyle ilişkili hizmetin IP adresini arar. Bir IP adresi bulunursa, devspaces-proxy kapsayıcısı bu IP adresine isteği reroutes. Bir IP adresi bulunamazsa, devspaces-proxy kapsayıcısı, isteği üst uygulama kapsayıcısına yönlendirir.
 
-Örneğin, *Servicea* ve *serviceb* uygulamaları *varsayılan*adlı bir üst geliştirme alanına dağıtılır. *Servicea* , *serviceb* 'YI kullanır ve buna http çağrıları yapar. Azure Kullanıcı, *azureuser*adlı *varsayılan* alana göre bir alt dev alanı oluşturur. Azure Kullanıcı aynı zamanda kendi *hizmet* sürümünü kendi alt alanına dağıtır. Bir istek yapıldığında *http://azureuser.s.default.serviceA.fedcba09...azds.io* :
+Örneğin, *Servicea* ve *serviceb* uygulamaları *varsayılan* adlı bir üst geliştirme alanına dağıtılır. *Servicea* , *serviceb* 'YI kullanır ve buna http çağrıları yapar. Azure Kullanıcı, *azureuser* adlı *varsayılan* alana göre bir alt dev alanı oluşturur. Azure Kullanıcı aynı zamanda kendi *hizmet* sürümünü kendi alt alanına dağıtır. Bir istek yapıldığında *http://azureuser.s.default.serviceA.fedcba09...azds.io* :
 
 ![Azure Dev Spaces yönlendirme](media/how-dev-spaces-works/routing.svg)
 
-1. Giriş denetleyicisi, *Servicea. azureuser*olan URL ile ilişkili pod için IP 'yi arar.
+1. Giriş denetleyicisi, *Servicea. azureuser* olan URL ile ilişkili pod için IP 'yi arar.
 1. Giriş denetleyicisi, Azure kullanıcısının geliştirme alanında pod için IP 'yi bulur ve isteği *Servicea. azureuser* Pod 'a yönlendirir.
 1. *Servicea. azureuser* Pod içindeki devspaces-proxy kapsayıcısı, isteği alır ve `azds-route-as: azureuser` bir http üst bilgisi olarak ekler.
 1. *Servicea. azureuser* Pod içindeki devspaces-proxy kapsayıcısı, isteği *servicea. Azureuser* Pod içindeki *servicea* uygulama kapsayıcısına yönlendirir.
 1. *Servicea. azureuser* Pod Içindeki *Servicea* uygulaması, *serviceb*'ye bir çağrı yapar. *Servicea* uygulaması aynı zamanda var olan üstbilgiyi koruyacak kodu de içerir `azds-route-as` , bu durumda `azds-route-as: azureuser` .
 1. *Servicea. azureuser* Pod içindeki devspaces-proxy kapsayıcısı, isteği alır ve üst bilgi değerine göre *serviceb* IP 'sini arar `azds-route-as` .
-1. *Servicea. azureuser* Pod içindeki devspaces-proxy kapsayıcısı *serviceb. AZUREUSER*için bir IP bulamadı.
+1. *Servicea. azureuser* Pod içindeki devspaces-proxy kapsayıcısı *serviceb. AZUREUSER* için bir IP bulamadı.
 1. *Servicea. azureuser* Pod içindeki devspaces-proxy kapsayıcısı, ana alanda *SERVICEB* için IP 'yi arar. *varsayılan*.
 1. *Servicea. azureuser* Pod içindeki devspaces-proxy kapsayıcısı, *serviceb. Default* için IP 'Yi bulur ve isteği *serviceb. Default* Pod öğesine yönlendirir.
 1. *Serviceb. Default* Pod içindeki devspaces-proxy kapsayıcısı, isteği alır ve Isteği *serviceb. Default* Pod içindeki *serviceb* uygulama kapsayıcısına yönlendirir.
@@ -58,11 +58,11 @@ Ayrıca, başka bir geliştirme alanından türetilmiş yeni bir geliştirme ala
 Türetilmiş geliştirme alanı Ayrıca, kendi uygulamaları ve üst öğesinden paylaşılan uygulamalar arasında istekleri de akıllıca yönlendirir. Yönlendirme, istek türetilmiş geliştirme alanındaki bir uygulamaya yönlendirilmeye çalışarak ve üst geliştirme alanından paylaşılan uygulamaya geri dönerek yapılır. Uygulama üst alanda değilse, yönlendirme, ana alanda bulunan paylaşılan uygulamaya geri döner.
 
 Örnek:
-* Dev alanı *varsayılan* olarak, *Servicea* ve *serviceb*uygulamalarına sahiptir.
-* *Azureuser* dev Space, *varsayılan*olarak türetilir.
+* Dev alanı *varsayılan* olarak, *Servicea* ve *serviceb* uygulamalarına sahiptir.
+* *Azureuser* dev Space, *varsayılan* olarak türetilir.
 * *Servicea* 'nın güncelleştirilmiş bir sürümü *azureuser*'e dağıtılır.
 
-*Azureuser*kullanılırken, *servicea* 'ya yapılan tüm istekler *azureuser*içindeki güncelleştirilmiş sürüme yönlendirilir. *Serviceb* 'ye yönelik bir istek, önce *serviceb*'nin *azureuser* sürümüne yönlendirilmek üzere denenir. Mevcut olmadığından, bu hizmet, *serviceb*'nin *varsayılan* sürümüne yönlendirilir. *Servicea* 'nın *azureuser* sürümü kaldırılırsa, *servicea* 'Ya yapılan tüm istekler *varsayılan* *servicea*sürümünü kullanmaya geri döner.
+*Azureuser* kullanılırken, *servicea* 'ya yapılan tüm istekler *azureuser* içindeki güncelleştirilmiş sürüme yönlendirilir. *Serviceb* 'ye yönelik bir istek, önce *serviceb*'nin *azureuser* sürümüne yönlendirilmek üzere denenir. Mevcut olmadığından, bu hizmet, *serviceb*'nin *varsayılan* sürümüne yönlendirilir. *Servicea* 'nın *azureuser* sürümü kaldırılırsa, *servicea* 'Ya yapılan tüm istekler *varsayılan* *servicea* sürümünü kullanmaya geri döner.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

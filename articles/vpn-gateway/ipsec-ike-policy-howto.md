@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: yushwang
 ms.openlocfilehash: 2b298185866d16da02fe8d3b3fdb41f0b0b1f726
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98878553"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections-azure-portal"></a>S2S VPN veya VNet-VNet bağlantıları için IPSec/ıKE ilkesini yapılandırma: Azure portal
@@ -28,8 +28,10 @@ Bu makalede bir IPSec/ıKE İlkesi oluşturup yapılandırma ve bunu yeni veya m
 ### <a name="considerations"></a>Dikkat edilmesi gerekenler
 
 * IPSec/ıKE ilkesi yalnızca aşağıdaki ağ geçidi SKU 'Larında kullanılabilir:
-  * ***VpnGw1 ~ 5 ve VpnGw1AZ ~ 5AZ** _ _ ***Standart** _ ve _*_HighPerformance_*_ _ belirli bir bağlantı için yalnızca ***bir** _ ilke kombinasyonu belirtebilirsiniz.
-  _ IKE (ana mod) ve IPSec (hızlı mod) için tüm algoritmaları ve parametreleri belirtmeniz gerekir. Kısmi ilke belirtimine izin verilmez.
+  * ***VpnGw1 ~ 5 ve VpnGw1AZ ~ 5AZ***
+  * ***Standart** _ ve _ *_HighPerformance_**
+* Belirli bir bağlantı için yalnızca ***bir*** ilke birleşimi belirtebilirsiniz.
+* IKE (ana mod) ve IPSec (hızlı mod) için tüm algoritmaları ve parametreleri belirtmeniz gerekir. Kısmi ilke belirtimine izin verilmez.
 * İlkenin şirket içi VPN cihazlarınızda desteklendiğinden emin olmak için, VPN cihazınızın satıcı belirtimlerinize başvurun. İlkeler uyumsuz ise, S2S veya VNet-VNet bağlantıları kurulamaz.
 
 ## <a name="workflow"></a><a name ="workflow"></a>İş akışı

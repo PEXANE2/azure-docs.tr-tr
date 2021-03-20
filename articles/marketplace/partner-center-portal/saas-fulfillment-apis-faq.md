@@ -8,10 +8,10 @@ ms.date: 07/11/2019
 author: mingshen-ms
 ms.author: mingshen
 ms.openlocfilehash: 4c5d8b438764fa9aa3838b2225c63d412afc519b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88606807"
 ---
 # <a name="common-questions-about-saas-fulfillment-apis"></a>SaaS 'in API 'Leri karşılama hakkında genel sorular
@@ -38,7 +38,7 @@ SaaS teklifine abone olurken, Kullanıcı Microsoft Platformu aracılığıyla S
 
 ### <a name="how-are-you-notified-when-a-user-subscribes-to-your-saas-offer"></a>Kullanıcı SaaS teklifinizi abone olduğunda nasıl bilgilendirirsiniz?
 
-Bir teklifine abone olduktan sonra Azure kullanıcısı tüm tekliflerini Azure 'da bulabilir ve yönetebilir. Varsayılan olarak, yeni abone olunan SaaS teklifinin durumu **sağlama, bekleyen karşılama**olarak gösterilir. Bu durumda, Azure kullanıcısına, Azure portal SaaS Abonelik yönetimi deneyimine gitmek için **Hesap Yapılandırma**eylemiyle karşılaşacaktır.
+Bir teklifine abone olduktan sonra Azure kullanıcısı tüm tekliflerini Azure 'da bulabilir ve yönetebilir. Varsayılan olarak, yeni abone olunan SaaS teklifinin durumu **sağlama, bekleyen karşılama** olarak gösterilir. Bu durumda, Azure kullanıcısına, Azure portal SaaS Abonelik yönetimi deneyimine gitmek için **Hesap Yapılandırma** eylemiyle karşılaşacaktır.
 
 Kullanıcı **hesabı Yapılandır**' ı seçtiğinde, SaaS hizmeti Web sitesine yönlendirilir. Yayımcı, teklifi yayınlama sırasında URL 'YI yapılandırdı. Bu sayfa, yayımcının giriş sayfası olarak adlandırılır. Azure kullanıcıları, Azure 'daki mevcut AAD kimlik bilgilerine göre SaaS giriş sayfasında oturum açabilirler.
 

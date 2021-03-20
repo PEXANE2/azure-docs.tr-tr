@@ -8,10 +8,10 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 835e4f681d514bb6b92caa5ee076e3794ed59236
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94698827"
 ---
 # <a name="security-control-data-recovery"></a>Güvenlik denetimi: veri kurtarma
@@ -32,7 +32,7 @@ Yedekleme kaynağını (Azure VM 'Leri, SQL Server veya dosya paylaşımları) v
 
 | Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
-| 9,2 | 10.2 | Müşteri |
+| 9.2 | 10.2 | Müşteri |
 
 Azure Backup ve hedef VM 'leri, ayrıca istediğiniz sıklığı ve bekletme dönemlerini etkinleştirin. Müşteri tarafından yönetilen anahtarları Azure Key Vault içinde yedekleyin.
 
@@ -44,7 +44,7 @@ Azure Backup ve hedef VM 'leri, ayrıca istediğiniz sıklığı ve bekletme dö
 
 | Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
-| 9,3 | 10,3 | Müşteri |
+| 9.3 | 10.3 | Müşteri |
 
 Azure Backup içinde içeriğin düzenli olarak veri geri yüklemesini gerçekleştirme olanağı sağlayın. Yedeklenen müşteri tarafından yönetilen anahtarların test geri yüklenmesi.
 

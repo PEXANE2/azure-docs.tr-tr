@@ -15,10 +15,10 @@ ms.author: curtand
 ms.reviewer: shaunliu
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 94dd5c2579eb7ce96dea70c6354df8ec84125bd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88141678"
 ---
 # <a name="audit-activity-history-for-privileged-access-group-assignments-preview-in-privileged-identity-management"></a>Privileged Identity Management 'da ayrıcalıklı erişim grubu atamaları (Önizleme) için denetim etkinliği geçmişi
@@ -34,7 +34,7 @@ Ayrıcalıklı erişim gruplarının denetim geçmişini görüntülemek için b
 
 **Kaynak denetimi** , ayrıcalıklı erişim gruplarınız ile ilişkili tüm etkinliklerin bir görünümünü sağlar.
 
-1. **Azure AD Privileged Identity Management**açın.
+1. **Azure AD Privileged Identity Management** açın.
 
 1. **Ayrıcalıklı erişim grupları (Önizleme)** seçeneğini belirleyin.
 
@@ -50,7 +50,7 @@ Ayrıcalıklı erişim gruplarının denetim geçmişini görüntülemek için b
 
 **My Audit** , ayrıcalıklı bir erişim grubu için kişisel rol etkinliğinizi görüntülemenize olanak sağlar.
 
-1. **Azure AD Privileged Identity Management**açın.
+1. **Azure AD Privileged Identity Management** açın.
 
 1. **Ayrıcalıklı erişim grupları (Önizleme)** seçeneğini belirleyin.
 

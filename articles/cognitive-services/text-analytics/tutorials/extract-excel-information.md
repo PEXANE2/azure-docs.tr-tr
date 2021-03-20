@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: aahi
 ms.openlocfilehash: 197d28b2ac3d94b6639a6611b2919bdeb2b182e2
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93359910"
 ---
 # <a name="extract-information-in-excel-using-text-analytics-and-power-automate"></a>Metin Analizi ve güç otomatikleştirme kullanarak Excel 'de bilgi Ayıkla 
@@ -103,7 +103,7 @@ Bu eylemde bulunan alanları doldurarak Excel dosyasını akışa ekleyin. Bu ö
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/add-apply-action.png" alt-text="Uygula komutu ekleyin.":::
 
-**Önceki adımdan bir çıktı Seç** ' e tıklayın. Görüntülenen dinamik içerik kutusunda **değer** ' i seçin.
+**Önceki adımdan bir çıktı Seç**' e tıklayın. Görüntülenen dinamik içerik kutusunda **değer**' i seçin.
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/select-output.png" alt-text="Excel dosyasından çıkış ' ı seçin.":::
@@ -114,12 +114,12 @@ Henüz yapmadıysanız, Azure portal bir [metin analizi kaynağı](https://ms.po
 
 ### <a name="create-a-text-analytics-connection"></a>Metin Analizi bağlantısı oluşturma
 
-**Her birine Uygula** ' da **Eylem Ekle** ' ye tıklayın. Azure portal Metin Analizi kaynağınızın **anahtar ve uç nokta** sayfasına gidin ve metin analizi kaynağınızın anahtarını ve uç noktasını alın.
+**Her birine Uygula**' da **Eylem Ekle**' ye tıklayın. Azure portal Metin Analizi kaynağınızın **anahtar ve uç nokta** sayfasına gidin ve metin analizi kaynağınızın anahtarını ve uç noktasını alın.
 
 Flow 'da yeni bir Metin Analizi bağlantısı oluşturmak için aşağıdaki bilgileri girin.
 
 > [!NOTE]
-> Zaten bir Metin Analizi bağlantısı oluşturduysanız ve bağlantı ayrıntılarınızı değiştirmek istiyorsanız sağ üst köşedeki üç noktaya tıklayın ve **+ Yeni bağlantı ekle** ' ye tıklayın.
+> Zaten bir Metin Analizi bağlantısı oluşturduysanız ve bağlantı ayrıntılarınızı değiştirmek istiyorsanız sağ üst köşedeki üç noktaya tıklayın ve **+ Yeni bağlantı ekle**' ye tıklayın.
 
 | Alan           | Değer                                                                                                             |
 |-----------------|-------------------------------------------------------------------------------------------------------------------|
@@ -132,7 +132,7 @@ Flow 'da yeni bir Metin Analizi bağlantısı oluşturmak için aşağıdaki bil
 
 ## <a name="extract-the-excel-content"></a>Excel içeriğini Ayıkla 
 
-Bağlantı oluşturulduktan sonra, **metin analizi** arayın ve **varlıklar** ' ı seçin. Bu, sorunun açıklama sütunundan bilgi ayıklar.
+Bağlantı oluşturulduktan sonra, **metin analizi** arayın ve **varlıklar**' ı seçin. Bu, sorunun açıklama sütunundan bilgi ayıklar.
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/extract-info.png" alt-text="Metin Analizi varlıkları ekleyin.":::
@@ -145,12 +145,12 @@ Bağlantı oluşturulduktan sonra, **metin analizi** arayın ve **varlıklar** '
 
 ## <a name="extract-the-person-name"></a>Kişi adını Ayıkla
 
-Sonra, Metin Analizi çıktısında kişi varlık türünü bulacağız. **Her birine Uygula** içinde, **Eylem Ekle** ' ye tıklayın ve **her eylem için** başka bir uygulama oluşturun. Metin kutusunun içine tıklayın ve görüntülenen dinamik Içerik penceresinde **varlıklar** ' ı seçin.
+Sonra, Metin Analizi çıktısında kişi varlık türünü bulacağız. **Her birine Uygula** içinde, **Eylem Ekle**' ye tıklayın ve **her eylem için** başka bir uygulama oluşturun. Metin kutusunun içine tıklayın ve görüntülenen dinamik Içerik penceresinde **varlıklar** ' ı seçin.
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/add-apply-action-2.png" alt-text="Akışlarınızın Metin Analizi kimlik bilgilerini ekleyin. iki":::
 
-Yeni oluşturulan **her 2 eylemi için** , **Eylem Ekle** ' ye tıklayın ve bir **koşul** denetimi ekleyin.
+Yeni oluşturulan **her 2 eylemi için** , **Eylem Ekle**' ye tıklayın ve bir **koşul** denetimi ekleyin.
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/create-condition.png" alt-text="Akışlarınızın Metin Analizi kimlik bilgilerini ekleyin. 03":::
@@ -165,12 +165,12 @@ Koşul penceresinde, ilk metin kutusuna tıklayın. Dinamik içerik penceresinde
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/choose-variable-value.png" alt-text="Akışlarınızın Metin Analizi kimlik bilgilerini ekleyin. e":::
 
-**Evet ise** , Excel 'de yazın ve ardından **satırı Güncelleştir** ' i seçin.
+**Evet ise** , Excel 'de yazın ve ardından **satırı Güncelleştir**' i seçin.
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/yes-column-action.png" alt-text="Akışlarınızın Metin Analizi kimlik bilgilerini ekleyin. inç":::
 
-Excel bilgilerini girin ve **anahtar sütununu** , **anahtar değerini** ve **PersonName** alanlarını güncelleştirin. Bu, API tarafından algılanan adı Excel sayfasına ekler. 
+Excel bilgilerini girin ve **anahtar sütununu**, **anahtar değerini** ve **PersonName** alanlarını güncelleştirin. Bu, API tarafından algılanan adı Excel sayfasına ekler. 
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/yes-column-action-options.png" alt-text="Akışlarınızın Metin Analizi kimlik bilgilerini ekleyin. 7@@":::
@@ -209,16 +209,16 @@ Daha sonra Flow, Excel tablo satırındaki sorun açıklamasının "sıhhi tesis
 > :::image type="content" source="../media/tutorials/excel/condition-3-options.png" alt-text="Akışlarınızın Metin Analizi kimlik bilgilerini ekleyin. +":::
 
 
-**Evet ise** , **Eylem Ekle** ' ye tıklayın ve **bir satırı Güncelleştir** ' i seçin. Daha sonra gibi bilgileri girin. IssueType sütununda, öğesini seçin `var_plumbing` . Bu, satıra bir "sıhhi tesisat" etiketi uygular.
+**Evet ise** , **Eylem Ekle**' ye tıklayın ve **bir satırı Güncelleştir**' i seçin. Daha sonra gibi bilgileri girin. IssueType sütununda, öğesini seçin `var_plumbing` . Bu, satıra bir "sıhhi tesisat" etiketi uygular.
 
-**Koşul yoksa,** **Eylem Ekle** ' ye tıklayın ve **bir satırı Güncelleştir** ' i seçin. Daha sonra gibi bilgileri girin. IssueType sütununda, öğesini seçin `var_other` . Bu, satıra "diğer" etiketini uygular.
+**Koşul yoksa,** **Eylem Ekle**' ye tıklayın ve **bir satırı Güncelleştir**' i seçin. Daha sonra gibi bilgileri girin. IssueType sütununda, öğesini seçin `var_other` . Bu, satıra "diğer" etiketini uygular.
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/plumbing-issue-condition.png" alt-text="Akışlarınızın Metin Analizi kimlik bilgilerini ekleyin. hatası":::
 
 ## <a name="test-the-workflow"></a>İş akışını test etme
 
-Ekranın sağ üst köşesinde **Kaydet** ' e ve ardından **Sına** ' ya tıklayın. **Tetikleme eylemini yapacağım ' ı** seçin. **& testi kaydet** ' e tıklayın, **akışı çalıştırın** , sonra **bitti**.
+Ekranın sağ üst köşesinde **Kaydet**' e ve ardından **Sına**' ya tıklayın. **Tetikleme eylemini yapacağım ' ı** seçin. **& testi kaydet**' e tıklayın, **akışı çalıştırın**, sonra **bitti**.
 
 Excel dosyası OneDrive hesabınızda güncelleştirilir. Aşağıdaki gibi görünür.
 

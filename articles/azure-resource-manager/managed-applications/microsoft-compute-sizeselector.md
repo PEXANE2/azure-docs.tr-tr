@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: d6408f8c08694ae681d302ae35f5778894091733
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87063653"
 ---
 # <a name="microsoftcomputesizeselector-ui-element"></a>Microsoft. COMPUTE. SizeSelector Kullanıcı arabirimi öğesi
@@ -70,11 +70,11 @@ Denetim seçildikten sonra Kullanıcı, kullanılabilir boyutların genişletilm
 - `recommendedSizes` en az bir boyuta sahip olmalıdır. Önerilen ilk boyut varsayılan olarak kullanılır. Kullanılabilir boyutların listesi önerilen duruma göre sıralanmaz. Kullanıcı önerilen duruma göre sıralamak için bu sütunu seçebilir.
 - Seçilen konumda önerilen bir boyut yoksa, boyut otomatik olarak atlanır. Bunun yerine önerilen sonraki boyut kullanılır.
 - `constraints.allowedSizes` ve `constraints.excludedSizes` her ikisi de isteğe bağlıdır, ancak aynı anda kullanılamaz. Kullanılabilir boyutların listesi, [bir abonelik için kullanılabilir sanal makine boyutları](/rest/api/compute/virtualmachines/virtualmachines-list-sizes-region)çağırarak belirlenebilir. İçinde belirtilmeyen herhangi bir boyut `constraints.allowedSizes` gizlidir ve içinde belirtilmeyen tüm boyut `constraints.excludedSizes` gösterilir.
-- `osPlatform` belirtilmelidir ve **Windows** ya da **Linux**olabilir. Bu, sanal makinelerin donanım maliyetlerini belirlemede kullanılır.
+- `osPlatform` belirtilmelidir ve **Windows** ya da **Linux** olabilir. Bu, sanal makinelerin donanım maliyetlerini belirlemede kullanılır.
 - `imageReference` Birinci taraf görüntüleri için atlanır, ancak üçüncü taraf görüntüleri için sağlanır. Bu, sanal makinelerin Yazılım maliyetlerini belirlemede kullanılır.
-- `count` öğesi için uygun çarpanı ayarlamak için kullanılır. **2**gibi bir statik değeri ya da gibi başka bir öğeden dinamik bir değeri destekler `[steps('step1').vmCount]` . Varsayılan değer **1**' dir.
+- `count` öğesi için uygun çarpanı ayarlamak için kullanılır. **2** gibi bir statik değeri ya da gibi başka bir öğeden dinamik bir değeri destekler `[steps('step1').vmCount]` . Varsayılan değer **1**' dir.
 - `numAvailabilityZonesRequired`1, 2 veya 3 olabilir.
-- Varsayılan olarak `hideDiskTypeFilter` **false**şeklindedir. Disk türü filtresi, kullanıcının tüm disk türlerini veya yalnızca SSD 'yi görmesini sağlar.
+- Varsayılan olarak `hideDiskTypeFilter` **false** şeklindedir. Disk türü filtresi, kullanıcının tüm disk türlerini veya yalnızca SSD 'yi görmesini sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

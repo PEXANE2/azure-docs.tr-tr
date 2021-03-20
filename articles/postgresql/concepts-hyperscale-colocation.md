@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: 842563319e09a001fd6e85403d8aee6fb14690ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90884435"
 ---
 # <a name="table-colocation-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nda tablo bulundurma – hiper ölçek (Citus)
@@ -96,7 +96,7 @@ Daha sonra, iki adımdan elde edilecek sonuçların uygulama tarafından birleş
 
 Sorguları çalıştırmak, düğümler arasında dağılmış olan verileri parçalara sağlamalıdır.
 
-:::image type="content" source="media/concepts-hyperscale-colocation/colocation-inefficient-queries.png" alt-text="Parçalar":::
+:::image type="content" source="media/concepts-hyperscale-colocation/colocation-inefficient-queries.png" alt-text="Verimsiz sorgular":::
 
 Bu durumda, veri dağıtımı önemli bir sakıncalar oluşturuyor:
 
@@ -134,7 +134,7 @@ GROUP BY page_id;
 
 Tenant_id FILTER ve JOIN nedeniyle hiper ölçek (Citus), bu belirli bir kiracının verilerini içeren birlikte bulunan parçalı parçalar kümesi kullanılarak tüm sorgunun yanıtlandığını bilir. Tek bir PostgreSQL düğümü, sorguyu tek bir adımda yanıtlayabilir.
 
-:::image type="content" source="media/concepts-hyperscale-colocation/colocation-better-query.png" alt-text="Parçalar":::
+:::image type="content" source="media/concepts-hyperscale-colocation/colocation-better-query.png" alt-text="Daha iyi sorgu":::
 
 Bazı durumlarda, sorgular ve tablo şemaları, kiracı KIMLIĞINI benzersiz kısıtlamalara ve JOIN koşullarına dahil etmek için değiştirilmelidir. Bu değişiklik genellikle basittir.
 

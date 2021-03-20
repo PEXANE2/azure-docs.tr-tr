@@ -12,10 +12,10 @@ ms.author: sstein
 ms.date: 10/15/2020
 ms.reviewer: ''
 ms.openlocfilehash: 19178359d1eeb935499a01828f7c53b123e17571
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793186"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>DTU tabanlı satın alma modelindeki hizmet katmanları
@@ -114,7 +114,7 @@ Veritabanı "ölçek faktörü" temelinde boyutlandırılır. Ölçek faktörü 
 
 İş yükü, aşağıdaki tabloda gösterildiği gibi dokuz işlem türünden oluşur. Her işlem, veritabanı altyapısı ve sistem donanımında belirli bir sistem özellikleri kümesini, diğer işlemlerden yüksek karşıtlığa göre vurgulamak için tasarlanmıştır. Bu yaklaşım, farklı bileşenlerin genel performansa etkilerini değerlendirmeyi kolaylaştırır. Örneğin, "okuma ağır" işlemi diskten önemli sayıda okuma işlemi üretir.
 
-| İşlem Türü | Açıklama |
+| İşlem Türü | Description |
 | --- | --- |
 | Lite 'ı oku |SEÇIN bellek içi; salt okunurdur |
 | Ortamı oku |SEÇIN genellikle bellek içi; salt okunurdur |

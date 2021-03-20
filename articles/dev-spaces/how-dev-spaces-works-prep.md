@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Projenizin Azure Dev Spaces çalışma ile nasıl hazırlanıldığını açıklar
 keywords: azds. YAML, Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar
 ms.openlocfilehash: d2da69dd8a8c2683ff584dfd0ffc61cb023f2ece
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91968166"
 ---
 # <a name="how-preparing-a-project-for-azure-dev-spaces-works"></a>Projeyi Azure Dev Spaces için hazırlama
@@ -34,9 +34,9 @@ azds prep --enable-ingress
 * Node.js
 * .NET Core
 
-*must* `prep` Komutunu kaynak kodu içeren bir dizinden çalıştırmanız gerekir. `prep`Komutu doğru dizinden çalıştırmak, istemci tarafı araçlarının dili belirlemesine ve uygulamanızı kapsayıtacak uygun bir Dockerfile oluşturmasına izin verir. `prep`Komutunu, Java projeleri için *pom.xml* dosyası içeren bir dizinden da çalıştırabilirsiniz.
+ `prep` Komutunu kaynak kodu içeren bir dizinden çalıştırmanız gerekir. `prep`Komutu doğru dizinden çalıştırmak, istemci tarafı araçlarının dili belirlemesine ve uygulamanızı kapsayıtacak uygun bir Dockerfile oluşturmasına izin verir. `prep`Komutunu, Java projeleri için *pom.xml* dosyası içeren bir dizinden da çalıştırabilirsiniz.
 
-`prep`Komutunu kaynak kodu içermeyen dizinden çalıştırırsanız, istemci tarafı araçları Dockerfile oluşturmaz. Ayrıca, *Desteklenmeyen bir dil nedeniyle Dockerfile*oluşturulamadı hatası görüntülenir. Bu hata, istemci tarafı araçları proje türünü tanımadığı zaman da oluşur.
+`prep`Komutunu kaynak kodu içermeyen dizinden çalıştırırsanız, istemci tarafı araçları Dockerfile oluşturmaz. Ayrıca, *Desteklenmeyen bir dil nedeniyle Dockerfile* oluşturulamadı hatası görüntülenir. Bu hata, istemci tarafı araçları proje türünü tanımadığı zaman da oluşur.
 
 `prep`Komutunu çalıştırdığınızda, bayrağını belirtme seçeneğiniz vardır `--enable-ingress` . Bu bayrak, denetleyiciye bu hizmet için internet 'ten erişilebilen bir uç nokta oluşturmasını söyler. Bu bayrağı belirtmezseniz, hizmete yalnızca küme içinden veya istemci tarafı araçları tarafından oluşturulan localhost tüneli kullanılarak erişilebilir. Oluşturulan Held grafiğini güncelleştirerek komutu çalıştırdıktan sonra bu davranışı etkinleştirebilir veya devre dışı bırakabilirsiniz `prep` .
 

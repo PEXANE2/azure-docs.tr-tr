@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: a96be6d4da3d292b2e9881652aad28f318ccee8a
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92107581"
 ---
 # <a name="azure-data-studio-dashboards"></a>Azure Data Studio panoları
@@ -24,7 +24,7 @@ ms.locfileid: "92107581"
 
 ## <a name="connecting-to-a-data-controller"></a>Veri denetleyicisine bağlanma
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 - [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) indir
 - Azure Arc uzantısı yüklendi
@@ -68,7 +68,7 @@ Bir sonraki adımda kullanacağınız için IP adresinizi göz önünde bulabili
 
 1. Sol taraftaki **Bağlantılar** sekmesini seçin
 
-En alta doğru, **Azure Arc denetleyicileri**adlı paneli genişletin.
+En alta doğru, **Azure Arc denetleyicileri** adlı paneli genişletin.
 
 Yeni bir veri denetleyicisi bağlantısı eklemek için + simgesine tıklayın.
 

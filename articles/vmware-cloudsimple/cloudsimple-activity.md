@@ -10,17 +10,17 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: f77e996e83819b78bb9ab4484b9a1d3653a97560
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88140981"
 ---
 # <a name="activity-management-overview"></a>Etkinlik yönetimine genel bakış
 
 CloudSimple, özel bulut ortamınızın çalışmasını etkileyebilecek tüm etkinlikleri izler. Etkinlikleri, uyarıları, olayları, görevleri ve denetim etkinliğini içerir. [Etkinlik sayfaları](monitor-activity.md) , tüm geçerli etkinlikleri özetler ve ek ayrıntılar için ayrıntıya gitmenizi sağlar.
 
-## <a name="events"></a>Olaylar
+## <a name="events"></a>Ekinlikler
 
 Olayları, CloudSimple portalındaki Kullanıcı ve sistem etkinliğini izler. Olaylar, belirli bir kaynakla ilişkili etkinliği ve etkinin önem derecesini gösterir.  Olayları CloudSimple portalından görüntüleyebilirsiniz.
 

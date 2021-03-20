@@ -4,10 +4,10 @@ description: Bu makalede, hizmete bağlanmaya çalışırken Azure Arc etkin sun
 ms.date: 09/02/2020
 ms.topic: conceptual
 ms.openlocfilehash: 36feb6a65ec52d99dfd664ae54cb099ea6a7e239
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90900673"
 ---
 # <a name="troubleshoot-the-connected-machine-agent-connection-issues"></a>Bağlı makine Aracısı bağlantı sorunlarını giderme
@@ -44,7 +44,7 @@ Aşağıda, bir hizmet sorumlusu kullanarak ölçekli bir yükleme gerçekleşti
 Aşağıda, etkileşimli bir yükleme gerçekleştirirken Linux için bağlı makine Aracısı ile ayrıntılı günlüğe yazmayı etkinleştirme komutuna bir örnek verilmiştir.
 
 >[!NOTE]
->**Azcmagent**çalıştırmak için Linux makinelerde *kök* erişim izinlerine sahip olmanız gerekir.
+>**Azcmagent** çalıştırmak için Linux makinelerde *kök* erişim izinlerine sahip olmanız gerekir.
 
 ```bash
 azcmagent connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID" --verbose

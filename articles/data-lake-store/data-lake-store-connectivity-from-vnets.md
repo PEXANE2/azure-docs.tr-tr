@@ -13,10 +13,10 @@ ms.topic: how-to
 ms.date: 01/31/2018
 ms.author: elsung
 ms.openlocfilehash: e319cf9dfc01546607e20572c5bf4930fd974c75
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92104045"
 ---
 # <a name="access-azure-data-lake-storage-gen1-from-vms-within-an-azure-vnet"></a>Bir Azure sanal ağı içindeki VM 'lerden erişim Azure Data Lake Storage 1.
@@ -29,7 +29,7 @@ Azure Data Lake Storage 1., genel Internet IP adresleri üzerinde çalışan bir
 Bu makalede, Azure VM 'lerinden Azure Data Lake Storage 1. erişimi etkinleştirmeyi öğrenirsiniz ve bu, daha önce listelenen üç yöntemden birini kullanarak kaynaklarla erişim ile sınırlıdır.
 
 ## <a name="enabling-connectivity-to-azure-data-lake-storage-gen1-from-vms-with-restricted-connectivity"></a>Kısıtlanmış bağlantısı olan VM 'lerden Azure Data Lake Storage 1. bağlantı etkinleştiriliyor
-Bu VM 'lerden Azure Data Lake Storage 1. erişmek için, bunları Azure Data Lake Storage 1. hesabının kullanılabildiği bölgenin IP adresine erişecek şekilde yapılandırmanız gerekir. Hesaplarınızın () DNS adlarını çözümleyerek Data Lake Storage 1. hesap Bölgelerinizdeki IP adreslerini belirleyebilirsiniz `<account>.azuredatalakestore.net` . Hesaplarınızın DNS adlarını çözümlemek için, **nslookup**gibi araçları kullanabilirsiniz. Bilgisayarınızda bir komut istemi açın ve aşağıdaki komutu çalıştırın:
+Bu VM 'lerden Azure Data Lake Storage 1. erişmek için, bunları Azure Data Lake Storage 1. hesabının kullanılabildiği bölgenin IP adresine erişecek şekilde yapılandırmanız gerekir. Hesaplarınızın () DNS adlarını çözümleyerek Data Lake Storage 1. hesap Bölgelerinizdeki IP adreslerini belirleyebilirsiniz `<account>.azuredatalakestore.net` . Hesaplarınızın DNS adlarını çözümlemek için, **nslookup** gibi araçları kullanabilirsiniz. Bilgisayarınızda bir komut istemi açın ve aşağıdaki komutu çalıştırın:
 
 ```console
 nslookup mydatastore.azuredatalakestore.net

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 1e796232719342883efc2aa5dd377d586f3039ad
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96571326"
 ---
 # <a name="access-save-and-remove-reliable-actors-state"></a>Reliable Actors duruma erişin, kaydedin ve kaldırın
@@ -27,7 +27,7 @@ Duruma, durum Yöneticisi ile anahtara göre erişilir. Aktör kalıcı duruma s
 * Aktör, devre dışı bırakıldıktan veya hatadan sonra yeniden etkinleştirilir.
 * Durum sağlayıcısının durumu disk olarak. Bu davranış, durum sağlayıcısı uygulamasına bağlıdır. Ayarın varsayılan durum sağlayıcısı `Persisted` Bu davranışa sahiptir.
 
-*Get* `KeyNotFoundException` `NoSuchElementException` Anahtar için bir giriş yoksa, (C#) veya (Java) oluşturan bir standart get işlemi kullanarak durumu alabilirsiniz:
+ `KeyNotFoundException` `NoSuchElementException` Anahtar için bir giriş yoksa, (C#) veya (Java) oluşturan bir standart get işlemi kullanarak durumu alabilirsiniz:
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]

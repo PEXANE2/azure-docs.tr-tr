@@ -1,7 +1,7 @@
 ---
-title: dosya dahil etme
+title: include dosyası
 titleSuffix: Azure
-description: dosya dahil etme
+description: include dosyası
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 632490498b8dd13414657edb9518cd543ac07af6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "81678850"
 ---
 1. **Eşleme oluştur** sayfasında, **yapılandırma** sekmesinde, kutulara aşağıda gösterildiği gibi kutuyu girin.
@@ -20,9 +20,9 @@ ms.locfileid: "81678850"
     > [!div class="mx-imgBorder"]
     > ![Eşleme sayfası yapılandırma sekmesi oluşturma](../media/setup-direct-conf-tab.png)
 
-    * **Eşleme türü**için **doğrudan**' yi seçin.
-    * **Microsoft ağı**için **AS8075**öğesini seçin. ASN 8069 ' i seçmeyin. Özel uygulamalar için ayrılmıştır ve yalnızca [Microsoft eşlemesi](mailto:peering@microsoft.com)tarafından kullanılır.
-    * **SKU 'Yu** **temel ücretsiz**olarak seçin. Premium ücretsiz seçmeyin çünkü özel uygulamalar için ayrılmıştır.
+    * **Eşleme türü** için **doğrudan**' yi seçin.
+    * **Microsoft ağı** için **AS8075** öğesini seçin. ASN 8069 ' i seçmeyin. Özel uygulamalar için ayrılmıştır ve yalnızca [Microsoft eşlemesi](mailto:peering@microsoft.com)tarafından kullanılır.
+    * **SKU 'Yu** **temel ücretsiz** olarak seçin. Premium ücretsiz seçmeyin çünkü özel uygulamalar için ayrılmıştır.
     * Eşlemeyi bir Azure kaynağına dönüştürmek istediğiniz **Metro** konumunu seçin. Azure kaynağına dönüştürülmemiş seçili **Metro** konumunda Microsoft ile eşleme bağlantılarınız varsa, bu bağlantılar gösterilen şekilde **eşleme bağlantıları** bölümünde listelenecektir. Artık bu eşleme bağlantılarını bir Azure kaynağına dönüştürebilirsiniz.
 
         > [!div class="mx-imgBorder"]
@@ -42,7 +42,7 @@ ms.locfileid: "81678850"
     > [!div class="mx-imgBorder"]
     > ![Eşleme doğrulama sekmesi](../media/setup-direct-review-tab-validation.png)
 
-1. *Doğrulama başarılı*olduktan sonra, bilgilerinizi doğrulayın. **Oluştur**seçeneğini belirleyerek isteği gönderebilirsiniz. İsteğinizi değiştirmek için, **önceki** seçeneğini belirleyip adımları yineleyin.
+1. *Doğrulama başarılı* olduktan sonra, bilgilerinizi doğrulayın. **Oluştur** seçeneğini belirleyerek isteği gönderebilirsiniz. İsteğinizi değiştirmek için, **önceki** seçeneğini belirleyip adımları yineleyin.
 
     > [!div class="mx-imgBorder"]
     > ![Eşleme gönderimi](../media/setup-direct-review-tab-submit.png)

@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
 ms.openlocfilehash: cd787e1c846bfe4728577cbbce069385ce064a10
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98943404"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>HDInsight’ı şirket içi ağınıza bağlama
@@ -75,7 +75,7 @@ Bu adımlar, Azure sanal makinesi oluşturmak için [Azure Portal](https://porta
     |Abonelik |Uygun aboneliğinizi seçin.|
     |Kaynak grubu |Daha önce oluşturulan sanal ağı içeren kaynak grubunu seçin.|
     |Sanal makine adı | Bu sanal makineyi tanımlayan kolay bir ad girin. Bu örnek **dnsproxy** kullanır.|
-    |Bölge | Daha önce oluşturulan sanal ağla aynı bölgeyi seçin.  Tüm bölgelerde tüm VM boyutları kullanılamaz.  |
+    |Region | Daha önce oluşturulan sanal ağla aynı bölgeyi seçin.  Tüm bölgelerde tüm VM boyutları kullanılamaz.  |
     |Kullanılabilirlik seçenekleri |  İstediğiniz kullanılabilirlik düzeyini seçin.  Azure, uygulamalarınız için kullanılabilirliği ve dayanıklılığı yönetmeye yönelik çeşitli seçenekler sunar.  Uygulamalarınızı ve verilerinizi veri merkezi kesintilerine ve bakım olaylarına karşı korumak için Kullanılabilirlik Alanları veya kullanılabilirlik kümelerinde çoğaltılan VM 'Leri kullanmak için çözümünüzü mimarın. Bu örnek, **gerekli altyapı yedekliliği** kullanmaz. |
     |Görüntü | **Ubuntu Server 18,04 LTS** adresinden ayrılın. |
     |Kimlik doğrulaması türü | __Parola__ veya __SSH ortak anahtarı__: SSH hesabı için kimlik doğrulama yöntemi. Daha güvenli olduklarından ortak anahtarların kullanılmasını öneririz. Bu örnek, **parolayı** kullanır.  Daha fazla bilgi için bkz. [Linux VM 'leri IÇIN SSH anahtarları oluşturma ve kullanma](../virtual-machines/linux/mac-create-ssh-keys.md) belgesi.|

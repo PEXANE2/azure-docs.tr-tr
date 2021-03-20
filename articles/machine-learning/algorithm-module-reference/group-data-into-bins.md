@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/13/2020
 ms.openlocfilehash: 392cb9b4c2ded1b98b79ce8dcd780ac59e96b78a
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91998488"
 ---
 # <a name="group-data-into-bins-module"></a>Verileri depo gözleri modülüne gruplandırma
@@ -23,12 +23,12 @@ Bu makalede, sayıları gruplamak veya sürekli verilerin dağıtımını deği�
 Verileri depo gözleri halinde gruplandırma modülü, verileri binme için birden çok seçeneği destekler. Bölme kenarlarının nasıl ayarlanacağını ve değerlerin depo gözlerine nasıl alınacağını özelleştirebilirsiniz. Örneğin, şunları yapabilirsiniz:  
 
 + Küme sınırları olarak kullanılacak bir değer serisini el ile yazın.  
-+ *Quantiles*veya yüzdelik dereceleri kullanarak depo gözlerine değerler atayın.  
++ *Quantiles* veya yüzdelik dereceleri kullanarak depo gözlerine değerler atayın.  
 + Değerlerin eşit bir şekilde dağıtılmasını zorlamak için zorlayın.  
 
 ## <a name="more-about-binning-and-grouping"></a>Atma ve gruplandırma hakkında daha fazla bilgi
 
-Veri *hazırlama veya gruplama* (bazen de bir değer elde *edilir) Machine*Learning için sayısal veri hazırlama konusunda önemli bir araçtır. Bunlar gibi senaryolarda faydalıdır:
+Veri *hazırlama veya gruplama* (bazen de bir değer elde *edilir) Machine* Learning için sayısal veri hazırlama konusunda önemli bir araçtır. Bunlar gibi senaryolarda faydalıdır:
 
 + Sürekli sayıların bir sütununda, modellenebilmeniz için çok sayıda benzersiz değer vardır. Bu nedenle, değerleri otomatik olarak veya el ile gruplar, daha küçük bir ayrık aralıklar kümesi oluşturacak şekilde gruplara atar.
 
@@ -51,7 +51,7 @@ Verileri gruplamak için pek çok yol olduğundan, tüm özelleştirilebilir, fa
 
 ## <a name="how-to-configure-group-data-into-bins"></a>Grup verilerini depo gözlerine yapılandırma
 
-1. Tasarımcı 'daki işlem hattınızı **Grup verilerini depo gözleri** modülüne ekleyin. Bu modülü kategori **veri dönüşümünde**bulabilirsiniz.
+1. Tasarımcı 'daki işlem hattınızı **Grup verilerini depo gözleri** modülüne ekleyin. Bu modülü kategori **veri dönüşümünde** bulabilirsiniz.
 
 2. Sayısal verileri olan veri kümesini bin 'e bağlayın. Quantidileştirme yalnızca sayısal veri içeren sütunlara uygulanabilir. 
 
@@ -70,16 +70,16 @@ Verileri gruplamak için pek çok yol olduğundan, tüm özelleştirilebilir, fa
     > [!Note]
     > *ENTROPI MDL* modu, Studio 'da (klasik) tanımlanır ve henüz tasarımcıda desteklemek için yararlanılabilir olabilecek karşılık gelen açık kaynak paketi yoktur.        
 
-4. **Quantiles** ve **eşittir genişlik** atma modlarını kullanıyorsanız, kaç tane depo *gözü veya ölçü*oluşturmak istediğinizi belirtmek için **bölme sayısı** seçeneğini kullanın.
+4. **Quantiles** ve **eşittir genişlik** atma modlarını kullanıyorsanız, kaç tane depo *gözü veya ölçü* oluşturmak istediğinizi belirtmek için **bölme sayısı** seçeneğini kullanın.
 
-5. **Sütunlarda**yer alan sütunları seçmek için, sütun seçiciyi kullanarak, depo gözüne istediğiniz değerlere sahip sütunları seçin. Sütunlar sayısal bir veri türü olmalıdır.
+5. **Sütunlarda** yer alan sütunları seçmek için, sütun seçiciyi kullanarak, depo gözüne istediğiniz değerlere sahip sütunları seçin. Sütunlar sayısal bir veri türü olmalıdır.
 
     Aynı binkenme kuralı, seçtiğiniz tüm ilgili sütunlara uygulanır. Bazı sütunları farklı bir yöntem kullanarak ayarlamanız gerekiyorsa, her sütun kümesi için grup verilerinin farklı bir örneğini bin modülüne kullanın.
 
     > [!WARNING]
     > İzin verilen bir tür olmayan bir sütun seçerseniz, bir çalışma zamanı hatası oluşturulur. Modül, izin verilmeyen bir türdeki herhangi bir sütunu bulur oluşturmaz bir hata döndürür. Bir hata alırsanız, tüm seçili sütunları gözden geçirin. Hata, tüm geçersiz sütunları listelemez.
 
-6. **Çıkış modu**için, quantideðerlendirilmiş değerleri nasıl çıktısını almak istediğinizi belirtin:
+6. **Çıkış modu** için, quantideðerlendirilmiş değerleri nasıl çıktısını almak istediğinizi belirtin:
 
     + **Append**: bulunan değerleri içeren yeni bir sütun oluşturur ve bunu giriş tablosuna ekler.
 
@@ -111,7 +111,7 @@ Verileri gruplamak için pek çok yol olduğundan, tüm özelleştirilebilir, fa
 
 Gruplandırma verileri, her bir öğenin belirtilen moda göre oluşturulduğu bir veri kümesini döndürür. 
 
-Ayrıca, bir *binme dönüştürmesi*de döndürür. Bu işlev, aynı binme modu ve parametreleri kullanılarak, yeni veri örneklerini bölmeye dönüştürmek için [dönüştürme modülünü Uygula](apply-transformation.md) ' ya geçirilebilir.  
+Ayrıca, bir *binme dönüştürmesi* de döndürür. Bu işlev, aynı binme modu ve parametreleri kullanılarak, yeni veri örneklerini bölmeye dönüştürmek için [dönüştürme modülünü Uygula](apply-transformation.md) ' ya geçirilebilir.  
 
 > [!TIP]
 > Eğitim verilerinizde bir binüyi kullanıyorsanız, test ve tahmin için kullandığınız verilerde aynı binkenme yöntemini kullanmanız gerekir. Aynı bölme konumlarını ve bölme genişliklerini de kullanmalısınız. 

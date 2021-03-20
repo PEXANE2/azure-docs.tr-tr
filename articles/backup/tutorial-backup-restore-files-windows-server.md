@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 02/14/2018
 ms.custom: mvc
 ms.openlocfilehash: 746c901747cf1c0b87612a31fbabcb657d5c4a0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88263121"
 ---
 # <a name="recover-files-from-azure-to-a-windows-server"></a>Azure’dan Windows Server’a dosya kurtarma
@@ -35,7 +35,7 @@ Microsoft Azure Kurtarma Hizmetleri (MARS) aracısı ile Microsoft Azure Backup 
 
     ![Verileri kurtar ' ı seçin](./media/tutorial-backup-restore-files-windows-server/mars-recover-data.png)
 
-3. **Başlarken** sayfasında, **Bu sunucuyu (sunucu adı)** seçin ve **İleri ' yi**seçin.
+3. **Başlarken** sayfasında, **Bu sunucuyu (sunucu adı)** seçin ve **İleri ' yi** seçin.
 
 4. **Kurtarma modunu seçin** sayfasında, **tek tek dosyalar ve klasörler** ' i seçin ve ardından **İleri** ' yi seçerek kurtarma noktası seçim işlemini başlatın.
 

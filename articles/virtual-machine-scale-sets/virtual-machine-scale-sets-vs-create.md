@@ -10,10 +10,10 @@ ms.date: 09/09/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: 2db281f1b3278e37deca8486971a7f7a83f85ccf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86503090"
 ---
 # <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>Visual Studio ile sanal makine ölçek kümesi oluşturma
@@ -24,7 +24,7 @@ Bu makalede, bir Visual Studio kaynak grubu dağıtımı kullanarak bir Azure sa
 
 Azure Kaynak grubu dağıtımları, bir dizi ilgili Azure kaynağını tek bir dağıtım işleminde gruplamak ve yayımlamak için bir yoldur. Daha fazla bilgi için bkz. [Visual Studio aracılığıyla Azure Kaynak grupları oluşturma ve dağıtma](../azure-resource-manager/templates/create-visual-studio-deployment-project.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Visual Studio 'da sanal makine ölçek kümelerini dağıtmaya başlamak için aşağıdaki önkoşullara sahip olmanız gerekir:
 
@@ -56,7 +56,7 @@ Artık şablonu, uygulamanızın gereksinimlerine göre özelleştirmek üzere d
 
 Yük dengeleyici, sanal makine örneklerine SSH (Linux) veya RDP (Windows) ile bağlanmanızı sağlar. Ön uç bağlantı noktası aralığı 50000 ' de başlar. Linux için, bağlantı noktası 50000 ' e SSH kullanıyorsanız, Yük Dengeleme sizi ölçek kümesindeki ilk sanal makinenin 22 numaralı bağlantı noktasına yönlendirir. 50001 numaralı bağlantı noktasına bağlantı, ikinci sanal makinenin 22 numaralı bağlantı noktasına yönlendirilir ve bu şekilde devam eder.
 
- Visual Studio ile şablonlarınızı düzenlemenin iyi bir yolu, **JSON ana hattını**kullanmaktır. Parametreleri, değişkenleri ve kaynakları düzenleyebilirsiniz. Şemayı anlamak için, Visual Studio dağıtmadan önce şablonunuzda hataları işaret edebilir.
+ Visual Studio ile şablonlarınızı düzenlemenin iyi bir yolu, **JSON ana hattını** kullanmaktır. Parametreleri, değişkenleri ve kaynakları düzenleyebilirsiniz. Şemayı anlamak için, Visual Studio dağıtmadan önce şablonunuzda hataları işaret edebilir.
 
 ![JSON Gezgini](media/virtual-machine-scale-sets-vs-create/json-explorer.png)
 
@@ -64,11 +64,11 @@ Yük dengeleyici, sanal makine örneklerine SSH (Linux) veya RDP (Windows) ile b
 
 Sanal makine ölçek kümesi kaynağını oluşturmak için Azure Resource Manager şablonunu dağıtın:
 
-1. **Çözüm Gezgini**, projeye sağ tıklayın ve yeni **Dağıt**' ı seçin  >  **New**.
+1. **Çözüm Gezgini**, projeye sağ tıklayın ve yeni **Dağıt**' ı seçin  >  .
 
     ![Projenizi dağıtma](media/virtual-machine-scale-sets-vs-create/deploy-new-project.png)
 
-1. **Kaynak grubuna dağıt**bölümünde kullanılacak aboneliği seçin ve bir kaynak grubu seçin. Gerekirse bir kaynak grubu oluşturabilirsiniz.
+1. **Kaynak grubuna dağıt** bölümünde kullanılacak aboneliği seçin ve bir kaynak grubu seçin. Gerekirse bir kaynak grubu oluşturabilirsiniz.
 
 1. Sonra, şablonunuza geçirilen parametreleri girmek için **parametreleri Düzenle** ' yi seçin.
 
@@ -78,13 +78,13 @@ Sanal makine ölçek kümesi kaynağını oluşturmak için Azure Resource Manag
 
     ![Dağıtım parametrelerini Düzenle](media/virtual-machine-scale-sets-vs-create/edit-deployment-parameters.png)
 
-1. **Kaynak grubuna dağıt**bölümünde **Dağıt**' ı seçin. Eylem **Deploy-AzureResourceGroup.ps1** betiği çalıştırır. **Çıkış** penceresinde dağıtım ilerleme durumu gösterilir.
+1. **Kaynak grubuna dağıt** bölümünde **Dağıt**' ı seçin. Eylem **Deploy-AzureResourceGroup.ps1** betiği çalıştırır. **Çıkış** penceresinde dağıtım ilerleme durumu gösterilir.
 
    ![Çıktı sonuçları gösterir](media/virtual-machine-scale-sets-vs-create/deployment-output.png)
 
 ## <a name="explore-your-virtual-machine-scale-set"></a>Sanal makine ölçek kümesini keşfet <a name="exploring-your-virtual-machine-scale-set"></a>
 
-**View**  >  Yeni sanal makine ölçek kümesini görüntülemek için**bulut Gezginini** görüntüle ' yi seçin. Gerekirse **Tümünü Yenile**seçeneğini kullanın.
+  >  Yeni sanal makine ölçek kümesini görüntülemek için **bulut Gezginini** görüntüle ' yi seçin. Gerekirse **Tümünü Yenile** seçeneğini kullanın.
 
 ![Cloud Explorer](media/virtual-machine-scale-sets-vs-create/cloud-explorer.png)
 

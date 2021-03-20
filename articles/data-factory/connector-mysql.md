@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: jingwang
 ms.openlocfilehash: b6a2253a4a124fe5e3725863c799f91714e66cab
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100375264"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Azure Data Factory kullanarak MySQL 'ten veri kopyalama
@@ -25,7 +25,7 @@ Bu makalede, bir MySQL veritabanından veri kopyalamak için Azure Data Factory 
 >[!NOTE]
 >Veya [MySQL hizmeti Için Azure veritabanı](../mysql/overview.md) 'na veri kopyalamak için, özel [MySQL için Azure veritabanı bağlayıcısını](connector-azure-database-for-mysql.md)kullanın.
 
-## <a name="supported-capabilities"></a>Desteklenen yetenekler
+## <a name="supported-capabilities"></a>Desteklenen özellikler
 
 Bu MySQL Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 

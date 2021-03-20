@@ -8,24 +8,24 @@ ms.date: 04/10/2020
 ms.author: brendm
 ms.custom: devx-track-java
 ms.openlocfilehash: ec87c5523d6f608363ca615037f20365705609df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90892859"
 ---
 # <a name="understanding-app-status-in-azure-spring-cloud"></a>Azure Spring Cloud’da uygulama durumunu anlama
 
 **Bu makale şu şekilde geçerlidir:** ✔️ Java ✔️ C #
 
-Azure yay bulutu Kullanıcı arabirimi, çalışan uygulamaların durumu hakkında bilgi sunar.  Abonelik içindeki her kaynak grubu için uygulama türlerinin genel durumunu görüntüleyen bir **uygulamalar** seçeneği vardır.  Her uygulama türü için **uygulama örnekleri**görüntülenir.
+Azure yay bulutu Kullanıcı arabirimi, çalışan uygulamaların durumu hakkında bilgi sunar.  Abonelik içindeki her kaynak grubu için uygulama türlerinin genel durumunu görüntüleyen bir **uygulamalar** seçeneği vardır.  Her uygulama türü için **uygulama örnekleri** görüntülenir.
 
 ## <a name="apps-status"></a>Uygulama durumu
 Bir uygulama türünün genel durumunu görüntülemek için bir kaynak grubunun sol gezinti bölmesindeki **uygulamalar** ' ı seçin. Sonuç, dağıtılan uygulamanın durumunu görüntüler:
 
 * **Sağlama durumu** , dağıtımın sağlama durumunu gösterir
-* **Çalışan örnek** , kaç tane uygulama örneğinin çalıştığını/kaç tane uygulama örneği istendiğini gösterir. Uygulamanın durdurulması gerekiyorsa, bu sütun *durdurulmuş*olarak gösterilir.
-* **Kayıtlı örnek** , Eureka 'ya kaç tane uygulama örneğinin kaydedildiğini ve kaç tane uygulama örneği istendiğini gösterir. Uygulamanın durdurulması gerekiyorsa, bu sütun *durdurulmuş*olarak gösterilir.
+* **Çalışan örnek** , kaç tane uygulama örneğinin çalıştığını/kaç tane uygulama örneği istendiğini gösterir. Uygulamanın durdurulması gerekiyorsa, bu sütun *durdurulmuş* olarak gösterilir.
+* **Kayıtlı örnek** , Eureka 'ya kaç tane uygulama örneğinin kaydedildiğini ve kaç tane uygulama örneği istendiğini gösterir. Uygulamanın durdurulması gerekiyorsa, bu sütun *durdurulmuş* olarak gösterilir.
 
 
  ![Uygulama durumu](media/spring-cloud-concept-app-status/apps-ui-status.png)
@@ -42,7 +42,7 @@ Bir uygulama türünün genel durumunu görüntülemek için bir kaynak grubunun
 | Sabit listesi | Tanım |
 |:--:|:----------------:|
 | Oluşturma | Kaynak oluşturuluyor. |
-| Bilen | Kaynak güncelleştiriliyor. |
+| Güncelleştirme | Kaynak güncelleştiriliyor. |
 | Başarılı | Kaynaklar başarıyla sağlandı ve ikili dosya dağıtılır. |
 | Başarısız | *Başarılı* hedef elde edilemedi. |
 | Siliniyor | Kaynak siliniyor. Bu işlem işlemi engeller ve kaynak bu durumda kullanılamaz. |
