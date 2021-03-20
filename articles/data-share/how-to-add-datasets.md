@@ -7,10 +7,10 @@ ms.service: data-share
 ms.topic: how-to
 ms.date: 07/30/2020
 ms.openlocfilehash: 3bfa911921e9bacde2649ee8c4f0d4bc31b56f54
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92910551"
 ---
 # <a name="how-to-add-datasets-to-an-existing-share-in-azure-data-share"></a>Azure veri paylaşımında var olan bir paylaşıma veri kümeleri ekleme
@@ -25,11 +25,11 @@ Azure veri paylaşımında, gönderilen paylaşımınıza gidin ve **veri kümel
 
 ![Ekran görüntüsü seçili veri kümesi Ekle ' ye gösterilir.](./media/how-to/how-to-add-datasets/add-datasets.png)
 
-Sağdaki panelde, eklemek istediğiniz veri kümesi türünü seçin ve ardından **İleri** ' ye tıklayın. Eklemek istediğiniz verilerin aboneliğini ve kaynak grubunu seçin. Açılan okları kullanarak eklenecek verilerin yanındaki kutuyu bulup işaretleyin.
+Sağdaki panelde, eklemek istediğiniz veri kümesi türünü seçin ve ardından **İleri**' ye tıklayın. Eklemek istediğiniz verilerin aboneliğini ve kaynak grubunu seçin. Açılan okları kullanarak eklenecek verilerin yanındaki kutuyu bulup işaretleyin.
 
 ![Ekran görüntüsü, veri seçebileceğiniz BLOB depolama alanı Ekle bölmesini gösterir.](./media/how-to/how-to-add-datasets/add-datasets-side.png)
 
-**Veri kümeleri Ekle** ' ye tıkladığınızda veri kümeleri paylaşımınıza eklenecektir. Note: yeni veri kümelerini görmesini sağlamak için Tüketicileriniz tarafından bir anlık görüntü tetiklenmesi gerekir. Anlık görüntü ayarları yapılandırılmışsa, müşteriler bir sonraki zamanlanmış anlık görüntü tamamlandıktan sonra yeni veri kümelerini görür. Anlık görüntü ayarları yapılandırıldığında, Tüketici güncelleştirmeleri almak için verilerin tam veya artımlı bir kopyasını el ile tetiklemelidir. Anlık görüntüler hakkında daha fazla bilgi için bkz. [anlık görüntüler](terminology.md).
+**Veri kümeleri Ekle**' ye tıkladığınızda veri kümeleri paylaşımınıza eklenecektir. Note: yeni veri kümelerini görmesini sağlamak için Tüketicileriniz tarafından bir anlık görüntü tetiklenmesi gerekir. Anlık görüntü ayarları yapılandırılmışsa, müşteriler bir sonraki zamanlanmış anlık görüntü tamamlandıktan sonra yeni veri kümelerini görür. Anlık görüntü ayarları yapılandırıldığında, Tüketici güncelleştirmeleri almak için verilerin tam veya artımlı bir kopyasını el ile tetiklemelidir. Anlık görüntüler hakkında daha fazla bilgi için bkz. [anlık görüntüler](terminology.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Mevcut bir veri paylaşımında alıcı ekleme](how-to-add-recipients.md)hakkında daha fazla bilgi edinin.

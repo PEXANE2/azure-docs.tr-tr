@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.devlang: java
 ms.date: 01/16/2021
 ms.openlocfilehash: 6c61e26ca858c5eb12ffe0219993f7477b0e8133
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98606156"
 ---
 # <a name="quickstart-use-java-and-jdbc-with-azure-database-for-postgresql-flexible-server"></a>Hızlı başlangıç: PostgreSQL için Azure veritabanı esnek sunucusu ile Java ve JDBC kullanma
@@ -21,7 +21,7 @@ Bu konuda, [PostgreSQL Için Azure veritabanı esnek sunucusu](./index.yml)'nda 
 
 JDBC, geleneksel ilişkisel veritabanlarına bağlanmak için standart Java API 'sidir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure hesabı. Hiç kimse yoksa [ücretsiz deneme sürümü alın](https://azure.microsoft.com/free/).
 - [Azure Cloud Shell](../../cloud-shell/quickstart.md) veya [Azure CLI](/cli/azure/install-azure-cli). Otomatik olarak oturum açabileceksiniz ve ihtiyacınız olan tüm araçlara erişebilmek için Azure Cloud Shell önerilir.

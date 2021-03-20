@@ -11,10 +11,10 @@ ms.date: 08/26/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-csharp
 ms.openlocfilehash: 267a69486dc91ef95c0de704346eeb1d1780ef48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89013767"
 ---
 # <a name="get-started-with-device-twins-net"></a>Cihaz ikizlerini kullanmaya başlama (.NET)
@@ -31,7 +31,7 @@ Bu öğreticide, şu .NET konsol uygulamalarını oluşturursunuz:
 > [Azure IoT SDK 'ları](iot-hub-devguide-sdks.md) makalesi, hem cihaz hem de arka uç uygulamaları oluşturmak Için kullanabileceğiniz Azure IoT SDK 'ları hakkında bilgi sağlar.
 >
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Visual Studio.
 
@@ -39,7 +39,7 @@ Bu öğreticide, şu .NET konsol uygulamalarını oluşturursunuz:
 
 * Güvenlik duvarınızdaki 8883 numaralı bağlantı noktasını açık olduğundan emin olun. Bu makaledeki cihaz örneği, 8883 numaralı bağlantı noktası üzerinden iletişim kuran MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağ ortamlarında engellenebilir. Bu sorunu geçici olarak çözmek için daha fazla bilgi ve IoT Hub bkz. [bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-## <a name="create-an-iot-hub"></a>IoT hub’ı oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -55,11 +55,11 @@ Bu öğreticide, şu .NET konsol uygulamalarını oluşturursunuz:
 
 ## <a name="create-the-service-app"></a>Hizmet uygulaması oluşturma
 
-Bu bölümde, **Mydeviceıd**ile ilişkili cihaz ikizi konum meta verilerini ekleyen C# kullanarak bir .NET konsol uygulaması oluşturursunuz. Ardından, IoT Hub 'ında depolanan cihaz TWINS 'i, ABD 'de bulunan cihazları ve ardından hücresel bağlantı bildirdikleri sorgular.
+Bu bölümde, **Mydeviceıd** ile ilişkili cihaz ikizi konum meta verilerini ekleyen C# kullanarak bir .NET konsol uygulaması oluşturursunuz. Ardından, IoT Hub 'ında depolanan cihaz TWINS 'i, ABD 'de bulunan cihazları ve ardından hücresel bağlantı bildirdikleri sorgular.
 
 1. Visual Studio 'da **Yeni proje oluştur**' u seçin. **Yeni proje oluştur**' da **konsol uygulaması (.NET Framework)** öğesini seçin ve ardından **İleri**' yi seçin.
 
-1. **Yeni projenizi yapılandırın**bölümünde **Addtagsandquery**adlı projeyi adlandırın.
+1. **Yeni projenizi yapılandırın** bölümünde **Addtagsandquery** adlı projeyi adlandırın.
 
     ![AddTagsAndQuery projenizi yapılandırma](./media/iot-hub-csharp-csharp-twin-getstarted/config-addtagsandquery-app.png)
 
@@ -114,7 +114,7 @@ Bu bölümde, **Mydeviceıd**ile ilişkili cihaz ikizi konum meta verilerini ekl
     }
     ```
 
-    **Registrymanager** sınıfı, hizmetten cihaz ikikiyle etkileşimde bulunmak için gereken tüm yöntemleri kullanıma sunar. Önceki kod, ilk olarak **Registrymanager** nesnesini başlatır ve ardından **mydeviceıd**için Device ikizi alır ve son olarak etiketlerini istenen konum bilgileriyle güncelleştirir.
+    **Registrymanager** sınıfı, hizmetten cihaz ikikiyle etkileşimde bulunmak için gereken tüm yöntemleri kullanıma sunar. Önceki kod, ilk olarak **Registrymanager** nesnesini başlatır ve ardından **mydeviceıd** için Device ikizi alır ve son olarak etiketlerini istenen konum bilgileriyle güncelleştirir.
 
     Güncelleştirme sonrasında, iki sorgu yürütülür: İlki yalnızca **Redmond43** tesisinde bulunan cihazların cihaz ikelerini seçer ve ikincisi ise yalnızca hücresel ağ üzerinden de bağlı olan cihazları seçecek şekilde sorguyu iyileştirir.
 
@@ -137,11 +137,11 @@ Sonraki bölümde, bağlantı bilgilerini raporlayan ve önceki bölümde sorgun
 
 ## <a name="create-the-device-app"></a>Cihaz uygulamasını oluşturma
 
-Bu bölümde, hub 'ınıza **Mydeviceıd**olarak bağlanan bir .NET konsol uygulaması oluşturun ve ardından, bildirilen özelliklerini bir hücresel ağ kullanılarak bağlı olan bilgileri içerecek şekilde günceller.
+Bu bölümde, hub 'ınıza **Mydeviceıd** olarak bağlanan bir .NET konsol uygulaması oluşturun ve ardından, bildirilen özelliklerini bir hücresel ağ kullanılarak bağlı olan bilgileri içerecek şekilde günceller.
 
 1. Visual Studio 'da **Dosya**  >  **Yeni**  >  **Proje**' yi seçin. **Yeni proje oluştur**' da **konsol uygulaması (.NET Framework)** öğesini seçin ve ardından **İleri**' yi seçin.
 
-1. **Yeni projenizi yapılandırın**bölümünde, proje **reportconnectivity**olarak adlandırın. **Çözüm**Için **çözüme Ekle**' yi seçin ve ardından **Oluştur**' u seçin.
+1. **Yeni projenizi yapılandırın** bölümünde, proje **reportconnectivity** olarak adlandırın. **Çözüm** Için **çözüme Ekle**' yi seçin ve ardından **Oluştur**' u seçin.
 
 1. Çözüm Gezgini, **Reportconnectivity** projesine sağ tıklayın ve ardından **NuGet Paketlerini Yönet**' i seçin.
 
@@ -185,7 +185,7 @@ Bu bölümde, hub 'ınıza **Mydeviceıd**olarak bağlanan bir .NET konsol uygul
     }
     ```
 
-    **İstemci** nesnesi, cihazdan cihaz ikikiyle etkileşimde bulunmak için gereken tüm yöntemleri kullanıma sunar. Yukarıda gösterilen kod, **istemci** nesnesini başlatır ve ardından **mydeviceıd**için cihaz ikizi alır.
+    **İstemci** nesnesi, cihazdan cihaz ikikiyle etkileşimde bulunmak için gereken tüm yöntemleri kullanıma sunar. Yukarıda gösterilen kod, **istemci** nesnesini başlatır ve ardından **mydeviceıd** için cihaz ikizi alır.
 
 1. **Program** sınıfına aşağıdaki yöntemi ekleyin:
 
@@ -232,9 +232,9 @@ Bu bölümde, hub 'ınıza **Mydeviceıd**olarak bağlanan bir .NET konsol uygul
 
 1. Çözüm Gezgini, çözümünüze sağ tıklayın ve **Başlangıç projelerini ayarla**' yı seçin.
 
-1. **Ortak özellikler**  >  **Başlangıç projesinde** **birden çok başlangıç**projesi seçin. **Reportconnectivity**için **eylem**olarak **Başlat** ' ı seçin. Değişikliklerinizi kaydetmek için **Tamam**’ı seçin.  
+1. **Ortak özellikler**  >  **Başlangıç projesinde** **birden çok başlangıç** projesi seçin. **Reportconnectivity** için **eylem** olarak **Başlat** ' ı seçin. Değişikliklerinizi kaydetmek için **Tamam**’ı seçin.  
 
-1. **Reportconnectivity** projesine sağ tıklayıp **Hata Ayıkla**' yı seçip **Yeni örnek Başlat**' ı seçerek bu uygulamayı çalıştırın. Uygulamanın ikizi bilgilerini alarak ve sonra ***bildirilen bir özellik***olarak bağlantı göndererek uygulamayı görmeniz gerekir.
+1. **Reportconnectivity** projesine sağ tıklayıp **Hata Ayıkla**' yı seçip **Yeni örnek Başlat**' ı seçerek bu uygulamayı çalıştırın. Uygulamanın ikizi bilgilerini alarak ve sonra **_bildirilen bir özellik_** olarak bağlantı göndererek uygulamayı görmeniz gerekir.
 
     ![Bağlantı raporlamak için cihaz uygulamasını çalıştırma](./media/iot-hub-csharp-csharp-twin-getstarted/rundeviceapp.png)
 

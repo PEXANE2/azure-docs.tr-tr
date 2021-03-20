@@ -15,17 +15,17 @@ ms.workload: na
 ms.date: 01/05/2021
 ms.author: yelevin
 ms.openlocfilehash: f9fb1c917a0719cb9d250b997329d3415b5872eb
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98747483"
 ---
 # <a name="step-3-validate-connectivity"></a>3. Adım: bağlantıyı doğrulama
 
 Günlük ileticinizi dağıttıktan sonra (adım 1 ' de) ve Güvenlik çözümünüzü BT CEF iletileri gönderecek şekilde yapılandırdıysanız (adım 2 ' de), güvenlik çözümünüz ile Azure Sentinel arasındaki bağlantıyı doğrulamak için bu yönergeleri izleyin. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Günlük ileticisi makinenizde yükseltilmiş izinleriniz (sudo) olmalıdır.
 

@@ -1,7 +1,7 @@
 ---
-title: dosya dahil etme
+title: include dosyası
 titleSuffix: Azure
-description: dosya dahil etme
+description: include dosyası
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -9,24 +9,24 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: fda22346a44388248e37473bc7891b8a130569c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "81681047"
 ---
 1. **Eşleme oluştur** sayfasında, **yapılandırma** sekmesinde, kutulara aşağıda gösterildiği gibi kutuyu girin.
 
-    * **Eşleme türü**için **doğrudan**' yi seçin.
-    * **Microsoft ağı**için **AS8075**öğesini seçin. ASN 8069 ile eşleme oluşturmayın. Özel uygulamalar için ayrılmıştır ve yalnızca [Microsoft eşlemesi](mailto:peering@microsoft.com)tarafından kullanılır.
-    * **SKU 'Yu** **temel ücretsiz**olarak seçin. Premium ücretsiz seçmeyin çünkü özel uygulamalar için ayrılmıştır.
+    * **Eşleme türü** için **doğrudan**' yi seçin.
+    * **Microsoft ağı** için **AS8075** öğesini seçin. ASN 8069 ile eşleme oluşturmayın. Özel uygulamalar için ayrılmıştır ve yalnızca [Microsoft eşlemesi](mailto:peering@microsoft.com)tarafından kullanılır.
+    * **SKU 'Yu** **temel ücretsiz** olarak seçin. Premium ücretsiz seçmeyin çünkü özel uygulamalar için ayrılmıştır.
     * Eşlemeyi ayarlamak istediğiniz **Metro** konumunu seçin.
 
         > [!NOTE]
         > Seçili **Metro** konumunda Microsoft ile zaten eşleme bağlantılarınız varsa ve bu konumda eşleme ayarlamak için Azure Portal kullanıyorsanız, mevcut eşleme bağlantılarınız, gösterilen şekilde **eşleme bağlantıları** bölümünde listelenecektir. Microsoft bu eşleme bağlantılarını, yeni bağlantılarla birlikte tek bir yerde yönetebilmeniz için bir Azure kaynağına otomatik olarak dönüştürür. Daha fazla bilgi için bkz. [portalı kullanarak eski bir doğrudan eşlemeyi Azure kaynağına dönüştürme](../howto-legacy-direct-portal.md).
         >
 
-1. **Eşleme bağlantıları**altında, **Yeni oluştur** ' u seçerek ayarlamak istediğiniz her yeni bağlantı için bir satır ekleyin.
+1. **Eşleme bağlantıları** altında, **Yeni oluştur** ' u seçerek ayarlamak istediğiniz her yeni bağlantı için bir satır ekleyin.
 
     * Bağlantı ayarlarını yapılandırmak veya değiştirmek için, bir satır için Düzenle düğmesini seçin.
 
@@ -45,7 +45,7 @@ ms.locfileid: "81681047"
 
         1. Bağlantının ayarlanması gereken **eşleme tesis** ' ı seçin.
         1. **Oturum adres sağlayıcısı** , ağınız ile MICROSOFT arasında BGP oturumu ayarlamak için gereken alt ağı kimlerin sağladığını belirlemede kullanılır. Alt ağı sağlayabiliyorsanız, **eş**' i seçin. Aksi takdirde, **Microsoft** ve [Microsoft eşlemesi](mailto:peering@microsoft.com) sizinle iletişim kuracaktır. Bu seçeneğin belirlenmesi Microsoft 'un eşleme isteğini işlemesi için daha uzun sürer. Bazı durumlarda Microsoft, istek reddetme isteğine neden olacak alt ağlar sağlayamayabilir.
-        1. **Oturum adresi sağlayıcısı** seçeneğini **eş**olarak seçtiyseniz, **oturum IPv4 ön eki** ve **oturum IPv6 ön eki** kutularındaki önek maskeleri birlikte IPv4 ve IPv6 adreslerini girin.
+        1. **Oturum adresi sağlayıcısı** seçeneğini **eş** olarak seçtiyseniz, **oturum IPv4 ön eki** ve **oturum IPv6 ön eki** kutularındaki önek maskeleri birlikte IPv4 ve IPv6 adreslerini girin.
         1. **En fazla tanıtılan IPv4 adreslerinde** ve **en yüksek tanıtılan IPv6 adresi** kutularında duyurmanız gereken IPv4 ve IPv6 ön ekleri sayısını girin.
         1. **Toplam bant genişliği** kaydırıcısını bağlantının bant genişliğini yansıtacak şekilde ayarlayın.
         1. Bağlantı ayarlarınızı kaydetmek için **Kaydet** ' i seçin.
@@ -62,7 +62,7 @@ ms.locfileid: "81681047"
     > [!div class="mx-imgBorder"]
     > ![Eşleme doğrulama sekmesi](../media/setup-direct-review-tab-validation.png)
 
-1. *Doğrulama başarılı*olduktan sonra, bilgilerinizi doğrulayın. **Oluştur**seçeneğini belirleyerek isteği gönderebilirsiniz. İsteğinizi değiştirmek için, **önceki** seçeneğini belirleyip adımları yineleyin.
+1. *Doğrulama başarılı* olduktan sonra, bilgilerinizi doğrulayın. **Oluştur** seçeneğini belirleyerek isteği gönderebilirsiniz. İsteğinizi değiştirmek için, **önceki** seçeneğini belirleyip adımları yineleyin.
 
     > [!div class="mx-imgBorder"]
     > ![Eşleme gönderimi](../media/setup-direct-review-tab-submit.png)

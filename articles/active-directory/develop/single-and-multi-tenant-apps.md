@@ -14,15 +14,15 @@ ms.author: ryanwi
 ms.reviewer: justhu
 ms.custom: aaddev
 ms.openlocfilehash: 0868d87d977b15a552b04d5dbd6d19de6931f0ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91395915"
 ---
-# <a name="tenancy-in-azure-active-directory"></a>Azure Active Directory kiracı
+# <a name="tenancy-in-azure-active-directory"></a>Azure Active Directory'deki kiracılar
 
-Azure Active Directory (Azure AD), kullanıcılar ve uygulamalar gibi nesneleri *kiracılar*adlı gruplar halinde düzenler. Kiracılar, yöneticinin kuruluş içindeki kullanıcılar ve kuruluşun güvenlik ve işletimsel ilkelerini karşılamak için sahip olduğu uygulamalar üzerinde ilkeler ayarlamanıza olanak sağlar. 
+Azure Active Directory (Azure AD), kullanıcılar ve uygulamalar gibi nesneleri *kiracılar* adlı gruplar halinde düzenler. Kiracılar, yöneticinin kuruluş içindeki kullanıcılar ve kuruluşun güvenlik ve işletimsel ilkelerini karşılamak için sahip olduğu uygulamalar üzerinde ilkeler ayarlamanıza olanak sağlar. 
 
 ## <a name="who-can-sign-in-to-your-app"></a>Uygulamanızda kimler oturum açabilir?
 

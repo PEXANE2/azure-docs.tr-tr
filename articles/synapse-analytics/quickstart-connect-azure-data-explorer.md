@@ -10,17 +10,17 @@ ms.date: 10/07/2020
 ms.author: maraheja
 ms.reviewer: jrasnick
 ms.openlocfilehash: ee9d137973bfa4eeb28bc6526437e76e781f3199
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92172280"
 ---
-# <a name="connect-to-azure-data-explorer-using-apache-spark-for-azure-synapse-analytics"></a>Azure SYNAPSE Analytics için Apache Spark kullanarak Azure Veri Gezgini bağlanma
+# <a name="connect-to-azure-data-explorer-using-apache-spark-for-azure-synapse-analytics"></a>Azure Synapse Analytics için Apache Spark kullanarak Azure Veri Gezgini’ne bağlanma
 
 Bu makalede, SYNAPSE Studio 'dan Azure SYNAPSE Analytics için Apache Spark bir Azure Veri Gezgini veritabanına nasıl erişebileceğiniz açıklanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Azure Veri Gezgini kümesi ve veritabanı oluşturun](/azure/data-explorer/create-cluster-database-portal).
 * Mevcut bir Azure SYNAPSE Analytics çalışma alanına sahip veya [hızlı başlangıç: Azure SYNAPSE çalışma alanı oluşturma](./quickstart-create-workspace.md)bölümündeki adımları izleyerek yeni bir çalışma alanı oluşturun.
@@ -30,7 +30,7 @@ Bu makalede, SYNAPSE Studio 'dan Azure SYNAPSE Analytics için Apache Spark bir 
 
 ## <a name="go-to-synapse-studio"></a>SYNAPSE Studio 'ya git
 
-Azure SYNAPSE çalışma alanından **Launch SYNAPSE Studio 'yu**seçin. SYNAPSE Studio giriş sayfasında veri **Nesne Gezgini**gitmek için **veri** ' yi seçin.
+Azure SYNAPSE çalışma alanından **Launch SYNAPSE Studio 'yu** seçin. SYNAPSE Studio giriş sayfasında veri **Nesne Gezgini** gitmek için **veri** ' yi seçin.
 
 ## <a name="connect-an-azure-data-explorer-database-to-an-azure-synapse-workspace"></a>Azure Veri Gezgini veritabanını Azure SYNAPSE çalışma alanına bağlama
 
@@ -38,13 +38,13 @@ Bir Azure Veri Gezgini veritabanını bir çalışma alanına bağlamak, bağlı
 
 Veri Nesne Gezgini, bir Azure Veri Gezgini kümesini doğrudan bağlamak için aşağıdaki adımları izleyin:
 
-1. **+** **Verilerin**yakınında bulunan simgeyi seçin.
+1. **+** **Verilerin** yakınında bulunan simgeyi seçin.
 1. Dış verilere bağlanmak için **Bağlan** ' ı seçin.
 1. **Azure Veri Gezgini (kusto)** seçeneğini belirleyin.
 1. **Devam**’ı seçin.
 1. Bağlı hizmeti adlandırmak için kolay bir ad kullanın. Ad, veri Nesne Gezgini görünür ve Azure SYNAPSE çalışma zamanları tarafından veritabanına bağlanmak için kullanılır.
 1. Aboneliğinizden Azure Veri Gezgini kümesini seçin veya URI 'yi girin.
-1. **Hizmet sorumlusu kimliği** ve **hizmet sorumlusu anahtarını**girin. Bu hizmet sorumlusunun veritabanına okuma işlemi için görünüm erişiminin ve verilerin içe alımı için erişim izni olduğundan emin olun.
+1. **Hizmet sorumlusu kimliği** ve **hizmet sorumlusu anahtarını** girin. Bu hizmet sorumlusunun veritabanına okuma işlemi için görünüm erişiminin ve verilerin içe alımı için erişim izni olduğundan emin olun.
 1. Azure Veri Gezgini veritabanı adını girin.
 1. Doğru izinlere sahip olduğunuzdan emin olmak için **Bağlantıyı Sına** ' yı seçin.
 1. **Oluştur**’u seçin.

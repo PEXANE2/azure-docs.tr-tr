@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: duau
 ms.openlocfilehash: 2bc056620ff964747dfd83e7525cb5bfd2eb8e52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91449135"
 ---
 # <a name="front-door-routing-methods"></a>Ön kapı yönlendirme yöntemleri
@@ -24,10 +24,10 @@ Azure ön kapısının, HTTP/HTTPS trafiğinizi farklı hizmet uç noktalarına 
 
 Ön kapıda kullanılabilen dört trafik yönlendirme yöntemi vardır:
 
-* ** [Gecikme süresi](#latency):** Gecikme tabanlı yönlendirme, isteklerin duyarlık aralığı içinde kabul edilebilir en düşük gecikme süreli arka uçlara gönderilmesini sağlar. Temel olarak, Kullanıcı istekleriniz, ağ gecikmesi açısından arka uçların "en yakın" kümesine gönderilir.
-* ** [Öncelik](#priority):** Tüm trafiğe hizmet vermek üzere birincil arka uç yapılandırmak istediğinizde arka uçlarınız için öncelikler atayabilirsiniz. İkincil arka uç, birincil arka ucun kullanılamaz duruma gelmesi durumunda bir yedekleme olabilir.
-* ** [Ağırlıklı](#weighted):** Trafiği bir arka uç kümesi genelinde dağıtmak istediğinizde, arka uçlarınızın ağırlıklarını atayabilirsiniz. Ağırlık katsayılarını eşit bir şekilde dağıtmak veya bu döneme göre yapmak isteyip istemediğiniz.
-* ** [Oturum benzeşimi](#affinity):** Aynı son kullanıcıdan gelen isteklerin aynı arka uca gönderilmesini sağlamak için ön uç konaklarınız veya etki alanlarınız için oturum benzeşimini yapılandırabilirsiniz.
+* **[Gecikme süresi](#latency):** Gecikme tabanlı yönlendirme, isteklerin duyarlık aralığı içinde kabul edilebilir en düşük gecikme süreli arka uçlara gönderilmesini sağlar. Temel olarak, Kullanıcı istekleriniz, ağ gecikmesi açısından arka uçların "en yakın" kümesine gönderilir.
+* **[Öncelik](#priority):** Tüm trafiğe hizmet vermek üzere birincil arka uç yapılandırmak istediğinizde arka uçlarınız için öncelikler atayabilirsiniz. İkincil arka uç, birincil arka ucun kullanılamaz duruma gelmesi durumunda bir yedekleme olabilir.
+* **[Ağırlıklı](#weighted):** Trafiği bir arka uç kümesi genelinde dağıtmak istediğinizde, arka uçlarınızın ağırlıklarını atayabilirsiniz. Ağırlık katsayılarını eşit bir şekilde dağıtmak veya bu döneme göre yapmak isteyip istemediğiniz.
+* **[Oturum benzeşimi](#affinity):** Aynı son kullanıcıdan gelen isteklerin aynı arka uca gönderilmesini sağlamak için ön uç konaklarınız veya etki alanlarınız için oturum benzeşimini yapılandırabilirsiniz.
 
 Tüm Front Door yapılandırmaları, arka uç durumu ve otomatik anında global yük devretme izlemesini kapsar. Daha fazla bilgi için bkz. [ön kapı arka uç izleme](front-door-health-probes.md). Ön kapılarınız, tek bir yönlendirme yönteminden birini temel alabilir. Ancak, uygulamanızın gereksinimlerine bağlı olarak, en iyi yönlendirme topolojisini oluşturmak için birden çok yönlendirme yöntemini de birleştirebilirsiniz.
 
@@ -77,7 +77,7 @@ Oturum benzeşimi, yapılandırılan etki alanlarınızın (veya alt etki alanla
 Front Door şu an için yalnızca oturum tanımlama bilgisini desteklediğinden tanımlama bilgisinin ömrü kullanıcı oturumunun ömrüyle aynıdır. 
 
 > [!NOTE]
-> Ortak proxy 'ler oturum benzeşimine engel olabilir. Bunun nedeni, bir oturumun oluşturulması için ön kapıların, aynı kaynağı isteyen diğer istemcilerin tanımlama bilgilerini kesintiye uğradığı için, yanıt önbelleklenebilir bir oturum benzeşimi tanımlama bilgisi eklemesi gerektirmesidir. Buna karşı korunmak için, arka uç, **not** bu denendiğinde önbelleklenebilir bir yanıt gönderirse oturum benzeşimi kurulmaz. Oturum zaten kurulduysa, arka ucun yanıtının önbelleklenebilir olup olmadığı önemi yoktur.
+> Ortak proxy 'ler oturum benzeşimine engel olabilir. Bunun nedeni, bir oturumun oluşturulması için ön kapıların, aynı kaynağı isteyen diğer istemcilerin tanımlama bilgilerini kesintiye uğradığı için, yanıt önbelleklenebilir bir oturum benzeşimi tanımlama bilgisi eklemesi gerektirmesidir. Buna karşı korunmak için, arka uç,  bu denendiğinde önbelleklenebilir bir yanıt gönderirse oturum benzeşimi kurulmaz. Oturum zaten kurulduysa, arka ucun yanıtının önbelleklenebilir olup olmadığı önemi yoktur.
 > Yanıt bir HTTP 304 durum koduna sahip **olmadığı takdirde** , oturum benzeşimi aşağıdaki koşullarda kurulacaktır:
 > - Yanıtta ```Cache-Control``` , "özel" veya mağaza yok "gibi, önbelleğe alma işlemini önleyen üst bilgi için ayarlanan belirli değerler vardır.
 > - Yanıt, ```Authorization``` süresi dolmayan bir üst bilgi içeriyor.

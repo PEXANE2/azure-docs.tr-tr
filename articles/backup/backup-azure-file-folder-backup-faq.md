@@ -4,10 +4,10 @@ description: Azure Backup ile dosya ve klasörleri yedekleme hakkında sık soru
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.openlocfilehash: 1edfaed99e60409774496c5ae75df8be99a8fe1f
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94917367"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>Sık sorulan sorular-Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı
@@ -198,7 +198,7 @@ Aşağıdaki koşulları göz önünde bulundurun:
 
 | Özgün makine | Deyimi | Kullanılabilir seçenekler |
 | --- | --- | --- |
-| Mesi |Kullanılabilir |MARS aracısını, özgün makinenin kaydı sırasında sağladınız aynı parola ile başka bir makineye yükleyebilir ve kaydedebilirsiniz. **Recovery Option**  >  Geri yükleme işlemini gerçekleştirmek için kurtarma seçeneğini **başka bir konum** seçin. Daha fazla bilgi için bu [makaleye](./backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)bakın.
+| Mesi |Kullanılabilir |MARS aracısını, özgün makinenin kaydı sırasında sağladınız aynı parola ile başka bir makineye yükleyebilir ve kaydedebilirsiniz.   >  Geri yükleme işlemini gerçekleştirmek için kurtarma seçeneğini **başka bir konum** seçin. Daha fazla bilgi için bu [makaleye](./backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)bakın.
 | Mesi |Mesi |Verilerin kurtarılması mümkün değil veya veriler kullanılamıyor |
 
 ### <a name="my-backup-jobs-have-been-failing-or-not-running-for-a-long-time-im-past-the-retention-period-can-i-still-restore"></a>Yedekleme işlerim uzun süredir başarısız olmuş veya çalışmıyor. Saklama süresini geçti. Hala geri yükleme yapabilir miyim?

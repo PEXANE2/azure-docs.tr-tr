@@ -6,10 +6,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 02/09/2018
 ms.openlocfilehash: 40e3ce17e036312e7c3fdee95fcb42d06f5845e9
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96751368"
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>Visual Studio Code için Azure Data Lake Araçları’nı kullanma
@@ -35,13 +35,13 @@ MacOS ve Linux için:
 
 ### <a name="to-install-azure-data-lake-tools"></a>Azure Data Lake araçları 'nı yüklemek için
 
-1. Visual Studio Code'u açın.
+1. Visual Studio Code’u açın.
 2. Sol bölmedeki **Uzantılar** ' ı seçin. Arama kutusuna **Azure Data Lake araçları** girin.
 3. **Azure Data Lake araçları**' nın yanındaki **yüklemeyi** seçin.
 
    ![Data Lake araçlarını yüklemeye yönelik seçimler](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-extensions.png)
 
-   Birkaç saniye sonra Yükle düğmesi yeniden **yüklenmek** üzere değişir. **Reload**
+   Birkaç saniye sonra Yükle düğmesi yeniden **yüklenmek** üzere değişir. 
 4. **Azure Data Lake araçları** uzantısını etkinleştirmek Için **yeniden yükle** ' yi seçin.
 5. Onaylamak için **pencereyi yeniden yükle** ' yi seçin. **Uzantılar** bölmesinde **Azure Data Lake araçları** ' na bakabilirsiniz.
 

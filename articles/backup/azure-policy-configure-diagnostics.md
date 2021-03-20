@@ -4,10 +4,10 @@ description: Azure Ilkesini kullanarak belirli bir kapsamdaki tüm kasaları iç
 ms.topic: conceptual
 ms.date: 02/14/2020
 ms.openlocfilehash: 55461937381f7551c42714c835d4755ab65f175b
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92171524"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>Kasa tanılama ayarlarını ölçekte yapılandırma
@@ -22,7 +22,7 @@ Tanılama ayarlarının ölçeğe göre (hedef olarak LA birlikte) oluşturulmas
 
 * İlke, belirli bir abonelikteki tüm kurtarma hizmetleri kasalarına (veya aboneliğin içindeki bir kaynak grubuna) tek seferde uygulanabilir. İlkeyi atayan kullanıcının, ilkenin atandığı aboneliğe **sahip** erişimi olması gerekir.
 
-* Kullanıcı tarafından belirtilen LA çalışma alanı (Tanılama verilerinin gönderileceği), ilkenin atandığı kasalardan farklı bir abonelikte olabilir. Kullanıcının belirtilen LA çalışma alanının bulunduğu aboneliğe **okuyucu**, **katkıda bulunan**veya **sahip** erişiminin olması gerekir.
+* Kullanıcı tarafından belirtilen LA çalışma alanı (Tanılama verilerinin gönderileceği), ilkenin atandığı kasalardan farklı bir abonelikte olabilir. Kullanıcının belirtilen LA çalışma alanının bulunduğu aboneliğe **okuyucu**, **katkıda bulunan** veya **sahip** erişiminin olması gerekir.
 
 * Yönetim grubu kapsamı şu anda desteklenmiyor.
 
@@ -36,7 +36,7 @@ Gerekli kapsamdaki kasaların ilkesini atamak için aşağıdaki adımları izle
 
 1. Azure portal oturum açın ve **ilke** panosuna gidin.
 2. Azure kaynakları genelinde tüm yerleşik ilkelerin listesini almak için sol menüdeki **tanımlar** ' ı seçin.
-3. **Kategori = Yedekleme**listesini filtreleyin. **[Önizleme] adlı ilkeyi bulun: kaynağa özgü kategoriler için Log Analytics çalışma alanına kurtarma hizmetleri Kasası Için tanılama ayarlarını dağıtın**.
+3. **Kategori = Yedekleme** listesini filtreleyin. **[Önizleme] adlı ilkeyi bulun: kaynağa özgü kategoriler için Log Analytics çalışma alanına kurtarma hizmetleri Kasası Için tanılama ayarlarını dağıtın**.
 
     ![İlke tanımı bölmesi](./media/backup-azure-policy-configure-diagnostics/policy-definition-blade.png)
 
@@ -46,11 +46,11 @@ Gerekli kapsamdaki kasaların ilkesini atamak için aşağıdaki adımları izle
 
 5. Bölmenin üst kısmındaki **ata** düğmesini seçin. Bu, sizi **Ilke ata** bölmesine yönlendirir.
 
-6. **Temel bilgiler**altında, **kapsam** alanının yanındaki üç noktayı seçin. Bu, ilke için uygulanacak aboneliği seçebileceğiniz bir sağ bağlam bölmesi açar. Ayrıca, ilkenin yalnızca belirli bir kaynak grubundaki kasaların uygulanmasını sağlamak için isteğe bağlı olarak bir kaynak grubu seçebilirsiniz.
+6. **Temel bilgiler** altında, **kapsam** alanının yanındaki üç noktayı seçin. Bu, ilke için uygulanacak aboneliği seçebileceğiniz bir sağ bağlam bölmesi açar. Ayrıca, ilkenin yalnızca belirli bir kaynak grubundaki kasaların uygulanmasını sağlamak için isteğe bağlı olarak bir kaynak grubu seçebilirsiniz.
 
     ![İlke atama temelleri](./media/backup-azure-policy-configure-diagnostics/policy-assignment-basics.png)
 
-7. **Parametreler**altında aşağıdaki bilgileri girin:
+7. **Parametreler** altında aşağıdaki bilgileri girin:
 
     * **Profil adı** -ilke tarafından oluşturulan tanılama ayarlarına atanacak ad.
     * **Log Analytics çalışma alanı** -tanılama ayarının ilişkilendirilmesi gereken Log Analytics çalışma alanı. Ilke atamasının kapsamındaki tüm kasaların Tanılama verileri belirtilen LA çalışma alanına gönderilir.

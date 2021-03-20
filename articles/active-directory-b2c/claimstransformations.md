@@ -11,17 +11,17 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 37d9bd78a80ac52d2a790537bf47e33807720349
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85202968"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-**Claimstransformations** öğesi, Kullanıcı yolculukları içinde [özel bir ilkenin](custom-policy-overview.md)bir parçası olarak kullanılabilecek talep dönüştürme işlevlerinin bir listesini içerir. Talep dönüştürmesi, belirli bir talebi başka bir talebe dönüştürür. Talep dönüşümünde, dönüştürme yöntemini belirtirsiniz, örneğin bir dize koleksiyonuna öğe ekleme veya bir dizenin durumunu değiştirme.
+**Claimstransformations** öğesi, Kullanıcı yolculukları içinde [özel bir ilkenin](custom-policy-overview.md)bir parçası olarak kullanılabilecek talep dönüştürme işlevlerinin bir listesini içerir. Talep dönüştürmesi belirli bir talebi başka bir talebe dönüştürür. Talep dönüşümünde, dönüştürme yöntemini belirtirsiniz, örneğin bir dize koleksiyonuna öğe ekleme veya bir dizenin durumunu değiştirme.
 
 Kullanıcı yolculuğuyla kullanılabilecek talep dönüştürme işlevlerinin listesini eklemek için, ilkenin BuildingBlocks bölümü altında bir ClaimsTransformations XML öğesi bildirilmelidir.
 
@@ -37,8 +37,8 @@ Kullanıcı yolculuğuyla kullanılabilecek talep dönüştürme işlevlerinin l
 
 | Öznitelik |Gerekli | Açıklama |
 | --------- |-------- | ----------- |
-| Id |Evet | Talep dönüşümünü benzersiz şekilde tanımlamak için kullanılan bir tanımlayıcı. Tanımlayıcıya, ilkedeki diğer XML öğelerinden başvurulur. |
-| Dönüştürme Tionmethod | Evet | Talep dönüşümünde kullanılacak dönüşüm yöntemi. Her talep dönüştürmesi kendi değerlerine sahiptir. Kullanılabilir değerlerin tüm listesi için [talep dönüştürme başvurusuna](#claims-transformations-reference) bakın. |
+| Id |Yes | Talep dönüşümünü benzersiz şekilde tanımlamak için kullanılan bir tanımlayıcı. Tanımlayıcıya, ilkedeki diğer XML öğelerinden başvurulur. |
+| Dönüştürme Tionmethod | Yes | Talep dönüşümünde kullanılacak dönüşüm yöntemi. Her talep dönüştürmesi kendi değerlerine sahiptir. Kullanılabilir değerlerin tüm listesi için [talep dönüştürme başvurusuna](#claims-transformations-reference) bakın. |
 
 ## <a name="claimstransformation"></a>Claimstranssize
 
@@ -59,7 +59,7 @@ Kullanıcı yolculuğuyla kullanılabilecek talep dönüştürme işlevlerinin l
 ```
 
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | -------- | ----------- |
 | Inputclaims | 0:1 | Talep dönüşümüne girdi olarak alınan talep türlerini belirten **ınputclaim** öğelerinin listesi. Bu öğelerin her biri, ilkedeki ClaimsSchema bölümünde zaten tanımlanmış olan bir ClaimType başvurusu içerir. |
 | InputParameters | 0:1 | Talep dönüşümüne giriş olarak sunulan **InputParameter** öğelerinin listesi.
@@ -69,7 +69,7 @@ Kullanıcı yolculuğuyla kullanılabilecek talep dönüştürme işlevlerinin l
 
 **Inputclaim** öğesi aşağıdaki öğeyi içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | Inputclaim | 1: n | Beklenen giriş talep türü. |
 
@@ -79,14 +79,14 @@ Kullanıcı yolculuğuyla kullanılabilecek talep dönüştürme işlevlerinin l
 
 | Öznitelik |Gerekli | Açıklama |
 | --------- | ----------- | ----------- |
-| ClaimTypeReferenceId |Evet | İlkedeki ClaimsSchema bölümünde zaten tanımlanmış olan bir ClaimType başvurusu. |
-| Dönüştürme Tionclaimtype |Evet | Bir dönüştürme talep türüne başvurmak için tanımlayıcı. Her talep dönüştürmesi kendi değerlerine sahiptir. Kullanılabilir değerlerin tüm listesi için [talep dönüştürme başvurusuna](#claims-transformations-reference) bakın. |
+| ClaimTypeReferenceId |Yes | İlkedeki ClaimsSchema bölümünde zaten tanımlanmış olan bir ClaimType başvurusu. |
+| Dönüştürme Tionclaimtype |Yes | Bir dönüştürme talep türüne başvurmak için tanımlayıcı. Her talep dönüştürmesi kendi değerlerine sahiptir. Kullanılabilir değerlerin tüm listesi için [talep dönüştürme başvurusuna](#claims-transformations-reference) bakın. |
 
 ### <a name="inputparameters"></a>InputParameters
 
 **InputParameters** öğesi aşağıdaki öğeyi içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | InputParameter | 1: n | Beklenen giriş parametresi. |
 
@@ -94,15 +94,15 @@ Kullanıcı yolculuğuyla kullanılabilecek talep dönüştürme işlevlerinin l
 
 | Öznitelik | Gerekli |Açıklama |
 | --------- | ----------- |----------- |
-| Id | Evet | Talep dönüştürme yönteminin parametresine başvuru olan bir tanımlayıcı. Her talep dönüştürme yönteminin kendi değerleri vardır. Kullanılabilir değerlerin tüm listesi için talep dönüştürme tablosuna bakın. |
-| DataType | Evet | Özel ilke XML şemasında, DataType numaralandırması başına dize, Boolean, INT veya DateTime gibi parametre veri türü. Bu tür aritmetik işlemleri doğru gerçekleştirmek için kullanılır. Her talep dönüştürmesi kendi değerlerine sahiptir. Kullanılabilir değerlerin tüm listesi için [talep dönüştürme başvurusuna](#claims-transformations-reference) bakın. |
-| Değer | Evet | Dönüşümde harfine geçirilen bir değer. Bazı değerler isteğe bağlı olarak, talep dönüştürme yönteminden bazıları arasından seçim yapabilirsiniz. |
+| Id | Yes | Talep dönüştürme yönteminin parametresine başvuru olan bir tanımlayıcı. Her talep dönüştürme yönteminin kendi değerleri vardır. Kullanılabilir değerlerin tüm listesi için talep dönüştürme tablosuna bakın. |
+| DataType | Yes | Özel ilke XML şemasında, DataType numaralandırması başına dize, Boolean, INT veya DateTime gibi parametre veri türü. Bu tür aritmetik işlemleri doğru gerçekleştirmek için kullanılır. Her talep dönüştürmesi kendi değerlerine sahiptir. Kullanılabilir değerlerin tüm listesi için [talep dönüştürme başvurusuna](#claims-transformations-reference) bakın. |
+| Değer | Yes | Dönüşümde harfine geçirilen bir değer. Bazı değerler isteğe bağlı olarak, talep dönüştürme yönteminden bazıları arasından seçim yapabilirsiniz. |
 
 ### <a name="outputclaims"></a>Outputclaim
 
 **Outputclaim** öğesi aşağıdaki öğeyi içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | OutputClaim | 0: n | Beklenen çıkış talep türü. |
 
@@ -112,8 +112,8 @@ Kullanıcı yolculuğuyla kullanılabilecek talep dönüştürme işlevlerinin l
 
 | Öznitelik |Gerekli | Açıklama |
 | --------- | ----------- |----------- |
-| ClaimTypeReferenceId | Evet | İlkedeki ClaimsSchema bölümünde zaten tanımlanmış olan bir ClaimType başvurusu.
-| Dönüştürme Tionclaimtype | Evet | Bir dönüştürme talep türüne başvurmak için tanımlayıcı. Her talep dönüştürmesi kendi değerlerine sahiptir. Kullanılabilir değerlerin tüm listesi için [talep dönüştürme başvurusuna](#claims-transformations-reference) bakın. |
+| ClaimTypeReferenceId | Yes | İlkedeki ClaimsSchema bölümünde zaten tanımlanmış olan bir ClaimType başvurusu.
+| Dönüştürme Tionclaimtype | Yes | Bir dönüştürme talep türüne başvurmak için tanımlayıcı. Her talep dönüştürmesi kendi değerlerine sahiptir. Kullanılabilir değerlerin tüm listesi için [talep dönüştürme başvurusuna](#claims-transformations-reference) bakın. |
 
 Giriş talebi ve çıkış talebi aynı türde (dize veya Boole) ise, çıkış talebiyle aynı giriş talebini kullanabilirsiniz. Bu durumda, talep dönüştürmesi giriş talebini çıkış değeriyle değiştirir.
 

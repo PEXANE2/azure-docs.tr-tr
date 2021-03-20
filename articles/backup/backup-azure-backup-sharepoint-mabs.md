@@ -4,10 +4,10 @@ description: SharePoint verilerinizi yedeklemek ve geri yüklemek için Azure Ba
 ms.topic: conceptual
 ms.date: 04/26/2020
 ms.openlocfilehash: 837aabf739431eebaa6406770620329fe6345eb7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89375406"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>MABS ile bir SharePoint grubunu Azure 'a yedekleme
@@ -30,7 +30,7 @@ Bir SharePoint grubunu Azure 'a yedeklemebilmeniz için öncelikle onaylamanız 
 
 * MABS, genişleme dosya sunucusu (SOFS) paylaşımlarında barındırılan SharePoint SQL Server veritabanlarının yedeklemesini sağlamıyor.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Devam etmeden önce, iş yüklerini korumak için [Microsoft Azure Backup kullanmaya yönelik tüm önkoşulları](backup-azure-dpm-introduction.md#prerequisites-and-limitations) karşıladığınızdan emin olun. Önkoşullar için bazı görevler şunlardır: bir yedekleme Kasası oluşturun, kasa kimlik bilgilerini indirin, Azure Backup Aracısı yükleyin ve Azure Backup Sunucusu kasaya kaydedin.
 
@@ -40,7 +40,7 @@ Ek Önkoşullar ve sınırlamalar:
 
 * SharePoint veritabanlarını SQL Server veri kaynağı olarak koruyamazsınız. Bir grup yedeğinden ayrı ayrı veritabanlarını kurtarabilirsiniz.
 
-* MABS 'lerin **yerel sistem**olarak çalıştığını ve SQL Server veritabanlarının YEDEKLENMESINI ve SQL Server için bu hesapta sysadmin ayrıcalıklarına ihtiyacı olduğunu unutmayın. Yedeklemek istediğiniz SQL Server, NT AUTHORITY\SYSTEM ' ı **sysadmin**olarak ayarlayın.
+* MABS 'lerin **yerel sistem** olarak çalıştığını ve SQL Server veritabanlarının YEDEKLENMESINI ve SQL Server için bu hesapta sysadmin ayrıcalıklarına ihtiyacı olduğunu unutmayın. Yedeklemek istediğiniz SQL Server, NT AUTHORITY\SYSTEM ' ı **sysadmin** olarak ayarlayın.
 
 * Gruptaki her 10.000.000 öğe için, MABS klasörünün bulunduğu birimde en az 2 GB alan olması gerekir. Bu boşluk katalog oluşturma için gereklidir. MABS 'yi, öğelerin (site koleksiyonları, siteler, listeler, belge kitaplıkları, klasörler, bireysel belgeler ve liste öğeleri) belirli bir kurtarmasını gerçekleştirmek üzere kullanmanıza olanak tanımak için, Katalog oluşturma her bir içerik veritabanında bulunan URL 'lerin bir listesini oluşturur. URL 'lerin listesini, MABS Yönetici Konsolu Kurtarma görev alanındaki kurtarılabilir öğe bölmesinde görüntüleyebilirsiniz.
 
@@ -76,29 +76,29 @@ SharePoint grubunu yedeklemek için ConfigureSharePoint.exe kullanarak SharePoin
 
 1. Koruma grubu oluşturmak **için koruma**  >  **Eylemler**  >  **koruma grubu oluştur** ' u seçerek mabs konsolundaki **yeni koruma grubu oluşturma** Sihirbazı ' nı açın.
 
-1. **Koruma grubu türünü seçin**içinde **sunucular**' ı seçin.
+1. **Koruma grubu türünü seçin** içinde **sunucular**' ı seçin.
 
-1. **Grup üyelerini seçin**içinde, WFE rolünü tutan sunucuyu genişletin. Birden çok WFE sunucusu varsa ConfigureSharePoint.exe yüklediğiniz birini seçin.
+1. **Grup üyelerini seçin** içinde, WFE rolünü tutan sunucuyu genişletin. Birden çok WFE sunucusu varsa ConfigureSharePoint.exe yüklediğiniz birini seçin.
 
     SharePoint Server MABS sorguları VSS 'yi genişleterek, MABS 'lerin neleri koruyabileceği hakkında bilgi alın.  SharePoint veritabanı uzak ise, MABS buna bağlanır. SharePoint veri kaynakları görünmezse, VSS yazıcısının SharePoint sunucusunda ve uzak SQL Server çalışıp çalışmadığını ve MABS aracısının hem SharePoint sunucusunda hem de uzak SQL Server yüklü olduğundan emin olun. Ayrıca SharePoint veritabanlarının başka bir yerde SQL Server veritabanları olarak korunmadığından emin olun.
 
-1. **Veri koruma yöntemini seçin**içinde, kısa ve uzun süreli yedeklemeyi nasıl işlemek istediğinizi belirtin \- . Kısa \- süreli yedekleme, diskten Azure bulutuna \( kısa veya uzun süreli Azure Backup yedekleme seçeneği ile her zaman ilk olarak diske yöneliktir \- \) .
+1. **Veri koruma yöntemini seçin** içinde, kısa ve uzun süreli yedeklemeyi nasıl işlemek istediğinizi belirtin \- . Kısa \- süreli yedekleme, diskten Azure bulutuna \( kısa veya uzun süreli Azure Backup yedekleme seçeneği ile her zaman ilk olarak diske yöneliktir \- \) .
 
-1. **Kısa \- vadeli hedefleri seçin**bölümünde diskte kısa süreli depolama için nasıl yedekleme yapmak istediğinizi belirtin \- .   **Bekletme aralığı** kısmında verileri disk üzerinde ne kadar saklamak istediğinizi belirtirsiniz. **Eşitleme sıklığı**' nda, diske artımlı yedeklemeyi ne sıklıkta çalıştırmak istediğinizi belirtirsiniz. Bir yedekleme aralığı ayarlamak istemiyorsanız, MABS 'lerin her bir kurtarma noktası zamanlanmadan hemen önce hızlı tam yedekleme çalıştırmaları için bir kurtarma noktasının hemen öncesine bakabilirsiniz.
+1. **Kısa \- vadeli hedefleri seçin** bölümünde diskte kısa süreli depolama için nasıl yedekleme yapmak istediğinizi belirtin \- .   **Bekletme aralığı** kısmında verileri disk üzerinde ne kadar saklamak istediğinizi belirtirsiniz. **Eşitleme sıklığı**' nda, diske artımlı yedeklemeyi ne sıklıkta çalıştırmak istediğinizi belirtirsiniz. Bir yedekleme aralığı ayarlamak istemiyorsanız, MABS 'lerin her bir kurtarma noktası zamanlanmadan hemen önce hızlı tam yedekleme çalıştırmaları için bir kurtarma noktasının hemen öncesine bakabilirsiniz.
 
 1. Disk ayırmayı ıncele sayfasında, koruma grubu için ayrılmış depolama havuzu disk alanını gözden geçirin.
 
     **Toplam veri boyutu** , yedeklemek istediğiniz verilerin boyutudur ve **mabs üzerinde sağlanacak disk alanı** , mabs 'nin koruma grubu için önerdiği alandır. MABS, ayarlara bağlı olarak ideal yedekleme birimini seçer. Ancak, yedekleme birimi seçeneklerini **Disk ayırma ayrıntıları**'nda düzenleyebilirsiniz. İş yükleri için açılan menüden tercih edilen depolamayı seçin. Düzenlemeleriniz, **Kullanılabilir Disk Depolaması** bölmesindeki **Toplam Depolama** ve **Boş Depolama** değerlerini değiştirir. Yetersiz sağlanan alan, daha sonra yedeklemeler ile devam etmek için, MABS 'ların birime eklemenizi önerdiği depolama miktarıdır.
 
-1. **Çoğaltma oluşturma yöntemini seçin**kısmında ilk tam veri çoğaltmasını nasıl işlemek istediğinizi seçin.  Ağ üzerinden çoğaltmayı seçerseniz, yoğun olmayan bir zaman seçmeniz önerilir. Büyük miktarlarda veri veya en iyi durumda olmayan ağ koşulları için, verileri çıkarılabilir medya kullanarak çevrimdışı olarak çoğaltmayı düşünebilirsiniz.
+1. **Çoğaltma oluşturma yöntemini seçin** kısmında ilk tam veri çoğaltmasını nasıl işlemek istediğinizi seçin.  Ağ üzerinden çoğaltmayı seçerseniz, yoğun olmayan bir zaman seçmeniz önerilir. Büyük miktarlarda veri veya en iyi durumda olmayan ağ koşulları için, verileri çıkarılabilir medya kullanarak çevrimdışı olarak çoğaltmayı düşünebilirsiniz.
 
 1. **Tutarlılık Denetimi Seçenekleri** kısmında, tutarlılık denetimlerinin nasıl otomatikleştirilmesini istediğinizi seçin. Veri çoğaltma tutarsız hale geldiğinde veya bir zamanlamaya göre çalıştırmak için bir denetim etkinleştirebilirsiniz. Otomatik tutarlılık denetimini yapılandırmak istemiyorsanız, MABS konsolunun **koruma** alanındaki koruma grubuna sağ tıklayarak ve **tutarlılık denetimi gerçekleştir**' i seçerek istediğiniz zaman el ile denetim gerçekleştirebilirsiniz.
 
 1. Azure Backup ile buluta yedekleme seçtiyseniz, **Çevrimiçi koruma verilerini belirtin** sayfasında Azure'a yedeklemek istediğiniz iş yüklerinin seçili olduğundan emin olun.
 
-1. **Çevrimiçi yedekleme zamanlamasını belirtin**kısmında, Azure 'a artımlı yedeklemelerin ne sıklıkta gerçekleşeceğini belirtin. Yedeklemeleri her gün/hafta/ay/yıl yapılacak şekilde ve çalışacakları saat/tarihi belirterek zamanlayabilirsiniz. Yedeklemeler günde iki kez gerçekleşebilir. Yedekleme her çalıştığında, Azure 'da MABS diskinde depolanan yedeklenen verilerin kopyasından bir veri kurtarma noktası oluşturulur.
+1. **Çevrimiçi yedekleme zamanlamasını belirtin** kısmında, Azure 'a artımlı yedeklemelerin ne sıklıkta gerçekleşeceğini belirtin. Yedeklemeleri her gün/hafta/ay/yıl yapılacak şekilde ve çalışacakları saat/tarihi belirterek zamanlayabilirsiniz. Yedeklemeler günde iki kez gerçekleşebilir. Yedekleme her çalıştığında, Azure 'da MABS diskinde depolanan yedeklenen verilerin kopyasından bir veri kurtarma noktası oluşturulur.
 
-1. **Çevrimiçi saklama Ilkesini belirtin**kısmında günlük/haftalık/aylık/yıllık yedeklerden oluşturulan kurtarma noktalarının Azure 'da nasıl korunacağını belirtebilirsiniz.
+1. **Çevrimiçi saklama Ilkesini belirtin** kısmında günlük/haftalık/aylık/yıllık yedeklerden oluşturulan kurtarma noktalarının Azure 'da nasıl korunacağını belirtebilirsiniz.
 
 1. **Çevrimiçi çoğaltma Seç**' de, verilerin ilk tam çoğaltmasının nasıl yapılacağını belirtin. Ağ üzerinden çoğaltma veya çevrimdışı yedekleme (çevrimdışı dengeli dağıtım) yapabilirsiniz. Çevrimdışı yedekleme Azure İçe Aktarma özelliğini kullanır. [Daha fazla bilgi edinin](./backup-azure-backup-import-export.md).
 
@@ -118,7 +118,7 @@ Koruma grubu oluşturulduktan sonra ilk çoğaltma gerçekleşir ve MABS, ShareP
 
 2. **SMTP sunucusu**' nu seçin, sunucu adını, bağlantı noktasını ve bildirimlerin gönderileceği e-posta adresini yazın. Adres geçerli olmalıdır.
 
-3. **Kimliği DOĞRULANMıŞ SMTP sunucusu**alanına bir Kullanıcı adı ve parola yazın. Kullanıcı adı ve parola, "Kimden" adresi önceki adımda açıklanan kişinin etki alanı hesap adı olmalıdır. Aksi takdirde, bildirim teslimi başarısız olur.
+3. **Kimliği DOĞRULANMıŞ SMTP sunucusu** alanına bir Kullanıcı adı ve parola yazın. Kullanıcı adı ve parola, "Kimden" adresi önceki adımda açıklanan kişinin etki alanı hesap adı olmalıdır. Aksi takdirde, bildirim teslimi başarısız olur.
 
 4. SMTP sunucusu ayarlarını test etmek için, **Test e-postası gönder**' i SEÇIN, mabs 'nin test iletisini göndermesini istediğiniz e-posta adresini yazın ve ardından **Tamam**' ı seçin. **Seçenek**  >  **bildirimleri** ' ni seçin ve alıcıların bildirim almak istediği uyarı türlerini seçin. **Alıcılar** ' de, mabs ' ın bildirimlerin kopyalarını göndermesini istediğiniz her alıcı için e-posta adresini yazın.
 
@@ -126,14 +126,14 @@ Koruma grubu oluşturulduktan sonra ilk çoğaltma gerçekleşir ve MABS, ShareP
 
 1. Mabs Yönetici Konsolu, **izleme**  >  **eylemi**  >  **seçenekleri**  >  **uyarı yayımlama**  >  **Etkin uyarıları Yayımla** ' yı seçin.
 
-2. **Uyarı yayımlamayı**etkinleştirdikten sonra, bir kullanıcı eylemi gerektiren tüm mevcut mabs uyarıları, **mabs uyarıları** olay günlüğüne yayımlanır. MABS sunucusunda yüklü olan Operations Manager Aracısı daha sonra bu uyarıları Operations Manager yayımlar ve yeni uyarılar oluşturulduğundan konsolu güncelleştirmeye devam eder.
+2. **Uyarı yayımlamayı** etkinleştirdikten sonra, bir kullanıcı eylemi gerektiren tüm mevcut mabs uyarıları, **mabs uyarıları** olay günlüğüne yayımlanır. MABS sunucusunda yüklü olan Operations Manager Aracısı daha sonra bu uyarıları Operations Manager yayımlar ve yeni uyarılar oluşturulduğundan konsolu güncelleştirmeye devam eder.
 
 ## <a name="restore-a-sharepoint-item-from-disk-by-using-mabs"></a>MABS kullanarak bir SharePoint öğesini diskten geri yükleme
 
 Aşağıdaki örnekte, *Kurtarma SharePoint öğesi* yanlışlıkla silinmiş ve kurtarılması gerekiyor.
 ![MABS SharePoint Protection4](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection5.png)
 
-1. **Mabs Yönetici Konsolu**açın. MABS tarafından korunan tüm SharePoint grupları, **koruma** sekmesinde gösterilir.
+1. **Mabs Yönetici Konsolu** açın. MABS tarafından korunan tüm SharePoint grupları, **koruma** sekmesinde gösterilir.
 
     ![MABS SharePoint Protection3](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection4.png)
 2. Öğeyi kurtarmaya başlamak için **Kurtarma** sekmesini seçin.
@@ -143,7 +143,7 @@ Aşağıdaki örnekte, *Kurtarma SharePoint öğesi* yanlışlıkla silinmiş ve
 
     ![MABS SharePoint Protection6](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection7.png)
 4. Arama sonuçlarından uygun kurtarma noktasını seçin, öğeye sağ tıklayın ve ardından **kurtar**' ı seçin.
-5. Ayrıca, çeşitli kurtarma noktalarına göz atabilir ve kurtarılacak bir veritabanı veya öğe seçebilirsiniz. **Tarih > kurtarma zamanı**' nı seçin ve ardından **> SharePoint grubu > kurtarma noktası > öğesi doğru veritabanını**seçin.
+5. Ayrıca, çeşitli kurtarma noktalarına göz atabilir ve kurtarılacak bir veritabanı veya öğe seçebilirsiniz. **Tarih > kurtarma zamanı**' nı seçin ve ardından **> SharePoint grubu > kurtarma noktası > öğesi doğru veritabanını** seçin.
 
     ![MABS SharePoint Protection7](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection8.png)
 6. Öğeye sağ tıklayın ve ardından **Kurtarma Sihirbazı**'nı açmak için **kurtar** ' ı seçin. **İleri**’yi seçin.
@@ -209,7 +209,7 @@ Aşağıdaki örnekte, *Kurtarma SharePoint öğesi* yanlışlıkla silinmiş ve
 
     ![MABS SharePoint Protection11](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection13.png)
 
-    Kataloglama tamamlandıktan sonra durum *başarılı*olarak değişir. **Kapat**’ı seçin.
+    Kataloglama tamamlandıktan sonra durum *başarılı* olarak değişir. **Kapat**’ı seçin.
 
     ![MABS SharePoint Protection12](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection14.png)
 4. İçerik veritabanı yapısını almak için MABS **Kurtarma** sekmesinde gösterilen SharePoint nesnesini seçin. Öğeye sağ tıklayın ve ardından **kurtar**' ı seçin.
@@ -221,7 +221,7 @@ Aşağıdaki örnekte, *Kurtarma SharePoint öğesi* yanlışlıkla silinmiş ve
 
 Birden fazla ön uç Web sunucunuz varsa ve MABS 'nin grubu korumak için kullandığı sunucuyu değiştirmek istiyorsanız, yönergeleri izleyin:
 
-Aşağıdaki yordam, *Sunucu1* ve *Sunucu2*olmak üzere iki ön uç Web sunucusuyla sunucu grubu örneğini kullanır. MABS, grubu korumak için *Sunucu1* kullanır. MABS 'nin, grubundan *Sunucu1* 'yi kaldırabilmeniz için bu ön uç Web sunucusunu *Sunucu2* olarak değiştirin.
+Aşağıdaki yordam, *Sunucu1* ve *Sunucu2* olmak üzere iki ön uç Web sunucusuyla sunucu grubu örneğini kullanır. MABS, grubu korumak için *Sunucu1* kullanır. MABS 'nin, grubundan *Sunucu1* 'yi kaldırabilmeniz için bu ön uç Web sunucusunu *Sunucu2* olarak değiştirin.
 
 > [!NOTE]
 > MABS 'nin grubu korumak için kullandığı ön uç Web sunucusu kullanılamıyorsa, 4. adımdan başlayarak ön uç Web sunucusunu değiştirmek için aşağıdaki yordamı kullanın.
@@ -240,12 +240,12 @@ Aşağıdaki yordam, *Sunucu1* ve *Sunucu2*olmak üzere iki ön uç Web sunucusu
 
 1. VssAccessControl alt anahtarında listelenen tüm değerleri kontrol edin. Herhangi bir girdinin değer verisi 0 ise ve ilişkili hesap kimlik bilgileri altında başka bir VSS yazıcısı çalışıyorsa, değer verisini 1 olarak değiştirin.
 
-1. *Sunucu2*üzerine bir koruma Aracısı yükler.
+1. *Sunucu2* üzerine bir koruma Aracısı yükler.
 
    > [!WARNING]
    > Web ön uç sunucularını yalnızca her iki sunucu da aynı etki alanında olduğunda değiştirebilirsiniz.
 
-1. *Sunucu2*'de, bir komut isteminde dizinini olarak değiştirin `_MABS installation location_\bin\` ve **ConfigureSharePoint**çalıştırın. ConfigureSharePoint hakkında daha fazla bilgi için bkz. [yedeklemeyi yapılandırma](#configure-backup).
+1. *Sunucu2*'de, bir komut isteminde dizinini olarak değiştirin `_MABS installation location_\bin\` ve **ConfigureSharePoint** çalıştırın. ConfigureSharePoint hakkında daha fazla bilgi için bkz. [yedeklemeyi yapılandırma](#configure-backup).
 
 1. Sunucu grubunun ait olduğu koruma grubunu seçin ve ardından **koruma grubunu değiştir**' i seçin.
 

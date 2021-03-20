@@ -11,10 +11,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 7b3dcfc51df7f0fe4291e9c5babccc1444ad32e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "81730745"
 ---
 # <a name="communicate-with-your-iot-hub-by-using-the-amqp-protocol"></a>AMQP protokolünü kullanarak IoT Hub 'ınız ile iletişim kurma
@@ -68,7 +68,7 @@ receive_client = uamqp.ReceiveClient(uri, debug=True)
 
 Hizmet ve IoT Hub ile cihaz ile IoT Hub arasındaki buluttan cihaza ileti alışverişi hakkında bilgi edinmek için bkz. [IoT Hub 'ınızdaki buluttan cihaza Ileti gönderme](iot-hub-devguide-messages-c2d.md). Hizmet istemcisi, aşağıdaki tabloda açıklandığı gibi cihazlarından daha önce gönderilen iletiler için ileti göndermek ve geri bildirim almak üzere iki bağlantı kullanır:
 
-| Oluşturan: | Bağlantı türü | Bağlantı yolu | Açıklama |
+| Oluşturan: | Bağlantı türü | Bağlantı yolu | Description |
 |------------|-----------|-----------|-------------|
 | Hizmet | Gönderen bağlantısı | `/messages/devicebound` | Cihazlara hedeflenen buluttan cihaza iletiler, hizmet tarafından bu bağlantıya gönderilir. Bu bağlantı üzerinden gönderilen iletilerin `To` özelliği hedef cihazın alıcı bağlantı yolu olarak ayarlanır `/devices/<deviceID>/messages/devicebound` . |
 | Hizmet | Alıcı bağlantısı | `/messages/serviceBound/feedback` | Hizmet tarafından bu bağlantıda alınan cihazlardan gelen tamamlama, reddetme ve bırakma geri bildirim iletileri. Geri bildirim iletileri hakkında daha fazla bilgi için bkz. [IoT Hub 'ından buluttan cihaza Ileti gönderme](./iot-hub-devguide-messages-c2d.md#message-feedback). |
@@ -129,9 +129,9 @@ for msg in batch:
         print('unknown message:', msg.properties.content_type)
 ```
 
-Yukarıdaki kodda gösterildiği gibi, buluttan cihaza geri bildirim iletisi *üzerinde bir uygulama/vnd.microsoft.iothub.feedback.js*içerik türü vardır. Özgün iletinin teslim durumunu anlamak için iletinin JSON gövdesindeki özellikleri kullanabilirsiniz:
+Yukarıdaki kodda gösterildiği gibi, buluttan cihaza geri bildirim iletisi *üzerinde bir uygulama/vnd.microsoft.iothub.feedback.js* içerik türü vardır. Özgün iletinin teslim durumunu anlamak için iletinin JSON gövdesindeki özellikleri kullanabilirsiniz:
 
-* `statusCode`Geri bildirim gövdesindeki anahtar şu değerlerden birine sahip: *başarılı*, *süresi doldu*, *deliverycountexce,* *reddedildi*veya *temizlendi*.
+* `statusCode`Geri bildirim gövdesindeki anahtar şu değerlerden birine sahip: *başarılı*, *süresi doldu*, *deliverycountexce,* *reddedildi* veya *temizlendi*.
 
 * `deviceId`Geri bildirim gövdesindeki anahtarın hedef CIHAZıN kimliği vardır.
 
@@ -262,7 +262,7 @@ send_client = uamqp.SendClient(uri, debug=True)
 
 Aşağıdaki bağlantı yolları cihaz işlemleri olarak desteklenir:
 
-| Oluşturan: | Bağlantı türü | Bağlantı yolu | Açıklama |
+| Oluşturan: | Bağlantı türü | Bağlantı yolu | Description |
 |------------|-----------|-----------|-------------|
 | Cihazlar | Alıcı bağlantısı | `/devices/<deviceID>/messages/devicebound` | Cihazlara hedeflenen buluttan cihaza iletiler, her hedef cihaz tarafından bu bağlantı üzerinden alınır. |
 | Cihazlar | Gönderen bağlantısı | `/devices/<deviceID>/messages/events` | Bir cihazdan gönderilen cihazdan buluta iletiler, bu bağlantı üzerinden gönderilir. |

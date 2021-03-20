@@ -10,10 +10,10 @@ ms.date: 10/13/2020
 ms.author: anfeldma
 ms.custom: devx-track-java, contperf-fy21q2
 ms.openlocfilehash: 8aad9df4720c833a74659b5cd36b7f5aafdf9b60
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97631848"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Azure Cosmos DB Java SDK v4 için performans ipuçları
@@ -150,15 +150,15 @@ Varsayılan olarak, Azure Cosmos DB Java SDK v4 kullanılırken doğrudan mod Co
 
 Java SDK 'Sı v4 Azure Cosmos DB, doğrudan modu, en iyi iş yükleriyle veritabanı performansını geliştirmek için en iyi seçenektir. 
 
-* ***Doğrudan moda genel bakış** _
+* ***Doğrudan moda genel bakış***
 
 :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="Doğrudan mod mimarisinin çizimi" border="false":::
 
-Doğrudan modda çalışan istemci tarafı mimarisi, tahmin edilebilir ağ kullanımı ve Azure Cosmos DB çoğaltmaya çoğullanmış erişim sağlar. Yukarıdaki diyagramda, doğrudan modunun Cosmos DB arka uçtaki çoğaltmalara istemci isteklerini nasıl yönlendirdiğini gösterir. Doğrudan mod mimarisi, VERITABANı çoğaltması başına istemci tarafında en fazla 10 _ *Kanal** ayırır. Kanal, 30 istekten oluşan bir istek arabelleğinin önünde yer aldığı bir TCP bağlantısıdır. Bir çoğaltmaya ait olan kanallar, çoğaltmanın **hizmet uç noktası** tarafından gerektiği şekilde dinamik olarak ayrılır. Kullanıcı doğrudan modda bir istek verdiği zaman, **Transportclient** , isteği bölüm anahtarına göre uygun hizmet uç noktasına yönlendirir. **Istek kuyruğu** , hizmet uç noktasından önceki istekleri arabelleğe alır.
+Doğrudan modda çalışan istemci tarafı mimarisi, tahmin edilebilir ağ kullanımı ve Azure Cosmos DB çoğaltmaya çoğullanmış erişim sağlar. Yukarıdaki diyagramda, doğrudan modunun Cosmos DB arka uçtaki çoğaltmalara istemci isteklerini nasıl yönlendirdiğini gösterir. Doğrudan mod mimarisi, VERITABANı çoğaltması başına istemci tarafında en fazla 10 **Kanal** ayırır. Kanal, 30 istekten oluşan bir istek arabelleğinin önünde yer aldığı bir TCP bağlantısıdır. Bir çoğaltmaya ait olan kanallar, çoğaltmanın **hizmet uç noktası** tarafından gerektiği şekilde dinamik olarak ayrılır. Kullanıcı doğrudan modda bir istek verdiği zaman, **Transportclient** , isteği bölüm anahtarına göre uygun hizmet uç noktasına yönlendirir. **Istek kuyruğu** , hizmet uç noktasından önceki istekleri arabelleğe alır.
 
-* ***Doğrudan mod _ Için yapılandırma seçenekleri**
+* ***Doğrudan mod için yapılandırma seçenekleri***
 
-Varsayılan olmayan doğrudan mod davranışı isteniyorsa, bir _DirectConnectionConfig * örneği oluşturun ve özelliklerini özelleştirin, ardından özelleştirilmiş özellik örneğini Azure Cosmos DB istemci oluşturucusunda *Directmode ()* metoduna geçirin.
+Varsayılan olmayan doğrudan mod davranışı isteniyorsa, bir *Directconnectionconfig* örneği oluşturun ve özelliklerini özelleştirin, ardından özelleştirilmiş özellik örneğini Azure Cosmos DB Istemci oluşturucusunun *directmode ()* metoduna geçirin.
 
 Bu yapılandırma ayarları yukarıda ele alınan temeldeki doğrudan mod mimarisinin davranışını denetler.
 
@@ -176,19 +176,19 @@ Bu yapılandırma ayarları yukarıda ele alınan temeldeki doğrudan mod mimari
 
 Azure Cosmos DB Java SDK v4 Paralel sorguları destekler ve bu, bölümlenmiş bir koleksiyonu paralel olarak sorgulamanızı sağlar. Daha fazla bilgi için bkz. Azure Cosmos DB Java SDK 'Sı v4 ile çalışma ile ilgili [kod örnekleri](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples) . Paralel sorgular, kendi seri karşılarındaki sorgu gecikmesini ve aktarım hızını artırmak için tasarlanmıştır.
 
-* ***Setmaxdegreeofparalellik \: ayarlama** _
+* ***Setmaxdegreeofparalellik ayarlama\:***
     
 Paralel sorgular birden çok bölümü paralel olarak sorgulayarak çalışır. Ancak, tek bir bölümlenmiş koleksiyondaki veriler, sorguya göre işlem içine alınır. Bu nedenle, en iyi performansı elde etmek için en yüksek performansa sahip bölüm sayısını ayarlamak için Setmaxdegreeofparalellik kullanın, diğer tüm sistem koşulları aynı kalır. Bölüm sayısını bilmiyorsanız, yüksek bir sayı ayarlamak için Setmaxdegreeofparalellik kullanabilirsiniz ve sistem en az paralellik derecesi olarak en düşük (bölüm sayısı, Kullanıcı tarafından girilen giriş) değerini seçer.
 
 Verilerin sorguya göre tüm bölümler arasında eşit bir şekilde dağıtılması halinde paralel sorguların en iyi avantajları ürettiğine dikkat edin. Bölümlenmiş koleksiyon, bir sorgu tarafından döndürülen verilerin tümünün veya çoğunluğunun birkaç bölümde (en kötü durumda bir bölüm) yoğunlaşarak bir şekilde bölümlenmişse, sorgunun performansı bu bölümler tarafından bottlenecked olacaktır.
 
-_ ***Ayarlama setMaxBufferedItemCount \:** _
+* ***SetMaxBufferedItemCount ayarlama\:***
     
 Paralel sorgu, geçerli sonuç toplu işi istemci tarafından işlendiği sırada sonuçları önceden getirmek üzere tasarlanmıştır. Önceden getirme, bir sorgunun genel gecikme artışında yardımcı olur. setMaxBufferedItemCount, önceden getirilen sonuçların sayısını sınırlar. SetMaxBufferedItemCount değeri döndürülen beklenen sonuç sayısına (veya daha yüksek bir sayıya) ayarlandığında sorgunun ön alma işleminden en fazla avantaj almasına olanak sağlar.
 
 Önceden getirme, Maxdegreeofparalelliği ne olursa olsun aynı şekilde çalışıyor ve tüm bölümlerdeki veriler için tek bir arabellek vardır.
 
-_ **Istemcinizi genişleme-iş yükü**
+* **İstemcinizi genişletme-iş yükü**
 
 Yüksek aktarım hızı düzeylerinde test ediyorsanız, makine CPU veya ağ kullanımında kullanıma hazır hale geldiği için istemci uygulama performans sorunlarına neden olabilir. Bu noktaya ulaştığınızda, istemci uygulamalarınızı birden çok sunucu arasında ölçeklendirerek Azure Cosmos DB hesabını daha fazla göndermeye devam edebilirsiniz.
 
@@ -233,11 +233,11 @@ Java SDK 'Sı v4 Azure Cosmos DB hakkında daha fazla bilgi için lütfen [GitHu
 
 Çeşitli nedenlerle, yüksek istek aktarım hızı üreten bir iş parçacığında günlük kaydı eklemeniz gerekebilir. Amacınız, bu iş parçacığı tarafından oluşturulan isteklerle bir kapsayıcının sağlanmış iş verimini tamamen kısaltmak isterse, günlüğe kaydetme iyileştirmeleri performansı büyük ölçüde iyileştirebilir.
 
-* ***Zaman uyumsuz günlükçü yapılandırma** _
+* ***Zaman uyumsuz günlükçü yapılandırma***
 
 Zaman uyumlu bir günlükçü gecikmesi, istek oluşturma iş parçacığınız için genel gecikme süresi hesaplamasına yönelik bir etken olması halinde. Yüksek performanslı uygulama iş parçacıklarından günlüğe kaydetme ek yükünü ayırmak için [log4j2](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Flogging.apache.org%2Flog4j%2Flog4j-2.3%2Fmanual%2Fasync.html&data=02%7C01%7CCosmosDBPerformanceInternal%40service.microsoft.com%7C36fd15dea8384bfe9b6b08d7c0cf2113%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637189868158267433&sdata=%2B9xfJ%2BWE%2F0CyKRPu9AmXkUrT3d3uNA9GdmwvalV3EOg%3D&reserved=0) gibi bir zaman uyumsuz günlükçü önerilir.
 
-_ ***Netty 'nin günlüğünü devre dışı bırak** _
+* ***Netty 'ın günlüğünü devre dışı bırak***
 
 Netty kitaplığı günlüğü geveze ve ek CPU maliyetlerinden kaçınmak için kapalı olması gerekir (yapılandırmada oturum açmayı gizleme yeterli olmayabilir). Hata ayıklama modunda değilseniz, netty 'ın günlüğünü tamamen devre dışı bırakın. Bu nedenle, netty 'den kaynaklanan ek CPU maliyetlerini kaldırmak için Log4J kullanıyorsanız ``org.apache.log4j.Category.callAppenders()`` , kod tabanınıza aşağıdaki satırı ekleyin:
 
@@ -245,7 +245,7 @@ Netty kitaplığı günlüğü geveze ve ek CPU maliyetlerinden kaçınmak için
 org.apache.log4j.Logger.getLogger("io.netty").setLevel(org.apache.log4j.Level.OFF);
 ```
 
- _ **Işletim sistemi açık dosyalar kaynak sınırı**
+ * **İşletim sistemi açık dosyaları kaynak sınırı**
  
 Bazı Linux sistemleri (Red hat gibi), açık dosya sayısı için üst sınıra ve bu nedenle toplam bağlantı sayısına sahiptir. Geçerli sınırları görüntülemek için aşağıdakileri çalıştırın:
 

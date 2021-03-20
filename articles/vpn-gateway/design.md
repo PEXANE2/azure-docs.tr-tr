@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/03/2020
 ms.author: cherylmc
 ms.openlocfilehash: 61732f66aef58f5a9edcb9e095782e19e8aaffdd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91397224"
 ---
 # <a name="vpn-gateway-design"></a>VPN Gateway tasarımı
@@ -77,7 +77,7 @@ Sanal ağınız belirli gereksinimleri karşılıyorsa bağlantınızı oluştur
 
 ## <a name="expressroute-private-connection"></a><a name="ExpressRoute"></a>ExpressRoute (özel bağlantı)
 
-ExpressRoute, bağlantı sağlayıcı tarafından kolaylaştırılan özel bağlantı üzerinden şirket içi ağlarınızı Microsoft bulutuna genişletmenizi sağlar. ExpressRoute ile Microsoft Azure, Microsoft 365 ve CRM Online gibi Microsoft bulut hizmetleriyle bağlantı kurabilirsiniz. Bağlantı, bir tek başına (IP VPN) ağı, noktadan noktaya Ethernet ağı veya bir bağlantı sağlayıcısı aracılığıyla bir sanal çapraz bağlantı aracılığıyla, bir birlikte bulundurma tesisinde olabilir.
+ExpressRoute, bağlantı sağlayıcı tarafından kolaylaştırılan özel bağlantı üzerinden şirket içi ağlarınızı Microsoft bulutuna genişletmenizi sağlar. ExpressRoute ile Microsoft Azure, Microsoft 365 ve CRM Online gibi Microsoft bulut hizmetleriyle bağlantı kurabilirsiniz. Bağlantının kaynağı herhangi iki ağ (IP VPN), noktadan noktaya Ethernet ağı veya ortak barındırma tesisindeki bağlantı sağlayıcısı aracılığıyla sanal çapraz bağlantı olabilir.
 
 ExpressRoute bağlantıları ortak İnternet üzerinden geçmemektedir. Bu, ExpressRoute bağlantılarına İnternet üzerindeki sıradan bağlantılara göre daha fazla güvenilirlik, yüksek hız, düşük gecikme ve normal bağlantılardan daha yüksek güvenlik sağlar.
 

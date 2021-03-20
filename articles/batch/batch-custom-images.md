@@ -4,10 +4,10 @@ description: Uygulamanıza yönelik yazılım ve verilerle işlem düğümleri s
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.openlocfilehash: 0a357a1d8a22341297f3bee73fb0867fb03f374f
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94916585"
 ---
 # <a name="use-a-managed-image-to-create-a-custom-image-pool"></a>Özel görüntü havuzu oluşturmak için yönetilen görüntü kullanma
@@ -19,7 +19,7 @@ Batch havuzunuzun sanal makineleri (VM 'Ler) için özel bir görüntü havuzu o
 
 Bu konuda, yalnızca yönetilen bir görüntü kullanılarak özel bir görüntü havuzunun nasıl oluşturulduğu açıklanmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - **Yönetilen bir görüntü kaynağı**. Özel bir görüntü kullanarak bir sanal makine havuzu oluşturmak için, Batch hesabıyla aynı Azure aboneliği ve bölgesinde bir yönetilen görüntü kaynağı oluşturmanız veya oluşturmanız gerekir. Görüntü, sanal makinenin işletim sistemi diskinin anlık görüntülerinden ve isteğe bağlı olarak bağlı veri diskine oluşturulmalıdır.
   - Oluşturduğunuz her havuz için benzersiz bir özel görüntü kullanın.

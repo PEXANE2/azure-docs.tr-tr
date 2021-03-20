@@ -12,10 +12,10 @@ ms.date: 10/24/2019
 ms.author: pafarley
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 93d90232fb530a6c14c40558fc6a9974a1da42de
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92900920"
 ---
 # <a name="check-text-against-a-custom-term-list-in-c"></a>C 'de özel bir terim listesine karşı metin denetleme #
@@ -137,7 +137,7 @@ private const double latencyDelay = 0.5;
 Terim listesini **ContentModeratorClient.ListManagementTermLists.Create** ile oluşturursunuz. **Create** için ilk parametre MIME türünü içeren bir dizedir ve "application/json" olmalıdır. Daha fazla bilgi için bkz. [API başvurusu](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f). İkinci parametre, yeni terim listesi için bir ad ve açıklama içeren **Body** nesnesidir.
 
 > [!NOTE]
-> En çok **5 terim listeniz** olabilir ve her listedeki **terimlerin sayısı 10.000'i aşmamalıdır** .
+> En çok **5 terim listeniz** olabilir ve her listedeki **terimlerin sayısı 10.000'i aşmamalıdır**.
 
 namespace TermLists, class Program için aşağıdaki yöntem tanımını ekleyin.
 
@@ -304,9 +304,9 @@ static void ScreenText (ContentModeratorClient client, string list_id, string te
 
 Terim veya listeyi silmek basit bir işlemdir. Aşağıdaki görevleri gerçekleştirmek için SDK kullanırsınız:
 
-- Terim silme. ( **ContentModeratorClient.ListManagementTerm.DeleteTerm** )
-- Listeyi silmeden listedeki tüm terimleri silme. ( **ContentModeratorClient.ListManagementTerm.DeleteAllTerms** )
-- Listeyi ve tüm içeriğini silme. ( **ContentModeratorClient.ListManagementTermLists.Delete** )
+- Terim silme. (**ContentModeratorClient.ListManagementTerm.DeleteTerm**)
+- Listeyi silmeden listedeki tüm terimleri silme. (**ContentModeratorClient.ListManagementTerm.DeleteAllTerms**)
+- Listeyi ve tüm içeriğini silme. (**ContentModeratorClient.ListManagementTermLists.Delete**)
 
 ### <a name="delete-a-term"></a>Terim silme
 

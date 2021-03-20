@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 10/28/2020
 ms.custom: ''
 ms.openlocfilehash: a71ff438feaef555a85c33d818c287c64621d40d
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92913849"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-docker-compose"></a>Öğretici: Docker Compose kullanarak çok kapsayıcılı bir grup dağıtma 
@@ -216,9 +216,9 @@ azurevotingappredis_azure-vote-front   myregistry.azurecr.io/azure-vote-front   
 
 Çalışan uygulamayı bulutta görmek için, görüntülenecek IP adresini yerel bir Web tarayıcısına girin. Bu örnekte, girin `52.179.23.131` . Örnek uygulama aşağıdaki örnekte gösterilen şekilde yüklenir:
 
-:::image type="content" source="media/tutorial-docker-compose/azure-vote-aci.png" alt-text="Oylama uygulamasının görüntüsü":::
+:::image type="content" source="media/tutorial-docker-compose/azure-vote-aci.png" alt-text="ACI 'de oylama uygulaması görüntüsü":::
 
-Ön uç kapsayıcısının günlüklerini görmek için [Docker logs](https://docs.docker.com/engine/reference/commandline/logs) komutunu çalıştırın. Örneğin:
+Ön uç kapsayıcısının günlüklerini görmek için [Docker logs](https://docs.docker.com/engine/reference/commandline/logs) komutunu çalıştırın. Örnek:
 
 ```console
 docker logs azurevotingappredis_azure-vote-front

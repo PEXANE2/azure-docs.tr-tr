@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.openlocfilehash: 2fd96c47e98a6f8a66a5fda555304c4448d772e0
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101646125"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Öğretici: F5 ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -345,8 +345,8 @@ Access Policy Manager 'da (APM), kullanıcıların kimliğini doğrulamak için 
     * Varlık KIMLIĞI *: https://kerb-app.com.cutestat.com
     * SP adı ayarları
     * Düzen: https
-    * Ana bilgisayar: kerbapp200. superdemo. canlı
-    * Açıklama: kerbapp200. superdemo. canlı
+    * Ana bilgisayar: kerbapp200.superdemo.live
+    * Açıklama: kerbapp200.superdemo.live
 
      !["Genel ayarlar" seçiliyken "S A M L S P Service düzenleme" penceresini gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure25.png)
 
@@ -382,7 +382,7 @@ Access Policy Manager 'da (APM), kullanıcıların kimliğini doğrulamak için 
 
 1. KerbApp200 adına tıklayın, aşağıdaki bilgileri doldurun ve **Güncelleştir**' e tıklayın.
 
-    * Etki alanı tanımlama bilgisi: superdemo. canlı
+    * Etki alanı tanımlama bilgisi: superdemo.live
     * SSO yapılandırması: KerAppSSO_sso
 
         !["Etki alanı tanımlama bilgisi" metin kutusu ve "S S O yapılandırması" açılır ve "Güncelleştir" düğmesi seçili olan "S S D/auth Domains" sayfasını gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure31.png)
@@ -397,7 +397,7 @@ Access Policy Manager 'da (APM), kullanıcıların kimliğini doğrulamak için 
 
     * **Session. Logon. son. usernameUPN Expr {[mcget {Session. SAML. Last. Identity}]}**
 
-    * **Session. ad. lastactualdomain metın superdemo. canlı**
+    * **Session. ad. lastactualdomain metın superdemo.live**
 
         !["Erişim Ilkesi" sayfasını ve "arama filtresi" metin kutusu vurgulanmış "Active Directory" iletişim kutusunu gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure35.png)
 
@@ -452,7 +452,7 @@ Access Policy Manager 'da (APM), kullanıcıların kimliğini doğrulamak için 
 *  **1. Adım:** Bir temsili hesabı oluşturun
 
     **Örnek:**
-    * Etki alanı adı: **superdemo. canlı**
+    * Etki alanı adı: **superdemo.Live**
 
     * Sam hesap adı: **büyük-ipuser**
 

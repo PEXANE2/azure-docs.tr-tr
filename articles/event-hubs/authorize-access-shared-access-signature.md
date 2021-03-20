@@ -4,10 +4,10 @@ description: Bu makalede, paylaşılan erişim Imzaları (SAS) kullanarak Azure 
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: 6a2d7385f82864e8d378055333377fb9c3f73c19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85323117"
 ---
 # <a name="authorizing-access-to-event-hubs-resources-using-shared-access-signatures"></a>Paylaşılan erişim Imzalarını kullanarak Event Hubs kaynaklarına erişimi yetkilendirme
@@ -40,7 +40,7 @@ Her yetkilendirme ilkesi kuralı için üç bilgi parçasına karar verirsiniz: 
 
 Ad alanı veya varlık ilkesi 12 ' ye kadar paylaşılan erişim yetkilendirme kuralı tutabilir, her biri temel hakları ve gönderme ve dinleme birleşimini kapsayan üç kural kümesi için yer sağlar. Bu sınır, SAS ilke deposunun bir kullanıcı veya hizmet hesabı deposu olması amaçlanmayan alt çizgileri çizer. Uygulamanızın Kullanıcı veya hizmet kimliklerine göre Event Hubs kaynaklarına erişim vermesi gerekiyorsa, bir kimlik doğrulama ve erişim denetiminden sonra SAS belirteçleri veren bir güvenlik belirteci hizmeti uygulamalıdır.
 
-Bir yetkilendirme kuralına **birincil anahtar** ve **İkincil anahtar**atanır. Bu anahtarlar, şifreli olarak tanımlayıcı anahtarlardır. Onları kaybetmeyin veya sızmayın. Azure portal her zaman kullanılabilir. Oluşturulan anahtarlardan birini kullanabilir ve istediğiniz zaman yeniden oluşturabilirsiniz. İlkede bir anahtarı yeniden oluşturursanız veya değiştirirseniz, o anahtara göre daha önce verilen tüm belirteçler anında geçersiz olur. Ancak, bu tür belirteçlere göre oluşturulan devam eden bağlantılar, belirtecin süresi dolana kadar çalışmaya devam edecektir.
+Bir yetkilendirme kuralına **birincil anahtar** ve **İkincil anahtar** atanır. Bu anahtarlar, şifreli olarak tanımlayıcı anahtarlardır. Onları kaybetmeyin veya sızmayın. Azure portal her zaman kullanılabilir. Oluşturulan anahtarlardan birini kullanabilir ve istediğiniz zaman yeniden oluşturabilirsiniz. İlkede bir anahtarı yeniden oluşturursanız veya değiştirirseniz, o anahtara göre daha önce verilen tüm belirteçler anında geçersiz olur. Ancak, bu tür belirteçlere göre oluşturulan devam eden bağlantılar, belirtecin süresi dolana kadar çalışmaya devam edecektir.
 
 Bir Event Hubs ad alanı oluşturduğunuzda, ad alanı için **RootManageSharedAccessKey** adlı bir ilke kuralı otomatik olarak oluşturulur. Bu ilke, tüm ad alanı için **yönetme** izinlerine sahiptir. Bu kuralı bir yönetim kök hesabı gibi işlemeniz önerilir ve uygulamanızda kullanmayın. Portalda ad alanı için **yapılandırma** sekmesinde PowerShell veya Azure CLI aracılığıyla ek ilke kuralları oluşturabilirsiniz.
 
@@ -53,7 +53,7 @@ Uygulamalarınızda paylaşılan erişim imzaları kullandığınızda, iki olas
 Paylaşılan erişim imzalarını kullanmaya yönelik aşağıdaki öneriler, bu riskleri azaltmaya yardımcı olabilir:
 
 - **Gerektiğinde ISTEMCILERIN SAS 'yi otomatik olarak yenilemesini sağlama**: SAS sağlayan hizmet kullanılamıyorsa, yeniden denemeler için zaman aşımına izin vermek üzere istemcilerin sa 'yı sona ermeden önce yenilemesi gerekir. SAS 'nizin, sona erme döneminde tamamlanması beklenen kısa süreli, kısa süreli işlemler için kullanılması gerekiyorsa, SAS 'nin yenilenmesi beklenmediğinden bu işlem gereksiz olabilir. Ancak, SAS üzerinden düzenli olarak istek yapan istemciniz varsa, süre sonu olma olasılığı oynatma olur. Temel olarak, istemcinin yenilemeyi yeterince erken istediğini güvence altına almak için (daha önce belirtildiği gibi), istemcinin yenileme gereksinimini yeterince erken (daha önce belirtildiği gibi) dengelenmesi gerekir (başarılı bir yenilemeden önce SAS süresi dolduğunda kesintiye uğramamak için).
-- **SAS başlangıç zamanına dikkat**edın: SAS için başlangıç saatini **Şimdi**olarak ayarlarsanız, saat farkı (farklı makinelere göre geçerli zaman farkları) nedeniyle, hatalardan bazıları ilk birkaç dakika boyunca zaman zaman gözlemlenebilir. Genel olarak, başlangıç saatini geçmişte en az 15 dakika olacak şekilde ayarlayın. Ya da, hiç ayarlama yapmayın, bu, tüm durumlarda hemen geçerli hale gelir. Aynı genellikle süre sonu zamanı için de geçerlidir. Her türlü isteğe bağlı olarak 15 dakikalık saatin ölçeğini çarpıtmanız gerektiğini unutmayın. 
+- **SAS başlangıç zamanına dikkat** edın: SAS için başlangıç saatini **Şimdi** olarak ayarlarsanız, saat farkı (farklı makinelere göre geçerli zaman farkları) nedeniyle, hatalardan bazıları ilk birkaç dakika boyunca zaman zaman gözlemlenebilir. Genel olarak, başlangıç saatini geçmişte en az 15 dakika olacak şekilde ayarlayın. Ya da, hiç ayarlama yapmayın, bu, tüm durumlarda hemen geçerli hale gelir. Aynı genellikle süre sonu zamanı için de geçerlidir. Her türlü isteğe bağlı olarak 15 dakikalık saatin ölçeğini çarpıtmanız gerektiğini unutmayın. 
 - **Erişilecek kaynağa özel olun**: en iyi güvenlik uygulaması, kullanıcıya gereken en düşük ayrıcalıkları sağlamaktır. Bir kullanıcının yalnızca tek bir varlığa okuma erişimi olması gerekiyorsa, tüm varlıklara okuma/yazma/silme erişimi değil, onlara bu tek varlığa yönelik okuma erişimi izni verin. Bu, SAS 'nin bir saldırgan içinde daha az gücü olduğundan, SAS tehlikeye atılırsa hasar azaltır.
 - **Her zaman SAS kullanma**: bazen Event Hubs karşı belirli bir işlemle ilişkili RISKLER, SAS avantajlarından yararlanır. Bu gibi işlemler için, iş kuralı doğrulama, kimlik doğrulama ve denetim sonrasında Event Hubs yazan bir orta katman hizmeti oluşturun.
 - **Her zaman https kullan**: SAS oluşturmak veya dağıtmak için her zaman https kullanın. Bir SAS HTTP üzerinden geçirilirse ve bu bağlantıyı ele alırsanız bir saldırgan, SAS 'yi okuyabilir ve bunu amaçlanan kullanıcının sahip olduğu gibi kullanabilir, önemli verilerin güvenliğini sağlayabilir veya kötü amaçlı kullanıcı tarafından verilerin bozulmasına izin verebilir.

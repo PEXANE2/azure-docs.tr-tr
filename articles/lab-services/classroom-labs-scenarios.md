@@ -4,10 +4,10 @@ description: Bu makalede, eğitim senaryolarında Azure 'da laboratuvarları olu
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: f9eb3d44d470a978e676f6268cd693b283dd2703
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96433556"
 ---
 # <a name="use-labs-for-trainings"></a>Seyahat için laboratuvarları kullanma
@@ -29,7 +29,7 @@ Bu makalede, daha önce açıklanan eğitim gereksinimlerini karşılamak için 
 ## <a name="create-the-lab-account-as-a-lab-account-administrator"></a>Laboratuvar hesabını laboratuvar hesabı Yöneticisi olarak oluşturma
 Azure Lab Services kullanmanın ilk adımı Azure portal laboratuvar hesabı oluşturmaktır. Laboratuvar hesabı Yöneticisi laboratuvar hesabını oluşturduktan sonra, yönetici, **Laboratuvar Oluşturucu** rolüne Labs oluşturmak isteyen kullanıcıları ekler. Eğitimciler, öğrenciler için sanal makinelere sahip laboratuvarları, öğretme Kursu için alıştırmaları yapması için oluşturur. Ayrıntılar için bkz. [Laboratuvar hesabı oluşturma ve yönetme](how-to-manage-lab-accounts.md).
 
-## <a name="create-and-manage-labs"></a>Labs oluşturma ve yönetme
+## <a name="create-and-manage-labs"></a>Laboratuvar oluşturma ve yönetme
 Laboratuvar hesabındaki laboratuvar Oluşturucu rolünün bir üyesi olan bir eğitimci, laboratuvar hesabında bir veya daha fazla Laboratuvarı oluşturabilir. Kursta alýþtýrmalarý gerçekleştirmek için gerekli tüm yazılımlarla bir şablon VM 'si oluşturup yapılandırırsınız. Bir sınıf laboratuvarı oluşturmak için kullanılabilir görüntülerden kullanıma hazır bir görüntü seçer ve ardından Laboratuvar için gereken yazılımı yükleyerek özelleştirebilirsiniz. Ayrıntılar için bkz. [Labs oluşturma ve yönetme](how-to-manage-classroom-labs.md).
 
 ## <a name="configure-usage-settings-and-policies"></a>Kullanım ayarlarını ve ilkeleri yapılandırma

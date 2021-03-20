@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/28/2019
 ms.author: duau
 ms.openlocfilehash: 3602c3944e8731263fbb55f024c276783950329f
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92202370"
 ---
 # <a name="designing-for-high-availability-with-expressroute"></a>ExpressRoute ile yüksek kullanılabilirlik için tasarlama
@@ -87,7 +87,7 @@ Bu makalede, bir ExpressRoute bağlantı hattı bağlantısının yüksek kullan
 Microsoft omurgasına coğrafi olarak yedekli ağ bağlantısı oluşturmaya yönelik tasarım konuları için, tüm bölgeyi etkileyen çok zararlı hatalara yol açabilir, bkz. [ExpressRoute özel eşlemesi ile olağanüstü durum kurtarma Için tasarlama][DR].
 
 <!--Image References-->
-[1]: ./media/designing-for-high-availability-with-expressroute/exr-reco.png "ExpressRoute kullanarak bağlanmak için önerilen 1 yol"
+[]: ./media/designing-for-high-availability-with-expressroute/exr-reco.png "ExpressRoute kullanarak bağlanmak için önerilen 1 yol"
 [2]: ./media/designing-for-high-availability-with-expressroute/suboptimal-lastmile-connectivity.png "en son mil bağlantıyı" etkinleştir
 [3]: ./media/designing-for-high-availability-with-expressroute/nat-options.png "NAT seçeneği"
 

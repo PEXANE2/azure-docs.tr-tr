@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: duau
 ms.openlocfilehash: eb5b4ab8a23a374aec54d65dd5390ab3fec3e905
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91445483"
 ---
 # <a name="url-rewrite-custom-forwarding-path"></a>URL yeniden yazma (özel iletme yolu)
@@ -36,7 +36,7 @@ Aşağıdaki ön uç konakları ve yapılandırılmış yolların birleşimini i
 |            | foo\*     |
 |            | /ç/Bar/\* |
 
-Aşağıdaki tablonun ilk sütununda gelen istek örnekleri gösterilmektedir ve ikinci sütun "en özel" eşleşen yol ' Path ' olarak gösterilir.  Tablonun üçüncü ve diğer sütunları yapılandırılmış **özel Iletme yollarının**örnekleridir.
+Aşağıdaki tablonun ilk sütununda gelen istek örnekleri gösterilmektedir ve ikinci sütun "en özel" eşleşen yol ' Path ' olarak gösterilir.  Tablonun üçüncü ve diğer sütunları yapılandırılmış **özel Iletme yollarının** örnekleridir.
 
 Örneğin, ikinci satırda okuduk, gelen istek için `www.contoso.com/sub` özel iletme yolu ise, iletilen yolun ne olduğunu söyledi `/` `/sub` . Özel iletme yolu `/fwd/` olsaydı, iletilen yol olur `/fwd/sub` . Daha sonra, kalan sütunlar için. Aşağıdaki yolların **vurgulanmış** kısımları, joker karakter eşleşmesi kapsamında olan bölümleri temsil eder.
 

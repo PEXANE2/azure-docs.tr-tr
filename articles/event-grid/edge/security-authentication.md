@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 42f6107ff79d6262cdc0a35cf972cf65d3a9a802
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86171389"
 ---
 # <a name="security-and-authentication"></a>Güvenlik ve kimlik doğrulaması
@@ -37,7 +37,7 @@ Event Grid modülü hem HTTP hem de HTTPS uç noktalarını barındırır. Her I
 
 Varsayılan olarak, yalnızca HTTPS iletişimine izin verilir. Bu davranışı  **inbound__serverAuth__tlsPolicy** yapılandırma aracılığıyla geçersiz kılabilirsiniz. Aşağıdaki tablo bu özelliğin olası değerlerini yakalar.
 
-| Olası değer(ler) | Açıklama |
+| Olası değer(ler) | Description |
 | ---------------- | ------------ |
 | Katı | Varsayılan. Yalnızca HTTPS 'yi etkinleştirilir
 | Etkin | Hem HTTP hem de HTTPS 'yi sunar
@@ -56,28 +56,28 @@ Varsayılan olarak, Event Grid modülü yalnızca sertifika tabanlı kimlik doğ
 
 ### <a name="certificate-based-client-authentication"></a>Sertifika tabanlı istemci kimlik doğrulaması
 
-Sertifika tabanlı kimlik doğrulaması varsayılan olarak açık olur. **İnbound__clientAuth__clientCert__enabled**özelliği aracılığıyla sertifika tabanlı kimlik doğrulamasını devre dışı bırakmayı seçebilirsiniz. Aşağıdaki tablo olası değer (ler) i yakalar.
+Sertifika tabanlı kimlik doğrulaması varsayılan olarak açık olur. **İnbound__clientAuth__clientCert__enabled** özelliği aracılığıyla sertifika tabanlı kimlik doğrulamasını devre dışı bırakmayı seçebilirsiniz. Aşağıdaki tablo olası değer (ler) i yakalar.
 
-| Olası değer(ler) | Açıklama |
+| Olası değer(ler) | Description |
 | ----------------  | ------------ |
-| true | Varsayılan. İstemci sertifikası sunmak için Event Grid modülüne yönelik tüm istekleri gerektirir. Ayrıca, **inbound__clientAuth__clientCert__source**yapılandırmanız gerekecektir.
+| true | Varsayılan. İstemci sertifikası sunmak için Event Grid modülüne yönelik tüm istekleri gerektirir. Ayrıca, **inbound__clientAuth__clientCert__source** yapılandırmanız gerekecektir.
 | yanlış | Bir istemciyi sertifikayı sunmaya zormayın.
 
 Aşağıdaki tablo **inbound__clientAuth__clientCert__source** için olası değerleri yakalar
 
-| Olası değer(ler) | Açıklama |
+| Olası değer(ler) | Description |
 | ---------------- | ------------ |
 | IoT Edge | Varsayılan. Tüm istemci sertifikalarını doğrulamak için IoT Edge Trustpaketini kullanır.
 
 Bir istemci otomatik olarak imzalanan bir sunalıysa, varsayılan olarak Event Grid modülü bu istekleri reddeder. **İnbound__clientAuth__clientCert__allowUnknownCA** özelliği aracılığıyla otomatik olarak imzalanan istemci sertifikalarına izin vermeyi seçebilirsiniz. Aşağıdaki tablo olası değer (ler) i yakalar.
 
-| Olası değer(ler) | Açıklama |
+| Olası değer(ler) | Description |
 | ----------------  | ------------|
 | true | Varsayılan. Otomatik olarak imzalanan sertifikaların başarıyla sunulmasını sağlar.
 | yanlış | Otomatik olarak imzalanan sertifikalar sunulursa istekleri başarısız olur.
 
 >[!IMPORTANT]
->Üretim senaryolarında **inbound__clientAuth__clientCert__allowUnknownCA** **false**olarak ayarlamak isteyebilirsiniz.
+>Üretim senaryolarında **inbound__clientAuth__clientCert__allowUnknownCA** **false** olarak ayarlamak isteyebilirsiniz.
 
 ### <a name="sas-key-based-client-authentication"></a>SAS anahtar tabanlı istemci kimlik doğrulaması
 
@@ -85,7 +85,7 @@ Sertifika tabanlı kimlik doğrulamasına ek olarak, Event Grid modülü SAS ana
 
 SAS anahtar tabanlı kimlik doğrulamasını denetlemek için yapılandırma **inbound__clientAuth__sasKeys__enabled**.
 
-| Olası değer(ler) | Açıklama  |
+| Olası değer(ler) | Description  |
 | ----------------  | ------------ |
 | true | SAS anahtar tabanlı kimlik doğrulamasına izin verir. **İnbound__clientAuth__sasKeys__key1** veya **inbound__clientAuth__sasKeys__key2** gerektirir
 | yanlış | Varsayılan. SAS anahtar tabanlı kimlik doğrulaması devre dışı.
@@ -103,14 +103,14 @@ Her IoT Edge modüle IoT Edge güvenlik arka plan programı tarafından bir kiml
 
 Giden istemci kimlik doğrulamasını denetleyen yapılandırma **outbound__clientAuth__clientCert__enabled**.
 
-| Olası değer(ler) | Açıklama |
+| Olası değer(ler) | Description |
 | ----------------  | ------------ |
-| true | Varsayılan. Event Grid modülünden gelen tüm giden isteklerin bir sertifika sunması gerekir. **Outbound__clientAuth__clientCert__source**yapılandırılması gerekir.
+| true | Varsayılan. Event Grid modülünden gelen tüm giden isteklerin bir sertifika sunması gerekir. **Outbound__clientAuth__clientCert__source** yapılandırılması gerekir.
 | yanlış | Event Grid modülünün sertifikasını sunması gerekmez.
 
 Sertifika kaynağını denetleyen yapılandırma **outbound__clientAuth__clientCert__source**.
 
-| Olası değer(ler) | Açıklama |
+| Olası değer(ler) | Description |
 | ---------------- | ------------ |
 | IoT Edge | Varsayılan. IoT Edge güvenlik Daemon tarafından yapılandırılan modülün kimlik sertifikasını kullanır.
 
@@ -120,30 +120,30 @@ Bir Event Grid abonesi için hedef türlerden biri "Web kancası" dir. Varsayıl
 
 Web kancası hedef ilkesini denetlemek için yapılandırma **outbound__webhook__httpsOnly**.
 
-| Olası değer(ler) | Açıklama |
+| Olası değer(ler) | Description |
 | ----------------  | ------------ |
 | true | Varsayılan. Yalnızca HTTPS uç noktası olan abonelere izin verir.
 | yanlış | HTTP veya HTTPS uç noktası olan abonelere izin verir.
 
-Varsayılan olarak, Event Grid modülü abonenin sunucu sertifikasını doğrular. **Outbound__webhook__skipServerCertValidation**geçersiz kılarak doğrulamayı atlayabilirsiniz. Olası değerler şunlardır:
+Varsayılan olarak, Event Grid modülü abonenin sunucu sertifikasını doğrular. **Outbound__webhook__skipServerCertValidation** geçersiz kılarak doğrulamayı atlayabilirsiniz. Olası değerler şunlardır:
 
-| Olası değer(ler) | Açıklama |
+| Olası değer(ler) | Description |
 | ----------------  | ------------ |
 | true | Abonenin sunucu sertifikasını doğrulama.
 | yanlış | Varsayılan. Abonenin sunucu sertifikasını doğrulayın.
 
-Abonenin sertifikası kendinden imzalanmışsa, varsayılan olarak Event Grid modül bu aboneleri reddeder. Kendinden imzalı sertifikaya izin vermek için **outbound__webhook__allowUnknownCA**geçersiz kılabilirsiniz. Aşağıdaki tablo olası değer (ler) i yakalar.
+Abonenin sertifikası kendinden imzalanmışsa, varsayılan olarak Event Grid modül bu aboneleri reddeder. Kendinden imzalı sertifikaya izin vermek için **outbound__webhook__allowUnknownCA** geçersiz kılabilirsiniz. Aşağıdaki tablo olası değer (ler) i yakalar.
 
-| Olası değer(ler) | Açıklama |
+| Olası değer(ler) | Description |
 | ----------------  | ------------ |
 | true | Varsayılan. Otomatik olarak imzalanan sertifikaların başarıyla sunulmasını sağlar.
 | yanlış | Otomatik olarak imzalanan sertifikalar sunulursa istekleri başarısız olur.
 
 >[!IMPORTANT]
->Üretim senaryolarında **outbound__webhook__allowUnknownCA** **false**olarak ayarlamak isteyeceksiniz.
+>Üretim senaryolarında **outbound__webhook__allowUnknownCA** **false** olarak ayarlamak isteyeceksiniz.
 
 > [!NOTE]
->IoT Edge ortam otomatik olarak imzalanan sertifikalar oluşturur. Öneri, üretim iş yükleri için yetkili CA 'Lar tarafından verilen sertifikaları oluşturmak ve hem gelen hem de giden ' de **Allowunknownca** özelliğini **false**olarak ayarlamanıza yöneliktir.
+>IoT Edge ortam otomatik olarak imzalanan sertifikalar oluşturur. Öneri, üretim iş yükleri için yetkili CA 'Lar tarafından verilen sertifikaları oluşturmak ve hem gelen hem de giden ' de **Allowunknownca** özelliğini **false** olarak ayarlamanıza yöneliktir.
 
 ## <a name="summary"></a>Özet
 

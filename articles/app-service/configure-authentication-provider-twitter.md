@@ -8,10 +8,10 @@ ms.custom:
 - seodec18
 - fasttrack-edit
 ms.openlocfilehash: 11c913b12b4dcb7d2a5ffa532064b347b82904ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80519904"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-twitter-login"></a>App Service veya Azure Işlevleri uygulamanızı Twitter oturum açma bilgilerini kullanacak şekilde yapılandırma
@@ -40,7 +40,7 @@ Bu makaledeki yordamı tamamlayabilmeniz için, doğrulanmış bir e-posta adres
 ## <a name="add-twitter-information-to-your-application"></a><a name="secrets"> </a>Uygulamanıza Twitter bilgilerini ekleyin
 
 1. [Azure Portal]uygulamanıza gidin.
-1. **Ayarlar**  >  **kimlik doğrulaması/yetkilendirme**' yi seçin ve **App Service kimlik doğrulamasının** **Açık**olduğundan emin olun.
+1. **Ayarlar**  >  **kimlik doğrulaması/yetkilendirme**' yi seçin ve **App Service kimlik doğrulamasının** **Açık** olduğundan emin olun.
 1. **Twitter**' ı seçin.
 1. `API key` `API secret key` Daha önce edindiğiniz ve değerlerini yapıştırın.
 1. **Tamam**’ı seçin.
@@ -71,5 +71,5 @@ Artık uygulamanızda kimlik doğrulaması için Twitter kullanmaya hazırsını
 
 [Twitter geliştiricileri]: https://go.microsoft.com/fwlink/p/?LinkId=268300
 [twitter.com]: https://go.microsoft.com/fwlink/p/?LinkID=268287
-[Azure portalındaki]: https://portal.azure.com/
+[Azure portalı]: https://portal.azure.com/
 [xamarin]: ../app-services-mobile-app-xamarin-ios-get-started-users.md

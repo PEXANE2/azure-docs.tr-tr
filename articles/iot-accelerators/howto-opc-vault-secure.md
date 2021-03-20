@@ -9,10 +9,10 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: a1b7564988c8a4d63a37b53d18ed3a7359e65d72
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92926419"
 ---
 # <a name="use-the-opc-vault-certificate-management-service"></a>OPC Kasası sertifika yönetimi hizmetini kullanma
@@ -40,7 +40,7 @@ Henüz yapmadıysanız, veren CA sertifikası oluşturun. Ayrıntılar için bkz
 > Bir uygulamayı kaydettirmek için yazıcı rolü gereklidir.
 
 1. Sertifika hizmetinizi adresinde açın `https://myResourceGroup-app.azurewebsites.net` ve oturum açın.
-2. **Yeni kaydet** ' e gidin. Bir uygulama kaydı için, bir kullanıcının en azından yazıcı rolü atanmış olması gerekir.
+2. **Yeni kaydet**' e gidin. Bir uygulama kaydı için, bir kullanıcının en azından yazıcı rolü atanmış olması gerekir.
 2. Giriş formu OPC UA 'daki adlandırma kurallarına uyar. Örneğin, aşağıdaki ekran görüntüsünde OPC UA .NET Standard yığınında [OPC UA başvuru sunucusu](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/Applications/ReferenceServer) örneği için ayarlar gösterilir:
 
    ![UA başvuru sunucusu kaydının ekran görüntüsü](media/howto-opc-vault-secure/reference-server-registration.png "UA başvuru sunucusu kaydı")
@@ -53,7 +53,7 @@ Bir sertifika Imzalama Isteği (CSR) tabanlı imzalı bir sertifika vererek OPC 
 
 #### <a name="request-a-new-certificate-with-a-new-keypair"></a>Yeni bir anahtar çiftiyle yeni bir sertifika isteyin
 
-1. **Uygulamalar** 'a gidin.
+1. **Uygulamalar**'a gidin.
 3. Listelenen bir uygulama için **yeni istek** ' ı seçin.
 
    ![Yeni sertifika ıste ekran görüntüsü](media/howto-opc-vault-secure/request-new-certificate.png "Yeni sertifika iste")
@@ -71,14 +71,14 @@ Bir sertifika Imzalama Isteği (CSR) tabanlı imzalı bir sertifika vererek OPC 
    ![Sertifika Isteği ayrıntılarının görüntüleme ekran görüntüsü, en altta onay iletisi](media/howto-opc-vault-secure/view-key-pair.png "Anahtar çiftini görüntüle")
 
 7. Elde edilen özel anahtar (PFX veya ped) ve sertifika (DER), ikili dosya indirme olarak seçilen biçimde buradan indirilebilir. Base64 kodlamalı bir sürüm de kullanılabilir, örneğin, sertifikayı kopyalayıp bir komut satırına veya metin girişine yapıştırabilirsiniz. 
-8. Özel anahtar indirilip güvenli şekilde depolandıktan sonra **özel anahtarı sil** ' i seçebilirsiniz. Ortak anahtara sahip sertifika ileride kullanılmak üzere kullanılabilir kalır.
+8. Özel anahtar indirilip güvenli şekilde depolandıktan sonra **özel anahtarı sil**' i seçebilirsiniz. Ortak anahtara sahip sertifika ileride kullanılmak üzere kullanılabilir kalır.
 9. CA imzalı bir sertifikanın kullanılması nedeniyle, CA sertifikası ve sertifika Iptal listesi (CRL) burada da indirilmelidir.
 
 Artık OPC UA cihazına, yeni anahtar çiftinin nasıl uygulanacağını bağımlıdır. Genellikle, CA sertifikası ve CRL bir `trusted` klasöre kopyalanır, ancak uygulama sertifikasının ortak ve özel anahtarları `own` sertifika deposundaki bir klasöre uygulanır. Bazı cihazlarda sertifika güncelleştirmeleri için sunucu gönderimi zaten desteklenir. OPC UA cihazınızın belgelerine bakın.
 
 #### <a name="request-a-new-certificate-with-a-csr"></a>CSR ile yeni bir sertifika isteme 
 
-1. **Uygulamalar** 'a gidin.
+1. **Uygulamalar**'a gidin.
 3. Listelenen bir uygulama için **yeni istek** ' ı seçin.
 
    ![Yeni sertifika ıste ekran görüntüsü](media/howto-opc-vault-secure/request-new-certificate.png "Yeni sertifika iste")
@@ -87,7 +87,7 @@ Artık OPC UA cihazına, yeni anahtar çiftinin nasıl uygulanacağını bağım
 
    ![Yeni sertifika oluştur ekran görüntüsü](media/howto-opc-vault-secure/generate-new-certificate.png "Yeni sertifika oluştur")
 
-4. Yerel bir dosya seçerek veya bir Base64 kodlamalı CSR 'yi forma yapıştırarak CSR 'yi karşıya yükleyin. **Yeni sertifika oluştur** ' u seçin.
+4. Yerel bir dosya seçerek veya bir Base64 kodlamalı CSR 'yi forma yapıştırarak CSR 'yi karşıya yükleyin. **Yeni sertifika oluştur**' u seçin.
 
    ![Sertifika Isteği ayrıntılarını görüntüleme ekran görüntüsü](media/howto-opc-vault-secure/approve-reject-csr.png "CSR 'yi Onayla")
 
@@ -96,7 +96,7 @@ Artık OPC UA cihazına, yeni anahtar çiftinin nasıl uygulanacağını bağım
    ![Sertifika Isteği ayrıntılarını görüntüle ve altta onay iletisi içeren ekran görüntüsü.](media/howto-opc-vault-secure/view-cert-csr.png "Sertifikayı görüntüle")
 
 6. Elde edilen sertifika (DER), ikili dosya olarak buradan indirilebilir. Base64 kodlamalı bir sürüm de kullanılabilir, örneğin, sertifikayı kopyalayıp bir komut satırına veya metin girişine yapıştırabilirsiniz. 
-10. Sertifika indirilip güvenli bir şekilde depolandıktan sonra **sertifikayı Sil** ' i seçebilirsiniz.
+10. Sertifika indirilip güvenli bir şekilde depolandıktan sonra **sertifikayı Sil**' i seçebilirsiniz.
 11. CA imzalı bir sertifikanın kullanılması nedeniyle, CA sertifikası ve CRL de burada indirilmelidir.
 
 Artık OPC UA cihazına göre yeni sertifikayı nasıl uygulayacaksınız. Genellikle, CA sertifikası ve CRL, `trusted` uygulama sertifikası sertifika deposundaki bir klasöre uygulanırken bir klasöre kopyalanır `own` . Bazı cihazlarda sertifika güncelleştirmeleri için sunucu gönderimi zaten desteklenir. OPC UA cihazınızın belgelerine bakın.

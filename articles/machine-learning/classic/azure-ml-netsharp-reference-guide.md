@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
 ms.openlocfilehash: 5137b633f66088efbee41b96ba715eb3b18961dc
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100519261"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-machine-learning-studio-classic"></a>Machine Learning Studio için net # sinir ağ belirtim diline kılavuzluk (klasik)
@@ -90,17 +90,17 @@ Sabit bir bildirim isteğe bağlıdır. Sinir ağ tanımında başka bir yerde k
 
 `Const X = 28;`
 
-İki veya daha fazla sabiti aynı anda tanımlamak için, tanımlayıcı adlarını ve değerlerini küme ayraçları içine alın ve noktalı virgül kullanarak ayırın. Örneğin:
+İki veya daha fazla sabiti aynı anda tanımlamak için, tanımlayıcı adlarını ve değerlerini küme ayraçları içine alın ve noktalı virgül kullanarak ayırın. Örnek:
 
 `Const { X = 28; Y = 4; }`
 
-Her atama ifadesinin sağ tarafı bir tamsayı, gerçek sayı, Boole değeri (true veya false) veya matematik ifadesi olabilir. Örneğin:
+Her atama ifadesinin sağ tarafı bir tamsayı, gerçek sayı, Boole değeri (true veya false) veya matematik ifadesi olabilir. Örnek:
 
 `Const { X = 17 * 2; Y = true; }`
 
 ## <a name="layer-declaration"></a>Katman bildirimi
 
-Katman bildirimi gereklidir. Bu, bağlantı paketleri ve öznitelikleri dahil olmak üzere katmanın boyutunu ve kaynağını tanımlar. Bildirim bildirimi, katmanın (girdi, gizli veya çıktı) adı ve ardından katmanın boyutları (pozitif tamsayılar kümesi) ile başlar. Örneğin:
+Katman bildirimi gereklidir. Bu, bağlantı paketleri ve öznitelikleri dahil olmak üzere katmanın boyutunu ve kaynağını tanımlar. Bildirim bildirimi, katmanın (girdi, gizli veya çıktı) adı ve ardından katmanın boyutları (pozitif tamsayılar kümesi) ile başlar. Örnek:
 
 ```Net#
 input Data auto;

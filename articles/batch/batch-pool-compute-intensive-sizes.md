@@ -4,15 +4,15 @@ description: Azure Batch havuzlarındaki HPC ve GPU sanal makine boyutlarının 
 ms.topic: how-to
 ms.date: 12/17/2018
 ms.openlocfilehash: 016da7669c9e6a6586a53d379f9665c9ea048b64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86147335"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Batch havuzlarında RDMA veya GPU örnekleri kullanma
 
-Belirli toplu işleri çalıştırmak için, büyük ölçekli hesaplama için tasarlanan Azure VM boyutlarının avantajlarından yararlanabilirsiniz. Örneğin:
+Belirli toplu işleri çalıştırmak için, büyük ölçekli hesaplama için tasarlanan Azure VM boyutlarının avantajlarından yararlanabilirsiniz. Örnek:
 
 * Çoklu örnek [MPI iş yüklerini](batch-mpi.md)çalıştırmak Için, H serisi veya uzak doğrudan bellek ERIŞIMI (RDMA) için bir ağ arabirimine sahip diğer boyutları seçin. Bu boyutlar, DEVI uygulamalarını hızlandırabilen, düğümler arası iletişim için bir InfiniBand ağına bağlanır. 
 
@@ -92,9 +92,9 @@ Batch havuzunuzun özelleştirilmiş bir VM boyutunu yapılandırmak için gerek
 
 CUDA uygulamalarını bir Windows NC düğümü havuzunda çalıştırmak için NVDIA GPU sürücüleri yüklemeniz gerekir. Aşağıdaki örnek adımlarda, NVıDıA GPU sürücülerini yüklemek için bir uygulama paketi kullanılır. İş yükünüz belirli bir GPU sürücü sürümüne bağımlıysa, bu seçeneği belirleyebilirsiniz.
 
-1. [NVIDIA Web sitesinden](https://www.nvidia.com/Download/index.aspx) (örneğin, [Sürüm 411,82](https://us.download.nvidia.com/Windows/Quadro_Certified/411.82/411.82-tesla-desktop-winserver2016-international.exe)) Windows Server 2016 ' de GPU sürücüleri için bir kurulum paketi indirin. *GPUDriverSetup.exe*gibi bir kısa ad kullanarak dosyayı yerel olarak kaydedin.
+1. [NVIDIA Web sitesinden](https://www.nvidia.com/Download/index.aspx) (örneğin, [Sürüm 411,82](https://us.download.nvidia.com/Windows/Quadro_Certified/411.82/411.82-tesla-desktop-winserver2016-international.exe)) Windows Server 2016 ' de GPU sürücüleri için bir kurulum paketi indirin. *GPUDriverSetup.exe* gibi bir kısa ad kullanarak dosyayı yerel olarak kaydedin.
 2. Paketin bir ZIP dosyasını oluşturun.
-3. Paketi Batch hesabınıza yükleyin. Adımlar için bkz. [uygulama paketleri](batch-application-packages.md) Kılavuzu. *Gpudriver*gibi BIR uygulama kimliği ve *411,82*gibi bir sürüm belirtin.
+3. Paketi Batch hesabınıza yükleyin. Adımlar için bkz. [uygulama paketleri](batch-application-packages.md) Kılavuzu. *Gpudriver* gibi BIR uygulama kimliği ve *411,82* gibi bir sürüm belirtin.
 1. Batch API 'Lerini veya Azure portal kullanarak, sanal makine yapılandırmasında istenen sayıda düğüm ve ölçeğe sahip bir havuz oluşturun. Aşağıdaki tabloda, bir başlangıç görevi kullanarak NVıDıA GPU sürücülerini sessizce yüklemeye yönelik örnek ayarlar gösterilmektedir:
 
 | Ayar | Değer |

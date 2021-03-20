@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
 ms.openlocfilehash: 304ad51bc40c8165c2dc11bb70287491e3d6dfb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91444039"
 ---
 # <a name="connect-excel-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance-and-create-a-report"></a>Excel 'i Azure SQL veritabanı veya Azure SQL yönetilen örneği 'nde bir veritabanına bağlama ve rapor oluşturma
@@ -37,11 +37,11 @@ Ayrıca, bir Excel kopyanızın olması gerekir. Bu makalede [Microsoft Excel 20
 
    ![Veri kaynağı seçin: Excel 'i SQL veritabanı 'na bağlama.](./media/connect-excel/excel_data_source.png)
 
-3. **SQL Server veritabanı** iletişim kutusunda, <*ServerName*. Database.Windows.net biçiminde bağlanmak istediğiniz **sunucu adını** yazın > **.database.windows.net**. Örneğin, **msftestserver.Database.Windows.net**. İsteğe bağlı olarak, veritabanınızın adını girin. **Tamam ' ı** seçerek kimlik bilgileri penceresini açın.
+3. **SQL Server veritabanı** iletişim kutusunda, <*ServerName*. Database.Windows.net biçiminde bağlanmak istediğiniz **sunucu adını** yazın > . Örneğin, **msftestserver.Database.Windows.net**. İsteğe bağlı olarak, veritabanınızın adını girin. **Tamam ' ı** seçerek kimlik bilgileri penceresini açın.
 
    ![Veritabanı sunucusuna bağlan Iletişim kutusu](./media/connect-excel/server-name.png)
 
-4. **SQL Server veritabanı** iletişim kutusunda, sol taraftaki **veritabanı** ' nı seçin ve ardından bağlanmak Istediğiniz sunucu Için **Kullanıcı adınızı** ve **parolanızı** girin. **Gezginini**açmak için **Bağlan** ' ı seçin.
+4. **SQL Server veritabanı** iletişim kutusunda, sol taraftaki **veritabanı** ' nı seçin ve ardından bağlanmak Istediğiniz sunucu Için **Kullanıcı adınızı** ve **parolanızı** girin. **Gezginini** açmak için **Bağlan** ' ı seçin.
 
    ![Sunucu adını ve oturum açma kimlik bilgilerini girme](./media/connect-excel/connect-to-server.png)
 
@@ -56,7 +56,7 @@ Ayrıca, bir Excel kopyanızın olması gerekir. Bu makalede [Microsoft Excel 20
 
 Artık bağlantıyı oluşturduğunuza göre, verilerin nasıl yükleneceği ile ilgili birkaç farklı seçeneğiniz vardır. Örneğin, aşağıdaki adımlar SQL veritabanı 'nda veritabanınızda bulunan verileri temel alan bir Özet Grafik oluşturur.
 
-1. Önceki bölümdeki adımları izleyin, ancak bu kez Yükle ' **yi seçmek yerine** **yük açılır listesinden** **Yükle ' yi**seçin.
+1. Önceki bölümdeki adımları izleyin, ancak bu kez Yükle ' **yi seçmek yerine** **yük açılır listesinden** **Yükle ' yi** seçin.
 2. Sonra, bu verileri çalışma kitabınızda nasıl görüntülemek istediğinizi seçin. Biz **PivotChart** seçeneğini belirledik. Ayrıca, **Yeni çalışma sayfası** oluşturmayı veya **Bu verileri Veri Modeline ekle** seçeneğini belirlemeyi de tercih edebilirsiniz. Veri Modelleri hakkında daha fazla bilgi için bkz. [Excel'de veri modeli oluşturma](https://support.office.com/article/Create-a-Data-Model-in-Excel-87E7A54C-87DC-488E-9410-5C75DBCB0F7B).
 
     ![Excel'de veri biçimini belirleme](./media/connect-excel/import-data.png)
@@ -76,18 +76,18 @@ Bağlantı ayrıntılarını kalıcı olarak kaydetmek için bir. odc dosyası o
 
 1. Sayfanın üst kısmındaki menü çubuğunda, **veri** sekmesini seçin ve **var olan bağlantılar iletişim kutusunu** başlatmak için **mevcut bağlantılar** ' ı seçin.
    1. **Daha fazla araştır** ' ı seçerek **veri kaynağı seç** iletişim kutusunu açın.
-   2. **+ Newsqlserverconnection. odc** dosyasını seçin ve ardından **Aç** ' ı seçerek **veri bağlantısı sihirbazını**açın.
+   2. **+ Newsqlserverconnection. odc** dosyasını seçin ve ardından **Aç** ' ı seçerek **veri bağlantısı sihirbazını** açın.
 
       ![Yeni bağlantı iletişim kutusu](./media/connect-excel/new-connection.png)
 
-2. **Veri bağlantısı sihirbazında**sunucu ADıNıZı ve SQL veritabanınızın kimlik bilgilerini yazın. **İleri**’yi seçin.
+2. **Veri bağlantısı sihirbazında** sunucu ADıNıZı ve SQL veritabanınızın kimlik bilgilerini yazın. **İleri**’yi seçin.
    1. Açılan listeden verilerinizi içeren veritabanını seçin.
    2. İlgilendiğiniz tabloyu veya görünümü seçin. VGetAllCategories seçtik.
    3. **İleri**’yi seçin.
 
       ![Veri Bağlantısı Sihirbazı](./media/connect-excel/data-connection-wizard.png)
 
-3. Veri bağlantısı sihirbazının sonraki ekranında dosyanızın konumunu, **dosya adını**ve **kolay adını** seçin. Ayrıca, verilerinizi dosyaya kaydetmeyi de tercih edebilirsiniz; ancak bu, verilerinizi istenmeyen erişime açabilir. Hazırsanız **son** ' u seçin.
+3. Veri bağlantısı sihirbazının sonraki ekranında dosyanızın konumunu, **dosya adını** ve **kolay adını** seçin. Ayrıca, verilerinizi dosyaya kaydetmeyi de tercih edebilirsiniz; ancak bu, verilerinizi istenmeyen erişime açabilir. Hazırsanız **son** ' u seçin.
 
     ![Veri bağlantısını Kaydet](./media/connect-excel/save-data-connection.png)
 

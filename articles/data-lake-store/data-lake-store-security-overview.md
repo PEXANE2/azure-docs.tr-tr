@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: twooley
 ms.openlocfilehash: 240018381a3139a6378141d78514e43ae469de5d
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92146324"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. güvenlik
@@ -52,7 +52,7 @@ Roller hesap yönetimi için atanmış olsa da, bazı rollerin verilere erişimi
 
 | Roller | Yönetim hakları | Veri erişim hakları | Açıklama |
 | --- | --- | --- | --- |
-| Atanan rol yok |Hiçbiri |ACL 'ye tabidir |Kullanıcı Data Lake Storage 1. taramak için Azure portal veya Azure PowerShell cmdlet 'lerini kullanamaz. Kullanıcı yalnızca komut satırı araçlarını kullanabilir. |
+| Atanan rol yok |Yok |ACL 'ye tabidir |Kullanıcı Data Lake Storage 1. taramak için Azure portal veya Azure PowerShell cmdlet 'lerini kullanamaz. Kullanıcı yalnızca komut satırı araçlarını kullanabilir. |
 | Sahip |Tümü |Tümü |Sahip rolü bir süper kullanıcı. Bu rol her şeyi yönetebilir ve verilere tam erişim sağlayabilir. |
 | Okuyucu |Salt okunur |ACL 'ye tabidir |Okuyucu rolü, hesap yönetimiyle ilgili her şeyi görüntüleyebilir, örneğin hangi rolün atandığı kullanıcı. Okuyucu rolü herhangi bir değişiklik yapamaz. |
 | Katılımcı |Rol Ekle ve Kaldır dışında tümü |ACL 'ye tabidir |Katkıda bulunan rolü, bir hesabın dağıtım ve uyarı oluşturma ve yönetme gibi bazı yönlerini yönetebilir. Katkıda bulunan rolü rol ekleyemez veya kaldıramaz. |

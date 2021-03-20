@@ -7,10 +7,10 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 03/25/2020
 ms.openlocfilehash: cb7bfb9ac4b10b807ac186d087b0037953abd559
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91439513"
 ---
 # <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-the-azure-portal"></a>Azure portal kullanarak bir sanal makine ölçek kümesini mevcut bir Azure Load Balancer yapılandırma
@@ -46,10 +46,10 @@ Bu bölümde, mevcut bir Azure yük dengeleyicisiyle Azure portal bir sanal maki
     |--------------------------------|-------------------------------------------------------------------------------------------------------|
     | **Proje ayrıntıları**            |                                                                                                       |
     | Abonelik                   | Azure aboneliğinizi seçin                                                                        |
-    | Kaynak Grubu                 | Yeni Oluştur ' u seçin, **Myresourcegroup**yazın ve ardından Tamam ' ı seçin veya var olan bir kaynak grubunu seçin. |
+    | Kaynak Grubu                 | Yeni Oluştur ' u seçin, **Myresourcegroup** yazın ve ardından Tamam ' ı seçin veya var olan bir kaynak grubunu seçin. |
     | **Ölçek kümesi ayrıntıları**          |                                                                                                       |
     | Sanal makine ölçek kümesi adı | **Myvmss** girin                                                                                      |
-    | Bölge                         | **Doğu ABD 2** seçin                                                                                    |
+    | Region                         | **Doğu ABD 2** seçin                                                                                    |
     | Kullanılabilirlik alanı              | **Hiçbirini** seçme                                                                                       |
     | **Örnek ayrıntıları**           |                                                                                                       |
     | Görüntü                          | **Ubuntu Server 18,04 LTS** 'yi seçin                                                                    |
@@ -70,7 +70,7 @@ Bu bölümde, mevcut bir Azure yük dengeleyicisiyle Azure portal bir sanal maki
 
      Ayar                           | Değer                                                    |
     |-----------------------------------|----------------------------------------------------------|
-    | **Sanal ağ yapılandırması** |                                                          |
+    | **Sanal Ağ Yapılandırması** |                                                          |
     | Sanal ağ                   | **Myvnet** veya var olan sanal ağınızı seçin.      |
     | **Yük dengeleme**                |                                                          |
     | Yük dengeleyici kullanma               | **Evet**’i seçin                                           |
@@ -79,11 +79,11 @@ Bu bölümde, mevcut bir Azure yük dengeleyicisiyle Azure portal bir sanal maki
     | Yük dengeleyici seçin            | **Myloadbalancer** veya mevcut yük dengeleyicinizi seçin |
     | Bir arka uç havuzu seçin             | **Mybackendpool** veya mevcut arka uç havuzunuzu seçin.  |
 
-    :::image type="content" source="./media/vm-scale-sets/create-vm-scale-set-02.png" alt-text="Ekran görüntüsü, sanal makine ölçek kümesi temelleri Oluştur sekmesini gösterir." border="true":::
+    :::image type="content" source="./media/vm-scale-sets/create-vm-scale-set-02.png" alt-text="Ekran görüntüsü, sanal makine ölçek kümesi ağ oluşturma sekmesini gösterir." border="true":::
 
 6. **Yönetim** sekmesini seçin.
 
-7. **Yönetim** sekmesinde, **önyükleme tanılamayı** **kapalı**olarak ayarlayın.
+7. **Yönetim** sekmesinde, **önyükleme tanılamayı** **kapalı** olarak ayarlayın.
 
 8. Mavi **gözden geçir + oluştur** düğmesini seçin.
 

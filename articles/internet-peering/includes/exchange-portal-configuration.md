@@ -1,7 +1,7 @@
 ---
-title: dosya dahil etme
+title: include dosyası
 titleSuffix: Azure
-description: dosya dahil etme
+description: include dosyası
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 268703081a2a40e8bcc665889eaeaf8edd673bfd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "81680928"
 ---
 1. **Eşleme oluştur** sayfasında, **yapılandırma** sekmesinde, kutuları gösterilen şekilde girin.
@@ -20,15 +20,15 @@ ms.locfileid: "81680928"
     > [!div class="mx-imgBorder"]
     > ![Eşleme sayfası değişim eşleme türü oluştur](../media/setup-exchange-conf-tab.png)
 
-    * **Eşleme türü**için **Exchange**' i seçin.
-    * **SKU 'Yu** **temel ücretsiz**olarak seçin.
+    * **Eşleme türü** için **Exchange**' i seçin.
+    * **SKU 'Yu** **temel ücretsiz** olarak seçin.
     * Eşlemeyi ayarlamak istediğiniz **Metro** konumunu seçin.
 
         > [!NOTE]
         > Seçili **Metro** konumunda Microsoft ile zaten eşleme bağlantılarınız varsa ve bu konumda eşlemeyi ilk kez kullanıyorsanız, mevcut eşleme bağlantılarınız, gösterilen şekilde **eşleme bağlantıları** bölümünde listelenecektir. Microsoft, bu eşleme bağlantılarını, yeni bağlantılarla birlikte tek bir yerden yönetebilmeniz için bir Azure kaynağına otomatik olarak dönüştürür. Daha fazla bilgi için bkz. [portalı kullanarak eski Exchange eşlemesini bir Azure kaynağına dönüştürme](../howto-legacy-exchange-portal.md).
         >
 
-1. **Eşleme bağlantıları**altında, **Yeni oluştur** ' u seçerek ayarlamak istediğiniz her yeni bağlantı için bir satır ekleyin.
+1. **Eşleme bağlantıları** altında, **Yeni oluştur** ' u seçerek ayarlamak istediğiniz her yeni bağlantı için bir satır ekleyin.
 
     * Bağlantı ayarlarını yapılandırmak veya değiştirmek için, bir satır için Düzenle düğmesini seçin.
 
@@ -62,7 +62,7 @@ ms.locfileid: "81680928"
     > [!div class="mx-imgBorder"]
     > ![Eşleme doğrulama sekmesi](../media/setup-direct-review-tab-validation.png)
 
-1. *Doğrulama başarılı*olduktan sonra, bilgilerinizi doğrulayın. **Oluştur**seçeneğini belirleyerek isteği gönderebilirsiniz. İsteğinizi değiştirmek için, **önceki** seçeneğini belirleyip adımları yineleyin.
+1. *Doğrulama başarılı* olduktan sonra, bilgilerinizi doğrulayın. **Oluştur** seçeneğini belirleyerek isteği gönderebilirsiniz. İsteğinizi değiştirmek için, **önceki** seçeneğini belirleyip adımları yineleyin.
 
     > [!div class="mx-imgBorder"]
     > ![Eşleme gönderimi](../media/setup-exchange-review-tab-submit.png)

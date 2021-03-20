@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/23/2020
 ms.openlocfilehash: 9a4ed5542945b8d281ec750d9bbd3a8f444e44d2
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96752269"
 ---
 # <a name="add-assessment-tools"></a>Değerlendirme araçları ekleme
@@ -27,7 +27,7 @@ Bu makalede, [Azure geçişi](./migrate-services-overview.md)'nde değerlendirme
 
     - Azure 'a geçiş için makineleri ve iş yüklerini bulup değerlendirmek üzere **sunucuları değerlendir ve geçir**' i seçin.
     - Şirket içi SQL Server veritabanlarını değerlendirmek için **veritabanlarını değerlendir ve geçir**' i seçin.
-    - Şirket içi Web uygulamalarını değerlendirmek veya geçirmek için **daha fazla Web Apps keşfet**' i seçin  >  **Web Apps**.
+    - Şirket içi Web uygulamalarını değerlendirmek veya geçirmek için **daha fazla Web Apps keşfet**' i seçin  >  .
     - Sanal Masaüstü altyapınızı değerlendirmek için **daha fazla**  >  **sanal masaüstü altyapısını** keşfet ' i seçin.
 
     ![Değerlendirme senaryosu seçme seçenekleri](./media/how-to-assess/assess-scenario.png)
@@ -66,7 +66,7 @@ Bu makalede, [Azure geçişi](./migrate-services-overview.md)'nde değerlendirme
 
 ## <a name="select-a-web-app-assessment-tool"></a>Bir Web uygulaması değerlendirme aracı seçin
 
-Portalda **daha fazla keşfet** webapps seçeneğini kullanarak bir Azure geçişi projesi oluşturduysanız  >  **WebApps** , Web uygulaması değerlendirme aracı projeye otomatik olarak eklenir. 
+Portalda **daha fazla keşfet** webapps seçeneğini kullanarak bir Azure geçişi projesi oluşturduysanız  >   , Web uygulaması değerlendirme aracı projeye otomatik olarak eklenir. 
 
 
 1. Web uygulaması değerlendirme aracı projede değilse, **Web Apps**  >  **değerlendirme araçları**' nda **buraya tıklayın ' ı** seçin.

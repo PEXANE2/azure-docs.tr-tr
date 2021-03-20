@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 12/16/2019
 ms.custom: MVC
 ms.openlocfilehash: bf47f08ac555cf60f59ba2b1a84750b6a9e2e0a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86131994"
 ---
 # <a name="fail-over--vmware-vms"></a>VMware VM 'lerini devreder
@@ -48,7 +48,7 @@ Yük devretmeyi çalıştırmadan önce VM 'Lerin [Azure gereksinimlerini](vmwar
 
 2. **Çoğaltılan öğe** bölmesinde VM bilgileri ile sistem durumunun bir özeti ve kullanılabilen son kurtarma noktaları yer alır. Daha fazla ayrıntı görüntülemek için **Özellikler** ' i seçin.
 
-3. **İşlem ve ağ**bölümünde, bu özellikleri gerektiği şekilde değiştirebilirsiniz:
+3. **İşlem ve ağ** bölümünde, bu özellikleri gerektiği şekilde değiştirebilirsiniz:
     * Azure adı
     * Kaynak grubu
     * Hedef boyutu

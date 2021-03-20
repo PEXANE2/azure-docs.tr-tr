@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 98ae81626db637f5b0bd6bfe9e294c32293d09e5
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98755065"
 ---
 # <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>Microsoft kimlik doğrulama kitaplığı (MSAL) kullanarak belirteçleri alma ve önbelleğe alma
@@ -122,7 +122,7 @@ Gizli istemci uygulamaları (Web uygulaması, Web API 'SI veya bir Windows hizme
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-MSAL tarafından desteklenen platformların birkaçı, bu platformun kitaplığı için belgelerde ek belirteç önbelleğiyle ilgili bilgilere sahiptir. Örneğin:
+MSAL tarafından desteklenen platformların birkaçı, bu platformun kitaplığı için belgelerde ek belirteç önbelleğiyle ilgili bilgilere sahiptir. Örnek:
 - [MSAL.NET kullanarak belirteç önbelleğinden belirteç alma](msal-net-acquire-token-silently.md)
 - [MSAL.js ile çoklu oturum açma](msal-js-sso.md)
 - [Python için MSAL içinde özel belirteç önbelleği serileştirme](msal-python-token-cache-serialization.md)

@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB maliyetlerini planlayın ve yönetin
+title: Azure Cosmos DB maliyetlerini planlama ve yönetme
 description: Azure portal maliyet analizini kullanarak Azure Cosmos DB maliyetlerini nasıl planlayacağınızı ve yöneteceğinizi öğrenin.
 author: SnehaGunda
 ms.author: sngun
@@ -8,20 +8,20 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/19/2020
 ms.openlocfilehash: 2bea2324817986654de6689a2be15d0cbf999b38
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98602133"
 ---
-# <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>Azure Cosmos DB maliyetlerini planlayın ve yönetin
+# <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>Azure Cosmos DB maliyetlerini planlama ve yönetme
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Bu makalede, Azure Cosmos DB maliyetlerini nasıl planlayabileceğinizi ve yönetebileceğiniz açıklanır. İlk olarak, herhangi bir kaynak oluşturmadan önce iş yükü maliyetinizi tahmin etmek için Azure Cosmos DB kapasite hesaplayıcısını kullanırsınız. Daha sonra tahmini maliyeti gözden geçirebilir ve kaynaklarınızı oluşturmaya başlayabilirsiniz.
 
 Azure Cosmos DB kaynaklarını kullanmaya başladıktan sonra, bütçe ayarlamak ve maliyetleri izlemek için maliyet yönetimi özelliklerini kullanın. Ayrıca Tahmini maliyetleri gözden geçirebilir ve hareket etmek isteyebileceğiniz yerleri belirlemek için harcama eğilimlerini belirleyebilirsiniz. Azure Cosmos DB maliyetleri, Azure faturanızda bulunan Aylık maliyetlerin yalnızca bir parçasıdır. Bu makalede Azure Cosmos DB maliyetlerinin nasıl planlanacağı ve yönetileceği açıklanmakta olsa da, üçüncü taraf hizmetler de dahil olmak üzere Azure aboneliğinizde kullanılan tüm Azure hizmetleri ve kaynakları için faturalandırılırsınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="provisioned-throughput-or-serverless"></a>Sağlanan aktarım hızı veya sunucusuz
 
@@ -83,7 +83,7 @@ Maliyet analizini kullandığınızda, grafik ve tablolardaki Azure Cosmos DB ma
 
 Maliyet analizinde Azure Cosmos DB maliyetlerini görüntülemek için:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure portal](https://portal.azure.com) oturum açın.
 
 1. Azure portal kapsamı açın ve menüden **Maliyet Analizi** ' ni seçin. Örneğin, **abonelikler**' e gidin, listeden bir abonelik seçin ve ardından menüde  **Maliyet Analizi** ' ni seçin. Maliyet analizinde farklı bir kapsama geçiş yapmak için **kapsam** ' ı seçin.
 
@@ -112,7 +112,7 @@ Azure Cosmos DB ' de fiyatlandırmanın nasıl çalıştığı hakkında daha fa
 * [Azure Cosmos DB’de modeli fiyatlandırma](how-pricing-works.md)
 * [Azure Cosmos DB’de sağlanan işlem hızını iyileştirme](optimize-cost-throughput.md)
 * [Azure Cosmos DB'de sorgu maliyetini iyileştirme](./optimize-cost-reads-writes.md)
-* [Depolama maliyetini en uygun Azure Cosmos DB](optimize-cost-storage.md)
+* [Azure Cosmos DB'de depolama maliyetini iyileştirme](optimize-cost-storage.md)
 * [Azure maliyet yönetimi ile bulut yatırımınızın nasıl iyileştirileceği hakkında](../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)bilgi edinin.
 * [Maliyet Analizi](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)ile maliyetleri yönetme hakkında daha fazla bilgi edinin.
 * [Beklenmeyen maliyetlerin nasıl önleneceği](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)hakkında bilgi edinin.

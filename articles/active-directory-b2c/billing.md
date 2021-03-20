@@ -12,10 +12,10 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 ms.openlocfilehash: a54ed9dc6557d9b613485bf28e74af0c59fc9e5e
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99225217"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Azure Active Directory B2C için faturalandırma modeli
@@ -78,7 +78,7 @@ Kiracı, Azure AD B2C kiracınızla birlikte kullanmak istediğiniz özelliklere
 
 Fiyatlandırma katmanınızı değiştirmek için aşağıdaki adımları izleyin.
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 
 2. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure B2C kiracınızın bağlandığı Azure aboneliğini içeren dizini seçin (Azure AD B2C kiracının *kendisini seçmeyin)* .
 
@@ -125,7 +125,7 @@ Mevcut bir Azure AD B2C kaynağı için MAU faturalandırmaya geçiş yapmak iç
 
 MAU tabanlı ölçüm, siz, abonelik/kaynak sahibi, değişikliği onaylamak için etkin duruma gelir. Aylık faturanızda, değişiklik yapılıncaya kadar faturalandırılan kimlik doğrulaması birimleri ve değişiklik ile başlayan yeni MAU birimleri yansıtılacaktır.
 
-Kullanıcılar geçiş ayı sırasında çift sayılmaz. Değişiklikten önce kimlik doğrulayan benzersiz etkin kullanıcılar, bir takvim ayında kimlik doğrulama ücreti başına ücretlendirilir. Aynı kullanıcılar, aboneliğin fatura döngüsünün geri kalanı için MAU hesaplamasına dahil değildir. Örneğin:
+Kullanıcılar geçiş ayı sırasında çift sayılmaz. Değişiklikten önce kimlik doğrulayan benzersiz etkin kullanıcılar, bir takvim ayında kimlik doğrulama ücreti başına ücretlendirilir. Aynı kullanıcılar, aboneliğin fatura döngüsünün geri kalanı için MAU hesaplamasına dahil değildir. Örnek:
 
 * Contoso B2C kiracısında 1.000 kullanıcısı vardır. 250 Kullanıcı belirli bir ayda etkindir. Abonelik Yöneticisi, ayın 10 ' da, kimlik doğrulamasından bağımsız olarak aylık etkin kullanıcılara (MAU) göre değişir.
 * 1.10 ' un faturalandırılması, kimlik doğrulama modeli kullanılarak faturalandırılır.

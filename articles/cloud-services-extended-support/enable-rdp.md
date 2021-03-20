@@ -9,10 +9,10 @@ ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
 ms.openlocfilehash: 53f873013a6f16ce5a28ee5d915afa556057f643
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98744674"
 ---
 # <a name="apply-the-remote-desktop-extension-to-azure-cloud-services-extended-support"></a>Uzak Masaüstü uzantısını Azure Cloud Services uygulama (genişletilmiş destek)
@@ -24,7 +24,7 @@ Azure portal, uygulama dağıtıldıktan sonra bile uzak masaüstünü etkinleş
 
     :::image type="content" source="media/remote-desktop-1.png" alt-text="Görüntüde Uzak Masaüstü seçeneğinin seçilmesi gösterilmektedir Azure portal":::
 
-2. **Ekle**’yi seçin.
+2. **Add (Ekle)** seçeneğini belirleyin.
 3. İçin uzak masaüstünü etkinleştirmek üzere rolleri seçin.
 4. Kullanıcı adı, parola, süre sonu ve sertifika (gerekli değil) için gerekli alanları girin.
 

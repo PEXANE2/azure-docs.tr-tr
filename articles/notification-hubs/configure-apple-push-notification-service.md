@@ -12,10 +12,10 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/25/2019
 ms.openlocfilehash: 63c7e0c9569428b55420911f253deee52ce440cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85255407"
 ---
 # <a name="configure-apple-push-notification-service-settings-for-a-notification-hub-in-the-azure-portal"></a>Azure portal bir Bildirim Hub 'ı için Apple Anında İletilen Bildirim Servisi ayarlarını yapılandırma
@@ -32,9 +32,9 @@ Aşağıdaki yordam bir Bildirim Hub 'ı için Apple Anında İletilen Bildirim 
 
 1. Azure portal, **Bildirim Hub** 'ı sayfasında, sol taraftaki menüden **Apple (APNs)** öğesini seçin.
 
-1. **Kimlik doğrulama modu**Için, **sertifika** ya da **belirteç**seçin.
+1. **Kimlik doğrulama modu** Için, **sertifika** ya da **belirteç** seçin.
 
-   - **Sertifika**seçerseniz:
+   - **Sertifika** seçerseniz:
       - Dosya simgesini seçin ve ardından karşıya yüklemek istediğiniz *. p12* dosyasını seçin.
       - Bir parola girin.
       - **Korumalı alan** modunu seçin. Ya da uygulamanızı mağazadan satın alan kullanıcılara anında iletme bildirimleri göndermek için **Üretim** modu ' nu seçin.
@@ -42,7 +42,7 @@ Aşağıdaki yordam bir Bildirim Hub 'ı için Apple Anında İletilen Bildirim 
      ![Azure portal bir APNS sertifika yapılandırmasının ekran görüntüsü](./media/configure-apple-push-notification-service/notification-hubs-apple-config-cert.png)
 
    - **Belirteç**' yi seçerseniz:
-      - **Anahtar kimliği**, **paket KIMLIĞI**, **Takım Kimliği**ve **belirteç**değerlerini girin.
+      - **Anahtar kimliği**, **paket KIMLIĞI**, **Takım Kimliği** ve **belirteç** değerlerini girin.
       - **Korumalı alan** modunu seçin. Ya da uygulamanızı mağazadan satın alan kullanıcılara anında iletme bildirimleri göndermek için **Üretim** modu ' nu seçin.
 
      ![Azure portal bir APNS belirteç yapılandırması ekran görüntüsü](./media/configure-apple-push-notification-service/notification-hubs-apple-config-token.png)
