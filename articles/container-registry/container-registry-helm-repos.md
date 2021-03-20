@@ -4,10 +4,10 @@ description: Azure Container Registry içindeki depoları kullanarak Kubernetes 
 ms.topic: article
 ms.date: 06/12/2020
 ms.openlocfilehash: 69b16f35589586787e1c31a0e9755b9030af755d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86537876"
 ---
 # <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>Azure Container Registry 'de Held grafikleri gönderme ve çekme
@@ -33,7 +33,7 @@ Hele grafiklerini Azure Container Registry barındırmak için helm3 kullanılma
 > [!NOTE]
 > Helm 3 itibariyle, Helm 2 istemcisiyle kullanım için [az ACR Helm][az-acr-helm] komutları kullanım dışı bırakılıyor. Bkz. [ürün yol haritası](https://github.com/Azure/acr/blob/master/docs/acr-roadmap.md#acr-helm-ga). Daha önce helk 2 grafikleri dağıttıysanız, bkz. [Held v2 'yi v3 'e geçirme](https://helm.sh/docs/topics/v2_v3_migration/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki senaryo için aşağıdaki kaynaklar gereklidir:
 
@@ -93,7 +93,7 @@ Bu örneği oluşturma ve çalıştırma hakkında daha fazla bilgi için, bkz. 
 
 Dizini `hello-world` alt dizine değiştirin. Ardından, `helm chart save` grafiğin bir kopyasını yerel olarak kaydetmek ve ayrıca, kayıt defterinin tam adı (tümü küçük) ve hedef depo ve etiket ile bir diğer ad oluşturmak için öğesini çalıştırın. 
 
-Aşağıdaki örnekte, kayıt defteri adı *mycontainerregistry*, hedef depo ise *Merhaba-Dünya*ve hedef grafik etiketi *v1*, ancak ortamınız için de değer yerine kullanılır:
+Aşağıdaki örnekte, kayıt defteri adı *mycontainerregistry*, hedef depo ise *Merhaba-Dünya* ve hedef grafik etiketi *v1*, ancak ortamınız için de değer yerine kullanılır:
 
 ```console
 cd ..
@@ -171,7 +171,7 @@ az acr repository show \
 }
 ```
 
-Depoda depolanan grafiğin ayrıntılarını görmek için [az ACR Repository Show-bildirimleri][az-acr-repository-show-manifests] komutunu çalıştırın. Örneğin:
+Depoda depolanan grafiğin ayrıntılarını görmek için [az ACR Repository Show-bildirimleri][az-acr-repository-show-manifests] komutunu çalıştırın. Örnek:
 
 ```azurecli
 az acr repository show-manifests \
@@ -239,7 +239,7 @@ version: 0.1.0
 
 ## <a name="install-helm-chart"></a>Held grafiğini yükler
 
-`helm install`Yerel önbelleğe ve dışarıya verdiğiniz Held grafiğini yüklemek için öğesini çalıştırın. *Myhelmtest*gibi bir yayın adı belirtin veya `--generate-name` parametreyi geçirin. Örneğin:
+`helm install`Yerel önbelleğe ve dışarıya verdiğiniz Held grafiğini yüklemek için öğesini çalıştırın. *Myhelmtest* gibi bir yayın adı belirtin veya `--generate-name` parametreyi geçirin. Örnek:
 
 ```console
 helm install myhelmtest ./hello-world

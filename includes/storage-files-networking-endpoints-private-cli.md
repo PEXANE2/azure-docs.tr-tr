@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: storage
 author: roygara
 ms.service: storage
@@ -9,10 +9,10 @@ ms.date: 5/11/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: b6f0f77da639bceaea680f015dad5c0d3d6dbda6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84465067"
 ---
 Depolama hesabınız için özel bir uç nokta oluşturmak üzere öncelikle depolama hesabınıza ve özel uç noktayı eklemek istediğiniz sanal ağ alt ağına bir başvuru almanız gerekir. ,,,, `<storage-account-resource-group-name>`  `<storage-account-name>` `<vnet-resource-group-name>` Ve aşağıdaki gibi değiştirin `<vnet-name>` `<vnet-subnet-name>` :

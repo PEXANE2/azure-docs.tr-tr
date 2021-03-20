@@ -16,10 +16,10 @@ ms.date: 07/22/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f3c9ec3b1e96e47dbf46c6acb2c81147b614d069
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87117440"
 ---
 # <a name="troubleshoot-audit-data-on-verified-domain-change"></a>Sorun giderme: doğrulanan etki alanı değiştiğinde denetim verileri 
@@ -33,7 +33,7 @@ Azure AD denetim günlüklerini denetm ve Azure AD kiracımda birden çok Kullan
 
 ### <a name="cause"></a>Nedeni
 
- Yığın nesnesi değişikliklerinin arka planda yaygın bir nedeni, **Proxycalc**adlı zaman uyumlu olmayan bir arka uç işlemidir.  **Proxycalc** , Azure AD kullanıcıları, grupları veya kişileri 'nde güncelleştirilmiş uygun **userPrincipalName** ve **proxy adreslerini**belirleyen mantığdır. **Proxycalc** arkasındaki tasarım, tüm **userPrincipalName** ve **proxy adreslerinin** Azure AD 'de dilediğiniz zaman tutarlı olmasını sağlamaktır. **Proxycalc** , doğrulanmış bir etki alanı değişikliği gibi açık bir değişiklik tarafından tetiklenmesi gerekir ve bir görev olarak arka planda çalışmıyor adet sürekli. 
+ Yığın nesnesi değişikliklerinin arka planda yaygın bir nedeni, **Proxycalc** adlı zaman uyumlu olmayan bir arka uç işlemidir.  **Proxycalc** , Azure AD kullanıcıları, grupları veya kişileri 'nde güncelleştirilmiş uygun **userPrincipalName** ve **proxy adreslerini** belirleyen mantığdır. **Proxycalc** arkasındaki tasarım, tüm **userPrincipalName** ve **proxy adreslerinin** Azure AD 'de dilediğiniz zaman tutarlı olmasını sağlamaktır. **Proxycalc** , doğrulanmış bir etki alanı değişikliği gibi açık bir değişiklik tarafından tetiklenmesi gerekir ve bir görev olarak arka planda çalışmıyor adet sürekli. 
 
   
 
@@ -49,7 +49,7 @@ Eşitlenmiş kullanıcılar için tutarlılık, **userPrincipalName** 'in doğru
 
 Yalnızca bulutta bulunan kullanıcılar için tutarlılık, proxy adreslerinin doğrulanmış bir etki alanı sonekiyle eşleştiği anlamına gelir. Tutarsız bir proxy adresi işlendiğinde, **Proxycalc** onu varsayılan *. onmicrosoft.com etki alanı sonekine dönüştürür, örneğin: SMTP:username@Contoso.onmicrosoft.com 
 
-Eşitlenmiş kullanıcılar için tutarlılık, proxy adreslerinin şirket içi ara sunucu adresleri (ler) değerleri ile eşleştiği anlamına gelir (ör. ShadowProxyAddresses). **ProxyAddresses** 'ın **ShadowProxyAddresses**ile eşitlenmesi bekleniyor. Eşitlenmiş kullanıcıya bir Exchange lisansı atanmışsa, proxy adreslerinin şirket içi proxy adresi (ler) değeriyle eşleşmesi ve ayrıca doğrulanmış bir etki alanı sonekiyle eşleşmesi gerekir. Bu senaryoda, **Proxycalc** , doğrulanmamış bir etki alanı sonekine sahip tutarsız proxy adresini temizler ve Azure AD 'deki nesnesinden kaldırılacak. Bu doğrulanmamış etki alanı daha sonra doğrulanırsa, **Proxycalc** yeniden hesaplama ve proxy adresini **SHADOWPROXYADDRESSES** 'den Azure AD 'deki nesnesine eklemektir.  
+Eşitlenmiş kullanıcılar için tutarlılık, proxy adreslerinin şirket içi ara sunucu adresleri (ler) değerleri ile eşleştiği anlamına gelir (ör. ShadowProxyAddresses). **ProxyAddresses** 'ın **ShadowProxyAddresses** ile eşitlenmesi bekleniyor. Eşitlenmiş kullanıcıya bir Exchange lisansı atanmışsa, proxy adreslerinin şirket içi proxy adresi (ler) değeriyle eşleşmesi ve ayrıca doğrulanmış bir etki alanı sonekiyle eşleşmesi gerekir. Bu senaryoda, **Proxycalc** , doğrulanmamış bir etki alanı sonekine sahip tutarsız proxy adresini temizler ve Azure AD 'deki nesnesinden kaldırılacak. Bu doğrulanmamış etki alanı daha sonra doğrulanırsa, **Proxycalc** yeniden hesaplama ve proxy adresini **SHADOWPROXYADDRESSES** 'den Azure AD 'deki nesnesine eklemektir.  
 
 > [!NOTE]
 > Eşitlenmiş nesneler için, **Proxycalc** mantığının beklenmedik sonuçları hesaplamasından kaçınmak Için, proxy adreslerini şirket içi nesnede BIR Azure AD doğrulanmış etki alanına ayarlamak en iyisidir.  
@@ -65,7 +65,7 @@ ProxyCalc, belirli nesnelerde değişiklik yapılmasına neden olmaz:
 
 - etkin bir Exchange lisansına sahip değilsiniz 
 - **msExchRemoteRecipientType** null olarak ayarlanmış 
-- , paylaşılan bir kaynak olarak kabul edilmez. **Cloudmsexchrecipientdisplaytype** , şu değerlerden birini Içerdiğinde paylaşılan kaynak: **mailboxuser (Shared)**, **PublicFolder**, **ConferenceRoomMailbox**, **ekipmanımailbox**, **Aracı, yönetim**kutusu, **roomlist**, **teammailboxuser**, **Grup posta kutusu**, **zamanlama posta kutusu**, **aclablemailboxuser**, **aclableteammailboxuser** 
+- , paylaşılan bir kaynak olarak kabul edilmez. **Cloudmsexchrecipientdisplaytype** , şu değerlerden birini Içerdiğinde paylaşılan kaynak: **mailboxuser (Shared)**, **PublicFolder**, **ConferenceRoomMailbox**, **ekipmanımailbox**, **Aracı, yönetim** kutusu, **roomlist**, **teammailboxuser**, **Grup posta kutusu**, **zamanlama posta kutusu**, **aclablemailboxuser**, **aclableteammailboxuser** 
   
  Bu iki farklı olay arasında daha fazla bağıntı oluşturmak için, Microsoft bu değişiklikleri doğrulanmış bir etki alanı değişikliği tarafından tetiklenen şekilde belirlemek üzere denetim günlüklerinde **aktör** bilgilerini güncelleştirme üzerinde çalışmaktadır. Bu eylem, doğrulanmış etki alanı değişikliği olayının ne zaman gerçekleştiği ve kiracısındaki nesneleri toplu olarak güncelleştirmeye başladığında denetlemeye yardımcı olur. 
 

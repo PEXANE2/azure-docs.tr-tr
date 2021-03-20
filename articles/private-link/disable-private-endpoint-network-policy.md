@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
 ms.openlocfilehash: a4c04033f3fb5ff523f0d80bb6c978955f4c9ec2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84737521"
 ---
 # <a name="disable-network-policies-for-private-endpoints"></a>Özel uç noktalar için ağ ilkelerini devre dışı bırak
@@ -20,7 +20,7 @@ Ağ güvenlik grupları (NSG) gibi ağ ilkeleri özel uç noktalar için destekl
  
 Özel bir uç nokta oluşturmak için Portal kullanıldığında, bu ayar oluşturma sürecinin bir parçası olarak otomatik olarak devre dışıdır. Diğer istemcileri kullanarak dağıtım, bu ayarı değiştirmek için ek bir adım gerektirir. Cloud Shell 'i Azure portal veya Azure PowerShell, Azure CLı 'nin yerel yüklemelerinden veya Azure Resource Manager şablonları kullanarak ayarı devre dışı bırakabilirsiniz.  
  
-Aşağıdaki örneklerde, `PrivateEndpointNetworkPolicies` *myresourcegroup*adlı bir kaynak grubunda barındırılan bir *varsayılan* alt ağ ile *myVirtualNetwork* adlı bir sanal ağ için nasıl devre dışı bırakılacağı açıklanır.
+Aşağıdaki örneklerde, `PrivateEndpointNetworkPolicies` *myresourcegroup* adlı bir kaynak grubunda barındırılan bir *varsayılan* alt ağ ile *myVirtualNetwork* adlı bir sanal ağ için nasıl devre dışı bırakılacağı açıklanır.
 
 ## <a name="using-azure-powershell"></a>Azure PowerShell’i kullanma
 Bu bölüm, Azure PowerShell kullanarak alt ağ özel uç nokta ilkelerinin nasıl devre dışı bırakılacağını açıklar.

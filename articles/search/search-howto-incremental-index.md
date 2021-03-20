@@ -10,16 +10,16 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.openlocfilehash: a1b317b651b0e17c07eb17dbdb8a7c6657d39564
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90971609"
 ---
 # <a name="how-to-configure-caching-for-incremental-enrichment-in-azure-cognitive-search"></a>Azure Bilişsel Arama artımlı zenginleştirme için önbelleğe alma yapılandırma
 
 > [!IMPORTANT] 
-> Artımlı zenginleştirme Şu anda genel önizlemededir. Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
+> Artımlı zenginleştirme Şu anda genel önizlemededir. Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 > [REST API önizleme sürümleri](search-api-preview.md) bu özelliği sağlar. Şu anda portal veya .NET SDK desteği yok.
 
 Bu makalede, her seferinde yeniden derlemek zorunda kalmadan adımları artımlı olarak değiştirmek için bir zenginleştirme ardışık düzenine nasıl önbelleğe alma ekleyeceğiniz gösterilmektedir. Varsayılan olarak, bir beceri durum bilgisiz değildir ve kompozisyonunun herhangi bir bölümünü değiştirmek, dizin oluşturucunun tam yeniden çalıştırma işlemini gerektirir. Artımlı zenginleştirme ile, Dizin Oluşturucu, belge ağacının hangi bölümlerinin beceri veya Dizin Oluşturucu tanımlarında algılanan değişikliklere göre yenilenmesi gerektiğini belirleyebilir. Mevcut işlenen çıktı korunur ve mümkün olan yerlerde yeniden kullanılabilir. 

@@ -12,10 +12,10 @@ ms.date: 03/11/2018
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 4874910f37b49990a659b48af0cf27921c3fcd5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "68945227"
 ---
 # <a name="generating-smart-cropped-thumbnails-with-computer-vision"></a>Görüntü İşleme ile akıllı kırpılmış küçük resimler oluşturma
@@ -24,13 +24,13 @@ Küçük resim, bir görüntünün azaltılmış boyutlu bir gösterimidir. Kü�
 
 Görüntü İşleme küçük resim oluşturma algoritması aşağıdaki gibi çalışmaktadır:
 
-1. Görüntüdeki dikkat _çekici_öğeleri kaldırın ve &mdash; görüntü alanının ana nesne (ler) göründüğü alanını tanımlayan alanı belirler.
-1. Görüntüyü, _ilgilendiğiniz tanımlı alana_göre kırpın.
+1. Görüntüdeki dikkat _çekici_ öğeleri kaldırın ve &mdash; görüntü alanının ana nesne (ler) göründüğü alanını tanımlayan alanı belirler.
+1. Görüntüyü, _ilgilendiğiniz tanımlı alana_ göre kırpın.
 1. En boy oranını hedef küçük resim boyutlarına uyacak şekilde değiştirin.
 
 ## <a name="area-of-interest"></a>İlgilendiğiniz alan
 
-Bir görüntüyü karşıya yüklediğinizde, Görüntü İşleme API'si *ilgilendiğiniz alanı*belirleyecek şekilde analiz eder. Daha sonra bu bölgeyi, görüntünün nasıl kırpılacağını anlamak için kullanabilir. Ancak, kırpma işlemi, belirtilmişse her zaman istenen en boy oranıyla eşleşir.
+Bir görüntüyü karşıya yüklediğinizde, Görüntü İşleme API'si *ilgilendiğiniz alanı* belirleyecek şekilde analiz eder. Daha sonra bu bölgeyi, görüntünün nasıl kırpılacağını anlamak için kullanabilir. Ancak, kırpma işlemi, belirtilmişse her zaman istenen en boy oranıyla eşleşir.
 
 Bunun **yerine, aynı** *ilgi alanına* ait ham sınırlayıcı kutu koordinatlarını de alabilir. Böylece, bu bilgileri özgün görüntüyü değiştirmek için kullanabilirsiniz.
 

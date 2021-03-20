@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: tutorial
 ms.date: 5/6/2019
 ms.openlocfilehash: a12068259d82e833826bcac5e6c58059fb51c56c
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93336988"
 ---
 # <a name="tutorial-monitor-and-tune-azure-database-for-postgresql---single-server"></a>Öğretici: PostgreSQL için Azure veritabanı 'nı Izleme ve ayarlama-tek sunucu
@@ -23,11 +23,11 @@ PostgreSQL için Azure Veritabanı, sunucu performansınızı anlamanıza ve gel
 > * Performans önerileri almak için bir veritabanını analiz etme
 > * Performans önerilerini uygulama
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 PostgreSQL sürüm 9.6 veya 10’un yüklü olduğu bir PostgreSQL için Azure Veritabanı sunucusuna ihtiyacınız vardır. Bir sunucu oluşturmak için [Öğretici oluştur](tutorial-design-database-using-azure-portal.md)’daki adımları izleyebilirsiniz.
 
 > [!IMPORTANT]
-> **Query Store** , **Sorgu Performansı İçgörüleri** ve **Performans Önerisi** , Genel Önizleme aşamasındadır.
+> **Query Store**, **Sorgu Performansı İçgörüleri** ve **Performans Önerisi**, Genel Önizleme aşamasındadır.
 
 ## <a name="enabling-data-collection"></a>Veri koleksiyonunu etkinleştirme
 [Query Store](concepts-query-store.md), sorguların geçmişini toplar ve sunucunuzdaki istatistikleri bekler ve sunucunuzdaki **azure_sys** veritabanında saklar. Bu tercihli bir özelliktir. Etkinleştirmek için:
@@ -36,7 +36,7 @@ PostgreSQL sürüm 9.6 veya 10’un yüklü olduğu bir PostgreSQL için Azure V
 
 2. PostgreSQL için Azure Veritabanı sunucunuzu seçin.
 
-3. Soldaki menüde yer alan **Ayarlar** bölümündeki **Sunucu Parametreleri** ’ni seçin.
+3. Soldaki menüde yer alan **Ayarlar** bölümündeki **Sunucu Parametreleri**’ni seçin.
 
 4. Sorgu performansı verilerini toplamaya başlamak için, **pg_qs.query_capture_mode** komutunu **TOP** olarak ayarlayın. Bekleme istatistiklerini toplamak için, **pgms_wait_sampling.query_capture_mode** komutunu **ALL** olarak ayarlayın. Kaydedin.
    
@@ -48,7 +48,7 @@ PostgreSQL sürüm 9.6 veya 10’un yüklü olduğu bir PostgreSQL için Azure V
 ## <a name="performance-insights"></a>Performans içgörüleri
 Azure portaldaki [Sorgu Performansı İçgörüleri](concepts-query-performance-insight.md) görünümü, Query Store’dan alınan önemli bilgilerdeki görselleştirmeleri kullanıma açar. 
 
-1. Azure Veritabanı için PostgreSQL sunucunuzun portal sayfasında, soldaki menünün **Destek + sorun giderme** bölümündeki **Sorgu performansı içgörüleri** ’ni seçin.
+1. Azure Veritabanı için PostgreSQL sunucunuzun portal sayfasında, soldaki menünün **Destek + sorun giderme** bölümündeki **Sorgu performansı içgörüleri**’ni seçin.
 
 2. **Uzun süren sorgular** sekmesi, yürütme başına ortalama 15 dakikalık aralıklarla toplanan en iyi 5 sorguyu gösterir. 
    
@@ -67,23 +67,23 @@ Azure portaldaki [Sorgu Performansı İçgörüleri](concepts-query-performance-
    :::image type="content" source="./media/tutorial-performance-intelligence/query-performance-insight-wait-statistics.png" alt-text="Sorgu Performansı İçgörüleri bekleme istatistikleri":::
 
 ### <a name="permissions"></a>İzinler
-Sorgu Performansı İçgörüleri’ndeki metni görünüm için **Sahip** veya **Katkıda bulunan** izinleri gereklidir. **Okuyucu** , grafikleri ve tabloları görüntüleyebilir ancak metni sorgulayamaz.
+Sorgu Performansı İçgörüleri’ndeki metni görünüm için **Sahip** veya **Katkıda bulunan** izinleri gereklidir. **Okuyucu**, grafikleri ve tabloları görüntüleyebilir ancak metni sorgulayamaz.
 
 
 ## <a name="performance-recommendations"></a>Performans önerileri
 [Performans Önerileri](concepts-performance-recommendations.md) özelliği, performansı iyileştirme potansiyeli olan dizinleri tanımlamak için sunucunuzdaki iş yüklerini analiz eder.
 
-1. PostgreSQL sunucunuzun Azure portalı sayfasındaki menü çubuğunun **Destek + sorun giderme** bölümünden **Performans Önerileri** ’ni açın.
+1. PostgreSQL sunucunuzun Azure portalı sayfasındaki menü çubuğunun **Destek + sorun giderme** bölümünden **Performans Önerileri**’ni açın.
    
    :::image type="content" source="./media/tutorial-performance-intelligence/performance-recommendations-landing-page.png" alt-text="Performans Önerileri giriş sayfası":::
 
-2. **Analiz** ’i seçin ve bir veritabanı belirtin. Bu işlem analizi başlatır.
+2. **Analiz**’i seçin ve bir veritabanı belirtin. Bu işlem analizi başlatır.
 
 3. Bu işlemin tamamlanması iş yükünüze bağlı olarak birkaç dakika sürebilir. Analiz tamamlanınca portalda bir bildirim olur.
 
 4. Hiçbir öneri bulunamamışsa, **Performans Önerileri** penceresi bir öneri listesi gösterir. 
 
-5. Bir öneri, ilgili **Veritabanı** , **Tablo** , **Sütun** ve **Dizin Boyutu** ile ilgili bilgileri gösterir.
+5. Bir öneri, ilgili **Veritabanı**, **Tablo**, **Sütun** ve **Dizin Boyutu** ile ilgili bilgileri gösterir.
 
    :::image type="content" source="./media/tutorial-performance-intelligence/performance-recommendations-result.png" alt-text="Performans Önerileri sonucu":::
 

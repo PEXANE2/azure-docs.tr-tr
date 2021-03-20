@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
 ms.openlocfilehash: 7a01863b3a0c29e94550be67ca957655cff32660
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90941073"
 ---
 # <a name="manage-an-azure-database-for-mysql---flexible-server-preview-using-azure-portal"></a>Azure portal kullanarak MySQL için Azure veritabanını yönetme-esnek sunucu (Önizleme)
@@ -21,12 +21,12 @@ ms.locfileid: "90941073"
 
 Bu makalede, MySQL için Azure veritabanı esnek sunucularını (Önizleme) nasıl yöneteceğiniz gösterilmektedir. Yönetim görevleri işlem ve depolama ölçeklendirmesi, Rest sunucu yöneticisi parolası ve sunucunuzu silme işlemleri içerir.
 
-## <a name="sign-in"></a>Oturum aç
+## <a name="sign-in"></a>Oturum açın
 [Azure portalında](https://portal.azure.com) oturum açın. Azure portal esnek sunucu kaynağına gidin.
 
 ## <a name="scale-compute-and-storage"></a>İşlem ve depolamayı ölçeklendirme
 
-Sunucu oluşturulduktan sonra gereksinimlerinize göre çeşitli [fiyatlandırma katmanları](https://azure.microsoft.com/pricing/details/mysql/) arasında ölçeklendirebilirsiniz. Ayrıca, sanal çekirdekleri artırarak veya azaltarak işlem ve belleğinizin ölçeğini değiştirebilir veya azaltabilirsiniz.
+Sunucu oluşturulduktan sonra gereksinimlerinize göre çeşitli [fiyatlandırma katmanları](https://azure.microsoft.com/pricing/details/mysql/) arasında ölçeklendirebilirsiniz. Ayrıca sanal çekirdek sayısını artırıp azaltarak işlem ve bellek kapasitesinin ölçeğini artırabilir veya azaltabilirsiniz.
 
 1. Azure portal sunucunuzu seçin. **Ayarlar** bölümünde bulunan **işlem + depolama**' yı seçin.
 
@@ -50,7 +50,7 @@ Azure portal kullanarak yönetici rolü parolasını değiştirebilirsiniz.
 2. Yeni bir parola girin ve parolayı onaylayın. Metin kutusu sizden parola karmaşıklığı gereksinimlerini ister.
 
    > [!div class="mx-imgBorder"]
-   > :::image type="content" source="./media/howto-manage-server-portal/reset-password.png" alt-text="depolama esnek sunucusunu ölçeklendirme":::
+   > :::image type="content" source="./media/howto-manage-server-portal/reset-password.png" alt-text="esnek sunucu için parolanızı sıfırlayın":::
 
 3. Yeni parolayı kaydetmek için **Kaydet** ' i seçin.
 
@@ -63,7 +63,7 @@ Artık gerekmiyorsa, sunucunuzu silebilirsiniz.
 2. Sunucuyu silmek istediğinizi onaylamak için giriş kutusuna sunucunun adını yazın.
 
    > [!div class="mx-imgBorder"]
-   > :::image type="content" source="./media/howto-manage-server-portal/delete-server.png" alt-text="depolama esnek sunucusunu ölçeklendirme":::
+   > :::image type="content" source="./media/howto-manage-server-portal/delete-server.png" alt-text="esnek sunucuyu silme":::
 
    > [!NOTE]
    > Sunucu silindiğinde geri alınamaz.

@@ -27,6 +27,8 @@
       href: tutorial-connect-virtual-networks-portal.md
     - name: NAT ağ geçidini oluşturma ve doğrulama
       href: tutorial-create-nat-gateway-portal.md
+    - name: NAT ağ geçidi genel yük dengeleyiciyi tümleştirme
+      href: tutorial-nat-gateway-load-balancer-public-portal.md
 - name: Örnekler
   items:
     - name: Azure CLI’si

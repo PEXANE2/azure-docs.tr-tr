@@ -6,10 +6,10 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.openlocfilehash: cd0d85be5447aad0f2a3c37041e7d5d5d047a468
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91777301"
 ---
 # <a name="personalizer-terminology"></a>Kişiselleştirici terminolojisi
@@ -18,7 +18,7 @@ Kişiselleştirici, pekiştirmeye dayalı Learning 'teki terminolojiyi kullanır
 
 ## <a name="conceptual-terminology"></a>Kavramsal terminoloji
 
-* **Öğrenme döngüsü**: uygulamanızın, kişiselleştirmeye faydalanabilir her bölümü için, _öğrenme döngüsü_olarak adlandırılan bir kişiselleştirici kaynağı oluşturursunuz. Kişiselleştirmek için birden fazla deneyim varsa, her biri için bir döngü oluşturun.
+* **Öğrenme döngüsü**: uygulamanızın, kişiselleştirmeye faydalanabilir her bölümü için, _öğrenme döngüsü_ olarak adlandırılan bir kişiselleştirici kaynağı oluşturursunuz. Kişiselleştirmek için birden fazla deneyim varsa, her biri için bir döngü oluşturun.
 
 * **Model**: bir kişiselleştirici modeli, Kullanıcı davranışı hakkında öğrenilen tüm verileri yakalar, daha fazla bilgi almak için göndereceğiniz bağımsız değişkenlerin birleşiminden eğitim verileri alma ve öğrenme ilkesi tarafından belirlenen bir eğitim davranışı.
 
@@ -80,14 +80,14 @@ Kişiselleştirici [Azure Portal](https://portal.azure.com)bir şekilde yapılan
 
 * **Değerlendirme**: çevrimdışı bir değerlendirme, uygulamanızın verilerine göre döngünüz için en iyi öğrenme ilkesini belirler.
 
-* **Öğrenme ilkesi**: her olay üzerinde kişiselleştirici, makine öğrenimi algoritmasının nasıl çalıştığını etkileyen bazı parametrelere göre belirlenir. Yeni bir öğrenme döngüsü, varsayılan bir **öğrenme ilkesiyle**başlar ve bu, orta düzeyde performans sağlayabilir. [Değerlendirme](concepts-offline-evaluation.md)çalıştırılırken, kişiselleştirici, özel olarak döngülerinizin kullanım örneklerine iyileştirilmiş yeni öğrenme ilkeleri oluşturur. Kişiselleştirmede, değerlendirme sırasında oluşturulan her bir döngü için en iyi duruma getirilmiş ilkelerle önemli ölçüde daha iyi işlem yapılır. Öğrenme ilkesi, Azure portal ' deki kişiselleştirici kaynak için **model ve öğrenme ayarları** ' nda _öğrenme ayarları_ olarak adlandırılır.
+* **Öğrenme ilkesi**: her olay üzerinde kişiselleştirici, makine öğrenimi algoritmasının nasıl çalıştığını etkileyen bazı parametrelere göre belirlenir. Yeni bir öğrenme döngüsü, varsayılan bir **öğrenme ilkesiyle** başlar ve bu, orta düzeyde performans sağlayabilir. [Değerlendirme](concepts-offline-evaluation.md)çalıştırılırken, kişiselleştirici, özel olarak döngülerinizin kullanım örneklerine iyileştirilmiş yeni öğrenme ilkeleri oluşturur. Kişiselleştirmede, değerlendirme sırasında oluşturulan her bir döngü için en iyi duruma getirilmiş ilkelerle önemli ölçüde daha iyi işlem yapılır. Öğrenme ilkesi, Azure portal ' deki kişiselleştirici kaynak için **model ve öğrenme ayarları** ' nda _öğrenme ayarları_ olarak adlandırılır.
 
 ### <a name="apprentice-mode-evaluations"></a>Apprence modu değerlendirmeleri
 
-Apprenlet modu aşağıdaki **değerlendirme ölçümlerini**sağlar:
+Apprenlet modu aşağıdaki **değerlendirme ölçümlerini** sağlar:
 * **Taban çizgisi – ortalama ödül**: uygulamanın varsayılan (taban çizgisi) ortalama yeniden sürümleri.
 * **Kişiselleştirici – ortalama ödül**: Toplam Rede kişiselleştiriciye ait ortalama, potansiyel olarak gelmiş olabilir.
-* **Ortalama hareketli geri**alma: en son 1000 olay üzerinden normalleştirilmeli ve kişiselleştirici geri alma oranı.
+* **Ortalama hareketli geri** alma: en son 1000 olay üzerinden normalleştirilmeli ve kişiselleştirici geri alma oranı.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

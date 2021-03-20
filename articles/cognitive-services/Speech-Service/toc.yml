@@ -111,7 +111,7 @@
           href: speech-synthesis-markup.md
         - name: Uzun Ses API'siyle konuşmayı sentezleme
           href: long-audio-api.md
-        - name: LIP için viseme verilerini al-Eşitle
+        - name: LIP-Sync için yüz poz olayları alın
           href: how-to-speech-synthesis-viseme.md
     - name: Özelleştirme
       items:

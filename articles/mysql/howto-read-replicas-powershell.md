@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 8/24/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: fe33730fc11bfc18b7d67471e1077fb9490385d4
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94541955"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-powershell"></a>PowerShell kullanarak MySQL için Azure veritabanı 'nda okuma çoğaltmaları oluşturma ve yönetme
@@ -22,7 +22,7 @@ Bu makalede, PowerShell kullanarak MySQL için Azure veritabanı hizmetinde okum
 
 PowerShell kullanarak okuma çoğaltmaları oluşturabilir ve yönetebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
 
@@ -54,10 +54,10 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 `New-AzMySqlReplica`Komut aşağıdaki parametreleri gerektirir:
 
-| Ayar | Örnek değer | Açıklama  |
+| Ayar | Örnek değer | Description  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Çoğaltma sunucusunun oluşturulduğu kaynak grubu.  |
-| Ad | mydemoreplicaserver | Oluşturulan yeni çoğaltma sunucusunun adı. |
+| Name | mydemoreplicaserver | Oluşturulan yeni çoğaltma sunucusunun adı. |
 
 Çapraz bölge okuma çoğaltması oluşturmak için **konum** parametresini kullanın. Aşağıdaki örnekte **Batı ABD** bölgesinde bir çoğaltma oluşturulur.
 
@@ -83,7 +83,7 @@ Get-AzMySqlReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
 
 `Get-AzMySqlReplica`Komut aşağıdaki parametreleri gerektirir:
 
-| Ayar | Örnek değer | Açıklama  |
+| Ayar | Örnek değer | Description  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Çoğaltma sunucusunun oluşturulacağı kaynak grubu.  |
 | aboneliğinde ve | mydemoserver | Kaynak sunucunun adı veya KIMLIĞI. |

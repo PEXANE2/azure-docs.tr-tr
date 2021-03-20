@@ -6,23 +6,23 @@ ms.topic: include
 ms.date: 10/16/2019
 ms.author: mimart
 ms.openlocfilehash: f227021f6cd71686eb58b43dc16a03d6fc010b83
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84672551"
 ---
 #### <a name="app-registrations"></a>[Uygulama kayıtları](#tab/app-reg-ga/) 
 
-1. **Yönet**altında **Sertifikalar & gizlilikler**' ı seçin.
+1. **Yönet**’in altında **Sertifikalar ve gizli diziler**’i seçin.
 1. **Yeni istemci gizli dizisi**’ni seçin.
 1. **Açıklama** kutusuna istemci parolası için bir açıklama girin. Örneğin, *clientsecret1*.
-1. **Süre sonu**altında, parolasının geçerli olduğu bir süre seçin ve ardından **Ekle**' yi seçin.
-1. Gizli dizi **değerini**kaydedin. Yapılandırma için bu değeri sonraki bir adımda kullanırsınız.
+1. **Süre sonu** altında, parolasının geçerli olduğu bir süre seçin ve ardından **Ekle**' yi seçin.
+1. Gizli dizi **değerini** kaydedin. Yapılandırma için bu değeri sonraki bir adımda kullanırsınız.
 
 #### <a name="applications-legacy"></a>[Uygulamalar (eski)](#tab/applications-legacy/)
 
-1. **API erişimi**altında **anahtarlar**' ı seçin.
+1. **API erişimi** altında **anahtarlar**' ı seçin.
 1. **Anahtar açıklaması** kutusuna anahtar için bir açıklama girin. Örneğin, *clientsecret1*.
 1. Bir geçerlilik **süresi** seçin ve ardından **Kaydet**' i seçin.
-1. Anahtarın **değerini**kaydedin. Yapılandırma için bu değeri sonraki bir adımda kullanırsınız.
+1. Anahtarın **değerini** kaydedin. Yapılandırma için bu değeri sonraki bir adımda kullanırsınız.

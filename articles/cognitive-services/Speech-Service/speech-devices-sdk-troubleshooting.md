@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: wellsi
 ms.openlocfilehash: c590e0972de289a36890a75b220eddbded701ea8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74815571"
 ---
 # <a name="troubleshoot-the-speech-devices-sdk"></a>Konuşma Cihazları SDK’sında sorun giderme
@@ -25,11 +25,11 @@ Bu makalede, konuşma cihazları SDK 'sını kullandığınızda karşılaşabil
 
 Konuşma hizmetini kullanırken sertifika hatalarıyla karşılaşırsanız, cihazınızın doğru tarih ve saate sahip olduğundan emin olun:
 
-1. **Ayarlar**' a gidin. **Sistem**altında **Tarih & saat**' i seçin.
+1. **Ayarlar**' a gidin. **Sistem** altında **Tarih & saat**' i seçin.
 
     ![Ayarlar altında Tarih & saat ' i seçin](media/speech-devices-sdk/qsg-12.png)
 
-1. **Otomatik tarih & saat** seçeneğini seçili tutun. **Saat dilimi Seç**altında geçerli saat diliminizi seçin.
+1. **Otomatik tarih & saat** seçeneğini seçili tutun. **Saat dilimi Seç** altında geçerli saat diliminizi seçin.
 
     ![Tarih ve saat dilimi seçeneklerini belirleyin](media/speech-devices-sdk/qsg-13.png)
 

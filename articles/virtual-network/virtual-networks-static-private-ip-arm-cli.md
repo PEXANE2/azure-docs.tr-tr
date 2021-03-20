@@ -17,10 +17,10 @@ ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: allensu
 ms.openlocfilehash: c34ab73422d8dd41feb9da542ed63fdba060fe3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84708170"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Azure CLı kullanarak bir sanal makine için özel IP adresleri yapılandırma
@@ -35,7 +35,7 @@ ms.locfileid: "84708170"
 
 ## <a name="specify-a-static-private-ip-address-when-creating-a-vm"></a>VM oluştururken statik bir özel IP adresi belirtin
 
-*192.168.1.101*statik özel IP 'Si Ile *Testvnet* adlı VNET 'in *ön uç* alt ağında *DNS01* adlı bir VM oluşturmak için aşağıdaki adımları izleyin:
+*192.168.1.101* statik özel IP 'Si Ile *Testvnet* adlı VNET 'in *ön uç* alt ağında *DNS01* adlı bir VM oluşturmak için aşağıdaki adımları izleyin:
 
 1. Henüz yapmadıysanız, en son [Azure CLI](/cli/azure/install-azure-cli) 'yı yükleyip yapılandırın ve [az Login](/cli/azure/reference-index)kullanarak bir Azure hesabında oturum açın.
 
@@ -127,7 +127,7 @@ ms.locfileid: "84708170"
 
 ## <a name="retrieve-static-private-ip-address-information-for-a-vm"></a>Bir VM için statik özel IP adresi bilgilerini alma
 
-*Özel IP ayırma yöntemi* ve *özel IP adresi*değerlerini gözlemlemek için aşağıdaki Azure CLI komutunu çalıştırın:
+*Özel IP ayırma yöntemi* ve *özel IP adresi* değerlerini gözlemlemek için aşağıdaki Azure CLI komutunu çalıştırın:
 
 ```azurecli
 az vm show -g TestRG -n DNS01 --show-details --query 'privateIps'
@@ -168,7 +168,7 @@ Azure Resource Manager dağıtımları için Azure CLı içindeki bir NIC 'den s
 
 Önceki komutlarda kullanılan VM 'nin NIC 'sini değiştirmek için aşağıdaki adımları izleyin:
 
-1. Yeni bir IP adresi ile dinamik IP ayırmayı kullanarak yeni bir NIC oluşturmak için **Azure ağ NIC oluştur** komutunu çalıştırın. Hiçbir IP adresi belirtilmediğinden, ayırma yöntemi **dinamik**olur.
+1. Yeni bir IP adresi ile dinamik IP ayırmayı kullanarak yeni bir NIC oluşturmak için **Azure ağ NIC oluştur** komutunu çalıştırın. Hiçbir IP adresi belirtilmediğinden, ayırma yöntemi **dinamik** olur.
 
     ```azurecli
     az network nic create     \

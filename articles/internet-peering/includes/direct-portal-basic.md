@@ -1,7 +1,7 @@
 ---
-title: dosya dahil etme
+title: include dosyası
 titleSuffix: Azure
-description: dosya dahil etme
+description: include dosyası
 services: internet-peering
 author: derekolo
 ms.service: internet-peering
@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 5/22/2020
 ms.author: derekol
 ms.openlocfilehash: e2804c8f9b1af89ac0ea86ec14136df66d900060
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83846199"
 ---
 1. **Kaynak oluştur**' u seçin  >  **Tümünü gör**.
@@ -35,8 +35,8 @@ ms.locfileid: "83846199"
     > [!div class="mx-imgBorder"]
     > ![Eşleme temelleri sekmesi](../media/setup-basics-tab.png)
 
-    * Azure **aboneliğinizi**seçin.
-    * **Kaynak grubu**için, açılan listeden var olan bir kaynak grubunu seçebilir veya **Yeni oluştur**' u seçerek yeni bir grup oluşturabilirsiniz. Bu örnek için yeni bir kaynak grubu oluşturacağız.
+    * Azure **aboneliğinizi** seçin.
+    * **Kaynak grubu** için, açılan listeden var olan bir kaynak grubunu seçebilir veya **Yeni oluştur**' u seçerek yeni bir grup oluşturabilirsiniz. Bu örnek için yeni bir kaynak grubu oluşturacağız.
     * **Ad** , kaynak adına karşılık gelir ve seçtiğiniz herhangi bir şey olabilir.
     * Mevcut bir kaynak grubunu seçtiyseniz **bölge** , oto seçilir. Yeni bir kaynak grubu oluşturmayı seçerseniz, kaynağın bulunmasını istediğiniz Azure bölgesini de seçmeniz gerekir.
 

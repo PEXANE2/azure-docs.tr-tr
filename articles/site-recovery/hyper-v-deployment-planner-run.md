@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: mayg
 ms.openlocfilehash: ba1979c940d4a92b3d1a7a52a4f356b2896ece55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74082616"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Azure'a Hyper-V olağanüstü durum kurtarma işlemi için Azure Site Recovery dağıtım planlayıcısını çalıştırma
@@ -157,7 +157,7 @@ Depolama hesabı adı ve anahtarı geçirildiğinde, araç profil oluşturma iş
 Azure Site Recovery, Iscsı ve geçiş diskleri olan VM 'Leri desteklemez. Araç, VM 'lere eklenmiş Iscsı ve geçiş disklerini algılayamaz ve profil ekleyemez.
 
 ## <a name="generate-a-report"></a>Rapor oluşturma
-Araç, rapor çıktısı olarak makro özellikli bir Microsoft Excel dosyası (XLSM dosyası) oluşturur. Bu dosya tüm dağıtım önerilerini özetler. Rapor*benzersiz DeploymentPlannerReport_ sayısal tanımlayıcı*. xlsm olarak adlandırılır ve belirtilen dizine yerleştirilir.
+Araç, rapor çıktısı olarak makro özellikli bir Microsoft Excel dosyası (XLSM dosyası) oluşturur. Bu dosya tüm dağıtım önerilerini özetler. Rapor *benzersiz DeploymentPlannerReport_ sayısal tanımlayıcı*. xlsm olarak adlandırılır ve belirtilen dizine yerleştirilir.
 
 Profil oluşturma tamamlandıktan sonra, aracı rapor oluşturma modunda çalıştırabilirsiniz. 
 
@@ -292,7 +292,7 @@ ASRDeploymentPlanner.exe -Operation GetThroughput -Virtualization Hyper-V -Direc
 
 ### <a name="throughput-considerations"></a>Aktarım hızı konusunda dikkat edilmesi gerekenler
 
-Araç, belirtilen dizinde 64 MB’lık birkaç asrvhdfile*number*.vhd (*number* dosya sayısıdır) dosyası oluşturur. Araç, aktarım hızını bulmak için dosyaları depolama hesabına yükler. Aktarım hızı ölçüldükten sonra araç tüm dosyaları depolama hesabından ve yerel sunucudan siler. Araç aktarım hızını hesaplarken herhangi bir nedenle sonlandırılırsa, dosyaları depolama hesabından veya yerel sunucudan silmez. Bunları el ile silmeniz gerekir.
+Araç, belirtilen dizinde 64 MB’lık birkaç asrvhdfile *number*.vhd (*number* dosya sayısıdır) dosyası oluşturur. Araç, aktarım hızını bulmak için dosyaları depolama hesabına yükler. Aktarım hızı ölçüldükten sonra araç tüm dosyaları depolama hesabından ve yerel sunucudan siler. Araç aktarım hızını hesaplarken herhangi bir nedenle sonlandırılırsa, dosyaları depolama hesabından veya yerel sunucudan silmez. Bunları el ile silmeniz gerekir.
 
 Aktarım hızı zaman içinde belirli bir noktada çözülür. Diğer tüm faktörler aynı kalırsa Azure Site Recovery’nin çoğaltma sırasında ulaşabileceği en yüksek aktarım hızıdır. Örneğin, herhangi bir uygulama aynı ağ üzerinde daha fazla bant genişliği tüketmeye başlarsa, çoğaltma sırasında gerçek aktarım hızı farklılık gösterir. Korunan VM’ler yüksek veri değişim sıklığına sahip olduğunda GetThroughput işlemi çalıştırılırsa, ölçülen aktarım hızının sonucu farklı olur. 
 

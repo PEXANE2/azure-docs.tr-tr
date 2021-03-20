@@ -8,10 +8,10 @@ ms.date: 06/30/2020
 ms.service: azure-education
 ms.subservice: education-hub
 ms.openlocfilehash: 680e22974aa85ae2d179f0b927a44b3471b4939d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87102263"
 ---
 # <a name="what-is-azure-dev-tools-for-teaching"></a>Öğretim için Azure Geliştirici Araçları nedir?
@@ -26,7 +26,7 @@ Eğitim aboneliği için Azure dev Araçları Yöneticisi olarak şunları yapab
 
 ## <a name="program-details"></a>Program Ayrıntıları
 
-Düzey odaklı yönerge için eğitim için Azure dev araçları 'nı tasarlıyoruz. Bilim, teknoloji, mühendislik veya matematik 'ya odaklanmış herhangi bir kurs, Mesleme öğretimi ve öğrencilerin daha verimli bir şekilde öğrenilmesi için Azure dev araçları 'nı kullanma hakkına sahiptir. 
+Öğretim için Azure Geliştirici Araçları'nı STEM odaklı dersler için tasarladık. Bilim, teknoloji, mühendislik veya matematiğe odaklı tüm ders müfredatları, öğretmenlerin daha etkili öğretmesine ve öğrencilerin daha iyi öğrenmesine yardımcı olmak için Öğretim için Azure Geliştirici Araçları'nı kullanmaya uygundur. 
 
 Eğitim için Microsoft Azure Geliştirici Araçları aboneliği, belirli yazılım geliştirici araçlarına erişmenizi sağlar. Bu araçların ücretsiz olarak indirilmesi sağlanır. Bir Fakülteler üyesi onaylanmış bir kursa kaydedildiyse, ticari olmayan kullanım için kişisel bilgisayarınıza eğitim yazılımı için Azure dev araçları 'nı yüklemeye uygunsunuz demektir.
 

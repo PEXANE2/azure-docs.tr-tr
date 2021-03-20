@@ -4,10 +4,10 @@ description: Azure VMware Çözüm dağıtımı veya sağlama hatası için bir 
 ms.topic: how-to
 ms.date: 10/28/2020
 ms.openlocfilehash: 27b645f4ca225fdd74bca6499b6581b3803e41a4
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94542414"
 ---
 # <a name="open-a-support-request-for-an-azure-vmware-solution-deployment-or-provisioning-failure"></a>Azure VMware Çözüm dağıtımı veya sağlama hatası için bir destek isteği açın
@@ -39,7 +39,7 @@ Azure portal, bir kaynağın bağıntı KIMLIĞINI iki şekilde edinebilirsiniz:
 
 1. Azure portal özel bulutunuzu seçin.
 
-1. Sol menüde **genel bakış** ' ı seçin.
+1. Sol menüde **genel bakış**' ı seçin.
 
 Dağıtım başlatıldıktan sonra, dağıtımın sonuçları özel buluta **genel bakış** bölmesinde gösterilir.
 
@@ -55,7 +55,7 @@ Dağıtım günlüğüne erişmek için:
 
    :::image type="content" source="media/fix-deployment-provisioning-failures/open-notifications.png" alt-text="Azure portal Bildirimler simgesini gösteren ekran görüntüsü.":::
 
-1. **Bildirimler** bölmesinde **etkinlik günlüğünde diğer olaylar** ' ı seçin:
+1. **Bildirimler** bölmesinde **etkinlik günlüğünde diğer olaylar**' ı seçin:
 
     :::image type="content" source="media/fix-deployment-provisioning-failures/more-events-in-activity-log.png" alt-text="Bildirimler bölmesinde seçilen etkinlik günlüğü bağlantısında daha fazla olayı gösteren ekran görüntüsü.":::
 
@@ -84,7 +84,7 @@ Hata iletisini kopyalamak için Kopyala simgesini seçin. Kopyalanmış iletiyi,
 ExpressRoute KIMLIĞINI kopyalamak için:
 
 1. Azure portal özel bulutunuzu seçin.
-1. Sol taraftaki menüde, **Yönet** altında **bağlantı** ' yı seçin. 
+1. Sol taraftaki menüde, **Yönet** altında **bağlantı**' yı seçin. 
 1. Sağ bölmede **ExpressRoute** sekmesini seçin.
 1. **ExpressRoute kimliği** için Kopyala simgesini seçin ve destek talebinizdeki kullanılacak değeri kaydedin.
  
@@ -106,7 +106,7 @@ Destek isteği oluşturma hakkında genel bilgi için bkz. [Azure destek isteği
 
 Azure VMware Çözüm dağıtımı veya sağlama hatası için bir destek isteği oluşturmak için:
 
-1. Azure portal, **Yardım** simgesini seçin ve ardından **Yeni destek isteği** ' ni seçin.
+1. Azure portal, **Yardım** simgesini seçin ve ardından **Yeni destek isteği**' ni seçin.
 
     :::image type="content" source="media/fix-deployment-provisioning-failures/open-sr-on-avs.png" alt-text="Azure portal yeni destek isteği bölmesinin ekran görüntüsü.":::
 
@@ -114,9 +114,9 @@ Azure VMware Çözüm dağıtımı veya sağlama hatası için bir destek isteğ
 
    1. **Temel Bilgiler** sekmesinde:
 
-      1. **Sorun türü** için **yapılandırma ve kurulum sorunları** ' nı seçin.
+      1. **Sorun türü** için **yapılandırma ve kurulum sorunları**' nı seçin.
 
-      1. **Sorun alt türü** için **özel bulut sağla** ' yı seçin.
+      1. **Sorun alt türü** için **özel bulut sağla**' yı seçin.
 
    1. **Ayrıntılar** sekmesinde:
 

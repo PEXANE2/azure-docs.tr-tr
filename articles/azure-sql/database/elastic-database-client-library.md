@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/25/2018
 ms.openlocfilehash: bfe5dc00ba0255520c04ea85157f0b8bdc71b590
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84050229"
 ---
 # <a name="building-scalable-cloud-databases"></a>Ölçeklenebilir bulut veritabanları oluşturma
@@ -69,7 +69,7 @@ Genel olarak, elastik veritabanı araçları kullanan müşteriler, kendi semant
 - GitHub ([Java](https://github.com/Microsoft/elastic-db-tools-for-java/blob/master/README.md), [.net](https://github.com/Azure/elastic-db-tools))-koda katkı sağlamak için.
 - [Azure SQL veritabanı elastik sorguya genel bakış](elastic-query-overview.md) -elastik sorgular kullanmak için.
 
-- [Ölçeği genişletilen bulut veritabanları arasında veri taşıma](elastic-scale-overview-split-and-merge.md) - **bölünmüş birleştirme aracını**kullanma hakkında yönergeler için.
+- [Ölçeği genişletilen bulut veritabanları arasında veri taşıma](elastic-scale-overview-split-and-merge.md) - **bölünmüş birleştirme aracını** kullanma hakkında yönergeler için.
 
 
 

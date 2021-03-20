@@ -27,6 +27,8 @@
         - name: DMS ile en düşük kapalı kalma süresiyle geçiş
           href: howto-migrate-online.md
           displayName: 'dms, data migration service'
+        - name: Oracle 'dan geçiş
+          href: howto-migrate-from-oracle.md
     - name: Sürüm ilkesi
       href: concepts-version-policy.md
       displayName: 'version, postgresql'
@@ -98,7 +100,7 @@
             - name: Azure portal
               href: tutorial-design-database-using-azure-portal.md
               displayName: design database
-            - name: Azure CLI
+            - name: Azure CLI’si
               href: tutorial-design-database-using-azure-cli.md
             - name: Azure PowerShell
               href: tutorial-design-database-using-powershell.md
@@ -242,7 +244,7 @@
           items:
             - name: Azure portal
               href: howto-restart-server-portal.md
-            - name: Azure CLI
+            - name: Azure CLI’si
               href: howto-restart-server-cli.md
             - name: Azure PowerShell
               href: howto-restart-server-powershell.md
@@ -262,7 +264,7 @@
             - name: Azure portal
               href: howto-restore-server-portal.md
               displayName: 'restore, georestore, geo-restore, outage'
-            - name: Azure CLI
+            - name: Azure CLI’si
               href: howto-restore-server-cli.md
               displayName: 'restore, georestore, geo-restore, outage'
             - name: Azure PowerShell
@@ -306,7 +308,7 @@
             - name: Azure portal
               href: howto-configure-server-parameters-using-portal.md
               displayName: 'application development, server parameters'
-            - name: Azure CLI
+            - name: Azure CLI’si
               href: howto-configure-server-parameters-using-cli.md
               displayName: 'application development, server parameters'
             - name: Azure PowerShell
@@ -317,7 +319,7 @@
             - name: Azure portal
               href: howto-auto-grow-storage-portal.md
               displayName: 'business continuity, scale , storage'
-            - name: Azure CLI
+            - name: Azure CLI’si
               href: howto-auto-grow-storage-cli.md
               displayName: 'business continuity, scale , storage'
             - name: Azure PowerShell
@@ -424,7 +426,7 @@
               href: flexible-server/quickstart-create-server-arm-template.md
         - name: Bağlanma ve sorgulama
           items:
-            - name: Azure CLI
+            - name: Azure CLI’si
               href: flexible-server/connect-azure-cli.md
             - name: Python
               href: flexible-server/connect-python.md
@@ -669,7 +671,7 @@
               href: howto-hyperscale-useful-diagnostic-queries.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/postgres
     - name: REST API
       href: /rest/api/postgresql

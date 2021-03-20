@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: app-service
 author: kraigb
 ms.service: app-service
@@ -9,10 +9,10 @@ ms.date: 09/24/2020
 ms.author: kraigb
 ms.custom: include file
 ms.openlocfilehash: b7a37e52437b866b1159abc415af0e94da34d3c8
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91829104"
 ---
 # <a name="bash"></a>[Bash](#tab/bash)

@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: damendo
 ms.openlocfilehash: c04da65af27ebd5ac654bc059ae004c157a20f33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84737538"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>Bir Azure sanal ağının topolojisini görüntüleme
@@ -31,17 +31,17 @@ Bir topolojiyi görüntülemek için [Azure Portal](#azure-portal), [Azure CLI](
 1. [Azure Portal](https://portal.azure.com) , gerekli [izinlere](required-rbac-permissions.md)sahip bir hesapla oturum açın.
 2. Portalın sol üst köşesinde, **tüm hizmetler**' i seçin.
 3. **Tüm hizmetler** filtresi kutusunda *Ağ İzleyicisi*' ni girin. Sonuçlarda **Ağ İzleyicisi** göründüğünde seçin.
-4. **Topoloji**’yi seçin. Topoloji oluşturmak için, topolojisi oluşturmak istediğiniz sanal ağın aynı bölgede bir ağ izleyicisi olması gerekir. Topolojisi oluşturmak istediğiniz sanal ağın bulunduğu bölgede etkin bir ağ izleyicisi yoksa, ağ izleyicileri tüm bölgelerde sizin için otomatik olarak oluşturulur. Ağ izleyicileri, **NetworkWatcherRG**adlı bir kaynak grubunda oluşturulur.
-5. Bir abonelik, için topolojiyi görüntülemek istediğiniz bir sanal ağın kaynak grubunu seçin ve ardından sanal ağı seçin. Aşağıdaki resimde, *Myresourcegroup*adlı kaynak grubunda *myvnet*adlı bir sanal ağ için bir topoloji gösterilir:
+4. **Topoloji**’yi seçin. Topoloji oluşturmak için, topolojisi oluşturmak istediğiniz sanal ağın aynı bölgede bir ağ izleyicisi olması gerekir. Topolojisi oluşturmak istediğiniz sanal ağın bulunduğu bölgede etkin bir ağ izleyicisi yoksa, ağ izleyicileri tüm bölgelerde sizin için otomatik olarak oluşturulur. Ağ izleyicileri, **NetworkWatcherRG** adlı bir kaynak grubunda oluşturulur.
+5. Bir abonelik, için topolojiyi görüntülemek istediğiniz bir sanal ağın kaynak grubunu seçin ve ardından sanal ağı seçin. Aşağıdaki resimde, *Myresourcegroup* adlı kaynak grubunda *myvnet* adlı bir sanal ağ için bir topoloji gösterilir:
 
     ![Topolojiyi görüntüle](./media/view-network-topology/view-topology.png)
 
     Önceki resimde görebileceğiniz gibi, sanal ağ üç alt ağ içerir. Bir alt ağda dağıtılan bir VM vardır. VM 'ye bağlı bir ağ arabirimi ve onunla ilişkili bir genel IP adresi vardır. Diğer iki alt ağın kendileriyle ilişkili bir yol tablosu vardır. Her yol tablosu iki yol içerir. Bir alt ağ ile ilişkili bir ağ güvenlik grubu vardır. Topoloji bilgileri yalnızca şu kaynaklar için gösterilir:
     
-    - Aynı kaynak grubu ve bölge içinde *Myvnet* sanal ağı ile. Örneğin, *Myresourcegroup*dışında bir kaynak grubunda bulunan bir ağ güvenlik grubu, ağ güvenlik grubu *myvnet* sanal ağındaki bir alt ağla ilişkilendirilmiş olsa bile gösterilmez.
+    - Aynı kaynak grubu ve bölge içinde *Myvnet* sanal ağı ile. Örneğin, *Myresourcegroup* dışında bir kaynak grubunda bulunan bir ağ güvenlik grubu, ağ güvenlik grubu *myvnet* sanal ağındaki bir alt ağla ilişkilendirilmiş olsa bile gösterilmez.
     - Veya içinde, *Myvnet* sanal ağı içindeki kaynaklarla ilişkilendirilir. Örneğin, ağ güvenlik grubu *Myresourcegroup* kaynak grubunda olsa bile, *myvnet* sanal ağındaki bir alt ağ veya ağ arabirimi ile ilişkilendirilmemiş bir ağ güvenlik grubu gösterilmez.
 
-   Resimde gösterilen topoloji, [Azure CLI](../virtual-network/scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)veya [PowerShell](../virtual-network/scripts/virtual-network-powershell-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)kullanarak dağıtabileceğiniz **bir ağ sanal gereç betiği örneği aracılığıyla yönlendirme trafiği**dağıttıktan sonra oluşturulan sanal ağ içindir.
+   Resimde gösterilen topoloji, [Azure CLI](../virtual-network/scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)veya [PowerShell](../virtual-network/scripts/virtual-network-powershell-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)kullanarak dağıtabileceğiniz **bir ağ sanal gereç betiği örneği aracılığıyla yönlendirme trafiği** dağıttıktan sonra oluşturulan sanal ağ içindir.
 
 6. Görüntüyü, SVG biçiminde düzenlenebilir bir dosya olarak indirmek için **indirme topolojisi** ' ni seçin.
 
@@ -70,13 +70,13 @@ Kullandığınız hesabın gerekli [izinlere](required-rbac-permissions.md)sahip
       --enabled true
     ```
 
-3. Topolojiyi [az Network izleyici Show-Topology](/cli/azure/network/watcher#az-network-watcher-show-topology)ile görüntüleyin. Aşağıdaki örnek, *Myresourcegroup*adlı bir kaynak grubu için topolojiyi görüntüler:
+3. Topolojiyi [az Network izleyici Show-Topology](/cli/azure/network/watcher#az-network-watcher-show-topology)ile görüntüleyin. Aşağıdaki örnek, *Myresourcegroup* adlı bir kaynak grubu için topolojiyi görüntüler:
 
     ```azurecli-interactive
     az network watcher show-topology --resource-group MyResourceGroup
     ```
 
-    Topoloji bilgileri yalnızca *Myresourcegroup* kaynak grubu ile aynı kaynak grubunda ve ağ izleyicisiyle aynı bölge içinde olan kaynaklar için döndürülür. Örneğin, *Myresourcegroup*dışında bir kaynak grubunda bulunan bir ağ güvenlik grubu, ağ güvenlik grubu *myvnet* sanal ağındaki bir alt ağla ilişkilendirilmiş olsa bile gösterilmez.
+    Topoloji bilgileri yalnızca *Myresourcegroup* kaynak grubu ile aynı kaynak grubunda ve ağ izleyicisiyle aynı bölge içinde olan kaynaklar için döndürülür. Örneğin, *Myresourcegroup* dışında bir kaynak grubunda bulunan bir ağ güvenlik grubu, ağ güvenlik grubu *myvnet* sanal ağındaki bir alt ağla ilişkilendirilmiş olsa bile gösterilmez.
 
    Döndürülen çıktıda ilişkiler ve [Özellikler](#properties) hakkında daha fazla bilgi edinin. İçin bir topolojiyi görüntülemek üzere mevcut bir sanal ağınız yoksa bir [ağ sanal gereç betiği örneği aracılığıyla yönlendirme trafiğini](../virtual-network/scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) kullanarak bir tane oluşturabilirsiniz. Topolojinin bir diyagramını görüntülemek ve düzenlenebilir bir dosyaya indirmek için [portalını](#azure-portal)kullanın.
 
@@ -112,7 +112,7 @@ Kullandığınız hesabın gerekli [izinlere](required-rbac-permissions.md)sahip
       -ResourceGroupName $nw.ResourceGroupName
     ```
 
-4. [Get-AzNetworkWatcherTopology](/powershell/module/az.network/get-aznetworkwatchertopology)ile topoloji alma. Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubundaki bir sanal ağ için bir topoloji alır:
+4. [Get-AzNetworkWatcherTopology](/powershell/module/az.network/get-aznetworkwatchertopology)ile topoloji alma. Aşağıdaki örnek, *Myresourcegroup* adlı kaynak grubundaki bir sanal ağ için bir topoloji alır:
 
     ```azurepowershell-interactive
     Get-AzNetworkWatcherTopology `
@@ -120,7 +120,7 @@ Kullandığınız hesabın gerekli [izinlere](required-rbac-permissions.md)sahip
       -TargetResourceGroupName MyResourceGroup
     ```
 
-   Topoloji bilgileri yalnızca *Myresourcegroup* kaynak grubu ile aynı kaynak grubunda ve ağ izleyicisiyle aynı bölge içinde olan kaynaklar için döndürülür. Örneğin, *Myresourcegroup*dışında bir kaynak grubunda bulunan bir ağ güvenlik grubu, ağ güvenlik grubu *myvnet* sanal ağındaki bir alt ağla ilişkilendirilmiş olsa bile gösterilmez.
+   Topoloji bilgileri yalnızca *Myresourcegroup* kaynak grubu ile aynı kaynak grubunda ve ağ izleyicisiyle aynı bölge içinde olan kaynaklar için döndürülür. Örneğin, *Myresourcegroup* dışında bir kaynak grubunda bulunan bir ağ güvenlik grubu, ağ güvenlik grubu *myvnet* sanal ağındaki bir alt ağla ilişkilendirilmiş olsa bile gösterilmez.
 
    Döndürülen çıktıda ilişkiler ve [Özellikler](#properties) hakkında daha fazla bilgi edinin. İçin bir topolojiyi görüntülemek üzere mevcut bir sanal ağınız yoksa bir [ağ sanal gereç betiği örneği aracılığıyla yönlendirme trafiğini](../virtual-network/scripts/virtual-network-powershell-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) kullanarak bir tane oluşturabilirsiniz. Topolojinin bir diyagramını görüntülemek ve düzenlenebilir bir dosyaya indirmek için [portalını](#azure-portal)kullanın.
 

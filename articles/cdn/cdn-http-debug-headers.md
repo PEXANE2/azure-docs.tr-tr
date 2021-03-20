@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/12/2018
 ms.author: allensu
 ms.openlocfilehash: 4154c6a1e739f935022271e7a101f39d3ee5c500
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84343029"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>X-EC-Azure CDN kuralları altyapısı için HTTP üstbilgilerini hata ayıkla
@@ -41,7 +41,7 @@ X-EC-hata ayıkla: x-EC-Check-önbelleklenebilir | [Önbelleğe alınabilir öğ
 X-EC-hata ayıkla: x-EC-Cache-Key | [Cache-Key](#cache-key-response-header)
 X-EC-hata ayıklama: x-EC-Cache-State | [Önbellek durumu](#cache-state-response-header)
 
-### <a name="syntax"></a>Sözdizimi
+### <a name="syntax"></a>Syntax
 
 Aşağıdaki üst bilgi ve istekte belirtilen yönergeler eklenerek hata ayıklama önbelleği yanıt üstbilgileri istenebilir:
 
@@ -54,7 +54,7 @@ Aşağıdaki üst bilgi ve istekte belirtilen yönergeler eklenerek hata ayıkla
 ## <a name="cache-status-code-information"></a>Önbellek durum kodu bilgileri
 X-EC-Debug yanıt üst bilgisi, bir sunucuyu ve aşağıdaki yönergeler aracılığıyla yanıtı nasıl ele alındığını tanımlayabilir:
 
-Üst bilgi | Açıklama
+Üst bilgi | Description
 -------|------------
 X-EC-hata ayıklama: x-EC-önbellek | Bu üst bilgi, içerik CDN aracılığıyla her yönlendirildiğinde raporlanır. İsteği yerine getirdi POP sunucusunu tanımlar.
 X-EC-hata ayıklama: x-EC-Cache-Remote | Bu üst bilgi, yalnızca istenen içerik bir kaynak kalkan sunucusunda veya bir ADN Ağ Geçidi sunucusunda önbelleğe alındığında bildirilir.
@@ -120,7 +120,7 @@ Aşağıdaki örnek yanıt üst bilgisi, istenen içeriğin önbelleğe alınıp
 
 Bu fiziksel önbellek anahtarı, bir çift eğik çizgi (//) ve ardından içerik istemek için kullanılan protokol (HTTP veya HTTPS) ile başlar. Bu protokolün ardından, içerik erişim noktasıyla (örneğin, _/000001/_) başlayan istenen varlığın göreli yolu gelir.
 
-Varsayılan olarak, HTTP platformları *Standart önbellek*kullanacak şekilde yapılandırılmıştır. Bu, sorgu dizelerinin önbelleğe alma mekanizması tarafından yoksayılacağı anlamına gelir. Bu tür bir yapılandırma, Cache-Key ' in sorgu dizesi verilerini dahil etmesini engeller.
+Varsayılan olarak, HTTP platformları *Standart önbellek* kullanacak şekilde yapılandırılmıştır. Bu, sorgu dizelerinin önbelleğe alma mekanizması tarafından yoksayılacağı anlamına gelir. Bu tür bir yapılandırma, Cache-Key ' in sorgu dizesi verilerini dahil etmesini engeller.
 
 Bir sorgu dizesi önbellek anahtarına kaydedilirse, bu, karma eşdeğerine dönüştürülür ve ardından istenen varlığın adı ve dosya uzantısı arasına eklenir (örneğin, varlık &lt; karma değeri &gt; . html).
 
@@ -163,7 +163,7 @@ Yukarıdaki yanıt üst bilgisi sözdiziminde kullanılan terimler aşağıdaki 
 
 - RTTimePeriod: kalan TTL değerini (yani RTSeconds) daha büyük bir birimin yaklaşık eşdeğerine (örneğin, günler) dönüştürür.
 
-- ExpiresSeconds: Yanıt üstbilgisinde belirtilen tarih/saatten önce kalan saniye sayısını gösterir `Expires` . Yanıt `Expires` üst bilgisi yanıta dahil edilmediği takdirde bu terimin değeri *none*olur.
+- ExpiresSeconds: Yanıt üstbilgisinde belirtilen tarih/saatten önce kalan saniye sayısını gösterir `Expires` . Yanıt `Expires` üst bilgisi yanıta dahil edilmediği takdirde bu terimin değeri *none* olur.
 
 ### <a name="sample-response-header"></a>Örnek yanıt üst bilgisi
 

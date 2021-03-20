@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: sngun
 ms.openlocfilehash: 73a34cc27eaba33d04f4d31585c7f494f58e7274
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93334086"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB ve Azure Işlevleri 'ni kullanarak sunucusuz veritabanı hesaplama
@@ -124,7 +124,7 @@ Azure Işlevleri, altyapının sağlanması veya yönetilmesi gerekmeden, ölçe
 
 Azure Cosmos DB, aşağıdaki nedenlerden dolayı sunucusuz bilgi işlem mimariniz için önerilen veritabanıdır:
 
-* **Tüm verilerinize anında erişim** : Azure Cosmos DB tüm verileri [otomatik olarak dizinleyen](index-policy.md) ve bu dizinlerin hemen kullanılabilmesini sağlayan her değere ayrıntılı olarak erişebilirsiniz. Bu, veritabanınıza sürekli olarak sorgu, güncelleştirme ve yeni öğe ekleme ve Azure Işlevleri aracılığıyla anında erişim sağlayabilmeniz anlamına gelir.
+* **Tüm verilerinize anında erişim**: Azure Cosmos DB tüm verileri [otomatik olarak dizinleyen](index-policy.md) ve bu dizinlerin hemen kullanılabilmesini sağlayan her değere ayrıntılı olarak erişebilirsiniz. Bu, veritabanınıza sürekli olarak sorgu, güncelleştirme ve yeni öğe ekleme ve Azure Işlevleri aracılığıyla anında erişim sağlayabilmeniz anlamına gelir.
 
 * **Şeless**. Azure Cosmos DB şesız olduğundan, bir Azure Işlevinden alınan tüm veri çıkışlarını benzersiz bir şekilde işleyebiliyor. Bu "her şeyi işle" yaklaşımı, tüm çıktının Azure Cosmos DB için bir bütün olarak çeşitli Işlevler oluşturmayı basit hale getirir.
 

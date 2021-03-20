@@ -1,21 +1,21 @@
 ---
-title: Azure Stream Analytics ile gerçek zamanlı Twitter yaklaşım Analizi
-description: Bu makalede, Stream Analytics gerçek zamanlı Twitter yaklaşım analizi için nasıl kullanılacağı açıklanır. Canlı bir panodaki olay üretimi verilerine yönelik adım adım yönergeler.
+title: Azure Stream Analytics ile Sosyal Medya Analizi
+description: Bu makalede, Twitter istemci API 'sini kullanarak sosyal medya analizinin Stream Analytics nasıl kullanılacağı açıklanır. Canlı bir panodaki olay üretimi verilerine yönelik adım adım yönergeler.
 services: stream-analytics
 author: enkrumah
 ms.author: ebnkruma
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 02/10/2020
-ms.openlocfilehash: 6a461ad906f7611c8a13e2ee495f4d2f62fedd53
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.date: 03/16/2021
+ms.openlocfilehash: e2369e8f4349a3b4a83c1729c6414d319dd8419e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734854"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589676"
 ---
-# <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Azure Stream Analytics’te gerçek zamanlı Twitter yaklaşım analizi
+# <a name="social-media-analysis-with-azure-stream-analytics"></a>Azure Stream Analytics ile Sosyal Medya Analizi
 
 Bu makalede, gerçek zamanlı Twitter olaylarını Azure Event Hubs 'a taşıyarak sosyal medya yaklaşımı çözümleme çözümünü nasıl oluşturabileceğiniz öğretilir. Verileri analiz etmek ve daha sonra kullanmak üzere sonuçları depolamak ve gerçek zamanlı Öngörüler sağlamak için bir [Power BI](https://powerbi.com/) panosu oluşturmak üzere bir Azure Stream Analytics sorgusu yazın.
 
@@ -29,7 +29,7 @@ News medya web sitesi olan bir şirket, okuyucular üzerinde anında ilgili site
 
 Şirket içi konuları Twitter 'da gerçek zamanlı olarak belirlemek için, şirketin önemli konular hakkında tweet hacim ve yaklaşım hakkında gerçek zamanlı analizler olması gerekir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzunda, Twitter 'a bağlanan ve belirli bir hashtags olan (ayarlayabileceğiniz) bir istemci uygulaması kullanırsınız. Uygulamayı çalıştırmak ve Azure Akış Analizi 'ni kullanarak fazla doldurulabilir olması için aşağıdakilere sahip olmanız gerekir:
 

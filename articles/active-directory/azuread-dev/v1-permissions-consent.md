@@ -15,10 +15,10 @@ ms.reviewer: jesakowi
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 2b85115d905cb6a7eb7c6aed64a4834425d2f1d7
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92366403"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Azure Active Directory v 1.0 uç noktasındaki izinler ve onay
@@ -27,7 +27,7 @@ ms.locfileid: "92366403"
 
 Azure Active Directory (Azure AD), hem OAuth hem de OpenID Connect (OIDC) akışlarında izinleri yaygın olarak kullanır. Uygulamanız Azure AD'den bir erişim belirteci aldığında, bu belirteç uygulamanızın belirli bir kaynakla ilgili olarak sahip olduğu izinleri açıklayan talepler içerir.
 
-*Kapsam*olarak da bilinen *izinler*, kaynağın yalnızca belirtecin uygulamanın hangi API 'ye ait olduğunu denetlemesi gerektiğinden, kaynak için Yetkilendirmeyi kolaylaştırır.
+*Kapsam* olarak da bilinen *izinler*, kaynağın yalnızca belirtecin uygulamanın hangi API 'ye ait olduğunu denetlemesi gerektiğinden, kaynak için Yetkilendirmeyi kolaylaştırır.
 
 ## <a name="types-of-permissions"></a>İzin türleri
 
@@ -102,7 +102,7 @@ Azure AD'deki uygulamalar gerekli kaynaklara veya API'lere erişim kazanmak içi
   - `Permission` kullanıcının bu verileri üzerinde işlem yapması için eyleme karşılık gelir
   - `Modifier` farklı bir iznin özelleştirmelerini anlatmak için isteğe bağlı olarak kullanılır
     
-    Örneğin:
+    Örnek:
   - Mail.Read - Kullanıcıların postayı okumasına izin verir.
   - Mail.ReadWrite - Kullanıcıların postayı yazmasına veya okumasına izin verir.
   - Mail.ReadWrite.All - Yöneticinin veya kullanıcının kuruluştaki tüm postaya erişmesine izin verir.

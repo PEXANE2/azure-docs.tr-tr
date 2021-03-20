@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: harshacs
 ms.openlocfilehash: 367aba09f84da1e227c08721077aa1b2132a62bf
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92367984"
 ---
 # <a name="network-security-groups-with-azure-site-recovery"></a>Azure Site Recovery ile Ağ Güvenlik Grupları
@@ -27,9 +27,9 @@ Bu makalede, Azure Site Recovery ile ağ güvenlik gruplarını nasıl kullanabi
 Tek bir alt ağda sıfır veya ilişkili bir NSG olabilir. Tek bir ağ arabirimi sıfır veya ilişkili bir NSG de olabilir. Bu nedenle, önce bir NSG 'yi bir alt ağ ile ilişkilendirerek bir sanal makine için iki trafik kısıtlamasına sahip olabilirsiniz ve ardından VM 'nin ağ arabirimine başka bir NSG ekleyebilirsiniz. Bu durumda NSG kurallarının uygulanması, uygulanan güvenlik kurallarının trafik ve önceliğinin yönlerine bağlıdır.
 
 Bir sanal makineyle aşağıdaki gibi basit bir örnek düşünün:
--    Sanal makine **contoso alt ağının**içine yerleştirilir.
--    **Contoso alt** ağı, **alt ağ NSG**ile ilişkilendirilir.
--    VM ağ arabirimi Ayrıca **VM NSG**ile ilişkilendirilir.
+-    Sanal makine **contoso alt ağının** içine yerleştirilir.
+-    **Contoso alt** ağı, **alt ağ NSG** ile ilişkilendirilir.
+-    VM ağ arabirimi Ayrıca **VM NSG** ile ilişkilendirilir.
 
 ![Site Recovery ile NSG](./media/concepts-network-security-group-with-site-recovery/site-recovery-with-network-security-group.png)
 
@@ -50,7 +50,7 @@ Azure 'a yük devretmeden sonra sanal makineler oluşturulduktan sonra, ağ traf
 Örneğin, yük devretme sonrası VM yapılandırması yukarıda açıklanan [Örnek senaryoya](concepts-network-security-group-with-site-recovery.md#using-network-security-groups) benzerdir:
 -    Hedef Azure bölgesinde DR planlamasının parçası olarak **contoso VNET** ve **contoso alt ağı** oluşturabilirsiniz.
 -    Aynı DR planlamasının parçası olarak hem **alt ağ NSG** hem de **VM NSG 'yi** oluşturup yapılandırabilirsiniz.
--    Hem NSG hem de alt ağ zaten kullanılabilir olduğundan **alt ağ NSG** , **contoso alt ağıyla**hemen ilişkilendirilebilir.
+-    Hem NSG hem de alt ağ zaten kullanılabilir olduğundan **alt ağ NSG** , **contoso alt ağıyla** hemen ilişkilendirilebilir.
 -    **VM NSG** , kurtarma planları kullanılarak yük devretme sırasında VM 'lerle ilişkilendirilebilir.
 
 NSG 'ler oluşturulup yapılandırıldıktan sonra, betikte NSG ilişkilendirmelerini ve yük devretme sonrası VM bağlantısını doğrulamak için bir [Yük devretme testi](site-recovery-test-failover-to-azure.md) çalıştırmayı öneririz.

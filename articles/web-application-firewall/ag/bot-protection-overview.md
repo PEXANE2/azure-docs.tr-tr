@@ -9,10 +9,10 @@ ms.date: 05/20/2020
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: e01f9ac8966223e11ad218af7bf6fbb2462f28f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83714908"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway-bot-protection-overview"></a>Azure 'da Azure Web uygulaması güvenlik duvarı Application Gateway bot korumasına genel bakış
@@ -26,7 +26,7 @@ Bilinen kötü amaçlı IP adreslerinden gelen istekleri engellemek veya günlü
 
 ## <a name="use-with-owasp-rulesets"></a>OWASP RuleSets ile kullanma
 
-Bot Koruması kural kümesini diğer OWASP kural kümeleri (2.2.9, 3.0 ve 3.1) ile birlikte kullanabilirsiniz. Aynı anda yalnızca bir OWASP kural kümesi kullanılabilir. Bot koruması kural kümesinde kendi kural kümesinde görünen ek bir kural bulunur. Bu, **1. Microsoft_BotManagerRuleSet_0**başlığına sahiptir ve DIĞER OWASP kuralları gibi etkinleştirebilir veya devre dışı bırakabilirsiniz.
+Bot Koruması kural kümesini diğer OWASP kural kümeleri (2.2.9, 3.0 ve 3.1) ile birlikte kullanabilirsiniz. Aynı anda yalnızca bir OWASP kural kümesi kullanılabilir. Bot koruması kural kümesinde kendi kural kümesinde görünen ek bir kural bulunur. Bu, **1. Microsoft_BotManagerRuleSet_0** başlığına sahiptir ve DIĞER OWASP kuralları gibi etkinleştirebilir veya devre dışı bırakabilirsiniz.
 
 ![Bot RuleSet](../media/bot-protection-overview/bot-ruleset.png)
 

@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/28/2018
 ms.custom: seodec18
 ms.openlocfilehash: 999511c4759ee761f028a61fbfaa0310ac93d9b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74672410"
 ---
 # <a name="how-to-prepare-for-an-inbound-ip-address-change"></a>Gelen IP adresi değişikliğine hazırlanma
@@ -37,7 +37,7 @@ Uygulamanıza verilen yeni gelen IP adresi, **sanal IP adresi** alanındaki port
 
 1.  Uygulama bir işlev uygulaması ise, bkz. [işlev uygulaması gelen IP adresi](../azure-functions/ip-addresses.md#function-app-inbound-ip-address).
 
-4.  **Ayarlar** üst bilgisinde, sol gezinti bölmesinde **Özellikler** ' e tıklayın ve **sanal IP adresi**etiketli bölümü bulun.
+4.  **Ayarlar** üst bilgisinde, sol gezinti bölmesinde **Özellikler** ' e tıklayın ve **sanal IP adresi** etiketli bölümü bulun.
 
 5. IP adresini kopyalayın ve etki alanı kaydınızı veya IP mekanizmanızı yeniden yapılandırın.
 

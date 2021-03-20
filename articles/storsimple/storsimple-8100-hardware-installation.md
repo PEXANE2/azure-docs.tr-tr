@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 113b72ddf7e5d508c8a0b577d4004d4fbd83e8e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84699133"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>StorSimple 8100 cihazınızın paketini açma, raf bağlama ve kablo oluşturma
@@ -98,7 +98,7 @@ Cihaz kurulumunu el ile işliyorsa ağırlığı yönetmek için iki kişiye sah
 Bir bağlama rayları kümesi, 19 inç raf dolabı ile kullanılmak üzere sağlanır. Büyük/üst sınır, maksimum kasa ağırlığını işleyecek şekilde sınanmıştır. Bu rayları, raf içinde alan kaybı olmadan birden çok Kasası yüklemeye de izin verir.
 
 #### <a name="to-install-the-device-on-the-rails"></a>Cihazı raya 'ya yüklemek için
-1. Bu adımı yalnızca, iç rayları cihazınızda yüklü değilse gerçekleştirin. Genellikle, iç rayların fabrikada yüklü olması gerekir. Raylar yüklü değilse, sol kil ve sağ-Kııl slaytlarını, kasa kasasının kenarlarına yüklersiniz. Bunlar her bir tarafta altı ölçüm screws kullanarak iliştirirler. Yön ile ilgili yardım için, kıl slaytları **LH – Front** ve **RH – Front**olarak işaretlenir ve kutunun arka tarafına doğru bir şekilde yapıştırılmış olan uçta bir uçtan uca gösterilir.<br/>
+1. Bu adımı yalnızca, iç rayları cihazınızda yüklü değilse gerçekleştirin. Genellikle, iç rayların fabrikada yüklü olması gerekir. Raylar yüklü değilse, sol kil ve sağ-Kııl slaytlarını, kasa kasasının kenarlarına yüklersiniz. Bunlar her bir tarafta altı ölçüm screws kullanarak iliştirirler. Yön ile ilgili yardım için, kıl slaytları **LH – Front** ve **RH – Front** olarak işaretlenir ve kutunun arka tarafına doğru bir şekilde yapıştırılmış olan uçta bir uçtan uca gösterilir.<br/>
    
     ![Kasa Kasası 'na demiryolu kasalarını ekleme](./media/storsimple-8100-hardware-installation/HCSAttachingRailSlidestoEnclosureChassis.png)
 
@@ -109,7 +109,7 @@ Bir bağlama rayları kümesi, 19 inç raf dolabı ile kullanılmak üzere sağl
     1     | A 3x4 düğme-baş vida
     2     | Kasa slaytları
 
-2. Dış sol demiryolu ve dış sağ demiryolu derlemelerini raf dolabı dikey üyelerine iliştirin. Köşeli ayraçlar **LH**, **RH**ve **bu yana** doğru yönde size yol gösterecek şekilde işaretlenir.
+2. Dış sol demiryolu ve dış sağ demiryolu derlemelerini raf dolabı dikey üyelerine iliştirin. Köşeli ayraçlar **LH**, **RH** ve **bu yana** doğru yönde size yol gösterecek şekilde işaretlenir.
 3. Ray tertibatının ön ve arkasındaki ray pimlerini bulun. Kııl 'yi raf nakilleri arasına sığacak şekilde genişletin ve PIN 'leri ön ve arka rafa, dikey üye deliklere ekleyin. Demiryolu derlemesinin düzeyi olduğundan emin olun.
 4. Kııl derlemesini raf dikey üyelerine güvenli hale getirmek için, belirtilen ölçüm screıws ' nin ikisini kullanın. Önünde ve diğeri arkada bir vida kullanın.
 5. Diğer demiryolu derlemesi için bu adımları tekrarlayın.<br/>
@@ -184,7 +184,7 @@ Bu yedekli denetleyici yük devretmesini desteklemek için, aşağıdaki adımla
    
     **Veri bağlantı noktalarını gösteren cihazın geri dönmesi**
    
-   | Etiketle | Açıklama |
+   | Etiketle | Description |
    | --- | --- |
    |   0, 1, 4, 5 |1 GbE ağ arabirimleri |
    |   2, 3 |10 GbE ağ arabirimleri |
@@ -195,7 +195,7 @@ Bu yedekli denetleyici yük devretmesini desteklemek için, aşağıdaki adımla
 
     **Cihazınız için ağ kablolaması**
 
-   |Etiketle | Açıklama |
+   |Etiketle | Description |
    |----- | ----------- |
    | A    | Internet erişimi olan LAN |
    | B    | Denetleyici 0 |

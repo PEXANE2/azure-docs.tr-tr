@@ -16,10 +16,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 096da0547806680f62b569f7c7809a7bbb04cb86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84742088"
 ---
 # <a name="approve-or-deny-requests-for-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management Azure Kaynak rolleri için istekleri onaylama veya reddetme
@@ -32,9 +32,9 @@ Azure Kaynak rolleri için istekleri onaylamak veya reddetmek için bu makaledek
 
 Bir temsilci onaylayıcı olarak, Onayınızı bekleyen bir Azure Kaynak rolü isteği olduğunda bir e-posta bildirimi alırsınız. Bu bekleyen istekleri Privileged Identity Management görüntüleyebilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
-1. **Azure AD Privileged Identity Management**açın.
+1. **Azure AD Privileged Identity Management** açın.
 
 1. **Istekleri Onayla**' yı seçin.
 
@@ -50,7 +50,7 @@ Bir temsilci onaylayıcı olarak, Onayınızı bekleyen bir Azure Kaynak rolü i
 
 1. **Gerekçe** kutusunda iş gerekçe ' nı girin.
 
-1. **Onayla**seçeneğini belirleyin. Onayınız için bir Azure bildirimi alacaksınız.
+1. **Onayla** seçeneğini belirleyin. Onayınız için bir Azure bildirimi alacaksınız.
 
     ![İsteğin onaylandığını gösteren onay bildirimi](./media/pim-resource-roles-approval-workflow/resources-approve-notification.png)
 

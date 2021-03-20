@@ -9,10 +9,10 @@ ms.date: 07/17/2019
 ms.author: maquaran
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 78fff48a97965f0b80456cd3e56ed1507bc784fc
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93336699"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>Cosmos DB için birden çok Azure Işlevleri tetikleyicisi oluşturun
@@ -41,7 +41,7 @@ Bu makalenin amacı, ikinci seçeneği gerçekleştirmenize yardımcı olmaktır
 
 ## <a name="configuring-a-shared-leases-container"></a>Paylaşılan kiralamalar kapsayıcısı yapılandırma
 
-Paylaşılan kiralamalar kapsayıcısını yapılandırmak için tetikleyicilerinde yapmanız gereken tek ek yapılandırma, `LeaseCollectionPrefix` JavaScript kullanıyorsanız C# veya öznitelik kullanıyorsanız [özniteliği](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#attributes-and-annotations) eklemektir `leaseCollectionPrefix` [attribute](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md) . Özniteliğin değeri, belirli bir tetikleyicinin mantıksal tanımlayıcısı olmalıdır.
+Paylaşılan kiralamalar kapsayıcısını yapılandırmak için tetikleyicilerinde yapmanız gereken tek ek yapılandırma, `LeaseCollectionPrefix` JavaScript kullanıyorsanız C# veya öznitelik kullanıyorsanız [özniteliği](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#attributes-and-annotations) eklemektir `leaseCollectionPrefix` [](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md) . Özniteliğin değeri, belirli bir tetikleyicinin mantıksal tanımlayıcısı olmalıdır.
 
 Örneğin, üç tetikleyici varsa: bir, gerçekleştirilmiş bir görünüm oluşturmak için bir toplama yapan diğeri, başka bir depolama alanına değişiklikleri gönderen bir tane olan e-posta gönderen bir tane, daha sonraki analizler için `LeaseCollectionPrefix` "e-posta", ikincisine "gerçekleştirilmiş" ve üçüncü birine "analiz" atayabilirsiniz.
 

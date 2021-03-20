@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/30/2018
 ms.author: kumud
 ms.openlocfilehash: 1c23244707179e05c63ed44b5915e58eefd3f4a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84705058"
 ---
 # <a name="diagnose-a-virtual-machine-routing-problem"></a>Bir sanal makine yönlendirme sorununu tanılama
@@ -30,13 +30,13 @@ Bu makalede, bir sanal makinede (VM) bir ağ arabirimi için geçerli olan yolla
 
 Bir VM 'ye bağlanmaya çalışırsanız, ancak bağlantı başarısız olur. SANAL makineye neden bağlanamamanızın nedenini öğrenmek için, Azure [Portal](#diagnose-using-azure-portal), [POWERSHELL](#diagnose-using-powershell)veya [Azure CLI](#diagnose-using-azure-cli)kullanarak bir ağ arabirimine yönelik etkili yolları görüntüleyebilirsiniz.
 
-Aşağıdaki adımlarda, için geçerli yolları görüntülemek için mevcut bir sanal makinenizin olduğu varsayılır. Mevcut bir sanal makinenizin yoksa, bu makaledeki görevleri gerçekleştirmek için önce bir [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) veya [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) VM dağıtın. Bu makaledeki örnekler, *myVMNic1*adlı bir ağ arabirimine sahip *myvm* adlı bir sanal makine içindir. VM ve ağ arabirimi, *Myresourcegroup*adlı bir kaynak grubunda yer alan ve *Doğu ABD* bölgedeyse. Adımdaki değerleri, sorunu tanılarken kullandığınız VM için uygun şekilde değiştirin.
+Aşağıdaki adımlarda, için geçerli yolları görüntülemek için mevcut bir sanal makinenizin olduğu varsayılır. Mevcut bir sanal makinenizin yoksa, bu makaledeki görevleri gerçekleştirmek için önce bir [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) veya [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) VM dağıtın. Bu makaledeki örnekler, *myVMNic1* adlı bir ağ arabirimine sahip *myvm* adlı bir sanal makine içindir. VM ve ağ arabirimi, *Myresourcegroup* adlı bir kaynak grubunda yer alan ve *Doğu ABD* bölgedeyse. Adımdaki değerleri, sorunu tanılarken kullandığınız VM için uygun şekilde değiştirin.
 
 ## <a name="diagnose-using-azure-portal"></a>Azure portal kullanarak tanılama
 
 1. [Gerekli izinlere](virtual-network-network-interface.md#permissions)sahip bir Azure hesabıyla Azure [portalında](https://portal.azure.com) oturum açın.
 2. Azure portal üst kısmında, arama kutusuna çalışır durumda olan bir VM 'nin adını girin. VM 'nin adı arama sonuçlarında göründüğünde, bunu seçin.
-3. Sol taraftaki **Ayarlar** **altında ağ ' ı seçin ve**adı ' nı seçerek ağ arabirimi kaynağına gidin.
+3. Sol taraftaki **Ayarlar** **altında ağ ' ı seçin ve** adı ' nı seçerek ağ arabirimi kaynağına gidin.
      ![Ağ arabirimlerini görüntüle](./media/diagnose-network-routing-problem/view-nics.png)
 4. Sol tarafta, **etkin rotalar**' ı seçin. Aşağıdaki resimde, **myVMNic1** adlı bir ağ arabirimi için geçerli rotalar gösterilmektedir: ![ geçerli rotaları görüntüleme](./media/diagnose-network-routing-problem/view-effective-routes.png)
 
@@ -54,7 +54,7 @@ Etkin yollar önceki adımlarda VM üzerinden görüntülenmekle birlikte, geçe
 
 [Azure Cloud Shell](https://shell.azure.com/powershell)izleyen komutları veya bilgisayarınızdan PowerShell 'i çalıştırarak çalıştırabilirsiniz. Azure Cloud Shell, ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. PowerShell 'i bilgisayarınızdan çalıştırırsanız, Azure PowerShell Module, sürüm 1.0.0 veya sonraki bir sürümü gerekir. `Get-Module -ListAvailable Az`Yüklü sürümü bulmak için bilgisayarınızda çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-Az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız, `Connect-AzAccount` [gerekli izinlere](virtual-network-network-interface.md#permissions)sahip bir hesapla Azure 'da oturum açmak için de çalıştırmanız gerekir.
 
-[Get-AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable)ile bir ağ arabirimi için geçerli yolları alın. Aşağıdaki örnek, *Myresourcegroup*adlı bir kaynak grubunda bulunan *myVMNic1*adlı bir ağ arabirimi için geçerli yolları alır:
+[Get-AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable)ile bir ağ arabirimi için geçerli yolları alın. Aşağıdaki örnek, *Myresourcegroup* adlı bir kaynak grubunda bulunan *myVMNic1* adlı bir ağ arabirimi için geçerli yolları alır:
 
 ```azurepowershell-interactive
 Get-AzEffectiveRouteTable `
@@ -87,7 +87,7 @@ NetworkInterfaces
 
 [Azure Cloud Shell](https://shell.azure.com/bash)izleyen komutları veya CLI 'yi bilgisayarınızdan çalıştırarak çalıştırabilirsiniz. Bu makale, Azure CLı sürüm 2.0.32 veya üstünü gerektirir. Yüklü sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli). Azure CLı 'yi yerel olarak çalıştırıyorsanız, Ayrıca, `az login` [gerekli izinlere](virtual-network-network-interface.md#permissions)sahip bir hesapla Azure 'da çalıştırmanız ve oturum açmanız gerekir.
 
-[Az Network Nic Show-geçerli-Route-Table](/cli/azure/network/nic#az-network-nic-show-effective-route-table)ile bir ağ arabirimi için geçerli yolları alın. Aşağıdaki örnek, *Myresourcegroup*adlı bir kaynak grubunda bulunan *myVMNic1* adlı bir ağ arabirimi için geçerli yolları alır:
+[Az Network Nic Show-geçerli-Route-Table](/cli/azure/network/nic#az-network-nic-show-effective-route-table)ile bir ağ arabirimi için geçerli yolları alın. Aşağıdaki örnek, *Myresourcegroup* adlı bir kaynak grubunda bulunan *myVMNic1* adlı bir ağ arabirimi için geçerli yolları alır:
 
 ```azurecli-interactive
 az network nic show-effective-route-table \
@@ -123,9 +123,9 @@ Hala iletişim sorunlarınız varsa bkz. [hususlar](#considerations) ve ek tanı
 - Yönlendirme, tanımladığınız yollar, Sınır Ağ Geçidi Protokolü (BGP) ve sistem yolları arasındaki en uzun ön ek eşleşmesi (LPM) temel alınarak hesaplanır. Aynı LPM eşleşmesine sahip birden fazla yol varsa, [yönlendirmeye genel bakış](virtual-networks-udr-overview.md#how-azure-selects-a-route)bölümünde listelenen sıra kaynağına göre bir rota seçilir. Etkin rotalarla, yalnızca bir LPM eşleşmesi olan geçerli yolları, tüm kullanılabilir yollara göre görebilirsiniz. Yolların bir ağ arabirimi için nasıl değerlendirildiğini görmek, sanal makinenizin iletişimini etkileyebilecek belirli yolların giderilmesi çok daha kolay hale getirir.
 - Bir ağ sanal gereci (NVA) için bir sonraki atlama türü olarak *Sanal Gereç* ile özel yollar tanımladıysanız, trafiği alan NVA 'da IP iletmenin etkinleştirildiğinden emin olun veya paketler bırakılmıştı. [Ağ arabirimi IÇIN IP iletmeyi etkinleştirme](virtual-network-network-interface.md#enable-or-disable-ip-forwarding)hakkında daha fazla bilgi edinin. Ayrıca, NVA içindeki işletim sistemi veya uygulama de ağ trafiğini iletebilmelidir ve bunu yapmak için yapılandırılmış olmalıdır.
 - 0.0.0.0/0 için bir yol oluşturduysanız, tüm giden internet trafiği, bir NVA veya VPN ağ geçidi gibi belirttiğiniz bir sonraki atlamaya yönlendirilir. Böyle bir yolun oluşturulması, genellikle Zorlamalı tünel olarak adlandırılır. İnternet 'ten sanal makinenize yönelik RDP veya SSH protokollerini kullanan uzak bağlantılar, sonraki atlamanın trafiği nasıl işleydiğine bağlı olarak bu yol ile çalışmayabilir. Zorlamalı tünel etkinleştirilebilir:
-    - Siteden siteye VPN kullanırken, *VPN Gateway*sonraki atlama türü ile bir yol oluşturun. [Zorlamalı tüneli yapılandırma](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md?toc=%2fazure%2fvirtual-network%2ftoc.json)hakkında daha fazla bilgi edinin.
+    - Siteden siteye VPN kullanırken, *VPN Gateway* sonraki atlama türü ile bir yol oluşturun. [Zorlamalı tüneli yapılandırma](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md?toc=%2fazure%2fvirtual-network%2ftoc.json)hakkında daha fazla bilgi edinin.
     - Bir 0.0.0.0/0 (varsayılan yol), siteden siteye VPN veya ExpressRoute bağlantı hattı kullanılırken sanal ağ geçidi üzerinden BGP üzerinden tanıtıldığında. [Siteden sıteye VPN](../vpn-gateway/vpn-gateway-bgp-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) veya [EXPRESSROUTE](../expressroute/expressroute-routing.md?toc=%2fazure%2fvirtual-network%2ftoc.json#ip-addresses-used-for-azure-private-peering)ile BGP kullanma hakkında daha fazla bilgi edinin.
-- Sanal ağ eşleme trafiğinin düzgün çalışması için, eşlenen sanal ağın önek aralığı için sonraki atlama türüne sahip bir sistem *yolu bulunmalıdır.* Böyle bir yol yoksa ve sanal ağ eşleme bağlantısı **bağlı**ise:
+- Sanal ağ eşleme trafiğinin düzgün çalışması için, eşlenen sanal ağın önek aralığı için sonraki atlama türüne sahip bir sistem *yolu bulunmalıdır.* Böyle bir yol yoksa ve sanal ağ eşleme bağlantısı **bağlı** ise:
     - Birkaç saniye bekleyip yeniden deneyin. Yeni oluşturulan bir eşleme bağlantısıdır, bazen yolların bir alt ağdaki tüm ağ arabirimlerine yayılması daha uzun sürer. Sanal ağ eşlemesi hakkında daha fazla bilgi edinmek için bkz. [sanal ağ eşlemesine genel bakış](virtual-network-peering-overview.md) ve [sanal ağ eşlemesini yönetme](virtual-network-manage-peering.md).
     - Ağ güvenlik grubu kuralları iletişimi etkiliyor olabilir. Daha fazla bilgi için bkz. [sanal makine ağ trafiği filtresini tanılama sorunu](diagnose-network-traffic-filter-problem.md).
 - Azure, her bir Azure ağ arabirimine varsayılan yollar atabilse de, VM 'ye bağlı birden çok ağ arabiriminiz varsa, VM 'nin işletim sistemi içinde yalnızca birincil ağ arabirimine varsayılan bir yol (0.0.0.0/0) veya ağ geçidi atanır. Bir [Windows](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) veya [Linux](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) VM 'sine bağlı ikincil ağ arabirimleri için varsayılan bir yol oluşturmayı öğrenin. [Birincil ve ikincil ağ arabirimleri](virtual-network-network-interface-vm.md#constraints)hakkında daha fazla bilgi edinin.

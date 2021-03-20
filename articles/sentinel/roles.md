@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: 69f78f6e70fa4f0b04ca7527751085ec0265363a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 5a3b7d4f60877d1301f03aa4f015695a6a4639be
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102048225"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580717"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Azure Sentinel'de izinler
 
@@ -41,6 +41,8 @@ Azure Sentinel 'e uygun erişim sağlamak için güvenlik işlemleri ekibiniz da
 - [Azure Sentinel Yanıtlayıcı](../role-based-access-control/built-in-roles.md#azure-sentinel-responder) , yukarıdaki, olayları yönetme (ata, kapat vb.)
 
 - [Azure Sentinel katılımcısı](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor) , yukarıdaki ' a ek olarak, çalışma kitapları, analiz kuralları ve diğer Azure Sentinel kaynakları oluşturabilir ve düzenleyebilir.
+
+- [Azure Sentinel Otomasyonu katılımcısı](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor) , Azure Sentinel 'in Otomasyon kurallarına PlayBook eklemesine olanak tanır. Kullanıcı hesapları için tasarlanmamıştır.
 
 > [!NOTE]
 >

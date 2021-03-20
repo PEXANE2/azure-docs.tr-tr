@@ -4,10 +4,10 @@ description: Azure Site Recovery 'de kurtarma planları hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.openlocfilehash: 8d191781cacc37242dd1be31d6cb87ef196e5e7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84343923"
 ---
 # <a name="about-recovery-plans"></a>Kurtarma planları hakkında
@@ -62,11 +62,11 @@ Bu özelleştirmeyle birlikte, kurtarma planında bir yük devretme çalıştır
 
 Büyük uygulamaları kurtarmak karmaşık bir görev olabilir. El ile yapılan adımlar işlemi hataya açıktır ve yük devretmeyi çalıştıran kişi tüm uygulama farkınmallarını bilmeyebilir. Azure 'da yük devretme için Azure Otomasyonu runbook 'larını kullanarak her adımda sipariş getirmek ve gereken eylemleri otomatikleştirmek için bir kurtarma planı kullanabilirsiniz. Otomatikleştirilen görevler için kurtarma planlarına el ile eylemler için duraklamalar ekleyebilirsiniz. Yapılandırabilmeniz için kullanabileceğiniz birkaç görev türü vardır:
 
-* **Yük devretmeden sonra Azure VM 'Deki görevler**: Azure 'a yük devrettikten sonra, yük DEVRETMEDEN sonra VM 'ye bağlanabilmeniz için genellikle eylemler gerçekleştirmeniz gerekir. Örneğin: 
+* **Yük devretmeden sonra Azure VM 'Deki görevler**: Azure 'a yük devrettikten sonra, yük DEVRETMEDEN sonra VM 'ye bağlanabilmeniz için genellikle eylemler gerçekleştirmeniz gerekir. Örnek: 
     * Azure VM 'de genel IP adresi oluşturun.
     * Azure VM 'nin ağ bağdaştırıcısına bir ağ güvenlik grubu atayın.
     * Bir kullanılabilirlik kümesine yük dengeleyici ekleyin.
-* **Yük devretme SONRASıNDA VM Içindeki görevler**: Bu görevler genellikle makinede çalışan uygulamayı yeniden yapılandırarak yeni ortamda düzgün çalışmaya devam eder. Örneğin:
+* **Yük devretme SONRASıNDA VM Içindeki görevler**: Bu görevler genellikle makinede çalışan uygulamayı yeniden yapılandırarak yeni ortamda düzgün çalışmaya devam eder. Örnek:
     * Makinenin içindeki veritabanı bağlantı dizesini değiştirin.
     * Web sunucusu yapılandırmasını veya kurallarını değiştirin.
 

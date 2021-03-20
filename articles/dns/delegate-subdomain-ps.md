@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 2/7/2019
 ms.author: rohink
 ms.openlocfilehash: 9b37d313aa5d8c2255b4e3be69831dfcb50238ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84712556"
 ---
 # <a name="delegate-an-azure-dns-subdomain-using-azure-powershell"></a>Azure PowerShell kullanarak bir Azure DNS alt etki alanı temsilcisi seçme
@@ -68,7 +68,7 @@ Temsilciyi test etmek için nslookup 'ı kullanın.
 
 1. PowerShell penceresini açın.
 2. Komut isteminde şunu yazın: `nslookup www.engineering.contoso.com.`
-3. **10.10.10.10**adresini gösteren yetkili olmayan bir yanıt almanız gerekir.
+3. **10.10.10.10** adresini gösteren yetkili olmayan bir yanıt almanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
