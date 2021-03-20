@@ -4,10 +4,10 @@ description: Azure Advisor 'ı kullanmaya başlayın.
 ms.topic: article
 ms.date: 02/01/2019
 ms.openlocfilehash: e91049077502a6c0eedf0a4f979c073690c214da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85117871"
 ---
 # <a name="get-started-with-azure-advisor"></a>Azure Advisor’ı kullanmaya başlama
@@ -19,15 +19,15 @@ Azure portal aracılığıyla Advisor 'a erişmeyi öğrenin, öneriler alın ve
 
 ## <a name="get-recommendations"></a>Önerileri al
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
-1. Sol bölmede **danışman**' ye tıklayın.  Sol bölmede Advisor ' ı görmüyorsanız, **tüm hizmetler**' e tıklayın.  Hizmet menü bölmesinde, **izleme ve yönetim**altında **danışman**' ye tıklayın. Danışman panosu görüntülenir.
+1. Sol bölmede **danışman**' ye tıklayın.  Sol bölmede Advisor ' ı görmüyorsanız, **tüm hizmetler**' e tıklayın.  Hizmet menü bölmesinde, **izleme ve yönetim** altında **danışman**' ye tıklayın. Danışman panosu görüntülenir.
 
    ![Azure portal kullanarak Azure Advisor 'a erişme](./media/advisor-get-started/advisor-portal-menu.png) 
 
 1. Danışman panosu, seçilen tüm abonelikler için önerilerinizin özetini görüntüler.  Abonelik filtresi açılan listesini kullanarak önerilerin görüntülenmesini istediğiniz abonelikleri seçebilirsiniz.
 
-1. Belirli bir kategoriye ilişkin öneriler almak için, sekmelerden birine tıklayın: **güvenilirlik**, **güvenlik**, **performans**veya **Maliyet**. 
+1. Belirli bir kategoriye ilişkin öneriler almak için, sekmelerden birine tıklayın: **güvenilirlik**, **güvenlik**, **performans** veya **Maliyet**. 
 
    ![Azure Advisor panosu](./media/advisor-overview/advisor-dashboard.png)
 
@@ -93,7 +93,7 @@ Danışman, sanal makine kullanımınızı 7 gün boyunca izler ve düşük kull
 Düşük kullanım sanal makinelerini tanımlamaya daha Agresif olmak istiyorsanız, ortalama CPU kullanımı kuralını abonelik başına temelinde ayarlayabilirsiniz.  CPU kullanım kuralı %5, %10, %15 veya %20 olarak ayarlanabilir.
 
 > [!NOTE]
-> Düşük kullanım sanal makinelerini tanımlamaya yönelik ortalama CPU kullanım kuralını ayarlamak için bir abonelik *sahibi*olmanız gerekir.  Bir abonelik veya kaynak grubu için gerekli izinlere sahip değilseniz, Kullanıcı arabiriminde dahil etme veya dışlama seçeneği devre dışı bırakılır. 
+> Düşük kullanım sanal makinelerini tanımlamaya yönelik ortalama CPU kullanım kuralını ayarlamak için bir abonelik *sahibi* olmanız gerekir.  Bir abonelik veya kaynak grubu için gerekli izinlere sahip değilseniz, Kullanıcı arabiriminde dahil etme veya dışlama seçeneği devre dışı bırakılır. 
 
 1. [Azure Portal](https://portal.azure.com)oturum açın ve [danışman](https://aka.ms/azureadvisordashboard)' yi açın.
 

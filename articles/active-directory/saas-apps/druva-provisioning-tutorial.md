@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
 ms.openlocfilehash: 2ef564ae61aab10e1d100ccaf2547248e4a6a8e8
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96352176"
 ---
 # <a name="tutorial-configure-druva-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Druva yapılandırma
@@ -56,7 +56,7 @@ Druva 'i Azure AD ile otomatik Kullanıcı sağlaması için yapılandırmadan �
 
     ![Druva Yönetici Konsolu](media/druva-provisioning-tutorial/menubar.png)
 
-2. Dağıtımları **Yönet**  >  **Deployments**  >  **kullanıcılarını** gezin.
+2. Dağıtımları **Yönet**  >    >  **kullanıcılarını** gezin.
 
     :::image type="content" source="media/druva-provisioning-tutorial/manage.png" alt-text="Druva yönetici konsolunun ekran görüntüsü. Yönet vurgulanır ve Yönet menüsü görünür olur. Bu menüde, dağıtımlar altında, kullanıcılar vurgulanır." border="false":::
 

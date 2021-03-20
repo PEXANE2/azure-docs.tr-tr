@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: e2bbc28735bcbfd952c4941453956acd0568ea67
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93420742"
 ---
 # <a name="multiclass-logistic-regression-module"></a>Birden çok Lass lojistik regresyon modülü
@@ -38,13 +38,13 @@ Birden çok Lass lojistik regresyonda, sınıflandırıcı birden fazla sonucu t
 
 2. Model **oluşturma modunu** ayarlayarak modelin eğitilme şeklini belirleyin.
 
-    + **Tek parametre** : modeli nasıl yapılandırmak istediğinizi biliyorsanız ve bağımsız değişken olarak belirli bir değer kümesi sağlamak için bu seçeneği kullanın.
+    + **Tek parametre**: modeli nasıl yapılandırmak istediğinizi biliyorsanız ve bağımsız değişken olarak belirli bir değer kümesi sağlamak için bu seçeneği kullanın.
 
-    + **Parametre aralığı** : en iyi parametrelerden emin değilseniz ve bir parametre süpürme çalıştırmak istiyorsanız bu seçeneği belirleyin. Yinelemek için bir değer aralığı seçin ve [ayarlama modeli hiper parametreleri](tune-model-hyperparameters.md) , en iyi sonuçları üreten hiper parametreleri belirlemek için, belirttiğiniz ayarların tüm olası birleşimlerinin üzerinde yinelenir.  
+    + **Parametre aralığı**: en iyi parametrelerden emin değilseniz ve bir parametre süpürme çalıştırmak istiyorsanız bu seçeneği belirleyin. Yinelemek için bir değer aralığı seçin ve [ayarlama modeli hiper parametreleri](tune-model-hyperparameters.md) , en iyi sonuçları üreten hiper parametreleri belirlemek için, belirttiğiniz ayarların tüm olası birleşimlerinin üzerinde yinelenir.  
 
-3. **İyileştirme toleransı** , iyileştirici yakınsama için eşik değerini belirtin. Yinelemeler arasındaki iyileştirme eşikten küçükse, algoritma duraklar ve geçerli modeli döndürür.
+3. **İyileştirme toleransı**, iyileştirici yakınsama için eşik değerini belirtin. Yinelemeler arasındaki iyileştirme eşikten küçükse, algoritma duraklar ve geçerli modeli döndürür.
 
-4. **L1 düzenleme Weight** , **L2 düzenleme Weight** : düzenleme parametreleri L1 ve L2 için kullanılacak bir değer yazın. Her ikisi için sıfır olmayan bir değer önerilir.
+4. **L1 düzenleme Weight**, **L2 düzenleme Weight**: düzenleme parametreleri L1 ve L2 için kullanılacak bir değer yazın. Her ikisi için sıfır olmayan bir değer önerilir.
 
     Düzenleme, çok büyük katsayı değerleriyle penalizing modellerle fazla sığdırmayı engellemek için bir yöntemdir. Düzenleme, katsayı değeri ile ilişkili ceza değerini, varsayım hatası ile ilişkilendirilen ceza ekleyerek işe yarar. Aşırı katsayı değeri olan doğru bir model daha fazla olabilir, ancak daha fazla koruyucu değere sahip daha az doğru bir model daha az olabilir.
 
@@ -52,7 +52,7 @@ Birden çok Lass lojistik regresyonda, sınıflandırıcı birden fazla sonucu t
 
      L1 ve L2 koşullarına ait farklı doğrusal birleşimler, [elastik net düzenleme](https://wikipedia.org/wiki/Elastic_net_regularization)gibi lojistik regresyon modelleriyle kaldırılmıştır.
 
-6. **Rastgele sayı çekirdek** : sonuçların çalıştırmalar üzerinde tekrarlanabilir olmasını istiyorsanız, algoritma için çekirdek olarak kullanılacak bir tamsayı değeri yazın. Aksi takdirde, aynı işlem hattının çalıştırılmasıyla biraz farklı sonuçlar üretebilen çekirdek olarak bir sistem saati değeri kullanılır.
+6. **Rastgele sayı çekirdek**: sonuçların çalıştırmalar üzerinde tekrarlanabilir olmasını istiyorsanız, algoritma için çekirdek olarak kullanılacak bir tamsayı değeri yazın. Aksi takdirde, aynı işlem hattının çalıştırılmasıyla biraz farklı sonuçlar üretebilen çekirdek olarak bir sistem saati değeri kullanılır.
 
 8. Etiketli bir veri kümesini bağlayın ve modeli eğitme:
 

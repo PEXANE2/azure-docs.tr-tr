@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: pafarley
 ms.openlocfilehash: ae49a8738ba711ac6c77f2e299852ad61f70be56
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92912914"
 ---
 # <a name="learn-text-moderation-concepts"></a>Metin denetleme kavramlarını öğrenin
@@ -47,13 +47,13 @@ API, [desteklenen dillerin](./language-support.md)herhangi birinde herhangi bir 
 ```
 
 > [!NOTE]
-> **Dil** parametresi için, `eng` makine yardımlı **Sınıflandırma** yanıtını (Önizleme özelliği) görmek üzere boş bırakın veya boş bırakın. **Bu özellik yalnızca İngilizce 'yi destekler** .
+> **Dil** parametresi için, `eng` makine yardımlı **Sınıflandırma** yanıtını (Önizleme özelliği) görmek üzere boş bırakın veya boş bırakın. **Bu özellik yalnızca İngilizce 'yi destekler**.
 >
 > **Küfür terimleri** algılama için, bu makalede listelenen desteklenen dillerin [ISO 639-3 kodunu](http://www-01.sil.org/iso639-3/codes.asp) kullanın veya boş bırakın.
 
 ## <a name="classification"></a>Sınıflandırma
 
-Content Moderator makine yardımlı **metin sınıflandırma özelliği** **yalnızca İngilizce** 'yi destekler ve istenmeyebilecek içerikleri algılamaya yardımcı olur. Bayrak eklenmiş içerik, bağlama bağlı olarak uygun şekilde değerlendirilemeyebilir. Her kategorinin oluşma olasılığını artırırken, bir insan incelemesi önermeyebilir. Özelliği, olası rahatsız edici, negatif veya Discriminatory dilini belirlemek için eğitilen bir model kullanır. Bu, gözden geçirilmek üzere Slang, kısaltılmış sözcükler, rahatsız edici ve bilerek yanlış yazılmış sözcükler içerir. 
+Content Moderator makine yardımlı **metin sınıflandırma özelliği** **yalnızca İngilizce**'yi destekler ve istenmeyebilecek içerikleri algılamaya yardımcı olur. Bayrak eklenmiş içerik, bağlama bağlı olarak uygun şekilde değerlendirilemeyebilir. Her kategorinin oluşma olasılığını artırırken, bir insan incelemesi önermeyebilir. Özelliği, olası rahatsız edici, negatif veya Discriminatory dilini belirlemek için eğitilen bir model kullanır. Bu, gözden geçirilmek üzere Slang, kısaltılmış sözcükler, rahatsız edici ve bilerek yanlış yazılmış sözcükler içerir. 
 
 JSON ayıklamada aşağıdaki ayıklama örnek bir çıktı gösterir:
 
@@ -142,7 +142,7 @@ Otomatik düzeltme için sorun yaparsanız, yanıt metnin düzeltilmiş sürüm�
 Varsayılan, koşulların genel listesi çoğu durumda harika olduğundan, iş gereksinimlerinize özgü koşullara göre ekran yapmak isteyebilirsiniz. Örneğin, kullanıcılar tarafından gönderilen tüm rekabetçi marka adlarını filtrelemek isteyebilirsiniz.
 
 > [!NOTE]
-> En çok **5 terim listeniz** olabilir ve her listedeki **terimlerin sayısı 10.000'i aşmamalıdır** .
+> En çok **5 terim listeniz** olabilir ve her listedeki **terimlerin sayısı 10.000'i aşmamalıdır**.
 >
 
 Aşağıdaki örnek eşleşen liste KIMLIĞINI gösterir:

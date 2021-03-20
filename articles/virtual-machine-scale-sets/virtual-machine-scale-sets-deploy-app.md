@@ -10,10 +10,10 @@ ms.date: 05/29/2018
 ms.reviewer: avverma
 ms.custom: avverma, devx-track-azurepowershell
 ms.openlocfilehash: e7a4ddaf74df6e04c1597b9c106cd458ddebac55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89079600"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Uygulamanızı sanal makine ölçek kümelerine dağıtma
@@ -48,7 +48,7 @@ PowerShell DSC Uzantısı, PowerShell ile bir ölçek kümesindeki sanal makine 
 - [Get-AzVmss](/powershell/module/az.compute/get-azvmss) ile bir ölçek kümesi hakkında bilgi alır
 - Uzantıyı [Update-AzVmss](/powershell/module/az.compute/update-azvmss) ile sanal makine örneklerine uygular
 
-DSC Uzantısı, *Myresourcegroup*adlı kaynak grubundaki *myScaleSet* sanal makine örneklerine uygulanır. Kendi adlarınızı aşağıdaki gibi girin:
+DSC Uzantısı, *Myresourcegroup* adlı kaynak grubundaki *myScaleSet* sanal makine örneklerine uygulanır. Kendi adlarınızı aşağıdaki gibi girin:
 
 ```powershell
 # Define the script for your Desired Configuration to download and run
@@ -82,7 +82,7 @@ Update-AzVmss `
     -VirtualMachineScaleSet $vmss
 ```
 
-Ölçek kümesindeki yükseltme ilkesi *manuel*Ise, [Update-Azvmssınstance](/powershell/module/az.compute/update-azvmssinstance)ile sanal makine örneklerinizi güncelleştirin. Bu cmdlet, güncelleştirilmiş ölçek kümesi yapılandırmasını sanal makine örneklerine uygular ve uygulamanızı kurar.
+Ölçek kümesindeki yükseltme ilkesi *manuel* Ise, [Update-Azvmssınstance](/powershell/module/az.compute/update-azvmssinstance)ile sanal makine örneklerinizi güncelleştirin. Bu cmdlet, güncelleştirilmiş ölçek kümesi yapılandırmasını sanal makine örneklerine uygular ve uygulamanızı kurar.
 
 
 ## <a name="install-an-app-to-a-linux-vm-with-cloud-init"></a>Cloud-init ile Linux VM 'ye uygulama yüklemek
@@ -92,7 +92,7 @@ Cloud-init, dağıtımlar arasında da çalışır. Örneğin, bir paket yüklem
 
 Örnek bir *cloud-init.txt* dosyası da dahil olmak üzere daha fazla bilgi için bkz. [Azure VM 'leri özelleştirmek için Cloud-init kullanma](../virtual-machines/linux/using-cloud-init.md).
 
-Bir ölçek kümesi oluşturmak ve bir Cloud-init dosyası kullanmak için, `--custom-data` [az VMSS Create](/cli/azure/vmss) komutuna parametresini ekleyin ve bir Cloud-init dosyasının adını belirtin. Aşağıdaki örnek, *Myresourcegroup* içinde *myScaleSet* adlı bir ölçek kümesi oluşturur ve sanal makine örneklerini *cloud-init.txt*adlı bir dosyayla yapılandırır. Kendi adlarınızı aşağıdaki gibi girin:
+Bir ölçek kümesi oluşturmak ve bir Cloud-init dosyası kullanmak için, `--custom-data` [az VMSS Create](/cli/azure/vmss) komutuna parametresini ekleyin ve bir Cloud-init dosyasının adını belirtin. Aşağıdaki örnek, *Myresourcegroup* içinde *myScaleSet* adlı bir ölçek kümesi oluşturur ve sanal makine örneklerini *cloud-init.txt* adlı bir dosyayla yapılandırır. Kendi adlarınızı aşağıdaki gibi girin:
 
 ```azurecli
 az vmss create \

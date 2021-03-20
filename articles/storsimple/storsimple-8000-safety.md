@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/04/2017
 ms.author: alkohli
 ms.openlocfilehash: 3adbd292d42fd6fd2a0e149e103c17968a6f084b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94950763"
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>StorSimple cihazınızı güvenle yükleyip çalıştırın
@@ -38,7 +38,7 @@ Microsoft Azure StorSimple cihazınızı kurarken ve çalıştırırken gözlene
 | ![Bildirim simgesi ](./media/storsimple-safety/IC740881.png) **bildirimi:** |Önemli kabul edilen, ancak tehlike ile ilgili olmayan bilgileri gösterir. |
 | ![Elektrik sarsıntısı simgesi ](./media/storsimple-safety/IC740882.png) **elektrik şok hasar** |Yüksek voltaj |
 | ![Ağır kalınlık simgesi ](./media/storsimple-safety/IC740883.png) **ağır ağırlık** | |
-| ![Kullanıcı tarafından ](./media/storsimple-safety/IC740879.png) **No User Serviceable Parts** hizmet içermeyen parçalar simgesi yok |Uygun şekilde Eğitilmediğiniz müddetçe bu erişimi kullanmayın. |
+| ![Kullanıcı tarafından ](./media/storsimple-safety/IC740879.png)  hizmet içermeyen parçalar simgesi yok |Uygun şekilde Eğitilmediğiniz müddetçe bu erişimi kullanmayın. |
 | ![Güvenlik bildirimi okuma simgesi](./media/storsimple-safety/IC740885.png)**ilk olarak tüm yönergeleri oku** | |
 | ![İpucu hasar simgesi ](./media/storsimple-safety/IC740886.png) **Ipucu rastlantı** | |
 

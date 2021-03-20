@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.openlocfilehash: 06e197a6e445c7dc1179be696318905f2132ee36
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85477745"
 ---
 # <a name="configure-keychain"></a>Anahtarlık yapılandırma
@@ -34,7 +34,7 @@ Bu makalede, MSAL 'in önbelleğe alınmış belirteçleri iOS ve macOS anahtarl
 
 İOS 'ta, `com.microsoft.adalcache` Anahtarlık grubunu, **proje ayarları**  >  **özellikleri**  >  **Anahtarlık paylaşımı** altındaki Xcode 'da uygulamanızın yetkilendirenlerine ekleyin
 
-### <a name="macos"></a>macOS
+### <a name="macos"></a>Mac OS
 
 MacOS on MSAL, `com.microsoft.identity.universalstorage` Varsayılan olarak erişim grubunu kullanır.
 

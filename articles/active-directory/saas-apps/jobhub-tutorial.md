@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/16/2019
 ms.author: jeedes
 ms.openlocfilehash: 276d444239cb91f1bec2975506279721e6d0008c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92459365"
 ---
 # <a name="tutorial-integrate-jobhub-with-azure-active-directory"></a>Öğretici: iş hub 'ını Azure Active Directory tümleştirin
@@ -28,7 +28,7 @@ Bu öğreticide, JOBHUB 'ı Azure Active Directory (Azure AD) ile tümleştirmey
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -52,7 +52,7 @@ JOBHUB 'ın Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeriden y�
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Azure AD SSO 'yu, **Britta Simon**adlı bir test kullanıcısı kullanarak jobhub ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve JOBHUB 'daki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+Azure AD SSO 'yu, **Britta Simon** adlı bir test kullanıcısı kullanarak jobhub ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve JOBHUB 'daki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu iş hub 'ı ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 

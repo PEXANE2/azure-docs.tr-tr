@@ -12,10 +12,10 @@ ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 2d4c538a9292698fecc8b44c055ab201748e292c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85203002"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde doğrulama teknik profili tanımlama
@@ -47,7 +47,7 @@ Kendi kendine onaylanan bir teknik profil, çıkış taleplerinin bazılarını 
 
 **Validation, Alprofiles** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | Validationteknisyen Alprofıle | 1: n | Başvuru yapan teknik profilin bazı veya tüm çıkış taleplerini doğrulamak için kullanılacak teknik bir profil. |
 
@@ -55,13 +55,13 @@ Kendi kendine onaylanan bir teknik profil, çıkış taleplerinin bazılarını 
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| ReferenceId | Evet | İlkede veya üst ilkede önceden tanımlanmış bir teknik profil tanıtıcısı. |
-|ContinueOnError|Hayır| Bu doğrulama teknik profili bir hata harekete geçirirse sonraki doğrulama teknik profillerinin doğrulanmasının gerekip gerekmediğini belirtir. Olası değerler: `true` veya `false` (varsayılan, diğer doğrulama profillerinin işlenmesi durdurulur ve bir hata döndürülür). |
-|Devam onSuccess | Hayır | Bu doğrulama teknik profili başarılı olursa sonraki doğrulama profillerinin doğrulanmasının gerekip gerekmediğini belirtir. Olası değerler: `true` veya `false` . Varsayılan olarak, `true` diğer doğrulama profillerinin işlenmesi devam edecektir. |
+| ReferenceId | Yes | İlkede veya üst ilkede önceden tanımlanmış bir teknik profil tanıtıcısı. |
+|ContinueOnError|No| Bu doğrulama teknik profili bir hata harekete geçirirse sonraki doğrulama teknik profillerinin doğrulanmasının gerekip gerekmediğini belirtir. Olası değerler: `true` veya `false` (varsayılan, diğer doğrulama profillerinin işlenmesi durdurulur ve bir hata döndürülür). |
+|Devam onSuccess | No | Bu doğrulama teknik profili başarılı olursa sonraki doğrulama profillerinin doğrulanmasının gerekip gerekmediğini belirtir. Olası değerler: `true` veya `false` . Varsayılan olarak, `true` diğer doğrulama profillerinin işlenmesi devam edecektir. |
 
 **Validation, Alprofile** öğesi aşağıdaki öğeyi içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | Üstbilgisinde | 0:1 | Doğrulama teknik profilinin yürütülmesi için karşılanması gereken önkoşulların bir listesi. |
 
@@ -70,11 +70,11 @@ Kendi kendine onaylanan bir teknik profil, çıkış taleplerinin bazılarını 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
 | `Type` | Evet | Önkoşul için gerçekleştirilecek denetim veya sorgunun türü. Belirtilen `ClaimsExist` talepler kullanıcının geçerli talep kümesinde varsa veya belirtilen `ClaimEquals` talep varsa ve değeri belirtilen değere eşitse eylemlerin gerçekleştirilmesi gerektiğini sağlamak için, belirtilen iki seçenekten biri de belirtilmiştir. |
-| `ExecuteActionsIf` | Evet | Test true veya false olduğunda önkoşuldaki eylemlerin gerçekleştirilip gerçekleştirilmeyeceğini gösterir. |
+| `ExecuteActionsIf` | Yes | Test true veya false olduğunda önkoşuldaki eylemlerin gerçekleştirilip gerçekleştirilmeyeceğini gösterir. |
 
 **Önkoşul** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | Değer | 1: n | Denetim tarafından kullanılan veriler. Bu denetim türü ise `ClaimsExist` , bu alan, sorgulanacak bir ClaimTypeReferenceId belirtir. Denetim türü ise `ClaimEquals` , bu alan sorgu için bir ClaimTypeReferenceId belirtir. Başka bir değer öğesi, denetlenecek değeri içerdiğinde.|
 | Eylem | 1:1 | Bir düzenleme adımı içindeki önkoşul denetimi doğru ise, alınması gereken eylem. **Eylemin** değeri olarak ayarlanır `SkipThisValidationTechnicalProfile` . İlişkili doğrulama teknik profilinin yürütülmemelidir. |

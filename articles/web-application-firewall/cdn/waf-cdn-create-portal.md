@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.date: 09/16/2020
 ms.author: victorh
 ms.openlocfilehash: 9579d0da3347bdd4ecc627662cee42f909cbfaf7
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92132780"
 ---
 # <a name="tutorial-create-a-waf-policy-on-azure-cdn-using-the-azure-portal"></a>Öğretici: Azure CDN Azure portal kullanarak bir WAF ilkesi oluşturma
 
 Bu öğreticide, temel bir Azure Web uygulaması güvenlik duvarı (WAF) ilkesi oluşturma ve bunu Azure Content Delivery Network (CDN) üzerindeki bir uç noktaya uygulama işlemi gösterilmektedir.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * WAF ilkesi oluşturma
@@ -50,7 +50,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
     | Ayar                 | Değer                                              |
     | ---                     | ---                                                |
     | CDN profili              | CDN profili adınızı seçin.|
-    | Uç Noktası           | Uç noktanızın adını seçin ve ardından **Ekle**' yi seçin.|
+    | Uç Nokta           | Uç noktanızın adını seçin ve ardından **Ekle**' yi seçin.|
     
     > [!NOTE]
     > Uç nokta bir WAF ilkesiyle ilişkiliyse gri görüntülenir. Önce ilgili ilkeden bitiş noktasını kaldırmalı ve ardından uç noktayı yeni bir WAF ilkesiyle yeniden ilişkilendirmeniz gerekir.
@@ -62,27 +62,27 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 Varsayılan olarak WAF ilkesi, bir WAF ilkesi oluştururken *algılama* modundadır. *Algılama* modunda WAF hiçbir isteği engellemez. Bunun yerine, WAF kurallarıyla eşleşen istekler WAF günlüklerinde günlüğe kaydedilir.
 
-WAF 'yi eylemde görmek için, mod ayarlarını *algılamayı* *engelleme*olarak değiştirebilirsiniz. *Önleme* modunda, varsayılan kural KÜMESI (DRS) içinde tanımlanan kurallarla eşleşen istekler engellenir ve WAF günlüklerinde günlüğe kaydedilir.
+WAF 'yi eylemde görmek için, mod ayarlarını *algılamayı* *engelleme* olarak değiştirebilirsiniz. *Önleme* modunda, varsayılan kural KÜMESI (DRS) içinde tanımlanan kurallarla eşleşen istekler engellenir ve WAF günlüklerinde günlüğe kaydedilir.
 
- :::image type="content" source="../media/waf-cdn-create-portal/policy.png" alt-text="Bir W A F ilkesi oluşturma sayfasının, gözden geçirme + oluştur düğmesi ve çeşitli ayarlar için girilen değerler içeren ekran görüntüsü." border="false":::
+ :::image type="content" source="../media/waf-cdn-create-portal/policy.png" alt-text="Ilke ayarları bölümünün ekran görüntüsü. Mod değiştirme, önleme olarak ayarlanır." border="false":::
 
 ### <a name="custom-rules"></a>Özel kurallar
 
 Özel kural oluşturmak için özel **kurallar** bölümünün altında **özel kural ekle** ' yi seçin. Bu, özel kural yapılandırma sayfasını açar. İki tür özel kural vardır: **eşleştirme kuralı** ve **hız sınırı** kuralı.
 
-Aşağıdaki ekran görüntüsünde, sorgu dizesinde **blok değeri varsa**bir isteği engellemek için özel bir eşleştirme kuralı gösterilmektedir.
+Aşağıdaki ekran görüntüsünde, sorgu dizesinde **blok değeri varsa** bir isteği engellemek için özel bir eşleştirme kuralı gösterilmektedir.
 
-:::image type="content" source="../media/waf-cdn-create-portal/custommatch.png" alt-text="Bir W A F ilkesi oluşturma sayfasının, gözden geçirme + oluştur düğmesi ve çeşitli ayarlar için girilen değerler içeren ekran görüntüsü." border="false":::
+:::image type="content" source="../media/waf-cdn-create-portal/custommatch.png" alt-text="QueryString değişkeninin değeri blok değerini içerip içermediğini denetleyen özel kural yapılandırma sayfasının ekran görüntüsü." border="false":::
 
 Hız sınırı kuralları için iki ek alan gerekir: aşağıdaki örnekte gösterildiği gibi **hız sınırı süresi** ve **hız sınırı eşiği (istekler)** :
 
-:::image type="content" source="../media/waf-cdn-create-portal/customrate.png" alt-text="Bir W A F ilkesi oluşturma sayfasının, gözden geçirme + oluştur düğmesi ve çeşitli ayarlar için girilen değerler içeren ekran görüntüsü." border="false":::
+:::image type="content" source="../media/waf-cdn-create-portal/customrate.png" alt-text="Hız limiti kural yapılandırma sayfasının ekran görüntüsü. Bir hız limiti süresi liste kutusu ve hız sınırı eşiği (istekler) kutusu görünür." border="false":::
 
 ### <a name="default-rule-set-drs"></a>Varsayılan kural kümesi (DRS)
 
 Azure yönetilen varsayılan kural kümesi varsayılan olarak etkindir. Bir kural grubundaki tek bir kuralı devre dışı bırakmak için bu kural grubundaki kuralları genişletin, kural numarasının önündeki onay kutusunu seçin ve yukarıdaki sekmede **devre dışı bırak** ' ı seçin. Kural kümesindeki tek tek kuralların eylem türlerini değiştirmek için, kural numarasının önündeki onay kutusunu seçin ve ardından yukarıdaki **eylemi Değiştir** sekmesini seçin.
 
- :::image type="content" source="../media/waf-cdn-create-portal/managed2.png" alt-text="Bir W A F ilkesi oluşturma sayfasının, gözden geçirme + oluştur düğmesi ve çeşitli ayarlar için girilen değerler içeren ekran görüntüsü." border="false":::
+ :::image type="content" source="../media/waf-cdn-create-portal/managed2.png" alt-text="Bir kural kümesi, kural grupları, kurallar ve Etkinleştir, devre dışı bırak ve eylemi Değiştir düğmelerini gösteren yönetilen kurallar sayfasının ekran görüntüsü. Bir kural denetlenir." border="false":::
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

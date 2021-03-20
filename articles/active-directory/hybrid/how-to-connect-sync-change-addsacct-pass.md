@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4077146292db1266d5dbc51cc577f952b2bff191
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85357520"
 ---
 # <a name="changing-the-ad-ds-account-password"></a>AD DS hesap parolasını değiştirme
@@ -42,7 +42,7 @@ Eşitleme hizmetini yeni parolayla güncelleştirmek için:
 
 3. Parolasının değiştiği AD DS hesabına karşılık gelen **ad bağlayıcısını** seçin.
 
-4. **Eylemler**altında **Özellikler**' i seçin.
+4. **Eylemler** altında **Özellikler**' i seçin.
 
 5. Açılır iletişim kutusunda **Active Directory ormana Bağlan**' ı seçin:
 

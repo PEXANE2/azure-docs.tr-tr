@@ -7,10 +7,10 @@ ms.date: 6/12/2017
 ms.author: lemai
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 9c31040ec13084f9e4b08bbc9a347e4ad44975bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89021264"
 ---
 # <a name="replacing-the-start-node-and-stop-node-apis-with-the-node-transition-api"></a>Düğüm geçişi API 'SI ile başlangıç düğümünü değiştirme ve düğüm API 'Lerini durdurma
@@ -23,9 +23,9 @@ Düğüm durdurma API 'SI (yönetilen: [Stopnodeasync ()][stopnode], PowerShell:
 
 Daha önce açıklandığı gibi, *durdurulmuş* bir Service Fabric düğümü, KASıTLı düğüm API 'sini kullanarak bilerek hedeflenmiş bir düğümdür.  *Aşağı* düğüm, başka bir nedenle kapalı bir düğümdür (ÖRNEĞIN, VM veya makine kapalı olur).  Düğüm durdur API 'siyle, sistem *durdurulan* düğümleri ve *alt* düğümleri birbirinden ayırt etmek için bilgi sunmaz.
 
-Ayrıca, bu API 'Ler tarafından döndürülen bazı hatalar, olabilecekleri için açıklayıcı değildir.  Örneğin, önceden *durdurulmuş* bir düğümdeki düğüm durdurma API 'sini çağırmak, *ınvalidaddress*hatasını döndürür.  Bu deneyim artırılabilir.
+Ayrıca, bu API 'Ler tarafından döndürülen bazı hatalar, olabilecekleri için açıklayıcı değildir.  Örneğin, önceden *durdurulmuş* bir düğümdeki düğüm durdurma API 'sini çağırmak, *ınvalidaddress* hatasını döndürür.  Bu deneyim artırılabilir.
 
-Ayrıca, başlangıç düğümü API 'SI çağrılana kadar bir düğümün durdurulma süresi "sonsuz" dır.  Bunun sorunlara neden olabileceğini ve hataya açık olabileceğini tespit ettik.  Örneğin, bir kullanıcının bir düğümdeki düğüm durdur API 'sini çağırdığından ve daha sonra bunu unutduğumuz sorunları gördük.  Daha sonra, düğüm *kapalıysa* veya *durdurulmuşsa*bu anlaşılır değildir.
+Ayrıca, başlangıç düğümü API 'SI çağrılana kadar bir düğümün durdurulma süresi "sonsuz" dır.  Bunun sorunlara neden olabileceğini ve hataya açık olabileceğini tespit ettik.  Örneğin, bir kullanıcının bir düğümdeki düğüm durdur API 'sini çağırdığından ve daha sonra bunu unutduğumuz sorunları gördük.  Daha sonra, düğüm *kapalıysa* veya *durdurulmuşsa* bu anlaşılır değildir.
 
 
 ## <a name="introducing-the-node-transition-apis"></a>Düğüm geçişi API 'Lerine giriş
@@ -42,7 +42,7 @@ Düğüm geçişi API 'SI çağrıldığında bir özel durum oluşturmaz, siste
 Düğüm geçişi API 'sini kullanarak *durdurulmuş* bir düğümü başlatmak, bunu kümenin normal bir üyesi olarak çalışacak şekilde döndürür.  Düğüm sorgu API 'sinin çıktısı, *ısdurdurulan olarak ısdurdurulduğunu* ve *düğüm durumu* ' nu aşağı doğru değil (örneğin, bir) gösterir.
 
 
-**Sınırlı süre** Düğümü durdurmak için düğüm geçişi API 'sini kullanırken, gerekli parametrelerden biri olan *stopNodeDurationInSeconds*, düğümün *durdurulma*süresini saniye cinsinden gösterir.  Bu değer, en az 600 ve en fazla 14400 olan izin verilen aralıkta olmalıdır.  Bu sürenin süresi dolduktan sonra, düğüm otomatik olarak durumunu otomatik olarak yeniden başlatır.  Kullanım örneği için aşağıdaki örnek 1 ' e bakın.
+**Sınırlı süre** Düğümü durdurmak için düğüm geçişi API 'sini kullanırken, gerekli parametrelerden biri olan *stopNodeDurationInSeconds*, düğümün *durdurulma* süresini saniye cinsinden gösterir.  Bu değer, en az 600 ve en fazla 14400 olan izin verilen aralıkta olmalıdır.  Bu sürenin süresi dolduktan sonra, düğüm otomatik olarak durumunu otomatik olarak yeniden başlatır.  Kullanım örneği için aşağıdaki örnek 1 ' e bakın.
 
 > [!WARNING]
 > Düğüm geçişi API 'Lerini ve düğüm durdurma ve düğüm API 'Lerini karıştırmaktan kaçının.  Öneri yalnızca düğüm geçişi API 'sini kullanmaktır.  > düğüm durdur API 'SI kullanılarak zaten durdurulmuşsa, > düğüm geçişi API 'Leri kullanılmadan önce ilk düğüm API 'SI kullanılarak başlatılması gerekir.

@@ -4,10 +4,10 @@ description: Laboratuvara bir dosya paylaşımının nasıl oluşturulduğunu ve
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: b2dbbf349da4e352fe20a22db03cc9063d801990
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87282254"
 ---
 # <a name="test-your-app-in-azure"></a>Uygulamanızı Azure’da test edin 
@@ -18,7 +18,7 @@ Bu makalede, DevTest Labs kullanarak Azure 'da uygulamanızı test etme adımlar
 ## <a name="prerequisites"></a>Önkoşullar 
 1. Henüz bir hesabınız yoksa [Azure aboneliği oluşturun](https://azure.microsoft.com/free/) ve [Azure Portal](https://portal.azure.com)oturum açın.
 2. Azure DevTest Labs kullanarak bir laboratuvar oluşturmak için [Bu makaledeki](devtest-lab-create-lab.md) yönergeleri izleyin. Bir sonraki oturum açışınızda kolayca bulabilmeniz için Laboratuvarı panonuza sabitleyin. Azure DevTest Labs, atık ve denetim maliyetini en aza indirerek Azure 'da hızlı bir şekilde kaynak oluşturmanızı sağlar. DevTest Labs hakkında daha fazla bilgi edinmek için bkz. [genel bakış](devtest-lab-overview.md). 
-3. [Depolama hesabı oluşturma](../storage/common/storage-account-create.md) makalesindeki yönergeleri izleyerek laboratuvarın kaynak grubunda bir Azure depolama hesabı oluşturun. **Depolama hesabı oluştur** sayfasında, **var olan** **kaynak grubunu**kullan ' ı seçin ve **laboratuvarın kaynak grubunu**seçin. 
+3. [Depolama hesabı oluşturma](../storage/common/storage-account-create.md) makalesindeki yönergeleri izleyerek laboratuvarın kaynak grubunda bir Azure depolama hesabı oluşturun. **Depolama hesabı oluştur** sayfasında, **var olan** **kaynak grubunu** kullan ' ı seçin ve **laboratuvarın kaynak grubunu** seçin. 
 4. Azure [dosyalarında dosya paylaşma oluşturma](../storage/files/storage-how-to-create-file-share.md) makalesindeki yönergeleri izleyerek Azure depolamada bir dosya paylaşma oluşturun. 
 
 ## <a name="mount-the-file-share-on-your-local-machine"></a>Dosya paylaşımından yerel makinenize bağlama
@@ -37,10 +37,10 @@ Bu makalede, DevTest Labs kullanarak Azure 'da uygulamanızı test etme adımlar
 3. Laboratuvarınızın **DevTest Lab** sayfasında, araç çubuğunda **+ Ekle** ' yi seçin. 
 
     ![Laboratuvar için Düğme Ekle](media/test-app-in-azure/add-button-in-lab.png)
-4. **Temel seçin** sayfasında, **smalldisk**' i arayın ve **[smalldisk] Windows Server 2016 veri merkezini**seçin. 
+4. **Temel seçin** sayfasında, **smalldisk**' i arayın ve **[smalldisk] Windows Server 2016 veri merkezini** seçin. 
 
     ![Küçük disk Windows Server seçin](media/test-app-in-azure/choose-small-disk-windows-server.png)
-5. **Sanal makine** sayfasında, **sanal makine adı**, **Kullanıcı adı**, **parola**belirtin ve **Oluştur**' u seçin.    
+5. **Sanal makine** sayfasında, **sanal makine adı**, **Kullanıcı adı**, **parola** belirtin ve **Oluştur**' u seçin.    
     
     ![Sanal makine oluştur sayfası](media/test-app-in-azure/create-virtual-machine-page.png)    
 
@@ -57,7 +57,7 @@ Bu bölümde, uygulamanızı Visual Studio 'dan buluttaki bir test sanal makines
 
 1. Visual Studio 2019 kullanarak bir Masaüstü/Web uygulaması oluşturun.
 2. Uygulamanızı oluşturun.
-3. Uygulamanızı yayımlamak için **Çözüm Gezgini**projenize sağ tıklayın ve **Yayımla**' yı seçin. 
+3. Uygulamanızı yayımlamak için **Çözüm Gezgini** projenize sağ tıklayın ve **Yayımla**' yı seçin. 
 4. **Yayımla sihirbazında**, dosya paylaşımınızla eşleştirilmiş olan **sürücüyü** girin.
 
     **Masaüstü uygulaması:**
@@ -75,10 +75,10 @@ Bu bölümde, uygulamanızı Visual Studio 'dan buluttaki bir test sanal makines
 
 1. Laboratuvardaki VM 'niz için sanal makine sayfasına gidin. 
 2. Durdurulmuş durumdaysa VM 'yi başlatmak için araç çubuğundan **Başlat** ' ı seçin. Her seferinde başlatma ve durdurma yapmaktan kaçınmak için sanal makinenizin otomatik başlatma ve otomatik kapatmalar ilkelerini ayarlayabilirsiniz. 
-3. **Bağlan**'ı seçin.
+3. **Bağlan**’ı seçin.
 
     ![Sanal makine sayfası](media/test-app-in-azure/virtual-machine-page.png)
-4. Sanal makine içinde **dosya gezginini**başlatın ve dosya paylaşımınızı bulmak IÇIN **Bu bilgisayarı** seçin.
+4. Sanal makine içinde **dosya gezginini** başlatın ve dosya paylaşımınızı bulmak IÇIN **Bu bilgisayarı** seçin.
 
     ![VM 'de paylaşma bul](media/test-app-in-azure/find-share-on-vm.png)
 

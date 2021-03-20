@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.openlocfilehash: 82f228d5e6f801539c549e16faea371782ad4b59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91316452"
 ---
 # <a name="concepts-for-enabling-active-learning-by-reviewing-endpoint-utterances"></a>Uç nokta uttlerini inceleyerek etkin öğrenmeyi etkinleştirme kavramları
@@ -24,7 +24,7 @@ Lua, en üst tetikleme amacı düşük bir puansa veya en üstteki iki amaç pua
 ## <a name="single-pool-for-utterances-per-app"></a>Uygulama başına düşen tek havuz
 **Gözden geçirme uç noktası sıralayıcısı** listesi, sürüme göre değişmez. Etkin olarak hangi sürümün ifadesini düzenlediğinizden veya uç noktada uygulamanın hangi sürümünün yayımlandığından bağımsız olarak, gözden geçirilecek tek bir ifade havuzu vardır.
 
-[REST API](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/58b6f32139e2bb139ce823c9), sürüm adı gereklidir ve uygulamada bulunmalıdır, ancak bu doğrulamanın ötesinde kullanılmamalıdır. Gözden geçirme, tüm uygulama için geçerlidir. Bir _sürümden_gelen utbotları kaldırırsanız, tüm sürümler etkilenir.
+[REST API](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/58b6f32139e2bb139ce823c9), sürüm adı gereklidir ve uygulamada bulunmalıdır, ancak bu doğrulamanın ötesinde kullanılmamalıdır. Gözden geçirme, tüm uygulama için geçerlidir. Bir _sürümden_ gelen utbotları kaldırırsanız, tüm sürümler etkilenir.
 
 ## <a name="where-are-the-utterances-from"></a>Nereden gelen
 Uç nokta, uygulamanın HTTP uç noktasındaki son kullanıcı sorgularından alınır. Uygulamanız yayınlanmamışsa veya henüz isabet almadıysa, gözden geçirmeniz gereken herhangi bir söylenme yoktur. Belirli bir amaç veya varlık için uç nokta isabetlerinin alınmadığında, bunları içeren gözden geçirime sahip olursunuz.

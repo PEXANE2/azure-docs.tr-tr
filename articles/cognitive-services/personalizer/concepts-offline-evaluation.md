@@ -9,10 +9,10 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: 627f511bb12c16c8f54935d1f782cb7c2c962163
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87132764"
 ---
 # <a name="offline-evaluation"></a>Çevrimdışı değerlendirme
@@ -64,7 +64,7 @@ Değerlendirmede yer alan geçerli ilkeler:
 
 ## <a name="how-offline-evaluations-are-done"></a>Çevrimdışı değerlendirmeler nasıl yapılır?
 
-Çevrimdışı değerlendirmeler, **onay verilen değerlendirme**adlı bir yöntem kullanılarak yapılır.
+Çevrimdışı değerlendirmeler, **onay verilen değerlendirme** adlı bir yöntem kullanılarak yapılır.
 
 Kişiselleştirici, kullanıcıların davranışının (ve dolayısıyla rediklerin) geriye dönük olarak tahmin edilmesi imkansız olduğu varsayımına dayanır (Kullanıcı gördüklerden farklı bir şeyler gösterilseydi ve yalnızca ölçülen depolardan bilgi edinmek için).
 

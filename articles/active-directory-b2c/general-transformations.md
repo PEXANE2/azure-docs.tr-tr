@@ -12,10 +12,10 @@ ms.date: 02/03/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 52831a1907d5ca8d13b0477c909d0d0358873973
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85202229"
 ---
 # <a name="general-claims-transformations"></a>Genel talep dönüştürmeleri
@@ -90,7 +90,7 @@ Anahtar ve gizli anahtar kullanarak, sağlanmış düz metni karma olarak kullan
 | ---- | ----------------------- | --------- | ----- |
 | Inputclaim | düz metin | string | Şifrelenecek giriş talebi |
 | Inputclaim | değerinin | string | Anahtar parametresi. Talep dönüştürmeyi kullanarak rastgele bir değer oluşturabilirsiniz `CreateRandomString` . |
-| InputParameter | randomizerSecret | string | Mevcut bir Azure AD B2C **ilkesi anahtarına**işaret eder. Yeni bir ilke anahtarı oluşturmak için: Azure AD B2C kiracınızda, **Yönet**altında **kimlik deneyimi çerçevesi**' ni seçin. Kiracınızda kullanılabilir olan anahtarları görüntülemek için **ilke anahtarlarını** seçin. **Ekle**’yi seçin. **Seçenekler**Için **el ile**' yi seçin. Bir ad belirtin ( *B2C_1A_* ön ek otomatik olarak eklenebilir.). **Gizli** metin kutusuna, kullanmak istediğiniz tüm gizli anahtarı (1234567890 gibi) girin. **Anahtar kullanımı**için **imza**' yı seçin. **Oluştur**’u seçin. |
+| InputParameter | randomizerSecret | string | Mevcut bir Azure AD B2C **ilkesi anahtarına** işaret eder. Yeni bir ilke anahtarı oluşturmak için: Azure AD B2C kiracınızda, **Yönet** altında **kimlik deneyimi çerçevesi**' ni seçin. Kiracınızda kullanılabilir olan anahtarları görüntülemek için **ilke anahtarlarını** seçin. **Add (Ekle)** seçeneğini belirleyin. **Seçenekler** Için **el ile**' yi seçin. Bir ad belirtin ( *B2C_1A_* ön ek otomatik olarak eklenebilir.). **Gizli** metin kutusuna, kullanmak istediğiniz tüm gizli anahtarı (1234567890 gibi) girin. **Anahtar kullanımı** için **imza**' yı seçin. **Oluştur**’u seçin. |
 | OutputClaim | hash | string | Bu talep dönüştürmesinin ardından üretilen ClaimType çağırılır. Inputclaim 'de yapılandırılan talep `plaintext` . |
 
 ```xml

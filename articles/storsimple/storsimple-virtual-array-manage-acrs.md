@@ -16,17 +16,17 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: bad0d7adfd77dff53b1582e63a91f2cd87a9233d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85507628"
 ---
-# <a name="use-storsimple-device-manager-to-manage-access-control-records-for-storsimple-virtual-array"></a>StorSimple Sanal dizisi için erişim denetim kayıtlarını yönetmek üzere StorSimple Aygıt Yöneticisi kullanma
+# <a name="use-storsimple-device-manager-to-manage-access-control-records-for-storsimple-virtual-array"></a>StorSimple Sanal dizisi için erişim denetim kayıtlarını yönetmek üzere StorSimple Device Manager kullanma
 
 ## <a name="overview"></a>Genel Bakış
 
-Erişim denetimi kayıtları (ACRs), StorSimple Sanal dizisindeki bir birime (StorSimple on-şirket içi sanal cihaz olarak da bilinir) hangi konaklara bağlanabileceği belirtmenizi sağlar. ACRs 'ler belirli bir birime ayarlanır ve konaklara ait Iscsı nitelenmiş adlarını (IQNs) içerir. Bir konak bir birime bağlanmaya çalıştığında, cihaz, ıQN adı için bu birimle ilişkili ACR 'yi denetler ve bir eşleşme varsa bağlantı oluşturulur. Aygıt Yöneticisi hizmetinizin **yapılandırma** bölümünde yer alan **erişim denetimi kayıtları** dikey penceresi, konaklara karşılık gelen tüm erişim denetim kayıtlarını görüntüler.
+Erişim denetimi kayıtları (ACRs), StorSimple Sanal dizisindeki bir birime (StorSimple on-şirket içi sanal cihaz olarak da bilinir) hangi konaklara bağlanabileceği belirtmenizi sağlar. ACRs 'ler belirli bir birime ayarlanır ve konaklara ait Iscsı nitelenmiş adlarını (IQNs) içerir. Bir konak bir birime bağlanmaya çalıştığında, cihaz, ıQN adı için bu birimle ilişkili ACR 'yi denetler ve bir eşleşme varsa bağlantı oluşturulur. Device Manager hizmetinizin **yapılandırma** bölümünde yer alan **erişim denetimi kayıtları** dikey penceresi, konaklara karşılık gelen tüm erişim denetim kayıtlarını görüntüler.
 
 ![Erişim denetim kayıtlarını yönetme](./media/storsimple-virtual-array-manage-acrs/ova-manage-acrs.png)
 
@@ -51,7 +51,7 @@ Windows Server 2012 çalıştıran bir Windows konağının ıQN 'sini almak iç
 
 ## <a name="add-an-acr"></a>ACR ekleme
 
-**Erişim denetimi kayıtları** dikey penceresini, storsimple Aygıt Yöneticisi hizmetinizin **yapılandırma** bölümünde, ACRS eklemek için kullanabilirsiniz. Genellikle, bir ACR 'yi bir birimle ilişkilendirirsiniz.
+**Erişim denetimi kayıtları** dikey penceresini, storsimple Device Manager hizmetinizin **yapılandırma** bölümünde, ACRS eklemek için kullanabilirsiniz. Genellikle, bir ACR 'yi bir birimle ilişkilendirirsiniz.
 
 Bir ACR 'yi bir birimle ilişkilendirme hakkında daha fazla bilgi için, [birim ekleme](storsimple-virtual-array-deploy3-iscsi-setup.md#step-3-add-a-volume)bölümüne gidin.
 
@@ -69,7 +69,7 @@ Bir ACR eklemek için aşağıdaki adımları gerçekleştirin.
    
     1. ACR’nize bir **Ad** verin.
     
-    2. **Iscsı Başlatıcısı adı**altında Windows ana bilgisayarın IQN adını sağlayın. Windows Server konağının ıQN 'sini almak için aşağıdakileri yapın:
+    2. **Iscsı Başlatıcısı adı** altında Windows ana bilgisayarın IQN adını sağlayın. Windows Server konağının ıQN 'sini almak için aşağıdakileri yapın:
    
     3. Microsoft iSCSI başlatıcısını Windows konağında başlatın. iSCSI Başlatıcısı Özellikleri penceresinin **Yapılandırma** sekmesinde, **Başlatıcı Adı** alanından dizeyi seçip kopyalayın.
     Bu dizeyi, **Add ACR** dikey penceresindeki **IQN** alanına yapıştırın.
@@ -81,7 +81,7 @@ Bir ACR eklemek için aşağıdaki adımları gerçekleştirin.
 
 ## <a name="edit-an-acr"></a>ACR 'yi düzenleme
 
-ACRs 'yi düzenlemek için Azure portal Aygıt Yöneticisi hizmetinizin **yapılandırma** bölümünde bulunan **erişim denetim kayıtları** dikey penceresini kullanın.
+ACRs 'yi düzenlemek için Azure portal Device Manager hizmetinizin **yapılandırma** bölümünde bulunan **erişim denetim kayıtları** dikey penceresini kullanın.
 
 > [!NOTE]
 > Halen kullanılmakta olan bir ACR 'yi değiştirmemelisiniz. Kullanılmakta olan bir birimle ilişkili bir ACR 'yi düzenlemek için öncelikle birimi çevrimdışına almanız gerekir.

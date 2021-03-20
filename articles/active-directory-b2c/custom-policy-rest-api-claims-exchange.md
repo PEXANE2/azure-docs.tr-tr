@@ -11,10 +11,10 @@ ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 84053df34ffda0d4686ad80a9e5f3af00ac53d72
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94949505"
 ---
 # <a name="walkthrough-add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>İzlenecek yol: Azure Active Directory B2C içindeki özel ilkelere REST API talep alışverişi ekleme
@@ -27,7 +27,7 @@ Bu senaryoda, kullanıcının belirteç verilerini kurumsal iş kolu iş akış�
 
 Etkileşimi bir doğrulama teknik profili olarak da tasarlayabilirsiniz. Bu, REST API ekranda verileri doğrularken ve talepler döndüren durumlarda uygundur. Daha fazla bilgi için bkz. [Izlenecek yol: Kullanıcı girişini doğrulamak için Azure AD B2C Kullanıcı yolculuğunda REST API talep Değişimlerinizi tümleştirme](custom-policy-rest-api-claims-validation.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Özel ilkelerle çalışmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın. Kaydolma ve yerel hesaplarla oturum açma için çalışan bir özel ilkenize sahip olmanız gerekir.
 - [Azure AD B2C özel ilkenizde REST API talep değişimlerinin nasıl tümleştirileceğini](custom-policy-rest-api-intro.md)öğrenin.
@@ -127,7 +127,7 @@ Yukarıdaki açıklamalar `AuthenticationType` ve `AllowInsecureAuthInProduction
 
 ## <a name="add-an-orchestration-step"></a>Düzenleme adımı ekleme
 
-[Kullanıcı yolculukları](userjourneys.md) , bir ilkenin bir kullanıcı için istenen talepleri elde etmesine izin veren bir ilke aracılığıyla açık yollar belirtmektir. Kullanıcı yolculuğu, başarılı bir işlem için izlenmesi gereken bir düzenleme sırası olarak temsil edilir. Düzenleme adımları ekleyebilir veya çıkarabilirsiniz. Bu durumda, Kullanıcı kaydolduktan veya REST API çağrısıyla oturum açtıktan sonra uygulamaya girilen bilgileri artırmak için kullanılan yeni bir düzenleme adımı ekleyeceksiniz.
+[Kullanıcı yolculukları](userjourneys.md), bağlı olan taraf uygulamasının kullanıcı için istenen talepleri elde etmesine izin veren bir ilkenin kullandığı belirgin yolları belirtir. Kullanıcı yolculuğu, başarılı bir işlem için izlenmesi gereken bir düzenleme sırası olarak temsil edilir. Düzenleme adımları ekleyebilir veya çıkarabilirsiniz. Bu durumda, Kullanıcı kaydolduktan veya REST API çağrısıyla oturum açtıktan sonra uygulamaya girilen bilgileri artırmak için kullanılan yeni bir düzenleme adımı ekleyeceksiniz.
 
 1. İlkenizin temel dosyasını açın. Örneğin, <em>`SocialAndLocalAccounts/`**`TrustFrameworkBase.xml`**</em> .
 1. Öğesi için arama yapın `<UserJourneys>` . Tüm öğeyi kopyalayın ve silin.

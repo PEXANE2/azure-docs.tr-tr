@@ -6,10 +6,10 @@ ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 03/19/2020
 ms.openlocfilehash: f49e05578f55a38845acbd4010f928fb17c51606
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96352278"
 ---
 # <a name="markdown-format-supported-in-qna-maker-answer-text"></a>Soru-Cevap Oluşturma yanıt metninde markın biçimi destekleniyor
@@ -37,8 +37,8 @@ Soru-Cevap Oluşturma yanıt metninde kullanabileceğiniz markın biçimlerinin 
 |Bağlantı URL 'SI|`[text](https://www.my.com)`|`How do I create a bot with [QnA Maker](https://www.qnamaker.ai)?`|![URL için biçim (köprü)](./media/qnamaker-concepts-datasources/format-url.png)|
 |* Ortak görüntü URL 'SI|`![text](https://www.my.com/image.png)`|`How can I create a bot with ![QnAMaker](https://review.docs.microsoft.com/azure/cognitive-services/qnamaker/media/qnamaker-how-to-key-management/qnamaker-resource-list.png)`|![ortak görüntü URL 'SI için biçim ](./media/qnamaker-concepts-datasources/format-image-url.png)|
 |Üstü çizili|`~~text~~`|`some ~~questoins~~ questions need to be asked`|![üstü çizili biçim](./media/qnamaker-concepts-datasources/format-strikethrough.png)|
-|Kalın ve italik|`***text**_`|`How can I create a _*_QnA Maker_*_ bot?`|![kalın ve italik biçim](./media/qnamaker-concepts-datasources/format-bold-italics.png)|
-|Bağlantı için kalın URL|`[_*text**](https://www.my.com)`|`How do I create a bot with [**QnA Maker**](https://www.qnamaker.ai)?`|![kalın URL için biçim](./media/qnamaker-concepts-datasources/format-bold-url.png)|
+|Kalın ve italik|`***text**_`|`How can I create a _*_QnA Maker_** bot?`|![kalın ve italik biçim](./media/qnamaker-concepts-datasources/format-bold-italics.png)|
+|Bağlantı için kalın URL|`[**text**](https://www.my.com)`|`How do I create a bot with [**QnA Maker**](https://www.qnamaker.ai)?`|![kalın URL için biçim](./media/qnamaker-concepts-datasources/format-bold-url.png)|
 |Bağlantı için italik URL|`[*text*](https://www.my.com)`|`How do I create a bot with [*QnA Maker*](https://www.qnamaker.ai)?`|![italik URL için biçim](./media/qnamaker-concepts-datasources/format-url-italics.png)|
 |Kaçış markın sembolleri|`\*text\*`|`How do I create a bot with \*QnA Maker\*?`|![Kaçış markın sembolleri için biçim.](./media/qnamaker-concepts-datasources/format-escape-markdown-symbols.png)|
 |Sıralı liste|`\n 1. item1 \n 1. item2`|`This is an ordered list: \n 1. List item 1 \n 1. List item 2`<br>Yukarıdaki örnek, markaşağı içinde yerleşik olarak bulunan otomatik numaralandırmayı kullanır.<br>`This is an ordered list: \n 1. List item 1 \n 2. List item 2`<br>Yukarıdaki örnek, açık numaralandırma kullanır.|![sıralı liste için biçim](./media/qnamaker-concepts-datasources/format-ordered-list.png)|

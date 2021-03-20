@@ -4,10 +4,10 @@ description: Var olan bir sanal ağı ve alt ağı yapılandırmayı ve Azure De
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 21fe23b6be6fdc924c5502ff97f9c03a3f3e759d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87283563"
 ---
 # <a name="configure-a-virtual-network-in-azure-devtest-labs"></a>Azure DevTest Labs bir sanal ağ yapılandırma
@@ -21,7 +21,7 @@ Bu makalede, var olan sanal ağınızı bir laboratuvarın sanal ağ ayarlarına
 ## <a name="configure-a-virtual-network-for-a-lab-using-the-azure-portal"></a>Azure portal kullanarak laboratuvar için sanal ağ yapılandırma
 Aşağıdaki adımlar, aynı laboratuvarda bir VM oluştururken kullanılabilmesi için mevcut bir sanal ağı (ve alt ağ) bir laboratuvara ekleme işleminde size kılavuzluk eder. 
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)’ında oturum açın.
+1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
 1. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 1. Laboratuvarlar listesinden istediğiniz Laboratuvarı seçin. 
 1. Laboratuvarın ana bölmesinde **yapılandırma ve ilkeler**' i seçin.
@@ -43,7 +43,7 @@ Aşağıdaki adımlar, aynı laboratuvarda bir VM oluştururken kullanılabilmes
 
     ![Laboratuvar alt ağı bölmesi](./media/devtest-lab-configure-vnet/lab-subnet.png)
      
-   - Bir **Laboratuvar alt ağ adı**belirtin.
+   - Bir **Laboratuvar alt ağ adı** belirtin.
    - Laboratuvar VM 'si oluşturmada bir alt ağın kullanılmasına izin vermek için, **sanal makine oluştururken kullan**' ı seçin.
    - [Paylaşılan genel IP adresini](devtest-lab-shared-ip.md)etkinleştirmek için **paylaşılan ortak IP 'yi etkinleştir**' i seçin.
    - Bir alt ağda genel IP adreslerine izin vermek için **genel IP oluşturmaya Izin ver**' i seçin.

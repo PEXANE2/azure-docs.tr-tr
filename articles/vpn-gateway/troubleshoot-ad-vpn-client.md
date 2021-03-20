@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 11/04/2019
 ms.author: cherylmc
 ms.openlocfilehash: 56a8514fc2531ba0b18925427814e5bfef7d64bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84988111"
 ---
 # <a name="troubleshoot-an-azure-ad-authentication-vpn-client"></a>Azure AD kimlik doğrulaması VPN istemcisinde sorun giderme
@@ -24,7 +24,7 @@ Hata iletileri için durum günlüğünü görüntüleyin.
 
 ![günlükler](./media/troubleshoot-ad-vpn-client/1.png)
 
-1. **Durum günlüklerini**göstermek için istemci penceresinin sağ alt köşesindeki oklar simgesine tıklayın.
+1. **Durum günlüklerini** göstermek için istemci penceresinin sağ alt köşesindeki oklar simgesine tıklayın.
 2. Sorunu gösterebilen hatalar için günlüklere bakın.
 3. Hata iletileri kırmızı renkte görüntülenir.
 

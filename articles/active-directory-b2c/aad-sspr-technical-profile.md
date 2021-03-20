@@ -12,10 +12,10 @@ ms.date: 06/23/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 3e6fcf956639d827a8654c5ee80e7cab8cadf930
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85383606"
 ---
 # <a name="define-an-azure-ad-sspr-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure AD B2C özel ilkesinde bir Azure AD SSPR teknik profili tanımlama
@@ -59,14 +59,14 @@ Bu teknik profilin ilk modu, bir kod oluşturmak ve göndermek için kullanılı
 
 | Claimreferenceıd | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| emailAddress | Evet | E-posta adresine sahip kullanıcı için tanımlayıcı. `PartnerClaimType`Giriş talebinin özelliği olarak ayarlanmalıdır `emailAddress` . |
+| emailAddress | Yes | E-posta adresine sahip kullanıcı için tanımlayıcı. `PartnerClaimType`Giriş talebinin özelliği olarak ayarlanmalıdır `emailAddress` . |
 
 
 **Inputclaimstransformations** öğesi, giriş taleplerini değiştirmek veya Azure AD SSPR hizmetine göndermeden önce yenilerini oluşturmak Için kullanılan **inputclaimstransınor** öğelerinin bir koleksiyonunu içerebilir.
 
 ### <a name="output-claims"></a>Çıkış talepleri
 
-Azure AD SSPR protokol sağlayıcısı herhangi bir **Outputclaim**döndürmüyor, bu nedenle çıkış taleplerini belirtmeniz gerekmez. Ancak, özniteliği ayarladığınız sürece Azure AD SSPR protokol sağlayıcısı tarafından döndürülmeyen talepleri dahil edebilirsiniz `DefaultValue` .
+Azure AD SSPR protokol sağlayıcısı herhangi bir **Outputclaim** döndürmüyor, bu nedenle çıkış taleplerini belirtmeniz gerekmez. Ancak, özniteliği ayarladığınız sürece Azure AD SSPR protokol sağlayıcısı tarafından döndürülmeyen talepleri dahil edebilirsiniz `DefaultValue` .
 
 **Outputclaimstransformations** öğesi, çıkış taleplerini değiştirmek veya yenilerini oluşturmak için kullanılan bir **outputclaimstransreference** öğeleri koleksiyonu içerebilir.
 
@@ -74,7 +74,7 @@ Azure AD SSPR protokol sağlayıcısı herhangi bir **Outputclaim**döndürmüyo
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| İşlem | Evet | **Sendcode**olmalıdır.  |
+| İşlem | Yes | **Sendcode** olmalıdır.  |
 
 #### <a name="ui-elements"></a>Kullanıcı arabirimi öğeleri
 
@@ -82,8 +82,8 @@ Aşağıdaki meta veriler SMS hatası gönderdikten sonra görüntülenecek hata
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Usermessageifınternalerror | Hayır | Sunucu bir iç hatayla karşılaştıysa Kullanıcı hata iletisi. |
-| Usermessageifkısıtlanıyor| Hayır | İstek kısıtlanmışsa, Kullanıcı hata iletisi.|
+| Usermessageifınternalerror | No | Sunucu bir iç hatayla karşılaştıysa Kullanıcı hata iletisi. |
+| Usermessageifkısıtlanıyor| No | İstek kısıtlanmışsa, Kullanıcı hata iletisi.|
 
 
 ### <a name="example-send-an-email"></a>Örnek: e-posta gönder
@@ -113,14 +113,14 @@ Bu teknik profilin ikinci modu bir kodu doğrulamadır. Bu mod için aşağıdak
 
 | Claimreferenceıd | Gerekli | Açıklama |
 | --------- | -------- | ----------- | ----------- |
-| emailAddress| Evet | Daha önce kod göndermek için kullanılan e-posta adresi. E-posta doğrulama oturumunu bulmak için de kullanılır. `PartnerClaimType`Giriş talebinin özelliği olarak ayarlanmalıdır `emailAddress` .|
-| Doğrulama kodu  | Evet | Doğrulanacak Kullanıcı tarafından belirtilen doğrulama kodu. `PartnerClaimType`Giriş talebinin özelliği olarak ayarlanmalıdır `verificationCode` . |
+| emailAddress| Yes | Daha önce kod göndermek için kullanılan e-posta adresi. E-posta doğrulama oturumunu bulmak için de kullanılır. `PartnerClaimType`Giriş talebinin özelliği olarak ayarlanmalıdır `emailAddress` .|
+| Doğrulama kodu  | Yes | Doğrulanacak Kullanıcı tarafından belirtilen doğrulama kodu. `PartnerClaimType`Giriş talebinin özelliği olarak ayarlanmalıdır `verificationCode` . |
 
 **Inputclaimstransformations** öğesi, giriş taleplerini değiştirmek ya da Azure AD SSPR hizmeti çağrılmadan önce yenilerini oluşturmak Için kullanılan **inputclaimstransınfo** öğelerinin bir koleksiyonunu içerebilir.
 
 ### <a name="output-claims"></a>Çıkış talepleri
 
-Azure AD SSPR protokol sağlayıcısı herhangi bir **Outputclaim**döndürmüyor, bu nedenle çıkış taleplerini belirtmeniz gerekmez. Ancak, özniteliği ayarladığınız sürece Azure AD SSPR protokol sağlayıcısı tarafından döndürülmeyen talepleri dahil edebilirsiniz `DefaultValue` .
+Azure AD SSPR protokol sağlayıcısı herhangi bir **Outputclaim** döndürmüyor, bu nedenle çıkış taleplerini belirtmeniz gerekmez. Ancak, özniteliği ayarladığınız sürece Azure AD SSPR protokol sağlayıcısı tarafından döndürülmeyen talepleri dahil edebilirsiniz `DefaultValue` .
 
 **Outputclaimstransformations** öğesi, çıkış taleplerini değiştirmek veya yenilerini oluşturmak için kullanılan bir **outputclaimstransreference** öğeleri koleksiyonu içerebilir.
 
@@ -128,7 +128,7 @@ Azure AD SSPR protokol sağlayıcısı herhangi bir **Outputclaim**döndürmüyo
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| İşlem | Evet | **Verifycode** olmalıdır |
+| İşlem | Yes | **Verifycode** olmalıdır |
 
 #### <a name="ui-elements"></a>Kullanıcı arabirimi öğeleri
 

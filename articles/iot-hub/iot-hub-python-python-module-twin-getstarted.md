@@ -10,10 +10,10 @@ ms.date: 04/03/2020
 ms.author: menchi
 ms.custom: devx-track-python
 ms.openlocfilehash: 665281adc892e6b3655c0b1d0533cb3148e62940
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92139391"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-python"></a>IoT Hub Module kimliği ve modülü ikizi (Python) ile çalışmaya başlama
@@ -44,7 +44,7 @@ Bu öğreticinin sonunda üç Python uygulamanız vardır:
 
 ## <a name="get-the-iot-hub-connection-string"></a>IoT Hub bağlantı dizesini al
 
-Bu makalede, kimlik kayıt defterine bir cihaz ekleyen bir arka uç hizmeti oluşturursunuz ve ardından bu cihaza bir modül eklenir. Bu hizmet, **kayıt defteri yazma** iznini (Ayrıca, **kayıt defteri okuma**de içerir) gerektirir. Ayrıca, yeni oluşturulan modülün ikizi modülüne istenen özellikleri ekleyen bir hizmet oluşturursunuz. Bu hizmet, **hizmet bağlantısı** iznine sahip olmalıdır. Bu izinleri ayrı ayrı veren varsayılan paylaşılan erişim ilkeleri olsa da, bu bölümde bu izinlerin her ikisini de içeren özel bir paylaşılan erişim ilkesi oluşturacaksınız.
+Bu makalede, kimlik kayıt defterine bir cihaz ekleyen bir arka uç hizmeti oluşturursunuz ve ardından bu cihaza bir modül eklenir. Bu hizmet, **kayıt defteri yazma** iznini (Ayrıca, **kayıt defteri okuma** de içerir) gerektirir. Ayrıca, yeni oluşturulan modülün ikizi modülüne istenen özellikleri ekleyen bir hizmet oluşturursunuz. Bu hizmet, **hizmet bağlantısı** iznine sahip olmalıdır. Bu izinleri ayrı ayrı veren varsayılan paylaşılan erişim ilkeleri olsa da, bu bölümde bu izinlerin her ikisini de içeren özel bir paylaşılan erişim ilkesi oluşturacaksınız.
 
 [!INCLUDE [iot-hub-include-find-service-regrw-connection-string](../../includes/iot-hub-include-find-service-regrw-connection-string.md)]
 
@@ -129,7 +129,7 @@ Bu bölümde, IoT Hub 'ınızdaki kimlik kayıt defterinde bir cihaz kimliği ve
     python CreateModule.py
     ```
 
-Bu uygulama, **MYFIRSTDEVICE** kimliği ile bir cihaz kimliği ve myfirstdevice **adlı cihaz**altında **myfirstmodule** kimliğiyle bir modül kimliği oluşturur. (Cihaz veya modül KIMLIĞI kimlik kayıt defterinde zaten varsa, kod yalnızca var olan cihazı veya modül bilgilerini alır.) Uygulama, her kimlik için KIMLIĞI ve birincil anahtarı görüntüler.
+Bu uygulama, **MYFIRSTDEVICE** kimliği ile bir cihaz kimliği ve myfirstdevice **adlı cihaz** altında **myfirstmodule** kimliğiyle bir modül kimliği oluşturur. (Cihaz veya modül KIMLIĞI kimlik kayıt defterinde zaten varsa, kod yalnızca var olan cihazı veya modül bilgilerini alır.) Uygulama, her kimlik için KIMLIĞI ve birincil anahtarı görüntüler.
 
 > [!NOTE]
 > IoT Hub kimlik kayıt defteri yalnızca IoT hub'ına güvenli erişim sağlamak amacıyla cihaz ve modül kimliklerini depolar. Kimlik kayıt defteri, cihaz kimliklerini ve anahtarlarını güvenlik kimlik bilgileri olarak kullanmak için depolar. Kimlik kayıt defterinin her cihaz için depoladığı etkin/devre dışı bayrağını kullanarak, ilgili cihaza erişimi devre dışı bırakabilirsiniz. Uygulamanızın cihaza özgü diğer meta verileri depolaması gerekiyorsa uygulamaya özgü bir depo kullanması gerekir. Modül kimlikleri için etkin/devre dışı bayrağı yoktur. Daha fazla bilgi için bkz. [IoT Hub 'ınızdaki kimlik kayıt defterini anlama](iot-hub-devguide-identity-registry.md).
@@ -187,7 +187,7 @@ Bu bölümde, istenen özellikleri ikizi modülünü güncelleştiren bir Python
 
 Bu bölümde, modülün ikizi istenen özellikler güncelleştirmesini sağlamak için bir Python uygulaması oluşturacaksınız.
 
-1. Modül Bağlantı dizenizi alın. [Azure Portal](https://portal.azure.com/)' de, IoT Hub gidin ve sol bölmedeki **IoT cihazları** ' nı seçin. Cihaz listesinden **Myfirstdevice** ' ı seçin ve açın. **Modül kimlikleri**altında **myfirstmodule**' ü seçin. Modül bağlantı dizesini kopyalayın. Aşağıdaki adımda yapmanız gerekir.
+1. Modül Bağlantı dizenizi alın. [Azure Portal](https://portal.azure.com/)' de, IoT Hub gidin ve sol bölmedeki **IoT cihazları** ' nı seçin. Cihaz listesinden **Myfirstdevice** ' ı seçin ve açın. **Modül kimlikleri** altında **myfirstmodule**' ü seçin. Modül bağlantı dizesini kopyalayın. Aşağıdaki adımda yapmanız gerekir.
 
    ![Azure portalı modül ayrıntısı](./media/iot-hub-python-python-module-twin-getstarted/module-detail.png)
 

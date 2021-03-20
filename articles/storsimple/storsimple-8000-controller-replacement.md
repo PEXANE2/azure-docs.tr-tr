@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 9d8b75c48da2bb13d843258ead378d3e849da951
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85514088"
 ---
 # <a name="replace-a-controller-module-on-your-storsimple-device"></a>StorSimple cihazınızda bir denetleyici modülünü değiştirme
@@ -78,7 +78,7 @@ Microsoft Azure StorSimple cihazınızdaki denetleyicilerden biri başarısız o
 
 
 #### <a name="to-remove-a-single-failed-controller-module"></a>Tek bir başarısız denetleyici modülünü kaldırmak için
-1. Azure portal, StorSimple Aygıt Yöneticisi hizmetine gidin, **cihazlar**' a tıklayın ve ardından izlemek istediğiniz cihazın adına tıklayın.
+1. Azure portal, StorSimple Device Manager hizmetine gidin, **cihazlar**' a tıklayın ve ardından izlemek istediğiniz cihazın adına tıklayın.
 2. **> donanım durumunu izle**' ye gidin. Denetleyicinin 0 veya denetleyici 1 durumu kırmızı olmalıdır, bu da bir hatayı gösterir.
    
    > [!NOTE]
@@ -195,7 +195,7 @@ StorSimple cihazınızdan hatalı bir modülü kaldırdıktan sonra fabrika tara
    > [!NOTE]
    > Denetleyicinin ve etkinleştirilmesi için 5 dakikaya kadar zaman alabilir.
   
-5. Değiştirme işleminin başarılı olduğunu doğrulamak için, Azure Portal cihazınıza gidin ve ardından **Monitor**  >  **Donanım durumunu**İzle ' ye gidin ve hem denetleyicinin 0 ve denetleyici 1 ' in sağlıklı olduğundan emin olun (durum yeşil).
+5. Değiştirme işleminin başarılı olduğunu doğrulamak için, Azure Portal cihazınıza gidin ve ardından   >  **Donanım durumunu** İzle ' ye gidin ve hem denetleyicinin 0 ve denetleyici 1 ' in sağlıklı olduğundan emin olun (durum yeşil).
 
 ## <a name="identify-the-active-controller-on-your-device"></a>Cihazınızda etkin denetleyiciyi tanımla
 Bir StorSimple cihazında etkin denetleyiciyi bulmanızı gerektiren, ilk kez cihaz kaydı veya denetleyici değiştirme gibi birçok durum vardır. Etkin denetleyici tüm disk üretici yazılımı ve ağ işlemlerini işler. Etkin denetleyiciyi tanımlamak için aşağıdaki yöntemlerden herhangi birini kullanabilirsiniz:
@@ -207,7 +207,7 @@ Bir StorSimple cihazında etkin denetleyiciyi bulmanızı gerektiren, ilk kez ci
 Bu yordamların her biri, ileri ' ye açıklanmıştır.
 
 ### <a name="use-the-azure-portal-to-identify-the-active-controller"></a>Etkin denetleyiciyi tanımlamak için Azure portal kullanın
-Azure Portal cihazınıza gidip **Monitor**  >  **donanım sistem durumunu**izleyin ve **denetleyiciler** bölümüne gidin. Burada, hangi denetleyicinin etkin olduğunu doğrulayabilirsiniz.
+Azure Portal cihazınıza gidip   >  **donanım sistem durumunu** izleyin ve **denetleyiciler** bölümüne gidin. Burada, hangi denetleyicinin etkin olduğunu doğrulayabilirsiniz.
 
 ![Azure portal 'de etkin denetleyiciyi tanımla](./media/storsimple-controller-replacement/IC752072.png)
 
@@ -231,7 +231,7 @@ Bu LED 'in yanıp sönmesi durumunda, denetleyici etkindir ve diğer denetleyici
 
 **Şekil 8** Veri bağlantı noktaları ve izleme LED 'Leri ile birincil Kasası geri
 
-| Etiketle | Açıklama |
+| Etiketle | Description |
 |:--- |:--- |
 | 1-6 |VERI 0 – 5 ağ bağlantı noktası |
 | 7 |Mavi ışığı |

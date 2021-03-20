@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 07/13/2020
 ms.openlocfilehash: 2dfd8b3d919f9eeb3e183135ef543f417c878977
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93420708"
 ---
 # <a name="poisson-regression"></a>Poisson Regresyonu
@@ -57,13 +57,13 @@ Yanıt değişkeninin bir Poisson dağılımı olduğundan, model, en az kareler
 
 3. **Poıslik regresyon** modülünün sağ bölmesinde, model **oluşturma modu** seçeneğini ayarlayarak modelin nasıl eğitilmesini istediğinizi belirtin.  
   
-    - **Tek parametre** : modeli nasıl yapılandırmak istediğinizi biliyorsanız bağımsız değişken olarak belirli bir değer kümesi sağlayın.
+    - **Tek parametre**: modeli nasıl yapılandırmak istediğinizi biliyorsanız bağımsız değişken olarak belirli bir değer kümesi sağlayın.
   
-    - **Parametre aralığı** : en iyi parametrelerden emin değilseniz, [model hiper parametreleri ayarla](tune-model-hyperparameters.md) modülünü kullanarak bir parametre tarama işlemi yapın. En iyi yapılandırmayı bulmak için, eğitmen, belirttiğiniz birden çok değer üzerinde yinelenir.
+    - **Parametre aralığı**: en iyi parametrelerden emin değilseniz, [model hiper parametreleri ayarla](tune-model-hyperparameters.md) modülünü kullanarak bir parametre tarama işlemi yapın. En iyi yapılandırmayı bulmak için, eğitmen, belirttiğiniz birden çok değer üzerinde yinelenir.
   
-4. **İyileştirme toleransı** : iyileştirme sırasında tolerans aralığını tanımlayan bir değer yazın. Değer ne kadar düşükse, sığdırma daha yavaş ve daha doğru olur.
+4. **İyileştirme toleransı**: iyileştirme sırasında tolerans aralığını tanımlayan bir değer yazın. Değer ne kadar düşükse, sığdırma daha yavaş ve daha doğru olur.
 
-5. **L1 düzenleme Weight** ve **L2 düzenleme Weight** : L1 ve L2 düzenleme için kullanılacak değerleri yazın. *Düzenleme* , eğitim verilerinden bağımsız olan modelin yönlerine yönelik kısıtlamalar ekler. Düzenleme, çok fazla yer olmaması için yaygın olarak kullanılır. 
+5. **L1 düzenleme Weight** ve **L2 düzenleme Weight**: L1 ve L2 düzenleme için kullanılacak değerleri yazın. *Düzenleme* , eğitim verilerinden bağımsız olan modelin yönlerine yönelik kısıtlamalar ekler. Düzenleme, çok fazla yer olmaması için yaygın olarak kullanılır. 
 
     - Hedef, mümkün olduğunca seyrek bir model olması halinde L1 düzenleme yararlıdır.
 
@@ -75,7 +75,7 @@ Yanıt değişkeninin bir Poisson dağılımı olduğundan, model, en az kareler
 
     L1 ve L2 düzenleme hakkında iyi bir tartışma için bkz. [L1 ve L2 düzenleme for Machine Learning](/archive/msdn-magazine/2015/february/test-run-l1-and-l2-regularization-for-machine-learning).
 
-6. **L-BFGS Için bellek boyutu** : model sığdırma ve iyileştirme için ayrılacak bellek miktarını belirtin.
+6. **L-BFGS Için bellek boyutu**: model sığdırma ve iyileştirme için ayrılacak bellek miktarını belirtin.
 
      L-BFGS, en iyi duruma getirme için özel bir yöntemdir: Brohden – FLET, – Goldfarb – shanno (BFGS) algoritmasını temel alır. Yöntemi, sonraki adım yönünü hesaplamak için sınırlı miktarda bellek (L) kullanır.
 

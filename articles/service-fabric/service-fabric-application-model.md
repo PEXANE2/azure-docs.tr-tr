@@ -4,10 +4,10 @@ description: Uygulama ve hizmet bildirim dosyalarını kullanarak Azure Service 
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: 84e6b2309fdb206771d4ea01aa03c7f355d6ff19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85963742"
 ---
 # <a name="model-an-application-in-service-fabric"></a>Service Fabric bir uygulama modelleme
@@ -20,7 +20,7 @@ Uygulama, belirli bir işlevi veya işlevleri gerçekleştiren bir Bileşen Hizm
 
 Uygulama türü, bir uygulamanın kategorileştirdayalıdır ve bir hizmet türü paketinden oluşur. Hizmet türü bir hizmetin kategorileştirsahiptir. Kategori farklı ayarlara ve yapılandırmalara sahip olabilir, ancak çekirdek işlevsellik aynı kalır. Bir hizmetin örnekleri aynı hizmet türünün farklı hizmet yapılandırması çeşitlemelerdir.  
 
-Uygulama ve hizmetlerin sınıfları (veya "türleri"), XML dosyaları (uygulama bildirimleri ve hizmet bildirimleri) aracılığıyla açıklanır.  Bildirimler, uygulamaları ve Hizmetleri anlatmaktadır ve kümenin görüntü deposundan hangi uygulamaların örneklenebilir şablonlardır.  Bildirimler, [uygulama ve hizmet bildirimlerinde](service-fabric-application-and-service-manifests.md)ayrıntılı olarak ele alınmıştır. ServiceManifest.xml ve ApplicationManifest.xml dosyası için şema tanımı, Service Fabric SDK 'Sı ve *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*araçları ile birlikte yüklenir. XML şeması [Servicefabricservicemodel. xsd şema belgelerinde](service-fabric-service-model-schema.md)belgelenmiştir.
+Uygulama ve hizmetlerin sınıfları (veya "türleri"), XML dosyaları (uygulama bildirimleri ve hizmet bildirimleri) aracılığıyla açıklanır.  Bildirimler, uygulamaları ve Hizmetleri anlatmaktadır ve kümenin görüntü deposundan hangi uygulamaların örneklenebilir şablonlardır.  Bildirimler, [uygulama ve hizmet bildirimlerinde](service-fabric-application-and-service-manifests.md)ayrıntılı olarak ele alınmıştır. ServiceManifest.xml ve ApplicationManifest.xml dosyası için şema tanımı, Service Fabric SDK 'Sı ve *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd* araçları ile birlikte yüklenir. XML şeması [Servicefabricservicemodel. xsd şema belgelerinde](service-fabric-service-model-schema.md)belgelenmiştir.
 
 Farklı uygulama örneklerinin kodu, aynı Service Fabric düğümü tarafından barındırıldığında bile ayrı süreçler olarak çalışır. Ayrıca, her bir uygulama örneğinin yaşam döngüsü bağımsız olarak yönetilebilir (örneğin, yükseltilebilir). Aşağıdaki diyagramda, uygulama türlerinin hizmet türlerinden nasıl oluşturulduğu gösterilir. Bu, sırasıyla kod, yapılandırma ve veri paketlerinden oluşur. Diyagramı basitleştirmek için, yalnızca için kod/yapılandırma/veri paketleri `ServiceType4` gösterilir, ancak her hizmet türü bu paket türlerini içerebilir.
 

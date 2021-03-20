@@ -1,6 +1,6 @@
 ---
 title: StorSimple 8000 serisi yedekleme ilkelerini yönetme | Microsoft Docs
-description: StorSimple Aygıt Yöneticisi hizmetini kullanarak bir StorSimple 8000 serisi cihazında el ile yedeklemeler, yedekleme zamanlamaları ve yedekleme bekletme oluşturmak ve yönetmek için nasıl kullanabileceğinizi açıklar.
+description: StorSimple Device Manager hizmetini kullanarak bir StorSimple 8000 serisi cihazında el ile yedeklemeler, yedekleme zamanlamaları ve yedekleme bekletme oluşturmak ve yönetmek için nasıl kullanabileceğinizi açıklar.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,18 +15,18 @@ ms.workload: TBD
 ms.date: 07/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 9ec2bbef88ed185c3927676ad2596269783d1850
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85515626"
 ---
-# <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-manage-backup-policies"></a>Yedekleme ilkelerini yönetmek için Azure portal StorSimple Aygıt Yöneticisi hizmetini kullanma
+# <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-manage-backup-policies"></a>Yedekleme ilkelerini yönetmek için Azure portal StorSimple Device Manager hizmetini kullanma
 
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu öğreticide, StorSimple Aygıt Yöneticisi hizmeti **yedekleme ilkesi** dikey penceresinin, StorSimple birimleriniz için Yedekleme süreçlerini ve yedekleme bekletmesini denetlemek üzere nasıl kullanılacağı açıklanmaktadır. Ayrıca, el ile yedeklemenin nasıl tamamlandığını da açıklar.
+Bu öğreticide, StorSimple Device Manager hizmeti **yedekleme ilkesi** dikey penceresinin, StorSimple birimleriniz için Yedekleme süreçlerini ve yedekleme bekletmesini denetlemek üzere nasıl kullanılacağı açıklanmaktadır. Ayrıca, el ile yedeklemenin nasıl tamamlandığını da açıklar.
 
 Bir birimi yedeklerken, yerel bir anlık görüntü veya bulut anlık görüntüsü oluşturmayı tercih edebilirsiniz. Yerel olarak sabitlenmiş bir birimi yedekliyorsanız, bir bulut anlık görüntüsü belirtmenizi öneririz. Çok sayıda dalgalanma sahip bir veri kümesiyle bağlanmış yerel olarak sabitlenmiş bir birimin çok sayıda yerel anlık görüntüsünü almak, yerel alandan hızlı bir şekilde çalışma yapmak için gereken bir durumla sonuçlanır. Yerel anlık görüntüleri al seçeneğini belirlerseniz, en son durumu yedeklemek için daha az günlük anlık görüntü kullanmanızı, bunları bir gün boyunca saklamayı ve sonra silmeyi öneririz.
 
@@ -98,5 +98,5 @@ Tek bir birim için isteğe bağlı (el ile) yedekleme oluşturmak için Azure p
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-StorSimple [cihazınızı yönetmek Için storsimple Aygıt Yöneticisi hizmetini kullanma](storsimple-8000-manager-service-administration.md)hakkında daha fazla bilgi edinin.
+StorSimple [cihazınızı yönetmek Için storsimple Device Manager hizmetini kullanma](storsimple-8000-manager-service-administration.md)hakkında daha fazla bilgi edinin.
 

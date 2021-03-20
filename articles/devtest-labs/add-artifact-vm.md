@@ -4,10 +4,10 @@ description: Azure DevTest Labs bir laboratuvarda bir sanal makineye yapıt ekle
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: b4772755d8077f7a659c4d403961ffaeb9e1d483
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85483899"
 ---
 # <a name="add-an-artifact-to-a-vm"></a>VM’ye yapıt ekleme
@@ -20,10 +20,10 @@ Azure DevTest Labs *yapıtlar* , Windows PowerShell betikleri çalıştırma, Ba
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="use-azure-portal"></a>Azure portalı kullanma 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)’ında oturum açın.
+1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
 1. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 1. Laboratuvarlar listesinden, çalışmak istediğiniz VM 'yi içeren Laboratuvarı seçin.  
-1. **Sanal makinelerimi**seçin.
+1. **Sanal makinelerimi** seçin.
 1. İstediğiniz VM 'yi seçin.
 1. **Yapıtları Yönet**' i seçin. 
 1. **Yapıtları Uygula**' yı seçin.

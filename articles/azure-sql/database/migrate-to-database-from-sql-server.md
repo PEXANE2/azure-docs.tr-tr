@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/11/2019
 ms.openlocfilehash: fab52fcea03a2f65c868cfac27f8a8cef115b2be
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94917656"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>Azure SQL Veritabanı’na SQL Server veritabanı geçişi
@@ -115,7 +115,7 @@ Hem kaynak veritabanındaki SQL Server sürümüne hem de geçirdiğiniz veritab
 - [SQL Server 2008 R2'de Artık Sağlanmayan Veritabanı Altyapısı İşlevleri](/previous-versions/sql/sql-server-2008-r2/ms144262(v=sql.105))
 - [SQL Server 2005'te Artık Sağlanmayan Veritabanı Altyapısı İşlevleri](/previous-versions/sql/sql-server-2005/ms144262(v=sql.90))
 
-Internet 'i aramaya ve bu kaynakları kullanmaya ek olarak, [Azure SQL veritabanı veya StackOverflow Için Microsoft Q&soru sayfasını](/answers/topics/azure-sql-database.html) kullanın. [StackOverflow](https://stackoverflow.com/)
+Internet 'i aramaya ve bu kaynakları kullanmaya ek olarak, [Azure SQL veritabanı veya StackOverflow Için Microsoft Q&soru sayfasını](/answers/topics/azure-sql-database.html) kullanın. [](https://stackoverflow.com/)
 
 > [!IMPORTANT]
 > Azure SQL yönetilen örneği, mevcut bir SQL Server örneğini ve veritabanlarını en az uyumluluk sorunu olmadan geçirmenize olanak sağlar. Bkz. [yönetilen örnek nedir](../managed-instance/sql-managed-instance-paas-overview.md).

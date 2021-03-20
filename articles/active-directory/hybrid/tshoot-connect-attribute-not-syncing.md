@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a6df1347eab57a6971fe2e39c0a55869c8f23939
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91317496"
 ---
 # <a name="troubleshoot-an-attribute-not-synchronizing-in-azure-ad-connect"></a>Azure AD Connect eşitlemede bir özniteliğin sorunlarını giderme
@@ -30,7 +30,7 @@ ms.locfileid: "91317496"
 
   ![Eşitleme Işlemini Azure AD Connect](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/syncingprocess.png)
 
-### <a name="terminology"></a>**Terminoloji**
+### <a name="terminology"></a>**Terimler**
 
 * **CS:** Bağlayıcı alanı, veritabanındaki bir tablodur.
 * **MV:** Meta veri deposu, veritabanındaki bir tablo.
@@ -47,7 +47,7 @@ ms.locfileid: "91317496"
 
 * AD 'ye Aktar: eşitleme çalıştırıldıktan sonra, nesneler AD CS 'den **Active Directory**'ye dışarı aktarılabilir.
 
-* AAD 'ye Aktar: eşitleme çalıştırıldıktan sonra, nesneler AAD CS 'den **Azure Active Directory**dışarı aktarılmalıdır.
+* AAD 'ye Aktar: eşitleme çalıştırıldıktan sonra, nesneler AAD CS 'den **Azure Active Directory** dışarı aktarılmalıdır.
 
 ### <a name="step-by-step-investigation"></a>**Adım adım araştırma**
 
@@ -57,11 +57,11 @@ ms.locfileid: "91317496"
 
   ![Synchronization Service Manager Başlat](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/startmenu.png)
 
-* **Synchronization Service Manager**meta veri deposu **aramasını**seçin, **nesne türüne göre kapsam**' ı seçin, bir öznitelik kullanarak nesneyi seçin ve **Ara** düğmesine tıklayın.
+* **Synchronization Service Manager** meta veri deposu **aramasını** seçin, **nesne türüne göre kapsam**' ı seçin, bir öznitelik kullanarak nesneyi seçin ve **Ara** düğmesine tıklayın.
 
   ![Meta veri deposu arama](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/mvsearch.png)
 
-* Tüm özniteliklerini görüntülemek için **Metadize** aramasında bulunan nesneye çift tıklayın. Tüm **bağlayıcı alanlarında**karşılık gelen nesneye bakmak için **Bağlayıcılar** sekmesine tıklayabilirsiniz.
+* Tüm özniteliklerini görüntülemek için **Metadize** aramasında bulunan nesneye çift tıklayın. Tüm **bağlayıcı alanlarında** karşılık gelen nesneye bakmak için **Bağlayıcılar** sekmesine tıklayabilirsiniz.
 
   ![Meta veri deposu nesne bağlayıcıları](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/mvattributes.png)
 
@@ -69,11 +69,11 @@ ms.locfileid: "91317496"
 
   ![Önizleme düğmesi vurgulanmış şekilde bağlayıcı alanı nesne özellikleri ekranını gösteren ekran görüntüsü.](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/csattributes.png)
 
-* Şimdi **Içeri aktarma öznitelik akışı**' na tıklayın, bu, **Active Directory bağlayıcı alanından** **metadize**'ye özniteliklerin akışını gösterir. **Eşitleme kuralı** sütunu, bu özniteliğe katkıda bulunulan **eşitleme kuralını** gösterir. **Veri kaynağı** sütunu, **bağlayıcı**alanındaki öznitelikleri gösterir. **Metadize özniteliği** sütunu, **meta**veri deposundaki öznitelikleri gösterir. Burada eşitleme değil özniteliği arayabilirsiniz. Burada özniteliği bulamazsanız, bu eşlenmez ve özniteliği eşlemek için yeni özel **eşitleme kuralı** oluşturmanız gerekir.
+* Şimdi **Içeri aktarma öznitelik akışı**' na tıklayın, bu, **Active Directory bağlayıcı alanından** **metadize**'ye özniteliklerin akışını gösterir. **Eşitleme kuralı** sütunu, bu özniteliğe katkıda bulunulan **eşitleme kuralını** gösterir. **Veri kaynağı** sütunu, **bağlayıcı** alanındaki öznitelikleri gösterir. **Metadize özniteliği** sütunu, **meta** veri deposundaki öznitelikleri gösterir. Burada eşitleme değil özniteliği arayabilirsiniz. Burada özniteliği bulamazsanız, bu eşlenmez ve özniteliği eşlemek için yeni özel **eşitleme kuralı** oluşturmanız gerekir.
 
   ![Bağlayıcı alanı öznitelikleri](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/cstomvattributeflow.png)
 
-* **Meta** veri deposundaki öznitelik akışını **giden eşitleme kurallarını**kullanarak **Active Directory bağlayıcı alanına** geri doğru görüntülemek Için sol bölmedeki **öznitelik akışını dışarı aktar** ' a tıklayın.
+* **Meta** veri deposundaki öznitelik akışını **giden eşitleme kurallarını** kullanarak **Active Directory bağlayıcı alanına** geri doğru görüntülemek Için sol bölmedeki **öznitelik akışını dışarı aktar** ' a tıklayın.
 
   ![Meta veri deposundaki öznitelik akışını giden eşitleme kuralları kullanılarak Active Directory bağlayıcı alanına geri gösteren ekran görüntüsü.](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/mvtocsattributeflow.png)
 

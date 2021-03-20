@@ -5,10 +5,10 @@ ms.date: 03/30/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.openlocfilehash: a151c28d31bf0bb7f21185fb161315d42f9563d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85200690"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>Azure portalını kullanarak Blok Zinciri Veri Yöneticisi'ni yapılandırma
@@ -32,9 +32,9 @@ Bir blok zinciri Veri Yöneticisi örneği, bir Azure blok zinciri hizmeti işle
 
 Giden bağlantı, blok zinciri verilerini Azure Event Grid gönderir. Örneği oluştururken tek bir giden bağlantı yapılandırırsınız. Blok zinciri Veri Yöneticisi, belirli bir blok zinciri Veri Yöneticisi örneği için birden çok Event Grid konu giden bağlantısını destekler. Blok zinciri verilerini tek bir hedefe gönderebilir veya birden çok hedefe blok zinciri verileri gönderebilirsiniz. Başka bir hedef eklemek için örneğe ek giden bağlantılar eklemeniz yeterlidir.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
-1. Blok zinciri Veri Yöneticisi bağlamak istediğiniz Azure blok zinciri hizmeti üyesine gidin. **Blok zinciri veri Yöneticisi**seçin.
-1. **Ekle**’yi seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. Blok zinciri Veri Yöneticisi bağlamak istediğiniz Azure blok zinciri hizmeti üyesine gidin. **Blok zinciri veri Yöneticisi** seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
     ![Blok zinciri ekleme Veri Yöneticisi](./media/data-manager-portal/add-instance.png)
 
@@ -76,7 +76,7 @@ Sözleşme ABı, akıllı sözleşme arabirimlerini tanımlar. Akıllı sözleş
 
     Sözleşme ABı, panoya kopyalanır.
 
-1. **ABI** DIZISINI bir JSON dosyası olarak kaydedin. Örneğin, * üzerindeabi.js*. Dosyayı sonraki bir adımda kullanırsınız.
+1. **ABI** DIZISINI bir JSON dosyası olarak kaydedin. Örneğin, *üzerindeabi.js*. Dosyayı sonraki bir adımda kullanırsınız.
 
 Blok zinciri Veri Yöneticisi, akıllı sözleşme için dağıtılan bayt kodunu gerektirir. Dağıtılan bytecode, akıllı sözleşme bytecode değerinden farklı. Bytecode 'u panoya kopyalamak için Azure blok zinciri geliştirme seti uzantısını kullanın.
 
@@ -88,7 +88,7 @@ Blok zinciri Veri Yöneticisi, akıllı sözleşme için dağıtılan bayt kodun
 
     Bytecode, panoya kopyalanır.
 
-1. **Bytecode** DEĞERINI bir JSON dosyası olarak kaydedin. Örneğin, * üzerindebytecode.js*. Dosyayı sonraki bir adımda kullanırsınız.
+1. **Bytecode** DEĞERINI bir JSON dosyası olarak kaydedin. Örneğin, *üzerindebytecode.js*. Dosyayı sonraki bir adımda kullanırsınız.
 
 Aşağıdaki örnek, VS Code düzenleyicide açık olan dosyalar üzerinde *abi.js* ve *bytecode.js* gösterir. Dosyalarınız benzer görünmelidir.
 
@@ -104,7 +104,7 @@ Blok zinciri Veri Yöneticisi, bir uygulama eklenirken sözleşme ABı ve byteco
 
 #### <a name="upload-contract-files"></a>Sözleşme dosyalarını karşıya yükle
 
-1. Depolama hesabı için yeni bir kapsayıcı oluşturun. **Kapsayıcı > kapsayıcıları**seçin.
+1. Depolama hesabı için yeni bir kapsayıcı oluşturun. **Kapsayıcı > kapsayıcıları** seçin.
 
     ![Depolama hesabı kapsayıcısı oluşturma](./media/data-manager-portal/create-container.png)
 
@@ -127,7 +127,7 @@ Her blob için, paylaşılan erişim imzası oluşturun.
 
 1. ABı JSON blob 'unu seçin.
 1. **SAS oluştur** ' u seçin
-1. İstenen erişim imzası süre sonunu ayarlayın **ve ardından blob SAS belirteci oluştur ve URL 'yi**seçin.
+1. İstenen erişim imzası süre sonunu ayarlayın **ve ardından blob SAS belirteci oluştur ve URL 'yi** seçin.
 
     ![SAS belirteci oluştur](./media/data-manager-portal/generate-sas.png)
 
@@ -138,7 +138,7 @@ Her blob için, paylaşılan erişim imzası oluşturun.
 
 1. Örnek listesinden Blockzincirine Veri Yöneticisi örneğinizi seçin.
 1. **Blok zinciri uygulamaları**' nı seçin.
-1. **Ekle**’yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
     ![Blok zinciri uygulaması ekleme](./media/data-manager-portal/add-application.png)
 

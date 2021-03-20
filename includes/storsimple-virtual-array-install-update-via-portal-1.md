@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 3129bbe171329ecf37f8712394cedf9b70188220
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96005834"
 ---
 #### <a name="to-install-updates-via-the-azure-portal"></a>Azure portalı aracılığıyla güncelleştirmeleri yüklemek için
 
 1. StorSimple Cihaz Yöneticinize gidip **Cihazlar**’ı seçin. Hizmetinize bağlı cihazların listesinden güncelleştirmek istediğiniz cihazı seçip tıklayın.
 
-    ![Son olarak, MySSDevManager Aygıt Yöneticisi vurgulanır ve seçilir, cihazlar vurgulanır ve seçilir ve cihaz MYSSIS1103 vurgulanır ve seçilir.](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate1m.png) 
+    ![Son olarak, MySSDevManager Device Manager vurgulanır ve seçilir, cihazlar vurgulanır ve seçilir ve cihaz MYSSIS1103 vurgulanır ve seçilir.](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate1m.png) 
 
 2. **Ayarlar** dikey penceresinde **Cihaz güncelleştirmeleri**'ne tıklayın.
 
@@ -33,7 +33,7 @@ ms.locfileid: "96005834"
 
     ![Cihaz güncelleştirmeleri bölmesinde "yeni güncelleştirmeler var" iletisi vardır. Güncelleştirmeleri Indir düğmesi vurgulanır.](../includes/media/storsimple-virtual-array-install-update-via-portal-1/azupdate6m.png)
 
-5. **Yeni güncelleştirmeler** dikey penceresinde sürüm notlarını gözden geçirin. Güncelleştirmeler indirildikten sonra, yüklemeyi onaylamanız gerektiğini de unutmayın. **Tamam** düğmesine tıklayın.
+5. **Yeni güncelleştirmeler** dikey penceresinde sürüm notlarını gözden geçirin. Güncelleştirmeler indirildikten sonra, yüklemeyi onaylamanız gerektiğini de unutmayın. **Tamam**'a tıklayın.
 
     ![Yeni güncelleştirmeler bölmesi "Güncelleştirmeler indirildikten sonra, yüklemeyi onaylamanız gerekecektir" ifadesini görürsünüz. Tamam düğmesi vurgulanır.](../includes/media/storsimple-virtual-array-install-update-via-portal-1/azupdate7m.png)
 

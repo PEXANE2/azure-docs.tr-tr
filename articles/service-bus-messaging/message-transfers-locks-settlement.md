@@ -5,17 +5,17 @@ ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: fd71edd12e478bcd5f14815c105c14482cf7e2bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89020040"
 ---
 # <a name="message-transfers-locks-and-settlement"></a>İleti aktarımları, kilitler ve kapatma
 
 Service Bus gibi bir ileti aracısının merkezi özelliği, iletileri bir kuyruğa veya konuya kabul etmek ve daha sonra alınabilmeleri için kullanılabilir tutmaktır. *Send* iletisi, ileti aracısına ileti aktarımı için yaygın olarak kullanılan terimdir. *Alma* , bir iletinin alma istemcisine aktarılması için yaygın olarak kullanılan terimdir.
 
-Bir istemci bir ileti gönderdiğinde, genellikle iletinin aracı tarafından düzgün şekilde aktarıldığını ve kabul edilip edilmediğini veya bir hata oluştuğunu bilmek ister. Bu olumlu veya negatif bildirim, istemciyi ve aracının aktarım durumu hakkında bilgi sahibi olduğunu ve bu nedenle *kapatma*olarak adlandırılmasını sağlar.
+Bir istemci bir ileti gönderdiğinde, genellikle iletinin aracı tarafından düzgün şekilde aktarıldığını ve kabul edilip edilmediğini veya bir hata oluştuğunu bilmek ister. Bu olumlu veya negatif bildirim, istemciyi ve aracının aktarım durumu hakkında bilgi sahibi olduğunu ve bu nedenle *kapatma* olarak adlandırılmasını sağlar.
 
 Benzer şekilde, aracı bir istemciye bir ileti aktarırken, aracı ve istemci, iletinin başarıyla işlenip işlenmeyeceğini ve bu nedenle kaldırılıp kaldırılmadığını ya da ileti tesliminin ya da işlemenin başarısız olup olmadığını anlamak ister ve bu nedenle ileti yeniden teslim edilmesi gerekebilir.
 
