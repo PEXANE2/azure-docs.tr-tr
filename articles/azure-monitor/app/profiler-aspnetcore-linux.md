@@ -8,10 +8,10 @@ ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 6ef52e946edb5db8074a9b4e3ce5e4a81ae0bde5
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97561061"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Application Insights Profiler ile Azure Linux Web Apps ASP.NET Core profili
@@ -48,7 +48,7 @@ Aşağıdaki yönergeler tüm Windows, Linux ve Mac geliştirme ortamları için
    dotnet add package Microsoft.ApplicationInsights.Profiler.AspNetCore
    ```
 
-1. Program.cs içinde Application Insights etkinleştir:
+1. Program. cs ' de Application Insights etkinleştirin:
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -57,7 +57,7 @@ Aşağıdaki yönergeler tüm Windows, Linux ve Mac geliştirme ortamları için
             .UseStartup<Startup>();
     ```
 
-1. Startup.cs içinde profil oluşturucuyu etkinleştir:
+1. Başlangıçta profil oluşturucuyu etkinleştirin. CS:
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -67,7 +67,7 @@ Aşağıdaki yönergeler tüm Windows, Linux ve Mac geliştirme ortamları için
     }
     ```
 
-1. Birkaç saniye rastgele gecikmeye sağlamak için **HomeController.cs** bölümüne bir kod satırı ekleyin:
+1. Birkaç saniye rastgele gecikme yapmak için **HomeController. cs** bölümüne bir kod satırı ekleyin:
 
     ```csharp
     using System.Threading;

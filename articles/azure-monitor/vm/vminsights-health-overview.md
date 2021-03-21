@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 10/27/2020
 ms.openlocfilehash: 2922ca4068531c45e6acad0ce54aa96624c6238e
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102052135"
 ---
 # <a name="vm-insights-guest-health-preview"></a>VM öngörüleri Konuk durumu (Önizleme)
@@ -34,7 +34,7 @@ Konuk sistem durumu özelliği için doğrudan maliyet yoktur, ancak Log Analyti
 
 Aşağıdaki tabloda, her bir sanal makine için şu anda kullanılabilen toplam ve birim izleyicileri listelenmektedir. 
 
-| İzleyici | Tür | Açıklama |
+| İzleyici | Tür | Description |
 |:---|:---|:---|
 | CPU kullanımı | Birim | İşlemcinin yüzde kullanımı. |
 | Dosya sistemleri | Toplama | Linux VM 'de tüm dosya sistemlerinin toplam durumunu toplayın. |
@@ -52,7 +52,7 @@ Her monitörün geriye doğru izleme penceresi bulunur ve bu süre içinde topla
 
 İzleyicilerin her biri, aşağıdaki tabloda yer aldığı olası sistem durumlarına sahiptir ve belirli bir zamanda tek bir ve yalnızca biri olacaktır. Bir izleyici başlatıldığında sağlıklı bir durumda başlar.
 
-| Sistem Durumu | Açıklama |
+| Sistem Durumu | Description |
 |:---|:---|
 | Sağlam  | İzleyici Şu anda uyarı veya kritik eşiği aşmıyor. |
 | Uyarı  | İzleyici, uyarı eşiğini (tanımlanmışsa) aştı. |
@@ -65,7 +65,7 @@ Her monitörün geriye doğru izleme penceresi bulunur ve bu süre içinde topla
 
 Aşağıdaki tabloda gösterildiği gibi iki tür izleyici vardır.
 
-| İzleyici | Açıklama |
+| İzleyici | Description |
 |:---|:---|
 | Birim izleyicisi | Bir kaynağın veya uygulamanın bazı özelliklerini ölçer. Bu kapsamda kaynağın performansını veya kullanılabilirliğini belirlemek için bir performans sayacı denetlenebilir. |
 | Toplam Değer İzleyicisi | Birden çok izleyiciyi gruplayarak tek ve toplu bir sistem durumu bilgisi sağlar. Bir toplam değer izleyicisinde bir veya daha fazla birim izleyicisi ve diğer toplam değer izleyicileri bulunabilir. |

@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/04/2021
 ms.openlocfilehash: 4dc718f21f2ef3beabc31821bd60b571ac07be05
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98018760"
 ---
 # <a name="use-managed-identities-to-access-event-hubfrom-an-azure-stream-analytics-job-preview"></a>Azure Stream Analytics işinden Olay Hub 'ına erişmek için Yönetilen kimlikler kullanma (Önizleme)
@@ -56,7 +56,7 @@ Stream Analytics işinin, yönetilen kimlik kullanarak Olay Hub 'ınıza erişme
    |---------|-----|
    |Rol|Azure Event Hubs veri sahibi|
    |Şunlara erişim ata:|Kullanıcı, Grup veya hizmet sorumlusu|
-   |Seçim|Stream Analytics işinizin adını girin|
+   |Şunu seçin:|Stream Analytics işinizin adını girin|
 
    :::image type="content" source="media/event-hubs-managed-identity/add-role-assignment.png" alt-text="Rol ataması ekle":::
 

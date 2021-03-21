@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
 ms.openlocfilehash: 7661066bc2666070c8b3ed9263b1223c09d6c720
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101734732"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service performansını izleme
@@ -395,7 +395,7 @@ Aşağıdaki tabloda, bu değerlerin ne anlama geldiğini, temeldeki nedenleri v
 |Sorun değeri|Açıklama|Düzeltme
 |---- |----|---|
 | `AppAlreadyInstrumented:true` | Bu değer, uzantının bir SDK 'nın bazı yönlerinin uygulamada zaten bulunduğunu algıladı ve geri dönecek. Bunun nedeni `System.Diagnostics.DiagnosticSource` , veya başvurusu olabilir `Microsoft.AspNet.TelemetryCorrelation``Microsoft.ApplicationInsights`  | Başvuruları kaldırın. Bu başvurulardan bazıları varsayılan olarak belirli Visual Studio şablonlarından eklenir ve Visual Studio 'nun eski sürümleri öğesine başvurular ekleyebilir `Microsoft.ApplicationInsights` .
-|`AppAlreadyInstrumented:true` | Uygulama ASP.NET Core 2,1 veya 2,2 ' i hedefliyorsanız, bu değer uzantının bazı SDK yönlerinin uygulamada zaten bulunduğunu ve geri dönecek olduğunu belirtir | .NET Core 2.1, 2.2 ' deki müşterilerin yerine Microsoft. AspNetCore. app meta paketini kullanması [önerilir](https://github.com/aspnet/Announcements/issues/287) . Ayrıca, portalda "Application Insights SDK ile birlikte çalışabilirlik" seçeneğini açın (yukarıdaki yönergelere bakın).|
+|`AppAlreadyInstrumented:true` | Uygulama ASP.NET Core 2,1 veya 2,2 ' i hedefliyorsanız, bu değer uzantının bazı SDK yönlerinin uygulamada zaten bulunduğunu ve geri dönecek olduğunu belirtir | .NET Core 2.1, 2.2 ' deki müşteriler bunun yerine Microsoft.AspNetCore.App meta paketini kullanmak için [önerilir](https://github.com/aspnet/Announcements/issues/287) . Ayrıca, portalda "Application Insights SDK ile birlikte çalışabilirlik" seçeneğini açın (yukarıdaki yönergelere bakın).|
 |`AppAlreadyInstrumented:true` | Bu değere, önceki bir dağıtımdan uygulama klasöründeki yukarıdaki dll 'lerin varlığı da neden olabilir. | Bu dll 'lerin kaldırıldığından emin olmak için uygulama klasörünü temizleyin. Hem yerel uygulamanızın bin dizinini hem de App Service Wwwroot dizinini denetleyin. (App Service Web uygulamanızın Wwwroot dizinini denetlemek için: Gelişmiş araçlar (kudu) > hata ayıklama konsolu > CMD > home\wwwroot).
 |`AppContainsAspNetTelemetryCorrelationAssembly: true` | Bu değer, uzantının uygulamada başvuru algıladığını `Microsoft.AspNet.TelemetryCorrelation` ve geri dönecek olduğunu gösterir. | Başvuruyu kaldırın.
 |`AppContainsDiagnosticSourceAssembly**:true`|Bu değer, uzantının uygulamada başvuru algıladığını `System.Diagnostics.DiagnosticSource` ve geri dönecek olduğunu gösterir.| ASP.NET için başvuruyu kaldırın. 

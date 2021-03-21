@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 10/04/2020
 ms.openlocfilehash: d83cc4045f09ed0f704a0d61c6b303406835eb44
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102052305"
 ---
 # <a name="overview-of-log-analytics-in-azure-monitor"></a>Azure Izleyici 'de Log Analytics genel bakış
@@ -54,9 +54,9 @@ Sorgu penceresinde sorguyla çalışma denetimleri.
 ### <a name="2-sidebar"></a>2. kenar çubuğu
 Geçerli sorgu için çalışma alanındaki tablo listeleri, örnek sorgular ve filtre seçenekleri.
 
-| Tab | Açıklama |
+| Tab | Description |
 |:---|:---|
-| Tablolar | Seçilen kapsamın parçası olan tabloları listeler. Tabloların gruplandırmasını değiştirmek için **Group By** ' ı seçin. Bir tablo adının üzerine gelerek, belgelerinin açıklaması ve verilerinin önizlemesini görüntülemek için tablo ve seçeneklerin açıklamasıyla birlikte bir iletişim kutusu görüntüleyin. Sütunlarını görüntülemek için bir tablo genişletin. Sorguya eklemek için tablo veya sütun adına çift tıklayın. |
+| Tables | Seçilen kapsamın parçası olan tabloları listeler. Tabloların gruplandırmasını değiştirmek için **Group By** ' ı seçin. Bir tablo adının üzerine gelerek, belgelerinin açıklaması ve verilerinin önizlemesini görüntülemek için tablo ve seçeneklerin açıklamasıyla birlikte bir iletişim kutusu görüntüleyin. Sütunlarını görüntülemek için bir tablo genişletin. Sorguya eklemek için tablo veya sütun adına çift tıklayın. |
 | Sorgular | Sorgu penceresinde açabileceğiniz örnek sorgularının listesi. Log Analytics açtığınızda görüntülenen liste aynıdır. Sorguların gruplandırmasını değiştirmek için **Grup ölçütü** ' nü seçin. Sorgu penceresine eklemek için bir sorguya çift tıklayın veya diğer seçenekler için üzerine gelin. |
 | Filtre | Sorgunun sonuçlarına göre filtre seçenekleri oluşturur. Bir sorgu çalıştırdıktan sonra sütunlar, sonuçlardan farklı değerlerle birlikte görüntülenir. Bir veya daha fazla değer seçin ve sonra sorguya bir **WHERE** komutu eklemek ve uygulamayı yeniden çalıştırmak Için **& Çalıştır** ' a tıklayın. |
 

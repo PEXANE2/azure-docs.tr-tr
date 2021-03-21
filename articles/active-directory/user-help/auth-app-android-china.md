@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 01/27/2021
 ms.author: curtand
 ms.openlocfilehash: d499417414e560bdaa3fcd0a12255946aca413d9
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99054862"
 ---
 # <a name="microsoft-authenticator-for-android-in-the-public-cloud-in-china"></a>Çin 'de Genel bulutta Android için Microsoft Authenticator
@@ -49,12 +49,12 @@ Kullanıcılar, Multi-Factor Authentication için anında iletme bildirimleri ku
 
 Microsoft Authenticator özelliği | Çin 'de kullanılabilirlik
 ------------------------------- | ---------------------
-Anında iletme bildirimlerini kullanarak MFA kaydı | Hayır
-Önceden var olan MFA hesabı anında iletme bildirimleri kullanılarak kimlik doğrulanıyor | Hayır
+Anında iletme bildirimlerini kullanarak MFA kaydı | No
+Önceden var olan MFA hesabı anında iletme bildirimleri kullanılarak kimlik doğrulanıyor | No
 Önceden var olan MFA hesabı, bildirimler için el ile denetim gerçekleştiriliyor | Yes
 Yalnızca TOTP/doğrulama kodlarını kullanarak MFA kaydı/kimlik doğrulaması | Yes
-Telefonla oturum açma kaydı | Hayır
-Anında iletme bildirimlerini kullanarak mevcut telefonda oturum açma | Hayır
+Telefonla oturum açma kaydı | No
+Anında iletme bildirimlerini kullanarak mevcut telefonda oturum açma | No
 Kimlik doğrulama istekleri için el ile denetim gerçekleştirerek mevcut telefon oturum açma doğrulaması | Yes
 Kişisel Microsoft hesapları için kimlik doğrulayıcı uygulaması desteği | Hayır
 

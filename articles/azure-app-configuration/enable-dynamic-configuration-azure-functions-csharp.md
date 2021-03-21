@@ -16,10 +16,10 @@ ms.author: zhenlwa
 ms.custom: devx-track-csharp, azure-functions
 ms.tgt_pltfrm: Azure Functions
 ms.openlocfilehash: add4b54adb02db09536f4e56a7f039c46245c182
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97963573"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-azure-functions-app"></a>Öğretici: Azure Işlevleri uygulamasında dinamik yapılandırma kullanma
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Bir uygulama yapılandırma deposundaki değişikliklere yanıt olarak yapılandırmasını güncelleştirmek için Azure Işlevleri uygulamanızı ayarlayın.
 > * Azure Işlevleri çağrılarınız için en son yapılandırmayı ekleme.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - **Azure geliştirme** iş yüküyle [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
@@ -41,7 +41,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="reload-data-from-app-configuration"></a>Uygulama yapılandırmasından verileri yeniden yükleme
 
-1. *Startup.cs*'i açın ve yöntemi güncelleştirin `ConfigureAppConfiguration` . 
+1. *Startup. cs*' yi açın ve `ConfigureAppConfiguration` yöntemini güncelleştirin. 
 
    `ConfigureRefresh`Yöntemi, uygulama içinde bir yenileme tetiklendiğinde bir ayarı değişiklikler için denetlenecek bir ayar kaydeder ve bu, daha sonra eklenirken daha sonraki adımda gerçekleştirilir `_configurationRefresher.TryRefreshAsync()` . `refreshAll`Parametresi, kayıtlı ayarda her değişiklik algılandığında uygulama yapılandırma sağlayıcısına tüm yapılandırmayı yeniden yüklemesi talimatını verir.
 
@@ -74,7 +74,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
     }
     ```
 
-3. *Function1.cs* açın ve aşağıdaki ad alanlarını ekleyin.
+3. *İşlev1. cs*' yi açın ve aşağıdaki ad alanlarını ekleyin.
 
     ```csharp
     using System.Linq;
@@ -143,7 +143,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
     ![Hızlı başlangıç Işlevi yerel başlatma](./media/quickstarts/dotnet-core-function-launch-local.png)
 
-5. [Azure Portal](https://portal.azure.com) oturum açın. **Tüm kaynaklar**' ı seçin ve hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposunu seçin.
+5. [Azure portalında](https://portal.azure.com) oturum açın. **Tüm kaynaklar**' ı seçin ve hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposunu seçin.
 
 6. **Yapılandırma Gezgini**' ni seçin ve aşağıdaki anahtarın değerini güncelleştirin:
 

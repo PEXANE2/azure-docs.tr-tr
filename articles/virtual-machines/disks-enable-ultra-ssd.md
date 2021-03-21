@@ -4,16 +4,16 @@ description: Azure VM 'Leri için Ultra diskler hakkında bilgi edinin
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 12/10/2020
+ms.date: 03/16/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 9c3c1acbc2606d882ad45744457137be5014bc4c
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 43dac1692dd6ee4ed1ab67a9b18ca69738e0a0f0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093494"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580614"
 ---
 # <a name="using-azure-ultra-disks"></a>Azure Ultra disklerini kullanma
 
@@ -133,31 +133,31 @@ VM sağlandıktan sonra veri disklerini bölümleyebilir ve biçimlendirebilir v
 
 Bu bölümde, bir veri diski olarak bir ultra disk ile donatılmış bir sanal makinenin dağıtımı ele alınmaktadır. Bir sanal makineyi dağıtma konusunda bilgi sahibi olduğunuz varsayılmaktadır. [hızlı başlangıç: Azure Portal bir Windows sanal makinesi oluşturun](./windows/quick-create-portal.md).
 
-- [Azure Portal](https://portal.azure.com/) oturum açın ve sanal makıne (VM) dağıtma ' ya gidin.
-- [Desteklenen BIR VM boyutu ve bölgesi](#ga-scope-and-limitations)seçtiğinizden emin olun.
-- Kullanılabilirlik **seçenekleri**' nde **kullanılabilirlik alanı** ' nı seçin.
-- Kalan girdileri tercih ettiğiniz seçimlere göre girin.
-- **Diskler**'i seçin.
+1. [Azure Portal](https://portal.azure.com/) oturum açın ve sanal makıne (VM) dağıtma ' ya gidin.
+1. [Desteklenen BIR VM boyutu ve bölgesi](#ga-scope-and-limitations)seçtiğinizden emin olun.
+1. Kullanılabilirlik **seçenekleri**' nde **kullanılabilirlik alanı** ' nı seçin.
+1. Kalan girdileri tercih ettiğiniz seçimlere göre girin.
+1. **Diskler**'i seçin.
 
-![VM oluşturma akışının temel dikey penceresinin ekran görüntüsü.](media/virtual-machines-disks-getting-started-ultra-ssd/create-ultra-disk-enabled-vm.png)
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/new-ultra-vm-create.png" alt-text="VM oluşturma akışının, temel bilgiler dikey penceresinin ekran görüntüsü." lightbox="media/virtual-machines-disks-getting-started-ultra-ssd/new-ultra-vm-create.png":::
 
-- Diskler dikey penceresinde, **Ultra disk uyumluluğunu etkinleştirmek** için **Evet** ' i seçin.
-- Şimdi bir ultra disk eklemek için **Oluştur ve yeni bir disk Ekle** öğesini seçin.
+1. Diskler dikey penceresinde, **Ultra disk uyumluluğunu etkinleştirmek** için **Evet** ' i seçin.
+1. Şimdi bir ultra disk eklemek için **Oluştur ve yeni bir disk Ekle** öğesini seçin.
 
-![VM oluşturma akışı, disk dikey penceresi, Ultra etkin ve oluşturma ve iliştirme yeni bir disk ekran görüntüsü vurgulanmıştır.](media/virtual-machines-disks-getting-started-ultra-ssd/enable-and-attach-ultra-disk.png)
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/new-ultra-vm-disk-enable.png" alt-text="VM oluşturma akışı, disk dikey penceresi, Ultra etkin ve oluşturma ve iliştirme yeni bir disk ekran görüntüsü vurgulanmıştır." :::
 
-- **Yeni disk oluştur** dikey penceresinde, bir ad girin ve **boyutu Değiştir**' i seçin.
+1. **Yeni disk oluştur** dikey penceresinde, bir ad girin ve **boyutu Değiştir**' i seçin.
 
-    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-create-new-disk-flow.png" alt-text="Yeni disk oluştur dikey penceresinin ekran görüntüsü, değişiklik boyutu vurgulandı.":::
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/new-ultra-create-disk.png" alt-text="Yeni disk oluştur dikey penceresinin ekran görüntüsü, değişiklik boyutu vurgulandı.":::
 
 
-- **Depolama türünü** **Ultra disk** olarak değiştirin.
-- **Özel disk boyutu (GiB)**, **disk IOPS** ve **disk aktarım hızı** değerlerini tercih ettiğiniz olanlarla değiştirin.
-- Her iki dikey penceresinde **Tamam ' ı** seçin.
+1. **DISK SKU** 'Sunu **Ultra disk** olarak değiştirin.
+1. **Özel disk boyutu (GiB)**, **disk IOPS** ve **disk aktarım hızı** değerlerini tercih ettiğiniz olanlarla değiştirin.
+1. Her iki dikey penceresinde **Tamam ' ı** seçin.
 
-    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-select-new-disk.png" alt-text="Disk boyutu Seç dikey penceresinin ekran görüntüsü, depolama türü için seçilen Ultra disk, diğer değerler vurgulanır.":::
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/new-select-ultra-disk-size.png" alt-text="Disk boyutu Seç dikey penceresinin ekran görüntüsü, depolama türü için seçilen Ultra disk, diğer değerler vurgulanır.":::
 
-- VM dağıtımıyla devam edin, diğer VM 'leri dağıttığınız ile aynı olacaktır.
+1. VM dağıtımıyla devam edin, diğer VM 'leri dağıttığınız ile aynı olacaktır.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -230,7 +230,21 @@ Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Azure portal Şu anda 512 baytlık kesim boyutuyla bir ultra disk oluşturulmasını desteklemiyor. Bunun yerine, Azure PowerShell modülünü veya Azure CLı 'yi kullanarak 512 baytlık kesim boyutuyla bir ultra disk oluşturabilirsiniz.
+1. [Azure Portal](https://portal.azure.com/)oturum açın ve ardından **diskleri** arayıp seçin.
+1. Yeni bir disk oluşturmak için **+ Yeni** ' yi seçin.
+1. Ultra diskleri destekleyen bir bölge seçin ve bir kullanılabilirlik bölgesi seçin, kalan değerleri istediğiniz şekilde girin.
+1. **Boyutu değiştir**'i seçin.
+
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/create-managed-disk-basics-workflow.png" alt-text="Disk oluştur dikey penceresinin, bölgenin, kullanılabilirlik bölgesinin ve değişiklik boyutunun vurgulandığı ekran görüntüsü.":::
+
+1. **Disk SKU 'su** için **Ultra disk** seçin, ardından istenen performans Için değerleri girin ve **Tamam**' ı seçin.
+
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/select-disk-size-ultra.png" alt-text="Ultra disk oluşturma ekranının ekran görüntüsü.":::
+
+1. **Temel bilgiler** dikey penceresinde **Gelişmiş** sekmesini seçin.
+1. **Mantıksal kesim boyutu** için **512** ' i seçin ve ardından **İncele + oluştur**' u seçin.
+
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/select-different-sector-size-ultra.png" alt-text="Ultra disk mantıksal kesim boyutunu 512 olarak değiştirme seçicinin ekran görüntüsü.":::
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -303,32 +317,25 @@ Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
 
 Alternatif olarak, mevcut sanal makinenizin Ultra diskler kullanabilen bir bölge/kullanılabilirlik bölgesi varsa, yeni bir VM oluşturmak zorunda kalmadan Ultra disklerin kullanımını sağlayabilirsiniz. Mevcut sanal makinenizde Ultra diskler ' i etkinleştirip bunları veri diskleri olarak ekleme. Ultra disk uyumluluğunu etkinleştirmek için VM 'yi durdurmanız gerekir. VM 'yi durdurduktan sonra uyumluluğu etkinleştirebilir ve ardından VM 'yi yeniden başlatabilirsiniz. Uyumluluk etkinleştirildikten sonra, bir ultra disk iliştirebilirsiniz:
 
-- Sanal makinenize gidin ve bunu durdurun, serbest gelmesini bekleyin.
-- VM 'niz serbest bırakıldıktan sonra **diskler**' i seçin.
-- **Düzenle**’yi seçin.
+1. Sanal makinenize gidin ve bunu durdurun, serbest gelmesini bekleyin.
+1. VM 'niz serbest bırakıldıktan sonra **diskler**' i seçin.
+1. **Ek ayarlar**' ı seçin.
 
-![Mevcut bir VM diski dikey penceresinin ekran görüntüsü, düzenleme vurgulanır.](media/virtual-machines-disks-getting-started-ultra-ssd/options-selector-ultra-disks.png)
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/new-ultra-disk-additional-settings.png" alt-text="Disk dikey penceresinin ekran görüntüsü, ek ayarlar vurgulanır.":::
 
-- **Ultra disk uyumluluğunu etkinleştirmek** için **Evet** ' i seçin.
+1. **Ultra disk uyumluluğunu etkinleştirmek** için **Evet** ' i seçin.
 
-![Ultra disk uyumluluğunu etkinleştirme ekran görüntüsü.](media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png)
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/enable-ultra-disks-existing-vm.png" alt-text="Ultra disk uyumluluğunu etkinleştirme ekran görüntüsü.":::
 
-- **Kaydet**’i seçin.
-- **Veri diski Ekle** ' yi seçin ve ardından **ad** açılan menüsünde **disk oluştur**' u seçin.
+1. **Kaydet**’i seçin.
+1. **Oluştur ve yeni bir disk Ekle** öğesini seçin ve yeni diskiniz için bir ad girin.
+1. **Depolama türü** Için **Ultra disk** seçin.
+1. **Boyut (GiB)**, **Maksimum IOPS** ve **maksimum verimlilik** değerlerini tercih ettiğiniz olanlarla değiştirin.
+1. Diskinizin dikey penceresine geri dönmeden sonra **Kaydet**' i seçin.
 
-![Yeni bir disk ekleyen disk dikey penceresinin ekran görüntüsü.](media/virtual-machines-disks-getting-started-ultra-ssd/create-and-attach-new-ultra-disk.png)
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/new-create-ultra-disk-existing-vm.png" alt-text="Yeni bir ultra disk ekleyen disk dikey penceresinin ekran görüntüsü.":::
 
-- Yeni diskiniz için bir ad girin ve **boyutu Değiştir**' i seçin.
-- **Hesap türünü** **Ultra disk** olarak değiştirin.
-- **Özel disk boyutu (GiB)**, **disk IOPS** ve **disk aktarım hızı** değerlerini tercih ettiğiniz olanlarla değiştirin.
-
-    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-select-new-disk.png" alt-text="Disk boyutu Seç dikey penceresinin ekran görüntüsü, depolama türü için seçilen Ultra disk, diğer değerler vurgulanır.":::
-
-- **Tamam** ' ı ve ardından **Oluştur**' u seçin.
-- Diskinizin dikey penceresine geri dönmeden sonra **Kaydet**' i seçin.
-- Sanal makineyi yeniden başlatın.
-
-![VM 'nizin diskler dikey penceresinin ekran görüntüsü.](media/virtual-machines-disks-getting-started-ultra-ssd/saving-and-attaching-new-ultra-disk.png)
+1. Sanal makineyi yeniden başlatın.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -444,15 +451,15 @@ Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
 
 Ultra diskler, performansını ayarlamanıza olanak tanıyan benzersiz bir özellik sunar. Bu ayarlamaları, disklerin kendileri üzerinde Azure portal yapabilirsiniz.
 
-- Sanal makinenize gidin ve **diskler**' i seçin.
-- Performansını değiştirmek istediğiniz Ultra diski seçin.
+1. Sanal makinenize gidin ve **diskler**' i seçin.
+1. Performansını değiştirmek istediğiniz Ultra diski seçin.
 
-![VM 'nizin diskler dikey penceresinin ekran görüntüsü, Ultra disk vurgulanır.](media/virtual-machines-disks-getting-started-ultra-ssd/selecting-ultra-disk-to-modify.png)
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/select-ultra-disk-to-modify.png" alt-text="VM 'nizin diskler dikey penceresinin ekran görüntüsü, Ultra disk vurgulanır.":::
 
-- **Yapılandırma** ' yı seçin ve ardından değişikliklerinizi yapın.
-- **Kaydet**’i seçin.
+1. **Boyut + performans** ' ı seçin ve ardından değişikliklerinizi yapın.
+1. **Kaydet**’i seçin.
 
-![Ultra diskinizdeki yapılandırma dikey penceresinin ekran görüntüsü, disk boyutu, IOPS ve aktarım hızı vurgulanmıştır, kaydetme vurgulanır.](media/virtual-machines-disks-getting-started-ultra-ssd/configuring-ultra-disk-performance-and-size.png)
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/modify-ultra-disk-performance.png" alt-text="Ultra diskinizdeki yapılandırma dikey penceresinin ekran görüntüsü, disk boyutu, IOPS ve aktarım hızı vurgulanmıştır, kaydetme vurgulanır.":::
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

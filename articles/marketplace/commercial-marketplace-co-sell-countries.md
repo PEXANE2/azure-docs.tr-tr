@@ -8,10 +8,10 @@ author: palanis-MSFT
 ms.author: palanis
 ms.date: 08/27/2019
 ms.openlocfilehash: af110a66bc7ef5737f3d2d97a85ca07525b1d9e7
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96744712"
 ---
 # <a name="co-sell-country-and-region-codes"></a>Ortak satış ülke ve bölge kodları
@@ -210,7 +210,7 @@ Bir kişi birden fazla ülke/bölge kapsıyorsa, iki harfli her birini virgülle
 | Romanya                             | RO        |
 | Rusya                              | RU        |
 | Ruanda                              | RW        |
-| Saint Barthélimy                    | BL        |
+| Saint Barthelemy                    | BL        |
 | Saint Kitts ve Nevis               | KN        |
 | Saint Lucia                         | LC        |
 | Saint Martin                        | MF        |
@@ -249,7 +249,7 @@ Bir kişi birden fazla ülke/bölge kapsıyorsa, iki harfli her birini virgülle
 | Timor-Leste                         | TL        |
 | Togo                                | TG        |
 | Tokelau                             | TK        |
-| Tonga                               | Hedef        |
+| Tonga                               | TO        |
 | Trinidad ve Tobago                 | TT        |
 | Tunus                             | TN        |
 | Türkiye                              | TR        |
@@ -260,9 +260,9 @@ Bir kişi birden fazla ülke/bölge kapsıyorsa, iki harfli her birini virgülle
 | Ukrayna                             | UA        |
 | Birleşik Arap Emirlikleri                | AE        |
 | Birleşik Krallık                      | GB        |
-| Amerika Birleşik Devletleri                       | ABD        |
+| Birleşik Devletler                       | ABD        |
 | Uruguay                             | UY        |
-| ABD Küçük Harici Adaları               | UM        |
+| ABD harici Adaları               | UM        |
 | ABD Virgin Adaları                 | VI        |
 | Özbekistan                          | UZ        |
 | Vanuatu                             | Vu & lt        |

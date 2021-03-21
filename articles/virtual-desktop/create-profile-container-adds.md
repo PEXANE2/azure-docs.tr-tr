@@ -7,10 +7,10 @@ ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 70a56b7efc34ba2fd3c06521c6e4cac6ea28778f
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96302478"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>Azure dosyaları ve Azure AD DS bir profil kapsayıcısı oluşturma
@@ -107,7 +107,7 @@ Depolama hesabı erişim anahtarını almak için:
     - `<share-name>`Daha önce oluşturduğunuz paylaşımın adıyla değiştirin.
     - `<storage-account-key>`Azure 'daki depolama hesabı anahtarıyla değiştirin.
 
-    Örneğin:
+    Örnek:
 
      ```cmd
      net use y: \\fsprofile.file.core.windows.net\share HDZQRoFP2BBmoYQ=(truncated)= /user:Azure\fsprofile)
@@ -125,7 +125,7 @@ Depolama hesabı erişim anahtarını almak için:
     - `<mounted-drive-letter>`Sürücüyü eşlemek için kullandığınız sürücünün harfiyle değiştirin.
     - `<user-email>`Paylaşıma erişmesi gereken kullanıcıları içeren Kullanıcı veya Active Directory grubunun UPN 'si ile değiştirin.
 
-    Örneğin:
+    Örnek:
 
      ```cmd
      icacls <mounted-drive-letter>: /grant john.doe@contoso.com:(M)
@@ -146,9 +146,9 @@ FSLogix profil kapsayıcısını yapılandırmak için:
 
 3. Yükleyici başlatıldıktan sonra **Lisans hüküm ve koşullarını kabul** ediyorum ' u seçin. Uygulanabiliyorsa, yeni bir anahtar sağlayın.
 
-4. **Yükle**’yi seçin.
+4. **Yükle**'yi seçin.
 
-5. **Drive C** **Program Files**  >  **FSLogix**  >  Fslogix aracısının düzgün yüklendiğinden emin olmak için sürücü C 'yi açın ve Program Files fslogix **uygulamalarına** gidin.
+5.    >    >  Fslogix aracısının düzgün yüklendiğinden emin olmak için sürücü C 'yi açın ve Program Files fslogix **uygulamalarına** gidin.
 
      >[!NOTE]
      > Konak havuzunda birden çok VM varsa, her VM için 1 ile 5 arasındaki adımları tekrarlamanız gerekir.
@@ -206,7 +206,7 @@ Kullanıcıları atamak için:
 
     Önceki cmdlet 'ler gibi,, `<your-wvd-tenant>` `<wvd-pool>` ve değerlerini de ilgili değerlerle değiştirdiğinizden emin olun `<user-principal>` .
 
-    Örneğin:
+    Örnek:
 
      ```powershell
      $pool1 = "contoso"

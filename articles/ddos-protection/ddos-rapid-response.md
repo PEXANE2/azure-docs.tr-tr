@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: yitoh
 ms.openlocfilehash: 8e860bf47420f2b58c44df695da7761bcc2aa0ce
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100521790"
 ---
 # <a name="azure-ddos-rapid-response"></a>Azure DDoS hızlı yanıt
@@ -31,8 +31,8 @@ Etkin erişim sırasında, Azure DDoS koruması standart müşterileri, bir sald
 Yalnızca şu durumlarda DRR 'yi devreye almalısınız: 
 
 - Korumalı kaynağın performansının önemli ölçüde düşürülmüş olduğunu fark ederseniz veya kaynak kullanılabilir değilse, DDoS saldırısı sırasında. 
-- Kaynağınızın DDoS saldırısından olduğunu düşündük, ancak DDoS koruma hizmeti saldırıyı etkin bir şekilde karşılamıyor.
-- Ağ trafiğinizi önemli ölçüde arttırabileceğiniz bir viral olayı planlıyorsunuz.
+- Kaynağınızın DDoS saldırısı altında olduğunu düşünüyorsunuz ama DDos Koruması hizmeti saldırıyı etkili bir şekilde engelleyemiyor.
+- Ağ trafiğinizi önemli ölçüde artıran viral bir etkinlik planlıyorsunuz.
 - Kritik bir iş etkisi olan saldırılar için.
 
 ## <a name="engage-drr-during-an-active-attack"></a>Etkin bir saldırı sırasında DRR 'ye katılın

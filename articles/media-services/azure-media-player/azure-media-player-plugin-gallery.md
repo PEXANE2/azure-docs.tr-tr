@@ -7,17 +7,17 @@ ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
 ms.openlocfilehash: 71fa79cb8847d16ac0890f9aba647cb8f5e2e444
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99089351"
 ---
 # <a name="azure-media-player-plugin-gallery"></a>Azure Media Player eklentisi Galerisi #
 
 ## <a name="plugins"></a>Eklentiler ##
 
-| Eklenti adı                         | Tanıtım URL 'SI                    | Kaynak kodu                | Description    |
+| Eklenti adı                         | Tanıtım URL 'SI                    | Kaynak Kodu                | Description    |
 |-------------------------------------|-----------------------------|----------------------------|----------------|
 | Ek özellikler                 | | | |
 | **Yeni!** AMP360Video                | [Tanıtım](http://www.babylonjs.com/demos/amp360video/)                        | [GitHub](https://github.com/BabylonJS/Extensions/tree/master/Amp360Video)                     | Eklenti, masaüstünüzde veya VR uyumlu cihazlarda amp 'da 360 videosunu görselleştirmenize olanak tanır. Tam belgelere [buradan](https://doc.babylonjs.com/extensions/amp360video)ulaşabilirsiniz: |

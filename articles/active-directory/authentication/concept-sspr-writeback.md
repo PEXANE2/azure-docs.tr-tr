@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 53f416a23dbb47660097c41ada09c8c135434bcb
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96743658"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>Self servis parola sıfırlama geri yazma özelliği Azure Active Directory nasıl çalışır?
@@ -30,7 +30,7 @@ Azure Active Directory (Azure AD) self servis parola sıfırlama (SSPR), kullan�
 Parola geri yazma, aşağıdaki karma kimlik modellerini kullanan ortamlarda desteklenir:
 
 * [Parola karması eşitleme](../hybrid/how-to-connect-password-hash-synchronization.md)
-* [Doğrudan kimlik doğrulaması](../hybrid/how-to-connect-pta.md)
+* [Geçişli kimlik doğrulaması](../hybrid/how-to-connect-pta.md)
 * [Active Directory Federation Services (Active Directory Federasyon Hizmetleri)](../hybrid/how-to-connect-fed-management.md)
 
 Parola geri yazma özelliği aşağıdaki özellikleri sağlar:

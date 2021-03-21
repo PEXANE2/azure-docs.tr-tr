@@ -6,10 +6,10 @@ ms.author: rajosh
 ms.topic: conceptual
 ms.date: 02/07/2021
 ms.openlocfilehash: d1ea328575cf07a22ce39549c34d5cd21e916427
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102054989"
 ---
 # <a name="assessment-overview-migrate-to-azure-sql"></a>Değerlendirmeye genel bakış (Azure SQL 'e geçiş)
@@ -17,7 +17,7 @@ ms.locfileid: "102054989"
 Bu makalede, [Azure geçişi: bulma ve değerlendirme aracı](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-server-assessment-tool)kullanılarak bir VMware ORTAMıNDAN Azure SQL veritabanlarına veya yönetilen örneklere şirket içi SQL Server örnekleri geçirmeye yönelik değerlendirmelere genel bakış sunulmaktadır.
 
 > [!Note]
-> VMware ortamınızda çalışan SQL Server örnekleri ve veritabanlarının keşfi ve değerlendirmesi artık önizlemededir. Bu özelliği denemek için **Avustralya Doğu** bölgede bir proje oluşturmak üzere [**Bu bağlantıyı**](https://aka.ms/AzureMigrate/SQL) kullanın. Zaten Avustralya Doğu bir projeniz varsa ve bu özelliği denemek istiyorsanız, lütfen portalda bu [**önkoşulları**](how-to-discover-sql-existing-project.md) tamamladığınızdan emin olun.
+> VMware ortamınızda çalışan SQL Server örnekleri ve veritabanlarının keşfi ve değerlendirmesi artık önizlemededir. Bu özelliği denemek için [**bu bağlantıyı**](https://aka.ms/AzureMigrate/SQL) kullanarak **Doğu Avustralya** bölgesinde bir proje oluşturun. Zaten Doğu Avustralya bölgesinde bir projeniz varsa ve bu özelliği denemek istiyorsanız, lütfen portalda bu [**önkoşulları**](how-to-discover-sql-existing-project.md) tamamladığınızdan emin olun.
 
 ## <a name="whats-an-assessment"></a>Değerlendirme nedir?
 Bulma ve değerlendirme aracı ile bir değerlendirme, verilerin zaman içindeki bir noktaya görüntüsüdür ve kullanıma hazır olma durumunu ölçer ve şirket içi sunucuları Azure 'a geçirme etkisini tahmin eder.
@@ -93,7 +93,7 @@ Azure geçişi ile bir değerlendirme oluşturmak için [en iyi uygulamaları g�
 ## <a name="calculate-readiness"></a>Hazırlığı hesapla
 
 > [!NOTE]
-> Değerlendirme yalnızca çevrimiçi durumdaki veritabanlarını içerir. Veritabanının başka bir durumda olması durumunda değerlendirme, bu tür veritabanları için hazırlık, boyutlandırma ve maliyet hesaplamasını yoksayar. Bu tür veritabanlarını değerlendirmenizi istiyorsanız lütfen veritabanının durumunu değiştirin ve değerlendirmesi bir süre sonra yeniden hesaplayın.
+> Değerlendirme yalnızca çevrimiçi durumdaki veritabanlarını içerir. Veritabanı başka bir durumdaysa, değerlendirme bu tür veritabanları için hazırlık, boyutlandırma ve maliyet hesaplamasını yoksayar. Bu tür veritabanlarını değerlendirmek istiyorsanız lütfen veritabanının durumunu değiştirin ve değerlendirmeyi bir süre sonra yeniden hesaplayın.
 
 ### <a name="azure-sql-readiness"></a>Azure SQL hazırlığı
 
@@ -116,8 +116,8 @@ Azure SQL değerlendirme özelliklerinde **Önerilen** hedef dağıtım türün�
  Hazır | Hazır | Azure SQL VERITABANı veya Azure SQL MI | Yes
  Hazır | Ready veya Unknown | Azure SQL DB | Yes
  Ready veya Unknown | Hazır | Azure SQL MI | Yes
- Hazırlanma | Hazırlanma | Azure VM için hazırlanma olasılığı | Hayır
- Ready veya Unknown | Ready veya Unknown | Bilinmiyor | Hayır
+ Hazırlanma | Hazırlanma | Azure VM için hazırlanma olasılığı | No
+ Ready veya Unknown | Ready veya Unknown | Bilinmiyor | No
 
 > [!NOTE]
 > Önerilen dağıtım türü değerlendirme özelliklerinde **önerildiği** şekilde seçilirse ve kaynak SQL Server hem Azure SQL veritabanı tek veritabanı hem de Azure SQL yönetilen örneği için uygun ise, değerlendirme, maliyetinizi en iyi duruma getirmek ve boyut ve performans sınırlarının içine sığması için belirli bir seçenek önerir.
@@ -127,7 +127,7 @@ Azure SQL değerlendirme özelliklerinde **Önerilen** hedef dağıtım türün�
 SQL örneği Azure SQL veritabanı ve Azure SQL yönetilen örneği için hazırsanız, önerilen dağıtım türü, *Azure VM için, olası* olarak işaretlendi olarak işaretlenir.
 - Örneğin, örneğin çalışıyor olduğu sunucunun bunun yerine bir Azure VM 'ye geçişe hazırlanın olup olmadığını anlamak için, kullanıcının değerlendirme türü ile "Azure VM" olarak bir değerlendirme oluşturması önerilir. Şunlara dikkat edin:
     - Azure geçişi 'ndeki Azure VM değerlendirmelerinde, şu anda, Azure sanal makinesinde SQL örnekleri ve veritabanlarını çalıştırmaya yönelik belirli performans ölçümlerini düşünmeyecektir. 
-    - Bir sunucusunda bir Azure VM değerlendirmesi çalıştırdığınızda, önerilen boyut ve maliyet tahminleri sunucuda çalışan tüm örnekler için olur ve sunucu geçiş aracı kullanılarak bir Azure VM 'ye geçirilebilir. Geçirmeden önce Azure sanal makinelerinde SQL Server için [performans kılavuzunu gözden geçirin](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices) .
+    - Sunucuda Azure VM değerlendirmesi çalıştırdığınızda, önerilen boyut ve maliyet tahminleri sunucuda çalıştırılan ve Sunucu Geçişi aracı kullanılarak bir Azure sanal makinesine geçirilebilecek tüm örnekleri kapsar. Geçiş yapmadan önce Azure sanal makinelerindeki SQL Server için [performans yönergelerini gözden geçirin](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices).
 
 
 ## <a name="calculate-sizing"></a>Boyutlandırmayı hesapla
@@ -172,11 +172,11 @@ Bu tabloda, kullanılabilir veri noktalarının yüzdesine bağlı olan değerle
 #### <a name="low-confidence-ratings"></a>Düşük güvenilirlikli derecelendirmeler
 Bir değerlendirmenin en düşük güvenilirlik derecelendirmesinin neden olmasının birkaç nedeni aşağıda verilmiştir:
 - Değerlendirmeyi oluşturmakta olduğunuz süre için ortamınızı profildiniz. Örneğin, performans süresi ile bir gün ayarlanmış bir değerlendirme oluşturursanız, toplanan tüm veri noktaları için bulmayı başlattıktan sonra en az bir gün beklemeniz gerekir.
-- Değerlendirme, değerlendirme süresinde sunucuların bazıları veya tümü için performans verilerini toplayamaz. Yüksek güvenilirlikli bir derecelendirme için lütfen şunları doğrulayın:
+- Değerlendirme, değerlendirme süresi içinde sunucuların bir bölümü veya tümü için performans verilerini toplayamıyor. Yüksek güvenilirlikli bir derecelendirme için lütfen şunları doğrulayın:
     - Değerlendirme süresi boyunca sunucular açık
     - 443 bağlantı noktalarında giden bağlantılara izin verilir
     - Azure geçişi 'nde SQL aracısının Azure geçişi bağlantı durumu ' bağlı ' ise, son sinyalin olup olmadığını kontrol edin 
-    - Tüm SQL örnekleri için Azure geçişi bağlantı durumu, bulunan SQL örneği dikey penceresinde "bağlandı" ise
+    - Bulunan SQL örneği dikey penceresinde tüm SQL örnekleri için Azure Geçişi bağlantı durumunun “Bağlandı” olup olmadığı
 
     Güvenilirlik derecelendirmesindeki en son değişiklikleri yansıtacak şekilde değerlendirmeyi 'Yeniden Hesaplayın'.
 - Değerlendirmenin hesaplanışında bazı veritabanları veya örnekler oluşturulmuştur. Örneğin, geçen ayın performans geçmişi için bir değerlendirme oluşturduğunuzu varsayalım, ancak bazı veritabanları veya örnekler yalnızca bir hafta önce oluşturulmuştur. Bu durumda, yeni sunucular için performans verileri sürenin tamamına uygun olmayacaktır ve güvenirlik derecelendirmesi düşük olacaktır.

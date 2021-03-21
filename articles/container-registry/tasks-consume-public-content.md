@@ -7,10 +7,10 @@ ms.author: stevelas
 ms.date: 10/29/2020
 ms.custom: ''
 ms.openlocfilehash: 4fba6290b4973e797c13943fc9be4fadb19f3274
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96349291"
 ---
 # <a name="how-to-consume-and-maintain-public-content-with-azure-container-registry-tasks"></a>Azure Container Registry görevlerle ortak içeriği kullanma ve koruma
@@ -49,7 +49,7 @@ Bu izlenecek yol şu şekilde ayarlanır:
    1. Görüntü oluşturma ve dağıtma `hello-world`
 1. İçin yapılandırma dahil **ACR görev tanımları**:
 1. Bir Anahtar Kasası işaretçisi olan **kayıt defteri kimlik bilgileri** koleksiyonu
-1. Bir **secrets** `acr-task.yaml` Anahtar Kasası işaretçisi olan, içinde bulunan gizli dizileri koleksiyonu
+1. Bir  `acr-task.yaml` Anahtar Kasası işaretçisi olan, içinde bulunan gizli dizileri koleksiyonu
 1. Bir içinde kullanılan **yapılandırılmış değerler** koleksiyonu `acr-task.yaml`
 1. Tüm gizli dizileri güvenli hale getirmek için bir **Azure Anahtar Kasası**
 1. Yapı uygulamasını barındıran bir **Azure Container örneği** `hello-world`

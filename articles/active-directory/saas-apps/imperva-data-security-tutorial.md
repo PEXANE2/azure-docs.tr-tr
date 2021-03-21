@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/17/2020
 ms.author: jeedes
 ms.openlocfilehash: 7e641af184351aa0d975738439c88724027751dd
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98736580"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-imperva-data-security"></a>Öğretici: bir çoklu oturum açma (SSO) Azure Active Directory, bu veri güvenliği ile tümleştirme
@@ -26,7 +26,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile ilgili olarak, kusurda ve
 * Kullanıcılarınızın Azure AD hesapları ile ilgili olarak, daha fazla veri güvenliğine izin vermek üzere otomatik olarak oturum açabilmesi.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 

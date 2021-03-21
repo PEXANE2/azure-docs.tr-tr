@@ -14,16 +14,16 @@ ms.reviewer: vanto
 ms.date: 02/17/2021
 tags: azure-synapse
 ms.openlocfilehash: f47303a953dbb06b4c9efdfbbae41715cad81d2a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101690813"
 ---
 # <a name="data-discovery--classification"></a>Veri Bulma ve Sınıflandırma
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Veri bulma & sınıflandırması Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE Analytics 'te yerleşiktir. Veritabanlarınızdaki hassas verileri bulmak, sınıflandırmak, etiketlemek ve raporlamak için temel yetenekler sağlar.
+Veri Bulma ve Sınıflandırma; Azure SQL Veritabanı, Azure SQL Yönetilen Örneği ve Azure Synapse Analytics hizmetlerinde yerleşik olarak bulunur. Veritabanınızdaki hassas verileri bulmak, sınıflandırmak, etiketlemek ve raporlamak için temel yetenekler sağlar.
 
 En hassas verileriniz arasında işletme, finans, sağlık hizmetleri veya kişisel bilgiler bulunabilir. Bu verileri bulmak ve sınıflandırmak, kuruluşunuzun bilgi koruma yaklaşımında bir özetleme rolü oynayabilir. Şunlara altyapı sağlayabilir:
 
@@ -134,7 +134,7 @@ Bu yerleşik roller bir veritabanının veri sınıflandırmasını değiştireb
 
 [Azure RBAC](../../role-based-access-control/overview.md)'de rol tabanlı izinler hakkında daha fazla bilgi edinin.
 
-## <a name="manage-classifications"></a><a id="manage-classification"></a>Sınıflandırmaları Yönet
+## <a name="manage-classifications"></a><a id="manage-classification"></a>Sınıflandırmaları yönetme
 
 Sınıflandırmaları yönetmek için T-SQL, REST API veya PowerShell kullanabilirsiniz.
 
@@ -188,7 +188,7 @@ Sınıflandırmaları ve önerileri programlı bir şekilde yönetmek için REST
 ## <a name="faq---advanced-classification-capabilities"></a>SSS-gelişmiş sınıflandırma özellikleri
 
 **Soru**: [Azure PURVIEW](../../purview/overview.md) , SQL veri bulma & sınıflandırmasının yerini alacak veya SQL veri bulma & sınıflandırması yakında kullanımdan kalkacaktır mi?
-**Cevap**: SQL veri bulma & sınıflandırmasını desteklemeye devam ediyoruz ve gelişmiş sınıflandırma özelliklerini ve veri yönetimini sağlamak için daha zengin özellikleri olan [Azure purview](../../purview/overview.md) 'ı benimsemenizi öneririz. Herhangi bir hizmeti, özelliği, API 'yi veya SKU 'yu devre dışı bırakmaya karar verirse, bir geçiş veya geçiş yolu da dahil olmak üzere ön bildirim alırsınız. Buradan Microsoft yaşam döngüsü ilkeleri hakkında daha fazla bilgi edinin.
+**Cevap**: SQL veri bulma & sınıflandırmasını desteklemeye devam ediyoruz ve gelişmiş sınıflandırma özelliklerini ve veri yönetimini sağlamak için daha zengin özellikleri olan [Azure purview](../../purview/overview.md) 'ı benimsemenizi öneririz. Herhangi bir hizmeti, özelliği, API'yi veya SKU'yu kullanımdan kaldırmaya karar verirsek, bu konuda önceden geçiş yolunu da içeren bir bildirim alırsınız. Burada Microsoft Yaşam Döngüsü ilkeleri hakkında daha fazla bilgi edinebilirsiniz.
 
 
 ## <a name="next-steps"></a><a id="next-steps"></a>Sonraki adımlar

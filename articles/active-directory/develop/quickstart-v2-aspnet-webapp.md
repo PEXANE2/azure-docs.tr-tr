@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperf-fy21q1
-ms.openlocfilehash: eb57be94e460241e3cacbe2dd20c071504a9222a
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 87948ed04f7b50820d94993d4c4fbcf2dfd94b31
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102209773"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104578694"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Hızlı başlangıç: ASP.NET Web uygulamasına Microsoft Identity platformu oturum açma ekleme
 
@@ -79,6 +79,8 @@ Bu hızlı başlangıçta, bir ASP.NET Web uygulamasının kullanıcılara herha
 > [!div renderon="portal" id="autoupdate" class="sxs-lookup nextstepaction"]
 > [Kod örneğini indirin](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
 
+[!INCLUDE [active-directory-develop-path-length-tip](../../../includes/active-directory-develop-path-length-tip.md)]
+
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>3. Adım: uygulamanız yapılandırıldı ve çalıştırılmaya hazırlanıyor
 > Projenizi uygulamanızın özelliklerinin değerleriyle yapılandırdık.
@@ -135,7 +137,7 @@ Install-Package Microsoft.Owin.Host.SystemWeb
 
 ### <a name="owin-startup-class"></a>OWıN başlangıç sınıfı
 
-OWıN ara yazılımı, barındırma işlemi başladığında çalışan bir *Başlangıç sınıfı* kullanır. Bu hızlı başlangıçta, *Startup.cs* dosyası kök klasöründedir. Aşağıdaki kod, bu hızlı başlangıçta kullanılan parametreleri gösterir:
+OWıN ara yazılımı, barındırma işlemi başladığında çalışan bir *Başlangıç sınıfı* kullanır. Bu hızlı *Başlangıçta, başlangıç. cs* dosyası kök klasöründedir. Aşağıdaki kod, bu hızlı başlangıçta kullanılan parametreleri gösterir:
 
 ```csharp
 public void Configuration(IAppBuilder app)
@@ -172,7 +174,7 @@ public void Configuration(IAppBuilder app)
 }
 ```
 
-> |Konum  | Açıklama |
+> |Konum  | Description |
 > |---------|---------|
 > | `ClientId`     | Azure portal kayıtlı uygulamadaki uygulama KIMLIĞI. |
 > | `Authority`    | Kullanıcının kimlik doğrulaması için güvenlik belirteci hizmeti (STS) uç noktası. Genellikle `https://login.microsoftonline.com/{tenant}/v2.0` genel bulut içindir. Bu URL 'de, *{Tenant}* kiracınızın adı, kiracı kimliğiniz veya `common` ortak uç nokta başvurusu için. (Ortak uç nokta çok kiracılı uygulamalar için kullanılır.) |

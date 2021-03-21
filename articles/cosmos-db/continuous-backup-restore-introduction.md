@@ -9,10 +9,10 @@ ms.author: govindk
 ms.reviewer: sngun
 ms.custom: references_regions
 ms.openlocfilehash: d1dc108ecec93dddeb768eb61af425ba67f23002
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100393148"
 ---
 # <a name="continuous-backup-with-point-in-time-restore-preview-feature-in-azure-cosmos-db"></a>Azure Cosmos DB içindeki noktadan noktaya geri yükleme (Önizleme) özelliği ile sürekli yedekleme
@@ -37,21 +37,21 @@ Geri yükleme için kullanılabilir zaman penceresi (Bekletme dönemi olarak da 
 
 Genel önizlemede, SQL API 'SI veya MongoDB içerik noktası Azure Cosmos DB hesabını [Azure Portal](continuous-backup-restore-portal.md), [Azure komut satırı ARABIRIMI](continuous-backup-restore-command-line.md) (az CLI), [Azure PowerShell](continuous-backup-restore-powershell.md)veya [Azure Resource Manager](continuous-backup-restore-template.md)kullanarak başka bir hesaba geri yükleyebilirsiniz.
 
-## <a name="what-is-restored"></a>Ne geri yüklenir?
+## <a name="what-is-restored"></a>Neler geri yüklenir?
 
 Sürekli bir durumda, kaynak hesapta (veritabanları, kapsayıcılar ve öğeler dahil) gerçekleştirilen tüm kumalar, zaman uyumsuz olarak 100 saniye içinde yedeklenir. Yedekleme medyası (Azure Storage) devre dışı bırakılırsa veya kullanılamıyorsa, bu işlem, medya yeniden kullanılabilir olana kadar yerel olarak kalıcı hale getirilir ve geri yüklenebilecek işlemlerin Aslına göre kaybedilmesini engellemek için temizlenir.
 
-Sağlanan aktarım hızı kapsayıcılarının, paylaşılan üretilen iş veritabanının veya tüm hesabın herhangi bir birleşimini geri yüklemeyi tercih edebilirsiniz. Geri yükleme eylemi tüm verileri ve Dizin özelliklerini yeni bir hesaba geri yükler. Geri yükleme işlemi, bir hesapta, veritabanında veya bir kapsayıcıda geri yüklenen tüm verilerin belirtilen geri yükleme süresine tutarlı olmasını güvence altına alır. Geri yükleme süresi, geri yüklenmesi gereken veri miktarına bağlıdır.
+Sağlanan kapsayıcı işleme birimlerinin herhangi bir bileşimini, paylaşılan veritabanı işleme birimini veya hesabın tamamını geri yüklemeyi seçebilirsiniz. Geri yükleme eylemi tüm verileri ve bunların dizin özelliklerini yeni bir hesaba geri yükler. Geri yükleme işlemi bir hesapta, veritabanında veya kapsayıcıda geri yüklenen tüm verilerin belirtilen geri yükleme süresince tutarlı olmasını garanti eder. Geri yükleme süresi, geri yüklenmesi gereken verilerin miktarına bağlıdır.
 
 > [!NOTE]
 > Sürekli yedekleme moduyla, yedeklemeler Azure Cosmos DB hesabınızın kullanılabildiği her bölgede alınır. Her bölge hesabı için alınan yedeklemeler, varsayılan olarak yerel olarak yedekli ve hesabınızın [kullanılabilirlik bölgesi](high-availability.md#availability-zone-support) özelliği bu bölge için etkinleştirilmişse, bölgesel olarak yedekli. Geri yükleme eylemi her zaman verileri yeni bir hesaba geri yükler.
 
-## <a name="what-is-not-restored"></a>Ne geri yüklenmez?
+## <a name="what-is-not-restored"></a>Neler geri yüklenmez?
 
 Aşağıdaki konfigürasyonlar, zaman içinde, noktadan sonra kurtarma işleminden sonra geri yüklenmez:
 
 * Güvenlik Duvarı, VNET, Özel uç nokta ayarları.
-* Tutarlılık ayarları. Hesap, varsayılan olarak oturum tutarlılığı ile geri yüklenir.  
+* Tutarlılık ayarları. Varsayılan olarak, hesap oturum tutarlılığı ile geri yüklenir.  
 * Düzenleye.
 * Saklı yordamlar, Tetikleyiciler, UDF 'ler.
 
@@ -104,7 +104,7 @@ Aşağıdaki örnek, ABD 'deki devlet dışı bir bölgede dağıtılan bir Azur
 
 Şu anda zaman içindeki nokta geri yükleme işlevselliği genel önizlemede ve aşağıdaki sınırlamalara sahiptir:
 
-* Sürekli yedekleme için yalnızca SQL ve MongoDB için Azure Cosmos DB API 'Leri desteklenir. Cassandra, Table ve Gremlin API 'Leri henüz desteklenmiyor.
+* Sürekli yedeklemede yalnızca SQL ve MongoDB için Azure Cosmos DB API'leri desteklenir. Cassandra, Tablo ve Gremlin API’leri henüz desteklenmemektedir.
 
 * Varsayılan dönemsel yedekleme ilkesiyle var olan bir hesap sürekli yedekleme modunu kullanacak şekilde dönüştürülemez.
 
@@ -116,23 +116,23 @@ Aşağıdaki örnek, ABD 'deki devlet dışı bir bölgede dağıtılan bir Azur
 
 * SYNAPSE bağlantısı etkin olan hesaplar desteklenmez.
 
-* Geri yüklenen hesap, kaynak hesabınızın bulunduğu bölgede oluşturulur. Bir hesabı, kaynak hesabın bulunmadığı bir bölgeye geri alamazsınız.
+* Geri yüklenen hesaplar kaynak hesabınızın bulunduğu bölgede oluşturulur. Hesabı, kaynak hesabın bulunmadığı bir bölgeye geri yükleyemezsiniz.
 
 * Geri yükleme penceresi yalnızca 30 gündür ve değiştirilemez.
 
-* Yedeklemeler otomatik olarak coğrafi olağanüstü durum dayanıklı değildir. Hesap ve yedekleme için dayanıklılık sağlamak üzere başka bir bölgeyi açıkça eklemeniz gerekir.
+* Yedeklemeler coğrafi bölgedeki olağanüstü durumlara otomatik olarak dayanıklı değildir. Hesap ve yedeklemeye dayanıklılık getirmek için başka bir bölgeyi açıkça eklemeniz gerekir.
 
 * Bir geri yükleme devam ederken, hesap için izinleri veren kimlik ve erişim yönetimi (ıAM) ilkelerini değiştirmeyin veya silin veya VNET, güvenlik duvarı yapılandırmasını değiştirin.
 
-* Kapsayıcı oluşturulduktan sonra benzersiz dizin oluşturan SQL veya MongoDB hesapları için Azure Cosmos DB API sürekli yedekleme için desteklenmez. Yalnızca ilk kapsayıcı oluşturmanın bir parçası olarak benzersiz dizin oluşturan kapsayıcılar desteklenir. MongoDB hesaplarında, [uzantı komutlarını](mongodb-custom-commands.md)kullanarak benzersiz dizin oluşturursunuz.
+* Kapsayıcı oluşturulduktan sonra benzersiz dizini oluşturan SQL veya MongoDB için Azure Cosmos DB API'si hesapları sürekli yedeklemede desteklenmez. Yalnızca ilk kapsayıcı oluşturma işlemi kapsamında benzersiz dizini oluşturan kapsayıcılar desteklenir. MongoDB hesaplarında, [uzantı komutlarını](mongodb-custom-commands.md)kullanarak benzersiz dizin oluşturursunuz.
 
-* Zaman noktası geri yükleme işlevselliği her zaman yeni bir Azure Cosmos hesabına geri yüklenir. Mevcut bir hesaba geri yükleme şu anda desteklenmiyor. Yerinde geri yükleme hakkında geri bildirim sağlamaya ilgileniyorsanız, hesap temsilciniz veya [UserVoice](https://feedback.azure.com/forums/263030-azure-cosmos-db)aracılığıyla Azure Cosmos DB ekibine başvurun.
+* Belirli bir noktaya geri yükleme işlevi her zaman yeni bir Azure Cosmos hesabına geri yükleme yapar. Mevcut hesaba geri yükleme şu anda desteklenmemektedir. Yerinde geri yükleme hakkında geri bildirim sağlamaya ilgileniyorsanız, hesap temsilciniz veya [UserVoice](https://feedback.azure.com/forums/263030-azure-cosmos-db)aracılığıyla Azure Cosmos DB ekibine başvurun.
 
 * ,,,,,,,,,,,,,,,, Özelliği önizleme aşamasında olan tüm yeni API 'ler `RestorableDatabaseAccount` `RestorableSqlDatabases` `RestorableSqlContainer` `RestorableMongodbDatabase` `RestorableMongodbCollection` değişikliklere tabidir
 
 * Geri yüklendikten sonra, belirli koleksiyonlar için tutarlı dizinin yeniden derlenmesi mümkündür. [Indexdönüşümtionprogress](how-to-manage-indexing-policy.md) özelliği aracılığıyla yeniden oluşturma işleminin durumunu kontrol edebilirsiniz.
 
-* Geri yükleme işlemi, bir kapsayıcının TTL yapılandırması dahil tüm özelliklerini geri yükler. Sonuç olarak, bu şekilde yapılandırdıysanız geri yüklenen verilerin hemen silinmesi mümkündür. Bu durumu engellemek için geri yükleme zaman damgası, TTL özellikleri kapsayıcıya eklenmeden önce olmalıdır.
+* Geri yükleme işleminde TTL yapılandırması da dahil olmak üzere kapsayıcının tüm özellikleri geri yüklenir. Sonuç olarak, bu şekilde yapılandırırsanız geri yüklenen veriler hemen silinebilir. Bu durumu önlemek için geri yükleme zaman damgası TTL özelliklerinin kapsayıcıya eklenmesinden önceki bir tarih olmalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
