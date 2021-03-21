@@ -1,6 +1,6 @@
 ---
 title: StorSimple Sanal dizi cihazı Özet dikey penceresi | Microsoft Docs
-description: StorSimple Aygıt Yöneticisi için cihaz Özeti dikey penceresini açıklar ve StorSimple Sanal dizininizdeki sistem durumunu izlemek için nasıl kullanılacağını açıklar.
+description: StorSimple Device Manager için cihaz Özeti dikey penceresini açıklar ve StorSimple Sanal dizininizdeki sistem durumunu izlemek için nasıl kullanılacağını açıklar.
 services: storsimple
 documentationcenter: ''
 author: manuaery
@@ -15,17 +15,17 @@ ms.workload: na
 ms.date: 11/29/2016
 ms.author: manuaery
 ms.openlocfilehash: 1ab72788c768568366f2627055015c74028330b5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96005886"
 ---
-# <a name="use-the-device-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>StorSimple Sanal dizisine bağlı StorSimple Aygıt Yöneticisi için cihaz Özeti dikey penceresini kullanın
+# <a name="use-the-device-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>StorSimple Sanal dizisine bağlı StorSimple Device Manager için cihaz Özeti dikey penceresini kullanın
 
 ## <a name="overview"></a>Genel Bakış
 
-StorSimple Aygıt Yöneticisi cihaz dikey penceresi, belirli bir StorSimple Aygıt Yöneticisi kayıtlı bir StorSimple Sanal dizisinin Özet görünümünü sağlar ve bu da Sistem Yöneticisi 'nin dikkatini çekmesini gerektiren cihaz sorunlarını vurgular. Bu öğretici, cihaz Özeti dikey penceresini tanıtır, içerik ve işlevi açıklar ve bu dikey pencereden gerçekleştirebileceğiniz görevleri açıklar.
+StorSimple Device Manager cihaz dikey penceresi, belirli bir StorSimple Device Manager kayıtlı bir StorSimple Sanal dizisinin Özet görünümünü sağlar ve bu da Sistem Yöneticisi 'nin dikkatini çekmesini gerektiren cihaz sorunlarını vurgular. Bu öğretici, cihaz Özeti dikey penceresini tanıtır, içerik ve işlevi açıklar ve bu dikey pencereden gerçekleştirebileceğiniz görevleri açıklar.
 
 Cihaz Özeti dikey penceresinde aşağıdaki bilgiler görüntülenir:
 

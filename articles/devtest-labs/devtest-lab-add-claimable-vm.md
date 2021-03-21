@@ -4,10 +4,10 @@ description: Azure DevTest Labs ' de bir çakışan sanal makine eklemek ve bir 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 1fe949d7104fe6437087e77c403cc0d921ebd025
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88270988"
 ---
 # <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>Azure DevTest Labs çakışan VM 'Ler oluşturun ve yönetin
@@ -15,7 +15,7 @@ ms.locfileid: "88270988"
 
 ## <a name="steps-to-add-a-claimable-vm-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs bir laboratuvara çakışmaz bir VM ekleme adımları
 1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
-1. **Tüm hizmetler**' i seçin ve **DevOps** bölümünde **DevTest Labs** ' i seçin. DevOps bölümünde, **DevTest Labs** ' in yanındaki * (Star) **DEVOPS** seçeneğini belirleyin. Bu eylem, bir sonraki sefer kolayca erişebilmek için **DevTest Labs** 'i sol gezinti menüsüne ekler. Ardından, sol gezinti menüsünde **DevTest Labs** ' i seçebilirsiniz.
+1. **Tüm hizmetler**' i seçin ve **DevOps** bölümünde **DevTest Labs** ' i seçin. DevOps bölümünde, **DevTest Labs** ' in yanındaki * (Star)  seçeneğini belirleyin. Bu eylem, bir sonraki sefer kolayca erişebilmek için **DevTest Labs** 'i sol gezinti menüsüne ekler. Ardından, sol gezinti menüsünde **DevTest Labs** ' i seçebilirsiniz.
 
     ![Tüm hizmetler-DevTest Labs seçin](./media/devtest-lab-create-lab/all-services-select.png)
 1. Laboratuvarlar listesinden, sanal makineyi oluşturmak istediğiniz Laboratuvarı seçin.
@@ -26,7 +26,7 @@ ms.locfileid: "88270988"
 1. **Sanal makine** sayfasının **temel ayarlar** sekmesinde aşağıdaki işlemleri yapın:
     1. **Sanal makine adı** metın kutusuna VM için bir ad girin. Metin kutusu, sizin için otomatik olarak oluşturulan benzersiz bir ad ile önceden doldurulur. Ad, e-posta adresiniz içindeki kullanıcı adına ve ardından benzersiz 3 basamaklı bir sayıya karşılık gelir. Bu özellik sizi bir makine adı düşünmek ve her makine oluşturduğunuzda yazmanız için zaman kazandırır. İsterseniz, bu otomatik doldurulmuş alanı seçtiğiniz bir adla geçersiz kılabilirsiniz. VM 'nin otomatik doldurulmuş adını geçersiz kılmak için, **sanal makine adı** metin kutusuna bir ad girin.
     2. Sanal makinede yönetici ayrıcalıklarına sahip bir **Kullanıcı adı** girin. Makinenin **Kullanıcı adı** , otomatik olarak oluşturulan benzersiz bir adla önceden doldurulmuştur. Ad, e-posta adresiniz içindeki kullanıcı adına karşılık gelir. Bu özellik size, her yeni makine oluşturduğunuzda bir kullanıcı adına karar verirken size zaman kazandırır. Daha sonra, isterseniz bu otomatik doldurulmuş alanı seçtiğiniz bir Kullanıcı adı ile geçersiz kılabilirsiniz. Kullanıcı adı için otomatik doldurulmuş değeri geçersiz kılmak için, **Kullanıcı adı** metin kutusuna bir değer girin. Bu kullanıcıya, sanal makinede **yönetici** ayrıcalıkları verilir.
-    3. Laboratuvarda ilk VM oluşturuyorsanız, Kullanıcı için bir **parola** girin. Bu parolayı laboratuvara ilişkili Azure anahtar kasasında varsayılan parola olarak kaydetmek için **Varsayılan parola olarak kaydet**' i seçin. Varsayılan parola, anahtar kasasında şu adla kaydedilir: **VmPassword**. Laboratuvarda sonraki VM 'Leri oluşturmaya çalıştığınızda, **parola**için **VmPassword** otomatik olarak seçilir. Değeri geçersiz kılmak için, **kaydedilmiş gizli anahtar kullan** onay kutusunu temizleyin ve bir parola girin.
+    3. Laboratuvarda ilk VM oluşturuyorsanız, Kullanıcı için bir **parola** girin. Bu parolayı laboratuvara ilişkili Azure anahtar kasasında varsayılan parola olarak kaydetmek için **Varsayılan parola olarak kaydet**' i seçin. Varsayılan parola, anahtar kasasında şu adla kaydedilir: **VmPassword**. Laboratuvarda sonraki VM 'Leri oluşturmaya çalıştığınızda, **parola** için **VmPassword** otomatik olarak seçilir. Değeri geçersiz kılmak için, **kaydedilmiş gizli anahtar kullan** onay kutusunu temizleyin ve bir parola girin.
 
         Ayrıca, gizli dizileri önce anahtar kasasında kaydedebilir ve ardından laboratuvarda bir VM oluştururken kullanabilirsiniz. Daha fazla bilgi için bkz. [gizli dizileri bir anahtar kasasında depolayın](devtest-lab-store-secrets-in-key-vault.md). Anahtar kasasında depolanan parolayı kullanmak için, **kaydedilmiş bir gizli dizi kullan**' ı seçin ve gizli bir değer (parola) ile ilişkili bir anahtar değeri belirtin.
     4. **Diğer seçenekler** bölümünde **boyutu Değiştir**' i seçin. Oluşturulacak ön tanımlı öğelerden birini, işlemci çekirdeğini, RAM boyutunu ve oluşturulacak VM 'nin sabit sürücü boyutunu seçin.
@@ -35,16 +35,16 @@ ms.locfileid: "88270988"
 2. Üstteki **Gelişmiş ayarlar** sekmesine geçin ve aşağıdaki işlemleri yapın:
     1. VM 'nin bulunduğu sanal ağı değiştirmek için **VNET 'ı Değiştir**' i seçin.
     2. Alt ağı değiştirmek için **alt ağı Değiştir**' i seçin.
-    3. VM 'nin IP adresinin **Genel, özel veya paylaşılan**olduğunu belirtin.
-    4. VM 'yi otomatik olarak silmek için **süre sonu tarihini ve saatini**belirtin.
+    3. VM 'nin IP adresinin **Genel, özel veya paylaşılan** olduğunu belirtin.
+    4. VM 'yi otomatik olarak silmek için **süre sonu tarihini ve saatini** belirtin.
     5. VM 'nin bir laboratuvar kullanıcısı tarafından çakışarak kullanılabilmesini sağlamak için, **Bu makinenin** çakışmasına izin vermek için **Evet** ' i seçin.
     6. Laboratuvar kullanıcılarınız için kullanılabilir hale getirmek istediğiniz **sanal makine örneklerinin** sayısını belirtin.
 3. Belirtilen VM 'yi laboratuvara eklemek için **Oluştur** ' u seçin.
 
-   Laboratuvar sayfası, VM başlatıldıktan sonra **çalışıyor** olarak VM 'nin oluşturma durumunu ( **oluşturma**olarak) görüntüler.
+   Laboratuvar sayfası, VM başlatıldıktan sonra **çalışıyor** olarak VM 'nin oluşturma durumunu ( **oluşturma** olarak) görüntüler.
 
 > [!NOTE]
->  [Azure Resource Manager şablonları](devtest-lab-create-environment-from-arm.md)aracılığıyla laboratuvar VM 'leri dağıtırsanız, Özellikler bölümünde **allowclaim** özelliğini true olarak ayarlayarak çakışarak sanal makineler oluşturabilirsiniz.
+> [Azure Resource Manager şablonları](devtest-lab-create-environment-from-arm.md)aracılığıyla laboratuvar VM 'leri dağıtırsanız, Özellikler bölümünde **allowclaim** özelliğini true olarak ayarlayarak çakışarak sanal makineler oluşturabilirsiniz.
 
 
 ## <a name="using-a-claimable-vm"></a>Çakışmaz bir VM kullanma
@@ -56,7 +56,7 @@ Bir Kullanıcı aşağıdaki adımlardan birini gerçekleştirerek, "çakışan 
   ![Belirli bir çakışmaz VM isteyin.](./media/devtest-lab-add-vm/devtestlab-claim-VM.png)
 
 
-* "Genel bakış" bölmesinin en üstünde, **talep**et ' i seçin. Çakışan VM 'Ler listesinden rastgele bir sanal makine atanır.
+* "Genel bakış" bölmesinin en üstünde, **talep** et ' i seçin. Çakışan VM 'Ler listesinden rastgele bir sanal makine atanır.
 
   ![Herhangi bir çakışmaz VM isteyin.](./media/devtest-lab-add-vm/devtestlab-claim-any.png)
 

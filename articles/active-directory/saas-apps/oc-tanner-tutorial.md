@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/28/2020
 ms.author: jeedes
 ms.openlocfilehash: 683cfc65e8154d4f409f5d4a33bf7ccf61c6f7c6
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92518594"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-oc-tanner---appreciatehub"></a>Öğretici: O.C. ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory Tanner - AppreciateHub
@@ -56,7 +56,7 @@ O.C. tümleştirmesini yapılandırmak için Tanner-Onatehub Azure AD 'ye O.C. e
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-oc-tanner---appreciatehub"></a>O.C. için Azure AD çoklu oturum açmayı yapılandırma ve test etme Tanner - AppreciateHub
 
-Azure AD SSO 'yu O.C. ile yapılandırma ve test etme Tanner- **B. Simon**adlı bir test kullanıcısını kullanarak bir test kullanıcısı kullanın. SSO 'nun çalışması için, O.C. içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir Tanner-takdir Atehub.
+Azure AD SSO 'yu O.C. ile yapılandırma ve test etme Tanner- **B. Simon** adlı bir test kullanıcısını kullanarak bir test kullanıcısı kullanın. SSO 'nun çalışması için, O.C. içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir Tanner-takdir Atehub.
 
 Azure AD SSO 'yu O.C. ile yapılandırmak ve test etmek için Tanner-takdir Atehub, aşağıdaki yapı taşlarını doldurun:
 

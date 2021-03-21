@@ -3,11 +3,11 @@ title: Güvenilen Azure hizmetini kullanarak ağa kısıtlanmış kayıt defteri
 description: Bir güvenilir Azure hizmeti örneğini, görüntü çekmek veya göndermek için ağ kısıtlamalı bir kapsayıcı kayıt defterine güvenli bir şekilde erişmek üzere etkinleştirin
 ms.topic: article
 ms.date: 01/29/2021
-ms.openlocfilehash: 3cc32630ea689891e7ba75163c33bc499a38becd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2e6b6ee3736f98f53ebb0aa43d707d42ba4cc058
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101716491"
 ---
 # <a name="allow-trusted-services-to-securely-access-a-network-restricted-container-registry-preview"></a>Güvenilen hizmetlerin ağ kısıtlamalı bir kapsayıcı kayıt defterine güvenli bir şekilde erişmesine izin ver (Önizleme)
@@ -41,6 +41,7 @@ Kayıt defterinin **Güvenilen hizmetlere izin ver** ayarı etkinse, aşağıdak
 |Güvenilen hizmet  |Desteklenen kullanım senaryoları  |
 |---------|---------|
 |ACR Görevleri     | [ACR görevinden farklı bir kayıt defterine erişme](container-registry-tasks-cross-registry-authentication.md)       |
+|Machine Learning | Özel bir Docker kapsayıcı görüntüsü kullanarak bir Machine Learning çalışma alanında model [dağıtma](../machine-learning/how-to-deploy-custom-docker-image.md) veya [eğitme](../machine-learning/how-to-train-with-custom-image.md) |
 |Azure Container Registry | [Başka bir Azure Container Registry 'den görüntü içeri aktarma](container-registry-import-images.md#import-from-an-azure-container-registry-in-the-same-ad-tenant) | 
 
 > [!NOTE]

@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 09/14/2020
 ms.author: duau
 ms.openlocfilehash: 1727193faa028a1d681f2a74df950afeb9570ec9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91270058"
 ---
 # <a name="tutorial-add-security-headers-with-rules-engine"></a>Öğretici: kural altyapısına güvenlik üst bilgileri ekleme
@@ -36,7 +36,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="add-a-content-security-policy-header-in-azure-portal"></a>Azure portal Içerik-Güvenlik Ilkesi üst bilgisi ekleme
 
-1. Yeni kural eklemek için **Ekle**'ye tıklayın. Kurala bir ad verin ve ardından **eylem**  >  **yanıt üst bilgisi**Ekle ' ye tıklayın.
+1. Yeni kural eklemek için **Ekle**'ye tıklayın. Kurala bir ad verin ve ardından **eylem**  >  **yanıt üst bilgisi** Ekle ' ye tıklayın.
 
 1. Bu üst bilgiyi bu rotaya yönelik tüm gelen isteklere yanıt olarak **eklemek için, bu üstbilgiyi Ekle olarak** ayarlayın.
 

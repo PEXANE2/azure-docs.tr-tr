@@ -4,10 +4,10 @@ description: Kullanıcıları, Azure DevTest Labs laboratuvardaki son değişikl
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 72c6ed7ab691ece094673ff5a158ffa769a9f7a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88270776"
 ---
 # <a name="post-an-announcement-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs bir laboratuvara duyuru gönderin
@@ -25,7 +25,7 @@ Duyuru özelliği geçici bildirimler için kullanılmak üzere tasarlanmıştı
 ## <a name="steps-to-post-an-announcement-in-an-existing-lab"></a>Mevcut laboratuvarda duyuru gönderme adımları
 
 1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
-1. Gerekirse, **tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin. (Laboratuvarınız panoda zaten **tüm kaynaklar**altında gösteriliyor olabilir).
+1. Gerekirse, **tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin. (Laboratuvarınız panoda zaten **tüm kaynaklar** altında gösteriliyor olabilir).
 1. Laboratuvarlar listesinden, bir duyuru göndermek istediğiniz Laboratuvarı seçin.
 1. Laboratuvarın **genel bakış** alanında **yapılandırma ve ilkeler**' i seçin.
 
@@ -35,7 +35,7 @@ Duyuru özelliği geçici bildirimler için kullanılmak üzere tasarlanmıştı
 
     ![Laboratuvar duyurusu düğmesi](./media/devtest-lab-announcements/devtestlab-announcements.png)
 
-1. Bu laboratuvardaki kullanıcılara bir ileti oluşturmak için, **etkin** ' i **Evet**olarak ayarlayın.
+1. Bu laboratuvardaki kullanıcılara bir ileti oluşturmak için, **etkin** ' i **Evet** olarak ayarlayın.
 
 1. Duyurunun artık kullanıcılara gösterilmemesi için bir tarih ve saat belirtmek üzere bir **sona erme tarihi** girebilirsiniz. Sona erme tarihi girmezseniz, duyuru devre dışı bırakana kadar kalır.
 
@@ -44,7 +44,7 @@ Duyuru özelliği geçici bildirimler için kullanılmak üzere tasarlanmıştı
    >
    >
 
-1. **Duyuru başlığı** ve **duyuru metni**girin.
+1. **Duyuru başlığı** ve **duyuru metni** girin.
 
    Başlık en fazla 100 karakter uzunluğunda olabilir ve kullanıcıya laboratuvar Genel Bakış sayfasında gösterilir. Kullanıcı başlığı seçerse, duyuru metni görüntülenir.
 
@@ -55,7 +55,7 @@ Duyuru özelliği geçici bildirimler için kullanılmak üzere tasarlanmıştı
 
 1. Duyurunuzun göndermeye hazırladıktan sonra **Kaydet** ' i seçin.
 
-Artık bu duyuruyu laboratuvar kullanıcılarına göstermek istemediğinizde, **Laboratuvar duyurusu** sayfasına dönün ve **etkin** ' i **Hayır**olarak ayarlayın. Sona erme tarihi belirttiyseniz, duyuru bu tarih ve saatte otomatik olarak devre dışı bırakılır.
+Artık bu duyuruyu laboratuvar kullanıcılarına göstermek istemediğinizde, **Laboratuvar duyurusu** sayfasına dönün ve **etkin** ' i **Hayır** olarak ayarlayın. Sona erme tarihi belirttiyseniz, duyuru bu tarih ve saatte otomatik olarak devre dışı bırakılır.
 
 ## <a name="steps-for-users-to-view-an-announcement"></a>Kullanıcılara bir duyuruyu görüntüleme adımları
 

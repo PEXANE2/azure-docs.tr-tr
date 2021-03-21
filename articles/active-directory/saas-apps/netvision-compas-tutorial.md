@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/16/2020
 ms.author: jeedes
 ms.openlocfilehash: 423ac882c81582f2843eeba37d11c660662ad6e2
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92519410"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netvision-compas"></a>Öğretici: NetVision Compas ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -57,7 +57,7 @@ NetVision Compas 'yi Azure AD ile tümleştirmeyi yapılandırmak için, galerid
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-netvision-compas"></a>NetVision Compas için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu NetVision Compas ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve NetVision Compas içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu NetVision Compas ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve NetVision Compas içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
 Azure AD SSO 'yu NetVision Compas ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -114,7 +114,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 Bu bölümde, NetVision Compas erişimi vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde **NetVision Compas**öğesini seçin.
+1. Uygulamalar listesinde **NetVision Compas** öğesini seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
@@ -142,7 +142,7 @@ Bu bölümde, **NetVision Compas**'de SAML SSO 'yu etkinleştirirsiniz.
 
     ![IDP ekleme](media/netvision-compas-tutorial/idps-add.png)
 
-1. **Sağlayıcı türü**için **SAML** ' yi seçin.
+1. **Sağlayıcı türü** için **SAML** ' yi seçin.
 1. **Görünen ad** ve **Açıklama** alanları için anlamlı değerler girin.
 1. **Kullanılabilir kullanıcılar** listesinden seçerek ve ardından **Seçili Ekle** düğmesini seçerek IDP 'ye **NetVision Compas** kullanıcısı atayın. Kullanıcılar, sağlama yordamını takip ederken ıDP 'ye de atanabilir.
 1. **Meta veri** SAML seçeneği Için **Dosya Seç** düğmesine tıklayın ve bilgisayarınıza daha önce kaydedilen meta veri dosyasını seçin.
@@ -172,11 +172,11 @@ Erişim panelinde NetVision Compas kutucuğuna tıkladığınızda, SSO 'yu ayar
 ### <a name="directly-accessing-netvision-compas-sp-initiated"></a>NetVision Compas 'ye (SP tarafından başlatılan) doğrudan erişme.
 
 1. **NetVision Compas** URL 'sine erişin. Örneğin, `https://tenant.compas.cloud`.
-1. **NetVision Compas** Kullanıcı adını girip Ileri ' **yi**seçin.
+1. **NetVision Compas** Kullanıcı adını girip Ileri ' **yi** seçin.
 
     ![Oturum açan kullanıcı](media/netvision-compas-tutorial/login-user.png)
 
-1. **(isteğe bağlı)** Kullanıcı **NetVision Compas**içinde birden çok IDPs atanırsa, kullanılabilir IDPs 'lerin bir listesi sunulur. Daha önce **NetVision Compas**Içinde YAPıLANDıRıLMıŞ Azure AD IDP 'yi seçin.
+1. **(isteğe bağlı)** Kullanıcı **NetVision Compas** içinde birden çok IDPs atanırsa, kullanılabilir IDPs 'lerin bir listesi sunulur. Daha önce **NetVision Compas** Içinde YAPıLANDıRıLMıŞ Azure AD IDP 'yi seçin.
 
     ![Oturum açma seçimi](media/netvision-compas-tutorial/login-choose.png)
 

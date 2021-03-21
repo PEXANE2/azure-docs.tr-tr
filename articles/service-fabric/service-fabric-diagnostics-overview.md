@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 1/17/2019
 ms.author: srrengar
 ms.openlocfilehash: 25a50a2841a03929804be45be8012f9b5d0457ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91357140"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Azure Service Fabric için izleme ve tanılama
@@ -45,7 +45,7 @@ Verilen Tanılamalar, kutudan gelen kapsamlı bir olay kümesi biçiminde bulunu
 
 Olaylar hem Windows hem de Linux 'ta standart kanallar aracılığıyla gönderilir ve bunları destekleyen herhangi bir izleme aracı tarafından okunabilir. Azure Izleyici çözümü Azure Izleyici günlüklerinizi kaydeder. Kümeniz için özel bir işletimsel Pano ve uyarı oluşturabileceğiniz bazı örnek sorgular içeren [Azure izleyici günlükleri tümleştirmemi](service-fabric-diagnostics-event-analysis-oms.md) hakkında daha fazla bilgi edinebilirsiniz. [Platform düzeyi olay ve günlük oluşturma](service-fabric-diagnostics-event-generation-infra.md)konusunda daha fazla küme izleme kavramı mevcuttur.
 
-### <a name="health-monitoring"></a>Sistem durumunu izleme
+### <a name="health-monitoring"></a>Sistem durumu izleme
 Service Fabric platformu, bir kümedeki varlıkların durumu için Genişletilebilir sistem durumu raporlaması sağlayan bir sistem durumu modeli içerir. Her düğüm, uygulama, hizmet, bölüm, çoğaltma veya örnek, sürekli olarak güncelleştirilebilir bir sistem durumuna sahiptir. Sistem durumu "Tamam", "uyarı" veya "hata" olabilir. Olayları, her bir varlık için sıfatıcı olarak çeşitli varlıklara ve sistem durumuna göre yapılan fiiller olarak Service Fabric düşünün. Belirli bir varlık geçişlerinin sistem durumu her seferinde bir olay da yayınlanır. Bu şekilde, diğer herhangi bir olay gibi, istediğiniz izleme aracında sistem durumu olayları için sorgular ve uyarılar ayarlayabilirsiniz. 
 
 Ayrıca, kullanıcıların varlıklar için sistem durumunu geçersiz kılmasına de izin veririz. Uygulamanız bir yükseltmeden sonra doğrulama testleriniz başarısız olursa, uygulamanızın artık sağlıklı olmadığını belirtmek için sistem durumu API 'sini kullanarak Service Fabric sistem durumuna yazabilir ve Service Fabric yükseltmeyi otomatik olarak geri alır! Sistem durumu modeli hakkında daha fazla bilgi için, [Service Fabric sistem durumu izlemeye giriş](service-fabric-health-introduction.md) konusuna bakın

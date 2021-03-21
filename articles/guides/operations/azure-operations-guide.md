@@ -9,10 +9,10 @@ ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.openlocfilehash: 1eb0bf2c0e214c3e076895903176d15ee792c70c
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101093047"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Azure It işleçleri için kullanmaya başlayın
@@ -100,7 +100,7 @@ Verileri depolama ve yönetme Hizmetleri:
 
 - Microsoft Azure StorSimple
 
-- Redis için Azure Önbelleği
+- Redis için Azure Cache
 
 ### <a name="application-services"></a>Uygulama Hizmetleri
 
@@ -348,7 +348,7 @@ Ağ güvenlik grubu (NSG) kaynağını kullanarak, genel IP adresi üzerinden sa
 
 Son olarak, herhangi bir bilgisayar sisteminin yönetiminde olduğu gibi, güvenlik kimlik bilgilerini ve yazılım güvenlik duvarlarını kullanarak işletim sisteminde bir Azure sanal makinesi için güvenlik sağlamanız gerekir.
 
-## <a name="azure-storage"></a>Azure Storage
+## <a name="azure-storage"></a>Azure Depolama
 
 Azure depolama, dayanıklı, ölçeklenebilir ve yedekli depolama sağlayan, Microsoft tarafından yönetilen bir hizmettir. Herhangi bir kaynak dağıtım yöntemi kullanarak bir Azure Depolama hesabını kaynak olarak herhangi bir kaynak grubuna ekleyebilirsiniz. Azure dört depolama türü içerir: BLOB depolama, dosya depolama, tablo depolama ve kuyruk depolama. Bir depolama hesabı dağıtıldığında, genel amaçlı ve BLOB depolama olmak üzere iki hesap türü vardır. Genel amaçlı bir depolama hesabı, dört depolama türüne erişmenizi sağlar. BLOB depolama hesapları, genel amaçlı hesaplara benzer, ancak sık ve soğuk erişim katmanları içeren özel blob 'lar içerir. BLOB depolama hakkında daha fazla bilgi için bkz. [Azure Blob depolama](../../storage/blobs/storage-blob-storage-tiers.md).
 

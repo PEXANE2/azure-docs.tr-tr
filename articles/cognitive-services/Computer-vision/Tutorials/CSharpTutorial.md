@@ -12,10 +12,10 @@ ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 0a1878268beb135151a23b87d03839f3a51f4a96
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102432596"
 ---
 # <a name="sample-explore-an-image-processing-app-with-c"></a>Örnek: C ile görüntü işleme uygulamasını araştırma #
@@ -124,13 +124,13 @@ Görüntü İşleme örnek uygulaması için Visual Studio çözümü iki proje 
     Görüntüyü çözümle senaryosunun senaryo sayfası.
   * DescribePage. xaml  
     Görüntüyü açıkla senaryosunun senaryo sayfası.
-  * ImageScenarioPage.cs  
+  * Imasanariopage. cs  
     Örnek uygulamadaki tüm senaryo sayfalarından türetilen ımasanariopage sınıfı. Bu sınıf, tüm senaryo sayfaları tarafından paylaşılan kimlik bilgileri ve biçimlendirme çıktısı sağlama gibi işlevleri yönetir.
   * MainWindow.xaml  
     Örnek uygulamanın ana penceresi, SubscriptionKeyPage ve senaryo sayfalarını sunmak için Samplesenaryolar denetimini kullanır.
   * OCRPage. xaml  
     Metin Tanıma (OCR) senaryosuna yönelik senaryo sayfası.
-  * RecognizeLanguage.cs  
+  * RecognizeLanguage. cs  
     Örnek uygulamadaki çeşitli yöntemler tarafından desteklenen diller hakkında bilgi sağlayan RecognizeLanguage sınıfı.
   * TagsPage. xaml  
     Etiketler oluştur senaryosuna yönelik senaryo sayfası.

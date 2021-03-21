@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: jeedes
 ms.openlocfilehash: 077af1e8add63aac9f3d866c5d665ad4a47b133f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92520056"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workteam"></a>Öğretici: Iş ekibine çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -54,7 +54,7 @@ Iş ekibinin tümleştirmesini Azure AD 'ye göre yapılandırmak için galeride
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-workteam"></a>Iş ekibi için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu workteam ile yapılandırın ve test edin. SSO 'nun çalışması için, iş ekibinizdeki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu workteam ile yapılandırın ve test edin. SSO 'nun çalışması için, iş ekibinizdeki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Iş ekibi ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -143,15 +143,15 @@ Bu bölümde, Iş ekibine erişim izni vererek Azure çoklu oturum açma özelli
 
      ![Workteam SAML](./media/workteam-tutorial/tutorial_workteam_saml.png)
 
-    a. **AD Azure**olarak **SAML IDP** 'yi seçin.
+    a. **AD Azure** olarak **SAML IDP** 'yi seçin.
 
-    b. **SAML tek Sign-On HIZMETI URL** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
+    b. **SAML tek Sign-On HIZMETI URL** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
-    c. **SAML VARLıK kimliği** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının**değerini yapıştırın.
+    c. **SAML VARLıK kimliği** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının** değerini yapıştırın.
 
     d. Not defteri 'nde, Azure portal indirdiğiniz **temel 64 kodlu sertifikayı** açın, içeriğini kopyalayın ve ardından **SAML Imzalama sertifikası (base64)** kutusuna yapıştırın.
 
-    e. **Tamam**’a tıklayın.
+    e. **Tamam**'a tıklayın.
 
 ### <a name="create-workteam-test-user"></a>Iş ekibi test kullanıcısı oluştur
 
@@ -169,11 +169,11 @@ Azure AD kullanıcılarının Iş ekibine oturum açmasını sağlamak için, bu
 
     ![İş ekibi yeni Kullanıcı](./media/workteam-tutorial/tutorial_workteam_newuser.png)
 
-    a. **Ad** metin kutusuna **B. Simon**gibi kullanıcının adını girin.
+    a. **Ad** metin kutusuna **B. Simon** gibi kullanıcının adını girin.
 
     b. **E-posta** metin kutusuna kullanıcının e-postasını girin `B.Simon\@contoso.com` .
 
-    c. **Tamam**’a tıklayın.
+    c. **Tamam**'a tıklayın.
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 

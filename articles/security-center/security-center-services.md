@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 02/16/2021
 ms.author: memildin
 ms.openlocfilehash: 070f35dc3efea4a3f05ec36cc3860fa589aa87e3
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102437919"
 ---
 # <a name="feature-coverage-for-machines"></a>Makineler için özellik kapsamı
@@ -39,9 +39,9 @@ Aşağıdaki iki sekmede, Azure Güvenlik Merkezi 'nin Windows ve Linux sanal ma
 |Eksik işletim sistemi düzeltme ekleri değerlendirmesi|✔|✔|✔|Azure: Hayır<br><br>Yay etkin: Evet|
 |Güvenlik yapılandırması hataları değerlendirmesi|✔|✔|✔|Azure: Hayır<br><br>Yay etkin: Evet|
 |[Endpoint Protection değerlendirmesi](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure: Hayır<br><br>Yay etkin: Evet|
-|Disk şifrelemesi değerlendirmesi|✔</br>( [desteklenen senaryolar](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)için)|✔|-|Hayır|
-|Üçüncü taraf güvenlik açığı değerlendirmesi|✔|-|✔|Hayır|
-|[Ağ güvenlik değerlendirmesi](security-center-network-recommendations.md)|✔|✔|-|Hayır|
+|Disk şifrelemesi değerlendirmesi|✔</br>( [desteklenen senaryolar](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)için)|✔|-|No|
+|Üçüncü taraf güvenlik açığı değerlendirmesi|✔|-|✔|No|
+|[Ağ güvenlik değerlendirmesi](security-center-network-recommendations.md)|✔|✔|-|No|
 
 
 ### <a name="linux-machines"></a>[**Linux makineleri**](#tab/features-linux)
@@ -62,10 +62,10 @@ Aşağıdaki iki sekmede, Azure Güvenlik Merkezi 'nin Windows ve Linux sanal ma
 |Docker ile barındırılan IaaS kapsayıcıları üzerinde öneriler ve tehdit koruması|✔|✔|✔|Yes|
 |Eksik işletim sistemi düzeltme ekleri değerlendirmesi|✔|✔|✔|Azure: Hayır<br><br>Yay etkin: Evet|
 |Güvenlik yapılandırması hataları değerlendirmesi|✔|✔|✔|Azure: Hayır<br><br>Yay etkin: Evet|
-|[Endpoint Protection değerlendirmesi](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Hayır|
-|Disk şifrelemesi değerlendirmesi|✔</br>( [desteklenen senaryolar](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)için)|✔|-|Hayır|
-|Üçüncü taraf güvenlik açığı değerlendirmesi|✔|-|✔|Hayır|
-|[Ağ güvenlik değerlendirmesi](security-center-network-recommendations.md)|✔|✔|-|Hayır|
+|[Endpoint Protection değerlendirmesi](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|No|
+|Disk şifrelemesi değerlendirmesi|✔</br>( [desteklenen senaryolar](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)için)|✔|-|No|
+|Üçüncü taraf güvenlik açığı değerlendirmesi|✔|-|✔|No|
+|[Ağ güvenlik değerlendirmesi](security-center-network-recommendations.md)|✔|✔|-|No|
 
 --- 
 
@@ -112,7 +112,7 @@ Bu korumaların her biri için önerilerin ne zaman oluşturulduğu hakkında bi
 |[AWS hesabına Bağlan](quickstart-onboard-aws.md) (1)|-|-|
 |[GCP hesabını bağlama](quickstart-onboard-gcp.md) (1)|-|-|
 |[Sürekli dışarı aktarma](continuous-export.md)|✔|✔|
-|[İş akışı Otomasyonu](workflow-automation.md)|✔|✔|
+|[İş akışı otomasyonu](workflow-automation.md)|✔|✔|
 |[Öneri muafiyet kuralları](exempt-resource.md)|-|-|
 |[Uyarı engelleme kuralları](alerts-suppression-rules.md)|✔|✔|
 |[Güvenlik uyarıları için e-posta bildirimleri](security-center-provide-security-contact-details.md)|✔|✔|

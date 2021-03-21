@@ -12,10 +12,10 @@ author: msmimart
 manager: celested
 zone_pivot_groups: b2c-policy-type
 ms.openlocfilehash: 8919285f31e04a51ce10afe3313b28cf86b64ee0
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102055718"
 ---
 # <a name="investigate-risk-with-identity-protection-in-azure-ad-b2c"></a>Azure AD B2C kimlik koruması riskini araştırın
@@ -38,7 +38,7 @@ Kimlik koruması 'nı kullanırken şunları göz önünde bulundurun:
 - Kimlik koruması hem yerel hem de sosyal kimlikler (örneğin, Google veya Facebook) için kullanılabilir. Sosyal kimlikler için Koşullu erişimin etkinleştirilmesi gerekir. Sosyal hesap kimlik bilgileri dış kimlik sağlayıcısı tarafından yönetildiğinden algılama sınırlıdır.
 - Azure AD B2C kiracılarda, yalnızca [Azure AD kimlik koruması riskli algılamaların](../active-directory/identity-protection/overview-identity-protection.md) bir alt kümesi kullanılabilir. Aşağıdaki risk algılamaları Azure AD B2C tarafından desteklenir:  
 
-|Risk algılama türü  |Açıklama  |
+|Risk algılama türü  |Description  |
 |---------|---------|
 | Olağandışı yolculuk     | Kullanıcının en son oturum açma işlemlerini temel alan bir sıradan konumdan oturum açın.        |
 |Anonim IP adresi     | Anonim bir IP adresinden oturum açın (örneğin: Tor tarayıcısı, anonimleştirici VPN 'Ler).        |
