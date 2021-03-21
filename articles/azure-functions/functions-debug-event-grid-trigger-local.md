@@ -6,17 +6,17 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: cshoe
 ms.openlocfilehash: be05d237d2799404c3fd8b5733464e23eeb49aa3
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94833070"
 ---
 # <a name="azure-function-event-grid-trigger-local-debugging"></a>Azure Işlevi Event Grid yerel hata ayıklamayı Tetikle
 
 Bu makalede, bir depolama hesabı tarafından oluşturulan Azure Event Grid olayını işleyen yerel bir işlevde hata ayıklama işlemi gösterilmektedir. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Mevcut bir işlev uygulaması oluşturma veya kullanma
 - Var olan bir depolama hesabı oluşturun veya kullanın

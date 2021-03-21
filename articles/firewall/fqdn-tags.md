@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/30/2020
 ms.author: victorh
 ms.openlocfilehash: c0bd2f6a021baae80dafcc3d544e1062d8e022e8
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94653343"
 ---
 # <a name="fqdn-tags-overview"></a>FQDN etiketlerine genel bakış
@@ -28,7 +28,7 @@ Aşağıdaki tabloda kullanabileceğiniz geçerli FQDN etiketleri gösterilmekte
 
 ## <a name="current-fqdn-tags"></a>Geçerli FQDN etiketleri
 
-|FQDN etiketi  |Açıklama  |
+|FQDN etiketi  |Description  |
 |---------|---------|
 |Windows Update     |[Yazılım güncelleştirmeleri Için güvenlik duvarı yapılandırma](/mem/configmgr/sum/get-started/install-a-software-update-point)bölümünde açıklandığı gibi Microsoft Update giden erişime izin verin.|
 |Windows Tanılama Özellikleri|Tüm [Windows Tanılama uç noktalarına](/windows/privacy/configure-windows-diagnostic-data-in-your-organization#endpoints)giden erişime izin verin.|
@@ -37,7 +37,7 @@ Aşağıdaki tabloda kullanabileceğiniz geçerli FQDN etiketleri gösterilmekte
 |Azure Backup|Azure Backup hizmetlerine giden erişime izin verir.|
 |Azure HDInsight|HDInsight platform trafiği için giden erişime izin verir. Bu etiket, HDInsight 'tan müşteriye özgü depolamayı veya SQL trafiğini kapsamaz. [Hizmet uç noktalarını](../virtual-network/tutorial-restrict-network-access-to-resources.md) kullanarak bunları etkinleştirin veya el ile ekleyin.|
 |WindowsVirtualDesktop (WVD)|Giden Windows sanal masaüstü platformu trafiğine izin verir. Bu etiket, WVD tarafından oluşturulan dağıtıma özgü depolamayı ve Service Bus uç noktalarını kapsamıyor. Ayrıca, DNS ve KMS ağ kuralları gereklidir. Azure Güvenlik duvarını WVD ile tümleştirme hakkında daha fazla bilgi için bkz. [Azure Güvenlik Duvarı 'Nı kullanarak Windows sanal masaüstü dağıtımlarını koruma](protect-windows-virtual-desktop.md).|
-|Azure Kubernetes Hizmeti (AKS)|AKS 'e giden erişime izin verir. Daha fazla bilgi için bkz. Azure [Kubernetes hizmeti (AKS) dağıtımlarını korumak Için Azure Güvenlik duvarını kullanma](protect-azure-kubernetes-service.md).|
+|Azure Kubernetes Service (AKS)|AKS 'e giden erişime izin verir. Daha fazla bilgi için bkz. Azure [Kubernetes hizmeti (AKS) dağıtımlarını korumak Için Azure Güvenlik duvarını kullanma](protect-azure-kubernetes-service.md).|
 
 > [!NOTE]
 > Bir uygulama kuralında FQDN etiketi seçilirken protokol: bağlantı noktası alanı **https** olarak ayarlanmalıdır.

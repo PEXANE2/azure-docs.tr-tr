@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 6/30/2020
 ms.openlocfilehash: 9bc31cf8fee2669634ff366caac77cb090baf075
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96000309"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-portal"></a>Azure portal kullanarak MySQL için Azure veritabanı 'nda sunucu yedekleme ve geri yükleme
@@ -37,7 +37,7 @@ Azure portal aracılığıyla bir sunucu oluştururken, **fiyatlandırma katman�
 Oluşturma sırasında bu değerleri ayarlama hakkında daha fazla bilgi için bkz. [MySQL Için Azure veritabanı sunucusu hızlı başlangıç](quickstart-create-mysql-server-database-using-azure-portal.md).
 
 Yedekleme saklama süresi bir sunucuda aşağıdaki adımlarla değiştirilebilir:
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure portal](https://portal.azure.com/) oturum açın.
 2. MySQL için Azure veritabanı sunucunuzu seçin. Bu eylem **genel bakış** sayfasını açar.
 3. Menüde, **Ayarlar**' ın altında **fiyatlandırma katmanı** ' nı seçin. Kaydırıcıyı kullanarak **yedekleme saklama süresini** 7 ila 35 gün süreyle tercihlerinize göre değiştirebilirsiniz.
 Aşağıdaki ekran görüntüsünde 34 güne yükselmiştir.

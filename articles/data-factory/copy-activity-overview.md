@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: jingwang
 ms.openlocfilehash: d52a0bba5fddaa865b8fad74b778ba7a3838b2a4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100387912"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Etkinliği Azure Data Factory Kopyala
@@ -178,7 +178,7 @@ Kopyalama etkinliğinin kaynak verilerinizi havuzunuzu nasıl eşlediğini öğr
 
 ## <a name="add-additional-columns-during-copy"></a>Kopyalama sırasında ek sütunlar ekleme
 
-Kaynak veri deposundan havuza veri kopyalamanın yanı sıra, havuza kopyalamak üzere ek veri sütunları da eklemek için yapılandırabilirsiniz. Örneğin:
+Kaynak veri deposundan havuza veri kopyalamanın yanı sıra, havuza kopyalamak üzere ek veri sütunları da eklemek için yapılandırabilirsiniz. Örnek:
 
 - Dosya tabanlı kaynaktan kopyalama yapıldığında, verilerin hangi dosyadan geldiğini izlemek için göreli dosya yolunu ek bir sütun olarak depolayın.
 - Belirtilen kaynak sütununu başka bir sütun olarak çoğaltın. 

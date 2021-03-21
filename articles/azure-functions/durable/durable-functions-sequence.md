@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/29/2019
 ms.author: azfuncdf
 ms.openlocfilehash: f8223b1273c2a487e15e3c10d7c6852a119e4cdc
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98028259"
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Dayanıklı İşlevler-Merhaba dizisi örneğinde işlev zinciri oluşturma
@@ -108,7 +108,7 @@ Etkinlikler özniteliğini kullanır `ActivityTrigger` . `IDurableActivityContex
 
 Uygulamasının uygulanması `E1_SayHello` görece önemsiz bir dize biçimlendirme işlemidir.
 
-Bir öğesine bağlama yerine `IDurableActivityContext` , doğrudan etkinlik işlevine geçirilen türe bağlayabilirsiniz. Örneğin:
+Bir öğesine bağlama yerine `IDurableActivityContext` , doğrudan etkinlik işlevine geçirilen türe bağlayabilirsiniz. Örnek:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs?range=34-38)]
 

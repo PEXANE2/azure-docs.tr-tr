@@ -11,17 +11,17 @@ ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 2ff43408cfa6d95dbd5a235a950269c47d57a416
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97654039"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-**Claimsschema** öğesi, ilkenin bir parçası olarak başvurulabilen talep türlerini tanımlar. Talep şeması, taleplerinizi bildirdiğiniz yerdir. Bir talep adı, soyadı, görünen ad, telefon numarası ve daha fazlası olabilir. ClaimsSchema öğesi **ClaimType** öğelerinin listesini içerir. **ClaimType** öğesi, talep adı olan **ID** özniteliğini içerir.
+**ClaimsSchema** öğesi, ilkenin bir parçası olarak başvurulabilen talep türlerini tanımlar. Talep şeması taleplerinizi tanımladığınız yerdir. Bir talep adı, soyadı, görünen ad, telefon numarası ve daha fazlası olabilir. ClaimsSchema öğesi **ClaimType** öğelerinin listesini içerir. **ClaimType** öğesi, talep adı olan **ID** özniteliğini içerir.
 
 ```xml
 <BuildingBlocks>

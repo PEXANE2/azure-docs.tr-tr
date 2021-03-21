@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/1/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 973025dfd8c0141ed0884539fe5207cc64ec822c
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94541870"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-using-powershell"></a>PowerShell kullanarak MySQL için Azure veritabanı 'nda sunucu parametrelerini yapılandırma
@@ -22,7 +22,7 @@ PowerShell kullanarak MySQL için Azure veritabanı sunucusu için yapılandırm
 >[!Note]
 > Sunucu parametreleri sunucu düzeyinde genel olarak güncelleştirilebilir; [Azure CLI](./howto-configure-server-parameters-using-cli.md), [PowerShell](./howto-configure-server-parameters-using-powershell.md) veya [Azure Portal](./howto-server-parameters.md) kullanın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
 
@@ -63,7 +63,7 @@ Get-AzMySqlConfiguration -Name slow_query_log -ResourceGroupName myresourcegroup
 
 Ayrıca, MySQL Server altyapısının temel yapılandırma değerini güncelleştiren belirli bir sunucu yapılandırma parametresinin değerini de değiştirebilirsiniz. Yapılandırmayı güncelleştirmek için `Update-AzMySqlConfiguration` cmdlet 'ini kullanın.
 
-Myresourcegroup kaynak grubu altındaki **demosunucum** sunucusunun **yavaş \_ sorgu \_ günlüğü** sunucu yapılandırma parametresini güncelleştirmek için **myresourcegroup**.
+Myresourcegroup kaynak grubu altındaki **demosunucum** sunucusunun **yavaş \_ sorgu \_ günlüğü** sunucu yapılandırma parametresini güncelleştirmek için .
 
 ```azurepowershell-interactive
 Update-AzMySqlConfiguration -Name slow_query_log -ResourceGroupName myresourcegroup -ServerName mydemoserver -Value On

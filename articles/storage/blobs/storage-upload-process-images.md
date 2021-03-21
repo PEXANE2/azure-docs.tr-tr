@@ -10,10 +10,10 @@ ms.author: mhopkins
 ms.reviewer: dineshm
 ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
 ms.openlocfilehash: b50aadfa16ed95bacb5247187c15489a1b017d39
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98676599"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Öğretici: Azure depolama ile buluta görüntü verileri yükleme
@@ -246,7 +246,7 @@ Bir dosya belirtmek ve karşıya yüklemek için **Fotoğrafları karşıya yük
 
 ![.NET 'e fotoğraf yükleme](media/storage-upload-process-images/figure1.png)
 
-Örnek kodda, `UploadFileToStorage` *Storagehelper.cs* dosyasındaki görev, görüntüleri [uploadasync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync) yöntemi kullanılarak depolama hesabı içindeki *görüntüler* kapsayıcısına yüklemek için kullanılır. Aşağıdaki kod örneği `UploadFileToStorage` görevini içerir.
+Örnek kodda, `UploadFileToStorage` *storagehelper. cs* dosyasındaki görev, görüntüleri [uploadasync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync) yöntemini kullanarak depolama hesabı içindeki *görüntüler* kapsayıcısına yüklemek için kullanılır. Aşağıdaki kod örneği `UploadFileToStorage` görevini içerir.
 
 ```csharp
 public static async Task<bool> UploadFileToStorage(Stream fileStream, string fileName,

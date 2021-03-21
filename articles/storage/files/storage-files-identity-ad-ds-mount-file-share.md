@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 3aa7ab2fd3217377e9c56c8c71a1c1acc959bcd9
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: 1dd2768c7541312b68e2a44a35fc4260d67c5655
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103472271"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587007"
 ---
 # <a name="part-four-mount-a-file-share-from-a-domain-joined-vm"></a>Dördüncü kısım: etki alanına katılmış bir VM 'den bir dosya paylaşma bağlama
 
@@ -28,7 +28,7 @@ Aşağıdaki görüntüde gösterildiği gibi, izinleri verilen kimlik bilgileri
 
 Dosya payını bağlayabilmeniz için önce aşağıdaki önkoşulların yerine geldiğinden emin olun:
 
-- Depolama hesabı anahtarınızı kullanarak daha önce dosya paylaşımının bağlandığından bir istemciden dosya paylaşımından bağlama yapıyorsanız, paylaşımın bağlantısını kesdiğinizden, depolama hesabı anahtarının kalıcı kimlik bilgilerini kaldırmış olduğunuzdan ve şu anda kimlik doğrulaması için AD DS kimlik bilgileri kullandığınızdan emin olun. Bağlanmış paylaşımın depolama hesabı anahtarıyla temizlenme yönergeleri için [SSS sayfasına](https://docs.microsoft.com/azure/storage/files/storage-files-faq#ad-ds--azure-ad-ds-authentication)bakın.
+- Depolama hesabı anahtarınızı kullanarak daha önce dosya paylaşımının bağlandığından bir istemciden dosya paylaşımından bağlama yapıyorsanız, paylaşımın bağlantısını kesdiğinizden, depolama hesabı anahtarının kalıcı kimlik bilgilerini kaldırmış olduğunuzdan ve şu anda kimlik doğrulaması için AD DS kimlik bilgileri kullandığınızdan emin olun. Bağlanmış paylaşımın depolama hesabı anahtarıyla temizlenme yönergeleri için [SSS sayfasına](./storage-files-faq.md#ad-ds--azure-ad-ds-authentication)bakın.
 - İstemciniz AD DS bir görüş satırı içermelidir. Makinenizin veya sanal makinenizin AD DS tarafından yönetilen ağ tükeniyorsa, kimlik doğrulaması için AD DS ulaşmak üzere VPN 'yi etkinleştirmeniz gerekir.
 
 Yer tutucu değerlerini kendi değerlerinizle değiştirin, ardından Azure dosya paylaşımından bağlama yapmak için aşağıdaki komutu kullanın. Aşağıda gösterilen yolu kullanarak her zaman bağlamanız gerekir. Dosya bağlama için CNAME kullanmak kimlik tabanlı kimlik doğrulaması (AD DS veya Azure AD DS) için desteklenmez.

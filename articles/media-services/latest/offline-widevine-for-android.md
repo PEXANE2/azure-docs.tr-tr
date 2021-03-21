@@ -16,10 +16,10 @@ ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4c7adab9c14075e12cf5656f9e798e78ff26ff0b
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98955216"
 ---
 # <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>Android için Media Services v3 ile çevrimdışı Widevine akışı
@@ -145,7 +145,7 @@ Ayrıca, aşağıdaki iş parçacığına bakın: [Xamarin bağlama](https://git
 
 Ayrıca, Google bir aşamalı Web uygulaması (PWA) örneği üretti ve açık kaynaklı BT: 
 
-- [Kaynak kod](https://github.com/GoogleChromeLabs/sample-media-pwa)
+- [Kaynak kodu](https://github.com/GoogleChromeLabs/sample-media-pwa)
 - [Google hosted sürümü](https://biograf-155113.appspot.com/ttt/episode-2/) (Android cihazlarda yalnızca Chrome v 62 ve üzeri sürümlerde geçerlidir)
 
 Mobil Chrome tarayıcınızı bir Android telefonunda V62 (veya üzeri) sürümüne yükseltir ve yukarıdaki barındırılan örnek uygulamayı test ederseniz hem çevrimiçi akış hem de çevrimdışı oynatma işinin olduğunu görürsünüz.

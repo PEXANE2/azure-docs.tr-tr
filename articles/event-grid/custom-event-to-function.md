@@ -4,10 +4,10 @@ description: 'Hızlı başlangıç: bir konu yayımlamak ve bu olaya abone olmak
 ms.date: 07/07/2020
 ms.topic: quickstart
 ms.openlocfilehash: 4fe4753de41443a0537636933364c7b69b25cb27
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98791753"
 ---
 # <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>Hızlı başlangıç: Event Grid ile özel olayları Azure Işlevine yönlendirme
@@ -98,7 +98,7 @@ Event Grid’e hangi olayları izlemek istediğinizi ve olayların nereye gönde
 Birinci örnekte, Azure CLI kullanılmaktadır. Özel konunun URL’si ve anahtarı ile örnek olay verilerini alır. `<topic name>` yerine özel konunuzun adını yazın. Örnek olay verileri oluşturulur. JSON’un `data` öğesi, olayınızın yüküdür. Bu alana doğru oluşturulmuş herhangi bir JSON gelebilir. Ayrıca, gelişmiş yönlendirme ve filtreleme için konu alanını da kullanabilirsiniz. CURL, HTTP istekleri gönderen bir yardımcı programdır.
 
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 1. Azure portal **Cloud Shell**' ni seçin. Cloud Shell penceresinin sol üst köşesindeki **Bash** ' i seçin. 
 
     ![Cloud Shell-Bash](./media/custom-event-quickstart-portal/cloud-shell-bash.png)

@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
 ms.openlocfilehash: 50f71ee1ce59f5809fe8905c58f0399cf484f11a
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94659718"
 ---
 # <a name="set-up-a-lab-to-manage-and-develop-with-sql-server"></a>SQL Server yönetmek ve geliştirmek için bir laboratuvar kurun
@@ -61,7 +61,7 @@ Laboratuvar hizmetlerinde paylaşılan bir kaynak kullanmak için önce sanal a�
 20. **Sanal ağ** için, laboratuvar hesabıyla eşlenmiş sanal ağı seçin.
 21. **Alt ağ** için, uç noktanın barındırılmasını istediğiniz alt ağ ' ı seçin.  Uç noktaya atanan IP, bu alt ağa atanan aralıktan olacaktır.
 22. **Özel DNS Ile tümleştir** 'ı **Hayır** olarak ayarlayın. Kolaylık olması için, Azure 'un DNS DNS bölgesi veya kendi DNS sunucularımız üzerinden DNS 'i kullanacağız.
-23. **Tamam** düğmesine tıklayın.
+23. **Tamam**'a tıklayın.
 24. **İleri**' ye tıklayın.
 25. **Varolan verileri kullan** ayarını için **örnek**' i seçin.  AdventureWorksLT veritabanının verileri veritabanı oluşturulduğunda kullanılacaktır.
 26. **Gözden geçir ve oluştur**’a tıklayın.

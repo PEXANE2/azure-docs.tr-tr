@@ -11,10 +11,10 @@ ms.workload: Infrastructure-services
 ms.date: 05/2/2020
 ms.author: derekol
 ms.openlocfilehash: e7b696ba052b2aca9e14628327c07275845607ad
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94540595"
 ---
 # <a name="register-a-peering-service-connection-by-using-the-azure-cli"></a>Azure CLı kullanarak bir eşleme hizmeti bağlantısı kaydetme
@@ -23,7 +23,7 @@ Azure eşleme hizmeti, Microsoft 365, Dynamics 365, hizmet olarak yazılım (Saa
 
 - Bu makale, Azure CLı 'nin sürüm 2.0.28 veya üstünü gerektirir. Yüklü sürümü ve bağımlı kitaplıkları bulmak için [az version](/cli/azure/reference-index#az_version) komutunu çalıştırın. En son sürüme yükseltmek için [az upgrade](/cli/azure/reference-index#az_upgrade) komutunu çalıştırın.
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 Aşağıdakilere sahip olmanız gerekir:
 

@@ -9,10 +9,10 @@ ms.date: 04/08/2020
 ms.reviewer: sngun
 ms.custom: seodec18, "seo-nov-2020"
 ms.openlocfilehash: c6856a0cb70123f1a3570b611c81660a592fdc1b
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98027806"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Azure Cosmos DB'deki değişiklik akışı
@@ -26,12 +26,12 @@ Azure Cosmos DB akış değişikliği, bir kapsayıcıdaki değişikliklerin mey
 
 Bu özellik şu anda aşağıdaki Azure Cosmos DB API 'Leri ve istemci SDK 'Ları tarafından desteklenmektedir.
 
-| **İstemci sürücüleri** | **SQL APı 'SI** | **Cassandra için Azure Cosmos DB API 'SI** | **MongoDB için Azure Cosmos DB API’si** | **Gremlin API 'SI**|**Tablo API’si** |
+| **İstemci sürücüleri** | **SQL APı 'SI** | **Cassandra için Azure Cosmos DB API 'SI** | **MongoDB için Azure Cosmos DB API’si** | **Gremlin API**|**Tablo API’si** |
 | --- | --- | --- | --- | --- | --- | --- |
-| .NET | Evet | Evet | Evet | Evet | Hayır |
-|Java|Evet|Evet|Evet|Evet|Hayır|
-|Python|Evet|Evet|Evet|Evet|Hayır|
-|Node/JS|Evet|Evet|Evet|Evet|Hayır|
+| .NET | Yes | Yes | Yes | Yes | Hayır |
+|Java|Yes|Yes|Yes|Yes|Hayır|
+|Python|Yes|Yes|Yes|Yes|Hayır|
+|Node/JS|Yes|Yes|Yes|Yes|Hayır|
 
 ## <a name="change-feed-and-different-operations"></a>Akışı ve farklı işlemleri değiştirme
 

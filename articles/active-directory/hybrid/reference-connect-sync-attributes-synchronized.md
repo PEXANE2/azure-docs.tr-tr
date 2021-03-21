@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6ec05c4160c6502904644bf7035bda0bed66cc33
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94413199"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect eşitleme: Azure Active Directory ile eşitlenen öznitelikler
@@ -164,7 +164,7 @@ Bu durumda, bu konudaki özniteliklerin listesiyle başlayın ve kişisel verile
 | streetAddress |X |X | | |
 | targetAddress |X |X | | |
 | Telephoneassiste |X |X | | |
-| telephoneNumber 'dır |X |X | | |
+| telephoneNumber |X |X | | |
 | thumbnailphoto |X |X | |Azure AD 'den, Exchange Online 'ın bu öznitelik için yetki kaynağı haline gelmesi ve Şirket içinden daha sonraki değişiklikler eşitlenmesinden sonra Exchange Online 'a yalnızca bir kez eşitlenir. Daha fazla bilgi için bkz. ([KB](https://support.microsoft.com/help/3062745/user-photos-aren-t-synced-from-the-on-premises-environment-to-exchange)).|
 | başlık |X |X | | |
 | Unauthorıg |X |X |X | |
@@ -246,7 +246,7 @@ Bu durumda, bu konudaki özniteliklerin listesiyle başlayın ve kişisel verile
 | streetAddress |X |X | | |
 | targetAddress |X |X | | |
 | Telephoneassiste |X |X | | |
-| telephoneNumber 'dır |X |X | | |
+| telephoneNumber |X |X | | |
 | thumbnailphoto |X |X | |Azure AD 'den, Exchange Online 'ın bu öznitelik için yetki kaynağı haline gelmesi ve Şirket içinden daha sonraki değişiklikler eşitlenmesinden sonra Exchange Online 'a yalnızca bir kez eşitlenir. Daha fazla bilgi için bkz. ([KB](https://support.microsoft.com/help/3062745/user-photos-aren-t-synced-from-the-on-premises-environment-to-exchange)).|
 | başlık |X |X | | |
 | Unauthorıg |X |X |X | |
@@ -297,7 +297,7 @@ Bu durumda, bu konudaki özniteliklerin listesiyle başlayın ve kişisel verile
 | sourceAnchor |X |X |X |mekanik özellik. EKLER ve Azure AD arasındaki ilişkiyi sürdürmek için sabit tanımlayıcı. |
 | st |X |X | | |
 | streetAddress |X |X | | |
-| telephoneNumber 'dır |X |X | | |
+| telephoneNumber |X |X | | |
 | thumbnailphoto |X |X | |Azure AD 'den, Exchange Online 'ın bu öznitelik için yetki kaynağı haline gelmesi ve Şirket içinden daha sonraki değişiklikler eşitlenmesinden sonra Exchange Online 'a yalnızca bir kez eşitlenir. Daha fazla bilgi için bkz. ([KB](https://support.microsoft.com/help/3062745/user-photos-aren-t-synced-from-the-on-premises-environment-to-exchange)).|
 | başlık |X |X | | |
 | usageLocation |X | | |mekanik özellik. Kullanıcının ülkesi/bölgesi. Lisans ataması için kullanılır. |
@@ -364,7 +364,7 @@ Bu durumda, bu konudaki özniteliklerin listesiyle başlayın ve kişisel verile
 | sourceAnchor |X |X |X |mekanik özellik. EKLER ve Azure AD arasındaki ilişkiyi sürdürmek için sabit tanımlayıcı. |
 | st |X |X | | |
 | streetAddress |X |X | | |
-| telephoneNumber 'dır |X |X | | |
+| telephoneNumber |X |X | | |
 | başlık |X |X | | |
 | usageLocation |X | | |mekanik özellik. Kullanıcının ülkesi/bölgesi. Lisans ataması için kullanılır. |
 | userPrincipalName |X | | |UPN, kullanıcının oturum açma KIMLIĞIDIR. Genellikle [mail] değeri ile aynıdır. |
@@ -420,7 +420,7 @@ Bu öznitelikler, seçtiğiniz diğer uygulamalara ek olarak **Kullanıcı** iç
 | msDS-KeyCredentialLink |X |Iş için Windows Hello 'ya Kullanıcı kaydolduktan sonra. | 
 
 ## <a name="exchange-hybrid-writeback"></a>Exchange karma geri yazma
-**Exchange karma** 'i etkinleştirmeyi seçtiğinizde, bu ÖZNITELIKLER Azure AD 'den şirket içi Active Directory geri yazılır. Exchange sürümünüze bağlı olarak, daha az öznitelik eşitlenebilir.
+**Exchange karma**'i etkinleştirmeyi seçtiğinizde, bu ÖZNITELIKLER Azure AD 'den şirket içi Active Directory geri yazılır. Exchange sürümünüze bağlı olarak, daha az öznitelik eşitlenebilir.
 
 | Öznitelik adı (Şirket içi AD) | Öznitelik adı (Connect UI) | Kullanıcı | İletişim | Grup | Yorum |
 | --- |:---:|:---:|:---:| --- |---|

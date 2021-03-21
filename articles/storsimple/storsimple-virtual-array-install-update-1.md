@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/02/2017
 ms.author: alkohli
 ms.openlocfilehash: d05395f97aded0b57780f898e9cba6ddca491f95
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96005835"
 ---
 # <a name="install-update-10-on-your-storsimple-virtual-array"></a>StorSimple Sanal diziniz üzerinde 1,0 güncelleştirmesini yükler
@@ -37,7 +37,7 @@ StorSimple Sanal dizinizi güncel tutmak için yazılım güncelleştirmelerini 
 >
 > - Güncelleştirme 1, yalnızca sanal dizi güncelleştirme 0,6 çalıştırıyorsa Azure portal kullanılabilir. Güncelleştirme öncesi 0,6 sürümlerini çalıştıran sanal diziler için, önce 0,6 güncelleştirme 'yi yüklemeli ve ardından güncelleştirme 1 ' i yüklemeniz gerekir.
 
-## <a name="use-the-azure-portal"></a>Azure portalı kullanma
+## <a name="use-the-azure-portal"></a>Azure portalını kullanma
 
 Güncelleştirme 0,2 ve sonraki bir sürümü çalıştırıyorsanız, Azure portal aracılığıyla güncelleştirmeleri yüklemenizi öneririz. Portal yordamı, kullanıcının güncelleştirmeleri taramasını, indirmesini ve yüklemesini gerektirir. Sanal diziniz çalıştığı yazılım sürümüne bağlı olarak, Azure portal aracılığıyla güncelleştirme uygulamak farklıdır.
 
@@ -47,7 +47,7 @@ Güncelleştirme 0,2 ve sonraki bir sürümü çalıştırıyorsanız, Azure por
 
 [!INCLUDE [storsimple-virtual-array-install-update-via-portal](../../includes/storsimple-virtual-array-install-update-via-portal-1.md)]
 
-Yükleme tamamlandıktan sonra StorSimple Aygıt Yöneticisi hizmetinize gidin. **Cihazlar** ' ı seçin ve ardından yeni güncelleştirdiğiniz cihazı seçin ve tıklayın. **> cihaz güncelleştirmelerini yönetmek > ayarlar**' a gidin. Görüntülenmiş yazılım sürümü **10.0.10296.0** olmalıdır.
+Yükleme tamamlandıktan sonra StorSimple Device Manager hizmetinize gidin. **Cihazlar** ' ı seçin ve ardından yeni güncelleştirdiğiniz cihazı seçin ve tıklayın. **> cihaz güncelleştirmelerini yönetmek > ayarlar**' a gidin. Görüntülenmiş yazılım sürümü **10.0.10296.0** olmalıdır.
 
 ![Güncelleştirmeden sonra yazılım sürümü](./media/storsimple-virtual-array-install-update-1/azupdate17m1.png)
 
@@ -77,7 +77,7 @@ Sanal diziniz güncelleştirme 0,6 çalıştırıyorsa, Microsoft Update katalo�
    
     ![Katalogda arama](./media/storsimple-virtual-array-install-update-1/download1.png)
 
-4. **İndir**'e tıklayın.
+4. **İndir**’e tıklayın.
 
 5. İki dosyayı bir klasöre indirin. Ayrıca, klasörü cihazdan erişilebilen bir ağ paylaşımında da kopyalayabilirsiniz.
 

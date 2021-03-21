@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: 6024aae68183fbe02125ef4207e9fbce8abd6a2b
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97679079"
 ---
 # <a name="tutorial-migrate-web-service-from-bing-maps"></a>Öğretici: Bing Haritalar 'dan Web hizmeti geçirme
@@ -66,7 +66,7 @@ Aşağıdaki en iyi yöntemler kılavuzlarını da gözden geçirdiğinizden emi
 -   [Arama için en iyi yöntemler](./how-to-use-best-practices-for-search.md)
 -   [Yönlendirme için en iyi uygulamalar](./how-to-use-best-practices-for-routing.md)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 1. [Azure portalında](https://portal.azure.com) oturum açın. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 2. [Azure haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)
@@ -163,7 +163,7 @@ Azure haritalar ters coğrafi kodlama API 'SI, uygulamanızı geçirirken tümle
 
 Aşağıdaki tabloda, Bing Haritalar varlık türü değerleri, Azure haritalar 'daki eşdeğer özellik adlarına başvuruyordur.
 
-| Bing Haritalar varlık türü | Karşılaştırılabilir Azure Maps varlık türü               | Açıklama                                |
+| Bing Haritalar varlık türü | Karşılaştırılabilir Azure Maps varlık türü               | Description                                |
 |-----------------------|-------------------------------------------------|--------------------------------------------|
 | `Address`             |                                                 | *Adres*                                  |
 | `Neighborhood`        | `Neighbourhood`                                 | *Larım*                             |

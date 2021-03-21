@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/17/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 7e74a58a14bdcc2a6fe1e9f86305aae415c6abf7
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97674523"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>Azure CLı 'dan okuma çoğaltmaları oluşturun ve yönetin REST API
@@ -31,7 +31,7 @@ Doğru günlük kaydını yapılandırmak için Azure çoğaltma desteği parame
 > [!NOTE]
 > Kalıcı ağır yazma yoğunluklu birincil iş yükleri için okuma çoğaltmaları dağıtıldığında, çoğaltma gecikmesi büyümeye devam edebilir ve hiçbir zaman birincil ile yakalayamayabilir. Bu durum, çoğaltma sırasında alınana kadar WAL dosyaları silinmediği için birincil sırada depolama kullanımını da artırabilir.
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure CLI’si
 Azure CLı kullanarak okuma çoğaltmaları oluşturabilir ve yönetebilirsiniz.
 
 ### <a name="prerequisites"></a>Önkoşullar

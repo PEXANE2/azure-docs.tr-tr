@@ -4,10 +4,10 @@ description: Modüler şablon çözümü oluşturmak için bir Azure Resource Ma
 ms.topic: conceptual
 ms.date: 01/26/2021
 ms.openlocfilehash: 3636ea64227a7c013134d96647144d4f1e2ae31e
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102211320"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Azure kaynaklarını dağıtırken bağlı ve iç içe şablonları kullanma
@@ -882,7 +882,7 @@ az deployment group create --resource-group ExampleGroup --template-uri $url?$to
 
 Aşağıdaki örneklerde, bağlantılı şablonların yaygın kullanımları gösterilmektedir.
 
-|Ana şablon  |Bağlantılı şablon |Açıklama  |
+|Ana şablon  |Bağlantılı şablon |Description  |
 |---------|---------| ---------|
 |[Hello World](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[bağlantılı şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | Bağlantılı şablondan dize döndürür. |
 |[Genel IP adresi ile Load Balancer](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[bağlantılı şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |Bağlı şablondan ortak IP adresini döndürür ve yük dengeleyicide bu değeri ayarlar. |

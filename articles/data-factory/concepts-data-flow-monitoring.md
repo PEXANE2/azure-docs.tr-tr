@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/22/2020
 ms.openlocfilehash: 9ca5ea5cdebe297af5081ae6e219935c56ba942e
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96004898"
 ---
 # <a name="monitor-data-flows"></a>Veri akışlarını izleme
@@ -58,7 +58,7 @@ Veri akışınız Spark 'ta yürütüldüğünde, Azure Data Factory veri akış
   
 ![Ekran görüntüsü Yenile seçeneğini gösterir.](media/data-flow/monitornew.png "Veri akışı Izleme yeni")
 
-## <a name="total-sink-processing-time-vs-transformation-processing-time"></a>Toplam Havuz Işleme süresi ile dönüşüm Işleme süresi karşılaştırması
+## <a name="total-sink-processing-time-vs-transformation-processing-time"></a>Toplam Havuz İşleme Süresi - Dönüştürme İşleme Süresi
 
 Her bir dönüştürme aşaması, her bir bölüm yürütme süresi toplandığında bu aşamanın tamamlanacağı toplam süreyi içerir. Havuza tıkladığınızda, "havuz Işleme süresi" görüntülenir. Bu süre, *dönüştürme süresinin toplamını ve verilerinizi* hedef deponuza yazmak için geçen g/ç süresini içerir. Havuz Işleme süresi ve dönüşümün Toplam arasındaki fark, verileri yazmak için g/ç zamanı olur.
 

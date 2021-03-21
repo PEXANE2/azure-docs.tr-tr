@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: jingwang
 ms.openlocfilehash: 7f2ab069be7985376c44f2cd2ae3ccdd728d4e2a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100385668"
 ---
 # <a name="copy-data-from-hubspot-using-azure-data-factory"></a>Azure Data Factory kullanarak Hubnoktadan veri kopyalama
@@ -18,7 +18,7 @@ ms.locfileid: "100385668"
 
 Bu makalede, verileri Hubnoktadan kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Kopyalama etkinliğine genel bir bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesinde oluşturulur.
 
-## <a name="supported-capabilities"></a>Desteklenen yetenekler
+## <a name="supported-capabilities"></a>Desteklenen özellikler
 
 Bu HubSpot Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 

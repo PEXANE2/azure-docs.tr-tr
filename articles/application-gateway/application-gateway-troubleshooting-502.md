@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 11/16/2019
 ms.author: amsriva
 ms.openlocfilehash: d44f9109540c3899ab50bd5c4c02afa19045bafb
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96182946"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Application Gateway’deki hatalı ağ geçidi hataları ile ilgili sorunları giderme
@@ -110,7 +110,7 @@ Aşağıdaki ek özellikler eklenmiştir:
 | --- | --- |
 | Ad |Araştırmanın adı. Bu ad, arka uç HTTP ayarlarındaki araştırmayı ifade etmek için kullanılır. |
 | Protokol |Araştırmayı göndermek için kullanılan protokol. Araştırma, arka uç HTTP ayarlarında tanımlanan protokolü kullanır |
-| Yönetici |Araştırmanın gönderileceği ana bilgisayar adı. Yalnızca uygulama ağ geçidinde birden çok site yapılandırıldığında geçerlidir. Bu, VM ana bilgisayar adından farklıdır. |
+| Ana bilgisayar |Araştırmanın gönderileceği ana bilgisayar adı. Yalnızca uygulama ağ geçidinde birden çok site yapılandırıldığında geçerlidir. Bu, VM ana bilgisayar adından farklıdır. |
 | Yol |Araştırmanın göreli yolu. Geçerli yol '/' öğesinden başlar. Araştırma \<protocol\> ://: öğesine gönderiliyor \<host\>\<port\>\<path\> |
 | Aralık |Saniye cinsinden yoklama aralığı. Bu iki ardışık yoklama arasındaki zaman aralığıdır. |
 | Zaman aşımı |Saniye cinsinden araştırma zaman aşımı. Bu zaman aşımı süresi içinde geçerli bir yanıt alınmadıysa, araştırma başarısız olarak işaretlenir. |

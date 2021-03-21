@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.openlocfilehash: 2d19c0bd4ef5c49b8be82ffa11115ff6a1c6b302
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94541802"
 ---
 # <a name="restart-azure-database-for-mysql-server-using-azure-portal"></a>Azure portal kullanarak MySQL için Azure veritabanı sunucusunu yeniden başlatma
@@ -20,7 +20,7 @@ Hizmet meşgulse sunucu yeniden başlatması engellenir. Örneğin, hizmet, sana
 
 Yeniden başlatmayı tamamlaması için gereken süre MySQL kurtarma işlemine bağlıdır. Yeniden başlatma süresini azaltmak için, yeniden başlatmadan önce sunucuda gerçekleşen etkinlik miktarını en aza indirmenizi öneririz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
 - [MySQL Için Azure veritabanı sunucusu](quickstart-create-mysql-server-database-using-azure-portal.md)
 
@@ -30,7 +30,7 @@ Aşağıdaki adımlar MySQL sunucusunu yeniden başlatır:
 
 1. Azure portal, MySQL için Azure veritabanı sunucunuzu seçin.
 
-2. Sunucunun **genel bakış** sayfasının araç çubuğunda **Yeniden Başlat** ' a tıklayın.
+2. Sunucunun **genel bakış** sayfasının araç çubuğunda **Yeniden Başlat**' a tıklayın.
 
    :::image type="content" source="./media/howto-restart-server-portal/2-server.png" alt-text="MySQL için Azure veritabanı-genel bakış-yeniden Başlat düğmesi":::
 

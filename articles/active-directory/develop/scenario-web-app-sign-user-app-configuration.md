@@ -12,27 +12,23 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 54caea62feed6ae7c082a979901999a5dcb3bd71
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: f315f473c3ba9efd4e01f9424f01884a46011dbb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582256"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578388"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>Kullanıcılara oturum açan Web uygulaması: kod yapılandırması
 
 Kullanıcılara oturum açan Web uygulamanız için kodu yapılandırmayı öğrenin.
 
-## <a name="libraries-for-protecting-web-apps"></a>Web uygulamalarını korumaya yönelik kitaplıklar
+## <a name="microsoft-libraries-supporting-web-apps"></a>Web uygulamalarını destekleyen Microsoft kitaplıkları
 
 <!-- This section can be in an include for web app and web APIs -->
-Bir Web uygulamasını (ve bir Web API 'SI) korumak için kullanılan kitaplıklar şunlardır:
+Aşağıdaki Microsoft kitaplıkları bir Web uygulamasını (ve bir Web API 'sini) korumak için kullanılır:
 
-| Platform | Kitaplık | Description |
-|----------|---------|-------------|
-| ![.NET](media/sample-v2-code/logo_NET.png) | [.NET için kimlik modeli uzantıları](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | Doğrudan ASP.NET ve ASP.NET Core tarafından kullanılan .NET için Microsoft Identity model uzantıları, hem .NET Framework hem de .NET Core üzerinde çalışan bir dll kümesi önerir. Bir ASP.NET veya ASP.NET Core Web uygulamasından belirteç doğrulamayı, **Tokenvalidationparameters** sınıfını (özellikle de bazı iş ortakları senaryolarında) kullanarak kontrol edebilirsiniz. Uygulamada karmaşıklık, [Microsoft. Identity. Web](https://aka.ms/ms-identity-web) kitaplığında kapsüllenir |
-| ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | Java Web uygulamaları için destek |
-| ![Python](media/sample-v2-code/small_logo_python.png) | [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | Python web uygulamaları için destek |
+[!INCLUDE [active-directory-develop-libraries-webapp](../../../includes/active-directory-develop-libraries-webapp.md)]
 
 İlgilendiğiniz platforma karşılık gelen sekmeyi seçin:
 
@@ -51,6 +47,12 @@ Tam uygulama ayrıntıları için bu örneğe başvurmak isteyebilirsiniz.
 # <a name="java"></a>[Java](#tab/java)
 
 Bu makaledeki kod parçacıkları ve aşağıdakiler, MSAL Java 'daki [Microsoft Graph örneğini çağıran Java Web uygulamasından](https://github.com/Azure-Samples/ms-identity-java-webapp) ayıklanır.
+
+Tam uygulama ayrıntıları için bu örneğe başvurmak isteyebilirsiniz.
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Bu makaledeki kod parçacıkları ve aşağıdakiler, MSAL düğümünde örnek [ olarak bulunan Web uygulaması imzalama kullanıcılarıNode.js](https://github.com/Azure-Samples/ms-identity-node) ayıklanır.
 
 Tam uygulama ayrıntıları için bu örneğe başvurmak isteyebilirsiniz.
 
@@ -177,6 +179,37 @@ aad.redirectUriGraph=http://localhost:8080/msal4jsample/graph/me
 
 Azure portal, uygulamanızın **kimlik doğrulama** sayfasına Kaydolmakta olduğunuz yanıt URI 'lerinin, `redirectUri` uygulamanın tanımladığı örneklerle eşleşmesi gerekir. Yani, `http://localhost:8080/msal4jsample/secure/aad` ve olmalıdır `http://localhost:8080/msal4jsample/graph/me` .
 
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Burada, yapılandırma parametreleri şurada bulunur `index.js`
+
+```javascript
+
+const REDIRECT_URI = "http://localhost:3000/redirect";
+
+const config = {
+    auth: {
+        clientId: "Enter_the_Application_Id_Here",
+        authority: "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here/",
+        clientSecret: "Enter_the_Client_Secret_Here"
+    },
+    system: {
+        loggerOptions: {
+            loggerCallback(loglevel, message, containsPii) {
+                console.log(message);
+            },
+            piiLoggingEnabled: false,
+            logLevel: msal.LogLevel.Verbose,
+        }
+    }
+};
+```
+
+Azure portal, uygulamanızın kimlik doğrulama sayfasına Kaydolmakta olduğunuz yanıt URI 'Lerinin, uygulamanın tanımladığı Redirecturı örnekleriyle eşleşmesi gerekir ( `http://localhost:3000/redirect` ).
+
+> [!NOTE]
+> Bu hızlı başlangıç, istemci gizliliğini basitlik için yapılandırma dosyasında depolamayı önerir. Üretim uygulamanızda, bir Anahtar Kasası veya ortam değişkeni gibi gizli dizinizi depolamak için başka yollar kullanmak isteyeceksiniz.
+
 # <a name="python"></a>[Python](#tab/python)
 
 İşte [app_config. Kopyala](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/0.1.0/app_config.py)içindeki Python yapılandırma dosyası:
@@ -207,7 +240,7 @@ Başlatma kodu platforma bağlı olarak farklılık açmış. ASP.NET Core ve AS
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-ASP.NET Core Web Apps (ve Web API 'Leri) içinde, `[Authorize]` denetleyicilerde veya denetleyici eylemleriyle ilgili bir özniteliğe sahip olduğunuz için uygulama korunur. Bu öznitelik, kullanıcının kimliğinin doğrulandığını denetler. Uygulamayı başlatmakta olan kod *Startup.cs* dosyasında bulunur.
+ASP.NET Core Web Apps (ve Web API 'Leri) içinde, `[Authorize]` denetleyicilerde veya denetleyici eylemleriyle ilgili bir özniteliğe sahip olduğunuz için uygulama korunur. Bu öznitelik, kullanıcının kimliğinin doğrulandığını denetler. Uygulamayı başlatmakta olan kod *Startup. cs* dosyasında bulunur.
 
 Microsoft Identity platform (eski adıyla Azure AD v 2.0) ile kimlik doğrulaması eklemek için aşağıdaki kodu eklemeniz gerekir. Koddaki yorumların kendine açıklayıcı olması gerekir.
 
@@ -246,7 +279,7 @@ Microsoft Identity platform (eski adıyla Azure AD v 2.0) ile kimlik doğrulamas
      }).AddMicrosoftIdentityUI();
     ```
 
-3. `Configure` *Startup.cs* içindeki yönteminde, kimlik doğrulamasını bir çağrısıyla etkinleştirin`app.UseAuthentication();`
+3. `Configure` *Başlangıç. cs* içindeki yönteminde, bir çağrısıyla kimlik doğrulamasını etkinleştirin`app.UseAuthentication();`
 
    ```c#
    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -319,6 +352,15 @@ Ayrıntılar için bkz `doFilter()` . [AuthFilter. Java](https://github.com/Azur
 
 Bu yöntemin tetiklediği yetkilendirme kodu akışı hakkında daha fazla bilgi için bkz. [Microsoft Identity platform ve OAuth 2,0 yetkilendirme kodu akışı](v2-oauth2-auth-code-flow.md).
 
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+```javascript
+const msal = require('@azure/msal-node');
+
+// Create msal application object
+const cca = new msal.ConfidentialClientApplication(config);
+```
+
 # <a name="python"></a>[Python](#tab/python)
 
 Python örneği Flask kullanır. Flask ve MSAL Python başlatma işlemi [app. Sip # L1-L28](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/app.py#L1-L28).
@@ -354,6 +396,10 @@ Bu senaryodaki bir sonraki makaleye geçin, [oturum açın ve oturumu kapatın](
 # <a name="java"></a>[Java](#tab/java)
 
 Bu senaryodaki bir sonraki makaleye geçin, [oturum açın ve oturumu kapatın](./scenario-web-app-sign-user-sign-in.md?tabs=java).
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Bu senaryodaki sonraki makaleye geçin, [oturum açın](./scenario-web-app-sign-user-sign-in.md?tabs=nodejs).
 
 # <a name="python"></a>[Python](#tab/python)
 

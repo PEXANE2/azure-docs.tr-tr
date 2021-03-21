@@ -13,12 +13,12 @@ ms.date: 01/27/2020
 ms.author: jmprieur
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 5742ddf9553c3ac9187dbef93fc7927564cbc095
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30c4f054259aa7c3f2a9fdfaeeadd64f26dd9bea
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88116980"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "94444920"
 ---
 # <a name="handle-samesite-cookie-changes-in-chrome-browser"></a>Chrome tarayıcısında SameSite tanımlama bilgisi değişikliklerini işleme
 
@@ -26,7 +26,7 @@ ms.locfileid: "88116980"
 
 `SameSite` , Web uygulamalarında siteler arası Istek sahteciliği (CSRF) saldırılarını engellemek için HTTP tanımlama bilgilerinde ayarlanabilecek bir özelliktir:
 
-- , `SameSite` **LAX**olarak ayarlandığında, tanımlama bilgisi aynı site içindeki isteklere ve diğer sitelerden alınan isteklere gönderilir. Etki alanları arası olan GET isteklerinde gönderilmez.
+- , `SameSite` **LAX** olarak ayarlandığında, tanımlama bilgisi aynı site içindeki isteklere ve diğer sitelerden alınan isteklere gönderilir. Etki alanları arası olan GET isteklerinde gönderilmez.
 - **Katı** değeri, tanımlama bilgisinin yalnızca aynı site içindeki isteklere gönderilmesini sağlar.
 
 Varsayılan olarak, `SameSite` Bu değer tarayıcılarda AYARLı değildir ve isteklerde gönderilen tanımlama bilgilerinde hiçbir kısıtlama yoktur. Bir uygulamanın, gereksinimleri uyarınca **LAX** veya **katı** ayarlayarak CSRF korumasını kabul etmeniz gerekir.
@@ -81,11 +81,8 @@ ASP.NET ve ASP.NET Core ' de SameSite tanımlama bilgilerinin nasıl işleneceğ
 
 SameSite ve Web uygulaması senaryosu hakkında daha fazla bilgi edinin:
 
-> [!div class="nextstepaction"]
-> [Google Chrome 'un SameSite hakkında SSS](https://www.chromium.org/updates/same-site/faq)
+- [Google Chrome 'un SameSite hakkında SSS](https://www.chromium.org/updates/same-site/faq)
 
-> [!div class="nextstepaction"]
-> [Kmıum SameSite sayfası](https://www.chromium.org/updates/same-site)
+- [Kmıum SameSite sayfası](https://www.chromium.org/updates/same-site)
 
-> [!div class="nextstepaction"]
-> [Senaryo: kullanıcılarda oturum açan Web uygulaması](scenario-web-app-sign-user-overview.md)
+- [Senaryo: kullanıcılarda oturum açan Web uygulaması](scenario-web-app-sign-user-overview.md)

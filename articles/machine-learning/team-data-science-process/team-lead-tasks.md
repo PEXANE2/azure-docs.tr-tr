@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: df7d2278487c1b098615a14562c498b9187c56eb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96000037"
 ---
 # <a name="tasks-for-the-team-lead-on-a-team-data-science-process-team"></a>Takım veri bilimi süreç ekibi üzerinde ekip liderine yönelik görevler
@@ -226,7 +226,7 @@ git push
 ```
 
 > [!NOTE]
-> Git deposuna ilk kez çalışıyorsanız, komutu çalıştırmadan önce *User.Name* ve *User. email* genel parametrelerini yapılandırmanız gerekebilir `git commit` . Aşağıdaki iki komutu çalıştırın:
+> Git deposuna ilk kez çalışıyorsanız, komutu çalıştırmadan önce *User.Name* ve *User.email* genel parametrelerini yapılandırmanız gerekebilir `git commit` . Aşağıdaki iki komutu çalıştırın:
 > 
 > `git config --global user.name <your name>`
 > 

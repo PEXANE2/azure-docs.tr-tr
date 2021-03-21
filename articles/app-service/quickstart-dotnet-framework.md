@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 11/20/2020
 ms.custom: devx-track-csharp, mvc, devcenter, seodec18
 ms.openlocfilehash: a4f7ba288bc27d6079deea9caf0ea315a55d0745
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96004107"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>Azure’da ASP.NET Framework web uygulaması oluşturma
@@ -26,7 +26,7 @@ Bu öğreticiyi tamamlayabilmeniz için, **ASP.net ve Web geliştirme** iş yük
 
 Visual Studio 2019 zaten yüklüyse:
 
-- **Help**  >  **Güncelleştirmeler için yardım denetimi**' ni seçerek en son güncelleştirmeleri Visual Studio 'ya yükler.
+-   >  **Güncelleştirmeler için yardım denetimi**' ni seçerek en son güncelleştirmeleri Visual Studio 'ya yükler.
 - **Araçlar**  >  **Al araçlar ve Özellikler '** i seçerek iş yükünü ekleyin.
 
 ## <a name="create-an-aspnet-web-app"></a>ASP.NET Web uygulaması oluşturma <a name="create-and-publish-the-web-app"></a>
@@ -47,7 +47,7 @@ Aşağıdaki adımları izleyerek bir ASP.NET Web uygulaması oluşturun:
 
    ![ASP.NET Web uygulaması oluşturma](./media/quickstart-dotnet-framework/select-mvc-template-vs2019.png)
 
-6. **Debug**  >  Web uygulamasını yerel olarak çalıştırmak için Visual Studio menüsünden hata ayıklama **olmadan Başlat** ' ı seçin.
+6.   >  Web uygulamasını yerel olarak çalıştırmak için Visual Studio menüsünden hata ayıklama **olmadan Başlat** ' ı seçin.
 
    ![Uygulamayı yerel olarak çalıştırma](./media/quickstart-dotnet-framework/local-web-app.png)
 

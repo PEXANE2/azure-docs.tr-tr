@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/05/2020
 ms.author: Zhchia
 ms.openlocfilehash: bbb9b47e42ce195a98801ee08d177efd409c597e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96181676"
 ---
 # <a name="tutorial-configure-purecloud-by-genesys-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Genesys tarafından Purecre 'yi yapılandırma
@@ -31,7 +31,7 @@ Bu öğreticide, otomatik Kullanıcı sağlamayı yapılandırmak için Genesys 
 > * Genesys tarafından Purecm 'de grupları ve grup üyeliklerini sağlama
 > * Genesys tarafından [Purecg 'de çoklu oturum açma](./purecloud-by-genesys-tutorial.md) (önerilir)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
