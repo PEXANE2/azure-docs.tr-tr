@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/19/2019
 ms.author: rohogue
 ms.openlocfilehash: 5d9f81c9438cb992f81bd3e6319532d67db75552
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88272391"
 ---
 # <a name="cluster-tuning"></a>Küme ayarlama
@@ -34,7 +34,7 @@ Bu değişiklikler, veri kümesi kalitelerini veya iş akışı stilini temel al
 
 ## <a name="cloud-nas-or-cloud-gateway-optimizations"></a>Bulut NAS veya bulut ağ geçidi iyileştirmeleri
 
-Bulut NAS veya ağ geçidi senaryosunda, vFXT kümesi bir bulut kapsayıcısına NAS stili erişim sağlar. VFXT kümesi ve bulut depolaması arasındaki daha yüksek veri hızlarından yararlanmak için temsilciniz, önbellekteki depolama hacmine daha fazla veri gönderim için ayarları değiştirmenizi önerebilir. Örneğin:
+Bulut NAS veya ağ geçidi senaryosunda, vFXT kümesi bir bulut kapsayıcısına NAS stili erişim sağlar. VFXT kümesi ve bulut depolaması arasındaki daha yüksek veri hızlarından yararlanmak için temsilciniz, önbellekteki depolama hacmine daha fazla veri gönderim için ayarları değiştirmenizi önerebilir. Örnek:
 
 * Küme ve depolama kapsayıcısı arasındaki TCP bağlantısı sayısını artırma
 

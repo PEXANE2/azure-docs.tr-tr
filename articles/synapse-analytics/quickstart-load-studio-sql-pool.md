@@ -2,19 +2,19 @@
 title: 'Hızlı başlangıç: adanmış bir SQL havuzuyla verileri toplu yükleme'
 description: Azure SYNAPSE Analytics 'te özel bir SQL havuzunda verileri toplu olarak yüklemek için SYNAPSE Studio 'Yu kullanın.
 services: synapse-analytics
-author: kevinvngo
+author: gaursa
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: quickstart
 ms.date: 12/11/2020
-ms.author: kevin
+ms.author: gaursa
 ms.reviewer: jrasnick
-ms.openlocfilehash: 53b6810b0042df382fd1f553bc4bd0fae61793b3
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: be15a37a9a2965da36f7e8f884a0a3112106b9ba
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672806"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586735"
 ---
 # <a name="quickstart-bulk-loading-with-synapse-studio"></a>Hızlı başlangıç: SYNAPSE Studio ile toplu yükleme
 

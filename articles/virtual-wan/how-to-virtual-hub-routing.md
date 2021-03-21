@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: cae74a5f4859d208765c9a7e5cde05ff3c0c3096
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91313697"
 ---
 # <a name="how-to-configure-virtual-hub-routing"></a>Sanal merkez yönlendirmeyi yapılandırma
@@ -24,13 +24,13 @@ Daha fazla bilgi için bkz. [sanal hub yönlendirmesi hakkında](about-virtual-h
 ## <a name="create-a-route-table"></a><a name="create-table"></a>Yönlendirme tablosu oluşturma
 
 1. Azure portal sanal hub 'a gidin.
-2. **Bağlantı**altında, **yönlendirme**' yi seçin. Yönlendirme sayfasında, **varsayılan** ve **none** yol tablolarını görürsünüz.
+2. **Bağlantı** altında, **yönlendirme**' yi seçin. Yönlendirme sayfasında, **varsayılan** ve **none** yol tablolarını görürsünüz.
 
    :::image type="content" source="./media/how-to-virtual-hub-routing/routing.png" alt-text="Yönlendirme sayfası":::
 3. **Rota tablosu oluştur** sayfasını açmak için **+ yol tablosu oluştur** ' u seçin.
 4. Yol Tablosu Oluştur sayfa **temelleri** sekmesinde aşağıdaki alanları doldurun.
 
-   :::image type="content" source="./media/how-to-virtual-hub-routing/basics.png" alt-text="Yönlendirme sayfası":::
+   :::image type="content" source="./media/how-to-virtual-hub-routing/basics.png" alt-text="Temel bilgiler sekmesi":::
 
    * **Ad**
    * **Rotalar**
@@ -41,20 +41,20 @@ Daha fazla bilgi için bkz. [sanal hub yönlendirmesi hakkında](about-virtual-h
 
      Bir sanal ağ bağlantısı seçerseniz, **statik yolları Yapılandır**' ı görürsünüz. Bu, isteğe bağlı bir yapılandırma ayarıdır. Daha fazla bilgi için bkz. [statik yolları yapılandırma](about-virtual-hub-routing.md#static).
 
-      :::image type="content" source="./media/how-to-virtual-hub-routing/next-hop.png" alt-text="Yönlendirme sayfası":::
+      :::image type="content" source="./media/how-to-virtual-hub-routing/next-hop.png" alt-text="Sonraki atlama":::
 
 5. Etiket adlarını yapılandırmak için **Etiketler** sekmesini seçin. Etiketler, yönlendirme tablolarını mantıksal olarak gruplamak için bir mekanizma sağlar.
 
-    :::image type="content" source="./media/how-to-virtual-hub-routing/labels.png" alt-text="Yönlendirme sayfası":::
+    :::image type="content" source="./media/how-to-virtual-hub-routing/labels.png" alt-text="Etiket adlarını yapılandırma":::
 
 6. Bağlantıları yol tablosuyla ilişkilendirmek için **ilişkilendirmeler** sekmesini seçin.
-**Dallar**, **sanal ağlar**ve bağlantıların **geçerli ayarlarını** görürsünüz.
+**Dallar**, **sanal ağlar** ve bağlantıların **geçerli ayarlarını** görürsünüz.
 
-    :::image type="content" source="./media/how-to-virtual-hub-routing/associations.png" alt-text="Yönlendirme sayfası":::
+    :::image type="content" source="./media/how-to-virtual-hub-routing/associations.png" alt-text="Yol tablosuyla ilişkilendirme bağlantıları":::
 
 7. Yolların bağlantı tablosundan yol tablosuna yayılması için **yayılmaları** sekmesini seçin.
 
-    :::image type="content" source="./media/how-to-virtual-hub-routing/propagations.png" alt-text="Yönlendirme sayfası":::
+    :::image type="content" source="./media/how-to-virtual-hub-routing/propagations.png" alt-text="Rotaları yayma":::
 
 8. Yol tablosunu oluşturmak için **Oluştur** ' u seçin.
 
@@ -70,19 +70,19 @@ Azure portal, sanal hub 'ınızın yol tablosunu bulun. Varsayılan veya None yo
 
 Azure portal, sanal hub 'ınızın yol tablosunu bulun. Seçili yol tablosu tarafından öğrenilen yolları görüntülemek için **"..."** ve **geçerli rotalar** ' ı seçin. Yol tablosuna giden yayılmakta olan yollar, yol tablosunun **etkin rotalarında** otomatik olarak doldurulur. Daha fazla bilgi için bkz. [geçerli rotalar hakkında](effective-routes-virtual-hub.md).
 
-:::image type="content" source="./media/how-to-virtual-hub-routing/effective.png" alt-text="Yönlendirme sayfası" lightbox="./media/how-to-virtual-hub-routing/effective-expand.png":::
+:::image type="content" source="./media/how-to-virtual-hub-routing/effective.png" alt-text="Geçerli yolları görüntüle" lightbox="./media/how-to-virtual-hub-routing/effective-expand.png":::
 
 ## <a name="to-set-up-routing-configuration-for-a-virtual-network-connection"></a><a name="routing-configuration"></a>Bir sanal ağ bağlantısı için yönlendirme yapılandırmasını ayarlamak için
 
-1. Azure portal, sanal WAN 'nize gidin ve **bağlantı**altında **sanal ağ bağlantıları**' nı seçin.
+1. Azure portal, sanal WAN 'nize gidin ve **bağlantı** altında **sanal ağ bağlantıları**' nı seçin.
 1. **+ Bağlantı ekle**' yi seçin.
 1. Açılan menüden sanal ağı seçin.
-1. Yönlendirme yapılandırmasını bir rota tablosuyla ilişkilendirilecek şekilde ayarlayın. **Yol tablosunu ilişkilendir**için açılan listeden yol tablosunu seçin.
-1. Yönlendirme yapılandırmasını bir veya daha fazla yol tablosuna yaymaya ayarlayın. **Rota tablosuna yay**için, açılan listeden seçim yapın.
-1. **Statik yollar**Için, ağ sanal gereci (varsa) statik yollarını yapılandırın. Sanal WAN, sanal ağ bağlantısı içindeki statik yol için tek bir sonraki atlama IP 'yi destekler. Örneğin, giriş ve çıkış trafik akışları için ayrı bir Sanal Gereç varsa, sanal gereçlere ayrı VNET 'lerde sahip olmak ve sanal hub 'ları sanal hub 'a eklemek en iyi seçenektir.
+1. Yönlendirme yapılandırmasını bir rota tablosuyla ilişkilendirilecek şekilde ayarlayın. **Yol tablosunu ilişkilendir** için açılan listeden yol tablosunu seçin.
+1. Yönlendirme yapılandırmasını bir veya daha fazla yol tablosuna yaymaya ayarlayın. **Rota tablosuna yay** için, açılan listeden seçim yapın.
+1. **Statik yollar** Için, ağ sanal gereci (varsa) statik yollarını yapılandırın. Sanal WAN, sanal ağ bağlantısı içindeki statik yol için tek bir sonraki atlama IP 'yi destekler. Örneğin, giriş ve çıkış trafik akışları için ayrı bir Sanal Gereç varsa, sanal gereçlere ayrı VNET 'lerde sahip olmak ve sanal hub 'ları sanal hub 'a eklemek en iyi seçenektir.
 
 
-:::image type="content" source="./media/how-to-virtual-hub-routing/routing-configuration.png" alt-text="Yönlendirme sayfası" lightbox="./media/how-to-virtual-hub-routing/routing-configuration-expand.png":::
+:::image type="content" source="./media/how-to-virtual-hub-routing/routing-configuration.png" alt-text="Yönlendirme yapılandırmasını ayarlama" lightbox="./media/how-to-virtual-hub-routing/routing-configuration-expand.png":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

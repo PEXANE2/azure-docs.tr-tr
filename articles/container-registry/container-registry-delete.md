@@ -4,10 +4,10 @@ description: Azure CLı komutları kullanılarak kapsayıcı görüntüsü veril
 ms.topic: article
 ms.date: 07/31/2019
 ms.openlocfilehash: 449a1c09bf88e3e0e0aeca4d3b687371d2a6b91a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "78403352"
 ---
 # <a name="delete-container-images-in-azure-container-registry-using-the-azure-cli"></a>Azure CLı kullanarak Azure Container Registry kapsayıcı görüntülerini silme
@@ -58,7 +58,7 @@ Are you sure you want to continue? (y/n):
 
 Bir [bildirim Özeti](container-registry-concepts.md#manifest-digest) bir, None veya birden çok etiketle ilişkilendirilebilir. Özet ile sildiğinizde, bildirim tarafından başvurulan tüm Etiketler, görüntüye özgü tüm katmanlarda katman verileri olduğu gibi silinir. Paylaşılan katman verileri silinmedi.
 
-Özet olarak silmek için, önce silmek istediğiniz görüntüleri içeren deponun bildirim bildirimlerini listeleyin. Örneğin:
+Özet olarak silmek için, önce silmek istediğiniz görüntüleri içeren deponun bildirim bildirimlerini listeleyin. Örnek:
 
 ```azurecli
 az acr repository show-manifests --name myregistry --repository acr-helloworld
@@ -114,7 +114,7 @@ az acr repository show-manifests --name <acrName> --repository <repositoryName> 
 --orderby time_asc -o tsv --query "[?timestamp < '2019-04-05'].[digest, timestamp]"
 ```
 
-Eski bildirim dallarını tanımladıktan sonra, belirtilen zaman damgasından daha eski bildirim bildirimlerini silmek için aşağıdaki Bash betiğini çalıştırabilirsiniz. Azure CLı ve **xargs**gerektirir. Varsayılan olarak, komut dosyası silme işlemini gerçekleştirir. `ENABLE_DELETE` `true` Görüntüyü silme işlemini etkinleştirmek için değerini olarak değiştirin.
+Eski bildirim dallarını tanımladıktan sonra, belirtilen zaman damgasından daha eski bildirim bildirimlerini silmek için aşağıdaki Bash betiğini çalıştırabilirsiniz. Azure CLı ve **xargs** gerektirir. Varsayılan olarak, komut dosyası silme işlemini gerçekleştirir. `ENABLE_DELETE` `true` Görüntüyü silme işlemini etkinleştirmek için değerini olarak değiştirin.
 
 > [!WARNING]
 > Aşağıdaki örnek betiği dikkatle kullanın--silinen görüntü verileri KURTARıLAMAZ. Bildirim özetine (görüntü adından farklı olarak) görüntüleri çeken sistemleriniz varsa, bu betikleri çalıştırmamalıdır. Bildirim özetleri silindiğinde, bu sistemlerin Kayıt defterinizden görüntüleri çekmesini engeller. Bildirime göre çekmek yerine, [Önerilen en iyi yöntem](container-registry-image-tag-version.md)olan *benzersiz etiketleme* düzenini benimsede düşünün. 
@@ -155,7 +155,7 @@ fi
 [Bildirim Özeti](container-registry-concepts.md#manifest-digest) bölümünde belirtildiği gibi, var olan bir etiketi kullanarak değiştirilmiş bir görüntüyü, daha önce gönderilen görüntünün etiketlerini, bir tek kalan (veya "Dangling") görüntüsüne neden olacak şekilde **çıkarır** . Daha önce gönderilen görüntünün bildirimi ve katman verileri--kayıt defterinde kalır. Aşağıdaki olay sırasını göz önünde bulundurun:
 
 1. İlet resmi *ACR-HelloWorld* WITH Tag **latest**: `docker push myregistry.azurecr.io/acr-helloworld:latest`
-1. Depo *ACR-HelloWorld*için bildirimleri denetle:
+1. Depo *ACR-HelloWorld* için bildirimleri denetle:
 
    ```azurecli
    az acr repository show-manifests --name myregistry --repository acr-helloworld
@@ -176,7 +176,7 @@ fi
 
 1. *ACR-HelloWorld* dockerfile 'ı değiştirme
 1. İlet resmi *ACR-HelloWorld* WITH Tag **latest**: `docker push myregistry.azurecr.io/acr-helloworld:latest`
-1. Depo *ACR-HelloWorld*için bildirimleri denetle:
+1. Depo *ACR-HelloWorld* için bildirimleri denetle:
 
    ```azurecli
    az acr repository show-manifests --name myregistry --repository acr-helloworld
@@ -216,7 +216,7 @@ Bu komutu bir betikte kullanarak, bir depodaki tüm etiketlenmemiş görüntüle
 
 **Bash 'de Azure CLı**
 
-Aşağıdaki Bash betiği, bir depodaki tüm etiketlenmemiş görüntüleri siler. Azure CLı ve **xargs**gerektirir. Varsayılan olarak, komut dosyası silme işlemini gerçekleştirir. `ENABLE_DELETE` `true` Görüntüyü silme işlemini etkinleştirmek için değerini olarak değiştirin.
+Aşağıdaki Bash betiği, bir depodaki tüm etiketlenmemiş görüntüleri siler. Azure CLı ve **xargs** gerektirir. Varsayılan olarak, komut dosyası silme işlemini gerçekleştirir. `ENABLE_DELETE` `true` Görüntüyü silme işlemini etkinleştirmek için değerini olarak değiştirin.
 
 ```bash
 #!/bin/bash

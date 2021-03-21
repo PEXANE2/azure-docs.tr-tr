@@ -10,10 +10,10 @@ ms.date: 11/01/2019
 tags: connectors
 ROBOTS: NOINDEX
 ms.openlocfilehash: 70fb956af7ff45c7b54f04d7ed441ec39f9d80a5
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92673820"
 ---
 # <a name="monitor-create-and-manage-sftp-files-in-azure-logic-apps"></a>Azure Logic Apps içinde SFTP dosyalarını izleme, oluşturma ve yönetme
@@ -45,10 +45,10 @@ SFTP Bağlayıcısı yalnızca *50 MB veya daha küçük* olan dosyaları işler
   > SFTP Bağlayıcısı şu özel anahtar biçimlerini destekler: OpenSSH, ssh.com ve PuTTY
   >
   > Mantıksal uygulamanızı oluştururken, istediğiniz SFTP tetikleyicisini veya eylemini ekledikten sonra SFTP sunucunuz için bağlantı bilgilerini sağlamanız gerekir. 
-  > SSH özel anahtarı kullanıyorsanız, SSH özel anahtar dosyanızdaki * anahtarını **kopyalayın** ve bu anahtarı bağlantı ayrıntılarına _*_yapıştırın_*_ , bu _*_anahtarı el ile girmeyin veya düzenleyemezsiniz_*_ , bu da bağlantının başarısız olmasına neden olabilir. 
+  > SSH özel anahtarı kullanıyorsanız, SSH özel anahtar dosyanızdaki anahtarı ***kopyalamadığınızdan*** emin olun ve bu anahtarı bağlantı ayrıntılarına ***yapıştırın*** , ***anahtarı el ile girmeyin veya düzenlemeyin***, bu da bağlantının başarısız olmasına neden olabilir. 
   > Daha fazla bilgi için bu makaledeki sonraki adımlara bakın.
 
-_ [Mantıksal uygulamalar oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md) hakkında temel bilgi
+* [Mantıksal uygulamalar oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md) hakkında temel bilgi
 
 * SFTP hesabınıza erişmek istediğiniz mantıksal uygulama. Bir SFTP tetikleyicisiyle başlamak için [boş bir mantıksal uygulama oluşturun](../logic-apps/quickstart-create-first-logic-app-workflow.md). Bir SFTP eylemi kullanmak için, mantıksal uygulamanızı başka bir tetikleyici ile başlatın, örneğin **yineleme** tetikleyicisi.
 
@@ -59,7 +59,7 @@ SFTP Tetikleyicileri, SFTP dosya sistemini yoklayarak ve Son yoklamadan bu yana 
 | SFTP istemcisi | Eylem |
 |-------------|--------|
 | WinSCP | **Seçenekler**  >  **Tercihler**  >  **Aktarım**  >  **düzenleme**  >  **zaman damgası**  >  **devre dışı bırak** ' a gidin |
-| FileZilla | **Aktarım** ' a git  >  **aktarılan dosyaların zaman damgalarını koru**  >  **devre dışı bırak** |
+| FileZilla | **Aktarım**' a git  >  **aktarılan dosyaların zaman damgalarını koru**  >  **devre dışı bırak** |
 |||
 
 Tetikleyici yeni bir dosya bulduğunda, tetikleyici yeni dosyanın tamamlandığını ve kısmen yazılmadığını denetler. Örneğin, tetikleyici dosya sunucusunu denetlerken bir dosya sürmekte olan değişiklikler olabilir. Kısmen yazılmış bir dosyanın döndürülmemek için tetikleyici, son değişiklikleri olan dosyanın zaman damgasını Not etmez, ancak bu dosyayı hemen döndürmez. Tetikleyici dosyayı yalnızca sunucuyu yoklayarak geri döndürür. Bazen bu davranış, tetikleyicinin yoklama aralığı iki katına varan bir gecikmeye neden olabilir.
@@ -74,9 +74,9 @@ Tetikleyici yeni bir dosya bulduğunda, tetikleyici yeni dosyanın tamamlandığ
 
    -veya-
 
-   Mevcut Logic Apps için, eylem eklemek istediğiniz son adım altında **yeni adım** ' ı seçin. Arama kutusuna filtreniz olarak "SFTP" yazın. Eylemler listesi altında istediğiniz eylemi seçin.
+   Mevcut Logic Apps için, eylem eklemek istediğiniz son adım altında **yeni adım**' ı seçin. Arama kutusuna filtreniz olarak "SFTP" yazın. Eylemler listesi altında istediğiniz eylemi seçin.
 
-   Adımlar arasında bir eylem eklemek için, işaretçinizi adımlar arasındaki oka taşıyın. Görüntülenen artı işaretini ( **+** ) seçin ve ardından **Eylem Ekle** ' yi seçin.
+   Adımlar arasında bir eylem eklemek için, işaretçinizi adımlar arasındaki oka taşıyın. Görüntülenen artı işaretini ( **+** ) seçin ve ardından **Eylem Ekle**' yi seçin.
 
 1. Bağlantınız için gerekli ayrıntıları sağlayın.
 
@@ -89,13 +89,13 @@ Tetikleyici yeni bir dosya bulduğunda, tetikleyici yeni dosyanın tamamlandığ
 
    1. SSH özel anahtar dosyanızı bir metin düzenleyicisinde açın. Bu adımlar örnek olarak not defteri 'Ni kullanır.
 
-   1. Not defteri **düzenleme** menüsünde **Tümünü Seç** ' i seçin.
+   1. Not defteri **düzenleme** menüsünde **Tümünü Seç**' i seçin.
 
-   1. Kopyayı **Düzenle** ' yi seçin  >  **Copy** .
+   1. Kopyayı **Düzenle**' yi seçin  >  .
 
-   1. Eklediğiniz SFTP tetikleyicisi veya eyleminde, birden çok satırı destekleyen **SSH özel anahtar** özelliğine kopyaladığınız *bütün* anahtarı yapıştırın. *_ Anahtarını *_yapıştırdığınızdan emin olun_* . _*_Anahtarı el ile girmeyin veya düzenleyemezsiniz_*_ .
+   1. Eklediğiniz SFTP tetikleyicisi veya eyleminde, birden çok satırı destekleyen **SSH özel anahtar** özelliğine kopyaladığınız *bütün* anahtarı yapıştırın. **_ Anahtarını _yapıştırdığınızdan emin olun_*. _*_anahtarı el ile girmeyin veya düzenleyemezsiniz_**.
 
-1. Bağlantı ayrıntılarını girmeyi tamamladığınızda _ * oluştur * * öğesini seçin.
+1. Bağlantı ayrıntılarını girmeyi tamamladığınızda **Oluştur**' u seçin.
 
 1. Seçtiğiniz tetikleyici veya eyleminiz için gerekli ayrıntıları sağlayın ve mantıksal uygulamanızın iş akışını oluşturmaya devam edin.
 
@@ -107,7 +107,7 @@ Tetikleyici yeni bir dosya bulduğunda, tetikleyici yeni dosyanın tamamlandığ
 
 Bu tetikleyici bir SFTP sunucusunda dosya eklendiğinde veya değiştirildiğinde bir mantıksal uygulama iş akışı başlatır. Örneğin, dosyanın içeriğini denetleyen ve içeriğin belirtilen bir koşulu karşılayıp karşılamadığını temel alarak içeriği alan bir koşul ekleyebilirsiniz. Daha sonra dosyanın içeriğini alan ve bu içeriği SFTP sunucusundaki bir klasöre yerleştiren bir eylem ekleyebilirsiniz.
 
-**Kurumsal örnek** : Bu tetikleyiciyi, Müşteri emirlerini temsil eden yeni dosyalar IÇIN BIR SFTP klasörünü izlemek üzere kullanabilirsiniz. Daha sonra, daha fazla işleme için siparişin içeriğini almak ve bu siparişi bir Siparişler veritabanında depolamak için **Dosya Içeriğini al** gıbı bır SFTP eylemi kullanabilirsiniz.
+**Kurumsal örnek**: Bu tetikleyiciyi, Müşteri emirlerini temsil eden yeni dosyalar IÇIN BIR SFTP klasörünü izlemek üzere kullanabilirsiniz. Daha sonra, daha fazla işleme için siparişin içeriğini almak ve bu siparişi bir Siparişler veritabanında depolamak için **Dosya Içeriğini al** gıbı bır SFTP eylemi kullanabilirsiniz.
 
 <a name="get-content"></a>
 

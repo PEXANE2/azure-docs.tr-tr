@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: functions
 author: ggailey777
 ms.service: azure-functions
@@ -9,10 +9,10 @@ ms.date: 06/04/2020
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 164620bdcee7ac546468354f999dcb3ad96ecf4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84731052"
 ---
 Visual Studio 'daki Azure Işlevleri proje şablonu, Azure 'da bir işlev uygulamasına yayımlayabilecek bir proje oluşturur. İşlevleri, kaynakların daha kolay yönetilmesi, dağıtılması, ölçeklendirilmesi ve paylaşılması için mantıksal birim olarak gruplamak üzere bir işlev uygulaması kullanabilirsiniz.
@@ -21,7 +21,7 @@ Visual Studio 'daki Azure Işlevleri proje şablonu, Azure 'da bir işlev uygula
 
 1. **Yeni proje oluştur**' da, arama *kutusuna Işlevler* girin, **Azure Işlevleri** şablonunu seçin ve ardından **İleri**' yi seçin.
 
-1. **Yeni projenizi yapılandırın**bölümünde projeniz Için bir **Proje adı** girin ve ardından **Oluştur**' u seçin. İşlev uygulamasının adı, bir C# ad alanı olarak geçerli olmalıdır; bu nedenle alt çizgi, kısa çizgi veya alfasayısal olmayan herhangi bir karakter kullanmayın.
+1. **Yeni projenizi yapılandırın** bölümünde projeniz Için bir **Proje adı** girin ve ardından **Oluştur**' u seçin. İşlev uygulamasının adı, bir C# ad alanı olarak geçerli olmalıdır; bu nedenle alt çizgi, kısa çizgi veya alfasayısal olmayan herhangi bir karakter kullanmayın.
 
 1. **Yeni Azure işlevleri uygulama ayarları oluşturma** için aşağıdaki tablodaki değerleri kullanın:
 
@@ -35,6 +35,6 @@ Visual Studio 'daki Azure Işlevleri proje şablonu, Azure 'da bir işlev uygula
     
     ![Azure Işlevleri proje ayarları](./media/functions-vs-tools-create/functions-project-settings.png)
 
-    **Yetkilendirme düzeyini** **anonim**olarak ayarladığınızdan emin olun. Varsayılan **işlev**düzeyini seçerseniz, işlev uç noktanıza erişmek için isteklerde [işlev anahtarı](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) sunmak gerekir.
+    **Yetkilendirme düzeyini** **anonim** olarak ayarladığınızdan emin olun. Varsayılan **işlev** düzeyini seçerseniz, işlev uç noktanıza erişmek için isteklerde [işlev anahtarı](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) sunmak gerekir.
 
 1. İşlev projesi ve HTTP tetikleme işlevini oluşturmak için **Oluştur** ' u seçin.

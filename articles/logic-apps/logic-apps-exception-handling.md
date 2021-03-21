@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm, azla
 ms.date: 02/18/2021
 ms.topic: article
 ms.openlocfilehash: fbe797937021763bb97ca09e1da792d9a7010f9a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101702513"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Azure Logic Apps'teki hataları ve özel durumları işleme
@@ -27,7 +27,7 @@ En temel özel durum ve hata işleme için, desteklenen yerlerde, her türlü ey
 
 Yeniden deneme ilkesi türleri şunlardır:
 
-| Tür | Açıklama |
+| Tür | Description |
 |------|-------------|
 | **Varsayılanını** | Bu ilke, 7,5 saniye ölçeklendirilen ancak 5 ila 45 saniye arasında ölçeklenebilen, en fazla dört yeniden deneme aralığını üstel olarak *artırır* . |
 | **Üstel Aralık**  | Bu ilke, sonraki isteği göndermeden önce üstel olarak büyüyen bir aralıktan seçilen rastgele aralığı bekler. |
@@ -69,7 +69,7 @@ Ya da yeniden deneme `inputs` ilkelerini destekleyen bir eylem veya tetikleyici 
 
 *Gerekli*
 
-| Değer | Tür | Açıklama |
+| Değer | Tür | Description |
 |-------|------|-------------|
 | <*retry-ilke-tür*> | Dize | Kullanmak istediğiniz yeniden deneme ilkesi türü: `default` , `none` , `fixed` veya `exponential` |
 | <*yeniden deneme aralığı*> | Dize | Değerin [ıso 8601 biçimini](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)kullanması gereken yeniden deneme aralığı. Varsayılan en düşük Aralık `PT5S` ve en yüksek Aralık `PT1D` . Üstel Aralık ilkesini kullandığınızda, farklı en düşük ve en yüksek değerleri belirtebilirsiniz. |
@@ -78,7 +78,7 @@ Ya da yeniden deneme `inputs` ilkelerini destekleyen bir eylem veya tetikleyici 
 
 *İsteğe bağlı*
 
-| Değer | Tür | Açıklama |
+| Değer | Tür | Description |
 |-------|------|-------------|
 | <*Minimum Aralık*> | Dize | Üstel Aralık ilkesi için [ıso 8601 biçiminde](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) rastgele seçilen Aralık için en küçük Aralık |
 | <*Maksimum Aralık*> | Dize | Üstel Aralık ilkesi için [ıso 8601 biçiminde](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) rastgele seçilen Aralık için en büyük Aralık |

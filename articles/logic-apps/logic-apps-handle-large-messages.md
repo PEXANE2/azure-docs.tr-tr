@@ -6,10 +6,10 @@ ms.suite: integration
 ms.topic: article
 ms.date: 12/18/2020
 ms.openlocfilehash: de4af34182fc1a95968e95d322a6ec35101a3dc9
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97695881"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Azure Logic Apps parçalama ile büyük iletileri işleme
@@ -160,7 +160,7 @@ Bu adımlarda, mantıksal uygulamanızdan bir uç noktaya öbekli içerik yükle
 
 1. Mantıksal uygulamanız, boş bir ileti gövdesine sahip bir ilk HTTP POST veya PUT isteği gönderir. İstek üst bilgisi, mantıksal uygulamanızın parçalara yüklemek istediği içerikle ilgili şu bilgileri içerir:
 
-   | Logic Apps istek üst bilgisi alanı | Değer | Tür | Açıklama |
+   | Logic Apps istek üst bilgisi alanı | Değer | Tür | Description |
    |---------------------------------|-------|------|-------------|
    | **x-MS-Transfer-Mode** | öbekli | Dize | İçeriğin öbeklerde karşıya yüklendiğini belirtir |
    | **x-MS-Content-Length** | <*içerik uzunluğu*> | Tamsayı | Parçalama öncesinde tüm içerik boyutu bayt cinsinden |
@@ -170,7 +170,7 @@ Bu adımlarda, mantıksal uygulamanızdan bir uç noktaya öbekli içerik yükle
 
    | Uç nokta yanıt üst bilgisi alanı | Tür | Gerekli | Açıklama |
    |--------------------------------|------|----------|-------------|
-   | **x-MS-öbek boyutu** | Tamsayı | Hayır | Önerilen öbek boyutu (bayt) |
+   | **x-MS-öbek boyutu** | Tamsayı | No | Önerilen öbek boyutu (bayt) |
    | **Konum** | Dize | Yes | HTTP PATCH iletilerinin gönderileceği URL konumu |
    ||||
 
@@ -180,7 +180,7 @@ Bu adımlarda, mantıksal uygulamanızdan bir uç noktaya öbekli içerik yükle
 
    * Bu üst bilgi, her bir düzeltme eki iletisinde gönderilen içerik öbeği hakkındaki ayrıntıları:
 
-     | Logic Apps istek üst bilgisi alanı | Değer | Tür | Açıklama |
+     | Logic Apps istek üst bilgisi alanı | Değer | Tür | Description |
      |---------------------------------|-------|------|-------------|
      | **İçerik aralığı** | <*aralığı*> | Dize | Başlangıç değeri, bitiş değeri ve toplam içerik boyutu dahil olmak üzere geçerli içerik öbeği için bayt aralığı, örneğin: "bytes = 0-1023/10100" |
      | **İçerik türü** | <*içerik türü*> | Dize | Öbekli içerik türü |
@@ -192,7 +192,7 @@ Bu adımlarda, mantıksal uygulamanızdan bir uç noktaya öbekli içerik yükle
    | Uç nokta yanıt üst bilgisi alanı | Tür | Gerekli | Açıklama |
    |--------------------------------|------|----------|-------------|
    | **Aralık** | Dize | Yes | Uç nokta tarafından alınan içerik için bayt aralığı, örneğin: "bytes = 0-1023" |   
-   | **x-MS-öbek boyutu** | Tamsayı | Hayır | Önerilen öbek boyutu (bayt) |
+   | **x-MS-öbek boyutu** | Tamsayı | No | Önerilen öbek boyutu (bayt) |
    ||||
 
 Örneğin, bu eylem tanımı, bir uç noktaya öbekli içerik yüklemek için bir HTTP POST isteği gösterir. Eylemin `runTimeConfiguration` özelliğinde, `contentTransfer` özelliği şu `transferMode` şekilde ayarlanır `chunked` :

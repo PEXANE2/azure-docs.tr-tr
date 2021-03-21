@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 09/10/2020
 ms.author: alkohli
 ms.openlocfilehash: bb70946fda4fad7a42fd885a2515cb0d82698eca
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92124688"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box ve Azure Data Box Heavy ilgili sorunları giderin
@@ -25,7 +25,7 @@ Bu makaledeki bilgiler Data Box için oluşturulan dışarı aktarma siparişler
 
 Data Box ve Data Box Heavy hataları şu şekilde özetlenmektedir:
 
-| Hata kategorisi *        | Açıklama        | Önerilen eylem    |
+| Hata kategorisi *        | Description        | Önerilen eylem    |
 |----------------------------------------------|---------|--------------------------------------|
 | Kapsayıcı veya paylaşma adları | Kapsayıcı veya paylaşma adları Azure adlandırma kurallarını takip etmez.  |Hata listelerini indirin. <br> Kapsayıcıları veya paylaşımları yeniden adlandırın. [Daha fazla bilgi edinin](#container-or-share-name-errors).  |
 | Kapsayıcı veya paylaşma boyut sınırı | Kapsayıcıların veya paylaşımların içindeki toplam veri, Azure sınırını aşıyor.   |Hata listelerini indirin. <br> Kapsayıcıdaki veya paylaşımdaki genel verileri azaltın. [Daha fazla bilgi edinin](#container-or-share-size-limit-errors).|
@@ -104,7 +104,7 @@ Bunlar, kapsayıcı ve paylaşma adlarıyla ilgili hatalardır.
 - Yerel Web Kullanıcı arabiriminin Bağlan ve Kopyala sayfasında, sorun ile klasör adlarını belirlemek için hata dosyalarını indirin ve gözden geçirin. 
 - Azure adlandırma kurallarıyla uyumlu olduklarından emin olmak için dizini veya kapsayıcıları yeniden adlandırın.
 
-Daha fazla bilgi için bkz. [dizinler](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)   ve [kapsayıcılar](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)için Azure adlandırma kuralları.
+Daha fazla bilgi için bkz. [dizinler](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) ve [kapsayıcılar](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)için Azure adlandırma kuralları.
 
 ## <a name="container-or-share-size-limit-errors"></a>Kapsayıcı veya paylaşma boyut sınırı hataları
 

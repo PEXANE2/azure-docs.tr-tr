@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: duau
 ms.openlocfilehash: 4beba141fec7a819df52e4c3a669312a4ad76998
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91449302"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door"></a>Azure ön kapılarındaki arka uçlar ve arka uç havuzları
@@ -64,7 +64,7 @@ Arka uç havuzu bölümünde arka uç için **arka uç ana bilgisayar üst bilgi
 
 Arka uç havuzu, farklı arka uçların sistem durumu araştırmaları aracılığıyla nasıl değerlendirildiğini tanımlar. Ayrıca, bunlar arasında yük dengelemenin nasıl gerçekleşeceğini tanımlar.
 
-### <a name="health-probes"></a>Sistem durumu araştırmaları
+### <a name="health-probes"></a>Durum araştırmaları
 Ön kapı, yapılandırılmış arka uçlarınızın her birine düzenli HTTP/HTTPS araştırma istekleri gönderir. Araştırma istekleri, Son Kullanıcı isteklerinizin yük dengelenmesi için her bir arka ucun yakınlığını ve sistem durumunu tespit edin. Arka uç havuzu için sistem durumu araştırma ayarları, uygulama arka uçları sistem durumunu nasıl yokladığımızda tanımlar. Yük dengeleme yapılandırması için aşağıdaki ayarlar kullanılabilir:
 
 - **Yol**: arka uç havuzundaki tüm arka uçlara yönelik araştırma istekleri IÇIN kullanılan URL. Örneğin, arka uçlarınızdaki bir contoso-westus.azurewebsites.net ise ve yol/Probe/test.aspx olarak ayarlanırsa, ön kapı ortamları, protokolün HTTP olarak ayarlandığı varsayıldığında, durum araştırma isteklerini http \: //contoso-westus.azurewebsites.net/Probe/test.aspx 'ye gönderir.

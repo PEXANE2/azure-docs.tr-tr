@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 049025a5d871f1dd26e5dab498756aa44d2ebfe2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 27353e6086085aadae622e007a38f97e15cbcb7f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693286"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587874"
 ---
 # <a name="introduction-to-securing-azure-service-accounts"></a>Azure hizmet hesaplarının güvenliğini sağlama konusuna giriş
 
@@ -38,13 +38,13 @@ Azure 'da barındırılan hizmetler için mümkünse yönetilen bir kimlik ve hi
 
 ## <a name="managed-identities"></a>Yönetilen kimlikler
 
-Yönetilen kimlikler, Azure kaynakları için kimlikler sağlamak üzere oluşturulan güvenli Azure Active Directory (Azure AD) kimlikleridir. [İki tür yönetilen kimlik](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview#managed-identity-types)vardır: 
+Yönetilen kimlikler, Azure kaynakları için kimlikler sağlamak üzere oluşturulan güvenli Azure Active Directory (Azure AD) kimlikleridir. [İki tür yönetilen kimlik](../managed-identities-azure-resources/overview.md#managed-identity-types)vardır: 
  
 * Sistem tarafından atanan Yönetilen kimlikler, bir hizmetin örneğine doğrudan atanabilir. 
 
 * Kullanıcı tarafından atanan Yönetilen kimlikler, tek başına bir kaynak olarak oluşturulabilir. 
 
-Daha fazla bilgi için bkz. [yönetilen kimliklerin güvenliğini sağlama](service-accounts-managed-identities.md). Yönetilen kimlikler hakkında genel bilgi için bkz. [Azure kaynakları için Yönetilen kimlikler nelerdir?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+Daha fazla bilgi için bkz. [yönetilen kimliklerin güvenliğini sağlama](service-accounts-managed-identities.md). Yönetilen kimlikler hakkında genel bilgi için bkz. [Azure kaynakları için Yönetilen kimlikler nelerdir?](../managed-identities-azure-resources/overview.md)
 
 ## <a name="service-principals"></a>Hizmet sorumluları
 
@@ -67,6 +67,3 @@ Azure hizmet hesaplarının güvenliğini sağlama hakkında daha fazla bilgi i�
 [Hizmet sorumlularının güvenliğini sağlama](service-accounts-principal.md)
 
 [Azure hizmet hesaplarını yöneten](service-accounts-governing-azure.md)
-
-
-

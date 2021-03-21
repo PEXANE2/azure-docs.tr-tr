@@ -2,14 +2,14 @@
 title: Kaynak grubunu ve kaynakları Sil
 description: Kaynak gruplarının ve kaynakların nasıl silineceğini açıklar. Bir kaynak grubunu silerken kaynakların silme işlemini nasıl Azure Resource Manager belirtir. Yanıt kodlarını ve Kaynak Yöneticisi silmenin başarılı olup olmadığını belirlemede bunların nasıl işlediğini açıklar.
 ms.topic: conceptual
-ms.date: 09/03/2019
+ms.date: 03/18/2021
 ms.custom: seodec18
-ms.openlocfilehash: d6c38169916cc6c47d6f05c88645fa435bbdb146
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 244d59ffc096b5e219e27fd376b07baecde3670e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614419"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587670"
 ---
 # <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Azure Resource Manager kaynak grubu ve kaynak silme
 
@@ -119,6 +119,13 @@ az resource delete \
 
 ---
 
+## <a name="required-access"></a>Gerekli erişim
+
+Bir kaynak grubunu silmek için, **Microsoft. resources/abonelikler/resourceGroups** kaynağı için silme eylemine erişmeniz gerekir. Kaynak grubundaki tüm kaynaklar için de silmeniz gerekir.
+
+İşlemler listesi için bkz. [Azure Kaynak sağlayıcısı işlemleri](../../role-based-access-control/resource-provider-operations.md). Yerleşik rollerin bir listesi için bkz. [Azure yerleşik rolleri](../../role-based-access-control/built-in-roles.md).
+
+Gerekli erişime sahipseniz, ancak silme isteği başarısız olursa, bunun nedeni kaynak grubunda bir [kilit](lock-resources.md) olması olabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

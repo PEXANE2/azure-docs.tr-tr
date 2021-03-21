@@ -8,10 +8,10 @@ ms.date: 06/30/2020
 ms.service: azure-education
 ms.subservice: education-hub
 ms.openlocfilehash: d556956a4e123d65a5725b56db57b3ce6cbb7aaf
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92675337"
 ---
 # <a name="help-students-download-software-developer-tools-from-the-azure-education-hub"></a>Öğrenciler Azure Eğitim Merkezi yazılım geliştirici araçları 'nı indirir
@@ -26,7 +26,7 @@ Eğitim programı için Azure geliştirme araçları 'nı kullanarak, geçerli v
 1. Öğrenciler için Azure aboneliği kimlik bilgileriyle oturum açın.
 1. İndirme bölmesini açmak için Eğitim Merkezi yazılım geliştirici araçlarından birini seçin.
 1. Yazılımın bilgisayar sisteminizle uyumlu olduğundan emin olmak için yazılım bilgilerini okuyun.
-1. Yazılımın sisteminizle uyumlu olduğunu onayladıktan sonra **İndir** ' i seçin.
+1. Yazılımın sisteminizle uyumlu olduğunu onayladıktan sonra **İndir**' i seçin.
 1. Yazılımı indirmek ve yüklemek için ekrandaki yönergeleri izleyin.
 
    Öğrenciler için Azure, 12 ay boyunca $100 kredi sağlar. İşlem, ağ, depolama ve veritabanları dahil olmak üzere 25 ' ten fazla ücretsiz hizmete erişim içerir. Bu süre boyunca oluşan tüm ücretler, krediden düşülür. 

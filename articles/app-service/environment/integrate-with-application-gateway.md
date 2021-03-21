@@ -8,10 +8,10 @@ ms.date: 03/03/2018
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 3b73d528802a8aa33c6122eaf5edfa9d046b6753
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88962086"
 ---
 # <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>ILB App Service Ortamınızı Azure Application Gateway ile Tümleştirme #
@@ -33,14 +33,14 @@ Bu bölümde şunları yapacaksınız:
 * Uygulamanızı özel etki alanı adını uyacak şekilde yapılandırın.
 * Uygulama ağ geçidinize işaret eden genel DNS ana bilgisayar adını düzenleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Application Gateway ıLB App Service Ortamı ile tümleştirmek için şunlar gerekir:
 
 * ILB App Service Ortamı.
 * ILB App Service Ortamı çalışan bir uygulama.
 * ILB App Service Ortamı uygulamanızdaki uygulamanızla birlikte kullanılacak internet yönlendirilebilir etki alanı adı.
-* ILB App Service Ortamı kullandığı ıLB adresi. Bu bilgiler, **Ayarlar**  >  **IP adresleri**altındaki App Service ortamı portalında bulunur:
+* ILB App Service Ortamı kullandığı ıLB adresi. Bu bilgiler, **Ayarlar**  >  **IP adresleri** altındaki App Service ortamı portalında bulunur:
 
     ![ILB App Service Ortamı tarafından kullanılan IP adreslerinin örnek listesi][9]
     
@@ -60,37 +60,37 @@ Ayrıca, ağ geçidini ıLB App Service Ortamı tarafından kullanılan alt ağa
 
 2. **Temel bilgiler** alanında:
 
-   a. **Ad**için Application Gateway adını girin.
+   a. **Ad** için Application Gateway adını girin.
 
-   b. **Katman**Için **WAF**' yi seçin.
+   b. **Katman** Için **WAF**' yi seçin.
 
-   c. **Abonelik**için App Service ortamı sanal ağın kullandığı aboneliği seçin.
+   c. **Abonelik** için App Service ortamı sanal ağın kullandığı aboneliği seçin.
 
-   d. **Kaynak grubu**için kaynak grubunu oluşturun veya seçin.
+   d. **Kaynak grubu** için kaynak grubunu oluşturun veya seçin.
 
-   e. **Konum**için App Service ortamı sanal ağın konumunu seçin.
+   e. **Konum** için App Service ortamı sanal ağın konumunu seçin.
 
    ![Yeni Application Gateway oluşturma temelleri][2]
 
 3. **Ayarlar** alanında:
 
-   a. **Sanal ağ**için App Service ortamı sanal ağı seçin.
+   a. **Sanal ağ** için App Service ortamı sanal ağı seçin.
 
-   b. **Alt ağ**için Application Gateway dağıtılması gereken alt ağı seçin. VPN ağ geçitlerinin oluşturulmasını önleyecağından GatewaySubnet kullanmayın.
+   b. **Alt ağ** için Application Gateway dağıtılması gereken alt ağı seçin. VPN ağ geçitlerinin oluşturulmasını önleyecağından GatewaySubnet kullanmayın.
 
-   c. **IP adresi türü**için **genel**' i seçin.
+   c. **IP adresi türü** için **genel**' i seçin.
 
-   d. **Genel IP adresi**için BIR genel IP adresi seçin. Bir tane yoksa, şimdi bir tane oluşturun.
+   d. **Genel IP adresi** için BIR genel IP adresi seçin. Bir tane yoksa, şimdi bir tane oluşturun.
 
-   e. **Protokol**için **http** veya **https**' yi seçin. HTTPS için yapılandırıyorsanız, bir PFX sertifikası sağlamanız gerekir.
+   e. **Protokol** için **http** veya **https**' yi seçin. HTTPS için yapılandırıyorsanız, bir PFX sertifikası sağlamanız gerekir.
 
-   f. **Web uygulaması güvenlik duvarı**için güvenlik duvarını etkinleştirebilir ve ayrıca uygun gördüğünüz şekilde **algılama** veya **önleme** için ayarlayabilirsiniz.
+   f. **Web uygulaması güvenlik duvarı** için güvenlik duvarını etkinleştirebilir ve ayrıca uygun gördüğünüz şekilde **algılama** veya **önleme** için ayarlayabilirsiniz.
 
    ![Yeni Application Gateway oluşturma ayarları][3]
     
 4. **Özet** bölümünde ayarları gözden geçirin ve **Tamam**' ı seçin. Application Gateway, kurulumun tamamlanması 30 dakikadan uzun sürebilir.  
 
-5. Application Gateway kurulumu tamamladıktan sonra, Application Gateway portala gidin. **Arka uç havuzu**seçin. ILB App Service Ortamı için ıLB adresini ekleyin.
+5. Application Gateway kurulumu tamamladıktan sonra, Application Gateway portala gidin. **Arka uç havuzu** seçin. ILB App Service Ortamı için ıLB adresini ekleyin.
 
    ![Arka uç havuzunu yapılandırma][4]
 
@@ -106,7 +106,7 @@ Ayrıca, ağ geçidini ıLB App Service Ortamı tarafından kullanılan alt ağa
 
    ![Application Gateway Portalı][7]
 
-9. Uygulamanızın özel etki alanı adını ıLB App Service Ortamı ayarlayın. Portalda uygulamanıza gidin ve **Ayarlar**altında **özel etki alanları**' nı seçin.
+9. Uygulamanızın özel etki alanı adını ıLB App Service Ortamı ayarlayın. Portalda uygulamanıza gidin ve **Ayarlar** altında **özel etki alanları**' nı seçin.
 
    ![Uygulamada özel etki alanı adı ayarla][8]
 

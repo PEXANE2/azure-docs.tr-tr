@@ -13,10 +13,10 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: references_regions
 ms.openlocfilehash: 9cb7a97b3f57ee7ac10babc53ee2263d51838777
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92309676"
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C: bölge kullanılabilirliği & veri yerleşimi
@@ -33,7 +33,7 @@ Azure AD B2C, **Dünya çapında** **Birleşik Devletler, Avrupa veya Asya Pasif
 
 Azure AD B2C Azure genel bulutu aracılığıyla dünya çapında kullanılabilir.
 
-Bu, modelden ve sonrasında, genellikle *veri*yerleşimi ile birkaç *kullanılabilirlik* sağlayan diğer Azure hizmetlerinden farklıdır. Bunun örneklerini [bölgeye göre Azure ürünlerinin](https://azure.microsoft.com/regions/services/) yanı sıra [Active Directory B2C Fiyatlandırma Hesaplayıcı](https://azure.microsoft.com/pricing/details/active-directory-b2c/)' da görebilirsiniz.
+Bu, modelden ve sonrasında, genellikle *veri* yerleşimi ile birkaç *kullanılabilirlik* sağlayan diğer Azure hizmetlerinden farklıdır. Bunun örneklerini [bölgeye göre Azure ürünlerinin](https://azure.microsoft.com/regions/services/) yanı sıra [Active Directory B2C Fiyatlandırma Hesaplayıcı](https://azure.microsoft.com/pricing/details/active-directory-b2c/)' da görebilirsiniz.
 
 ## <a name="data-residency"></a>Veri yerleşimi
 
@@ -69,7 +69,7 @@ Kaydolma, profil düzenlemesi veya oturum açma tamamlandıktan sonra, Azure AD 
 
 ## <a name="preview-tenant"></a>Önizleme kiracısı
 
-Azure AD B2C's önizleme döneminde bir B2C kiracısı oluşturduysanız, büyük olasılıkla **kiracı türü** **Önizleme kiracısı**yazıyor.
+Azure AD B2C's önizleme döneminde bir B2C kiracısı oluşturduysanız, büyük olasılıkla **kiracı türü** **Önizleme kiracısı** yazıyor.
 
 Bu durumda, kiracınızı yalnızca geliştirme ve test amaçlarıyla kullanmanız gerekir. Üretim uygulamaları için bir önizleme kiracısı kullanmayın.
 

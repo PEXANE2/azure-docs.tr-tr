@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: jeedes
 ms.openlocfilehash: f537d82c67745ef590ddaf90a9f4d3dc2aa3c233
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92518203"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-taskize-connect"></a>Öğretici: Taskize Connect ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -60,7 +60,7 @@ Taskize Connect 'in Azure AD 'ye bağlanmasını yapılandırmak için, Galeride
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-taskize-connect"></a>Taskize Connect için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Taskize Connect ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Taskize Connect 'teki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Taskize Connect ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Taskize Connect 'teki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Taskize Connect ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -93,7 +93,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Yukarıdaki ' a ek olarak, Connect Application, daha az sayıda özniteliğin aşağıda gösterilen SAML yanıtına geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksiniminize göre bunları gözden geçirebilirsiniz.
 
-    | Adı | Kaynak özniteliği|
+    | Name | Kaynak özniteliği|
     | ------------------- | -------------------- |    
     | urn: OID: 0.9.2342.19200300.100.1.3 | User. UserPrincipalName |
 

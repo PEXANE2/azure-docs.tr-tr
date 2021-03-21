@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/01/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 1a8a7003a69deaf6b74d6fbb8a3cf84b0a78eecf
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96576392"
 ---
 # <a name="introduction-to-service-fabric-reliable-actors"></a>Service Fabric Reliable Actors giriş
@@ -123,7 +123,7 @@ Bu diyagram aşağıdaki kuralları izler:
 Göz önünde bulundurmanız gereken bazı önemli noktaları:
 
 * *Method1* , istemci isteğine *Xyz789* yanıt olarak *ActorId2* adına yürütülürken, *Ayrıca Method1 tarafından yürütülmesini gerektiren başka* bir istemci isteği (*abc123*) varolur *.* Ancak, *Method1* 'in ikinci yürütmesi, önceki yürütme bitinceye kadar başlamaz. Benzer şekilde, *ActorId2* tarafından kaydedilen bir anımsatıcı, *Method1* *istemci isteğine yanıt* olarak yürütüldüğünde ateşlenir. Anımsatıcı geri çağırması yalnızca *Method1* yürütmeleri tamamlandıktan sonra yürütülür. Bunun hepsi, *ActorId2* için zorunlu tabanlı eşzamanlılık nedeniyle yapılır.
-* Benzer şekilde, ActorId1 için açık tabanlı eşzamanlılık, *Method1*, *Method2* ve zamanlayıcı geri çağrısının bir seri bir *biçimde olması adına* bir şekilde yürütülmesi tarafından gösterildiği gibi, *ActorId1* için de zorlanır.
+* Benzer şekilde, ActorId1 için açık tabanlı eşzamanlılık, *Method1*, *Method2* ve zamanlayıcı geri çağrısının bir seri bir *biçimde olması adına* bir şekilde yürütülmesi tarafından gösterildiği gibi, için de zorlanır.
 * *ActorId1* adına *Method1* yürütmesi, *ActorId2* adına yürütme ile çakışıyor. Bunun nedeni, çift tabanlı eşzamanlılık yalnızca aktör içinde zorlanır ve aktörler arasında değil.
 * Yöntem/geri çağırma yürütmelerinin bazılarında, yöntem `Task` `CompletableFuture` /geri çağırma tarafından döndürülen (C#)/(Java), yöntem dönüşinden sonra tamamlanır. Bazı bazılarında, zaman uyumsuz işlem, metodun/geri aramanın döndürdüğü zaman tarafından zaten bitmiştir. Her iki durumda da, aktör başına kilit yalnızca Yöntem/geri çağırma, ve zaman uyumsuz işlem bittikten sonra serbest bırakılır.
 

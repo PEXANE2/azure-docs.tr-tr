@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: aec60218774f3f8e293a5e5ab8c03707d117c2a0
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: b7883d6c541558e26793f94e37014a20b14d761e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102634983"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577266"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Öğretici: uçtan uca bir çözüm oluşturma
 
@@ -48,7 +48,7 @@ Senaryo aracılığıyla çalışmak için daha önce indirdiğiniz önceden yaz
 
 Yapı senaryosu *AdtSampleApp* örnek uygulaması tarafından uygulanan bileşenler şunlardır:
 * Cihaz kimlik doğrulaması 
-* [.Net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) kullanım örnekleri ( *CommandLoop.cs* içinde bulunur)
+* [.Net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) kullanım örnekleri ( *commandloop. cs* içinde bulunur)
 * Azure dijital TWINS API 'sini çağırmak için konsol arabirimi
 * *Sampleclientapp* -örnek bir Azure dijital TWINS çözümü
 * *Samplefunctionsapp* -Azure dijital TWINS grafınızı IoT Hub ve Azure dijital TWINS etkinliklerindeki telemetri sonucu olarak güncelleştiren bir Azure işlevleri uygulaması
@@ -121,35 +121,51 @@ _**AdtE2ESample**_ projesinin açık olduğu Visual Studio penceresine geri dön
 
 [!INCLUDE [digital-twins-publish-azure-function.md](../../includes/digital-twins-publish-azure-function.md)]
 
-İşlev uygulamanızın Azure dijital TWINS 'e erişebilmesi için, Azure dijital TWINS örneğinizi erişim izinleri olan sistem tarafından yönetilen bir kimliğe sahip olması gerekir. Bunu daha sonra ayarlayacaksınız.
+İşlev uygulamanızın Azure dijital TWINS 'e erişebilmesi için Azure dijital TWINS örneğinizi ve örneğin ana bilgisayar adına erişim izinleri olması gerekir. Bunu bir sonraki adımda yapılandıracaksınız.
 
-### <a name="assign-permissions-to-the-function-app"></a>İşlev uygulamasına izin atama
+### <a name="configure-permissions-for-the-function-app"></a>İşlev uygulaması için izinleri yapılandırma
 
-İşlev uygulamasının Azure dijital TWINS 'e erişmesini sağlamak için, bir sonraki adım bir uygulama ayarı yapılandırmak, uygulamayı sistem tarafından yönetilen bir Azure AD kimliği olarak atamak ve Azure dijital TWINS örneğinde bu kimliğe *Azure dijital TWINS veri sahibi* rolünü vermektir. Bu rol, örnekte birçok veri düzlemi etkinliği gerçekleştirmek isteyen herhangi bir kullanıcı veya işlev için gereklidir. Güvenlik ve rol atamaları hakkında daha fazla bilgi edinmek için bkz. [*Azure dijital TWINS çözümleri Için güvenlik*](concepts-security.md).
+Azure dijital TWINS örneğinize erişmek için işlev uygulamasının ayarlanması gereken iki ayar vardır. Bunlar her ikisi de [Azure Cloud Shell](https://shell.azure.com)komutları aracılığıyla yapılabilir. 
 
-Azure Cloud Shell ' de, işlev uygulamanızın Azure dijital TWINS örneğinizi referans olarak kullanacağı bir uygulama ayarı ayarlamak için aşağıdaki komutu kullanın. Yer tutucuları kaynaklarınızın ayrıntıları ile birlikte girin (Azure Digital TWINS örnek URL 'nizin önünde *https://* tarafından ana bilgisayar adı olduğunu unutmayın).
+#### <a name="assign-access-role"></a>Erişim rolü ata
+
+İlk ayar, işlev uygulamasını Azure dijital TWINS örneğinde **Azure Digital TWINS veri sahibi** rolünü verir. Bu rol, örnekte birçok veri düzlemi etkinliği gerçekleştirmek isteyen herhangi bir kullanıcı veya işlev için gereklidir. Güvenlik ve rol atamaları hakkında daha fazla bilgi edinmek için bkz. [*Azure dijital TWINS çözümleri Için güvenlik*](concepts-security.md). 
+
+1. İşlev için sistem tarafından yönetilen kimliğin ayrıntılarını görmek için aşağıdaki komutu kullanın. Çıktıda **PrincipalId** alanını bir yere göz atın.
+
+    ```azurecli-interactive 
+    az functionapp identity show -g <your-resource-group> -n <your-App-Service-(function-app)-name> 
+    ```
+
+    >[!NOTE]
+    > Bir kimliğin ayrıntılarını göstermek yerine sonuç boşsa, bu komutu kullanarak işlev için yeni bir sistem tarafından yönetilen kimlik oluşturun:
+    > 
+    >```azurecli-interactive    
+    >az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>  
+    >```
+    >
+    > Daha sonra çıktı, sonraki adım için gereken **PrincipalId** değeri de dahil olmak üzere kimliğin ayrıntılarını görüntüler. 
+
+1. **principalId** değerini aşağıdaki komutta kullanarak işlev uygulamasının kimliğini Azure Digital Twins örneğinizin **Azure Digital Twins Veri Sahibi** rolüne atayın.
+
+    ```azurecli-interactive 
+    az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"
+    ```
+
+Bu komutun sonucu, oluşturduğunuz rol ataması hakkında bilgi verilir. İşlev uygulamasının artık Azure dijital TWINS örneğinizdeki verilere erişme izinleri vardır.
+
+#### <a name="configure-application-settings"></a>Uygulama ayarlarını yapılandırma
+
+İkinci ayar, Azure dijital TWINS örneğinizin URL 'sini içeren işlev için bir **ortam değişkeni** oluşturur. İşlev kodu, örneğinizi ifade etmek için bunu kullanacaktır. Ortam değişkenleri hakkında daha fazla bilgi için bkz. [*işlev uygulamanızı yönetme*](../azure-functions/functions-how-to-use-azure-function-app-settings.md?tabs=portal). 
+
+Aşağıdaki komutu çalıştırarak yer tutucuları kaynaklarınızın ayrıntılarına göre doldurun.
 
 ```azurecli-interactive
-az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-Azure-Digital-Twins-instance-URL>"
+az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=https://<your-Azure-Digital-Twins-instance-hostname>"
 ```
 
 Çıktı, artık **ADT_SERVICE_URL** adlı bir giriş Içermesi gereken Azure işlevi için ayarların listesidir.
 
-Sistem tarafından yönetilen kimliği oluşturmak için aşağıdaki komutu kullanın. Çıktıda **PrincipalId** alanını bulun.
-
-```azurecli-interactive
-az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>
-```
-
-İşlev uygulamasının kimliğini Azure Digital TWINS örneğiniz için *Azure Digital TWINS veri sahibi* rolüne atamak için aşağıdaki komutta bulunan çıktıdan **PrincipalId** değerini kullanın.
-
-[!INCLUDE [digital-twins-permissions-required.md](../../includes/digital-twins-permissions-required.md)]
-
-```azurecli-interactive
-az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"
-```
-
-Bu komutun sonucu, oluşturduğunuz rol ataması hakkında bilgi verilir. İşlev uygulamasının artık Azure dijital TWINS örneğinizi erişim izinleri vardır.
 
 ## <a name="process-simulated-telemetry-from-an-iot-hub-device"></a>IoT Hub cihazdan sanal telemetri işleme
 
@@ -242,7 +258,7 @@ Yeni bir Visual Studio penceresinde (indirilen çözüm klasöründen) _cihaz si
 >[!NOTE]
 > Artık, biri _**Devicesimülatör. sln**_ ve _**AdtE2ESample. sln**_ ile bir tane olmak üzere iki Visual Studio sürümüne sahip olmanız gerekir.
 
-Bu yeni Visual Studio penceresindeki *Çözüm Gezgini* bölmesinde, Düzen _simülatör/**AzureIoTHub.cs**_ öğesini seçerek dosyayı Düzenle penceresinde açın. Aşağıdaki bağlantı dizesi değerlerini yukarıda topladığınız değerlerle değiştirin:
+Bu yeni Visual Studio penceresindeki *Çözüm Gezgini* bölmesinde, Düzen _simülatörü/**AzureIoTHub. cs**_ ' yi seçerek dosyayı Düzenle penceresinde açın. Aşağıdaki bağlantı dizesi değerlerini yukarıda topladığınız değerlerle değiştirin:
 
 ```csharp
 iotHubConnectionString = <your-hub-connection-string>

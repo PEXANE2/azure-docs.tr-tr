@@ -13,10 +13,10 @@ ms.custom:
 - 'Role: Technical Support'
 - devx-track-csharp
 ms.openlocfilehash: 27fca7b76ab148fc355eb7d52ee0cbcbd3540458
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92548584"
 ---
 # <a name="check-iot-hub-service-and-resource-health"></a>IoT Hub hizmeti ve kaynak durumunu denetleme
@@ -33,7 +33,7 @@ Portalı kullanarak IoT Hub 'ınızın durum ve durum geçmişini görmek için 
 
 1. [Azure Portal](https://portal.azure.com), Azure Portal IoT Hub 'ınıza gidin.
 
-1. Sol bölmede, **destek + sorun giderme** altında **kaynak durumu** ' yi seçin.
+1. Sol bölmede, **destek + sorun giderme** altında **kaynak durumu**' yi seçin.
 
     :::image type="content" source="./media/iot-hub-azure-service-health-integration/iot-hub-resource-health.png" alt-text="IoT Hub 'ı için kaynak durumu sayfası":::
 
@@ -49,7 +49,7 @@ IoT Hub 'larınızın sistem durumunu denetlemek için şu adımları izleyin:
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 
-2. **Hizmet sistem durumu**  >  **kaynak sistem durumu** ' na gidin.
+2. **Hizmet sistem durumu**  >  **kaynak sistem durumu**' na gidin.
 
 3. Aşağı açılan kutularda, aboneliğinizi seçin ve kaynak türü olarak **IoT Hub** ' yi seçin.
 

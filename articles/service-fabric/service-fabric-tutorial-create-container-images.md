@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 31b5f870465bc1dff9d6ff7827a4efed084bcf62
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92739059"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>Öğretici: Linux Service Fabric kümesi üzerinde kapsayıcı görüntüleri oluşturma
@@ -29,7 +29,7 @@ Bu öğretici serisinde şunların nasıl yapıldığını öğrenirsiniz:
 > * [Kapsayıcılara Sahip bir Service Fabric Uygulaması Derleme ve Çalıştırma](service-fabric-tutorial-package-containers.md)
 > * [Service Fabric’de yük devretme ve ölçeklendirme nasıl işlenir?](service-fabric-tutorial-containers-failover.md)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Service Fabric için ayarlanan Linux geliştirme ortamı. Linux ortamınızı ayarlamak için [buradaki](service-fabric-get-started-linux.md) yönergeleri izleyin.
 * Bu öğretici için Azure CLI 2.0.4 veya sonraki bir sürümü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme]( /cli/azure/install-azure-cli).

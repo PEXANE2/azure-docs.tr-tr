@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: sudbalas
 ms.openlocfilehash: b96f2ca4f925846bd252e5cfd35088d832f5c216
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98572876"
 ---
 # <a name="soft-delete-will-be-enabled-on-all-key-vaults"></a>Geçici silme, tüm anahtar kasaları üzerinde etkinleştirilecek
@@ -64,7 +64,7 @@ Kuruluşunuz yasal uyumluluk gereksinimlerine tabidir ve Silinen anahtar kasalar
 
 ### <a name="audit-your-key-vaults-to-check-if-soft-delete-is-enabled"></a>Geçici silme özelliğinin etkin olup olmadığını denetlemek için anahtar kasalarınızı denetleme
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 1. **Azure ilkesi** araması yapın.
 1. **Tanımlar**' ı seçin.
 1. **Kategori** altında, filtrede **Key Vault** ' yi seçin.
@@ -80,7 +80,7 @@ Artık hangi anahtar kasalarının etkin (uyumlu kaynaklar) olarak filtrelenece�
 
 ### <a name="turn-on-soft-delete-for-an-existing-key-vault"></a>Mevcut bir Anahtar Kasası için geçici silmeyi aç
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 1. Anahtar kasanızı arayın.
 1. **Ayarlar** altında **Özellikler** ' i seçin.
 1. **Geçici silme** altında **Bu kasanın ve onun nesnelerinin kurtarılmasını etkinleştir** seçeneğini belirleyin.
@@ -89,7 +89,7 @@ Artık hangi anahtar kasalarının etkin (uyumlu kaynaklar) olarak filtrelenece�
 
 ### <a name="grant-purge-access-policy-permissions-to-a-security-principal"></a>Güvenlik sorumlusu için Temizleme erişim ilkesi izinleri verme
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 1. Anahtar kasanızı arayın.
 1. **Ayarlar** altında **erişim ilkeleri** ' ni seçin.
 1. Erişim vermek istediğiniz hizmet sorumlusu ' nı seçin.
