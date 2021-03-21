@@ -12,10 +12,10 @@ ms.author: wiassaf
 ms.reviewer: sstein
 ms.date: 12/19/2018
 ms.openlocfilehash: 139673e46421aa0dc19298697872fbff5fe587af
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96501218"
 ---
 # <a name="extended-events-in-azure-sql-database"></a>Azure SQL veritabanı 'nda genişletilmiş olaylar 
@@ -73,7 +73,7 @@ Aşağıdaki öğelerin önceki pozlaması, olay dosyasını [hedef](#AzureXEven
 
 Genişletilmiş olaylar özelliği, çeşitli [Katalog görünümleri](/sql/relational-databases/system-catalog-views/catalog-views-transact-sql)tarafından desteklenir. Katalog görünümleri, geçerli veritabanında kullanıcı tarafından oluşturulan olay oturumlarının *meta verilerini veya tanımlarını* size bildirir. Görünümler, etkin olay oturumlarının örnekleri hakkında bilgi döndürmez.
 
-| Adı<br/>Katalog görünümü | Açıklama |
+| Adı<br/>Katalog görünümü | Description |
 |:--- |:--- |
 | **sys.database_event_session_actions** |Olay oturumunun her bir olayında her eylem için bir satır döndürür. |
 | **sys.database_event_session_events** |Olay oturumundaki her olay için bir satır döndürür. |
@@ -87,7 +87,7 @@ Microsoft SQL Server, benzer katalog görünümlerinde. *\_ Database* yerine *. 
 
 Azure SQL veritabanı, genişletilmiş olayları destekleyen [dinamik yönetim görünümlerine (DMVs)](/sql/relational-databases/system-dynamic-management-views/extended-events-dynamic-management-views) sahiptir. DMVs, *etkin* olay oturumları hakkında bilgi ister.
 
-| DMV adı | Açıklama |
+| DMV adı | Description |
 |:--- |:--- |
 | **sys.dm_xe_database_session_event_actions** |Olay oturumu eylemleri hakkında bilgi döndürür. |
 | **sys.dm_xe_database_session_events** |Oturum olayları hakkında bilgi döndürür. |

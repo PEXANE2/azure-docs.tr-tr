@@ -12,10 +12,10 @@ ms.date: 08/03/2020
 ms.author: gasinh
 ms.subservice: B2C
 ms.openlocfilehash: 46c6eac80ddbff73d99e05c070e66aa1700da174
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96928639"
 ---
 # <a name="tutorial-for-configuring-onfido-with-azure-active-directory-b2c"></a>Azure Active Directory B2C ile Onfido yapılandırma öğreticisi
@@ -50,7 +50,7 @@ Aşağıdaki mimari diyagram uygulamayı gösterir.
 
 ![onfido mimarisi için ekran görüntüsü-diyagram](media/partner-onfido/onfido-architecture-diagram.png)
 
-|Adım | Açıklama |
+|Adım | Description |
 |:-----| :-----------|
 | 1. | Kullanıcı bir oturum açma sayfasına ulaştı. Kullanıcı, yeni bir hesap oluşturmak için kaydolun ve sayfaya bilgi girer. Azure AD B2C Kullanıcı özniteliklerini toplar. Azure AD B2C barındırılan onfido istemci uygulaması, Kullanıcı bilgilerini kontrol eder.
 | 2. | Azure AD B2C orta katman API 'sini çağırır ve Kullanıcı özniteliklerine geçirir.
@@ -106,7 +106,7 @@ Uygulama ayarları [Azure 'Daki App Service](../app-service/configure-common.md#
 
 #### <a name="update-ui-files"></a>UI dosyalarını Güncelleştir
 
-1. Kullanıcı arabirimi dosyalarında ocean_blue klasöre gidin. [ **ocean_blue**](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/UI/ocean_blue)
+1. Kullanıcı arabirimi dosyalarında ocean_blue klasöre gidin. [ ](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/UI/ocean_blue)
 
 2. Her bir HTML dosyasını açın.
 

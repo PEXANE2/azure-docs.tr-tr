@@ -7,10 +7,10 @@ ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
 ms.openlocfilehash: 80b20b0b55219766872166685c0b1257f3c39c55
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96932583"
 ---
 # <a name="headers"></a>Üst Bilgiler
@@ -46,7 +46,7 @@ Sunucu, yanıtlarına aşağıdaki HTTP üstbilgilerini dahil edebilir.
 | **İçerik türü** | HTTP yanıt gövdesi içindeki içeriğin medya türünü içerir. Bkz. [bölüm 14,17](https://tools.ietf.org/html/rfc2616#section-14.17) | `Content-Type: application/vnd.microsoft.appconfig.kv+json; charset=utf-8;` |
 | **Özelliği** | Belirli bir kaynağın durumunu temsil eden donuk bir belirteç. , Koşullu işlemlerde kullanılabilir. Bkz. [bölüm 14,19](https://tools.ietf.org/html/rfc2616#section-14.19) | `ETag: "4f6dd610dd5e4deebc7fbaef685fb903"` |
 | **Son değiştirme** | İstenen kaynağın en son ne zaman değiştirildiğini açıklar. [Http-Date](https://tools.ietf.org/html/rfc2616#section-3.3.1)olarak biçimlendirilir. Bkz. [bölüm 14,29](https://tools.ietf.org/html/rfc2616#section-14.29) | `Last-Modified: Tue, 05 Dec 2017 02:41:26 GMT` |
-| **Bağlantısının** | Yanıtla ilgili kaynaklara bağlantılar sağlar. Bu üst bilgi, _sonraki_ bağlantı kullanılarak sayfalama için kullanılır. Bkz. [RFC 5988](https://tools.ietf.org/html/rfc5988) | `Link: </kv?after={token}>; rel="next"` |
+| **Bağlantı** | Yanıtla ilgili kaynaklara bağlantılar sağlar. Bu üst bilgi, _sonraki_ bağlantı kullanılarak sayfalama için kullanılır. Bkz. [RFC 5988](https://tools.ietf.org/html/rfc5988) | `Link: </kv?after={token}>; rel="next"` |
 | **Memento-DateTime** | Yanıtta bulunan içeriğin önceki bir durumu temsil ettiğini belirtir. Bu üstbilginin değeri bu durumun tarih/saati olur. Bkz. [RFC 7089](https://tools.ietf.org/html/rfc7089#section-2.1.1) | `Memento-Datetime: Sat, 12 May 2018 02:10:00 GMT` |
 | **yeniden deneme-MS-After** | İstemcinin başarısız bir isteği yeniden denemeden önce bekleyeceği önerilen bir süre (milisaniye cinsinden) sağlar. | `retry-after-ms: 10` |
 | **x-MS-istek kimliği** | Hizmet içinde isteği izlemek için kullanılan, sunucu tarafından oluşturulan benzersiz bir KIMLIK. | `x-ms-request-id: 00000000-0000-0000-0000-000000000000` |

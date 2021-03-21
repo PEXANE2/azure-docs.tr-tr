@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 46cc8ef1158c02190f905cbe8eb1d12ea7be50a2
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101644944"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Birincil Yenileme Belirteci nedir?
@@ -149,7 +149,7 @@ Aşağıdaki diyagramlarda, bir uygulama için erişim belirteci istemek üzere 
 > [!NOTE]
 > Azure AD 'ye katılmış cihazlarda bu Exchange, kullanıcının Windows 'da oturum açmasını sağlamak için zaman uyumlu olarak gerçekleştirilir. Karma Azure AD 'ye katılmış cihazlarda, şirket içi Active Directory birincil yetkilisdir. Bu nedenle, Kullanıcı oturum açmak için bir TGT elde edene kadar bekler, ancak PRT verme işlemi zaman uyumsuz olur. Bu senaryo, oturum açma Azure AD kimlik bilgilerini kullanmadığından Azure AD 'ye kayıtlı cihazlar için geçerlidir.
 
-| Adım | Açıklama |
+| Adım | Description |
 | :---: | --- |
 | A | Kullanıcı oturum açma kullanıcı arabirimindeki parolasını girer. LogonUI bir kimlik doğrulama arabelleğindeki kimlik bilgilerini LSA 'ya geçirir, bu da bunu sırayla CloudAP öğesine geçirir. CloudAP bu isteği CloudAP eklentisine iletir. |
 | B | CloudAP eklentisi kullanıcının kimlik sağlayıcısını tanımlamak için bir bölge bulma isteği başlatır. Kullanıcının kiracısında bir Federasyon sağlayıcısı kurulumu varsa, Azure AD Federasyon sağlayıcısının meta veri değişimi uç noktası (MEX) uç noktasını döndürür. Aksi takdirde Azure AD, kullanıcının Azure AD ile kimlik doğrulaması yapabileceğini belirten bir kullanıcı tarafından yönetilmediğini döndürür. |
@@ -162,7 +162,7 @@ Aşağıdaki diyagramlarda, bir uygulama için erişim belirteci istemek üzere 
 
 ![Sonraki oturumlarda PRT yenilemesi](./media/concept-primary-refresh-token/prt-renewal-subsequent-logons.png)
 
-| Adım | Açıklama |
+| Adım | Description |
 | :---: | --- |
 | A | Kullanıcı oturum açma kullanıcı arabirimindeki parolasını girer. LogonUI bir kimlik doğrulama arabelleğindeki kimlik bilgilerini LSA 'ya geçirir, bu da bunu sırayla CloudAP öğesine geçirir. CloudAP bu isteği CloudAP eklentisine iletir. |
 | B | Kullanıcı daha önce kullanıcıya oturum açtıysa, Windows önbelleğe alınmış oturum açma işlemini başlatır ve kullanıcının oturum açmasını sağlamak için kimlik bilgilerini doğrular. Her 4 saatte bir CloudAP eklentisi zaman uyumsuz olarak yenileme işlemini başlatır. |
@@ -179,7 +179,7 @@ Aşağıdaki diyagramlarda, bir uygulama için erişim belirteci istemek üzere 
 
 ![Uygulama belirteci istekleri sırasında PRT kullanımı](./media/concept-primary-refresh-token/prt-usage-app-token-requests.png)
 
-| Adım | Açıklama |
+| Adım | Description |
 | :---: | --- |
 | A | Bir uygulama (örneğin, Outlook, OneNote vb.), WAM 'ye yönelik bir belirteç isteği başlatır. WAM, sırasıyla belirteç isteğine hizmet etmek için Azure AD WAM eklentisini ister. |
 | B | Uygulama için yenileme belirteci zaten kullanılabiliyorsa, Azure AD WAM eklentisi onu bir erişim belirteci istemek için kullanır. Cihaz bağlama kanıtı sağlamak için, WAM eklentisi, isteği oturum anahtarıyla imzalar. Azure AD oturum anahtarını doğrular ve oturum anahtarı tarafından şifrelenen bir erişim belirteci ve uygulama için yeni bir yenileme belirteci yayınlar. WAM eklentisi, belirteçlerin şifresini çözmek için Cloud AP eklentisini ister. Bu, sırasıyla, oturum anahtarını kullanarak şifre çözme için TPM 'yi istediğinde, her iki belirteci de içeren WAM eklentisine neden olur. Sonra, WAM eklentisi uygulamaya yalnızca erişim belirtecini sağlar, ancak yenileme belirtecini DPAPI ile yeniden şifreler ve kendi önbelleğinde depolar  |
@@ -191,7 +191,7 @@ Aşağıdaki diyagramlarda, bir uygulama için erişim belirteci istemek üzere 
 
 ![PRT kullanarak tarayıcı SSO 'SU](./media/concept-primary-refresh-token/browser-sso-using-prt.png)
 
-| Adım | Açıklama |
+| Adım | Description |
 | :---: | --- |
 | A | Kullanıcı, bir PRT almak için kimlik bilgileriyle Windows 'da oturum açar. Kullanıcı tarayıcıyı açtıktan sonra tarayıcı (veya uzantısı), URL 'Leri kayıt defterinden yükler. |
 | B | Bir Kullanıcı Azure AD oturum açma URL 'sini açtığında tarayıcı veya uzantı, kayıt defterinden elde edilen URL 'YI doğrular. Eşleşiyorsa tarayıcı, belirteç almak için yerel istemci konağını çağırır. |

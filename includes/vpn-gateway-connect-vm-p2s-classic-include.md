@@ -9,10 +9,10 @@ ms.date: 12/06/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 4fc14083b0912cf18f98c229adcb297b89bc8971
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95563899"
 ---
 Sanal ağınıza dağıtılan bir VM 'ye bağlanmak için bir Uzak Masaüstü Bağlantısı oluşturun. Sanal makinenize bağlanabildiğinizi doğrulamak için en iyi yol, kendi bilgisayar adı yerine özel IP adresiyle bağlantı kurmak olur. Bu şekilde, ad çözümlemenin doğru yapılandırılıp yapılandırılmadığını değil, bağlanıp bağlanamadığınızı görmek için test edersiniz. 

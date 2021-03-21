@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.openlocfilehash: 6d9e0e63a3586be139620c154616acfcba2ab10f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96498226"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Geliştirme ve test için Azure depolama öykünücüsünü kullanma
@@ -182,7 +182,7 @@ Sürüm 3,0 ' den başlayarak, depolama öykünücüsünü başlattığınızda 
 
 Seçenek listesini görüntülemek için komut satırına `/help` yazın.
 
-| Seçenek | Açıklama | Komut | Arguments |
+| Seçenek | Açıklama | Komut | Bağımsız değişkenler |
 | --- | --- | --- | --- |
 | **Başlangıç** |Depolama öykünücüsünü başlatır. |`AzureStorageEmulator.exe start [-inprocess]` |*-Reprocess*: yeni bir işlem oluşturmak yerine öykünücüyü geçerli işlemde başlatın. |
 | **Durdur** |Depolama öykünücüsünü sonlandırır. |`AzureStorageEmulator.exe stop` | |

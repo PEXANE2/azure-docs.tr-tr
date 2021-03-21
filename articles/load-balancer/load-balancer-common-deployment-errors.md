@@ -11,10 +11,10 @@ ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.author: anavin
 ms.openlocfilehash: ae3899a61e942695fed1e3da5fc543b298a42e24
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94695563"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-load-balancer"></a>Azure Load Balancer ile yaygın Azure dağıtım hatalarını giderme
@@ -36,7 +36,7 @@ Bu makalede bazı yaygın Azure Load Balancer dağıtım hataları açıklanmakt
 |VMScaleSetCannotUseMultipleLoadBalancersOfSameType| Aynı türde (iç, genel) birden fazla yük dengeleyicileri olamaz. En fazla bir adet iç ve bir ortak Load Balancer olabilir. |
 |VMScaleSetCannotReferenceLoadbalancerWhenLargeScaleOrCrossAZ | Temel Load Balancer, birden çok yerleştirme grubu sanal makine ölçek kümeleri veya çapraz kullanılabilirlik Bölgesi sanal makine ölçek kümesi için desteklenmez. Bunun yerine Standart Load Balancer kullanın. |
 |MarketplacePurchaseEligibilityFailed | Aboneliğin EA aboneliği olması nedeniyle satın alma işlemlerini etkinleştirmek için doğru yönetici hesabına geçin. [Buradan](../marketplace/marketplace-faq-publisher-guide.md#what-could-block-a-customer-from-completing-a-purchase) daha fazla bilgi edinebilirsiniz. |
-|ResourceDeploymentFailure| Yük dengeleyiciniz başarısız durumdaysa, başarısız durumundan geri getirmek için şu adımları izleyin:<ol><li>Adresine gidin https://resources.azure.com ve Azure Portal kimlik bilgilerinizle oturum açın.</li><li>**Oku/yaz** seçeneğini belirleyin.</li><li>Sol tarafta, **abonelikler**' i genişletin ve ardından güncelleştirilecek Load Balancer aboneliği genişletin.</li><li>**ResourceGroups**' ı genişletin ve sonra güncelleştirmek için Load Balancer kaynak grubunu genişletin.</li><li>**Microsoft. Network**  >  **LoadBalancers**' ı seçin ve sonra güncelleştirmek Load Balancer **LoadBalancer_1** seçin.</li><li>**LoadBalancer_1** için görüntüleme sayfasında düzenleme **Al**' ı seçin  >  **Edit**.</li><li>**Provisioningstate** değeri **başarıyla** **güncelleştirilemedi.**</li><li>**PUT**'u seçin.</li></ol>|
+|ResourceDeploymentFailure| Yük dengeleyiciniz başarısız durumdaysa, onu başarısız durumdan geri getirmek için şu adımları izleyin:<ol><li>Adresine gidin https://resources.azure.com ve Azure Portal kimlik bilgilerinizle oturum açın.</li><li>**Okuma/Yazma**’yı seçin.</li><li>Sol tarafta **Subscriptions** öğesini genişletin ve ardından güncelleştirilecek Load Balancer’ı içeren Aboneliği genişletin.</li><li>**ResourceGroups** öğesini genişletin ve sonra da güncelleştirilecek Load Balancer’ı içeren kaynak grubunu genişletin.</li><li>**Microsoft. Network**  >  **LoadBalancers**' ı seçin ve sonra güncelleştirmek Load Balancer **LoadBalancer_1** seçin.</li><li>**LoadBalancer_1** için görüntüleme sayfasında düzenleme **Al**' ı seçin  >  .</li><li>**Provisioningstate** değeri **başarıyla** **güncelleştirilemedi.**</li><li>**PUT**'u seçin.</li></ol>|
 |  |  |
 
 ## <a name="next-steps"></a>Sonraki adımlar

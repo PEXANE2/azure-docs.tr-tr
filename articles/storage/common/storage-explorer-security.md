@@ -8,10 +8,10 @@ ms.topic: best-practice
 ms.date: 07/30/2020
 ms.author: cralvord
 ms.openlocfilehash: 283ec9999f9b4362035b6770383984efb0879d49
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92783768"
 ---
 # <a name="azure-storage-explorer-security-guide"></a>Azure Depolama Gezgini Güvenlik Kılavuzu
@@ -81,7 +81,7 @@ Depolama hesabı anahtarları, depolama hesabındaki hizmetlere ve kaynaklara s�
 
 Bazı Azure rolleri, depolama hesabı anahtarlarını alma izni verir. Bu rollere sahip kişiler, Azure RBAC tarafından verilen veya reddedilen izinleri etkili bir şekilde atlayabilirler. Gerekli olmadığı takdirde bu izni vermemenizi öneririz.
 
-Depolama Gezgini isteklerin kimliğini doğrulamak için, varsa depolama hesabı anahtarlarını kullanmaya çalışacaktır. Ayarlar ' da bu özelliği devre dışı bırakabilirsiniz ( **hizmetler > depolama hesapları > anahtarların kullanımını devre dışı bırakın** ). Bazı özellikler, klasik depolama hesaplarıyla çalışma gibi Azure RBAC 'yi desteklemez. Bu tür özellikler hala anahtar gerektirir ve bu ayardan etkilenmez.
+Depolama Gezgini isteklerin kimliğini doğrulamak için, varsa depolama hesabı anahtarlarını kullanmaya çalışacaktır. Ayarlar ' da bu özelliği devre dışı bırakabilirsiniz (**hizmetler > depolama hesapları > anahtarların kullanımını devre dışı bırakın**). Bazı özellikler, klasik depolama hesaplarıyla çalışma gibi Azure RBAC 'yi desteklemez. Bu tür özellikler hala anahtar gerektirir ve bu ayardan etkilenmez.
 
 Depolama kaynaklarınıza erişmek için anahtarları kullanmanız gerekiyorsa aşağıdaki yönergeleri öneririz:
 

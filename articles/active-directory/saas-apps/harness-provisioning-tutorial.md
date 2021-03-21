@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/29/2019
 ms.author: Zhchia
 ms.openlocfilehash: 13ae960f5d259314f00f8f09b2999a36c0919bc5
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94353739"
 ---
 # <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için bandı yapılandırma
@@ -49,7 +49,7 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
 
 ## <a name="set-up-harness-for-provisioning"></a>Sağlama için bir bandı ayarlama
 
-1. , Bir [Yönetici Konsolu](https://app.harness.io/#/login)'nda oturum açın ve ardından **sürekli güvenlik**  >  **erişimi yönetimi** ' ne gidin.
+1. , Bir [Yönetici Konsolu](https://app.harness.io/#/login)'nda oturum açın ve ardından **sürekli güvenlik**  >  **erişimi yönetimi**' ne gidin.
 
     ![Yönetici Konsolu](media/harness-provisioning-tutorial/admin.png)
 
@@ -68,7 +68,7 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
    a. **Ad** kutusunda, anahtar için bir ad girin.  
    b. Açılan **öğeden devralınan izinler** listesinden bir seçenek belirleyin. 
    
-1. **Gönder** ’i seçin.
+1. **Gönder**’i seçin.
 
 1. **Anahtarı** Bu öğreticide daha sonra kullanmak üzere kopyalayın.
 
@@ -78,11 +78,11 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
 
 Azure AD ile otomatik Kullanıcı sağlaması için bandı yapılandırmadan önce, Azure AD uygulama galerisindeki yönetilen SaaS uygulamaları listenize bir bandı eklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com)sol bölmedeki **Azure Active Directory** ' ı seçin.
+1. [Azure Portal](https://portal.azure.com)sol bölmedeki **Azure Active Directory**' ı seçin.
 
     !["Azure Active Directory" düğmesi](common/select-azuread.png)
 
-1. **Kurumsal uygulamalar**  >  **tüm uygulamalar** ' ı seçin.
+1. **Kurumsal uygulamalar**  >  **tüm uygulamalar**' ı seçin.
 
     !["Tüm uygulamalar" bağlantısı](common/enterprise-applications.png)
 
@@ -106,11 +106,11 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak, Azure AD 'de Kullanıcı 
 
 Azure AD 'de otomatik Kullanıcı sağlamasını yapılandırmak için aşağıdakileri yapın:
 
-1. [Azure Portal](https://portal.azure.com) **Kurumsal uygulamalar**  >  **tüm uygulamalar** ' ı seçin.
+1. [Azure Portal](https://portal.azure.com) **Kurumsal uygulamalar**  >  **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-1. Uygulamalar listesinde, **bandı** ' ni seçin.
+1. Uygulamalar listesinde, **bandı**' ni seçin.
 
     ![Uygulamalar listesindeki bir bağlantı](common/all-applications.png)
 
@@ -118,7 +118,7 @@ Azure AD 'de otomatik Kullanıcı sağlamasını yapılandırmak için aşağıd
 
     ![Sağlama düğmesi](common/provisioning.png)
 
-1. **Sağlama modu** aşağı açılan listesinde **Otomatik** ' i seçin.
+1. **Sağlama modu** aşağı açılan listesinde **Otomatik**' i seçin.
 
     !["Sağlama modu" açılan listesi](common/provisioning-automatic.png)
 
@@ -134,7 +134,7 @@ Azure AD 'de otomatik Kullanıcı sağlamasını yapılandırmak için aşağıd
 
     !["Bildirim e-postası" kutusu](common/provisioning-notification-email.png)
 
-1. **Kaydet** ’i seçin.
+1. **Kaydet**’i seçin.
 
 1. **Eşlemeler** altında **Azure Active Directory Kullanıcıları**
 
@@ -144,7 +144,7 @@ Azure AD 'de otomatik Kullanıcı sağlamasını yapılandırmak için aşağıd
 
     ![Kullanıcı "öznitelik eşlemeleri" bölmesi](media/harness-provisioning-tutorial/userattributes.png)
 
-1. **Eşlemeler** ' in altında, **Azure Active Directory gruplarını bir şekilde** seçin.
+1. **Eşlemeler**' in altında, **Azure Active Directory gruplarını bir şekilde** seçin.
 
     !["Azure Active Directory gruplarını bir bandı ile eşitler" bağlantısı](media/harness-provisioning-tutorial/groupmappings.png)
 
@@ -154,15 +154,15 @@ Azure AD 'de otomatik Kullanıcı sağlamasını yapılandırmak için aşağıd
 
 1. Kapsam filtrelerini yapılandırmak için, bkz. [kapsam filtreleri Ile öznitelik tabanlı uygulama sağlama](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-1. **Ayarlar** ' ın altında, ara IÇIN Azure AD sağlama hizmetini etkinleştirmek Için, **sağlama durumu** ' nu **Açık** ' a değiştirin.
+1. **Ayarlar**' ın altında, ara IÇIN Azure AD sağlama hizmetini etkinleştirmek Için, **sağlama durumu** ' nu **Açık**' a değiştirin.
 
     ![Sağlama durumu anahtarı "on" olarak değiştirildi](common/provisioning-toggle-on.png)
 
-1. **Ayarlar** ' ın altında, **kapsam** açılan listesinde, sağlama yaptığınız kullanıcıları veya grupları nasıl eşitlemek istediğinizi seçin.
+1. **Ayarlar**' ın altında, **kapsam** açılan listesinde, sağlama yaptığınız kullanıcıları veya grupları nasıl eşitlemek istediğinizi seçin.
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-1. Sağlamaya hazırsanız **Kaydet** ' i seçin.
+1. Sağlamaya hazırsanız **Kaydet**' i seçin.
 
     ![Sağlama Kaydet düğmesi](common/provisioning-configuration-save.png)
 

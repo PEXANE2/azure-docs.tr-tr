@@ -12,10 +12,10 @@ ms.date: 03/04/2021
 ms.author: kenwith
 ms.custom: contperf-fy21q2
 ms.openlocfilehash: 0334f52b87071c8f363a0dfcc793170316747096
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102198515"
 ---
 # <a name="reference-for-writing-expressions-for-attribute-mappings-in-azure-ad"></a>Azure AD 'de öznitelik eşlemeleri için ifade yazma başvurusu
@@ -372,7 +372,7 @@ Bu işlevin tersi ısun olarak adlandırılmıştır.
  `Item([proxyAddresses], 1)` Çoklu değerli öznitelikteki ikinci öğeyi döndürür.
 
 ---
-### <a name="join"></a>Birleştir
+### <a name="join"></a>Katılın
 **İşlev:** JOIN (separator, source1, SOURCE2,...)
 
 **Açıklama:** JOIN (), birden çok **kaynak** dize değerini tek bir dizeye birleştirebildiğinden ve her bir değer bir **ayırıcı** dizeyle ayrılabilmesi dışında Append () ile benzerdir.

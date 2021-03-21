@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: alkemper
 ms.openlocfilehash: 62516218ed2c0249f829ad8d286e4ad8bbc471f8
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96932100"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Hızlı başlangıç: Azure Uygulama yapılandırmasıyla .NET Framework uygulaması oluşturma
@@ -30,7 +30,7 @@ Bu hızlı başlangıçta, kodınızdan ayrı uygulama ayarlarının depolanmas�
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-7. **Configuration Explorer**  >  **Create**  >  Aşağıdaki anahtar-değer çiftlerini eklemek için yapılandırma Gezgini **anahtar değeri** oluştur ' u seçin:
+7.   >    >  Aşağıdaki anahtar-değer çiftlerini eklemek için yapılandırma Gezgini **anahtar değeri** oluştur ' u seçin:
 
     | Anahtar | Değer |
     |---|---|
@@ -80,7 +80,7 @@ Bu hızlı başlangıçta, kodınızdan ayrı uygulama ayarlarının depolanmas�
 
    Uygulama yapılandırma deponuzın bağlantı dizesi, ortam değişkeninden okundu `ConnectionString` . `Environment`Bölümünün özelliğindeki öğesinden önce yapılandırma oluşturucuyu ekleyin `MyConfigStore` `configBuilders` `appSettings` .
 
-1. *Program.cs*'i açın ve `Main` çağırarak uygulama yapılandırmasını kullanmak üzere yöntemi güncelleştirin `ConfigurationManager` .
+1. *Program. cs*' yi açın ve `Main` çağırarak uygulama yapılandırmasını kullanmak üzere yöntemi güncelleştirin `ConfigurationManager` .
 
     ```csharp
     static void Main(string[] args)

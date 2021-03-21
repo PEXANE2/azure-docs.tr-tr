@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/02/2020
 ms.author: allensu
 ms.openlocfilehash: 0ea4f167b992ccfbc4156ac06c8f636d2ef4a355
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96020424"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>Verizon Premium kural altyapısı özelliklerinden Azure CDN
@@ -29,7 +29,7 @@ Kullanılabilir özellik türleri şunlardır:
 * [Yorum](#comment)
 * [Üst Bilgiler](#headers)
 * [Günlükler](#logs)
-* [İyileştirme](#optimize)
+* [Getirileceğini](#optimize)
 * [Tıdır](#origin)
 * [Uzmanlık](#specialty)
 * [URL](#url)
@@ -113,7 +113,7 @@ Bu özellikler ham günlük dosyalarında depolanan verileri özelleştirmek iç
 
 **[En üste geri dön](#top)**
 
-### <a name="optimize"></a><a name="optimize"></a>İyileştirme
+### <a name="optimize"></a><a name="optimize"></a>Getirileceğini
 
 Bu özellikler, bir isteğin Edge Idealleştirici tarafından sağlanan iyileştirmelere sahip olup olmayacağını tespit eder.
 

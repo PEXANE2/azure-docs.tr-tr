@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/23/2019
 ms.author: Zhchia
 ms.openlocfilehash: d7e0db1b0bc1e7aef68ee06f3bdd5e5e0f83b73e
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94354742"
 ---
 # <a name="tutorial-configure-symantec-web-security-service-wss-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için Symantec Web Security Service 'i (WSS) yapılandırma
@@ -52,11 +52,11 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
 
 Azure AD ile otomatik Kullanıcı sağlama için Symantec Web Security hizmeti 'ni (WSS) yapılandırmadan önce, Symantec Web Security Service (WSS) üzerinde SCıM sağlamasını etkinleştirmeniz gerekir.
 
-1. [Symantec Web Security hizmeti yönetici konsolunda](https://portal.threatpulse.com/login.jsp)oturum açın. **Solutions**  >  **Service** 'e gidin.
+1. [Symantec Web Security hizmeti yönetici konsolunda](https://portal.threatpulse.com/login.jsp)oturum açın. **Solutions**  >  **Service**'e gidin.
 
     ![Symantec Web güvenlik hizmeti (WSS)](media/symantec-web-security-service/service.png)
 
-2. **Hesap bakımı**  >  **tümleştirmeleri**  >  **yeni tümleştirme** ' e gidin.
+2. **Hesap bakımı**  >  **tümleştirmeleri**  >  **yeni tümleştirme**' e gidin.
 
     ![Symantec Web Security Service (WSS)](media/symantec-web-security-service/acount.png)
 
@@ -74,11 +74,11 @@ Azure AD ile otomatik Kullanıcı sağlama için Symantec Web Security hizmeti '
 
 **Azure AD Uygulama Galerisi 'nden Symantec Web Security hizmeti (WSS) eklemek için aşağıdaki adımları uygulayın:**
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** ' i seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
+2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -99,11 +99,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gr
 
 ### <a name="to-configure-automatic-user-provisioning-for-symantec-web-security-service-wss-in-azure-ad"></a>Azure AD 'de Symantec Web Security Service (WSS) için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Symantec Web Security Service** ' i seçin.
+2. Uygulamalar listesinde **Symantec Web Security Service**' i seçin.
 
     ![Uygulamalar listesinde Symantec Web Security Service (WSS) bağlantısı](common/all-applications.png)
 
@@ -111,7 +111,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gr
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
@@ -119,13 +119,13 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gr
 
     ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder** ' i işaretleyin.
+6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet** ’e tıklayın.
+7. **Kaydet**’e tıklayın.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Symantec Web SECURITY Service (WSS) ile eşitler** ' ı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Symantec Web SECURITY Service (WSS) ile eşitler**' ı seçin.
 
     ![Eşlemeleri Azure Active Directory kullanıcıların Symantec Web Security Service W 'Leri ile çağrılan, Synchronize bölümünün ekran görüntüsü.](media/symantec-web-security-service/usermapping.png)
 
@@ -133,7 +133,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gr
 
     ![16 eşleşen özellikleri gösteren Attributıon eşleme bölümünün ekran görüntüsü.](media/symantec-web-security-service/userattribute.png)
 
-10. **Eşlemeler** bölümünde, **Azure Active Directory gruplarını Symantec Web Security hizmeti olarak eşitler** ' ı seçin.
+10. **Eşlemeler** bölümünde, **Azure Active Directory gruplarını Symantec Web Security hizmeti olarak eşitler**' ı seçin.
 
     ![Eşlemeleri Azure Active Directory gruplarını Symantec Web Security hizmeti W S ' ye eşitler seçeneği ile eşlemeler bölümünün ekran görüntüsü.](media/symantec-web-security-service/groupmapping.png)
 
@@ -151,7 +151,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gr
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-15. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
+15. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

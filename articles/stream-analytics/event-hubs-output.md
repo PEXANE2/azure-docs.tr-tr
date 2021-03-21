@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: 02abdd752528ce28642b6228648062ed961d5ae3
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102452399"
 ---
 # <a name="event-hubs-output-from-azure-stream-analytics"></a>Azure Stream Analytics çıkışı Event Hubs
@@ -21,7 +21,7 @@ ms.locfileid: "102452399"
 
 Aşağıdaki tabloda, Olay Hub 'larından çıkış olarak veri akışlarını yapılandırmak için gereken parametreler bulunur.
 
-| Özellik adı | Açıklama |
+| Özellik adı | Description |
 | --- | --- |
 | Çıktı diğer adı | Sorgu çıkışını bu olay hub 'ına yönlendirmek için sorgularda kullanılan kolay bir ad. |
 | Olay hub’ı ad alanı | Bir mesajlaşma varlıkları kümesi için kapsayıcı. Yeni bir olay hub 'ı oluşturduğunuzda bir olay hub 'ı ad alanı da oluşturmuş olursunuz. |

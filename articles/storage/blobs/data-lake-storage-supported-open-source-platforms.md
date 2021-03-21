@@ -9,10 +9,10 @@ ms.date: 02/26/2020
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: 30c33f6ec497fd5766dc541b50f341cb30946051
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95912578"
 ---
 # <a name="open-source-platforms-that-support-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. destekleyen açık kaynaklı platformlar
@@ -37,6 +37,6 @@ Bu tabloda, Data Lake Storage 2. destekleyen açık kaynaklı platformlar listel
 ## <a name="see-also"></a>Ayrıca bkz.
 
 - [Azure Data Lake Storage 2. ile ilgili bilinen sorunlar](data-lake-storage-known-issues.md)
-- [Azure Data Lake Storage 2. bulunan BLOB depolama özellikleri](data-lake-storage-supported-blob-storage-features.md)
+- [Azure Data Lake Storage 2. Nesil'de kullanılabilen Blob depolama özellikleri](data-lake-storage-supported-blob-storage-features.md)
 - [Azure Data Lake Storage 2. destekleyen Azure hizmetleri](data-lake-storage-supported-azure-services.md)
 - [Azure Data Lake Storage çoklu protokol erişimi](data-lake-storage-multi-protocol-access.md)

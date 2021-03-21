@@ -7,10 +7,10 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 08/04/2020
 ms.openlocfilehash: ad9e96433a7ee72476ae2251c684d17ec7a6d1ce
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96930254"
 ---
 # <a name="keys-and-values"></a>Anahtarlar ve değerler
@@ -67,7 +67,7 @@ Anahtar-değer 'nin birden çok sürümünü oluşturmak için etiketleri kullan
 
 Her anahtar değeri, anahtarı ve olabilecek bir etiket tarafından benzersiz şekilde tanımlanır `\0` . Bir model belirterek anahtar değerleri için bir uygulama yapılandırma deposu sorgulayın. Uygulama yapılandırma deposu, karşılık gelen değerleri ve öznitelikleri dahil olmak üzere tüm anahtar değerlerini döndürür. Uygulama yapılandırmasına yönelik REST API çağrılarında aşağıdaki temel desenleri kullanın:
 
-| Anahtar | Açıklama |
+| Anahtar | Description |
 |---|---|
 | `key` atlanır veya `key=*` | Tüm anahtarlarla eşleşir |
 | `key=abc` | **ABC** anahtar adı tam olarak eşleşir |
@@ -76,7 +76,7 @@ Her anahtar değeri, anahtarı ve olabilecek bir etiket tarafından benzersiz ş
 
 Ayrıca aşağıdaki etiket düzenlerini de dahil edebilirsiniz:
 
-| Etiketle | Açıklama |
+| Etiketle | Description |
 |---|---|
 | `label` atlanır veya `label=*` | İçeren herhangi bir etiketle eşleşir. `\0` |
 | `label=%00` | Eşleşir `\0` etiketi |

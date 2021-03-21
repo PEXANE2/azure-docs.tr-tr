@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 06/25/2020
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: d174e410aaef876dfe97af62750322641de95fd3
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94659463"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak PostgreSQL için Azure veritabanı sunucusu oluşturma
@@ -118,7 +118,7 @@ Sonuç JSON biçimindedir. **Tınlogın** ve **Fullyıqualifieddomainname** değ
 ```
 
 ## <a name="connect-to-the-azure-database-for-postgresql-server-by-using-psql"></a>Psql kullanarak PostgreSQL için Azure veritabanı sunucusuna bağlanma
-[Psql](https://www.postgresql.org/docs/current/static/app-psql.html) Client, PostgreSQL sunucularına bağlanmak için popüler bir seçenektir. [Azure Cloud Shell](../cloud-shell/overview.md)ile psql kullanarak sunucunuza bağlanabilirsiniz. Ayrıca, varsa, yerel ortamınızda psql 'yi de kullanabilirsiniz. Boş bir veritabanı, **Postgres**, yeni bir PostgreSQL sunucusuyla otomatik olarak oluşturulur. Aşağıdaki kodda gösterildiği gibi bu veritabanını psql ile bağlantı kurmak için kullanabilirsiniz. 
+[Psql](https://www.postgresql.org/docs/current/static/app-psql.html) Client, PostgreSQL sunucularına bağlanmak için popüler bir seçenektir. [Azure Cloud Shell](../cloud-shell/overview.md)ile psql kullanarak sunucunuza bağlanabilirsiniz. Ayrıca psql istemcisini indirerek yerel ortamınızda da kullanabilirsiniz. Boş bir veritabanı, **Postgres**, yeni bir PostgreSQL sunucusuyla otomatik olarak oluşturulur. Aşağıdaki kodda gösterildiği gibi bu veritabanını psql ile bağlantı kurmak için kullanabilirsiniz. 
 
    ```bash
  psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=myadmin@mydemoserver --dbname=postgres

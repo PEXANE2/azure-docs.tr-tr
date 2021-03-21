@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: f26ca04955dfa854a8ee17b7aa255a6ed991b8df
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94358380"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity"></a>Yönetilen kimlik kullanarak Azure Depolama hesabına bağlantıyı ayarlama
@@ -36,7 +36,7 @@ Sistem tarafından atanan bir yönetilen kimlik etkinleştirildiğinde Azure, ar
 
 **Kaydet** ' i seçtikten sonra, arama hizmetinize atanmış BIR nesne kimliği görürsünüz.
 
-![Nesne Kimliği](./media/search-managed-identities/system-assigned-identity-object-id.png "Nesne Kimliği")
+![Nesne kimliği](./media/search-managed-identities/system-assigned-identity-object-id.png "Nesne kimliği")
  
 ### <a name="2---add-a-role-assignment"></a>2-rol ataması ekleme
 
@@ -77,7 +77,7 @@ Bir depolama hesabından dizin oluştururken, veri kaynağı aşağıdaki gerekl
 * **Credentials**
     * Kimlik doğrulaması için yönetilen bir kimlik kullanırken, **kimlik bilgileri** biçimi yönetilen kimlik kullanmaktan farklı. Burada, hesap anahtarı veya parolası olmayan bir RESOURCEID sağlarsınız. RESOURCEID, depolama hesabının abonelik KIMLIĞINI, depolama hesabının kaynak grubunu ve depolama hesabı adını içermelidir.
     * Yönetilen kimlik biçimi: 
-        * *RESOURCEID =/Subscriptions/ **ABONELIK kimliği** /ResourceGroups/ **kaynak grubu adı** /Providers/Microsoft.Storage/storageAccounts/ **depolama hesabınızın adı** /;*
+        * *RESOURCEID =/Subscriptions/**ABONELIK kimliği**/ResourceGroups/**kaynak grubu adı**/Providers/Microsoft.Storage/storageAccounts/**depolama hesabınızın adı**/;*
 * **kapsayıcı** , depolama hesabınızda bir kapsayıcı veya tablo adı belirtir. Varsayılan olarak, kapsayıcıdaki tüm Bloblar alınabilir. Yalnızca belirli bir sanal dizinde Blobları indekslemek istiyorsanız, bu dizini isteğe bağlı **sorgu** parametresini kullanarak belirtebilirsiniz.
 
 [REST API](/rest/api/searchservice/create-data-source)kullanarak blob veri kaynağı nesnesinin nasıl oluşturulacağı hakkında örnek:

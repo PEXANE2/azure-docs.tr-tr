@@ -4,10 +4,10 @@ description: Azure Ilke tanımlarınızı kod olarak dağıtmak ve kaynakları o
 ms.date: 10/20/2020
 ms.topic: conceptual
 ms.openlocfilehash: 74d2097e4db4442e6e65f30541864fb554f7379d
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94359689"
 ---
 # <a name="design-azure-policy-as-code-workflows"></a>Kod olarak Azure İlkesi iş akışları tasarlama
@@ -102,7 +102,7 @@ Benzer şekilde, girişimlerin kendi JSON dosyası ve aynı klasörde depolanmas
 
 ### <a name="test-and-validate-the-updated-definition"></a>Güncelleştirilmiş tanımı test edin ve doğrulayın
 
-Otomasyon yeni oluşturulmuş veya güncelleştirilmiş ilke ya da girişim tanımlarınızı tamamladıktan sonra Azure 'daki nesne ile ilgili güncelleştirmeyi yaptıktan sonra, yapılan değişiklikleri test etmek zaman alabilir. Uygulamasının parçası olan ilke veya girişim, üretimden en uzak ortamda bulunan kaynaklara atanmalıdır. Bu ortam genellikle _dev_ 'dir.
+Otomasyon yeni oluşturulmuş veya güncelleştirilmiş ilke ya da girişim tanımlarınızı tamamladıktan sonra Azure 'daki nesne ile ilgili güncelleştirmeyi yaptıktan sonra, yapılan değişiklikleri test etmek zaman alabilir. Uygulamasının parçası olan ilke veya girişim, üretimden en uzak ortamda bulunan kaynaklara atanmalıdır. Bu ortam genellikle _dev_'dir.
 
 Atama, kaynak oluşturma ve güncelleştirmelerin engellenmemesi, ancak mevcut kaynakların güncelleştirilmiş ilke tanımıyla uyumluluk için denetlenmeye devam edebilmesi için, _Disabled_ 'ın [Enforcementmode](./assignment-structure.md#enforcement-mode) kullanması gerekir. EnforcementMode da dahil olmak üzere, atama kapsamının bir kaynak grubu ya da özel olarak ilkeleri doğrulamak için bir abonelik olması önerilir.
 
@@ -129,7 +129,7 @@ Hem güncelleştirilmiş ilke değerlendirme sonuçlarının hem de ortamın tes
 
 ### <a name="update-to-enforced-assignments"></a>Zorlanan atamalara güncelleştirme
 
-Tüm doğrulama kapıları tamamlandıktan sonra, _etkin_ ' ın **Enforcementmode** öğesini kullanmak için atamayı güncelleştirin. Bu değişikliği ilk olarak üretim ortamından aynı ortamda yapmanız önerilir. Bu ortam beklenildiği şekilde doğrulandıktan sonra, bu, ilke üretim kaynaklarına dağıtılana kadar, daha sonra bir sonraki ortamı dahil edilmelidir ve bu şekilde devam eder.
+Tüm doğrulama kapıları tamamlandıktan sonra, _etkin_' ın **Enforcementmode** öğesini kullanmak için atamayı güncelleştirin. Bu değişikliği ilk olarak üretim ortamından aynı ortamda yapmanız önerilir. Bu ortam beklenildiği şekilde doğrulandıktan sonra, bu, ilke üretim kaynaklarına dağıtılana kadar, daha sonra bir sonraki ortamı dahil edilmelidir ve bu şekilde devam eder.
 
 ## <a name="process-integrated-evaluations"></a>İşlem tümleşik değerlendirmeleri
 

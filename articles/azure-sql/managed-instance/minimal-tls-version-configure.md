@@ -11,16 +11,16 @@ ms.author: srbozovi
 ms.reviewer: ''
 ms.date: 05/25/2020
 ms.openlocfilehash: 17d430946f3cba1aa4680d1eaf8979fa4338bc22
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92788409"
 ---
-# <a name="configure-minimal-tls-version-in-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği 'nde en düşük TLS sürümünü yapılandırma
+# <a name="configure-minimal-tls-version-in-azure-sql-managed-instance"></a>Azure SQL Yönetilen Örneğinde en düşük TLS sürümünü yapılandırma
 Minimum [Aktarım Katmanı Güvenliği (TLS)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) sürümü ayarı, MÜŞTERILERIN Azure SQL yönetilen örneği tarafından kullanılan TLS sürümünü denetlemesine olanak tanır.
 
-Şu anda TLS 1,0, 1,1 ve 1,2 destekliyoruz. Minimum TLS sürümü ayarlandığında, daha yeni olan TLS sürümlerinin desteklenmesini sağlar. Örneğin, örneğin, 1,1 'den büyük bir TLS sürümü seçme. Yalnızca TLS 1,1 ve 1,2 arasındaki bağlantıların kabul edildiği ve TLS 1,0 reddedildiği anlamına gelir. Uygulamalarınızın bu uygulamayı desteklediğini doğrulamak için test ettikten sonra, önceki sürümlerde bulunan güvenlik açıklarına yönelik düzeltmeler içerdiğinden ve Azure SQL yönetilen örneği 'nde desteklenen en yüksek TLS sürümüne sahip olduğundan, en düşük TLS sürümünü 1,2 olarak ayarlamayı öneririz.
+Şu anda TLS 1.0, 1.1 ve 1.2’yi destekliyoruz. En Düşük TLS Sürümünü ayarlamak sonraki, daha yeni TLS sürümlerinin desteklendiğinden emin olmanızı sağlar. Örneğin, örneğin, 1,1 'den büyük bir TLS sürümü seçme. yalnızca TLS 1.1 ve 1.2 içeren bağlantıların kabul edileceği ve TLS 1.0’ın reddedileceği anlamına gelir. Uygulamalarınızın bunu desteklediğini test edip onayladıktan sonra en düşük TLS sürümü olarak 1.2’yi ayarlamanızı öneririz çünkü bu sürüm önceki sürümlerde bulunan güvenlik açıklarının düzeltmelerini içerir ve TLS’nin Azure SQL Yönetilen Örneği’nde desteklenen en yüksek sürümüdür.
 
 TLS 'nin eski sürümlerini kullanan uygulamalar için, uygulamalarınızın gereksinimlerine göre en düşük TLS sürümünü ayarlamayı öneririz. Şifrelenmemiş bir bağlantı kullanarak bağlanmak için uygulamalara bağlı olan müşteriler için, en az TLS sürümü ayarlamamız önerilir. 
 

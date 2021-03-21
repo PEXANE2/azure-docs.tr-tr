@@ -8,16 +8,16 @@ ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-csharp
 ms.openlocfilehash: afc0a5bf9b83363d1f4baab955b55148fe3a8498
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95819460"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions"></a>Öğretici: Azure Işlevleri kullanılarak Azure Event Grid aracılığıyla alınan Azure Service Bus olaylarına yanıt verme
 Bu öğreticide, Azure Işlevleri ve Azure Logic Apps kullanarak Azure Event Grid aracılığıyla alınan Azure Service Bus olaylarına nasıl yanıt verileceğini öğreneceksiniz. 
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Service Bus ad alanı oluşturma
 > * İleti göndermek için örnek bir uygulama hazırlama
@@ -37,8 +37,8 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 >[!NOTE]
 > Azure Işlevleri uygulaması oluşturma ve dağıtma hakkında daha fazla bilgi edinmek için bkz. [Visual Studio kullanarak Azure Işlevleri geliştirme](../azure-functions/functions-develop-vs.md)
 
-1. **Sbeventgridıntegration. sln** çözümünün **FunctionApp1** projesinden **ReceiveMessagesOnEvent.cs** dosyasını açın. 
-1. `<SERCICE BUS NAMESPACE - CONNECTION STRING>`Service Bus ad alanınız için bağlantı dizesiyle değiştirin. Aynı çözümde, **Iletileyici** projesinin **program.cs** dosyasında kullandığınız bir ile aynı olmalıdır. 
+1. **Sbeventgridıntegration. sln** çözümünün **FunctionApp1** projesinden **receiveiletionevent. cs** dosyasını açın. 
+1. `<SERCICE BUS NAMESPACE - CONNECTION STRING>`Service Bus ad alanınız için bağlantı dizesiyle değiştirin. Aynı çözüm içindeki **Iletileyici** projesinin **program. cs** dosyasında kullandığınız ile aynı olmalıdır. 
 1. **FunctionApp1** öğesine sağ tıklayın ve **Yayımla**' yı seçin. 
 1. **Yayımla** sayfasında **Başlat**' ı seçin. Bu adımlar, gördüklerinize göre farklılık gösterebilir, ancak yayımlama işlemi benzer olmalıdır. 
 1. **Yayımla** sihirbazında, **hedef** sayfasında, **hedef** için **Azure** ' u seçin. 
