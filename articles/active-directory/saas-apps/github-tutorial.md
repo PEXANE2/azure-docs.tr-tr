@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/24/2020
 ms.author: jeedes
 ms.openlocfilehash: c87f66e48aa7b39a7f3fc5f9b8572dd6925abbc0
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98732169"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-a-github-enterprise-cloud-organization"></a>Öğretici: GitHub Kurumsal bulut organizasyonu ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -25,7 +25,7 @@ Bu öğreticide, bir GitHub Kurumsal bulut **organizasyonunun** Azure Active Dir
 * Azure AD 'de GitHub Kurumsal bulut kuruluşunuza erişimi olan denetim.
 * GitHub Enterprise Cloud kuruluşunuza erişimi tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini bir GitHub Kurumsal bulut organizasyonu ile yapılandırmak için aşağıdaki öğeler gereklidir:
 

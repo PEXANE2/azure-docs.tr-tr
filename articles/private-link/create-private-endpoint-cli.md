@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 11/07/2020
 ms.author: allensu
 ms.openlocfilehash: bba912930a9dff0a79e0b0d81025b7524c238db0
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94368687"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak özel uç nokta oluşturma
@@ -226,7 +226,7 @@ Bu bölümde, önceki adımda oluşturduğunuz sanal makineyi kullanarak özel u
 
 3. **Createprivateendpointqs-RG** öğesini seçin.
 
-4. **Myvm** ' yi seçin.
+4. **Myvm**' yi seçin.
 
 5. **Myvm** için genel bakış sayfasında **Bağlan** ' ı **seçin.**
 
@@ -250,7 +250,7 @@ Bu bölümde, önceki adımda oluşturduğunuz sanal makineyi kullanarak özel u
 
     Web uygulaması adı için **10.0.0.5** özel IP adresi döndürülür.  Bu adres, daha önce oluşturduğunuz sanal ağın alt ağıdır.
 
-10. **Myvm** 'e yönelik savunma bağlantısı ' nda Internet Explorer 'ı açın.
+10. **Myvm**'e yönelik savunma bağlantısı ' nda Internet Explorer 'ı açın.
 
 11. Web uygulamanızın URL 'sini girin, **https:// \<your-webapp-name> . azurewebsites.net**.
 

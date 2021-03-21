@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
 ms.openlocfilehash: 9f179981aa39402681b4830d58a29f5b1259c7e2
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98946116"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Azure sanal ağı 'nda HDInsight 'ta Apache HBase kümeleri oluşturma
@@ -29,7 +29,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 Bu bölümde, bir Azure sanal ağında [Azure Resource Manager şablonu](../../azure-resource-manager/templates/deploy-powershell.md)kullanarak, bağımlı Azure depolama hesabı ile Linux tabanlı bir Apache HBase kümesi oluşturacaksınız. Diğer küme oluşturma yöntemleri ve ayarları anlamak için bkz. [HDInsight kümeleri oluşturma](../hdinsight-hadoop-provision-linux-clusters.md). HDInsight 'ta Apache Hadoop kümeleri oluşturmak için şablon kullanma hakkında daha fazla bilgi için, bkz. [Azure Resource Manager şablonları kullanarak HDInsight 'ta Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)
 
 > [!NOTE]  
-> Bazı özellikler şablona sabit olarak kodlanmıştır. Örneğin:
+> Bazı özellikler şablona sabit olarak kodlanmıştır. Örnek:
 >
 > * **Konum**: Doğu ABD 2
 > * **Küme sürümü**: 3.6
@@ -102,7 +102,7 @@ Bir Java uygulamasını kullanarak HBase 'e uzaktan bağlanmak için tam etki al
     curl -u <username>:<password> -k https://CLUSTERNAME.azurehdinsight.net/ambari/api/v1/clusters/CLUSTERNAME.azurehdinsight.net/services/hbase/components/hbrest
     ```
 
-Döndürülen JavaScript Nesne Gösterimi (JSON) verilerinde "host_name" girişini bulun. Kümedeki düğümlerin FQDN 'sini içerir. Örneğin:
+Döndürülen JavaScript Nesne Gösterimi (JSON) verilerinde "host_name" girişini bulun. Kümedeki düğümlerin FQDN 'sini içerir. Örnek:
 
 ```
 "host_name" : "hn0-hbaseg.hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net"
@@ -129,7 +129,7 @@ Etki alanı adının küme adı ile başlayan bölümü DNS son ekidir. Örneği
 
 Sanal makinenin HBase kümesiyle iletişim kurabildiğini doğrulamak için, `ping headnode0.<dns suffix>` sanal makinedeki komutunu kullanın. Örneğin, `ping hn0-hbaseg.hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net`.
 
-Bu bilgileri bir Java uygulamasında kullanmak için, bir uygulama oluşturmak üzere [HDInsight (Hadoop) Ile Apache HBase kullanan Java uygulamaları oluşturmak Için Apache Maven kullanma](./apache-hbase-build-java-maven-linux.md) bölümündeki adımları izleyebilirsiniz. Uygulamanın uzak bir HBase sunucusuna bağlanmasını sağlamak için bu örnekteki **hbase-site.xml** dosyasını Zookeeper FQDN 'sini kullanacak şekilde değiştirin. Örneğin:
+Bu bilgileri bir Java uygulamasında kullanmak için, bir uygulama oluşturmak üzere [HDInsight (Hadoop) Ile Apache HBase kullanan Java uygulamaları oluşturmak Için Apache Maven kullanma](./apache-hbase-build-java-maven-linux.md) bölümündeki adımları izleyebilirsiniz. Uygulamanın uzak bir HBase sunucusuna bağlanmasını sağlamak için bu örnekteki **hbase-site.xml** dosyasını Zookeeper FQDN 'sini kullanacak şekilde değiştirin. Örnek:
 
 ```xml
 <property>

@@ -6,10 +6,10 @@ ms.topic: troubleshooting
 description: Azure Dev Spaces etkinleştirirken ve kullanırken karşılaşılan yaygın sorunları giderme ve çözme hakkında bilgi edinin
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
 ms.openlocfilehash: 14ced0c66b42b6f18c946d0c75091be1af5598f5
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102197801"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces sorunlarını giderme

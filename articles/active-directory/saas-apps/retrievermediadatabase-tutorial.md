@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/25/2020
 ms.author: jeedes
 ms.openlocfilehash: 786925799d19bf01e8edebbf85de04d92213298b
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98732855"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-retrievermediadatabase"></a>Öğretici: yeniden alma Mediadatabase ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -26,7 +26,7 @@ Bu öğreticide, edinme ve Mediadatabase 'i Azure Active Directory (Azure AD) il
 * Kullanıcılarınızın Azure AD hesaplarıyla birlikte almak için kullanıcıların otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 

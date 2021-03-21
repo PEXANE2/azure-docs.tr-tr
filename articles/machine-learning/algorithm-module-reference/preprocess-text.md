@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 11/16/2020
 ms.openlocfilehash: 366b30df677a5b74bc7d70e1aea60e05b4df0152
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94659316"
 ---
 # <a name="preprocess-text"></a>Metni Ön İşleme
@@ -93,8 +93,8 @@ Aşağıda bazı örnekler verilmiştir:
 
 | Yapılandırma | Çıkış sonucu |
 | --- | --- |
-|Tüm seçenekler seçiliyken </br> Açıklamalarla </br> ' WC-3 3Test 4Test ' içinde ' 3Test ' gibi durumlarda, tasarımcı bu bağlamda ' 3Test ' tüm sözcüğü kaldırır, bu bağlamda konuşma bölümü etiketi ' 3Test ' ' i ' 3Test ' olarak belirtir, bu da modülün bir parçası olarak bu belirteci kaldırır.| :::image type="content" source="./media/module/preprocess-text-all-options-selected.png" alt-text="Tüm seçenekler seçiliyken" border="True"::: |
-|Yalnızca `Removing number` Seçili </br> Açıklamalarla </br> ' 3Test ', ' 4-EC ' gibi durumlarda, tasarımcı Simgeleştirici dovağı bu durumları bölmez ve bunları tüm belirteçler olarak değerlendirir. Bu nedenle, bu sözcüklerdeki sayıları kaldırmaz.| :::image type="content" source="./media/module/preprocess-text-removing-numbers-selected.png" alt-text="Yalnızca ' kaldırma numarası ' seçiliyken" border="True"::: |
+|Tüm seçenekler seçiliyken </br> Açıklama: </br> ' WC-3 3Test 4Test ' içinde ' 3Test ' gibi durumlarda, tasarımcı bu bağlamda ' 3Test ' tüm sözcüğü kaldırır, bu bağlamda konuşma bölümü etiketi ' 3Test ' ' i ' 3Test ' olarak belirtir, bu da modülün bir parçası olarak bu belirteci kaldırır.| :::image type="content" source="./media/module/preprocess-text-all-options-selected.png" alt-text="Tüm seçenekler seçiliyken" border="True"::: |
+|Yalnızca `Removing number` Seçili </br> Açıklama: </br> ' 3Test ', ' 4-EC ' gibi durumlarda, tasarımcı Simgeleştirici dovağı bu durumları bölmez ve bunları tüm belirteçler olarak değerlendirir. Bu nedenle, bu sözcüklerdeki sayıları kaldırmaz.| :::image type="content" source="./media/module/preprocess-text-removing-numbers-selected.png" alt-text="Yalnızca ' kaldırma numarası ' seçiliyken" border="True"::: |
 
 Normal ifadeyi, özelleştirilmiş sonuçları çıkarmak için de kullanabilirsiniz:
 

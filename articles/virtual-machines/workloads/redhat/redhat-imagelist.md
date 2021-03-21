@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: alsin
 ms.openlocfilehash: 0a4d2ef5b7f367130151fabda3f1d97b65605931
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101676037"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Azure 'da bulunan Red Hat Enterprise Linux (RHEL) görüntüleri
@@ -43,9 +43,9 @@ RHEL          | 6.7      | Madde    | Linux Aracısı | 1 Aralık 'tan itibaren 
 |             | 74-Gen2  | Madde    | Linux Aracısı | Varsayılan olarak, EUS depolarına eklendi.
 |             | 7,5      | Madde    | Linux Aracısı | , Haziran 2019 itibariyle varsayılan olarak EUS depolarına eklendi.
 |             | 75-Gen2  | Madde    | Linux Aracısı | Varsayılan olarak, EUS depolarına eklendi.
-|             | 7,6      | Madde    | Linux Aracısı | Varsayılan olarak 2019 Mayıs itibariyle EUS depolarında kullanıma açıldı.
+|             | 7.6      | Madde    | Linux Aracısı | Varsayılan olarak 2019 Mayıs itibariyle EUS depolarında kullanıma açıldı.
 |             | 76-Gen2  | Madde    | Linux Aracısı | Varsayılan olarak, EUS depolarına eklendi.
-|             | 7,7      | LVM    | Linux Aracısı | Varsayılan olarak, EUS depolarına eklendi.
+|             | 7.7      | LVM    | Linux Aracısı | Varsayılan olarak, EUS depolarına eklendi.
 |             | 77-Gen2  | LVM    | Linux Aracısı | Varsayılan olarak, EUS depolarına eklendi.
 |             | 7.8      | LVM    | Linux Aracısı | Düzenli depolara ekli (RHEL 7,8 için kullanılamaz)
 |             | 78-Gen2  | LVM    | Linux Aracısı | Düzenli depolara ekli (RHEL 7,8 için kullanılamaz)
@@ -67,17 +67,17 @@ RHEL-SAP      | 7.4      | LVM    | Linux Aracısı | SAP HANA ve Iş uygulamala
 |             | 74sap-Gen2| LVM    | Linux Aracısı | SAP HANA ve Iş uygulamaları için RHEL 7,4. 2. nesil görüntü. E4S depolarına bağlı olarak SAP ve RHEL için bir Premium ve temel işlem ücreti de ücretlendirilir.
 |             | 7,5       | LVM    | Linux Aracısı | SAP HANA ve Iş uygulamaları için RHEL 7,5. E4S depolarına bağlı olarak SAP ve RHEL için bir Premium ve temel işlem ücreti de ücretlendirilir.
 |             | 75sap-Gen2| LVM    | Linux Aracısı | SAP HANA ve Iş uygulamaları için RHEL 7,5. 2. nesil görüntü. E4S depolarına bağlı olarak SAP ve RHEL için bir Premium ve temel işlem ücreti de ücretlendirilir.
-|             | 7,6       | LVM    | Linux Aracısı | SAP HANA ve Iş uygulamaları için RHEL 7,6. E4S depolarına bağlı olarak SAP ve RHEL için bir Premium ve temel işlem ücreti de ücretlendirilir.
+|             | 7.6       | LVM    | Linux Aracısı | SAP HANA ve Iş uygulamaları için RHEL 7,6. E4S depolarına bağlı olarak SAP ve RHEL için bir Premium ve temel işlem ücreti de ücretlendirilir.
 |             | 76sap-Gen2| LVM    | Linux Aracısı | SAP HANA ve Iş uygulamaları için RHEL 7,6. 2. nesil görüntü. E4S depolarına bağlı olarak SAP ve RHEL için bir Premium ve temel işlem ücreti de ücretlendirilir.
-|             | 7,7       | LVM    | Linux Aracısı | SAP HANA ve Iş uygulamaları için RHEL 7,7. E4S depolarına bağlı olarak SAP ve RHEL için bir Premium ve temel işlem ücreti de ücretlendirilir.
+|             | 7.7       | LVM    | Linux Aracısı | SAP HANA ve Iş uygulamaları için RHEL 7,7. E4S depolarına bağlı olarak SAP ve RHEL için bir Premium ve temel işlem ücreti de ücretlendirilir.
 RHEL-SAP-HANA (Kasım 2020 ' de kaldırılacak) | 6.7       | Madde    | Linux Aracısı | SAP HANA için RHEL 6,7. RHEL-SAP görüntülerinin kullanımı güncel değil. Bu resim, Kasım 2020 ' de kaldırılacak. Red Hat 'in SAP bulut teklifleri hakkında daha fazla ayrıntıya [buradan](https://access.redhat.com/articles/3751271)ulaşabilirsiniz.
 |             | 7.2       | LVM    | Linux Aracısı | SAP HANA için RHEL 7,2. RHEL-SAP görüntülerinin kullanımı güncel değil. Bu resim, Kasım 2020 ' de kaldırılacak. Red Hat 'in SAP bulut teklifleri hakkında daha fazla ayrıntıya [buradan](https://access.redhat.com/articles/3751271)ulaşabilirsiniz.
 |             | 7.3       | LVM    | Linux Aracısı | SAP HANA için RHEL 7,3. RHEL-SAP görüntülerinin kullanımı güncel değil. Bu resim, Kasım 2020 ' de kaldırılacak. Red Hat 'in SAP bulut teklifleri hakkında daha fazla ayrıntıya [buradan](https://access.redhat.com/articles/3751271)ulaşabilirsiniz.
 RHEL-SAP-APPS | 6.8       | Madde    | Linux Aracısı | SAP Business Applications için RHEL 6,8. RHEL-SAP görüntülerinin kullanımı güncel değil.
 |             | 7.3       | LVM    | Linux Aracısı | SAP Business Applications için RHEL 7,3. RHEL-SAP görüntülerinin kullanımı güncel değil.
 |             | 7.4       | LVM    | Linux Aracısı | SAP Business Applications için RHEL 7,4.
-|             | 7,6       | LVM    | Linux Aracısı | SAP Business Applications için RHEL 7,6.
-|             | 7,7       | LVM    | Linux Aracısı | SAP Business Applications için RHEL 7,7.
+|             | 7.6       | LVM    | Linux Aracısı | SAP Business Applications için RHEL 7,6.
+|             | 7.7       | LVM    | Linux Aracısı | SAP Business Applications için RHEL 7,7.
 |             | 77-Gen2       | LVM    | Linux Aracısı | SAP Business Applications için RHEL 7,7. 2. nesil görüntü
 |             | 8.1       | LVM    | Linux Aracısı | SAP Business Applications için RHEL 8,1.
 |             | 81-Gen2      | LVM    | Linux Aracısı | SAP Business Applications için RHEL 8,1. 2. nesil görüntü.
@@ -85,13 +85,13 @@ RHEL-SAP-APPS | 6.8       | Madde    | Linux Aracısı | SAP Business Applicatio
 |             | 82-Gen2      | LVM    | Linux Aracısı | SAP Business Applications için RHEL 8,2. 2. nesil görüntü.
 RHEL-HA       | 7.4       | LVM    | Linux Aracısı | HA eklentisi ile RHEL 7,4. Temel işlem ücretinin üzerine HA ve RHEL için Premium ücret alınacaktır. RHEL-SAP-HA görüntülerinin kullanımı güncel değildir.
 |             | 7,5       | LVM    | Linux Aracısı | HA eklentisi ile RHEL 7,5. Temel işlem ücretinin üzerine HA ve RHEL için Premium ücret alınacaktır. RHEL-SAP-HA görüntülerinin kullanımı güncel değildir.
-|             | 7,6       | LVM    | Linux Aracısı | HA eklentisi ile RHEL 7,6. Temel işlem ücretinin üzerine HA ve RHEL için Premium ücret alınacaktır. RHEL-SAP-HA görüntülerinin kullanımı güncel değildir.
+|             | 7.6       | LVM    | Linux Aracısı | HA eklentisi ile RHEL 7,6. Temel işlem ücretinin üzerine HA ve RHEL için Premium ücret alınacaktır. RHEL-SAP-HA görüntülerinin kullanımı güncel değildir.
 RHEL-SAP-HA   | 7.4          | LVM    | Linux Aracısı | HA ve Update Services ile SAP için RHEL 7,4. E4S depolarına eklendi. SAP ve HA depoları ve RHEL 'nin yanı sıra temel işlem ücretleri üzerinde de Premium ücret ödeyecektir.
 |             | 74sapha-Gen2 | LVM    | Linux Aracısı | HA ve Update Services ile SAP için RHEL 7,4. 2. nesil görüntü. E4S depolarına eklendi. SAP ve HA depoları ve RHEL 'nin yanı sıra temel işlem ücretleri üzerinde de Premium ücret ödeyecektir.
 |             | 7,5          | LVM    | Linux Aracısı | HA ve Update Services ile SAP için RHEL 7,5. E4S depolarına eklendi. SAP ve HA depoları ve RHEL 'nin yanı sıra temel işlem ücretleri üzerinde de Premium ücret ödeyecektir.
-|             | 7,6          | LVM    | Linux Aracısı | HA ve Update Services ile SAP için RHEL 7,6. E4S depolarına eklendi. SAP ve HA depoları ve RHEL 'nin yanı sıra temel işlem ücretleri üzerinde de Premium ücret ödeyecektir.
+|             | 7.6          | LVM    | Linux Aracısı | HA ve Update Services ile SAP için RHEL 7,6. E4S depolarına eklendi. SAP ve HA depoları ve RHEL 'nin yanı sıra temel işlem ücretleri üzerinde de Premium ücret ödeyecektir.
 |             | 76sapha-Gen2 | LVM    | Linux Aracısı | HA ve Update Services ile SAP için RHEL 7,6. 2. nesil görüntü. E4S depolarına eklendi. SAP ve HA depoları ve RHEL 'nin yanı sıra temel işlem ücretleri üzerinde de Premium ücret ödeyecektir.
-|             | 7,7          | LVM    | Linux Aracısı | HA ve Update Services ile SAP için RHEL 7,7. E4S depolarına eklendi. SAP ve HA depoları ve RHEL 'nin yanı sıra temel işlem ücretleri üzerinde de Premium ücret ödeyecektir.
+|             | 7.7          | LVM    | Linux Aracısı | HA ve Update Services ile SAP için RHEL 7,7. E4S depolarına eklendi. SAP ve HA depoları ve RHEL 'nin yanı sıra temel işlem ücretleri üzerinde de Premium ücret ödeyecektir.
 |             | 77sapha-Gen2 | LVM    | Linux Aracısı | HA ve Update Services ile SAP için RHEL 7,7. 2. nesil görüntü. E4S depolarına eklendi. SAP ve HA depoları ve RHEL 'nin yanı sıra temel işlem ücretleri üzerinde de Premium ücret ödeyecektir.
 |             | 8.1          | LVM    | Linux Aracısı | HA ve Update Services ile SAP için RHEL 8,1. E4S depolarına eklendi. SAP ve HA depoları ve RHEL 'nin yanı sıra temel işlem ücretleri üzerinde de Premium ücret ödeyecektir.
 |             | 81sapha-Gen2          | LVM    | Linux Aracısı | HA ve Update Services ile SAP için RHEL 8,1. 2. nesil E4S depolarına ekli görüntüler. SAP ve HA depoları ve RHEL 'nin yanı sıra temel işlem ücretleri üzerinde de Premium ücret ödeyecektir.

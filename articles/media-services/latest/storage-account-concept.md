@@ -32,7 +32,7 @@ Media Services v3 'de, depolama API 'Leri dosyaları varlıklara yüklemek için
 
 Varlıkları bekleyen bir şekilde korumak için, varlıkların depolama tarafı şifrelemesi tarafından şifrelenmesi gerekir. Aşağıdaki tabloda, Media Services v3 'de depolama tarafı şifrelemesinin nasıl çalıştığı gösterilmektedir:
 
-|Şifreleme seçeneği|Açıklama|Media Services v3|
+|Şifreleme seçeneği|Description|Media Services v3|
 |---|---|---|
 |Media Services depolama şifrelemesi| AES-256 şifrelemesi, anahtar Media Services tarafından yönetiliyor. |Desteklenmez. <sup>1</sup>|
 |[Bekleyen veriler için depolama hizmeti şifrelemesi](../../storage/common/storage-service-encryption.md)|Azure depolama tarafından sunulan ve Azure tarafından yönetilen veya müşteri tarafından yönetilen sunucu tarafı şifrelemesi.|Destekleniyor.|

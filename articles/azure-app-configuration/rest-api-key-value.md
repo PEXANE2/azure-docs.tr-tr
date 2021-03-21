@@ -7,10 +7,10 @@ ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
 ms.openlocfilehash: 95081d6f8c2770d01f7836e08b6851860bf47ba8
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96932566"
 ---
 # <a name="key-values"></a>Anahtar değerler
@@ -19,7 +19,7 @@ Anahtar değeri, benzersiz birleşimi tarafından tanımlanan bir kaynaktır `ke
 
 Bu makale, API sürüm 1,0 için geçerlidir.
 
-## <a name="operations"></a>İşlemler
+## <a name="operations"></a>Operations
 
 - Al
 - Birden çok Listele
@@ -30,7 +30,7 @@ Bu makale, API sürüm 1,0 için geçerlidir.
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-rest-api-prereqs.md)]
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 ```json
 {
@@ -178,13 +178,13 @@ GET /kv?key={key}&label={label}&api-version={api-version}
 |`label=prod*`|**Üretim** ile başlayan etiketlerle eşleşir|
 |`label=prod,test`|Etiketler **Üretim** veya **Test** Ile eşleşir (5 CSV ile sınırlıdır)|
 
-**_Ayrılan karakterler_* _
+***Ayrılmış karakterler***
 
-`_`, `\`, `,`
+`*`, `\`, `,`
 
 Ayrılmış bir karakter değerin bir parçasıysa, kullanılarak kaçışılması gerekir `\{Reserved Character}` . Ayrılmayan karakterlere de kaçışmış olabilir.
 
-***Filtre doğrulaması** _
+***Filtre doğrulaması***
 
 Filtre doğrulama hatası durumunda, yanıt `400` hata ayrıntılarına sahıp http ' dir:
 
@@ -203,7 +203,7 @@ Content-Type: application/problem+json; charset=utf-8
 }
 ```
 
-_ *Örnekleri**
+**Örnekler**
 
 - Tümü
 

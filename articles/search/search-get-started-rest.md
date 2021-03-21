@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 11/17/2020
 ms.openlocfilehash: b701a80c3c3b7e5a558d875aca2fb34aea89edff
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98119637"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-using-rest-apis"></a>Hızlı başlangıç: REST API 'Leri kullanarak Azure Bilişsel Arama dizini oluşturma
@@ -25,7 +25,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Makale Postman masaüstü uygulamasını kullanır. Önceden tanımlanmış istekleri kullanmayı tercih ediyorsanız [bir Postman koleksiyonunu indirebilir ve içeri aktarabilirsiniz](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Quickstart) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıç için aşağıdaki hizmetler ve araçlar gereklidir. 
 

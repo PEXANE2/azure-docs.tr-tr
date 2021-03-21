@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 06/16/2020
 ms.topic: tutorial
 ms.openlocfilehash: 12407d6344c69c747230e9db6fa4d53b4520dc82
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96020288"
 ---
 # <a name="tutorial-set-up-physically-based-rendering-materials-in-3ds-max"></a>Öğretici: 3ds Max ile fiziksel tabanlı işleme malzemeleri ayarlama
@@ -50,7 +50,7 @@ Başlamak için, her biri farklı bir tür malzemeyi temsil eden bir dizi Box ne
 
 Aşağıdaki ekran görüntüsünde, sistem birimlerini 3ds Max cinsinden ölçü birimlerine ayarlama adımları gösterilmektedir. 
 
-1. Ana menüde, **Customize**  >  **birimleri ayarla kurulum**  >  **Sistem birimleri kurulumu**' na gidin. **Sistem birimi ölçeğinde** **ölçüm:** ![ sistem birimlerinin nasıl ayarlanacağını gösteren ekran görüntüsü ' nü seçin.](media/3dsmax/system-units.jpg)
+1. Ana menüde,   >  **birimleri ayarla kurulum**  >  **Sistem birimleri kurulumu**' na gidin. **Sistem birimi ölçeğinde** **ölçüm:** ![ sistem birimlerinin nasıl ayarlanacağını gösteren ekran görüntüsü ' nü seçin.](media/3dsmax/system-units.jpg)
 
 1. Şimdi modelleri oluşturmaya başlayabiliriz. Örnek sahnede, her biri farklı bir malzeme türünü temsil eden çeşitli Box nesneleri oluşturacağız. Örneğin, metal, lastik ve plastik. 
 

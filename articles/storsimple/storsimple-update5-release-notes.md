@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/13/2017
 ms.author: alkohli
 ms.openlocfilehash: 4fed65e12a166c046a0c63d7c4849f86805bbe9c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96021053"
 ---
 # <a name="storsimple-8000-series-update-5-release-notes"></a>StorSimple 8000 serisi güncelleştirme 5 sürüm notları
@@ -33,7 +33,7 @@ Güncelleştirmeyi StorSimple çözümünüze dağıtmadan önce sürüm notlar�
 
 Güncelleştirme 5 ' te aşağıdaki önemli geliştirmeler ve hata düzeltmeleri yapılmıştır.
 
-* **Storsimple Aygıt Yöneticisi hizmeti ile kimlik doğrulamak için Azure Active Directory (AAD) kullanımı** -güncelleştirme 5 ' ten başlayarak, storsimple Aygıt Yöneticisi hizmetinde kimlik doğrulaması yapmak için Azure Active Directory kullanılır. Eski kimlik doğrulama mekanizması, Aralık 2017 tarafından kullanım dışı bırakılacak. Tüm kullanıcıların güvenlik duvarı kurallarında yeni kimlik doğrulama URL 'Leri içermesi gerekir. Daha fazla bilgi için, [StorSimple cihazınız için ağ gereksinimleri ' nde listelenen kimlik doğrulama URL 'lerine](storsimple-8000-system-requirements.md#url-patterns-for-azure-portal)gidin.
+* **Storsimple Device Manager hizmeti ile kimlik doğrulamak için Azure Active Directory (AAD) kullanımı** -güncelleştirme 5 ' ten başlayarak, storsimple Device Manager hizmetinde kimlik doğrulaması yapmak için Azure Active Directory kullanılır. Eski kimlik doğrulama mekanizması, Aralık 2017 tarafından kullanım dışı bırakılacak. Tüm kullanıcıların güvenlik duvarı kurallarında yeni kimlik doğrulama URL 'Leri içermesi gerekir. Daha fazla bilgi için, [StorSimple cihazınız için ağ gereksinimleri ' nde listelenen kimlik doğrulama URL 'lerine](storsimple-8000-system-requirements.md#url-patterns-for-azure-portal)gidin.
 
     Kimlik doğrulama URL 'SI güvenlik duvarı kurallarında yoksa, kullanıcılar StorSimple cihazının hizmetten kimlik doğrulayamadığından önemli bir uyarı görür. Kullanıcılar bu uyarıyı görtiklerinde, yeni kimlik doğrulama URL 'sini içermesi gerekir. Daha fazla bilgi için, [StorSimple ağ uyarıları](storsimple-8000-manage-alerts.md#networking-alerts)' na gidin.
 

@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 09/13/2020
 ms.openlocfilehash: 56b9a98eb72b375aacfeb7cb147997028d3d9ba7
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98116815"
 ---
-# <a name="train-machine-learning-models"></a>Makine öğrenimi modellerini eğitme
+# <a name="train-machine-learning-models"></a>Makine öğrenmesi modellerini eğitme
 Azure SYNAPSE Analytics 'teki Apache Spark, büyük miktarlarda yapılandırılmış, yapılandırılmamış ve hızlı hareketli verilerden değerli Öngörüler elde etme olanağı sunan büyük verilerle makine öğrenmesini sağlar. Azure SYNAPSE Analytics 'te Azure Spark kullanarak makine öğrenimi modellerini eğitmek için çeşitli seçenekler vardır: Apache Spark MLlib, Azure Machine Learning ve diğer diğer açık kaynak kitaplıkları. 
 
 ## <a name="apache-sparkml-and-mllib"></a>Apache mini ml ve MLlib

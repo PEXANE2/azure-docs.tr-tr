@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
 ms.openlocfilehash: 75a7da41e4f0d5356ca135eb3cb4cbe5f29e8116
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92891470"
 ---
 # <a name="connect-to-a-wfs-service"></a>WFS hizmetine bağlanma
@@ -27,7 +27,7 @@ Aşağıdaki özellikler sınıfı tarafından desteklenir `WfsClient` :
 - İstekler yalnızca kullanılarak yapılır `HTTP GET` .
 - Desteklenen işlemler:
 
-    | İşlem | Açıklama |
+    | İşlem | Description |
     | :-- | :-- |
     | GetCapabilities | Geçerli WFS işlemlerine ve parametrelerine sahip bir meta veri belgesi oluşturur |
     | GetFeature | Bir veri kaynağından özelliklerin bir seçimini döndürür |
@@ -41,7 +41,7 @@ Aşağıdaki kod bir WFS hizmetini sorgular ve eşleme üzerinde döndürülen �
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Basit WFS örneği' src='//codepen.io/azuremaps/embed/MWwvVYY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen 'da Azure Maps () tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/MWwvVYY/'>basit WFS örneğine</a> bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+<iframe height='700' scrolling='no' title='Basit WFS örneği' src='//codepen.io/azuremaps/embed/MWwvVYY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen 'da Azure Maps () tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/MWwvVYY/'>basit WFS örneğine</a> bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 ## <a name="supported-filters"></a>Desteklenen filtreler
@@ -83,7 +83,7 @@ Aşağıdaki kod, WFS istemcisiyle farklı filtrelerin kullanımını gösterir.
 
 <br/>
 
-<iframe height='500' scrolling='no' title= 'WFS filtre örnekleri' src='//codepen.io/azuremaps/embed/NWqvYrV/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen 'da Azure Maps () tarafından bulunan Pen <a href='https://codepen.io/azuremaps/pen/NWqvYrV/'>WFS filtre örneklerine</a> bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+<iframe height='500' scrolling='no' title= 'WFS filtre örnekleri' src='//codepen.io/azuremaps/embed/NWqvYrV/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen 'da Azure Maps () tarafından bulunan Pen <a href='https://codepen.io/azuremaps/pen/NWqvYrV/'>WFS filtre örneklerine</a> bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 ## <a name="wfs-service-explorer"></a>WFS hizmet Gezgini
@@ -92,7 +92,7 @@ Aşağıdaki kod WFS hizmetini araştırmak için WFS istemcisini kullanır. Hiz
 
 <br/>
 
-<iframe height='700' style='width: 100%;' scrolling='no' title= 'WFS hizmet Gezgini' src='//codepen.io/azuremaps/embed/bGdrvmG/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen 'da Azure Maps () tarafından bulunan Pen <a href='https://codepen.io/azuremaps/pen/bGdrvmG/'>WFS hizmet Gezgini</a> ' ne bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+<iframe height='700' style='width: 100%;' scrolling='no' title= 'WFS hizmet Gezgini' src='//codepen.io/azuremaps/embed/bGdrvmG/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen 'da Azure Maps () tarafından bulunan Pen <a href='https://codepen.io/azuremaps/pen/bGdrvmG/'>WFS hizmet Gezgini</a> ' ne bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 CORS özellikli olmayan uç noktalarında barındırılan WFS hizmetlerine erişmek için, aşağıda gösterildiği gibi bir CORS etkin proxy hizmeti, `proxyService` WFS istemcisi seçeneğine geçirilebilir. 

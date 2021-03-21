@@ -6,10 +6,10 @@ author: abshamsft
 ms.author: absha
 ms.date: 11/27/2018
 ms.openlocfilehash: 0b005e46e9f9a740fee153e063bebf108c22b303
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101725705"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute Izleyicisi
@@ -111,7 +111,7 @@ Ağ Performansı İzleyicisi, birkaç devre bağlantı sorununu tanılamanıza y
 
 Bildirim kodlarını görebilir ve **günlüğe Loganalytics** aracılığıyla uyarılar ayarlayabilirsiniz. **NPM tanılama** sayfasında, tetiklenen her tanılama iletisi için açıklamaları görebilirsiniz.
 
-| Bildirim kodu (Günlükler) | Açıklama |
+| Bildirim kodu (Günlükler) | Description |
 | --- | --- |
 | 5501 | ExpressRoute devresinin ikincil bağlantısı üzerinden geçiş yapılamıyor |
 | 5502 | ExpressRoute devresinin birincil bağlantısı üzerinden geçiş yapılamıyor |

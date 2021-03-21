@@ -10,10 +10,10 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.custom: devx-track-java
 ms.openlocfilehash: a5da5e1717f897d2236fd73f0fff525e157f7a0e
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97093698"
 ---
 # <a name="how-to-use-azure-table-storage-or-azure-cosmos-db-table-api-from-java"></a>Java’dan Azure Tablo depolama veya Azure Cosmos DB Tablo API'sini kullanma
@@ -626,7 +626,7 @@ catch (Exception e)
 * [Microsoft Azure Depolama Gezgini](../vs-azure-tools-storage-manage-with-storage-explorer.md), Microsoft’un Windows, macOS ve Linux üzerinde Azure Depolama verileriyle görsel olarak çalışmanızı sağlayan ücretsiz ve tek başına uygulamasıdır.
 * [Java için Azure Depolama SDK'sı][Azure Storage SDK for Java]
 * [Azure Depolama İstemcisi SDK Başvurusu][Azure Storage Client SDK Reference]
-* [Azure Depolama REST API][Azure Storage REST API]
+* [Azure depolama REST API][Azure Storage REST API]
 * [Azure Depolama Ekibi Blogu][Azure Storage Team Blog]
 
 Daha fazla bilgi için bkz. [Java geliştiricileri için Azure](/java/azure).

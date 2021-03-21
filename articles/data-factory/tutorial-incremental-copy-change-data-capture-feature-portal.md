@@ -7,10 +7,10 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.date: 02/18/2021
 ms.openlocfilehash: a00ec8698b188b8fa87935e498e8cfab3aeab5aa
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101724991"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>Değişiklik verilerini yakalama (CDC) kullanarak Azure SQL yönetilen örneğinden Azure depolama 'ya artımlı olarak veri yükleme
@@ -366,7 +366,7 @@ Bu adımda, işi sık sık bir zamanlamaya göre çalıştırmak için atlayan b
 
    2. Bir tetikleyici adı girin ve yukarıdaki hata ayıklama penceresinin bitiş zamanına eşit olan bir başlangıç saati belirtin.
 
-   ![Atlayan pencere tetikleyicisi](./media/tutorial-incremental-copy-change-data-capture-feature-portal/tumbling-window-trigger.png)
+   ![Atlayan Pencere Tetikleyicisi](./media/tutorial-incremental-copy-change-data-capture-feature-portal/tumbling-window-trigger.png)
 
    3. Sonraki ekranda, sırasıyla başlangıç ve bitiş parametreleri için aşağıdaki değerleri belirtin.
     ```sql

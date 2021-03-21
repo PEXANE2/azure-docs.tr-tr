@@ -5,10 +5,10 @@ ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/25/2020
 ms.openlocfilehash: f4536beae18a50d3e1d42fc1593cf826c94418f8
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97033895"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
@@ -21,11 +21,11 @@ Bu makaledeki adımları tamamlayabilmeniz için şunlar gereklidir:
 
 ## <a name="review-the-code"></a>Kodu gözden geçirin
 
-Daha önce indirdiğiniz C# için IoT örnekleri Microsoft Azure kopyasında, *Azure-iot-Samples-CSharp-master\iot-hub\Samples\device\PnpDeviceSamples\Thermostat\Thermostat.csproj* proje dosyasını Visual Studio 'da açın. **Termostat** projesinde, bu örneğe ilişkin kodu görüntülemek için *program.cs* ve *ThermostatSample.cs* dosyalarını açın.
+Daha önce indirdiğiniz C# için IoT örnekleri Microsoft Azure kopyasında, *Azure-iot-Samples-CSharp-master\iot-hub\Samples\device\PnpDeviceSamples\Thermostat\Thermostat.csproj* proje dosyasını Visual Studio 'da açın. **Termostat** projesinde, bu örneğe ilişkin kodu görüntülemek için *program. cs* ve *termostatsample. cs* dosyalarını açın.
 
 IoT Central bağlanmak için örneği çalıştırdığınızda, cihazı kaydetmek ve bir bağlantı dizesi oluşturmak için cihaz sağlama hizmeti 'ni (DPS) kullanır. Örnek, ortamdaki gereken DPS bağlantı bilgilerini alır.
 
-*Program.cs* içinde, `main` yöntemi şu şekilde çağırır `SetupDeviceClientAsync` :
+*Program. cs*' de, `main` yöntemi şu `SetupDeviceClientAsync` şekilde çağırır:
 
 * Cihazı DPS ile sağlarken model KIMLIĞINI kullanın `dtmi:com:example:Thermostat;1` . IoT Central, bu cihazın cihaz şablonunu tanımlamak veya oluşturmak için model KIMLIĞINI kullanır. Daha fazla bilgi için bkz. cihaz [şablonuyla bir cihazı ilişkilendirme](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template).
 * IoT Central bağlanmak için bir **Deviceclient** örneği oluşturun.
@@ -57,7 +57,7 @@ private static async Task<DeviceClient> SetupDeviceClientAsync(Parameters parame
 
 Ana yöntem daha sonra bir **Termostatsample** örneği oluşturur ve `PerformOperationsAsync` IoT Central etkileşimleri işlemek için yöntemini çağırır.
 
-*ThermostatSample.cs* içinde, `PerformOperationsAsync` yöntemi:
+*Termostatsample. cs*'de, `PerformOperationsAsync` yöntemi:
 
 * Hedef sıcaklık istenen özellik güncelleştirmelerini almak için bir işleyici ayarlar.
 * **Getmaxminreport** komutu için bir işleyici ayarlar.

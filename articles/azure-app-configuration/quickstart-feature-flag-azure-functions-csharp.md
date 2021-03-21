@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 8/26/2020
 ms.author: alkemper
 ms.openlocfilehash: 96efc0ea6300e482ddeeda8fa177847f02b7e126
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98724263"
 ---
 # <a name="quickstart-add-feature-flags-to-an-azure-functions-app"></a>Hızlı başlangıç: Azure Işlevleri uygulamasına özellik bayrakları ekleme
@@ -21,7 +21,7 @@ Bu hızlı başlangıçta, bir Azure Işlevleri uygulaması oluşturup içindeki
 
 .NET Özellik Yönetimi kitaplıkları çerçeveyi Özellik bayrağı desteğiyle genişletir. Bu kitaplıklar, .NET yapılandırma sisteminin üzerine kurulmuştur. Bunlar, .NET yapılandırma sağlayıcısı aracılığıyla uygulama yapılandırmasıyla tümleştirilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - **Azure geliştirme** iş yüküyle [Visual Studio 2019](https://visualstudio.microsoft.com/vs) .
@@ -53,7 +53,7 @@ Bu proje, [.net Azure işlevlerinde bağımlılık ekleme](../azure-functions/fu
    - [Microsoft. FeatureManagement](https://www.nuget.org/packages/Microsoft.FeatureManagement/) sürüm 2.2.0 veya üzeri
    - [Microsoft. Azure. Functions. Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/) sürüm 1.1.0 veya üzeri 
 
-2. Aşağıdaki kodla, *Startup.cs* adlı yeni bir dosya ekleyin. Soyut sınıfı uygulayan adlı bir sınıfı tanımlar `Startup` `FunctionsStartup` . Azure Işlevleri başlatılırken kullanılan tür adını belirtmek için bir derleme özniteliği kullanılır.
+2. Aşağıdaki kodla, *Startup. cs* adlı yeni bir dosya ekleyin. Soyut sınıfı uygulayan adlı bir sınıfı tanımlar `Startup` `FunctionsStartup` . Azure Işlevleri başlatılırken kullanılan tür adını belirtmek için bir derleme özniteliği kullanılır.
 
     ```csharp
     using System;
@@ -107,7 +107,7 @@ Bu proje, [.net Azure işlevlerinde bağımlılık ekleme](../azure-functions/fu
     }
     ```
 
-5. *Function1.cs* açın ve aşağıdaki ad alanlarını ekleyin.
+5. *İşlev1. cs*' yi açın ve aşağıdaki ad alanlarını ekleyin.
 
     ```csharp
     using System.Linq;

@@ -9,22 +9,22 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
 ms.openlocfilehash: fd5ee9085cf716128c5b3ae073f963c76d2bd17a
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94370465"
 ---
 # <a name="how-to-create-plans-for-your-azure-application-offer"></a>Azure Uygulama teklifiniz için planlar oluşturma
 
-Microsoft Commercial Market aracılığıyla satılan tekliflerin, teklifinizi ticari Market 'te listelemek için en az bir plana sahip olması gerekir. Aynı teklifde farklı seçeneklere sahip çeşitli planlar oluşturabilirsiniz. Bu planlar (bazen SKU 'Lar olarak adlandırılır) plan türü ( _çözüm şablonu_ veya _yönetilen uygulama_ ), para veya hedef kitle bakımından farklı olabilir. Planlar hakkında genel yönergeler için bkz. [ticari Market teklifleri Için planlar ve fiyatlandırma](plans-pricing.md).
+Microsoft Commercial Market aracılığıyla satılan tekliflerin, teklifinizi ticari Market 'te listelemek için en az bir plana sahip olması gerekir. Aynı teklifde farklı seçeneklere sahip çeşitli planlar oluşturabilirsiniz. Bu planlar (bazen SKU 'Lar olarak adlandırılır) plan türü (_çözüm şablonu_ veya _yönetilen uygulama_), para veya hedef kitle bakımından farklı olabilir. Planlar hakkında genel yönergeler için bkz. [ticari Market teklifleri Için planlar ve fiyatlandırma](plans-pricing.md).
 
 ## <a name="create-a-plan"></a>Plan oluşturma
 
-1. **Plana genel bakış** sekmesinin üst kısmındaki **+ Yeni plan oluştur** ' u seçin.
-1. Görüntülenen iletişim kutusunda, **plan kimliği** kutusuna benzersiz BIR plan kimliği girin. Bu KIMLIK, ürün URL 'sindeki müşterilere görünür olacaktır. En fazla 50 küçük alfasayısal karakter, çizgi veya alt çizgi kullanın. **Oluştur** ' u seçtikten sonra plan kimliğini değiştiremezsiniz.
+1. **Plana genel bakış** sekmesinin üst kısmındaki **+ Yeni plan oluştur**' u seçin.
+1. Görüntülenen iletişim kutusunda, **plan kimliği** kutusuna benzersiz BIR plan kimliği girin. Bu KIMLIK, ürün URL 'sindeki müşterilere görünür olacaktır. En fazla 50 küçük alfasayısal karakter, çizgi veya alt çizgi kullanın. **Oluştur**' u seçtikten sonra plan kimliğini değiştiremezsiniz.
 1. **Plan adı** kutusuna bu plan için benzersiz bir ad girin. Tekliflerinizi hangi plana seçeceğinize karar verirken, müşteriler bu adı görür. En fazla 50 karakter kullanın.
-1. **Oluştur** ’u seçin.
+1. **Oluştur**’u seçin.
 
 ## <a name="define-the-plan-setup"></a>Plan kurulumunu tanımlama
 
@@ -32,7 +32,7 @@ Microsoft Commercial Market aracılığıyla satılan tekliflerin, teklifinizi t
 
 ### <a name="select-the-plan-type"></a>Plan türünü seçin
 
-- **Plan türü** listesinden **çözüm şablonu** veya **yönetilen uygulama** ' yı seçin.
+- **Plan türü** listesinden **çözüm şablonu** veya **yönetilen uygulama**' yı seçin.
 
 Bir **çözüm şablonu** planı tamamen müşteri tarafından yönetilir. **Yönetilen bir uygulama** planı, yayımcıların uygulamayı müşteri adına yönetmesine olanak sağlar. Bu iki plan türüyle ilgili ayrıntılar için bkz. [plan türleri](plan-azure-application-offer.md#types-of-plans).
 
@@ -67,7 +67,7 @@ Azure Kamu Hizmetleri, belirli kamu düzenlemelerine ve gereksinimlerine tabi ol
 ##### <a name="to-select-the-azure-government-region"></a>Azure Kamu bölgesini seçmek için
 
 1. **Azure Kamu** onay kutusunu seçin.
-1. **Azure Kamu sertifikaları** ' nın altında **+ sertifika ekle (en fazla 100)** seçeneğini belirleyin.
+1. **Azure Kamu sertifikaları**' nın altında **+ sertifika ekle (en fazla 100)** seçeneğini belirleyin.
 1. Görüntülenen kutulara bir ad ve sertifika bağlantısı sağlayın.
 1. Başka bir sertifika eklemek için adım 2 ve 3 ' ü tekrarlayın.
 

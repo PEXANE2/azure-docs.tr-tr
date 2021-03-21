@@ -9,10 +9,10 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.openlocfilehash: effb193e54be7331c9dc2874a4a34ef55442ed30
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96021750"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>Hızlı başlangıç: .NET için Azure Blob depolama istemci kitaplığı v11
@@ -54,7 +54,7 @@ Bu bölümde, bir projeyi .NET için Azure Blob depolama istemci kitaplığıyla
 
 İlk olarak, blob adlı bir .NET Core uygulaması oluşturun *-hızlı başlangıç*.
 
-1. Konsol penceresinde (cmd, PowerShell veya Bash gibi), `dotnet new` *BLOB-QuickStart* adlı yeni bir konsol uygulaması oluşturmak için komutunu kullanın. Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: *program.cs*.
+1. Konsol penceresinde (cmd, PowerShell veya Bash gibi), `dotnet new` *BLOB-QuickStart* adlı yeni bir konsol uygulaması oluşturmak için komutunu kullanın. Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: *program. cs*.
 
    ```console
    dotnet new console -n blob-quickstart
@@ -99,7 +99,7 @@ dotnet add package Microsoft.Azure.Storage.Blob
 
 Proje dizininden:
 
-1. *Program.cs* dosyasını Düzenleyicinizde açın
+1. Düzenleyicinizde *program. cs* dosyasını açın
 2. İfadeyi Kaldır `Console.WriteLine`
 3. `using`Yönergeler ekleme
 4. `ProcessAsync`Örnek için ana kodun bulunacağı bir yöntem oluşturun

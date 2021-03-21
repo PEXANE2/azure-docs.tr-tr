@@ -9,10 +9,10 @@ ms.date: 01/08/2021
 ms.author: rolyon
 ms.custom: include file
 ms.openlocfilehash: df036fd024de9d34ec5313140279589317e822ad
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98117594"
 ---
 Güvenlik ilkelerine, işlerini gerçekleştirmek için ihtiyaç duydukları en az ayrıcalığa izin vermek en iyi uygulamadır. Daha geniş bir rol daha kolay görünse de, daha geniş kapsamlara atanmaktan kaçının. Rolleri ve kapsamları sınırlayarak, güvenlik sorumlusu tehlikeye girerse, hangi kaynakların risk altında olduğunu sınırlayabilirsiniz.

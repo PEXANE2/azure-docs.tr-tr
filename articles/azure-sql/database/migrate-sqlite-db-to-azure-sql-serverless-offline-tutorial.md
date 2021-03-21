@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 01/08/2020
 ms.custom: sqldbrb=1
 ms.openlocfilehash: e2f240247cbba0f80254d504792df45be55c6a1b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92790415"
 ---
 # <a name="how-to-migrate-your-sqlite-database-to-azure-sql-database-serverless"></a>SQLite veritabanınızı Azure SQL veritabanı sunucusuz 'a geçirme
@@ -21,13 +21,13 @@ ms.locfileid: "92790415"
 
 Birçok kişi için, SQLite, veritabanlarının ve SQL programlamanın ilk deneyimini sağlar. Birçok işletim sistemine dahil değildir ve popüler uygulamalar, dünyanın en yaygın olarak dağıtılan ve kullanılan veritabanı altyapılarından biridir. Büyük olasılıkla çok sayıda kişinin kullandıkları ilk veritabanı altyapısı olduğundan, proje veya uygulamaların merkezi bir parçası olarak genellikle bu durum oluşabilir. Bu tür durumlarda, projenin veya uygulamanın ilk SQLite uygulamasını artmıştır, geliştiricilerin verilerini güvenilir, merkezi bir veri deposuna geçirilmesi gerekebilir.
 
-Azure SQL veritabanı sunucusuz, iş yükü talebine göre işlemi otomatik olarak ölçeklendirilen tek veritabanlarına yönelik bir işlem katmandır ve saniye başına kullanılan işlem miktarına göre faturalandırılır. Sunucusuz bilgi işlem katmanı Ayrıca, yalnızca depolama faturalandırılırken etkin olmayan dönemler sırasında veritabanlarını otomatik olarak duraklatır ve etkinlik döndüğünde veritabanlarını otomatik olarak sürdürür.
+Azure SQL veritabanı sunucusuz, iş yükü talebine göre işlemi otomatik olarak ölçeklendirilen tek veritabanlarına yönelik bir işlem katmandır ve saniye başına kullanılan işlem miktarına göre faturalandırılır. Ayrıca sunucusuz işlem katmanı etkinlik dışı dönemlerde veritabanını otomatik olarak duraklatır (bu dönemlerde yalnızca depolama faturalanır) ve etkinliğe dönüldüğünde veritabanlarını otomatik olarak sürdürür.
 
 Aşağıdaki adımları izledikten sonra, veritabanınız Azure SQL veritabanı sunucusuz 'e geçirilir, böylece veritabanınızı buluttaki diğer Kullanıcı veya uygulamalar için kullanılabilir hale getirebilirsiniz ve yalnızca kullandığınız kadar ödeyerek en az sayıda uygulama kodu değişir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-- Bir Azure aboneliği
+- Bir Azure Aboneliği
 - Geçirmek istediğiniz SQLite2 veya SQLite3 veritabanı
 - Bir Windows ortamı
   - Yerel bir Windows ortamınız yoksa, geçiş için Azure 'da bir Windows sanal makinesi kullanabilirsiniz. Azure dosyaları ve Depolama Gezgini kullanarak VM 'de SQLite veritabanı dosyanızı taşıyın ve mevcut yapın.
@@ -53,13 +53,13 @@ Aşağıdaki adımları izledikten sonra, veritabanınız Azure SQL veritabanı 
     - ADF (Azure portal hizmetten yazar ve Izleyici) başlatılıyor
     - Soldaki "yazar" sekmesine (mavi kurşun kalem) tıklayın
     - Bağlantılar ' a (alt sol), sonra tümleştirme çalışma zamanları
-    - Yeni Self-Hosted Integration Runtime ekleyin, bir ad verin, *seçenek 2* ' yi seçin.
+    - Yeni Self-Hosted Integration Runtime ekleyin, bir ad verin, *seçenek 2*' yi seçin.
 
 5. Data Factory kaynak SQLite veritabanı için yeni bir bağlı hizmet oluşturun.
 
     ![Azure Data Factory 'de boş bağlı hizmetler dikey penceresini gösteren ekran görüntüsü](./media/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial/linked-services-create.png)
 
-6. **Bağlantılar** ' ın altında, **bağlantılı hizmet** altında **Yeni** ' ye tıklayın.
+6. **Bağlantılar**' ın altında, **bağlantılı hizmet** altında **Yeni**' ye tıklayın.
 
 7. "ODBC" bağlayıcısını arayıp seçin
 

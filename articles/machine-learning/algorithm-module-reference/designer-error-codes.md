@@ -11,10 +11,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 11/25/2020
 ms.openlocfilehash: b917e3fc93c59de85c5236c18e31d7bbc9d891f0
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98065482"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer"></a>Tasarımcı için özel durumlar ve hata kodları
@@ -366,7 +366,7 @@ Metin sütunlarında, metin sütunlarını önceden işlemek için [özellik kar
 ## <a name="error-0018"></a>Hata 0018  
  Giriş veri kümesi geçerli değilse özel durum oluşur.  
 
-**Çözüm:** Azure Machine Learning bu hata birçok bağlamda görünebilir, bu nedenle tek bir çözüm yoktur. Genellikle hata, bir modüle giriş olarak girilen verilerin yanlış sayıda sütuna sahip olduğunu veya veri türünün modül gereksinimleriyle eşleşmediğinden emin olduğunu gösterir. Örneğin:  
+**Çözüm:** Azure Machine Learning bu hata birçok bağlamda görünebilir, bu nedenle tek bir çözüm yoktur. Genellikle hata, bir modüle giriş olarak girilen verilerin yanlış sayıda sütuna sahip olduğunu veya veri türünün modül gereksinimleriyle eşleşmediğinden emin olduğunu gösterir. Örnek:  
 
 -   Modül bir etiket sütunu gerektiriyor, ancak hiçbir sütun etiket olarak işaretlenmemiş veya henüz bir etiket sütunu seçmediniz.  
   
@@ -448,7 +448,7 @@ Metin sütunlarında, metin sütunlarını önceden işlemek için [özellik kar
 ## <a name="error-0022"></a>Hata 0022  
  Giriş veri kümesindeki Seçili sütunların sayısı beklenen sayıya eşit değilse özel durum oluşur.  
 
- Azure Machine Learning içinde bu hata, aşağı akış modülü veya işlemi belirli sayıda sütun veya giriş gerektirdiğinde ve çok az veya çok fazla sayıda sütun veya giriş sağladıysanız oluşabilir. Örneğin:  
+ Azure Machine Learning içinde bu hata, aşağı akış modülü veya işlemi belirli sayıda sütun veya giriş gerektirdiğinde ve çok az veya çok fazla sayıda sütun veya giriş sağladıysanız oluşabilir. Örnek:  
 
 -   Tek etiketli bir sütun veya anahtar sütunu ve yanlışlıkla birden çok sütun seçtiniz.  
   

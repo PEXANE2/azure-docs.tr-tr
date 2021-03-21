@@ -6,10 +6,10 @@ ms.author: rbest
 ms.date: 08/16/2020
 ms.topic: article
 ms.openlocfilehash: 29f6be5319c5a142ad3ea0d73deb2f95d8cb0d7a
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94659735"
 ---
 # <a name="cost-management-for-azure-lab-services"></a>Azure Lab Services için maliyet yönetimi
@@ -128,7 +128,7 @@ Sanal makinelerin otomatik olarak kapanmadan önce kullanıcının yeniden bağl
 
 #### <a name="automatically-shut-down-virtual-machines-that-are-started-but-users-dont-connect"></a>Başlatılan ancak kullanıcılar bağlanmadığında sanal makineleri otomatik olarak kapat
  
-Bir laboratuvarda Kullanıcı bir sanal makine başlatabilir, ancak bu sunucuya hiçbir şekilde bağlanmayabilir. Örneğin:
+Bir laboratuvarda Kullanıcı bir sanal makine başlatabilir, ancak bu sunucuya hiçbir şekilde bağlanmayabilir. Örnek:
  
 * Laboratuvardaki bir zamanlama, bir sınıf oturumu için tüm sanal makineleri başlatır, ancak bazı öğrenciler makinelere bağlanmayın ve bunlara bağlanmayın. 
 * Bir Kullanıcı bir sanal makine başlatır ancak bağlanmayı unutur. 

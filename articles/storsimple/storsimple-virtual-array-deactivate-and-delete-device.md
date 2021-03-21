@@ -15,17 +15,17 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: alkohli
 ms.openlocfilehash: 84fd1a2d3d0dc4ce6960469ea3212b8ca1d4d07c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96023032"
 ---
 # <a name="deactivate-and-delete-a-storsimple-virtual-array"></a>StorSimple Sanal Dizisini devre dışı bırakma ve silme
 
 ## <a name="overview"></a>Genel Bakış
 
-StorSimple Sanal dizisini devre dışı bıraktıktan sonra, cihazla ilgili StorSimple Aygıt Yöneticisi hizmeti arasındaki bağlantıyı kesebilirsiniz. Bu öğreticide, aşağıdaki işlemlerin nasıl yapılacağı açıklanmaktadır:
+StorSimple Sanal dizisini devre dışı bıraktıktan sonra, cihazla ilgili StorSimple Device Manager hizmeti arasındaki bağlantıyı kesebilirsiniz. Bu öğreticide, aşağıdaki işlemlerin nasıl yapılacağı açıklanmaktadır:
 
 * Cihazı devre dışı bırakma 
 * Devre dışı bırakılmış bir cihazı silme
@@ -34,7 +34,7 @@ Bu makaledeki bilgiler yalnızca StorSimple Sanal dizileri için geçerlidir. 80
 
 ## <a name="when-to-deactivate"></a>Ne zaman devre dışı bırakılacak?
 
-Devre dışı bırakma kalıcı bir işlemdir ve geri alınamaz. Devre dışı bırakılmış bir cihazı StorSimple Aygıt Yöneticisi hizmetine yeniden kaydedemez. Aşağıdaki senaryolarda bir StorSimple Sanal dizisinin etkinliğini kaldırmanız ve silmeniz gerekebilir:
+Devre dışı bırakma kalıcı bir işlemdir ve geri alınamaz. Devre dışı bırakılmış bir cihazı StorSimple Device Manager hizmetine yeniden kaydedemez. Aşağıdaki senaryolarda bir StorSimple Sanal dizisinin etkinliğini kaldırmanız ve silmeniz gerekebilir:
 
 * **Planlı Yük devretme** : cihazınız çevrimiçi ve cihazınızın yükünü devretmek için planlama yapın. Daha büyük bir cihaza yükseltmeyi planlıyorsanız cihazınızın yükünü devretmek gerekebilir. Veri sahipliği aktarıldıktan ve yük devretme işlemi tamamlandıktan sonra, kaynak cihaz otomatik olarak silinir.
 * **Planlanmamış yük devretme** : cihazınız çevrimdışı ve cihazın yükünü devretmek gerekir. Bu senaryo, veri merkezinde bir kesinti olduğunda ve birincil cihazınız kapalıysa bir olağanüstü durum sırasında gerçekleşebilir. Cihazın yükünü ikincil bir cihaza devretmek için plan yapın. Veri sahipliği aktarıldıktan ve yük devretme işlemi tamamlandıktan sonra, kaynak cihaz otomatik olarak silinir.
@@ -73,7 +73,7 @@ Cihazı silmek için aşağıdaki adımları gerçekleştirin.
 
 #### <a name="to-delete-the-device"></a>Cihazı silmek için
 
-1. StorSimple Aygıt Yöneticisi **yönetim > cihazlar**' a gidin. **Cihazlar** dikey penceresinde silmek istediğiniz devre dışı bırakılmış bir cihazı seçin.
+1. StorSimple Device Manager **yönetim > cihazlar**' a gidin. **Cihazlar** dikey penceresinde silmek istediğiniz devre dışı bırakılmış bir cihazı seçin.
 2. **Cihaz panosu** dikey penceresinde... öğesine tıklayın **. Daha fazla bilgi** ve sonra **Sil**' e tıklayın.
    
    ![Silinecek cihazı seçin](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete4.png)
@@ -90,4 +90,4 @@ Cihazı silmek için aşağıdaki adımları gerçekleştirin.
 
 * Yük devretme hakkında daha fazla bilgi için, [StorSimple Sanal diziniz Için yük devretme ve olağanüstü durum kurtarma](storsimple-virtual-array-failover-dr.md)bölümüne gidin.
 
-* StorSimple Aygıt Yöneticisi hizmetini kullanma hakkında daha fazla bilgi edinmek için StorSimple [Aygıt Yöneticisi hizmetini kullanarak StorSimple Sanal dizinizi yönetin](storsimple-virtual-array-manager-service-administration.md).
+* StorSimple Device Manager hizmetini kullanma hakkında daha fazla bilgi edinmek için StorSimple [Device Manager hizmetini kullanarak StorSimple Sanal dizinizi yönetin](storsimple-virtual-array-manager-service-administration.md).

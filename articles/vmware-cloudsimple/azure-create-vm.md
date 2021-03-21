@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: b01afe60a78a746eb0dc5f03cc7b45989f8cf81e
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97898768"
 ---
 # <a name="create-a-virtual-machine-in-azure-using-vm-templates-on-the-vmware-infrastructure"></a>VMware altyapısında VM şablonları kullanarak Azure 'da sanal makine oluşturma
@@ -44,7 +44,7 @@ CloudSimple yöneticinizin aboneliğiniz için etkinleştirildiği VMware altyap
     | ------------ | ------------- |
     | Abonelik | Özel bulutunuz ile ilişkili Azure aboneliği.  |
     | Kaynak Grubu | VM 'nin atanacağı kaynak grubu. Var olan bir grubu seçebilir veya yeni bir grup oluşturabilirsiniz. |
-    | Ad | VM 'yi tanımlayacak ad.  |
+    | Name | VM 'yi tanımlayacak ad.  |
     | Konum | Bu VM 'nin barındırıldığı Azure bölgesi.  |
     | Özel Bulut | Sanal makineyi oluşturmak istediğiniz CloudSimple özel bulutu. |
     | Kaynak Havuzu | VM için eşlenen kaynak havuzu. Kullanılabilir kaynak havuzlarından seçin. |

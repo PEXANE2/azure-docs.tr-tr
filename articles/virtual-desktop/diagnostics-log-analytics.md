@@ -7,10 +7,10 @@ ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 37990cc4322717f090c7a35c62512ba0e1a04293
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100576141"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Tanılama özelliği için Log Analytics kullanma
@@ -29,7 +29,7 @@ Windows sanal masaüstü, diğer birçok Azure hizmeti gibi izleme ve uyarılar 
     - Kullanıcılar hizmet üzerinde bağlantı başlatan ve bu hizmetleri tamamlayacak zaman.
 - Ana bilgisayar kaydı:
     - Oturum Ana bilgisayarı bağlandıktan sonra hizmete başarıyla kaydedildi mi?
-- Hatası
+- Hatalar:
     - Kullanıcılar belirli etkinliklerle ilgili herhangi bir sorunla karşılaşıyor mu? Bu özellik, etkinlik verilerini takip eden, bilgiler etkinliklerle birleştirilebilecek şekilde izleyen bir tablo oluşturabilir.
 - Noktası
     - Bir etkinliğin ömrü boyunca belirli adımlar. Örneğin, bir oturum sırasında, bir Kullanıcı belirli bir konağa yük dengelemesi yapılmış, sonra Kullanıcı bir bağlantı sırasında oturum açtı ve bu şekilde devam eder.
@@ -91,7 +91,7 @@ Azure portal veya Azure Izleyici üzerinde Log Analytics çalışma alanına eri
 
 ### <a name="access-log-analytics-on-a-log-analytics-workspace"></a>Log Analytics çalışma alanındaki Log Analytics erişim
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 
 2. **Log Analytics çalışma alanı** araması yapın.
 

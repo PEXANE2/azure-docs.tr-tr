@@ -10,10 +10,10 @@ services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
 ms.openlocfilehash: 8121ceb68bdea9332316a9508bf6f4731e05b0ba
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92890794"
 ---
 # <a name="interact-with-the-map"></a>Harita ile etkileşim kurma
@@ -35,7 +35,7 @@ Aşağıdaki kod, simge katmanıyla etkileşime geçerek tetiklenen olayı vurgu
 
 <br/>
 
-<iframe height='600' scrolling='no' title='Harita-katman olayları ile etkileşim kurma' src='//codepen.io/azuremaps/embed/bQRRPE/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen 'da <a href='https://codepen.io/azuremaps/pen/bQRRPE/'>harita-katman olayları</a> (Azure Maps () Ile etkileşim kurma kalemine bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+<iframe height='600' scrolling='no' title='Harita-katman olayları ile etkileşim kurma' src='//codepen.io/azuremaps/embed/bQRRPE/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen 'da <a href='https://codepen.io/azuremaps/pen/bQRRPE/'>harita-katman olayları</a> (Azure Maps () Ile etkileşim kurma kalemine bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 ## <a name="interact-with-html-marker"></a>HTML Işaretleyicisi ile etkileşim kurma
@@ -44,12 +44,12 @@ Aşağıdaki kod, bir HTML işaretine JavaScript harita olayları ekler. Ayrıca
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Map-HTML Işaretleyici olayları ile etkileşim kurma' src='//codepen.io/azuremaps/embed/VVzKJY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen üzerinde Azure Maps () ile <a href='https://codepen.io/azuremaps/pen/VVzKJY/'>harita-HTML işaretçisi olayları Ile etkileşime</a> geçen kaleme bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+<iframe height='500' scrolling='no' title='Map-HTML Işaretleyici olayları ile etkileşim kurma' src='//codepen.io/azuremaps/embed/VVzKJY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen üzerinde Azure Maps () ile <a href='https://codepen.io/azuremaps/pen/VVzKJY/'>harita-HTML işaretçisi olayları Ile etkileşime</a> geçen kaleme bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 Aşağıdaki tabloda desteklenen tüm harita sınıfı olayları listelenmektedir.
 
-| Olay               | Açıklama |
+| Olay               | Description |
 |---------------------|-------------|
 | `boxzoomend`        | Bir "Box Zoom" etkileşimi sona erdiğinde tetiklenir.|
 | `boxzoomstart`      | Bir "Box Zoom" etkileşimi başladığında tetiklenir.|

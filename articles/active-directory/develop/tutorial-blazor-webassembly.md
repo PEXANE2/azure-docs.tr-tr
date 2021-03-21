@@ -9,10 +9,10 @@ ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
 ms.openlocfilehash: 47b4f36aec9a906317a9704a7d73bf66385d9e88
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102552125"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>Öğretici: kullanıcılarda oturum açın ve Blazor WebAssembly uygulamasından korunan API 'yi çağırın
@@ -102,7 +102,7 @@ Ardından, aşağıdaki,, Netstandard 2.1 **ItemGroup**'daki projenizin *. cspro
 
 Ardından, sonraki birkaç adımda belirtilen kodu değiştirin. Bu değişiklikler, Microsoft Graph API 'sine gönderilen giden isteklere [erişim belirteçleri](access-tokens.md) ekler. Bu model, [ASP.NET Core Blazor WebAssembly ek güvenlik senaryolarında](/aspnet/core/blazor/security/webassembly/additional-scenarios)daha ayrıntılı bir şekilde ele alınmıştır.
 
-İlk olarak, aşağıdaki kodla *GraphAPIAuthorizationMessageHandler.cs* adlı yeni bir dosya oluşturun. Bu işleyici, `User.Read` ve `Mail.Read` kapsamları IÇIN Microsoft Graph API 'sine giden isteklere yönelik bir erişim belirteci ekleyecek Kullanıcı olacaktır.
+İlk olarak, aşağıdaki kodla *Graphapiauthorizationmessagehandler. cs* adlı yeni bir dosya oluşturun. Bu işleyici, `User.Read` ve `Mail.Read` kapsamları IÇIN Microsoft Graph API 'sine giden isteklere yönelik bir erişim belirteci ekleyecek Kullanıcı olacaktır.
 
 ```csharp
 using Microsoft.AspNetCore.Components;
@@ -121,7 +121,7 @@ public class GraphAPIAuthorizationMessageHandler : AuthorizationMessageHandler
 }
 ```
 
-Ardından, `Main` *program.cs* içindeki yönteminin içeriğini aşağıdaki kodla değiştirin. Bu kod, yeni ' nin kullanımını ve `GraphAPIAuthorizationMessageHandler` `User.Read` `Mail.Read` Kullanıcı ilk kez oturum açtığında uygulamanın isteyeceğini varsayılan kapsamları ekler.
+Ardından, `Main` *program. cs* içindeki yönteminin içeriğini aşağıdaki kodla değiştirin. Bu kod, yeni ' nin kullanımını ve `GraphAPIAuthorizationMessageHandler` `User.Read` `Mail.Read` Kullanıcı ilk kez oturum açtığında uygulamanın isteyeceğini varsayılan kapsamları ekler.
 
 ```csharp
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
