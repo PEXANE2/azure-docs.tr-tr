@@ -9,10 +9,10 @@ ms.subservice: keys
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurecli
 ms.openlocfilehash: 7d1e4018382d26e4df289838ffbb03f1c87505e6
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97935028"
 ---
 # <a name="quickstart-azure-key-vault-keys-client-library-for-python"></a>Hızlı başlangıç: Python için Azure Key Vault anahtarlar istemci kitaplığı
@@ -21,7 +21,7 @@ Python için Azure Key Vault istemci kitaplığı ile çalışmaya başlayın. P
 
 [API başvuru belgeleri](/python/api/overview/azure/keyvault-keys-readme)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault/azure-keyvault-keys)  |  [Paket (Python paket dizini)](https://pypi.org/project/azure-keyvault-keys/)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Bir Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Python 2.7 + veya 3.5.3 +](/azure/developer/python/configure-local-development-environment)
@@ -209,7 +209,7 @@ az group delete --resource-group KeyVault-PythonQS-rg
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Anahtar Kasası'na Genel Bakış](../general/overview.md)
-- [Anahtar kasasına güvenli erişim](../general/secure-your-key-vault.md)
+- [Anahtar kasasına erişimin güvenliğini sağlama](../general/secure-your-key-vault.md)
 - [Geliştirici Kılavuzu Azure Key Vault](../general/developers-guide.md)
 - [Key Vault güvenliğe genel bakış](../general/security-overview.md)
 - [Key Vault ile kimlik doğrulama](../general/authentication.md)

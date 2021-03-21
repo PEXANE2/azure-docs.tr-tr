@@ -12,10 +12,10 @@ ms.topic: how-to
 ms.date: 07/13/2020
 ms.author: justinha
 ms.openlocfilehash: 1e98f32bd6fe7d5373d5ab6621ffdce5e79abc08
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96619598"
 ---
 # <a name="join-a-coreos-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Bir CoreOS sanal makinesini Azure Active Directory Domain Services yönetilen bir etki alanına katma
@@ -42,7 +42,7 @@ Azure 'da mevcut bir CoreOS Linux sanal makinesi varsa, SSH kullanarak buna bağ
 
 Bir CoreOS Linux sanal makinesi oluşturmanız veya bu makaleyle kullanmak üzere bir test sanal makinesi oluşturmak istiyorsanız aşağıdaki yöntemlerden birini kullanabilirsiniz:
 
-* [Azure Portal](../virtual-machines/linux/quick-create-portal.md)
+* [Azure portalı](../virtual-machines/linux/quick-create-portal.md)
 * [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 

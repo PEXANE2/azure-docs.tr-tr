@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: c17d3c7cd2cf6fe5bca725cf94344b2d2cb50bf2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96001533"
 ---
 # <a name="configure-storage"></a>Depolama alanını yapılandırma
@@ -47,9 +47,9 @@ Bir NAS Core fili eklemek için aşağıdaki adımları izleyin:
 
 1. Avere denetim masasından üstteki **Ayarlar** sekmesine tıklayın.
 
-1. **Core Filer**  >  Sol taraftaki çekirdek **filleri Yönet** ' e tıklayın.
+1.   >  Sol taraftaki çekirdek **filleri Yönet** ' e tıklayın.
 
-1. **Oluştur**'a tıklayın.
+1. **Oluştur**’a tıklayın.
 
    ![Oluştur düğmesinin üzerinde bir imlece yeni çekirdek dosyalayıcı ekleme sayfasının ekran görüntüsü](media/avere-vfxt-add-core-filer-start.png)
 
@@ -119,7 +119,7 @@ Kümeyi oluşturduktan sonra blob depolaması eklemek için aşağıdaki adımla
 
    ![Anahtarı kopyalamak için Azure portal GUI](media/avere-vfxt-copy-storage-key.png)
 
-1. Kümeniz için avere denetim masasını açın. **Ayarlar**' a tıklayın, **Cluster** ardından  >  sol gezinti bölmesinde küme **bulutu kimlik bilgileri** ' ni açın. Bulut kimlik bilgileri sayfasında **kimlik bilgisi ekle**' ye tıklayın.
+1. Kümeniz için avere denetim masasını açın. **Ayarlar**' a tıklayın, ardından  >  sol gezinti bölmesinde küme **bulutu kimlik bilgileri** ' ni açın. Bulut kimlik bilgileri sayfasında **kimlik bilgisi ekle**' ye tıklayın.
 
    ![Bulut kimlik bilgileri yapılandırma sayfasında kimlik bilgisi Ekle düğmesine tıklayın](media/avere-vfxt-new-credential-button.png)
 

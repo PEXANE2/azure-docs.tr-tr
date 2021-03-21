@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/05/2021
 ms.author: jeedes
 ms.openlocfilehash: e71f991037c0d725a2a03ecd8c1ff4ebbd4d7810
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98735945"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-oktopost-saml"></a>Öğretici: Oktopost SAML ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -26,7 +26,7 @@ Bu öğreticide, Oktopost SAML Azure Active Directory (Azure AD) ile tümleştir
 * Kullanıcılarınızın Azure AD hesaplarıyla birlikte otomatik olarak oturum açabilmesi için Kullanıcı oturumunu etkinleştirin.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 

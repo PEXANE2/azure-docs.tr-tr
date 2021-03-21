@@ -6,10 +6,10 @@ ms.date: 10/09/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: 12d246a493ff9ee9e20868da32d633d51939e66c
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99626635"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Öğretici: Azure Deployment Manager sistem durumu denetimi kullanma (Genel Önizleme)
@@ -84,7 +84,7 @@ Azure işlevini doğrulamak ve test etmek için:
     https://myhc0417webapp.azurewebsites.net/api/healthStatus/{healthStatus}?code=hc4Y1wY4AqsskAkVw6WLAN1A4E6aB0h3MbQ3YJRF3XtXgHvooaG0aw==
     ```
 
-    `{healthStatus}`URL 'de bir durum kodu ile değiştirin. Bu öğreticide, sağlıksız senaryoyu test etmek için *sağlıksız* kullanın ve sağlıklı senaryoyu test etmek için *sağlıklı* ya da *uyarıyı* kullanın. Biri *sağlıksız* durum ve diğeri *sağlıklı* durumda olan iki URL oluşturun. Örneğin:
+    `{healthStatus}`URL 'de bir durum kodu ile değiştirin. Bu öğreticide, sağlıksız senaryoyu test etmek için *sağlıksız* kullanın ve sağlıklı senaryoyu test etmek için *sağlıklı* ya da *uyarıyı* kullanın. Biri *sağlıksız* durum ve diğeri *sağlıklı* durumda olan iki URL oluşturun. Örnek:
 
     ```url
     https://myhc0417webapp.azurewebsites.net/api/healthStatus/unhealthy?code=hc4Y1wY4AqsskAkVw6WLAN1A4E6aB0h3MbQ3YJRF3XtXgHvooaG0aw==

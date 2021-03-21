@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 746198f87e23cd7aca2a3177c23974917cb4b12a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96026353"
 ---
 #### <a name="to-create-a-new-service"></a>Yeni hizmet oluşturmak için
@@ -21,7 +21,7 @@ ms.locfileid: "96026353"
 
     _StorSimple Fiziksel_ ifadesini aratın. **StorSimple Fiziksel Cihaz Serisi**‘ni seçip tıklayın ve **Oluştur**’a tıklayın. Alternatif olarak, Azure portal **+** ve ardından **depolama** altında **StorSimple fiziksel cihaz Serisi**' ne tıklayın.
 
-    ![StorSimple Aygıt Yöneticisi 2 oluşturma](./media/storsimple-8000-create-new-service/createssdevman11.png)
+    ![StorSimple Device Manager 2 oluşturma](./media/storsimple-8000-create-new-service/createssdevman11.png)
 
 3. **StorSimple Cihaz Yöneticisi** dikey penceresinde aşağıdaki adımları gerçekleştirin:
 
@@ -42,8 +42,8 @@ ms.locfileid: "96026353"
 
    7. StorSimple Cihaz Yöneticisi’ni oluşturmak için **Oluştur**’a tıklayın.
 
-       ![StorSimple Aygıt Yöneticisi oluşturun 3](./media/storsimple-8000-create-new-service/createssdevman2.png)
+       ![StorSimple Device Manager oluşturun 3](./media/storsimple-8000-create-new-service/createssdevman2.png)
 
 Hizmetin oluşturulması birkaç dakika sürer. Hizmet başarıyla oluşturulduktan sonra bir bildirim görürsünüz ve yeni hizmet dikey penceresi açılır.
 
-![StorSimple Aygıt Yöneticisi 4 oluşturma](./media/storsimple-8000-create-new-service/createssdevman5.png)
+![StorSimple Device Manager 4 oluşturma](./media/storsimple-8000-create-new-service/createssdevman5.png)

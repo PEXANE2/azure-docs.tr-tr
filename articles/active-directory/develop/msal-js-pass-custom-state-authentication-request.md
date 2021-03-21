@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 5c1fad96ea6e3b75b3afdfd4a4d3baac43308541
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98063680"
 ---
 # <a name="pass-custom-state-in-authentication-requests-using-msaljs"></a>MSAL.js kullanarak özel durumu kimlik doğrulama isteklerinde geçirme
@@ -51,7 +51,7 @@ export type AuthenticationParameters = {
 > Önbelleğin atlanması yalnızca şu anda önbelleğe alınan verilerin güncel bilgilere sahip olmadığını bildiğiniz senaryolarda kullanılmalıdır.
 > Bir kullanıcıya, güncelleştirilmiş rollere sahip yeni bir belirteç alması gereken roller ekleyen bir yönetim aracı gibi.
 
-Örneğin:
+Örnek:
 
 ```javascript
 let loginRequest = {

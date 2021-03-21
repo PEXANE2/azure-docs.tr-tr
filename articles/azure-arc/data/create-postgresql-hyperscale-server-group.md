@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 02/11/2021
 ms.topic: how-to
 ms.openlocfilehash: 046f9d80c034e1ac1f2e7ffe144b4f389861b043
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101687949"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc özellikli PostgreSQL Hiper Ölçek sunucu grubu oluşturma
@@ -24,7 +24,7 @@ Bu belgede, Azure Arc üzerinde bir PostgreSQL hiper ölçek sunucu grubu oluşt
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 Aşağıdaki konularda zaten bilgi sahibiyseniz bu paragrafı atlayabilirsiniz.
 Oluşturmaya devam etmeden önce, okumak isteyebileceğiniz önemli konular vardır:
 - [Azure Arc etkin veri Hizmetleri 'ne genel bakış](overview.md)

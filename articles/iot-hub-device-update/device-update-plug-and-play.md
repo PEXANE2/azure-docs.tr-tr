@@ -7,10 +7,10 @@ ms.date: 2/14/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
 ms.openlocfilehash: 227488f165aaad2f204c647eed17467a4ef561a1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101663998"
 ---
 # <a name="device-update-for-iot-hub-and-iot-plug-and-play"></a>IoT Hub ve IoT Tak ve Kullan cihaz güncelleştirmesi
@@ -50,7 +50,7 @@ Cihaz güncelleştirme hizmetinden bir eylem alındıktan sonra cihaz Güncelle�
 
 Üreticisi ve modeli içeren özellikler kümesidir.
 
-|Name|Şema|Yön|Açıklama|
+|Name|Şema|Yön|Description|
 |----|------|---------|-----------|
 |üretici|string|cihazdan buluta|Tarafından bildirilen cihaz üreticisi `deviceProperties` . Bu özellik iki yerden okunurdur-' AzureDeviceUpdateCore ' arabirimi ilk olarak [yapılandırma dosyası](device-update-configuration-file.md) dosyasından ' aduc_manufacturer ' değerini okumaya çalışır.  Değer yapılandırma dosyasında doldurulmamışsa, varsayılan olarak ADUC_DEVICEPROPERTIES_MANUFACTURER için derleme zamanı tanımını raporlamak olacaktır. Bu özellik yalnızca önyükleme zamanında raporlanır.|
 |model|string|cihazdan buluta|İle bildirilen cihazın cihaz modeli `deviceProperties` . Bu özellik iki yerden okunurdur. AzureDeviceUpdateCore arabirimi önce [yapılandırma dosyası](device-update-configuration-file.md) dosyasından ' aduc_model ' değerini okumaya çalışacaktır.  Değer yapılandırma dosyasında doldurulmamışsa, varsayılan olarak ADUC_DEVICEPROPERTIES_MODEL için derleme zamanı tanımını raporlamak olacaktır. Bu özellik yalnızca önyükleme zamanında raporlanır.|
@@ -61,7 +61,7 @@ Cihaz güncelleştirme hizmetinden bir eylem alındıktan sonra cihaz Güncelle�
 
 Hizmet meta verileri, cihaz güncelleştirme hizmetlerinin eylem ve verileri cihaz güncelleştirme aracısına iletmek için kullandığı alanları içerir.
 
-|Name|Şema|Yön|Açıklama|
+|Name|Şema|Yön|Description|
 |----|------|---------|-----------|
 |eylem|tamsayı|buluttan cihaza|Aracının gerçekleştirmesi gereken bir eyleme karşılık gelen bir tamsayıdır. Aşağıda listelenen değerler.|
 |updateManifest|string|buluttan cihaza|Bir güncelleştirmenin içeriğini tanımlamakta kullanılır. [Içeri aktarma bildiriminden](import-update.md#create-device-update-import-manifest) üretildi|

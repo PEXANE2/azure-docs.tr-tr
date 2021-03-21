@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/05/2021
 ms.author: alkohli
 ms.openlocfilehash: d2ab96fcfa33301f0bd1212b23f9418fa39d0134
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102638745"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge-pro"></a>Dosyaları Azure Stack Edge Pro 'ya taşımak için C# IoT Edge modülünü geliştirme
@@ -125,7 +125,7 @@ Kendi yazacağınız kodla özelleştirebileceğiniz bir C# çözüm şablonu ol
 
 ### <a name="update-the-module-with-custom-code"></a>Modülü özel kodla güncelleştirme
 
-1. VS Code Gezgini 'nde, **> FileCopyModule > modülleri**' ni açın.
+1. VS Code Gezgini 'nde, **> FileCopyModule > program. cs adlı modülleri** açın.
 2. **Filecopymodule ad alanının** en üstünde, daha sonra kullanılan türler için aşağıdaki using deyimlerini ekleyin. **Microsoft. Azure. Devices. Client. Transport. MQTT** , IoT Edge hub 'ına ileti göndermek için bir protokoldür.
 
     ```
@@ -240,7 +240,7 @@ Kendi yazacağınız kodla özelleştirebileceğiniz bir C# çözüm şablonu ol
     ```
 
 7. Bu dosyayı kaydedin.
-8. Ayrıca, bu proje için [varolan bir kod örneğini indirebilirsiniz](https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/?cdn=disable) . Daha sonra, kaydettiğiniz dosyayı bu örnekteki **program.cs** dosyasına göre doğrulayabilirsiniz.
+8. Ayrıca, bu proje için [varolan bir kod örneğini indirebilirsiniz](https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/?cdn=disable) . Daha sonra, kaydettiğiniz dosyayı bu örnekteki **program. cs** dosyasına göre doğrulayabilirsiniz.
 
 ## <a name="build-your-iot-edge-solution"></a>IoT Edge çözümünüzü derleyin
 

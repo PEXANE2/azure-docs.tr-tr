@@ -4,10 +4,10 @@ description: JSON 'da sürekli dışarı aktarma işleminden dışarı aktarılm
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.openlocfilehash: b4609d54c1c3c33a654dd58a3bceaca4974fda15
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100584224"
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights veri modelini dışarı aktarma
@@ -294,7 +294,7 @@ TrackMetric () tarafından oluşturuldu.
 
 Ölçüm değeri Context. Custom. ölçümler [0] içinde bulunur
 
-Örneğin:
+Örnek:
 
 ```json
 {
@@ -324,7 +324,7 @@ TrackMetric () tarafından oluşturuldu.
 ```
 
 ## <a name="about-metric-values"></a>Ölçüm değerleri hakkında
-Ölçüm değerleri, hem ölçüm raporlarında hem de başka bir yerde, standart bir nesne yapısıyla raporlanır. Örneğin:
+Ölçüm değerleri, hem ölçüm raporlarında hem de başka bir yerde, standart bir nesne yapısıyla raporlanır. Örnek:
 
 ```json
 "durationMetric": {
@@ -352,6 +352,6 @@ Aksi belirtilmedikçe, süreler bir mikro saniyenin onda temsil edildiği sürec
 
 ## <a name="see-also"></a>Ayrıca bkz.
 * [Uygulama Bilgileri](./app-insights-overview.md)
-* [Sürekli dışarı aktarma](export-telemetry.md)
+* [Sürekli Dışarı Aktarma](export-telemetry.md)
 * [Kod örnekleri](export-telemetry.md#code-samples)
 

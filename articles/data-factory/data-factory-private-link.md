@@ -8,28 +8,28 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
 ms.openlocfilehash: 9e4d686f582a202dbc543620c7bf73dc4e7adb22
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100389187"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Azure Data Factory için Azure Özel Bağlantı
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-xxx-md.md)]
 
-Azure özel bağlantısı ' nı kullanarak, özel bir uç nokta aracılığıyla Azure 'daki çeşitli platformlar hizmet (PaaS) dağıtımlarını bağlayabilirsiniz. Özel uç nokta, belirli bir sanal ağ ve alt ağ içindeki özel bir IP adresidir. Özel bağlantı işlevselliğini destekleyen PaaS dağıtımlarının bir listesi için bkz. [özel bağlantı belgeleri](../private-link/index.yml). 
+Azure özel bağlantısı ' nı kullanarak, özel bir uç nokta aracılığıyla Azure 'daki çeşitli platformlar hizmet (PaaS) dağıtımlarını bağlayabilirsiniz. Özel uç nokta, belirli bir sanal ağ veya alt ağ içinde yer alan özel IP adresidir. Özel bağlantı işlevselliğini destekleyen PaaS dağıtımlarının bir listesi için bkz. [özel bağlantı belgeleri](../private-link/index.yml). 
 
 ## <a name="secure-communication-between-customer-networks-and-azure-data-factory"></a>Müşteri ağları ve Azure Data Factory arasında güvenli iletişim 
-Azure sanal ağını, bulutta ağınızın mantıksal temsili olarak ayarlayabilirsiniz. Bunun yapılması aşağıdaki avantajları sağlar:
-* Azure kaynaklarınızın ortak ağlardaki saldırılara karşı korunmasına yardımcı olursunuz.
-* Ağların ve Data Factory birbirleriyle güvenli bir şekilde iletişim kurmasına izin verin. 
+Buluttaki ağınızı mantıksal gösterimi olarak bir Azure sanal ağı ayarlayabilirsiniz. Bunun yapılması aşağıdaki avantajları sağlar:
+* Azure kaynaklarınızın genel ağlardaki saldırılardan korunmasına yardımcı olursunuz.
+* Ağlarla Data Factory'nin birbiriyle güvenle iletişim kurmasını sağlarsınız. 
 
-Ayrıca, bir Internet Protokolü güvenliği (IPSec) VPN (siteden siteye) bağlantısı veya bir Azure ExpressRoute (özel eşleme) bağlantısı ayarlayarak şirket içi bir ağı sanal ağınıza bağlayabilirsiniz. 
+Bir İnternet Protokolü güvenliği (IPsec) VPN (siteler arası) bağlantısı veya Azure ExpressRoute (özel eşleme) bağlantısı ayarlayarak sanal ağınıza şirket içi ağını da bağlayabilirsiniz. 
 
-Şirket içi bir makineye veya sanal ağdaki bir sanal makineye şirket içinde barındırılan bir tümleştirme çalışma zamanı da yükleyebilirsiniz. Bunu yapmanız şunları yapmanızı sağlar:
-* Bir bulut veri deposu ve bir özel ağdaki veri deposu arasında kopyalama etkinliklerini çalıştırın.
-* Şirket içi bir ağda veya Azure sanal ağında işlem kaynaklarına karşı dönüştürme etkinliklerini gönderme. 
+Şirket içi bir makineye veya sanal ağdaki bir sanal makineye şirket içinde barındırılan bir tümleştirme çalışma zamanı da yükleyebilirsiniz. Bunun yapılması şunları sağlar:
+* Bulut veri deposuyla özel ağdaki bir veri deposu arasında kopyalama etkinlikleri çalıştırabilirsiniz.
+* Şirket içi ağındaki veya Azure sanal ağındaki işlem kaynaklarına dönüştürme etkinlikleri gönderebilirsiniz. 
 
 Aşağıdaki tabloda gösterildiği gibi Azure Data Factory ve müşteri sanal ağı arasında birkaç iletişim kanalı gereklidir:
 

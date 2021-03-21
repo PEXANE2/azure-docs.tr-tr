@@ -17,10 +17,10 @@ ms.workload: infrastructure
 ms.date: 12/11/2020
 ms.author: kumud
 ms.openlocfilehash: cb3a4b6a726ee9163582b15586c65fc750712c63
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97368397"
 ---
 # <a name="tutorial-restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak sanal ağ hizmet uç noktaları ile PaaS kaynaklarına ağ erişimini kısıtlama
@@ -53,8 +53,8 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
    |----|----|
    |Abonelik| Aboneliğinizi seçin|
    |Kaynak grubu | **Yeni oluştur**’u seçin ve *myResourceGroup* değerini girin.|
-   |Ad| *MyVirtualNetwork* girin |
-   |Bölge| **(US) Doğu ABD** seçin |
+   |Name| *MyVirtualNetwork* girin |
+   |Region| **(US) Doğu ABD** seçin |
 
    ![Sanal ağınızla ilgili temel bilgileri girin](./media/tutorial-restrict-network-access-to-resources/create-virtual-network.png)
 
@@ -114,13 +114,13 @@ Varsayılan olarak, bir alt ağdaki tüm sanal makine örnekleri tüm kaynaklarl
     |----|----|
     |Abonelik| Aboneliğinizi seçin|
     |Kaynak grubu | Listeden *Myresourcegroup* öğesini seçin|
-    |Ad| **Mynsgprivate** girin |
+    |Name| **Mynsgprivate** girin |
     |Konum| **Doğu ABD** seçin |
 
 5. **Gözden geçir + oluştur**' a tıklayın ve doğrulama denetimi geçirildiğinde **Oluştur**' a tıklayın.
 6. Ağ güvenlik grubu oluşturulduktan sonra **Kaynağa Git ' e** tıklayın veya *Mynsgprivate* için arama yapın.
 7. Sol taraftaki **Ayarlar** altında **giden güvenlik kuralları**' nı seçin.
-8. **+ Ekle** öğesini seçin.
+8. **+ Ekle**'yi seçin.
 9. Azure Depolama hizmetine giden iletişime izin veren bir kural oluşturun. Aşağıdaki bilgileri girin veya seçin ve ardından **Ekle** seçeneğini belirleyin:
 
     |Ayar|Değer|
@@ -147,7 +147,7 @@ Varsayılan olarak, bir alt ağdaki tüm sanal makine örnekleri tüm kaynaklarl
     |Protokol|Herhangi bir|
     |Eylem|**Varsayılanı *Reddet* olarak değiştir** |
     |Öncelik|110|
-    |Ad|*Reddet-Internet-tümü* olarak değiştir|
+    |Name|*Reddet-Internet-tümü* olarak değiştir|
 
 11. Alt ağa her yerden Uzak Masaüstü Protokolü (RDP) trafiğine izin veren bir *gelen güvenlik kuralı* oluşturun. Kural, internetten gelen tüm trafiği engelleyen bir varsayılan güvenlik kuralını geçersiz kılar. Daha sonraki bir adımda bağlantının test edilebilmesi için uzak masaüstü bağlantılarına izin verilir. 
 12. **Ayarlar** altında **Gelen güvenlik kuralları**’nı seçin.
@@ -162,7 +162,7 @@ Varsayılan olarak, bir alt ağdaki tüm sanal makine örnekleri tüm kaynaklarl
     |Protokol|Herhangi bir|
     |Eylem|İzin Ver|
     |Öncelik|120|
-    |Ad|*Allow-RDP-All* olarak değiştir|
+    |Name|*Allow-RDP-All* olarak değiştir|
 
    >[!WARNING] 
    > RDP bağlantı noktası 3389, Internet 'e açıktır. Bu yalnızca test için önerilir. *Üretim ortamları* IÇIN bir VPN veya özel bağlantı kullanmanızı öneririz.
@@ -254,7 +254,7 @@ Bir depolama hesabına ağ erişimini test etmek için her alt ağa bir VM dağ�
    |Abonelik| Aboneliğinizi seçin|
    |Kaynak grubu| Daha önce oluşturulan * * myResourceGroup öğesini seçin.|
    |Sanal makine adı| *MyVmPublic* girin|
-   |Bölge | (ABD) Doğu ABD
+   |Region | (ABD) Doğu ABD
    |Kullanılabilirlik seçenekleri| Kullanılabilirlik alanı|
    |Kullanılabilirlik alanı | 1 |
    |Görüntü | Windows Server 2019 Datacenter-Gen1 |

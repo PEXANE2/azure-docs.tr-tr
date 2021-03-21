@@ -5,10 +5,10 @@ ms.author: pepogors
 ms.date: 4/23/2019
 ms.topic: troubleshooting
 ms.openlocfilehash: 8e53ab0ae4cc463bea8a6a8cb6d339f94fdcac6d
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99626045"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Sık sorulan Service Fabric kafes soruları
@@ -49,7 +49,7 @@ Evet. Her abonelik için kotalar şunlardır:
 
 Bu durumla karşılaşırsanız, `az mesh app show` Azure CLI 'de komutunu çalıştırarak sistemin bunu kapatmasını doğrulayabilirsiniz. Döndüğünü görmek için işaretleyin `"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` 
 
-Örneğin: 
+Örnek: 
 
 ```azurecli
 az mesh app show --resource-group myResourceGroup --name helloWorldApp
@@ -112,7 +112,7 @@ Bir kapsayıcıdan Service Fabric DNS hizmetine giden DNS sorguları bazı koşu
 
 - Temel kapsayıcı görüntünüz olarak Windows Fall Creators Update (sürüm 1709) veya üstünü kullanın.
 - Hizmet adı tek başına işe yaramazsa, tam adı şu şekilde deneyin: ServiceName. ApplicationName.
-- Hizmetiniz için Docker dosyasında, `EXPOSE <port>` bağlantı noktasının hizmetinizi kullanıma sunuyoruz bağlantı noktası olduğu yere ekleyin. Örneğin:
+- Hizmetiniz için Docker dosyasında, `EXPOSE <port>` bağlantı noktasının hizmetinizi kullanıma sunuyoruz bağlantı noktası olduğu yere ekleyin. Örnek:
 
 ```Dockerfile
 EXPOSE 80

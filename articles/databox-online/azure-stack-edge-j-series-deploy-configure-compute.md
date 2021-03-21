@@ -10,10 +10,10 @@ ms.date: 01/05/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
 ms.openlocfilehash: 28b5c107fb35c7bda9b1680050b92004436b98ff
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97935508"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-pro"></a>Öğretici: Azure Stack Edge Pro ile veri dönüştürme
@@ -34,7 +34,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Veri dönüştürme işlemini doğrulama ve verileri aktarma
 
  
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure Stack Edge Pro cihazınızda bir işlem rolü ayarlamadan önce şunları yaptığınızdan emin olun:
 - Azure Stack Edge Pro cihazınızı, [Azure Stack Edge Pro 'Yu etkinleştirme](azure-stack-edge-gpu-deploy-activate.md)bölümünde açıklandığı gibi etkinleştirdiniz.
@@ -58,8 +58,8 @@ Azure Stack Edge Pro ortamınızda işlem yapılandırmak için bir IoT Hub kayn
    |--------|---------|
    |Abonelik      | Azure Stack Edge kaynağı tarafından kullanılan abonelik. |
    |Kaynak grubu    | Azure Stack Edge kaynağı tarafından kullanılan kaynak grubu. |
-   |IoT Hub           | **Yeni oluştur** veya **var olanı kullan** seçeneklerinden birini belirleyin. <br> Varsayılan olarak IoT kaynağı oluşturulurken Standart katmanı (S1) kullanılır. Bir ücretsiz katman IoT kaynağı kullanmak için kaynağı oluşturun ve sonra da mevcut kaynağı seçin. <br> Her durumda IoT Hub kaynak, Azure Stack Edge kaynağı tarafından kullanılan aynı abonelik ve kaynak grubunu kullanır.     |
-   |Ad              | Yeni bir IoT Hub kaynağı için belirtilen varsayılan adı kullanmak istemiyorsanız, farklı bir ad girin. |
+   |IoT Hub           | **Yeni oluştur** veya **var olanı kullan** seçeneklerinden birini belirleyin. <br> Varsayılan olarak IoT kaynağı oluşturulurken Standart katmanı (S1) kullanılır. Bir ücretsiz katman IoT kaynağı kullanmak için kaynağı oluşturun ve sonra da mevcut kaynağı seçin. <br> Her durumda IoT Hub kaynağı, Azure Stack Edge kaynağıyla aynı aboneliği ve kaynak grubunu kullanır.     |
+   |Name              | Yeni bir IoT Hub kaynağı için belirtilen varsayılan adı kullanmak istemiyorsanız, farklı bir ad girin. |
 
     ![İşlem 2 ile çalışmaya başlama](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-3.png)
 

@@ -12,16 +12,16 @@ ms.author: moslake
 ms.reviewer: sstein
 ms.date: 2/22/2021
 ms.openlocfilehash: 4dd7bbe613b30df2611bfe6631950e121235204a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101658597"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL veritabanı sunucusuz
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Sunucusuz, Azure SQL veritabanı 'nda, bir saniyede kullanılan işlem miktarı için iş yükü talebi ve reçeteleri temel alınarak işlem yaparak otomatik olarak ölçeklendirilen tek veritabanlarına yönelik bir işlem katmandır. Sunucusuz bilgi işlem katmanı Ayrıca, yalnızca depolama faturalandırılırken etkin olmayan dönemler sırasında veritabanlarını otomatik olarak duraklatır ve etkinlik döndüğünde veritabanlarını otomatik olarak sürdürür.
+Sunucusuz işlem, Azure SQL Veritabanı'ndaki tek veritabanları için iş yükü talebine göre işlemi otomatik olarak ölçeklendiren ve saniyede kullanılan işlem miktarını faturalayan bir işlem katmanıdır. Ayrıca sunucusuz işlem katmanı etkinlik dışı dönemlerde veritabanını otomatik olarak duraklatır (bu dönemlerde yalnızca depolama faturalanır) ve etkinliğe dönüldüğünde veritabanlarını otomatik olarak sürdürür.
 
 ## <a name="serverless-compute-tier"></a>Sunucusuz işlem katmanı
 

@@ -8,10 +8,10 @@ ms.date: 09/28/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 272a642f70849b85be00d2507109eb97935c0dde
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102202510"
 ---
 # <a name="monitor-azure-file-sync"></a>Azure Dosya Eşitleme’yi izleme
@@ -42,7 +42,7 @@ Azure Dosya Eşitleme ölçümleri varsayılan olarak etkindir ve 15 dakikada bi
 
 Azure Dosya Eşitleme için aşağıdaki ölçümler Azure Izleyici 'de bulunabilir:
 
-| Ölçüm adı | Açıklama |
+| Ölçüm adı | Description |
 |-|-|
 | Eşitlenen baytlar | Aktarılan verilerin boyutu (karşıya yükleme ve indirme).<br><br>Birim: bayt<br>Toplama türü: Toplam<br>Geçerli Boyutlar: sunucu uç noktası adı, eşitleme yönü, eşitleme grubu adı |
 | Bulut katmanlama geri çağırma | Geri çekilen verilerin boyutu.<br><br>**Note**: Bu ölçüm gelecekte kaldırılacak. Geri çekilen verilerin boyutunu izlemek için bulut katmanlama geri çekme boyutu ölçümünü kullanın.<br><br>Birim: bayt<br>Toplama türü: Toplam<br>Geçerli boyut: sunucu adı |
@@ -118,7 +118,7 @@ Portalda bir **sunucu uç noktasının** durumunu görüntülemek Için, **depol
 
 - Aşağıdaki ölçüm grafikleri, depolama eşitleme hizmeti portalında görüntülenebilir:
 
-  | Ölçüm adı | Açıklama | Dikey pencere adı |
+  | Ölçüm adı | Description | Dikey pencere adı |
   |-|-|-|
   | Eşitlenen baytlar | Aktarılan verilerin boyutu (karşıya yükleme ve indirme) | Eşitleme grubu, sunucu uç noktası |
   | Bulut katmanlama geri çağırma | Geri çekilen verilerin boyutu | Kayıtlı sunucular |
@@ -178,7 +178,7 @@ Sunucuda Azure Dosya Eşitleme performans sayaçlarını görüntülemek için p
 
 Azure Dosya Eşitleme için aşağıdaki performans sayaçları performans Izleyicisinde kullanılabilir:
 
-| Performans Object\sayaç adı | Açıklama |
+| Performans Object\sayaç adı | Description |
 |-|-|
 | AFS bayt Transferred\indirilen bayt/sn | Saniye başına indirilen bayt sayısı. |
 | AFS bayt Transferred\karşıya yüklenen bayt/sn | Saniye başına karşıya yüklenen bayt sayısı. |

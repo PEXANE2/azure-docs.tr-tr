@@ -12,10 +12,10 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: ba3ca140abe36a31ffa03422420ea537bbe4f39a
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97935759"
 ---
 # <a name="azure-active-directory-governance-operations-reference-guide"></a>Azure Active Directory idare işlemleri başvuru kılavuzu
@@ -119,7 +119,7 @@ Açık olması için, EA Portalı Yetkilendirme düzeyi Şu anda "karma mod" ola
 
 #### <a name="privileged-access-recommended-reading"></a>Ayrıcalıklı erişimin okunması önerilir
 
-- [Azure Active Directory'deki yönetici rolü izinleri](../roles/permissions-reference.md)
+- [Azure Active Directory'de yönetici rolü izinleri](../roles/permissions-reference.md)
 
 ## <a name="entitlement-management"></a>Yetkilendirme yönetimi
 

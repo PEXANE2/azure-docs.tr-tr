@@ -4,10 +4,10 @@ description: Kaynak grafik tablolarını ve kullanılabilir kusto veri türlerin
 ms.date: 03/10/2021
 ms.topic: conceptual
 ms.openlocfilehash: f6cb13814fe725ff0253a0a5bf0098f0080fa407
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102633810"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Azure Kaynak Grafiği sorgu dilini anlama
@@ -129,7 +129,7 @@ Aşağıda belirli örneklere sahip kaynak Graph tarafından desteklenen KQL tab
 
 |KQL |Kaynak Grafiği örnek sorgusu |Notlar |
 |---|---|---|
-|[biriktirme](/azure/kusto/query/countoperator) |[Ana kasaları say](../samples/starter.md#count-keyvaults) | |
+|[count](/azure/kusto/query/countoperator) |[Ana kasaları say](../samples/starter.md#count-keyvaults) | |
 |[ayrı](/azure/kusto/query/distinctoperator) |[Depolama içeren kaynakları göster](../samples/starter.md#show-storage) | |
 |[genişletmeyi](/azure/kusto/query/extendoperator) |[Sanal makineleri işletim sistemi türüne göre sayma](../samples/starter.md#count-os) | |
 |[ayrılma](/azure/kusto/query/joinoperator) |[Abonelik adı olan Anahtar Kasası](../samples/advanced.md#join) |Birleşim türleri desteklenir: [ınnerunique](/azure/kusto/query/joinoperator#default-join-flavor), [Inner](/azure/kusto/query/joinoperator#inner-join), [soltouter](/azure/kusto/query/joinoperator#left-outer-join). `join`Tek bir sorguda 3 sınırı, 1 adet çapraz tablo olabilir `join` . Tüm çapraz tablo `join` kullanımı _Resource_ ve _resourcecontainers_ arasındaysa 3 çapraz tabloya `join` izin verilir. Yayın katılımı gibi özel JOIN stratejilerine izin verilmez. Hangi tabloların kullanabileceği hakkında `join` bilgi için bkz. [kaynak grafik tabloları](#resource-graph-tables). |

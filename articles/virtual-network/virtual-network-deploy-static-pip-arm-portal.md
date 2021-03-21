@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 11/12/2020
 ms.author: allensu
 ms.openlocfilehash: d416af3d3a8eb8ab8057f13cc0d9a133adcb849a
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98221165"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-portal"></a>Azure portal kullanarak statik genel IP adresi içeren bir sanal makine oluşturun
@@ -43,7 +43,7 @@ Adresin hiçbir şekilde değişmeyeceğinden emin olmak için dinamik bir adres
     | Kaynak Grubu | **Yeni oluştur**’u seçin. </br> **Ad** alanına **myresourcegroup** yazın. </br> **Tamam**’ı seçin. |
     | **Örnek ayrıntıları** |  |
     | Sanal makine adı | **Myvm 'yi** girin |
-    | Bölge | **Doğu ABD** seçin |
+    | Region | **Doğu ABD** seçin |
     | Kullanılabilirlik seçenekleri | **Altyapı yedekliliği gerekli değil** ' i seçin |
     | Görüntü | **Windows Server 2019 Datacenter-Gen1** seçin |
     | Azure Spot örneği | **Hayır** seçin |

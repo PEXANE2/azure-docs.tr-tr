@@ -11,17 +11,17 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 12/21/2020
 ms.openlocfilehash: b675e72df4f128d0ce096b3ac398fab63c20557e
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97930812"
 ---
 # <a name="service-limits-in-azure-machine-learning"></a>Azure Machine Learning hizmet limitleri
 
 Bu bölümde Azure Machine Learning içindeki temel kotalar ve azaltma eşikleri listelenmektedir. Kaynak kotalarını artırma hakkında bilgi edinmek için bkz. ["kaynaklar için kotaları yönetme ve artırma"](how-to-manage-quotas.md)
 
-## <a name="workspaces"></a>Çalışma alanları
+## <a name="workspaces"></a>Çalışma Alanları
 | Sınır | Değer |
 | --- | --- |
 | Çalışma alanı adı | 2-32 karakter |

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/21/2020
 ms.author: cherylmc
 ms.openlocfilehash: 1aba87b2139fb8a7d395fb3180d2074e47310fa9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96010873"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>VPN Gateway yapılandırma ayarları hakkında
@@ -53,7 +53,7 @@ New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 
 ### <a name="configure-a-gateway-sku"></a>Ağ Geçidi SKU 'SU yapılandırma
 
-**Azure Portal**
+**Azure portalı**
 
 Kaynak Yöneticisi sanal ağ geçidi oluşturmak için Azure portal kullanırsanız, açılan menüyü kullanarak ağ geçidi SKU 'sunu seçebilirsiniz. Size sunulan seçenekler, seçtiğiniz ağ geçidi türü ve VPN türüne karşılık gelir.
 
@@ -83,7 +83,7 @@ VPN Gateway 'niz varsa ve farklı bir ağ geçidi SKU 'SU kullanmak istiyorsanı
 
 #### <a name="to-resize-a-gateway"></a><a name="resizegwsku"></a>Bir ağ geçidini yeniden boyutlandırmak için
 
-**Azure Portal**
+**Azure portalı**
 
 [!INCLUDE [Resize a SKU - portal](../../includes/vpn-gateway-resize-gw-portal-include.md)]
 

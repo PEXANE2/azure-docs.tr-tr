@@ -4,10 +4,10 @@ description: REST API ve veri uç noktası etki alanı adlarına veya hizmete ö
 ms.topic: article
 ms.date: 05/18/2020
 ms.openlocfilehash: 548d64632c1d726111770dfb49f705d31f5ca714
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97935997"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>Güvenlik duvarının arkasındaki bir Azure Container Registry 'ye erişmek için kuralları yapılandırma
@@ -139,7 +139,7 @@ Veri uç noktası veya uç noktalar portalda görüntülenir.
 
 :::image type="content" source="media/container-registry-firewall-access-rules/dedicated-data-endpoints-portal.png" alt-text="Portalda adanmış veri uç noktaları":::
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Azure CLı kullanarak veri uç noktalarını etkinleştirmek için Azure CLı sürüm 2.4.0 veya üstünü kullanın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
 
