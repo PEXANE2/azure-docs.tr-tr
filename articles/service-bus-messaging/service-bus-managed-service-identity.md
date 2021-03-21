@@ -4,10 +4,10 @@ description: Bu makalede, Azure Service Bus varlıklara (kuyruklar, konular ve a
 ms.topic: article
 ms.date: 01/21/2021
 ms.openlocfilehash: bd985acd9b775d6baef0abf488952e28c17aef2a
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98954319"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Azure Service Bus kaynaklara erişmek için Azure Active Directory ile yönetilen bir kimliğin kimliğini doğrulama
@@ -125,7 +125,7 @@ Bir Service Bus ad alanına rol atamak için Azure portal ad alanına gidin. Kay
 ### <a name="run-the-app"></a>Uygulamayı çalıştırma
 Şimdi, oluşturduğunuz ASP.NET uygulamasının varsayılan sayfasını değiştirin. [Bu GitHub deposundan](https://github.com/Azure-Samples/app-service-msi-servicebus-dotnet)Web uygulaması kodunu kullanabilirsiniz.  
 
-Varsayılan. aspx sayfası, giriş sayfanız. Kodu Default.aspx.cs dosyasında bulabilirsiniz. Sonuç olarak, birkaç giriş alanı olan en az bir Web uygulaması ve ileti göndermek ya da almak için Service Bus bağlanan **Gönder** ve **Al** düğmeleri vardır.
+Varsayılan. aspx sayfası, giriş sayfanız. Kodu default. aspx. cs dosyasında bulabilirsiniz. Sonuç olarak, birkaç giriş alanı olan en az bir Web uygulaması ve ileti göndermek ya da almak için Service Bus bağlanan **Gönder** ve **Al** düğmeleri vardır.
 
 [Messagingfactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) nesnesinin nasıl başlatıldığını aklınızda edin. Kod, paylaşılan erişim belirteci (SAS) belirteci sağlayıcısını kullanmak yerine, yönetilen kimlik için çağrı ile bir belirteç sağlayıcısı oluşturur `var msiTokenProvider = TokenProvider.CreateManagedIdentityTokenProvider();` . Bu nedenle, tutulacak ve kullanılacak gizli dizi yok. Yönetilen kimlik bağlamının Service Bus ve yetkilendirme el sıkışması akışı, otomatik olarak belirteç sağlayıcısı tarafından işlenir. SAS kullanmaktan daha basit bir modeldir.
 

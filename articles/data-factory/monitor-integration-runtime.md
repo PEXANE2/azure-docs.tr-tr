@@ -7,10 +7,10 @@ ms.date: 08/11/2020
 author: dcstwh
 ms.author: weetok
 ms.openlocfilehash: 1cb4fcaa51e1a59ee9d09eb178faf9b250173709
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101740043"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Azure Data Factory'deki tümleştirme çalışma zamanını izleme
@@ -48,7 +48,7 @@ Aşağıdaki tabloda, bir Azure tümleştirme çalışma zamanı için cmdlet ta
 | Konum | Azure tümleştirme çalışma zamanının konumu. Bir Azure tümleştirme çalışma zamanının konumu hakkındaki ayrıntılar için bkz. [Integration Runtime 'A giriş](concepts-integration-runtime.md). |
 | DataFactoryName | Azure tümleştirme çalışma zamanının ait olduğu veri fabrikasının adı. | 
 | ResourceGroupName | Data Factory 'nin ait olduğu kaynak grubunun adı.  |
-| Açıklama | Tümleştirme çalışma zamanının açıklaması.  |
+| Description | Tümleştirme çalışma zamanının açıklaması.  |
 
 ### <a name="status"></a>Durum
 
@@ -171,7 +171,7 @@ Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $A
 
 Aşağıdaki tabloda, bir Azure-SSIS IR için yukarıdaki cmdlet tarafından döndürülen özelliklerin açıklamaları verilmiştir.
 
-| Özellik/durum              | Açıklama                  |
+| Özellik/durum              | Description                  |
 | ---------------------------- | ---------------------------- |
 | CreateTime                   | Azure-SSIS IR oluşturulduğu UTC saati. |
 | Düğümler                        | Azure-SSIS IR düğüme özgü durumlar (başlangıç/kullanılabilir/geri dönüştürme/kullanılamaz) ve eyleme dönüştürülebilir hatalar içeren ayrılmış/kullanılabilir düğümler. |
@@ -193,13 +193,13 @@ Aşağıdaki tabloda, bir Azure-SSIS IR için yukarıdaki cmdlet tarafından dö
 | ResourceGroupName            | ADF ve Azure-SSIS IR oluşturulduğu Azure Kaynak grubunuzun adı. |
 | DataFactoryName              | ADF 'nizin adı. |
 | Name                         | Azure-SSIS IR adı. |
-| Açıklama                  | Azure-SSIS IR açıklaması. |
+| Description                  | Azure-SSIS IR açıklaması. |
   
 #### <a name="status-per-azure-ssis-ir-node"></a>Durum (Azure-SSIS IR düğüm başına)
 
 Aşağıdaki tabloda bir Azure-SSIS IR düğümünün olası durumları verilmiştir:
 
-| Düğüme özgü durum | Açıklama |
+| Düğüme özgü durum | Description |
 | -------------------- | ----------- | 
 | Başlatılıyor             | Bu düğüm hazırlanıyor. |
 | Kullanılabilir            | Bu düğüm, SSIS paketlerini dağıtmanız/yürütmeniz için hazırlayın. |
@@ -210,7 +210,7 @@ Aşağıdaki tabloda bir Azure-SSIS IR düğümünün olası durumları verilmi�
 
 Aşağıdaki tabloda Azure-SSIS IR genel durumları verilmiştir. İçindeki genel durum, Azure-SSIS IR ait olan tüm düğümlerin Birleşik durumlarına bağlıdır. 
 
-| Genel durum | Açıklama | 
+| Genel durum | Description | 
 | -------------- | ----------- | 
 | Başlangıç        | Azure-SSIS IR düğümleri ayrılmadı/hazırlandı. | 
 | Başlatılıyor       | Azure-SSIS IR düğümleri ayrılmakta/hazırlanmakta ve faturalandırma başladı. |

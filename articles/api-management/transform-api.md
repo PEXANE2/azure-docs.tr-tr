@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/28/2020
 ms.author: apimpm
 ms.openlocfilehash: 979bdaa1e0dac4f45a321abda2a208f46983f9cd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96010240"
 ---
 # <a name="tutorial-transform-and-protect-your-api"></a>Öğretici: API 'nizi dönüştürme ve koruma
@@ -20,7 +20,7 @@ ms.locfileid: "96010240"
 
 Bu öğretici Ayrıca Azure API Management bir hız sınırı yapılandırarak arka uç API 'niz için koruma eklemenin ne kadar kolay olduğunu gösterir. Örneğin API çağrısı oranını kısıtlamak isteyebilirsiniz, bu sayede API, geliştiriciler tarafından aşırı kullanılmaz. Daha fazla bilgi için bkz. [API Management ilkeleri](api-management-policies.md).
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -83,7 +83,7 @@ Görebileceğiniz gibi, yanıt **x-ASPNET-Version** ve **x-destekli** üst bilgi
 
    :::image type="content" source="media/transform-api/set-policy.png" alt-text="HTTP üst bilgisini ayarla":::
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 ## <a name="replace-original-urls-in-the-body-of-the-api-response-with-apim-gateway-urls"></a>API yanıt gövdesindeki özgün URL’leri, APIM ağ geçidi URL’leri ile değiştirme
 
@@ -107,7 +107,7 @@ Bu bölümde, API 'nin HTTP yanıtının gövdesinde görüntülenen özgün URL
 1.  **Giden işleme** bölümünde, kod Düzenleyicisi ( **</>** ) simgesini seçin.
 1.  İmleci **&lt; giden &gt;** öğesinin içine konumlandırın ve sağ üst köşedeki **parçacıkları göster** ' i seçin.
 1.  Sağ taraftaki pencerede, **dönüştürme ilkeleri** altında, **Içerikte maske URL 'leri**' ni seçin. 
-1.  **Kaydet**'i seçin.
+1.  **Kaydet**’i seçin.
 
 ## <a name="protect-an-api-by-adding-rate-limit-policy-throttling"></a>Hız sınırı ilkesi ekleyerek (azaltma) bir API’yi koruma
 

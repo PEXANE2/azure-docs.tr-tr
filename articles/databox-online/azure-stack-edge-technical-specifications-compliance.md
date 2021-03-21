@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/02/2020
 ms.author: alkohli
 ms.openlocfilehash: 8b36bb34f4c9081d807998cb8287797443625a6b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96460296"
 ---
 # <a name="azure-stack-edge-pro-technical-specifications"></a>Azure Stack Edge Pro Teknik özellikleri
@@ -45,7 +45,7 @@ Azure Stack Edge Pro cihazının yüksek performanslı fanlarla iki 100-240 V g�
 | Maksimum çıkış gücü    | 750 W                     |
 | Sıklık               | 50/60 Hz                   |
 | Voltaj aralığı seçimi | Otomatik olarak değişen: 100-240 V AC |
-| Etkin takılabilir           | Evet                        |
+| Etkin takılabilir           | Yes                        |
 
 ### <a name="azure-stack-edge-pro-power-cord-specifications-by-region"></a>Bölgeye göre Edge Pro güç kablosu belirtimlerini Azure Stack
 
@@ -60,13 +60,13 @@ The following table lists the typical power consumption data (actual values may 
 
 Azure Stack Edge Pro cihazınız 6 ağ arabirimine sahiptir, PORT1-PORT6.
 
-| Belirtim           | Açıklama                 |
+| Belirtim           | Description                 |
 |-------------------------|----------------------------|
 |  Ağ arabirimleri    | 2 X 1 GbE arabirimleri – 1 yönetim için, kullanıcı tarafından yapılandırılamaz, ilk kurulumda kullanılır. Diğer arabirim Kullanıcı tarafından yapılandırılabilir, veri aktarımı için kullanılabilir ve varsayılan olarak DHCP 'dir. <br>2 X 25 GbE arabirimleri – Bunlar 10 GbE arabirimleri olarak da çalıştırılabilir. Bu veri arabirimleri kullanıcı tarafından DHCP (varsayılan) veya statik olarak yapılandırılabilir. <br> 2 X 25 GbE arabirimleri - Bu veri arabirimleri kullanıcı tarafından DHCP (varsayılan) veya statik olarak yapılandırılabilir.                  |
 
 Kullanılan ağ bağdaştırıcıları şunlardır: 
 
-| Belirtim           | Açıklama                 |
+| Belirtim           | Description                 |
 |-------------------------|----------------------------|
 |Ağ yardımcı kartı (rNDC) |QLogic FastLinQ 41264 çift bağlantı noktası 25GbE SFP +, Çift bağlantı noktası 1GbE, rNDC|
 |PCI ağ bağdaştırıcısı |QLogic Fastlınq 41262 Zwei Ports 25Gbit/s SFP28 bağdaştırıcısı|

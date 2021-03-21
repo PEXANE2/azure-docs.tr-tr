@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 03/09/2021
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
-ms.openlocfilehash: 8b0d6ffc00a140073c2dfb5789fbf9760e1767c9
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.openlocfilehash: 22f6e1c8049acd5dbe548bc49955881e05f0ef0e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103462771"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579051"
 ---
 # <a name="support-and-help-options-for-developers"></a>Geliştiriciler için destek ve yardım seçenekleri
 
@@ -44,17 +44,17 @@ Doğrudan Microsoft mühendisleri, Azure en değerli Uzmanları (MVP) ve uzman t
 
 [Microsoft Q&A](/answers/products/) , Azure 'un önerilen topluluk desteği kaynağıdır.
 
-Microsoft Q&A araması yaparak sorununuza yanıt bulamazsanız yeni bir soru gönderin. [Yüksek kaliteli sorunuzu](https://docs.microsoft.com/answers/articles/24951/how-to-write-a-quality-question.html)sorduğunuz zaman aşağıdaki etiketlerden birini kullanın:
+Microsoft Q&A araması yaparak sorununuza yanıt bulamazsanız yeni bir soru gönderin. [Yüksek kaliteli sorunuzu](/answers/articles/24951/how-to-write-a-quality-question.html)sorduğunuz zaman aşağıdaki etiketlerden birini kullanın:
 
 | Bileşen/alan| Etiketler  |
 |------------|---------------------------|
-| Active Directory Authentication Library (ADAL)                              | [adal](https://docs.microsoft.com/answers/topics/azure-ad-adal-deprecation.html)                |
-| Microsoft Authentication Library (MSAL)                                     | [msal](https://docs.microsoft.com/answers/topics/azure-ad-msal.html)                            |
-| .NET (OWıN) ara yazılım için Web arabirimini açın                               | [[Azure-Active-Directory]](https://docs.microsoft.com/answers/topics/azure-active-directory.html) |
-| [Azure AD B2B/dış kimlikler](../external-identities/what-is-b2b.md) | [[Azure-AD-B2B]](https://docs.microsoft.com/answers/topics/azure-ad-b2b.html)                     |
-| [Azure AD B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[Azure-AD-B2C]](https://docs.microsoft.com/answers/topics/azure-ad-b2c.html)                     |
-| [Microsoft Graph API](https://developer.microsoft.com/graph/)               | [[Azure-AD-grafik]](https://docs.microsoft.com/answers/topics/azure-ad-graph.html)                 |
-| Diğer tüm kimlik doğrulama ve yetkilendirme alanlarında                            | [[Azure-Active-Directory]](https://docs.microsoft.com/answers/topics/azure-active-directory.html) |
+| Active Directory Authentication Library (ADAL)                              | [adal](/answers/topics/azure-ad-adal-deprecation.html)                |
+| Microsoft Authentication Library (MSAL)                                     | [msal](/answers/topics/azure-ad-msal.html)                            |
+| .NET (OWıN) ara yazılım için Web arabirimini açın                               | [[Azure-Active-Directory]](/answers/topics/azure-active-directory.html) |
+| [Azure AD B2B/dış kimlikler](../external-identities/what-is-b2b.md) | [[Azure-AD-B2B]](/answers/topics/azure-ad-b2b.html)                     |
+| [Azure AD B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[Azure-AD-B2C]](/answers/topics/azure-ad-b2c.html)                     |
+| [Microsoft Graph API](https://developer.microsoft.com/graph/)               | [[Azure-AD-grafik]](/answers/topics/azure-ad-graph.html)                 |
+| Diğer tüm kimlik doğrulama ve yetkilendirme alanlarında                            | [[Azure-Active-Directory]](/answers/topics/azure-active-directory.html) |
 
 ## <a name="create-a-github-issue"></a>GitHub sorunu oluştur
 
@@ -98,10 +98,8 @@ Yeni özellikler istemek için Azure geri bildirimlerine gönderin. Microsoft Id
 
 - [Azure güncelleştirmeleri](https://azure.microsoft.com/updates/?category=identity): önemli ürün güncelleştirmeleri, yol haritası ve Duyurular hakkında bilgi edinin.
 
-- [Docs 'taki](https://docs.microsoft.com/azure/active-directory/develop/whats-new-docs)yenilikler: Microsoft Identity platform belgelerindeki yenilikleri öğrenin.
+- [Docs 'taki](./whats-new-docs.md)yenilikler: Microsoft Identity platform belgelerindeki yenilikleri öğrenin.
 
 - [Azure Active Directory kimlik blogu](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/bg-p/Identity): Azure AD ile ilgili haberleri ve bilgileri alın.
 
 - [Teknik topluluk](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/bg-p/Identity/): deneyimlerinizi paylaşma, uzmanlardan katılın ve uzmanlardan bilgi edinin.
-
-

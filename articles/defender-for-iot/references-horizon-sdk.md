@@ -8,11 +8,11 @@ ms.author: shhazam
 ms.date: 1/13/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 06663e12bbcaee2243be75d6aa9ea9cf4fd125bf
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 53aafc4146680c89dd01174ec5fde765f1cc0c01
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100523371"
 ---
 # <a name="horizon-proprietary-protocol-dissector"></a>Ufuk özel protokol dissektör
@@ -326,7 +326,7 @@ Bu bölümde temel parametreler açıklanmaktadır.
 
 Bu bölümde diğer alanlar açıklanmaktadır.
 
-| Parametre etiketi | Açıklama |
+| Parametre etiketi | Description |
 |-----------------|--------|
 | **listelere izin ver** | Protokol değerlerini dizinedebilir ve bunları veri araştırma raporlarında görüntüleyebilirsiniz. Bu raporlar, ağ temelinizi yansıtır. :::image type="content" source="media/references-horizon-sdk/data-mining.png" alt-text="Veri araştırma görünümü örneği."::: <br /> Daha fazla bilgi için bkz. Ayrıntılar için [Dizin oluşturma hizmetine (Baseline) bağlanma](#connect-to-an-indexing-service-baseline) . |
 | **yazılımında** | Bellenim bilgilerini ayıklayabilir, dizin değerlerini tanımlayabilir ve eklenti protokolü için bellenim uyarılarını tetikleyebilirsiniz. Daha fazla bilgi için bkz. Ayrıntılar için [bellenim verilerini ayıklama](#extract-firmware-data) . |
@@ -396,7 +396,7 @@ Bu, iletilen paketin protokolün doğrulama parametreleriyle eşleştiğini doğ
 
 Örneğin, *sihirli sayı* olarak ilk 8 baytı kullanın. Sağlamlık başarısız olursa, bir sağlamlık hata yanıtı döndürülür.
 
-Örneğin:
+Örnek:
 
 ```C++
   horizon::protocol::ParserResult 
@@ -817,10 +817,10 @@ Bazı protokoller işlev kodu bir hata gösterebilir. Örneğin, protokol her za
 
 Bu bölümde JSON yapılandırma alanları açıklanmaktadır. 
 
-| Alan adı | Açıklama | Olası değerler |
+| Alan adı | Description | Olası değerler |
 |--|--|--|
 | **ID** | Tek bir uyarı KIMLIĞINI temsil eder. Bu bağlamda benzersiz olmalıdır. | Sayısal değer 0-10000 |
-| **İleti** | Kullanıcıya görüntülenecek bilgiler. Bu alan, farklı alanlar kullanmanıza izin verir. | Protokolinizdeki herhangi bir alanı veya herhangi bir alt katman protokolünü kullanın. |
+| **message** | Kullanıcıya görüntülenecek bilgiler. Bu alan, farklı alanlar kullanmanıza izin verir. | Protokolinizdeki herhangi bir alanı veya herhangi bir alt katman protokolünü kullanın. |
 | **Başlığın** | Uyarı başlığı |  |
 | **expression** | Bu uyarının açılır olmasını istediğiniz zaman. | Alt katmanlarda veya geçerli katmanda bulunan herhangi bir sayısal alanı kullanın.</br></br> `{}`SDK 'nın onu bir alan olarak algılayabilmesi için her bir alanın ile sarmalayıcı olması gerekir; desteklenen mantıksal işleçler şunlardır</br> = =-Eşittir</br> <=-küçüktür veya eşittir</br> >=-daha fazla veya eşit</br> >-daha fazla</br> <-küçüktür</br> ~ =-Eşit değil |
 
@@ -1640,6 +1640,6 @@ Izlemek için:
 
 Genel bakışta, eklenti için Izleyici düğmesini seçin.
 
-## <a name="next-steps"></a>Sonraki adımlar
+Sonraki Adımlar
 
 [Ufuk API](references-horizon-api.md) 'nizi ayarlama

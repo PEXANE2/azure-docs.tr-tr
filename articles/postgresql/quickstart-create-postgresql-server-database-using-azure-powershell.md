@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 06/08/2020
 ms.custom: mvc, devx-track-azurepowershell
 ms.openlocfilehash: 91351c0b2982c6ee0e96cc1433c0fadf67e3bcc0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96010665"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---single-server-using-powershell"></a>Hızlı başlangıç: PowerShell kullanarak tek sunuculu bir PostgreSQL için Azure veritabanı oluşturma
@@ -181,7 +181,7 @@ pgAdmin, PostgreSQL ile kullanılan açık kaynak bir araçtır. pgAdmin'i [pgAd
     Rol | Boş bırakın | Bu noktada bir rol adı sağlamanız gerekmez. Alanı boş bırakın.
     SSL modu | *Gerektirme* | PgAdmin 'in SSL sekmesinde TLS/SSL modunu ayarlayabilirsiniz. Varsayılan olarak, tüm PostgreSQL sunucuları için Azure veritabanı sunucuları, açık olan TLS ile oluşturulur. TLS zorlamayı devre dışı bırakmak için bkz. [TLS zorlamayı yapılandırma](./concepts-ssl-connection-security.md#configure-enforcement-of-tls).
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 1. Sol taraftaki **Tarayıcı** bölmesinde **Sunucular** düğümünü genişletin. Sunucunuzu (örneğin, **mydemoserver**) seçin. Bu sunucuya bağlanmak için tıklayın.
 

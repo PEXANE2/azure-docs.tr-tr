@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: 346d58dbe06a29a4ba114ae788dee16e80b8f9df
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 17b2e260f9a90ddda6e246058cefb1bec8b1ac5e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101695490"
 ---
 # <a name="how-azure-hybrid-benefit-applies-for-linux-virtual-machines"></a>Azure Hibrit Avantajı Linux sanal makineleri için nasıl uygulanır
@@ -145,7 +145,7 @@ Mevcut Kullandıkça Öde VM 'lerine Azure Hibrit Avantajı uygulamanın yanı s
 ## <a name="check-the-azure-hybrid-benefit-status-of-a-vm"></a>Bir sanal makinenin Azure Hibrit Avantajı durumunu denetleme
 Azure CLı kullanarak veya Azure Instance Metadata Service kullanarak bir sanal makinenin Azure Hibrit Avantajı durumunu görüntüleyebilirsiniz.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 `az vm get-instance-view`Bu amaçla komutunu kullanabilirsiniz. `licenseType`Yanıttaki bir alanı bulun. `licenseType`Alan varsa ve değer `RHEL_BYOS` veya Ise `SLES_BYOS` , sanal makinenizin avantajı etkinleştirilmiştir.
 
@@ -177,7 +177,7 @@ Red Hat abonelik uyumluluğu, yazılım güncelleştirmeleri ve Azure Hibrit Ava
 
 ### <a name="suse"></a>SUSE
 
-SLES sanal makinelerinize yönelik Azure Hibrit Avantajı kullanmak için ve SLES PAYG 'lerden KCG 'ye geçme veya SLES BYOS 'den PAYG 'ye geçme hakkında bilgi için bkz. [SUSE Linux Enterprise ve Azure hibrit avantajı](https://www.suse.com/support/kb/doc/?id=000019868). 
+SLES sanal makinelerinize yönelik Azure Hibrit Avantajı kullanmak için ve SLES PAYG 'lerden KCG 'ye geçme veya SLES BYOS 'den PAYG 'ye geçme hakkında bilgi için bkz. [SUSE Linux Enterprise ve Azure hibrit avantajı](https://www.suse.com/c/suse-linux-enterprise-and-azure-hybrid-benefit/). 
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 *S: bir lisans türünü `RHEL_BYOS` BIR SLES görüntüsü ile kullanabilir miyim veya bunun tersini yapabilir miyim?*

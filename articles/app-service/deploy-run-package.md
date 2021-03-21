@@ -3,12 +3,12 @@ title: Uygulamanızı bir ZIP paketinden çalıştırma
 description: Uygulamanın ZIP paketini Atomicity ile dağıtın. ZIP dağıtım sürecinde uygulamanızın davranışının öngörülebilirlik ve güvenilirliğini artırabilirsiniz.
 ms.topic: article
 ms.date: 01/14/2020
-ms.openlocfilehash: 3440653455626af4e3705d89349a66d6bf2fbfc0
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 036dd8c86251af2ed5553939e74a0d85fc303ecb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008138"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577555"
 ---
 # <a name="run-your-app-in-azure-app-service-directly-from-a-zip-package"></a>Uygulamanızı doğrudan bir ZIP paketinden Azure App Service çalıştırma
 
@@ -41,7 +41,7 @@ az webapp config appsettings set --resource-group <group-name> --name <app-name>
 
 ## <a name="run-the-package"></a>Paketi çalıştırın
 
-App Service bir paketi çalıştırmanın en kolay yolu Azure CLı [az WebApp Deployment Source config-ZIP](/cli/azure/webapp/deployment/source#az-webapp-deployment-source-config-zip) komutıdır. Örneğin:
+App Service bir paketi çalıştırmanın en kolay yolu Azure CLı [az WebApp Deployment Source config-ZIP](/cli/azure/webapp/deployment/source#az-webapp-deployment-source-config-zip) komutıdır. Örnek:
 
 ```azurecli-interactive
 az webapp deployment source config-zip --resource-group <group-name> --name <app-name> --src <filename>.zip
@@ -67,6 +67,7 @@ Aynı ada sahip güncelleştirilmiş bir paketi BLOB depolama alanına yayımlar
 
 - Doğrudan bir paketten çalıştırmak `wwwroot` salt okunurdur. Uygulamanız, bu dizine dosya yazmayı denediğinde bir hata alır.
 - TAR ve GZIP biçimleri desteklenmez.
+- ZIP dosyası en fazla 1 GB olabilir
 - Bu özellik [Yerel önbellek](overview-local-cache.md)ile uyumlu değil.
 - İyileştirilmiş soğuk başlangıç performansı için yerel ZIP seçeneğini ( `WEBSITE_RUN_FROM_PACKAGE` = 1) kullanın.
 

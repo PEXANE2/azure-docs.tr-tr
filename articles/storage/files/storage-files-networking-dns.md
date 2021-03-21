@@ -8,10 +8,10 @@ ms.date: 3/19/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 9abe306668a4b20e42e45c498bf85b540dfaaee5
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94630201"
 ---
 # <a name="configuring-dns-forwarding-for-azure-files"></a>Azure Dosyalar için DNS iletmeyi yapılandırma
@@ -32,13 +32,13 @@ Her depolama hesabının tam etki alanı adı (FQDN) vardır. Genel bulut bölge
 
 Varsayılan olarak, `storageaccount.file.core.windows.net` genel bitiş NOKTASıNıN IP adresini çözümler. Bir depolama hesabının genel uç noktası, diğer birçok depolama hesabının genel uç noktalarını barındıran bir Azure Depolama kümesinde barındırılır. Özel bir uç nokta oluşturduğunuzda, özel bir DNS bölgesi öğesine eklendiği sanal ağa bağlanır ve bu, `storageaccount.file.core.windows.net` depolama hesabınızın özel uç noktasının özel IP adresi Için bir kayıt girişine BIR CNAME kaydı eşlemesi olur. Bu `storageaccount.file.core.windows.net` , sanal ağ içinde FQDN kullanmanıza ve özel uç NOKTANıN IP adresine çözümlenmenize olanak sağlar.
 
-En son hedefimiz, bir VPN veya ExpressRoute bağlantısı gibi bir ağ tüneli kullanarak, depolama hesabı dahilinde barındırılan Azure dosya paylaşımlarına erişmek için, şirket içi DNS sunucularınızı Azure dosyaları hizmetine yapılan istekleri Azure özel DNS hizmetine iletecek şekilde yapılandırmanız gerekir. Bunu gerçekleştirmek için, *conditional forwarding* `*.core.windows.net` Azure sanal AĞıNıZDA barındırılan bir DNS sunucusuna (veya ABD Kamu, Almanya veya Çin Ulusal bulutları için uygun depolama uç noktası sonekini) koşullu iletmeyi ayarlamanız gerekir. Daha sonra bu DNS sunucusu, depolama hesabının tam etki alanı adını uygun özel IP adresine çözümleyecek şekilde Azure 'un özel DNS hizmetine yapılan isteği yinelemeli olarak iletir.
+En son hedefimiz, bir VPN veya ExpressRoute bağlantısı gibi bir ağ tüneli kullanarak, depolama hesabı dahilinde barındırılan Azure dosya paylaşımlarına erişmek için, şirket içi DNS sunucularınızı Azure dosyaları hizmetine yapılan istekleri Azure özel DNS hizmetine iletecek şekilde yapılandırmanız gerekir. Bunu gerçekleştirmek için,  `*.core.windows.net` Azure sanal AĞıNıZDA barındırılan bir DNS sunucusuna (veya ABD Kamu, Almanya veya Çin Ulusal bulutları için uygun depolama uç noktası sonekini) koşullu iletmeyi ayarlamanız gerekir. Daha sonra bu DNS sunucusu, depolama hesabının tam etki alanı adını uygun özel IP adresine çözümleyecek şekilde Azure 'un özel DNS hizmetine yapılan isteği yinelemeli olarak iletir.
 
 Azure dosyaları için DNS iletmeyi yapılandırmak, istekleri iletmek üzere bir DNS sunucusu barındırmak için bir sanal makinenin çalıştırılmasını gerektirir, ancak bu, sanal ağınızda barındırılan tüm Azure dosya paylaşımları için tek seferlik bir adımdır. Buna ek olarak, Azure dosyaları için özel bir gereksinim değildir; Şirket içinden erişmek istediğiniz özel uç noktaları destekleyen herhangi bir Azure hizmeti, bu kılavuzda yapılandıracaksınız DNS iletmeyi kullanabilir: Azure Blob depolama, SQL Azure, Cosmos DB, vb. 
 
 Bu kılavuzda, Azure depolama uç noktası için DNS iletmeyi yapılandırma adımları gösterilmektedir. bu nedenle Azure dosyalarına ek olarak, diğer tüm Azure depolama hizmetleri (Azure Blob depolama, Azure Tablo depolama, Azure kuyruk depolama, vb.) için DNS ad çözümlemesi istekleri Azure 'un özel DNS hizmetine iletilir. İsterseniz diğer Azure hizmetleri için ek uç noktalar da eklenebilir. Şirket içi DNS sunucularınızda DNS iletimi, şirket içi makine adlarını çözümlemek için sanal ağınızdaki (DFS-N sunucusu gibi) bulut kaynaklarını etkinleştirmek üzere de yapılandırılır. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Azure dosyalarına DNS iletmeyi ayarlayabilmeniz için önce aşağıdaki adımları tamamlamış olmanız gerekir:
 
 - Bağlamak istediğiniz bir Azure dosya paylaşımının bulunduğu depolama hesabı. Depolama hesabı ve Azure dosya paylaşımının nasıl oluşturulacağını öğrenmek için bkz. [Azure dosya paylaşma oluşturma](storage-how-to-create-file-share.md).
@@ -110,7 +110,7 @@ New-AzDnsForwarder `
 
 Ayrıca, birkaç ek parametre sağlamak için yararlı/gerekli bulabilirsiniz:
 
-| Parametre adı | Tür | Açıklama |
+| Parametre adı | Tür | Description |
 |----------------|------|-------------|
 | `DnsServerResourceGroupName` | `string` | Varsayılan olarak, DNS sunucuları sanal ağla aynı kaynak grubuna dağıtılır. Bu istenmiyorsa, bu parametre, içine dağıtılabilmesi için alternatif bir kaynak grubu seçmenizi sağlar. |
 | `DnsForwarderRootName` | `string` | Varsayılan olarak, Azure 'da dağıtılan DNS sunucuları, `DnsFwder-*` yıldız işareti bir yineleyici tarafından doldurulduğu adlara sahiptir. Bu parametre, bu adın kökünü değiştirir (ör. `DnsFwder` ). |

@@ -4,10 +4,10 @@ description: Azure Site Recovery hizmetiyle Azure Stack VM 'Ler için Azure 'da 
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.openlocfilehash: 36e11bfe5354644f9ef6603ffe20cb2e86074323
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96016922"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Azure Stack VM'lerini Azure'a çoğaltma
@@ -151,7 +151,7 @@ VM 'Lerin tabloda özetlenen işletim sistemlerinden birini çalıştırdığın
 
 1. **Kurtarma Hizmetleri** kasalarında bir kasa adı belirtin >. **Contosovmkasasını** kullanıyoruz.
 2. **Başlarken** bölümünde Site Recovery’yi seçin. Daha sonra **Altyapıyı Hazırlama**’yı seçin.
-3. Makinelerinizin bulunduğu **koruma hedefi** bölümünde  >  **Where are your machines located** **Şirket içi**' ı seçin.
+3. Makinelerinizin bulunduğu **koruma hedefi** bölümünde  >   **Şirket içi**' ı seçin.
 4. **Makinelerinizi nereye çoğaltmak istiyorsunuz** bölümünde **Azure’a** seçeneğini belirleyin.
 5. **Makinelerinizde sanallaştırılmış**, **sanallaştırılmış değil**' i seçin. Ardından **Tamam**’ı seçin.
 
@@ -161,7 +161,7 @@ VM 'Lerin tabloda özetlenen işletim sistemlerinden birini çalıştırdığın
 
 Yapılandırma sunucusu makinesini ayarlayın, kasaya kaydedin ve çoğaltmak istediğiniz makineleri bulun.
 
-1. **Altyapı kaynağını hazırla**' ya tıklayın  >  **Source**.
+1. **Altyapı kaynağını hazırla**' ya tıklayın  >  .
 2. **Kaynağı hazırla** bölümünde **+ Yapılandırma Sunucusu**’na tıklayın.
 
     ![+ Yapılandırma sunucusu iletişim kutusunun şu iletiyle birlikte "bir tane kurmak için yukarıdaki komut çubuğunda + yapılandırma sunucusu ' na tıklayın...](./media/azure-stack-site-recovery/plus-config-srv.png)
@@ -224,7 +224,7 @@ Hemen bu adımı atlayabilirsiniz. **Dağıtım planlama** açılan listesinde E
 
 [1. Adım: hazırlama makinesi](#step-1-prepare-azure-stack-vms)' nde tüm görevleri tamamladığınızdan emin olun. Ardından çoğaltmayı aşağıdaki şekilde etkinleştirin:
 
-1. **Uygulama kaynağını Çoğalt**' ı seçin  >  **Source**.
+1. **Uygulama kaynağını Çoğalt**' ı seçin  >  .
 2. **Kaynak** bölümünde yapılandırma sunucusunu seçin.
 3. **Makine türü**' nde **fiziksel makineler**' i seçin.
 4. İşlem sunucusunu (yapılandırma sunucusu) seçin. Daha sonra, **Tamam**'a tıklayın.
@@ -240,7 +240,7 @@ Hemen bu adımı atlayabilirsiniz. **Dağıtım planlama** açılan listesinde E
 10. **Özellikler**  >  **Özellikleri Yapılandır** bölümünde, işlem sunucusunun, Mobility hizmetini makinede otomatik olarak yüklemek için kullanacağı hesabı seçin.
 11. Çoğaltma **ayarları**  >  **çoğaltma ayarlarını yapılandır** bölümünde doğru çoğaltma ilkesinin seçili olup olmadığını denetleyin.
 12. **Çoğaltmayı Etkinleştir**’e tıklayın.
-13. **Enable Protection** **Ayarlar**  >  **işleri**  >  **Site Recovery işler**' de korumayı etkinleştirme işinin ilerlemesini izleyin. **Korumayı Sonlandır** işi çalıştırıldıktan sonra makine yük devretmeye hazırız.
+13.  **Ayarlar**  >  **işleri**  >  **Site Recovery işler**' de korumayı etkinleştirme işinin ilerlemesini izleyin. **Korumayı Sonlandır** işi çalıştırıldıktan sonra makine yük devretmeye hazırız.
 
 > [!NOTE]
 > Bir VM için çoğaltma etkinleştirildiğinde Site Recovery, Mobility Hizmeti’ni yükler.
@@ -286,7 +286,7 @@ Bir VM için yük devretme testini aşağıdaki şekilde çalıştırın:
 2. Bu izlenecek yol için, **en son işlenen** kurtarma noktasını kullanmayı seçeceğiz.
 3. **Yük devretme testi** bölümünde, hedef Azure ağını seçin.
 4. Yük devretmeyi başlatmak için **Tamam**'a tıklayın.
-5. Özelliklerini açmak için VM 'ye tıklayarak ilerlemeyi izleyin. Ya da, *kasa adı* ayarları **Test Failover**  >  **Settings**  >  **işler**  > **Site Recovery işler**' de yük devretme testi işi ' ne tıklayın.
+5. Özelliklerini açmak için VM 'ye tıklayarak ilerlemeyi izleyin. Ya da, *kasa adı* ayarları   >    >  **işler**  > **Site Recovery işler**' de yük devretme testi işi ' ne tıklayın.
 6. Yük devretme bittikten sonra, çoğaltma Azure VM, Azure portalı > **Sanal Makineler** bölümünde görünür. VM 'nin uygun boyutta olduğundan, doğru ağa bağlı olduğundan ve çalıştığından emin olun.
 7. Şimdi Azure’da çoğaltılan sanal makineye bağlanabiliyor olmanız gerekir. [Daha fazla bilgi edinin](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
 8. Yük devretme testi sırasında oluşturulan Azure sanal makinelerini silmek için, VM’de **Yük devretme testini temizle**’ye tıklayın. **Notlar**' da, test yük devretmesi ile ilgili tüm gözlemlerinizi kaydedin.

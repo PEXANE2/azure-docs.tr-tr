@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 11/29/2017
 ms.author: cshoe
 ms.openlocfilehash: b3d09ec4c4ab578a87f0d983c0f243bee2a84597
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94991239"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Işlevleri SendGrid bağlamaları
@@ -363,9 +363,9 @@ Aşağıdaki tabloda, dosyasında  *function.js* bulunan bağlama yapılandırma
 | yön |yok| Olarak ayarlanmalıdır `out` .| No |
 | name |yok| İstek veya istek gövdesi için işlev kodunda kullanılan değişken adı. Bu değer `$return` yalnızca bir dönüş değeri olduğunda geçerlidir. | No |
 | apiKey | ApiKey | API anahtarınızı içeren bir uygulama ayarının adı. Ayarlanmamışsa, varsayılan uygulama ayarı adı *AzureWebJobsSendGridApiKey* olur.| No |
-| şöyle değiştirin:| Amaç | Alıcının e-posta adresi. | Yes |
+| kullanıcısı| Amaç | Alıcının e-posta adresi. | Yes |
 | Kaynak| Kaynak | Gönderenin e-posta adresi. |  Yes |
-| Konu| Konu | E-postanın konusu. | Yes |
+| subject| Konu | E-postanın konusu. | Yes |
 | metin| Metin | E-posta içeriği. | Yes |
 
 İsteğe bağlı özellikler, bağlamada tanımlanmış ve program aracılığıyla eklenmiş ya da geçersiz kılınan varsayılan değerlere sahip olabilir.

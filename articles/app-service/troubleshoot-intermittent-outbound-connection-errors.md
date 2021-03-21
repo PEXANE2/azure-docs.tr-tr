@@ -8,10 +8,10 @@ ms.date: 11/19/2020
 ms.author: ramakoni
 ms.custom: security-recommendations,fasttrack-edit
 ms.openlocfilehash: 989f47c0ff60865a8e8be15e089cdcf96ab2550c
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94968307"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Azure App Service zaman aralıklı giden bağlantı hatalarıyla ilgili sorunları giderme
@@ -63,7 +63,7 @@ SNAT bağlantı noktası tükenmesi için genel stratejiler, **Azure belgelerini
 
 Farklı çözüm yığınına göre bağlantı havuzu uygulama bağlantılarının bir koleksiyonu aşağıda verilmiştir.
 
-#### <a name="node"></a>Node
+#### <a name="node"></a>Düğüm
 
 Varsayılan olarak, NodeJS bağlantıları etkin tutulmaz. Aşağıda, bunların nasıl uygulanacağını gösteren örnekler içeren bağlantı havuzlaması için popüler veritabanları ve paketler verilmiştir.
 

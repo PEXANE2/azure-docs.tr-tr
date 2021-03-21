@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 08/12/2020
 ms.openlocfilehash: 344caf4080380f5d9dfdaf452798ada6d1dc9f1c
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98931226"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Apache HBase verilerini okuyup yazmak için Apache Spark kullanma
@@ -91,7 +91,7 @@ __Note__: devam etmeden önce, Spark kümesinin depolama hesabını HBase kümen
     |Özellik | Değer |
     |---|---|
     |Bash betiği URI 'SI|`https://hdiconfigactions.blob.core.windows.net/hbasesparkconnectorscript/connector-hbase.sh`|
-    |Düğüm türleri|Bölge|
+    |Düğüm türleri|Region|
     |Parametreler|`-s SECONDARYS_STORAGE_URL`|
     |Kalıcı|evet|
 

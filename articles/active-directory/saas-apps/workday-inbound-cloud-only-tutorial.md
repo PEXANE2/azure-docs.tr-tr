@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
 ms.openlocfilehash: ef4381f305292b366348aa3729209dc3f5e8c87b
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98954098"
 ---
 # <a name="tutorial-configure-workday-to-azure-ad-user-provisioning"></a>Öğretici: Workday 'yi Azure AD Kullanıcı sağlaması için yapılandırma
@@ -115,8 +115,8 @@ Aşağıdaki bölümlerde, yalnızca bulutta bulunan dağıtımlar için Workday
    
      | URL biçimi | WWS API sürümü kullanıldı | XPATH değişiklikleri gerekiyor |
      |------------|----------------------|------------------------|
-     | https://####.workday.com/ccx/service/tenantName | v 21.1 | Hayır |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | Hayır |
+     | https://####.workday.com/ccx/service/tenantName | v 21.1 | No |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | No |
      | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Yes |
 
       > [!NOTE]

@@ -9,10 +9,10 @@ ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
 ms.openlocfilehash: c2121f429b928d58a2df7b4e4663341cf600da3e
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102214482"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>Hızlı başlangıç: ilk Azure Spring Cloud uygulamanızı dağıtın
@@ -154,7 +154,7 @@ Visual Studio 'da, API proje şablonuyla "Hello-World" adlı bir ASP.NET Core We
 
    Paketler, Steeltoe hizmeti bulma ve Azure yay bulutu istemci kitaplığı içindir. Bu `Zip` görev, Azure 'a dağıtım içindir. `dotnet publish`Komutunu çalıştırdığınızda, bu, dosyaları *Yayımla* klasöründe oluşturur ve bu görev *Publish* klasörünü Azure 'a yüklediğiniz bir *. zip* dosyasına dönüştürür.
 
-3. *Program.cs* dosyasında, `using` Azure yay bulutu istemci kitaplığı 'nı kullanan bir yönerge ve kod ekleyin:
+3. *Program. cs* dosyasında, `using` Azure yay bulutu istemci kitaplığı 'nı kullanan bir yönerge ve kod ekleyin:
 
    ```csharp
    using Microsoft.Azure.SpringCloud.Client;
@@ -170,7 +170,7 @@ Visual Studio 'da, API proje şablonuyla "Hello-World" adlı bir ASP.NET Core We
                    });
    ```
 
-4. *Startup.cs* dosyasında, `using` ve yöntemlerinin sonunda Steeltoe hizmeti bulma 'yı kullanan bir yönerge ve kod ekleyin `ConfigureServices` `Configure` :
+4. *Startup. cs* dosyasında, `using` ve yöntemlerinin sonunda Steeltoe hizmeti bulma 'yı kullanan bir yönerge ve kod ekleyin `ConfigureServices` `Configure` :
 
    ```csharp
    using Steeltoe.Discovery.Client;

@@ -4,14 +4,14 @@ titleSuffix: Azure Kubernetes Service
 description: Pods 'leri çalıştırmak için sanal düğümleri kullanan bir Azure Kubernetes hizmeti (AKS) kümesi oluşturmak üzere Azure CLı 'yı nasıl kullanacağınızı öğrenin.
 services: container-service
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 03/16/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: d1021352f3555f49b165eed60214e11b1a8d07d9
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 1c673cae41fcbd3d54aa9b4062dd030ace9f0767
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102508189"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577810"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Azure CLı kullanarak sanal düğümleri kullanmak için bir Azure Kubernetes hizmeti (AKS) kümesi oluşturma ve yapılandırma
 
@@ -246,7 +246,7 @@ Pod 'a sanal düğümlerle kullanılmak üzere atanan Azure sanal ağ alt ağın
 Sanal düğümde çalışan Pod 'u test etmek için, bir web istemcisiyle tanıtım uygulamasına gidin. Pod 'a bir iç IP adresi atandığında, bu bağlantıyı AKS kümesindeki başka bir pod 'tan hızlıca test edebilirsiniz. Bir test Pod oluşturun ve buna bir terminal oturumu ekleyin:
 
 ```console
-kubectl run -it --rm testvk --image=debian
+kubectl run -it --rm testvk --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11
 ```
 
 Şunu `curl` kullanarak Pod 'a yüklensin `apt-get` :

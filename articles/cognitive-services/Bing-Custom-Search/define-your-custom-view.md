@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
 ms.openlocfilehash: b2d4eb75002474bbec57753bbf0255cc4c2b4a16
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96338648"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Bing Özel Arama deneyiminizi yapılandırın
@@ -30,7 +30,7 @@ Portal, Web 'in (etki alanları, alt sayfalar ve Web sayfaları), Bing 'in arama
 
 Web 'in dilimlerinizi tanımlarken aşağıdakileri kullanın:
 
-| Dilim adı | Açıklama                                                                                                                                                                                                                                                                                                |
+| Dilim adı | Description                                                                                                                                                                                                                                                                                                |
 |------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Etki alanı     | Bir etki alanı dilimi, bir İnternet etki alanı içinde bulunan tüm içeriği içerir. Örneğin, `www.microsoft.com`. Yok `www.` etmek, Bing 'in etki alanının alt etki alanlarını da aramasına neden olur. Örneğin, öğesini belirtirseniz `microsoft.com` , Bing Ayrıca veya içindeki sonuçları da döndürür `support.microsoft.com` `technet.microsoft.com` . |
 | Sayfaya    | Alt sayfa dilimi, alt sayfa ve altındaki yollarda bulunan tüm içeriği içerir. Yolda en fazla iki alt sayfaların sayısını belirtebilirsiniz. Örneğin, `www.microsoft.com/en-us/windows/`                                                                                                                       |
@@ -97,7 +97,7 @@ Arama sorguları göndermek ve sonuçları görüntülemek için portalın sağ 
 
 Portal, belirli etki alanları, alt sayfalar ve Web sayfalarından içerik arama sıralamasını ayarlamanıza olanak sağlar. Önizleme bölmesinde bir arama sorgusu gönderdikten sonra, her arama sonucu, sizin için yapabileceğiniz ayarlamaların bir listesini içerir:  
 
-| Ayarı | Açıklama |
+| Ayarı | Description |
 |------------|-------------|
 | Blok      | Etki alanı, alt sayfa veya Web sayfasını engellenen listeye gider. Bing, seçili sitenin içeriğini arama sonuçlarında görünecek şekilde dışarıda bırakır.                    |
 | Artırmak      | Etki alanı veya alt sayfa içeriğini arama sonuçlarında daha yüksek olacak şekilde.                                                                                        |

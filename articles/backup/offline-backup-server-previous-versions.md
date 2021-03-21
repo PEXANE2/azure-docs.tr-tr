@@ -4,10 +4,10 @@ description: Azure Backup, Azure Içeri/dışarı aktarma hizmetini kullanarak a
 ms.topic: conceptual
 ms.date: 06/08/2020
 ms.openlocfilehash: 0405ab66b7714f00349419e94bb064267ca711a6
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98702194"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-previous-versions"></a>DPM ve Azure Backup Sunucusu için çevrimdışı yedekleme iş akışı (önceki sürümler)
@@ -48,7 +48,7 @@ Azure Backup ve Azure Içeri/dışarı aktarma hizmeti 'nin çevrimdışı denge
 >[!NOTE]
 >Azure CSP abonelikleri, DPM 2019 RTM ve önceki sürümleri ve MABS v3 RTM ve önceki sürümleri için çevrimdışı dengeli dağıtım ile kullanım için desteklenmez. Ağ üzerinden çevrimiçi yedeklemeler hala desteklenmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Çevrimdışı yedekleme iş akışını başlamadan önce aşağıdaki önkoşulların karşılandığından emin olun:
 
@@ -99,7 +99,7 @@ Azure Backup ve Azure Içeri/dışarı aktarma hizmeti 'nin çevrimdışı denge
 
 Çevrimdışı yedekleme sertifikasını çevrimdışı yedekleme için daha önce oluşturulmuş bir Azure Active Directory uygulamasına el ile yüklemek için aşağıdaki adımları izleyin.
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 1. **Azure Active Directory**  >  **uygulama kayıtları** gidin.
 1. Sahip olan **uygulamalar** sekmesinde görünen ad biçimiyle bir uygulama bulun `AzureOfflineBackup _<Azure User Id` .
 

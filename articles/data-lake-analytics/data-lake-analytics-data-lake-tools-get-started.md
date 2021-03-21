@@ -6,10 +6,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 08/30/2019
 ms.openlocfilehash: d3812cb27d2d9ea7a49038f566f8b4cc5d779172
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95241701"
 ---
 # <a name="develop-u-sql-scripts-by-using-data-lake-tools-for-visual-studio"></a>Visual Studio için Data Lake Araçları'nı kullanarak U-SQL betikleri geliştirme
@@ -51,7 +51,7 @@ Bu öğretici, Visual Studio için Data Lake Araçları’nın yüklü olmasın�
 
 1. Visual Studio'yu açın.
 
-1. **Görünüm** Data Lake Analytics Gezginini seçerek **Data Lake Analytics Gezginini** açın  >  **Data Lake Analytics Explorer**.
+1. **Görünüm** Data Lake Analytics Gezginini seçerek **Data Lake Analytics Gezginini** açın  >  .
 
 1. **Azure**' a sağ tıklayıp **Microsoft Azure aboneliğine Bağlan**' ı seçin. **Hesabınızda oturum açmak için** yönergeleri izleyin.
 

@@ -8,10 +8,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
 ms.openlocfilehash: bff930153dc8941fbfe561edf963d5b1c1e7811f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96014627"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı ile ilgili bağlantı sorunlarını giderme-tek sunucu
@@ -31,7 +31,7 @@ Genellikle, PostgreSQL için Azure veritabanı bağlantı sorunları şu şekild
 * Geçici hatalar (kısa ömürlü veya aralıklı)
 * Kalıcı veya geçici olmayan hatalar (düzenli olarak yinelenen hatalar)
 
-## <a name="troubleshoot-transient-errors"></a>Geçici hatalarda sorun giderme
+## <a name="troubleshoot-transient-errors"></a>Geçici hataları giderme
 
 Bakım gerçekleştirildiğinde geçici hatalar meydana gelir, sistem donanım veya yazılımla ilgili bir hatayla karşılaştığında veya sunucunuzun sanal çekirdeklerini veya hizmet katmanını değiştirirsiniz. PostgreSQL için Azure veritabanı hizmeti yerleşik yüksek kullanılabilirliğe sahiptir ve bu tür sorunları otomatik olarak azaltmak için tasarlanmıştır. Bununla birlikte, uygulamanız, genellikle 60 saniyeden kısa bir süre boyunca sunucu bağlantısını kaybeder. Büyük bir işlemin uzun süre çalışan bir kurtarmaya neden olduğu gibi bazı olayların hafifletmek daha uzun sürebilir.
 
@@ -42,7 +42,7 @@ Bakım gerçekleştirildiğinde geçici hatalar meydana gelir, sistem donanım v
 3. Sunucu kaynak sınırlarına yaklaşıyorsa, hatalar geçici bağlantı sorunu olabilir. [PostgreSQL Için Azure veritabanı 'Ndaki sınırlamalara](concepts-limits.md)bakın.
 4. Bağlantı sorunları devam ederse veya uygulamanızın hatayla karşılaştığı süre 60 saniye değerini aşarsa veya hatanın belirli bir gün içinde birden çok kez yinelendiğini görürseniz, [Azure](https://azure.microsoft.com/support/options) destek sitesinde **Destek Al** ' ı seçerek bir Azure destek isteği dosyası sağlayın.
 
-## <a name="troubleshoot-persistent-errors"></a>Kalıcı hatalarda sorun giderme
+## <a name="troubleshoot-persistent-errors"></a>Kalıcı hataları giderme
 
 Uygulama, PostgreSQL için Azure veritabanı 'na kalıcı olarak bağlanamazsa, genellikle aşağıdakilerden biriyle ilgili bir sorun olduğunu gösterir:
 

@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9d00b6aa09ef19b1e6892e0e90536e45dd3bce79
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 02607c219cf39a20a40854632e961b3ce199d0d3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101718531"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588265"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Microsoft Azure Depolama için şifreleme ve Azure Key Vault Client-Side
 
@@ -132,7 +132,7 @@ Key Vault tümleştirme için gereken iki paket vardır:
 * Azure. Core, `IKeyEncryptionKey` ve `IKeyEncryptionKeyResolver` arabirimlerini içerir. .NET için depolama istemci kitaplığı zaten bir bağımlılık olarak tanımlıyor.
 * Azure. Security. Keykasası. Keys (v4. x) Key Vault REST istemcisinin yanı sıra istemci tarafı şifrelemesiyle kullanılan şifreleme istemcilerini içerir.
 
-Key Vault, yüksek değerli ana anahtarlar için tasarlanmıştır ve Key Vault başına azaltma limitleri bu şekilde göz önünde bulundurularak tasarlanır. Azure. Security. Keykasa. Keys 4.1.0 itibariyle `IKeyEncryptionKeyResolver` anahtar önbelleğe almayı destekleyen bir uygulama değildir. Daraltma nedeniyle önbelleğe alma gerekli hale gelmelidir, [Bu örneğe](https://docs.microsoft.com/samples/azure/azure-sdk-for-net/azure-key-vault-proxy/) örnek olarak bir önbelleğe alma katmanı eklenebilir `Azure.Security.KeyVault.Keys.Cryptography.KeyResolver` .
+Key Vault, yüksek değerli ana anahtarlar için tasarlanmıştır ve Key Vault başına azaltma limitleri bu şekilde göz önünde bulundurularak tasarlanır. Azure. Security. Keykasa. Keys 4.1.0 itibariyle `IKeyEncryptionKeyResolver` anahtar önbelleğe almayı destekleyen bir uygulama değildir. Daraltma nedeniyle önbelleğe alma gerekli hale gelmelidir, [Bu örneğe](/samples/azure/azure-sdk-for-net/azure-key-vault-proxy/) örnek olarak bir önbelleğe alma katmanı eklenebilir `Azure.Security.KeyVault.Keys.Cryptography.KeyResolver` .
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 

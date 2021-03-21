@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 10/24/2019
 ms.openlocfilehash: 5e3b6802bab2c5fae97be8e55c8d5c11ff570f78
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94651321"
 ---
-# <a name="keep-track-of-data-during-hunting-with-azure-sentinel"></a>Azure Sentinel ile arama sırasında verilerin izini sürme
+# <a name="keep-track-of-data-during-hunting-with-azure-sentinel"></a>Azure Sentinel ile avlanırken verileri izleme
 
 Tehdit araması genellikle kötü amaçlı davranış kanıtlarını arayan günlük verilerinin dağlarını gözden geçirmeyi gerektirir. Bu işlem sırasında, araştırmacıya olası hipotezleri doğrulama işleminin bir parçası olarak anımsanması, geri yüklemek ve analiz etmek istedikleri olayları bulur ve bir güvenliğin bir bütün hikayesini anlayın.
 
-Azure Sentinel 'de yer alan arama, **Azure Sentinel-logs**' da çalıştırdığınız sorguları koruyarak ve ilgili önemli sonuçlarla birlikte bu işlemi yapmanıza yardımcı olur. Ayrıca, bağlamsal gözlemlerinizi kaydedebilir ve notlar ve etiketler ekleyerek bulgularınızı başvurabilirsiniz. Yer işaretli veriler siz ve ekip arkadaşlarınız tarafından kolay işbirliği için görülebilir.
+Azure Sentinel 'de yer alan arama, **Azure Sentinel-logs**' da çalıştırdığınız sorguları koruyarak ve ilgili önemli sonuçlarla birlikte bu işlemi yapmanıza yardımcı olur. Ayrıca not ve etiket ekleyerek bağlamsal gözlemlerinizi kaydedebilir ve bulgularınıza başvurabilirsiniz. Yer işareti eklediğiniz verileri ekip arkadaşlarınız da göreceğinden kolayca işbirliği yapabilirsiniz.
 
-Yer Işareti olan verilerinizi, **arama bölmesinin** **yer işaretleri** sekmesinde dilediğiniz zaman yeniden ziyaret edebilirsiniz. Geçerli araştırmanıza yönelik belirli verileri hızlı bir şekilde bulmak için filtreleme ve arama seçeneklerini kullanabilirsiniz. Alternatif olarak, yer işaretli verilerinizi, Log Analytics çalışma alanınızdaki **Huntingbookmark** tablosunda doğrudan görüntüleyebilirsiniz. Örneğin:
+Yer Işareti olan verilerinizi, **arama bölmesinin** **yer işaretleri** sekmesinde dilediğiniz zaman yeniden ziyaret edebilirsiniz. Filtreleme ve arama seçeneklerini kullanarak mevcut araştırmanızla ilgili verilere hızlıca ulaşabilirsiniz. Alternatif olarak, yer işaretli verilerinizi, Log Analytics çalışma alanınızdaki **Huntingbookmark** tablosunda doğrudan görüntüleyebilirsiniz. Örnek:
 
 > [!div class="mx-imgBorder"]
 > ![HuntingBookmark tablosunu görüntüle](./media/bookmarks/bookmark-table.png)
@@ -36,11 +36,11 @@ Ayrıca Önizleme ' de yer işareti ayrıntılarından **Araştır** ' a tıklay
 
 ## <a name="add-a-bookmark"></a>Bir yer işareti ekleme
 
-1. Azure Portal, **Sentinel**  >  şüpheli ve anormal davranışlar için sorguları çalıştırmak üzere Sentinel **tehdit yönetimi**  >  **arayışında** gezinin.
+1. Azure Portal,   >  şüpheli ve anormal davranışlar için sorguları çalıştırmak üzere Sentinel **tehdit yönetimi**  >  **arayışında** gezinin.
 
 2. Sorgu arama ayrıntılarından birini seçin ve sağ tarafta **sorgu ayrıntılarını Çalıştır**' ı seçin. 
 
-3. **Sorgu sonuçlarını görüntüle**' yi seçin. Örneğin:
+3. **Sorgu sonuçlarını görüntüle**' yi seçin. Örnek:
     
     > [!div class="mx-imgBorder"]
     > ![Azure Sentinel ile sorgu sonuçlarını görüntüleme](./media/bookmarks/new-processes-observed-example.png)
@@ -56,7 +56,7 @@ Ayrıca Önizleme ' de yer işareti ayrıntılarından **Araştır** ' a tıklay
 
 6. Sağ tarafta, **yer Işareti Ekle** bölmesindeki isteğe bağlı olarak, yer işareti adını güncelleştirin, Etiketler ekleyin ve öğe hakkında ne ilginç olduğunu belirlemenize yardımcı olması için notları ekleyin.
 
-7. **Sorgu bilgileri** bölümünde, **Hesap**, **konak** ve **IP adresi** varlık türleri için sorgu sonuçlarından bilgi ayıklamak üzere açılan kutuları kullanın. Bu eylem, seçili varlık türünü sorgu sonucundan belirli bir sütuna eşler. Örneğin:
+7. **Sorgu bilgileri** bölümünde, **Hesap**, **konak** ve **IP adresi** varlık türleri için sorgu sonuçlarından bilgi ayıklamak üzere açılan kutuları kullanın. Bu eylem, seçili varlık türünü sorgu sonucundan belirli bir sütuna eşler. Örnek:
     
     > [!div class="mx-imgBorder"]
     > ![Yer işareti eklemek için varlık türlerini eşleyin](./media/bookmarks/map-entity-types-bookmark.png)
@@ -88,7 +88,7 @@ Ayrıca Önizleme ' de yer işareti ayrıntılarından **Araştır** ' a tıklay
 > Bu özellikler, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez.
 > Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-1. Azure Portal, **Sentinel**  >  **tehdit yönetimi** arama  >  **Hunting**  >  **yer işaretleri** sekmesine gidin ve araştırmak istediğiniz yer işaretini veya yer imlerini seçin.
+1. Azure Portal, **Sentinel**  >  **tehdit yönetimi** arama  >    >  **yer işaretleri** sekmesine gidin ve araştırmak istediğiniz yer işaretini veya yer imlerini seçin.
 
 2. Yer işareti ayrıntılarında, en az bir varlığın eşlendiğinden emin olun. Örneğin, **varlıklar** için **IP**, **makine** veya **Hesap** girdilerini görürsünüz.
 
@@ -103,14 +103,14 @@ Araştırma grafiğini kullanma hakkında yönergeler için bkz. [araştırma gr
 > Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez.
 > Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-1. Azure Portal, **Sentinel**  >  **tehdit yönetimi** arama  >  **Hunting**  >  **yer işaretleri** sekmesine gidin ve bir olaya eklemek istediğiniz yer işaretlerini veya yer imlerini seçin.
+1. Azure Portal, **Sentinel**  >  **tehdit yönetimi** arama  >    >  **yer işaretleri** sekmesine gidin ve bir olaya eklemek istediğiniz yer işaretlerini veya yer imlerini seçin.
 
 2. Komut çubuğundan **olay eylemlerini (Önizleme)** seçin:
     
     > [!div class="mx-imgBorder"]
     > ![Olaya yer işaretleri ekleme](./media/bookmarks/incident-actions.png)
 
-3. Gerektiğinde **Yeni olay oluştur** veya **var olan olaya Ekle**' yi seçin. Sonra:
+3. Gerektiğinde **Yeni olay oluştur** veya **var olan olaya Ekle**' yi seçin. Ardından:
     
     - Yeni bir olay için: Isteğe bağlı olarak olay ayrıntılarını güncelleştirin ve ardından **Oluştur**' u seçin.
     - Var olan bir olaya bir yer işareti eklemek için: bir olay seçin ve ardından **Ekle**' yi seçin. 
@@ -128,7 +128,7 @@ Yer işareti yapılan sorguları, sonuçları veya onların geçmişini görünt
 
 - Güncelleştirmeyi kimin yaptığını, güncelleştirilmiş değerleri ve güncelleştirmenin gerçekleştiği saati içeren tüm yer işareti meta verilerini görmek için **yer işareti günlüklerini görüntüleyin** .
 
-Ayrıca **, yer** işaretleri sekmesindeki komut çubuğundan **yer işareti günlükleri** ' ni seçerek tüm yer işaretlerine ait ham yer işareti verilerini görüntüleyebilirsiniz  >  **Bookmarks** :
+Ayrıca **, yer** işaretleri sekmesindeki komut çubuğundan **yer işareti günlükleri** ' ni seçerek tüm yer işaretlerine ait ham yer işareti verilerini görüntüleyebilirsiniz  >   :
 
 > [!div class="mx-imgBorder"]
 > ![Yer işareti günlükleri](./media/bookmarks/bookmark-logs.png)
@@ -140,7 +140,7 @@ Bu görünüm, ilişkili meta verilerle tüm yer işaretlerinizi gösterir. Arad
 
 ## <a name="delete-a-bookmark"></a>Yer işaretini silme
  
-1.  Azure Portal, **Sentinel**  >  **tehdit yönetimi** arama  >  **Hunting**  >  **yer işaretleri** sekmesine gidin ve silmek istediğiniz yer işaretlerini veya yer imlerini seçin. 
+1.  Azure Portal, **Sentinel**  >  **tehdit yönetimi** arama  >    >  **yer işaretleri** sekmesine gidin ve silmek istediğiniz yer işaretlerini veya yer imlerini seçin. 
 
 2. Seçimlerinizi sağ tıklatın ve yer işaretini veya yer imlerini silme seçeneğini belirleyin. Örneğin, yalnızca bir yer işareti seçtiyseniz ve iki yer işaretini seçtiyseniz **2 yer Işaretini silerek** **yer işaretini silin** .
     

@@ -9,16 +9,16 @@ ms.date: 02/04/2021
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: f469664c716ecef6b82de2befa40b33f253e229f
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99627738"
 ---
 1. Oluşturduğunuz sanal WAN 'ı bulun. Sanal WAN sayfasında, **bağlantı** bölümünde, **hub**' ı seçin.
 2. **Hub 'lar** sayfasında **+ yeni hub** ' ı seçerek **sanal hub oluştur** sayfasını açın.
 
-    ![Ekran görüntüsü, temel kavramlar sekmesi seçiliyken sanal hub oluştur bölmesini gösterir.](./media/virtual-wan-tutorial-hub-include/basics.png "Temel bilgiler")
+    ![Ekran görüntüsü, temel kavramlar sekmesi seçiliyken sanal hub oluştur bölmesini gösterir.](./media/virtual-wan-tutorial-hub-include/basics.png "Temel Bilgiler")
 3. **Sanal hub** sayfası **temel bilgileri** Oluştur sekmesinde aşağıdaki alanları doldurun:
 
    * **Bölge** (daha önce konum olarak adlandırılır)

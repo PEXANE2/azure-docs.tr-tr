@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18104f06e779046786a2c7794736d01c35139490
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2611a29ffcfdeb805934eacc54181515ec44f38c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100365812"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578048"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Karma Azure Active Directory katılmış alt düzey cihazlarda sorun giderme 
 
@@ -39,7 +39,7 @@ Bu makale, olası sorunların nasıl çözüleceği hakkında sorun giderme kıl
 **Bilmeniz gerekenler:** 
 
 - Alt düzey Windows cihazları için karma Azure AD katılımı, Windows 10 ' da olduğundan biraz farklı çalışır. Birçok müşteri, AD FS (federe etki alanları için) veya sorunsuz SSO (yönetilen etki alanları için) ihtiyacı olduğunu fark etmez.
-- Sorunsuz SSO, Firefox ve Microsoft Edge tarayıcılarında özel göz atma modunda çalışmaz. Tarayıcı Gelişmiş korumalı modda çalışıyorsa Internet Explorer 'da da çalışmaz.
+- Sorunsuz SSO, Firefox ve Microsoft Edge tarayıcılarında özel göz atma modunda çalışmaz. Tarayıcı Gelişmiş korumalı modda çalışıyorsa veya artırılmış güvenlik yapılandırması etkinse, Internet Explorer üzerinde de çalışmaz.
 - Federasyon etki alanları olan müşteriler için, hizmet bağlantı noktası (SCP), yönetilen etki alanı adını (örneğin, contoso.onmicrosoft.com) işaret edecek şekilde yapılandırıldıysa, alt düzey Windows cihazlarına yönelik karma Azure AD katılımı çalışmaz.
 - Birden çok etki alanı kullanıcısı, alt düzey karma Azure AD 'ye katılmış cihazlarda oturum açtığında aynı fiziksel cihaz Azure AD 'de birden çok kez görünür.  Örneğin, *jtikan* ve *jharnett* bir cihazda oturum açtığında, her biri için **Kullanıcı** bilgileri sekmesinde ayrı bir kayıt (DeviceID) oluşturulur. 
 - Ayrıca, işletim sisteminin yeniden yüklenmesi veya el ile yeniden kayıt olması nedeniyle Kullanıcı bilgileri sekmesinde bir cihaz için birden çok giriş alabilirsiniz.

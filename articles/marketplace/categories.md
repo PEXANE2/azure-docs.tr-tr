@@ -8,10 +8,10 @@ author: trkeya
 ms.author: trkeya
 ms.date: 11/16/2020
 ms.openlocfilehash: 5042c6801678f94c749454dac28eec56fdcb7559
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94811103"
 ---
 # <a name="categories-and-subcategories-in-the-commercial-marketplace"></a>Ticari Market 'teki Kategoriler ve alt kategoriler
@@ -38,15 +38,15 @@ Bu tabloda, Azure Marketi ile eşlenen birincil Kategoriler ve alt kategoriler g
 | Kapsayıcılar | Kapsayıcı uygulamaları<br>Kapsayıcı görüntüleri<br>Kapsayıcıları kullanmaya başlama |
 | Veritabanı | Veri Lakes<br>Veri Ambarı<br>Muhasebe/blok zinciri veritabanları<br>NoSQL veritabanları<br>İlişkisel Veritabanları |
 | Geliştirici Araçları | Geliştirici hizmeti<br>Betikler<br>Araçlar |
-| DevOps | YOK |
+| DevOps | Yok |
 | Geliştirici hizmeti | Mesajlaşma |
 | Kimlik | Erişim yönetimi |
 | BT & yönetim araçları | Yönetim Çözümleri<br>İş Uygulamaları |
 | Nesnelerin İnterneti | Veri Analizi & görselleştirme<br>IoT bağlantısı<br>IoT Çekirdek Hizmetleri<br>IoT Edge modüller<br>IoT çözümleri |
 | Medya | Content Protection<br>Isteğe bağlı akış & canlı<br>Media Services |
 | Geçiş | Veri Taşıma |
-| Karma Gerçeklik | YOK |
-| & tanılamayı izleme | YOK |
+| Karma Gerçeklik | Yok |
+| & tanılamayı izleme | Yok |
 | Ağ | Gereç yöneticileri<br>Bağlantı<br>Güvenlik duvarları<br>Yük Dengeleyiciler |
 | Güvenlik | Kimlik & erişim yönetimi<br>Information Protection<br>Tehdit Koruması |
 | Depolama | Yedekleme & kurtarma<br>Veri yaşam döngüsü yönetimi<br>Kurumsal karma depolama<br>Dosya paylaşımı |
