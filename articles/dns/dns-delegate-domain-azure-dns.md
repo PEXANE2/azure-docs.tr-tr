@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: rohink
 ms.openlocfilehash: a8f64ab3141459142def12a1758b0fe0a94ca432
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92282168"
 ---
 # <a name="tutorial-host-your-domain-in-azure-dns"></a>Öğretici: Azure DNS’te etki alanınızı barındırma
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure DNS barındırabilmeniz için, test etmek için kullanılabilir bir etki alanı adına sahip olmanız gerekir. Bu etki alanı üzerinde tam denetime sahip olmanız gerekir. Tam denetim, etki alanı için ad sunucusu (NS) kayıtlarını ayarlama olanağını kapsar.
 
@@ -40,7 +40,7 @@ Bu örnekte, üst etki alanına **contoso.net** olarak başvuracağız
 
 ## <a name="create-a-dns-zone"></a>DNS bölgesi oluşturma
 
-1. Bir DNS bölgesi oluşturmak için [Azure Portal](https://portal.azure.com/) gidin. **DNS bölgelerini**arayın ve seçin.
+1. Bir DNS bölgesi oluşturmak için [Azure Portal](https://portal.azure.com/) gidin. **DNS bölgelerini** arayın ve seçin.
 
    ![DNS bölgesi](./media/dns-delegate-domain-azure-dns/openzone650.png)
 
@@ -65,7 +65,7 @@ DNS bölgenizi Azure DNS'ye devretmeden önce, bölgenizin ad sunucularını bil
 
 1. Oluşturulan DNS bölgesiyle, Azure Portal **Sık Kullanılanlar** bölmesinde, **Tüm kaynaklar**’ı seçin. **Tüm kaynaklar** sayfasında DNS bölgenizi seçin. Seçtiğiniz abonelikte zaten çeşitli kaynaklar varsa, uygulama ağ geçidine kolayca erişebilmek için etki alanı adınızı **ada göre filtrele** kutusuna girebilirsiniz. 
 
-1. DNS bölgesi sayfasından ad sunucularını alın. Bu örnekte, contoso.net bölgesine ad Servers *ns1-01.Azure-DNS.com*, *NS2-01.Azure-DNS.net*, *NS3-01.Azure-DNS.org*ve *NS4-01.Azure-DNS.info*atanmıştır:
+1. DNS bölgesi sayfasından ad sunucularını alın. Bu örnekte, contoso.net bölgesine ad Servers *ns1-01.Azure-DNS.com*, *NS2-01.Azure-DNS.net*, *NS3-01.Azure-DNS.org* ve *NS4-01.Azure-DNS.info* atanmıştır:
 
    ![Ad sunucularının listesi](./media/dns-delegate-domain-azure-dns/viewzonens500.png)
 
@@ -82,7 +82,7 @@ Artık DNS bölgesi oluşturulduğuna ve ad sunucularınız olduğuna göre, üs
 > [!NOTE]
 > Ad sunucusu adreslerini kopyalarken adresinin sonundaki noktayı da kopyaladığınızdan emin olun. Sondaki nokta bir tam etki alanı adının sonuna gösterir. NS adı sonunda yoksa, bazı kayıt şirketlerinde dönemi ekler. DNS RFC ile uyumlu olmak için sondaki dönemi dahil edin.
 
-Kendi bölgenizdeki ad sunucularını kullanan Temsilciler (bazen *Gösterim ad sunucuları*olarak adlandırılır) Azure DNS 'de Şu anda desteklenmemektedir.
+Kendi bölgenizdeki ad sunucularını kullanan Temsilciler (bazen *Gösterim ad sunucuları* olarak adlandırılır) Azure DNS 'de Şu anda desteklenmemektedir.
 
 ## <a name="verify-the-delegation"></a>Temsilciyi doğrulama
 

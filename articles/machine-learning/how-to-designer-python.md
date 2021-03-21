@@ -11,10 +11,10 @@ ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer, devx-track-python
 ms.openlocfilehash: dcc28d98efbc82079586de8cfbecd35effc93d6e
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94556242"
 ---
 # <a name="run-python-code-in-azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısında Python kodu çalıştırma
@@ -58,7 +58,7 @@ Doğrudan **Python betik** modülünde veri oluşturabileceğiniz veya içeri ak
 
 Tasarımcı, düzenlemeniz için bir başlangıç giriş noktası betiği sağlar ve kendi Python kodunuzu girersiniz. 
 
-Bu örnekte, **her horseüs için dolar** , yeni bir sütun oluşturmak için, otomobil veri kümesinde, **Price** ve **gücünü** 'da bulunan iki sütunu birleştirmek üzere Pandas kullanırsınız. Bu sütun her horseüs için ne kadar ücret Ödediğinize göre temsil eder. Bu, bir otomobil para için iyi bir anlaşma olup olmadığına karar veren yararlı bir özelliktir. 
+Bu örnekte, **her horseüs için dolar**, yeni bir sütun oluşturmak için, otomobil veri kümesinde, **Price** ve **gücünü**'da bulunan iki sütunu birleştirmek üzere Pandas kullanırsınız. Bu sütun her horseüs için ne kadar ücret Ödediğinize göre temsil eder. Bu, bir otomobil para için iyi bir anlaşma olup olmadığına karar veren yararlı bir özelliktir. 
 
 1. **Python betik modülünü Yürüt** ' ü seçin.
 

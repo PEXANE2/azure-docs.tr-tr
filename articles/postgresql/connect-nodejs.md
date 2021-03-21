@@ -14,17 +14,17 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 5/6/2019
 ms.openlocfilehash: 7569606429740de23b56767d490b9bb14283d468
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93331701"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Hızlı başlangıç: PostgreSQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için Node.js kullanma-tek sunucu
 
 Bu hızlı başlangıçta, bir Node.js uygulaması kullanarak PostgreSQL için Azure veritabanı 'na bağlanırsınız. Ayrıca veritabanında veri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini nasıl kullanacağınız da gösterilmiştir. Bu makaledeki adımlarda, Node.js kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve PostgreSQL için Azure Veritabanı ile çalışmaya yeni başladığınız varsayılır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
@@ -48,9 +48,9 @@ npm list
 ## <a name="get-connection-information"></a>Bağlantı bilgilerini alma
 PostgreSQL için Azure Veritabanı'na bağlanmak üzere gereken bağlantı bilgilerini alın. Tam sunucu adına ve oturum açma kimlik bilgilerine ihtiyacınız vardır.
 
-1. [Azure Portal](https://portal.azure.com/), oluşturduğunuz sunucuyu (örneğin, **demosunucum** ) arayın ve seçin.
+1. [Azure Portal](https://portal.azure.com/), oluşturduğunuz sunucuyu (örneğin, **demosunucum**) arayın ve seçin.
 
-1. Sunucunun **genel bakış** panelinden **sunucu adı** ve **Yönetici Kullanıcı adı** ' nı bir yere göz atın. Parolanızı unutursanız, bu panelden parolayı da sıfırlayabilirsiniz.
+1. Sunucunun **genel bakış** panelinden **sunucu adı** ve **Yönetici Kullanıcı adı**' nı bir yere göz atın. Parolanızı unutursanız, bu panelden parolayı da sıfırlayabilirsiniz.
 
    :::image type="content" source="./media/connect-nodejs/server-details-azure-database-postgresql.png" alt-text="PostgreSQL için Azure veritabanı bağlantı dizesi":::
 

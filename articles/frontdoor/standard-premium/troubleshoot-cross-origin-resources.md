@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/18/2021
 ms.author: qixwang
 ms.openlocfilehash: ee8f19aca62d2e331fcf59551d47c2dac93783b1
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101100361"
 ---
 # <a name="using-azure-front-door-standardpremium-with-cross-origin-resource-sharing-cors"></a>Azure ön kapısı Standart/Premium 'u, çıkış noktaları arası kaynak paylaşımı (CORS) ile kullanma
@@ -40,7 +40,7 @@ CORS (Çıkış Noktaları Arası Kaynak Paylaşımı), bir etki alanında çal�
 
 2. Sunucu, aşağıdakilerden biriyle yanıt verebilir:
 
-   * Yanıtında bir **erişim-denetim-Izin verme-kaynak** üst bilgisi, hangi kaynak siteye izin verildiğini belirtir. Örneğin:
+   * Yanıtında bir **erişim-denetim-Izin verme-kaynak** üst bilgisi, hangi kaynak siteye izin verildiğini belirtir. Örnek:
 
      `Access-Control-Allow-Origin: https://www.contoso.com`
 

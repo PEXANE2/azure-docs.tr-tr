@@ -8,19 +8,19 @@ ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: victorh
 ms.openlocfilehash: 47891dfa7fc0c9b30ccdbf2ed7710125eb36e4a3
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397816"
 ---
-# <a name="configure-end-to-end-tls-by-using-application-gateway-with-powershell"></a>PowerShell ile Application Gateway kullanarak uçtan uca TLS Yapılandırma
+# <a name="configure-end-to-end-tls-by-using-application-gateway-with-powershell"></a>PowerShell ile Application Gateway'i kullanarak uçtan uca TLS'yi yapılandırma
 
 ## <a name="overview"></a>Genel Bakış
 
 Azure Application Gateway trafiğin uçtan uca şifrelenmesini destekler. Application Gateway, uygulama ağ geçidinde TLS/SSL bağlantısını sonlandırır. Ağ Geçidi daha sonra trafiğe yönlendirme kuralları uygular, paketi yeniden şifreler ve tanımlanan yönlendirme kurallarına göre paketi uygun arka uç sunucusuna iletir. Web sunucusundan alınan herhangi bir yanıt, son kullanıcıya dönerken aynı süreci izler.
 
-Application Gateway özel TLS seçeneklerini tanımlamayı destekler. Ayrıca, şu protokol sürümlerinin devre dışı bırakılmasını destekler: **tlsv 1.0** , **Tlsv 1.1** ve **tlsv 1.2** , hangi şifre paketlerinin kullanılacağını ve tercih sırasını tanımlar. Yapılandırılabilir TLS seçenekleri hakkında daha fazla bilgi edinmek için bkz. [TLS ilkesine genel bakış](application-gateway-SSL-policy-overview.md).
+Application Gateway özel TLS seçeneklerini tanımlamayı destekler. Ayrıca, şu protokol sürümlerinin devre dışı bırakılmasını destekler: **tlsv 1.0**, **Tlsv 1.1** ve **tlsv 1.2**, hangi şifre paketlerinin kullanılacağını ve tercih sırasını tanımlar. Yapılandırılabilir TLS seçenekleri hakkında daha fazla bilgi edinmek için bkz. [TLS ilkesine genel bakış](application-gateway-SSL-policy-overview.md).
 
 > [!NOTE]
 > SSL 2,0 ve SSL 3,0 varsayılan olarak devre dışıdır ve etkinleştirilemez. Bunlar güvenli değil olarak kabul edilir ve Application Gateway kullanılamaz.
@@ -202,7 +202,7 @@ Tüm yapılandırma öğeleri, uygulama ağ geçidi oluşturulmadan önce ayarla
    $rule = New-AzApplicationGatewayRequestRoutingRule -Name 'rule01' -RuleType basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
    ```
 
-10. Uygulama ağ geçidinin örnek boyutunu yapılandırın. Kullanılabilen boyutlar **Standart \_ küçük** , **Standart \_ Orta** ve **Standart \_ boyutlardır**.  Kapasite için, kullanılabilir değerler **1** ile **10** arası değerlerdir.
+10. Uygulama ağ geçidinin örnek boyutunu yapılandırın. Kullanılabilen boyutlar **Standart \_ küçük**, **Standart \_ Orta** ve **Standart \_ boyutlardır**.  Kapasite için, kullanılabilir değerler **1** ile **10** arası değerlerdir.
 
     ```powershell
     $sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
@@ -219,7 +219,7 @@ Tüm yapılandırma öğeleri, uygulama ağ geçidi oluşturulmadan önce ayarla
     - **TLSV1_1**
     - **TLSV1_2**
     
-    Aşağıdaki örnek, en düşük protokol sürümünü **TLSv1_2** olarak ayarlar ve **TLS \_ ECDHE \_ ECDSA 'yı \_ \_ AES \_ 128 \_ GCM \_ SHA256** , **TLS \_ ECDHE \_ ECDSA ile AES \_ \_ \_ 256 \_ GCM \_ SHA384** ve TLS RSA ile yalnızca **\_ \_ \_ AES \_ 128 \_ GCM \_ SHA256** ile etkinleştirilir.
+    Aşağıdaki örnek, en düşük protokol sürümünü **TLSv1_2** olarak ayarlar ve **TLS \_ ECDHE \_ ECDSA 'yı \_ \_ AES \_ 128 \_ GCM \_ SHA256**, **TLS \_ ECDHE \_ ECDSA ile AES \_ \_ \_ 256 \_ GCM \_ SHA384** ve TLS RSA ile yalnızca **\_ \_ \_ AES \_ 128 \_ GCM \_ SHA256** ile etkinleştirilir.
 
     ```powershell
     $SSLPolicy = New-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -PolicyType Custom
@@ -312,7 +312,7 @@ Yukarıdaki adımlar, uçtan uca TLS ile bir uygulama oluşturma ve belirli TLS 
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
 
-2. Bir TLS ilkesi tanımlayın. Aşağıdaki örnekte, **tlsv 1.0** ve **tlsv 1.1** devre dışıdır ve şifre paketleri ile **TLS \_ ecdhe \_ ECDSA, AES \_ \_ \_ 128 \_ gcm \_ SHA256** , **TLS \_ ECDHE \_ ECDSA ile AES \_ \_ \_ 256 \_ GCM \_ SHA384** ve **\_ \_ \_ AES \_ 128 \_ GCM \_ SHA256** olan TLS RSA, izin verilen tek alanlardır.
+2. Bir TLS ilkesi tanımlayın. Aşağıdaki örnekte, **tlsv 1.0** ve **tlsv 1.1** devre dışıdır ve şifre paketleri ile **TLS \_ ecdhe \_ ECDSA, AES \_ \_ \_ 128 \_ gcm \_ SHA256**, **TLS \_ ECDHE \_ ECDSA ile AES \_ \_ \_ 256 \_ GCM \_ SHA384** ve **\_ \_ \_ AES \_ 128 \_ GCM \_ SHA256** olan TLS RSA, izin verilen tek alanlardır.
 
    ```powershell
    Set-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -PolicyType Custom -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -ApplicationGateway $gw

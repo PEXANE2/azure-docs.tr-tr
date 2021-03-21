@@ -8,17 +8,17 @@ ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
 ms.openlocfilehash: c02ba12c790d745904d241f121e269aac3ed12f6
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96462980"
 ---
 # <a name="summary-dashboard-in-commercial-marketplace-analytics"></a>Ticari market analizinde özet panosu
 
 Bu makalede, Iş Ortağı Merkezi 'ndeki Özet Panosu hakkında bilgi sağlanmaktadır. Bu Pano, tekliflerinizle ilgili Market etkinliklerini özetleyen grafikleri, eğilimleri ve toplam veri değerlerini görüntüler.
 
-İş Ortağı Merkezi ' ndeki Özet panosuna erişmek için, **ticari Market** altında, özeti **[Çözümle](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**' yi seçin  >  **Summary**.
+İş Ortağı Merkezi ' ndeki Özet panosuna erişmek için, **ticari Market** altında, özeti **[Çözümle](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**' yi seçin  >  .
 
 >[!NOTE]
 > Analiz terminolojisi hakkında ayrıntılı tanımlamalar için bkz. [ticari Market Analytics terminolojisi ve sık sorulan sorular](./analytics-faq.md).

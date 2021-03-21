@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
 ms.openlocfilehash: 51546cce48f1ac079bb580da4276ec9b79896674
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92522489"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nexonia"></a>Öğretici: Nexonia ile tümleştirme Azure Active Directory
@@ -61,13 +61,13 @@ Nexonıa 'ın Azure AD 'ye tümleştirmesini yapılandırmak için, Galeriden Ne
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusunda, **Nexonia**yazın, sonuç panelinden **Nexonia** ' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusunda, **Nexonia** yazın, sonuç panelinden **Nexonia** ' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
      ![Sonuç listesinde Nexonia](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre Nexonia Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
+Bu bölümde, **Britta Simon** adlı bir test kullanıcısına göre Nexonia Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve Nexonia içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
 Azure AD çoklu oturum açma 'yı Nexonia ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -142,9 +142,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
@@ -159,7 +159,7 @@ Bu bölümde, Nexonia 'e erişim vererek Azure çoklu oturum açma özelliğini 
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Nexonıa**öğesini seçin.
+2. Uygulamalar listesinde, **Nexonıa** öğesini seçin.
 
     ![Uygulamalar listesindeki Nexonıa bağlantısı](common/all-applications.png)
 

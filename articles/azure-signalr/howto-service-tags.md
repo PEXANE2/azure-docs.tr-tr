@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/06/2020
 ms.author: dayshen
 ms.openlocfilehash: aaa97c2cb062f30b1260ec7f80f85a3caccf932f
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92152319"
 ---
 # <a name="use-service-tags-for-azure-signalr-service"></a>Azure SignalR hizmeti için hizmet etiketleri kullanma
@@ -27,13 +27,13 @@ Yeni bir giden ağ güvenlik kuralı ekleyerek Azure SignalR hizmetine giden tra
 
 1. Ağ güvenlik grubuna gidin.
 
-1. **Giden güvenlik kuralları**adlı ayarlar menüsüne tıklayın.
+1. **Giden güvenlik kuralları** adlı ayarlar menüsüne tıklayın.
 
 1. Üstteki düğme **+ Ekle** ' ye tıklayın.
 
-1. **Hedef**altında **hizmet etiketi** seçin.
+1. **Hedef** altında **hizmet etiketi** seçin.
 
-1. **Hedef hizmet etiketi**altında **AzureSignalR** öğesini seçin.
+1. **Hedef hizmet etiketi** altında **AzureSignalR** öğesini seçin.
 
 1. **Hedef bağlantı noktası aralıklarında** **443** ' i girin.
 

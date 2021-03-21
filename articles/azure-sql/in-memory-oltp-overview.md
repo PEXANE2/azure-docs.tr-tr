@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/19/2019
 ms.openlocfilehash: 48b74a5507eb4a1d48b7bf70133e476a30fe8169
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92779960"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde bellek içi teknolojileri kullanarak performansı iyileştirin
@@ -149,7 +149,7 @@ Ancak katmanı daha eski sürüme dönüştürmek veritabanınızı olumsuz etki
 
 Veritabanını Genel Amaçlı, standart veya temel sürümüne indirgediğinizde, tüm bellek için iyileştirilmiş tabloları ve tablo türlerini ve yerel koda derlenmiş T-SQL modüllerini kaldırın.
 
-*İş açısından kritik katmanındaki ölçek azaltma kaynakları* : bellek için iyileştirilmiş tablolardaki veriler, veritabanının veya yönetilen örneğin katmanıyla ILIŞKILI In-Memory OLTP depolama alanına sığmalıdır ya da elastik havuzda kullanılabilir. Katmanı ölçeklendirmeye veya veritabanını daha fazla kullanılabilir In-Memory OLTP depolaması olmayan bir havuza taşımaya çalışırsanız, işlem başarısız olur.
+*İş açısından kritik katmanındaki ölçek azaltma kaynakları*: bellek için iyileştirilmiş tablolardaki veriler, veritabanının veya yönetilen örneğin katmanıyla ILIŞKILI In-Memory OLTP depolama alanına sığmalıdır ya da elastik havuzda kullanılabilir. Katmanı ölçeklendirmeye veya veritabanını daha fazla kullanılabilir In-Memory OLTP depolaması olmayan bir havuza taşımaya çalışırsanız, işlem başarısız olur.
 
 ## <a name="in-memory-columnstore"></a>Bellek içi columnstore
 
@@ -212,6 +212,6 @@ Hedef katmanınız S3 altındaysa, *tek veritabanını temel veya Standart sür�
 
 ### <a name="tools"></a>Araçlar
 
-- [Azure Portal](https://portal.azure.com/)
+- [Azure portalı](https://portal.azure.com/)
 - [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms)
 - [SQL Server Veri Araçları (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt)

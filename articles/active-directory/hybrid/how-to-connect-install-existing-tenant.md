@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 68251270b6273f5a07391138e5c7210f1c46ba5a
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93420538"
 ---
 # <a name="azure-ad-connect-when-you-have-an-existing-tenant"></a>Azure AD Connect: mevcut bir kiracınız olduğunda
@@ -34,7 +34,7 @@ Azure AD 'deki bir nesne, bulutta (Azure AD) veya şirket içinde ana kopyalı o
 Azure AD 'de bulunan ve şirket içi AD 'de bulunan kullanıcıları yönetmeye başladıysanız ve daha sonra Connect kullanmak istiyorsanız, dikkate almanız gereken bazı ek sorunlar vardır.
 
 ## <a name="sync-with-existing-users-in-azure-ad"></a>Azure AD 'de mevcut kullanıcılarla eşitleme
-Azure AD Connect yüklediğinizde ve eşitlemeye başladığınızda, Azure AD eşitleme hizmeti (Azure AD 'de) her yeni nesne üzerinde bir denetim yapar ve eşleştirilecek varolan bir nesneyi bulmaya çalışır. Bu işlem için kullanılan üç öznitelik vardır: **userPrincipalName** , **proxyAddresses** ve **sourcetutturucu** / **ImmutableID**. **UserPrincipalName** ve **proxyAddresses** ile bir eşleşme, **yumuşak eşleşme** olarak bilinir. **Sourcetutturucu** üzerinde bir eşleşme, **sabit eşleşme** olarak bilinir. **ProxyAddresses** özniteliği Için yalnızca **SMTP:** , birincil e-posta adresi olan değer değerlendirme için kullanılır.
+Azure AD Connect yüklediğinizde ve eşitlemeye başladığınızda, Azure AD eşitleme hizmeti (Azure AD 'de) her yeni nesne üzerinde bir denetim yapar ve eşleştirilecek varolan bir nesneyi bulmaya çalışır. Bu işlem için kullanılan üç öznitelik vardır: **userPrincipalName**, **proxyAddresses** ve **sourcetutturucu** / **ImmutableID**. **UserPrincipalName** ve **proxyAddresses** ile bir eşleşme, **yumuşak eşleşme** olarak bilinir. **Sourcetutturucu** üzerinde bir eşleşme, **sabit eşleşme** olarak bilinir. **ProxyAddresses** özniteliği Için yalnızca **SMTP:**, birincil e-posta adresi olan değer değerlendirme için kullanılır.
 
 Eşleşme yalnızca, Connect 'ten gelen yeni nesneler için değerlendirilir. Varolan bir nesneyi bu özniteliklerin herhangi biriyle eşleşmesine olanak verecek şekilde değiştirirseniz, bunun yerine bir hata görürsünüz.
 

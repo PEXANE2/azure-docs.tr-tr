@@ -9,10 +9,10 @@ ms.date: 10/16/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
 ms.openlocfilehash: a5669b15c041f663605a62ef8d02b206928d0c14
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93101604"
 ---
 # <a name="create-a-container-in-azure-cosmos-db-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'sinde kapsayıcı oluşturma
@@ -31,13 +31,13 @@ Bu makalede, MongoDB için Azure Cosmos DB API 'sinde bir kapsayıcı oluşturma
 
 1. [Yeni bir Azure Cosmos hesabı oluşturun](create-mongodb-dotnet.md#create-a-database-account)veya var olan bir hesabı seçin.
 
-1. **Veri Gezgini** bölmesini açın ve **yeni kapsayıcı** ' yı seçin. Ardından, aşağıdaki ayrıntıları sağlayın:
+1. **Veri Gezgini** bölmesini açın ve **yeni kapsayıcı**' yı seçin. Ardından, aşağıdaki ayrıntıları sağlayın:
 
    * Yeni bir veritabanı mı yoksa var olan bir veritabanını mı kullandığınızı belirtin.
    * Bir kapsayıcı KIMLIĞI girin.
    * Parça anahtarı girin.
    * Sağlanacak bir üretilen iş (örneğin, 1000 ru) girin.
-   * **Tamam** ’ı seçin.
+   * **Tamam**’ı seçin.
 
     :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-mongodb.png" alt-text="MongoDB için Azure Cosmos DB API 'nin ekran görüntüsü, kapsayıcı ekleme iletişim kutusu":::
 

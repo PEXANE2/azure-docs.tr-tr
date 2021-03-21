@@ -5,10 +5,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 02/12/2018
 ms.openlocfilehash: cd339729f2300ff7e13e7422bf73373b4ce4658e
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92221018"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics’te tanılama günlüklerine erişim
@@ -40,7 +40,7 @@ Tanılama günlüğü, veri erişim denetim izlerini toplamanıza olanak tanır.
      * Verileri Azure Izleyici hizmetine göndermek için __Log Analytics gönder__ ' i seçin. Günlükleri toplamak ve analiz etmek için Azure Izleyici günlüklerini kullanmak istiyorsanız bu seçeneği kullanın.
    * Denetim günlüklerini veya istek günlüklerini mi yoksa her ikisini mi almak istediğinizi belirtin.  İstek günlüğü her API isteğini yakalar. Bir denetim günlüğü, bu API isteği tarafından tetiklenen tüm işlemleri kaydeder.
 
-   * __Bir depolama hesabına arşivleme__için, verilerin saklanacağı gün sayısını belirtin.
+   * __Bir depolama hesabına arşivleme__ için, verilerin saklanacağı gün sayısını belirtin.
 
    * __Kaydet__’e tıklayın.
 
@@ -125,7 +125,7 @@ JSON biçimli istek günlüğünde örnek bir giriş aşağıda verilmiştir. He
 
 #### <a name="request-log-schema"></a>İstek günlüğü şeması
 
-| Ad | Tür | Açıklama |
+| Ad | Tür | Description |
 | --- | --- | --- |
 | time |Dize |Günlüğün zaman damgası (UTC) |
 | resourceId |Dize |İşlemin gerçekleştiği kaynağın tanımlayıcısı |
@@ -139,7 +139,7 @@ JSON biçimli istek günlüğünde örnek bir giriş aşağıda verilmiştir. He
 
 #### <a name="request-log-properties-schema"></a>İstek günlüğü özellikleri şeması
 
-| Ad | Tür | Açıklama |
+| Ad | Tür | Description |
 | --- | --- | --- |
 | HttpMethod |Dize |İşlem için kullanılan HTTP yöntemi. Örneğin, GET. |
 | Yol |Dize |İşlemin gerçekleştirildiği yol |
@@ -175,7 +175,7 @@ JSON biçimli denetim günlüğünde örnek bir giriş aşağıda verilmiştir. 
 
 #### <a name="audit-log-schema"></a>Denetim günlüğü şeması
 
-| Ad | Tür | Açıklama |
+| Ad | Tür | Description |
 | --- | --- | --- |
 | time |Dize |Günlüğün zaman damgası (UTC) |
 | resourceId |Dize |İşlemin gerçekleştiği kaynağın tanımlayıcısı |
@@ -187,13 +187,13 @@ JSON biçimli denetim günlüğünde örnek bir giriş aşağıda verilmiştir. 
 | properties |JSON |Ayrıntılar için sonraki bölüme (denetim günlüğü özellikleri şeması) bakın |
 
 > [!NOTE]
-> **ResultType** ve **resultsignature** bir işlemin sonucu hakkında bilgi sağlar ve yalnızca bir işlem tamamlanırsa bir değer içerir. Örneğin, **OperationName** bir **Jobstarted** veya **jobstarted**değeri içerdiğinde yalnızca bir değer içerirler.
+> **ResultType** ve **resultsignature** bir işlemin sonucu hakkında bilgi sağlar ve yalnızca bir işlem tamamlanırsa bir değer içerir. Örneğin, **OperationName** bir **Jobstarted** veya **jobstarted** değeri içerdiğinde yalnızca bir değer içerirler.
 >
 >
 
 #### <a name="audit-log-properties-schema"></a>Denetim günlüğü özellikleri şeması
 
-| Ad | Tür | Açıklama |
+| Ad | Tür | Description |
 | --- | --- | --- |
 | JobId |Dize |İşe atanan KIMLIK |
 | JobName |Dize |İş için belirtilen ad |
@@ -204,7 +204,7 @@ JSON biçimli denetim günlüğünde örnek bir giriş aşağıda verilmiştir. 
 | Paralellik |Dize |Gönderim sırasında bu iş için istenen Data Lake Analytics birim sayısı |
 
 > [!NOTE]
-> **Submittime**, **StartTime**, **BitişZamanı**ve **paralellik** , bir işlem hakkında bilgi sağlar. Bu girişler yalnızca, işlem başlatılmış veya tamamlandığında bir değer içerir. Örneğin, **Submittime** yalnızca **OperationName** değerinden **jobgönderildi**değeri varsa bir değer içerir.
+> **Submittime**, **StartTime**, **BitişZamanı** ve **paralellik** , bir işlem hakkında bilgi sağlar. Bu girişler yalnızca, işlem başlatılmış veya tamamlandığında bir değer içerir. Örneğin, **Submittime** yalnızca **OperationName** değerinden **jobgönderildi** değeri varsa bir değer içerir.
 
 ## <a name="process-the-log-data"></a>Günlük verilerini işleme
 

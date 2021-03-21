@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/12/2020
 ms.author: jeedes
 ms.openlocfilehash: ee5c7295a95122f5a7089039a33136285df21a46
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92459831"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ip-platform"></a>Öğretici: IP platformu ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, IP platformunu Azure Active Directory (Azure AD) ile tümleşti
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -57,7 +57,7 @@ IP platformunun Azure AD ile tümleştirilmesini yapılandırmak için Galeriden
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-ip-platform"></a>IP platformu için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu IP platformu ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve IP platformunda ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu IP platformu ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve IP platformunda ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu IP platformu ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 

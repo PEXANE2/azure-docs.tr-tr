@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 0c96d161e55261af1bbe04eae6ead1d245158d02
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98064836"
 ---
 # <a name="avoid-page-reloads-when-acquiring-and-renewing-tokens-silently-using-msaljs"></a>MSAL.js kullanarak belirteçleri sessizce alırken sayfa yeniden yüklemeden kaçının
@@ -35,7 +35,7 @@ Uygulamanın tamamının yeniden yüklenmesi veya bunun nedeniyle oluşan diğer
 
 ## <a name="initialization-in-your-main-app-file"></a>Ana uygulama dosyanızda başlatma
 
-Uygulamanız, uygulamanın başlatma, Yönlendirme ve diğer öğeleri tanımlayan bir merkezi JavaScript dosyası gibi yapılandırılmış ise, uygulama modüllerinizi uygulamanın bir uygulamasına yüklenip yüklenmemesine göre koşullu olarak yükleyebilirsiniz `iframe` . Örneğin:
+Uygulamanız, uygulamanın başlatma, Yönlendirme ve diğer öğeleri tanımlayan bir merkezi JavaScript dosyası gibi yapılandırılmış ise, uygulama modüllerinizi uygulamanın bir uygulamasına yüklenip yüklenmemesine göre koşullu olarak yükleyebilirsiniz `iframe` . Örnek:
 
 AngularJS: app.js
 

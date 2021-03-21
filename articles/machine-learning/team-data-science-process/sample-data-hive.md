@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 6a015da77cb7c0ba54be1dd5e729a9ee8a848c9d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93321893"
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>Azure HDInsight Hive tablolarındaki örnek veriler
@@ -54,7 +54,7 @@ where samplekey<='${hiveconf:sampleRate}'
 Burada, `<sample rate, 0-1>` kullanıcıların örneklemek istediği kayıt oranını belirtir.
 
 ## <a name="random-sampling-by-groups"></a><a name="group"></a> Gruplara göre rastgele örnekleme
-Kategorik verileri örnekleme sırasında, kategorik değişkenin bir değeri için tüm örnekleri dahil etmek veya hariç tutmak isteyebilirsiniz. Bu örnekleme sıralaması "gruba göre örnekleme" olarak adlandırılır. Örneğin, NY, MA, CA, NJ ve PA gibi değerler içeren kategorik bir değişkeniniz " *durum* " ise, örneklenip örneklenmeseler her bir durum için kayıtların birlikte olmasını istersiniz.
+Kategorik verileri örnekleme sırasında, kategorik değişkenin bir değeri için tüm örnekleri dahil etmek veya hariç tutmak isteyebilirsiniz. Bu örnekleme sıralaması "gruba göre örnekleme" olarak adlandırılır. Örneğin, NY, MA, CA, NJ ve PA gibi değerler içeren kategorik bir değişkeniniz "*durum*" ise, örneklenip örneklenmeseler her bir durum için kayıtların birlikte olmasını istersiniz.
 
 Gruba göre örnekleyerek örnek bir sorgu aşağıda verilmiştir:
 

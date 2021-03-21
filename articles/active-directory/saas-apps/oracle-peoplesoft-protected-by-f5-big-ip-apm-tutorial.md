@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.author: jeedes
 ms.openlocfilehash: 3b7c8e024ac8361c08cc41195531a114bb12fcb4
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92522300"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-oracle-peoplesoft---protected-by-f5-big-ip-apm"></a>Öğretici: F5 BIG-IP APM ile Oracle PeopleSoft ile korunan çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -66,7 +66,7 @@ F5 BIG-IP APM tarafından Azure AD 'ye Oracle PeopleSoft-Protected 'ın tümleş
 
 ## <a name="configure-and-test-azure-ad-sso-for-oracle-peoplesoft---protected-by-f5-big-ip-apm"></a>F5 BIG-IP APM ile Oracle PeopleSoft-Protected için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak F5 BIG-IP APM Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, F5 BIG-IP APM tarafından korunan bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak F5 BIG-IP APM Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, F5 BIG-IP APM tarafından korunan bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 F5 BIG-IP APM tarafından Oracle PeopleSoft-Protected ile Azure AD SSO 'yu yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
@@ -108,7 +108,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Yukarıdaki ' a ek olarak, F5 büyük-IP APM uygulaması tarafından korunan Oracle PeopleSoft, daha az sayıda özniteliğin aşağıda gösterilen SAML yanıtına geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
     
-    | Adı |  Kaynak özniteliği|
+    | Name |  Kaynak özniteliği|
     | ------------------ | --------- |
     | EMPLıD | User. EmployeeID |
 
@@ -198,7 +198,7 @@ Meta veri sertifikasını, daha sonra kurulum sürecinde kullanılacak F5 'e akt
 
 ### <a name="create-a-new-client-ssl-profile"></a>Yeni bir Istemci SSL profili oluşturun
 
-**SSL > istemci > + > yerel trafik > profillerine**gidin, aşağıdaki bilgileri tamamlayıp **bitti**' ye tıklayın.
+**SSL > istemci > + > yerel trafik > profillerine** gidin, aşağıdaki bilgileri tamamlayıp **bitti**' ye tıklayın.
 
 * Ad: `<Name>`
 * Sertifika `<Certificate>`
@@ -208,7 +208,7 @@ Meta veri sertifikasını, daha sonra kurulum sürecinde kullanılacak F5 'e akt
 
 ### <a name="create-a-new-virtual-server"></a>Yeni bir sanal sunucu oluştur
 
-1. Sanal **sunucular > sanal sunucu listesi > + ' > yerel trafiğe**gidin, aşağıdaki bilgileri tamamlayıp **bitti**' ye tıklayın.
+1. Sanal **sunucular > sanal sunucu listesi > + ' > yerel trafiğe** gidin, aşağıdaki bilgileri tamamlayıp **bitti**' ye tıklayın.
     * Ad: `<Name>`
     * Hedef adres/maske: `<Address>`
     * Hizmet bağlantı noktası: bağlantı noktası 443 HTTPS
@@ -235,12 +235,12 @@ Meta veri sertifikasını, daha sonra kurulum sürecinde kullanılacak F5 'e akt
 
     ![Yönetici Self Servis](./media/oracle-peoplesoft-protected-by-f5-big-ip-apm-tutorial/people-soft-console.png)
 
-1. PeopleSoft uygulamasında, yeni bir kullanıcı profili olarak **OAMPSFT** oluşturun ve **PeopleSoft Kullanıcı**gibi düşük bir güvenlik rolünü ilişkilendirin.
-Yeni bir kullanıcı profili oluşturmak için Kullanıcı profillerine **> Peopletools > güvenlik > Kullanıcı** profilleri ' ne gidin, örneğin: **OAMPSFT** ve **PeopleSoft Kullanıcı**ekleme.
+1. PeopleSoft uygulamasında, yeni bir kullanıcı profili olarak **OAMPSFT** oluşturun ve **PeopleSoft Kullanıcı** gibi düşük bir güvenlik rolünü ilişkilendirin.
+Yeni bir kullanıcı profili oluşturmak için Kullanıcı profillerine **> Peopletools > güvenlik > Kullanıcı** profilleri ' ne gidin, örneğin: **OAMPSFT** ve **PeopleSoft Kullanıcı** ekleme.
 
     ![PeopleSoft kullanıcısı](./media/oracle-peoplesoft-protected-by-f5-big-ip-apm-tutorial/user-profile.png)
 
-1. Web profiline erişin ve genel erişim **Kullanıcı kimliği**olarak **OAMPSFT** girin.
+1. Web profiline erişin ve genel erişim **Kullanıcı kimliği** olarak **OAMPSFT** girin.
 
     ![Kullanıcı profilleri](./media/oracle-peoplesoft-protected-by-f5-big-ip-apm-tutorial/web-profile-configuration.png)
 
@@ -300,7 +300,7 @@ Tüm PeopleSoft kullanıcıları için çoklu oturum kapatma desteği eklemek i�
 
 1. Oluşturulan ırule 'ü sanal sunucuya atayın
 
-    * Sanal **sunucular > sanal sunucu listesi > PeopleSoftApp > kaynakları > yerel trafiğe**gidin. **Yönet...** öğesine tıklayın Bu   
+    * Sanal **sunucular > sanal sunucu listesi > PeopleSoftApp > kaynakları > yerel trafiğe** gidin. **Yönet...** öğesine tıklayın Bu   
 
     * `<Name>`Etkin ırule olarak belirtip **tamamlandı** ' ya tıklayın
 

@@ -4,10 +4,10 @@ description: GPU kaynaklarını kullanarak işlem yoğunluklu kapsayıcı uygula
 ms.topic: article
 ms.date: 07/22/2020
 ms.openlocfilehash: 0d645d1fce24d1324e485d74e20bcf492d4444a7
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93127017"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>GPU kaynaklarını kullanan kapsayıcı örneklerini dağıtma
@@ -27,9 +27,9 @@ Bu makalede, bir [YAML dosyası](container-instances-multi-container-yaml.md) ve
 
 Destek, zaman içinde ek bölgeler için eklenecektir.
 
-**Desteklenen işletim sistemi türleri** : yalnızca Linux
+**Desteklenen işletim sistemi türleri**: yalnızca Linux
 
-**Ek sınırlamalar** : bir kapsayıcı grubu [sanal bir ağa](container-instances-vnet.md)dağıtıldığında GPU kaynakları kullanılamaz.
+**Ek sınırlamalar**: bir kapsayıcı grubu [sanal bir ağa](container-instances-vnet.md)dağıtıldığında GPU kaynakları kullanılamaz.
 
 ## <a name="about-gpu-resources"></a>GPU kaynakları hakkında
 
@@ -37,8 +37,8 @@ Destek, zaman içinde ek bölgeler için eklenecektir.
 
 Bir kapsayıcı örneğinde GPU 'ları kullanmak için aşağıdaki bilgileri içeren bir *GPU kaynağı* belirtin:
 
-* **Sayı** -GPU sayısı: **1** , **2** veya **4** .
-* **SKU** -GPU SKU 'Su: **K80** , **P100** veya **V100** . Her SKU, aşağıdaki Azure GPU etkin VM ailelerinde bulunan NVıDıA Tesla GPU ile eşlenir:
+* **Sayı** -GPU sayısı: **1**, **2** veya **4**.
+* **SKU** -GPU SKU 'Su: **K80**, **P100** veya **V100**. Her SKU, aşağıdaki Azure GPU etkin VM ailelerinde bulunan NVıDıA Tesla GPU ile eşlenir:
 
   | SKU | VM ailesi |
   | --- | --- |
@@ -209,7 +209,7 @@ Adding run metadata for 999
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-GPU kaynaklarının kullanılması pahalı olabileceğinden, kapsayıcılarınızın uzun süreler boyunca beklenmedik şekilde çalışmadığından emin olun. Azure portal Kapsayıcılarınızı izleyin veya [az Container Show][az-container-show] komutuyla bir kapsayıcı grubunun durumunu denetleyin. Örneğin:
+GPU kaynaklarının kullanılması pahalı olabileceğinden, kapsayıcılarınızın uzun süreler boyunca beklenmedik şekilde çalışmadığından emin olun. Azure portal Kapsayıcılarınızı izleyin veya [az Container Show][az-container-show] komutuyla bir kapsayıcı grubunun durumunu denetleyin. Örnek:
 
 ```azurecli
 az container show --resource-group myResourceGroup --name gpucontainergroup --output table

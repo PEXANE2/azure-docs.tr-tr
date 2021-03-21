@@ -6,10 +6,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 05/20/2018
 ms.openlocfilehash: b95d4b0a082e8eac191d610c9516e5ce72180b4c
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92219182"
 ---
 # <a name="troubleshoot-an-abnormal-recurring-job"></a>Olağan dışı bir şekilde yinelenen iş sorunlarını giderme
@@ -29,7 +29,7 @@ Yinelenen bir iş sorununu gidermek üzere Ilgili Iş görünümünü kullanmak 
 
 ### <a name="case-1-you-have-the-url-for-the-recurring-job"></a>Durum 1: yinelenen işin URL 'SI var
 
-**Araçlar**  >  **Data Lake**  >  **iş görünümü**aracılığıyla, Visual Studio 'da iş görünümü açmak için iş URL 'sini yapıştırabilirsiniz. İlgili Iş görünümünü açmak için **Ilgili Işleri görüntüle** ' yi seçin.
+**Araçlar**  >  **Data Lake**  >  **iş görünümü** aracılığıyla, Visual Studio 'da iş görünümü açmak için iş URL 'sini yapıştırabilirsiniz. İlgili Iş görünümünü açmak için **Ilgili Işleri görüntüle** ' yi seçin.
 
 ![Data Lake Analytics araçlarında Ilgili Işleri görüntüle bağlantısı](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/view-related-job.png)
  

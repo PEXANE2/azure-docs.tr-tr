@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: aahi
 ms.openlocfilehash: 003b4411ac791898f4a7467b9b03f29aadba2fc7
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97704852"
 ---
 # <a name="deploy-and-run-container-on-azure-container-instance"></a>Azure Container Örneğinde kapsayıcı dağıtma ve çalıştırma
@@ -43,7 +43,7 @@ Açılı ayraçlar içindeki tüm değişkenlerin `<>` kendi değerlerinizle de�
 > 3. Azure portal, depolama hesabı kaynağınızın **genel bakış** sayfasına gidin ve **dosya paylaşımları**' nı seçin. 
 > 4. Son oluşturduğunuz dosya paylaşımının adını seçip **karşıya yükle**' yi seçin. Ardından paketlenmiş uygulamanızı karşıya yükleyin. 
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
 
 [!INCLUDE [Portal instructions for creating an ACI instance](includes/create-container-instances-resource.md)]
 
@@ -56,7 +56,7 @@ Açılı ayraçlar içindeki tüm değişkenlerin `<>` kendi değerlerinizle de�
 
 ## <a name="use-the-container-instance"></a>Kapsayıcı örneğini kullanma
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
 
 1. **Genel bakış** ' ı SEÇIN ve IP adresini kopyalayın. Bu, gibi sayısal bir IP adresi olacaktır `55.55.55.55` .
 1. Yeni bir tarayıcı sekmesi açın ve IP adresini kullanın, örneğin, `http://<IP-address>:5000 (http://55.55.55.55:5000` ). Kapsayıcının ana sayfasını görürsünüz ve kapsayıcının çalıştığını bilmenizi sağlar.

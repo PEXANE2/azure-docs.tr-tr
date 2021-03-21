@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
 ms.openlocfilehash: bcb334074d842fa5c35e4619f1c5d654405388a7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96459574"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Azure Market'te Azure kapsayıcısı teklifi oluşturma
@@ -91,7 +91,7 @@ Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
 Bu sayfa, teklifinizi Market 'te gruplandırmak için kullanılan kategorileri ve teklifinizi destekleyen yasal sözleşmeleri tanımlamanızı sağlar.
 
-#### <a name="category"></a>Category
+#### <a name="category"></a>Kategori
 
 Teklifinizi uygun Market arama alanlarında yerleştirmek için kategoriler ve alt kategoriler ' i seçin. Teklifinizin teklif açıklamasında bu kategorileri nasıl desteklediğini açıkladığınızdan emin olun. Seçin:
 
@@ -133,7 +133,7 @@ Bu sayfa, ticari Market 'te görüntülenen teklif ayrıntılarını tanımlaman
 > [!NOTE]
 > Teklif açıklaması, "Bu uygulama yalnızca [Ingilizce olmayan dil] ' de kullanılabilir" ifadesi ile başlıyorsa, teklif ayrıntılarının Ingilizce olması gerekmez. Ayrıca, teklif listesi ayrıntılarından farklı bir dilde içerik sunmak için faydalı bir bağlantı sağlamak da yararlı olabilir.
 
-### <a name="name"></a>Ad
+### <a name="name"></a>Name
 
 Buraya girdiğiniz ad teklifinizin başlığı olarak görüntülenir. Bu alan, teklifi oluştururken **teklif diğer adı** kutusuna girdiğiniz metin ile önceden doldurulur. Bu adı daha sonra değiştirebilirsiniz.
 
@@ -151,7 +151,7 @@ Teklifinizin kısa bir açıklaması. Bu, 100 karakter uzunluğunda olabilir ve 
 
 Teklifinizin daha ayrıntılı bir açıklaması. Bu, 256 karakter uzunluğunda olabilir ve Market arama sonuçlarında kullanılır.
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 

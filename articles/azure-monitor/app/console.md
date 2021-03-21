@@ -6,10 +6,10 @@ ms.date: 05/21/2020
 ms.custom: devx-track-csharp
 ms.reviewer: lmolkova
 ms.openlocfilehash: aa39a1eca04621fc4db75f755402d3679403e814
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96920604"
 ---
 # <a name="application-insights-for-net-console-applications"></a>.NET konsol uygulamaları için Application Insights
@@ -21,7 +21,7 @@ ms.locfileid: "96920604"
 > [!NOTE]
 > Herhangi bir konsol uygulaması için [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) paketini ve [buradaki](./worker-service.md) ilişkili yönergeleri kullanmanız *önemle önerilir* . Bu paket [`NetStandard2.0`](/dotnet/standard/net-standard) , .NET Core 2,1 veya üzeri sürümlerde ve .NET Framework 4.7.2 veya üzeri sürümlerde kullanılabilir.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 > [!IMPORTANT]
 > Yeni Azure bölgeleri, izleme anahtarları yerine bağlantı dizelerinin kullanılmasını **gerektirir** . [Bağlantı dizesi](./sdk-connection-string.md?tabs=net) , telemetri verilerinizi ilişkilendirmek istediğiniz kaynağı tanımlar. Ayrıca, kaynağınızın telemetri için hedef olarak kullanacağı uç noktaları değiştirmenize de olanak tanır. Bağlantı dizesini kopyalamanız ve uygulamanızın koduna veya bir ortam değişkenine eklemeniz gerekir.

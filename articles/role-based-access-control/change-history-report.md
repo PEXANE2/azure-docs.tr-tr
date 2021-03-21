@@ -11,10 +11,10 @@ ms.date: 03/01/2021
 ms.author: rolyon
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
 ms.openlocfilehash: d9b39bc9a2f00fe83cae0ff78c6346042967e8bf
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102042150"
 ---
 # <a name="view-activity-logs-for-azure-rbac-changes"></a>Azure RBAC değişiklikleri için etkinlik günlüklerini görüntüleme
@@ -55,7 +55,7 @@ Etkinlik günlükleri hakkında daha fazla bilgi için bkz. [kaynaklardaki eylem
 JSON sekmesindeki günlük çıktısı, Azure PowerShell veya Azure CLı, çok fazla bilgi içerebilir. Bir günlük girdisini yorumlama denemesi sırasında aranacak bazı anahtar özelliklerden bazıları aşağıda verilmiştir. Azure PowerShell veya Azure CLı kullanarak günlük çıktısını filtrelemeye yönelik yollar için aşağıdaki bölümlere bakın.
 
 > [!div class="mx-tableFixed"]
-> | Özellik | Örnek değerler | Açıklama |
+> | Özellik | Örnek değerler | Description |
 > | --- | --- | --- |
 > | Yetkilendirme: eylem | Microsoft.Authorization/roleAssignments/write | Rol ataması oluştur |
 > |  | Microsoft. Authorization/Roleatamaları/silme | Rol atamasını Sil |
@@ -129,7 +129,7 @@ Properties              :
                           eventCategory  : Administrative
 ```
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure CLI’si
 
 Azure CLı ile etkinlik günlüklerini görüntülemek için [az Monitor Activity-Log List](/cli/azure/monitor/activity-log#az_monitor_activity_log_list) komutunu kullanın.
 

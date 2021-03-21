@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 01/07/2020
 tags: connectors
 ms.openlocfilehash: 4995a91783c2302f3bda5cc9409f017248ca29fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88761653"
 ---
 # <a name="manage-ibm-informix-database-resources-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak IBM Informix veritabanı kaynaklarını yönetme
@@ -78,18 +78,18 @@ Bu konuda, bir mantıksal uygulamada, veritabanı işlemlerini işlemek için ba
 
 1. Bu bağlantı bilgilerini girip **Oluştur**' u seçin.
 
-   | Özellik | JSON özelliği | Gerekli | Örnek değer | Açıklama |
+   | Özellik | JSON özelliği | Gerekli | Örnek değer | Description |
    |----------|---------------|----------|---------------|-------------|
-   | Bağlantı adı | `name` | Evet | `informix-demo-connection` | Informix veritabanınıza bağlantı için kullanılacak ad |
-   | Sunucu | `server` | Evet | Una `informixdemo.cloudapp.net:9089` <br>-Şirket içi: `informixdemo:9089` | IPv4 veya IPv6 biçiminde olan TCP/IP adresi veya diğer ad, ardından iki nokta üst üste ve TCP/IP bağlantı noktası numarası |
-   | Veritabanı | `database` | Evet | `nwind` | DRDA Ilişkisel veritabanı adı (RDBNAM) veya Informix veritabanı adı (dbname). Informix bir 128 baytlık dizeyi kabul eder. |
+   | Bağlantı adı | `name` | Yes | `informix-demo-connection` | Informix veritabanınıza bağlantı için kullanılacak ad |
+   | Sunucu | `server` | Yes | Una `informixdemo.cloudapp.net:9089` <br>-Şirket içi: `informixdemo:9089` | IPv4 veya IPv6 biçiminde olan TCP/IP adresi veya diğer ad, ardından iki nokta üst üste ve TCP/IP bağlantı noktası numarası |
+   | Veritabanı | `database` | Yes | `nwind` | DRDA Ilişkisel veritabanı adı (RDBNAM) veya Informix veritabanı adı (dbname). Informix bir 128 baytlık dizeyi kabul eder. |
    | Kimlik Doğrulaması | `authentication` | Yalnızca şirket içi | **Temel** veya **Windows** (Kerberos) | Informix veritabanınız için gereken kimlik doğrulama türü. Bu özellik yalnızca şirket **içi veri ağ geçidi üzerinden Bağlan '** ı seçtiğinizde görünür. |
-   | Kullanıcı adı | `username` | Hayır | <*Veritabanı-Kullanıcı adı*> | Veritabanı için Kullanıcı adı |
-   | Parola | `password` | Hayır | <*Veritabanı-parola*> | Veritabanı için bir parola |
+   | Kullanıcı adı | `username` | No | <*Veritabanı-Kullanıcı adı*> | Veritabanı için Kullanıcı adı |
+   | Parola | `password` | No | <*Veritabanı-parola*> | Veritabanı için bir parola |
    | Ağ geçidi | `gateway` | Yalnızca şirket içi | -<*Azure-aboneliği*> <br>-<*Azure-şirket içi-veri ağ geçidi-kaynak*> | Azure portal oluşturduğunuz şirket içi veri ağ geçidi için Azure aboneliği ve Azure Kaynak adı. **Ağ geçidi** özelliği ve alt özellikler yalnızca şirket **içi veri ağ geçidi üzerinden Bağlan '** ı seçtiğinizde görünür. |
    ||||||
 
-   Örneğin:
+   Örnek:
 
    * **Bulut veritabanı**
 
@@ -107,15 +107,15 @@ Bu konuda, bir mantıksal uygulamada, veritabanı işlemlerini işlemek için ba
 
 1. Mantıksal uygulama Tasarımcısı araç çubuğunda **Çalıştır**' ı seçin. Mantıksal uygulamanız çalıştıktan sonra, Bu çalıştırmaların çıkışlarını görüntüleyebilirsiniz.
 
-1. Mantıksal uygulamanızın menüsünde **genel bakış**' ı seçin. Genel Bakış bölmesinde, **Özet**  >  **çalışma geçmişi**altında en son Çalıştır ' ı seçin.
+1. Mantıksal uygulamanızın menüsünde **genel bakış**' ı seçin. Genel Bakış bölmesinde, **Özet**  >  **çalışma geçmişi** altında en son Çalıştır ' ı seçin.
 
-1. **Mantıksal uygulama çalıştırma**altında, **Çalıştır ayrıntıları**' nı seçin.
+1. **Mantıksal uygulama çalıştırma** altında, **Çalıştır ayrıntıları**' nı seçin.
 
 1. Eylemler listesinden, görüntülemek istediğiniz çıktıları içeren eylemi seçin, örneğin **Get_tables**.
 
-   Eylem başarılı olduysa, **Status** özelliği **başarılı**olarak işaretlenir.
+   Eylem başarılı olduysa, **Status** özelliği **başarılı** olarak işaretlenir.
 
-1. Girişleri görüntülemek için, **girişler bağlantısı**altında URL bağlantısını seçin. Çıkışları görüntülemek için, **çıktılar bağlantı** BAĞLANTıSı altında URL bağlantısını seçin. Örnek çıktıları aşağıda verilmiştir:
+1. Girişleri görüntülemek için, **girişler bağlantısı** altında URL bağlantısını seçin. Çıkışları görüntülemek için, **çıktılar bağlantı** BAĞLANTıSı altında URL bağlantısını seçin. Örnek çıktıları aşağıda verilmiştir:
 
    * **Get_tables** , tabloların bir listesini gösterir:
 

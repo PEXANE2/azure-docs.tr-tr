@@ -4,10 +4,10 @@ description: Göz atma ve göz atma Service Bus iletileri, bir Azure Service Bus
 ms.topic: article
 ms.date: 11/11/2020
 ms.openlocfilehash: c52c9c967d4eada1a931e188ed4d25f7691cfb91
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94553650"
 ---
 # <a name="message-browsing"></a>İletilere göz atma
@@ -22,7 +22,7 @@ Göz atma ayrıca kilitli olan ve diğer alıcılar tarafından işlenmekte olan
 
 ## <a name="peek-apis"></a>API 'Leri göz atma
 
-[Peek/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) ve [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) yöntemleri .net ve Java istemci kitaplıklarında ve alıcı nesnelerinde bulunur: **MessageReceiver** , **messagesession**. Kuyruklar, abonelikler ve ilgili atılacak ileti kuyrukları üzerinde çalışmalar göz atın.
+[Peek/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) ve [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) yöntemleri .net ve Java istemci kitaplıklarında ve alıcı nesnelerinde bulunur: **MessageReceiver**, **messagesession**. Kuyruklar, abonelikler ve ilgili atılacak ileti kuyrukları üzerinde çalışmalar göz atın.
 
 Tekrar tekrar çağrıldığında, **Peek** , sıradaki en düşük sıra numarasından en yükseğe doğru sırada veya abonelik günlüğündeki tüm iletileri numaralandırır. İletilerin son sırada alınamayacağını sıraya göre değil, mesajların sıraya alınma sırası vardır.
 

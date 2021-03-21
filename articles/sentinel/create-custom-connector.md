@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 02/09/2021
 ms.author: bagol
 ms.openlocfilehash: 25f83088bdc55dbafe7ccf0ff06b0c6595c9ea71
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101724362"
 ---
 # <a name="resources-for-creating-azure-sentinel-custom-connectors"></a>Azure Sentinel özel bağlayıcıları oluşturma kaynakları
@@ -36,10 +36,10 @@ Aşağıdaki tabloda, bu makalede açıklanan özel bağlayıcılar oluşturmak 
 
 |Yöntem açıklaması  |Özellik | Sunucusuz    |Karmaşıklık  |
 |---------|---------|---------|---------|
-|**[Log Analytics Aracısı](#connect-with-the-log-analytics-agent)** <br>Şirket içi ve IaaS kaynaklarından dosya toplamak için idealdir   | Yalnızca dosya koleksiyonu  |   Hayır      |Düşük         |
+|**[Log Analytics Aracısı](#connect-with-the-log-analytics-agent)** <br>Şirket içi ve IaaS kaynaklarından dosya toplamak için idealdir   | Yalnızca dosya koleksiyonu  |   No      |Düşük         |
 |**[Logstash](#connect-with-logstash)** <br>Şirket içi ve IaaS kaynakları için en iyisi, bir eklentinin kullanılabildiği herhangi bir kaynak ve Logstash ile zaten tanıdık olan kuruluşlar  | Kullanılabilir eklentiler, ayrıca özel eklenti, yetenekler önemli esneklik sağlar.   |   Eşleşen çalıştırmak için bir VM veya VM kümesi gerektirir           |   Zayıf eklentilerle birçok senaryoyu destekler      |
 |**[Logic Apps](#connect-with-logic-apps)** <br>Yüksek maliyetli; yüksek hacimli verilerden kaçının <br>Düşük hacimli bulut kaynakları için en iyisi  | Codeless programlama, algoritma uygulama desteği olmadan sınırlı esneklik sağlar.<br><br> Gereksinimlerinizi zaten destekleyen kullanılabilir bir eylem yoksa, özel bir eylem oluşturmak karmaşıklık ekleyebilir.    |    Yes         |   Zayıf basit, kodsuz kullanacaksınız geliştirme      |
-|**[PowerShell](#connect-with-powershell)** <br>Prototip ve dönemsel dosya yüklemeleri için en iyisi | Dosya koleksiyonu için doğrudan destek. <br><br>PowerShell, daha fazla kaynak toplamak için kullanılabilir, ancak kodlama ve betiği hizmet olarak yapılandırmaya gerek duyar.      |Hayır               |  Düşük       |
+|**[PowerShell](#connect-with-powershell)** <br>Prototip ve dönemsel dosya yüklemeleri için en iyisi | Dosya koleksiyonu için doğrudan destek. <br><br>PowerShell, daha fazla kaynak toplamak için kullanılabilir, ancak kodlama ve betiği hizmet olarak yapılandırmaya gerek duyar.      |No               |  Düşük       |
 |**[Log Analytics API 'SI](#connect-with-the-log-analytics-api)** <br>Tümleştirme uygulayan ISV 'Ler ve benzersiz koleksiyon gereksinimleri için en iyisi   | Kod ile kullanılabilen tüm özellikleri destekler.  | Uygulamaya bağlıdır           |     Yüksek    |
 |**[Azure işlevleri](#connect-with-azure-functions)** Yüksek hacimli bulut kaynakları ve benzersiz koleksiyon gereksinimleri için en iyisi  | Kod ile kullanılabilen tüm özellikleri destekler.  |  Yes             |     Geniş programlama bilgisi gerektirir    |
 |     |         |                |
@@ -93,7 +93,7 @@ Azure Sentinel için sunucusuz, özel bağlayıcı oluşturmak üzere bir [Azure
 
 1. **Logic Apps başlatmak için aşağıdaki tetikleyicilerden birini kullanın**:
 
-    |Tetikleyici  |Açıklama  |
+    |Tetikleyici  |Description  |
     |---------|---------|
     |**Yinelenen bir görev**     |   Örneğin, mantıksal uygulamanızı belirli dosyalardan, veritabanlarından veya dış API 'lerden düzenli olarak verileri almak için zamanlayın. <br>Daha fazla bilgi için, bkz. [Azure Logic Apps yinelenen görevleri ve iş akışlarını oluşturma, zamanlama ve çalıştırma](../connectors/connectors-native-recurrence.md).      |
     |**İsteğe bağlı tetikleme**     | El ile veri toplama ve test için mantıksal uygulamanızı isteğe bağlı olarak çalıştırın. <br>Daha fazla bilgi için bkz.  [https uç noktaları kullanarak çağrı, tetikleyici veya iç içe mantıksal uygulamalar](../logic-apps/logic-apps-http-endpoint.md).        |

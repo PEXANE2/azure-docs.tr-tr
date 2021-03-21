@@ -8,10 +8,10 @@ author: trkeya
 ms.author: trkeya
 ms.date: 11/06/2020
 ms.openlocfilehash: 88779f67a2fa9b18f0177a1459b32c672343bb57
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96462949"
 ---
 # <a name="detailed-configuration-for-hosted-test-drives"></a>Barındırılan test sürücüleri için ayrıntılı yapılandırma
@@ -37,7 +37,7 @@ Bu makalede, Dynamics 365 for Customer Engagement veya Operations için Dynamics
     - **Maksimum eşzamanlı test sürücüsü** : aynı anda çalışan etkin bir test sürücüsüne sahip olabilecek eşzamanlı kullanıcı sayısı. Test sürücüleri etkin durumdayken her Kullanıcı bir Dynamics lisansını kullanır, bu nedenle, sınama sürücüsü kullanıcıları için en az bu sayıda Dynamics lisansın kullanılabilir olmasını sağlayın. 3 ile 5 arasında önerilir.
     - **Sınama sürücüsü süresi** – kullanıcının test sürücüsünün etkin olacağı saat sayısı. Sürenin süresi dolduktan sonra, Kullanıcı kiracınızdan kaldırılacak. Uygulamanızın karmaşıklığına bağlı olarak 2-24 saat önerilir. Kullanıcı, zaman aşımına uğrar ve test sürücüsüne yeniden erişmek istediğinizde, her zaman başka bir test sürücüsü isteyebilir.
     - **Örnek URL 'si** – test sürücüsünü başlattıklarında Kullanıcı tarafından gönderilecek test sürücüsü URL 'si. Bu, genellikle uygulamanızın ve örnek verilerinizin yüklendiği Dynamics 365 örneğinizin URL 'sidir. Örnek değer: `https://testdrive.crm.dynamics.com` .
-    - **Örnek Web API URL 'si** : Dynamics 365 örneğiniz IÇIN Web API URL 'si. Microsoft Dynamics 365 Örneğinizde oturum açarak bu değeri alın ve **Setting**  >  **Özelleştirme**  >  **Geliştirici kaynakları**  >  **örnek Web API 'sini** ayarlamak ve adresi (URL) kopyalamak için gezinin. Örnek değer: 
+    - **Örnek Web API URL 'si** : Dynamics 365 örneğiniz IÇIN Web API URL 'si. Microsoft Dynamics 365 Örneğinizde oturum açarak bu değeri alın ve   >  **Özelleştirme**  >  **Geliştirici kaynakları**  >  **örnek Web API 'sini** ayarlamak ve adresi (URL) kopyalamak için gezinin. Örnek değer: 
 
         :::image type="content" source="./media/test-drive/sample-web-api-url.png" alt-text="Örnek Web API 'SI örneği.":::
 

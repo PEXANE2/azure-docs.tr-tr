@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/22/2019
 ms.author: jeedes
 ms.openlocfilehash: eab1304408f896f5c9d736488997c1246ae167f2
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92458993"
 ---
 # <a name="tutorial-integrate-knowledge-anywhere-lms-with-azure-active-directory"></a>Öğretici: Azure Active Directory her yerde LMS 'yi tümleştirin
@@ -28,7 +28,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile bilgi her yerde LMS 'yi t
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -52,7 +52,7 @@ Azure AD 'de herhangi bir yerde bilginin tümleştirilmesini yapılandırmak iç
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu her yerde bilinen bilgi ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında, her yerde LMS 'de bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu her yerde bilinen bilgi ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında, her yerde LMS 'de bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu, her yerde bir LMS ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -135,7 +135,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     e. **Oturum kapatma URL** 'si metin kutusunda, Azure Portal kopyaladığınız **oturum kapatma URL 'si** değerini yapıştırın.
 
-    f. **Etki alanının**açılan listesinden **ana site** ' yi seçin.
+    f. **Etki alanının** açılan listesinden **ana site** ' yi seçin.
 
     örneğin: **SP VARLıK kimliği** değerini kopyalayın ve Azure Portal **temel SAML yapılandırması** bölümünde **tanımlayıcı** metin kutusuna yapıştırın.
 

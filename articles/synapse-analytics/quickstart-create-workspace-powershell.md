@@ -11,10 +11,10 @@ ms.author: alehall
 ms.reviewer: jrasnick
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: a19d1f26616697e15ae4c39a63c44bdaf83f78f9
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101675756"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell Azure SYNAPSE çalışma alanı oluşturma
@@ -53,7 +53,7 @@ Install-Module -Name Az.Synapse
 
 1. Azure SYNAPSE çalışma alanı için kaynak oluşturmak üzere gerekli ortam değişkenlerini tanımlayın.
 
-   |        Değişken adı        |                                                 Açıklama                                                 |
+   |        Değişken adı        |                                                 Description                                                 |
    | --------------------------- | ----------------------------------------------------------------------------------------------------------- |
    | StorageAccountName          | Mevcut ADLS 2. depolama hesabınızın adı.                                                           |
    | StorageAccountResourceGroup | Mevcut ADLS 2. depolama hesabı kaynak grubunuzun adı.                                             |

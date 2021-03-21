@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 9d4413c47e40a611fb1559b32aac1e32a71d1998
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92515993"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-skysite"></a>Öğretici: ufuk SITESIYLE çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -57,7 +57,7 @@ UFUK SITESININ Azure AD ile tümleştirilmesini yapılandırmak için, galerisin
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-skysite"></a>Azure AD çoklu oturum açmayı, ufuk SITESI için yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'YU ufuk sitesiyle yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve ufuk sitesindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'YU ufuk sitesiyle yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve ufuk sitesindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu ufuk SITESIYLE yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -76,7 +76,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![Çoklu oturum açma özellikleri](./media/skysite-tutorial/config05.png)
 
-    * **Kullanıcı erişim URL 'sini** kopyalayın ve bunu Öğreticinin ilerleyen kısımlarında açıklanan **ufuk sitesi SSO 'yu Yapılandır bölümüne**yapıştırmanız gerekir.
+    * **Kullanıcı erişim URL 'sini** kopyalayın ve bunu Öğreticinin ilerleyen kısımlarında açıklanan **ufuk sitesi SSO 'yu Yapılandır bölümüne** yapıştırmanız gerekir.
 
 1. **Ufuk sitesi** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' ya gidin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
@@ -92,7 +92,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Yukarıdaki sıtede ek olarak, ufuk sitesi uygulaması SAML yanıtına daha fazla öznitelik geçirilmesini bekler. **Grup talepleri (Önizleme)** Iletişim kutusundaki **Kullanıcı öznitelikleri & talepler** bölümünde aşağıdaki adımları uygulayın:
 
-    a. **Talepte döndürülen gruplar ' ın**yanındaki **kaleme** tıklayın.
+    a. **Talepte döndürülen gruplar ' ın** yanındaki **kaleme** tıklayın.
 
     ![Ekran görüntüsü, yeni talep ekleme seçeneğiyle Kullanıcı taleplerini gösterir.](./media/skysite-tutorial/config01.png)
 
@@ -154,7 +154,7 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak ufuk sıtesıne 
 
     ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz çoklu oturum açma sekmesini gösterir.](./media/skysite-tutorial/config04.png)
 
-    a. **Kimlik sağlayıcısı oturum açma URL 'si** metin kutusunda, Azure Portal **Özellikler** sekmesinden kopyaladığınız **Kullanıcı erişim URL 'si**değerini yapıştırın.
+    a. **Kimlik sağlayıcısı oturum açma URL 'si** metin kutusunda, Azure Portal **Özellikler** sekmesinden kopyaladığınız **Kullanıcı erişim URL 'si** değerini yapıştırın.
 
     b. Azure portal indirdiğiniz base64 kodlu sertifikayı karşıya yüklemek için **sertifikayı karşıya yükle**' ye tıklayın.
 

@@ -5,23 +5,23 @@ ms.topic: include
 ms.date: 12/07/2018
 ms.author: alkohli
 ms.openlocfilehash: 10feccb53b28181d260e7738ab99bdc2e3c9340c
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94553191"
 ---
 Depolama hesabına bağlanmak ve bağlantıyı doğrulamak için aşağıdaki adımları izleyin.
 
-1. Depolama Gezgini **Azure Storage 'A Bağlan** iletişim kutusunu açın. **Azure depolama 'Ya Bağlan** iletişim kutusunda **depolama hesabı adı ve anahtarı kullan** ' ı seçin.
+1. Depolama Gezgini **Azure Storage 'A Bağlan** iletişim kutusunu açın. **Azure depolama 'Ya Bağlan** iletişim kutusunda **depolama hesabı adı ve anahtarı kullan**' ı seçin.
 
     ![Ekran görüntüsünde, depolama hesabı adı ve anahtarı kullan seçili olan Azure Storage 'a Bağlan iletişim kutusu gösterilir.](media/data-box-verify-connection/data-box-connect-via-rest-9.png)
 
-2. **Hesap adınızı** ve **Hesap anahtarınızı** (anahtar 1 değerini yerel Web Kullanıcı arabirimindeki **Bağlan ve Kopyala** sayfasından) yapıştırın. Depolama uç noktaları etki alanını **başka (aşağıda girin)** seçin ve ardından blob hizmeti uç noktasını aşağıda gösterildiği gibi sağlayın. Yalnızca *http* üzerinden aktarıldıysanız **http seçeneğini kullan** seçeneğini işaretleyin. *Https* kullanılıyorsa, seçeneğini işaretlenmemiş olarak bırakın. **İleri** ’yi seçin.
+2. **Hesap adınızı** ve **Hesap anahtarınızı** (anahtar 1 değerini yerel Web Kullanıcı arabirimindeki **Bağlan ve Kopyala** sayfasından) yapıştırın. Depolama uç noktaları etki alanını **başka (aşağıda girin)** seçin ve ardından blob hizmeti uç noktasını aşağıda gösterildiği gibi sağlayın. Yalnızca *http* üzerinden aktarıldıysanız **http seçeneğini kullan** seçeneğini işaretleyin. *Https* kullanılıyorsa, seçeneğini işaretlenmemiş olarak bırakın. **İleri**’yi seçin.
 
     ![Ekran görüntüsünde, girilen değerlere sahip ad ve anahtar ile bağlan iletişim kutusu gösterilir.](media/data-box-verify-connection/data-box-connect-via-rest-11.png)    
 
-3. **Bağlantı Özeti** iletişim kutusunda, belirtilen bilgileri gözden geçirin. **Bağlan** ’ı seçin.
+3. **Bağlantı Özeti** iletişim kutusunda, belirtilen bilgileri gözden geçirin. **Bağlan**’ı seçin.
 
     ![Ekran görüntüsü, Bağlan seçiliyken bağlantı Özeti iletişim kutusunu gösterir.](media/data-box-verify-connection/data-box-connect-via-rest-12.png)
 

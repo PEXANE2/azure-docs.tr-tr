@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 08/06/2020
 ms.openlocfilehash: c68d342cf21d69fa97ba3d5171ba596662fd845f
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98945826"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure portal kullanarak HDInsight 'ta Linux tabanlı kümeler oluşturun
@@ -36,7 +36,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. **Analiz**  >  **Azure HDInsight** ' ı seçerek **HDInsight kümesi oluşturma** sayfasına gidin.
 
-## <a name="basics"></a>Temel bilgiler
+## <a name="basics"></a>Temel Bilgiler
 
 ![HDInsight küme oluşturma temelleri](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-basics.png "Azure portal yeni bir küme oluşturma")
 
@@ -47,7 +47,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 |Abonelik|Aşağı açılan listeden, küme için kullanılan Azure aboneliğini seçin.|
 |Kaynak grubu|Aşağı açılan listeden, mevcut kaynak grubunuzu seçin veya **Yeni oluştur**' u seçin.|
 |Küme adı|Genel olarak benzersiz bir ad girin.|
-|Bölge|Aşağı açılan listeden, kümenin oluşturulduğu bir bölge seçin.|
+|Region|Aşağı açılan listeden, kümenin oluşturulduğu bir bölge seçin.|
 |Küme türü|Bir listeyi açmak için **küme türünü seç** ' e tıklayın. Listeden istenen küme türünü seçin. HDInsight kümeleri farklı türlerde gelir. Bunlar, kümenin ayarlanmış olduğu iş yüküne veya teknolojiye karşılık gelir. Birden çok türü birleştiren bir küme oluşturmak için desteklenen bir yöntem yoktur.|
 |Sürüm|Aşağı açılan listeden bir **Sürüm** seçin. Ne seçeceğimizi bilmiyorsanız varsayılan sürümü kullanın. Daha fazla bilgi için bkz. [HDInsight küme sürümleri](hdinsight-component-versioning.md).|
 |Küme oturum açma kullanıcı adı|Kullanıcı adını belirtin, varsayılan olarak **admin**' dir.|

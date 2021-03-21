@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/04/2020
 ms.openlocfilehash: cb0274260022c55ae657b5b28b2c9ad1903d0296
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102043278"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Azure Izleyici 'de Görünüm Tasarımcısı 'nı kullanarak özel görünümler oluşturma
@@ -33,7 +33,7 @@ Görünümler, Azure portal Azure Izleyici **genel bakış** sayfasında görün
 
 Görünüm Tasarımcısı ile oluşturduğunuz görünümler aşağıdaki tabloda açıklanan öğeleri içerir:
 
-| Bölüm | Açıklama |
+| Bölüm | Description |
 |:--- |:--- |
 | Kutucuklar | , Azure Izleyici **genel bakış** sayfasında görüntülenir. Her kutucuk, gösterdiği özel görünümün görsel özetini görüntüler. Her döşeme türü, kayıtlarınızın farklı bir görselleştirmesini sağlar. Özel bir görünüm görüntülemek için bir kutucuk seçersiniz. |
 | Özel görünüm | Bir kutucuk seçtiğinizde gösterilir. Her görünüm bir veya daha fazla görselleştirme bölümü içerir. |
@@ -102,7 +102,7 @@ Düzenleme modunda görünümlerle çalışma seçenekleri aşağıdaki tabloda 
 | İptal      | Değişikliklerinizi atar ve görünümü kapatır. |
 | Görünümü Sil | Görünümü siler. |
 | Dışarı Aktarma      | Görünümü, başka bir çalışma alanına aktarabileceğiniz bir [Azure Resource Manager şablonuna](../../azure-resource-manager/templates/template-syntax.md) dışarı aktarır. Dosyanın adı, görünümün adıdır ve bir *omsview* uzantısına sahiptir. |
-| İçeri Aktarma      | Başka bir çalışma alanından verdiğiniz *omsview* dosyasını içeri aktarır. Bu eylem, var olan görünümün yapılandırmasının üzerine yazar. |
+| İçeri Aktar      | Başka bir çalışma alanından verdiğiniz *omsview* dosyasını içeri aktarır. Bu eylem, var olan görünümün yapılandırmasının üzerine yazar. |
 | Kopyalama       | Yeni bir görünüm oluşturur ve onu Görünüm Tasarımcısı 'nda açar. Yeni görünümün adı özgün adla aynıdır, ancak buna *kopyalama* eklenir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar

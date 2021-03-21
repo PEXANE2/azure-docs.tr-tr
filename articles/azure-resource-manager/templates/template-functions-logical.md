@@ -4,10 +4,10 @@ description: Mantıksal değerleri belirleyebilmek için bir Azure Resource Mana
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.openlocfilehash: 27d94f10374daf0b9a351469579a5eb659cf5445
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96920487"
 ---
 # <a name="logical-functions-for-arm-templates"></a>ARM şablonları için mantıksal işlevler
@@ -32,11 +32,11 @@ Tüm parametre değerlerinin doğru olup olmadığını denetler. `and`Işlev B�
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |boolean |Doğru olup olmadığını kontrol etmek için ilk değer. |
-| arg2 |Evet |boolean |Doğru olup olmadığını kontrol etmek için ikinci değer. |
-| ek bağımsız değişkenler |Hayır |boolean |Doğru olup olmadığını denetlemek için ek bağımsız değişkenler. |
+| arg1 |Yes |boolean |Doğru olup olmadığını kontrol etmek için ilk değer. |
+| arg2 |Yes |boolean |Doğru olup olmadığını kontrol etmek için ikinci değer. |
+| ek bağımsız değişkenler |No |boolean |Doğru olup olmadığını denetlemek için ek bağımsız değişkenler. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -96,9 +96,9 @@ Parametreyi Boole değerine dönüştürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |dize veya tamsayı |Boole değerine dönüştürülecek değer. |
+| arg1 |Yes |dize veya tamsayı |Boole değerine dönüştürülecek değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -215,11 +215,11 @@ Bir koşulun doğru veya yanlış olduğunu temel alarak bir değer döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| koşul |Evet |boolean |Doğru veya yanlış olduğunu denetlemek için değer. |
-| trueValue |Evet | dize, int, nesne veya dizi |Koşul doğru olduğunda döndürülecek değer. |
-| Yanlışdeğer |Evet | dize, int, nesne veya dizi |Koşul false olduğunda döndürülecek değer. |
+| koşul |Yes |boolean |Doğru veya yanlış olduğunu denetlemek için değer. |
+| trueValue |Yes | dize, int, nesne veya dizi |Koşul doğru olduğunda döndürülecek değer. |
+| Yanlışdeğer |Yes | dize, int, nesne veya dizi |Koşul false olduğunda döndürülecek değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -341,9 +341,9 @@ Boole değerini ters değerine dönüştürür. `not`Işlev Bıcep içinde deste
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |boolean |Dönüştürülecek değer. |
+| arg1 |Yes |boolean |Dönüştürülecek değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -436,11 +436,11 @@ Herhangi bir parametre değerinin doğru olup olmadığını denetler. `or`Işle
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |boolean |Doğru olup olmadığını kontrol etmek için ilk değer. |
-| arg2 |Evet |boolean |Doğru olup olmadığını kontrol etmek için ikinci değer. |
-| ek bağımsız değişkenler |Hayır |boolean |Doğru olup olmadığını denetlemek için ek bağımsız değişkenler. |
+| arg1 |Yes |boolean |Doğru olup olmadığını kontrol etmek için ilk değer. |
+| arg2 |Yes |boolean |Doğru olup olmadığını kontrol etmek için ikinci değer. |
+| ek bağımsız değişkenler |No |boolean |Doğru olup olmadığını denetlemek için ek bağımsız değişkenler. |
 
 ### <a name="return-value"></a>Döndürülen değer
 

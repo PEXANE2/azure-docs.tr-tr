@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 06/08/2018
 ms.custom: devx-track-python
 ms.openlocfilehash: fda09047d138e404eeca87ed3eba9bb72ff62d56
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92220236"
 ---
 # <a name="manage-azure-data-lake-analytics-using-python"></a>Python kullanarak Azure Data Lake Analytics yönetme
@@ -94,7 +94,7 @@ import time
 
 Modüllerin içeri aktarılabildiğini doğrulamak için bu betiği çalıştırın.
 
-## <a name="authentication"></a>Kimlik doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulaması
 
 ### <a name="interactive-user-authentication-with-a-pop-up"></a>Açılır pencere ile etkileşimli kullanıcı kimlik doğrulaması
 

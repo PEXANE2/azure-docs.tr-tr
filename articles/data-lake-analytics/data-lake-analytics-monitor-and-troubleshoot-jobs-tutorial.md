@@ -6,10 +6,10 @@ ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 12/05/2016
 ms.openlocfilehash: ddcf41a333d261bd9c5f669fde724a25eeba670e
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92220287"
 ---
 # <a name="monitor-jobs-in-azure-data-lake-analytics-using-the-azure-portal"></a>Azure Portalını kullanarak Azure Data Lake Analytics işlerini izleme
@@ -23,7 +23,7 @@ ms.locfileid: "92220287"
    ![Azure Data Lake Analytics iş yönetimi](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-job-management.png)
 
     İş yönetimi size iş durumu için bir bakış sağlar. Başarısız bir iş olduğunu unutmayın.
-3. İşleri görmek için **Iş yönetimi** kutucuğuna tıklayın. İşler **çalışıyor**, **kuyruğa alındı**ve **tamamlandı**olarak kategorilere ayrılır. Başarısız işi **bitti** bölümünde görürsünüz. Listenin ilk adı olacaktır. Çok sayıda iş olduğunda, işleri bulmanıza yardımcı olması için **filtre** ' yi tıklatabilirsiniz.
+3. İşleri görmek için **Iş yönetimi** kutucuğuna tıklayın. İşler **çalışıyor**, **kuyruğa alındı** ve **tamamlandı** olarak kategorilere ayrılır. Başarısız işi **bitti** bölümünde görürsünüz. Listenin ilk adı olacaktır. Çok sayıda iş olduğunda, işleri bulmanıza yardımcı olması için **filtre** ' yi tıklatabilirsiniz.
 
    ![Azure Data Lake Analytics Filtre işleri](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-filter-jobs.png)
 

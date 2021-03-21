@@ -4,10 +4,10 @@ description: Bu makalede, sınırsız sayıda ilişkili ileti dizisinin Birleşi
 ms.topic: article
 ms.date: 01/20/2021
 ms.openlocfilehash: 6d316571d69d2e1e73ddca4ccca53c116ee8fa5f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98680762"
 ---
 # <a name="message-sessions"></a>İleti oturumları
@@ -34,9 +34,9 @@ Portalda bayrağı aşağıdaki onay kutusuyla ayarlayın:
 ![Oturumları etkinleştir seçeneği belirlenmiş ve kırmızı renkle özetlenen kuyruk oluştur iletişim kutusunun ekran görüntüsü.][2]
 
 > [!NOTE]
-> Bir kuyrukta veya abonelikte Oturumlar etkinleştirildiğinde, istemci uygulamalar, normal ileti gönderme/alma. Tüm iletilerin bir oturumun parçası olarak gönderilmesi (oturum kimliği ayarlanarak) ve oturum alarak alınmalıdır.
+> Bir kuyrukta veya abonelikte Oturumlar etkinleştirildiğinde, istemci uygulamalar ***artık*** normal iletileri gönderemez/alamaz. Tüm iletilerin bir oturumun parçası olarak gönderilmesi (oturum kimliği ayarlanarak) ve oturum alarak alınmalıdır.
 
-Kuyruk ve abonelik istemcilerinde oturum için API 'Ler mevcuttur. Oturum ve mesajların ne zaman alındığını denetleyen bir zorunlu model ve _OnMessage * ' a benzer ve alma döngüsünü yönetme karmaşıklığını gizleyen bir işleyici tabanlı model vardır.
+Kuyruk ve abonelik istemcilerinde oturum için API 'Ler mevcuttur. Oturum ve mesajların ne zaman alındığını denetleyen ve alma döngüsünü yönetmenin karmaşıklığını gizleyen bir işleyici tabanlı model olan bir zorunlu model vardır. 
 
 ### <a name="session-features"></a>Oturum özellikleri
 

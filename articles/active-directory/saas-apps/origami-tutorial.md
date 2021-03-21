@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 02c79e8385c7a7e9d60a3dcbed603ca94cb1dc43
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92522279"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-origami"></a>Öğretici: origami ile tümleştirme Azure Active Directory
@@ -61,13 +61,13 @@ Origami tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden or
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **origami**yazın, sonuç panelinden **origami** ' yi seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **origami** yazın, sonuç panelinden **origami** ' yi seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
      ![Sonuç listesinde origami](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre origami ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre origami ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve origami 'deki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açmayı origami ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -134,9 +134,9 @@ Azure AD çoklu oturum açmayı origami ile yapılandırmak için aşağıdaki a
 
     a. **Çoklu oturum açmayı etkinleştir '** i seçin.
 
-    b. **Kimlik sağlayıcısının oturum açma sayfası URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
+    b. **Kimlik sağlayıcısının oturum açma sayfası URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
-    c. **Kimlik sağlayıcısının oturum kapatma sayfası URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum kapatma URL 'si**değerini yapıştırın.
+    c. **Kimlik sağlayıcısının oturum kapatma sayfası URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum kapatma URL 'si** değerini yapıştırın.
 
     d. Azure portal indirdiğiniz sertifikayı karşıya yüklemek için, **Araştır** ' a tıklayın.
 
@@ -158,9 +158,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alan türü**brittasimon@yourcompanydomain.extension**  
+    b. **Kullanıcı adı** alan türü **brittasimon@yourcompanydomain.extension**  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
@@ -215,15 +215,15 @@ Bu bölümde, origami içinde Britta Simon adlı bir Kullanıcı oluşturacaksı
    
     !["Kullanıcı adı", "ad" ve "soyadı" metin kutuları vurgulanmış "Yeni Kullanıcı Ekle" iletişim kutusunun gösterildiği ekran görüntüsü.](./media/origami-tutorial/tutorial_origami_56.png)
 
-    a. **Kullanıcı adı** metin kutusuna, **brittasıon \@ contoso.com**gibi kullanıcının e-postasını girin.
+    a. **Kullanıcı adı** metin kutusuna, **brittasıon \@ contoso.com** gibi kullanıcının e-postasını girin.
 
     b. **Parola** metin kutusuna bir parola yazın.
 
     c. **Parolayı Onayla** metin kutusuna parolayı yeniden yazın.
 
-    d. **Ad** metin kutusuna, ilk Kullanıcı adını **Britta**gibi girin.
+    d. **Ad** metin kutusuna, ilk Kullanıcı adını **Britta** gibi girin.
 
-    e. **Soyadı** metin kutusunda, **Simon**gibi kullanıcı adının soyadını girin.
+    e. **Soyadı** metin kutusunda, **Simon** gibi kullanıcı adının soyadını girin.
 
     f. **Kaydet**’e tıklayın.
    

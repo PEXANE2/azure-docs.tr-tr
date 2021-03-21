@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: jeedes
 ms.openlocfilehash: 6e05b73ff07cb821c406f46a28ae3c613c4e26ba
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92520464"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-titanfile"></a>Öğretici: Titanfile ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -56,7 +56,7 @@ Titanfile 'ın Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden
 
 ## <a name="configure-and-test-azure-ad-sso-for-titanfile"></a>Titanfile için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak, Titanfile Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Titanfile içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak, Titanfile Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Titanfile içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Titanfile ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 

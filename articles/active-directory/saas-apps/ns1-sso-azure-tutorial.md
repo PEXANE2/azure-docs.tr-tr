@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/12/2020
 ms.author: jeedes
 ms.openlocfilehash: a7fad0af26d15bc77a52d55309c594937ba3be13
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92518628"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ns1-sso-for-azure"></a>Öğretici: Azure için NS1 SSO ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -57,7 +57,7 @@ Azure için NS1 SSO 'yu Azure AD 'ye tümleştirmeyi yapılandırmak için, Gale
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-ns1-sso-for-azure"></a>Azure için NS1 SSO için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure IÇIN ns1 SSO Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında Azure için NS1 SSO 'da bağlantılı bir ilişki kurun.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure IÇIN ns1 SSO Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında Azure için NS1 SSO 'da bağlantılı bir ilişki kurun.
 
 Azure için NS1 SSO ile Azure AD SSO 'yu yapılandırmak ve test etmek için genel adımlar şunlardır:
 
@@ -75,7 +75,7 @@ Azure için NS1 SSO ile Azure AD SSO 'yu yapılandırmak ve test etmek için gen
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **Azure için ns1 SSO** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun. **Çoklu oturum açma**seçeneğini belirleyin.
+1. [Azure Portal](https://portal.azure.com/), **Azure için ns1 SSO** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun. **Çoklu oturum açma** seçeneğini belirleyin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesini seçin.
 
@@ -110,11 +110,11 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![Farklı alanlarla vurgulanmış şekilde dönüşümü yönetme bölümünün ekran görüntüsü](./media/ns1-sso-for-azure-tutorial/prefix-added.png)
 
-    1. **Dönüşüm**olarak **ExactMailPrefix ()** seçeneğini belirleyin.
+    1. **Dönüşüm** olarak **ExactMailPrefix ()** seçeneğini belirleyin.
 
-    1. **Parameter 1**olarak **User. UserPrincipalName** öğesini seçin.
+    1. **Parameter 1** olarak **User. UserPrincipalName** öğesini seçin.
 
-    1. **Ekle**’yi seçin.
+    1. **Add (Ekle)** seçeneğini belirleyin.
 
     1. **Kaydet**’i seçin.
 
@@ -126,7 +126,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure Portal sol bölmeden, kullanıcılar **Azure Active Directory**  >  **Users**  >  **tüm kullanıcılar**' ı seçin.
+1. Azure Portal sol bölmeden, kullanıcılar **Azure Active Directory**  >    >  **tüm kullanıcılar**' ı seçin.
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
 

@@ -9,10 +9,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
 ms.openlocfilehash: e3649ac786c07459695a1e6ca6ad52620e23d59f
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92148799"
 ---
 # <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>Kapı Izleyicisi--Azure Işlevleri ve SendGrid kullanarak bir kapı açıldığında e-posta gönderin           
@@ -130,11 +130,11 @@ Sonra, örnek kodu VS Code yükleyin ve gerekli Azure hizmetlerini sağlayın.
 
 ### <a name="open-arduino-examples-folder"></a>Arduino örnekleri klasörünü aç
 
-Sol taraftaki **Arduino örnekleri** bölümünü GENIŞLETIN, **mxyongaAZ3166 > AzureIoT için örneklere**gidin ve **DoorMonitor**' yi seçin. Bu eylem, içinde bir proje klasörü olan yeni bir VS Code penceresi açar.
+Sol taraftaki **Arduino örnekleri** bölümünü GENIŞLETIN, **mxyongaAZ3166 > AzureIoT için örneklere** gidin ve **DoorMonitor**' yi seçin. Bu eylem, içinde bir proje klasörü olan yeni bir VS Code penceresi açar.
 
 ![Mini çözüm-örnekler](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/vscode-examples.png)
 
-Örnek uygulamayı komut paletinden da açabilirsiniz. `Ctrl+Shift+P` `Cmd+Shift+P` Komut paletini açmak için (MacOS:) kullanın, **Arduino**yazın ve **Arduino: örnekleri**bulun ve seçin.
+Örnek uygulamayı komut paletinden da açabilirsiniz. `Ctrl+Shift+P` `Cmd+Shift+P` Komut paletini açmak için (MacOS:) kullanın, **Arduino** yazın ve **Arduino: örnekleri** bulun ve seçin.
 
 ### <a name="provision-azure-services"></a>Azure hizmetlerini sağlama
 
@@ -157,9 +157,9 @@ Ardından, cihaz için kodu karşıya yükleyin.
 
 1. `Ctrl+P`Çalıştırmak için kullanın `task device-upload` .
 
-2. Terminal sizden yapılandırma moduna girmenizi ister. Bunu yapmak için, düğme A ' yı basılı tutun ve sıfırlama düğmesini gönderin ve serbest bırakın. Ekran, DevKit kimlik numarasını ve sözcük *yapılandırmasını*görüntüler.
+2. Terminal sizden yapılandırma moduna girmenizi ister. Bunu yapmak için, düğme A ' yı basılı tutun ve sıfırlama düğmesini gönderin ve serbest bırakın. Ekran, DevKit kimlik numarasını ve sözcük *yapılandırmasını* görüntüler.
 
-#### <a name="macos"></a>macOS
+#### <a name="macos"></a>Mac OS
 
 1. DevKit 'i yapılandırma moduna alın: A düğmesini basılı tutun, ardından Sıfırla düğmesini gönderin ve serbest bırakın. Ekran ' yapılandırma ' görüntüler.
 

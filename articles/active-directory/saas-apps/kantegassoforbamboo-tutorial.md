@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: aa5f908cdf25925db63054adaf1e6dab15f5260b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92459314"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bamboo"></a>Öğretici: Bamboo için Kantega SSO ile tümleştirme Azure Active Directory
@@ -61,13 +61,13 @@ Bamboo için Kantega SSO 'nun Azure AD 'ye tümleştirilmesini yapılandırmak i
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Bamboo Için KANTEGA SSO**yazın, sonuç panelinden **Bamboo Için KANTEGA SSO** ' yı seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
+4. Arama kutusuna **Bamboo Için KANTEGA SSO** yazın, sonuç panelinden **Bamboo Için KANTEGA SSO** ' yı seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
 
     ![Sonuçlar listesinde Bamboo için Kantega SSO 'SU](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına bağlı olarak Bamboo Için Kantega SSO Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
+Bu bölümde, **Britta Simon** adlı bir test kullanıcısına bağlı olarak Bamboo Için Kantega SSO Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve Bamboo için Kantega SSO 'SU içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Bamboo için Kantega SSO 'SU ile Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -132,7 +132,7 @@ Bamboo için Kantega SSO ile Azure AD çoklu oturum açmayı yapılandırmak iç
 
 1. Farklı bir Web tarayıcısı penceresinde, Bamboo şirket içi sunucunuzda yönetici olarak oturum açın.
 
-1. Dişli üzerine gelin ve **eklentilere**tıklayın.
+1. Dişli üzerine gelin ve **eklentilere** tıklayın.
 
     ![Ekran görüntüsü ayarlar menüsünden Seçili eklentileri gösterir.](./media/kantegassoforbamboo-tutorial/addon1.png)
 
@@ -160,7 +160,7 @@ Bamboo için Kantega SSO ile Azure AD çoklu oturum açmayı yapılandırmak iç
 
     ![Ekran görüntüsünde, kimlik sağlayıcısı olarak seçili Azure A ile Kantega tek Sign-On gösterilmektedir.](./media/kantegassoforbamboo-tutorial/addon4.png)
 
-1. Abonelik düzeyini **temel**olarak seçin.
+1. Abonelik düzeyini **temel** olarak seçin.
 
     ![Ekran görüntüsü, temel seçili bir D ile Azure 'u hazırlar.](./media/kantegassoforbamboo-tutorial/addon5.png)
 
@@ -176,7 +176,7 @@ Bamboo için Kantega SSO ile Azure AD çoklu oturum açmayı yapılandırmak iç
 
     ![Ekran görüntüsü, meta veri içeri aktarma bölümünü gösterir, burada bir meta veri dosyasına gözatabileceğiniz.](./media/kantegassoforbamboo-tutorial/addon7.png)
 
-    a. Bilgisayarımdaki **meta veri dosyasını**seçin ve Azure Portal 'ten indirdiğiniz meta veri dosyasını karşıya yükleyin.
+    a. Bilgisayarımdaki **meta veri dosyasını** seçin ve Azure Portal 'ten indirdiğiniz meta veri dosyasını karşıya yükleyin.
 
     b. **İleri**’ye tıklayın.
 
@@ -230,7 +230,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
     b. **Kullanıcı adı** alan türü`brittasimon@yourcompanydomain.extension`  
     Örneğin, BrittaSimon@contoso.com
@@ -273,7 +273,7 @@ Azure AD kullanıcılarının Bamboo 'de oturum açmasını sağlamak için, Bam
 
 1. Bamboo şirket içi sunucunuzda yönetici olarak oturum açın.
 
-1. Dişli 'ye gelin ve **Kullanıcı yönetimine**tıklayın.
+1. Dişli 'ye gelin ve **Kullanıcı yönetimine** tıklayın.
 
     ![Ekran görüntüsü, Ayarlar menüsünden seçilen kullanıcı yönetimini gösterir.](./media/kantegassoforbamboo-tutorial/user1.png)
 

@@ -9,10 +9,10 @@ ms.author: terrylan
 manager: rkarlin
 ms.date: 11/10/2020
 ms.openlocfilehash: feb28b1d448d0146046ed789d1389a3a42f344de
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94558011"
 ---
 # <a name="secure-boot"></a>Güvenli Önyükleme
@@ -55,8 +55,8 @@ DB ve dbx dıgests 'nin doğru olduğu doğrulanıyor:
 ## <a name="next-steps"></a>Sonraki adımlar
 Platform bütünlüğünü ve güvenliğini sağlamak için yaptığımız hakkında daha fazla bilgi edinmek için bkz.:
 
-- [Bellenim güvenliği](firmware.md)
+- [Üretici yazılımı güvenliği](firmware.md)
 - [Ölçülen önyükleme ve konak kanıtlama](measured-boot-host-attestation.md)
-- [Proje Cerberus](project-cerberus.md)
+- [Project Cerberus](project-cerberus.md)
 - [Bekleme sırasında şifreleme](encryption-atrest.md)
 - [Hiper yönetici güvenliği](hypervisor.md)

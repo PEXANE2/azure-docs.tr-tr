@@ -4,10 +4,10 @@ description: Tarihlerle çalışmak için bir Azure Resource Manager şablonunda
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.openlocfilehash: 58d865f109ecca2629b89eeb55e554743824c195
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96920489"
 ---
 # <a name="date-functions-for-arm-templates"></a>ARM şablonları için tarih işlevleri
@@ -27,11 +27,11 @@ Temel değere bir zaman süresi ekler. ISO 8601 biçimi bekleniyor.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| base | Evet | string | Ekleme için başlangıç tarih saat değeri. [Iso 8601 zaman damgası biçimini](https://en.wikipedia.org/wiki/ISO_8601)kullanın. |
-| süre | Evet | string | Temele eklenecek zaman değeri. Negatif bir değer olabilir. [Iso 8601 Duration biçimini](https://en.wikipedia.org/wiki/ISO_8601#Durations)kullanın. |
-| biçim | Hayır | string | Tarih saat sonucu için çıkış biçimi. Sağlanmazsa, temel değerin biçimi kullanılır. [Standart biçim dizelerini](/dotnet/standard/base-types/standard-date-and-time-format-strings) veya [özel biçim dizelerini](/dotnet/standard/base-types/custom-date-and-time-format-strings)kullanın. |
+| base | Yes | string | Ekleme için başlangıç tarih saat değeri. [Iso 8601 zaman damgası biçimini](https://en.wikipedia.org/wiki/ISO_8601)kullanın. |
+| süre | Yes | string | Temele eklenecek zaman değeri. Negatif bir değer olabilir. [Iso 8601 Duration biçimini](https://en.wikipedia.org/wiki/ISO_8601#Durations)kullanın. |
+| biçim | No | string | Tarih saat sonucu için çıkış biçimi. Sağlanmazsa, temel değerin biçimi kullanılır. [Standart biçim dizelerini](/dotnet/standard/base-types/standard-date-and-time-format-strings) veya [özel biçim dizelerini](/dotnet/standard/base-types/custom-date-and-time-format-strings)kullanın. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -186,9 +186,9 @@ Belirtilen biçimdeki geçerli (UTC) Tarih/saat değerini döndürür. Biçim sa
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| biçim |Hayır |string |Dizeye dönüştürülecek URI kodlamalı değer. [Standart biçim dizelerini](/dotnet/standard/base-types/standard-date-and-time-format-strings) veya [özel biçim dizelerini](/dotnet/standard/base-types/custom-date-and-time-format-strings)kullanın. |
+| biçim |No |string |Dizeye dönüştürülecek URI kodlamalı değer. [Standart biçim dizelerini](/dotnet/standard/base-types/standard-date-and-time-format-strings) veya [özel biçim dizelerini](/dotnet/standard/base-types/custom-date-and-time-format-strings)kullanın. |
 
 ### <a name="remarks"></a>Açıklamalar
 

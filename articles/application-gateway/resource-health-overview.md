@@ -1,5 +1,5 @@
 ---
-title: Azure Application Gateway Kaynak Durumu genel bakış
+title: Azure Application Gateway Kaynak Durumuna genel bakış
 description: Bu makale, Azure Application Gateway kaynak sistem durumu özelliğine genel bakış
 services: application-gateway
 author: vhorne
@@ -8,13 +8,13 @@ ms.topic: article
 ms.date: 7/9/2019
 ms.author: victorh
 ms.openlocfilehash: 7e30a93f8270cfaf8910130cc1e2633bb80c2b8e
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397181"
 ---
-# <a name="azure-application-gateway-resource-health-overview"></a>Azure Application Gateway Kaynak Durumu genel bakış
+# <a name="azure-application-gateway-resource-health-overview"></a>Azure Application Gateway Kaynak Durumuna genel bakış
 
 [Azure Kaynak Durumu](../service-health/resource-health-overview.md) , kaynaklarınızı etkileyen Azure hizmeti sorunlarını tanılayıp gerekli desteği almanıza yardımcı olur. Kaynaklarınızın geçerli ve geçmiş durumu hakkında bilgi verir. Ayrıca, sorunları azaltmanıza yardımcı olacak teknik destek sağlar.
 

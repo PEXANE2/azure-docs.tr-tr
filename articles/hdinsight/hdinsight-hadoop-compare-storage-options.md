@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: b6dd0fd95280a65615d38ab11a2f9814f58586f5
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98945848"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Depolama seçeneklerini Azure HDInsight kümeleriyle kullanım için karşılaştırın
@@ -29,11 +29,11 @@ Aşağıdaki tabloda farklı HDInsight sürümleriyle desteklenen Azure depolama
 | Depolama hizmeti | Hesap türü | Ad alanı türü | Desteklenen hizmetler | Desteklenen performans katmanları | Desteklenen erişim katmanları | HDInsight sürümü | Küme türü |
 |---|---|---|---|---|---|---|---|
 |Azure Data Lake Storage Gen2| Genel amaçlı v2 | Hiyerarşik (dosya sistemi) | Blob | Standart | Sık erişimli, seyrek erişimli Arşiv | 3.6 + | Spark 2,1 ve 2,2 dışında tümü|
-|Azure Storage| Genel amaçlı v2 | Nesne | Blob | Standart | Sık erişimli, seyrek erişimli Arşiv | 3.6 + | Tümü |
-|Azure Storage| Genel amaçlı v1 | Nesne | Blob | Standart | Yok | Tümü | Tümü |
-|Azure Storage| BLOB depolama * * | Nesne | Blok Blobu | Standart | Sık erişimli, seyrek erişimli Arşiv | Tümü | Tümü |
+|Azure Depolama| Genel amaçlı v2 | Nesne | Blob | Standart | Sık erişimli, seyrek erişimli Arşiv | 3.6 + | Tümü |
+|Azure Depolama| Genel amaçlı v1 | Nesne | Blob | Standart | Yok | Tümü | Tümü |
+|Azure Depolama| BLOB depolama * * | Nesne | Blok Blobu | Standart | Sık erişimli, seyrek erişimli Arşiv | Tümü | Tümü |
 |Azure Data Lake Storage Gen1| Yok | Hiyerarşik (dosya sistemi) | Yok | Yok | Yok | yalnızca 3,6 | HBase dışında tümü |
-|Azure Storage| Blok Blobu| Nesne | Blok Blobu | Premium | Yok| 3.6 + | Yalnızca hızlandırılmış yazmaları olan HBase|
+|Azure Depolama| Blok Blobu| Nesne | Blok Blobu | Premium | Yok| 3.6 + | Yalnızca hızlandırılmış yazmaları olan HBase|
 |Azure Data Lake Storage Gen2| Blok Blobu| Hiyerarşik (dosya sistemi) | Blok Blobu | Premium | Yok| 3.6 + | Yalnızca hızlandırılmış yazmaları olan HBase|
 
 * * HDInsight kümeleri için yalnızca ikincil depolama hesapları BlobStorage türünde olabilir ve Sayfa Blobu desteklenen bir depolama seçeneği değildir.
@@ -47,15 +47,15 @@ Birincil ve isteğe bağlı ikincil depolama için hizmet birleşimlerini kullan
 | HDInsight sürümü | Birincil depolama alanı | İkincil depolama | Desteklenir |
 |---|---|---|---|
 | 3,6 & 4,0 | Genel Amaçlı v1, Genel Amaçlı v2 | Genel Amaçlı v1, Genel Amaçlı v2, BlobStorage (blok Blobları) | Yes |
-| 3,6 & 4,0 | Genel Amaçlı v1, Genel Amaçlı v2 | Data Lake Storage 2. Nesil | Hayır |
+| 3,6 & 4,0 | Genel Amaçlı v1, Genel Amaçlı v2 | Data Lake Storage 2. Nesil | No |
 | 3,6 & 4,0 | Data Lake Storage 2. * | Data Lake Storage 2. Nesil | Yes |
 | 3,6 & 4,0 | Data Lake Storage 2. * | Genel Amaçlı v1, Genel Amaçlı v2, BlobStorage (blok Blobları) | Yes |
-| 3,6 & 4,0 | Data Lake Storage 2. Nesil | Data Lake Storage 1. Nesil | Hayır |
+| 3,6 & 4,0 | Data Lake Storage 2. Nesil | Data Lake Storage 1. Nesil | No |
 | 3.6 | Data Lake Storage 1. Nesil | Data Lake Storage 1. Nesil | Yes |
 | 3.6 | Data Lake Storage 1. Nesil | Genel Amaçlı v1, Genel Amaçlı v2, BlobStorage (blok Blobları) | Yes |
-| 3.6 | Data Lake Storage 1. Nesil | Data Lake Storage 2. Nesil | Hayır |
-| 4.0 | Data Lake Storage 1. Nesil | Herhangi bir | Hayır |
-| 4.0 | Genel Amaçlı v1, Genel Amaçlı v2 | Data Lake Storage 1. Nesil | Hayır |
+| 3.6 | Data Lake Storage 1. Nesil | Data Lake Storage 2. Nesil | No |
+| 4.0 | Data Lake Storage 1. Nesil | Herhangi biri | No |
+| 4.0 | Genel Amaçlı v1, Genel Amaçlı v2 | Data Lake Storage 1. Nesil | No |
 
 * = Bu, bir veya birden çok Data Lake Storage 2. olabilir, çünkü tüm kurulum, küme erişimi için aynı yönetilen kimliği kullanır.
 

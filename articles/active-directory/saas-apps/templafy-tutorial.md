@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: jeedes
 ms.openlocfilehash: d83bf1b6e986f867a3781b5da7d2784e65815520
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92515832"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-templafy-saml2"></a>Öğretici: Templamy SAML2 ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -55,7 +55,7 @@ Templamy SAML2 tümleştirmesini Azure AD 'ye göre yapılandırmak için, galer
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-templafy-saml2"></a>Templamy SAML2 için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu TEMPLAMY SAML2 ile yapılandırın ve test edin. SSO 'nun çalışması için, Templamy SAML2 içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu TEMPLAMY SAML2 ile yapılandırın ve test edin. SSO 'nun çalışması için, Templamy SAML2 içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Templamy SAML2 ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -89,7 +89,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Yukarıdaki ' a ek olarak, Templamy SAML2 uygulaması, daha fazla özniteliğin aşağıda gösterilen SAML yanıtına geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Adı | Kaynak özniteliği| Ad Alanı  |
+    | Name | Kaynak özniteliği| Ad Alanı  |
     | ---------------| --------------- | --------- |
     | givenname | Kullanıcı. | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
     | surname | User. soyadı | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
@@ -128,7 +128,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 Bu bölümde, Templamy SAML2 'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde **Templamy SAML2**öğesini seçin.
+1. Uygulamalar listesinde **Templamy SAML2** öğesini seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)

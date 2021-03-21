@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/31/2020
 ms.author: jeedes
 ms.openlocfilehash: d1ca90d00dad66bf88f767f46d9cd2839fdd57b1
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92519172"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wisdom-by-invictus"></a>Öğretici: ınkıs tarafından Wıkıs ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -57,7 +57,7 @@ Wııse tarafından Azure AD 'ye yönelik olarak, wıeksel yapılandırma tümle
 
 ## <a name="configure-and-test-azure-ad-sso-for-wisdom-by-invictus"></a>Inkıs tarafından Wıkıx için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak, Azure AD SSO 'yu ınkıs ile Wıkıt ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ınkıs tarafından Wıkıs ile ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak, Azure AD SSO 'yu ınkıs ile Wıkıt ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ınkıs tarafından Wıkıs ile ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu ınkıs tarafından Wıkıx ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 

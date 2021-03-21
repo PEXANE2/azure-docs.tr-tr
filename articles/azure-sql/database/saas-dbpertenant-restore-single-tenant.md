@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: 88496a39b0186cefb7c64e227530b5d73e693094
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92780487"
 ---
 # <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>Tek bir kiracıyı kiracı başına veritabanı SaaS uygulamasıyla geri yükleme
@@ -29,7 +29,7 @@ Bu öğreticide, iki veri kurtarma deseni öğrenirsiniz:
 > * Bir veritabanını bir paralel veritabanına geri yükleme (yan yana).
 > * Var olan veritabanını değiştirerek bir veritabanını yerinde geri yükleyin.
 
-| Desen | Açıklama |
+| Desen | Description |
 |:--|:--|
 | Paralel veritabanına geri yükleme | Bu model, bir kiracının verilerini önceki bir noktadan incelemeye izin vermek için İnceleme, denetim ve uyumluluk gibi görevler için kullanılabilir. Kiracının geçerli veritabanı çevrimiçi ve değişmemiş durumda kalır. |
 | Yerinde geri yükleme | Bu model genellikle, bir kiracı yanlışlıkla verileri sildikten veya bozduktan sonra bir kiracıyı daha önceki bir noktaya kurtarmak için kullanılır. Özgün veritabanı satır dışı alınır ve geri yüklenen veritabanıyla değiştirilmiştir. |
@@ -44,9 +44,9 @@ Bu öğreticiyi tamamlamak için aşağıdaki ön koşulların karşılandığı
 
 Tek bir kiracının verilerini geri yüklemek için iki basit desen vardır. Kiracı veritabanları birbirinden yalıtılmış olduğundan, bir kiracının geri yüklenmesi diğer kiracının verilerini etkilemez. Azure SQL veritabanı 'nın zaman içinde geri yükleme (ıNR) özelliği her iki desende kullanılır. SÜR her zaman yeni bir veritabanı oluşturur.
 
-* **Paralel olarak geri yükle** : ilk düzende, kiracının geçerli veritabanı ile birlikte yeni bir paralel veritabanı oluşturulur. Daha sonra kiracıya geri yüklenen veritabanına salt okuma erişimi verilir. Geri yüklenen veriler incelenebilir ve geçerli veri değerlerinin üzerine yazmak için kullanılır. Bu, kiracının geri yüklenen veritabanına nasıl eriştiğini ve kurtarmaya yönelik seçeneklerin nasıl sağlandığını belirlemek için uygulama tasarımcısına sahiptir. Daha önceki bir noktada, kiracının verilerini incelemeye izin vermek, bazı senaryolarda gerekli olan tek bir işlem olabilir.
+* **Paralel olarak geri yükle**: ilk düzende, kiracının geçerli veritabanı ile birlikte yeni bir paralel veritabanı oluşturulur. Daha sonra kiracıya geri yüklenen veritabanına salt okuma erişimi verilir. Geri yüklenen veriler incelenebilir ve geçerli veri değerlerinin üzerine yazmak için kullanılır. Bu, kiracının geri yüklenen veritabanına nasıl eriştiğini ve kurtarmaya yönelik seçeneklerin nasıl sağlandığını belirlemek için uygulama tasarımcısına sahiptir. Daha önceki bir noktada, kiracının verilerini incelemeye izin vermek, bazı senaryolarda gerekli olan tek bir işlem olabilir.
 
-* **Yerinde geri yükleme** : ikinci model, verilerin kaybolması veya bozulması ve kiracının önceki bir noktaya geri dönmesi istiyorsa kullanışlıdır. Veritabanı geri yüklenirken kiracı, satır dışı alınır. Özgün veritabanı silinir ve geri yüklenen veritabanı yeniden adlandırılır. Özgün veritabanının yedekleme zinciri silme işleminden sonra erişilebilir kalır, bu nedenle veritabanını gerekirse daha önceki bir noktaya geri yükleyebilirsiniz.
+* **Yerinde geri yükleme**: ikinci model, verilerin kaybolması veya bozulması ve kiracının önceki bir noktaya geri dönmesi istiyorsa kullanışlıdır. Veritabanı geri yüklenirken kiracı, satır dışı alınır. Özgün veritabanı silinir ve geri yüklenen veritabanı yeniden adlandırılır. Özgün veritabanının yedekleme zinciri silme işleminden sonra erişilebilir kalır, bu nedenle veritabanını gerekirse daha önceki bir noktaya geri yükleyebilirsiniz.
 
 Veritabanı [etkin coğrafi çoğaltma](active-geo-replication-overview.md) kullanıyorsa ve paralel olarak geri yüklenirse, geri yüklenen kopyadan gerekli verileri özgün veritabanına kopyalamanızı öneririz. Özgün veritabanını geri yüklenen veritabanıyla değiştirirseniz, Coğrafi çoğaltmayı yeniden yapılandırmanız ve yeniden eşitlenmesi gerekir.
 
@@ -64,7 +64,7 @@ Bu kurtarma senaryolarını göstermek için, ilk olarak "yanlışlıkla" Kirac�
 
 ### <a name="open-the-events-app-to-review-the-current-events"></a>Geçerli olayları gözden geçirmek için olaylar uygulamasını açın
 
-1. Olay Hub 'ını ( http://events.wtp.&lt ; user &gt; . trafficmanager.net) açın ve **contoso Concert Salı** ' nı seçin.
+1. Olay Hub 'ını ( http://events.wtp.&lt ; user &gt; . trafficmanager.net) açın ve **contoso Concert Salı**' nı seçin.
 
    ![Olay Hub 'ı](./media/saas-dbpertenant-restore-single-tenant/events-hub.png)
 
@@ -76,7 +76,7 @@ Bu kurtarma senaryolarını göstermek için, ilk olarak "yanlışlıkla" Kirac�
 
 1. PowerShell ıSE 'de açın... \\ Öğrenme modülleri \\ Iş sürekliliği ve olağanüstü durum kurtarma \\ RestoreTenant \\ *Demo-RestoreTenant.ps1* ve aşağıdaki değeri ayarlayın:
 
-   * **$DemoScenario**  =  **1** , *son olayı Sil (Bilet satışları olmadan)* .
+   * **$DemoScenario**  =  **1**, *son olayı Sil (Bilet satışları olmadan)*.
 2. Betiği çalıştırmak için F5 tuşuna basın ve son olayı silin. Aşağıdaki onay iletisi görüntülenir:
 
    ```Console
@@ -94,8 +94,8 @@ Bu alıştırma, contoso Concert Salı veritabanını, olay silinmeden önceki b
  *Restore-TenantInParallel.ps1* betiği, paralel bir katalog girdisiyle *ContosoConcertHall \_ Old* adlı bir paralel Kiracı veritabanı oluşturur. Bu geri yükleme deseninin küçük bir veri kaybını kurtarmak için idealdir. Bu kalıbı, uyumluluk veya denetim amaçlarıyla verileri gözden geçirmeniz gerekiyorsa de kullanabilirsiniz. [Etkin coğrafi çoğaltma](active-geo-replication-overview.md)kullandığınızda önerilen yaklaşım önerilir.
 
 1. [Yanlışlıkla verileri silme bir kiracının benzetimini](#simulate-a-tenant-accidentally-deleting-data) gerçekleştirin bölümü.
-2. PowerShell ıSE 'de açın... \\ Öğrenme modülleri \\ Iş sürekliliği ve olağanüstü durum kurtarma \\ RestoreTenant \\ _Demo-RestoreTenant.ps1_ .
-3. **$DemoScenario**  =  **2** ' yi ayarlayın, *kiracıyı paralel olarak geri yükleyin* .
+2. PowerShell ıSE 'de açın... \\ Öğrenme modülleri \\ Iş sürekliliği ve olağanüstü durum kurtarma \\ RestoreTenant \\ _Demo-RestoreTenant.ps1_.
+3. **$DemoScenario**  =  **2**' yi ayarlayın, *kiracıyı paralel olarak geri yükleyin*.
 4. Betiği çalıştırmak için F5 tuşuna basın.
 
 Betik, olayı silmeden önce, kiracı veritabanını zaman içinde bir noktaya geri yükler. Veritabanı, _ContosoConcertHall \_ Old_ adlı yeni bir veritabanına geri yüklendi. Bu geri yüklenen veritabanında bulunan katalog meta verileri silinir ve sonra *ContosoConcertHall \_ eski* adından oluşturulan bir anahtar kullanılarak veritabanı kataloğa eklenir.
@@ -106,7 +106,7 @@ Demo betiği, tarayıcınızdaki bu yeni kiracı veritabanının Olaylar sayfas�
 
 Geri yüklenen kiracıyı, kendi olay uygulamasıyla ek bir kiracı olarak ortaya çıkarmak, geri yüklenen verilere kiracı erişimi sağlama olasılığının düşüktür. Geri yükleme modelini göstermek için kullanılır. Genellikle, eski verilere salt okuma erişimi verirsiniz ve geri yüklenen veritabanını tanımlı bir süre için koruyabilirsiniz. Örnekte, _geri yüklenen kiracıyı kaldır_ senaryosunu çalıştırarak, geri yüklenen kiracı girişini silebilirsiniz.
 
-1. **$DemoScenario**  =  **4** ' ü ayarlayın, *geri yüklenen kiracıyı kaldırın* .
+1. **$DemoScenario**  =  **4**' ü ayarlayın, *geri yüklenen kiracıyı kaldırın*.
 2. Betiği çalıştırmak için F5 tuşuna basın.
 3. *ContosoConcertHall \_ eski* girdisi artık katalogdan silinir. Tarayıcınızda bu kiracının Olaylar sayfasını kapatın.
 
@@ -115,7 +115,7 @@ Geri yüklenen kiracıyı, kendi olay uygulamasıyla ek bir kiracı olarak ortay
 Bu alıştırma, contoso Concert salonu kiracısını olay silinmeden önceki bir noktaya geri yükler. *Restore-TenantInPlace* betiği, bir kiracı veritabanını yeni bir veritabanına geri yükler ve orijinali siler. Bu geri yükleme düzeninin önemli verilerin bozulmasını kurtarmak için idealdir ve kiracının önemli veri kaybına uyum sağlaması gerekebilir.
 
 1. PowerShell ıSE 'de **Demo-RestoreTenant.ps1** dosyasını açın.
-2. **$DemoScenario**  =  **5** ' i ayarlayın, *kiracı 'yı yerinde geri yükleyin* .
+2. **$DemoScenario**  =  **5**' i ayarlayın, *kiracı 'yı yerinde geri yükleyin*.
 3. Betiği çalıştırmak için F5 tuşuna basın.
 
 Betik, kiracı veritabanını olay silinmeden önceki bir noktaya geri yükler. Daha fazla güncelleştirme yapılmasını engellemek için ilk olarak contoso Concert salonu kiracıyı bir satır alır. Ardından, geri yükleme noktasından geri yükleyerek paralel bir veritabanı oluşturulur. Geri yüklenen veritabanı, veritabanı adının mevcut Kiracı veritabanı adıyla çakışmayacağından emin olmak için zaman damgasıyla adlandırılır. Ardından, eski kiracı veritabanı silinir ve geri yüklenen veritabanı özgün veritabanı adı olarak yeniden adlandırılır. Son olarak, contoso Concert salonu, uygulamanın geri yüklenen veritabanına erişmesine izin verecek şekilde çevrimiçi hale getirilir.
