@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 67d6fb1f3cc359288ed942d915e186542a62b0fc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96017143"
 ---
 # <a name="fail-over-to-a-storsimple-8000-series-physical-device"></a>StorSimple 8000 serisi fiziksel cihazına yük devretme
@@ -43,8 +43,8 @@ StorSimple fiziksel cihazını bir StorSimple Cloud Appliance yük devretmek iç
 
 Cihazınızı bir hedef fiziksel cihaza geri yüklemek için aşağıdaki adımları gerçekleştirin.
 
-1. Yük devretmek istediğiniz birim kapsayıcısının ilişkili bulut anlık görüntülerinin olduğunu doğrulayın. Daha fazla bilgi için bkz. [yedek oluşturmak Için StorSimple Aygıt Yöneticisi hizmetini kullanma](storsimple-8000-manage-backup-policies-u2.md).
-2. StorSimple Aygıt Yöneticisi gidin ve ardından **cihazlar**' a tıklayın. **Cihazlar** dikey penceresinde hizmetinize bağlı cihazların listesine gidin.
+1. Yük devretmek istediğiniz birim kapsayıcısının ilişkili bulut anlık görüntülerinin olduğunu doğrulayın. Daha fazla bilgi için bkz. [yedek oluşturmak Için StorSimple Device Manager hizmetini kullanma](storsimple-8000-manage-backup-policies-u2.md).
+2. StorSimple Device Manager gidin ve ardından **cihazlar**' a tıklayın. **Cihazlar** dikey penceresinde hizmetinize bağlı cihazların listesine gidin.
     ![Cihaz Seç](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev1.png)
 3. Kaynak cihazınızı seçin ve tıklayın. Kaynak cihazda yük devretmek istediğiniz birim kapsayıcıları vardır. **Ayarlar > birim kapsayıcıları**' na gidin.
 4. Başka bir cihaza yük devretmek istediğiniz bir birim kapsayıcısı seçin. Bu kapsayıcıdaki birimlerin listesini göstermek için birim kapsayıcısına tıklayın. Bir birim seçin, sağ tıklayın ve **Çevrimdışına Al** ' a tıklayarak birimi çevrimdışına alın. Birim kapsayıcısındaki tüm birimler için bu işlemi tekrarlayın.
@@ -61,7 +61,7 @@ Cihazınızı bir hedef fiziksel cihaza geri yüklemek için aşağıdaki adıml
 
         ![Hedef seçin](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev6.png)
 
-   3. Son olarak, **Özet** altındaki tüm yük devretme ayarlarını gözden geçirin. Ayarları inceledikten sonra, seçili birim kapsayıcılarındaki birimlerin çevrimdışı olduğunu belirten onay kutusunu seçin. **Tamam** düğmesine tıklayın.
+   3. Son olarak, **Özet** altındaki tüm yük devretme ayarlarını gözden geçirin. Ayarları inceledikten sonra, seçili birim kapsayıcılarındaki birimlerin çevrimdışı olduğunu belirten onay kutusunu seçin. **Tamam**'a tıklayın.
 
        ![Yük devretme ayarlarını gözden geçirme](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev8.png)
   
@@ -85,5 +85,5 @@ Cihazınızı bir hedef fiziksel cihaza geri yüklemek için aşağıdaki adıml
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Yük devretme gerçekleştirdikten sonra [StorSimple cihazınızı devre dışı bırakmanız veya silmeniz](storsimple-8000-deactivate-and-delete-device.md)gerekebilir.
-* StorSimple Aygıt Yöneticisi hizmetini kullanma hakkında daha fazla bilgi için, StorSimple [cihazınızı yönetmek Için storsimple Aygıt Yöneticisi hizmetini kullanma](storsimple-8000-manager-service-administration.md)bölümüne gidin.
+* StorSimple Device Manager hizmetini kullanma hakkında daha fazla bilgi için, StorSimple [cihazınızı yönetmek Için storsimple Device Manager hizmetini kullanma](storsimple-8000-manager-service-administration.md)bölümüne gidin.
 

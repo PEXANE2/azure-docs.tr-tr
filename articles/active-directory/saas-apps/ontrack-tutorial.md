@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
 ms.openlocfilehash: 8470455f3d72ea101336e8368b420a9340aac317
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92522409"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ontrack"></a>Öğretici: OnTrack ile tümleştirme Azure Active Directory
@@ -61,13 +61,13 @@ OnTrack 'in Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden y�
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Ontrack**yazın, sonuç panelinden **Ontrack** ' i seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna **Ontrack** yazın, sonuç panelinden **Ontrack** ' i seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
      ![Sonuçlar listesinde OnTrack](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre Ontrack ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre Ontrack ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve OnTrack içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
 Azure AD çoklu oturum açma 'yı OnTrack ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -122,7 +122,7 @@ Azure AD çoklu oturum açmayı OnTrack ile yapılandırmak için aşağıdaki a
 
 6. Yukarıdakine ek olarak, OnTrack uygulaması SAML yanıtına daha fazla özniteliğin geri geçirilmesini bekler. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde AŞAĞıDAKI tabloda gösterildiği gibi SAML belirteci özniteliği eklemek için aşağıdaki adımları gerçekleştirin:
 
-    | Adı | Kaynak özniteliği|
+    | Name | Kaynak özniteliği|
     | -------------- | ----------------|    
     | User-Role      | "42F432" |
     | Hyperion-Code  | "12345" |
@@ -140,7 +140,7 @@ Azure AD çoklu oturum açmayı OnTrack ile yapılandırmak için aşağıdaki a
 
     c. **Ad alanını** boş bırakın.
 
-    d. **Öznitelik**olarak kaynak seçin.
+    d. **Öznitelik** olarak kaynak seçin.
 
     e. **Kaynak özniteliği** listesinde, bu satır için gösterilen öznitelik değerini yazın.
 
@@ -182,9 +182,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alan türü**brittasimon@yourcompanydomain.extension**  
+    b. **Kullanıcı adı** alan türü **brittasimon@yourcompanydomain.extension**  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.

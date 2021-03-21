@@ -8,10 +8,10 @@ ms.service: private-link
 ms.topic: tutorial
 ms.date: 9/25/2020
 ms.openlocfilehash: eefef0eb61df9aa0597206b537f3d58e8b8b3213
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96484830"
 ---
 # <a name="tutorial-connect-to-a-storage-account-using-an-azure-private-endpoint"></a>Öğretici: Azure özel uç noktası kullanarak bir depolama hesabına bağlanma
@@ -53,7 +53,7 @@ Savunma Konağı, Özel uç noktasını test etmek üzere sanal makineye güvenl
     | Kaynak Grubu   | **Myresourcegroup** seçin |
     | **Örnek ayrıntıları** |                                                                 |
     | Name             | **Myvnet** girin                                    |
-    | Bölge           | **Doğu ABD** seçin |
+    | Region           | **Doğu ABD** seçin |
 
 3. **IP adresleri** sekmesini seçin veya sayfanın altındaki **Sonraki: IP adresleri** düğmesini seçin.
 
@@ -105,7 +105,7 @@ Bu bölümde, Özel uç noktayı test etmek için kullanılacak bir sanal makine
     | Kaynak Grubu | **Myresourcegroup** seçin |
     | **Örnek ayrıntıları** |  |
     | Sanal makine adı | **Myvm 'yi** girin |
-    | Bölge | **Doğu ABD** seçin |
+    | Region | **Doğu ABD** seçin |
     | Kullanılabilirlik seçenekleri | **Altyapı yedekliliği gerekli değil** ' i seçin |
     | Görüntü | **Windows Server 2019 Datacenter-Gen1** seçin |
     | Azure Spot örneği | **Hayır** seçin |
@@ -165,7 +165,7 @@ Bu bölümde, bir depolama hesabı oluşturacak ve özel uç noktayı yapıland�
     | Abonelik | Azure aboneliğinizi seçin |
     | Kaynak Grubu | **Myresourcegroup** seçin |
     | Konum | **Doğu ABD** seçin |
-    | Ad | **Myprivateendpoint** girin |
+    | Name | **Myprivateendpoint** girin |
     | Depolama alt kaynağı | Varsayılan **blobu** bırak |
     | **Ağ** |  |
     | Sanal ağ | **Myvnet** seçin |

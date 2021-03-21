@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 08/12/2020
 ms.author: spelluru
 ms.openlocfilehash: 14892b114f3bb8a0bb6c07f7cdd01a174b931cf9
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95810621"
 ---
 # <a name="use-the-azure-cli-to-create-a-service-bus-namespace-and-a-queue"></a>Azure CLı kullanarak Service Bus bir ad alanı ve kuyruk oluşturma
@@ -23,7 +23,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap][free account] 
 Bu hızlı başlangıçta, Azure portal oturum açtıktan sonra başlatabilmeniz Azure Cloud Shell kullanırsınız. Azure Cloud Shell hakkındaki ayrıntılar için bkz. [Azure Cloud Shell Genel Bakış](../cloud-shell/overview.md). Ayrıca, makinenizde Azure PowerShell [yükleyip](/cli/azure/install-azure-cli) kullanabilirsiniz. 
 
 ## <a name="provision-resources"></a>Kaynak sağlama
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure portal](https://portal.azure.com) oturum açın.
 2. Aşağıdaki görüntüde gösterilen simgeyi seçerek Azure Cloud Shell başlatın. Cloud Shell **PowerShell** modundaysa **Bash** moduna geçin. 
 
     :::image type="content" source="./media/service-bus-quickstart-powershell/launch-cloud-shell.png" alt-text="Cloud Shell Başlat":::

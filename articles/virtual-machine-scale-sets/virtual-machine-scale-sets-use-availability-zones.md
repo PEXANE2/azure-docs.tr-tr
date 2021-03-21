@@ -10,10 +10,10 @@ ms.date: 08/08/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli
 ms.openlocfilehash: c5ddd5846be91e9fc99a251d6ad45ade8bde2937
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96016667"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Kullanılabilirlik Alanları kullanan bir sanal makine ölçek kümesi oluşturma
@@ -62,12 +62,12 @@ Tek bir bölgede bir ölçek kümesi oluşturduğunuzda, bu sanal makine örnekl
 
 Kullanılabilirlik Alanları kullanmak için, ölçek kümesinin [desteklenen bir Azure bölgesinde](../availability-zones/az-region.md)oluşturulması gerekir. Aşağıdaki yöntemlerden biriyle Kullanılabilirlik Alanları kullanan bir ölçek kümesi oluşturabilirsiniz:
 
-- [Azure Portal](#use-the-azure-portal)
+- [Azure portalı](#use-the-azure-portal)
 - Azure CLI’si
 - [Azure PowerShell](#use-azure-powershell)
 - [Azure Resource Manager şablonları](#use-azure-resource-manager-templates)
 
-## <a name="use-the-azure-portal"></a>Azure portalı kullanma
+## <a name="use-the-azure-portal"></a>Azure portalını kullanma
 
 Bir kullanılabilirlik alanı kullanan bir ölçek kümesi oluşturma işlemi Başlarken [makalesinde](quick-create-portal.md)ayrıntılı olarak aynıdır. Desteklenen bir Azure bölgesi seçtiğinizde, aşağıdaki örnekte gösterildiği gibi bir veya daha fazla kullanılabilir bölgede ölçek kümesi oluşturabilirsiniz:
 

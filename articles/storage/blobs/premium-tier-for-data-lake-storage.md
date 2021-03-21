@@ -9,10 +9,10 @@ ms.custom: references_regions
 ms.date: 10/30/2020
 ms.author: normesta
 ms.openlocfilehash: be440407fb6f4d9715ba80c584af023a5f662394
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93324224"
 ---
 # <a name="premium-tier-for-azure-data-lake-storage"></a>Azure Data Lake Storage için Premium katman
@@ -86,7 +86,7 @@ Azure Data Lake Storage için Premium katman aşağıdaki bölgelerde kullanıla
 |Orta Güney ABD|LRS|
 |Orta Kanada|LRS|
 |Doğu Kanada|LRS|
-|North Europe|LRS, ZRS|
+|Kuzey Avrupa|LRS, ZRS|
 |West Europe|LRS, ZRS|
 |Güney Birleşik Krallık|LRS|
 |Batı Birleşik Krallık|LRS|
@@ -102,7 +102,7 @@ Azure Data Lake Storage için Premium katman aşağıdaki bölgelerde kullanıla
 |Güneydoğu Asya|LRS, ZRS|
 |Doğu Avustralya|LRS, ZRS|
 |Avustralya Güneydoğu|LRS|
-|Brezilya Güney|LRS|
+|Güney Brezilya|LRS|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

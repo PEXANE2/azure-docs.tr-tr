@@ -13,10 +13,10 @@ ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: f4dfd2c7f9dbdd111f70a5dd5a648c11eacbf7b0
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102038552"
 ---
 # <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Web API 'Leri çağıran bir Web API 'si: API çağırma
@@ -35,7 +35,7 @@ Belirteciniz olduktan sonra korumalı bir Web API 'SI çağırabilirsiniz. Genel
 
 #### <a name="option-1-call-microsoft-graph-with-the-sdk"></a>Seçenek 1: SDK ile Microsoft Graph çağırma
 
-Bu senaryoda, `.AddMicrosoftGraph()` [kod yapılandırmasında](scenario-web-api-call-api-app-configuration.md#option-1-call-microsoft-graph)belirtildiği gibi *Startup.cs* ' ye eklemiş olmanız ve `GraphServiceClient` eylemlerdeki kullanım için denetleyici veya sayfa yapıcısına doğrudan ekleyebilmeniz gerekir. Aşağıdaki örnek Razor sayfası, oturum açmış kullanıcının fotoğrafını görüntüler.
+Bu senaryoda, `.AddMicrosoftGraph()` [kod yapılandırması](scenario-web-api-call-api-app-configuration.md#option-1-call-microsoft-graph)' nda belirtildiği gibi *Startup. cs* ' ye eklemiş olursunuz ve `GraphServiceClient` eylemlerinizi doğrudan denetleyicinize veya sayfa yapıcısına, eylemlerde kullanmak üzere ekleyebilirsiniz. Aşağıdaki örnek Razor sayfası, oturum açmış kullanıcının fotoğrafını görüntüler.
 
 ```CSharp
  [Authorize]
@@ -71,7 +71,7 @@ Bu senaryoda, `.AddMicrosoftGraph()` [kod yapılandırmasında](scenario-web-api
 
 #### <a name="option-2-call-a-downstream-web-api-with-the-helper-class"></a>2. seçenek: yardımcı sınıfla bir aşağı akış Web API 'SI çağırma
 
-Bu senaryoda, `.AddDownstreamWebApi()` [kod yapılandırmasında](scenario-web-api-call-api-app-configuration.md#option-2-call-a-downstream-web-api-other-than-microsoft-graph)belirtildiği gibi *Startup.cs* ' ye eklediniz ve `IDownstreamWebApi` denetleyicinize veya sayfa yapıcısına doğrudan bir hizmet ekleyebilir ve bunları eylemlerde kullanabilirsiniz:
+Bu senaryoda, `.AddDownstreamWebApi()` [kod yapılandırmasında](scenario-web-api-call-api-app-configuration.md#option-2-call-a-downstream-web-api-other-than-microsoft-graph)belirtildiği gibi *Startup. cs* ' ye eklemiş olursunuz ve `IDownstreamWebApi` denetleyicinize veya sayfa yapıcısına doğrudan bir hizmet ekleyebilir ve bunu eylemlerde kullanabilirsiniz:
 
 ```CSharp
  [Authorize]

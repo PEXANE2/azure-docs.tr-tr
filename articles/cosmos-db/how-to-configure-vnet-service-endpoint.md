@@ -8,10 +8,10 @@ ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 1d63d21f4c49e3c7aef035208477ac9fc79f2e51
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94637192"
 ---
 # <a name="configure-access-to-azure-cosmos-db-from-virtual-networks-vnet"></a>Sanal ağlardan (VNet) Azure Cosmos DB erişimi yapılandırma
@@ -42,9 +42,9 @@ Aşağıdaki bölümlerde, bir Azure Cosmos DB hesabı için sanal ağ hizmeti u
 
 1. Ayarlar menüsünden **güvenlik duvarları ve sanal ağlar** ' ı seçin ve **Seçilen ağlardan** erişime izin ver ' i seçin.
 
-1. Var olan bir sanal ağın alt ağına erişim vermek için, **sanal ağlar** altında **var olan Azure sanal ağını Ekle** ' yi seçin.
+1. Var olan bir sanal ağın alt ağına erişim vermek için, **sanal ağlar** altında **var olan Azure sanal ağını Ekle**' yi seçin.
 
-1. Azure sanal ağını eklemek istediğiniz **aboneliği** seçin. Azure Cosmos DB hesabınıza erişim sağlamak istediğiniz Azure **sanal ağlarını** ve **alt ağlarını** seçin. Sonra, "Microsoft. Azu, Smosdb" için hizmet uç noktalarına sahip seçili ağları etkinleştirmek üzere **Etkinleştir** ' i seçin. Tamamlandıktan sonra **Ekle** ' yi seçin.
+1. Azure sanal ağını eklemek istediğiniz **aboneliği** seçin. Azure Cosmos DB hesabınıza erişim sağlamak istediğiniz Azure **sanal ağlarını** ve **alt ağlarını** seçin. Sonra, "Microsoft. Azu, Smosdb" için hizmet uç noktalarına sahip seçili ağları etkinleştirmek üzere **Etkinleştir** ' i seçin. Tamamlandıktan sonra **Ekle**' yi seçin.
 
    :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet.png" alt-text="Sanal ağ ve alt ağ seçin":::
 
@@ -66,13 +66,13 @@ Aboneliği kaynak sağlayıcısına kaydetme yönergeleri aşağıda verilmişti
 
 1. Ayarlar menüsünden **güvenlik duvarları ve Azure sanal ağları** ' nı seçin ve **Seçilen ağlardan** erişime izin ver ' i seçin.  
 
-1. Yeni bir Azure sanal ağına erişim vermek için, **sanal ağlar** altında **Yeni sanal ağ ekle** ' yi seçin.  
+1. Yeni bir Azure sanal ağına erişim vermek için, **sanal ağlar** altında **Yeni sanal ağ ekle**' yi seçin.  
 
-1. Yeni bir sanal ağ oluşturmak için gereken ayrıntıları girip **Oluştur** ' u seçin. Alt ağ "Microsoft. Azu, Smosdb" etkin bir hizmet uç noktası ile oluşturulur.
+1. Yeni bir sanal ağ oluşturmak için gereken ayrıntıları girip **Oluştur**' u seçin. Alt ağ "Microsoft. Azu, Smosdb" etkin bir hizmet uç noktası ile oluşturulur.
 
    :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png" alt-text="Yeni bir sanal ağ için bir sanal ağ ve alt ağ seçin":::
 
-Azure Cosmos DB hesabınız Azure Bilişsel Arama gibi diğer Azure hizmetleri tarafından kullanılıyorsa veya Stream Analytics veya Power BI 'e erişildiğinde, **Genel Azure veri merkezlerinden gelen bağlantıları kabul et** ' i seçerek erişime izin verebilirsiniz.
+Azure Cosmos DB hesabınız Azure Bilişsel Arama gibi diğer Azure hizmetleri tarafından kullanılıyorsa veya Stream Analytics veya Power BI 'e erişildiğinde, **Genel Azure veri merkezlerinden gelen bağlantıları kabul et**' i seçerek erişime izin verebilirsiniz.
 
 Portaldan Azure Cosmos DB ölçümlerine erişiminizin olduğundan emin olmak için **Azure Portal seçeneklerinden erişime Izin ver** ' i etkinleştirmeniz gerekir. Bu seçenekler hakkında daha fazla bilgi edinmek için bkz. [IP güvenlik duvarı yapılandırma](how-to-configure-firewall.md) makalesi. Erişimi etkinleştirdikten sonra ayarları kaydetmek için **Kaydet** ' i seçin.
 
@@ -82,11 +82,11 @@ Portaldan Azure Cosmos DB ölçümlerine erişiminizin olduğundan emin olmak i�
 
 1. Ayarlar menüsünden **güvenlik duvarları ve sanal ağlar ' ı** seçin.  
 
-1. Bir sanal ağ veya alt ağ kuralını kaldırmak için, sanal ağ veya alt ağın yanındaki **...** öğesini seçin ve **Kaldır** ' ı seçin.
+1. Bir sanal ağ veya alt ağ kuralını kaldırmak için, sanal ağ veya alt ağın yanındaki **...** öğesini seçin ve **Kaldır**' ı seçin.
 
    :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/remove-a-vnet.png" alt-text="Sanal ağı kaldır":::
 
-1. Değişikliklerinizi uygulamak için **Kaydet** ’i seçin.
+1. Değişikliklerinizi uygulamak için **Kaydet**’i seçin.
 
 ## <a name="configure-a-service-endpoint-by-using-azure-powershell"></a><a id="configure-using-powershell"></a>Azure PowerShell kullanarak bir hizmet uç noktası yapılandırma
 

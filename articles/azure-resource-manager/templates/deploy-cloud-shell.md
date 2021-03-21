@@ -4,10 +4,10 @@ description: Azure 'a kaynak dağıtmak için Azure Resource Manager ve Azure Cl
 ms.topic: conceptual
 ms.date: 10/22/2020
 ms.openlocfilehash: c67251a33b6197603be27086bcc6cd047e0c414b
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98028616"
 ---
 # <a name="deploy-arm-templates-from-azure-cloud-shell"></a>ARM şablonlarını Azure Cloud Shell dağıtma
@@ -54,7 +54,7 @@ Dış şablon dağıtmak için, şablon URI 'sini tam olarak herhangi bir dış 
 
 Yerel bir şablon dağıtmak için, önce şablonunuzu Cloud Shell oturumunuza bağlı depolama hesabına yüklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Cloud Shell kaynak grubunuzu seçin. Ad deseni `cloud-shell-storage-<region>` şeklindedir.
 

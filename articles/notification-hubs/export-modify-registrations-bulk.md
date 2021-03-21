@@ -15,10 +15,10 @@ ms.reviewer: thsomasu
 ms.lastreviewed: 03/18/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 73c19b72c75d9638213f3c813a708a272cbe2a1b
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102452348"
 ---
 # <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>Azure Notification Hubs kayıtlarını toplu olarak içeri ve dışarı aktarma
@@ -31,7 +31,7 @@ Bu makalede, bir Bildirim Hub 'ında çok sayıda işlemin nasıl gerçekleştir
 
 Batch desteği milyonlarca kayıt içeren uzun süreli işleri destekleyecek şekilde tasarlanmıştır. Toplu destek, bu ölçeğe ulaşmak için iş ayrıntılarını ve çıktıyı depolamak üzere Azure Storage kullanır. Toplu güncelleştirme işlemleri için, kullanıcının içerik kayıt güncelleştirme işlemleri listesi olan bir blob kapsayıcısında bir dosya oluşturması gerekir. Kullanıcı başlatıldığında, bir çıkış dizinine (aynı zamanda bir blob kapsayıcısında) bir URL ile birlikte giriş blobuna bir URL sağlar. İş başladıktan sonra, Kullanıcı, işin başlangıcında belirtilen bir URL konumunu sorgulayarak durumu denetleyebilir. Belirli bir iş yalnızca belirli bir türdeki (oluşturma, güncelleştirme veya silme) işlemleri gerçekleştirebilir. Dışarı aktarma işlemleri, anormal olarak gerçekleştirilir.
 
-## <a name="import"></a>İçeri Aktarma
+## <a name="import"></a>İçeri Aktar
 
 ### <a name="set-up"></a>Kurulum
 

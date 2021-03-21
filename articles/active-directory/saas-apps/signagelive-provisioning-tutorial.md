@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/23/2019
 ms.author: Zhchia
 ms.openlocfilehash: 10ad06041e8136b5661b1b1ff487cd4d3b0f5153
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94358414"
 ---
 # <a name="tutorial-configure-signagelive--for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Signagelive yapılandırma
@@ -60,11 +60,11 @@ Signagelive 'i Azure AD ile otomatik Kullanıcı sağlaması için yapılandırm
 
 **Azure AD Uygulama Galerisi 'nden Signagelive eklemek için aşağıdaki adımları uygulayın:**
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** ' i seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
+2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -85,11 +85,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Signagelive içindeki kul
 
 ### <a name="to-configure-automatic-user-provisioning-for-signagelive--in-azure-ad"></a>Azure AD 'de Signagelive için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Signagelive** ' yi seçin.
+2. Uygulamalar listesinde **Signagelive**' yi seçin.
 
     ![Uygulamalar listesindeki Signagelive bağlantısı](common/all-applications.png)
 
@@ -97,20 +97,20 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Signagelive içindeki kul
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
 5. Yönetici kimlik bilgileri bölümünün altında, ` https://samlapi.signagelive.com/scim/v2` **kiracı URL 'sini** girin. **Gizli belirteç** alanı ' nda, mühendislik geliştirme ekibi tarafından sunulan **taşıyıcı belirteç** değerini girin. Azure AD 'nin Signagelive 'e bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Signagelive hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
     ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder** ' i işaretleyin.
+6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet** ’e tıklayın.
+7. **Kaydet**’e tıklayın.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Signagelive olarak eşitler** ' ı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Signagelive olarak eşitler**' ı seçin.
 
     ![Eşlemeleri Azure Active Directory Kullanıcıları Signagelive seçeneğiyle Synchronize seçeneği ile eşlemeler bölümünün ekran görüntüsü.](media/signagelive-provisioning-tutorial/usermapping.png)
 
@@ -118,7 +118,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Signagelive içindeki kul
 
     ![Yedi eşleşme görüntülenirken öznitelik eşlemeleri bölümünün ekran görüntüsü.](media/signagelive-provisioning-tutorial/userattribute.png)
 
-10. **Eşlemeler** bölümünde **Azure Active Directory grubunu Signagelive olarak eşitler** ' ı seçin.
+10. **Eşlemeler** bölümünde **Azure Active Directory grubunu Signagelive olarak eşitler**' ı seçin.
 
     ![Azure Active Directory grubu ile Signagelive seçeneğini eşitler seçeneği verilen eşlemeler bölümünün ekran görüntüsü.](media/signagelive-provisioning-tutorial/groupmapping.png)
 
@@ -136,7 +136,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Signagelive içindeki kul
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-15. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
+15. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

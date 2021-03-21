@@ -8,10 +8,10 @@ author: trkeya
 ms.author: trkeya
 ms.date: 09/04/2020
 ms.openlocfilehash: 08c5b5d8351105744f7a912b352a940df3b4baa7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96462127"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Azure Marketi listeleme yönergeleri
@@ -82,7 +82,7 @@ Bu makalede, Azure Marketi 'nde yeni teklifleri ve hizmetleri listeleme gereksin
 | 6 | Çözüm desteği ve yardım  | Destek ve yardım gerekli değildir.  | | 
 | 7 | Gizlilik ilkesi ve kullanım koşulları kullanılabilir  |  İlkeler veya koşullar gerekli değildir.  | | 
 | 8 | Hizmet türleri | Hizmet türünün başlıkla eşleştiğinden emin olun. | |
-| 9 | Yetkinlikler | Aşağıdakilerden en az birinde uzmanlığa sahip olmalıdır:<ul><li>Uygulama Geliştirme</li><li>Uygulama Tümleştirme</li><li>Uygulama Yaşam Döngüsü Yönetimi</li><li>Bulut platformu<li>Veri Analizi</li><li>Veri Merkezi</li><li>Veri platformu</li><li>DevOps |
+| 9 | Yetkinlikler | Aşağıdakilerden en az birinde uzmanlığa sahip olmalıdır:<ul><li>Uygulama Geliştirme</li><li>Uygulama Tümleştirme</li><li>Uygulama Yaşam Döngüsü Yönetimi</li><li>Bulut Platformu<li>Veri Analizi</li><li>Veri Merkezi</li><li>Veri Platformu</li><li>DevOps |
 | 10 | Ürünler | Azure ürünleri olmalıdır. | |
 | 11 | Ülke/bölge | Ülke/bölgenin seçili para birimiyle eşleştiğinden emin olun. | |
 | 12 | Daha fazla bilgi edinin  | <ul><li>En alttaki bağlantılar (açıklama altında, sol taraftaki Azure Marketi bağlantıları değil), çözüm hakkında daha fazla bilgi sağlar ve genel olarak kullanılabilir ve doğru şekilde görüntülenir.</li><li>Bağlantıların "kolay ad" olması ve herhangi bir indirmelerin dosya adı olarak gösterilmemelidir. | |

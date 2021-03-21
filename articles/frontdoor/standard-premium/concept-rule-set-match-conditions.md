@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: yuajia
 ms.openlocfilehash: 4c65d0e7f80fab59ca7df4849df7117d482352c1
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101100515"
 ---
 # <a name="azure-front-door-standardpremium-preview-rule-set-match-conditions"></a>Azure ön kapı Standart/Premium (Önizleme) kural kümesi eşleşme koşulları
@@ -87,7 +87,7 @@ IP eşleşmesi değil | IP adresi (boşlukla ayrılmış)
 * Birden çok IP adresi ve IP adresi blokları için, ' veya ' mantığı çalıştırılır.
     * **IPv4 örneği**: *1.2.3.4* ve *10.20.30.40* iki IP adresini eklerseniz, bu durum, 1.2.3.4 veya 10.20.30.40 adreslerinden gelen herhangi bir istek varsa, koşul eşleştirilir.
     * **IPv6 örneği**: *1:2:3:4:5:6:7:8* ve *10:20:30:40:50:60:70:80* olan iki IP adresini eklerseniz, bu koşul, 1:2:3:4:5:6:7:8 veya 10:20:30:40:50:60:70:80 adresinden gelen istekler varsa eşleştirilir.
-* Bir IP adres bloğunun sözdizimi, ardından bir eğik çizgi ve ön ek boyutu gelen temel IP adresidir. Örneğin:
+* Bir IP adres bloğunun sözdizimi, ardından bir eğik çizgi ve ön ek boyutu gelen temel IP adresidir. Örnek:
     * **IPv4 örneği**: *5.5.5.64/26* , 5.5.5.64 ile 5.5.5.127 arası adreslerden gelen isteklerle eşleşir.
     * **IPv6 örneği**: *1:2:3:/48* , 1:2:3: ffff: ffff: ffff: ffff: ffff arasındaki 1:2:3:0:0:0:0:0 adresten gelen isteklerden eşleşir.
 
@@ -187,7 +187,7 @@ Operatör | Dosya adı | Örnek dönüştürme
 
 Standart işleç listesinden değerleri kabul eden kurallar için aşağıdaki işleçler geçerlidir:
 
-* Herhangi bir
+* Herhangi biri
 * Eşittir
 * Contains
 * Şununla başlar

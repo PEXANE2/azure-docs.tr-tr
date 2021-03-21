@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 08/05/2020
 ms.author: yelevin
 ms.openlocfilehash: cf7e389fc4a8a8dfa88691dc034611cae3471731
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94655349"
 ---
 # <a name="connect-windows-defender-firewall-with-advanced-security-to-azure-sentinel"></a>Gelişmiş Güvenlik Özellikli Windows Defender güvenlik duvarı 'Nı Azure Sentinel 'e bağlama
@@ -37,7 +37,7 @@ ms.locfileid: "94655349"
 
 - İzlemek istediğiniz makinelerin bağlı olduğu çalışma alanı üzerinde okuma ve yazma izinlerinizin olması gerekir.
 
-- Tüm **Azure Sentinel** rollerine ek olarak, bu çalışma alanındaki securityınsights çözümünde **Log Analytics katkıda** bulunan rolüne atanmalısınız. [Daha fazla bilgi](../role-based-access-control/built-in-roles.md#log-analytics-contributor)
+- Tüm **Azure Sentinel** rollerine ek olarak, bu çalışma alanındaki securityınsights çözümünde **Log Analytics katkıda** bulunan rolüne atanmalısınız. [Daha fazla bilgi edinin](../role-based-access-control/built-in-roles.md#log-analytics-contributor)
 
 ## <a name="enable-the-connector"></a>Bağlayıcıyı etkinleştirme 
 

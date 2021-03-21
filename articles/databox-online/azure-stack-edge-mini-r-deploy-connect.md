@@ -10,17 +10,17 @@ ms.date: 10/20/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Mini R so I can use it to transfer data to Azure.
 ms.openlocfilehash: fe76391a5cfce8d7d39e47131db108ab87e5aed5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96468935"
 ---
 # <a name="tutorial-connect-to-azure-stack-edge-mini-r"></a>Öğretici: Azure Stack Edge Mini R 'ye bağlanma
 
 Bu öğreticide, yerel Web Kullanıcı arabirimini kullanarak Azure Stack Edge Mini R cihazınıza nasıl bağlanabileceğinizi açıklanmaktadır.
 
-Bağlantı işleminin tamamlanması 5 dakika sürebilir.
+Bağlantı işleminin tamamlanması 5 dakika kadar sürebilir.
 
 Bu öğreticide şunları öğrenirsiniz:
 
@@ -42,7 +42,7 @@ Azure Stack Edge cihazınızı yapılandırmadan ve ayarlamadan önce şunları 
 
 1. Bilgisayarınızda Ethernet bağdaştırıcısını, 192.168.100.5 ve alt ağ 255.255.255.0 statik IP adresiyle Azure Stack Edge Pro cihazına bağlanacak şekilde yapılandırın.
 
-2. Bilgisayarınızı cihazınızda bağlantı noktası 1 ' e bağlayın. Bilgisayarı doğrudan cihaza (anahtar olmadan) bağlıyorsanız, bir çapraz kablo veya USB Ethernet bağdaştırıcısı kullanın. Cihazınızda bağlantı noktası 1 ' i tanımlamak için aşağıdaki çizimi kullanın.
+2. Bilgisayarınızı cihazınızdaki PORT 1'e bağlayın. Bilgisayar cihaza doğrudan bağlanıyorsa (anahtar olmadan) çapraz bağlantılı kablo veya USB Ethernet bağdaştırıcısı kullanın. Cihazınızda PORT 1'i belirlemek için aşağıdaki çizimi kullanın.
 
     ![Wi-Fi için kablolama](./media/azure-stack-edge-mini-r-deploy-install/wireless-cabled.png)
 

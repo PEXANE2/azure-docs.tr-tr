@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
 ms.openlocfilehash: cd64c80acceb1542c080fc45efbce59f287d448a
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97680687"
 ---
 # <a name="how-to-use-the-azure-maps-spatial-io-module"></a>Azure haritalar uzamsal GÇ modülünü kullanma
@@ -37,7 +37,7 @@ Bu videoda, Azure Maps web SDK 'sında uzamsal GÇ modülüne ilişkin bir genel
 > [!WARNING]
 > Yalnızca güvendiğiniz bir kaynaktan gelen veri ve Hizmetleri, özellikle de başka bir etki alanından başvuru yapıyorsanız kullanın. Uzamsal GÇ modülü, riski en aza indirmek için gereken adımları ele alır, ancak en güvenli yaklaşım, uygulamanıza yönelik herhangi bir desteklenmeyen veriye izin vermez. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Uzamsal GÇ modülünü kullanabilmeniz için önce [bir Azure haritalar hesabı](./quick-demo-map-app.md#create-an-azure-maps-account) oluşturmanız ve [hesabınız için birincil abonelik anahtarını almanız](./quick-demo-map-app.md#get-the-primary-key-for-your-account)gerekir.
 

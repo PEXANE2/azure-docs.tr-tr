@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: chuye
 ms.openlocfilehash: e20733cb4b93fcfac7606895746645727f12d6c8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92783836"
 ---
 # <a name="azure-storage-explorer-blob-versioning-guide"></a>Azure Depolama Gezgini blob sürüm oluşturma kılavuzu
@@ -34,12 +34,12 @@ Bu bölümde, bu makaledeki kullanımları anlamanıza yardımcı olacak bazı t
 
 Depolama Gezgini Blobları görüntülemek için dört farklı görünümü destekler.
 
-| Görüntüle | Etkin sürüm olmayan BLOB 'lar | Geçici silinen sürüm olmayan Bloblar | Blob sürümleri |
+| Görünüm | Etkin sürüm olmayan BLOB 'lar | Geçici silinen sürüm olmayan Bloblar | Blob sürümleri |
 | ---- | :----------: | :-----------: | :------------------: |
-| Etkin blob 'lar | Evet | Hayır | Yalnızca geçerli sürüm |
-| Etkin Bloblar ve geçici olarak silinen blob 'lar | Evet | Evet | Yalnızca geçerli sürüm |
-| Geçerli sürüm olmadan etkin blob 'lar ve Bloblar | Evet | Hayır | Güncel sürüm veya en son etkin sürüm |
-| Tüm Bloblar ve geçerli sürüm olmadan blob 'lar | Evet | Evet | Güncel sürüm veya en son sürüm |
+| Etkin blob 'lar | Yes | Hayır | Yalnızca geçerli sürüm |
+| Etkin Bloblar ve geçici olarak silinen blob 'lar | Yes | Yes | Yalnızca geçerli sürüm |
+| Geçerli sürüm olmadan etkin blob 'lar ve Bloblar | Yes | Hayır | Güncel sürüm veya en son etkin sürüm |
+| Tüm Bloblar ve geçerli sürüm olmadan blob 'lar | Yes | Yes | Güncel sürüm veya en son sürüm |
 
 ### <a name="active-blobs"></a>Etkin blob 'lar
 

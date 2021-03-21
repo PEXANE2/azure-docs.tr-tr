@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 09/21/2020
 ms.reviewer: ''
 ms.openlocfilehash: 1217d3af855e96b6d6a0f403c2ff351a6b957d9a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96459674"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği ile ortak güvenlik gereksinimlerini ele almak için PlayBook
@@ -241,7 +241,7 @@ Gerekli görevleri gerçekleştirmek için yalnızca gerekli [izinleri](/sql/rel
 
 - Azure Resource Manager:
   - Kullanılabilir veya Azure özel rolleri yerleşik roller kullanın ve gerekli izinleri atayın.
-    - [Azure yerleşik rolleri](../../role-based-access-control/built-in-roles.md)
+    - [Yerleşik Azure rolleri](../../role-based-access-control/built-in-roles.md)
     - [Özel Azure rolleri](../../role-based-access-control/custom-roles.md)
 
 **En iyi uygulamalar**:
@@ -342,7 +342,7 @@ SoD 'ye daha ayrıntılı bir şekilde geçmek isteyen okuyucular için aşağı
   - [İmza saklı yordamları](/dotnet/framework/data/adonet/sql/signing-stored-procedures-in-sql-server)
 
 - Azure Kaynak yönetimi için:
-  - [Azure yerleşik rolleri](../../role-based-access-control/built-in-roles.md)
+  - [Yerleşik Azure rolleri](../../role-based-access-control/built-in-roles.md)
   - [Özel Azure rolleri](../../role-based-access-control/custom-roles.md)
   - [Yükseltilmiş erişim için Azure AD Privileged Identity Management kullanma](https://www.microsoft.com/itshowcase/using-azure-ad-privileged-identity-management-for-elevated-access)
 

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3a669f7400eb2daf2d71f6caed41560020699c58
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98791130"
 ---
 # <a name="connect-to-a-secure-cluster"></a>Güvenli bir kümeye bağlanma
@@ -31,7 +31,7 @@ openssl pkcs12 -in your-cert-file.pfx -out your-cert-file.pem -nodes -passin pas
 
 . Pfx dosyanız parola korumalı değilse, son parametre için-passin pass: kullanın.
 
-İstemci sertifikasını bir pek dosyası olarak belirtmek için, bağımsız değişkeninde dosya yolunu belirtin `--pem` . Örneğin:
+İstemci sertifikasını bir pek dosyası olarak belirtmek için, bağımsız değişkeninde dosya yolunu belirtin `--pem` . Örnek:
 
 ```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem
@@ -45,7 +45,7 @@ Bir sertifika belirtmek için, anahtar çifti `--cert` `--key` her ilgili dosyan
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --cert ./client.crt --key ./keyfile.key
 ```
 
-Bazen test veya geliştirme kümelerinin güvenliğini sağlamak için kullanılan sertifikaların sertifika doğrulaması başarısız olur. Sertifika doğrulamayı atlamak için, seçeneğini belirtin `--no-verify` . Örneğin:
+Bazen test veya geliştirme kümelerinin güvenliğini sağlamak için kullanılan sertifikaların sertifika doğrulaması başarısız olur. Sertifika doğrulamayı atlamak için, seçeneğini belirtin `--no-verify` . Örnek:
 
 > [!WARNING]
 > `no-verify`Üretim Service Fabric kümelerine bağlanırken seçeneğini kullanmayın.
@@ -54,7 +54,7 @@ Bazen test veya geliştirme kümelerinin güvenliğini sağlamak için kullanıl
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
 ```
 
-Ayrıca, güvenilir CA sertifikaları veya ayrı sertifikalar için yollar belirtebilirsiniz. Bu yolları belirtmek için `--ca` bağımsız değişkenini kullanın. Örneğin:
+Ayrıca, güvenilir CA sertifikaları veya ayrı sertifikalar için yollar belirtebilirsiniz. Bu yolları belirtmek için `--ca` bağımsız değişkenini kullanın. Örnek:
 
 ```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --ca ./trusted_ca

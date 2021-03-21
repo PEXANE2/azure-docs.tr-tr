@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory bağlayıcı sorunlarını giderme
+title: Azure Data Factory bağlayıcılarıyla ilgili sorunları giderme
 description: Azure Data Factory 'deki bağlayıcı sorunlarını giderme hakkında bilgi edinin.
 author: linda33wj
 ms.service: data-factory
@@ -8,13 +8,13 @@ ms.date: 02/08/2021
 ms.author: jingwang
 ms.custom: has-adal-ref
 ms.openlocfilehash: 9d8f940e3900c00b1c6f6623dfeff2d92ca85aa3
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102042445"
 ---
-# <a name="troubleshoot-azure-data-factory-connectors"></a>Azure Data Factory bağlayıcı sorunlarını giderme
+# <a name="troubleshoot-azure-data-factory-connectors"></a>Azure Data Factory bağlayıcılarıyla ilgili sorunları giderme
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -175,7 +175,7 @@ Bu makalede Azure Data Factory bağlayıcılarıyla ilgili sorunları gidermeye 
 
 - **Neden**: sorun, genellikle kendinden konak INTEGRATION RUNTIME (IR) makinesinde gerçekleşen Azure Data Lake Storage 2. havuz zaman aşımı hatası nedeniyle oluşur.
 
-- **Öneri**: 
+- **Öneri:** 
 
     - Şirket içinde barındırılan IR makinenizi ve hedef Azure Data Lake Storage 2. hesabınızı, mümkünse aynı bölgeye yerleştirin. Bu, rastgele bir zaman aşımı hatasından kaçınmanıza ve daha iyi performans elde etmenize yardımcı olabilir.
 
@@ -525,7 +525,7 @@ Bu makalede Azure Data Factory bağlayıcılarıyla ilgili sorunları gidermeye 
 
 - **Neden**: hedef sütun kaynakta veya sütun eşlemesinde yok.
 
-- **Öneri**:  
+- **Öneri:**  
   1. Kaynağın hedef sütununu içerdiğinden emin olun. 
   2. Sütun eşlemesinde Target sütununu ekleyin. Havuz sütununun *{FieldName} @EntityReference* biçiminde olduğundan emin olun.
 
@@ -587,7 +587,7 @@ Bu makalede Azure Data Factory bağlayıcılarıyla ilgili sorunları gidermeye 
 
 - **Neden**: Data Factory DateTime değerleri 0001-01-01 00:00:00 ile 9999-12-31 23:59:59 arasında bir aralıkta desteklenir. Ancak Oracle, Data Factory hata veren BC yüzyıl veya min/sn>59 gibi daha geniş bir tarih saat değerlerini destekler.
 
-- **Öneri**: 
+- **Öneri:** 
 
     Oracle 'daki değerin Data Factory aralığında olup olmadığını görmek için, ' i çalıştırın `select dump(<column name>)` . 
 
@@ -827,7 +827,7 @@ Bu makalede Azure Data Factory bağlayıcılarıyla ilgili sorunları gidermeye 
 
 - **Neden**: özel anahtar içeriği Azure anahtar KASASı veya SDK 'dan getirilir, ancak doğru kodlanmamış.
 
-- **Öneri**:  
+- **Öneri:**  
 
     Özel anahtar içeriği anahtar kasanızdan ise, doğrudan SFTP bağlantılı hizmetine yüklerseniz özgün anahtar dosyası çalışabilir.
 
@@ -858,7 +858,7 @@ Bu makalede Azure Data Factory bağlayıcılarıyla ilgili sorunları gidermeye 
 
 - **Neden**: yanlış anahtar içerik biçimi seçildi.
 
-- **Öneri**:  
+- **Öneri:**  
 
     PKCS # 8 biçimlendirme SSH özel anahtarı ("-----ŞIFRELENMIŞ özel anahtara başla-----") Şu anda Data Factory ' de SFTP sunucusuna erişmek için desteklenmiyor. 
 
@@ -895,7 +895,7 @@ Bu makalede Azure Data Factory bağlayıcılarıyla ilgili sorunları gidermeye 
 
 - **Neden**: hata Iletisi "Sunucu yanıtı SSH protokol kimliği içermez" dizesini içeriyorsa, olası bir neden, SFTP sunucusunun bağlantıyı kısıtlamasının nedeni olur. Data Factory, SFTP sunucusundan paralel olarak indirilecek birden çok bağlantı oluşturacak ve bazen SFTP sunucusu azaltmasına karşılaşacaktır. Normalde, farklı sunucular kısıtlama ile karşılaştığında farklı hatalar döndürür.
 
-- **Öneri**:  
+- **Öneri:**  
 
     SFTP veri kümesinin en fazla eş zamanlı bağlantı sayısını 1 olarak belirtin ve kopyalama etkinliğini yeniden çalıştırın. Etkinlik başarılı olursa, azaltma işleminin nedeni olduğundan emin olabilirsiniz.
 

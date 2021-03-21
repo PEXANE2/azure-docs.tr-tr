@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 11/05/2020
 ms.openlocfilehash: 4f243ca5be0878cde3b28f5b7a7c3eea0cf9b8d0
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94631588"
 ---
 # <a name="how-to-resell-your-offer-through-csp"></a>Teklifinizi CSP aracılığıyla yeniden satma
@@ -22,11 +22,11 @@ ms.locfileid: "94631588"
 
 Teklifinizin hangi iş ortakları tarafından yeniden satıtabilecekleri seçin:
 
-- CSP programındaki tüm iş ortakları
+- CSP programındaki iş ortakları
 - Seçtiğiniz CSP programındaki belirli iş ortakları
-- CSP programında iş ortağı yok
+- CSP programındaki iş ortaklarından hiçbiri
 
-Sol gezinti menüsünde, **sınama sürücüsü** ' nde bir sonraki sekmeye geçmeden önce **Taslağı kaydet** ' i seçin.
+Sol gezinti menüsünde, **sınama sürücüsü**' nde bir sonraki sekmeye geçmeden önce **Taslağı kaydet** ' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,10 +7,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 04/29/2020
 ms.openlocfilehash: 3d67ac9474704fac39dbe7eb91aead5c4babc4ce
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100383951"
 ---
 # <a name="migrate-normalized-database-schema-from-azure-sql-database-to-azure-cosmosdb-denormalized-container"></a>Azure SQL Veritabanı'ndaki normalleştirilmiş veritabanı şemasını Azure Cosmos DB'deki normalleştirilmişlikten çıkarılmış kapsayıcıya geçirme
@@ -68,7 +68,7 @@ Elde edilen CosmosDB kapsayıcısı, iç sorguyu tek bir belgeye katıştırır 
 
 10. Sonuçlarınızı bu noktaya kadar görebileceğiniz şekilde, eklediğiniz yeni birleşimde veri önizleme sekmesine tıklayın. Ayrıntı satırlarıyla birleştirilmiş tüm başlık satırlarını görmeniz gerekir. Bu, öğesinden oluşturulan birleştirmenin sonucudur ```SalesOrderID``` . Daha sonra, ortak satırlardaki ayrıntıları Ayrıntılar yapısına birleştirecek ve ortak satırları toplayacağız.
 
-![Birleştir](media/data-flow/cosmosb4.png)
+![Katılın](media/data-flow/cosmosb4.png)
 
 11. Bu satırları normalleştirmeye yönelik dizileri oluşturabilmeniz için önce istenmeyen sütunları kaldırmalı ve veri değerlerinin CosmosDB veri türleriyle eşleştiğinden emin olmanız gerekir.
 

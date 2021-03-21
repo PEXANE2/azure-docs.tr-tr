@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/12/2021
 ms.openlocfilehash: a2f6023b86b96266be8e625fd5b0d6625500e3fc
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102551479"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Izleyici aracılarına genel bakış
@@ -36,7 +36,7 @@ Aşağıdaki tablolarda, Windows ve Linux için Azure Izleyici aracılarıyla il
 | **Desteklenen ortamlar** | Azure<br>Diğer bulut (Azure ARC)<br>Şirket içi (Azure ARC)  | Azure | Azure<br>Diğer bulut<br>Şirket içi | Azure<br>Diğer bulut<br>Şirket içi | 
 | **Aracı gereksinimleri**  | Yok | Yok | Yok | Log Analytics Aracısı gerektirir |
 | **Toplanan veriler** | Olay Günlükleri<br>Performans | Olay Günlükleri<br>ETW olayları<br>Performans<br>Dosya tabanlı Günlükler<br>IIS günlükleri<br>.NET uygulama günlükleri<br>Kilitlenme bilgi dökümleri<br>Aracı tanılama günlükleri | Olay Günlükleri<br>Performans<br>Dosya tabanlı Günlükler<br>IIS günlükleri<br>Öngörüler ve çözümler<br>Diğer hizmetler | İşlem bağımlılıkları<br>Ağ bağlantısı ölçümleri |
-| **Gönderilen veriler** | Azure İzleyici Günlükleri<br>Azure İzleyici Ölçümleri | Azure Storage<br>Azure İzleyici Ölçümleri<br>Olay Hub'ı | Azure İzleyici Günlükleri | Azure İzleyici Günlükleri<br>(Log Analytics Aracısı aracılığıyla) |
+| **Gönderilen veriler** | Azure İzleyici Günlükleri<br>Azure İzleyici Ölçümleri | Azure Depolama<br>Azure İzleyici Ölçümleri<br>Olay Hub'ı | Azure İzleyici Günlükleri | Azure İzleyici Günlükleri<br>(Log Analytics Aracısı aracılığıyla) |
 | **Hizmetler ve**<br>**özelliklerinde**<br>**Destek** | Log Analytics<br>Ölçüm gezgini | Ölçüm gezgini | VM öngörüleri<br>Log Analytics<br>Azure Otomasyonu<br>Azure Güvenlik Merkezi<br>Azure Sentinel | VM öngörüleri<br>Hizmet Eşlemesi |
 
 ### <a name="linux-agents"></a>Linux aracıları
@@ -46,7 +46,7 @@ Aşağıdaki tablolarda, Windows ve Linux için Azure Izleyici aracılarıyla il
 | **Desteklenen ortamlar** | Azure<br>Diğer bulut (Azure ARC)<br>Şirket içi (Azure ARC) | Azure | Azure<br>Diğer bulut<br>Şirket içi | Azure<br>Diğer bulut<br>Şirket içi | Azure<br>Diğer bulut<br>Şirket içi |
 | **Aracı gereksinimleri**  | Yok | Yok | Yok | Yok | Log Analytics Aracısı gerektirir |
 | **Toplanan veriler** | Syslog<br>Performans | Syslog<br>Performans | Performans | Syslog<br>Performans| İşlem bağımlılıkları<br>Ağ bağlantısı ölçümleri |
-| **Gönderilen veriler** | Azure İzleyici Günlükleri<br>Azure İzleyici Ölçümleri | Azure Storage<br>Olay Hub'ı | Azure İzleyici Ölçümleri | Azure İzleyici Günlükleri | Azure İzleyici Günlükleri<br>(Log Analytics Aracısı aracılığıyla) |
+| **Gönderilen veriler** | Azure İzleyici Günlükleri<br>Azure İzleyici Ölçümleri | Azure Depolama<br>Olay Hub'ı | Azure İzleyici Ölçümleri | Azure İzleyici Günlükleri | Azure İzleyici Günlükleri<br>(Log Analytics Aracısı aracılığıyla) |
 | **Hizmetler ve**<br>**özelliklerinde**<br>**Destek** | Log Analytics<br>Ölçüm gezgini | | Ölçüm gezgini | VM öngörüleri<br>Log Analytics<br>Azure Otomasyonu<br>Azure Güvenlik Merkezi<br>Azure Sentinel | VM öngörüleri<br>Hizmet Eşlemesi |
 
 

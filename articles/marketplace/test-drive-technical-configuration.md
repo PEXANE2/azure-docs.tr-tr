@@ -8,10 +8,10 @@ ms.date: 08/13/2019
 author: trkeya
 ms.author: trkeya
 ms.openlocfilehash: 553eba3898a5ea42e5d478603e35e82c68abcab1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96462901"
 ---
 # <a name="test-drive-technical-configuration"></a>Test sürüşü teknik yapılandırması
@@ -76,7 +76,7 @@ Microsoft 'un test sürücüsünü sizin adınıza dağıtmasına izin vermek i�
 
 - **Azure AD uygulama kimliği** (gerekli) – Azure ACTIVE DIRECTORY (ad) [uygulama kimliğinizi](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)girin). Bu KIMLIĞI bulmak için [Azure Portal](https://portal.azure.com/)oturum açın, sol taraftaki menüden Active Directory sekmesini seçin, **uygulama kayıtları**' yı SEÇIN ve listelenen **uygulama kimliği** numarasını (örneğin, `50c464d3-4930-494c-963c-1e951d15360e` ) arayın.
 
-- **Azure AD uygulama istemci parolası** (gerekli) – Azure AD uygulamanızın [Istemci gizli](../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret)anahtarını girin. Bu değeri bulmak için [Azure Portal](https://portal.azure.com/)oturum açın. Sol menüdeki **Azure Active Directory** sekmesini seçin, **uygulama kayıtları**' i seçin ve test sürücüsü uygulamanızı seçin. Ardından, **Sertifikalar ve gizlilikler**' ı seçin **, yeni istemci parolası**' nı seçin, bir açıklama girin, **süresi dolmasın**' ı seçin ve **Ekle**' yi **Never** Değeri kopyalamadığınızdan emin olun. Değeri kopyalamamadan önce sayfadan ayrılmayın.
+- **Azure AD uygulama istemci parolası** (gerekli) – Azure AD uygulamanızın [Istemci gizli](../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret)anahtarını girin. Bu değeri bulmak için [Azure Portal](https://portal.azure.com/)oturum açın. Sol menüdeki **Azure Active Directory** sekmesini seçin, **uygulama kayıtları**' i seçin ve test sürücüsü uygulamanızı seçin. Ardından, **Sertifikalar ve gizlilikler**' ı seçin **, yeni istemci parolası**' nı seçin, bir açıklama girin, **süresi dolmasın**' ı seçin ve **Ekle**' yi  Değeri kopyalamadığınızdan emin olun. Değeri kopyalamamadan önce sayfadan ayrılmayın.
 
 ## <a name="test-drive-listings"></a>Test sürücü listeleri
 

@@ -7,15 +7,15 @@ ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: c288f59b1cb9a85ed4bc978d1c3fba18ba30b572
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96017211"
 ---
 # <a name="contact-microsoft-support"></a>Microsoft Desteği’ne başvurma
 
-StorSimple Aygıt Yöneticisi, hizmet Özeti dikey penceresinde **Yeni bir destek isteği kaydetme** yeteneği sağlar. StorSimple çözümünüz ile ilgili herhangi bir sorunla karşılaşırsanız, teknik destek için bir hizmet isteği oluşturabilirsiniz. Destek mühendisinize sahip çevrimiçi bir oturumda, StorSimple cihazınızda bir destek oturumu başlatmanız da gerekebilir. Bu makalede izlenecek yol gösterilmektedir:
+StorSimple Device Manager, hizmet Özeti dikey penceresinde **Yeni bir destek isteği kaydetme** yeteneği sağlar. StorSimple çözümünüz ile ilgili herhangi bir sorunla karşılaşırsanız, teknik destek için bir hizmet isteği oluşturabilirsiniz. Destek mühendisinize sahip çevrimiçi bir oturumda, StorSimple cihazınızda bir destek oturumu başlatmanız da gerekebilir. Bu makalede izlenecek yol gösterilmektedir:
 
 * Destek isteği oluşturma.
 * Portalın içinden destek isteği yaşam döngüsünü yönetme.
@@ -25,7 +25,7 @@ Destek isteği oluşturmadan önce [StorSimple 8000 serisi destek SLA 'larını 
 
 ## <a name="create-a-support-request"></a>Destek isteği oluşturma
 
-[Destek planınıza](https://azure.microsoft.com/support/plans/)bağlı olarak, StorSimple cihazınızda doğrudan storsimple Aygıt Yöneticisi hizmet Özeti dikey penceresinden bir sorun için destek bileti oluşturabilirsiniz. Bir destek isteği oluşturmak için aşağıdaki adımları gerçekleştirin:
+[Destek planınıza](https://azure.microsoft.com/support/plans/)bağlı olarak, StorSimple cihazınızda doğrudan storsimple Device Manager hizmet Özeti dikey penceresinden bir sorun için destek bileti oluşturabilirsiniz. Bir destek isteği oluşturmak için aşağıdaki adımları gerçekleştirin:
 
 #### <a name="to-create-a-support-request"></a>Bir destek isteği oluşturmak için
 
@@ -35,7 +35,7 @@ Destek isteği oluşturmadan önce [StorSimple 8000 serisi destek SLA 'larını 
    
 2. **Yeni destek isteği** dikey penceresinde **temel bilgiler**' i seçin. **Temel bilgiler** dikey penceresinde aşağıdaki adımları uygulayın:
    1. **Sorun türü** aşağı açılan listesinden **Teknik**' i seçin.
-   2. Geçerli **abonelik**, **hizmet** türü ve **kaynak** (StorSimple aygıt yöneticisi hizmeti) otomatik olarak seçilir. 
+   2. Geçerli **abonelik**, **hizmet** türü ve **kaynak** (StorSimple Device Manager hizmeti) otomatik olarak seçilir. 
    3. Aboneliğinizle ilişkili birden çok planınız varsa, açılan listeden bir **destek planı** seçin. Teknik desteğe olanak tanımak için ücretli bir destek planına ihtiyacınız vardır.
    4. **İleri**’ye tıklayın.
 
@@ -44,7 +44,7 @@ Destek isteği oluşturmadan önce [StorSimple 8000 serisi destek SLA 'larını 
 3. **Yeni destek isteği** dikey penceresinde **Adım 2 sorunu**' nı seçin. **Sorun** dikey penceresinde aşağıdaki adımları uygulayın:
     
     1. **Önem derecesini** seçin.
-    2. Sorunun gereç veya StorSimple Aygıt Yöneticisi hizmeti ile ilgili olup olmadığını belirtin.
+    2. Sorunun gereç veya StorSimple Device Manager hizmeti ile ilgili olup olmadığını belirtin.
     3. Bu sorun için bir **Kategori** seçin ve sorun hakkında daha fazla **ayrıntı** sağlayın.
     4. Sorunun başlangıç tarihini ve saatini belirtin.
     5. **Dosya karşıya yükleme** sırasında, destek paketinize gitmek için klasör simgesine tıklayın.
@@ -57,7 +57,7 @@ Destek isteği oluşturmadan önce [StorSimple 8000 serisi destek SLA 'larını 
 
    1. **İletişim seçeneklerinde** tercih ettiğiniz iletişim yönteminizi (telefon veya e-posta) ve dili girin. Yanıt süresi, abonelik planınıza göre otomatik olarak seçilir.
    2. Iletişim bilgilerinde adınızı, e-postanızı, isteğe bağlı iletişim, ülke/bölge ' yi belirtin. **Gelecekteki destek istekleri için kişi değişikliklerini kaydet** onay kutusunu seçin.
-   3. **Oluştur**'a tıklayın.
+   3. **Oluştur**’a tıklayın.
    
        ![Yeni Portal aracılığıyla MS desteğine başvurun 4](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
 
