@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: overview
 ms.date: 02/08/2021
 ms.openlocfilehash: 5a0389b1074737728bd0ffa5d6db90d077a9f45f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101652189"
 ---
 # <a name="about-azure-cache-for-redis"></a>Redis için Azure Önbelleği hakkında
@@ -23,7 +23,7 @@ Redsıs için Azure önbelleği, dağıtılmış bir veri veya içerik önbelle�
 ## <a name="key-scenarios"></a>Önemli senaryolar
 Redis için Azure önbelleği, genel uygulama mimarisi desenlerini destekleyerek uygulama performansını geliştirir. En yaygın olanlarından bazıları şunlardır:
 
-| Desen      | Açıklama                                        |
+| Desen      | Description                                        |
 | ------------ | -------------------------------------------------- |
 | [Veri önbelleği](cache-web-app-cache-aside-leaderboard.md) | Veritabanları genellikle bir önbelleğe doğrudan yüklenemeyecek kadar büyük olur. Yalnızca gerektiğinde önbelleğe veri yüklemek için [önbelleğe alma](/azure/architecture/patterns/cache-aside) deseninin kullanılması yaygındır. Sistem verilerde değişiklik yaptığında sistem, daha sonra diğer istemcilere dağıtılan önbelleği de güncelleştirebilir. Ayrıca, sistem veri üzerinde bir süre sonu ayarlayabilir veya veri güncelleştirmelerini önbelleğe tetikleyebilmesi için bir çıkarma ilkesi kullanabilir.|
 | [İçerik önbelleği](cache-aspnet-output-cache-provider.md) | Üst bilgiler, alt bilgiler ve başlık gibi statik içerik kullanan şablonlardan birçok Web sayfası oluşturulur. Bu statik öğeler sık değişmemelidir. Bellek içi önbellek kullanmak, arka uç veri depolarına kıyasla statik içeriğe hızlı erişim sağlar. Bu model, işlem süresini ve sunucu yükünü azaltarak Web sunucularının daha hızlı yanıt vermesine olanak tanır. Yükü işlemek için gereken sunucu sayısını azaltmanıza izin verebilir. Redsıs için Azure Cache, ASP.NET ile bu kalıbı desteklemek için Redsıs çıkış önbelleği sağlayıcısı sağlar.|
@@ -39,7 +39,7 @@ Redsıs için Azure Cache, OSS redin sürüm 4. x ve önizleme olarak 6,0 ' i de
 ## <a name="service-tiers"></a>Hizmet katmanları
 Redo için Azure Cache aşağıdaki katmanlarda kullanılabilir:
 
-| Katman | Açıklama |
+| Katman | Description |
 |---|---|
 | Temel | Tek bir VM üzerinde çalışan bir OSS Redsıs önbelleği. Bu katmanda hizmet düzeyi sözleşmesi (SLA) yoktur ve geliştirme/test ve kritik olmayan iş yükleri için idealdir. |
 | Standart | Çoğaltılan bir yapılandırmadaki iki VM üzerinde çalışan bir OSS Redsıs önbelleği. |

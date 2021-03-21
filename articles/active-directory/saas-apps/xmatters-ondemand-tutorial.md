@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/19/2020
 ms.author: jeedes
 ms.openlocfilehash: 762bd1c536df0ca307149ba7c201f08f5bdfded5
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98735633"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xmatters-ondemand"></a>Öğretici: Xönemli OnDemand ile tümleştirme Azure Active Directory
@@ -27,7 +27,7 @@ Azure AD ile Xönemli OnDemand tümleştirme aşağıdaki avantajları sağlar:
 * Kullanıcılarınızın Azure AD hesaplarıyla otomatik olarak bir Xönemli OnDemand (çoklu oturum açma) ile oturum açmasını sağlayabilirsiniz.
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Xönemli OnDemand ile yapılandırmak için aşağıdaki öğeler gereklidir:
 

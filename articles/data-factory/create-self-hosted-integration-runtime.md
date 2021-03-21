@@ -7,10 +7,10 @@ author: lrtoyou1223
 ms.author: lle
 ms.date: 02/10/2021
 ms.openlocfilehash: 3e61b6a0f17d2d21aaaebc5ff42b0221cf851a4b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100389527"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma ve yapılandırma
@@ -19,7 +19,7 @@ ms.locfileid: "100389527"
 
 Integration Runtime (IR), farklı ağ ortamlarında veri tümleştirme özellikleri sağlamak için Azure Data Factory tarafından kullanılan işlem altyapısıdır. IR ile ilgili ayrıntılar için bkz. [tümleştirme çalışma zamanına genel bakış](concepts-integration-runtime.md).
 
-Şirket içinde barındırılan tümleştirme çalışma zamanı, bir bulut veri deposu ve bir özel ağdaki veri deposu arasında kopyalama etkinliklerini çalıştırabilir. Ayrıca, şirket içi bir ağda veya bir Azure sanal ağında işlem kaynaklarına karşı dönüştürme etkinliklerini de gönderebilir. Şirket içinde barındırılan tümleştirme çalışma zamanının yüklenmesi, şirket içi bir makineye veya özel bir ağ içindeki bir sanal makineye ihtiyaç duyuyor.  
+Şirket içinde barındırılan tümleştirme çalışma zamanı, bir bulut veri deposu ile özel ağda bulunan bir veri deposu arasında kopyalama etkinlikleri çalıştırabilir. Şirket içi ağına veya Azure sanal ağındaki işlem kaynaklarına dönüştürme etkinlikleri de gönderebilir. Şirket içinde barındırılan tümleştirme çalışma zamanının yüklenmesi için şirket içindeki bir makine veya özel ağ içindeki bir sanal makine gerekir.  
 
 Bu makalede, kendinden konak IR oluşturma ve yapılandırma açıklanmaktadır.
 

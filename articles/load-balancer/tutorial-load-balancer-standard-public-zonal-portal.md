@@ -16,10 +16,10 @@ ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
 ms.openlocfilehash: f91c9c0f401a455543b12af81eed48bd1a3349bd
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94696447"
 ---
 # <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>Öğretici: Azure portalı kullanarak Standard Load Balancer ile bir kullanılabilirlik alanındaki sanal makinelerde yük dengeleme
@@ -58,7 +58,7 @@ Standard Load Balancer yalnızca standart genel IP adresini destekler. Yük deng
     | ---                     | ---                                                |
     | Abonelik               | Aboneliğinizi seçin.    |    
     | Kaynak grubu         | **Yeni oluştur** ' u seçin ve metin kutusuna *Myresourcegroupzlb* yazın.|
-    | Ad                   | *myLoadBalancer*                                   |
+    | Name                   | *myLoadBalancer*                                   |
     | Region         | **Batı Avrupa**'yı seçin.                                        |
     | Tür          | **Genel**’i seçin.                                        |
     | SKU           | **Standart**' ı seçin.                          |
@@ -180,7 +180,7 @@ Trafiği sanal makinelere dağıtmak için bir arka uç adres havuzu, yük denge
     - Ad için, arka uç havuzunuzun adı olarak **myBackEndPool** yazın.
     - **Sanal ağ** için açılır menüde **myVNet**’i seçin. 
     - **Sanal makine** ve **IP adresi** için **myVM1**, **myVM2** ve karşılık gelen genel IP adreslerini ekleyin.
-4. **Ekle**’yi seçin.
+4. **Add (Ekle)** seçeneğini belirleyin.
 5. Yük dengeleyici arka uç havuzu ayarınızın hem **myVM1** hem de **myVM2** sanal makinelerini görüntülediğinden emin olun.
  
     ![Arka uç havuzu oluşturma](./media/tutorial-load-balancer-standard-zonal-portal/create-backend-pool.png) 

@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 01/21/2020
 ms.author: lajanuar
 ms.openlocfilehash: 88a76a16de43853a001f5db895d6ad418940de0f
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98895501"
 ---
 # <a name="translator-30-dictionary-lookup"></a>Translator 3,0: sözlük arama
@@ -37,7 +37,7 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
 | ------ | ----------- |
 | api-sürümü <img width=200/>   | **Gerekli parametre**.<br/>İstemci tarafından istenen API 'nin sürümü. Değer olmalıdır `3.0` |
 | Kaynak | **Gerekli parametre**.<br/>Giriş metninin dilini belirtir. Kaynak dili, kapsamda bulunan [desteklenen dillerden](./v3-0-languages.md) biri olmalıdır `dictionary` . |
-| şöyle değiştirin:   | **Gerekli parametre**.<br/>Çıkış metninin dilini belirtir. Hedef dil, kapsamda bulunan [desteklenen dillerden](v3-0-languages.md) biri olmalıdır `dictionary` . |
+| kullanıcısı   | **Gerekli parametre**.<br/>Çıkış metninin dilini belirtir. Hedef dil, kapsamda bulunan [desteklenen dillerden](v3-0-languages.md) biri olmalıdır `dictionary` . |
 
 
 İstek üstbilgileri şunları içerir:

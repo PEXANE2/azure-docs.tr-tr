@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect kaldır
+title: Azure AD Connect'i kaldırma
 description: Bu belgede Azure AD Connect nasıl kaldırılacağı açıklanır.
 services: active-directory
 author: billmath
@@ -12,13 +12,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f5eb537a70c69745c8067ffb71cfb895a0875945
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96934217"
 ---
-# <a name="uninstall-azure-ad-connect"></a>Azure AD Connect kaldır
+# <a name="uninstall-azure-ad-connect"></a>Azure AD Connect'i kaldırma
 
 Bu belgede Azure AD Connect nasıl doğru şekilde kaldırılacağı açıklanmaktadır.
 

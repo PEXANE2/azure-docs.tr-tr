@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: 8be747d2027291203272a960efe6b26368471a50
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101735055"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure haritalar topluluk-açık kaynaklı projeler
@@ -24,7 +24,7 @@ Aşağıda, en popüler Azure haritaları açık kaynaklı projeler ve örnekler
 
 **Botlar**
 
-| Proje Adı | Açıklama |
+| Proje Adı | Description |
 |-|-|
 | [Bot Framework-Ilgilendiğiniz beceri noktası](https://github.com/microsoft/botframework-solutions/tree/488093ac2fddf16096171f6a926315aa45e199e7/skills/csharp/pointofinterestskill) | Ilgilendiğiniz beceri noktası, Azure bot hizmeti ve bot Framework ile Azure haritalar 'ı kullanarak sanal bir yardımcı ile ilgili çok sayıda özellik sağlar. |
 | [BotBuilder konumu](https://github.com/Microsoft/BotBuilder-Location) | Bing Haritalar REST Hizmetleri tarafından desteklenen Microsoft bot Framework için açık kaynaklı konum seçici denetimi. |
@@ -35,7 +35,7 @@ Aşağıda, en popüler Azure haritaları açık kaynaklı projeler ve örnekler
 
 Aşağıda, Azure Maps web SDK 'sının yeteneklerini genişleten açık kaynaklı projelerin bir listesi verilmiştir.
 
-| Proje Adı | Açıklama |
+| Proje Adı | Description |
 |-|-|
 | [Azure haritalar animasyon modülü](https://github.com/Azure-Samples/azure-maps-animations) | Azure Haritalar Web SDK 'Sı ile kullanmak için zengin bir animasyon kitaplığı. |
 | [Azure haritalar verileri görünüm denetim modülüne getirir](https://github.com/Azure-Samples/azure-maps-bring-data-into-view-control) | Bir Azure Maps web SDK modülü, haritaya yüklenen tüm verileri görünüme getirmeyi kolaylaştıran bir denetim sağlar. |
@@ -55,7 +55,7 @@ Aşağıda, Azure Maps web SDK 'sının yeteneklerini genişleten açık kaynakl
 
 **Örnekler**
 
-| Proje Adı | Açıklama |
+| Proje Adı | Description |
 |-|-|
 | [Azure haritalar kod örnekleri](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Web tabanlı uygulamalarda Azure Maps kullanmaya yönelik kod örnekleri koleksiyonu. |
 | [Azure Maps gov bulut kodu örnekleri](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Azure Kamu Bulutu aracılığıyla Azure Maps kullanmaya yönelik kod örnekleri koleksiyonu. |
@@ -68,7 +68,7 @@ Aşağıda, Azure Maps web SDK 'sının yeteneklerini genişleten açık kaynakl
 **Üçüncü taraf Haritası denetim eklentileri**
 <a name="third-part-map-control-plugins"></a>
 
-| Proje Adı | Açıklama |
+| Proje Adı | Description |
 |-|-|
 | [Azure Maps Cesium eklentisi](https://github.com/azure-samples/azure-maps-cesium) | [Döşeme katmanları](/rest/api/maps/renderv2/getmaptilepreview) ve [coğrafi kodlama hizmetleri](/rest/api/maps/search)gibi Azure haritalar hizmetlerini TÜMLEŞTIRMEYI kolaylaştıran bir [Cesium js](https://cesium.com/cesiumjs/) eklentisi. |
 | [Azure haritalar leaflet eklentisi](https://github.com/azure-samples/azure-maps-leaflet) | [Azure haritalar kutucuk hizmetlerinden](/rest/api/maps/renderv2/getmaptilepreview)kutucuk katmanlarının kaplamasını kolaylaştıran bir [leaflet](https://leafletjs.com/) JavaScript eklentisi. |
@@ -76,7 +76,7 @@ Aşağıda, Azure Maps web SDK 'sının yeteneklerini genişleten açık kaynakl
 
 **Araçlar ve kaynaklar**
 
-| Proje Adı | Açıklama |
+| Proje Adı | Description |
 |-|-|
 | [Azure haritalar belgeleri](https://github.com/MicrosoftDocs/azure-docs/tree/master/articles/azure-maps) | Tüm Azure konum tabanlı hizmetler belgelerinin kaynağı. |
 | [Azure haritalar Oluşturucu (Önizleme) araçları](https://github.com/Azure-Samples/AzureMapsCreator) | Azure haritalar Oluşturucu (Önizleme) araçları için Python araçları. |

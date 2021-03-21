@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 05/01/2020
 ms.author: allensu
 ms.openlocfilehash: 874ecfc8c1c50816916fb0b04975477a1cbe0a71
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94698096"
 ---
 # <a name="azure-load-balancer-skus"></a>Azure Load Balancer SKU 'Ları
@@ -36,7 +36,7 @@ Tek başına VM'ler, kullanılabilirlik kümeleri ve sanal makine ölçek kümel
 | --- | --- | --- |
 | **[Arka uç havuzu boyutu](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer)** | En fazla 1000 örneği destekler. | En fazla 300 örneği destekler. |
 | **Arka uç havuzu uç noktaları** | Tek bir sanal ağdaki herhangi bir sanal makine veya sanal makine ölçek kümesi. | Tek bir kullanılabilirlik kümesindeki veya sanal makine ölçek kümesindeki sanal makineler. |
-| **[Sistem durumu araştırmaları](./load-balancer-custom-probe-overview.md#types)** | TCP, HTTP, HTTPS | TCP, HTTP |
+| **[Durum araştırmaları](./load-balancer-custom-probe-overview.md#types)** | TCP, HTTP, HTTPS | TCP, HTTP |
 | **[Durum araştırma azaltma davranışı](./load-balancer-custom-probe-overview.md#probedown)** | TCP bağlantıları bir örnek araştırması üzerinde __ve__ tüm yoklamalar üzerinde etkin kalır. | TCP bağlantıları bir örnek araştırmasına etkin kalır. Tüm yoklamalar kapatıldığında tüm TCP bağlantıları sona erdir. |
 | **Kullanılabilirlik Alanları** | Gelen ve giden trafik için bölge yedekli ve zikzak ön uçları. | Kullanılamaz |
 | **Tanılama** | [Azure Izleyici çok boyutlu ölçümleri](./load-balancer-standard-diagnostics.md) | [Azure İzleyici günlükleri](./load-balancer-monitor-log.md) |
@@ -45,7 +45,7 @@ Tek başına VM'ler, kullanılabilirlik kümeleri ve sanal makine ölçek kümel
 | **Giden kuralları** | [Bildirim temelli giden NAT yapılandırması](./load-balancer-outbound-connections.md#outboundrules) | Kullanılamaz |
 | **Boşta durumunda TCP sıfırlaması** | [Herhangi bir kuralda kullanılabilir](./load-balancer-tcp-reset.md) | Kullanılamaz |
 | **[Birden çok ön uç](./load-balancer-multivip-overview.md)** | Gelen ve [giden](./load-balancer-outbound-connections.md) | Yalnızca gelen |
-| **Yönetim Işlemleri** | Çoğu işlem 30 saniye < | 60-90 + saniye tipik |
+| **Yönetim İşlemleri** | Çoğu işlem 30 saniye < | 60-90 + saniye tipik |
 | **SLA** | [% 99,99](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/) | Kullanılamaz | 
 
 Daha fazla bilgi için bkz. [yük dengeleyici sınırları](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer). Standart Load Balancer hakkında ayrıntılı bilgi için bkz. [genel bakış](./load-balancer-overview.md), [fiyatlandırma](https://aka.ms/lbpricing) ve [SLA](https://aka.ms/lbsla).

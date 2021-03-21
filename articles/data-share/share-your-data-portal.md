@@ -7,17 +7,17 @@ ms.service: data-share
 ms.topic: quickstart
 ms.date: 10/30/2020
 ms.openlocfilehash: 1442720fdf48aaa7da76e181b168a04306ff3e33
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96186465"
 ---
 # <a name="quickstart-share-data-using-azure-data-share-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal Azure veri paylaşımından kullanarak veri paylaşma
 
 Bu hızlı başlangıçta, Azure portal kullanarak depolama hesabından veri paylaşmak üzere yeni bir Azure veri paylaşımının nasıl ayarlanacağını öğreneceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği: bir Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 * Alıcının Azure oturum açma e-posta adresi (e-posta diğer adlarını kullanarak çalışmaz).
@@ -33,7 +33,7 @@ Bu hızlı başlangıçta, Azure portal kullanarak depolama hesabından veri pay
 
 Azure Kaynak grubunda bir Azure veri paylaşma kaynağı oluşturun.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. Portalın sol üst köşesinde bulunan **kaynak oluştur** düğmesini (+) seçin.
 
@@ -48,7 +48,7 @@ Azure Kaynak grubunda bir Azure veri paylaşma kaynağı oluşturun.
    | Abonelik | Aboneliğiniz | Veri paylaşma hesabınız için kullanmak istediğiniz Azure aboneliğini seçin.|
    | Kaynak grubu | *test-resource-group* | Mevcut bir kaynak grubunu kullanın veya yeni bir kaynak grubu oluşturun. |
    | Konum | *Doğu ABD 2* | Veri paylaşma hesabınız için bir bölge seçin.
-   | Adı | *datashareaccount* | Veri paylaşma hesabınız için bir ad belirtin. |
+   | Name | *datashareaccount* | Veri paylaşma hesabınız için bir ad belirtin. |
 
 1. Veri paylaşma hesabınızı sağlamak için **gözden geçir + oluştur**' u seçin ve **Oluştur** ' a tıklayın. Yeni bir veri paylaşma hesabının sağlanması genellikle yaklaşık 2 dakika veya daha kısa sürer.
 

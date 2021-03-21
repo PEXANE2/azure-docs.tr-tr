@@ -9,10 +9,10 @@ ms.date: 12/12/2020
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 9bc641d680d927c44814f6814ebf6a6dde958c9e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98901258"
 ---
 Azure Işlevleri önceden oluşturulmuş bir giriş noktasında yalın olan yalnızca yapılandırma çoğaltma görevlerinin oluşturulmasına olanak sağlar. [Azure işlevleri için yapılandırma tabanlı çoğaltma örnekleri](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config) , kendi kodunuzda [önceden oluşturulmuş yardımcıları](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/src/Azure.Messaging.Replication) nasıl kullanacağınızı veya kodun tamamen işlenmesini ve yalnızca yapılandırmayı kullanmayı gösterir.

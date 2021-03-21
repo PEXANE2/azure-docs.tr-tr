@@ -11,10 +11,10 @@ author: luisquintanilla
 ms.date: 01/26/2021
 ms.custom: responsible-ml
 ms.openlocfilehash: 276c91ad7fb5b09dbe18d989741f0f54b8b0eb09
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101659690"
 ---
 # <a name="mitigate-unfairness-in-machine-learning-models-preview"></a>Makine öğrenimi modellerinde unfairness azaltma (Önizleme)
@@ -100,7 +100,7 @@ Fairlearn açık kaynak paketi, karşı işlem ve azaltma unfairness azaltma alg
 - Azaltma: Bu algoritmalar standart bir siyah kutu Machine Learning tahmin aracı (örn. bir lightgbm modeli) alır ve yeniden ağırlıklı eğitim veri kümeleri dizisi kullanarak bir dizi geri çekme modeli oluşturur. Örneğin, belirli bir cinsiyet olan başvuranlar, modellerin yeniden eğitilmesi ve farklı cinsiyet gruplarının genelinde farklılıkları azaltmak için yukarı ağırlıklı veya aşağı ağırlıklı olabilir. Kullanıcılar daha sonra doğruluk (veya diğer performans ölçümü) arasında en iyi ticareti sağlayan bir model seçebilir ve genellikle iş kurallarını ve maliyet hesaplamalarını temel alan olması gerekir.  
 - İşlem sonrası: Bu algoritmalar mevcut bir sınıflandırıcının yanı sıra hassas özelliği giriş olarak alır. Ardından, belirtilen eşitliği kısıtlamalarını zorlamak için sınıflandırıcının tahminiyle bir dönüşüm türetirsiniz. Eşik iyileştirmesinin en büyük avantajı, modeli yeniden eğitmesinin gerekli olmadığı için kolaylık ve esneklik sağlar. 
 
-| Algoritma | Açıklama | Machine Learning görevi | Hassas Özellikler | Desteklenen eşlik kısıtlamaları | Algoritma türü |
+| Algoritma | Description | Machine Learning görevi | Hassas Özellikler | Desteklenen eşlik kısıtlamaları | Algoritma türü |
 | --- | --- | --- | --- | --- | --- |
 | `ExponentiatedGradient` | [Bir indirimde bir Indirimleri yaklaşımında](https://arxiv.org/abs/1803.02453) açıklanan, dengeli sınıflandırmada siyah kutu yaklaşımı | İkili sınıflandırma | Kategorik | [Demografik eşliği](#parity-constraints), [eşitlenmiş gürültü](#parity-constraints) | Azaltma |
 | `GridSearch` | [Bir indirimde bir azaltmada](https://arxiv.org/abs/1803.02453) tanımlanan siyah kutu yaklaşımı| İkili sınıflandırma | İkili | [Demografik eşliği](#parity-constraints), [eşitlenmiş gürültü](#parity-constraints) | Azaltma |

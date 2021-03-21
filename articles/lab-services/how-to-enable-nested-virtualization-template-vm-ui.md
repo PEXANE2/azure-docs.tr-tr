@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
 ms.openlocfilehash: f8135e11fb7b7ddb588ab3a8ed01227712072fd2
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94647928"
 ---
 # <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services-manually"></a>Azure Lab Services bir şablon sanal makinesinde el ile iç içe sanallaştırmayı etkinleştirin
@@ -70,7 +70,7 @@ Oluşturulan Hyper-V istemci sanal makinelerinin, NAT ağında bir IP adresi olm
 2. **Başlamadan önce** sayfasında **İleri**'ye tıklayın.
 3. **Yükleme türünü seçin** sayfasında, **rol tabanlı veya özellik tabanlı yükleme** ' yi seçin ve ardından **İleri**' ye tıklayın.
 4. **Hedef sunucuyu seçin** sayfasında, Sunucu havuzundan geçerli sunucuyu seçin ve ardından **İleri**' ye tıklayın.
-5. **Sunucu rollerini Seç** sayfasında, **Uzaktan erişim**' i seçin. **Tamam** düğmesine tıklayın.
+5. **Sunucu rollerini Seç** sayfasında, **Uzaktan erişim**' i seçin. **Tamam**'a tıklayın.
 6. **Özellikleri Seç** sayfasında **İleri**' ye tıklayın.
 7. **Uzaktan erişim** sayfasında, **İleri**' ye tıklayın.
 8. **Rol hizmetleri** sayfasında, **yönlendirme**' yi seçin.
@@ -92,7 +92,7 @@ Tüm gerekli rollerin yüklenmiş olduğuna göre, artık NAT ağını oluşturm
 2. Sol taraftaki gezinti menüsünde geçerli sunucuyu seçin.
 3. **Sanal anahtar Yöneticisi ' ne tıklayın...** **Hyper-V yöneticisinin** sağ tarafındaki **Eylemler** menüsünde.
 4. **Sanal anahtar Yöneticisi** açılır penceresinde, oluşturulacak anahtar türü için **dahili** ' ı seçin.  **Sanal anahtar oluştur**' a tıklayın.
-5. Yeni oluşturulan sanal anahtar için, adı daha kolay bir şekilde ayarlayın.  Bu örnekte, ' LabServicesSwitch ' kullanacağız.  **Tamam** düğmesine tıklayın.
+5. Yeni oluşturulan sanal anahtar için, adı daha kolay bir şekilde ayarlayın.  Bu örnekte, ' LabServicesSwitch ' kullanacağız.  **Tamam**'a tıklayın.
 6. Yeni bir ağ bağdaştırıcısı oluşturulacak.  Ad ' vEthernet (LabServicesSwitch) ' ile benzerdir.  **Denetim Masası**'nı açın, **Ağ ve Internet**' e tıklayın, **ağ durumunu ve görevlerini görüntüle**' ye tıklayın.  Sol tarafta **Bağdaştırıcı ayarlarını değiştir**' e tıklayın.
 
 ### <a name="create-a-nat-network"></a>NAT ağı oluşturma

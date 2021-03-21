@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
 ms.openlocfilehash: 27443eb9c04c69567b3a1374f11e8b53837040f2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100585414"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Azure 'da kullanılabilen güvenlik hizmetleri ve teknolojileri
@@ -92,4 +92,4 @@ Zaman içinde, bu liste Azure 'un yaptığı gibi değişir ve büyür. Güvenli
 | [Azure uygulama proxy 'Si](../../active-directory/manage-apps/application-proxy.md)| Şirket içinde barındırılan Web uygulamalarına yönelik uzaktan erişimin güvenliğini sağlamak için kullanılan kimlik doğrulaması ön ucu. |
 |[Azure Güvenlik Duvarı](../../firewall/overview.md)|Azure sanal ağ kaynaklarınızı koruyan, yönetilen, bulut tabanlı bir ağ güvenlik hizmeti.|
 |[Azure DDoS koruması](../../ddos-protection/ddos-protection-overview.md)|Uygulama tasarımı en iyi uygulamaları ile birlikte, DDoS saldırılarına karşı savunma sağlar.|
-|[Sanal ağ hizmeti uç noktaları](../../virtual-network/virtual-network-service-endpoints-overview.md)|Sanal ağ özel adres alanınızı ve VNet 'iniz kimliğini doğrudan bir bağlantı üzerinden Azure hizmetlerine genişletir.|
+|[Sanal ağ hizmet uç noktaları](../../virtual-network/virtual-network-service-endpoints-overview.md)|Sanal ağ özel adres alanınızı ve VNet 'iniz kimliğini doğrudan bir bağlantı üzerinden Azure hizmetlerine genişletir.|

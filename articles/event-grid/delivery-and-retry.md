@@ -4,10 +4,10 @@ description: Azure Event Grid olayların nasıl teslim edildiğini ve teslim edi
 ms.topic: conceptual
 ms.date: 10/29/2020
 ms.openlocfilehash: 3c4ed6ec2c9eae4dbcf70a831e3e7f70a28a57a0
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98247378"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>İleti teslimini Event Grid ve yeniden deneyin
@@ -33,7 +33,7 @@ Portal, CLı, PowerShell veya SDK 'lar aracılığıyla olay başına abonelik t
 ### <a name="azure-portal"></a>Azure portal: 
 ![Toplu teslim ayarları](./media/delivery-and-retry/batch-settings.png)
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 Bir olay aboneliği oluştururken aşağıdaki parametreleri kullanın: 
 
 - **en fazla etkinlik-toplu** işlem-toplu iş içindeki en fazla olay sayısı. 1 ile 5000 arasında bir sayı olmalıdır.

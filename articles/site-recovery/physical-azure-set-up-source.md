@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: ramamill
 ms.openlocfilehash: 327e995a8fe2f66903548fba054804768d2538ab
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96001582"
 ---
 # <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>Fiziksel sunucuların Azure'a olağanüstü durum kurtarması gerçekleştirmesi için yapılandırma sunucusunu ayarlama
@@ -22,7 +22,7 @@ Bu makalede, şirket içi ortamınızı Windows veya Linux çalıştıran fiziks
 ## <a name="prerequisites"></a>Önkoşullar
 
 Makalesinde zaten sahip olduğunuz varsayılır:
-- [Azure Portal](https://portal.azure.com "Azure portal")bir kurtarma hizmetleri Kasası.
+- [Azure Portal](https://portal.azure.com "Azure portalı")bir kurtarma hizmetleri Kasası.
 - Yapılandırma sunucusunun yükleneceği fiziksel bilgisayar.
 - Yapılandırma sunucusunu yüklemekte olduğunuz makinede TLS 1,0 ' yi devre dışı bırakırsanız, TLs 1,2 ' nin etkinleştirildiğinden ve .NET Framework sürüm 4,6 veya üzeri makinede yüklü olduğundan emin olun (güçlü şifreleme etkin). [Daha fazla bilgi edinin](https://support.microsoft.com/help/4033999/how-to-resolve-azure-site-recovery-agent-issues-after-disabling-tls-1).
 
