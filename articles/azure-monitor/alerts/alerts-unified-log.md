@@ -6,10 +6,10 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 786e9b472d1f900e94e5d0cfa6a00e0f85547704
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102037702"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Izleyici 'de günlük uyarıları
@@ -82,7 +82,7 @@ Günlük uyarıları, günlükteki verileri algılamaya çalıştığınızda en
 
 Uygulamanızın 500 hata koduyla (Iç sunucu hatası) yanıt verdiğini bilmeniz gerekir. Aşağıdaki ayrıntılarla bir uyarı kuralı oluşturursunuz:
 
-- **Sorgulayamadı** 
+- **Sorgu:** 
 
 ```Kusto
 requests
@@ -128,7 +128,7 @@ Azure Kaynak KIMLIĞI sütununa göre bölme işlemi, birden fazla Azure kaynağ
 
 Örneğin, belirli bir kaynak grubunda Web sitenizi/uygulamanızı çalıştıran birden çok sanal makinenin hatalarını izlemek istiyorsunuz. Bunu şu şekilde bir günlük uyarı kuralı kullanarak yapabilirsiniz:
 
-- **Sorgulayamadı** 
+- **Sorgu:** 
 
     ```Kusto
     // Reported errors

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: overview
-ms.date: 03/02/2021
+ms.date: 03/19/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bee6a007004253106703ae2c19b940bf3de5d44
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 231d3ab81c2376aa8a2a4bf182e1b5e9799e51d5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101649300"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104669789"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Azure Active Directory B2B’de konuk kullanıcı erişimi nedir?
 
@@ -80,7 +80,7 @@ Dış iş ortaklarınızı, kuruluşunuzun ihtiyaçlarına göre özelleştirilm
 
 ## <a name="integrate-with-identity-providers"></a>Kimlik sağlayıcılarıyla tümleştirin
 
-Azure AD, Facebook, Microsoft hesapları, Google veya kurumsal kimlik sağlayıcıları gibi dış kimlik sağlayıcılarını destekler. Kimlik sağlayıcılarıyla Federasyonu ayarlayabilirsiniz. böylece, dış kullanıcılarınızın yalnızca uygulamanız için yeni bir hesap oluşturmak yerine mevcut sosyal veya kurumsal hesaplarıyla oturum açabilirler. Dış kimlikler için kimlik sağlayıcıları hakkında daha fazla bilgi edinin.
+Azure AD, Facebook, Microsoft hesapları, Google veya kurumsal kimlik sağlayıcıları gibi dış kimlik sağlayıcılarını destekler. Kimlik sağlayıcılarıyla Federasyonu ayarlayabilirsiniz. böylece, dış kullanıcılarınızın yalnızca uygulamanız için yeni bir hesap oluşturmak yerine mevcut sosyal veya kurumsal hesaplarıyla oturum açabilirler. [Dış kimlikler için kimlik sağlayıcıları](identity-providers.md)hakkında daha fazla bilgi edinin.
 
 ![Kimlik sağlayıcıları sayfasını gösteren ekran görüntüsü](media/what-is-b2b/identity-providers.png)
 

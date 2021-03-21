@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.custom: devx-track-dotnet
 ms.date: 06/23/2020
 ms.openlocfilehash: 7669bc07ad91933cd31bd2ccd10eaf830d98de7c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101710796"
 ---
 # <a name="tutorial-expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>Öğretici: Azure WCF Geçişi kullanarak şirket içi WCF REST hizmetini dış istemciye kullanıma sunma
@@ -66,7 +66,7 @@ Hizmet sözleşmesi, hizmetin desteklediği işlemleri belirtir. İşlemler Web 
 
    Bu paket otomatik olarak Service Bus kitaplıklarına ve WCF 'ye başvurular ekler `System.ServiceModel` . [System.ServiceModel](/dotnet/api/system.servicemodel), WCF'nin temel özelliklerine programlamayla erişmenizi sağlayan ad alanıdır. Service Bus, hizmet sözleşmelerini tanımlamak için WCF'nin birçok nesnesini ve özniteliklerini kullanır.
 
-1. Aşağıdaki `using` deyimlerini *program.cs* üst kısmına ekleyin:
+1. Aşağıdaki `using` deyimlerini *program. cs*' nin üst kısmına ekleyin:
 
     ```csharp
     using System.ServiceModel;
@@ -304,7 +304,7 @@ Bu öğretici için URI şudur: `sb://putServiceNamespaceHere.windows.net/EchoSe
 
     Hizmet ana bilgisayarı, hizmetin örneğini oluşturan WCF nesnesidir. Burada, oluşturmak istediğiniz hizmet türü, bir `EchoService` tür ve ayrıca hizmeti kullanıma sunmak istediğiniz adrese geçitirsiniz.
 
-1. *Program.cs* dosyasının en üstünde, [System. ServiceModel. Description](/dotnet/api/system.servicemodel.description) ve [Microsoft. ServiceBus. Description](/dotnet/api/microsoft.servicebus.description)'a başvurular ekleyin.
+1. *Program. cs* dosyasının en üstünde, [System. ServiceModel. Description](/dotnet/api/system.servicemodel.description) ve [Microsoft. ServiceBus. Description](/dotnet/api/microsoft.servicebus.description)'a başvurular ekleyin.
 
     ```csharp
     using System.ServiceModel.Description;
@@ -443,7 +443,7 @@ Sonraki görev, bir istemci uygulaması oluşturmak ve daha sonra uygulamanız g
    1. **Yeni Proje Ekle**' de, C# için **konsol uygulaması (.NET Framework)** öğesini seçin ve **İleri**' yi seçin.
    1. Projeyi *yankı istemcisini* adlandırın ve **Oluştur**' u seçin.
 
-1. **Çözüm Gezgini**, **yankı istemci** projesinde, zaten açık değilse dosyayı düzenleyicide açmak için **program.cs** öğesine çift tıklayın.
+1. **Çözüm Gezgini**, **yankı istemci** projesinde, zaten açık değilse dosyayı düzenleyicide açmak için **program. cs** ' ye çift tıklayın.
 1. `EchoClient` olan varsayılan ad alanı adını `Microsoft.ServiceBus.Samples` olarak değiştirin.
 1. [Service Bus NuGet paketini](https://www.nuget.org/packages/WindowsAzure.ServiceBus)yükler:
 
@@ -452,7 +452,7 @@ Sonraki görev, bir istemci uygulaması oluşturmak ve daha sonra uygulamanız g
 
       ![Service Bus paketini yükler][4]
 
-1. `using` *Program.cs* dosyasına [System. ServiceModel](/dotnet/api/system.servicemodel) ad alanı için bir ifade ekleyin.
+1. `using` *Program. cs* dosyasındaki [System. ServiceModel](/dotnet/api/system.servicemodel) ad alanı için bir ifade ekleyin.
 
     ```csharp
     using System.ServiceModel;
@@ -475,7 +475,7 @@ Sonraki görev, bir istemci uygulaması oluşturmak ve daha sonra uygulamanız g
 
 ### <a name="example-of-the-echoclient-project"></a>Yankı Istemci projesi örneği
 
-Aşağıdaki kod, **yankı istemci** projesindeki *program.cs* dosyasının geçerli durumunu gösterir.
+Aşağıdaki kod, **yankıyı istemci** projesindeki *program. cs* dosyasının geçerli durumunu gösterir.
 
 ```csharp
 using System;

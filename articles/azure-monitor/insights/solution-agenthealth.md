@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/06/2020
 ms.openlocfilehash: 171230dc2ce6189e36c601c6c7d3b3612fce160c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101711068"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Azure Izleyici 'de Aracı Durumu çözümü
@@ -37,7 +37,7 @@ System Center Operations Manager yönetim grubunuz bir Log Analytics çalışma 
 ### <a name="supported-agents"></a>Desteklenen aracılar
 Aşağıdaki tabloda bu çözüm tarafından desteklenen bağlı kaynaklar açıklanmaktadır.
 
-| Bağlı Kaynak | Desteklenir | Açıklama |
+| Bağlı Kaynak | Desteklenir | Description |
 | --- | --- | --- |
 | Windows aracıları | Yes | Sinyal olayları doğrudan Windows aracılarından toplanır.|
 | System Center Operations Manager yönetim grubu | Yes | Sinyal olayları, her 60 saniyede bir yönetim grubuna rapor veren aracılardan toplanır ve sonra Azure Izleyici 'ye iletilir. Operations Manager aracılarından Azure Izleyici 'ye doğrudan bağlantı gerekli değildir. Sinyal olayı verileri yönetim grubundan Log Analytics çalışma alanına iletilir.|
@@ -89,7 +89,7 @@ Bir Operations Manager Management sunucusuna rapor veren her bir aracı iki siny
 ## <a name="sample-log-searches"></a>Örnek günlük aramaları
 Aşağıdaki tabloda, bu çözüm tarafından toplanan kayıtlara ilişkin örnek günlük aramaları sunulmaktadır.
 
-| Sorgu | Açıklama |
+| Sorgu | Description |
 |:---|:---|
 | Heartbeat &#124; distinct Computer |Toplam aracı sayısı |
 | Heartbeat &#124; summarize LastCall = max(TimeGenerated) by Computer &#124; where LastCall < ago(24h) |Son 24 saat içinde yanıt vermeyen aracı sayısı |

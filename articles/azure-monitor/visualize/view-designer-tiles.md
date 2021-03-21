@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/17/2018
 ms.openlocfilehash: d1d0da70dc1e47d0a1ddb90abbed2eaea83919cd
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102040184"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-azure-monitor"></a>Azure Izleyici 'de tasarımcı kutucuklarını görüntülemek için başvuru kılavuzu
@@ -23,7 +23,7 @@ Görünüm Tasarımcısı hakkında daha fazla bilgi için bkz.
 
 Kullanılabilir görünüm Tasarımcısı kutucukları aşağıdaki tabloda açıklanmıştır:  
 
-| Kutucuk | Açıklama |
+| Kutucuk | Description |
 |:--- |:--- |
 | [Sayı](#number-tile) |Bir sorgudaki kayıt sayısı. |
 | [İki sayı](#two-numbers-tile) |İki farklı sorgudan kayıt sayısı. |
@@ -45,7 +45,7 @@ Sonraki bölümlerde, kutucuk türleri ve özellikleri ayrıntılı olarak açı
 | Ayar | Açıklama |
 |:--- |:--- |
 | Ad |Kutucuğun en üstünde görüntülenen metin. |
-| Açıklama |Kutucuk adının altında görüntülenen metin. |
+| Description |Kutucuk adının altında görüntülenen metin. |
 | **Kutucuk** | |
 | Gösterge |Değerin altında görüntülenen metin. |
 | Sorgu |Çalıştırılan sorgu. Sorgu tarafından döndürülen kayıtların sayısı görüntülenir. |
@@ -63,7 +63,7 @@ Bu kutucuk, iki farklı günlük sorgusunun kayıt sayısını ve her biri için
 | Ayar | Açıklama |
 |:--- |:--- |
 | Ad |Kutucuğun en üstünde görüntülenen metin. |
-| Açıklama |Kutucuk adının altında görüntülenen metin. |
+| Description |Kutucuk adının altında görüntülenen metin. |
 | **İlk kutucuk** | |
 | Gösterge |Değerin altında görüntülenen metin. |
 | Sorgu |Çalıştırılan sorgu. Sorgu tarafından döndürülen kayıtların sayısı görüntülenir. |
@@ -84,7 +84,7 @@ Bu kutucuk, iki farklı günlük sorgusunun kayıt sayısını ve her biri için
 | Ayar | Açıklama |
 |:--- |:--- |
 | Ad |Kutucuğun en üstünde görüntülenen metin. |
-| Açıklama |Kutucuk adının altında görüntülenen metin. |
+| Description |Kutucuk adının altında görüntülenen metin. |
 | **Halka** | |
 | Sorgu |Halka için çalıştırılan sorgu. İlk özellik bir metin değeridir ve ikinci özellik sayısal bir değerdir. Bu sorgu, sonuçları özetlemek için normalde *Measure* anahtar sözcüğünü kullanır. |
 | **Halka** |**> Merkezi** |
@@ -108,7 +108,7 @@ Bu kutucuk, zaman içinde günlük sorgusundan birden çok seriyi görüntüleye
 | Ayar | Açıklama |
 |:--- |:--- |
 | Ad |Kutucuğun en üstünde görüntülenen metin. |
-| Açıklama |Kutucuk adının altında görüntülenen metin. |
+| Description |Kutucuk adının altında görüntülenen metin. |
 | **Çizgi grafik** | |
 | Sorgu |Çizgi grafik için çalıştırılan sorgu. İlk özellik bir metin değeridir ve ikinci özellik sayısal bir değerdir. Bu sorgu, sonuçları özetlemek için normalde *Measure* anahtar sözcüğünü kullanır. Sorgu *Interval* anahtar sözcüğünü kullanıyorsa, x ekseni bu zaman aralığını kullanır. Sorgu *Interval* anahtar sözcüğünü kullanmıyorsa, x ekseni saatlik aralıkları kullanır. |
 | **Çizgi grafik** |**> Y ekseni** |
@@ -129,7 +129,7 @@ Bu kutucukta, zaman içinde bir günlük sorgusundan birden çok seri görüntü
 | Ayar | Açıklama |
 |:--- |:--- |
 | Ad |Kutucuğun en üstünde görüntülenen metin. |
-| Açıklama |Kutucuk adının altında görüntülenen metin. |
+| Description |Kutucuk adının altında görüntülenen metin. |
 | **Çizgi grafik** | |
 | Sorgu |Çizgi grafik için çalıştırılan sorgu. İlk özellik bir metin değeridir ve ikinci özellik sayısal bir değerdir. Bu sorgu, sonuçları özetlemek için normalde *Measure* anahtar sözcüğünü kullanır. Sorgu *Interval* anahtar sözcüğünü kullanıyorsa, x ekseni bu zaman aralığını kullanır. Sorgu *Interval* anahtar sözcüğünü kullanmıyorsa, x ekseni saatlik aralıkları kullanır. |
 | **Çizgi grafik** |**> belirtme çizgisi** |
@@ -154,7 +154,7 @@ Bu kutucukta, zaman içinde bir günlük sorgusundan birden çok seri görüntü
 | Ayar | Açıklama |
 |:--- |:--- |
 | Ad |Kutucuğun en üstünde görüntülenen metin. |
-| Açıklama |Kutucuk adının altında görüntülenen metin. |
+| Description |Kutucuk adının altında görüntülenen metin. |
 | İlk grafik | |
 | Gösterge |İlk serinin belirtme çizgisinin altında görüntülenen metin. |
 | Renk |İlk serideki sütunlar için kullanılan renk. |

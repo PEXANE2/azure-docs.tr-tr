@@ -6,13 +6,13 @@ author: kromerm
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 03/15/2021
-ms.openlocfilehash: fe65a9528e35416d537f3aecd3a44f8b4e568afe
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.date: 03/18/2021
+ms.openlocfilehash: 8617c32eac86d8e47678c06e3b028a475b4a5efb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103467740"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593866"
 ---
 # <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory veri akışlarını eşleme sorunlarını giderme
 
@@ -26,12 +26,6 @@ Bu makalede, Azure Data Factory veri akışlarını eşlemek için ortak sorun g
 - **İleti**: kapsayıcı mevcut olmadığından veri önizleme, hata ayıklama ve işlem hattı veri akışı yürütme başarısız oldu
 - **Neden**: bir veri kümesi depolamada mevcut olmayan bir kapsayıcı içeriyor.
 - **Öneri**: veri kümenizde başvurulan kapsayıcının var olduğundan ve erişilebilir olduğundan emin olun.
-
-### <a name="error-code-df-executor-systemimplicitcartesian"></a>Hata kodu: DF-yürütücü-Systemımplicıtkartezyen
-
-- **İleti**: iç birleşim için örtülü Kartezyen ürün desteklenmiyor, bunun yerıne çapraz birleşim kullanın. Birleşimde kullanılan sütunlar, satırlar için benzersiz bir anahtar oluşturmaktır.
-- **Neden**: mantıksal planlar arasında iç birleştirmeler için örtülü Kartezyen ürünler desteklenmez. Birleşimde sütunları kullanıyorsanız, ilişkinin her iki tarafında da en az bir sütun içeren benzersiz bir anahtar oluşturun.
-- **Öneri**: eşitlik tabanlı olmayan BIRLEŞIMLER IÇIN özel çapraz birleştirme kullanın.
 
 ### <a name="error-code-df-executor-systeminvalidjson"></a>Hata kodu: DF-yürütücü-SystemInvalidJson
 
@@ -82,11 +76,6 @@ Bu makalede, Azure Data Factory veri akışlarını eşlemek için ortak sorun g
 - **Neden**: belirtilen tür için veri türü gerçek parametre değeri ile uyumlu değil.
 - **Öneri**: veri akışına geçirilen parametre değerlerinin, belirtilen türle eşleştiğinden emin olun.
 
-### <a name="error-code-df-executor-columnunavailable"></a>Hata kodu: DF-yürütücü-ColumnUnavailable
-- **İleti**: ifadede kullanılan sütun adı kullanılamıyor veya geçersiz
-- **Neden**: bir ifadede geçersiz veya kullanılamayan bir sütun adı kullanıldı.
-- **Öneri**: ifadelerde sütun adlarını denetleyin.
-
 ### <a name="error-code-df-executor-parseerror"></a>Hata kodu: DF-yürütücü-ParseError
 - **İleti**: ifade ayrıştırılamıyor
 - **Neden**: yanlış biçimlendirme nedeniyle bir ifade Ayrıştırma hataları oluşturdu.
@@ -96,29 +85,6 @@ Bu makalede, Azure Data Factory veri akışlarını eşlemek için ortak sorun g
 - **İleti**: iç birleşim için örtülü Kartezyen ürün desteklenmiyor, bunun yerıne çapraz birleşim kullanın. Birleşimde kullanılan sütunlar, satırlar için benzersiz bir anahtar oluşturmaktır.
 - **Neden**: mantıksal planlar arasında iç birleştirmeler için örtülü Kartezyen ürünler desteklenmez. Birleşimde sütunları kullanıyorsanız, benzersiz bir anahtar oluşturun.
 - **Öneri**: eşitlik tabanlı olmayan BIRLEŞTIRMELER IÇIN çapraz birleştirme kullanın.
-
-### <a name="error-code-df-executor-systeminvalidjson"></a>Hata kodu: DF-yürütücü-SystemInvalidJson
-- **İleti**: JSON ayrıştırma hatası, desteklenmeyen kodlama veya çok satırlı
-- **Neden**: JSON dosyası ile ilgili olası sorunlar: desteklenmeyen kodlama, bozuk bayt veya JSON kaynağı birçok iç içe satırda tek bir belge olarak kullanılıyor.
-- **Öneri**: JSON dosyasının kodlamasının desteklendiğini doğrulayın. JSON veri kümesi kullanan kaynak dönüşümünde **JSON ayarları** ' nı genişletin ve **tek belgeyi** açın.
-
-
-
-### <a name="error-code-df-executor-conversion"></a>Hata kodu: DF-yürütücü-dönüştürme
-- **İleti**: geçersiz bir karakter nedeniyle tarih veya saate dönüştürme başarısız oldu
-- **Neden**: veriler beklenen biçimde değil.
-- **Öneri**: doğru veri türünü kullanın.
-
-
-### <a name="error-code-df-executor-blockcountexceedslimiterror"></a>Hata kodu: DF-yürütücü-Blockcountexceedslimıterror
-- **İleti**: kaydedilmemiş blok sayısı 100.000 blok üst sınırını aşamaz. Blob yapılandırmasını denetleyin.
-- **Neden**: bir Blobun en fazla işlenmemiş blok sayısı 100.000 ' dir.
-- **Öneri**: Bu sorunla ilgili daha fazla bilgi için Microsoft ürün ekibine başvurun.
-
-### <a name="error-code-df-executor-partitiondirectoryerror"></a>Hata kodu: DF-yürütücü-PartitionDirectoryError
-- **İleti**: belirtilen kaynak yolu birden çok bölümlenmiş dizine sahip (örn. *<Source Path> /<bölüm kök dizini 1>/a = 10/b = 20, <Source Path> /<bölüm kök dizin 2>/c = 10/d = 30*) veya diğer dosya ya da bölümlenmemiş dizin ile bölümlenmiş dizin (örn. *<Source Path> /<bölüm kök dizini 1>/A = 10/b = 20, <Source Path> /Dizin 2/FILE1*), bölüm kök dizinini kaynak yolundan kaldırın ve ayrı kaynak dönüşümünde okuyun.
-- **Neden**: kaynak yolunda birden çok bölümlenmiş dizin ya da başka bir dosya ya da bölümlenmemiş dizin içeren bölümlenmiş bir dizin bulunur. 
-- **Öneri**: bölümlenmiş kök dizini kaynak yoldan kaldırın ve ayrı kaynak dönüşümünde okuyun.
 
 ### <a name="error-code-getcommand-outputasync-failed"></a>Hata kodu: GetCommand OutputAsync başarısız oldu
 - **İleti**: veri akışı hata ayıklama ve veri önizleme sırasında: GetCommand OutputAsync ile başarısız oldu...
@@ -137,22 +103,10 @@ Bu makalede, Azure Data Factory veri akışlarını eşlemek için ortak sorun g
 - **Neden**: hesap adı veya erişim anahtarı yanlış.
 - **Öneri**: bağlı hizmetinizde belirtilen hesap adının veya erişim anahtarının doğru olduğundan emin olun. 
 
-### <a name="error-code-df-executor-invalidtype"></a>Hata kodu: DF-yürütücü-ınvalidtype
-- **İleti**: lütfen parametre türünün geçirilen değer türüyle eşleştiğinden emin olun. İşlem hatlarından kayan parametrelerin geçirilmesi Şu anda desteklenmiyor.
-- **Neden**: belirtilen tür için veri türü gerçek parametre değeri ile uyumlu değil. 
-- **Öneri**: doğru veri türlerini sağlayın.
-
 ### <a name="error-code-df-executor-columnunavailable"></a>Hata kodu: DF-yürütücü-ColumnUnavailable
 - **İleti**: ifadede kullanılan sütun adı kullanılamıyor veya geçersiz.
 - **Neden**: bir ifadede geçersiz veya kullanılamayan bir sütun adı kullanılıyor.
 - **Öneri**: ifadelerde kullanılan sütun adlarını denetleyin.
-
-
-### <a name="error-code-df-executor-parseerror"></a>Hata kodu: DF-yürütücü-ParseError
-- **İleti**: ifade ayrıştırılamıyor.
-- **Neden**: yanlış biçimlendirme nedeniyle bir ifade Ayrıştırma hataları oluşturdu. 
-- **Öneri**: ifadedeki biçimlendirmeyi denetleyin.
-
 
  ### <a name="error-code-df-executor-outofdiskspaceerror"></a>Hata kodu: DF-yürütücü-OutOfDiskSpaceError
 - **İleti**: iç sunucu hatası

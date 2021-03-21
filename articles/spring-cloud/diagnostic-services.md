@@ -8,10 +8,10 @@ ms.date: 01/06/2020
 ms.author: brendm
 ms.custom: devx-track-java
 ms.openlocfilehash: c354435f689f5182dd368fd53fdab28f1ab63d48
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102218800"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Tanılama ayarlarıyla günlükleri ve ölçümleri çözümleme
@@ -31,7 +31,7 @@ Azure Spring Cloud 'ın tanılama işlevini kullanarak, aşağıdaki hizmetlerde
 
 ## <a name="logs"></a>Günlükler
 
-|Günlük | Açıklama |
+|Günlük | Description |
 |----|----|
 | **ApplicationConsole** | Tüm müşteri uygulamalarının konsol günlüğü. |
 | **Sistem günlükleri** | Şu anda, bu kategoride yalnızca [Spring Cloud config Server](https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server) kaydedilir. |
