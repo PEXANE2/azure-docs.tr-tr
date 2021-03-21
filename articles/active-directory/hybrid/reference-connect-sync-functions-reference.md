@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7454733233f1fd487d774d52a6f46187354ae05c
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98246715"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect Sync: Işlevler başvurusu
@@ -904,7 +904,7 @@ ItemOrNull işlevi, birden çok değerli dize/öznitelikten bir öğe döndürü
 Dizin sınırların dışında ise null değeri döndürür.
 
 ---
-### <a name="join"></a>Birleştir
+### <a name="join"></a>Katılın
 **Açıklama:**  
 JOIN işlevi, birden çok değerli bir dize alır ve her öğe arasında belirtilen ayırıcı ile tek değerli bir dize döndürür.
 

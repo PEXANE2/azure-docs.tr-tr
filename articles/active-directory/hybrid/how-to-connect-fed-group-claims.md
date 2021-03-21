@@ -13,10 +13,10 @@ ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
 ms.openlocfilehash: bef5942707c1ded22ba82bdb0d945b9fdb23fffa
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96349359"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>Azure Active Directory olan uygulamalar için grup taleplerini yapılandırma
@@ -64,7 +64,7 @@ Ancak, var olan bir uygulama talepler aracılığıyla grup bilgilerini tüketme
 
 ## <a name="prerequisites-for-using-group-attributes-synchronized-from-active-directory"></a>Active Directory 'ten eşitlenen grup özniteliklerini kullanma önkoşulları
 
-ObjectID biçimini kullanırsanız, Grup üyeliği talepleri herhangi bir grup için belirteçlerde yayılabilir. Grup taleplerini grup ObjectID dışında bir biçimde kullanmak için, Active Directory Azure AD Connect kullanılarak grupların eşitlenmesi gerekir.
+ObjectId biçimini kullanıyorsanız her grup için grup üyeliği talepleri belirteçlerde yayılabilir. Grup taleplerini grup ObjectID dışında bir biçimde kullanmak için, Active Directory Azure AD Connect kullanılarak grupların eşitlenmesi gerekir.
 
 Active Directory grupları için Grup adlarını yayma Azure Active Directory yapılandırmanın iki adımı vardır.
 
@@ -148,7 +148,7 @@ Geçerli değerler:
 | **ApplicationGroup** | Yalnızca uygulamaya açıkça atanmış olan grupları yayar ve Kullanıcı |
 | **Seçim** | Hiçbir grup döndürülmedi. (Büyük/küçük harf olmaması bu nedenle, hiçbiri de işe yarar ve doğrudan uygulama bildiriminde ayarlanabilir.) |
 
-   Örneğin:
+   Örnek:
 
    ```json
    "groupMembershipClaims": "SecurityGroup"

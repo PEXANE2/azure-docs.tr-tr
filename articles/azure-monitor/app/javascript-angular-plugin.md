@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: lagayhar
 ms.openlocfilehash: d45d8bed328dc91dfeeabd6ce878074fa1218623
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101737027"
 ---
 # <a name="angular-plugin-for-application-insights-javascript-sdk"></a>JavaScript SDK Application Insights için angular eklentisi
@@ -24,7 +24,7 @@ Application Insights JavaScript SDK 'Sı için angular eklentisi şunları sunar
 > [!WARNING]
 > Angular eklentisi ECMAScript 3 (ES3) uyumlu DEĞILDIR.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 NPM paketini Install:
 

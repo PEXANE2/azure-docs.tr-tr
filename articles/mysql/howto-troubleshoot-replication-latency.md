@@ -8,10 +8,10 @@ ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 01/13/2021
 ms.openlocfilehash: 92513a8c24b5106e3a59c8cfa4d743e900b957bf
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98249780"
 ---
 # <a name="troubleshoot-replication-latency-in-azure-database-for-mysql"></a>MySQL için Azure Veritabanı'nda çoğaltma gecikmesi sorununu giderme
@@ -95,7 +95,7 @@ Tipik bir çıktı aşağıda verilmiştir:
 
 Çıktı çok fazla bilgi içerir. Normal olarak, yalnızca aşağıdaki tabloda açıklanan satırlara odaklanmanız gerekir.
 
-|Ölçüm|Açıklama|
+|Metric|Açıklama|
 |---|---|
 |Slave_IO_State| GÇ iş parçacığının geçerli durumunu temsil eder. Normalde, kaynak (ana) sunucusu eşitleme ise durum "ana öğe gönderilmesi bekleniyor" olur. "Ana ağa bağlanma" gibi bir durum, çoğaltmanın kaynak sunucuyla olan bağlantıyı kaybettiğini belirtir. Kaynak sunucunun çalıştığından emin olun veya bir güvenlik duvarının bağlantıyı engelleyip engellemediğini denetleyin.|
 |Master_Log_File| Kaynak sunucunun yazıldığı ikili günlük dosyasını temsil eder.|
@@ -177,7 +177,7 @@ Aşağıdaki bölümlerde bu tür bir gecikme süresinin yaygın nedenleri açı
 
 #### <a name="no-primary-key-or-unique-key-on-a-table"></a>Tabloda birincil anahtar veya benzersiz anahtar yok
 
-MySQL için Azure veritabanı satır tabanlı çoğaltmayı kullanır. Kaynak sunucu, olayları ikili günlüğe yazar ve tek tablo satırlarındaki değişiklikleri kaydeder. SQL iş parçacığı daha sonra bu değişiklikleri çoğaltma sunucusundaki ilgili tablo satırlarına çoğaltır. Bir tabloda birincil anahtar veya benzersiz anahtar olmadığında SQL iş parçacığı değişiklikleri uygulamak için hedef tablodaki tüm satırları tarar. Bu tarama çoğaltma gecikmesine neden olabilir.
+MySQL için Azure veritabanı satır tabanlı çoğaltmayı kullanır. Kaynak sunucu, olayları ikili günlüğe yazar ve tek tablo satırlarındaki değişiklikleri kaydeder. SQL iş parçacığı daha sonra bu değişiklikleri çoğaltma sunucusundaki ilgili tablo satırlarına çoğaltır. Bir tabloda birincil anahtar veya benzersiz anahtar olmadığında SQL iş parçacığı değişiklikleri uygulamak için hedef tablodaki tüm satırları tarar. Bu tarama çoğaltma gecikmesine yol açabilir.
 
 MySQL 'de birincil anahtar, NULL değerler içeremediği için hızlı sorgu performansını sağlayan ilişkili bir dizindir. InnoDB Storage altyapısını kullanıyorsanız, tablo verileri fiziksel olarak hızlı aramalar yapmak ve birincil anahtara göre sıralama yapmak için fiziksel olarak düzenlenir.
 

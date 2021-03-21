@@ -15,10 +15,10 @@ ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 7d416810f6a39fb36bfa3c5225301fe87fdd128c
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103013474"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Azure Media Analytics ile yüzeyleri redaksiyonu
@@ -46,7 +46,7 @@ Bu, el ile herhangi bir girdi olmadan redaksiyonu otomatik olarak oluşturur.
 
 | Aşama | Dosya Adı | Notlar |
 | --- | --- | --- |
-| Giriş varlığı |foo. Bar |WMV, har veya MP4 biçimindeki video |
+| Giriş varlığı |foo.bar |WMV, har veya MP4 biçimindeki video |
 | Giriş yapılandırması |İş yapılandırması önayarı |{' version ': ' 1.0 ', ' Seçenekler ': {' Mode ': ' Birleşik '}} |
 | Çıkış varlığı |foo_redacted.mp4 |Bulanıklaştırma uygulanmış video |
 
@@ -56,7 +56,7 @@ Bu, el ile herhangi bir girdi olmadan redaksiyonu otomatik olarak oluşturur.
 
 | Aşama | Dosya Adı | Notlar |
 | --- | --- | --- |
-| Giriş varlığı |foo. Bar |WMV, MPV veya MP4 biçimindeki video |
+| Giriş varlığı |foo.bar |WMV, MPV veya MP4 biçimindeki video |
 | Giriş yapılandırması |İş yapılandırması önayarı |{' version ': ' 1.0 ', ' Seçenekler ': {' Mode ': ' Analyze '}} |
 | Çıkış varlığı |Üzerinde foo_annotations.js |JSON biçimindeki yüz konumlarının ek açıklama verileri. Bu, bulanıklaştırma sınırlayıcı kutularını değiştirmek için Kullanıcı tarafından düzenlenebilir. Aşağıdaki örneğe bakın. |
 | Çıkış varlığı |foo_thumb% 06d.jpg [foo_thumb000001.jpg, foo_thumb000002.jpg] |Algılanan her bir yüzün kırpılan bir jpg (sayının, yüzün LabelId 'sini gösterdiği) |
@@ -122,7 +122,7 @@ Analiz geçişinin çıktısı özgün videoyu içermez. Videonun, Redakct modu 
 
 | Aşama | Dosya Adı | Notlar |
 | --- | --- | --- |
-| Giriş varlığı |foo. Bar |WMV, MPV veya MP4 biçimindeki video. 1. adımdaki ile aynı video. |
+| Giriş varlığı |foo.bar |WMV, MPV veya MP4 biçimindeki video. 1. adımdaki ile aynı video. |
 | Giriş varlığı |Üzerinde foo_annotations.js |isteğe bağlı değişiklikler ile birinci aşamadan sonra gelen açıklama meta verileri dosyası. |
 | Giriş varlığı |foo_IDList.txt (Isteğe bağlı) |Redaksiyonlar için isteğe bağlı yeni satıra ayrılmış yüz kimlikleri listesi. Boş bırakılırsa bu, tüm yüzleri bulanıklaştırır. |
 | Giriş yapılandırması |İş yapılandırması önayarı |{' version ': ' 1.0 ', ' Seçenekler ': {' Mode ': ' Redact '}} |

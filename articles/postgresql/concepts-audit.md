@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.openlocfilehash: 33fa6420f52cae9c869cc75a04ea82de0ec48262
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100596291"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda denetim günlüğü-tek sunucu
@@ -66,7 +66,7 @@ pgAudit oturum veya nesne denetim günlüğünü yapılandırmanızı sağlar. [
 
 > [!NOTE]
 > `pgaudit.log_client`Olarak ayarlandığında, günlükleri dosyaya yazılması yerine bir istemci işlemine (psql gibi) yönlendirir. Bu ayar genellikle devre dışı bırakılmalıdır. <br> <br>
-> `pgaudit.log_level` yalnızca açık olduğunda etkindir `pgaudit.log_client` .
+> `pgaudit.log_level` parametresi ancak `pgaudit.log_client` açık olduğunda etkinleştirilir.
 
 > [!NOTE]
 > PostgreSQL için Azure veritabanı 'nda, `pgaudit.log` `-` pgaudit belgelerinde açıklandığı şekilde (eksi) işareti kısayolu kullanılarak ayarlanamaz. Tüm gereken deyim sınıfları (READ, WRITE vb.) tek tek belirtilmelidir.
@@ -82,7 +82,7 @@ t=%m u=%u db=%d pid=[%p]:
 
 Hakkında daha fazla bilgi edinmek için `log_line_prefix` [PostgreSQL belgelerini](https://www.postgresql.org/docs/current/runtime-config-logging.html#GUC-LOG-LINE-PREFIX)ziyaret edin.
 
-### <a name="getting-started"></a>Başlarken
+### <a name="getting-started"></a>Kullanmaya başlama
 Hızlıca kullanmaya başlamak için, `pgaudit.log` olarak ayarlayın `WRITE` ve çıktıyı gözden geçirmek için günlüklerinizi açın. 
 
 ## <a name="viewing-audit-logs"></a>Denetim günlüklerini görüntüleme

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/18/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: af5e0eeb808835fd4f36a0eda79618f831248ad9
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: e9a77ab0ac32d627d59e2cb0fa4a680f174a6833
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340779"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587245"
 ---
 # <a name="timestamptodatetime-azure-cosmos-db"></a>Timestamptotarihsaat (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -28,7 +28,7 @@ TimestampToDateTime (<Timestamp>)
 
 ## <a name="arguments"></a>Bağımsız değişkenler
 
-*Zaman damgası*  
+*İlişkin*  
 
 İşaretli bir sayısal değer, UNIX dönemi bu yana geçen milisaniye cinsinden geçerli süre. Diğer bir deyişle, 00:00:00 Perşembe, 1 Ocak 1970 tarihinden itibaren geçen milisaniye sayısı.
 
@@ -36,17 +36,17 @@ TimestampToDateTime (<Timestamp>)
 
 Şu biçimdeki UTC Tarih ve saat ISO 8601 dize değerini döndürür `YYYY-MM-DDThh:mm:ss.fffffffZ` :
   
-  |Biçimlendir|Açıklama|
-  |-|-|
-  |YYYY|dört basamaklı yıl|
-  |MM|iki basamaklı ay (01 = Ocak, vb.)|
-  |DD|iki basamaklı ayın günü (01 ile 31 arasında)|
-  |T|zaman öğelerinin başlangıcı için signifier|
-  |hh|iki basamaklı saat (00 ile 23 arasında)|
-  |mm|iki basamaklı dakika (00 ila 59)|
-  |ss|iki basamaklı saniyeler (00 ila 59)|
-  |. fffffff|yedi basamaklı kesirli saniye|
-  |Z|UTC (Eşgüdümlü Evrensel Saat) göstergesi||
+|Biçimlendir|Açıklama|
+|-|-|
+|YYYY|dört basamaklı yıl|
+|MM|iki basamaklı ay (01 = Ocak, vb.)|
+|DD|iki basamaklı ayın günü (01 ile 31 arasında)|
+|T|zaman öğelerinin başlangıcı için signifier|
+|hh|iki basamaklı saat (00 ile 23 arasında)|
+|mm|iki basamaklı dakika (00 ila 59)|
+|ss|iki basamaklı saniyeler (00 ila 59)|
+|. fffffff|yedi basamaklı kesirli saniye|
+|Z|UTC (Eşgüdümlü Evrensel Saat) göstergesi|
   
   ISO 8601 biçimi hakkında daha fazla bilgi için bkz. [ISO_8601](https://en.wikipedia.org/wiki/ISO_8601)
 

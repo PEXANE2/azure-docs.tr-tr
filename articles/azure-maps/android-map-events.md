@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
 ms.openlocfilehash: 86d1b9ec8a507a5cfaa5502efcb239bceabca665
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102097355"
 ---
 # <a name="interact-with-the-map-android-sdk"></a>Eşlemele etkileşim kurma (Android SDK)
@@ -24,7 +24,7 @@ Bu makalede haritalar olayları yöneticisini nasıl kullanabileceğiniz göster
 
 Map, tüm olaylarını özelliği aracılığıyla yönetir `events` . Aşağıdaki tabloda desteklenen tüm harita olayları listelenmektedir.
 
-| Olay                  | Olay işleyicisi biçimi | Açıklama |
+| Olay                  | Olay işleyicisi biçimi | Description |
 |------------------------|----------------------|-------------|
 | `OnCameraIdle`         | `()`                 | <p>Eşleme "boşta" durumuna girmeden önce oluşturulan son çerçeveden sonra harekete geçirilir:<ul><li>Devam eden bir kamera geçişi yok.</li><li>Şu anda istenen tüm kutucuklar yüklendi.</li><li>Tüm belirme/geçiş animasyonları tamamlandı.</li></ul></p> |
 | `OnCameraMove`         | `()`                 | Bir görünümden diğerine animasyon eklenmiş bir geçiş sırasında, Kullanıcı etkileşimi ya da yöntemlerinin sonucu olarak tekrar tekrar tetiklenir. |

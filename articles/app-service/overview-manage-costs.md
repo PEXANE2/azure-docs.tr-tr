@@ -6,10 +6,10 @@ ms.service: app-service
 ms.topic: how-to
 ms.date: 01/01/2021
 ms.openlocfilehash: ada4c1991a57c8252247c9617e097dc82cb3b4a9
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100593993"
 ---
 # <a name="plan-and-manage-costs-for-azure-app-service"></a>Azure App Service maliyetlerini planlayın ve yönetin
@@ -51,7 +51,7 @@ App Service yönelik diğer maliyet kaynakları şunlardır: (Ayrıntılar için
 
 Bir App Service planındaki tüm uygulamaları sildiğinizde, plan, yapılandırılmış fiyatlandırma katmanına ve örnek sayısına göre ücretleri tahakkuk etmeye devam eder. İstenmeyen ücretlerden kaçınmak için planı silin veya **ücretsiz** katmana ölçeklendirin.
 
-Azure App Service kaynaklarını sildikten sonra, ilgili Azure hizmetlerinden kaynaklar mevcut olmaya devam edebilir. Bunlar silinene kadar maliyetleri tahakkuk ettirmeye devam eder. Örneğin:
+Azure App Service kaynaklarını sildikten sonra, ilgili Azure hizmetlerinden kaynaklar mevcut olmaya devam edebilir. Bunlar silinene kadar maliyetleri tahakkuk ettirmeye devam eder. Örnek:
 
 - **Yalıtılmış** bir katman App Service planı Için oluşturduğunuz sanal ağ
 - Yedeklemeleri veya tanılama günlüklerini depolamak için oluşturduğunuz depolama hesapları
@@ -135,7 +135,7 @@ Maliyet analizini kullandığınızda, grafikler ve tablolardaki App Service mal
     
 Maliyet analizinde App Service maliyetlerini görüntülemek için:
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 2. Azure portal kapsamı açın ve menüden **Maliyet Analizi** ' ni seçin. Örneğin, **abonelikler**' e gidin, listeden bir abonelik seçin ve ardından menüde  **Maliyet Analizi** ' ni seçin. Maliyet analizinde farklı bir kapsama geçiş yapmak için **kapsam** ' ı seçin.
 3. Varsayılan olarak, hizmetlerin maliyeti ilk halka grafiğinde gösterilir. App Service etiketli grafikteki alanı seçin.
 

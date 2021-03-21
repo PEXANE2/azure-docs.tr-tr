@@ -4,10 +4,10 @@ description: Bu makalede Azure Relay hizmetiyle ilgili sık sorulan soruların b
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 83cbc4b02bb8b63878abd046ed2314728546e87a
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98250065"
 ---
 # <a name="azure-relay-faqs"></a>Azure Relay SSS
@@ -92,7 +92,7 @@ Geçiş ad alanı adı 6 ila 50 karakter uzunluğunda olmalıdır.
 
 Bir ad alanını bir Azure aboneliğinden başka bir aboneliğe taşımak için [Azure Portal](https://portal.azure.com) kullanabilir ya da PowerShell komutlarını kullanabilirsiniz. Bir ad alanını başka bir aboneliğe taşımak için ad alanı zaten etkin olmalıdır. Komutları çalıştıran kullanıcının hem kaynak hem de hedef aboneliklerde yönetici kullanıcı olması gerekir.
 
-#### <a name="azure-portal"></a>Azure portal
+#### <a name="azure-portal"></a>Azure portalı
 
 Bir abonelikteki Azure Relay ad alanlarını başka bir aboneliğe geçirmek üzere Azure portal kullanmak için bkz. [kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma](../azure-resource-manager/management/move-resource-group-and-subscription.md#use-the-portal). 
 

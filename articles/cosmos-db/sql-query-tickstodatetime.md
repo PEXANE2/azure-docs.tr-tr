@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/18/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: f40286a39694307ac43ecd60f6861d509f760990
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 9adf525f4edb4104978bae32bbbef15ffb131f68
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340813"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587262"
 ---
 # <a name="tickstodatetime-azure-cosmos-db"></a>TicksToDateTime (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -36,17 +36,17 @@ TicksToDateTime (<Ticks>)
 
 Şu biçimdeki UTC Tarih ve saat ISO 8601 dize değerini döndürür `YYYY-MM-DDThh:mm:ss.fffffffZ` :
   
-  |Biçimlendir|Açıklama|
-  |-|-|
-  |YYYY|dört basamaklı yıl|
-  |MM|iki basamaklı ay (01 = Ocak, vb.)|
-  |DD|iki basamaklı ayın günü (01 ile 31 arasında)|
-  |T|zaman öğelerinin başlangıcı için signifier|
-  |hh|iki basamaklı saat (00 ile 23 arasında)|
-  |mm|iki basamaklı dakika (00 ila 59)|
-  |ss|iki basamaklı saniyeler (00 ila 59)|
-  |. fffffff|yedi basamaklı kesirli saniye|
-  |Z|UTC (Eşgüdümlü Evrensel Saat) göstergesi||
+|Biçimlendir|Açıklama|
+|-|-|
+|YYYY|dört basamaklı yıl|
+|MM|iki basamaklı ay (01 = Ocak, vb.)|
+|DD|iki basamaklı ayın günü (01 ile 31 arasında)|
+|T|zaman öğelerinin başlangıcı için signifier|
+|hh|iki basamaklı saat (00 ile 23 arasında)|
+|mm|iki basamaklı dakika (00 ila 59)|
+|ss|iki basamaklı saniyeler (00 ila 59)|
+|. fffffff|yedi basamaklı kesirli saniye|
+|Z|UTC (Eşgüdümlü Evrensel Saat) göstergesi|
   
   ISO 8601 biçimi hakkında daha fazla bilgi için bkz. [ISO_8601](https://en.wikipedia.org/wiki/ISO_8601)
 

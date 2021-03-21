@@ -8,10 +8,10 @@ ms.date: 02/22/2021
 ms.author: govindk
 ms.reviewer: sngun
 ms.openlocfilehash: edf60a5c454d34a2424ef7981b02952ffbfd3bde
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102097236"
 ---
 # <a name="resource-model-for-the-azure-cosmos-db-point-in-time-restore-feature-preview"></a>Azure Cosmos DB zaman noktası geri yükleme özelliği için kaynak modeli (Önizleme)
@@ -43,7 +43,7 @@ Bu özellik, hesabın nasıl oluşturulduğunu gösterir. Olası değerler *vars
 
 `RestoreParameters`Kaynak, hesap kimliği, geri yüklenecek süre ve geri yüklenmesi gereken kaynaklar dahil geri yükleme işlemi ayrıntılarını içerir.
 
-|Özellik Adı |Açıklama  |
+|Özellik Adı |Description  |
 |---------|---------|
 |restoreMode  | Geri yükleme modu *Pointıntime* olmalıdır |
 |restoreSource   |  Geri yüklemenin başlatılacağı kaynak hesabın InstanceId 'si.       |
@@ -52,7 +52,7 @@ Bu özellik, hesabın nasıl oluşturulduğunu gösterir. Olası değerler *vars
 
 **DatabaseRestoreResource** -her kaynak tek bir veritabanını ve bu veritabanı altındaki tüm koleksiyonları temsil eder.
 
-|Özellik Adı |Açıklama  |
+|Özellik Adı |Description  |
 |---------|---------|
 |Dosyasında | Veritabanının adı |
 | collectionNames| Bu veritabanı kapsamındaki kapsayıcıların listesi |
@@ -134,7 +134,7 @@ Geri yüklenebilen tüm hesapların bir listesini almak için bkz. yeniden yükl
 
 Her kaynak, SQL veritabanında oluşan oluşturma ve silme gibi bir mutasyon olayının bilgilerini içerir. Bu bilgiler, veritabanının yanlışlıkla silindiği ve bu olayın ne zaman meydana geldiğini bulmanız gereken senaryolarda yardımcı olabilir.
 
-|Özellik Adı |Açıklama  |
+|Özellik Adı |Description  |
 |---------|---------|
 | eventTimestamp | Veritabanı oluşturulduğunda veya silindiğinde UTC olarak zaman. |
 | OwnerId | SQL veritabanının adı. |
@@ -148,7 +148,7 @@ Tüm veritabanı mutasyonlarının bir listesini almak için bkz. geri [yüklene
 
 Her kaynak, SQL kapsayıcısında oluşan oluşturma ve silme gibi bir mutasyon olayının bilgilerini içerir. Bu bilgiler kapsayıcının değiştirildiği veya silindiği senaryolarda ve bu olayın ne zaman meydana geldiğini bulmanız gerektiğinde yardımcı olabilir.
 
-|Özellik Adı |Açıklama  |
+|Özellik Adı |Description  |
 |---------|---------|
 | eventTimestamp    | Bu kapsayıcı olay meydana geldiğinde UTC olarak zaman.|
 | OwnerId| SQL kapsayıcısının adı.|
@@ -162,7 +162,7 @@ Aynı veritabanı altındaki tüm kapsayıcı mutasyonlarının bir listesini al
 
 Her kaynak tek bir veritabanını ve bu veritabanı altındaki tüm kapsayıcıları temsil eder.
 
-|Özellik Adı |Açıklama  |
+|Özellik Adı |Description  |
 |---------|---------|
 | Dosyasında  | SQL veritabanının adı.
 | collectionNames   | Bu veritabanı altındaki SQL kapsayıcıları listesi.|
@@ -173,7 +173,7 @@ Hesapta verilen zaman damgasında ve konumda bulunan SQL veritabanı ve kapsayı
 
 Her kaynak, MongoDB veritabanında oluşan oluşturma ve silme gibi bir mutasyon olayının bilgilerini içerir. Bu bilgiler, veritabanının yanlışlıkla silindiği ve kullanıcının bu olayın ne zaman meydana geldiğini bulması gereken senaryoda yardımcı olabilir.
 
-|Özellik Adı |Açıklama  |
+|Özellik Adı |Description  |
 |---------|---------|
 |eventTimestamp| Bu veritabanı olayının gerçekleştiği UTC süresi.|
 | OwnerId| MongoDB veritabanının adı. |
@@ -186,7 +186,7 @@ Tüm veritabanı mutasyonlarının bir listesini almak için bkz. [Restorestomon
 
 Her kaynak, MongoDB koleksiyonunda oluşan oluşturma ve silme gibi bir mutasyon olayının bilgilerini içerir. Bu bilgiler, koleksiyonun değiştirildiği veya silindiği senaryolarda, kullanıcının bu olayın ne zaman meydana geldiğini bulması için yardımcı olabilir.
 
-|Özellik Adı |Açıklama  |
+|Özellik Adı |Description  |
 |---------|---------|
 | eventTimestamp |Bu koleksiyon olayının gerçekleştiği UTC süresi. |
 | OwnerId| MongoDB koleksiyonunun adı. |
@@ -199,7 +199,7 @@ Aynı veritabanı altındaki tüm kapsayıcı mutasyonların listesini almak iç
 
 Her kaynak tek bir veritabanını ve bu veritabanı altındaki tüm koleksiyonları temsil eder.
 
-|Özellik Adı |Açıklama  |
+|Özellik Adı |Description  |
 |---------|---------|
 | Dosyasında  |MongoDB veritabanının adı. |
 | collectionNames | Bu veritabanı altındaki MongoDB koleksiyonlarının listesi. |
