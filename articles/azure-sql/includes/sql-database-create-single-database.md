@@ -7,10 +7,10 @@ ms.date: 03/10/2020
 ms.author: sstein
 ms.reviewer: vanto
 ms.openlocfilehash: c7bd942b427bdbd2d8184f712f97dd2a0a57fa90
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102178087"
 ---
 Bu adımda, bir [MANTıKSAL SQL Server](../database/logical-servers.md) ve AdventureWorksLT örnek verisi kullanan [tek bir veritabanı](../database/single-database-overview.md) oluşturursunuz. Azure portal menüleri ve ekranları kullanarak veya Azure Cloud Shell bir Azure CLı veya PowerShell betiği kullanarak veritabanı oluşturabilirsiniz.

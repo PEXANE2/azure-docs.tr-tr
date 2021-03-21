@@ -4,10 +4,10 @@ description: Azure Resource Manager şablonunda (ARM şablonu) ve Bıcep dosyas�
 ms.topic: conceptual
 ms.date: 03/03/2021
 ms.openlocfilehash: a8608e4733960d7f5ba7e5f548c47f16a2b244bb
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102123403"
 ---
 # <a name="parameters-in-arm-templates"></a>ARM şablonlarındaki parametreler
@@ -281,7 +281,7 @@ param month int
 
 ---
 
-## <a name="description"></a>Açıklama
+## <a name="description"></a>Description
 
 Şablonunuzun kullanıcılarının sağlanacak değeri anlamasına yardımcı olması için parametreye bir açıklama ekleyebilirsiniz. Şablonu Portal üzerinden dağıttığınızda, açıklamada sağladığınız metin, bu parametre için bir ipucu olarak otomatik olarak kullanılır. Yalnızca metin, parametre adından çıkarsandan daha fazla bilgi sağlıyorsa açıklama ekleyin.
 
@@ -473,7 +473,7 @@ resource vnet 'Microsoft.Network/virtualNetworks@2020-06-01' = {
 
 Aşağıdaki örneklerde, parametreleri kullanmaya yönelik senaryolar gösterilmektedir.
 
-|Şablon  |Açıklama  |
+|Şablon  |Description  |
 |---------|---------|
 |[Varsayılan değerler için işlevlere sahip parametreler](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | Parametreler için varsayılan değerleri tanımlarken şablon işlevlerinin nasıl kullanılacağını gösterir. Şablon hiçbir kaynak dağıtmaz. Parametre değerlerini oluşturur ve bu değerleri döndürür. |
 |[Parameter nesnesi](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | Bir parametre için bir nesne kullanmayı gösterir. Şablon hiçbir kaynak dağıtmaz. Parametre değerlerini oluşturur ve bu değerleri döndürür. |

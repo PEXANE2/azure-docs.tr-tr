@@ -9,10 +9,10 @@ ms.author: mlearned
 description: Azure Arc etkin küme yapılandırması için Held ile Gilar kullanma
 keywords: Gilar, Kubernetes, K8s, Azure, Held, Arc, AKS, Azure Kubernetes hizmeti, kapsayıcılar
 ms.openlocfilehash: 75e2fcb25680817fc3e2bddabbbdd9c52b7dd059
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102121414"
 ---
 # <a name="deploy-helm-charts-using-gitops-on-an-arc-enabled-kubernetes-cluster"></a>Bir yay etkin bir Kubernetes kümesinde Gilar kullanarak Held grafikleri dağıtma

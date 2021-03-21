@@ -11,10 +11,10 @@ ms.date: 06/01/2020
 ms.author: ericrad
 ms.reviewer: mimckitt
 ms.openlocfilehash: 8b4f8b064ab19a578ce5854697a1ed9bb0195759
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102505401"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Linux VM'ler için Zamanlanan Olaylar
@@ -75,7 +75,7 @@ VM bir sanal ağ içinde oluşturulmadıysa, bulut hizmetleri ve klasik VM 'Ler 
 ### <a name="version-and-region-availability"></a>Sürüm ve bölge kullanılabilirliği
 Zamanlanan Olaylar hizmeti sürümlenmiş. Sürümler zorunludur; geçerli sürüm `2019-08-01` .
 
-| Sürüm | Yayın türü | Bölgeler | Release Notes (Sürüm Notları) | 
+| Sürüm | Yayın türü | Bölgeler | Sürüm Notları | 
 | - | - | - | - | 
 | 2019-08-01 | Genel kullanılabilirlik | Tümü | <li> EventSource için destek eklendi |
 | 2019-04-01 | Genel kullanılabilirlik | Tümü | <li> Olay açıklaması için destek eklendi |
@@ -140,7 +140,7 @@ Zamanlanan olayların olduğu durumlarda, yanıt bir olay dizisi içerir.
 | Kaynaklar| Bu olayın etkilediği kaynakların listesi. Listenin, en çok bir [güncelleştirme etki](../availability.md)alanından makineler içermesi garanti edilir, ancak bu, ud 'deki tüm makineleri içermeyebilir. <br><br> Örnek: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | EventStatus | Bu olayın durumu. <br><br> Değerler: <ul><li>`Scheduled`: Bu olay, özellikte belirtilen süreden sonra başlayacak şekilde zamanlandı `NotBefore` .<li>`Started`: Bu olay başlatıldı.</ul> Hiç `Completed` veya benzer bir durum sağlanmamıştır. Olay tamamlandığında olay artık döndürülmez.
 | NotBefore| Bu olayın başlayabileceği zaman. <br><br> Örnek: <br><ul><li> Mon, 19 Eyl 2016 18:29:47 GMT  |
-| Açıklama | Bu olayın açıklaması. <br><br> Örnek: <br><ul><li> Ana bilgisayar sunucusu bakımda. |
+| Description | Bu olayın açıklaması. <br><br> Örnek: <br><ul><li> Ana bilgisayar sunucusu bakımda. |
 | EventSource | Olayın Başlatıcısı. <br><br> Örnek: <br><ul><li> `Platform`: Bu olay platform tarafından başlatılır. <li>`User`: Bu olay kullanıcı tarafından başlatılır. |
 
 ### <a name="event-scheduling"></a>Olay zamanlaması

@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: dd39b7ecd51902f5035b4cd17d59dea964d0c962
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91708841"
 ---
 # <a name="best-practices-for-query-store"></a>Sorgu deposu için en iyi uygulamalar
@@ -24,14 +24,14 @@ Sorgu deposunun sizin için önemli olan verileri yakalamasına izin verin.
 
 |**pg_qs pg_qs.query_capture_mode** | **Senaryo**|
 |---|---|
-|_Bütün_  |İş yükünüzü tüm sorgular ve bunların yürütülme sıklıklarıyla ve diğer istatistiklerde ayrıntılı şekilde çözümleyin. İş yükünüzün yeni sorgularını belirler. Kullanıcı veya otomatik Parametreleştirme fırsatlarını belirlemek için geçici sorguların kullanıldığını algıla. _Hepsi_ daha fazla kaynak tüketim maliyetiyle gelir. |
-|_Üst_  |En iyi sorgulara dikkat edin-istemciler tarafından verilen olanlardır.
+|_Tümü_  |İş yükünüzü tüm sorgular ve bunların yürütülme sıklıklarıyla ve diğer istatistiklerde ayrıntılı şekilde çözümleyin. İş yükünüzün yeni sorgularını belirler. Kullanıcı veya otomatik Parametreleştirme fırsatlarını belirlemek için geçici sorguların kullanıldığını algıla. _Hepsi_ daha fazla kaynak tüketim maliyetiyle gelir. |
+|_Sayfanın Üstü_  |En iyi sorgulara dikkat edin-istemciler tarafından verilen olanlardır.
 |_Hiçbiri_ |Araştırmak istediğiniz bir sorgu kümesi ve zaman penceresi zaten yakalandı ve diğer sorguların getirebilme nedenlerini ortadan kaldırmak istiyorsunuz. _Hiçbiri_ , test ve tezgahtır işaretleme ortamları için uygun değildir. Önemli yeni sorguları izleme ve iyileştirme fırsatını kaçırdığı için _hiçbiri_ dikkatli kullanılmamalıdır. Bu eski zaman Windows üzerinde veri kurtaramazsınız. |
 
-Sorgu deposu bekleme istatistikleri için bir mağaza da içerir. Bekleme istatistiklerini yöneten ek bir yakalama modu sorgusu var: **pgms_wait_sampling. query_capture_mode** , _none_ veya _All_olarak ayarlanabilir. 
+Sorgu deposu bekleme istatistikleri için bir mağaza da içerir. Bekleme istatistiklerini yöneten ek bir yakalama modu sorgusu var: **pgms_wait_sampling. query_capture_mode** , _none_ veya _All_ olarak ayarlanabilir. 
 
 > [!NOTE] 
-> **pg_qs. query_capture_mode** , **pgms_wait_sampling. query_capture_mode**yerine geçiyor. Pg_qs. query_capture_mode _none_ise, pgms_wait_sampling. query_capture_mode ayarının etkisi yoktur. 
+> **pg_qs. query_capture_mode** , **pgms_wait_sampling. query_capture_mode** yerine geçiyor. Pg_qs. query_capture_mode _none_ ise, pgms_wait_sampling. query_capture_mode ayarının etkisi yoktur. 
 
 
 ## <a name="keep-the-data-you-need"></a>İhtiyacınız olan verileri koruyun

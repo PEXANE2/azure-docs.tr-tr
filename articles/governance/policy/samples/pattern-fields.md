@@ -4,10 +4,10 @@ description: Bu Azure Ilke düzeninde, alan özelliklerinin bir ilke tanımında
 ms.date: 10/14/2020
 ms.topic: sample
 ms.openlocfilehash: 267c687f78f0bbb100843faee40ab6f3d3cbb64c
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92072977"
 ---
 # <a name="azure-policy-pattern-field-properties"></a>Azure Ilke deseninin: alan özellikleri
@@ -26,9 +26,9 @@ Bu ilke tanımı, kuruluşunuzun coğrafi konum gereksinimlerini karşılayan iz
 
 **Alan** işleci, **allof** [mantıksal işleci](../concepts/definition-structure.md#logical-operators) içinde üç kez kullanılır.
 
-- İlk kullanım, `location` özelliği **notın** koşulu Ile **Lıfallodilimlocations** parametresine göre değerlendirir. **Notın** , bir _dizi_ beklediği ve parametresi bir _dizi_olduğu için çalışıyor. `location`Oluşturulan veya güncellenen kaynak onaylanan listede yoksa, bu öğe true olarak değerlendirilir.
-- İkinci kullanım özelliği de değerlendirir `location` , ancak kaynağın _Global_olup olmadığını görmek için **Not al** koşulunu kullanır. `location`Oluşturulan veya güncellenen kaynağın _genel_olmaması durumunda bu öğe true olarak değerlendirilir.
-- Son kullanım, özelliği değerlendirir `type` ve kaynak türünün _Microsoft. AzureActiveDirectory/b2cDirectories_olmadığını doğrulamak Için **notquals** koşulunu kullanır. Değilse, bu öğe true olarak değerlendirilir.
+- İlk kullanım, `location` özelliği **notın** koşulu Ile **Lıfallodilimlocations** parametresine göre değerlendirir. **Notın** , bir _dizi_ beklediği ve parametresi bir _dizi_ olduğu için çalışıyor. `location`Oluşturulan veya güncellenen kaynak onaylanan listede yoksa, bu öğe true olarak değerlendirilir.
+- İkinci kullanım özelliği de değerlendirir `location` , ancak kaynağın _Global_ olup olmadığını görmek için **Not al** koşulunu kullanır. `location`Oluşturulan veya güncellenen kaynağın _genel_ olmaması durumunda bu öğe true olarak değerlendirilir.
+- Son kullanım, özelliği değerlendirir `type` ve kaynak türünün _Microsoft. AzureActiveDirectory/b2cDirectories_ olmadığını doğrulamak Için **notquals** koşulunu kullanır. Değilse, bu öğe true olarak değerlendirilir.
 
 **Allof** Logical işlecinin tüm üç koşul deyimleri doğru olarak değerlendirilüyorsa, kaynak oluşturma veya güncelleştirme Azure ilkesi tarafından engellenir.
 

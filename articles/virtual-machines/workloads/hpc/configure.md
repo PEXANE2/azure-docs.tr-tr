@@ -5,61 +5,60 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 10/23/2020
+ms.date: 03/18/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 94334e54865b3a3b603cbd0b3943899a375d894e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 0c6f5dc55f7406aba7d6e3dc1a278b57fe4ec9ba
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101675661"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721271"
 ---
 # <a name="configure-and-optimize-vms"></a>VM’leri yapılandırma ve iyileştirme
 
-Bu makalede, HPC için InfiniBand özellikli [H serisi](../../sizes-hpc.md) ve [N serisi](../../sizes-gpu.md) VM 'leri yapılandırmak ve iyileştirmek üzere bilinen teknikler paylaşır.
+Bu makalede, HPC için InfiniBand özellikli [H serisi](../../sizes-hpc.md) ve [N serisi](../../sizes-gpu.md) VM 'ler yapılandırma ve iyileştirerek bazı yönergeler paylaşır.
 
 ## <a name="vm-images"></a>VM görüntüleri
-InfiniBand etkinleştirilmiş VM 'lerde, RDMA 'yı etkinleştirmek için uygun sürücüler gereklidir. Linux 'ta, marketteki CentOS-HPC sanal makine görüntüleri, uygun sürücülerle önceden yapılandırılmış olarak gelir. Ubuntu VM görüntüleri, [Buradaki yönergeler](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351)kullanılarak doğru sürücülerle yapılandırılabilir. Ayrıca, uygun sürücü ve yapılandırmayla [özel VM görüntüleri](../../linux/tutorial-custom-images.md) oluşturmanız ve bu yinelenen öğeyi yeniden kullanmanız önerilir.
+InfiniBand etkinleştirilmiş VM 'lerde, RDMA 'yı etkinleştirmek için uygun sürücüler gereklidir.
+- Market 'teki [CentOS-HPC VM görüntüleri](#centos-hpc-vm-images) , uygun IB sürücüleriyle önceden yapılandırılmış olarak gelir ve başlamak için en kolay yoldur.
+- [Ubuntu VM görüntüleri](#ubuntu-vm-images) , doğru IB sürücüleriyle yapılandırılabilir. Uygun sürücü ve yapılandırmayla [özel VM görüntüleri](../../linux/tutorial-custom-images.md) oluşturmanız ve bu yinelenen öğeyi yeniden kullanmanız önerilir.
 
-> [!NOTE]
-> GPU etkin [N serisi](../../sizes-gpu.md) VM 'lerde, uygun GPU sürücüleri [VM uzantıları](../../extensions/hpccompute-gpu-linux.md) veya [el ile](../../linux/n-series-driver-setup.md)eklenebilecek şekilde de gereklidir. Market 'teki bazı VM görüntüleri de NVIDIA GPU sürücüleriyle önceden yüklenmiş olarak gelir.
+GPU etkin [N serisi](../../sizes-gpu.md) VM 'lerde, uygun GPU sürücüleri [VM uzantıları](../../extensions/hpccompute-gpu-linux.md) veya [el ile](../../linux/n-series-driver-setup.md)eklenebilecek şekilde de gereklidir. Market 'teki bazı VM görüntüleri, NVIDIA 'daki bazı VM görüntüleri dahil olmak üzere NVIDIA GPU sürücüleriyle önceden yüklenmiş olarak da gelir.
 
 ### <a name="centos-hpc-vm-images"></a>CentOS-HPC VM görüntüleri
 
+#### <a name="sr-iov-enabled-vms"></a>SR-ıOV özellikli VM 'Ler
+SR-ıOV özellikli [RDMA özellikli VM 'ler](../../sizes-hpc.md#rdma-capable-instances)Için, market sürüm 7,6 ve üzeri [üzerinde CENTOS-HPC VM görüntüleri](https://azuremarketplace.microsoft.com/marketplace/apps/openlogic.centos-hpc?tab=Overview) uygundur. Bu VM görüntüleri, RDMA ve çeşitli yaygın olarak kullanılan MPı kitaplıkları ve bilimsel bilgi işlem paketleri ve başlamak için en kolay yol ile en iyi duruma getirilmiş ve önceden yüklenmiş olarak gelir.
+- CentOS-HPC sürüm 7,6 ve üzeri VM görüntülerine nelerin dahil olduğuna ilişkin ayrıntılar bir [Techcommunity makalesinde](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557)bulunabilir.
+- Bir taban CentOS Market görüntüsünden CentOS-HPC sürüm 7,6 ve üzeri VM görüntülerinin oluşturulmasında kullanılan betikler [azhpc-Images](https://github.com/Azure/azhpc-images/tree/master/centos)depolarından oluşur.
+  
+> [!NOTE] 
+> En son Azure HPC Market görüntülerinin, ConnectX3-Pro InfiniBand kartlarını desteklemeyen, Mellanox OFED 5,1 ve üzeri bir sürüm vardır. SR-ıOV etkinleştirilmiş N serisi VM boyutları, FDR InfiniBand (ör. NCv3 ve üzeri) ile aşağıdaki CentOS-HPC VM görüntüsünü veya eski sürümlerini Market 'ten kullanabilir:
+>- OpenLogic: CentOS-HPC: 7.6:7.6.2020062900
+>- OpenLogic: CentOS-HPC: 7_6gen2:7.6.2020062901
+>- OpenLogic: CentOS-HPC: 7.7:7.7.2020062600
+>- OpenLogic: CentOS-HPC: 7_7-Gen2:7.7.2020062601
+>- OpenLogic: CentOS-HPC: 8_1:8.1.2020062400
+>- OpenLogic: CentOS-HPC: 8_1-Gen2:8.1.2020062401
+
 #### <a name="non-sr-iov-enabled-vms"></a>SR-ıOV etkin olmayan VM 'Ler
-SR-ıOV olmayan [RDMA özellikli VM 'ler](../../sizes-hpc.md#rdma-capable-instances)için, CENTOS-HPC sürüm 6,5 veya sonraki bir sürümü, market 'te 7,5 ' e kadar uygundur. Örneğin, [H16 serisi VM 'ler](../../h-series.md)için 7,1 sürümleri 7,5 ' ye önerilir. Bu VM görüntüleri, RDMA ve Intel MPı sürüm 5,1 için ağ doğrudan sürücüleriyle önceden yüklenmiş olarak gelir.
+SR-ıOV olmayan [RDMA özellikli VM 'ler](../../sizes-hpc.md#rdma-capable-instances)için, CENTOS-HPC sürüm 6,5 veya sonraki bir sürümü, market 'te 7,4 ' e kadar uygundur. Örneğin, [H16 serisi VM 'ler](../../h-series.md)için 7,1 sürümleri 7,4 ' ye önerilir. Bu VM görüntüleri, RDMA ve Intel MPı sürüm 5,1 için ağ doğrudan sürücüleriyle önceden yüklenmiş olarak gelir.
 
 > [!NOTE]
 > SR-ıOV etkin olmayan VM 'Ler için bu CentOS tabanlı HPC görüntülerinde, **VUM** yapılandırma dosyasında çekirdek güncelleştirmeleri devre dışı bırakılır. Bunun nedeni, NetworkDirect Linux RDMA sürücülerinin bir RPM paketi olarak dağıtılmaktadır ve çekirdek güncelleştirilirse sürücü güncelleştirmeleri çalışmayabilir.
 
-#### <a name="sr-iov-enabled-vms"></a>SR-ıOV özellikli VM 'Ler
-  SR-ıOV özellikli [RDMA özellikli VM 'ler](../../sizes-hpc.md#rdma-capable-instances)için, [CENTOS-HPC sürüm 7,6 veya Market 'teki sonrakı bir](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557) sürüm VM görüntüleri uygundur. Bu VM görüntüleri, RDMA ve çeşitli yaygın olarak kullanılan MPı kitaplıkları ve bilimsel bilgi işlem paketleri ve başlamak için en kolay yol ile en iyi duruma getirilmiş ve önceden yüklenmiş olarak gelir.
-
-  Bir taban CentOS Market görüntüsünden CentOS-HPC sürüm 7,6 ve üzeri VM görüntülerinin oluşturulmasında kullanılan betiklerin örneği [azhpc-Images](https://github.com/Azure/azhpc-images/tree/master/centos)depolarından oluşur.
-  
-  > [!NOTE] 
-  > En son Azure HPC Market görüntülerinin, ConnectX3-Pro InfiniBand kartlarını desteklemeyen, Mellanox OFED 5,1 ve üzeri bir sürüm vardır. SR-ıOV etkinleştirilmiş N serisi VM boyutları, FDR InfiniBand (ör. NCv3) ile aşağıdaki CentOS-HPC VM görüntü sürümlerini veya daha eski bir sürümü kullanabilir:
-  >- OpenLogic: CentOS-HPC: 7.6:7.6.2020062900
-  >- OpenLogic: CentOS-HPC: 7_6gen2:7.6.2020062901
-  >- OpenLogic: CentOS-HPC: 7.7:7.7.2020062600
-  >- OpenLogic: CentOS-HPC: 7_7-Gen2:7.7.2020062601
-  >- OpenLogic: CentOS-HPC: 8_1:8.1.2020062400
-  >- OpenLogic: CentOS-HPC: 8_1-Gen2:8.1.2020062401
-
-
 ### <a name="rhelcentos-vm-images"></a>RHEL/CentOS VM görüntüleri
 Market 'teki RHEL veya CentOS tabanlı, HPC olmayan VM görüntüleri, SR-ıOV özellikli [RDMA özellikli VM](../../sizes-hpc.md#rdma-capable-instances)'lerde kullanılmak üzere yapılandırılabilir. [InfiniBand 'yi etkinleştirme](enable-infiniband.md) ve VM 'lerde [MPI ayarlama](setup-mpi.md) hakkında daha fazla bilgi edinin.
-
-  Bir taban CentOS Market görüntüsünden CentOS-HPC sürüm 7,6 ve üzeri VM görüntülerinin oluşturulmasında kullanılan betiklerin örneği [azhpc-Images](https://github.com/Azure/azhpc-images/tree/master/centos)depolarından oluşur.
+- [Azhpc-Images](https://github.com/Azure/azhpc-images/tree/master/centos) depolarından bir taban CentOS Market görüntüsünden CENTOS-HPC sürüm 7,6 ve üzeri VM görüntülerinin oluşturulmasında kullanılan betikler de kullanılabilir.
   
-  > [!NOTE]
-  > Mellanox OFED 5,1 ve üzeri, FDR InfiniBand (ör. NCv3) ile SR-ıOV etkinleştirilmiş N serisi VM boyutlarında ConnectX3-Pro InfiniBand kartlarını desteklemez. Lütfen ConnectX3-Pro kartlarla birlikte N serisi VM 'de LTS Mellanox OFED Version 4.9-0.1.7.0 veya daha eski bir sürümü kullanın. Lütfen daha [fazla ayrıntı görüntüleyin](https://www.mellanox.com/products/infiniband-drivers/linux/mlnx_ofed).
+> [!NOTE]
+> Mellanox OFED 5,1 ve üzeri, FDR InfiniBand (ör. NCv3) ile SR-ıOV etkinleştirilmiş N serisi VM boyutlarında ConnectX3-Pro InfiniBand kartlarını desteklemez. Lütfen ConnectX3-Pro kartlarla birlikte N serisi VM 'de LTS Mellanox OFED Version 4.9-0.1.7.0 veya daha eski bir sürümü kullanın. Lütfen daha [fazla ayrıntı görüntüleyin](https://www.mellanox.com/products/infiniband-drivers/linux/mlnx_ofed).
 
 ### <a name="ubuntu-vm-images"></a>Ubuntu VM görüntüleri
 Market 'teki Ubuntu Server 16,04 LTS, 18,04 LTS ve 20,04 LTS VM görüntüleri hem SR-ıOV hem de SR-ıOV olmayan [RDMA özellikli VM 'ler](../../sizes-hpc.md#rdma-capable-instances)için desteklenir. [InfiniBand 'yi etkinleştirme](enable-infiniband.md) ve VM 'lerde [MPI ayarlama](setup-mpi.md) hakkında daha fazla bilgi edinin.
-
-  Ubuntu 18,04 LTS tabanlı HPC VM görüntülerinin oluşturulmasında kullanılabilen betikler örneği [azhpc-Images](https://github.com/Azure/azhpc-images/tree/master/ubuntu/ubuntu-18.x/ubuntu-18.04-hpc)depodayılır.
+- Ubuntu VM görüntülerinde InfiniBand 'yi etkinleştirmeye yönelik yönergeler bir [Techcommunity makalesinde](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351)bulunur.
+- Bir temel Ubuntu marketi görüntüsünden Ubuntu 18,04 ve 20,04 LTS tabanlı HPC VM görüntülerinin oluşturulmasında kullanılan betikler [azhpc-Images](https://github.com/Azure/azhpc-images/tree/master/ubuntu)depolarından oluşur.
 
 ### <a name="suse-linux-enterprise-server-vm-images"></a>VM görüntülerini SUSE Linux Enterprise Server
 HPC için SLES 12 SP3, HPC için SLES 12 SP3 (Premium), HPC için SLES 12 SP1, HPC için SLES 12 SP1 (Premium), marketteki SLES 12 SP4 ve SLES 15 VM görüntüleri desteklenir. Bu VM görüntüleri, RDMA ve Intel MPı sürüm 5,1 için ağ doğrudan sürücüleriyle önceden yüklenmiş olarak gelir. VM 'lerde [MPI ayarlama](setup-mpi.md) hakkında daha fazla bilgi edinin.
@@ -126,6 +125,6 @@ sed -i -e 's/# OS.EnableRDMA=y/OS.EnableRDMA=y/g' /etc/waagent.conf
 
 - InfiniBand özellikli [H serisi](../../sizes-hpc.md) ve [N serisi](../../sizes-gpu.md) VM 'lerde [InfiniBand 'yi etkinleştirme](enable-infiniband.md) hakkında daha fazla bilgi edinin.
 - [Desteklenen çeşitli MPI kitaplıklarını](setup-mpi.md) ve En Iyi yapılandırmalarını VM 'lere yükleme hakkında daha fazla bilgi edinin.
-- Performans ve ölçeklenebilirlik için iş yüklerini en iyi şekilde yapılandırma hakkında bilgi edinmek için [HB Serisi genel bakış](hb-series-overview.md) ve [HC Serisi genel bakışı](hc-series-overview.md) gözden geçirin.
-- En son duyurular ve bazı HPC örnekleri hakkında bilgi edinin ve [Azure Işlem teknik topluluk bloglarında](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)bu sonuçları elde edin.
+- [HBv3-Series genel bakış](hbv3-series-overview.md) ve [HC Serisi genel bakış](hc-series-overview.md)konusunu gözden geçirin.
+- [Azure Işlem Tech Community bloglarında](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)en son Duyurular, HPC iş yükü örnekleri ve performans sonuçları hakkında bilgi edinin.
 - Çalıştırılan HPC iş yüklerinin daha yüksek düzey mimari görünümü için bkz. [Azure 'Da yüksek performanslı bilgi işlem (HPC)](/azure/architecture/topics/high-performance-computing/).

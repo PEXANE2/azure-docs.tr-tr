@@ -6,10 +6,10 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
 ms.openlocfilehash: b09c36f1dce3c394ff24e3e601d773279a6ac510
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102123318"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Soru-Cevap Oluşturma Bilgi Bankası 'nın en iyi yöntemleri
@@ -122,7 +122,7 @@ Ingilizce dilde eş anlamlı sözcükler için bazı destek olsa da, farklı for
 # <a name="qna-maker-managed-preview-release"></a>[Soru-Cevap Oluşturma Managed (Önizleme sürümü)](#tab/v2)
 Ingilizce dilde eş anlamlı sözcükler için bazı destek olsa da, farklı formlar kullanan anahtar sözcüklere eş anlamlılar eklemek için [alterler API 'si](/rest/api/cognitiveservices/qnamaker/alterations/replace) aracılığıyla büyük/küçük harf duyarsız sözcük değişikliklerini kullanın. Soru-Cevap Oluşturma yönetilen (Önizleme) eş anlamlılar **bilgileri her Bilgi Bankası için eklenmiştir**.
 
-|Özgün sözcük|Eş anlamlılar|
+|Özgün sözcük|Eş Anlamlı Sözcükler|
 |--|--|
 |satıcıdan|satın alma<br>net-bankacılık<br>net bankacılık|
 

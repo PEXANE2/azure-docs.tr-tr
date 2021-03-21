@@ -8,17 +8,17 @@ ms.topic: sample
 ms.date: 09/03/2020
 ms.author: cherylmc
 ms.openlocfilehash: fe2e1f970e64d80bfd8cb762cf74bb52d4fc9650
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89426188"
 ---
 # <a name="azure-powershell-samples-for-vpn-gateway"></a>VPN Gateway için Azure PowerShell örnekleri
 
 Aşağıdaki tablo Azure PowerShell betiklerinin bağlantılarını içerir:
 
-| Komut Dosyası | Açıklama |
+| Komut Dosyası | Description |
 |----|----|
 | [VPN ağ geçidi oluşturma](./scripts/vpn-gateway-sample-create-vpn-gateway-powershell.md) | Rota tabanlı VPN ağ geçidi oluşturur. |
 | [Bir VPN ağ geçidi ve P2S yapılandırması oluşturma - RADIUS](./scripts/vpn-gateway-sample-point-to-site-radius-authentication-powershell.md) | RADIUS kullanıcı adı/parola kimlik doğrulamasını kullanarak rota tabanlı bir VPN ağ geçidi oluşturur ve P2S yapılandırması ekler. |

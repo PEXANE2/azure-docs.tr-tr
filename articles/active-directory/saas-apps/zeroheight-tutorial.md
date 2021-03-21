@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
 ms.openlocfilehash: 678f35ffd6d37d8d2dd16665902ebf85d91b633b
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92521569"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zeroheight"></a>Öğretici: sıfırlama yüksekliği ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -53,7 +53,7 @@ Sıfırlama yüksekliğinin Azure AD 'ye tümleştirilmesini yapılandırmak iç
 
 ## <a name="configure-and-test-azure-ad-sso-for-zeroheight"></a>Sıfırlama yüksekliği için Azure AD SSO 'yu yapılandırın ve test edin
 
-**B. Simon**adlı bir test kullanıcısını kullanarak Azure AD SSO 'yu sıfırlama ve test etme. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında sıfırlama yüksekliği arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısını kullanarak Azure AD SSO 'yu sıfırlama ve test etme. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında sıfırlama yüksekliği arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu sıfır ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -91,7 +91,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Yukarıdakine ek olarak, sıfır yüksekliğe sahip uygulama, aşağıda gösterilen SAML yanıtına daha fazla özniteliğin geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
     
-    | Adı |  Kaynak özniteliği|
+    | Name |  Kaynak özniteliği|
     | ---------- | --------- |
     | e-posta | Kullanıcı. Mail |
 

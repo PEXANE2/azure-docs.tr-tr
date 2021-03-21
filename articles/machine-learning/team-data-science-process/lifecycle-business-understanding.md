@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: a7aaed519f8f97a9be77a263568aeed5257c16d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "76710340"
 ---
 # <a name="the-business-understanding-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Işlem yaşam döngüsünün iş anlama aşaması
@@ -44,7 +44,7 @@ Bu aşamada belirtilen iki ana görev vardır:
    * **Veri kaynaklarını tanımlama**: projenin amaçlarını tanımlayan soruları yanıtlamanıza yardımcı olacak ilgili verileri bulun.
 
 ### <a name="define-objectives"></a>Amaçları tanımla
-1. Bu adımın merkezi amacı, çözümlemenin tahmin edilmesi gereken temel iş değişkenlerini belirlemektir. *Model hedefleri*olarak bu değişkenlere başvurduk ve projenin başarısını tespit etmek için bunlarla ilişkili ölçümleri kullanırız. Bu iki hedefe örnek olarak satış tahminleri veya bir siparişin sahte olma olasılığı verilebilir.
+1. Bu adımın merkezi amacı, çözümlemenin tahmin edilmesi gereken temel iş değişkenlerini belirlemektir. *Model hedefleri* olarak bu değişkenlere başvurduk ve projenin başarısını tespit etmek için bunlarla ilişkili ölçümleri kullanırız. Bu iki hedefe örnek olarak satış tahminleri veya bir siparişin sahte olma olasılığı verilebilir.
 
 2. İlgili, özel ve belirsiz "keskin" sorular isteyerek ve inceleyerek proje hedeflerini tanımlayın. Veri bilimi, bu tür sorulara yanıt vermek için adları ve sayıları kullanan bir işlemdir. Genellikle, veri bilimi veya makine öğrenimini kullanarak beş tür soruyu cevaplayabilirsiniz:
  
@@ -58,13 +58,13 @@ Bu aşamada belirtilen iki ana görev vardır:
 
 3. Üyelerinin rollerini ve sorumluluklarını belirterek proje ekibini tanımlayın. Daha fazla bilgi bulduğunuzda, yineletiğiniz üst düzey bir kilometre taşı planı geliştirin. 
 
-4. Başarı ölçümlerini tanımlayın. Örneğin, bir müşteri dalgalanma tahmini elde etmek isteyebilirsiniz. Bu üç aylık projenin sonunda% x "doğruluk oranına sahip olmanız gerekir. Bu verilerle, karmaşıklığı azaltmak için müşteri yükseltmeleri sunabilirsiniz. Ölçümler **akıllı**olmalıdır: 
+4. Başarı ölçümlerini tanımlayın. Örneğin, bir müşteri dalgalanma tahmini elde etmek isteyebilirsiniz. Bu üç aylık projenin sonunda% x "doğruluk oranına sahip olmanız gerekir. Bu verilerle, karmaşıklığı azaltmak için müşteri yükseltmeleri sunabilirsiniz. Ölçümler **akıllı** olmalıdır: 
 
-   * **S**elirli 
-   * **A**eaperable
+   * **S** elirli 
+   * **A** eaperable
    * Tek **bir** 
-   * **R**elevant 
-   * **T**IME-bağlantılı 
+   * **R** elevant 
+   * **T** IME-bağlantılı 
 
 ### <a name="identify-data-sources"></a>Veri kaynaklarını belirleme
 Keskin sorularınızın yanıtlarının bilinen örneklerini içeren veri kaynaklarını belirler. Aşağıdaki verileri arayın:

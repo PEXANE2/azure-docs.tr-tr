@@ -7,10 +7,10 @@ ms.date: 02/18/2021
 ms.topic: article
 ms.service: api-management
 ms.openlocfilehash: 051bf4398555f318f613c66d58ec65be1d30e215
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101646818"
 ---
 # <a name="api-management-dapr-integration-policies"></a>API Management Davpr tümleştirme ilkeleri
@@ -94,7 +94,7 @@ Aşağıdaki örnek, "Echo" adlı mikro hizmette "geri" adlı yöntemin çağrı
 | arka uç kimliği       | "Dadpr" olarak ayarlanmalıdır           | Yes      | Yok     |
 | davpr-uygulama kimliği      | Hedef mikro hizmetin adı. Davpr içindeki [AppID](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) parametresini oluşturmak için kullanılır.| Yes | Yok |
 | davpr-yöntemi      | Hedef mikro hizmette çağrılacak yöntemin veya URL 'nin adı. , Davpr 'de [Yöntem-adı](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) parametresiyle eşlenir.| Yes | Yok |
-| davpr-ad alanı   | Hedef mikro hizmetin bulunduğu ad alanının adı. Davpr içindeki [AppID](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) parametresini oluşturmak için kullanılır.| Hayır | Yok |
+| davpr-ad alanı   | Hedef mikro hizmetin bulunduğu ad alanının adı. Davpr içindeki [AppID](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) parametresini oluşturmak için kullanılır.| No | Yok |
 
 ### <a name="usage"></a>Kullanım
 
@@ -160,13 +160,13 @@ Eğer Davpr çalışma zamanı, hedef konuyu bulamıyorsa, örneğin ve bir hata
 
 | Öznitelik        | Açıklama                     | Gerekli | Varsayılan |
 |------------------|---------------------------------|----------|---------|
-| PubSub-adı      | Hedef PubSub bileşeninin adı. , Davpr 'de [pubsubname](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md) parametresine eşlenir. Yoksa, __Konu__ özniteliği değeri, biçiminde olmalıdır `pubsub-name/topic-name` .    | Hayır       | Yok    |
+| PubSub-adı      | Hedef PubSub bileşeninin adı. , Davpr 'de [pubsubname](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md) parametresine eşlenir. Yoksa, __Konu__ özniteliği değeri, biçiminde olmalıdır `pubsub-name/topic-name` .    | No       | Yok    |
 | konu başlığı            | Konunun adı. , Davpr içindeki [Konu](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md) parametresiyle eşlenir.               | Yes      | Yok     |
-| yoksayma-hata     | Ayarlanırsa `true` , ilke, ["hata üzerinde](api-management-error-handling-policies.md) " bölümünü, davpr çalışma zamanından hata aldıktan sonra tetiklemez şekilde bildirir | Hayır | `false` |
-| Yanıt değişkeni-adı | Davpr çalışma zamanından yanıt depolamak için kullanılacak [değişkenlerin](api-management-policy-expressions.md#ContextVariables) koleksiyon girişinin adı | Hayır | Yok |
-| timeout | Davpr çalışma zamanının yanıt vermesi için beklenecek süre (saniye cinsinden). 1 ile 240 saniye arasında değişebilir. | Hayır | 5 |
-| şablon | İleti içeriğini dönüştürmek için kullanılacak şablon oluşturma altyapısı. "Sıvı" yalnızca desteklenen değerdir. | Hayır | Yok |
-| içerik türü | İleti içeriğinin türü. "Application/JSON" desteklenen tek değerdir. | Hayır | Yok |
+| yoksayma-hata     | Ayarlanırsa `true` , ilke, ["hata üzerinde](api-management-error-handling-policies.md) " bölümünü, davpr çalışma zamanından hata aldıktan sonra tetiklemez şekilde bildirir | No | `false` |
+| Yanıt değişkeni-adı | Davpr çalışma zamanından yanıt depolamak için kullanılacak [değişkenlerin](api-management-policy-expressions.md#ContextVariables) koleksiyon girişinin adı | No | Yok |
+| timeout | Davpr çalışma zamanının yanıt vermesi için beklenecek süre (saniye cinsinden). 1 ile 240 saniye arasında değişebilir. | No | 5 |
+| şablon | İleti içeriğini dönüştürmek için kullanılacak şablon oluşturma altyapısı. "Sıvı" yalnızca desteklenen değerdir. | No | Yok |
+| içerik türü | İleti içeriğinin türü. "Application/JSON" desteklenen tek değerdir. | No | Yok |
 
 ### <a name="usage"></a>Kullanım
 
@@ -238,8 +238,8 @@ Eğer bir nedenden dolayı Davpr çalışma zamanı başarısız olursa ve hata 
 | Öğe             | Açıklama  | Gerekli |
 |---------------------|--------------|----------|
 | Invoke-dadpr-bağlama | Kök öğe | Yes      |
-| meta veriler            | Belirli meta verileri anahtar/değer çiftleri biçiminde bağlama. Davpr içindeki [metadata](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#invoking-output-bindings) özelliği ile eşlenir. | Hayır |
-| veriler            | İletinin içeriği. Davpr içindeki [Data](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#invoking-output-bindings) özelliği ile eşlenir. | Hayır |
+| meta veriler            | Belirli meta verileri anahtar/değer çiftleri biçiminde bağlama. Davpr içindeki [metadata](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#invoking-output-bindings) özelliği ile eşlenir. | No |
+| veriler            | İletinin içeriği. Davpr içindeki [Data](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#invoking-output-bindings) özelliği ile eşlenir. | No |
 
 
 ### <a name="attributes"></a>Öznitelikler
@@ -247,12 +247,12 @@ Eğer bir nedenden dolayı Davpr çalışma zamanı başarısız olursa ve hata 
 | Öznitelik        | Açıklama                     | Gerekli | Varsayılan |
 |------------------|---------------------------------|----------|---------|
 | name            | Hedef bağlama adı. , Davpr içinde [tanımlanan](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#bindings-structure) bağlamaların adıyla eşleşmelidir.           | Yes      | Yok     |
-| operation       | Hedef işlem adı (bağlamaya özgü). Davpr içindeki [Operation](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#invoking-output-bindings) özelliği ile eşlenir. | Hayır | Yok |
-| yoksayma-hata     | Ayarlanırsa `true` , ilke, ["hata üzerinde](api-management-error-handling-policies.md) " bölümünü, davpr çalışma zamanından hata aldıktan sonra tetiklemez şekilde bildirir | Hayır | `false` |
-| Yanıt değişkeni-adı | Davpr çalışma zamanından yanıt depolamak için kullanılacak [değişkenlerin](api-management-policy-expressions.md#ContextVariables) koleksiyon girişinin adı | Hayır | Yok |
-| timeout | Davpr çalışma zamanının yanıt vermesi için beklenecek süre (saniye cinsinden). 1 ile 240 saniye arasında değişebilir. | Hayır | 5 |
-| şablon | İleti içeriğini dönüştürmek için kullanılacak şablon oluşturma altyapısı. "Sıvı" yalnızca desteklenen değerdir. | Hayır | Yok |
-| içerik türü | İleti içeriğinin türü. "Application/JSON" desteklenen tek değerdir. | Hayır | Yok |
+| operation       | Hedef işlem adı (bağlamaya özgü). Davpr içindeki [Operation](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#invoking-output-bindings) özelliği ile eşlenir. | No | Yok |
+| yoksayma-hata     | Ayarlanırsa `true` , ilke, ["hata üzerinde](api-management-error-handling-policies.md) " bölümünü, davpr çalışma zamanından hata aldıktan sonra tetiklemez şekilde bildirir | No | `false` |
+| Yanıt değişkeni-adı | Davpr çalışma zamanından yanıt depolamak için kullanılacak [değişkenlerin](api-management-policy-expressions.md#ContextVariables) koleksiyon girişinin adı | No | Yok |
+| timeout | Davpr çalışma zamanının yanıt vermesi için beklenecek süre (saniye cinsinden). 1 ile 240 saniye arasında değişebilir. | No | 5 |
+| şablon | İleti içeriğini dönüştürmek için kullanılacak şablon oluşturma altyapısı. "Sıvı" yalnızca desteklenen değerdir. | No | Yok |
+| içerik türü | İleti içeriğinin türü. "Application/JSON" desteklenen tek değerdir. | No | Yok |
 
 ### <a name="usage"></a>Kullanım
 

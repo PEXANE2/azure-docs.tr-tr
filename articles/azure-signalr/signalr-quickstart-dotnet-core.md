@@ -9,10 +9,10 @@ ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: zhshang
 ms.openlocfilehash: 3cfcf57f455a5c3b17b794acf2ded66ed2285eff
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94873514"
 ---
 # <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>Hızlı başlangıç: SignalR hizmetini kullanarak sohbet odası oluşturma
@@ -27,7 +27,7 @@ Bu öğreticinin kodu [AzureSignalR-samples GitHub deposundan](https://github.co
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note-dotnet.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [.NET Core SDK](https://www.microsoft.com/net/download/windows)'i yükler.
 * [AzureSignalR-Sample](https://github.com/aspnet/AzureSignalR-samples) GitHub deposunu indirin veya kopyalayın. 
@@ -107,7 +107,7 @@ Sorun mu yaşıyorsunuz? [Sorun giderme kılavuzunu](signalr-howto-troubleshoot-
     Bu gizli dizi Yapılandırma API 'siyle erişilir. İki nokta (:) yapılandırma adında, desteklenen tüm platformlarda Yapılandırma API 'SI ile birlikte kullanılır. Bkz. [ortama göre yapılandırma](/dotnet/core/extensions/configuration-providers#environment-variable-configuration-provider).
 
 
-4. *Startup.cs* 'i açın ve `ConfigureServices` ve yöntemlerini çağırarak Azure SignalR hizmetini kullanmak üzere yöntemi güncelleştirin `AddSignalR()` `AddAzureSignalR()` :
+4. *Başlangıç. cs* ' i açın ve `ConfigureServices` ve yöntemlerini çağırarak Azure SignalR hizmetini kullanmak üzere yöntemi `AddSignalR()` güncelleştirin `AddAzureSignalR()` :
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -119,7 +119,7 @@ Sorun mu yaşıyorsunuz? [Sorun giderme kılavuzunu](signalr-howto-troubleshoot-
 
     Parametresi öğesine geçirilmeyen `AddAzureSignalR()` Bu kod, SignalR hizmeti kaynak bağlantı dizesinin varsayılan yapılandırma anahtarını kullanır. Varsayılan yapılandırma anahtarı *Azure: SignalR: ConnectionString*.
 
-5. *Startup.cs*' de, `Configure` yöntemi aşağıdaki kodla değiştirerek yöntemini güncelleştirin.
+5. *Startup. cs* dosyasında, `Configure` aşağıdaki kodla değiştirerek yöntemi güncelleştirin.
 
     ```csharp
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -142,9 +142,9 @@ SignalR 'de, bir hub, istemciden çağrılabilen bir yöntemler kümesini kullan
 
 Her iki yöntem de `Clients` ASP.NET Core SignalR SDK 'nın sağladığı arabirimi kullanır. Bu arabirim, istemcilere içerik gönderebilmeniz için tüm bağlı istemcilere erişmenizi sağlar.
 
-1. Proje dizininizde *Hub* adlı yeni bir klasör ekleyin. Yeni klasöre *ChatHub.cs* adlı yeni bir merkez kod dosyası ekleyin.
+1. Proje dizininizde *Hub* adlı yeni bir klasör ekleyin. Yeni klasöre *ChatHub. cs* adlı yeni bir merkez kodu dosyası ekleyin.
 
-2. Hub sınıfınızı tanımlamak ve dosyayı kaydetmek için *ChatHub.cs* 'e aşağıdaki kodu ekleyin.
+2. Hub sınıfınızı tanımlamak ve dosyayı kaydetmek için *ChatHub. cs* dosyasına aşağıdaki kodu ekleyin.
 
     *SignalR. Mvc*'den farklı bir proje adı kullandıysanız, bu sınıf için ad alanını güncelleştirin.
 

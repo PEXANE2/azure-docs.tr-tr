@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
 ms.openlocfilehash: 094b1a029c8e10abce3ca282de0cc99be34d313a
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92318853"
 ---
 # <a name="tutorial-integrate-alertops-with-azure-active-directory"></a>Öğretici: Azure Active Directory ile Alerle tümleştirme
@@ -28,7 +28,7 @@ Bu öğreticide, Alerin Azure Active Directory (Azure AD) ile nasıl tümleştir
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -52,7 +52,7 @@ Alerler 'in Azure AD 'ye tümleştirilmesini yapılandırmak için galerideki y�
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Azure AD SSO 'yu, **Britta Simon**adlı bir test kullanıcısı kullanarak alerle yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Alerdaki ilgili Kullanıcı arasında bağlantı ilişkisi oluşturmanız gerekir.
+Azure AD SSO 'yu, **Britta Simon** adlı bir test kullanıcısı kullanarak alerle yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Alerdaki ilgili Kullanıcı arasında bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Alerde ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -174,19 +174,19 @@ Bu bölümde, Alerler 'e erişim vererek Azure çoklu oturum açma özelliğini 
 
     ![Ekran görüntüsü, bu adımda açıklandığı şekilde girilen değerleri içeren kullanıcıları Ekle bölmesini gösterir.](./media/alertops-tutorial/user3.png)
 
-    a. **Oturum açma Kullanıcı adı** metin kutusuna, **Brittasıon**gibi kullanıcının Kullanıcı adını girin.
+    a. **Oturum açma Kullanıcı adı** metin kutusuna, **Brittasıon** gibi kullanıcının Kullanıcı adını girin.
 
-    b. **Resmi e-posta** metin kutusuna, **Brittasıon \@ contoso.com**gibi kullanıcının e-posta adresini girin.
+    b. **Resmi e-posta** metin kutusuna, **Brittasıon \@ contoso.com** gibi kullanıcının e-posta adresini girin.
 
-    c. **Ad** metin kutusuna, ilk Kullanıcı adını **Britta**gibi girin.
+    c. **Ad** metin kutusuna, ilk Kullanıcı adını **Britta** gibi girin.
 
-    d. **Soyadı** metin kutusunda, **Simon**gibi kullanıcının adını girin.
+    d. **Soyadı** metin kutusunda, **Simon** gibi kullanıcının adını girin.
 
     e. Kuruluş uyarınca açılan listeden **tür** değerini seçin.
 
     f. Kullanıcı açılır listesinden kuruluşunuza göre Kullanıcı **rolünü** seçin.
 
-    örneğin: **Ekle**’yi seçin.
+    örneğin: **Add (Ekle)** seçeneğini belirleyin.
 
 ### <a name="test-sso"></a>Test SSO 'SU
 

@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 10/01/2020
 ms.openlocfilehash: 681498073a5f111e3babd50443623589ffeec02f
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92330929"
 ---
 # <a name="common-questions-and-troubleshooting-for-lead-configuration"></a>Müşteri adayı yapılandırması için sık sorulan sorular ve sorun giderme
@@ -22,7 +22,7 @@ Bu makalede, ticari Market tekliflerinizin müşteri adayı yönetimiyle ilgili 
 
 #### <a name="where-can-i-get-help-in-setting-up-my-lead-destination"></a>Lider hedefini ayarlama konusunda nereden yardım alabilirim?
 
-CRM sisteminizin ticari Market tekliflerinizi nasıl bağlayabileceği hakkında genel bilgi için bkz. [ticari Market teklifinizden müşteri adayları](partner-center-portal/commercial-marketplace-get-customer-leads.md) . Bir hata varsa, aşağıdaki sorun giderme kılavuzunu gözden geçirin. Daha fazla destek için, [Iş Ortağı Merkezi Yardım ve destek](https://aka.ms/marketplacepublishersupport)aracılığıyla bir destek bileti gönderebilirsiniz. Teklif **oluşturma**  >  **Your type of offer**  >  **müşteri adayı yönetimi yapılandırma**türünden teklif oluşturmayı seçin.
+CRM sisteminizin ticari Market tekliflerinizi nasıl bağlayabileceği hakkında genel bilgi için bkz. [ticari Market teklifinizden müşteri adayları](partner-center-portal/commercial-marketplace-get-customer-leads.md) . Bir hata varsa, aşağıdaki sorun giderme kılavuzunu gözden geçirin. Daha fazla destek için, [Iş Ortağı Merkezi Yardım ve destek](https://aka.ms/marketplacepublishersupport)aracılığıyla bir destek bileti gönderebilirsiniz. Teklif **oluşturma**  >    >  **müşteri adayı yönetimi yapılandırma** türünden teklif oluşturmayı seçin.
 
 #### <a name="am-i-required-to-configure-a-lead-destination-in-order-to-publish-an-offer-in-the-commercial-marketplace"></a>Ticari Market 'te teklif yayımlamak için bir müşteri adayı hedefi yapılandırmak istiyorum mu?
 
@@ -52,7 +52,7 @@ Yanıt, yayımlamakta olduğunuz teklifin türüne bağlıdır. Hizmet olarak ya
 
 #### <a name="i-have-a-live-offer-but-why-am-i-not-seeing-any-leads"></a>Canlı teklifim var, ancak neden hiçbir müşteri adaylarını görmüyorum?
 
-Müşteri adayı hedefine olan bağlantınızın geçerli olduğundan emin olun. Iş Ortağı Merkezi 'nde teklifiniz üzerinde **Yayımla** ' yı seçtikten sonra size bir test lideri göndereceğiz. Test lideri görürseniz, bağlantı geçerli olur. Ayrıca, önizleme adımı sırasında teklif önizlemeyi almaya çalışırken, müşteri adayı bağlantınızı test edebilirsiniz. Ticari Market 'teki listede **Şimdi al**, **benimle Iletişim kurun**veya **ücretsiz deneme sürümü** ' nü seçin.
+Müşteri adayı hedefine olan bağlantınızın geçerli olduğundan emin olun. Iş Ortağı Merkezi 'nde teklifiniz üzerinde **Yayımla** ' yı seçtikten sonra size bir test lideri göndereceğiz. Test lideri görürseniz, bağlantı geçerli olur. Ayrıca, önizleme adımı sırasında teklif önizlemeyi almaya çalışırken, müşteri adayı bağlantınızı test edebilirsiniz. Ticari Market 'teki listede **Şimdi al**, **benimle Iletişim kurun** veya **ücretsiz deneme sürümü** ' nü seçin.
 
 Ayrıca, doğru verileri baktığınızdan emin olun. Müşteri adayı hedefine gönderdiğimiz müşteri adayı verilerinin bir açıklaması için bkz. [müşteri adayı verilerini anlama](partner-center-portal/commercial-marketplace-get-customer-leads.md) .
 
@@ -84,7 +84,7 @@ Kişisel bilgi ilkeleri nedeniyle, güvenli olmayan e-posta ile müşteri adayı
 
 Müşteri adayı oluşturma verileri düşüktür. Neredeyse tüm yayımcılar için 1 GB 'tan az. Maliyet, alınan müşteri adaylarının sayısına bağlıdır. Örneğin, bir ayda 1.000 müşteri adayı alındıysa, maliyet 50 ilaaydır. Depolama fiyatlandırması hakkında daha fazla bilgi için bkz. [Azure depolama genel bakış fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/).
 
-Sorunuz yanıtlanmazsa, [Iş Ortağı Merkezi Yardım ve destek](https://aka.ms/marketplacepublishersupport)aracılığıyla Microsoft desteği başvurun. Teklif **oluşturma**  >  **Your type of offer**  >  **müşteri adayı yönetimi yapılandırma**türünden teklif oluşturmayı seçin.
+Sorunuz yanıtlanmazsa, [Iş Ortağı Merkezi Yardım ve destek](https://aka.ms/marketplacepublishersupport)aracılığıyla Microsoft desteği başvurun. Teklif **oluşturma**  >    >  **müşteri adayı yönetimi yapılandırma** türünden teklif oluşturmayı seçin.
 
 #### <a name="im-receiving-email-notifications-when-new-customer-leads-are-received-how-can-i-configure-someone-else-to-receive-these-emails"></a>Yeni müşteri adayları alındığında e-posta bildirimleri alıyorum. Başka birini bu e-postaları alacak şekilde nasıl yapılandırabilirim?
 

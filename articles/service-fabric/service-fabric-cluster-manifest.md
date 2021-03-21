@@ -4,10 +4,10 @@ description: Tek başına veya şirket içi Azure Service Fabric kümenizi nası
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.openlocfilehash: fd93263b38340ce080cca1aecb98f3a599ff1861
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91843167"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>Tek başına Windows kümesi için yapılandırma ayarları
@@ -137,7 +137,7 @@ NodeTypes bölümü, kümenizin sahip olduğu düğümlerin türünü açıklar.
 }]
 ```
 
-Ad, bu belirli düğüm türü için kolay addır. Bu düğüm türünde bir düğüm oluşturmak için, [daha önce belirtildiği](#nodes-on-the-cluster)gibi, kolay adını bu düğüm Için nodetyperef değişkenine atayın. Her düğüm türü için, kullanılan bağlantı uç noktalarını tanımlayın. Bu bağlantı uç noktaları için herhangi bir bağlantı noktası numarasını, bu kümedeki diğer uç noktalarla çakışmadığı sürece seçebilirsiniz. Bir çok düğümlü kümede, bir veya daha fazla birincil düğüm vardır (yani, ısprımary, *doğru*olarak ayarlanır [) ve güvenlere bağlıdır.](#reliability) Birincil ve birincil olmayan düğüm türleri hakkında daha fazla bilgi edinmek için bkz. nodeTypes ve Relilelevel hakkında bilgi için [küme kapasitesi planlama konuları Service Fabric](service-fabric-cluster-capacity.md) . 
+Ad, bu belirli düğüm türü için kolay addır. Bu düğüm türünde bir düğüm oluşturmak için, [daha önce belirtildiği](#nodes-on-the-cluster)gibi, kolay adını bu düğüm Için nodetyperef değişkenine atayın. Her düğüm türü için, kullanılan bağlantı uç noktalarını tanımlayın. Bu bağlantı uç noktaları için herhangi bir bağlantı noktası numarasını, bu kümedeki diğer uç noktalarla çakışmadığı sürece seçebilirsiniz. Bir çok düğümlü kümede, bir veya daha fazla birincil düğüm vardır (yani, ısprımary, *doğru* olarak ayarlanır [) ve güvenlere bağlıdır.](#reliability) Birincil ve birincil olmayan düğüm türleri hakkında daha fazla bilgi edinmek için bkz. nodeTypes ve Relilelevel hakkında bilgi için [küme kapasitesi planlama konuları Service Fabric](service-fabric-cluster-capacity.md) . 
 
 #### <a name="endpoints-used-to-configure-the-node-types"></a>Düğüm türlerini yapılandırmak için kullanılan uç noktalar
 * clientConnectionEndpointPort, istemci API 'Leri kullanıldığında, istemci tarafından kümeye bağlanmak için kullanılan bağlantı noktasıdır. 
@@ -197,7 +197,7 @@ Tüm kullanılabilir eklenti özellikleri [Service Fabric REST API başvurusunda
 Tek başına kümeler için hem Windows Server kapsayıcıları hem de Hyper-V kapsayıcıları için kapsayıcı desteğini etkinleştirmek üzere DnsService eklentisi özelliğinin etkinleştirilmesi gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Tek başına küme kuruluma göre yapılandırılmış dosya * üzerinde birClusterConfig.js* tamamladıktan sonra, kümenizi dağıtabilirsiniz. [Tek başına Service Fabric kümesi oluşturma](service-fabric-cluster-creation-for-windows-server.md)bölümündeki adımları izleyin. 
+Tek başına küme kuruluma göre yapılandırılmış dosya *üzerinde birClusterConfig.js* tamamladıktan sonra, kümenizi dağıtabilirsiniz. [Tek başına Service Fabric kümesi oluşturma](service-fabric-cluster-creation-for-windows-server.md)bölümündeki adımları izleyin. 
 
 Dağıtılan tek başına bir kümeniz varsa, [tek başına bir kümenin yapılandırmasını da yükseltebilirsiniz](service-fabric-cluster-config-upgrade-windows-server.md). 
 

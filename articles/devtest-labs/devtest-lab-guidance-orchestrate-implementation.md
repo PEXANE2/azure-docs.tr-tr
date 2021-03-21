@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 1958e818f014b7419a1a33e9453fbad460dfc159
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92330623"
 ---
 # <a name="orchestrate-the-implementation-of-azure-devtest-labs"></a>Azure DevTest Labs uygulanmasını düzenleme
@@ -29,7 +29,7 @@ Azure DevTest Labs bir çözüm dağıtıldığında odağın ilk alanı, sanal 
 1. Azure 'da DevTest Labs aboneliğine atanan **Ilk IP adresi aralıklarını** tanımlayın. Bu adım, gelecekteki genişlemeye yetecek kadar büyük bir blok sağlayabilmeniz için VM sayısında beklenen kullanımı tahmin etmek için gereklidir.
 2. DevTest Labs 'e **istenen erişim yöntemlerini** (örneğin, dış/iç erişim) belirler. Bu adımdaki bir anahtar noktası, sanal makinelerin genel IP adreslerine sahip olup olmadığını belirlemektir (yani, internet 'ten doğrudan erişilebilir).
 3. Azure bulut ortamı ve şirket içi geri kalanı ile **bağlantı yöntemlerini** belirleyin ve oluşturun. ExpressRoute ile zorunlu yönlendirme etkinse, sanal makinelerin kurumsal güvenlik duvarında geçiş yapmak için uygun ara sunucu yapılandırmalarına ihtiyacı vardır.
-4. VM 'Ler **etki alanına katılmış**ise, bulut tabanlı bir etki alanına (örneğin AAD Dizin Hizmetleri) veya şirket içi etki alanına katılıp katılmayacağını saptayın. Şirket içi için, Active Directory içindeki sanal makinelerin katıldığı kurumsal birimi (OU) saptayın. Ayrıca, kullanıcıların katılmayı (veya etki alanında makine kayıtları oluşturma yeteneğine sahip bir hizmet hesabı oluşturmak için) erişimi olduğunu doğrulayın.
+4. VM 'Ler **etki alanına katılmış** ise, bulut tabanlı bir etki alanına (örneğin AAD Dizin Hizmetleri) veya şirket içi etki alanına katılıp katılmayacağını saptayın. Şirket içi için, Active Directory içindeki sanal makinelerin katıldığı kurumsal birimi (OU) saptayın. Ayrıca, kullanıcıların katılmayı (veya etki alanında makine kayıtları oluşturma yeteneğine sahip bir hizmet hesabı oluşturmak için) erişimi olduğunu doğrulayın.
 
 ## <a name="milestone-2-deploy-the-pilot-lab"></a>Kilometre taşı 2: pilot Laboratuvarı dağıtma
 Ağ topolojisi yerleştirildikten sonra, ilk/pilot laboratuvar aşağıdaki adımları uygulayarak oluşturulabilir:

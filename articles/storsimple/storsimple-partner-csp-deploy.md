@@ -15,17 +15,17 @@ ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
 ms.openlocfilehash: dc0cf718ee51e23fb749bdf57d5344977de009d8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96021869"
 ---
 # <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>Bulut çözümü sağlayıcısı programı için StorSimple Sanal dizisi dağıtma
 
 ## <a name="overview"></a>Genel Bakış
 
-StorSimple Sanal dizisi, müşterileri için bulut çözümü sağlayıcısı (CSP) iş ortakları tarafından dağıtılabilir. CSP iş ortağı, StorSimple Aygıt Yöneticisi hizmeti oluşturabilir. Bu hizmet daha sonra StorSimple Sanal dizisini ve ilişkili paylaşımları, birimleri ve yedeklemeleri dağıtmak ve yönetmek için kullanılabilir.
+StorSimple Sanal dizisi, müşterileri için bulut çözümü sağlayıcısı (CSP) iş ortakları tarafından dağıtılabilir. CSP iş ortağı, StorSimple Device Manager hizmeti oluşturabilir. Bu hizmet daha sonra StorSimple Sanal dizisini ve ilişkili paylaşımları, birimleri ve yedeklemeleri dağıtmak ve yönetmek için kullanılabilir.
 
 Bu makalede, CSP iş ortağının mevcut bir müşteriye bir müşteri veya yeni abonelik ekleme ve ardından CSP 'de StorSimple Sanal dizisi dağıtmak üzere bir hizmet oluşturma işlemlerinin nasıl yapılacağı açıklanır.
 
@@ -68,9 +68,9 @@ Bir müşteri eklerseniz, otomatik olarak bir abonelik oluşturulur. Bir müşte
 
     ![Azure portalında oturum açın](./media/storsimple-partner-csp-deploy/image9.png)
 
-8. StorSimple Aygıt Yöneticisi oluşturmak için **+ Yeni** ' ye tıklayıp **StorSimple sanal cihaz serisini** arayın veya bu seriyi bulun. Daha fazla bilgi için, [StorSimple aygıt yöneticisi hizmeti dağıtma](storsimple-virtual-array-manage-service.md)konusuna gidin.
+8. StorSimple Device Manager oluşturmak için **+ Yeni** ' ye tıklayıp **StorSimple sanal cihaz serisini** arayın veya bu seriyi bulun. Daha fazla bilgi için, [StorSimple Device Manager hizmeti dağıtma](storsimple-virtual-array-manage-service.md)konusuna gidin.
 
-    ![StorSimple Aygıt Yöneticisi hizmeti oluşturma](./media/storsimple-partner-csp-deploy/image8.png)
+    ![StorSimple Device Manager hizmeti oluşturma](./media/storsimple-partner-csp-deploy/image8.png)
 
 
 ## <a name="add-a-subscription"></a>Abonelik ekleme
@@ -97,9 +97,9 @@ Bazı örneklerde, mevcut bir müşteriniz olabilir ve bir abonelik eklemeniz ge
 
     ![Azure portalında oturum açın](./media/storsimple-partner-csp-deploy/image9.png)
 
-8. StorSimple Aygıt Yöneticisi oluşturmak için **+ Yeni** ' ye tıklayıp **StorSimple sanal cihaz serisini** arayın veya bu seriyi bulun. Daha fazla bilgi için, [StorSimple aygıt yöneticisi hizmeti dağıtma](storsimple-virtual-array-manage-service.md)konusuna gidin.
+8. StorSimple Device Manager oluşturmak için **+ Yeni** ' ye tıklayıp **StorSimple sanal cihaz serisini** arayın veya bu seriyi bulun. Daha fazla bilgi için, [StorSimple Device Manager hizmeti dağıtma](storsimple-virtual-array-manage-service.md)konusuna gidin.
 
-    ![StorSimple Aygıt Yöneticisi hizmeti oluşturma](./media/storsimple-partner-csp-deploy/image8.png)
+    ![StorSimple Device Manager hizmeti oluşturma](./media/storsimple-partner-csp-deploy/image8.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

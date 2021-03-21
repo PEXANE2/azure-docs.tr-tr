@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: alzam
 ms.openlocfilehash: a54397fe7cfecef6813105645b7f2b218894875e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91367861"
 ---
 # <a name="prepare-azure-active-directory-tenant-for-user-vpn-openvpn-protocol-connections"></a>Azure Active Directory kiracıyı Kullanıcı VPN OpenVPN Protokolü bağlantıları için hazırla
@@ -38,7 +38,7 @@ Bir Azure AD kiracınız olduğunu doğrulayın. Bir Azure AD kiracınız yoksa,
 
 Ardından, yeni oluşturulan Azure AD kiracısında bir genel yönetici hesabı ve bir kullanıcı hesabı olmak üzere iki kullanıcı hesabı oluşturun. Kullanıcı hesabı, OpenVPN kimlik doğrulamasını test etmek için kullanılabilir ve Azure VPN uygulama kaydına onay vermek için genel yönetici hesabı kullanılır. Bir Azure AD Kullanıcı hesabı oluşturduktan sonra, yönetici izinlerini devretmek için kullanıcıya bir **Dizin rolü** atarsınız.
 
-Azure AD kiracınız için iki kullanıcı oluşturmak üzere [Bu makaledeki](../active-directory/fundamentals/add-users-azure-active-directory.md) adımları kullanın. Oluşturulan hesaplardan birindeki **Dizin rolünü** **genel yöneticiye**değiştirdiğinizden emin olun.
+Azure AD kiracınız için iki kullanıcı oluşturmak üzere [Bu makaledeki](../active-directory/fundamentals/add-users-azure-active-directory.md) adımları kullanın. Oluşturulan hesaplardan birindeki **Dizin rolünü** **genel yöneticiye** değiştirdiğinizden emin olun.
 
 ## <a name="3-grant-consent-to-the-azure-vpn-app-registration"></a><a name="enable-authentication"></a>3. Azure VPN uygulama kaydına izin verin
 
@@ -46,7 +46,7 @@ Azure AD kiracınız için iki kullanıcı oluşturmak üzere [Bu makaledeki](..
 
 2. Ardından, kuruluşunuz için yönetici onayı verin, Azure VPN uygulamasının oturum açmasını ve Kullanıcı profillerini okumasını sağlar. Tarayıcınızın adres çubuğuna dağıtım konumunuza ait URL 'YI kopyalayıp yapıştırın:
 
-    Ortak
+    Genel
 
     ```
     https://login.microsoftonline.com/common/oauth2/authorize?client_id=41b23e61-6c1e-4545-b367-cd054e0ed4b4&response_type=code&redirect_uri=https://portal.azure.com&nonce=1234&prompt=admin_consent

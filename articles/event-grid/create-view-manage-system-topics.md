@@ -4,10 +4,10 @@ description: Bu makalede, Azure portal kullanarak var olan sistem konusunun nas�
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 2dbb0893668d72cfebf2d64e6515ff6ab6fed9bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86115120"
 ---
 # <a name="create-view-and-manage-event-grid-system-topics-in-the-azure-portal"></a>Azure portal Event Grid sistem konuları oluşturun, görüntüleyin ve yönetin
@@ -20,17 +20,17 @@ Azure kaynağı (depolama hesabı, Event Hubs ad alanı vb.) için bir sistem ko
 - **Event Grid sistem konuları** sayfasını kullanma. Aşağıdaki adımlar **Event Grid sistem konuları** sayfasını kullanarak bir sistem konusu oluşturmaktır. 
 
 1. [Azure Portal](https://portal.azure.com)oturum açın.
-2. Üstteki arama kutusuna **Event Grid sistem konuları**yazın ve ardından **ENTER**tuşuna basın. 
+2. Üstteki arama kutusuna **Event Grid sistem konuları** yazın ve ardından **ENTER** tuşuna basın. 
 
     ![Sistem konularını ara](./media/create-view-manage-system-topics/search-system-topics.png)
 3. **Event Grid sistem konuları** sayfasında, araç çubuğunda **+ Ekle** ' yi seçin.
 
     ![Sistem konusu Ekle-araç çubuğu düğmesi](./media/create-view-manage-system-topics/add-system-topic-menu.png)
 4. **Event Grid sistemi oluşturma konusu** sayfasında, aşağıdaki adımları uygulayın:
-    1. **Konu türünü**seçin. Aşağıdaki örnekte, **depolama hesapları** seçeneği seçilidir. 
+    1. **Konu türünü** seçin. Aşağıdaki örnekte, **depolama hesapları** seçeneği seçilidir. 
     2. Depolama hesabı kaynağınız olan **Azure aboneliğini** seçin. 
     3. Depolama hesabına sahip **kaynak grubunu** seçin. 
-    4. **Depolama hesabını**seçin. 
+    4. **Depolama hesabını** seçin. 
     5. Oluşturulacak sistem konusu için bir **ad** girin. 
     
         > [!NOTE]
@@ -50,7 +50,7 @@ Azure kaynağı (depolama hesabı, Event Hubs ad alanı vb.) için bir sistem ko
 Tüm mevcut Event Grid sistem konularını görüntülemek için bu adımları izleyin. 
 
 1. [Azure Portal](https://portal.azure.com)oturum açın.
-2. Üstteki arama kutusuna **Event Grid sistem konuları**yazın ve ardından **ENTER**tuşuna basın. 
+2. Üstteki arama kutusuna **Event Grid sistem konuları** yazın ve ardından **ENTER** tuşuna basın. 
 
     ![Sistem konularını ara](./media/create-view-manage-system-topics/search-system-topics.png)
 3. **Event Grid sistem konuları** sayfasında, tüm sistem konularını görürsünüz. 
@@ -83,7 +83,7 @@ Tüm mevcut Event Grid sistem konularını görüntülemek için bu adımları i
 2. **Event Grid sistem konusu** sayfasında, araç çubuğundan **+ olay aboneliği** ' ni seçin. 
 
     ![Sistem konusu-olay aboneliği Ekle düğmesi](./media/create-view-manage-system-topics/add-event-subscription-button.png)
-3. **Konu türü**, **kaynak kaynağı**ve **konu adının** otomatik olarak doldurulduğunu doğrulayın. Bir ad girin, bir **uç nokta türü**seçin ve **uç noktasını**belirtin. Ardından olay aboneliğini oluşturmak için **Oluştur** ' u seçin. 
+3. **Konu türü**, **kaynak kaynağı** ve **konu adının** otomatik olarak doldurulduğunu doğrulayın. Bir ad girin, bir **uç nokta türü** seçin ve **uç noktasını** belirtin. Ardından olay aboneliğini oluşturmak için **Oluştur** ' u seçin. 
 
     ![Sistem konusu-olay aboneliği oluştur](./media/create-view-manage-system-topics/create-event-subscription.png)
 

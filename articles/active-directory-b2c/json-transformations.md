@@ -12,10 +12,10 @@ ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: c5c8e21f2ce3f6907547bf1b2fe4681eb937864b
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102119884"
 ---
 # <a name="json-claims-transformations"></a>JSON talep dönüştürmeleri
@@ -58,11 +58,11 @@ Aşağıdaki örnek, "e-posta" ve "OTP" talep değerine ve sabit dizelere göre 
 Aşağıdaki talep dönüştürmesi, SendGrid 'e gönderilen isteğin gövdesi olacak bir JSON dize talebi verir (bir üçüncü taraf e-posta sağlayıcısı). JSON nesnesinin yapısı, InputParameters 'ın nokta gösteriminde ve ınputclaim 'nin dönüştürme Tionclaimtypes öğesindeki kimlikler tarafından tanımlanır. Nokta gösterimindeki sayılar dizileri kapsıyor. Değerler Inputclaim değerlerinin ve InputParameters ' "Value" özelliklerinden gelir.
 
 - Giriş talepleri:
-  - **e-posta**, dönüşüm talep türü  **kişiselleştirmeler. 0.. 0. e-posta**: " someone@example.com "
+  - **e-posta**, dönüşüm talep türü  **personalizations.0.to.0.email**: " someone@example.com "
   - **OTP**, dönüşüm talep türü **personalizations.0.dynamic_template_data. OTP** "346349"
 - Giriş parametresi:
   - **template_id**: "d-4c56ffb40fa648b1aa6822283df94f60"
-  - **Kimden. e-posta**: " service@contoso.com "
+  - **from.email**: " service@contoso.com "
   - **kişiselleştirmeler. 0. Subject** "contoso hesabı e-posta doğrulama kodu"
 - Çıkış talebi:
   - **Requestbody**: JSON değeri
@@ -115,7 +115,7 @@ Aşağıdaki örnek, talep değerlerinin yanı sıra sabit dizeler temelinde bir
 Aşağıdaki talep dönüştürmesi, bir REST API gönderilen isteğin gövdesi olacak bir JSON dize talebi verir. JSON nesnesinin yapısı, InputParameters 'ın nokta gösteriminde ve ınputclaim 'nin dönüştürme Tionclaimtypes öğesindeki kimlikler tarafından tanımlanır. Değerler Inputclaim değerlerinin ve InputParameters ' "Value" özelliklerinden gelir.
 
 - Giriş talepleri:
-  - **e-posta**, dönüşüm talep türü  **müştervarlığı. e-posta**: " john.s@contoso.com "
+  - **e-posta**, dönüşüm talep türü  **customerEntity.email**: " john.s@contoso.com "
   - **ObjectID**, dönüşüm talep türü **Customerentity. userobjectid** "01234567-89ab-cdef-0123-456789ABCDEF"
   - 1. dönüştürme talep türü **Customerentity. FirstName** "John"
   - **Soyadı**, dönüşüm talep türü **Customerentity. LastName** "Smith"

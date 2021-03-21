@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 07/13/2020
 ms.author: allensu
 ms.openlocfilehash: 01cca2f2233ed5cdfb3003bb44c40f481bcf9bda
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94699415"
 ---
 # <a name="azure-load-balancer-floating-ip-configuration"></a>Kayan IP yapılandırmasını Azure Load Balancer
@@ -32,9 +32,9 @@ Bazı uygulama senaryoları, arka uç havuzundaki tek bir VM 'de birden çok uyg
 - Bir IP adresi eşleme düzeni
 
 Bir platform düzeyinde Azure Load Balancer, kayan IP 'nin etkin olup olmamasına bakılmaksızın her zaman DSR akış topolojisinde çalışır. Bu, akışın giden bölümünün her zaman doğrudan başlangıca akışa doğru şekilde yeniden yazılması anlamına gelir.
-Kayan IP olmadan Azure, kullanım kolaylığı için geleneksel bir yük dengeleme IP adresi eşleme düzeni sunar (VM örnekleri ' IP). Kayan IP 'nin etkinleştirilmesi, ek esneklik sağlamak için IP adresi eşlemesini yük dengeleyicinin ön uç IP 'si olarak değiştirir. [Burada](load-balancer-multivip-overview.md) daha fazla bilgi edinin.
+Kayan IP olmadan Azure, kullanım kolaylığı için geleneksel bir yük dengeleme IP adresi eşleme düzeni sunar (VM örnekleri ' IP). Kayan IP 'nin etkinleştirilmesi, ek esneklik sağlamak için IP adresi eşlemesini yük dengeleyicinin ön uç IP 'si olarak değiştirir. [Daha fazla bilgi edinin](load-balancer-multivip-overview.md).
 
-## <a name="limitations"></a><a name = "limitations"></a>Algılan
+## <a name="limitations"></a><a name = "limitations"></a>Sınırlamalar
 
 - Kayan IP, Yük Dengeleme senaryoları için ikincil IP yapılandırmalarında Şu anda desteklenmiyor
 

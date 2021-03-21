@@ -4,10 +4,10 @@ description: Bu makalede, VM bölmesinden Azure sanal makinelerinde SQL Server v
 ms.topic: conceptual
 ms.date: 08/13/2020
 ms.openlocfilehash: 4f4ea202ee96e93a621c8dd0025c9ebc8b8d445d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88891666"
 ---
 # <a name="back-up-a-sql-server-from-the-vm-pane"></a>VM bölmesinden bir SQL Server yedekleme
@@ -40,13 +40,13 @@ SQL Server VM yedeklemeyi VM 'deki **yedekleme** bölmesinden etkinleştirebilir
 2. Kurtarma Hizmetleri Kasası adını girin. Kasa, tüm yedeklemelerinizi depolamak ve yönetmek için bir mantıksal varlıktır. Yeni bir kasa oluşturuyorsanız:
 
     - Bu işlem, koruduğunuz SQL Server VM aynı abonelikte ve bölgede oluşturulur.
-    - Tüm yedeklemeler için coğrafi olarak yedekli depolama (GRS) ayarıyla oluşturulacaktır. Artıklık türünü değiştirmek isterseniz, VM 'yi korumadan önce bunu yapmanız gerekir. Daha fazla bilgi için [Bu makaleye](backup-create-rs-vault.md#set-storage-redundancy)bakın.
+    - Tüm yedeklemeler için coğrafi olarak yedekli depolama (GRS) ayarıyla oluşturulacaktır. Artıklık türünü değiştirmek isterseniz, VM 'yi korumadan önce bunu yapmanız gerekir. Daha fazla bilgi için [bu makaleye](backup-create-rs-vault.md#set-storage-redundancy) bakın.
 
-3. Bir **yedekleme ilkesi**seçin. Varsayılan ilkeden veya kasada oluşturduğunuz diğer mevcut ilkelerden birini seçebilirsiniz. Yeni bir ilke oluşturmak istiyorsanız, adım adım kılavuz için [Bu makaleye](backup-sql-server-database-azure-vms.md#create-a-backup-policy) başvurabilirsiniz.
+3. Bir **yedekleme ilkesi** seçin. Varsayılan ilkeden veya kasada oluşturduğunuz diğer mevcut ilkelerden birini seçebilirsiniz. Yeni bir ilke oluşturmak istiyorsanız, adım adım kılavuz için [Bu makaleye](backup-sql-server-database-azure-vms.md#create-a-backup-policy) başvurabilirsiniz.
 
     ![Yedekleme ilkesi seçme](./media/backup-sql-server-vm-from-vm-pane/backup-policy.png)
 
-4. **Yedeklemeyi Etkinleştirme**’yi seçin. İşlemin tamamlanması birkaç dakika sürebilir.
+4. **Yedeklemeyi Etkinleştir**’i seçin. İşlemin tamamlanması birkaç dakika sürebilir.
 
     ![Yedeklemeyi Etkinleştir ' i seçin](./media/backup-sql-server-vm-from-vm-pane/enable-backup.png)
 

@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.openlocfilehash: 0a36cb468ebcb77c0614bffd0afc392df3655c20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89658200"
 ---
 # <a name="business-continuity-and-disaster-recovery-for-azure-logic-apps"></a>Azure Logic Apps için iş sürekliliği ve olağanüstü durum kurtarma
@@ -100,7 +100,7 @@ Veri ağ geçidi kaynağı, mantıksal uygulama kaynağınız gibi bir konum vey
 
 Birincil ve ikincil konumlarınızı, bu konumlardaki mantıksal uygulama örneklerinizin bu rolleri oynayabilmesi için ayarlayabilirsiniz:
 
-| Birincil-ikincil rol | Açıklama |
+| Birincil-ikincil rol | Description |
 |------------------------|-------------|
 | *Etkin-etkin* | Her iki konumdaki birincil ve ikincil mantıksal uygulama örnekleri şu desenlerden birini izleyerek istekleri etkin bir şekilde işler: <p><p>- *Yük Dengeleme*: her iki örneğin, her bir örneğe bir uç nokta dinlemesi ve gerektiğinde trafiği yük dengelemesi sağlayabilirsiniz. <p>- *Rekabet tüketicileri*: örneklerin bir kuyruktan iletiler için rekabet etmesi için her iki örneğin birden rekabet eden tüketici işlevi görmesini sağlayabilirsiniz. Bir örnek başarısız olursa, diğer örnek iş yükünü devralır. |
 | *Aktif-pasif* | Birincil mantıksal uygulama örneği, ikincil örnek pasif iken (devre dışı veya etkin değil) tüm iş yükünü etkin bir şekilde işler. İkincil bir sinyal bekler veya hata nedeniyle, birincil kullanım dışı veya çalışmayan bir sinyal bekler ve iş yükünü etkin örnek olarak alır. |
@@ -317,7 +317,7 @@ Bu görev için, şu görevleri gerçekleştiren temel bir sistem durumu denetim
 Birincil örneğin durumunu izlemek ve sistem durumu denetimi mantıksal uygulamasını çağırmak için *alternatif bir konumda*"izleme" mantıksal uygulaması oluşturun. Örneğin, sistem durumu denetimi mantığını çağırmak başarısız olursa, izleme işlemi, hatayı araştırmak ve birincil örneğin yanıt verememesi için işlem ekibinize bir uyarı gönderebilmesi için izleme mantıksal uygulamasını ayarlayabilirsiniz.
 
 > [!IMPORTANT]
-> İzleme mantıksal uygulamanızın *birincil konumdan farklı bir konumda*olduğundan emin olun. Birincil konumdaki Logic Apps hizmeti sorunlarla karşılaşırsa, izleme mantıksal uygulamanız çalışmayabilir.
+> İzleme mantıksal uygulamanızın *birincil konumdan farklı bir konumda* olduğundan emin olun. Birincil konumdaki Logic Apps hizmeti sorunlarla karşılaşırsa, izleme mantıksal uygulamanız çalışmayabilir.
 
 Bu görev için, ikincil konumda, şu görevleri gerçekleştiren bir izleme mantıksal uygulaması oluşturun:
 

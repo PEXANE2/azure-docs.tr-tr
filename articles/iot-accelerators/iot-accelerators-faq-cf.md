@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
 ms.openlocfilehash: c6a695030d399cb1609c63ef5652419a9bef1bbf
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102198991"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Bağlı fabrika çözümü Hızlandırıcısı için sık sorulan sorular
@@ -82,7 +82,7 @@ Simülasyon VM 'de oturum açmak yalnızca çözümünüzü depodaki PowerShell 
         export IOTHUB_CONNECTIONSTRING="HostName={yourdeployment}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={your key}"
         ```
 
-    * Şu komutu çalıştırın: `./startsimulation`.
+    * `./startsimulation` öğesini çalıştırın.
 
 ### <a name="how-do-i-update-the-simulation-in-the-vm"></a>VM 'deki benzetimi güncelleştirmek Nasıl yaparım? mı?
 
