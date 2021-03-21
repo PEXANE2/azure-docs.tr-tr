@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: ac67e3cf8f057738b76b0de7cbcb821ef290e0cb
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98757585"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>VMware VM 'Leri ve fiziksel sunucuları ikincil bir siteye olağanüstü durum kurtarması için destek matrisi
@@ -71,10 +71,10 @@ Yalnızca aşağıdaki depolama alanına sahip Linux makineleri çoğaltılabili
 Konak-NIC Grubu oluşturma | Yes 
 Konak-VLAN | Yes 
 Ana bilgisayar-IPv4 | Yes 
-Ana bilgisayar-IPv6 | Hayır 
-Konuk VM-NIC ekibi oluşturma | Hayır
+Ana bilgisayar-IPv6 | No 
+Konuk VM-NIC ekibi oluşturma | No
 Konuk VM-IPv4 | Yes
-Konuk VM-IPv6 | Hayır
+Konuk VM-IPv6 | No
 Konuk VM-Windows/Linux-statik IP adresi | Yes
 Konuk VM-çoklu NIC | Yes
 
@@ -98,14 +98,14 @@ VMDK | Yes
 VHD/VHDX | Yok 
 Gen 2 VM | Yok 
 Paylaşılan küme diski | Yes 
-Şifrelenmiş disk | Hayır 
+Şifrelenmiş disk | No 
 UEFı| Yes 
-NFS | Hayır 
-SMB 3.0 | Hayır 
+NFS | No 
+SMB 3.0 | No 
 RDM | Yes 
 Disk > 1 TB | Yes 
 Dizili disk > 1 TB olan birim<br/><br/> LVM | Yes 
-Depolama Alanları | Hayır 
+Depolama Alanları | No 
 Dinamik disk Ekle/Kaldır | Yes 
 Diski hariç tutma | Yes 
 Çoklu yol (MPIO) | Yok 
@@ -114,8 +114,8 @@ Diski hariç tutma | Yes
 
 **Eylem** | **Desteklenir** 
 --- | --- 
-Kasalarını kaynak grupları arasında taşıma (veya abonelikler arasında) | Hayır 
-Depolama, ağ ve Azure VM 'lerini kaynak grupları arasında taşıma (abonelikler içinde veya abonelikler arasında) | Hayır 
+Kasalarını kaynak grupları arasında taşıma (veya abonelikler arasında) | No 
+Depolama, ağ ve Azure VM 'lerini kaynak grupları arasında taşıma (abonelikler içinde veya abonelikler arasında) | No 
 
 ## <a name="mobility-service-and-updates"></a>Mobility hizmeti ve güncelleştirmeleri
 

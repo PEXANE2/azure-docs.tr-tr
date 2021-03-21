@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 02/25/2021
 ms.author: apimpm
 ms.openlocfilehash: 97f4eb34b88b3454d65b65d236833e1256c98671
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103564261"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>Azure API Management'ı Azure Application Insights ile Tümleştirme
@@ -60,7 +60,7 @@ Application Insights kullanabilmeniz için önce hizmetin bir örneğini oluştu
 > [!NOTE]
 > Sahnenin arkasında, API düzeyinde ' ApplicationInsights ' adlı bir [Tanılama](/rest/api/apimanagement/2019-12-01/diagnostic/createorupdate) varlığı oluşturulur.
 
-| Ayar adı                        | Değer türü                        | Açıklama                                                                                                                                                                                                                                                                                                                                      |
+| Ayar adı                        | Değer türü                        | Description                                                                                                                                                                                                                                                                                                                                      |
 |-------------------------------------|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Etkinleştir                              | boolean                           | Bu API 'nin günlüğe kaydetmenin etkinleştirilip etkinleştirilmeyeceğini belirtir.                                                                                                                                                                                                                                                                                                |
 | Hedef                         | Azure Application Insights günlükçüsü | Kullanılacak Azure Application Insights günlükçüsü belirtir                                                                                                                                                                                                                                                                                           |

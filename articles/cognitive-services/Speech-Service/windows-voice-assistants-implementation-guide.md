@@ -12,10 +12,10 @@ ms.date: 04/15/2020
 ms.author: travisw
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 92ab043d4fccbe0764e361eac6f71ef69a5963cb
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98939860"
 ---
 # <a name="implementing-voice-assistants-on-windows"></a>Windows 'da sesli yardımcılar uygulama
@@ -78,7 +78,7 @@ Ses etkinleştirme 'yi kullanmak için bir kullanıcının, sistemi için ses et
 
 ### <a name="listen-to-the-two-activation-signals-the-onbackgroundactivated-and-onsignaldetected"></a>İki etkinleştirme sinyalini dinleyin: OnBackgroundActivated ve Onsignalalgılandı
 
-Windows, iki şekilde bir anahtar sözcük algıladığında uygulamanızı işaret eder. Uygulama etkin değilse (yani, atılmış olmayan bir örneğine başvurunuz yoksa `ConversationalAgentSession` ), uygulamanızı başlatır ve uygulamanızın App.xaml.cs dosyasında OnBackgroundActivated yöntemini çağırır. Olay bağımsız değişkenleri ' `BackgroundActivatedEventArgs.TaskInstance.Task.Name` alanı "AgentBackgroundTrigger" dizesiyle eşleşiyorsa, uygulama başlatması ses etkinleştirme tarafından tetiklendi. Uygulama, bu yöntemi geçersiz kılmalıdır ve şimdi etkin olan Windows 'a işaret etmek için bir konuşma bir örnek alın. Uygulama etkin olduğunda, Windows, olayı kullanarak bir ses etkinleştirme oluşumuna işaret eder `ConversationalAgentSession.OnSignalDetected` . ' İ alır almaz bu olaya bir olay işleyicisi ekleyin `ConversationalAgentSession` .
+Windows, iki şekilde bir anahtar sözcük algıladığında uygulamanızı işaret eder. Uygulama etkin değilse (yani, atılmış olmayan bir örneğine başvurunuz yoksa `ConversationalAgentSession` ), uygulamanızı başlatır ve uygulamanızın App. xaml. cs dosyasında OnBackgroundActivated yöntemini çağırır. Olay bağımsız değişkenleri ' `BackgroundActivatedEventArgs.TaskInstance.Task.Name` alanı "AgentBackgroundTrigger" dizesiyle eşleşiyorsa, uygulama başlatması ses etkinleştirme tarafından tetiklendi. Uygulama, bu yöntemi geçersiz kılmalıdır ve şimdi etkin olan Windows 'a işaret etmek için bir konuşma bir örnek alın. Uygulama etkin olduğunda, Windows, olayı kullanarak bir ses etkinleştirme oluşumuna işaret eder `ConversationalAgentSession.OnSignalDetected` . ' İ alır almaz bu olaya bir olay işleyicisi ekleyin `ConversationalAgentSession` .
 
 ## <a name="keyword-verification"></a>Anahtar sözcük doğrulama
 
@@ -122,9 +122,9 @@ Bir uygulama kilidin üzerine bir görünüm gösterdiğinde, "bilgi noktası mo
 
 ### <a name="transitioning-above-lock"></a>Kilidin üzerine geçme
 
-Kilidi yukarıdaki bir etkinleştirme, aşağıdaki kilit ile benzerdir. Uygulamanın etkin örneği yoksa, arka planda yeni bir örnek başlatılır ve `OnBackgroundActivated` app.xaml.cs içinde çağrılır. Uygulamanın bir örneği varsa, bu örnek olay aracılığıyla bir bildirim alır `ConversationalAgentSession.SignalDetected` .
+Kilidi yukarıdaki bir etkinleştirme, aşağıdaki kilit ile benzerdir. Uygulamanın etkin bir örneği yoksa, arka planda ve App 'te yeni bir örnek başlatılır. `OnBackgroundActivated` xaml. cs çağrılacaktır. Uygulamanın bir örneği varsa, bu örnek olay aracılığıyla bir bildirim alır `ConversationalAgentSession.SignalDetected` .
 
-Uygulama daha önce kilidin üzerinde görünmüyorsa, çağrısı gerekir `ConversationalAgentSession.RequestForegroundActivationAsync` . Bu, `OnLaunched` app.xaml.cs içindeki yöntemi tetikler. Bu, kilidin üzerinde gösterilecek görünüme gitmelidir.
+Uygulama daha önce kilidin üzerinde görünmüyorsa, çağrısı gerekir `ConversationalAgentSession.RequestForegroundActivationAsync` . Bu işlem, `OnLaunched` kilit üzerinde gösterilecek görünüme gitmeniz gereken App. xaml. cs içindeki yöntemi tetikler.
 
 ### <a name="detecting-lock-screen-transitions"></a>Kilit ekranı geçişleri algılanıyor
 

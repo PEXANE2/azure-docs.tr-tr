@@ -5,10 +5,10 @@ keywords: portal
 ms.date: 03/12/2021
 ms.topic: overview
 ms.openlocfilehash: 8f61934e6af150c18d1331c2b28e2686641967d1
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103564003"
 ---
 # <a name="azure-portal-overview"></a>Azure portalına genel bakış
@@ -59,7 +59,7 @@ Aşağıdaki şekilde, her biri aşağıdaki tabloda açıklanan Azure portal te
 
 ![Genişletilmiş Portal menüsünü gösteren ekran görüntüsü](./media/azure-portal-overview/azure-portal-overview-portal-menu-callouts.png)
 
-|Anahtar|Açıklama
+|Anahtar|Description
 |:---:|---|
 |1|Sayfa üst bilgisi. Her portal sayfasının en üstünde görünür ve genel öğeleri barındırır.|
 |2| Genel arama. Belirli bir kaynağı, hizmeti veya belgeleri hızlıca bulmak için arama çubuğunu kullanın.|

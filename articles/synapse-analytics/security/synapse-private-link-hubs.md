@@ -1,19 +1,19 @@
 ---
 title: Özel bağlantıları kullanarak bir Synapse Studio 'ya bağlanma
 description: Bu makalede, özel bağlantılar kullanılarak Azure SYNAPSE Studio 'ya nasıl bağlanabileceğiniz anlatılmaktadır
-author: NanditaV
+author: nanditavalsan
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: security
 ms.date: 12/01/2020
 ms.author: NanditaV
 ms.reviewer: jrasnick
-ms.openlocfilehash: d49868199d8f9f2da97f08dd06f29afd8f553bd9
-ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
+ms.openlocfilehash: d39beca60264023c8eb7c1bc78cd1ac15c3b45dc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97586984"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586633"
 ---
 # <a name="connect-to-azure-synapse-studio-using-azure-private-link-hubs"></a>Azure özel bağlantı hub 'Larını kullanarak Azure SYNAPSE Studio 'ya bağlanma 
 
@@ -37,7 +37,9 @@ SYNAPSE Studio ile uçtan uca bağlantıyı güvenli hale getirmek için Azure S
 
 :::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-private-endpoint.png" alt-text="Özel uç nokta bağlantıları sayfasını gösteren ekran görüntüsü.":::
 
-"Kaynak" sekmesinde "Microsoft. SYNAPSE/Privatelinkhub" kaynak türünü seçtiğinizden emin olun. ' :::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-resource-type.png" alt-text="Resource Type ' vurgulanmış ' özel uç nokta oluştur ' sayfasını gösteren ekran görüntüsü"::: .
+"Kaynak" sekmesinde "Microsoft. SYNAPSE/Privatelinkhub" kaynak türünü seçtiğinizden emin olun.
+
+:::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-resource-type.png" alt-text="' Kaynak türü ' vurgulanmış ' özel uç nokta oluştur ' sayfasını gösteren ekran görüntüsü.":::
 
 "Yapılandırma" sekmesinde, sanal ağınızla ve özel DNS bölgesiyle tümleştirilirken Özel DNS bölgeler için "privatelink.azuresynapse.net" öğesini seçin.
 

@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 1fc229b04ac317578e9e90686496cd081b279afd
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: fda69d582f26b0c9189898bb5c8b0004a1e47360
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103489764"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104722778"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>IoT Edge çözümünüzü üretime dağıtmaya hazırlanma
 
@@ -178,7 +178,13 @@ Etiket, Docker Kapsayıcıları sürümlerini ayırt etmek için kullanabileceğ
 
 Etiketler, IoT Edge cihazlarınızda güncelleştirmeleri zorunlu etmenize de yardımcı olur. Bir modülün güncelleştirilmiş bir sürümünü kapsayıcı Kayıt defterinize gönderdiğinizde, etiketi artırın. Ardından, bir etiketi arttırılarak cihazlarınıza yeni bir dağıtım gönderin. Kapsayıcı altyapısı, arttırılan etiketi yeni bir sürüm olarak tanır ve en son modül sürümünü cihazınıza doğru olarak çeker.
 
-Etiket kuralına bir örnek için bkz. IoT Edge sıralı etiketleri ve sürümleri izlemek için belirli etiketleri nasıl kullandığını öğrenmek için [IoT Edge çalışma zamanını güncelleştirin](how-to-update-iot-edge.md#understand-iot-edge-tags) .
+#### <a name="tags-for-the-iot-edge-runtime"></a>IoT Edge çalışma zamanına ait Etiketler
+
+IoT Edge Aracısı ve IoT Edge hub görüntüleri ilişkili oldukları IoT Edge sürümü ile etiketlenir. Çalışma zamanı görüntülerinde Etiketler kullanmanın iki farklı yolu vardır:
+
+* **Kayan Etiketler** -bu basamakla eşleşen en son görüntüyü almak için sürüm numarasının yalnızca ilk iki değerini kullanın. Örneğin, en son 1.1. x sürümünü işaret eden yeni bir sürüm olduğunda 1,1 güncelleştirilir. IoT Edge cihazınızdaki kapsayıcı çalışma zamanı görüntüyü yeniden çeker, çalışma zamanı modülleri en son sürüme güncelleştirilir. Azure portal varsayılan olan dağıtımlar, kayan etiketlere. *Bu yaklaşım geliştirme amaçlarıyla önerilir.*
+
+* **Belirli Etiketler** -görüntü sürümünü açıkça ayarlamak için sürüm numarasının tüm üç değerini kullanın. Örneğin, 1.1.0 ilk sürümünden sonra değişmez. Güncelleştirme yapmaya hazırsanız dağıtım bildiriminde yeni bir sürüm numarası bildirebilirsiniz. *Bu yaklaşım, üretim amaçları için önerilir.*
 
 ### <a name="store-runtime-containers-in-your-private-registry"></a>Çalışma zamanı kapsayıcılarını özel kayıt defterinizde depolayın
 

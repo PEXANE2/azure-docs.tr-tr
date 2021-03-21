@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
 ms.openlocfilehash: fbca4b23b6fc414727ea1b5a4012d2847d6b8d78
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98940475"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>HDInsight üzerinde Apache Spark Application Insights telemetri günlüklerini çözümleme
@@ -38,7 +38,7 @@ Aşağıdaki diyagramda bu örneğin hizmet mimarisi gösterilmektedir:
 
 ![Application Insights blob depolamaya ve Spark 'a kadar veri akışı](./media/apache-spark-analyze-application-insight-logs/application-insights.png)
 
-### <a name="azure-storage"></a>Azure Storage
+### <a name="azure-storage"></a>Azure Depolama
 
 Application Insights, telemetri bilgilerini sürekli olarak bloblara aktarmak üzere yapılandırılabilir. HDInsight daha sonra bloblarda depolanan verileri okuyabilir. Ancak izlemeniz gereken bazı gereksinimler vardır:
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: c939c1d061f4e01a00bc2b886056e42f0b059ad5
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: a995a110c4f777603e5b0273b6025cd68fe55b67
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102510822"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102532521"
 ---
 ## <a name="download-and-install"></a>İndirme ve yükleme
 
@@ -118,7 +118,7 @@ sudo docker run -it -v ABSOLUTE_PATH:/data --rm msftspeech/spx
 Örneğin, Windows 'da bu komut anahtarınızı ayarlar:
 
 ```console
-docker run -it -v c:\spx-data:/data --rm msftspeech/spx config --set @key SUBSCRIPTION-KEY
+docker run -it -v c:\spx-data:/data --rm msftspeech/spx config @key --set SUBSCRIPTION-KEY
 ```
 
 Komut satırı aracı ile daha fazla genişletilmiş etkileşim için giriş noktası parametresi ekleyerek etkileşimli bash kabuğu ile bir kapsayıcı başlatabilirsiniz.
@@ -171,8 +171,8 @@ Konuşma CLı 'yı kullanmaya başlamak için konuşma abonelik anahtarınızı 
 Abonelik anahtarınızı ve bölge tanımlayıcıyı (örn. `eastus`, `westus` ), aşağıdaki komutları çalıştırın.
 
 ```console
-spx config --set @key SUBSCRIPTION-KEY
-spx config --set @region REGION
+spx config @key --set SUBSCRIPTION-KEY
+spx config @region --set REGION
 ```
 
 Abonelik kimlik doğrulaması artık gelecekteki SPX istekleri için depolandı. Bu depolanmış değerlerden birini kaldırmanız gerekirse, veya ' i çalıştırın `spx config @region --clear` `spx config @key --clear` .

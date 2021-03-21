@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 12/10/2020
 ms.openlocfilehash: 1529d2d546227880fee71d1823482e040d2e57c1
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103564329"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory veri akışlarını eşleme
@@ -25,7 +25,7 @@ Veri akışlarını eşleme, Azure Data Factory ' de görsel olarak tasarlanan v
 
 Veri akışlarını eşleme, hiçbir kodlamaya gerek olmadan tamamen görsel bir deneyim sağlar. Veri akışlarınız, ölçeklendirilmemiş veri işleme için ADF tarafından yönetilen yürütme kümelerinde çalışır. Azure Data Factory, tüm kod çevirisi, yol iyileştirmesi ve veri akışı işlerinizin yürütülmesini işler.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 Veri akışları, işlem hatları ve veri kümeleri gibi fabrika kaynakları bölmesinden oluşturulur. Bir veri akışı oluşturmak için, **fabrika kaynakları**' nın yanındaki artı işaretini ve ardından **veri akışı**' nı seçin. 
 

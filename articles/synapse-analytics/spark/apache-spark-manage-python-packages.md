@@ -9,12 +9,12 @@ ms.date: 02/26/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 4bb323e0e8f72456b6a522ede9a98d193e1c3c7e
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 2d6ac02402414f096a46fec0340c3074d8e1784a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098783"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586650"
 ---
 # <a name="manage-python-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te Apache Spark için Python kitaplıklarını yönetme
 
@@ -68,13 +68,13 @@ Bu örnek, kanalları ve Conda/PyPI bağımlılıklarını belirtir.
 ```
 name: stats2
 channels:
-  - defaults
+- defaults
 dependencies:
-  - bokeh=0.9.2
-  - numpy=1.9.*
-  - flask
-  - pip:
-    - matplotlib
+- bokeh
+- numpy
+- pip:
+  - matplotlib
+  - koalas==1.7.0
 ```
 Bu ortamdan ortam oluşturma hakkında ayrıntılı bilgi için, bkz. [Environment. yıml dosyasından ortam oluşturma](https://docs.conda.io/projects/conda/latest/user-guide/tasks/manage-environments.html#creating-an-environment-file-manually).
 
@@ -140,6 +140,11 @@ Python tekerlek dosyaları, Python kitaplıklarının paketlenmesi için yaygın
 
 ![Çalışma alanı paketlerini vurgulayan ekran görüntüsü.](./media/apache-spark-azure-portal-add-libraries/studio-add-workspace-package.png "Çalışma alanı paketlerini görüntüle")
 
+>[!WARNING]
+>- Azure SYNAPSE içinde, bir Apache Spark havuzu çalışma alanı paketleri olarak yüklenen veya iyi bilinen bir Azure Data Lake Storage yolu içinde karşıya yüklenen özel kitaplıkları kullanabilir. Ancak, bu seçeneklerin her ikisi de aynı Apache Spark havuzunda aynı anda kullanılamaz. Her iki yöntem kullanılarak paketler sağlanmışsa, yalnızca çalışma alanı paketleri listesinde belirtilen tekerlek dosyaları yüklenir. 
+>
+>- Belirli bir Apache Spark havuzuna paket yüklemek için çalışma alanı paketleri (Önizleme) kullanıldığında, artık aynı havuzdaki depolama hesabı yolunu kullanarak paketleri belirtmizin bir sınırlaması vardır.  
+
 ### <a name="storage-account"></a>Depolama hesabı
 Özel yerleşik tekerlek paketleri, tüm tekerlek dosyalarını SYNAPSE çalışma alanıyla bağlantılı Azure Data Lake Storage (Gen2) hesabına yükleyerek Apache Spark havuza yüklenebilir. 
 
@@ -149,13 +154,12 @@ Dosyalar, depolama hesabının varsayılan kapsayıcısında aşağıdaki yola y
 abfss://<file_system>@<account_name>.dfs.core.windows.net/synapse/workspaces/<workspace_name>/sparkpools/<pool_name>/libraries/python/
 ```
 
-Klasörü ```python``` zaten yoksa klasörü içine eklemeniz gerekebilir ```libraries``` .
+>[!WARNING]
+> Bazı durumlarda, zaten mevcut değilse yukarıdaki yapıya göre dosya yolunu oluşturmanız gerekebilir. Örneğin, klasör zaten yoksa klasörü içine eklemeniz gerekebilir ```python``` ```libraries``` .
 
 > [!IMPORTANT]
 > Azure DataLake Storage metodunu kullanarak özel kitaplıklar yüklemek için, Azure SYNAPSE Analytics çalışma alanına bağlı birincil Gen2 depolama hesabında **Depolama Blobu veri katılımcısı** veya **Depolama Blobu veri sahibi** izinlerine sahip olmanız gerekir.
 
->[!WARNING]
-> Özel tekerlek dosyaları sağlarken, kullanıcılar hem depolama hesabında hem de çalışma alanı kitaplığı arabiriminde tekerlek dosyaları sağlayamaz. Her ikisi de sağlanmışsa, yalnızca çalışma alanı paketleri listesinde belirtilen tekerlek dosyaları yüklenir. 
 
 ## <a name="session-scoped-packages-preview"></a>Oturum kapsamlı paketler (Önizleme)
 Havuz düzeyi paketlerine ek olarak, bir not defteri oturumunun başlangıcında oturum kapsamlı kitaplıklar da belirtebilirsiniz.  Oturum kapsamlı kitaplıklar, bir not defteri oturumunda özel Python ortamlarını belirtmenizi ve kullanmanızı sağlar. 
