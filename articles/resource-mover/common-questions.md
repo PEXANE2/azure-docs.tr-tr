@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/21/2021
 ms.author: raynew
 ms.openlocfilehash: e900250aea84b4a9c9112fa54632a2be8b9cb49c
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102564280"
 ---
 # <a name="common-questions"></a>Sık sorulan sorular
@@ -97,7 +97,7 @@ Portaldaki Kaynak Taşıyıcı hub'ında kaynak eklediğinizde kullanıcı yukar
 
 İzinlerinizin olmaması gerekebilecek birkaç neden vardır.
 
-**Olası nedeni** | **Önerilen**
+**Olası nedeni** | **Öneri**
 --- | ---
 İlk kez bir kaynak eklediğinizde *katkıda bulunan* ve *Kullanıcı erişimi Yöneticisi* (veya *sahibi*) değilsiniz. | Abonelik için *katkıda* bulunan ve *Kullanıcı erişimi Yöneticisi* (veya *sahibi*) izinleri olan bir hesap kullanın.
 Kaynak taşıyıcısı tarafından yönetilen kimliğin gerekli rolü yok. | ' Katkıda bulunan ' ve ' Kullanıcı erişimi Yöneticisi ' rollerini ekleyin.

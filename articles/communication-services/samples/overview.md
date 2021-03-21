@@ -10,10 +10,10 @@ ms.date: 03/12/2021
 ms.topic: overview
 ms.service: azure-communication-services
 ms.openlocfilehash: 5e17943d7867bfd6b93d95b6ec0b6e0049a784ef
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103555799"
 ---
 # <a name="samples"></a>Örnekler
@@ -22,7 +22,7 @@ Azure Iletişim hizmetlerinde, kendi uygulamanızı veya kullanım örneğini ol
 
 ## <a name="application-samples"></a>Uygulama örnekleri
 
-| Örnek adı                                                                                          | Açıklama                                                         | Diller/platformlar kullanılabilir      |
+| Örnek adı                                                                                          | Description                                                         | Diller/platformlar kullanılabilir      |
 | :--------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------ | :--------------------------------- |
 | [Hero örneği çağıran Grup](./calling-hero-sample.md)                                                | Uygulama çağıran bir grup oluşturmak için bir örnek sağlar.          | Web, iOS                           |
 | [Web çağırma örneği](./web-calling-sample.md)                                                        | Web içindeki ACS çağırma özelliklerinin adım adım izlenecek adım. | Web                                |

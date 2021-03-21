@@ -9,10 +9,10 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 03/08/2021
 ms.openlocfilehash: 5e467d22cc3230bd9945fb276dc16cf1fa765bb6
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103565503"
 ---
 # <a name="rebuild-a-studio-classic-web-service-in-azure-machine-learning"></a>Azure Machine Learning ' de bir Studio (klasik) Web hizmetini yeniden oluşturma
@@ -66,7 +66,7 @@ Azure Machine Learning modeli dağıtmanın birden çok yolu vardır. En basit y
 
     Aşağıdaki tabloda, tasarımcıda dağıtım işlem seçenekleriniz açıklanmaktadır:
 
-    | İşlem hedefi | Kullanıldığı yerler | Açıklama | Oluşturma |
+    | İşlem hedefi | Kullanıldığı yerler | Description | Oluşturma |
     | ----- |  ----- | ----- | -----  |
     |[Azure Kubernetes Service (AKS)](../how-to-deploy-azure-kubernetes-service.md) |Gerçek zamanlı çıkarım|Büyük ölçekli, üretim dağıtımları. Hızlı yanıt süresi ve hizmet otomatik ölçeklendirme.| Kullanıcı tarafından oluşturulan. Daha fazla bilgi için bkz. [işlem hedefleri oluşturma](../how-to-create-attach-compute-studio.md#inference-clusters). |
     |[Azure Container Instances ](../how-to-deploy-azure-container-instance.md)|Test veya geliştirme | 48 GB 'den az RAM gerektiren küçük ölçekli, CPU tabanlı iş yükleri.| Azure Machine Learning tarafından otomatik olarak oluşturuldu.

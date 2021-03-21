@@ -5,19 +5,21 @@ services: iot-central
 ms.service: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/23/2019
+ms.date: 12/11/2020
 ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: 43c201150ab0b2d5d350aa228a4ade5e2faf3461
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: f3293ada549351cc7273847cde48c0531f06f028
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123122"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104675816"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>CSP portalından Azure IoT Central uygulaması oluşturma ve yönetme
 
 Microsoft Bulut çözümü sağlayıcısı (CSP) programı bir Microsoft satıcı programıdır. Amaç, tüm Microsoft ticari çevrimiçi hizmetlerini yeniden satmak için tek seferlik bir programla kanal iş ortaklarımızı sağlamaktır. [Bulut çözümü sağlayıcısı programı](https://partner.microsoft.com/cloud-solution-provider)hakkında daha fazla bilgi edinin.
+
+[!INCLUDE [Warning About Access Required](../../../includes/iot-central-warning-contribitorrequireaccess.md)]
 
 Bir CSP olarak, [Microsoft Iş Ortağı Merkezi](https://partnercenter.microsoft.com/partner/home)aracılığıyla müşterileriniz adına Microsoft Azure IoT Central uygulamaları oluşturabilir ve yönetebilirsiniz. Azure IoT Central uygulamaları, diğer CSP ile yönetilen Azure hizmetlerinde olduğu gibi CSP 'Ler tarafından müşteriler adına oluşturulduğunda, CSP 'Ler müşteriler için faturalandırmayı yönetir. Azure IoT Central ücreti, Microsoft Iş Ortağı Merkezi 'nde toplam faturanızda görünür.
 
@@ -75,7 +77,7 @@ Daha fazla bilgi için bkz. [Azure abonelikleri](../../guides/developer/azure-de
 
 ## <a name="location"></a>Konum
 
-**Konum** , uygulamayı oluşturmak Istediğiniz [Coğrafya](https://azure.microsoft.com/global-infrastructure/geographies/) konumudur. Genellikle en iyi performansı elde etmek için cihazlarınıza fiziksel olarak en yakın konumu seçmeniz gerekir. Şu anda **Avustralya**, **Asya Pasifik**, **Avrupa**, **Birleşik Devletler**, **Birleşik Krallık**ve **Japonya** coğrafi graflarını IoT Central bir uygulama oluşturabilirsiniz. Bir konum seçtikten sonra uygulamanızı daha sonra farklı bir konuma taşıyamazsınız.
+**Konum** , uygulamayı oluşturmak Istediğiniz [Coğrafya](https://azure.microsoft.com/global-infrastructure/geographies/) konumudur. Genellikle en iyi performansı elde etmek için cihazlarınıza fiziksel olarak en yakın konumu seçmeniz gerekir. Şu anda **Avustralya**, **Asya Pasifik**, **Avrupa**, **Birleşik Devletler**, **Birleşik Krallık** ve **Japonya** coğrafi graflarını IoT Central bir uygulama oluşturabilirsiniz. Bir konum seçtikten sonra uygulamanızı daha sonra farklı bir konuma taşıyamazsınız.
 
 ## <a name="application-template"></a>Uygulama şablonu
 

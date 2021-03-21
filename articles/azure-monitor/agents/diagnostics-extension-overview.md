@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
 ms.openlocfilehash: 90addb74811819dec563ba072e9a6aea2cf72ca4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102036546"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Azure Tanılama uzantısına genel bakış
@@ -43,7 +43,7 @@ Aşağıdaki tablolarda Windows ve Linux Tanılama uzantısı tarafından toplan
 
 ### <a name="windows-diagnostics-extension-wad"></a>Windows Tanılama uzantısı (WAD)
 
-| Veri Kaynağı | Açıklama |
+| Veri Kaynağı | Description |
 | --- | --- |
 | Windows olay günlükleri   | Windows olay günlüğü 'nden olaylar. |
 | Performans sayaçları | Sayısal değerler, işletim sistemi ve iş yüklerinin farklı yönlerinin performansını ölçerek. |
@@ -58,7 +58,7 @@ Aşağıdaki tablolarda Windows ve Linux Tanılama uzantısı tarafından toplan
 
 ### <a name="linux-diagnostics-extension-lad"></a>Linux Tanılama uzantısı (LAD)
 
-| Veri Kaynağı | Açıklama |
+| Veri Kaynağı | Description |
 | --- | --- |
 | Syslog | Linux olay günlüğü sistemine gönderilen olaylar.   |
 | Performans sayaçları  | Sayısal değerler, işletim sistemi ve iş yüklerinin farklı yönlerinin performansını ölçerek. |
@@ -71,7 +71,7 @@ Diğer ek hedeflere veri göndermek için bir veya daha fazla *veri havuzları* 
 
 ### <a name="windows-diagnostics-extension-wad"></a>Windows Tanılama uzantısı (WAD)
 
-| Hedef | Açıklama |
+| Hedef | Description |
 |:---|:---|
 | Azure İzleyici Ölçümleri | Performans verilerini Azure Izleyici ölçümlerine toplayın. Bkz. [Azure izleyici ölçüm veritabanına Konuk işletim sistemi ölçümleri gönderme](../essentials/collect-custom-metrics-guestos-resource-manager-vm.md).  |
 | Event Hubs | Azure 'un dışında veri göndermek için Azure Event Hubs kullanın. Bkz. [akış Azure Tanılama verileri Event Hubs](diagnostics-extension-stream-event-hubs.md) |
@@ -84,7 +84,7 @@ Ayrıca, Log Analytics Aracısı genellikle bu işlev için kullanılsa da, Azur
 ### <a name="linux-diagnostics-extension-lad"></a>Linux Tanılama uzantısı (LAD)
 LAD, verileri Azure depolama 'daki tablolara yazar. Aşağıdaki tabloda yer aldığı havuzları destekler.
 
-| Hedef | Açıklama |
+| Hedef | Description |
 |:---|:---|
 | Event Hubs | Azure 'un dışında veri göndermek için Azure Event Hubs kullanın. |
 | Azure depolama Blobları | Tablolara ek olarak Azure Storage 'daki bloblara veri yazma. |

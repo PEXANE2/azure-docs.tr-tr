@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: cshoe
 ms.openlocfilehash: 324a8e75488d74fc6aa52e499b8dde616cd9beb5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102034056"
 ---
 # <a name="configure-azure-static-web-apps"></a>Azure statik Web Apps yapılandırma
@@ -55,12 +55,12 @@ Her kural, bir veya daha fazla isteğe bağlı kural özelliği ile birlikte bir
 | Rule özelliği  | Gerekli | Varsayılan değer | Yorum                                                      |
 | -------------- | -------- | ------------- | ------------------------------------------------------------ |
 | `route`        | Yes      | yok          | Çağıran tarafından istenen yol deseninin.<ul><li>[Joker karakterler](#wildcards) rota yollarının sonunda desteklenir.<ul><li>Örneğin, Route _admin/ \*_ , _yönetici_ yolu altındaki herhangi bir rota ile eşleşir.</ul></ul>|
-| `rewrite`        | Hayır       | yok          | İstekten döndürülen dosyayı veya yolu tanımlar.<ul><li>Bir kurala birbirini dışlar `redirect`<li>Yeniden yazma kuralları tarayıcının konumunu değiştirmez.<li>Değerler uygulamanın köküne göreli olmalıdır</ul>  |
-| `redirect`        | Hayır       | yok          | İstek için dosya veya yol yeniden yönlendirme hedefini tanımlar.<ul><li>Bir kurala birbirini dışlar `rewrite` .<li>Yeniden yönlendirme kuralları tarayıcının konumunu değiştirir.<li>Varsayılan yanıt kodu bir [`302`](https://developer.mozilla.org/docs/Web/HTTP/Status/302) (geçici yeniden yönlendirme), ancak bir [`301`](https://developer.mozilla.org/docs/Web/HTTP/Status/301) (kalıcı yeniden yönlendirme) ile geçersiz kılınabilir.</ul> |
-| `allowedRoles` | Hayır       | deðeri     | Bir rotaya erişmek için gereken rol adlarının listesini tanımlar. <ul><li>Geçerli karakterler, `a-z` , `A-Z` `0-9` ve içerir `_` .<li>Yerleşik rol, [`anonymous`](./authentication-authorization.md) tüm kimliği doğrulanmamış kullanıcılar için geçerlidir<li>Yerleşik rol, [`authenticated`](./authentication-authorization.md) her oturum açmış kullanıcı için geçerlidir.<li>Kullanıcılar en az bir role ait olmalıdır.<li>Roller bir _veya_ temelinde eşleştirilir.<ul><li>Bir Kullanıcı listelenen rollerden varsa erişim izni verilir.</ul><li>Bireysel kullanıcılar, [davetler](authentication-authorization.md)aracılığıyla rollerle ilişkilendirilir.</ul> |
-| `headers`<a id="route-headers"></a> | Hayır | yok | Yanıta eklenen [http üstbilgileri](https://developer.mozilla.org/docs/Web/HTTP/Headers) kümesi. <ul><li>Rotaya özgü üst bilgi, [`globalHeaders`](#global-headers) yanıtta genel üst bilgiyle aynı olduğunda, rotaya özgü üstbilgiler geçersiz kılınır.<li>Bir üst bilgiyi kaldırmak için değeri boş bir dizeye ayarlayın.</ul> |
-| `statusCode`   | Hayır       | `200`, `301` , veya yeniden `302` yönlendirmeler için | Yanıtın [http durum kodu](https://developer.mozilla.org/docs/Web/HTTP/Status) . |
-| `methods` | Hayır | Tüm Yöntemler | Bir rota ile eşleşen istek yöntemlerinin listesi. Kullanılabilir yöntemler şunlardır: `GET` , `HEAD` , `POST` , `PUT` , `DELETE` , `CONNECT` , `OPTIONS` , `TRACE` , ve `PATCH` . |
+| `rewrite`        | No       | yok          | İstekten döndürülen dosyayı veya yolu tanımlar.<ul><li>Bir kurala birbirini dışlar `redirect`<li>Yeniden yazma kuralları tarayıcının konumunu değiştirmez.<li>Değerler uygulamanın köküne göreli olmalıdır</ul>  |
+| `redirect`        | No       | yok          | İstek için dosya veya yol yeniden yönlendirme hedefini tanımlar.<ul><li>Bir kurala birbirini dışlar `rewrite` .<li>Yeniden yönlendirme kuralları tarayıcının konumunu değiştirir.<li>Varsayılan yanıt kodu bir [`302`](https://developer.mozilla.org/docs/Web/HTTP/Status/302) (geçici yeniden yönlendirme), ancak bir [`301`](https://developer.mozilla.org/docs/Web/HTTP/Status/301) (kalıcı yeniden yönlendirme) ile geçersiz kılınabilir.</ul> |
+| `allowedRoles` | No       | deðeri     | Bir rotaya erişmek için gereken rol adlarının listesini tanımlar. <ul><li>Geçerli karakterler, `a-z` , `A-Z` `0-9` ve içerir `_` .<li>Yerleşik rol, [`anonymous`](./authentication-authorization.md) tüm kimliği doğrulanmamış kullanıcılar için geçerlidir<li>Yerleşik rol, [`authenticated`](./authentication-authorization.md) her oturum açmış kullanıcı için geçerlidir.<li>Kullanıcılar en az bir role ait olmalıdır.<li>Roller bir _veya_ temelinde eşleştirilir.<ul><li>Bir Kullanıcı listelenen rollerden varsa erişim izni verilir.</ul><li>Bireysel kullanıcılar, [davetler](authentication-authorization.md)aracılığıyla rollerle ilişkilendirilir.</ul> |
+| `headers`<a id="route-headers"></a> | No | yok | Yanıta eklenen [http üstbilgileri](https://developer.mozilla.org/docs/Web/HTTP/Headers) kümesi. <ul><li>Rotaya özgü üst bilgi, [`globalHeaders`](#global-headers) yanıtta genel üst bilgiyle aynı olduğunda, rotaya özgü üstbilgiler geçersiz kılınır.<li>Bir üst bilgiyi kaldırmak için değeri boş bir dizeye ayarlayın.</ul> |
+| `statusCode`   | No       | `200`, `301` , veya yeniden `302` yönlendirmeler için | Yanıtın [http durum kodu](https://developer.mozilla.org/docs/Web/HTTP/Status) . |
+| `methods` | No | Tüm Yöntemler | Bir rota ile eşleşen istek yöntemlerinin listesi. Kullanılabilir yöntemler şunlardır: `GET` , `HEAD` , `POST` , `PUT` , `DELETE` , `CONNECT` , `OPTIONS` , `TRACE` , ve `PATCH` . |
 
 Her özelliğin istek/yanıt ardışık düzeninde belirli bir amacı vardır.
 

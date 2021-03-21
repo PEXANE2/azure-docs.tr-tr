@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/06/2021
 ms.author: jafreebe
 ms.openlocfilehash: 404fac634a628da49dee72b10b52785820fe1bf6
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102443786"
 ---
 # <a name="azure-app-service-as-an-event-grid-source"></a>Event Grid kaynak olarak Azure App Service
@@ -20,7 +20,7 @@ Bu makalede Azure App Service olayları için özellikler ve şema sağlanmaktad
 
 Azure App Service aşağıdaki olay türlerini yayar
 
-|    Olay Türü                                             |    Açıklama                                                     |
+|    Olay Türü                                             |    Description                                                     |
 |-----------------------------------------------------------|--------------------------------------------------------------------|
 |    Microsoft. Web/Sites. Backupoperationbaşlatıldı             |    Bir yedekleme başlatıldığında tetiklendi                             |
 |    Microsoft. Web/Sites. BackupOperationCompleted           |    Bir yedekleme tamamlandığında tetiklenir                           |
@@ -128,7 +128,7 @@ Bu bölüm, verilerin her olay için nasıl görüneceğine ilişkin bir örnek 
 
 Veri nesnesi aşağıdaki özellikleri içerir:
 
-|    Özellik                |    Tür      |    Açıklama                                                                                                       |
+|    Özellik                |    Tür      |    Description                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    `appEventTypeDetail`      |    object    |    Uygulamadaki eylemin ayrıntıları                                                                                       |
 |    `action`                  |    string    |    İşlem eyleminin türü                                                                                   |
@@ -194,7 +194,7 @@ Veri nesnesi aşağıdaki özellikleri içerir:
 
 Veri nesnesi aşağıdaki özellikleri içerir:
 
-|    Özellik                |    Tür      |    Açıklama                                                                                                       |
+|    Özellik                |    Tür      |    Description                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    `appEventTypeDetail`      |    object    |    Uygulamadaki eylemin ayrıntıları                                                                                       |
 |    `action`                  |    string    |    İşlem eyleminin türü                                                                                   |
@@ -260,7 +260,7 @@ Veri nesnesi aşağıdaki özellikleri içerir:
 
 Veri nesnesi aşağıdaki özellikleri içerir:
 
-|    Özellik                |    Tür      |    Açıklama                                                                                                       |
+|    Özellik                |    Tür      |    Description                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    `appEventTypeDetail`      |    object    |    Uygulamadaki eylemin ayrıntıları                                                                                       |
 |    `action`                 |    string    |    İşlem eyleminin türü                                                                                   |
@@ -327,7 +327,7 @@ Veri nesnesi aşağıdaki özellikleri içerir:
 
 Veri nesnesi aşağıdaki özellikleri içerir:
 
-|    Özellik                |    Tür      |    Açıklama                                                                                                       |
+|    Özellik                |    Tür      |    Description                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    `appEventTypeDetail`      |    object    |    Uygulamadaki eylemin ayrıntıları                                                                                       |
 |    `action`                 |    string    |    İşlem eyleminin türü                                                                                   |
@@ -393,7 +393,7 @@ Veri nesnesi aşağıdaki özellikleri içerir:
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
-|    Özellik                |    Tür      |    Açıklama                                                                                                       |
+|    Özellik                |    Tür      |    Description                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    `appEventTypeDetail`      |    object    |    Uygulamadaki eylemin ayrıntıları                                                                                       |
 |    `action`                  |    string    |    İşlem eyleminin türü                                                                                   |
@@ -477,7 +477,7 @@ Veri nesnesi aşağıdaki özelliklere sahiptir:
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
-|    Özellik                         |    Tür      |    Açıklama                                                                                                       |
+|    Özellik                         |    Tür      |    Description                                                                                                       |
 |-------------------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    `appServicePlanEventTypeDetail`    |    object    |    App Service planındaki eylemin ayrıntıları                                                                          |
 |    `stampKind`                        |    string    |    App Service planının bulunduğu ortam türü                                                                     |

@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: lagayhar
 ms.openlocfilehash: e48d669321ad8c58681e8a92e68f2089962bdc17
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102429859"
 ---
 # <a name="click-analytics-auto-collection-plugin-for-application-insights-javascript-sdk"></a>Application Insights JavaScript SDK 'Sı için analiz otomatik toplama eklentisi ' ne tıklayın
 
 Bu eklenti Web sayfalarında tıklama olaylarını otomatik olarak izler ve olay telemetrisini doldurmak için HTML öğelerindeki Data-* özniteliklerini kullanır.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 Kullanıcılar NPM aracılığıyla Analytics otomatik toplama eklentisini ayarlayabilir.
 
@@ -79,7 +79,7 @@ appInsights.loadAppInsights();
 
 ## <a name="configuration"></a>Yapılandırma
 
-| Ad                  | Tür                               | Varsayılan | Açıklama                                                                                                                              |
+| Ad                  | Tür                               | Varsayılan | Description                                                                                                                              |
 | --------------------- | -----------------------------------| --------| ---------------------------------------------------------------------------------------------------------------------------------------- |
 | Oto yakala           | boolean                            | true    | Otomatik yakalama yapılandırması.                                                                                                         |
 | callback              | [IValueCallback](#ivaluecallback)  | null    | Geri çağrılar yapılandırması.                                                                                                                 |
@@ -101,7 +101,7 @@ appInsights.loadAppInsights();
 
 ### <a name="icustomdatatags"></a>Icustomdatatags
 
-| Ad                      | Tür    | Varsayılan   | HTML içinde kullanılacak varsayılan etiket |   Açıklama                                                                                |
+| Ad                      | Tür    | Varsayılan   | HTML içinde kullanılacak varsayılan etiket |   Description                                                                                |
 |---------------------------|---------|-----------|-------------|----------------------------------------------------------------------------------------------|
 | Usedefaultcontentnameorıd | boolean | yanlış     | Yok         |Belirli bir öğe varsayılan customDataPrefix ile etiketlenmemişse veya customDataPrefix Kullanıcı tarafından sağlanmadıysa, contentName için standart HTML özniteliğini toplar. |
 | customDataPrefix          | string  | `data-`   | `data-*`| Otomatik yakalama içerik adı ve belirtilen önek ile etiketlenmiş öğelerin değeri. Örneğin, `data-*-id` `data-<yourcustomattribute>` HTML etiketleri içinde kullanılabilir.   |

@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/26/2021
 ms.openlocfilehash: f4bddc1666d1165d6a1e4c749fdbc96ede37747a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102036796"
 ---
 # <a name="collect-windows-and-linux-performance-data-sources-with-log-analytics-agent"></a>Log Analytics Agent ile Windows ve Linux performans verileri kaynaklarını toplayın
@@ -27,7 +27,7 @@ Yeni bir çalışma alanı için Windows veya Linux performans sayaçlarını il
 
 Windows performans sayaçları için her performans sayacı için belirli bir örnek seçebilirsiniz. Linux performans sayaçları için, seçtiğiniz her sayacın örneği, üst sayacın tüm alt sayaçları için geçerlidir. Aşağıdaki tabloda hem Linux hem de Windows performans sayaçları için kullanılabilen ortak örnekler gösterilmektedir.
 
-| Örnek adı | Açıklama |
+| Örnek adı | Description |
 | --- | --- |
 | \_Toplam |Tüm örneklerin toplamı |
 | \* |Tüm örnekler |
@@ -76,7 +76,7 @@ Toplanacak performans ölçümlerinin her nesnesi veya kategorisi yapılandırma
 
 Bu öğedeki parametreler aşağıdaki tabloda açıklanmıştır.
 
-| Parametreler | Açıklama |
+| Parametreler | Description |
 |:--|:--|
 | nesne \_ adı | Koleksiyonun nesne adı. |
 | örnek \_ Regex |  Toplanacak örnekleri tanımlayan bir *normal ifade* . Değer: `.*` tüm örnekleri belirtir. Yalnızca toplam örnek için işlemci ölçümlerini toplamak üzere \_ belirtebilirsiniz `_Total` . Yalnızca crond veya SSHD örnekleri için işlem ölçümlerini toplamak üzere şunları belirtebilirsiniz: `(crond\|sshd)` . |
@@ -204,7 +204,7 @@ Performans kayıtları bir **perf** türüne sahiptir ve aşağıdaki tabloda bu
 ## <a name="log-queries-with-performance-records"></a>Performans kayıtlarıyla günlük sorguları
 Aşağıdaki tabloda, performans kayıtlarını alan günlük sorgularının farklı örnekleri verilmiştir.
 
-| Sorgu | Açıklama |
+| Sorgu | Description |
 |:--- |:--- |
 | Perf |Tüm performans verileri |
 | Perf &#124; Computer = = "Bilgisayarım" |Belirli bir bilgisayardaki tüm performans verileri |
