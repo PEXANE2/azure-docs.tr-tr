@@ -4,10 +4,10 @@ description: Azure Event Grid Azure Key Vault olaylar için belirtilen özellikl
 ms.topic: conceptual
 ms.date: 02/11/2021
 ms.openlocfilehash: ea8821b15000b74a10f28730ccf82b538e7819e5
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100363415"
 ---
 # <a name="azure-key-vault-as-event-grid-source"></a>Event Grid kaynak olarak Azure Key Vault

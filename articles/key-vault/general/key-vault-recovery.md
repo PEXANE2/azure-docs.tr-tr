@@ -9,10 +9,10 @@ author: msmbaldwin
 manager: rkarlin
 ms.date: 09/30/2020
 ms.openlocfilehash: a8e8e791f0dbe18322ad43364ae4ffd09b430caf
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98790393"
 ---
 # <a name="azure-key-vault-recovery-management-with-soft-delete-and-purge-protection"></a>Geçici silme ve Temizleme koruması ile kurtarma yönetimi Azure Key Vault
@@ -23,7 +23,7 @@ Key Vault hakkında daha fazla bilgi için bkz.
 - [Anahtar Kasasına genel bakış](overview.md)
 - [Azure Key Vault anahtarlar, gizlilikler ve sertifikalara genel bakış](about-keys-secrets-certificates.md)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/dotnet)
 * [PowerShell modülü](/powershell/azure/install-az-ps).
@@ -31,7 +31,7 @@ Key Vault hakkında daha fazla bilgi için bkz.
 * Key Vault- [Azure clı](../general/quick-create-cli.md) [Azure Portal](../general/quick-create-portal.md) veya [Azure PowerShell](../general/quick-create-powershell.md) kullanarak bir tane oluşturabilirsiniz.
 * Kullanıcı, geçici olarak silinen kasaların işlemlerini gerçekleştirmek için aşağıdaki izinlere (abonelik düzeyinde) gerek duyar:
 
-  | İzin | Açıklama |
+  | İzin | Description |
   |---|---|
   |Microsoft. Keykasası/konumlar/Silinkaults/okuma|Geçici olarak silinen bir anahtar kasasının özelliklerini görüntüleyin|
   |Microsoft. Keykasası/konumlar/Silinkaults/Temizleme/eylem|Geçici olarak silinen bir anahtar kasasını temizle|

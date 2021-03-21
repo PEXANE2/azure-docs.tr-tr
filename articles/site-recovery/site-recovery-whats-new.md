@@ -4,10 +4,10 @@ description: Azure Site Recovery hizmetindeki yeni özelliklerin ve en son günc
 ms.topic: conceptual
 ms.date: 01/26/2021
 ms.openlocfilehash: 423fbc563878d0cc2a63a5366d2226281a204e87
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102454609"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery'deki yenilikler

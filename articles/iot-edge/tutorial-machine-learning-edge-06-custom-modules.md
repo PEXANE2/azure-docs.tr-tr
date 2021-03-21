@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 5c096b26f31bdf92bb5ab91c8dad7876f228ff14
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103462805"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Öğretici: özel IoT Edge modüller oluşturma ve dağıtma
@@ -183,7 +183,7 @@ Yönlendirici modülü, bir çözümün doğru sırada işlenmesini sağlayan ö
     copy c:\source\IoTEdgeAndMlSample\EdgeModules\modules\turbofanRouter\*.cs c:\source\IoTEdgeAndMlSample\EdgeSolution\modules\turbofanRouter\
     ```
 
-1. Program.cs dosyasının üzerine yazmak için istemi kabul edin.
+1. Program. cs dosyasının üzerine yazmak için istemi kabul edin.
 
 ### <a name="build-router-module"></a>Derleme yönlendirici modülü
 
@@ -230,7 +230,7 @@ Yukarıda belirtildiği gibi, IoT Edge çalışma zamanı, gevşek olarak bağla
 
 #### <a name="inputs"></a>Girişler
 
-1. Program.cs 'in Init () yönteminde, modül için iki geri çağırma kaydeder:
+1. Programın Init () yönteminde. cs modül için iki geri çağırma kaydeder:
 
    ```csharp
    await ioTHubModuleClient.SetInputMessageHandlerAsync(EndpointNames.FromLeafDevice, LeafDeviceInputMessageHandler, ioTHubModuleClient);
@@ -253,7 +253,7 @@ Yukarıda belirtildiği gibi, IoT Edge çalışma zamanı, gevşek olarak bağla
 
 Yönlendirici modülündeki çıkışları işlemek için $edgeHub Route parametresine dört ek yol ekleyin.
 
-1. Program.cs, yolu kullanarak RUL sınıflandırıcısına ileti göndermek için modül istemcisini kullanan Sendmessagetosınıflandırıcı () yöntemini tanımlar.
+1. Program. cs, yolu kullanarak RUL sınıflandırıcısına ileti göndermek için modül istemcisini kullanan Sendmessagetosınıflandırıcı () yöntemini tanımlar:
 
    ```json
    "routerToClassifier": "FROM /messages/modules/turbofanRouter/outputs/classOutput INTO BrokeredEndpoint(\"/modules/turbofanRulClassifier/inputs/amlInput\")"

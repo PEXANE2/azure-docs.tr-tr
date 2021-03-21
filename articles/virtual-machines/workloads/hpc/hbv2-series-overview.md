@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 6648f77c5eacf40f848bc9b24aa6e257d8adf626
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 59dd953b2116bc1ec7bd0a581cc181df64fbf49e
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/20/2021
-ms.locfileid: "101674642"
+ms.locfileid: "104721156"
 ---
 # <a name="hbv2-series-virtual-machine-overview"></a>HBv2 serisi sanal makineye genel bakış 
 
@@ -53,14 +53,16 @@ Sanal makinede, pNUMA 0 ve 16 ' nın ayrıldığı bir tanıma sahip değildir. 
 |-----------------------------|-----------------------------------------------------------|
 | Maksimum MPı Işi boyutu            | 36000 çekirdek (tek bir sanal makine ölçek kümesindeki Tekplacementgroup = true ile, 300 VM) |
 | MPı desteği                 | HPC-X, Intel MPI, OpenMPI, MVAPICH2, MPICH, platform MPı  |
-| Ek çerçeveler       | Birleşik Iletişim X, libfabric, PGAS                  |
-| Azure depolama desteği       | Standart ve Premium diskler (en fazla 8 disk)              |
-| SRLOV RDMA için işletim sistemi desteği   | CentOS/RHEL 7.6 +, SLES 12 SP4 +, WinServer 2016 +           |
-| Orchestrator desteği        | CycleCloud, Batch                                         | 
+| Ek çerçeveler       | UCX, libfabric, PGAS |
+| Azure depolama desteği       | Standart ve Premium diskler (en fazla 8 disk) |
+| SRLOV RDMA için işletim sistemi desteği   | CentOS/RHEL 7.6 +, Ubuntu 16.04 +, SLES 12 SP4 +, WinServer 2016 +  |
+| Orchestrator desteği        | CycleCloud, Batch, AKS; [küme yapılandırma seçenekleri](../../sizes-hpc.md#cluster-configuration-options)  |
 
+> [!NOTE] 
+> Windows Server 2012 R2, 64 (sanal veya fiziksel) çekirdekleri HBv2 ve diğer VM 'lerde desteklenmez. Daha ayrıntılı bilgi için [buraya](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [AMD epi mimarisi](https://bit.ly/2Epv3kC) ve [çok yongalı mimariler](https://bit.ly/2GpQIMb)hakkında daha fazla bilgi edinin. Daha ayrıntılı bilgi için bkz. [AMD EPYıC işlemcileri Için HPC ayarlama Kılavuzu](https://bit.ly/2T3AWZ9).
-- [Azure Işlem teknik topluluğu bloglarında](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)en son duyurular ve bazı HPC örnekleri hakkında bilgi edinin.
+- [Azure Işlem Tech Community bloglarında](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)en son Duyurular, HPC iş yükü örnekleri ve performans sonuçları hakkında bilgi edinin.
 - Çalıştırılan HPC iş yüklerinin daha yüksek düzey mimari görünümü için bkz. [Azure 'Da yüksek performanslı bilgi işlem (HPC)](/azure/architecture/topics/high-performance-computing/).

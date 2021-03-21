@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/06/2017
 ms.custom: devx-track-js
 ms.openlocfilehash: dfd1fe9db54925bc17a53a7686fa34d5ea53cd5a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96013607"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>Node.js uygulamasını Azure Service Fabric'te barındırma
@@ -47,7 +47,7 @@ Hizmeti **MyGuestService** olarak adlandırın ve sağdaki seçenekleri aşağı
 | Kod Paketi Klasörü       | _&lt;Node.js uygulamanızın bulunduğu klasör&gt;_ |
 | Kod Paketi Davranışı     | Klasör içeriğini projeye kopyala |
 | Program                   | node.exe |
-| Arguments                 | server.js |
+| Bağımsız değişkenler                 | server.js |
 | Çalışma Klasörü            | CodePackage |
 
 **Tamam**'a basın.
@@ -61,7 +61,7 @@ Uygulama Projesi (**Myguestapp**) doğrudan kod içermez. Proje bir dizi hizmet 
 * **Yayımlama profilleri**  
 Farklı ortamlar için araç tercihleri.
 
-* **Betikleri**  
+* **Betikler**  
 Uygulamanızı dağıtmak/yükseltmek için PowerShell betiği.
 
 * **Uygulama tanımı**  

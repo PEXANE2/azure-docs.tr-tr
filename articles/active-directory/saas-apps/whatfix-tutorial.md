@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/17/2019
 ms.author: jeedes
 ms.openlocfilehash: fd3ce846abbd2ce310b12634391453ef78ce0094
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92521652"
 ---
 # <a name="tutorial-integrate-whatfix-with-azure-active-directory"></a>Öğretici: Azure Active Directory ile tümleştirilen çözümü tümleştirme
@@ -52,7 +52,7 @@ Azure AD 'de whatof düzeltmesinin tümleştirilmesini yapılandırmak için, Ga
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Azure AD SSO 'yu, **Britta Simon**adlı bir test kullanıcısı kullanarak Whatwıth düzeltmeyle yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+Azure AD SSO 'yu, **Britta Simon** adlı bir test kullanıcısı kullanarak Whatwıth düzeltmeyle yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -86,7 +86,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     **Oturum açma URL** 'si metin kutusuna URL 'yi yazın:`https://whatfix.com`
 
-1. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini**kopyalamak için Kopyala düğmesine tıklayın.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak için Kopyala düğmesine tıklayın.
 
     ![Sertifika indirme bağlantısı](common/copy-metadataurl.png)
 
@@ -111,7 +111,7 @@ Bu bölümde, Britta Simon adlı Azure portal bir test kullanıcısı oluşturac
 Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak, Whatmem için erişim izni vererek Britta Simon 'u etkinleştireceksiniz.
 
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde, **Whatdüzeltmesini**seçin.
+1. Uygulamalar listesinde, **Whatdüzeltmesini** seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)

@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/28/2020
-ms.openlocfilehash: 9b8402e5ae4d0358d17342d30ddf36f5e1228f65
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/17/2021
+ms.openlocfilehash: 19b32bed15a4d292a7427d8401e777c7761e45a3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393471"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592039"
 ---
 # <a name="copy-data-from-and-to-the-sftp-server-by-using-azure-data-factory"></a>Azure Data Factory kullanarak SFTP sunucusundan verileri kopyalama
 
@@ -23,7 +23,7 @@ ms.locfileid: "100393471"
 
 Bu makalede, verileri ve güvenli FTP (SFTP) sunucusundan verilerin nasıl kopyalanacağı özetlenmektedir. Azure Data Factory hakkında bilgi edinmek için [tanıtım makalesini](introduction.md)okuyun.
 
-## <a name="supported-capabilities"></a>Desteklenen yetenekler
+## <a name="supported-capabilities"></a>Desteklenen özellikler
 
 SFTP Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 
@@ -34,7 +34,7 @@ SFTP Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 
 Özellikle, SFTP Bağlayıcısı şunları destekler:
 
-- *Temel* veya *sshpublickey* kimlik doğrulamasını kullanarak dosyaları ve SFTP sunucusuna kopyalama.
+- **Temel**, **SSH ortak anahtarını** veya **Multi-Factor** Authentication 'ı kullanarak dosyaları ve SFTP sunucusuna kopyalama.
 - Dosyaları olarak kopyalama veya [Desteklenen dosya biçimleri ve sıkıştırma codec bileşenleri](supported-file-formats-and-compression-codecs.md)ile dosyaları ayrıştırma veya oluşturma.
 
 ## <a name="prerequisites"></a>Önkoşullar
@@ -58,7 +58,7 @@ SFTP bağlantılı hizmeti için aşağıdaki özellikler desteklenir:
 | port | SFTP sunucusunun dinlediği bağlantı noktası.<br/>İzin verilen değer bir tamsayıdır ve varsayılan değer *22*' dir. |No |
 | skipHostKeyValidation | Konak anahtarı doğrulamanın atlanıp atlanmayacağını belirtin.<br/>İzin verilen değerler *true* ve *false* (varsayılan) şeklindedir.  | No |
 | hostKeyFingerprint | Ana bilgisayar anahtarının parmak izini belirtin. | Evet, "skipHostKeyValidation" false olarak ayarlanır.  |
-| authenticationType | Kimlik doğrulama türünü belirtin.<br/>İzin verilen değerler *temel* ve *sshpublickey*. Daha fazla özellik için, [temel kimlik doğrulaması kullanma](#use-basic-authentication) bölümüne bakın. JSON örnekleri için [SSH ortak anahtar kimlik doğrulamasını kullanma](#use-ssh-public-key-authentication) bölümüne bakın. |Yes |
+| authenticationType | Kimlik doğrulama türünü belirtin.<br/>İzin verilen değerler *temel*, *Sshpublickey* ve *çok faktörlü*. Daha fazla özellik için, [temel kimlik doğrulaması kullanma](#use-basic-authentication) bölümüne bakın. JSON örnekleri için [SSH ortak anahtar kimlik doğrulamasını kullanma](#use-ssh-public-key-authentication) bölümüne bakın. |Yes |
 | connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Daha fazla bilgi edinmek için [Önkoşullar](#prerequisites) bölümüne bakın. Tümleştirme çalışma zamanı belirtilmemişse, hizmet varsayılan Azure Integration Runtime kullanır. |No |
 
 ### <a name="use-basic-authentication"></a>Temel kimlik doğrulaması kullan
@@ -75,7 +75,6 @@ Temel kimlik doğrulaması kullanmak için *AuthenticationType* özelliğini *te
 ```json
 {
     "name": "SftpLinkedService",
-    "type": "linkedservices",
     "properties": {
         "type": "Sftp",
         "typeProperties": {
@@ -117,7 +116,6 @@ SSH ortak anahtar kimlik doğrulamasını kullanmak için, "authenticationType" 
 ```json
 {
     "name": "SftpLinkedService",
-    "type": "Linkedservices",
     "properties": {
         "type": "Sftp",
         "typeProperties": {
@@ -161,6 +159,43 @@ SSH ortak anahtar kimlik doğrulamasını kullanmak için, "authenticationType" 
             "passPhrase": {
                 "type": "SecureString",
                 "value": "<pass phrase>"
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of integration runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="use-multi-factor-authentication"></a>Multi-Factor Authentication kullanma
+
+Temel ve SSH ortak anahtar kimlik doğrulamaları birleşimi olan Multi-Factor Authentication 'ı kullanmak için, yukarıdaki bölümlerde açıklanan Kullanıcı adı, parola ve özel anahtar bilgilerini belirtin.
+
+**Örnek: Multi-Factor Authentication**
+
+```json
+{
+    "name": "SftpLinkedService",
+    "properties": {
+        "type": "Sftp",
+        "typeProperties": {
+            "host": "<host>",
+            "port": 22,
+            "authenticationType": "MultiFactor",
+            "userName": "<username>",
+            "password": {
+                "type": "SecureString",
+                "value": "<password>"
+            },
+            "privateKeyContent": {
+                "type": "SecureString",
+                "value": "<base64 encoded private key content>"
+            },
+            "passPhrase": {
+                "type": "SecureString",
+                "value": "<passphrase for private key>"
             }
         },
         "connectVia": {
@@ -236,7 +271,7 @@ Aşağıdaki özellikler, `storeSettings` Biçim tabanlı kopyalama kaynağında
 | modifiedDatetimeEnd      | Yukarıdakiyle aynıdır.                                               | No                                            |
 | enablePartitionDiscovery | Bölümlenmiş dosyalar için, dosya yolundan bölümlerin ayrıştırıp ayrıştırmayacağını belirtin ve bunları ek kaynak sütunları olarak ekleyin.<br/>İzin verilen değerler **false** (varsayılan) ve **true** şeklindedir. | No                                            |
 | Partitionrootyolu | Bölüm bulma etkin olduğunda, bölümlenmiş klasörleri veri sütunları olarak okumak için mutlak kök yolunu belirtin.<br/><br/>Belirtilmemişse, varsayılan olarak<br/>-Veri kümesinde dosya yolunu veya kaynaktaki dosya listesini kullandığınızda, bölüm kök yolu, veri kümesinde yapılandırılan yoldur.<br/>-Joker karakter klasörü filtresi kullandığınızda, bölüm kök yolu ilk joker karakterin öncesindeki alt yoldur.<br/><br/>Örneğin, veri kümesindeki yolu "root/Folder/Year = 2020/ay = 08/gün = 27" olarak yapılandırdığınız varsayılarak:<br/>-Bölüm kök yolunu "root/Folder/Year = 2020" olarak belirtirseniz, kopyalama etkinliği `month` `day` dosyaların içindeki sütunlara ek olarak, sırasıyla "08" ve "27" değeriyle birlikte iki sütun oluşturur.<br/>-Bölüm kök yolu belirtilmemişse, ek sütun oluşturulmaz. | No                                            |
-| maxConcurrentConnections | Depolama deposuna eşzamanlı olarak bağlanabilecek bağlantı sayısı. Yalnızca veri deposuyla eşzamanlı bağlantıyı sınırlandırmak istediğinizde bir değer belirtin. | No                                            |
+| maxConcurrentConnections | Etkinlik çalışması sırasında veri deposuna kurulan eşzamanlı bağlantıların üst sınırı. Yalnızca eş zamanlı bağlantıları sınırlandırmak istediğinizde bir değer belirtin.| No                                            |
 
 **Örnek:**
 
@@ -289,7 +324,7 @@ Aşağıdaki özellikler, `storeSettings` Biçim tabanlı bir kopya havuzunda ay
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | tür                     | Altındaki *Type* özelliği `storeSettings` *sftpwritesettings* olarak ayarlanmalıdır. | Yes      |
 | copyBehavior             | Kaynak dosya tabanlı bir veri deposundan dosyalar olduğunda kopyalama davranışını tanımlar.<br/><br/>İzin verilen değerler şunlardır:<br/><b>-Preservehierarchy (varsayılan)</b>: Hedef klasördeki dosya hiyerarşisini korur. Kaynak dosyanın kaynak klasöre göreli yolu, hedef dosyanın göreli yoluyla hedef klasöre aynıdır.<br/><b>-DÜZEDEN hiyerarşi</b>: kaynak klasördeki tüm dosyalar hedef klasörün ilk düzeyindedir. Hedef dosyalar otomatik olarak oluşturulan adlara sahiptir. <br/><b>-Mergefiles</b>: kaynak klasördeki tüm dosyaları tek bir dosya ile birleştirir. Dosya adı belirtilmişse, birleştirilmiş dosya adı belirtilen addır. Aksi takdirde, otomatik olarak oluşturulan bir dosya adıdır. | No       |
-| maxConcurrentConnections | Depolama deposuna eşzamanlı olarak bağlanabilecek bağlantı sayısı. Yalnızca veri deposuyla eşzamanlı bağlantıyı sınırlandırmak istediğinizde bir değer belirtin. | No       |
+| maxConcurrentConnections | Etkinlik çalışması sırasında veri deposuna kurulan eşzamanlı bağlantıların üst sınırı. Yalnızca eş zamanlı bağlantıları sınırlandırmak istediğinizde bir değer belirtin. | No       |
 | useTempFileRename | Geçici dosyalara yüklenip yüklenmeyeceğini ve yeniden adlandırıp, hedef klasöre veya dosya konumuna doğrudan yazmayı belirtin. Varsayılan olarak, Azure Data Factory ilk olarak geçici dosyalara yazar ve ardından karşıya yükleme tamamlandığında onları yeniden adlandırır. Bu sıra, (1) aynı dosyaya yazma işleminin diğer işlemleriniz varsa ve (2) aktarım sırasında dosyanın orijinal sürümünün mevcut olduğundan emin olmak için, bozuk bir dosyaya neden olabilecek çakışmaların önlenmesine yardımcı olur. SFTP sunucunuz bir yeniden adlandırma işlemini desteklemiyorsa, bu seçeneği devre dışı bırakın ve hedef dosyaya eşzamanlı bir yazma işlemi olmadığından emin olun. Daha fazla bilgi için, bu tablonun sonundaki sorun giderme ipucu 'na bakın. | Hayır. Varsayılan değer *true*'dur. |
 | operationTimeout | Her yazma isteğinin SFTP sunucusuna zaman aşımına uğramadan önce bekleme süresi. Varsayılan değer 60 dakikadır (01:00:00).|No |
 
@@ -422,7 +457,7 @@ Etkinlik özelliklerini silme hakkında daha fazla bilgi için bkz. [Azure Data 
 |:--- |:--- |:--- |
 | tür | Kopyalama etkinliği kaynağının *Type* özelliği *filesystemsource* olarak ayarlanmalıdır |Yes |
 | öz | Verilerin alt klasörlerden veya yalnızca belirtilen klasörden özyinelemeli olarak okunup okunmadığını gösterir. Özyinelemeli değeri *true* olarak ayarlandığında ve havuz dosya tabanlı bir deposa, boş klasörler ve alt klasörler havuzda kopyalanmaz veya oluşturulmaz.<br/>İzin verilen değerler *doğru* (varsayılan) ve *yanlış* | No |
-| maxConcurrentConnections | Aynı anda bir depolama deposuna bağlanabilecek bağlantı sayısı. Yalnızca veri deposuyla eş zamanlı bağlantıları sınırlandırmak istediğinizde bir sayı belirtin. | No |
+| maxConcurrentConnections |Etkinlik çalışması sırasında veri deposuna kurulan eşzamanlı bağlantıların üst sınırı. Yalnızca eş zamanlı bağlantıları sınırlandırmak istediğinizde bir değer belirtin.| No |
 
 **Örnek:**
 

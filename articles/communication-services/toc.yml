@@ -105,7 +105,8 @@
     - name: Veri ve Işlemler
       items:
         - name: Hizmet olayları (EventGrid)
-          href: concepts/event-handling.md
+          href: ../event-grid/event-schema-communication-services.md
+          maintainContext: true
         - name: Günlüğe kaydetme ve tanılama
           href: concepts/logging-and-diagnostics.md
         - name: Ölçümler

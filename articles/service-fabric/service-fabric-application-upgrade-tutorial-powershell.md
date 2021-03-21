@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 8/5/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 4b038f4a41ee02960a02c4445b65eb2360a75761
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98792040"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>PowerShell kullanarak uygulama yükseltmesini Service Fabric
@@ -56,7 +56,7 @@ Visual Studio 'da projeyi oluşturduktan sonra, uygulama paketini ımabir görü
 ## <a name="step-2-update-the-visual-objects-sample"></a>2. Adım: görsel nesneler örneğini güncelleştirme
 Adım 1 ' de dağıtılan sürümde, görsel nesnelerin döndürüleceğini fark edebilirsiniz. Bu uygulamayı görsel nesnelerin de her yerde de döndürelim.
 
-VisualObjects çözüm içindeki VisualObjects. ActorService projesini seçin ve StatefulVisualObjectActor.cs dosyasını açın. Bu dosya içinde yöntemine gidin `MoveObject` , yorum yapın ve açıklama ekleyin `this.State.Move()` `this.State.Move(true)` . Bu değişiklik, hizmet yükseltildikten sonra nesneleri döndürür.
+VisualObjects çözümü içinde VisualObjects. ActorService projesini seçin ve StatefulVisualObjectActor. cs dosyasını açın. Bu dosya içinde yöntemine gidin `MoveObject` , yorum yapın ve açıklama ekleyin `this.State.Move()` `this.State.Move(true)` . Bu değişiklik, hizmet yükseltildikten sonra nesneleri döndürür.
 
 Ayrıca, Project **Visualobjects. ActorService**'ın *ServiceManifest.xml* dosyasını (PackageRoot altında) de güncelleştirmeniz gerekir. *CodePackage* ve hizmet sürümünü 2,0 olarak ve *ServiceManifest.xml* dosyasında karşılık gelen satırları güncelleştirin.
 Bildirim dosyasının değişiklik yapması için çözüme sağ tıkladıktan sonra Visual Studio *bildirim dosyalarını Düzenle* seçeneğini kullanabilirsiniz.

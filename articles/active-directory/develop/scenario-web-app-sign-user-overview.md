@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: dbd4923dd2843ab2c043da69f1b72efd8e1eb701
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: 0bbc799f946d318c305a96d9cb8c6831d9242ff6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103573056"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578303"
 ---
 # <a name="scenario-web-app-that-signs-in-users"></a>Senaryo: kullanıcılarda oturum açan Web uygulaması
 
@@ -43,6 +43,12 @@ Java geliştiricisiyseniz aşağıdaki hızlı başlangıcı deneyin:
 
 [Hızlı başlangıç: Microsoft 'a Java Web uygulamasına oturum açma ekleme](quickstart-v2-java-webapp.md)
 
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Node.js geliştirici iseniz aşağıdaki hızlı başlangıcı deneyin:
+
+[Hızlı başlangıç: Microsoft 'a Node.js Web uygulamasına oturum açma ekleme](quickstart-v2-nodejs-webapp-msal.md)
+
 # <a name="python"></a>[Python](#tab/python)
 
 Python ile geliştirirseniz, aşağıdaki hızlı başlangıcı deneyin:
@@ -62,7 +68,7 @@ Web Apps bir kullanıcının kimliğini bir Web tarayıcısında doğrular. Bu s
 İkinci bir aşamada, uygulamanızı oturum açmış kullanıcı adına Web API 'Leri çağırabilmesini sağlayabilirsiniz. Bu sonraki aşama, Web [API 'lerini çağıran Web](scenario-web-app-call-api-overview.md)uygulamasında bulacağınız farklı bir senaryodur.
 
 > [!NOTE]
-> Web uygulamasına oturum açma ekleme, Web uygulamasını koruma ve  **Ara yazılım** kitaplıklarının yaptığı bir kullanıcı belirtecini doğrulama ile ilgilidir. .NET söz konusu olduğunda, bu senaryo, korumalı API 'Leri çağırmak için bir belirteç almak üzere Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) henüz gerektirmez. Web uygulamasının Web API 'Lerini çağırması gerektiğinde, izleme senaryosunda kimlik doğrulama kitaplıkları tanıtılacaktır.
+> Web uygulamasına oturum açma ekleme, Web uygulamasını koruma ve  **Ara yazılım** kitaplıklarının yaptığı bir kullanıcı belirtecini doğrulama ile ilgilidir. .NET söz konusu olduğunda, bu senaryo, korumalı API 'Leri çağırmak için bir belirteç almak üzere Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) henüz gerektirmez. Web uygulamasının Web API 'Lerini çağırması gerektiğinde, .NET için kimlik doğrulama kitaplıkları, izleme senaryosunda tanıtılacaktır.
 
 ## <a name="specifics"></a>Özelliklerini
 
@@ -87,6 +93,10 @@ Bu senaryonun [uygulama kaydı](./scenario-web-app-sign-user-app-registration.md
 # <a name="java"></a>[Java](#tab/java)
 
 Bu senaryonun [uygulama kaydı](./scenario-web-app-sign-user-app-registration.md?tabs=java)olan sonraki makaleye geçin.
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Bu senaryonun [uygulama kaydı](./scenario-web-app-sign-user-app-registration.md?tabs=nodejs)olan sonraki makaleye geçin.
 
 # <a name="python"></a>[Python](#tab/python)
 

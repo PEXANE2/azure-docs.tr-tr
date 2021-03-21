@@ -5,59 +5,102 @@ author: mimcco
 ms.author: mimcco
 ms.service: azure-percept
 ms.topic: how-to
-ms.date: 02/18/2021
+ms.date: 03/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 7f5e5e4da9fea671fc85a55fc8cc191fa14b720f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 12f6acda632b9c0fbee2db570df5293c1daf32ea
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101663853"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720823"
 ---
 # <a name="how-to-update-azure-percept-dk-over-a-usb-connection"></a>Azure Percept DK 'yi USB bağlantısı üzerinden güncelleştirme
 
-Azure Percept DK 'nin taşıyıcı panosuna yönelik bir USB güncelleştirmesi gerçekleştirmeyi öğrenmek için bu kılavuzu izleyin.
+-Air (OTA) güncelleştirmelerinin kullanılması, Dev Kit 'in işletim sistemini ve bellenimini güncel tutmanın en iyi yöntemidir; ancak, güncelleştirme (veya "yanıp sönen"), bir USB bağlantısı üzerinden Dev Kit 'in gerekli olduğu senaryolar vardır:
+
+- Bağlantı veya diğer teknik sorunlar nedeniyle OTA güncelleştirmesi mümkün değil
+- Cihazın fabrika durumuna geri sıfırlanması gerekir
+
+Bu kılavuzda, bir USB bağlantısı üzerinden Dev Kit 'in işletim sistemini ve bellenimini başarıyla güncelleştirme hakkında gösterilmektedir.
+
+> [!WARNING]
+> Geliştirme kitinizi USB üzerinden güncellemek, cihazdaki AI modelleri ve kapsayıcıları dahil tüm mevcut verileri siler.
+>
+> Sırayla tüm yönergeleri izleyin. Adımları atlamak Dev Kit 'i kullanılamaz duruma getirebilir.
 
 ## <a name="prerequisites"></a>Önkoşullar
-- Kullanılabilir bir USB-C veya USB-bir bağlantı noktası olan bilgisayar.
-- Azure Percept DK (Dev Kit) taşıyıcı panosu ve USB-C ' y i USB-C kablosu ile sağlanan. Ana bilgisayarınızda USB-A bağlantı noktası varsa ancak USB-C bağlantı noktası yoksa, USB-C ' y i USB-A kablosu (ayrı olarak satılır) kullanabilirsiniz.
-- [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) 'yi (yönetici erişimi gerekir) yükle.
-- NXP UUU aracını yükler. [En son sürüm](https://github.com/NXPmicro/mfgtools/releases) uuu.exe dosyasını (Windows için) veya uuu dosyasını (Linux Için) varlıklar sekmesi altında indirin.
-- [7-zip ' i yükler](https://www.7-zip.org/). Bu yazılım, Ham görüntü dosyasının XZ sıkıştırılmış dosyasından ayıklanması için kullanılacaktır. Uygun. exe dosyasını indirin ve yükleyin.
 
-## <a name="steps"></a>Adımlar
-1.  Aşağıdaki [üç USB güncelleştirme dosyasını](https://go.microsoft.com/fwlink/?linkid=2155734)indirin:
-    - pe101-UEFI-***&lt; sürüm numarası &gt;***. RAW. XZ
-    - emmc_full.txt
+- Azure Percept DK
+- Wi-Fi özelliğine sahip bir Windows, Linux veya OS X tabanlı ana bilgisayar ve kullanılabilir USB-C veya USB-A bağlantı noktası
+- USB-C-USB-kablosu (isteğe bağlı, ayrı olarak satılır)
+- [Azure PERCEPT dk kurulum deneyimi](./quickstart-percept-dk-set-up.md) SıRASıNDA oluşturulan SSH oturum açma bilgileri
+
+## <a name="download-software-tools-and-update-files"></a>Yazılım araçlarını ve güncelleştirme dosyalarını indirin
+
+1. [NXP UUU aracı](https://github.com/NXPmicro/mfgtools/releases). **En son sürüm** uuu.exe dosyasını (Windows için) veya uuu dosyasını (Linux Için) **varlıklar** sekmesi altında indirin.
+
+1. [7-zip](https://www.7-zip.org/). Bu yazılım, Ham görüntü dosyasının XZ sıkıştırılmış dosyasından ayıklanması için kullanılacaktır. Uygun. exe dosyasını indirin ve yükleyin.
+
+1. [Güncelleştirme dosyalarını indirin](https://go.microsoft.com/fwlink/?linkid=2155734).
+
+1. Üç derleme yapıtlarının tümünün mevcut olduğundan emin olun:
+    - Azure-Percept-DK-*&lt; sürüm numarası &gt;*. RAW. XZ
     - Fast-HAB-fw. RAW
- 
-1. _Sıkıştırılmış pe101-UEFI_**&lt; &gt;** * _&lt; sürüm numarası &gt;_* *. RAW. XZ dosyasından pe101-UEFI-* sürüm numarası. RAW konumuna ayıklayın. Nasıl ayıklanabildiğinizden emin değil misiniz? 7-zip indirin ve yükleyin, ardından **. XZ** görüntü dosyasına sağ tıklayın ve burada 7-Zip ayıkla ' yı seçin &gt; .
+    - emmc_full.txt
 
-1. Aşağıdaki üç dosyayı UUU aracını içeren klasöre kopyalayın:
-    - Ayıklanan pe101-UEFI-***&lt; sürüm numarası &gt;***. RAW dosyası (adım 2 ' den).
-    - emmc_full.txt (1. adım).
-    - Fast-HAB-fw. RAW (1. adım).
- 
-1. Geliştirme setinde güç.
-1. [SSH üzerinden Dev Kit 'e bağlanma](./how-to-ssh-into-percept-dk.md)
-1. Bir Windows komut istemi (Start &gt; cmd) veya Linux terminali açın ve güncelleştirme dosyalarının depolandığı klasöre gidin. Güncelleştirmeyi başlatmak için aşağıdaki komutu çalıştırın:
-    - Windows: ```uuu -b emmc_full.txt fast-hab-fw.raw pe101-uefi-<version number>.raw```
-    - Linux: ```sudo ./uuu -b emmc_full.txt fast-hab-fw.raw pe101-uefi-<version number>.raw```
-    
-Bu komutları çalıştırdıktan sonra, "cihaz bekleniyor..." iletisini bildiren bir ileti görebilirsiniz. komut isteminde. Bu beklenen bir sonraki adıma ilerlemeniz gerekir.
-    
-1. Geliştirme Seti taşıyıcısı panosunu, USB kablosu üzerinden ana bilgisayara bağlayın. Hangi bağlantı noktalarının kullanılabilir olduğuna bağlı olarak, her zaman taşıyıcı panolar USB-C bağlantı noktasından ana bilgisayarın USB-C veya USB-A bağlantı noktasına (USB-C ' y e, ayrı satılan bir kablo) bağlanın. 
- 
-1. SSH/PuTTY terminalinde, Dev Kit 'i USB moduna ayarlamak için aşağıdaki komutları girin ve ardından Dev Kit 'i yeniden başlatın.
-    - ```flagutil    -wBfRequestUsbFlash    -v1```
-    - ```reboot -f```
- 
-1. Ana bilgisayarın cihazı tanıdığını ve güncelleştirme işleminin otomatik olarak başlatılacağını belirten bir bildirim alabilirsiniz. Durumu görmek için komut istemine geri gidin. İşlem on dakikaya kadar sürer ve güncelleştirme başarılı olduğunda "başarı 1 hatası 0" belirten bir ileti görürsünüz
- 
-1. Güncelleştirme tamamlandıktan sonra, taşıyıcı panosunu kapatın. USB kablosunu BILGISAYARDAN çıkarın.  Azure Percept Vision modülünü USB kablosunu kullanarak taşıyıcı panosuna takın.
+## <a name="set-up-your-environment"></a>Ortamınızı ayarlama
 
-1. Taşıyıcı panonun yeniden gücünü yapın.
+1. Ana bilgisayarda komut satırı aracılığıyla kolayca erişim sağlayan bir konumda bir klasör/dizin oluşturun.
+
+1. UıUU aracını (**uuu.exe** veya **uuu**) yeni klasöre kopyalayın.
+
+1. Azure- **Percept-dk-*&lt; sürüm numarası &gt;*. RAW. XZ** üzerine sağ tıklayıp, burada **7-zip** Ayıkla ' yı seçerek **Azure-Percept-dk-*&lt; &gt; sürüm numarası*. RAW** dosyasını sıkıştırılmış dosyadan ayıklayın &gt; .
+
+1. Ayıklanan **Azure-Percept-dk-*&lt; sürüm numarası &gt;*. RAW** dosyasını, **Fast-HAB-fw. RAW**' ı ve **emmc_full.txt** , uuu aracını içeren klasöre taşıyın.
+
+## <a name="update-your-device"></a>Cihazınızı güncelleştirme
+
+1. [Geliştirme setinizdeki SSH](./how-to-ssh-into-percept-dk.md).
+
+1. Sonra, bir Windows komut istemi (**Start**  >  **cmd**) veya Linux terminali açın ve güncelleştirme dosyalarının ve uuu aracının depolandığı klasöre gidin. Bilgisayarınızı bir düzleştirilebilir cihaz alacak şekilde hazırlamak için komut istemine veya terminale aşağıdaki komutu girin:
+
+    - Windows:
+
+        ```bash
+        uuu -b emmc_full.txt fast-hab-fw.raw Azure-Percept-DK-<version number>.raw 
+        ```
+
+    - Linux:
+
+        ```bash
+        sudo ./uuu -b emmc_full.txt fast-hab-fw.raw Azure-Percept-DK-<version number>.raw
+        ```
+
+1. Azure Percept Vision cihazının, taşıyıcı panonun USB-C bağlantı noktasından bağlantısını kesin.
+
+1. Sağlanan USB-C kablosunu taşıyıcı panonun USB-C bağlantı noktasına ve ana bilgisayarın USB-C bağlantı noktasına bağlayın. Bilgisayarınızda yalnızca bir USB-A bağlantı noktası varsa, taşıyıcı panosuna ve ana bilgisayara USB-C ' y i USB-bir kablo bağlayın (ayrı olarak satılır).
+
+1. SSH istemcisi isteminde aşağıdaki komutları girin:
+
+    1. Cihazı USB güncelleştirme moduna ayarla:
+
+        ```bash
+        sudo flagutil    -wBfRequestUsbFlash    -v1
+        ```
+
+    1. Cihazı yeniden başlatın. Güncelleştirme yüklemesi başlatılır.
+
+        ```bash
+        sudo reboot -f
+        ```
+
+1. Diğer komut istemine veya terminale geri gidin. Güncelleştirme tamamlandığında şunları içeren bir ileti görürsünüz ```Success 1    Failure 0``` :
+
+    > [!NOTE]
+    > Güncelleştirme sonrasında cihazınız fabrika ayarlarına sıfırlanır ve Wi-Fi bağlantınız ve SSH oturum açma bilgilerinizi kaybedersiniz.
+
+1. Güncelleştirme tamamlandıktan sonra, taşıyıcı panosunu kapatın. USB kablosunu BILGISAYARDAN çıkarın.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Geliştirme Seti artık başarıyla güncelleştirildi. Devkit ile geliştirme ve işleme devam edebilirsiniz.
+Cihazınızı yeniden yapılandırmak için [Azure PERCEPT dk kurulum deneyimiyle](./quickstart-percept-dk-set-up.md) çalışın.

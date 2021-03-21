@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: trbye
-ms.openlocfilehash: 78639386c9d836055d80566f4b84565c2c3b8e80
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 41cf1646d75080bc5b5996504ce8711edfae89fa
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/19/2021
-ms.locfileid: "104612861"
+ms.locfileid: "104719626"
 ---
 Bu hızlı başlangıçta, konuşma SDK 'sını kullanarak metinden konuşmaya senşlerini kullanmaya yönelik yaygın tasarım düzenlerini öğrenirsiniz. Temel yapılandırma ve birleştirme işlemleri gerçekleştirerek başlar ve aşağıdakiler de dahil olmak üzere özel uygulama geliştirme için daha gelişmiş örneklere geçin:
 
@@ -115,7 +115,7 @@ Programı çalıştırın ve belirttiğiniz konuma bir sentezlenmiş `.wav` dosy
 
 ## <a name="synthesize-to-speaker-output"></a>Konuşmacı çıktısına sentezleştirme
 
-Bazı durumlarda, doğrudan sentezlenmiş konuşmayı doğrudan bir konuşmacının çıktısını almak isteyebilirsiniz. Bunu yapmak için `AudioConfig` Yukarıdaki örnekte oluştururken param ' ı atlayın `SpeechSynthesizer` . Bu, geçerli etkin çıkış cihazına çıkış verir.
+Bazı durumlarda, doğrudan sentezlenmiş konuşmayı doğrudan bir konuşmacının çıktısını almak isteyebilirsiniz. Bunu yapmak için `AudioConfig` Yukarıdaki örnekte oluştururken parametresini atlayın `SpeechSynthesizer` . Bu, geçerli etkin çıkış cihazını birleştirdi.
 
 ```cpp
 void synthesizeSpeech()
@@ -255,10 +255,10 @@ Bir sinir sesinize geçiş yapmak için, `name` [sinir Voice seçeneklerinden](.
 </speak>
 ```
 
-## <a name="visemes"></a>Visemes
+## <a name="get-facial-pose-events"></a>Yüz poz olaylarını al
 
-Konuşma genellikle yüz ifadelerin animasyonunu sağlamak için iyi bir yöntem olarak değerlendirilir.
-Genellikle, gözlemlenen konuşmayla ilgili önemli pozları (örneğin, LIP 'ler, Jaw ve belirli bir phoneu oluştururken dil) göstermek için, genellikle [visemes](../../../how-to-speech-synthesis-viseme.md) kullanılır.
-Yüz animasyon verileri oluşturmak için konuşma SDK 'sında viseme olayına abone olabilirsiniz.
-Ardından, yüz animasyonunu gerçekleştirmek için bu tür verileri bir karaktere uygulayabilirsiniz.
-[Viseme çıkışlarını alma hakkında](../../../how-to-speech-synthesis-viseme.md#get-viseme-outputs-with-the-speech-sdk)bilgi edinin.
+Konuşma, yüz ifadelerinin animasyonunu sağlamak için iyi bir yol olabilir.
+Genellikle [visemes](../../../how-to-speech-synthesis-viseme.md) , belirli bir phoneme oluşturma sırasında LIP 'ler, Jaw ve dil sistemi gibi gözlemlenen konuşmayla ilgili önemli pozları temsil etmek için kullanılır.
+Konuşma SDK 'sında viseme olayına abone olabilirsiniz.
+Daha sonra, konuşma sesi oynatılırken bir karakter yüzünüzü hareketlendirmek için viseme olaylarını uygulayabilirsiniz.
+[Viseme olaylarını nasıl alabileceğinizi](../../../how-to-speech-synthesis-viseme.md#get-viseme-events-with-the-speech-sdk)öğrenin.

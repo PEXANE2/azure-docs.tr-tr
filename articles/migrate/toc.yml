@@ -73,7 +73,7 @@
     - name: Kapsayıcılı hale getirme
       items:
         - name: ASP.NET uygulamaları kapsayıklaın ve AKS 'e geçiş
-          href: tutorial-containerize-aspnet-kubernetes.md
+          href: tutorial-app-containerization-aspnet-kubernetes.md
         - name: Java Web uygulamalarını kapsayıklaın ve AKS 'e geçirin
           href: tutorial-containerize-java-kubernetes.md
 - name: Kavramlar

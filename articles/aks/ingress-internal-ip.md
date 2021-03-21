@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service (AKS) kümesinde iç, özel ağ için bir NGıNX giriş denetleyicisi yüklemeyi ve yapılandırmayı öğrenin.
 services: container-service
 ms.topic: article
-ms.date: 08/17/2020
-ms.openlocfilehash: 976c5581ad217064da37b0b092d2d634d30cb7e5
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.date: 03/16/2021
+ms.openlocfilehash: 3201f510db9970b7db548ee6a3348fa68d278248
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98729170"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601474"
 ---
 # <a name="create-an-ingress-controller-to-an-internal-virtual-network-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde iç sanal ağa giriş denetleyicisi oluşturma
 
@@ -232,7 +232,7 @@ ingress.extensions/hello-world-ingress created
 Giriş denetleyicisinin yollarını test etmek için, bir Web istemcisi ile iki uygulamaya gidin. Gerekirse, AKS kümesindeki bir pod 'dan yalnızca iç bu işlevselliği hızlıca test edebilirsiniz. Bir test Pod oluşturun ve buna bir terminal oturumu ekleyin:
 
 ```console
-kubectl run -it --rm aks-ingress-test --image=debian --namespace ingress-basic
+kubectl run -it --rm aks-ingress-test --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 --namespace ingress-basic
 ```
 
 Şunu `curl` kullanarak Pod 'a yüklensin `apt-get` :

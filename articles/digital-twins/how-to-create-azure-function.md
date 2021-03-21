@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7bb9b6d4a6ca006952d709244e6526345d44431e
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: f1ed4b9beda9848bba8fb12783f49dcf8016d3dd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102630275"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104590628"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>Verileri işlemek için Azure 'da işlev uygulamalarına bağlanma
 
@@ -48,7 +48,7 @@ Visual Studio 2019 ' de _dosya > yeni > proje_ ' yi seçin ve _Azure işlevleri_
 
 :::image type="content" source="media/how-to-create-azure-function/event-grid-trigger-function.png" alt-text="Yeni bir Azure Işlevleri uygulaması oluşturmak için iletişim kutusunu gösteren Visual Studio ekran görüntüsü. Event Grid tetikleyici seçeneği vurgulanır.":::
 
-İşlev uygulamanız oluşturulduktan sonra Visual Studio, proje klasörünüzdeki bir **function1.cs** dosyasında kod örneği oluşturur. Bu kısa işlev olayları günlüğe kaydetmek için kullanılır.
+İşlev uygulamanız oluşturulduktan sonra Visual Studio, proje klasörünüzdeki bir **işlev1. cs** dosyasında bir kod örneği oluşturur. Bu kısa işlev olayları günlüğe kaydetmek için kullanılır.
 
 :::image type="content" source="media/how-to-create-azure-function/visual-studio-sample-code.png" alt-text="Oluşturulan yeni proje için proje penceresinde Visual Studio 'nun ekran görüntüsü. Işlev1 adlı örnek bir işlev için kod vardır." lightbox="media/how-to-create-azure-function/visual-studio-sample-code.png":::
 
@@ -63,13 +63,13 @@ SDK 'yı kullanmak için aşağıdaki paketleri projenize eklemeniz gerekir. Pak
 * [System .net. http](https://www.nuget.org/packages/System.Net.Http/)
 * [Azure. Core](https://www.nuget.org/packages/Azure.Core/)
 
-Ardından, Visual Studio Çözüm Gezgini, örnek kodunuzun bulunduğu _function1.cs_ dosyasını açın ve `using` Bu paketler için aşağıdaki deyimlerini işlevlerinize ekleyin.
+Ardından, Visual Studio Çözüm Gezgini, örnek kodunuzun bulunduğu _işlev1. cs_ dosyasını açın ve `using` Bu paketler için aşağıdaki deyimlerini işlevlerinize ekleyin.
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="Function_dependencies":::
 
 ## <a name="add-authentication-code-to-the-function"></a>İşleve kimlik doğrulama kodu ekleyin
 
-Artık sınıf düzeyi değişkenleri bildirecektir ve işlevin Azure dijital TWINS 'e erişmesine izin verecek kimlik doğrulama kodu eklersiniz. _Function1.cs_ dosyasına aşağıdaki işlevi ekleyin.
+Artık sınıf düzeyi değişkenleri bildirecektir ve işlevin Azure dijital TWINS 'e erişmesine izin verecek kimlik doğrulama kodu eklersiniz. _İşlev1. cs_ dosyasındaki işlevinizi aşağıda bulabilirsiniz.
 
 * Bir **ortam değişkeni** olarak Azure Digital TWINS hizmet URL 'sini okumak için kod. Hizmet URL 'sini, işlevinde sabit kodlamak yerine, bir ortam değişkeninden okumak iyi bir uygulamadır. Bu ortam değişkeninin değerini [daha sonra bu makalede](#set-up-security-access-for-the-function-app)ayarlayacaksınız. Ortam değişkenleri hakkında daha fazla bilgi için bkz. [*işlev uygulamanızı yönetme*](../azure-functions/functions-how-to-use-azure-function-app-settings.md?tabs=portal).
 
@@ -118,12 +118,14 @@ Azure CLı veya Azure portal kullanarak işlev uygulaması için güvenlik eriş
 # <a name="cli"></a>[CLI](#tab/cli)
 
 Bu komutları, [Azure Cloud Shell](https://shell.azure.com) veya [yerel bir Azure CLI yüklemesinde](/cli/azure/install-azure-cli)çalıştırabilirsiniz.
+Azure dijital TWINS örneğiniz için _**Azure dijital TWINS veri sahibi**_ rolünü sağlamak üzere, uygulamanın sistem tarafından yönetilen kimliğini kullanabilirsiniz. Bu, veri düzlemi etkinliklerini gerçekleştirmek için örnekte işlev uygulamasına izin verir. Daha sonra, bir ortam değişkeni ayarlayarak Azure dijital TWINS örneğinin URL 'sini işlevinizle erişilebilir yapın.
 
 ### <a name="assign-access-role"></a>Erişim rolü ata
 
+[!INCLUDE [digital-twins-permissions-required.md](../../includes/digital-twins-permissions-required.md)]
+
 Önceki örneklerden iskelet işlevi, Azure Digital TWINS ile kimlik doğrulaması yapabilmek için bir taşıyıcı belirtecinin kendisine geçirilmesini gerektirir. Bu taşıyıcı belirtecin geçirildiğinden emin olmak için, işlev uygulaması için Azure dijital TWINS 'e erişmek üzere [yönetilen hizmet kimliği (MSI)](../active-directory/managed-identities-azure-resources/overview.md) izinleri ayarlamanız gerekir. Bu, her bir işlev uygulaması için yalnızca bir kez yapılmalıdır.
 
-Azure dijital TWINS örneğiniz için _**Azure dijital TWINS veri sahibi**_ rolünü sağlamak üzere, uygulamanın sistem tarafından yönetilen kimliğini kullanabilirsiniz. Bu, veri düzlemi etkinliklerini gerçekleştirmek için örnekte işlev uygulamasına izin verir. Daha sonra, bir ortam değişkeni ayarlayarak Azure dijital TWINS örneğinin URL 'sini işlevinizle erişilebilir yapın.
 
 1. İşlev için sistem tarafından yönetilen kimliğin ayrıntılarını görmek için aşağıdaki komutu kullanın. Çıktıda _PrincipalId_ alanını bir yere göz atın.
 
@@ -162,6 +164,8 @@ az functionapp config appsettings set -g <your-resource-group> -n <your-App-Serv
 [Azure Portal](https://portal.azure.com/)aşağıdaki adımları izleyin.
 
 ### <a name="assign-access-role"></a>Erişim rolü ata
+
+[!INCLUDE [digital-twins-permissions-required.md](../../includes/digital-twins-permissions-required.md)]
 
 Bir sistem tarafından atanmış yönetilen kimlik, Azure kaynaklarının kimlik bilgilerini kodda depolamadan (örneğin, Azure Key Vault) kimlik doğrulaması yapmasına olanak sağlar. Etkinleştirildikten sonra, tüm gerekli izinler Azure rol tabanlı erişim denetimi aracılığıyla verilebilir. Bu tür yönetilen kimliğin yaşam döngüsü, bu kaynağın yaşam döngüsüne bağlıdır. Ayrıca, her kaynağa yalnızca bir sistem tarafından atanmış yönetilen kimlik olabilir.
 

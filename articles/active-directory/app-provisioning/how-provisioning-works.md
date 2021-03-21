@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 048adee21d5c2e49ef02f518002a1dc6025c1ecd
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 19ec3ec95fbbccbaa5c646c8de16999b86349626
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988978"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579459"
 ---
 # <a name="how-provisioning-works"></a>Sağlama nasıl çalışır?
 
@@ -138,7 +138,7 @@ ServiceNow, G Suite ve Box gibi bazı uygulamalar yalnızca kullanıcıları sa�
 Sağlama Hizmeti, [her uygulamaya özgü öğreticide](../saas-apps/tutorial-list.md)tanımlanan aralıklarda sonsuza kadar sürekli artımlı Döngülerde çalışmaya devam eder. Artımlı döngüler aşağıdaki olaylardan biri gerçekleşene kadar devam eder:
 
 - Hizmet, Azure portal kullanılarak veya uygun Microsoft Graph API komutu kullanılarak el ile durdurulur.
-- Yeni bir başlangıç çevrimi, Azure portal **durumu temizle ve yeniden Başlat** seçeneği kullanılarak veya uygun Microsoft Graph API komutu kullanılarak tetiklenir. Bu eylem tüm depolanmış filigranı temizler ve tüm kaynak nesnelerinin yeniden değerlendirilmesini sağlar.
+- Yeni bir başlangıç çevrimi, Azure portal **yeniden başlatma sağlama** seçeneği kullanılarak veya uygun Microsoft Graph API komutu kullanılarak tetiklenir. Bu eylem tüm depolanmış filigranı temizler ve tüm kaynak nesnelerinin yeniden değerlendirilmesini sağlar.
 - Öznitelik eşlemelerinde veya kapsam filtrelerinde değişiklik nedeniyle yeni bir başlangıç çevrimi tetiklenir. Bu eylem Ayrıca, depolanan tüm filigranı temizler ve tüm kaynak nesnelerinin yeniden değerlendirilmesini sağlar.
 - Sağlama işlemi, yüksek bir hata oranı nedeniyle karantinaya alınır (aşağıya bakın) ve dört haftadan uzun bir şekilde karantinayla kalır. Bu olay, hizmet otomatik olarak devre dışı bırakılır.
 
