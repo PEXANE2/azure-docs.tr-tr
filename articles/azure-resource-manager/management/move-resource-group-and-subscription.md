@@ -4,18 +4,18 @@ description: Kaynakları yeni bir kaynak grubuna veya aboneliğe taşımak için
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1218df618f7f5fa0787505cb4fcee67dd264ea76
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: 1dd8877324b7eb0aac3ac12e3eeadb7c75b7795e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103601398"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670214"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma
 
 Bu makalede, Azure kaynaklarını başka bir Azure aboneliğine veya aynı abonelik altındaki başka bir kaynak grubuna nasıl taşıyacağınız gösterilmektedir. Azure portalı, Azure PowerShell, Azure CLI veya REST API ile kaynakları taşıyabilirsiniz.
 
-Taşıma işlemi sırasında hem kaynak grubu hem de hedef grup kilitlenir. Taşıma tamamlanana kadar kaynak gruplarında yazma ve silme işlemleri engellenir. Bu kilit, kaynak gruplarındaki kaynakları ekleyemez, güncelleştiremez veya silemezsiniz. Bu, kaynakların dondurulmuş olduğu anlamına gelmez. Örneğin, bir SQL Server ve veritabanını yeni bir kaynak grubuna taşırsanız, veritabanını kullanan bir uygulama kesinti yaşmaz. Hala veritabanına okuma ve yazma olabilir. Kilit en fazla dört saat için en fazla dört saat olabilir, ancak çoğu zaman çok daha az zaman tamamlanır.
+Taşıma işlemi sırasında hem kaynak grubu hem de hedef grup kilitlenir. Taşıma tamamlanana kadar kaynak gruplarında yazma ve silme işlemleri engellenir. Bu kilit, kaynak gruplarındaki kaynakları ekleyemez, güncelleştiremez veya silemezsiniz. Bu, kaynakların dondurulmuş olduğu anlamına gelmez. Örneğin, bir Azure SQL mantıksal sunucusunu ve veritabanlarını yeni bir kaynak grubuna veya aboneliğe taşırsanız veritabanlarını kullanan uygulamalar kesinti yaşmaz. Yine de veritabanlarına okuma ve yazma yapılabilir. Kilit en fazla dört saat için en fazla dört saat olabilir, ancak çoğu zaman çok daha az zaman tamamlanır.
 
 Bir kaynağı taşıdığınızda yalnızca onu yeni bir kaynak grubuna veya aboneliğe taşımış olursunuz. Bu işlem kaynağın konumunu değiştirmez.
 

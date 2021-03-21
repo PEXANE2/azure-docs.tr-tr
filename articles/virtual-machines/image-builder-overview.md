@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: references_regions
 ms.reviewer: cynthn
-ms.openlocfilehash: 0e72c35af1f1990527b0154d2ba47a45d3f8b8c9
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 20bb6925f859d497046eb42bbafb5264826b77b7
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102425638"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604075"
 ---
 # <a name="preview-azure-image-builder-overview"></a>Önizleme: Azure Image Builder 'a genel bakış
 
@@ -70,7 +70,7 @@ Azure VM görüntü Oluşturucu, bir Azure Kaynak sağlayıcısı tarafından er
 
 Şablon Yapılandırması PowerShell, az CLı, ARM şablonları kullanılarak geçirilebilir ve Azure VM Image Builder DevOps görevi kullanılarak, bir görüntü şablonu kaynağı oluşturacağız. Görüntü şablonu kaynağı oluşturulduğunda, aboneliğinizde oluşturduğunuz hazırlama kaynak grubunu şu biçimde görürsünüz: IT_ \<DestinationResourceGroup> _\<TemplateName>_ \( GUID). Hazırlama kaynak grubu, ScriptURI özelliğinde, Shell, PowerShell özelleştirmesi dosyasında başvurulan dosya ve komut dosyalarını içerir.
 
-Görüntü şablonu kaynağında çağırabileceğiniz derlemeyi çalıştırmak için `Run` , hizmet daha sonra yapı IÇIN VM, ağ, disk, ağ bağdaştırıcısı vb. gibi ek kaynaklar dağıtır. Var olan bir sanal ağ görüntüsü Oluşturucu kullanmadan bir görüntü oluşturursanız, hizmet ortak IP ve NSG 'yi de dağıtır. bu hizmet, SSH veya WinRM kullanarak yapı VM 'sine bağlanır. Mevcut bir sanal ağı seçerseniz, hizmet Azure özel bağlantısı kullanılarak dağıtılır ve genel IP adresi gerekli değildir, görüntü Oluşturucu ağı hakkında daha fazla ayrıntı için [ayrıntıları](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-networking)gözden geçirin.
+Görüntü şablonu kaynağında çağırabileceğiniz derlemeyi çalıştırmak için `Run` , hizmet daha sonra yapı IÇIN VM, ağ, disk, ağ bağdaştırıcısı vb. gibi ek kaynaklar dağıtır. Var olan bir sanal ağ görüntüsü Oluşturucu kullanmadan bir görüntü oluşturursanız, hizmet ortak IP ve NSG 'yi de dağıtır. bu hizmet, SSH veya WinRM kullanarak yapı VM 'sine bağlanır. Mevcut bir sanal ağı seçerseniz, hizmet Azure özel bağlantısı kullanılarak dağıtılır ve genel IP adresi gerekli değildir, görüntü Oluşturucu ağı hakkında daha fazla ayrıntı için [ayrıntıları](./linux/image-builder-networking.md)gözden geçirin.
 
 Oluşturma tamamlandığında tüm kaynaklar silinecek, hazırlama kaynak grubu ve depolama hesabı dışında, bunları kaldırmak için görüntü şablonu kaynağını silecektir veya derlemeyi yeniden çalıştırmak için oradan bırakabilirsiniz.
 
@@ -84,7 +84,7 @@ Görüntü şablonu kaynağı sabittir ve kaynakların ve hazırlama kaynak grub
 
 Azure VM Image Builder 'ın görüntüleri yönetilen görüntülere veya paylaşılan bir görüntü galerisine dağıtmasını sağlamak için, görüntüleri okuma ve yazma izinlerine sahip Azure Kullanıcı tarafından atanan bir kimlik oluşturmanız gerekir. Azure depolama 'ya erişiyorsanız, bu durumda özel ve ortak kapsayıcıları okumak için izinler gerekir.
 
-İzinler [PowerShell](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-permissions-powershell)ve [az CLI](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-permissions-cli)için daha ayrıntılı olarak açıklanmıştır.
+İzinler [PowerShell](./linux/image-builder-permissions-powershell.md)ve [az CLI](./linux/image-builder-permissions-cli.md)için daha ayrıntılı olarak açıklanmıştır.
 
 ## <a name="costs"></a>Maliyetler
 Azure Image Builder ile görüntü oluştururken, derlerken ve depolarken bazı işlem, ağ ve depolama maliyetlerine tabi olursunuz. Bu maliyetler, el ile özel görüntüler oluşturma bölümünde tahakkuk eden maliyetlere benzer. Kaynaklar için Azure ücretlerinizi ücretlendirilecektir. 
@@ -101,4 +101,3 @@ Image Builder Şu anda yalnızca yerel olarak Hyper-V oluşturma (Gen1) 1 görü
 ## <a name="next-steps"></a>Sonraki adımlar 
  
 Azure görüntü Oluşturucu 'Yu denemek için [Linux](./linux/image-builder.md) veya [Windows](./windows/image-builder.md) görüntülerini oluşturma makalelerine bakın.
-

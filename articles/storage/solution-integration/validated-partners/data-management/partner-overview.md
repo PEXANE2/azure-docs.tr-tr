@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
 ms.openlocfilehash: 82ba49beb74fbc7b6f9d976d123fd9465d585d88
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103561626"
 ---
 # <a name="azure-storage-data-governance-management-and-migration-partners"></a>Azure depolama veri idare, yönetim ve geçiş iş ortakları
@@ -21,7 +21,7 @@ Bu makalede, Azure depolama ile tümleştirilmiş, genel veri yönetimi olanakla
 
 ## <a name="verified-partners"></a>Doğrulanan iş ortakları
 
-| İş Ortağı | Açıklama | Web sitesi/ürün bağlantısı |
+| İş Ortağı | Description | Web sitesi/ürün bağlantısı |
 | ------- | ----------- | -------------------- |
 |![Commkasası şirket logosu](./media/commvault-logo.jpg) |***Commvault**<br>Microsoft altyapısını Commkasasıyla kullanarak iyileştirin, koruyun, geçirin ve dizine alın. Microsoft merkezli ve Azure merkezli veri yönetimi çözümü olan Commkasasının tam veri korumasıyla verilerinizin denetimini alın. Commkasada, verileri nerede bulunduğuna bakılmaksızın yönetmeniz, geçirmeniz, erişmeniz ve kurtarmak için ihtiyacınız olan araçlar sağlanır ve maliyet ve risk azalır.|[İş ortağı sayfası](https://www.commvault.com/complete-data-protection)<br>[Azure Market](https://azuremarketplace.microsoft.com/marketplace/apps/commvault.commvault)|
 |![Veri Dynamics şirket logosu](./media/datadyn-logo.png) |**Veri dinamikleri**<br>Veri dinamikleri, karma ve çok bulut ortamları için yapılandırılmamış verileri yönetmek üzere kurumsal çözümler sunar. Birleştirilmiş yapılandırılmamış Veri Yönetimi platformu, verileri heterojen depolama ortamlarından (SMB, NFS veya S3 nesne) Azure 'a akıllıca ve verimli bir şekilde taşımanıza yardımcı olmak için analiz ve Otomasyonu kullanır. Platform, karma ve çok bulut ortamları için verilerin verimli bir şekilde yönetilmesini sağlayan sorunsuz tümleştirme, kurumsal ölçek ve performans sağlar. Kullanım örnekleri şunlardır: akıllı bulut geçişi, olağanüstü durum kurtarma, arşivleme, yedekleme ve altyapı iyileştirmesi ve veri yönetimi. |[İş ortağı sayfası](https://www.datadynamicsinc.com/ms-azure-partner/)<br>[Azure Market](https://azuremarketplace.microsoft.com/marketplace/apps/datadynamicsinc1581991927942.vm_2-preview?tab=Overview&flightCodes=18994ad6-20dc-4bdb-ae27-e7ef3263fa9e)|

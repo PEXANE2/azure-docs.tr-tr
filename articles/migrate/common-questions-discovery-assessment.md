@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.openlocfilehash: 6c4dfed27a105fad951ae12ca053b6d86772717a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102032577"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Keşif, değerlendirme ve bağımlılık analizi-genel sorular
@@ -39,7 +39,7 @@ En fazla 10.000 VMware VM, en fazla 5.000 Hyper-V VM ve tek bir gereç kullanara
 - Azure SQL veritabanı veya Azure SQL yönetilen örneği 'ne geçiş için, VMware ortamınızdan şirket içi SQL Server değerlendirmek istediğinizde, değerlendirme türü **Azure SQL** ' i kullanın. [Daha Fazla Bilgi](concepts-assessment-calculation.md)
 
     > [!Note]
-    > VMware ortamınızda çalışan SQL Server örnekleri ve veritabanlarının keşfi ve değerlendirmesi artık önizlemededir. Bu özelliği denemek için **Avustralya Doğu** bölgede bir proje oluşturmak üzere [**Bu bağlantıyı**](https://aka.ms/AzureMigrate/SQL) kullanın. Zaten Avustralya Doğu bir projeniz varsa ve bu özelliği denemek istiyorsanız, lütfen portalda bu [**önkoşulları**](how-to-discover-sql-existing-project.md) tamamladığınızdan emin olun.
+    > VMware ortamınızda çalışan SQL Server örnekleri ve veritabanlarının keşfi ve değerlendirmesi artık önizlemededir. Bu özelliği denemek için [**bu bağlantıyı**](https://aka.ms/AzureMigrate/SQL) kullanarak **Doğu Avustralya** bölgesinde bir proje oluşturun. Zaten Doğu Avustralya bölgesinde bir projeniz varsa ve bu özelliği denemek istiyorsanız, lütfen portalda bu [**önkoşulları**](how-to-discover-sql-existing-project.md) tamamladığınızdan emin olun.
 
 - Bu değerlendirme türünü kullanarak [Azure VMware çözümüne (AVS)](../azure-vmware/introduction.md) geçiş için şirket Içi [VMware VM](how-to-set-up-appliance-vmware.md) 'Lerinizi değerlendirmek istediğinizde **Azure VMware çözümü (AVS)** değerlendirmelerini kullanın. [Daha fazla bilgi edinin](concepts-azure-vmware-solution-assessment-calculation.md)
 
@@ -61,12 +61,12 @@ En fazla 10.000 VMware VM, en fazla 5.000 Hyper-V VM ve tek bir gereç kullanara
 
 ## <a name="why-is-performance-data-missing-for-someall-sql-instancesdatabases-in-my-azure-sql-assessment"></a>Azure SQL değerlendirmem içindeki bazı/tüm SQL örnekleri/veritabanları için performans verileri neden eksik?
 
-Performans verilerinin toplanmasını sağlamak için lütfen şunu denetleyin:
+Performans verilerinin toplandığından emin olmak için lütfen şunu denetleyin:
 
 - Değerlendirme oluşturduğunuz süre boyunca SQL Server 'lar açık ise
 - Azure geçişi 'nde SQL aracısının bağlantı durumu ' Connected ' ise ve son sinyali kontrol ederseniz 
 - Azure geçişi 'nin tüm SQL örnekleri için bağlantı durumu, bulunan SQL örneği dikey penceresinde ' bağlı ' ise
-- Tüm performans sayaçları eksikse, 443 (HTTPS) bağlantı noktalarında giden bağlantılara izin verildiğinden emin olun
+- Performans sayaçlarının hepsi eksikse 443 numaralı bağlantı noktası üzerinden giden bağlantılara (HTTPS) izin verildiğinden emin olun
 
 Performans sayaçlarından herhangi biri eksikse, Azure SQL değerlendirmesi Bu örnek/veritabanı için en küçük Azure SQL yapılandırmasını önerir.
 
@@ -76,45 +76,45 @@ Performans sayaçlarından herhangi biri eksikse, Azure SQL değerlendirmesi Bu 
 
 - Değerlendirmeyi oluşturduğunuz süre boyunca ortamınızın profilini oluşturmadınız. Örneğin değerlendirmeyi bir hafta olarak ayarlanmış performans süresiyle oluşturuyorsanız, toplanacak tüm veri noktalarının keşfini başlattıktan sonra en az bir hafta beklemeniz gerekir. Süre bekleyemez, lütfen performans süresini daha küçük bir süre değiştirin ve değerlendirmeyi **yeniden hesaplayın** .
  
-- Değerlendirme, değerlendirme süresinde sunucuların bazıları veya tümü için performans verilerini toplayamaz. Yüksek güvenilirlikli bir derecelendirme için lütfen şunları doğrulayın: 
+- Değerlendirme, değerlendirme süresi içinde sunucuların bir bölümü veya tümü için performans verilerini toplayamıyor. Yüksek güvenilirlikli bir derecelendirme için lütfen şunları doğrulayın: 
     - Değerlendirme süresi boyunca sunucular açık
     - 443 bağlantı noktalarında giden bağlantılara izin verilir
     - Hyper-V sunucuları için dinamik bellek etkin 
     - Azure geçişi 'ndeki aracıların bağlantı durumu ' Connected ' ve son sinyali denetle
     - Azure SQL değerlendirmelerinde, tüm SQL örnekleri için Azure geçişi bağlantı durumu bulunan SQL örneği dikey penceresinde "bağlandı" olarak ayarlanır
 
-    Lütfen değerlendirmeyi, güvenilirlikli derecelendirmede en son değişiklikleri yansıtacak şekilde **yeniden hesaplayın** .
+    Güvenilirlik derecelendirmesindeki en son değişiklikleri yansıtacak şekilde değerlendirmeyi **Yeniden Hesaplayın**.
 
 - Azure VM ve AVS değerlendirmelerinde, bulma başlatıldıktan sonra birkaç sunucu oluşturulmuştur. Örneğin, son bir ayın performans geçmişi için bir değerlendirme oluşturuyorsanız ancak ortamda yalnızca bir hafta önce birkaç sunucu oluşturuluyorsa. Bu durumda, yeni sunucular için performans verileri sürenin tamamına uygun olmayacaktır ve güvenirlik derecelendirmesi düşük olacaktır. [Daha fazla bilgi edinin](./concepts-assessment-calculation.md#confidence-ratings-performance-based)
 
 - Azure SQL değerlendirmelerinde, bulma başlatıldıktan sonra birkaç SQL örneği veya veritabanı oluşturuldu. Örneğin, son bir ayın performans geçmişi için bir değerlendirme oluşturuyorsanız ancak ortamda yalnızca bir hafta önce birkaç SQL örneği veya veritabanı oluşturuluyorsa. Bu durumda, yeni sunucular için performans verileri sürenin tamamına uygun olmayacaktır ve güvenirlik derecelendirmesi düşük olacaktır. [Daha fazla bilgi edinin](./concepts-azure-sql-assessment-calculation.md#confidence-ratings)
 
-## <a name="i-want-to-try-out-the-new-azure-sql-assessment-feature-in-azure-migrate"></a>Azure geçişi 'nde yeni Azure SQL değerlendirmesi özelliğini denemek istiyorum
-Bu özelliği denemek için **Avustralya Doğu** bölgede bir proje oluşturmak üzere [Bu bağlantıyı](https://go.microsoft.com/fwlink/?linkid=2155668L) kullanın.
-- Başlamak için [bulma](https://docs.microsoft.com/azure/migrate/tutorial-discover-vmware) ve [değerlendirme](https://docs.microsoft.com/azure/migrate/tutorial-assess-sql) öğreticilerine bakın.
-- VMware ortamınızda çalıştırılan SQL Server örneklerinin ve veritabanlarının keşfi ve değerlendirmesi Şu anda önizlemededir.
+## <a name="i-want-to-try-out-the-new-azure-sql-assessment-feature-in-azure-migrate"></a>Azure Geçişi'nde yeni Azure SQL değerlendirme özelliğini denemek istiyorum
+Bu özelliği denemek için [bu bağlantıyı](https://go.microsoft.com/fwlink/?linkid=2155668L) kullanarak **Doğu Avustralya** bölgesinde bir proje oluşturun.
+- Başlamak için [Bulma](https://docs.microsoft.com/azure/migrate/tutorial-discover-vmware) ve [değerlendirme](https://docs.microsoft.com/azure/migrate/tutorial-assess-sql) öğreticilerine bakın.
+- VMware ortamınızda çalıştırılan SQL Server örnekleri ve veritabanlarını bulma ve değerlendirme özelliğinin şu anda önizlemede olduğunu unutmayın.
 
 ## <a name="i-cant-see-some-servers-when-i-am-creating-an-azure-sql-assessment"></a>Azure SQL değerlendirmesi oluştururken bazı sunucuları göremiyorum
 
-- Azure SQL değerlendirmesi yalnızca SQL örneklerinin bulunduğu yerde çalışan sunucularda yapılabilir. Değerlendirmek istediğiniz sunucuları ve SQL örneklerini görmüyorsanız lütfen bulma işleminin tamamlanması için bir süre bekleyin ve ardından değerlendirmeyi oluşturun. 
+- Azure SQL değerlendirmesi yalnızca SQL örneklerinin bulunduğu, çalışan sunucularda yapılabilir. Değerlendirmek istediğiniz sunucuları ve SQL örneklerini göremiyorsanız bulma işleminin tamamlanması için bir süre bekleyin ve ardından değerlendirmeyi oluşturun. 
 - Değerlendirme oluştururken daha önce oluşturulmuş bir grubu göremiyorsanız, lütfen VMware olmayan sunucu veya bir SQL örneği olmayan herhangi bir sunucuyu gruptan kaldırın.
-- Azure 'da Azure SQL değerlendirmesi 'ni ilk kez çalıştırıyorsanız yeni bir sunucu grubu oluşturmanız önerilir.
+- Azure Geçişi'nde Azure SQL değerlendirmelerini ilk kez çalıştırıyorsanız, yeni bir sunucu grubu oluşturmanız önerilir.
 
 ## <a name="i-want-to-understand-how-was-the-readiness-for-my-instance-computed"></a>Örnek için nasıl hazırlık yapıldığını anlamak istiyorum?
-SQL örneklerinizin hazır olma durumu, hedeflenen Azure SQL dağıtım türü (Azure SQL veritabanı veya Azure SQL yönetilen örneği) ile bir özellik uyumluluğu denetimi yapıldıktan sonra hesaplandı. [Daha fazla bilgi edinin](./concepts-azure-sql-assessment-calculation.md#calculate-readiness)
+SQL örneklerinizin hazır olma durumu, hedeflenen Azure SQL dağıtım türü (Azure SQL Veritabanı veya Azure SQL Yönetilen Örneği) ile bir özellik uyumluluğu denetimi yapıldıktan sonra hesaplanmıştır. [Daha fazla bilgi edinin](./concepts-azure-sql-assessment-calculation.md#calculate-readiness)
 
 ## <a name="why-is-the-readiness-for-all-my-sql-instances-marked-as-unknown"></a>Neden tüm SQL örneklerim bilinmiyor olarak işaretlendi?
-Bulma işlemi son zamanlarda başlatılmışsa ve hala devam ediyorsa, bazı veya tüm SQL örneklerinin hazır olduğunu bilinmiyor olarak görebilirsiniz. Gerecin ortamı profilini oluşturup değerlendirmeyi yeniden hesaplayabilmeniz için bir süre beklemeniz önerilir.
+Bulma işlemi son zamanlarda başlatılmışsa ve hala devam ediyorsa, bazı veya tüm SQL örneklerinin hazır olduğunu bilinmiyor olarak görebilirsiniz. Aletin ortam profilini oluşturması için bir süre beklemeniz ve ardından değerlendirmeyi yeniden hesaplamanız önerilir.
 SQL bulma her 24 saatte bir gerçekleştirilir ve en son yapılandırma değişikliklerinin yansıtması için bir güne kadar beklemeniz gerekebilir. 
 
 ## <a name="why-is-the-readiness-for-some-of-my-sql-instances-marked-as-unknown"></a>SQL örneklerinden bazıları bilinmiyor olarak işaretlenme neden bilinmiyor?
 Bu durum şu durumlarda oluşabilir: 
-- Bulma hala devam ediyor. Gerecin ortamı profilini oluşturup değerlendirmeyi yeniden hesaplayabilmeniz için bir süre beklemeniz önerilir.
-- Hatalar ve bildirimler dikey penceresinde düzeltilmesi gereken bazı bulma sorunları vardır.
+- Bulma hala devam ediyor. Aletin ortam profilini oluşturması için bir süre beklemeniz ve ardından değerlendirmeyi yeniden hesaplamanız önerilir.
+- Hatalar ve bildirimler dikey penceresinde düzeltmeniz gereken bazı bulma sorunları var.
 
 SQL bulma her 24 saatte bir gerçekleştirilir ve en son yapılandırma değişikliklerinin yansıtması için bir güne kadar beklemeniz gerekebilir.
 
-## <a name="my-assessment-is-in-outdated-state"></a>Değerlendirmem güncel değil durumunda
+## <a name="my-assessment-is-in-outdated-state"></a>Değerlendirmem Süresi geçmiş durumda
 
 ### <a name="azure-vmavs-assessment"></a>Azure VM/AVS değerlendirmesi
 Değerlendirilen bir gruptaki VM 'lerde şirket içi değişiklikler varsa, değerlendirme güncelliğini yitirmiş olarak işaretlenir. Aşağıdaki özelliklerde bir veya daha fazla değişiklik olduğundan, bir değerlendirme "güncel değil" olarak işaretlenebilir:
@@ -130,33 +130,33 @@ Değerlendirilen bir gruptaki VM 'lerde şirket içi değişiklikler varsa, değ
 Değerlendirmede yapılan en son değişiklikleri yansıtmak için lütfen değerlendirmeyi **yeniden hesaplayın** .
 
 ### <a name="azure-sql-assessment"></a>Azure SQL değerlendirmesi
-Üzerinde değerlendirilen bir gruptaki şirket içi SQL örneklerinde ve veritabanlarında değişiklikler varsa, değerlendirme **süresi geçmiş** olarak işaretlenir:
-- SQL örneği bir sunucudan eklendi veya kaldırıldı
-- SQL veritabanı bir SQL örneğinden eklendi veya kaldırıldı
-- Bir SQL örneğindeki toplam veritabanı boyutu %20 ' den fazla değiştirildi
+Değerlendirilen gruptaki şirket içi SQL örneklerinde ve veritabanlarında değişiklikler yapıldıysa, değerlendirme **süresi geçmiş** olarak işaretlenir:
+- Sunucuda SQL örneği eklendi veya kaldırıldı
+- SQL örneğinde SQL veritabanı eklendi veya kaldırıldı
+- SQL örneğindeki toplam veritabanı boyutu %20'den fazla değiştirildi
 - İşlemci çekirdekleri ve/veya ayrılan bellek sayısı değişikliği
 
 Değerlendirmede yapılan en son değişiklikleri yansıtmak için lütfen değerlendirmeyi **yeniden hesaplayın** .
 
-## <a name="why-was-i-recommended-a-particular-target-deployment-type"></a>Neden belirli bir hedef dağıtım türünü önerdim?
-Azure geçişi, SQL örneğiniz ile uyumlu belirli bir Azure SQL dağıtım türü önerir. Microsoft 'un önerdiği hedefe geçiş, genel geçiş çabalarınızı azaltır. SQL örneğinizin ve yönettiği veritabanlarının performans özellikleri dikkate alındıktan sonra bu Azure SQL yapılandırması (SKU) önerilir. Birden çok Azure SQL yapılandırması uygunsa, en uygun maliyetli olan bir tane önerilir. [Daha fazla bilgi edinin](./concepts-azure-sql-assessment-calculation.md#calculate-sizing)
+## <a name="why-was-i-recommended-a-particular-target-deployment-type"></a>Bana neden belirli bir hedef dağıtım türü önerildi?
+Azure Geçişi, SQL örneğinizle uyumlu olan belirli bir Azure SQL dağıtım türünü önerir. Microsoft tarafından önerilen hedefe geçiş yapılması genel olarak geçiş çalışmalarınızı azaltır. SQL örneğinizin ve yönettiği veritabanlarının performans özellikleri dikkate alındıktan sonra bu Azure SQL yapılandırması (SKU) önerildi. Birden çok Azure SQL yapılandırması uygunsa, maliyeti en uygun olanı öneririz. [Daha fazla bilgi edinin](./concepts-azure-sql-assessment-calculation.md#calculate-sizing)
 
-## <a name="what-deployment-target-should-i-choose-if-my-sql-instance-is-ready-for-azure-sql-db-and-azure-sql-mi"></a>SQL örneğim Azure SQL VERITABANı ve Azure SQL MI için hazırsanız hangi dağıtım hedefini seçmem gerekir? 
-Örneğiniz hem Azure SQL DB hem de Azure SQL MI için hazırsanız, Azure SQL yapılandırması tahmini maliyetinin düşük olduğu hedef dağıtım türünü öneririz.
+## <a name="what-deployment-target-should-i-choose-if-my-sql-instance-is-ready-for-azure-sql-db-and-azure-sql-mi"></a>SQL örneğim Azure SQL Veritabanı ve Azure SQL Yönetilen Örneği için hazırsa hangi dağıtım hedefini seçmeliyim? 
+Örneğiniz hem Azure SQL Veritabanı hem de Azure SQL Yönetilen Örneği için hazırsa, Azure SQL yapılandırmasının tahmini maliyetinin daha düşük olduğu dağıtım türünün hedeflenmesini öneririz.
 
 ## <a name="why-is-my-instance-marked-as-potentially-ready-for-azure-vm-in-my-azure-sql-assessment"></a>Örneğim Azure SQL değerlendirmem 'nda Azure VM için neden büyük olasılıkla kullanılamıyor olarak işaretlendi?
-Bu durum, değerlendirme özelliklerinde seçilen hedef dağıtım türü **önerildiğinde** ve SQL ÖRNEĞI Azure SQL veritabanı ve Azure SQL yönetilen örneği için hazırlanmadığı zaman olabilir. Kullanıcının, çalışan sunucunun bir Azure VM 'ye geçirmeye hazırlanın olup olmadığını öğrenmek için Azure **sanal makine** olarak değerlendirme türü ile Azure geçişi ile bir değerlendirme oluşturulması önerilir.
+Değerlendirme özelliklerinde seçilen hedef dağıtım türü **Önerilen** olduğunda ve SQL örneği Azure SQL Veritabanı ve Azure SQL Yönetilen Örneği için hazır olmadığında bu durum oluşabilir. Kullanıcının, örneğin çalıştırıldığı Sunucunun Azure VM'ye geçmeye hazır olup olmadığını öğrenmek için Azure geçişinde değerlendirme türü **Azure VM** olan bir değerlendirme oluşturması önerilir.
 Kullanıcının, örnek olarak çalışan sunucunun bir Azure VM 'ye geçirmeye hazırlanın olup olmadığını öğrenmek için Azure **VM** olarak değerlendirme türü Ile Azure geçişi ile bir değerlendirme oluşturulması önerilir:
 - Azure geçişi 'ndeki Azure VM değerlendirmelerinde Şu anda yükseltme-bir-kaydırma uygulanır ve Azure sanal makinesinde SQL örnekleri ve veritabanlarını çalıştırmaya yönelik belirli performans ölçümlerini düşünmeyecektir. 
-- Bir sunucusunda bir Azure VM değerlendirmesi çalıştırdığınızda, önerilen boyut ve maliyet tahminleri sunucuda çalışan tüm örnekler için olur ve sunucu geçiş aracı kullanılarak bir Azure VM 'ye geçirilebilir. Geçirmeden önce Azure sanal makinelerinde SQL Server için [performans kılavuzunu gözden geçirin](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices) .
+- Sunucuda Azure VM değerlendirmesi çalıştırdığınızda, önerilen boyut ve maliyet tahminleri sunucuda çalıştırılan ve Sunucu Geçişi aracı kullanılarak bir Azure sanal makinesine geçirilebilecek tüm örnekleri kapsar. Geçiş yapmadan önce Azure sanal makinelerindeki SQL Server için [performans yönergelerini gözden geçirin](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices).
 
-## <a name="i-cant-see-some-databases-in-my-assessment-even-though-the-instance-is-part-of-the-assessment"></a>Örnek değerlendirmenin bir parçası olsa da değerlendirmem içinde bazı veritabanlarını göremiyorum
+## <a name="i-cant-see-some-databases-in-my-assessment-even-though-the-instance-is-part-of-the-assessment"></a>Örnek değerlendirmenin bir parçası olsa da bazı veritabanlarını değerlendirmemde göremiyorum
 
-Azure SQL değerlendirmesi yalnızca çevrimiçi durumdaki veritabanlarını içerir. Veritabanının başka bir durumda olması durumunda değerlendirme, bu tür veritabanları için hazırlık, boyutlandırma ve maliyet hesaplamasını yoksayar. Bu tür veritabanlarını değerlendirmenizi istiyorsanız lütfen veritabanının durumunu değiştirin ve değerlendirmesi bir süre sonra yeniden hesaplayın.
+Azure SQL değerlendirmesi yalnızca çevrimiçi durumdaki veritabanlarını içerir. Veritabanı başka bir durumdaysa, değerlendirme bu tür veritabanları için hazırlık, boyutlandırma ve maliyet hesaplamasını yoksayar. Bu tür veritabanlarını değerlendirmek istiyorsanız lütfen veritabanının durumunu değiştirin ve değerlendirmeyi bir süre sonra yeniden hesaplayın.
 
 ## <a name="i-want-to-compare-costs-for-running-my-sql-instances-on-azure-vm-vs-azure-sql-databaseazure-sql-managed-instance"></a>Azure VM Ile Azure SQL veritabanı/Azure SQL yönetilen örneği üzerinde SQL örneklerimi çalıştırmanın maliyetlerini karşılaştırmak istiyorum
 
-Azure **SQL** değerlendirmesinde kullanılan aynı grup ÜZERINDE **Azure VM** türü ile bir değerlendirme oluşturabilirsiniz. Daha sonra iki raporu yan yana karşılaştırabilirsiniz. Ancak, Azure geçişi 'ndeki Azure VM değerlendirmelerinde Şu anda geçiş ve-kaydırma uygulanır ve Azure sanal makinesinde SQL örnekleri ve veritabanlarını çalıştırmaya yönelik belirli performans ölçümlerini düşünmeyecektir. Bir sunucusunda bir Azure VM değerlendirmesi çalıştırdığınızda, önerilen boyut ve maliyet tahminleri sunucuda çalışan tüm örnekler için olur ve sunucu geçiş aracı kullanılarak bir Azure VM 'ye geçirilebilir. Geçirmeden önce Azure sanal makinelerinde SQL Server için [performans kılavuzunu gözden geçirin](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices) .
+**Azure SQL** değerlendirmesinde kullanılan aynı grup üzerinde türü **Azure VM** olan bir değerlendirme oluşturabilirsiniz. Ardından bu iki raporu yan yana koyup karşılaştırabilirsiniz. Öte yandan Azure Geçişi'nde Azure VM değerlendirmeleri şu anda lift-and-shift ile taşımaya odaklanmıştır ve Azure sanal makinesinde SQL örneklerini ve veritabanlarını çalıştırmaya yönelik belirli performans ölçümlerini dikkate almaz. Sunucuda Azure VM değerlendirmesi çalıştırdığınızda, önerilen boyut ve maliyet tahminleri sunucuda çalıştırılan ve Sunucu Geçişi aracı kullanılarak bir Azure sanal makinesine geçirilebilecek tüm örnekleri kapsar. Geçiş yapmadan önce Azure sanal makinelerindeki SQL Server için [performans yönergelerini gözden geçirin](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices).
 
 ## <a name="the-storage-cost-in-my-azure-sql-assessment-is-zero"></a>Azure SQL değerlendirmem 'nda depolama maliyeti sıfır
 Azure SQL yönetilen örneği için, ilk 32 GB/örnek/ay depolaması için bir depolama maliyeti eklenmez ve daha fazla depolama maliyeti, GB 'lik artışlarla depolama için eklenir. [Daha Fazla Bilgi](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)

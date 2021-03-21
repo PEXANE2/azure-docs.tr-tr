@@ -5,15 +5,15 @@ author: msftradford
 manager: MehranAzimi-msft
 services: azure-spatial-anchors
 ms.author: parkerra
-ms.date: 11/20/2020
+ms.date: 03/18/2021
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: b278ac6c824b1583e90cfc9152264f61357dd228
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 0fe193ee76c56ec57d0643f4a156739d1a51230c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95971514"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670107"
 ---
 # <a name="quickstart-create-a-unity-ios-app-with-azure-spatial-anchors"></a>Hızlı başlangıç: Azure uzamsal bağlayıcılarla Unity iOS uygulaması oluşturma
 
@@ -34,7 +34,7 @@ Bu hızlı başlangıçta, [Azure uzamsal bağlayıcılarını](../overview.md)k
 
 Bu hızlı başlangıcı tamamlamak için aşağıdakileri yaptığınızdan emin olun:
 
-- <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019,4 (LTS)</a>Içeren bir MacOS makinesi, en son <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode</a> sürümü yüklendi.
+- En son <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode</a> ve <a href="https://unity3d.com/get-unity/download" target="_blank">Unity (LTS)</a> sürümü yüklü olan bir MacOS makinesi. **Unity 2020 LTS** 'YI asa SDK 'sı sürüm 2,9 veya üzeri ( [Unity XR eklenti çerçevesini](https://docs.unity3d.com/Manual/XRPluginArchitecture.html)kullanan) ya da asa SDK 'sı 2,8 veya daha önceki bir sürümüyle **Unity 2019 LTS** kullanın.
 - Git, HomeBrew aracılığıyla yüklendi. Terminalin tek bir satırına şu komutu girin: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"` . Ardından, ve öğesini çalıştırın `brew install git` `brew install git-lfs` .
 - Bir geliştirici, <a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">ARKit uyumlu</a> bir iOS cihazını etkinleştirdi.
 

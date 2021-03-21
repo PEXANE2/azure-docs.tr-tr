@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
 ms.openlocfilehash: b858903b87dc6c4cc1f7c40338c09bf5b8204b3d
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102176544"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde dosya bütünlüğü izleme
@@ -56,7 +56,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Önceki tarama sırasında, bu öğelerin geçerli durumu ile aynı durum karşılaştırılırken FIM, şüpheli değişiklikler yapılırsa sizi uyarır.
 
-FIM, ortamınızdaki değişiklikleri izlemek ve tanımlamak için Azure Değişiklik İzleme çözümünü kullanır. Dosya bütünlüğü izleme etkinleştirildiğinde, **çözüm** türünde bir **değişiklik izleme** kaynağınız olur. Veri toplama sıklığı ayrıntıları için [değişiklik izleme veri toplama ayrıntılarını](../automation/change-tracking/overview.md#change-tracking-and-inventory-data-collection)inceleyin.
+FIM, Azure Değişiklik İzleme çözümünü kullanarak ortamınızdaki değişiklikleri izler ve tespit eder. Dosya bütünlüğü izleme etkinleştirildiğinde, **çözüm** türünde bir **değişiklik izleme** kaynağınız olur. Veri toplama sıklığı ayrıntıları için [değişiklik izleme veri toplama ayrıntılarını](../automation/change-tracking/overview.md#change-tracking-and-inventory-data-collection)inceleyin.
 
 > [!NOTE]
 > **Değişiklik izleme** kaynağını kaldırırsanız, güvenlik merkezi 'nde de dosya bütünlüğü izleme özelliğini devre dışı bırakacaksınız.
@@ -247,7 +247,7 @@ Dizinler genelinde izlemeyi basitleştirmek için joker karakterler kullanın. J
 -   Yolu ayarlarken, c:. * gibi genel yollardan kaçının, \* Bu da çok fazla klasör çapraz olarak sonuçlanır.
 
 ## <a name="disable-fim"></a>FIM 'yi devre dışı bırak
-FIM 'yi devre dışı bırakabilirsiniz. FIM, ortamınızdaki değişiklikleri izlemek ve tanımlamak için Azure Değişiklik İzleme çözümünü kullanır. FIM 'yi devre dışı bırakarak, Değişiklik İzleme çözümünü seçili çalışma alanından kaldırırsınız.
+FIM 'yi devre dışı bırakabilirsiniz. FIM, Azure Değişiklik İzleme çözümünü kullanarak ortamınızdaki değişiklikleri izler ve tespit eder. FIM 'yi devre dışı bırakarak, Değişiklik İzleme çözümünü seçili çalışma alanından kaldırırsınız.
 
 1. FIM 'yi devre dışı bırakmak için **Dosya bütünlüğü izleme** panosuna dönün.
 2. Bir çalışma alanı seçin.

@@ -8,10 +8,10 @@ ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
 ms.openlocfilehash: 4b95c25400317b2baac694f4ba2b1b1dc1eae098
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102435163"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Işlevleri için Azure Service Bus tetikleyicisi
@@ -323,7 +323,7 @@ Daha fazla ayrıntı için bkz. tetikleyici [örneği](#example) .
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `ServiceBusTrigger` .
 
-|function.jsözelliği | Öznitelik özelliği |Açıklama|
+|function.jsözelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
 |**türüyle** | yok | "ServiceBusTrigger" olarak ayarlanmalıdır. Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır.|
 |**Görünüm** | yok | "In" olarak ayarlanmalıdır. Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır. |
@@ -396,7 +396,7 @@ Işlevler çalışma zamanı [PeekLock modunda](../service-bus-messaging/service
 
 Service Bus tetikleyicisi çeşitli [meta veri özellikleri](./functions-bindings-expressions-patterns.md#trigger-metadata)sağlar. Bu özellikler, diğer bağlamalardaki veya kodunuzda parametre olarak bağlama ifadelerinin bir parçası olarak kullanılabilir. Bu özellikler [ileti](/dotnet/api/microsoft.azure.servicebus.message) sınıfının üyeleridir.
 
-|Özellik|Tür|Açıklama|
+|Özellik|Tür|Description|
 |--------|----|-----------|
 |`ContentType`|`string`|Uygulamaya özgü mantık için gönderen ve alıcı tarafından kullanılan bir içerik türü tanımlayıcısı.|
 |`CorrelationId`|`string`|Bağıntı KIMLIĞI.|

@@ -4,10 +4,10 @@ description: Visual Studio 'da ASP.NET ve ASP.NET Core için Application Insight
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.openlocfilehash: 1d70413fa6a47e2d41693db6eb705f31b2a2b1b2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101704319"
 ---
 # <a name="how-to-remove-application-insights-in-visual-studio"></a>Visual Studio 'da Application Insights kaldırma
@@ -72,7 +72,7 @@ Application Insights kaldırmak için, uygulama içindeki API 'den NuGet paketle
     
     ![Ekran görüntüsünde, kaldırılacak bağımlılıkları olan bir iletişim kutusu gösterilir.](./media/remove-application-insights/preview-uninstall-framework.png)
     
-1.  Her şey kaldırıldıktan sonra, *Çözüm Gezgini*"ApplicationInsights.config" ve "AiHandleErrorAttribute.cs" görünmeye devam edebilir. İki dosyayı el ile silebilirsiniz.
+1.  Her şey kaldırıldıktan sonra, *Çözüm Gezgini*"ApplicationInsights.config" ve "AiHandleErrorAttribute. cs" görünmeye devam edebilir. İki dosyayı el ile silebilirsiniz.
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
@@ -97,7 +97,7 @@ Projenize Application Insights eklediğinizde dosya oluşturup dosyalarınıza b
 Visual Studio ASP.NET projesine Application Insights Telemetri eklediğinizde, aşağıdaki dosyaları ekler:
 
 - ApplicationInsights.config
-- AiHandleErrorAttribute.cs
+- AiHandleErrorAttribute. cs
 
 Aşağıdaki kod parçaları eklenmiştir:
 
@@ -167,7 +167,7 @@ Aşağıdaki kod parçaları eklenmiştir:
     }
     ```
 
-- FilterConfig.cs
+- FilterConfig. cs
 
     ```csharp
             public static void RegisterGlobalFilters(GlobalFilterCollection filters)

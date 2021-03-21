@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 97e68d338580132b6927c4cc8b206db60fe93ba2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101703516"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services-classic"></a>Azure Cloud Services Azure Tanılama etkinleştirme (klasik)
@@ -37,7 +37,7 @@ Bu makalede bir Azure aboneliğiniz olduğunu ve Azure SDK ile Visual Studio 'Yu
 6. Herhangi bir hata olmadığını doğrulamak için çözümünüzü derleyin.
 
 ### <a name="step-2-instrument-your-code"></a>2. Adım: kodunuzu Işaretleme
-WorkerRole.cs içeriğini aşağıdaki kodla değiştirin. [EventSource sınıfından][EventSource Class]devralınan SampleEventSourceWriter sınıfı dört günlük yöntemi uygular: **sendenums**, **messagemethod**, **setother** ve **highfreq**. **WriteEvent** yönteminin ilk parametresi ılgılı olayın kimliğini tanımlar. Run yöntemi, her 10 saniyede bir **Sampleeventsourcewriter** sınıfında uygulanan günlüğe kaydetme yöntemlerinin her birini çağıran sonsuz bir döngü uygular.
+WorkerRole. cs içeriğini aşağıdaki kodla değiştirin. [EventSource sınıfından][EventSource Class]devralınan SampleEventSourceWriter sınıfı dört günlük yöntemi uygular: **sendenums**, **messagemethod**, **setother** ve **highfreq**. **WriteEvent** yönteminin ilk parametresi ılgılı olayın kimliğini tanımlar. Run yöntemi, her 10 saniyede bir **Sampleeventsourcewriter** sınıfında uygulanan günlüğe kaydetme yöntemlerinin her birini çağıran sonsuz bir döngü uygular.
 
 ```csharp
 using Microsoft.WindowsAzure.ServiceRuntime;

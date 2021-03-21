@@ -18,10 +18,10 @@ ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy21q1
 ms.openlocfilehash: 7efaaf9cbfdb13c80ce653c99d05da451c2b8968
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100547324"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetimi nedir?
@@ -39,7 +39,7 @@ Kurumsal kuruluşlar, çalışanların şu gibi kaynaklara erişimini yönetirke
 - Kullanıcılar sahip olmaları gereken erişimi bilmiyor olabilir ve olsalar bile, erişimleri onaylamak için doğru bireyleri bulmaya zorluk gösterebilir
 - Kullanıcılar bir kaynağa erişim bulup aldıktan sonra, iş amaçları için gerekenden daha uzun bir süre erişim için açık kalabilir
 
-Bu sorunlar, tedarik zinciri kuruluşlarından veya diğer iş ortaklarından gelen harici kullanıcılar gibi başka bir kuruluştan erişmesi gereken kullanıcılar için bir bileşim oluşturur. Örneğin:
+Bu sorunlar, tedarik zinciri kuruluşlarından veya diğer iş ortaklarından gelen harici kullanıcılar gibi başka bir kuruluştan erişmesi gereken kullanıcılar için bir bileşim oluşturur. Örnek:
 
 - Başka bir kişi, diğer kuruluş dizinlerindeki tüm kişilerin davet etmesini sağlayabilmesi için
 - Bu kullanıcılar davet edebilse bile, bu kuruluştan hiç kimse kullanıcının tüm erişimini sürekli olarak yönetmeyi anımsayabilir
@@ -75,7 +75,7 @@ Yetkilendirme Yönetimi, Azure AD 'ye bir *erişim paketi* kavramını tanıtır
 - SaaS uygulamaları ve Federasyon/çoklu oturum açma ve/veya sağlamayı destekleyen özel tümleşik uygulamalar dahil olmak üzere Azure AD kurumsal uygulamalarına atama
 - SharePoint Online sitelerinin üyeliği
 
-Ayrıca, Azure AD güvenlik gruplarına veya Microsoft 365 gruplarına bağlı diğer kaynaklara erişimi de denetleyebilirsiniz.  Örneğin:
+Ayrıca, Azure AD güvenlik gruplarına veya Microsoft 365 gruplarına bağlı diğer kaynaklara erişimi de denetleyebilirsiniz.  Örnek:
 
 - Erişim paketindeki bir Azure AD güvenlik grubu kullanarak ve bu grup için [grup tabanlı lisanslamayı](../enterprise-users/licensing-groups-assign.md) yapılandırarak Microsoft 365 kullanıcılara lisans verebilirsiniz.
 - Kullanıcılara, erişim paketindeki bir Azure AD güvenlik grubu kullanarak ve bu grup için bir [Azure rol ataması](../../role-based-access-control/role-assignments-portal.md) oluşturarak Azure kaynaklarını yönetmek için erişim izni verebilirsiniz.

@@ -10,10 +10,10 @@ ms.author: alkohli
 ms.subservice: common
 ms.custom: contperf-fy21q3
 ms.openlocfilehash: 8ef18ea663f3a77589d61ed89c50df38f5cf0d0e
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102176198"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>Azure İçeri/Dışarı Aktarma işlerinin durumunu görüntüleme
@@ -39,7 +39,7 @@ Bu makalede, Azure Içeri/dışarı aktarma işlerinin sürücü ve iş durumunu
 
 Sürücünüzün işlemde bulunduğu yere bağlı olarak aşağıdaki iş durumlardan birini görürsünüz.
 
-| İş Durumu | Açıklama |
+| İş Durumu | Description |
 |:--- |:--- |
 | Oluşturma | Bir iş oluşturulduktan sonra, durumu **oluşturma** olarak ayarlanır. İş **oluşturuluyor** durumundaysa, Içeri/dışarı aktarma hizmeti, sürücülerin veri merkezine gönderilmemiş olduğunu varsayar. Bir iş bu durumda iki hafta boyunca kalabilir ve sonrasında hizmet tarafından otomatik olarak silinir. |
 | Gönderim | Paketinizi gönderdikten sonra, Azure portal izleme bilgilerini güncelleştirmeniz gerekir.  Bunu yapmak işi **Sevkiyat** durumuna getirir. İş, en fazla iki hafta boyunca **Sevkiyat** durumunda kalır. 
@@ -55,7 +55,7 @@ Aşağıdaki tabloda, bir içeri aktarma veya dışarı aktarma işi aracılığ
 
 Aşağıdaki tabloda, bir işteki her bir sürücünün geçeme durumu açıklanmaktadır.
 
-| Sürücü durumu | Açıklama |
+| Sürücü durumu | Description |
 |:--- |:--- |
 | Belirtilir | İçeri aktarma işi için, iş Azure portal oluşturulduğunda, bir sürücü için ilk durum **belirtilir**. Bir dışarı aktarma işi için, iş oluşturulduğunda bir sürücü belirtilmediğinden, ilk sürücü durumu **alınır**. |
 | Alındı | Içeri/dışarı aktarma hizmeti bir içeri aktarma işi için sevkiyat şirketten alınan sürücüleri işlediğinde, sürücü **alındı** durumuna geçer. Bir dışarı aktarma işi için ilk sürücü durumu **alınan** durumudur. |

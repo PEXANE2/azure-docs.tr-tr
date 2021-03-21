@@ -2,16 +2,16 @@
 title: Öğretici-& dağıtımı oluşturma Azure Resource Manager bicep dosyaları
 description: Azure kaynaklarını dağıtmak için ilk Bıcep dosyanızı oluşturun. Öğreticide, Bıcep dosyası söz dizimi ve depolama hesabı dağıtma hakkında bilgi edineceksiniz.
 author: mumian
-ms.date: 03/10/2021
+ms.date: 03/17/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: b04dbb7f708a4019ae70c716d4faa05ca2c28720
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 8979585d7ec0fa6eac1866375fe1e80214f2d2e2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102632586"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594283"
 ---
 # <a name="tutorial-create-and-deploy-first-azure-resource-manager-bicep-file"></a>Öğretici: ilk Azure Resource Manager Bıcep dosyası oluşturma ve dağıtma
 
@@ -31,11 +31,11 @@ Bicep dosyaları oluşturup dağıtmak için ihtiyacınız olan araçlara sahip 
 
 ### <a name="editor"></a>Düzenleyici
 
-Bicep dosyaları oluşturmak için iyi bir düzenleyiciye ihtiyacınız vardır. Bıcep Uzantısı ile Visual Studio Code önerilir. Bu araçları yüklemeniz gerekiyorsa bkz. [hızlı başlangıç: Visual Studio Code bicep dosyaları oluşturma](quickstart-create-bicep-use-visual-studio-code.md).
+Bicep dosyaları oluşturmak için iyi bir düzenleyiciye ihtiyacınız vardır. Bıcep Uzantısı ile Visual Studio Code önerilir. Bu araçları yüklemeniz gerekiyorsa bkz. [Bıcep geliştirme ortamını yapılandırma](./bicep-install.md#development-environment).
 
 ### <a name="command-line-deployment"></a>Komut satırı dağıtımı
 
-Bıcep dosyasını dağıtmak için en son Azure PowerShell ya da en son Azure CLı gerekir. Yükleme yönergeleri için bkz.:
+Azure CLı veya Azure PowerShell kullanarak Bıcep dosyalarını dağıtabilirsiniz. Azure CLı için sürüm 2.20.0 veya daha yeni bir sürüme ihtiyacınız vardır; Azure PowerShell için sürüm 5.6.0 veya sonraki bir sürüme ihtiyacınız vardır. Yükleme yönergeleri için bkz.:
 
 - [Azure PowerShell’i yükleme](/powershell/azure/install-az-ps)
 - [Windows'da Azure CLI'yi yükleme](/cli/azure/install-azure-cli-windows)

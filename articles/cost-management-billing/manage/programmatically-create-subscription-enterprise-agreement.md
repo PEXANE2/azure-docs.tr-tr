@@ -1,20 +1,20 @@
 ---
 title: En son API’lerle program aracılığıyla Azure Kurumsal Anlaşma abonelikleri oluşturma
-description: REST API, Azure CLI ve Azure PowerShell’in en son sürümlerini kullanarak program aracılığıyla Azure Kurumsal Anlaşma abonelikleri oluşturmayı öğrenin.
+description: REST API, Azure CLı, Azure PowerShell ve Azure Resource Manager şablonlarının en son sürümlerini kullanarak Azure Kurumsal Anlaşma aboneliklerini programlı bir şekilde oluşturmayı öğrenin.
 author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 01/13/2021
+ms.date: 03/12/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 4de89892d27bb811be6670c1a14ca85859342ecc
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 3f07d18ccdca87f6395b24e4e3f9e6ee91cfaee3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102218919"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593994"
 ---
 # <a name="programmatically-create-azure-enterprise-agreement-subscriptions-with-the-latest-apis"></a>En son API’lerle program aracılığıyla Azure Kurumsal Anlaşma abonelikleri oluşturma
 
@@ -41,7 +41,7 @@ Siz Hesap Sahibi ile ilişkilendirilmiş bir Kayıt Hesabına eklendikten sonra,
 
 Aşağıdaki komutları çalıştırmak için Hesap Sahibinin *giriş dizininde* oturum açmalısınız; bu, varsayılan olarak aboneliklerin oluşturulduğu dizindir.
 
-### <a name="rest"></a>[REST](#tab/rest-getEnrollments)
+### <a name="rest"></a>[REST](#tab/rest)
 
 Erişiminiz olan tüm kayıt hesaplarını listeleme isteği:
 
@@ -91,17 +91,13 @@ API yanıtında erişiminiz olan tüm kayıt hesapları listelenir:
 
 ```
 
-Faturalama kapsamı değeri ile `id` aynı şeydir. Kayıt hesabınızın `id` değeri, abonelik isteğinin başlatıldığı faturalama kapsamıdır. ID değerini bilmek önemlidir çünkü bu değer daha sonra makalede abonelik oluşturmak için kullanacağınız gerekli bir parametredir.
+Bir faturalandırma kapsamının değerleri ve `id` aynı şeydir. Kayıt hesabınızın `id` değeri, abonelik isteğinin başlatıldığı faturalama kapsamıdır. ID değerini bilmek önemlidir çünkü bu değer daha sonra makalede abonelik oluşturmak için kullanacağınız gerekli bir parametredir.
 
-<!-- 
-### [PowerShell](#tab/azure-powershell-getEnrollments)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-we're still working on enabling PowerShell SDK for billing APIs. Check back soon.
+Lütfen bu değeri almak için Azure CLı veya REST API kullanın.
 
--->
-
-
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli-getEnrollments)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Erişiminiz olan tüm kayıt hesaplarını listeleme isteği:
 
@@ -159,7 +155,8 @@ Yanıt, erişiminiz olan tüm kayıt hesaplarını listeler
     "type": "Microsoft.Billing/billingAccounts"
   },
 ```
-Faturalama kapsamı değeri ile `id` aynı şeydir. Kayıt hesabınızın `id` değeri, abonelik isteğinin başlatıldığı faturalama kapsamıdır. ID değerini bilmek önemlidir çünkü bu değer daha sonra makalede abonelik oluşturmak için kullanacağınız gerekli bir parametredir.
+
+Bir faturalandırma kapsamının değerleri ve `id` aynı şeydir. Kayıt hesabınızın `id` değeri, abonelik isteğinin başlatıldığı faturalama kapsamıdır. ID değerini bilmek önemlidir çünkü bu değer daha sonra makalede abonelik oluşturmak için kullanacağınız gerekli bir parametredir.
 
 ---
 
@@ -167,7 +164,7 @@ Faturalama kapsamı değeri ile `id` aynı şeydir. Kayıt hesabınızın `id` d
 
 Aşağıdaki örnekte, önceki adımda seçilen kayıt hesabında *Dev Team Subscription* adlı bir abonelik oluşturulur. 
 
-### <a name="rest"></a>[REST](#tab/rest-EA)
+### <a name="rest"></a>[REST](#tab/rest)
 
 Abone oluşturma isteği/diğer adı oluşturmak için PUT API’yi çağırın.
 
@@ -227,7 +224,7 @@ GET https://management.azure.com/providers/Microsoft.Subscription/aliases/sample
 
 Sürüyor durumu, `provisioningState` altında `Accepted` durumu olarak döndürülür.
 
-### <a name="powershell"></a>[PowerShell](#tab/azure-powershell-EA)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Modülün `New-AzSubscriptionAlias` cmdlet'ini içeren en son sürümünü yüklemek için `Install-Module Az.Subscription` çalıştırın. PowerShellGet'in yeni bir sürümünü yüklemek için [Get PowerShellGet Modülü](/powershell/scripting/gallery/installing-psget)'ne bakın.
 
@@ -251,7 +248,7 @@ Komutun yanıtının bir parçası olarak subscriptionId bilgisini alırsınız.
 }
 ```
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli-EA)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 İlk olarak, `az extension add --name account` ve `az extension add --name alias` komutlarını çalıştırarak uzantıyı yükleyin.
 
@@ -277,6 +274,113 @@ Komutun yanıtının bir parçası olarak subscriptionId bilgisini alırsınız.
 
 ---
 
+## <a name="use-arm-template"></a>ARM şablonu kullanma
+
+Önceki bölümde PowerShell, CLı veya REST API nasıl bir abonelik oluşturulacağı gösterildi. Abonelik oluşturmayı otomatikleştirmeniz gerekiyorsa Azure Resource Manager şablonu kullanmayı düşünün (ARM şablonu).
+
+Aşağıdaki şablon bir abonelik oluşturur. İçin `billingScope` , kayıt hesap kimliğini belirtin. İçin `targetManagementGroup` , aboneliğini oluşturmak istediğiniz yönetim grubunu belirtin.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "subscriptionAliasName": {
+            "type": "string",
+            "metadata": {
+                "description": "Provide a name for the alias. This name will also be the display name of the subscription."
+            }
+        },
+        "billingScope": {
+            "type": "string",
+            "metadata": {
+                "description": "Provide the full resource ID of billing scope to use for subscription creation."
+            }
+        },
+        "targetManagementGroup": {
+            "type": "string",
+            "metadata": {
+                "description": "Provide the ID of the target management group to place the subscription."
+            }
+        }
+    },
+    "resources": [
+        {
+            "scope": "/", 
+            "name": "[parameters('subscriptionAliasName')]",
+            "type": "Microsoft.Subscription/aliases",
+            "apiVersion": "2020-09-01",
+            "properties": {
+                "workLoad": "Production",
+                "displayName": "[parameters('subscriptionAliasName')]",
+                "billingScope": "[parameters('billingScope')]",
+                "managementGroupId": "[tenantResourceId('Microsoft.Management/managementGroups/', parameters('targetManagementGroup'))]"
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
+
+Şablonu [Yönetim grubu düzeyinde](../../azure-resource-manager/templates/deploy-to-management-group.md)dağıtın.
+
+### <a name="rest"></a>[REST](#tab/rest)
+
+```json
+PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/mg1/providers/Microsoft.Resources/deployments/exampledeployment?api-version=2020-06-01
+```
+
+İstek gövdesi ile:
+
+```json
+{
+  "location": "eastus",
+  "properties": {
+    "templateLink": {
+      "uri": "http://mystorageaccount.blob.core.windows.net/templates/template.json"
+    },
+    "parameters": {
+      "subscriptionAliasName": {
+        "value": "sampleAlias"
+      },
+      "billingScope": {
+        "value": "/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321"
+      },
+      "targetManagementGroup": {
+        "value": "mg2"
+      }
+    },
+    "mode": "Incremental"
+  }
+}
+```
+
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+New-AzManagementGroupDeployment `
+  -Name exampledeployment `
+  -Location eastus `
+  -ManagementGroupId mg1 `
+  -TemplateFile azuredeploy.json `
+  -subscriptionAliasName sampleAlias `
+  -billingScope "/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321" `
+  -targetManagementGroup mg2
+```
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+az deployment mg create \
+  --name exampledeployment \
+  --location eastus \
+  --management-group-id mg1 \
+  --template-file azuredeploy.json \
+  --parameters subscriptionAliasName='sampleAlias' billingScope='/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321' targetManagementGroup=mg2
+```
+
+---
+
 ## <a name="limitations-of-azure-enterprise-subscription-creation-api"></a>Azure Kurumsal aboneliği oluşturma API'sinin sınırlamaları
 
 - Bu API kullanılarak yalnızca Azure Kurumsal abonelikleri oluşturulabilir.
@@ -289,3 +393,4 @@ Komutun yanıtının bir parçası olarak subscriptionId bilgisini alırsınız.
 
 * Artık aboneliği oluşturduğunuza göre, bu beceriyi diğer kullanıcılara ve hizmet sorumlularına verebilirsiniz. Daha fazla bilgi için bkz. [Azure Kurumsal abonelikleri oluşturma erişimi verme (önizlemi)](grant-access-to-create-subscription.md).
 * Yönetim gruplarını kullanarak çok fazla sayıda aboneliği yönetme hakkında daha fazla bilgi için bkz. [Kaynaklarınızı Azure yönetim gruplarıyla düzenleme](../../governance/management-groups/overview.md).
+* Bir aboneliğin yönetim grubunu değiştirmek için bkz. [abonelikleri taşıma](../../governance/management-groups/manage.md#move-subscriptions).

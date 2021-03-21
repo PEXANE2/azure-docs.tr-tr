@@ -3,12 +3,12 @@ title: Azure VM 'lerini bir kurtarma hizmetleri kasasında yedekleme
 description: Azure VM 'Leri bir kurtarma hizmetleri kasasında Azure Backup kullanarak nasıl yedekleyeceğiniz açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: f6fe2f629742e15e62dfc13106e92623a4b45add
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5c3bc66c2111c347f8ed0e32c9e597a52ed404ed
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/19/2021
-ms.locfileid: "92172741"
+ms.locfileid: "104670435"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Azure VM 'lerini bir kurtarma hizmetleri kasasında yedekleme
 
@@ -117,6 +117,8 @@ Yeni bir yedekleme ilkesi oluşturmayı seçtiyseniz, ilke ayarlarını girin.
 4. **Bekletme aralığı**' nda, günlük veya haftalık yedekleme noktalarınızı ne kadar süreyle saklamak istediğinizi belirtin.
 5. **Aylık yedekleme noktası** ve **yıllık yedekleme noktası bekletmesi** için, günlük veya haftalık yedeklemelerinizin aylık veya yıllık yedeklemesini korumak isteyip istemediğinizi belirtin.
 6. İlkeyi kaydetmek için **Tamam ' ı** seçin.
+    > [!NOTE]
+    > Geri yükleme noktası koleksiyonunu (RPC) depolamak için yedekleme hizmeti ayrı bir kaynak grubu (RG) oluşturur. Bu RG, VM 'nin RG 'den farklıdır. [Daha fazla bilgi edinin](backup-during-vm-creation.md#azure-backup-resource-group-for-virtual-machines).
 
     ![Yeni yedekleme ilkesi](./media/backup-azure-arm-vms-prepare/new-policy.png)
 

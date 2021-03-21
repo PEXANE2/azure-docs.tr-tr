@@ -3,14 +3,14 @@ title: Azure Otomasyonu Güncelleştirme Yönetimi için güncelleştirme dağı
 description: Bu makalede, güncelleştirme dağıtımlarının nasıl planlanmakta ve bunların durumlarını incelemesinin nasıl yapılacağı açıklanır.
 services: automation
 ms.subservice: update-management
-ms.date: 12/09/2020
+ms.date: 03/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: fb81d38b066e1abb54664225daa6840d895e9ace
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6d35d6b49ab72d8aa7b25506011147ab624273fd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100575895"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104669687"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Güncelleştirmeler nasıl dağıtılır ve sonuçlar incelenmek
 
@@ -21,6 +21,9 @@ Her senaryo altında, oluşturduğunuz dağıtım makine veya sunucu ' yı seçt
 * İşletim sistemi, makinenin IŞLETIM sistemine göre otomatik olarak önceden seçilir
 * Güncelleştirilecek hedef makine, kendisini otomatik olarak hedeflemek üzere ayarlanmış
 * Zamanlamayı yapılandırırken, **Şimdi güncelleştirmeyi** belirtebilir, bir kez oluşabilir veya yinelenen bir zamanlama kullanabilirsiniz.
+
+> [!IMPORTANT]
+> Bir güncelleştirme dağıtımı oluşturarak, şirket tarafından işletim sistemleri için güncelleştirmeleri sunan yazılım lisans koşullarının (EULA) koşullarını kabul etmiş olursunuz.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 

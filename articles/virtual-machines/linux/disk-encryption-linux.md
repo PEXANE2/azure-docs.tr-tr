@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: bf5da120072f49421b6f2194626178048b044f6a
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 6ebec78d5a9e82cc8a2f6ceb020a8b9552d6311e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102564705"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604024"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM’lerde Azure Disk Şifrelemesi senaryoları
 
@@ -262,7 +262,7 @@ Bir LVM-şifreli kurulum önerilir. Aşağıdaki tüm örneklerde, cihaz yolu ve
 
 1. Bu diskleri biçimlendirin, bağlayın ve fstab dosyasına ekleyin.
 
-1. Bölüm standardı seçin, tüm sürücüyü kapsayan bir bölüm oluşturun ve sonra bölümü biçimlendirin. Azure tarafından oluşturulan symbağlantıları burada kullanırız. Çözümlemeyin 'in kullanılması, cihaz adları değiştirme ile ilgili sorunları önler. Daha fazla bilgi için bkz. [cihaz adları sorunlarını giderme](../troubleshooting/troubleshoot-device-names-problems.md) makalesi.
+1. Bölüm standardı seçin, tüm sürücüyü kapsayan bir bölüm oluşturun ve sonra bölümü biçimlendirin. Azure tarafından oluşturulan symbağlantıları burada kullanırız. Çözümlemeyin 'in kullanılması, cihaz adları değiştirme ile ilgili sorunları önler. Daha fazla bilgi için bkz. [cihaz adları sorunlarını giderme](/troubleshoot/azure/virtual-machines/troubleshoot-device-names-problems) makalesi.
     
     ```bash
     parted /dev/disk/azure/scsi1/lun0 mklabel gpt

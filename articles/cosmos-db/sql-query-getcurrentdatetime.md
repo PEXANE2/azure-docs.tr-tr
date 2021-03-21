@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/03/2021
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: b48237b5a7eb836c495612758eeb9eaa45029b26
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 12ce8beab082674cd7672713325d4b3f4322aeae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526594"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587313"
 ---
 # <a name="getcurrentdatetime-azure-cosmos-db"></a>GetCurrentDateTime (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -28,19 +28,19 @@ GetCurrentDateTime ()
 
 ## <a name="return-types"></a>Dönüş türleri
   
-  Şu biçimdeki geçerli UTC Tarih ve saat ISO 8601 dize değerini döndürür `YYYY-MM-DDThh:mm:ss.fffffffZ` :
+Şu biçimdeki geçerli UTC Tarih ve saat ISO 8601 dize değerini döndürür `YYYY-MM-DDThh:mm:ss.fffffffZ` :
   
-  |Biçimlendir|Açıklama|
-  |-|-|
-  |YYYY|dört basamaklı yıl|
-  |MM|iki basamaklı ay (01 = Ocak, vb.)|
-  |DD|iki basamaklı ayın günü (01 ile 31 arasında)|
-  |T|zaman öğelerinin başlangıcı için signifier|
-  |hh|iki basamaklı saat (00 ile 23 arasında)|
-  |mm|iki basamaklı dakika (00 ila 59)|
-  |ss|iki basamaklı saniyeler (00 ila 59)|
-  |. fffffff|yedi basamaklı kesirli saniye|
-  |Z|UTC (Eşgüdümlü Evrensel Saat) göstergesi||
+|Biçimlendir|Açıklama|
+|-|-|
+|YYYY|dört basamaklı yıl|
+|MM|iki basamaklı ay (01 = Ocak, vb.)|
+|DD|iki basamaklı ayın günü (01 ile 31 arasında)|
+|T|zaman öğelerinin başlangıcı için signifier|
+|hh|iki basamaklı saat (00 ile 23 arasında)|
+|mm|iki basamaklı dakika (00 ila 59)|
+|ss|iki basamaklı saniyeler (00 ila 59)|
+|. fffffff|yedi basamaklı kesirli saniye|
+|Z|UTC (Eşgüdümlü Evrensel Saat) göstergesi|
   
   ISO 8601 biçimi hakkında daha fazla bilgi için bkz. [ISO_8601](https://en.wikipedia.org/wiki/ISO_8601)
 

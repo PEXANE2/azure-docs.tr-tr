@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
 ms.openlocfilehash: c25d217a5e2aea8acc91fcc8f6fe5ffd026ab976
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100370878"
 ---
 # <a name="copy-data-from-azure-database-for-mariadb-using-azure-data-factory"></a>Azure Data Factory kullanarak MariaDB için Azure veritabanı 'ndan veri kopyalama 
@@ -20,7 +20,7 @@ ms.locfileid: "100370878"
 
 Bu makalede, MariaDB için Azure veritabanı 'ndan veri kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Kopyalama etkinliğine genel bir bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesinde oluşturulur.
 
-## <a name="supported-capabilities"></a>Desteklenen yetenekler
+## <a name="supported-capabilities"></a>Desteklenen özellikler
 
 MariaDB Bağlayıcısı için Azure veritabanı aşağıdaki etkinlikler için desteklenir:
 

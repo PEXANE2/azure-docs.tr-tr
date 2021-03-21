@@ -7,12 +7,12 @@ ms.author: chez
 ms.reviewer: ''
 ms.topic: conceptual
 ms.date: 03/02/2021
-ms.openlocfilehash: 57024d6cb23ab273aa69bf59f4ec436a6f873a05
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 50a9f9cd59ebeecae89580c878442eb20788f462
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102193555"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593654"
 ---
 # <a name="reference-trigger-metadata-in-pipeline-runs"></a>İşlem hattı çalıştırmalarından başvuru tetikleyici meta verileri
 
@@ -22,7 +22,7 @@ Bu makalede, tetikleme başlangıç zamanı gibi tetikleyici meta verilerinin i�
 
 İşlem hattının bazen onu çağıran tetikleyiciden meta verileri anlaması ve okuması gerekir. Örneğin, pencere başlangıç ve bitiş zamanına bağlı olarak bir pencere tetikleme çalıştırması ile, işlem hattı farklı veri dilimleri veya klasörleri işler. Azure Data Factory ' de, meta verileri tetikleyiciden işlem hattına geçirmek için Parametreleştirme ve [sistem değişkenini](control-flow-system-variables.md) kullanırız.
 
-Bu model özellikle, tetikleyici pencere başlangıç ve bitiş zamanı sağlayan [pencere tetikleyicisi](how-to-create-tumbling-window-trigger.md)için yararlıdır.
+Bu model, tetikleyici pencere [tetikleyicisi](how-to-create-tumbling-window-trigger.md)için oldukça yararlıdır; burada tetikleyici, Windows başlangıç ve bitiş [zamanı ve özel](how-to-create-custom-event-trigger.md) [tanımlanmış _veri_ alanındaki](../event-grid/event-schema.md)değerleri ayrıştırır ve işler.
 
 > [!NOTE]
 > Farklı tetikleyici türü farklı meta veri bilgileri sağlar. Daha fazla bilgi için bkz. [sistem değişkeni](control-flow-system-variables.md)

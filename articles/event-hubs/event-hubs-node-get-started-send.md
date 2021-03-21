@@ -4,12 +4,12 @@ description: Bu makalede, Azure Event Hubs en son Azure/Olay-Hub 'larını kulla
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 2e5f297d5edb9a271843db060f948209dd076074
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: c418c13346fb1ec8ba16965fa1020c676ddf3ac6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97106096"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104602562"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs"></a>JavaScript kullanarak Olay Hub 'larına olay gönderme veya olayları alma (Azure/Olay-Hub 'ları)
 Bu hızlı başlangıçta, **Azure/Event-hub** JavaScript paketini kullanarak Olay Hub 'ından olay gönderme ve olayları alma işlemlerinin nasıl yapılacağı gösterilir. 
@@ -146,6 +146,11 @@ Alma kodunda daha sonra kullanmak için bağlantı dizesini ve kapsayıcı adın
       // Subscribe to the events, and specify handlers for processing the events and errors.
       const subscription = consumerClient.subscribe({
           processEvents: async (events, context) => {
+            if (events.length === 0) {
+              console.log(`No events received within wait time. Waiting for next interval`);
+              return;
+            }
+          
             for (const event of events) {
               console.log(`Received event: '${event.body}' from partition: '${context.partitionId}' and consumer group: '${context.consumerGroup}'`);
             }

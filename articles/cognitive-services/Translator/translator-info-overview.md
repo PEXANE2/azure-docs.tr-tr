@@ -8,20 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: overview
 ms.subservice: translator-text
-ms.date: 02/15/2021
+ms.date: 03/15/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: Çevirmen, metin çevirisi, makine çevirisi, çeviri hizmeti
-ms.openlocfilehash: 72df700d38cad3ee31ef438d7df1c890acde9e6b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ec76aa7554110b7440eb825f2d5e86ae2da6baa2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101727983"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657731"
 ---
 # <a name="what-is-the-translator-service"></a>Çevirmen hizmeti nedir?
 
-Çevirici, bulut tabanlı bir makine çevirisi hizmetidir ve akıllı uygulamalar oluşturmak için kullanılan bilişsel API 'lerin Azure bilişsel [Hizmetler](../../index.yml?panel=ai&pivot=products) ailesinin bir parçasıdır. Translator, uygulamalarınızda, Web sitelerinde, araçlarınızla ve çözümlerinde tümleştirilebilen kolay bir işlemdir. [90 dilde ve diatadaki](./language-support.md)çok dilli kullanıcı deneyimleri eklemenize olanak tanır. Ve bu, herhangi bir donanım platformunda metin çevirisi için herhangi bir işletim sistemiyle kullanılabilir.
+Çevirici, bulut tabanlı bir makine çevirisi hizmetidir ve akıllı uygulamalar oluşturmak için kullanılan bilişsel API 'lerin Azure bilişsel [Hizmetler](../../index.yml?panel=ai&pivot=products) ailesinin bir parçasıdır. Translator, uygulamalarınızda, Web sitelerinde, araçlarınızla ve çözümlerinde tümleştirilebilen kolay bir işlemdir. [90 dilde ve diatadaki](./language-support.md) çok dilli kullanıcı deneyimleri eklemenize olanak tanır ve herhangi bir işletim sistemiyle metin çevirisi için kullanılabilir.
+
+Bu belge aşağıdaki makale türlerini içerir:  
+
+* [**Hızlı**](quickstart-translator.md) başlangıçlarda, hizmette istek yapma konusunda size kılavuzluk eden başlangıç yönergeleri bulunur.  
+* [**Nasıl yapılır kılavuzlarında**](translator-how-to-signup.md) , hizmetin daha belirli veya özelleştirilmiş yollarla kullanılmasına ilişkin yönergeler bulunur.  
+* [**Kavramlar**](character-counts.md) , hizmet işlevselliği ve özelliklerinin ayrıntılı açıklamalarını sağlar.  
+* [**Öğreticiler**](tutorial-wpf-translation-csharp.md) daha fazla iş çözümlerinde hizmeti bir bileşen olarak nasıl kullanacağınızı gösteren kılavuzlardır.  
+
 
 ## <a name="about-microsoft-translator"></a>Microsoft Translator Hakkında
 
@@ -45,11 +53,9 @@ NMT modelleri API'nin temelindedir ve son kullanıcılara görünür değildir. 
 
 ## <a name="improve-translations-with-custom-translator"></a>Özel çevirmenle çevirileri geliştirme
 
- Translator hizmetinin bir uzantısı olan özel çevirici, sinir çeviri sistemini özelleştirmek ve belirli terminoloji ve stiliniz için çeviriyi geliştirmek üzere Translator ile birlikte kullanılabilir.
+ Translator hizmetinin bir uzantısı olan [özel çevirici](customization.md), sinir çeviri sistemini özelleştirmek ve belirli terminoloji ve stiliniz için çeviriyi geliştirmek üzere kullanılabilir.
 
 Özel çevirmenle, kendi işletmenizde veya sektörde kullanılan terminolojiyi işlemek için çeviri sistemleri oluşturabilirsiniz. Özelleştirilmiş çeviri sisteminiz, kategori parametresini kullanarak, normal çevirici aracılığıyla mevcut uygulamalarınız, iş akışlarınız, Web siteleriniz ve cihazlarınızla kolayca tümleştirilebilir.
-
-[Özel Çeviri](customization.md) hakkında daha fazla bilgi edinin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
