@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/07/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: 1552dfedc4510ba22e58d166d12a356ba546c092
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 88fd6260df0039e960ac87b4b83d43ea497a58b0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103473"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104658518"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Hızlı Başlangıç: Evrensel Windows Platformu (UWP) uygulamasından Microsoft Graph API'sini çağırma
 
@@ -78,6 +78,8 @@ Bu hızlı başlangıçta, bir Evrensel Windows Platformu (UWP) uygulamasının 
 > [!div class="sxs-lookup" renderon="portal" id="autoupdate" class="nextstepaction"]
 > [Kod örneğini indirin](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)
 
+[!INCLUDE [active-directory-develop-path-length-tip](../../../includes/active-directory-develop-path-length-tip.md)]
+
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>3. Adım: uygulamanız yapılandırıldı ve çalıştırılmaya hazırlanıyor
 > Projenizi uygulamanızın özelliklerinin değerleriyle yapılandırdık ve çalıştırılmaya hazırlanıyor.
@@ -91,7 +93,7 @@ Bu hızlı başlangıçta, bir Evrensel Windows Platformu (UWP) uygulamasının 
 >
 > 1. . Zip arşivini, sürücünüzün köküne yakın bir yerel klasöre ayıklayın. Örneğin, **C:\Azure-Samples**.
 > 1. Projeyi Visual Studio'da açın. İstenirse **Evrensel Windows platformu geliştirme** iş yükünü ve bireysel SDK bileşenlerini yükler.
-> 1. *MainPage.xaml.cs*' de, `ClientId` değişkenin değerini daha önce kaydettiğiniz uygulamanın **uygulama (istemci) kimliğiyle** değiştirin.
+> 1. *MainPage. xaml. cs* dosyasında, `ClientId` değişkenin değerini daha önce kaydettiğiniz uygulamanın **uygulama (istemci) kimliğiyle** değiştirin.
 >
 >    ```csharp
 >    private const string ClientId = "Enter_the_Application_Id_here";

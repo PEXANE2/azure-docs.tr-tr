@@ -3,12 +3,12 @@ title: Microsoft Azure Kurtarma Hizmetleri kasasını silme
 description: Bu makalede, bağımlılıkları kaldırmayı ve sonra bir Azure Backup Recovery Services kasasını silmeyi öğrenin.
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 28a0c4d5f643b980d93df2592da38f5da12dd01a
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 8df2528edebbb654e501b8aaaac91c24d932604c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100520468"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670571"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Azure Backup Recovery Services kasasını silme
 
@@ -73,6 +73,7 @@ Korumayı durdurmak ve yedekleme verilerini silmek için aşağıdaki adımları
 
          ![Yedekleme verilerini sil bölmesi.](./media/backup-azure-delete-vault/stop-backup-blade-delete-backup-data.png)
 
+   Bu seçenek, zamanlanmış yedeklemeleri siler ve isteğe bağlı yedeklemeleri de siler.
 3. **Bildirim simgesine** bakın: ![ bildirim simgesi.](./media/backup-azure-delete-vault/messages.png) İşlem tamamlandıktan sonra hizmet şu iletiyi görüntüler: *yedekleme durduruluyor ve "yedekleme öğesi" için yedekleme verileri siliniyor*. *Işlem başarıyla tamamlandı*.
 4. Yedekleme öğesinin silindiğinden emin olmak için **yedekleme öğeleri** menüsünde **Yenile** ' yi seçin.
 
@@ -150,7 +151,7 @@ Bu işlem tamamlandıktan sonra, yedekleme öğelerini yönetim konsolundan sile
 
 MABS veya DPM Yönetim konsolundan yedekleme öğelerini silmek için kullanabileceğiniz iki yöntem vardır.
 
-#### <a name="method-1"></a>Yöntem 1
+#### <a name="method-1"></a>1. Yöntem
 
 Korumayı durdurmak ve yedekleme verilerini silmek için aşağıdaki adımları uygulayın:
 

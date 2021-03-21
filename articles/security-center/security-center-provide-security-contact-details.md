@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 02/09/2021
 ms.author: memildin
 ms.openlocfilehash: 342904a3ae996fe8c2eeddf2edfbc4283a3d03eb
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102439451"
 ---
 # <a name="configure-email-notifications-for-security-alerts"></a>Güvenlik uyarıları için e-posta bildirimlerini yapılandırma 
@@ -50,7 +50,7 @@ Kişilere veya belirli Azure rollerine sahip tüm kullanıcılara e-posta bildir
 1. Bildirimlerin alıcılarını, bu seçeneklerden birini veya her ikisini de tanımlayın:
 
     - Açılan listeden, kullanılabilir roller ' i seçin.
-    - Virgülle ayrılmış belirli e-posta adreslerini girin. Girebilmeniz gereken e-posta adresi sayısı için bir sınır yoktur.
+    - Belirli e-posta adreslerini virgülle ayırarak girebilirsiniz. Girebilmeniz gereken e-posta adresi sayısı için bir sınır yoktur.
 
 1. Güvenlik iletişim bilgilerini aboneliğinize uygulamak için **Kaydet**' i seçin.
 

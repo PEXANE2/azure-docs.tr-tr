@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: queues
 ms.openlocfilehash: 609649c533b184b2ccc3d3a5fee79d75d1b66f5b
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102506693"
 ---
 # <a name="azure-queue-storage-reference"></a>Azure kuyruk depolama başvurusu
@@ -111,6 +111,6 @@ Aşağıdaki tablo, başvuru içeriğinin en son sürümüne bağlantılar içer
 |  3.x | [PowerShell](/powershell/module/az.storage/?view=azps-3.8.0&preserve-view=true) |
 |  2.x | [PowerShell](/powershell/module/az.storage/?view=azps-2.8.0&preserve-view=true) |
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure CLI’si
 
 - [Azure CLI](/cli/azure/storage)

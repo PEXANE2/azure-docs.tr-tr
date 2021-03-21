@@ -3,12 +3,12 @@ title: Görev çalışma zamanı ortam değişkenleri
 description: Azure Batch Analytics için görev çalışma zamanı ortamı değişken Kılavuzu ve başvurusu.
 ms.topic: conceptual
 ms.date: 12/30/2020
-ms.openlocfilehash: c1d9ffb3fe6775b061863656adcb7f45f8840997
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: dbdc13e28a3a0c772480d2602f147e0d3354ff48
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830896"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104669993"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Çalışma zamanı ortam değişkenlerini Azure Batch
 
@@ -36,7 +36,7 @@ Bir ortam değişkeninin geçerli değerini almak için, `cmd.exe` bir Windows i
 
 ## <a name="environment-variables"></a>Ortam değişkenleri
 
-| Değişken adı                     | Açıklama                                                              | Kullanılabilirlik | Örnek |
+| Değişken adı                     | Description                                                              | Kullanılabilirlik | Örnek |
 |-----------------------------------|--------------------------------------------------------------------------|--------------|---------|
 | AZ_BATCH_ACCOUNT_NAME           | Görevin ait olduğu Batch hesabının adı.                  | Tüm görevler.   | mybatchaccount |
 | AZ_BATCH_ACCOUNT_URL            | Batch hesabının URL 'SI. | Tüm görevler. | `https://myaccount.westus.batch.azure.com` |
@@ -61,6 +61,8 @@ Bir ortam değişkeninin geçerli değerini almak için, `cmd.exe` bir Windows i
 | AZ_BATCH_TASK_ID                | Geçerli görevin kimliği. | Başlangıç görevi dışındaki tüm görevler. | task001 |
 | AZ_BATCH_TASK_SHARED_DIR | Birincil görev ve [çok örnekli bir görevin](batch-mpi.md)her alt görevi için özdeş olan bir dizin yolu. Yol, çoklu örnek görevinin çalıştırıldığı her düğümde bulunur ve bu düğümde çalışan görev komutlarına okuma/yazma (hem [koordinasyon komutu](batch-mpi.md#coordination-command) hem de [uygulama komutu](batch-mpi.md#application-command)) erişilebilir. Diğer düğümlerde yürütülen alt görevler veya birincil görevin bu dizine uzaktan erişimi yoktur ("paylaşılan" bir ağ dizini değildir). | Çok örnekli birincil ve alt görevler. | C:\user\tasks\workıtemk\multiınstancesamplejob\job-1\multiınstancesampletask |
 | AZ_BATCH_TASK_WORKING_DIR       | Düğümdeki [görev çalışma dizininin](files-and-directories.md) tam yolu. Şu anda çalışan görevin bu dizine okuma/yazma erişimi vardır. | Tüm görevler. | C:\user\tasks\workıtem\batchjob001\job-1\task001\wd |
+| AZ_BATCH_TASK_WORKING_DIR       | Düğümdeki [görev çalışma dizininin](files-and-directories.md) tam yolu. Şu anda çalışan görevin bu dizine okuma/yazma erişimi vardır. | Tüm görevler. | C:\user\tasks\workıtem\batchjob001\job-1\task001\wd |
+| AZ_BATCH_TASK_RESERVED_EPHEMERAL_DISK_SPACE_BYTES | VM 'nin üzerinde işaretlendiği disk alanının geçerli eşiği `DiskFull` . | Tüm görevler. | 1000000 |
 | CCP_NODES                       | Bir [çok örnekli göreve](batch-mpi.md)ayrılan düğümlerin ve düğüm başına çekirdek sayısının listesi. Düğümler ve çekirdekler şu biçimde listelenmiştir `numNodes<space>node1IP<space>node1Cores<space>`<br/>`node2IP<space>node2Cores<space> ...`, burada düğüm sayısının bir veya daha fazla düğüm IP adresi ve her biri için çekirdek sayısı gelir. |  Çok örnekli birincil ve alt görevler. |`2 10.0.0.4 1 10.0.0.5 1` |
 
 ## <a name="next-steps"></a>Sonraki adımlar

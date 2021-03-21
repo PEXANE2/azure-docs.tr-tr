@@ -8,10 +8,10 @@ ms.date: 12/12/2020
 ms.topic: article
 ms.service: azure
 ms.openlocfilehash: 93efc89722d3152d92b6f8c8038deaa566741f7c
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100636569"
 ---
 # <a name="work-with-defender-for-iot-cli-commands"></a>IoT CLI komutları için Defender ile çalışma
@@ -113,7 +113,7 @@ Aşağıdaki tabloda IoT için Azure Defender için ağ seçeneklerinizi yapıla
 |Blink|`network blink`| Arabirim ışıklarının yanıp sönmesine neden olarak bir bağlantı bulun. |
 |Ağı yeniden yapılandırın |`network edit-settings`| Ağ yapılandırma parametrelerinde bir değişikliği etkinleştirin. |
 |Ağ ayarlarını göster |`network list`|Ağ bağdaştırıcısı parametrelerini görüntüler. |
-|Ağ yapılandırmasını doğrulama |`network validate` |Çıkış ağı ayarlarını gösterir. <br /> <br />Örneğin: <br /> <br />Geçerli ağ ayarları: <br /> Arabirim: eth0 <br /> IP: 10.100.100.1 <br />alt ağ: 255.255.255.0 <br />Varsayılan ağ geçidi: 10.100.100.254 <br />DNS: 10.100.100.254 <br />arabirimleri izleme: eth1|
+|Ağ yapılandırmasını doğrulama |`network validate` |Çıkış ağı ayarlarını gösterir. <br /> <br />Örnek: <br /> <br />Geçerli ağ ayarları: <br /> Arabirim: eth0 <br /> IP: 10.100.100.1 <br />alt ağ: 255.255.255.0 <br />Varsayılan ağ geçidi: 10.100.100.254 <br />DNS: 10.100.100.254 <br />arabirimleri izleme: eth1|
 |Sertifikayı içeri aktar |`certificate import FILE` |HTTPS sertifikasını içeri aktarır. Bir. CRT dosyasına yol gösteren tam yolu belirtmeniz gerekir \* . |
 |Tarihi göster |`date` |Ana bilgisayarda GMT biçiminde geçerli tarihi döndürür. |
 

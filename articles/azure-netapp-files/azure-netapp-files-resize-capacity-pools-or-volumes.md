@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 03/10/2021
 ms.author: b-juche
-ms.openlocfilehash: 62bf154c1dbf1a0d3f12e2cef916b37059ce985b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 869f46207b940521ee0b66b5afa9c6e2718ab04f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012485"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594487"
 ---
 # <a name="resize-a-capacity-pool-or-a-volume"></a>Kapasitesi havuzunu veya birimi yeniden boyutlandırma
 Bir kapasite havuzunun veya birimin boyutunu gerektiği gibi değiştirebilirsiniz. 
@@ -39,6 +39,21 @@ Bir birimin boyutunu gerektiği gibi değiştirebilirsiniz. Birimin kapasite kul
 1. NetApp hesabını Yönet dikey penceresinde **birimler**' e tıklayın. 
 2. Yeniden boyutlandırmak istediğiniz birimin adına sağ tıklayın veya "..." düğmesine tıklayın. bağlam menüsünü göstermek için birimin satırının sonundaki simge.
 3. Birimi yeniden boyutlandırmak veya silmek için bağlam menüsü seçeneklerini kullanın.
+
+## <a name="resize-a-cross-region-replication-destination-volume"></a>Çapraz bölge çoğaltma hedef birimini yeniden boyutlandırma 
+
+Bir [çapraz bölge çoğaltma](cross-region-replication-introduction.md) ilişkisinde, hedef birim, kaynak birimin boyutuna göre otomatik olarak yeniden boyutlandırılır. Bu nedenle, hedef birimi ayrı olarak yeniden boyutlandırmanıza gerek yoktur. Bu otomatik yeniden boyutlandırma davranışı, birimler etkin bir çoğaltma ilişkisinde olduğunda veya çoğaltma eşlemesi yeniden [eşitleme işlemiyle](cross-region-replication-manage-disaster-recovery.md#resync-replication)kesildiğinde geçerlidir. 
+
+Aşağıdaki tabloda, [yansıtma durumuna](cross-region-replication-display-health-status.md)göre hedef birim yeniden boyutlandırma davranışı açıklanmaktadır:
+
+|  Yansıtma durumu  | Hedef birim yeniden boyutlandırma davranışı |
+|-|-|
+| *Yansıtıldı* | Hedef birim başlatıldığında ve yansıtma güncelleştirmelerini almaya hazırsa, kaynak birimin yeniden boyutlandırılması hedef birimleri otomatik olarak yeniden boyutlandırır. |
+| *UK* | Kaynak birimi yeniden boyutlandırdığınızda ve yansıtma durumu *bozulur*, hedef birim yeniden [eşitleme işlemi](cross-region-replication-manage-disaster-recovery.md#resync-replication)ile otomatik olarak yeniden boyutlandırılır.  |
+| *Başlatılmadı* | Kaynak birimi yeniden boyutlandırdığınızda ve yansıtma durumu hala *başlatılmadığında*, hedef birimin el ile yapılması gerekir. Bu nedenle, kaynak birimi yeniden boyutlandırmak için başlatmanın tamamlanmasını beklemeniz önerilir (yani, yansıtma durumu *yansıtılmalıdır*). | 
+
+> [!IMPORTANT]
+> Bölgeler arası çoğaltmanın hem kaynak hem de hedef birimleri için kapasite havuzlarında yeterli sayıda yer bulunduğundan emin olun. Kaynak birimi yeniden boyutlandırdığınızda, hedef birim otomatik olarak yeniden boyutlandırılır. Ancak hedef birimi barındıran kapasite havuzunda yeterli sayıda yer yoksa, hem kaynak hem de hedef birimlerin yeniden boyutlandırılması başarısız olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

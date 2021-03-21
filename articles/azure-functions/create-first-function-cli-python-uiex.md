@@ -8,10 +8,10 @@ ms.custom:
 - devx-track-azurecli
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: da7f6fdaedd8105363cc62bf55bae2cb5f72f234
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102031659"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-from-the-command-line"></a>Hızlı başlangıç: Azure 'da komut satırından bir Python işlevi oluşturma
@@ -38,7 +38,7 @@ Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
 + [Azure Functions Core Tools](functions-run-local.md#v2) sürüm 3. x. 
   
-+ Her iki <abbr title="Azure portal kullanımına alternatif olarak, yerel geliştirme bilgisayarınızdan Azure kaynaklarıyla çalışmaya yönelik platformlar arası komut satırı araçları kümesi.">Azure CLI</abbr> veya <abbr title="Azure portal kullanımına alternatif olarak, yerel geliştirme bilgisayarınızdan Azure kaynaklarıyla çalışmaya yönelik komutlar sağlayan bir PowerShell modülü.">Azure PowerShell</abbr> Azure kaynakları oluşturmak için:
++ Her iki <abbr title="Azure portal kullanımına alternatif olarak, yerel geliştirme bilgisayarınızdan Azure kaynaklarıyla çalışmaya yönelik platformlar arası komut satırı araçları kümesi.">Azure CLI’si</abbr> veya <abbr title="Azure portal kullanımına alternatif olarak, yerel geliştirme bilgisayarınızdan Azure kaynaklarıyla çalışmaya yönelik komutlar sağlayan bir PowerShell modülü.">Azure PowerShell</abbr> Azure kaynakları oluşturmak için:
 
     + [Azure CLI](/cli/azure/install-azure-cli) sürüm 2,4 veya üzeri.
 

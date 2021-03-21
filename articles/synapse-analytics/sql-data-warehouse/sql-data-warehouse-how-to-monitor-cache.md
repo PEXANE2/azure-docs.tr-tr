@@ -2,21 +2,21 @@
 title: Gen2 önbelleğinizi iyileştirin
 description: Azure portal kullanarak Gen2 önbelleğinizi izlemeyi öğrenin.
 services: synapse-analytics
-author: kevinvngo
+author: gaursa
 manager: craigg
 ms.service: synapse-analytics
 ms.subservice: sql-dw
 ms.topic: conceptual
 ms.date: 11/20/2020
-ms.author: kevin
+ms.author: gaursa
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 041751b5b23dbb3153f1ae638303579a860c0e5b
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: fed3ed2c87342d557872e97bfc2a6c4d142b5a3a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020172"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585630"
 ---
 # <a name="how-to-monitor-the-adaptive-cache"></a>Uyarlamalı önbelleği izleme
 

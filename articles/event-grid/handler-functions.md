@@ -4,10 +4,10 @@ description: Azure Işlevleri tarafından Event Grid olayları için olay işley
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.openlocfilehash: f547b09fe7e62eb3fa9e02bd17298a936350f871
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103496550"
 ---
 # <a name="use-a-function-as-an-event-handler-for-event-grid-events"></a>Event Grid olaylar için bir işlevi olay işleyicisi olarak kullanma

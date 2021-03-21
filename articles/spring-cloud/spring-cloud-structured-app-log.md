@@ -8,10 +8,10 @@ ms.date: 02/05/2021
 ms.author: brendm
 ms.custom: devx-track-java
 ms.openlocfilehash: 844530c6d1650b5fddd27b10c775c4364a3f5147
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102124474"
 ---
 # <a name="structured-application-log-for-azure-spring-cloud"></a>Azure yay bulutu için yapılandırılmış uygulama günlüğü
@@ -23,7 +23,7 @@ Günlük sorgu deneyimini geliştirmek için, bir uygulama günlüğünün JSON 
 
 **JSON şema gereksinimleri:**
 
-| JSON anahtarı      | JSON değer türü|  Gerekli | Log Analytics sütun| Açıklama |
+| JSON anahtarı      | JSON değer türü|  Gerekli | Log Analytics sütun| Description |
 | --------------| ------------|-----------|-----------------|--------------------------|
 | timestamp     | string      |     Yes   | AppTimestamp    | UTC biçiminde zaman damgası  |
 | Medi        | dize      |     No    | Medi          | Medi                   |
@@ -32,7 +32,7 @@ Günlük sorgu deneyimini geliştirmek için, bir uygulama günlüğünün JSON 
 | message       | dize      |     No    | İleti         | günlük iletisi              |
 | stackTrace    | dize      |     No    | StackTrace      | özel durum yığın izlemesi    |
 | exceptionClass| dize      |     No    | ExceptionClass  | özel durum sınıfı adı     |
-| MDC           | iç içe JSON |     Hayır    |                 | eşlenen tanılama bağlamı|
+| MDC           | iç içe JSON |     No    |                 | eşlenen tanılama bağlamı|
 | MDC. TraceID   | dize      |     No    | Izleme kimliği         |Dağıtılmış izleme için izleme kimliği|
 | MDC. Spankimliği    | dize      |     No    | Spanıd          |Dağıtılmış izleme için yayılma kimliği |
 |               |             |           |                 |                          |

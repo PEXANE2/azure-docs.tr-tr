@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
 ms.openlocfilehash: 5fa17083be01a702ebac888eecc17a4969b754ef
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103561604"
 ---
 # <a name="azure-storage-partners-for-primary-and-secondary-storage"></a>Birincil ve ikincil depolama için Azure depolama iş ortakları
@@ -21,7 +21,7 @@ Bu makalede, bir ağa bağlı depolama (NAS) veya depolama alanı ağı (SAN) ç
 
 ## <a name="verified-partners"></a>Doğrulanan iş ortakları
 
-| İş Ortağı | Açıklama | Web sitesi/ürün bağlantısı |
+| İş Ortağı | Description | Web sitesi/ürün bağlantısı |
 | ------- | ----------- | -------------------- |
 | ![Nasuni](./media/nasuni-logo.png) |**Nasuni**<br>Nasuni, BCDR ve disk katmanlaması için ilişkili altyapı dahil olmak üzere kurumsal NAS ve dosya sunucularının yerini alan bir dosya depolama platformudur. Sanal kenar gereçleri, dosyaları hızla erişilebilir ve buluta eşitlenmiş halde tutar. Yönetim Konsolu, dosya altyapınızı sağlama, izleme, denetleme ve rapor verme özelliği dahil olmak üzere birden çok depolama sitesini tek bir konumdan yönetmenizi sağlar. Buluta sürekli sürüm oluşturma, dosya geri yükleme sürelerini dakikalar içinde getirir.<br><br>Azure üzerinde oluşturulan Nasuni bulut dosya depolaması, geleneksel NAS ve dosya sunucularını herhangi bir sayıda konumda ortadan kaldırır ve bir bulut çözümüyle değiştirir. Nasuni bulutu dosya depolaması, sınırsız dosya depolama, yedeklemeler, olağanüstü durum kurtarma ve çok siteli dosya paylaşımı sağlar. Nasuni, veri merkezi-bulut girişimleri, çok konumdaki dosya eşitleniyor, paylaşım ve işbirliği ve VDı ortamları için bulut depolama Yardımcısı olarak kullanılan bir hizmet olarak yazılım hizmetidir.|[İş ortağı sayfası](https://www.nasuni.com/partner/microsoft/)<br>[Azure Market](https://azuremarketplace.microsoft.com/marketplace/apps/nasunicorporation.nasuni)|
 | ![Panzura](./media/panzura-logo.png) |**Panzura**<br>Panzura, Azure bulut depolamayı yüksek performanslı küresel bir dosya sistemine dönüştüren dokudır. Panzura, tüm kullanıcılar için bir yetkili veri kaynağı sunarak, kuruluşların otomatik dosya kilitleme, anlık genel veri tutarlılığı ve yerel dosya işlemi performansı dahil olmak üzere tek siteli bir NAS 'ın tüm işlevleri ve hızlarla küresel olarak kullanılabilir bir veri merkezi olarak Azure kullanmasına olanak sağlar. |[İş ortağı sayfası](https://panzura.com/partners/microsoft-azure/)<br>[Azure Market](https://azuremarketplace.microsoft.com/marketplace/apps/panzura-file-system.panzura-freedom-filer)|

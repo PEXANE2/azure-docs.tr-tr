@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/04/2020
 ms.openlocfilehash: 349f58720e6fff52191dfff65108cd1320e41eed
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98939252"
 ---
 # <a name="optimize-apache-hive-with-apache-ambari-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache ambarı ile Apache Hive iyileştirin
@@ -131,10 +131,10 @@ Kullanılabilir sıkıştırma türleri şunlardır:
 
 | Biçimlendir | Araç | Algoritma | Dosya Uzantısı | Bölünebilir? |
 | --- | --- | --- | --- | --- |
-| Gzip | Gzip | Söndür | `.gz` | Hayır |
+| Gzip | Gzip | Söndür | `.gz` | No |
 | Bzip2 | Bzip2 | Bzip2 |`.bz2` | Yes |
 | LZO | `Lzop` | LZO | `.lzo` | Dizine alınmışsa Evet |
-| Snappy | Yok | Snappy | Snappy | Hayır |
+| Snappy | Yok | Snappy | Snappy | No |
 
 Genel bir kural olarak, sıkıştırma yöntemi bölünmüş tablo önemli olduğundan, bazı durumlarda birkaç mapas oluşturulur. Giriş verileri metin ise `bzip2` en iyi seçenektir. ORC biçimi için, Snappy en hızlı sıkıştırma seçeneğidir.
 
@@ -155,7 +155,7 @@ Genel bir kural olarak, sıkıştırma yöntemi bölünmüş tablo önemli oldu�
 
     c. Özellik Ekle penceresinde, `mapred.map.output.compression.codec` anahtar olarak ve `org.apache.hadoop.io.compress.SnappyCodec` değerini girin.
 
-    d. **Ekle**’yi seçin.
+    d. **Add (Ekle)** seçeneğini belirleyin.
 
     ![' Apache Hive özel Özellik Ekle '](./media/optimize-hive-ambari/hive-custom-property.png)
 

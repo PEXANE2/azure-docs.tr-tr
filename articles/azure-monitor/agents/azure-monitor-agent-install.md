@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: 6bf0e8b90ca50a90f84c18981ab6accae8477b46
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: b2f91f0036a86151588c8c138dac5421ad54e18e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102034328"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586429"
 ---
 # <a name="install-the-azure-monitor-agent-preview"></a>Azure Izleyici aracısını (Önizleme) yükler
 Bu makalede, Azure [izleyici aracısını](azure-monitor-agent-overview.md) hem Azure sanal makinelerine hem de Azure Arc özellikli sunuculara yüklemek için şu anda kullanılabilen farklı seçenekler ve ayrıca aracının hangi verileri toplayacağını tanımlayan [veri toplama kurallarıyla ilişkiler](data-collection-rule-azure-monitor-agent.md) oluşturma seçenekleri sunulmaktadır.
@@ -62,11 +62,11 @@ Azure Izleyici aracısını Azure sanal makinelerine ve Azure Arc etkin sunucula
 Azure Izleyici aracısını Azure sanal makinelerine yüklemek için aşağıdaki PowerShell komutlarını kullanın.
 # <a name="windows"></a>[Windows](#tab/PowerShellWindows)
 ```powershell
-Set-AzVMExtension -Name AMAWindows -ExtensionType AzureMonitorWindowsAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -VMName <virtual-machine-name> -Location <location>
+Set-AzVMExtension -Name AMAWindows -ExtensionType AzureMonitorWindowsAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -VMName <virtual-machine-name> -Location <location> -TypeHandlerVersion 1.0
 ```
 # <a name="linux"></a>[Linux](#tab/PowerShellLinux)
 ```powershell
-Set-AzVMExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -VMName <virtual-machine-name> -Location <location>
+Set-AzVMExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -VMName <virtual-machine-name> -Location <location> -TypeHandlerVersion 1.0
 ```
 ---
 
@@ -81,7 +81,7 @@ New-AzConnectedMachineExtension -Name AMAWindows -ExtensionType AzureMonitorWind
 New-AzConnectedMachineExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -MachineName <virtual-machine-name> -Location <location>
 ```
 ---
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure CLI’si
 Azure Izleyici aracısını Azure sanal makinelerine ve Azure Arc etkin sunucularına, sanal makine uzantısı eklemek için Azure CLı komutunu kullanarak yükleyebilirsiniz. 
 
 ### <a name="azure-virtual-machines"></a>Azure sanal makineleri

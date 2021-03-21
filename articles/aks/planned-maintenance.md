@@ -7,16 +7,16 @@ ms.topic: article
 ms.date: 03/03/2021
 ms.author: qpetraroia
 author: qpetraroia
-ms.openlocfilehash: 307183292b60a6556df69a4e5541cbfb5e13098f
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 8526d7c1c436074fbf6f838caf232e1abee06339
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103201571"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670384"
 ---
 # <a name="use-planned-maintenance-to-schedule-maintenance-windows-for-your-azure-kubernetes-service-aks-cluster-preview"></a>Azure Kubernetes Service (AKS) kümeniz için bakım pencerelerini zamanlamak üzere planlı bakım kullanma (Önizleme)
 
-AKS kümenizde düzenli bakım otomatik olarak gerçekleştirilir. Bu iş, varsayılan olarak herhangi bir zamanda gerçekleşebilir. Planlı bakım, denetim düzlemini güncelleştirecek ve iş yükü etkisini en aza indirecek haftalık bakım pencereleri zamanlamanıza izin verir. Zamanlandıktan sonra, seçtiğiniz pencere sırasında tüm bakım gerçekleşmeyecektir. Belirli bir gün için gün veya saat aralığı belirterek, kümenizde bir veya daha fazla haftalık pencere zamanlayabilirsiniz. Bakım pencereleri Azure CLı kullanılarak yapılandırılır.
+AKS kümenizde düzenli bakım otomatik olarak gerçekleştirilir. Bu iş, varsayılan olarak herhangi bir zamanda gerçekleşebilir. Planlı bakım, bir VMSS örneğindeki kuas sistem yığınlarınızı ve iş yükü etkisini en aza indirmenize olanak tanıyan haftalık bakım pencerelerini zamanlamanıza izin verir. Zamanlandıktan sonra, seçtiğiniz pencere sırasında tüm bakım gerçekleşmeyecektir. Belirli bir gün için gün veya saat aralığı belirterek, kümenizde bir veya daha fazla haftalık pencere zamanlayabilirsiniz. Bakım pencereleri Azure CLı kullanılarak yapılandırılır.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -107,7 +107,7 @@ Ayrıca, parametreleri kullanmak yerine bir JSON dosyası kullanarak bakım penc
         "notAllowedTime": [
           {
             "start": "2021-05-26T03:00:00Z",
-            "end": "2021-05-30T012:00:00Z"
+            "end": "2021-05-30T12:00:00Z"
           }
         ]
 }

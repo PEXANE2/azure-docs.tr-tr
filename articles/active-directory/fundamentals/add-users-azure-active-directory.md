@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51f1b122cb005f47e9816db3b403a35f4f502248
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 36455b3f6395216bd1ed26c8bd193f0e3ca10b5b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102426833"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594606"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Azure Active Directory kullanarak Kullanıcı ekleme veya silme
 
@@ -75,7 +75,7 @@ Hem Azure Active Directory (bulut) hem de Windows Server Active Directory (Şirk
 Azure Active Directory portalını kullanarak var olan bir kullanıcıyı silebilirsiniz.
 
 >[!Note]
->Kuruluşunuzdaki kullanıcıları silmek için bir genel yönetici veya Kullanıcı Yöneticisi rolü atamanız gerekir. Genel Yöneticiler, diğer yöneticiler dahil tüm kullanıcıları silebilir. Kullanıcı yöneticileri yönetici olmayan kullanıcıları, yardım masası yöneticilerini ve diğer Kullanıcı yöneticilerini silebilir. Daha fazla bilgi için bkz. [Azure AD 'de yönetici rolü izinleri](https://docs.microsoft.com/azure/active-directory/roles/permissions-reference).
+>Kuruluşunuzdaki kullanıcıları silmek için bir genel yönetici veya Kullanıcı Yöneticisi rolü atamanız gerekir. Genel Yöneticiler, diğer yöneticiler dahil tüm kullanıcıları silebilir. Kullanıcı yöneticileri yönetici olmayan kullanıcıları, yardım masası yöneticilerini ve diğer Kullanıcı yöneticilerini silebilir. Daha fazla bilgi için bkz. [Azure AD 'de yönetici rolü izinleri](../roles/permissions-reference.md).
 
 Bir kullanıcıyı silmek için şu adımları izleyin:
 

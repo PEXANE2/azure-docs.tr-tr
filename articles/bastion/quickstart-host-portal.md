@@ -9,17 +9,17 @@ ms.topic: quickstart
 ms.date: 02/18/2021
 ms.author: cherylmc
 ms.openlocfilehash: 8aeba13954283ca35c3eb0060a0e588ba6a7adbe
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101707178"
 ---
 # <a name="quickstart-connect-to-a-vm-securely-through-a-browser-via-private-ip-address"></a>Hızlı başlangıç: özel IP adresi aracılığıyla bir tarayıcı aracılığıyla güvenli bir şekilde VM 'ye bağlanma
 
 Azure portal ve Azure savunma kullanarak tarayıcınız aracılığıyla bir sanal makineye (VM) bağlanabilirsiniz. Bu hızlı başlangıç makalesinde, Azure savunma 'yı VM ayarlarınıza göre yapılandırma ve ardından Portal üzerinden sanal makinenize bağlama işlemi gösterilmektedir. VM 'nin genel IP adresi, istemci yazılımı, Aracısı veya özel bir yapılandırmaya sahip olması gerekmez. Hizmet sağlandıktan sonra, RDP/SSH deneyimi aynı sanal ağdaki tüm sanal makineler için kullanılabilir. Azure savunma hakkında daha fazla bilgi için bkz. [Azure](bastion-overview.md)savunma nedir?.
 
-## <a name="prerequisites"></a><a name="prereq"></a>Kaynakları
+## <a name="prerequisites"></a><a name="prereq"></a>Önkoşullar
 
 * Etkin aboneliği olan bir Azure hesabı. Yoksa, [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Savunma kullanarak bir VM 'ye tarayıcı aracılığıyla bağlanabilme için, Azure portal oturum açabiliyor olmanız gerekir.
 
@@ -100,7 +100,7 @@ Bir savunma konağını yapılandırmanın birkaç farklı yolu vardır. Aşağ�
    :::image type="content" source="./media/quickstart-host-portal/create-bastion.png" alt-text="3. adım ekran görüntüsü.":::
 1. Değerleri tamamladıktan sonra **Varsayılanları kullanarak Azure savunma oluştur**' u seçin. Azure ayarlarınızı doğrular ve ardından Konağı oluşturur. Ana bilgisayar ve kaynakları, oluşturulması ve dağıtılması yaklaşık 5 dakika sürer.
 
-## <a name="connect"></a><a name="connect"></a>Bağlanabilmeniz
+## <a name="connect"></a><a name="connect"></a>Bağlanma
 
 Sanal ağa bağlantı dağıtıldıktan sonra ekran bağlan sayfasına dönüşür.
 

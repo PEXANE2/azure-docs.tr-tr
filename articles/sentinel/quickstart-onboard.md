@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 10/14/2020
 ms.custom: references_regions
 ms.openlocfilehash: a169b93b20df14e536d8764b5fb4c889d645a1fa
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100570422"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Hızlı başlangıç: yerleşik Azure Sentinel
@@ -57,7 +57,7 @@ Veri kaynaklarınızı bağlandıktan sonra, verilerinizi temel alan bir expertl
 
 ## <a name="enable-azure-sentinel"></a>Azure Sentinel 'i etkinleştirme <a name="enable"></a>
 
-1. Azure Portal’da oturum açın. Azure Sentinel 'in oluşturulduğu aboneliğin seçildiğinden emin olun.
+1. Azure portalında oturum açın. Azure Sentinel 'in oluşturulduğu aboneliğin seçildiğinden emin olun.
 
 1. **Azure Sentinel**' i arayıp seçin.
 
