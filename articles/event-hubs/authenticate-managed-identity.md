@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/25/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 2070cfd94b39a08afb86ffd3579f1116faac72d5
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98805283"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>Event Hubs kaynaklara erişmek için Azure Active Directory ile yönetilen bir kimliğin kimliğini doğrulama
@@ -57,8 +57,8 @@ Event Hubs kaynaklara bir rol atamak için Azure portal bu kaynağa gidin. Kayna
 1. Azure portal, Event Hubs ad alanına gidin ve ad alanı için **genel bakış** ' ı görüntüleyin. 
 1. Olay Hub 'ının erişim denetimi ayarlarını göstermek için sol taraftaki menüden **Access Control (IAM)** seçeneğini belirleyin.
 1.  Rol atamalarının listesini görmek için **rol atamaları** sekmesini seçin.
-3.  **Ekle**' yi ve ardından **rol ataması Ekle** _ ' yi seçin.
-4.  _ *Rol ataması Ekle** sayfasında, aşağıdaki adımları izleyin:
+3.  **Ekle**' yi seçin ve ardından * * rol ataması Ekle * * * ' yi seçin.
+4.  **Rol ataması Ekle** sayfasında, şu adımları izleyin:
     1. **Rol** için, atamak istediğiniz Event Hubs rolünü seçin. Bu örnekte **Azure Event Hubs veri sahibidir**.
     1. **Erişim ata** alanına, **sistem tarafından atanan yönetilen kimlik** altında **App Service** seçin. 
     1. Web uygulaması için yönetilen kimliğin oluşturulduğu **aboneliği** seçin.

@@ -11,10 +11,10 @@ ms.topic: troubleshooting
 ms.date: 07/06/2020
 ms.author: justinha
 ms.openlocfilehash: 85b261b8754f35c7705690d15671144b858c0a43
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96618578"
 ---
 # <a name="troubleshoot-account-sign-in-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services yönetilen bir etki alanıyla hesap oturum açma sorunlarını giderme
@@ -59,7 +59,7 @@ Daha fazla bilgi için bkz. [Parola karması eşitlemesi Azure AD DS Için nası
     * Gerekli parola karmalarını oluşturmak için [hesabın parolasını değiştirin][enable-user-accounts] , sonra yeniden oturum açmayı denemeden önce 15 dakika bekleyin.
     * Azure AD DS devre dışı bırakıp yeniden etkinleştirirseniz, her hesabın, parolasını değiştirmek ve gerekli parola karmalarını oluşturmak için adımları yeniden izlemesi gerekir.
 * **Evet, Parola değiştirildi.**
-    * Gibi sAMAccountName formatı yerine *UPN* biçimini kullanarak oturum açmayı deneyin `driley@aaddscontoso.com` *SAMAccountName* `AADDSCONTOSO\deeriley` .
+    * Gibi sAMAccountName formatı yerine *UPN* biçimini kullanarak oturum açmayı deneyin `driley@aaddscontoso.com`  `AADDSCONTOSO\deeriley` .
     * *SAMAccountName* , UPN ön eki aşırı uzun olan veya yönetilen etki alanındaki başka bir kullanıcıyla aynı olan kullanıcılar için otomatik olarak oluşturulabilir. *UPN* biçiminin BIR Azure AD kiracısı içinde benzersiz olması garanti edilir.
 
 ## <a name="the-account-is-locked-out"></a>Hesap kilitli

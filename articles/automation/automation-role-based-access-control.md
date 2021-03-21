@@ -7,10 +7,10 @@ ms.subservice: shared-capabilities
 ms.date: 07/21/2020
 ms.topic: conceptual
 ms.openlocfilehash: 320668f9596376cf7aa12ed97872671404a07658
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98895926"
 ---
 # <a name="manage-role-permissions-and-security"></a>Rol izinlerini ve güvenliği yönetme
@@ -176,7 +176,7 @@ Bir Izleme katılımcısı, tüm izleme verilerini okuyabilir ve izleme ayarlar�
 |Microsoft. AlertsManagement/alertsSummary/*|Uyarı panosunu yönetin.|
 |Microsoft. Insights/AlertRules/*|Uyarı kurallarını yönetin.|
 |Microsoft. Insights/bileşenler/*|Application Insights bileşenlerini yönetin.|
-|Microsoft. Insights/DiagnosticSettings/*|Tanılama ayarlarını yönetin.|
+|Microsoft.Insights/DiagnosticSettings/*|Tanılama ayarlarını yönetin.|
 |Microsoft. Insights/eventTypes/*|Bir abonelikteki etkinlik günlüğü olaylarını (yönetim olayları) listeleyin. Bu izin, etkinlik günlüğüne hem programlı hem de portala erişim için geçerlidir.|
 |Microsoft. Insights/LogDefinitions/*|Bu izin, Portal aracılığıyla etkinlik günlüklerine erişmesi gereken kullanıcılar için gereklidir. Etkinlik günlüğündeki günlük kategorilerini listeleyin.|
 |Microsoft. Insights/MetricDefinitions/*|Ölçüm tanımlarını oku (bir kaynak için kullanılabilen ölçüm türlerinin listesi).|

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/21/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: c35d5d2f63f4a7abe80a0ff19e5994013355c386
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98020528"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Azure Stream Analytics Azure Machine Learning ile tümleştirme (Önizleme)
@@ -34,7 +34,7 @@ Machine Learning modelini Stream Analytics işinize bir işlev olarak eklemeden 
 
 Stream Analytics işinize doğrudan Azure portal veya Visual Studio Code Azure Machine Learning işlevleri ekleyebilirsiniz.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 1. Azure portal Stream Analytics işinize gidin ve **iş topolojisi** altında **işlevler** ' i seçin. Ardından, + açılan menü **Ekle** menüsünden **Azure Machine Learning hizmet** ' i seçin.
 

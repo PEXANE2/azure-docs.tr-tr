@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5a397c17821d16594ccfb48175a8a141cb9f390b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101687830"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>B2B Konuk kullanıcıları için bir kimlik sağlayıcısı olarak Google ekleme
@@ -164,7 +164,7 @@ Google Federation kurulumunuzu silebilirsiniz. Bunu yaparsanız, davetini zaten 
 
 **PowerShell kullanarak Google Federasyonu silmek için** 
 1. Graph modülü için Azure AD PowerShell 'in en son sürümünü ([Azureadpreview](https://www.powershellgallery.com/packages/AzureADPreview)) yükler.
-2. Şu komutu çalıştırın: `Connect-AzureAD`.  
+2. `Connect-AzureAD` öğesini çalıştırın.  
 4. Oturum açma isteminde, yönetilen genel yönetici hesabıyla oturum açın.  
 5. Aşağıdaki komutu girin:
 

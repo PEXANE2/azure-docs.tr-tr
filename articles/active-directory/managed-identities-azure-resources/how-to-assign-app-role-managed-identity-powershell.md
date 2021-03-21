@@ -16,10 +16,10 @@ ms.date: 12/10/2020
 ms.author: jodowns
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f2d844054e3744aafa01f43ded354a5b5d9f8b4b
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98732109"
 ---
 # <a name="assign-a-managed-identity-access-to-an-application-role-using-powershell"></a>PowerShell kullanarak bir uygulama rolüne yönetilen kimlik erişimi atama
@@ -30,7 +30,7 @@ Bu makalede, Azure AD PowerShell kullanarak başka bir uygulama tarafından kull
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure kaynakları için Yönetilen kimlikler hakkında bilginiz varsa [genel bakış bölümüne](overview.md)bakın. **[Sistem tarafından atanan ve Kullanıcı tarafından atanan yönetilen kimlik arasındaki farkı](overview.md#managed-identity-types)gözden geçirdiğinizden emin** olun.
 - Henüz bir Azure hesabınız yoksa, devam etmeden önce [ücretsiz bir hesaba kaydolun](https://azure.microsoft.com/free/).

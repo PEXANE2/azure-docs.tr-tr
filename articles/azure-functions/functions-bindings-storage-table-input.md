@@ -7,10 +7,10 @@ ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
 ms.openlocfilehash: 4fc2426189384856d2d2e95887cdabd2f9e9ebea
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98033787"
 ---
 # <a name="azure-table-storage-input-bindings-for-azure-functions"></a>Azure Işlevleri için Azure Tablo depolama Giriş bağlamaları
@@ -590,7 +590,7 @@ Kullanılacak depolama hesabı aşağıdaki sırayla belirlenir:
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `Table` .
 
-|function.jsözelliği | Öznitelik özelliği |Açıklama|
+|function.jsözelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
 |**türüyle** | yok | Olarak ayarlanmalıdır `table` . Azure portal bağlama oluşturduğunuzda bu özellik otomatik olarak ayarlanır.|
 |**Görünüm** | yok | Olarak ayarlanmalıdır `in` . Azure portal bağlama oluşturduğunuzda bu özellik otomatik olarak ayarlanır. |
@@ -598,7 +598,7 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 |**tableName** | **TableName** | Tablonun adı.| 
 |**partitionKey** | **PartitionKey** |İsteğe bağlı. Okunacak tablo varlığının bölüm anahtarı. Bu özelliğin nasıl kullanılacağına ilişkin yönergeler için [kullanım](#usage) bölümüne bakın.| 
 |**rowKey** |**RowKey** | İsteğe bağlı. Okunacak tablo varlığının satır anahtarı. Bu özelliğin nasıl kullanılacağına ilişkin yönergeler için [kullanım](#usage) bölümüne bakın.| 
-|**take** |**Almanız** | İsteğe bağlı. JavaScript 'te okunacak en fazla varlık sayısı. Bu özelliğin nasıl kullanılacağına ilişkin yönergeler için [kullanım](#usage) bölümüne bakın.| 
+|**almanız** |**Almanız** | İsteğe bağlı. JavaScript 'te okunacak en fazla varlık sayısı. Bu özelliğin nasıl kullanılacağına ilişkin yönergeler için [kullanım](#usage) bölümüne bakın.| 
 |**filtreyle** |**Filtrele** | İsteğe bağlı. JavaScript 'te tablo girişi için bir OData filtre ifadesi. Bu özelliğin nasıl kullanılacağına ilişkin yönergeler için [kullanım](#usage) bölümüne bakın.| 
 |**bağlanma** |**Bağlantı** | Bu bağlama için kullanılacak depolama bağlantı dizesini içeren bir uygulama ayarının adı. Bu ayar bir "AzureWebJobs" önekli uygulama ayarının veya bağlantı dizesi adının adı olabilir. Örneğin, ayar adınız "AzureWebJobsMyStorage" ise burada "MyStorage" belirtebilirsiniz. Işlevler çalışma zamanı, "AzureWebJobsMyStorage" adlı bir uygulama ayarını otomatik olarak arar. `connection`Boş bırakırsanız, işlevler çalışma zamanı adlı uygulama ayarında varsayılan depolama bağlantı dizesini kullanır `AzureWebJobsStorage` .|
 

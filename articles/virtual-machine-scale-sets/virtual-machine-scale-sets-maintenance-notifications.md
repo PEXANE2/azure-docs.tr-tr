@@ -10,10 +10,10 @@ ms.date: 11/12/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli
 ms.openlocfilehash: b4c705e65b5b8c4f9e34dc5ff1474e87da5bee02
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102209806"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>Sanal makine ölçek kümeleri için planlı bakım bildirimleri
@@ -84,7 +84,7 @@ Planlı bir bakım dalgası zamanlandığında, Azure portal kullanarak yaklaşa
 | Değer | Açıklama |
 |-------|-------------|
 | Evet | Sanal makine ölçek kümesindeki en az bir VM self servis penceresinde. Bu self servis penceresi sırasında istediğiniz zaman bakım başlatabilirsiniz. | 
-| Hayır | Etkilenen sanal makine ölçek kümesindeki bir self servis penceresinde VM yok. | 
+| No | Etkilenen sanal makine ölçek kümesindeki bir self servis penceresinde VM yok. | 
 | - | Sanal makineleriniz ölçek kümeleriniz planlı bir bakım dalgasının parçası değildir.| 
 
 ## <a name="notification-and-alerts-in-the-portal"></a>Portalda bildirim ve uyarılar

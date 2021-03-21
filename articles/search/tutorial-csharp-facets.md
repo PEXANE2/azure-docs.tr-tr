@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 01/26/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 44a05ed5b4386f2787a1c84dfeb61a5d539c7cb5
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98789811"
 ---
 # <a name="tutorial-add-faceted-navigation-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak çok yönlü gezinti ekleme
@@ -35,7 +35,7 @@ Bu öğreticideki kodun tamamlanmış bir sürümü aşağıdaki projede bulunab
 
 * [4-Add-model-gezinti (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/4-add-facet-navigation)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [2A-Add-sayfalama (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/2a-add-paging) çözümü. Bu proje, önceki öğreticiden ya da GitHub 'dan bir kopyadan oluşturulmuş kendi sürümünüz olabilir.
 
@@ -87,7 +87,7 @@ Model özelliğinin bir model aramasında bulunması için **ıbıı tablosuyla*
     }
     ```
 
-1. Bu öğreticinin bir parçası olarak herhangi bir etiket değiştirilmeyecektir, bu nedenle hotel.cs dosyasını değiştirilmemiş olarak kapatın.
+1. Bu öğreticinin bir parçası olarak herhangi bir etiket değiştirilmeyecektir, bu nedenle otel. cs dosyasını değiştirilmemiş olarak kapatın.
 
     > [!Note]
     > Aramada istenen bir alan uygun şekilde etiketlenmemişse, bir model araması bir hata oluşturur.
@@ -102,7 +102,7 @@ Bu, görünümün iş, görünüme model listelerini geçirme işleridir. Arama 
 
 ### <a name="add-filter-strings-to-the-searchdata-model"></a>SearchData modeline filtre dizeleri ekleme
 
-1. SearchData.cs dosyasını açın ve, model filtresi dizelerini tutmak için **Searchdata** sınıfına dize özellikleri ekleyin.
+1. SearchData. cs dosyasını açın ve, model filtresi dizelerini tutmak için **searchdata** sınıfına dize özellikleri ekleyin.
 
     ```cs
     public string categoryFilter { get; set; }

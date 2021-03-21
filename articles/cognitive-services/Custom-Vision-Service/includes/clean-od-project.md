@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 03/21/2019
 ms.author: pafarley
 ms.openlocfilehash: 179e283b1640b49487c38f900de7651226794c65
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97582652"
 ---
 Kendi nesne algılama projenizi gerçekleştirmek (veya bunun yerine [görüntü sınıflandırma](../quickstarts/image-classification.md) projesi oluşturmak) istiyorsanız, bu örnekteki çatal/makas algılama projesini silmek isteyebilirsiniz. Ücretsiz bir abonelik iki Özel Görüntü İşleme projesine izin verir.

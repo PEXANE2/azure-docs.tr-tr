@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/24/2020
 ms.author: jeedes
 ms.openlocfilehash: 325f6ad7d9685fac17e17b28c4ffbe31b1245cca
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98734554"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-confluence"></a>Öğretici: Confluence için Easyswith ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -26,7 +26,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile bir sorun olması için E
 * Kullanıcılarınızın Azure AD hesaplarıyla karışabilmesi için otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 

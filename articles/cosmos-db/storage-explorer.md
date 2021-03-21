@@ -8,10 +8,10 @@ ms.date: 10/23/2020
 ms.author: dech
 ms.custom: seodec18, has-adal-ref
 ms.openlocfilehash: 5b09ce48226b3c31efce4966ec776c10931cc391
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96348662"
 ---
 # <a name="manage-azure-cosmos-db-resources-by-using-azure-storage-explorer"></a>Azure Depolama Gezgini kullanarak Azure Cosmos DB kaynaklarını yönetme
@@ -278,7 +278,7 @@ Depolama Gezgini kendinden imzalı bir sertifika bulduğunda, aldığı HTTPS il
 1. Yürütün `s_client -showcerts -connect microsoft.com:443` .
 1. Otomatik olarak imzalanan sertifikaları bulun. Otomatik olarak imzalanan bir emin değilseniz, konunun ("s:") ve verenin ("i:") aynı olduğunu arayın.
 1. Otomatik olarak imzalanan bir sertifika bulursanız, **-----Başlangıç sertifikası-----** ve dahil olmak üzere **-----son sertifikaya-----** yeni bir sertifika ekleyerek ve bu her şeyi kopyalayıp yapıştırın. Her biri için CER dosyası.
-1. Depolama Gezgini açın ve ardından **Edit**  >  **SSL sertifikalarını** Düzenle  >  **sertifikaları içeri aktar**' a gidin. Bulmak, seçmek ve sonra açmak için dosya seçiciyi kullanın. Oluşturduğunuz CER dosyaları.
+1. Depolama Gezgini açın ve ardından   >  **SSL sertifikalarını** Düzenle  >  **sertifikaları içeri aktar**' a gidin. Bulmak, seçmek ve sonra açmak için dosya seçiciyi kullanın. Oluşturduğunuz CER dosyaları.
 
 Otomatik olarak imzalanan sertifika bulamazsanız, daha fazla yardım için geri bildirim gönderebilirsiniz.
 

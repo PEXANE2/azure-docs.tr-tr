@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.openlocfilehash: fcc5c02c4a37e205622470260d3c620ad76d07d8
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97694708"
 ---
 # <a name="provide-an-encryption-key-on-a-request-to-blob-storage"></a>BLOB depolama için istekte bir şifreleme anahtarı sağlayın
@@ -41,7 +41,7 @@ Her blob anlık görüntüsünün kendi şifreleme anahtarı olabilir.
 
 İstemciler, REST çağrıları için aşağıdaki üst bilgileri kullanarak blob depolamaya yönelik bir istek üzerindeki şifreleme anahtarı bilgilerini güvenli bir şekilde geçirebilir:
 
-|İstek Başlığı | Açıklama |
+|İstek Başlığı | Description |
 |---------------|-------------|
 |`x-ms-encryption-key` |Hem yazma hem de okuma istekleri için gereklidir. Base64 kodlamalı AES-256 şifreleme anahtarı değeri. |
 |`x-ms-encryption-key-sha256`| Hem yazma hem de okuma istekleri için gereklidir. Şifreleme anahtarının Base64 ile kodlanmış SHA256. |

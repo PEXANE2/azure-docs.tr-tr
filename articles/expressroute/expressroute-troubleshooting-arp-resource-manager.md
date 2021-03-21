@@ -9,10 +9,10 @@ ms.date: 12/15/2020
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 7d8ae2c58979c66ebbbab366d172179bdeee4253
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97561588"
 ---
 # <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>Kaynak Yöneticisi dağıtım modelinde ARP tabloları alma
@@ -163,7 +163,7 @@ Age InterfaceProperty IpAddress  MacAddress
   0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
 ```
 
-### <a name="arp-table-when-on-premises--connectivity-provider-side-has-problems"></a>Şirket içi/bağlantı sağlayıcı tarafında sorunlar olduğunda ARP tablosu
+### <a name="arp-table-when-on-premises--connectivity-provider-side-has-problems"></a>Şirket içi/bağlantı sağlayıcı tarafında sorun yaşandığında ARP tablosu
 Şirket içi veya bağlantı sağlayıcıdaki bir sorun oluşursa ARP tablosu iki işlemlerden birini gösterir. Şirket içi MAC adresinde eksik göster ' i görürsünüz veya yalnızca ARP tablosunda Microsoft girişi ' ni görürsünüz.
   
 ```output

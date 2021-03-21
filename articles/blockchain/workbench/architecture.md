@@ -5,10 +5,10 @@ ms.date: 09/05/2019
 ms.topic: conceptual
 ms.reviewer: brendal
 ms.openlocfilehash: 1fff70ef2eeb1dc27d33769fd48fe5923f56717b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96021614"
 ---
 # <a name="azure-blockchain-workbench-architecture"></a>Azure Blockchain Workbench mimarisi
@@ -99,7 +99,7 @@ Blok zinciri çalışma ekranına eklenen veritabanı, sözleşme tanımlarını
 
 Bu kapalı depolama alanı, kurumsal kuruluşların bir blok zinciri defteri yerine SQL 'de verileri sorgulamasına olanak sağlar. Ayrıca, blok zinciri teknolojisi yığınlarından bağımsız bir standart şemayı standartlaştırarak zincir dışı depolama, raporların ve diğer yapıların projeler, senaryolar ve kuruluşlar genelinde yeniden kullanılmasını mümkün hale getirir.
 
-## <a name="azure-storage"></a>Azure Storage
+## <a name="azure-storage"></a>Azure Depolama
 
 Azure depolama, sözleşmelerle ilişkili sözleşmeleri ve meta verileri depolamak için kullanılır.
 

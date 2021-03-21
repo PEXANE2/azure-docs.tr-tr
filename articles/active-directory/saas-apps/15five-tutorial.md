@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 79c6a5959d000217dcb69370b0e0ac4ccc18ccdd
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97673928"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-15five"></a>Öğretici: 15 beş ile tümleştirme Azure Active Directory

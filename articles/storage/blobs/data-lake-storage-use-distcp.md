@@ -9,10 +9,10 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: e69a97a86a357fb36dde572f292b5cac7963d14a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95912493"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>Azure depolama Blobları ve Azure Data Lake Storage 2. arasında veri kopyalamak için DistCp kullanma
@@ -83,7 +83,7 @@ Aşağıda kullanabileceğiniz bazı yönergeler verilmiştir.
 
 * **1. Adım: ' varsayılan ' YARN uygulama kuyruğu için kullanılabilen toplam belleği belirleme** -ilk adım, ' varsayılan ' YARN uygulama kuyruğu için kullanılabilir belleği belirlemektir. Bu bilgiler, kümeyle ilişkili olan ambarı portalında kullanılabilir. YARN ' ye gidin ve ' varsayılan ' uygulama sırasının kullanabileceği YARN belleğini görmek için configs sekmesini görüntüleyin. Bu, DistCp işiniz için (aslında MapReduce işi olan) toplam kullanılabilir bellektir.
 
-* **2. Adım: mapcontroller sayısını hesaplama** -l DEĞERI, Yarn kapsayıcı boyutuna bölünen toplam Yarn bellek bölümüne eşittir. **m** YARN kapsayıcı boyut bilgileri ayrıca, ambarı portalında da mevcuttur. YARN 'ye gidin ve configs sekmesini görüntüleyin. YARN kapsayıcı boyutu bu pencerede görüntülenir. Mapcontroller (**e**) sayısına ulaşacak denklem
+* **2. Adım: mapcontroller sayısını hesaplama** -l DEĞERI, Yarn kapsayıcı boyutuna bölünen toplam Yarn bellek bölümüne eşittir.  YARN kapsayıcı boyut bilgileri ayrıca, ambarı portalında da mevcuttur. YARN 'ye gidin ve configs sekmesini görüntüleyin. YARN kapsayıcı boyutu bu pencerede görüntülenir. Mapcontroller (**e**) sayısına ulaşacak denklem
 
     d = (düğüm sayısı * her düğüm için YARN bellek)/YARN kapsayıcı boyutu
 

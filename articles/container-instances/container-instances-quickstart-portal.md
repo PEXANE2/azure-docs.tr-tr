@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 08/24/2020
 ms.custom: seodec18, mvc, devx-track-js
 ms.openlocfilehash: c8477bd91c3a02a2cd02d341c38c16da251902ae
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96004815"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak Azure 'da kapsayıcı örneği dağıtma
@@ -27,7 +27,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap][azure-free-acc
 
 ## <a name="create-a-container-instance"></a>Kapsayıcı örneği oluşturma
 
-Container Instances **kaynak kapsayıcıları oluştur**' u seçin  >  **Containers**  >  **Container Instances**.
+Container Instances **kaynak kapsayıcıları oluştur**' u seçin  >    >  .
 
 :::image type="content" source="media/container-instances-quickstart-portal/qs-portal-01.png" alt-text="Azure portalında yeni bir kapsayıcı örneği oluşturmaya başlama":::
 

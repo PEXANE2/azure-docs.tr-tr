@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 01/19/2021
 ms.author: chmutali
 ms.openlocfilehash: a34881901fd8642fff9ac37512cd2ef260ad9d1c
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98954234"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için Workday yapılandırma
@@ -284,8 +284,8 @@ Bu adımda, Workday ve Azure portal Active Directory ile bağlantı kuruyoruz.
 
      | URL biçimi | WWS API sürümü kullanıldı | XPATH değişiklikleri gerekiyor |
      |------------|----------------------|------------------------|
-     | https://####.workday.com/ccx/service/tenantName | v 21.1 | Hayır |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | Hayır |
+     | https://####.workday.com/ccx/service/tenantName | v 21.1 | No |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | No |
      | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Yes |
 
       > [!NOTE]

@@ -9,10 +9,10 @@ ms.date: 08/03/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
 ms.openlocfilehash: 727354593488cd5af77408eaa7c8d9e747a0b071
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102210317"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>Hızlı başlangıç: Azure yay bulutuna uygulama oluşturma ve dağıtma
@@ -179,7 +179,7 @@ Bu yanıt, hem mikro hizmet uygulamalarının çalıştığını gösterir. `Sol
 
 ::: zone pivot="programming-language-java"
 Bu belgede, aşağıdaki kullanılarak mikro hizmet uygulamalarının Azure Spring Cloud 'a nasıl oluşturulacağı ve dağıtılacağı açıklanmaktadır:
-* Azure CLI
+* Azure CLI’si
 * Maven eklentisi
 * IntelliJ
 

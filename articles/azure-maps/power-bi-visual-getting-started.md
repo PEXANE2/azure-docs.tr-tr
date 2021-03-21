@@ -10,15 +10,15 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: a563a7776e84289e38743057778e8fe10fd17503
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96904712"
 ---
 # <a name="getting-started-with-the-azure-maps-power-bi-visual"></a>Azure Maps Power BI Visual ile çalışmaya başlama
 
-<Token>**Uygulama hedefi:** ![ Yeşil onay işareti. ](media/power-bi-visual/yes.png) **_Tüketiciler_* _ ![ yeşil onay işareti için Power BI hizmeti. ](media/power-bi-visual/yes.png) Tasarımcı & geliştiricilerin ![ yeşil onay işareti Power BI hizmeti. ](media/power-bi-visual/yes.png) Power BI Desktop ![ X, Hayır öğesini gösterir. ](media/power-bi-visual/no.png) Pro veya Premium lisansı gerektirir</Token>
+<Token>**Uygulama hedefi:** ![ Yeşil onay işareti. ](media/power-bi-visual/yes.png) Tüketiciler için **** ![ yeşil onay işareti Power BI hizmeti. ](media/power-bi-visual/yes.png) Tasarımcı & geliştiricilerin ![ yeşil onay işareti Power BI hizmeti. ](media/power-bi-visual/yes.png) Power BI Desktop ![ X, Hayır öğesini gösterir. ](media/power-bi-visual/no.png) Pro veya Premium lisansı gerektirir</Token>
 
 Bu makalede, Power BI için Microsoft Azure harita görsellerinin nasıl kullanılacağı gösterilmektedir.
 
@@ -47,7 +47,7 @@ Daha fazla bilgi edinmek için Azure Maps ile ilgili gizlilik ve kullanım koşu
 
 ## <a name="azure-maps-visual-preview-behavior-and-requirements"></a>Azure haritalar görsel (Önizleme) davranışı ve gereksinimleri
 
-_ *Azure Maps** Visual için bazı önemli noktalar ve gereksinimler vardır. :
+**Azure haritalar** görseli için bazı önemli noktalar ve gereksinimler vardır. :
 
 -   **Azure haritalar** görsellerinin (önizleme) Power BI Desktop içinde etkinleştirilmesi gerekir. **Azure haritalar** görselini etkinleştirmek için **Dosya** &gt; **seçenekleri ve ayarlar** &gt; **Seçenekler** &gt; **Önizleme özellikleri**' ni seçin ve ardından **Azure haritalar görsel** onay kutusunu seçin. Bunu yaptıktan sonra Azure Maps görseli yoksa, yönetim portalındaki bir kiracı yönetici anahtarının etkinleştirilmesi olasıdır.
 -   Veri kümesi, **Enlem** ve **boylam** bilgilerini içeren alanlara sahip olmalıdır. Konum alanlarının coğrafi kodlama gelecekteki bir güncelleştirmeye eklenecektir.

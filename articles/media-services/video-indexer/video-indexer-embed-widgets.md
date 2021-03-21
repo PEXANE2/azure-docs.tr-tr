@@ -12,10 +12,10 @@ ms.date: 01/25/2021
 ms.author: juliako
 ms.custom: devx-track-js
 ms.openlocfilehash: b13086e11e1181bba91a3255e68e9f8a32e78450
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98797782"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>Video Indexer pencere öğelerini uygulamalarınıza ekleyin
@@ -208,7 +208,7 @@ Azure Media Player dışında bir video oynatıcı kullanıyorsanız, iletişim 
     ```
 
 2. Bilişsel İçgörüler pencere öğesini ekleyin.
-3. "İleti" olayını dinleyerek yürütücünüz için iletişimi uygulayın. Örneğin:
+3. "İleti" olayını dinleyerek yürütücünüz için iletişimi uygulayın. Örnek:
 
     ```javascript
     <script>
@@ -271,7 +271,7 @@ Bu seçeneğin yalnızca içgörülerin yeni bir pencerede açılacağı durumla
 
 Video Indexer yürütücüsünü eklerseniz iframe boyutunu belirterek yürütücü boyutunu seçebilirsiniz.
 
-Örneğin:
+Örnek:
 
 `<iframe width="640" height="360" src="https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/" frameborder="0" allowfullscreen />`
 

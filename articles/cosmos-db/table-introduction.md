@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 01/08/2021
 ms.author: sngun
 ms.openlocfilehash: 1cf3bf30b37a09b5dfe94bf1e754a7f8e9dcd82c
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98045674"
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Azure Cosmos DB: Tablo API’sine Giriş
@@ -47,7 +47,7 @@ Azure Tablo depolama için yazılmış uygulamalar herhangi bir kod değişikli�
 | Fiyatlandırma | Tüketim tabanlı. | Hem [tüketim tabanlı](serverless.md) hem de [sağlanan kapasite](set-throughput.md) modlarında kullanılabilir. |
 | SLA’lar | çoğaltma stratejisine bağlı olarak% 99,9% 99,99 oranında kullanılabilirlik. | % 99,999, tek bölgede hesapta kullanılabilirliği ve% 99,99 yazma kullanılabilirliği ve çok bölgeli hesaplarda% 99,999 yazma kullanılabilirliği. Kullanılabilirlik, gecikme süresi, aktarım hızı ve tutarlılığı kapsayan [kapsamlı SLA 'lar](https://azure.microsoft.com/support/legal/sla/cosmos-db/) . |
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 [Azure portalındaki](https://portal.azure.com) yeni Azure Cosmos DB hesabı. Ardından [.NET kullanarak Tablo API'sı için hızlı başlangıç](create-table-dotnet.md) makalemizi inceleyin. 
 

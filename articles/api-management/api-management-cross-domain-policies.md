@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/01/2021
 ms.author: apimpm
 ms.openlocfilehash: 85abf30d792b24b92685e191f5b460a42dc29142
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101688425"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management etki alanları arası ilkeler
@@ -130,19 +130,19 @@ Bu örnek, alma ve GÖNDERI dışında özel üst bilgileri veya yöntemleri ola
 |CORS|Kök öğe.|Yes|Yok|
 |izin verilen-kaynaklar|`origin`Etki alanları arası istekler için izin verilen kaynakları tanımlayan öğeleri içerir. `allowed-origins``origin`herhangi bir kaynağa izin vermek için belirten tek bir öğe `*` veya bir URI içeren bir ya da daha fazla öğe içerebilir `origin` .|Yes|Yok|
 |başlangıç|Değer `*` tüm kaynakları veya tek bir kaynağı belirten BIR URI 'yi izin verebilir. URI bir düzen, konak ve bağlantı noktası içermelidir.|Yes|Bağlantı noktası bir URI 'de yoksayılırsa, HTTP için bağlantı noktası 80 ve HTTPS için bağlantı noktası 443 kullanılır.|
-|izin verilen-Yöntemler|GET veya POST dışındaki yöntemlere izin veriliyorsa bu öğe gereklidir. `method`Desteklenen HTTP fiillerini belirten öğeleri içerir. Değer `*` tüm yöntemleri gösterir.|Hayır|Bu bölüm yoksa GET ve POST desteklenir.|
+|izin verilen-Yöntemler|GET veya POST dışındaki yöntemlere izin veriliyorsa bu öğe gereklidir. `method`Desteklenen HTTP fiillerini belirten öğeleri içerir. Değer `*` tüm yöntemleri gösterir.|No|Bu bölüm yoksa GET ve POST desteklenir.|
 |method|Bir HTTP fiilini belirtir.|Bölüm mevcutsa en az bir `method` öğe gereklidir `allowed-methods` .|Yok|
-|izin verilen-üstbilgiler|Bu öğe `header` , isteğe dahil edilebilir üst bilgilerin adlarını belirten öğeleri içerir.|Hayır|Yok|
-|kullanıma yönelik üst bilgiler|Bu öğe `header` , istemci tarafından erişilebilen üst bilgilerin adlarını belirten öğeleri içerir.|Hayır|YOK|
+|izin verilen-üstbilgiler|Bu öğe `header` , isteğe dahil edilebilir üst bilgilerin adlarını belirten öğeleri içerir.|No|Yok|
+|kullanıma yönelik üst bilgiler|Bu öğe `header` , istemci tarafından erişilebilen üst bilgilerin adlarını belirten öğeleri içerir.|No|YOK|
 |üst bilgi|Bir üst bilgi adı belirtir.|`header` `allowed-headers` Bölümünde veya bölümü varsa en az bir öğe gereklidir `expose-headers` .|Yok|
 
 ### <a name="attributes"></a>Öznitelikler
 
 |Ad|Açıklama|Gerekli|Varsayılan|
 |----------|-----------------|--------------|-------------|
-|izin ver-kimlik bilgileri|`Access-Control-Allow-Credentials`Ön kontrol yanıtındaki üst bilgi bu özniteliğin değerine ayarlanır ve istemcinin etki alanları arası isteklerde kimlik bilgilerini gönderme yeteneğini etkiler.|Hayır|yanlış|
-|işten eşleşmeyen-istek|Bu öznitelik, CORS ilke ayarlarıyla eşleşmeyen çapraz kaynak isteklerinin işlenmesini denetler. Seçenekler isteği bir ön uçuş isteği olarak işlendiğinde ve CORS ilke ayarlarıyla eşleşmiyorsa: özniteliği olarak ayarlandıysa `true` , isteği boş bir 200 Tamam yanıtı ile hemen sonlandırın; Özniteliği olarak ayarlandıysa `false` , gelen öğesinin doğrudan alt öğeleri olan diğer kapsam ıçı CORS ilkeleri için gelen ' ı işaretleyin ve uygulayın.  CORS ilkesi bulunamazsa, isteği boş bir 200 OK yanıtıyla sonlandırın. GET veya HEAD isteği, kaynak üstbilgisini içerdiğinde (ve bu nedenle bir çapraz kaynak isteği olarak işlenir) ve CORS ilke ayarlarıyla eşleşmez: özniteliği olarak ayarlandıysa `true` , isteği boş bir 200 ok yanıtıyla birlikte hemen sonlandırın; Özniteliği olarak ayarlandıysa `false` , isteğin normal olarak devam etmesini ve YANıTA CORS üst bilgilerini eklememesine izin verin.|Hayır|true|
-|ön kontrol-sonuç-en yüksek yaş|`Access-Control-Max-Age`Ön kontrol yanıtında üst bilgi bu özniteliğin değerine ayarlanır ve Kullanıcı aracısının ön uçuş yanıtını önbelleğe alma yeteneğini etkiler.|Hayır|0|
+|izin ver-kimlik bilgileri|`Access-Control-Allow-Credentials`Ön kontrol yanıtındaki üst bilgi bu özniteliğin değerine ayarlanır ve istemcinin etki alanları arası isteklerde kimlik bilgilerini gönderme yeteneğini etkiler.|No|yanlış|
+|işten eşleşmeyen-istek|Bu öznitelik, CORS ilke ayarlarıyla eşleşmeyen çapraz kaynak isteklerinin işlenmesini denetler. Seçenekler isteği bir ön uçuş isteği olarak işlendiğinde ve CORS ilke ayarlarıyla eşleşmiyorsa: özniteliği olarak ayarlandıysa `true` , isteği boş bir 200 Tamam yanıtı ile hemen sonlandırın; Özniteliği olarak ayarlandıysa `false` , gelen öğesinin doğrudan alt öğeleri olan diğer kapsam ıçı CORS ilkeleri için gelen ' ı işaretleyin ve uygulayın.  CORS ilkesi bulunamazsa, isteği boş bir 200 OK yanıtıyla sonlandırın. GET veya HEAD isteği, kaynak üstbilgisini içerdiğinde (ve bu nedenle bir çapraz kaynak isteği olarak işlenir) ve CORS ilke ayarlarıyla eşleşmez: özniteliği olarak ayarlandıysa `true` , isteği boş bir 200 ok yanıtıyla birlikte hemen sonlandırın; Özniteliği olarak ayarlandıysa `false` , isteğin normal olarak devam etmesini ve YANıTA CORS üst bilgilerini eklememesine izin verin.|No|true|
+|ön kontrol-sonuç-en yüksek yaş|`Access-Control-Max-Age`Ön kontrol yanıtında üst bilgi bu özniteliğin değerine ayarlanır ve Kullanıcı aracısının ön uçuş yanıtını önbelleğe alma yeteneğini etkiler.|No|0|
 
 ### <a name="usage"></a>Kullanım
 Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.

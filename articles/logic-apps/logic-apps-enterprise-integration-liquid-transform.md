@@ -9,10 +9,10 @@ ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 07/31/2020
 ms.openlocfilehash: 0362c9ed4f736474dbd49e1bfaf1373e0f48acd6
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94992718"
 ---
 # <a name="transform-json-and-xml-using-liquid-templates-as-maps-in-azure-logic-apps"></a>Azure Logic Apps 'de haritalar olarak sıvı şablonları kullanarak JSON ve XML dönüştürme
@@ -66,7 +66,7 @@ Bu makalede, bu görevlerin nasıl tamamlanacağı gösterilmektedir:
    }
    ```
 
-1. Uzantıyı kullanarak şablonu kaydedin `.liquid` . Bu örnekte, kullanılır `SimpleJsonToJsonTemplate.liquid` .
+1. Uzantıyı kullanarak şablonu kaydedin `.liquid` . Bu örnekte `SimpleJsonToJsonTemplate.liquid` kullanılmıştır.
 
 ## <a name="upload-the-template"></a>Şablonu karşıya yükle
 

@@ -4,10 +4,10 @@ description: Avustralya kamu ile korunan şema örneğinin denetim eşlemesi. He
 ms.date: 01/21/2021
 ms.topic: sample
 ms.openlocfilehash: df143a871db3d871fe6354eab23b7ca6dc012b78
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98680005"
 ---
 # <a name="control-mapping-of-the-australian-government-ism-protected-blueprint-sample"></a>Avustralya kamu ile korunan şema örneğine yönelik denetim eşlemesi

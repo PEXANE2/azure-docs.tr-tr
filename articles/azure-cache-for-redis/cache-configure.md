@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
 ms.openlocfilehash: ba021d280f71504ad5c1e1aea0dc1c8c6b507b1e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100581085"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Redsıs için Azure önbelleğini yapılandırma
@@ -162,7 +162,7 @@ Redsıs anahtar alanı bildirimleri, **Gelişmiş ayarlar** dikey penceresinde y
 >
 >
 
-Daha fazla bilgi için bkz. [Redsıs keyspace bildirimleri](https://redis.io/topics/notifications). Örnek kod için [Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) örneğindeki [KeySpaceNotifications.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/KeySpaceNotifications.cs) dosyasına bakın.
+Daha fazla bilgi için bkz. [Redsıs keyspace bildirimleri](https://redis.io/topics/notifications). Örnek kod için [Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) örneğindeki [KeySpaceNotifications. cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/KeySpaceNotifications.cs) dosyasına bakın.
 
 
 <a name="recommendations"></a>

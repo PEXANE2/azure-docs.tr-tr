@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/04/2017
 ms.openlocfilehash: d8bcc4b68082fdf0d1f86dc341c3313f9d8788c4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102050690"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Azure Izleyici 'de Linux uygulamaları için performans sayaçlarını toplama 
@@ -69,7 +69,7 @@ MySQL OMı sağlayıcısı 'nın yüklenmesiyle birlikte, MySQL OMI kimlik doğr
 
 Aşağıdaki tabloda, mycimprovauth kullanımı için sözdizimi hakkında ayrıntılı bilgi verilmektedir.
 
-| İşlem | Örnek | Açıklama
+| İşlem | Örnek | Description
 |:--|:--|:--|
 | *yanlış veya doğru* otomatik güncelleştirme | mycimprovauth otomatik güncelleştirme yanlış | Kimlik doğrulama dosyasının yeniden başlatma veya güncelleştirme sırasında otomatik olarak güncelleştirilip güncelleştirimeyeceğini ayarlar. |
 | Varsayılan *bağlama adresi Kullanıcı adı parolası* | mycimprovauth varsayılan 127.0.0.1 kök PWD | MySQL OMı kimlik doğrulama dosyasındaki varsayılan örneği ayarlar.<br>Parola alanı düz metin olarak girilmelidir-MySQL OMı kimlik doğrulama dosyasındaki parola temel 64 olarak kodlanır. |
@@ -115,7 +115,7 @@ Linux için Log Analytics Aracısı 'nı Azure Izleyici 'ye veri gönderecek şe
 | Nesne adı | Sayaç Adı |
 |:--|:--|
 | MySQL Veritabanı | Bayt cinsinden disk alanı |
-| MySQL Veritabanı | Tablolar |
+| MySQL Veritabanı | Tables |
 | MySQL sunucusu | Kesilen bağlantı yüzdesi |
 | MySQL sunucusu | Bağlantı kullanım yüzdesi |
 | MySQL sunucusu | Bayt cinsinden disk alanı kullanımı |

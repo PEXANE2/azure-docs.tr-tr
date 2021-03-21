@@ -7,10 +7,10 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.openlocfilehash: 254d403adc687074eae772bcdcc55793bb25b336
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102048922"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Platform günlüklerini ve ölçümlerini farklı hedeflere göndermek için tanılama ayarlarını oluşturma
@@ -42,7 +42,7 @@ Aşağıdaki videoda, platform günlüklerine tanılama ayarlarıyla yönlendirm
 ## <a name="destinations"></a>Hedefler
 Platform günlükleri ve ölçümleri aşağıdaki tablodaki hedeflere gönderilebilir. 
 
-| Hedef | Açıklama |
+| Hedef | Description |
 |:---|:---|
 | [Log Analytics çalışma alanı](../logs/design-logs-deployment.md) | Log Analytics çalışma alanına Günlükler ve ölçümler gönderme, güçlü günlük sorguları ve ayrıca uyarılar ve görselleştirmeler gibi diğer Azure Izleyici özelliklerinden yararlanmak için Azure Izleyici tarafından toplanan diğer izleme verileriyle analiz etmenizi sağlar. |
 | [Olay hub’ları](../../event-hubs/index.yml) | Event Hubs Günlükler ve ölçümler gönderme, üçüncü taraf SIG 'ler ve diğer Log Analytics çözümleri gibi dış sistemlere veri akışını sağlar.  |

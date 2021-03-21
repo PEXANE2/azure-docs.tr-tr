@@ -4,10 +4,10 @@ description: Bu makalede, Azure CLı kullanarak IoT Edge üzerinde canlı video 
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.openlocfilehash: 80974c111dd451314635d06334766322bc68e437
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102210453"
 ---
 # <a name="create-custom-azure-resource-manager-role-and-assign-to-service-principal"></a>Özel Azure Resource Manager rolü oluşturma ve hizmet sorumlusuna atama
@@ -179,7 +179,7 @@ az role assignment create --role “LVAEdge User” --assignee-object-id < objec
 
 Parametreler:
 
-|Parametreler|Açıklama| 
+|Parametreler|Description| 
 |---|---|
 |--rol |Özel rol adı veya KIMLIĞI. Bizim örneğimizde: "LVAEdge kullanıcısı".|
 |--atanan e-nesne kimliği|Kullanacağınız hizmet sorumlusunun nesne KIMLIĞI.|

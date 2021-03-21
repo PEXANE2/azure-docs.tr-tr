@@ -1,6 +1,6 @@
 ---
 title: StorSimple parolalarınızı değiştirin | Microsoft Docs
-description: StorSimple Snapshot Manager ve Cihaz Yöneticisi parolalarınızı değiştirmek için StorSimple Aygıt Yöneticisi hizmetinin nasıl kullanılacağını açıklar.
+description: StorSimple Snapshot Manager ve Cihaz Yöneticisi parolalarınızı değiştirmek için StorSimple Device Manager hizmetinin nasıl kullanılacağını açıklar.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,16 +15,16 @@ ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 038084ba9ae43e14bc2eb42bf258912be27d062c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96023763"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-change-your-storsimple-passwords"></a>StorSimple parolalarınızı değiştirmek için StorSimple Aygıt Yöneticisi hizmetini kullanın
+# <a name="use-the-storsimple-device-manager-service-to-change-your-storsimple-passwords"></a>StorSimple parolalarınızı değiştirmek için StorSimple Device Manager hizmetini kullanın
 
 ## <a name="overview"></a>Genel Bakış
-Azure portal **cihaz ayarları** seçeneği, storsimple Aygıt Yöneticisi hizmeti tarafından yönetilen bir StorSimple cihazında yeniden yapılandırabilmeniz için tüm cihaz parametrelerini içerir. Bu öğreticide cihaz yöneticinize veya StorSimple Snapshot Manager parolanızı değiştirmek için **cihaz ayarları** altında **güvenlik** seçeneğini nasıl kullanabileceğiniz açıklanmaktadır.
+Azure portal **cihaz ayarları** seçeneği, storsimple Device Manager hizmeti tarafından yönetilen bir StorSimple cihazında yeniden yapılandırabilmeniz için tüm cihaz parametrelerini içerir. Bu öğreticide cihaz yöneticinize veya StorSimple Snapshot Manager parolanızı değiştirmek için **cihaz ayarları** altında **güvenlik** seçeneğini nasıl kullanabileceğiniz açıklanmaktadır.
 
 ## <a name="change-the-device-administrator-password"></a>Cihaz yöneticisi parolasını değiştirme
 StorSimple cihazına erişmek için Windows PowerShell arabirimini kullandığınızda, bir cihaz yöneticisi parolası girmeniz gerekir. İlk StorSimple cihazı bir hizmetle kaydedildiğinde, bu arabirimin varsayılan parolası *Parola1* olur. Verilerinizin güvenliği için kayıt işleminin sonunda bu parolayı değiştirmeniz gerekir. Bu parolayı değiştirmeden kayıt işleminden çıkabilirsiniz. Daha fazla bilgi için bkz. [3. Adım: cihazı StorSimple için Windows PowerShell aracılığıyla yapılandırma ve kaydetme](storsimple-8000-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple).
@@ -36,11 +36,11 @@ Kayıt sırasında Windows PowerShell arabirimi aracılığıyla ilk olarak ayar
 
 2. Cihazların tablolu listesinden, parolasını değiştirmek istediğiniz cihazı seçin ve tıklatın.
 
-    ![StorSimple Aygıt Yöneticisi hizmetini gösteren ekran görüntüsü. Yönetim altında cihazlar seçilidir. Cihaz listesinde, bir cihaz seçilidir.](./media/storsimple-8000-change-passwords/changepwd1.png)
+    ![StorSimple Device Manager hizmetini gösteren ekran görüntüsü. Yönetim altında cihazlar seçilidir. Cihaz listesinde, bir cihaz seçilidir.](./media/storsimple-8000-change-passwords/changepwd1.png)
 
 3. **Ayarlar** dikey penceresinde **cihaz ayarları > güvenlik**' e gidin.
 
-    ![Aygıt Yöneticisi hizmetinin ayarlar dikey penceresini gösteren ekran görüntüsü. Cihaz ayarları altında güvenlik seçilidir.](./media/storsimple-8000-change-passwords/changepwd2.png)
+    ![Device Manager hizmetinin ayarlar dikey penceresini gösteren ekran görüntüsü. Cihaz ayarları altında güvenlik seçilidir.](./media/storsimple-8000-change-passwords/changepwd2.png)
 
 4. **Güvenlik ayarları** dikey penceresinde, Cihaz Yöneticisi parolasını değiştirmek için **parola** ' ya tıklayın.
 
@@ -70,11 +70,11 @@ Azure portal aracılığıyla StorSimple Snapshot Manager için parola ayarlayab
 
 2. Cihazların tablolu listesinden, StorSimple Snapshot Manager parolasını belirlemek veya değiştirmek istediğiniz cihaza tıklayın.
 
-     ![StorSimple Aygıt Yöneticisi hizmetini gösteren ekran görüntüsü. Yönetim altında cihazlar seçilidir. Cihaz listesinde, bir cihaz seçilidir.](./media/storsimple-8000-change-passwords/changepwd1.png)
+     ![StorSimple Device Manager hizmetini gösteren ekran görüntüsü. Yönetim altında cihazlar seçilidir. Cihaz listesinde, bir cihaz seçilidir.](./media/storsimple-8000-change-passwords/changepwd1.png)
 
 3. **Ayarlar** dikey penceresinde **cihaz ayarları > güvenlik**' e gidin.
 
-     ![Aygıt Yöneticisi hizmetinin ayarlar dikey penceresini gösteren ekran görüntüsü. Cihaz ayarları altında güvenlik seçilidir.](./media/storsimple-8000-change-passwords/changepwd2.png)
+     ![Device Manager hizmetinin ayarlar dikey penceresini gösteren ekran görüntüsü. Cihaz ayarları altında güvenlik seçilidir.](./media/storsimple-8000-change-passwords/changepwd2.png)
 
 4. StorSimple Snapshot Manager parolasını ayarlamak veya değiştirmek için **güvenlik ayarları** dikey penceresinde **parola** ' ya tıklayın.
 
@@ -95,5 +95,5 @@ StorSimple Snapshot Manager parolası şimdi güncellenmelidir.
 ## <a name="next-steps"></a>Sonraki adımlar
 * [StorSimple güvenliği](storsimple-8000-security.md)hakkında daha fazla bilgi edinin.
 * [Cihaz yapılandırmanızı değiştirme](storsimple-8000-modify-device-config.md)hakkında daha fazla bilgi edinin.
-* StorSimple [cihazınızı yönetmek Için storsimple Aygıt Yöneticisi hizmetini kullanma](storsimple-8000-manager-service-administration.md)hakkında daha fazla bilgi edinin.
+* StorSimple [cihazınızı yönetmek Için storsimple Device Manager hizmetini kullanma](storsimple-8000-manager-service-administration.md)hakkında daha fazla bilgi edinin.
 

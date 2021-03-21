@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
 ms.openlocfilehash: 75b8230a1027bbf3ff3d73fb35ce65107c2db7e9
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98730680"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>Öğretici: Microsoft tarafından JıRA SAML SSO 'SU ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -26,11 +26,11 @@ Bu öğreticide, Microsoft tarafından Azure Active Directory (Azure AD) ile Jı
 * Kullanıcılarınızın Azure AD hesaplarıyla Microsoft tarafından kullanılabilen BIR SAML SSO 'SU için otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="description"></a>Açıklama
+## <a name="description"></a>Description
 
 Çoklu oturum açmayı etkinleştirmek için Microsoft Azure Active Directory hesabınızı Atlaseli JIRA sunucusu ile kullanın. Bu sayede, tüm kuruluşunuz kullanıcıları JIRA uygulamasında oturum açmak için Azure AD kimlik bilgilerini kullanabilir. Bu eklenti, Federasyon için SAML 2,0 kullanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Microsoft tarafından JıRA SAML SSO 'SU ile yapılandırmak için aşağıdaki öğeler gereklidir:
 

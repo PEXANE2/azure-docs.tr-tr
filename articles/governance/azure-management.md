@@ -4,10 +4,10 @@ description: Azure Yönetim Araçları 'ndaki içeriklere yönelik bağlantılar
 ms.date: 02/05/2021
 ms.topic: overview
 ms.openlocfilehash: 754fe496b790a7ee32eb840109a60a04ee66ef97
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99593934"
 ---
 # <a name="what-are-the-azure-management-areas"></a>Azure Yönetim bölgeleri nelerdir?
@@ -42,7 +42,7 @@ Azure’da İdare, temelde iki hizmet ile uygulanır. [Azure ilkesi](./policy/ov
 Bu özellik, bu kaynakları kurumsal standartlarınızla uyumlu tutar.
 [Azure maliyet yönetimi](../cost-management-billing/cost-management-billing-overview.md) , Azure kaynaklarınız ve diğer bulut sağlayıcıları için bulut kullanımını ve harcamalarınızı izlemenize olanak sağlar.
 
-## <a name="secure"></a>Güvenlik
+## <a name="secure"></a>Güvenliği Sağlama
 
 Kaynaklarınızın ve verilerinizin güvenliğini yönetin. Bir güvenlik programı tehditleri değerlendirmek, verileri toplamak ve analiz etmek ve uygulamalarınızın ve kaynaklarınızın uyumluluğunu içerir. Güvenlik izleme ve tehdit analizi, [Azure Güvenlik Merkezi](../security-center/security-center-introduction.md)tarafından sağlanır ve karma bulut iş yükleri arasında Birleşik güvenlik yönetimi ve Gelişmiş tehdit koruması içerir. Azure kaynaklarını güvenli hale getirme hakkında kapsamlı bilgi ve yönergeler için bkz. [Azure güvenliğine giriş](../security/fundamentals/overview.md) .
 

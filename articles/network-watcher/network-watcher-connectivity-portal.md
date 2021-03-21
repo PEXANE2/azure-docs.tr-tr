@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
 ms.openlocfilehash: f33c5f0fdf69737df0d8bd83499ded1e0e0f4f88
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97898122"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-portal"></a>Azure portal kullanarak Azure ağ Izleyicisi ile bağlantı sorunlarını giderme
@@ -49,7 +49,7 @@ Ağ izleyicisine gidin ve **bağlantı sorunlarını giderme**' ye tıklayın. B
 
 ![Bir sanal makine için bağlantı sonuçlarını denetleme][1]
 
-## <a name="check-remote-endpoint-connectivity"></a>Uzak uç nokta bağlantısını denetle
+## <a name="check-remote-endpoint-connectivity"></a>Uzak uç nokta bağlantısını denetleme
 
 Uzak bir uç nokta bağlantısını ve gecikmesini denetlemek için **hedef** bölümünde **el ile radyo belirt** düğmesini seçin, URL 'yi ve bağlantı noktasını girin ve **Denetle**' ye tıklayın.  Bu, Web siteleri ve depolama uç noktaları gibi uzak uç noktalar için kullanılır.
 

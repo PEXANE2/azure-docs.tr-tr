@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: mbullwin
 ms.openlocfilehash: c4d1d23da5fd9678cc5b9477ddeed0daf4f5ac36
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96348628"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>Farklı veri kaynaklarından ölçüm Danışmanı 'na veri akışları ekleme
@@ -23,7 +23,7 @@ Farklı türlerde veri kaynaklarını ölçüm Danışmanı 'na bağlamaya yöne
 
 ## <a name="supported-authentication-types"></a>Desteklenen kimlik doğrulama türleri
 
-| Kimlik doğrulaması türleri | Açıklama |
+| Kimlik doğrulaması türleri | Description |
 | ---------------------|-------------|
 |**Temel** | Veri kaynaklarına erişmek için temel parametreleri sağlayabilmeniz gerekir. Örneğin bir bağlantı dizesi veya anahtar. Veri akışı yöneticileri bu kimlik bilgilerini görüntüleyebiliyor. |
 | **AzureManagedIdentity** | Azure kaynakları için [Yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md) Azure Active Directory özelliğidir. Azure hizmetleri 'ni Azure AD 'de otomatik olarak yönetilen bir kimlikle sağlar. Kimliği, Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmette kimlik doğrulaması yapmak için kullanabilirsiniz.|
@@ -41,9 +41,9 @@ Farklı türlerde veri kaynaklarını ölçüm Danışmanı 'na bağlamaya yöne
 |[**Azure Blob depolama (JSON)**](#blob) | Temel<br>ManagedIdentity|
 |[**Azure Cosmos DB (SQL)**](#cosmosdb) | Temel |
 |[**Azure Veri Gezgini (Kusto)**](#kusto) | Temel<br>ManagedIdentity|
-|[**Azure Data Lake Storage 2. Nesil**](#adl) | Temel<br>DataLakeGen2SharedKey<br>Hizmet sorumlusu<br>Anahtar kasasından hizmet sorumlusu<br> |
+|[**Azure Data Lake Storage Gen2**](#adl) | Temel<br>DataLakeGen2SharedKey<br>Hizmet sorumlusu<br>Anahtar kasasından hizmet sorumlusu<br> |
 |[**Azure SQL veritabanı/SQL Server**](#sql) | Temel<br>ManagedIdentity<br>Hizmet sorumlusu<br>Anahtar kasasından hizmet sorumlusu<br>Azuressqlconnectionstring
-|[**Azure Table Storage**](#table) | Temel | 
+|[**Azure Tablo depolama**](#table) | Temel | 
 |[**ElasticSearch**](#es) | Temel |
 |[**Http isteği**](#http) | Temel | 
 |[**Etkileyen (etkileyen XQL)**](#influxdb) | Temel |
@@ -93,7 +93,7 @@ Bir **kimlik bilgisi varlığı** oluşturun ve veri kaynaklarınızda kimlik do
   
   * v1 (varsayılan değer)
 
-      Yalnızca ölçüm *adı* ve *değeri* kabul edilir. Örneğin:
+      Yalnızca ölçüm *adı* ve *değeri* kabul edilir. Örnek:
     
       ``` JSON
       {"count":11, "revenue":1.23}
@@ -101,7 +101,7 @@ Bir **kimlik bilgisi varlığı** oluşturun ve veri kaynaklarınızda kimlik do
 
   * v2
 
-      Ölçüm *boyutları* ve *zaman damgası* da kabul edilir. Örneğin:
+      Ölçüm *boyutları* ve *zaman damgası* da kabul edilir. Örnek:
       
       ``` JSON
       [
@@ -159,7 +159,7 @@ JSON dosyası başına yalnızca bir zaman damgasına izin verilir.
   * `%h` saat olarak biçimlendirilir `HH`
   * `%M` dakika olarak biçimlendirilir `mm`
 
-Şu anda ölçüm Danışmanı, JSON dosyalarındaki veri şemasını aşağıda gösterildiği gibi destekler. Örneğin:
+Şu anda ölçüm Danışmanı, JSON dosyalarındaki veri şemasını aşağıda gösterildiği gibi destekler. Örnek:
 
 ``` JSON
 [
@@ -210,7 +210,7 @@ The timestamp field must match one of these two formats:
     select StartDate, JobStatusId, COUNT(*) AS JobNumber from IngestionJobs WHERE and StartDate = '2019-12-12 00:00:00'
     ```
 
-## <a name="span-idtableazure-table-storagespan"></a><span id="table">Azure Table Storage</span>
+## <a name="span-idtableazure-table-storagespan"></a><span id="table">Azure Tablo depolama</span>
 
 * **Bağlantı dizesi**: Azure Tablo depolamadan bağlantı dizesinin nasıl alınacağını öğrenmek için lütfen [bir bağlantı dizesini görüntüleme ve kopyalama](../../storage/common/storage-account-keys-manage.md?tabs=azure-portal&toc=%2fazure%2fstorage%2ftables%2ftoc.json#view-account-access-keys) bölümüne bakın.
 
