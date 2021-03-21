@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/24/2020
 ms.author: jeedes
 ms.openlocfilehash: 0a692684000a8c195b83ece1ce40306154b624a4
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92519036"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zengine"></a>Öğretici: zengine ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -57,7 +57,7 @@ Zengine 'in Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden ze
 
 ## <a name="configure-and-test-azure-ad-sso-for-zengine"></a>Zengine için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu zengine ile yapılandırın ve test edin. SSO 'nun çalışması için, zengine 'de bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu zengine ile yapılandırın ve test edin. SSO 'nun çalışması için, zengine 'de bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu zengine ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 

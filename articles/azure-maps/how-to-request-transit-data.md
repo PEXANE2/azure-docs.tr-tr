@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 740080d742f535f868b2ae194b24bebe5ac6ac24
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96906038"
 ---
 # <a name="request-public-transit-data-using-the-azure-maps-mobility-services-preview"></a>Azure haritalar Mobility hizmetlerini kullanarak genel aktarım verileri isteme (Önizleme) 
@@ -229,7 +229,7 @@ Space Iğne kulesinin Konum koordinatlarını elde etmek için Azure Maps [benze
 
 Benzer arama hizmetine bir istek yapmak için aşağıdaki adımları izleyin:
 
-1. Postman 'da **yeni istek** Al isteği ' ne tıklayın  |  **GET request** ve **Konum koordinatlarını alın**.
+1. Postman 'da **yeni istek** Al isteği ' ne tıklayın  |   ve **Konum koordinatlarını alın**.
 
 2. Oluşturucu sekmesinde, http **Al** metodunu seçin, AŞAĞıDAKI istek URL 'sini girin ve **Gönder**' e tıklayın.
 
@@ -336,7 +336,7 @@ Benzer arama hizmetine bir istek yapmak için aşağıdaki adımları izleyin:
 
 Bir yol isteği oluşturmak için aşağıdaki adımları uygulayın:
 
-1. Postman 'da **yeni istek** Al isteği ' ne tıklayın  |  **GET request** ve **yol bilgilerini alın**.
+1. Postman 'da **yeni istek** Al isteği ' ne tıklayın  |   ve **yol bilgilerini alın**.
 
 2. Oluşturucu sekmesinde http **Al** metodunu SEÇIN, API uç noktanız için AŞAĞıDAKI istek URL 'sini girin ve **Gönder**' e tıklayın.
 
@@ -531,7 +531,7 @@ Bir yol isteği oluşturmak için aşağıdaki adımları uygulayın:
 
 Azure haritalar [Get aktarma programı](/rest/api/maps/mobility/gettransititinerarypreview) hizmeti, belirli bir rota için verileri, [Get transit rotaları API](/rest/api/maps/mobility/gettransitroutepreview) hizmeti tarafından döndürülen yolun **gezi kimliğini** kullanarak isteyemenize olanak tanır. Bir istek yapmak için aşağıdaki adımları uygulayın:
 
-1. Postman 'da **yeni istek** Al isteği ' ne tıklayın  |  **GET request** ve **Aktarım bilgilerini alın**.
+1. Postman 'da **yeni istek** Al isteği ' ne tıklayın  |   ve **Aktarım bilgilerini alın**.
 
 2. Oluşturucu sekmesinde http **Al** yöntemini seçin. API uç noktanız için aşağıdaki istek URL 'sini girin ve **Gönder**' e tıklayın.
 

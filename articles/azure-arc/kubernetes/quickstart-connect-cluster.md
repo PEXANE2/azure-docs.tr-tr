@@ -9,10 +9,10 @@ ms.date: 03/03/2021
 ms.custom: template-quickstart
 keywords: Kubernetes, yay, Azure, küme
 ms.openlocfilehash: 3fc522c4bdda9eb1047d5258bcc431d0268990b9
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102121652"
 ---
 # <a name="quickstart-connect-an-existing-kubernetes-cluster-to-azure-arc"></a>Hızlı başlangıç: mevcut bir Kubernetes kümesini Azure yaya bağlama 
@@ -61,7 +61,7 @@ Bu hızlı başlangıçta, Azure Arc 'ın, Kubernetes 'in avantajlarından yarar
 >* 443 numaralı bağlantı noktasında TCP: `https://:443`
 >* 9418 numaralı bağlantı noktasında TCP: `git://:9418`
   
-| Uç nokta (DNS) | Açıklama |  
+| Uç nokta (DNS) | Description |  
 | ----------------- | ------------- |  
 | `https://management.azure.com`                                                                                 | Aracının Azure 'a bağlanması ve kümeyi kaydetmesi için gereklidir.                                                        |  
 | `https://eastus.dp.kubernetesconfiguration.azure.com`, `https://westeurope.dp.kubernetesconfiguration.azure.com`, `https://westcentralus.dp.kubernetesconfiguration.azure.com`, `https://southcentralus.dp.kubernetesconfiguration.azure.com`, `https://southeastasia.dp.kubernetesconfiguration.azure.com`, `https://uksouth.dp.kubernetesconfiguration.azure.com`, `https://westus2.dp.kubernetesconfiguration.azure.com`, `https://australiaeast.dp.kubernetesconfiguration.azure.com`, `https://eastus2.dp.kubernetesconfiguration.azure.com`, `https://northeurope.dp.kubernetesconfiguration.azure.com` | Aracının durumu iletme ve yapılandırma bilgilerini getirme işlemi için veri düzlemi uç noktası.                                      |  

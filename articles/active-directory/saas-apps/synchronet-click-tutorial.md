@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/06/2020
 ms.author: jeedes
 ms.openlocfilehash: 7aec0a7ff2e8dfdfca93971e01f8ed13af34acc6
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92517863"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-synchronet-click"></a>Öğretici: SynchroNet tıklama ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -59,7 +59,7 @@ Azure AD 'de SynchroNet tümleştirmesini yapılandırmak için, aboneliğinizi 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-synchronet-click"></a>Eşitleme için Azure AD çoklu oturum açma 'Yı yapılandırın ve test edin
 
-Azure AD SSO 'yu SynchroNet ile yapılandırın ve test edin **B. Simon**adlı bir test kullanıcısı kullanın. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve SynchroNet içindeki ilgili Kullanıcı arasında bağlantı ilişkisi kurmanız gerekir.
+Azure AD SSO 'yu SynchroNet ile yapılandırın ve test edin **B. Simon** adlı bir test kullanıcısı kullanın. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve SynchroNet içindeki ilgili Kullanıcı arasında bağlantı ilişkisi kurmanız gerekir.
 
 Azure AD SSO 'yu SynchroNet ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -84,7 +84,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     **Oturum açma URL 'si** metin kutusuna URL 'yi yazın:`https://click.synchronet.com`
 
-1. SynchroNet tıklama uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde, **emaposta/** **Kullanıcı. Mail**ile eşlendiği varsayılan özniteliklerin listesi gösterilmektedir. Synchronitıkal tıklama uygulaması **emadresi** 'nin **User. UserPrincipalName**ile eşlenmesini bekliyor, bu nedenle, **Düzenle** simgesine tıklayarak ve öznitelik eşlemesini değiştirerek öznitelik eşlemesini düzenlemeniz gerekir.
+1. SynchroNet tıklama uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde, **emaposta/** **Kullanıcı. Mail** ile eşlendiği varsayılan özniteliklerin listesi gösterilmektedir. Synchronitıkal tıklama uygulaması **emadresi** 'nin **User. UserPrincipalName** ile eşlenmesini bekliyor, bu nedenle, **Düzenle** simgesine tıklayarak ve öznitelik eşlemesini değiştirerek öznitelik eşlemesini düzenlemeniz gerekir.
 
     ![image](common/edit-attribute.png)
 
@@ -109,7 +109,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak, SynchroNet 'e erişim izni vererek B. Simon 'u etkinleştireceksiniz.
 
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde, **synchronet ' i**seçin.
+1. Uygulamalar listesinde, **synchronet ' i** seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)

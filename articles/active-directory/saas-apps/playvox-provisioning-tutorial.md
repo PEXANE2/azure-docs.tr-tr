@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/18/2020
 ms.author: Zhchia
 ms.openlocfilehash: 3c7efca5e052c2d0680aa7ca3e1b6d27bfdd7d11
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96862488"
 ---
 # <a name="tutorial-configure-playvox-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Playöğreticisi yapılandırma
@@ -88,7 +88,7 @@ Bu bölüm, Azure AD 'de Kullanıcı veya grup atamalarını temel alarak kullan
 
 Azure AD 'de playi için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalarla ve tüm uygulama öğeleriyle vurgulanan Azure portal kısmi ekran görüntüsü](common/enterprise-applications.png)
 

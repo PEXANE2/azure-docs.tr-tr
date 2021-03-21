@@ -9,10 +9,10 @@ ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 6f490b6f25112ed8a10bbd865070bd07ea3ee84f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96016973"
 ---
 ## <a name="create-the-webapi-project"></a>WebAPI projesi oluşturma
@@ -28,7 +28,7 @@ Aşağıdaki eylemleri yaparak yeni bir ASP.NET WebAPI arka ucu oluşturun:
 > [!IMPORTANT]
 > Visual Studio 2015 veya önceki bir sürümü kullanıyorsanız, bu öğreticiye başlamadan önce lütfen Visual Studio için NuGet Paket Yöneticisi’nin en son sürümünü yüklediğinizden emin olun.
 >
->Denetlemek için Visual Studio’yu başlatın. **Araçlar** menüsünde **Uzantılar ve güncelleştirmeler**' i seçin. Visual Studio sürümünüz için **NuGet Paket Yöneticisi** araması yapın ve en son sürümü kullandığınızdan emin olun. Sürümünüz en son sürüm değilse, bunu kaldırın ve NuGet Paket Yöneticisi'ni yeniden yükleyin.
+>Denetlemek için Visual Studio’yu başlatın. **Araçlar** menüsünde **Uzantılar ve Güncelleştirmeler**’i seçin. Visual Studio sürümünüz için **NuGet Paket Yöneticisi** araması yapın ve en son sürümü kullandığınızdan emin olun. Sürümünüz en son sürüm değilse, bunu kaldırın ve NuGet Paket Yöneticisi'ni yeniden yükleyin.
 
 ![NuGet paketi Yönet for Visual Studios Package vurgulanan Uzantılar ve güncelleştirmeler iletişim kutusunun ekran görüntüsü.][B4]
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 ms.author: jeedes
 ms.openlocfilehash: f6b7fb79b5aab1ee3ea6b5b710c766c1a34b099c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92519826"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zscaler-b2b-user-portal"></a>Öğretici: Zscaler B2B Kullanıcı Portalı ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -61,7 +61,7 @@ Zscaler B2B Kullanıcı portalının tümleştirmesini Azure AD ile yapılandır
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-zscaler-b2b-user-portal"></a>Zscaler B2B Kullanıcı Portalı için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Zscaler B2B Kullanıcı Portalı Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, Zscaler B2B Kullanıcı portalında bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Zscaler B2B Kullanıcı Portalı Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, Zscaler B2B Kullanıcı portalında bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Zscaler B2B Kullanıcı Portalı ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: c262ba87698c04da69728f7a370040c0679ec44e
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102122876"
 ---
 # <a name="how-to-self-diagnose-and-solve-problems-in-azure-spring-cloud"></a>Azure Spring Cloud 'da sorunları kendi kendine tanılama ve çözme
@@ -28,7 +28,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 * Hizmet örneğiniz için en az bir uygulama zaten oluşturulmuş.
 
 ## <a name="navigate-to-the-diagnostics-page"></a>Tanılama sayfasına gidin
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 2. Azure yay bulutuna **genel bakış** sayfasına gidin.
 3. Sol gezinti bölmesinde **Tanıla ve sorunları çöz** ' ü seçin.
 

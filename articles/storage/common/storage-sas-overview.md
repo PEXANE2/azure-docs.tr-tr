@@ -10,12 +10,12 @@ ms.date: 12/28/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 8812ab091037bcb3144a7fed53a449c3f5de353a
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 51e73222233602491b0c8ed3835d032610c68e0d
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802516"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104722795"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Paylaşılan erişim imzalarını (SAS) kullanarak Azure depolama kaynaklarına sınırlı erişim verme
 
@@ -181,6 +181,9 @@ Paylaşılan erişim imzalarını kullanmaya yönelik aşağıdaki öneriler, bu
 - **SAS ne zaman kullanacağınızı öğrenin.** Bazen, depolama hesabınıza yönelik belirli bir işlemle ilişkili riskler, SAS kullanmanın avantajlarından yararlanır. Bu gibi işlemler için, iş kuralı doğrulama, kimlik doğrulama ve denetim gerçekleştirdikten sonra depolama hesabınıza yazan bir orta katman hizmeti oluşturun. Ayrıca, bazen erişimi başka yollarla yönetmek daha basittir. Örneğin, bir kapsayıcıdaki tüm Blobları herkese açık bir şekilde okunabilir hale getirmek istiyorsanız, her istemciye erişim için bir SAS sağlamak yerine kapsayıcıyı ortak hale getirebilirsiniz.
 
 - **Uygulamanızı izlemek için Azure Izleyici ve Azure depolama günlüklerini kullanın.** SAS sağlayıcısı hizmetinizdeki bir kesinti nedeniyle yetkilendirme hatalarının oluşması olabilir. Ayrıca, depolanan bir erişim ilkesinin yanlışlıkla kaldırılmasından de oluşabilir. Bu yetkilendirme hatalarının türlerindeki herhangi bir ani artış gözlemlemek için Azure Izleyici ve depolama Analizi günlüğünü de kullanabilirsiniz. Daha fazla bilgi için bkz. Azure [izleyici 'de Azure depolama ölçümleri](../blobs/monitor-blob-storage.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) ve [günlüğe kaydetme Azure depolama Analizi](storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+
+> [!NOTE]
+> Depolama hesabı için oluşturulmuş paylaşılan erişim imzaları sayısını izlemez ve hiçbir API bu ayrıntıyı sağlayamaz. Bir depolama hesabı için oluşturulan paylaşılan erişim imzalarının sayısını bilmeniz gerekirse, numarayı el ile izlemeniz gerekir.
 
 ## <a name="get-started-with-sas"></a>SAS ile çalışmaya başlama
 

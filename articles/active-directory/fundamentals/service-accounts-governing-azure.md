@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee6ac21d67f32fbc61db19b348fc29cdf3ee9fd7
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: 7f540ab40a14af09aa8667860286021f572eb6f1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103418190"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587908"
 ---
 # <a name="governing-azure-ad-service-accounts"></a>Azure AD hizmet hesaplarını yöneten
 
@@ -53,7 +53,7 @@ Hizmet hesabı ayrıcalıkları için aşağıdaki yöntemleri öneririz.
 
 * Hizmet hesaplarına yerleşik roller atamayın. Bunun yerine, [Microsoft Graph Için OAuth2 izin verme modelini](/graph/api/resources/oauth2permissiongrant)kullanın,
 
-* Hizmet sorumlusuna ayrıcalıklı bir rol atanması gerekiyorsa, belirli, gerekli ayrıcalıklı olan [özel bir rolü](https://docs.microsoft.com/azure/active-directory/roles/custom-create) zamana bağlıysa bir biçimde atamayı düşünün.
+* Hizmet sorumlusuna ayrıcalıklı bir rol atanması gerekiyorsa, belirli, gerekli ayrıcalıklı olan [özel bir rolü](../roles/custom-create.md) zamana bağlıysa bir biçimde atamayı düşünün.
 
 * Hizmet hesaplarını yükseltilmiş izinlere sahip herhangi bir grubun üyeleri olarak eklemeyin. 
 
@@ -63,10 +63,10 @@ Hizmet hesabı ayrıcalıkları için aşağıdaki yöntemleri öneririz.
    veya kullanın  
 `Get-AzureADServicePrincipal | % { Get-AzureADServiceAppRoleAssignment -ObjectId $_ }`
 
-* Bir hizmet hesabının bir kaynakta erişebileceği işlevselliği sınırlandırmak için [OAuth 2,0 kapsamlarını kullanın](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent) .
+* Bir hizmet hesabının bir kaynakta erişebileceği işlevselliği sınırlandırmak için [OAuth 2,0 kapsamlarını kullanın](../develop/v2-permissions-and-consent.md) .
 * Hizmet sorumluları ve yönetilen kimlikler, OAuth 2,0 kapsamlarını, oturum açmış bir kullanıcının kimliğine bürünmekte olan temsilci bir bağlamda veya uygulama bağlamında hizmet hesabı olarak kullanabilir. Uygulama bağlamı No öğesinde oturum açık.
 
-* Uygun olduklarından emin olmak için kaynaklar için kapsam hizmeti hesapları isteğini denetleyin. Örneğin, bir hesap dosyaları istiyorsa. ReadWrite. All, gerçekten yalnızca File. Read. All ile mı ihtiyacı olduğunu değerlendirin. İzinler hakkında daha fazla bilgi için bkz. [Microsoft Graph izin başvurusu](https://docs.microsoft.com/graph/permissions-reference).
+* Uygun olduklarından emin olmak için kaynaklar için kapsam hizmeti hesapları isteğini denetleyin. Örneğin, bir hesap dosyaları istiyorsa. ReadWrite. All, gerçekten yalnızca File. Read. All ile mı ihtiyacı olduğunu değerlendirin. İzinler hakkında daha fazla bilgi için bkz. [Microsoft Graph izin başvurusu](/graph/permissions-reference).
 
 * Kaynaklarınız için istenen erişimle uygulama veya API 'nin geliştiricisine güvendiğinizden emin olun.
 
@@ -78,9 +78,9 @@ Hizmet hesabı ayrıcalıkları için aşağıdaki yöntemleri öneririz.
 
 Amaç, kapsam ve gerekli izinlerin net bir şekilde anlaşıldıktan sonra hizmet hesabınızı oluşturun. 
 
-[Yönetilen kimlikler oluşturma ve kullanma](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet)
+[Yönetilen kimlikler oluşturma ve kullanma](../../app-service/overview-managed-identity.md?tabs=dotnet)
 
-[Hizmet sorumlularını oluşturma ve kullanma](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)
+[Hizmet sorumlularını oluşturma ve kullanma](../develop/howto-create-service-principal-portal.md)
 
 Mümkün olduğunda yönetilen bir kimlik kullanın. Yönetilen kimlik kullanmıyorsanız, hizmet sorumlusu kullanın. Bir hizmet sorumlusu kullanamaz ve ardından yalnızca bir Azure AD Kullanıcı hesabı kullanın.
 
@@ -100,7 +100,7 @@ Hizmet hesaplarınızın kullanım desenlerinin amaçlanan desenleri yansıttı�
 
 * Azure AD Sign-In günlüklerini Azure AD portalında kullanma.
 
-* Azure AD Sign-In günlüklerini [Azure depolama](https://docs.microsoft.com/azure/storage/), [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/)veya [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/logs/data-platform-logs)'ye aktarma.
+* Azure AD Sign-In günlüklerini [Azure depolama](../../storage/index.yml), [Azure Event Hubs](../../event-hubs/index.yml)veya [Azure izleyici](../../azure-monitor/logs/data-platform-logs.md)'ye aktarma.
 
 
 ![Hizmet sorumlusu oturum açma ekranını gösteren ekran görüntüsü.](./media/securing-service-accounts/service-accounts-govern-azure-1.png)
@@ -172,7 +172,7 @@ Hizmet hesaplarının sahipleri ve güvenlik ya da BT ekibi tarafından düzenli
 
 **Sağlama kaldırma işlemleri aşağıdaki görevleri içermelidir.**
 
-1. İlişkili uygulama veya betiğin sağlaması geri alındıktan sonra, hizmet hesabı tarafından [oturum açma](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins#sign-ins-report) işlemlerini ve kaynak erişimini izleyin.
+1. İlişkili uygulama veya betiğin sağlaması geri alındıktan sonra, hizmet hesabı tarafından [oturum açma](../reports-monitoring/concept-sign-ins.md#sign-ins-report) işlemlerini ve kaynak erişimini izleyin.
 
    * Hesap hala etkinse, sonraki adımları uygulamadan önce nasıl kullanıldığını saptayın.
  
@@ -196,4 +196,3 @@ Azure hizmet hesaplarının güvenliğini sağlama hakkında daha fazla bilgi i�
 
  
 
- 

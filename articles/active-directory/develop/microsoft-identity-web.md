@@ -14,10 +14,10 @@ ms.author: jmprieur
 ms.reviewer: marsma
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 8bc9773fa7e1b3db2e249e803f4d2a3cf39edb48
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100102555"
 ---
 # <a name="microsoft-identity-web-authentication-library"></a>Microsoft Identity Web kimlik doğrulaması kitaplığı
@@ -82,11 +82,11 @@ Varsayılan ASP.NET 3,1 proje şablonlarını kullanırsanız Microsoft Identity
 |------------------------------------------------------------------------------------------|----------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
 | Web uygulamalarında [oturum açma kullanıcıları](scenario-web-app-sign-user-app-configuration.md)             | <li>İş veya okul hesapları<li>Sosyal kimlikler (Azure AD B2C ile) | <li>İş veya okul hesapları<li>Kişisel Microsoft hesapları<li>Sosyal kimlikler (Azure AD B2C ile)     |
 | [Web API 'Lerini koruma](scenario-protected-web-api-app-configuration.md#microsoftidentityweb) | <li>İş veya okul hesapları<li>Sosyal kimlikler (Azure AD B2C ile) | <li>İş veya okul hesapları<li>Kişisel Microsoft hesapları<li>Sosyal kimlikler (Azure AD B2C ile)     |
-| Çok kiracılı uygulamalarda veren doğrulaması                                                   | Hayır                                                                   | Evet, [Tüm bulutlar](authentication-national-cloud.md) ve [Azure AD B2C](../../active-directory-b2c/index.yml) |
+| Çok kiracılı uygulamalarda veren doğrulaması                                                   | No                                                                   | Evet, [Tüm bulutlar](authentication-national-cloud.md) ve [Azure AD B2C](../../active-directory-b2c/index.yml) |
 | Web uygulaması/API [Microsoft Graph 'ı çağırır] [senaryo-API-Call-Graph]                             | Hayır                                                                   | Yes                                                                                                     |
 | Web uygulaması/API [çağıran Web API] [senaryo-API-Call-API]                                       | Hayır                                                                   | Yes                                                                                                     |
-| Sertifika kimlik bilgilerini destekler                                                         | Hayır                                                                   | Evet, Azure Key Vault dahil                                                                          |
-| Web uygulamalarında artımlı onay ve koşullu erişim desteği                           | Hayır                                                                   | Evet, MVC, Razor sayfaları ve Blazor                                                                    |
+| Sertifika kimlik bilgilerini destekler                                                         | No                                                                   | Evet, Azure Key Vault dahil                                                                          |
+| Web uygulamalarında artımlı onay ve koşullu erişim desteği                           | No                                                                   | Evet, MVC, Razor sayfaları ve Blazor                                                                    |
 | Web API 'Lerinde belirteç şifreleme sertifikaları                                                | Hayır                                                                   | Yes                                                                                                     |
 | [Kapsamlar/uygulama rolü doğrulaması] [senaryo-API-doğrulama] Web API 'Lerinde                        | Hayır                                                                   | Yes                                                                                                     |
 | `WWW-Authenticate` Web API 'Lerinde üst bilgi oluşturma                                         | Hayır                                                                   | Evet                                                                                                     |

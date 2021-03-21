@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
 ms.openlocfilehash: b14a75dba2860c9dee58e40673d3299fdde277e7
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92516894"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>Öğretici: meta ağlar Bağlayıcısı ile Azure Active Directory tümleştirme
@@ -63,13 +63,13 @@ Meta Networks bağlayıcısının Azure AD ile tümleştirilmesini yapılandırm
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **meta ağlar Bağlayıcısı**yazın, sonuç panelinden **meta ağlar Bağlayıcısı** ' nı seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
+4. Arama kutusuna **meta ağlar Bağlayıcısı** yazın, sonuç panelinden **meta ağlar Bağlayıcısı** ' nı seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
 
      ![Sonuçlar listesindeki meta ağlar Bağlayıcısı](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına bağlı olarak meta ağlar bağlayıcısıyla yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına bağlı olarak meta ağlar bağlayıcısıyla yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve meta ağlar bağlayıcısında ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açma 'yı meta Networks Bağlayıcısı ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -124,7 +124,7 @@ Azure AD çoklu oturum açmayı meta Networks Bağlayıcısı ile yapılandırma
     
 7. Meta Networks bağlayıcı uygulaması, yukarıdakine ek olarak, SAML yanıtına daha fazla öznitelik geçirilmesini bekler. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde AŞAĞıDAKI tabloda gösterildiği gibi SAML belirteci özniteliği eklemek için aşağıdaki adımları gerçekleştirin:
     
-    | Adı | Kaynak özniteliği | Ad Alanı|
+    | Name | Kaynak özniteliği | Ad Alanı|
     | ---------------| --------------- | -------- |
     | FirstName | Kullanıcı. | |
     | Soyadı | User. soyadı | |
@@ -142,7 +142,7 @@ Azure AD çoklu oturum açmayı meta Networks Bağlayıcısı ile yapılandırma
 
     c. **Ad alanını** boş bırakın.
 
-    d. **Öznitelik**olarak kaynak seçin.
+    d. **Öznitelik** olarak kaynak seçin.
 
     e. **Kaynak özniteliği** listesinde, bu satır için gösterilen öznitelik değerini yazın.
 
@@ -205,7 +205,7 @@ Azure AD çoklu oturum açmayı meta Networks Bağlayıcısı ile yapılandırma
 
     c. İndirilen sertifikayı not defteri 'nde Azure portal açın, **X. 509.952 Certificate** metin kutusuna yapıştırın.
 
-    d. **Tam zamanında sağlamayı**etkinleştirin.
+    d. **Tam zamanında sağlamayı** etkinleştirin.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
@@ -223,7 +223,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**yazın.
+    a. **Ad** alanına **Brittasıon** yazın.
   
     b. **Kullanıcı adı** alanına **brittasıon \@ yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com

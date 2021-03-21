@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/08/2020
 ms.author: jeedes
 ms.openlocfilehash: 9f5c40465c9878f76ea84060f200cdd442a44046
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92520583"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-spintr-sso"></a>Öğretici: Spintr SSO ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -55,7 +55,7 @@ Spintr SSO 'nun Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeride
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-spintr-sso"></a>Spintr SSO için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak, spintr SSO Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, Spintr SSO içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak, spintr SSO Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, Spintr SSO içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Spintr SSO 'SU ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 

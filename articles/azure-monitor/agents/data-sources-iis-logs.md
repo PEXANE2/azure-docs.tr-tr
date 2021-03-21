@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/26/2021
-ms.openlocfilehash: 484e49219b94f5974661b1e76f533236666ebcfb
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 87cb19daa23c9fcca601771a9fe168b98be02627
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050741"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586276"
 ---
 # <a name="collect-iis-logs-with-log-analytics-agent-in-azure-monitor"></a>Azure Izleyici 'de Log Analytics Agent ile IIS günlükleri toplama
 Internet Information Services (IIS), Log Analytics Aracısı tarafından toplanabilecek ve [Azure Izleyici günlüklerinde](../data-platform.md)depolanan günlük dosyalarındaki Kullanıcı etkinliklerini depolar.
@@ -60,11 +60,13 @@ IIS günlük kayıtları bir tür **W3CIISLog** ve aşağıdaki tabloda bulunan 
 | sSiteName |IIS sitesinin adı. |
 | TimeGenerated |Girişin günlüğe kaydedildiği tarih ve saat. |
 | TimeTaken |İsteğin milisaniye cinsinden işlenmesi için geçen süre. |
+| csHost | Ana bilgisayar adı. |
+| csBytes | Sunucunun aldığı bayt sayısı. |
 
 ## <a name="log-queries-with-iis-logs"></a>IIS günlükleri ile sorguları günlüğe kaydet
 Aşağıdaki tabloda, IIS günlük kayıtlarını alan günlük sorgularının farklı örnekleri verilmiştir.
 
-| Sorgu | Açıklama |
+| Sorgu | Description |
 |:--- |:--- |
 | W3CIISLog |Tüm IIS günlük kayıtları. |
 | W3CIISLog &#124; burada scStatus = = 500 |Tüm IIS günlük kayıtları 500 dönüş durumuna sahiptir. |

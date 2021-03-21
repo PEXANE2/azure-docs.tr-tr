@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/12/2020
 ms.author: jeedes
 ms.openlocfilehash: 1ffa4263076571f14ff3267c0ee16e388bb0aac9
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92517790"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-talentsoft"></a>Öğretici: Talentsoft ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -54,7 +54,7 @@ Talentsoft 'ın Azure AD 'ye tümleştirmesini yapılandırmak için, Galeriden,
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-talentsoft"></a>Talentsoft için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Talentsoft Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile Talentsoft içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Talentsoft Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile Talentsoft içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Talentsoft ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 

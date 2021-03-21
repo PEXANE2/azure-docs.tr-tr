@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/03/2020
-ms.openlocfilehash: 79ba186351cc145e012658abc30572e99b123dbb
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 2e2625fff802e71f797bf6970e763f2bf11c393e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96573995"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584185"
 ---
 # <a name="partial-term-search-and-patterns-with-special-characters-hyphens-wildcard-regex-patterns"></a>Kısmi terim arama ve özel karakterlerle desenler (tireler, joker karakter, Regex, desenler)
 
@@ -85,7 +85,7 @@ Tam terim belirteçleri üreten bir çözümleyici seçerken, aşağıdaki çöz
 | [Dil Çözümleyicileri](index-add-language-analyzers.md) | Birleşik kelimeler veya dizelerde, sesli harfler ve fiil formlarında kısa çizgileri korur. Sorgu desenleri tire içeriyorsa, dil Çözümleyicisi kullanmak yeterli olabilir. |
 | [sözcükle](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) | Tüm alanın içeriği tek bir terim olarak simgeleştirilir. |
 | [boşlu](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/WhitespaceAnalyzer.html) | Yalnızca boşluklardan ayrılır. Tireler veya diğer karakterleri içeren koşullar tek bir belirteç olarak değerlendirilir. |
-| [özel çözümleyici](index-add-custom-analyzers.md) | Önerilen Özel bir çözümleyici oluşturma, hem belirteç ayırıcı hem de Token filtresi belirtmenize olanak tanır. Önceki çözümleyiciler olduğu gibi kullanılmalıdır. Özel çözümleyici, hangi simgeleyiciler ve belirteç filtrelerini kullanacağınızı seçmenizi sağlar. <br><br>Önerilen birleşim, [küçük harfli bir belirteç filtresiyle](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LowerCaseFilter.html) [Simgeleştirici anahtar kelimedir](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html) . Tek başına, önceden tanımlanmış [anahtar sözcük Çözümleyicisi](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) büyük/küçük harf, sorguların başarısız olmasına neden olabilir. Özel çözümleyici, size küçük harfli belirteç filtresi eklemek için bir mekanizma sağlar. |
+| [özel çözümleyici](index-add-custom-analyzers.md) | Önerilen Özel bir çözümleyici oluşturma, hem belirteç ayırıcı hem de Token filtresi belirtmenize olanak tanır. Önceki çözümleyiciler olduğu gibi kullanılmalıdır. Özel çözümleyici, hangi simgeleyiciler ve belirteç filtrelerini kullanacağınızı seçmenizi sağlar. <br><br>Önerilen birleşim, [küçük harfli bir belirteç filtresiyle](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LowerCaseFilter.html) [Simgeleştirici anahtar kelimedir](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html) . Yerleşik [anahtar sözcük Çözümleyicisi](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) , büyük/küçük harfli metinleri küçük harfe düşürmez ve bu da sorguların başarısız olmasına neden olabilir. Özel çözümleyici, size küçük harfli belirteç filtresi eklemek için bir mekanizma sağlar. |
 
 Postman gibi bir Web API test aracı kullanıyorsanız, simgeleştirilmiş çıktıyı incelemek için [Test ÇÖZÜMLEYICISI Rest çağrısını](/rest/api/searchservice/test-analyzer) ekleyebilirsiniz.
 
@@ -160,9 +160,9 @@ Birlikte çalışmak için doldurulmuş bir dizininiz olmalıdır. Var olan bir 
 
 ### <a name="use-built-in-analyzers"></a>Yerleşik çözümleyiciler kullanın
 
-Yerleşik veya önceden tanımlanmış çözümleyiciler `analyzer` , dizinde ek yapılandırma gerekmeden, bir alan tanımının bir özelliğinde ad ile belirtilebilir. Aşağıdaki örnek, `whitespace` bir alanı üzerinde çözümleyiciyi nasıl ayarlayabileceğinizi gösterir. 
+Yerleşik çözümleyiciler `analyzer` , dizinde ek yapılandırma gerekmeden, bir alan tanımının bir özelliğinde ad ile belirtilebilir. Aşağıdaki örnek, `whitespace` bir alanı üzerinde çözümleyiciyi nasıl ayarlayabileceğinizi gösterir. 
 
-Diğer senaryolar ve diğer yerleşik çözümleyiciler hakkında daha fazla bilgi edinmek için bkz. [önceden tanımlanmış çözümleyiciler listesi](./index-add-custom-analyzers.md#predefined-analyzers-reference). 
+Diğer senaryolar ve diğer yerleşik çözümleyiciler hakkında daha fazla bilgi edinmek için bkz. [yerleşik çözümleyiciler](./index-add-custom-analyzers.md#built-in-analyzers). 
 
 ```json
     {

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: jeedes
 ms.openlocfilehash: db8977e484e8d1f2cf4b30427d47ba45969f2147
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101654468"
 ---
 # <a name="tutorial-azure-active-directory-ad-single-sign-on-sso-integration-with-f5"></a>Öğretici: F5 ile Azure Active Directory (AD) çoklu oturum açma (SSO) Tümleştirmesi
@@ -204,7 +204,7 @@ Bu bölümde, F5 'e erişim vererek Azure çoklu oturum açma özelliğini kulla
  
     * Session. Logon. son. usernameUPN Expr {[mcget {Session. SAML. Last. Identity}]}
 
-    * Session. ad. lastactualdomain metın superdemo. canlı
+    * Session. ad. lastactualdomain metın superdemo.live
 
     ![AD sorgu özelliklerini gösteren ekran görüntüsü.](./media/advance-kerbf5-tutorial/configure17.png)
 
@@ -262,7 +262,7 @@ Bu bölümde, F5 'e erişim vererek Azure çoklu oturum açma özelliğini kulla
 * **3. Adım: SPN temsili (App Service hesabı için)**
 
     * F5 temsili hesabı için uygun temsilciyi ayarlayın.
-    * Aşağıdaki örnekte, APM temsili hesabı FRP-app1. superdemo. Live uygulaması için KCD için Yapılandırılıyor.
+    * Aşağıdaki örnekte, APM temsili hesabı, FRP-App1.superdemo.live uygulaması için KCD için Yapılandırılıyor.
 
         ![APM Delegatio hesap özellikleri > temsili sekmesini gösteren ekran görüntüsü.](./media/advance-kerbf5-tutorial/configure25.png)
 
