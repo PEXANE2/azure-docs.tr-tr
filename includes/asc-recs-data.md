@@ -6,15 +6,15 @@ ms.date: 03/14/2021
 ms.author: memildin
 ms.custom: generated
 ms.openlocfilehash: fe1b9fc8754ae959abf088526b5d71e0e43c158e
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103466230"
 ---
 Bu kategoride **64** öneri vardır.
 
-|Öneri |Açıklama |Önem derecesi |
+|Öneri |Description |Önem derecesi |
 |---|---|---|
 |SQL yönetilen örnek gelişmiş veri güvenliği ayarları 'nda tüm gelişmiş tehdit koruması türleri etkinleştirilmelidir |SQL yönetilen örneklerinizin tümünde Gelişmiş tehdit koruması türlerinin etkinleştirilmesi önerilir. Tüm türlerin etkinleştirilmesi SQL ekleme, veritabanı güvenlik açıklarına ve diğer anormal etkinliklere karşı korunur.<br />(İlgili ilke yok) |Orta |
 |Tüm Gelişmiş tehdit koruması türleri SQL Server Gelişmiş veri güvenliği ayarları 'nda etkinleştirilmelidir |SQL sunucularınızda tüm gelişmiş tehdit koruması türlerinin etkinleştirilmesi önerilir. Tüm türlerin etkinleştirilmesi SQL ekleme, veritabanı güvenlik açıklarına ve diğer anormal etkinliklere karşı korunur.<br />(İlgili ilke yok) |Orta |

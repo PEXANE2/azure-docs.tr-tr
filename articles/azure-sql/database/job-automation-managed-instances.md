@@ -12,12 +12,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 02/01/2021
-ms.openlocfilehash: 6ba1ba9d8c809a805fe8691baf96350b70ec6a51
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3be01c304a40317e0d21baf6789ef1376cd89b80
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691901"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104608087"
 ---
 # <a name="automate-management-tasks-using-sql-agent-jobs-in-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği 'nde SQL Agent işlerini kullanarak yönetim görevlerini otomatikleştirme
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -81,7 +81,7 @@ SQL Aracısı Iş adımları SQL aracısının yürütmesi gereken eylem diziler
 SQL Aracısı, veritabanında tek bir Transact-SQL toplu işi çalıştıran Transact-SQL iş adımları veya özel işletim sistemi betiği yürütebilen IS komutu/PowerShell adımları gibi farklı türlerde iş adımları oluşturmanızı sağlar. bu [sayede,](../../data-factory/how-to-invoke-ssis-package-managed-instance-agent.md) SSIS çalışma zamanı 'nı kullanarak veri [yükleyebilir veya değişiklikleri](../managed-instance/replication-transactional-overview.md) veritabanınızdaki diğer veritabanlarına yayımlayabilirsiniz.
 
 > [!Note]
-> Azure SQL yönetilen örneği tarafından barındırılan SSSıSDB ile Azure SSIS Integration Runtime kullanımı hakkında daha fazla bilgi için, bkz. [Azure Data Factory 'Da Azure SQL yönetilen örneğini SQL Server Integration Services (SSIS) kullanma](/../azure/data-factory/how-to-use-sql-managed-instance-with-ir.md).
+> Azure SQL yönetilen örneği tarafından barındırılan SSSıSDB ile Azure SSIS Integration Runtime kullanımı hakkında daha fazla bilgi için, bkz. [Azure Data Factory 'Da Azure SQL yönetilen örneğini SQL Server Integration Services (SSIS) kullanma](../../data-factory/how-to-use-sql-managed-instance-with-ir.md).
 
 [İşlemsel çoğaltma](../managed-instance/replication-transactional-overview.md) , tablolardaki DEĞIŞIKLIKLERI Azure SQL yönetilen örneği, Azure SQL veritabanı veya SQL Server diğer veritabanlarına çoğaltabilir. Daha fazla bilgi için bkz. [Azure SQL yönetilen örneği 'nde çoğaltmayı yapılandırma](../../azure-sql/managed-instance/replication-between-two-instances-configure-tutorial.md). 
 

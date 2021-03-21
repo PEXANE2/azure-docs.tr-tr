@@ -4,15 +4,15 @@ description: İş ortağı KIMLIĞINIZI, Azure açık Thouse aracılığıyla y�
 ms.date: 02/12/2021
 ms.topic: how-to
 ms.openlocfilehash: 4c18aae38570ab3fd84df7d45fb18e35404158be
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100372102"
 ---
 # <a name="link-your-partner-id-to-track-your-impact-on-delegated-resources"></a>Temsilcili kaynaklar üzerindeki etkisini izlemek için iş ortağı KIMLIĞINIZI bağlayın 
 
-[Microsoft iş ortağı ağı](https://partner.microsoft.com/)üyesiyse, Iş ortağı kimliğinizi, Microsoft tarafından verilen müşteri kaynaklarını yönetmek için kullanılan kimlik bilgileriyle bağlantılandırın ve Microsoft 'un, Azure müşteri başarısını çalıştıran iş ortaklarını belirlemesine ve tanımasına izin verebilirsiniz. Bu bağlantı Ayrıca [CSP (bulut çözümü sağlayıcısı)](/partner-center/csp-overview) iş ortaklarının [, Microsoft Müşteri SÖZLEŞMESI 'ni (MCA) imzalayan](/partner-center/confirm-customer-agreement) ve [Azure planı kapsamında](/partner-center/azure-plan-get-started)olan müşteriler için [yönetilen hizmetler (PEC) için iş ortağı kazanılmış kredisi](/partner-center/partner-earned-credit) almasına izin verir.
+[Microsoft iş ortağı ağı](https://partner.microsoft.com/)üyesiyse, Iş ortağı kimliğinizi, Microsoft tarafından verilen müşteri kaynaklarını yönetmek için kullanılan kimlik bilgileriyle bağlantılandırın ve Microsoft 'un, Azure müşteri başarısını çalıştıran iş ortaklarını belirlemesine ve tanımasına izin verebilirsiniz. Bu bağlantı ayrıca [CSP (Bulut Çözümü Sağlayıcısı)](/partner-center/csp-overview) iş ortaklarının [Microsoft Müşteri Sözleşmesi'ni (MCA) imzalayan](/partner-center/confirm-customer-agreement) ve [Azure planı kapsamında olan](/partner-center/azure-plan-get-started) müşteriler için [yönetilen hizmetlerde iş ortağı tarafından kazanılan krediyi](/partner-center/partner-earned-credit) almalarına da olanak tanır.
 
 Azure açık kullanım etkinlikleri için tanınma kazanmak için, [MPN kimliğinizi](../../cost-management-billing/manage/link-partner-id.md) yönettiğiniz kiracınızdaki en az bir kullanıcı hesabıyla bağlamanız ve bağlı hesabın eklendi aboneliklerinizin her birine erişebildiğinden emin olmanız gerekir.
 

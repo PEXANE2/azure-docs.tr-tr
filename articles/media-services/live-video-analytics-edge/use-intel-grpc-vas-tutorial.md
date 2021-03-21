@@ -7,10 +7,10 @@ ms.service: media-services
 ms.author: faneerde
 author: fvneerden
 ms.openlocfilehash: 20a22d11973f5bb01e2c1345538d5d94ce311dc7
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103465768"
 ---
 # <a name="tutorial-analyze-live-video-by-using-intel-openvino-dl-streamer--edge-ai-extension"></a>Öğretici: Intel OpenVINO™ DL Streamer – Edge AI uzantısı kullanarak canlı videoyu çözümleme 
@@ -98,7 +98,7 @@ Yalnızca dağıtım şablonınızdaki işlem hattı ortam değişkenlerini değ
 
     * ***C2D-Console-App. csproj*** -Visual Studio Code için proje dosyası.
     * ***operations.js*** , programın çalıştırmasını istediğiniz işlemlerin bir listesi.
-    * ***Program.cs*** -örnek program kodu. Bu kod:
+    * ***Program. cs*** -örnek program kodu. Bu kod:
 
         * Uygulama ayarlarını yükler.
         * IoT Edge modülündeki canlı video analizinin sunduğu doğrudan yöntemleri çağırır. [Doğrudan yöntemlerini](direct-methods.md)çağırarak canlı video akışlarını çözümlemek için modülünü kullanabilirsiniz.

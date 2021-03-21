@@ -6,15 +6,15 @@ ms.date: 03/14/2021
 ms.author: memildin
 ms.custom: generated
 ms.openlocfilehash: 4a03a36f098035db1a91b4516dedb6a303aa41d2
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103466215"
 ---
 Bu kategoride **24** öneri vardır.
 
-|Öneri |Açıklama |Önem derecesi |
+|Öneri |Description |Önem derecesi |
 |---|---|---|
 |Kapsayıcı kayıt defterleri için Azure Defender etkinleştirilmelidir |Güvenli Kapsayıcılı iş yükleri oluşturmak için, temel aldıkları görüntülerin bilinen güvenlik açıklarına açık olmadığından emin olun.<br>Kapsayıcı kayıt defterleri için Azure Defender, her bir gönderilen kapsayıcı görüntüsündeki güvenlik açıklarına karşı kayıt defterinizi tarar ve görüntü başına ayrıntılı bulguları gösterir.<br>Kapsayıcılarınızın güvenlik duruşunu artırmak ve saldırılara karşı korumak için, kapsayıcı kayıt defterleri için Azure Defender 'ı etkinleştirin.<br><br>Önemli: bu öneriyi kaldırmak, kapsayıcı kayıt defterlerinden koruma ücretlerine neden olur. Bu abonelikte hiç kapsayıcı kayıt defterleri yoksa, hiçbir ücret alınmaz.<br>Gelecekte bu abonelikte herhangi bir kapsayıcı kayıt defterleri oluşturursanız, bunlar otomatik olarak korunur ve ücretler bu anda başlayacaktır.<br> <a href='https://docs.microsoft.com/azure/security-center/azure-container-registry-integration'>Kapsayıcı kayıt defterleri için Azure Defender hakkında daha fazla bilgi edinin.</a><br />(İlgili ilke: [kapsayıcı kayıt defterleri Için Azure Defender etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicyDefinitions%2fc25d9a16-bc35-4e15-a7e5-9db606bf9ed4)) |Yüksek |
 |Kubernetes için Azure Defender etkinleştirilmelidir |Kubernetes için Azure Defender, Kapsayıcılı ortamlarınız için gerçek zamanlı tehdit koruması sağlar ve şüpheli etkinlikler için uyarı oluşturur.<br>Bu bilgileri kullanarak güvenlik sorunlarını hızlı bir şekilde çözebilir ve kapsayıcılarınızın güvenlik düzeyini artırabilirsiniz.<br><br>Önemli: bu öneriyi kaldırmak, Kubernetes kümelerinizi koruma ücretlerine neden olur. Bu abonelikte Kubernetes kümeniz yoksa hiçbir ücret alınmaz.<br>Gelecekte bu abonelikte herhangi bir Kubernetes kümesi oluşturursanız, bunlar otomatik olarak korunur ve ücretler o anda başlayacaktır.<br> <a href='https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration'>Kubernetes için Azure Defender hakkında daha fazla bilgi edinin.</a><br />(İlgili ilke: [Kubernetes Için Azure Defender etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicyDefinitions%2f523b5cd1-3e23-492f-a539-13118b6d1e3a)) |Yüksek |

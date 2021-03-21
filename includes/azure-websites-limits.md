@@ -2,14 +2,14 @@
 author: rothja
 ms.service: app-service
 ms.topic: include
-ms.date: 03/04/2020
+ms.date: 03/17/2020
 ms.author: msangapu
-ms.openlocfilehash: bcbbd133c71b2917b73c200c4453ea57385fcaf1
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 80d295d017b11d86df7a3fe4c14afc7a5665cd96
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102532691"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104611772"
 ---
 | Kaynak | Ücretsiz | Paylaşılan | Temel | Standart | Premium (v1-v3) | Yalıtılmış </th> |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -41,22 +41,32 @@ ms.locfileid: "102532691"
 | [Uç nokta izleme](../articles/app-service/web-sites-monitor.md) | | |X |X |X |X |
 | Uygulama başına [hazırlama yuvaları](../articles/app-service/deploy-staging-slots.md)| | | |5 |20 |20 |
 | [Üretimde test etme](../articles/app-service/deploy-staging-slots.md#route-traffic)| | | |X |X |X |
-| [Tanılama günlükleri](../articles/app-service/troubleshoot-diagnostic-logs.md) | X | X | X | X | X | X |
+| [Tanılama Günlükleri](../articles/app-service/troubleshoot-diagnostic-logs.md) | X | X | X | X | X | X |
 | Kudu | X | X | X | X | X | X |
 | [Kimlik doğrulama ve yetkilendirme](../articles/app-service/overview-authentication-authorization.md) | X | X | X | X | X | X |
 | [App Service yönetilen Sertifikalar (Genel Önizleme)](https://azure.microsoft.com/updates/secure-your-custom-domains-at-no-cost-with-app-service-managed-certificates-preview/)<sup>12</sup> | |  | X | X | X | X |
-| SLA | |  |%99,95|%99,95|%99,95|%99,95|  
+| SLA | |  |%99,95|%99,95|%99,95|%99,95|
 
-<sup>1</sup> Uygulamalar ve depolama kotaları, aksi belirtilmediği takdirde App Service plan başına yapılır.  
-<sup>2</sup> Bu makinelerde barındırabilmeniz gereken uygulamaların gerçek sayısı, uygulamaların etkinliğine, makine örneklerinin boyutuna ve karşılık gelen kaynak kullanımına göre değişir.  
-<sup>3</sup> Ayrılmış örnekler farklı boyutlarda olabilir. Daha fazla bilgi için bkz. [App Service fiyatlandırması](https://azure.microsoft.com/pricing/details/app-service/).  
-<sup>4</sup> İstek üzerine daha fazlasına izin verilir.  
-<sup>5</sup> Depolama sınırı, aynı App Service planındaki tüm uygulamalarda bulunan toplam içerik boyutudur. Tek bir kaynak grubundaki ve bölgedeki tüm App Service planları genelinde tüm uygulamaların toplam içerik boyutu 500GB ' i aşamaz.  
-<sup>6</sup> Bu kaynaklar, adanmış örneklerde (örnek boyutu ve örnek sayısı) fiziksel kaynaklar tarafından sınırlandırılır.  
-<sup>7</sup> Temel katmandaki bir uygulamayı iki örneğe ölçeklendirirseniz, iki örnek için 350 eş zamanlı bağlantınız vardır. Standart katman ve yukarıdaki sürümler için Web soketlerine teorik sınır yoktur, ancak diğer faktörler Web Yuvaları sayısını sınırlayabilir. Örneğin, izin verilen en fazla eşzamanlı istek (tarafından tanımlanır), her bir `maxConcurrentRequestsPerCpu` küçük VM başına 7.500, orta düzey VM başına 15.000 (7.500 x 2 çekirdek) ve büyük VM başına 75.000 (18.750 x 4 çekirdek).  
-<sup>8</sup> En fazla IP bağlantısı, örnek başına yapılır ve örnek boyutuna bağlıdır: B1/S1/P1V3 örneği başına 1.920, B2/S2/P2V3 örneği başına 3.968, B3/S3/P3V3 örneği başına 8.064.  
-<sup>9</sup> Abonelik başına App Service Sertifikası kota sınırı, en fazla 200 sınırına yönelik destek isteği aracılığıyla artırılabilir.  
-<sup>10</sup> App Service Yalıtılmış SKU 'Lar Azure Load Balancer ile dahili olarak yük dengeli (ıLB) olabilir, bu nedenle internet 'ten genel bağlantı yoktur. Sonuç olarak, ıLB yalıtılmış bir App Service bazı özelliklerinin ıLB ağ uç noktasına doğrudan erişimi olan makinelerden kullanılması gerekir.  
+<sup>1</sup> uygulama ve depolama kotaları, aksi belirtilmediği takdirde App Service plan başına yapılır.
+
+<sup>2</sup> bu makinelerde barındırabilmeniz gereken gerçek uygulama sayısı, uygulamaların etkinliğine, makine örneklerinin boyutuna ve karşılık gelen kaynak kullanımına göre değişir.
+
+<sup>3</sup> ayrılmış örnek farklı boyutlarda olabilir. Daha fazla bilgi için bkz. [App Service fiyatlandırması](https://azure.microsoft.com/pricing/details/app-service/).
+
+istek üzerine <sup>4</sup> daha fazlasına izin verilir.
+
+<sup>5</sup> depolama sınırı, aynı App Service planındaki tüm uygulamalarda bulunan toplam içerik boyutudur. Tek bir kaynak grubundaki ve bölgedeki tüm App Service planları genelinde tüm uygulamaların toplam içerik boyutu 500 GB 'ı aşamaz. App Service barındırılan uygulamalar için dosya sistemi kotası, bir bölgede ve kaynak grubunda oluşturulan App Service planlarının toplamı tarafından belirlenir.
+
+<sup>6</sup> bu kaynaklar ayrılmış örneklerde (örnek boyutu ve örnek sayısı) fiziksel kaynaklar tarafından sınırlandırılır.
+
+<sup>7</sup> temel katmandaki bir uygulamayı iki örneğe ölçeklendirirseniz, iki örnek için 350 eş zamanlı bağlantınız vardır. Standart katman ve yukarıdaki sürümler için Web soketlerine teorik sınır yoktur, ancak diğer faktörler Web Yuvaları sayısını sınırlayabilir. Örneğin, izin verilen en fazla eşzamanlı istek (tarafından tanımlanır), her bir `maxConcurrentRequestsPerCpu` küçük VM başına 7.500, orta düzey VM başına 15.000 (7.500 x 2 çekirdek) ve büyük VM başına 75.000 (18.750 x 4 çekirdek).
+
+<sup>8</sup> her örnek için en fazla IP bağlantısı vardır ve örnek boyutuna bağlıdır: B1/S1/P1V3 örneği başına 1.920, B2/S2/P2V3 örneği başına 3.968, B3/S3/P3V3 örneği başına 8.064.
+
+<sup>9</sup> abonelik başına App Service sertifikası kota sınırı, 200 üst sınırına yönelik destek isteği aracılığıyla artırılabilir.
+
+<sup>10</sup> App Service yalıtılmış sku 'ları Azure Load Balancer ile dahili olarak yük dengeli (ILB) olabilir, bu nedenle internet 'ten genel bağlantı yoktur. Sonuç olarak, ıLB yalıtılmış bir App Service bazı özelliklerinin ıLB ağ uç noktasına doğrudan erişimi olan makinelerden kullanılması gerekir.
+
 <sup>11</sup> App Service örneğiniz içinde isteğe bağlı, zamanlamaya göre veya sürekli bir arka plan görevi olarak özel yürütülebilir dosyalar ve/veya betikler çalıştırın. Always on sürekli Web Işleri yürütmesi için gereklidir. App Service örneğinde çalışabilecek WebJobs sayısında önceden tanımlanmış bir sınır yoktur. Uygulama kodunun ne işe çalışmadığına bağlı olarak pratik sınırlar vardır.
 
-<sup>12</sup> Naked etki alanları desteklenmez. Yalnızca standart sertifikalar veriliyor (joker sertifikaları kullanılamaz). Özel etki alanı başına yalnızca bir adet ücretsiz sertifikayla sınırlıdır.
+<sup>12</sup> Naked etki alanı desteklenmez. Yalnızca standart sertifikaları verme (joker sertifikaları kullanılamaz). Özel etki alanı başına yalnızca bir adet ücretsiz sertifikayla sınırlıdır.

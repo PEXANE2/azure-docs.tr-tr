@@ -9,10 +9,10 @@ ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
 ms.openlocfilehash: 5152b0ecf6eebe87031a2165d5d8ba11d99209cf
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103601194"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>Kullanılabilirlik Alanlarını destekleyen Azure Hizmetleri
@@ -120,7 +120,7 @@ Azure 'da kapsamlı iş sürekliliği elde etmek için Azure bölge çiftleriyle
 | App Service ortamları                        |      : large_blue_diamond:  |
 | Azure Active Directory Domain Services          |      : large_blue_diamond:  |
 | Azure Bastion                                   |      : large_blue_diamond:  |
-| Redis için Azure Önbelleği                           |      : large_blue_diamond:  |
+| Redis için Azure Cache                           |      : large_blue_diamond:  |
 | Azure Bilişsel Hizmetler: Metin Analizi        |      : large_blue_diamond:  |
 | Azure Veri Gezgini                             |      : large_blue_diamond:  |
 | MySQL için Azure veritabanı – esnek sunucu      |      : large_blue_diamond:  |

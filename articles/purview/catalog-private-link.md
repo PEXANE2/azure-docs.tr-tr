@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 03/02/2021
-ms.openlocfilehash: d9088e5c6302c41c64f2a2e9034e7c3d659e37eb
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 09fa10e7f7751321601c5c4871b2cf36ccf6f01f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102615644"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720922"
 ---
 # <a name="use-private-endpoints-for-your-purview-account"></a>Purview hesabınız için özel uç noktaları kullanın
 
@@ -24,13 +24,16 @@ Bir sanal ağdaki (VNet) istemcilerin ve kullanıcıların kataloğa özel bir b
 
 1. Temel bilgileri doldur ve **ağ** sekmesinde Özel uç noktaya ayarla bağlantı yöntemi. Özel uç noktanızla eşleştirmek istediğiniz **aboneliğin, VNET 'in ve alt ağın** ayrıntılarını sağlayarak Alım özel uç noktalarınızı ayarlayın.
 
+    > [!NOTE]
+    > Yalnızca Azure ve şirket içi kaynaklarınız için uçtan uca tarama senaryolarında Ağ yalıtımını etkinleştirmek istiyorsanız, alma özel uç noktası oluşturun. AWS kaynaklarınızla çalışan özel uç noktaları şu anda desteklemiyoruz.
+
     :::image type="content" source="media/catalog-private-link/create-pe-azure-portal.png" alt-text="Azure portal özel uç nokta oluşturma":::
 
 1. Ayrıca, isteğe bağlı olarak her alma özel uç noktası için bir **özel DNS bölgesi** ayarlamayı seçebilirsiniz.
 
 1. Purview hesabınız için özel bir uç nokta eklemek için Ekle ' ye tıklayın.
 
-1. Özel uç nokta Oluştur sayfasında, purview alt kaynağını **Hesap** olarak ayarlayın, Sanal ağınızı ve alt ağınızı SEÇIN ve DNS 'nin kaydedileceği özel DNS bölgeyi seçin (aynı zamanda, sanal makinelerinizdeki konak dosyalarını kullanarak kazanılan DNS sunucularınızı da KULLANABILIR veya DNS kayıtları oluşturabilirsiniz).
+1. Özel uç nokta Oluştur sayfasında, purview alt kaynağını **Hesap** olarak ayarlayın, Sanal ağınızı ve alt ağınızı SEÇIN ve DNS 'nin kaydedileceği özel DNS bölgeyi seçin (kendi DNS sunucularınızı da kullanabilir veya sanal makinelerinizdeki konak dosyalarını kullanarak DNS kayıtları oluşturabilirsiniz).
 
     :::image type="content" source="media/catalog-private-link/create-pe-account.png" alt-text="Özel uç nokta oluşturma seçimleri":::
 
@@ -89,6 +92,20 @@ Aşağıdaki yönergeler bir Azure VM 'den güvenli bir şekilde erişim için v
 6. Yeni kural oluşturulduktan sonra, sanal makineye geri gidin ve AAD kimlik bilgilerinizi kullanarak yeniden oturum açmayı deneyin. Oturum açma işlemi başarılı olursa, purview portalı kullanıma hazırdır. Ancak bazı durumlarda AAD, müşterinin hesap türüne göre oturum açmak için diğer etki alanlarına yönlendirilir. Örneğin, bir live.com hesabı için AAD, oturum açma için live.com 'e yönlendirir, ardından bu istekler yeniden engellenir. Microsoft çalışan hesapları için AAD, oturum açma bilgileri için msft.sts.microsoft.com 'e erişir. Tarayıcı ağı 'ndaki ağ isteklerini denetleme hangi etki alanı isteklerinin engellendiğini görmek için, önceki adımı ekleyerek IP 'ye yönelik isteklere izin vermek üzere ağ güvenlik grubuna IP ve giden bağlantı noktası kuralları ekleyin (mümkünse, DNS çözümlemesini çözmek için VM 'nin ana bilgisayar dosyasına URL ve IP ekleyin). Tam oturum açma etki alanının IP aralıklarını biliyorsanız, onları doğrudan ağ kuralları ' na de ekleyebilirsiniz.
 
 7. Şimdi AAD 'ye oturum açma işlemi başarılı olmalıdır. Purview portalı başarıyla yüklenir, ancak tüm purview hesaplarının listelenmesi yalnızca belirli bir purview hesabına erişebildiğinden çalışmaz. İçin özel bir uç nokta ayarlamış olduğunuz purview hesabını doğrudan ziyaret etmek üzere *Web. purview. Azure. com/Resource/{PurviewAccountName}* girin.
+ 
+## <a name="ingestion-private-endpoints-and-scanning-sources-in-private-networks-vnets-and-behind-private-endpoints"></a>Özel uç noktalar ve özel ağlarda, VNET 'lerde ve özel uç noktaların bulunduğu tarama kaynakları
+
+İzlenen meta verileriniz için, purview DataMap 'e taranan kaynaktaki ağ yalıtımı sağlamak istiyorsanız, aşağıdaki adımları izlemeniz gerekir:
+1. [Bu](#creating-an-ingestion-private-endpoint) bölümdeki adımları izleyerek alma **Özel uç noktasını** etkinleştirin
+1. **Şirket içinde barındırılan BIR IR** kullanarak kaynağı tarayın.
+ 
+    1. SQL Server, Oracle, SAP ve diğerleri gibi şirket içi tüm kaynak türleri şu anda yalnızca kendi kendine barındırılan IR tabanlı taramalar aracılığıyla desteklenmektedir. Şirket içinde barındırılan IR, özel ağınızda çalışmalıdır ve Azure 'daki VNET 'iniz ile eşlenmelidir. Azure VNET 'iniz daha sonra [aşağıdaki adımları izleyerek](#creating-an-ingestion-private-endpoint) alma özel uç noktanıza etkinleştirilmelidir 
+    1. Azure Blob depolama, Azure SQL veritabanı ve diğer **Azure** kaynak türlerinde, ağ yalıtımı sağlamak için otomatik olarak barındırılan IR kullanarak taramayı çalıştırmayı açıkça tercih etmeniz gerekir. Şirket içinde barındırılan bir IR kurmak için [buradaki](manage-integration-runtimes.md) adımları izleyin. Ardından, ağ yalıtımının sağlanması için **tümleştirme çalışma zamanı aracılığıyla Bağlan** açılan menüsünde şirket IÇINDE barındırılan IR ' yi seçerek Azure kaynağında taramanızı ayarlayın. 
+    
+    :::image type="content" source="media/catalog-private-link/shir-for-azure.png" alt-text="Şirket içinde barındırılan IR kullanarak Azure taraması çalıştırma":::
+
+> [!NOTE]
+> Şirket içinde barındırılan bir IR kullanarak Azure kaynaklarınızı taradığınızda Şu anda MSI kimlik bilgisi yöntemini desteklemiyoruz. Bu Azure kaynağı için desteklenen diğer kimlik bilgisi yönteminden birini kullanmalısınız.
 
 ## <a name="enable-private-endpoint-on-existing-purview-accounts"></a>Mevcut purview hesaplarında özel uç noktayı etkinleştir
 
@@ -101,7 +118,7 @@ Purview hesabınızı oluşturduktan sonra özel uç noktaları eklemek için 2 
 
 1. Azure portal, **Ayarlar**' ın **ağ** bölümünde özel uç nokta bağlantıları ' nı seçin.
 
-:::image type="content" source="media/catalog-private-link/pe-portal.png" alt-text="Portal özel uç noktası oluştur":::
+    :::image type="content" source="media/catalog-private-link/pe-portal.png" alt-text="Hesap özel uç noktası oluştur":::
 
 1. Yeni bir özel uç nokta oluşturmak için + özel uç noktası ' na tıklayın.
 
@@ -115,6 +132,20 @@ Purview hesabınızı oluşturduktan sonra özel uç noktaları eklemek için 2 
 
 > [!NOTE]
 > **Portal** olarak seçilen hedef alt kaynak için yukarıdaki adımların aynısını izlemeniz gerekecektir.
+
+#### <a name="creating-an-ingestion-private-endpoint"></a>Alım özel uç noktası oluşturma
+
+1. Azure portal, **Ayarlar**' ın **ağ** bölümünde özel uç nokta bağlantıları ' nı seçin.
+1. Giriş **Özel uç nokta bağlantıları** sekmesine gidin ve **+ Yeni** ' ye tıklayarak yeni bir alım özel uç noktası oluşturun.
+
+1. Temel bilgileri ve VNET ayrıntılarını girin.
+ 
+    :::image type="content" source="media/catalog-private-link/ingestion-pe-fill-details.png" alt-text="Özel uç nokta ayrıntılarını doldur":::
+
+1. Ayarlamayı yapmak için **Oluştur** ' a tıklayın.
+
+> [!NOTE]
+> Alma özel uç noktaları, yalnızca yukarıda açıklanan purview Azure portal deneyimi aracılığıyla oluşturulabilir. Özel bağlantı merkezinden oluşturulamaz.
 
 ### <a name="using-the-private-link-center"></a>Özel bağlantı merkezini kullanma
 
@@ -132,6 +163,15 @@ Purview hesabınızı oluşturduktan sonra özel uç noktaları eklemek için 2 
 
 > [!NOTE]
 > **Portal** olarak seçilen hedef alt kaynak için yukarıdaki adımların aynısını izlemeniz gerekecektir.
+
+## <a name="firewalls-to-restrict-public-access"></a>Genel erişimi kısıtlamak için güvenlik duvarları
+
+Purview hesabına genel İnternet 'ten tamamen erişim kesmek için aşağıdaki adımları izleyin. Bu ayar, hem özel uç nokta hem de alma özel uç nokta bağlantıları için geçerlidir.
+
+1. Azure portal, **Ayarlar**' ın **ağ** bölümünde özel uç nokta bağlantıları ' nı seçin.
+1. Güvenlik duvarı sekmesine gidin ve geçiş 'nin **Reddet** olarak ayarlandığından emin olun.
+
+    :::image type="content" source="media/catalog-private-link/private-endpoint-firewall.png" alt-text="Özel uç nokta güvenlik duvarı ayarları":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

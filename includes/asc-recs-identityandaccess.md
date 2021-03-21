@@ -6,15 +6,15 @@ ms.date: 03/14/2021
 ms.author: memildin
 ms.custom: generated
 ms.openlocfilehash: d35fbc6f16b018f55e4ec7bcd6257884c3f10186
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103466202"
 ---
 Bu kategoride **21** öneri vardır.
 
-|Öneri |Açıklama |Önem derecesi |
+|Öneri |Description |Önem derecesi |
 |---|---|---|
 |Aboneliğiniz için en fazla 3 sahip belirtilmelidir |Tehlikeye giren sahip hesapların ihlal olasılığını azaltmak için, sahip olan hesapların sayısını en fazla 3 olarak sınırlandırmanızı öneririz<br />(İlgili ilke: [aboneliğiniz için en fazla 3 sahip belirtilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4f11b553-d42e-4e3a-89be-32ca364cad4c)) |Yüksek |
 |Key Vault için Azure Defender etkinleştirilmelidir |Azure Güvenlik Merkezi, ek bir güvenlik zekası katmanı sağlayan Key Vault için Azure Defender 'ı içerir.<br>Key Vault için Azure Defender, Key Vault hesaplara yönelik olağan dışı ve olası zararlı girişimleri algılar.<br><br>Önemli: bu öneriyi kaldırmak, anahtar kasalarınızı koruma ücretlerine neden olur. Bu abonelikte hiç bir Anahtar Kasası yoksa hiçbir ücret ödemeyecektir.<br>Gelecekte bu abonelikte herhangi bir Anahtar Kasası oluşturursanız, bunlar otomatik olarak korunur ve ücretler bu anda başlayacaktır.<br> <a href='https://docs.microsoft.com/azure/security-center/advanced-threat-protection-key-vault'>Key Vault için Azure Defender hakkında daha fazla bilgi edinin.</a><br />(İlgili ilke: [Key Vault Için Azure Defender etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicyDefinitions%2f0e6763cc-5078-4e64-889d-ff4d9a839047)) |Yüksek |

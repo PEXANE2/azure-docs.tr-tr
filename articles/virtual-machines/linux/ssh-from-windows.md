@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 10/31/2020
 ms.topic: how-to
 ms.author: cynthn
-ms.openlocfilehash: 167ce63931155f5142ed34b41f857505699bc0a6
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: aeecdcddaeba385c6dc0773356bcd0e36231e1e4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102552788"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607475"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Azure 'da Windows ile SSH anahtarlarını kullanma
 
@@ -97,4 +97,4 @@ VM tam zamanında erişim ilkesi kullanıyorsa, VM 'ye bağlanabilmeniz için ö
 
 - SSH anahtarları oluşturmak ve Linux VM 'lerine SSH bağlantısı yapmak için Azure Cloud Shell 'de PowerShell de kullanabilirsiniz. Bkz. [PowerShell hızlı](../../cloud-shell/quickstart-powershell.md#ssh)başlangıcı.
 
-- Linux sanal makinelerinize bağlanmak için SSH kullanma konusunda zorluk yaşıyorsanız bkz. [Azure LINUX VM Ile SSH bağlantılarında sorun giderme](../troubleshooting/troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json).
+- Linux sanal makinelerinize bağlanmak için SSH kullanma konusunda zorluk yaşıyorsanız bkz. [Azure LINUX VM Ile SSH bağlantılarında sorun giderme](/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

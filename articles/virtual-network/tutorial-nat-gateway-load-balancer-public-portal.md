@@ -9,12 +9,12 @@ ms.subservice: nat
 ms.topic: tutorial
 ms.date: 03/19/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 345ccb68ebb31460f4a75b31a7d3a946160da6e6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8382dd10536a8c0475444d0cdff30340ad124e9c
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104657983"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104722812"
 ---
 # <a name="tutorial-integrate-a-nat-gateway-with-a-public-load-balancer-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak bir NAT ağ geçidini ortak yük dengeleyici ile tümleştirme
 
@@ -48,14 +48,17 @@ Bu bölümde, standart bir Azure Load Balancer oluşturacaksınız.
 
     | Ayar                 | Değer                                              |
     | ---                     | ---                                                |
+    | **Proje ayrıntıları** |   |
     | Abonelik               | Aboneliğinizi seçin.    |    
-    | Kaynak grubu         | **Yeni oluştur** ' u seçin ve metin kutusuna **Tutorpublbnat-RG** girin.|
+    | Kaynak grubu         | **Yeni oluştur** ' u seçin ve metin kutusuna **Tutorpublbnat-RG** girin. </br> **Tamam**’ı seçin.|
+    | **Örnek ayrıntıları** |   |
     | Name                   | **Myloadbalancer** girin                                   |
     | Region         | **Doğu ABD (ABD)** seçin.                                        |
     | Tür          | **Genel**’i seçin.                                        |
     | SKU           | Varsayılan **Standart** bırakın. |
     | Katman          | Varsayılan **Bölgesel**' i bırakın. |
-    | Genel IP adresi | **Yeni oluştur**’u seçin. Kullanmak istediğiniz mevcut bir genel IP varsa, **Varolanı kullan**' ı seçin. |
+    | **Genel IP adresi** |   |
+    | Genel IP adresi | **Yeni oluştur**’u seçin. </br> Kullanmak istediğiniz mevcut bir genel IP varsa, **Varolanı kullan**' ı seçin. |
     | Genel IP adresi adı | Metin kutusuna **Mypublicıp-lb** yazın.|
     | Kullanılabilirlik alanı | Esnek yük dengeleyici oluşturmak için **bölge yedekli** ' ı seçin. Bir ZGen yük dengeleyici oluşturmak için, 1, 2 veya 3 ' ten belirli bir bölge seçin |
     | Genel IPv6 adresi ekle | **Hayır**'ı seçin. </br> IPv6 adresleri ve yük dengeleyici hakkında daha fazla bilgi için bkz. [Azure sanal ağ Için IPv6 nedir?](../virtual-network/ipv6-overview.md)  |
@@ -135,7 +138,7 @@ Bu bölümde, bir yük dengeleyici kuralı oluşturacaksınız:
     | Arka uç bağlantı noktası | **80** girin. |
     | Arka uç havuzu | **Mybackendpool** öğesini seçin.|
     | Durum yoklaması | **Myhealtharaştırması**' ni seçin. |
-    | Boşta kalma zaman aşımı (dakika) | Kaydırıcıyı **15** dakikaya taşıyın. |
+    | Boşta kalma zaman aşımı (dakika) | **15** dakika girin. |
     | TCP sıfırlaması | **Etkin**'i seçin. |
     | Giden kaynak ağ adresi çevirisi (SNAT) | **Arka uç havuzu üyelerine internet erişimi sağlamak için giden kuralları kullanın (önerilir)** seçeneğini belirleyin. |
 
@@ -237,7 +240,7 @@ Bu VM 'Ler, daha önce oluşturulmuş yük dengeleyicinin arka uç havuzuna ekle
     | NIC ağ güvenlik grubu | **Gelişmiş** seçin|
     | Ağ güvenlik grubunu yapılandırma | **Yeni oluştur**’u seçin. </br> **Ağ güvenlik grubu oluştur**' da, **ad** alanına **mynsg** yazın. </br> **Gelen kuralları** altında **+ gelen kuralı ekle**' yi seçin. </br> **Hedef bağlantı noktası aralıkları** altında **80** girin. </br> **Öncelik** altında **100** girin. </br> **Ad** alanına **Myhttprule** yazın </br> **Ekle**’yi seçin </br> **Tamam**'ı seçin |
     | **Yük dengeleme**  |
-    | Bu sanal makine, var olan bir yük dengeleme çözümünün arkasına mi yerleştirsin? | **Evet**’i seçin |
+    | Bu sanal makine, var olan bir yük dengeleme çözümünün arkasına mi yerleştirsin? | Onay kutusunu işaretleyin.|
     | **Yük Dengeleme ayarları** |
     | Yük dengeleme seçenekleri | **Azure Yük dengeleyiciyi** seçin |
     | Yük dengeleyici seçin | **Myloadbalancer** seçin  |
@@ -302,7 +305,7 @@ Bu bölümde, NAT ağ geçidini test edeceğiz. Önce NAT ağ geçidinin genel I
 
 2. Genel IP adresini bir yere getirin:
 
-    :::image type="content" source="./media/tutorial-nat-gateway-load-balancer-public-portal/find-public-ip.png" alt-text="NAT ağ geçidinin genel IP adresini bulma" border="true":::
+    :::image type="content" source="./media/tutorial-nat-gateway-load-balancer-public-portal/find-public-ip.png" alt-text="Ekran görüntüsü NAT ağ geçidinin genel IP adresini bulur." border="true":::
 
 3. Sol taraftaki menüden **tüm hizmetler** ' i seçin, **tüm kaynaklar**' ı seçin ve ardından kaynaklar listesinden, **tutorpublbnat-RG** kaynak grubunda bulunan **myVM1** ' yi seçin.
 
@@ -318,7 +321,7 @@ Bu bölümde, NAT ağ geçidini test edeceğiz. Önce NAT ağ geçidinin genel I
 
 9. Görünen IP adresinin, önceki adımda not ettiğiniz NAT ağ geçidi adresiyle eşleştiğini doğrulayın:
 
-    :::image type="content" source="./media/tutorial-nat-gateway-load-balancer-public-portal/my-ip.png" alt-text="Dış giden IP 'yi gösteren Internet Explorer" border="true":::
+    :::image type="content" source="./media/tutorial-nat-gateway-load-balancer-public-portal/my-ip.png" alt-text="Dış giden IP 'yi gösteren ekran görüntüsü Internet Explorer." border="true":::
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

@@ -13,7 +13,7 @@
     - name: Kopya kağıdı
       href: cheat-sheet.md
     - name: En iyi uygulamalar
-      href: sql-data-warehouse-best-practices.md
+      href: ../sql/best-practices-dedicated-sql-pool.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json
     - name: Kapasite sınırları
       href: sql-data-warehouse-service-capacity-limits.md
     - name: SSS

@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
 ms.openlocfilehash: fea8f52ebf40ba8195de134098693f90315bb384
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103461428"
 ---
 # <a name="tutorial-develop-iot-edge-modules-with-linux-containers"></a>Öğretici: Linux kapsayıcılarıyla IoT Edge modülleri geliştirme
@@ -183,9 +183,9 @@ Her modülün kodunda birden çok *giriş* ve *Çıkış* kuyruğu olabilir. Cih
 
 Proje şablonuyla birlikte gelen örnek C# kodu, .NET için IoT Hub SDK 'sının [Moduleclient sınıfını](/dotnet/api/microsoft.azure.devices.client.moduleclient) kullanır.
 
-1. **Modüller/SampleModule/** klasör içinde bulunan **program.cs** dosyasını açın.
+1. **Modüller/SampleModule/** klasörünün içindeki **program. cs** dosyasını açın.
 
-2. Program.cs ' de **Setınputmessagehandlerasync** metodunu bulun.
+2. Program. cs ' de **Setınputmessagehandlerasync** metodunu bulun.
 
 3. [Setınputmessagehandlerasync](/dotnet/api/microsoft.azure.devices.client.moduleclient.setinputmessagehandlerasync) yöntemi gelen iletileri almak için bir giriş kuyruğu ayarlar. Bu yöntemi gözden geçirin ve **input1** adlı bir giriş kuyruğunu nasıl Başlatan hakkında bilgi alın.
 

@@ -308,6 +308,8 @@
           href: whatis-aadc-admin-agent.md
         - name: ADConnectivityTools PowerShell modülü nedir?
           href: how-to-connect-adconnectivitytools.md
+        - name: Tek nesne eşitleme Azure AD Connect
+          href: how-to-connect-single-object-sync.md
         - name: Bağlantı
           href: tshoot-connect-connectivity.md
         - name: Eşitleme sırasında karşılaşılan hatalar
@@ -336,6 +338,8 @@
           href: tshoot-connect-install-issues.md
         - name: UPN değişiklikleri
           href: howto-troubleshoot-upn-changes.md
+        - name: Nesnelerin ve özniteliklerin uçtan uca sorun giderme
+          href: 'https://docs.microsoft.com/troubleshoot/azure/active-directory/troubleshoot-aad-connect-objects-attributes'
 - name: Başvuru
   items:
     - name: Karma Kimlik için Gereken Bağlantı Noktaları ve Protokoller

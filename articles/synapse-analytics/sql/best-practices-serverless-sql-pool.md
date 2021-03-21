@@ -10,18 +10,26 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 75e187369eccefb255ae2bbd88de79afbc4fd4dc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a47982012dcaa2eabda93c93508b23f30525812d
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104669483"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720398"
 ---
 # <a name="best-practices-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu için en iyi yöntemler
 
 Bu makalede sunucusuz SQL havuzu kullanmak için en iyi yöntemler koleksiyonunu bulacaksınız. Sunucusuz SQL havuzu, Azure SYNAPSE Analytics 'teki bir kaynaktır.
 
 Sunucusuz SQL havuzu, Azure depolama hesaplarınızdaki dosyaları sorgulamanızı sağlar. Yerel depolama veya alma özelliklerine sahip değildir. Bu nedenle, sorgunun hedeflediği tüm dosyalar sunucusuz SQL havuzu dışında. Depolama alanından dosyaların okunmayla ilgili her şey, sorgu performansının üzerinde bir etkiye sahip olabilir.
+
+## <a name="client-applications-and-network-connections"></a>İstemci uygulamaları ve ağ bağlantıları
+
+İstemci uygulamanızın en iyi bağlantı ile mümkün olan en yakın SYNAPSE çalışma alanına bağlı olduğundan emin olun.
+- SYNAPSE çalışma alanıyla bir istemci uygulamasını birlikte bulundurma. Power BI veya Azure Analysis Service gibi uygulamalar kullanıyorsanız, SYNAPSE çalışma alanınızı yerleştirdiğiniz aynı bölgede olduklarından emin olun. Gerekirse, istemci uygulamalarınızla eşleştirilmiş ayrı çalışma alanlarını oluşturun. İstemci uygulaması ve SYNAPSE çalışma alanının farklı bir bölgeye yerleştirilmesi, daha büyük gecikme süresine ve sonuçların daha yavaş akışa alınmasına neden olabilir.
+- Şirket içi uygulamanızdan veri okuyorsanız, SYNAPSE çalışma alanının konumunuza yakın bölgede bulunduğundan emin olun.
+- Büyük miktarda veri okurken bazı ağ bant genişliği sorunlarından emin olun.
+- Büyük miktarda veri döndürmek için SYNAPSE Studio kullanmayın. SYNAPSE Studio, verileri aktarmak için HTTPS protokolünü kullanan bir web aracıdır. Büyük miktarda veri okumak için Azure Data Studio veya SQL Server Management Studio kullanın.
 
 ## <a name="storage-and-content-layout"></a>Depolama ve içerik düzeni
 
@@ -55,6 +63,10 @@ Mümkünse, daha iyi performans için dosyaları hazırlayacaksınız:
 - CSV dosyanızın boyutunu 100 MB ile 10 GB arasında tutmaya çalışın.
 - Tek bir OPENROWSET yolu veya dış tablo konumu için eşit boyutlu dosyalar olması daha iyidir.
 - Bölümleri farklı klasörlere veya dosya adlarına depolayarak verilerinizi bölümleyin. Bkz. [belirli bölümleri hedeflemek için filename ve FilePath Işlevlerini kullanma](#use-filename-and-filepath-functions-to-target-specific-partitions).
+
+### <a name="colocate-your-cosmosdb-analytical-storage-and-serverless-sql-pool"></a>CosmosDB analitik depolama ve sunucusuz SQL havuzunuzu birlikte bulundurma
+
+CosmosDB analitik depolamanın SYNAPSE çalışma alanıyla aynı bölgeye yerleştirildiğinden emin olun. Çapraz bölge sorguları çok fazla gecikme sürelerine neden olabilir.
 
 ## <a name="csv-optimizations"></a>CSV iyileştirmeleri
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 01/22/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Mini R device so I can use it to transfer data to Azure.
-ms.openlocfilehash: b6745ed879f02a341027417b54eb459b5bfed705
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: ed11b0bb00a571fb4cefc51a708432baef88184d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762953"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104613082"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-mini-r"></a>Öğretici: Azure Stack Edge Mini R 'yi dağıtmaya hazırlanma
 
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure Stack Edge Mini R dağıtmak için, önceden tanımlanmış sırada aşağıdaki öğreticilere bakın.
 
-| Adım | Açıklama |
+| Adım | Description |
 | --- | --- |
 | **Hazırlama** |Bu adımların, yaklaşan dağıtım için hazırlanmasından tamamlanması gerekir. |
 | **[Dağıtım yapılandırma denetim listesi](#deployment-configuration-checklist)** |Dağıtımdan önce ve dağıtım sırasında bilgi toplamak ve bilgileri kaydetmek için bu denetim listesini kullanın. |
@@ -54,7 +54,7 @@ Artık Azure portalını ayarlamaya başlayabilirsiniz.
 
 Cihazınızı dağıtmadan önce, Azure Stack Edge Mini R cihazınızda yazılımı yapılandırmak için bilgi toplamanız gerekir. Bu bilgilerin bir bölümünü önceden hazırlamak, cihazı ortamınızda dağıtma işlemini kolaylaştırmaya yardımcı olur. Cihazınızı dağıtırken yapılandırma ayrıntılarını bir yere dönmek için [Azure Stack Edge Mini dağıtım yapılandırması denetim listesini](azure-stack-edge-mini-r-deploy-checklist.md) kullanın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure Stack Edge kaynağınız, Azure Stack Edge cihazınız ve veri merkezi ağı için yapılandırma önkoşulları aşağıda verilmiştir.
 
@@ -83,6 +83,8 @@ Başlamadan önce aşağıdakilerden emin olun:
 ## <a name="create-a-new-resource"></a>Yeni kaynak oluşturma
 
 Fiziksel cihazınızı yönetmek için mevcut bir Azure Stack Edge kaynağınız varsa, bu adımı atlayın ve [etkinleştirme anahtarını almak](#get-the-activation-key)için gidin.
+
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Azure Stack Edge kaynağı oluşturmak için Azure portal aşağıdaki adımları uygulayın.
 
@@ -114,7 +116,7 @@ Azure Stack Edge kaynağı oluşturmak için Azure portal aşağıdaki adımlar�
     |Ayar  |Değer  |
     |---------|---------|
     |Ad   | Kaynağı tanımlamak için kolay bir ad.<br>Ad, harf, sayı ve kısa çizgi içeren 2 ile 50 karakter arasında bir addır.<br> Ad bir harf veya rakamla başlar ve biter.        |
-    |Bölge     |Azure Stack Edge kaynağının kullanılabildiği tüm bölgelerin listesi için bkz. [bölgeye göre kullanılabilir Azure ürünleri](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Azure Kamu kullanıyorsanız, tüm kamu bölgeleri [Azure bölgelerinde](https://azure.microsoft.com/global-infrastructure/regions/)gösterildiği gibi kullanılabilir.<br> Cihazınızı dağıtmak istediğiniz coğrafi bölgeye yakın bir konum seçin.|
+    |Region     |Azure Stack Edge kaynağının kullanılabildiği tüm bölgelerin listesi için bkz. [bölgeye göre kullanılabilir Azure ürünleri](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Azure Kamu kullanıyorsanız, tüm kamu bölgeleri [Azure bölgelerinde](https://azure.microsoft.com/global-infrastructure/regions/)gösterildiği gibi kullanılabilir.<br> Cihazınızı dağıtmak istediğiniz coğrafi bölgeye yakın bir konum seçin.|
 
     ![Kaynak oluşturma 4](media/azure-stack-edge-mini-r-deploy-prep/create-resource-4.png)
 
@@ -151,6 +153,51 @@ Sipariş yerleştirildikten sonra, Microsoft siparişi inceler ve gönderim ayr�
 > Aynı anda birden çok sipariş oluşturmak veya var olan bir siparişi kopyalamak istiyorsanız, [Azure örnekleri içindeki betikleri](https://github.com/Azure-Samples/azure-stack-edge-order)kullanabilirsiniz. Daha fazla bilgi için bkz. README dosyası.
 
 Sipariş işlemi sırasında herhangi bir sorunla karşılaşırsanız, bkz. [sorun giderme sorunları giderme](azure-stack-edge-troubleshoot-ordering.md).
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Gerekirse, ortamınızı Azure CLı için hazırlayın.
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+Azure Stack Edge kaynağı oluşturmak için Azure CLı 'de aşağıdaki komutları çalıştırın.
+
+1. [Az Group Create](/cli/azure/group#az_group_create) komutunu kullanarak bir kaynak grubu oluşturun veya var olan bir kaynak grubunu kullanın:
+
+   ```azurecli
+   az group create --name myasepgpu1 --location eastus
+   ```
+
+1. Bir cihaz oluşturmak için [az databoxedge Device Create](/cli/azure/databoxedge/device#az_databoxedge_device_create) komutunu kullanın:
+
+   ```azurecli
+   az databoxedge device create --resource-group myasepgpu1 \
+      --device-name myasegpu1 --location eastus --sku EdgeMR_Mini
+   ```
+
+   Cihazınızı dağıtmak istediğiniz coğrafi bölgeye yakın bir konum seçin. Bölge yalnızca cihaz yönetimi için meta verileri depolar. Gerçek veriler herhangi bir depolama hesabında depolanabilir.
+
+   Azure Stack Edge kaynağının kullanılabildiği tüm bölgelerin listesi için bkz. [bölgeye göre kullanılabilir Azure ürünleri](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Azure Kamu kullanıyorsanız, tüm kamu bölgeleri [Azure bölgelerinde](https://azure.microsoft.com/global-infrastructure/regions/)gösterildiği gibi kullanılabilir.
+
+1. Sipariş oluşturmak için [az databoxedge Order Create](/cli/azure/databoxedge/order#az_databoxedge_order_create) komutunu çalıştırın:
+
+   ```azurecli
+   az databoxedge order create --resource-group myasepgpu1 \
+      --device-name myasegpu1 --company-name "Contoso" \
+      --address-line1 "1020 Enterprise Way" --city "Sunnyvale" \
+      --state "California" --country "United States" --postal-code 94089 \
+      --contact-person "Gus Poland" --email-list gus@contoso.com --phone 4085555555
+   ```
+
+Kaynağın oluşturulması birkaç dakika sürer. Sıralamayı görmek için [az databoxedge Order Show](/cli/azure/databoxedge/order#az_databoxedge_order_show) komutunu çalıştırın:
+
+```azurecli
+az databoxedge order show --resource-group myasepgpu1 --device-name myasegpu1 
+```
+
+Sipariş verdikten sonra, Microsoft siparişi gözden geçirir ve teslim ayrıntıları ile e-posta ile sizinle iletişim kurar.
+
+---
 
 ## <a name="get-the-activation-key"></a>Etkinleştirme anahtarı alma
 

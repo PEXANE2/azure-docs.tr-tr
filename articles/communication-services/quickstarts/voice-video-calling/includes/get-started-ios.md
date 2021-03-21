@@ -1,17 +1,17 @@
 ---
 title: Hızlı başlangıç-Azure Iletişim hizmetlerini kullanarak bir iOS uygulamasına çağrı ekleme
 description: Bu hızlı başlangıçta iOS için istemci kitaplığı 'nı çağıran Azure Iletişim hizmetlerini kullanmayı öğreneceksiniz.
-author: matthewrobertson
-ms.author: marobert
-ms.date: 07/24/2020
+author: chpalm
+ms.author: mikben
+ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 36ec27f3a0e69126a91b52bed26dc645ec89e46e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 6cdd38f1e849efc416d62f22bd85ed7efb2e6349
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656660"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104719968"
 ---
 Bu hızlı başlangıçta, iOS için istemci kitaplığı 'nı çağıran Azure Iletişim Hizmetleri 'ni kullanarak bir çağrı başlatmayı öğreneceksiniz.
 
@@ -37,7 +37,8 @@ Xcode 'da yeni bir iOS projesi oluşturun ve **tek görünüm uygulama** şablon
 
 ### <a name="install-the-package-and-dependencies-with-cocoapods"></a>CocoaPods ile paketi ve bağımlılıkları yükler
 
-1. Uygulamanız için şöyle bir pod dosyası oluşturun:
+1. Uygulamanız için bir pod dosyası oluşturmak için terminali açın ve proje klasörüne gidip şunu çalıştırın ```pod init```
+3. Aşağıdaki kodu Pod dosyasına ekleyin ve kaydedin:
 
    ```
    platform :ios, '13.0'
@@ -50,7 +51,7 @@ Xcode 'da yeni bir iOS projesi oluşturun ve **tek görünüm uygulama** şablon
    end
    ```
 
-2. Şu komutu çalıştırın: `pod install`.
+3. `pod install` öğesini çalıştırın.
 3. Öğesini `.xcworkspace` Xcode ile açın.
 
 ### <a name="request-access-to-the-microphone"></a>Mikrofona erişim isteyin

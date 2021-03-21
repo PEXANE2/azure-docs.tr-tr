@@ -3,18 +3,21 @@ title: Sanal ağ kullanma senaryoları
 description: Azure sanal ağına kapsayıcı grupları dağıtmaya yönelik senaryolar, kaynaklar ve sınırlamalar.
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 65d7fa46ebbb9b072b50731bff68b9b88809075d
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 20c2b4fe2f19402d6647f398a9696b7e16550d8e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033838"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606897"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>Sanal ağ senaryoları ve kaynakları
 
 [Azure sanal ağ](../virtual-network/virtual-networks-overview.md) , Azure ve şirket içi kaynaklarınız için güvenli, özel ağ sağlar. Kapsayıcı gruplarını bir Azure sanal ağına dağıtarak, kapsayıcılarınız sanal ağdaki diğer kaynaklarla güvenli bir şekilde iletişim kurabilir. 
 
 Bu makale sanal ağ senaryoları, sınırlamaları ve kaynakları hakkında arka plan sağlar. Azure CLı kullanan dağıtım örnekleri için bkz. [Azure sanal ağ 'da kapsayıcı örnekleri dağıtma](container-instances-vnet.md).
+
+> [!IMPORTANT]
+> Bir sanal ağa kapsayıcı grubu dağıtımı, Azure Container Instances kullanılabildiği birçok bölgede genellikle Linux kapsayıcıları için kullanılabilir. Ayrıntılar için bkz. [bölgeler ve kaynak kullanılabilirliği](container-instances-region-availability.md). 
 
 ## <a name="scenarios"></a>Senaryolar
 
@@ -45,12 +48,6 @@ Bir Azure sanal ağına dağıtılan kapsayıcı grupları, şunun gibi senaryol
 * Kapsayıcı grubunuzu bir Azure depolama hesabına bağlıyorsanız, bu kaynağa bir [hizmet uç noktası](../virtual-network/virtual-network-service-endpoints-overview.md) eklemeniz gerekir.
 
 [!INCLUDE [container-instances-restart-ip](../../includes/container-instances-restart-ip.md)]
-
-## <a name="where-to-deploy"></a>Nereden dağıtılır
-
-Bir Azure sanal ağında bir kapsayıcı grubu dağıtmak için aşağıdaki bölgeler ve en fazla kaynaklar mevcuttur.
-
-[!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
 
 ## <a name="required-network-resources"></a>Gerekli ağ kaynakları
 

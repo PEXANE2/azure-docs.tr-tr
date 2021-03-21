@@ -2,26 +2,26 @@
 title: Azure yönetilen disklerinin sunucu tarafı şifrelemesi
 description: Azure depolama, verilerinizi depolama kümelerine kalıcı yapmadan önce Rest durumunda şifreleyerek korur. Kendi anahtarlarınız ile şifrelemeyi yönetmek için müşteri tarafından yönetilen anahtarları kullanabilir veya yönetilen disklerinizin şifrelenmesi için Microsoft tarafından yönetilen anahtarlara güvenebilirsiniz.
 author: roygara
-ms.date: 03/02/2021
+ms.date: 03/11/2021
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: ee4dd539119457086c9b109579b7e6ab195fea96
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 786ecef5d62c7dd18e3992fa0b233b27a80d762b
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103014392"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721860"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Azure Disk Depolama sunucu tarafı şifrelemesi
 
-Sunucu tarafı şifreleme (SSE) verilerinizi korur ve kurumsal güvenlik ve uyumluluk taahhütlerinizi karşılamanıza yardımcı olur. SSE, Azure yönetilen disklerinde (işletim sistemi ve veri diskleri) depolanan verilerinizi buluta kalıcı hale getirerek varsayılan olarak otomatik olarak şifreler. 
+Azure yönetilen disklerin çoğu, verilerinizi korumak ve kurumsal güvenlik ve uyumluluk taahhütlerinizi karşılamanıza yardımcı olmak için sunucu tarafı şifreleme (SSE) kullanan Azure depolama şifrelemesi ile şifrelenir. Azure depolama şifrelemesi, Azure yönetilen disklerinde (işletim sistemi ve veri diskleri) depolanan verilerinizi otomatik olarak buluta kalıcı hale getirerek varsayılan olarak şifreler. Ancak, ana bilgisayar etkinleştirilmiş olarak Şifrelemeli Diskler, Azure depolama aracılığıyla şifrelenmez. Konakta şifreleme olan diskler için, sanal makineyi barındıran sunucu verilerinize yönelik şifrelemeyi sağlar ve şifrelenmiş veriler Azure depolama alanına akar.
 
 Azure yönetilen disklerindeki veriler, 256 bit [AES şifrelemesi](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)kullanılarak saydam bir şekilde şifrelenir, en güçlü blok şifrelemeleri KULLANILABILIR ve FIPS 140-2 uyumludur. Azure yönetilen diskleri temel alan şifreleme modülleri hakkında daha fazla bilgi için bkz [. şifreleme API 'si: yeni nesil](/windows/desktop/seccng/cng-portal)
 
-Sunucu tarafı şifreleme, yönetilen disklerin performansını etkilemez ve ek bir maliyet yoktur. 
+Azure depolama şifrelemesi, yönetilen disklerin performansını etkilemez ve ek bir maliyet yoktur. Azure depolama şifrelemesi hakkında daha fazla bilgi için bkz. [Azure depolama şifrelemesi](/azure/storage/common/storage-service-encryption).
 
 > [!NOTE]
 > Geçici diskler yönetilen diskler değildir ve konakta şifrelemeyi etkinleştirmediğiniz müddetçe SSE tarafından şifrelenmez.

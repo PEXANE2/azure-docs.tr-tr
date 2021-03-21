@@ -9,12 +9,12 @@ ms.subservice: spot
 ms.date: 02/26/2021
 ms.reviewer: cynthn
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: a176a30a1e21ec03c2da329785ab895ec67a4faf
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ec73d1363fb18d1d6c46589fe69879a8f6df1dab
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104596425"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104722574"
 ---
 # <a name="azure-spot-virtual-machines-for-virtual-machine-scale-sets"></a>Sanal Makine Ölçek Kümeleri için Azure spot sanal makineleri 
 
@@ -44,8 +44,8 @@ Azure spot sanal makinesi, Microsoft Azure Çin 21Vianet dışında herhangi bir
 Şu [teklif türleri](https://azure.microsoft.com/support/legal/offer-details/) Şu anda destekleniyor:
 
 -   Kurumsal Anlaşma
--   Kullandıkça Öde teklifi kodu 003P
--   Sponsorlu
+-   Kullandıkça Öde teklifi kodu (003P)
+-   Sponsorlu (0036P ve 0136P)
 - Bulut hizmeti sağlayıcısı (CSP) için [Iş Ortağı Merkezi](/partner-center/azure-plan-get-started) 'ne bakın veya doğrudan iş ortağınızla iletişim kurun.
 
 ## <a name="eviction-policy"></a>Çıkarma ilkesi
@@ -168,7 +168,7 @@ $vmssConfig = New-AzVmssConfig `
     -SkuName "Standard_DS2" `
     -UpgradePolicyMode Automatic `
     -Priority "Spot" `
-    --max-price -1
+    -max-price -1
 ```
 
 ## <a name="resource-manager-templates"></a>Resource Manager şablonları

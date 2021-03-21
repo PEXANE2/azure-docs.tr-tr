@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.openlocfilehash: ce4917f968ef1664a1d41f4eaff162df116bda4f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102035093"
 ---
 # <a name="signing-key-rollover-in-the-microsoft-identity-platform"></a>Microsoft Identity platformunda anahtar geçişi 'ni imzalama
@@ -68,7 +68,7 @@ Azure Uygulama Hizmetleri ' kimlik doğrulama/yetkilendirme (EasyAuth) işlevsel
 ### <a name="web-applications--apis-protecting-resources-using-net-owin-openid-connect-ws-fed-or-windowsazureactivedirectorybearerauthentication-middleware"></a><a name="owin"></a>.NET OWIN OpenID Connect, WS-Fed veya Windowsazureactivedirectoryyataerauthentication ara yazılımı kullanılarak kaynakları koruyan Web uygulamaları/API 'Leri
 Uygulamanız .NET OWIN OpenID Connect, WS-Fed veya Windowsazureactivedirectoryyataerauthentication ara yazılım kullanıyorsa, anahtar geçişi otomatik olarak işlemek için gerekli mantık zaten vardır.
 
-Uygulamanızın Startup.cs veya Startup.Auth.cs dosyalarındaki aşağıdaki kod parçacıklarını arayarak uygulamanızın bunlardan herhangi birini kullandığını doğrulayabilirsiniz.
+Uygulamanızın başlangıç. cs veya Startup. auth. cs dosyalarında aşağıdaki kod parçacıklarını arayarak uygulamanızın bunlardan herhangi birini kullandığını doğrulayabilirsiniz.
 
 ```csharp
 app.UseOpenIdConnectAuthentication(
@@ -97,7 +97,7 @@ app.UseWindowsAzureActiveDirectoryBearerAuthentication(
 ### <a name="web-applications--apis-protecting-resources-using-net-core-openid-connect-or--jwtbearerauthentication-middleware"></a><a name="owincore"></a>.NET Core OpenID Connect veya Jwtyataerauthentication ara yazılımı kullanılarak kaynakları koruyan Web uygulamaları/API 'Leri
 Uygulamanız .NET Core OWIN OpenID Connect veya Jwtyataerauthentication ara yazılımı kullanıyorsa, anahtar geçişi otomatik olarak işlemek için gerekli mantık zaten vardır.
 
-Uygulamanızın Startup.cs veya Startup.Auth.cs ' de aşağıdaki kod parçacıklarını arayarak uygulamanızın bunlardan herhangi birini kullandığını doğrulayabilirsiniz.
+Uygulamanızın başlangıcında aşağıdaki kod parçacıklarını arayarak uygulamanızın bunlardan herhangi birini kullandığını doğrulayabilirsiniz. cs veya Startup. auth. cs
 
 ```
 app.UseOpenIdConnectAuthentication(
@@ -248,12 +248,12 @@ Uygulamanız Visual Studio 2012 ' de oluşturulduysa, büyük olasılıkla uygul
 Uygulamanızı Microsoft tarafından sağlanan kod örneklerinden veya İzlenecek yol belgelerinden birini kullanarak oluşturduysanız, anahtar aktarma mantığı projenize zaten dahil edilmiştir. Aşağıdaki kodun projenizde zaten var olduğunu fark edeceksiniz. Uygulamanızda zaten bu mantık yoksa, eklemek ve düzgün çalıştığını doğrulamak için aşağıdaki adımları izleyin.
 
 1. **Çözüm Gezgini**, uygun proje için **System. IdentityModel** derlemesine bir başvuru ekleyin.
-2. **Global.asax.cs** dosyasını açın ve aşağıdaki using yönergelerini ekleyin:
+2. **Global. asax. cs** dosyasını açın ve şu using yönergelerini ekleyin:
    ```
    using System.Configuration;
    using System.IdentityModel.Tokens;
    ```
-3. **Global.asax.cs** dosyasına aşağıdaki yöntemi ekleyin:
+3. Aşağıdaki yöntemi **Global. asax. cs** dosyasına ekleyin:
    ```
    protected void RefreshValidationSettings()
    {
@@ -263,7 +263,7 @@ Uygulamanızı Microsoft tarafından sağlanan kod örneklerinden veya İzlenece
     ValidatingIssuerNameRegistry.WriteToConfig(metadataAddress, configPath);
    }
    ```
-4. **Global.asax.cs** içinde gösterildiği gibi, **Application_Start ()** yönteminde **refreshvalidationsettings ()** yöntemini çağırın:
+4. Aşağıda gösterildiği gibi, **Global. asax. cs** içindeki **Application_Start ()** yönteminde **refreshvalidationsettings ()** yöntemini çağırın:
    ```
    protected void Application_Start()
    {

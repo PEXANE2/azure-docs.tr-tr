@@ -8,10 +8,10 @@ ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: digital-twins
 ms.openlocfilehash: 3393856b25040cff603ea2ef51e8adbcba78dc26
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102034702"
 ---
 # <a name="what-is-an-ontology"></a>Ontology nedir? 
@@ -40,7 +40,7 @@ Azure dijital TWINS 'deki modeller [dijital TWINS tanım dili (dtdl)](https://gi
 
 Bir DTDL ile sektör standardı ontoloon 'ı tümleştirmek için üç olası strateji vardır. Gereksinimlerinize bağlı olarak en iyi şekilde uygun olanı seçebilirsiniz:
 
-| Strateji | Açıklama | Kaynaklar |
+| Strateji | Description | Kaynaklar |
 | --- | --- | --- |
 | **Benimseme** | Çözümünüzü, yaygın olarak benimsenen endüstri standartlarına göre geliştirilen açık kaynaklı bir DTDL ontology ile başlatabilirsiniz. Bu model kümelerini kullanıma hazır olarak kullanabilir ya da özelleştirilmiş bir çözüm için kendi eklemelerinizi genişletebilirsiniz. | [*Kavramlar: &nbsp; &nbsp; Endüstri &nbsp; standardı ontoloon benimseme*](concepts-ontologies-adopt.md)<br><br>[*Kavramlar: &nbsp; &nbsp; ontololojileri genişletme*](concepts-ontologies-extend.md) |
 | **Melidir** | Zaten başka bir standart biçimde temsil edilen mevcut modelleriniz varsa, bunları Azure dijital TWINS ile kullanmak için DTDL 'e dönüştürebilirsiniz. | [*Kavramlar: &nbsp; &nbsp; ontolo, dönüştürme*](concepts-ontologies-convert.md)<br><br>[*Kavramlar: &nbsp; &nbsp; ontololojileri genişletme*](concepts-ontologies-extend.md) |

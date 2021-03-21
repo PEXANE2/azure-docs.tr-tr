@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: dc9f7dfdf33411f11d51734b48105be200874d02
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 030f19d61e19349de7e2d3416a3aee1385fd03c8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98738127"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607532"
 ---
 # <a name="azure-boot-diagnostics"></a>Azure önyükleme tanılaması
 
@@ -106,9 +106,9 @@ API sürüm 2020-06-01 ' den sonraki her şey yönetilen önyükleme tanılamay�
 - Yönetilen önyükleme Tanılaması, yönetilmeyen işletim sistemi disklerini kullanan VM 'Leri desteklemez.
 - Önyükleme tanılaması için Premium depolama hesabı kullanılıyorsa, önyükleme tanılaması Premium Depolama hesaplarını desteklemez `StorageAccountTypeNotSupported` . 
 - Yönetilen depolama hesapları, Kaynak Yöneticisi API sürümü "2020-06-01" ve üzeri sürümlerde desteklenir.
-- Azure seri konsol Şu anda önyükleme tanılaması için yönetilen bir depolama hesabıyla uyumsuz. [Azure seri konsolu](./troubleshooting/serial-console-overview.md)hakkında daha fazla bilgi edinin.
+- Azure seri konsol Şu anda önyükleme tanılaması için yönetilen bir depolama hesabıyla uyumsuz. [Azure seri konsolu](/troubleshoot/azure/virtual-machines/serial-console-overview)hakkında daha fazla bilgi edinin.
 - Portal yalnızca tek örnekli VM 'Ler için yönetilen bir depolama hesabıyla birlikte önyükleme tanılaması kullanımını destekler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure [seri konsolu](./troubleshooting/serial-console-overview.md) ve [Azure 'da sanal makinelerde sorun gidermek](./troubleshooting/boot-diagnostics.md)için önyükleme tanılamayı kullanma hakkında daha fazla bilgi edinin.
+Azure [seri konsolu](/troubleshoot/azure/virtual-machines/serial-console-overview) ve [Azure 'da sanal makinelerde sorun gidermek](/troubleshoot/azure/virtual-machines/boot-diagnostics)için önyükleme tanılamayı kullanma hakkında daha fazla bilgi edinin.

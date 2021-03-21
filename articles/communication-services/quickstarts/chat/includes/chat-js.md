@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 9f62f262e1baa70982e667379a9bf4357197ecb4
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 0805537fe0791a622eb1814cc233c04d914dbecd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103495479"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104612486"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 Başlamadan önce şunları yaptığınızdan emin olun:
@@ -66,6 +66,27 @@ Bu hızlı başlangıç, uygulama varlıklarını paketleyip Web Pack kullanır.
 npm install webpack webpack-cli webpack-dev-server --save-dev
 ```
 
+`webpack.config.js`Kök dizinde bir dosya oluşturun. Aşağıdaki yapılandırmayı bu dosyaya kopyalayın:
+
+```
+module.exports = {
+  entry: "./client.js",
+  output: {
+    filename: "bundle.js"
+  },
+  devtool: "inline-source-map",
+  mode: "development"
+}
+```
+
+Uygulamanıza bir `start` betik ekleyin `package.json` , bunu uygulamayı çalıştırmak için kullanacağız. Bölümünün içinde `scripts` `package.json` aşağıdakileri ekleyin:
+
+```
+"scripts": {
+  "start": "webpack serve --config ./webpack.config.js"
+}
+```
+
 Projenizin kök dizininde bir **index.html** dosyası oluşturun. JavaScript için Azure Iletişim sohbeti istemci kitaplığı 'nı kullanarak sohbet özelliği eklemek için bu dosyayı şablon olarak kullanacağız.
 
 ```html
@@ -111,9 +132,9 @@ console.log('Azure Communication Chat client created!');
 
 ### <a name="run-the-code"></a>Kodu çalıştırma
 
-`webpack-dev-server`Uygulamanızı derlemek ve çalıştırmak için kullanın. ' Deki uygulama konağını yerel bir Web sunucusuna paketetmek için aşağıdaki komutu çalıştırın:
+' Deki uygulama konağını yerel bir Web sunucusuna paketetmek için aşağıdaki komutu çalıştırın:
 ```console
-npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool inline-source-map
+npm run start
 ```
 Tarayıcınızı açın ve adresine gidin http://localhost:8080/ .
 Tarayıcınızın içindeki geliştirici araçları konsolunda aşağıdakileri görmeniz gerekir:
