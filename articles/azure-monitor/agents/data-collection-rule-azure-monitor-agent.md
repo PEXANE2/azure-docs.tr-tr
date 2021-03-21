@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/16/2021
-ms.openlocfilehash: 73f7ab83ea15d223b76b9f71fde2f8a6a37bdacf
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2a91062a701ca1b07f47f381a04cdf06c57c5746
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104586378"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721537"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Azure Izleyici Aracısı için veri toplamayı yapılandırma (Önizleme)
 
@@ -72,6 +72,8 @@ Veri toplama kuralının ayrıntılarını ve VM kümesiyle ilişkilendirmeyi g�
 Log Analytics çalışma alanında toplanan veriler için ücretlendirildiğiniz için, yalnızca gerekli verileri toplamalısınız. Azure portal temel yapılandırmayı kullanarak, yalnızca toplanacak olayları filtrelemek için sınırlı bir becerisine sahip olursunuz. Uygulama ve sistem günlükleri için bu, belirli bir önem derecesine sahip tüm günlüklerle kaydedilir. Güvenlik günlükleri için tüm denetim başarısı veya tüm denetim hatası günlükleri budur.
 
 Ek filtre belirtmek için özel yapılandırma kullanmanız ve istemediğiniz olayları filtreleyen bir XPath belirtmeniz gerekir. XPath girdileri biçiminde yazılır `LogName!XPathQuery` . Örneğin, olay KIMLIĞI 1035 olan uygulama olay günlüğünden yalnızca olayları geri döndürmek isteyebilirsiniz. Bu olaylar için XPathQuery olacaktır `*[System[EventID=1035]]` . Olayları uygulama olay günlüğünden almak istediğinizden dolayı XPath `Application!*[System[EventID=1035]]`
+
+Windows olay günlüğü tarafından desteklenen XPath 'teki sınırlamaların listesi için bkz. [xpath 1,0 sınırlamaları](/windows/win32/wes/consuming-events#xpath-10-limitations) .
 
 > [!TIP]
 > `Get-WinEvent` `FilterXPath` Bir xpathquery 'nin geçerliliğini sınamak Için parametresiyle PowerShell cmdlet 'ini kullanın. Aşağıdaki betik bir örnek gösterir.

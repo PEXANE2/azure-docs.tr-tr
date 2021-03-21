@@ -9,10 +9,10 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.service: azure-communication-services
 ms.openlocfilehash: 34c7df2b0e61536c0b5f0bc1e4a97d58d0d9c6a4
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103490526"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
@@ -45,7 +45,7 @@ Aşağıdaki adımlarda yetkilendirme üst bilgisinin nasıl oluşturulacağı a
 
 ### <a name="create-a-new-c-application"></a>Yeni bir C# uygulaması oluşturma
 
-Cmd, PowerShell veya Bash gibi bir konsol penceresinde, `dotnet new` adıyla yeni bir konsol uygulaması oluşturmak için komutunu kullanın `SignHmacTutorial` . Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: **program.cs**.
+Cmd, PowerShell veya Bash gibi bir konsol penceresinde, `dotnet new` adıyla yeni bir konsol uygulaması oluşturmak için komutunu kullanın `SignHmacTutorial` . Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: **program. cs**.
 
 ```console
 dotnet new console -o SignHmacTutorial

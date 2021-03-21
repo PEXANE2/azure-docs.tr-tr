@@ -44,6 +44,16 @@
       href: search-get-started-arm.md
 - name: Öğreticiler
   items:
+    - name: Web sitesine arama Ekle
+      items:
+        - name: 1-Web sitesine genel bakış
+          href: tutorial-javascript-overview.md
+        - name: 2-arama dizini oluşturma
+          href: tutorial-javascript-create-load-index.md
+        - name: 3-statik Web uygulaması dağıtma
+          href: tutorial-javascript-deploy-static-web-app.md
+        - name: 4-arama tümleştirmesini anlama
+          href: tutorial-javascript-search-query-integration.md
     - name: C# uygulaması oluşturma
       items:
         - name: 1 - Temel arama sayfası

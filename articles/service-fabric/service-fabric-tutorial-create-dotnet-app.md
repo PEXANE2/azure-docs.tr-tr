@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/10/2019
 ms.custom: mvc, devx-track-js, devx-track-csharp
 ms.openlocfilehash: 8fe9f1fcb85e58122290f89819aa721c8f0e632a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102035335"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Öğretici: ASP.NET Core Web API'si ön uç hizmeti ve durum bilgisi olan bir arka uç hizmetiyle uygulama oluşturma ve dağıtma
@@ -349,7 +349,7 @@ Bu öğreticide, güvenilir koleksiyonda sayaç değerini depolayan bir hizmet o
 
 ### <a name="add-the-votedatacontrollercs-file"></a>VoteDataController.cs dosyasını ekleme
 
-**Votingdata** projesinde, **Controllers** klasörüne sağ tıklayın ve ardından **Add->New Item->Class**' ı seçin. Dosyayı **VoteDataController.cs** olarak adlandırın ve **Ekle**' ye tıklayın. Dosyanın içeriğini aşağıdakilerle değiştirin, sonra değişikliklerinizi kaydedin.
+**Votingdata** projesinde, **Controllers** klasörüne sağ tıklayın ve ardından **Add->New Item->Class**' ı seçin. Dosyayı **Votedatacontroller. cs** olarak adlandırın ve **Ekle**' ye tıklayın. Dosyanın içeriğini aşağıdakilerle değiştirin, sonra değişikliklerinizi kaydedin.
 
 ```csharp
 namespace VotingData.Controllers

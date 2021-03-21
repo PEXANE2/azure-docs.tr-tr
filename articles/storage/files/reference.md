@@ -8,10 +8,10 @@ ms.service: storage
 ms.topic: conceptual
 ms.reviewer: ripohane
 ms.openlocfilehash: 828bb909aeb5d34f087a3173f792b325dc7cfd55
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102504823"
 ---
 # <a name="azure-files-reference"></a>Azure Dosyalar başvurusu
@@ -110,6 +110,6 @@ Aşağıdaki tablo, başvuru içeriğinin en son sürümüne bağlantılar içer
 |  3.x  | [PowerShell](/powershell/module/az.storage/?view=azps-3.8.0&preserve-view=true) |
 |  2.x  | [PowerShell](/powershell/module/az.storage/?view=azps-2.8.0&preserve-view=true) |
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure CLI’si
 
 - [Azure CLI](/cli/azure/storage)

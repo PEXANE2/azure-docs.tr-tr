@@ -1,24 +1,24 @@
 ---
-title: Azure Data Lake Storage 2. ACL 'Leri ayarlamak için JavaScript kullanma
+title: Azure Data Lake Storage 2. ACL 'Leri ayarlamak için JavaScript (Node.js) kullanın
 description: Hiyerarşik ad alanı (HNS) etkin olan depolama hesaplarında erişim denetim listelerini (ACL) yönetmek için JavaScript için Azure depolama Data Lake istemci kitaplığı 'nı kullanın.
 author: normesta
 ms.service: storage
-ms.date: 02/17/2021
+ms.date: 03/19/2021
 ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-js
-ms.openlocfilehash: 4d3e13c6593c0e11df84131a9a07eb2868277d2f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 21b4977102a484d8a3a680450a9cb6f77c7e3fbd
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100654485"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104722761"
 ---
-# <a name="use-javascript-to-manage-acls-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. ACL 'Leri yönetmek için JavaScript kullanma
+# <a name="use-javascript-sdk-in-nodejs-to-manage-acls-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. ACL 'Leri yönetmek için Node.js 'de JavaScript SDK 'sını kullanma
 
-Bu makalede, dizinlerin ve dosyaların erişim denetim listelerini almak, ayarlamak ve güncelleştirmek için JavaScript 'In nasıl kullanılacağı gösterilmektedir. 
+Bu makalede dizinlerin ve dosyaların erişim denetim listelerini almak, ayarlamak ve güncelleştirmek için Node.js nasıl kullanılacağı gösterilmektedir. 
 
 [Paket (düğüm Paket Yöneticisi)](https://www.npmjs.com/package/@azure/storage-file-datalake)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples)  |  [Geri bildirimde](https://github.com/Azure/azure-sdk-for-java/issues) bulunun
 
@@ -49,7 +49,11 @@ npm install @azure/storage-file-datalake
 `storage-file-datalake`Bu ifadeyi kod dosyanızın en üstüne yerleştirerek paketi içeri aktarın. 
 
 ```javascript
-const AzureStorageDataLake = require("@azure/storage-file-datalake");
+const {
+AzureStorageDataLake,
+DataLakeServiceClient,
+StorageSharedKeyCredential
+} = require("@azure/storage-file-datalake");
 ```
 
 ## <a name="connect-to-the-account"></a>Hesaba Bağlan

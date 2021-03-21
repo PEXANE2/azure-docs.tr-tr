@@ -8,10 +8,10 @@ ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.openlocfilehash: 5b1aab8b38614249d6b502044b5c4c8170f46b3c
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103492226"
 ---
 # <a name="ui-framework-capabilities"></a>UI çerçevesi özellikleri
@@ -22,7 +22,7 @@ Azure Iletişim Hizmetleri Kullanıcı arabirimi çerçevesi, yeniden kullanıla
 
 ## <a name="ui-framework-composite-components"></a>UI çerçevesi bileşik bileşenleri
 
-| Bileşik               | Açıklama                                               | Web   | Android | iOS   |
+| Bileşik               | Description                                               | Web   | Android | iOS   |
 |-------------------------|-----------------------------------------------------------|-------|---------|-------|
 | Bileşik çağıran Grup | Akıcı Kullanıcı arabirimi tasarım varlıklarını kullanarak Azure Iletişim Hizmetleri için hafif ses ve video giden çağrı deneyimi. Azure Communication Services grup KIMLIĞINI kullanarak Grup çağrılmasını destekler. Bileşik, bir Azure Iletişim Hizmetleri kimliğine veya Azure üzerinden temin telefon numarası kullanılarak PSTN için bir telefon numarasına başvuruda bulunarak bire bir çağırmanın kullanılmasına izin verir.                                    | React |  |  |
 | Grup sohbeti Composite    | Akıcı Kullanıcı arabirimi tasarım varlıklarını kullanarak Azure Iletişim Hizmetleri için hafif sohbet deneyimi. Bu deneyim, Azure Iletişim Hizmetleri iş parçacıklarıyla bağlantı kurmak için basit bir sohbet istemcisi sunma konusunda yoğunlaşır. Kullanıcıların ileti göndermesini ve yazma göstergeleri ve okundu alındıları ile alınan iletileri görmesini sağlar. 1:1, sohbet senaryolarını grup olarak ölçeklendirir. Tek bir sohbet iş parçacığını destekler.                         | React |  |  |

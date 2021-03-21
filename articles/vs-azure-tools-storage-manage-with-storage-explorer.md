@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/08/2019
 ms.author: cawa
 ms.openlocfilehash: 3a8fe3ded6608059cc6ad50901ffe6df5dcf1b08
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102441597"
 ---
 # <a name="get-started-with-storage-explorer"></a>Depolama Gezgini ile çalışmaya başlama
@@ -117,13 +117,13 @@ Depolama Gezgini, çeşitli kimlik doğrulama yöntemlerini kullanarak Azure Dat
 
 | Kaynak türü    | Azure AD | Hesap adı ve anahtarı | Paylaşılan Erişim İmzası (SAS)  | Ortak (anonim) |
 |------------------|----------|----------------------|--------------------------------|--------------------|
-| Depolama hesapları | Yes      | Yes                  | Evet (bağlantı dizesi veya URL) | Hayır                 |
+| Depolama hesapları | Yes      | Yes                  | Evet (bağlantı dizesi veya URL) | No                 |
 | Blob kapsayıcıları  | Yes      | Hayır                   | Evet (URL)                      | Yes                |
 | Gen2 kapsayıcıları  | Yes      | Hayır                   | Evet (URL)                      | Yes                |
 | Gen2 dizinleri | Yes      | Hayır                   | Evet (URL)                      | Yes                |
-| Dosya paylaşımları      | Hayır       | Hayır                   | Evet (URL)                      | Hayır                 |
-| Kuyruklar           | Yes      | Hayır                   | Evet (URL)                      | Hayır                 |
-| Tablolar           | Hayır       | Hayır                   | Evet (URL)                      | Hayır                 |
+| Dosya paylaşımları      | Hayır       | Hayır                   | Evet (URL)                      | No                 |
+| Kuyruklar           | Yes      | Hayır                   | Evet (URL)                      | No                 |
+| Tables           | Hayır       | Hayır                   | Evet (URL)                      | No                 |
  
 Depolama Gezgini, öykünücü tarafından yapılandırılan bağlantı noktalarını kullanarak [yerel bir depolama öykünücüsüne](#local-storage-emulator) da bağlanabilir.
 

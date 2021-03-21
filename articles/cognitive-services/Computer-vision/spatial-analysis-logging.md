@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: dda3ece27fd2c687647e0aa289bd1596a87b274f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a825b9e0abc4e33eb0f9033f46bb77c38559f740
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98186031"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104722710"
 ---
 # <a name="telemetry-and-troubleshooting"></a>Telemetri ve sorun giderme
 
@@ -60,7 +60,7 @@ Azure Izleyici 'yi ayarladıktan sonra, modülün telemetri göndermesini sağla
 
 ```bash
 # Find your Azure IoT Hub resource ID by running this command. The resource ID  should start with something like 
-# "/subscriptions/b60d6458-1234-4be4-9885-c7e73af9ced8/resourceGroups/...”
+# "/subscriptions/b60d6458-1234-4be4-9885-c7e73af9ced8/resourceGroups/..."
 az iot hub list
 
 # Create a Service Principal with `Monitoring Metrics Publisher` role in the IoTHub resource:
@@ -105,16 +105,16 @@ Telegraf modülü dağıtıldıktan sonra, bildirilen ölçümlere Azure Izleyic
 
 | Olay Adı | Description|
 |------|---------|
-|archon_exit    |Kullanıcı, uzamsal analiz modülü durumunun *çalışmayı* *durduruldu* olarak değiştirdiğinde gönderilir.  |
-|archon_error   |Kapsayıcının içindeki işlemlerden herhangi biri kilitleniyorsa gönderilir. Bu kritik bir hatadır.  |
-|Inputrate  |Grafiğin video girişini işleme hızıdır. Her 5 dakikada bir raporlanır. | 
+|archon_exit     |Kullanıcı, uzamsal analiz modülü durumunun *çalışmayı* *durduruldu* olarak değiştirdiğinde gönderilir.  |
+|archon_error     |Kapsayıcının içindeki işlemlerden herhangi biri kilitleniyorsa gönderilir. Bu kritik bir hatadır.  |
+|Inputrate     |Grafiğin video girişini işleme hızıdır. Her 5 dakikada bir raporlanır. | 
 |OutputRate     |Grafiğin AI öngörülerini çıkış hızı. Her 5 dakikada bir raporlanır. |
 |archon_allGraphsStarted | Tüm grafiklerin başlaması bittiğinde gönderilir. |
-|archon_configchange    | Grafik yapılandırması değiştirildiğinde gönderilir. |
+|archon_configchange     | Grafik yapılandırması değiştirildiğinde gönderilir. |
 |archon_graphCreationFailed     |Raporlandığı grafik başlatıldığında gönderilir `graphId` . |
-|archon_graphCreationSuccess    |Raporlanan grafik `graphId` başarıyla başladığında gönderilir. |
-|archon_graphCleanup    | Bildirilen grafik `graphId` Temizleme ve çıkış olduğunda gönderilir. |
-|archon_graphHeartbeat  |Bir yeteneğin her bir grafiği için her dakikada bir sinyal gönderilir. |
+|archon_graphCreationSuccess     |Raporlanan grafik `graphId` başarıyla başladığında gönderilir. |
+|archon_graphCleanup     | Bildirilen grafik `graphId` Temizleme ve çıkış olduğunda gönderilir. |
+|archon_graphHeartbeat     |Bir yeteneğin her bir grafiği için her dakikada bir sinyal gönderilir. |
 |archon_apiKeyAuthFail |Görüntü İşleme kaynak anahtarı, aşağıdaki nedenlerden dolayı, kapsayıcıyı 24 saatten uzun bir süre için doğrulayamazsa gönderilir: kota dışı, geçersiz, çevrimdışı. |
 |Videoıngestersinyal     |Videonun video kaynağından akışını ve bu saatin hata sayısını gösteren her saat için gönderilir. Her bir grafik için bildirildi. |
 |Videoıngesterstate | Video akışı için raporlar *durduruldu* veya *başlatıldı* . Her bir grafik için bildirildi. |
@@ -363,7 +363,7 @@ Kubernetes kümesi oluşturulduktan sonra, `kubectl` kümeye erişmek için komu
     New-HcsKubernetesUser -UserName
     ```
 
-3. *Yapılandırma* dosyasını yerel makinedeki kullanıcı profilinize *. kuin* klasörüne ekleyin.   
+3. *Yapılandırma* dosyasını yerel makinedeki kullanıcı profilinize *. kuin* klasörüne ekleyin.    
 
 4. Ad alanını oluşturduğunuz kullanıcıyla ilişkilendirin.
 
@@ -400,6 +400,34 @@ kubectl logs <pod-name> -n <namespace> --all-containers
 |`Get-HcsKubernetesUserConfig -AseUser`     | Bir Kubernetes yapılandırma dosyası oluşturur. Komutunu kullanırken, bilgileri *config* adlı bir dosyaya kopyalayın. Dosyayı dosya uzantısıyla kaydetme.        |
 | `Get-HcsApplianceInfo` | Cihazınız hakkında bilgi döndürür. |
 | `Enable-HcsSupportAccess` | Destek oturumu başlatmak için erişim kimlik bilgileri oluşturur. |
+
+
+## <a name="how-to-file-a-support-ticket-for-spatial-analysis"></a>Uzamsal analiz için destek bileti dosyası oluşturma 
+
+Uzamsal analiz kapsayıcısına sahip olduğunuz bir soruna çözüm bulma konusunda daha fazla desteğe ihtiyacınız varsa, bir destek bileti almak ve göndermek için aşağıdaki adımları izleyin. Ekibimiz size ek rehberlik vererek sizi geri alacak. 
+
+### <a name="fill-out-the-basics"></a>Temel bilgileri doldurun 
+[Yeni destek isteği](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) sayfasında yeni bir destek bileti oluşturun. Aşağıdaki parametreleri doldurmanız için istemleri izleyin:
+
+![Destek temelleri](./media/support-ticket-page-1-final.png)
+
+1. **Sorun türünü** olarak ayarlayın `Technical` .
+2. Uzamsal analiz kapsayıcısını dağıtmak için kullandığınız aboneliği seçin.
+3. `My services`Hizmet olarak seçin ve seçin `Cognitive Services` .
+4. Uzamsal analiz kapsayıcısını dağıtmak için kullandığınız kaynağı seçin.
+5. Karşılaştığınız sorunun ayrıntılarını açıklayan kısa bir açıklama yazın. 
+6. `Spatial Analysis`Sorun türü olarak öğesini seçin.
+7. Açılan listeden uygun alt türü seçin.
+8. Ileri ' yi seçin: sonraki sayfada geçiş yapılacak **çözümler** .
+
+### <a name="recommended-solutions"></a>Önerilen çözümler
+Sonraki aşamada, seçtiğiniz sorun türü için önerilen çözümler sunulacaktır. Bu çözümler en sık karşılaşılan sorunları çözebilir, ancak çözümünüz için yararlı değilse, Ileri ' yi seçin. **Ayrıntılar** için sonraki adıma gidin.
+
+### <a name="details"></a>Ayrıntılar
+Bu sayfada, karşılaştığınız sorun hakkında bazı ek ayrıntılar ekleyin. Mühendisimizin sorunu daha iyi daraltabilmesini sağlamak için mümkün olduğunca fazla ayrıntı eklediğinizden emin olun. Size uygun iletişim kurabilmemiz için tercih ettiğiniz iletişim yöntemini ve sorunun önem derecesini ekleyin ve **İleri** ' yi seçin. sonraki adıma geçmek için bir sonraki adıma geçin. 
+
+### <a name="review-and-create"></a>Gözden geçir ve oluştur 
+Her şeyin doğru olduğundan emin olmak için destek isteğinizin ayrıntılarını gözden geçirin ve sorunu etkili bir şekilde temsil edin. Hazırsanız, bileti ekibimize göndermek için **Oluştur** ' u seçin! Bilet alındıktan sonra ekibimiz bir e-posta onayı alacaksınız ve takımımız en kısa sürede size geri dönmek için çalışacaktır. Azure portal biletinin durumunu görüntüleyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

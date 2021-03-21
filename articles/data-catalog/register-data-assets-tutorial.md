@@ -6,14 +6,16 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: tutorial
 ms.date: 08/01/2019
-ms.openlocfilehash: 66bacdf27b2ef9cf624b645cb6e4c123d9c3fa2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de85cad8232d76706358c36806ce19a7c1df893f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88135887"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104675014"
 ---
 # <a name="tutorial-register-data-assets-in-azure-data-catalog"></a>Öğretici: Azure Veri Kataloğu 'nda veri varlıklarını kaydetme
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 Bu öğreticide, katalog ile veritabanı örneğinden veri varlıkları kaydetmek için kayıt aracını kullanırsınız. Kayıt, veri kaynağı ve içerdiği varlıklara ait adlar, türler ve konumlar gibi önemli yapısal meta verilerin ayıklanması ve meta verilerin kataloğa kopyalanması işlemidir. Veri kaynakları ve veri varlıkları olduğu yerde kalır, ancak katalog tarafından daha kolay bulunabilir ve anlaşılabilir hale getirilmeleri için meta veriler kullanılır.
 
@@ -26,7 +28,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Veri varlıklarını yönetme
 > * Veri varlıklarını silme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için [hızlı başlangıç](register-data-assets-tutorial.md)' ı doldurmanız gerekir.
 
@@ -67,9 +69,9 @@ Artık, Azure Veri Kataloğu 'nu kullanarak veritabanı örneğinden veri varlı
 
 6. Veri varlığınızın meta verilerini kaydedin. Bu örnekte, **ürün** nesnelerini örnek ad alanından kaydedersiniz:
 
-   1. **Sunucu hiyerarşisi** ağacında, veritabanı örneğinizi genişletin ve **SalesLT**öğesini seçin.
+   1. **Sunucu hiyerarşisi** ağacında, veritabanı örneğinizi genişletin ve **SalesLT** öğesini seçin.
 
-   2. CTRL + SELECT kullanarak **Product**, **ProductCategory**, **ProductDescription**ve **ProductModel** ' i seçin.
+   2. CTRL + SELECT kullanarak **Product**, **ProductCategory**, **ProductDescription** ve **ProductModel** ' i seçin.
 
    3. **Taşı-seçili oku** () seçin **>** . Bu eylem seçilen tüm nesneleri **Kaydedilecek nesneler** listesine taşır.
 
@@ -79,7 +81,7 @@ Artık, Azure Veri Kataloğu 'nu kullanarak veritabanı örneğinden veri varlı
 
    5. Veri profili için nesne istatistiklerinin bir anlık görüntüsünü dahil etmek üzere **Veri Profili Ekle**’yi seçin (örneğin: bir sütun için en küçük, en büyük ve ortalama değerler, satır sayısı).
 
-   6. **Etiket ekle** alanına **Sales, Product, Azure SQL**girin. Bu eylem söz konusu veri varlıklarına arama etiketleri ekler. Etiketler, kullanıcıların kayıtlı bir veri kaynağını bulmasına yardımcı olmak için kullanışlı bir yoludur.
+   6. **Etiket ekle** alanına **Sales, Product, Azure SQL** girin. Bu eylem söz konusu veri varlıklarına arama etiketleri ekler. Etiketler, kullanıcıların kayıtlı bir veri kaynağını bulmasına yardımcı olmak için kullanışlı bir yoludur.
 
    7. Bu veriler için bir **uzman** adı belirtin (isteğe bağlı).
 
@@ -127,13 +129,13 @@ Basit arama bir veya daha fazla arama terimi kullanarak bir katalogda arama yapm
 
    **Aramalar** bölmesi sol tarafta, **Özellikleri** bölmesi sağ taraftadır. **Aramalar** bölmesinde arama ölçütlerini değiştirebilir ve sonuçları filtreleyebilirsiniz. **Özellikler** bölmesinde seçili nesnenin özellikleri ızgara veya liste görünümünde gösterilir.
 
-4. Arama sonuçlarında **ürün** ' ı seçin. **Önizleme**, **sütunlar**, **veri profili**ve **belge** sekmelerini seçin ya da alt Bölmeyi genişletmek için oku seçin.  
+4. Arama sonuçlarında **ürün** ' ı seçin. **Önizleme**, **sütunlar**, **veri profili** ve **belge** sekmelerini seçin ya da alt Bölmeyi genişletmek için oku seçin.  
 
    ![Azure Veri Kataloğu--alt bölme](media/register-data-assets-tutorial/data-catalog-data-asset-preview.png)
 
    **Önizleme** sekmesinde **Ürün** tablosundaki verilerin bir önizlemesini görürsünüz.
 
-5. Veri varlığının sütunları ( **ad** ve **veri türü**gibi) hakkındaki ayrıntıları bulmak için **sütunlar** sekmesini seçin.
+5. Veri varlığının sütunları ( **ad** ve **veri türü** gibi) hakkındaki ayrıntıları bulmak için **sütunlar** sekmesini seçin.
 
 6. Veri varlığı içindeki veri profilini (örneğin, satır sayısı, veri boyutu veya bir sütundaki minimum değer) görmek için **veri profili** sekmesini seçin.
 
@@ -177,9 +179,9 @@ Karşılaştırma işleçleri ile sayısal ve tarih veri türlerine sahip özell
 
 2. **Nesne Türü** altındaki **Tablo** filtresini temizleyin.
 
-3. **ENTER**tuşuna basın.
+3. **ENTER** tuşuna basın.
 
-4. **Ürün**, **ProductCategory**ve **ProductDescription** tablolarını ve arama sonuçlarında kaydettiğiniz SQL veritabanını görtığınızdan emin olun.
+4. **Ürün**, **ProductCategory** ve **ProductDescription** tablolarını ve arama sonuçlarında kaydettiğiniz SQL veritabanını görtığınızdan emin olun.
 
    ![Azure Veri Kataloğu--karşılaştırma arama sonuçları](media/register-data-assets-tutorial/data-catalog-comparison-operator-results.png)
 
@@ -254,7 +256,7 @@ Bu alıştırmada bağlantı bilgilerini kullanarak veri varlıklarını tümle�
 
 Bu alıştırmada Azure Veri Kataloğu kullanarak bulunan veri varlıklarına bağlandınız. Azure Veri Kataloğu portalı ile **Şurada Aç** menüsüne tümleştirilmiş istemci uygulamalarını kullanarak doğrudan bağlantı kurabilirsiniz. Ayrıca varlık meta verilerine dahil edilen bağlantı konumu bilgilerini kullanarak seçtiğiniz herhangi bir uygulamayla bağlantı kurabilirsiniz. Örneğin, bu öğreticide kayıtlı veri varlıklarıyla ilgili verilere erişmek için Azure SQL veritabanı 'na bağlanmak üzere SQL Server Management Studio kullanabilirsiniz.
 
-1. **SQL Server Management Studio**açın.
+1. **SQL Server Management Studio** açın.
 
 2. **Sunucuya Bağlan** iletişim kutusunda Azure Veri Kataloğu portalındaki **Özellikler** bölmesinde bulunan sunucu adını girin.
 
@@ -276,7 +278,7 @@ Veri Kataloğu’nu kullanarak veri kaynaklarını bulabilir ve kataloğa kayıt
 
 ### <a name="take-ownership-of-data-assets-and-restrict-visibility"></a>Veri varlıklarının sahipliğini alma ve görünürlüğü kısıtlama
 
-1. [Azure Veri Kataloğu giriş sayfasına](https://www.azuredatacatalog.com) gidin. **Arama** metin kutusuna `tags:cycles` yazın ve **ENTER** tuşuna basın.
+1. [Azure Veri Kataloğu giriş sayfasına](https://www.azuredatacatalog.com) gidin. **Arama** metin kutusuna yazın `tags:cycles` ve ENTER tuşuna basın. 
 
 2. Sonuç listesinden bir öğe seçin ve araç çubuğunda **sahipliğini al** ' ı seçin.
 

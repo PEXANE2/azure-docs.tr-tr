@@ -6,14 +6,17 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 1f893f8e2ec03681697f15cd85685d4c99b13de6
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 98854a4588b59cf0c19877da870e6124fa7c3b9a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151960"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674691"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Azure Veri Kataloğu hakkında sık sorulan sorular
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
+
 Bu makale, Azure Veri Kataloğu hizmetiyle ilgili sık sorulan soruların yanıtlarını sağlar.
 
 ## <a name="what-is-azure-data-catalog"></a>Azure Veri Kataloğu nedir?
@@ -57,7 +60,7 @@ Tablolar, görünümler, dosyalar ve raporlar gibi veri kataloğunda kayıtlı o
 
 Office 365 E5 Power BI Pro lisansıyla satın aldığınızda, Microsoft, aboneliğin bölgesinde otomatik olarak varsayılan bir katalog oluşturur. Bu katalog, Ücretsiz SKU 'YU kullanır. Office 365/Power BI Kullanıcı Lisansı Yönetim sayfasında yönetilir. 
 
-Ancak, bu tür veri kataloğunda **yönetici seçeneği** yoktur ve **Azure Portal**görünmez. Bu tür veri kataloğunu silemezsiniz. Benzer şekilde, veri kataloğunu yeniden adlandırmanıza izin verilmez ve başka bir bölgeye taşıyamazsınız. 
+Ancak, bu tür veri kataloğunda **yönetici seçeneği** yoktur ve **Azure Portal** görünmez. Bu tür veri kataloğunu silemezsiniz. Benzer şekilde, veri kataloğunu yeniden adlandırmanıza izin verilmez ve başka bir bölgeye taşıyamazsınız. 
 
 Power BI Pro lisansı atanan kullanıcı hesaplarının, Power BI Pro lisansıyla Office 365 E5 'a kaydolduklarında lisans anlaşması nedeniyle otomatik olarak veri kataloğuna erişimi vardır. Bu tür bir Kullanıcı, yönetim ayrıcalıklarına sahip olmayan veri kataloğu varlıklarına tam erişime sahiptir. Bu tür bir Kullanıcı, Azure Veri Kataloğu 'nda **Katalog Kullanıcı** rolünün bir parçası *değildir* .
 

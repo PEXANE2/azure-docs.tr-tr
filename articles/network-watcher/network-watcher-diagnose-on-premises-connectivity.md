@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: a5db1ac9c70429d4b6a0b690de1b29c3656b3cc8
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 3b8b53446799eec3473d63c89672393a35f9787a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98016720"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670964"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>VPN ağ geçitleri aracılığıyla şirket içi bağlantıyı tanılama
 
@@ -34,11 +34,11 @@ Azure ağ Izleyicisi sorun giderme özelliği sayesinde, ağ geçidiniz ve bağl
 Şirket içi VPN Gateway olarak FortiGate kullanarak Azure ile şirket içi arasında siteden siteye bağlantı yapılandırmak istiyorsunuz. Bu senaryoya ulaşmak için aşağıdaki kuruluma ihtiyacınız vardır:
 
 1. Sanal ağ geçidi-Azure 'da VPN Gateway
-1. Yerel ağ geçidi- [Şirket içi (FortiGate)](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway) Azure bulutundaki gösterimi VPN Gateway
-1. Siteden siteye bağlantı (rota tabanlı)- [VPN Gateway ve şirket içi yönlendirici arasında bağlantı](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#CreateConnection)
+1. Yerel ağ geçidi- [Şirket içi (FortiGate)](../vpn-gateway/tutorial-site-to-site-portal.md#LocalNetworkGateway) Azure bulutundaki gösterimi VPN Gateway
+1. Siteden siteye bağlantı (rota tabanlı)- [VPN Gateway ve şirket içi yönlendirici arasında bağlantı](../vpn-gateway/tutorial-site-to-site-portal.md#CreateConnection)
 1. [FortiGate yapılandırma](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/Site-to-Site_VPN_using_FortiGate.md)
 
-Siteden siteye yapılandırma yapılandırmaya yönelik ayrıntılı adım adım yönergeler, ziyaret ederek bulunabilir: [Azure Portal kullanarak siteden siteye bağlantı Ile VNET oluşturma](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+Siteden siteye yapılandırma yapılandırmaya yönelik ayrıntılı adım adım yönergeler, ziyaret ederek bulunabilir: [Azure Portal kullanarak siteden siteye bağlantı Ile VNET oluşturma](../vpn-gateway/tutorial-site-to-site-portal.md).
 
 Kritik yapılandırma adımlarından biri IPSec iletişim parametrelerini yapılandırıyor, herhangi bir yanlış yapılandırma, şirket içi ağ ile Azure arasında bağlantı kaybına neden olur. Şu anda Azure VPN ağ geçitleri, 1. aşama için aşağıdaki IPSec parametrelerini destekleyecek şekilde yapılandırılmıştır. Aşağıdaki tabloda görebileceğiniz gibi, Azure VPN Gateway tarafından desteklenen şifreleme algoritmaları AES256, AES128 ve 3DES ' dir.
 
@@ -87,11 +87,11 @@ Azure ağ Izleyicisi sorun giderme özelliği, VPN Gateway ve bağlantınızı b
 | PlannedMaintenance |  Ağ geçidi örneği bakım aşamasında.  |Hayır|
 | UserDrivenUpdate | Bir Kullanıcı güncelleştirmesi devam ediyor. Bu bir yeniden boyutlandırma işlemi olabilir. | Hayır |
 | VipUnResponsive | Ağ geçidinin birincil örneğine ulaşılamıyor. Bu durum araştırma başarısız olduğunda gerçekleşir. | Hayır |
-| PlatformInActive | Platform ile ilgili bir sorun var. | Hayır|
-| ServiceNotRunning | Temel alınan hizmet çalışmıyor. | Hayır|
-| Noconnectionsdökümforgateway | Ağ geçidinde hiçbir bağlantı yok. Bu yalnızca bir uyarıdır.| Hayır|
-| ConnectionsNotConnected | Bağlantılardan hiçbiri bağlanmadı. Bu yalnızca bir uyarıdır.| Evet|
-| Gatewaycpuusageaşıldı | Geçerli ağ geçidi kullanım CPU kullanımı %95 >. | Evet |
+| PlatformInActive | Platform ile ilgili bir sorun var. | No|
+| ServiceNotRunning | Temel alınan hizmet çalışmıyor. | No|
+| Noconnectionsdökümforgateway | Ağ geçidinde hiçbir bağlantı yok. Bu yalnızca bir uyarıdır.| No|
+| ConnectionsNotConnected | Bağlantılardan hiçbiri bağlanmadı. Bu yalnızca bir uyarıdır.| Yes|
+| Gatewaycpuusageaşıldı | Geçerli ağ geçidi kullanım CPU kullanımı %95 >. | Yes |
 
 ### <a name="connection"></a>Bağlantı
 
@@ -101,14 +101,14 @@ Azure ağ Izleyicisi sorun giderme özelliği, VPN Gateway ve bağlantınızı b
 | GatewayNotFound | Ağ Geçidi bulunamıyor veya ağ geçidi sağlanmadı. |Hayır|
 | PlannedMaintenance | Ağ geçidi örneği bakım aşamasında.  |Hayır|
 | UserDrivenUpdate | Bir Kullanıcı güncelleştirmesi devam ediyor. Bu bir yeniden boyutlandırma işlemi olabilir.  | Hayır |
-| VipUnResponsive | Ağ geçidinin birincil örneğine ulaşılamıyor. Durum araştırması başarısız olduğunda gerçekleşir. | Hayır |
-| ConnectionEntityNotFound | Bağlantı yapılandırması eksik. | Hayır |
-| Connectionımarkedconnected | Bağlantı "bağlantısı kesildi" olarak işaretlenir. |Hayır|
-| ConnectionNotConfiguredOnGateway | Temeldeki hizmette bağlantı yapılandırılmamış. | Evet |
-| ConnectionMarkedStandby | Temel alınan hizmet bekleme olarak işaretlendi.| Evet|
-| Kimlik Doğrulaması | Önceden paylaşılan anahtar uyumsuzluğu. | Evet|
-| Peerulaşılabilirlik | Eş ağ geçidine erişilemiyor. | Evet|
-| Ikepolicyuyuşmazlığıdır | Eş ağ geçidinde Azure tarafından desteklenmeyen ıKE ilkeleri vardır. | Evet|
+| VipUnResponsive | Ağ geçidinin birincil örneğine ulaşılamıyor. Durum araştırması başarısız olduğunda gerçekleşir. | No |
+| ConnectionEntityNotFound | Bağlantı yapılandırması eksik. | No |
+| Connectionımarkedconnected | Bağlantı "bağlantısı kesildi" olarak işaretlenir. |No|
+| ConnectionNotConfiguredOnGateway | Temeldeki hizmette bağlantı yapılandırılmamış. | Yes |
+| ConnectionMarkedStandby | Temel alınan hizmet bekleme olarak işaretlendi.| Yes|
+| Kimlik Doğrulaması | Önceden paylaşılan anahtar uyumsuzluğu. | Yes|
+| Peerulaşılabilirlik | Eş ağ geçidine erişilemiyor. | Yes|
+| Ikepolicyuyuşmazlığıdır | Eş ağ geçidinde Azure tarafından desteklenmeyen ıKE ilkeleri vardır. | Yes|
 | WfpParse hatası | WFP günlüğü ayrıştırılırken bir hata oluştu. |Evet|
 
 ## <a name="next-steps"></a>Sonraki adımlar

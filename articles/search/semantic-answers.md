@@ -8,17 +8,17 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/12/2021
-ms.openlocfilehash: e467affd3ba1b839ce3323e3689d7f5134a0686f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9bb62544887e0bc0269b98cd98fbf97fc477352f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104604313"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104722438"
 ---
 # <a name="return-a-semantic-answer-in-azure-cognitive-search"></a>Azure Bilişsel Arama anlam yanıtı döndürme
 
 > [!IMPORTANT]
-> Anlamsal arama özellikleri, yalnızca önizleme REST API aracılığıyla kullanılabilen genel önizlemededir. Önizleme özellikleri, olduğu gibi, [ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)altında sunulur ve genel kullanıma sunulmakta olan uygulamanın garantisi yoktur. Daha fazla bilgi için bkz. [kullanılabilirlik ve fiyatlandırma](semantic-search-overview.md#availability-and-pricing).
+> Anlamsal arama genel önizlemede, yalnızca önizleme REST API kullanılabilir. Önizleme özellikleri, olduğu gibi, [ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)altında sunulur ve genel kullanıma sunulmakta olan uygulamanın garantisi yoktur. Bu özellikler faturalandırılabilir. Daha fazla bilgi için bkz. [kullanılabilirlik ve fiyatlandırma](semantic-search-overview.md#availability-and-pricing).
 
 Bir [anlam sorgusu](semantic-how-to-query-request.md)oluştururken, isteğe bağlı olarak, sorguyu doğrudan "yanıtlar" olan en üst eşleşen belgelerden içeriği ayıklayabilirsiniz. Bir veya daha fazla yanıt yanıta eklenebilir, bu, daha sonra uygulamanızın kullanıcı deneyimini geliştirmek için bir arama sayfasında işleyebilir.
 
@@ -28,27 +28,27 @@ Bu makalede, anlam yanıtı isteme, yanıtı açma ve yüksek kaliteli yanıtlar
 
 [Anlamsal sorgular](semantic-how-to-query-request.md) için uygulanan tüm Önkoşullar, hizmet katmanı ve bölgesi de dahil olmak üzere yanıtlar için de geçerlidir.
 
-+ Sorgular anlam sorgu parametrelerini kullanarak formüllenmiş ve "yanıtlar" parametresini içeriyor. Gerekli parametreler Bu makalede ele alınmıştır.
++ Sorgu mantığı anlam sorgu parametrelerini ve "yanıtlar" parametresini içermelidir. Gerekli parametreler Bu makalede ele alınmıştır.
 
-+ Sorgu dizelerinin, bir sorunun (ne, nerede, ne zaman, nasıl) özelliklerine sahip dilde formül oluşturulması gerekir.
++ Kullanıcı tarafından girilen sorgu dizelerinin, bir sorunun (ne, nerede, ne zaman, nasıl) özelliklerine sahip dilde formül oluşturulması gerekir.
 
-+ Arama belgelerinin bir yanıtın özelliklerine sahip bir metin içermesi ve bu metnin "searchFields" bölümünde listelenen alanlardan birinde bulunması gerekir.
++ Arama belgelerinin bir yanıtın özelliklerine sahip bir metin içermesi ve bu metnin "searchFields" bölümünde listelenen alanlardan birinde bulunması gerekir. Örneğin, "karma tablo nedir" sorgusu verildiğinde, searchFields hiçbiri "bir karma tablo..." öğesini içeren bir yanıt içermiyorsa bir yanıtın döndürülmemiş olması beklenmez.
 
 ## <a name="what-is-a-semantic-answer"></a>Anlam yanıtı nedir?
 
-Anlamsal yanıt, [anlamsal bir sorgunun](semantic-how-to-query-request.md)yapıtıdır. Bu, bir arama belgesinden bir veya daha fazla tam yanıdan oluşur. Bu, soru gibi görünen bir sorgunun yanıtı olarak ifade alınmıştır. Bir yanıtın döndürülmesi için, bir yanıtın dil özelliklerine sahip bir arama belgesinde ifadeler veya cümleler bulunmalı ve sorgunun kendisi bir soru olarak bildirilmelidir.
+Anlamsal yanıt, [anlamsal sorgu yanıtının](semantic-how-to-query-request.md)alt yapısıdır. Bu, bir arama belgesinden bir veya daha fazla tam yanıdan oluşur. Bu, soru gibi görünen bir sorgunun yanıtı olarak ifade alınmıştır. Bir yanıtın döndürülmesi için, bir yanıtın dil özelliklerine sahip bir arama belgesinde ifadeler veya cümleler bulunmalı ve sorgunun kendisi bir soru olarak bildirilmelidir.
 
-Bilişsel Arama, yanıtları formülleştirmek için bir makine okuma kavrama modeli kullanır. Model, kullanılabilir belgelerden olası bir yanıt kümesi oluşturur ve yeterince yüksek bir güven düzeyine ulaştığında bir yanıt önerecektir.
+Bilişsel Arama en iyi yanıtı seçmek için bir makine okuma kavrama modeli kullanır. Model, kullanılabilir içerikten olası bir yanıt kümesi oluşturur ve yeterince yüksek bir güven düzeyine ulaştığında bir yanıt önerecektir.
 
-Yanıtlar, arama sayfalarında işlemeyi seçebileceğiniz sorgu yanıt yükünde bağımsız, üst düzey bir nesne olarak döndürülür. Yapısal olarak, metin, belge anahtarı ve Güvenirlik puanı içeren bir yanıtın dizi öğesidir.
+Yanıtlar, arama sayfalarında işlemeyi seçebileceğiniz sorgu yanıt yükünde bağımsız, üst düzey bir nesne olarak döndürülür. Yapısal olarak, metin, belge anahtarı ve Güvenirlik puanı içeren yanıt içindeki bir dizi öğesidir.
 
 <a name="query-params"></a>
 
 ## <a name="how-to-request-semantic-answers-in-a-query"></a>Sorguda anlam yanıtları isteme
 
-Anlamsal bir yanıt döndürmek için sorgunun anlam sorgu türü, dili, arama alanları ve "yanıtlar" parametresine sahip olması gerekir. "Yanıtlar" parametresinin belirtilmesi, bir yanıt alınacağını garanti etmez, ancak yanıt işleme her seferinde çağrılması durumunda istek bu parametreyi içermelidir.
+Anlamsal bir yanıt döndürmek için sorgunun anlam "queryType", "queryLanguage", "searchFields" ve "cevaplar" parametresine sahip olması gerekir. "Yanıtlar" parametresinin belirtilmesi, bir yanıt alınacağını garanti etmez, ancak yanıt işleme her seferinde çağrılması durumunda istek bu parametreyi içermelidir.
 
-"SearchFields" parametresi, her ikisi de içerik ve sıra bakımından yüksek kaliteli bir yanıt döndürmek için önemlidir. 
+"SearchFields" parametresi, hem içerik hem de sıra bakımından yüksek kaliteli bir yanıt döndürmek için önemlidir (aşağıya bakın). 
 
 ```json
 {
@@ -63,9 +63,9 @@ Anlamsal bir yanıt döndürmek için sorgunun anlam sorgu türü, dili, arama a
 
 + Sorgu dizesi null olmamalı ve soru olarak formüle eklenmelidir. Bu önizlemede, "queryType" ve "queryLanguage" tam olarak örnekte gösterildiği gibi ayarlanmalıdır.
 
-+ "SearchFields" parametresi hangi alanların ayıklama modeline belirteç sağlamasını belirler. Bu parametreyi ayarladığınızdan emin olun. En az bir dize alanınız olmalıdır, ancak bir yanıt sağlamak için yararlı olduğunu düşündüğünüz herhangi bir dize alanını dahil etmeniz gerekir. Her toplu olarak searchFields içindeki tüm alanlar arasında, modele yalnızca belge başına 8.000 belirteç geçirilir. Alan listesini kısa alanlarla başlatın ve metin açısından zengin alanlarla ilerleme durumunu yapın. Bu alanı nasıl ayarlayabileceğine ilişkin kesin yönergeler için bkz. [searchFields set](semantic-how-to-query-request.md#searchfields).
++ "SearchFields" parametresi, hangi dize alanlarının ayıklama modeline belirteç sağlamasını belirler. Açıklamalı altyazı üreten alanlar da yanıt üretir. Bu alanı, hem açıklamalı alt yazılar hem de yanıtlar için çalışacak şekilde ayarlamaya yönelik kesin yönergeler için bkz. [searchFields set](semantic-how-to-query-request.md#searchfields). 
 
-+ "Yanıtlar" için, `"answers": "extractive"` döndürülen varsayılan yanıt sayısının bir olması, temel parametre oluşturma ' dır. En fazla beş adede kadar bir sayı ekleyerek yanıt sayısını artırabilirsiniz.  Birden fazla yanıta ihtiyacınız olup olmadığı, uygulamanızın kullanıcı deneyimine ve sonuçları nasıl işlemek istediğinize bağlıdır.
++ "Yanıtlar" için, `"answers": "extractive"` döndürülen varsayılan yanıt sayısının bir olması, parametre oluşturma ' dır. En fazla beş adede kadar yukarıdaki örnekte gösterildiği gibi bir sayı ekleyerek yanıt sayısını artırabilirsiniz.  Birden fazla yanıta ihtiyacınız olup olmadığı, uygulamanızın kullanıcı deneyimine ve sonuçları nasıl işlemek istediğinize bağlıdır.
 
 ## <a name="deconstruct-an-answer-from-the-response"></a>Yanıtın yanıtını kaldırma
 

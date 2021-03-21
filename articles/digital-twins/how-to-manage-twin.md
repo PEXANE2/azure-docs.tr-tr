@@ -8,10 +8,10 @@ ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 98b50673b464044af2a038fa93c3b6a022fa2899
-ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103149712"
 ---
 # <a name="manage-digital-twins"></a>Dijital ikizleri yönetme
@@ -216,7 +216,7 @@ Aşağıda, TWINS ve bunların ilişkilerini silmenin kodu örneği verilmiştir
 
 ### <a name="delete-all-digital-twins"></a>Tüm dijital TWINS 'i Sil
 
-Tüm TWINS sürümlerini aynı anda silme hakkında bir örnek için öğreticide kullanılan örnek uygulamayı indirin [*: örnek bir istemci uygulamasıyla ilgili temel bilgileri araştırma*](tutorial-command-line-app.md). *CommandLoop.cs* dosyası bunu bir `CommandDeleteAllTwins()` işlevde yapar.
+Tüm TWINS sürümlerini aynı anda silme hakkında bir örnek için öğreticide kullanılan örnek uygulamayı indirin [*: örnek bir istemci uygulamasıyla ilgili temel bilgileri araştırma*](tutorial-command-line-app.md). *Commandloop. cs* dosyası bunu bir `CommandDeleteAllTwins()` işlevde yapar.
 
 ## <a name="runnable-digital-twin-code-sample"></a>Runbir Digital ikizi Code örneği
 

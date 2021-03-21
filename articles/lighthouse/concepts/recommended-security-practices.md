@@ -4,10 +4,10 @@ description: Azure ışıklı kullanımı kullanılırken, güvenlik ve erişim 
 ms.date: 03/12/2021
 ms.topic: conceptual
 ms.openlocfilehash: 3aa50833b547882506bfad125992bb1c2f4e85bc
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103419312"
 ---
 # <a name="recommended-security-practices"></a>Önerilen güvenlik uygulamaları
