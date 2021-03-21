@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 10/03/2017
 ms.author: alkohli
 ms.openlocfilehash: e3339f883d177366a64187e0c090752527802c8d
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94968783"
 ---
 # <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>StorSimple cihazlarını yönetmek için Azure Resource Manager SDK tabanlı betikleri kullanma
@@ -30,16 +30,16 @@ Aşağıdaki örnek betikler çeşitli StorSimple işlerini otomatikleştirmek i
 | [Authorize-ServiceEncryptionRollover.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Authorize-ServiceEncryptionRollover.ps1)          | Bu betik, StorSimple cihazınızı, hizmet veri şifreleme anahtarını değiştirecek şekilde yetkilendirebilmeniz için izin verir.                                                                                                           |
 | [Create-StorSimpleCloudAppliance.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Create-StorSimpleCloudAppliance.ps1)              | Bu betik bir 8010 veya 8020 StorSimple Cloud Appliance oluşturur. Bulut gereci daha sonra StorSimple Veri Yöneticisi hizmetinize yapılandırılıp kaydedilebilir.                                                       |
 | [CreateOrUpdate-Volume.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/CreateOrUpdate-Volume.ps1)                        | Bu betik StorSimple birimlerini oluşturur veya değiştirir.                                                                                                                                                             |
-| [Get-DeviceBackup.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Get-DeviceBackup.ps1)                             | Bu betik, StorSimple Aygıt Yöneticisi hizmetinize kayıtlı bir cihaza yönelik tüm yedeklemeleri listeler.                                                                                                          |
+| [Get-DeviceBackup.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Get-DeviceBackup.ps1)                             | Bu betik, StorSimple Device Manager hizmetinize kayıtlı bir cihaza yönelik tüm yedeklemeleri listeler.                                                                                                          |
 | [Get-DeviceBackupPolicy.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Get-DeviceBackupPolicy.ps1)                       | Bu betik, StorSimple cihazınız için tüm yedekleme ilkelerine yöneliktir.                                                                                                                                                 |
-| [Get-DeviceJobs.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Get-DeviceJobs.ps1)                               | Bu betik, StorSimple Aygıt Yöneticisi hizmetinizde çalışan tüm StorSimple işlerini alır.                                                                                                                     |
+| [Get-DeviceJobs.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Get-DeviceJobs.ps1)                               | Bu betik, StorSimple Device Manager hizmetinizde çalışan tüm StorSimple işlerini alır.                                                                                                                     |
 | [Get-DeviceUpdateAvailability.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Get-DeviceUpdateAvailability.ps1)                 | Bu betik güncelleştirme sunucusunu tarar ve StorSimple cihazınıza yüklenmek üzere güncelleştirmelerin olup olmadığını bilmenizi sağlar.                                                                                          |
 | [Install-DeviceUpdate.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Install-DeviceUpdate.ps1)                         | Bu betik, StorSimple cihazınıza kullanılabilir güncelleştirmeleri yüklüyor.                                                                                                                                           |
 | [Manage-CloudSnapshots.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Manage-CloudSnapshots.ps1)                        | Bu betik el ile bulut anlık görüntüsünü başlatır ve belirtilen saklama günlerden eski olan bulut anlık görüntülerini siler.                                                                                                   |
 | [Monitor-Backups.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Monitor-Backups.ps1)                              | Bu Azure Otomasyonu runbook PowerShell betiği tüm yedekleme işlerinin durumunu bildirir.                                                                                                              |
 | [Remove-DeviceBackup.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Remove-DeviceBackup.ps1)                          | Bu betik tek bir yedekleme nesnesini siler.                                                                                                                                                           |
 | [Start-DeviceBackupJob.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Start-DeviceBackupJob.ps1)                        | Bu betik, StorSimple cihazınızda el ile yedekleme başlatır.                                                                                                                                       |
-| [Update-CloudApplianceServiceEncryptionKey.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Update-CloudApplianceServiceEncryptionKey.ps1)    | Bu betik, StorSimple Aygıt Yöneticisi hizmetinize kayıtlı tüm 8010/8020 StorSimple bulut gereçlerine yönelik hizmet veri şifreleme anahtarını güncelleştirir.                                     |
+| [Update-CloudApplianceServiceEncryptionKey.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Update-CloudApplianceServiceEncryptionKey.ps1)    | Bu betik, StorSimple Device Manager hizmetinize kayıtlı tüm 8010/8020 StorSimple bulut gereçlerine yönelik hizmet veri şifreleme anahtarını güncelleştirir.                                     |
 | [Verify-BackupScheduleAndBackup.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Verify-BackupScheduleAndBackup.ps1)               | Bu betik, yedekleme ilkeleriyle ilişkili tüm zamanlamaları analiz ettikten sonra eksik yedeklemeleri vurgular. Ayrıca, yedekleme kataloğunu kullanılabilir yedeklemeler listesiyle doğrular.             |
 
 
@@ -49,7 +49,7 @@ Aşağıdaki örnek betikler çeşitli StorSimple işlerini otomatikleştirmek i
 
 Bu bölüm örnek bir betiği alır ve betiği çalıştırmak için gereken çeşitli adımlara ilişkin ayrıntılar sağlar.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, şunları kullandığınızdan emin olun:
 
@@ -168,4 +168,4 @@ PS C:\Scripts\StorSimpleSDKTools>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-StorSimple [cihazınızı yönetmek Için storsimple Aygıt Yöneticisi hizmetini kullanın](storsimple-8000-manager-service-administration.md).
+StorSimple [cihazınızı yönetmek Için storsimple Device Manager hizmetini kullanın](storsimple-8000-manager-service-administration.md).

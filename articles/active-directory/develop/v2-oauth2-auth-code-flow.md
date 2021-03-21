@@ -14,10 +14,10 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: aeed031025b9c494b35886861c273e2a7f9d2ac4
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101653737"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft Identity platform ve OAuth 2,0 yetkilendirme kodu akışı
@@ -68,7 +68,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > Bu isteği yürütmek için aşağıdaki bağlantıya tıklayın! Oturum açtıktan sonra, tarayıcınız `https://localhost/myapp/` Adres çubuğunda bir ile yeniden yönlendirilmelidir `code` .
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&state=12345" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 
-| Parametre    | Gerekli/isteğe bağlı | Açıklama |
+| Parametre    | Gerekli/isteğe bağlı | Description |
 |--------------|-------------|--------------|
 | `tenant`    | gerekli    | `{tenant}`İsteğin yolundaki değeri, uygulamada kimlerin oturum açmasını denetlemek için kullanılabilir. İzin verilen değerler, `common` , `organizations` `consumers` ve kiracı tanımlayıcılarıdır. Daha fazla ayrıntı için bkz. [protokol temelleri](active-directory-v2-protocols.md#endpoints).  |
 | `client_id`   | gerekli    | [Azure Portal – uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminin uygulamanıza atandığı **uygulama (istemci) kimliği** .  |
@@ -124,7 +124,7 @@ error=access_denied
 
 Aşağıdaki tabloda, hata yanıtının parametresinde döndürülebilecek çeşitli hata kodları açıklanmaktadır `error` .
 
-| Hata Kodu  | Açıklama    | İstemci eylemi   |
+| Hata Kodu  | Description    | İstemci eylemi   |
 |-------------|----------------|-----------------|
 | `invalid_request` | Eksik gerekli bir parametre gibi protokol hatası. | İsteği onarın ve yeniden gönderin. Bu, genellikle ilk sınama sırasında yakalanan bir geliştirme hatasıdır. |
 | `unauthorized_client` | İstemci uygulamasının bir yetkilendirme kodu istemesine izin verilmez. | Bu hata genellikle istemci uygulaması Azure AD 'de kayıtlı olmadığında veya kullanıcının Azure AD kiracısına eklenmediğinde oluşur. Uygulama kullanıcıya uygulamayı yükleme ve Azure AD 'ye ekleme yönergesini isteyebilir. |
@@ -206,7 +206,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > [!TIP]
 > Bu isteği Postman 'da yürütmeyi deneyin! (Değiştirmeyi unutmayın `code` ) [ ![ Bu Isteği Postman 'da çalıştırmayı deneyin](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
-| Parametre  | Gerekli/isteğe bağlı | Açıklama     |
+| Parametre  | Gerekli/isteğe bağlı | Description     |
 |------------|-------------------|----------------|
 | `tenant`   | gerekli   | `{tenant}`İsteğin yolundaki değeri, uygulamada kimlerin oturum açmasını denetlemek için kullanılabilir. İzin verilen değerler, `common` , `organizations` `consumers` ve kiracı tanımlayıcılarıdır. Daha fazla ayrıntı için bkz. [protokol temelleri](active-directory-v2-protocols.md#endpoints).  |
 | `client_id` | gerekli  | [Azure Portal – uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasının uygulamanıza atandığı uygulama (ISTEMCI) kimliği. |
@@ -269,7 +269,7 @@ Hata yanıtları şöyle görünür:
 
 ### <a name="error-codes-for-token-endpoint-errors"></a>Belirteç uç noktası hataları için hata kodları
 
-| Hata Kodu         | Açıklama        | İstemci eylemi    |
+| Hata Kodu         | Description        | İstemci eylemi    |
 |--------------------|--------------------|------------------|
 | `invalid_request`  | Eksik gerekli bir parametre gibi protokol hatası. | İstek veya uygulama kaydını düzeltemedi ve isteği yeniden gönderin   |
 | `invalid_grant`    | Yetkilendirme kodu veya PKCE kod doğrulayıcısı geçersiz veya süresi doldu. | Uç noktaya yeni bir istek deneyin `/authorize` ve code_verifier parametresinin doğru olduğunu doğrulayın.  |
@@ -328,7 +328,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > Bu isteği Postman 'da yürütmeyi deneyin! (Değiştirmeyi unutmayın `refresh_token` ) [ ![ Bu Isteği Postman 'da çalıştırmayı deneyin](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 >
 
-| Parametre     | Tür           | Açıklama        |
+| Parametre     | Tür           | Description        |
 |---------------|----------------|--------------------|
 | `tenant`        | gerekli     | `{tenant}`İsteğin yolundaki değeri, uygulamada kimlerin oturum açmasını denetlemek için kullanılabilir. İzin verilen değerler, `common` , `organizations` `consumers` ve kiracı tanımlayıcılarıdır. Daha fazla ayrıntı için bkz. [protokol temelleri](active-directory-v2-protocols.md#endpoints).   |
 | `client_id`     | gerekli    | [Azure Portal – uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminin uygulamanıza atandığı **uygulama (istemci) kimliği** . |

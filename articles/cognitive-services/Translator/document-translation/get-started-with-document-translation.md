@@ -7,10 +7,10 @@ ms.author: lajanuar
 author: laujan
 ms.date: 03/05/2021
 ms.openlocfilehash: cb6b3af8d8fb6c2d3fe63964e59f8e3e32f0f0fd
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102486667"
 ---
 # <a name="get-started-with-document-translation-preview"></a>Belge çevirisi 'ni kullanmaya başlama (Önizleme)
@@ -91,8 +91,8 @@ Kaynak, hedef ve isteğe bağlı sözlük dosyaları için [**Azure Blob depolam
 ### <a name="c"></a>[C#](#tab/csharp)
 
 * Yeni bir proje oluşturma.
-* Program.cs öğesini aşağıda gösterilen C# kodu ile değiştirin.
-* Uç noktanızı ayarlayın. Program.cs içindeki abonelik anahtarı ve kapsayıcı URL değerleri.
+* Program. cs ' i aşağıda gösterilen C# kodu ile değiştirin.
+* Uç noktanızı ayarlayın. Program. cs dosyasındaki abonelik anahtarı ve kapsayıcı URL 'SI değerleri.
 * JSON verilerini işlemek için [ .net CLI kullanarak paketeNewtonsoft.Js](https://www.nuget.org/packages/Newtonsoft.Json/)ekleyin.
 * Programı proje dizininden çalıştırın.
 
@@ -186,7 +186,7 @@ Bir Batch belge çevirisi isteği, bir POST isteği aracılığıyla Translator 
 
 Her belge çevirisi API isteğine aşağıdaki üstbilgiler dahildir:
 
-|HTTP üstbilgisi|Açıklama|
+|HTTP üstbilgisi|Description|
 |---|--|
 |Ocp-Apim-Subscription-Key|**Gerekli**: değer, çevirmen veya bilişsel hizmetler kaynağınız için Azure abonelik anahtarıdır.|
 |İçerik Türü|**Gerekli**: yükün içerik türünü belirtir. Kabul edilen değerler Application/JSON veya charset = UTF-8 ' dir.|

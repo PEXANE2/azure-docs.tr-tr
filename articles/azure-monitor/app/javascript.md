@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 9b8824a0f73f3a79ab70810c529cb0ed9331a797
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102485495"
 ---
 # <a name="application-insights-for-web-pages"></a>Web sayfaları için Application Insights
@@ -108,7 +108,7 @@ Her yapılandırma seçeneği, yukarıdaki yeni bir satırda gösterilir. [iste�
 
 Kullanılabilir yapılandırma seçenekleri şunlardır
 
-| Ad | Tür | Açıklama
+| Ad | Tür | Description
 |------|------|----------------
 | src | dize **[gerekli]** | SDK 'nın yükleneceği yerin tam URL 'SI. Bu değer, dinamik olarak eklenen bir betiğin/etiketin "src" özniteliği için kullanılır &lt; &gt; . Genel CDN konumunu veya kendi özel olarak barındırılan birini kullanabilirsiniz.
 | name | dize *[isteğe bağlı]* | Başlatılmış SDK için genel ad, varsayılan olarak olur `appInsights` . ```window.appInsights```Bu nedenle, başlatılmış örneğe bir başvuru olacaktır. Note: bir ad değeri sağlarsanız veya bir önceki örnek atanmak üzere görünüyorsa (Appınsi\dk genel adı aracılığıyla), bu ad değeri aynı zamanda genel ad alanında olarak tanımlanır ```window.appInsightsSDK=<name value>``` , bu da SDK başlatma kodunun doğru kod parçacığı çatısı ve proxy yöntemlerinin başlatılmasını ve güncelleştirilmesini sağlamak için gereklidir.
@@ -171,7 +171,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Yapılandırma
 Çoğu yapılandırma alanı, varsayılan olarak false olarak ayarlanabilecek şekilde adlandırılır. Tüm alanlar, hariç olarak isteğe bağlıdır `instrumentationKey` .
 
-| Name | Varsayılan | Açıklama |
+| Name | Varsayılan | Description |
 |------|---------|-------------|
 | ınstrumentationkey | null | **Gerekli**<br>Azure portal aldığınız izleme anahtarı. |
 | accountId | null | Uygulamanız kullanıcıları hesaplara gruplayan isteğe bağlı hesap KIMLIĞI. Boşluk, virgül, noktalı virgül, eşittir veya dikey çubuklar yok |

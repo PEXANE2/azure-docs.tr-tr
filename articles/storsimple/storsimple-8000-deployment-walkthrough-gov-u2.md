@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/22/2017
 ms.author: alkohli
 ms.openlocfilehash: d736c09fc1c9490f79dfc526895970e01b8b45cc
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94963190"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-in-the-government-portal"></a>Şirket içi StorSimple cihazınızı kamu portalında dağıtın
@@ -99,7 +99,7 @@ Başlamadan önce aşağıdakilerden emin olun:
 StorSimple cihazınızı veri merkezinde dağıtmak için aşağıdaki adım adım yönergeleri kullanın.
 
 ## <a name="step-1-create-a-new-service"></a>1. Adım: Yeni bir hizmet oluşturun
-Bir StorSimple Cihaz Yöneticisi hizmeti birden çok StorSimple cihazını yönetebilir. StorSimple Aygıt Yöneticisi hizmetinin yeni bir örneğini oluşturmak için aşağıdaki adımları gerçekleştirin.
+Bir StorSimple Cihaz Yöneticisi hizmeti birden çok StorSimple cihazını yönetebilir. StorSimple Device Manager hizmetinin yeni bir örneğini oluşturmak için aşağıdaki adımları gerçekleştirin.
 
 [!INCLUDE [storsimple-8000-create-new-service-gov](../../includes/storsimple-8000-create-new-service-gov.md)]
 
@@ -144,7 +144,7 @@ Bir birim kapsayıcısı oluşturmak için kamu portalında aşağıdaki adımla
 Bir birim kapsayıcısı oluşturduktan sonra, sunucularınız için StorSimple cihazında bir depolama birimi sağlayabilirsiniz. Bir birim oluşturmak için kamu portalında aşağıdaki adımları gerçekleştirin.
 
 > [!IMPORTANT]
-> StorSimple Aygıt Yöneticisi, yalnızca ölçülü kaynak sağlanan birimler oluşturabilir.  Ancak kısmen sağlanan birimler oluşturamazsınız.
+> StorSimple Device Manager, yalnızca ölçülü kaynak sağlanan birimler oluşturabilir.  Ancak kısmen sağlanan birimler oluşturamazsınız.
 
 [!INCLUDE [storsimple-8000-create-volume](../../includes/storsimple-8000-create-volume-u2.md)]
 
@@ -174,7 +174,7 @@ Bu yalnızca hizmetinizle bir depolama hesabının otomatik olarak oluşturulmas
 
 Farklı bir bölgede bir Azure Storage hesabı oluşturmanız gerekiyorsa, adım adım yönergeler için bkz. [Azure Storage hesapları hakkında](../storage/common/storage-account-create.md).
 
-**StorSimple aygıt yöneticisi hizmeti** sayfasında, kamu portalında aşağıdaki adımları gerçekleştirin.
+**StorSimple Device Manager hizmeti** sayfasında, kamu portalında aşağıdaki adımları gerçekleştirin.
 
 [!INCLUDE [storsimple-configure-new-storage-account-u1](../../includes/storsimple-8000-configure-new-storage-account-u2.md)]
 

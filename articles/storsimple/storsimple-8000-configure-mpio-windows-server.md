@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 03/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 3d44fada1eddf2d3f80bec085d8a5bf751197eb1
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94968817"
 ---
 # <a name="configure-multipath-io-for-your-storsimple-device"></a>StorSimple cihazınız için çok yollu g/ç yapılandırma
@@ -86,7 +86,7 @@ MPIO, StorSimple birimlerini tanımlayacak şekilde yapılandırılmalıdır. MP
 4. İstendiğinde sunucuyu yeniden başlatın.
 5. **MPIO özellikleri** Iletişim kutusunda **MPIO cihazları** sekmesine tıklayın. **Ekle**' ye tıklayın.
     </br>![MPIO özellikleri MPIO cihazları](./media/storsimple-configure-mpio-windows-server/IC741004.png)
-6. **MPIO desteği ekle** Iletişim kutusunda **cihaz donanım kimliği**' nin altında, cihazınızın seri numarasını girin. Cihaz seri numarasını almak için, StorSimple Aygıt Yöneticisi hizmetinize erişin. **Cihazlara > panosu**' na gidin. Cihaz seri numarası, cihaz panosunun sağ **Hızlı bakış** bölmesinde görüntülenir.
+6. **MPIO desteği ekle** Iletişim kutusunda **cihaz donanım kimliği**' nin altında, cihazınızın seri numarasını girin. Cihaz seri numarasını almak için, StorSimple Device Manager hizmetinize erişin. **Cihazlara > panosu**' na gidin. Cihaz seri numarası, cihaz panosunun sağ **Hızlı bakış** bölmesinde görüntülenir.
     </br>
     ![MPIO desteği ekle](./media/storsimple-configure-mpio-windows-server/IC741005.png)
 7. İstendiğinde sunucuyu yeniden başlatın.
@@ -190,4 +190,4 @@ Aşağıdaki yordamda, iki ağ arabirimi olan bir StorSimple cihazı iki ağ ara
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-StorSimple [cihaz yapılandırmanızı değiştirmek Için storsimple Aygıt Yöneticisi hizmetini kullanma](storsimple-8000-modify-device-config.md)hakkında daha fazla bilgi edinin.
+StorSimple [cihaz yapılandırmanızı değiştirmek Için storsimple Device Manager hizmetini kullanma](storsimple-8000-modify-device-config.md)hakkında daha fazla bilgi edinin.

@@ -4,10 +4,10 @@ description: Hangi Azure kaynak türlerinin etiketleri desteklediğini gösterir
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.openlocfilehash: b1f9e61b409c395a13cc6a18d21d17530f38ac7e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101722900"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure kaynakları için etiket desteği
@@ -1768,7 +1768,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | expressRouteServiceProviders | Hayır | Hayır |
 > | firewallPolicies | Yes | Yes |
 > | frontkapıların | Evet, ancak sınırlı ( [aşağıdaki nota](#frontdoor)bakın) | Yes |
-> | frontdoorWebApplicationFirewallManagedRuleSets | Evet, ancak sınırlı ( [aşağıdaki nota](#frontdoor)bakın) | Hayır |
+> | frontdoorWebApplicationFirewallManagedRuleSets | Evet, ancak sınırlı ( [aşağıdaki nota](#frontdoor)bakın) | No |
 > | frontdoorWebApplicationFirewallPolicies | Evet, ancak sınırlı ( [aşağıdaki nota](#frontdoor)bakın) | Yes |
 > | getDnsResourceReference | Hayır | Hayır |
 > | ınternalnotify | Hayır | Hayır |

@@ -3,14 +3,14 @@ title: Bağlantı sorunlarını giderme-MariaDB için Azure veritabanı
 description: Denemeler, güvenlik duvarı sorunları ve kesintiler gerektiren geçici hatalar da dahil olmak üzere MariaDB için Azure veritabanı bağlantı sorunlarını nasıl giderebileceğinizi öğrenin.
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: 50bb6fc008e381855923da801b65198bf712f826
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: b9a670472529dccd51cbfa71e385151bc63cff9b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98664741"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mariadb"></a>MariaDB için Azure Veritabanı bağlantı sorunlarını giderme
@@ -30,7 +30,7 @@ Genellikle, MariaDB için Azure veritabanı bağlantı sorunları şu şekilde s
 * Geçici hatalar (kısa ömürlü veya aralıklı)
 * Kalıcı veya geçici olmayan hatalar (düzenli olarak yinelenen hatalar)
 
-## <a name="troubleshoot-transient-errors"></a>Geçici hatalarda sorun giderme
+## <a name="troubleshoot-transient-errors"></a>Geçici hataları giderme
 
 Bakım gerçekleştirildiğinde geçici hatalar meydana gelir, sistem donanım veya yazılımla ilgili bir hatayla karşılaştığında veya sunucunuzun sanal çekirdeklerini veya hizmet katmanını değiştirirsiniz. MariaDB hizmeti için Azure veritabanı 'nın yerleşik yüksek kullanılabilirliği vardır ve bu tür sorunların otomatik olarak azaltılmasına yönelik olarak tasarlanmıştır. Bununla birlikte, uygulamanız, genellikle 60 saniyeden kısa bir süre boyunca sunucu bağlantısını kaybeder. Büyük bir işlemin uzun süre çalışan bir kurtarmaya neden olduğu gibi bazı olayların hafifletmek daha uzun sürebilir.
 
@@ -41,7 +41,7 @@ Bakım gerçekleştirildiğinde geçici hatalar meydana gelir, sistem donanım v
 3. Sunucu kaynak sınırlarına yaklaşıyorsa, hatalar geçici bağlantı sorunu olabilir. [MariaDB Için Azure veritabanı 'Ndaki sınırlamalara](concepts-limits.md)bakın.
 4. Bağlantı sorunları devam ederse veya uygulamanızın hatayla karşılaştığı süre 60 saniye değerini aşarsa veya hatanın belirli bir gün içinde birden çok kez yinelendiğini görürseniz, [Azure](https://azure.microsoft.com/support/options) destek sitesinde **Destek Al** ' ı seçerek bir Azure destek isteği dosyası sağlayın.
 
-## <a name="troubleshoot-persistent-errors"></a>Kalıcı hatalarda sorun giderme
+## <a name="troubleshoot-persistent-errors"></a>Kalıcı hataları giderme
 
 Uygulama, MariaDB için Azure veritabanı 'na kalıcı olarak bağlanamıyorsa, genellikle aşağıdakilerden biriyle ilgili bir sorun olduğunu gösterir:
 

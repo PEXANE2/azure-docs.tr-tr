@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
 ms.openlocfilehash: c3f6f6a5ac1068f2eabca351e85376b8e16d1058
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95016760"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>Zaman Serisi Kimliği seçmek için en iyi uygulamalar
@@ -32,11 +32,11 @@ Uygun bir zaman serisi KIMLIĞINI seçmek kritik öneme sahiptir. Bir zaman seri
 > * *Sabit* bir özellik: oluşturulduktan sonra değiştirilemez.
 
 > [!TIP]
-> Olay kaynağınız bir IoT Hub ise, zaman serisi KIMLIĞINIZ büyük olasılıkla ***ıothub-Connection-Device-ID** _ olur.
+> Olay kaynağınız bir IoT Hub ise, zaman serisi KIMLIĞINIZ büyük olasılıkla ***ıothub-Connection-Device-ID*** olacaktır.
 
 İzlenecek en iyi anahtar uygulamalar şunlardır:
 
-_ Çok sayıda benzersiz değere sahip bir bölüm anahtarı seçin (örneğin, yüzlerce veya binlerce). Çoğu durumda bu, JSON 'unuzdaki cihaz KIMLIĞI, algılayıcı KIMLIĞI veya etiket KIMLIĞI olabilir.
+* Birçok farklı değere sahip bir bölüm anahtarı seçin (örneğin, yüzlerce veya binlerce). Çoğu durumda bu, JSON 'unuzdaki cihaz KIMLIĞI, algılayıcı KIMLIĞI veya etiket KIMLIĞI olabilir.
 * Zaman serisi KIMLIĞI, [zaman serisi modelinizin](./concepts-model-overview.md)yaprak düğüm düzeyinde benzersiz olmalıdır.
 * Zaman serisi KIMLIĞININ Özellik adı dizesinin karakter sınırı 128 ' dir. Zaman serisi KIMLIĞININ Özellik değeri için, karakter sınırı 1.024 ' dir.
 * Zaman serisi KIMLIĞI için benzersiz bir özellik değeri eksikse, null değer olarak değerlendirilir ve Benzersizlik kısıtlamasının aynı kuralına uyar.

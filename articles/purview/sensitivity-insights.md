@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 01/17/2021
 ms.openlocfilehash: bb8ac82b2e59ec86db89c7eba0ce607fcfc0ac2d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101676565"
 ---
 # <a name="sensitivity-label-insights-about-your-data-in-azure-purview"></a>Azure purview 'daki verileriniz hakkında duyarlılık etiketi öngörüleri
@@ -78,7 +78,7 @@ Takip, Microsoft 365 olarak [gizli bilgi türleri](/microsoft-365/compliance/sen
 
    Ana **duyarlılık etiketleme öngörüleri** sayfasında aşağıdaki bölgeler görüntülenir:
 
-   |Alan  |Açıklama  |
+   |Alan  |Description  |
    |---------|---------|
    |**Duyarlılık etiketleriyle kaynaklara genel bakış**     |Şunları sağlayan kutucukları görüntüler: <br>-Verilerinizde bulunan aboneliklerin sayısı. <br>-Verilerinize uygulanan benzersiz duyarlılık etiketi sayısı <br>-Duyarlılık etiketleri uygulanmış kaynak sayısı <br>-Duyarlılık etiketleri uygulanmış olarak bulunan dosya ve tablo sayısı|
    |**Etiketli verileri olan en popüler kaynaklar (son 30 gün)**     | Duyarlılık etiketi uygulanmış kaynak sayısının son 30 günü boyunca eğilimi gösterir.       |

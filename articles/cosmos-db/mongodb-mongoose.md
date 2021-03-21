@@ -10,10 +10,10 @@ author: timsander1
 ms.author: tisande
 ms.custom: seodec18, devx-track-js
 ms.openlocfilehash: 8958699ae279d2613f8dbadca802ee2137407e75
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94442421"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Node.js Mongoose uygulamasını Azure Cosmos DB 'a bağlama
@@ -39,7 +39,7 @@ Bir Cosmos hesabı oluşturalım. Kullanmak istediğiniz bir hesap zaten varsa N
 
 ### <a name="create-a-database"></a>Veritabanı oluşturma 
 Bu uygulamada Azure Cosmos DB koleksiyon oluşturmanın iki yolu ele alınacaktır: 
-- **Her nesne modelini ayrı bir koleksiyonda depolama** : [adanmış aktarım hızına sahip bir veritabanı oluşturmanızı](set-throughput.md#set-throughput-on-a-database)öneririz. Bu kapasite modelinin kullanılması, size daha iyi maliyet verimliliği sağlayacaktır.
+- **Her nesne modelini ayrı bir koleksiyonda depolama**: [adanmış aktarım hızına sahip bir veritabanı oluşturmanızı](set-throughput.md#set-throughput-on-a-database)öneririz. Bu kapasite modelinin kullanılması, size daha iyi maliyet verimliliği sağlayacaktır.
 
     :::image type="content" source="./media/mongodb-mongoose/db-level-throughput.png" alt-text="Node.js öğreticisi-Azure portal, Mongoose node modülüyle kullanılmak üzere bir Azure Cosmos DB hesabı için Veri Gezgini bir veritabanı oluşturmayı gösteren ekran görüntüsü":::
 

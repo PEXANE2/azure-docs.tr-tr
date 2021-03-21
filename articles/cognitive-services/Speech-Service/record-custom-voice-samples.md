@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: erhopf
 ms.openlocfilehash: 6d2ad87f6a8c79f61d62140a1549968cd88d83aa
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101722322"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Özel bir ses oluşturmak için ses örneklerini kaydetme
@@ -112,7 +112,7 @@ Telif hakkı yasaları kapsamında, bir aktörün, telif haklı metinlerin okunm
 
 Neyse ki, bu sorunlardan tamamen kaçınmak mümkündür. İzin veya lisans olmadan kullanabileceğiniz birçok metin kaynağı vardır.
 
-|Metin kaynağı|Açıklama|
+|Metin kaynağı|Description|
 |-|-|
 |[CMU arctik yapı](http://festvox.org/cmu_arctic/)|Telif hakkı dışında çalışarak, özellikle konuşma seniş projelerinde kullanılmak üzere 1100 tümce hakkında. Harika bir başlangıç noktası.|
 |Artık işe yarar<br>Telif hakkı altında|Genellikle 1923 ' dan önce yayımlanır. Ingilizce için [Project Gutenberg](https://www.gutenberg.org/) , bu tür binlerce çalışma sunar. Dil modern Ingilizce 'ye yakın olacağı için daha yeni bir işe odaklanmak isteyebilirsiniz.|

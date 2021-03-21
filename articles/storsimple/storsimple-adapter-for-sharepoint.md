@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/06/2017
 ms.author: alkohli
 ms.openlocfilehash: 639efab3a9eaef400b3fbe3d0b134d02f458b865
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94966301"
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>SharePoint için StorSimple bağdaştırıcısını yükleyip yapılandırma
@@ -92,7 +92,7 @@ SharePoint için StorSimple bağdaştırıcısını yüklemeden önce, StorSimpl
 ## <a name="configure-prerequisites"></a>Önkoşulları yapılandırma
 SharePoint için StorSimple bağdaştırıcısını yüklemeden önce, StorSimple cihazının, SharePoint sunucu grubunun ve SQL Server örneğinin aşağıdaki önkoşulları karşıladığından emin olun.
 
-### <a name="system-requirements"></a>Sistem gereksinimleri
+### <a name="system-requirements"></a>Sistem Gereksinimleri
 SharePoint için StorSimple bağdaştırıcısı, aşağıdaki donanım ve yazılımla birlikte kullanılabilir:
 
 * Desteklenen işletim sistemi – Windows Server 2008 R2 SP1, Windows Server 2012 veya Windows Server 2012 R2
@@ -140,7 +140,7 @@ SharePoint sunucu grubunuzun doğru yapılandırıldığından emin olun, aşağ
   3. Sol bölmede **yerel sunucu**' ya tıklayın.
   4. Sağ bölmedeki **IE artırılmış güvenlik yapılandırması**' nın yanındaki **Açık**' a tıklayın.
   5. **Yöneticiler** altında **kapalı**' ya tıklayın.
-  6. **Tamam** düğmesine tıklayın.
+  6. **Tamam**'a tıklayın.
 
 ## <a name="remote-blob-storage-rbs-prerequisites"></a>Uzak BLOB depolama (KÇY) önkoşulları
 SQL Server desteklenen bir sürümünü kullandığınızdan emin olun. Yalnızca aşağıdaki sürümler desteklenir ve KÇY 'yi kullanabilir:

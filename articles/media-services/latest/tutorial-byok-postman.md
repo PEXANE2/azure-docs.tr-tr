@@ -7,10 +7,10 @@ ms.service: media-services
 ms.topic: tutorial
 ms.date: 10/18/2020
 ms.openlocfilehash: c8a5b682e2ac4879d2181bdb069cf554bad512d9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96498294"
 ---
 # <a name="tutorial-use-customer-managed-keys-or-byok-with-media-services-rest-api"></a>Öğretici: Media Services REST API müşteri tarafından yönetilen anahtarları veya BYOK kullanın
@@ -66,7 +66,7 @@ Bu öğretici için Postman koleksiyonunu [Azure örneklerine indirin: Media-Ser
 ## <a name="install-the-postman-collection-and-environment"></a>Postman koleksiyonunu ve ortamını yükleme
 
 1. Postman 'ı çalıştırın.
-1. **İçeri Aktar**'ı seçin.
+1. **İçeri aktar**'ı seçin.
 1. **Dosyaları karşıya yükle**' yi seçin.
 1. Koleksiyonu ve ortam dosyalarını kaydettiğiniz yere gidin.
 1. Koleksiyon ve ortam dosyalarını seçin.

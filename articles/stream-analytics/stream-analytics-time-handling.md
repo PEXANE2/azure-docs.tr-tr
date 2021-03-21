@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.openlocfilehash: f9dbdb3907b376df8de988730c6c48ed01bfccd0
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98019950"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>Azure Stream Analytics zaman işlemeyi anlama
@@ -129,7 +129,7 @@ Stream Analytics işlerin birkaç **olay sırası** seçeneği vardır. Azure po
 
 [Stream Analytics iş ölçümlerine](stream-analytics-monitoring.md)göre olay sıralaması zaman toleransı etkileri sayısını gözlemleyebilirsiniz. Aşağıdaki ölçümler geçerlidir:
 
-|Ölçüm  | Açıklama  |
+|Metric  | Açıklama  |
 |---------|---------|
 | **Sıra dışı olaylar** | Ayarlanmış olan veya ayarlanan bir zaman damgasına verilen, sıranın dışında alınan olay sayısını gösterir. Bu ölçüm, Azure portal işin **olay sıralaması** sayfasında **sıra dışı olaylar** ayarının yapılandırmasından doğrudan etkilenir. |
 | **Geç giriş olayları** | Kaynaktan geç ulaşan olay sayısını gösterir. Bu ölçüm, bırakılmış olan veya zaman damgası ayarlanmış olan olayları içerir. Bu ölçüm, Azure portal işin **olay sıralaması** sayfasında geç ayarına **ulaşan olayların** yapılandırmasından doğrudan etkilenir. |
@@ -170,7 +170,7 @@ Aşağıdaki resimlerde, filigranların farklı koşullarda nasıl ilerlemesinin
 
 Bu tabloda aşağıdaki örnek veriler gösterilmektedir. Olay saatinin ve varış zamanının, bazen eşleşen ve bazen de değişebileceğini fark edebilirsiniz.
 
-| Olay saati | Varış saati | DeviceId |
+| Etkinlik saati | Varış saati | DeviceId |
 | --- | --- | --- |
 | 12:07 | 12:07 | cihaz1
 | 12:08 | 12:08 | cihaz2

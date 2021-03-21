@@ -13,10 +13,10 @@ ms.author: jaszymas
 ms.reviewer: vanto, emlisa
 ms.date: 10/26/2020
 ms.openlocfilehash: 39119f62fa938f5f4f6529539d4ca9a84bdf8fd7
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94989199"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>Azure SQL veritabanı ve SQL yönetilen örnek güvenlik özelliklerine genel bakış
@@ -73,7 +73,7 @@ Yetkilendirme, Azure SQL veritabanı veya Azure SQL yönetilen örneği içindek
 
 En iyi uygulama olarak, gerektiğinde özel roller oluşturun. Kullanıcıları, iş işlevlerini yapmak için gereken en düşük ayrıcalıklara sahip olan role ekleyin. İzinleri doğrudan kullanıcılara atamayın. Sunucu Yöneticisi hesabı, kapsamlı izinlere sahip ve yalnızca yönetim görevleri olan birkaç kullanıcıya verilmesi gereken yerleşik db_owner rolünün bir üyesidir. Uygulamalar için, çağrılan modülün Yürütme bağlamını belirtmek için [execute as](/sql/t-sql/statements/execute-as-clause-transact-sql) kullanın veya sınırlı Izinlerle [uygulama rollerini](/sql/relational-databases/security/authentication-access/application-roles) kullanın. Bu uygulama, veritabanına bağlanan uygulamanın uygulama için gereken en düşük ayrıcalıklara sahip olmasını sağlar. Bu en iyi uygulamaları takip etmek, görevlerin ayrılmasını de çok daha da fazla.
 
-### <a name="row-level-security"></a>Satır düzeyi güvenlik
+### <a name="row-level-security"></a>Satır düzeyinde güvenlik
 
 Row-Level güvenliği, müşterilerin bir veritabanı tablosundaki satırlara erişimi, sorguyu yürüten kullanıcının özelliklerine göre denetlemesini sağlar (örneğin, Grup üyeliği veya yürütme bağlamı). Row-Level güvenliği, özel etiket tabanlı güvenlik kavramlarını uygulamak için de kullanılabilir. Daha fazla bilgi için bkz. [satır düzeyi güvenlik](/sql/relational-databases/security/row-level-security).
 

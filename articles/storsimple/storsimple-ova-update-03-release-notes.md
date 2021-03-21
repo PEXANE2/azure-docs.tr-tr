@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 09/15/2016
 ms.author: alkohli
 ms.openlocfilehash: 8301b45fe778bd3df7fc665db2662ba81d3e644f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94966114"
 ---
 # <a name="storsimple-virtual-array-update-03-release-notes"></a>StorSimple Sanal dizisi güncelleştirme 0,3 sürüm notları
@@ -40,7 +40,7 @@ Güncelleştirme 0,3, birincil olarak bir hata düzeltmesini derleme. Bu sürüm
 ## <a name="issues-fixed-in-the-update-03"></a>Güncelleştirme 0,3 ' de düzeltilen sorunlar
 Aşağıdaki tabloda, bu sürümde düzeltilen sorunların bir özeti verilmiştir.
 
-| Hayır. | Öne çıkan özelliği | Sorun |
+| Hayır. | Özellik | Sorun |
 | --- | --- | --- |
 | 1 |Yedeklemeler |Önceki sürümde, yedeklemelerin dosya paylaşımında tamamlanmasının başarısız olduğu bir sorun görüldü. Bu sorun oluştuysa, yedekleme işi başarısız olur ve kullanıcıya bildirimde bulunan StorSimple Yöneticisi hizmetinde kritik bir uyarı tetiklenir. Bu sorun, paylaşımlardaki verileri veya verilere erişimi etkilemez. Bu sürümde kök nedeni tanımlandı ve düzeltildi. <br></br> Bu sorunu zaten gördüğünüz paylaşımlara daha etkin bir şekilde uygulanmaz. Bu sorunu yaşayan müşteriler öncelikle güncelleştirme 0,3 ' i uyguladıktan sonra sorunu çözmesi için tam sistem yedeklemesi gerçekleştirmek üzere Microsoft Desteği başvurun. Müşteriler, Microsoft Desteği iletişim yerine, etkilenen paylaşımlar için sağlıklı bir yedekten yeni bir paylaşıma de geri yüklenebilir. |
 | 2 |iSCSI |Önceki sürümde, StorSimple Sanal dizisindeki bir birime veri kopyalanırken birimlerin kaybolacağı bir sorun görüldü. Bu sorun bu sürümde düzeltildi. <br></br> Düzeltmeler yalnızca yeni oluşturulan birimlerde geçerli olur. Düzeltmeler zaten bu sorunu görmekte olan birimlere geriye dönük olarak uygulanmaz. Müşterilerin klasik Azure portalı aracılığıyla etkilenen birimleri çevrimiçi hale getirmek, bu birimler için bir yedekleme gerçekleştirmesi ve sonra bu birimleri yeni birimlere geri yüklemesi önerilir. |
@@ -48,7 +48,7 @@ Aşağıdaki tabloda, bu sürümde düzeltilen sorunların bir özeti verilmişt
 ## <a name="known-issues-in-the-update-03"></a>Güncelleştirme 0,3 ' de bilinen sorunlar
 Aşağıdaki tabloda, StorSimple Sanal dizisi için bilinen sorunların özeti verilmiştir ve önceki sürümlerden gelen sorunlar sürümü dahildir. 
 
-| Hayır. | Öne çıkan özelliği | Sorun | Geçici çözüm/açıklamalar |
+| Hayır. | Özellik | Sorun | Geçici çözüm/açıklamalar |
 | --- | --- | --- | --- |
 | **1.** |Güncelleştirmeler |Önizleme sürümünde oluşturulan sanal cihazlar desteklenen bir genel kullanılabilirlik sürümüne güncelleştirilemez. |Bu sanal cihazlar, olağanüstü durum kurtarma (DR) iş akışı kullanan genel kullanılabilirlik sürümü için yük devretmelidir. |
 | **2.** |Sağlanan veri diski |Belirtilen boyutta bir veri diski sağladıktan ve karşılık gelen StorSimple Sanal cihazını oluşturduktan sonra, veri diskini genişletmemelidir veya küçültmemelidir. Bu durum, cihazın yerel katmanlarında tüm verilerin kaybedilmesine neden olur. | |

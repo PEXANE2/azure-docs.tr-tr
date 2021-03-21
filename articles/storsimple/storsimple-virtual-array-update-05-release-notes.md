@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 05/08/2017
 ms.author: alkohli
 ms.openlocfilehash: f70cf96baed274eaf260832bd83ab0e2c91f3683
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94967049"
 ---
 # <a name="storsimple-virtual-array-update-05-release-notes"></a>StorSimple Sanal dizisi güncelleştirme 0,5 sürüm notları
@@ -47,10 +47,10 @@ Güncelleştirme 0,5, birincil olarak bir hata düzeltmesini derleme. Ana geliş
 
 Aşağıdaki tabloda, bu sürümde düzeltilen sorunların bir özeti verilmiştir.
 
-| Hayır. | Öne çıkan özelliği | Sorun |
+| Hayır. | Özellik | Sorun |
 | --- | --- | --- |
 | 1 |Yedekleme esnekliği| Önceki sürümlerde yedeklemeler yalnızca belirli özel durumlar için yeniden denenir. Bu sürüm, tüm yedekleme özel durumlarını yeniden denemeden yedeklemeleri daha dayanıklı hale getirmek için bir çözüm içerir.|
-| 2 |İzleme| StorSimple sanal cihaz serisi için depolama kullanımı izleme 30 Haziran 2017 ' den itibaren kullanım dışı bırakılacak. Bu eylem, StorSimple Sanal dizileri (1200 modeli) üzerinde çalışan StorSimple Aygıt Yöneticisi hizmetindeki izleme grafiklerini etkiler. Bu sürümde, kullanıcının 30 Haziran 2017 ' den sonraki sanal dizilerde depolama kullanımı izlemenin kullanılmasına devam etmesine izin veren güncelleştirmeler vardır.|
+| 2 |İzleme| StorSimple sanal cihaz serisi için depolama kullanımı izleme 30 Haziran 2017 ' den itibaren kullanım dışı bırakılacak. Bu eylem, StorSimple Sanal dizileri (1200 modeli) üzerinde çalışan StorSimple Device Manager hizmetindeki izleme grafiklerini etkiler. Bu sürümde, kullanıcının 30 Haziran 2017 ' den sonraki sanal dizilerde depolama kullanımı izlemenin kullanılmasına devam etmesine izin veren güncelleştirmeler vardır.|
 | 3 |Dosya sunucusu| Önceki sürümlerde, bir kullanıcı şifrelenmiş dosyaları yanlışlıkla sanal diziye kopyalayabilir. Bu sürüm, şifrelenmiş dosyaların sanal diziye kopyalanmasına izin verilmeyen bir onarım içerir. Cihazınızda güncelleştirme öncesinde mevcut şifrelenmiş dosyalar varsa, tüm şifreli dosyalar sistemden silinene kadar yedeklemeler başarısız olmaya devam eder. |
 
 
@@ -58,7 +58,7 @@ Aşağıdaki tabloda, bu sürümde düzeltilen sorunların bir özeti verilmişt
 
 Aşağıdaki tabloda, StorSimple Sanal dizisi için bilinen sorunların özeti verilmiştir ve önceki sürümlerden gelen sorunlar sürümü dahildir.
 
-| Hayır. | Öne çıkan özelliği | Sorun | Geçici çözüm/açıklamalar |
+| Hayır. | Özellik | Sorun | Geçici çözüm/açıklamalar |
 | --- | --- | --- | --- |
 | **1.** |Güncelleştirmeler |Önizleme sürümünde oluşturulan sanal cihazlar desteklenen bir genel kullanılabilirlik sürümüne güncelleştirilemez. |Bu sanal cihazlar, olağanüstü durum kurtarma (DR) iş akışı kullanan genel kullanılabilirlik sürümü için yük devretmelidir. |
 | **2.** |Sağlanan veri diski |Belirtilen boyutta bir veri diski sağladıktan ve karşılık gelen StorSimple Sanal cihazını oluşturduktan sonra, veri diskini genişletmemelidir veya küçültmemelidir. Bu durum, cihazın yerel katmanlarında tüm verilerin kaybedilmesine neden olur. | |
@@ -72,7 +72,7 @@ Aşağıdaki tabloda, StorSimple Sanal dizisi için bilinen sorunların özeti v
 | **(.** |Azure PowerShell |StorSimple Sanal cihazları bu sürümdeki Azure PowerShell tarafından yönetilemez. |Sanal cihazların tüm yönetimi Azure portal ve yerel Web Kullanıcı arabirimi aracılığıyla yapılmalıdır. |
 | **üst.** |Parola değiştirme |Sanal dizi cihaz konsolu yalnızca en-US klavye biçimindeki girişi kabul eder. | |
 | **+.** |CHAP |Oluşturulduktan sonra CHAP kimlik bilgileri kaldırılamıyor. Ayrıca, CHAP kimlik bilgilerini değiştirirseniz, bu birimleri çevrimdışına almanız ve değişikliğin etkili olması için bunları çevrimiçi duruma getirmeniz gerekir. |Bu sorun, sonraki bir sürümde giderilmiştir. |
-| **hatası.** |Iscsı sunucusu |Bir Iscsı birimi için görüntülenmiş ' kullanılan depolama alanı, StorSimple Aygıt Yöneticisi hizmetinde ve Iscsı konağında farklı olabilir. |Iscsı konağında dosya sistemi görünümü bulunur.<br></br>Cihaz, birim en büyük boyuttan ayrıldığı blokları görür. |
+| **hatası.** |Iscsı sunucusu |Bir Iscsı birimi için görüntülenmiş ' kullanılan depolama alanı, StorSimple Device Manager hizmetinde ve Iscsı konağında farklı olabilir. |Iscsı konağında dosya sistemi görünümü bulunur.<br></br>Cihaz, birim en büyük boyuttan ayrıldığı blokları görür. |
 | **May.** |Dosya sunucusu |Bir klasördeki bir dosya ile ilişkili alternatif veri akışı (ADS) varsa, reklamlar olağanüstü durum kurtarma, kopyalama ve öğe düzeyinde kurtarma aracılığıyla yedeklenmez veya geri yüklenmez. | |
 | **aşamaz.** |Dosya sunucusu |Sembolik bağlantılar desteklenmiyor. | |
 | **k.** |Dosya sunucusu |StorSimple Sanal dizisi dosya sunucusu üzerinde kopyalanırken veya depolanırken Windows şifreleme dosya sistemi (EFS) tarafından korunan dosyalar desteklenmeyen bir yapılandırmayla sonuçlanır.  | |

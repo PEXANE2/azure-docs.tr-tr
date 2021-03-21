@@ -17,16 +17,16 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e09dd6a127bd04ae698cb6cad2ffd7f35e3b51c3
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94413437"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Kimlik eşitleme ve yinelenen öznitelik dayanıklılığı
 Yinelenen öznitelik dayanıklılığı, Microsoft 'un eşitleme araçlarından birini çalıştırırken **userPrincipalName** ve SMTP **ProxyAddress** çakışmalarını ortadan kaldıran, Azure Active Directory bir özelliktir.
 
-Bu iki öznitelik genellikle belirli bir Azure Active Directory kiracısındaki tüm **Kullanıcı** , **Grup** veya **kişi** nesneleri genelinde benzersiz olması için gereklidir.
+Bu iki öznitelik genellikle belirli bir Azure Active Directory kiracısındaki tüm **Kullanıcı**, **Grup** veya **kişi** nesneleri genelinde benzersiz olması için gereklidir.
 
 > [!NOTE]
 > Yalnızca kullanıcılar UPN 'leri içerebilir.
@@ -140,12 +140,12 @@ Bu hatalar için sorun giderme stratejisi ve çözümlemesi, yinelenen özniteli
 Aşağıdaki makalede çeşitli sorun giderme ve çözümleme stratejileri özetlenmektedir: [yinelenen veya geçersiz öznitelikler Office 365 ' de dizin eşitlemesini engelliyor](https://support.microsoft.com/kb/2647098).
 
 ## <a name="known-issues"></a>Bilinen sorunlar
-Bu bilinen sorunlardan hiçbiri veri kaybına veya hizmet düşüşüne neden olur. Bunlardan bazıları Aesthetic Characteristics, diğer bir deyişle çakışma özniteliğini karantinaya almak yerine standart " *dayanıklılık öncesi* " yinelenen öznitelik hatalarının oluşturulmasına neden olur ve başka bir hata daha el ile daha fazla düzeltilmesi gerektirebilir.
+Bu bilinen sorunlardan hiçbiri veri kaybına veya hizmet düşüşüne neden olur. Bunlardan bazıları Aesthetic Characteristics, diğer bir deyişle çakışma özniteliğini karantinaya almak yerine standart "*dayanıklılık öncesi*" yinelenen öznitelik hatalarının oluşturulmasına neden olur ve başka bir hata daha el ile daha fazla düzeltilmesi gerektirebilir.
 
 **Çekirdek davranışı:**
 
 1. Belirli öznitelik yapılandırmalarına sahip nesneler, karantinaya alınan yinelenen öznitelik (ler) in aksine dışarı aktarma hataları almaya devam eder.  
-   Örneğin:
+   Örnek:
    
     a. **Ali \@ contoso.com** ve ProxyAddress **SMTP: ali \@ contoso.com** UPN 'si ile ad 'de Yeni Kullanıcı oluşturulur
    
@@ -154,20 +154,20 @@ Bu bilinen sorunlardan hiçbiri veri kaybına veya hizmet düşüşüne neden ol
     c. Dışarı aktarma sırasında, çakışma özniteliklerinin karantinaya alınması yerine bir **ProxyAddress çakışma** hatası oluşur. İşlem, dayanıklılık özelliği etkinleştirilmeden önce olduğu için sonraki her eşitleme döngüsüne yeniden denenir.
 2. Şirket içinde aynı SMTP adresiyle iki grup oluşturulduysa, bir standart yinelenen **ProxyAddress** hatası ile ilk denemede bir tane sağlanamaz. Ancak, yinelenen değer bir sonraki eşitleme döngüsünün üzerinde doğru bir şekilde karantinaya alınır.
 
-**Office portalı raporu** :
+**Office portalı raporu**:
 
 1. Bir UPN çakışma kümesindeki iki nesne için ayrıntılı hata iletisi aynıdır. Bu, her ikisinin UPN 'nin değiştirilme/karantinaya alındığı, aslında yalnızca birinin bir veri değiştiği anlamına gelir.
-2. UPN çakışması için ayrıntılı hata iletisi, UPN 'si değiştirilmiş/karantinaya almış olan bir kullanıcı için yanlış displayName 'i gösterir. Örneğin:
+2. UPN çakışması için ayrıntılı hata iletisi, UPN 'si değiştirilmiş/karantinaya almış olan bir kullanıcı için yanlış displayName 'i gösterir. Örnek:
    
     a. **Kullanıcı A** , Ilk olarak **UPN = user \@ contoso.com** ile eşitlenir.
    
     b. **B kullanıcısının** daha sonra **UPN = user \@ contoso.com** ile eşitlenmesi denendi.
    
-    c. **B kullanıcısının** UPN, **User1234 \@ contoso.onmicrosoft.com** olarak değiştirilir ve **Kullanıcı \@ contoso.com** **DirSyncProvisioningErrors** 'e eklenir.
+    c. **B kullanıcısının** UPN, **User1234 \@ contoso.onmicrosoft.com** olarak değiştirilir ve **Kullanıcı \@ contoso.com** **DirSyncProvisioningErrors**'e eklenir.
    
     d. **B kullanıcısı** için hata Iletisi, **kullanıcının** zaten UPN olarak **Kullanıcı \@ contoso.com** olduğunu belirtmesi gerekir, ancak **b kullanıcısının** kendi DisplayName 'i gösterir.
 
-**Kimlik eşitlemesi hata raporu** :
+**Kimlik eşitlemesi hata raporu**:
 
 *Bu sorunu çözme adımları* için bağlantı yanlış:  
     ![Etkin Kullanıcılar](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "Etkin Kullanıcılar")  

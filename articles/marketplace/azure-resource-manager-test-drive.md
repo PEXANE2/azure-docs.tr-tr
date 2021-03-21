@@ -8,10 +8,10 @@ ms.date: 06/19/2020
 ms.author: trkeya
 author: trkeya
 ms.openlocfilehash: 2addf415c39691b4e662f304522a418aa8a778c2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101730380"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Test sürüşü Azure Resource Manager
@@ -73,7 +73,7 @@ Parametreleriniz için geçerli herhangi bir ad kullanabilirsiniz; test sürüc�
 
 ### <a name="accepted-parameter-metadata-types"></a>Kabul edilen parametre meta veri türleri
 
-| Meta veri türü   | Parametre türü  | Açıklama     | Örnek değer    |
+| Meta veri türü   | Parametre türü  | Description     | Örnek değer    |
 |---|---|---|---|
 | **BaseUri**     | string          | Dağıtım paketinizin temel URI 'SI| `https://<..>.blob.core.windows.net/<..>` |
 | **nitelen**    | string          | Yeni rastgele Kullanıcı adı.| admin68876      |

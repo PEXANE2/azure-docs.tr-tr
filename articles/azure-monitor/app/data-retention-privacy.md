@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 54d3e53b71b5f63da84e41a752bbbb6fce65c045
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100579574"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights'da veri toplama, saklama ve depolama
@@ -262,7 +262,7 @@ SDK 'lar platformlar arasında farklılık gösterir ve yükleyebileceğiniz bir
 | [TrackMetric çağrısı yapın][api] |Sayısal değerler<br/>**Özellikler** |
 | [Çağrıyı Izle *][api] |Olay adı<br/>**Özellikler** |
 | [TrackException çağrısı][api] |**Özel durumlar**<br/>Yığın dökümü<br/>**Özellikler** |
-| SDK veri toplayamıyor. Örneğin: <br/> -performans sayaçlarına erişilemiyor<br/> -Telemetri başlatıcısında özel durum |SDK tanılaması |
+| SDK veri toplayamıyor. Örnek: <br/> -performans sayaçlarına erişilemiyor<br/> -Telemetri başlatıcısında özel durum |SDK tanılaması |
 
 [Diğer platformların SDK 'ları][platforms]için belgelerine bakın.
 

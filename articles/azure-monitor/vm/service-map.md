@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
 ms.openlocfilehash: ad3f8821189e6e7aabb5653e5f938bb73f57a34b
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102047018"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Azure’da Hizmet Eşlemesi çözümünü kullanma
@@ -153,7 +153,7 @@ Grup listesindeki Grup adının yanındaki üç nokta menüsüne tıklayın.
 
 Bazı süreçler makinelerde belirli rollere sahiptir: Web sunucuları, uygulama sunucuları, veritabanı vb. Bir işlemin veya sunucunun oynadığı rolü bir bakışta belirlemesine yardımcı olmak için rol simgeleriyle birlikte hizmet eşlemesi açıklıyor süreci ve makine kutuları.
 
-| Rol simgesi | Açıklama |
+| Rol simgesi | Description |
 |:--|:--|
 | ![Web sunucusu](media/service-map/role-web-server.png) | Web sunucusu |
 | ![Uygulama Sunucusu](media/service-map/role-application-server.png) | Uygulama sunucusu |
@@ -570,7 +570,7 @@ Microsoft Bağımlılık aracısı, Microsoft Visual Studio çalışma zamanı k
 
 Aşağıdaki tabloda kod numaraları ve önerilen çözümler listelenmektedir.
 
-| Kod | Açıklama | Çözüm |
+| Kod | Description | Çözüm |
 |:--|:--|:--|
 | 0x17 | Kitaplık yükleyicisi, henüz yüklenmemiş bir Windows güncelleştirmesine ihtiyaç duyuyor. | En son kitaplık yükleyicisi günlüğüne bakın.<br><br>Bir başvurunun `Windows8.1-KB2999226-x64.msu` ardından bir satır gelmesi, `Error 0x80240017: Failed to execute MSU package,` KB2999226 yüklemek için önkoşullara sahip değilsiniz. [Windows'da Evrensel C Çalışma Zamanı](https://support.microsoft.com/kb/2999226) makalesinin önkoşullar bölümündeki yönergeleri izleyin. Önkoşulları yüklemek için Windows Update'i çalıştırmanız ve sistemi birden çok kez yeniden başlatmanız gerekebilir.<br><br>Microsoft Bağımlılık aracısı yükleyicisini yeniden çalıştırın. |
 

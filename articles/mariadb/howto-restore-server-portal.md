@@ -3,14 +3,14 @@ title: Yedekleme ve geri yükleme-Azure portal-MariaDB için Azure veritabanı
 description: Bu makalede, Azure portal kullanarak MariaDB için Azure veritabanı 'nda bir sunucunun nasıl geri yükleneceği açıklanmaktadır.
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/30/2020
-ms.openlocfilehash: 06da58b5c82af39abbaa1cbc15a217c25d7808f9
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 4a5f2cc4cbf73f5c13533a94f1454022d3538880
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98664826"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-portal"></a>Azure portal kullanarak MariaDB için Azure veritabanı 'nda sunucu yedekleme ve geri yükleme
@@ -37,7 +37,7 @@ Azure portal aracılığıyla bir sunucu oluştururken, **fiyatlandırma katman�
 Oluşturma sırasında bu değerleri ayarlama hakkında daha fazla bilgi için, bkz. [MariaDB sunucu hızlı başlangıç Için Azure veritabanı](quickstart-create-mariadb-server-database-using-azure-portal.md).
 
 Yedekleme saklama süresi bir sunucuda aşağıdaki adımlarla değiştirilebilir:
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure portal](https://portal.azure.com/) oturum açın.
 
 2. MariaDB sunucusu için Azure veritabanınızı seçin. Bu eylem **genel bakış** sayfasını açar.
 

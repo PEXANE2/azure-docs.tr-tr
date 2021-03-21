@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.topic: how-to
 ms.date: 02/20/2020
 ms.openlocfilehash: e6f94c006de8914fe3ae27cdb8ac4d75a0ac49cc
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94963003"
 ---
 # <a name="redeploy-ssis-packages-to-azure-sql-database-with-azure-database-migration-service"></a>SSIS paketlerini Azure veritabanı geçiş hizmeti ile Azure SQL veritabanı 'na yeniden dağıtma
@@ -34,7 +34,7 @@ Bu makalede şunları öğreneceksiniz:
 > * Kaynak SSIS projelerini/paketlerini değerlendirin.
 > * SSIS projelerini/paketlerini Azure 'a geçirin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu adımları tamamlayabilmeniz için şunlar gerekir:
 

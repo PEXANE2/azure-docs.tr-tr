@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: damendo
 ms.openlocfilehash: 8b363d90d05e95b017c3a655b57dbabc3712a155
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94965553"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Ağ Izleyicisi ve gri günlük kullanarak Azure 'da ağ güvenlik grubu akış günlüklerini yönetme ve çözümleme
@@ -180,7 +180,7 @@ Logstash kullanarak akış günlüklerine bir bağlantı kurdığınıza ve bir 
 2. Yapılandırma sayfasına gitmek için sağ üst gezinti çubuğundan **sistem** açılan menüsünü seçin ve ardından **girişler**' e tıklayın.
    Alternatif olarak, şuraya gidin `http://<graylog-server-ip>:9000/system/inputs`
 
-   ![Başlarken](./media/network-watcher-analyze-nsg-flow-logs-graylog/getting-started.png)
+   ![Kullanmaya başlama](./media/network-watcher-analyze-nsg-flow-logs-graylog/getting-started.png)
 
 3. Yeni girişi başlatmak için **Giriş Seç** açılan kutusunda *gelf UDP* ' yi seçin ve ardından formu doldurun. GELF, gri günlük Genişletilmiş günlük biçimini temsil eder. GELF biçimi, Grig günlüğü tarafından geliştirilmiştir. Avantajları hakkında daha fazla bilgi edinmek için bkz. gri günlük [belgeleri](https://docs.graylog.org/en/2.2/pages/gelf.html).
 

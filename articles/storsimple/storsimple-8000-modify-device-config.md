@@ -1,6 +1,6 @@
 ---
 title: StorSimple 8000 serisi cihaz yapılandırmasını değiştirme | Microsoft Docs
-description: Zaten dağıtılmış olan bir StorSimple cihazını yeniden yapılandırmak için StorSimple Aygıt Yöneticisi hizmetinin nasıl kullanılacağını açıklar.
+description: Zaten dağıtılmış olan bir StorSimple cihazını yeniden yapılandırmak için StorSimple Device Manager hizmetinin nasıl kullanılacağını açıklar.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,17 +15,17 @@ ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
 ms.openlocfilehash: 5eb5c351462279fe5c4f790e052f73201d211cfb
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94961184"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>StorSimple cihaz yapılandırmanızı değiştirmek için StorSimple Aygıt Yöneticisi hizmetini kullanın
+# <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>StorSimple cihaz yapılandırmanızı değiştirmek için StorSimple Device Manager hizmetini kullanın
 
 ## <a name="overview"></a>Genel Bakış
 
-**Ayarlar** dikey penceresindeki Azure Portal **cihaz ayarları** bölümü, StorSimple aygıt yöneticisi hizmeti tarafından yönetilen bir StorSimple cihazında yeniden yapılandırabilmeniz için tüm cihaz parametrelerini içerir. Bu öğreticide, aşağıdaki cihaz düzeyindeki görevleri gerçekleştirmek için **Ayarlar** dikey penceresini nasıl kullanabileceğiniz açıklanmaktadır:
+**Ayarlar** dikey penceresindeki Azure Portal **cihaz ayarları** bölümü, StorSimple Device Manager hizmeti tarafından yönetilen bir StorSimple cihazında yeniden yapılandırabilmeniz için tüm cihaz parametrelerini içerir. Bu öğreticide, aşağıdaki cihaz düzeyindeki görevleri gerçekleştirmek için **Ayarlar** dikey penceresini nasıl kullanabileceğiniz açıklanmaktadır:
 
 * Cihaz kolay adını değiştir
 * Cihaz zaman ayarlarını değiştir
@@ -42,7 +42,7 @@ Azure portal kullanarak cihaz adını değiştirebilir ve seçtiğiniz benzersiz
 
 ![Genel ayarlarda cihaz adı](./media/storsimple-8000-modify-device-config/modify-general-settings3.png)
 
-StorSimple Aygıt Yöneticisi hizmetine bağlı bir StorSimple cihazına varsayılan ad atanır. Varsayılan ad genellikle cihazın seri numarasını yansıtır. Örneğin, 8600-SHX0991003G44HT gibi 15 karakter uzunluğunda varsayılan bir cihaz adı şunları gösterir:
+StorSimple Device Manager hizmetine bağlı bir StorSimple cihazına varsayılan ad atanır. Varsayılan ad genellikle cihazın seri numarasını yansıtır. Örneğin, 8600-SHX0991003G44HT gibi 15 karakter uzunluğunda varsayılan bir cihaz adı şunları gösterir:
 
 * **8600**  – cihaz modelini gösterir.
 * **SHX** : üretim sitesini belirtir.
@@ -87,7 +87,7 @@ Yüksek kullanılabilirlik için, ilk cihaz dağıtımı sırasında hem birinci
 
 **BIRINCIL DNS sunucusu** -ilk kurulum SıRASıNDA birincil DNS sunucusunu belirtmek için StorSimple için Windows PowerShell kullanırsınız. Birincil DNS sunucusunu yalnızca Windows PowerShell arabirimi aracılığıyla yeniden yapılandırabilirsiniz. `Set-HcsDNSClientServerAddress`Cihazınızın BIRINCIL DNS sunucusunu değiştirmek için cmdlet 'ini kullanın. Daha fazla bilgi için [set-HcsDNSClientServerAddress](/previous-versions/windows/powershell-scripting/dn688138(v=wps.630)) cmdlet sözdizimi ' ne gidin.
 
-**IKINCIL DNS sunucusu** -ikincil DNS sunucusunu değiştirmek için, `Set-HcsDNSClientServerAddress` Azure Portal StorSimple cihazınızın Windows PowerShell arabirimindeki cmdlet 'ini kullanın. **Network settings**
+**IKINCIL DNS sunucusu** -ikincil DNS sunucusunu değiştirmek için, `Set-HcsDNSClientServerAddress` Azure Portal StorSimple cihazınızın Windows PowerShell arabirimindeki cmdlet 'ini kullanın. 
 
 Azure portal ikincil DNS sunucusunu değiştirmek için aşağıdaki adımları gerçekleştirin.
 
@@ -168,4 +168,4 @@ Ağ arabirimlerinin herhangi birine ait VIP 'leri değiştirmek veya yeniden ata
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [StorSimple cihazınız IÇIN MPIO yapılandırma](storsimple-8000-configure-mpio-windows-server.md)hakkında bilgi edinin.
-* StorSimple [cihazınızı yönetmek Için storsimple Aygıt Yöneticisi hizmetini nasıl kullanacağınızı](storsimple-8000-manager-service-administration.md)öğrenin.
+* StorSimple [cihazınızı yönetmek Için storsimple Device Manager hizmetini nasıl kullanacağınızı](storsimple-8000-manager-service-administration.md)öğrenin.

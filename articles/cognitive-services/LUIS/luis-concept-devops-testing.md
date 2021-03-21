@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/3/2020
 ms.openlocfilehash: cd2fd8dc8c10864089b198db1ca1089f994a3ffb
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98788460"
 ---
 # <a name="testing-for-luis-devops"></a>LUSıS DevOps için test etme
@@ -42,7 +42,7 @@ Bir test kümesi yazdığınızda, tanımlamanız gereken her bir test için:
 * Beklenen amaç
 * Beklenen varlıklar.
 
-Bir test grubunu JSON biçimli bir dosyada tanımlamak için LUO [Batch dosyası sözdizimini](./luis-how-to-batch-test.md#batch-syntax-template-for-intents-with-entities) kullanın. Örneğin:
+Bir test grubunu JSON biçimli bir dosyada tanımlamak için LUO [Batch dosyası sözdizimini](./luis-how-to-batch-test.md#batch-syntax-template-for-intents-with-entities) kullanın. Örnek:
 
 ```JSON
 [

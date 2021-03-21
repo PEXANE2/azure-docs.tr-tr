@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
 ms.openlocfilehash: fe80a71125d43220e408eab7b07aeedcafa0a526
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102473763"
 ---
 ### <a name="functions-2x-and-higher"></a>İşlevler 2.x ve üzeri
@@ -32,7 +32,7 @@ ms.locfileid: "102473763"
 }  
 ```
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılan | Description |
 |---------|---------|---------|
 |Batchcheckpointflik|1|Bir EventHub imleç denetim noktası oluşturmadan önce işlenecek olay toplu işlemlerinin sayısı.|
 |eventProcessorOptions/maxBatchSize|10|Alma döngüsü başına alınan en yüksek olay sayısı.|
@@ -57,7 +57,7 @@ ms.locfileid: "102473763"
 }
 ```
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılan | Description |
 |---------|---------|---------| 
 |maxBatchSize|64|Alma döngüsü başına alınan en yüksek olay sayısı.|
 |prefetchCount|yok|Temel tarafından kullanılacak varsayılan ön getirme `EventProcessorHost` .| 

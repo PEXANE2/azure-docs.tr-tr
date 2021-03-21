@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/06/2016
 ms.author: matd
 ms.openlocfilehash: bf28265de2b297dade545695c9369b8074eeb72c
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94962561"
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>Veead ile yedekleme hedefi olarak StorSimple
@@ -104,7 +104,7 @@ Aşağıdaki tablolarda cihaz modelden mimari ilk kılavuz gösterilmektedir.
 | Yedekleme senaryosu  | Yerel depolama kapasitesi  | Bulut depolama kapasitesi  |
 |---|---|---|
 | Birincil yedekleme  | Kurtarma noktası hedefini (RPO) karşılamak üzere hızlı kurtarma için yerel depolama alanında depolanan son yedeklemeler | Yedekleme geçmişi (RPO) bulut kapasitesine uyar |
-| İkincil yedekleme | Yedekleme verilerinin ikincil kopyası, bulut kapasitesinde depolanabilir  | YOK  |
+| İkincil yedekleme | Yedekleme verilerinin ikincil kopyası, bulut kapasitesinde depolanabilir  | Yok  |
 
 ## <a name="storsimple-as-a-primary-backup-target"></a>Birincil yedekleme hedefi olarak StorSimple
 

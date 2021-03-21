@@ -7,10 +7,10 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 11/19/2020
 ms.openlocfilehash: b345168dad63b1846d46c12721587eaffb5f887e
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94981213"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>Azure Logic Apps ' de HTTPS uç noktalarını kullanarak Logic Apps 'i çağırma, tetikleme veya iç içe geçme
@@ -26,7 +26,7 @@ Bu makalede, Istek tetikleyicisi kullanılarak mantıksal uygulamanızda çağr�
 
 Mantıksal uygulamanıza yönelik güvenlik, yetkilendirme ve şifreleme hakkında daha fazla bilgi için, [Aktarım Katmanı Güvenliği (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security), daha önce GÜVENLI yuva KATMANı (SSL), [Azure Active Directory açma kimlik doğrulaması (Azure AD OAuth)](../active-directory/develop/index.yml), mantıksal uygulamanızı Azure API Management ile gösterme veya gelen çağrıları yapan IP adreslerini kısıtlama gibi) hakkında daha fazla bilgi için bkz. [İstek tabanlı tetikleyicilere gelen çağrılar Için güvenli erişim ve veri erişimi](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir Azure hesabı ve aboneliği Aboneliğiniz yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 

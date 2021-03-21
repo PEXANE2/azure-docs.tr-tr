@@ -8,10 +8,10 @@ ms.date: 03/02/2021
 author: gahl-levy
 ms.author: gahllevy
 ms.openlocfilehash: 9eebc77c5b3d9402c766320fddfdaf05d50b574f
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102485410"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-40-server-version-supported-features-and-syntax"></a>MongoDB için API Azure Cosmos DB (4,0 sunucu sürümü): desteklenen özellikler ve sözdizimi
@@ -42,15 +42,15 @@ MongoDB için Azure Cosmos DB API 'SI aşağıdaki veritabanı komutlarını des
 |---------|---------|
 | [akışları Değiştir](mongodb-change-streams.md) | Yes |
 | delete | Yes |
-| Eval | Hayır |
+| Eval | No |
 | find | Yes |
 | findAndModify | Yes |
 | getLastError | Yes |
 | getMore | Yes |
-| getPrevError | Hayır |
+| getPrevError | No |
 | insert | Yes |
-| parallelCollectionScan | Hayır |
-| resetError | Hayır |
+| parallelCollectionScan | No |
+| resetError | No |
 | update | Yes |
 
 ### <a name="transaction-commands"></a>İşlem komutları
@@ -72,11 +72,11 @@ MongoDB için Azure Cosmos DB API 'SI aşağıdaki veritabanı komutlarını des
 
 | Komut | Desteklenir |
 |---------|---------|
-| Clonecollectionascamış | Hayır |
-| collMod | Hayır |
-| connectionStatus | Hayır |
-| Converttocamış | Hayır |
-| copydb | Hayır |
+| Clonecollectionascamış | No |
+| collMod | No |
+| connectionStatus | No |
+| Converttocamış | No |
+| copydb | No |
 | oluşturmaya | Yes |
 | createIndexes | Yes |
 | currentOp | Yes |
@@ -85,12 +85,12 @@ MongoDB için Azure Cosmos DB API 'SI aşağıdaki veritabanı komutlarını des
 | dropIndexes | Yes |
 | filemd5 | Yes |
 | killCursors | Yes |
-| killOp | Hayır |
+| killOp | No |
 | listCollections | Yes |
 | listDatabases | Yes |
 | listIndexes | Yes |
 | reIndex | Yes |
-| renameCollection | Hayır |
+| renameCollection | No |
 
 ### <a name="diagnostics-commands"></a>Tanılama komutları
 
@@ -98,19 +98,19 @@ MongoDB için Azure Cosmos DB API 'SI aşağıdaki veritabanı komutlarını des
 |---------|---------|
 | buildInfo | Yes |
 | collStats | Yes |
-| connPoolStats | Hayır |
-| connectionStatus | Hayır |
-| dataSize | Hayır |
-| dbHash | Hayır |
+| connPoolStats | No |
+| connectionStatus | No |
+| dataSize | No |
+| dbHash | No |
 | dbStats | Yes |
 | açıklamak | Yes |
-| özellikler | Hayır |
+| özellikler | No |
 | hostInfo | Yes |
 | listDatabases | Yes |
-| listCommands | Hayır |
-| profil | Hayır |
-| serverStatus | Hayır |
-| top | Hayır |
+| listCommands | No |
+| profil | No |
+| serverStatus | No |
+| top | No |
 | whatsmyuri | Yes |
 
 ## <a name="aggregation-pipeline"></a><a name="aggregation-pipeline"></a>Toplama işlem hattı
@@ -122,34 +122,34 @@ MongoDB için Azure Cosmos DB API 'SI aşağıdaki veritabanı komutlarını des
 | aggregate | Yes |
 | count | Yes |
 | distinct | Yes |
-| mapReduce | Hayır |
+| mapReduce | No |
 
 ### <a name="aggregation-stages"></a>Toplama aşamaları
 
 | Komut | Desteklenir |
 |---------|---------|
 | $addFields | Yes |
-| $bucket | Hayır |
-| $bucketAuto | Hayır |
+| $bucket | No |
+| $bucketAuto | No |
 | $changeStream | Yes |
-| $collStats | Hayır |
+| $collStats | No |
 | $count | Yes |
-| $currentOp | Hayır |
+| $currentOp | No |
 | $facet | Yes |
 | $geoNear | Yes |
 | $graphLookup | Yes |
 | $group | Yes |
-| $indexStats | Hayır |
+| $indexStats | No |
 | $limit | Yes |
-| $listLocalSessions | Hayır |
-| $listSessions | Hayır |
+| $listLocalSessions | No |
+| $listSessions | No |
 | $lookup | Yes |
 | $match | Yes |
 | $out | Yes |
 | $project | Yes |
 | $redact | Yes |
 | $replaceRoot | Yes |
-| $replaceWith | Hayır |
+| $replaceWith | No |
 | $sample | Yes |
 | $skip | Yes |
 | $sort | Yes |
@@ -248,7 +248,7 @@ MongoDB için Azure Cosmos DB API 'SI aşağıdaki veritabanı komutlarını des
 
 | Komut | Desteklenir |
 |---------|---------|
-| $meta | Hayır |
+| $meta | No |
 
 ### <a name="array-expressions"></a>Dizi ifadeleri
 
@@ -310,9 +310,9 @@ MongoDB için Azure Cosmos DB API 'SI aşağıdaki veritabanı komutlarını des
 | $dateToString | Yes |
 | $isoDayOfWeek | Yes |
 | $isoWeek | Yes |
-| $dateFromParts | Hayır | 
-| $dateToParts | Hayır |
-| $dateFromString | Hayır |
+| $dateFromParts | No | 
+| $dateToParts | No |
+| $dateFromString | No |
 | $isoWeekYear | Yes |
 
 ### <a name="conditional-expressions"></a>Koşullu ifadeler
@@ -387,9 +387,9 @@ Bir [yükseltme senaryosunda](mongodb-version-upgrade.md), sürüm 4,0 ' e yüks
 | Tek alan dizini | Yes |
 | Bileşik Dizin | Yes |
 | Çok tuşlu Dizin | Yes |
-| Metin dizini | Hayır |
+| Metin dizini | No |
 | 2dsphere | Yes |
-| 2B Dizin | Hayır |
+| 2B Dizin | No |
 | Karma Dizin | Yes |
 
 ### <a name="index-properties"></a>Dizin Özellikleri
@@ -398,9 +398,9 @@ Bir [yükseltme senaryosunda](mongodb-version-upgrade.md), sürüm 4,0 ' e yüks
 |---------|---------|
 | TTL | Yes |
 | Benzersiz | Yes |
-| Kısmi | Hayır |
-| Büyük/küçük harf duyarsız | Hayır |
-| Seyrek | Hayır |
+| Kısmi | No |
+| Büyük/küçük harf duyarsız | No |
+| Seyrek | No |
 | Arka Plan | Yes |
 
 ## <a name="operators"></a>İşleçler
@@ -425,12 +425,12 @@ Bir [yükseltme senaryosunda](mongodb-version-upgrade.md), sürüm 4,0 ' e yüks
 
 | Komut | Desteklenir |
 |---------|---------|
-| $expr | Hayır |
-| $jsonSchema | Hayır |
+| $expr | No |
+| $jsonSchema | No |
 | $mod | Yes |
 | $regex | Yes |
 | $text | Hayır (desteklenmiyor. Bunun yerine $regex kullanın.)| 
-| $where | Hayır | 
+| $where | No | 
 
 $Regex sorgularda, sola sabitlenmiş ifadeler Dizin aramasına izin verir. Ancak 'i' değiştiricisini (büyük/küçük harf duyarlığı) ve 'm' değiştiricisini (çok satırlılık) kullanmak, tüm ifadelerde koleksiyon taramasına neden olur.
 
@@ -459,7 +459,7 @@ $Regex sorgularda, sola sabitlenmiş ifadeler Dizin aramasına izin verir. Ancak
 | Komut | Desteklenir |
 |---------|---------|
 | $elemMatch | Yes |
-| $meta | Hayır |
+| $meta | No |
 | $slice | Yes |
 
 ### <a name="update-operators"></a>Güncelleştirme işleçleri
@@ -506,10 +506,10 @@ $Regex sorgularda, sola sabitlenmiş ifadeler Dizin aramasına izin verir. Ancak
 | Komut | Desteklenir |
 |---------|---------|
 | $bit | Yes | 
-| $bitsAllSet | Hayır |
-| $bitsAnySet | Hayır |
-| $bitsAllClear | Hayır |
-| $bitsAnyClear | Hayır |
+| $bitsAllSet | No |
+| $bitsAnySet | No |
+| $bitsAllClear | No |
+| $bitsAnyClear | No |
 
 ### <a name="geospatial-operators"></a>Jeo-uzamsal işleçler
 
@@ -522,10 +522,10 @@ $nearSphere | Yes |
 $geometry | Yes |
 $minDistance | Yes |
 $maxDistance | Yes |
-$center | Hayır |
-$centerSphere | Hayır |
-$box | Hayır |
-$polygon | Hayır |
+$center | No |
+$centerSphere | No |
+$box | No |
+$polygon | No |
 
 ## <a name="sort-operations"></a>Sıralama işlemleri
 
