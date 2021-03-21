@@ -1,15 +1,15 @@
 ---
 title: Azure Arc etkin sunucular için Azure Ilke mevzuat uyumluluk denetimleri (Önizleme)
 description: Azure Arc etkin sunucular (Önizleme) için kullanılabilen Azure Ilke mevzuat uyumluluk denetimlerini listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızın uyumluluğunu yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 03/10/2021
+ms.date: 03/17/2021
 ms.topic: sample
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 25d1f862f9413ba78f2c8a293130631e3963bb74
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: f2f5bd4afdec066fa782a15f19666cfa721845fb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102636576"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104591098"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-arc-enabled-servers"></a>Azure Arc etkin sunucular için Azure Ilke mevzuat uyumluluk denetimleri
 

@@ -9,10 +9,10 @@ ms.date: 03/04/2021
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 2459cf6c5055dcde83dccf37addc160aeeaa64ad
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102198669"
 ---
 Olay etki alanları bir örnek kullanılarak kolayca açıklanmıştır. Tractors, dijitalde ekipman ve diğer ağır makineleri ürettiğiniz contoso oluşturma makinemizin olduğunu varsayalım. İşletmeyi çalıştırmanın bir parçası olarak, donanım bakımı, sistem durumu ve sözleşme güncelleştirmeleri hakkındaki müşterilere gerçek zamanlı bilgiler gönderirsiniz. Bu bilgilerin tümü, uygulamanız, müşteri uç noktaları ve müşterilerin ayarladığı diğer altyapıda dahil olmak üzere çeşitli uç noktalara gider.

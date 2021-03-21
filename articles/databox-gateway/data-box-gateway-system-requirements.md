@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/01/2021
 ms.author: alkohli
 ms.openlocfilehash: e7c8653b39a3e0333ff6e98783a6e9a1437dba22
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101739220"
 ---
 # <a name="azure-data-box-gateway-system-requirements"></a>Azure Data Box Gateway sistem gereksinimleri
@@ -29,7 +29,7 @@ Data Box Gateway sanal cihazının sistem gereksinimleri şunlardır:
 
 Data Box Gateway için temel ana bilgisayar sistemi, sanal cihazınızı sağlamak için aşağıdaki kaynakları ayırabiliyor:
 
-| Belirtimler                                          | Açıklama              |
+| Belirtimler                                          | Description              |
 |---------------------------------------------------------|--------------------------|
 | Sanal işlemciler (çekirdekler)   | En az 4 |
 | Bellek  | En az 8 GB. En az 16 GB önerilir. |

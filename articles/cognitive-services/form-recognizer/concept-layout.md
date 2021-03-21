@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: lajanuar
 ms.openlocfilehash: 73bef21f430bde1c6c2c95d7c3f685cccbbd9179
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103467026"
 ---
 # <a name="form-recognizer-layout-service"></a>Form tanıyıcı düzen hizmeti
@@ -95,7 +95,7 @@ JSON çıktısı iki bölümden oluşur:
 
 Düzen API 'SI, belgelerden (PDF, TIFF) ve görüntülerden (JPG, PNG, BMP) metinleri birden çok metin açısı ve renkleriyle ayıklar. Belge, Faks, yazdırılan ve/veya el yazısı (Yalnızca Ingilizce) metin ve karışık modların fotoğraflarını kabul eder. Metin, çizgiler, kelimeler, sınırlama kutuları, güven puanları ve stil (el ile veya diğer) için belirtilen bilgilerle ayıklanır. Tüm metin bilgileri `readResults` JSON çıktısının bölümüne dahil edilir. 
 
-### <a name="tables"></a>Tablolar
+### <a name="tables"></a>Tables
 
 Düzen API 'SI belgelerden (PDF, TIFF) ve görüntülerden (JPG, PNG, BMP) tabloları ayıklar. Belgeler taranabilir, fotokopi veya dijital olabilir. Tablolar, birleştirilmiş hücreler veya sütunlarla, Kenarlıksız veya Kenarlıksız ve tek açılarla karmaşık olabilir. Ayıklanan tablo bilgileri, sütun ve satır sayısını, satır yayılımını ve sütun yayılımını içerir. Her bir hücre, sınırlayıcı kutusuyla ayıklanır ve bölümünde ayıklanan metne başvurur `readResults` . Tablo bilgileri, `pageResults` JSON çıktısının bölümünde bulunur. 
 

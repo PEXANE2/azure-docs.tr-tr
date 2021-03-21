@@ -7,10 +7,10 @@ ms.topic: troubleshooting
 ms.date: 12/30/2020
 ms.author: abnarain
 ms.openlocfilehash: 101e55188b8021040e2fd6bd573c1c6330241e72
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100382812"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Azure Data Factory sorunlarını giderme
@@ -584,7 +584,7 @@ Aşağıdaki tablo Azure Batch için geçerlidir.
     1. Active baş düğümünüz için, SSH kullanarak etkin baş düğümde bulunan bir ambarı sunucusu olarak bağlanın. 
     1. Etkin baş düğümü yeniden başlatın.
 
-       Daha fazla bilgi için Azure HDInsight sorun giderme belgelerine bakın. Örneğin:
+       Daha fazla bilgi için Azure HDInsight sorun giderme belgelerine bakın. Örnek:
 
        * [Ambari kullanıcı arabirimi 502 hatası](https://hdinsight.github.io/ambari/ambari-ui-502-error.html)
        * [Apache Spark Thrift Server için RpcTimeoutException](../hdinsight/spark/apache-spark-troubleshoot-rpctimeoutexception.md)
@@ -614,7 +614,7 @@ Aşağıdaki tablo Azure Batch için geçerlidir.
 
 - **Neden**: Iş HDI kümesine gönderildi ve burada başarısız oldu.
 
-- **Öneri**: 
+- **Öneri:** 
 
  1. Ambarı Kullanıcı arabirimini denetle:
     1. Tüm hizmetlerin hala çalıştığından emin olun.
@@ -636,7 +636,7 @@ Aşağıdaki tablo Azure Batch için geçerlidir.
 
 - **Neden**: Iş HDI kümesine gönderildi ve burada başarısız oldu.
 
-- **Öneri**: 
+- **Öneri:** 
 
  1. Ambarı Kullanıcı arabirimini denetle:
     1. Tüm hizmetlerin hala çalıştığından emin olun.
@@ -754,7 +754,7 @@ Aşağıdaki tablo Azure Batch için geçerlidir.
 
 - **Neden**: belirtilen kimlik bilgileri küme için yanlış ya da bir ağ yapılandırması ya da bağlantı sorunu vardı ya da IR, kümeye bağlanırken sorun yaşıyor.
 
-- **Öneri**: 
+- **Öneri:** 
     1. HDInsight kümesinin ambarı Kullanıcı arabirimini bir tarayıcıda açarak kimlik bilgilerinin doğru olduğundan emin olun.
     1. Küme sanal ağ (VNet) ve şirket içinde barındırılan bir IR kullanılıyorsa, HDI URL 'SI VNET 'lerdeki özel URL olmalıdır ve küme adından sonra '-int ' listelenmiş olmalıdır.
     
@@ -788,7 +788,7 @@ Aşağıdaki tablo Azure Batch için geçerlidir.
 
 - **Neden**: ADF, HDI kümesine açık bir veritabanı BAĞLANTıSı (ODBC) bağlantısı kurmaya çalıştı ve hata vererek başarısız oldu.
 
-- **Öneri**: 
+- **Öneri:** 
 
    1. ODBC/Java veritabanı bağlantısı (JDBC) bağlantınızı doğru şekilde ayarladığınıza emin olun.
       1. JDBC için aynı sanal ağı kullanıyorsanız bu bağlantıyı şuradan edinebilirsiniz:<br>
@@ -808,7 +808,7 @@ Aşağıdaki tablo Azure Batch için geçerlidir.
 
 - **Neden**: ADF, ODBC bağlantısı aracılığıyla HDI kümesine yürütülmek üzere Hive betiği gönderdi ve betik HDI üzerinde başarısız oldu.
 
-- **Öneri**: 
+- **Öneri:** 
 
    1. ODBC/Java veritabanı bağlantısı (JDBC) bağlantınızı doğru şekilde ayarladığınıza emin olun.
       1. JDBC için aynı sanal ağı kullanıyorsanız bu bağlantıyı şuradan edinebilirsiniz:<br>

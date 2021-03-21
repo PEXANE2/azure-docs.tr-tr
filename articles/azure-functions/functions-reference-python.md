@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: 3eb3b3b015f401e872a879c46ec6f8c69df5f87f
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102455425"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Işlevleri Python Geliştirici Kılavuzu
@@ -17,7 +17,7 @@ Bu makale, Python kullanarak Azure Işlevleri geliştirmeye giriş niteliğinded
 
 Python geliştiricisi olarak, aşağıdaki makalelerden biriyle de ilgileniyor olabilirsiniz:
 
-| Başlarken | Kavramlar| Senaryolar/örnekler |
+| Kullanmaya başlama | Kavramlar| Senaryolar/örnekler |
 | -- | -- | -- | 
 | <ul><li>[Visual Studio Code kullanarak Python işlevi](./create-first-function-vs-code-csharp.md?pivots=programming-language-python)</li><li>[Terminal/komut istemiyle Python işlevi](./create-first-function-cli-csharp.md?pivots=programming-language-python)</li></ul> | <ul><li>[Geliştirici kılavuzu](functions-reference.md)</li><li>[Barındırma seçenekleri](functions-scale.md)</li><li>[Performans &nbsp; konuları](functions-best-practices.md)</li></ul> | <ul><li>[PyTorch ile görüntü sınıflandırması](machine-learning-pytorch.md)</li><li>[Azure Otomasyonu örneği](/samples/azure-samples/azure-functions-python-list-resource-groups/azure-functions-python-sample-list-resource-groups/)</li><li>[TensorFlow ile Machine Learning](functions-machine-learning-tensorflow.md)</li><li>[Python örneklerine gözatamıyorum](/samples/browse/?products=azure-functions&languages=python)</li></ul> |
 

@@ -10,13 +10,13 @@ ms.topic: overview
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein, vanto
-ms.date: 08/14/2020
-ms.openlocfilehash: 81d4527817d637e7b764cc83160153d974ced5c0
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.date: 01/14/2021
+ms.openlocfilehash: dca4d699ac1253753c82949cb480d95a1dde26e2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103600972"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594113"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği nedir?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -36,7 +36,7 @@ Aşağıdaki diyagramda SQL yönetilen örneği 'nin temel özellikleri özetlen
 Azure SQL yönetilen örneği, şirket içi veya IaaS, kendiliğinden oluşturulmuş veya ISV tarafından sağlanmış bir ortamdan çok sayıda uygulamayı tam olarak yönetilen PaaS bulut ortamına geçirmek isteyen müşteriler için tasarlanmıştır. Müşteriler, tam otomatik [Azure veri geçiş hizmeti](../../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance)'ni kullanarak mevcut SQL Server örneğini SQL yönetilen örneği 'ne taşıyıp kaydırabilirler. Bu, yerel VNET desteğiyle müşteri örneklerinin SQL Server ve tamamen yalıtımıyla uyumluluk sağlar. Geçiş seçenekleri ve araçları hakkında daha fazla bilgi için bkz. [geçişe genel bakış: Azure SQL yönetilen örneği 'ne SQL Server](../migration-guides/managed-instance/sql-server-to-managed-instance-overview.md).</br> Yazılım Güvencesi sayesinde, [SQL Server için Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/)kullanarak mevcut LISANSLARıNıZı SQL yönetilen örnekteki indirimli ücretler için Exchange 'e dönüştürebilirsiniz. SQL yönetilen örneği, yüksek güvenlik ve zengin bir programlama yüzeyi gerektiren SQL Server örnekleri için buluttaki en iyi geçiş hedefidir.
 
 > [!TIP]
-> Azure SQL nasıl daha iyi hale getirebiliriz? [Ankete katılın](https://aka.ms/AzureSQLSurvey).
+> Azure SQL nasıl daha iyi hale getirebiliriz? [Ankete katılın](https://microsoft.qualtrics.com/jfe/form/SV_ePOznHhP4gDKfGu?channel=456).
 
 ## <a name="key-features-and-capabilities"></a>Temel özellikler ve yetenekler
 
@@ -79,8 +79,8 @@ SQL yönetilen örneği için [sanal çekirdek tabanlı satın alma modeli](../d
 
 Sanal çekirdek modelinde, donanım nesilleri arasından seçim yapabilirsiniz.
 
-- **4. nesil** mantıksal CPU 'lar Intel® E5-2673 v3 (Haswell) 2,4 GHz işlemcileri, ekli SSD, fiziksel çekirdekler, çekirdek BAŞıNA 7 GB RAM ve 8 Ila 24 sanal çekirdek arasında işlem boyutları temel alır.
-- **5. nesil** mantıksal CPU 'lar Intel® E5-2673 v4 (çok iyi) 2,3 GHz, ıNTEL® SP-8160 (ufuk Gölü) ve ıNTEL® 8272CL (Cascade lake) 2,5 GHz işlemcileri, hızlı NVMe SSD, hiper iş parçacıklı mantıksal çekirdek ve 4 ile 80 çekirdekler arasında işlem boyutlarını temel alır.
+- **4. nesil** mantıksal CPU 'lar Intel &reg; E5-2673 v3 (Haswell) 2,4 GHz IŞLEMCILERI, ekli SSD, fiziksel çekirdekler, çekırdek BAŞıNA 7 GB RAM ve 8 Ila 24 sanal çekirdek arasında işlem boyutları temel alınarak hesaplanır.
+- **5. nesil** mantıksal CPU 'lar Intel &reg; E5-2673 v4 (çok Iyi) 2,3 GHz, ıntel &reg; SP-8160 (ufuk Gölü) ve Intel &reg; 8272cl (Cascade Lake) 2,5 GHz işlemcileri, hızlı NVMe SSD, hiper iş parçacıklı mantıksal çekirdek ve 4 ile 80 çekirdekler arasında işlem boyutlarını temel alır.
 
 [SQL yönetilen örnek kaynak limitlerinin](resource-limits.md#hardware-generation-characteristics)donanım nesilleri arasındaki fark hakkında daha fazla bilgi bulabilirsiniz.
 

@@ -5,14 +5,14 @@ author: alkohli
 ms.assetid: ''
 ms.service: storsimple
 ms.topic: conceptual
-ms.date: 03/05/2020
+ms.date: 03/18/2021
 ms.author: alkohli
-ms.openlocfilehash: a6a359888e782751892f2a034a8d92a014fd3a81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cdb971851ba678ce18f5a1c7954e5620740f3a4c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90055852"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657578"
 ---
 # <a name="storsimple-8000-series-update-51-release-notes"></a>StorSimple 8000 serisi güncelleştirme 5,1 sürüm notları
 
@@ -35,6 +35,10 @@ Güncelleştirmeyi StorSimple çözümünüze dağıtmadan önce sürüm notlar�
 Güncelleştirme 5,1 ' de aşağıdaki temel geliştirmeler ve hata düzeltmeleri yapılmıştır:
 
 * **Tls 1,2** -bu StorSimple güncelleştirmesi tüm istemcilerde TLS 1,2 ' i zorlayacaktır. Bu, tüm StorSimple 8000 serisi cihazlar için zorunlu bir güncelleştirmedir.
+
+   Aşağıdaki uyarıyı görürseniz, devam etmeden önce cihazdaki yazılımı güncelleştirmeniz gerekir:
+
+   Bir veya daha fazla StorSimple cihazı eski bir yazılım sürümünü çalıştırıyor. TLS 1,2 için kullanılabilen en son güncelleştirme, zorunlu bir güncelleştirmedir ve bu cihazlara hemen yüklenmesi gerekir. TLS 1,2 tüm Azure portal iletişimi için kullanılır ve bu güncelleştirme olmadan cihaz StorSimple hizmetiyle iletişim kuramaz.
 
 ## <a name="known-issues-in-update-51-from-previous-releases"></a>Önceki sürümlerden güncelleştirme 5,1 ' de bilinen sorunlar
 

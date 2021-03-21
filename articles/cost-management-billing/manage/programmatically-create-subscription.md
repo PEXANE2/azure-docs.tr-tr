@@ -1,20 +1,20 @@
 ---
-title: Program aracılığıyla Azure abonelikleri oluşturma
+title: Programlı olarak Azure abonelikleri oluşturma
 description: Bu makale, program aracılığıyla Azure abonelikleri oluşturmak için sağlanan seçenekleri anlamanıza yardımcı olur.
 author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 01/13/2021
+ms.date: 03/11/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 546ed24b5f9e7892f40c9d425b668f60ad705f8f
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 9ec0ffeb930fd9285f34ad9ba9e6aa606b15b5a2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493897"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593897"
 ---
 # <a name="create-azure-subscriptions-programmatically"></a>Programlı olarak Azure abonelikleri oluşturma
 
@@ -26,7 +26,7 @@ Bu makale, program aracılığıyla Azure abonelikleri oluşturmak için sağlan
 - Microsoft Müşteri Sözleşmesi (MCA)
 - Microsoft İş Ortağı Sözleşmesi (MPA)
 
-Program aracılığıyla REST API'lerle diğer sözleşme türleri için ek abonelikler oluşturamazsınız.
+REST API 'Leri ile diğer anlaşma türleri için program aracılığıyla ek abonelikler oluşturamazsınız.
 
 Farklı sözleşmeler ve API sürümleri için abonelik oluşturma gereksinimleri ve ayrıntıları birbirinden farklıdır. Aşağıda sizin durumunuza uyan makalelere bakın:
 
@@ -36,9 +36,9 @@ En son API'ler:
 - [MCA abonelikleri oluşturma](programmatically-create-subscription-microsoft-customer-agreement.md)
 - [MPA abonelikleri oluşturma](programmatically-create-subscription-microsoft-partner-agreement.md)
 
-Hala [önizleme API'lerini](programmatically-create-subscription-preview.md) kullanıyorsanız bunlarla abonelik oluşturmaya devam edebilirsiniz. 
+Bu makalelerde Ayrıca bir Azure Resource Manager şablonuyla (ARM şablonu) aboneliklerin nasıl oluşturulacağı gösterilmektedir. ARM şablonu, abonelik oluşturma işleminin otomatikleştirilmesine yardımcı olur.
 
-Ayrıca [ARM şablonuyla da abonelik oluşturabilirsiniz](create-subscription-template.md). ARM şablonu, REST API'lerle abonelik oluşturma işlemini otomatikleştirmeye yardımcı olur. 
+Hala [Önizleme API 'lerini](programmatically-create-subscription-preview.md)kullanıyorsanız, bunlarla abonelik oluşturmaya devam edebilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -3,13 +3,13 @@ title: Gelen/giden IP adresleri
 description: Gelen ve giden IP adreslerinin Azure App Service, ne zaman değişdikleri ve uygulamanızın adreslerini nasıl bulacağınızı öğrenin.
 ms.topic: article
 ms.date: 08/25/2020
-ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: e5b271cc5cd8cb52267b6ee44bc3965d0e4b0aab
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: seodec18
+ms.openlocfilehash: 4237e51251a7ece05800aa7efa328a9c6cf65e76
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746159"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104591376"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Azure App Service gelen ve giden IP adresleri
 
@@ -19,7 +19,7 @@ ms.locfileid: "92746159"
 
 ## <a name="how-ip-addresses-work-in-app-service"></a>IP adreslerinin App Service nasıl çalıştığı
 
-Bir App Service uygulama bir App Service planında çalışır ve App Service planları Azure altyapısındaki dağıtım birimlerinden birine dağıtılır (dahili olarak bir web alanı olarak adlandırılır). Her dağıtım birimi, bir genel gelen IP adresi ve dört giden IP adresi içeren beş adede kadar sanal IP adresine atanır. Aynı dağıtım birimi içindeki tüm App Service planlar ve bunlar içinde çalışan uygulama örnekleri aynı sanal IP adresleri kümesini paylaşır. Bir App Service Ortamı ( [yalıtılmış katmanda](https://azure.microsoft.com/pricing/details/app-service/)bir App Service planı) için, App Service planı dağıtım biriminin kendisidir, bu nedenle sanal IP adresleri buna sonuç olarak ayrılmıştır.
+Bir App Service uygulama bir App Service planında çalışır ve App Service planları Azure altyapısındaki dağıtım birimlerinden birine dağıtılır (dahili olarak bir web alanı olarak adlandırılır). Her dağıtım birimine bir genel gelen IP adresi ve bir [gıden IP adresleri](#find-outbound-ips)kümesi içeren bir dızı sanal IP adresi atanır. Aynı dağıtım birimi içindeki tüm App Service planlar ve bunlar içinde çalışan uygulama örnekleri aynı sanal IP adresleri kümesini paylaşır. Bir App Service Ortamı ( [yalıtılmış katmanda](https://azure.microsoft.com/pricing/details/app-service/)bir App Service planı) için, App Service planı dağıtım biriminin kendisidir, bu nedenle sanal IP adresleri buna sonuç olarak ayrılmıştır.
 
 Dağıtım birimleri arasında bir App Service planını taşımaya izin verilmediğinden, uygulamanıza atanan sanal IP adresleri genellikle aynı kalır, ancak özel durumlar vardır.
 
@@ -51,7 +51,7 @@ Aşağıdaki eylemlerden birini gerçekleştirdiğinizde uygulamanız için gide
 
 - Bir uygulamayı silip farklı bir kaynak grubunda yeniden oluşturun (dağıtım birimi değişebilir).
 - Kaynak grubu _ve_ bölge kombinasyondaki son uygulamayı silin ve yeniden oluşturun (dağıtım birimi değişebilir).
-- Uygulamanızı daha düşük Katmanlar ( **temel** , **Standart** ve **Premium** ) ve **Premium v2** katmanı (IP adresleri kümeden eklenebilir veya kümeden çıkarılan) arasında ölçeklendirin.
+- Uygulamanızı daha düşük Katmanlar (**temel**, **Standart** ve **Premium**) ve **Premium v2** katmanı (IP adresleri kümeden eklenebilir veya kümeden çıkarılan) arasında ölçeklendirin.
 
 Fiyatlandırma katmanlarından bağımsız olarak, uygulamanızın kullanabileceği tüm olası giden IP adresleri kümesini, `possibleOutboundIpAddresses` özelliği arayarak veya Azure Portal **Özellikler** dikey PENCERESINDE **ek giden IP adresleri** alanında bulabilirsiniz. Bkz. [giden IP 'Leri bulma](#find-outbound-ips).
 

@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-csharp
 ms.openlocfilehash: e5aeda35ed4110807f17c11e93b31d0b3998846e
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103461122"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Öğretici: SQL Server veritabanları ile uç cihazlarda veri depolama
@@ -107,7 +107,7 @@ Kapsayıcı oluşturulup her mimari türü için farklı çalıştığından, he
 
 3. **SqlFunction. csproj** dosyasını kaydedin.
 
-4. **SqlFunction.cs** dosyasını açın.
+4. **SqlFunction. cs** dosyasını açın.
 
 5. Dosyanın tüm içeriğini aşağıdaki kodla değiştirin:
 
@@ -204,7 +204,7 @@ Kapsayıcı oluşturulup her mimari türü için farklı çalıştığından, he
    Data Source=tcp:sql,1433;Initial Catalog=MeasurementsDB;User Id=SA;Password=Strong!Passw0rd;TrustServerCertificate=False;Connection Timeout=30;
    ```
 
-7. **SqlFunction.cs** dosyasını kaydedin.
+7. **SqlFunction. cs** dosyasını kaydedin.
 
 ## <a name="add-the-sql-server-container"></a>SQL Server kapsayıcısını ekleme
 
@@ -221,7 +221,7 @@ Kapsayıcı oluşturulup her mimari türü için farklı çalıştığından, he
 
 3. Azure IoT Edge Module marketi ' nde, **SQL Server modülünü** arayıp seçin.
 
-4. Modül adını, tümü küçük harfle **SQL** olarak değiştirin. Bu ad, sqlFunction.cs dosyasındaki bağlantı dizesinde belirtilen kapsayıcı adıyla eşleşir.
+4. Modül adını, tümü küçük harfle **SQL** olarak değiştirin. Bu ad, sqlFunction. cs dosyasındaki bağlantı dizesinde belirtilen kapsayıcı adıyla eşleşir.
 
 5. Modülü çözümünüze eklemek için **Içeri aktar** ' ı seçin.
 

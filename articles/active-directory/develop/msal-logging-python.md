@@ -13,12 +13,12 @@ ms.date: 01/25/2021
 ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 8488325613b05d54b352a19a06860e08f1779877
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 1d52b017f94785f5fb25a25f127ae52d96e97d8b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063123"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578762"
 ---
 # <a name="logging-in-msal-for-python"></a>Python için MSAL’de oturum açma
 
@@ -26,22 +26,51 @@ ms.locfileid: "99063123"
 
 ## <a name="msal-for-python-logging"></a>Python günlüğü için MSAL
 
-MSAL Python 'da oturum açmak standart Python günlüğü mekanizmasını kullanır, örneğin, `logging.info("msg")` msal günlüğünü aşağıdaki gibi yapılandırabilir ve [username_password_sample](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.0.0/sample/username_password_sample.py#L31L32)):
+Python için MSAL içinde oturum açma, [Python Standart Kitaplığı 'ndaki günlük modülünü](https://docs.python.org/3/library/logging.html)kullanır. MSAL günlüğünü aşağıdaki şekilde yapılandırabilir ( [username_password_sample](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.0.0/sample/username_password_sample.py#L31L32)):
 
 ### <a name="enable-debug-logging-for-all-modules"></a>Tüm modüller için hata ayıklama günlüğünü etkinleştir
 
-Varsayılan olarak, herhangi bir Python betiğinde günlüğe kaydetme kapalıdır. Tüm Python betikinizdeki tüm modüller için hata ayıklama günlüğünü etkinleştirmek istiyorsanız şunu kullanın:
+Varsayılan olarak, herhangi bir Python betiğinde günlüğe kaydetme kapalıdır. Betiğinizdeki **Tüm** Python modülleri için ayrıntılı günlük kaydını etkinleştirmek istiyorsanız, şu `logging.basicConfig` düzeyle kullanın `logging.DEBUG` :
 
 ```python
+import logging
+
 logging.basicConfig(level=logging.DEBUG)
 ```
 
-### <a name="silence-only-msal-logging"></a>Yalnızca sessizlik MSAL günlüğü
+Bu işlem, günlük modülüne verilen tüm günlük iletilerini standart çıktıya yazdırır.
 
-Yalnızca MSAL kitaplık günlüğünü sessizlik için, Python betiğinizdeki diğer tüm modüllerde hata ayıklama günlüğünü etkinleştirerek, MSAL Python tarafından kullanılan günlükçü 'yi kapatın:
+### <a name="configure-msal-logging-level"></a>MSAL günlük düzeyini yapılandırma
 
-```Python
+Python için MSAL günlük kaydı düzeyini, `logging.getLogger()` günlükçü adı ile metodunu kullanarak yapılandırabilirsiniz `"msal"` :
+
+```python
+import logging
+
 logging.getLogger("msal").setLevel(logging.WARN)
+```
+
+### <a name="configure-msal-logging-with-azure-app-insights"></a>Azure App Insights ile MSAL günlüğünü yapılandırma
+
+Python günlükleri, varsayılan olarak olan bir günlük işleyicisine verilir `StreamHandler` . MSAL günlüklerini bir Izleme anahtarı ile bir Application Insights göndermek için, `AzureLogHandler` kitaplığı tarafından sunulan öğesini kullanın `opencensus-ext-azure` .
+
+Yüklemek için, `opencensus-ext-azure` `opencensus-ext-azure` PyPI 'den bağımlılıklara veya PIMI yüklemesine olan paketi ekleyin:
+
+```console
+pip install opencensus-ext-azure
+```
+
+Ardından, günlük sağlayıcının varsayılan işleyicisini, `"msal"` `AzureLogHandler` ortam değişkeninde bir izleme anahtarı kümesiyle bir örneğine değiştirin `APP_INSIGHTS_KEY` :
+
+```python
+import logging
+import os
+
+from opencensus.ext.azure.log_exporter import AzureLogHandler
+
+APP_INSIGHTS_KEY = os.getenv('APP_INSIGHTS_KEY')
+
+logging.getLogger("msal").addHandler(AzureLogHandler(connection_string='InstrumentationKey={0}'.format(APP_INSIGHTS_KEY))
 ```
 
 ### <a name="personal-and-organizational-data-in-python"></a>Python 'da kişisel ve Kurumsal veriler

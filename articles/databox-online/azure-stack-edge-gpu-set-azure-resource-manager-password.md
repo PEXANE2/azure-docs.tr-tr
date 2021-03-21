@@ -8,29 +8,27 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/21/2021
 ms.author: alkohli
-ms.openlocfilehash: 62417b575e142d044e599249a529328a41c9b8d7
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: a2167d573871481c99b755fc713e18543d74c5bf
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102639165"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104602691"
 ---
 # <a name="set-azure-resource-manager-password-on-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazında Azure Resource Manager parola ayarlama
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-Bu makalede Azure Resource Manager parolanızın nasıl ayarlanacağı açıklanır. Azure Resource Manager aracılığıyla cihaz yerel API 'Lerine bağlanırken bu parolayı ayarlamanız gerekir.
+Bu makalede Azure Resource Manager parolanızın nasıl ayarlanacağı açıklanır. [Azure Resource Manager aracılığıyla cihaz yerel API 'lerine bağlanırken](azure-stack-edge-gpu-connect-resource-manager.md)bu parolayı ayarlamanız gerekir. 
 
 <!--The procedure to set the password can be different depending upon whether you use the Azure portal or the PowerShell cmdlets. Each of these procedures is described in the following sections.-->
 
 
 ## <a name="reset-password-via-the-azure-portal"></a>Azure portal aracılığıyla parolayı sıfırlama
 
-1. Azure portal, cihazınızı yönetmek için oluşturduğunuz Azure Stack Edge kaynağına gidin. **Bulut depolama ağ geçidi > Edge Hizmetleri**' ne gidin.
+1. Azure portal, cihazınızı yönetmek için oluşturduğunuz Azure Stack Edge kaynağına gidin. 
 
-    ![EdgeARM Kullanıcı parolasını sıfırla 1](media/azure-stack-edge-gpu-set-azure-resource-manager-password/set-edgearm-password-1.png)
-
-2. Sağ taraftaki bölmede komut çubuğundan **Edge ARM parolasını sıfırla**'yı seçin. 
+2. **Özellikler**' e gidin. Sağ taraftaki bölmede komut çubuğundan **Edge ARM parolasını sıfırla**'yı seçin. 
 
     ![EdgeARM Kullanıcı parolasını sıfırla 2](media/azure-stack-edge-gpu-set-azure-resource-manager-password/set-edgearm-password-2.png)
 

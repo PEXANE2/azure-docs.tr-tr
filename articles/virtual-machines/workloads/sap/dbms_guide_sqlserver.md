@@ -16,10 +16,10 @@ ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4eb7e64065e311dc18f33dffb169d5c27a34008d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101673036"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SAP NetWeaver için Azure sanal makineler DBMS dağıtımı SQL Server
@@ -481,7 +481,7 @@ Azure 'da SQL Server günlük aktarma işlevselliği, tek bir Azure bölgesinde 
 
 
 
-### <a name="database-mirroring"></a>Veritabanı Yansıtması
+### <a name="database-mirroring"></a>Veritabanı Yansıtma
 SAP tarafından desteklenen veritabanı yansıtma (bkz. SAP Note [965908]) SAP bağlantı dizesinde yük devretme ortağı tanımlamayı kullanır. Şirketler arası durumlarda iki VM 'nin aynı etki alanında olduğunu ve iki SQL Server örneğinin Kullanıcı bağlamının bir etki alanı kullanıcısı altında çalıştığını ve söz konusu iki SQL Server örneğinde yeterli ayrıcalıklara sahip olduğunu varsaytık. Bu nedenle, Azure 'da veritabanı yansıtma kurulumu, tipik bir şirket içi kurulum/yapılandırma arasında farklılık gösterir.
 
 Cloud-Only dağıtımlarda, en kolay yöntem, bir etki alanı içinde bu DBMS sanal makinelerini (ve ideal SAP VM 'Leri) sağlamak için Azure 'da başka bir etki alanı kurulumuna sahip olmanın bir yoludur.

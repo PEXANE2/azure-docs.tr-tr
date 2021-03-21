@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: wiassaf, sstein
-ms.date: 09/30/2020
-ms.openlocfilehash: 6b56da68b10bc40304097fbe9eeaf200d422b663
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 03/17/2021
+ms.openlocfilehash: 4c9edaea75215bc4b471cd2e0ac50c4e69546bb0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100592701"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592143"
 ---
 # <a name="monitoring-and-performance-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Veritabanı ve Azure SQL Yönetilen Örneği'nde izleme ve performansı ayarlama
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -35,6 +35,10 @@ Azure portal, Azure SQL veritabanı ve Azure SQL yönetilen örneği, kaynak öl
 
 > [!NOTE]
 > Son derece düşük kullanımı olan veritabanları portalda gerçek kullanımdan daha az kullanım gösterebilir. Bir Double değeri en yakın tamsayıya dönüştürürken telemetri Yayınlanma yöntemi nedeniyle 0,5 'den daha az sayıda kullanım miktarları, yayılan Telemetriyi ayrıntı düzeyinde bir kaybına neden olan 0 ' a yuvarlanır. Ayrıntılar için bkz. [düşük veritabanı ve elastik havuz ölçümleri sıfıra yuvarlama](#low-database-and-elastic-pool-metrics-rounding-to-zero).
+
+### <a name="monitor-with-sql-insights"></a>SQL Insights ile izleme
+
+Azure [IZLEYICI SQL öngörüleri](../../azure-monitor/insights/sql-insights-overview.md) , Azure SQL VM 'lerinde Azure SQL yönetilen örnekleri, Azure SQL veritabanları ve SQL Server örneklerini izlemeye yönelik bir araçtır. Bu hizmet, dinamik yönetim görünümlerindeki (DMVs) verileri yakalamak ve verileri Azure Log Analytics yönlendirdiğinde, burada izlenebileceğiniz ve çözümlenebileceği bir uzak Aracı kullanır. Bu verileri, [Azure izleyici](../../azure-monitor/overview.md) 'den belirtilen görünümlerde görüntüleyebilir veya sorguları çalıştırmak ve eğilimleri çözümlemek için günlük verilerine doğrudan erişebilirsiniz. Azure Izleyici SQL öngörülerini kullanmaya başlamak için bkz. [SQL Insights 'ı etkinleştirme](../../azure-monitor/insights/sql-insights-enable.md).
 
 ### <a name="azure-sql-database-and-azure-sql-managed-instance-resource-monitoring"></a>Azure SQL veritabanı ve Azure SQL yönetilen örnek kaynak izleme
 

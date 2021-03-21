@@ -7,10 +7,10 @@ ms.tgt_pltfrm: na
 ms.date: 10/22/2020
 ms.author: bwren
 ms.openlocfilehash: 5066264777c66369205489fb27a6f9206c5da521
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101708008"
 ---
 # <a name="azure-monitor-logs-overview"></a>Azure İzleyici Günlükleri'ne genel bakış
@@ -25,7 +25,7 @@ Aşağıdaki tabloda Azure Izleyici 'de günlükleri kullanmanın farklı yollar
 
 |  |  |
 |:---|:---|
-| **Çözümleme** | [Günlük sorgularını](./log-query-overview.md) yazmak ve güçlü bir analiz altyapısı kullanarak günlük verilerini etkileşimli olarak çözümlemek için Azure Portal [Log Analytics](./log-analytics-tutorial.md) kullanın |
+| **Analiz** | [Günlük sorgularını](./log-query-overview.md) yazmak ve güçlü bir analiz altyapısı kullanarak günlük verilerini etkileşimli olarak çözümlemek için Azure Portal [Log Analytics](./log-analytics-tutorial.md) kullanın |
 | **Uyarı** | Sorgu sonuçları belirli bir sonuçla eşleşiyorsa bildirim gönderen veya [otomatik eylem](../alerts/action-groups.md) alan bir [günlük uyarı kuralı](../alerts/alerts-log.md) yapılandırın. |
 | **Görselleştirme** | Bir [Azure panosuna](../../azure-portal/azure-portal-dashboards.md)tablo veya grafik olarak işlenen sorgu sonuçlarını sabitleme.<br>Etkileşimli bir raporda birden fazla veri kümesiyle birleştirilecek bir [çalışma kitabı](../visualize/workbooks-overview.md) oluşturun. <br>Farklı görselleştirmeler kullanmak ve Azure dışındaki kullanıcılarla paylaşmak için bir sorgunun sonuçlarını [Power BI](../visualize/powerbi.md) dışarı aktarın.<br>Bir sorgunun sonuçlarını [Grafana](../visualize/grafana-plugin.md) olarak dışa aktarın ve diğer veri kaynaklarıyla birleştirin.|
 | **İçgörüler** | Belirli uygulamalar ve hizmetler için özelleştirilmiş bir izleme deneyimi sağlayan [öngörüleri](../monitor-reference.md#insights-and-core-solutions) destekleme.  |

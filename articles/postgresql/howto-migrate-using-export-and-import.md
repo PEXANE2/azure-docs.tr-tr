@@ -6,18 +6,19 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 080f444d50dcdf17be15d940002b745624b2f6a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0f1824a1e4754dddea26484c836df79e95246d5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708535"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580989"
 ---
 # <a name="migrate-your-postgresql-database-using-export-and-import"></a>Dışarı aktarma ve içeri aktarma kullanarak PostgreSQL veritabanınızı geçirme
 [!INCLUDE[applies-to-postgres-single-flexible-server](includes/applies-to-postgres-single-flexible-server.md)]
+
 Bir PostgreSQL veritabanını bir betik dosyasına ve [psql](https://www.postgresql.org/docs/current/static/app-psql.html) ' i bu dosyadaki hedef veritabanına aktarmak üzere bir komut dosyası dosyasına ayıklamak için [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:
 - Üzerinde erişime ve veritabanına izin vermek için güvenlik duvarı kuralları içeren bir [PostgreSQL sunucusu Için Azure veritabanı](quickstart-create-server-database-portal.md) .
 - [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) komut satırı yardımcı programı yüklendi
@@ -42,14 +43,14 @@ PostgreSQL için Azure veritabanı sunucusuna verileri içeri aktarmak ve SQL do
 ```bash
 psql --file=<database>.sql --host=<server name> --port=5432 --username=<user> --dbname=<target database name>
 ```
-Bu örnek, **mydemoserver.Postgres.Database.Azure.com**hedef sunucuda **mypgsqldb** veritabanına veri aktarmak için psql yardımcı programını ve önceki adımdan **TestDB. SQL** adlı bir betik dosyasını kullanır.
+Bu örnek, **mydemoserver.Postgres.Database.Azure.com** hedef sunucuda **mypgsqldb** veritabanına veri aktarmak için psql yardımcı programını ve önceki adımdan **TestDB. SQL** adlı bir betik dosyasını kullanır.
 
-**Tek sunucu**için bu komutu kullanın 
+**Tek sunucu** için bu komutu kullanın 
 ```bash
 psql --file=testdb.sql --host=mydemoserver.database.windows.net --port=5432 --username=mylogin@mydemoserver --dbname=mypgsqldb
 ```
 
-**Esnek sunucu**için bu komutu kullanın  
+**Esnek sunucu** için bu komutu kullanın  
 ```bash
 psql --file=testdb.sql --host=mydemoserver.database.windows.net --port=5432 --username=mylogin --dbname=mypgsqldb
 ```
