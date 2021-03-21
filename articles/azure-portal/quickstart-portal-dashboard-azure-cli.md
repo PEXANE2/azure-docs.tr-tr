@@ -4,16 +4,18 @@ description: 'Hızlı başlangıç: Azure CLı kullanarak Azure portal Pano olu�
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
 ms.date: 12/4/2020
-ms.openlocfilehash: ede915df5cd2967c3b6b700bcb9174c89af8f233
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: ddfee1932c6887c6ca7593ca7a28c03e68e09899
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745664"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104613252"
 ---
 # <a name="quickstart-create-an-azure-portal-dashboard-with-azure-cli"></a>Hızlı başlangıç: Azure CLı ile Azure portal panosu oluşturma
 
-Azure portal bir Pano, bulut kaynaklarınızın odaklanmış ve düzenlenmiş bir görünümüdür.
+Azure portal bir Pano, bulut kaynaklarınızın odaklanmış ve düzenlenmiş bir görünümüdür. Bu makalede, bir pano oluşturmak için Azure CLı kullanma işlemine odaklanılır.
+Pano, bir sanal makinenin (VM) ve bazı statik bilgi ve bağlantıların performansını gösterir.
+
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
@@ -103,19 +105,7 @@ az portal dashboard update --resource-group myResourceGroup --name 'Simple VM Da
    --input-path portal-dashboard-template-testvm.json --location centralus
 ```
 
-Sanal makineyle ilgili verileri Azure portal içinden görebildiğinizi doğrulayın.
-
-1. Azure portalında **Pano**’yu seçin.
-
-   ![Panoya gezinti Azure portal](media/quickstart-portal-dashboard-powershell/navigate-to-dashboards.png)
-
-1. Pano sayfasında, **basıt VM panosu**' nu seçin.
-
-   ![Basit VM panosuna git](media/quickstart-portal-dashboard-powershell/select-simple-vm-dashboard.png)
-
-1. Panoyu gözden geçirin. İçeriğin bazılarının statik olduğunu, ancak VM 'nin performansını gösteren grafikler de olduğunu görebilirsiniz.
-
-   ![Basit VM panosunu gözden geçirme](media/quickstart-portal-dashboard-powershell/review-simple-vm-dashboard.png)
+[!INCLUDE [azure-portal-review-deployed-resources](../../includes/azure-portal-review-deployed-resources.md)]
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 2466b9b9b812ae9fb590a6678d840661c74f47bd
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: cdcb61249f6cb8f7b60c891dd4899d2e5cedbae6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103439169"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104611976"
 ---
 :::row:::
     :::column span="3":::
@@ -32,7 +32,7 @@ ms.locfileid: "103439169"
 > Linux ARM64 üzerinde C# için .NET Core 3. x (DotNet-SDK-3. x paketi) gereklidir.
 
 > [!NOTE]
-> Konuşma SDK 'sını alp Linux 'ta kullanmak için, ' de alp Linux wiki ' de belgelendiği gibi bir de, chroot ortamı oluşturun [https://wiki.alpinelinux.org/wiki/Running_glibc_programs](running glibc programs) ve sonra da bu yönergeleri takip edin.
+> Konuşma SDK 'sını alp Linux 'ta kullanmak için, bir debir chroot ortamı oluşturun ve bu durumda,, [ınbc](https://wiki.alpinelinux.org/wiki/Running_glibc_programs)Linux wiki ' de
 
 ### <a name="system-requirements"></a>Sistem Gereksinimleri
 

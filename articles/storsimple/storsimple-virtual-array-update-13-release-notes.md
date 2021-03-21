@@ -4,14 +4,14 @@ description: Güncelleştirme 1,3 çalıştıran Azure StorSimple Sanal dizisine
 ms.service: storsimple
 author: v-dalc
 ms.topic: article
-ms.date: 01/22/2021
+ms.date: 03/17/2021
 ms.author: alkohli
-ms.openlocfilehash: 4e50f866c0bd44ca54c2f4df78b9507aa7077169
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: b2c2af4267140370c2aa9421a67cb3a6f413165f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102452569"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657561"
 ---
 # <a name="storsimple-virtual-array-update-13-release-notes"></a>StorSimple Sanal dizisi güncelleştirme 1,3 sürüm notları
 
@@ -31,6 +31,11 @@ Güncelleştirme 1,3, yazılım sürümü 10.0.10319.0 'e karşılık gelir.
 Bu güncelleştirme aşağıdaki geliştirmeleri içerir: KB4540725
 
 - Aktarım Katmanı Güvenliği (TLS) 1,2 zorunlu bir güncelleştirmedir ve yüklenmesi gerekir. Bu sürümden itibaren TLS 1,2, tüm Azure portal iletişimleri için standart protokol haline gelir.
+  
+   Aşağıdaki uyarıyı görürseniz, devam etmeden önce cihazdaki yazılımı güncelleştirmeniz gerekir:
+
+   Bir veya daha fazla StorSimple cihazı eski bir yazılım sürümünü çalıştırıyor. TLS 1,2 için kullanılabilen en son güncelleştirme, zorunlu bir güncelleştirmedir ve bu cihazlara hemen yüklenmesi gerekir. TLS 1,2 tüm Azure portal iletişimi için kullanılır ve bu güncelleştirme olmadan cihaz StorSimple hizmetiyle iletişim kuramaz.
+
 - Çöp toplama hata düzeltmeleri, cihaz ve depolama hesabı iki uzak bölgede olduğunda çöp toplama döngüsünün performansını geliştirir.
 - Blob zaman aşımları nedeniyle yedekleme hatalarının düzeltilmesi.
 - İşletim sistemi/. NET Framework güvenlik yamaları güncelleştirildi:
@@ -65,4 +70,4 @@ Daha eski bir sürüm notuna mi bakıyorsunuz? Şuraya gidin:
 - [StorSimple Sanal dizisi güncelleştirme 0,4 sürüm notları](./storsimple-virtual-array-update-04-release-notes.md)
 - [StorSimple Sanal dizisi güncelleştirme 0,3 sürüm notları](./storsimple-ova-update-03-release-notes.md)
 - [StorSimple Sanal dizisi güncelleştirme 0,1 ve 0,2 sürüm notları](./storsimple-ova-update-01-release-notes.md)
-- [StorSimple Sanal dizisi genel kullanılabilirlik sürüm notları](/azure/storsimple/storsimple-ova-pp-release-notes)
+- [StorSimple Sanal dizisi genel kullanılabilirlik sürüm notları](./storsimple-virtual-array-update-06-release-notes.md)

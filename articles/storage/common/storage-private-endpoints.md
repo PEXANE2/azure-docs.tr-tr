@@ -6,16 +6,16 @@ services: storage
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/12/2020
+ms.date: 03/16/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 13e274a0d43ba4399e039d1280aa5ada3c94afe5
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: 3fcc58f626622bcc728265e782906226859e1bf9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103601483"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600471"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Azure depolama için özel uç noktaları kullanma
 
@@ -53,6 +53,16 @@ Depolama hesabınızı, varsayılan olarak genel bitiş noktası üzerinden eri�
 
 ## <a name="creating-a-private-endpoint"></a>Özel uç nokta oluşturma
 
+Azure portalını kullanarak özel bir uç nokta oluşturmak için, bkz. [Azure Portal depolama hesabı deneyiminden bir depolama hesabına özel olarak bağlanma](../../private-link/tutorial-private-endpoint-storage-portal.md).
+
+PowerShell veya Azure CLı kullanarak özel bir uç nokta oluşturmak için, Bu makalelerden birine bakın. Her ikisi de hedef hizmet olarak bir Azure Web uygulaması özelliğine sahiptir, ancak bir Azure depolama hesabı için özel bir bağlantı oluşturma adımları aynıdır.
+
+- [Azure CLı kullanarak özel uç nokta oluşturma](../../private-link/create-private-endpoint-cli.md)
+
+- [Azure PowerShell kullanarak özel uç nokta oluşturma](../../private-link/create-private-endpoint-powershell.md)
+
+
+
 Özel bir uç nokta oluşturduğunuzda, bağlandığı depolama hesabı ve depolama hizmetini belirtmeniz gerekir. 
 
 Erişmeniz gereken her depolama kaynağı için [BLOB](../blobs/storage-blobs-overview.md), [Data Lake Storage 2.](../blobs/data-lake-storage-introduction.md), [Dosya](../files/storage-files-introduction.md), [kuyruk](../queues/storage-queues-introduction.md), [tablo](../tables/table-storage-overview.md)veya [statik Web siteleri](../blobs/storage-blob-static-website.md)için ayrı bir özel uç nokta gerekir. Özel uç noktada, bu depolama hizmetleri ilişkili depolama hesabının **hedef alt kaynağı** olarak tanımlanmıştır. 
@@ -64,13 +74,6 @@ Data Lake Storage 2. depolama kaynağı için özel bir uç nokta oluşturursan�
 > Genel amaçlı v2 (Standart veya Premium) depolama hesabı oluşturduğunuzdan emin olun.
 
 Coğrafi olarak yedekli depolama için yapılandırılmış bir depolama hesabıyla ikincil bölgeye okuma erişimi için, hizmetin birincil ve ikincil örnekleri için ayrı özel uç noktalara ihtiyacınız vardır. **Yük devretme** için ikincil örnek için özel bir uç nokta oluşturmanız gerekmez. Özel uç nokta, yük devretmeden sonra otomatik olarak yeni birincil örneğe bağlanır. Depolama artıklığı seçenekleri hakkında daha fazla bilgi için bkz. [Azure depolama artıklığı](storage-redundancy.md).
-
-Depolama hesabınız için özel bir uç nokta oluşturma hakkında daha ayrıntılı bilgi için aşağıdaki makalelere bakın:
-
-- [Azure portal depolama hesabı deneyiminden bir depolama hesabına özel olarak bağlanma](../../private-link/tutorial-private-endpoint-storage-portal.md)
-- [Azure portal özel bağlantı merkezini kullanarak özel bir uç nokta oluşturma](../../private-link/create-private-endpoint-portal.md)
-- [Azure CLı kullanarak özel uç nokta oluşturma](../../private-link/create-private-endpoint-cli.md)
-- [Azure PowerShell kullanarak özel uç nokta oluşturma](../../private-link/create-private-endpoint-powershell.md)
 
 <a id="connecting-to-private-endpoints"></a>
 

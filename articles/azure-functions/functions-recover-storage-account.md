@@ -3,12 +3,12 @@ title: 'Sorun giderme hatası: Azure İşlevleri Çalışma Zamanı ulaşılamı
 description: Geçersiz bir depolama hesabında sorun gidermeyi öğrenin.
 ms.topic: article
 ms.date: 09/05/2018
-ms.openlocfilehash: a62001cedd695badc72eb76c93ea9c3cb4507403
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 392882fc2f0394e61aee973a20479d8f1fa9bc92
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102499637"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606982"
 ---
 # <a name="troubleshoot-error-azure-functions-runtime-is-unreachable"></a>Sorun giderme hatası: "Azure İşlevleri Çalışma Zamanı erişilebilir değil"
 
@@ -59,6 +59,7 @@ Depolama anahtarlarını yeniden oluşturursanız, daha önce tartışılan depo
 * İşlev uygulaması, depolama hesabından gelen ve giden trafiğe izin vermek için doğru ağ kuralları olmadan App Service Ortamı (Ao) uygulamasına dağıtılır.
 
 * Depolama hesabı güvenlik duvarı etkinleştirilir ve işlevlere ve işlevlerine giden trafiğe izin verecek şekilde yapılandırılmamıştır. Daha fazla bilgi için bkz. [Azure Depolama güvenlik duvarlarını ve sanal ağları yapılandırma](../storage/common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+* `allowSharedKeyAccess`Ayarın varsayılan değeri olan olarak ayarlandığını doğrulayın `true` . Daha fazla bilgi için bkz. [Azure depolama hesabı Için paylaşılan anahtar yetkilendirmesini engelleme](https://docs.microsoft.com/azure/storage/common/shared-key-authorization-prevent?tabs=portal#verify-that-shared-key-access-is-not-allowed). 
 
 ## <a name="daily-execution-quota-is-full"></a>Günlük yürütme kotası dolu
 

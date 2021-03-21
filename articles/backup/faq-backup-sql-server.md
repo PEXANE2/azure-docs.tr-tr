@@ -5,10 +5,10 @@ ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.openlocfilehash: ca785e217da4355a44ffbb26b813d55d942c5c14
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98787629"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Azure VM yedeklemesi üzerinde çalışan SQL Server veritabanları hakkında SSS
@@ -39,7 +39,7 @@ Otomatik olarak, bir özellik olarak tüm kullanıcılar için varsayılan olara
 
 ## <a name="can-i-control-how-many-concurrent-backups-run-on-the-sql-server"></a>SQL Server üzerinde eş zamanlı olarak kaç yedekleme işlemi çalıştırılacağını denetleyebilir miyim?
 
-Evet. Bir SQL Server örneğindeki etkiyi en aza indirmek için yedekleme ilkesinin çalışma hızını azallendirebilirsiniz. Ayarı değiştirmek için:
+Evet. SQL Server örneği üzerindeki etkiyi en aza indirmek için yedekleme ilkesinin çalışma hızını azaltabilirsiniz. Ayarı değiştirmek için:
 
 1. SQL Server örneğinde, *C:\Program Files\Azure Iş yükü Backup\bin* klasöründe, dosya *üzerindeExtensionSettingsOverrides.js* oluşturun.
 2. *ExtensionSettingsOverrides.js* dosyadaki **Defaultbackuptasksthreshold** ayarını daha düşük bir değere (örneğin, 5) değiştirin. <br>

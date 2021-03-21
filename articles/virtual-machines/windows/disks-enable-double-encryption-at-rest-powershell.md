@@ -9,10 +9,10 @@ ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
 ms.openlocfilehash: cfef3925152c0b94a59c662443cf202724dadc0a
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102549558"
 ---
 # <a name="use-the-azure-powershell-module-to-enable-double-encryption-at-rest-for-managed-disks"></a>Yönetilen diskler için REST 'te çift şifrelemeyi etkinleştirmek üzere Azure PowerShell modülünü kullanın
@@ -23,7 +23,7 @@ Azure Disk Depolama, yönetilen diskler için REST 'de çift şifrelemeyi destek
 
 En son [Azure PowerShell sürümünü](/powershell/azure/install-az-ps)yükleyip [Connect-azaccount](/powershell/module/az.accounts/connect-azaccount)kullanarak bir Azure hesabında oturum açın.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 1. Azure Key Vault ve şifreleme anahtarının bir örneğini oluşturun.
 

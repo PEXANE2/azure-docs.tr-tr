@@ -10,14 +10,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/01/2021
+ms.date: 03/17/2021
 ms.author: radeltch
-ms.openlocfilehash: 2939e00d704f5c2799a1f16822cccdcc963fb73e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c5f94329920f8c850c0a47dd607ade8e83658b29
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101671558"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599927"
 ---
 # <a name="high-availability-of-sap-hana-scale-up-with-azure-netapp-files-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux Azure NetApp Files ile SAP HANA ölçeği yüksek kullanılabilirliği
 
@@ -599,6 +599,15 @@ Bu örnekte her küme düğümünün kendi HANA NFS dosya sistemleri/Hana/Shared
     nc_HN1_03  (ocf::heartbeat:azure-lb):  Started hanadb1
     vip_HN1_03 (ocf::heartbeat:IPaddr2):   Started hanadb1
     ```
+
+## <a name="configure-hana-activeread-enabled-system-replication-in-pacemaker-cluster"></a>Pacemaker kümesinde HANA etkin/Read özellikli sistem çoğaltmasını yapılandırma
+
+SAP HANA 2,0 ' den başlayarak, SAP HANA sistem çoğaltması için etkin/okuma etkin kurulum yapılmasına izin verir; burada, SAP HANA sistem çoğaltmasının ikincil sistemleri, okuma açısından yoğun iş yükleri için etkin bir şekilde kullanılabilir. Bir küme içinde bu tür kurulumu desteklemek için, istemcilerin ikincil okuma özellikli SAP HANA veritabanına erişmesini sağlayan ikinci bir sanal IP adresi gereklidir. Yük devralındıktan sonra ikincil çoğaltma sitesine hala erişilebildiğinden emin olmak için, kümenin sanal IP adresini SAPHana kaynağının ikincili ile taşıması gerekir.
+
+İkinci sanal IP ile bir Red Hat yüksek kullanılabilirlik kümesinde HANA etkin/Read özellikli sistem çoğaltmasını yönetmek için gereken ek yapılandırma, [pacemaker KÜMESINDE Hana etkin/Read özellikli sistem çoğaltmasını yapılandırma](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#configure-hana-activeread-enabled-system-replication-in-pacemaker-cluster)bölümünde açıklanmaktadır.  
+
+Devam etmeden önce, belgenin yukarıdaki segmentlerinde anlatıldığı gibi SAP HANA veritabanını yöneten Red Hat yüksek kullanılabilirlik kümesini tam olarak yapılandırdığınızdan emin olun.    
+
 
 ## <a name="test-the-cluster-setup"></a>Küme kurulumunu test etme
 

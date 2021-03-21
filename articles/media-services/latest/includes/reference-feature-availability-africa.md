@@ -4,12 +4,12 @@ ms.service: media-services
 ms.topic: include
 ms.date: 10/28/2020
 ms.author: inhenkel
-ms.openlocfilehash: c80a17b1e458793fe8f18ad5c4438884e007d666
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 11bee8a36bcf6f5cbf0d16b27c6cff38414d4647
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242733"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104611792"
 ---
 <!--Feature availability in region-->
 
@@ -17,7 +17,7 @@ ms.locfileid: "93242733"
 
 | Özellik| Güney Afrika - Kuzey | Güney Afrika - Batı |
 | --- | --- | --- |
-| [Azure EventGrid](../reacting-to-media-services-events.md) | ![Afrika Kuzey olay Kılavuzu genel kullanım](../media/azure-clouds-regions/ga.svg) | ![Afrika Güney Event Grid genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) |
+| [Azure EventGrid](../monitoring/reacting-to-media-services-events.md) | ![Afrika Kuzey olay Kılavuzu genel kullanım](../media/azure-clouds-regions/ga.svg) | ![Afrika Güney Event Grid genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) |
 | [Videoanaliz Zerönayar](../analyzing-video-audio-files-concept.md) | ![Afrika video Çözümleyicisi Kuzey genel kullanım](../media/azure-clouds-regions/ga.svg) | ![Afrika Güney videosu Çözümleyicisi Genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) |
 | [Audioanaliz Zerönayar](../analyzing-video-audio-files-concept.md) | ![Afrika Kuzey Audioanalonu önceden ayarlanmış genel kullanım](../media/azure-clouds-regions/ga.svg) | ![Afrika Güney Audioanaliz Zerönceden ayarlanmış genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) |
 | [Standardencoderönayar](../encoding-concept.md) | ![Afrika Kuzey Standardencoderönayar genel kullanım](../media/azure-clouds-regions/ga.svg) | ![Afrika Güney Standardencoderönayar genel kullanım](../media/azure-clouds-regions/ga.svg) |

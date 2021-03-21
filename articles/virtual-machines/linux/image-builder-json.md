@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
 ms.reviewer: cynthn
-ms.openlocfilehash: a3138da0ecbcabaeb7ef910975afc3b7005e5b50
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: aaaabe758b036335062907c8e5549ae876c63997
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102519716"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594742"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Önizleme: Azure görüntü Oluşturucu şablonu oluşturma 
 
@@ -249,7 +249,7 @@ Kullanırken `customize` :
 - Bir Özelleştirici başarısız olursa, tüm özelleştirme bileşeni başarısız olur ve bir hatayı geri bildirir.
 - Bir şablonda kullanmadan önce betiği iyice sınamanız önemle tavsiye edilir. Kendi sanal makinenizde betik hata ayıklaması daha kolay olacaktır.
 - Gizli verileri betiklerine yerleştirmeyin. 
-- [MSI](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-user-assigned-identity)kullanmadığınız durumlar dışında, betik konumlarının herkese açık bir şekilde erişilebilir olması gerekir.
+- [MSI](./image-builder-user-assigned-identity.md)kullanmadığınız durumlar dışında, betik konumlarının herkese açık bir şekilde erişilebilir olması gerekir.
 
 ```json
         "customize": [
@@ -417,7 +417,7 @@ Dosya Özelleştirici özellikleri:
 - **sourceURI** -erişilebilir bir depolama uç noktası, GitHub veya Azure depolama olabilir. Bir dizinin tamamını değil yalnızca bir dosyayı indirebilirsiniz. Bir dizin indirmeniz gerekiyorsa, sıkıştırılmış bir dosya kullanın, ardından Shell veya PowerShell özelleştiricileri kullanarak bu dosyayı açın. 
 
 > [!NOTE]
-> SourceURI bir Azure depolama hesabı ise, blob ortak olarak işaretlenmiş ise, blob üzerinde okuma erişimi için yönetilen Kullanıcı kimliği izinleri vermeniz gerekir. Depolama izinlerini ayarlamak için lütfen bu [örneğe](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-user-assigned-identity#create-a-resource-group) bakın.
+> SourceURI bir Azure depolama hesabı ise, blob ortak olarak işaretlenmiş ise, blob üzerinde okuma erişimi için yönetilen Kullanıcı kimliği izinleri vermeniz gerekir. Depolama izinlerini ayarlamak için lütfen bu [örneğe](./image-builder-user-assigned-identity.md#create-a-resource-group) bakın.
 
 - **hedef** : Bu, tam hedef yolu ve dosya adıdır. Başvurulan tüm yol ve alt dizinler var olmalıdır, bunu önceden ayarlamak için Shell veya PowerShell özelleştiricileri kullanın. Yolu oluşturmak için özelleştiriciler ' i kullanabilirsiniz. 
 
@@ -456,7 +456,7 @@ OS support: Windows
 - **Updatelimit** : isteğe bağlı, kaç güncelleştirme yüklenebileceğini tanımlar, varsayılan 1000.
  
 > [!NOTE]
-> Windows Update Özelleştirici, bekleyen bir Windows yeniden başlatmaları varsa veya uygulama yüklemeleri hala çalışıyorsa başarısız olabilir, genellikle bu hatayı özelleştirme. log ' da görebilirsiniz `System.Runtime.InteropServices.COMException (0x80240016): Exception from HRESULT: 0x80240016` . Bir Windows yeniden başlatmasına ekleme yapmayı ve/veya Windows Update çalıştırmadan önce iç satır komutlarında veya betiklerdeki [uyku](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep) veya bekleme komutlarını kullanarak yüklemelerin tamamlanmasını istediğiniz zaman izin vermenizi önemle tavsiye ederiz.
+> Windows Update Özelleştirici, bekleyen bir Windows yeniden başlatmaları varsa veya uygulama yüklemeleri hala çalışıyorsa başarısız olabilir, genellikle bu hatayı özelleştirme. log ' da görebilirsiniz `System.Runtime.InteropServices.COMException (0x80240016): Exception from HRESULT: 0x80240016` . Bir Windows yeniden başlatmasına ekleme yapmayı ve/veya Windows Update çalıştırmadan önce iç satır komutlarında veya betiklerdeki [uyku](/powershell/module/microsoft.powershell.utility/start-sleep) veya bekleme komutlarını kullanarak yüklemelerin tamamlanmasını istediğiniz zaman izin vermenizi önemle tavsiye ederiz.
 
 ### <a name="generalize"></a>Genelleştir 
 Varsayılan olarak, Azure Image Builder, görüntüyü ' genelleştirmek ' için her görüntü özelleştirme aşamasının sonunda ' deprovision ' kodunu da çalıştıracak. Genelleştirmek, görüntünün ayarlandığı bir işlemdir, bu sayede birden fazla VM oluşturmak için yeniden kullanılabilir. Windows VM 'Leri için Azure Image Builder, Sysprep kullanır. Linux için Azure görüntü Oluşturucu ' waagent-deprovision ' çalıştırır. 

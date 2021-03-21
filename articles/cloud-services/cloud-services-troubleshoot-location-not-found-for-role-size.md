@@ -8,10 +8,10 @@ ms.service: cloud-services
 ms.topic: troubleshooting
 ms.date: 02/22/2021
 ms.openlocfilehash: b11aedb52be3c263c781c2ac68d1d5197ba4def2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101746744"
 ---
 # <a name="troubleshoot-locationnotfoundforrolesize-when-deploying-a-cloud-service-classic-to-azure"></a>Azure 'a bir bulut hizmeti (klasik) dağıttığınızda LocationNotFoundForRoleSize sorunlarını giderme
@@ -53,7 +53,7 @@ Bu senaryoda, bulut hizmetinizi (klasik) dağıtmak için farklı bir bölge vey
 - `--size`Kısmi bir boyut adına göre arama yapmak için parametresini kullanın.
 - Daha fazla bilgi için bkz. [SKU kullanılamıyor Kılavuzu Için çözüm hatası](../azure-resource-manager/templates/error-sku-not-available.md#solution-2---azure-cli) .
 
-    **Örnek:**
+    **Örneğin:**
 
     ```azurecli
     az vm list-skus --location southcentralus --size Standard_F --output table
@@ -69,7 +69,7 @@ Bu senaryoda, bulut hizmetinizi (klasik) dağıtmak için farklı bir bölge vey
 - Bu komut için en son PowerShell sürümüne sahip olmanız gerekir.
 - Daha fazla bilgi için bkz. [SKU kullanılamıyor Kılavuzu Için çözüm hatası](../azure-resource-manager/templates/error-sku-not-available.md#solution-1---powershell) .
 
-**Örnek:**
+**Örneğin:**
 
 ```azurepowershell
 Get-AzComputeResourceSku | where {$_.Locations -icontains "centralus"}

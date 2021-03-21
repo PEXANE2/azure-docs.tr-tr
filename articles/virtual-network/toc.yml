@@ -29,6 +29,8 @@
       href: tutorial-create-nat-gateway-portal.md
     - name: NAT ağ geçidi genel yük dengeleyiciyi tümleştirme
       href: tutorial-nat-gateway-load-balancer-public-portal.md
+    - name: NAT Gateway iç yük dengeleyiciyi tümleştirme
+      href: tutorial-nat-gateway-load-balancer-internal-portal.md
 - name: Örnekler
   items:
     - name: Azure CLI’si

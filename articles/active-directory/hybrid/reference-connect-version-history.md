@@ -8,16 +8,16 @@ ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 08/07/2020
+ms.date: 03/16/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 706f759243fd9edbd5f47633cb2638d6b06beec1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a19babffa63667b0d2deb954d432421a2b7868b8
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100376369"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104722149"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: sürüm sürümü geçmişi
 Azure Active Directory (Azure AD) ekibi, yeni özellikler ve işlevlerle Azure AD Connect düzenli olarak güncelleştirir. Tüm eklemeler tüm izleyiciler için geçerli değildir.
@@ -56,6 +56,86 @@ Bununla birlikte, tüm en son özellikleri ve güncelleştirmeleri beğenmezseni
 >Azure AD Connect en son sürüme nasıl yükselteceğiniz hakkında daha fazla bilgi edinmek için lütfen [Bu makaleye](./how-to-upgrade-previous-version.md) bakın.
 >
 >Kullanımdan kaldırılan sürümlerde sürüm geçmişi bilgileri için bkz. [Azure AD Connect sürüm sürümü geçmişi Arşivi](reference-connect-version-history-archive.md)
+
+
+## <a name="1623"></a>1.6.2.3
+
+>[!NOTE]
+> - Bu sürüm yalnızca indirileceği için kullanılabilir hale getirilir.
+> - Bu sürüme yükseltme, eşitleme kuralı değişiklikleri nedeniyle tam eşitleme gerektirecektir.
+> - Bu sürüm, AADConnect sunucusunu yeni v2 uç noktasına varsayılan olarak alır. Bu uç noktasının, Almanya Ulusal bulutu, Çince Ulusal bulut ve ABD kamu bulutu 'nda desteklenmediğini ve bu sürümü bu bulutlarda dağıtmanız gerekiyorsa, v1 uç noktasına dönmek için [Bu yönergeleri](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-endpoint-api-v2#rollback) izlemeniz gerekir. Bunun yapılmaması eşitlemede hatalara neden olur.
+
+### <a name="release-status"></a>Yayın durumu
+3/17/2021: indirilmek üzere yayınlandı
+
+### <a name="functional-changes"></a>İşlevsel değişiklikler
+
+ - Yazılan geri gruplardaki üyeliği 50.000 üyelerine sınırlamak için varsayılan eşitleme kuralları güncelleştirildi.
+   - Grup geri yazma işleminde üyelik sayısını sınırlandırmak için yeni varsayılan eşitleme kuralları eklendi (AD-grup geri yazma üye sınırına kadar) ve grup eşitlemesi Azure Active Directory (AAD grubu writeup üye sınırı) grupları.
+   - Yazılan geri gruplardaki üyeleri 50.000 'a sınırlamak için ' Out to ad-Group soainaad-Exchange ' kuralına üye özniteliği eklendi
+ - Eşitleme kuralları, grup geri yazma v2 'yi destekleyecek şekilde güncelleştirildi-"from AAD-Group SOAInAAD" kuralı klonlandığında ve AADConnect yükseltildikten sonra.
+     -Güncelleştirilmiş kural varsayılan olarak devre dışı bırakılacak, bu nedenle targetWritebackType null olacaktır.
+     - AADConnect, dağıtım grupları olarak tüm bulut gruplarını (geri yazma için etkinleştirilen Azure Active Directory güvenlik grupları dahil) geri alacak.
+   -"AD-grup SOAInAAD" kuralı klonlanır ve AADConnect yükseltilir.
+     - Güncelleştirilmiş kural varsayılan olarak devre dışı bırakılır. Ancak, eklenen yeni bir "AD-grup SOAInAAD-Exchange" eşitleme kuralı etkinleştirilecek.
+     - Kopyalanmış özel eşitleme kuralının önceliğine bağlı olarak, AADConnect posta ve Exchange özniteliklerini de akacaktır.
+     - Kopyalanmış özel eşitleme kuralı bazı posta ve Exchange özniteliklerini akiçermiyorsa, yeni Exchange Eşitleme kuralı bu öznitelikleri ekler.
+ - [Seçmeli Parola karması eşitleme](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-selective-password-hash-synchronization) desteği eklendi
+ - Yeni [tek nesne eşitleme cmdlet 'i](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-single-object-sync)eklendi. Azure AD Connect eşitleme yapılandırmanızın sorunlarını gidermek için bu cmdlet 'i kullanın. 
+ - Aadconnectheauagent 3.1.83.0 olarak güncelleştirildi
+ - Çok sayıda yeni veya geliştirilmiş cmdlet içeren [Adsynctools PowerShell modülünün](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-adsynctools)yeni sürümü. 
+ 
+   - Clear-ADSyncToolsMsDsConsistencyGuid
+   - ConvertFrom-ADSyncToolsAadDistinguishedName
+   - ConvertFrom-ADSyncToolsImmutableID
+   - ConvertTo-ADSyncToolsAadDistinguishedName
+   - ConvertTo-ADSyncToolsCloudAnchor
+   - ConvertTo-ADSyncToolsImmutableID
+   - Export-ADSyncToolsAadDisconnectors
+   - Export-ADSyncToolsObjects
+   - Export-ADSyncToolsRunHistory
+   - Get-ADSyncToolsAadObject
+   - Get-ADSyncToolsMsDsConsistencyGuid
+   - Import-ADSyncToolsObjects
+   - Import-ADSyncToolsRunHistory
+   - Remove-ADSyncToolsAadObject
+   - Search-ADSyncToolsADobject
+   - Set-ADSyncToolsMsDsConsistencyGuid
+   - Trace-ADSyncToolsADImport
+   - Trace-ADSyncToolsLdapQuery
+
+ - Belirteç alma hataları için hata günlüğü güncelleştirildi.
+ - Bağlantılı bilgiler hakkında daha fazla ayrıntı sağlamak için yapılandırma sayfasındaki ' daha fazla bilgi ' bağlantısı güncelleştirildi.
+ - Eski eşitleme Kullanıcı arabirimindeki CS arama sayfasından açık sütun kaldırıldı
+ - Daha önceki bir adımda kimlik bilgileri sağlanmadıysa, kullanıcıdan kimlik bilgilerini istemek veya ADSyncConfig modülünü kullanarak kendi izinlerini yapılandırmak için Grup geri yazma akışına ek kullanıcı arabirimi eklenmiştir.
+ - Bir DC 'de ADSync hizmet hesabı için MSA 'yi otomatik olarak oluşturun. 
+ -  Mevcut cmdlet 'lerde Azure Active Directory DirSync özellik grubu geri yazma v2 'yi ayarlama ve alma özelliği eklendi:
+    - Set-ADSyncAADCompanyFeature
+    - Get-ADSyncAADCompanyFeature
+ - AWS API sürümünü okumak için 2 cmdlet eklendi
+    - Get-ADSyncAADConnectorImportApiVersion-AWS API sürümünü içeri aktarma
+    - Get-ADSyncAADConnectorExportApiVersion-AWS API sürümünü dışarı aktarmayı almak için
+
+ - Eşitleme kurallarında yapılan değişiklikler artık hizmette sorun gidermeye yardımcı olmak için izlenir. "Get-ADSyncRuleAudit" cmdlet 'i izlenen değişiklikleri alacaktır.
+ - ADSyncAdmin grubundaki bir kullanıcının AD DS bağlayıcı hesabını değiştirmesine izin vermek için [Adsyncconfig PowerShell modülündeki](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account#using-the-adsyncconfig-powershell-module) Add-ADSyncADDSConnectorAccount cmdlet 'i güncelleştirildi. 
+
+### <a name="bug-fixes"></a>Hata düzeltmeleri
+ - Beyaz bir arka planda daha fazla parlaklık gereksinimini karşılamak için devre dışı ön plan rengi güncelleştirildi. Renk parlaklığını karşılamak için devre dışı bir sayfa seçildiğinde, ön plan metin rengini beyaza ayarlamak için gezinti ağacı için ek koşullar eklendi.
+ - Set-ADSyncPasswordHashSyncPermissions cmdlet 'i için ayrıntı düzeyini artırın (set-ADSyncPasswordHashSyncPermissions), isteğe bağlı "ADobjectDN" parametresini içerecek şekilde güncelleştirildi. 
+ - Erişilebilirlik hata çözümü. Ekran okuyucu artık, ormanlar listesini "**orman listesi listesi**" yerine "**Ormanlar listesi**" olarak tutan UX öğesini tanımlıyor.
+ - Azure AD Connect sihirbazındaki bazı öğeler için ekran okuyucusu çıkışı güncelleştirildi. Kontrast gereksinimlerini karşılamak için düğme üzerine gelme rengi güncelleştirildi. Karşıtlık gereksinimlerinin yerine getirmek için Synchronization Service Manager başlık rengi güncelleştirildi.
+ - Özel uzantı özniteliklerine sahip olan, zaman uyumlu yapılandırmadan AADConnect 'i yükleme ile ilgili bir sorun düzeltildi-eşitleme kuralı uygulanırken hedef şemadaki uzantı özniteliklerinin denetlenmesini atlamak için bir koşul eklediniz.
+ - Grup geri yazma özelliği etkinse, yüklemeye uygun izinler eklenir.
+ - İçeri aktarma sırasında yinelenen varsayılan eşitleme kuralı önceliğini düzeltir
+ - Sistem durumu portalı aracılığıyla onarılan çakışan bir nesne için v2 API Delta içeri aktarma sırasında hazırlama hatasına neden olan bir sorun düzeltildi.
+ - Eşitleme altyapısında, CS nesnelerinin tutarsız bir bağlantı durumuna sahip olması nedeniyle oluşan bir sorun düzeltildi
+ - Get-ADSyncConnectorStatistics çıkışına içeri aktarma sayaçları eklendi.
+ - Pass2 Sihirbazı sırasında bazı köşe durumlarında, erişilebilir etki alanı devre dışı (daha önce seçili) sorunu düzeltildi.
+ - Özel kuralda Yinelenen öncelik varsa, ilke içeri ve dışarı aktarma işlemi başarısız olur 
+ - Etki alanı seçim mantığındaki bir hata düzeltildi.
+ - Kaynak bağlantısı olarak mS-DS-ımbu GUID kullanırsanız ve AD-grup birleşimi kuralından Içine klonlamak için Build 1.5.18.0 ile ilgili bir sorunu düzeltir.
+ - Yeni AADConnect yüklemeleri, kullanılabilir bir tane varsa ve farklı bir tane geçirilmemişse, bulutta depolanan dışarı aktarma silme eşiğini kullanır.
+ - AADConnect 'in karma olarak birleştirilmiş cihazların AD displayName değişikliklerini okumadığı sorun düzeltildi
 
 ## <a name="15450"></a>1.5.45.0
 

@@ -6,17 +6,17 @@ ms.topic: conceptual
 ms.date: 02/11/2021
 ms.author: azfuncdf
 ms.openlocfilehash: ea4aaa1cdbe10e2db9cf619452558d104a2293ab
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102449382"
 ---
 # <a name="data-persistence-and-serialization-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler 'de veri kalıcılığı ve serileştirmesi (Azure Işlevleri)
 
 Dayanıklı İşlevler, güvenilir bir yürütme sağlamak için işlev parametrelerini, dönüş değerlerini ve diğer durumu sürekli olarak dayanıklı bir arka uca devam ettirir. Ancak, dayanıklı depolamaya kalıcı olan verilerin miktarı ve sıklığı, uygulama performansını ve depolama işlem maliyetlerini etkileyebilir. Uygulamanızın mağazalarınızın türüne bağlı olarak, veri saklama ve gizlilik ilkelerinin de göz önünde bulundurulması gerekebilir.
 
-## <a name="azure-storage"></a>Azure Storage
+## <a name="azure-storage"></a>Azure Depolama
 
 Varsayılan olarak, Dayanıklı İşlevler verileri, belirttiğiniz bir [Azure depolama](https://azure.microsoft.com/services/storage/) hesabındaki sıralara, tablolara ve bloblara devam ettirir.
 
@@ -26,7 +26,7 @@ Dayanıklı İşlevler, tüm işlev yürütmelerini güvenilir bir şekilde zama
 
 Tek bir [görev hub 'ında](durable-functions-task-hubs.md)dayanıklı işlevler, zamanlama etkinlik işlevleri için adlı bir *iş öğesi* kuyruğuna `<taskhub>-workitem` ve Orchestrator ve Entity işlevlerini çizelgelemek veya yeniden başlatmak için adlı bir veya daha fazla *Denetim kuyruğu* için ileti oluşturur ve ekler `<taskhub>-control-##` . Denetim sıralarının sayısı, uygulamanız için yapılandırılan bölüm sayısına eşittir. Kuyruklar ve bölümler hakkında daha fazla bilgi için bkz. [performans ve ölçeklenebilirlik belgeleri](durable-functions-perf-and-scale.md).
 
-### <a name="tables"></a>Tablolar
+### <a name="tables"></a>Tables
 
 İletileri başarıyla işlem yaptıktan sonra, sonuçta elde edilen eylemlerinin kayıtları adlı *Geçmiş* tablosuna kalıcı hale getirilir `<taskhub>History` . Orchestration girdileri, çıktılar ve özel durum verileri de adlı *örnekler* tablosunda kalıcı hale getirilir `<taskhub>Instances` .
 

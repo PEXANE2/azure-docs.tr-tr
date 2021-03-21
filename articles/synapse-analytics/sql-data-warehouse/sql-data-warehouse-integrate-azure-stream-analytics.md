@@ -2,21 +2,21 @@
 title: Adanmış SQL havuzunda Azure Stream Analytics kullanma
 description: Gerçek zamanlı çözümler geliştirmek için Azure SYNAPSE 'te adanmış SQL havuzu ile Azure Stream Analytics kullanmaya yönelik ipuçları.
 services: synapse-analytics
-author: kevinvngo
+author: gaursa
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 9/25/2020
-ms.author: kevin
+ms.author: gaursa
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 8fbe546beb1004214e544f8eb160884c0f64ef9e
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 023cf55a01f34277dd5c5707d0d123f54c1674df
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "96458231"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600097"
 ---
 # <a name="use-azure-stream-analytics-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzu ile Azure Stream Analytics kullanma
 
@@ -24,7 +24,7 @@ Azure Stream Analytics, bulutta akış verileri üzerinde düşük gecikmeli, y�
 
 Bu makalede, Azure Stream Analytics işlerle yüksek aktarım hızı verileri alımı için adanmış SQL havuzunuzu bir çıkış havuzu olarak kullanmayı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure Stream Analytics Iş-Azure Stream Analytics bir iş oluşturmak Için, Azure Stream Analytics öğreticisini [kullanmaya başlamak](../../stream-analytics/stream-analytics-real-time-fraud-detection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) için şu adımları izleyin:  
 
@@ -52,8 +52,8 @@ Aşağıdaki değerleri girin:
 
 * *Çıkış diğer adı*: Bu iş çıktısı için kolay bir ad girin.
 * *Abonelik*:
-  * Adanmış SQL havuzunuz Stream Analytics işle aynı abonelikte yer alıyorsa, ***aboneliklerinizden Azure SYNAPSE Analytics**' i seçin.
-  _ Adanmış SQL havuzunuz farklı bir abonelikte yer alıyorsa, Azure SYNAPSE Analytics ayarlarını el ile sağla ' ya tıklayın.
+  * Adanmış SQL havuzunuz Stream Analytics işle aynı abonelikte yer alıyorsa, ***aboneliklerinizden Azure SYNAPSE Analytics Seç***' e tıklayın.
+  * Adanmış SQL havuzunuz farklı bir abonelikte yer alıyorsa, Azure SYNAPSE Analytics ayarlarını el ile sağla ' ya tıklayın.
 * *Veritabanı*: açılan listeden hedef veritabanını seçin.
 * *Kullanıcı adı*: veritabanı için yazma izinlerine sahip olan bir hesabın kullanıcı adını belirtin.
 * *Parola*: belirtilen kullanıcı hesabı için parola belirtin.
@@ -100,23 +100,23 @@ WITH (DISTRIBUTION = ROUND_ROBIN)
 
 ### <a name="step-5"></a>5. Adım
 
-Stream Analytics Azure portal işi için, iş adı ' na tıklayın.  _*_Çıkış ayrıntıları_*_ bölmesindeki **_Test_* _ düğmesine tıklayın.
+Stream Analytics Azure portal işi için, iş adı ' na tıklayın.  _ *_Çıkış ayrıntıları_** bölmesinde ***Test** _ düğmesine tıklayın.
 
 ![Outpout ayrıntılarında test düğmesi ](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asatest.png) veritabanı bağlantısı başarılı olduğunda portalda bir bildirim görürsünüz.
 
 ### <a name="step-6"></a>6. Adım
 
-_*_İş topolojisi_*_ altında _*_sorgu_*_ menüsüne tıklayın ve oluşturduğunuz akış çıktısına veri eklemek için sorguyu değiştirin.  Sorgunuzu test etmek için _*_Seçili sorguyu sına_*_ düğmesine tıklayın.  Sorgu testiniz başarılı olduğunda _*_sorguyu Kaydet_*_ düğmesine tıklayın.
+_*_İş topolojisi_*_ altında ***sorgu** _ menüsüne tıklayın ve oluşturduğunuz akış çıktısına veri eklemek için sorguyu değiştirin.  Sorgunuzu test etmek için _*_Seçili sorguyu sına_*_ düğmesine tıklayın.  Sorgu testiniz başarılı olduğunda _ *_sorguyu Kaydet_** düğmesine tıklayın.
 
 ![Sorguyu Kaydet](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaquery.png)
 
 ### <a name="step-7"></a>7. Adım
 
-Azure Stream Analytics işini başlatın.  _*_Genel bakış_*_ menüsündeki _*_Başlat_*_ düğmesine tıklayın.
+Azure Stream Analytics işini başlatın.  _ *_Genel bakış_** menüsünde ***Başlat** _ düğmesine tıklayın.
 
 ![Stream Analytics işini başlatma](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastart.png)
 
-Başlangıç işi bölmesindeki _ *_Başlat_** düğmesine tıklayın.
+İşi Başlat bölmesindeki ***Başlat*** düğmesine tıklayın.
 
 ![Başlat 'a tıklayın](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastartconfirm.png)
 

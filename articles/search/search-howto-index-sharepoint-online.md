@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/01/2021
 ms.openlocfilehash: 5a44c40838b7f7fa9ca499ade49317ff9ce828fe
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102498906"
 ---
 # <a name="how-to-configure-sharepoint-online-indexing-in-cognitive-search-preview"></a>Bilişsel Arama 'da SharePoint Online Dizin oluşturmayı yapılandırma (Önizleme)
@@ -263,7 +263,7 @@ Dizin oluşturucuyu belge meta verilerini dizin olarak ayarladıysanız, dizin i
 > [!NOTE]
 > Özel meta veriler önizlemenin geçerli sürümüne dahil değildir.
 
-| Tanımlayıcı | Tür | Açıklama | 
+| Tanımlayıcı | Tür | Description | 
 | ------------- | -------------- | ----------- |
 | metadata_spo_site_library_item_id | Edm.String | Site KIMLIĞI, kitaplık KIMLIĞI ve öğe KIMLIĞI, bir site için bir belge kitaplığında bir öğeyi benzersiz şekilde tanımlayan birleşim anahtarı. |
 | metadata_spo_site_id | Edm.String | SharePoint Online sitesinin KIMLIĞI. |

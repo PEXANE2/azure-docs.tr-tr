@@ -11,10 +11,10 @@ ms.topic: include
 ms.custom: include file
 ms.author: peiliu
 ms.openlocfilehash: 96cdeb7c35cd1ccd503f7ce01e1098a6b83884c3
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103622251"
 ---
 SMS mesajları göndermek için Iletişim Hizmetleri C# SMS istemci Kitaplığı ' nı kullanarak Azure Iletişim Hizmetleri ile çalışmaya başlayın.
@@ -41,7 +41,7 @@ Bu hızlı başlangıcı tamamlamak, Azure hesabınızda birkaç ABD Doları vey
 
 ### <a name="create-a-new-c-application"></a>Yeni bir C# uygulaması oluşturma
 
-Konsol penceresinde (cmd, PowerShell veya Bash gibi), `dotnet new` adıyla yeni bir konsol uygulaması oluşturmak için komutunu kullanın `SmsQuickstart` . Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: **program.cs**.
+Konsol penceresinde (cmd, PowerShell veya Bash gibi), `dotnet new` adıyla yeni bir konsol uygulaması oluşturmak için komutunu kullanın `SmsQuickstart` . Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: **program. cs**.
 
 ```console
 dotnet new console -o SmsQuickstart
@@ -62,7 +62,7 @@ Hala uygulama dizininde, komutunu kullanarak .NET için Azure Iletişim Hizmetle
 dotnet add package Azure.Communication.Sms --version 1.0.0-beta.4
 ```
 
-`using`Ad alanını eklemek için **program.cs** üst kısmına bir yönerge ekleyin `Azure.Communication` .
+`using`Ad alanını dahil etmek Için **program. cs** ' nin üstüne bir yönerge ekleyin `Azure.Communication` .
 
 ```csharp
 
@@ -87,7 +87,7 @@ Aşağıdaki sınıflar ve arabirimler, C# için Azure Iletişim Hizmetleri SMS 
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
- **Program.cs** 'i bir metin düzenleyicisinde açın ve `Main` `SmsClient` bağlantı dizeniz ile başlatmak için yöntemin gövdesini kodla değiştirin. Aşağıdaki kod, adlı bir ortam değişkeninden kaynak için bağlantı dizesini alır `COMMUNICATION_SERVICES_CONNECTION_STRING` . [Kaynak bağlantı dizesini yönetme](../../create-communication-resource.md#store-your-connection-string)hakkında bilgi edinin.
+ **Program. cs** 'yi bir metin düzenleyicisinde açın ve `Main` `SmsClient` bağlantı dizeniz ile başlatmak için yöntemin gövdesini kodla değiştirin. Aşağıdaki kod, adlı bir ortam değişkeninden kaynak için bağlantı dizesini alır `COMMUNICATION_SERVICES_CONNECTION_STRING` . [Kaynak bağlantı dizesini yönetme](../../create-communication-resource.md#store-your-connection-string)hakkında bilgi edinin.
 
 
 ```csharp
@@ -100,7 +100,7 @@ SmsClient smsClient = new SmsClient(connectionString);
 
 ## <a name="send-a-11-sms-message"></a>1:1 SMS iletisi gönder
 
-Tek bir alıcıya SMS iletisi göndermek için, `Send` `SendAsync` SmsClient ' dan or işlevini çağırın. Bu kodu `Main` **program.cs** içindeki End yöntemine ekleyin:
+Tek bir alıcıya SMS iletisi göndermek için, `Send` `SendAsync` SmsClient ' dan or işlevini çağırın. Bu kodu `Main` **program. cs** içindeki yönteminin sonuna ekleyin:
 
 ```csharp
 SmsSendResult sendResult = smsClient.Send(

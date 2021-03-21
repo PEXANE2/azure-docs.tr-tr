@@ -5,19 +5,19 @@ ms.topic: include
 ms.date: 08/18/2020
 ms.author: inhenkel
 ms.custom: CLI
-ms.openlocfilehash: 6c14cd6cada678d1cf5ac58fbd560ec318fb9311
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 81b051bdac6e51ffbaa18f3e73a296c7e2b466fa
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242746"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104612991"
 ---
 <!--Feature availability in region-->
 ## <a name="asia-pacific"></a>Asya Pasifik
 
 | Özellik| Doğu Asya | Güneydoğu Asya |
 | --- | :---: | :---: |
-| [Azure EventGrid](../reacting-to-media-services-events.md) | ![Azure EventGrid Doğu Asya genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid Güneydoğu Asya genel kullanılabilirliği](../media/azure-clouds-regions/ga.svg) |
+| [Azure EventGrid](../monitoring/reacting-to-media-services-events.md) | ![Azure EventGrid Doğu Asya genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid Güneydoğu Asya genel kullanılabilirliği](../media/azure-clouds-regions/ga.svg) |
 | [Videoanaliz Zerönayar](../analyzing-video-audio-files-concept.md) | ![ Videoanaliz Zerönayar Doğu Asya genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) | ![Videoanaliz Zerönayar Güneydoğu Asya genel kullanılabilirliği](../media/azure-clouds-regions/ga.svg) |
 | [Audioanaliz Zerönayar](../analyzing-video-audio-files-concept.md) | ![Audioanalbir ön ayar Doğu Asya genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) | ![ Audioanalk önceden ayarlanmış Güneydoğu Asya genel kullanılabilirliği](../media/azure-clouds-regions/ga.svg) |
 | [Standardencoderönayar](../encoding-concept.md) | ![Standardencoderönayar Doğu Asya genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) | ![ Standardencoderönayar Güneydoğu Asya genel kullanılabilirliği](../media/azure-clouds-regions/ga.svg) |

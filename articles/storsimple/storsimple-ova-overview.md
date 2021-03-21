@@ -5,14 +5,14 @@ author: alkohli
 ms.assetid: 169c639b-1124-46a5-ae69-ba9695525b77
 ms.service: storsimple
 ms.topic: conceptual
-ms.date: 02/02/2021
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: af48e1f415e0ca0b1027d277f70c3f0f1a11e687
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 6d7d8c37d0e7ffacb3221a4f30a96ef6cccda819
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526774"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104674453"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>StorSimple Sanal dizisine giriş
 
@@ -32,7 +32,7 @@ Sanal dizi, Iscsı veya sunucu Ileti bloğu (SMB) protokolünü destekler. Mevcu
 
 Aşağıdaki tabloda, StorSimple Sanal dizisinin önemli özellikleri özetlenmektedir.
 
-| Öne çıkan özelliği | StorSimple Sanal Dizisi |
+| Özellik | StorSimple Sanal Dizisi |
 | --- | --- |
 | Yükleme gereksinimleri |Sanallaştırma altyapısını (Hyper-V veya VMware) kullanır |
 | Kullanılabilirlik |Tek düğüm |
@@ -57,7 +57,7 @@ StorSimple, Kullanıcı ve sunucuları, uygulama değişikliği olmadan dakikala
 
 Aşağıdaki tabloda, StorSimple Sanal dizi çözümünün sağladığı bazı önemli avantajlar açıklanmaktadır.
 
-| Öne çıkan özelliği | Avantaj |
+| Özellik | Avantaj |
 | --- | --- |
 | Saydam tümleştirme |Sanal dizi, Iscsı veya SMB protokolünü destekler. Yerel katman ile bulut katmanı arasındaki veri taşıma işlemi sorunsuz ve Kullanıcı için saydamdır. |
 | Azaltılan depolama maliyetleri |StorSimple sayesinde, en çok kullanılan etkin verilerin geçerli taleplerini karşılamak için yeterli yerel depolama alanı temin edersiniz. Depolama alanı büyüdükçe StorSimple katmanları, verileri düşük maliyetli bulut depolamaya dönüştürür. Depolama gereksinimlerini ve harcamasını daha fazla azaltmak için veriler buluta gönderilmeden önce çoğaltılır ve sıkıştırılır. |

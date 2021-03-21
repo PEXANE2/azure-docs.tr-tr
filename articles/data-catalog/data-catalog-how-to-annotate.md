@@ -6,14 +6,16 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 61a91ca8a51886c28beee77853d1ae67911e00e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89fa1b542c54fc962f8c12a2142884c677afb259
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87081245"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674657"
 ---
 # <a name="how-to-annotate-data-sources-in-azure-data-catalog"></a>Azure Veri Kataloğu 'nda veri kaynaklarına açıklama ekleme
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 ## <a name="introduction"></a>Giriş
 
@@ -37,7 +39,7 @@ Veri Kataloğu aşağıdaki ek açıklama türlerini destekler:
 | Ek Açıklama | Notlar |
 | --- | --- |
 | Kolay ad |Veri varlıklarının daha kolay anlaşılır olması için veri varlık düzeyinde kolay adlar sağlanabilir. Kolay adlar en çok, temel alınan nesne adı şifreli olduğunda, kısaltılmıştır ve kullanıcılara anlamlı değildir. |
-| Açıklama |Açıklamalar veri varlığı ve öznitelik/sütun düzeylerinde sağlanabilir. Açıklamalar, kullanıcının veri varlığı veya kullanımı üzerinde perspektifi tanımlayan serbest biçimli kısa metin açıklamalarıdır. |
+| Description |Açıklamalar veri varlığı ve öznitelik/sütun düzeylerinde sağlanabilir. Açıklamalar, kullanıcının veri varlığı veya kullanımı üzerinde perspektifi tanımlayan serbest biçimli kısa metin açıklamalarıdır. |
 | Etiketler (Kullanıcı etiketleri) |Etiketler veri varlığı ve öznitelik/sütun düzeylerinde sağlanabilir. Kullanıcı etiketleri, veri varlıklarını veya özniteliklerini sınıflandırmak için kullanılabilecek Kullanıcı tanımlı etiketlerdir. |
 | Etiketler (sözlük etiketleri) |Etiketler veri varlığı ve öznitelik/sütun düzeylerinde sağlanabilir. Sözlük etiketleri, genel bir iş sınıflandırması kullanarak veri varlıklarını veya özniteliklerini sınıflandırmak için kullanılabilen, merkezi olarak tanımlanmış sözlük koşullardır. Daha fazla bilgi için bkz  [. yönetilen etiketlemeyle Ilgili Iş sözlüğünü ayarlama](data-catalog-how-to-business-glossary.md) |
 | Uzmanı |Uzmanlar, veri varlık düzeyinde sağlanabilir. Uzmanlar, veri üzerinde uzman perspektifleri olan kullanıcıları veya grupları belirler ve kayıtlı veri kaynaklarını bulacak ve mevcut ek açıklamalar tarafından yanıtlanmayan soruların bulunduğu kullanıcılar için iletişim noktası olarak görev yapabilir. |

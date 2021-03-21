@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: bwren
 ms.openlocfilehash: 3300b0587cbb6c2193b56c9152af0cb11ea51936
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102033308"
 ---
 # <a name="overview-of-azure-platform-logs"></a>Azure platform günlüklerine genel bakış
@@ -43,7 +43,7 @@ Farklı Azure platformu günlüklerini görüntülemek ve analiz etmek için far
 ## <a name="destinations"></a>Hedefler
 İzleme gereksinimlerinize bağlı olarak, aşağıdaki tabloda yer alan hedeflere bir veya daha fazlasına platform günlükleri gönderebilirsiniz. [Tanılama ayarı oluşturarak](../essentials/diagnostic-settings.md)platform günlükleri için hedefleri yapılandırın.
 
-| Hedef | Açıklama |
+| Hedef | Description |
 |:---|:---|
 | Log Analytics çalışma alanı | Tüm Azure kaynaklarınızın günlüklerini birlikte çözümleyin ve [günlük sorguları](../logs/log-query-overview.md) ve [günlük uyarıları](../alerts/alerts-log.md)da dahil olmak üzere [Azure izleyici günlüklerine](../logs/data-platform-logs.md) sunulan tüm özelliklerden yararlanın. Günlük sorgusunun sonuçlarını bir Azure panosuna sabitleyin veya etkileşimli bir raporun parçası olarak çalışma kitabına dahil edin. |  |
 | Olay hub'ı | Platform günlüğü verilerini Azure dışında, örneğin bir üçüncü taraf SıEM veya özel telemetri platformuna gönderin.

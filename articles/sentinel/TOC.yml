@@ -21,7 +21,7 @@
       href: tutorial-monitor-your-data.md
     - name: Olayları araştırma
       href: tutorial-investigate-cases.md
-    - name: Tehditlere yanıt verme
+    - name: Tehditleri yanıtlamak için Otomasyonu kullanma
       href: tutorial-respond-threats-playbook.md
     - name: KQL sorguları oluşturma (modülü öğrenme)
       href: /learn/paths/sc-200-utilize-kql-for-azure-sentinel/
@@ -37,6 +37,14 @@
           href: resource-context-rbac.md
     - name: Gelişmiş çok aşamalı saldırı algılama
       href: fusion.md
+    - name: Otomasyon (SOAR)
+      items:
+        - name: Azure Sentinel 'de SOAR
+          href: automation-in-azure-sentinel.md
+        - name: Olay işleme için Otomasyon kuralları
+          href: automate-incident-handling-with-automation-rules.md
+        - name: PlayBook 'ları ile gelişmiş otomasyon
+          href: automate-responses-with-playbooks.md
     - name: UEBA ile gelişmiş tehditleri belirleme
       href: identify-threats-with-entity-behavior-analytics.md
     - name: Tehdit analizini Azure Sentinel’e aktarma

@@ -3,13 +3,13 @@ title: Azure Resource Manager şablonu kullanarak Azure portal panosu oluşturma
 description: Azure Resource Manager şablonu kullanarak Azure portal panosu oluşturmayı öğrenin.
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 06/15/2020
-ms.openlocfilehash: 55ac24e48c1c976eca1e6e8e51cf6e88361ec630
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.date: 03/15/2021
+ms.openlocfilehash: a3ab8767e09256ed8235dbd980ea3336a6f0fb1d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745735"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104658338"
 ---
 # <a name="quickstart-create-a-dashboard-in-the-azure-portal-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Azure portal bir pano oluşturma
 
@@ -30,9 +30,13 @@ Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakk�
 
 Bu hızlı başlangıç bölümünde oluşturduğunuz Pano, mevcut bir VM gerektirir. Bu adımları izleyerek bir VM oluşturun.
 
-1. Azure portal Cloud Shell ' ni seçin.
+1. Azure portal **Cloud Shell**' ni seçin.
 
     ![Azure portal şeritten Cloud Shell ' i seçin](media/quick-create-template/cloud-shell.png)
+
+1. **Cloud Shell** penceresinde **PowerShell**' i seçin.
+
+    ![Terminal penceresinde PowerShell ' i seçin](media/quick-create-template/powershell.png)
 
 1. Aşağıdaki komutu kopyalayın ve bir kaynak grubu oluşturmak için komut istemine girin.
 
@@ -85,19 +89,7 @@ Azure portal şablonu dağıtmak için kullanıldı. Azure portalının yanı s�
 
 ## <a name="review-deployed-resources"></a>Dağıtılan kaynakları gözden geçirme
 
-Panonun başarıyla oluşturulduğunu ve VM 'den verileri göremediklerini denetleyin.
-
-1. Azure portalında **Pano**’yu seçin.
-
-    ![Panoya gezinti Azure portal](media/quick-create-template/navigate-to-dashboards.png)
-
-1. Pano sayfasında, **basıt VM panosu**' nu seçin.
-
-    ![Basit VM panosuna git](media/quick-create-template/select-simple-vm-dashboard.png)
-
-1. ARM şablonunun oluşturduğu panoyu gözden geçirin. İçeriğin bazılarının statik olduğunu, ancak başlangıcında oluşturduğunuz sanal makinenin performansını gösteren grafikler de olduğunu görebilirsiniz.
-
-    ![Basit VM panosunu gözden geçirme](media/quick-create-template/review-simple-vm-dashboard.png)
+[!INCLUDE [azure-portal-review-deployed-resources](../../includes/azure-portal-review-deployed-resources.md)]
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

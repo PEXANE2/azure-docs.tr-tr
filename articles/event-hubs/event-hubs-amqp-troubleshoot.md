@@ -4,10 +4,10 @@ description: Azure Event Hubs kullanırken alabileceğiniz AMQP hatalarının bi
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 51b96792f6921bae9364212c6e5f9c987ff05e2a
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103466074"
 ---
 # <a name="amqp-errors-in-azure-event-hubs"></a>Azure Event Hubs AMQP hataları

@@ -3,17 +3,17 @@ title: Azure Blob depolama için erişim katmanları-sık erişimli, seyrek eri�
 description: Azure Blob depolama için sık erişimli, seyrek erişimli ve arşiv erişim katmanları hakkında bilgi edinin. Katmanlamayı destekleyen depolama hesaplarını gözden geçirin.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 01/11/2021
+ms.date: 03/18/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: klaasl
-ms.openlocfilehash: 67534e70904c70f7bf9dda44502e723916bdce93
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 1a1cb8e1676405cbfbb3f4f61c86d8136b688b88
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98928794"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104656847"
 ---
 # <a name="access-tiers-for-azure-blob-storage---hot-cool-and-archive"></a>Azure Blob depolama için erişim katmanları-sık erişimli, seyrek erişimli ve arşiv
 
@@ -100,7 +100,9 @@ Yalnızca sık ve seyrek erişimli katmanlar varsayılan hesap erişim katmanı 
 
 Blob düzeyi katmanlama [, blob](/rest/api/storageservices/put-blob) katmanı veya [PUT blok listesi](/rest/api/storageservices/put-block-list) işlemlerini kullanarak seçtiğiniz erişim katmanına veri yüklemenize ve [BLOB katmanını ayarla](/rest/api/storageservices/set-blob-tier) işlemini veya [yaşam döngüsü yönetimi](#blob-lifecycle-management) özelliğini kullanarak nesne düzeyinde verilerinizin katmanını değiştirmenize olanak sağlar. Verileri, gerekli erişim katmanına yükleyebilir ve kullanım desenleri değiştikçe, verileri hesaplar arasında taşımaya gerek kalmadan, sık erişimli, seyrek erişimli veya arşiv katmanları arasında blob erişim katmanını kolayca değiştirebilirsiniz. Tüm katman değişikliği istekleri hemen gerçekleşir ve sık erişimli ve Seyrek Erişimli Katman değişiklikleri anında gerçekleşir. Arşiv katmanından bir blobu yeniden doldurma birkaç saat sürebilir.
 
-Son blob katmanı değişikliğinin zamanı, **Erişim Katmanı Değişim Zamanı** blob özelliği aracılığıyla gösterilir. Sık erişimli veya seyrek erişimli katmanda bir Blobun üzerine yazarken, yeni oluşturulan blob, yeni blob erişim katmanı oluşturma sırasında açıkça ayarlanmadığı takdirde, üzerine yazılan Blobun katmanını devralır. Blob arşiv katmanındaysa üzerine yazılamaz, bu nedenle aynı Blobun karşıya yüklemeye Bu senaryoda izin verilmez.
+Son blob katmanı değişikliğinin zamanı, **Erişim Katmanı Değişim Zamanı** blob özelliği aracılığıyla gösterilir. **Erişim katmanı değiştirme zamanı** blob düzeyi bir özelliktir ve varsayılan hesap katmanı değiştirildiğinde güncellenmez. Hesap özellikleri ve BLOB özellikleri ayrı. Hesabın varsayılan erişim katmanı değiştirildiğinde, bir depolama hesabındaki her Blobun **erişim katmanı değişiklik süresini** güncelleştirmek mümkün maliyetli hale gelir.
+
+Sık erişimli veya seyrek erişimli katmanda bir Blobun üzerine yazarken, yeni oluşturulan blob, yeni blob erişim katmanı oluşturma sırasında açıkça ayarlanmadığı takdirde, üzerine yazılan Blobun katmanını devralır. Blob arşiv katmanındaysa üzerine yazılamaz, bu nedenle aynı Blobun karşıya yüklemeye Bu senaryoda izin verilmez.
 
 > [!NOTE]
 > Arşiv depolama ve blob düzeyinde katman ayarlama, yalnızca blok bloblarını destekler.
