@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 28a9080ce878e262573adf0b3c79394079c09ca2
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94835977"
 ---
 # <a name="identity-protection-policies"></a>Kimlik Koruması ilkeleri
@@ -58,7 +58,7 @@ Risk algılanırsa, kullanıcılar self servis parola sıfırlama işlemini kend
 
 - [Azure AD self servis parola sıfırlamayı etkinleştirme](../authentication/howto-sspr-deployment.md)
 
-- [Azure AD Multi-Factor Authentication etkinleştirme](../authentication/howto-mfa-getstarted.md)
+- [Azure AD Multi-Factor Authentication’ı etkinleştirme](../authentication/howto-mfa-getstarted.md)
 
 - [Azure AD Multi-Factor Authentication kayıt ilkesini etkinleştirme](howto-identity-protection-configure-mfa-policy.md)
 

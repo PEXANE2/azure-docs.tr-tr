@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: jushiman
 ms.openlocfilehash: 710e6902be6ebe28caaf40fb446e4ee7cd2bf4dc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101687575"
 ---
 # <a name="hotpatch-for-new-virtual-machines-preview"></a>Yeni sanal makineler için hotpatch (Önizleme)
@@ -104,7 +104,7 @@ Aboneliğiniz için özellik kaydedildikten sonra, değişikliği işlem kaynak 
 Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 ```
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 ```az feature register```Aboneliğiniz için Önizlemeyi etkinleştirmek üzere kullanın.
 

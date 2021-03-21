@@ -9,10 +9,10 @@ ms.date: 01/14/2021
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 8bfb55cbe8ba4876e94dc1622cbee33e4d471a65
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98706698"
 ---
 # <a name="setting-up-the-azure-importexport-tool-v1"></a>Azure Içeri/dışarı aktarma aracı v1 ayarlanıyor
@@ -24,7 +24,7 @@ Microsoft Azure İçeri/Dışarı Aktarma Aracı, Microsoft Azure İçeri/Dışa
 
 -   Tamamlanmış bir dışarı aktarma işinden sürücüleri aldıktan sonra, sürücülerde bozuk veya eksik olan dosyaları onarmak için bu aracı kullanabilirsiniz.  
 
-## <a name="prerequisites"></a>Ön koşullar  
+## <a name="prerequisites"></a>Önkoşullar  
 Sürücüleri bir içeri aktarma işi için hazırlıyorsanız, aşağıdaki önkoşulları karşılamanız gerekir:  
 
 -   Etkin bir Azure aboneliğiniz olmalıdır.  

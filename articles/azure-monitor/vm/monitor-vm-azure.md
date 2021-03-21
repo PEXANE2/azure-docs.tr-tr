@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
 ms.openlocfilehash: 2c93471436030f9260f4fa0d95d656c27d382346
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102047052"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Azure Izleyici ile Azure sanal makinelerini izleme
@@ -147,7 +147,7 @@ Sanal makine menüsünden **ölçümler** ' i açarak, Ölçüm Gezgini 'ni kull
 
 Ölçümler için sanal makineler tarafından kullanılan üç ad alanı vardır:
 
-| Ad Alanı | Açıklama | Gereksinim |
+| Ad Alanı | Description | Gereksinim |
 |:---|:---|:---|
 | Sanal Makine Ana Bilgisayarı | Tüm Azure sanal makineleri için otomatik olarak toplanan konak ölçümleri. [Microsoft. COMPUTE/virtualMachines](../essentials/metrics-supported.md#microsoftcomputevirtualmachines)'teki ayrıntılı ölçüm listesi. | Yapılandırma gerekmeden otomatik olarak toplanır. |
 | Konuk (klasik) | Sınırlı bir konuk işletim sistemi ve uygulama performansı verileri kümesi. Ölçüm uyarıları gibi diğer Azure Izleyici özellikleriyle Ölçüm Gezgini 'nde kullanılabilir.  | [Tanılama uzantısı](../agents/diagnostics-extension-overview.md) yüklendi. Veriler Azure depolama alanından okundu.  |
@@ -160,7 +160,7 @@ Azure sanal makineleri, Azure Izleyici günlüklerine aşağıdaki verileri topl
 
 VM öngörüleri, *ınsightsmetriler* tablosuna yazılan önceden belirlenmiş bir dizi performans sayacı koleksiyonu sağlar. Bu, [kapsayıcı öngörüleri](../containers/container-insights-overview.md)tarafından kullanılan tablodır. 
 
-| Veri kaynağı | Gereksinimler | Tablolar |
+| Veri kaynağı | Gereksinimler | Tables |
 |:---|:---|:---|
 | VM öngörüleri | Her bir sanal makinede etkinleştirin. | Insightsölçümlerini<br>VMBoundPort<br>VMComputer<br>VMConnection<br>VMProcess<br>Ayrıntılar için bkz. [VM öngörülerinin günlüklerini sorgulama](../vm/vminsights-log-search.md) . |
 | Etkinlik günlüğü | Abonelik için tanılama ayarı. | AzureActivity |

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: dbb7e835d110bcb6cb81fd5425a2aafbb578e692
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96022981"
 ---
 # <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>StorSimple cihazlarını bağlamak ve yönetmek için StorSimple Snapshot Manager kullanma
@@ -34,7 +34,7 @@ ms.locfileid: "96022981"
 | Sonuç sütunu | Açıklama |
 |:--- |:--- |
 | Ad |Klasik Azure portalında yapılandırılan cihazın adı |
-| Model |Cihazın model numarası |
+| Modelleme |Cihazın model numarası |
 | Sürüm |Cihazda yüklü yazılımın sürümü |
 | Durum |Cihazın kullanılabilir olup olmadığı |
 | Son eşitleme |Cihazın son eşitlenme tarihi ve saati |
@@ -83,7 +83,7 @@ StorSimple cihazını eklemek veya değiştirmek için aşağıdaki yordamı kul
    
     ![StorSimple cihazını yapılandırma](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_config_device.png) 
 3. **Cihaz** açılan kutusunda, cihazın veya sanal cihazın IP adresini seçin. 
-4. **Parola** metin kutusuna, klasik Azure portalında cihaz Için oluşturduğunuz storsimple Snapshot Manager parolasını yazın. **Tamam** düğmesine tıklayın. StorSimple Snapshot Manager, tanımladığınız cihazı arar. 
+4. **Parola** metin kutusuna, klasik Azure portalında cihaz Için oluşturduğunuz storsimple Snapshot Manager parolasını yazın. **Tamam**'a tıklayın. StorSimple Snapshot Manager, tanımladığınız cihazı arar. 
    
    * Cihaz kullanılabiliyorsa, StorSimple Snapshot Manager bir bağlantı ekler.
    * Cihaz herhangi bir nedenle kullanılamıyorsa, StorSimple Snapshot Manager bir hata mesajı döndürür. **Tamam** ' a tıklayarak hata iletisini kapatın ve ardından **iptal** ' e tıklayarak **bir cihaz Yapılandır** iletişim kutusunu kapatın.
@@ -101,7 +101,7 @@ StorSimple cihazını bağlamak ve ilişkili yedekleri olan mevcut birim gruplar
 3. **Kapsam** bölmesinde en üst düğüme sağ tıklayın ve ardından **Içeri aktarmalar görüntüsünü aç**' a tıklayın.
    
     ![Içeri aktarmalar görünümünü değiştirmeyi Seç](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Toggle_Imports_Display.png) 
-4. İçeri **aktarmalar görüntüsünü değiştirme** iletişim kutusu görünür ve içeri aktarılan birim gruplarının ve yedeklemelerin durumunu gösterir. **Tamam** düğmesine tıklayın.
+4. İçeri **aktarmalar görüntüsünü değiştirme** iletişim kutusu görünür ve içeri aktarılan birim gruplarının ve yedeklemelerin durumunu gösterir. **Tamam**'a tıklayın.
 
 Birim grupları ve yedeklemeler başarıyla alındıktan sonra, bunları yönetmek için StorSimple Snapshot Manager kullanabilirsiniz, böylece, oluşturduğunuz ve StorSimple Snapshot Manager ile yapılandırdığınız yedeklemeleri yönetebilirsiniz. 
 
@@ -206,7 +206,7 @@ Bir StorSimple cihazı başarısız olursa ve bekleme (yük devretme) cihazında
 4. StorSimple Snapshot Manager başlatın.
 5. Yeni StorSimple cihazını yapılandırmak için adım 2: StorSimple cihazını [dağıtım storsimple Snapshot Manager](storsimple-snapshot-manager-deployment.md)içindeki adımları izleyin.
 6. **Kapsam** bölmesinde en üst düzey düğüme sağ tıklayın (örnekteki storsimple Snapshot Manager) ve ardından **Içeri aktarmalar görünümünü aç**' a tıklayın. 
-7. İçeri aktarılan birim grupları ve yedeklemeler StorSimple Snapshot Manager görünür olduğunda bir ileti görüntülenir. **Tamam** düğmesine tıklayın.
+7. İçeri aktarılan birim grupları ve yedeklemeler StorSimple Snapshot Manager görünür olduğunda bir ileti görüntülenir. **Tamam**'a tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * StorSimple [çözümünüzü yönetmek Için storsimple Snapshot Manager](storsimple-snapshot-manager-admin.md)nasıl kullanacağınızı öğrenin.

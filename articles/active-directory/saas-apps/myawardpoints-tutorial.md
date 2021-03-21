@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
 ms.openlocfilehash: f2328bd51712089f706c8491007f9f51eba52337
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92508137"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-my-award-points-top-subtop-team"></a>Öğretici: ödül noktalarıyla üst alt/üst ekiple tümleştirme Azure Active Directory
@@ -61,13 +61,13 @@ Ikramiye noktalarımın en üst alt/üst ekibinin tümleştirmesini Azure AD 'ye
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna, **Ikramiye noktalarımı en üst alt/üst takımdan**yazın, sonuç panelinden **Ikramiye noktalarımı en üst alt/üst ekip** ' i seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
+4. Arama kutusuna, **Ikramiye noktalarımı en üst alt/üst takımdan** yazın, sonuç panelinden **Ikramiye noktalarımı en üst alt/üst ekip** ' i seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
 
      ![Sonuç listesinde Ikramiye noktalarım üst alt/üst ekip](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına dayalı olarak, Ikramiye noktalarım Ile Azure AD çoklu oturum açma 'yı yapılandırıp test edersiniz.
+Bu bölümde, **Britta Simon** adlı bir test kullanıcısına dayalı olarak, Ikramiye noktalarım Ile Azure AD çoklu oturum açma 'yı yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve Ikramiye noktamdaki ilgili Kullanıcı arasındaki bir bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açmayı, Ikramiye noktalarım en üst alt/üst ekiple yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -143,9 +143,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.

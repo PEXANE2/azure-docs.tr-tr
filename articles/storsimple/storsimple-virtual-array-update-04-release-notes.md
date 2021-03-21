@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 04/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 392e930dcb69392b6f9425abba0efa516d5c82b8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94967066"
 ---
 # <a name="storsimple-virtual-array-update-04-release-notes"></a>StorSimple Sanal dizisi güncelleştirme 0,4 sürüm notları
@@ -53,7 +53,7 @@ Güncelleştirme 0,4, öncelikle birkaç geliştirmelerle bağlanmış bir hata 
 
 Aşağıdaki tabloda, bu sürümde düzeltilen sorunların bir özeti verilmiştir.
 
-| Hayır. | Öne çıkan özelliği | Sorun |
+| Hayır. | Özellik | Sorun |
 | --- | --- | --- |
 | 1 |Yedekleme performansı|Önceki sürümlerde, çok sayıda dosya içeren yedeklemelerin tamamlanması uzun zaman alır (günler). Bu sürümde, tam ve artımlı yedeklemeler, tamamlanma süresi içinde önemli bir düşüş görür. |
 | 2 |Destek paketi|Disk, CPU, bellek, ağ ve bulut istatistikleri artık, destek paketlerinin tüm cihaz sorunlarını gidermede çok etkili hale getirilmesi için destek günlüklerine oturum açtı.|
@@ -65,7 +65,7 @@ Aşağıdaki tabloda, bu sürümde düzeltilen sorunların bir özeti verilmişt
 
 Aşağıdaki tabloda, StorSimple Sanal dizisi için bilinen sorunların özeti verilmiştir ve önceki sürümlerden gelen sorunlar sürümü dahildir. 
 
-| Hayır. | Öne çıkan özelliği | Sorun | Geçici çözüm/açıklamalar |
+| Hayır. | Özellik | Sorun | Geçici çözüm/açıklamalar |
 | --- | --- | --- | --- |
 | **1.** |Güncelleştirmeler |Önizleme sürümünde oluşturulan sanal cihazlar desteklenen bir genel kullanılabilirlik sürümüne güncelleştirilemez. |Bu sanal cihazlar, olağanüstü durum kurtarma (DR) iş akışı kullanan genel kullanılabilirlik sürümü için yük devretmelidir. |
 | **2.** |Sağlanan veri diski |Belirtilen boyutta bir veri diski sağladıktan ve karşılık gelen StorSimple Sanal cihazını oluşturduktan sonra, veri diskini genişletmemelidir veya küçültmemelidir. Bu durum, cihazın yerel katmanlarında tüm verilerin kaybedilmesine neden olur. | |

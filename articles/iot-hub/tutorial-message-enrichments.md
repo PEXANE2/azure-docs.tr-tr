@@ -9,10 +9,10 @@ ms.date: 12/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-azurecli, devx-track-csharp
 ms.openlocfilehash: 7ae85fa2559b8313bd35a761945bff946563e935
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102199790"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>Öğretici: Azure IoT Hub ileti zenginleştirme kullanın
@@ -279,7 +279,7 @@ Bu noktada, kaynakların hepsi ayarlanır ve ileti yönlendirme yapılandırıl�
 ## <a name="create-and-configure-by-using-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanarak oluşturma ve yapılandırma
 Kaynakları, ileti yönlendirmeyi ve ileti zenginleştirme kaynaklarını oluşturmak ve yapılandırmak için bir Kaynak Yöneticisi şablonu kullanabilirsiniz.
 
-1. Azure Portal’da oturum açın. Arama kutusunu açmak için **+ kaynak oluştur** ' u seçin. *Şablon dağıtımını* girin ve arama yapın. Sonuçlar bölmesinde **şablon dağıtımı (özel şablon kullanarak Dağıt)** öğesini seçin.
+1. Azure portalında oturum açın. Arama kutusunu açmak için **+ kaynak oluştur** ' u seçin. *Şablon dağıtımını* girin ve arama yapın. Sonuçlar bölmesinde **şablon dağıtımı (özel şablon kullanarak Dağıt)** öğesini seçin.
 
    ![Azure portal Şablon dağıtımı](./media/tutorial-message-enrichments/template-select-deployment.png)
 
@@ -336,7 +336,7 @@ Kaynakları, ileti yönlendirmeyi ve ileti zenginleştirme kaynaklarını oluşt
 
 Sanal cihaz uygulaması, sıkıştırılmış olmayan indirme uygulamalarınızdan biridir. Uygulama, Azure depolama 'yı içeren [yönlendirme öğreticisinde](tutorial-routing.md)farklı ileti yönlendirme yöntemlerinin her biri için iletiler gönderir.
 
-Visual Studio 'da kodu açmak için **IoT_SimulatedDevice. sln** çözüm dosyasına çift tıklayın ve ardından **program.cs**' ı açın. İşaretleyici için IoT Hub 'ı adını değiştirin `{your hub name}` . IoT Hub ana bilgisayar adının biçimi **{hub adınız}. Azure-Devices.net**. Bu öğreticide, hub ana bilgisayar adı ContosoTestHubMsgEn.azure-devices.net ' dir. Daha sonra, işaretleyici için kaynak oluşturmak üzere betiği çalıştırdığınızda daha önce kaydettiğiniz Cihaz anahtarını değiştirin `{your device key}` .
+Visual Studio 'da kodu açmak için **IoT_SimulatedDevice. sln** çözüm dosyasına çift tıklayın ve ardından **program. cs** dosyasını açın. İşaretleyici için IoT Hub 'ı adını değiştirin `{your hub name}` . IoT Hub ana bilgisayar adının biçimi **{hub adınız}. Azure-Devices.net**. Bu öğreticide, hub ana bilgisayar adı ContosoTestHubMsgEn.azure-devices.net ' dir. Daha sonra, işaretleyici için kaynak oluşturmak üzere betiği çalıştırdığınızda daha önce kaydettiğiniz Cihaz anahtarını değiştirin `{your device key}` .
 
 Cihaz anahtarınız yoksa portaldan alabilirsiniz. Oturum açtıktan sonra, **kaynak grupları**' na gidin, kaynak grubunuzu seçin ve ardından IoT Hub 'ınızı seçin. Test cihazınız için **IoT cihazları** ' na bakın ve cihazınızı seçin. **Birincil anahtar** ' ın yanındaki Kopyala simgesini seçerek Pano 'ya kopyalayın.
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.openlocfilehash: 64e2b678fc2705a8949b8029a05ca1905f227ef4
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92507814"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-motus"></a>Öğretici: MOS 'ler ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -60,7 +60,7 @@ Moısler 'in Azure AD ile tümleştirilmesini yapılandırmak için Galeri 'den 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-motus"></a>Azure AD 'ye yönelik çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu MOS ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında MOS 'ler arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu MOS ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında MOS 'ler arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu, MOS 'ler ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 

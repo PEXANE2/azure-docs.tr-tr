@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/07/2020
 ms.author: allensu
 ms.openlocfilehash: 8ab4f698c7149d8d57f790e221ccbe35ec090fe6
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94370512"
 ---
 # <a name="onboard-a-root-or-apex-domain-to-an-existing-azure-cdn-endpoint"></a>Mevcut bir Azure CDN uç noktasına kök veya tepesinde etki alanı ekleme
@@ -35,14 +35,14 @@ Azure portal kullanarak CDN 'nize bir tepesinde etki alanı ekleyebilir ve bunu 
 
 2. **+ Kayıt kümesi** seçeneğini belirleyin.
 
-3. **Kayıt kümesi Ekle** ' de aşağıdaki bilgileri girin veya seçin:
+3. **Kayıt kümesi Ekle**' de aşağıdaki bilgileri girin veya seçin:
 
     | Ayar | Değer |
     | ------- | ------|
     | Ad | Girin **@** . |
     | Tür | **Bir** seçin. |
-    | Diğer ad kayıt kümesi | **Evet** ’i seçin. |
-    | Diğer ad türü | **Azure kaynağı** ' nı seçin. |
+    | Diğer ad kayıt kümesi | **Evet**’i seçin. |
+    | Diğer ad türü | **Azure kaynağı**' nı seçin. |
     | Abonelik seçin | Aboneliğinizi seçin. |
     | Azure kaynağı | CDN uç noktanızı seçin. |
 
@@ -66,18 +66,18 @@ Azure portal kullanarak CDN 'nize bir tepesinde etki alanı ekleyebilir ve bunu 
 
     :::image type="content" source="media/onboard-apex-domain/cdn-endpoint-selection.png" alt-text="CDN uç noktası seçimi" border="true":::
     
-3. **+ Özel etki alanı** ' nı seçin. 
+3. **+ Özel etki alanı**' nı seçin. 
 
    :::image type="content" source="media/onboard-apex-domain/cdn-custom-domain-button.png" alt-text="Özel etki alanı Ekle düğmesi" border="true":::
 
-4. **Özel etki alanı Ekle** ' de, **uç nokta ana bilgisayar adı** önceden doldurulmuştur ve CDN uç nokta URL 'nizden türetilir: **\<endpoint-hostname>** . azureedge.net. Bu değer değiştirilemez.
+4. **Özel etki alanı Ekle**' de, **uç nokta ana bilgisayar adı** önceden doldurulmuştur ve CDN uç nokta URL 'nizden türetilir: **\<endpoint-hostname>** . azureedge.net. Bu değer değiştirilemez.
 
 5. **Özel ana bilgisayar adı** IÇIN, CNAME kaydlarınızın kaynak etki alanı olarak kullanılacak özel kök veya tepesinde etki alanınızı girin. 
     1. Örneğin, **contoso.com**. **Cdnverify alt etki alanı adını kullanmayın**.
 
     :::image type="content" source="media/onboard-apex-domain/cdn-add-custom-domain.png" alt-text="Özel etki alanı Ekle" border="true":::
 
-6. **Ekle** ’yi seçin.
+6. **Add (Ekle)** seçeneğini belirleyin.
 
    Azure, girdiğiniz özel etki alanı adı için CNAME kaydının bulunduğunu doğrular. CNAME doğruysa, özel etki alanınız doğrulanır. 
 

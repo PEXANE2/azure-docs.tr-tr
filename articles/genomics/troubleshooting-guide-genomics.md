@@ -11,10 +11,10 @@ ms.workload: genomics
 ms.topic: troubleshooting
 ms.date: 10/29/2018
 ms.openlocfilehash: c508c10d619cde1a16d89b446c5cfd1a3ce81daf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96023832"
 ---
 # <a name="troubleshooting-guide"></a>Sorun giderme kılavuzu
@@ -115,7 +115,7 @@ Bu hatalar Kullanıcı tarafından işlem yapılabilir. Dosya türüne ve hata k
 
 | Dosya türü | Hata kodu | Hata iletisi                                                                           | Önerilen sorun giderme adımları                                                                                         |
 |--------------|------------|-----------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
-| Herhangi bir          | 701        | Read [Readıd], [Numberoftabansayısı] temellerine sahip ancak sınır [maxReadLength]           | Bu hatanın en yaygın nedeni, iki okuma birleştirmesi için dosya bozulması 'nın lideri olur. Giriş dosyalarınızı denetleyin. |
+| Herhangi biri          | 701        | Read [Readıd], [Numberoftabansayısı] temellerine sahip ancak sınır [maxReadLength]           | Bu hatanın en yaygın nedeni, iki okuma birleştirmesi için dosya bozulması 'nın lideri olur. Giriş dosyalarınızı denetleyin. |
 | BAM          | 200        |   ' [YourFileName] ' dosyası okunamıyor.                                                                                       | Baa dosyasının biçimini denetleyin. Düzgün şekilde biçimlendirilen bir dosyayla iş akışını yeniden gönderebilirsiniz.                                                                           |
 | BAM          | 201        |  Bad dosyası [File_name] okunamıyor.                                                                                      |Baa dosyasının biçimini denetleyin.  Doğru biçimli bir dosyayla iş akışını gönder.                                                                            |
 | BAM          | 202        | Bad dosyası [File_name] okunamıyor. Dosya çok küçük ve üst bilgi eksik.                                                                                        | Baa dosyasının biçimini denetleyin.  Doğru biçimli bir dosyayla iş akışını gönder.                                                                            |

@@ -12,10 +12,10 @@ ms.author: MirekS
 ms.reviewer: vanto
 ms.date: 04/23/2020
 ms.openlocfilehash: 93831ec4c1dc3e34c2ea144e71b67dae711ee870
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94841657"
 ---
 # <a name="connect-to-azure-sql-database-with-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication Azure SQL veritabanı 'na bağlanma
@@ -60,7 +60,7 @@ Bir uygulama kaydının tamamlanması, bir **uygulama kimliği** oluşturur ve g
 
 Uygulamanız için gerekli izinleri kaydetmek ve ayarlamak için:
 
-1. Azure Portal **Azure Active Directory**  >  **App registrations**  >  **Yeni kayıt** uygulama kayıtları Azure Active Directory seçin.
+1. Azure Portal   >    >  **Yeni kayıt** uygulama kayıtları Azure Active Directory seçin.
 
     ![Uygulama kaydı](./media/active-directory-interactive-connect-azure-sql-db/image1.png)
 
@@ -143,7 +143,7 @@ SSMS 'yi yeniden çalıştırın. bu kez **kimlik doğrulaması** , **MFA ile Az
 Daha fazla bilgi için bkz. [SSMS ve Azure AD için Multi-Factor Authentication yapılandırma](authentication-mfa-ssms-configure.md).
 
 > [!NOTE]
-> Veritabanında bir Konuk Kullanıcı kullanıyorsanız, veritabanı için Azure AD etki alanı adını da sağlamanız gerekir: **Seçenekler**  >  **ad etki alanı adı veya Kiracı kimliği**' ni seçin. Azure Portal etki alanı adını bulmak için **Azure Active Directory**  >  **özel etki alanı adları** Azure Active Directory ' nı seçin. C# örnek programında, bir etki alanı adı sağlanması gerekli değildir.
+> Veritabanında bir Konuk Kullanıcı kullanıyorsanız, veritabanı için Azure AD etki alanı adını da sağlamanız gerekir: **Seçenekler**  >  **ad etki alanı adı veya Kiracı kimliği**' ni seçin. Azure Portal etki alanı adını bulmak için   >  **özel etki alanı adları** Azure Active Directory ' nı seçin. C# örnek programında, bir etki alanı adı sağlanması gerekli değildir.
 
 ## <a name="c-code-example"></a>C# kod örneği
 

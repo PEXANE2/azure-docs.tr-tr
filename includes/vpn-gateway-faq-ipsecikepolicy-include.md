@@ -9,17 +9,17 @@ ms.date: 12/05/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 6684c4269f14b91ded651dadff3f0a2e0878a4f2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96026925"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>Özel IPsec/IKE ilkesi tüm Azure VPN Gateway SKU’larında desteklenir mi?
 Özel IPSec/ıKE ilkesi, temel SKU dışında tüm Azure SKU 'Larında desteklenir.
 
 ### <a name="how-many-policies-can-i-specify-on-a-connection"></a>Bir bağlantıda kaç tane ilke belirtebilirim?
-Belirli bir bağlantı için yalnızca ***bir** _ ilke kombinasyonu belirtebilirsiniz.
+Belirli bir bağlantı için yalnızca ***bir*** ilke birleşimi belirtebilirsiniz.
 
 ### <a name="can-i-specify-a-partial-policy-on-a-connection-for-example-only-ike-algorithms-but-not-ipsec"></a>Bir bağlantıda kısmi bir ilke belirtebilir miyim? (örneğin IPsec olmadan yalnızca IKE algoritmaları)
 Hayır, hem IKE (Ana Mod) hem de IPsec (Hızlı Mod) için tüm algoritmaları ve parametreleri belirtmeniz gerekir. Kısmi ilke belirtimine izin verilmez.
@@ -27,7 +27,7 @@ Hayır, hem IKE (Ana Mod) hem de IPsec (Hızlı Mod) için tüm algoritmaları v
 ### <a name="what-are-the-algorithms-and-key-strengths-supported-in-the-custom-policy"></a>Özel ilkede desteklenen algoritmalar ve anahtar güçleri nelerdir?
 Aşağıdaki tabloda, müşteriler tarafından yapılandırılabilecek şifreleme algoritmaları ve anahtar güçleri listelenmiştir. Her alan için bir seçeneği belirlemeniz gerekir.
 
-| _ *IPSec/Ikev2**  | **Seçenekler**                                                                   |
+| **IPsec/IKEv2**  | **Seçenekler**                                                                   |
 | ---              | ---                                                                           |
 | IKEv2 Şifrelemesi | AES256, AES192, AES128, DES3, DES                                             |
 | IKEv2 Bütünlüğü  | SHA384, SHA256, SHA1, MD5                                                     |

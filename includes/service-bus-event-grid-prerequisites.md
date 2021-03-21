@@ -9,10 +9,10 @@ ms.date: 10/15/2020
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: d12df7197945a514ed8d3d0dca77271fb4bd0903
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96509278"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
@@ -31,7 +31,7 @@ Bu adımda, önceki adımda oluşturduğunuz Service Bus konuya ileti göndermek
 
 1. [GitHub Azure-Service-Bus deposunu](https://github.com/Azure/azure-service-bus/)kopyalayın.
 2. Visual Studio 'da *\samples\DotNet\Azure.Messaging.ServiceBus\ServiceBusEventGridIntegration* klasörüne gidin ve *sbeventgridıntegration. sln* dosyasını açın.
-3. Çözüm Gezgini penceresinde, **Iletileyici** projesini genişletin ve **program.cs**' ı seçin.
+3. Çözüm Gezgini penceresinde, **Iletileyici** projesini genişletin ve **program. cs**' yi seçin.
 4. `<SERVICE BUS NAMESPACE - CONNECTION STRING>`Service Bus ad alanınız ve konunun adı ile bağlantı dizesiyle değiştirin `<TOPIC NAME>` . 
 
     ```csharp

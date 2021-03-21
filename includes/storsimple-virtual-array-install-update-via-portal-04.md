@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 48ce594fa5f4b736e69b5b4ef7a10011fe8031fa
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96027544"
 ---
 #### <a name="to-install-updates-via-the-azure-portal"></a>Azure portalı aracılığıyla güncelleştirmeleri yüklemek için
 
 1. StorSimple Cihaz Yöneticinize gidip **Cihazlar**’ı seçin. Hizmetinize bağlı cihazların listesinden güncelleştirmek istediğiniz cihazı seçip tıklayın. 
 
-    ![Son olarak, MySSDevManager Aygıt Yöneticisi vurgulanır ve seçilir, cihazlar vurgulanır ve seçilir ve cihaz MYSSIS1103 vurgulanır ve seçilir.](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate1m.png) 
+    ![Son olarak, MySSDevManager Device Manager vurgulanır ve seçilir, cihazlar vurgulanır ve seçilir ve cihaz MYSSIS1103 vurgulanır ve seçilir.](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate1m.png) 
 
 2. **Ayarlar** dikey penceresinde **Cihaz güncelleştirmeleri**'ne tıklayın. 
 
@@ -33,7 +33,7 @@ ms.locfileid: "96027544"
 
     ![Cihaz güncelleştirmeleri bölmesinde "yeni güncelleştirmeler var" iletisi vardır. Güncelleştirmeleri Indir düğmesi vurgulanır.](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate6m.png)
 
-5. **Yeni güncelleştirmeler** dikey penceresinde güncelleştirmeler indirildikten sonra bilgileri gözden geçirin; yüklemeyi onaylamanız gerekir. **Tamam** düğmesine tıklayın.
+5. **Yeni güncelleştirmeler** dikey penceresinde güncelleştirmeler indirildikten sonra bilgileri gözden geçirin; yüklemeyi onaylamanız gerekir. **Tamam**'a tıklayın.
 
     ![Yeni güncelleştirmeler bölmesi "Güncelleştirmeler indirildikten sonra, yüklemeyi onaylamanız gerekecektir" ifadesini görürsünüz. Tamam düğmesi vurgulanır.](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate7m.png)
 

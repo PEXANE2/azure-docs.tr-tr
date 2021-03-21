@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/18/2020
 ms.openlocfilehash: 6af9b8f97d622ae10cfdbcaa8ca50abb42ec7332
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94889063"
 ---
 # <a name="create-a-knowledge-store-using-rest-and-postman"></a>REST ve Postman kullanarak bilgi deposu oluşturma
@@ -61,9 +61,9 @@ Postman yükleme ve ayarlama.
 ### <a name="download-and-install-postman"></a>Postman indirme ve yükleme
 
 1. [Postman koleksiyonu kaynak kodunu](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json)indirin.
-1. **File**  >  Kaynak kodu Postman içine aktarmak için dosya **içeri aktarma** ' yı seçin.
+1.   >  Kaynak kodu Postman içine aktarmak için dosya **içeri aktarma** ' yı seçin.
 1. **Koleksiyonlar** sekmesini seçin ve ardından **...** (üç nokta) düğmesini seçin.
-1. **Düzenle**’yi seçin. 
+1. **Düzenle**'yi seçin. 
    
    ![Gezintiyi gösteren Postman uygulaması](media/knowledge-store-create-rest/postman-edit-menu.png "Postman 'daki düzenleme menüsüne git")
 1. **Düzenle** Iletişim kutusunda **değişkenler** sekmesini seçin. 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 97d74a1a2e309b85ebad529b797dd4af9c1554ef
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92513736"
 ---
 # <a name="tutorial-integrate-outsystems-azure-ad-with-azure-active-directory"></a>Öğretici: OutSystems Azure AD 'yi Azure Active Directory tümleştirin
@@ -52,7 +52,7 @@ Azure AD 'de OutSystems 'ın Azure AD 'ye tümleştirilmesini yapılandırmak i�
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu OutSystems Azure AD ile yapılandırın ve test edin. SSO 'nun çalışması için, OutSystems Azure AD 'deki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu OutSystems Azure AD ile yapılandırın ve test edin. SSO 'nun çalışması için, OutSystems Azure AD 'deki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu, OutSystems Azure AD ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 

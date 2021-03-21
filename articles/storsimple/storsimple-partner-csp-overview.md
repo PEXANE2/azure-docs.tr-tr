@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
 ms.openlocfilehash: c96dcc2bae03b1bd05fb3d1512dba757f180eed8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94964924"
 ---
 # <a name="what-is-storsimple-for-cloud-solutions-providers-program"></a>Cloud Solutions sağlayıcıları programı için StorSimple nedir?
@@ -36,7 +36,7 @@ Faturalandırma, fiyatlandırma, teşvikleri ve CSP 'de destek alma hakkında da
 
 ## <a name="deploy-and-manage-storsimple-for-csp"></a>CSP için StorSimple 'ı dağıtma ve yönetme
 
-CSP için StorSimple, StorSimple 'ın bugün kullanılabildiği tüm pazarlarda kullanım tabanlı bir hizmet olarak kullanılabilir. CSP için StorSimple, Azure portal ve StorSimple Aygıt Yöneticisi hizmetini kullanır. CSP iş ortağı StorSimple Sanal dizilerini, paylaşımları, birimleri ve yedeklemeleri yönetmek için bir StorSimple Aygıt Yöneticisi oluşturabilir. StorSimple Aygıt Yöneticisi hizmetinize kayıtlı tüm sanal dizilerini Azure portal aracılığıyla yönetebilirsiniz.
+CSP için StorSimple, StorSimple 'ın bugün kullanılabildiği tüm pazarlarda kullanım tabanlı bir hizmet olarak kullanılabilir. CSP için StorSimple, Azure portal ve StorSimple Device Manager hizmetini kullanır. CSP iş ortağı StorSimple Sanal dizilerini, paylaşımları, birimleri ve yedeklemeleri yönetmek için bir StorSimple Device Manager oluşturabilir. StorSimple Device Manager hizmetinize kayıtlı tüm sanal dizilerini Azure portal aracılığıyla yönetebilirsiniz.
 
 Daha fazla bilgi için, [CSP Için StorSimple Sanal dizinizi dağıtma ve yönetme](storsimple-partner-csp-deploy.md)konusuna gidin.
 

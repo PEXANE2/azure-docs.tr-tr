@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/05/2016
 ms.author: matd
 ms.openlocfilehash: 66a1e22282864d0425173504735d6beb42b76ad7
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94967270"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>Backup Exec ile bir yedekleme hedefi olarak StorSimple
@@ -102,7 +102,7 @@ Aşağıdaki tablolarda cihaz modelden mimari ilk kılavuz gösterilmektedir.
 | Yedekleme senaryosu  | Yerel depolama kapasitesi  | Bulut depolama kapasitesi  |
 |---|---|---|
 | Birincil yedekleme  | Kurtarma noktası hedefini (RPO) karşılamak üzere hızlı kurtarma için yerel depolama alanında depolanan son yedeklemeler | Yedekleme geçmişi (RPO) bulut kapasitesine uyar |
-| İkincil yedekleme | Yedekleme verilerinin ikincil kopyası, bulut kapasitesinde depolanabilir  | YOK  |
+| İkincil yedekleme | Yedekleme verilerinin ikincil kopyası, bulut kapasitesinde depolanabilir  | Yok  |
 
 ## <a name="storsimple-as-a-primary-backup-target"></a>Birincil yedekleme hedefi olarak StorSimple
 
@@ -233,7 +233,7 @@ Konak yedekleme sunucusu depolamayı şu yönergelere göre ayarlayın:
 -   StorSimple, Backup Exec tam ve artımlı yedeklemeleri destekler. Yapay ve değişiklik yedeklemeleri kullanmanızı öneririz.
 -   Yedekleme veri dosyaları yalnızca belirli bir iş için veri içermelidir. Örneğin, farklı işlere hiçbir medya ekleme yapılmasına izin verilmez.
 -   İş doğrulamayı devre dışı bırakın. Gerekirse, doğrulama en son yedekleme işinden sonra zamanlanmalıdır. Bu işin yedekleme pencerenizi etkilediğini anlamak önemlidir.
--   **Storage**  >  **Disk**  >  **ayrıntıları**  >  **özelliklerinizi** depolama ' yı seçin. **Önceden ayrılan disk alanını** devre dışı bırakın.
+-     >  **Disk**  >  **ayrıntıları**  >  **özelliklerinizi** depolama ' yı seçin. **Önceden ayrılan disk alanını** devre dışı bırakın.
 
 Bu gereksinimleri uygulamak için en son yedekleme yürütme ayarları ve en iyi uygulamalar için bkz. [VERITAS Web sitesi](https://www.veritas.com).
 
@@ -267,7 +267,7 @@ Yukarıdaki varsayımlar temelinde, aylık ve yıllık tam yedeklemeler için 26
 
 ### <a name="to-set-up-backup-exec-storage"></a>Backup Exec depolamayı ayarlamak için
 
-1.  Backup Exec yönetim konsolunda **depolama** birimi  >  **Configure Storage**  >  **disk tabanlı**  >  **Next** depolama alanını Yapılandır ' ı seçin.
+1.  Backup Exec yönetim konsolunda **depolama** birimi  >    >  **disk tabanlı**  >  depolama alanını Yapılandır ' ı seçin.
 
     ![Backup Exec Yönetim Konsolu, depolama sayfasını yapılandırma](./media/storsimple-configure-backup-target-using-backup-exec/image4.png)
 
@@ -399,7 +399,7 @@ Aşağıdaki tabloda, yerel ve StorSimple disklerinde çalışacak yedeklemeleri
 
     ![Backup Exec Yönetim Konsolu, yedekleme tanımı Özellikler sekmesi](./media/storsimple-configure-backup-target-using-backup-exec/image19.png)
 
-2.  **Add Stage**  >  **Disk düzenleme için aşama yinelemesi** Ekle ' yi seçin  >  **Edit**.
+2.    >  **Disk düzenleme için aşama yinelemesi** Ekle ' yi seçin  >  .
 
     ![Backup Exec Yönetim Konsolu, Aşama Ekle](./media/storsimple-configure-backup-target-using-backup-exec/image20.png)
 
