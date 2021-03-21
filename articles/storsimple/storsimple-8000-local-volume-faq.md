@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/26/2017
 ms.author: manuaery
 ms.openlocfilehash: 483fa81b409e1bd740af85b431a86b6c814831e6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96002723"
 ---
 # <a name="storsimple-locally-pinned-volumes-frequently-asked-questions-faq"></a>StorSimple yerel olarak sabitlenmiş birimler: sık sorulan sorular (SSS)
@@ -36,7 +36,7 @@ Sorular ve yanıtlar aşağıdaki kategorilerde düzenlenir
 ## <a name="questions-about-creating-a-locally-pinned-volume"></a>Yerel olarak sabitlenmiş birim oluşturma hakkında sorular
 **Ç.** 8000 serisi cihazlarda oluşturabileceğiniz, yerel olarak sabitlenmiş bir birimin en büyük boyutu nedir?
 
-**A** Storsimple 8000 serisi güncelleştirme 3,0 çalıştıran cihazlarda, 8100 CIHAZıNDA 200 TB 'a kadar, yerel olarak sabitlenmiş birimler IÇIN 8,5 TB veya katmanlı birimler sağlayabilirsiniz. Daha büyük olan 8600 cihazında 22,5 TB'a kadar yerel olarak sabitlenmiş birim ya da 500 TB'a kadar katmanlı birim sağlayabilirsiniz.
+ Storsimple 8000 serisi güncelleştirme 3,0 çalıştıran cihazlarda, 8100 CIHAZıNDA 200 TB 'a kadar, yerel olarak sabitlenmiş birimler IÇIN 8,5 TB veya katmanlı birimler sağlayabilirsiniz. Daha büyük olan 8600 cihazında 22,5 TB'a kadar yerel olarak sabitlenmiş birim ya da 500 TB'a kadar katmanlı birim sağlayabilirsiniz.
 
 **Ç.** 8100 cihazımı son zamanlarda güncelleştirme 3,0 ' ye yükseltiyorum ve yerel olarak sabitlenmiş bir birim oluşturmayı denediğimde, kullanılabilir maksimum boyut yalnızca 6 TB ve 8,5 TB değil. Neden 8,5 TB 'lık birim oluşturamıyorum?
 
@@ -83,11 +83,11 @@ Yerel olarak sabitlenmiş birimler bol alanla sağlandı ve bu, cihazda yerel al
 
 Benzer şekilde, varolan bir yerel birim genişletilir veya katmanlı bir birim yerel olarak sabitlenmiş bir birime dönüştürülürse, önceki iş tamamlanana kadar yeni bir yerel olarak sabitlenmiş birimin oluşturulması sıraya alınır. Yerel olarak sabitlenmiş bir birimin boyutunu genişletmek, o birim için var olan yerel alanın genişlemesine yöneliktir. Katmanlı ve yerel olarak sabitlenmiş bir birime dönüştürme, sonuçta elde edilen yerel olarak sabitlenmiş birim için yerel alan oluşturulmasını da içerir. Bu işlemlerin her ikisinde de yerel alanın oluşturulması veya genişletilmesi uzun süredir çalışan bir iş.
 
-Bu işleri StorSimple Aygıt Yöneticisi hizmetinin **işler** dikey penceresinde görüntüleyebilirsiniz. Etkin olarak işlenen iş, alan sağlama işleminin ilerlemesini yansıtacak şekilde sürekli olarak güncelleştirilir. Kalan yerel olarak sabitlenmiş birim işleri çalışıyor olarak işaretlenir, ancak ilerleme durumu durduruldu ve bunlar kuyruklanmış sırada çekilir.
+Bu işleri StorSimple Device Manager hizmetinin **işler** dikey penceresinde görüntüleyebilirsiniz. Etkin olarak işlenen iş, alan sağlama işleminin ilerlemesini yansıtacak şekilde sürekli olarak güncelleştirilir. Kalan yerel olarak sabitlenmiş birim işleri çalışıyor olarak işaretlenir, ancak ilerleme durumu durduruldu ve bunlar kuyruklanmış sırada çekilir.
 
 **Ç.** Yerel olarak sabitlenmiş bir birimi sildim. Yeni bir birim oluşturmayı denediğimde, geri kazanılan alanı neden kullanılabilir alana yansıtmalıyım?
 
-**A.** Yerel olarak sabitlenmiş bir birimi silerseniz, yeni birimler için kullanılabilir alan hemen güncelleştirilmemiş olabilir. StorSimple Aygıt Yöneticisi hizmeti, her saat yaklaşık olarak kullanılabilir yerel alanı güncelleştirir. Yeni birimi oluşturmayı denemeden önce bir saat beklemeniz önerilir.
+**A.** Yerel olarak sabitlenmiş bir birimi silerseniz, yeni birimler için kullanılabilir alan hemen güncelleştirilmemiş olabilir. StorSimple Device Manager hizmeti, her saat yaklaşık olarak kullanılabilir yerel alanı güncelleştirir. Yeni birimi oluşturmayı denemeden önce bir saat beklemeniz önerilir.
 
 **Ç.** Bulut gerecinde yerel olarak sabitlenmiş birimler destekleniyor mu?
 

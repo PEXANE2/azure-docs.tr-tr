@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c2124ca9fae76d87a695a2c453f7b222e7a08794
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96742802"
 ---
 # <a name="azure-ad-multi-factor-authentication-user-data-collection"></a>Azure AD Multi-Factor Authentication Kullanıcı verisi koleksiyonu
@@ -30,7 +30,7 @@ MFA sunucusu, NPS uzantısı ve Windows Server 2016 Azure AD MFA AD FS bağdaşt
 
 Kimlik doğrulama denemeleri (Raporlama ve sorun giderme için kullanılır):
 
-- Zaman damgası
+- Timestamp
 - Kullanıcı adı
 - Ad
 - Soyadı
@@ -58,20 +58,20 @@ Kimlik doğrulama denemeleri (Raporlama ve sorun giderme için kullanılır):
 - Genel sonuç
 - Sonuçlar
 - Denetiminden
-- Result
+- Sonuç
 - IP adresi başlatılıyor
 - Cihazlar
 - Cihaz belirteci
 - Cihaz Türü
 - Mobil uygulama sürümü
 - İşletim Sistemi Sürümü
-- Result
+- Sonuç
 - Bildirim için kullanılan denetim
 
 Etkinleştirmeler (Microsoft Authenticator mobil uygulamada bir hesabı etkinleştirmeye çalışır):
 - Kullanıcı adı
 - Hesap Adı
-- Zaman damgası
+- Timestamp
 - Etkinleştirme kodu sonucunu al
 - Başarıyı etkinleştir
 - Etkinleştirme hatası
@@ -89,7 +89,7 @@ Bloklar (engellenen durumu ve raporlamayı tespit etmek için kullanılır):
 - Ülke Kodu
 - Telefon Numarası
 - Telefon numarası biçimli
-- Uzantı
+- Dahili numara
 - Uzantıyı temizle
 - Engellendi
 - Engelleme nedeni
@@ -109,7 +109,7 @@ Atlanır (Raporlama için kullanılır):
 - Ülke Kodu
 - Telefon Numarası
 - Telefon numarası biçimli
-- Uzantı
+- Dahili numara
 - Uzantıyı temizle
 - Atlama nedeni
 - Tamamlama zaman damgası

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/15/2020
 ms.author: jeedes
 ms.openlocfilehash: 75d46edb332fb28132592e414e78bad64e75fef5
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98736448"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-adc-kerberos-based-authentication"></a>Öğretici: Citrix ADC ile çoklu oturum açma tümleştirmesi Azure Active Directory (Kerberos tabanlı kimlik doğrulaması)
@@ -26,7 +26,7 @@ Bu öğreticide Citrix ADC 'yi Azure Active Directory (Azure AD) ile tümleştir
 * Kullanıcılarınızın Azure AD hesaplarıyla Citrix ADC 'de otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -160,7 +160,7 @@ Bir sanal sunucu oluşturmak için:
 
 1. **Trafik yönetimi**  >  **Yük Dengeleme**  >  **Hizmetleri**' ni seçin.
     
-1. **Ekle**’yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
     ![Citrix ADC yapılandırma-hizmetler bölmesi](./media/citrix-netscaler-tutorial/web01.png)
 
@@ -177,7 +177,7 @@ Yük dengeleyiciyi yapılandırmak için:
 
 1. **Trafik yönetimi**  >  **Yük Dengeleme**  >  **sanal sunucularına** gidin.
 
-1. **Ekle**’yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
 1. Aşağıdaki değerleri aşağıdaki ekran görüntüsünde açıklandığı gibi ayarlayın:
 
@@ -224,7 +224,7 @@ Kimlik doğrulama ilkesi oluşturmak için:
 
 1. **Güvenlik**  >  **aaa – uygulama trafik**  >  **ilkeleri**  >  **kimlik** doğrulama  >  **ilkeleri**' ne gidin.
 
-1. **Ekle**’yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
 1. **Kimlik doğrulama Ilkesi oluştur** bölmesinde, aşağıdaki değerleri girin veya seçin:
 
@@ -361,7 +361,7 @@ Citrix trafik ilkesini ve trafik profilini yapılandırmak için:
 
 1.  **Trafik profillerini** seçin.
 
-1.  **Ekle**’yi seçin.
+1.  **Add (Ekle)** seçeneğini belirleyin.
 
 1.  Bir trafik profilini yapılandırmak için aşağıdaki değerleri girin veya seçin.
 
@@ -377,7 +377,7 @@ Citrix trafik ilkesini ve trafik profilini yapılandırmak için:
  
 1.  **Trafik ilkesi** seçin.
 
-1.  **Ekle**’yi seçin.
+1.  **Add (Ekle)** seçeneğini belirleyin.
 
 1.  Bir trafik ilkesi yapılandırmak için aşağıdaki değerleri girin veya seçin:
 

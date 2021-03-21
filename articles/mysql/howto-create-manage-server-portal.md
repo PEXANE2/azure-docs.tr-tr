@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 1/26/2021
 ms.openlocfilehash: 83876f77e0d7ffc0ae20bc5a545c1f18f53f4a8f
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98897994"
 ---
 # <a name="manage-an-azure-database-for-mysql-server-using-the-azure-portal"></a>Azure portal kullanarak MySQL için Azure veritabanı sunucusunu yönetme
@@ -90,7 +90,7 @@ Azure portal kullanarak yönetici rolü parolasını değiştirebilirsiniz.
  
 
 > [!IMPORTANT]
-> Sunucu Yöneticisi parolasını sıfırlamak, Sunucu Yöneticisi ayrıcalıklarını varsayılan olarak otomatik olarak sıfırlar. Sunucu Yöneticisi ayrıcalıklarından birini veya birkaçını yanlışlıkla iptal ederseniz Sunucu Yöneticisi parolanızı sıfırlamayı düşünün.
+> Sunucu yönetici parolası sıfırlandığında sunucu yönetici ayrıcalıkları da otomatik olarak varsayılan değerlerine sıfırlanır. Sunucu Yöneticisi ayrıcalıklarından birini veya birkaçını yanlışlıkla iptal ederseniz Sunucu Yöneticisi parolanızı sıfırlamayı düşünün.
    
 > [!NOTE]
 > Sunucu Yöneticisi kullanıcısı varsayılan olarak aşağıdaki ayrıcalıklara sahiptir: seçme, ekleme, GÜNCELLEŞTIRME, SILME, oluşturma, BıRAKMA, yeniden yükleme, Işleme, BAŞVURULARı, DIZIN, DEĞIŞTIRME, VERITABANLARıNı gösterme, GEÇICI tablolar oluşturma, tablo KILITLEME, yürütme, çoğaltma BAĞıMLı, çoğaltma ISTEMCISI, görünüm oluşturma, görünümü gösterme, rutın oluşturma, yordamı DEĞIŞTIRME, Kullanıcı oluşturma, olay, TETIKLEYICI

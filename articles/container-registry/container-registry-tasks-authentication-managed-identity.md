@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 01/14/2020
 ms.author: danlep
 ms.openlocfilehash: 8f2749a18a5ac6aed0822553d59beaacc9060228
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98915956"
 ---
 # <a name="use-an-azure-managed-identity-in-acr-tasks"></a>ACR görevlerinde Azure tarafından yönetilen bir kimlik kullanma 
@@ -115,7 +115,7 @@ az acr task credential add \
     --use-identity [system]
 ```
 
-Kayıt defteri *targetregistry* ile kimlik doğrulaması yapmak üzere Kullanıcı tarafından atanan bir kimliğin kimlik bilgilerini eklemek için, `use-identity` kimliğin *istemci kimliği* değeriyle geçirin. Örneğin:
+Kayıt defteri *targetregistry* ile kimlik doğrulaması yapmak üzere Kullanıcı tarafından atanan bir kimliğin kimlik bilgilerini eklemek için, `use-identity` kimliğin *istemci kimliği* değeriyle geçirin. Örnek:
 
 ```azurecli
 az acr task credential add \

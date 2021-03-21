@@ -4,10 +4,10 @@ description: Bu makalede bir Event Grid konusu veya etki alanı için erişim an
 ms.topic: how-to
 ms.date: 07/07/2020
 ms.openlocfilehash: a642affbac79766684dc75a37dae0373450d20e8
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98632538"
 ---
 # <a name="get-access-keys-for-event-grid-resources-topics-or-domains"></a>Event Grid kaynaklar için erişim anahtarları alın (konular veya etki alanları)
@@ -15,7 +15,7 @@ Erişim tuşları, Azure Event Grid kaynaklara (konular ve etki alanları) yöne
 
 Bu makalede Azure portal, PowerShell veya CLı kullanarak bir Event Grid kaynağı (konu veya etki alanı) için erişim tuşlarının nasıl alınacağı açıklanmaktadır. 
 
-## <a name="azure-portal"></a>Azure portal
+## <a name="azure-portal"></a>Azure portalı
 Azure portal, konu veya etki alanınız için **Event Grid konusunun** veya **Event Grid etki alanı** sayfasının **erişim tuşları** sekmesine geçin.  
 
 :::image type="content" source="./media/get-access-keys/azure-portal.png" alt-text="Erişim tuşları sayfası":::
@@ -33,7 +33,7 @@ Etki alanları için erişim anahtarları almak için [Get-AzEventGridDomainKey]
 Get-AzEventGridDomainKey -ResourceGroup <RESOURCE GROUP NAME> -Name <DOMAIN NAME>
 ```
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure CLI’si
 Konu başlıkları için erişim anahtarları almak için [az eventgrid konu anahtar listesini](/cli/azure/eventgrid/topic/key#az-eventgrid-topic-key-list) kullanın. 
 
 ```azurecli-interactive

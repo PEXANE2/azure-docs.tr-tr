@@ -12,10 +12,10 @@ ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 54869c14cf7c5a7e43f34102f5c95e37689dfee8
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102095349"
 ---
 # <a name="define-a-technical-profile-for-a-saml-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde SAML belirteci veren için teknik profil tanımlama
@@ -57,10 +57,10 @@ Aşağıdaki örnek, için bir teknik profil göstermektedir `Saml2AssertionIssu
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Issueruri | Hayır | SAML yanıtında görünen veren adı. Değer, bağlı olan taraf uygulamasında yapılandırılan adla aynı olmalıdır. |
-| XmlSignatureAlgorithm | Hayır | Azure AD B2C SAML onayını imzalamak için kullanılan yöntem. Olası değerler: `Sha256` , `Sha384` , `Sha512` veya `Sha1` . Aynı değere sahip her iki tarafta de imza algoritmasını yapılandırdığınızdan emin olun. Yalnızca sertifikanızın desteklediği algoritmayı kullanın. SAML yanıtını yapılandırmak için, bkz. [SAML uygulaması kaydetme seçenekleri](saml-service-provider.md)|
-|Tokennotbeforeskewınseconds| Hayır| Geçerlilik döneminin başlangıcını işaretleyen zaman damgası için eğriliği, bir tamsayı olarak belirtir. Bu sayı ne kadar yüksekse, geçerlilik süresi, bağlı olan taraf için taleplerin verildiği zamana göre başlar. Örneğin, Tokennotbeforeskewınseconds 60 saniyeye ayarlandığında, belirteç 13:05:10 UTC 'de verildiyse, belirteç 13:04:10 UTC 'den geçerli olur. Varsayılan değer 0’dır. En büyük değer 3600 ' dir (bir saat). |
-|TokenLifeTimeInSeconds| Hayır| SAML onaylama süresini belirtir. Bu değer, yukarıda belirtilen NotBefore değerinden saniye cinsinden olur. Varsayılan değer 300 saniyedir (5 dakika). |
+| Issueruri | No | SAML yanıtında görünen veren adı. Değer, bağlı olan taraf uygulamasında yapılandırılan adla aynı olmalıdır. |
+| XmlSignatureAlgorithm | No | Azure AD B2C SAML onayını imzalamak için kullanılan yöntem. Olası değerler: `Sha256` , `Sha384` , `Sha512` veya `Sha1` . Aynı değere sahip her iki tarafta de imza algoritmasını yapılandırdığınızdan emin olun. Yalnızca sertifikanızın desteklediği algoritmayı kullanın. SAML yanıtını yapılandırmak için, bkz. [SAML uygulaması kaydetme seçenekleri](saml-service-provider.md)|
+|Tokennotbeforeskewınseconds| No| Geçerlilik döneminin başlangıcını işaretleyen zaman damgası için eğriliği, bir tamsayı olarak belirtir. Bu sayı ne kadar yüksekse, geçerlilik süresi, bağlı olan taraf için taleplerin verildiği zamana göre başlar. Örneğin, Tokennotbeforeskewınseconds 60 saniyeye ayarlandığında, belirteç 13:05:10 UTC 'de verildiyse, belirteç 13:04:10 UTC 'den geçerli olur. Varsayılan değer 0’dır. En büyük değer 3600 ' dir (bir saat). |
+|TokenLifeTimeInSeconds| No| SAML onaylama süresini belirtir. Bu değer, yukarıda belirtilen NotBefore değerinden saniye cinsinden olur. Varsayılan değer 300 saniyedir (5 dakika). |
 
 
 ## <a name="cryptographic-keys"></a>Şifreleme anahtarları

@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.openlocfilehash: f1e84c838d310721cba604274388ae2767eb1502
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100389680"
 ---
 # <a name="configure-redis-clustering-for-a-premium-azure-cache-for-redis-instance"></a>Redsıs örneği için Premium bir Azure önbelleği için Redsıs Kümelemesi yapılandırma
@@ -82,7 +82,7 @@ Kümeleme, önbellek oluşturma sırasında **redsıs dikey penceresinde yeni Az
 > 
 > 
 
-StackExchange. Redo istemcisiyle kümeleme ile çalışma hakkında örnek kod için [Merhaba Dünya](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) örneğinin [Clustering.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) bölümüne bakın.
+StackExchange. Redis istemcisiyle kümeleme ile çalışma hakkında örnek kod için [Merhaba Dünya](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) örneğinin [kümeleme. cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) bölümüne bakın.
 
 <a name="cluster-size"></a>
 
@@ -135,7 +135,7 @@ En iyi performans ve verimlilik için anahtarları eşit olarak dağıtmanız ö
 
 Daha fazla bilgi için bkz. [anahtarlar dağıtım modeli](https://redis.io/topics/cluster-spec#keys-distribution-model), [redthe Cluster veri](https://redis.io/topics/cluster-tutorial#redis-cluster-data-sharding)parçaları ve [anahtarlar Karma etiketleri](https://redis.io/topics/cluster-spec#keys-hash-tags).
 
-Kümeleme ile çalışma ve StackExchange. reddo istemcisiyle aynı parça içindeki anahtarları bulma hakkında örnek kod için, [Merhaba Dünya](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) örneğinin [Clustering.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) bölümüne bakın.
+Kümeleme ile çalışma ve StackExchange. Redis istemcisiyle aynı parça içindeki anahtarları bulma hakkında örnek kod için, [Merhaba Dünya](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) örneğinin [kümeleme. cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) bölümüne bakın.
 
 ### <a name="what-is-the-largest-cache-size-i-can-create"></a>Oluşturabileceğiniz en büyük önbellek boyutu nedir?
 En büyük Premium önbellek boyutu 120 GB 'dir. En fazla 10 adet parçalama, en fazla 1,2 TB GB boyutunda olabilir. Daha büyük bir boyuta ihtiyacınız varsa [daha fazla istek](mailto:wapteams@microsoft.com?subject=Redis%20Cache%20quota%20increase)yapabilirsiniz. Daha fazla bilgi için bkz. [Redsıs fiyatlandırması Için Azure önbelleği](https://azure.microsoft.com/pricing/details/cache/).

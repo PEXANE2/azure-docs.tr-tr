@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: sideeksh
 ms.openlocfilehash: f63021275574e294fa372357d6e62724f5efe0f7
-ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98541199"
 ---
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>Hedef Azure VM’nin ağ yapılandırmalarını özelleştirme
@@ -31,7 +31,7 @@ Azure VM 'Leri çoğaltılırken yük devretme VM 'si için aşağıdaki temel k
 - [Genel IP](../virtual-network/public-ip-addresses.md)
 - Hem alt ağ hem de NIC için [ağ güvenlik grubu](../virtual-network/manage-network-security-group.md)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Kurtarma tarafı yapılandırmalarının önceden planlantığınızdan emin olun.
 - Ağ kaynaklarını önceden oluşturun. Azure Site Recovery hizmetin bu ayarları kabul edebilmesi ve yük devretme VM 'sinin bu ayarlara uyduğundan emin olması için bunu bir giriş olarak sağlayın.

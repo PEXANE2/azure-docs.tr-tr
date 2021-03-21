@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: 3126cbf4f9d87e9baa7267e309210b751a47069d
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98897807"
 ---
 # <a name="live-event-types-comparison"></a>Canlı olay türleri karşılaştırması
@@ -36,7 +36,7 @@ Aşağıdaki tablo, canlı olay türlerinin özelliklerini karşılaştırır. T
 * **Liveeventencodingtype. Standard** -şirket içi bir Live Encoder canlı olaya tek bit hızlı bir akış gönderir ve Media Services çoklu bit hızı akışları oluşturur. Katkı akışı 720p veya daha yüksek çözünürlükte ise, **Default720p** önayar bir dizi 6 çözünürlük/bit hızı çifti kodlayacaktır (Ayrıntılar makalede daha sonra takip edilir).
 * **Liveeventencodingtype. Premium1080p** -şirket içi bir Live Encoder canlı olaya tek bit hızlı bir akış gönderir ve Media Services çoklu bit hızı akışları oluşturur. Default1080p önayar, çözümleme/bit hızı çiftleri çıkış kümesini belirtir (Ayrıntılar makalede daha sonra takip edilecek). 
 
-| Öne çıkan özelliği | Geçişli canlı etkinlik | Standart veya Premium1080p canlı etkinliği |
+| Özellik | Geçişli canlı etkinlik | Standart veya Premium1080p canlı etkinliği |
 | --- | --- | --- |
 | Tek bit hızı girişi, bulutta birden çok bit hızında kodlanır |Hayır |Yes |
 | Katkı akışı için maksimum video çözünürlüğü |4K (4096x2160/60 kare/sn) |1080p (1920x1088 üzerinde 30 kare/sn)|
@@ -63,7 +63,7 @@ Aşağıdaki tablo, canlı olay türlerinin özelliklerini karşılaştırır. T
 | Katkı akışındaki kısa yedeklerden kurtarma olanağı|Yes|Kısmi|
 | Tekdüzen olmayan giriş GOPs desteği|Yes|Hayır – girişte sabit GOP süresi olmalıdır|
 | Değişken çerçeve hızı girişi desteği|Yes|Hayır – giriş sabit kare oranı olmalıdır. Küçük çeşitlemeler, örneğin, yüksek hareket sahneleri sırasında toleranslı olarak dağıtılır. Ancak katkı akışı kare hızını (örneğin, 15 kare/saniye) bırakamıyor.|
-| Giriş akışı kaybolduğunda canlı etkinliğin otomatik olarak kaybolması|Hayır|12 saat sonra, çalışan bir canlı çıkış yoksa|
+| Giriş akışı kaybolduğunda canlı etkinliğin otomatik olarak kaybolması|No|12 saat sonra, çalışan bir canlı çıkış yoksa|
 
 ## <a name="system-presets"></a>Sistem önayarları
 

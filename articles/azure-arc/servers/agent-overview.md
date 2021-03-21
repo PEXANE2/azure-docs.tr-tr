@@ -4,10 +4,10 @@ description: Bu makalede, karma ortamlarda barındırılan sanal makinelerin izl
 ms.date: 03/15/2021
 ms.topic: conceptual
 ms.openlocfilehash: 1fd863ccacc7768401e35254a98c7bb494b3d358
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103470498"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Azure Arc etkin sunucular aracısına genel bakış
@@ -130,7 +130,7 @@ Hizmet Etiketleri:
 
 Adresleri
 
-| Aracı kaynağı | Açıklama |
+| Aracı kaynağı | Description |
 |---------|---------|
 |`management.azure.com`|Azure Resource Manager|
 |`login.windows.net`|Azure Active Directory|
@@ -142,7 +142,7 @@ Adresleri
 
 Önizleme aracıları (sürüm 0,11 ve daha düşük) aşağıdaki URL 'Lere da erişim gerektirir:
 
-| Aracı kaynağı | Açıklama |
+| Aracı kaynağı | Description |
 |---------|---------|
 |`agentserviceapi.azure-automation.net`|Konuk Yapılandırması|
 |`*-agentservice-prod-1.azure-automation.net`|Konuk Yapılandırması|
@@ -206,7 +206,7 @@ Windows için bağlı makine aracısını yükledikten sonra, sistem genelinde a
 
 * Aşağıdaki yükleme klasörleri kurulum sırasında oluşturulur.
 
-    |Klasör |Açıklama |
+    |Klasör |Description |
     |-------|------------|
     |%ProgramFiles%\AzureConnectedMachineAgent |Aracı destek dosyalarını içeren varsayılan yükleme yolu.|
     |%ProgramData%\AzureConnectedMachineAgent |Aracı yapılandırma dosyalarını içerir.|
@@ -218,7 +218,7 @@ Windows için bağlı makine aracısını yükledikten sonra, sistem genelinde a
 
 * Aşağıdaki Windows Hizmetleri, aracının yüklenmesi sırasında hedef makinede oluşturulur.
 
-    |Hizmet adı |Görünen ad |İşlem adı |Açıklama |
+    |Hizmet adı |Görünen ad |İşlem adı |Description |
     |-------------|-------------|-------------|------------|
     |hımds |Azure hibrit Instance Metadata Service |hımds |Bu hizmet, Azure ve bağlı makinenin Azure kimliğiyle bağlantıyı yönetmek için Azure örnek meta veri hizmeti 'ni (ıMDS) uygular.|
     |GCArcService |Konuk yapılandırması yay hizmeti |gc_service |Makinenin istenen durum yapılandırmasını izler.|
@@ -226,14 +226,14 @@ Windows için bağlı makine aracısını yükledikten sonra, sistem genelinde a
 
 * Aşağıdaki çevresel değişkenler aracı yüklemesi sırasında oluşturulur.
 
-    |Name |Varsayılan değer |Açıklama |
+    |Name |Varsayılan değer |Description |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
 
 * Sorun giderme için kullanılabilen çeşitli günlük dosyaları vardır. Bunlar aşağıdaki tabloda açıklanmıştır.
 
-    |Günlük |Açıklama |
+    |Günlük |Description |
     |----|------------|
     |%ProgramData%\AzureConnectedMachineAgent\Log\himds.log |Aracıların (HıMDS) hizmetinin ayrıntılarını ve Azure ile etkileşimini kaydeder.|
     |%ProgramData%\AzureConnectedMachineAgent\Log\azcmagent.log |Verbose (-v) bağımsız değişkeni kullanıldığında azcmagent aracı komutlarının çıktısını içerir.|
@@ -258,7 +258,7 @@ Linux için bağlı makine aracısını yükledikten sonra, sistem genelinde aş
 
 * Aşağıdaki yükleme klasörleri kurulum sırasında oluşturulur.
 
-    |Klasör |Açıklama |
+    |Klasör |Description |
     |-------|------------|
     |/var/seçenek/azcmagent/ |Aracı destek dosyalarını içeren varsayılan yükleme yolu.|
     |/seçenek/azcmagent/ |
@@ -270,7 +270,7 @@ Linux için bağlı makine aracısını yükledikten sonra, sistem genelinde aş
 
 * Aşağıdaki Daemon 'ları, aracının yüklenmesi sırasında hedef makinede oluşturulur.
 
-    |Hizmet adı |Görünen ad |İşlem adı |Açıklama |
+    |Hizmet adı |Görünen ad |İşlem adı |Description |
     |-------------|-------------|-------------|------------|
     |hımdsd. hizmeti |Azure bağlı makine Aracısı hizmeti |hımds |Bu hizmet, Azure ve bağlı makinenin Azure kimliğiyle bağlantıyı yönetmek için Azure örnek meta veri hizmeti 'ni (ıMDS) uygular.|
     |gcad. servce |GC yay hizmeti |gc_linux_service |Makinenin istenen durum yapılandırmasını izler. |
@@ -278,7 +278,7 @@ Linux için bağlı makine aracısını yükledikten sonra, sistem genelinde aş
 
 * Sorun giderme için kullanılabilen çeşitli günlük dosyaları vardır. Bunlar aşağıdaki tabloda açıklanmıştır.
 
-    |Günlük |Açıklama |
+    |Günlük |Description |
     |----|------------|
     |/var/seçenek/azcmagent/log/hımds.log |Aracıların (HıMDS) hizmetinin ayrıntılarını ve Azure ile etkileşimini kaydeder.|
     |/var/seçenek/azcmagent/log/azcmagent.log |Verbose (-v) bağımsız değişkeni kullanıldığında azcmagent aracı komutlarının çıktısını içerir.|
@@ -289,7 +289,7 @@ Linux için bağlı makine aracısını yükledikten sonra, sistem genelinde aş
 
 * Aşağıdaki çevresel değişkenler aracı yüklemesi sırasında oluşturulur. Bu değişkenler ' de ayarlanır `/lib/systemd/system.conf.d/azcmagent.conf` .
 
-    |Name |Varsayılan değer |Açıklama |
+    |Name |Varsayılan değer |Description |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||

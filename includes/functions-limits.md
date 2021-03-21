@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 05/04/2020
 ms.author: glenga
 ms.openlocfilehash: aa75d1d57f44bb1a4d6513823ac97ac9917b260f
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97934478"
 ---
-| Kaynak |[Tüketim planı](../articles/azure-functions/consumption-plan.md)|[Premium planı](../articles/azure-functions/functions-premium-plan.md)|[Adanmış plan](../articles/azure-functions/dedicated-plan.md)|[ASE](../articles/app-service/environment/intro.md)| [Kubernetes](../articles/aks/quotas-skus-regions.md) |
+| Kaynak |[Tüketim planı](../articles/azure-functions/consumption-plan.md)|[Premium planı](../articles/azure-functions/functions-premium-plan.md)|[Ayrılmış plan](../articles/azure-functions/dedicated-plan.md)|[ASE](../articles/app-service/environment/intro.md)| [Kubernetes](../articles/aks/quotas-skus-regions.md) |
 | --- | --- | --- | --- | --- | --- |
 |Varsayılan [zaman aşımı süresi](../articles/azure-functions/functions-scale.md#timeout) (dk) |5 | 30 |30<sup>1</sup> | 30 | 30 |
 |En fazla [zaman aşımı süresi](../articles/azure-functions/functions-scale.md#timeout) (dk) |10 | sınırsız<sup>7</sup> | sınırsız<sup>2</sup> | unbounded | unbounded |

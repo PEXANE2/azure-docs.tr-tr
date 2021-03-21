@@ -12,24 +12,24 @@ ms.workload: infrastructure-services
 ms.date: 10/15/2020
 ms.author: duau
 ms.openlocfilehash: 29b3cdde328a994e5806df810db15b529a6da9af
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96188675"
 ---
 # <a name="tutorial-configure-the-geographic-traffic-routing-method-using-traffic-manager"></a>Öğretici: Traffic Manager kullanarak coğrafi trafik yönlendirme yöntemini yapılandırma
 
 Coğrafi trafik yönlendirme yöntemi, isteklerin gerçekleştiği coğrafi konuma göre trafiği belirli uç noktalara yönlendirmenizi sağlar. Bu öğreticide, bu yönlendirme yöntemiyle bir Traffic Manager profili oluşturma ve uç noktaları belirli coğrafi cihazlardan trafik alacak şekilde yapılandırma gösterilmektedir.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > - Coğrafi yönlendirmeye sahip bir Traffic Manager profili oluşturun.
 > - Iç Içe geçmiş bir uç nokta yapılandırın.
 > - Traffic Manager profilini kullanın.
 > - Traffic Manager profilini silin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -45,7 +45,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
     | Ayar         | Değer                                              |
     | ---             | ---                                                |
-    | Adı            | Profiliniz için bir ad girin. Bu adın trafficmanager.net bölgesi içinde benzersiz olması gerekir. Traffic Manager profilinize erişmek için DNS adını kullanırsınız `<profilename>.trafficmanager.net` . |    
+    | Ad            | Profiliniz için bir ad girin. Bu adın trafficmanager.net bölgesi içinde benzersiz olması gerekir. Traffic Manager profilinize erişmek için DNS adını kullanırsınız `<profilename>.trafficmanager.net` . |    
     | Yönlendirme yöntemi  | **Coğrafi** seçin. |
     | Abonelik    | Aboneliğinizi seçin. |
     | Kaynak grubu   | Bu profili yerleştirmek için mevcut bir kaynak grubunu kullanın veya yeni bir kaynak grubu oluşturun. Yeni bir kaynak grubu oluşturmayı seçerseniz, kaynak grubunun konumunu belirtmek için *kaynak grubu konumu* açılan listesini kullanın. Bu ayar, kaynak grubunun konumunu ifade eder ve genel olarak dağıtılan Traffic Manager profilini etkilemez. |
@@ -69,7 +69,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
     | Ayar                | Değer                                              |
     | ---                    | ---                                                |
     | Tür                   | Uç nokta türünü seçin. Üretimde kullanılan coğrafi yönlendirme profilleri için, birden fazla uç noktaya sahip bir alt profil içeren iç içe geçmiş uç nokta türlerini kullanmanızı önemle öneririz. Daha fazla bilgi için bkz. [coğrafi trafik yönlendirme yöntemleri hakkında SSS](traffic-manager-FAQs.md). |    
-    | Adı                   | Bu uç noktayı tanımlayacak bir ad verin. |
+    | Name                   | Bu uç noktayı tanımlayacak bir ad verin. |
     | Hedef kaynak türü   | Hedef için kaynak türünü seçin. |
     | Hedef kaynak        | Listeden kaynağı seçin. |
 

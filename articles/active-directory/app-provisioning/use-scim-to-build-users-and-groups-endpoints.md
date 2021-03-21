@@ -12,10 +12,10 @@ ms.date: 01/27/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.openlocfilehash: 4e933000c8e700d8bfd193b542e3855b2fca26f8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101689343"
 ---
 # <a name="tutorial-develop-a-sample-scim-endpoint"></a>Öğretici: örnek SCıM uç noktası geliştirme
@@ -104,7 +104,7 @@ Varsayılan belirteç doğrulama kodu, bir Azure AD belirteci kullanacak şekild
 
 SCıM uç noktasını dağıttıktan sonra, SCıM RFC ile uyumlu olduğundan emin olmak için test edebilirsiniz. Bu örnek, Postman 'da kullanıcılar ve gruplar üzerinde CRUD (oluşturma, okuma, güncelleştirme ve silme) işlemlerini doğrulayan bir test kümesi sağlar, filtreleme, grup üyeliğine yönelik güncelleştirmeler ve kullanıcıları devre dışı bırakır.
 
-Uç noktalar `{host}/scim/` dizinde bulunur ve bunlarla etkileşim kurmak için standart http isteklerini kullanabilirsiniz. Yolu değiştirmek için `/scim/` , bkz. *ControllerConstant.cs* in **azureadprovisioningscımreference**  >  **scımreferenceapı**  >  **Controllers**.
+Uç noktalar `{host}/scim/` dizinde bulunur ve bunlarla etkileşim kurmak için standart http isteklerini kullanabilirsiniz. Yolu değiştirmek için `/scim/` bkz. **azureadprovisioningscımreference**   >  **scımreferenceapı**  >  **Controllers** içindeki controllerconstant. cs.
 
 > [!NOTE]
 > Yalnızca yerel testler için HTTP uç noktalarını kullanabilirsiniz. Azure AD sağlama hizmeti, uç noktanızın HTTPS desteklemesini gerektirir.

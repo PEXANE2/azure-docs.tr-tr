@@ -13,10 +13,10 @@ ms.author: vanto
 ms.reviewer: ''
 ms.date: 11/02/2020
 ms.openlocfilehash: 257abf03994c7006b1c3789174f550515dcd309a
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94841470"
 ---
 # <a name="configure-always-encrypted-by-using-azure-key-vault"></a>Azure Key Vault kullanarak Always Encrypted yapılandırma 
@@ -37,7 +37,7 @@ Bu makaledeki adımları izleyin ve Azure SQL veritabanı veya SQL yönetilen ö
 - Veritabanı tablosu oluşturun ve sütunları şifreleyin.
 - Şifrelenmiş sütunlardan veri ekleyen, seçen ve görüntüleyen bir uygulama oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 
 - Bir Azure hesabı ve aboneliği Bir hesabınız yoksa, [ücretsiz deneme](https://azure.microsoft.com/pricing/free-trial/)için kaydolun.
@@ -266,7 +266,7 @@ Bu örnekte nasıl yapılacağı gösterilmektedir:
 - Şifrelenmiş sütunlara veri ekleyin.
 - Şifrelenmiş bir sütunda belirli bir değeri filtreleyerek bir kayıt seçin.
 
-*Program.cs* içeriğini aşağıdaki kodla değiştirin. Ana yöntemin Azure portal geçerli bağlantı dizeniz ile doğrudan önündeki satırdaki Global connectionString değişkeni için bağlantı dizesini değiştirin. Bu kodda yapmanız gereken tek değişiklik budur.
+*Program. cs* ' nin içeriğini aşağıdaki kodla değiştirin. Ana yöntemin Azure portal geçerli bağlantı dizeniz ile doğrudan önündeki satırdaki Global connectionString değişkeni için bağlantı dizesini değiştirin. Bu kodda yapmanız gereken tek değişiklik budur.
 
 Always Encrypted eylemi görmek için uygulamayı çalıştırın.
 
@@ -581,7 +581,7 @@ SSMS 'yi düz metin verilerine erişmek üzere kullanmak için, önce kullanıc�
 Ardından, bağlantınız sırasında *şifreleme ayarı = etkin* parametresini ekleyin.
 
 1. SSMS 'de sunucunuza **Nesne Gezgini** sağ tıklayın ve **bağlantıyı kes**' i seçin.
-2. **Connect**  >  **Sunucuya Bağlan** penceresini açmak için **veritabanı altyapısına** Bağlan ' a tıklayın ve **Seçenekler**' e tıklayın.
+2.   >  **Sunucuya Bağlan** penceresini açmak için **veritabanı altyapısına** Bağlan ' a tıklayın ve **Seçenekler**' e tıklayın.
 3. **Ek bağlantı parametreleri** ve tür **sütunu şifreleme ayarı = etkin** öğesine tıklayın.
 
     ![Ek düzeltme parametreleri sekmesini gösteren ekran görüntüsü.](./media/always-encrypted-azure-key-vault-configure/ssms-connection-parameter.png)

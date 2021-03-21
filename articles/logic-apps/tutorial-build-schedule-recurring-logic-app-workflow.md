@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/30/2020
 ms.openlocfilehash: 95275e68d0c7674caf4dd2b20f5586db5193fd03
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99054068"
 ---
 # <a name="tutorial-create-schedule-based-and-recurring-automation-workflows-with-azure-logic-apps"></a>Öğretici: Azure Logic Apps ile zamanlamaya dayalı ve yinelenen Otomasyon iş akışları oluşturma
@@ -151,7 +151,7 @@ Mantıksal uygulamanız artık Azure portal canlı olmakla kalmaz, belirtilen za
 
 1. Eylemde **yeni parametre Ekle listesini** açın ve bu özellikleri seçin.
 
-   * **İyileştirme**
+   * **Getirileceğini**
    * **Mesafe birimi**
    * **Seyahat modu**
 
@@ -165,9 +165,9 @@ Mantıksal uygulamanız artık Azure portal canlı olmakla kalmaz, belirtilen za
    |----------|----------|-------|-------------|
    | **Güzergah noktası 1** | Yes | <*başlangıç konumu*> | Yol başlangıcının kaynağı. Bu örnek, başlangıç adresini bir örnek belirtir. |
    | **Güzergah noktası 2** | Yes | <*Son konum*> | Yönlendirmenize ait hedef. Bu örnek, bir örnek hedef adresi belirtir. |
-   | **İyileştirme** | Hayır | timeWithTraffic | Rotanızı iyileştirmeye yönelik bir parametre; örneğin, mesafe, mevcut trafik ile seyahat süresi vb. **Timewithtraffic** parametre değerini seçin. |
-   | **Mesafe birimi** | Hayır | <*tercih edin*> | Rotanız için mesafe birimi. Bu örnek birim olarak **mil** kullanır. |
-   | **Seyahat modu** | Hayır | Sürüş | Rotanız için seyahat modu. **İtici** modu ' nu seçin. |
+   | **Getirileceğini** | No | timeWithTraffic | Rotanızı iyileştirmeye yönelik bir parametre; örneğin, mesafe, mevcut trafik ile seyahat süresi vb. **Timewithtraffic** parametre değerini seçin. |
+   | **Mesafe birimi** | No | <*tercih edin*> | Rotanız için mesafe birimi. Bu örnek birim olarak **mil** kullanır. |
+   | **Seyahat modu** | No | Sürüş | Rotanız için seyahat modu. **İtici** modu ' nu seçin. |
    |||||
 
    Bu parametreler ve değerler hakkında daha fazla bilgi için bkz. [Rota hesaplama](/bingmaps/rest-services/routes/calculate-a-route).
@@ -196,7 +196,7 @@ Varsayılan olarak, **yolu al** eylemi, geçerli seyahat süresini, **seyahat s�
    |----------|----------|-------|-------------|
    | **Ad** | Yes | travelTime | Değişkeninizin adı. Bu örnekte `travelTime` kullanılmıştır. |
    | **Tür** | Yes | Tamsayı | Değişkeninizin veri türü |
-   | **Değer** | Hayır | Geçerli seyahat süresini saniyeden dakikaya dönüştürdüğü bir ifade (Bu tablodaki adımlara bakın). | Değişkeninizin ilk değeri |
+   | **Değer** | No | Geçerli seyahat süresini saniyeden dakikaya dönüştürdüğü bir ifade (Bu tablodaki adımlara bakın). | Değişkeninizin ilk değeri |
    |||||
 
    1. **Değer** özelliği için ifade oluşturmak üzere, dinamik içerik listesinin görünmesi için kutunun içine tıklayın. Gerekirse, dinamik liste görünene kadar tarayıcınızı genişletebilirsiniz. Dinamik içerik listesinde ifade düzenleyicisini gösteren **ifade**' ı seçin.

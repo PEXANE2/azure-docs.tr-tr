@@ -4,10 +4,10 @@ description: Bu hızlı başlangıçta, Azure portal aracılığıyla yapıtlar 
 ms.date: 01/27/2021
 ms.topic: quickstart
 ms.openlocfilehash: 75a4e9deca4859ac8b9f302fcb62ecc1d12dd8c9
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98918339"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Hızlı başlangıç: portalda bir şema tanımlama ve atama
@@ -206,7 +206,7 @@ Yayımlama, BLUEPRINT 'in bir aboneliğe atanmasını sağlar.
 
 1. **Şeması ata** sayfasında, **abonelik** açılan listesinde, bu şemayı dağıtmak istediğiniz abonelikleri seçin.
 
-   [Azure faturalandırmaya](../../cost-management-billing/index.yml)sunulan desteklenen kurumsal teklifler varsa, **abonelik** kutusu altında **Yeni bir oluştur** bağlantısı etkinleştirilir. Şu adımları uygulayın:
+   [Azure faturalandırmaya](../../cost-management-billing/index.yml)sunulan desteklenen kurumsal teklifler varsa, **abonelik** kutusu altında **Yeni bir oluştur** bağlantısı etkinleştirilir. Şu adımları izleyin:
 
    1. Yeni bir abonelik oluşturmak için **Yeni oluştur** bağlantısını seçin.
 

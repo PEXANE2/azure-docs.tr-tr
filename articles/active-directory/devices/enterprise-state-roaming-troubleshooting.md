@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: tanning
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: df70891ef090d44769aadbc235273e3193bc780e
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94837218"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Azure Active Directory Enterprise State Roaming ayarları sorunlarını giderme
@@ -156,7 +156,7 @@ Eşitlemenin sürdürülabilmesi için cihazı bir kurumsal ağa bağlayın.
 Kullanıcının karma bir durum UPN 'si varsa (örneğin, Kullanıcı adı yerine Kullanıcı adı) ve Kullanıcı Windows 10 Build 10586 ' den 14393 ' e yükseltilen bir Azure AD 'ye katılmış cihazdaysa, kullanıcının cihazı eşitlenemeyebilir. 
 
 **Önerilen eylem**  
-Kullanıcının cihaza katılmayacak ve buluta yeniden katılması gerekir. Bunu yapmak için, yerel yönetici kullanıcı olarak oturum açın ve **Ayarlar**  >  **sistemine** giderek cihazın  >  **About** bağlantısını kaldırın ve "iş veya okuldan yönetme veya bağlantıyı kes" seçeneğini belirleyin. Aşağıdaki dosyaları temizleyin ve ardından Azure AD ' ın **Ayarlar** sisteminde cihazı yeniden birleştirin  >  **System**  >  **About** ve "iş veya okula Bağlan" seçeneğini seçin. Azure Active Directory cihaza katılmayı ve akışı tamamlamayı sürdürün.
+Kullanıcının cihaza katılmayacak ve buluta yeniden katılması gerekir. Bunu yapmak için, yerel yönetici kullanıcı olarak oturum açın ve **Ayarlar**  >  **sistemine** giderek cihazın  >   bağlantısını kaldırın ve "iş veya okuldan yönetme veya bağlantıyı kes" seçeneğini belirleyin. Aşağıdaki dosyaları temizleyin ve ardından Azure AD ' ın **Ayarlar** sisteminde cihazı yeniden birleştirin  >    >   ve "iş veya okula Bağlan" seçeneğini seçin. Azure Active Directory cihaza katılmayı ve akışı tamamlamayı sürdürün.
 
 Temizleme adımında, aşağıdaki dosyaları temizleyin:
 - İçindeki Settings. dat `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\Settings\`

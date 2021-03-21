@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 10/01/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a8d98485b180d999fb0762551e05ea5e3ef365b4
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101661486"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-sdk-and-azure-cosmos-db"></a>Hızlı başlangıç: .NET SDK ve Azure Cosmos DB Cassandra uygulaması derleme
@@ -126,7 +126,7 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 
    :::image type="content" source="./media/create-cassandra-dotnet/keys.png" alt-text="Azure portalı, Bağlantı Dizesi sayfasından erişim anahtarını görüntüleme ve kopyalama":::
 
-1. Visual Studio 'da Program.cs dosyasını açın. 
+1. Visual Studio 'da program. cs dosyasını açın. 
 
 1. Portaldan USERNAME değerini 13. satırdaki `<FILLME>` üzerine yapıştırın.
 
