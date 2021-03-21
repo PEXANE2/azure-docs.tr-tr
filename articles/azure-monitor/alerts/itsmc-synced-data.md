@@ -7,10 +7,10 @@ ms.author: v-jysur
 ms.date: 12/29/2020
 ms.custom: references_regions
 ms.openlocfilehash: 83994c1b6e150342a777a079d79d6a594d30c3ff
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102041612"
 ---
 # <a name="data-synced-from-your-itsm-product"></a>ITSM ürününüzle eşitlenen veriler
@@ -83,7 +83,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 - Planlanan bitiş tarihi
 - Çalışma başlangıç tarihi
 - Çalışma bitiş tarihi
-- Açıklama
+- Description
 - Bilgisayar
 
 ## <a name="servicenow-example"></a>ServiceNow örneği 
@@ -131,7 +131,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 | PlannedEndDate_t  | Planlanan bitiş tarihi |
 | WorkStartDate_t  | Gerçek başlangıç tarihi |
 | WorkEndDate_t | Gerçek bitiş tarihi|
-| Description_s | Açıklama |
+| Description_s | Description |
 | Bilgisayar  | Yapılandırma öğesi |
 
 ## <a name="next-steps"></a>Sonraki adımlar

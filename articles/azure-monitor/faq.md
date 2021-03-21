@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 5b9b0c6a0fe08ccff9da59539b926270cd0e1d44
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 29cc0a3201b7c4ce1c685029de2a40f115b23e82
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032866"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606965"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Izleyici sık sorulan sorular
 
@@ -705,6 +705,10 @@ Kuto-System ad alanındaki kapsayıcılardan günlük koleksiyonu varsayılan ol
 
 Aracıyı yükseltmeyi öğrenmek için bkz. [Aracı yönetimi](containers/container-insights-manage-agent.md).
 
+### <a name="why-are-log-lines-larger-than-16kb-split-into-multiple-records-in-log-analytics"></a>16 KB 'den büyük günlük satırları neden Log Analytics birden çok kayda bölünür?
+
+Aracı, kapsayıcıların stdout ve stderr 'i yakalamak için [Docker JSON dosya günlüğü sürücüsünü](https://docs.docker.com/config/containers/logging/json-file/) kullanır. Bu günlüğe kaydetme sürücüsü, stdout veya stderr 'den bir dosyaya kopyalanırken [16KB 'den büyük](https://github.com/moby/moby/pull/22982) günlük satırlarını birden çok satıra böler.
+
 ### <a name="how-do-i-enable-multi-line-logging"></a>Çok satırlı günlüğe kaydetme etkinleştirilsin mi Nasıl yaparım??
 
 Şu anda kapsayıcı öngörüleri çok satırlı günlüğü desteklemez, ancak kullanılabilir geçici çözümler vardır. Tüm hizmetleri JSON biçiminde yazacak şekilde yapılandırabilir ve ardından Docker/Moby, bunları tek bir satır olarak yazar.
@@ -821,6 +825,29 @@ Bu yaklaşık, istek/yanıt tabanlı protokollerde iyi sonuç verir: tek bir ist
 
 Bu koşulun altında, VM 'yi açıp, zaten VM 'ye yüklendikten sonra bile sol bölmedeki **Öngörüler** ' i seçtiğinizde **Şimdi dene** seçeneği istenir.  Ancak, bu VM, VM öngörülerine eklendi değilse, genellikle bu sanal makine için bir seçenek istenmez. 
 
+## <a name="sql-insights-preview"></a>SQL Insights (Önizleme)
+
+### <a name="what-versions-of-sql-server-are-supported"></a>Hangi SQL Server sürümleri desteklenir?
+Desteklenen SQL sürümleri için [Desteklenen sürümler](insights/sql-insights-overview.md#supported-versions) bölümüne bakın.
+
+### <a name="what-sql-resource-types-are-supported"></a>Hangi SQL kaynak türleri destekleniyor?
+
+- Azure SQL Veritabanı. Bir Elastik Havuz veritabanları değil yalnızca tek veritabanı.
+- Azure SQL Yönetilen Örnek 
+- SQL Server yüklü Azure SQL sanal makineleri ([Windows](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-server-vms), [Linux](../azure-sql/virtual-machines/linux/sql-server-on-linux-vm-what-is-iaas-overview.md#create)) ve Azure sanal makineleri.
+
+### <a name="what-operating-systems-for-the-machine-running-sql-server-are-supported"></a>SQL Server çalıştıran makine için hangi işletim sistemleri destekleniyor?
+Desteklenen SQL sürümünün çalıştırılmasını destekleyen herhangi bir işletim sistemi.
+
+### <a name="what-operating-system-for-the-remote-monitoring-server-are-supported"></a>Uzaktan izleme sunucusu için hangi işletim sistemi destekleniyor?
+
+Ubuntu 18,04 Şu anda desteklenen tek işletim sistemidir.
+
+### <a name="where-will-the-monitoring-data-be-stored-in-log-analytics"></a>İzleme verilerinin Log Analytics nerede depolanacağı 
+Tüm izleme verileri, **ınsightsölçümlerini** tablosunda depolanır. **Kaynak** sütununun *Solutions.AZM.MS/telegraf/SqlInsights* değeri vardır. **Ad alanı** sütununda *sqlserver_* başlayan değerler vardır.
+
+### <a name="how-often-is-data-collected"></a>Veriler ne sıklıkta toplanır? 
+Farklı verilerin toplandığı sıklığa ilişkin ayrıntılar için bkz. [SQL Insights tarafından toplanan veriler](../insights/../azure-monitor/insights/sql-insights-overview.md#data-collected-by-sql-insights) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Sorunuz burada yanıtlanmazsa, ek sorular ve yanıtlar için aşağıdaki forumlara başvurabilirsiniz.

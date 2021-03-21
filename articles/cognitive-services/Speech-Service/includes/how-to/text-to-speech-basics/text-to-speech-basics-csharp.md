@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/25/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 278bb106789452d14001da5bd0bab6570d114666
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: b1161fdcbed7933c7a8dd0dccadd2e896966b728
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102428247"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104719712"
 ---
 Bu hızlı başlangıçta, konuşma SDK 'sını kullanarak metinden konuşmaya senşlerini kullanmaya yönelik yaygın tasarım düzenlerini öğrenirsiniz. Temel yapılandırma ve birleştirme işlemleri gerçekleştirerek başlar ve aşağıdakiler de dahil olmak üzere özel uygulama geliştirme için daha gelişmiş örneklere geçin:
 
@@ -67,14 +67,14 @@ Konuşma SDK 'sını kullanarak konuşma hizmetini çağırmak için bir oluştu
 Bu örnekte, bir [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig) abonelik anahtarı ve bölgesi kullanarak bir oluşturun. [Konuşma hizmetini ücretsiz deneyin](../../../overview.md#try-the-speech-service-for-free)bölümündeki adımları izleyerek bu kimlik bilgilerini alın. Ayrıca, bu makalenin geri kalanı için kullanabileceğiniz, farklı özelleştirmeler için değiştirdiğiniz bazı temel ortak kod oluşturabilirsiniz.
 
 ```csharp
-public class Program 
+public class Program
 {
     static async Task Main()
     {
         await SynthesizeAudioAsync();
     }
 
-    static async Task SynthesizeAudioAsync() 
+    static async Task SynthesizeAudioAsync()
     {
         var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     }
@@ -88,7 +88,7 @@ Sonra, [`SpeechSynthesizer`](/dotnet/api/microsoft.cognitiveservices.speech.spee
 Başlamak için, `AudioConfig` Bu işlevi kullanarak çıktıyı otomatik olarak bir dosyaya yazacak şekilde oluşturun `.wav` `FromWavFileOutput()` ve bir ifadesiyle birlikte örneğini oluşturun `using` . `using`Bu bağlamdaki bir ifade, yönetilmeyen kaynakları otomatik olarak ortadan kaldırmakta ve çıkarma sonrasında nesnenin kapsam dışına geçmesine neden olur.
 
 ```csharp
-static async Task SynthesizeAudioAsync() 
+static async Task SynthesizeAudioAsync()
 {
     var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     using var audioConfig = AudioConfig.FromWavFileOutput("path/to/write/file.wav");
@@ -98,7 +98,7 @@ static async Task SynthesizeAudioAsync()
 Sonra, başka bir `SpeechSynthesizer` ifadesiyle bir oluştur `using` . `config`Nesneniz ve `audioConfig` nesneyi params olarak geçirin. Daha sonra, konuşma birleştirmenin yürütülmesi ve bir dosyaya yazılması, `SpeakTextAsync()` bir metin dizesiyle çalışırken basittir.
 
 ```csharp
-static async Task SynthesizeAudioAsync() 
+static async Task SynthesizeAudioAsync()
 {
     var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     using var audioConfig = AudioConfig.FromWavFileOutput("path/to/write/file.wav");
@@ -111,10 +111,10 @@ Programı çalıştırın ve belirttiğiniz konuma bir sentezlenmiş `.wav` dosy
 
 ## <a name="synthesize-to-speaker-output"></a>Konuşmacı çıktısına sentezleştirme
 
-Bazı durumlarda, doğrudan sentezlenmiş konuşmayı doğrudan bir konuşmacının çıktısını almak isteyebilirsiniz. Bunu yapmak için `AudioConfig` Yukarıdaki örnekte oluştururken param ' ı atlayın `SpeechSynthesizer` . Bu, geçerli etkin çıkış cihazına çıkış verir.
+Bazı durumlarda, doğrudan sentezlenmiş konuşmayı doğrudan bir konuşmacının çıktısını almak isteyebilirsiniz. Bunu yapmak için `AudioConfig` Yukarıdaki örnekte oluştururken parametresini atlayın `SpeechSynthesizer` . Bu, geçerli etkin çıkış cihazını birleştirdi.
 
 ```csharp
-static async Task SynthesizeAudioAsync() 
+static async Task SynthesizeAudioAsync()
 {
     var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     using var synthesizer = new SpeechSynthesizer(config);
@@ -130,7 +130,7 @@ Konuşma uygulaması geliştirmede birçok senaryo için, büyük olasılıkla b
 * Sonucu diğer API 'leri veya hizmetleriyle tümleştirin.
 * Ses verilerini değiştirin, özel üstbilgiler yazın `.wav` vb.
 
-Önceki örnekte bu değişikliği yapmak basittir. İlk `AudioConfig` olarak, daha fazla denetim için çıkış davranışını bu noktadan el ile yöneteceği için bloğu kaldırın. Sonra `null` `AudioConfig` Oluşturucu içinde öğesine geçirin `SpeechSynthesizer` . 
+Önceki örnekte bu değişikliği yapmak basittir. İlk `AudioConfig` olarak, daha fazla denetim için çıkış davranışını bu noktadan el ile yöneteceği için bloğu kaldırın. Sonra `null` `AudioConfig` Oluşturucu içinde öğesine geçirin `SpeechSynthesizer` .
 
 > [!NOTE]
 > `null` `AudioConfig` Yukarıdaki konuşmacı çıktısı örneğinde olduğu gibi değil, için geçirme, geçerli etkin çıkış cihazında varsayılan olarak sesi oynamaz.
@@ -138,11 +138,11 @@ Konuşma uygulaması geliştirmede birçok senaryo için, büyük olasılıkla b
 Bu kez, sonucu bir [`SpeechSynthesisResult`](/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesisresult) değişkene kaydedersiniz. `AudioData`Özelliği, çıkış verilerinin bir listesini içerir `byte []` . Bu ile el ile çalışabilirsiniz `byte []` veya [`AudioDataStream`](/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream) bellek içi akışı yönetmek için sınıfını kullanabilirsiniz. Bu örnekte, `AudioDataStream.FromResult()` sonuçtan bir akış almak için static işlevini kullanırsınız.
 
 ```csharp
-static async Task SynthesizeAudioAsync() 
+static async Task SynthesizeAudioAsync()
 {
     var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     using var synthesizer = new SpeechSynthesizer(config, null);
-    
+
     var result = await synthesizer.SpeakTextAsync("Getting the response as an in-memory stream.");
     using var stream = AudioDataStream.FromResult(result);
 }
@@ -168,7 +168,7 @@ Gereksinimlerinize bağlı olarak farklı dosya türleri için çeşitli seçene
 Bu örnekte, `Riff24Khz16BitMonoPcm` nesnesi üzerinde ayarını yaparak Yüksek uygunluğa sahip bir biçim belirtirsiniz `SpeechSynthesisOutputFormat` `SpeechConfig` . Önceki bölümdeki örneğe benzer şekilde, [`AudioDataStream`](/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream) sonucun bellek içi akışını elde etmek ve ardından bir dosyaya yazmak için öğesini kullanırsınız.
 
 ```csharp
-static async Task SynthesizeAudioAsync() 
+static async Task SynthesizeAudioAsync()
 {
     var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     config.SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat.Riff24Khz16BitMonoPcm);
@@ -204,11 +204,11 @@ Ardından, XML dosyanıza başvurmak için konuşma sensıs isteğini değiştir
 > Visual Studio kullanıyorsanız, derleme config dosyanız büyük olasılıkla XML dosyanızı varsayılan olarak bulamaz. Bu hatayı onarmak için, XML dosyasına sağ tıklayın ve **Özellikler**' i seçin. **Derleme eylemini** *içerik* olarak değiştirin ve kopya **dizinine Kopyala** ' yı *her zaman kopyalamak* üzere değiştirin.
 
 ```csharp
-public static async Task SynthesizeAudioAsync() 
+public static async Task SynthesizeAudioAsync()
 {
     var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     using var synthesizer = new SpeechSynthesizer(config, null);
-    
+
     var ssml = File.ReadAllText("./ssml.xml");
     var result = await synthesizer.SpeakSsmlAsync(ssml);
 
@@ -247,3 +247,10 @@ Bir sinir sesinize geçiş yapmak için, `name` [sinir Voice seçeneklerinden](.
   </voice>
 </speak>
 ```
+## <a name="get-facial-pose-events"></a>Yüz poz olaylarını al
+
+Konuşma, yüz ifadelerinin animasyonunu sağlamak için iyi bir yol olabilir.
+Genellikle [visemes](../../../how-to-speech-synthesis-viseme.md) , belirli bir phoneme oluşturma sırasında LIP 'ler, Jaw ve dil sistemi gibi gözlemlenen konuşmayla ilgili önemli pozları temsil etmek için kullanılır.
+Konuşma SDK 'sında viseme olayına abone olabilirsiniz.
+Daha sonra, konuşma sesi oynatılırken bir karakter yüzünüzü hareketlendirmek için viseme olaylarını uygulayabilirsiniz.
+[Viseme olaylarını nasıl alabileceğinizi](../../../how-to-speech-synthesis-viseme.md#get-viseme-events-with-the-speech-sdk)öğrenin.

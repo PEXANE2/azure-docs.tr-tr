@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/28/2021
+ms.date: 03/16/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 78ad2540029d78084485ae2004194f9f7c2d6052
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: e694a5f6144cee65be074d05ce0015d31bfdf65e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99050558"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104675834"
 ---
 # <a name="customize-the-user-interface-with-html-templates-in-azure-active-directory-b2c"></a>Kullanıcı arabirimini Azure Active Directory B2C HTML şablonlarıyla özelleştirme
 
@@ -363,26 +363,31 @@ https://contoso.blob.core.windows.net/fr/myHTML/unified.html
 UI özelleştirmesi için örnek şablonları buradan bulabilirsiniz:
 
 ```bash
-git clone https://github.com/Azure-Samples/Azure-AD-B2C-page-templates
+git clone https://github.com/azure-ad-b2c/html-templates
 ```
 
 Bu proje aşağıdaki şablonları içerir:
-- [Okyanus Mavisi](https://github.com/Azure-Samples/Azure-AD-B2C-page-templates/tree/master/ocean_blue)
-- [Kurşun Grisi](https://github.com/Azure-Samples/Azure-AD-B2C-page-templates/tree/master/slate_gray)
+- [Okyanus Mavisi](https://github.com/azure-ad-b2c/html-templates/tree/main/templates/AzureBlue)
+- [Kurşun Grisi](https://github.com/azure-ad-b2c/html-templates/tree/main/templates/MSA)
+- [Klasik](https://github.com/azure-ad-b2c/html-templates/tree/main/templates/classic)
+- [Şablon kaynakları](https://github.com/azure-ad-b2c/html-templates/tree/main/templates/src)
 
 Örneği kullanmak için:
 
-1. Yerel makinenizde depoyu kopyalayın. Bir şablon klasörü `/ocean_blue` veya seçin `/slate_gray` .
-1. Şablon klasörü ve klasörü altındaki tüm dosyaları `/assets` , önceki bölümlerde açıklandığı gibi BLOB depolama alanına yükleyin.
-1. Ardından, her `\*.html` bir dosyayı veya kökündeki her birini açın `/ocean_blue` `/slate_gray` , göreli URL 'lerin tüm örneklerini adım 2 ' de karşıya yüklediğiniz CSS, resim ve yazı tipi dosyalarının URL 'leriyle değiştirin. Örneğin:
+1. Yerel makinenizde depoyu kopyalayın. Bir şablon klasörü `/AzureBlue` , `/MSA` veya seçin `/classic` .
+1. Şablon klasörü ve klasörü altındaki tüm dosyaları `/src` , önceki bölümlerde açıklandığı gibi BLOB depolama alanına yükleyin.
+1. Ardından, her bir `\*.html` dosyayı şablon klasöründen açın. Ardından, URL 'lerin tüm örneklerini `https://login.microsoftonline.com` Adım 2 ' de karşıya YÜKLEDIĞINIZ URL ile değiştirin. Örnek:
+    
+    Kimden:
     ```html
-    <link href="./css/assets.css" rel="stylesheet" type="text/css" />
+    https://login.microsoftonline.com/templates/src/fonts/segoeui.WOFF
     ```
 
-    Amaç
+    Hedef:
     ```html
-    <link href="https://your-storage-account.blob.core.windows.net/your-container/css/assets.css" rel="stylesheet" type="text/css" />
+    https://your-storage-account.blob.core.windows.net/your-container/templates/src/fonts/segoeui.WOFF
     ```
+    
 1. Dosyaları kaydedin `\*.html` ve BLOB depolamaya yükleyin.
 1. Şimdi, daha önce belirtildiği gibi, HTML dosyanıza işaret eden ilkeyi değiştirin.
 1. Eksik yazı tiplerini, görüntüleri veya CSS 'yi görürseniz, uzantılar ilkesinde ve. html dosyalarında başvurularınızı kontrol edin \* .

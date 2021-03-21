@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 09/16/2019
 ms.author: genli
-ms.openlocfilehash: 674b8ab8266921a4eef8bbf212f3c556b1e587d7
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 4454afbe543f374ebd745af7cd59be1ab745036f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658361"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670896"
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>Sorun giderme: bir Azure siteden siteye VPN bağlantısı bağlanamaz ve çalışmayı durduruyor
 
@@ -28,7 +28,7 @@ Sorunu çözmek için öncelikle [Azure VPN Gateway 'i sıfırlamayı](./reset-g
 
 Azure VPN ağ geçidinin türünü denetleyin.
 
-1. [Azure portalına](https://portal.azure.com) gidin.
+1. [Azure Portal](https://portal.azure.com) gidin.
 
 2. Tür bilgileri için VPN ağ geçidinin **genel bakış** sayfasını kontrol edin.
     
@@ -110,5 +110,5 @@ Kusursuz iletme gizliliği özelliği, bağlantı kesme sorunlarına neden olabi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
--   [Bir sanal ağa siteden siteye bağlantı yapılandırma](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+-   [Bir sanal ağa siteden siteye bağlantı yapılandırma](./tutorial-site-to-site-portal.md)
 -   [Siteden siteye VPN bağlantıları için bir IPSec/ıKE ilkesi yapılandırma](vpn-gateway-ipsecikepolicy-rm-powershell.md)

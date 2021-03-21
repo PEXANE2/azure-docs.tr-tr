@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 02/18/2021
-ms.openlocfilehash: 3b97887e7bbd31fc1bb6ec0a074267aa081184c8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 1fad6274b1dbbc4bf255caabd79352b3c836e352
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724906"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606704"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-a-database-in-azure-sql-database-using-the-azure-portal"></a>SQL Server içindeki birden çok tablodan verileri, Azure portal kullanarak Azure SQL veritabanındaki bir veritabanına artımlı olarak yükleme
 
@@ -253,7 +253,7 @@ END
 8. **Oluştur**’a tıklayın.      
 9. Oluşturma işlemi tamamlandıktan sonra, resimde gösterildiği gibi **Data Factory** sayfasını görürsünüz.
    
-   ![Data factory giriş sayfası](./media/doc-common-process/data-factory-home-page.png)
+    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Yazar & Izleyici kutucuğuna sahip Azure Data Factory ana sayfası.":::
 10. Azure Data Factory kullanıcı arabirimini (UI) ayrı bir sekmede açmak için **Geliştir ve İzle** kutucuğuna tıklayın.
 
 ## <a name="create-self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma
@@ -291,7 +291,7 @@ Bu adımda, SQL Server veritabanınızı veri fabrikasına bağlarsınız.
 
 1. **Bağlantılar** penceresinde **Tümleştirme Çalışma Zamanları** sekmesinden **Bağlı Hizmetler** sekmesine geçip **+ Yeni**’ye tıklayın.
 
-   ![Yeni bağlı hizmet](./media/doc-common-process/new-linked-service.png)
+    :::image type="content" source="./media/doc-common-process/new-linked-service.png" alt-text="Yeni bağlı hizmet.":::
 1. **Yeni Bağlı Hizmet** penceresinde **SQL Server**’ı seçip **Devam**’a tıklayın. 
 
 1. **Yeni Bağlı Hizmet** penceresinde aşağıdaki adımları izleyin:

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: alkohli
-ms.openlocfilehash: e2d89718d953f05b3e5500db412ac8ac03bfa00b
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: c6152d4b9ee28554efcb5b08b7a2d161a0723852
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301940"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670913"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>StorSimple üzerinde barındırılan dosya paylaşımları için Azure Site Recovery kullanan otomatik olağanüstü durum kurtarma çözümü
 
@@ -44,7 +44,7 @@ StorSimple depolamada barındırılan dosya paylaşımları için Azure Site Rec
    - Azure StorSimple Manager 'a kayıtlı, şirket içi StorSimple depolama cihazı
    - StorSimple Cloud Appliance Azure StorSimple Manager 'da oluşturuldu. Gereç bir kapatma durumunda tutulabilir.
    - StorSimple depolama cihazında yapılandırılan birimlerde barındırılan dosya paylaşımları
-   - Microsoft Azure abonelikte oluşturulan [Azure Site Recovery Services Kasası](/azure/site-recovery/hyper-v-vmm-azure-tutorial)
+   - Microsoft Azure abonelikte oluşturulan [Azure Site Recovery Services Kasası](../site-recovery/hyper-v-vmm-azure-tutorial.md)
 
 Ayrıca, Azure kurtarma siteniz ise, Azure VM 'Leri ve Azure Site Recovery hizmetleriyle uyumlu olduklarından emin olmak için VM 'lerde [Azure sanal makine hazırlığı değerlendirmesi aracı](https://azure.microsoft.com/downloads/vm-readiness-assessment/) 'nı çalıştırın.
 
@@ -112,7 +112,7 @@ Bu adım, şirket içi dosya sunucusu ortamını hazırlamanızı, bir Azure Sit
    1. Bu birimlerde dosya paylaşımları oluşturmak için dosya ve Depolama Hizmetleri rolünü kullanın.
 
 #### <a name="to-create-and-prepare-an-azure-site-recovery-vault"></a>Azure Site Recovery kasasını oluşturmak ve hazırlamak için
-Dosya sunucusu VM 'sini korumadan önce Azure Site Recovery kullanmaya başlamak için [Azure Site Recovery belgelerine](/azure/site-recovery/) bakın.
+Dosya sunucusu VM 'sini korumadan önce Azure Site Recovery kullanmaya başlamak için [Azure Site Recovery belgelerine](../site-recovery/index.yml) bakın.
 
 #### <a name="to-enable-protection"></a>Korumayı etkinleştirmek için
 1. Azure Site Recovery üzerinden korumak istediğiniz şirket içi VM 'lerden Iscsı hedefinin bağlantısını kesin:
@@ -124,7 +124,7 @@ Dosya sunucusu VM 'sini korumadan önce Azure Site Recovery kullanmaya başlamak
    > [!NOTE]
    > Bu, dosya paylaşımlarının geçici olarak kullanılamamasına neden olur.
    
-1. Azure Site Recovery portalından dosya sunucusu VM 'sinin [sanal makine korumasını etkinleştirin](/azure/site-recovery/hyper-v-azure-tutorial) .
+1. Azure Site Recovery portalından dosya sunucusu VM 'sinin [sanal makine korumasını etkinleştirin](../site-recovery/hyper-v-azure-tutorial.md) .
 1. İlk eşitleme başladığında hedefi yeniden yeniden bağlayabilirsiniz. Iscsı başlatıcısına gidin, StorSimple cihazını seçin ve **Bağlan**' a tıklayın.
 1. Eşitleme tamamlandığında ve VM 'nin durumu **korunduğunda**, VM 'yi seçin, **Yapılandır** sekmesini seçin ve VM 'nin ağını uygun şekilde güncelleştirin (Bu, yük devredilen VM (ler) ın bir parçası olacağı ağ olur). Ağ görünmüyorsa, eşitlemenin hala devam ettiği anlamına gelir.
 
@@ -153,7 +153,7 @@ Dosya paylaşımlarının yük devretme işlemini otomatik hale getirmek için A
    - Konum-konum seçin, StorSimple Cloud Appliance ve depolama hesaplarının oluşturulduğu coğrafi/bölgede saklayın.
    - Azure farklı çalıştır hesabı oluştur- **Evet** seçeneğini belirleyin.
    
-1. Otomasyon hesabına gidin ve **Runbooks** &gt; gerekli tüm runbook 'ları Otomasyon hesabına aktarmak için Runbook 'lar **tarayıcı galerisine** tıklayın.
+1. Otomasyon hesabına gidin ve  &gt; gerekli tüm runbook 'ları Otomasyon hesabına aktarmak için Runbook 'lar **tarayıcı galerisine** tıklayın.
 1. Galerideki **olağanüstü durum kurtarma** etiketini bularak aşağıdaki runbook 'ları ekleyin:
    
    - Yük devretme sınamasını (TFO) tamamladıktan sonra StorSimple birimlerini Temizleme
@@ -164,7 +164,7 @@ Dosya paylaşımlarının yük devretme işlemini otomatik hale getirmek için A
    
       ![Galeriye gözatamıyorum](./media/storsimple-disaster-recovery-using-azure-site-recovery/image3.png)
    
-1. Otomasyon hesabındaki runbook 'u seçip Yayımla ' **ya tıklayın** &gt; **Publish** ve doğrulama iletisine **Evet** ' e tıklayarak tüm betikleri yayımlayın. Bu adımdan sonra, **runbook 'lar** sekmesi şu şekilde görünür:
+1. Otomasyon hesabındaki runbook 'u seçip Yayımla ' **ya tıklayın** &gt;  ve doğrulama iletisine **Evet** ' e tıklayarak tüm betikleri yayımlayın. Bu adımdan sonra, **runbook 'lar** sekmesi şu şekilde görünür:
    
    ![Runbook'lar](./media/storsimple-disaster-recovery-using-azure-site-recovery/image4.png)
    
@@ -174,7 +174,7 @@ Dosya paylaşımlarının yük devretme işlemini otomatik hale getirmek için A
    - _Recoveryplanname_**-Resourcegroupname**: storsimple kaynağına sahip Kaynak Yöneticisi grubu.
    - _Recoveryplanname_**-ManagerName**: StorSimple cihazına sahip StorSimple kaynağı.
    - _Recoveryplanname_**-aygıtadı**: yük devredilecek olan StorSimple cihazı.
-   - _Recoveryplanname_**-deviceıpaddress**: cihazın IP adresi (Bu, StorSimple aygıt yöneticisi bölüm **Devices** &gt; **ayarları** &gt; **ağ** &gt; **DNS ayarları** grubu altında aygıtlar sekmesinde bulunabilir).
+   - _Recoveryplanname_**-deviceıpaddress**: cihazın IP adresi (Bu, StorSimple Device Manager bölüm  &gt; **ayarları** &gt; **ağ** &gt; **DNS ayarları** grubu altında aygıtlar sekmesinde bulunabilir).
    - _Recoveryplanname_**-volumecontainers**: cihazda yük devredilecek olması gereken birim kapsayıcılarının virgülle ayrılmış bir dizesi; Örneğin: volcon1, volcon2, volcon3.
    - _Recoveryplanname_**-targetaygıtadı**: kapsayıcıların yük devretme StorSimple Cloud Appliance.
    - _Recoveryplanname_**-targetdeviceıpaddress**: hedef cihazın IP adresi (Bu, **sanal makine** bölüm &gt; **ayarları** grup &gt; **ağı** sekmesinde bulunabilir).
@@ -282,7 +282,7 @@ Sınama yük devretmesi sırasında Active Directory özgü hususlar için [ACTI
    
    ![Yük devretmeyi Başlat](./media/storsimple-disaster-recovery-using-azure-site-recovery/image8.png)
    
-1. Yük devretmeyi başlatmak için **Tamam**'a tıklayın. Özelliklerini açmak için VM 'ye tıklayarak veya kasa adı işlerinde **Test yük devretmesi işi** &gt; **Jobs** &gt; **Site Recovery işleri**' ne tıklayarak ilerlemeyi izleyebilirsiniz.
+1. Yük devretmeyi başlatmak için **Tamam**'a tıklayın. Özelliklerini açmak için VM 'ye tıklayarak veya kasa adı işlerinde **Test yük devretmesi işi** &gt;  &gt; **Site Recovery işleri**' ne tıklayarak ilerlemeyi izleyebilirsiniz.
 1. Yük devretme tamamlandıktan sonra, çoğaltma Azure makinesi 'nin Azure portal &gt; **sanal makinelerde** göründüğünü de görmeniz gerekir. Doğrulamalarınızı gerçekleştirebilirsiniz.
 1. Doğrulamalar yapıldıktan sonra, **doğrulamalar tamamlandı**' ya tıklayın. Bu, StorSimple birimlerini kaldıracak ve StorSimple Cloud Appliance kapatacaktır.
 1. İşiniz bittiğinde kurtarma planında **Yük devretme testini temizle** ' ye tıklayın. Notlar ' da, test yük devretmesi ile ilişkili tüm gözlemlerinizi kaydeder ve kaydeder. Bu işlem, yük devretme testi sırasında oluşturulan sanal makineyi silecektir.

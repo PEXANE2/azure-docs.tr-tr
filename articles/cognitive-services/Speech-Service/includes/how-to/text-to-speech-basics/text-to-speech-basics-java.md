@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/25/2020
 ms.custom: devx-track-java
 ms.author: trbye
-ms.openlocfilehash: 80384662789e9dad979566715672c15a8648ea9a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7dd84b8f2f0834a03b41179531245ebdff35b7ff
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/19/2021
-ms.locfileid: "104613001"
+ms.locfileid: "104719614"
 ---
 Bu hızlı başlangıçta, konuşma SDK 'sını kullanarak metinden konuşmaya senşlerini kullanmaya yönelik yaygın tasarım düzenlerini öğrenirsiniz. Temel yapılandırma ve birleştirme işlemleri gerçekleştirerek başlar ve aşağıdakiler de dahil olmak üzere özel uygulama geliştirme için daha gelişmiş örneklere geçin:
 
@@ -255,9 +255,9 @@ Bir sinir sesinize geçiş yapmak için, `name` [sinir Voice seçeneklerinden](.
 </speak>
 ```
 
-## <a name="visemes"></a>Visemes
+## <a name="get-facial-pose-events"></a>Yüz poz olaylarını al
 
-Konuşma genellikle yüz ifadelerin animasyonunu sağlamak için iyi bir yöntem olarak değerlendirilir.
-Genellikle, gözlemlenen konuşmayla ilgili önemli pozları (örneğin, LIP 'ler, Jaw ve belirli bir phoneu oluştururken dil) göstermek için, genellikle [visemes](../../../how-to-speech-synthesis-viseme.md) kullanılır.
-Yüz animasyon verileri oluşturmak için konuşma SDK 'sında viseme olayına abone olabilirsiniz. Ardından, yüz animasyonunu gerçekleştirmek için bu tür verileri bir karaktere uygulayabilirsiniz.
-[Viseme çıkışlarını alma hakkında](../../../how-to-speech-synthesis-viseme.md#get-viseme-outputs-with-the-speech-sdk)bilgi edinin.
+Konuşma, yüz ifadelerinin animasyonunu sağlamak için iyi bir yol olabilir.
+Genellikle [visemes](../../../how-to-speech-synthesis-viseme.md) , belirli bir phoneme oluşturma sırasında LIP 'ler, Jaw ve dil sistemi gibi gözlemlenen konuşmayla ilgili önemli pozları temsil etmek için kullanılır.
+Yüz animasyon verilerini almak için konuşma SDK 'daki viseme olaylarına abone olabilir ve sonra yüz animasyon sırasında verileri bir karaktere uygulayabilirsiniz.
+[Viseme olaylarını nasıl alabileceğinizi](../../../how-to-speech-synthesis-viseme.md#get-viseme-events-with-the-speech-sdk)öğrenin.

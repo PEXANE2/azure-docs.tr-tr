@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
 ms.openlocfilehash: c21ed461280dfa617c852fe6c18c30e5d697b704
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102031285"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights Bağlayıcısı Management çözümü (kullanım dışı)
@@ -41,12 +41,12 @@ Uygulama öngörüleri Bağlayıcısı çözümü, performans sorunlarını tan�
 
 Diğer Log Analytics çözümlerinin aksine, veriler aracıları tarafından Application Insights Bağlayıcısı için toplanmaz. Çözüm tarafından kullanılan tüm veriler doğrudan Azure 'dan gelir.
 
-| Bağlı Kaynak | Desteklenir | Açıklama |
+| Bağlı Kaynak | Desteklenir | Description |
 | --- | --- | --- |
-| [Windows aracıları](./../agents/agent-windows.md) | Hayır | Çözüm Windows aracılarından bilgi toplamaz. |
-| [Linux aracıları](../vm/quick-collect-linux-computer.md) | Hayır | Çözüm, Linux aracılarından bilgi toplamaz. |
-| [SCOM yönetim grubu](../agents/om-agents.md) | Hayır | Çözüm, bağlı bir SCOM yönetim grubundaki aracılardan bilgi toplamaz. |
-| [Azure depolama hesabı](../essentials/resource-logs.md#send-to-log-analytics-workspace) | Hayır | Çözüm, Azure Storage 'dan bilgi toplamaz. |
+| [Windows aracıları](./../agents/agent-windows.md) | No | Çözüm Windows aracılarından bilgi toplamaz. |
+| [Linux aracıları](../vm/quick-collect-linux-computer.md) | No | Çözüm, Linux aracılarından bilgi toplamaz. |
+| [SCOM yönetim grubu](../agents/om-agents.md) | No | Çözüm, bağlı bir SCOM yönetim grubundaki aracılardan bilgi toplamaz. |
+| [Azure depolama hesabı](../essentials/resource-logs.md#send-to-log-analytics-workspace) | No | Çözüm, Azure Storage 'dan bilgi toplamaz. |
 
 ## <a name="prerequisites"></a>Önkoşullar
 

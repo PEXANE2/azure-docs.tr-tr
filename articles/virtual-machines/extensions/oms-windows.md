@@ -9,10 +9,10 @@ ms.author: amjads
 ms.collection: windows
 ms.date: 06/26/2020
 ms.openlocfilehash: 7757bd765bcb02782b6199f71c4a6e460b7b8143
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102559027"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>Windows için Log Analytics sanal makine uzantısı
@@ -28,7 +28,7 @@ Desteklenen Windows işletim sistemleri hakkında daha fazla bilgi için bkz. [A
 ### <a name="agent-and-vm-extension-version"></a>Aracı ve VM Uzantısı sürümü
 Aşağıdaki tabloda, her sürüm için Windows Log Analytics sanal makine uzantısı ve Log Analytics aracı paketi sürümünün bir eşlemesi verilmiştir. 
 
-| Log Analytics Windows Agent paketi sürümü | Log Analytics Windows VM Uzantısı sürümü | Yayın Tarihi | Release Notes (Sürüm Notları) |
+| Log Analytics Windows Agent paketi sürümü | Log Analytics Windows VM Uzantısı sürümü | Yayın Tarihi | Sürüm Notları |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
 | 10.20.18053| 1.0.18053.0 | Ekim 2020   | <ul><li>Yeni Aracı sorun giderici</li><li>Aracının Azure hizmetlerinde sertifika değişikliklerini nasıl işleyeceği ile ilgilenen güncelleştirmeler</li></ul> |
 | 10.20.18040 | 1.0.18040.2 | Ağustos 2020   | <ul><li>Azure Arc 'da bir sorunu çözer</li></ul> |

@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/18/2021
-ms.openlocfilehash: fda76fd16787c01b9fc35ef63473be215a2c126d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 25e39d3fc9c56a282714bafb630fee65421fb5ac
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101740061"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606676"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>Veri Kopyalama aracını kullanarak, LastModifiedDate tabanlı yeni ve değiştirilmiş dosyaları artımlı olarak kopyalama
 
@@ -55,7 +55,7 @@ Aşağıdaki adımları tamamlayarak BLOB depolama alanınızı öğreticiye haz
 
    Veri fabrikanızın adı genel olarak benzersiz olmalıdır. Şu hata iletisini alabilirsiniz:
 
-   ![Ad kullanılamıyor hata iletisi](./media/doc-common-process/name-not-available-error.png)
+    :::image type="content" source="./media/doc-common-process/name-not-available-error.png" alt-text="Yinelenen ad için yeni veri fabrikası hata iletisi.":::
 
    Ad değeriyle ilgili bir hata iletisi alırsanız, veri fabrikası için farklı bir ad girin. Örneğin, _**adınız**_**ADFTutorialDataFactory** adını kullanın. Data Factory yapıtlarını adlandırma kuralları için bkz. [Data Factory adlandırma kuralları](naming-rules.md).
 3. **Abonelik** altında yeni veri fabrikasını oluşturacağınız Azure aboneliğini seçin.
@@ -73,7 +73,7 @@ Aşağıdaki adımları tamamlayarak BLOB depolama alanınızı öğreticiye haz
 9. Data Factory oluşturulduktan sonra Data Factory giriş sayfası görüntülenir.
 10. Azure Data Factory Kullanıcı arabirimini (UI) ayrı bir sekmede açmak için **yazar & izleyici** kutucuğunu seçin:
 
-    ![Data factory giriş sayfası](./media/doc-common-process/data-factory-home-page.png)
+    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Yazar & Izleyici kutucuğuna sahip Azure Data Factory ana sayfası.":::
 
 ## <a name="use-the-copy-data-tool-to-create-a-pipeline"></a>Veri Kopyalama aracını kullanarak işlem hattı oluşturma
 

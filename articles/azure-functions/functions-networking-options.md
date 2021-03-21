@@ -5,12 +5,12 @@ author: cachai2
 ms.topic: conceptual
 ms.date: 1/21/2021
 ms.author: cachai
-ms.openlocfilehash: 0267184a921c92c3dc092908a09467ef3a090175
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.openlocfilehash: c35780ae2c4741454685d7d9740a660e965df19e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103463043"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606999"
 ---
 # <a name="azure-functions-networking-options"></a>Azure İşlevleri ağ seçenekleri
 
@@ -81,34 +81,15 @@ Sanal ağ tümleştirmesini ayarlamayı öğrenmek için bkz. [bir işlev uygula
 
 ## <a name="connect-to-service-endpoint-secured-resources"></a>Hizmet uç noktası güvenliği sağlanmış kaynaklara bağlanma
 
-Daha yüksek bir güvenlik düzeyi sağlamak için, hizmet uç noktalarını kullanarak bir dizi Azure hizmetini bir sanal ağ ile kısıtlayabilirsiniz. Daha sonra, kaynak erişimi için işlev uygulamanızı bu sanal ağla tümleştirmeniz gerekir. Bu yapılandırma, sanal ağ tümleştirmesini destekleyen tüm planlarda desteklenir.
+Daha yüksek bir güvenlik düzeyi sağlamak için, hizmet uç noktalarını kullanarak bir dizi Azure hizmetini bir sanal ağ ile kısıtlayabilirsiniz. Daha sonra, kaynak erişimi için işlev uygulamanızı bu sanal ağla tümleştirmeniz gerekir. Bu yapılandırma, sanal ağ tümleştirmesini destekleyen tüm [planlarda](functions-scale.md#networking-features) desteklenir.
 
 Daha fazla bilgi için bkz. [sanal ağ hizmeti uç noktaları](../virtual-network/virtual-network-service-endpoints-overview.md).
 
 ## <a name="restrict-your-storage-account-to-a-virtual-network"></a>Depolama hesabınızı bir sanal ağla sınırlayın 
 
-Bir işlev uygulaması oluşturduğunuzda, blob, kuyruk ve tablo depolamayı destekleyen genel amaçlı bir Azure depolama hesabı oluşturmanız veya bağlamanız gerekir. Bu depolama hesabını hizmet uç noktaları veya özel uç nokta ile güvenli bir şekilde değiştirebilirsiniz. Bu özellik şu anda, sanal ağların yalnızca Premium SKU için kullanılabildiği esnek damgalar haricinde standart ve Premium içeren tüm Windows sanal ağ desteklenen SKU 'ları için geçerlidir. Özel bir ağla sınırlı bir depolama hesabı ile bir işlev ayarlamak için:
+Bir işlev uygulaması oluşturduğunuzda, blob, kuyruk ve tablo depolamayı destekleyen genel amaçlı bir Azure depolama hesabı oluşturmanız veya bağlamanız gerekir. Bu depolama hesabını hizmet uç noktaları veya özel uç nokta ile güvenli bir şekilde değiştirebilirsiniz. 
 
-1. Hizmet uç noktaları etkin olmayan bir depolama hesabıyla bir işlev oluşturun.
-1. İşlevini sanal ağınıza bağlanacak şekilde yapılandırın.
-1. Farklı bir depolama hesabı oluşturun veya yapılandırın.  Bu, hizmet uç noktalarıyla güvenli hale yaptığımız depolama hesabıdır ve işlevimizi bağlayacağız.
-1. Güvenli depolama hesabında [bir dosya paylaşma oluşturun](../storage/files/storage-how-to-create-file-share.md#create-file-share) .
-1. Depolama hesabı için hizmet uç noktalarını veya özel uç noktayı etkinleştirin.  
-    * Özel uç nokta bağlantıları kullanıyorsanız, depolama hesabının `file` ve alt kaynaklar için özel bir uç noktası olması gerekir `blob` .  Dayanıklı İşlevler gibi belirli yetenekler kullanılıyorsa, Ayrıca, `queue` `table` özel bir uç nokta bağlantısı aracılığıyla da ihtiyacınız ve erişilebilir olur.
-    * Hizmet uç noktaları kullanılıyorsa, depolama hesapları için işlev uygulamalarınıza adanmış alt ağı etkinleştirin.
-1. Dosya ve BLOB içeriğini işlev uygulama depolama hesabından güvenli depolama hesabına ve dosya paylaşımıyla kopyalayın.
-1. Bu depolama hesabı için bağlantı dizesini kopyalayın.
-1. İşlev uygulaması **yapılandırması** altındaki **uygulama ayarlarını** aşağıdakilere göre güncelleştirin:
-    - `AzureWebJobsStorage` güvenli depolama hesabı için bağlantı dizesine.
-    - `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` güvenli depolama hesabı için bağlantı dizesine.
-    - `WEBSITE_CONTENTSHARE` güvenli depolama hesabında oluşturulan dosya paylaşımının adı.
-    - Adı ve değeri olan yeni bir ayar oluşturun `WEBSITE_CONTENTOVERVNET` `1` .
-    - Depolama hesabı özel uç nokta bağlantıları kullanıyorsa, aşağıdaki ayarları doğrulayın veya ekleyin
-        - `WEBSITE_VNET_ROUTE_ALL` değeri ile `1` .
-        - `WEBSITE_DNS_SERVER` değeri ile `168.63.129.16` 
-1. Uygulama ayarlarını kaydedin.  
-
-İşlev uygulaması yeniden başlatılır ve artık güvenli bir depolama hesabına bağlanacak.
+Bu özellik şu anda adanmış (App Service) planındaki ve Premium plan için tüm Windows sanal ağı tarafından desteklenen SKU 'Lar için geçerlidir. Tüketim planı desteklenmez. Özel bir ağla sınırlı bir depolama hesabı ile bir işlevi ayarlamayı öğrenmek için bkz. [depolama hesabınızı bir sanal ağ Ile kısıtlama](configure-networking-how-to.md#restrict-your-storage-account-to-a-virtual-network).
 
 ## <a name="use-key-vault-references"></a>Key Vault başvurularını kullanma
 
@@ -173,6 +154,8 @@ Daha fazla bilgi edinmek için [Karma Bağlantılar App Service belgelerine](../
 Giden IP kısıtlamaları bir Premium planda, App Service planında veya App Service Ortamı kullanılabilir. App Service Ortamı dağıtıldığı sanal ağın giden kısıtlamalarını yapılandırabilirsiniz.
 
 Bir Premium planda veya bir sanal ağla App Service bir planda bir işlev uygulamasını tümleştirdiğinizde, uygulama varsayılan olarak internet 'e giden çağrılar yapmaya devam edebilir. Uygulama ayarını ekleyerek `WEBSITE_VNET_ROUTE_ALL=1` , trafiği kısıtlamak için ağ güvenlik grubu kurallarının kullanılabileceği sanal ağınıza giden tüm trafiği gönderilmesini zorlarsınız.
+
+Bir sanal ağ kullanarak giden IP 'yi nasıl denetleyeceğinizi öğrenmek için bkz. [öğretici: Azure işlevleri gıden IP 'Yi Azure sanal ağ NAT ağ geçidiyle denetleme](functions-how-to-use-nat-gateway.md). 
 
 ## <a name="automation"></a>Otomasyon
 Aşağıdaki API 'Ler, bölgesel sanal ağ tümleştirmelerini programlı bir şekilde yönetmenizi sağlar:

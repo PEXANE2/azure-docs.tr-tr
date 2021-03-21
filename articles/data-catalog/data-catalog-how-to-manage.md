@@ -6,14 +6,17 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 9d035417b613c81487c493bde90cdcc461f04412
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0182f744e038bc8080b9fb96bfdb1eeda16b86c0
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017296"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674861"
 ---
 # <a name="manage-data-assets-in-azure-data-catalog"></a>Azure Veri Kataloğu 'nda veri varlıklarını yönetme
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
+
 ## <a name="introduction"></a>Giriş
 Azure Veri Kataloğu, veri kaynağı bulma için tasarlanmıştır, böylece analiz yapmak ve kararlar almak için ihtiyaç duyduğunuz veri kaynaklarını kolayca bulabilir ve anlayabilmenizi sağlayabilirsiniz. Bu bulma özellikleri, siz ve diğer kullanıcılar en geniş kullanılabilir veri kaynaklarını bulabilir ve anladıysanız en büyük etkiyi yapar. Bu öğeler göz önünde bulundurularak, veri kataloğu 'nun varsayılan davranışı tüm kayıtlı veri kaynaklarının tüm katalog kullanıcıları tarafından görünür ve bulunabilir olmasını sağlar.
 

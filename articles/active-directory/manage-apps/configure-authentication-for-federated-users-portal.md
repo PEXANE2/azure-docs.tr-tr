@@ -15,12 +15,12 @@ ms.date: 02/12/2021
 ms.author: kenwith
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a21b6f5e7d2976bda0efd37577b7cca90469aea
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6ed101282a69120162d6e3b526693c0a83df45b6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101686453"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607118"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Giriş bölgesi bulma ilkesi kullanarak bir uygulama için Azure Active Directory oturum açma davranışı yapılandırma
 
@@ -91,7 +91,7 @@ Bazı uygulamalar, yaydıkları kimlik doğrulama isteğini yapılandırmak içi
 
 ### <a name="home-realm-discovery-policy-to-prevent-auto-acceleration"></a>Otomatik hızlandırmayı engellemek için giriş bölgesi bulma ilkesi
 
-Bazı Microsoft ve SaaS uygulamaları domain_hints (örneğin, `https://outlook.com/contoso.com` eklenen bir oturum açma isteğiyle sonuçlanır `&domain_hint=contoso.com` ), Fido gibi yönetilen kimlik bilgilerinin dağıtımını kesintiye uğratan bir şekilde otomatik olarak dahildir.  Yönetilen kimlik bilgilerinin dağıtımı sırasında belirli uygulamalardan veya belirli etki alanlarında etki alanı ipuçlarını yoksaymak için [giriş bölgesi bulma ilkesini](https://docs.microsoft.com/graph/api/resources/homeRealmDiscoveryPolicy) kullanabilirsiniz.  
+Bazı Microsoft ve SaaS uygulamaları domain_hints (örneğin, `https://outlook.com/contoso.com` eklenen bir oturum açma isteğiyle sonuçlanır `&domain_hint=contoso.com` ), Fido gibi yönetilen kimlik bilgilerinin dağıtımını kesintiye uğratan bir şekilde otomatik olarak dahildir.  Yönetilen kimlik bilgilerinin dağıtımı sırasında belirli uygulamalardan veya belirli etki alanlarında etki alanı ipuçlarını yoksaymak için [giriş bölgesi bulma ilkesini](/graph/api/resources/homeRealmDiscoveryPolicy) kullanabilirsiniz.  
 
 ## <a name="enable-direct-ropc-authentication-of-federated-users-for-legacy-applications"></a>Eski uygulamalar için Federal kullanıcıların doğrudan ROPC kimlik doğrulamasını etkinleştir
 
@@ -129,7 +129,7 @@ HRD ilkesini oluşturmak ve yönetmek için Azure Active Directory PowerShell cm
    }
 ```
 
-İlke türü "[Homerealmdiscoverypolicy](https://docs.microsoft.com/graph/api/resources/homeRealmDiscoveryPolicy)" dir.
+İlke türü "[Homerealmdiscoverypolicy](/graph/api/resources/homeRealmDiscoveryPolicy)" dir.
 
 **Ivatetofederateddomain** isteğe bağlıdır. **Ivatetofederateddomain** false ise, ilkenin otomatik hızlandırma üzerinde hiçbir etkisi yoktur. **Ivatetofederateddomain** true ise ve kiracıda yalnızca bir doğrulanmış ve Federasyon etki alanı varsa, kullanıcılar oturum açmak Için Federal IDP 'ye doğrudan alınır. Doğru ise ve kiracıda birden fazla doğrulanmış etki alanı varsa, **Preferreddomain** belirtilmelidir.
 

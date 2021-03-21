@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: ceac1e7b5e8efa7e87ecf6e1f4c9dd8286c87e98
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102614080"
 ---
 # <a name="team-data-science-process-for-developer-operations"></a>Geliştirici Işlemleri için ekip veri bilimi Işlemi
@@ -62,10 +62,10 @@ Aşağıdaki tabloda, Azure 'da veri bilimi çözümlerini uygulamaya yönelik D
 |  |  | [Bu kaynak, Web tabanlı Azure Machine Learning Studio (klasik) aracını kullanarak tahmine dayalı analiz denemeleri nasıl kod oluşturacağınızı ve oluşturulacağını açıklamaktadır.](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio) | Azure Machine Learning Studio (klasik) | Karşılaştığınızda | Yazılım geliştirme |
 |  |  | [Bu başvuru, Azure 'daki Veri Bilimi Sanal Makinesi tüm geliştirme araçlarına bir liste ve bir inceleme bağlantısı içerir](../data-science-virtual-machine/overview.md) | Veri Bilimi Sanal Makinesi | Karşılaştığınızda | Yazılım geliştirme, veri bilimi |
 |  |  | [Güvenlik, gizlilik ve uyumluluk için bu Azure Güvenlik Güven Merkezi 'ndeki her bir başvuruyu okuyun ve anlayın-çok önemli](https://azure.microsoft.com/support/trust-center/) | Azure Güvenlik | Orta | Sistem mimarisi deneyimi, güvenlik geliştirme deneyimi |
-|  | Oluşturma | [Bu kurs, Visual Studio Codespace derlemesi ile DevOps uygulamalarını etkinleştirmeyi öğretir](https://mva.microsoft.com/training-courses/enabling-devops-practices-with-visual-studio-online-build-12478?l=ipCj6MuNB_6305094681) | Visual Studio Codespace | Karşılaştığınızda | Yazılım geliştirme, bir SDLC ile benzerlik |
+|  | Derleme | [Bu kurs, Visual Studio Codespace derlemesi ile DevOps uygulamalarını etkinleştirmeyi öğretir](https://mva.microsoft.com/training-courses/enabling-devops-practices-with-visual-studio-online-build-12478?l=ipCj6MuNB_6305094681) | Visual Studio Codespace | Karşılaştığınızda | Yazılım geliştirme, bir SDLC ile benzerlik |
 |  |  | [Bu başvuru, Visual Studio kullanılarak derleme ve derlemeyi açıklar](/previous-versions/visualstudio/visual-studio-2015/ide/compiling-and-building-in-visual-studio) | Visual Studio | Orta | Yazılım geliştirme, bir SDLC ile benzerlik |
 |  |  | [Bu başvuru, runbook 'larla yazılım derlemeleri gibi işlemleri nasıl düzenleyeceğinizi açıklar](/system-center/orchestrator/automate-runbooks) | System Center | Karşılaştığınızda | System Center Orchestrator ile deneyim |
-|  | Test etme | [Test çalışması yönetimi için Visual Studio Codespace 'in nasıl kullanılacağını anlamak için bu başvuruyu kullanın](http://www.almguide.com/2014/07/visual-studio-online-test-case-management/) | Visual Studio Codespace | Karşılaştığınızda | Yazılım geliştirme, bir SDLC ile benzerlik |
+|  | Test | [Test çalışması yönetimi için Visual Studio Codespace 'in nasıl kullanılacağını anlamak için bu başvuruyu kullanın](http://www.almguide.com/2014/07/visual-studio-online-test-case-management/) | Visual Studio Codespace | Karşılaştığınızda | Yazılım geliştirme, bir SDLC ile benzerlik |
 |  |  | [System Center kullanarak testleri otomatikleştirmek için Runbook 'Lara yönelik bu önceki başvuruyu kullanın](/system-center/orchestrator/automate-runbooks) | System Center | Karşılaştığınızda | System Center Orchestrator ile deneyim |
 |  |  | [Yalnızca test değil, ancak geliştirme işlemleri kapsamında, güvenlik bölümünde oluşturmanız gerekir. Microsoft SDL Threat Modeling Tool tüm aşamalardan yardım edebilir. Daha fazla bilgi edinin ve buradan indirin](https://www.microsoft.com/SDL/adopt/threatmodeling.aspx) | Tehdit Izleme aracı | Karşılaştığınızda | Güvenlik kavramlarıyla benzerlik, yazılım geliştirme |
 |  |  | [Bu makalede, gelişmiş analiz çözümünüzü test etmek için Microsoft saldırı yüzeyi Çözümleyicisi 'nin nasıl kullanılacağı açıklanmaktadır](https://technet.microsoft.com/security/gg749821.aspx) | Saldırı Yüzeyi Çözümleyicisi | Karşılaştığınızda | Güvenlik kavramlarıyla benzerlik, yazılım geliştirme |

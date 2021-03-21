@@ -7,36 +7,35 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/01/2020
 ms.author: pafarley
-ms.openlocfilehash: cb066ecc1dc11985c0ccb0fa687a15d6b038b9fa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8cc4bc6907f83ce062fed82dde17815fc4debd67
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89321609"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104719755"
 ---
 Aşağıdaki SKU 'ların ve fiyatlandırma bilgilerinin listesine bakın. 
 
 #### <a name="multi-service"></a>Çoklu hizmet
 
-| Hizmet                    | Tür                      |
+| Hizmet                    | Tip                      |
 |----------------------------|---------------------------|
 | Birden çok hizmet. Daha fazla bilgi için [fiyatlandırma](https://azure.microsoft.com/pricing/details/cognitive-services/) sayfasına bakın.            | `CognitiveServices`     |
 
 
 #### <a name="vision"></a>Görsel
 
-| Hizmet                    | Tür                      |
+| Hizmet                    | Tip                      |
 |----------------------------|---------------------------|
 | Görüntü İşleme            | `ComputerVision`          |
 | Özel Görüntü İşleme tahmin | `CustomVision.Prediction` |
 | Özel Görüntü İşleme-eğitim   | `CustomVision.Training`   |
 | Yüz                       | `Face`                    |
 | Form Tanıma            | `FormRecognizer`          |
-| Mürekkep Tanıma             | `InkRecognizer`           |
 
-#### <a name="search"></a>Arama
+#### <a name="search"></a>Arayın
 
-| Hizmet            | Tür                  |
+| Hizmet            | Tip                  |
 |--------------------|-----------------------|
 | Bing Otomatik Öneri   | `Bing.Autosuggest.v7` |
 | Bing Özel Arama | `Bing.CustomSearch`   |
@@ -46,16 +45,15 @@ Aşağıdaki SKU 'ların ve fiyatlandırma bilgilerinin listesine bakın.
 
 #### <a name="speech"></a>Konuşma
 
-| Hizmet            | Tür                 |
+| Hizmet            | Tip                 |
 |--------------------|----------------------|
 | Konuşma Hizmetleri    | `SpeechServices`     |
 | Konuşma Tanıma | `SpeakerRecognition` |
 
 #### <a name="language"></a>Dil
 
-| Hizmet            | Tür                |
+| Hizmet            | Tip                |
 |--------------------|---------------------|
-| Form anlama | `FormUnderstanding` |
 | LUIS               | `LUIS`              |
 | Soru-Cevap Oluşturucu          | `QnAMaker`          |
 | Metin Analizi     | `TextAnalytics`     |
@@ -63,7 +61,7 @@ Aşağıdaki SKU 'ların ve fiyatlandırma bilgilerinin listesine bakın.
 
 #### <a name="decision"></a>Karar
 
-| Hizmet           | Tür               |
+| Hizmet           | Tip               |
 |-------------------|--------------------|
 | Anomali Algılayıcısı  | `AnomalyDetector`  |
 | Content Moderator | `ContentModerator` |

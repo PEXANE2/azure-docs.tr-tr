@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
 ms.openlocfilehash: ee0587063c0fac67068869c58471ada58354fab7
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102437681"
 ---
 # <a name="create-custom-vm-images-for-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro cihazınız için özel VM görüntüleri oluşturma
@@ -71,7 +71,7 @@ Bir Linux VM görüntüsü oluşturmak için aşağıdaki adımları uygulayın.
 
 Şimdi Azure Stack Edge Pro cihazınızda bir VM oluşturup dağıtmak için bu VHD 'yi kullanın. Linux özel görüntülerini oluşturmak için aşağıdaki iki Azure Marketi görüntüsünü kullanabilirsiniz:
 
-|Öğe adı  |Açıklama  |Publisher  |
+|Öğe adı  |Description  |Publisher  |
 |---------|---------|---------|
 |[Ubuntu Server](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.ubuntuserver) |Ubuntu Server, bulut ortamları için dünyanın en popüler Linux ' tur.|Canonical|
 |[Desek8 "Jese"](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.debian) |GNU/Linux, en popüler Linux dağıtımlarından biridir.     |credativ|

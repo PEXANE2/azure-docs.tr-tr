@@ -9,10 +9,10 @@ ms.date: 12/01/2020
 ms.author: sngun
 ms.custom: subject-monitoring
 ms.openlocfilehash: f18d1850cb6ccf28ff70f826e3d4bfe74ae05c40
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102178737"
 ---
 # <a name="monitor-azure-cosmos-db"></a>Azure Cosmos DB'yi izleme
@@ -176,7 +176,7 @@ Azure Cosmos kaynaklarınızı izlemenize yardımcı olması için **günlük ar
 
 Örneğin, aşağıdaki tabloda kaynaklarınız için birkaç uyarı kuralı listelenmektedir. Azure portal uyarı kurallarının ayrıntılı bir listesini bulabilirsiniz. Daha fazla bilgi için bkz. [Uyarıları yapılandırma](create-alerts.md) makalesi.  
 
-| Uyarı türü | Koşul | Açıklama  |
+| Uyarı türü | Koşul | Description  |
 |:---|:---|:---|
 |İstek birimlerindeki hız sınırlaması (ölçüm uyarısı) |Boyut adı: StatusCode, Işleç: Equals, boyut değerleri: 429  | Kapsayıcı veya veritabanı sağlanan aktarım hızı sınırını aşarsa uyarır. |
 |Yük devredilen bölge |İşleç: büyüktür, toplama türü: Count, eşik değeri: 1 | Tek bir bölgenin yük devretme durumunda. Otomatik yük devretmeyi etkinleştirmezseniz bu uyarı yararlı olur. |

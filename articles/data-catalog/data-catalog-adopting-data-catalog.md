@@ -6,14 +6,16 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 63d1213a2dded41df3f462722b354b03fe9f6e33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebfaa59f1800da084d611f6e050a59da63a7f195
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "72801885"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674759"
 ---
 # <a name="approach-and-process-for-adopting-azure-data-catalog"></a>Azure Veri Kataloğu'nu benimseme yaklaşımı ve işlemi
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 Bu makale, kuruluşunuzda **Azure Veri Kataloğu**'nu benimsemeye başlamanıza yardımcı olacaktır. **Azure Veri Kataloğu**'nu başarıyla benimseyebilmek için üç temel öğeye odaklanırsınız: vizyonunuzu tanımlama, kuruluşunuz dahilindeki önemli iş kullanımı durumlarını belirleme ve pilot proje seçme.
 
@@ -116,7 +118,7 @@ Sonraki bölümde, Adventure Works şirketine ait bir örnek proje açıklanmakt
 
 ### <a name="an-example-project"></a>Örnek proje
 
-Bu örnekte, iş analisti olan Nancy, SQL Server veritabanındaki verileri kullanarak ekibi için raporlar oluşturmaktadır. Sorun, yalnızca birkaç iş arkadaşını konuşduktan sonra veri kaynağını haberdar edebiliyor. Kayıtlı olmaları durumunda bu veri kaynaklarını hızla bulmaları ve **Azure Veri Kataloğu**gibi merkezi bir konumda Açıklanmaları gerekir.
+Bu örnekte, iş analisti olan Nancy, SQL Server veritabanındaki verileri kullanarak ekibi için raporlar oluşturmaktadır. Sorun, yalnızca birkaç iş arkadaşını konuşduktan sonra veri kaynağını haberdar edebiliyor. Kayıtlı olmaları durumunda bu veri kaynaklarını hızla bulmaları ve **Azure Veri Kataloğu** gibi merkezi bir konumda Açıklanmaları gerekir.
 
 Nancy ve ekibinin çok değerli olan verileri ne kadar kolay bulabileceğini göstermek için, veri kaynağı kayıt aracını kullanarak Kataloğu veri kaynakları ile ilgili bilgilerle (meta veriler) doldurursunuz. Böylece, veritabanı ile ilgili bilgiler yalnızca birkaç kişi tarafından değil, ekip ve kuruluş tarafından kullanılabilir. Veri kaynakları Veri Kataloğu'na kaydedildikten sonra, Nancy ve ekibi bunları kolayca kullanabilir. Sonuç olarak ekibi için ve kuruluş için daha kapsamlı, ilgi düzeyi yüksek bir veri kataloğu elde edilir. Veri Kataloğu'nu benimseyen ekiplerin sayısı arttıkça işle ilgili veri kaynaklarının bulunması ve kullanılması kolaylaşır; böylece, verilerinizden daha fazla sonuç elde edilebilmesi için daha veri merkezli bir kültüre olanak tanınır.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: f5cebffeaba1ce198be347758004068e8c03133b
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: a54b8243b5a680168b2e5806dd58c0fa4109728f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102499688"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670282"
 ---
 # <a name="manage-costs-with-automation"></a>Otomasyon ile maliyetleri yönetme
 
@@ -182,9 +182,9 @@ Kültür koduyla desteklenen diller:
 | pl-pl | Lehçe (Polonya) |
 | tr-tr | Türkçe (Türkiye) |
 | da-dk | Danca (Danimarka) |
-| dn-gb | İngilizce (İngiltere) |
+| en-GB | İngilizce (İngiltere) |
 | hu-hu | Macarca (Macaristan) |
-| nb-bo | Norveççe (Bokmal) (Norveç) |
+| nb-no | Norveççe (Bokmal) (Norveç) |
 | nl-nl | Felemenkçe (Hollanda) |
 | pt-pt | Portekizce (Portekiz) |
 | sv-se | İsveççe (İsviçre) |

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/1/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c2e7c9c96f237512d7f28f7243707b097c034aab
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: acaab347d56d320f2287bb8f548fd832f52efece
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102198464"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595371"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Cihaz sağlama hizmeti 'ni (DPS) kullanarak Azure dijital TWINS 'de cihazları otomatik olarak yönetme
 
@@ -99,7 +99,7 @@ Bu Azure CLı komutuyla ayarı ekleyin:
 az functionapp config appsettings set --settings "ADT_SERVICE_URL=https://<Azure Digital Twins instance _host name_>" -g <resource group> -n <your App Service (function app) name>
 ```
 
-Son adım öğreticideki [*işlev uygulamasına Izin atama*](tutorial-end-to-end.md#assign-permissions-to-the-function-app) bölümünde açıklandığı gibi, Izinler ve yönetilen kimlik rolü atamasının işlev uygulaması için doğru yapılandırıldığından emin olun.
+Son adım öğreticideki [*işlev uygulamasına Izin atama*](tutorial-end-to-end.md#configure-permissions-for-the-function-app) bölümünde açıklandığı gibi, Izinler ve yönetilen kimlik rolü atamasının işlev uygulaması için doğru yapılandırıldığından emin olun.
 
 ### <a name="create-device-provisioning-enrollment"></a>Cihaz sağlama kaydı oluşturma
 
@@ -202,7 +202,7 @@ Daha sonra, yeni oluşturulan olay hub 'ına bağlanmak için işlev ortam deği
 az functionapp config appsettings set --settings "EVENTHUB_CONNECTIONSTRING=<Event Hubs SAS connection string Listen>" -g <resource group> -n <your App Service (function app) name>
 ```
 
-Son adım öğreticideki [*işlev uygulamasına Izin atama*](tutorial-end-to-end.md#assign-permissions-to-the-function-app) bölümünde açıklandığı gibi, Izinler ve yönetilen kimlik rolü atamasının işlev uygulaması için doğru yapılandırıldığından emin olun.
+Son adım öğreticideki [*işlev uygulamasına Izin atama*](tutorial-end-to-end.md#configure-permissions-for-the-function-app) bölümünde açıklandığı gibi, Izinler ve yönetilen kimlik rolü atamasının işlev uygulaması için doğru yapılandırıldığından emin olun.
 
 ### <a name="create-an-iot-hub-route-for-lifecycle-events"></a>Yaşam döngüsü olayları için IoT Hub yolu oluşturma
 

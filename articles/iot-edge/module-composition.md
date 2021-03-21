@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 2e3f1891a786751365a0bea58097e03bd41f85bb
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103489938"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>IoT Edge'de modülleri dağıtmayı ve yolları oluşturmayı öğrenin
@@ -258,7 +258,7 @@ Havuz, iletilerin nereye gönderileceğini tanımlar. Yalnızca modüller ve IoT
 
 Sink özelliği aşağıdaki değerlerden herhangi biri olabilir:
 
-| Havuz | Açıklama |
+| Havuz | Description |
 | ---- | ----------- |
 | `$upstream` | İletiyi IoT Hub gönder |
 | `BrokeredEndpoint("/modules/<moduleId>/inputs/<input>")` | İletiyi belirli bir modülün belirli bir girdisine gönder |
