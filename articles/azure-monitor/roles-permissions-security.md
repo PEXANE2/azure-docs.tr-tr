@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.openlocfilehash: d0877059dca01bf01df7a4f2aeaa5114278ecc97
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102040303"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Azure Izleyici 'de roller, izinler ve güvenlik
@@ -69,7 +69,7 @@ Izleme katılımcısı rolünü atayan kişiler, bir abonelikteki tüm izleme ve
 ## <a name="monitoring-permissions-and-azure-custom-roles"></a>İzinleri ve Azure özel rollerini izleme
 Yukarıdaki yerleşik roller takımınızın tam ihtiyaçlarını karşılamıyorsa, daha ayrıntılı izinlerle [bir Azure özel rolü oluşturabilirsiniz](../role-based-access-control/custom-roles.md) . Aşağıda, Azure Izleyici için genel Azure RBAC işlemleri açıklamalarıyla birlikte verilmiştir.
 
-| İşlem | Açıklama |
+| İşlem | Description |
 | --- | --- |
 | Microsoft. Insights/ActionGroups/[okuma, yazma, silme] |Okuma/yazma/silme eylemi grupları. |
 | Microsoft. Insights/ActivityLogAlerts/[okuma, yazma, silme] |Etkinlik günlüğü uyarılarını okuma/yazma/silme. |

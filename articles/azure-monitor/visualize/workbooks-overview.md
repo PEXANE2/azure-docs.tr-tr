@@ -7,10 +7,10 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.openlocfilehash: e401eb4a5608db6e5767298f53046099a42679b4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100621499"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Izleyici çalışma kitapları
@@ -31,7 +31,7 @@ Ancak çalışma kitaplarının gerçek gücü, tek bir rapordaki ayrı kaynakla
 
 * [Günlükler](../visualize/workbooks-data-sources.md#logs)
 * [Ölçümler](../visualize/workbooks-data-sources.md#metrics)
-* [Azure Kaynak Grafiği](../visualize/workbooks-data-sources.md#azure-resource-graph)
+* [Azure Kaynak Grafı](../visualize/workbooks-data-sources.md#azure-resource-graph)
 * [Uyarılar (Önizleme)](../visualize/workbooks-data-sources.md#alerts-preview)
 * [İş yükü sistem durumu](../visualize/workbooks-data-sources.md#workload-health)
 * [Azure Kaynak Durumu](../visualize/workbooks-data-sources.md#azure-resource-health)
@@ -51,7 +51,7 @@ Ancak çalışma kitaplarının gerçek gücü, tek bir rapordaki ayrı kaynakla
 
 ![Örnek çalışma kitabı görselleştirmeleri](./media/workbooks-overview/visualizations.png)
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 Çalışma kitapları deneyimini araştırmak için öncelikle Azure Izleyici hizmetine gidin. Bu, Azure portal arama kutusuna **izleyici** yazılarak yapılabilir.
 

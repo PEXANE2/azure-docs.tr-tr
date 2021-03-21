@@ -12,10 +12,10 @@ ms.date: 02/03/2020
 ms.author: kenwith
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 682549b5b99169060437c8c91d465121002edc6e
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99259613"
 ---
 # <a name="cloud-app-visibility-and-control"></a>Bulut uygulama görünürlüğü ve denetimi
@@ -34,7 +34,7 @@ Hangi uygulamaların kullanıldığını bulmak, bu uygulamaların riskini araş
 - Gelişmiş gölge BT bulma raporlaması
 - Tasdikli uygulamaları denetleme
  
-### <a name="learn-more"></a>Daha fazlasını öğrenin
+### <a name="learn-more"></a>Daha fazla bilgi edinin
 
 - [Ağınızda gölge BT 'yi bulma ve yönetme ](/cloud-app-security/tutorial-shadow-it)
 - [Cloud App Security ile bulunan uygulamalar ](/cloud-app-security/discovered-apps)
@@ -51,7 +51,7 @@ Bu denetimle şunları yapabilirsiniz:
 - Dosyalara erişimi denetleme  
 - İndirme sırasında belgeleri koruma  
  
-### <a name="learn-more"></a>Daha fazlasını öğrenin
+### <a name="learn-more"></a>Daha fazla bilgi edinin
 
 - [Cloud App Security oturum denetimi ile uygulamaları koruma ](/cloud-app-security/proxy-intro-aad)
  
@@ -59,7 +59,7 @@ Bu denetimle şunları yapabilirsiniz:
 
 Uygulama bağlayıcıları, bağlandığınız uygulamalar üzerinde Microsoft Cloud App Security daha fazla görünürlük ve denetim sağlamak için uygulama sağlayıcılarının API 'Lerini kullanır. Cloud App Security, bulut sağlayıcısı tarafından sunulan API 'lerden yararlanır. Her hizmetin kendi çerçevesi ve daraltma, API sınırları, dinamik süre değiştirme API pencereleri ve diğerleri gibi API sınırlamaları vardır. Cloud App Security ürün ekibi, API 'lerin kullanımını iyileştirmek ve en iyi performansı sağlamak için bu hizmetlerle birlikte çalışmıştır. Farklı sınırlamalar Hizmetleri API 'lerine göre hesaba katılarak, Cloud App Security motorları izin verilen en büyük kapasiteyi kullanır. Kiracıdaki tüm dosyaları tarama gibi bazı işlemler, daha uzun bir süre içinde yayılmaları için çok sayıda API çağrısı gerektirir. Bazı ilkelerin birkaç saat veya gün boyunca çalışmasını bekliyor. 
  
-### <a name="learn-more"></a>Daha fazlasını öğrenin  
+### <a name="learn-more"></a>Daha fazla bilgi edinin  
 
 - [Cloud App Security uygulamaları bağlama ](/cloud-app-security/enable-instant-visibility-protection-and-governance-actions-for-your-apps)
 

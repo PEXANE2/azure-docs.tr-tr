@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/08/2019
 ms.openlocfilehash: 083ddbd06561550f89e414d6c679cdc6433fa338
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98937556"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>Application Insights 'de .NET/.NET Core ve Python izleme günlüklerini keşfet
@@ -136,7 +136,7 @@ Her kaynak için aşağıdaki parametreleri ayarlayabilirsiniz:
 ## <a name="use-the-trace-api-directly"></a>Trace API 'sini doğrudan kullanma
 Application Insights Trace API 'sine doğrudan çağrı yapabilirsiniz. Günlüğe kaydetme bağdaştırıcıları bu API 'YI kullanır.
 
-Örneğin:
+Örnek:
 
 ```csharp
 TelemetryConfiguration configuration = TelemetryConfiguration.CreateDefault();
@@ -146,7 +146,7 @@ telemetry.TrackTrace("Slow response - database01");
 
 TrackTrace 'in avantajı, oldukça uzun verileri iletiye koyacağınızdır. Örneğin, veri Gönder ' i burada bulabilirsiniz.
 
-İletinize önem düzeyi de ekleyebilirsiniz. Diğer telemetri gibi, farklı izleme kümelerini filtrelemek veya aramak için özellik değerleri ekleyebilirsiniz. Örneğin:
+İletinize önem düzeyi de ekleyebilirsiniz. Diğer telemetri gibi, farklı izleme kümelerini filtrelemek veya aramak için özellik değerleri ekleyebilirsiniz. Örnek:
 
   ```csharp
   TelemetryConfiguration configuration = TelemetryConfiguration.CreateDefault();

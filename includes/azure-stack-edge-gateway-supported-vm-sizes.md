@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/09/2020
 ms.author: alkohli
 ms.openlocfilehash: ae7cb05aeda296ffb3aa9d7f6e2c88fe59364975
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99475057"
 ---
 VM boyutu, sanal makine için kullanılabilir hale getirilen işlem kaynaklarının (CPU, GPU ve bellek gibi) miktarını belirler. İş yükü için uygun bir VM boyutu kullanarak sanal makineler oluşturmalısınız. Tüm makineler aynı donanımda çalışmaya rağmen, makine boyutları disk erişimi için farklı sınırlara sahip olur. Bu, VM 'leriniz genelinde genel disk erişimini yönetmenize yardımcı olabilir. Bir iş yükü arttıkça, var olan bir sanal makineyi de yeniden boyutlandırabilirsiniz.

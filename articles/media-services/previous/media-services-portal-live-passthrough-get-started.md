@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.openlocfilehash: 6dd2f8a228c582e99f7d7281bd2d31faff8cadda
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103010805"
 ---
 # <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>Azure portal kullanarak şirket içi kodlayıcılarla canlı akış gerçekleştirme
@@ -114,7 +114,7 @@ Geçiş kanalları hakkında daha fazla ayrıntı için bkz. [Çoklu bit hızı 
 1. [Azure portalında](https://portal.azure.com/) Azure Media Services hesabınızı seçin.
 2. **Ayarlar** penceresinde, **Canlı Akış**’a tıklayın. 
    
-    ![Başlarken](./media/media-services-portal-passthrough-get-started/media-services-getting-started.png)
+    ![Kullanmaya başlama](./media/media-services-portal-passthrough-get-started/media-services-getting-started.png)
    
     **Canlı akış** penceresi görüntülenir.
 3. RTMP alma protokolüyle bir geçiş kanalı oluşturmak için **Hızlı Oluştur**’a tıklayın.

@@ -10,16 +10,18 @@ author: lobrien
 ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: how-to, synapse-azureml
-ms.openlocfilehash: 1dc4e0b70b0d39d01bada26992eb2213c1e855c5
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 2a9f0a8c943f539166f18a1e41a36136fbb63a6f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102455068"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584298"
 ---
 # <a name="how-to-use-apache-spark-powered-by-azure-synapse-analytics-in-your-machine-learning-pipeline-preview"></a>Machine Learning işlem hattınızda Apache Spark (Azure SYNAPSE Analytics tarafından desteklenir) kullanma (Önizleme)
 
 Bu makalede, bir Azure Machine Learning ardışık düzeninde veri hazırlama adımının işlem hedefi olarak Azure SYNAPSE Analytics tarafından desteklenen Apache Spark havuzlarını nasıl kullanacağınızı öğreneceksiniz. Tek bir işlem hattının, veri hazırlama veya eğitim gibi belirli bir adıma uygun işlem kaynaklarını nasıl kullanabileceğinizi öğreneceksiniz. Spark adımında verilerin nasıl hazırlandığını ve bir sonraki adıma nasıl geçtiğini görürsünüz. 
+
+[!INCLUDE [preview disclaimer](../../includes/machine-learning-preview-generic-disclaimer.md)]
 
 ## <a name="prerequisites"></a>Önkoşullar
 

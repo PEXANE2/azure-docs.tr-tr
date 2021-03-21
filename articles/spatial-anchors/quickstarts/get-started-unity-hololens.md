@@ -5,15 +5,15 @@ author: msftradford
 manager: MehranAzimi-msft
 services: azure-spatial-anchors
 ms.author: parkerra
-ms.date: 11/20/2020
+ms.date: 03/18/2021
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 11d8e8d918b408881f211605ce6c713615f0aa93
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: b99c2efcb746a056adc76fdc161c8d8a8e2799e1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96022641"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670129"
 ---
 # <a name="quickstart-create-a-unity-hololens-app-that-uses-azure-spatial-anchors"></a>Hızlı başlangıç: Azure uzamsal bağlayıcıları kullanan bir Unity HoloLens uygulaması oluşturma
 
@@ -33,7 +33,7 @@ Bu hızlı başlangıçta, [Azure uzamsal bağlayıcıları](../overview.md)kull
 
 Bu hızlı başlangıcı tamamlamak için:
 
-- <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019,4 (LTS)</a> ve <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> veya üzeri yüklü bir Windows bilgisayara ihtiyacınız vardır. Visual Studio yüklemenizin **Evrensel Windows platformu geliştirme** iş yükü ve **Windows 10 SDK (10.0.18362.0 veya daha yeni)** bileşenini içermesi gerekir. Ayrıca, Windows ve <a href="https://git-lfs.github.com/">GIT LFS</a> <a href="https://git-scm.com/download/win" target="_blank">için git</a> 'i de yüklemelisiniz.
+- <a href="https://unity3d.com/get-unity/download" target="_blank">Unity (LTS)</a> ve <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> veya sonraki bir sürümü yüklü bir Windows bilgisayara ihtiyacınız vardır. **Unity 2020 LTS** 'YI asa SDK 'sı sürüm 2,9 veya üzeri ( [Unity XR eklenti çerçevesini](https://docs.unity3d.com/Manual/XRPluginArchitecture.html)kullanan) ya da asa SDK 'sı 2,8 veya daha önceki bir sürümüyle **Unity 2019 LTS** kullanın. Visual Studio yüklemenizin **Evrensel Windows platformu geliştirme** iş yükü ve **Windows 10 SDK (10.0.18362.0 veya daha yeni)** bileşenini içermesi gerekir. Ayrıca, Windows ve <a href="https://git-lfs.github.com/">GIT LFS</a> <a href="https://git-scm.com/download/win" target="_blank">için git</a> 'i de yüklemelisiniz.
 - [Geliştirici modunun](/windows/mixed-reality/using-visual-studio) etkinleştirildiği bir HoloLens cihazına ihtiyacınız vardır. Cihazda [Windows 10 mayıs 2020 güncelleştirmesi](/windows/mixed-reality/whats-new/release-notes-may-2020) yüklü olmalıdır. HoloLens 'te en son sürüme güncelleştirmek için **Ayarlar** uygulamasını açın, **güncelleştirme & güvenliği**' ne gidin ve ardından **Güncelleştirmeleri denetle**' yi seçin.
 - Uygulamanızda, **Spatialperception** özelliğini etkinleştirmeniz gerekir. Bu ayar, **derleme ayarları**  >  **oynatıcı ayarları**  >  **Yayımlama ayarları**  >  **özellikleri**' nde bulunur.
 - Uygulamanızda, **Windows Mixed REALITY SDK** Ile **desteklenen sanal gerçeklik** 'i etkinleştirmeniz gerekir. Bu ayar, **derleme ayarları**  >  **oynatıcı ayarları**  >  **XR ayarları**' nda bulunur.
@@ -46,7 +46,7 @@ Bu hızlı başlangıcı tamamlamak için:
 
 [!INCLUDE [Open Unity Project](../../../includes/spatial-anchors-open-unity-project.md)]
 
-**Dosya** derleme ayarları ' nı seçerek **derleme ayarlarını** açın  >  **Build Settings**.
+**Dosya** derleme ayarları ' nı seçerek **derleme ayarlarını** açın  >  .
 
 **Platform** bölümünde **Evrensel Windows platformu**' yi seçin. **Hedef cihazı** **HoloLens** olarak değiştirin.
 
@@ -78,7 +78,7 @@ HoloLens 2 kullanıyorsanız, **x86** yerine **çözüm platformu** olarak **ARM
 
 HoloLens cihazını açın, oturum açın ve USB kablosu kullanarak cihazı BILGISAYARA bağlayın.
 
-**Debug**  >  Uygulamanızı dağıtmak ve hata ayıklamayı başlatmak için hata **ayıklamayı Başlat** ' ı seçin.
+  >  Uygulamanızı dağıtmak ve hata ayıklamayı başlatmak için hata **ayıklamayı Başlat** ' ı seçin.
 
 Uygulamada, okları kullanarak **Basicdemo** ' i seçin ve git ' e basın **!** gösteriyi çalıştırmak için düğme. Bir bağlayıcıyı yerleştirmek ve geri çağırmak için yönergeleri izleyin.
 

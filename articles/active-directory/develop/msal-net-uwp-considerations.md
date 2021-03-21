@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 8a8aab447007eb574a7a4bc532d8177bd0d8b345
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102122485"
 ---
 # <a name="considerations-for-using-universal-windows-platform-with-msalnet"></a>MSAL.NET ile Evrensel Windows Platformu kullanma konuları
@@ -61,7 +61,7 @@ Daha fazla bilgi için bkz. [Web kimlik doğrulama Aracısı-Fiddler](/windows/u
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki örnekler daha fazla bilgi sağlamaktadır.
 
-Örnek | Platform | Açıklama 
+Örnek | Platform | Description 
 |------ | -------- | -----------|
 |[Active-Directory-DotNet-Native-UWP-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) | UWP | MSAL.NET kullanan bir UWP istemci uygulaması. Bir Azure AD 2,0 uç noktası kullanarak kimlik doğrulaması yapan bir kullanıcının Microsoft Graph erişir. <br>![Topoloji](media/msal-net-uwp-considerations/topology-native-uwp.png)|
 |[Active-Directory-Xamarin-Native-v2](https://github.com/Azure-Samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, UWP | Microsoft Identity platformu aracılığıyla Microsoft kişisel hesaplarının ve Azure AD kimlik doğrulaması için MSAL kullanmayı gösteren bir Xamarin Forms uygulaması. Ayrıca, Microsoft Graph nasıl erişebileceğini ve elde edilen belirtecin nasıl gösterileceğini gösterir. <br>![Microsoft Identity platformu aracılığıyla Microsoft kişisel hesaplarının ve Azure AD 'nin kimliğini doğrulamak için MSAL 'in nasıl kullanılacağını gösteren diyagram.](media/msal-net-uwp-considerations/topology-xamarin-native.png)|

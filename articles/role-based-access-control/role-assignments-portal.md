@@ -11,10 +11,10 @@ ms.date: 02/15/2021
 ms.author: rolyon
 ms.custom: contperf-fy21q3-portal
 ms.openlocfilehash: e25bbe4e1a96e4efaaa13732aea571d26d4b006e
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100555295"
 ---
 # <a name="assign-azure-roles-using-the-azure-portal"></a>Azure portal kullanarak Azure rolleri atama
@@ -82,7 +82,7 @@ Azure Active Directory ' de yönetici rolleri atamanız gerekiyorsa, bkz. [Azure
 
 1. **Erişim ata** listesinde, erişim atanacak güvenlik sorumlusu türünü seçin.
 
-    | Tür | Açıklama |
+    | Tür | Description |
     | --- | --- |
     | **Kullanıcı, Grup veya hizmet sorumlusu** | Rolü bir Kullanıcı, Grup veya hizmet sorumlusu (uygulama) için atamak istiyorsanız, bu türü seçin. |
     | **Kullanıcı tarafından atanan yönetilen kimlik** | Rolü [Kullanıcı tarafından atanan bir yönetilen kimliğe](../active-directory/managed-identities-azure-resources/overview.md)atamak istiyorsanız, bu türü seçin. |

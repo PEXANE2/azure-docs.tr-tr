@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 09/29/2020
 ms.author: yegu
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 342125da35868b2b0f71609c4114cc561821eb1a
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 88cfddb12de0949d56e4b8f9c3e363e4c8f75676
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102121142"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657776"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>Hızlı başlangıç: ASP.NET Web uygulamasıyla Redsıs için Azure önbelleğini kullanma 
 
@@ -29,29 +29,29 @@ Koda doğrudan atlamak istiyorsanız GitHub 'da [ASP.net hızlı başlangıç](h
 
 ## <a name="create-the-visual-studio-project"></a>Visual Studio projesini oluşturma
 
-1. Visual Studio 'yu açın ve **Dosya**  > **Yeni**  >  **Proje**' yi seçin.
+1. Visual Studio 'yu açın ve **Dosya**  >  **Yeni**  >  **Proje**' yi seçin.
 
-2. **Yeni Proje** iletişim kutusunda aşağıdaki adımları uygulayın:
+2. **Yeni proje oluştur** iletişim kutusunda aşağıdaki adımları uygulayın:
 
     ![Proje oluşturma](./media/cache-web-app-howto/cache-create-project.png)
 
-    a. **Şablonlar** listesinde **Visual C#** düğümünü genişletin.
+    a. Arama kutusuna _C# ASP.NET Web uygulaması_ girin.
 
-    b. **Bulut**' u seçin.
+    b. **ASP.NET Web uygulaması (.NET Framework)** seçeneğini belirleyin.
 
-    c. **ASP.NET Web Uygulaması**'nı seçin.
+    c. **İleri**’yi seçin.
 
-    d. **.NET Framework 4.5.2** veya daha yüksek bir sürümün seçili olduğunu doğrulayın.
+3. **Proje adı** kutusuna projeye bir ad verin. Bu örnekte biz **ContosoTeamStats** kullandık.
 
-    e. **Ad** kutusunda projeye bir ad verin. Bu örnekte biz **ContosoTeamStats** kullandık.
+4. **.NET Framework 4.6.1** veya üzeri bir sürümü seçildiğini doğrulayın.
 
-    f. **Tamam**’ı seçin.
+5. **Oluştur**’u seçin.
    
-3. Proje türü olarak **MVC**’yi seçin.
+6. Proje türü olarak **MVC**’yi seçin.
 
-4. **Kimlik Doğrulama** ayarları için **Kimlik Doğrulaması Yok** seçeneğinin belirtildiğinden emin olun. Visual Studio sürümünüze bağlı olarak, varsayılan **Kimlik Doğrulama** ayarı farklı olabilir. Değiştirmek için **Kimlik Doğrulamasını Değiştir**’i ve ardından **Kimlik Doğrulaması Yok**’u seçin.
+7. **Kimlik Doğrulama** ayarları için **Kimlik Doğrulaması Yok** seçeneğinin belirtildiğinden emin olun. Visual Studio sürümünüze bağlı olarak, varsayılan **Kimlik Doğrulama** ayarı farklı olabilir. Değiştirmek için **Kimlik Doğrulamasını Değiştir**’i ve ardından **Kimlik Doğrulaması Yok**’u seçin.
 
-5. Projeyi oluşturmak için **Tamam**'ı seçin.
+8. Projeyi oluşturmak için **Oluştur**'u seçin.
 
 ## <a name="create-a-cache"></a>Bir önbellek oluşturma
 
@@ -125,10 +125,11 @@ ASP.NET çalışma zamanı, `<appSettings>` öğesindeki biçimlendirmeye sahip 
 
 1. **Çözüm Gezgini**’nde, **Denetleyiciler** klasörünü genişletin ve ardından *HomeController.cs* dosyasını açın.
 
-2. Önbellek istemci ve uygulama ayarlarını desteklemek için dosyanın üst kısmına şu iki `using` deyimini ekleyin.
+2. `using`Önbellek istemcisini, uygulama ayarlarını ve dize oluşturucuyu desteklemek için dosyanın en üstüne aşağıdaki deyimleri ekleyin.
 
     ```csharp
     using System.Configuration;
+    using System.Text;
     using StackExchange.Redis;
     ```
 

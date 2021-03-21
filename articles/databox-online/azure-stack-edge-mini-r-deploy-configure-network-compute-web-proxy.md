@@ -10,10 +10,10 @@ ms.date: 02/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Mini R so I can use it to transfer data to Azure.
 ms.openlocfilehash: a202ee1d708feebc7643fa6f20aafa9d8603fc38
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100546780"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-mini-r"></a>Öğretici: Azure Stack Edge Mini R için ağı yapılandırma
@@ -182,7 +182,7 @@ Bu, isteğe bağlı bir yapılandırmadır.
 
     1. **Web proxy URL 'si** kutusuna URL 'yi şu biçimde girin: `http://host-IP address or FQDN:Port number` . HTTPS URL'leri desteklenmez.
 
-    2. **Kimlik doğrulaması** altında **hiçbiri** veya **NTLM**' yi seçin. İşlem ve Azure Stack Edge Mini R cihazınızda IoT Edge modülü kullanıyorsanız, Web proxy kimlik doğrulamasını **none** olarak ayarlamanızı öneririz. **NTLM** desteklenmiyor.
+    2. **Kimlik Doğrulaması**'nın altında **Yok** veya **NTLM**'yi seçin. İşlem ve Azure Stack Edge Mini R cihazınızda IoT Edge modülü kullanıyorsanız, Web proxy kimlik doğrulamasını **none** olarak ayarlamanızı öneririz. **NTLM** desteklenmiyor.
 
     3. Kimlik doğrulaması kullanıyorsanız, bir Kullanıcı adı ve parola girin.
 

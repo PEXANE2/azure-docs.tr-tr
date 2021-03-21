@@ -6,10 +6,10 @@ ms.date: 05/22/2019
 ms.custom: devx-track-csharp
 ms.reviewer: olegan
 ms.openlocfilehash: c6d51210867e83c6acc74ca890ab65b195dc64fc
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102176680"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>ApplicationInsights.config veya .xml ile Application Insights SDK yapılandırma
@@ -173,7 +173,7 @@ Bu, verilerinizin göründüğü Application Insights kaynağını belirler. Gen
 
 Anahtarı dinamik olarak ayarlamak istiyorsanız, örneğin uygulamanızdaki sonuçları farklı kaynaklara göndermek istiyorsanız, yapılandırma dosyasından anahtarı atlayabilir ve bunun yerine kodda ayarlayabilirsiniz.
 
-Standart telemetri modülleri de dahil olmak üzere tüm TelemetryClient örneklerinin anahtarını ayarlamak için. Bunu bir ASP.NET hizmetinde global.aspx.cs gibi bir başlatma yönteminde yapın:
+Standart telemetri modülleri de dahil olmak üzere tüm TelemetryClient örneklerinin anahtarını ayarlamak için. Bunu bir ASP.NET hizmetinde Global. aspx. cs gibi bir başlatma yönteminde yapın:
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility;

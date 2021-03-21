@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: 33f2dcd13b64069949930606c5f619543fa36668
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100368447"
 ---
 # <a name="copy-data-from-oracle-service-cloud-using-azure-data-factory-preview"></a>Azure Data Factory kullanarak Oracle Service Cloud 'dan veri kopyalama (Önizleme)
@@ -22,7 +22,7 @@ Bu makalede, Oracle hizmeti bulutundaki verileri kopyalamak için Azure Data Fac
 > [!IMPORTANT]
 > Bu bağlayıcı Şu anda önizleme aşamasındadır. Deneyebilir ve geri bildirim sağlayabilirsiniz. Çözümünüzde bir önizleme bağlayıcısı bağımlılığı olmasını istiyorsanız lütfen [Azure desteğine](https://azure.microsoft.com/support/) başvurun.
 
-## <a name="supported-capabilities"></a>Desteklenen yetenekler
+## <a name="supported-capabilities"></a>Desteklenen özellikler
 
 Bu Oracle hizmet bulutu Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 
