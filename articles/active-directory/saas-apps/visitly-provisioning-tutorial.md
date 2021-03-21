@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: Zhchia
 ms.openlocfilehash: ff3f3ab65df2d801b7c962de7cce645e9fc00b30
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94358618"
 ---
 # <a name="tutorial-configure-visitly-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Visitly yapılandırma
@@ -71,11 +71,11 @@ Visitly 'i Azure AD ile otomatik Kullanıcı sağlaması için yapılandırmak �
 
 Azure AD Uygulama Galerisi 'nden Visitly eklemek için aşağıdaki adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com), sol gezinti bölmesinde **Azure Active Directory** ' ı seçin.
+1. [Azure Portal](https://portal.azure.com), sol gezinti bölmesinde **Azure Active Directory**' ı seçin.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
+2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -96,11 +96,11 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı veya grup a
 
 ### <a name="configure-automatic-user-provisioning-for-visitly-in-azure-ad"></a>Azure AD 'de Visitly için otomatik Kullanıcı sağlamayı yapılandırma
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. **Kurumsal uygulamalar**  >  **tüm uygulamalar** ' ı seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Kurumsal uygulamalar**  >  **tüm uygulamalar**' ı seçin.
 
     ![Tüm uygulamalar](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Visitly** ' yi seçin.
+2. Uygulamalar listesinde **Visitly**' yi seçin.
 
     ![Uygulamalar listesindeki Visitly bağlantısı](common/all-applications.png)
 
@@ -108,7 +108,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı veya grup a
 
     ![Hazırlama sekmesi](common/provisioning.png)
 
-4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
     ![Sağlama modu otomatik olarak ayarlandı](common/provisioning-automatic.png)
 
@@ -120,9 +120,9 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı veya grup a
 
     ![Bildirim e-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet** ’i seçin.
+7. **Kaydet**’i seçin.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Visitly olarak eşitler** ' ı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Visitly olarak eşitler**' ı seçin.
 
     ![Visitly Kullanıcı eşlemeleri](media/visitly-provisioning-tutorial/usermapping.png)
 
@@ -140,7 +140,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı veya grup a
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-13. Sağlamaya hazırsanız **Kaydet** ' i seçin.
+13. Sağlamaya hazırsanız **Kaydet**' i seçin.
 
     ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
 

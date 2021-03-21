@@ -12,10 +12,10 @@ ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 04/23/2020
 ms.openlocfilehash: a636c0e2a41b636f30ada14d4f16a022f2890b71
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96454303"
 ---
 # <a name="use-azure-active-directory-authentication"></a>Azure Active Directory kimlik doğrulaması kullan
@@ -49,7 +49,7 @@ Azure AD kimlik doğrulaması ile veritabanı kullanıcılarının ve diğer Mic
 - Azure AD, Active Directory Etkileşimli Kimlik Doğrulaması'nın kullanıldığı SQL Server Veri Araçları'ndan (SSDT) gelen benzer bağlantıları destekler. Daha fazla bilgi için bkz. [SQL Server Veri Araçları Azure Active Directory desteği (SSDT)](/sql/ssdt/azure-active-directory)
 
 > [!NOTE]  
-> Bir Azure sanal makinesinde (VM) çalışan bir SQL Server örneğine bağlanmak Azure Active Directory hesabı kullanılarak desteklenmez. Bunun yerine etki alanı Active Directory hesabı kullanın.  
+> Azure sanal makinesi (VM) üzerinde çalıştırılan bir SQL Server örneğine bağlanma işlemi, Azure Active Directory hesabı kullanıldığında desteklenmez. Bunun yerine etki alanı Active Directory hesabı kullanın.  
 
 Yapılandırma adımları Azure Active Directory kimlik doğrulaması yapılandırmak ve kullanmak için aşağıdaki yordamları içerir.
 

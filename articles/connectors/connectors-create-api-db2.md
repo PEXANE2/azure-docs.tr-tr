@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 tags: connectors
 ms.openlocfilehash: 765bb66b572f0c046222cfb617fe4caa80925256
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94967411"
 ---
 # <a name="access-and-manage-ibm-db2-resources-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak IBM DB2 kaynaklarına erişin ve yönetin
@@ -109,7 +109,7 @@ Bağlantınızı oluşturmadan önce şirket içi veri ağ geçidiniz zaten yük
 | **Kimlik Doğrulaması** | Yes | Bağlantınızın kimlik doğrulama türü, örneğin, "temel" <p><p>**Note**: temel veya Windows (Kerberos) içeren listeden bu değeri seçin. |
 | **Kullanıcı adı** | Yes | Veritabanı için Kullanıcı adınız <p><p>**Note**: Bu değer, uzunluğu belirli veritabanına göre olan bir dizedir: <p><p>-Z/ç için-DB2 8 baytlık bir dizeyi kabul eder. <br>-DB2, 10 baytlık bir dizeyi kabul eder. <br>-Linux veya UNIX için DB2, 8 baytlık bir dizeyi kabul eder. <br>-Windows için-DB2, 30 baytlık bir dizeyi kabul eder. |
 | **Parola** | Yes | Veritabanı için parolanız |
-| **Geçidinde** | Yes | Yüklü şirket içi veri ağ geçidinizin adı <p><p>**Note**: Azure aboneliğiniz ve kaynak grubunuz içindeki tüm yüklü veri ağ geçitlerini içeren listeden bu değeri seçin. |
+| **Ağ geçidi** | Yes | Yüklü şirket içi veri ağ geçidinizin adı <p><p>**Note**: Azure aboneliğiniz ve kaynak grubunuz içindeki tüm yüklü veri ağ geçitlerini içeren listeden bu değeri seçin. |
 ||||
 
 Örnek:

@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.reviewer: arielgo, jiml
 ms.custom: aaddev, signin_art
 ms.openlocfilehash: 236e82ab97244e1428441f83295f6a5d4ed56350
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99582001"
 ---
 # <a name="branding-guidelines-for-applications"></a>Uygulamalar için markalama yönergeleri
@@ -67,7 +67,7 @@ Yönetici, uygulamanıza izin verdikten sonra, Kullanıcı Microsoft 365 uygulam
 
 ![Microsoft logosu ve "kuruluşuma Ekle" metinlerinin gösterildiği düğme](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
 
-Ancak düğmelere güvenmek yerine açıklayıcı metinler yazmanızı öneririz. Örneğin:
+Ancak düğmelere güvenmek yerine açıklayıcı metinler yazmanızı öneririz. Örnek:
 
 > *Zaten Microsoft 'tan Microsoft 365 veya başka bir iş hizmeti kullanıyorsanız, kuruluşunuzun verilerine <your_app_name> erişim izni verebilirsiniz. Bu, kullanıcılarınızın mevcut iş hesaplarıyla> <your_app_name erişmesine izin verir.*
 

@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 03/02/2021
 ms.topic: overview
 ms.openlocfilehash: 65f61324c496d4b76e6f599966a780c735114870
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101686674"
 ---
 # <a name="azure-arc-enabled-sql-managed-instance-overview"></a>Azure Arc etkin SQL yönetilen örneğine genel bakış
@@ -22,7 +22,7 @@ Azure Arc etkin SQL yönetilen örneği, tercih ettiğiniz altyapıda oluşturul
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="description"></a>Açıklama
+## <a name="description"></a>Description
 
 Azure Arc etkin SQL yönetilen örneği, en son SQL Server veritabanı altyapısına sahip %100 uyumluluğuna sahiptir ve mevcut SQL Server müşterilerinin, veri egemenliği sağlarken en az uygulama ve veritabanı değişiklikleriyle uygulamaları Azure Arc veri Hizmetleri 'ne taşıyıp kaydırabilmesine olanak sağlar. Aynı zamanda, SQL yönetilen örneği, yönetim yükünü önemli ölçüde azaltan yerleşik yönetim özelliklerini içerir. 
 

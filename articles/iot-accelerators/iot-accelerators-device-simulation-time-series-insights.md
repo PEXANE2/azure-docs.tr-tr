@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: e1409b43f0ce1fc0d8c622dda79e857ac6abdd33
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96854572"
 ---
 # <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>Cihaz simülasyonu çözüm hızlandırıcısında gönderilen Telemetriyi görselleştirmek için Time Series Insights kullanın
@@ -55,9 +55,9 @@ Aşağıdaki adımlar, tüketici grubunu oluşturmak için Azure Cloud Shell Azu
 
 [Azure Time Series Insights](../../articles/time-series-insights/time-series-insights-overview.md) , bulutta IoT ölçekli zaman serisi verilerinin yönetilmesi için tam olarak yönetilen bir analiz, depolama ve görselleştirme hizmetidir. Yeni bir Time Series Insights ortamı oluşturmak için:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
-1. Time Series Insights **nesnelerin interneti kaynak oluştur**' u seçin  >  **Internet of Things**  >  **Time Series Insights**:
+1. Time Series Insights **nesnelerin interneti kaynak oluştur**' u seçin  >    >  :
 
     ![Yeni Time Series Insights](./media/iot-accelerators-device-simulation-time-series-insights/new-time-series-insights.png)
 

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.openlocfilehash: c5f536295bce07e70606f1ff286b08f8465d59f9
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102048965"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Windows sanal makine ölçek kümesi için Azure Resource Manager şablonu kullanarak Azure Izleyici ölçüm deposuna Konuk işletim sistemi ölçümleri gönderme
@@ -270,7 +270,7 @@ Kaynak Yöneticisi şablonunu dağıtmak için Azure PowerShell kullanın:
 
 ## <a name="chart-your-metrics"></a>Ölçümlerinizi grafik yapın 
 
-1. Azure Portal’da oturum açın. 
+1. Azure portalında oturum açın. 
 
 1. Sol taraftaki menüde **izleyici**' yi seçin. 
 

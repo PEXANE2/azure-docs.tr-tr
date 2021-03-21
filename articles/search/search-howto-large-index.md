@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.openlocfilehash: b4f54aff78526ba52e56ed9f4cf1feddf40fa69b
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94358401"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Azure Bilişsel Arama büyük veri kümelerini dizin oluşturma
@@ -45,7 +45,7 @@ Katmanda memnun olduktan sonra bir sonraki adımınız, bölüm sayısını art�
 
 ### <a name="review-index-schema"></a>Dizin şemasını gözden geçirin
 
-Dizininizin şeması, veri dizinleme verilerinde önemli bir rol oynar. Daha fazla alan varsa ve ayarlamış olduğunuz daha fazla Özellik ( *aranabilir* , çok *yönlü tablo* veya *filtrelenebilir* gibi), artan dizin oluşturma süresine katkıda bulunur. Genel olarak, yalnızca bir arama dizininde gerçekten ihtiyacınız olan alanları oluşturmalı ve belirtmeniz gerekir.
+Dizininizin şeması, veri dizinleme verilerinde önemli bir rol oynar. Daha fazla alan varsa ve ayarlamış olduğunuz daha fazla Özellik ( *aranabilir*, çok *yönlü tablo* veya *filtrelenebilir* gibi), artan dizin oluşturma süresine katkıda bulunur. Genel olarak, yalnızca bir arama dizininde gerçekten ihtiyacınız olan alanları oluşturmalı ve belirtmeniz gerekir.
 
 > [!NOTE]
 > Belge boyutunu aşağı tutmak için, sorgulanabilir olmayan verileri bir dizine eklemekten kaçının. Görüntüler ve diğer ikili veriler doğrudan aranabilir değildir ve dizinde depolanmamalıdır. Sorgulanabilir olmayan verileri arama sonuçlarıyla bütünleştirmek için, kaynağa bir URL başvurusu depolayan aranabilir olmayan bir alan tanımlamalısınız.
@@ -142,7 +142,7 @@ Dizin oluşturucular için, işlem kapasitesi, arama hizmetiniz tarafından kull
 
 1. [Azure Portal](https://portal.azure.com), arama hizmeti panonuz **genel bakış** sayfasında, **fiyatlandırma katmanını** denetleyerek Paralel dizin oluşturma işleminin uyumlu olduğunu doğrulayın. Hem temel hem de Standart katmanlar birden çok çoğaltma sunar.
 
-2. Hizmetinizde arama birimi sayısı olarak paralel olarak çok sayıda Dizin Oluşturucu çalıştırabilirsiniz. **Ayarlar**  >  **ölçeği** ' nde, paralel işleme için [çoğaltmaları](search-capacity-planning.md) veya bölümleri artırın: her bir dizin oluşturucu iş yükü için bir ek çoğaltma veya bölüm. Mevcut sorgu birimi için yeterli bir sayı bırakın. Dizin oluşturma için sorgu iş yüklerinin Fede iyi bir zorunluluğunu getirir değildir.
+2. Hizmetinizde arama birimi sayısı olarak paralel olarak çok sayıda Dizin Oluşturucu çalıştırabilirsiniz. **Ayarlar**  >  **ölçeği**' nde, paralel işleme için [çoğaltmaları](search-capacity-planning.md) veya bölümleri artırın: her bir dizin oluşturucu iş yükü için bir ek çoğaltma veya bölüm. Mevcut sorgu birimi için yeterli bir sayı bırakın. Dizin oluşturma için sorgu iş yüklerinin Fede iyi bir zorunluluğunu getirir değildir.
 
 3. Azure Bilişsel Arama dizin oluşturucularının ulaşabileceği bir düzeyde verileri birden çok kapsayıcıya dağıtın. Bu, Azure SQL veritabanı 'nda birden çok tablo, Azure Blob depolamada birden çok kapsayıcı veya birden çok koleksiyon olabilir. Her tablo veya kapsayıcı için bir veri kaynağı nesnesi tanımlayın.
 

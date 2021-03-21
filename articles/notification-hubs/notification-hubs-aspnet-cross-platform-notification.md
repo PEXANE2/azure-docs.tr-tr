@@ -17,10 +17,10 @@ ms.reviewer: thsomasu
 ms.lastreviewed: 10/02/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3f8f9357fff4773467dd93046ece8533514eb444
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92313897"
 ---
 # <a name="send-cross-platform-notifications-with-azure-notification-hubs"></a>Azure Notification Hubs platformlar arası bildirimler gönderin
@@ -41,7 +41,7 @@ Bu bölüm, [Azure Notification Hubs öğreticisini kullanarak belirli kullanıc
 
 Şablonları kullanarak platformlar arası bildirimler göndermek için aşağıdakileri yapın:
 
-1. **Çözüm Gezgini**'Deki Visual Studio 'Da, **denetleyiciler** klasörünü genişletin ve ardından *RegisterController.cs* dosyasını açın.
+1. **Çözüm Gezgini**'Deki Visual Studio 'Da, **denetleyiciler** klasörünü genişletin ve ardından *registercontroller. cs* dosyasını açın.
 
 1. `Put`Yeni bir kayıt oluşturan yöntemdeki kod bloğunu bulun ve ardından `switch` içeriği şu kodla değiştirin:
 
@@ -76,7 +76,7 @@ Bu bölüm, [Azure Notification Hubs öğreticisini kullanarak belirli kullanıc
 
     Bu kod, yerel kayıt yerine bir şablon kaydı oluşturmak için platforma özgü yöntemi çağırır. Şablon kayıtları yerel kayıtlardan türetiğinden, var olan kayıtları değiştirmenize gerek yoktur.
 
-1. **Çözüm Gezgini**, **denetleyiciler** klasöründe, **NotificationsController.cs** dosyasını açın. `Post` yöntemini aşağıdaki kod ile değiştirin:
+1. **Çözüm Gezgini**, **denetleyiciler** klasöründe, **notificationscontroller. cs** dosyasını açın. `Post` yöntemini aşağıdaki kod ile değiştirin:
 
     ```csharp
     public async Task<HttpResponseMessage> Post()

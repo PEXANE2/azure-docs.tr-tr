@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: bf0e868e9ee746da1dfe1b03403d21f7edb3bd5e
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95544658"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Hızlı Başlangıç: Go kullanarak blobları yükleme, indirme ve listeleme
@@ -149,9 +149,9 @@ Blob depolama blok blobları, ekleme bloblarını ve sayfa bloblarını destekle
 
 Bloba dosya yüklemek için, **os.Open** kullanarak dosyayı açın. Ardından, dosyayı belirtilen yola yüklemek için REST API'lerden birini kullanabilirsiniz: Upload (PutBlob), StageBlock/CommitBlockList (PutBlock/PutBlockList). 
 
-Alternatif olarak, SDK alt düzey REST API'lerinin üstüne yapılandırılmış [üst düzey API'ler](https://github.com/Azure/azure-storage-blob-go/blob/master/azblob/highlevel.go) sağlar. Örnek olarak, **_Uploadfiletoblockblob_* _ işlevi, aktarım hızını iyileştirmek için bir dosyayı aynı anda parçalara yüklemek üzere stageblock (putblock) işlemlerini kullanır. Dosya 256 MB'den küçükse, aktarımı tek işlemde tamamlamak için onun yerine Upload (PutBlob) kullanır.
+Alternatif olarak, SDK alt düzey REST API'lerinin üstüne yapılandırılmış [üst düzey API'ler](https://github.com/Azure/azure-storage-blob-go/blob/master/azblob/highlevel.go) sağlar. Örnek vermek gerekirse, ***UploadFileToBlockBlob*** işlevi, aktarım hızını iyileştirmek için StageBlock (PutBlock) işlemlerini kullanarak bir dosyayı öbekler halinde eşzamanlı olarak karşıya yükler. Dosya 256 MB'den küçükse, aktarımı tek işlemde tamamlamak için onun yerine Upload (PutBlob) kullanır.
 
-Aşağıdaki örnek, dosyayı _ * quickstartblobları-[randomstring] * * adlı kapsayıcıya yükler.
+Aşağıdaki örnek, dosyayı **quickstartblobs-[randomstring]** adlı kapsayıcınıza yükler.
 
 ```go
 // Create a file to test the upload and download.

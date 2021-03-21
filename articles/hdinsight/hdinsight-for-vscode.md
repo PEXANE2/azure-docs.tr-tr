@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: 1209c49cbd988a02b1e3503994fdbdac3f26216a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98946136"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Visual Studio Code için Spark & Hive araçlarını kullanma
@@ -298,13 +298,13 @@ Araç **Spark SQL** sorgusunu da destekler:
 
 4. Azure hesabınıza [bağlanın](#connect-to-an-azure-account) veya henüz yapmadıysanız bir kümeyi bağlayın.
 
-5. Betik düzenleyicisine sağ tıklayın ve **Spark: Pyspark Batch** veya **SYNAPSE: pyspark Batch** _ öğesini seçin.
+5. Betik düzenleyicisine sağ tıklayın ve **Spark: Pyspark Batch** veya * * SYNAPSE: pyspark Batch * * * öğesini seçin.
 
 6. PySpark işinizi göndermek için bir küme/Spark havuzu seçin:
 
    ![Python işi sonuç çıkışını gönder](./media/hdinsight-for-vscode/submit-pythonjob-result.png)
 
-Bir Python işi gönderdikten sonra, gönderim günlükleri Visual Studio Code içindeki _ *output** penceresinde görüntülenir. Spark Kullanıcı arabirimi URL 'SI ve Yarn UI URL 'SI de gösterilir. Toplu işi bir Apache Spark havuzuna gönderirseniz, Spark geçmişi Kullanıcı arabirimi URL 'SI ve Spark Iş uygulaması kullanıcı arabirimi URL 'SI de gösterilir. İşi durumunu izlemek için URL 'YI bir Web tarayıcısında açabilirsiniz.
+Bir Python işi gönderdikten sonra, gönderim günlükleri Visual Studio Code **Çıkış** penceresinde görüntülenir. Spark Kullanıcı arabirimi URL 'SI ve Yarn UI URL 'SI de gösterilir. Toplu işi bir Apache Spark havuzuna gönderirseniz, Spark geçmişi Kullanıcı arabirimi URL 'SI ve Spark Iş uygulaması kullanıcı arabirimi URL 'SI de gösterilir. İşi durumunu izlemek için URL 'YI bir Web tarayıcısında açabilirsiniz.
 
 ## <a name="integrate-with-hdinsight-identity-broker-hib"></a>HDInsight Identity broker (HIB) ile tümleştirme
 
@@ -326,7 +326,7 @@ PySpark toplu işi çalıştırmak için, KIMLIK broker (HIB) ile HDInsight ESP 
 
 <a id="triggerlivyconf"></a>**Livy yapılandırması tetiklenmesi**
 
-### <a name="method-1"></a>Yöntem 1  
+### <a name="method-1"></a>1. Yöntem  
 
 1. Menü çubuğundan **Dosya**  >  **tercihleri**  >  **ayarları**' na gidin.
 2. **Arama ayarları** kutusuna **HDInsight Iş gönderimi: Livy conf** yazın.  

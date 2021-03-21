@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: jingwang
 ms.openlocfilehash: c0d8783c4b07c8c87e57ccd9a5d65983825347c9
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100384104"
 ---
 # <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>Azure Data Factory kullanarak PostgreSQL 'ten veri kopyalama
@@ -22,7 +22,7 @@ ms.locfileid: "100384104"
 
 Bu makalede, bir PostgreSQL veritabanından veri kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Kopyalama etkinliğine genel bir bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesinde oluşturulur.
 
-## <a name="supported-capabilities"></a>Desteklenen yetenekler
+## <a name="supported-capabilities"></a>Desteklenen özellikler
 
 Bu PostgreSQL Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 

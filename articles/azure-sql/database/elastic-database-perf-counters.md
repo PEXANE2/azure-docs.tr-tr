@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/07/2019
 ms.openlocfilehash: 3bfbf56b6e5f2be33b407945490531e6e2e8ac47
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92781269"
 ---
 # <a name="create-performance-counters-to-track-performance-of-shard-map-manager"></a>Parça eşleme Yöneticisi 'nin performansını izlemek için performans sayaçları oluşturma
@@ -28,7 +28,7 @@ Performans sayaçları, [veri bağımlı yönlendirme](elastic-scale-data-depend
 
 **En son sürüm için:** [Microsoft. Azure. SQLDatabase. Elayapışscale. Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)öğesine gidin. Ayrıca bkz. [bir uygulamayı en son elastik veritabanı istemci kitaplığını kullanacak şekilde yükseltme](elastic-scale-upgrade-client-library.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Performans kategorisi ve sayaçlarını oluşturmak için Kullanıcı, uygulamayı barındıran makinede yerel **Yöneticiler** grubunun bir parçası olmalıdır.  
 * Bir performans sayacı örneği oluşturmak ve sayaçları güncelleştirmek için, kullanıcının **Yöneticiler** veya **Performans İzleyicisi Kullanıcı** grubunun üyesi olması gerekir.
@@ -42,12 +42,12 @@ Sayaçları oluşturmak için, [Shardmapmanagementfactory sınıfının](/dotnet
 Yöntemi yürütmek için [Bu](https://gallery.technet.microsoft.com/scriptcenter/Elastic-DB-Tools-for-Azure-17e3d283) PowerShell betiğini de kullanabilirsiniz.
 Yöntemi aşağıdaki performans sayaçlarını oluşturur:  
 
-* **Önbelleğe alınan eşlemeler** : parça eşlemesi için önbelleğe alınan eşlemelerin sayısı.
-* **DDR işlemi/sn** : parça eşlemesi için veri bağımlı yönlendirme işlemleri oranı. Bu sayaç, bir [Openconnectionforkey ()](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey) çağrısı hedef parça ile başarılı bir bağlantı ile sonuçlanana zaman güncelleştirilir.
-* **Eşleme arama önbelleği isabet sayısı/sn** : parça eşlemesindeki eşlemeler için başarılı önbellek arama işlemlerinin oranı.
-* **Eşleme arama önbelleği isabetsizliği/sn** : parça eşlemesinde eşlemeler için başarısız önbellek arama işlemlerinin oranı.
-* **Önbellekte/sn 'ye eklenen veya güncellenen eşlemeler** : parça haritası için önbellekte eşlemelerin eklendiği veya güncelleştirildiği oran.
-* **Önbellekten kaldırılan eşlemeler/sn** : eşlemelerin, parça haritası için önbellekten kaldırılma hızıdır.
+* **Önbelleğe alınan eşlemeler**: parça eşlemesi için önbelleğe alınan eşlemelerin sayısı.
+* **DDR işlemi/sn**: parça eşlemesi için veri bağımlı yönlendirme işlemleri oranı. Bu sayaç, bir [Openconnectionforkey ()](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey) çağrısı hedef parça ile başarılı bir bağlantı ile sonuçlanana zaman güncelleştirilir.
+* **Eşleme arama önbelleği isabet sayısı/sn**: parça eşlemesindeki eşlemeler için başarılı önbellek arama işlemlerinin oranı.
+* **Eşleme arama önbelleği isabetsizliği/sn**: parça eşlemesinde eşlemeler için başarısız önbellek arama işlemlerinin oranı.
+* **Önbellekte/sn 'ye eklenen veya güncellenen eşlemeler**: parça haritası için önbellekte eşlemelerin eklendiği veya güncelleştirildiği oran.
+* **Önbellekten kaldırılan eşlemeler/sn**: eşlemelerin, parça haritası için önbellekten kaldırılma hızıdır.
 
 Performans sayaçları, işlem başına her önbelleğe alınmış parça haritası için oluşturulur.  
 

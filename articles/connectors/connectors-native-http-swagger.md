@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
 ms.openlocfilehash: 810aaae9634a7de8d07b6d49edd0c6c2eda96754
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101730890"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak REST uç noktalarını çağırma
@@ -147,7 +147,7 @@ Bu dosyayı bir Azure depolama hesabındaki blob kapsayıcısına yükleyerek ve
 
 HTTP + Swagger tetikleyicisinden veya eylemden gelen çıktılar hakkında daha fazla bilgi bulabilirsiniz. HTTP + Swagger çağrısı şu bilgileri döndürür:
 
-| Özellik adı | Tür | Açıklama |
+| Özellik adı | Tür | Description |
 |---------------|------|-------------|
 | bilgisinde | object | İstekten gelen üstbilgiler |
 | body | object | JSON nesnesi | İstekten gelen gövde içeriğine sahip nesne |

@@ -5,10 +5,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 10/13/2016
 ms.openlocfilehash: 3fba7bdaa5db1d812fbcd479e5f1eab50c8d1032
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92215867"
 ---
 # <a name="use-the-vertex-execution-view-in-data-lake-tools-for-visual-studio"></a>Visual Studio için Data Lake araçları 'nda köşe yürütme görünümünü kullanma
@@ -25,11 +25,11 @@ Köşe yürütme görünümü üç bölümden oluşur:
 
 ![Köşe yürütme görünümünü "köşe seçiciyle" ve orta-üst ve orta alt bölmeler vurgulanmış şekilde gösteren ekran görüntüsü.](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view.png)
 
-Soldaki **köşe Seçicisi** , özelliklere göre köşeler seçmenizi sağlar (örneğin, ilk 10 veri okuma veya aşamasına göre seçim). En yaygın olarak kullanılan filtrelerden biri, **Kritik yoldaki köşeleri**görmeleridir. **Kritik yol** bir U-SQL işinin en uzun köşe zinciridir. Kritik yolu anlamak, en uzun zaman hangi köşeyi aldığını denetleyerek işlerinizi iyileştirmek için faydalıdır.
+Soldaki **köşe Seçicisi** , özelliklere göre köşeler seçmenizi sağlar (örneğin, ilk 10 veri okuma veya aşamasına göre seçim). En yaygın olarak kullanılan filtrelerden biri, **Kritik yoldaki köşeleri** görmeleridir. **Kritik yol** bir U-SQL işinin en uzun köşe zinciridir. Kritik yolu anlamak, en uzun zaman hangi köşeyi aldığını denetleyerek işlerinizi iyileştirmek için faydalıdır.
   
 !["Tüm köşelerin çalışma durumunu" gösteren köşe yürütme görünümü üst orta bölmesini gösteren ekran görüntüsü.](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view-pane2.png)
 
-Üstteki Orta bölmede **tüm köşelerin çalışma durumu**gösterilmektedir.
+Üstteki Orta bölmede **tüm köşelerin çalışma durumu** gösterilmektedir.
   
 ![Her köşe hakkında bilgi görüntüleyen köşe yürütme görünümü alt orta bölmesini gösteren ekran görüntüsü.](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view-pane3.png)
 

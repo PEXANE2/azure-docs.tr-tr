@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: programming-languages-set-functions-full
 ms.openlocfilehash: 1c7a9fd83131ea6282d2ef4860b744fa348153ed
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98070926"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Linux üzerinde özel kapsayıcı kullanarak bir işlev oluşturma
@@ -24,7 +24,7 @@ Azure Işlevleri, [özel işleyiciler](functions-custom-handlers.md)kullanarak t
 
 [Linux üzerinde barındırılan ilk işlevinizi oluşturma](./create-first-function-cli-csharp.md?pivots=programming-language-python)konusunda açıklandığı gibi varsayılan bir Azure App Service kapsayıcısını de kullanabilirsiniz. Azure Işlevleri için desteklenen temel görüntüler, [Azure işlevleri temel görüntüler](https://hub.docker.com/_/microsoft-azure-functions-base)deposunda bulunur.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-java"
 > [!div class="checklist"]
@@ -112,7 +112,7 @@ mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArti
 ```
 ---
 
-`-DjavaVersion`Parametresi, işlevleri çalışma zamanına hangi Java sürümünün kullanılacağını söyler. `-DjavaVersion=11`İşlevlerinizin Java 11 ' de çalışmasını istiyorsanız kullanın. Belirtmezseniz `-DjavaVersion` Maven varsayılan olarak Java 8 ' dir. Daha fazla bilgi için bkz. [Java sürümleri](functions-reference-java.md#java-versions).
+`-DjavaVersion`Parametresi, işlevleri çalışma zamanına hangi Java sürümünün kullanılacağını söyler. İşlevlerinizin Java 11 üzerinde çalışmasını istiyorsanız `-DjavaVersion=11` ifadesini kullanın. Belirtmezseniz `-DjavaVersion` Maven varsayılan olarak Java 8 ' dir. Daha fazla bilgi için bkz. [Java sürümleri](functions-reference-java.md#java-versions).
 
 > [!IMPORTANT]
 > `JAVA_HOME`Bu makaleyi tamamlayabilmeniz için ortam değişkeni, JDK 'nin doğru sürümünün yükleneceği konum olarak ayarlanmalıdır.

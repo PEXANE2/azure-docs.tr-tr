@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
 ms.openlocfilehash: 0ea6fcaff1ec699431da8b67adee68735a8611a8
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97696080"
 ---
 # <a name="tutorial-create-and-import-glossary-terms-in-azure-purview-preview"></a>Öğretici: Azure purview 'da Sözlük terimleri oluşturma ve içeri aktarma (Önizleme)
@@ -23,7 +23,7 @@ Sözlük, kataloğunuzu sürdürmek ve düzenlemek için önemli bir araçtır. 
 
 Bu öğretici, Azure purview kullanarak bir veri yönetiminde veri yönetimini yönetme temellerini öğrentiğinizde *beş bölümlü bir öğretici serisinin 5. bölümüdür* . Bu öğretici, [5. Bölüm: Azure purview (Önizleme) içinde kaynak kümelerini, ayrıntıları, şemaları ve sınıflandırmaları keşfetmeye](tutorial-schemas-and-classifications.md)yönelik bu öğreticide oluşturulur.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -184,4 +184,4 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 Farklı Katalog öngörüleri hakkında bilgi edinmek için sonraki makaleye ilerleyin.
 
 > [!div class="nextstepaction"]
-> [Azure takip görünümünde öngörüleri anlama](concept-insights.md)
+> [Azure Purview'da İçgörüleri Anlama](concept-insights.md)

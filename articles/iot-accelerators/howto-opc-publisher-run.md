@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: f7d6581a1892ebd74a1adba5c09c0af9d3cf9d43
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92079012"
 ---
 # <a name="run-opc-publisher"></a>OPC Yayımcısını Çalıştırma
@@ -376,8 +376,8 @@ OPC yayımcısını IoT Edge dağıtımınıza modül olarak eklemek için, Azur
 
 1. **IoT Edge** gidin ve IoT Edge cihazınızı oluşturun veya seçin.
 1. **Modülleri Ayarlama**'yı seçin.
-1. **Dağıtım modülleri** altında **Ekle** ' yi ve ardından **IoT Edge modülünü**seçin.
-1. **Ad** alanına **Yayımcı**yazın.
+1. **Dağıtım modülleri** altında **Ekle** ' yi ve ardından **IoT Edge modülünü** seçin.
+1. **Ad** alanına **Yayımcı** yazın.
 1. **Görüntü URI 'si** alanına şunu girin`mcr.microsoft.com/iotedge/opc-publisher:<tag>`
 1. Kullanılabilir etiketleri [Docker Hub 'ında](https://hub.docker.com/_/microsoft-iotedge-opc-publisher) bulabilirsiniz
 1. Aşağıdaki JSON öğesini **kapsayıcı oluşturma seçenekleri** alanına yapıştırın:
@@ -391,7 +391,7 @@ OPC yayımcısını IoT Edge dağıtımınıza modül olarak eklemek için, Azur
     }
     ```
 
-    Bu yapılandırma, OPC yayımcı görüntüsünü kullanarak **Yayımcı** adlı bir kapsayıcıyı başlatmak için IoT Edge yapılandırır. Kapsayıcının sisteminin konak adı **Publisher**olarak ayarlanmıştır. OPC yayımcısı aşağıdaki komut satırı bağımsız değişkeniyle çağrılır: `--aa` . Bu seçenekle OPC yayımcısı, bağlandığı OPC UA sunucularının sertifikalarına güvenir. Herhangi bir OPC yayımcısı komut satırı seçeneğini kullanabilirsiniz. Tek sınırlama, IoT Edge tarafından desteklenen **kapsayıcı oluşturma seçeneklerinin** boyutudur.
+    Bu yapılandırma, OPC yayımcı görüntüsünü kullanarak **Yayımcı** adlı bir kapsayıcıyı başlatmak için IoT Edge yapılandırır. Kapsayıcının sisteminin konak adı **Publisher** olarak ayarlanmıştır. OPC yayımcısı aşağıdaki komut satırı bağımsız değişkeniyle çağrılır: `--aa` . Bu seçenekle OPC yayımcısı, bağlandığı OPC UA sunucularının sertifikalarına güvenir. Herhangi bir OPC yayımcısı komut satırı seçeneğini kullanabilirsiniz. Tek sınırlama, IoT Edge tarafından desteklenen **kapsayıcı oluşturma seçeneklerinin** boyutudur.
 
 1. Diğer ayarları değiştirmeden bırakın ve **Kaydet**' i seçin.
 1. OPC yayımcısının çıkışını başka bir IoT Edge modülüyle yerel olarak işlemek istiyorsanız, **modülleri ayarla** sayfasına dönün. Ardından **rotalar belirt** sekmesine gidin ve aşağıdaki JSON gibi görünen yeni bir yol ekleyin:
@@ -411,7 +411,7 @@ OPC yayımcısını IoT Edge dağıtımınıza modül olarak eklemek için, Azur
 
 ### <a name="make-the-configuration-files-accessible-on-the-host"></a>Yapılandırma dosyalarını konakta erişilebilir hale getirme
 
-IoT Edge modülü yapılandırma dosyalarını konak dosya sisteminde erişilebilir hale getirmek için aşağıdaki **kapsayıcı oluşturma seçeneklerini**kullanın. Aşağıdaki örnek, Windows için Linux kapsayıcıları kullanan bir dağıtımdır:
+IoT Edge modülü yapılandırma dosyalarını konak dosya sisteminde erişilebilir hale getirmek için aşağıdaki **kapsayıcı oluşturma seçeneklerini** kullanın. Aşağıdaki örnek, Windows için Linux kapsayıcıları kullanan bir dağıtımdır:
 
 ```json
 {

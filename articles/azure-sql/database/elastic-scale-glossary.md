@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: 166e365a4ead8ad6d0f7e543c081161ebff5f027
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92330470"
 ---
 # <a name="elastic-database-tools-glossary"></a>Elastik veritabanı araçları sözlüğü
@@ -31,13 +31,13 @@ Bu terimler, [elastik veritabanı araçlarını kullanarak parça ekleme](elasti
 
 **Verilere bağımlı yönlendirme**: bir uygulamanın belirli bir parça anahtarı verilen bir parçaya bağlanmasını sağlayan işlevsellik. Bkz. [verilere bağımlı yönlendirme](elastic-scale-data-dependent-routing.md). **[Çok parçalı sorgu](elastic-scale-multishard-querying.md)** ile karşılaştırın.
 
-**Küresel parça Haritası**: parça **kümesi**içindeki parçalar ve ilgili parçalar arasındaki eşleme. Küresel parça eşleme, parça **eşleme Yöneticisi**'nde depolanır. Yerel parça **eşlemesiyle**karşılaştırın.
+**Küresel parça Haritası**: parça **kümesi** içindeki parçalar ve ilgili parçalar arasındaki eşleme. Küresel parça eşleme, parça **eşleme Yöneticisi**'nde depolanır. Yerel parça **eşlemesiyle** karşılaştırın.
 
-Parça **haritasını Listele**: parçalama anahtarlarının ayrı ayrı eşlendiği parça haritası. Aralık parça **Haritası**ile karşılaştırın.   
+Parça **haritasını Listele**: parçalama anahtarlarının ayrı ayrı eşlendiği parça haritası. Aralık parça **Haritası** ile karşılaştırın.   
 
 **Yerel parça Haritası**: bir parça üzerinde depolanan yerel parça Haritası, parça üzerinde yer alan parçalar için eşlemeler içerir.
 
-**Çok parçalı sorgu**: birden çok parçaya karşı bir sorgu verme özelliği; sonuç kümeleri UNıON ALL semantiği ("fan arası sorgu" olarak da bilinir) kullanılarak döndürülür. **Verilere bağımlı yönlendirme**ile karşılaştırın.
+**Çok parçalı sorgu**: birden çok parçaya karşı bir sorgu verme özelliği; sonuç kümeleri UNıON ALL semantiği ("fan arası sorgu" olarak da bilinir) kullanılarak döndürülür. **Verilere bağımlı yönlendirme** ile karşılaştırın.
 
 **Çok kiracılı** ve **tek kiracılı**: Bu, tek kiracılı bir veritabanını ve çok kiracılı bir veritabanını gösterir:
 
@@ -51,13 +51,13 @@ Parçalı tek ve çok kiracılı veritabanlarının temsili **aşağıda verilmi
 
 **Başvuru tabloları**: parçalı olmayan ancak parçalar arasında çoğaltılan tablolar. Örneğin, posta kodları bir başvuru tablosunda depolanabilir. 
 
-Parça **: Azure**SQL veritabanı 'nda, verileri oluşturulmuş bir veri kümesinden depolayan bir veritabanıdır. 
+Parça **: Azure** SQL veritabanı 'nda, verileri oluşturulmuş bir veri kümesinden depolayan bir veritabanıdır. 
 
-Parça **esnekliği: hem** **yatay ölçeklendirmeyi** hem de **Dikey ölçeklendirmeyi**gerçekleştirme özelliği.
+Parça **esnekliği: hem** **yatay ölçeklendirmeyi** hem de **Dikey ölçeklendirmeyi** gerçekleştirme özelliği.
 
 Parçalı **Tablolar**: parçalı, yani verileri parçalara ayırma anahtar değerlerine bağlı olarak parçalar arasında dağıtılan tablolar. 
 
-Parçalı **anahtar**: verilerin parçalar arasında nasıl dağıtıldığını belirleyen bir sütun değeri. Değer türü şunlardan biri olabilir: **int**, **bigint**, **varbinary**veya **uniqueidentifier**. 
+Parçalı **anahtar**: verilerin parçalar arasında nasıl dağıtıldığını belirleyen bir sütun değeri. Değer türü şunlardan biri olabilir: **int**, **bigint**, **varbinary** veya **uniqueidentifier**. 
 
 Parça **kümesi**: parça eşleme yöneticisinde aynı parça eşlemesine sahip olan parçaların koleksiyonu.  
 
@@ -78,7 +78,7 @@ Parça **eşleme Yöneticisi**: bir veya daha fazla parça kümesi için parça 
 
 **Parçama taşı**: tek bir parçayı farklı bir parçaya taşıma eylemi. 
 
-Parça **: aynı**yapılandırılmış verileri, parçalı bir anahtara göre birden çok veritabanı arasında yatay olarak bölümlemenin görevi.
+Parça **: aynı** yapılandırılmış verileri, parçalı bir anahtara göre birden çok veritabanı arasında yatay olarak bölümlemenin görevi.
 
 **Böl**: birden fazla parçayı bir parçadan diğerine (genellikle yeni) parça olarak taşıma eylemi. Parça anahtar, Kullanıcı tarafından bölünmüş nokta olarak sağlanır.
 

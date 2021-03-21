@@ -4,10 +4,10 @@ description: Laboratuvar Oluşturucu kullanıyorsanız, bu kılavuz okulunuzda h
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 07f0d92ebd926616f1318b430bec2de32f753f7c
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95021751"
 ---
 # <a name="lab-setup-guide"></a>Laboratuvar Kurulum Kılavuzu
@@ -136,7 +136,7 @@ Sınıfınızın laboratuvarınızın gereksinimlerini anladıktan sonra, ayarla
 1. **Panoyu kullanın**. Yönergeler için bkz. [derslik laboratuvar panosunu kullanma](./use-dashboard.md).
 
     > [!NOTE]
-    > Panoda gösterilen tahmini maliyet, öğrenci laboratuvarı kullanımı için ödeme yapmak için tahmin edebileceğiniz maksimum maliyettir. Örneğin, öğrencileriniz tarafından *not* kullanılmayan kota saatleri için ücretlendirilmeyecektir. Tahmini maliyetler, şablon VM 'si, paylaşılan görüntü Galerisi veya laboratuvar Oluşturucu bir Kullanıcı makinesini başlattığında herhangi bir ücret *yansıtmazlar* .
+    > Panoda gösterilen tahmini maliyet, öğrenci laboratuvarı kullanımı için ödeme yapmak için tahmin edebileceğiniz maksimum maliyettir. Örneğin, öğrencileriniz tarafından  kullanılmayan kota saatleri için ücretlendirilmeyecektir. Tahmini maliyetler, şablon VM 'si, paylaşılan görüntü Galerisi veya laboratuvar Oluşturucu bir Kullanıcı makinesini başlattığında herhangi bir ücret *yansıtmazlar* .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

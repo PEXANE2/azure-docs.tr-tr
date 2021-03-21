@@ -13,10 +13,10 @@ ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 60a29efc4d2daa9d1bc90f00e71094da382a83b9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101686895"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Öğretici: Windows masaüstü uygulamasından Microsoft Graph API 'sini çağırma
@@ -57,7 +57,7 @@ MSAL, uygulamanızın ihtiyaç duymaması için, erişim belirteçlerini önbell
 
 Bu kılavuzda aşağıdaki NuGet paketleri kullanılmaktadır:
 
-|Kitaplık|Açıklama|
+|Kitaplık|Description|
 |---|---|
 |[Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft kimlik doğrulama kitaplığı (MSAL.NET)|
 
@@ -115,7 +115,7 @@ Uygulamanızı kaydetmek ve uygulama kayıt bilgilerinizi çözümünüze ekleme
 1. **Mobil ve Masaüstü uygulamaları '** nı seçin.
 1. **Yeniden yönlendirme URI 'leri** bölümünde öğesini seçin **https://login.microsoftonline.com/common/oauth2/nativeclient** .
 1. **Yapılandır**'ı seçin.
-1. Visual Studio 'ya gidin, *app.xaml.cs* dosyasını açın ve `Enter_the_Application_Id_here` Aşağıdaki kod parçacığında, yeni kaydettiğiniz ve kopyaladığınız uygulama kimliğiyle değiştirin.
+1. Visual Studio 'ya gidin, *app. xaml. cs* dosyasını açın ve `Enter_the_Application_Id_here` Aşağıdaki kod parçacığında, yeni kaydettiğiniz ve kopyaladığınız uygulama kimliğiyle değiştirin.
 
     ```csharp
     private static string ClientId = "Enter_the_Application_Id_here";
@@ -125,7 +125,7 @@ Uygulamanızı kaydetmek ve uygulama kayıt bilgilerinizi çözümünüze ekleme
 
 Bu adımda, belirteçleri işleme gibi MSAL ile etkileşimi işlemek için bir sınıf oluşturursunuz.
 
-1. *App.xaml.cs* dosyasını açın ve msal başvurusunu sınıfa ekleyin:
+1. *App. xaml. cs* dosyasını açın ve msal başvurusunu sınıfa ekleyin:
 
     ```csharp
     using Microsoft.Identity.Client;
@@ -188,7 +188,7 @@ Bir *MainWindow. xaml* dosyası otomatik olarak proje şablonunuzun bir parças�
 
 Bu bölümde, Microsoft Graph API 'sine yönelik bir belirteç almak için MSAL kullanırsınız.
 
-1. *MainWindow.xaml.cs* dosyasında, msal için başvurusunu sınıfa ekleyin:
+1. *MainWindow. xaml. cs* dosyasında, msal başvurusunu sınıfına ekleyin:
 
     ```csharp
     using Microsoft.Identity.Client;
@@ -355,7 +355,7 @@ Bu örnekteki uygulama tek kullanıcıları desteklediğinden, MSAL birden çok 
 
 ## <a name="display-basic-token-information"></a>Temel belirteç bilgilerini görüntüle
 
-Belirteç hakkındaki temel bilgileri göstermek için, *MainWindow.xaml.cs* dosyanıza aşağıdaki yöntemi ekleyin:
+Belirteç hakkındaki temel bilgileri göstermek için, *MainWindow. xaml. cs* dosyanıza aşağıdaki yöntemi ekleyin:
 
 ```csharp
 /// <summary>

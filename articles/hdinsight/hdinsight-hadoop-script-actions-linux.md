@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/28/2019
 ms.openlocfilehash: b6705728fddc9a5a3c9cb8eb2f1811412fb3a290
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98945478"
 ---
 # <a name="script-action-development-with-hdinsight"></a>HDInsight ile betik eylemi geliştirme
@@ -158,13 +158,13 @@ HDInsight, STDOUT ve STDERR 'e yazılan betik çıkışını günlüğe kaydeder
 > [!NOTE]  
 > Apache ambarı yalnızca küme başarıyla oluşturulduysa kullanılabilir. Küme oluşturma sırasında bir betik eylemi kullanırsanız ve oluşturma başarısız olursa, bkz. günlüğe kaydedilen bilgilere erişmenin diğer yolları için [betik eylemlerine sorun giderme](./troubleshoot-script-action.md) .
 
-Çoğu yardımcı program ve yükleme paketi zaten STDOUT ve STDERR 'e bilgi yazar, ancak daha fazla günlük kaydı eklemek isteyebilirsiniz. STDOUT 'a metin göndermek için kullanın `echo` . Örneğin:
+Çoğu yardımcı program ve yükleme paketi zaten STDOUT ve STDERR 'e bilgi yazar, ancak daha fazla günlük kaydı eklemek isteyebilirsiniz. STDOUT 'a metin göndermek için kullanın `echo` . Örnek:
 
 ```bash
 echo "Getting ready to install Foo"
 ```
 
-Varsayılan olarak, `echo` DIZEYI stdout ' a gönderir. Bunu STDERR 'e yönlendirmek için, daha `>&2` önce ekleyin `echo` . Örneğin:
+Varsayılan olarak, `echo` DIZEYI stdout ' a gönderir. Bunu STDERR 'e yönlendirmek için, daha `>&2` önce ekleyin `echo` . Örnek:
 
 ```bash
 >&2 echo "An error occurred installing Foo"

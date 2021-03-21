@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: alkohli
 ms.openlocfilehash: 2c9feb1131f6d2d0eb75ac71e27dc46c226c52c1
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94961065"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-update-3-and-later"></a>Şirket içi StorSimple cihazınızı (Güncelleştirme 3 ve üzeri) dağıtma
@@ -206,4 +206,4 @@ Aşağıdaki diyagramda gösterildiği gibi, stereo jakın ucu PIN 3 RX, ortası
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [StorSimple Cloud Appliance’ı yapılandırma](storsimple-8000-cloud-appliance-u2.md).
-* StorSimple [cihazınızı yönetmek Için storsimple Aygıt Yöneticisi hizmetini kullanın](storsimple-8000-manager-service-administration.md).
+* StorSimple [cihazınızı yönetmek Için storsimple Device Manager hizmetini kullanın](storsimple-8000-manager-service-administration.md).

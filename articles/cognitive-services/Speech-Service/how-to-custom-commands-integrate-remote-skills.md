@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: sausin
 ms.openlocfilehash: 77ade17803a35491712ec6df70aed9eb7b4883eb
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95025883"
 ---
 # <a name="export-custom-commands-application-as-a-remote-skill"></a>Özel komutlar uygulamasını uzak bir yetenek olarak dışarı aktar
@@ -64,7 +64,7 @@ Yazar olarak, becerilerin tetiklenmesi için kullanılan **örnek cümlelerinizi
     > [!div class="mx-imgBorder"]
     > ![Yetenek için etkin bir komutu düzenleme](media/custom-commands/skill-edit-enabled-command.png)
 
-1. Ardından, atlamak istediğiniz örnek cümlelerde **right click**  >  **örnek tümceyi devre dışı bırak**' a sağ tıklayın.
+1. Ardından, atlamak istediğiniz örnek cümlelerde   >  **örnek tümceyi devre dışı bırak**' a sağ tıklayın.
     > [!div class="mx-imgBorder"]
     > ![Örnekleri devre dışı bırak](media/custom-commands/skill-disable-example-sentences.png)
 

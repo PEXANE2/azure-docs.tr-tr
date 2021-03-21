@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 9f53072b106bedb8e49ba7f3728f39137f848a58
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92895027"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workstars"></a>Öğretici: Iş yıldızlarla Azure Active Directory tümleştirme
@@ -85,7 +85,7 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
 Azure AD çoklu oturum açma 'yı çalışma yıldıza göre yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com/), **iş yıldızları** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma** ' yı seçin.
+1. [Azure Portal](https://portal.azure.com/), **iş yıldızları** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
 
     ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
@@ -126,11 +126,11 @@ Azure AD çoklu oturum açma 'yı çalışma yıldıza göre yapılandırmak iç
 
 1. Başka bir tarayıcı penceresinde, Iş yıldızlı şirket sitenizde yönetici olarak oturum açın.
 
-2. Ana araç çubuğunda, **Ayarlar** ' a tıklayın.
+2. Ana araç çubuğunda, **Ayarlar**' a tıklayın.
 
     ![Ekran görüntüsü ayarlar düğmesini gösterir.](./media/workstars-tutorial/tutorial_workstars_sett.png)
 
-3. **Oturum açma**  >  **ayarları** ' na gidin.
+3. **Oturum açma**  >  **ayarları**' na gidin.
 
     ![İş yıldızları oturum açma](./media/workstars-tutorial/tutorial_workstars_signon.png)
 
@@ -150,15 +150,15 @@ Azure AD çoklu oturum açma 'yı çalışma yıldıza göre yapılandırmak iç
     
     e. **Uzaktan oturum kapatma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum kapatma URL 'si** değerini yapıştırın. 
 
-    f. **ad kimliğini** **e-posta olarak seçin (varsayılan)** .
+    f. **ad kimliğini** **e-posta olarak seçin (varsayılan)**.
 
-    örneğin: **Onayla** 'ya tıklayın.
+    örneğin: **Onayla**'ya tıklayın.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
 Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
 
-1. Azure portal, sol bölmedeki **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
+1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 
     !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
 
@@ -176,21 +176,21 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur** 'a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, çalışma yıldızlara erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon özelliğini etkinleştirin.
 
-1. Azure portal **Kurumsal uygulamalar** ' ı seçin, **tüm uygulamalar** ' ı seçin ve ardından **çalışma** yıldızı ' nı seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **çalışma** yıldızı ' nı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **çalışma yıldızlar** ' yı seçin.
+2. Uygulamalar listesinde, **çalışma yıldızlar**' yı seçin.
 
     ![Uygulamalar listesindeki Iş yıldızları bağlantısı](common/all-applications.png)
 
-3. Soldaki menüde **Kullanıcılar ve gruplar** ' ı seçin.
+3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 

@@ -4,10 +4,10 @@ description: RDP bağlantı noktasını açığa çıkarmak zorunda kalmadan lab
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: dcf5191dea64c3d7bf28b9ce1c616d3d2defb73e
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97695687"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>Azure DevTest Labs ' de laboratuvarınızı Uzak Masaüstü Ağ geçidini kullanacak şekilde yapılandırma

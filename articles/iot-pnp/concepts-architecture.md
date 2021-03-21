@@ -10,15 +10,15 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
 ms.openlocfilehash: 2cccb1fdfe775250f80da6cc2ecdcc4ddaa3d88e
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95484092"
 ---
 # <a name="iot-plug-and-play-architecture"></a>IoT Tak Çalıştır mimarisi
 
-IoT Tak ve Kullan, çözüm oluşturucuların akıllı cihazları el ile herhangi bir yapılandırma olmadan çözümleriyle tümleştirmelerini sağlar. IoT Tak ve Kullan 'ın temel tarafında, IoT Tak ve Kullan özellikli bir uygulama için bir cihazın yeteneklerini açıklayan bir cihaz _modelidir_ . Bu model, şunları tanımlayan bir arabirimler kümesi olarak yapılandırılmıştır:
+IoT Tak Çalıştır çözüm oluşturucularının el ile hiçbir yapılandırma gerçekleştirmeden akıllı cihazları kendi çözümlerine tümleştirmesine olanak tanır. IoT Tak ve Kullan 'ın temel tarafında, IoT Tak ve Kullan özellikli bir uygulama için bir cihazın yeteneklerini açıklayan bir cihaz _modelidir_ . Bu model, şunları tanımlayan bir arabirimler kümesi olarak yapılandırılmıştır:
 
 - Bir cihazın veya diğer varlıkların salt okunurdur veya yazılabilir durumunu temsil eden _özelliklerdir_ . Örneğin, bir cihaz seri numarası salt okunurdur ve bir termostat üzerinde hedef sıcaklık yazılabilir bir özellik olabilir.
 - Bir cihaz _tarafından yayılan,_ verilerin düzenli algılayıcı okumalar, zaman zaman hatası veya bilgi iletisi olup olmadığı.

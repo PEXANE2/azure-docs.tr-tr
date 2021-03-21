@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
 ms.openlocfilehash: 9cd5136d69e4b14aa50a96d20f3187ce88db6e96
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92320486"
 ---
 # <a name="what-is-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemesi nedir?
@@ -44,7 +44,7 @@ Statik Web Apps, statik varlıklar geleneksel bir Web sunucusundan ayrılır ve 
 
 ## <a name="what-you-can-do-with-static-web-apps"></a>Statik Web Apps ile yapabilecekleriniz
 
-- JavaScript çerçeveleri ve bir [Azure işlevleri](apis.md) arka ucu Ile WebAssembly uygulamaları [React](getting-started.md?tabs=react)oluşturmak Için [Svelte](/learn/modules/publish-app-service-static-web-app-api/) [Blazor](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor) [kullanma gibi](getting-started.md?tabs=angular)JavaScript [Vue](getting-started.md?tabs=react)çerçeveleri ve kitaplıkları ile **Modern Web uygulamaları** oluşturun.
+- JavaScript çerçeveleri ve bir [Azure işlevleri](apis.md) arka ucu Ile WebAssembly uygulamaları [](getting-started.md?tabs=react)oluşturmak Için [](/learn/modules/publish-app-service-static-web-app-api/) [Blazor](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor) [kullanma gibi](getting-started.md?tabs=angular)JavaScript [](getting-started.md?tabs=react)çerçeveleri ve kitaplıkları ile **Modern Web uygulamaları** oluşturun.
 - [Gatsby](publish-gatsby.md), [kugo](publish-hugo.md), [vuepress](publish-vuepress.md)gibi çerçeveler ile **statik siteler yayımlayın** .
 - [Next.js](deploy-nextjs.md) ve [Nuxt.js](deploy-nuxtjs.md)gibi çerçeveler ile **Web uygulamaları dağıtın** .
 

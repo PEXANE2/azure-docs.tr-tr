@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/27/2020
 ms.author: tomfitz
 ms.openlocfilehash: 3e8bdd85c112d90fd5e10f6e65e48ca6b3f71b6e
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94410751"
 ---
 # <a name="createuidefinition-elements"></a>Createuıdefinition öğeleri
@@ -35,14 +35,14 @@ Bu makalede bir Createuıdefinition öğesinin tüm desteklenen öğelerinin şe
 
 | Özellik | Gerekli | Açıklama |
 | -------- | -------- | ----------- |
-| name | Evet | Bir öğenin belirli bir örneğine başvurmak için bir iç tanımlayıcı. Öğe adının en yaygın kullanımı, `outputs` belirtilen öğelerin çıkış değerlerinin şablonun parametreleriyle eşlendiği yerdir. Ayrıca, bir öğenin çıkış değerini başka bir öğenin öğesine bağlamak için de kullanabilirsiniz `defaultValue` . |
-| tür | Evet | Öğesi için işlenecek Kullanıcı arabirimi denetimi. Desteklenen türlerin listesi için bkz. [öğeleri](#elements). |
-| etiket | Evet | Öğenin görüntüleme metni. Bazı öğe türleri birden çok etiket içerir, bu nedenle değer birden fazla dize içeren bir nesne olabilir. |
-| Değerinin | Hayır | Öğesinin varsayılan değeri. Bazı öğe türleri karmaşık varsayılan değerleri destekler, bu yüzden değer bir nesne olabilir. |
-| Ipucuna | Hayır | Öğenin araç ipucunda görüntülenecek metin. Benzer şekilde `label` , bazı öğeler birden çok araç ipucu dizesini destekler. Satır içi bağlantılar markın sözdizimi kullanılarak gömülebilir.
-| kısıtlamaları | Hayır | Öğesinin doğrulama davranışını özelleştirmek için kullanılan bir veya daha fazla özellik. Kısıtlamaların desteklenen özellikleri öğe türüne göre farklılık gösterir. Bazı öğe türleri doğrulama davranışının özelleştirilmesini desteklemez ve bu nedenle kısıtlama özelliğine sahip değildir. |
-| seçenekler | Hayır | Öğesinin davranışını özelleştiren ek özellikler. Benzer şekilde `constraints` , desteklenen özellikler öğe türüne göre farklılık gösterir. |
-| görüne | Hayır | Öğenin görüntülenip görüntülenmeyeceğini gösterir. İse `true` , öğesi ve ilgili alt öğeleri görüntülenir. `true` varsayılan değerdir. Bu özelliğin değerini dinamik olarak denetlemek için [mantıksal işlevleri](create-uidefinition-functions.md#logical-functions) kullanın.
+| name | Yes | Bir öğenin belirli bir örneğine başvurmak için bir iç tanımlayıcı. Öğe adının en yaygın kullanımı, `outputs` belirtilen öğelerin çıkış değerlerinin şablonun parametreleriyle eşlendiği yerdir. Ayrıca, bir öğenin çıkış değerini başka bir öğenin öğesine bağlamak için de kullanabilirsiniz `defaultValue` . |
+| tür | Yes | Öğesi için işlenecek Kullanıcı arabirimi denetimi. Desteklenen türlerin listesi için bkz. [öğeleri](#elements). |
+| etiket | Yes | Öğenin görüntüleme metni. Bazı öğe türleri birden çok etiket içerir, bu nedenle değer birden fazla dize içeren bir nesne olabilir. |
+| Değerinin | No | Öğesinin varsayılan değeri. Bazı öğe türleri karmaşık varsayılan değerleri destekler, bu yüzden değer bir nesne olabilir. |
+| Ipucuna | No | Öğenin araç ipucunda görüntülenecek metin. Benzer şekilde `label` , bazı öğeler birden çok araç ipucu dizesini destekler. Satır içi bağlantılar markın sözdizimi kullanılarak gömülebilir.
+| kısıtlamaları | No | Öğesinin doğrulama davranışını özelleştirmek için kullanılan bir veya daha fazla özellik. Kısıtlamaların desteklenen özellikleri öğe türüne göre farklılık gösterir. Bazı öğe türleri doğrulama davranışının özelleştirilmesini desteklemez ve bu nedenle kısıtlama özelliğine sahip değildir. |
+| seçenekler | No | Öğesinin davranışını özelleştiren ek özellikler. Benzer şekilde `constraints` , desteklenen özellikler öğe türüne göre farklılık gösterir. |
+| görüne | No | Öğenin görüntülenip görüntülenmeyeceğini gösterir. İse `true` , öğesi ve ilgili alt öğeleri görüntülenir. `true` varsayılan değerdir. Bu özelliğin değerini dinamik olarak denetlemek için [mantıksal işlevleri](create-uidefinition-functions.md#logical-functions) kullanın.
 
 ## <a name="elements"></a>Öğeler
 

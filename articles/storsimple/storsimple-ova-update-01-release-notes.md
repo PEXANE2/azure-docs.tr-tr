@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/16/2016
 ms.author: alkohli
 ms.openlocfilehash: 67d3fafb9b4b93ae52bdb09d673bf65cad30b816
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94966165"
 ---
 # <a name="storsimple-virtual-array-update-02-and-01-release-notes"></a>StorSimple Sanal dizisi güncelleştirme 0,2 ve 0,1 sürüm notları
@@ -37,7 +37,7 @@ Güncelleştirme 0,2, yazılım sürümü **10.0.10280.0**'a karşılık gelir; 
 ## <a name="issues-fixed-in-the-update-02"></a>Güncelleştirme 0,2 ' de düzeltilen sorunlar
 Güncelleştirme 0,2, aşağıdaki tabloda açıklanan düzeltmeyle Ayrıca güncelleştirme 0,1 ' deki tüm değişiklikleri içerir:
 
-| Öne çıkan özelliği | Sorun |
+| Özellik | Sorun |
 | --- | --- |
 | Güncelleştirmeler |Son sürümde, güncelleştirmeler klasik Azure portalında otomatik olarak algılanmadı, bu nedenle güncelleştirmeleri yüklemek için yerel Web Kullanıcı arabirimini kullanmanız gerekiyordu. Bu sorun bu sürümde düzeltilmiştir. Güncelleştirme 0,2 ' i yükledikten sonra, klasik Azure portalını kullanarak gelecekteki güncelleştirmeleri yükleyebilirsiniz. |
 
@@ -54,7 +54,7 @@ Güncelleştirme 0,1 aşağıdaki hata düzeltmelerini ve geliştirmeleri içeri
 ## <a name="issues-fixed-in-the-update-01"></a>Güncelleştirme 0,1 ' de düzeltilen sorunlar
 Aşağıdaki tabloda, bu sürümde düzeltilen sorunların bir özeti verilmiştir.
 
-| Hayır. | Öne çıkan özelliği | Sorun |
+| Hayır. | Özellik | Sorun |
 | --- | --- | --- |
 | 1 |VMDK |Bazı VMware sürümlerinde, işletim sistemi diski, uyarılara neden olan seyrek, normal işlemleri kesintiye neden olarak görüldü. Bu sürümde düzeltildi. |
 | 2 |Iscsı sunucusu |Son sürümde, kullanıcının StorSimple Sanal cihazınızın etkin olan her ağ arabirimi için bir ağ geçidi belirtmesi gerekiyordu. Bu davranış, kullanıcının etkinleştirilmiş tüm ağ arabirimleri için en az bir ağ geçidi yapılandırması gereken şekilde bu sürümde değiştirilmiştir. |
@@ -65,7 +65,7 @@ Aşağıdaki tabloda, bu sürümde düzeltilen sorunların bir özeti verilmişt
 ## <a name="known-issues-in-the-update-01"></a>Güncelleştirme 0,1 ' de bilinen sorunlar
 Aşağıdaki tabloda, StorSimple Sanal dizisi için bilinen sorunların özeti verilmiştir ve önceki sürümlerden gelen sorunlar sürümü dahildir. **Bu sürümde not edilen sorunlar sürümü bir yıldız işaretiyle işaretlenir. Bu listedeki tüm sorunlar, StorSimple Sanal dizisinin GA sürümünden daha fazla taşınır.**
 
-| Hayır. | Öne çıkan özelliği | Sorun | Geçici çözüm/açıklamalar |
+| Hayır. | Özellik | Sorun | Geçici çözüm/açıklamalar |
 | --- | --- | --- | --- |
 | **1.** |Güncelleştirmeler |Önizleme sürümünde oluşturulan sanal cihazlar desteklenen bir genel kullanılabilirlik sürümüne güncelleştirilemez. |Bu sanal cihazlar, olağanüstü durum kurtarma (DR) iş akışı kullanan genel kullanılabilirlik sürümü için yük devretmelidir. |
 | **2.** |Sağlanan veri diski |Belirtilen boyutta bir veri diski sağladıktan ve karşılık gelen StorSimple Sanal cihazını oluşturduktan sonra, veri diskini genişletmemelidir veya küçültmemelidir. Bunun denenmesi, cihazın yerel katmanlarında tüm verilerin kaybedilmesine neden olur. | |

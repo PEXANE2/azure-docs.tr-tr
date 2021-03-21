@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: Zhchia
 ms.openlocfilehash: da6e1a8ba31f8f4991bde4803191598a015a68b3
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94358450"
 ---
 # <a name="tutorial-configure-oracle-fusion-erp-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Oracle Fusion ERP 'yi yapılandırma
@@ -54,7 +54,7 @@ Oracle Fusion ERP 'yi Azure AD ile otomatik Kullanıcı sağlaması için yapıl
 
 1. [Oracle FUSION ERP Yönetici konsolunuza](https://cloud.oracle.com/sign-in) oturum açın
 
-2. Sol üst köşedeki Gezgin ' e tıklayın. **Araçlar** altında **Güvenlik Konsolu** ' nu seçin.
+2. Sol üst köşedeki Gezgin ' e tıklayın. **Araçlar** altında **Güvenlik Konsolu**' nu seçin.
 
     :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/login.png" alt-text="Oracle Fusion E R P yönetim konsolundaki gezgin sayfasının ekran görüntüsü. Araçlar ve Güvenlik Konsolu vurgulanır." border="false":::
 
@@ -70,11 +70,11 @@ Oracle Fusion ERP 'yi Azure AD ile otomatik Kullanıcı sağlaması için yapıl
 
 **Azure AD Uygulama Galerisi 'nden Oracle Fusion ERP eklemek için aşağıdaki adımları uygulayın:**
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** ' i seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
+2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -98,11 +98,11 @@ Bu bölümde, Azure AD sağlama hizmetini kullanarak Oracle Fusion ERP 'deki kul
 
 ### <a name="to-configure-automatic-user-provisioning-for-fuze-in-azure-ad"></a>Azure AD 'de belirsizlik için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Oracle FUSION ERP** ' yi seçin.
+2. Uygulamalar listesinde **Oracle FUSION ERP**' yi seçin.
 
     ![Uygulamalar listesinde Oracle Fusion ERP bağlantısı](common/all-applications.png)
 
@@ -110,7 +110,7 @@ Bu bölümde, Azure AD sağlama hizmetini kullanarak Oracle Fusion ERP 'deki kul
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
@@ -118,13 +118,13 @@ Bu bölümde, Azure AD sağlama hizmetini kullanarak Oracle Fusion ERP 'deki kul
 
     :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/admin.png" alt-text="Yönetici kimlik bilgileri bölümünün ekran görüntüsü. Bir kiracı U R L, Yönetici Kullanıcı adı ve yönetici parolası için bir test bağlantısı düğmesi ve alanları görünür." border="false":::
 
-6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder** ' i işaretleyin.
+6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet** ’e tıklayın.
+7. **Kaydet**’e tıklayın.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory KULLANıCıLARı Oracle Fusion ERP ile eşitler** ' ı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory KULLANıCıLARı Oracle Fusion ERP ile eşitler**' ı seçin.
 
     :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/user-mapping.png" alt-text="Eşlemeler bölümünün ekran görüntüsü. Ad ' ın altında, Azure Active Directory Kullanıcıları Oracle Fusion E R P ile eşitler." border="false":::
 
@@ -132,7 +132,7 @@ Bu bölümde, Azure AD sağlama hizmetini kullanarak Oracle Fusion ERP 'deki kul
 
     :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/user-attribute.png" alt-text="Öznitelik eşlemeleri sayfasının ekran görüntüsü. Bir tablo Azure Active Directory ve Oracle Fusion E R P özniteliklerini ve eşleşen önceliği listeler." border="false":::
 
-10. **Eşlemeler** bölümünde, **Azure Active Directory GRUPLARıNı Oracle Fusion ERP ile eşitler** ' ı seçin.
+10. **Eşlemeler** bölümünde, **Azure Active Directory GRUPLARıNı Oracle Fusion ERP ile eşitler**' ı seçin.
 
     ![Oracle Fusion ERP grup eşlemeleri](media/oracle-fusion-erp-provisioning-tutorial/groupmappings.png)
 
@@ -150,7 +150,7 @@ Bu bölümde, Azure AD sağlama hizmetini kullanarak Oracle Fusion ERP 'deki kul
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-15. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
+15. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

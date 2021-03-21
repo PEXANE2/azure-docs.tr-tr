@@ -12,10 +12,10 @@ ms.author: sachinp
 ms.reviewer: sstein
 ms.date: 07/28/2020
 ms.openlocfilehash: d87c5d162b96209c0ce3d3276dc518f42373590f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92780821"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>DTU satın alma modelini kullanarak elastik havuzlar için kaynak limitleri
@@ -30,7 +30,7 @@ Bu makalede, DTU satın alma modelini kullanan bir elastik havuzda Azure SQL ver
 
 Azure SQL veritabanı elastik havuzlar için aşağıdaki tablolarda, her bir hizmet katmanında ve işlem boyutunda kullanılabilen kaynaklar gösterilmektedir. Kullanarak hizmet katmanını, işlem boyutunu ve depolama miktarını ayarlayabilirsiniz:
 
-* [Azure Portal](elastic-pool-manage.md#azure-portal)
+* [Azure portalı](elastic-pool-manage.md#azure-portal)
 * [PowerShell](elastic-pool-manage.md#powershell)
 * [Azure CLI](elastic-pool-manage.md#azure-cli)
 * [REST API](elastic-pool-manage.md#rest-api).

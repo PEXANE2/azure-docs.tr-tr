@@ -12,17 +12,17 @@ ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: duau
 ms.openlocfilehash: 1835377f4690097c8390957bf7d897242ba7aace
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92208065"
 ---
 # <a name="tutorial-configure-priority-traffic-routing-method-in-traffic-manager"></a>Öğretici: Traffic Manager 'de öncelik trafiği yönlendirme yöntemini yapılandırma
 
 Bu öğreticide, öncelik yönlendirme yöntemi kullanılarak kullanıcı trafiğini belirli uç noktalara yönlendirmek için Azure Traffic Manager nasıl kullanılacağı açıklanmaktadır. Bu yönlendirme yönteminde, Traffic Manager profil yapılandırmasına giden her bir uç noktanın sırasını tanımlayacaksınız. Kullanıcılardan gelen trafik, listelendikleri sırada uç noktaya yönlendirilir. Bu yönlendirme yöntemi, hizmet yük devretmesi için yapılandırmak istediğinizde yararlıdır. Birincil uç nokta, ' 1 ' öncelik sayısını alır ve tüm gelen isteklere hizmet eder. Düşük öncelikli uç noktalar yedekleme görevi görür.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > - Öncelik yönlendirmeye sahip bir Traffic Manager profili oluşturun.
@@ -53,17 +53,17 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. Traffic Manager profilinizi dağıtmak için **Oluştur** ' u seçin.
 
-    :::image type="content" source="./media/traffic-manager-priority-routing-method/create-traffic-manager-profile-priority.png" alt-text="Traffic Manager öncelik profili oluşturma":::
+    :::image type="content" source="./media/traffic-manager-priority-routing-method/create-traffic-manager-profile-priority.png" alt-text="Traffic Manager profili önceliği oluşturma":::
 
 ## <a name="add-endpoints"></a>Uç nokta Ekle
 
 1. Listeden Traffic Manager profilini seçin.
 
-    :::image type="content" source="./media/traffic-manager-priority-routing-method/traffic-manager-profile-list.png" alt-text="Traffic Manager öncelik profili oluşturma":::
+    :::image type="content" source="./media/traffic-manager-priority-routing-method/traffic-manager-profile-list.png" alt-text="Traffic Manager profili listesi":::
 
 1. *Ayarlar* altındaki **uç noktaları** seçin ve yeni bir uç nokta eklemek için **+ Ekle** ' yi seçin.
 
-    :::image type="content" source="./media/traffic-manager-priority-routing-method/traffic-manager-add-endpoints.png" alt-text="Traffic Manager öncelik profili oluşturma":::
+    :::image type="content" source="./media/traffic-manager-priority-routing-method/traffic-manager-add-endpoints.png" alt-text="Uç nokta eklemek Traffic Manager":::
 
 1. Aşağıdaki ayarları seçin veya girin: 
 
@@ -78,11 +78,11 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. Uç noktayı eklemek için **Ekle** ' yi seçin. Ek uç noktaları eklemek için adım 2 ve 3 ' ü tekrarlayın. Uygun öncelik numarasını ayarlamayı unutmayın.
 
-    :::image type="content" source="./media/traffic-manager-priority-routing-method/add-endpoint.png" alt-text="Traffic Manager öncelik profili oluşturma":::
+    :::image type="content" source="./media/traffic-manager-priority-routing-method/add-endpoint.png" alt-text="Öncelik 1 uç noktası ekle":::
 
 1. **Uç noktalar** sayfasında, uç noktalarınız için öncelik sırasını gözden geçirin. **Öncelik** trafiği yönlendirme yöntemini seçtiğinizde, seçilen uç noktaların sırası önemlidir. Uç noktaların öncelik sırasını doğrulayın.  Birincil uç nokta en üstte. Görüntülenme sırasını iki kez kontrol edin. Tüm istekler ilk uç noktaya yönlendirilir ve Traffic Manager sağlıksız olduğunu algılarsa trafik otomatik olarak sonraki uç noktaya devreder. 
 
-    :::image type="content" source="./media/traffic-manager-priority-routing-method/endpoints-list.png" alt-text="Traffic Manager öncelik profili oluşturma":::
+    :::image type="content" source="./media/traffic-manager-priority-routing-method/endpoints-list.png" alt-text="Öncelik uç noktaları listesi":::
 
 1. Uç nokta öncelik sırasını değiştirmek için uç noktayı seçin, öncelik değerini değiştirin ve uç nokta ayarlarını kaydetmek için **Kaydet** ' i seçin.
 
@@ -90,11 +90,11 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1.  Portalın arama çubuğunda, önceki bölümde oluşturduğunuz **Traffic Manager profili** adını arayın ve görüntülenen sonuçlarda Traffic Manager profili ' ni seçin.
 
-    :::image type="content" source="./media/traffic-manager-priority-routing-method/search-traffic-manager-profile.png" alt-text="Traffic Manager öncelik profili oluşturma":::
+    :::image type="content" source="./media/traffic-manager-priority-routing-method/search-traffic-manager-profile.png" alt-text="Traffic Manager profili ara":::
 
 1.  **Traffic Manager profile** genel bakış sayfası, yeni oluşturduğunuz TRAFFIC Manager profilinizin DNS adını görüntüler. Bu, yönlendirme türü tarafından belirlendiği şekilde doğru uç noktaya yönlendirilmek için herhangi bir istemci tarafından (örneğin, bir Web tarayıcısı kullanılarak gezinilirken) kullanılabilir. Bu durumda, tüm istekler ilk uç noktaya yönlendirilir ve Traffic Manager sağlıksız olduğunu algılarsa trafik otomatik olarak sonraki uç noktaya devreder.
 
-    :::image type="content" source="./media/traffic-manager-priority-routing-method/traffic-manager-profile-dns-name.png" alt-text="Traffic Manager öncelik profili oluşturma":::
+    :::image type="content" source="./media/traffic-manager-priority-routing-method/traffic-manager-profile-dns-name.png" alt-text="Traffic Manager DNS adı":::
 
 1. Traffic Manager profiliniz çalışmaya başladıktan sonra, yetkili DNS sunucunuzdaki DNS kaydını düzenleyerek şirket etki alanı adınızı Traffic Manager etki alanı adına getirin.
 
@@ -102,7 +102,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Traffic Manager profile artık ihtiyacınız yoksa, profili bulun ve **Profili Sil**' i seçin.
 
-:::image type="content" source="./media/traffic-manager-priority-routing-method/traffic-manager-delete-priority-profile.png" alt-text="Traffic Manager öncelik profili oluşturma":::
+:::image type="content" source="./media/traffic-manager-priority-routing-method/traffic-manager-delete-priority-profile.png" alt-text="Traffic Manager öncelik profilini Sil":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

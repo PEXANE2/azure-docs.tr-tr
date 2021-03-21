@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.openlocfilehash: e00090fc31c129f35632d30b9a5ed6c39c13a414
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100385260"
 ---
 # <a name="validation-activity-in-azure-data-factory"></a>Azure Data Factory doğrulama etkinliği
@@ -71,7 +71,7 @@ minimumSize | Bir dosyanın bayt cinsinden en küçük boyutu. Değer belirtilme
 Data Factory tarafından desteklenen diğer denetim akışı etkinliklerini görün:
 
 - [If Condition Etkinliği](control-flow-if-condition-activity.md)
-- [İşlem Hattı Çalıştırma Etkinliği](control-flow-execute-pipeline-activity.md)
+- [İşlem hattı yürütme etkinliği](control-flow-execute-pipeline-activity.md)
 - [Her Bir Etkinlik için](control-flow-for-each-activity.md)
 - [Meta Veri Alma Etkinliği](control-flow-get-metadata-activity.md)
 - [Arama Etkinliği](control-flow-lookup-activity.md)

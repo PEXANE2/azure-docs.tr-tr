@@ -9,10 +9,10 @@ ms.date: 10/19/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 3c825f042bb3e7fee5c00a8b34c12ca2d05f8d2e
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92217986"
 ---
 Azure portalında, bağlantıya giderek bir Resource Manager VPN Gateway bağlantısının durumunu görüntüleyebilirsiniz. Aşağıdaki adımlarda, bağlantınıza gitmek ve doğrulamak için bir yol gösterilmiştir.
@@ -22,6 +22,6 @@ Azure portalında, bağlantıya giderek bir Resource Manager VPN Gateway bağlan
 
    :::image type="content" source="./media/vpn-gateway-verify-connection-portal-rm-include/connections.png" alt-text="Bağlantıları görüntüle" lightbox="./media/vpn-gateway-verify-connection-portal-rm-include/connections-expand.png":::
 
-1. Doğrulamak istediğiniz bağlantının adına tıklayın. **Temel parçalar**bölümünde bağlantınız hakkında daha fazla bilgi görüntüleyebilirsiniz. Başarılı bir bağlantı yaptığınızda **durum** değerleri ' başarılı ' ve ' bağlı ' olur.
+1. Doğrulamak istediğiniz bağlantının adına tıklayın. **Temel parçalar** bölümünde bağlantınız hakkında daha fazla bilgi görüntüleyebilirsiniz. Başarılı bir bağlantı yaptığınızda **durum** değerleri ' başarılı ' ve ' bağlı ' olur.
 
-   :::image type="content" source="./media/vpn-gateway-verify-connection-portal-rm-include/essentials.png" alt-text="Bağlantıları görüntüle" lightbox="./media/vpn-gateway-verify-connection-portal-rm-include/essentials-expand.png":::
+   :::image type="content" source="./media/vpn-gateway-verify-connection-portal-rm-include/essentials.png" alt-text="Bağlantıları doğrula" lightbox="./media/vpn-gateway-verify-connection-portal-rm-include/essentials-expand.png":::

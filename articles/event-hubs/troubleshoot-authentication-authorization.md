@@ -4,10 +4,10 @@ description: Bu makale, Azure Event Hubs kimlik doğrulama ve yetkilendirme soru
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 368fd8efda1b828f99bc41da0743768989c1a601
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92329619"
 ---
 # <a name="troubleshoot-authentication-and-authorization-issues---azure-event-hubs"></a>Kimlik doğrulama ve yetkilendirme sorunlarını giderme-Azure Event Hubs
@@ -41,7 +41,7 @@ Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 - Kullandığınız SAS anahtarının doğru olduğundan emin olun. Aksi takdirde, doğru SAS anahtarını kullanın.
 - Anahtarın doğru izinlere sahip olduğunu doğrulayın (gönderme, alma veya yönetme). Aksi takdirde, gerekli izne sahip bir anahtar kullanın. 
 - Anahtarın süresi dolmuşsa emin olun. Süre sonundan önce SAS 'yı yenilemeniz önerilir. İstemci ile Event Hubs hizmet düğümleri arasında saat çarpıklığı varsa, istemci onu yeniden oluşturmadan önce kimlik doğrulama belirtecinin kullanım süresini dolabilirler. Geçerli uygulama hesapları saati 5 dakikaya kadar eğit, diğer bir deyişle istemci süresi dolmadan 5 dakika önce bu belirteci yeniler. Bu nedenle, saat çarpıklığı 5 dakikadan büyükse, istemci aralıklı kimlik doğrulama başarısızlıklarını gözlemleyebilirsiniz.
-- **SAS başlangıç zamanı** **Şu anda**olarak ayarlandıysa, saat farkı (farklı makinelerde geçerli zaman farkları) nedeniyle ilk birkaç dakika boyunca aralıklı hatalarla karşılaşabilirsiniz. Başlangıç saatini geçmişte en az 15 dakika olacak şekilde ayarlayın veya hiç ayarlanmayın. Aynı genellikle süre sonu zamanı için de geçerlidir. 
+- **SAS başlangıç zamanı** **Şu anda** olarak ayarlandıysa, saat farkı (farklı makinelerde geçerli zaman farkları) nedeniyle ilk birkaç dakika boyunca aralıklı hatalarla karşılaşabilirsiniz. Başlangıç saatini geçmişte en az 15 dakika olacak şekilde ayarlayın veya hiç ayarlanmayın. Aynı genellikle süre sonu zamanı için de geçerlidir. 
 
 Daha fazla bilgi için aşağıdaki makaleleri inceleyin: 
 

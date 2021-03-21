@@ -8,10 +8,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 07/22/2020
 ms.openlocfilehash: bff20468e8185073f5c192c1e115bc405dd089eb
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97693612"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Power BI uygulaması teklifi oluşturma
@@ -141,10 +141,10 @@ Teklif bilgilerinin Microsoft AppSource nasıl göründüğünü gösteren bir �
 7. Gizlilik ilkesi
 8. Teklif adı
 9. Özet
-10. Açıklama
+10. Description
 11. Ekran görüntüleri/videolar
 
-### <a name="name"></a>Ad
+### <a name="name"></a>Name
 
 Buraya girdiğiniz ad teklifinizin başlığı olarak görüntülenir. Bu alan, teklifi oluştururken **teklif diğer adı** kutusuna girdiğiniz metin ile önceden doldurulur. Bu adı daha sonra değiştirebilirsiniz.
 
@@ -158,7 +158,7 @@ Ad:
 
 Teklifinizin kısa bir açıklamasını sağlayın. Bu, 100 karakter uzunluğunda olabilir ve Market arama sonuçlarında kullanılır.
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 

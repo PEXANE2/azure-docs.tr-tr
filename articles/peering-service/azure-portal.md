@@ -11,10 +11,10 @@ ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
 ms.openlocfilehash: 62210105ba4ba84cff4b246c5b7cf8cc794fb5e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91534956"
 ---
 # <a name="register-peering-service-by-using-the-azure-portal"></a>Eşleme hizmetini Azure portal kullanarak kaydedin
@@ -27,7 +27,7 @@ Azure aboneliğiniz yoksa, şimdi bir [Hesap](https://azure.microsoft.com/free/?
 
 > 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Aşağıdakilere sahip olmanız gerekir:
 
@@ -49,7 +49,7 @@ Bir tarayıcıdan Azure portal gidin ve Azure hesabınızla oturum açın.
 
 ## <a name="register-a-peering-service-connection"></a>Eşleme Hizmeti bağlantısını kaydetme
 
-1. Bir eşleme hizmeti bağlantısı kaydetmek için **kaynak**  >  **eşleme hizmeti**oluştur ' u seçin.
+1. Bir eşleme hizmeti bağlantısı kaydetmek için **kaynak**  >  **eşleme hizmeti** oluştur ' u seçin.
 
     ![Eşleme Hizmeti'ni kaydetme](./media/peering-service-portal/peering-servicecreate.png)
 1. **Eşleme hizmeti bağlantısı oluşturma** sayfasındaki **temel bilgiler** sekmesinde aşağıdaki ayrıntıları girin.

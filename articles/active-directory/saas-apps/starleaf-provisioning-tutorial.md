@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/19/2019
 ms.author: zhchia
 ms.openlocfilehash: 07c476c0de644ac63c577d466f4691b5cf415334
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94357951"
 ---
 # <a name="tutorial-configure-starleaf-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Staryaprak yapılandırma
@@ -54,7 +54,7 @@ Azure AD ile otomatik Kullanıcı sağlaması için Staryaprak yapılandırmadan
 
     ![Tümleştirmelerle birlikte Staryaprak yönetici konsolunun ekran görüntüsü ve olarak adlandırılan tümleştirme seçenekleri ekleyin.](media/starleaf-provisioning-tutorial/image00.png)
 
-2. Microsoft Azure Active Directory istediğiniz **türü** seçin. **Ada** uygun bir ad girin. **Uygula** 'ya tıklayın.
+2. Microsoft Azure Active Directory istediğiniz **türü** seçin. **Ada** uygun bir ad girin. **Uygula**’ya tıklayın.
 
     ![Tür ve ad metin kutuları olarak adlandırılan tümleştirme Ekle iletişim kutusunun ekran görüntüsü.](media/starleaf-provisioning-tutorial/image01.png)
 
@@ -68,11 +68,11 @@ Staryaprak 'u Azure AD ile otomatik Kullanıcı sağlaması için yapılandırma
 
 **Azure AD Uygulama Galerisi 'nden Staryaprak eklemek için aşağıdaki adımları uygulayın:**
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** ' i seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
+2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -87,11 +87,11 @@ Staryaprak 'u Azure AD ile otomatik Kullanıcı sağlaması için yapılandırma
 
 Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarına göre Staryaprak 'da kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak için Azure AD sağlama hizmetini yapılandırma adımlarında size kılavuzluk eder.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Staryaprak** ' u seçin.
+2. Uygulamalar listesinde, **Staryaprak**' u seçin.
 
     ![Uygulamalar listesindeki Staryaprak bağlantısı](common/all-applications.png)
 
@@ -99,7 +99,7 @@ Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarına göre Staryapra
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
@@ -111,9 +111,9 @@ Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarına göre Staryapra
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet** ’e tıklayın.
+7. **Kaydet**’e tıklayın.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Staryaprak olarak eşitler** ' ı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Staryaprak olarak eşitler**' ı seçin.
 
     ![Azure Active Directory kullanıcılarını Staryaprak 'a eşitlemeyi gösteren eşlemeler bölümünün ekran görüntüsü.](media/starleaf-provisioning-tutorial/usermapping.png)
 
@@ -133,7 +133,7 @@ Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarına göre Staryapra
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-13. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
+13. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

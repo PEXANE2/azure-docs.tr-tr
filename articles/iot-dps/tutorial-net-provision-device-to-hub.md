@@ -10,10 +10,10 @@ services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc, devx-track-csharp
 ms.openlocfilehash: f9a14ee6ee3e10b36d64ec11fc23807efe2bfaf2
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94966573"
 ---
 # <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Öğretici: Azure IoT Hub sağlama hizmeti Istemcisini (.NET) kullanarak bir IoT Hub 'ına cihaz kaydetme
@@ -25,7 +25,7 @@ ms.locfileid: "94966573"
 > * Cihazı başlatın
 > * Cihaz kayıtlı olduğunu doğrulayın
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Devam etmeden önce, [Azure IoT Hub Cihazı Sağlama Hizmeti’ni kullanarak bir cihazı sağlamak üzere ayarlama](./tutorial-set-up-device.md) öğreticisinde açıklandığı gibi cihazınızı ve *Donanım Güvenliği Modülünü* yapılandırdığınızdan emin olun.
 

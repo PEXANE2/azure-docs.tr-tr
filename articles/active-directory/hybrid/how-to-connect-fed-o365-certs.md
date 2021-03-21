@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: effdd156858caf5717aac92433e8bc5f4f6147ad
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101686878"
 ---
 # <a name="renew-federation-certificates-for-microsoft-365-and-azure-active-directory"></a>Microsoft 365 ve Azure Active Directory için Federasyon sertifikalarını yenileme
@@ -108,7 +108,7 @@ Get-MsolFederationProperty veya Get-Adfscercertificate 'ın çıktısında, "son
 |:---:|:---:|:---:|:---:|:---:|
 | Yes |Yes |Yes |- |Eyleme gerek yok. Bkz. [belirteç imzalama sertifikasını otomatik olarak yenileme](#autorenew). |
 | Yes |Hayır |- |15 günden az |Hemen yenileyin. Bkz. [belirteç imzalama sertifikasını el Ile yenileme](#manualrenew). |
-| Hayır |- |- |30 günden az |Hemen yenileyin. Bkz. [belirteç imzalama sertifikasını el Ile yenileme](#manualrenew). |
+| No |- |- |30 günden az |Hemen yenileyin. Bkz. [belirteç imzalama sertifikasını el Ile yenileme](#manualrenew). |
 
 \[-] Önemi yoktur
 

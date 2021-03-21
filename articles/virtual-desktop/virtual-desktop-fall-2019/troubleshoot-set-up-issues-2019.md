@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 8c6d26de62364b6aca671d1e4283a01c1b78c397
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95014841"
 ---
 # <a name="tenant-and-host-pool-creation-in-windows-virtual-desktop-classic"></a>Windows sanal masaüstünde kiracı ve konak havuzu oluşturma (klasik)
@@ -20,13 +20,13 @@ ms.locfileid: "95014841"
 
 Bu makalede, Windows sanal masaüstü kiracısı ve ilgili oturum ana bilgisayar havuzu altyapısının ilk kurulumu sırasında sorunlar ele alınmaktadır.
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 
 Windows Sanal Masaüstü hizmetini ürün ekibi ve etkin topluluk üyeleriyle tartışmak için [Windows sanal masaüstü teknoloji Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) 'yi ziyaret edin.
 
 ## <a name="acquiring-the-windows-10-enterprise-multi-session-image"></a>Windows 10 Enterprise çoklu oturum görüntüsünü edinme
 
-Windows 10 Enterprise çoklu oturum görüntüsünü kullanmak için Azure Marketi ' ne gidin, **Get Started**  >  [sanal masaüstleri, sürüm 1809 için](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice)başlangıç **Microsoft Windows 10** > ve Windows 10 Enterprise ' ı seçin.
+Windows 10 Enterprise çoklu oturum görüntüsünü kullanmak için Azure Marketi ' ne gidin,   >  [sanal masaüstleri, sürüm 1809 için](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice)başlangıç **Microsoft Windows 10** > ve Windows 10 Enterprise ' ı seçin.
 
 > [!div class="mx-imgBorder"]
 > ![Sanal masaüstleri için Windows 10 Enterprise, sürüm 1809 ' ı seçme ekran görüntüsü.](../media/AzureMarketPlace.png)
