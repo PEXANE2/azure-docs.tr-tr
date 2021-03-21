@@ -14,10 +14,10 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 1a56685c830fc7aa717add3e826c68c04449e378
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99580855"
 ---
 # <a name="differences-between-msaljs-and-adaljs"></a>MSAL.js ve ADAL.js arasındaki farklar
@@ -73,7 +73,7 @@ V 2.0 sürümünde, yetkiyi kullanarak `https://login.microsoftonline.com/common
 
 * Artımlı izin için dinamik kapsamlar.
 
-    V 1.0 kullanarak uygulama oluştururken, kullanıcının oturum açma sırasında izin vermesini sağlamak için uygulamanın gerektirdiği tüm izin (statik kapsamlar) kümesini kaydetmeniz gerekir. V 2.0 'da, izinleri istediğiniz zaman istemek için kapsam parametresini kullanabilirsiniz. Bunlara dinamik kapsamlar denir. Bu, kullanıcının kapsamlar için artımlı onay sağlamasına izin verir. Bu nedenle, yalnızca kullanıcının uygulamanızda oturum açmasını istiyor ve herhangi bir erişime ihtiyacınız yoksa, bunu yapabilirsiniz. Daha sonra kullanıcının takvimini okuma olanağına ihtiyacınız varsa, bu durumda acquireToken yöntemlerinde takvim kapsamını isteyebilir ve kullanıcının onay almasını sağlayabilirsiniz. Örneğin:
+    V 1.0 kullanarak uygulama oluştururken, kullanıcının oturum açma sırasında izin vermesini sağlamak için uygulamanın gerektirdiği tüm izin (statik kapsamlar) kümesini kaydetmeniz gerekir. V 2.0 'da, izinleri istediğiniz zaman istemek için kapsam parametresini kullanabilirsiniz. Bunlara dinamik kapsamlar denir. Bu, kullanıcının kapsamlar için artımlı onay sağlamasına izin verir. Bu nedenle, yalnızca kullanıcının uygulamanızda oturum açmasını istiyor ve herhangi bir erişime ihtiyacınız yoksa, bunu yapabilirsiniz. Daha sonra kullanıcının takvimini okuma olanağına ihtiyacınız varsa, bu durumda acquireToken yöntemlerinde takvim kapsamını isteyebilir ve kullanıcının onay almasını sağlayabilirsiniz. Örnek:
 
     ```javascript
     var request = {
@@ -85,7 +85,7 @@ V 2.0 sürümünde, yetkiyi kullanarak `https://login.microsoftonline.com/common
 
 * V 1.0 API 'Leri için kapsamlar
 
-    MSAL.js kullanarak V 1.0 API 'Leri için belirteçler alırken, API `.default` 'Nin uygulama KIMLIĞI URI 'sine kapsam olarak ekleyerek API 'de kayıtlı tüm statik kapsamları isteyebilirsiniz. Örneğin:
+    MSAL.js kullanarak V 1.0 API 'Leri için belirteçler alırken, API `.default` 'Nin uygulama KIMLIĞI URI 'sine kapsam olarak ekleyerek API 'de kayıtlı tüm statik kapsamları isteyebilirsiniz. Örnek:
 
     ```javascript
     var request = {

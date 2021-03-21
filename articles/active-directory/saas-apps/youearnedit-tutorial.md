@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 4a243e662efe85d38ace87c1f6385481d723bedf
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92519138"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-youearnedit"></a>Öğretici: Youkazanydıt ile tümleştirme Azure Active Directory
@@ -61,13 +61,13 @@ Azure AD 'ye Nedıt tümleştirmesi yapılandırmak için, Galeri 'den yönetile
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna istediğiniz gibi, sonuç panelinden **Earnedıt** **' i seçin, sonra**da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
+4. Arama kutusuna istediğiniz gibi, sonuç panelinden **Earnedıt** **' i seçin, sonra** da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
 
      ![Sonuçlar listesinde nedıt 'yi kazannlayou](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre yapılandırma ve test edin.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre yapılandırma ve test edin.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
 Azure AD 'de çoklu oturum açmayı yapılandırmak ve test etmek için şu yapı taşlarını gerçekleştirmeniz gerekir:
@@ -152,9 +152,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.

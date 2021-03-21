@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.custom: mvc, subject-armqs
 ms.date: 05/28/2020
 ms.openlocfilehash: 2e8e7890adcb6b91d79bbf4e119488e365410d3c
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98020086"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak Azure Stream Analytics işi oluşturma
@@ -68,7 +68,7 @@ Bu bölümde ARM şablonunu kullanarak bir Azure Stream Analytics işi oluşturu
 
 Azure Stream Analytics işini denetlemek için Azure portal kullanabilir ya da kaynağı listelemek için aşağıdaki Azure CLı veya Azure PowerShell komut dosyasını kullanabilirsiniz.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 ```azurecli-interactive
 echo "Enter your Azure Stream Analytics job name:" &&
@@ -90,7 +90,7 @@ $resourceGroupName = Read-Host -Prompt "Enter the resource group name where your
 
 Sonraki öğreticilere devam etmeyi planlıyorsanız, bu kaynakları yerinde bırakmak isteyebilirsiniz. Artık gerekli değilse, Azure Stream Analytics işini silen kaynak grubunu silin. Azure CLı veya Azure PowerShell kullanarak kaynak grubunu silmek için:
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&

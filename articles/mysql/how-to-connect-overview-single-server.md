@@ -8,10 +8,10 @@ author: mksuni
 ms.author: sumuth
 ms.date: 09/22/2020
 ms.openlocfilehash: 0414aaad5a1cf6edb9c2152eed70f8753946cca1
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92546441"
 ---
 # <a name="connect-and-query-overview-for-azure-database-for-mysql--single-server"></a>MySQL için Azure veritabanı 'na bağlanma ve sorguya genel bakış-tek sunucu
@@ -20,7 +20,7 @@ Aşağıdaki belge, MySQL tek sunucusu için Azure veritabanı ile bağlanma ve 
 
 ## <a name="quickstarts"></a>Hızlı Başlangıçlar
 
-| Hızlı Başlangıç | Açıklama |
+| Hızlı Başlangıç | Description |
 |---|---|
 |[MySQL çalışma ekranı](connect-workbench.md)|Bu hızlı başlangıçta, MySQL çalışma Istemcisi 'nin bir veritabanına bağlanmak için nasıl kullanılacağı gösterilmektedir. Daha sonra MySQL deyimlerini kullanarak veritabanındaki verileri sorgulama, ekleme, güncelleştirme ve silme yapabilirsiniz.|
 |[Azure Cloud Shell](./quickstart-create-mysql-server-database-using-azure-cli.md#connect-to-azure-database-for-mysql-server-using-mysql-command-line-client)|Bu makalede, sunucunuza bağlanmak ve sonra verileri sorgulamak, eklemek, güncelleştirmek ve silmek için deyimlerini çalıştırmak üzere [Azure Cloud Shell](../cloud-shell/overview.md) **mysql.exe** nasıl çalıştırılacağı gösterilmektedir.|

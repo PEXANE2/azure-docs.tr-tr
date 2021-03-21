@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: cc58689e30e9b03e490c0871f3decd50372371fa
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93421932"
 ---
 # <a name="convert-to-csv-module"></a>CSV modülüne Dönüştür
@@ -46,11 +46,11 @@ Bir veri kümesini CSV 'ye dönüştürdüğünüzde, CSV Azure ML çalışma al
 ### <a name="results"></a>Sonuçlar
   
 
-**CSV 'ye Dönüştür** ' in sağ panelindeki **çıktılar** sekmesini seçin ve **bağlantı noktası çıkışları** altında Bu simgelerden birini seçin.  
+**CSV 'ye Dönüştür**' in sağ panelindeki **çıktılar** sekmesini seçin ve **bağlantı noktası çıkışları** altında Bu simgelerden birini seçin.  
 
-+ **Veri kümesini kaydet** : simgeyi SEÇIN ve CSV dosyasını ayrı bir veri kümesi olarak YENIDEN Azure ML çalışma alanına kaydedin. Veri kümesi, modül ağacında bir modül olarak veri **kümeleri** bölümünün altında bulunabilir.
++ **Veri kümesini kaydet**: simgeyi SEÇIN ve CSV dosyasını ayrı bir veri kümesi olarak YENIDEN Azure ML çalışma alanına kaydedin. Veri kümesi, modül ağacında bir modül olarak veri **kümeleri** bölümünün altında bulunabilir.
 
- + **Çıktıyı görüntüle** : göz simgesini seçin ve **Results_dataset** klasöre göz atarak data.csv dosyasını indirmek için yönergeleri izleyin.
+ + **Çıktıyı görüntüle**: göz simgesini seçin ve **Results_dataset** klasöre göz atarak data.csv dosyasını indirmek için yönergeleri izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

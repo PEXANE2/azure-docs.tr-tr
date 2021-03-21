@@ -4,10 +4,10 @@ description: Azure Site Recovery ile Azure 'a diskleri çoğaltmanın dışında
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: 15989fbfd65f758eb777c5170c217aba8707e0be
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96008268"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>Diskleri olağanüstü durumdan kurtarma dışında tut
@@ -56,13 +56,13 @@ Dışlama için harika aday olan veri dalgalanmasına örnek olarak, bir sayfala
 
 ## <a name="example-1-exclude-the-sql-server-tempdb-disk"></a>Örnek 1: SQL Server tempdb diskini dışlama
 
-Tempdb 'yi dışlamak istediğimiz bir kaynak SQL Server Windows VM- **Salesdb** _ için disk dışlama, yük devretme ve yük devretmeyi nasıl işleyeceğinizi inceleyelim. 
+Tempdb 'yi dışlamak istediğimiz bir kaynak SQL Server Windows VM-* * SalesDB * * * için disk dışlama, yük devretme ve yük devretmeyi nasıl işleyeceğinizi inceleyelim. 
 
 ### <a name="exclude-disks-from-replication"></a>Diskleri çoğaltmanın dışında tutma
 
 Bu disklere, kaynak Windows VM SalesDB 'de ihtiyacımız var.
 
-_ *Disk adı** | **Konuk işletim sistemi diski** | **Sürücü harfi** | **Disk veri türü**
+**Disk adı** | **Konuk işletim sistemi diski** | **Sürücü harfi** | **Disk veri türü**
 --- | --- | --- | ---
 DB-Disk0-OS | Disk0 | C:\ | İşletim sistemi diski.
 DB-Disk1| Disk1 | D:\ | SQL sistem veritabanı ve Kullanıcı Veritabanı1.

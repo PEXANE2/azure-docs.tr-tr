@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
 ms.openlocfilehash: 9d81419721e94a2e181f094c0e0e64b1b23544a8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93073528"
 ---
 # <a name="date_bucket-transact-sql"></a>Date_Bucket (Transact-SQL)
@@ -41,25 +41,25 @@ DATE_BUCKET (datePart, number, date, origin)
   
 |*Işlevindeki*|Kısaltmaları|  
 |---|---|
-|**günündeki**|**dd** , **d**|  
-|**hafta**|**hafta** , **WW**| 
-|**ay**|**AA** , **dk**|
-|**dönem**|**QQ** , **q**|  
-|**yıl**|**yy** , **yyyy**|  
+|**günündeki**|**dd**, **d**|  
+|**hafta**|**hafta**, **WW**| 
+|**ay**|**AA**, **dk**|
+|**dönem**|**QQ**, **q**|  
+|**yıl**|**yy**, **yyyy**|  
 |**saate**|**hh**|  
-|**dakikaya**|**mı** , **n**|  
-|**İkincisi**|**SS** , **s**|  
+|**dakikaya**|**mı**, **n**|  
+|**İkincisi**|**SS**, **s**|  
 |**milisaniy**|**SWM**|  
 
-*sayı*
+*sayısından*
 
-Değer, *datePart* bağımsız değişkeniyle birleştirilmiş olan demet genişliğine karar veren tamsayı numarası. Bu, kaynak zamandan itibaren veri bölümü demetlerinin genişliğini temsil eder. **`This argument cannot be a negative integer value`** . 
+Değer, *datePart* bağımsız değişkeniyle birleştirilmiş olan demet genişliğine karar veren tamsayı numarası. Bu, kaynak zamandan itibaren veri bölümü demetlerinin genişliğini temsil eder. **`This argument cannot be a negative integer value`**. 
 
-*güncel*
+*date*
 
 Aşağıdaki değerlerden birine çözümleyebilecek bir ifade:
 
-+ **güncel**
++ **date**
 + **datetime**
 + **türünde**
 + **datetime2**
@@ -72,7 +72,7 @@ Aşağıdaki değerlerden birine çözümleyebilecek bir ifade:
 
 Aşağıdaki değerlerden birine çözümleyebilecek isteğe bağlı bir ifade:
 
-+ **güncel**
++ **date**
 + **datetime**
 + **türünde**
 + **datetime2**
@@ -125,7 +125,7 @@ Select DATE_BUCKET(wk, 5, @date, @origin)
 
 ## <a name="datepart-argument"></a>datepart bağımsız değişkeni
 
-**DayOfYear** , **Day** ve **HAFTANINGÜNÜ** aynı değeri döndürür. Her *datepart* ve kısaltmalar aynı değeri döndürür.
+**DayOfYear**, **Day** ve **HAFTANINGÜNÜ** aynı değeri döndürür. Her *datepart* ve kısaltmalar aynı değeri döndürür.
   
 ## <a name="number-argument"></a>sayı bağımsız değişkeni
 

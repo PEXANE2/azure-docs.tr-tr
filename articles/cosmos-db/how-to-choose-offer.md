@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: dech
 ms.openlocfilehash: d8a6471d53ad4b2428504f9c53cbec6bc1967c49
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93089650"
 ---
 # <a name="how-to-choose-between-standard-manual-and-autoscale-provisioned-throughput"></a>Standart (el ile) ve otomatik ölçeklendirme sağlanan aktarım hızını seçme 
@@ -27,7 +27,7 @@ Sağlanan aktarım hızını kullandığınızda, iş yükünüz için gereken s
 
 Aşağıdaki tabloda standart (el ile) ve otomatik ölçeklendirme arasındaki üst düzey bir karşılaştırma gösterilmektedir.
 
-|Açıklama|Standart (el ile)|Otomatik Ölçeklendirme|
+|Description|Standart (el ile)|Otomatik Ölçeklendirme|
 |-------------|------|-------|
 |En uygun|Düzenli veya öngörülebilir trafiğe sahip iş yükleri|Değişken veya öngörülemeyen trafik içeren iş yükleri. Bkz. [Otomatik ölçeklendirme durumlarını kullanma](provision-throughput-autoscale.md#use-cases-of-autoscale).|
 |Nasıl çalışır?|`T`El ile değiştirmediğiniz müddetçe zaman içinde statik olan bir dızı ru/sn sağlayabilirsiniz. Her İkincisi, en fazla `T` ru/sn aktarım hızı kullanabilirsiniz. <br/><br/>Örneğin, standart (el ile) 400 RU/s ayarlarsanız, verimlilik 400 RU/s ' de kalır.|Sistemin aşilmesini istemediğiniz en yüksek veya en büyük RU/sn 'yi ayarlayın `Tmax` . Sistem, aktarım hızını otomatik olarak ölçeklendirir `T` `0.1* Tmax <= T <= Tmax` . <br/><br/>Örneğin, otomatik ölçek, 4000 RU/sn 'nin en yüksek RU/sn 'yi ayarlarsanız, sistem 400-4000 RU/s arasında ölçeklendirecektir.|
@@ -55,7 +55,7 @@ Standart (el ile) sağlanan aktarım hızını kullanarak mevcut bir uygulamanı
 
 İlk olarak, veritabanınızın veya kapsayıcının [normalleştirilmiş istek birimi tüketim ölçüsünü](monitor-normalized-request-units.md#view-the-normalized-request-unit-consumption-metric) bulun. Normalleştirilmiş kullanım, şu anda standart (el ile) sağlanan aktarım hızını kullanmakta olduğunuz bir ölçüdür. Sayının %100 ' e yakın olması, sağlanan RU/s 'nizi tamamen kullanıyorsunuz. Ölçüm hakkında [daha fazla bilgi edinin](monitor-normalized-request-units.md#view-the-normalized-request-unit-consumption-metric) .
 
-Ardından, normalleştirilmiş kullanımın zaman içinde nasıl değiştiğini saptayın. Her saat için en yüksek normalleştirilmiş kullanımı bulun. Ardından, ortalama normalleştirilmiş kullanımı her saat boyunca hesaplayın. Ortalama kullanımlarınızın %66 ' den küçük olduğunu görürseniz, veritabanınızda veya kapsayıcıda otomatik ölçeklendirmeyi etkinleştirmeyi düşünün. Buna karşılık, ortalama kullanım %66 ' den büyükse, standart (el ile) sağlanan aktarım hızı üzerinde kalması önerilir.
+Ardından, normalleştirilmiş kullanımın zaman içinde nasıl değiştiğini saptayın. Her saat için en yüksek normalleştirilmiş kullanımı bulun. Ardından, ortalama normalleştirilmiş kullanımı her saat boyunca hesaplayın. Ortalama kullanımınızın %66'nın altında olduğunu görürseniz veritabanınızda veya kapsayıcınızda otomatik ölçeklendirmeyi etkinleştirmeyi göz önünde bulundurun. Buna karşılık ortalama kullanım %66'nın üzerindeyse standart (el ile) sağlanan işleme biriminde kalmanız önerilir.
 
 > [!TIP]
 > Hesabınız çok bölgeli yazmaları kullanacak şekilde yapılandırıldıysa ve birden fazla bölge içeriyorsa, 100 RU/sn başına ücret, hem el ile hem de otomatik ölçeklendirme için aynıdır. Yani, otomatik ölçeklendirmeyi etkinleştirme, kullanımın ne olursa olsun ek ücret alınmaz. Sonuç olarak, yalnızca uygulamanızın ölçeklendirilen RU/sn için ödeme yapma tasarruflarından yararlanmak amacıyla, birden fazla bölgeniz olduğunda otomatik ölçeklendirmeyi çok bölgeli bir şekilde kullanmak her zaman önerilir. Çok bölgeli yazmalar ve bir bölgeniz varsa, otomatik ölçeklendirmeyi maliyet tasarruflarına neden olup olmadığını anlamak için Ortalama kullanımı kullanın. 
@@ -95,7 +95,7 @@ Saat 1 ' de, %6 kullanım olduğunda otomatik ölçeklendirmeyi, en az RU/sn 'ni
 
 Bu iş yükünün %72 ile %100 arasında normalleştirilmiş RU tüketimine sahip sürekli trafiği vardır. Sağlanan 30.000 RU/sn ile, 21.600 ila 30.000 RU/s arasında tüketiyoruz demektir.
 
-:::image type="content" source="media/how-to-choose-offer/steady_workload_use_manual_throughput.png" alt-text="Değişken trafiği olan iş yükü-%6 ila %100 arasında normalleştirilmiş RU tüketimi, tüm saatler için":::
+:::image type="content" source="media/how-to-choose-offer/steady_workload_use_manual_throughput.png" alt-text="Sürekli trafik içeren iş yükü-%72 ve %100 arasında normalleştirilmiş RU tüketimi tüm saatler için":::
 
 30.000 RU/s el ile üretilen iş üretimini ve otomatik ölçeklendirme en yüksek RU/sn ayarını 30.000 (3000-30.000 RU/s arasında ölçekler) için sağlama maliyetini karşılaştıralım.
 
@@ -119,18 +119,18 @@ En yüksek RU/sn için bir saat içinde ölçeklendirilmiş olan faturaları oto
 Tüm saatlerde en yüksek kullanımın ortalamasını hesaplamak için:
 1. Noramon RU tüketim ölçümünde **toplamayı** **en yüksek** olarak ayarlayın.
 1. 1 saat **ayrıntı düzeyini** seçin.
-1. **Grafik seçenekleri** ' ne gidin.
+1. **Grafik seçenekleri**' ne gidin.
 1. Çubuk grafik seçeneğini belirleyin. 
 1. **Paylaşma** bölümünde **Excel 'e indir** seçeneğini belirleyin. Oluşturulan elektronik tablodan, her saat içindeki ortalama kullanımı hesaplayın. 
 
-:::image type="content" source="media/how-to-choose-offer/variable-workload-highest-util-by-hour.png" alt-text="Değişken trafiği olan iş yükü-%6 ila %100 arasında normalleştirilmiş RU tüketimi, tüm saatler için":::
+:::image type="content" source="media/how-to-choose-offer/variable-workload-highest-util-by-hour.png" alt-text="Normalleştirilmiş RU tüketimini saate göre görmek için 1) zaman parçalı yapısını 1 saate kadar seçin; 2) grafik ayarlarını düzenleyin; 3) çubuk grafik seçeneğini belirleyin; 4) Share altında, her saat içinde ortalamayı hesaplamak için Excel 'e Indir seçeneğini belirleyin. ":::
 
 ## <a name="measure-and-monitor-your-usage"></a>Kullanımınızı ölçme ve izleme
 Zaman içinde, üretilen iş türünü seçtikten sonra uygulamanızı izlemeniz ve gereken ayarlamaları yapmanız gerekir. 
 
-Otomatik ölçeklendirme kullanırken, sağlanan otomatik ölçeklendirme en fazla RU/sn ( **Otomatik ölçeklendirme en fazla aktarım hızı** ) ve sistem şu anda ölçeklendirildi ( **sağlanan aktarım hızı** ) için Azure izleyici 'yi kullanın. Aşağıda, otomatik ölçeklendirme kullanan bir değişkene veya öngörülemeyen iş yüküne bir örnek verilmiştir. Herhangi bir trafik olmadığında, sistem RU/s 'yi en fazla RU/sn 'nin en az %10 ' u, bu örnekte sırasıyla 5000 RU/s ve 50.000 RU/s olacak şekilde ölçeklendirir. 
+Otomatik ölçeklendirme kullanırken, sağlanan otomatik ölçeklendirme en fazla RU/sn (**Otomatik ölçeklendirme en fazla aktarım hızı**) ve sistem şu anda ölçeklendirildi (**sağlanan aktarım hızı**) için Azure izleyici 'yi kullanın. Aşağıda, otomatik ölçeklendirme kullanan bir değişkene veya öngörülemeyen iş yüküne bir örnek verilmiştir. Herhangi bir trafik olmadığında, sistem RU/s 'yi en fazla RU/sn 'nin en az %10 ' u, bu örnekte sırasıyla 5000 RU/s ve 50.000 RU/s olacak şekilde ölçeklendirir. 
 
-:::image type="content" source="media/how-to-choose-offer/autoscale-metrics-azure-monitor.png" alt-text="Değişken trafiği olan iş yükü-%6 ila %100 arasında normalleştirilmiş RU tüketimi, tüm saatler için":::
+:::image type="content" source="media/how-to-choose-offer/autoscale-metrics-azure-monitor.png" alt-text="Otomatik ölçeklendirme kullanan iş yükü örneği, otomatik ölçeklendirme en fazla RU/sn ve 50.000 RU/sn ve verimlilik, 5000-50.000 RU/s ile değişiyor":::
 
 > [!NOTE]
 > Standart (el ile) sağlanan aktarım hızını kullandığınızda, **sağlanan aktarım hızı** ölçümü, bir kullanıcının ayarlamış olduğu şeyleri gösterir. Otomatik ölçeklendirme üretilen işi kullandığınızda bu ölçüm, sistemin Şu anda ölçeklendirmekte olduğu RU/s 'yi ifade eder.

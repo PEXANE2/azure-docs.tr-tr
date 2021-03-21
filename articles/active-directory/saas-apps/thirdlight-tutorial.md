@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: f15d00f1050177c6255fb5528f03314153c3ed9a
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92514673"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thirdlight"></a>Öğretici: üçüncülü ile tümleştirme Azure Active Directory
@@ -59,7 +59,7 @@ Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandı
 
     ![Yeni uygulama seçin](common/add-new-app.png)
 
-4. Arama kutusuna, **üç Dlight**girin. Arama sonuçlarında **Ondlight** ' i seçin ve ardından **Ekle**' yi seçin.
+4. Arama kutusuna, **üç Dlight** girin. Arama sonuçlarında **Ondlight** ' i seçin ve ardından **Ekle**' yi seçin.
 
      ![Arama sonuçları](common/search-new-app.png)
 
@@ -128,7 +128,7 @@ Azure AD çoklu oturum açma 'yı üçe Dlight ile yapılandırmak için şu ad�
 
 1. Yeni bir Web tarayıcısı penceresinde, diğer şirket sitenizde yönetici olarak oturum açın.
 
-1. **Yapılandırma**  >  **sistem yönetimi**  >  **SAML2**şuraya gidin:
+1. **Yapılandırma**  >  **sistem yönetimi**  >  **SAML2** şuraya gidin:
 
     ![Sistem Yönetimi](./media/thirdlight-tutorial/ic805843.png "Sistem Yönetimi")
 
@@ -138,7 +138,7 @@ Azure AD çoklu oturum açma 'yı üçe Dlight ile yapılandırmak için şu ad�
 
     1. **SAML2 çoklu oturum açmayı etkinleştir '** i seçin.
 
-    1. **IDP meta verileri Için kaynak**altında, **XML 'Den IDP meta verilerini yükle**' yi seçin.
+    1. **IDP meta verileri Için kaynak** altında, **XML 'Den IDP meta verilerini yükle**' yi seçin.
 
     1. Önceki bölümde Azure portal indirdiğiniz meta veri dosyasını açın. Dosyanın içeriğini kopyalayın ve **IDP Metadata XML** kutusuna yapıştırın.
 
@@ -160,9 +160,9 @@ Bu bölümde, Azure portal Britta Simon adlı bir test kullanıcısı oluşturac
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    1. **Ad** kutusuna **Brittasıon**yazın.
+    1. **Ad** kutusuna **Brittasıon** yazın.
   
-    1. **Kullanıcı adı** kutusuna **BrittaSimon@ girin \<yourcompanydomain> . \<extension> ** (Örneğin, BrittaSimon@contoso.com .)
+    1. **Kullanıcı adı** kutusuna **BrittaSimon@ girin \<yourcompanydomain> . \<extension>** (Örneğin, BrittaSimon@contoso.com .)
 
     1. **Parolayı göster**' i seçin ve ardından **parola** kutusunda değer ' i yazın.
 
@@ -172,7 +172,7 @@ Bu bölümde, Azure portal Britta Simon adlı bir test kullanıcısı oluşturac
 
 Bu bölümde, tek Dlight 'e erişimi vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştireceksiniz.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve sonra da **üçüncü**olarak ' ı seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve sonra da **üçüncü** olarak ' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -204,7 +204,7 @@ Bir kullanıcı hesabı oluşturmak için şu adımları uygulayın:
 
 1. **Kullanıcılar** sekmesine gidin.
 
-1. **Kullanıcılar ve gruplar ' ı**seçin.
+1. **Kullanıcılar ve gruplar ' ı** seçin.
 
 1. **Yeni Kullanıcı Ekle**' yi seçin.
 

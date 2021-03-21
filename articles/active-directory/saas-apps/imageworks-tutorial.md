@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.openlocfilehash: 6a4fabe23f9eb679b1aa059d9fa534147bcce32f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92460342"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-image-works"></a>Öğretici: görüntü çalışma Azure Active Directory tümleştirme
@@ -30,7 +30,7 @@ GÖRÜNTÜYÜ tümleştirme Azure AD ile birlikte ÇALıŞARAK aşağıdaki avan
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini GÖRÜNTÜYLE birlikte yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -61,13 +61,13 @@ GÖRÜNTÜ tümleştirmesini Azure AD 'de yapılandırmak için galerideki gör�
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **görüntü çalışması**yazın, sonuç PANELINDEN **görüntü çalışması** ' nı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna **görüntü çalışması** yazın, sonuç PANELINDEN **görüntü çalışması** ' nı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
      ![GÖRÜNTÜ, sonuçlar listesinde ÇALıŞMAKTADıR](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, resımlı Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına dayanarak yapılandırıp test edersiniz.
+Bu bölümde, resımlı Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına dayanarak yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve GÖRÜNTÜDEKI ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
 GÖRÜNTÜYLE birlikte Azure AD çoklu oturum açma 'yı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -142,9 +142,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.

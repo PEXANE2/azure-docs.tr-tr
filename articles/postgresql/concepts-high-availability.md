@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/15/2020
 ms.openlocfilehash: aa9f38b2cefa60a0c3341c1317cf45fbcb735301
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92485452"
 ---
 # <a name="high-availability-in-azure-database-for-postgresql--single-server"></a>PostgreSQL için Azure veritabanı 'nda yüksek kullanılabilirlik – tek sunucu
@@ -24,7 +24,7 @@ PostgreSQL için Azure veritabanı, yüksek çalışma süresi gerektiren görev
 | ------------ | ----------- |
 | <b>PostgreSQL veritabanı sunucusu | PostgreSQL için Azure veritabanı, veritabanı sunucuları için güvenlik, yalıtım, kaynak korumaları ve hızlı yeniden başlatma yeteneği sağlar. Bu yetenekler, saniye cinsinden bir kesinti olduktan sonra ölçekleme ve veritabanı sunucusu kurtarma işlemi gibi işlemleri kolaylaştırır. <br/> Veritabanı sunucusundaki veri değişiklikleri genellikle bir veritabanı işlemi bağlamında meydana gelir. Tüm veritabanı değişiklikleri zaman uyumlu olarak, veritabanı sunucusuna eklenen Azure Storage 'da yazma öncesi Günlükler (WAL) biçiminde kaydedilir. Veritabanı [denetim noktası](https://www.postgresql.org/docs/11/sql-checkpoint.html) işlemi sırasında, veritabanı sunucusu belleğinden veri sayfaları da depolamaya silinir. |
 | <b>Uzak depolama | Tüm PostgreSQL fiziksel veri dosyaları ve WAL dosyaları, veri yedekliliği, kullanılabilirliği ve güvenilirliği sağlamak için bir bölge içinde verilerin üç kopyasını depolamak üzere tasarlanmış Azure Storage 'da depolanır. Depolama katmanı, veritabanı sunucusundan de bağımsızdır. Bu, başarısız bir veritabanı sunucusundan ayrılabilir ve birkaç saniye içinde yeni bir veritabanı sunucusuna yeniden iliştirilebilir. Ayrıca, Azure Storage her türlü depolama hatalarını sürekli izler. Bir blok bozulması algılanırsa, yeni bir depolama kopyası örnekleyerek otomatik olarak düzeltilir. |
-| <b>Geçidinde | Ağ geçidi bir veritabanı proxy 'si görevi görür ve tüm istemci bağlantılarını veritabanı sunucusuna yönlendirir. |
+| <b>Ağ geçidi | Ağ geçidi bir veritabanı proxy 'si görevi görür ve tüm istemci bağlantılarını veritabanı sunucusuna yönlendirir. |
 
 ## <a name="planned-downtime-mitigation"></a>Planlanmış kapalı kalma süresi hafifletme
 PostgreSQL için Azure veritabanı, planlanan kapalı kalma işlemleri sırasında yüksek kullanılabilirlik sağlamak üzere tasarlanmıştır. 
@@ -49,7 +49,7 @@ Aşağıda bazı planlı bakım senaryoları verilmiştir:
 Planlanmamış kapalı kalma süresi, temel alınan donanım hatası, ağ sorunları ve yazılım hataları da dahil olmak üzere öngörülemeyen hataların sonucu olarak gerçekleşebilir. Veritabanı sunucusu beklenmedik şekilde kapanıyorsa, saniye cinsinden yeni bir veritabanı sunucusu otomatik olarak sağlanır. Uzak depolama, yeni veritabanı sunucusuna otomatik olarak eklenir. PostgreSQL altyapısı, WAL ve veritabanı dosyalarını kullanarak kurtarma işlemini gerçekleştirir ve istemcilerin bağlanmasına izin vermek için veritabanı sunucusunu açar. İşlenmemiş işlemler kaybolur ve uygulama tarafından yeniden denenmeleri gerekir. Planlanmamış kapalı kalma süresini önlemeden, PostgreSQL için Azure veritabanı, hem veritabanı sunucusunda hem de depolama katmanlarında, insan müdahalesi gerektirmeden kurtarma işlemlerini otomatik olarak gerçekleştirerek kapalı kalma süresini azaltır. 
 
 
-:::image type="content" source="./media/concepts-high-availability/azure-postgresql-built-in-high-availability.png" alt-text="Azure PostgreSQL 'te elastik ölçeklendirmeyi görüntüleme":::
+:::image type="content" source="./media/concepts-high-availability/azure-postgresql-built-in-high-availability.png" alt-text="Azure PostgreSQL 'te yüksek kullanılabilirlik görünümü":::
 
 1. Hızlı ölçeklendirme özelliklerine sahip Azure PostgreSQL sunucuları.
 2. İstemci bağlantılarını doğru veritabanı sunucusuna yönlendirmek için proxy görevi gören ağ geçidi

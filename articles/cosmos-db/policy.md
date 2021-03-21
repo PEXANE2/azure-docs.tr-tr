@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: 1390f5db6e0f0370788bef60d5a2cafee1e8a96d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93080660"
 ---
 # <a name="use-azure-policy-to-implement-governance-and-controls-for-azure-cosmos-db-resources"></a>Azure Cosmos DB kaynaklarına yönelik idare ve denetimleri uygulamak için Azure Ilkesini kullanma
@@ -127,7 +127,7 @@ Ekran görüntüsünde, kapsamdaki Azure Cosmos DB hesapları için aşağıdaki
 - Hesabın birden fazla yazma konumu için yapılandırılmasını gerektiren bir ilkeyle uyumlu iki hesap yok
 - İki hesabın sıfır olması, kaynakların izin verilen Azure bölgelerine dağıtıldığı ilkeyle uyumludur.
 
-:::image type="content" source="./media/policy/compliance.png" alt-text="Azure Cosmos DB yerleşik ilke tanımlarını arayın":::
+:::image type="content" source="./media/policy/compliance.png" alt-text="Listelenen Azure Ilke atamalarının uyumluluk sonuçları":::
 
 Uyumlu olmayan kaynakları düzeltmek için bkz. [Azure ilkesi ile kaynakları](../governance/policy/how-to/remediate-resources.md)düzeltme.
 

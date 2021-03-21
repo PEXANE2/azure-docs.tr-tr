@@ -12,10 +12,10 @@ ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: b5a1035f8a213a6ce02dd3252ff7d3ddea46faf7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92786590"
 ---
 # <a name="in-memory-sample"></a>In-Memory örneği
@@ -53,7 +53,7 @@ Daha fazla uyarlaması için, In-Memory OLTP için daha görsel açıdan daha ç
 
 3. [Bellek ıçı OLTP Transact-SQL betiğini](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_oltp_sample.sql) panonuza kopyalayın. T-SQL betiği, 1. adımda oluşturduğunuz AdventureWorksLT örnek veritabanında gerekli In-Memory nesnelerini oluşturur.
 
-4. T-SQL betiğini SSMS 'ye yapıştırın ve betiği yürütün. `MEMORY_OPTIMIZED = ON`Yan tümce create table deyimleri önemli. Örneğin:
+4. T-SQL betiğini SSMS 'ye yapıştırın ve betiği yürütün. `MEMORY_OPTIMIZED = ON`Yan tümce create table deyimleri önemli. Örnek:
 
 ```sql
 CREATE TABLE [SalesLT].[SalesOrderHeader_inmem](
@@ -74,7 +74,7 @@ SELECT DatabasePropertyEx(DB_Name(), 'IsXTPSupported');
 
 ### <a name="about-the-created-memory-optimized-items"></a>Oluşturulan bellek için iyileştirilmiş öğeler hakkında
 
-**Tablolar** : örnek, bellek için iyileştirilmiş aşağıdaki tabloları içerir:
+**Tablolar**: örnek, bellek için iyileştirilmiş aşağıdaki tabloları içerir:
 
 - SalesLT.Product_inmem
 - SalesLT.SalesOrderHeader_inmem
@@ -82,7 +82,7 @@ SELECT DatabasePropertyEx(DB_Name(), 'IsXTPSupported');
 - Demo. DemoSalesOrderHeaderSeed
 - Demo. DemoSalesOrderDetailSeed
 
-Bellek için iyileştirilmiş tabloları SSMS içindeki **Nesne Gezgini** aracılığıyla inceleyebilirsiniz. Sağ tıklama **tabloları**  >  **filtre**  >  **filtresi ayarları**  >  **bellek için iyileştirilmiştir** . Değer 1 ' e eşittir.
+Bellek için iyileştirilmiş tabloları SSMS içindeki **Nesne Gezgini** aracılığıyla inceleyebilirsiniz. Sağ tıklama **tabloları**  >  **filtre**  >  **filtresi ayarları**  >  **bellek için iyileştirilmiştir**. Değer 1 ' e eşittir.
 
 Ya da katalog görünümlerini sorgulayabilirsiniz, örneğin:
 
@@ -92,7 +92,7 @@ SELECT is_memory_optimized, name, type_desc, durability_desc
     WHERE is_memory_optimized = 1;
 ```
 
-**Yerel koda derlenmiş saklı yordam** : bir Katalog görünümü sorgusu aracılığıyla SalesLT.usp_InsertSalesOrder_inmem inceleyebilirsiniz:
+**Yerel koda derlenmiş saklı yordam**: bir Katalog görünümü sorgusu aracılığıyla SalesLT.usp_InsertSalesOrder_inmem inceleyebilirsiniz:
 
 ```sql
 SELECT uses_native_compilation, OBJECT_NAME(object_id), definition
@@ -215,7 +215,7 @@ ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password
    EXECUTE Demo.usp_DemoReset;
    ```
 
-2. Tüm *_inmem* değiştirmek için ostress.exe komut satırını düzenleyin *_ondisk* .
+2. Tüm *_inmem* değiştirmek için ostress.exe komut satırını düzenleyin *_ondisk*.
 
 3. İkinci kez ostress.exe yeniden çalıştırın ve süre sonucunu yakalayın.
 
@@ -365,7 +365,7 @@ P2 fiyatlandırma katmanının bulunduğu bir veritabanında, geleneksel dizin i
 
 #### <a name="tools"></a>Araçlar
 
-- [Azure Portal](https://portal.azure.com/)
+- [Azure portalı](https://portal.azure.com/)
 
 - [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms)
 

@@ -9,24 +9,24 @@ ms.date: 10/22/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 6cb30b96f9c2094e6d690b565edf487d6508d520
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92487125"
 ---
-1. [Azure Portal](https://portal.azure.com), **arama kaynakları, hizmetler ve docs (G +/)** ' de **sanal ağ geçidi**yazın. Arama sonuçlarında **sanal ağ geçidini** bulun ve seçin.
+1. [Azure Portal](https://portal.azure.com), **arama kaynakları, hizmetler ve docs (G +/)** ' de **sanal ağ geçidi** yazın. Arama sonuçlarında **sanal ağ geçidini** bulun ve seçin.
 
    :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-empty/search.png" alt-text="Arama alanı" lightbox="./media/vpn-gateway-add-gw-rm-portal-empty/search-expand.png":::
 
 1. **Sanal ağ geçidi** sayfasında **+ Ekle**' yi seçin. Bu işlem **Sanal ağ geçidi oluşturma** sayfasını açar.
 
-   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-empty/add.png" alt-text="Arama alanı":::
+   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-empty/add.png" alt-text="sanal ağ geçitleri sayfası":::
 1. **Temel bilgiler** sekmesinde, sanal ağ geçidinizin değerlerini girin.
 
-   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-empty/gateway.png" alt-text="Arama alanı":::
+   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-empty/gateway.png" alt-text="Ağ Geçidi alanları":::
 
-   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-empty/gateway-vnet.png" alt-text="Arama alanı":::
+   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-empty/gateway-vnet.png" alt-text="Ek ağ geçidi alanları":::
 
    **Proje ayrıntıları**
 
@@ -51,8 +51,8 @@ ms.locfileid: "92487125"
      * **Genel IP adresi**: **Yeni oluştur** seçili kalsın.
      * **Genel IP adresi adı**: metin kutusuna, genel IP adresi örneğiniz için bir ad yazın.
      * **Atama**: VPN Gateway yalnızca dinamik destekler.
-     * **Etkin-etkin modu etkinleştir**: yalnızca etkin-etkin ağ geçidi yapılandırması oluşturuyorsanız **etkin-etkin modunu etkinleştir** ' i seçin. Aksi takdirde, bu ayarı **devre dışı**bırakın.
-     * Yapılandırmanız özellikle bu ayarı gerektirmediği sürece BGP 'yi **devre dışı**olarak **yapılandırma** ' ya bırakın. Bu ayar gerekliyse varsayılan ASN değeri 65515’tir ancak bu değiştirilebilir.
+     * **Etkin-etkin modu etkinleştir**: yalnızca etkin-etkin ağ geçidi yapılandırması oluşturuyorsanız **etkin-etkin modunu etkinleştir** ' i seçin. Aksi takdirde, bu ayarı **devre dışı** bırakın.
+     * Yapılandırmanız özellikle bu ayarı gerektirmediği sürece BGP 'yi **devre dışı** olarak **yapılandırma** ' ya bırakın. Bu ayar gerekliyse varsayılan ASN değeri 65515’tir ancak bu değiştirilebilir.
 1. Doğrulamayı çalıştırmak için **gözden geçir + oluştur** ' u seçin.
 1. Doğrulama başarılı olduktan sonra, VPN ağ geçidini dağıtmak için **Oluştur** ' u seçin. Bir ağ geçidinin, tam olarak oluşturulması ve dağıtılması 45 dakika sürebilir. Dağıtım durumunu ağ geçidinizin Genel Bakış sayfasında görebilirsiniz.
 

@@ -8,10 +8,10 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.openlocfilehash: 6ac4d0e0744bfc82a686671234e013b2dd717146
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92927762"
 ---
 # <a name="integrate-azure-key-vault-with-azure-policy"></a>Azure Key Vault’u Azure İlkesiyle tümleştirme
@@ -29,9 +29,9 @@ ms.locfileid: "92927762"
 
 ## <a name="types-of-policy-effects-and-guidance"></a>İlke etkileri ve kılavuz türleri
 
-**Denetim** : bir ilkenin etkisi denetim olarak ayarlandığında, bu ilke ortamınızda hiçbir bozucu değişikliğe neden olmaz. Bu bileşenler, ilke uyumluluk panosunda uyumsuz olarak işaretlenerek, yalnızca belirtilen kapsamdaki ilke tanımlarına uymayan sertifikalar gibi bileşenlerde sizi uyarır. İlke efekti seçilmezse, denetim varsayılan olarak ayarlanır.
+**Denetim**: bir ilkenin etkisi denetim olarak ayarlandığında, bu ilke ortamınızda hiçbir bozucu değişikliğe neden olmaz. Bu bileşenler, ilke uyumluluk panosunda uyumsuz olarak işaretlenerek, yalnızca belirtilen kapsamdaki ilke tanımlarına uymayan sertifikalar gibi bileşenlerde sizi uyarır. İlke efekti seçilmezse, denetim varsayılan olarak ayarlanır.
 
-**Reddet** : bir ilkenin etkisi Reddet olarak ayarlandığında, ilke, sertifikalar gibi yeni bileşenlerin oluşturulmasını ve ilke tanımıyla uyumlu olmayan mevcut bileşenlerin yeni sürümlerini engellemeyi engeller. Bir Anahtar Kasası içindeki uyumlu olmayan mevcut kaynaklar etkilenmez. ' Denetim ' özellikleri çalışmaya devam edecektir.
+**Reddet**: bir ilkenin etkisi Reddet olarak ayarlandığında, ilke, sertifikalar gibi yeni bileşenlerin oluşturulmasını ve ilke tanımıyla uyumlu olmayan mevcut bileşenlerin yeni sürümlerini engellemeyi engeller. Bir Anahtar Kasası içindeki uyumlu olmayan mevcut kaynaklar etkilenmez. ' Denetim ' özellikleri çalışmaya devam edecektir.
 
 ## <a name="available-built-in-policy-definitions"></a>Kullanılabilir "yerleşik" Ilke tanımları
 
@@ -91,9 +91,9 @@ Düzgün şekilde izlenmeyen bir sertifika, süresi dolmadan önce döndürülme
 
 Anahtarlarınızın belirtilen gün sayısından daha uzun süre etkin olmadığından emin olmak istiyorsanız, anahtarınızın ne kadar süreyle etkin olduğunu denetlemek için bu ilkeyi kullanabilirsiniz.
 
-**Anahtarınız bir etkinleştirme tarihi ayarlandıysa** , bu ilke anahtarın **etkinleştirme tarihinden** geçerli tarihe kadar geçen gün sayısını hesaplar. Gün sayısı ayarladığınız eşiği aşarsa, bu anahtar ilkeyle uyumlu değil olarak işaretlenir.
+**Anahtarınız bir etkinleştirme tarihi ayarlandıysa**, bu ilke anahtarın **etkinleştirme tarihinden** geçerli tarihe kadar geçen gün sayısını hesaplar. Gün sayısı ayarladığınız eşiği aşarsa, bu anahtar ilkeyle uyumlu değil olarak işaretlenir.
 
-**Anahtarınız bir etkinleştirme tarihi ayarlanmamışsa** , bu ilke anahtarın **Oluşturulma tarihinden** itibaren geçerli tarihe kadar geçen gün sayısını hesaplar. Gün sayısı ayarladığınız eşiği aşarsa, bu anahtar ilkeyle uyumlu değil olarak işaretlenir.
+**Anahtarınız bir etkinleştirme tarihi ayarlanmamışsa**, bu ilke anahtarın **Oluşturulma tarihinden** itibaren geçerli tarihe kadar geçen gün sayısını hesaplar. Gün sayısı ayarladığınız eşiği aşarsa, bu anahtar ilkeyle uyumlu değil olarak işaretlenir.
 
 ### <a name="keys-should-be-the-specified-cryptographic-type-rsa-or-ec-preview"></a>Anahtarlar belirtilen şifreleme türü RSA veya EC (Önizleme) olmalıdır
 
@@ -139,9 +139,9 @@ Anahtar Kasanızda bir anahtarın geçerli olduğu maksimum süreyi gün cinsind
 
 Gizli anahtarlarınızın belirtilen gün sayısından daha uzun süre etkin olmadığından emin olmak istiyorsanız, bu ilkeyi kullanarak gizli ağınızın ne kadar süreyle etkin olduğunu denetleyebilirsiniz.
 
-**Gizli dizinizdeki bir etkinleştirme tarihi ayarlandıysa** , bu ilke gizli dizi **etkinleştirme tarihinden** geçerli tarihe kadar geçen gün sayısını hesaplar. Gün sayısı ayarladığınız eşiği aşarsa, parola ilkeyle uyumlu değil olarak işaretlenir.
+**Gizli dizinizdeki bir etkinleştirme tarihi ayarlandıysa**, bu ilke gizli dizi **etkinleştirme tarihinden** geçerli tarihe kadar geçen gün sayısını hesaplar. Gün sayısı ayarladığınız eşiği aşarsa, parola ilkeyle uyumlu değil olarak işaretlenir.
 
-**Gizli dizinizdeki bir etkinleştirme tarihi ayarlanmamışsa** , bu ilke, parolanın **Oluşturulma tarihinden** itibaren geçerli tarihe kadar geçen gün sayısını hesaplar. Gün sayısı ayarladığınız eşiği aşarsa, parola ilkeyle uyumlu değil olarak işaretlenir.
+**Gizli dizinizdeki bir etkinleştirme tarihi ayarlanmamışsa**, bu ilke, parolanın **Oluşturulma tarihinden** itibaren geçerli tarihe kadar geçen gün sayısını hesaplar. Gün sayısı ayarladığınız eşiği aşarsa, parola ilkeyle uyumlu değil olarak işaretlenir.
 
 ### <a name="secrets-should-have-content-type-set-preview"></a>Gizli diziler içerik türü kümesine sahip olmalıdır (Önizleme)
 
@@ -175,11 +175,11 @@ Anahtar Kasanızda bir gizli dizi geçerli olabilecek maksimum süreyi gün cins
 ### <a name="select-a-policy-definition"></a>Ilke tanımı seçin
 
 1. Azure portalında oturum açın. 
-1. Arama çubuğunda "Ilke" araması yapın ve **ilke** ' yi seçin.
+1. Arama çubuğunda "Ilke" araması yapın ve **ilke**' yi seçin.
 
     ![Arama çubuğunu gösteren ekran görüntüsü.](../media/policy-img1.png)
 
-1. Ilke penceresinde **tanımlar** ' ı seçin.
+1. Ilke penceresinde **tanımlar**' ı seçin.
 
     ![Tanımlar seçeneğini vurgulayan ekran görüntüsü.](../media/policy-img2.png)
 
@@ -226,7 +226,7 @@ Anahtar Kasanızda bir gizli dizi geçerli olabilecek maksimum süreyi gün cins
 
     ![Azure Key Vault nasıl çalıştığına genel bakış](../media/policy-img11.png)
 
-## <a name="feature-limitations"></a>Özellik sınırlamaları
+## <a name="feature-limitations"></a>Özellik Sınırlamaları
 
 Bir "reddetme" efektiyle ilke atanması, uyumlu olmayan kaynakların oluşturulmasını reddetmek için 30 dakika (ortalama Case) ve 1 saat (en kötü durum) gerektirebilir. Bir kasadaki mevcut bileşenlerin ilke değerlendirmesi, uyumluluk sonuçlarının Portal Kullanıcı arabiriminde görüntülenebilmesi için 1 saat (ortalama büyük/küçük harf) ve 2 saat (en kötü durum) kadar sürebilir. Uyumluluk sonuçları "başlatılmamış" olarak görünmüyorsa, bunun nedeni aşağıdakilerden biri olabilir:
 - İlke değerlemesi henüz tamamlanmadı. İlk değerlendirme gecikmesi en kötü durum senaryosunda 2 saate kadar sürebilir. 

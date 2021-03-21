@@ -10,17 +10,17 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
 ms.openlocfilehash: d4099ecf6e6bcc6654391e54292878393fb22914
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93421354"
 ---
 # <a name="cross-validate-model"></a>Modeli Çapraz Doğrulama
 
 Bu makalede, Azure Machine Learning tasarımcısında çapraz Validate modeli modülünün nasıl kullanılacağı açıklanır. *Çapraz doğrulama* , genellikle bir veri kümesinin çeşitliliğini ve bu verilerden eğitilen herhangi bir modelin güvenilirliğini değerlendirmek için makine öğreniminde kullanılan bir tekniktir.  
 
-Çapraz Validate model modülü, bir etiketli veri kümesi olarak, eğitilmiş bir sınıflandırma veya regresyon modeliyle birlikte giriş olarak alır. Veri kümesini bazı alt *kümeler (kat* ) halinde böler, her katlama üzerinde bir model oluşturur ve ardından her katlama için bir doğruluk istatistikleri kümesi döndürür. Tüm katların doğruluk istatistiklerini karşılaştıran şekilde, veri kümesinin kalitesini yorumlayabilir. Daha sonra modelin veride çeşitliliğe açık olup olmadığını anlayabilirsiniz.  
+Çapraz Validate model modülü, bir etiketli veri kümesi olarak, eğitilmiş bir sınıflandırma veya regresyon modeliyle birlikte giriş olarak alır. Veri kümesini bazı alt *kümeler (kat*) halinde böler, her katlama üzerinde bir model oluşturur ve ardından her katlama için bir doğruluk istatistikleri kümesi döndürür. Tüm katların doğruluk istatistiklerini karşılaştıran şekilde, veri kümesinin kalitesini yorumlayabilir. Daha sonra modelin veride çeşitliliğe açık olup olmadığını anlayabilirsiniz.  
 
 Çapraz doğrulama modeli ayrıca veri kümesi için tahmin edilen sonuçları ve olasılıkların yanı sıra tahmine yönelik güvenilirliği değerlendirebilmeniz için bu veri kümesine ilişkin olasılıklara de döner.  
 
@@ -68,7 +68,7 @@ Bu senaryoda, çapraz doğrulama modelini kullanarak modeli eğitetin ve test ed
     > Çapraz doğrulama modeli, değerlendirmenin bir parçası olarak modeli otomatik olarak yaptığından modeli eğmenize gerek kalmaz.  
 3.  Çapraz doğrulama modelinin **veri kümesi** bağlantı noktasındaki tüm etiketli eğitim veri kümelerini bağlayın.  
 
-4.  Çapraz doğrulama modelinin sağ panelinde, **sütunu Düzenle** ' ye tıklayın. Sınıf etiketini veya tahmin edilebilir değeri içeren tek bir sütunu seçin. 
+4.  Çapraz doğrulama modelinin sağ panelinde, **sütunu Düzenle**' ye tıklayın. Sınıf etiketini veya tahmin edilebilir değeri içeren tek bir sütunu seçin. 
 
 5. Aynı verilerdeki art arda çalıştırılan çalıştırmalar arasında çapraz doğrulama sonuçlarını yinelemek istiyorsanız **rastgele çekirdek** parametresi için bir değer ayarlayın.  
 
@@ -84,9 +84,9 @@ Tüm yinelemeler tamamlandıktan sonra, çapraz doğrulama modeli, tüm veri kü
 
 Modülün ilk çıktısı, bazı tahmin edilen değerler ve ilgili olasılıkların yanı sıra her satır için kaynak verileri sağlar. 
 
-Sonuçları görüntülemek için, işlem hattında çapraz doğrulama modeli modülüne sağ tıklayın. **Puanlanmış sonuçları görselleştirin** ' i seçin.
+Sonuçları görüntülemek için, işlem hattında çapraz doğrulama modeli modülüne sağ tıklayın. **Puanlanmış sonuçları görselleştirin**' i seçin.
 
-| Yeni sütun adı      | Açıklama                              |
+| Yeni sütun adı      | Description                              |
 | -------------------- | ---------------------------------------- |
 | Puanlanmış Etiketler        | Bu sütun, veri kümesinin sonuna eklenir. Her satır için tahmin edilen değeri içerir. |
 | Puanlanmış olasılıklara | Bu sütun, veri kümesinin sonuna eklenir. Değerin, **puanlanmış etiketlerde** tahmini olasılığını gösterir. |
@@ -98,10 +98,10 @@ Sonuçları görüntülemek için, işlem hattında çapraz doğrulama modeli mo
 
 Bu raporda, katların dizin değeri, artan sırada listelenir.  Diğer herhangi bir sütunu sıralamak için sonuçları bir veri kümesi olarak kaydedebilirsiniz.
 
-Sonuçları görüntülemek için, işlem hattında çapraz doğrulama modeli modülüne sağ tıklayın. **Değerlendirme sonuçlarını katlayarak görselleştirin** ' i seçin.
+Sonuçları görüntülemek için, işlem hattında çapraz doğrulama modeli modülüne sağ tıklayın. **Değerlendirme sonuçlarını katlayarak görselleştirin**' i seçin.
 
 
-|Sütun adı| Açıklama|
+|Sütun adı| Description|
 |----|----|
 |Katlama sayısı| Her katlama için bir tanımlayıcı. Beş katlama oluşturduysanız, 0 ile 4 arasında bir beş veri kümesi vardır.
 |Katdaki örneklerin sayısı|Her kata atanan satır sayısı. Bunlar kabaca eşit olmalıdır. |
@@ -109,9 +109,9 @@ Sonuçları görüntülemek için, işlem hattında çapraz doğrulama modeli mo
 
 Modül, değerlendirdiğiniz modelin türüne bağlı olarak her katlama için aşağıdaki ölçümleri de içerir: 
 
-+ **Sınıflandırma modelleri** : Precision, geri çek, F PUANı, AUC, doğruluk  
++ **Sınıflandırma modelleri**: Precision, geri çek, F PUANı, AUC, doğruluk  
 
-+ **Regresyon modelleri** : Ortalama mutlak hata, kök ortalama kare hatası, göreli mutlak hata, göreli kare hatası ve belirleme katsayısı
++ **Regresyon modelleri**: Ortalama mutlak hata, kök ortalama kare hatası, göreli mutlak hata, göreli kare hatası ve belirleme katsayısı
 
 
 ## <a name="technical-notes"></a>Teknik notlar  

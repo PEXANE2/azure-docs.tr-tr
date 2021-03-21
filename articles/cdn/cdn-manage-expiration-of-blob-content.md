@@ -16,10 +16,10 @@ ms.topic: how-to
 ms.date: 02/1/2018
 ms.author: mazha
 ms.openlocfilehash: 206ff6f888229356743bebb816cf03e4f7a7504b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92778707"
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>Azure CDN Azure Blob Storage 'ın kullanım süresini yönetme
@@ -47,11 +47,11 @@ Blob üst bilgisini ayarlamak için tercih edilen yöntem `Cache-Control` Azure 
 > [!NOTE] 
 > Önbelleğe alma kuralları yalnızca Verizon **Azure CDN ve Akamai** profillerindeki standart **Azure CDN Standart** için kullanılabilir. **Verizon profillerden Azure CDN Premium** Için, **Manage** Portal içindeki [Azure CDN Rules altyapısını](./cdn-verizon-premium-rules-engine.md) benzer işlevler için kullanmanız gerekir.
 
-**CDN önbelleğe alma kuralları sayfasına gitmek için** :
+**CDN önbelleğe alma kuralları sayfasına gitmek için**:
 
 1. Azure portal, bir CDN profili seçin ve ardından blob uç noktasını seçin.
 
-2. Ayarların altındaki sol bölmede **Önbelleğe alma kuralları** ’nı seçin.
+2. Ayarların altındaki sol bölmede **Önbelleğe alma kuralları**’nı seçin.
 
    ![CDN önbelleğe alma kuralları düğmesi](./media/cdn-manage-expiration-of-blob-content/cdn-caching-rules-btn.png)
 
@@ -62,7 +62,7 @@ Blob üst bilgisini ayarlamak için tercih edilen yöntem `Cache-Control` Azure 
 
 **Genel önbelleğe alma kurallarını kullanarak bir BLOB depolama hizmetinin Cache-Control üst bilgilerini ayarlamak için:**
 
-1. **Genel önbelleğe alma kuralları** ' nın altında sorgu **dizelerini yok say** ve **önbelleğe alma davranışını** **geçersiz kılmak** için **sorgu dizesi önbelleğe alma davranışını** ayarlayın.
+1. **Genel önbelleğe alma kuralları**' nın altında sorgu **dizelerini yok say** ve **önbelleğe alma davranışını** **geçersiz kılmak** için **sorgu dizesi önbelleğe alma davranışını** ayarlayın.
       
 2. **Önbellek sona erme süresi** Için, **saniye** kutusuna 3600 veya **saat** kutusuna 1 yazın. 
 
@@ -70,7 +70,7 @@ Blob üst bilgisini ayarlamak için tercih edilen yöntem `Cache-Control` Azure 
 
    Bu genel önbelleğe alma kuralı bir saatin önbellek süresini ayarlar ve uç noktaya yapılan tüm istekleri etkiler. `Cache-Control` `Expires` Uç nokta tarafından belirtilen kaynak sunucu tarafından gönderilen tüm veya HTTP üstbilgilerini geçersiz kılar.   
 
-3. **Kaydet** ’i seçin.
+3. **Kaydet**’i seçin.
  
 **Özel önbelleğe alma kurallarını kullanarak bir blob dosyasının Cache-Control üst bilgilerini ayarlamak için:**
 
@@ -84,7 +84,7 @@ Blob üst bilgisini ayarlamak için tercih edilen yöntem `Cache-Control` Azure 
 
     İlk özel önbelleğe alma kuralı, `/blobcontainer1` uç noktanız tarafından belirtilen kaynak sunucudaki klasördeki tüm blob dosyaları için dört saatlik bir önbellek süresi ayarlar. İkinci kural yalnızca blob dosyası için ilk kuralı geçersiz kılar `blob1.txt` ve kendisi için iki saatlik bir önbellek süresi ayarlar.
 
-2. **Kaydet** ’i seçin.
+2. **Kaydet**’i seçin.
 
 
 ## <a name="setting-cache-control-headers-by-using-azure-powershell"></a>Azure PowerShell kullanarak Cache-Control üst bilgileri ayarlama
@@ -93,7 +93,7 @@ Blob üst bilgisini ayarlamak için tercih edilen yöntem `Cache-Control` Azure 
 
 [Azure PowerShell](/powershell/azure/) , Azure hizmetlerinizi yönetmenin en hızlı ve en güçlü yöntemlerinden biridir. `Get-AzStorageBlob`BLOB 'a başvuru almak için cmdlet 'ini kullanın, sonra `.ICloudBlob.Properties.CacheControl` özelliği ayarlayın. 
 
-Örneğin:
+Örnek:
 
 ```powershell
 # Create a storage context
@@ -117,7 +117,7 @@ $blob.ICloudBlob.SetProperties()
 ## <a name="setting-cache-control-headers-by-using-net"></a>.NET kullanarak Cache-Control üst bilgileri ayarlama
 .NET Code kullanarak bir Blobun üstbilgisini belirtmek için `Cache-Control` , [cloudblob. Properties. CacheControl](/dotnet/api/microsoft.azure.storage.blob.blobproperties.cachecontrol) özelliğini ayarlamak üzere [.net Için Azure depolama istemci kitaplığı](../storage/blobs/storage-quickstart-blobs-dotnet.md) ' nı kullanın.
 
-Örneğin:
+Örnek:
 
 ```csharp
 class Program
@@ -158,7 +158,7 @@ class Program
 Blob 'un *CacheControl* özelliğini Azure Depolama Gezgini ile güncelleştirmek için:
    1. Bir blob seçin ve bağlam menüsünden **Özellikler** ' i seçin. 
    2. *CacheControl* özelliği için aşağı kaydırın.
-   3. Bir değer girin ve ardından **Kaydet** ' i seçin.
+   3. Bir değer girin ve ardından **Kaydet**' i seçin.
 
 
 ![Azure Depolama Gezgini özellikleri](./media/cdn-manage-expiration-of-blob-content/cdn-storage-explorer-properties.png)

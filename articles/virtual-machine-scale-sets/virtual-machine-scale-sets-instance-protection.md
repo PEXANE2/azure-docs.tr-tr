@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: availability
 ms.date: 02/26/2020
 ms.reviewer: jushiman
-ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: 59720a3e89db29ba3eb0829084dd5252e27e9cc9
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: avverma
+ms.openlocfilehash: 8c4944da8ffcaa75e6448483918a29809c32830b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92746804"
 ---
 # <a name="instance-protection-for-azure-virtual-machine-scale-set-instances"></a>Azure sanal makine ölçek kümesi örnekleri için örnek koruması
@@ -45,16 +45,16 @@ Bu makalede, ölçek kümesi örnekleriyle farklı örnek koruma özelliklerini 
 
 Ölçek kümesi örnekleriniz üzerinde ölçek-ın koruması uygulamanın aşağıdaki örneklerde ayrıntılı olarak açıklandığı birçok yolu vardır.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Ölçek kümesindeki bir örneğe Azure portal ile ölçek genişletme koruması uygulayabilirsiniz. Aynı anda birden çok örnek ayarlayamezsiniz. Korumak istediğiniz her örnek için adımları tekrarlayın.
  
 1. Var olan bir sanal makine ölçek kümesine gidin.
-1. **Ayarlar** ' ın altında, sol taraftaki menüden **örnekler** ' i seçin.
+1. **Ayarlar**' ın altında, sol taraftaki menüden **örnekler** ' i seçin.
 1. Korumak istediğiniz örneğin adını seçin.
 1. **Koruma ilkesi** sekmesini seçin.
 1. **Koruma ilkesi** dikey penceresinde, **ölçeğe karşı koru** seçeneğini belirleyin.
-1. **Kaydet** ’i seçin. 
+1. **Kaydet**’i seçin. 
 
 ### <a name="rest-api"></a>REST API
 
@@ -113,16 +113,16 @@ Bir örneği ölçek kümesi eylemlerden korumak aynı zamanda örneği otomatik
 
 Ölçek kümesi eylemleri koruması, ölçek kümesi örneklerinizin aşağıdaki örneklerde ayrıntılı olarak açıklandığı şekilde uygulanması için birden çok yol vardır.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Ölçek kümesi eylemleriyle Azure portal, ölçek kümesindeki bir örneğe koruma uygulayabilirsiniz. Aynı anda birden çok örnek ayarlayamezsiniz. Korumak istediğiniz her örnek için adımları tekrarlayın.
  
 1. Var olan bir sanal makine ölçek kümesine gidin.
-1. **Ayarlar** ' ın altında, sol taraftaki menüden **örnekler** ' i seçin.
+1. **Ayarlar**' ın altında, sol taraftaki menüden **örnekler** ' i seçin.
 1. Korumak istediğiniz örneğin adını seçin.
 1. **Koruma ilkesi** sekmesini seçin.
 1. **Koruma ilkesi** dikey penceresinde **Ölçek kümesini koru eylemleri** seçeneğini belirleyin.
-1. **Kaydet** ’i seçin. 
+1. **Kaydet**’i seçin. 
 
 ### <a name="rest-api"></a>REST API
 

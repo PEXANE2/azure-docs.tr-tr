@@ -10,10 +10,10 @@ ms.date: 09/8/2020
 ms.author: duau
 ms.custom: subject-armqs
 ms.openlocfilehash: 24460167e2279e7d3001d0bc16d050beb5b55289
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92791010"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Azure DNS bölgesi ve kaydı oluşturma
@@ -66,7 +66,7 @@ Azure Traffic Manager ile ilgili daha fazla şablon bulmak için bkz. [Azure hı
 
 1. PowerShell betiğini kopyalamak için önceki kod bloğundan **Kopyala** ' yı seçin.
 
-1. Kabuk konsol bölmesine sağ tıklayın ve ardından **Yapıştır** ' ı seçin.
+1. Kabuk konsol bölmesine sağ tıklayın ve ardından **Yapıştır**' ı seçin.
 
 1. Değerleri girin.
 
@@ -80,7 +80,7 @@ Azure PowerShell, şablonu dağıtmak için kullanılır. Azure PowerShell ek ol
 
 ## <a name="validate-the-deployment"></a>Dağıtımı doğrulama
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Sol bölmeden **kaynak grupları** ' nı seçin.
 
@@ -88,11 +88,11 @@ Azure PowerShell, şablonu dağıtmak için kullanılır. Azure PowerShell ek ol
 
 1. Kaynak grubunun burada görülen aşağıdaki kaynakları içermesi gerekir:
 
-    :::image type="content" source="./media/dns-getstarted-template/resource-group-dns-zone.png" alt-text="Azure DNS bölgesi Kaynak Yöneticisi şablonu PowerShell dağıtım çıkışı":::
+    :::image type="content" source="./media/dns-getstarted-template/resource-group-dns-zone.png" alt-text="DNS bölgesi dağıtımı kaynak grubu":::
 
 1. `azurequickstart.org`Bölgesinin `A` ve değerine başvuran bir kayıtla düzgün şekilde oluşturulduğunu doğrulamak için, öğesinin SONEKINE sahip DNS bölgesini seçin `1.2.3.4` `1.2.3.5` .
 
-    :::image type="content" source="./media/dns-getstarted-template/dns-zone-overview.png" alt-text="Azure DNS bölgesi Kaynak Yöneticisi şablonu PowerShell dağıtım çıkışı":::
+    :::image type="content" source="./media/dns-getstarted-template/dns-zone-overview.png" alt-text="DNS bölgesi dağıtımı":::
 
 1. Önceki adımdan ad sunucusu adlarından birini kopyalayın.
 
@@ -102,7 +102,7 @@ Azure PowerShell, şablonu dağıtmak için kullanılır. Azure PowerShell ek ol
    nslookup www.<dns zone name> <name server name>
    ```
 
-   Örneğin:
+   Örnek:
 
    ```cmd
    nslookup www.2lwynbseszpam.azurequickstart.org ns1-09.azure-dns.com.
@@ -110,7 +110,7 @@ Azure PowerShell, şablonu dağıtmak için kullanılır. Azure PowerShell ek ol
 
    Aşağıdaki ekran görüntüsüne benzer bir şey görmeniz gerekir:
 
-    :::image type="content" source="./media/dns-getstarted-template/dns-zone-validation.png" alt-text="Azure DNS bölgesi Kaynak Yöneticisi şablonu PowerShell dağıtım çıkışı":::
+    :::image type="content" source="./media/dns-getstarted-template/dns-zone-validation.png" alt-text="DNS bölgesi nslookup":::
 
 Ana bilgisayar adı `www.2lwynbseszpam.azurequickstart.org` `1.2.3.4` `1.2.3.5` , yapılandırdığınız gibi ve olarak çözümlenir. Bu sonuç, ad çözümlemenin doğru çalıştığını doğrular.
 

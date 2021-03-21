@@ -11,10 +11,10 @@ ms.date: 09/19/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 29b34041042f00d72b8a9fe86e31bd80f8c77dc2
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94953959"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Azure Active Directory B2C nedir?
@@ -23,7 +23,7 @@ Azure Active Directory B2C, hizmet olarak işletmeler arası kimlik sağlar. Mü
 
 ![Azure AD B2C kimlik sağlayıcılarının ve aşağı akış uygulamalarının bilgi grafiği](./media/overview/azureadb2c-overview.png)
 
-Azure Active Directory B2C (Azure AD B2C), günde milyonlarca kullanıcıyı ve milyarlarca kimlik doğrulamasını destekleyebilen bir müşteri kimlik erişim yönetimi (CıHAR) çözümüdür. Kimlik doğrulama platformunun ölçeklendirilmesi ve güvenliği, hizmet reddi, parola spreyi veya deneme yanılma saldırıları gibi tehditleri otomatik olarak işleme işlemlerini gerçekleştirir.
+Azure Active Directory B2C (Azure AD B2C), her gün milyonlarca kullanıcıyı ve milyarlarca kimlik doğrulaması işlemini destekleme kapasitesine sahip olan bir müşteri kimliği erişim yönetimi (CIAM) çözümüdür. Kimlik doğrulama platformunun ölçeklendirilmesi ve güvenliği, hizmet reddi, parola spreyi veya deneme yanılma saldırıları gibi tehditleri otomatik olarak işleme işlemlerini gerçekleştirir.
 
 ## <a name="custom-branded-identity-solution"></a>Özel markalı kimlik çözümü
 

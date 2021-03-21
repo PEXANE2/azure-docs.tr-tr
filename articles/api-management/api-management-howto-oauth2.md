@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 08/14/2020
 ms.author: apimpm
 ms.openlocfilehash: fae4e349d46425c0c2b2b923d6a61e2e588708c1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93077260"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Azure API Management 'de OAuth 2,0 kullanarak Geliştirici hesaplarını yetkilendirme
@@ -38,7 +38,7 @@ Bu kılavuzda, API Management hizmeti örneğinizi geliştirici hesapları için
 > [!NOTE]
 > Henüz bir API Management hizmet örneği oluşturmadıysanız, bkz. [API Management hizmet örneği oluşturma][Create an API Management service instance].
 
-1. Sol taraftaki menüdeki OAuth 2,0 sekmesine tıklayın ve **+ Ekle** ' ye tıklayın.
+1. Sol taraftaki menüdeki OAuth 2,0 sekmesine tıklayın ve **+ Ekle**' ye tıklayın.
 
     ![OAuth 2,0 menüsü](./media/api-management-howto-oauth2/oauth-01.png)
 
@@ -51,7 +51,7 @@ Bu kılavuzda, API Management hizmeti örneğinizi geliştirici hesapları için
 
     ![OAuth 2,0 yeni sunucu](./media/api-management-howto-oauth2/oauth-02.png)
 
-4. Formun sonraki bölümü **Yetkilendirme verme türlerini** , **Yetkilendirme uç noktası URL 'sini** ve **yetkilendirme isteği yöntemi** ayarlarını içerir.
+4. Formun sonraki bölümü **Yetkilendirme verme türlerini**, **Yetkilendirme uç noktası URL 'sini** ve **yetkilendirme isteği yöntemi** ayarlarını içerir.
 
     İstenen türleri denetleyerek **Yetkilendirme verme türlerini** belirtin. **Yetkilendirme kodu** varsayılan olarak belirtilir.
 
@@ -61,7 +61,7 @@ Bu kılavuzda, API Management hizmeti örneğinizi geliştirici hesapları için
 
     **Yetkilendirme isteği yöntemi** , yetkilendirme isteğinin OAuth 2,0 sunucusuna nasıl gönderileceğini belirtir. Varsayılan olarak **Al** seçilidir.
 
-5. Ardından, **belirteç uç noktası URL 'si** , **istemci kimlik doğrulama yöntemleri** , **erişim belirteci gönderme yöntemi** ve **varsayılan kapsam** belirtilmelidir.
+5. Ardından, **belirteç uç noktası URL 'si**, **istemci kimlik doğrulama yöntemleri**, **erişim belirteci gönderme yöntemi** ve **varsayılan kapsam** belirtilmelidir.
 
     ![Add OAuth2 Service ekranını gösteren ekran görüntüsü.](./media/api-management-howto-oauth2/oauth-03.png)
 
@@ -90,11 +90,11 @@ Bu kılavuzda, API Management hizmeti örneğinizi geliştirici hesapları için
 
     ![OAuth 2,0 API 'Leri](./media/api-management-howto-oauth2/oauth-05.png)
 
-2. İstenen API 'nin adına tıklayın ve **Ayarlar** ' a tıklayın. **Güvenlik** bölümüne gidip **OAuth 2,0** kutusunu işaretleyin.
+2. İstenen API 'nin adına tıklayın ve **Ayarlar**' a tıklayın. **Güvenlik** bölümüne gidip **OAuth 2,0** kutusunu işaretleyin.
 
     ![OAuth 2,0 ayarları](./media/api-management-howto-oauth2/oauth-06.png)
 
-3. Açılan listeden istenen **Yetkilendirme sunucusunu** seçin ve **Kaydet** ' e tıklayın.
+3. Açılan listeden istenen **Yetkilendirme sunucusunu** seçin ve **Kaydet**' e tıklayın.
 
     ![Seçilen yetkilendirme sunucusunu ve Kaydet düğmesini vurgulayan ekran görüntüsü.](./media/api-management-howto-oauth2/oauth-07.png)
 
@@ -104,14 +104,14 @@ Bu kılavuzda, API Management hizmeti örneğinizi geliştirici hesapları için
 
 OAuth 2,0 yetkilendirme sunucunuzu yapılandırdıktan ve API 'nizi bu sunucuyu kullanacak şekilde yapılandırdıktan sonra, geliştirici Portalına gidip bir API 'yi çağırarak test edebilirsiniz. Azure API Management örneğine **genel bakış** sayfasından üstteki menüden **Geliştirici Portalı (eski)** seçeneğine tıklayın.
 
-Üstteki menüde **API 'ler** ' e tıklayın ve **echo API** ' yi seçin.
+Üstteki menüde **API 'ler** ' e tıklayın ve **echo API**' yi seçin.
 
 ![Echo API’si][api-management-apis-echo-api]
 
 > [!NOTE]
 > Yapılandırılmış ya da hesabınıza görünen yalnızca bir API’niz varsa, API’lere tıklamak sizi doğrudan bu API’nin işlemlerine götürür.
 
-**Kaynak al** işlemini seçin, **Konsolu Aç** ' a tıklayın ve ardından açılan listeden **yetkilendirme kodu** ' nu seçin.
+**Kaynak al** işlemini seçin, **Konsolu Aç**' a tıklayın ve ardından açılan listeden **yetkilendirme kodu** ' nu seçin.
 
 ![Konsolu açma][api-management-open-console]
 

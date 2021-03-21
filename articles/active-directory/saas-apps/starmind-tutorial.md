@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/25/2020
 ms.author: jeedes
 ms.openlocfilehash: ecccc0bf05dfc4e27835a676748ca144c6bcc6c8
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92521994"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-starmind"></a>Öğretici: Staraklla çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -54,7 +54,7 @@ Staraklın Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden yö
 
 ## <a name="configure-and-test-azure-ad-sso-for-starmind"></a>Azure AD SSO 'yu Starakılda yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu starakılda yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında Starakılda bir bağlantı ilişkisi kurmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu starakılda yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında Starakılda bir bağlantı ilişkisi kurmanız gerekir.
 
 Azure AD SSO 'yu, Starakılda yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
