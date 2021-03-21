@@ -7,17 +7,17 @@ author: dcstwh
 ms.author: weetok
 ms.date: 09/08/2020
 ms.openlocfilehash: 704360ac37e016de9efe2248181f7db358f5a7cf
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100371490"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Azure Data Factory 'de görsel yazma
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Azure Data Factory Kullanıcı arabirimi deneyimi (UX), herhangi bir kod yazmak zorunda kalmadan veri fabrikanızın kaynaklarını görsel olarak yazmanızı ve dağıtmanızı sağlar. Etkinlikleri bir işlem hattı tuvaline sürükleyebilir, test çalıştırmaları gerçekleştirebilir, tekrarlayarak hata ayıklayın ve işlem hattı çalıştırmalarınızın dağıtımını yapabilir ve izleyebilirsiniz.
+Azure Data Factory Kullanıcı arabirimi deneyimi (UX), herhangi bir kod yazmak zorunda kalmadan veri fabrikanızın kaynaklarını görsel olarak yazmanızı ve dağıtmanızı sağlar. Etkinlikleri işlem hattı tuvaline sürükleyebilir, test çalıştırmaları yapabilir, yinelemeli olarak hataları ayıklayabilir, işlem hattı çalıştırmalarınızı dağıtabilir ve izleyebilirsiniz.
 
 Şu anda Azure Data Factory UX yalnızca Microsoft Edge ve Google Chrome 'da desteklenir.
 

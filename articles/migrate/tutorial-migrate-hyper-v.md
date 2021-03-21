@@ -5,16 +5,16 @@ author: bsiva
 ms.author: bsiva
 ms.manager: abhemraj
 ms.topic: tutorial
-ms.date: 06/08/2020
+ms.date: 03/18/2021
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 9d0fa516fefefe4c3d8e67c3e6d592ec4274943c
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 0072ce81fc619c39770eba52e24dc5a0c57280a6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878181"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604585"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Hyper-V VM’lerini Azure’a geçirme 
 
@@ -135,12 +135,7 @@ Bulma işlemi tamamlandıktan sonra, Hyper-V VM 'lerinin Azure 'a çoğaltılmas
 ## <a name="provision-for-the-first-time"></a>İlk kez sağlama
 
 Azure geçişi projesinde çoğaltmakta olduğunuz ilk VM ise Azure geçişi: sunucu geçişi, bu kaynakları projeyle aynı kaynak grubunda otomatik olarak sağlar.
-
-- **Service Bus**: Azure geçişi: sunucu geçişi, yüklemeye çoğaltma düzenleme iletileri göndermek için Service Bus kullanır.
-- **Ağ geçidi depolama hesabı**: Azure geçişi: sunucu geçişi, çoğaltılan VM 'ler hakkında durum bilgilerini depolamak için ağ geçidi depolama hesabını kullanır.
-- **Günlük depolama hesabı**: Azure geçişi gereci, VM 'ler için çoğaltma günlüklerini bir günlük depolama hesabına yükler. Azure geçişi, çoğaltma bilgilerini çoğaltma tarafından yönetilen disklere uygular.
-- **Anahtar Kasası**: Azure geçişi gereci, hizmet veri yolu için bağlantı dizelerini yönetmek üzere anahtar kasasını ve Çoğaltmada kullanılan depolama hesapları için erişim anahtarlarını kullanır. Hyper-V VM değerlendirmesi ve geçişi için [Azure hazırlandığınızda](./tutorial-discover-hyper-v.md#prepare-an-azure-user-account) , anahtar kasasının depolama hesabına erişmesi için gereken izinleri ayarlamış olmanız gerekir. 
-
+- **Önbellek depolama hesabı**: Hyper-V konaklarında yüklü olan Azure Site Recovery sağlayıcı yazılımı, aboneliğinizdeki depolama hesabına (önbellek depolama hesabı veya günlük depolama hesabı olarak bilinir) çoğaltma Için yapılandırılmış VM 'ler için çoğaltma verilerini yükler. Azure geçişi hizmeti daha sonra karşıya yüklenen çoğaltma verilerini depolama hesabından VM 'ye karşılık gelen çoğaltma ile yönetilen disklere kopyalar. Bir VM için çoğaltma yapılandırılırken önbellek depolama hesabının belirtilmesi gerekir ve çoğaltma, projede ilk kez yapılandırıldığında Azure geçişi projesi için otomatik olarak bir tane oluşturur.
 
 ## <a name="track-and-monitor"></a>İzleme ve izleme
 

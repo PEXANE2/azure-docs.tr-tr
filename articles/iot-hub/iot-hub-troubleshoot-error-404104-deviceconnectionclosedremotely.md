@@ -10,10 +10,10 @@ ms.date: 01/30/2020
 ms.author: jlian
 ms.custom: mqtt
 ms.openlocfilehash: 673a76417739fa59a91979cca7c6807a584868f0
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92538264"
 ---
 # <a name="404104-deviceconnectionclosedremotely"></a>404104 DeviceConnectionClosedRemotely
@@ -36,13 +36,13 @@ Birçok cihaz bağlantısı her seferinde, [bağlı cihazlar (connectedDeviceCou
 
 ## <a name="causes"></a>Nedenler
 
-### <a name="cause-1"></a>Neden 1
+### <a name="cause-1"></a>1\. Neden
 
 [IoT Hub bağlanmak için kullanılan SAS belirteci](iot-hub-devguide-security.md#security-tokens) , IoT Hub cihazın bağlantısının kesilip kesilmesine neden olur. Belirteç cihaz tarafından yenilendiğinde bağlantı yeniden oluşturulur. Örneğin, [SAS belirtecinin her saat, her saat için varsayılan olarak zaman aşımına uğrar](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#connection-authentication)ve bu da normal bağlantı kesilmesine yol açabilir.
 
 Daha fazla bilgi için bkz. [401003 Iothubyetkisiz nedeni](iot-hub-troubleshoot-error-401003-iothubunauthorized.md#cause-1).
 
-### <a name="cause-2"></a>Neden 2
+### <a name="cause-2"></a>2\. Neden
 
 Bazı olanaklar şunlardır:
 
@@ -62,13 +62,13 @@ IoT Hub geçici bir sorun yaşıyor olabilir. [IoT Hub iç sunucu hatası nedeni
 
 Bkz. [401003 Iothubyetkilendirilmemiş çözüm 1](iot-hub-troubleshoot-error-401003-iothubunauthorized.md#solution-1)
 
-### <a name="solution-2"></a>2\. Çözüm
+### <a name="solution-2"></a>Çözüm 2
 
 - Cihazın [bağlantıyı test](tutorial-connectivity.md)ederek IoT Hub iyi bir bağlantı olduğundan emin olun. Ağ güvenilmez veya kesintili ise, algılama işleminin (örneğin, Azure Izleyici uyarıları aracılığıyla) daha uzun sürmesiyle sonuçlanabileceğinden, etkin tut değerinin arttırılmayı önermiyoruz. 
 
 - [IoT SDK](iot-hub-devguide-sdks.md)'larının en son sürümlerini kullanın.
 
-### <a name="solution-3"></a>3\. Çözüm
+### <a name="solution-3"></a>Çözüm 3
 
 [IoT Hub iç sunucu hatalarını giderme çözümlerine](iot-hub-troubleshoot-error-500xxx-internal-errors.md#solution)bakın.
 

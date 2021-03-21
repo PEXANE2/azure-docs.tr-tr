@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, devx-track-azurecli
 ms.openlocfilehash: 2c19ee2b8e7ec3c695b2c76c46402c118c559b40
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98736246"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Öğretici: Yönetilen kimlik kullanarak App Service’tan Azure SQL Veritabanı bağlantısını güvenli hale getirme
@@ -41,7 +41,7 @@ ms.locfileid: "98736246"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makale, öğreticide kaldığınız yerden devam eder [: SQL veritabanı Ile Azure 'da bir ASP.NET uygulaması derleme](app-service-web-tutorial-dotnet-sqldatabase.md) veya [öğretici: Azure App Service IÇINDE ASP.NET Core ve SQL veritabanı uygulaması oluşturma](tutorial-dotnetcore-sqldb-app.md). Henüz yapmadıysanız, önce iki öğreticiden birini izleyin. Alternatif olarak, kendi .NET uygulamanıza yönelik adımları SQL veritabanı ile uyarlayabilirsiniz.
 

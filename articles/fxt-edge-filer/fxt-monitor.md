@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 06/20/2019
 ms.author: rohogue
 ms.openlocfilehash: 86e1d74d5e4ab9f6e799c73bcf0d807d0d874f21
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92219726"
 ---
 # <a name="monitor-azure-fxt-edge-filer-hardware-status"></a>Azure FXT Edge Filer donanım durumunu izleme
@@ -60,7 +60,7 @@ Sol taraftaki durum göstergeleri, bu sistemde bir hata varsa Solid bir TBU ış
 
 Bu çözümleri denemeden sonra hala hata yaşıyorsanız yardım için [desteğe başvurun](fxt-support-ticket.md) .
 
-| Simge | Açıklama | Hata koşulu | Olası çözümler |
+| Simge | Description | Hata koşulu | Olası çözümler |
 |----------------|---------------|--------------------|----------------------|
 | ![sürücü simgesi](media/fxt-monitor/fxt-hd-icon.jpg) | Sürücü durumu | Sürücü hatası | Sürücüde hata olup olmadığını öğrenmek için sistem olay günlüğünü denetleyin veya <br>Uygun çevrimiçi tanılama testini çalıştırın; sistemi yeniden başlatın ve katıştırılmış tanılamayı (ePSA) çalıştırın veya <br>Sürücüler bir RAID dizisinde yapılandırılmışsa, sistemi yeniden başlatın ve konak bağdaştırıcısı yapılandırma yardımcı programı programını girin |
 |![sıcaklık simgesi](media/fxt-monitor/fxt-temp-icon.jpg) | Sıcaklık durumu | Isı hatası-Örneğin, bir fan başarısız oldu veya çevresel sıcaklık aralığın dışında | Aşağıdaki adreslenebilir koşulları denetleyin: <br>Soğutma fanı eksik veya başarısız oldu <br>Sistemin kapağı, AIR shkabd, bellek modülü boş veya arka doldurucu ayracı kaldırıldı <br>Çevresel sıcaklık çok yüksek <br>Dış uçak akışı engellemeli |

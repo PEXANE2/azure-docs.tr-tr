@@ -8,16 +8,16 @@ ms.topic: overview
 ms.date: 10/05/2020
 ms.author: duau
 ms.openlocfilehash: 82562eae748753cd785851c5d91f5f152b4c9960
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92206960"
 ---
 # <a name="what-is-azure-expressroute"></a>Azure ExpressRoute nedir?
-ExpressRoute, şirket içi ağlarınızı bir bağlantı sağlayıcısının yardımıyla özel bir bağlantı üzerinden Microsoft bulutuna genişletmenizi sağlar. ExpressRoute ile Microsoft Azure ve Microsoft 365 gibi Microsoft bulut hizmetleriyle bağlantı kurabilirsiniz.
+ExpressRoute, bir bağlantı sağlayıcının yardımıyla özel bağlantı üzerinden şirket içi ağlarınızı Microsoft bulutuna genişletmenizi sağlar. ExpressRoute'u kullanarak Microsoft Azure ve Microsoft 365 gibi Microsoft bulut hizmetleriyle bağlantı kurabilirsiniz.
 
-Bağlantı, bir tek başına (IP VPN) ağı, noktadan noktaya Ethernet ağı veya bir bağlantı sağlayıcısı aracılığıyla bir sanal çapraz bağlantı aracılığıyla, bir birlikte bulundurma tesisinde olabilir. ExpressRoute bağlantıları, genel Internet üzerinden geçmiyor. Bu, ExpressRoute bağlantılarına Internet üzerinden tipik bağlantılardan daha fazla güvenilirlik, daha hızlı hız, tutarlı gecikme süreleri ve daha yüksek güvenlik sunma olanağı sağlar. ExpressRoute kullanarak ağınızı Microsoft’a bağlama hakkında bilgi için bkz. [ExpressRoute bağlantı modelleri](expressroute-connectivity-models.md).
+Bağlantının kaynağı herhangi iki ağ (IP VPN), noktadan noktaya Ethernet ağı veya ortak barındırma tesisindeki bağlantı sağlayıcısı aracılığıyla sanal çapraz bağlantı olabilir. ExpressRoute bağlantıları, genel İnternet üzerinden geçmez. Bu da ExpressRoute bağlantılarının İnternet üzerinden yapılan tipik bağlantılara kıyasla daha güvenilir, daha hızlı, tutarlı gecikme sürelerine sahip ve daha yüksek güvenlikli olmasını sağlar. ExpressRoute kullanarak ağınızı Microsoft 'a bağlama hakkında bilgi için bkz. [ExpressRoute bağlantı modelleri](expressroute-connectivity-models.md).
 
 ![ExpressRoute bağlantısına genel bakış](./media/expressroute-introduction/expressroute-connection-overview.png)
 
@@ -28,7 +28,7 @@ Bağlantı, bir tek başına (IP VPN) ağı, noktadan noktaya Ethernet ağı vey
 * ExpressRoute premium eklentisine sahip tüm bölgelerde Microsoft hizmetlerine genel bağlantı.
 * Ağınız ve Microsoft arasında BGP ile dinamik yönlendirme.
 * Yüksek güvenilirlik için her eşleme konumunda yerleşik yedeklilik.
-* Bağlantı çalışma süresi [SLA](https://azure.microsoft.com/support/legal/sla/).
+* Bağlantı çalışma süresi [SLA 'sı](https://azure.microsoft.com/support/legal/sla/).
 * Skype Kurumsal için QoS.
 
 Daha fazla bilgi için bkz. [ExpressRoute SSS](expressroute-faqs.md).
@@ -91,7 +91,7 @@ ExpressRoute bağlantı hattını çeşitli sayıda bant genişlikleriyle satın
 * 100 Mb/sn
 * 200 Mb/sn
 * 500 Mb/sn
-* 1 Gb/sn
+* 1 Gbps
 * 2 Gbps
 * 5 Gbps
 * 10 Gbps
@@ -112,7 +112,7 @@ Size en uygun faturalama modelini seçin. Takip edilen faturalama modelleri aras
 ## <a name="faq"></a>SSS
 ExpressRoute hakkında sık sorulan sorular için bkz. [ExpressRoute SSS](expressroute-faqs.md).
 
-## <a name="whats-new"></a><a name="new"></a>Yenilikler
+## <a name="whats-new"></a><a name="new"></a>Yenilikler nelerdir?
 
 RSS akışına abone olun ve [Azure Updates](https://azure.microsoft.com/updates/?category=networking&query=ExpressRoute) sayfasında en son ExpressRoute özelliği güncelleştirmelerini görüntüleyin.
 

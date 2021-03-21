@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/26/2020
 ms.openlocfilehash: 2b825b4d4485f401199556b6faaef0017f583cc1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91461198"
 ---
 # <a name="quickstart-set-up-a-lab-by-using-azure-devtest-labs-arm-template"></a>Hızlı başlangıç: Azure DevTest Labs ARM şablonunu kullanarak laboratuvar ayarlama
@@ -53,8 +53,8 @@ Dağıtımı otomatik olarak çalıştırmak için aşağıdaki düğmeye tıkla
 
 1. Daha sonra kolayca temizlemek için **Yeni bir kaynak grubu** oluşturun.
 1. Kaynak grubu için bir **konum** seçin. 
-1. **Laboratuvar için bir ad**girin. 
-1. **VM için bir ad**girin. 
+1. **Laboratuvar için bir ad** girin. 
+1. **VM için bir ad** girin. 
 1. VM 'ye erişebilen bir **Kullanıcı adı** girin. 
 1. Kullanıcının **parolasını** girin. 
 1. **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum '** u seçin. 
@@ -65,16 +65,16 @@ Dağıtımı otomatik olarak çalıştırmak için aşağıdaki düğmeye tıkla
 ## <a name="validate-the-deployment"></a>Dağıtımı doğrulama
 1. Dağıtımın durumunu görmek için üstteki **Bildirimler** ' i seçin ve **devam eden dağıtım** bağlantısı ' na tıklayın.
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/deployment-notification.png" alt-text="Şablon dağıtma sayfası":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/deployment-notification.png" alt-text="Dağıtım bildirimi":::
 2. **Dağıtım-genel bakış** sayfasında, dağıtım tamamlanana kadar bekleyin. Bu işlemin (özellikle, VM oluşturma) tamamlaması biraz zaman alır. Ardından, aşağıdaki görüntüde gösterildiği gibi kaynak grubuna **Git** veya **kaynak grubunun adını** seçin: 
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/navigate-resource-group.png" alt-text="Şablon dağıtma sayfası":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/navigate-resource-group.png" alt-text="Kaynak grubuna git":::
 3. **Kaynak grubu** sayfasında kaynak grubundaki kaynakların listesini görürsünüz. Kaynak türünde laboratuvarınızı görtığınızdan emin olun `DevTest Lab` . Ayrıca, kaynak grubundaki sanal ağ ve sanal makine gibi bağımlı kaynakları da görürsünüz. 
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/resource-group-home-page.png" alt-text="Şablon dağıtma sayfası":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/resource-group-home-page.png" alt-text="Kaynak grubunun giriş sayfası":::
 4. Laboratuvarınızın giriş sayfasını görmek için kaynak listesinden laboratuvarınızı seçin. **Sanal makinelerim** listesinde Windows Server 2019 Datacenter VM 'yi görtığınızdan emin olun. Aşağıdaki görüntüde **temel** bileşenler bölümü küçültülmüş. 
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/lab-home-page.png" alt-text="Şablon dağıtma sayfası":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/lab-home-page.png" alt-text="Laboratuvarın ana sayfası":::
 
     > [!IMPORTANT] 
     > Laboratuvar ve VM 'yi Azure üzerinde çalıştırmaya yönelik maliyetleri önlemek için bu sayfayı açık tutun ve sonraki bölümde yer alan yönergeleri izleyin. Laboratuvardaki VM 'ye erişimi test etmek için bir sonraki öğreticide gezinmek istiyorsanız, Bu öğreticiye geçtikten sonra kaynakları temizleyin. 
@@ -83,14 +83,14 @@ Dağıtımı otomatik olarak çalıştırmak için aşağıdaki düğmeye tıkla
 
 1. İlk olarak, kaynak grubunu silebilmeniz için Laboratuvarı silin. Kaynak grubunu içindeki bir laboratuvara silemezsiniz. Laboratuvarı silmek için araç çubuğunda **Sil** ' i seçin. 
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/delete-lab-button.png" alt-text="Şablon dağıtma sayfası":::
- 2. Onay sayfasında, **Laboratuvar adını**yazın ve **Sil**' i seçin. 
+    :::image type="content" source="./media/create-lab-windows-vm-template/delete-lab-button.png" alt-text="Laboratuvar düğmesini Sil":::
+ 2. Onay sayfasında, **Laboratuvar adını** yazın ve **Sil**' i seçin. 
  3. Laboratuvar silinene kadar bekleyin. Silme işleminden gelen bildirimleri görmek için **zil** simgesini seçin. Bu işlem biraz zaman alır. Laboratuvar silme işlemini onaylayın ve ardından içerik haritası menüsünde **kaynak grubunu** seçin. 
  
-    :::image type="content" source="./media/create-lab-windows-vm-template/confirm-lab-deletion.png" alt-text="Şablon dağıtma sayfası":::
- 1. **Kaynak grubu** sayfasında, araç çubuğundan **kaynak grubunu sil** ' i seçin. Onay sayfasında, **kaynak grubu adını**yazın ve **Sil**' i seçin. Kaynak grubunun silindiğini onaylamak için bildirimleri kontrol edin.
+    :::image type="content" source="./media/create-lab-windows-vm-template/confirm-lab-deletion.png" alt-text="Bildirimlerde VM 'nin silinmesini onaylayın":::
+ 1. **Kaynak grubu** sayfasında, araç çubuğundan **kaynak grubunu sil** ' i seçin. Onay sayfasında, **kaynak grubu adını** yazın ve **Sil**' i seçin. Kaynak grubunun silindiğini onaylamak için bildirimleri kontrol edin.
  
-    :::image type="content" source="./media/create-lab-windows-vm-template/delete-resource-group-button.png" alt-text="Şablon dağıtma sayfası":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/delete-resource-group-button.png" alt-text="Kaynak grubunu Sil düğmesi":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu hızlı başlangıçta VM ile bir laboratuvar oluşturdunuz. Laboratuvara erişme hakkında daha fazla bilgi edinmek için sonraki öğreticiye ilerleyin:

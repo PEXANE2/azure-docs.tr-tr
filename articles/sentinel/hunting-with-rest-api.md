@@ -16,13 +16,13 @@ ms.workload: na
 ms.date: 11/06/2020
 ms.author: yelevin
 ms.openlocfilehash: 64f05e18ff757d9f086cf06d74109bf64e32a05c
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98795688"
 ---
-# <a name="manage-hunting-and-livestream-queries-in-azure-sentinel-using-rest-api"></a>REST API kullanarak Azure Sentinel 'de hunme ve canlı akış sorgularını yönetme
+# <a name="manage-hunting-and-livestream-queries-in-azure-sentinel-using-rest-api"></a>Azure Sentinel'de REST API kullanarak avlanma ve canlı akış sorgularını yönetme
 
 Azure 'da yerleşik olarak oluşturulan Azure Sentinel Log Analytics, arama ve canlı akışı sorgularını yönetmek için Log Analytics ' REST API kullanmanıza olanak sağlar. Bu belgede, REST API kullanarak sorguları nasıl oluşturacağınız ve yöneteceğiniz gösterilmektedir.  Bu şekilde oluşturulan sorgular, Azure Sentinel Kullanıcı arabiriminde görüntülenir.
 

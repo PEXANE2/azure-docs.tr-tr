@@ -49,8 +49,6 @@
           href: ./linux/tutorial-load-balancer.md
         - name: 8 - Ağı yönetme
           href: ./linux/tutorial-virtual-network.md
-        - name: 9-kaynakları yönetme
-          href: ./linux/tutorial-govern-resources.md
     - name: Windows
       items:
         - name: 1 - VM oluşturma / yönetme
@@ -69,8 +67,6 @@
           href: ./windows/tutorial-load-balancer.md
         - name: 8 - Ağı yönetme
           href: ./windows/tutorial-virtual-network.md
-        - name: 9-kaynakları yönetme
-          href: ./windows/tutorial-govern-resources.md
 - name: İş yükleri
   items:
     - name: Red Hat
@@ -119,8 +115,8 @@
         - name: VM boyutunu değiştirme
           items:
             - name: CLI
-              href: ./linux/change-vm-size.md
               displayName: 'Change, resize, update size'
+              href: ./linux/change-vm-size.md
             - name: Portal veya PowerShell
               displayName: 'Change, resize, update size'
               href: ./windows/resize-vm.md
@@ -188,8 +184,8 @@
             - name: Performansı iyileştirme
               items:
                 - name: Linux
-                  href: ./linux/storage-performance.md
                   displayName: 'performance, Linux, storage performance'
+                  href: ./linux/storage-performance.md
                 - name: Windows
                   displayName: 'performance, Windows, storage performance'
                   href: ./windows/storage-performance.md
@@ -560,7 +556,7 @@
         - name: Python 3 özellikli Linux sistemleri ile ilgili sorunlar
           href: ./extensions/issues-using-vm-extensions-python-3.md
     - name: İç içe sanallaştırma
-      href: ./windows/nested-virtualization.md
+      href: 'https://docs.microsoft.com/virtualization/hyper-v-on-windows/user-guide/nested-virtualization'
     - name: Azure Resource Manager geçir
       items:
         - name: Kullanımdan kaldırma süreci 1 Mart 2023’te başlıyor
@@ -653,26 +649,26 @@
             - name: Cloud-init genel bakış
               href: ./linux/using-cloud-init.md
             - name: Derin dalış
-              displayname: cloud-init
               href: ./linux/cloud-init-deep-dive.md
+              displayname: cloud-init
             - name: Sorun giderme
-              displayname: cloud-init
               href: ./linux/cloud-init-troubleshooting.md
+              displayname: cloud-init
             - name: VM konak adını yapılandırma
-              displayname: cloud-init
               href: ./linux/cloudinit-update-vm-hostname.md
+              displayname: cloud-init
             - name: Bir VM içindeki güncelleştirme paketleri
-              displayname: cloud-init
               href: ./linux/cloudinit-update-vm.md
+              displayname: cloud-init
             - name: VM’ye kullanıcı ekleme
-              displayname: cloud-init
               href: ./linux/cloudinit-add-user.md
+              displayname: cloud-init
             - name: Takas dosyası yapılandırma
-              displayname: cloud-init
               href: ./linux/cloudinit-configure-swapfile.md
-            - name: Mevcut bash betiğini çalıştırma
               displayname: cloud-init
+            - name: Mevcut bash betiğini çalıştırma
               href: ./linux/cloudinit-bash-script.md
+              displayname: cloud-init
         - name: Sağlama Aracısı olmadan Linux görüntüleri oluşturma
           href: ./linux/no-agent.md
         - name: Linux Aracısı sağlamasını devre dışı bırakma
@@ -962,64 +958,64 @@
         - name: Sunucu tarafı şifrelemesi
           items:
             - name: Sunucu tarafı şifrelemeye genel bakış
-              displayname: 'Server side encryption, encryption, ADE'
               href: disk-encryption.md
+              displayname: 'Server side encryption, encryption, ADE'
             - name: Müşteri tarafından yönetilen anahtarları etkinleştir
               items:
                 - name: Portal
-                  displayname: 'Server side encryption, encryption, ADE'
                   href: disks-enable-customer-managed-keys-portal.md
+                  displayname: 'Server side encryption, encryption, ADE'
                 - name: PowerShell
-                  displayname: 'Server side encryption, encryption, ADE'
                   href: windows/disks-enable-customer-managed-keys-powershell.md
-                - name: CLI
                   displayname: 'Server side encryption, encryption, ADE'
+                - name: CLI
                   href: linux/disks-enable-customer-managed-keys-cli.md
+                  displayname: 'Server side encryption, encryption, ADE'
             - name: Konakta şifrelemeyi etkinleştir
               items:
                 - name: Portal
-                  displayname: 'Encryption at host, encryption, ADE'
                   href: disks-enable-host-based-encryption-portal.md
+                  displayname: 'Encryption at host, encryption, ADE'
                 - name: PowerShell
-                  displayname: 'Encryption at host, encryption, ADE'
                   href: windows/disks-enable-host-based-encryption-powershell.md
-                - name: CLI
                   displayname: 'Encryption at host, encryption, ADE'
+                - name: CLI
                   href: linux/disks-enable-host-based-encryption-cli.md
+                  displayname: 'Encryption at host, encryption, ADE'
             - name: Bekleyen verilerde çift şifrelemeyi etkinleştirme
               items:
                 - name: Portal
-                  displayname: 'double encryption at rest, encryption, ADE'
                   href: disks-enable-double-encryption-at-rest-portal.md
+                  displayname: 'double encryption at rest, encryption, ADE'
                 - name: PowerShell
-                  displayname: 'double encryption at rest, encryption, ADE'
                   href: windows/disks-enable-double-encryption-at-rest-powershell.md
-                - name: CLI
                   displayname: 'double encryption at rest, encryption, ADE'
+                - name: CLI
                   href: linux/disks-enable-double-encryption-at-rest-cli.md
+                  displayname: 'double encryption at rest, encryption, ADE'
         - name: Azure Disk Şifrelemesi
           items:
             - name: Linux
               items:
                 - name: Genel Bakış
-                  displayname: 'Azure disk encryption, encryption, ADE'
                   href: ./linux/disk-encryption-overview.md
+                  displayname: 'Azure disk encryption, encryption, ADE'
                 - name: Hızlı Başlangıçlar
                   items:
                     - name: Azure CLI’si
-                      displayname: 'Azure disk encryption, encryption, ADE'
                       href: ./linux/disk-encryption-cli-quickstart.md
+                      displayname: 'Azure disk encryption, encryption, ADE'
                     - name: Azure PowerShell
-                      displayname: 'Azure disk encryption, encryption, ADE'
                       href: ./linux/disk-encryption-powershell-quickstart.md
-                    - name: Azure portal
                       displayname: 'Azure disk encryption, encryption, ADE'
+                    - name: Azure portal
                       href: ./linux/disk-encryption-portal-quickstart.md
+                      displayname: 'Azure disk encryption, encryption, ADE'
                 - name: Linux için disk şifreleme senaryoları
                   href: ./linux/disk-encryption-linux.md
                 - name: Azure Disk Şifrelemesi için anahtar kasası
-                  displayname: 'Azure disk encryption, encryption, ADE, Key vault'
                   href: ./linux/disk-encryption-key-vault.md
+                  displayname: 'Azure disk encryption, encryption, ADE, Key vault'
                 - name: Disk şifrelemesi örnek betikleri
                   href: ./linux/disk-encryption-sample-scripts.md
                 - name: Yalıtılmış bir ağda disk şifrelemesi
@@ -1076,40 +1072,40 @@
     - name: Performans ve maliyet iyileştirmesi
       items:
         - name: Ultra diskler
-          displayname: 'Performance, cost, perf, disks, disk'
           href: disks-enable-ultra-ssd.md
+          displayname: 'Performance, cost, perf, disks, disk'
         - name: Sanal makine ve disk performansı
-          displayname: 'Performance, cost, perf, disks, disk'
           href: disks-performance.md
+          displayname: 'Performance, cost, perf, disks, disk'
         - name: Disk Depolama rezervasyonları
-          displayname: 'Performance, cost, perf, disks, disk'
           href: ../cost-management-billing/reservations/understand-disk-reservations.md?context=/azure/virtual-machines/context/context
+          displayname: 'Performance, cost, perf, disks, disk'
         - name: Disk Depolama rezervasyonu yapma
-          displayname: 'Performance, cost, perf, disks, disk'
           href: disks-reserved-capacity.md
+          displayname: 'Performance, cost, perf, disks, disk'
         - name: Yüksek performans tasarımı
-          displayname: 'Performance, cost, perf, disks, disk'
           href: premium-storage-performance.md
+          displayname: 'Performance, cost, perf, disks, disk'
         - name: Diskle ilgili ölçümler
-          displayname: 'Performance, cost, perf, disks, disk'
           href: disks-metrics.md
+          displayname: 'Performance, cost, perf, disks, disk'
         - name: Disk patlama modelleri
-          displayname: 'Performance, cost, perf, disks, disk'
           href: disk-bursting.md
+          displayname: 'Performance, cost, perf, disks, disk'
         - name: İsteğe bağlı patlaması etkinleştirin
-          displayname: 'Performance, cost, perf, disks, disk'
           href: disks-enable-bursting.md
-        - name: Disk performans katmanları
           displayname: 'Performance, cost, perf, disks, disk'
+        - name: Disk performans katmanları
           href: disks-change-performance.md
+          displayname: 'Performance, cost, perf, disks, disk'
         - name: Disk performansı katmanını değiştirme
           items:
             - name: CLı ve PowerShell
-              displayname: 'Performance, cost, perf, disks, disk, change disk performance tier'
               href: disks-performance-tiers.md
-            - name: Portal
               displayname: 'Performance, cost, perf, disks, disk, change disk performance tier'
+            - name: Portal
               href: disks-performance-tiers-portal.md
+              displayname: 'Performance, cost, perf, disks, disk, change disk performance tier'
         - name: Yazma hızlandırıcıyı etkinleştirme
           href: how-to-enable-write-accelerator.md
         - name: Disk kıyaslama
@@ -1167,8 +1163,6 @@
             - name: PowerShell
               displayName: Unmanaged VM to Managed Disks
               href: ./windows/convert-unmanaged-to-managed-disks.md
-        - name: CLı kullanarak VM kopyalama
-          href: ./linux/copy-vm.md
     - name: Veri diski ekleme
       items:
         - name: Linux
@@ -1240,8 +1234,6 @@
           href: ./windows/azure-to-guest-disk-mapping.md
         - name: Dosya depolama
           items:
-            - name: SMB kullanarak Linux bağlama
-              href: ./linux/mount-azure-file-storage-on-linux-using-smb.md
             - name: Dosyaları bir Linux VM’ye kopyalama
               href: ./linux/copy-files-to-linux-vm-using-scp.md
         - name: Kullanıma açılmamış diskleri bulma
@@ -1335,8 +1327,8 @@
     - name: Güvenlik temelleri
       items:
         - name: Linux
-          displayname: Security baselines
           href: ./linux/security-baseline.md
+          displayname: Security baselines
         - name: Windows
           displayName: Security baselines
           href: ./windows/security-baseline.md
@@ -1345,8 +1337,8 @@
     - name: Güvenilir başlatma
       items:
         - name: Genel Bakış
-          DisplayName: 'Trusted Launch, shielded VM'
           href: trusted-launch.md
+          DisplayName: 'Trusted Launch, shielded VM'
         - name: Portalı kullanarak dağıtma
           href: trusted-launch-portal.md
     - name: Tam zamanında erişim
@@ -1503,8 +1495,8 @@
         - name: Zamanlanmış olaylar
           items:
             - name: Linux
-              displayname: Scheduled events
               href: ./linux/scheduled-events.md
+              displayname: Scheduled events
             - name: Windows
               displayName: Scheduled events
               href: ./windows/scheduled-events.md
@@ -1649,17 +1641,17 @@
     - name: Bir VM’yi etiketleme
       items:
         - name: CLI
-          displayname: 'tag, tagging, tag a vm'
           href: tag-cli.md
+          displayname: 'tag, tagging, tag a vm'
         - name: Portal
-          displayname: 'tag, tagging, tag a vm'
           href: tag-portal.md
+          displayname: 'tag, tagging, tag a vm'
         - name: PowerShell
-          displayname: 'tag, tagging, tag a vm'
           href: tag-powershell.md
-        - name: Şablon
           displayname: 'tag, tagging, tag a vm'
+        - name: Şablon
           href: tag-template.md
+          displayname: 'tag, tagging, tag a vm'
     - name: Meta verileri izleme
       items:
         - name: CLI
@@ -1682,35 +1674,35 @@
     - name: VM’leri yedekleme
       items:
         - name: Genel Bakış
-          dispayName: 'backup VMs, Azure Backup, recovery'
           href: ../backup/backup-azure-vms-introduction.md
+          dispayName: 'backup VMs, Azure Backup, recovery'
         - name: Hızlı Başlangıçlar
           items:
             - name: CLI
-              dispayName: 'backup VMs, Azure Backup, recovery'
               href: ../backup/quick-backup-vm-cli.md
+              dispayName: 'backup VMs, Azure Backup, recovery'
             - name: PowerShell
-              dispayName: 'backup VMs, Azure Backup, recovery'
               href: ../backup/quick-backup-vm-powershell.md
+              dispayName: 'backup VMs, Azure Backup, recovery'
             - name: Portal
-              dispayName: 'backup VMs, Azure Backup, recovery'
               href: ../backup/quick-backup-vm-portal.md
-            - name: Şablon
               dispayName: 'backup VMs, Azure Backup, recovery'
+            - name: Şablon
               href: ../backup/quick-backup-vm-template.md
+              dispayName: 'backup VMs, Azure Backup, recovery'
         - name: Birden fazla VM’yi yedekleme
           href: ../backup/tutorial-backup-vm-at-scale.md
         - name: Geri yükleme seçenekleri
           href: ../backup/backup-azure-arm-restore-vms.md
         - name: Destek matrisi
-          dispayName: 'backup VMs, Azure Backup, recovery'
           href: ../backup/backup-support-matrix-iaas.md
+          dispayName: 'backup VMs, Azure Backup, recovery'
         - name: Fiyatlandırma
-          dispayName: 'backup VMs, Azure Backup, recovery'
           href: ../backup/azure-backup-pricing.md
-        - name: SSS
           dispayName: 'backup VMs, Azure Backup, recovery'
+        - name: SSS
           href: ../backup/backup-azure-vm-backup-faq.yml
+          dispayName: 'backup VMs, Azure Backup, recovery'
     - name: Olağanüstü durum kurtarma
       items:
         - name: Genel Bakış
@@ -1757,8 +1749,8 @@
             - name: Amazon Web Services’den (AWS) Azure’a geçiş
               href: ./windows/aws-to-azure.md
             - name: Şirket içi VM’yi karşıya yükleme
-              displayname: Migrate from Amazon Web Services (AWS) to Azure
               href: ./linux/upload-vhd.md
+              displayname: Migrate from Amazon Web Services (AWS) to Azure
             - name: Azure Site Recovery’yi kullanma
               href: ../site-recovery/migrate-overview.md?context=/azure/virtual-machines/context/context
 - name: Altyapı otomasyonu

@@ -12,10 +12,10 @@ ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
 ms.openlocfilehash: 6f677c8753f09e146d300186e19217568952b417
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101705407"
 ---
 # <a name="terminology-and-entity-changes-between-media-services-v2-and-v3"></a>Media Services V2 ve v3 arasındaki terminoloji ve varlık değişiklikleri
@@ -56,7 +56,7 @@ Media Services v3 kaynaklarına uygulanan adlandırma kurallarını gözden geç
 | `Job`<!-- row --> | `Job` | `Transform`Oluşturmadan önce oluşturun `Job` . | Hayır | Hayır |
 | `JobTemplate`<!-- row --> | `Transform` | `Transform`Bunun yerine bir kullanın. Bir dönüşüm, bir işten alınan ayrı bir varlıktır ve yeniden kullanılıyor. | Hayır | Hayır |
 | `Locator`<!-- row --> | `StreamingLocator` | <!--empty --> | Yes | Hayır |
-| `MediaProcessor`<!-- row --> | <!-- empty --> | `MediaProcessor`Adına göre kullanmak için ' i aramak yerine, bir dönüşüm tanımlarken istenen ön ayarı kullanın. Kullanılan ön ayar, iş sistemi tarafından kullanılan medya işlemcisini belirlemek için kullanılır. Bkz. [senaryo tabanlı kodlama](migrate-v-2-v-3-migration-scenario-based-encoding.md)içindeki kodlama konuları. <!--Probably needs a link to its own article so customers know Indexerv1 maps to AudioAnalyzerPreset in basic mode, etc.--> | Hayır | NA (v2 'de ReadOnly) |
+| `MediaProcessor`<!-- row --> | <!-- empty --> | `MediaProcessor`Adına göre kullanmak için ' i aramak yerine, bir dönüşüm tanımlarken istenen ön ayarı kullanın. Kullanılan ön ayar, iş sistemi tarafından kullanılan medya işlemcisini belirlemek için kullanılır. Bkz. [senaryo tabanlı kodlama](migrate-v-2-v-3-migration-scenario-based-encoding.md)içindeki kodlama konuları. <!--Probably needs a link to its own article so customers know Indexerv1 maps to AudioAnalyzerPreset in basic mode, etc.--> | No | NA (v2 'de ReadOnly) |
 | `NotificationEndPoint`<!-- row --> | <!--empty --> | V3 içindeki bildirimler Azure Event Grid aracılığıyla işlenir. , `NotificationEndpoint` Alınan Event Grid abonelik kaydıyla değiştirilmiştir (v2 'de `JobNotificationSubscription` Işin, `TaskNotificationSubscription` görevin ve telemetrisi tarafından işlendiği) yapılandırma için yapılandırmayı de Kapsüller `ComponentMonitoringSetting` . V2 telemetrisi, büyük Azure ekosisteminin geliştirmeleriyle uyum sağlamak için Azure Event Grid ile Azure Izleyici arasında bölündü. | Hayır | Hayır |
 | `Program`<!-- row --> | `LiveOutput` | Canlı çıktılar artık v3 API 'sindeki programları değiştirir.  | Hayır | Hayır |
 | `StreamingEndpoint`<!-- row --> | `StreamingEndpoint` | Akış uç noktaları, birincil olarak aynı kalır. Bunlar, doğrudan kaynaktan veya CDN aracılığıyla hem canlı hem de isteğe bağlı akış için HLS ve DASH içeriğinin dinamik paketleme, şifreleme ve teslim edilmesi için kullanılır. Yeni özellikler daha iyi Azure Izleyici tümleştirmesi ve grafik oluşturma desteği içerir. |  Yes | Yes |

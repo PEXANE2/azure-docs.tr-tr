@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperf-fy21q1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 6b73eb51831238f23400ef60d0a6162bca38ea85
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 2fc703e0532c86bfc0874c8dccbb17c6142aeed0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033162"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104590220"
 ---
 # <a name="outbound-rules-azure-load-balancer"></a><a name="outboundrules"></a>Giden kuralları Azure Load Balancer
 
@@ -36,11 +36,11 @@ Giden kurallarla, giden **SNAT** davranışını açık bir şekilde tanımlayab
 Giden kuralları denetlemenize izin verir:
 
 * **Hangi sanal makinelerin hangi ortak IP adreslerine çevrildiği.**
-     * İki kural, A ve B IP adresini kullanan arka uç havuzudur, B arka uç havuzu C ve D IP adresini kullanır.
+     * İki kural arka uç havuzu 1, mavi IP adresi 1 ve 2 kullanır, arka uç Havuzu 2 sarı IP önekini kullanır.
 * **Giden SNAT bağlantı noktaları nasıl ayrılır.**
-     * Arka uç havuzu B giden bağlantılar yapan tek havuzdır, tüm SNAT bağlantı noktalarına B arka uç havuzuna izin verin ve bir arka uç havuzu A 'yı yok edin.
+     * Giden bağlantılar yapan tek havuz 2 arka uç havuzu ise, tüm SNAT bağlantı noktalarına arka uç Havuzu 2 ' ye ve hiçbiri ' ni arka uç havuzu 1 ' e vermeyin
 * **İçin giden çeviri sağlayacak olan protokoller.**
-     * Arka uç havuzu B giden için UDP bağlantı noktalarına ihtiyaç duyuyor. Arka uç havuzunda TCP gerekir. B 'ye TCP bağlantı noktalarına ve UDP bağlantı noktalarına izin verin.
+     * Arka uç Havuzu 2 giden için UDP bağlantı noktalarına ihtiyaç duyuyorsa ve arka uç havuzu 1 için TCP gerekiyorsa, TCP bağlantı noktalarını 1 ve UDP bağlantı noktalarına 2 ' ye verin.
 * **Giden bağlantı boşta kalma zaman aşımı (4-120 dakika) için kullanılacak süre.**
      * Keepsıt ile uzun süre çalışan bağlantılar varsa, uzun süre çalışan bağlantılar için boşta kalma bağlantı noktalarını 120 dakikaya kadar ayırın. Yeni bağlantılar için eski bağlantıların terk olduğunu ve sürüm bağlantı noktalarını 4 dakika içinde kabul edin 
 * **Boşta kalma zaman aşımı durumunda TCP sıfırlaması gönderileceğini belirtir.**

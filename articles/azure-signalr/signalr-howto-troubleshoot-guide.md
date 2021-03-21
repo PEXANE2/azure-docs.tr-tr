@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: yajin1
-ms.openlocfilehash: bdda89483661eb6f6d006c3d8ea42b46d162de05
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 8eade7596e36389b1e345dc6f0aab1029dc100e0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201663"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589177"
 ---
 # <a name="troubleshooting-guide-for-azure-signalr-service-common-issues"></a>Azure SignalR hizmeti yaygın sorunları için sorun giderme kılavuzu
 
@@ -19,14 +19,14 @@ Bu kılavuz, müşterilerin geçen yıllarda karşıladığı ve çözdüğü ya
 
 ## <a name="access-token-too-long"></a>Erişim belirteci çok uzun
 
-### <a name="possible-errors"></a>Olası hatalar:
+### <a name="possible-errors"></a>Olası hatalar
 
 * İstemci tarafı `ERR_CONNECTION_`
 * 414 URI çok uzun
 * 413 yükü çok büyük
 * Erişim belirteci 4K 'den daha uzun olmamalıdır. 413 istek varlığı çok büyük
 
-### <a name="root-cause"></a>Kök nedeni:
+### <a name="root-cause"></a>Kök neden
 
 HTTP/2 için, tek bir üst bilgi için maksimum uzunluk **4 KB**'dir, bu nedenle Azure hizmetine erişmek için tarayıcı kullanılıyorsa bu sınırlama için bir hata olur `ERR_CONNECTION_` .
 
@@ -34,18 +34,19 @@ HTTP/1.1 veya C# istemcileri için en fazla URI uzunluğu **12 k**, en fazla üs
 
 SDK sürümü **1.0.6** veya üzeri ile, `/negotiate` `413 Payload Too Large` oluşturulan erişim belirtecinin **4 K**'den büyük olduğu durumlarda oluşturulacaktır.
 
-### <a name="solution"></a>Çözüm:
+### <a name="solution"></a>Çözüm
 
 Varsayılan olarak, talepleri,, `context.User.Claims` talepler korunabilmesi veistemci öğesine bağlandığı zaman **ASRS** 'den öğesine geçirilebilmesi IÇIN, **IRS**'ye JWT erişim belirteci oluştururken (zure **s** ıgnal **R** **s** ervice) dahil edilir `Hub` `Hub` .
 
-Bazı durumlarda, `context.User.Claims` çoğu uygulama sunucusu için, `Hub` ancak diğer bileşenleri tarafından kullanılmayan birçok bilgi depolamak için yararlanılabilir.
+Bazı durumlarda, `context.User.Claims` çoğu uygulama sunucusu için, `Hub` ancak diğer bileşenler tarafından kullanılmayan çok fazla bilgi depolamak için kullanılır.
 
 Oluşturulan erişim belirteci ağ üzerinden geçirilir ve WebSocket/SSE bağlantıları için erişim belirteçleri sorgu dizeleri aracılığıyla geçirilir. Bu nedenle, en iyi yöntem olarak, hub gerektiğinde yalnızca istemciden **ASRS** aracılığıyla uygulama sunucunuza **gerekli** talepleri geçirmeyi öneririz.
 
 `ClaimsProvider`Erişim belirtecinin Içindeki **ASRS** 'ye geçen talepleri özelleştirmeniz için bir, vardır.
 
 ASP.NET Core için:
-```cs
+
+```csharp
 services.AddSignalR()
         .AddAzureSignalR(options =>
             {
@@ -55,7 +56,8 @@ services.AddSignalR()
 ```
 
 ASP.NET için:
-```cs
+
+```csharp
 services.MapAzureSignalR(GetType().FullName, options =>
             {
                 // pick up necessary claims
@@ -67,13 +69,13 @@ services.MapAzureSignalR(GetType().FullName, options =>
 
 ## <a name="tls-12-required"></a>TLS 1,2 gerekiyor
 
-### <a name="possible-errors"></a>Olası hatalar:
+### <a name="possible-errors"></a>Olası hatalar
 
 * ASP.NET "sunucu kullanılamıyor" hatası [#279](https://github.com/Azure/azure-signalr/issues/279)
 * ASP.NET "bağlantı etkin değil, hizmete veri gönderilemiyor." hata [#324](https://github.com/Azure/azure-signalr/issues/324)
-* "Https://için HTTP isteği kurulurken bir hata oluştu <API endpoint> . Bu hatanın nedeni, sunucu sertifikasının HTTPS durumda HTTP.SYS ile düzgün şekilde yapılandırılmadığı durumdur. Bu hata, istemci ve sunucu arasındaki güvenlik bağlamasının eşleşmemesi nedeniyle de oluşabilir. "
+* "Https://için HTTP isteği kurulurken bir hata oluştu <API endpoint> . Bu hata, sunucu sertifikasının HTTPS durumda HTTP.SYS ile düzgün şekilde yapılandırılmadığı durumdur. Bu hata, istemci ve sunucu arasındaki güvenlik bağlamasının eşleşmemesi nedeniyle de oluşabilir. "
 
-### <a name="root-cause"></a>Kök nedeni:
+### <a name="root-cause"></a>Kök neden
 
 Azure hizmeti yalnızca güvenlik sorunları için TLS 1.2 'yi destekler. .NET Framework ile, TLS 1.2 varsayılan protokol değildir. Sonuç olarak, ASRS 'ye sunucu bağlantıları başarıyla oluşturulamaz.
 
@@ -93,16 +95,18 @@ Azure hizmeti yalnızca güvenlik sorunları için TLS 1.2 'yi destekler. .NET F
         :::image type="content" source="./media/signalr-howto-troubleshoot-guide/tls-throws.png" alt-text="Özel durum oluşturur":::
 
 2. ASP.NET ler için, `Startup.cs` ayrıntılı izlemeyi etkinleştirmek ve günlükteki hataları görmek için aşağıdaki kodu ' e de ekleyebilirsiniz.
-```cs
-app.MapAzureSignalR(this.GetType().FullName);
-// Make sure this switch is called after MapAzureSignalR
-GlobalHost.TraceManager.Switch.Level = SourceLevels.Information;
-```
 
-### <a name="solution"></a>Çözüm:
+    ```cs
+    app.MapAzureSignalR(this.GetType().FullName);
+    // Make sure this switch is called after MapAzureSignalR
+    GlobalHost.TraceManager.Switch.Level = SourceLevels.Information;
+    ```
+
+### <a name="solution"></a>Çözüm
 
 Aşağıdaki kodu, başlangıç uygulamanıza ekleyin:
-```cs
+
+```csharp
 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 ```
 
@@ -158,19 +162,19 @@ ASP.NET SignalR için, [istemci bağlantısı düşerse](#client_connection_drop
 
 İki durum vardır.
 
-### <a name="concurrent-connection-count-exceeds-limit"></a>**Eşzamanlı** bağlantı sayısı sınırı aşıyor.
+### <a name="concurrent-connection-count-exceeds-limit"></a>**Eşzamanlı** bağlantı sayısı sınırı aşıyor
 
 **Ücretsiz** örnekler Için, **eşzamanlı** bağlantı sayısı sınırı **Standart** örnekler için 20, **birim başına** **eşzamanlı** bağlantı sayısı sınırı 1 K olur, bu da Unit100 100-K eş zamanlı bağlantılara izin verir.
 
 Bağlantılar hem istemci hem de sunucu bağlantılarını içerir. bağlantıların nasıl sayılacağını [kontrol edin](./signalr-concept-messages-and-connections.md#how-connections-are-counted) .
 
-### <a name="too-many-negotiate-requests-at-the-same-time"></a>Aynı anda çok fazla anlaşma isteği.
+### <a name="too-many-negotiate-requests-at-the-same-time"></a>Aynı anda çok fazla anlaşma isteği
 
-Yeniden bağlanmadan önce rastgele bir gecikme önermesi önerilir, lütfen yeniden deneme örnekleri için [buraya](#restart_connection) bakın.
+Yeniden bağlanmadan önce rastgele bir gecikme önermesi önerilir, yeniden deneme örnekleri için [buraya](#restart_connection) bakın.
 
 [Sorun giderme hakkında sorunlar veya geri bildirimler mi var? Bize bilgi verin.](https://aka.ms/asrs/survey/troubleshooting)
 
-## <a name="500-error-when-negotiate-azure-signalr-service-is-not-connected-yet-please-try-again-later"></a>500: Azure SignalR hizmeti henüz bağlı değil, lütfen daha sonra yeniden deneyin.
+## <a name="500-error-when-negotiate-azure-signalr-service-is-not-connected-yet-please-try-again-later"></a>500 anlaşması sırasında hata oluştu: Azure SignalR hizmeti henüz bağlı değil, lütfen daha sonra yeniden deneyin
 
 ### <a name="root-cause"></a>Kök neden
 
@@ -180,18 +184,21 @@ Bu hata, Azure SignalR hizmetine bağlı bir sunucu bağlantısı olmadığında
 
 Sunucu Azure SignalR hizmetine bağlanmayı denediğinde hata ayrıntılarını bulmak için sunucu tarafı izlemeyi etkinleştirin.
 
-#### <a name="enable-server-side-logging-for-aspnet-core-signalr"></a>ASP.NET Core SignalR için sunucu tarafında günlüğe kaydetmeyi etkinleştirme
+### <a name="enable-server-side-logging-for-aspnet-core-signalr"></a>ASP.NET Core SignalR için sunucu tarafında günlüğe kaydetmeyi etkinleştirme
 
-ASP.NET Core SignalR için sunucu tarafında günlüğe kaydetme `ILogger` , ASP.NET Core çerçevesinde sunulan temel [günlük](/aspnet/core/fundamentals/logging/?tabs=aspnetcore2x&view=aspnetcore-2.1) kaydıyla tümleştirilir. Aşağıdaki gibi bir örnek kullanım kullanarak sunucu tarafı günlük kaydını etkinleştirebilirsiniz `ConfigureLogging` :
-```cs
+ASP.NET Core SignalR için sunucu tarafında günlüğe kaydetme `ILogger` , ASP.NET Core çerçevesinde sunulan temel [günlük](/aspnet/core/fundamentals/logging/?tabs=aspnetcore2x&view=aspnetcore-2.1&preserve-view=true) kaydıyla tümleştirilir. Aşağıdaki gibi bir örnek kullanım kullanarak sunucu tarafı günlük kaydını etkinleştirebilirsiniz `ConfigureLogging` :
+
+```csharp
 .ConfigureLogging((hostingContext, logging) =>
         {
             logging.AddConsole();
             logging.AddDebug();
         })
 ```
+
 Azure SignalR için günlükçü kategorileri her zaman ile başlar `Microsoft.Azure.SignalR` . Azure SignalR 'den ayrıntılı günlükleri etkinleştirmek için, yukarıdaki ön ekleri `Debug` aşağıdaki gibi **appsettings.js** dosya düzeyinde yapılandırın:
-```JSON
+
+```json
 {
     "Logging": {
         "LogLevel": {
@@ -206,6 +213,7 @@ Azure SignalR için günlükçü kategorileri her zaman ile başlar `Microsoft.A
 #### <a name="enable-server-side-traces-for-aspnet-signalr"></a>ASP.NET SignalR için sunucu tarafı izlemelerini etkinleştirme
 
 SDK sürümü >= kullanırken `1.0.0` , aşağıdakileri öğesine ekleyerek izlemeleri etkinleştirebilirsiniz `web.config` : ([Ayrıntılar](https://github.com/Azure/azure-signalr/issues/452#issuecomment-478858102))
+
 ```xml
 <system.diagnostics>
     <sources>
@@ -242,7 +250,7 @@ SDK sürümü >= kullanırken `1.0.0` , aşağıdakileri öğesine ekleyerek izl
 * `{"type":7,"error":"Connection closed with an error."}`
 * `{"type":7,"error":"Internal server error."}`
 
-### <a name="root-cause"></a>Kök nedeni:
+### <a name="root-cause"></a>Kök neden
 
 İstemci bağlantıları çeşitli koşullarda bırakabilir:
 * `Hub`, Gelen istek ile özel durumlar oluşturduğunda.
@@ -268,21 +276,21 @@ SDK sürümü >= kullanırken `1.0.0` , aşağıdakileri öğesine ekleyerek izl
 
 :::image type="content" source="./media/signalr-howto-troubleshoot-guide/client-connection-increasing-constantly.jpg" alt-text="İstemci bağlantısı sürekli artıyor":::
 
-### <a name="root-cause"></a>Kök nedeni:
+### <a name="root-cause"></a>Kök neden
 
 SignalR istemci bağlantısı `DisposeAsync` hiçbir şekilde çağrılmaz, bağlantı açık kalır.
 
 ### <a name="troubleshooting-guide"></a>Sorun giderme kılavuzu
 
-1. SignalR istemcisinin **hiç** kapanmayacağını denetleyin.
+SignalR istemcisinin **hiç** kapanmayacağını denetleyin.
 
 ### <a name="solution"></a>Çözüm
 
 Bağlantıyı kapatmayı denetleyin. `HubConnection.DisposeAsync()`Bağlantıyı kullandıktan sonra durdurmak için el ile çağrı yapın.
 
-Örneğin:
+Örnek:
 
-```C#
+```csharp
 var connection = new HubConnectionBuilder()
     .WithUrl(...)
     .Build();
@@ -324,21 +332,95 @@ Düzenli olarak, Azure SignalR hizmeti için yeni sürüm sürümleri ve bazen A
 
 Bu bölümde sunucu bağlantısı bırakmaya yönelik birkaç olasılık açıklanmakta ve kök nedenin nasıl tanımlanacağına ilişkin yönergeler sunulmaktadır.
 
-### <a name="possible-errors-seen-from-server-side"></a>Sunucu tarafında görülen olası hatalar:
+### <a name="possible-errors-seen-from-the-server-side"></a>Sunucu tarafında görülen olası hatalar
 
 * `[Error]Connection "..." to the service was dropped`
 * `The remote party closed the WebSocket connection without completing the close handshake`
 * `Service timeout. 30.00ms elapsed without receiving a message from service.`
 
-### <a name="root-cause"></a>Kök nedeni:
+### <a name="root-cause"></a>Kök neden
 
 Sunucu-hizmet bağlantısı **ASRS****(** zure **s** ıgnal **R** **s**) tarafından kapalıdır.
 
+Ping zaman aşımı için, sunucu tarafında yüksek CPU kullanımı veya iş parçacığı havuzu yüzünden olabilir.
+
+ASP.NET SignalR için, SDK 1.6.0 ' de bilinen bir sorun düzeltildi. SDK 'nizi en yeni sürüme yükseltin.
+
+## <a name="thread-pool-starvation"></a>İş parçacığı havuzu başlangıçlan
+
+Sunucunuz başlatılıyor, bu, ileti işleme üzerinde hiçbir iş parçacığı çalışmaması anlamına gelir. Tüm iş parçacıkları belirli bir yöntemde askıda.
+
+Normalde, bu senaryoya eşitleme üzerinden veya `Task.Result` / `Task.Wait()` zaman uyumsuz metotlarda zaman uyumsuz olarak neden olur.
+
+Bkz. [ASP.NET Core Performance en iyi uygulamaları](/aspnet/core/performance/performance-best-practices#avoid-blocking-calls).
+
+[İş parçacığı havuzu](https://docs.microsoft.com/archive/blogs/vancem/diagnosing-net-core-threadpool-starvation-with-perfview-why-my-service-is-not-saturating-all-cores-or-seems-to-stall)hakkında daha fazla bilgi için bkz..
+
+### <a name="how-to-detect-thread-pool-starvation"></a>İş parçacığı havuzu oluşturma sorunları nasıl algılanır
+
+İş parçacığı sayınız olup olmadığını denetleyin. Bu sırada ani artışlar yoksa şu adımları uygulayın:
+* Azure App Service kullanıyorsanız, ölçümlerde iş parçacığı sayısını denetleyin. Toplamayı denetleyin `Max` :
+    
+  :::image type="content" source="media/signalr-howto-troubleshoot-guide/metrics-thread-count.png" alt-text="Azure App Service en fazla iş parçacığı sayısı bölmesinin ekran görüntüsü.":::
+
+* .NET Framework kullanıyorsanız, [ölçümleri](https://docs.microsoft.com/dotnet/framework/debug-trace-profile/performance-counters#lock-and-thread-performance-counters) sunucu sanal makinenizde performans izleyicisinde bulabilirsiniz.
+* Bir kapsayıcıda .NET Core kullanıyorsanız bkz. [kapsayıcılarda tanılamayı toplama](https://docs.microsoft.com/dotnet/core/diagnostics/diagnostics-in-containers).
+
+Ayrıca, iş parçacığı havuzunu algılamak için kodu kullanabilirsiniz:
+
+```csharp
+public class ThreadPoolStarvationDetector : EventListener
+{
+    private const int EventIdForThreadPoolWorkerThreadAdjustmentAdjustment = 55;
+    private const uint ReasonForStarvation = 6;
+
+    private readonly ILogger<ThreadPoolStarvationDetector> _logger;
+
+    public ThreadPoolStarvationDetector(ILogger<ThreadPoolStarvationDetector> logger)
+    {
+        _logger = logger;
+    }
+
+    protected override void OnEventSourceCreated(EventSource eventSource)
+    {
+        if (eventSource.Name == "Microsoft-Windows-DotNETRuntime")
+        {
+            EnableEvents(eventSource, EventLevel.Informational, EventKeywords.All);
+        }
+    }
+
+    protected override void OnEventWritten(EventWrittenEventArgs eventData)
+    {
+        // See: https://docs.microsoft.com/en-us/dotnet/framework/performance/thread-pool-etw-events#threadpoolworkerthreadadjustmentadjustment
+        if (eventData.EventId == EventIdForThreadPoolWorkerThreadAdjustmentAdjustment &&
+            eventData.Payload[3] as uint? == ReasonForStarvation)
+        {
+            _logger.LogWarning("Thread pool starvation detected!");
+        }
+    }
+}
+```
+    
+Bu hizmeti hizmetinize ekleyin:
+    
+```csharp
+service.AddSingleton<ThreadPoolStarvationDetector>();
+```
+
+Ardından, sunucu bağlantısının ping zaman aşımı ile bağlantısı kesildiğinde günlüğlerinizi kontrol edin.
+
+### <a name="how-to-find-the-root-cause-of-thread-pool-starvation"></a>İş parçacığı havuzunun kök nedenini bulma
+
+İş parçacığı havuzunun kök nedenini bulmak için:
+
+* Belleği dökümünü alın ve ardından çağrı yığınını çözümleyin. Daha fazla bilgi için bkz. [bellek dökümlerini toplayın ve çözümleyin](https://devblogs.microsoft.com/dotnet/collecting-and-analyzing-memory-dumps/).
+* İş parçacığı havuzu algılandığında belleğin dökümünü almak için [clrmd](https://github.com/microsoft/clrmd) kullanın. Ardından, çağrı yığınını günlüğe kaydedin.
+
 ### <a name="troubleshooting-guide"></a>Sorun giderme kılavuzu
 
-1. Her şeyin olağan dışı olup olmadığını görmek için uygulama sunucusu tarafı günlüğünü açın
-2. App Server 'ın yeniden başlatılıp başlatılmayacağını görmek için uygulama sunucusu tarafında olay günlüğünü denetleyin
-3. Bize zaman çerçevesini sağlamaktan bir sorun oluşturun ve kaynak adını bize e-posta ile gönderin
+1. Anormal bir şeyin olup olmadığını görmek için uygulama sunucusu tarafı günlüğünü açın.
+2. Uygulama sunucusunun yeniden başlatılıp başlatılmayacağını görmek için uygulama sunucusu tarafında olay günlüğünü kontrol edin.
+3. Sorun oluşturun. Zaman çerçevesini sağlayın ve kaynak adını bize e-posta ile gönderin.
 
 [Sorun giderme hakkında sorunlar veya geri bildirimler mi var? Bize bilgi verin.](https://aka.ms/asrs/survey/troubleshooting)
 

@@ -3,12 +3,12 @@ title: Kaynaklardaki dizi özellikleri için yazma ilkeleri
 description: Dizi parametreleri ve dizi dili ifadeleriyle çalışmayı öğrenin, [*] diğer adını değerlendirin ve Azure Ilke tanımı kuralları ile öğeleri ekleyin.
 ms.date: 10/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 650b2ec6bc1bbd12cd10abb1917ef5ea2d6029e9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 75f4fcfb88bd4cb1ac0c8bfeac236b452479b8c6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98220754"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721622"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Azure kaynaklarında dizi özellikleri için yazma ilkeleri
 
@@ -448,7 +448,8 @@ Ve bu nedenle `count` döndürülür `1` .
       "field": "tags.env",
       "equals": "prod"
     }
-  }
+  },
+  "equals": 0
 }
 ```
 
@@ -457,40 +458,60 @@ Ve bu nedenle `count` döndürülür `1` .
 | 1 | `tags.env` => `"prod"` | `true` |
 | 2 | `tags.env` => `"prod"` | `true` |
 
-İç içe geçmiş sayısı ifadelerine da izin verilir:
+İç içe geçmiş dizi alanlarına koşul uygulamak için iç içe geçmiş sayı ifadeleri kullanılabilir. Örneğin, aşağıdaki koşul `objectArray[*]` dizide `nestedArray[*]` 1 veya daha fazla üye içeren tam 2 üye olduğunu denetler:
 
 ```json
 {
   "count": {
     "field": "Microsoft.Test/resourceType/objectArray[*]",
     "where": {
-      "allOf": [
-        {
-          "field": "Microsoft.Test/resourceType/objectArray[*].property",
-          "equals": "value2"
-        },
-        {
-          "count": {
-            "field": "Microsoft.Test/resourceType/objectArray[*].nestedArray[*]",
-            "where": {
-              "field": "Microsoft.Test/resourceType/objectArray[*].nestedArray[*]",
-              "equals": 3
-            },
-            "greater": 0
-          }
-        }
-      ]
+      "count": {
+        "field": "Microsoft.Test/resourceType/objectArray[*].nestedArray[*]"
+      },
+      "greaterOrEquals": 1
     }
-  }
+  },
+  "equals": 2
 }
 ```
- 
-| Dış döngü yinelemesi | Seçili değerler | İç döngü yinelemesi | Seçili değerler |
-|:---|:---|:---|:---|
-| 1 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value1`</br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1`, `2` | 1 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1` |
-| 1 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value1`</br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1`, `2` | 2 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `2` |
-| 2 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value2`</br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4` | 1 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3` |
-| 2 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value2`</br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4` | 2 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `4` |
+
+| Yineleme | Seçili değerler | İç içe sayım değerlendirme sonucu |
+|:---|:---|:---|
+| 1 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1`, `2` | `nestedArray[*]` 2 üye içeriyor => `true` |
+| 2 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4` | `nestedArray[*]` 2 üye içeriyor => `true` |
+
+Her iki üyenin de `objectArray[*]` 2 üye içeren bir alt dizisi olduğundan `nestedArray[*]` , dış sayı ifadesi döndürür `2` .
+
+Daha karmaşık örnek: `objectArray[*]` dizide, `nestedArray[*]` veya değerine eşit olan tüm Üyeler ile tam 2 üye olup olmadığını `2` denetleyin `3` :
+
+```json
+{
+  "count": {
+    "field": "Microsoft.Test/resourceType/objectArray[*]",
+    "where": {
+      "count": {
+        "field": "Microsoft.Test/resourceType/objectArray[*].nestedArray[*]",
+        "where": {
+            "field": "Microsoft.Test/resourceType/objectArray[*].nestedArray[*]",
+            "in": [ 2, 3 ]
+        }
+      },
+      "greaterOrEquals": 1
+    }
+  },
+  "equals": 2
+}
+```
+
+| Yineleme | Seçili değerler | İç içe sayım değerlendirme sonucu
+|:---|:---|:---|
+| 1 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1`, `2` | `nestedArray[*]` vardır `2` => `true` |
+| 2 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4` | `nestedArray[*]` vardır `3` => `true` |
+
+Her iki üyesinin `objectArray[*]` veya ya da içeren bir alt dizisi olduğundan `nestedArray[*]` `2` `3` , dıştaki Count ifadesi döndürür `2` .
+
+> [!NOTE]
+> İç içe alan sayısı ifadeleri yalnızca iç içe dizilere başvurabilir. Örneğin, öğesine başvuran Count ifadesinin iç içe geçmiş `Microsoft.Test/resourceType/objectArray[*]` diziyi hedefleyen iç içe bir sayısı olabilir `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` , ancak iç içe geçmiş bir Count ifadesi hedeflemesi olamaz `Microsoft.Test/resourceType/stringArray[*]` .
 
 #### <a name="accessing-current-array-member-with-template-functions"></a>Geçerli dizi üyesine şablon işlevleriyle erişme
 

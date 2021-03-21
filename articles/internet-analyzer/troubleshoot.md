@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 12/04/2019
 ms.author: dibotero
 ms.openlocfilehash: fe173ec4d4f28444d43739ea2ed51e43021916b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84744366"
 ---
 # <a name="azure-internet-analyzer-troubleshooting"></a>Azure Internet Çözümleyicisi sorunlarını giderme
@@ -22,7 +22,7 @@ Bu makale, yaygın Internet çözümleyici sorunları için sorun giderme adıml
 - İstemci betiği bir **https** Web sitesine katıştırmalıdır. Betik bir düz metin (**http://**) veya yerel (**File://**) Web sitesinde çalışıyorsa ölçümler toplanmaz.
 - Ölçüm verileri yalnızca Internet Çözümleyicisi profilinin istemci betiği gerçek Kullanıcı trafiği alan bir uygulamaya katıştırılmışsa toplanacaktır. Yapay trafik (örneğin, Azure WebApp performans testleri) genellikle katıştırılmış JavaScript kodunu yürütmez, bu nedenle bu tür trafik tarafından hiçbir ölçüm oluşturulmaz.
 
-## <a name="azure-portal"></a>Azure portal
+## <a name="azure-portal"></a>Azure portalı
 **"Karneler bölümünde seçili filtre birleşimi için bir karne üretilmemiştir"**
 - Karneler günlük olarak (her günün sonunda UTC saati) oluşturulur.
 - Karneler yalnızca seçili filtre birleşimi (test, zaman aralığı, ülke/bölge vb.) için 100 ' den fazla ölçüm toplanmışsa üretilir.

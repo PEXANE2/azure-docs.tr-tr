@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/18/2021
 ms.custom: references_regions
-ms.openlocfilehash: 443d6349aab68fd05edfe4c4007fd043c932f4f0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d4b0a4107b3894d65dd8e168cd58566d4a4b5090
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104604279"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720500"
 ---
 # <a name="semantic-search-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de anlamsal arama
 
@@ -50,7 +50,9 @@ Anlamsal arama bileşenleri, mevcut sorgu yürütme ardışık düzenini her iki
 
 Sorgu yürütme her zamanki gibi devam eder, ters kullanılan dizinler üzerinde terim ayrıştırma, çözümleme ve tarama. Motor, dosyaları belirteç eşleştirmeyi kullanarak alır ve [varsayılan benzerlik Puanlama algoritmasını](index-similarity-and-scoring.md#similarity-ranking-algorithms)kullanarak sonuçları puan alır. Puanlar, sorgudaki sorgu terimleri ve eşleşen terimler arasındaki dilsel benzerlik derecesine göre hesaplanır. Bunları tanımladıysanız, bu aşamada Puanlama profilleri de uygulanır. Sonuçlar daha sonra anlamsal arama alt sistemine geçirilir.
 
-Hazırlık adımında, ilk sonuç kümesinden döndürülen yapı belgesi, her belgeyi özetleyen bir busages bulmak için tümce ve paragraf düzeyinde çözümlenir. Anahtar sözcük arama 'nın aksine, bu adım, içeriği değerlendirmek için makine okuma ve kavrama özelliklerini kullanır. Sonuç kompozisyonunun bir parçası olarak anlamsal bir sorgu, açıklamalı alt yazılar ve yanıtlar döndürür. Anlamsal arama, bir sonucu en iyi şekilde özetleyen anahtar parolaları ayıklamak ve vurgulamak için dil gösterimini kullanır. Arama sorgusu bir soru ise ve yanıtlar istenirse, yanıt, arama sorgusunda gösterildiği gibi, soruyu en iyi şekilde cevapladığı bir metin metni de içerecektir. Her iki resim yazısı ve yanıt için, varolan metin formülde kullanılır. Anlam modelleri, kullanılabilir içerikten Yeni cümleler veya ifadeler oluşturmaz veya yeni ekibinizle 'e ulaşmak için mantık uygulamaz. Kısacası, sistem hiçbir daha önceden mevcut olmayan içeriği döndürmez.
+Hazırlık adımında, ilk sonuç kümesinden döndürülen yapı belgesi, her belgeyi özetleyen bir busages bulmak için tümce ve paragraf düzeyinde çözümlenir. Anahtar sözcük arama 'nın aksine, bu adım, içeriği değerlendirmek için makine okuma ve kavrama özelliklerini kullanır. Bu içerik işleme aşamasında, bir anlamsal sorgu [açıklamalı alt yazılar](semantic-how-to-query-request.md) ve [yanıtlar](semantic-answers.md)döndürür. Anlamsal arama, bir sonucu en iyi şekilde özetleyen anahtar parolaları ayıklamak ve vurgulamak için dil gösterimini kullanır. Arama sorgusu bir soru ise ve yanıtlar istenirse, yanıt, arama sorgusunda gösterildiği gibi, soruyu en iyi şekilde cevapladığı bir metin metni de içerecektir. 
+
+Her iki resim yazısı ve yanıt için, varolan metin formülde kullanılır. Anlam modelleri, kullanılabilir içerikten Yeni cümleler veya ifadeler oluşturmaz veya yeni ekibinizle 'e ulaşmak için mantık uygulamaz. Kısacası, sistem hiçbir daha önceden mevcut olmayan içeriği döndürmez.
 
 Sonuçlar daha sonra sorgu koşullarının [kavramsal benzerliğine](semantic-ranking.md) göre yeniden puanlanır.
 

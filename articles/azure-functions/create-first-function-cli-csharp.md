@@ -11,10 +11,10 @@ adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts
 adobe-target-experience: Experience B
 adobe-target-content: ./create-first-function-cli-csharp-ieux
 ms.openlocfilehash: 08b1f2b112542a4b4772744d122ce1260b0edffd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101704778"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-from-the-command-line"></a>Hızlı başlangıç: Azure 'da komut satırından C# işlevi oluşturma
@@ -93,15 +93,15 @@ Azure Işlevlerinde bir işlev projesi, her birinin belirli bir tetikleyiciye ya
     func new --name HttpExample --template "HTTP trigger" --authlevel "anonymous"
     ``` 
 
-    `func new` bir HttpExample.cs kod dosyası oluşturur.
+    `func new` HttpExample. cs kod dosyası oluşturur.
 
 ### <a name="optional-examine-the-file-contents"></a>Seçim Dosya içeriğini inceleyin
 
 İsterseniz, [işlevi yerel olarak çalıştırmayı](#run-the-function-locally) atlayıp dosya içeriğini daha sonra incelemenizi sağlayabilirsiniz.
 
-#### <a name="httpexamplecs"></a>HttpExample.cs
+#### <a name="httpexamplecs"></a>HttpExample. cs
 
-*HttpExample.cs* , `Run` değişkende istek verilerini alan bir yöntem içerir `req` , tetikleme davranışını tanımlayan **Httptriggerattribute** ile donatılmış bir [HttpRequest](/dotnet/api/microsoft.aspnetcore.http.httprequest) ' dir.
+*Httpexample. cs* , `Run` değişkende istek verilerini alan bir yöntem içerir `req` , bu da tetikleme davranışını tanımlayan **Httptriggerattribute** ile donatılmış bir [HttpRequest](/dotnet/api/microsoft.aspnetcore.http.httprequest) 'dir.
 
 :::code language="csharp" source="~/functions-docs-csharp/http-trigger-template/HttpExample.cs":::
 

@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.openlocfilehash: a02bd5519b776a063646c11be2a34366fe429f99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89392400"
 ---
-# <a name="advertise-custom-routes-for-p2s-vpn-clients"></a>P2S VPN istemcileri için özel rotalar bildirme
+# <a name="advertise-custom-routes-for-p2s-vpn-clients"></a>P2S VPN istemcileri için özel yolları tanıtma
 
 Tüm Noktadan siteye VPN istemcilerinize özel yollar tanıtmak isteyebilirsiniz. Örneğin, VNet 'iniz üzerinde depolama uç noktalarını etkinleştirdiyseniz ve uzak kullanıcıların bu depolama hesaplarına VPN bağlantısı üzerinden erişmesini istiyorsanız. Depolama hesabı trafiğinin, genel Internet değil VPN tünelinin üzerinden aktarılması için, depolama uç noktasının IP adresini tüm uzak kullanıcılarınıza tanıtabilirsiniz.
 
@@ -24,7 +24,7 @@ Tüm Noktadan siteye VPN istemcilerinize özel yollar tanıtmak isteyebilirsiniz
 
 Özel yolları tanıtmak için öğesini kullanın `Set-AzVirtualNetworkGateway cmdlet` . Aşağıdaki örnekte, [contoso depolama hesabı tabloları](https://contoso.table.core.windows.net)için IP 'nin nasıl tanıtılyapılacağı gösterilmektedir.
 
-1. *Contoso.Table.Core.Windows.net* ping YAPıN ve IP adresini aklınızda edin. Örneğin:
+1. *Contoso.Table.Core.Windows.net* ping YAPıN ve IP adresini aklınızda edin. Örnek:
 
     ```cmd
     C:\>ping contoso.table.core.windows.net
@@ -38,7 +38,7 @@ Tüm Noktadan siteye VPN istemcilerinize özel yollar tanıtmak isteyebilirsiniz
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -CustomRoute 13.88.144.250/32
     ```
 
-3. Birden çok özel yol eklemek için, adresleri ayırmak için virgül ve boşluk kullanın. Örneğin:
+3. Birden çok özel yol eklemek için, adresleri ayırmak için virgül ve boşluk kullanın. Örnek:
 
     ```azurepowershell-interactive
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -CustomRoute x.x.x.x/xx , y.y.y.y/yy

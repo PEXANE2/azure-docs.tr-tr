@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 10/06/2020
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 9d8776ba8e683cd14c766fead1e7238a6c24d000
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91843456"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Azure Batch kapsayıcı uygulamaları çalıştırma
@@ -21,7 +21,7 @@ Kod örnekleri burada Batch .NET ve Python SDK 'larını kullanır. Ayrıca, kap
 
 Kapsayıcıları kullanmak, uygulamaları çalıştırmak için bir ortamı ve bağımlılıkları yönetmek zorunda kalmadan Batch görevleri çalıştırmanın kolay bir yolunu sunar. Kapsayıcılar, uygulamaları birçok farklı ortamda çalışabilen hafif, taşınabilir ve kendi kendine yeterli birimler olarak dağıtır. Örneğin, bir kapsayıcıyı yerel olarak derleyin ve test edin, sonra kapsayıcı görüntüsünü Azure 'da veya başka bir yerde bir kayıt defterine yükleyin. Kapsayıcı dağıtım modeli, uygulamanızın çalışma zamanı ortamının her zaman doğru şekilde yüklenmesini ve uygulamayı barındırdığınıza her yerde yapılandırılmasını sağlar. Toplu Işteki kapsayıcı tabanlı görevler Ayrıca, uygulama paketleri ve kaynak dosyalarının ve çıkış dosyalarının yönetimi dahil olmak üzere, kapsayıcı olmayan görevlerin özelliklerinden de yararlanabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Kapsayıcı kavramları ve bir Batch havuzu ve işi oluşturma hakkında bilgi sahibi olmanız gerekir.
 

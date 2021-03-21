@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 32e8ad5028920cefd717cdaa5429786c83367f6d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 615998de45c4a9993899065a4aef7a15332a59c8
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/20/2021
-ms.locfileid: "101671276"
+ms.locfileid: "104720415"
 ---
 # <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link"></a>Azure SYNAPSE link 'te Apache Spark kullanarak Azure Cosmos DB etkileşim kurma
 
@@ -28,6 +28,10 @@ Aşağıdaki yetenekler Azure Cosmos DB etkileşimde desteklenirken desteklenir:
 * SYNAPSE Apache Spark ayrıca, kaynak ve havuz olarak Azure Cosmos DB ile Spark yapısal akışını destekler. 
 
 Aşağıdaki bölümler, yukarıdaki yetenekler söz diziminde size yol gösterir. Azure SYNAPSE Analytics çalışma alanındaki hareketler, kullanmaya başlamak için kullanımı kolay bir deneyim sunmak üzere tasarlanmıştır. SYNAPSE çalışma alanının **veri** sekmesindeki bir Azure Cosmos DB kapsayıcısına sağ tıkladığınızda hareketler görünür. Hareketler sayesinde hızlı bir şekilde kod oluşturabilir ve ihtiyaçlarınıza göre düzenleyebilirsiniz. Hareketler ayrıca tek tıklamayla verileri keşfetmek için de idealdir.
+
+> [!IMPORTANT]
+> Analitik Şemadaki bazı kısıtlamaların, veri yükleme işlemlerinde beklenmedik davranışa yol açabilecek şekilde farkında olmanız gerekir.
+> Örnek olarak, analiz şemasında, işlemsel şemadan yalnızca ilk 1000 özellik kullanılabilir, boşluk içeren özellikler kullanılamaz, vb. Beklenmedik sonuçlarla karşılaşırsanız, daha fazla ayrıntı için [analitik depo şeması kısıtlamalarını](../../cosmos-db/analytical-store-introduction.md#schema-constraints) kontrol edin.
 
 ## <a name="query-azure-cosmos-db-analytical-store"></a>Analitik depoyu sorgula Azure Cosmos DB
 

@@ -6,12 +6,12 @@ title: Azure yay bulut başvurusu mimarisi
 ms.author: akaleshian
 ms.service: spring-cloud
 description: Bu başvuru mimarisi, Azure Spring Cloud kullanımı için tipik bir kurumsal hub ve bağlı bileşen tasarımı kullanan bir temelidir.
-ms.openlocfilehash: c87462c8d6ab86299b6202acaa23f93d19240e0e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 74183ca2decf8487e5c41cf36d5784538021077f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101735497"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604177"
 ---
 # <a name="azure-spring-cloud-reference-architecture"></a>Azure yay bulut başvurusu mimarisi
 
@@ -265,5 +265,5 @@ Uygulama güvenliğinin yönleri, Azure 'daki bir yay iş yükünü desteklemek 
 [17]: ./spring-cloud-tutorial-deploy-in-azure-virtual-network.md#virtual-network-requirements
 [18]: https://cloudsecurityalliance.org/
 [19]: https://cloudsecurityalliance.org/research/working-groups/cloud-controls-matrix
-[20]: https://azure.microsoft.com/resources/cis-microsoft-azure-foundations-security-benchmark/
+[20]: /azure/security/benchmarks/v2-cis-benchmark
 [21]: https://www.cisecurity.org/

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: jeedes
 ms.openlocfilehash: 2c883cf531b1c49ad9a7ea87b2755b760600a50d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92521756"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-upwork-enterprise"></a>Öğretici: Upwork Enterprise ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -58,7 +58,7 @@ Upwork Enterprise 'ın Azure AD ile tümleştirilmesini yapılandırmak için, g
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-upwork-enterprise"></a>Iş için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak, Upwork Enterprise Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı ile ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak, Upwork Enterprise Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı ile ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
 Azure AD SSO 'yu, Upwork Enterprise ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -93,7 +93,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Yukarıdakine ek olarak, Upwork Enterprise uygulaması aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Adı |   Kaynak özniteliği|
+    | Name |   Kaynak özniteliği|
     | ------------ | --------- |
     | FirstName | Kullanıcı. |
     | LastName | User. soyadı |

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d33634c08b85ad633fdad3f709b2b2182571d7de
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: d3570a22fdd935237e673ea3e43ab5e463b66456
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102034770"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104590543"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Azure Digital Twins'deki ikiz modellerini anlama
 
@@ -24,9 +24,13 @@ Azure dijital TWINS modelleri, JSON-LD tabanlı **dijital Ikizi tanım dili (DTD
 
 ## <a name="digital-twin-definition-language-dtdl-for-models"></a>Modeller için dijital Ikizi tanım dili (DTDL)
 
-Azure Digital Twins modelleri, Dijital İkiz Tanımlama Dili (DTDL) kullanılarak tanımlanır. JSON-LD tabanlı bir dil olan DTDL, programlama dilinden bağımsız olarak çalışır. DTDL, Azure dijital TWINS 'e özel değildir, ancak [ıot Tak ve kullan](../iot-pnp/overview-iot-plug-and-play.md)gibi diğer IoT hizmetlerindeki cihaz verilerini göstermek için de kullanılır. 
+Azure dijital TWINS modelleri, dijital TWINS tanım dili (DTDL) kullanılarak tanımlanmıştır. 
 
-Azure dijital TWINS, **Dtdl _sürüm 2_** kullanır. DTDL 'nin bu sürümü hakkında daha fazla bilgi için bkz. GitHub: [*Digital TWINS tanım dili (DTDL)-sürüm 2*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md). Azure dijital TWINS ile DTDL _Sürüm 1_ kullanımı artık kullanım dışıdır.
+GitHub: [**dijital TWINS tanım dili (dtdl)-sürüm 2**](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)' de dtdl için tam dil özelliklerini görüntüleyebilirsiniz.
+
+JSON-LD tabanlı bir dil olan DTDL, programlama dilinden bağımsız olarak çalışır. DTDL, Azure dijital TWINS 'e özel değildir, ancak [ıot Tak ve kullan](../iot-pnp/overview-iot-plug-and-play.md)gibi diğer IoT hizmetlerindeki cihaz verilerini göstermek için de kullanılır. Azure dijital TWINS, DTDL **sürüm 2** kullanır (Azure dijital TWINS Ile dtdl sürüm 1 kullanımı artık kullanım dışıdır). 
+
+Bu makalenin geri kalanı, dilin Azure dijital TWINS 'de nasıl kullanıldığını özetler.
 
 > [!NOTE] 
 > DTDL kullanan hizmetlerin hepsi aynı DTDL özelliklerinin aynısını uygulamaz. Örneğin, IoT Tak ve Kullan grafik için olan DTDL özelliklerini kullanmaz, Azure dijital TWINS Şu anda DTDL komutlarını uygulamıyor.

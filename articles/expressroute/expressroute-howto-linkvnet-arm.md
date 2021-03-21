@@ -9,15 +9,15 @@ ms.date: 10/06/2020
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 69067ca34b231f1b14f8cc854288c3ed4c4ac82a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91855999"
 ---
 # <a name="tutorial-connect-a-virtual-network-to-an-expressroute-circuit"></a>Öğretici: bir sanal ağı ExpressRoute devresine bağlama
 > [!div class="op_single_selector"]
-> * [Azure portalındaki](expressroute-howto-linkvnet-portal-resource-manager.md)
+> * [Azure portalı](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure CLI](howto-linkvnet-cli.md)
 > * [Video-Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
@@ -39,7 +39,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > - Bir sanal ağ bağlantısını değiştirme
 > - ExpressRoute FastPath yapılandırma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Yapılandırmaya başlamadan önce [önkoşulları](expressroute-prerequisites.md), [yönlendirme gereksinimlerini](expressroute-routing.md)ve [iş akışlarını](expressroute-workflows.md) gözden geçirin.
 
@@ -169,7 +169,7 @@ Bir sanal ağ bağlantısının belirli özelliklerini güncelleştirebilirsiniz
 
 **Bağlantı ağırlığını güncelleştirmek için**
 
-Sanal ağınız, birden fazla ExpressRoute devresine bağlanabilir. Birden fazla ExpressRoute devreninden aynı öneki alabilirsiniz. Bu önek için hangi trafiğin gönderileceğini seçmek üzere bir bağlantının *Routingweight* değerini değiştirebilirsiniz. Trafik en yüksek *Routingweight*bağlantısı üzerinden gönderilir.
+Sanal ağınız, birden fazla ExpressRoute devresine bağlanabilir. Birden fazla ExpressRoute devreninden aynı öneki alabilirsiniz. Bu önek için hangi trafiğin gönderileceğini seçmek üzere bir bağlantının *Routingweight* değerini değiştirebilirsiniz. Trafik en yüksek *Routingweight* bağlantısı üzerinden gönderilir.
 
 ```azurepowershell-interactive
 $connection = Get-AzVirtualNetworkGatewayConnection -Name "MyVirtualNetworkConnection" -ResourceGroupName "MyRG"

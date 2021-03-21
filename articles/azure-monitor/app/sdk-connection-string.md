@@ -8,10 +8,10 @@ ms.date: 01/17/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.reviewer: mbullwin
 ms.openlocfilehash: df87b060423aeff9fa5f83f21634395fe30e0bbb
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102486293"
 ---
 # <a name="connection-strings"></a>Bağlantı dizeleri
@@ -40,7 +40,7 @@ Bu, en etkili olduğunu görselleştirdiğimiz müşteri senaryolarında:
     Kullanıcılar, tanımlı bir [Azure Kamu bölgesine](../../azure-government/compare-azure-government-global-azure.md#application-insights)veri gönderebilir.
     Bağlantı dizeleri, intranet sunucularınız veya karma bulut ayarları için uç nokta ayarlarını tanımlamanızı sağlar. 
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 ### <a name="finding-my-connection-string"></a>Bağlantı dizim mi bulunuyor?
 

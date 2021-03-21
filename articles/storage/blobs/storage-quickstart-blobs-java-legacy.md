@@ -9,10 +9,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: b3bb8736eb7a8e24f47812fc4feecbf96628dfb6
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98599813"
 ---
 # <a name="quickstart-manage-blobs-with-java-v8-sdk"></a>Hızlı başlangıç: Java V8 SDK ile Blobları yönetme
@@ -22,7 +22,7 @@ Bu hızlı başlangıçta, Java kullanarak blob 'ları yönetmeyi öğreneceksin
 > [!NOTE]
 > Bu hızlı başlangıç, Azure Blob depolama istemci kitaplığı 'nın eski bir sürümünü kullanır. En son sürümü kullanmaya başlamak için bkz. [hızlı başlangıç: Java V12 SDK ile Blobları yönetme](storage-quickstart-blobs-java.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Azure Depolama hesabı. [Depolama hesabı oluşturun](../common/storage-account-create.md).

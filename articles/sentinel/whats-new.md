@@ -7,13 +7,13 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.date: 03/08/2021
-ms.openlocfilehash: 88ac8bb1bc804604b96d5c90025b8325a6ce4962
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.date: 03/11/2021
+ms.openlocfilehash: 31ba96e0f8772877d7b4881c6bab0561cbe7956e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102503134"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604262"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Azure Sentinel 'deki yenilikler
 
@@ -32,10 +32,54 @@ Belirtilen özellikler Şu anda ÖNIZLEME aşamasındadır. [Azure önizleme ek 
 
 ## <a name="march-2021"></a>Mart 2021
 
-- [Microsoft 365 Defender olay tümleştirmesi](#microsoft-365-defender-incident-integration) (Genel Önizleme)
+- [Otomasyon kuralları ve olay tarafından tetiklenen PlayBook 'ları](#automation-rules-and-incident-triggered-playbooks) (tüm yeni PlayBook belgeleri dahil)
+- [Yeni uyarı zenginleştirme: geliştirilmiş varlık eşlemesi ve özel ayrıntılar](#new-alert-enrichments-enhanced-entity-mapping-and-custom-details)
+- [Azure Sentinel çalışma kitaplarınızı yazdırma veya PDF olarak kaydetme](#print-your-azure-sentinel-workbooks-or-save-as-pdf)
+- [Olay filtreleri ve sıralama tercihleri artık oturumunuza kaydedilir (Genel Önizleme)](#incident-filters-and-sort-preferences-now-saved-in-your-session-public-preview)
+- [Microsoft 365 Defender olay tümleştirmesi (Genel Önizleme)](#microsoft-365-defender-incident-integration-public-preview)
 - [Azure Ilkesi kullanarak yeni Microsoft hizmet bağlayıcıları](#new-microsoft-service-connectors-using-azure-policy)
+ 
+### <a name="automation-rules-and-incident-triggered-playbooks"></a>Otomasyon kuralları ve olay tarafından tetiklenen PlayBook 'ları 'lar
 
-### <a name="microsoft-365-defender-incident-integration"></a>Microsoft 365 Defender olay tümleştirmesi
+Otomasyon kuralları Azure Sentinel 'de yeni bir kavramdır ve olay işleme otomasyonunu merkezi olarak yönetmenize olanak tanır. Otomasyon kuralları, bir seferde birden fazla analiz kuralına yönelik yanıtları otomatik hale getirmenize, el ile etiketleme, atayabilir veya kapatabilir ve bu da yürütülen eylemlerin sırasını kontrol etmenizi sağlar ve bunları çalıştırabilirsiniz. Otomasyon kuralları, Azure Sentinel 'de Otomasyon kullanımını kolaylaştırır ve olay düzenleme işlemleriniz için karmaşık iş akışlarını basitleştirmenize imkan sağlar.
+
+[Otomasyon kurallarının bu tüm açıklamasından](automate-incident-handling-with-automation-rules.md)daha fazla bilgi edinin.
+
+Yukarıda belirtildiği gibi, PlayBook 'lar artık uyarı tetikleyicisine ek olarak olay tetikleyicisi ile etkinleştirilebilir. Olay tetikleyicisi, PlayBook 'ları ile birlikte çalışmak için daha büyük bir giriş kümesi sağlar (olay, tüm uyarı ve varlık verilerini de içerdiğinden), yanıt iş akışlarınızda daha da fazla güç ve esneklik sağlar. Olay ile tetiklenen PlayBook 'lar Otomasyon kurallarından çağrılarak etkinleştirilir.
+
+[PlayBook 'ları ' geliştirilmiş özelliklere](automate-responses-with-playbooks.md)hakkında daha fazla bilgi edinin ve [bir yanıt iş akışını, bir](tutorial-respond-threats-playbook.md) Otomasyon kurallarıyla birlikte PlayBook 'ları kullanarak nasıl oluşturabileceğinizi öğrenin.
+
+### <a name="new-alert-enrichments-enhanced-entity-mapping-and-custom-details"></a>Yeni uyarı zenginleştirme: geliştirilmiş varlık eşlemesi ve özel ayrıntılar
+
+Uyarıları daha kullanışlı ve daha bilgilendirici hale getirmek için iki yeni yolla uyarılarınızı zenginleştirin.
+
+Varlık eşlemenizi bir sonraki düzeye alarak başlayın. Artık, kullanıcılardan, konaklardan ve IP adreslerinden, dosya ve işlemlere, posta kutularına, Azure kaynaklarına ve IoT cihazlarına kadar neredeyse 20 tür varlığı eşleyebilirsiniz. Her varlık için birden fazla tanımlayıcı da kullanabilirsiniz, bu da benzersiz tanımlamayı güçlendirin. Bu, daha geniş bağıntı ve daha güçlü araştırma sağlayan olaylarınızın daha zengin bir veri kümesini sağlar. Uyarılarınızda [varlıkları eşlemenin yeni yolunu öğrenin](map-data-fields-to-entities.md) .
+
+[Varlıklar hakkında daha fazla bilgi edinin](entities-in-azure-sentinel.md) ve [kullanılabilir varlıkların tam listesini ve tanımlayıcılarını](entities-reference.md)görüntüleyin.
+
+Uyarılarınızı ham olaylarınızın yüzey ayrıntılarına özelleştirerek, araştırma ve yanıt olanaklarınıza daha da fazla bir yükseltme sağlayın. Olaylarınızın olay içeriğini görünürlüğünü, güvenlik tehditlerine yanıt verme ve araştırma konusunda size daha fazla güç ve esneklik kazandırın. Uyarılarınız [için özel ayrıntıların nasıl yüzeyini öğrenin](surface-custom-details-in-alerts.md) .
+
+
+
+### <a name="print-your-azure-sentinel-workbooks-or-save-as-pdf"></a>Azure Sentinel çalışma kitaplarınızı yazdırma veya PDF olarak kaydetme
+
+Artık Azure Sentinel çalışma kitaplarını yazdırabilir ve bu sayede bunları PDF 'lere aktarıp yerel olarak veya paylaşıma kaydetmenizi da sağlayabilirsiniz.
+
+Çalışma kitabınızda, :::image type="icon" source="media/whats-new/print-icon.png" border="false"::: **içerik Yazdır**> seçenekler menüsünü seçin. Ardından yazıcınızı seçin veya gerektiğinde **PDF olarak kaydet** ' i seçin.
+
+:::image type="content" source="media/whats-new/print-workbook.png" alt-text="Çalışma kitabınızı yazdırın veya PDF olarak kaydedin.":::
+
+Daha fazla bilgi için bkz. [öğretici: verilerinizi görselleştirme ve izleme](tutorial-monitor-your-data.md).
+
+### <a name="incident-filters-and-sort-preferences-now-saved-in-your-session-public-preview"></a>Olay filtreleri ve sıralama tercihleri artık oturumunuza kaydedilir (Genel Önizleme)
+
+Artık olay filtrelerinizin ve sırınız, ürünün diğer alanlarında gezinirken bile Azure Sentinel oturumunuz boyunca kaydedilir.
+Hala aynı oturumda yaptığınız sürece, Azure Sentinel 'deki [Olaylar](tutorial-investigate-cases.md) alanına geri dönmek, yaptığınız gibi filtrelerinizi ve sıralamayı gösterir.
+
+> [!NOTE]
+> Olay filtreleri ve sıralama, Azure Sentinel 'den ayrıldıktan veya tarayıcınızı yeninden sonra kaydedilmez.
+
+### <a name="microsoft-365-defender-incident-integration-public-preview"></a>Microsoft 365 Defender olay tümleştirmesi (Genel Önizleme)
 
 Azure Sentinel [Microsoft 365 Defender (M365D)](/microsoft-365/security/mtp/microsoft-threat-protection) olay tümleştirmesi, tüm M365D olaylarını Azure Sentinel 'e akışını ve her iki Portal arasında eşitlenmesini sağlar. M365D (eski adıyla Microsoft tehdit koruması veya MTP) olayları, ilişkili tüm uyarıları, varlıkları ve ilgili bilgileri içerir ve Azure Sentinel 'de önceliklendirme ve ön araştırma gerçekleştirmek için yeterli bağlam sağlar. Sentinel 'de, olaylar M365D ile eşitlenmiş olarak kalır ve olay araştırmanızda her iki portalın avantajlarından yararlanmanızı sağlar.
 
@@ -60,8 +104,8 @@ Müşteriler yine de belirli örnekler için günlükleri el ile gönderebilecek
 
 - [Siber güvenlik vade Model sertifikası (CMMC) çalışma kitabı](#cybersecurity-maturity-model-certification-cmmc-workbook)
 - [Üçüncü taraf veri bağlayıcıları](#third-party-data-connectors)
-- [Varlık sayfasında UEBA öngörüleri](#ueba-insights-in-the-entity-page)
-- [Geliştirilmiş olay arama](#improved-incident-search)
+- [Varlık sayfasında UEBA öngörüleri (Genel Önizleme)](#ueba-insights-in-the-entity-page-public-preview)
+- [Geliştirilmiş olay araması (Genel Önizleme)](#improved-incident-search-public-preview)
 
 ### <a name="cybersecurity-maturity-model-certification-cmmc-workbook"></a>Siber güvenlik vade Model sertifikası (CMMC) çalışma kitabı
 
@@ -117,13 +161,13 @@ Daha fazla bilgi için bkz.
 - [Eğilim mikro XDR](connect-data-sources.md)
 - [VMware ESXi](connect-vmware-esxi.md)
 
-### <a name="ueba-insights-in-the-entity-page"></a>Varlık sayfasında UEBA öngörüleri
+### <a name="ueba-insights-in-the-entity-page-public-preview"></a>Varlık sayfasında UEBA öngörüleri (Genel Önizleme)
 
 Azure Sentinel varlık ayrıntıları sayfaları, varlığa ilişkin davranış öngörülerini görüntüleyen ve anomali ve güvenlik tehditlerini hızlı bir şekilde belirlemek için yardım veren bir [Öngörüler bölmesi](identify-threats-with-entity-behavior-analytics.md#entity-insights)sağlar.
 
 [Ueba etkinse](ueba-enrichments.md)ve en az dört gün bir zaman dilimi seçtiyseniz bu Öngörüler bölmesi artık, ueba öngörüleri için aşağıdaki yeni bölümleri de içerir:
 
-|Section  |Açıklama  |
+|Section  |Description  |
 |---------|---------|
 |**UEBA öngörüleri**     | Anormal Kullanıcı etkinliklerini özetler: <br>-Coğrafi konumlar, cihazlar ve ortamlar arasında<br>-Kullanıcının kendi geçmişiyle karşılaştırıldığında zaman ve sıklık Horizons <br>-Eşler davranışına kıyasla <br>-Kuruluşun davranışına kıyasla     |
 |**Güvenlik grubu üyeliğine göre Kullanıcı eşleri**     |   Azure AD güvenlik grupları üyeliğine göre kullanıcının eşlerini listeler ve güvenlik işlemleri ekiplerine benzer izinleri paylaşan diğer kullanıcıların listesini sağlar.  |
@@ -131,7 +175,7 @@ Azure Sentinel varlık ayrıntıları sayfaları, varlığa ilişkin davranış 
 |**Kullanıcıyla Ilgili tehdit göstergeleri**     |  Kullanıcının etkinliklerinde temsil edilen IP adresleriyle ilgili bilinen tehditler koleksiyonunu listeler. Tehditler tehdit türü ve ailesine göre listelenmiştir ve Microsoft 'un tehdit bilgileri hizmeti tarafından zenginleştirilebilir.       |
 |     |         |
 
-### <a name="improved-incident-search"></a>Geliştirilmiş olay arama
+### <a name="improved-incident-search-public-preview"></a>Geliştirilmiş olay araması (Genel Önizleme)
 
 Azure Sentinel olay arama deneyimini geliştirdik ve belirli bir tehdidi araştırırken olaylar aracılığıyla daha hızlı gezinmelerini sağlar.
 
@@ -148,7 +192,7 @@ Azure Sentinel 'de olayları ararken, artık aşağıdaki olay ayrıntılarına 
 - [Analiz Kuralı Sihirbazı: Gelişmiş sorgu düzenlemesi deneyimi (Genel Önizleme)](#analytics-rule-wizard-improved-query-editing-experience-public-preview)
 - [Az. Securityınsights PowerShell modülü (Genel Önizleme)](#azsecurityinsights-powershell-module-public-preview)
 - [SQL Veritabanı Bağlayıcısı](#sql-database-connector)
-- [Dynamics 365 Bağlayıcısı](#dynamics-365-connector)
+- [Dynamics 365 Bağlayıcısı (Genel Önizleme)](#dynamics-365-connector-public-preview)
 - [Geliştirilmiş olay açıklamaları](#improved-incident-comments)
 - [Adanmış Log Analytics kümeleri](#dedicated-log-analytics-clusters)
 - [Logic Apps tarafından yönetilen kimlikler](#logic-apps-managed-identities)
@@ -183,7 +227,7 @@ Azure SQL, Kullanıcı katılımı olmadan yükseltme, düzeltme eki uygulama ve
 
 Daha fazla bilgi için bkz. [Azure SQL veritabanı tanılamayı ve denetim günlüklerini bağlama](connect-azure-sql-logs.md).
 
-### <a name="dynamics-365-connector"></a>Dynamics 365 Bağlayıcısı
+### <a name="dynamics-365-connector-public-preview"></a>Dynamics 365 Bağlayıcısı (Genel Önizleme)
 
 Azure Sentinel artık, Microsoft Dynamics 365 için bir bağlayıcı sağlar ve bu, Dynamics 365 uygulamalarınızın Kullanıcı, yönetici ve destek etkinlik günlüklerini Azure Sentinel 'e toplamanıza olanak tanır. Bu verileri, gerçekleşen veri işleme eylemlerinin tamamını denetlemeye ve olası güvenlik ihlallerine yönelik analiz etmenize yardımcı olması için kullanabilirsiniz.
 

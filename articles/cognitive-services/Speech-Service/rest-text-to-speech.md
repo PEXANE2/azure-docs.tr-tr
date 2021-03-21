@@ -12,10 +12,10 @@ ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: references_regions
 ms.openlocfilehash: 9a5f50588c357b56865bc2a8500dcc250e89d930
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103470641"
 ---
 # <a name="text-to-speech-rest-api"></a>Metin okuma REST API'si
@@ -76,7 +76,7 @@ Bu API 'yi kullanmadan önce şunları anlayın:
 
 Bu tabloda, metinden konuşmaya istekleri için gerekli ve isteğe bağlı üstbilgiler listelenmektedir.
 
-| Üst bilgi | Açıklama | Gerekli/Isteğe bağlı |
+| Üst bilgi | Description | Gerekli/Isteğe bağlı |
 |--------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | Konuşma hizmeti abonelik anahtarınız. | Bu üst bilgi ya da `Authorization` gerekli. |
 | `Authorization` | Bir yetkilendirme belirteci öncesinde kelimedir `Bearer` . Daha fazla bilgi için bkz. [Kimlik doğrulaması](#authentication). | Bu üst bilgi ya da `Ocp-Apim-Subscription-Key` gerekli. |
@@ -213,7 +213,7 @@ Bu bölgeler REST API kullanarak metinden konuşmaya için desteklenir. Abonelik
 
 Bu tabloda, metinden konuşmaya istekleri için gerekli ve isteğe bağlı üstbilgiler listelenmektedir.
 
-| Üst bilgi | Açıklama | Gerekli/Isteğe bağlı |
+| Üst bilgi | Description | Gerekli/Isteğe bağlı |
 |--------|-------------|---------------------|
 | `Authorization` | Bir yetkilendirme belirteci öncesinde kelimedir `Bearer` . Daha fazla bilgi için bkz. [Kimlik doğrulaması](#authentication). | Gerekli |
 | `Content-Type` | Belirtilen metin için içerik türünü belirtir. Kabul edilen değer: `application/ssml+xml` . | Gerekli |

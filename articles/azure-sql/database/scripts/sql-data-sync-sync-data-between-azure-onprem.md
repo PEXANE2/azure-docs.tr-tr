@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 443232bb41ba73b5bd02d45c542e555904f539db
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792880"
 ---
 # <a name="use-powershell-to-sync-data-between-sql-database-and-sql-server"></a>PowerShell kullanarak SQL veritabanı ile SQL Server arasında veri eşitleme
@@ -35,7 +35,7 @@ SQL Data Sync genel bakış için bkz. [Azure SQL Data Sync anlık ileti ile bir
 > [!IMPORTANT]
 > SQL Data Sync Şu anda Azure SQL yönetilen örneğini desteklemez.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure SQL veritabanı 'nda bir AdventureWorksLT örnek veritabanından merkez veritabanı olarak veritabanı oluşturun.
 - Azure SQL veritabanı 'nda eşitleme veritabanıyla aynı bölgedeki bir veritabanı oluşturun.

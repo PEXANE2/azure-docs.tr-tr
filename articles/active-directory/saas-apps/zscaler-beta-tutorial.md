@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
 ms.openlocfilehash: 4e8dce970c9e7cfb2aa7887cf1fb3ed6ef9030a1
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98735616"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>Öğretici: Zscaler Beta ile tümleştirme Azure Active Directory
@@ -27,7 +27,7 @@ Zscaler Beta 'yı Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 * Kullanıcılarınızın Azure AD hesaplarıyla Zscaler Beta sürümünde otomatik olarak oturum açmaya izin verin. Bu erişim denetimine çoklu oturum açma (SSO) adı verilir.
 * Azure portal kullanarak hesaplarınızı tek bir merkezi konumda yönetin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Zscaler Beta ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
