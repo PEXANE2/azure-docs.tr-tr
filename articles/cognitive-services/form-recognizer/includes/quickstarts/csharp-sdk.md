@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 02/12/2021
+ms.date: 03/19/2021
 ms.author: lajanuar
-ms.openlocfilehash: c3d81e0de1c20e77278cb718fdcbc21eb6df455d
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 6407f6af4b142333d2a52f60eb0b05024e64d88e
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102444788"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104761129"
 ---
 <!-- markdownlint-disable MD024 -->
 > [!IMPORTANT]
@@ -33,7 +33,7 @@ ms.locfileid: "102444788"
 
 ## <a name="setting-up"></a>Ayarlanıyor
 
-Konsol penceresinde (cmd, PowerShell veya Bash gibi), `dotnet new` adıyla yeni bir konsol uygulaması oluşturmak için komutunu kullanın `formrecognizer-quickstart` . Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: *program.cs*.
+Konsol penceresinde (cmd, PowerShell veya Bash gibi), `dotnet new` adıyla yeni bir konsol uygulaması oluşturmak için komutunu kullanın `formrecognizer-quickstart` . Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: *program. cs*.
 
 ```console
 dotnet new console -n formrecognizer-quickstart
@@ -66,7 +66,7 @@ dotnet add package Azure.AI.FormRecognizer --version 3.1.0-beta.1
 ```
 
 > [!NOTE]
-> Form tanıyıcı 3.1.0 SDK, API sürüm 2,1 Önizleme 'YI yansıtır
+> Bu form tanıyıcı 3.1.0 SDK, _API sürüm 2,1 Preview. 2_' i yansıtır. Lütfen _API sürüm 2,1 Preview_ için [**REST API**](../../quickstarts/client-library.md) kullanın. 3.
 
 #### <a name="v20"></a>[v2.0](#tab/ga)
 
@@ -82,7 +82,7 @@ dotnet add package Azure.AI.FormRecognizer --version 3.0.0
 > [!TIP]
 > Tüm hızlı başlangıç kodu dosyasını aynı anda görüntülemek mi istiyorsunuz? Bu hızlı başlangıçta kod örneklerini içeren [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md)'da bulabilirsiniz.
 
-Proje dizininden, *program.cs* dosyasını tercih ettiğiniz DÜZENLEYICIDE veya IDE 'de açın. Aşağıdaki yönergeleri ekleyin `using` :
+Proje dizininden, tercih ettiğiniz düzenleyicide veya IDE 'de *program. cs* dosyasını açın. Aşağıdaki yönergeleri ekleyin `using` :
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_using)]
 

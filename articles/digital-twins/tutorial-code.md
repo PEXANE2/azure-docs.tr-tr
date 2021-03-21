@@ -8,10 +8,10 @@ ms.date: 11/02/2020
 ms.topic: tutorial
 ms.service: digital-twins
 ms.openlocfilehash: bd3ba88650161bd11a24697b4ff8575d307120e9
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102424470"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Öğretici: Azure dijital TWINS API 'Leri ile kodlama
@@ -53,7 +53,7 @@ Proje dizininde bir kez, **boş bir .NET konsol uygulaması projesi oluşturun**
 dotnet new console
 ```
 
-Bu, kodunuzun büyük bir kısmını yazacağınız bir *program.cs* dahil olmak üzere, dizininiz içinde birkaç dosya oluşturur.
+Bu işlem, dizininizin içinde, kodunuzun büyük bir kısmını yazacağınız *program. cs* adlı birkaç dosya oluşturur.
 
 Öğreticinin tamamında kullanmaya devam edebileceksiniz, komut penceresini açık tutun.
 
@@ -76,7 +76,7 @@ Bu bölümde, Azure dijital TWINS ile çalışmak üzere yeni uygulama projeniz 
 
 Öğreticinin sonundaki kodun tamamını gösteren bir bölüm de vardır. Bunu, programınızı hareket halindeyken denetlemek için bir başvuru olarak kullanabilirsiniz.
 
-Başlamak için, *program.cs* dosyasını herhangi bir kod düzenleyicisinde açın. Aşağıdakine benzer bir kod şablonu görürsünüz:
+Başlamak için, herhangi bir kod düzenleyicisinde *program. cs* dosyasını açın. Aşağıdakine benzer bir kod şablonu görürsünüz:
 
 :::row:::
     :::column:::
@@ -98,7 +98,7 @@ Uygulamanızın yapması gereken ilk şey, Azure dijital TWINS hizmetinde kimlik
 
 Kimlik doğrulamak için, Azure dijital TWINS örneğinizin *ana bilgisayar adına* ihtiyacınız vardır.
 
-*Program.cs*' de, aşağıdaki kodu "Hello, World!" altına yapıştırın yöntemdeki çıktı satırı `Main` . Değerini `adtInstanceUrl` Azure Digital TWINS örneğiniz *ana bilgisayar adına* ayarlayın.
+*Program. cs*' de, aşağıdaki kodu "Hello, World!" altına yapıştırın yöntemdeki çıktı satırı `Main` . Değerini `adtInstanceUrl` Azure Digital TWINS örneğiniz *ana bilgisayar adına* ayarlayın.
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Authentication_code":::
 
@@ -130,7 +130,7 @@ Projenizi oluşturduğunuz dizinde, *üzerindeSampleModel.js* adlı yeni bir *. 
 > [!TIP] 
 > DTDL 'nin geçerli olduğundan emin olmak için model belgelerini denetlemek için kullanabileceğiniz dilden bağımsız bir [Dtdl doğrulayıcısı örneği](/samples/azure-samples/dtdl-validator/dtdl-validator) vardır. Bu, [*nasıl yapılır: modellerinizi ayrıştırma ve doğrulama*](how-to-parse-models.md)hakkında daha fazla bilgi edinmek için dtdl ayrıştırıcısı kitaplığı üzerine kurulmuştur.
 
-Daha sonra, yeni oluşturduğunuz modeli Azure dijital TWINS örneğinize yüklemek için *program.cs* 'e daha fazla kod ekleyin.
+Daha sonra, yeni oluşturduğunuz modeli Azure dijital TWINS Örneğinizde karşıya yüklemek için *program. cs* dosyasına daha fazla kod ekleyin.
 
 İlk olarak, `using` dosyanın en üstüne birkaç deyim ekleyin:
 
@@ -248,7 +248,7 @@ Komut pencerenizde, programını ile çalıştırın `dotnet run` . Çıktıda b
 
 ## <a name="complete-code-example"></a>Kod örneğini doldurun
 
-Öğreticide bu noktada, Azure dijital TWINS 'e yönelik temel eylemleri gerçekleştirmenize yönelik, tüm istemci uygulamanız vardır. Başvuru için, *program.cs* içindeki programın tam kodu aşağıda listelenmiştir:
+Öğreticide bu noktada, Azure dijital TWINS 'e yönelik temel eylemleri gerçekleştirmenize yönelik, tüm istemci uygulamanız vardır. Başvuru için, program *. cs* dosyasındaki programın tam kodu aşağıda listelenmiştir:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs":::
 

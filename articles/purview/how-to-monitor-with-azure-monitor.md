@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 12/03/2020
 ms.openlocfilehash: 4cb3965d359980856c238cd563ed8b761754660b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101667740"
 ---
 # <a name="azure-purview-metrics-in-azure-monitor"></a>Azure Izleyici 'de Azure purview ölçümleri
@@ -62,7 +62,7 @@ Azure portal ölçüm bölümünün nasıl kullanılacağına ilişkin familiari
 
 Aşağıdaki tablo, Azure portal araştırmak için kullanılabilen ölçümlerin listesini içerir:
 
-| Ölçüm Adı | Ölçüm Ad Alanı | Toplama türü | Açıklama |
+| Ölçüm Adı | Ölçüm Ad Alanı | Toplama türü | Description |
 | ------------------- | ------------------- | ------------------- | ----------------- |
 | Tarama Iptal edildi | Otomatik tarama | Sum <br> Count | Zaman aralığı için iptal edilen veri kaynağı taramalarının toplamı |
 | Tarama tamamlandı | Otomatik tarama | Sum <br> Count | Zaman aralığı boyunca tamamlanan veri kaynağı taramalarının toplamı |

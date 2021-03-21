@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 01/15/2021
 ms.author: alkohli
 ms.openlocfilehash: 71d5a910e36762d096763c4f45a13cbdad47414d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101730634"
 ---
 Azure Stack Edge cihazınızda VM 'Leri dağıtabilmeniz için önce, istemcinizi Azure PowerShell üzerinden Azure Resource Manager aracılığıyla cihaza bağlanacak şekilde yapılandırmanız gerekir. Ayrıntılı yönergeler için bkz. [Azure Stack Edge cihazınızda Azure Resource Manager bağlama](../articles/databox-online/azure-stack-edge-j-series-connect-resource-manager.md).

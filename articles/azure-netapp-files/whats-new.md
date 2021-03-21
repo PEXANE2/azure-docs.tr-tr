@@ -12,18 +12,24 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 12/04/2020
+ms.date: 03/11/2021
 ms.author: b-juche
-ms.openlocfilehash: b40bbd6c470302b78b78744307805021a3649376
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 84213832e59c50c85d9731ced39bbce6264df47e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100571038"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104590917"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Azure NetApp Files yenilikleri
 
 Azure NetApp Files düzenli olarak güncelleştirilir. Bu makale, en son yeni özellikler ve geliştirmeler hakkında bir Özet sağlar. 
+
+## <a name="march-2021"></a>Mart 2021 
+
+* [Çapraz bölge çoğaltma hedef biriminin otomatik olarak yeniden boyutlandırılması](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-cross-region-replication-destination-volume)
+
+    Bir çapraz bölge çoğaltma ilişkisinde, hedef birim, kaynak birimin boyutuna göre otomatik olarak yeniden boyutlandırılır. Bu nedenle, hedef birimi ayrı olarak yeniden boyutlandırmanıza gerek yoktur. Bu otomatik yeniden boyutlandırma davranışı, birimler etkin bir çoğaltma ilişkisinde olduğunda veya çoğaltma eşlemesi yeniden eşitleme işlemiyle kesildiğinde geçerlidir. Bu özelliğin çalışması için, hem kaynak hem de hedef birimler için kapasite havuzlarında yeterli sayıda alan olduğundan emin olmanız gerekir.
 
 ## <a name="december-2020"></a>Aralık 2020
 

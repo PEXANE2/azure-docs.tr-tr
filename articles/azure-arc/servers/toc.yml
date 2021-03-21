@@ -27,11 +27,11 @@
           href: security-overview.md
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Azure Arc’a bağlanma
+    - name: Dağıtma
       items:
         - name: Bağlı Makine aracısına genel bakış
           href: agent-overview.md
-        - name: Ölçekli dağıtım için plan
+        - name: Dağıtım planı
           href: plan-at-scale-deployment.md
         - name: Makineleri Azure portalından Azure Arc’a bağlama
           href: onboard-portal.md

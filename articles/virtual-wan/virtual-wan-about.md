@@ -9,10 +9,10 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
 ms.openlocfilehash: 641ed73f507d35d7af548d0164ef8e80979be217
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96530485"
 ---
 # <a name="what-is-azure-virtual-wan"></a>Azure Sanal WAN nedir?
@@ -116,7 +116,7 @@ Küresel VNet eşlemesi, farklı bölgelerde iki sanal ağı birbirine bağlamak
 
 Azure sanal WAN, ExpressRoute trafiğinizi şifreleme olanağı sağlar. Bu teknik, genel İnternet üzerinden veya genel IP adreslerini kullanarak ExpressRoute üzerinden şirket içi ağlar ve Azure sanal ağları arasında şifrelenmiş bir aktarım sağlar. Daha fazla bilgi için bkz. [sanal WAN Için ExpressRoute üzerinden IPSec](vpn-over-expressroute.md).
 
-## <a name="locations"></a><a name="locations"></a>Konumlar
+## <a name="locations"></a><a name="locations"></a>Yerlerini
 
 Konum bilgileri için bkz. [sanal WAN iş ortakları ve konumları](virtual-wan-locations-partners.md) makalesi.
 
@@ -132,7 +132,7 @@ Yol tablolarında ilişkilendirme ve yayma özellikleri artık vardır. Önceden
 
 [!INCLUDE [Virtual WAN FAQ](../../includes/virtual-wan-faq-include.md)]
 
-## <a name="whats-new"></a><a name="new"></a>Yenilikler
+## <a name="whats-new"></a><a name="new"></a>Yenilikler nelerdir?
 
 RSS akışına abone olun ve [Azure Updates](https://azure.microsoft.com/updates/?category=networking&query=VIRTUAL%20WAN) sayfasında en son sanal WAN özelliği güncelleştirmelerini görüntüleyin.
 

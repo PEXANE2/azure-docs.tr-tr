@@ -10,10 +10,10 @@ ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
 ms.openlocfilehash: d8db9257ad6eed98b39cd2c9a52351f013453365
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98935237"
 ---
 # <a name="tutorial-machine-learning-model-scoring-wizard-preview-for-dedicated-sql-pools"></a>Öğretici: adanmış SQL havuzları için makine öğrenme modeli Puanlama Sihirbazı (Önizleme)
@@ -151,4 +151,4 @@ Not defterindeki tüm hücreleri çalıştırmadan önce, işlem örneğinin ça
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Hızlı başlangıç: Azure 'da yeni Azure Machine Learning bağlantılı hizmet oluşturma SYNAPSE](quickstart-integrate-azure-machine-learning.md)
-- [Azure SYNAPSE Analytics 'teki Machine Learning özellikleri](what-is-machine-learning.md)
+- [Azure Synapse Analytics'te Makine Öğrenmesi özellikleri](what-is-machine-learning.md)

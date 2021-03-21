@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 02/11/2021
-ms.openlocfilehash: 838a48aa11a1cb36c3a7d822ce88f58936aa976d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8319885de26bf79f5e402c4d06b29e9dd94894de
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101734630"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104655860"
 ---
 # <a name="visualizations-for-application-change-analysis-preview"></a>Uygulama değişikliği analizi için görselleştirmeler (Önizleme)
 
@@ -22,11 +22,11 @@ Deneyimi başlatmak için Azure portal arama çubuğunda bulunan değişiklik an
 
 ![Azure portal değişiklik analizini aramanın ekran görüntüsü](./media/change-analysis/search-change-analysis.png)
 
-Seçili bir abonelik kapsamındaki tüm kaynaklar son 24 saat içindeki değişikliklerle birlikte görüntülenir. Sayfa yükleme performansını iyileştirmek için hizmet bir seferde 10 kaynak görüntülüyor demektir. Daha fazla kaynak görüntülemek için sonraki sayfayı seçin. Bu sınırlamayı kaldırmak için çalışıyoruz.
+Seçili bir abonelik kapsamındaki tüm kaynaklar son 24 saat içindeki değişikliklerle birlikte görüntülenir. Tüm değişiklikler, bir bakışta Öngörüler sağlamak için eski değer ve yeni değer ile görüntülenir.
 
 ![Azure portal değişiklik Analizi dikey penceresinin ekran görüntüsü](./media/change-analysis/change-analysis-standalone-blade.png)
 
-Tüm değişikliklerini görüntülemek için bir kaynağa tıklanın. Gerekirse, JSON biçimli değişiklik ayrıntılarını ve öngörülerini görüntülemek için bir değişikliği detaya gidin.
+Tam Kaynak Yöneticisi parçacığı ve diğer özellikleri görüntülemek için değişikliğe tıklanın.
 
 ![Değişiklik ayrıntılarının ekran görüntüsü](./media/change-analysis/change-details.png)
 
@@ -40,11 +40,6 @@ UI, kaynak değişikliklerini görüntülemek için birden çok abonelik seçmey
 
 ![Birden çok abonelik seçmeyi destekleyen abonelik filtresi ekran görüntüsü](./media/change-analysis/multiple-subscriptions-support.png)
 
-### <a name="web-app-diagnose-and-solve-problems"></a>Web uygulaması sorunları tanılama ve çözme
-
-Azure Izleyici 'de, değişiklik Analizi Ayrıca self servis **Tanılama ve sorun sorunları** deneyiminde yerleşik olarak bulunur. App Service uygulamanızın **genel bakış** sayfasından bu deneyimle erişin.
-
-!["Genel bakış" düğmesinin ve "sorunları tanılama ve çözme" düğmesinin ekran görüntüsü](./media/change-analysis/change-analysis.png)
 
 ## <a name="application-change-analysis-in-the-diagnose-and-solve-problems-tool"></a>Sorunları tanılama ve çözme aracında uygulama değişikliği Analizi
 
@@ -69,6 +64,13 @@ Uygulama değişikliği analizi, Web uygulamasındaki tek başına bir algılay�
 5. Değişiklik verileri, Select **Web App** ı ve **uygulama kilitlenmesi** algılayıcıları içinde de kullanılabilir. Zaman içindeki değişikliklerin türünü ve bu değişikliklerle ilgili ayrıntıları özetleyen bir grafik görürsünüz. Varsayılan olarak, son 24 saat içindeki değişiklikler anında sorunla ilgili yardım almak için görüntülenir.
 
      ![Değişiklik fark görünümünün ekran görüntüsü](./media/change-analysis/change-view.png)
+
+## <a name="diagnose-and-solve-problems-tool"></a>Sorunları tanılama ve çözme aracı
+Değişiklik analizi, sorun aracında tanılama ve çözme konusunda bir öngörü kartı olarak sunulmaktadır. Bir kaynak sorunlarla karşılaşırsa ve Son 72 saat içinde bulunan değişiklikler varsa, Öngörüler kartında değişiklik sayısı görüntülenir. Görünüm değişiklik ayrıntıları bağlantısına tıklanması, değişiklik Analizi tek başına kullanıcı arabiriminden filtrelenmiş görünüme neden olur.
+
+![Sorunları tanılamaya ve çözmeye yönelik değişiklik öngörülerini görüntüleme ekran görüntüsü.](./media/change-analysis/change-insight-diagnose-and-solve.png)
+
+
 
 ## <a name="virtual-machine-diagnose-and-solve-problems"></a>Sanal makine tanılama ve çözme sorunları
 

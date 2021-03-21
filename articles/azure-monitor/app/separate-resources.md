@@ -4,10 +4,10 @@ description: Geliştirme, test ve üretim damgaları için farklı kaynaklara do
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.openlocfilehash: 9a60981e692a45dd3630073300b206289cfd2a30
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102424674"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>Kaç Application Insights kaynak dağıtmalıyım?
@@ -46,7 +46,7 @@ Her Application Insights kaynak, kullanıma hazır olan ölçümler ile gelir. T
 
 Kod üretim aşamaları arasında taşındığı için Ikey 'in değiştirilmesini kolaylaştırmak için, sabit kodlanmış/statik bir değer kullanmak yerine anahtara dinamik olarak kod içinde başvurun.
 
-Bir ASP.NET hizmetinde global.aspx.cs gibi bir başlatma yönteminde anahtarı ayarlayın:
+Bir ASP.NET hizmetinde Global. aspx. cs gibi bir başlatma yönteminde anahtarı ayarlayın:
 
 ```csharp
 protected void Application_Start()
@@ -123,7 +123,7 @@ Uygulama sürümü özelliğini ayarlamanın birkaç farklı yöntemi vardır.
 
     Visual Studio ile derleme sırasında derleme etiketi bir yer tutucu (AutoGen_...) içerir. Ancak MSBuild ile birlikte kullanıldığında, doğru sürüm numarasıyla doldurulur.
 
-    MSBuild 'in sürüm numaraları oluşturmasına izin vermek için AssemblyReference.cs içindeki gibi bir sürümü ayarlayın `1.0.*`
+    MSBuild 'in sürüm numaraları oluşturmasına izin vermek için, `1.0.*` AssemblyReference. cs dosyasındaki gibi sürümü ayarlayın
 
 ## <a name="version-and-release-tracking"></a>Sürüm ve sürüm izleme
 Uygulama sürümünü izlemek için `buildinfo.config` dosyasının Microsoft Build Engine işleminiz tarafından oluşturulduğundan emin olun. `.csproj`Dosyanıza şunu ekleyin:  

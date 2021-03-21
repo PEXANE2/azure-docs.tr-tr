@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.openlocfilehash: e1a0f4f22411e506cab3b54e955a4cdc16986fe2
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101667509"
 ---
 # <a name="serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu 
@@ -81,7 +81,7 @@ Desteklenen T-SQL:
 
 Sunucusuz SQL havuzunda yerel depolama alanı yoktur, yalnızca meta veri nesneleri veritabanlarında depolanır. Bu nedenle, aşağıdaki kavramlarla ilgili T-SQL desteklenmez:
 
-- Tablolar
+- Tables
 - Tetikleyiciler
 - Gerçekleştirilmiş görünümler
 - Görünümler ve güvenlikle ilgili olanlar dışındaki DDL deyimleri

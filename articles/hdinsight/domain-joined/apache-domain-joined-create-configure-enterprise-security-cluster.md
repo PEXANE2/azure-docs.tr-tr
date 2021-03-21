@@ -6,10 +6,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/10/2019
 ms.openlocfilehash: 914acfab3935bc81e7d8382163ca9283c7f71a53
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98934044"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>Azure HDInsight 'ta Kurumsal Güvenlik Paketi kümeleri oluşturma ve yapılandırma
@@ -115,7 +115,7 @@ Kullanıcılar Azure AD ile eşitlenir.
 
 ### <a name="create-an-azure-ad-directory"></a>Azure AD dizini oluşturma
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 1. **Kaynak oluştur** ve yazın ' ı seçin `directory` . **Azure Active Directory**  >  **Oluştur**' u seçin.
 1. **Kuruluş adı** altında girin `HDIFabrikam` .
 1. **İlk etki alanı adı** altında girin `HDIFabrikamoutlook` .
@@ -205,14 +205,14 @@ Active Directory kiracı yöneticisi oluşturun.
    !["Yapılandırma Tamam" sayfası](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0078.png)
 
 1. Eşitleme tamamlandıktan sonra, IaaS dizininde oluşturduğunuz kullanıcıların Azure AD ile eşitlendiğinden emin olun.
-   1. Azure Portal’da oturum açın.
+   1. Azure portalında oturum açın.
    1. **Azure Active Directory**  >  **hdifabrikam**  >  **kullanıcıları**' nı seçin.
 
 ### <a name="create-a-user-assigned-managed-identity"></a>Kullanıcı tarafından atanan yönetilen kimlik oluşturma
 
 Azure AD Domain Services yapılandırmak için kullanabileceğiniz, Kullanıcı tarafından atanan bir yönetilen kimlik oluşturun (Azure AD DS). Daha fazla bilgi için, bkz. [Azure Portal kullanarak Kullanıcı tarafından atanan yönetilen kimliğe rol oluşturma, listeleme, silme veya atama](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md).
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 1. **Kaynak oluştur** ve yazın ' ı seçin `managed identity` . **Kullanıcı tarafından atanan yönetilen kimlik**  >  **Oluştur**' u seçin.
 1. **Kaynak adı** için girin `HDIFabrikamManagedIdentity` .
 1. Aboneliğinizi seçin.
@@ -244,7 +244,7 @@ Azure AD DS 'yi etkinleştirmek için bu adımları izleyin. Daha fazla bilgi i�
     $virtualNetwork | Set-AzVirtualNetwork
     ```
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 1. **Kaynak oluştur**' u seçin, girin `Domain services` ve **Azure AD Domain Services**  >  **Oluştur**' u seçin.
 1. **Temel bilgiler** sayfasında:
     1. **Dizin adı** altında, oluşturduğunuz Azure AD dizinini seçin: **hdıfabrikam**.
