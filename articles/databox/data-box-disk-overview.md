@@ -10,10 +10,10 @@ ms.date: 06/18/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
 ms.openlocfilehash: ea9353ed8c1938fa9b33585a0650b4507c671451
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92125039"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Azure Data Box Disk nedir?
@@ -38,7 +38,7 @@ Azure sağlayıcıları ve Azure dışı sağlayıcılar Azure Data Box verileri
 
 - **Azure dosya eşitleme** -Data Box dosyaları bir Azure dosya paylaşımıyla çoğaltarak verilerinize yerel erişimi sürdürirken dosya hizmetlerinizi Azure 'da merkezileştirmenizi sağlar. Daha fazla bilgi için bkz. [dağıtma Azure dosya eşitleme](../storage/files/storage-sync-files-deployment-guide.md).
 
-- **HDFS stores** , Data Box kullanarak Hadoop kümenizin şirket içi Hadoop Dağıtılmış dosya sistemi (bir) deposundan verileri Azure depolama alanına geçirin. Daha fazla bilgi için, [Azure Data Box ile şirket içi bir Azure depolama 'Ya geçiş](../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md)konusuna bakın.
+-  , Data Box kullanarak Hadoop kümenizin şirket içi Hadoop Dağıtılmış dosya sistemi (bir) deposundan verileri Azure depolama alanına geçirin. Daha fazla bilgi için, [Azure Data Box ile şirket içi bir Azure depolama 'Ya geçiş](../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md)konusuna bakın.
 
 - **Azure Backup** -kritik kurumsal verilerin büyük yedeklemelerini Azure kurtarma hizmetleri kasasına çevrimdışı mekanizmalar aracılığıyla taşımanızı sağlar. Daha fazla bilgi için bkz. [Azure Backup genel bakış](../backup/backup-overview.md).
 
@@ -65,7 +65,7 @@ Tipik iş akışı aşağıdaki adımlardan oluşur:
 
 Bu süreç boyunca tüm durum değişikliklerinde e-postayla bildirim alırsınız. Ayrıntılı akış hakkında daha fazla bilgi için bkz. [Azure portalda Data Box Disk dağıtma](data-box-disk-quickstart-portal.md).
 
-## <a name="benefits"></a>Yararları
+## <a name="benefits"></a>Avantajlar
 
 Data Box Disk, büyük miktarlarda veriyi ağ bağlantısını etkilemeden Azure'a taşımak için tasarlanmıştır. Çözümün şöyle avantajları vardır:
 
@@ -90,7 +90,7 @@ Daha fazla bilgi için bkz. [Azure Data Box Disk güvenliği ve veri koruması](
 
 ## <a name="features-and-specifications"></a>Özellikler ve belirtimler
 
-| Belirtimler                                          | Açıklama              |
+| Belirtimler                                          | Description              |
 |---------------------------------------------------------|--------------------------|
 | Ağırlık                                                  | < 2 lb. kutu başına. Kutuda en fazla 5 disk                |
 | Boyutlar                                              | Disk - 2,5" SSD |
@@ -100,7 +100,7 @@ Daha fazla bilgi için bkz. [Azure Data Box Disk güvenliği ve veri koruması](
 | Veri arabirimi                                          | USB   |
 | Güvenlik                                                | BitLocker ile önceden şifreleme ve güvenli güncelleştirme <br> Destek anahtarı korumalı diskler <br> Veriler her zaman şifrelenir  |
 | Veri aktarımı hızı                                      | dosya boyutuna bağlı olarak en fazla 430 MB/sn      |
-|Yönetim                                               | Azure portal |
+|Yönetim                                               | Azure portalı |
 
 ## <a name="region-availability"></a>Bölge kullanılabilirliği
 

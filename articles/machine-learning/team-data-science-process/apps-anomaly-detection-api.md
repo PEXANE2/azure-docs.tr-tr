@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
 ms.openlocfilehash: e210c1683d5f14181bc0549e73a892eb91d2e746
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93305706"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning anomali algılama API 'SI
@@ -28,9 +28,9 @@ ms.locfileid: "93305706"
 
 Bu API, zaman serisi verilerinde aşağıdaki türlerde anormal desenleri algılayabilir:
 
-* **Pozitif ve olumsuz eğilimler** : Örneğin, bellek kullanımını izlerken, Bellek sızıntısının bir göstergesi olabileceğinden, daha fazla bilgi
-* **Dinamik değer aralığındaki değişiklikler** : Örneğin, bir bulut hizmeti tarafından oluşturulan özel durumları izlerken, dinamik değer aralığındaki tüm değişiklikler hizmetin sistem durumunda dengesizmi olduğunu belirtebilir ve
-* **Ani artışlar ve DIB 'ler** : Örneğin, bir hizmette oturum açma hatalarının sayısını veya bir e-ticaret sitesinde kullanıma alma sayısını izlerken, ani veya DIB 'ler anormal davranışları gösterebilir.
+* **Pozitif ve olumsuz eğilimler**: Örneğin, bellek kullanımını izlerken, Bellek sızıntısının bir göstergesi olabileceğinden, daha fazla bilgi
+* **Dinamik değer aralığındaki değişiklikler**: Örneğin, bir bulut hizmeti tarafından oluşturulan özel durumları izlerken, dinamik değer aralığındaki tüm değişiklikler hizmetin sistem durumunda dengesizmi olduğunu belirtebilir ve
+* **Ani artışlar ve DIB 'ler**: Örneğin, bir hizmette oturum açma hatalarının sayısını veya bir e-ticaret sitesinde kullanıma alma sayısını izlerken, ani veya DIB 'ler anormal davranışları gösterebilir.
 
 Bu makine öğrenimi algılayıcıları, zaman içindeki değerlerde bu değişiklikleri izler ve değerlerinde devam eden değişiklikleri bildirir. Bunlar geçici eşik ayarlama gerektirmez ve bunların puanları, yanlış pozitif oranı denetlemek için kullanılabilir. Anomali algılama API 'SI, zaman içinde KPI 'Ları, arama sayısı gibi ölçümler aracılığıyla kullanım, tıklama sayısı, bellek, CPU, dosya okuma, vb. gibi sayaçlar aracılığıyla performans izleme gibi çeşitli senaryolarda yararlıdır.
 
@@ -115,7 +115,7 @@ Aşağıdaki şekilde, skor API 'sinin algılayabildiği anormalilerin bir örne
 ### <a name="detectors"></a>Algılayıcılar
 Anomali algılama API 'SI, üç geniş kategoride algılayıcıları destekler. Her bir algılayıcısının belirli giriş parametreleri ve çıkışları hakkındaki ayrıntılar aşağıdaki tabloda bulunabilir.
 
-| Algılayıcı kategorisi | Algılayıcısı | Açıklama | Giriş Parametreleri | Çıkışlar |
+| Algılayıcı kategorisi | Algılayıcısı | Description | Giriş Parametreleri | Çıkışlar |
 | --- | --- | --- | --- | --- |
 | Ani Detektorler |Tani algılayıcı |Değerleri temel alarak ani artışları ve DIB 'leri algılayın ve ilk ve üçüncü kutalileri |*tspikealgılayıcı. duyarlılık:* 1-10 aralığında tamsayı değeri alır, varsayılan: 3; Daha yüksek değerler daha fazla bilgi yakalar ve bu sayede daha az hassas hale gelir |Tani: ikili değerler – ' 1 ' bir ani/DIP algılanırsa, ' 0 ' Aksi takdirde |
 | Ani Detektorler | Zani algılayıcı |Veri noktalarının ne kadar ilerlediğiyle ilgili ani artışları ve DIB 'leri Algıla |*zspikealgılayıcı. duyarlılık:* 1-10 aralığında tamsayı değeri Al, varsayılan: 3; Daha yüksek değerler, daha az hassas hale getirmek için daha fazla bilgi yakalar |Zani: ikili değerler – ' 1 ' bir ani/DIP algılanırsa, ' 0 ' Aksi takdirde |
@@ -125,7 +125,7 @@ Anomali algılama API 'SI, üç geniş kategoride algılayıcıları destekler. 
 ### <a name="parameters"></a>Parametreler
 Bu giriş parametreleriyle ilgili daha ayrıntılı bilgi aşağıdaki tabloda listelenmiştir:
 
-| Giriş Parametreleri | Açıklama | Varsayılan ayar | Tür | Geçerli Aralık | Önerilen Aralık |
+| Giriş Parametreleri | Description | Varsayılan ayar | Tür | Geçerli Aralık | Önerilen Aralık |
 | --- | --- | --- | --- | --- | --- |
 | detektorler. geçmişini penceresi |Anomali puan hesaplaması için kullanılan geçmiş (veri noktası sayısı) |500 |tamsayı |10-2000 |Zaman serisine bağımlı |
 | algılayıcıları. spıkesdips | Yalnızca ani artışlar, yalnızca DIB 'ler veya her ikisinin de algılanmayacağı |Her ikisi |numara |Her ikisi, ani artışlar, DIB 'Ler |Her ikisi |
@@ -135,12 +135,12 @@ Bu giriş parametreleriyle ilgili daha ayrıntılı bilgi aşağıdaki tabloda l
 | zspikealgılayıcı. duyarlılık |Zani algılayıcısı için duyarlılık |3 |tamsayı |1-10 |3-5 (daha az değer daha hassas anlamına gelir) |
 | postprocess. edilecek satırlar |Çıkış sonuçlarında tutulacak en son veri noktası sayısı |0 |tamsayı |0 (tüm veri noktalarını sakla) veya sonuçlarda tutulacak noktaların sayısını belirtin |Yok |
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 API, zaman serisi verilerinizde tüm algılayıcıları çalıştırır ve zaman içindeki her bir nokta için anomali puanlarını ve ikili ani değer göstergelerini döndürür. Aşağıdaki tabloda API 'den gelen çıktılar listelenmiştir.
 
-| Çıkışlar | Açıklama |
+| Çıkışlar | Description |
 | --- | --- |
-| Zaman |Toplama (ve/veya) eksik veri imputation uygulanmışsa ham verilerden veya toplanmış (ve/veya) toplanan verilerin zaman damgaları |
+| Saat |Toplama (ve/veya) eksik veri imputation uygulanmışsa ham verilerden veya toplanmış (ve/veya) toplanan verilerin zaman damgaları |
 | Veriler |Toplama (ve/veya) eksik veri imputation uygulanmışsa ham verilerden veya toplanmış (ve/veya) toplanan verilerin değerleri |
 | Tani |Tani algılayıcı tarafından bir ani algılanıp algılanmadığını belirten ikili gösterge |
 | Zani |Zani algılayıcı tarafından bir ani algılanıp algılanmadığını belirten ikili gösterge |
@@ -161,7 +161,7 @@ Mevsimsellik uç noktasındaki detekleyler, mevsimsellik olmayan uç noktada, an
 
 Bu giriş parametreleriyle ilgili daha ayrıntılı bilgi aşağıdaki tabloda listelenmiştir:
 
-| Giriş Parametreleri | Açıklama | Varsayılan ayar | Tür | Geçerli Aralık | Önerilen Aralık |
+| Giriş Parametreleri | Description | Varsayılan ayar | Tür | Geçerli Aralık | Önerilen Aralık |
 | --- | --- | --- | --- | --- | --- |
 | preprocess. Aggregationınterval |Toplanan giriş zaman serisi için saniye cinsinden toplama aralığı |0 (toplama yapılmaz) |tamsayı |0: toplamayı atla, > 0, tersi |5 dakika ila 1 gün, zaman serisine bağımlı |
 | preprocess. aggregationFunc |Belirtilen Aggregationınterval öğesine veri toplamak için kullanılan işlev |ortalama |numara |Ortalama, toplam, uzunluk |Yok |
@@ -178,12 +178,12 @@ Bu giriş parametreleriyle ilgili daha ayrıntılı bilgi aşağıdaki tabloda l
 | mevsimsellik. dönüştürme |Anomali algılamayı uygulamadan önce mevsimlere (ve) eğilim bileşenlerinin kaldırılıp kaldırılmayacağı |yılsezon |numara |hiçbiri, demevsim, demevsimeğilimi |Yok |
 | postprocess. edilecek satırlar |Çıkış sonuçlarında tutulacak en son veri noktası sayısı |0 |tamsayı |0 (tüm veri noktalarını sakla) veya sonuçlarda tutulacak noktaların sayısını belirtin |Yok |
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 API, zaman serisi verilerinizde tüm algılayıcıları çalıştırır ve zaman içindeki her bir nokta için anomali puanlarını ve ikili ani değer göstergelerini döndürür. Aşağıdaki tabloda API 'den gelen çıktılar listelenmiştir.
 
-| Çıkışlar | Açıklama |
+| Çıkışlar | Description |
 | --- | --- |
-| Zaman |Toplama (ve/veya) eksik veri imputation uygulanmışsa ham verilerden veya toplanmış (ve/veya) toplanan verilerin zaman damgaları |
+| Saat |Toplama (ve/veya) eksik veri imputation uygulanmışsa ham verilerden veya toplanmış (ve/veya) toplanan verilerin zaman damgaları |
 | OriginalData |Toplama (ve/veya) eksik veri imputation uygulanmışsa ham verilerden veya toplanmış (ve/veya) toplanan verilerin değerleri |
 | ProcessedData |Aşağıdaki seçeneklerden birini kullanabilirsiniz: <ul><li>Önemli mevsimsellik tespit edildi ve zaman dönemi seçeneği işaretliyse, zaman serisini önemli bir şekilde ayarladı;</li><li>önemli mevsimsellik tespit edildi ve demevsimsel eğilim seçeneği işaretliyse, zaman serisini ayarlama ve zaman serisini azaltma</li><li>Aksi takdirde, bu seçenek OriginalData ile aynıdır</li> |
 | Tani |Tani algılayıcı tarafından bir ani algılanıp algılanmadığını belirten ikili gösterge |

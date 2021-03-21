@@ -10,10 +10,10 @@ ms.date: 12/18/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli
 ms.openlocfilehash: 8c114d6260cf81bcc4fb256fc8a09947ab9ce1d8
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102502493"
 ---
 # <a name="choosing-the-right-number-of-fault-domains-for-virtual-machine-scale-set"></a>Sanal makine ölçek kümesi için doğru hata etki alanı sayısını seçme
@@ -24,7 +24,7 @@ Ayrıca, ölçek kümesi hata etki alanlarının sayısını yönetilen disk say
 ## <a name="rest-api"></a>REST API
 Özelliğini `properties.platformFaultDomainCount` 1, 2 veya 3 (belirtilmemişse, varsayılan olarak 3) olarak ayarlayabilirsiniz. [REST API için](/rest/api/compute/virtualmachinescalesets/createorupdate)belgelere bakın.
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure CLI’si
 Parametresini `--platform-fault-domain-count` 1, 2 veya 3 (belirtilmemişse, varsayılan olarak 3) olarak ayarlayabilirsiniz. [Burada](/cli/azure/vmss#az-vmss-create)Azure CLI belgelerine bakın.
 
 ```azurecli-interactive

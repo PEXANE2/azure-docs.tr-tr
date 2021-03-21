@@ -14,10 +14,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 ms.openlocfilehash: 2d9b0d97fa1823314f5109a1c7fc79054806c148
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93146935"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>IoT Hub 'ınızdaki kimlik kayıt defterini anlayın
@@ -106,13 +106,13 @@ Daha karmaşık bir uygulama, [Azure izleyici](../azure-monitor/index.yml) 'den 
 
 ## <a name="device-and-module-lifecycle-notifications"></a>Cihaz ve modül yaşam döngüsü bildirimleri
 
-IoT Hub, yaşam döngüsü bildirimleri göndererek bir kimlik oluşturulduğunda veya silindiğinde IoT çözümünüze bildirimde bulunabilir. Bunu yapmak için, IoT çözümünüzün bir rota oluşturması ve veri kaynağını *DeviceLifecycleEvents* veya *ModuleLifecycleEvents* ' e eşit olarak ayarlaması gerekir. Varsayılan olarak, yaşam döngüsü bildirimleri gönderilmez, diğer bir deyişle, böyle bir yol önceden mevcut değildir. Bildirim iletisi özellikleri ve gövdesi içerir.
+IoT Hub, yaşam döngüsü bildirimleri göndererek bir kimlik oluşturulduğunda veya silindiğinde IoT çözümünüze bildirimde bulunabilir. Bunu yapmak için, IoT çözümünüzün bir rota oluşturması ve veri kaynağını *DeviceLifecycleEvents* veya *ModuleLifecycleEvents*' e eşit olarak ayarlaması gerekir. Varsayılan olarak, yaşam döngüsü bildirimleri gönderilmez, diğer bir deyişle, böyle bir yol önceden mevcut değildir. Bildirim iletisi özellikleri ve gövdesi içerir.
 
 Özellikler: Ileti sistemi özelliklerine sembol ön eki eklenir `$` .
 
 Cihaz için bildirim iletisi:
 
-| Ad | Değer |
+| Name | Değer |
 | --- | --- |
 |$content türü | uygulama/json |
 |$iothub-enqueuedtime |  Bildirimin gönderildiği zaman |
@@ -148,7 +148,7 @@ Gövde: Bu bölüm JSON biçimindedir ve oluşturulan cihaz kimliğinin ikizi te
 ```
 Modül için bildirim iletisi:
 
-| Ad | Değer |
+| Name | Değer |
 | --- | --- |
 $content türü | uygulama/json |
 $iothub-enqueuedtime |  Bildirimin gönderildiği zaman |
@@ -188,17 +188,17 @@ Gövde: Bu bölüm JSON biçimindedir ve oluşturulan modül kimliğinin ikizi t
 
 Cihaz kimlikleri aşağıdaki özelliklerle JSON belgeleri olarak temsil edilir:
 
-| Özellik | Seçenekler | Açıklama |
+| Özellik | Seçenekler | Description |
 | --- | --- | --- |
 | deviceId |gerekli, güncelleştirmeler üzerinde salt okunurdur |ASCII 7 bit alfasayısal karakter ve belirli özel karakterler için büyük/küçük harfe duyarlı bir dize (en fazla 128 karakter uzunluğunda): `- . + % _ # * ? ! ( ) , : = @ $ '` . |
 | GenerationID |gerekli, salt okunurdur |128 karakter uzunluğunda bir IoT Hub 'ı tarafından üretilen, büyük/küçük harfe duyarlı dize. Bu değer, silinen ve yeniden oluşturulduğu zaman, cihazları aynı **DeviceID** ile ayırt etmek için kullanılır. |
 | özelliği |gerekli, salt okunurdur |[RFC7232](https://tools.ietf.org/html/rfc7232)başına cihaz kimliği Için zayıf ETag 'i temsil eden bir dize. |
 | 'u |isteğe bağlı |Kimlik doğrulama bilgilerini ve güvenlik malzemelerini içeren bileşik bir nesne. |
 | Auth. symkey |isteğe bağlı |Base64 biçiminde depolanan, birincil ve ikincil anahtar içeren bileşik bir nesne. |
-| durum |gerekli |Erişim göstergesi. **Etkinleştirilebilir** veya **devre dışı** bırakılabilir. **Etkinleştirilirse** , cihazın bağlanmasına izin verilir. **Devre dışı** bırakılırsa, bu cihaz cihaza yönelik herhangi bir uç noktaya erişemez. |
+| durum |gerekli |Erişim göstergesi. **Etkinleştirilebilir** veya **devre dışı** bırakılabilir. **Etkinleştirilirse**, cihazın bağlanmasına izin verilir. **Devre dışı** bırakılırsa, bu cihaz cihaza yönelik herhangi bir uç noktaya erişemez. |
 | statusReason |isteğe bağlı |Cihaz kimliği durumunun nedenini depolayan 128 karakter uzunluğunda bir dize. Tüm UTF-8 karakterlerine izin verilir. |
 | statusUpdateTime |salt okunur |Son durum güncelleştirmesinin tarih ve saatini gösteren zamana bağlı bir gösterge. |
-| connectionState |salt okunur |Bağlantı durumunu gösteren bir alan: **bağlı** veya **bağlantısı kesildi** . Bu alan, cihaz bağlantı durumunun IoT Hub görünümünü temsil eder. **Önemli** : Bu alan yalnızca geliştirme/hata ayıklama amacıyla kullanılmalıdır. Bağlantı durumu yalnızca MQTT veya AMQP kullanan cihazlar için güncelleştirilir. Ayrıca, protokol düzeyinde pingler (MQTT pingleri veya AMQP pingler) temel alır ve en fazla 5 dakikalık bir gecikme olabilir. Bu nedenlerden dolayı, bağlı olarak bildirilen ancak bağlantısı kesilen cihazlar gibi hatalı pozitif sonuçlar olabilir. |
+| connectionState |salt okunur |Bağlantı durumunu gösteren bir alan: **bağlı** veya **bağlantısı kesildi**. Bu alan, cihaz bağlantı durumunun IoT Hub görünümünü temsil eder. **Önemli**: Bu alan yalnızca geliştirme/hata ayıklama amacıyla kullanılmalıdır. Bağlantı durumu yalnızca MQTT veya AMQP kullanan cihazlar için güncelleştirilir. Ayrıca, protokol düzeyinde pingler (MQTT pingleri veya AMQP pingler) temel alır ve en fazla 5 dakikalık bir gecikme olabilir. Bu nedenlerden dolayı, bağlı olarak bildirilen ancak bağlantısı kesilen cihazlar gibi hatalı pozitif sonuçlar olabilir. |
 | connectionStateUpdatedTime |salt okunur |Bağlantı durumunun güncelleştirildiği tarihi ve son saati gösteren zamana bağlı bir gösterge. |
 | lastActivityTime |salt okunur |Cihazın bağlandığı, aldığı veya ileti gönderdiği tarihi ve son saati gösteren zamana bağlı bir gösterge. Bu özellik sonunda tutarlıdır, ancak 5 ila 10 dakikaya kadar gecikebilir. Bu nedenle, üretim senaryolarında kullanılmamalıdır. |
 
@@ -206,13 +206,13 @@ Cihaz kimlikleri aşağıdaki özelliklerle JSON belgeleri olarak temsil edilir:
 > Bağlantı durumu yalnızca bağlantı durumunun IoT Hub görünümünü temsil edebilir. Bu durum için güncelleştirmeler ağ koşullarına ve yapılandırmalara bağlı olarak gecikebilir.
 
 > [!NOTE]
-> Şu anda cihaz SDK 'Ları, `+` `#` **DeviceID** 'deki ve karakterlerinin kullanımını desteklemez.
+> Şu anda cihaz SDK 'Ları, `+` `#` **DeviceID**'deki ve karakterlerinin kullanımını desteklemez.
 
 ## <a name="module-identity-properties"></a>Modül kimliği özellikleri
 
 Modül kimlikleri aşağıdaki özelliklerle JSON belgeleri olarak temsil edilir:
 
-| Özellik | Seçenekler | Açıklama |
+| Özellik | Seçenekler | Description |
 | --- | --- | --- |
 | deviceId |gerekli, güncelleştirmeler üzerinde salt okunurdur |ASCII 7 bit alfasayısal karakter ve belirli özel karakterler için büyük/küçük harfe duyarlı bir dize (en fazla 128 karakter uzunluğunda): `- . + % _ # * ? ! ( ) , : = @ $ '` . |
 | Modül kimliği |gerekli, güncelleştirmeler üzerinde salt okunurdur |ASCII 7 bit alfasayısal karakter ve belirli özel karakterler için büyük/küçük harfe duyarlı bir dize (en fazla 128 karakter uzunluğunda): `- . + % _ # * ? ! ( ) , : = @ $ '` . |
@@ -220,10 +220,10 @@ Modül kimlikleri aşağıdaki özelliklerle JSON belgeleri olarak temsil edilir
 | özelliği |gerekli, salt okunurdur |[RFC7232](https://tools.ietf.org/html/rfc7232)başına cihaz kimliği Için zayıf ETag 'i temsil eden bir dize. |
 | 'u |isteğe bağlı |Kimlik doğrulama bilgilerini ve güvenlik malzemelerini içeren bileşik bir nesne. |
 | Auth. symkey |isteğe bağlı |Base64 biçiminde depolanan, birincil ve ikincil anahtar içeren bileşik bir nesne. |
-| durum |gerekli |Erişim göstergesi. **Etkinleştirilebilir** veya **devre dışı** bırakılabilir. **Etkinleştirilirse** , cihazın bağlanmasına izin verilir. **Devre dışı** bırakılırsa, bu cihaz cihaza yönelik herhangi bir uç noktaya erişemez. |
+| durum |gerekli |Erişim göstergesi. **Etkinleştirilebilir** veya **devre dışı** bırakılabilir. **Etkinleştirilirse**, cihazın bağlanmasına izin verilir. **Devre dışı** bırakılırsa, bu cihaz cihaza yönelik herhangi bir uç noktaya erişemez. |
 | statusReason |isteğe bağlı |Cihaz kimliği durumunun nedenini depolayan 128 karakter uzunluğunda bir dize. Tüm UTF-8 karakterlerine izin verilir. |
 | statusUpdateTime |salt okunur |Son durum güncelleştirmesinin tarih ve saatini gösteren zamana bağlı bir gösterge. |
-| connectionState |salt okunur |Bağlantı durumunu gösteren bir alan: **bağlı** veya **bağlantısı kesildi** . Bu alan, cihaz bağlantı durumunun IoT Hub görünümünü temsil eder. **Önemli** : Bu alan yalnızca geliştirme/hata ayıklama amacıyla kullanılmalıdır. Bağlantı durumu yalnızca MQTT veya AMQP kullanan cihazlar için güncelleştirilir. Ayrıca, protokol düzeyinde pingler (MQTT pingleri veya AMQP pingler) temel alır ve en fazla 5 dakikalık bir gecikme olabilir. Bu nedenlerden dolayı, bağlı olarak bildirilen ancak bağlantısı kesilen cihazlar gibi hatalı pozitif sonuçlar olabilir. |
+| connectionState |salt okunur |Bağlantı durumunu gösteren bir alan: **bağlı** veya **bağlantısı kesildi**. Bu alan, cihaz bağlantı durumunun IoT Hub görünümünü temsil eder. **Önemli**: Bu alan yalnızca geliştirme/hata ayıklama amacıyla kullanılmalıdır. Bağlantı durumu yalnızca MQTT veya AMQP kullanan cihazlar için güncelleştirilir. Ayrıca, protokol düzeyinde pingler (MQTT pingleri veya AMQP pingler) temel alır ve en fazla 5 dakikalık bir gecikme olabilir. Bu nedenlerden dolayı, bağlı olarak bildirilen ancak bağlantısı kesilen cihazlar gibi hatalı pozitif sonuçlar olabilir. |
 | connectionStateUpdatedTime |salt okunur |Bağlantı durumunun güncelleştirildiği tarihi ve son saati gösteren zamana bağlı bir gösterge. |
 | lastActivityTime |salt okunur |Cihazın bağlandığı, aldığı veya ileti gönderdiği tarihi ve son saati gösteren zamana bağlı bir gösterge. |
 

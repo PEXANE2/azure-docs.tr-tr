@@ -4,10 +4,10 @@ description: Bu hızlı başlangıçta, uyumlu olmayan kaynakları belirlemek ü
 ms.date: 10/27/2020
 ms.topic: quickstart
 ms.openlocfilehash: dc4dae2dc6e43e7532117bf64af3ce97ddc7c496
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93106407"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-terraform"></a>Hızlı başlangıç: Terrayform kullanarak uyumlu olmayan kaynakları belirlemek için bir ilke ataması oluşturma
@@ -15,7 +15,7 @@ ms.locfileid: "93106407"
 Azure’da uyumluluğu anlamanın ilk adımı, kaynaklarınızın durumunu belirlemektir.
 Bu hızlı başlangıç, yönetilen disk kullanmayan sanal makineleri belirlemek üzere ilke ataması oluşturma işleminde size yol gösterir.
 
-Bu işlemin sonunda, yönetilen disk kullanmayan sanal makineleri başarılı bir şekilde belirlemiş olacaksınız. Bu sanal makineler, ilke ataması ile _uyumsuzdur_ .
+Bu işlemin sonunda, yönetilen disk kullanmayan sanal makineleri başarılı bir şekilde belirlemiş olacaksınız. Bu sanal makineler, ilke ataması ile _uyumsuzdur_.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -58,7 +58,7 @@ Bu hızlı başlangıçta, bir ilke ataması oluşturup yönetilen diskler () ta
 
    Kapsam, ilke atamasının hangi kaynaklarda veya kaynak gruplarında uygulanacağını belirler. Bir yönetim grubundan tek bir kaynağa kadar değişebilir. `{scope}`Aşağıdaki desenlerden biriyle değiştirdiğinizden emin olun:
 
-   - Aboneliğiniz `/subscriptions/{subscriptionId}`
+   - Abonelik: `/subscriptions/{subscriptionId}`
    - Kaynak grubu: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}`
    - Kaynak `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]`
 
@@ -94,7 +94,7 @@ Ardından, gerekli sağlayıcıları indirmek için Terrayform 'u başlatın ve 
    terraform plan -out assignment.tfplan
    ```
 
-   :::image type="content" source="./media/assign-policy-terraform/terraform-plan-out.png" alt-text="Azurerd modülünü ve başarı iletisini indirmeyi gösteren terazform init komutunu çalıştırmanın ekran görüntüsü.":::
+   :::image type="content" source="./media/assign-policy-terraform/terraform-plan-out.png" alt-text="Oluşturulan Azure kaynağını göstermek için terırform plan komutu ve out parametresini çalıştırmanın ekran görüntüsü.":::
 
    > [!NOTE]
    > Kalıcı yürütme planları ve güvenlik hakkında daha fazla bilgi için bkz. [Terrayform planı: güvenlik uyarısı](https://www.terraform.io/docs/commands/plan.html#security-warning).
@@ -109,7 +109,9 @@ Son olarak, yürütme planını uygulayın.
 terraform apply assignment.tfplan
 ```
 
-:::image type="content" source="./media/assign-policy-terraform/terraform-apply.png" alt-text="Azurerd modülünü ve başarı iletisini indirmeyi gösteren terazform init komutunu çalıştırmanın ekran görüntüsü." ileti, ilke ataması artık oluşturulmuştur. Dosyayı tanımladığımızdan `outputs.tf` , _atama \_ kimliği_ de döndürülür.
+:::image type="content" source="./media/assign-policy-terraform/terraform-apply.png" alt-text="Terlarform Apply komutunu ve elde edilen kaynak oluşturmayı çalıştırmanın ekran görüntüsü.":::
+
+"Uygula Tamam! Kaynaklar: 1 eklendi, 0 değiştirildi, 0 yok edildi. " ileti, ilke ataması artık oluşturulmuştur. Dosyayı tanımladığımızdan `outputs.tf` , _atama \_ kimliği_ de döndürülür.
 
 ## <a name="identify-non-compliant-resources"></a>Uyumlu olmayan kaynakları belirleme
 
@@ -151,7 +153,7 @@ Sonuçlar, Azure portalı görünümünde **Uyumlu olmayan kaynaklar** bölümü
 
 Oluşturulan atamayı kaldırmak için Azure CLı kullanın veya Teraform yürütme planını ile ters çevirin `terraform destroy` .
 
-- Azure CLI
+- Azure CLI’si
 
   ```azurecli-interactive
   az policy assignment delete --name 'audit-vm-manageddisks' --scope '/subscriptions/<subscriptionID>/<resourceGroupName>'

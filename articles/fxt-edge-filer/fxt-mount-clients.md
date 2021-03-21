@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: rohogue
 ms.openlocfilehash: fa1f9da2c60aaf4c552916d16c266e984bf08892
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92340521"
 ---
 # <a name="tutorial-mount-the-cluster"></a>Öğretici: kümeyi bağlama
@@ -60,7 +60,7 @@ Bağlama komutunda üç öğe vardır:
 
 ### <a name="create-the-cluster-path"></a>Küme yolunu oluşturma
 
-Küme yolu, vServer *IP adresinin* bir birleşimidir ve bir *ad alanı birleşiminin*yoludur. Ad alanı birleşimi, [depolama sistemini](fxt-add-storage.md#create-a-junction)eklediğinizde tanımladığınız bir sanal yoldur.
+Küme yolu, vServer *IP adresinin* bir birleşimidir ve bir *ad alanı birleşiminin* yoludur. Ad alanı birleşimi, [depolama sistemini](fxt-add-storage.md#create-a-junction)eklediğinizde tanımladığınız bir sanal yoldur.
 
 Örneğin, ``/fxt/files`` ad alanı yolu olarak kullandıysanız, istemcileriniz *IP_address*:/FXT/Files öğesini yerel bağlama noktasına bağlayabilir.
 

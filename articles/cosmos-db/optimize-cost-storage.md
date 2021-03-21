@@ -1,5 +1,5 @@
 ---
-title: Depolama maliyetini en uygun Azure Cosmos DB
+title: Azure Cosmos DB'de depolama maliyetini iyileştirme
 description: Bu makalede, Azure Cosmos DB depolanan veriler için depolama maliyetlerinin nasıl yönetileceği açıklanmaktadır
 author: markjbrown
 ms.author: mjbrown
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 92bd3ff925080def4b2f074d07e662dfdbdbee01
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93080859"
 ---
-# <a name="optimize-storage-cost-in-azure-cosmos-db"></a>Depolama maliyetini en uygun Azure Cosmos DB
+# <a name="optimize-storage-cost-in-azure-cosmos-db"></a>Azure Cosmos DB'de depolama maliyetini iyileştirme
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB, sınırsız depolama ve aktarım hızı sunar. Azure Cosmos kapsayıcılarınızda veya veritabanlarında sağlamanız/yapılandırmanız gereken aktarım hızının aksine, depolama alanı tüketim temelinde faturalandırılır. Yalnızca kullandığınız mantıksal depolama alanı için faturalandırılır ve herhangi bir depolamayı önceden ayırmanız gerekmez. Depolama, bir Azure Cosmos kapsayıcısına eklediğiniz veya kaldırdığınız verilere göre otomatik olarak ölçeği artırır ve kapatır.

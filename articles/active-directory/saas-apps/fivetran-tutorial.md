@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/01/2020
 ms.author: jeedes
 ms.openlocfilehash: 88f6da7e43e269816c7e4ae2fd7bbc3f5e26522b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92453102"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fivetran"></a>Öğretici: Fivetran ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -26,7 +26,7 @@ Bu öğreticide, Fivetran 'ın Azure Active Directory (Azure AD) ile nasıl tüm
 * Kullanıcılarınızın Azure AD hesaplarıyla birlikte çalışmak üzere otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -57,7 +57,7 @@ Fivetran 'ın tümleştirmesini Azure AD 'ye göre yapılandırmak için Galerid
 
 ## <a name="configure-and-test-azure-ad-sso-for-fivetran"></a>Fivetran için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Fivetran Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Fivetran içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Fivetran Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Fivetran içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
 Azure AD SSO 'yu Fivetran ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
@@ -137,9 +137,9 @@ Bu bölümde, **Fivetran** tarafında çoklu oturum açmayı yapılandıracaksı
 
    ![Yapılandırma seçeneklerinin vurgulandığı SAML Yapılandırma bölmesini gösteren ekran görüntüsü.](media/fivetran-tutorial/fivetran-2.png)
 
-   1. **SAML kimlik doğrulamasını etkinleştirmek**için **Açık**' ı seçin.
-   1. **Oturum açma URL 'si**' nde, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
-   1. **Veren**içinde, Azure Portal kopyaladığınız **Azure AD tanımlayıcısının**değerini yapıştırın.
+   1. **SAML kimlik doğrulamasını etkinleştirmek** için **Açık**' ı seçin.
+   1. **Oturum açma URL 'si**' nde, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
+   1. **Veren** içinde, Azure Portal kopyaladığınız **Azure AD tanımlayıcısının** değerini yapıştırın.
    1. İndirilen sertifika dosyanızı bir metin düzenleyicisinde açın, sertifikayı panonuza kopyalayın ve sonra **genel sertifika** metin kutusuna yapıştırın.
    1. **Yapılandırmayı kaydet**' i seçin.
 

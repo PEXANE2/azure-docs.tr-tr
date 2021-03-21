@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/05/2020
 ms.author: russellcooks
 ms.openlocfilehash: 359c5f93516ea6f0561865bd86e4f51dedb4c3a5
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94358292"
 ---
 1. Visual Studio Code, src/Edge öğesine gidin. Oluşturduğunuz. env dosyasını, birkaç dağıtım şablonu dosyası ile birlikte görürsünüz.
@@ -18,7 +18,7 @@ ms.locfileid: "94358292"
 
     * C2D-Console-App. csproj: Visual Studio Code için proje dosyasıdır.
     * operations.js: Bu dosya, programın çalıştırmasını istediğiniz farklı işlemleri listeler.
-    * Program.cs: Bu örnek program kodu:
+    * Program. CS: Bu örnek program kodu:
 
         * Uygulama ayarlarını yükler.
         * Topoloji oluşturmak, grafiği örneklemek ve grafiği etkinleştirmek için IoT Edge modülünün doğrudan yöntemlerinde canlı video analizlerini çağırır.

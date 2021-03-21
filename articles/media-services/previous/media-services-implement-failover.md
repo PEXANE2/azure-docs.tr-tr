@@ -15,10 +15,10 @@ ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 1636e49099851337d82494ebe168b8ec5194fa20
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103011944"
 ---
 # <a name="implement-failover-streaming-with-media-services-v2"></a>Media Services V2 ile yük devretme akışını uygulama
@@ -68,7 +68,7 @@ Bu bölümde, bir C# konsol uygulaması projesi oluşturup ayarlarsınız.
 2. **HandleRedundancyForOnDemandStreaming. csproj** proje dosyasıyla aynı düzeyde **supportfiles** klasörünü oluşturun. **Supportfiles** klasörü altında, **OutputFiles** ve **MP4Files** klasörlerini oluşturun. Bir. mp4 dosyasını **MP4Files** klasörüne kopyalayın. (Bu örnekte, **ignite.mp4** dosyası kullanılır.) 
 3. Media Services ile ilgili DLL 'lere başvurular eklemek için **NuGet** kullanın. **Visual Studio ana menüsünde** **Araçlar**  >  **NuGet Paket Yöneticisi**  >  **Paket Yöneticisi konsolu**' nu seçin. Konsol penceresinde **Install-Package windowsazure. mediaservices** yazın ve ENTER tuşuna basın.
 4. Bu proje için gereken diğer başvuruları ekleyin: System. Runtime. Serialization ve System. Web.
-5. **Programs.cs** dosyasına **eklenen deyimleri,** varsayılan olarak aşağıdakiler ile değiştirin:
+5. **Programlar. cs** dosyasına **eklenen deyimleri,** varsayılan olarak aşağıdakiler ile değiştirin:
 
 ```csharp
 using System;

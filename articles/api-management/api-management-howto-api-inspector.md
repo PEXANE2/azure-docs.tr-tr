@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 10/30/2020
 ms.author: apimpm
 ms.openlocfilehash: 531e346569b85ababc382f997fd7764a92b3d05f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94542323"
 ---
 # <a name="tutorial-debug-your-apis-using-request-tracing"></a>Öğretici: istek izlemeyi kullanarak API 'lerinizin hatalarını ayıklama
@@ -28,7 +28,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 :::image type="content" source="media/api-management-howto-api-inspector/api-inspector-001.png" alt-text="API denetçisi":::
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + [Azure API Management terminolojisini](api-management-terminology.md) öğrenin.
 + Şu hızlı başlangıcı tamamlayın: [Azure API Management örneği oluşturma](get-started-create-service-instance.md).
@@ -36,7 +36,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="verify-allow-tracing-setting"></a>İzleme ayarına izin ver ayarını doğrula 
 
-API 'niz için kullanılan aboneliğin **Izlemeye Izin ver** ayarı etkinleştirilmelidir. Yerleşik tüm erişim aboneliğini kullanıyorsanız, varsayılan olarak etkindir. Portalda doğrulamak için API Management örneğinize gidin ve **abonelikler** ' i seçin.
+API 'niz için kullanılan aboneliğin **Izlemeye Izin ver** ayarı etkinleştirilmelidir. Yerleşik tüm erişim aboneliğini kullanıyorsanız, varsayılan olarak etkindir. Portalda doğrulamak için API Management örneğinize gidin ve **abonelikler**' i seçin.
 
    :::image type="content" source="media/api-management-howto-api-inspector/allow-tracing.png" alt-text="Abonelik için izlemeye izin ver":::
 
@@ -53,12 +53,12 @@ API 'niz için kullanılan aboneliğin **Izlemeye Izin ver** ayarı etkinleştir
   :::image type="content" source="media/api-management-howto-api-inspector/06-debug-your-apis-01-trace-call.png" alt-text="API izlemeyi yapılandırma":::
 
 > [!TIP]
-> **OCP-apim-Subscription-Key** http isteğinde otomatik olarak doldurulmazsa, bunu portalda alabilirsiniz. **Abonelikler** ' i seçin ve sürdürücriklama için bağlam menüsünü ( **...** ) açın. **Anahtarları göster/gizle** ' yi seçin. Gerekirse anahtarları da yeniden oluşturabilirsiniz. Ardından, üstbilgiye bir anahtar ekleyin.
+> **OCP-apim-Subscription-Key** http isteğinde otomatik olarak doldurulmazsa, bunu portalda alabilirsiniz. **Abonelikler**' i seçin ve sürdürücriklama için bağlam menüsünü (**...**) açın. **Anahtarları göster/gizle**' yi seçin. Gerekirse anahtarları da yeniden oluşturabilirsiniz. Ardından, üstbilgiye bir anahtar ekleyin.
 
 ## <a name="review-trace-information"></a>İzleme bilgilerini gözden geçirme
 
 1. Çağrı tamamlandıktan sonra, **http yanıtında** **izleme** sekmesine gidin.
-1. Ayrıntılı izleme bilgilerine geçmek için aşağıdaki bağlantılardan birini seçin: **gelen** , **arka uç** , **giden**.
+1. Ayrıntılı izleme bilgilerine geçmek için aşağıdaki bağlantılardan birini seçin: **gelen**, **arka uç**, **giden**.
 
      :::image type="content" source="media/api-management-howto-api-inspector/response-trace.png" alt-text="Gözden geçirme yanıtı izleme":::
 

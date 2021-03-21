@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp, devx-track-js
 ms.date: 03/25/2019
 ms.author: cshoe
 ms.openlocfilehash: f75f42f3879f551a945bdeb2d88450ae3b9d6106
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98674159"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Azure İşlevleri'nde kodunuzu test etmeye yönelik stratejiler
@@ -51,7 +51,7 @@ Her işlev, ileti günlüğünü işlemek için bir [ILogger](/dotnet/api/micros
 
 `ListLogger`Bir test sırasında değerlendirmek için bir iç ileti listesini tutan adlı yeni bir sınıf oluşturacaksınız. Gerekli arabirimi uygulamak için `ILogger` , sınıfı bir kapsama ihtiyaç duyuyor. Aşağıdaki sınıf, sınıfa geçirilecek test çalışmalarının kapsamını gizler `ListLogger` .
 
-Işlevlerde yeni bir sınıf oluşturun *.* **NullScope.cs** adlı projeyi sınar ve aşağıdaki kodu girin:
+Işlevlerde yeni bir sınıf oluşturun *.* **nullscope. cs** adlı test projesi ve aşağıdaki kodu girin:
 
 ```csharp
 using System;
@@ -69,7 +69,7 @@ namespace Functions.Tests
 }
 ```
 
-Ardından, Işlevlerde yeni bir sınıf oluşturun *.* **ListLogger.cs** adlı projeyi sınar ve aşağıdaki kodu girin:
+Ardından, Işlevlerde yeni bir sınıf oluşturun *.* **listgünlükçü. cs** adlı test projesi projesini sınar ve aşağıdaki kodu girin:
 
 ```csharp
 using Microsoft.Extensions.Logging;
@@ -115,7 +115,7 @@ namespace Functions.Tests
 
 `Logs`Koleksiyonu bir örneğidir `List<string>` ve oluşturucuda başlatılır.
 
-Ardından, Işlevlerde yeni bir dosya oluşturun *.* **LoggerTypes.cs** adlı projeyi sınar ve aşağıdaki kodu girin:
+Sonra, Işlevlerde yeni bir dosya oluşturun *.* **loggertypes. cs** adlı test projesini sınar ve aşağıdaki kodu girin:
 
 ```csharp
 namespace Functions.Tests
@@ -130,7 +130,7 @@ namespace Functions.Tests
 
 Bu numaralandırma, testler tarafından kullanılan günlükçü türünü belirtir.
 
-Şimdi Işlevlerde yeni bir sınıf oluşturun *.* **TestFactory.cs** adlı projeyi sınar ve aşağıdaki kodu girin:
+Şimdi Işlevlerde yeni bir sınıf oluşturun *.* **TESTfactory. cs** adlı test projesini sınar ve aşağıdaki kodu girin:
 
 ```csharp
 using Microsoft.AspNetCore.Http;
@@ -201,7 +201,7 @@ namespace Functions.Tests
 
 - **Creategünlükçü**: günlükçü türü temelinde, bu yöntem test için kullanılan bir günlükçü sınıfı döndürür. , `ListLogger` Testlerin değerlendirmesi için kullanılabilen günlüğe kaydedilen iletileri izler.
 
-Son olarak, Işlevlerde yeni bir sınıf oluşturun. **FunctionsTests.cs** adlı projeyi *sınar* ve aşağıdaki kodu girin:
+Son olarak, Işlevlerde yeni bir sınıf oluşturun. **Functionstests. cs** adlı *test projesini sınar* ve aşağıdaki kodu girin:
 
 ```csharp
 using Microsoft.AspNetCore.Mvc;

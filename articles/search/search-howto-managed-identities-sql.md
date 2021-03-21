@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: b940da2cf754e7e1cac91df6b517ecebe55e8c40
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94358431"
 ---
 # <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity"></a>Yönetilen kimlik kullanarak Azure SQL veritabanı 'na bir Dizin Oluşturucu bağlantısı kurma
@@ -35,7 +35,7 @@ Sistem tarafından atanan bir yönetilen kimlik etkinleştirildiğinde Azure, ar
 
 **Kaydet** ' i seçtikten sonra, arama hizmetinize atanmış BIR nesne kimliği görürsünüz.
 
-![Nesne Kimliği](./media/search-managed-identities/system-assigned-identity-object-id.png "Nesne Kimliği")
+![Nesne kimliği](./media/search-managed-identities/system-assigned-identity-object-id.png "Nesne kimliği")
 
 ### <a name="2---provision-azure-active-directory-admin-for-sql-server"></a>2-SQL Server için Azure Active Directory Yöneticisi sağlama
 
@@ -103,7 +103,7 @@ Bu adımda, Azure Bilişsel Arama hizmetine SQL Server verileri okuma izni verir
 * **Credentials**
     * Kimlik doğrulaması için yönetilen bir kimlik kullanırken, **kimlik bilgileri** biçimi, bir kimlik bilgisi kullanmaktan farklı. Burada, bir başlangıç kataloğu veya veritabanı adı ve hesap anahtarı ya da parolası olmayan bir RESOURCEID sağlarsınız. RESOURCEID, Azure SQL veritabanının abonelik KIMLIĞINI, SQL veritabanı kaynak grubunu ve SQL veritabanının adını içermelidir. 
     * Yönetilen kimlik bağlantı dizesi biçimi:
-        * *İlk Katalog | Veritabanı = **veritabanı adı** ; RESOURCEID =/Subscriptions/ **ABONELIK kimliği** /ResourceGroups/ **kaynak grubu adı** /Providers/Microsoft.SQL/Servers/ **SQL Server adınız** /; Bağlantı zaman aşımı = **bağlantı zaman aşımı uzunluğu** ;*
+        * *İlk Katalog | Veritabanı =**veritabanı adı**; RESOURCEID =/Subscriptions/**ABONELIK kimliği**/ResourceGroups/**kaynak grubu adı**/Providers/Microsoft.SQL/Servers/**SQL Server adınız**/; Bağlantı zaman aşımı =**bağlantı zaman aşımı uzunluğu**;*
 * **kapsayıcı** , dizin oluşturmak istediğiniz tablonun veya görünümün adını belirtir.
 
 [REST API](/rest/api/searchservice/create-data-source)kullanarak BIR Azure SQL veri kaynağı nesnesinin nasıl oluşturulacağı hakkında örnek:

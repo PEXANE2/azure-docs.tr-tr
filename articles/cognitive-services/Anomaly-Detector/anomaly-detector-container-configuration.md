@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: mbullwin
 ms.openlocfilehash: c175a52259e9cfe5b4d03ce0279bbe24d16a48ae
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94363723"
 ---
 # <a name="configure-anomaly-detector-containers"></a>Anomali Algılayıcısı kapsayıcılarını yapılandırma
@@ -97,8 +97,8 @@ Konak bağlama konumunun tam sözdizimi, ana bilgisayar işletim sistemine bağl
 
 Aşağıdaki örneklerde, komutlarının nasıl yazılacağını ve kullanılacağını göstermek için yapılandırma ayarları kullanılır `docker run` .  Çalışan bir kez, kapsayıcıyı [durduruncaya](anomaly-detector-container-howto.md#stop-the-container) kadar çalışmaya devam eder.
 
-* **Satır devamlılık karakteri** : aşağıdaki bölümlerdeki Docker komutları, `\` bir bash kabuğu için satır devamlılık karakteri olarak ters eğik çizgi kullanır. Bunu, ana bilgisayar işletim sisteminizin gereksinimlerine göre değiştirin veya kaldırın. Örneğin, Windows için satır devamlılık karakteri bir şapka karakteridir `^` . Ters eğik çizgiyi şapka işareti ile değiştirin. 
-* **Bağımsız değişken sırası** : Docker Kapsayıcıları hakkında bilginiz yoksa bağımsız değişkenlerin sırasını değiştirmeyin.
+* **Satır devamlılık karakteri**: aşağıdaki bölümlerdeki Docker komutları, `\` bir bash kabuğu için satır devamlılık karakteri olarak ters eğik çizgi kullanır. Bunu, ana bilgisayar işletim sisteminizin gereksinimlerine göre değiştirin veya kaldırın. Örneğin, Windows için satır devamlılık karakteri bir şapka karakteridir `^` . Ters eğik çizgiyi şapka işareti ile değiştirin. 
+* **Bağımsız değişken sırası**: Docker Kapsayıcıları hakkında bilginiz yoksa bağımsız değişkenlerin sırasını değiştirmeyin.
 
 Parantez içindeki değeri, `{}` kendi değerlerinizle değiştirin:
 

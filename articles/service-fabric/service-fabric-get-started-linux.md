@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 10/16/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 14b8a278605a908b4182c724831b2e42de54a753
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93086899"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Linux üzerinde geliştirme ortamınızı hazırlama
@@ -298,21 +298,21 @@ Service Fabric için Eclipse eklentisini Java EE Geliştiricileri veya Java Geli
 > 
 > Ubuntu üzerinde, paket yükleyici (`apt` veya `apt-get`) kullanmak yerine doğrudan Eclipse sitesinden yükleme yapılmasını öneririz. Böylece, Eclipse’in en güncel sürümünü elde etmeniz sağlanır. Java EE Geliştiricileri için veya Java Geliştiricileri için Eclipse IDE’yi yükleyebilirsiniz.
 
-1. Eclipse’te, Eclipse Neon veya sonraki bir sürümünün ve Buildship 2.2.1 veya sonraki bir sürümünün yüklü olduğundan emin olun. **Help**  >  **Çakışan Küreler**  >  **Yükleme ayrıntıları** hakkında Yardım ' i seçerek yüklü bileşenlerin sürümlerini denetleyin. [Eclipse Buildship: Gradle için Eclipse eklentileri][buildship-update] bölümünde sağlanan yönergelerden yararlanarak Buildship’i güncelleştirebilirsiniz.
+1. Eclipse’te, Eclipse Neon veya sonraki bir sürümünün ve Buildship 2.2.1 veya sonraki bir sürümünün yüklü olduğundan emin olun.   >  **Çakışan Küreler**  >  **Yükleme ayrıntıları** hakkında Yardım ' i seçerek yüklü bileşenlerin sürümlerini denetleyin. [Eclipse Buildship: Gradle için Eclipse eklentileri][buildship-update] bölümünde sağlanan yönergelerden yararlanarak Buildship’i güncelleştirebilirsiniz.
 
-2. Service Fabric eklentisini yüklemek için **Yardım**  >  **yeni yazılım yüklemesi** ' ni seçin.
+2. Service Fabric eklentisini yüklemek için **Yardım**  >  **yeni yazılım yüklemesi**' ni seçin.
 
 3. **Birlikte çalış** kutusuna **https: \/ /DL.Microsoft.com/Eclipse** girin.
 
-4. **Ekle** ’yi seçin.
+4. **Add (Ekle)** seçeneğini belirleyin.
 
     ![Kullanılabilir Yazılım sayfası][sf-eclipse-plugin]
 
-5. **ServiceFabric** eklentisini ve ardından **İleri** ’yi seçin.
+5. **ServiceFabric** eklentisini ve ardından **İleri**’yi seçin.
 
 6. Yükleme adımlarını gerçekleştirin. Ardından son kullanıcı lisans sözleşmesini kabul edin.
 
-Service Fabric Eclipse eklentisi zaten yüklüyse, en yeni sürümü kullandığınızdan emin olun. **Help**  >  **Çakışan Küreler**  >  **Yükleme ayrıntıları** hakkında yardım seçerek denetleyin. Ardından, yüklü eklentiler listesinde Service Fabric aratın. Daha yeni bir sürüm varsa **Güncelleştir** ' i seçin.
+Service Fabric Eclipse eklentisi zaten yüklüyse, en yeni sürümü kullandığınızdan emin olun.   >  **Çakışan Küreler**  >  **Yükleme ayrıntıları** hakkında yardım seçerek denetleyin. Ardından, yüklü eklentiler listesinde Service Fabric aratın. Daha yeni bir sürüm varsa **Güncelleştir** ' i seçin.
 
 Daha fazla bilgi için bkz. [Eclipse Java uygulama geliştirmesi için Service Fabric eklentisi](service-fabric-get-started-eclipse.md).
 

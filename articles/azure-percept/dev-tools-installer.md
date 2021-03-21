@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/18/2021
 ms.custom: template-how-to
 ms.openlocfilehash: 66498fabadc0784a4a4ab1c3762daaaa9a5738c4
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102503224"
 ---
 # <a name="dev-tools-pack-installer-overview"></a>Geliştirme araçları paketi yükleyicisine genel bakış
@@ -99,13 +99,13 @@ Geliştirme araçları paketi yükleyicisi, akıllı bir uç çözümü gelişti
         
     1. Mac için:
     
-        1. İndirdikten sonra, Dev-Tools-Pack-Installer. app dosyasını uygulamalar klasörüne taşıyın.
+        1. İndirdikten sonra, Dev-Tools-Pack-Installer.app dosyasını uygulamalar klasörüne taşıyın.
         
-        1. Yükleme sihirbazını açmak için **dev-Tools-Pack-Installer. app** ' e tıklayın.
+        1. Yükleme Sihirbazı 'nı açmak için **dev-Tools-Pack-Installer.app** 'ye tıklayın.
         
         1. "Tanımlanamayan bir geliştirici" güvenlik iletişim kutusu alırsanız:
         
-            1. Sistem Tercihleri-> güvenlik & gizlilik-> Genel ' e gidin ve "Dev-Tools-Pack-Installer. app" yanındaki "yine de aç" düğmesine tıklayın.
+            1. Sistem Tercihleri-> güvenlik & gizlilik-> Genel ' e gidin ve "Dev-Tools-Pack-Installer.app" yanındaki "yine de aç" düğmesine tıklayın
         
             1. Dock 'ta yeniden elektron simgesine tıklayın
         

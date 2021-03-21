@@ -13,10 +13,10 @@ ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 5072ae58d3a9412237e70a9bc98970296ce1e1fa
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101686589"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Web API 'Leri çağıran bir Web API 'SI: kod yapılandırması
@@ -88,7 +88,7 @@ Microsoft. Identity. Web, sertifikaları yapılandırma veya koda göre tanımla
 
 ## <a name="startupcs"></a>Startup.cs
 
-Web API 'nizin aşağı akış API 'SI için bir belirteç edinmesi gerekir. `.EnableTokenAcquisitionToCallDownstreamApi()`Sonra satırı ekleyerek belirlersiniz `.AddMicrosoftIdentityWebApi(Configuration)` . Bu satır `ITokenAcquisition` , denetleyici/sayfalar eylemlerinizde kullanabileceğiniz hizmeti sunar. Bununla birlikte, sonraki iki madde işareti noktasında göreceğiniz gibi daha da kolay hale getirebilirsiniz. Ayrıca, Startup.cs içinde bir belirteç önbelleği uygulamasını seçmeniz gerekir `.AddInMemoryTokenCaches()` : 
+Web API 'nizin aşağı akış API 'SI için bir belirteç edinmesi gerekir. `.EnableTokenAcquisitionToCallDownstreamApi()`Sonra satırı ekleyerek belirlersiniz `.AddMicrosoftIdentityWebApi(Configuration)` . Bu satır `ITokenAcquisition` , denetleyici/sayfalar eylemlerinizde kullanabileceğiniz hizmeti sunar. Bununla birlikte, sonraki iki madde işareti noktasında göreceğiniz gibi daha da kolay hale getirebilirsiniz. Ayrıca, bir belirteç önbelleği uygulamasını (örneğin `.AddInMemoryTokenCaches()` , *Startup. cs*) seçmeniz gerekir:
 
 ```csharp
 using Microsoft.Identity.Web;
@@ -116,7 +116,7 @@ Belirteci kendiniz almak istemiyorsanız, *Microsoft. Identity. Web* başka bir 
 Microsoft Graph çağırmak isterseniz, Microsoft. Identity. Web, `GraphServiceClient` API eylemlerinizin (MICROSOFT Graph SDK tarafından açığa çıkarılan) doğrudan kullanmanıza olanak sağlar. Microsoft Graph ortaya çıkarmak için:
 
 1. Projenize [Microsoft. Identity. Web. MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) NuGet paketini ekleyin.
-1. `.AddMicrosoftGraph()` `.EnableTokenAcquisitionToCallDownstreamApi()` *Startup.cs* dosyasından sonra ekleyin. `.AddMicrosoftGraph()` birkaç geçersiz kılma içerir. Bir yapılandırma bölümünü parametre olarak alan geçersiz kılmayı kullanarak, kod şu şekilde olur:
+1. `.AddMicrosoftGraph()` `.EnableTokenAcquisitionToCallDownstreamApi()` *Başlangıç. cs* dosyasında öğesinden sonra ekleyin. `.AddMicrosoftGraph()` birkaç geçersiz kılma içerir. Bir yapılandırma bölümünü parametre olarak alan geçersiz kılmayı kullanarak, kod şu şekilde olur:
 
 ```csharp
 using Microsoft.Identity.Web;
@@ -164,7 +164,7 @@ public class Startup
 
 Web uygulamalarında olduğu gibi, çeşitli belirteç önbelleği uygulamalarını seçebilirsiniz. Ayrıntılar için bkz. GitHub 'da [Microsoft Identity Web belirteci önbelleği serileştirme](https://aka.ms/ms-id-web/token-cache-serialization) .
 
-Aşağıdaki görüntüde *Microsoft. Identity. Web* 'in çeşitli olanakları ve *Startup.cs* dosyası üzerindeki etkileri gösterilmektedir:
+Aşağıdaki görüntüde *Microsoft. Identity. Web* 'in çeşitli olanakları ve *Başlangıç. cs* dosyasındaki etkileri gösterilmektedir:
 
 :::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.svg" alt-text="Bir Web API 'SI çağırmak ve bir belirteç önbelleği uygulamasını belirtmek için başlangıç noktası C 'ler içindeki hizmet yapılandırma seçeneklerini gösteren blok diyagramı":::
 

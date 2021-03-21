@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 02/24/2017
 ms.author: cshoe
 ms.openlocfilehash: dde3b95c7997a7f742a9d48a964f4275169f6e9c
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92106935"
 ---
 # <a name="azure-cosmos-db-trigger-and-bindings-for-azure-functions-2x-and-higher-overview"></a>Azure Cosmos DB tetikleyicisi ve bağlamaları Azure Işlevleri 2. x ve üzeri genel bakış
@@ -31,7 +31,7 @@ Bu makale kümesi, Azure Işlevleri 2. x ve üzeri sürümlerde [Azure Cosmos DB
 >
 > Bu bağlamanın adı ilk olarak DocumentDB olarak adlandırılmıştır. 2. x ve üzeri Işlevlerde, tetikleyici, bağlamalar ve paketin hepsi Cosmos DB adlandırılır.
 
-## <a name="supported-apis"></a>Desteklenen API 'Ler
+## <a name="supported-apis"></a>Desteklenen API'ler
 
 [!INCLUDE [SQL API support only](../../includes/functions-cosmosdb-sqlapi-note.md)]
 

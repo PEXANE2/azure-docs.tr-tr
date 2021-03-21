@@ -7,10 +7,10 @@ ms.date: 09/30/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, 23113853-34f2-4f
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 9e3144738bd259ab9be75059af00f125581bb37c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102050129"
 ---
 # <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>Hızlı başlangıç: Visual Studio 'Yu kullanarak Azure 'da ilk işlevinizi oluşturma
@@ -57,7 +57,7 @@ Bu hızlı başlangıcı tamamlamak, birkaç ABD Doları veya daha kısa bir üc
 
 `FunctionName`Yöntem özniteliği, varsayılan olarak olarak oluşturulan işlevin adını ayarlar `Function1` . Araç, projenizi oluştururken varsayılan işlev adını geçersiz kılmanıza izin vermediğinden, işlev sınıfı, dosya ve meta veriler için daha iyi bir ad oluşturmak üzere bir dakikanızı alın.
 
-1. **Dosya Gezgini**'nde, function1.cs dosyasına sağ tıklayın ve *HttpExample.cs* olarak yeniden adlandırın.
+1. **Dosya Gezgini**'nde işlev1. cs dosyasına sağ tıklayın ve *httpexample. cs* olarak yeniden adlandırın.
 
 1. Kodda, Işlev1 sınıfını ' HttpExample ' olarak yeniden adlandırın.
 

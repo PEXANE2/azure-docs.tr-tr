@@ -4,10 +4,10 @@ description: Event Grid iş ortağı olarak nasıl kullanabileceğiniz hakkında
 ms.topic: conceptual
 ms.date: 10/29/2020
 ms.openlocfilehash: 2a2e33395cabd368d5d5d870dd0461e4cbd37e0d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93081204"
 ---
 # <a name="partner-onboarding-overview-azure-event-grid"></a>İş ortağı eklemeye genel bakış (Azure Event Grid)
@@ -102,7 +102,7 @@ CloudEvents 1,0 şemasını kullanarak olayları Azure Event Grid yayımlayın. 
 1.  Yayımlama hizmeti bir HTTP GÖNDERISINI `https://contoso.westus2-1.eventgrid.azure.net/api/events?api-version=2018-01-01` .
 1.  İstekte, kimlik doğrulaması için bir anahtar içeren AEG-SAS-Key adlı bir başlık değeri ekleyin. Bu anahtar, iş ortağı ad alanının oluşturulması sırasında sağlanır. Örneğin, geçerli bir üst bilgi değeri AEG-SAS-Key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg = = olur.
 1.  Content-Type üstbilgisini "Application/cloudevents-Batch + JSON" olarak ayarlayın. charset = UTF-8A ".
-1.  Yayımlama URL 'sine, bu bölgeye karşılık gelen olaylar toplu işi ile bir HTTP POST sorgusu çalıştırın. Örneğin:
+1.  Yayımlama URL 'sine, bu bölgeye karşılık gelen olaylar toplu işi ile bir HTTP POST sorgusu çalıştırın. Örnek:
 
 ``` json
 [

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/26/2019
 ms.author: jeedes
 ms.openlocfilehash: cfdcef2b9adf4e7ce500a9a89a45678a60afffc6
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92458464"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-litmos"></a>Öğretici: Litmos ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, Litmos 'i Azure Active Directory (Azure AD) ile tümleştirmeyi
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -55,7 +55,7 @@ Litmos tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden Lit
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-litmos"></a>Litmos için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Litmos ile yapılandırın ve test edin. SSO 'nun çalışması için, Litmos içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Litmos ile yapılandırın ve test edin. SSO 'nun çalışması için, Litmos içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Litmos ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -135,7 +135,7 @@ Bu bölümde, Litmos 'e erişim vererek Azure çoklu oturum açma özelliğini k
 
     ![Tümleştirme sekmesi][23]
 
-4. **Tümleştirmeler** sekmesinde **3. taraf tümleştirmelere**gidin ve **SAML 2,0** sekmesi ' ne tıklayın.
+4. **Tümleştirmeler** sekmesinde **3. taraf tümleştirmelere** gidin ve **SAML 2,0** sekmesi ' ne tıklayın.
 
     ![SAML 2,0 bölümü][24]
 
@@ -169,7 +169,7 @@ Bu bölümün amacı, Litmos ' de Britta Simon adlı bir Kullanıcı oluşturmak
 
     ![Tümleştirmeler sekmesi][23]
 
-4. **Tümleştirmeler** sekmesinde **3. taraf tümleştirmelere**gidin ve **SAML 2,0** sekmesi ' ne tıklayın.
+4. **Tümleştirmeler** sekmesinde **3. taraf tümleştirmelere** gidin ve **SAML 2,0** sekmesi ' ne tıklayın.
 
     ![SAML 2.0][24]
 

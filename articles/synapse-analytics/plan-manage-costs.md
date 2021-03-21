@@ -8,10 +8,10 @@ ms.service: synapse-analytics
 ms.topic: how-to
 ms.date: 12/09/2020
 ms.openlocfilehash: 06586b5bf20619f57b2ad1c3d5de84dd61952261
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102561254"
 ---
 # <a name="plan-and-manage-costs-for-azure-synapse-analytics"></a>Azure SYNAPSE Analytics için maliyetleri planlayın ve yönetin
@@ -76,7 +76,7 @@ Maliyet analizini kullandığınızda, farklı zaman aralıkları için grafikle
 
 Azure SYNAPSE maliyetlerini maliyet analizi 'nde görüntülemek için:
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 2. Azure portal abonelik veya kaynak grubunu açın ve menüden **Maliyet Analizi** ' ni seçin. Örneğin, **abonelikler**' e gidin, listeden bir abonelik seçin ve ardından menüde  **Maliyet Analizi** ' ni seçin. Maliyet analizinde farklı bir kapsama geçiş yapmak için **kapsam** ' ı seçin.
 3. Varsayılan olarak, hizmetlerin maliyeti ilk halka grafiğinde gösterilir. Azure SYNAPSE etiketli grafikte alanı seçin.
 

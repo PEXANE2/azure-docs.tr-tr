@@ -8,10 +8,10 @@ ms.date: 02/20/2020
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: 2d34641fdecfe334e84347efe1a2f64482cae74b
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93040258"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Web uygulaması güvenlik duvarı istek boyutu sınırları ve dışlama listeleri
@@ -38,11 +38,11 @@ Tam bir istek üst bilgisi, gövde, tanımlama bilgisi veya sorgu dizesi öznite
 
 Aşağıdakiler, desteklenen eşleşme ölçütü işleçleridir:
 
-- **Eşittir** : Bu işleç tam eşleşme için kullanılır. Örnek olarak, **yataertoken** adlı bir üst bilgi seçmek için, Selector ile WITH, **yataya** kümesi olarak ayarlanmış Equals işlecini kullanın.
-- **Ile başlar** : Bu işleç, belirtilen Seçici değeriyle başlayan tüm alanlarla eşleşir.
-- **Şununla biter** : Bu işleç, belirtilen Seçici değeriyle biten tüm istek alanlarıyla eşleşir.
-- **Contains** : Bu işleç, belirtilen Seçici değerini içeren tüm istek alanlarıyla eşleşir.
-- **Eşittir any** : Bu işleç tüm istek alanlarıyla eşleşir. * Seçici değeri olacaktır.
+- **Eşittir**: Bu işleç tam eşleşme için kullanılır. Örnek olarak, **yataertoken** adlı bir üst bilgi seçmek için, Selector ile WITH, **yataya** kümesi olarak ayarlanmış Equals işlecini kullanın.
+- **Ile başlar**: Bu işleç, belirtilen Seçici değeriyle başlayan tüm alanlarla eşleşir.
+- **Şununla biter**: Bu işleç, belirtilen Seçici değeriyle biten tüm istek alanlarıyla eşleşir.
+- **Contains**: Bu işleç, belirtilen Seçici değerini içeren tüm istek alanlarıyla eşleşir.
+- **Eşittir any**: Bu işleç tüm istek alanlarıyla eşleşir. * Seçici değeri olacaktır.
 
 Tüm durumlarda eşleşen büyük/küçük harfe duyarlı değildir ve normal ifadeye seçici olarak izin verilmez.
 
