@@ -10,10 +10,10 @@ ms.date: 2/20/2019
 ms.author: raiye
 ms.subservice: disks
 ms.openlocfilehash: 827643866c23583051bc290c2c50bed3f1bdd421
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98737923"
 ---
 # <a name="enable-write-accelerator"></a>Yazma Hızlandırıcısı etkinleştir
@@ -63,7 +63,7 @@ IOPS sınırları, sanal makine başına değil, disk başına *değildir* . Tü
 
 Sonraki birkaç bölümde Yazma Hızlandırıcısı Azure Premium Depolama VHD 'lerde nasıl etkinleştirilecektir.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Aşağıdaki Önkoşullar zaman içinde Yazma Hızlandırıcısı kullanımı için geçerlidir:
 

@@ -8,10 +8,10 @@ ms.date: 12/07/2020
 ms.service: azure
 ms.topic: how-to
 ms.openlocfilehash: 866ff4cad74b7092dda11a20f8f7bcadf91233ae
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100526910"
 ---
 # <a name="manage-alert-events"></a>Uyarı olaylarını yönetme
@@ -39,7 +39,7 @@ Uyarı bilgilerini de dışarı aktarabilirsiniz.
 
 ## <a name="about-acknowledging-and-unacknowledging-events"></a>Bildirimleri ele al ve geri bildirimleri kaldırma hakkında
 
-Belirli durumlarda, bir sensör algılanan bir olayı öğrenmek istemiyor ya da seçenek kullanılamayabilir. Bunun yerine, olay azaltma gerektirebilir. Örneğin:
+Belirli durumlarda, bir sensör algılanan bir olayı öğrenmek istemiyor ya da seçenek kullanılamayabilir. Bunun yerine, olay azaltma gerektirebilir. Örnek:
 
 - **Ağ yapılandırmasını veya cihazı azaltma**: ağda yeni bir cihazın algılandığını belirten bir uyarı alırsınız. Araştırırken, cihazın yetkisiz bir ağ aygıtı olduğunu fark edersiniz. Cihazın ağla bağlantısını keserek olayı işleyebilirsiniz.
 - **Bir algılayıcı yapılandırmasını güncelleştirme**: bir sunucunun aşırı sayıda uzak bağlantı başlattığını belirten bir uyarı alırsınız. Bu uyarı, algılayıcı anomali eşikleri belirli bir sayıdaki oturumun üzerindeki uyarıları bir dakika içinde tetiklemek üzere tanımlandığından tetiklendi. Eşikleri güncelleştirerek olayı işleyebilirsiniz.
@@ -58,7 +58,7 @@ Daha fazla araştırma gerekliyse uyarıların kabul edilmemiş olduğunu.
 
 ## <a name="about-muting-and-unmuting-events"></a>Etkinlikleri kapatma ve geri açma hakkında
 
-Belirli koşullar altında, sensörizin ağınızda belirli bir senaryoyu yoksayacak şekilde söylemek isteyebilirsiniz. Örneğin:
+Belirli koşullar altında, sensörizin ağınızda belirli bir senaryoyu yoksayacak şekilde söylemek isteyebilirsiniz. Örnek:
 
   - **Anomali** altyapısı iki cihaz arasındaki bant genişliğindeki bir uyarıyı tetikler, ancak bu cihazlar için ani artış geçerlidir.
 

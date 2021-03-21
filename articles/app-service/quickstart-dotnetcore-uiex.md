@@ -8,10 +8,10 @@ ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18, contperf-fy21q
 zone_pivot_groups: app-service-platform-windows-linux
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 2a789b4ca1261c79e8e6eb93a4ed44e7e8e9272e
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102214244"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Hızlı başlangıç: Azure 'da ASP.NET Core Web uygulaması oluşturma
@@ -304,7 +304,7 @@ http://<app_name>.azurewebsites.net
 
 ## <a name="7-update-and-redeploy-the-code"></a>7. kodu güncelleştirin ve yeniden dağıtın
 
-1. Yerel dizinde **_Startup.cs_ dosyasını açın** . 
+1. Yerel dizinde **_Startup. cs_ dosyasını açın** . 
 
 1. Yöntem çağrısındaki metinde **küçük bir değişiklik yapın** `context.Response.WriteAsync` .
 

@@ -7,11 +7,11 @@ ms.author: shhazam
 ms.date: 12/12/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 2083da329c41afbe95ff570194a1c3ad5c2661be
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: cac8d609272be1d9f34b7e0d6404e0a0ea524df7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100523575"
 ---
 # <a name="work-with-device-notifications"></a>Cihaz bildirimleri ile çalışma
@@ -48,7 +48,7 @@ Bildirimleri görüntülemek için:
 
 İlgilendiğiniz bildirimleri göstermek için arama filtrelerini kullanın.
 
-| Filtreleme ölçütü | Açıklama |
+| Filtreleme ölçütü | Description |
 |--|--|
 | Türe göre filtrele | İlgilendiğiniz belirli bir alanı kapsayan bildirimleri görüntüleyin. Örneğin, yalnızca etkin olmayan cihazlara ilişkin bildirimleri görüntüleyin. |
 | Tarih aralığına göre filtrele | Belirli bir zaman aralığını kapsayan bildirimleri görüntüler. Örneğin, yalnızca geçen hafta boyunca gönderilen bildirimleri görüntüleyin. |
@@ -58,7 +58,7 @@ Bildirimleri görüntülemek için:
 
 Aşağıdaki tabloda, aldığınız bildirim olay türleri ve bunları işleme seçenekleriyle birlikte açıklanmaktadır. Cihaz bilgilerini önerilen bir değerle güncelleştirebilir veya bildirimi kapatabilirsiniz. Bir bildirimi kapattığınızda, cihaz bilgileri önerilen bilgilerle güncellenmez. Trafik tekrar algılanırsa, bildirim yeniden gönderilir.
 
-| Bildirim olayı türleri | Açıklama | Yanıtlar |
+| Bildirim olayı türleri | Description | Yanıtlar |
 |--|--|--|
 | Yeni IP algılandı | Yeni bir IP adresi cihazla ilişkili. Beş senaryo algılanmayabilir: <br /><br /> Bir cihazla ek bir IP adresi ilişkilendirildi. Bu cihaz, var olan bir MAC adresiyle de ilişkilendirilir.<br /><br /> Var olan bir MAC adresini kullanan bir cihaz için yeni bir IP adresi algılandı. Şu anda cihaz bir IP adresi kullanarak iletişim kurmamaktadır.<br /> <br /> NetBIOS adı kullanan bir cihaz için yeni bir IP adresi algılandı. <br /><br /> Bir MAC adresiyle ilişkili bir cihaz için yönetim arabirimi olarak bir IP adresi algılandı. <br /><br /> Sanal IP adresi kullanan bir cihaz için yeni bir IP adresi algılandı. | **Cihaza ek IP ayarlama** (cihazları birleştirme) <br /> <br />**Mevcut IP 'yi Değiştir** <br /> <br /> **At**<br /> Bildirimi kaldırın. |
 | Etkin olmayan cihazlar | Cihazda 60 günden daha uzun bir süre için trafik algılanmadı. | **Silme** <br /> Bu cihaz ağınızın bir parçası değilse, kaldırın. <br /><br />**At** <br /> Cihaz ağınızın bir parçasıysa bildirimi kaldırın. Cihaz etkin değilse (örneğin, ağdan yanlışlıkla bağlantısı kesildiğinde), bildirimi kapatın ve cihazı yeniden bağlayın. |
@@ -70,7 +70,7 @@ Aşağıdaki tabloda, aldığınız bildirim olay türleri ve bunları işleme s
 
 ## <a name="respond-to-many-notifications-simultaneously"></a>Aynı anda birçok bildirimi yanıtla
 
-Aynı anda birkaç bildirimi işlemeniz gerekebilir. Örneğin:
+Aynı anda birkaç bildirimi işlemeniz gerekebilir. Örnek:
 
 - Büyük bir ağ sunucuları kümesine bir işletim sistemi yükseltmesi olduysa, tüm yükseltilen sunucular için yeni sunucu sürümlerini öğrenmek üzere sensöre talimat verebilirsiniz. 
 
@@ -98,6 +98,6 @@ Belirli koşullarda, çakışmalar bulunan işletim sistemlerinde algılanabilir
 
 Bir önerisi kabul ettiğinizde, işletim sistemi tür bilgileri sensörde güncelleştirilecektir.
 
-## <a name="next-steps"></a>Sonraki adımlar
+## <a name="see-also"></a>Ayrıca bkz.
 
 [Uyarıları görüntüleme](how-to-view-alerts.md)

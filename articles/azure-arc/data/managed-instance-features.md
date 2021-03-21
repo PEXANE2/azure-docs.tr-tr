@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 9c42acb69e13cc1eb0fbba3fcafaec1451bc4d77
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97589228"
 ---
 # <a name="features-and-capabilities-of-azure-arc-enabled-sql-managed-instance"></a>Azure Arc etkin SQL yönetilen örneğinin özellikleri ve özellikleri
@@ -83,7 +83,7 @@ Azure Arc etkin SQL yönetilen örneği, SQL Server en son kararlı sürümüyle
 
 | Özellik | Azure Arc özellikli SQL Yönetilen Örneği |
 |--|--|
-| Satır düzeyi güvenlik | Yes |
+| Satır düzeyinde güvenlik | Yes |
 | Always Encrypted | Yes |
 | Güvenli Kuşatmalarla Always Encrypted | No |
 | Dinamik veri maskeleme | Yes |
@@ -140,7 +140,7 @@ Azure Arc etkin SQL yönetilen örneği, verilerinizi yönetmenize yardımcı ol
 | **Araç** | Azure Arc özellikli SQL Yönetilen Örneği|
 | --- | --- | --- |
 | Azure portal <sup>1</sup> | No |
-| Azure CLI | No |
+| Azure CLI’si | No |
 | [Azure Data Studio](/sql/azure-data-studio/what-is) | Yes |
 | Azure PowerShell | Yes |
 | [BACPAC dosyası (dışarı aktarma)](/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | Yes |

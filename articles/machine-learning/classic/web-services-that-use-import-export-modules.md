@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 03/28/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4824b7a4233bc65d521e1c6ded7d1ea276b2a929
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100520570"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>Veri Içeri aktarma ve veri dışa aktarma modülleri kullanan Azure Machine Learning Studio (klasik) Web hizmetlerini dağıtma
@@ -104,7 +104,7 @@ Klasik bir Web hizmeti olarak dağıtmak ve kullanmak üzere bir uygulama oluşt
 4. **Varsayılan uç nokta** tablosunda, **Batch EXECUTION** bağlantısına tıklayarak API yardım sayfasını açın.
 5. Visual Studio 'da bir C# konsol uygulaması oluşturun: **Yeni**  >  **Proje**  >  **Visual C#**  >  **Windows Klasik Masaüstü**  >  **konsol uygulaması (.NET Framework)**.
 6. API Yardım sayfasında, sayfanın altındaki **örnek kod** bölümünü bulun.
-7. C# örnek kodunu kopyalayıp Program.cs dosyanıza yapıştırın ve BLOB depolama alanına yapılan tüm başvuruları kaldırın.
+7. C# örnek kodunu kopyalayıp program. cs dosyanıza yapıştırın ve BLOB depolama alanına yapılan tüm başvuruları kaldırın.
 8. *Apikey* değişkeninin değerini daha önce kaydedilen API anahtarıyla güncelleştirin.
 9. İstek bildirimini bulun ve *verileri içeri* aktarma ve *veri verme* modüllerine geçirilen Web hizmeti parametrelerinin değerlerini güncelleştirin. Bu durumda, özgün sorguyu kullanırsınız, ancak yeni bir tablo adı tanımlarsınız.
 
@@ -134,7 +134,7 @@ Yeni bir Web hizmeti olarak dağıtmak ve kullanmak üzere bir uygulama oluştur
 4. **Hızlı başlangıç** sayfasında, **tüketme**' ye tıklayın.
 5. **Örnek kod** bölümünde **Batch**' e tıklayın.
 6. Visual Studio 'da bir C# konsol uygulaması oluşturun: **Yeni**  >  **Proje**  >  **Visual C#**  >  **Windows Klasik Masaüstü**  >  **konsol uygulaması (.NET Framework)**.
-7. C# örnek kodunu kopyalayıp Program.cs dosyanıza yapıştırın.
+7. C# örnek kodunu kopyalayıp program. cs dosyanıza yapıştırın.
 8. *Apikey* değişkeninin değerini **temel tüketim bilgisi** bölümünde bulunan **birincil anahtarla** güncelleştirin.
 9. *ScoreRequest* bildirimini bulun ve *verileri Içeri* aktarma ve *veri verme* modüllerine geçirilen Web hizmeti parametrelerinin değerlerini güncelleştirin. Bu durumda, özgün sorguyu kullanırsınız, ancak yeni bir tablo adı tanımlarsınız.
 

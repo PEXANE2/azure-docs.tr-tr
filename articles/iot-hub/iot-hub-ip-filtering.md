@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/12/2021
 ms.author: jlian
-ms.openlocfilehash: 62292a2ee51f8e1838e9cf3376367a02964cad47
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: 2a76cede4bc72da9f30564f98ab9bb84028680f7
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103418751"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581499"
 ---
 # <a name="use-ip-filters"></a>IP filtrelerini kullanma
 
@@ -85,10 +85,6 @@ Açıkça izin verilmeyen bir IP adresinden gelen bağlantı girişimleri, yetki
 IP filtresi kuralları, kurallara *izin verir* ve sıralama yapılmadan uygulanabilir. Yalnızca eklediğiniz IP adreslerinin IoT Hub bağlanmasına izin verilir. 
 
 Örneğin, aralıktaki adresleri kabul etmek `192.168.100.0/22` ve diğer her şeyi reddetmek isterseniz, kılavuza adres aralığı ile yalnızca bir kural eklemeniz gerekir `192.168.100.0/22` .
-
-### <a name="azure-portal"></a>Azure portalı 
-
-Azure portal üzerinden IoT Hub kullanılırken IP filtresi kuralları da uygulanır. Bunun nedeni, IoT Hub hizmetine yönelik API çağrılarının, diğer Azure hizmetleriyle tutarlı olan kimlik bilgilerinizle doğrudan tarayıcınızı kullanarak yapılmadığı anlamına gelir. IP filtresi etkinleştirildiğinde Azure portal kullanarak IoT Hub erişmek için bilgisayarınızın IP adresini izin verilenler listesine ekleyin. 
 
 ## <a name="retrieve-and-update-ip-filters-using-azure-cli"></a>Azure CLı kullanarak IP filtrelerini alma ve güncelleştirme
 

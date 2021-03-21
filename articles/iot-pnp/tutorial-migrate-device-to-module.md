@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: 33eaa1ea928cc0650c91948c70d46daf499f3b4b
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99831217"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-module-c"></a>Öğretici: IoT Tak ve Kullan modülünü bağlama (C#)
@@ -114,18 +114,18 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
 
 Kodu bir cihaz yerine modül olarak çalışacak şekilde değiştirmek için:
 
-1. Visual Studio 'da *Parameter.cs* ' i açın ve **primaryconnectionstring** değişkenini ayarlayan satırı aşağıdaki gibi değiştirin:
+1. Visual Studio 'da, *Parameter. cs* ' yi açın ve **primaryconnectionstring** değişkenini ayarlayan satırı aşağıdaki gibi değiştirin:
 
     ```csharp
     public string PrimaryConnectionString { get; set; } = Environment.GetEnvironmentVariable("IOTHUB_MODULE_CONNECTION_STRING");
     ```
 
-1. Visual Studio 'da *program.cs* ' ı açın ve sınıfının yedi örneğini sınıfıyla değiştirin `DeviceClient` `ModuleClient` .
+1. Visual Studio 'da *program. cs* ' yi açın ve sınıfının yedi örneğini sınıfıyla değiştirin `DeviceClient` `ModuleClient` .
 
     > [!TIP]
     > Visual Studio Search ve Replace özelliğini **eşleştirme** durumuyla birlikte kullanın ve ile değiştirmek için etkinleştirilen **tüm kelimeyi eşleştirin** `DeviceClient` `ModuleClient` .
 
-1. Visual Studio 'da *Thermostat.cs* açın ve sınıfının her iki örneğini `DeviceClient` `ModuleClient` sınıfıyla birlikte aşağıdaki gibi değiştirin.
+1. Visual Studio 'da, *termostat. cs* ' yi açın ve sınıfının her iki örneğini `DeviceClient` sınıfıyla birlikte `ModuleClient` aşağıdaki gibi değiştirin.
 
 1. Değişiklikleri değiştirdiğiniz dosyalara kaydedin.
 
@@ -186,13 +186,13 @@ Hizmet SDK 'Ları, bağlı IoT Tak ve Kullan cihazların ve modüllerinin model 
     > [!TIP]
     > IoT Hub bağlantı dizenizi Azure IoT gezgin aracında da bulabilirsiniz.
 
-1. *Program.cs* dosyasını açın ve komut çağıran satırı aşağıdaki gibi değiştirin:
+1. *Program. cs* dosyasını açın ve komut çağıran satırı aşağıdaki gibi değiştirin:
 
     ```csharp
     CloudToDeviceMethodResult result = await s_serviceClient.InvokeDeviceMethodAsync(s_deviceId, "my-module", commandInvocation);
     ```
 
-1. *Program.cs* dosyasında, cihaz ikizi 'yi alan satırı aşağıdaki gibi değiştirin:
+1. *Program. cs* dosyasında, cihaz ikizi alan satırı aşağıdaki gibi değiştirin:
 
     ```csharp
     Twin twin = await s_registryManager.GetTwinAsync(s_deviceId, "my-module");

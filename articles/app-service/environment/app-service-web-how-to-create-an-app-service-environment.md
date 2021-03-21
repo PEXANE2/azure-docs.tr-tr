@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 543050bc899c257c4ad5e0d0c399a1de6f0f58f2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96005223"
 ---
 # <a name="how-to-create-an-app-service-environment-v1"></a>App Service Ortamı v1 oluşturma 
@@ -66,7 +66,7 @@ Otomatik ölçeklendirme hakkında daha fazla bilgi için şu adreste bir kılav
 
 Veritabanı ve depolama gibi özelleştirme için kullanılamayan ek bağımlılıklar vardır. Bunlar Azure tarafından işlenir ve sistemle birlikte gelir. Sistem depolama, tüm App Service Ortamı en fazla 500 GB destekler ve veritabanı, sistem ölçeğinde bir şekilde Azure tarafından ayarlanır.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 App Service Ortamı v1 'yi kullanmaya başlamak için bkz [. App Service ortamı v1 'ye giriş][WhatisASE]
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]

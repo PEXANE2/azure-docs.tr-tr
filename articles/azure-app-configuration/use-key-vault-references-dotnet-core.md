@@ -14,10 +14,10 @@ ms.date: 04/08/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
 ms.openlocfilehash: 37bc7fbcd366455668d5316e45ffbf79127a49f3
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99981247"
 ---
 # <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>Öğretici: ASP.NET Core uygulamasındaki Key Vault başvurularını kullanma
@@ -162,7 +162,7 @@ Kasaya bir gizli dizi eklemek için yalnızca birkaç ek adım gerçekleştirmen
     dotnet add package Azure.Identity
     ```
 
-1. *Program.cs*'i açın ve aşağıdaki gerekli paketlere başvuruları ekleyin:
+1. *Program. cs*' yi açın ve aşağıdaki gerekli paketlere başvuruları ekleyin:
 
     ```csharp
     using Azure.Identity;

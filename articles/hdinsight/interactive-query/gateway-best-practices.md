@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.openlocfilehash: 63484d882d8ccd387257c6f246c2048a09c77bc8
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98933105"
 ---
 # <a name="gateway-deep-dive-and-best-practices-for-apache-hive-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Hive için ağ geçidi derinlemesine bakış ve en iyi uygulamalar
@@ -53,9 +53,9 @@ Yukarıdaki davranışın bir parçası olarak karşılanması gereken performan
 
 * Büyük **seçim** sorguları yürütürken **LIMIT** yan tümcesini kullanın. **LIMIT** yan tümcesi, istemci konağına bildirilen toplam satırları azaltır. **LIMIT** yan tümcesi yalnızca sonuç üretimini etkiler ve sorgu planını değiştirmez. **LIMIT** yan tümcesini sorgu planına uygulamak için yapılandırmayı kullanın `hive.limit.optimize.enable` . **Sınır** , **x, y** olan bağımsız değişken form sınırı kullanılarak bir uzaklığa birleştirilebilir.
 
-* **Select \** _ yerine sorguları **Seç** ' i çalıştırırken ilgilendiğiniz sütunlarınızı adlandırın. Daha az sütun seçilmesi, okunan veri miktarını düşürür.
+* **Select \*** kullanmak yerine sorguları **Seç** ' i çalıştırırken ilgilendiğiniz sütunlarınızı adlandırın. Daha az sütun seçilmesi, okunan veri miktarını düşürür.
 
-_ Apache Beeline aracılığıyla ilgilendiğiniz sorguyu çalıştırmayı deneyin. Apache Beeline ile sonuç alımı uzun zaman alırsa, dış araçlarla aynı sonuçları alırken gecikmeler olması beklenir.
+* Apache Beeline aracılığıyla ilgilendiğiniz sorguyu çalıştırmayı deneyin. Apache Beeline ile sonuç alımı uzun zaman alırsa, dış araçlarla aynı sonuçları alırken gecikmeler olması beklenir.
 
 * HDInsight Gateway ile kurulan bir bağlantının kuruladiğinden emin olmak için temel bir Hive sorgusunu test edin. Tek bir aracın sorunsuz bir şekilde çalıştığından emin olmak için iki veya daha fazla dış araçtan temel bir sorgu çalıştırmayı deneyin.
 

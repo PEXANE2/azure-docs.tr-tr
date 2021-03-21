@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 1/29/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: f97a99bf2d055805ee665ab51aff8cff12dc5a69
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99094201"
 ---
 # <a name="tutorial-optimize-indexing-with-the-push-api"></a>Öğretici: gönderme API 'SI ile dizin oluşturmayı Iyileştirme
@@ -104,10 +104,10 @@ Bu basit C#/.NET konsol uygulaması aşağıdaki görevleri gerçekleştirir:
 
  Programı çalıştırmadan önce, bu örneğe ilişkin kodu ve Dizin tanımlarını incelemek için bir dakikanızı alın. İlgili kod birkaç dosyada mevcuttur:
 
-  + **Hotel.cs** ve **Address.cs** , dizini tanımlayan şemayı içerir
-  + **DataGenerator.cs** , büyük miktarlarda otel verisi oluşturmayı kolaylaştıran basit bir sınıf içerir
-  + **ExponentialBackoff.cs** , dizin oluşturma işlemini aşağıda açıklandığı şekilde iyileştirmek için kod içerir
-  + **Program.cs** Azure bilişsel arama dizini oluşturup silen, veri yığınlarını dizinleyen ve farklı toplu iş boyutlarını test eden işlevler içerir
+  + **Otel. cs** ve **Address. cs** , dizini tanımlayan şemayı içerir
+  + **DataGenerator. cs** , büyük miktarlarda otel verileri oluşturmayı kolaylaştıran basit bir sınıf içerir
+  + **Üs Albackoff. cs** , dizin oluşturma işlemini aşağıda açıklandığı şekilde iyileştirmek için kod içerir
+  + **Program. cs** , Azure bilişsel arama dizini oluşturup silen, veri yığınlarını dizinleyen ve farklı toplu iş boyutlarını test eden işlevler içerir
 
 ### <a name="creating-the-index"></a>Dizin oluşturuluyor
 
@@ -115,7 +115,7 @@ Bu örnek program, bir Azure Bilişsel Arama dizini tanımlamak ve oluşturmak i
 
 Veri modeli, ayrıca adres sınıfına başvurular içeren Otel Sınıfı tarafından tanımlanır. FieldBuilder, dizin için karmaşık bir veri yapısı oluşturmak üzere birden fazla sınıf tanımı aracılığıyla ayrıntıya gider. Meta veri etiketleri, her alanın, aranabilir veya sıralanabilir olup olmadığı gibi özniteliklerini tanımlamak için kullanılır.
 
-**Hotel.cs** dosyasındaki aşağıdaki kod parçacıkları, tek bir alanın ve başka bir veri modeli sınıfına yapılan başvurunun nasıl belirtime olduğunu gösterir.
+**Otel. cs** dosyasındaki aşağıdaki kod parçacıkları, tek bir alanın ve başka bir veri modeli sınıfına yapılan başvurunun nasıl belirtime olduğunu gösterir.
 
 ```csharp
 . . .
@@ -126,7 +126,7 @@ public Address Address { get; set; }
 . . .
 ```
 
-**Program.cs** dosyasında Dizin, yöntemi tarafından oluşturulan bir ad ve alan koleksiyonuyla tanımlanır `FieldBuilder.Build(typeof(Hotel))` ve sonra aşağıdaki gibi oluşturulur:
+**Program. cs** dosyasında, dizin, yöntemi tarafından oluşturulan bir ad ve alan koleksiyonuyla tanımlanır `FieldBuilder.Build(typeof(Hotel))` ve sonra aşağıdaki gibi oluşturulur:
 
 ```csharp
 private static async Task CreateIndexAsync(string indexName, SearchIndexClient indexClient)
@@ -143,7 +143,7 @@ private static async Task CreateIndexAsync(string indexName, SearchIndexClient i
 
 ### <a name="generating-data"></a>Veri oluşturma
 
-Test için veri oluşturmak üzere **DataGenerator.cs** dosyasında basit bir sınıf uygulanır. Bu sınıfın tek amacı, dizin oluşturma için benzersiz bir KIMLIĞE sahip çok sayıda belge oluşturmayı kolaylaştırmaktadır.
+Basit bir sınıf, test için veri oluşturmak üzere **DataGenerator. cs** dosyasında uygulanır. Bu sınıfın tek amacı, dizin oluşturma için benzersiz bir KIMLIĞE sahip çok sayıda belge oluşturmayı kolaylaştırmaktadır.
 
 Benzersiz kimliklere sahip 100.000 oteller listesini almak için aşağıdaki kod satırlarını çalıştırırsınız:
 
@@ -345,7 +345,7 @@ do
 
 Buradan, kolayca çağrılabilmesi için üstel geri alma kodunu bir işleve sarıyoruz.
 
-Daha sonra etkin iş parçacıklarını yönetmek için başka bir işlev oluşturulur. Kolaylık olması için bu işlev buraya dahil değildir, ancak [ExponentialBackoff.cs](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/optimize-data-indexing/v11/OptimizeDataIndexing/ExponentialBackoff.cs)içinde bulunabilir. İşlevi, `hotels` yüklemek istediğimiz veriler nerede, `1000` toplu iş boyutu ve `8` eşzamanlı iş parçacığı sayısı olan aşağıdaki komutla çağrılabilir:
+Daha sonra etkin iş parçacıklarını yönetmek için başka bir işlev oluşturulur. Kolaylık olması için bu işlev buraya dahil değildir ancak [üs Albackoff. cs](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/optimize-data-indexing/v11/OptimizeDataIndexing/ExponentialBackoff.cs)dosyasında bulunabilir. İşlevi, `hotels` yüklemek istediğimiz veriler nerede, `1000` toplu iş boyutu ve `8` eşzamanlı iş parçacığı sayısı olan aşağıdaki komutla çağrılabilir:
 
 ```csharp
 await ExponentialBackoff.IndexData(indexClient, hotels, 1000, 8);

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: jeedes
 ms.openlocfilehash: 9cfc48e3fdb96ba5b63b28288a801095f7b36f43
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97589954"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springcm"></a>Öğretici: SpringCM ile tümleştirme Azure Active Directory
@@ -30,7 +30,7 @@ SpringCM 'yi Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini SpringCM ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -205,7 +205,7 @@ Azure Active Directory kullanıcıların SpringCM ' de oturum açmasını sağla
 
 1. **Git**' e ve ardından **Adres defteri**' ne tıklayın.
 
-    ![Kullanıcı Oluştur](./media/spring-cm-tutorial/ic797054.png "Kullanıcı Oluştur")
+    ![Create User](./media/spring-cm-tutorial/ic797054.png "Kullanıcı Oluştur")
 
 1. **Kullanıcı oluştur**' a tıklayın.
 
