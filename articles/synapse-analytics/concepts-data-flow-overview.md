@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 12/16/2020
 ms.openlocfilehash: 18322afbdca94b12ef142f6e37c4d2a22170436b
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97592715"
 ---
 # <a name="data-flows-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te veri akışları
@@ -23,7 +23,7 @@ Veri akışları, Azure SYNAPSE Analytics 'te görsel olarak tasarlanan veri dö
 
 Veri akışları, hiçbir kodlamaya gerek olmadan tamamen görsel bir deneyim sağlar. Veri akışlarınız, ölçeği genişletilmiş veri işleme için SYNAPSE tarafından yönetilen yürütme kümelerinde çalışır. Azure SYNAPSE Analytics, tüm kod çevirisi, yol iyileştirmesi ve veri akışı işlerinizin yürütülmesini işler.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 Veri akışları, SYNAPSE Studio 'daki geliştir bölmesinden oluşturulur. Veri akışı oluşturmak için, **Geliştir**' ın yanındaki artı işaretini ve ardından **veri akışı**' nı seçin. 
 

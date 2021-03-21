@@ -10,10 +10,10 @@ ms.date: 05/28/2019
 ms.author: sngun
 ms.custom: devx-track-java
 ms.openlocfilehash: e7b75c71d64054e38630677ecd38f8e3e2483c12
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97606343"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Gerçek zamanlı veri analizlerini görselleştirmek için Azure Cosmos DB değişiklik akışını kullanın
@@ -56,7 +56,7 @@ Aşağıdaki diyagram, çözüme dahil olan veri akışını ve bileşenlerini t
 
 7. **Power BI:** Power BI, Azure Stream Analytics tarafından gönderilen verileri görselleştirmek için kullanılır. Ölçümlerin gerçek zamanlı olarak nasıl değişmediklerini görmek için bir pano oluşturabilirsiniz.  
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Microsoft .NET Framework 4.7.1 veya üzeri
 
@@ -154,7 +154,7 @@ Yeni bir belge oluşturulduğunda veya Cosmos kapsayıcısında geçerli bir bel
 
 3. Visual Studio 'da **local.settings.js** gidin. Ardından, daha önce kaydettiğiniz değerleri kullanarak boş olanları doldurmanız gerekir.  
 
-4. **ChangeFeedProcessor.cs** adresine gidin. **Run** işlevinin parametrelerinde, aşağıdaki eylemleri gerçekleştirin:  
+4. **Changefeedprocessor. cs** sayfasına gidin. **Run** işlevinin parametrelerinde, aşağıdaki eylemleri gerçekleştirin:  
 
    * **Koleksıyon adınızın** metnini, koleksiyonunuzun adıyla değiştirin. Önceki yönergeleri izlediyseniz, koleksiyonunuzun adı changefeedlabcollection olur.  
    * **Kıra KOLEKSIYONU adınızın** metnini, kira koleksiyonlarınızın adıyla değiştirin. Önceki yönergeleri izlediyseniz, kira koleksiyonunuzun adı **kiralamalar** olur.  
@@ -211,7 +211,7 @@ Azure Stream Analytics, akış verilerinin gerçek zamanlı işlemesi için tam 
 
 5. Stream Analytics işi sayfasına dönün ve **çıktılar**' i seçin.  
 
-6. **+ Ekle** öğesini seçin. Sonra açılan menüden **Power BI** ' ı seçin.  
+6. **+ Ekle**'yi seçin. Sonra açılan menüden **Power BI** ' ı seçin.  
 
 7. Ortalama fiyatı görselleştirmek üzere yeni bir Power BI çıkışı oluşturmak için aşağıdaki eylemleri gerçekleştirin:
 

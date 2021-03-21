@@ -10,10 +10,10 @@ ms.date: 11/05/2019
 ms.author: kirankk
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 2ece9ed5cb6eb6ea706db1ed615a64d001f2b17c
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102423964"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Öğretici: Azure Cosmos DB SQL API hesabındaki verileri yönetmek için bir .NET konsol uygulaması oluşturma
@@ -79,7 +79,7 @@ Harika! Kurulumu tamamladığımıza göre, biraz kod yazmaya başlayalım. Bu �
 
 ## <a name="step-3-connect-to-an-azure-cosmos-db-account"></a><a id="Connect"></a>3. Adım: Azure Cosmos DB hesabına bağlanma
 
-1. *Program.cs* dosyasındaki C# uygulamanızın başındaki başvuruları şu başvurularla değiştirin:
+1. *Program. cs* dosyasındaki C# uygulamanızın başındaki başvuruları şu başvurularla değiştirin:
 
    ```csharp
    using System;
@@ -124,7 +124,7 @@ Harika! Kurulumu tamamladığımıza göre, biraz kod yazmaya başlayalım. Bu �
 
    :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-portal-keys.png" alt-text="Azure portal Azure Cosmos DB anahtarları al":::
 
-1. *Program.cs*' de, `<your endpoint URL>` **URI** değeri ile değiştirin. `<your primary key>` **Birincil anahtar** değeriyle değiştirin.
+1. *Program. cs*' de, `<your endpoint URL>` **URI** değeri ile değiştirin. `<your primary key>` **Birincil anahtar** değeriyle değiştirin.
 
 1. **Main** yönteminin altında, yeni bir zaman uyumsuz görev **ekleyin, bu, yeni** bir örneği oluşturur `CosmosClient` .
 
@@ -179,7 +179,7 @@ Veritabanı, kapsayıcılar genelinde bölümlenmiş öğelerin mantıksal bir k
     }
     ```
 
-    *Program.cs* , bitiş noktanız ve birincil anahtarınızla doldurulmuş olarak şöyle görünmelidir.
+    *Programınız. cs* , uç nokta ve birincil anahtarınızla doldurulmuş olarak şöyle görünmelidir.
 
     ```csharp
     using System;
@@ -311,14 +311,14 @@ Sınıfın [**Createitemasync**](/dotnet/api/microsoft.azure.cosmos.container.cr
 
 1. **Yeni öğe Ekle**' yi açmak için CTRL + SHIFT + A ' yı seçin. Projenize yeni bir sınıf ekleyin `Family.cs` .
 
-    :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-add-family-class-2019.png" alt-text="Projeye yeni bir Family.cs sınıfı ekleme ekranının ekran görüntüsü":::
+    :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-add-family-class-2019.png" alt-text="Projeye yeni bir Family. cs sınıfı ekleme ekranının ekran görüntüsü":::
 
 1. ,,, `Family` `Parent` `Child` `Pet` Ve `Address` sınıfını kopyalayıp içine yapıştırın `Family.cs` .
 
     [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Family.cs)]
 
 
-1. *Program.cs*'e geri döndüğünüzde, yönteminizi `AddItemsToContainerAsync` uyguladıktan sonra yöntemi ekleyin `CreateContainerAsync` .
+1. *Program. cs*' ye geri döndüğünüzde, yönteminizi `AddItemsToContainerAsync` uyguladıktan sonra yöntemi ekleyin `CreateContainerAsync` .
 
     [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=AddItemsToContainerAsync)]
 

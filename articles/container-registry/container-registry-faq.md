@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 09/18/2020
 ms.author: sajaya
 ms.openlocfilehash: 055f039d5bba0dba2906e1d3b8410af00c5600ef
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97606292"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry hakkında sık sorulan sorular
@@ -19,7 +19,7 @@ Bu makalede, Azure Container Registry hakkında sık sorulan sorular ve bilinen 
 Kayıt defteri sorunlarını giderme kılavuzu için bkz.:
 * [Kayıt defteri oturum açma sorunlarını giderme](container-registry-troubleshoot-login.md)
 * [Kayıt defteri ile ağ sorunlarını giderme](container-registry-troubleshoot-access.md)
-* [Kayıt defteri performansı sorunlarını giderme](container-registry-troubleshoot-performance.md)
+* [Kayıt defteri performansının sorunlarını giderme](container-registry-troubleshoot-performance.md)
 
 ## <a name="resource-management"></a>Kaynak yönetimi
 
@@ -485,7 +485,7 @@ Tüm depo adlandırma kuralları için bkz. [kapsayıcı girişim dağıtım bel
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>Windows 'da http izlemeleri Nasıl yaparım? mi toplıyorsunuz?
 
-#### <a name="prerequisites"></a>Ön koşullar
+#### <a name="prerequisites"></a>Önkoşullar
 
 - Fiddler 'da https şifresini çözmeyi etkinleştir:  <https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS>
 - Docker Kullanıcı arabirimi aracılığıyla bir proxy kullanmak için Docker 'ı etkinleştirin: <https://docs.docker.com/docker-for-windows/#proxies>

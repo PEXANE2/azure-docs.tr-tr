@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 02/12/2021
+ms.date: 03/18/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e9189b6608b74be6a72dbdfe66276c5050f042f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 08ed02c65db201e18ce710633b421edb5ecb2db0
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100365472"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104655708"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Azure Active Directory B2B işbirliği kullanıcısının özellikleri
 
@@ -106,7 +106,7 @@ Konuk kullanıcılarınıza daha fazla ayrıcalık vermek istediğiniz durumlar 
 ![Kullanıcı ayarlarındaki dış kullanıcılar seçeneğini gösteren ekran görüntüsü](media/user-properties/remove-guest-limitations.png)
 
 ## <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Konuk kullanıcıları Exchange genel adres listesinde görünür yapabilir miyim?
-Evet. Varsayılan olarak, Konuk nesneler kuruluşunuzun genel adres listesinde görünmez, ancak Azure Active Directory PowerShell kullanarak bunları görünür hale getirebilirsiniz. Ayrıntılar için bkz. **genel adres listesinde Konuk nesneleri görünür yapabilir miyim?** [Microsoft 365 gruplardaki konuk erişimini yönetme](/office365/admin/create-groups/manage-guest-access-in-groups).
+Evet. Varsayılan olarak, Konuk nesneler kuruluşunuzun genel adres listesinde görünmez, ancak Azure Active Directory PowerShell kullanarak bunları görünür hale getirebilirsiniz. Ayrıntılar için [Microsoft 365 grup başına Konuk erişim makalesindeki](/microsoft-365/solutions/per-group-guest-access)"küresel adres listesine Konuk ekleme" konusuna bakın.
 
 ## <a name="can-i-update-a-guest-users-email-address"></a>Konuk kullanıcının e-posta adresini güncelleştirebilir miyim?
 

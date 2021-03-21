@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 01/13/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 00670746c1686bca354adc989ddce6c9dd336491
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96519068"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-portal"></a>Azure portal kullanarak MySQL için Azure veritabanı için veri şifreleme
@@ -40,12 +40,12 @@ MySQL için Azure veritabanınız için veri şifrelemeyi ayarlamak ve yönetmek
     az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --retention-days 90
     ```
 
-* Anahtar, müşteri tarafından yönetilen anahtar olarak kullanmak için aşağıdaki özniteliklere sahip olmalıdır:
-  * Sona erme tarihi yok
-  * Devre dışı değil
+* Müşteri tarafından yönetilen anahtar olarak kullanılabilmesi için anahtarın aşağıdaki özniteliklere sahip olması gerekir:
+  * Son kullanma tarihi yok
+  * Devre dışı bırakılmadı
   * **Al**, **sarmalama**, **geri** alınamaz işlemleri gerçekleştirin
   * recoverylevel özniteliği **kurtarılabilir** olarak ayarlandı (Bu, bekletme süresi 90 gün olarak ayarlanan geçici silme gerektirir)
-  * Temizleme koruması etkin
+  * Temizleme koruması etkinleştirildi
 
 Aşağıdaki komutu kullanarak anahtarın yukarıdaki özniteliklerini doğrulayabilirsiniz:
 

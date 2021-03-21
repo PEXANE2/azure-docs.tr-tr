@@ -8,10 +8,10 @@ ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: fccb919a7eac79080fefeac70326b8aa7a967622
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96499479"
 ---
 # <a name="connect-with-excel"></a>Excel ile bağlanma
@@ -26,7 +26,7 @@ Oturum açarken kullandığınız hesap, en azından okuma izinlerine sahip bir 
 
 Excel 'deki bir sunucuya bağlanmak, Excel 2016 ve sonraki sürümlerde veri al kullanılarak desteklenir. Power Pivot içindeki tablo Içeri aktarma Sihirbazı 'Nı kullanarak bağlanma desteklenmez. 
 
-1. Excel 'de, **veri** şeridinde Analysis Services veritabanından **veri al**' a tıklayın  >  **From Database**  >  **From Analysis Services**.
+1. Excel 'de, **veri** şeridinde Analysis Services veritabanından **veri al**' a tıklayın  >    >  .
 
 2. Veri Bağlantısı Sihirbazı ' nın **sunucu adı**' nda protokol ve URI dahil sunucu adını girin. Örneğin, asazure://westcentralus.asazure.windows.net/advworks. Ardından, **oturum açma kimlik bilgileri**' nde, **aşağıdaki Kullanıcı adı ve parolayı kullan**' ı seçin ve ardından kuruluş Kullanıcı adı ' nı nancy@adventureworks.com ve parola ' yı yazın.
 

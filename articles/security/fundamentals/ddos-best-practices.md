@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/18/2018
 ms.author: terrylan
 ms.openlocfilehash: e298cb0d1a2c510a096f8ead03f8af7e39c206a8
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96498940"
 ---
 # <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS koruması-dayanıklı çözümler tasarlama
@@ -97,7 +97,7 @@ DDoS koruma standardı, DDoS saldırısı süresince [Azure izleyici](../../azur
 
 ##### <a name="ddos-mitigation-policies"></a>DDoS risk azaltma ilkeleri
 
-Azure Portal ölçümleri **İzle**' yi seçin  >  **Metrics**. **Ölçümler** bölmesinde, kaynak grubunu seçin, **ortak IP adresi** kaynak türünü SEÇIN ve Azure genel IP adresinizi seçin. DDoS ölçümleri **kullanılabilir ölçümler** bölmesinde görünür.
+Azure Portal ölçümleri **İzle**' yi seçin  >  . **Ölçümler** bölmesinde, kaynak grubunu seçin, **ortak IP adresi** kaynak türünü SEÇIN ve Azure genel IP adresinizi seçin. DDoS ölçümleri **kullanılabilir ölçümler** bölmesinde görünür.
 
 DDoS koruması standardı, korumalı kaynağın her genel IP 'si için, DDoS özellikli olan sanal ağdaki üç etkin Azaltma ilkesi (TCP SYN, TCP ve UDP) uygular. **DDoS risk azaltma tetiklenecek ölçüm gelen paketleri** seçerek ilke eşiklerini görüntüleyebilirsiniz.
 
@@ -135,13 +135,13 @@ Düzenli benzetimler sunarak hizmetlerinizin bir saldırıya nasıl yanıt verec
 
 Azure müşterilerinin benzetimler için DDoS koruması etkinleştirilmiş ortak uç noktalara karşı trafik oluşturabileceği bir arabirim oluşturmak için [BreakingPoint bulutu](https://www.ixiacom.com/products/breakingpoint-cloud) ile ortaklıyoruz. [BreakingPoint bulut](https://www.ixiacom.com/products/breakingpoint-cloud) benzetimini şu şekilde kullanabilirsiniz:
 
-- Azure DDoS korumasının Azure kaynaklarınızı DDoS saldırılarına karşı korumanıza nasıl yardımcı olduğunu doğrulayın.
+- Azure DDoS Koruması'nın Azure kaynaklarınızı DDoS saldırılarına karşı korumanıza nasıl yardımcı olduğunu doğrulayabilirsiniz.
 
-- DDoS saldırısı altındayken olay yanıt sürecinizi iyileştirin.
+- DDoS saldırısı altındayken olay yanıt sürecinizi iyileştirebilirsiniz.
 
-- DDoS uyumluluğunu belgeleyin.
+- DDoS uyumluluğunu belgeleyebilirsiniz.
 
-- Ağ Güvenlik ekiplerinizi eğitme.
+- Ağ güvenlik ekiplerinizi eğitebilirsiniz.
 
 Cybersecurity, savunma için sabit yenilik gerektirir. Azure DDoS standart koruması, giderek artan karmaşık DDoS saldırılarını hafifletmek için etkili bir çözüm sunan bir son teknoloji sunumudur.
 
@@ -189,7 +189,7 @@ Azure DDoS koruması standardı, herhangi bir kullanıcı müdahalesi olmadan DD
 
   DDoS Koruması hizmeti yalnızca **DDoS azaltma (TCP/TCP SYN/UDP) tetiklemesi için** ölçüm değeri ilkesi, korunan genel IP kaynağında alınan trafikten düşükse hafifletme işlemi başlatır.
 
-- Ağ trafiğinizi önemli ölçüde arttırabileceğiniz bir viral olayı planlıyorsunuz.
+- Ağ trafiğinizi önemli ölçüde artıran viral bir etkinlik planlıyorsunuz.
 
 - Bir aktör, kaynaklarınız için DDoS saldırısı başlatmayı tehdit etti.
 

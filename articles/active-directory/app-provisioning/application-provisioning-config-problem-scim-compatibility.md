@@ -12,10 +12,10 @@ ms.date: 08/05/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.openlocfilehash: d13629b4cb05995b9652e862f769a0ffcae30a8c
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99256907"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD Kullanıcı sağlama hizmeti 'nin SCıM 2,0 protokol uyumluluğuyla ilgili bilinen sorunlar ve çözümleri
@@ -43,7 +43,7 @@ Aşağıdaki tabloda, sabit olarak işaretlenen herhangi bir öğe, SCıM işind
 | Uzantı öznitelikleri, ":" gösterimi yerine öznitelik adlarından önce nokta "." gösterimini kullanır |  Yes  | 18 Aralık 2018  | customappSSO sürümüne düşürme |
 | Çok değerli öznitelikler için düzeltme eki istekleri geçersiz yol filtresi sözdizimi içeriyor | Yes  |  18 Aralık 2018  | customappSSO sürümüne düşürme |
 | Grup oluşturma istekleri geçersiz bir şema URI 'SI içeriyor | Yes  |  18 Aralık 2018  |  customappSSO sürümüne düşürme |
-| Uyumluluk sağlamak için düzeltme eki davranışlarını güncelleştirme (örn. Boolean ve uygun Grup üyeliği kaldırma işlemleri) | Hayır | TBD| Önizleme bayrağını kullan |
+| Uyumluluk sağlamak için düzeltme eki davranışlarını güncelleştirme (örn. Boolean ve uygun Grup üyeliği kaldırma işlemleri) | No | TBD| Önizleme bayrağını kullan |
 
 ## <a name="flags-to-alter-the-scim-behavior"></a>SCıM davranışını değiştirecek bayraklar
 Varsayılan SCıM istemci davranışını değiştirmek için uygulamanızın kiracı URL 'sinde aşağıdaki bayrakları kullanın.

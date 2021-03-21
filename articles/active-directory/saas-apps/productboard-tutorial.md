@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: jeedes
 ms.openlocfilehash: 0ccf7832ec569266e6fa16e5f130e3f2f74d6f48
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92515262"
 ---
 # <a name="tutorial-integrate-productboard-with-azure-active-directory"></a>Öğretici: productboard 'ı Azure Active Directory tümleştirme
@@ -55,7 +55,7 @@ Productboard 'in Azure AD ile tümleştirilmesini yapılandırmak için, Galerid
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu productboard ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve productboard içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu productboard ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve productboard içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu productboard ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -123,11 +123,11 @@ Bu bölümde, productboard 'e erişim vererek Azure çoklu oturum açma özelli�
 
 ## <a name="configure-productboard-sso"></a>Productboard SSO 'yu yapılandırma
 
-1. Bu yapılandırmayı productboard içinde otomatik hale getirmek için, **uzantıyı yüklemek**üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
+1. Bu yapılandırmayı productboard içinde otomatik hale getirmek için, **uzantıyı yüklemek** üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 
     ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
 
-1. Uzantıyı tarayıcıya ekledikten sonra, productboard ayarla ' **ya**tıklayarak productboard uygulamasına yöneltir. Buradan, productboard 'de oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı uygulamayı sizin için otomatik olarak yapılandıracaktır.
+1. Uzantıyı tarayıcıya ekledikten sonra, productboard ayarla ' **ya** tıklayarak productboard uygulamasına yöneltir. Buradan, productboard 'de oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı uygulamayı sizin için otomatik olarak yapılandıracaktır.
 
     ![Kurulum yapılandırması](common/setup-sso.png)
 

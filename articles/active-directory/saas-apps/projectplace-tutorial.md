@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/29/2019
 ms.author: jeedes
 ms.openlocfilehash: 508a3ca02ec6c0475e78d16691f6597e1a389f97
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92511862"
 ---
 # <a name="tutorial-integrate-projectplace-with-azure-active-directory"></a>Öğretici: Projectplace 'i Azure Active Directory ile tümleştirin
@@ -53,7 +53,7 @@ Projectplace 'in Azure AD 'ye tümleştirilmesini yapılandırmak için galeride
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Projectplace ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Projectplace içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Projectplace ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Projectplace içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Projectplace ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -80,7 +80,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     **Oturum açma URL 'si** metin kutusuna bir URL yazın:`https://service.projectplace.com`
 
-1. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, gereksiniminize göre **uygulama Federasyon meta verileri URL 'sini**kopyalamak ve Not defteri 'ne kaydetmek için Kopyala **simgesi** ' ne tıklayın.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, gereksiniminize göre **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve Not defteri 'ne kaydetmek için Kopyala **simgesi** ' ne tıklayın.
 
    ![Sertifika indirme bağlantısı](common/copy-metadataurl.png)
 
@@ -140,7 +140,7 @@ Azure AD kullanıcılarının Projectplace 'de oturum açmasını sağlamak içi
    
     ![Kişiler ' e gidin ve ardından Üyeler ' i seçin.](./media/projectplace-tutorial/ic790228.png "People")
 
-3. **Üye Ekle**öğesini seçin:
+3. **Üye Ekle** öğesini seçin:
    
     ![Üye Ekle seçeneğini belirleyin](./media/projectplace-tutorial/ic790232.png "Üye Ekle")
 

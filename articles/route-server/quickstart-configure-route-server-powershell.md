@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: quickstart
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: e302cb9da410487dbea4ec5c5b256c4cb5dd186f
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: a3ab3a801872cc20b4e41bbff02ad6474c3bab8c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102566388"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104655215"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak rota sunucusu oluşturma ve yapılandırma
 
@@ -40,8 +40,8 @@ Bu makale, Azure yol sunucusunu PowerShell kullanarak sanal ağınızdaki bir a�
 Bir Azure rota sunucusu oluşturabilmeniz için önce dağıtımı barındırmak üzere bir sanal ağ gerekir. Bir kaynak grubu ve sanal ağ oluşturmak için izle komutunu kullanın. Zaten bir sanal ağınız varsa, sonraki bölüme atlayabilirsiniz.
 
 ```azurepowershell-interactive
-New-AzResourceGroup –Name “RouteServerRG” -Location “West US”
-New-AzVirtualNetwork –ResourceGroupName “RouteServerRG -Location “West US” -Name myVirtualNetwork –AddressPrefix 10.0.0.0/16
+New-AzResourceGroup –Name "RouteServerRG” -Location “West US"
+New-AzVirtualNetwork –ResourceGroupName "RouteServerRG" -Location "West US" -Name myVirtualNetwork –AddressPrefix 10.0.0.0/16
 ```
 
 ### <a name="add-a-subnet"></a>Alt ağ ekleme
@@ -49,15 +49,15 @@ New-AzVirtualNetwork –ResourceGroupName “RouteServerRG -Location “West US�
 1. Azure yol sunucusunu dağıtmak için *Routeserversubnet* adlı bir alt ağ ekleyin. Bu alt ağ, yalnızca Azure Route sunucusu için ayrılmış bir alt ağıdır. RouteServerSubnet/27 veya daha kısa bir ön ek olmalıdır (örneğin/26,/25) veya Azure yol sunucusunu eklediğinizde bir hata iletisi alırsınız.
 
     ```azurepowershell-interactive
-    $vnet = Get-AzVirtualNetwork –Name “myVirtualNetwork” - ResourceGroupName “RouteServerRG”
-    Add-AzVirtualNetworkSubnetConfig –Name “RouteServerSubnet” -AddressPrefix 10.0.0.0/24 -VirtualNetwork $vnet
+    $vnet = Get-AzVirtualNetwork –Name "myVirtualNetwork" - ResourceGroupName "RouteServerRG"
+    Add-AzVirtualNetworkSubnetConfig –Name "RouteServerSubnet" -AddressPrefix 10.0.0.0/24 -VirtualNetwork $vnet
     $vnet | Set-AzVirtualNetwork
     ```
 
 1. RouteServerSubnet KIMLIĞINI alın. Sanal ağdaki tüm alt ağların kaynak KIMLIĞINI görmek için şu komutu kullanın:
 
     ```azurepowershell-interactive
-    $vnet = Get-AzVirtualNetwork –Name “vnet_name” -ResourceGroupName “
+    $vnet = Get-AzVirtualNetwork –Name "vnet_name" -ResourceGroupName "RouteServerRG"
     $vnet.Subnets
     ```
 
@@ -70,7 +70,7 @@ RouteServerSubnet KIMLIĞI aşağıdakine benzer:
 Bu komutla rota sunucusu oluşturun:
 
 ```azurepowershell-interactive 
-New-AzRouteServer -RouteServerName myRouteServer -ResourceGroupName RouteServerRG -Location "West US” -HostedSubnet “RouteServerSubnet_ID”
+New-AzRouteServer -RouteServerName myRouteServer -ResourceGroupName RouteServerRG -Location "West US" -HostedSubnet "RouteServerSubnet_ID"
 ```
 
 Konumun, sanal ağınızın konumuyla eşleşmesi gerekir. HostedSubnet, önceki bölümde edindiğiniz RouteServerSubnet KIMLIĞIDIR.
@@ -137,7 +137,7 @@ Azure Route sunucusuna artık ihtiyacınız yoksa, BGP eşlemesini kaldırmak i�
 1. Bu komutla Azure Route sunucusu ve NVA arasındaki BGP eşlemesini kaldırın:
 
 ```azurepowershell-interactive 
-Remove-AzRouteServerPeer -PeerName “nva_name” -RouteServerName myRouteServer -ResourceGroupName RouteServerRG 
+Remove-AzRouteServerPeer -PeerName "nva_name" -RouteServerName myRouteServer -ResourceGroupName RouteServerRG 
 ```
 
 2. Azure yol sunucusunu şu komutla kaldırın:

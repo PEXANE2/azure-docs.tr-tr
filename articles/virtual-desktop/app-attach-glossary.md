@@ -9,10 +9,10 @@ ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 7132eae073f3d53a104536076ae801ec9ff93e5f
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96518677"
 ---
 # <a name="msix-app-attach-glossary"></a>MSIX uygulama iliştirme sözlüğü
@@ -112,7 +112,7 @@ Kaldırma işlemi, işletim sistemini, şu anda çalışmayan bir MALTıYA da uy
 
 CıM dosyası, içeren bir dosyadır. Meta veriler ve gerçek verileri içeren en az altı ek dosya içeren CıM uzantısı. CıM dosyasındaki dosyaların uzantıları yok. Aşağıdaki tabloda, CıM içinde bulduğunuz örnek dosyaların listesi verilmiştir:
 
-| Dosya adı | Uzantı | Boyut |
+| Dosya adı | Dahili numara | Boyut |
 |-----------|-----------|------|
 | VSC | CıM | 1 KB |
 | objectid_b5742e0b-1b98-40B3-94a6-9cb96f497e56_0 | NA | 27 KB |

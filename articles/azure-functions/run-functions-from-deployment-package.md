@@ -3,12 +3,12 @@ title: Azure Işlevlerinizi bir paketten çalıştırın
 description: Azure Işlevleri çalışma zamanının, işlev uygulaması proje dosyalarınızı içeren bir dağıtım paketi dosyası bağlayarak işlevlerinizi çalıştırmasını sağlayabilirsiniz.
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: b2d90cf78263b30b4315199cf1c543186a435f17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aad6991d0ddd5c439d03e41adec63837a21db87b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88639894"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581601"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Azure Işlevlerinizi bir paket dosyasından çalıştırın
 
@@ -63,6 +63,7 @@ Aşağıda, Azure Blob depolamada barındırılan bir. zip dosyasından çalış
 
 - Paketten Çalıştır `wwwroot` salt okunurdur, bu nedenle dosyaları bu dizine yazarken bir hata alırsınız.
 - Tar ve gzip biçimleri desteklenmez.
+- ZIP dosyası en fazla 1 GB olabilir.
 - Bu özellik yerel önbellek ile oluşturmaz.
 - İyileştirilmiş soğuk başlangıç performansı için yerel ZIP seçeneğini ( `WEBSITE_RUN_FROM_PACKAGE` = 1) kullanın.
 - Paketten Çalıştır, dağıtım özelleştirme seçeneği () ile uyumlu değil `SCM_DO_BUILD_DURING_DEPLOYMENT=true` , dağıtım sırasında derleme adımı yok sayılır.

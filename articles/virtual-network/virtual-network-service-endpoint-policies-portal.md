@@ -13,17 +13,17 @@ ms.workload: infrastructure
 ms.date: 02/21/2020
 ms.author: rdhillon
 ms.openlocfilehash: bdf0e87c92a55d0dbb5bbe34334a6de4580cb350
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96004968"
 ---
 # <a name="create-change-or-delete-service-endpoint-policy-using-the-azure-portal"></a>Azure portal kullanarak hizmet uç noktası ilkesi oluşturma, değiştirme veya silme
 
 Hizmet uç noktası ilkeleri, sanal ağ trafiğini hizmet uç noktaları üzerinden belirli Azure kaynaklarına filtrelemenizi sağlar. Hizmet uç noktası ilkelerine alışkın değilseniz, daha fazla bilgi edinmek için [hizmet uç noktası ilkelerine genel bakış](virtual-network-service-endpoint-policies-overview.md) bölümüne bakın.
 
- Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Hizmet uç noktası ilkesi oluşturma
@@ -71,7 +71,7 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
    - Anahtar: ilke için anahtarınızı seçin. Ex: Bölüm     
    - Değer: anahtar için değer çifti girin. Ex: finans
 
-6. **Gözden geçir + oluştur**' u seçin. Bilgileri doğrulayıp **Oluştur**' a tıklayın. Daha fazla düzenleme yapmak için **önceki** seçeneğine tıklayın. 
+6. **Gözden geçir + Oluştur**’u seçin. Bilgileri doğrulayıp **Oluştur**' a tıklayın. Daha fazla düzenleme yapmak için **önceki** seçeneğine tıklayın. 
 
    ![Hizmet uç noktası ilkesi son doğrulamaları oluştur](./media/virtual-network-service-endpoint-policies-portal/create-sep-review-create.png)
   

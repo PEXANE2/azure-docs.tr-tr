@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
 ms.openlocfilehash: 1b568687ffe646a91544c1bb75d26d552a23f49c
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96005291"
 ---
 # <a name="optimize-costs-by-automating-azure-blob-storage-access-tiers"></a>Azure Blob depolama erişim katmanlarını otomatikleştirerek maliyetleri iyileştirin
@@ -53,7 +53,7 @@ Aşağıdaki yöntemlerden birini kullanarak bir ilkeyi ekleyebilir, düzenleyeb
 Bir ilke, tam olarak okunabilir veya yazılabilir. Kısmi güncelleştirmeler desteklenmiyor. 
 
 > [!NOTE]
-> Depolama hesabınız için güvenlik duvarı kurallarını etkinleştirirseniz, yaşam döngüsü yönetimi istekleri engellenebilir. Güvenilen Microsoft Hizmetleri için özel durumlar sağlayarak bu isteklerin engellemesini kaldırabilirsiniz. Daha fazla bilgi için bkz. [güvenlik duvarlarını ve sanal ağları yapılandırma](../common/storage-network-security.md#exceptions)Içindeki özel durumlar bölümü.
+> Depolama hesabınız için güvenlik duvarı kurallarını etkinleştirirseniz, yaşam döngüsü yönetimi istekleri engellenebilir. Güvenilen Microsoft hizmetleri için özel durumlar sağlayarak bu isteklerin engellemesini kaldırabilirsiniz. Daha fazla bilgi için bkz. [güvenlik duvarlarını ve sanal ağları yapılandırma](../common/storage-network-security.md#exceptions)Içindeki özel durumlar bölümü.
 
 Bu makalede Portal ve PowerShell yöntemlerini kullanarak ilkenin nasıl yönetileceği gösterilmektedir.
 
@@ -137,7 +137,7 @@ Azure portal bir ilke eklemenin iki yolu vardır.
    }
    ```
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 1. Bu JSON örneği hakkında daha fazla bilgi için bkz. [ilke](#policy) ve [kurallar](#rules) bölümleri.
 
@@ -596,4 +596,4 @@ Yanlışlıkla silinmeden sonra verileri nasıl kurtaracağınızı öğrenin:
 
 Blob diziniyle verileri yönetme ve bulma hakkında bilgi edinin:
 
-- [Blob diziniyle Azure Blob depolama üzerinde verileri yönetme ve bulma](storage-manage-find-blobs.md)
+- [Blob Dizini ile Azure Blob Depolama'da verileri bulma ve yönetme](storage-manage-find-blobs.md)

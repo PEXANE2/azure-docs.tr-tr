@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: alkohli
 ms.openlocfilehash: 56d301762fde41f727b0b425d6c41a423f08103c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96467962"
 ---
 # <a name="azure-stack-edge-pro-r-technical-specifications"></a>Azure Stack Edge Pro R teknik özellikleri
@@ -48,14 +48,14 @@ Azure Stack Edge Pro R cihazının yüksek performanslı fanlarla iki 100-240 V 
 | Isı dağılımı (maksimum)                   | 2891 BTU/saat                |
 | Sıklık               | 50/60 Hz                   |
 | Voltaj aralığı seçimi | Otomatik olarak değişen: 115-230 V AC |
-| Etkin takılabilir           | Evet                        |
+| Etkin takılabilir           | Yes                        |
 
 ## <a name="network-specifications"></a>Ağ belirtimleri
 
 Azure Stack Edge Pro R cihazının dört ağ arabirimi vardır, PORT1-PORT4. 
 
 
-|Belirtim  |Açıklama                              |
+|Belirtim  |Description                              |
 |----------------------|----------------------------------|
 |Ağ arabirimleri    |**2 x 1 GbE RJ45** <br> Bağlantı noktası 1, ilk kurulum için yönetim arabirimi olarak kullanılır ve varsayılan olarak statiktir. İlk kurulum tamamlandıktan sonra, herhangi bir IP adresine sahip veriler için arabirimi kullanabilirsiniz. Ancak, sıfırlama sırasında Arabirim statik IP 'ye geri döner. <br>Diğer arabirim bağlantı noktası 2 Kullanıcı tarafından yapılandırılabilir, veri aktarımı için kullanılabilir ve varsayılan olarak DHCP 'dir.     |
 |Ağ arabirimleri    |**2 x 25 GbE SFP28** <br> Bu veri arabirimleri bağlantı noktası 3 ve bağlantı noktası 4, DHCP (varsayılan) veya statik olarak yapılandırılabilir.            |

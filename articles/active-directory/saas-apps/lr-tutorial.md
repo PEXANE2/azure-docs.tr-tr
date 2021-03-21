@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 832c08123904b9fb889231faa86c1308704a2581
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97606428"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-loginradius"></a>Öğretici: LoginRadius ile Azure Active Directory tümleştirme
@@ -32,7 +32,7 @@ Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek is
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini LoginRadius ile yapılandırmak için aşağıdaki öğeler gereklidir:
 

@@ -11,13 +11,13 @@ ms.topic: overview
 ms.date: 12/16/2020
 ms.custom: seodec18
 ms.openlocfilehash: ae5887657e7657e60348217c21aa0ed17f9f4b07
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97606309"
 ---
-# <a name="what-is-azure-time-series-insights-gen2"></a>Azure Time Series Insights Gen2 nedir?
+# <a name="what-is-azure-time-series-insights-gen2"></a>Azure Time Series Insights 2. Nesil nedir?
 
 Azure Time Series Insights Gen2, güçlü yeteneklerini mevcut iş akışınız veya uygulamanızla bütünleştirmek için en iyi sınıf kullanıcı deneyimleri ve zengin API 'Ler sağlayan açık ve ölçeklenebilir uçtan uca bir IoT Analytics hizmetidir.
 
