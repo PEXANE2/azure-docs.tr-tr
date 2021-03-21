@@ -17,10 +17,10 @@ ms.date: 11/09/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 6ba30436b363353ad183396e07111b33ca912dbf
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98737447"
 ---
 # <a name="performance-guidelines-for-sql-server-on-azure-virtual-machines"></a>Azure Sanal Makineleri'nde SQL Server için performans yönergeleri
@@ -54,7 +54,7 @@ Aşağıda Azure sanal makinelerinde SQL Server en iyi performansı için hızl�
 Bu iyileştirmelerin *nasıl* ve *neden* yapılacağı hakkında daha fazla bilgi için lütfen aşağıdaki bölümlerde sunulan ayrıntıları ve Kılavuzu gözden geçirin.
 <br/><br/>
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 Azure VM 'de yeni bir SQL Server oluşturuyorsanız ve geçerli bir kaynak sistemi geçiriyorsanız, satıcı gereksinimlerinize göre yeni SQL Server VM oluşturun.  Bir SQL Server VM için satıcı gereksinimleri, şirket içinde dağıttığınız şeydir. 
 

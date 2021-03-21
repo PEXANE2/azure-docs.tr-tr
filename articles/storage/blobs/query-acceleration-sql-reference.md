@@ -11,10 +11,10 @@ ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
 ms.openlocfilehash: 2eda67e377a3b61e696e732b916d788c00a18eae
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95908787"
 ---
 # <a name="query-acceleration-sql-language-reference"></a>Sorgu hızlandırma SQL dil başvurusu
@@ -60,7 +60,7 @@ SELECT sys.split(split_size)FROM BlobStorage
 |INT      |64-bit işaretli tamsayı.                     |
 |FLOAT    |64-bit ("çift duyarlıklı") kayan nokta.|
 |DIZISINDE   |Değişken uzunlukta Unicode dizesi.            |
-|ILIŞKIN|Zaman içinde bir nokta.                           |
+|TIMESTAMP|Zaman içinde bir nokta.                           |
 |BOOLEAN  |True veya false.                             |
 
 CSV biçimli verilerden değerleri okurken tüm değerler dizeler olarak okunurdur.  Dize değerleri, atama ifadeleri kullanılarak diğer türlere dönüştürülebilir.  Değerler, bağlama göre örtük olarak diğer türlere dönüştürülebilir. daha fazla bilgi için bkz. [veri türü önceliği (Transact-SQL)](/sql/t-sql/data-types/data-type-precedence-transact-sql).
@@ -184,7 +184,7 @@ TO_STRING(CAST('1969-07-20T20:18Z' AS TIMESTAMP),  'MMMM d, y')
 
 Bu tablo, işlevinin çıkış biçimini belirtmek için kullanabileceğiniz dizeleri açıklar ``TO_STRING`` .
 
-|Biçimlendirme dizesi    |Çıkış                               |
+|Biçimlendirme dizesi    |Çıktı                               |
 |-----------------|-------------------------------------|
 |yy               |Yıl 2 basamak biçiminde – 1999 ' 99 ' olarak|
 |y                |4 basamaklı biçimde yıl               |
@@ -194,7 +194,7 @@ Bu tablo, işlevinin çıkış biçimini belirtmek için kullanabileceğiniz diz
 |AAA              |İşlenir. Yılın ayı-JAN            |
 |MMMM             |Tam ay – Mayıs                      |
 |d                |Ayın günü (1-31)                  |
-|dd               |Ayın sıfır doldurulmuş günü (01-31)     |
+|Ekle               |Ayın sıfır doldurulmuş günü (01-31)     |
 |a                |HAR veya PM                             |
 |h                |Günün saati (1-12)                   |
 |hh               |Sıfır saatlik saat od günü (01-12)     |

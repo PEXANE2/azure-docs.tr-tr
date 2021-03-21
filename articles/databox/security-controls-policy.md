@@ -1,18 +1,18 @@
 ---
 title: Azure Data Box için Azure Ilke mevzuat uyumluluk denetimleri
 description: Azure Data Box için kullanılabilen Azure Ilke mevzuat uyumluluk denetimlerini listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızın uyumluluğunu yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 03/10/2021
+ms.date: 03/17/2021
 ms.topic: sample
 author: alkohli
 ms.author: alkohli
 ms.service: databox
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: b0f44cfdc6e7ecbb0a67eae0ceba0eeafbe470d2
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: f7ffc1018061c23f89f8f05639d4158a034b4465
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102635939"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581567"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-data-box"></a>Azure Data Box için Azure Ilke mevzuat uyumluluk denetimleri
 

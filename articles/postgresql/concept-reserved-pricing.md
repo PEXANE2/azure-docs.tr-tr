@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.openlocfilehash: 9b8dafa4a69358b3f6f09551ac426b908750e2f4
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98735481"
 ---
 # <a name="prepay-for-azure-database-for-postgresql---single-server-compute-resources-with-reserved-capacity"></a>PostgreSQL için Azure veritabanı-ayrılmış kapasiteye sahip tek sunuculu işlem kaynakları için ön ödeme
@@ -55,7 +55,7 @@ Aşağıdaki tablo gerekli alanları açıklar.
 | :------------ | :------- |
 | Abonelik   | PostgreSQL için Azure veritabanı için ödeme yapmak üzere kullanılan abonelik ayrılmış kapasite ayırması. Abonelik üzerindeki ödeme yöntemi, PostgreSQL için Azure veritabanı ayrılmış kapasite rezervasyonuna ait ön maliyetlere göre ücretlendirilir. Abonelik türü bir kurumsal anlaşma (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P) veya kullandıkça öde fiyatlandırması (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P) içeren tek bir anlaşma olmalıdır. Kurumsal abonelik için ücretler kaydın Azure Ön Ödemesinden (eski adıyla parasal taahhüt) düşülür ve fazla kullanım olarak ücretlendirilir. Kullandıkça Öde fiyatlandırmasına sahip bireysel bir abonelik için ücretler, abonelik üzerindeki kredi kartına veya fatura ödeme yöntemine faturalandırılır.
 | Kapsam | VCore rezervasyonunun kapsamı bir aboneliği veya birden çok aboneliği (paylaşılan kapsamı) kapsayabilir. Şunları seçerseniz: </br></br> **, Sanal** çekirdek ayırma indirimi, faturalandırma bağlamınızın içindeki aboneliklerde çalışan PostgreSQL sunucuları Için Azure veritabanı 'na uygulanır. Kurumsal müşteriler için, paylaşılan kapsam kayıt içindedir ve kayıt dahilindeki tüm abonelikleri içerir. Kullandıkça Öde müşterileri için paylaşılan kapsam, hesap yöneticisi tarafından oluşturulan tüm Kullandıkça Öde abonelikleridir.</br></br> **Tek abonelik**, sanal çekirdek ayırma indirimi Bu abonelikteki PostgreSQL Için Azure veritabanı sunucularına uygulanır. </br></br> **Tek kaynak grubu**, ayırma indirimi seçili abonelikteki PostgreSQL sunucuları Için Azure veritabanı ve bu abonelikteki seçili kaynak grubu için geçerlidir.
-| Bölge | PostgreSQL için Azure veritabanı 'nın kapsamına giren Azure bölgesi ayrılmış kapasite ayırması.
+| Region | PostgreSQL için Azure veritabanı 'nın kapsamına giren Azure bölgesi ayrılmış kapasite ayırması.
 | Dağıtım türü | Ayırmasını satın almak istediğiniz PostgreSQL için Azure veritabanı kaynak türü.
 | Performans katmanı | PostgreSQL için Azure veritabanı sunucularına yönelik hizmet katmanı.
 | Süre | Bir yıl

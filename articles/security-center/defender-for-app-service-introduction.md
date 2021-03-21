@@ -8,10 +8,10 @@ ms.topic: overview
 ms.service: security-center
 manager: rkarlin
 ms.openlocfilehash: ec4ac5d355266a46b33d89fd25c2665493773f5d
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102100823"
 ---
 # <a name="protect-your-web-apps-and-apis"></a>Web uygulamalarınızı ve API 'lerinizi koruma
@@ -36,7 +36,7 @@ Azure App Service planınızı App Service Azure Defender ile korumak için şun
 | Yayın durumu:               | Genel kullanılabilirlik (GA)                                                                                                                                                                      |
 | Fiyat                     | [App Service Için Azure Defender](azure-defender.md) , [Güvenlik Merkezi fiyatlandırması](https://azure.microsoft.com/pricing/details/security-center/) 'nda gösterildiği gibi faturalandırılır<br>Faturalandırma, tüm planlardaki toplam işlem örneklerine göre belirlenir       |
 | Desteklenen App Service planları: | [Tüm App Service planları](https://azure.microsoft.com/pricing/details/app-service/plans/) [, tüketim planındaki Azure işlevleri](../azure-functions/functions-scale.md)dışında desteklenir. |
-| Larının                      | ![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)                                                     |
+| Larının                      | ![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![No](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)                                                     |
 |                              |                                                                                                                                                                                                |
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-app-service"></a>App Service için Azure Defender 'ın avantajları nelerdir?

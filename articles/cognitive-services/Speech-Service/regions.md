@@ -12,10 +12,10 @@ ms.date: 08/20/2020
 ms.author: panosper
 ms.custom: seodec18,references_regions
 ms.openlocfilehash: 646d29e72b91cd6afcde8e70ad8fd8715442b88e
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98786804"
 ---
 # <a name="speech-service-supported-regions"></a>Konuşma hizmeti tarafından desteklenen bölgeler
@@ -50,7 +50,7 @@ Konuşma hizmeti, **konuşma tanıma**, **metinden konuşmaya** ve **çeviri** i
 
 Konuşma SDK 'Sı aracılığıyla **Amaç tanıma** için kullanılabilir bölgeler şunlardır:
 
-| Genel bölge | Bölge           | Bölge tanımlayıcısı |
+| Genel bölge | Region           | Bölge tanımlayıcısı |
 | ------------- | ---------------- | -------------------- |
 | Asya          | Doğu Asya        | `eastasia`           |
 | Asya          | Güneydoğu Asya   | `southeastasia`      |
@@ -71,7 +71,7 @@ Bu, [Language Understanding hizmeti (Luo)](../luis/luis-reference-regions.md)tar
 
 [Konuşma SDK 'sı](speech-sdk.md) , bu bölgelerde [doğrudan hat konuşmayı](./direct-line-speech.md) kullanarak **sesli yardımcı** yeteneklerini destekler:
 
-| Genel bölge | Bölge           | Bölge tanımlayıcısı    |
+| Genel bölge | Region           | Bölge tanımlayıcısı    |
 | ------------- | ---------------- | -------------------- |
 | Kuzey Amerika | Batı ABD          | `westus`             |
 | Kuzey Amerika | Batı ABD 2        | `westus2`            |

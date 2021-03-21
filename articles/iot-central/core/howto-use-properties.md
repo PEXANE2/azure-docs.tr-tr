@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 36329987e510372ff286a10584a115ea259afc60
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98119093"
 ---
 # <a name="use-properties-in-an-azure-iot-central-solution"></a>Azure IoT Central çözümünde özellikleri kullanma
@@ -35,7 +35,7 @@ Aşağıdaki tabloda bir özellik yeteneği için yapılandırma ayarları göst
 | Alan           | Açıklama                                                                                                                                                                                                                        |
 |-----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Görünen ad    | Panolar ve formlarda kullanılan özellik değeri için görünen ad.                                                                                                                                                              |
-| Ad            | Özelliğin adı. Azure IoT Central, görünen adından Bu alan için bir değer oluşturur, ancak gerekirse kendi değerini seçebilirsiniz. Bu alan alfasayısal olmalıdır.  Cihaz kodu bu **ad** değerini kullanır.           |
+| Name            | Özelliğin adı. Azure IoT Central, görünen adından Bu alan için bir değer oluşturur, ancak gerekirse kendi değerini seçebilirsiniz. Bu alan alfasayısal olmalıdır.  Cihaz kodu bu **ad** değerini kullanır.           |
 | Yetenek türü | Özelliði.                                                                                                                                                                                                                          |
 | Anlam türü   | Özelliğin sıcaklık, durum veya olay gibi anlam türü. Anlamsal tür seçimi aşağıdaki alanlardan hangisinin kullanılabildiğini belirler.                                                                       |
 | Şema          | Double, String veya Vector gibi özellik veri türü. Kullanılabilir seçimler anlamsal tür tarafından belirlenir. Şema, olay ve durum anlam türleri için kullanılamaz.                                               |

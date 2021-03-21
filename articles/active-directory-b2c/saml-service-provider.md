@@ -14,10 +14,10 @@ ms.subservice: B2C
 ms.custom: fasttrack-edit
 zone_pivot_groups: b2c-policy-type
 ms.openlocfilehash: 1035f43642f3884e7cc0f6ab47e9c9afd1f29170
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102107772"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Azure AD B2C bir SAML uygulaması kaydetme
@@ -71,8 +71,8 @@ Uygulamanız ve Azure AD B2C arasında bir güven ilişkisi oluşturmak için he
 
 | Kullanım | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| SAML istek imzalama  | Hayır | Web uygulamanızda depolanan özel anahtara sahip bir sertifika, uygulamanız tarafından Azure AD B2C gönderilen SAML isteklerini imzalamak için kullanılır. Web uygulaması, ortak anahtarı SAML meta veri uç noktası aracılığıyla kullanıma sunmalıdır. Azure AD B2C, uygulama meta verilerinden ortak anahtar kullanarak SAML istek imzasını doğrular.|
-| SAML onaylama şifrelemesi  | Hayır | Web uygulamanızda depolanan özel anahtara sahip bir sertifika. Web uygulaması, ortak anahtarı SAML meta veri uç noktası aracılığıyla kullanıma sunmalıdır. Azure AD B2C, ortak anahtarı kullanarak uygulamanıza yapılan onayları şifreleyebilir. Uygulama, onay şifresini çözmek için özel anahtarı kullanır.|
+| SAML istek imzalama  | No | Web uygulamanızda depolanan özel anahtara sahip bir sertifika, uygulamanız tarafından Azure AD B2C gönderilen SAML isteklerini imzalamak için kullanılır. Web uygulaması, ortak anahtarı SAML meta veri uç noktası aracılığıyla kullanıma sunmalıdır. Azure AD B2C, uygulama meta verilerinden ortak anahtar kullanarak SAML istek imzasını doğrular.|
+| SAML onaylama şifrelemesi  | No | Web uygulamanızda depolanan özel anahtara sahip bir sertifika. Web uygulaması, ortak anahtarı SAML meta veri uç noktası aracılığıyla kullanıma sunmalıdır. Azure AD B2C, ortak anahtarı kullanarak uygulamanıza yapılan onayları şifreleyebilir. Uygulama, onay şifresini çözmek için özel anahtarı kullanır.|
 
 **Azure AD B2C sertifikaları**
 

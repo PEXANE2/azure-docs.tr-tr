@@ -10,10 +10,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: fb597cc71d228a1daaaa4e52d76b301764ff9292
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97899312"
 ---
 # <a name="monitor-vmware-solution-by-cloudsimple-activity"></a>CloudSimple etkinliğine göre VMware çözümünü izleme
@@ -54,7 +54,7 @@ Aşağıdaki bilgi sütunları uyarılar için kullanılabilir. **Sütunları D�
 | Kaynak Adı | Kaynağa atanan, özel bulut adı gibi ad. |
 | Kaynak Türü | Kaynak kategorisi: özel bulut, bulut rafı. |
 | Kaynak kimliği | Kaynağın tanımlayıcısı. |
-| Açıklama | Uyarının tetiklendiği açıklama. |
+| Description | Uyarının tetiklendiği açıklama. |
 | Onaylandı | Uyarının kabul edilip edilmeyeceğini belirtir. |
 
 ## <a name="events"></a>Ekinlikler
@@ -70,7 +70,7 @@ Aşağıdaki bilgi sütunları uyarılar için kullanılabilir. **Sütunları D�
 | Önem derecesi | Olay önem derecesi.|
 | Kaynak Adı | Kaynağa atanan, özel bulut adı gibi ad. |
 | Kaynak Türü | Kaynak kategorisi: özel bulut, bulut rafı. |
-| Açıklama | Uyarının tetiklendiği açıklama. |
+| Description | Uyarının tetiklendiği açıklama. |
 
 ## <a name="tasks"></a>Görevler
 
@@ -81,7 +81,7 @@ Aşağıdaki bilgi sütunları uyarılar için kullanılabilir. **Sütunları D�
 | Sütun | Açıklama |
 ------------ | ------------- |
 | Görev Kimliği | Görevin benzersiz tanımlayıcısı. |
-| Çalışma | Görevin gerçekleştirdiği eylem. |
+| İşlem | Görevin gerçekleştirdiği eylem. |
 | Kullanıcı | Görevi tamamlamaya yönelik Kullanıcı atandı. |
 | Kaynak Adı | Kaynağa atanan ad. |
 | Kaynak Türü | Kaynak kategorisi: özel bulut, bulut rafı. |
@@ -90,7 +90,7 @@ Aşağıdaki bilgi sütunları uyarılar için kullanılabilir. **Sütunları D�
 | End | Görevin bitiş saati. |
 | Durum | Geçerli görev durumu. |
 | Geçen Süre | Görevin tamamlanması (tamamlandıysa) veya şu anda (devam ediyorsa) alınması için geçen süre. |
-| Açıklama | Görev açıklaması. |
+| Description | Görev açıklaması. |
 
 ## <a name="audit"></a>Denetim
 
@@ -101,14 +101,14 @@ Aşağıdaki bilgi sütunları uyarılar için kullanılabilir. **Sütunları D�
 | Sütun | Açıklama |
 ------------ | ------------- |
 | Saat | Denetim girişinin saati. |
-| Çalışma | Görevin gerçekleştirdiği eylem. |
+| İşlem | Görevin gerçekleştirdiği eylem. |
 | Kullanıcı | Göreve atanan kullanıcı. |
 | Kaynak Adı | Kaynağa atanan ad. |
 | Kaynak Türü | Kaynak kategorisi: özel bulut, bulut rafı. |
 | Kaynak kimliği | Kaynağın tanımlayıcısı. |
 | Sonuç | Etkinliğin sonucu, örneğin **başarılı**. |
 | Geçen Süre | Görevin tamamlanma zamanı. |
-| Açıklama | Eylemin açıklaması. |
+| Description | Eylemin açıklaması. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

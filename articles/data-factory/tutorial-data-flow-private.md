@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/15/2021
 ms.openlocfilehash: a5c93244862d72f9c8ea2928c41e699302b1752b
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98249452"
 ---
 # <a name="transform-data-securely-by-using-mapping-data-flow"></a>Eşleme veri akışını kullanarak verileri güvenli bir şekilde dönüştürme
@@ -33,7 +33,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 > * İşlem hattında test çalıştırması yapma.
 > * Veri akışı etkinliğini izleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 * **Azure depolama hesabı**. Data Lake Storage *kaynak* ve *Havuz* veri depoları olarak kullanırsınız. Depolama hesabınız yoksa, oluşturma adımları için bkz. [Azure depolama hesabı oluşturma](../storage/common/storage-account-create.md?tabs=azure-portal). *Depolama hesabının yalnızca seçili ağlardan erişime izin verdiğinden emin olun.* 
@@ -126,7 +126,7 @@ Bu adımda, Data Lake Storage 2. kaynak olarak ayarlarsınız.
 
     ![Etkileşimli yazma gösteren ekran görüntüsü.](./media/tutorial-data-flow-private/interactive-authoring.png)
 
-1. **Bağlantıyı Sına**' yı seçin. Depolama hesabı özel bir uç noktanın oluşturulması ve onaylanması gerekmeden bu hesaba erişimi etkinleştirmediğinden başarısız olması gerekir. Hata iletisinde, yönetilen özel uç nokta oluşturmak için izleyebileceğiniz özel bir uç nokta oluşturmak için bir bağlantı görmeniz gerekir. Alternatif olarak, **Yönet** sekmesine doğrudan gitmeniz ve yönetilen özel uç nokta oluşturmak için [Bu bölümdeki](#create-a-managed-private-endpoint) yönergeleri izlemeniz önemlidir.
+1. **Bağlantıyı sına**’yı seçin. Depolama hesabı özel bir uç noktanın oluşturulması ve onaylanması gerekmeden bu hesaba erişimi etkinleştirmediğinden başarısız olması gerekir. Hata iletisinde, yönetilen özel uç nokta oluşturmak için izleyebileceğiniz özel bir uç nokta oluşturmak için bir bağlantı görmeniz gerekir. Alternatif olarak, **Yönet** sekmesine doğrudan gitmeniz ve yönetilen özel uç nokta oluşturmak için [Bu bölümdeki](#create-a-managed-private-endpoint) yönergeleri izlemeniz önemlidir.
 
 1. İletişim kutusunu açık tutun ve depolama hesabınıza gidin.
 

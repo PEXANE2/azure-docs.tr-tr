@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/22/2020
 ms.author: apimpm
 ms.openlocfilehash: f66395b1e0f45f1e80cd0ac93bf8c9ae8674a0f2
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98732971"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Azure İşlev Uygulamasını Azure API Management'da API olarak içeri aktarma
@@ -35,7 +35,7 @@ Bu makale, Azure İşlev Uygulamalarını Azure API Management'a API olarak akta
 > * Azure portalında API’yi test etme
 > * API'yi geliştirici portalında test etme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Azure API Management örneği oluşturma](get-started-create-service-instance.md) hızlı başlangıcını tamamlayın.
 * Aboneliğinizde bir Azure İşlevleri uygulaması bulunduğundan emin olun. Daha fazla bilgi için bkz. [Azure İşlev Uygulaması oluşturma](../azure-functions/functions-get-started.md). Uygulamanın HTTP tetikleyicili İşlevler içermesi ve yetkilendirme düzeyinin *Anonim* veya *İşlev* olarak ayarlanması gerekir.

@@ -12,10 +12,10 @@ ms.author: sashan
 ms.reviewer: sstein
 ms.date: 01/20/2021
 ms.openlocfilehash: 5f9e7e1c96db2b60e41fe0ded69ea562cf8fcea6
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98663994"
 ---
 # <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>Salt okuma sorgusu iş yüklerini boşaltmak için salt okuma çoğaltmaları kullanın
@@ -135,7 +135,7 @@ Aşağıdaki yöntemleri kullanarak, Premium veya İş Açısından Kritik hizme
 > [!NOTE]
 > Tek veritabanları ve elastik havuz veritabanları için, okuma ölçeğini devre dışı bırakma özelliği geriye dönük uyumluluk için sağlanır. İş Açısından Kritik yönetilen örneklerde okuma ölçeği genişletme devre dışı bırakılamaz.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Veritabanı **yapılandırma** dikey penceresinde okuma ölçeği genişletme ayarını yönetebilirsiniz.
 

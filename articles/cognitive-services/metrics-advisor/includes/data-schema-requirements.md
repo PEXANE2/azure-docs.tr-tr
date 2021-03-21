@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 09/10/2020
 ms.author: mbullwin
 ms.openlocfilehash: 4c55c25621df1925b6ed6c374d8af88551eb1e46
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96231438"
 ---
 Ölçüm Danışmanı, zaman serisi anomali algılama, tanılama ve analizler için bir hizmettir. AI destekli bir hizmet olarak, kullanılan modeli eğitebilmeniz için verilerinizi kullanır. Hizmet, toplanan verilerin tablolarını aşağıdaki sütunlara sahip olarak kabul eder:

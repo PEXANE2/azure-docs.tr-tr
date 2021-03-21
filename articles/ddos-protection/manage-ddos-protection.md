@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
 ms.openlocfilehash: 336eeee7d522647d11f55a65dc9dc4e65e8b7d47
-ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100535250"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard"></a>Hızlı başlangıç: Azure DDoS koruma standardı oluşturma ve yapılandırma
@@ -83,16 +83,16 @@ Bu [ilke](https://aka.ms/ddosvnetpolicy) , DDoS koruma standardı etkin olmayan 
 
 İlk olarak, DDoS koruma planınızın ayrıntılarını kontrol edin:
 
-1. Portalın sol tarafındaki **tüm hizmetler** ' i seçin.
+1. Portalın sol üst kısmında **Tüm hizmetler**'i seçin.
 2. **Filtre** kutusuna *DDoS* girin. **DDoS koruma planları** sonuçlarda görüntülendiğinde, bunu seçin.
 3. Listeden DDoS koruması planınızı seçin.
 
 _Myvnet_ sanal ağının listelenmesi gerekir. 
 
-### <a name="view-protected-resources"></a>Korumalı kaynakları görüntüle
+### <a name="view-protected-resources"></a>Korumalı kaynakları görüntüleme
 **Korunan kaynaklar** altında, korumalı sanal ağlarınızı ve genel IP adreslerini görüntüleyebilir veya DDoS koruma planınıza daha fazla sanal ağ ekleyebilirsiniz:
 
-![Korumalı kaynakları görüntüle](./media/manage-ddos-protection/ddos-protected-resources.png)
+![Korumalı kaynakları görüntüleme](./media/manage-ddos-protection/ddos-protected-resources.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

@@ -4,17 +4,17 @@ description: Bağlantılı şablonlar içeren bir şablon spec oluşturmayı ö�
 ms.topic: conceptual
 ms.date: 01/05/2021
 ms.openlocfilehash: e5725ece165f5716480afbcb4ef9098274c09993
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97900646"
 ---
 # <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>Öğretici: bağlı şablonlar ile şablon belirtimi oluşturma (Önizleme)
 
 Ana şablon ve [bağlantılı şablon](linked-templates.md#linked-template)ile [şablon spec](template-specs.md) oluşturmayı öğrenin. ARM şablonlarını kuruluşunuzdaki diğer kullanıcılarla paylaşmak için şablon özelliklerini kullanırsınız. Bu makalede, `relativePath` [dağıtım kaynağının](/azure/templates/microsoft.resources/deployments)özelliğini kullanarak ana şablonu ve bağlı şablonlarını paketlemek için bir şablon belirtiminin nasıl oluşturulacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 

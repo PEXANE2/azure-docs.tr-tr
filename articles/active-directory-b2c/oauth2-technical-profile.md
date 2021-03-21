@@ -12,10 +12,10 @@ ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: f79360269c19f6770fa12120ec34497b29015e7e
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99050694"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde bir OAuth2 teknik profili tanımlama
@@ -80,29 +80,29 @@ Teknik profil, kimlik sağlayıcısı tarafından döndürülmeyen talepleri de 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
 | client_id | Yes | Kimlik sağlayıcısının uygulama tanımlayıcısı. |
-| Idtokenaudience | Hayır | İd_token kitlesi. Belirtilmişse Azure AD B2C, belirtecin kimlik sağlayıcısı tarafından döndürülen bir talep içinde olup olmadığını denetler ve belirtilen değere eşittir. |
+| Idtokenaudience | No | İd_token kitlesi. Belirtilmişse Azure AD B2C, belirtecin kimlik sağlayıcısı tarafından döndürülen bir talep içinde olup olmadığını denetler ve belirtilen değere eşittir. |
 | authorization_endpoint | Yes | RFC 6749 başına yetkilendirme uç noktasının URL 'SI. |
 | AccessTokenEndpoint | Yes | RFC 6749 başına belirteç uç noktasının URL 'SI. |
 | ClaimsEndpoint | Yes | RFC 6749 başına Kullanıcı bilgileri uç noktasının URL 'SI. |
 | end_session_endpoint | Yes | Son oturum uç noktasının RFC 6749 başına URL 'SI. |
-| Accesstokenresponsebiçimi | Hayır | Erişim belirteci uç noktası çağrısının biçimi. Örneğin, Facebook bir HTTP GET yöntemi gerektirir, ancak erişim belirteci yanıtı JSON biçimindedir. |
-| AdditionalRequestQueryParameters | Hayır | Ek istek sorgu parametreleri. Örneğin, kimlik sağlayıcınıza ek parametreler göndermek isteyebilirsiniz. Virgül sınırlayıcısı kullanarak birden çok parametre ekleyebilirsiniz. |
-| ClaimsEndpointAccessTokenName | Hayır | Erişim belirteci sorgu dizesi parametresinin adı. Bazı kimlik sağlayıcılarının talep uç noktaları HTTP isteği al 'ı destekler. Bu durumda, taşıyıcı belirteci Yetkilendirme üstbilgisi yerine bir sorgu dizesi parametresi kullanılarak gönderilir. Varsayılan değer: `access_token` . |
-| ClaimsEndpointFormatName | Hayır | Biçim sorgu dizesi parametresinin adı. Örneğin, `format` Bu adı bu LinkedIn talep uç noktasında olduğu gibi ayarlayabilirsiniz `https://api.linkedin.com/v1/people/~?format=json` . |
-| ClaimsEndpointFormat | Hayır | Biçim sorgusu dize parametresinin değeri. Örneğin, değeri `json` Bu LinkedIn talep uç noktasında olarak ayarlayabilirsiniz `https://api.linkedin.com/v1/people/~?format=json` . |
-| Yataertokentransmissionmethod | Hayır | Belirtecin nasıl gönderileceğini belirtir. Varsayılan yöntem bir sorgu dizesidir. Belirteci bir istek üst bilgisi olarak göndermek için, olarak ayarlayın `AuthorizationHeader` . |
-| Adı | Hayır | Kimlik sağlayıcısının adı. |
-| response_mode | Hayır | Kimlik sağlayıcısının sonucu Azure AD B2C geri göndermek için kullandığı yöntem. Olası değerler: `query` , `form_post` (varsayılan) veya `fragment` . |
-| scope | Hayır | OAuth2 Identity Provider belirtimine göre tanımlanan isteğin kapsamı. `openid`, Ve gibi `profile` `email` . |
-| HttpBinding | Hayır | Erişim belirtecine ve talep belirteci uç noktalarına beklenen HTTP bağlaması. Olası değerler: `GET` veya `POST` .  |
-| ResponseErrorCodeParamName | Hayır | HTTP 200 (Tamam) üzerinden döndürülen hata iletisini içeren parametrenin adı. |
-| Extraparamsınaccesstokenendpointresponse | Hayır | Bazı kimlik sağlayıcıları tarafından **Accesstokenendpoint** yanıtı içinde döndürülebilecek ek parametreleri içerir. Örneğin, **Accesstokenendpoint** yanıtı `openid` , bir **claimsendpoint** istek sorgu dizesinde access_token yanı sıra zorunlu bir parametre olan gibi ek bir parametre içerir. Birden çok parametre adının kaçılması ve virgül ', ' sınırlayıcısı ile ayrılması gerekir. |
-| ExtraParamsInClaimsEndpointRequest | Hayır | Bazı kimlik sağlayıcıları tarafından **Claimsendpoint** isteğine döndürülebilecek ek parametreleri içerir. Birden çok parametre adının kaçılması ve virgül ', ' sınırlayıcısı ile ayrılması gerekir. |
-| IncludeClaimResolvingInClaimsHandling  | Hayır | Giriş ve çıkış talepleri için, [talep çözümlemenin](claim-resolver-overview.md) teknik profile dahil edilip edilmeyeceğini belirtir. Olası değerler: `true` , veya `false` (varsayılan). Teknik profilde bir talep çözümleyici kullanmak istiyorsanız, bunu olarak ayarlayın `true` . |
-| ResolveJsonPathsInJsonTokens  | Hayır | Teknik profilin JSON yollarını çözümleyip çözmeyeceğini gösterir. Olası değerler: `true` , veya `false` (varsayılan). İç içe geçmiş bir JSON öğesinden veri okumak için bu meta verileri kullanın. Bir [Outputclaim](technicalprofiles.md#output-claims)'de, öğesini `PartnerClaimType` ÇıKTıSıNı almak istediğiniz JSON yolu öğesine ayarlayın. Örneğin: `firstName.localized` , veya `data.0.to.0.email` .|
-|token_endpoint_auth_method| Hayır| Azure AD B2C, kimlik doğrulama üst bilgisini belirteç uç noktasına nasıl göndereceğini belirtir. Olası değerler: `client_secret_post` (varsayılan) ve `client_secret_basic` (Genel Önizleme). Daha fazla bilgi için bkz. [OpenID Connect istemci kimlik doğrulaması bölümü](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication). |
-|SingleLogoutEnabled| Hayır| Teknik profilde oturum açma sırasında, federal kimlik sağlayıcılarının oturumunu açmaya çalışıp çalışmadığını belirtir. Daha fazla bilgi için bkz. [oturum oturumunu Azure AD B2C](session-behavior.md#sign-out). Olası değerler: `true` (varsayılan) veya `false` .|
-| Usepolicınredirecturi | Hayır | Yeniden yönlendirme URI 'SI oluşturulurken bir ilke kullanılıp kullanılmayacağını belirtir. Uygulamanızı kimlik sağlayıcısında yapılandırdığınızda, yeniden yönlendirme URI 'sini belirtmeniz gerekir. Yeniden yönlendirme URI 'SI Azure AD B2C, ' a işaret eder `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp` . Belirtirseniz `true` , kullandığınız her ilke için bir yeniden yönlendirme URI 'si eklemeniz gerekir. Örneğin: `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/{policy-name}/oauth2/authresp`. |
+| Accesstokenresponsebiçimi | No | Erişim belirteci uç noktası çağrısının biçimi. Örneğin, Facebook bir HTTP GET yöntemi gerektirir, ancak erişim belirteci yanıtı JSON biçimindedir. |
+| AdditionalRequestQueryParameters | No | Ek istek sorgu parametreleri. Örneğin, kimlik sağlayıcınıza ek parametreler göndermek isteyebilirsiniz. Virgül sınırlayıcısı kullanarak birden çok parametre ekleyebilirsiniz. |
+| ClaimsEndpointAccessTokenName | No | Erişim belirteci sorgu dizesi parametresinin adı. Bazı kimlik sağlayıcılarının talep uç noktaları HTTP isteği al 'ı destekler. Bu durumda, taşıyıcı belirteci Yetkilendirme üstbilgisi yerine bir sorgu dizesi parametresi kullanılarak gönderilir. Varsayılan değer: `access_token` . |
+| ClaimsEndpointFormatName | No | Biçim sorgu dizesi parametresinin adı. Örneğin, `format` Bu adı bu LinkedIn talep uç noktasında olduğu gibi ayarlayabilirsiniz `https://api.linkedin.com/v1/people/~?format=json` . |
+| ClaimsEndpointFormat | No | Biçim sorgusu dize parametresinin değeri. Örneğin, değeri `json` Bu LinkedIn talep uç noktasında olarak ayarlayabilirsiniz `https://api.linkedin.com/v1/people/~?format=json` . |
+| Yataertokentransmissionmethod | No | Belirtecin nasıl gönderileceğini belirtir. Varsayılan yöntem bir sorgu dizesidir. Belirteci bir istek üst bilgisi olarak göndermek için, olarak ayarlayın `AuthorizationHeader` . |
+| Adı | No | Kimlik sağlayıcısının adı. |
+| response_mode | No | Kimlik sağlayıcısının sonucu Azure AD B2C geri göndermek için kullandığı yöntem. Olası değerler: `query` , `form_post` (varsayılan) veya `fragment` . |
+| scope | No | OAuth2 Identity Provider belirtimine göre tanımlanan isteğin kapsamı. `openid`, Ve gibi `profile` `email` . |
+| HttpBinding | No | Erişim belirtecine ve talep belirteci uç noktalarına beklenen HTTP bağlaması. Olası değerler: `GET` veya `POST` .  |
+| ResponseErrorCodeParamName | No | HTTP 200 (Tamam) üzerinden döndürülen hata iletisini içeren parametrenin adı. |
+| Extraparamsınaccesstokenendpointresponse | No | Bazı kimlik sağlayıcıları tarafından **Accesstokenendpoint** yanıtı içinde döndürülebilecek ek parametreleri içerir. Örneğin, **Accesstokenendpoint** yanıtı `openid` , bir **claimsendpoint** istek sorgu dizesinde access_token yanı sıra zorunlu bir parametre olan gibi ek bir parametre içerir. Birden çok parametre adının kaçılması ve virgül ', ' sınırlayıcısı ile ayrılması gerekir. |
+| ExtraParamsInClaimsEndpointRequest | No | Bazı kimlik sağlayıcıları tarafından **Claimsendpoint** isteğine döndürülebilecek ek parametreleri içerir. Birden çok parametre adının kaçılması ve virgül ', ' sınırlayıcısı ile ayrılması gerekir. |
+| IncludeClaimResolvingInClaimsHandling  | No | Giriş ve çıkış talepleri için, [talep çözümlemenin](claim-resolver-overview.md) teknik profile dahil edilip edilmeyeceğini belirtir. Olası değerler: `true` , veya `false` (varsayılan). Teknik profilde bir talep çözümleyici kullanmak istiyorsanız, bunu olarak ayarlayın `true` . |
+| ResolveJsonPathsInJsonTokens  | No | Teknik profilin JSON yollarını çözümleyip çözmeyeceğini gösterir. Olası değerler: `true` , veya `false` (varsayılan). İç içe geçmiş bir JSON öğesinden veri okumak için bu meta verileri kullanın. Bir [Outputclaim](technicalprofiles.md#output-claims)'de, öğesini `PartnerClaimType` ÇıKTıSıNı almak istediğiniz JSON yolu öğesine ayarlayın. Örneğin: `firstName.localized` , veya `data.0.to.0.email` .|
+|token_endpoint_auth_method| No| Azure AD B2C, kimlik doğrulama üst bilgisini belirteç uç noktasına nasıl göndereceğini belirtir. Olası değerler: `client_secret_post` (varsayılan) ve `client_secret_basic` (Genel Önizleme). Daha fazla bilgi için bkz. [OpenID Connect istemci kimlik doğrulaması bölümü](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication). |
+|SingleLogoutEnabled| No| Teknik profilde oturum açma sırasında, federal kimlik sağlayıcılarının oturumunu açmaya çalışıp çalışmadığını belirtir. Daha fazla bilgi için bkz. [oturum oturumunu Azure AD B2C](session-behavior.md#sign-out). Olası değerler: `true` (varsayılan) veya `false` .|
+| Usepolicınredirecturi | No | Yeniden yönlendirme URI 'SI oluşturulurken bir ilke kullanılıp kullanılmayacağını belirtir. Uygulamanızı kimlik sağlayıcısında yapılandırdığınızda, yeniden yönlendirme URI 'sini belirtmeniz gerekir. Yeniden yönlendirme URI 'SI Azure AD B2C, ' a işaret eder `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp` . Belirtirseniz `true` , kullandığınız her ilke için bir yeniden yönlendirme URI 'si eklemeniz gerekir. Örneğin: `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/{policy-name}/oauth2/authresp`. |
 
 ## <a name="cryptographic-keys"></a>Şifreleme anahtarları
 

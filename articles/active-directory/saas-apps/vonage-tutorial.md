@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/24/2020
 ms.author: jeedes
 ms.openlocfilehash: e42dc6036d7ad44f1bbb15fc3af28c487ee67640
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98733511"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-vonage"></a>Öğretici: Vonage ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -26,7 +26,7 @@ Bu öğreticide, Vonage 'i Azure Active Directory (Azure AD) ile tümleştirmeyi
 * Kullanıcılarınızın Azure AD hesaplarıyla VNET 'e otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 

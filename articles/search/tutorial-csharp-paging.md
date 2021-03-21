@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 01/26/2021
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: bad4bc4d0016b2898b315bfb9799dc8972be7b12
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98785878"
 ---
 # <a name="tutorial-add-paging-to-search-results-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak arama sonuçlarına sayfalama ekleme
@@ -35,7 +35,7 @@ Bu öğreticide geliştirdiğiniz kodun tamamlanmış sürümleri aşağıdaki p
 
 * [2B-Ekle-sonsuz-kaydırma (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/2b-add-infinite-scroll)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [1-temel arama sayfası (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/1-basic-search-page) projesi. Bu proje, önceki öğreticiden ya da GitHub 'dan bir kopyadan oluşturulmuş kendi sürümünüz olabilir.
 
@@ -55,7 +55,7 @@ Sistem, en sol ve en sağdaki sayfa numarası düğmelerini özel olarak değerl
 
 Temel arama sayfası çözümünün açık olmasını sağlayabilirsiniz.
 
-1. SearchData.cs model dosyasını açın.
+1. SearchData. cs model dosyasını açın.
 
 1. Sayfalandırmayı desteklemek için genel değişkenler ekleyin. MVC 'de, genel değişkenler kendi statik sınıfında bildirilmiştir. **Resultsperpage** sayfa başına sonuç sayısını ayarlar. **Maxpagerange** görünümdeki görünür sayfa numaralarının sayısını belirler. **Pagerangedelta** , en sol veya en sağdaki sayfa numarası seçildiğinde kaç sayfanın sola veya sağa kaydırılacağı belirler. Genellikle bu ikinci sayı **Maxpagerange**'un yarısı etrafında. Aşağıdaki kodu ad alanına ekleyin.
 
@@ -223,7 +223,7 @@ Temel arama sayfası çözümünün açık olmasını sağlayabilirsiniz.
 
 ### <a name="add-a-page-action-to-the-controller"></a>Denetleyiciye bir sayfa eylemi ekleyin
 
-1. HomeController.cs dosyasını açın ve **Pageasync** eylemini ekleyin. Bu eylem, seçili sayfa seçeneklerinin herhangi birine yanıt verir.
+1. HomeController. cs dosyasını açın ve **Pageasync** eylemini ekleyin. Bu eylem, seçili sayfa seçeneklerinin herhangi birine yanıt verir.
 
     ```csharp
     public async Task<ActionResult> PageAsync(SearchData model)
@@ -413,7 +413,7 @@ Sonsuz kaydırma uygulamak için, sayfa numarası kaydırma öğelerinden herhan
 
 ### <a name="add-paging-fields-to-the-model"></a>Modele disk belleği alanları ekleme
 
-1. İlk olarak, **Searchdata** sınıfına (SearchData.cs model dosyasında) bir **sayfalama** özelliği ekleyin.
+1. İlk olarak, **searchdata** sınıfına (searchdata. cs model dosyasında) bir **sayfalama** özelliği ekleyin.
 
     ```csharp
     // Record if the next page is requested.

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: Zhchia
 ms.openlocfilehash: e67c3157f1d354fe79b2e4bb4b6e822aaf3e7506
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98731400"
 ---
 # <a name="tutorial-configure-blink-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için yanıp sönme 'yi yapılandırma
@@ -27,7 +27,7 @@ Bu öğreticinin amacı, Azure AD 'yi otomatik olarak sağlamak ve devre dışı
 >
 > Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 

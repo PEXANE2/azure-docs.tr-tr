@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
 ms.openlocfilehash: 360da015f012822593dbb6390cb7df0017ba85b1
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96745086"
 ---
 # <a name="run-a-custom-container-in-azure"></a>Azure 'da özel kapsayıcı çalıştırma
@@ -34,7 +34,7 @@ Bu öğreticiyi tamamlamak için:
 - <a href="/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">Windows kapsayıcılarını çalıştırmak için Docker’a geçiş yapın</a>.
 - **ASP.net ve Web geliştirme** ve **Azure geliştirme** Iş yükleriyle <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> ' i yükledikten sonra. Visual Studio 2019 zaten yüklüyse:
 
-    - **Help**  >  **Güncelleştirmeler için yardım denetimi**' ni seçerek en son güncelleştirmeleri Visual Studio 'ya yükler.
+    -   >  **Güncelleştirmeler için yardım denetimi**' ni seçerek en son güncelleştirmeleri Visual Studio 'ya yükler.
     - **Araçlar**  >  **Al araçlar ve Özellikler ' i** seçerek iş yüklerini Visual Studio 'da ekleyin.
 
 ## <a name="create-an-aspnet-web-app"></a>ASP.NET web uygulaması oluşturma
@@ -63,7 +63,7 @@ Aşağıdaki adımları izleyerek bir ASP.NET Web uygulaması oluşturun:
    FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-ltsc2019
    ```
 
-1. **Debug**  >  Web uygulamasını yerel olarak çalıştırmak için Visual Studio menüsünden hata ayıklama **olmadan Başlat** ' ı seçin.
+1.   >  Web uygulamasını yerel olarak çalıştırmak için Visual Studio menüsünden hata ayıklama **olmadan Başlat** ' ı seçin.
 
    ![Uygulamayı yerel olarak çalıştırma](./media/quickstart-custom-container/local-web-app.png)
 
@@ -161,7 +161,7 @@ Akışı yapılan günlükler şuna benzer:
 
 1. Yayımlama sayfasında **Yayımla**’yı seçin ve yayımlama işleminin tamamlanmasını bekleyin.
 
-1. App Service’in Docker Hub’dan yeni görüntüyü çekmesini istemek için uygulamayı yeniden başlatın. Portalda uygulama sayfasına dönün, Evet ' **e tıklayın**  >  **Yes**.
+1. App Service’in Docker Hub’dan yeni görüntüyü çekmesini istemek için uygulamayı yeniden başlatın. Portalda uygulama sayfasına dönün, Evet ' **e tıklayın**  >  .
 
    ![Azure’da web uygulamasını yeniden başlatma](./media/quickstart-custom-container/portal-restart-app.png)
 
@@ -186,7 +186,7 @@ Linux üzerinde App Service, Linux üzerinde .NET, PHP, Node.js ve diğerleri gi
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Bir [Azure hesabı](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-docker-extension&mktingSource=vscode-tutorial-docker-extension)
+* [Azure hesabı](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-docker-extension&mktingSource=vscode-tutorial-docker-extension)
 * [Docker](https://www.docker.com/community-edition)
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Vs Code için Azure App Service uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice). Bu uzantıyı Azure platformunda bir hizmet olarak (PaaS) Linux Web Apps oluşturmak, yönetmek ve dağıtmak için kullanabilirsiniz.
