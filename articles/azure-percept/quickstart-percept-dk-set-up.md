@@ -5,208 +5,195 @@ author: mimcco
 ms.author: mimcco
 ms.service: azure-percept
 ms.topic: quickstart
-ms.date: 02/15/2021
+ms.date: 03/17/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 49bf89d38edef6a9186cbdb5bb89a763339385b4
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 9567ec2458a01825568cb853728f71db10228ee3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175830"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104608303"
 ---
 # <a name="set-up-your-azure-percept-dk-and-deploy-your-first-ai-model"></a>Azure Percept DK 'yi ayarlama ve ilk AI modelinizi dağıtma
 
-Cihazınızı Azure 'a bağlamak ve ilk AI modelinizi dağıtmak için Azure Percept DK kurulum deneyimini kullanarak Azure Percept DK ve Azure Percept Studio ile çalışmaya başlayın. Azure hesabınızın Azure Percept Studio ile uyumlu olduğunu doğruladıktan sonra, Azure Percept DK 'nin Edge AI kanıtı kavramlarını oluşturmak üzere yapılandırıldığından emin olmak için kurulum deneyimini tamamlayabilirsiniz.
+Geliştirme setini yapılandırmak ve ilk AI modelinizi dağıtmak için Azure Percept DK kurulum deneyimini doldurun. Azure hesabınızın Azure Percept ile uyumlu olduğunu doğruladıktan sonra şunları yapmanız gerekir:
 
-Bu hızlı başlangıç herhangi bir sorunla karşılaşırsanız, olası çözümler için [sorun giderme](./troubleshoot-dev-kit.md) kılavuzuna bakın.
+- Geliştirme setini bir Wi-Fi ağa bağlama
+- Geliştirme se'nize uzaktan erişim için SSH oturum açma ayarlama
+- Azure Percept ile kullanmak için yeni IoT Hub oluşturma
+- Geliştirme setinizi IoT Hub ve Azure hesabınıza bağlama
+
+Bu işlem sırasında herhangi bir sorunla karşılaşırsanız, olası çözümler için [Kurulum sorun giderme kılavuzuna](./how-to-troubleshoot-setup.md) bakın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Azure Percept DK.
+- Bir Azure Percept DK (Dev Kit).
 - Wi-Fi özelliğine ve bir Web tarayıcısına sahip bir Windows, Linux veya OS X tabanlı ana bilgisayar.
-- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-- Azure hesabının abonelikte "sahip" veya "katkıda bulunan" rolü olmalıdır. [Azure rol tanımları](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles#azure-roles)hakkında daha fazla bilgi edinin.
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+- Azure hesabının, abonelikte **sahip** veya **katkıda bulunan** rolü olmalıdır. Azure hesap rolünüzü denetlemek için aşağıdaki adımları izleyin. Azure rol tanımları hakkında daha fazla bilgi için [Azure rol tabanlı erişim denetimi belgelerine](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles#azure-roles)göz atın.
 
-### <a name="prerequisite-check"></a>Önkoşul denetimi
+    > [!CAUTION]
+    > Birden çok Azure hesabınız varsa, tarayıcınız kimlik bilgilerini başka bir hesaptan önbelleğe alabilir. Karışıklığı önlemek için, kullanılmayan tüm tarayıcı pencerelerini kapatmanız ve kurulum deneyimini başlatmadan önce [Azure Portal](https://portal.azure.com/) oturum açmanız önerilir. Doğru hesap ile oturum açtığınızdan emin olmak hakkında daha fazla bilgi için [Kurulum sorun giderme kılavuzu 'na](./how-to-troubleshoot-setup.md) bakın.
 
-Azure hesabınızın abonelikte bir "sahip" veya "katkıda bulunan" olup olmadığını doğrulamak için aşağıdaki adımları izleyin.
+### <a name="check-your-azure-account-role"></a>Azure hesap rolünüzü denetleyin
 
-1. Azure portal gidin ve Azure Percept Studio ile kullanmayı düşündüğünüz Azure hesabıyla oturum açın. 
+Azure hesabınızın abonelik içinde "sahip" veya "katkıda bulunan" olup olmadığını doğrulamak için şu adımları izleyin:
 
-    > [!NOTE]
-    > Birden çok Azure hesabınız varsa, tarayıcınız kimlik bilgilerini başka bir hesaptan önbelleğe alabilir. Doğru hesapta oturum açtığınızdan emin olmak hakkında daha fazla bilgi için bkz. sorun giderme kılavuzu.
+1. [Azure Portal](https://portal.azure.com/) gidin ve Azure Percept ile kullanmayı düşündüğünüz Azure hesabıyla oturum açın.
 
-1. Ekranınızın sol üst köşesinden ana menüyü genişletin ve "abonelikler" e tıklayın veya giriş sayfasındaki simgeler menüsünden "abonelikler" i seçin. 
-    <!---
-    :::image type="content" source="./media/quickstart-percept-dk-setup/prereq-01-subscription.png" alt-text="supscription icon in Azure portal.":::
-    --->
-1. Listeden aboneliğinizi seçin. Aboneliğinizi listede görmüyorsanız doğru Azure hesabıyla oturum açtığınızdan emin olun. 
-    <!---
-    :::image type="content" source="./media/quickstart-percept-dk-setup/prereq-02-sub-list.png" alt-text="supscription list in Azure portal.":::
-    --->
-Yeni bir abonelik oluşturmak isterseniz, [aşağıdaki adımları](https://docs.microsoft.com/azure/cost-management-billing/manage/create-subscription)izleyin.
+1. **Abonelikler** simgesine tıklayın (sarı bir anahtar gibi görünür).
 
-1. Abonelik menüsünden "erişim denetimi (ıAM)" öğesini seçin
-1. "Erişimimi görüntüle" düğmesine tıklayın
-1. Rolü denetleyin
-    - "Okuyucu" rolünü gösteriyorsa veya rolleri görme izniniz olmadığını belirten bir ileti alırsanız, hesap rolünüzü yükseltilmiş hale getirmek için kuruluşunuzdaki gerekli süreci izlemeniz gerekir.
-    - Rolü "Owner" veya "katkıda bulunan" olarak gösteriyorsa, hesabınız Azure Percept Studio ile çalışır. 
+1. Listeden aboneliğinizi seçin. Aboneliğinizi görmüyorsanız doğru Azure hesabıyla oturum açtığınızdan emin olun. Yeni bir abonelik oluşturmak isterseniz, [aşağıdaki adımları](https://docs.microsoft.com/azure/cost-management-billing/manage/create-subscription)izleyin.
+
+1. Abonelik menüsünden **erişim denetimi (IAM)** seçeneğini belirleyin.
+1. **Erişimimi görüntüle**' ye tıklayın.
+1. Rolü denetleyin:
+    - Rolünüzün **okuyucu** olarak listelenmesi veya rolleri görme izniniz olmadığını belirten bir ileti alırsanız, hesap rolünüzü yükseltmek için kuruluşunuzdaki gerekli süreci izlemeniz gerekir.
+    - Rolünüz **sahip** veya **katkıda bulunan** olarak listeleniyorsa, hesabınız Azure Percept ile çalışır ve kurulum deneyimiyle devam edebilirsiniz.
 
 ## <a name="launch-the-azure-percept-dk-setup-experience"></a>Azure Percept DK kurulum deneyimini başlatın
 
-<!---
-> [!NOTE]
-> Connecting over ethernet? See [this how-to guide](<link needed>) for detailed instructions.
---->
-1. Ana bilgisayarınızı doğrudan Dev Kit 'in Wi-Fi erişim noktasına bağlayın. Bu, diğer herhangi bir Wi-Fi ağına bağlanmada olduğu gibi yapılır.
-    - **ağ adı**: SCZ-xxxx (burada "xxxx", dev kıt 'in Mac ağ adresinin son dört rakamı)
-    - **parola**: Dev Kit Ile gelen hoş geldiniz kartında bulunabilir
+1. Ana bilgisayarınızı doğrudan geliştirme seti Wi-Fi erişim noktasına bağlayın. Diğer bir Wi-Fi ağına bağlanma gibi, bilgisayarınızda ağ ve İnternet ayarlarını açın, aşağıdaki ağa tıklayın ve istendiğinde ağ parolasını girin:
+
+    - **Ağ adı**: Dev Kit 'in işletim sistemi sürümüne bağlı olarak, Wi-Fi erişim noktasının adı **SCZ-xxxx** veya **APD-xxxx** olur (burada "xxxx", Dev Kit 'in Mac adresinin son dört rakamı)
+    - **Parola**: Dev Kit Ile gelen hoş geldiniz kartında bulunabilir
 
     > [!WARNING]
-    > Azure Percept DK Wi-Fi erişim noktasına bağlıyken, ana bilgisayarınız Internet bağlantısını geçici olarak kaybedecektir. Etkin video konferansı çağrıları, web akışı veya diğer ağ tabanlı deneyimler, Azure Percept DK Kurulum deneyiminin 3. adımı tamamlanana kadar kesintiye uğracaktır.
+    > Azure Percept DK Wi-Fi erişim noktasına bağlıyken, ana bilgisayarınız Internet bağlantısını geçici olarak kaybedecektir. Etkin görüntülü konferans çağrıları, web akışı veya diğer ağ tabanlı deneyimler kesintiye uğracaktır.
 
-1. Geliştirme Seti 'nin Wi-Fi erişim noktasına bağlandıktan sonra, konak cihaz Azure Percept DK kurulum deneyimini yeni bir tarayıcı penceresinde otomatik olarak başlatır. Otomatik olarak açılmadığından, bir tarayıcı penceresi açıp ' ye giderek el ile başlatabilirsiniz [http://10.1.1.1](http://10.1.1.1) . 
-
-1. Azure Percept kurulum deneyimini başlatdığınıza göre, kurulum deneyimine devam etmeye hazırsınız. 
-
-    > [!NOTE]
-    > Azure Percept DK kurulum deneyimi Web hizmeti, 30 dakikalık bir süre sonra ve Kurulum deneyiminin tamamlanmasından sonra kapatılacak. Bu durumda, Dev Kit Wi-Fi erişim noktasıyla bağlantı sorunlarını önlemek için Dev Kit 'i yeniden başlatmanız önerilir.
-
-## <a name="complete-the-azure-percept-dk-setup-experience"></a>Azure Percept DK kurulum deneyimini doldurun
-
-1. Kullanmaya başlayın-hoş geldiniz ekranının **Ileri** ' ye tıklayın.
+1. Geliştirme setinin Wi-Fi erişim noktasına bağlandıktan sonra ana bilgisayar, kurulum deneyimini otomatik olarak yeni bir tarayıcı penceresinde, adres çubuğunda **. yeni. cihazınızın/** ile başlatır. Sekme otomatik olarak açılmadığından, ' ye giderek kurulum deneyimini başlatın [http://10.1.1.1](http://10.1.1.1) . Tarayıcınızın Azure Percept ile kullanmayı düşündüğünüz Azure hesabı kimlik bilgileriyle oturum açtığınızdan emin olun.
 
     :::image type="content" source="./media/quickstart-percept-dk-setup/main-01-welcome.png" alt-text="Hoş geldiniz sayfası.":::
 
-1. Wi-Fi ' y e Bağlan-ağ bağlantısı sayfasında, devkit 'nizi Wi-Fi ağınıza bağlamak için **Yeni bir WiFi ağına bağlan ' a** tıklayın.
+    > [!CAUTION]
+    > Kurulum deneyimi Web hizmeti, 30 dakikalık kullanım dışı süre sonra kapatılacak. Bu durumda, Dev Kit 'in Wi-Fi erişim noktası ile bağlantı sorunlarını önlemek için geliştirme setini yeniden başlatın.
 
-    Bu Dev Kit 'i daha önce Wi-Fi ağınıza bağladıysanız veya Wi-Fi ağınız aracılığıyla Azure Percept DK kurulum deneyimine zaten bağlandıysanız, **Atla** bağlantısına tıklayın.
+## <a name="complete-the-azure-percept-dk-setup-experience"></a>Azure Percept DK kurulum deneyimini doldurun
 
-    :::image type="content" source="./media/quickstart-percept-dk-setup/main-02-connect-to-wi-fi.png" alt-text="Wi-Fi ' a bağlanın.":::
+1. **Hoş geldiniz** ekranında **İleri** ' ye tıklayın.
 
-1. Kullanılabilir bağlantılardan Wi-Fi ağınızı seçin ve bağlayın. (Yerel Wi-Fi parolanızın olması gerekir)
+1. **Ağ bağlantısı** sayfasında, **Yeni bir WiFi ağına bağlan ' a** tıklayın.
 
-    :::image type="content" source="./media/quickstart-percept-dk-setup/main-03-select-wi-fi.png" alt-text="Wi-Fi ağını seçin."::: 
+    Dev Kit 'i Wi-Fi ağınıza zaten bağladıysanız **Atla**' ya tıklayın.
 
-1. IP adresinizi kopyalama-devkit istediğiniz ağa başarıyla bağlandıktan sonra sayfada görünen **IPv4 adresini** yazın. Bu **IP adresine bu hızlı başlangıç kılavuzunda daha sonra ihtiyacınız olacak**. 
+1. Kullanılabilir ağlar listesinden Wi-Fi ağınızı seçin ve **Bağlan**' a tıklayın. İstendiğinde ağ parolanızı girin.
+
+1. Geliştirme setiniz istediğiniz ağa başarıyla bağlandıktan sonra, sayfada Dev Kit 'e atanan IPv4 adresi görüntülenir. **Sayfada görünen IPv4 adresini yazın.** Sorun giderme ve cihaz güncelleştirmeleri için SSH üzerinden Dev Kit 'e bağlanırken IP adresine ihtiyacınız olacak.
+
+    :::image type="content" source="./media/quickstart-percept-dk-setup/main-04-success-wi-fi.png" alt-text="IP adresini kopyalayın.":::
 
     > [!NOTE]
     > IP adresi, her bir cihaz önyüklemesi ile değişebilir.
 
-    :::image type="content" source="./media/quickstart-percept-dk-setup/main-04-success-wi-fi.png" alt-text="IP adresini kopyalayın.":::
-
-1. Lisans sözleşmesini gözden geçirin ve kabul edin-lisans sözleşmesini okuyun, **Lisans sözleşmesini okudum ve kabul** ediyorum (Sözleşmenin en altına gidip gelmelidir) seçeneğini belirleyin ve **İleri**' ye tıklayın.
+1. Lisans sözleşmesini okuyun, **Lisans sözleşmesini okudum ve kabul** ediyorum ' u seçin (Sözleşmenin en altına doğru kaymanız gerekir) ve **İleri**' ye tıklayın.
 
     :::image type="content" source="./media/quickstart-percept-dk-setup/main-05-eula.png" alt-text="EULA 'Yı kabul edin.":::
 
-1. SSH oturum açma hesabınızı oluşturun-devkit 'e uzaktan erişim için SSH ayarlayın. SSH Kullanıcı adı ve parola oluşturun. 
+1. Bir SSH hesap adı ve parola girin ve **daha sonra kullanmak üzere oturum açma bilgilerinizi yazın**.
 
     > [!NOTE]
-    > SSH (Secure Shell), konak cihazla geliştirme seti arasında güvenli iletişim için kullanılan bir ağ protokolüdür. SSH hakkında daha fazla bilgi için [Bu makaleye](https://en.wikipedia.org/wiki/SSH_(Secure_Shell))bakın.
+    > SSH (Secure Shell), bir ana bilgisayar aracılığıyla Dev Kit 'e uzaktan bağlanmanızı sağlayan bir ağ protokolüdür.
 
-    :::image type="content" source="./media/quickstart-percept-dk-setup/main-06-ssh-login.png" alt-text="SSH hesabı oluşturun."::: 
+1. Azure hesabınızda yeni bir cihaz oluşturmak için bir sonraki sayfada **yeni cihaz olarak ayarla** ' ya tıklayın.
 
-1. Dev Kit bağlantı işlemini başlatın-bir sonraki ekranda, Dev Kit 'i Azure IoT Hub bağlama işlemini başlatmak için **Yeni bir cihazla Bağlan ' a** tıklayın. 
+1. Cihaz kodunuzu kopyalamak için **Kopyala** ' ya tıklayın. Daha sonra **Azure 'Da oturum aç**' a tıklayın.
 
-    <!---
-    Connecting with an existing IoT Edge device connection string? See this [how-to guide](<link needed>) for reference.
-    --->
-    :::image type="content" source="./media/quickstart-percept-dk-setup/main-07-connect-device.png" alt-text="Azure 'a bağlanın."::: 
+    :::image type="content" source="./media/quickstart-percept-dk-setup/main-08-copy-code.png" alt-text="Cihaz kodunu kopyalayın.":::
 
-1. Cihaz kodunu kopyala-cihaz kodunuzu kopyalamak için **Kopyala** bağlantısına tıklayın. Ardından **Azure 'Da oturum aç**' a tıklayın. 
+1. Yeni bir tarayıcı sekmesi, **kod girin** yazan bir pencere ile açılır. Kodu pencereye yapıştırın ve **İleri**' ye tıklayın. Kurulum deneyimiyle **hoş geldiniz** sekmesini kapatmayın.
 
-    :::image type="content" source="./media/quickstart-percept-dk-setup/main-08-copy-code.png" alt-text="Cihaz kodunu kopyalayın."::: 
+    :::image type="content" source="./media/quickstart-percept-dk-setup/main-09-enter-code.png" alt-text="Cihaz kodunu girin.":::
 
-1. Cihaz kodunu yapıştırma-yeni bir tarayıcı sekmesi, kopyalanmış Cihaz kodunu soran bir pencere ile açılır. Kodu pencereye yapıştırın ve **İleri**' ye tıklayın.
+1. Geliştirme se'iyle kullanacağınız Azure hesabı kimlik bilgilerini kullanarak Azure Percept 'de oturum açın. Tamamlandığında tarayıcı sekmesini açık bırakın.
 
-    :::image type="content" source="./media/quickstart-percept-dk-setup/main-09-enter-code.png" alt-text="Cihaz kodunu girin."::: 
-
-1. Azure 'da oturum aç-sonraki pencere, hızlı başlangıç başlangıcında doğrulamış olduğunuz Azure hesabıyla oturum açmanızı gerektirir. Bu oturum açma kimlik bilgilerini girin ve **İleri**' ye tıklayın. 
-
-    > [!NOTE]
+    > [!CAUTION]
     > Tarayıcınız diğer kimlik bilgilerini otomatik olarak önbelleğe alabilir. Doğru hesapla oturum açmak için çift kontrol edin.
 
-    :::image type="content" source="./media/quickstart-percept-dk-setup/main-10-azure-sign-in.png" alt-text="Azure 'da oturum açın.":::
- 
-1. Kurulum deneyimi tarayıcı sekmesini kapatmayın Bu adımda oturum açtıktan sonra oturum açmış olduğunuz bir ekran görüntülenir. Pencereyi birçok kapatmayı söylemekle birlikte, **herhangi bir Windows 'u kapatmadığımızda**. 
+    Cihazda% Azure 'da başarıyla oturum açtıktan sonra, kurulum deneyimine devam etmek için **hoş geldiniz** sekmesine dönün.
 
-    :::image type="content" source="./media/quickstart-percept-dk-setup/main-11-sign-in-success.png" alt-text="Oturum açma başarılı."::: 
+1. **Cihazınızı Azure IoT Hub 'ye atama** , **hoş geldiniz** sekmesinde görüntülendiğinde aşağıdaki eylemlerden birini gerçekleştirin:
 
-1. Kurulum deneyimini barındıran tarayıcı sekmesine dönün.
-1. IoT Hub seçeneğinizi belirleyin
-    - Zaten bir IoT Hub varsa ve bu sayfada listeleniyorsa, bunu seçip **17. adıma geçebilirsiniz**.
-    - Bir IoT Hub yoksa veya yeni bir tane oluşturmak istiyorsanız, listenin en altına gidin ve **yeni Azure IoT Hub oluştur ' a** tıklayın.
+    - Azure Percept ile kullanmak istediğiniz bir IoT Hub zaten varsa ve bu sayfada listelenmişse, seçin ve 15. adıma atlayın.
+    - Bir IoT Hub yoksa veya yeni bir tane oluşturmak istiyorsanız **yeni Azure IoT Hub oluştur ' a** tıklayın.
 
-    :::image type="content" source="./media/quickstart-percept-dk-setup/main-13-iot-hub-select.png" alt-text="Bir IoT Hub seçin."::: 
+    > [!IMPORTANT]
+    > Bir IoT Hub varsa ancak listede yoksa, Azure Percept 'de yanlış kimlik bilgileriyle oturum açmış olabilirsiniz. Yardım için [Kurulum sorun giderme kılavuzuna](./how-to-troubleshoot-setup.md) bakın.
 
-1. Yeni IoT Hub oluşturun – Bu sayfadaki tüm alanları doldurun. 
-    - Azure Percept Studio ile kullanacağınız Azure aboneliğini seçin
-    - Var olan bir kaynak grubunu seçin. Bunlardan biri yoksa, "Yeni oluştur" a tıklayın ve istemleri izleyin. 
-    - Azure bölgesini seçin. 
-    - Yeni IoT Hub bir ad verin
-    - Fiyatlandırma katmanını seçin (genellikle abonelikle eşleşir)
+    :::image type="content" source="./media/quickstart-percept-dk-setup/main-13-iot-hub-select.png" alt-text="Bir IoT Hub seçin.":::
 
-    :::image type="content" source="./media/quickstart-percept-dk-setup/main-14-create-iot-hub.png" alt-text="Yeni bir IoT Hub oluşturun."::: 
+1. Yeni bir IoT Hub oluşturmak için aşağıdaki alanları doldurun:
 
-1. IoT Hub dağıtılması için bekleyin, bu işlem birkaç dakika sürebilir
-
-    :::image type="content" source="./media/quickstart-percept-dk-setup/main-15-iot-hub-deploy.png" alt-text="IoT Hub dağıtın."::: 
-
-1. Geliştirme setinizi kaydetme-dağıtım tamamlandığında, **Kaydet** düğmesine tıklayın
-
-    :::image type="content" source="./media/quickstart-percept-dk-setup/main-16-iot-hub-success.png" alt-text="IoT Hub başarıyla dağıtıldı."::: 
-
-1. Geliştirme setini adlandırın-Dev Kit için bir cihaz adı girin ve **İleri**' ye tıklayın.
-
-    :::image type="content" source="./media/quickstart-percept-dk-setup/main-17-device-name.png" alt-text="Cihazı adlandırın."::: 
-
-1. Varsayılan AI modellerinin indirilmesini bekleyin – bu işlem birkaç dakika sürer
-
-    :::image type="content" source="./media/quickstart-percept-dk-setup/main-18-finalize.png" alt-text="Kurulum sonlandırılıyor."::: 
-
-1. Bkz. Vision AI in Action-devkit Azure IoT Hub başarıyla bağlandı ve varsayılan Vision AI nesne algılama modelini aldı. Azure Percept Vision kamera artık buluta bir bağlantı olmadan nesne algılamayı de daha fazla sınırlama yapabilir. 
-
-    :::image type="content" source="./media/quickstart-percept-dk-setup/main-19-2-preview-video-output.png" alt-text="Video çıkışının Önizlemesi ' ne tıklayın."::: 
-       
-    > [!NOTE]
-    > Ana bilgisayarınız için ekleme işlemi ve cihaz WiFi erişimi bağlantısı bu noktada kapanıyor, ancak Dev Kit, internet 'e bağlı kalır.   Ekleme deneyimini bir geliştirme seti yeniden başlatmasıyla yeniden başlatarak, ekleme işlemini geri dönüp cihazı aynı veya farklı bir Azure aboneliğiyle ilişkili farklı bir ıOT hub 'ına yeniden bağlamanıza olanak sağlar.
-
-    :::image type="content" source="./media/quickstart-percept-dk-setup/main-19-0-warning.png" alt-text="Kurulum deneyimi bağlantı kesme uyarısı."::: 
-
-1. Azure portal devam et – kurulum deneyimi penceresine geri dönün ve Azure Percept Studio 'da özel AI modellerinizi oluşturmaya başlamak için **Azure Portal devam et** düğmesine tıklayın.
+    - Azure Percept ile kullanacağınız Azure aboneliğini seçin.
+    - Var olan bir kaynak grubunu seçin. Bunlardan biri yoksa, **Yeni oluştur** ' a tıklayın ve istemleri izleyin.
+    - Fiziksel konumunuza en yakın Azure bölgesini seçin.
+    - Yeni IoT Hub bir ad verin.
+    - S1 (Standart) fiyatlandırma katmanını seçin.
 
     > [!NOTE]
-    > Ana bilgisayarınızın artık WiFi ayarlarınızda Dev Kit erişim noktasına bağlı olmadığını ve artık yerel WiFi 'nize yeniden bağlandığından emin olun.
+    > Edge AI uygulamalarınız için daha yüksek bir [ileti işleme](https://docs.microsoft.com/azure/iot-hub/iot-hub-scaling#message-throughput) gereksinimi varsa, IoT Hub Istediğiniz zaman Azure portalında [daha yüksek bir Standart katmana yükseltebilirsiniz](https://docs.microsoft.com/azure/iot-hub/iot-hub-upgrade) . B ve F katmanları Azure Percept 'ı desteklemez.
 
-    :::image type="content" source="./media/quickstart-percept-dk-setup/main-20-azure-portal-continue.png" alt-text="Azure Percept Studio 'ya gidin."::: 
+1. IoT Hub dağıtım birkaç dakika sürebilir. Dağıtım tamamlandığında **Kaydet**' e tıklayın.
 
-## <a name="view-your-device-in-the-azure-percept-studio-and-deploy-common-prebuilt-sample-apps"></a>Cihazınızı Azure Percept Studio 'da görüntüleyin ve ortak önceden oluşturulmuş örnek uygulamalar dağıtın
+    :::image type="content" source="./media/quickstart-percept-dk-setup/main-16-iot-hub-success.png" alt-text="IoT Hub başarıyla dağıtıldı.":::
 
-1. [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) 'ya genel bakış sayfasından cihaz listenizi görüntüleyin. Azure Percept genel bakış sayfası, hem başlangıç hem de gelişmiş AI Edge modeli ve çözüm geliştirme için birçok farklı iş akışının erişimine yönelik başlatma noktancıdır
+1. Geliştirme seti için bir cihaz adı girin ve **İleri**' ye tıklayın.
+
+1. Cihaz modüllerinin indirilmesini bekleyin; bu işlem birkaç dakika sürer.
+
+    :::image type="content" source="./media/quickstart-percept-dk-setup/main-18-finalize.png" alt-text="Kurulum sonlandırılıyor.":::
+
+1. **Cihaz kurulumunu Tamam** ' a tıkladığınızda! sayfasında, Dev Kit IoT Hub başarıyla bağlandı ve gerekli yazılımları indirdi. Geliştirme seti, bu iki bildirim ile sonuçlanan Wi-Fi erişim noktası bağlantısını otomatik olarak keser:
+
+    <!---
+    > [!NOTE]
+    > The onboarding process and connection to the device Wifi access to your host computer shuts down at this point, but your dev kit will stay connected to the internet.   You can restart the onboarding experience with a dev kit reboot, which will allow you to go back through the onboarding and reconnect the device to a different IOT hub associated with the same or a different Azure Subscription..
+    --->
+
+    :::image type="content" source="./media/quickstart-percept-dk-setup/main-19-0-warning.png" alt-text="Kurulum deneyimi bağlantı kesme uyarısı.":::
+
+1. 2. adımda, ana bilgisayarınızı devkit 'e bağlı Wi-Fi ağa bağlayın.
+
+1. **Azure Portal devam et ' e** tıklayın.
+
+    :::image type="content" source="./media/quickstart-percept-dk-setup/main-20-azure-portal-continue.png" alt-text="Azure Percept Studio 'ya gidin.":::
+
+## <a name="view-your-dev-kit-video-stream-and-deploy-a-sample-model"></a>Geliştirme Seti video akışınızı görüntüleyin ve örnek bir model dağıtın
+
+1. [Azure Percept Studio 'Ya genel bakış sayfası](https://go.microsoft.com/fwlink/?linkid=2135819) , hem başlangıç hem de GELIŞMIŞ uç AI çözüm geliştirmesi için birçok farklı iş akışının erişimine yönelik başlatma noktancıdır. Başlamak için sol menüdeki **cihazlar** ' a tıklayın.
 
     :::image type="content" source="./media/quickstart-percept-dk-setup/portal-01-get-device-list.png" alt-text="Cihaz listenizi görüntüleyin.":::
-    
-1. Yeni oluşturduğunuz cihazın bağlı olduğunu doğrulayın ve üzerine tıklayın.
+
+1. Geliştirme Seti 'nizin **bağlı** olarak listelendiğini doğrulayıp cihaz sayfasını görüntülemek için bu öğeyi tıklatın.
 
     :::image type="content" source="./media/quickstart-percept-dk-setup/portal-02-select-device.png" alt-text="Cihazınızı seçin.":::
 
-1. Geliştirme Seti kameranızın neleri gördüğünü görmek için cihaz akışınızı görüntüleyin. Varsayılan bir nesne algılama modeli, kutudan dağıtılır ve bir dizi ortak nesneyi algılar.
+1. **Cihaz akışınızı görüntüle**' ye tıklayın. Cihazınızın video akışını ilk kez görüntüleiyorsa, sağ üst köşede yeni bir modelin dağıtıldığını belirten bir bildirim görürsünüz. Bu birkaç dakika sürebilir.
 
-    > [!NOTE]
-    > Bunu yeni bir cihazda ilk kez yaptığınızda sağ üst köşede yeni bir modülün dağıtıldığını belirten bir bildirim alırsınız.  Bu işlem yapıldıktan sonra, kamerayı kamera video akışı ile başlatabilirsiniz. 
-    
     :::image type="content" source="./media/quickstart-percept-dk-setup/portal-03-1-start-video-stream.png" alt-text="Video akışınızı görüntüleyin.":::
-    
+
+    Model dağıtıldıktan sonra, bir **Görünüm akışı** bağlantısına sahip başka bir bildirim alırsınız. Azure Percept Vision kameranızdan yeni bir tarayıcı penceresinde video akışını görüntülemek için bağlantıya tıklayın. Geliştirme seti, birçok ortak nesne için otomatik olarak nesne algılamayı gerçekleştiren bir AI modeliyle önceden yüklenir.
+
     :::image type="content" source="./media/quickstart-percept-dk-setup/portal-03-2-object-detection.png" alt-text="Bkz. nesne algılama.":::
 
-1. Önceden oluşturulmuş örnek AI modellerini keşfet.   Azure Precept Studio, tek bir tıklama ile dağıtılabilecek ortak bir dizi önceden oluşturulmuş örnek içerir.   Bunları görüntülemek ve dağıtmak için "örnek model dağıt" ı seçin.
+1. Azure Percept Studio Ayrıca birçok örnek AI modeline sahiptir. Geliştirme setize örnek bir model dağıtmak için, cihaz sayfanıza geri gidin ve **örnek model Dağıt ' a** tıklayın.
 
     :::image type="content" source="./media/quickstart-percept-dk-setup/portal-04-explore-prebuilt.png" alt-text="Önceden oluşturulmuş modelleri keşfet.":::
-    
-1. Bağlı cihazınıza önceden oluşturulmuş yeni bir örnek dağıtın. Kitaplıktan bir örnek seçin ve "cihaza dağıt" a tıklayın
+
+1. Kitaplıktan bir örnek model seçin ve **cihaza dağıt**' a tıklayın.
 
     :::image type="content" source="./media/quickstart-percept-dk-setup/portal-05-2-select-journey.png" alt-text="Bkz. nesne algılama işlemi sürüyor.":::
 
+1. Model başarıyla dağıtıldıktan sonra, ekranın sağ üst köşesinde bulunan **akış görünümü** bağlantısını içeren bir bildirim görürsünüz. Model içinde sınırlama eylemini görüntülemek için, bildirimde bulunan bağlantıya tıklayın veya cihaz sayfasına dönün ve **cihaz akışınızı görüntüle**' ye tıklayın. Daha önce Dev Kit üzerinde çalışan tüm modeller artık yeni modelle birlikte kullanılacaktır.
+
+## <a name="video-walkthrough"></a>Görüntülü kılavuz
+
+Yukarıda açıklanan adımlara görsel bir anlatım için lütfen aşağıdaki videoya bakın (kurulum deneyimi 0:50 ' de başlar):
+
+</br>
+
+> [!VIDEO https://www.youtube.com/embed/-dmcE2aQkDE]
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Önceden oluşturulmuş konuşma modellerini](./tutorial-no-code-speech.md)denemek için, benzer bir akışı izleyebilirsiniz.
+> [!div class="nextstepaction"]
+> [Kod içermeyen bir Vision çözümü oluşturun](./tutorial-nocode-vision.md)

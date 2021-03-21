@@ -1,18 +1,18 @@
 ---
 title: Azure Otomasyonu için Azure Ilke mevzuat uyumluluk denetimleri
 description: Azure Otomasyonu için kullanılabilen Azure Ilke mevzuat uyumluluk denetimlerini listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızın uyumluluğunu yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 03/10/2021
+ms.date: 03/17/2021
 ms.topic: sample
 author: mgoedtel
 ms.author: magoedte
 ms.service: automation
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: b3757264a22f9323507abb26f97f11e90222e830
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: f1b0978a9a898fb523bf5f549668fbe630e19921
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102635173"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104591352"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-automation"></a>Azure Otomasyonu için Azure Ilke mevzuat uyumluluk denetimleri
 

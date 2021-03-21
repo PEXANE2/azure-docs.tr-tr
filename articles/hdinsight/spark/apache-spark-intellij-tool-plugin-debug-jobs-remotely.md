@@ -6,10 +6,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/28/2017
 ms.openlocfilehash: 1daf59c47bf71ad019011036bf42bf6727754345
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98940351"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>VPN aracılığıyla HDInsight 'ta Apache Spark uygulamalarında uzaktan hata ayıklamak için Azure Toolkit for IntelliJ kullanma
@@ -56,11 +56,11 @@ Azure HDInsight 'ta oluşturduğunuz Azure sanal ağının bir parçası olan bi
 
     ![Apache ambarı 'nda Konakları seçin](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/apache-ambari-hosts1.png)
 
-1. Baş düğümlerin, çalışan düğümlerinin ve Zookeeper düğümlerin bir listesini görürsünüz. Baş düğümlerin bir **hn** _ öneki vardır. İlk baş düğümü seçin.
+1. Baş düğümlerin, çalışan düğümlerinin ve Zookeeper düğümlerin bir listesini görürsünüz. Baş düğümlerin bir **hn*** öneki vardır. İlk baş düğümü seçin.
 
     ![Apache ambarı 'nda baş düğümü bulma](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/ambari-cluster-headnodes.png)
 
-1. Açılan sayfanın alt kısmındaki _ *Özet** bölmesinden baş düğüm ve **ana bilgisayar adının** **IP adresini** kopyalayın.
+1. Açılan sayfanın alt kısmındaki **Özet** bölmesinden baş düğümün **IP adresini** ve **ana bilgisayar** adını kopyalayın.
 
     ![Apache ambarı 'nda IP adresini bulma](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/headnode-ip-address1.png)
 

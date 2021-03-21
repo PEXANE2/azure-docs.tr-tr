@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: f47a8f1edb4afed41587eac3d539b5ad7cb8180f
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 6db817999b415ebe2c4bb7cb4216ed1e9ad9c325
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103488474"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104655997"
 ---
 # <a name="quickstart-handle-sms-events"></a>Hızlı başlangıç: SMS olaylarını Işleme
 
@@ -27,7 +27,7 @@ Iletişim Hizmetleri SMS olaylarını işlemek için Azure Event Grid kullanarak
 
 ## <a name="about-azure-event-grid"></a>Azure Event Grid hakkında
 
-[Azure Event Grid](../../../event-grid/overview.md) , bulut tabanlı bir olay hizmetidir. Bu makalede, [iletişim hizmeti olaylarına](../../concepts/event-handling.md)yönelik olaylara abone olmayı ve sonucu görüntülemek için bir olay tetiklemeyi öğreneceksiniz. Normalde olayları, olay verilerini işleyen ve eylemler gerçekleştiren bir uç noktaya gönderirsiniz. Bu makalede, iletileri toplayan ve görüntüleyen bir Web uygulamasına olay göndereceğiz.
+[Azure Event Grid](../../../event-grid/overview.md) , bulut tabanlı bir olay hizmetidir. Bu makalede, [iletişim hizmeti olaylarına](../../../event-grid/event-schema-communication-services.md)yönelik olaylara abone olmayı ve sonucu görüntülemek için bir olay tetiklemeyi öğreneceksiniz. Normalde olayları, olay verilerini işleyen ve eylemler gerçekleştiren bir uç noktaya gönderirsiniz. Bu makalede, iletileri toplayan ve görüntüleyen bir Web uygulamasına olay göndereceğiz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -68,7 +68,7 @@ Oluşturma Sihirbazı 'nı girmek için **olay aboneliği Ekle** ' ye basın.
 
 Bir **Sistem konu adı** sağlamanız istenirse, benzersiz bir dize sağlamanız yeterli. Bu alan, deneyiminizi etkilemez ve iç telemetri amaçlarıyla kullanılır.
 
-[Azure Iletişim Hizmetleri tarafından desteklenen olayların](../../concepts/event-handling.md)tam listesini inceleyin.
+[Azure Iletişim Hizmetleri tarafından desteklenen olayların](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services)tam listesini inceleyin.
 
 :::image type="content" source="./media/handle-sms-events/select-events-create-eventsub.png" alt-text="Alınan SMS ve SMS teslim raporu tarafından seçili olan olay türlerinin alındığını gösteren ekran görüntüsü.":::
 
@@ -93,7 +93,7 @@ Olay Tetikleyicilerini görüntülemek için ilk yerde olay üretmemiz gerekir.
 - `SMS Received` Iletişim Hizmetleri telefon numarası bir SMS mesajı aldığında olaylar üretilir. Bir olayı tetiklemek için, telefonunuzdan Iletişim Hizmetleri kaynağına bağlı telefon numarasına bir ileti gönderin.
 - `SMS Delivery Report Received` Iletişim Hizmetleri telefon numarası kullanarak bir kullanıcıya SMS gönderdiğinizde olaylar oluşturulur. Bir olayı tetiklemek için, `Delivery Report` [gönderilen SMS](../telephony-sms/send.md)seçeneklerinde seçeneğini etkinleştirmeniz gerekir. İle telefonunuza ileti göndermeyi deneyin `Delivery Report` . Bu eylemi tamamlamak, Azure hesabınızda birkaç ABD Doları veya daha kısa bir ücret doğurur.
 
-[Azure Iletişim Hizmetleri tarafından desteklenen olayların](../../concepts/event-handling.md)tam listesini inceleyin.
+[Azure Iletişim Hizmetleri tarafından desteklenen olayların](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services)tam listesini inceleyin.
 
 ### <a name="receiving-sms-events"></a>SMS olaylarını alma
 
@@ -103,7 +103,7 @@ Yukarıdaki iki eylemi tamamladıktan sonra, `SMS Received` `SMS Delivery Report
 
 :::image type="content" source="./media/handle-sms-events/sms-delivery-report-received.png" alt-text="SMS teslim raporu olayının Event Grid şemasını gösteren ekran görüntüsü.":::
 
-[Olay şemaları ve diğer olay kavramları](../../concepts/event-handling.md)hakkında daha fazla bilgi edinin.
+[Olay şemaları ve diğer olay kavramları](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services)hakkında daha fazla bilgi edinin.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -118,5 +118,5 @@ Bu hızlı başlangıçta SMS olaylarını nasıl kullanacağınızı öğrendin
 
 Ayrıca şunları yapmak isteyebilirsiniz:
 
- - [Olay işleme kavramları hakkında bilgi edinin](../../concepts/event-handling.md)
+ - [Olay işleme kavramları hakkında bilgi edinin](../../../event-grid/event-schema-communication-services.md)
  - [Event Grid hakkında bilgi edinin](../../../event-grid/overview.md)

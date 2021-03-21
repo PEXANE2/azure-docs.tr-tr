@@ -12,10 +12,10 @@ ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 860f167913211ee7c511e515937f29ba5bf954cf
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103491581"
 ---
 # <a name="migrate-an-owin-based-web-api-to-b2clogincom-or-a-custom-domain"></a>OWıN tabanlı Web API 'sini b2clogin.com veya özel bir etki alanına geçirme
@@ -85,7 +85,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 Bu bölümde, her iki belirteç verenin bitiş noktalarının geçerli olduğunu belirtmek için kodu güncelleştirin.
 
 1. Visual Studio 'da **B2C-WebAPI-DotNet. sln** çözümünü açın
-1. **Taskservice** projesinde, Düzenleyicinizde *taskservice \\ App_Start \\ * * Startup.auth.cs** * dosyasını açın
+1. **Taskservice** projesinde, Düzenleyicinizde *taskservice \\ App_Start \\ * * Startup. auth. cs** * dosyasını açın
 1. Aşağıdaki `using` yönergeyi dosyanın en üstüne ekleyin:
 
     `using System.Collections.Generic;`
@@ -105,7 +105,7 @@ Bu bölümde, her iki belirteç verenin bitiş noktalarının geçerli olduğunu
     };
     ```
 
-`TokenValidationParameters` , MSAL.NET tarafından sağlanır ve *Startup.auth.cs* içindeki kodun sonraki bölümünde owın ara yazılımı tarafından kullanılır. Birden çok geçerli veren belirtildiğinde, OWıN uygulama işlem hattı, her iki belirteç uç hattının de geçerli verenler olduğunu fark eder.
+`TokenValidationParameters` , MSAL.NET tarafından sağlanır ve *Başlangıç. auth. cs* içindeki kodun sonraki bölümünde owın ara yazılımı tarafından kullanılır. Birden çok geçerli veren belirtildiğinde, OWıN uygulama işlem hattı, her iki belirteç uç hattının de geçerli verenler olduğunu fark eder.
 
 ```csharp
 app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions

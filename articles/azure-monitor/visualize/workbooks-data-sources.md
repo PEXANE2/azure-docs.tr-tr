@@ -9,10 +9,10 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.openlocfilehash: 862c6c5253c1bb4481476b67c7cfb203c2568e24
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101700584"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Azure Izleyici çalışma kitapları veri kaynakları
@@ -40,7 +40,7 @@ Azure kaynakları, çalışma kitapları aracılığıyla erişilebilen [ölçü
 
 ![Çalışma kitabı ölçümleri arabiriminin ekran görüntüsü](./media/workbooks-data-sources/metrics.png)
 
-## <a name="azure-resource-graph"></a>Azure Kaynak Grafiği
+## <a name="azure-resource-graph"></a>Azure Kaynak Grafı
 
 Çalışma kitapları, Azure Kaynak Grafiği (ARG) kullanarak kaynakları ve bunların meta verilerini sorgulamayı destekler. Bu işlevsellik öncelikle raporlar için özel sorgu kapsamları oluşturmak için kullanılır. Kaynak kapsamı, bağımsız değişken tarafından desteklenen bir KQL-alt kümesi ile ifade edilir ve genellikle yaygın kullanım örnekleri için yeterlidir.
 

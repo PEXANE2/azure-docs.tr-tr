@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 12/08/2020
 ms.topic: how-to
-ms.openlocfilehash: 3693c30a34601512770f5d9071f5d786410fb00e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: cb53aba300b933c78d9ac2f5fc5cf8054f3413e3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92360386"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670010"
 ---
 # <a name="view-logs-and-metrics-using-kibana-and-grafana"></a>Kibana ve Grafana kullanarak günlükleri ve ölçümleri görüntüleme
 
@@ -22,43 +22,51 @@ Kibana ve Grafana web panoları, Azure Arc özellikli veri hizmetleri tarafında
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="retrieve-the-ip-address-of-your-cluster"></a>Kümenizin IP adresini alma
 
-Panolara erişmek için, kümenizin IP adresini almanız gerekir. Doğru IP adresini alma yöntemi, Kubernetes 'i dağıtmayı nasıl seçtiğinize bağlı olarak değişir. Sizin için doğru olanı bulmak için aşağıdaki seçeneklerde adım adım ilerleyin.
+## <a name="monitor-azure-sql-managed-instances-on-azure-arc"></a>Azure Arc 'da Azure SQL yönetilen örneklerini izleme
 
-### <a name="azure-virtual-machine"></a>Azure sanal makine
+Arc etkin SQL yönetilen örneği için günlüklere ve izleme panolarına erişmek için aşağıdaki `azdata` CLI komutunu çalıştırın
 
-Genel IP adresini almak için aşağıdaki komutu kullanın:
+```bash
 
-```azurecli
-az network public-ip list -g azurearcvm-rg --query "[].{PublicIP:ipAddress}" -o table
+azdata arc sql endpoint list -n <name of SQL instance>
+
+```
+İlgili Grafana panoları şunlardır:
+
+* "Azure SQL yönetilen örnek ölçümleri"
+* "Ana düğüm ölçümleri"
+* "Konak pods ölçümleri"
+
+
+> [!NOTE]
+>  Bir Kullanıcı adı ve parola girmeniz istendiğinde, Azure Arc veri denetleyicisi 'ni oluşturduğunuz sırada verdiğiniz kullanıcı adını ve parolayı girin.
+
+> [!NOTE]
+>  Önizlemede kullanılan sertifikalar otomatik olarak imzalanan sertifikalar olduğundan, sizden bir sertifika uyarısıyla ilgili olarak uyarılırsınız.
+
+
+## <a name="monitor-azure-database-for-postgresql-hyperscale-on-azure-arc"></a>Azure Arc 'da PostgreSQL için Azure veritabanı hiper ölçek 'i izleme
+
+PostgreSQL hiper ölçeğinde günlüklere ve izleme panolarına erişmek için aşağıdaki `azdata` CLI komutunu çalıştırın
+
+```bash
+
+azdata arc postgres endpoint list -n <name of postgreSQL instance>
+
 ```
 
-### <a name="kubeadm-cluster"></a>Kubeadm kümesi
+İlgili postgreSQL panoları şunlardır:
 
-Kümenin IP adresini almak için aşağıdaki komutu kullanın:
+* "Postgres ölçümleri"
+* "Postgres tablo ölçümleri"
+* "Ana düğüm ölçümleri"
+* "Konak pods ölçümleri"
 
-```console
-kubectl cluster-info
-```
-
-
-### <a name="aks-or-other-load-balanced-cluster"></a>AKS veya diğer yük dengeli küme
-
-Ortamınızı AKS veya diğer yük dengeli bir kümede izlemek için yönetim Proxy hizmetinin IP adresini almanız gerekir. **Dış IP** adresini almak için bu komutu kullanın:
-
-```console
-kubectl get svc mgmtproxy-svc-external -n <namespace>
-
-#Example:
-#kubectl get svc mgmtproxy-svc-external -n arc
-NAME                     TYPE           CLUSTER-IP    EXTERNAL-IP     PORT(S)           AGE
-mgmtproxy-svc-external   LoadBalancer   10.0.186.28   52.152.148.25   30777:30849/TCP   19h
-```
 
 ## <a name="additional-firewall-configuration"></a>Ek güvenlik duvarı yapılandırması
 
-Kibana ve Grafana uç noktalarına erişmek için güvenlik duvarınızdaki bağlantı noktalarını açmanız gerektiğini fark edebilirsiniz.
+Veri denetleyicisinin dağıtıldığı yere bağlı olarak, kibana ve Grafana uç noktalarına erişmek için güvenlik duvarınızdaki bağlantı noktalarını açmanız gerektiğini görebilirsiniz.
 
 Bunun bir Azure VM için nasıl yapılacağını gösteren bir örnek aşağıda verilmiştir. Betiği kullanarak Kubernetes dağıttıysanız bunu yapmanız gerekir.
 
@@ -78,44 +86,6 @@ NSG adına sahip olduktan sonra aşağıdaki komutu kullanarak bir kural ekleyeb
 az network nsg rule create -n ports_30777 --nsg-name azurearcvmNSG --priority 600 -g azurearcvm-rg --access Allow --description 'Allow Kibana and Grafana ports' --destination-address-prefixes '*' --destination-port-ranges 30777 --direction Inbound --protocol Tcp --source-address-prefixes '*' --source-port-ranges '*'
 ```
 
-## <a name="monitor-azure-sql-managed-instances-on-azure-arc"></a>Azure Arc 'da Azure SQL yönetilen örneklerini izleme
-
-IP adresine sahip olduğunuza ve bağlantı noktalarını kullanıma açdığınıza göre Grafana ve kibana 'e erişmeniz gerekir.
-
-> [!NOTE]
->  Bir Kullanıcı adı ve parola girmeniz istendiğinde, Azure Arc veri denetleyicisi 'ni oluşturduğunuz sırada verdiğiniz kullanıcı adını ve parolayı girin.
-
-> [!NOTE]
->  Önizlemede kullanılan sertifikalar otomatik olarak imzalanan sertifikalar olduğundan, sizden bir sertifika uyarısıyla ilgili olarak uyarılırsınız.
-
-Azure SQL yönetilen örneği için günlüğe kaydetme ve izleme panolarına erişmek üzere aşağıdaki URL modelini kullanın:
-
-```html
-https://<external-ip-from-above>:30777/grafana
-https://<external-ip-from-above>:30777/kibana
-```
-
-İlgili panolar şunlardır:
-
-* "Azure SQL yönetilen örnek ölçümleri"
-* "Ana düğüm ölçümleri"
-* "Konak pods ölçümleri"
-
-## <a name="monitor-azure-database-for-postgresql-hyperscale---azure-arc"></a>PostgreSQL için Azure veritabanı hiper ölçeğini izleme-Azure Arc
-
-PostgreSQL hiper ölçeğinde günlüğe kaydetme ve izleme panolarına erişmek için aşağıdaki URL düzenini kullanın:
-
-```html
-https://<external-ip-from-above>:30777/grafana
-https://<external-ip-from-above>:30777/kibana
-```
-
-İlgili panolar şunlardır:
-
-* "Postgres ölçümleri"
-* "Postgres tablo ölçümleri"
-* "Ana düğüm ölçümleri"
-* "Konak pods ölçümleri"
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Ölçümleri ve günlükleri Azure izleyici 'ye yüklemeyi](upload-metrics-and-logs-to-azure-monitor.md) deneyin

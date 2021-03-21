@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/08/2020
-ms.openlocfilehash: 279d432dbc5770cc89486c517b8fcbe6392b03d1
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.date: 03/17/2021
+ms.openlocfilehash: c1e0dffafafa76e90ec57ce1a00fb8e155ff4edf
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103012199"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104608104"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Blob depolamada verileri kopyalama ve dönüştürme
 
@@ -389,7 +389,7 @@ Aşağıdaki özellikler, Azure Blob depolama için, `storeSettings` Biçim taba
 | modifiedDatetimeEnd      | Yukarıdakiyle aynıdır.                                               | No                                            |
 | enablePartitionDiscovery | Bölümlenmiş dosyalar için, dosya yolundan bölümlerin ayrıştırıp ayrıştırmayacağını belirtin ve bunları ek kaynak sütunları olarak ekleyin.<br/>İzin verilen değerler **false** (varsayılan) ve **true** şeklindedir. | No                                            |
 | Partitionrootyolu | Bölüm bulma etkin olduğunda, bölümlenmiş klasörleri veri sütunları olarak okumak için mutlak kök yolunu belirtin.<br/><br/>Belirtilmemişse, varsayılan olarak<br/>-Veri kümesinde dosya yolunu veya kaynaktaki dosya listesini kullandığınızda, bölüm kök yolu, veri kümesinde yapılandırılan yoldur.<br/>-Joker karakter klasörü filtresi kullandığınızda, bölüm kök yolu ilk joker karakterin öncesindeki alt yoldur.<br/>-Öneki kullandığınızda, bölüm kök yolu son "/" dan önceki alt yoldur. <br/><br/>Örneğin, veri kümesindeki yolu "root/Folder/Year = 2020/ay = 08/gün = 27" olarak yapılandırdığınız varsayılarak:<br/>-Bölüm kök yolunu "root/Folder/Year = 2020" olarak belirtirseniz, kopyalama etkinliği `month` `day` dosyaların içindeki sütunlara ek olarak, sırasıyla "08" ve "27" değeriyle birlikte iki sütun oluşturur.<br/>-Bölüm kök yolu belirtilmemişse, ek sütun oluşturulmaz. | No                                            |
-| maxConcurrentConnections | Depolamaya yönelik eşzamanlı bağlantı sayısı. Yalnızca veri deposuyla eş zamanlı bağlantıları sınırlandırmak istediğinizde belirtin. | No                                            |
+| maxConcurrentConnections |Etkinlik çalışması sırasında veri deposuna kurulan eşzamanlı bağlantıların üst sınırı. Yalnızca eş zamanlı bağlantıları sınırlandırmak istediğinizde bir değer belirtin.| No                                            |
 
 > [!NOTE]
 > Parquet/delimited metin biçimi için, sonraki bölümde bahsedilen kopyalama etkinliği kaynağı için **Blobsource** türü, geriye dönük uyumluluk için olduğu gibi hala desteklenmektedir. Data Factory yazma Kullanıcı arabirimi bu yeni türleri oluşturmaya geçene kadar yeni modeli kullanmanızı öneririz.
@@ -449,7 +449,7 @@ Aşağıdaki özellikler, `storeSettings` Biçim tabanlı bir kopya havuzunda ay
 | tür                     | `type`Altındaki özelliği `storeSettings` olarak ayarlanmalıdır `AzureBlobStorageWriteSettings` . | Yes      |
 | copyBehavior             | Kaynak dosya tabanlı bir veri deposundan dosyalar olduğunda kopyalama davranışını tanımlar.<br/><br/>İzin verilen değerler şunlardır:<br/><b>-Preservehierarchy (varsayılan)</b>: Hedef klasördeki dosya hiyerarşisini korur. Kaynak dosyanın kaynak klasöre göreli yolu, hedef dosyanın göreli yoluyla hedef klasöre aynıdır.<br/><b>-DÜZEDEN hiyerarşi</b>: kaynak klasördeki tüm dosyalar hedef klasörün ilk düzeyindedir. Hedef dosyalar otomatik olarak oluşturulan adlara sahiptir. <br/><b>-Mergefiles</b>: kaynak klasördeki tüm dosyaları tek bir dosya ile birleştirir. Dosya veya blob adı belirtilmişse, birleştirilmiş dosya adı belirtilen addır. Aksi takdirde, otomatik olarak oluşturulan bir dosya adıdır. | No       |
 | Blocksizeınmb | Blok bloblarına veri yazmak için kullanılan blok boyutunu megabayt cinsinden belirtin. [Blok Blobları hakkında](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs)daha fazla bilgi edinin. <br/>İzin verilen değer *4 MB ile 100 MB arasındadır*. <br/>Varsayılan olarak Data Factory, blok boyutunu kaynak depolama türü ve verilerinize göre otomatik olarak belirler. Blob depolamaya ikili olmayan kopya için, varsayılan blok boyutu 100 MB 'tır, bu nedenle en fazla 4,95 TB veri olabilir. Özellikle, işlem zaman aşımı veya performans sorunlarına neden olan kötü ağ bağlantılarıyla şirket içinde barındırılan tümleştirme çalışma zamanını kullandığınızda verileriniz büyük olmadığında en iyi durumda olmayabilir. Açıkça bir blok boyutu belirtebilirsiniz, bu da `blockSizeInMB*50000` verileri depolamaya yetecek büyüklükte bir değer sağlar. Aksi takdirde kopyalama etkinliği çalıştırması başarısız olur. | No |
-| maxConcurrentConnections | Depolamaya yönelik eşzamanlı bağlantı sayısı. Yalnızca veri deposuyla eş zamanlı bağlantıları sınırlandırmak istediğinizde belirtin. | No       |
+| maxConcurrentConnections |Etkinlik çalışması sırasında veri deposuna kurulan eşzamanlı bağlantıların üst sınırı. Yalnızca eş zamanlı bağlantıları sınırlandırmak istediğinizde bir değer belirtin.| No       |
 
 **Örnek:**
 
@@ -681,7 +681,7 @@ Havuz dönüşümünde, bir kapsayıcıya veya Azure Blob depolama alanındaki b
 |:--- |:--- |:--- |
 | tür | `type`Kopyalama etkinliği kaynağının özelliği olarak ayarlanmalıdır `BlobSource` . | Yes |
 | öz | Verilerin alt klasörlerden veya yalnızca belirtilen klasörden özyinelemeli olarak okunup okunmadığını gösterir. `recursive`Olarak ayarlandığında `true` ve havuz dosya tabanlı bir depo olduğunda, havuzda boş bir klasör veya alt klasör kopyalanmadığını veya oluşturulamadığına unutmayın.<br/>İzin verilen değerler `true` (varsayılan) ve `false` . | No |
-| maxConcurrentConnections | Depolamaya yönelik eşzamanlı bağlantı sayısı. Yalnızca veri deposuyla eş zamanlı bağlantıları sınırlandırmak istediğinizde belirtin. | No |
+| maxConcurrentConnections |Etkinlik çalışması sırasında veri deposuna kurulan eşzamanlı bağlantıların üst sınırı. Yalnızca eş zamanlı bağlantıları sınırlandırmak istediğinizde bir değer belirtin.| No |
 
 **Örnek:**
 
@@ -721,7 +721,7 @@ Havuz dönüşümünde, bir kapsayıcıya veya Azure Blob depolama alanındaki b
 |:--- |:--- |:--- |
 | tür | `type`Kopyalama etkinliği havuzunun özelliği olarak ayarlanmalıdır `BlobSink` . | Yes |
 | copyBehavior | Kaynak dosya tabanlı bir veri deposundan dosyalar olduğunda kopyalama davranışını tanımlar.<br/><br/>İzin verilen değerler şunlardır:<br/><b>-Preservehierarchy (varsayılan)</b>: Hedef klasördeki dosya hiyerarşisini korur. Kaynak dosyanın kaynak klasöre göreli yolu hedef dosyanın hedef klasöre göreli yolu ile aynıdır.<br/><b>-DÜZEDEN hiyerarşi</b>: kaynak klasördeki tüm dosyalar hedef klasörün ilk düzeyindedir. Hedef dosyalar otomatik olarak oluşturulan adlara sahiptir. <br/><b>-Mergefiles</b>: kaynak klasördeki tüm dosyaları tek bir dosya ile birleştirir. Dosya veya blob adı belirtilmişse, birleştirilmiş dosya adı belirtilen addır. Aksi takdirde, otomatik olarak oluşturulan bir dosya adıdır. | No |
-| maxConcurrentConnections | Depolamaya yönelik eşzamanlı bağlantı sayısı. Yalnızca veri deposuyla eş zamanlı bağlantıları sınırlandırmak istediğinizde belirtin. | No |
+| maxConcurrentConnections |Etkinlik çalışması sırasında veri deposuna kurulan eşzamanlı bağlantıların üst sınırı. Yalnızca eş zamanlı bağlantıları sınırlandırmak istediğinizde bir değer belirtin.| No |
 
 **Örnek:**
 

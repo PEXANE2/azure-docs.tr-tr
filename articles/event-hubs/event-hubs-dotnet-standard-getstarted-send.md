@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 09/25/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 36551a52bc095a37aa5176ab945dd5d27c640954
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97504619"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-azuremessagingeventhubs"></a>Azure Event Hubs-.NET (Azure. Messaging. EventHubs) ile olayları gönderme ve olayları alma 
@@ -58,7 +58,7 @@ Bu bölümde, olayları bir olay hub 'ına göndermek için bir .NET Core konsol
 
 ### <a name="write-code-to-send-messages-to-the-event-hub"></a>Olay hub'ına ileti göndermek için kod yazma
 
-1. `using` **Program.cs** dosyasının en üstüne aşağıdaki deyimleri ekleyin:
+1. Aşağıdaki `using` deyimlerini **program. cs** dosyasının en üstüne ekleyin:
 
     ```csharp
     using System;
@@ -148,7 +148,7 @@ Bu hızlı başlangıçta, Azure Storage 'ı denetim noktası deposu olarak kull
 
 ### <a name="update-the-main-method"></a>Main metodunu güncelleştirme 
 
-1. `using` **Program.cs** dosyasının en üstüne aşağıdaki deyimleri ekleyin.
+1. `using` **Program. cs** dosyasının en üstüne aşağıdaki deyimleri ekleyin.
 
     ```csharp
     using System;

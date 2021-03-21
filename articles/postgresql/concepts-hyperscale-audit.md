@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/29/2021
 ms.openlocfilehash: 8a36062a2d29bcec10279d73211526a0dcba619e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101702122"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nda denetim günlüğü-hiper ölçek (Citus)
@@ -42,7 +42,7 @@ Günlüğe kaydetmeyi başlatmak için pgAudit parametrelerini yapılandırmanı
 
 > [!NOTE]
 > `pgaudit.log_client`Olarak ayarlandığında, günlükleri dosyaya yazılması yerine bir istemci işlemine (psql gibi) yönlendirir. Bu ayar genellikle devre dışı bırakılmalıdır. <br> <br>
-> `pgaudit.log_level` yalnızca açık olduğunda etkindir `pgaudit.log_client` .
+> `pgaudit.log_level` parametresi ancak `pgaudit.log_client` açık olduğunda etkinleştirilir.
 
 > [!NOTE]
 > PostgreSQL için Azure veritabanı-hiper ölçek (Citus), `pgaudit.log` `-` pgaudit belgelerinde açıklandığı şekilde (eksi) işareti kısayolu kullanılarak ayarlanamaz. Tüm gerekli ifade sınıfları (okuma, yazma, vb.) tek tek belirtilmelidir.
@@ -50,7 +50,7 @@ Günlüğe kaydetmeyi başlatmak için pgAudit parametrelerini yapılandırmanı
 ## <a name="audit-log-format"></a>Denetim günlüğü biçimi
 Her denetim girişi, `AUDIT:` günlük satırının başlangıcında yakınında gösterilir. Girişin geri kalanının biçimi [Pgaudit belgelerinde](https://github.com/pgaudit/pgaudit/blob/master/README.md#format)ayrıntılıdır.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 Hızlıca kullanmaya başlamak için, `pgaudit.log` olarak ayarlayın `WRITE` ve çıktıyı gözden geçirmek için sunucu günlüklerinizi açın. 
 
 ## <a name="viewing-audit-logs"></a>Denetim günlüklerini görüntüleme

@@ -5,28 +5,31 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 08/06/2020
+ms.date: 03/18/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 9804ed23da4cb9ccbb7515cec03fcc9b4147f749
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8f071dfe817d15b745575fbfb70ff662a643db70
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/20/2021
-ms.locfileid: "101673262"
+ms.locfileid: "104721367"
 ---
 # <a name="set-up-message-passing-interface-for-hpc"></a>HPC için Ileti geçirme arabirimini ayarlama
 
 [Ileti geçirme arabirimi (MPı)](https://en.wikipedia.org/wiki/Message_Passing_Interface) , açık bir kitaplıktır ve dağıtılmış bellek paralelleştirme için standart olarak standart bir kitaplıktır. Birçok HPC iş yükü genelinde yaygın olarak kullanılır. [RDMA özellikli](../../sizes-hpc.md#rdma-capable-instances) [H serisi](../../sizes-hpc.md) ve [N serisi](../../sizes-gpu.md) VM 'lerde HPC iş yükleri, düşük gecikme süresi ve yüksek bant genişliği InfiniBand ağı üzerinden iletişim kurmak için MPI kullanabilir.
+- Azure 'daki SR-ıOV etkinleştirilmiş VM boyutları, her türlü MPı 'nin Mellanox ile kullanılmasına izin verir.
+- SR-ıOV olmayan VM 'lerde desteklenen MPı uygulamaları, VM 'Ler arasında iletişim kurmak için Microsoft ağ doğrudan (ND) arabirimini kullanır. Bu nedenle, yalnızca Microsoft MPı (MS-MPı) 2012 R2 veya üzeri ve Intel MPı 5. x sürümleri desteklenir. Intel MPı çalışma zamanı kitaplığı 'nın sonraki sürümleri (2017, 2018), Azure RDMA sürücüleriyle uyumlu olmayabilir veya olmayabilir.
 
-Azure 'daki SR-ıOV etkin VM boyutları (HBv2, HB, HC, NCv3, NDv2), Mellanox ile neredeyse her türlü MPı kullanılmasına izin verir. SR-ıOV olmayan VM 'lerde desteklenen MPı uygulamaları, VM 'Ler arasında iletişim kurmak için Microsoft ağ doğrudan (ND) arabirimini kullanır. Bu nedenle, yalnızca Microsoft MPı (MS-MPı) 2012 R2 veya üzeri ve Intel MPı 5. x sürümleri desteklenir. Intel MPı çalışma zamanı kitaplığı 'nın sonraki sürümleri (2017, 2018), Azure RDMA sürücüleriyle uyumlu olmayabilir veya olmayabilir.
-
-SR-ıOV özellikli [RDMA özellikli VM 'ler](../../sizes-hpc.md#rdma-capable-instances)için, bir market 'teki [CENTOS-HPC sürüm 7,6 veya sonrakı bir](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557) sürümü VM görüntüleri en ıyı duruma getirilir ve RDMA ve çeşitli yaygın olarak kullanılan MPI kitaplıkları ve bilimsel bilgi işlem paketleri ve kullanmaya başlamak için en kolay yoldur.
+SR-ıOV özellikli [RDMA özellikli VM 'ler](../../sizes-hpc.md#rdma-capable-instances)için, [CENTOS-HPC VM görüntüleri](configure.md#centos-hpc-vm-images) sürüm 7,6 ve üzeri uygundur. Bu VM görüntüleri, RDMA ve çeşitli yaygın olarak kullanılan MPı kitaplıkları ve bilimsel bilgi işlem paketleri ve başlamak için en kolay yol ile en iyi duruma getirilmiş ve önceden yüklenmiş olarak gelir.
 
 Buradaki örnekler RHEL/CentOS için de olsa da, adımlar genel ve Ubuntu (16,04, 18,04 19,04, 20,04) ve SLES (12 SP4 ve 15) gibi uyumlu bir Linux işletim sistemi için kullanılabilir. Diğer MPı uygulamalarını diğer uygulamalar üzerinde ayarlamaya yönelik daha fazla örnek [azhpc-Images](https://github.com/Azure/azhpc-images/blob/master/ubuntu/ubuntu-18.x/ubuntu-18.04-hpc/install_mpis.sh)deposunsunlar.
 
 > [!NOTE]
-> SR-ıOV özellikli VM 'lerde MPı işlerinin çalıştırılması, bir kiracı genelinde yalıtım ve güvenlik için bölüm anahtarlarının (p-anahtarlar) ayarlanmasını gerektirir. P anahtar değerlerini belirleme ve bir MPı işi için doğru ayarlama hakkında ayrıntılar için [bölüm anahtarlarını bul](#discover-partition-keys) bölümündeki adımları izleyin.
+> MPı işlerinin, belirli MPı kitaplıklarına (Platform MPı gibi) sahip SR-ıOV özellikli VM 'lerde çalıştırılması, bir kiracı genelinde yalıtım ve güvenlik için bölüm anahtarlarının (p-anahtarlar) ayarlanmasını gerektirebilir. P anahtar değerlerini belirleme ve bu MPı kitaplığı ile bir MPı işi için doğru ayarlama hakkında ayrıntılar için [bölüm anahtarlarını bul](#discover-partition-keys) bölümündeki adımları izleyin.
+
+> [!NOTE]
+> Aşağıdaki kod parçacıkları örnektir. Paketlerin en son kararlı sürümlerini kullanmanızı veya [azhpc-Images](https://github.com/Azure/azhpc-images/blob/master/ubuntu/ubuntu-18.x/ubuntu-18.04-hpc/install_mpis.sh)deposuna başvurmalarını öneririz.
 
 ## <a name="ucx"></a>UCX
 
@@ -40,9 +43,12 @@ cd ucx-1.4.0
 make -j 8 && make install
 ```
 
+> [!NOTE]
+> Yeni bir UCX derlemesi, birden çok NIC arabirimi olması durumunda doğru InfiniBand arabiriminin seçildiği bir [sorunu](https://github.com/openucx/ucx/pull/5965) düzelttik. VM 'de hızlandırılmış ağ etkinleştirildiğinde, InfiniBand üzerinde MPı 'nin çalıştırılmasına ilişkin daha fazla ayrıntı [bulabilirsiniz](hb-hc-known-issues.md#accelerated-networking-on-hb-hc-hbv2-and-ndv2) .
+
 ## <a name="hpc-x"></a>HPC-X
 
-[HPC-x yazılım araç seti](https://www.mellanox.com/products/hpc-x-toolkit) , UCX ve HCOLL öğelerini içerir.
+[HPC-x yazılım araç seti](https://www.mellanox.com/products/hpc-x-toolkit) , UCX ve hcoll içerir ve UCX 'e göre derlenebilir.
 
 ```bash
 HPCX_VERSION="v2.6.0"
@@ -58,18 +64,20 @@ HPC-X Çalıştır
 ```bash
 ${HPCX_PATH}mpirun -np 2 --map-by ppr:2:node -x UCX_TLS=rc ${HPCX_PATH}/ompi/tests/osu-micro-benchmarks-5.3.2/osu_latency
 ```
+> [!NOTE] 
+> HPC-X 2.7.4 + ile, MOFED üzerindeki UCX sürümü, HPC-X ' de farklıysa LD_LIBRARY_PATH açıkça geçirmek gerekebilir.
 
 ## <a name="openmpi"></a>OpenMPI
 
 Yukarıda açıklanan şekilde UCX 'i yükler. HCOLL, [HPC-X yazılım araç setinin](https://www.mellanox.com/products/hpc-x-toolkit) parçasıdır ve özel yükleme gerektirmez.
 
-Depoda bulunan paketlerden OpenMPI 'yi yükler.
+Depoda bulunan paketten OpenMPI yüklenebilir.
 
 ```bash
 sudo yum install –y openmpi
 ```
 
-OpenMPI oluşturun.
+UCX ile OpenMPI 'nin en son, kararlı bir sürümünü oluşturmanızı öneririz.
 
 ```bash
 OMPI_VERSION="4.0.3"
@@ -80,7 +88,7 @@ cd openmpi-${OMPI_VERSION}
 ./configure --prefix=${INSTALL_PREFIX}/openmpi-${OMPI_VERSION} --with-ucx=${UCX_PATH} --with-hcoll=${HCOLL_PATH} --enable-mpirun-prefix-by-default --with-platform=contrib/platform/mellanox/optimized && make -j$(nproc) && make install
 ```
 
-OpenMPI 'yi çalıştırın.
+En iyi performans için, ve ile OpenMPI ' yi çalıştırın `ucx` `hcoll` .
 
 ```bash
 ${INSTALL_PREFIX}/bin/mpirun -np 2 --map-by node --hostfile ~/hostfile -mca pml ucx --mca btl ^vader,tcp,openib -x UCX_NET_DEVICES=mlx5_0:1  -x UCX_IB_PKEY=0x0003  ./osu_latency
@@ -90,7 +98,10 @@ Yukarıdaki bölümde belirtilen bölüm anahtarınızı denetleyin.
 
 ## <a name="intel-mpi"></a>Intel MPı
 
-[Intel MPI](https://software.intel.com/mpi-library/choose-download)'nin seçtiğiniz sürümünü indirin. Sürüme bağlı olarak I_MPI_FABRICS ortam değişkenini değiştirin. Intel MPı 2018 için `I_MPI_FABRICS=shm:ofa` ve 2019 için kullanın, kullanın `I_MPI_FABRICS=shm:ofi` .
+[Intel MPI](https://software.intel.com/mpi-library/choose-download)'nin seçtiğiniz sürümünü indirin. Sürüme bağlı olarak I_MPI_FABRICS ortam değişkenini değiştirin.
+- Intel MPı 2019 ve 2021: kullanın `I_MPI_FABRICS=shm:ofi` , `I_MPI_OFI_PROVIDER=mlx` . `mlx`Sağlayıcı UCX kullanır. Fiillerin kullanım kararlı ve daha az performans olduğunu belirledi. Daha fazla bilgi için bkz. [Techcommunity makalesi](https://techcommunity.microsoft.com/t5/azure-compute/intelmpi-2019-on-azure-hpc-clusters/ba-p/1403149) .
+- Intel MPı 2018: kullanma `I_MPI_FABRICS=shm:ofa`
+- Intel MPı 2016: kullanma `I_MPI_DAPL_PROVIDER=ofa-v2-ib0`
 
 ### <a name="non-sr-iov-vms"></a>SR-ıOV olmayan VM 'Ler
 SR-ıOV olmayan VM 'Ler için, 5. x çalışma zamanı [ücretsiz değerlendirme sürümünü](https://registrationcenter.intel.com/en/forms/?productid=1740) karşıdan yüklemeyle ilgili bir örnek aşağıdaki gibidir:
@@ -108,6 +119,45 @@ SUSE Linux Enterprise Server VM görüntü sürümleri-HPC için SLES 12 SP3, HP
 ```bash
 sudo rpm -v -i --nodeps /opt/intelMPI/intel_mpi_packages/*.rpm
 ```
+
+## <a name="mvapich2"></a>MVAPICH2
+
+Derleme MVAPICH2.
+
+```bash
+wget http://mvapich.cse.ohio-state.edu/download/mvapich/mv2/mvapich2-2.3.tar.gz
+tar -xv mvapich2-2.3.tar.gz
+cd mvapich2-2.3
+./configure --prefix=${INSTALL_PREFIX}
+make -j 8 && make install
+```
+
+MVAPICH2 çalıştırılıyor.
+
+```bash
+${INSTALL_PREFIX}/bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=48 ./osu_latency
+```
+
+## <a name="platform-mpi"></a>Platform MPı
+
+Platform MPı Community Edition için gerekli paketleri yükleyin.
+
+```bash
+sudo yum install libstdc++.i686
+sudo yum install glibc.i686
+Download platform MPI at https://www.ibm.com/developerworks/downloads/im/mpi/index.html 
+sudo ./platform_mpi-09.01.04.03r-ce.bin
+```
+
+Yükleme işlemini izleyin.
+
+Aşağıdaki komutlar MPı pingpong çalıştırmaya örnek olarak, CentOS-HPC 7,6, 7,8 ve 8,1 VM görüntülerini kullanarak HBv3 VM 'lerinde platform MPı 'yi kullanmayı azaltır.
+
+```bash
+/opt/ibm/platform_mpi/bin/mpirun -hostlist 10.0.0.8:1,10.0.0.9:1 -np 2 -e MPI_IB_PKEY=0x800a  -ibv  /home/jijos/mpi-benchmarks/IMB-MPI1 pingpong
+/opt/ibm/platform_mpi/bin/mpirun -hostlist 10.0.0.8:120,10.0.0.9:120 -np 240 -e MPI_IB_PKEY=0x800a  -ibv  /home/jijos/mpi-benchmarks/IMB-MPI1 allreduce -npmin 240
+```
+
 
 ## <a name="mpich"></a>MPICH
 
@@ -128,37 +178,6 @@ ${INSTALL_PREFIX}/bin/mpiexec -n 2 -hostfile ~/hostfile -env UCX_IB_PKEY=0x0003 
 ```
 
 Yukarıdaki bölümde belirtilen bölüm anahtarınızı denetleyin.
-
-## <a name="mvapich2"></a>MVAPICH2
-
-Derleme MVAPICH2.
-
-```bash
-wget http://mvapich.cse.ohio-state.edu/download/mvapich/mv2/mvapich2-2.3.tar.gz
-tar -xv mvapich2-2.3.tar.gz
-cd mvapich2-2.3
-./configure --prefix=${INSTALL_PREFIX}
-make -j 8 && make install
-```
-
-MVAPICH2 çalıştırılıyor.
-
-```bash
-${INSTALL_PREFIX}/bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=48 ./osu_latency
-```
-
-## <a name="platform-mpi-community-edition"></a>Platform MPı Community sürümü
-
-Platform MPı için gerekli paketleri yükler.
-
-```bash
-sudo yum install libstdc++.i686
-sudo yum install glibc.i686
-Download platform MPI at https://www.ibm.com/developerworks/downloads/im/mpi/index.html 
-sudo ./platform_mpi-09.01.04.03r-ce.bin
-```
-
-Yükleme işlemini izleyin.
 
 ## <a name="osu-mpi-benchmarks"></a>OSU MPı değerlendirmeleri
 
@@ -236,6 +255,6 @@ Yukarıdaki sözdizimi paylaşılan bir giriş dizinini varsayar, başka bir dey
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [InfiniBand etkin](../../sizes-hpc.md#rdma-capable-instances) [H serisi](../../sizes-hpc.md) ve [N serisi](../../sizes-gpu.md) VM 'ler hakkında bilgi edinin
-- Performans ve ölçeklenebilirlik için iş yüklerini en iyi şekilde yapılandırma hakkında bilgi edinmek için [HB Serisi genel bakış](hb-series-overview.md) ve [HC Serisi genel bakışı](hc-series-overview.md) gözden geçirin.
-- En son duyurular ve bazı HPC örnekleri hakkında bilgi edinin ve [Azure Işlem teknik topluluk bloglarında](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)bu sonuçları elde edin.
+- [HBv3-Series genel bakış](hbv3-series-overview.md) ve [HC Serisi genel bakış](hc-series-overview.md)konusunu gözden geçirin.
+- [Azure Işlem Tech Community bloglarında](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)en son Duyurular, HPC iş yükü örnekleri ve performans sonuçları hakkında bilgi edinin.
 - Çalıştırılan HPC iş yüklerinin daha yüksek düzey mimari görünümü için bkz. [Azure 'Da yüksek performanslı bilgi işlem (HPC)](/azure/architecture/topics/high-performance-computing/).

@@ -16,10 +16,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: d7dfe010a3f4a1559454c49545af81eb14797bf1
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97359923"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Azure VM 'de SQL Server için bir kullanılabilirlik grubu yapılandırmak üzere Azure hızlı başlangıç şablonlarını kullanma
@@ -27,7 +27,7 @@ ms.locfileid: "97359923"
 
 Bu makalede, Azure 'da SQL Server sanal makineler (VM) için her zaman açık kullanılabilirlik grubu yapılandırmasının dağıtımını kısmen otomatik hale getirmek üzere Azure hızlı başlangıç şablonlarının nasıl kullanılacağı açıklanır. Bu işlemde iki Azure hızlı başlangıç şablonu kullanılır: 
 
-   | Şablon | Açıklama |
+   | Şablon | Description |
    | --- | --- |
    | [101-SQL-VM-AG-kurulum](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-ag-setup) | Windows Yük devretme kümesini oluşturur ve SQL Server VM 'lerine birleştirir. |
    | [101-SQL-VM-aglistener-kurulum](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-aglistener-setup) | Kullanılabilirlik grubu dinleyicisini oluşturur ve iç yük dengeleyiciyi yapılandırır. Bu şablon yalnızca Windows Yük devretme kümesi **101-SQL-VM-AG-Setup** şablonuyla oluşturulduysa kullanılabilir. |

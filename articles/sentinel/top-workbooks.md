@@ -16,10 +16,10 @@ ms.topic: reference
 ms.date: 03/07/2021
 ms.author: bagol
 ms.openlocfilehash: a37501498a9222025860702a7f29dccc9abfc8f7
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102450073"
 ---
 # <a name="commonly-used-azure-sentinel-workbooks"></a>Yaygın olarak kullanılan Azure Sentinel çalışma kitapları
@@ -28,7 +28,7 @@ Aşağıdaki tabloda, en yaygın kullanılan yerleşik Azure Sentinel çalışma
 
 Sol taraftaki **tehdit yönetimi** çalışma kitapları altında Azure Sentinel 'deki çalışma kitaplarına erişin  >   ve sonra kullanmak istediğiniz çalışma kitabını arayın. Daha fazla bilgi için bkz. [öğretici: verilerinizi görselleştirme ve izleme](tutorial-monitor-your-data.md).
 
-|Çalışma kitabı adı  |Açıklama  |
+|Çalışma kitabı adı  |Description  |
 |---------|---------|
 |**Analiz verimliliği**     |  Daha iyi bir SOC performansı elde etmenize yardımcı olması için analiz kurallarınızın göre etkinliğine hakkında öngörüler sağlar. <br><br>Daha fazla bilgi için bkz. [Data-Driven SOCs araç seti](https://techcommunity.microsoft.com/t5/azure-sentinel/the-toolkit-for-data-driven-socs/ba-p/2143152).|
 |**Azure etkinliği**     |     Tüm kullanıcı işlemlerini ve olaylarını çözümleyip ilişkilendirerek kuruluşunuzun Azure etkinliğine kapsamlı öngörüler sağlar. <br><br>Daha fazla bilgi için bkz. [Azure etkinlik günlükleri Ile denetleme](audit-sentinel-data.md#auditing-with-azure-activity-logs).    |

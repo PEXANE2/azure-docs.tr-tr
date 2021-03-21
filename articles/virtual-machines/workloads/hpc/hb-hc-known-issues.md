@@ -5,39 +5,45 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 03/12/2021
+ms.date: 03/18/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 0a0eaa18f5b120fcc9cbf0e4da470ee46772c925
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: e8d191dfed5b33116dadaf34b17d5f6525060e13
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103470413"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721199"
 ---
 # <a name="known-issues-with-h-series-and-n-series-vms"></a>H serisi ve N serisi VM’lerdeki bilinen sorunlar
 
-Bu makalede, [H serisi](../../sizes-hpc.md) ve [N SERISI](../../sizes-gpu.md) HPC ve GPU VM 'leri kullanılırken en yaygın sorunlar ve çözümler sağlanmaktadır.
+Bu makale, [H serisi](../../sizes-hpc.md) ve [N SERISI](../../sizes-gpu.md) HPC ve GPU VM 'lerini kullanırken en son yaygın sorunları ve çözümlerini listemaya çalışır.
+
+## <a name="mofed-installation-on-ubuntu"></a>Ubuntu 'da MOFED yüklemesi
+Ubuntu-18,04 üzerinde, 5.4.0-1041-Azure çekirdek sürümü, MOFED Versions 5.2-2 ve 5.2-1.0.4.0 ile uyumsuzdur. Çekirdek sürümü 5.4.0-1040-Azure ' a geri dönüp veya eski çekirdekte bir market görüntüsü kullanarak ve çekirdeği güncelleştirmemeniz önerilir. Bu sorunun daha yeni bir MOFED (TBD) ile çözümlenmesi beklenmektedir.
 
 ## <a name="known-issues-on-hbv3"></a>HBv3 ile ilgili bilinen sorunlar
-- InfiniBand Şu anda yalnızca 120 çekirdekli VM 'de desteklenir (Standard_HB120rs_v3). Diğer VM boyutları üzerinde destek yakında etkinleştirilecek.
-- Azure hızlandırılmış ağ, tüm bölgelerde HBv3-Series üzerinde desteklenmez. Bu özellik yakında etkinleştirilecek.
+- Şu anda InfiniBand yalnızca 120 çekirdekli VM 'de desteklenir (Standard_HB120rs_v3).
+- Şu anda Azure hızlandırılmış ağ, tüm bölgelerde HBv3-Series üzerinde desteklenmez.
 
 ## <a name="accelerated-networking-on-hb-hc-hbv2-and-ndv2"></a>HB, HC, HBv2 ve NDv2 üzerinde hızlandırılmış ağ
 
-[Azure hızlandırılmış ağ](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) , artık RDMA ve InfiniBand özellıklı ve SR-ıOV etkinleştirilmiş VM boyutları [HB](../../hb-series.md), [HC](../../hc-series.md), [HBv2](../../hbv2-series.md)ve [NDv2](../../ndv2-series.md)' de kullanılabilir. Bu özellik artık, Azure Ethernet ağı üzerinden Gelişmiş (en fazla 30 Gbps) ve gecikme süreleriyle geliştirilmiştir. Bu, InfiniBand ağı üzerinden RDMA özelliğinden ayrı olsa da, bu özellik için bazı platform değişiklikleri InfiniBand üzerinde iş çalıştırırken belirli MPı uygulamalarının davranışlarını etkileyebilir. Özellikle, bazı sanal makinelerdeki InfiniBand arabiriminin adı biraz farklı olabilir (mlx5_1 önceki mlx5_0 aksine) ve bu, özellikle UCX arabirimi (genellikle OpenMPI ve HPC-X ile) kullanılırken MPı komut satırları için kullanılabilir olmasını gerektirebilir.
-Bu konuda daha fazla bilgi edinmek için bu [blog makalesinde](https://techcommunity.microsoft.com/t5/azure-compute/accelerated-networking-on-hb-hc-and-hbv2/ba-p/2067965) , gözlemlenen sorunları nasıl ele alan hakkında yönergeler bulabilirsiniz.
+[Azure hızlandırılmış ağ](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) , artık RDMA ve InfiniBand özellıklı ve SR-ıOV etkinleştirilmiş VM boyutları [HB](../../hb-series.md), [HC](../../hc-series.md), [HBv2](../../hbv2-series.md)ve [NDv2](../../ndv2-series.md)' de kullanılabilir. Bu özellik artık, Azure Ethernet ağı üzerinden Gelişmiş (en fazla 30 Gbps) ve gecikme süreleriyle geliştirilmiştir. Bu, InfiniBand ağı üzerinden RDMA özelliğinden ayrı olsa da, bu özellik için bazı platform değişiklikleri InfiniBand üzerinde iş çalıştırırken belirli MPı uygulamalarının davranışlarını etkileyebilir. Özellikle, bazı sanal makinelerdeki InfiniBand arabiriminin adı biraz farklı olabilir (mlx5_1 önceki mlx5_0 aksine) ve bu, özellikle UCX arabirimi (genellikle OpenMPI ve HPC-X ile) kullanılırken MPı komut satırları için kullanılabilir olmasını gerektirebilir. Şu anda en basit çözüm, CentOS-HPC VM görüntülerinde en son HPC-X ' i kullanmak veya gerekmiyorsa hızlandırılmış ağı devre dışı bırakmak olabilir.
+Bu konuda daha fazla bilgi, bu [Techcommunity makalesinde](https://techcommunity.microsoft.com/t5/azure-compute/accelerated-networking-on-hb-hc-and-hbv2/ba-p/2067965) , gözlemlenen sorunların nasıl ele alınacağını açıklayan yönergeler sunulmaktadır.
 
-## <a name="infiniband-driver-installation-on-n-series-vms"></a>N serisi VM 'lerde InfiniBand sürücü yüklemesi
+## <a name="infiniband-driver-installation-on-non-sr-iov-vms"></a>SR-ıOV olmayan VM 'lerde InfiniBand sürücü yüklemesi
 
-NC24r_v3 ve ND40r_v2, NC24r ve NC24r_v2 SR-ıOV etkin olmadığı sürece SR-ıOV etkindir. [Burada](../../sizes-hpc.md#rdma-capable-instances)Bifurcation hakkında bazı ayrıntılar.
-InfiniBand (ıB), SR-ıOV etkin VM boyutları üzerinde, SR-ıOV olmayan VM boyutları ND sürücüleri gerektirdiğinden, ALıNAN sürücülerle yapılandırılabilir. Bu ıB desteği, [CentOS-HPC Vmin](configure.md)üzerinde uygun şekilde sunulmaktadır. Ubuntu için, [Belgeler](enable-infiniband.md#vm-images-with-infiniband-drivers)bölümünde açıklandığı gıbı hem ofed hem de ND sürücülerini yüklemek için [buradaki yönergeye](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351) bakın.
+Şu anda H16r, H16mr ve NC24r, SR-ıOV etkin değil. InfiniBand Stack Bifurcation hakkındaki bazı ayrıntılar [burada](../../sizes-hpc.md#rdma-capable-instances)yer alır.
+InfiniBand, SR-ıOV etkin VM boyutları üzerinde, SR-ıOV olmayan VM boyutları ND sürücüleri gerektirdiğinden, ALıNAN sürücülerle yapılandırılabilir. Bu ıB desteği [, CentOS, RHEL ve Ubuntu](configure.md)için uygun şekilde sunulmaktadır.
 
 ## <a name="duplicate-mac-with-cloud-init-with-ubuntu-on-h-series-and-n-series-vms"></a>H serisi ve N serisi VM 'lerde Ubuntu ile Cloud-init ile yinelenen MAC
 
-IB arabirimini getirmeye çalıştığı için Ubuntu VM görüntülerinde Cloud-init ile ilgili bilinen bir sorun vardır. Bu durum VM önyüklemesi üzerinde veya genelleştirdikten sonra bir VM görüntüsü oluşturmaya çalışırken gerçekleşebilir. VM önyükleme günlükleri şöyle bir hata gösterebilir: "ağ hizmeti başlatılıyor... RuntimeError: yinelenen Mac bulundu! hem ' eth1 ' hem de ' İb0 ' Mac 'e sahiptir ".
+IB arabirimini getirmeye çalıştığı için Ubuntu VM görüntülerinde Cloud-init ile ilgili bilinen bir sorun vardır. Bu durum VM önyüklemesi üzerinde veya genelleştirdikten sonra bir VM görüntüsü oluşturmaya çalışırken gerçekleşebilir. VM önyükleme günlükleri şöyle bir hata gösterebilir:
+```console
+“Starting Network Service...RuntimeError: duplicate mac found! both 'eth1' and 'ib0' have mac”.
+```
 
-Bu ' Cloud-init on Ubuntu ile yinelenen MAC, bilinen bir sorundur. Geçici çözüm:
+Bu ' Cloud-init on Ubuntu ile yinelenen MAC, bilinen bir sorundur. Bu, yeni çekirdekler ile çözümlenir. Sorun ile karşılaşılırsa geçici çözüm:
 1) (Ubuntu 18,04) Market VM görüntüsünü dağıtma
 2) IB 'yi etkinleştirmek için gerekli yazılım paketlerini yükler ([burada yönerge](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351))
 3) EnableRDMA = y öğesini değiştirmek için waagent. conf dosyasını Düzenle
@@ -56,13 +62,13 @@ Bu ' Cloud-init on Ubuntu ile yinelenen MAC, bilinen bir sorundur. Geçici çöz
     EOF
     ```
 
-## <a name="dram-on-hb-series"></a>DRAM on HB Serisi
-
-HB Serisi VM 'Ler Şu anda Konuk VM 'lere yalnızca 228 GB RAM kullanıma sunabilir. Benzer şekilde, HBv2 üzerinde 458 GB ve HBv3 VM 'lerinde 448 GB. Bunun nedeni, sayfaların Konuk sanal makine için ayrılmış olan (NUMA etki alanları) yerel DRAM 'ye atanmasını engellemek için Azure hiper yöneticisinin bilinen bir sınırlamasıdır.
-
 ## <a name="qp0-access-restriction"></a>qp0 erişim kısıtlaması
 
 Güvenlik açıklarına neden olan alt düzey donanım erişimini engellemek için, 0 kuyruk çifti Konuk VM 'Ler tarafından erişilemez. Bu, genellikle yalnızca ConnectX-5 NIC yönetimi ile ilişkili eylemleri ve ıdiagnet gibi bazı InfiniBand tanılamayı çalıştırıyor, ancak son kullanıcı uygulamalarının kendisini etkilemez.
+
+## <a name="dram-on-hb-series-vms"></a>DRAM on HB Serisi VM 'Ler
+
+HB Serisi VM 'Ler Şu anda Konuk VM 'lere yalnızca 228 GB RAM kullanıma sunabilir. Benzer şekilde, HBv2 üzerinde 458 GB ve HBv3 VM 'lerinde 448 GB. Bunun nedeni, sayfaların Konuk sanal makine için ayrılmış olan (NUMA etki alanları) yerel DRAM 'ye atanmasını engellemek için Azure hiper yöneticisinin bilinen bir sınırlamasıdır.
 
 ## <a name="gss-proxy"></a>GSS proxy
 

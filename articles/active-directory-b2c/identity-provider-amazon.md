@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.custom: project-no-code
-ms.date: 03/15/2021
+ms.date: 03/17/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 3e1eaf4f97b9b04ed02aeb3c6de65b90bf4947e1
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: e152d9c242a44fe869eb7bfe7a16fbd7dfc8049d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103489160"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580135"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-amazon-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak bir Amazon hesabı ile kaydolma ve oturum açma ayarlama
 
@@ -64,6 +64,8 @@ Azure Active Directory B2C (Azure AD B2C) ' de bir Amazon hesabı olan kullanıc
 1. **Kaydet**’i seçin.
 
 ## <a name="add-amazon-identity-provider-to-a-user-flow"></a>Bir Kullanıcı akışına Amazon Identity sağlayıcısı ekleme 
+
+Bu noktada, Amazon Identity sağlayıcısı ayarlanmıştır, ancak oturum açma sayfalarında henüz mevcut değildir. Amazon Identity sağlayıcısını bir Kullanıcı akışına eklemek için:
 
 1. Azure AD B2C kiracınızda **Kullanıcı akışları**' nı seçin.
 1. Amazon Identity sağlayıcısını eklemek istediğiniz kullanıcı akışına tıklayın.

@@ -3,14 +3,14 @@ title: Azure Otomasyonu 'nda zamanlamaları yönetme
 description: Bu makalede, Azure Otomasyonu 'nda bir zamanlamaya göre nasıl oluşturulacağı ve bunlarla çalışacakları açıklanır.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 09/10/2020
+ms.date: 03/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: f40e3d555d6e1472b9d2368a114ee27d588f6383
-ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
+ms.openlocfilehash: 6f7cd1f3684bb14d25a77fe8e3980e8e2041808a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103149486"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104669568"
 ---
 # <a name="manage-schedules-in-azure-automation"></a>Azure Otomasyonu 'nda zamanlamaları yönetme
 
@@ -38,7 +38,7 @@ Aşağıdaki tablodaki cmdlet 'ler, PowerShell ile otomasyon zamanlamaları olu�
 
 ## <a name="create-a-schedule"></a>Zamanlama Oluştur
 
-Runbook 'larınız için Azure portal veya PowerShell ile yeni bir zamanlama oluşturabilirsiniz. Runbook 'larınızı ve otomatikleştiredikleri işlemleri etkilememek için, öncelikle test için ayrılmış bir Otomasyon hesabı ile bağlantılı zamanlamaları olan runbook 'ları test etmelisiniz. Test, zamanlanan runbook 'larınızın doğru şekilde çalışmaya devam etmesini doğrular. Bir sorun görürseniz, güncelleştirilmiş runbook sürümünü üretime geçirmeden önce gereken değişiklikleri sorun giderme ve uygulama işlemleri yapabilirsiniz.
+Runbook 'larınız için Azure portal, PowerShell ile veya bir Azure Resource Manager (ARM) şablonu kullanarak yeni bir zamanlama oluşturabilirsiniz. Runbook 'larınızı ve otomatikleştiredikleri işlemleri etkilememek için, öncelikle test için ayrılmış bir Otomasyon hesabı ile bağlantılı zamanlamaları olan runbook 'ları test etmelisiniz. Test, zamanlanan runbook 'larınızın doğru şekilde çalışmaya devam etmesini doğrular. Bir sorun görürseniz, güncelleştirilmiş runbook sürümünü üretime geçirmeden önce gereken değişiklikleri sorun giderme ve uygulama işlemleri yapabilirsiniz.
 
 > [!NOTE]
 > [Azure modüllerini Güncelleştir](../automation-update-azure-modules.md) seçeneğini **modüller**' i seçerek Otomasyon hesabınız, el ile güncelleştirmediğiniz takdirde otomatik olarak modüllerin yeni sürümlerini almaz. Azure Otomasyonu, yeni bir zamanlanan iş çalıştırıldığında Otomasyon hesabınızdaki en son modülleri kullanır. 

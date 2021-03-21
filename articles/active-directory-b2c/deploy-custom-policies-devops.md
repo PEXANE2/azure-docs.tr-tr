@@ -12,10 +12,10 @@ ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 13f5f8da0bd58cef0974e8ea8f5f3c5172daa0ba
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96928741"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>Azure Pipelines ile özel ilkeler dağıtma
@@ -131,7 +131,7 @@ Deponuz başlatılmış ve özel ilke dosyalarınıza doldurulduktan sonra yayı
 1. **Değişkenler** sekmesini seçin.
 1. Aşağıdaki değişkenleri **ardışık düzen değişkenleri** altına ekleyin ve değerlerini belirtilen şekilde ayarlayın:
 
-    | Ad | Değer |
+    | Name | Değer |
     | ---- | ----- |
     | `clientId` | Daha önce kaydettiğiniz uygulamanın **uygulama (istemci) kimliği** . |
     | `clientSecret` | Daha önce oluşturduğunuz **istemci parolasının** değeri. <br /> Değişken türünü **gizli** olarak değiştirin (kilit simgesini seçin). |

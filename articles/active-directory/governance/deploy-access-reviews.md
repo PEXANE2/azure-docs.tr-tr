@@ -17,10 +17,10 @@ ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4122e645b76751e8944704a6405cf5dee09129f1
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97932444"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Azure Active Directory erişim gözden geçirmeleri dağıtımını planlama
@@ -244,9 +244,9 @@ Bir erişim gözden geçirme ilkesi oluşturmak için aşağıdaki bilgilere sah
 | Bileşen| Değer |
 | - | - |
 | **Gözden geçirilecek kaynaklar**| Microsoft Dynamics 'e erişim |
-| **İnceleme sıklığı**| Aylık olarak |
+| **İnceleme sıklığı**| Aylık |
 | **Kim tarafından incelenmektedir**| Dynamics iş grubu program yöneticileri |
-| **Uyarıyı**| Diğer ada gözden geçirmesinden önce 24 saat e-posta Dynamics-Pms<p>Teşvik özel iletisini, satın allarını güvenli hale getirmek için gözden geçirenlere ekleyin |
+| **Bildirim**| Diğer ada gözden geçirmesinden önce 24 saat e-posta Dynamics-Pms<p>Teşvik özel iletisini, satın allarını güvenli hale getirmek için gözden geçirenlere ekleyin |
 | **Zaman çizelgesi**| bildirimden 48 saat |
 |**Otomatik eylemler**| Kullanıcıları güvenlik grubundan Dynamics-Access ' ten kaldırarak 90 gün içinde etkileşimli oturum açma olmayan herhangi bir hesaptan erişimi kaldırın. <p>*Zaman çizelgesi içinde incelenmeyen eylemler gerçekleştirin.* |
 | **El ile gerçekleştirilen eylemler**| Gözden geçirenler, istenirse otomatik eylem öncesinde kaldırma onayı gerçekleştirebilir. |

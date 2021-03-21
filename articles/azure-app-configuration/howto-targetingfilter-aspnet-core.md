@@ -8,10 +8,10 @@ ms.author: alkemper
 ms.topic: conceptual
 ms.date: 11/20/2020
 ms.openlocfilehash: c415eaeab2edd0a1b324bba4266266201cb50cbf
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96929693"
 ---
 # <a name="enable-staged-rollout-of-features-for-targeted-audiences"></a>Hedeflenen izleyiciler için özelliklerin aşamalı dağıtımını etkinleştir
@@ -46,7 +46,7 @@ Bu noktada, `Beta` tüm kullanıcılar için özelliği etkinleştirmek veya dev
    dotnet add package Microsoft.FeatureManagement.AspNetCore
    ```
 
-1. *TestTargetingContextAccessor.cs* dosyası ekleyin:
+1. *Testtargetingcontextaccessor. cs* dosyası ekleyin:
 
     ```csharp
     using Microsoft.AspNetCore.Http;
@@ -91,7 +91,7 @@ Bu noktada, `Beta` tüm kullanıcılar için özelliği etkinleştirmek veya dev
     }
     ```
 
-1. *Startup.cs*' de, *Microsoft. Featuremanagement. featurefilters* ad alanına bir başvuru ekleyin:
+1. *Startup. cs* dosyasında, *Microsoft. Featuremanagement. featurefilters* ad alanına bir başvuru ekleyin:
 
     ```csharp
     using Microsoft.FeatureManagement.FeatureFilters;
@@ -133,7 +133,7 @@ Tüm *ConfigureServices* yöntemi şöyle görünür:
 
 1. Azure portal, uygulama yapılandırma deponuza gidin ve **Feature Manager**' ı seçin.
 
-1. Hızlı başlangıçta oluşturduğunuz *Beta* özelliği bayrağının bağlam menüsünü seçin. **Düzenle**’yi seçin.
+1. Hızlı başlangıçta oluşturduğunuz *Beta* özelliği bayrağının bağlam menüsünü seçin. **Düzenle**'yi seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Beta Özellik bayrağını Düzenle](./media/edit-beta-feature-flag.png)

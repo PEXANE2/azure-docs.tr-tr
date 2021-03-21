@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.custom: mvc
 ms.openlocfilehash: 858f006de7425a9fa8bea25e356a148b877aa30d
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102040609"
 ---
 # <a name="about-azure-migrate"></a>Azure Geçişi Hakkında
@@ -80,13 +80,13 @@ Sunucu değerlendirmesi, şirket içinde dağıttığınız basit bir [Azure ge�
 - Gereç keşfi sonrasında, bulunan makineleri gruplar halinde toplayabilir ve her grup için değerlendirmeler çalıştırabilirsiniz.
 
 > [!Note]
-> VMware ortamınızda çalışan SQL Server örnekleri ve veritabanlarının keşfi ve değerlendirmesi artık önizlemededir. Bu özelliği denemek için **Avustralya Doğu** bölgede bir proje oluşturmak üzere [**Bu bağlantıyı**](https://go.microsoft.com/fwlink/?linkid=2155668) kullanın. Zaten Avustralya Doğu bir projeniz varsa ve bu özelliği denemek istiyorsanız, lütfen portalda bu [**önkoşulları**](how-to-discover-sql-existing-project.md) tamamladığınızdan emin olun.
+> VMware ortamınızda çalışan SQL Server örnekleri ve veritabanlarının keşfi ve değerlendirmesi artık önizlemededir. Bu özelliği denemek için [**bu bağlantıyı**](https://go.microsoft.com/fwlink/?linkid=2155668) kullanarak **Doğu Avustralya** bölgesinde bir proje oluşturun. Zaten Doğu Avustralya bölgesinde bir projeniz varsa ve bu özelliği denemek istiyorsanız, lütfen portalda bu [**önkoşulları**](how-to-discover-sql-existing-project.md) tamamladığınızdan emin olun.
 
 ## <a name="azure-migrate-server-migration-tool"></a>Azure geçişi: sunucu geçiş aracı
 
 Azure geçişi: sunucu geçiş aracı, Azure 'a geçiş yapmanıza yardımcı olur:
 
-**Geçiremezsiniz** | **Ayrıntılar**
+**Geçiş** | **Ayrıntılar**
 --- | ---
 Şirket içi VMware sanal makineleri | Aracısız veya aracı tabanlı geçiş kullanarak VM 'Leri Azure 'a geçirin.<br/><br/> Aracısız geçiş için sunucu geçişi, VMware VM 'lerinin bulunması ve değerlendirmesi için sunucu değerlendirmesi tarafından da kullanılabilen aynı Azure geçiş gerecini kullanır.<br/><br/> Sunucu geçişi, aracı tabanlı geçiş için bir çoğaltma gereci kullanır.
 Şirket içi Hyper-V VM'leri | VM 'Leri Azure 'a geçirin.<br/><br/> Sunucu geçişi, geçiş için Hyper-V konağına yüklenen sağlayıcı aracılarını kullanır.

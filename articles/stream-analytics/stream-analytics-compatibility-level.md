@@ -5,29 +5,30 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/10/2020
-ms.openlocfilehash: 07df391e664fe04b9c7d2eda34960666c44a2e06
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.date: 03/18/2021
+ms.openlocfilehash: a040aecbdee40832bd21256e26a140a986b65e39
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99094098"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606251"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics işleri için uyumluluk düzeyi
 
-Bu makalede, Azure Stream Analytics uyumluluk düzeyi seçeneği açıklanmaktadır. Stream Analytics, düzenli özellik güncelleştirmeleri ve performans iyileştirmeleri içeren bir yönetilen hizmettir. Hizmetin çalışma zamanları güncelleştirmelerinin çoğu, son kullanıcılar için otomatik olarak kullanılabilir hale getirilir. 
+Bu makalede, Azure Stream Analytics uyumluluk düzeyi seçeneği açıklanmaktadır.
 
-Ancak, hizmette bulunan bazı yeni işlevler, var olan bir işin davranışında değişiklik veya çalışan işlerde verilerin tüketilme biçiminde bir değişiklik gibi önemli bir değişikliğe neden olabilir. Uyumluluk düzeyi ayarını düşürülemez ve bu durumda, büyük değişiklikler olmadan çalışan mevcut Stream Analytics işlerinizi koruyabilirsiniz. En son çalışma zamanı davranışları için hazırsanız, uyumluluk düzeyini yükselterek kabul edebilirsiniz. 
+Stream Analytics, [düzenli özellik güncelleştirmeleri ve sabit performans iyileştirmeleri](https://azure.microsoft.com/updates/?product=stream-analytics)içeren bir yönetilen hizmettir. Hizmetin çalışma zamanları güncelleştirmelerinin çoğu, uyumluluk düzeyinden bağımsız olarak son kullanıcılar için otomatik olarak kullanılabilir hale getirilir. Ancak, yeni bir işlev var olan işlerin davranışındaki bir değişikliği veya çalışan iş işlerinde verilerin tüketildiği bir değişikliği ortaya çıkardık, bu değişikliği yeni bir uyumluluk düzeyi altında tanıttık. Uyumluluk düzeyi ayarını düşürülemez ve bu durumda, büyük değişiklikler olmadan çalışan mevcut Stream Analytics işlerinizi koruyabilirsiniz. En son çalışma zamanı davranışları için hazırsanız, uyumluluk düzeyini yükselterek kabul edebilirsiniz.
+
 
 ## <a name="choose-a-compatibility-level"></a>Uyumluluk düzeyi seçin
 
-Uyumluluk düzeyi bir Stream Analytics işinin çalışma zamanı davranışını denetler. 
+Uyumluluk düzeyi bir Stream Analytics işinin çalışma zamanı davranışını denetler.
 
 Azure Stream Analytics Şu anda üç uyumluluk düzeyini desteklemektedir:
 
-* 1,0-birkaç yıl önce Azure Stream Analytics genel kullanıma sunulmasıyla tanıtılan orijinal uyumluluk düzeyi.
-* 1,1-önceki davranış
 * 1,2-en son iyileştirmeler ile en yeni davranış
+* 1,1-önceki davranış
+* 1,0-birkaç yıl önce Azure Stream Analytics genel kullanıma sunulmasıyla tanıtılan orijinal uyumluluk düzeyi. 
 
 Yeni bir Stream Analytics iş oluşturduğunuzda, en son uyumluluk düzeyini kullanarak oluşturmak en iyi uygulamadır. Daha sonra eklenmiş değişiklik ve karmaşıklığın önüne geçmek için en son davranışlardan sonra iş tasarımınızı başlatın.
 
@@ -121,7 +122,7 @@ Aşağıdaki büyük değişiklikler uyumluluk düzeyi 1,1 ' de kullanıma sunul
 
 ### <a name="service-bus-xml-format"></a>Service Bus XML biçimi
 
-**1,0 düzeyi:** İleti içeriği XML etiketleri dahil olmak üzere Azure Stream Analytics DataContractSerializer kullanılır. Örneğin:
+**1,0 düzeyi:** İleti içeriği XML etiketleri dahil olmak üzere Azure Stream Analytics DataContractSerializer kullanılır. Örnek:
 
 `@\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId":"1", "Temperature":64\}\u0001`
 

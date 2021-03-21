@@ -11,10 +11,10 @@ ms.date: 07/04/2017
 ms.author: robinsh
 ms.custom: mqtt, devx-track-csharp
 ms.openlocfilehash: 43cafb8c5efe0581fe7c4136aa41980b3d817be2
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99981417"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-net"></a>IoT Hub (.NET) ile cihazınızdan buluta dosya yükleme
@@ -27,7 +27,7 @@ Bu öğretici, IoT Hub dosya yükleme yeteneklerini nasıl kullanacağınızı g
 
 * Uygulama arka uçtaki dosyayı işlemeyi tetiklemek için karşıya dosya yükleme bildirimlerini IoT Hub kullanın.
 
-[Bir cihazdan IoT Hub 'ına](quickstart-send-telemetry-dotnet.md) hızlı başlangıç yapın ve [IoT Hub öğreticisiyle buluttan cihaza iletiler gönderin](iot-hub-csharp-csharp-c2d.md) IoT Hub ' ın temel cihazdan buluta ve buluttan cihaza mesajlaşma işlevlerini gösterir. [IoT Hub öğreticisi Ile Ileti yönlendirmeyi yapılandırma](tutorial-routing.md) , Microsoft Azure Blob depolamada cihazdan buluta iletileri güvenilir bir şekilde depolamanın yolunu açıklar. Ancak, bazı senaryolarda, cihazlarınızın IoT Hub kabul ettiği görece küçük cihazdan buluta iletileri içine gönderdikleri verileri kolayca eşleyemezsiniz. Örneğin:
+[Bir cihazdan IoT Hub 'ına](quickstart-send-telemetry-dotnet.md) hızlı başlangıç yapın ve [IoT Hub öğreticisiyle buluttan cihaza iletiler gönderin](iot-hub-csharp-csharp-c2d.md) IoT Hub ' ın temel cihazdan buluta ve buluttan cihaza mesajlaşma işlevlerini gösterir. [IoT Hub öğreticisi Ile Ileti yönlendirmeyi yapılandırma](tutorial-routing.md) , Microsoft Azure Blob depolamada cihazdan buluta iletileri güvenilir bir şekilde depolamanın yolunu açıklar. Ancak, bazı senaryolarda, cihazlarınızın IoT Hub kabul ettiği görece küçük cihazdan buluta iletileri içine gönderdikleri verileri kolayca eşleyemezsiniz. Örnek:
 
 * Görüntü içeren büyük dosyalar
 
@@ -70,7 +70,7 @@ Bu bölümde, IoT Hub 'ından buluttan cihaza iletileri almak için [IoT Hub ile
 
     ![Çıkış dizinine kopyalamak için görüntü özelliğinin nerede güncelleşbir olduğunu göster](./media/iot-hub-csharp-csharp-file-upload/image-properties.png)
 
-1. **Program.cs** dosyasında, dosyanın en üstüne aşağıdaki deyimleri ekleyin:
+1. **Program. cs** dosyasında, dosyanın en üstüne aşağıdaki deyimleri ekleyin:
 
     ```csharp
     using System.IO;
@@ -127,7 +127,7 @@ Bu bölümde, IoT Hub 'ten karşıya dosya yükleme bildirimi iletileri alan bir
 
     Bu adım, **Readfileuploadnotification** projesinde [Azure IoT hizmeti SDK 'sı NuGet paketi](https://www.nuget.org/packages/Microsoft.Azure.Devices/) ' ni indirir, yükler ve bir başvuru ekler.
 
-1. Bu proje için **program.cs** dosyasında, dosyanın en üstüne aşağıdaki ifadeyi ekleyin:
+1. Bu projenin **program. cs** dosyasında, dosyanın en üstüne aşağıdaki ifadeyi ekleyin:
 
     ```csharp
     using Microsoft.Azure.Devices;

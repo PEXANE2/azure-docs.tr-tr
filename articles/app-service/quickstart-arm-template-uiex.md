@@ -10,10 +10,10 @@ ms.custom: subject-armqs, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 7437a5208f94b435576b8a38dc65a6e798303a72
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102179094"
 ---
 # <a name="quickstart-create-app-service-app-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak App Service uygulaması oluşturma
@@ -55,7 +55,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablo
 
 Aşağıdaki tabloda, varsayılan parametrelerin ayrıntıları ve açıklamaları verilmiştir:
 
-| Parametreler | Tür    | Varsayılan değer                | Açıklama |
+| Parametreler | Tür    | Varsayılan değer                | Description |
 |------------|---------|------------------------------|-------------|
 | webAppName | string  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | Uygulama adı |
 | location   | string  | "[[resourceGroup (). Location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | Uygulama bölgesi |
@@ -85,7 +85,7 @@ Bu şablon, size kolaylık sağlaması için tanımlanan Azure kaynaklarını ve
 
 Aşağıdaki tabloda, varsayılan parametrelerin ayrıntıları ve açıklamaları verilmiştir:
 
-| Parametreler | Tür    | Varsayılan değer                | Açıklama |
+| Parametreler | Tür    | Varsayılan değer                | Description |
 |------------|---------|------------------------------|-------------|
 | webAppName | string  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | Uygulama adı |
 | location   | string  | "[[resourceGroup (). Location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | Uygulama bölgesi |
@@ -142,7 +142,7 @@ az deployment group create --resource-group myResourceGroup --parameters webAppN
 <summary>Farklı bir dil yığını Nasıl yaparım? dağıtmak istiyor musunuz?</summary>
 Farklı bir dil yığını dağıtmak için, güncelleştirme <abbr title="Bu şablon .NET Core, .NET Framework, PHP, Node.js ve statik HTML uygulamalarıyla uyumludur. "> dil parametresi</abbr> uygun değerleri vardır. Java için bkz. <a href="/azure/app-service/quickstart-java-uiex">Java uygulaması oluşturma</a>.
 
-| Parametreler | Tür    | Varsayılan değer                | Açıklama |
+| Parametreler | Tür    | Varsayılan değer                | Description |
 |------------|---------|------------------------------|-------------|
 | language   | string  | .net                       | Programlama dili yığını (.net, php, Node, HTML) |
 

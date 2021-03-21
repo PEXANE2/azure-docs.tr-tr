@@ -4,10 +4,10 @@ description: Bu öğreticide, Azure IoT Edge üzerinde Azure Live video analizi 
 ms.topic: tutorial
 ms.date: 05/27/2020
 ms.openlocfilehash: 2dde1c9d917881d7a16dbc853e4af416dffe5d7b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101702428"
 ---
 # <a name="tutorial-continuous-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Öğretici: buluta sürekli video kaydetme ve buluttan kayıttan yürütme
@@ -126,7 +126,7 @@ Ardından src/buluttan cihaza-Console-App klasörüne gidin. Burada, oluşturdu�
 
 * **C2D-Console-App. csproj**: Visual Studio Code için proje dosyası.
 * **operations.js**: Bu dosya, çalıştırdığınız farklı işlemleri listeler.
-* **Program.cs**: örnek program kodu:
+* **Program. cs**: örnek program kodu:
     * Uygulama ayarlarını yükler.
     * IoT Edge modülünde canlı video analizi tarafından kullanıma sunulan doğrudan yöntemleri çağırır. [Doğrudan yöntemlerini](direct-methods.md)çağırarak canlı video akışlarını çözümlemek için modülünü kullanabilirsiniz.
     * , **TERMINAL** penceresinde programın çıkışını ve **Çıkış** penceresinde modül tarafından oluşturulan olayları incelemeniz için duraklamalar.
