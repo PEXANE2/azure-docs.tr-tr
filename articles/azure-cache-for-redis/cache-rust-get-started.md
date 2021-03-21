@@ -8,10 +8,10 @@ ms.devlang: rust
 ms.topic: quickstart
 ms.date: 01/08/2021
 ms.openlocfilehash: 17f38d79b75179d7a54ca5ed1d20dff18d0a0363
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102121108"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-rust"></a>Hızlı başlangıç: Rust ile Reda için Azure önbelleğini kullanma

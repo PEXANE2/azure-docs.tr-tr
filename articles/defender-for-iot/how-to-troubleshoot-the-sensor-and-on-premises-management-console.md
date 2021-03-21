@@ -8,10 +8,10 @@ ms.date: 03/14/2021
 ms.topic: article
 ms.service: azure
 ms.openlocfilehash: ba68bc3eee94689236792f0270d779357dffde9f
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103465785"
 ---
 # <a name="troubleshoot-the-sensor-and-on-premises-management-console"></a>Algılayıcı ve şirket içi yönetim konsolunda sorun giderme
@@ -258,7 +258,7 @@ Günlükleri dışarı aktarmak için:
 
 1. Dışarı aktarmak istediğiniz verileri tanımlamak için veri kategorilerini seçin:  
 
-    | Kategoriyi dışarı aktar | Açıklama |
+    | Kategoriyi dışarı aktar | Description |
     |--|--|
     | **İşletim sistemi günlükleri** | İşletim sistemi durumu hakkında bilgi almak için bu seçeneği belirleyin. |
     | **Yükleme/yükseltme günlükleri** | Yükleme ve yükseltme yapılandırma parametrelerinin araştırılması için bu seçeneği belirleyin. |

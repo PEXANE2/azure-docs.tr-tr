@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 zone_pivot_groups: programming-languages-set-twenty-six
-ms.openlocfilehash: 339ae9a0a799a0a03f1fcf37dadf2e1ffa724243
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 0cca47269e632e1fcba1f8f9eb1c835f27e63059
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028691"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582836"
 ---
 # <a name="iot-plug-and-play-device-developer-guide"></a>IoT Tak ve Kullan cihaz Geliştirici Kılavuzu
 
@@ -26,7 +26,7 @@ Bu kılavuzda, [ıot Tak ve kullan kurallarını](../iot-pnp/concepts-convention
 IoT Tak ve Kullan cihazı, modülü veya IoT Edge modülü oluşturmak için aşağıdaki adımları izleyin:
 
 1. Cihazınızın Azure IoT Hub bağlanmak için MQTT veya MQTT Over WebSockets protokolünü kullandığından emin olun.
-1. Cihazınızı anlatmak için [dijital bir TWINS tanım dili (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) modeli oluşturun. Daha fazla bilgi edinmek için bkz. [ıot Tak ve kullan modellerdeki bileşenleri anlama](concepts-components.md).
+1. Cihazınızı anlatmak için [dijital bir TWINS tanım dili (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) modeli oluşturun. Daha fazla bilgi edinmek için bkz. [ıot Tak ve kullan modellerdeki bileşenleri anlama](concepts-modeling-guide.md).
 1. Cihaz bağlantısının bir parçası olarak duyurmak için cihazınızı veya modülünüzü güncelleştirin `model-id` .
 1. [Iot Tak ve kullan kurallarını](concepts-convention.md) kullanarak telemetri, özellik ve komutları uygulama
 
@@ -66,9 +66,9 @@ Cihazınız veya modül uygulamanız hazırsanız, cihazın IoT Tak ve Kullan ku
 
 IoT Tak ve Kullan cihaz geliştirmeyi öğrendiğinize göre artık bazı ek kaynaklar verilmiştir:
 
-- [Dijital TWINS tanım dili (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl)
+- [Dijital İkiz Tanımlama Dili (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl)
 - [C cihaz SDK’sı](/azure/iot-hub/iot-c-sdk-ref/)
 - [IoT REST API](/rest/api/iothub/device)
-- [Model bileşenleri](concepts-components.md)
+- [IoT Tak ve Kullan modellerdeki bileşenleri anlama](concepts-modeling-guide.md)
 - [DTDL yazma araçlarını yükle ve kullan](howto-use-dtdl-authoring-tools.md)
 - [IoT Tak ve Kullan hizmeti Geliştirici Kılavuzu](concepts-developer-guide-service.md)

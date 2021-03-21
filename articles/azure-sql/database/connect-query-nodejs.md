@@ -13,10 +13,10 @@ ms.reviewer: v-masebo
 ms.date: 05/29/2020
 ms.custom: seo-javascript-september2019, seo-javascript-october2019, sqldbrb=2, devx-track-js
 ms.openlocfilehash: 44530577972839aacb803d1722fa97716088fa0d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91325445"
 ---
 # <a name="quickstart-use-nodejs-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Hızlı başlangıç: Azure SQL veritabanı veya Azure SQL yönetilen örneği 'nde bir veritabanını sorgulamak için Node.js kullanma
@@ -92,7 +92,7 @@ Komut istemini açın ve *sqltest* adlı bir klasör oluşturun. Oluşturduğunu
 
 ## <a name="add-code-to-query-the-database"></a>Veritabanını sorgulamak için kod ekleme
 
-1. En sevdiğiniz metin düzenleyicisinde *sqltest.js*yeni bir dosya oluşturun.
+1. En sevdiğiniz metin düzenleyicisinde *sqltest.js* yeni bir dosya oluşturun.
 
 1. İçeriğini aşağıdaki kodla değiştirin. Daha sonra sunucunuz, veritabanınız, Kullanıcı ve parolanız için uygun değerleri ekleyin.
 

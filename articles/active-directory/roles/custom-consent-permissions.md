@@ -13,10 +13,10 @@ ms.author: rolyon
 ms.reviewer: psignoret
 ms.custom: it-pro
 ms.openlocfilehash: f9c2c15bbfcf9a9271e629ef26c11ecc4cbaaa6f
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98740117"
 ---
 # <a name="app-consent-permissions-for-custom-roles-in-azure-active-directory"></a>Azure Active Directory özel roller için uygulama izni izinleri
@@ -65,7 +65,7 @@ Burada `{id}` , bu iznin kullanılabilir olması için karşılanması gereken k
 
 ## <a name="full-list-of-permissions"></a>İzinlerin tam listesi
 
-İzin | Açıklama
+İzin | Description
 ---------- | -----------
 Microsoft. Directory/Servicesorumlularını/managePermissionGrantsForSelf. numarasını | Uygulama onay ilkesine tabi olmak üzere kendi kendine (Kullanıcı izni) adına uygulamalar için izin verme olanağı verir `{id}` .
 Microsoft. Directory/Servicesorumlularını/managePermissionGrantsForAll. numarasını | Uygulama onay ilkesine bağlı olarak, her biri adına (kiracı genelinde yönetici onayı) uygulamalara izin vermek için izin verir `{id}` .

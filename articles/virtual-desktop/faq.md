@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 03/09/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8592b679fcfbb860962bf75b882dc1a0543412c0
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: ffea2d84f1a5149670976beef3b9af847ae31a35
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102613978"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582145"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Windows Sanal Masaüstü hakkında SSS
 
@@ -110,7 +110,7 @@ Bir konak havuzu oluşturduktan sonra, türünü değiştiremezsiniz. Ancak, bir
 
 FSLogix 'teki sınırlamalar veya kotalar, Kullanıcı profili VHD (X) dosyalarını depolamak için kullanılan depolama dokusuna bağımlıdır.
 
-Aşağıdaki tabloda, bir FSLogix profilinin her kullanıcıyı desteklemesi için gereken kaynakların nasıl yapılacağı hakkında bir örnek verilmiştir. Gereksinimler, her profildeki Kullanıcı, uygulama ve etkinliğe bağlı olarak farklılık gösterebilir.
+Aşağıdaki tabloda, bir FSLogix profilinin her kullanıcıyı desteklemesi için kaç ıOPS gerektiğine ilişkin bir örnek verilmiştir. Gereksinimler, her profildeki Kullanıcı, uygulama ve etkinliğe bağlı olarak farklılık gösterebilir.
 
 | Kaynak | Gereksinim |
 |---|---|

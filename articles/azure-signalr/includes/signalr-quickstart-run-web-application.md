@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 author: anthonychu
 ms.service: signalr
 ms.topic: include
@@ -8,10 +8,10 @@ ms.date: 03/04/2019
 ms.author: antchu
 ms.custom: include file
 ms.openlocfilehash: 2af9c1dfd13d3aeafa7cf1ac76537117ecc15aff
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84317649"
 ---
 ## <a name="run-the-web-application"></a>Web uygulamasını çalıştırma
@@ -19,7 +19,7 @@ ms.locfileid: "84317649"
 1. İstemci testinizi basitleştirmek için tarayıcınızı örnek tek sayfalı web uygulamamızda açın [https://azure-samples.github.io/signalr-service-quickstart-serverless-chat/demo/chat-v2/](https://azure-samples.github.io/signalr-service-quickstart-serverless-chat/demo/chat-v2/) . 
 
     > [!NOTE]
-    > HTML dosyasının kaynağı [/docs/demo/chat-v2/index.html](https://github.com/Azure-Samples/signalr-service-quickstart-serverless-chat/blob/master/docs/demo/chat-v2/index.html)konumunda bulunur. HTML 'yi kendiniz barındırmak istiyorsanız, lütfen */docs/demo/chat-v2* dizininde [http-Server](https://www.npmjs.com/package/http-server) gibi bir yerel http sunucusu başlatın. local.settings.js, örneğe benzer şekilde, kaynak `CORS` ayarına eklendiğinden *local.settings.json* emin olun.
+    > HTML dosyasının kaynağı [/docs/demo/chat-v2/index.html](https://github.com/Azure-Samples/signalr-service-quickstart-serverless-chat/blob/master/docs/demo/chat-v2/index.html)konumunda bulunur. HTML 'yi kendiniz barındırmak istiyorsanız, lütfen */docs/demo/chat-v2* dizininde [http-Server](https://www.npmjs.com/package/http-server) gibi bir yerel http sunucusu başlatın. local.settings.js, örneğe benzer şekilde, kaynak `CORS` ayarına eklendiğinden  emin olun.
     > 
     > ```javascript
     > "Host": {

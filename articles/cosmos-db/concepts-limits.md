@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/19/2021
 ms.openlocfilehash: 007bf845bab6f493fae91debefde27a4929d9f95
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98611041"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB hizmet kotaları
@@ -62,15 +62,15 @@ El ile işleme içeren bir kapsayıcının gerektirdiği minimum aktarım hızı
 
 **Note:** hesabınız ["yüksek depolama/düşük aktarım hızı" programımız](set-throughput.md#high-storage-low-throughput-program)IÇIN uygun olduğunda, GB depolama alanı BAŞıNA en düşük 10 ru/sn miktarı düşürülemez.
 
-#### <a name="minimum-throughput-on-shared-throughput-database"></a>Paylaşılan aktarım hızı veritabanında en düşük aktarım hızı 
-Paylaşılan bir üretilen iş veritabanının el ile üretilen iş için gereken en düşük aktarım hızını tahmin etmek için en yüksek değeri bulun:
+#### <a name="minimum-throughput-on-shared-throughput-database"></a>Paylaşılan işleme birimi veritabanında en küçük işleme birimi 
+El ile işleme birimiyle paylaşılan işleme birimi veritabanının gereken en küçük işleme birimini tahmin etmek için en yüksek değeri bulun:
 
 * 400 RU/sn 
 * GB cinsinden geçerli depolama alanı * 10 RU/sn
 * Veritabanı/100 üzerinde sağlanan en yüksek RU/sn
 * 400 + MAX (kapsayıcı sayısı-25, 0) * 100 RU/sn
 
-Örnek: 400 RU/s, 15 GB depolama ve 10 kapsayıcı ile sağlanan bir veritabanınız olduğunu varsayalım. En az RU/sn `MAX(400, 15 * 10 RU/s per GB, 400 / 100, 400 + 0 )` = 400 ru/sn 'dir. Veritabanında 30 kapsayıcı varsa, en az RU/sn şöyle olacaktır `400 + MAX(30 - 25, 0) * 100 RU/s` = 900 ru/s. 
+Örnek: 400 RU/sn, 15 GB depolama ve 10 kapsayıcı ile sağlanan bir veritabanınız olduğunu düşünün. En az RU/sn `MAX(400, 15 * 10 RU/s per GB, 400 / 100, 400 + 0 )` = 400 ru/sn 'dir. Veritabanında 30 kapsayıcı varsa, en az RU/sn şöyle olacaktır `400 + MAX(30 - 25, 0) * 100 RU/s` = 900 ru/s. 
 
 **Note:** hesabınız ["yüksek depolama/düşük aktarım hızı" programımız](set-throughput.md#high-storage-low-throughput-program)IÇIN uygun olduğunda, GB depolama alanı BAŞıNA en düşük 10 ru/sn miktarı düşürülemez.
 

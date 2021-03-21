@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/10/2020
 ms.openlocfilehash: f4a7f5581703ae6932f3b40e62085fed76f5e6f2
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91945711"
 ---
 # <a name="filter-based-feature-selection"></a>Filtre Tabanlı Özellik Seçimi
@@ -65,8 +65,8 @@ Standart istatistiksel bir ölçüm seçersiniz. Modül bir sütun çifti arası
     > [!IMPORTANT]
     > Giriş olarak sağladığınızı sütunların olası özellikler olduğundan emin olun. Örneğin, tek bir değer içeren bir sütun hiçbir bilgi değeri içermez.
     >
-    > Bazı sütunlarda kötü özellikler olacağını biliyorsanız, bunları sütun seçiminden kaldırabilirsiniz. Ayrıca, bunları **kategorik**olarak Işaretlemek Için [meta verileri Düzenle](edit-metadata.md) modülünü de kullanabilirsiniz. 
-3.  **Özellik Puanlama yöntemi**için, puanları hesaplamada kullanmak üzere aşağıdaki belirlenen istatistiksel yöntemlerden birini seçin.  
+    > Bazı sütunlarda kötü özellikler olacağını biliyorsanız, bunları sütun seçiminden kaldırabilirsiniz. Ayrıca, bunları **kategorik** olarak Işaretlemek Için [meta verileri Düzenle](edit-metadata.md) modülünü de kullanabilirsiniz. 
+3.  **Özellik Puanlama yöntemi** için, puanları hesaplamada kullanmak üzere aşağıdaki belirlenen istatistiksel yöntemlerden birini seçin.  
 
     | Yöntem              | Gereksinimler                             |
     | ------------------- | ---------------------------------------- |
@@ -77,12 +77,12 @@ Standart istatistiksel bir ölçüm seçersiniz. Modül bir sütun çifti arası
     > Seçili ölçüyü değiştirirseniz, diğer tüm seçimler sıfırlanır. Bu nedenle, önce bu seçeneği ayarladığınızdan emin olun.
 4.  Yalnızca daha önce özellik olarak işaretlenmiş sütunlarda puan oluşturmak için yalnızca **Özellik sütunları üzerinde** çalışma seçeneğini belirleyin. 
 
-    Bu seçeneği temizlerseniz, modül, **istenen özellikler sayısında**belirtilen sütun sayısına kadar, diğer bir deyişle ölçütü karşılayan herhangi bir sütun için bir puan oluşturur.  
+    Bu seçeneği temizlerseniz, modül, **istenen özellikler sayısında** belirtilen sütun sayısına kadar, diğer bir deyişle ölçütü karşılayan herhangi bir sütun için bir puan oluşturur.  
 
-5.  **Hedef sütun**için, etiket sütununu ada veya dizinine göre seçmek için **sütun seçiciyi Başlat** ' ı seçin. (Dizinler tek tabanlıdır.)  
+5.  **Hedef sütun** için, etiket sütununu ada veya dizinine göre seçmek için **sütun seçiciyi Başlat** ' ı seçin. (Dizinler tek tabanlıdır.)  
     İstatistiksel bağıntı içeren tüm yöntemler için bir etiket sütunu gereklidir. Etiket sütunu veya birden çok etiket sütunu seçerseniz modül bir tasarım zamanı hatası döndürür. 
 
-6.  **İstenen özellik sayısı**için, sonuç olarak döndürülmesini istediğiniz özellik sütunlarının sayısını girin:  
+6.  **İstenen özellik sayısı** için, sonuç olarak döndürülmesini istediğiniz özellik sütunlarının sayısını girin:  
 
     - Belirtebileceğiniz özelliklerin en az biri bir tane olabilir, ancak bu değeri artırmanız önerilir.  
 
@@ -128,7 +128,7 @@ Bir sayısal özellikte ve kategorik bir etikette Pearson bağıntı kullanırsa
 
 -   Bir sütun mantıksal (true/false) değerler içeriyorsa, ve olarak işlenir `True = 1` `False = 0` .  
 
--   Bir sütun **etiket** veya **puan**olarak belirlendiyse bir özellik olamaz.  
+-   Bir sütun **etiket** veya **puan** olarak belirlendiyse bir özellik olamaz.  
 
 ### <a name="how-missing-values-are-handled"></a>Eksik değerler nasıl işlenir  
 

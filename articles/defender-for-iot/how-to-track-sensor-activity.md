@@ -7,18 +7,18 @@ ms.author: shhazam
 ms.date: 12/10/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: b8a7679521096cf3d98e8f55748eb0398fdc4ab8
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 6dbe15da85a85303742ef28c7ca609755193f25e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100523609"
 ---
 # <a name="track-sensor-activity"></a>Algılayıcı etkinliğini izleme
 
 ## <a name="event-timeline"></a>Olay zaman çizelgesi
 
-Olay zaman çizelgesi, sensörize algıladığı etkinliğin bir zaman çizelgesini gösterir. Örneğin:
+Olay zaman çizelgesi, sensörize algıladığı etkinliğin bir zaman çizelgesini gösterir. Örnek:
 
   - Uyarılar ve uyarı yönetimi eylemleri
 
@@ -89,6 +89,6 @@ Zaman çizelgesini filtrelemek için:
     
       PCAP dosyası, ağ mühendislerinin tam olay parametrelerini belirlemesine yardımcı olabilecek teknik bilgiler içerir. PCAP dosyasını, açık kaynaklı bir uygulama olan Wireshark gibi bir ağ protokolü Çözümleyicisi ile çözümleyebilirsiniz.
 
-## <a name="next-steps"></a>Sonraki adımlar
+## <a name="see-also"></a>Ayrıca bkz.
 
 [Uyarıları görüntüleme](how-to-view-alerts.md)

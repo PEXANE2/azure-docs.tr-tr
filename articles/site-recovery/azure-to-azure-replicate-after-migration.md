@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: a71e476a214c44514c7d57c54a09a38218ad6d2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86135667"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Azure'a geçişten sonra Azure VM'leri için olağanüstü durumdan kurtarmayı ayarlama 
@@ -76,7 +76,7 @@ Windows için aracı yüklemesi hakkında [daha fazla bilgi edinin](../virtual-m
         ```
         MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
         ```
-    - Linux için, kök kullanıcı olarak oturum açın. Bir terminalde **/User/Local/ASR**adresine gidin ve şu komutu çalıştırın:
+    - Linux için, kök kullanıcı olarak oturum açın. Bir terminalde **/User/Local/ASR** adresine gidin ve şu komutu çalıştırın:
         ```
         ./uninstall.sh -Y
         ```

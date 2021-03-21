@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: d9ff86eeb0e64e7edbad0eeca51b04cabbd191e9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7357703af41afc913ef63dff6ecae3d230c9eca0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101722662"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104583301"
 ---
 # <a name="use-certificates-with-azure-cloud-services-extended-support"></a>Sertifikaları Azure Cloud Services kullanma (genişletilmiş destek)
 
@@ -41,7 +41,7 @@ Key Vault, Cloud Services ilişkili sertifikaları (genişletilmiş destek) depo
 
     :::image type="content" source="media/certs-and-key-vault-4.png" alt-text="Görüntü oluştur/içeri aktar seçeneğini seçmeyi gösterir":::
 
-4.  Sertifikayı karşıya yüklemeyi tamamlayacak gerekli bilgileri doldurun. 
+4.  Sertifikayı karşıya yüklemeyi tamamlayacak gerekli bilgileri doldurun. Sertifikanın içinde olması gerekir **. PFX** biçimi.
 
     :::image type="content" source="media/certs-and-key-vault-5.png" alt-text="Görüntü Azure portal içeri aktarma penceresini gösterir.":::
 

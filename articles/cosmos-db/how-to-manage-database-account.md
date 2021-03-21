@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 01/06/2021
 ms.author: mjbrown
 ms.openlocfilehash: d542e2b4e5db86fd3354514790e718f0694a09a5
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102489761"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Azure Cosmos hesabını yönetme
@@ -25,7 +25,7 @@ Bu makalede Azure portalını, Azure PowerShell’i, Azure CLI’yı ve Azure Re
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-### <a name="azure-cli"></a><a id="create-database-account-via-cli"></a>Azure CLı
+### <a name="azure-cli"></a><a id="create-database-account-via-cli"></a>Azure CLI’si
 
 Lütfen bkz. [Azure CLI ile Azure Cosmos DB hesabı oluşturma](manage-with-cli.md#create-an-azure-cosmos-db-account)
 
@@ -57,7 +57,7 @@ Tek bölgeli yazma modunda yazma bölgesini kaldıramazsınız. Geçerli yazma b
 
 Çok bölgeli yazma modunda, en az bir bölgeniz varsa istediğiniz bölgeyi ekleyebilir veya kaldırabilirsiniz.
 
-### <a name="azure-cli"></a><a id="add-remove-regions-via-cli"></a>Azure CLı
+### <a name="azure-cli"></a><a id="add-remove-regions-via-cli"></a>Azure CLI’si
 
 Lütfen bkz. [Azure CLI ile bölge ekleme veya kaldırma](manage-with-cli.md#add-or-remove-regions)
 
@@ -73,7 +73,7 @@ Lütfen bkz. [PowerShell ile bölge ekleme veya kaldırma](manage-with-powershel
 
 :::image type="content" source="./media/how-to-manage-database-account/single-to-multi-master.png" alt-text="Azure Cosmos hesabı, çok bölgeli yazma ekran görüntüsünü yapılandırır":::
 
-### <a name="azure-cli"></a><a id="configure-multiple-write-regions-cli"></a>Azure CLı
+### <a name="azure-cli"></a><a id="configure-multiple-write-regions-cli"></a>Azure CLI’si
 
 Lütfen bkz. [Azure CLI ile birden çok yazma bölgesini etkinleştirme](manage-with-cli.md#enable-multiple-write-regions)
 
@@ -159,7 +159,7 @@ Otomatik yük devretme seçeneği, bir bölgenin kullanılamaz duruma gelmesi i�
 
    :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="Otomatik yük devretme portal menüsü":::
 
-### <a name="azure-cli"></a><a id="enable-automatic-failover-via-cli"></a>Azure CLı
+### <a name="azure-cli"></a><a id="enable-automatic-failover-via-cli"></a>Azure CLI’si
 
 Lütfen bkz. [Azure CLI ile otomatik yük devretmeyi etkinleştirme](manage-with-cli.md#enable-automatic-failover)
 
@@ -190,7 +190,7 @@ Bir Cosmos hesabı otomatik yük devretme için yapılandırıldıktan sonra, b�
 
    :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="Otomatik yük devretme portal menüsü":::
 
-### <a name="azure-cli"></a><a id="set-failover-priorities-via-cli"></a>Azure CLı
+### <a name="azure-cli"></a><a id="set-failover-priorities-via-cli"></a>Azure CLI’si
 
 Lütfen bkz. [Azure CLI ile yük devretme önceliğini ayarlama](manage-with-cli.md#set-failover-priority)
 
@@ -222,7 +222,7 @@ El ile yük devretme gerçekleştirme süreci, hesabın yazma bölgesinin (yük 
 
    :::image type="content" source="./media/how-to-manage-database-account/manual-failover.png" alt-text="El ile yük devretme portal menüsü":::
 
-### <a name="azure-cli"></a><a id="enable-manual-failover-via-cli"></a>Azure CLı
+### <a name="azure-cli"></a><a id="enable-manual-failover-via-cli"></a>Azure CLI’si
 
 Lütfen bkz. [Azure CLI ile el ile yük devretmeyi tetikleme](manage-with-cli.md#trigger-manual-failover)
 

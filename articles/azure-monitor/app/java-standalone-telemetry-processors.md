@@ -7,10 +7,10 @@ author: kryalama
 ms.custom: devx-track-java
 ms.author: kryalama
 ms.openlocfilehash: 35e53454e5b2c6265082bbedb4a8b60e82df7191
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101734579"
 ---
 # <a name="telemetry-processors-preview---azure-monitor-application-insights-for-java"></a>Telemetri işlemcileri (Önizleme)-Java için Azure Izleyici Application Insights
@@ -54,7 +54,7 @@ Ayrıca, Aralık adından bir veya daha fazla yeni özniteliği ayıklamak için
 > [!NOTE]
 > Şu anda telemetri işlemcileri yalnızca dize türündeki öznitelikleri işler. Boole veya sayı türündeki öznitelikleri işlemez.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 Başlamak için, *üzerindeapplicationinsights.js* adlı bir yapılandırma dosyası oluşturun. *ApplicationInsights-Agent- \* . jar* ile aynı dizine kaydedin. Aşağıdaki şablonu kullanın.
 

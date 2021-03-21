@@ -14,10 +14,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ae575aa6544a174a70eb8ea4749566e8660280e2
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94873276"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Azure AD Connect ve Azure AD Connect Health yükleme yol haritası
@@ -79,7 +79,7 @@ Azure AD Connect, isteğe bağlı olarak açabileceğiniz veya varsayılan olara
 | --- | --- |
 |Filtrelemeyi yapılandırma | [Azure AD Connect eşitleme: Filtrelemeyi yapılandırma](how-to-connect-sync-configure-filtering.md)|
 |Parola karması eşitleme | [Parola karması eşitleme](how-to-connect-password-hash-synchronization.md)|
-|Doğrudan Kimlik Doğrulama | [Doğrudan kimlik doğrulaması](how-to-connect-pta.md)
+|Doğrudan Kimlik Doğrulama | [Geçişli kimlik doğrulaması](how-to-connect-pta.md)
 |Parola geri yazma | [Parola yönetimine Başlarken](../authentication/tutorial-enable-sspr.md)|
 |Cihaz geri yazma | [Azure AD Connect’te cihaz geri yazma özelliğini etkinleştirme](how-to-connect-device-writeback.md)|
 |Yanlışlıkla silmeleri engelleme | [Azure AD Connect eşitleme: Yanlışlıkla Silmeleri Engelleme](how-to-connect-sync-feature-prevent-accidental-deletes.md)|
@@ -175,7 +175,7 @@ Azure AD Connect Health portalı; uyarıları, performans izlemeyi ve kullanım 
 - [Hızlı ayarlar](how-to-connect-install-express.md)
 - [Özelleştirilmiş ayarlar](how-to-connect-install-custom.md)
 - [Parola karması eşitleme](how-to-connect-password-hash-synchronization.md)|
-- [Doğrudan kimlik doğrulaması](how-to-connect-pta.md)
+- [Geçişli kimlik doğrulaması](how-to-connect-pta.md)
 - [Azure AD Connect ve Federasyon](how-to-connect-fed-whatis.md)
 - [Azure AD Connect Health aracılarını yükleme](how-to-connect-health-agent-install.md) 
 - [Azure AD Connect eşitleme](how-to-connect-sync-whatis.md)

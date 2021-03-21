@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/22/2020
 ms.author: aahi
 ms.openlocfilehash: cc6bcef77ca1601b76468586aa6af202836f1438
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97632001"
 ---
 # <a name="batch-processing-kit-for-speech-containers"></a>Konuşma kapsayıcıları için Batch işleme seti
@@ -151,7 +151,7 @@ Batch işleme seti, parametresini kullanarak üç mod sunar `--run-mode` .
 
 ---
 
-## <a name="logging"></a>Günlüğe kaydetme
+## <a name="logging"></a>Günlüğe Kaydetme
 
 > [!NOTE]
 > Batch istemcisi çok büyük alırsa *Run. log* dosyasının üzerine düzenli olarak yazılabilir.

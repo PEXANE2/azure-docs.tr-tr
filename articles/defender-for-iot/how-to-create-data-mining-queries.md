@@ -7,11 +7,11 @@ ms.author: shhazam
 ms.date: 01/20/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 0738dc7f2b7012002fc6ddf5cc68dd0c8e42b04d
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: edeb383317d4bdc0e7beef1f8390ddabd350f002
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100522488"
 ---
 # <a name="sensor-data-mining-queries"></a>Algılayıcı veri araştırma sorguları
@@ -45,7 +45,7 @@ Sorguları yönetmek için çeşitli araçlar mevcuttur. Örneğin, dışa aktar
 
 ### <a name="dynamic-updates"></a>Dinamik güncelleştirmeler
 
-Oluşturduğunuz veri araştırma sorguları, her açışınızda dinamik olarak güncelleştirilir. Örneğin:
+Oluşturduğunuz veri araştırma sorguları, her açışınızda dinamik olarak güncelleştirilir. Örnek:
 
 - 1 Haziran 'da cihazlarda bellenim sürümleri için bir rapor oluşturursanız ve raporu 10 Haziran 'da yeniden açarsanız, bu rapor 10 Haziran 'da doğru olan bilgilerle güncelleştirilir.
 
@@ -138,7 +138,7 @@ Veri araştırma raporu oluşturmak için:
 
 Aşağıdaki tabloda veri madenciliği için yönetim seçenekleri açıklanmaktadır:
 
-| Simge görüntüsü | Açıklama |
+| Simge görüntüsü | Description |
 |--|--|
 | :::image type="icon" source="media/how-to-generate-reports/edit-a-simulation-icon.png" border="false"::: | Rapor parametrelerini düzenleyin. |
 | :::image type="icon" source="media/how-to-generate-reports/export-as-pdf-icon.png" border="false"::: | PDF olarak dışa aktar. |
@@ -285,7 +285,3 @@ Bir rapor oluşturmak için:
 3. Sağ açılan listeden, oluşturmak istediğiniz raporu seçin.
 
 4. Rapor sonuçlarının bir PDF 'sini oluşturmak için öğesini seçin :::image type="icon" source="media/how-to-generate-reports/pdf-report-icon.png" border="false"::: .
-
-## <a name="next-steps"></a>Sonraki adımlar
-
-[Algılayıcı eğilimleri ve istatistik raporları](how-to-create-trends-and-statistics-reports.md).

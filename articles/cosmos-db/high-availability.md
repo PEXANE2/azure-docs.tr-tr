@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: f22d97f8a4ab5e5b6e275c405cce523e8a7b8e72
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: fd704d45aa7dc10835a205f12ce26fc01a7ea44f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656559"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584508"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Azure Cosmos DB yüksek kullanılabilirlik sağlama
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -69,12 +69,14 @@ Bölgesel kesintiden nadir durumlar için Azure Cosmos DB veritabanınızın her
 
 * Yazma bölgesi kesintisi sırasında, Azure Cosmos hesabı, Azure Cosmos hesabında **otomatik yük devretmeyi etkinleştir** seçeneği yapılandırıldığında, ikincil bölgeyi otomatik olarak yeni birincil yazma bölgesi olacak şekilde yükseltir. Etkinleştirildiğinde, yük devretme, belirlediğiniz bölge önceliği sırasına göre başka bir bölgeye yapılır.
 
+* El ile yük devretmenin tetiklenmeyeceğini ve kaynak veya hedef bölgenin bir kesinti olması durumunda başarısız olacağını unutmayın. Bu, bölgeler arasında bağlantı gerektiren yük devretme yordamının gerektirdiği bir tutarlılık denetimi nedeniyle oluşur.
+
 * Daha önce etkilenen bölge yeniden çevrimiçi olduğunda, bölge başarısız olduğunda çoğaltılmamış olan tüm yazma verileri, [Çakışma akışı](how-to-manage-conflicts.md#read-from-conflict-feed)aracılığıyla kullanılabilir hale getirilir. Uygulamalar, çakışmalar akışını okuyabilir, uygulamaya özgü mantığa göre çakışmaları çözümleyebilir ve güncelleştirilmiş verileri uygun şekilde Azure Cosmos kapsayıcısına geri yazabilir.
 
 * Daha önce etkilenen yazma bölgesi kurtarıldıktan sonra otomatik olarak bir okuma bölgesi olarak kullanılabilir hale gelir. Kurtarılan bölgeye yazma bölgesi olarak dönebilirsiniz. [PowerShell, Azure CLI veya Azure Portal](how-to-manage-database-account.md#manual-failover)kullanarak bölgeleri değiştirebilirsiniz. Bir **veri veya kullanılabilirlik kaybı** , yazma bölgesini değiştirmeden veya sonra, uygulamanız yüksek oranda kullanılabilir olmaya devam eder.
 
 > [!IMPORTANT]
-> **Otomatik yük devretmeyi etkinleştirmek** için üretim iş yükleri Için kullanılan Azure Cosmos hesaplarını yapılandırmanız önemle tavsiye edilir. El ile yük devretme, yük devretme sırasında veri kaybı olmadığından emin olmak için bir tutarlılık denetimini tamamlamaya yönelik ikincil ve birincil yazma bölgesi arasında bağlantı gerektirir. Birincil bölge kullanılamaz durumdaysa, bu tutarlılık denetimi tamamlanamaz ve el ile yük devretme başarısız olur ve bu durum, bölgesel kesinti süresi boyunca yazma kullanılabilirliği kaybı ile sonuçlanır.
+> **Otomatik yük devretmeyi etkinleştirmek** için üretim iş yükleri Için kullanılan Azure Cosmos hesaplarını yapılandırmanız önemle tavsiye edilir. Bu, Cosmos DB hesap veritabanlarının otomatik olarak availabile bölgelerine yük devretmesini sağlar. Bu yapılandırma yokluğunda, bölge bağlantısı olmaması nedeniyle el ile yük devretme başarısız olacağından, hesap, yazma bölgesi kesintisine ilişkin tüm süre için yazma kullanılabilirliği kaybıyla karşılaşacaktır.
 
 ### <a name="multi-region-accounts-with-a-single-write-region-read-region-outage"></a>Tek bir yazma bölgesi olan çok bölgeli hesaplar (okuma bölgesi kesintisi)
 
@@ -138,7 +140,22 @@ Kullanılabilirlik Alanları şu şekilde etkinleştirilebilir:
 
 * Azure Cosmos hesabınız yüksek oranda kullanılabilir olsa bile, uygulamanız yüksek oranda kullanılabilir kalacak şekilde doğru şekilde tasarlanmayabilir. Uygulama test veya olağanüstü durum kurtarma (DR) detaylarının bir parçası olarak uygulamanızın uçtan uca yüksek kullanılabilirliğini test etmek için, hesapta otomatik yük devretmeyi geçici olarak devre dışı bırakın, [PowerShell, Azure CLI veya Azure Portal kullanarak el ile yük devretmeyi](how-to-manage-database-account.md#manual-failover)çağırın, sonra uygulamanızın yük devretmesini izleyin. Tamamlandıktan sonra, birincil bölgeye yeniden yük devreder ve hesap için otomatik yük devretmeyi geri yükleyebilirsiniz.
 
+> [!IMPORTANT]
+> Kaynak veya hedef bölgelerde Cosmos DB kesintisi sırasında el ile yük devretmeyi çağırmayın, çünkü veri tutarlılığını korumak için bölgeler bağlantısı gerekir ve başarılı olmaz.
+
 * Küresel olarak dağıtılmış bir veritabanı ortamında, bölge genelinde bir kesinti olması durumunda tutarlılık düzeyi ve veri dayanıklılığı arasında doğrudan bir ilişki vardır. İş sürekliliği planınızı geliştirirken, kesintiye uğratan bir olaydan sonra uygulamanın tam olarak kurtarmadan önce kabul edilebilir en uzun süreyi anlamanız gerekir. Uygulamanın tam olarak kurtarılması için gereken süre, kurtarma zamanı hedefi (RTO) olarak bilinir. Ayrıca, uygulamanın, kesintiye uğratan bir olaydan sonra kurtarılırken kabul edebildiği en son veri güncelleştirme süresini de anlamanız gerekir. Kaybetmeyi göze alabileceğiniz güncelleştirme süresi kurtarma noktası hedefini (RPO) olarak bilinir. RPO ve RTO Azure Cosmos DB için bkz. [tutarlılık düzeyleri ve veri dayanıklılığı](./consistency-levels.md#rto)
+
+## <a name="what-to-expect-during-a-region-outage"></a>Bir bölge kesintisi sırasında beklenmeniz gerekenler
+
+Tek bölgeli hesaplar için istemciler okuma ve yazma kullanılabilirliği kaybına neden olur.
+
+Çok bölgeli hesaplar aşağıdaki tabloya bağlı olarak farklı davranışlarla karşılaşacaktır.
+
+| Yazma bölgeleri | Otomatik yük devretme | Beklentiler | Ne yapılmalı |
+| -- | -- | -- | -- |
+| Tek bir yazma bölgesi | Etkin değil | Okuma bölgesinde kesinti olması durumunda tüm istemciler diğer bölgelere yeniden yönlendirilir. Okuma veya yazma kullanılabilirlik kaybı yok. Veri kaybı yok. <p/> Yazma bölgesinde bir kesinti olması durumunda, istemciler yazma kullanılabilirliği kaybıyla karşılaşacaktır. Veri kaybı, seçilen uyumluluk düzeyine göre değişir. <p/> Cosmos DB, kesinti sona erdiğinde otomatik olarak yazma kullanılabilirliği geri yüklenir. | Kesinti sırasında, okuma trafiğini desteklemek için kalan bölgelerde yeterli sayıda kapasite sağlandığından emin olun. <p/> Kesinti sırasında el ile yük devretmeyi tetiklemeyin, çünkü *başarılı olmayacaktır.* <p/> Kesinti tamamlandığında, sağlanan kapasiteyi uygun şekilde yeniden ayarlayın. |
+| Tek bir yazma bölgesi | Etkin | Okuma bölgesinde kesinti olması durumunda tüm istemciler diğer bölgelere yeniden yönlendirilir. Okuma veya yazma kullanılabilirlik kaybı yok. Veri kaybı yok. <p/> Yazma bölgesinde bir kesinti olması durumunda, istemciler yeni bir bölgeyi tercihlerinize göre yeni yazma bölgesi olarak otomatik olarak eleyenene kadar Cosmos DB, yazma kullanılabilirlik kaybına neden olur. Veri kaybı, seçilen uyumluluk düzeyine göre değişir. | Kesinti sırasında, okuma trafiğini desteklemek için kalan bölgelerde yeterli sayıda kapasite sağlandığından emin olun. <p/> Kesinti sırasında el ile yük devretmeyi tetiklemeyin, çünkü *başarılı olmayacaktır.* <p/> Kesinti yük devretildiğinde, [Çakışma akışınızdan](how-to-manage-conflicts.md#read-from-conflict-feed)başarısız olan bölgede çoğaltılan olmayan verileri kurtarabilir, yazma bölgesini özgün bölgeye geri taşıyabilir ve sağlanan kapasiteyi uygun şekilde yeniden ayarlayabilirsiniz. |
+| Birden çok yazma bölgesi | Uygulanamaz | Okuma veya yazma kullanılabilirlik kaybı yok. <p/> Tutarlılık düzeyine göre veri kaybı seçildi. | Kesinti sırasında, ek trafiği desteklemek için kalan bölgelerde yeterli sayıda kapasite sağlandığından emin olun. <p/> Kesinti yük devretildiğinde, [Çakışma akışınızdan](how-to-manage-conflicts.md#read-from-conflict-feed) başarısız olan bölgede çoğaltılan olmayan verileri kurtarabilir ve sağlanan kapasiteyi uygun şekilde yeniden ayarlayabilirsiniz. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

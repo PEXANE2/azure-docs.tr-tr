@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 25320fb8cde0cc5a38f1edf4019a2f0e07cefe14
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103461105"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>Öğretici: saydam ağ geçidi aracılığıyla veri gönderme
@@ -51,7 +51,7 @@ Bu iki öğenin nasıl uygulandığını görmek için koda bakın.
 
 1.   >  C: kaynak ıotedgeandmlsample Device, dosyasını açmak için dosya **klasörü aç...** öğesini kullanın \\ \\ \\ .
 
-1. Program.cs ' de InstallCertificate () yöntemine bakın.
+1. Program. cs içindeki InstallCertificate () yöntemine bakın.
 
 1. Kod sertifika yolunu bulursa, sertifikayı makineye yüklemek için CertificateManager. ınstallcacert yöntemini çağırır.
 
@@ -121,7 +121,7 @@ AvroFileWriter modülünün çıktısı, IoT Edge cihazına bakarak kolayca göz
 
 1. 10 dakika geçtikten sonra modülün dosyaları karşıya yüklemesi gerekir. Karşıya yükleme başarılı olursa, dosyaları diskten siler.
 
-### <a name="azure-storage"></a>Azure Storage
+### <a name="azure-storage"></a>Azure Depolama
 
 Verilerin yönlendirilmesini beklediğimiz depolama hesaplarına bakarak yaprak cihazımızın sonuçlarını gözlemleyebiliriz.
 

@@ -8,17 +8,17 @@ ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
 ms.openlocfilehash: b72538c61d1a68bca655b0d9529f654068727f86
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101696196"
 ---
 # <a name="register-and-scan-sap-ecc-source-preview"></a>SAP ECC kaynağını kaydetme ve tarama (Önizleme)
 
 Bu makalede bir SAP ECC kaynağını purview 'a kaydetme ve tarama ayarlama özetlenmektedir.
 
-## <a name="supported-capabilities"></a>Desteklenen yetenekler
+## <a name="supported-capabilities"></a>Desteklenen özellikler
 
 SAP ECC kaynağı, bir SAP ECC örneğinden meta verileri ayıklamak için **tam taramayı** destekler ve veri varlıkları arasında **kökenini** getirir.
 

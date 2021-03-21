@@ -10,10 +10,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 4ab613c251bc43a025e0381046805ec998a04227
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "77019562"
 ---
 # <a name="quickstart---consume-vmware-vms-on-azure"></a>Hızlı başlangıç-Azure 'da VMware VM 'lerini kullanma
@@ -26,9 +26,9 @@ VCenter kullanıcı arabiriminden özel bulutunuzda bir sanal makine oluşturun.
 
 ## <a name="create-a-virtual-machine-in-the-azure-portal"></a>Azure portalda sanal makine oluşturma
 
-1. **Tüm hizmetler**’i seçin.
+1. **Tüm Hizmetler**’i seçin.
 
-2. **Cloudsimple sanal makineleri**için arama yapın.
+2. **Cloudsimple sanal makineleri** için arama yapın.
 
 3. **Ekle**'ye tıklayın.
 
