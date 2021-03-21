@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 2efd3e9c9ca97ea3d94b03bd5e440cd24d5da5da
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94960630"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-rest-api"></a>REST API kullanarak, sanal makine güvenliğine güvenlik grubu görünümü ile çözümleyin
@@ -64,7 +64,7 @@ $resourceGroupName = '<resource group name>'
 armclient get https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Compute/virtualMachines?api-version=2015-05-01-preview
 ```
 
-**id** `Microsoft.Compute/virtualMachines` Aşağıdaki örnekte görüldüğü gibi, gereken bilgiler, yanıt olarak tür ' ün altında yer alan kimliğidir:
+ `Microsoft.Compute/virtualMachines` Aşağıdaki örnekte görüldüğü gibi, gereken bilgiler, yanıt olarak tür ' ün altında yer alan kimliğidir:
 
 ```json
 ...,

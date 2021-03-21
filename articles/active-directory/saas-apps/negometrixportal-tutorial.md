@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/06/2019
 ms.author: jeedes
 ms.openlocfilehash: d972868cf9c5d67824eab781bc99a7cac5f7b313
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92507151"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-negometrixportal-single-sign-on-sso"></a>Öğretici: NegometrixPortal çoklu oturum açma (SSO) ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -57,7 +57,7 @@ NegometrixPortal çoklu oturum açma (SSO) tümleştirmesini Azure AD ile yapıl
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-negometrixportal-single-sign-on-sso"></a>NegometrixPortal çoklu oturum açma için Azure AD çoklu oturum açmayı yapılandırma ve test etme (SSO)
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu NegometrixPortal Single Sign on (SSO) ile yapılandırın ve test edin. SSO 'nun çalışması için, NegometrixPortal çoklu oturum açma (SSO) içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu NegometrixPortal Single Sign on (SSO) ile yapılandırın ve test edin. SSO 'nun çalışması için, NegometrixPortal çoklu oturum açma (SSO) içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu NegometrixPortal çoklu oturum açma (SSO) ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -91,7 +91,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Yukarıdaki NegometrixPortal çoklu oturum açma (SSO) uygulaması, daha fazla özniteliğin aşağıda gösterilen SAML yanıtına geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Adı | Kaynak özniteliği|
+    | Name | Kaynak özniteliği|
     | ---------------|  --------- |
     | 'le | User. UserPrincipalName |
 

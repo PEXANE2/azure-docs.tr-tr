@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.openlocfilehash: 67153fa750fee765dcaa1072eec87a2f6169b918
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397289"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>Azure portal kullanarak HTTP ile HTTPS yönlendirmesi arasında bir uygulama ağ geçidi oluşturma
@@ -68,7 +68,7 @@ Oluşturduğunuz kaynaklar arasında iletişim için bir sanal ağ gerekir. Bu �
 
 1. [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 2. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesine tıklayın.
-3. **Ağ** ve ardından Öne Çıkanlar listesinde **Application Gateway** ’i seçin.
+3. **Ağ** ve ardından Öne Çıkanlar listesinde **Application Gateway**’i seçin.
 4. Uygulama ağ geçidi için şu değerleri girin:
 
    - *myAppGateway* - Uygulama ağ geçidinin adı.
@@ -76,8 +76,8 @@ Oluşturduğunuz kaynaklar arasında iletişim için bir sanal ağ gerekir. Bu �
 
      ![Yeni uygulama ağ geçidi oluşturma](./media/create-url-route-portal/application-gateway-create.png)
 
-5. Diğer ayarların varsayılan değerlerini kabul edin ve sonra **Tamam** ’a tıklayın.
-6. **Sanal ağ Seç** ' e tıklayın, **Yeni oluştur** ' a tıklayın ve ardından sanal ağ için şu değerleri girin:
+5. Diğer ayarların varsayılan değerlerini kabul edin ve sonra **Tamam**’a tıklayın.
+6. **Sanal ağ Seç**' e tıklayın, **Yeni oluştur**' a tıklayın ve ardından sanal ağ için şu değerleri girin:
 
    - *myVNet* - Sanal ağın adı.
    - *10.0.0.0/16* - Sanal ağın adres alanı.
@@ -86,22 +86,22 @@ Oluşturduğunuz kaynaklar arasında iletişim için bir sanal ağ gerekir. Bu �
 
      ![Sanal ağ oluşturma](./media/create-url-route-portal/application-gateway-vnet.png)
 
-7. Sanal ağı ve alt ağı oluşturmak için **Tamam** ’a tıklayın.
-8. **Ön uç IP yapılandırması** altında, **IP adresi türünün** **ortak** olduğundan emin olun ve **Yeni oluştur** ' u seçilidir. Ad için *Myagpublicıpaddress* girin. Diğer ayarların varsayılan değerlerini kabul edin ve sonra **Tamam** ’a tıklayın.
-9. **Dinleyici yapılandırması** altında **https** ' yi seçin, ardından **bir dosya seç** ' i seçin ve *C:\appgwcert.exe* dosyasına gidin ve **Aç** ' ı seçin.
+7. Sanal ağı ve alt ağı oluşturmak için **Tamam**’a tıklayın.
+8. **Ön uç IP yapılandırması** altında, **IP adresi türünün** **ortak** olduğundan emin olun ve **Yeni oluştur** ' u seçilidir. Ad için *Myagpublicıpaddress* girin. Diğer ayarların varsayılan değerlerini kabul edin ve sonra **Tamam**’a tıklayın.
+9. **Dinleyici yapılandırması** altında **https**' yi seçin, ardından **bir dosya seç** ' i seçin ve *C:\appgwcert.exe* dosyasına gidin ve **Aç**' ı seçin.
 10. Sertifika adı ve Azure123456 için *appgwcert* yazın *!* girin.
-11. Web uygulaması güvenlik duvarını devre dışı bırakın ve ardından **Tamam** ' ı seçin.
+11. Web uygulaması güvenlik duvarını devre dışı bırakın ve ardından **Tamam**' ı seçin.
 12. Özet sayfasındaki ayarları gözden geçirin ve ardından ağ kaynaklarını ve uygulama ağ geçidini oluşturmak için **Tamam** ' ı seçin. Uygulama ağ geçidinin oluşturulması birkaç dakika sürebilir, bir sonraki bölüme geçmeden önce Dağıtım başarıyla bitene kadar bekleyin.
 
 ### <a name="add-a-subnet"></a>Alt ağ ekleme
 
 1. Sol taraftaki menüden **tüm kaynaklar** ' ı seçin ve ardından kaynaklar listesinden **myvnet** ' i seçin.
-2. **Alt ağlar** ' ı seçin ve **alt ağ** ' a tıklayın.
+2. **Alt ağlar**' ı seçin ve **alt ağ**' a tıklayın.
 
     ![Alt ağ oluşturma](./media/create-url-route-portal/application-gateway-subnet.png)
 
 3. Alt ağ adı için *Mybackendsubnet* yazın.
-4. Adres aralığı için *10.0.2.0/24* yazın ve ardından **Tamam** ' ı seçin.
+4. Adres aralığı için *10.0.2.0/24* yazın ve ardından **Tamam**' ı seçin.
 
 ## <a name="add-a-listener-and-redirection-rule"></a>Dinleyici ve yeniden yönlendirme kuralı ekleme
 
@@ -109,72 +109,72 @@ Oluşturduğunuz kaynaklar arasında iletişim için bir sanal ağ gerekir. Bu �
 
 İlk olarak, 80 numaralı bağlantı noktası için *MyListener* adlı dinleyiciyi ekleyin.
 
-1. **MyResourceGroupAG** kaynak grubunu açın ve **myappgateway** ' i seçin.
-2. **Dinleyicileri** seçin ve **+ temel** ' yı seçin.
+1. **MyResourceGroupAG** kaynak grubunu açın ve **myappgateway**' i seçin.
+2. **Dinleyicileri** seçin ve **+ temel**' yı seçin.
 3. Ad için *MyListener* yazın.
 4. Yeni ön uç bağlantı noktası adı ve bağlantı noktası *80* Için *httpport* yazın.
-5. Protokolün **http** olarak ayarlandığından emin olun ve ardından **Tamam** ' ı seçin.
+5. Protokolün **http** olarak ayarlandığından emin olun ve ardından **Tamam**' ı seçin.
 
 ### <a name="add-a-routing-rule-with-a-redirection-configuration"></a>Yeniden yönlendirme yapılandırması ile yönlendirme kuralı ekleme
 
-1. **Myappgateway** 'de, **kurallar** ' ı seçin ve ardından **+ istek yönlendirme kuralı** ' nı seçin.
+1. **Myappgateway**'de, **kurallar** ' ı seçin ve ardından **+ istek yönlendirme kuralı**' nı seçin.
 2. **Kural adı** için *bağlanma2* yazın.
 3. Dinleyici için **MyListener** öğesinin seçili olduğundan emin olun.
 4. **Arka uç hedefleri** sekmesine tıklayın ve **hedef tür** ' i *yeniden yönlendirme* olarak seçin.
-5. **Yeniden yönlendirme türü** için **kalıcı** ' ı seçin.
-6. **Yeniden yönlendirme hedefi** için **dinleyici** ' i seçin.
+5. **Yeniden yönlendirme türü** için **kalıcı**' ı seçin.
+6. **Yeniden yönlendirme hedefi** için **dinleyici**' i seçin.
 7. **Hedef dinleyicinin** **Appgatewayhttplistener** olarak ayarlandığından emin olun.
-8. **İçerme sorgu dizesi** ve **Içerme yolu** için *Evet* ' i seçin.
-9. **Ekle** ’yi seçin.
+8. **İçerme sorgu dizesi** ve **Içerme yolu** için *Evet*' i seçin.
+9. **Add (Ekle)** seçeneğini belirleyin.
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Sanal makine ölçek kümesi oluşturma
 
 Bu örnekte uygulama ağ geçidinde arka uç havuzu için sunucu sağlayan bir sanal makine ölçek kümesi oluşturacaksınız.
 
-1. Portalın sol üst köşesinde **+ kaynak oluştur** ' u seçin.
-2. **İşlem** ’i seçin.
+1. Portalın sol üst köşesinde **+ kaynak oluştur**' u seçin.
+2. **İşlem**’i seçin.
 3. Arama kutusuna *Ölçek kümesi* yazın ve ENTER tuşuna basın.
-4. **Sanal makine ölçek kümesi** ' ni seçin ve ardından **Oluştur** ' u seçin.
+4. **Sanal makine ölçek kümesi**' ni seçin ve ardından **Oluştur**' u seçin.
 5. **Sanal makine ölçek kümesi adı** için *myvmss* yazın.
 6. Işletim sistemi disk görüntüsü için * * **Windows Server 2016 Datacenter** ' ın seçili olduğundan emin olun.
-7. **Kaynak grubu** için **myResourceGroupAG** ' yi seçin.
+7. **Kaynak grubu** için **myResourceGroupAG**' yi seçin.
 8. **Kullanıcı adı** için *azureuser* yazın.
 9. **Parola** için *Azure123456* yazın. ve parolayı onaylayın.
 10. **Örnek sayısı** için değerin **2** olduğundan emin olun.
-11. **Örnek boyutu** için **D2s_v3** ' yi seçin.
+11. **Örnek boyutu** için **D2s_v3**' yi seçin.
 12. **Ağ** altında, **Yük Dengeleme seçeneklerini seçme** seçeneğinin **Application Gateway** olarak ayarlandığından emin olun.
 13. **Application Gateway** 'In **myappgateway** olarak ayarlandığından emin olun.
 14. **Alt ağın** **mybackendsubnet** olarak ayarlandığından emin olun.
-15. **Oluştur** ’u seçin.
+15. **Oluştur**’u seçin.
 
 ### <a name="associate-the-scale-set-with-the-proper-backend-pool"></a>Ölçek kümesini uygun arka uç havuzuyla ilişkilendir
 
 Sanal makine ölçek kümesi portalı Kullanıcı arabirimi, ölçek kümesi için yeni bir arka uç havuzu oluşturur, ancak bunu mevcut appGatewayBackendPool ile ilişkilendirmek istiyorsunuz.
 
 1. **MyResourceGroupAg** kaynak grubunu açın.
-2. **Myappgateway** ' i seçin.
+2. **Myappgateway**' i seçin.
 3. **Arka uç havuzlarını** seçin.
 4. **Myappgatewaymyvmss** öğesini seçin.
-5. **Arka uç havuzundan tüm hedefleri kaldır** ' ı seçin.
-6. **Kaydet** ’i seçin.
+5. **Arka uç havuzundan tüm hedefleri kaldır**' ı seçin.
+6. **Kaydet**’i seçin.
 7. Bu işlem tamamlandıktan sonra, **Myappgatewaymyvmss** arka uç havuzunu seçin, **Sil** ' i seçin ve ardından onaylamak için **Tamam** ' ı seçin.
 8. **Appgatewaybackendpool** öğesini seçin.
-9. **Hedefler** altında **VMSS** ' yi seçin.
-10. **VMSS** altında **myvmss** ' yi seçin.
-11. **Ağ arabirimi yapılandırması** altında, **Myvmssnıc** ' i seçin.
-12. **Kaydet** ’i seçin.
+9. **Hedefler** altında **VMSS**' yi seçin.
+10. **VMSS** altında **myvmss**' yi seçin.
+11. **Ağ arabirimi yapılandırması** altında, **Myvmssnıc**' i seçin.
+12. **Kaydet**’i seçin.
 
 ### <a name="upgrade-the-scale-set"></a>Ölçek kümesini yükseltme
 
 Son olarak, ölçek kümesini bu değişikliklerle yükseltmeniz gerekir.
 
 1. **Myvmss** ölçek kümesini seçin.
-2. **Ayarlar** ’ın altında **Örnekler** ’i seçin.
-3. Her iki örneği de seçip **Yükselt** ' i seçin.
-4. Onaylamak için **Evet** ’i seçin.
-5. Bu işlem tamamlandıktan sonra, **Myappgateway** 'e dönün ve **arka uç havuzları** ' nı seçin. Şimdi **Appgatewaybackendpool** 'un iki hedefi olduğunu ve  **Myappgatewaymyvmss** 'nin sıfır hedefi olduğunu görmeniz gerekir.
-6. **Myappgatewaymyvmss** ' yi seçin ve **Sil** ' i seçin.
-7. Onaylamak için **Tamam** ’ı seçin.
+2. **Ayarlar**’ın altında **Örnekler**’i seçin.
+3. Her iki örneği de seçip **Yükselt**' i seçin.
+4. Onaylamak için **Evet**’i seçin.
+5. Bu işlem tamamlandıktan sonra, **Myappgateway** 'e dönün ve **arka uç havuzları**' nı seçin. Şimdi **Appgatewaybackendpool** 'un iki hedefi olduğunu ve  **Myappgatewaymyvmss** 'nin sıfır hedefi olduğunu görmeniz gerekir.
+6. **Myappgatewaymyvmss**' yi seçin ve **Sil**' i seçin.
+7. Onaylamak için **Tamam**’ı seçin.
 
 ### <a name="install-iis"></a>IIS yükleme
 
@@ -203,15 +203,15 @@ Update-AzVmss `
 Örnekleri IIS ile değiştirdikten sonra ölçek kümesini bu değişiklik ile yeniden yükseltmeniz gerekir.
 
 1. **Myvmss** ölçek kümesini seçin.
-2. **Ayarlar** ’ın altında **Örnekler** ’i seçin.
-3. Her iki örneği de seçip **Yükselt** ' i seçin.
-4. Onaylamak için **Evet** ’i seçin.
+2. **Ayarlar**’ın altında **Örnekler**’i seçin.
+3. Her iki örneği de seçip **Yükselt**' i seçin.
+4. Onaylamak için **Evet**’i seçin.
 
 ## <a name="test-the-application-gateway"></a>Uygulama ağ geçidini test etme
 
 Uygulamanın genel IP adresini uygulama ağ geçidine genel bakış sayfasından alabilirsiniz.
 
-1. **Myappgateway** ' i seçin.
+1. **Myappgateway**' i seçin.
 2. **Genel bakış** sayfasında, **ön uç genel IP adresi** altındaki IP adresine göz atın.
 
 3. Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın. Örneğin, http://52.170.203.149

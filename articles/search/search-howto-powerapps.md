@@ -10,17 +10,17 @@ ms.devlang: rest-api
 ms.topic: tutorial
 ms.date: 11/17/2020
 ms.openlocfilehash: e8c16f02cf6b77fa54d2a19abac48e9914aa99bd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96008574"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>Öğretici: Power Apps 'ten bir Bilişsel Arama dizini sorgulama
 
 Azure Bilişsel Arama 'de aranabilir içeriğiniz için özel bir uygulama oluşturmak üzere Power Apps 'in hızlı uygulama geliştirme ortamından yararlanın.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure Bilişsel Arama bağlanma
@@ -86,7 +86,7 @@ Power Apps 'teki bir bağlayıcı, veri kaynağı bağlantısıdır. Bu adımda,
 
    :::image type="content" source="./media/search-howto-powerapps/1-8-2-import-from-sample.png" alt-text="Örnekten Al iletişim kutusu" border="true":::
 
-1. *Arama* için: `*` **varsayılan değer** olarak ayarlayın, **gerekli** olarak ayarlayın ve *False* **görünürlüğü** *hiçbiri* olarak ayarlayın. 
+1. *Arama* için: `*` **varsayılan değer** olarak ayarlayın, **gerekli** olarak ayarlayın ve  **görünürlüğü** *hiçbiri* olarak ayarlayın. 
 
     :::image type="content" source="./media/search-howto-powerapps/1-10-1-parameter-metadata-search.png" alt-text="Arama parametresi meta verileri" border="true":::
 
@@ -94,7 +94,7 @@ Power Apps 'teki bir bağlayıcı, veri kaynağı bağlantısıdır. Bu adımda,
 
     :::image type="content" source="./media/search-howto-powerapps/1-10-4-parameter-metadata-select.png" alt-text="Parametre meta verilerini seçin" border="true":::
 
-1. *Api sürümü* için: `2020-06-30` **varsayılan değer** olarak ayarlayın, *true* olarak ayarlayın **required** ve **görünürlüğü** *iç* olarak ayarlayın.  
+1. *Api sürümü* için: `2020-06-30` **varsayılan değer** olarak ayarlayın, *true* olarak ayarlayın  ve **görünürlüğü** *iç* olarak ayarlayın.  
 
     :::image type="content" source="./media/search-howto-powerapps/1-10-2-parameter-metadata-version.png" alt-text="Sürüm parametresi meta verileri" border="true":::
 

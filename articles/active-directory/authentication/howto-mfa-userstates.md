@@ -13,10 +13,10 @@ ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 749829f641119273813d3c8ca826daf8b4dc4d11
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96742672"
 ---
 # <a name="enable-per-user-azure-ad-multi-factor-authentication-to-secure-sign-in-events"></a>Oturum açma olaylarını güvenli hale getirmek için Kullanıcı başına Azure AD Multi-Factor Authentication etkinleştirme
@@ -180,7 +180,7 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 ```
 
 > [!NOTE]
-> MFA bir kullanıcı üzerinde yeniden etkinleştirilmişse ve Kullanıcı yeniden kaydolmazsa, MFA durumu, MFA yönetimi Kullanıcı arabiriminde *etkin* durumuna geçmez. *Enforced* Bu durumda, yöneticinin kullanıcıyı doğrudan *Zorlanmış* olarak taşıması gerekir.
+> MFA bir kullanıcı üzerinde yeniden etkinleştirilmişse ve Kullanıcı yeniden kaydolmazsa, MFA durumu, MFA yönetimi Kullanıcı arabiriminde *etkin* durumuna geçmez.  Bu durumda, yöneticinin kullanıcıyı doğrudan *Zorlanmış* olarak taşıması gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

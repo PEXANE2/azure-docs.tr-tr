@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.author: alkohli
 ms.openlocfilehash: f4a0739eb1ab14155a98b17e2427c5b08c9db788
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96020679"
 ---
 # <a name="safely-install-and-operate-your-azure-data-box"></a>Azure Data Box güvenle yükleyip çalıştırın
@@ -32,13 +32,13 @@ Data Box kurarken ve çalıştırırken gözlenecek güvenlik önlemleri gözden
 | ![Bildirim simgesi ](./media/data-box-safety/notice_icon.png) **bildirimi:** |Önemli kabul edilen, ancak tehlike ile ilgili olmayan bilgileri gösterir. |
 | ![Elektrik sarsıntısı simgesi ](./media/data-box-safety/electrical_shock_hazard_icon.png) **elektrik şok hasar** |Yüksek voltaj. |
 | ![Ağır kalınlık simgesi ](./media/data-box-safety/heavy_weight_hazard_icon.png) **ağır ağırlık** | |
-| ![Kullanıcı tarafından ](./media/data-box-safety/no_user_serviceable_parts_icon.png) **No User Serviceable Parts** hizmet içermeyen parçalar simgesi yok |Uygun şekilde Eğitilmediğiniz müddetçe bu erişimi kullanmayın. |
+| ![Kullanıcı tarafından ](./media/data-box-safety/no_user_serviceable_parts_icon.png)  hizmet içermeyen parçalar simgesi yok |Uygun şekilde Eğitilmediğiniz müddetçe bu erişimi kullanmayın. |
 | ![Güvenlik bildirimi okuma simgesi ](./media/data-box-safety/read_safety_and_health_information_icon.png) **Ilk olarak tüm yönergeleri oku** | |
 | ![İpucu hasar simgesi ](./media/data-box-safety/tip_hazard_icon.png) **Ipucu rastlantı** | |
 
 ## <a name="handling-precautions"></a>Önlemleri işleme
 
-![Uyarı simgesi ](./media/data-box-safety/warning_icon.png) ![ elektrik sarsıntı simgesi ](./media/data-box-safety/electrical_shock_hazard_icon.png)![ hiçbir Kullanıcı hizmet halinde bölümler simgesi yok ](./media/data-box-safety/no_user_serviceable_parts_icon.png) **CAUTION** 
+![Uyarı simgesi ](./media/data-box-safety/warning_icon.png) ![ elektrik sarsıntı simgesi ](./media/data-box-safety/electrical_shock_hazard_icon.png)![ hiçbir Kullanıcı hizmet halinde bölümler simgesi yok ](./media/data-box-safety/no_user_serviceable_parts_icon.png)  
 
 * Zararlar için *alınan as* cihazını inceleyin. Cihaz kasası hasar görmüşse, yerini almak için [Microsoft desteği başvurun](data-box-disk-contact-microsoft-support.md) . Cihazı çalıştırmayı denemeyin. 
 * Cihaz, yetkisiz kanıtlama dayanıklı bir şekilde donatılmış. Cihazın arızalı olduğunu kuşkulanıyorsanız, bir değiştirme edinmek için [Microsoft desteği başvurun](data-box-disk-contact-microsoft-support.md) . Cihaza bakım yapmayı denemeyin. 

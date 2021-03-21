@@ -6,10 +6,10 @@ ms.subservice: personalizer
 ms.date: 02/20/2020
 ms.topic: conceptual
 ms.openlocfilehash: f3249ba2089c3d9650aa46f665353ad392d0e773
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94365576"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>Reward puanları, kişiselleştirmenin başarısını gösterir
@@ -72,8 +72,8 @@ Ayrıca, aynı olay kimliğini kullanarak, farklı rehirlar göndererek, ödül 
 
 Toplama değerleri:
 
-*  **İlk** : olay için ilk geri alma puanı alır ve geri kalanı atar.
-* **Sum** : EventID için toplanan tüm yeniden puanları alır ve bunları bir araya getirir.
+*  **İlk**: olay için ilk geri alma puanı alır ve geri kalanı atar.
+* **Sum**: EventID için toplanan tüm yeniden puanları alır ve bunları bir araya getirir.
 
 **Yeniden bekleme zamanından** sonra alınan bir olayın tüm depoları atılır ve modellerin eğitimini etkilemez.
 
@@ -81,15 +81,15 @@ Toplama skorları ekleyerek, son ödül tahmini beklenen puan aralığının dı
 
 ## <a name="best-practices-for-calculating-reward-score"></a>Ödül Puanını hesaplamak için en iyi uygulamalar
 
-* **Başarılı bir kişiselleştirmenin gerçek göstergelerini göz önünde bulundurun** : tıklama açısından kolayca düşünmek kolaydır, ancak kullanıcılarınızın ne *yapmak* istediğinize ilişkin ne kadar hızlı bir şekilde *elde* etmelerini istediğinizi temel alır.  Örneğin, tıklatmalar üzerinde yeniden çarpıtma, clickbait lekeli içeriğin seçilmesine neden olabilir.
+* **Başarılı bir kişiselleştirmenin gerçek göstergelerini göz önünde bulundurun**: tıklama açısından kolayca düşünmek kolaydır, ancak kullanıcılarınızın ne *yapmak* istediğinize ilişkin ne kadar hızlı bir şekilde *elde* etmelerini istediğinizi temel alır.  Örneğin, tıklatmalar üzerinde yeniden çarpıtma, clickbait lekeli içeriğin seçilmesine neden olabilir.
 
-* **Kişiselleştirmenin ne kadar iyi çalıştığı konusunda bir ödül puanı kullanın** : bir film önerisini kişiselleştirmek, kullanıcının filmi izlemeye ve yüksek bir derecelendirme kullanmasına neden olur. Film derecelendirmesi büyük olasılıkla çok sayıda işleme bağlı olduğundan (hareket kalitesi, kullanıcının ruh derecesi), *kişiselleştirmenin* ne kadar iyi çalıştığı konusunda iyi bir sinyal değildir. Ancak filmin ilk birkaç dakikasını izleyen Kullanıcı, kişiselleştirme verimliliğinden daha iyi bir sinyal alabilir ve 5 dakika sonra 1 ' in bir kez daha iyi bir sinyal olarak gönderilmesini sağlayabilir.
+* **Kişiselleştirmenin ne kadar iyi çalıştığı konusunda bir ödül puanı kullanın**: bir film önerisini kişiselleştirmek, kullanıcının filmi izlemeye ve yüksek bir derecelendirme kullanmasına neden olur. Film derecelendirmesi büyük olasılıkla çok sayıda işleme bağlı olduğundan (hareket kalitesi, kullanıcının ruh derecesi), *kişiselleştirmenin* ne kadar iyi çalıştığı konusunda iyi bir sinyal değildir. Ancak filmin ilk birkaç dakikasını izleyen Kullanıcı, kişiselleştirme verimliliğinden daha iyi bir sinyal alabilir ve 5 dakika sonra 1 ' in bir kez daha iyi bir sinyal olarak gönderilmesini sağlayabilir.
 
-* **Releleler yalnızca rewarterctionıd için geçerlidir** : kişiselleştirici, rewarterctionıd içinde belirtilen eylemin göre etkinliğine anlamak için yeniden ödüller uygular. Diğer eylemleri görüntülemeyi tercih ederseniz ve Kullanıcı bunlara tıkladıysanız, yeniden, sıfır olmalıdır.
+* **Releleler yalnızca rewarterctionıd için geçerlidir**: kişiselleştirici, rewarterctionıd içinde belirtilen eylemin göre etkinliğine anlamak için yeniden ödüller uygular. Diğer eylemleri görüntülemeyi tercih ederseniz ve Kullanıcı bunlara tıkladıysanız, yeniden, sıfır olmalıdır.
 
-* **İstemeden oluşan sonuçları göz önünde bulundurun** : [ahlak ve sorumlu kullanım](ethics-responsible-use.md)ile sorumlu sonuçlara yol açabilecek ödül işlevleri oluşturun.
+* **İstemeden oluşan sonuçları göz önünde bulundurun**: [ahlak ve sorumlu kullanım](ethics-responsible-use.md)ile sorumlu sonuçlara yol açabilecek ödül işlevleri oluşturun.
 
-* **Artımlı yeniden kullanım** : daha küçük kullanıcı davranışları için kısmi reksel ekleme, kişiselleştirmeye daha iyi bir performans sağlamaya yardımcı olur. Bu artımlı yeniden, algoritmanın kullanıcıya son istenen davranışta ilgi çekici olduğunu bilmesini sağlar.
+* **Artımlı yeniden kullanım**: daha küçük kullanıcı davranışları için kısmi reksel ekleme, kişiselleştirmeye daha iyi bir performans sağlamaya yardımcı olur. Bu artımlı yeniden, algoritmanın kullanıcıya son istenen davranışta ilgi çekici olduğunu bilmesini sağlar.
     * Bir film listesi gösteriyorsa, Kullanıcı daha fazla bilgi görüntülemek için ilk bir kez üzerine gelirse, bazı kullanıcı katılımı olduğunu belirleyebilirsiniz. Davranış, 0,1 için bir ödül puanı ile sayabilir.
     * Kullanıcı sayfayı açtı ve sonra çıkmadıysa, ödül puanı 0,2 olabilir.
 

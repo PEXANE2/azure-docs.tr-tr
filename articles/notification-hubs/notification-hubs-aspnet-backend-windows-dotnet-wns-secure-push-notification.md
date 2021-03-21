@@ -16,10 +16,10 @@ ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 98e587103e63cd5cc26eab5b00864d00e0b9007f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96019438"
 ---
 # <a name="send-secure-push-notifications-from-azure-notification-hubs"></a>Azure Notification Hubs güvenli anında iletme bildirimleri gönderin
@@ -56,13 +56,13 @@ Bu öğreticide, anında iletme bildirimini güvenli bir şekilde nasıl gönder
 
 ## <a name="modify-the-windows-phone-project"></a>Windows Phone projesini değiştirme
 
-1. **NotifyUserWindowsPhone** projesinde, anında iletme arka plan görevini kaydetmek için App.xaml.cs öğesine aşağıdaki kodu ekleyin. `OnLaunched()` yönteminin sonuna aşağıdaki kod satırını ekleyin:
+1. **NotifyUserWindowsPhone** projesinde, anında iletme arka plan görevini kaydetmek için App. xaml. cs ' ye aşağıdaki kodu ekleyin. `OnLaunched()` yönteminin sonuna aşağıdaki kod satırını ekleyin:
 
     ```csharp
     RegisterBackgroundTask();
     ```
 
-2. Hala App.xaml.cs içinde, aşağıdaki kodu yönteminden hemen sonra ekleyin `OnLaunched()` :
+2. Hala App. xaml. cs içinde, aşağıdaki kodu yönteminden hemen sonra ekleyin `OnLaunched()` :
 
     ```csharp
     private async void RegisterBackgroundTask()
@@ -80,7 +80,7 @@ Bu öğreticide, anında iletme bildirimini güvenli bir şekilde nasıl gönder
     }
     ```
 
-3. `using`App.xaml.cs dosyasının en üstüne aşağıdaki deyimleri ekleyin:
+3. Aşağıdaki `using` deyimlerini App. xaml. cs dosyasının üst kısmına ekleyin:
 
     ```csharp
     using Windows.Networking.PushNotifications;

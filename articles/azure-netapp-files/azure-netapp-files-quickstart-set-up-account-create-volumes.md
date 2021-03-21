@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: devx-track-azurecli, subject-armqs
 ms.openlocfilehash: e31a1cef427062723adf4b45bd47cd8009630128
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94888819"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Hızlı başlangıç: Azure NetApp Files ayarlama ve NFS birimi oluşturma
@@ -94,7 +94,7 @@ Daha fazla bilgi için bkz. [Azure NetApp Files Için kaydolun](azure-netapp-fil
 3. Yeni NetApp hesabı penceresinde, aşağıdaki bilgileri sağlayın:
    1. Hesap adı için **myaccount1** girin.
    2. Aboneliğinizi seçin.
-   3. Yeni kaynak grubu oluşturmak için **Yeni oluştur** ' u seçin. Kaynak grubu adı için **myRG1** girin. **Tamam** düğmesine tıklayın.
+   3. Yeni kaynak grubu oluşturmak için **Yeni oluştur** ' u seçin. Kaynak grubu adı için **myRG1** girin. **Tamam**'a tıklayın.
    4. Hesap konumunuzu seçin.
 
       ![Yeni NetApp hesabı penceresi](../media/azure-netapp-files/azure-netapp-files-new-account-window.png)
@@ -196,7 +196,7 @@ Aşağıdaki kod parçacığı, [Microsoft. NetApp/netAppAccounts](/azure/templa
     * Havuz boyutu olarak **4 (TiB)** belirtin.
     * **Otomatik** QoS türünü kullanın.
 
-5. **Oluştur**'a tıklayın.
+5. **Oluştur**’a tıklayın.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

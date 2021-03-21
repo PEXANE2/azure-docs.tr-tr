@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 2caf0384a8e55a44f78b37c4ca8776675b6e971d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92504278"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-montage-online"></a>Öğretici: çevrimiçi olarak Monsat tümleştirmesi Azure Active Directory
@@ -61,13 +61,13 @@ Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandı
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **çevrimiçi olarak monsat**yazın, sonuç panelinden **çevrimiçi olarak monsat** 'ı seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
+4. Arama kutusuna **çevrimiçi olarak monsat** yazın, sonuç panelinden **çevrimiçi olarak monsat** 'ı seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
 
      ![Sonuçlar listesinde çevrimiçi olarak çevrimiçi para](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre çevrimiçi olarak yapılandırabilir ve test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre çevrimiçi olarak yapılandırabilir ve test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasındaki bir bağlantı ilişkisinin çevrimiçi ortamda oluşturulması gerekir.
 
 Azure AD çoklu oturum açma 'yı çevrimiçi olarak yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -150,9 +150,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.

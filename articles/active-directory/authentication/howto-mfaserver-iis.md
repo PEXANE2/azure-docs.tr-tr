@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c522fb950e2489afce44553d233ac3eddf138730
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96742179"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-iis-web-apps"></a>IIS web uygulamaları için Azure Multi-Factor Authentication Sunucusu
@@ -54,7 +54,7 @@ Form tabanlı kimlik doğrulaması kullanan bir IIS web uygulamasını güvenli 
     - Birincil kimlik bilgilerinin bir Windows Etki Alanı, LDAP dizinine göre mi yoksa RADIUS sunucusuna göre mi doğrulanacağını belirtin.
 
 12. Form Tabanlı Web Sitesi Ekle iletişim kutusuna dönmek için **Tamam**’a tıklayın.
-13. **Tamam** düğmesine tıklayın.
+13. **Tamam**'a tıklayın.
 14. URL ve sayfa değişkenleri algılandığında veya girildiğinde, web sitesi verileri Form Tabanlı panelde görüntülenir.
 
 ## <a name="using-integrated-windows-authentication-with-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Sunucusu ile Tümleşik Windows Kimlik Doğrulaması kullanma
@@ -68,7 +68,7 @@ Tümleşik Windows HTTP kimlik doğrulaması kullanan bir IIS web uygulamasını
 5. Varsayılan yeterli değilse, Boşta kalma zaman aşımı ve Maksimum oturum sürelerini ayarlayın.
 6. Tüm kullanıcılar sunucuya aktarılmışsa veya sunucuya aktarılacaksa ve Multi-Factor Authentication 'a tabi olursa **Kullanıcı eşleştirme Multi-Factor Authentication iste** kutusunu işaretleyin. Çok sayıda kullanıcı Sunucu’ya henüz aktarılmadı ve/veya multi-factor authentication’da muaf tutulacaksa, kutunun işaretini kaldırın.
 7. İsterseniz **tanımlama bilgisi önbelleği** kutusunu işaretleyin.
-8. **Tamam** düğmesine tıklayın.
+8. **Tamam**'a tıklayın.
 
 ## <a name="enable-iis-plug-ins-for-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Sunucusu için IIS Eklentilerini Etkinleştirme
 

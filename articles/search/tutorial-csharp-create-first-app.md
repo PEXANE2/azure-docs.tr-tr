@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 02/26/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 0a57e45b264badffd0305eb6ac5b3c8f7c42adf3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101695133"
 ---
 # <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak ilk arama uygulamanızı oluşturma
@@ -130,7 +130,7 @@ Bu adımda, arama dizininin veri yapılarını ve ayrıca görünüm/denetleyici
 
 1. Çözüm Gezgini, **modeller**  >    >  **Yeni öğe** Ekle ' ye sağ tıklayın.
 
-1. **Sınıf** ' ı seçin ve öğeyi Hotel.cs olarak adlandırın. Hotel.cs öğesinin tüm içeriğini aşağıdaki kodla değiştirin. Sınıfın **Adres** ve **Oda** üyelerine, bu alanların kendileri için de modeller ihtiyaç duyduğuna dikkat edin.
+1. **Sınıf** ' ı seçin ve öğeyi otel. cs olarak adlandırın. Otel. cs ' nin tüm içeriğini aşağıdaki kodla değiştirin. Sınıfın **Adres** ve **Oda** üyelerine, bu alanların kendileri için de modeller ihtiyaç duyduğuna dikkat edin.
 
     ```csharp
     using Azure.Search.Documents.Indexes;
@@ -181,7 +181,7 @@ Bu adımda, arama dizininin veri yapılarını ve ayrıca görünüm/denetleyici
     }
     ```
 
-1. **Adres** sınıfı için bir model oluşturma işlemini yineleyin, dosyayı Address.cs olarak adlandırın. İçeriği aşağıdaki kodla değiştirin.
+1. **Adres sınıfı için** bir model oluşturma işlemini yineleyin, bu dosya adresini. cs olarak adlandırın. İçeriği aşağıdaki kodla değiştirin.
 
     ```csharp
     using Azure.Search.Documents.Indexes;
@@ -208,7 +208,7 @@ Bu adımda, arama dizininin veri yapılarını ve ayrıca görünüm/denetleyici
     }
     ```
 
-1. Yine de, Room.cs dosyasını adlandırarak **Oda** sınıfını oluşturmak için aynı süreci izleyin.
+1. Daha sonra, **Oda sınıfını oluşturmak** için aynı süreci izleyin. cs dosyasını adlandırarak.
 
     ```csharp
     using Azure.Search.Documents.Indexes;
@@ -418,7 +418,7 @@ Görünümümüzü tamamlar. Bu noktada, hem modeller hem de görünümler tamam
 
 Bu adımda, **ana denetleyicinin** içeriğiyle değiştirin.
 
-1. HomeController.cs dosyasını açın ve **using** deyimlerini aşağıdaki kodla değiştirin.
+1. HomeController. cs dosyasını açın ve **using** deyimlerini aşağıdaki ile değiştirin.
 
     ```csharp
     using Azure;

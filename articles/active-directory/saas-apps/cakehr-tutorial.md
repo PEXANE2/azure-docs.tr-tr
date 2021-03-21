@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: jeedes
 ms.openlocfilehash: 08e028ba057ad57f3d600bc59bf7595c0b1d354c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92456589"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cakehr"></a>Öğretici: CakeHR ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, CakeHR 'ı Azure Active Directory (Azure AD) ile tümleştirmey
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -57,7 +57,7 @@ CakeHR 'ın Azure AD ile tümleştirilmesini yapılandırmak için, galerinizden
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-cakehr"></a>CakeHR için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak CakeHR Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, CakeHR 'da bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak CakeHR Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, CakeHR 'da bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu CakeHR ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -130,7 +130,7 @@ Bu bölümde, Cakesa 'ya erişim vererek Azure çoklu oturum açma özelliğini 
 
 ## <a name="configure-cakehr-sso"></a>CakeHR SSO 'yu yapılandırma
 
-1. CakeHR 'daki yapılandırmayı otomatikleştirmek için, **uzantıyı yüklemek**üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
+1. CakeHR 'daki yapılandırmayı otomatikleştirmek için, **uzantıyı yüklemek** üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 
     ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
 
@@ -150,7 +150,7 @@ Bu bölümde, Cakesa 'ya erişim vererek Azure çoklu oturum açma özelliğini 
 
     a. **VARLıK kimliği** metin kutusuna yazın `cake.hr` .
 
-    b. **Kimlik doğrulama URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
+    b. **Kimlik doğrulama URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
     c. **Anahtar parmak izi (SHA1 biçimi)** metin kutusunda, Azure Portal kopyaladığınız **parmak izi** değerini yapıştırın.
 

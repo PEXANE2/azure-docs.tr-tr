@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
 ms.openlocfilehash: 91b6d432042aa37a1b929f61e9742f814fb9dc40
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94370494"
 ---
 # <a name="how-to-configure-your-azure-application-offer-listing-details"></a>Azure uygulama teklif listesi ayrıntılarını yapılandırma
@@ -37,7 +37,7 @@ Azure Uygulama teklifiniz için **teklif listesi** sayfasında sağladığınız
 
 Ek çevrimiçi belgelere bağlantılar eklemek için bu adımları uygulayın.
 
-1. Uygulamanıza veya ilgili hizmetlere ilişkin isteğe bağlı ek çevrimiçi belgeler eklemek için, **yararlı bağlantılar** altında **bağlantı ekle** ' yi seçin.
+1. Uygulamanıza veya ilgili hizmetlere ilişkin isteğe bağlı ek çevrimiçi belgeler eklemek için, **yararlı bağlantılar** altında **bağlantı ekle**' yi seçin.
 1. Görüntülenen alanlara bir başlık (en fazla 255 karakter) ve bağlantıyı (ile başlayarak `https://` ) çevrimiçi belgeye girin.
 1. Başka bir bağlantı girmek için 1 ile 2 arasındaki adımları yineleyin.
 
@@ -76,15 +76,15 @@ Her üç logo boyutu, çevrimiçi mağazalardaki farklı yerlerde kullanılır.
 Teklifinizi gösteren en fazla beş ekran görüntüsü ekleyin. Tüm görüntüler 1280 x 720 piksel boyutunda ve içinde olmalıdır. PNG biçimi.
 
 1. **Ekran görüntüleri** altında sürükleyip bırakın. Bir **ekran görüntüsü** kutusu üzerine PNG dosyası.
-1. **Resim yazısı ekle** ' nin yanındaki Düzenle simgesine tıklayın.
-1. Görüntülenen iletişim kutusunda bir başlık girin ve **Tamam** ' ı tıklatın.
+1. **Resim yazısı ekle**' nin yanındaki Düzenle simgesine tıklayın.
+1. Görüntülenen iletişim kutusunda bir başlık girin ve **Tamam**' ı tıklatın.
 1. Ek ekran görüntüleri eklemek için 1 ile 3 arasındaki adımları yineleyin.
 
 ### <a name="add-videos-optional"></a>Video ekleme (isteğe bağlı)
 
 Teklifinizi gösteren YouTube veya Vimeo videolarınıza bağlantılar ekleyebilirsiniz. Bu videolar, teklifinizle birlikte müşterilere gösterilir. Videonun boyutunda ve içinde 1280 x 720 piksel boyutunda bir küçük resim görüntüsü girmeniz gerekir. PNG biçimi. Her teklif için en fazla dört video ekleyebilirsiniz.
 
-1. **Videolar** ' ın altında, **video ekle** bağlantısını seçin.
+1. **Videolar**' ın altında, **video ekle** bağlantısını seçin.
 1. Görüntülenen kutulara videonuzun adını ve bağlantısını girin.
 1. Sürükleyip bırakın. PNG dosyası (1280 x 720 piksel) gri **küçük resim** kutusuna sürükleyin.
 1. Başka bir video eklemek için 1 ile 3 arasındaki adımları yineleyin.

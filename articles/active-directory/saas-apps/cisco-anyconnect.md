@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
 ms.openlocfilehash: a89ab7f2304fa51d3e8c7a968d445c9b40a457a3
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92456098"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-anyconnect"></a>Öğretici: Cisco AnyConnect ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -26,7 +26,7 @@ Bu öğreticide, Cisco AnyConnect 'i Azure Active Directory (Azure AD) ile tüml
 * Kullanıcılarınızın Azure AD hesaplarıyla Cisco AnyConnect 'e otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -52,7 +52,7 @@ Cisco AnyConnect 'in Azure AD 'ye tümleştirmesini yapılandırmak için, Galer
 
 ## <a name="configure-and-test-azure-ad-sso-for-cisco-anyconnect"></a>Cisco AnyConnect için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Cisco AnyConnect ile yapılandırın ve test edin. SSO 'nun çalışması için, Cisco AnyConnect 'te bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Cisco AnyConnect ile yapılandırın ve test edin. SSO 'nun çalışması için, Cisco AnyConnect 'te bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Cisco AnyConnect ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 

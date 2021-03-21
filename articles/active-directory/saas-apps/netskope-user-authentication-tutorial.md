@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/01/2019
 ms.author: jeedes
 ms.openlocfilehash: 1ae9e39f5a23725b17451d7144c8304194d2a1d0
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92514376"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netskope-user-authentication"></a>Öğretici: Netüse Kullanıcı kimlik doğrulamasıyla çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -55,7 +55,7 @@ Netüse Kullanıcı kimlik doğrulamasının tümleştirmesini Azure AD 'ye gör
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-netskope-user-authentication"></a>Netüse Kullanıcı kimlik doğrulaması için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Netüse Kullanıcı kimlik doğrulamasıyla yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Netüse Kullanıcı kimlik doğrulamasında ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Netüse Kullanıcı kimlik doğrulamasıyla yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Netüse Kullanıcı kimlik doğrulamasında ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Netüse Kullanıcı kimlik doğrulamasıyla yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 

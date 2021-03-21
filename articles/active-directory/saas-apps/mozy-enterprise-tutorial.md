@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
 ms.openlocfilehash: 97294bdd088f50a46786c3568f4230706f750c4c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92520957"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mozy-enterprise"></a>Öğretici: Mozy Enterprise ile Azure Active Directory tümleştirme
@@ -61,13 +61,13 @@ Mozy Enterprise 'ın Azure AD ile tümleştirilmesini yapılandırmak için Gale
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Mozy Enterprise**yazın, sonuç panelinden **Mozy Enterprise** ' u seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
+4. Arama kutusuna **Mozy Enterprise** yazın, sonuç panelinden **Mozy Enterprise** ' u seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
 
      ![Sonuç listesinde Mozy kurumsal](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre Mozy Enterprise ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre Mozy Enterprise ile yapılandırıp test edersiniz.
 Çoklu oturum açma 'nın çalışması için, bir Azure AD kullanıcısı ve Mozy kurumsal içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
 Azure AD çoklu oturum açmayı Mozy Enterprise ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -132,15 +132,15 @@ Azure AD çoklu oturum açmayı Mozy Enterprise ile birlikte yapılandırmak iç
    
     ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz kimlik doğrulama Ilkesi bölümünü gösterir.](./media/mozy-enterprise-tutorial/ic777315.png "Kimlik doğrulama ilkesi")
    
-    a. **Sağlayıcı**olarak **Dizin hizmeti** seçin.
+    a. **Sağlayıcı** olarak **Dizin hizmeti** seçin.
    
     b. **LDAP Push kullan**' ı seçin.
    
     c. **SAML kimlik doğrulaması** sekmesine tıklayın.
    
-    d. Azure portal, **kimlik doğrulama URL 'si** metin kutusuna kopyaladığınız **oturum açma URL 'sini**yapıştırın.
+    d. Azure portal, **kimlik doğrulama URL 'si** metin kutusuna kopyaladığınız **oturum açma URL 'sini** yapıştırın.
    
-    e. Azure portal 'den **SAML uç noktası** metin kutusuna KOPYALADıĞıNıZ **Azure ad tanımlayıcısını**yapıştırın.
+    e. Azure portal 'den **SAML uç noktası** metin kutusuna KOPYALADıĞıNıZ **Azure ad tanımlayıcısını** yapıştırın.
    
     f. İndirilen Base-64 kodlu sertifikanızı Not defteri 'nde açın, içeriğini panonuza kopyalayın ve ardından tüm sertifikayı **SAML sertifikası** metin kutusuna yapıştırın.
    
@@ -164,9 +164,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
@@ -215,7 +215,7 @@ Azure AD kullanıcılarının Mozy Enterprise 'ta oturum açmasını sağlamak i
     ![Kullanıcılar](./media/mozy-enterprise-tutorial/ic777317.png "Kullanıcılar")
    
     >[!NOTE]
-    >**Yeni Kullanıcı Ekle** seçeneği yalnızca, **kimlik doğrulama ilkesi**altında sağlayıcı olarak **Mozy** seçilirse görüntülenir. SAML kimlik doğrulaması yapılandırıldıysa, kullanıcılar çoklu oturum açma yoluyla ilk oturum açma bilgilerini otomatik olarak eklenir.
+    >**Yeni Kullanıcı Ekle** seçeneği yalnızca, **kimlik doğrulama ilkesi** altında sağlayıcı olarak **Mozy** seçilirse görüntülenir. SAML kimlik doğrulaması yapılandırıldıysa, kullanıcılar çoklu oturum açma yoluyla ilk oturum açma bilgilerini otomatik olarak eklenir.
     
 3. Yeni Kullanıcı iletişim kutusunda aşağıdaki adımları gerçekleştirin:
    

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: b939f10d2c3bcf3aeba7422809a1038b2a75f123
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92511112"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rally-software"></a>Öğretici: R, yazılımıyla Azure Active Directory tümleştirme
@@ -61,13 +61,13 @@ RSE yazılımlarının Azure AD ile tümleştirilmesini yapılandırmak için, G
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna, **r, yazılım**yazın, sonuç panelinden **r, yazılım** ' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna, **r, yazılım** yazın, sonuç panelinden **r, yazılım** ' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
      ![Sonuçlar listesinde r, yazılım](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına bağlı olarak, RI yazılımıyla birlikte yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına bağlı olarak, RI yazılımıyla birlikte yapılandırıp test edersiniz.
 Çoklu oturum açma 'nın çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasındaki bir bağlantı ilişkisine bağlı olarak yazılım kurulması gerekir.
 
 Azure AD çoklu oturum açmayı, RI yazılımıyla birlikte yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -138,9 +138,9 @@ Azure AD çoklu oturum açmayı, RI yazılımıyla birlikte yapılandırmak içi
    
     a. Kimlik doğrulaması açılan listesinden **rya veya SSO kimlik doğrulaması** ' nı seçin.
 
-    b. **Kimlik sağlayıcısı URL** metin kutusuna, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının**değerini yapıştırın. 
+    b. **Kimlik sağlayıcısı URL** metin kutusuna, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının** değerini yapıştırın. 
 
-    c. **SSO oturumu kapatma** metin kutusunda, Azure Portal kopyaladığınız **oturum kapatma URL 'si**değerini yapıştırın.
+    c. **SSO oturumu kapatma** metin kutusunda, Azure Portal kopyaladığınız **oturum kapatma URL 'si** değerini yapıştırın.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
@@ -158,7 +158,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
     b. **Kullanıcı adı** alanına yazın brittasimon@yourcompanydomain.extension . Örneğin, BrittaSimon@contoso.com
 
@@ -208,15 +208,15 @@ Azure AD kullanıcılarının oturum açabilmeleri için, bunların Azure Active
 
 4. **Kullanıcı oluştur** bölümünde aşağıdaki adımları uygulayın:
    
-    ![Kullanıcı Oluştur](./media/rally-software-tutorial/ic781040.png "Kullanıcı Oluştur")
+    ![Create User](./media/rally-software-tutorial/ic781040.png "Kullanıcı Oluştur")
 
-    a. **Kullanıcı adı** metin kutusuna, **Brittsıon**gibi kullanıcının adını yazın.
+    a. **Kullanıcı adı** metin kutusuna, **Brittsıon** gibi kullanıcının adını yazın.
    
     b. **E-posta adresi** metin kutusuna kullanıcının e-postasını girin brittasimon@contoso.com .
 
-    c. **Ad** metin kutusuna, ilk Kullanıcı adını **Britta**gibi girin.
+    c. **Ad** metin kutusuna, ilk Kullanıcı adını **Britta** gibi girin.
 
-    d. **Soyadı** metin kutusuna, **Simon**gibi kullanıcı adının soyadını girin.
+    d. **Soyadı** metin kutusuna, **Simon** gibi kullanıcı adının soyadını girin.
 
     e. **Kaydet ve Kapat**’a tıklayın.
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/27/2020
 ms.author: jeedes
 ms.openlocfilehash: efbb8a9ca0d475939d7713fa6a6a4a8245aead90
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92457070"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bizagi-for-digital-process-automation"></a>Öğretici: dijital Işlem otomasyonu için BizAgi ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile Digital Process Automatio
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -57,7 +57,7 @@ Azure AD 'de dijital Işlem otomasyonu için Bizagı tümleştirmesini yapıland
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-bizagi-for-digital-process-automation"></a>Dijital Işlem otomasyonu için Bizagı için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak dijital işlem otomasyonu IÇIN Azure AD SSO 'Yu BizAgi ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile Bizagi projesindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak dijital işlem otomasyonu IÇIN Azure AD SSO 'Yu BizAgi ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile Bizagi projesindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Dijital Işlem otomasyonu için BizAgi ile Azure AD SSO 'yu yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -94,7 +94,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     
     Bu meta veri URL 'SI, BizAgi projenizin kimlik doğrulama seçeneklerinde kayıtlı olmalıdır.
     
-1. **SAML ile çoklu oturum açmayı ayarlama**sayfasında, benzersiz kullanıcı tanımlayıcısını düzenlemek için **talepler & Kullanıcı öznitelikleri** için Düzenle/kalem simgesine tıklayın.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, benzersiz kullanıcı tanımlayıcısını düzenlemek için **talepler & Kullanıcı öznitelikleri** için Düzenle/kalem simgesine tıklayın.
     
     Kullanıcı. mail olarak benzersiz kullanıcı tanımlayıcısı ayarlayın.
 

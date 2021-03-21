@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: d8119c56c26ed32db136064d93775d21a71f238f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92778661"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Microsoft Azure CDN’de kenar düğümü performansını çözümleme
@@ -143,7 +143,7 @@ Bu modüldeki her rapor, farklı türlerde ölçümler için bant genişliği ve
     ![CDN profili dikey penceresi Yönet düğmesi](./media/cdn-edge-performance/cdn-manage-btn.png)
    
     CDN yönetim portalı açılır.
-2. **Analiz** sekmesinin üzerine gelin ve ardından **kenar performansı Analizi** açılır öğesi üzerine gelin.  **Http büyük nesne** ' ye tıklayın.
+2. **Analiz** sekmesinin üzerine gelin ve ardından **kenar performansı Analizi** açılır öğesi üzerine gelin.  **Http büyük nesne**' ye tıklayın.
    
     Edge düğümü analiz raporları ekranı görüntülenir.
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: jeedes
 ms.openlocfilehash: 25a7ccc6dc31f00e6b3bcc4e484d9a17b7cdccfc
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92456165"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-chatwork"></a>Öğretici: ChatWork ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, ChatWork 'i Azure Active Directory (Azure AD) ile tümleştirme
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -57,7 +57,7 @@ ChatWork tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden C
 
 ## <a name="configure-and-test-azure-ad-sso-for-chatwork"></a>ChatWork için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu ChatWork ile yapılandırın ve test edin. SSO 'nun çalışması için, ChatWork içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu ChatWork ile yapılandırın ve test edin. SSO 'nun çalışması için, ChatWork içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu ChatWork ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -83,9 +83,9 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://www.chatwork.com/s/<TENANT_NAME>`
 
     > [!NOTE]
-    > Değer gerçek değil. Değeri **CHATWORK SSO yapılandırmasından**sonra ayarladığınız özel oturum açma URL 'siyle güncelleştirin.
+    > Değer gerçek değil. Değeri **CHATWORK SSO yapılandırmasından** sonra ayarladığınız özel oturum açma URL 'siyle güncelleştirin.
 
-1. ChatWork uygulaması, **benzersiz kullanıcı tanımlayıcı** özniteliğinin değerinin ChatWork içinde kayıtlı e-posta adresiyle eşleştiğinden bekliyor. Özniteliği, varsayılan olarak **User. PrincipalName** ile eşlenir. PrincipalName e-posta adresinden farklıysa,  **benzersiz kullanıcı tanımlayıcısını** **User. Mail**ile eşleyin.
+1. ChatWork uygulaması, **benzersiz kullanıcı tanımlayıcı** özniteliğinin değerinin ChatWork içinde kayıtlı e-posta adresiyle eşleştiğinden bekliyor. Özniteliği, varsayılan olarak **User. PrincipalName** ile eşlenir. PrincipalName e-posta adresinden farklıysa,  **benzersiz kullanıcı tanımlayıcısını** **User. Mail** ile eşleyin.
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 

@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 02/17/2021
 ms.author: v-doeris
 ms.openlocfilehash: beef869b891fe6e3f0ea2f667763cb310008b2fc
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101653278"
 ---
 # <a name="quickstart-acquire-an-access-token-and-call-the-microsoft-graph-api-from-an-electron-desktop-app"></a>Hızlı başlangıç: bir erişim belirteci alın ve bir elektron masaüstü uygulamasından Microsoft Graph API 'sini çağırın
@@ -140,7 +140,7 @@ const MSAL_CONFIG = {
 const pca = new PublicClientApplication(MSAL_CONFIG);
 ```
 
-> | Konum: |Açıklama |
+> | Konum: |Description |
 > |---------|---------|
 > | `clientId` | **Uygulama (istemci) Kimliği**, Azure portalda kayıtlı uygulamadır. Bu değeri Azure portalda uygulamanın **Genel bakış** sayfasında bulabilirsiniz. |
 > | `authority`    | Kimlik doğrulaması yapılacak kullanıcı için STS uç noktası. Genellikle `https://login.microsoftonline.com/{tenant}` {Tenant}, kiracınızın adı veya kiracı kimliğiniz olduğu genel bulut için.|
@@ -231,7 +231,7 @@ async function listenForAuthCode(navigateUrl, authWindow) {
 }
 ```
 
-> |Konum:| Açıklama |
+> |Konum:| Description |
 > |---------|---------|
 > | `authWindow` | İşlemdeki geçerli elektron penceresi. |
 > | `tokenRequest` | `"User.Read"`Microsoft Graph veya `"api://<Application ID>/access_as_user"` özel Web API 'leri için istenen kapsamları içerir. |

@@ -12,13 +12,13 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dfb38f9fcdba6898b690d0af68b715fea07e80bb
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96743114"
 ---
-# <a name="enable-and-use-azure-ad-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>Uygulama parolalarını kullanarak eski uygulamalarla Azure AD Multi-Factor Authentication etkinleştirme ve kullanma
+# <a name="enable-and-use-azure-ad-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>Uygulama parolalarını kullanarak eski uygulamalarla Azure AD Multi-Factor Authentication'ı etkinleştirme ve kullanma
 
 Office 2010 veya önceki bir sürümü ve iOS 11 ' den önceki Apple Mail gibi bazı eski, tarayıcı olmayan uygulamalar, kimlik doğrulama işleminde duraklamaları veya molaları anlamıyor. Bir Kullanıcı Azure AD Multi-Factor Authentication için etkinleştirilmişse ve bu eski, tarayıcı olmayan uygulamalardan birini kullanmaya çalışırsa, kimlik doğrulaması başarılı bir şekilde doğrulanamazlar. Bu uygulamaları, Azure AD Multi-Factor Authentication Kullanıcı hesapları için etkin olarak güvenli bir şekilde kullanmak için, uygulama parolaları ' nı kullanabilirsiniz. Bu uygulama parolaları, uygulamanın çok faktörlü kimlik doğrulamasını atlayıp doğru şekilde çalışmasını sağlamak için geleneksel parolanızı değiştirdi.
 

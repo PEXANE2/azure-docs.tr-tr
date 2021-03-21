@@ -9,17 +9,17 @@ ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.openlocfilehash: f8210c3bc0437180ace110f8decd9f83e18650ed
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98661941"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>Öğretici: Azure HDInsight kullanarak verileri ayıklama, dönüştürme ve yükleme
 
 Bu öğreticide, bir ETL işlemi gerçekleştirirsiniz: verileri ayıklama, dönüştürme ve yükleme. Ham bir CSV veri dosyası alır, Azure HDInsight kümesine içeri aktarabilir, Apache Hive dönüştürürler ve Apache Sqoop ile Azure SQL veritabanı 'na yüklersiniz.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Verileri bir HDInsight kümesine ayıklayın ve karşıya yükleyin.
@@ -226,7 +226,7 @@ Apache Hive işi kapsamında, verileri. csv dosyasından **gecikmeler** adlı bi
 
 Bu işlem için SQL veritabanı 'ndan sunucu adına ihtiyacınız vardır. Sunucu adınızı bulmak için bu adımları izleyin.
 
-1. [Azure portalına](https://portal.azure.com) gidin.
+1. [Azure Portal](https://portal.azure.com) gidin.
 
 2. **SQL veritabanlarını** seçin.
 

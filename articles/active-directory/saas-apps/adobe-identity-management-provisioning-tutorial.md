@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/27/2020
 ms.author: Zhchia
 ms.openlocfilehash: 7b4dd01b74f81318338196a40949d339f13d16da
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97673311"
 ---
 # <a name="tutorial-configure-adobe-identity-management-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Adobe Identity Management 'ı yapılandırma

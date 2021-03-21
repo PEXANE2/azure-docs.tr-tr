@@ -12,17 +12,17 @@ ms.date: 10/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: d77e145cabcef2931d5fe6e76599da7931e576e8
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97669168"
 ---
 # <a name="define-an-id-token-hint-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde bir KIMLIK belirteci ipucu teknik profili tanımlama
 
 Azure AD B2C, bağlı olan taraf uygulamalarının OAuth2 yetkilendirme isteğinin bir parçası olarak bir gelen JWT göndermesini sağlar. JWT belirteci bir bağlı olan taraf uygulaması veya bir kimlik sağlayıcısı tarafından verilebilir ve Kullanıcı veya yetkilendirme isteği hakkında bir ipucu geçirebilir. Azure AD B2C imza, verenin adı ve belirteç kitini doğrular ve gelen belirteçten talebi ayıklar.
 
-## <a name="use-cases"></a>Kullanım örnekleri
+## <a name="use-cases"></a>Uygulama alanları
 
 Bu çözümü, tek bir JWT belirtecinde kapsüllenmiş Azure AD B2C veri göndermek için kullanabilirsiniz. Sistem yöneticinizin kullanıcılara imzalı bir davet gönderebildiği [e-posta daveti çözümüne kaydolma çözümü](https://github.com/azure-ad-b2c/samples/blob/master/policies/invite/README.md), id_token_hint tabanlıdır. Yalnızca davet e-postasına erişimi olan kullanıcılar hesabı dizinde oluşturabilir.
 
@@ -78,7 +78,7 @@ Teknik profil, türü olan bir düzenleme adımından çağırılır `GetClaims`
 
 **Outputclaim** Öğesı, JWT belirtecinden Ayıklanacak taleplerin bir listesini içerir. İlkenizde tanımlanan talebin adını JWT belirtecinde tanımlanan adla eşlemeniz gerekebilir. Özniteliği ayarladığınız sürece JWT belirteci tarafından döndürülmeyen talepleri de ekleyebilirsiniz `DefaultValue` .
 
-## <a name="metadata"></a>Meta Veriler
+## <a name="metadata"></a>Meta veri
 
 Simetrik anahtar kullanılırken aşağıdaki meta veriler geçerlidir. 
 
@@ -185,7 +185,7 @@ Belirteç Verenin aşağıdaki uç noktaları sağlaması gerekir:
 * `/.well-known/openid-configuration` -Belirteç Verenin adı ve JWK uç noktasının bağlantısı gibi ilgili bilgileri içeren iyi bilinen bir yapılandırma uç noktası. 
 * `/.well-known/keys` -JSON Web anahtarı (JWK) bitiş noktası anahtarı imzalamak için kullanılan ortak anahtara sahiptir (sertifikanın özel anahtar bölümüyle birlikte).
 
-Bkz. [TokenMetadataController.cs](https://github.com/azure-ad-b2c/id-token-builder/blob/master/source-code/B2CIdTokenBuilder/Controllers/TokenMetadataController.cs) .NET MVC denetleyici örneği.
+Bkz. [Tokenmetadatacontroller. cs](https://github.com/azure-ad-b2c/id-token-builder/blob/master/source-code/B2CIdTokenBuilder/Controllers/TokenMetadataController.cs) .NET MVC denetleyici örneği.
 
 #### <a name="step-1-prepare-a-self-signed-certificate"></a>Adım 1. Otomatik olarak imzalanan sertifika hazırlama
 
