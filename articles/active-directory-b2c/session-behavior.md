@@ -12,12 +12,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: c19f6f8c59ac38bf46999372497205e0c33ebac4
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 3a3cdb93ee4cbf4a2e15540b9daf78b6c231d393
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175116"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579748"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Azure Active Directory B2C'de oturum davranışını yapılandırma
 
@@ -81,7 +81,7 @@ Azure AD B2C oturum davranışını aşağıdakiler dahil olmak üzere yapıland
   - **Kiracı** -Bu ayar varsayılan ayardır. Bu ayarın kullanılması, B2C kiracınızdaki birden fazla uygulamanın ve Kullanıcı akışının aynı kullanıcı oturumunu paylaşmasına izin verir. Örneğin, bir Kullanıcı bir uygulamada oturum açtıktan sonra, Kullanıcı da erişimi daha da sorunsuz bir şekilde oturum açabilir.
   - **Uygulama** -Bu ayar, başka uygulamalardan bağımsız olarak bir uygulama için Kullanıcı oturumunu korumanıza olanak sağlar. Örneğin, kullanıcının contoso Market 'te zaten oturum açmış olup olmamasına bakılmaksızın kullanıcının contoso Ilaç 'da oturum açmasını istiyorsanız bu ayarı kullanabilirsiniz.
   - **İlke** -Bu ayar, bir kullanıcı oturumunun, kendisini kullanan uygulamalardan bağımsız olarak bir Kullanıcı akışı için bakımını yapmanıza olanak sağlar. Örneğin, Kullanıcı zaten oturum açmışsa ve bir Multi-Factor Authentication (MFA) adımını tamamlamışsa, Kullanıcı akışına bağlı olan oturumun süresi dolana kadar, kullanıcıya birden çok uygulamanın daha yüksek güvenlik bölümlerine erişim verilebilir.
-  - **Devre dışı** -Bu ayar, kullanıcıyı ilkenin her yürütülmesinden sonra Kullanıcı akışının tamamı boyunca çalışmaya zorlar.
+  - **Gizlenen** -Bu ayar, kullanıcının ilkenin her yürütülmesinden sonra Kullanıcı akışının tamamı boyunca çalışmaya zorlar.
 - **Oturumumu Açık bırak (KMSı)** -sürekli bir tanımlama bilgisinin kullanımıyla oturum ömrünü genişletir. Bu özellik etkinleştirilirse ve Kullanıcı onu seçerse, kullanıcı tarayıcıyı kapatıp yeniden açtıktan sonra bile oturum etkin kalır. Oturum yalnızca Kullanıcı oturumunu kapattığında iptal edilir. KMSI özelliği yalnızca yerel hesaplarla oturum açmak için geçerlidir. KMSI özelliği oturum ömrünün üzerine gelir.
 
 ::: zone pivot="b2c-user-flow"
@@ -249,7 +249,7 @@ Bir oturum kapatma isteği sonrasında Azure AD B2C:
 ::: zone-end
 ::: zone pivot="b2c-custom-policy"
 3. Federal Kimlik sağlayıcılarından oturum açmaya çalışır:
-   - OpenID Connect-kimlik sağlayıcısı iyi bilinen yapılandırma uç noktası bir `end_session_endpoint` konum belirtiyorsa.
+   - OpenID Connect-kimlik sağlayıcısı iyi bilinen yapılandırma uç noktası bir `end_session_endpoint` konum belirtiyorsa. Oturum kapatma isteği `id_token_hint` parametreyi geçirmez. Federal Kimlik sağlayıcısı bu parametreyi gerektiriyorsa, oturum kapatma isteği başarısız olur.
    - OAuth2- [kimlik sağlayıcısı meta verileri](oauth2-technical-profile.md#metadata) `end_session_endpoint` konumu içeriyorsa.
    - SAML- [kimlik sağlayıcısı meta verileri](identity-provider-generic-saml.md) `SingleLogoutService` konumu içeriyorsa.
 4. İsteğe bağlı olarak, diğer uygulamalardan oturum kapatır. Daha fazla bilgi için bkz. [Çoklu oturum kapatma](#single-sign-out) bölümü.

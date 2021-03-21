@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/05/2020
 ms.author: alsin
 ms.openlocfilehash: 4694fa679c7bbff309a0452219ff39bacf2488c4
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96183711"
 ---
 # <a name="repair-an-automanage-account"></a>Bir oto Yönet hesabını onarma
@@ -67,7 +67,7 @@ ARM şablonu veya Azure CLı kullanıyorsanız, oto Yönet hesabınızın asıl 
 
 - Azure portal: **Azure Active Directory** gidin ve hesap adına göre oto Yönet hesabınızı arayın. **Kurumsal uygulamalar**' ın altında, görüntülendiğinde, hesap adını oto Yönet ' i seçin.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 1. **Abonelikler**' in altında, oto tarafından yönetilen sanal makinelerinizi içeren aboneliğe gidin.
 1. **Access Control (IAM)** sayfasına gidin.
 1. **Rol atamaları Ekle**' yi seçin.
@@ -117,7 +117,7 @@ Aşağıdaki ARM şablonunu çalıştırın. Oto Yönet hesabınızın asıl KIM
 }
 ```
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 Şu komutları çalıştırın:
 
 ```azurecli

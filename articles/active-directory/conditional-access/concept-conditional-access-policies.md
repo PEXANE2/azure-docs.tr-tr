@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/16/2020
+ms.date: 03/17/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28d58c476a805b672a6ec8b4d8ec465eba17e559
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 35d2bf33b4a22c14abfb61a87a3697b05188ed31
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169690"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579102"
 ---
 # <a name="building-a-conditional-access-policy"></a>Koşullu erişim ilkesi oluşturma
 
@@ -106,6 +106,8 @@ Erişimi engelle, yalnızca belirtilen atamalar altındaki erişimi engeller. Bl
 - Karma Azure AD 'ye katılmış cihaz gerektir
 - Onaylanan istemci uygulaması gerektir
 - Uygulama koruma ilkesi gerektir
+- Parola değişikliği iste
+- Kullanım koşullarını gerekli kılma
 
 Yöneticiler, aşağıdaki seçenekleri kullanarak önceki denetimlerden birini veya seçili tüm denetimleri zorunlu kılabilir. Birden çok denetim için varsayılan değer, tümü için gerekli değildir.
 
@@ -150,7 +152,7 @@ Koşullu erişim ilkesi, zorlanmak için en azından aşağıdakileri içermelid
 
 [Koşullu erişim What If aracını kullanarak oturum açma davranışının benzetimini yapma](troubleshoot-conditional-access-what-if.md)
 
-[Bulut tabanlı bir Azure AD Multi-Factor Authentication dağıtımı planlama](../authentication/howto-mfa-getstarted.md)
+[Bulut tabanlı Azure AD Multi-Factor Authentication dağıtımı planlama](../authentication/howto-mfa-getstarted.md)
 
 [Intune ile cihaz uyumluluğunu yönetme](/intune/device-compliance-get-started)
 

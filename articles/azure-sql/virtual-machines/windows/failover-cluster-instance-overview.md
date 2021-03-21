@@ -14,10 +14,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.openlocfilehash: a7735de9763f3924cd6baae6af1258f6448c874e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101690932"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Azure sanal makineler 'de SQL Server yük devretme kümesi örnekleri
@@ -96,7 +96,7 @@ Başlamak için bkz. [Azure Paylaşılan disklerle SQL Server yük devretme küm
 - , Azure blob önbelleğini destekler, bu nedenle okuma, önbellekten yerel olarak sunulabilir. (Güncelleştirmeler her iki düğüme de aynı anda çoğaltılır.) 
 - FILESTREAM 'i destekler. 
 
-**Sınırlamalar:**
+**Algılan**
 - Yalnızca Windows Server 2016 ve üzeri için kullanılabilir. 
 - Kullanılabilirlik alanları desteklenmiyor.
 - Her iki sanal makineye de aynı disk kapasitesini gerektirir. 
@@ -116,7 +116,7 @@ Başlamak için, bkz. [SQL Server yük devretme kümesi örneği depolama alanla
 - Yalnızca sanal makineler için paylaşılan depolama çözümü birden çok kullanılabilirlik bölgesine yayılır. 
 - Tek basamaklı gecikme süreleriyle tam olarak yönetilen dosya sistemi ve Burstable g/ç performansı. 
 
-**Sınırlamalar:**
+**Algılan**
 - Yalnızca Windows Server 2012 ve üzeri için kullanılabilir. 
 - FILESTREAM desteklenmiyor. 
 

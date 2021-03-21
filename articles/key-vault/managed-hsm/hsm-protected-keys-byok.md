@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/04/2021
 ms.author: ambapat
 ms.openlocfilehash: dd5b38a858ceba12f5d48f1782da5b85228c4b06
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102212119"
 ---
 # <a name="import-hsm-protected-keys-to-managed-hsm-byok"></a>HSM korumalı anahtarları yönetilen HSM 'ye içeri aktar (BYOK)
@@ -76,7 +76,7 @@ CLı aracılığıyla oturum açma seçenekleri hakkında daha fazla bilgi için
 
 ## <a name="supported-key-types"></a>Desteklenen anahtar türleri
 
-|Anahtar adı|Anahtar türü|Anahtar boyutu/eğrisi|Kaynak|Açıklama|
+|Anahtar adı|Anahtar türü|Anahtar boyutu/eğrisi|Kaynak|Description|
 |---|---|---|---|---|
 |Anahtar değişim anahtarı (KEK)|RSA| 2.048 bit<br />3.072 bit<br />4.096 bit|Yönetilen HSM|Yönetilen HSM 'de oluşturulan HSM ile desteklenen bir RSA anahtar çifti|
 |Hedef anahtar|

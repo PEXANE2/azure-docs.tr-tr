@@ -7,10 +7,10 @@ ms.date: 02/25/2019
 ms.author: srrengar
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 59c8202b03bf1be2be5a68b75a1d7c7404b2213d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95998252"
 ---
 # <a name="report-and-check-service-health"></a>Hizmet durumunu raporlama ve denetleme
@@ -57,10 +57,10 @@ Aşağıdakilerin yüklü olması gerekir:
 Visual Studio 'daki Service Fabric proje şablonları örnek kod içerir. Aşağıdaki adımlarda, hizmet kodunuzda özel sistem durumu olaylarını nasıl bildirekullanabileceğiniz gösterilmektedir. Bu raporlar, Service Fabric Explorer, Azure portal sistem durumu görünümü ve PowerShell gibi Service Fabric sağladığı sistem durumu izleme için standart araçlarda otomatik olarak gösterilir.
 
 1. Daha önce Visual Studio 'da oluşturduğunuz uygulamayı yeniden açın veya **durum bilgisi olan hizmet** Visual Studio şablonunu kullanarak yeni bir uygulama oluşturun.
-1. Stateful1.cs dosyasını açın ve `myDictionary.TryGetValueAsync` yöntemi içinde çağrısını bulun `RunAsync` . Bu yöntemin, `result` Bu uygulamadaki anahtar mantığı bir sayıyı çalışır durumda tutacağından, bu yöntemin, sayacın geçerli değerini tutan bir döndürür. Bu uygulama gerçek bir uygulamadır ve sonucun bulunmaması bir hatayı gösteriyorsa, bu olayı işaretlemek istersiniz.
+1. Stateful1. cs dosyasını açın ve `myDictionary.TryGetValueAsync` yöntemi içinde çağrısını bulun `RunAsync` . Bu yöntemin, `result` Bu uygulamadaki anahtar mantığı bir sayıyı çalışır durumda tutacağından, bu yöntemin, sayacın geçerli değerini tutan bir döndürür. Bu uygulama gerçek bir uygulamadır ve sonucun bulunmaması bir hatayı gösteriyorsa, bu olayı işaretlemek istersiniz.
 1. Sonucun olmaması bir başarısızlığı temsil ettiğinde bir sistem durumu olayı raporlamak için aşağıdaki adımları ekleyin.
    
-    a. `System.Fabric.Health`Stateful1.cs dosyasına ad alanını ekleyin.
+    a. `System.Fabric.Health`Stateful1. cs dosyasına ad alanını ekleyin.
    
     ```csharp
     using System.Fabric.Health;

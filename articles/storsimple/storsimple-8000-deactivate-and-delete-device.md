@@ -1,6 +1,6 @@
 ---
 title: StorSimple 8000 serisi cihazı devre dışı bırakma ve silme | Microsoft Docs
-description: StorSimple Aygıt Yöneticisi hizmetine bağlı bir StorSimple cihazını devre dışı bırakıp silmeyi öğrenin.
+description: StorSimple Device Manager hizmetine bağlı bir StorSimple cihazını devre dışı bırakıp silmeyi öğrenin.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,24 +14,24 @@ ms.workload: na
 ms.date: 07/23/2018
 ms.author: alkohli
 ms.openlocfilehash: 07d108306fdca9bfe8f793b61660550e43151d71
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96017194"
 ---
 # <a name="deactivate-and-delete-a-storsimple-device"></a>StorSimple cihazını devre dışı bırakma ve silme
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu makalede, StorSimple Aygıt Yöneticisi hizmetine bağlı bir StorSimple cihazını devre dışı bırakma ve silme işlemlerinin nasıl yapılacağı açıklanır. Bu makaledeki kılavuz yalnızca StorSimple bulut gereçlerini içeren StorSimple 8000 serisi cihazlar için geçerlidir. StorSimple Sanal dizisi kullanıyorsanız, [devre dışı bırak ' a gidin ve StorSimple Sanal dizisini silin](storsimple-virtual-array-deactivate-and-delete-device.md).
+Bu makalede, StorSimple Device Manager hizmetine bağlı bir StorSimple cihazını devre dışı bırakma ve silme işlemlerinin nasıl yapılacağı açıklanır. Bu makaledeki kılavuz yalnızca StorSimple bulut gereçlerini içeren StorSimple 8000 serisi cihazlar için geçerlidir. StorSimple Sanal dizisi kullanıyorsanız, [devre dışı bırak ' a gidin ve StorSimple Sanal dizisini silin](storsimple-virtual-array-deactivate-and-delete-device.md).
 
-Cihaz ve ilgili StorSimple Aygıt Yöneticisi hizmeti arasındaki bağlantıyı devre dışı bırakma. Bir StorSimple cihazını hizmetten alabilirsiniz (örneğin, cihazınızı değiştiriyorsanız veya yükseltiyorsanız veya artık StorSimple kullanmıyorsanız). Bu durumda, silmeden önce cihazı devre dışı bırakmanız gerekir.
+Cihaz ve ilgili StorSimple Device Manager hizmeti arasındaki bağlantıyı devre dışı bırakma. Bir StorSimple cihazını hizmetten alabilirsiniz (örneğin, cihazınızı değiştiriyorsanız veya yükseltiyorsanız veya artık StorSimple kullanmıyorsanız). Bu durumda, silmeden önce cihazı devre dışı bırakmanız gerekir.
 
 Bir cihazı devre dışı bıraktıktan sonra, cihazda yerel olarak depolanan verilere artık erişilemez. Yalnızca bulutta depolanan cihazla ilişkili veriler kurtarılabilir.
 
 > [!WARNING]
-> Devre dışı bırakma kalıcı bir işlemdir ve geri alınamaz. Devre dışı bırakılmış bir cihaz, fabrika varsayılanlarına Sıfırlanmadığı takdirde StorSimple Aygıt Yöneticisi hizmetine kaydedilemez.
+> Devre dışı bırakma kalıcı bir işlemdir ve geri alınamaz. Devre dışı bırakılmış bir cihaz, fabrika varsayılanlarına Sıfırlanmadığı takdirde StorSimple Device Manager hizmetine kaydedilemez.
 >
 > Fabrika sıfırlama işlemi, cihazınızda yerel olarak depolanan tüm verileri siler. Bu nedenle, bir cihazı devre dışı bırakmadan önce tüm verilerinizin bulut anlık görüntüsünü almalısınız. Bu bulut anlık görüntüsü, daha sonraki bir aşamada tüm verileri kurtarmanızı sağlar.
 
@@ -120,5 +120,5 @@ Bulut gereci devre dışı bırakıldıktan sonra cihaz listesinden silebilirsin
 
 * Devre dışı bırakılan cihazı fabrika ayarlarına geri yüklemek için, [cihazı varsayılan fabrika ayarlarına sıfırlama](storsimple-8000-manage-device-controller.md#reset-the-device-to-factory-default-settings)bölümüne gidin.
 * Teknik yardım için [Microsoft desteği başvurun](storsimple-8000-contact-microsoft-support.md).
-* StorSimple Aygıt Yöneticisi hizmetini kullanma hakkında daha fazla bilgi edinmek için, StorSimple [cihazınızı yönetmek için storsimple Aygıt Yöneticisi hizmetini kullanma](storsimple-8000-manager-service-administration.md)bölümüne gidin.
+* StorSimple Device Manager hizmetini kullanma hakkında daha fazla bilgi edinmek için, StorSimple [cihazınızı yönetmek için storsimple Device Manager hizmetini kullanma](storsimple-8000-manager-service-administration.md)bölümüne gidin.
 

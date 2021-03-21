@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 08/27/2020
 ms.custom: references_regions
 ms.openlocfilehash: fd54e6f8c5272c3a8fe0e0162ca2e57968b24642
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98791719"
 ---
 # <a name="tutorial-deploy-a-service-fabric-managed-cluster-preview"></a>Öğretici: Service Fabric yönetilen bir küme dağıtma (Önizleme)
@@ -29,7 +29,7 @@ Serinin bu bölümü aşağıdaki konuları içerir:
 > * Service Fabric yönetilen bir küme dağıtma
 > * Kümeye birincil düğüm türü ekleme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce:
 

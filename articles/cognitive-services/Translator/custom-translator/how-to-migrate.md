@@ -10,10 +10,10 @@ ms.date: 05/26/2020
 ms.author: lajanuar
 ms.topic: conceptual
 ms.openlocfilehash: 89658ce88b4f1ac9d5bacac7bd45511b4aa0a1be
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98895720"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Hub çalışma alanını ve projelerini özel çevirmene geçirme
@@ -130,7 +130,7 @@ Projeleriniz, seyahat ve belgeler hakkında daha ayrıntılı geçiş raporu ist
 
 Bu tablo, Microsoft Translator hub ve özel çevirmen arasındaki özellikleri karşılaştırır.
 
-| Öne çıkan özelliği | Hub | Özel Çevirmen |
+| Özellik | Hub | Özel Çevirmen |
 | ------- | :-: | :---------------: |
 | Özelleştirme özelliği durumu    | Genel kullanılabilirlik    | Genel kullanılabilirlik |
 | Metin API 'SI sürümü    | V2     | Yüklemesinde  |

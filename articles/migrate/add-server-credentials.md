@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 01/26/2021
 ms.openlocfilehash: 2359855ce3949eb022a03f6e8e2dbc05f98907db
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102054997"
 ---
 # <a name="provide-server-credentials-to-discover-applications-dependencies-and-sql-server-instances-and-databases"></a>Uygulamaları, bağımlılıkları ve SQL Server örneklerini ve veritabanlarını bulmaya yönelik sunucu kimlik bilgilerini sağlayın
@@ -18,7 +18,7 @@ ms.locfileid: "102054997"
 Yazılım envanterini (yüklü uygulamaları bulma), aracısız bağımlılık analizini ve SQL Server örnekleri ve veritabanlarını bulma işlemini gerçekleştirmek için gereç Yapılandırma Yöneticisi 'nde birden çok sunucu kimlik bilgisi eklemeyi öğrenmek için bu makaleyi izleyin.
 
 > [!Note]
-> VMware ortamınızda çalışan SQL Server örnekleri ve veritabanlarının keşfi ve değerlendirmesi artık önizlemededir. Bu özelliği denemek için **Avustralya Doğu** bölgede bir proje oluşturmak üzere [**Bu bağlantıyı**](https://aka.ms/AzureMigrate/SQL) kullanın. Zaten Avustralya Doğu bir projeniz varsa ve bu özelliği denemek istiyorsanız, lütfen portalda bu [**önkoşulları**](how-to-discover-sql-existing-project.md) tamamladığınızdan emin olun.
+> VMware ortamınızda çalışan SQL Server örnekleri ve veritabanlarının keşfi ve değerlendirmesi artık önizlemededir. Bu özelliği denemek için [**bu bağlantıyı**](https://aka.ms/AzureMigrate/SQL) kullanarak **Doğu Avustralya** bölgesinde bir proje oluşturun. Zaten Doğu Avustralya bölgesinde bir projeniz varsa ve bu özelliği denemek istiyorsanız, lütfen portalda bu [**önkoşulları**](how-to-discover-sql-existing-project.md) tamamladığınızdan emin olun.
 
 Azure [geçişi](migrate-appliance.md) gereci, Azure geçişi tarafından kullanılan hafif bir gereçdir: VMware ortamında çalışan şirket içi sunucuları keşfetme ve Azure 'a sunucu yapılandırma ve performans meta verilerini gönderen sunucu değerlendirmesi. Gereç Ayrıca yazılım envanteri, aracısız bağımlılık Analizi ve SQL Server örneklerinin ve veritabanlarının keşfedilmesine olanak sağlamak için de kullanılabilir.
 
@@ -32,7 +32,7 @@ Gereç Yapılandırma Yöneticisi 'nde etki alanı, etki alanı olmayan (Windows
 
 Desteklenen sunucu kimlik bilgileri türleri aşağıdaki tabloda listelenmiştir:
 
-Kimlik bilgileri türü | Açıklama
+Kimlik bilgileri türü | Description
 --- | ---
 **Etki alanı kimlik bilgileri** | **Kimlik bilgileri ekle** kalıcı seçeneğinde açılan listeden seçeneği belirleyerek **etki alanı kimlik bilgilerini** ekleyebilirsiniz. <br/><br/> Etki alanı kimlik bilgilerini sağlamak için, FQDN biçiminde (ör. prod.corp.contoso.com) sağlanması gereken **etki alanı adını** belirtmeniz gerekir. <br/><br/> Ayrıca kimlik bilgileri, Kullanıcı adı ve parola için kolay bir ad belirtmeniz gerekir. <br/><br/> Eklenen etki alanı kimlik bilgileri, etki alanının Active Directory karşı özgünlük için otomatik olarak doğrulanacak. Bu, Gereç etki alanı kimlik bilgilerini bulunan sunucularla eşlemeyi denediğinde hesap kilitlenmelerini önlemektir. <br/><br/> Gereç, doğrulanamadı hatasıyla başarısız olan etki alanı kimlik bilgilerini eşlemeye çalışmaz. Yazılım envanterine devam etmek için en az bir etki alanı kimlik bilgisinin veya etki alanı olmayan en az bir kimlik bilgisinin olması gerekir.<br/><br/>Windows Server 'larda otomatik olarak eşlenen etki alanı kimlik bilgileri, yazılım envanteri gerçekleştirmek için kullanılır ve ayrıca, SQL Server örnekleri ve veritabanlarını _(SQL sunucularınızda Windows kimlik doğrulama modu yapılandırdıysanız)_ keşfetmesi için de kullanılabilir.<br/> SQL Server 'Lar üzerinde desteklenen kimlik doğrulama modu türleri hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authentication-in-sql-server) .
 **Etki alanı dışı kimlik bilgileri (Windows/Linux)** | **Kimlik bilgileri ekle** kalıcı ' nın açılan listesinden gerekli seçeneği belirleyerek **Windows (etki alanı olmayan)** veya **Linux (etki alanı olmayan)** ekleyebilirsiniz. <br/><br/> Kimlik bilgileri, Kullanıcı adı ve parola için kolay bir ad belirtmeniz gerekir.

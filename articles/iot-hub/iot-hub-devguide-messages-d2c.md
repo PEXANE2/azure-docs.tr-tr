@@ -12,10 +12,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-csharp
 ms.openlocfilehash: d2fe8f32ec854e1e6db644a039e6a249cfbddcaa
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103012896"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Farklı uç noktalara cihazdan buluta iletiler göndermek için IoT Hub ileti yönlendirmeyi kullanma
@@ -43,7 +43,7 @@ Her ileti, yönlendirme sorguları eşleşen tüm uç noktalara yönlendirilir. 
 IoT Hub Şu anda aşağıdaki uç noktaları desteklemektedir:
 
  - Yerleşik uç nokta
- - Azure Storage
+ - Azure Depolama
  - Service Bus kuyrukları ve Service Bus konuları
  - Event Hubs
 

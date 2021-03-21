@@ -9,16 +9,16 @@ ms.date: 10/15/2020
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 0ffc9c2ee17862497d3fd986da8e003f7a497056
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95998779"
 ---
 # <a name="tutorial-connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Öğretici: portalı kullanarak bir ExpressRoute devresine sanal ağ bağlama
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
+> * [Azure portalı](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure CLI](howto-linkvnet-cli.md)
 > * [Video-Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
@@ -27,7 +27,7 @@ ms.locfileid: "95998779"
 
 Bu öğretici, Azure portal kullanarak bir sanal ağı Azure ExpressRoute bağlantı hattını bağlamak için bir bağlantı oluşturmanıza yardımcı olur. Azure ExpressRoute bağlantı hattına bağlandığınız sanal ağlar aynı abonelikte ya da başka bir aboneliğin parçası olabilir.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > - Sanal bir ağı aynı abonelikte bir devreye bağlama.
 > - Sanal bir ağı farklı bir abonelikteki bir devreye bağlayın.
@@ -63,7 +63,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
     :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/express-route-circuit.png" alt-text="ExpressRoute devresi ekran görüntüsü":::
 
-1. Artık sanal ağ geçidinizin ExpressRoute Devrenize bağlamak için bir bağlantı sağlamaya başlayabilirsiniz. Bağlantı **Ekle ' yi seçerek**  >  **Add** **bağlantı ekle** sayfasını açın.
+1. Artık sanal ağ geçidinizin ExpressRoute Devrenize bağlamak için bir bağlantı sağlamaya başlayabilirsiniz. Bağlantı **Ekle ' yi seçerek**  >   **bağlantı ekle** sayfasını açın.
 
     :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/add-connection.png" alt-text="Bağlantı ekran görüntüsü ekleme":::
 
@@ -157,7 +157,7 @@ Devre kullanıcısının, devre sahibinden kaynak KIMLIĞI ve yetkilendirme anah
 
 Bağlantınız için sayfadaki **Sil** simgesini seçerek bir bağlantıyı silebilir ve sanal ağınızın bir ExpressRoute bağlantı hattına bağlantısını kaldırabilirsiniz.
 
-:::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/delete-connection.png" alt-text="Bağlantıyı silme":::
+:::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/delete-connection.png" alt-text="Bağlantıyı Sil":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

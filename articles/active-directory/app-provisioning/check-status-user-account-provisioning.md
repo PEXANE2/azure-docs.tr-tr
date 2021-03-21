@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/09/2018
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: e6839026c83a10a4acebd7b7a6ab55b210e7ef14
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 5d93cec201feeb43700fe849f2fddc8eaf22488a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99256686"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579493"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Öğretici: otomatik Kullanıcı hesabı sağlama üzerinde raporlama
 
@@ -48,7 +48,7 @@ Buradan, sağlama ilerleme çubuğuna ve sağlama günlüklerine, aşağıda aç
 
 ## <a name="provisioning-progress-bar"></a>Sağlama ilerleme çubuğu
 
-[Sağlama ilerleme çubuğu](application-provisioning-when-will-provisioning-finish-specific-user.md#view-the-provisioning-progress-bar) , verilen uygulamanın **sağlama** sekmesinde görünür. **Ayarlar** altındaki **geçerli durum** bölümünde bulunur ve geçerli başlangıç veya artımlı döngüsünün durumunu gösterir. Bu bölümde ayrıca şunları da gösterilmektedir:
+[Sağlama ilerleme çubuğu](application-provisioning-when-will-provisioning-finish-specific-user.md#view-the-provisioning-progress-bar) , belirli bir uygulamanın **sağlama** sekmesinde görünür. **Geçerli durum** bölümünde bulunur ve geçerli ilk veya artımlı döngüsünün durumunu gösterir. Bu bölümde ayrıca şunları da gösterilmektedir:
 
 * Eşitlenmiş ve kaynak sistem ile hedef sistem arasında sağlama için kapsamda bulunan ve şu anda kapsamdaki Toplam Kullanıcı ve/grup sayısı.
 * Eşitlemenin son çalıştırıldığı zaman. Eşitlemeler genellikle [ilk bir döngüden](../app-provisioning/how-provisioning-works.md#provisioning-cycles-initial-and-incremental) sonra her 20-40 dakikada bir gerçekleşir.

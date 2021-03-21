@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/22/2020
 ms.author: jeedes
 ms.openlocfilehash: 77d810fc8327e3777102f2a09f0ca32835aad4b3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96180773"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-knowbe4-security-awareness-training"></a>Öğretici: KnowBe4 güvenlik tanıma eğitimi ile Azure Active Directory tümleştirme
@@ -27,7 +27,7 @@ KnowBe4 güvenlik tanıma eğitimini Azure AD ile tümleştirmek aşağıdaki av
 * Kullanıcılarınızın Azure AD hesaplarıyla KnowBe4 güvenlik tanıma eğitimine (çoklu oturum açma) otomatik olarak oturum açmasını sağlayabilirsiniz.
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini KnowBe4 güvenlik tanıma eğitiminde yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -105,7 +105,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**'a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

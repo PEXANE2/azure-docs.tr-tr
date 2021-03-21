@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
 ms.openlocfilehash: cf0e423648db174433f0717f2e5971ac49697b42
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98704632"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>Bant genişliği orta veya yüksek olduğunda büyük veri kümeleri için veri aktarımı
@@ -83,7 +83,7 @@ Aşağıdaki tablolarda önerilen seçenekler için önemli olanaklarla ilgili f
 
 ### <a name="high-network-bandwidth"></a>Yüksek ağ bant genişliği
 
-|                                     |    Araçlar AzCopy, <br>Azure PowerShell <br>Azure CLI             |    Azure depolama REST API 'Leri, SDK 'Lar                   |    Data Box Gateway veya Data Box Edge          |    Azure Data Factory                                            |
+|                                     |    Araçlar AzCopy, <br>Azure PowerShell <br>Azure CLI’si             |    Azure depolama REST API 'Leri, SDK 'Lar                   |    Data Box Gateway veya Data Box Edge          |    Azure Data Factory                                            |
 |-------------------------------------|------------------------------------|----------------------------------------------|----------------------------------|-----------------------------------------------------------------------|
 |    **Veri türü**              |    Azure Blobları, Azure dosyaları, Azure tabloları    |    Azure Blobları, Azure dosyaları, Azure tabloları    |    Azure Blobları, Azure dosyaları                           |   Veri depoları ve biçimleri için 70 ' ten fazla veri Bağlayıcısı destekler    |
 |    **Form faktörü**            |    Komut satırı araçları                        |    Programlı arabirim                    |    Microsoft bir sanal <br>veya fiziksel cihaz     |    Azure portal hizmet                                            |

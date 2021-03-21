@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 03/12/2021
 ms.author: duau
-ms.openlocfilehash: 417a6a55f0114ec35554e598b456f4fb67eb1c1b
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: da293f15ba070fc9a00ad37defd6a76175ded2f2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103574467"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587288"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute SSS
 
@@ -204,7 +204,7 @@ Hizmet sağlayıcınız her iki sitede de ExpressRoute sunuyorsa, sağlayıcın�
 
 Evet. Aynı veya farklı hizmet sağlayıcılarına sahip birden fazla ExpressRoute devresine sahip olabilirsiniz. Metro 'da birden fazla ExpressRoute eşleme konumu varsa ve devreler farklı eşleme konumlarında oluşturulduysa, bunları aynı sanal ağa bağlayabilirsiniz. Devreler aynı eşleme konumunda oluşturulduysa, aynı sanal ağa dört adede kadar bağlantı bağlayabilirsiniz.
 
-### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>Sanal ağlarımı bir ExpressRoute devresine bağlama Nasıl yaparım?
+### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>Sanal ağlarımı bir ExpressRoute devresine bağlamak Nasıl yaparım? mı?
 
 Temel adımlar şunlardır:
 
@@ -298,6 +298,15 @@ Ayrıca, bant genişliği artışını desteklemek üzere ağları içindeki kı
 ### <a name="how-do-i-change-the-bandwidth-of-an-expressroute-circuit"></a>ExpressRoute devresine ait bant genişliğini değiştirmek Nasıl yaparım??
 
 REST API veya PowerShell cmdlet 'ini kullanarak ExpressRoute bağlantı hattının bant genişliğini güncelleştirebilirsiniz.
+
+### <a name="i-received-a-notification-about-maintenance-on-my-expressroute-circuit-what-is-the-technical-impact-of-this-maintenance"></a>ExpressRoute devrende bakım hakkında bir bildirim aldım. Bu bakımın teknik etkisi nedir?
+
+Devrenizi [etkin-etkin modda](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute#active-active-connections)işletirken bakım sırasında etkilenmeden en az bir etkisi olması gerekir. Devrenin birincil ve ikincil bağlantılarında ayrı olarak bakım gerçekleştiririz. Zamanlanan bakım genellikle, eşleme konumunun saat diliminde iş saatleri dışında gerçekleştirilir ve bakım süresini seçemezsiniz.
+
+### <a name="i-received-a-notification-about-a-software-upgrade-or-maintenance-on-my-expressroute-gateway-what-is-the-technical-impact-of-this-maintenance"></a>ExpressRoute ağ geçidimde yazılım yükseltme veya bakım hakkında bir bildirim aldım. Bu bakımın teknik etkisi nedir?
+
+Bir yazılım yükseltmesi veya ağ geçidinizdeki bakım sırasında herhangi bir etkiye karşı en az bir deneyim almanız gerekir. ExpressRoute ağ geçidi birden çok örnekten oluşur ve yükseltmeler sırasında örnekler her seferinde bir kez çevrimdışı alınır. Bu, ağ geçidinizin düşük ağ aktarım hızını sanal ağa geçici olarak desteklemeye neden olabilir, ancak ağ geçidi kapalı kalma süresine sahip olmaz.
+
 
 ## <a name="expressroute-premium"></a>ExpressRoute Premium
 

@@ -13,10 +13,10 @@ ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/01/2021
 ms.openlocfilehash: e096e21e7d20c992e18634d684f663f149cc3c55
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101691255"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Müşteri tarafından yönetilen anahtarla Azure SQL Saydam Veri Şifrelemesi
@@ -170,7 +170,7 @@ Veritabanı durumunu izlemek ve TDE koruyucu erişimi kaybı nedeniyle uyarı et
 
 Bir veritabanı TDE Key Vault 'ten anahtar kullanılarak şifrelendikten sonra, yeni oluşturulan tüm yedeklemeler aynı TDE koruyucusuyla de şifrelenir. TDE koruyucusu değiştirildiğinde, veritabanının eski yedekleri en son TDE koruyucuyu kullanacak şekilde **güncellenmez** .
 
-Key Vault bir TDE koruyucusu ile şifrelenmiş bir yedeklemeyi geri yüklemek için, anahtar malzemenin hedef sunucu için kullanılabilir olduğundan emin olun. Bu nedenle, temel kasadaki TDE koruyucunun tüm eski sürümlerini tutmanız önerilir, böylelikle veritabanı yedeklemeleri geri yüklenebilir.
+Key Vault bir TDE koruyucusu ile şifrelenmiş bir yedeklemeyi geri yüklemek için, anahtar malzemenin hedef sunucu için kullanılabilir olduğundan emin olun. Bu nedenle TDE koruyucusunun tüm eski sürümlerini anahtar kasasında tutmanızı öneririz; böylelikle veritabanı yedeklemeleri geri yüklenebilir.
 
 > [!IMPORTANT]
 > Herhangi bir anda, bir sunucu için birden fazla TDE koruyucu kümesi olamaz. Bu, Azure portal dikey penceresindeki "anahtarı varsayılan TDE koruyucuyu yap" ile işaretlenen anahtardır. Ancak, birden fazla ek anahtar, bir TDE koruyucusu olarak işaretlenmeksizin bir sunucuya bağlanabilir. Bu anahtarlar DEK koruma için kullanılmaz, ancak yedekleme dosyası karşılık gelen parmak izine sahip anahtarla şifrelendiyse, yedekten geri yükleme sırasında kullanılabilir.

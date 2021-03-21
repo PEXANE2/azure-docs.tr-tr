@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.openlocfilehash: d695758849fd4f7e6f595820221f6b8606fe7cf1
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102096199"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Azure Geçişi aleti mimarisi
@@ -51,7 +51,7 @@ Gereç aşağıdaki hizmetlere sahiptir:
 - **SQL bulma ve değerlendirme Aracısı**: SQL Server örneklerinin ve veritabanlarının yapılandırma ve performans meta verilerini Azure 'a gönderir.
 
 > [!Note]
-> Son 3 hizmet yalnızca VMware ortamınızda çalışan sunucuların bulunması ve değerlendirmesi için kullanılan gereç içinde kullanılabilir.<br/> VMware ortamınızda çalışan SQL Server örnekleri ve veritabanlarının keşfi ve değerlendirmesi artık önizlemededir. Bu özelliği denemek için **Avustralya Doğu** bölgede bir proje oluşturmak üzere [**Bu bağlantıyı**](https://aka.ms/AzureMigrate/SQL) kullanın. Zaten Avustralya Doğu bir projeniz varsa ve bu özelliği denemek istiyorsanız, lütfen portalda bu [**önkoşulları**](how-to-discover-sql-existing-project.md) tamamladığınızdan emin olun.
+> Son 3 hizmet yalnızca VMware ortamınızda çalışan sunucuların bulunması ve değerlendirmesi için kullanılan gereç içinde kullanılabilir.<br/> VMware ortamınızda çalışan SQL Server örnekleri ve veritabanlarının keşfi ve değerlendirmesi artık önizlemededir. Bu özelliği denemek için [**bu bağlantıyı**](https://aka.ms/AzureMigrate/SQL) kullanarak **Doğu Avustralya** bölgesinde bir proje oluşturun. Zaten Doğu Avustralya bölgesinde bir projeniz varsa ve bu özelliği denemek istiyorsanız, lütfen portalda bu [**önkoşulları**](how-to-discover-sql-existing-project.md) tamamladığınızdan emin olun.
 
 
 ## <a name="discovery-and-collection-process"></a>Bulma ve toplama işlemi

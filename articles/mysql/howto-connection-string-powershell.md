@@ -8,10 +8,10 @@ ms.custom: mvc, devx-track-azurepowershell
 ms.topic: how-to
 ms.date: 8/5/2020
 ms.openlocfilehash: 9f960d32dcf1f359327dccc01eeb06825cc3a062
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94541479"
 ---
 # <a name="how-to-generate-an-azure-database-for-mysql-connection-string-with-powershell"></a>PowerShell ile MySQL için Azure veritabanı bağlantı dizesi oluşturma
@@ -26,7 +26,7 @@ Bu makalede, başlangıç noktası olarak aşağıdaki kılavuzda oluşturulan k
 
 ## <a name="get-the-connection-string"></a>Bağlantı dizesini alma
 
-`Get-AzMySqlConnectionString`Cmdlet 'ı MySQL Için Azure veritabanı 'na uygulama bağlamak üzere bir bağlantı dizesi oluşturmak için kullanılır. Aşağıdaki örnek, **demosunucum** 'dan bir php istemcisinin bağlantı dizesini döndürür.
+`Get-AzMySqlConnectionString`Cmdlet 'ı MySQL Için Azure veritabanı 'na uygulama bağlamak üzere bir bağlantı dizesi oluşturmak için kullanılır. Aşağıdaki örnek, **demosunucum**'dan bir php istemcisinin bağlantı dizesini döndürür.
 
 ```azurepowershell-interactive
 Get-AzMySqlConnectionString -Client PHP -Name mydemoserver -ResourceGroupName myresourcegroup

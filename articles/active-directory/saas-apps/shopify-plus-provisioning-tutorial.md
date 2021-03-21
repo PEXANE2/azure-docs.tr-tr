@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 12/07/2020
 ms.author: Zhchia
 ms.openlocfilehash: ce791337cb27d3704d1cfa007ed6dca3e8e7e0d9
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98729642"
 ---
 # <a name="tutorial-configure-shopify-plus-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Shopify Plus 'ı yapılandırma
@@ -34,7 +34,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Shopif
 > * Kullanıcı özniteliklerinin Azure AD ile Shopify Plus arasında eşitlenmiş olmasını sağlama
 > * Shopify ve için [Çoklu oturum açma](./shopify-plus-tutorial.md) (önerilir)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 

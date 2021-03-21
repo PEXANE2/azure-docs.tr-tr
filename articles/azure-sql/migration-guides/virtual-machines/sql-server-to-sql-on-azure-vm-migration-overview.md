@@ -11,10 +11,10 @@ ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
 ms.openlocfilehash: 0eabb48aabcb50557b342385068807eb67a9b165
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98797841"
 ---
 # <a name="migration-overview-sql-server-to-sql-server-on-azure-vms"></a>Geçişe genel bakış: Azure VM 'lerinde SQL Server SQL Server

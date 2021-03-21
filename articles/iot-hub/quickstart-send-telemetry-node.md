@@ -17,10 +17,10 @@ ms.custom:
 - devx-track-azurecli
 ms.date: 06/21/2019
 ms.openlocfilehash: 7aa95e2117dc3bb2e837e62ef42e3a770f2266d5
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94842150"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-nodejs"></a>Hızlı başlangıç: bir cihazdan IoT Hub 'ına telemetri gönderme ve arka uç uygulamasıyla okuma (Node.js)
@@ -31,7 +31,7 @@ ms.locfileid: "94842150"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Node.js 10 +](https://nodejs.org). Azure Cloud Shell kullanıyorsanız, Node.js yüklü sürümünü güncelleştirmeyin. Azure Cloud Shell en son Node.js sürümüne zaten sahip.
 

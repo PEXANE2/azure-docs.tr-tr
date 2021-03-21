@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 53f50e98bcec4b8ace342808f0bcfd96770834b0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96002230"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Ekip veri bilimi Işlemi sürüyor: Azure HDInsight Hadoop kümelerini kullanma
@@ -117,23 +117,23 @@ Burada, AzCopy kullanarak verileri içeren dosyaları nasıl aktaracağımız a�
 
 Aşağıdaki AzCopy komutlarında, aşağıdaki parametreleri Hadoop kümesini oluştururken belirttiğiniz gerçek değerlerle değiştirin ve veri dosyalarının sıkıştırmasını geri gönderin.
 
-* ***\<path_to_data_folder>** _ Makinenizde, ZIP üzerinde olmayan veri dosyalarını içeren dizin (yol ile birlikte).  
-_ * **\<storage account name of Hadoop cluster>** _ HDInsight kümenizle ilişkili depolama hesabı.
-_ * **\<default container of Hadoop cluster>** _ Kümeniz tarafından kullanılan varsayılan kapsayıcı. Varsayılan kapsayıcının adı genellikle kümenin kendisiyle aynı addır. Örneğin, küme "abc123.azurehdinsight.net" olarak adlandırıldıysanız, varsayılan kapsayıcı abc123 olur.
-_ * **\<storage account key>** _ Kümeniz tarafından kullanılan depolama hesabı için anahtar.
+* ***\<path_to_data_folder>*** Makinenizde, ZIP üzerinde olmayan veri dosyalarını içeren dizin (yol ile birlikte).  
+* ***\<storage account name of Hadoop cluster>*** HDInsight kümeniz ile ilişkili depolama hesabı.
+* ***\<default container of Hadoop cluster>*** Kümeniz tarafından kullanılan varsayılan kapsayıcı. Varsayılan kapsayıcının adı genellikle kümenin kendisiyle aynı addır. Örneğin, küme "abc123.azurehdinsight.net" olarak adlandırıldıysanız, varsayılan kapsayıcı abc123 olur.
+* ***\<storage account key>*** Kümeniz tarafından kullanılan depolama hesabı için anahtar.
 
 Bir komut isteminden veya bir Windows PowerShell penceresinde aşağıdaki iki AzCopy komutunu çalıştırın.
 
-Bu komut, seyahat verilerini Hadoop kümesinin varsayılan kapsayıcısındaki _*_nyctaxitripraw_*_ dizinine yükler.
+Bu komut, seyahat verilerini Hadoop kümesinin varsayılan kapsayıcısındaki ***nyctaxitripraw*** dizinine yükler.
 
 ```console
-"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxitripraw /DestKey:<storage account key> /S /Pattern:trip_data__.csv
+"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxitripraw /DestKey:<storage account key> /S /Pattern:trip_data_*.csv
 ```
 
-Bu komut, tarifeli havayolu verilerini Hadoop kümesinin varsayılan kapsayıcısındaki ***nyctaxifareraw** _ dizinine yükler.
+Bu komut, tarifeli havayolu verilerini Hadoop kümesinin varsayılan kapsayıcısındaki ***nyctaxifareraw*** dizinine yükler.
 
 ```console
-"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxifareraw /DestKey:<storage account key> /S /Pattern:trip_fare__.csv
+"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxifareraw /DestKey:<storage account key> /S /Pattern:trip_fare_*.csv
 ```
 
 Verilerin artık BLOB depolama alanında olması ve HDInsight kümesi içinde tüketilmeye hazır olması gerekir.
@@ -156,7 +156,7 @@ set script='https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataSc
 @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString(%script%))"
 ```
 
-Bu iki komut, bu kılavuzda gereken tüm '. HQL ' dosyalarını baş düğümdeki ***C:\temp&#92;** _ yerel dizinine indirir.
+Bu iki komut, bu kılavuzda gereken tüm '. HQL ' dosyalarını baş düğümdeki ***C:\temp&#92;*** yerel dizinine indirir.
 
 ## <a name="create-hive-database-and-tables-partitioned-by-month"></a><a name="#hive-db-tables"></a>Aya göre bölümlenmiş Hive veritabanı ve tabloları oluşturma
 > [!NOTE]
@@ -182,7 +182,7 @@ Hive Dizin isteminde, Hive veritabanını ve tablolarını oluşturan baş düğ
 hive -f "C:\temp\sample_hive_create_db_and_tables.hql"
 ```
 
-Burada, **Nyctaxidb** Hive veritabanını ve **seyahat** ve **tarifeli havayolu** tablolarını oluşturan _ *c:\temp\sample \_ Hive \_ Create \_ DB \_ ve \_ Tables. HQL** dosyasının içeriği yer alır.
+Burada, **Nyctaxidb** Hive veritabanını oluşturan **\_ \_ \_ DB \_ ve \_ Tables. HQL** dosyasının içeriği ve **seyahat** ve **tarifeli havayolu** tabloları oluşturulur.
 
 ```hiveql
 create database if not exists nyctaxidb;

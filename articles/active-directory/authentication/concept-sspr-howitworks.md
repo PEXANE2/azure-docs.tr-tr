@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 496a8dba9b9ea7fb82ad9016479154d6a61cb767
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98703284"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Nasıl çalışır? Azure AD self servis parola sıfırlama
@@ -75,7 +75,7 @@ SSPR 'yi kullanmaya başlamak için aşağıdaki öğreticiyi izleyin:
 Azure AD kullanarak herhangi bir uygulamada oturum açtıklarında, kullanıcının SSPR kaydını tamamlamasını gerektirme seçeneğini etkinleştirebilirsiniz. Bu iş akışı aşağıdaki uygulamaları içerir:
 
 * Microsoft 365
-* Azure portal
+* Azure portalı
 * Erişim Paneli
 * Federasyon uygulamaları
 * Azure AD kullanarak özel uygulamalar
