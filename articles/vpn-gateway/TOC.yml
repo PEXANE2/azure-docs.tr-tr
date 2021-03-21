@@ -262,6 +262,8 @@
     - name: Sorun giderme
       href: vpn-gateway-troubleshoot.md
       items:
+        - name: Tanılama günlüklerini kullanarak Azure VPN Gateway sorunlarını giderme
+          href: troubleshoot-vpn-with-azure-diagnostics.md
         - name: Topluluk tarafından önerilen VPN veya güvenlik duvarı cihaz ayarları
           href: vpn-gateway-third-party-settings.md
         - name: VNet veya VPN bağlantılarını yapılandırma ve doğrulama

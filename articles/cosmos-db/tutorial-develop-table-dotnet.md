@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 12/03/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: c641e24a498a6263d6a7c2325eed099b75a82caa
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102426442"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>.NET SDK'sı ile Azure Cosmos DB Tablo API'si'ni ve Azure Tablo depolama alanını kullanmaya başlama
@@ -53,7 +53,7 @@ Visual Studio 'da yeni bir .NET konsol uygulaması oluşturun. Aşağıdaki adı
 
 1. **Oluştur**’u seçin.
 
-Bu örnekteki tüm kod örnekleri konsol uygulamanızın **program.cs** dosyasının Main () yöntemine eklenebilir.
+Bu örnekteki tüm kod örnekleri konsol uygulamanızın **program. cs** dosyasının Main () yöntemine eklenebilir.
 
 ## <a name="install-the-required-nuget-package"></a>Gerekli NuGet paketini yükler
 
@@ -83,15 +83,15 @@ NuGet paketini edinmek için aşağıdaki adımları izleyin:
    }
    ```
 
-1. Projenizin **Cosmostablesamples** öğesine sağ tıklayın. **Ekle**, **Yeni öğe** ' yi seçin ve **appSettings.cs** adlı bir sınıf ekleyin.
+1. Projenizin **Cosmostablesamples** öğesine sağ tıklayın. **Ekle**, **Yeni öğe** ' yi seçin ve **appSettings. cs** adlı bir sınıf ekleyin.
 
-1. Aşağıdaki kodu AppSettings.cs dosyasına ekleyin. Bu dosya Settings.jsdosyadaki bağlantı dizesini okur ve onu yapılandırma parametresine atar:
+1. Aşağıdaki kodu AppSettings. cs dosyasına ekleyin. Bu dosya Settings.jsdosyadaki bağlantı dizesini okur ve onu yapılandırma parametresine atar:
 
   :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/AppSettings.cs":::
 
 ## <a name="parse-and-validate-the-connection-details"></a>Bağlantı ayrıntılarını ayrıştırma ve doğrulama
 
-1. Projenizin **Cosmostablesamples** öğesine sağ tıklayın. **Ekle**, **Yeni öğe** ' yi seçin ve **Common.cs** adlı bir sınıf ekleyin. Bağlantı ayrıntılarını doğrulamak ve bu sınıf içinde bir tablo oluşturmak için kod yazacaksınız.
+1. Projenizin **Cosmostablesamples** öğesine sağ tıklayın. **Ekle**, **Yeni öğe** ' yi seçin ve **ortak. cs** adlı bir sınıf ekleyin. Bağlantı ayrıntılarını doğrulamak ve bu sınıf içinde bir tablo oluşturmak için kod yazacaksınız.
 
 1. `CreateStorageAccountFromConnectionString`Aşağıda gösterildiği gibi bir yöntem tanımlayın. Bu yöntem, bağlantı dizesi ayrıntılarını ayrıştırır ve "Settings.json" dosyasında sunulan hesap adı ve hesap anahtarı ayrıntılarının geçerli olduğunu doğrular.
 
@@ -99,7 +99,7 @@ NuGet paketini edinmek için aşağıdaki adımları izleyin:
 
 ## <a name="create-a-table"></a>Tablo oluşturma 
 
-[CloudTableClient](/dotnet/api/microsoft.azure.cosmos.table.cloudtableclient) sınıfı, Tablo Depolamada depolanan tabloları ve varlıkları almanızı sağlar. Cosmos DB Tablo API'si hesabında hiç tablo olmadığı `CreateTableAsync` için, bir tablo oluşturmak üzere yöntemi **Common.cs** sınıfına ekleyelim:
+[CloudTableClient](/dotnet/api/microsoft.azure.cosmos.table.cloudtableclient) sınıfı, Tablo Depolamada depolanan tabloları ve varlıkları almanızı sağlar. Cosmos DB Tablo API'si hesabında hiç tablo olmadığı `CreateTableAsync` için, bir tablo oluşturmak için metodu **Common. cs** sınıfına ekleyelim:
 
 :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/Common.cs" id="CreateTable":::
 
@@ -113,7 +113,7 @@ tableClient.TableClientConfiguration.UseRestExecutorForCosmosEndpoint = true;
 
 Varlıklar, [TableEntity](/dotnet/api/microsoft.azure.cosmos.table.tableentity)’den oluşturulan özel bir sınıf kullanarak C# nesneleriyle eşlenir. Tabloya bir varlık eklemek için varlığınızın özelliklerini tanımlayan bir sınıf oluşturun.
 
-Projenizin **Cosmostablesamples** öğesine sağ tıklayın. **Ekle**, **Yeni klasör** ' ü seçin ve **model** olarak adlandırın. Model klasörü içinde **CustomerEntity.cs** adlı bir sınıf ekleyin ve bu sınıfa aşağıdaki kodu ekleyin.
+Projenizin **Cosmostablesamples** öğesine sağ tıklayın. **Ekle**, **Yeni klasör** ' ü seçin ve **model** olarak adlandırın. Model klasörü içinde **Customerentity. cs** adlı bir sınıf ekleyin ve bu sınıfa aşağıdaki kodu ekleyin.
 
 :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/Model/CustomerEntity.cs":::
 
@@ -123,25 +123,25 @@ Bu kod, satır anahtarı olarak müşterinin adını ve bölüm anahtarı olarak
 
 Aşağıdaki kod örneği bir varlık nesnesi oluşturur ve onu tabloya ekler. [Tableoperation](/dotnet/api/microsoft.azure.cosmos.table.tableoperation) sınıfı Içindeki ınsertormerge yöntemi bir varlık eklemek veya birleştirmek için kullanılır. İşlemi yürütmek için [CloudTable.ExecuteAsync](/dotnet/api/microsoft.azure.cosmos.table.cloudtable.executeasync) yöntemi çağırılır. 
 
-Projenizin **Cosmostablesamples** öğesine sağ tıklayın. **Ekle**, **Yeni öğe** ' yi seçin ve **SamplesUtils.cs** adlı bir sınıf ekleyin. Bu sınıf, varlıklarda CRUD işlemleri gerçekleştirmek için gereken tüm kodu depolar. 
+Projenizin **Cosmostablesamples** öğesine sağ tıklayın. **Ekle**, **Yeni öğe** ' yi seçin ve **samplesutils. cs** adlı bir sınıf ekleyin. Bu sınıf, varlıklarda CRUD işlemleri gerçekleştirmek için gereken tüm kodu depolar. 
 
 :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/SamplesUtils.cs" id="InsertItem":::
 
 ## <a name="get-an-entity-from-a-partition"></a>Bir bölümden varlık edinme
 
-[Tableoperation](/dotnet/api/microsoft.azure.cosmos.table.tableoperation) sınıfının altındaki Retrieve metodunu kullanarak bir bölümden varlık elde edebilirsiniz. Aşağıdaki kod örneği, bir müşteri varlığının bölüm anahtarı satır anahtarını, e-posta ve telefon numarasını alır. Bu örnek ayrıca varlık için sorgulamak üzere tüketilen istek birimlerini de yazdırır. Bir varlığı sorgulamak için, **SamplesUtils.cs** dosyasına aşağıdaki kodu ekleyin:
+[Tableoperation](/dotnet/api/microsoft.azure.cosmos.table.tableoperation) sınıfının altındaki Retrieve metodunu kullanarak bir bölümden varlık elde edebilirsiniz. Aşağıdaki kod örneği, bir müşteri varlığının bölüm anahtarı satır anahtarını, e-posta ve telefon numarasını alır. Bu örnek ayrıca varlık için sorgulamak üzere tüketilen istek birimlerini de yazdırır. Bir varlığı sorgulamak için **Samplesutils. cs** dosyasına aşağıdaki kodu ekleyin:
 
 :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/SamplesUtils.cs" id="QueryData":::
 
 ## <a name="delete-an-entity"></a>Bir varlığı silme
 
-Bir varlığı güncelleştirmek için gösterilen aynı yöntemi kullanarak, bir varlığı aldıktan sonra kolayca silebilirsiniz. Aşağıdaki kod bir müşteri girişini alır ve siler. Bir varlığı silmek için, **SamplesUtils.cs** dosyasına aşağıdaki kodu ekleyin: 
+Bir varlığı güncelleştirmek için gösterilen aynı yöntemi kullanarak, bir varlığı aldıktan sonra kolayca silebilirsiniz. Aşağıdaki kod bir müşteri girişini alır ve siler. Bir varlığı silmek için **Samplesutils. cs** dosyasına aşağıdaki kodu ekleyin: 
 
 :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/SamplesUtils.cs" id="DeleteItem":::
 
 ## <a name="execute-the-crud-operations-on-sample-data"></a>Örnek verilerde CRUD işlemlerini yürütün
 
-Tablo oluşturma, varlık ekleme veya birleştirme yöntemlerini tanımladıktan sonra, bu yöntemleri örnek verilerde çalıştırın. Bunu yapmak için, projenizin **Cosmostablesamples** öğesine sağ tıklayın. **Ekle**, **Yeni öğe** ' yi seçin ve **BasicSamples.cs** adlı bir sınıf ekleyin ve bu sınıfa aşağıdaki kodu ekleyin. Bu kod, bir tablo oluşturur ve ona varlıklar ekler.
+Tablo oluşturma, varlık ekleme veya birleştirme yöntemlerini tanımladıktan sonra, bu yöntemleri örnek verilerde çalıştırın. Bunu yapmak için, projenizin **Cosmostablesamples** öğesine sağ tıklayın. **Ekle**, **Yeni öğe** ' yi seçin ve **basicsamples. cs** adlı bir sınıf ekleyin ve bu sınıfa aşağıdaki kodu ekleyin. Bu kod, bir tablo oluşturur ve ona varlıklar ekler.
 
 Projenin sonundaki varlık ve tabloyu silmek istemiyorsanız, `await table.DeleteIfExistsAsync()` aşağıdaki koddan ve yöntemlerini açıklama olarak yapın `SamplesUtils.DeleteEntityAsync(table, customer)` . Tabloyu silmeden önce bu yöntemleri açıklamaya ve verileri doğrulamaya en iyisidir.
 
@@ -149,11 +149,11 @@ Projenin sonundaki varlık ve tabloyu silmek istemiyorsanız, `await table.Delet
 
 Önceki kod, "Demo" ile başlayan bir tablo oluşturur ve oluşturulan GUID tablo adına eklenir. Ardından, ilk ve son adı "Harp Walter" olarak bir müşteri varlığı ekler ve daha sonra bu kullanıcının telefon numarasını günceller. 
 
-Bu öğreticide, Tablo API'si hesapta depolanan veriler üzerinde temel CRUD işlemlerini gerçekleştirmek için kod derlediniz. Ayrıca, – toplu veri ekleme, bir bölümdeki tüm verileri sorgulama, bir bölüm içindeki veri aralığını sorgulama ve adları belirtilen önekle başlayan hesaptaki tabloları listeleyen gibi gelişmiş işlemleri de gerçekleştirebilirsiniz. Tam örnek form olan [Azure-Cosmos-Table-DotNet-Core-Başlarken](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started) GitHub deposunu indirebilirsiniz. [AdvancedSamples.cs](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started/blob/main/CosmosTableSamples/AdvancedSamples.cs) sınıfı, veri üzerinde gerçekleştirebileceğiniz daha fazla işlem içerir.  
+Bu öğreticide, Tablo API'si hesapta depolanan veriler üzerinde temel CRUD işlemlerini gerçekleştirmek için kod derlediniz. Ayrıca, – toplu veri ekleme, bir bölümdeki tüm verileri sorgulama, bir bölüm içindeki veri aralığını sorgulama ve adları belirtilen önekle başlayan hesaptaki tabloları listeleyen gibi gelişmiş işlemleri de gerçekleştirebilirsiniz. Tam örnek form olan [Azure-Cosmos-Table-DotNet-Core-Başlarken](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started) GitHub deposunu indirebilirsiniz. [Advancedsamples. cs](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started/blob/main/CosmosTableSamples/AdvancedSamples.cs) sınıfında veri üzerinde gerçekleştirebileceğiniz daha fazla işlem vardır.  
 
 ## <a name="run-the-project"></a>Projeyi çalıştırma
 
-Proje **Cosmostablesamples**. **Program.cs** adlı sınıfı açın ve proje çalışırken basicsamples ' i çağırmak için aşağıdaki kodu ekleyin.
+Proje **Cosmostablesamples**. **Program. cs** adlı sınıfı açın ve proje çalışırken basicsamples ' i çağırmak için aşağıdaki kodu ekleyin.
 
 :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/Program.cs":::
 

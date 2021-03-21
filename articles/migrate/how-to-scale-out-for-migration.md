@@ -6,25 +6,25 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 03/02/2021
-ms.openlocfilehash: 1c93002a6dd97aadbf407713ab25091436bd85e0
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 1425eafd92737e08596499e395dc62af3d967207
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102612074"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607662"
 ---
 # <a name="scale-agentless-migration-of-vmware-virtual-machines-to-azure"></a>VMware sanal makinelerinin aracısız geçişini Azure 'a ölçeklendirin
 
-Bu makale, Azure geçişi sunucusu geçiş aracının aracısız geçiş özelliğini kullanarak çok sayıda VMware sanal makinesini (VM) Azure 'a geçirmek için bir genişleme gerecinin nasıl kullanıldığını anlamanıza yardımcı olur. 
+Bu makale, VMware VM 'Leri geçişi için Azure geçişi sunucusu geçiş aracının aracısız yöntemini kullanarak çok sayıda VMware sanal makinesini (VM) Azure 'a geçirmek için bir genişleme gerecinin nasıl kullanılacağını anlamanıza yardımcı olur.
 
-Sunucu geçiş aracının VMware sanal makineleri özelliğinin aracısız geçişi sayesinde şunları yapabilirsiniz:
+VMware sanal makineleri için aracısız geçiş yöntemini kullanarak şunları yapabilirsiniz:
 
 - Tek bir vCenter sunucusundaki 300 adede kadar VM 'yi bir Azure geçişi gereci ile eşzamanlı olarak çoğaltın.
 - Geçiş için ikinci bir genişleme gereci dağıtarak, tek bir vCenter Server 'dan 500 adede kadar VM 'yi eşzamanlı olarak çoğaltın.
 
 Bu makalede şunları yapmayı öğreneceksiniz:
 
-- VMware geçişi için genişleme gereci dağıtma
+- VMware sanal makinelerinin aracısız geçişi için genişleme gereci ekleme
 - Ölçek Genişletme gereci kullanarak eşzamanlı 500 VM 'ye kadar geçiş yapın.
 
 ##  <a name="prerequisites"></a>Önkoşullar
@@ -37,8 +37,9 @@ Başlamadan önce, aşağıdaki adımları gerçekleştirmeniz gerekir:
 > [!IMPORTANT]
 > Geçiş için bir genişleme gereci ekleyebilmeniz için önce projede en az bir çoğaltma sanal makinesi olması gerekir.
 
-## <a name="deploy-a-scale-out-appliance"></a>Genişleme gereci dağıtma
+Yukarıdaki işlemleri yapmayı öğrenmek için, [VMware sanal makinelerini aracısız geçiş yöntemiyle Azure 'a geçirme](./tutorial-migrate-vmware.md)öğreticisini gözden geçirin.
 
+## <a name="deploy-a-scale-out-appliance"></a>Genişleme gereci dağıtma
 
 Bir genişleme gereci eklemek için aşağıda bahsedilen adımları izleyin:
 

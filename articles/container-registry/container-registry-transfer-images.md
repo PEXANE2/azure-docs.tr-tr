@@ -4,12 +4,12 @@ description: Azure depolama hesaplarını kullanarak bir aktarım işlem hattı 
 ms.topic: article
 ms.date: 10/07/2020
 ms.custom: ''
-ms.openlocfilehash: ab6657ecd335a6de8c6c93e3c2ff392ac54c487c
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 30e6c0fa7a33c7a83543fee297c582b15bce4c8b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98935349"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606778"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>Yapıtları başka bir kayıt defterine aktar
 
@@ -188,7 +188,7 @@ az deployment group create \
   --parameters userAssignedIdentity="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity"
 ```
 
-Komut çıkışında, işlem hattının kaynak KIMLIĞINI () göz önünde edin `id` . Bu değeri daha sonra kullanmak için [az Deployment Group Show][az-deployment-group-show]' i çalıştırarak bir ortam değişkeninde saklayabilirsiniz. Örneğin:
+Komut çıkışında, işlem hattının kaynak KIMLIĞINI () göz önünde edin `id` . Bu değeri daha sonra kullanmak için [az Deployment Group Show][az-deployment-group-show]' i çalıştırarak bir ortam değişkeninde saklayabilirsiniz. Örnek:
 
 ```azurecli
 EXPORT_RES_ID=$(az deployment group show \
@@ -253,7 +253,7 @@ az deployment group create \
   --parameters userAssignedIdentity="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity"
 ```
 
-İçeri aktarmayı el ile çalıştırmayı planlıyorsanız, işlem hattının kaynak KIMLIĞINI () göz önünde bulabilirsiniz `id` . Bu değeri, daha sonra kullanmak üzere [az Deployment Group Show][az-deployment-group-show] komutunu çalıştırarak bir ortam değişkeninde saklayabilirsiniz. Örneğin:
+İçeri aktarmayı el ile çalıştırmayı planlıyorsanız, işlem hattının kaynak KIMLIĞINI () göz önünde bulabilirsiniz `id` . Bu değeri, daha sonra kullanmak üzere [az Deployment Group Show][az-deployment-group-show] komutunu çalıştırarak bir ortam değişkeninde saklayabilirsiniz. Örnek:
 
 ```azurecli
 IMPORT_RES_ID=$(az deployment group show \
@@ -426,7 +426,8 @@ az resource delete \
   * Tüm yapıtlar veya hiçbiri aktarılmaz. Dışarı aktarma çalıştırmasında yapıtların yazımını ve dışarı aktarma ve içeri aktarma çalıştırmalarının blob adını onaylayın. En fazla 50 Yapıt aktaraldığınızı onaylayın.
   * İşlem hattı çalıştırması tamamlanmamış olabilir. Bir dışarı aktarma veya içeri aktarma çalıştırması biraz zaman alabilir. 
   * Diğer işlem hattı sorunları için Azure Container Registry ekibine dışarı aktarma çalıştırmasının veya içeri aktarma çalıştırmasının dağıtım [BAĞıNTı kimliğini](../azure-resource-manager/templates/deployment-history.md) sağlayın.
-
+* **Görüntüyü fiziksel olarak yalıtılmış bir ortamda çekme sorunları**
+  * Fiziksel katmanlarla ilgili hatalar görürseniz veya fiziksel olarak yalıtılmış bir ortamda görüntü almaya çalışırken mcr.microsoft.com çözümleme denemeleri varsa, görüntü bildiriminiz büyük olasılıkla dağıtılabilir olmayan katmanlara sahiptir. Fiziksel olarak yalıtılmış bir ortamın doğası nedeniyle, bu görüntüler genellikle çekmeyecektir. Dış kayıt defterlerine yapılan başvuruların görüntü bildirimini denetleyerek bu durumun bu olduğunu doğrulayabilirsiniz. Böyle bir durum söz konusu olduğunda, bir dışarı aktarma işlem hattını dağıtmadan önce, dağıtılabilir olmayan katmanları genel bulutunuzun ACR 'ye göndermeniz gerekir. Bunun nasıl yapılacağı hakkında yönergeler için bkz. [nasıl yaparım? dağıtılabilir katmanları bir kayıt defterine gönderme](./container-registry-faq.md#how-do-i-push-non-distributable-layers-to-a-registry) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

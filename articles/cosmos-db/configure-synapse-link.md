@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: rosouz
 ms.custom: references_regions
-ms.openlocfilehash: dde6af75b751037c10d7786fa5b0b03ae31d969e
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 64b9b6690eafe8f28fdf9711cd0534f4d7d96908
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222624"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584593"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure Synapse Link'i yapılandırma ve kullanma
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -23,6 +23,7 @@ Azure SYNAPSE link, Azure Cosmos DB SQL API kapsayıcıları veya Mongo DB kolek
 
 * [Azure Cosmos DB hesaplarınız için SYNAPSE bağlantısını etkinleştirin](#enable-synapse-link)
 * [Bir analitik depo Azure Cosmos DB kapsayıcısı oluşturma](#create-analytical-ttl)
+* [İsteğe bağlı-Azure Cosmos DB kapsayıcısı için analitik depoyu güncelleştirme TTL](#update-analytical-ttl)
 * [Azure Cosmos DB veritabanınızı bir Synapse çalışma alanına bağlama](#connect-to-cosmos-database)
 * [SYNAPSE Spark kullanarak analitik depoyu sorgulama](#query-analytical-store-spark)
 * [Sunucusuz SQL havuzu kullanarak analitik depoyu sorgulama](#query-analytical-store-sql-on-demand)
@@ -30,9 +31,9 @@ Azure SYNAPSE link, Azure Cosmos DB SQL API kapsayıcıları veya Mongo DB kolek
 
 ## <a name="enable-azure-synapse-link-for-azure-cosmos-db-accounts"></a><a id="enable-synapse-link"></a>Azure Cosmos DB hesapları için Azure SYNAPSE bağlantısını etkinleştirme
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure portal](https://portal.azure.com/) oturum açın.
 
 1. [Yeni bir Azure hesabı oluşturun](create-sql-api-dotnet.md#create-account)veya mevcut bir Azure Cosmos DB hesabı seçin.
 
@@ -51,6 +52,21 @@ Azure SYNAPSE link, Azure Cosmos DB SQL API kapsayıcıları veya Mongo DB kolek
 > [!NOTE]
 > SYNAPSE bağlantısının etkinleştirilmesi, analitik depoyu otomatik olarak yapmaz. Cosmos DB hesapta SYNAPSE bağlantısını etkinleştirdikten sonra, işlem verilerinizi analitik depoya Çoğaltmaya başlamak için, onları oluşturduğunuz sırada kapsayıcı üzerinde analitik depoyu etkinleştirin. 
 
+### <a name="azure-cli"></a>Azure CLI’si
+
+Aşağıdaki bağlantılarda, SYNAPSE bağlantısının Azure CLı kullanılarak nasıl etkinleştirildiği gösterilmektedir:
+
+* [SYNAPSE bağlantısı etkin olan yeni bir Azure Cosmos DB hesabı oluşturun](https://docs.microsoft.com/cli/azure/cosmosdb?view=azure-cli-latest#az_cosmosdb_create-optional-parameters&preserve-view=true)
+* [SYNAPSE bağlantısını etkinleştirmek için mevcut bir Azure Cosmos DB hesabını güncelleştirin](https://docs.microsoft.com/cli/azure/cosmosdb?view=azure-cli-latest#az_cosmosdb_update-optional-parameters&preserve-view=true)
+
+### <a name="powershell"></a>PowerShell
+
+* [SYNAPSE bağlantısı etkin olan yeni bir Azure Cosmos DB hesabı oluşturun](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount?view=azps-5.5.0#description&preserve-view=true)
+* [SYNAPSE bağlantısını etkinleştirmek için mevcut bir Azure Cosmos DB hesabını güncelleştirin](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbaccount?view=azps-5.5.0&preserve-view=true)
+
+
+Aşağıdaki bağlantılarda PowerShell kullanılarak SYNAPSE bağlantısının nasıl etkinleştirildiği gösterilmektedir:
+
 ## <a name="create-an-azure-cosmos-container-with-analytical-store"></a><a id="create-analytical-ttl"></a> Analitik depo ile Azure Cosmos kapsayıcısı oluşturma
 
 Kapsayıcıyı oluştururken Azure Cosmos kapsayıcısında analitik depoyu açabilirsiniz. Azure portal kullanabilir veya `analyticalTTL` Azure Cosmos DB SDK 'ları kullanarak kapsayıcı oluşturma sırasında özelliğini yapılandırabilirsiniz.
@@ -58,7 +74,7 @@ Kapsayıcıyı oluştururken Azure Cosmos kapsayıcısında analitik depoyu aça
 > [!NOTE]
 > Şu anda analitik depoyu **Yeni** kapsayıcılar için (hem yeni hem de mevcut hesaplarda) etkinleştirebilirsiniz. [Azure Cosmos DB geçiş araçları](cosmosdb-migrationchoices.md) 'nı kullanarak, mevcut kapsayıcılarınızdaki verileri yeni kapsayıcılara geçirebilirsiniz.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 1. [Azure Portal](https://portal.azure.com/) veya [Azure Cosmos DB Gezgininde](https://cosmos.azure.com/)oturum açın.
 
@@ -159,11 +175,27 @@ except exceptions.CosmosResourceExistsError:
     print('A container with already exists')
 ```
 
-### <a name="update-the-analytical-store-time-to-live"></a><a id="update-analytical-ttl"></a> Analitik depo zamanını canlı olarak güncelleştirme
+### <a name="azure-cli"></a>Azure CLI’si
 
-Analiz deposunu belirli bir TTL değeriyle etkinleştirdikten sonra ilerleyen zamanlarda farklı bir geçerli değer kullanarak güncelleştirebilirsiniz. Değeri güncelleştirmek için Azure portalını veya SDK'ları kullanabilirsiniz. Çeşitli analitik TTL yapılandırma seçenekleri hakkında daha fazla bilgi için bkz. [ANALITIK TTL desteklenen değerler](analytical-store-introduction.md#analytical-ttl) makalesi.
+Aşağıdaki bağlantılar, Azure CLı kullanarak bir analitik depo etkin kapsayıcıları oluşturmayı göstermektedir:
 
-#### <a name="azure-portal"></a>Azure portal
+* [Mongo DB için Azure Cosmos DB API 'SI](https://docs.microsoft.com/cli/azure/cosmosdb/mongodb/collection?view=azure-cli-latest#az_cosmosdb_mongodb_collection_create-examples&preserve-view=true)
+* [Azure Cosmos DB SQL API](https://docs.microsoft.com/cli/azure/cosmosdb/sql/container?view=azure-cli-latest#az_cosmosdb_sql_container_create&preserve-view=true)
+
+### <a name="powershell"></a>PowerShell
+
+Aşağıdaki bağlantılar, PowerShell kullanarak bir analitik depo etkin kapsayıcıları oluşturmayı göstermektedir:
+
+* [Mongo DB için Azure Cosmos DB API 'SI](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbmongodbcollection?view=azps-5.5.0#description&preserve-view=true)
+* [Azure Cosmos DB SQL API](https://docs.microsoft.com/cli/azure/cosmosdb/sql/container?view=azure-cli-latest#az_cosmosdb_sql_container_create&preserve-view=true)
+
+
+## <a name="optional---update-the-analytical-store-time-to-live"></a><a id="update-analytical-ttl"></a> İsteğe bağlı-analitik depo zamanını canlı olarak güncelleştirin
+
+Analitik depo belirli bir TTL değeri ile etkinleştirildikten sonra, daha sonra farklı bir geçerli değere güncellemek isteyebilirsiniz. Azure portal, Azure CLı, PowerShell veya Cosmos DB SDK 'larını kullanarak değeri güncelleştirebilirsiniz. Çeşitli analitik TTL yapılandırma seçenekleri hakkında daha fazla bilgi için bkz. [ANALITIK TTL desteklenen değerler](analytical-store-introduction.md#analytical-ttl) makalesi.
+
+
+### <a name="azure-portal"></a>Azure portalı
 
 Azure portal aracılığıyla analitik mağaza etkin bir kapsayıcı oluşturduysanız, varsayılan bir analitik TTL-1 ' i içerir. Bu değeri güncelleştirmek için aşağıdaki adımları kullanın:
 
@@ -178,7 +210,7 @@ Azure portal aracılığıyla analitik mağaza etkin bir kapsayıcı oluşturduy
   * **Açık (varsayılan)** **seçeneğini belirleyin veya SEÇIN ve bir** TTL değeri ayarlayın
   * Değişiklikleri kaydetmek için **Kaydet**’e tıklayın.
 
-#### <a name="net-sdk"></a>.NET SDK
+### <a name="net-sdk"></a>.NET SDK
 
 Aşağıdaki kod, .NET SDK kullanarak analitik depo için TTL 'nin nasıl güncelleştirilmesini göstermektedir:
 
@@ -190,7 +222,7 @@ containerResponse.Resource. AnalyticalStorageTimeToLiveInSeconds = 60 * 60 * 24 
 await client.GetContainer("database", "container").ReplaceContainerAsync(containerResponse.Resource);
 ```
 
-#### <a name="java-v4-sdk"></a>Java v4 SDK 'Sı
+### <a name="java-v4-sdk"></a>Java v4 SDK 'Sı
 
 Aşağıdaki kod, Java v4 SDK 'sını kullanarak analitik depo için TTL 'nin nasıl güncelleştirilmesini göstermektedir:
 
@@ -203,6 +235,26 @@ containerProperties.setAnalyticalStoreTimeToLiveInSeconds (60 * 60 * 24 * 180 );
 // Update container settings
 container.replace(containerProperties).block();
 ```
+
+### <a name="python-v4-sdk"></a>Python v4 SDK 'Sı
+
+Şu anda desteklenmiyor.
+
+
+### <a name="azure-cli"></a>Azure CLI’si
+
+Aşağıdaki bağlantılarda, Azure CLı kullanılarak analitik TTL 'nin nasıl güncelleştirilmesi gösterilmektedir:
+
+* [Mongo DB için Azure Cosmos DB API 'SI](https://docs.microsoft.com/cli/azure/cosmosdb/mongodb/collection?view=azure-cli-latest#az_cosmosdb_mongodb_collection_update&preserve-view=true)
+* [Azure Cosmos DB SQL API](https://docs.microsoft.com/cli/azure/cosmosdb/sql/container?view=azure-cli-latest#az_cosmosdb_sql_container_update&preserve-view=true)
+
+### <a name="powershell"></a>PowerShell
+
+Aşağıdaki bağlantılarda PowerShell kullanılarak analitik TTL 'nin nasıl güncelleştirilmesi gösterilmektedir:
+
+* [Mongo DB için Azure Cosmos DB API 'SI](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbmongodbcollection?view=azps-5.5.0&preserve-view=true)
+* [Azure Cosmos DB SQL API](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbsqlcontainer?view=azps-5.5.0&preserve-view=true)
+
 
 ## <a name="connect-to-a-synapse-workspace"></a><a id="connect-to-cosmos-database"></a> Bir Synapse çalışma alanına bağlanma
 
@@ -234,7 +286,7 @@ Daha fazla bilgi için aşağıdaki belgelere bakın:
 
 * [Azure Cosmos DB için Azure SYNAPSE bağlantısı.](synapse-link.md)
 
-* [Analitik depoya genel bakış Azure Cosmos DB.](analytical-store-introduction.md)
+* [Azure Cosmos DB analiz deposuna genel bakış.](analytical-store-introduction.md)
 
 * [Azure Cosmos DB için SYNAPSE bağlantısı hakkında sık sorulan sorular.](synapse-link-frequently-asked-questions.md)
 

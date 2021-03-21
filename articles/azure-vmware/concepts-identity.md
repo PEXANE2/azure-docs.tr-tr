@@ -2,23 +2,23 @@
 title: Kavramlar-kimlik ve erişim
 description: Azure VMware çözümünün kimlik ve erişim kavramları hakkında bilgi edinin
 ms.topic: conceptual
-ms.date: 02/02/2021
-ms.openlocfilehash: 68f4ce9136cca1cf9bf0824395e31704d8ed1a17
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/18/2021
+ms.openlocfilehash: 07a7ac8093524ef4240b8f7607d649520b9439e1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364894"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586259"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Azure VMware Çözüm kimliği kavramları
 
-Azure VMware çözümü özel bulutları bir vCenter Server ve NSX-T Yöneticisi ile sağlanır. Sanal makine (VM) iş yüklerini yönetmek için vCenter 'ı kullanın. Özel bulutu genişletmek için NSX-T yöneticisini kullanın.
+Azure VMware çözümü özel bulutları bir vCenter Server ve NSX-T Yöneticisi ile sağlanır. Sanal makine (VM) iş yüklerini yönetmek için vCenter 'ı kullanın. Özel bulut ağını yönetmek ve genişletmek için NSX-T yöneticisini kullanın.
 
-Erişim ve kimlik yönetimi NSX-T Manager için vCenter ve kısıtlı yönetici hakları için CloudAdmin Grup ayrıcalıklarını kullanın. Özel bulut platformunuzun en yeni özellikler ve düzeltme ekleriyle otomatik olarak yükseltmelerini sağlar.  Daha fazla bilgi için bkz. [özel bulut yükseltmeleri kavramları makalesi][concepts-upgrades].
+VCenter erişimi ve kimlik yönetimi BuildIn CloudAdmin Group ayrıcalıklarını kullanır. NSX-T Yöneticisi kısıtlı yönetici izinleri kullanır. Bu, yönetilen hizmetin doğası gereği, özel bulut platformunuzun beklenmek üzere en yeni özelliklerle ve düzeltme ekleriyle yükseltmelerini sağlar.  Daha fazla bilgi için bkz. [özel bulut yükseltmeleri kavramları makalesi][concepts-upgrades].
 
 ## <a name="vcenter-access-and-identity"></a>vCenter erişimi ve kimliği
 
-CloudAdmin grubu vCenter 'da ayrıcalıkları sağlar. Grubu vCenter 'da yerel olarak yönetirsiniz. Diğer bir seçenek, Azure Active Directory ile vCenter LDAP çoklu oturum açma tümleştirmesini Tümleştirmesidir. Özel bulutunuzu dağıttıktan sonra bu tümleştirmeyi etkinleştirirsiniz. 
+VCenter CloudAdmin grubu, vCenter içindeki ayrıcalıkları tanımlar ve sağlar. Başka bir seçenek de Azure Active Directory ile vCenter LDAP çoklu oturum açma tümleştirmesi aracılığıyla erişim ve kimlik sağlamaktır. Özel bulutunuzu dağıttıktan sonra bu tümleştirmeyi etkinleştirirsiniz. 
 
 Tabloda **CloudAdmin** ve **CloudGlobalAdmin** ayrıcalıkları gösterilmektedir.
 
@@ -49,7 +49,7 @@ Tabloda **CloudAdmin** ve **CloudGlobalAdmin** ayrıcalıkları gösterilmektedi
 
 ## <a name="nsx-t-manager-access-and-identity"></a>NSX-T Yöneticisi erişimi ve kimliği
 
-NSX-T Yöneticisi 'ne erişmek için *yönetici* hesabını kullanın. Tam ayrıcalıklara sahiptir ve Katman 1 (T1) ağ geçitleri, segmentler (mantıksal anahtarlar) ve tüm hizmetler oluşturup yönetmenize olanak sağlar. Ayrıcalıklar, NSX-T katmanı-0 (T0) ağ geçidine erişmenizi sağlar. T0 ağ geçidinde yapılan bir değişiklik, ağ performansının düşmesine neden olabilir veya özel bir bulut erişimi olmaz. NSX-T T0 ağ geçidinizdeki herhangi bir değişiklik istemek için Azure portal bir destek isteği açın.
+NSX-T Yöneticisi 'ne erişmek için *yönetici* hesabını kullanın. Tam ayrıcalıkları vardır ve Katman 1 (T1) ağ geçitleri, segmentler (mantıksal anahtarlar) ve tüm hizmetler oluşturup yönetmenize olanak sağlar. Bu hesap, NSX-T katmanı-0 (T0) ağ geçidine de erişim sağlar. Bu değişikliklerin yapılması, ağ performansının düşmesine neden olabilir veya özel bir bulut erişimi olmayabilir. NSX-T T0 ağ geçidinizdeki herhangi bir değişiklik istemek için Azure portal bir destek isteği açın.
   
 ## <a name="next-steps"></a>Sonraki adımlar
 

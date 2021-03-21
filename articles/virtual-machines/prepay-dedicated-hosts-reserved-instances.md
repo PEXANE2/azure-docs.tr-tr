@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: 1450f03ae72e79daca5a5ae2c04506e6bee5180b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 2f90d3698156e27780bc57e0ac9355b6811d20d3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101672281"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607424"
 ---
 # <a name="save-costs-with-azure-dedicated-host-reservations"></a>Azure ayrılmış ana bilgisayar ayırmaları ile maliyetleri kaydetme
 
@@ -29,7 +29,7 @@ VM serisini belirlemek için [Windows sanal makinesi](./sizes.md) veya [Linux](.
 
 Ardından, Azure adanmış konaklarda desteklenip desteklenmediğini kontrol edin. [Azure adanmış konaklar fiyatlandırma](https://aka.ms/ADHPricing) sayfası, adanmış ana bilgisayar SKU 'LARıNıN, CPU bilgilerinin ve çeşitli fiyatlandırma seçeneklerinin (ayrılmış örnekler dahil) tüm listesini içerir.
 
-VM serisini (farklı türlerle) destekleyen çeşitli SKU 'Lar bulabilirsiniz. Konağın kapasitesini (vCPU sayısı) karşılaştırarak en iyi SKU 'YU belirler. Aynı VM serisini (örneğin, DSv3_Type1 ve DSv3_Type2) destekleyen, ancak farklı VM serisine (DSv3 ve ESv3 gibi) sahip olan birden çok adanmış ana bilgisayar SKU 'Larına rezervasyon uygulayabileceğinizi unutmayın.
+Seçtiğiniz VM serisini (farklı türlerle) destekleyen birkaç SKU bulabilirsiniz. Konağın kapasitesini (vCPU sayısı) karşılaştırarak en iyi SKU 'YU belirler. Ayırmayı, aynı VM serisini (örneğin DSv3_Type1 ve DSv3_Type2) destekleyen, ancak farklı VM Serisi (DSv3 ve ESv3 gibi) destekleyen birden çok adanmış ana bilgisayar SKU 'Larına uygulayabileceğinizi unutmayın.
 
 
 

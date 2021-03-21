@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 02/09/2021
 ms.author: chmutali
 ms.openlocfilehash: 2b1a43ee6b13d32c0eaed92538cf9c25405e061b
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100104340"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-workday"></a>Azure Active Directory sağlama Workday ile nasıl tümleştirilir
@@ -363,45 +363,45 @@ Aşağıdaki tablo, belirli bir veri kümesini almak için kullanmak üzere eşl
 | 5  | Yönetim zinciri verileri                | Yes                 | WD: çalışan \_ verileri/WD: Yönetim \_ zinciri \_ verileri                                    |
 | 6  | Gözevizör kuruluşu             | Yes                 | DENETIM                                                                 |
 | 7  | Şirket                              | Yes                 | ŞIRKETLERIN                                                                     |
-| 8  | Business Unit (İş Birimi)                        | Hayır                  | ' Iş \_ Birimi '                                                              |
-| 9  | İş birimi hiyerarşisi              | Hayır                  | ' Iş \_ birimi \_ hiyerarşisi '                                                   |
-| 10 | Şirket hiyerarşisi                    | Hayır                  | ' ŞIRKET \_ hiyerarşisi '                                                          |
+| 8  | Business Unit (İş Birimi)                        | No                  | ' Iş \_ Birimi '                                                              |
+| 9  | İş birimi hiyerarşisi              | No                  | ' Iş \_ birimi \_ hiyerarşisi '                                                   |
+| 10 | Şirket hiyerarşisi                    | No                  | ' ŞIRKET \_ hiyerarşisi '                                                          |
 | 11 | Maliyet Merkezi                          | Hayır                  | ' MALIYET \_ Merkezi '                                                                |
-| 12 | Maliyet merkezi hiyerarşisi                | Hayır                  | ' MALIYET \_ Merkezi \_ hiyerarşisi '                                                     |
-| 13 | Katılın                                 | Hayır                  | KATıLıN                                                                        |
-| 14 | Fon hiyerarşisi                       | Hayır                  | ' fon \_ hiyerarşisi '                                                             |
-| 15 | Hediyesi                                 | Hayır                  | HEDIYESI                                                                        |
-| 16 | Hediye hiyerarşisi                       | Hayır                  | ' hedıye \_ hiyerarşisi '                                                             |
-| 17 | İzin verme                                | Hayır                  | SEMANTIĞI                                                                       |
-| 18 | Hiyerarşiye izin ver                      | Hayır                  | ' \_ HIYERARŞI ver '                                                            |
-| 19 | İş sitesi hiyerarşisi              | Hayır                  | ' Iş \_ sitesi \_ hiyerarşisi '                                                   |
-| 20 | Matris organizasyonu                  | Hayır                  | MATRISIN                                                                      |
-| 21 | Ödeme grubu                            | Hayır                  | ' ödeme \_ grubu '                                                                  |
-| 22 | Programlar                             | Hayır                  | PROGRAMLARıNıZ                                                                    |
-| 23 | Program hiyerarşisi                    | Hayır                  | ' PROGRAM \_ hiyerarşisi '                                                          |
-| 24 | Region                               | Hayır                  | ' bölge \_ hiyerarşisi '                                                           |
-| 25 | Konum hiyerarşisi                   | Hayır                  | ' konum \_ hiyerarşisi '                                                         |
-| 26 | Hesap sağlama verileri            | Hayır                  | WD: Worker \_ Data/WD: hesap \_ sağlama \_ verileri                                |
-| 27 | Arka planda denetim verileri                | Hayır                  | WD: Worker \_ Data/WD: arka planda \_ Denetim \_ verileri                                    |
-| 28 | Avantaj uygunluk verileri             | Hayır                  | WD: çalışan \_ verileri/WD: avantaj \_ uygunluk \_ verileri                                 |
-| 29 | Avantaj kayıt verileri              | Hayır                  | WD: çalışan \_ verileri/WD: avantaj \_ kayıt \_ verileri                                  |
-| 30 | Kariyer verileri                          | Hayır                  | WD: çalışan \_ verileri/WD: kariyer \_ verileri                                               |
-| 31 | Dengeleme verileri                    | Hayır                  | WD: Worker \_ Data/WD: Dengeleme \_ verileri                                         |
-| 32 | Çalışanların çalışan vergi yetkilisi verileri | Hayır                  | WD: çalışan \_ verileri/WD: Conteningent \_ çalışan \_ vergi \_ yetkilisi \_ form \_ türü \_ verileri       |
-| 33 | Geliştirme öğesi verileri                | Hayır                  | WD: Worker \_ Data/WD: geliştirme \_ öğesi \_ verileri                                    |
-| 34 | Çalışan sözleşmeleri verileri              | Hayır                  | WD: çalışan \_ verileri/WD: çalışan \_ sözleşmeleri \_ verileri                                  |
-| 35 | Çalışan gözden geçirme verileri                 | Hayır                  | WD: çalışan \_ verileri/WD: çalışan \_ Gözden geçirme \_ verileri                                     |
-| 36 | Geri bildirim alınan veriler               | Hayır                  | WD: çalışan \_ verileri/WD: geri bildirim \_ alınan \_ veriler                                   |
-| 37 | Çalışan hedefi verileri                     | Hayır                  | WD: çalışan \_ verileri/WD: çalışan \_ hedefi \_ verileri                                         |
-| 38 | Fotoğraf verileri                           | Hayır                  | WD: çalışan \_ verileri/WD: fotoğraf \_ verileri                                                |
-| 39 | Verileri nitelendirme                   | Hayır                  | WD: Worker \_ Data/WD: nitelik \_ verileri                                        |
-| 40 | İlgili kişi verileri                 | Hayır                  | WD: Worker \_ Data/WD: ilgili \_ Kişiler \_ verileri                                     |
-| 41 | Rol verileri                            | Hayır                  | WD: Worker \_ Data/WD: rol \_ verileri                                                 |
-| 42 | Yetenek verileri                           | Hayır                  | WD: Worker \_ Data/WD: beceri \_ verileri                                                |
-| 43 | Art arda profil verileri              | Hayır                  | WD: Worker \_ Data/WD: Art arda \_ profil \_ verileri                                  |
-| 44 | Taödünme değerlendirmesi verileri               | Hayır                  | WD: çalışan \_ verileri/WD: Taödünme \_ değerlendirmesi \_ verileri                                   |
-| 45 | Kullanıcı hesabı verileri                    | Hayır                  | WD: çalışan \_ verileri/WD: Kullanıcı \_ hesabı \_ verileri                                        |
-| 46 | Çalışan belge verileri                 | Hayır                  | WD: Worker \_ Data/WD: çalışan \_ Belge \_ verileri                                     |
+| 12 | Maliyet merkezi hiyerarşisi                | No                  | ' MALIYET \_ Merkezi \_ hiyerarşisi '                                                     |
+| 13 | Katılın                                 | No                  | KATıLıN                                                                        |
+| 14 | Fon hiyerarşisi                       | No                  | ' fon \_ hiyerarşisi '                                                             |
+| 15 | Hediyesi                                 | No                  | HEDIYESI                                                                        |
+| 16 | Hediye hiyerarşisi                       | No                  | ' hedıye \_ hiyerarşisi '                                                             |
+| 17 | İzin verme                                | No                  | SEMANTIĞI                                                                       |
+| 18 | Hiyerarşiye izin ver                      | No                  | ' \_ HIYERARŞI ver '                                                            |
+| 19 | İş sitesi hiyerarşisi              | No                  | ' Iş \_ sitesi \_ hiyerarşisi '                                                   |
+| 20 | Matris organizasyonu                  | No                  | MATRISIN                                                                      |
+| 21 | Ödeme grubu                            | No                  | ' ödeme \_ grubu '                                                                  |
+| 22 | Programlar                             | No                  | PROGRAMLARıNıZ                                                                    |
+| 23 | Program hiyerarşisi                    | No                  | ' PROGRAM \_ hiyerarşisi '                                                          |
+| 24 | Region                               | No                  | ' bölge \_ hiyerarşisi '                                                           |
+| 25 | Konum hiyerarşisi                   | No                  | ' konum \_ hiyerarşisi '                                                         |
+| 26 | Hesap sağlama verileri            | No                  | WD: Worker \_ Data/WD: hesap \_ sağlama \_ verileri                                |
+| 27 | Arka planda denetim verileri                | No                  | WD: Worker \_ Data/WD: arka planda \_ Denetim \_ verileri                                    |
+| 28 | Avantaj uygunluk verileri             | No                  | WD: çalışan \_ verileri/WD: avantaj \_ uygunluk \_ verileri                                 |
+| 29 | Avantaj kayıt verileri              | No                  | WD: çalışan \_ verileri/WD: avantaj \_ kayıt \_ verileri                                  |
+| 30 | Kariyer verileri                          | No                  | WD: çalışan \_ verileri/WD: kariyer \_ verileri                                               |
+| 31 | Dengeleme verileri                    | No                  | WD: Worker \_ Data/WD: Dengeleme \_ verileri                                         |
+| 32 | Çalışanların çalışan vergi yetkilisi verileri | No                  | WD: çalışan \_ verileri/WD: Conteningent \_ çalışan \_ vergi \_ yetkilisi \_ form \_ türü \_ verileri       |
+| 33 | Geliştirme öğesi verileri                | No                  | WD: Worker \_ Data/WD: geliştirme \_ öğesi \_ verileri                                    |
+| 34 | Çalışan sözleşmeleri verileri              | No                  | WD: çalışan \_ verileri/WD: çalışan \_ sözleşmeleri \_ verileri                                  |
+| 35 | Çalışan gözden geçirme verileri                 | No                  | WD: çalışan \_ verileri/WD: çalışan \_ Gözden geçirme \_ verileri                                     |
+| 36 | Geri bildirim alınan veriler               | No                  | WD: çalışan \_ verileri/WD: geri bildirim \_ alınan \_ veriler                                   |
+| 37 | Çalışan hedefi verileri                     | No                  | WD: çalışan \_ verileri/WD: çalışan \_ hedefi \_ verileri                                         |
+| 38 | Fotoğraf verileri                           | No                  | WD: çalışan \_ verileri/WD: fotoğraf \_ verileri                                                |
+| 39 | Verileri nitelendirme                   | No                  | WD: Worker \_ Data/WD: nitelik \_ verileri                                        |
+| 40 | İlgili kişi verileri                 | No                  | WD: Worker \_ Data/WD: ilgili \_ Kişiler \_ verileri                                     |
+| 41 | Rol verileri                            | No                  | WD: Worker \_ Data/WD: rol \_ verileri                                                 |
+| 42 | Yetenek verileri                           | No                  | WD: Worker \_ Data/WD: beceri \_ verileri                                                |
+| 43 | Art arda profil verileri              | No                  | WD: Worker \_ Data/WD: Art arda \_ profil \_ verileri                                  |
+| 44 | Taödünme değerlendirmesi verileri               | No                  | WD: çalışan \_ verileri/WD: Taödünme \_ değerlendirmesi \_ verileri                                   |
+| 45 | Kullanıcı hesabı verileri                    | No                  | WD: çalışan \_ verileri/WD: Kullanıcı \_ hesabı \_ verileri                                        |
+| 46 | Çalışan belge verileri                 | No                  | WD: Worker \_ Data/WD: çalışan \_ Belge \_ verileri                                     |
 
 >[!NOTE]
 >Tabloda listelenen her Workday varlığı, Workday içindeki bir **etki alanı güvenlik ilkesi** tarafından korunur. Doğru XPATH 'i ayarladıktan sonra varlıkla ilişkili herhangi bir özniteliği alamadıysanız, uygun etki alanı güvenlik ilkesinin, sağlama uygulamasıyla ilişkili tümleştirme sistemi kullanıcısı için yapılandırıldığından emin olmak üzere Workday yöneticinizle görüşün. Örneğin, *beceri verileri* almak Için, Workday etki alanı *çalışan verileri: yetenekler ve deneyim* üzerinde erişim *elde* edin. 

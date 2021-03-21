@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 05/05/2020
 ms.author: victorh
-ms.openlocfilehash: 1fbe930780ff026be748bc42104f821ee9e5c443
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 890688dba70a7fa654e97652b3e474b919f9a077
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785111"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585392"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall-on-application-gateway"></a>Application Gateway 'de Azure Web uygulaması güvenlik duvarı hakkında sık sorulan sorular
 
@@ -53,6 +53,20 @@ WAF Şu anda sp_configure [2.2.9](application-gateway-crs-rulegroups-rules.md#ow
 * Yaygın uygulama yapılandırmalarını algılama (yani, Apache, IIS vb.)
 
 Daha fazla bilgi için bkz. [OWASP Top-10 güvenlik açıkları](https://owasp.org/www-project-top-ten/).
+
+## <a name="what-content-types-does-waf-support"></a>WAF hangi içerik türlerini destekler?
+
+Application Gateway WAF, yönetilen kurallar için aşağıdaki içerik türlerini destekler:
+
+* uygulama/json
+* Uygulama/XML
+* Application/x-www-form-urlencoded
+* multipart/form-Data
+
+Ve özel kurallar için:
+
+* Application/x-www-form-urlencoded
+* multipart/form-Data
 
 ## <a name="does-waf-support-ddos-protection"></a>WAF, DDoS korumasını destekliyor mu?
 

@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: reference
 ms.date: 02/05/2021
 ms.openlocfilehash: 60aede65f8217d46844398d0199ff7edca7f36a9
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103200798"
 ---
 # <a name="supported-classifications-in-azure-purview"></a>Azure purview 'da desteklenen sınıflandırmalar
@@ -407,7 +407,7 @@ tfn
 
 11 basamak artı sınırlayıcılar:
 
-- altı basamaklı ve YY biçiminde iki isteğe bağlı nokta. Doğum tarihi için MM.DD
+- altı basamaklı ve YY biçiminde iki isteğe bağlı nokta. Doğum tarihi için MM. DD
 - Nokta, tire, boşluk ile isteğe bağlı bir sınırlayıcı
 - üç sıralı basamak (Females için bile, males için tek)
 - Nokta, tire, boşluk ile isteğe bağlı bir sınırlayıcı

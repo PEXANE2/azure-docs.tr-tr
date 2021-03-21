@@ -2,14 +2,14 @@
 title: Azure Işlevleri 'nde işlevleri devre dışı bırakma
 description: Azure Işlevleri 'nde işlevleri devre dışı bırakmayı ve etkinleştirmeyi öğrenin.
 ms.topic: conceptual
-ms.date: 02/03/2021
+ms.date: 03/15/2021
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: cbb84308507ea15f1c44c00122a9a59472f12a88
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 1ad484804f66a2e2d4d0f1da4a37cf0d6c485f38
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99551052"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584746"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Azure Işlevleri 'nde işlevleri devre dışı bırakma
 
@@ -20,13 +20,26 @@ Bir işlevi devre dışı bırakmak için önerilen yol, olarak ayarlanan biçim
 > [!NOTE]  
 > HTTP ile tetiklenen bir işlevi bu makalede açıklanan yöntemleri kullanarak devre dışı bıraktığınızda, yerel bilgisayarınızda çalışırken uç nokta hala erişilebilir olabilir.  
 
-## <a name="use-the-azure-cli"></a>Azure CLI kullanma
+## <a name="disable-a-function"></a>İşlevi devre dışı bırakma
 
-Azure CLı 'da, [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) uygulama ayarını oluşturmak ve değiştirmek için komutunu kullanın. Aşağıdaki komut, adlı bir işlevi `QueueTrigger` olarak ayarla adlı bir uygulama ayarı oluşturarak devre dışı bırakır `AzureWebJobs.QueueTrigger.Disabled` `true` . 
+# <a name="portal"></a>[Portal](#tab/portal)
+
+İşlevin **genel bakış** sayfasında **Etkinleştir** ve **devre dışı bırak** düğmelerini kullanın. Bu düğmeler, uygulama ayarının değeri değiştirilerek çalışır `AzureWebJobs.<FUNCTION_NAME>.Disabled` . Bu işleve özgü ayar, ilk kez devre dışı bırakıldığında oluşturulur. 
+
+![İşlev durum anahtarı](media/disable-function/function-state-switch.png)
+
+İşlev uygulamanızda yerel bir projeden yayımladığınızda bile, işlev uygulamasındaki işlevleri devre dışı bırakmak için portalını kullanmaya devam edebilirsiniz. 
+
+> [!NOTE]  
+> Portalın tümleşik test işlevselliği `Disabled` ayarı yoksayar. Bu, devre dışı bırakılan bir işlevin portalda **Test** penceresinden başlatıldığında hala çalıştığı anlamına gelir. 
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
+
+Azure CLı 'da, [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) uygulama ayarını oluşturmak ve değiştirmek için komutunu kullanın. Aşağıdaki komut adında bir `QueueTrigger` uygulama ayarı oluşturarak `AzureWebJobs.QueueTrigger.Disabled` ve olarak ayarlanarak adlı bir işlevi devre dışı bırakır `true` . 
 
 ```azurecli-interactive
-az functionapp config appsettings set --name <myFunctionApp> \
---resource-group <myResourceGroup> \
+az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
+--resource-group <RESOURCE_GROUP_NAME> \
 --settings AzureWebJobs.QueueTrigger.Disabled=true
 ```
 
@@ -38,16 +51,55 @@ az functionapp config appsettings set --name <myFunctionApp> \
 --settings AzureWebJobs.QueueTrigger.Disabled=false
 ```
 
-## <a name="use-the-portal"></a>Portalı kullanma
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
 
-İşlevin **genel bakış** sayfasında **Etkinleştir** ve **devre dışı bırak** düğmelerini de kullanabilirsiniz. Bu düğmeler, uygulama ayarının değeri değiştirilerek çalışır `AzureWebJobs.<FUNCTION_NAME>.Disabled` . Bu işleve özgü ayar, ilk kez devre dışı bırakıldığında oluşturulur. 
+[`Update-AzFunctionAppSetting`](/powershell/module/az.functions/update-azfunctionappsetting)Komut bir uygulama ayarı ekler veya güncelleştirir. Aşağıdaki komut adında bir `QueueTrigger` uygulama ayarı oluşturarak `AzureWebJobs.QueueTrigger.Disabled` ve olarak ayarlanarak adlı bir işlevi devre dışı bırakır `true` . 
 
-![İşlev durum anahtarı](media/disable-function/function-state-switch.png)
+```azurepowershell-interactive
+Update-AzFunctionAppSetting -Name <FUNCTION_APP_NAME> -ResourceGroupName <RESOURCE_GROUP_NAME> -AppSetting @{"AzureWebJobs.QueueTrigger.Disabled" = "true"}
+```
 
-İşlev uygulamanızda yerel bir projeden yayımladığınızda bile, işlev uygulamasındaki işlevleri devre dışı bırakmak için portalını kullanmaya devam edebilirsiniz. 
+İşlevi yeniden etkinleştirmek için, bir değeriyle aynı komutu yeniden çalıştırın `false` .
 
-> [!NOTE]  
-> Portalın tümleşik test işlevselliği `Disabled` ayarı yoksayar. Bu, devre dışı bırakılan bir işlevin portalda **Test** penceresinden başlatıldığında hala çalıştığı anlamına gelir. 
+```azurepowershell-interactive
+Update-AzFunctionAppSetting -Name <FUNCTION_APP_NAME> -ResourceGroupName <RESOURCE_GROUP_NAME> -AppSetting @{"AzureWebJobs.QueueTrigger.Disabled" = "false"}
+```
+---
+
+## <a name="functions-in-a-slot"></a>Bir yuvadaki işlevler
+
+Varsayılan olarak, uygulama ayarları dağıtım yuvalarında çalışan uygulamalar için de geçerlidir. Ancak, yuvaya özgü bir uygulama ayarı ayarlayarak yuva tarafından kullanılan uygulama ayarını geçersiz kılabilirsiniz. Örneğin, bir işlevin üretimde etkin olmasını, ancak Zamanlayıcı tarafından tetiklenen bir işlev gibi dağıtım testi sırasında değil, bir işlevin olmasını isteyebilirsiniz. 
+
+Yalnızca hazırlama yuvasında bir işlevi devre dışı bırakmak için:
+
+# <a name="portal"></a>[Portal](#tab/portal)
+
+**Dağıtım** altında **dağıtım yuvaları** ' nı seçip yuvalarınızı seçip yuva örneğindeki **işlevleri** seçerek işlev uygulamanızın yuva örneğine gidin.  İşlevinizi seçin, sonra işlevin **genel bakış** sayfasında **Etkinleştir** ve **devre dışı bırak** düğmelerini kullanın. Bu düğmeler, uygulama ayarının değeri değiştirilerek çalışır `AzureWebJobs.<FUNCTION_NAME>.Disabled` . Bu işleve özgü ayar, ilk kez devre dışı bırakıldığında oluşturulur. 
+
+Ayrıca, `AzureWebJobs.<FUNCTION_NAME>.Disabled` `true` yuva örneğinin **yapılandırmasında** değeri ile adlı uygulama ayarını doğrudan ekleyebilirsiniz. Yuvaya özgü bir uygulama ayarı eklediğinizde **dağıtım yuvası ayarı** kutusunu kontrol ettiğinizden emin olun. Böylece ayar değeri, takas sırasında yuva ile korunur.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
+
+```azurecli-interactive
+az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
+--resource-group <RESOURCE_GROUP_NAME> --slot <SLOT_NAME> \
+--slot-settings AzureWebJobs.QueueTrigger.Disabled=true
+```
+İşlevi yeniden etkinleştirmek için, bir değeriyle aynı komutu yeniden çalıştırın `false` .
+
+```azurecli-interactive
+az functionapp config appsettings set --name <myFunctionApp> \
+--resource-group <myResourceGroup> --slot <SLOT_NAME> \
+--slot-settings AzureWebJobs.QueueTrigger.Disabled=false
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+
+Azure PowerShell Şu anda bu işlevi desteklemiyor.
+
+---
+
+Daha fazla bilgi için bkz. [Azure Işlevleri dağıtım yuvaları](functions-deployment-slots.md).
 
 ## <a name="localsettingsjson"></a>local.settings.json
 

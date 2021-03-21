@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 09/23/2019
 ms.openlocfilehash: 07600b1fe0cb7420989fbbfbe55c2f1a4197d2fc
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100548259"
 ---
 # <a name="notification-hubs-security"></a>Notification Hubs güvenliği
@@ -48,7 +48,7 @@ Uygulamalar anahtar değerini Windows Mağazası istemci uygulamalarına katış
 
 Diğer varlıklara benzer şekilde, Bildirim Hub 'ı işlemlerine üç güvenlik talebi için izin verilir: **dinle**, **Gönder** ve **Yönet**.
 
-| İste   | Açıklama                                          | İzin verilen işlemler |
+| İste   | Description                                          | İzin verilen işlemler |
 | ------- | ---------------------------------------------------- | ------------------ |
 | Dinle  | Tek kayıt oluşturma/güncelleştirme, okuma ve silme | Kayıt oluştur/güncelleştir<br><br>Kaydı oku<br><br>Bir tanıtıcı için tüm kayıtları okuma<br><br>Kaydı Sil |
 | Gönder    | Bildirim Hub 'ına ileti gönderme                | İleti gönder |
@@ -64,7 +64,7 @@ Ad alanı düzeyindeki işlemler için ad alanı düzeyinde erişim ilkelerini (
 
 Yeni bir güvenlik talebi oluşturmak veya mevcut SAS anahtarlarını görüntülemek için aşağıdakileri yapın:
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 2. **Tüm kaynaklar**’ı seçin.
 3. Talep oluşturmak istediğiniz Bildirim Hub 'ının adını seçin veya SAS anahtarını görüntüleyin.
 4. Sol taraftaki menüde **erişim ilkeleri**' ni seçin.

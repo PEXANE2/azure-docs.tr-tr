@@ -13,10 +13,10 @@ ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
 ms.openlocfilehash: 6383f63d2118d8618f07bf3cb6cd08a0b16140f3
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100102657"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Öğretici: Evrensel Windows Platformu (UWP) uygulamasından Microsoft Graph API 'sini çağırma
@@ -105,9 +105,9 @@ Visual Studio, proje şablonunuzun bir parçası olarak *MainPage. xaml* oluştu
 
 ### <a name="use-the-microsoft-authentication-library-to-get-a-token-for-the-microsoft-graph-api"></a>Microsoft Graph API 'sinin bir belirtecini almak için Microsoft kimlik doğrulama kitaplığı 'nı kullanın
 
-Bu bölümde, Microsoft Graph API 'sinin bir belirtecini almak için Microsoft kimlik doğrulama kitaplığı 'nın nasıl kullanılacağı gösterilmektedir. *MainPage.xaml.cs* dosyasında değişiklik yapın.
+Bu bölümde, Microsoft Graph API 'sinin bir belirtecini almak için Microsoft kimlik doğrulama kitaplığı 'nın nasıl kullanılacağı gösterilmektedir. *MainPage. xaml. cs* dosyasında değişiklik yapın.
 
-1. *MainPage.xaml.cs*' de, aşağıdaki başvuruları ekleyin:
+1. *MainPage. xaml. cs* dosyasında aşağıdaki başvuruları ekleyin:
 
     ```csharp
     using Microsoft.Identity.Client;
@@ -239,7 +239,7 @@ Sonuç olarak, `AcquireTokenSilent` Yöntem başarısız olur. Hatanın nedeni, 
 
 ### <a name="instantiate-the-microsoft-graph-service-client-by-obtaining-the-token-from-the-signinuserandgettokenusingmsal-method"></a>SignInUserAndGetTokenUsingMSAL yönteminden belirteci alarak Microsoft Graph hizmet Istemcisinin örneğini oluşturun
 
-Aşağıdaki yeni yöntemi *MainPage.xaml.cs* öğesine ekleyin:
+*MainPage. xaml. cs*' ye aşağıdaki yeni yöntemi ekleyin:
 
 ```csharp
       /// <summary>
@@ -264,7 +264,7 @@ Bu örnek uygulamada, `GetGraphServiceClient` yöntemi `GraphServiceClient` bir 
 
 ### <a name="add-a-method-to-sign-out-the-user"></a>Kullanıcının oturumunu kapatmak için bir yöntem ekleyin
 
-Kullanıcının oturumunu kapatmak için, *MainPage.xaml.cs*'e aşağıdaki yöntemi ekleyin:
+Kullanıcının oturumunu kapatmak için *MainPage. xaml. cs*' ye aşağıdaki yöntemi ekleyin:
 
 ```csharp
 /// <summary>
@@ -302,7 +302,7 @@ Bu örnekteki uygulama, tek bir kullanıcıyı destekler. Microsoft kimlik doğr
 
 ### <a name="display-basic-token-information"></a>Temel belirteç bilgilerini görüntüle
 
-Belirteç hakkındaki temel bilgileri göstermek için *MainPage.xaml.cs* 'e aşağıdaki yöntemi ekleyin:
+Aşağıdaki yöntemi *MainPage. xaml. cs* ' ye ekleyerek belirteç hakkındaki temel bilgileri görüntüleyebilirsiniz:
 
 ```csharp
 /// <summary>
@@ -325,7 +325,7 @@ private void DisplayBasicTokenInfo(AuthenticationResult authResult)
 
 ### <a name="display-message"></a>İleti görüntüle
 
-Aşağıdaki yeni yöntemi *MainPage.xaml.cs* öğesine ekleyin:
+*MainPage. xaml. cs*' ye aşağıdaki yeni yöntemi ekleyin:
 
 ```csharp
 /// <summary>
@@ -352,7 +352,7 @@ private async Task DisplayMessageAsync(string message)
 1. Uygulamanız için bir **ad** girin (örneğin,) `UWP-App-calling-MSGraph` . Uygulamanızın kullanıcıları bu adı görebilir ve daha sonra değiştirebilirsiniz.
 1. **Desteklenen hesap türleri** altında **herhangi bir kuruluş dizininde (HERHANGI bir Azure ad dizini-çoklu kiracı) ve kişisel Microsoft hesaplarından (örn. Skype, Xbox) hesaplar**' ı seçin. 
 1. **Kaydet**’i seçin.
-1. Genel Bakış sayfasında, **uygulama (istemci) kimlik** değerini bulun ve kopyalayın. Visual Studio 'ya geri dönün, *MainPage.xaml.cs* açın ve değerini `ClientId` bu değerle değiştirin.
+1. Genel Bakış sayfasında, **uygulama (istemci) kimlik** değerini bulun ve kopyalayın. Visual Studio 'ya geri dönün, *MainPage. xaml. cs*' yi açın ve değerini `ClientId` bu değerle değiştirin.
 
 Uygulamanız için kimlik doğrulamasını yapılandırın:
 
@@ -385,7 +385,7 @@ Tümleşik Windows kimlik doğrulamasını federe bir Azure AD etki alanı ile k
 
 Geçerli örnekte, `WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")` yöntemi kullanılır. Kullanmak için `WithDefaultRedirectURI()` şu adımları uygulayın:
 
-1. *MainPage.xaml.cs*' de, şunu `WithRedirectUri` ile değiştirin `WithDefaultRedirectUri` :
+1. *MainPage. xaml. cs* dosyasında şunu `WithRedirectUri` ile değiştirin `WithDefaultRedirectUri` :
 
    **Geçerli kod**
 
@@ -418,7 +418,7 @@ Geçerli örnekte, `WithRedirectUri("https://login.microsoftonline.com/common/oa
        .Build();
    ```
 
-2.  `redirectURI` *MainPage.xaml.cs* ' ye alanı ekleyerek ve üzerinde bir kesme noktası ayarlayarak uygulamanız IÇIN geri çağırma URI 'sini bulun:
+2.  `redirectURI` *MainPage. xaml. cs* içindeki alanı ekleyerek ve üzerinde bir kesme noktası ayarlayarak uygulamanız IÇIN geri çağırma URI 'sini bulun:
 
     ```csharp
 

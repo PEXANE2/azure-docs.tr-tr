@@ -5,13 +5,13 @@ author: lfittl-msft
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/05/2021
-ms.openlocfilehash: d223d2c6a83b1389cd70344efdb48c357dda4ac4
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.date: 03/17/2021
+ms.openlocfilehash: 998154376895d8bcfc7cf36665a6a36f5c43e3b4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102454608"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594997"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---flexible-server"></a>PostgreSQL için Azure veritabanı 'nda PostgreSQL uzantıları-esnek sunucu
 
@@ -128,7 +128,7 @@ PostgreSQL için Azure veritabanı 'nda, Postgres sürüm 11 ' i içeren esnek s
 
 
 ## <a name="dblink-and-postgres_fdw"></a>dblink ve postgres_fdw
-[dblink](https://www.postgresql.org/docs/current/contrib-dblink-function.html) ve [Postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html) , bir PostgreSQL sunucusundan diğerine veya aynı sunucudaki başka bir veritabanına bağlanmanızı sağlar. Gönderen sunucunun, alıcı sunucuya giden bağlantılara izin sağlaması gerekir. Alıcı sunucunun gönderme sunucusundan gelen bağlantılara izin verilmesi gerekir.
+[dblink](https://www.postgresql.org/docs/current/contrib-dblink-function.html) ve [Postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html) , bir PostgreSQL sunucusundan diğerine veya aynı sunucudaki başka bir veritabanına bağlanmanızı sağlar. Esnek sunucu, herhangi bir PostgreSQL sunucusuna hem gelen hem de giden bağlantıları destekler. Gönderen sunucunun, alıcı sunucuya giden bağlantılara izin sağlaması gerekir. Benzer şekilde, alıcı sunucunun gönderme sunucusundan gelen bağlantılara izin verilmesi gerekir. 
 
 Bu iki uzantıyı kullanmayı planlıyorsanız, sunucularınızı [VNET tümleştirmesiyle](concepts-networking.md) dağıtmanız önerilir. VNet tümleştirmesi varsayılan olarak VNET 'teki sunucular arasında bağlantılara izin verir. Ayrıca, erişimi özelleştirmek için [VNET ağ güvenlik gruplarını](../../virtual-network/manage-network-security-group.md) kullanmayı da seçebilirsiniz.
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
 ms.openlocfilehash: 9e7f407ecda1fec8d8ae02e21f3b5a5ea4b0befb
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103561507"
 ---
 # <a name="azure-storage-archive-backup-and-disaster-recovery-partners"></a>Azure depolama arşivi, yedekleme ve olağanüstü durum kurtarma iş ortakları
@@ -21,7 +21,7 @@ Bu makalede arşiv, yedekleme ve iş sürekliliği ve olağanüstü durum kurtar
 
 ## <a name="verified-partners"></a>Doğrulanan iş ortakları
 
-| İş Ortağı | Açıklama | Web sitesi/ürün bağlantısı |
+| İş Ortağı | Description | Web sitesi/ürün bağlantısı |
 | ------- | ----------- | -------------------- |
 |![Commkasası şirket logosu](./media/commvault-logo.jpg) |**Commvault**<br>Microsoft altyapısını Commkasasıyla kullanarak iyileştirin, koruyun, geçirin ve dizine alın. Microsoft merkezli ve Azure merkezli veri yönetimi çözümü olan Commkasasının tam veri korumasıyla verilerinizin denetimini alın. Commkasada, verileri nerede bulunduğuna bakılmaksızın yönetmeniz, geçirmeniz, erişmeniz ve kurtarmak için ihtiyacınız olan araçlar sağlanır ve maliyet ve risk azalır.|[İş ortağı sayfası](https://www.commvault.com/complete-data-protection)<br>[Azure Market](https://azuremarketplace.microsoft.com/marketplace/apps/commvault.commvault)<br>[Başlangıç kılavuzu](./commvault/commvault-solution-guide.md)|
 |![Datadobı şirket logosu](./media/datadob-logo.png) |**Datadobi**<br> Datadobı, yapılandırılmamış depolama ortamlarınızı iyileştirebilirler. DobiProtect, Azure 'da en kritik iş ağınıza bağlı depolama (NAS) verilerinizin "altın kopyasını" tutmanıza yardımcı olur. Bu, siber tehditlere, fidye, yanlışlıkla silinmelere ve Yazılım açıklarına karşı korunmaya yardımcı olur. Depolama maliyetlerini en düşük düzeyde tutmak için yalnızca olağanüstü durum yaşandığında ihtiyacınız olan verileri seçin. Olağanüstü durum oluştuğunda, verilerinizi tamamen kurtarın, verilerin yalnızca bir alt kümesini geri yükleyin veya altın kopyasına yük devreder. |[İş ortağı sayfası](https://datadobi.com/partners/microsoft/)<br>[Azure Market](https://azuremarketplace.microsoft.com/marketplace/apps/datadobi1602192408529.datadobi-dobiprotect?tab=Overview)|

@@ -3,12 +3,12 @@ title: Özel bağlantı hizmetini kullanarak olay sunma
 description: Bu makalede, özel bağlantı hizmeti kullanılarak olayları teslim edemeyecek sınırlamanın nasıl giderileceği açıklanmaktadır.
 ms.topic: how-to
 ms.date: 02/12/2021
-ms.openlocfilehash: 4343740ea6c34c9ae282723b79007f7035785b04
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7ca15a76d56d9cdcdee741b661981b80c914d0e9
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100548632"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104722336"
 ---
 # <a name="deliver-events-using-private-link-service"></a>Özel bağlantı hizmetini kullanarak olay sunma
 Şu anda [Özel uç noktalar](../private-link/private-endpoint-overview.md)kullanarak olay teslim etmek mümkün değildir. Diğer bir deyişle, teslim edilen olaylarınızın trafiğinden özel IP alanının olmaması gereken katı ağ yalıtımı gereksinimleriniz varsa destek yoktur. 
@@ -36,7 +36,7 @@ Yönetilen kimlik kullanarak Event Hubs ad alanındaki Olay Hub 'larına olaylar
 Yönetilen kimlik kullanarak Service Bus ad uzayındaki Service Bus kuyruklara veya konulara olay göndermek için şu adımları izleyin:
 
 1. [Bir konu veya etki alanı için sistem tarafından atanan kimliği etkinleştirin](managed-service-identity.md#create-a-custom-topic-or-domain-with-an-identity). 
-1. Kimliği Service Bus ad alanındaki [Azure Service Bus Data sender](/service-bus-messaging/service-bus-managed-service-identity.md#azure-built-in-roles-for-azure-service-bus) rolüne ekleyin
+1. Kimliği Service Bus ad alanındaki [Azure Service Bus Data sender](/service-bus-messaging/service-bus-managed-service-identity#azure-built-in-roles-for-azure-service-bus) rolüne ekleyin
 1. [Service Bus ad alanındaki **Güvenilen Microsoft hizmetlerinin bu güvenlik duvarını atlamasına izin ver** ayarını etkinleştirin](../service-bus-messaging/service-bus-service-endpoints.md#trusted-microsoft-services). 
 1. Bir Service Bus kuyruğu veya konuyu kullanan [olay aboneliğini,](managed-service-identity.md#create-event-subscriptions-that-use-an-identity) sistem tarafından atanan kimliği kullanmak için uç nokta olarak yapılandırın.
 

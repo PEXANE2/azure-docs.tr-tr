@@ -10,10 +10,10 @@ ms.date: 03/15/2021
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 1c178f57a31e02b3dac712a5425db226720200c5
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103563632"
 ---
 # <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>.NET SDK kullanarak verileri Azure Cosmos DB SQL API hesabına toplu olarak içeri aktarma
@@ -172,7 +172,7 @@ Tüm bu eşzamanlı nokta işlemleri, giriş bölümünde açıklanan şekilde b
 
 Bu öğreticideki adımları tamamlamaya yönelik bir zaman yoksa veya yalnızca kod örneklerini indirmek istiyorsanız, [GitHub](https://github.com/Azure-Samples/cosmos-dotnet-bulk-import-throughput-optimizer)' dan edinebilirsiniz.
 
-Projeyi kopyaladıktan sonra, istenen kimlik bilgilerini [program.cs](https://github.com/Azure-Samples/cosmos-dotnet-bulk-import-throughput-optimizer/blob/main/src/Program.cs#L25)içinde güncelleştirdiğinizden emin olun.
+Projeyi kopyaladıktan sonra, [program. cs](https://github.com/Azure-Samples/cosmos-dotnet-bulk-import-throughput-optimizer/blob/main/src/Program.cs#L25)içindeki istenen kimlik bilgilerini güncelleştirdiğinizden emin olun.
 
 Örnek, depo dizinine göre değiştirilerek ve kullanılarak çalıştırılabilir `dotnet` :
 
