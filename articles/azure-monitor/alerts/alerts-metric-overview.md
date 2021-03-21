@@ -4,10 +4,10 @@ description: Ölçüm uyarıları ile yapabileceklerinize ve bunların Azure Izl
 ms.date: 03/11/2021
 ms.topic: conceptual
 ms.openlocfilehash: 8a243f0a2130e0ec2ebafe726f48e07c148807c1
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103016092"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Azure İzleyici'de ölçüm uyarılarının nasıl çalıştığını anlama
@@ -146,7 +146,7 @@ Bu özellik şu anda aşağıdaki Azure bulutlarında aşağıdaki hizmetler iç
 | NetApp dosyaları kapasite havuzları | **Evet** | **Evet** | **Evet** |
 | NetApp dosyaları birimleri | **Evet** | **Evet** | **Evet** |
 | Anahtar kasaları | **Evet** | **Evet** | **Evet** |
-| Redis için Azure Önbelleği | **Evet** | **Evet** | **Evet** |
+| Redis için Azure Cache | **Evet** | **Evet** | **Evet** |
 | Veri kutusu uç cihazları | **Evet** | **Evet** | **Evet** |
 
 <sup>1</sup> sanal makine ağ ölçümleri için desteklenmez (Toplam ağ, ağ çıkış toplamı, gelen akış, giden akış, gelen akış sayısı en fazla oluşturma oranı, çıkış akışı en yüksek oluşturma oranı).

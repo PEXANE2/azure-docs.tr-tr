@@ -6,14 +6,14 @@ ms.author: amverma
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: overview
-ms.date: 07/29/2020
+ms.date: 03/18/2021
 ms.reviewer: cynthn
-ms.openlocfilehash: 15d05632e5ebf6e45a61adebbbbf647efca2a1a1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 65b37a8c07e083f5e9809812e2d4446cc48717d1
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101666882"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720602"
 ---
 # <a name="high-performance-computing-on-infiniband-enabled-h-series-and-n-series-vms"></a>InfiniBand etkin H serisi ve N serisi VM 'lerde yüksek performanslı bilgi işlem
 
@@ -32,19 +32,19 @@ InfiniBand özellikli VM 'lerde InfiniBand ayarlama hakkında daha fazla bilgi e
 
 ### <a name="message-passing-interface"></a>İleti geçirme arabirimi
 
-SR-ıOV etkin H serisi ve N serisi, neredeyse tüm MPı kitaplıklarını ve sürümlerini destekler. En yaygın, desteklenen MPı kitaplıklarının bazıları şunlardır: Intel MPI, OpenMPI, MPICH, MVAPICH2, platform MPı ve tüm uzak doğrudan bellek erişimi (RDMA) fiilleri.
+SR-ıOV etkin H serisi ve N serisi, neredeyse tüm MPı kitaplıklarını ve sürümlerini destekler. En yaygın olarak kullanılan MPı kitaplıklarının bazıları şunlardır: Intel MPI, OpenMPI, HPC-X, MVAPICH2, MPICH, platform MPı. Tüm uzak doğrudan bellek erişimi (RDMA) fiilleri desteklenir.
 Desteklenen çeşitli MPı kitaplıklarını ve en iyi yapılandırmalarını yükleme hakkında daha fazla bilgi edinmek için bkz. [MPI ayarlama](setup-mpi.md) .
 
 ## <a name="get-started"></a>başlarken
 
 İlk adım, VM belirtimleri ve [RDMA özelliğine](../../sizes-hpc.md#rdma-capable-instances)göre iş yükü için en uygun [h serisi](../../sizes-hpc.md) ve [N serisi](../../sizes-gpu.md) sanal makine türünü seçmemize yöneliktir.
 İkinci olarak, InfiniBand 'yi etkinleştirerek sanal makineyi yapılandırın. Bu işlemi gerçekleştirmek için, sürücülerle birlikte iyileştirilmiş VM görüntülerini kullanma gibi çeşitli yöntemler vardır; bkz. [Linux iyileştirmesi](configure.md) ve Ayrıntılar için [InfiniBand 'ı etkinleştirin](enable-infiniband.md) .
-Üçüncü olarak, dağıtılmış düğüm iş yükleri için MPı seçme ve yapılandırma kritiktir. Ayrıntılar için bkz. [MPI 'Yi ayarlama](setup-mpi.md) .
-Dördüncü, performans ve ölçeklenebilirlik için, VM ailesine özgü kılavuzlardan yararlanarak [HB-Serisi genel bakış](hb-series-overview.md) ve [HC Serisi genel bakış](hc-series-overview.md)gibi iş yüklerini en iyi şekilde yapılandırın.
+Üçüncü olarak, dağıtılmış düğüm iş yükleri için MPı 'yi uygun şekilde seçip yapılandırın. Ayrıntılar için bkz. [MPI 'Yi ayarlama](setup-mpi.md) .
+Dördüncü, performans ve ölçeklenebilirlik için, [HBv3-Series genel](hbv3-series-overview.md) bakış ve [HC Serisi genel bakış](hc-series-overview.md)gibi VM ailesine özgü kılavuzlardan yararlanarak iş yüklerini en iyi şekilde yapılandırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - InfiniBand etkin [H serisi](../../sizes-hpc.md) ve [N serisi](../../sizes-gpu.md) VM 'ler [yapılandırmak ve iyileştirmek](configure.md) hakkında bilgi edinin.
-- Performans ve ölçeklenebilirlik için iş yüklerini en iyi şekilde yapılandırma hakkında bilgi edinmek için [HB Serisi genel bakış](hb-series-overview.md) ve [HC Serisi genel bakışı](hc-series-overview.md) gözden geçirin.
-- En son duyurular ve bazı HPC örnekleri hakkında bilgi edinin ve [Azure Işlem teknik topluluk bloglarında](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)bu sonuçları elde edin.
+- Performans ve ölçeklenebilirlik için iş yüklerini en iyi şekilde yapılandırma hakkında bilgi edinmek için [HBv3-Series genel bakış](hb-series-overview.md) ve [HC Serisi genel bakışı](hc-series-overview.md) gözden geçirin
+- [Azure Işlem Tech Community bloglarında](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)en son Duyurular, HPC iş yükü örnekleri ve performans sonuçları hakkında bilgi edinin.
 - Çalıştırılan HPC iş yüklerinin daha yüksek düzey mimari görünümü için bkz. [Azure 'Da yüksek performanslı bilgi işlem (HPC)](/azure/architecture/topics/high-performance-computing/).

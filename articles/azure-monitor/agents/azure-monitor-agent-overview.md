@@ -4,13 +4,14 @@ description: Sanal makinelerin Konuk işletim sisteminden izleme verilerini topl
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/10/2020
-ms.openlocfilehash: 0487e5bd8109c02605e785e74d45589dd5fde5b9
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/16/2021
+ms.custom: references_regions
+ms.openlocfilehash: f1f1ea787406d900c8035c0462ef903b848d7e81
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102039606"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104608223"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Azure Izleyici aracısına genel bakış (Önizleme)
 Azure Izleyici Aracısı (AMA), sanal makinelerin Konuk işletim sisteminden izleme verilerini toplar ve Azure Izleyici 'ye gönderir. Bu makaleler, Azure Izleyici aracısına nasıl yükleneceğine ve veri toplamayı nasıl yapılandıracağınızı içeren bir genel bakış sağlar.
@@ -60,6 +61,35 @@ Azure Izleyici aracısının genel önizlemesi sırasında aşağıdaki sınırl
   - *. control.monitor.azure.com
 
 
+## <a name="supported-regions"></a>Desteklenen bölgeler
+Azure Izleyici Aracısı Şu anda aşağıdaki bölgelerdeki kaynakları desteklemektedir:
+
+- Doğu Asya
+- Güneydoğu Asya
+- Orta Avustralya
+- Doğu Avustralya
+- Güneydoğu Avustralya
+- Orta Kanada
+- Kuzey Avrupa
+- Batı Avrupa
+- Orta Fransa
+- Almanya Orta Batı
+- Orta Hindistan
+- Doğu Japonya
+- Güney Kore - Orta
+- Güney Afrika - Kuzey
+- İsviçre Kuzey
+- Güney Birleşik Krallık
+- Batı Birleşik Krallık
+- Central US
+- Doğu ABD
+- Doğu ABD 2
+- Orta Kuzey ABD
+- Orta Güney ABD
+- Batı ABD
+- Batı ABD 2
+- Orta Batı ABD
+
 ## <a name="coexistence-with-other-agents"></a>Diğer aracılarla birlikte bulunma
 Azure Izleyici Aracısı mevcut aracılarla birlikte çalışabilir, böylece değerlendirme veya geçiş sırasında mevcut işlevlerini kullanmaya devam edebilirsiniz. Bu özellikle, var olan çözümleri destekleme genel önizlemesindeki sınırlamalar nedeniyle önemlidir. Bu, sorgu sonuçlarını çarpıtabileceğinden ve verilerin alımı ve saklanması için ek ücretler elde edilmesine neden olduğundan yinelenen verileri toplamayla ilgili dikkatli olmanız gerekir.
 
@@ -75,7 +105,7 @@ Aşağıdaki tabloda, veri toplama kurallarını kullanarak şu anda Azure Izley
 
 Azure Izleyici Aracısı verileri Azure Izleyici ölçümleri 'ne veya Azure Izleyici günlüklerini destekleyen bir Log Analytics çalışma alanına gönderir.
 
-| Veri Kaynağı | Hedefler | Açıklama |
+| Veri Kaynağı | Hedefler | Description |
 |:---|:---|:---|
 | Performans        | Azure İzleyici Ölçümleri<br>Log Analytics çalışma alanı | Sayısal değerler, işletim sistemi ve iş yüklerinin farklı yönlerinin performansını ölçerek. |
 | Windows olay günlükleri | Log Analytics çalışma alanı | Windows olay günlüğü sistemine gönderilen bilgiler. |

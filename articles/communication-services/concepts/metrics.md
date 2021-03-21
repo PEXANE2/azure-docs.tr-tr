@@ -10,10 +10,10 @@ ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
 ms.openlocfilehash: 129a718175fdda80d4d6852e3d3b4cea609da64d
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103492430"
 ---
 # <a name="metrics-overview"></a>Ölçümlere genel bakış
@@ -41,7 +41,7 @@ Desteklenen toplama türleri ve zaman serisi toplamaları hakkında daha fazla b
 
 Sohbet API 'SI istek ölçümlerinde aşağıdaki işlemler mevcuttur:
 
-| İşlem/rota    | Açıklama                                                                                    |
+| İşlem/rota    | Description                                                                                    |
 | -------------------- | ---------------------------------------------------------------------------------------------- |
 | GetChatMessage       | İleti kimliğine göre bir ileti alır. |
 | ListChatMessages     | Bir iş parçacığından gelen sohbet iletilerinin listesini alır. |
@@ -68,7 +68,7 @@ Tanınmayan bir işleme bir istek yapılırsa, "Hatalı yol" değeri yanıtını
 
 SMS API istek ölçümlerinde aşağıdaki işlemler mevcuttur:
 
-| İşlem/rota    | Açıklama                                                                                    |
+| İşlem/rota    | Description                                                                                    |
 | -------------------- | ---------------------------------------------------------------------------------------------- |
 | Smsiletiçi       | SMS iletisi gönderir. |
 | Smsdeliveryreportsalındı     | SMS teslim raporlarını alır |
@@ -81,7 +81,7 @@ SMS API istek ölçümlerinde aşağıdaki işlemler mevcuttur:
 
 Kimlik doğrulama API 'SI istek ölçümlerinde aşağıdaki işlemler mevcuttur:
 
-| İşlem/rota    | Açıklama                                                                                    |
+| İşlem/rota    | Description                                                                                    |
 | -------------------- | ---------------------------------------------------------------------------------------------- |
 | CreateIdentity       | Tek bir kullanıcıyı temsil eden bir kimlik oluşturur. |
 | Deleteıdentity       | Bir kimliği siler. |

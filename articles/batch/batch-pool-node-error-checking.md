@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 03/15/2021
 ms.topic: how-to
-ms.openlocfilehash: 4a0d3e017f36f580024b77fbd23145d7447f336d
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 86ea4ce4d596875e455d7b86250882713a14337f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103564414"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720160"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Havuz ve düğüm hatalarını denetle
 
@@ -136,14 +136,16 @@ Bu dosyalardan bazıları yalnızca havuz düğümleri oluşturulduğunda (havuz
 
 Stdout ve stderr gibi bir düğümde çalıştırılan her görev için diğer dosyalar yazılır. Aynı düğüm üzerinde çok sayıda görev çalışıyorsa ve/veya görev dosyaları çok büyükse, geçici sürücüyü doldurabilir.
 
-Geçici sürücünün boyutu VM boyutuna bağlıdır. Bir VM boyutu seçerken, geçici sürücüde yeterli alan olduğundan emin olmak önemlidir.
+Ayrıca, düğüm başladıktan sonra, Kullanıcı oluşturmak için işletim sistemi diskinde az miktarda alan gerekir.
+
+Geçici sürücünün boyutu VM boyutuna bağlıdır. Bir VM boyutu seçerken bir göz önünde bulundurmanız, geçici sürücüde planlanmış iş yükü için yeterli alan olmasını sağlamaktır.
 
 - Havuz eklenirken Azure portal, VM boyutlarının tam listesi görüntülenebilir ve ' kaynak disk boyutu ' sütunu vardır.
 - Tüm VM boyutlarını açıklayan makalelerde ' Temp Storage ' sütunu olan tablolar vardır; Örneğin, [işlem Için IYILEŞTIRILMIŞ VM boyutları](../virtual-machines/sizes-compute.md)
 
 Her bir görev tarafından yazılan dosyalar için, görev dosyalarının otomatik olarak temizlenmeden önce ne kadar süreyle tutulacağını belirleyen her bir görev için bir bekletme süresi belirtilebilir. Saklama süresi, depolama gereksinimlerini düşürmek için azaltılabilir.
 
-Geçici diskte boş alan biterse (veya alan tükendiğinden çok yakın), düğüm [kullanılamaz](/rest/api/batchservice/computenode/get#computenodestate) duruma geçer ve diskin dolu olduğunu bildiren bir düğüm hatası bildirilir.
+Geçici ya da işletim sistemi diskinde boş alan [tükeniyor](/rest/api/batchservice/computenode/get#computenodestate) (veya alan tükendiğinden çok yakın), düğüm kullanılamaz duruma geçer ve diskin dolu olduğunu bildiren bir düğüm hatası bildirilir.
 
 Düğüm üzerinde ne kadar alan olduğunu bilmiyorsanız, düğüm üzerinde uzaktan iletişim kurun ve alanın geçmiş olduğu konusunda el ile araştırma yapın. Batch tarafından yönetilen klasörlerdeki dosyaları incelemek için [toplu Işlem listesi dosyaları API](/rest/api/batchservice/file/listfromcomputenode) 'sini de kullanabilirsiniz (örneğin, görev çıkışları). Bu API 'nin yalnızca Batch yönetilen dizinlerindeki dosyaları listelediğinden emin olmanız gerektiğini unutmayın. Görevleriniz dosyaları başka bir yerde oluşturduysanız, bunları görmezsiniz.
 

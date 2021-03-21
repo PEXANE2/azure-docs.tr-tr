@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: d1a7407c947c1c5bae1eed00acb0f216722f3d09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 08243fd06de289941d8e6a9197ccb349614af056
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88121043"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104675966"
 ---
 # <a name="prepare-mobile-apps-for-production"></a>Mobil uygulamaları üretime hazırlama
 
@@ -34,18 +34,9 @@ Her Microsoft kimlik doğrulama kitaplığı (MSAL) türü için, hata koşullar
 - [MSAL iOS wiki](https://github.com/AzureAD/microsoft-authentication-library-for-objc/wiki)
 - [MSAL.NET wiki](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki)
 
-## <a name="mitigate-and-investigate-issues"></a>Sorunları azaltma ve araştırma
-
-Uygulamanızdaki sorunları daha iyi tanılamak için veri toplayın. Toplayacağınız veri türleri hakkında daha fazla bilgi için bkz. [msal uygulamalarında günlüğe kaydetme](./msal-logging.md).
-
-Veri toplama için bazı öneriler aşağıda verilmiştir:
-
-- Kullanıcılar sorun yaşadıklarında yardım isteyebilir. Günlükleri yakalamak ve geçici olarak depolamak en iyi uygulamadır. Kullanıcıların günlükleri karşıya yükleyebilecekleri bir konum belirtin. MSAL, kimlik doğrulamasıyla ilgili ayrıntılı bilgileri yakalamak için günlüğe kaydetme uzantıları sağlar.
-
-- Telemetri varsa, kullanıcıların uygulamanızda oturum açma hakkında veri toplamak için MSAL aracılığıyla etkinleştirin.
-
-## <a name="next-steps"></a>Sonraki adımlar
 
 [!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
+
+## <a name="next-steps"></a>Sonraki adımlar
 
 Ek örnekler denemek için bkz. [Masaüstü ve mobil ortak istemci uygulamaları](sample-v2-code.md#desktop-and-mobile-public-client-apps).

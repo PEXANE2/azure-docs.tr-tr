@@ -13,10 +13,10 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: a8ff94acbd9ffd491bf628ae61ee87634a9c6dd6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102033631"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Microsoft Graph ile Azure AD B2C yönetme
@@ -181,7 +181,7 @@ Uygulama, yürütebilmeniz için kullanabileceğiniz komutların bir listesini g
 
 Microsoft Graph API 'sine yönelik herhangi bir istek, kimlik doğrulaması için bir erişim belirteci gerektirir. Çözüm, Microsoft Graph SDK ile kullanmak üzere Microsoft kimlik doğrulama kitaplığı 'nın (MSAL) kimlik doğrulama senaryosu tabanlı bir sarmalayıcı sağlayan [Microsoft. Graph. auth](https://www.nuget.org/packages/Microsoft.Graph.Auth/) NuGet paketini kullanır.
 
-`RunAsync` _Program.cs_ dosyasındaki yöntemi:
+`RunAsync` _Program. cs_ dosyasındaki yöntemi:
 
 1. _appsettings.js_ dosyadaki uygulama ayarlarını okur
 1. Kimlik doğrulama sağlayıcısını [OAuth 2,0 istemci kimlik bilgileri verme](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md) akışı kullanarak başlatır. İstemci kimlik bilgileri verme akışı ile, uygulama Microsoft Graph API 'sini çağırmak için bir erişim belirteci alabilir.
@@ -203,7 +203,7 @@ Microsoft Graph API 'sine yönelik herhangi bir istek, kimlik doğrulaması içi
     GraphServiceClient graphClient = new GraphServiceClient(authProvider);
     ```
 
-Başlatılmış *GraphServiceClient* daha sonra Kullanıcı yönetimi işlemlerini gerçekleştirmek için _UserService.cs_ ' de kullanılır. Örneğin, Kiracıdaki Kullanıcı hesaplarının bir listesini alma:
+Başlatılmış *GraphServiceClient* daha sonra Kullanıcı yönetimi işlemlerini gerçekleştirmek Için _userservice. cs_ ' de kullanılır. Örneğin, Kiracıdaki Kullanıcı hesaplarının bir listesini alma:
 
 ```csharp
 public static async Task ListUsers(GraphServiceClient graphClient)

@@ -12,23 +12,23 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 370bedf04dc61e2a637f735580cd4df14061264a
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 0ab5baef925b7c8589dd7852b6ff8058d67ba745
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753338"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104675881"
 ---
 # <a name="a-web-api-that-calls-web-apis-move-to-production"></a>Web API 'Lerini çağıran bir Web API 'SI: üretime taşı
 
-Web API 'Lerini çağırmak için bir belirteç aldıktan sonra, uygulamanızı üretime taşıyabilirsiniz.
+Web API 'Lerini çağırmak için bir belirteç aldıktan sonra, uygulamanızı üretime taşırken göz önünde bulundurmanız gereken bazı şeyler aşağıda verilmiştir.
 
-[!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
+[!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
 
-## <a name="learn-more"></a>Daha fazlasını öğrenin
+## <a name="next-steps"></a>Sonraki adımlar
 
 Web API 'inizden Web API 'Lerini çağırma hakkında temel bilgileri öğrenmiş olduğunuza göre, Web API 'Lerini çağıran korumalı bir Web API 'SI oluşturmak için kullanılan kodu açıklayan aşağıdaki öğreticiyle ilgileniyor olabilirsiniz.
 
-| Örnek | Platform | Açıklama |
+| Örnek | Platform | Description |
 |--------|----------|-------------|
 | [Active-Directory-aspnetcore-WebApi-öğretici-v2](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph) Bölüm 1 | ASP.NET Core Web API, Masaüstü (WPF) | ASP.NET Core Web API çağrısı, Microsoft Identity platformunu kullanarak bir WPF uygulamasından çağırdığınız Microsoft Graph. |

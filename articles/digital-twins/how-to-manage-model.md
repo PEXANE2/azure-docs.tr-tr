@@ -8,10 +8,10 @@ ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 86efd7781c7353b4846c77eba01ed34fb63067ff
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102433259"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure dijital TWINS modellerini yönetme
@@ -142,7 +142,7 @@ Modelin yetki alma durumu, `ModelData` model alma API 'leri tarafından döndür
 
 Örneğinizdeki tüm modelleri aynı anda silebilir veya tek bir temelinde yapabilirsiniz.
 
-Tüm modellerin nasıl silineceği hakkında bir örnek için öğreticide kullanılan örnek uygulamayı indirin [*: örnek bir istemci uygulamasıyla ilgili temel bilgileri araştırma*](tutorial-command-line-app.md). *CommandLoop.cs* dosyası bunu bir `CommandDeleteAllModels` işlevde yapar.
+Tüm modellerin nasıl silineceği hakkında bir örnek için öğreticide kullanılan örnek uygulamayı indirin [*: örnek bir istemci uygulamasıyla ilgili temel bilgileri araştırma*](tutorial-command-line-app.md). *Commandloop. cs* dosyası bunu bir `CommandDeleteAllModels` işlevde yapar.
 
 Bu bölümün geri kalanı, model silme işlemini daha yakından ayrıntılandırır ve tek bir model için nasıl yapılacağını gösterir.
 

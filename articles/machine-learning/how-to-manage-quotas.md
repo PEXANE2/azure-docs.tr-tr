@@ -12,10 +12,10 @@ ms.date: 12/1/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperf-fy20q4, contperf-fy21q2
 ms.openlocfilehash: 4e61a15b86d1d2d05889253f615eec0865c87a70
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102520396"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Azure Machine Learning olan kaynaklar için kotaları yönetme ve artırma
@@ -50,7 +50,7 @@ Bu bölümde, aşağıdaki kaynaklar için varsayılan ve en yüksek kota sını
   + Azure Machine Learning işlem hatları
 + Sanal makineler
 + Azure Container Instances
-+ Azure Storage
++ Azure Depolama
 
 > [!IMPORTANT]
 > Sınırlar değişikliğe tabidir. En son bilgiler için  [Azure Machine Learning hizmet sınırlarına](resource-limits-quotas-capacity.md)bakın.

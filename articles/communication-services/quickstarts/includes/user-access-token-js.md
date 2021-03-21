@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: eee020e5d96b301e8278d31c26360639553be0ee
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 1032c450ab53ed77771a2233f9cff5677f658123
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103495344"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104612383"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -153,7 +153,7 @@ Erişim belirteçlerini yenilemek, `getToken` belirteçleri vermek için kullan�
 
 ```javascript
 // // Value of identityResponse represents the Azure Communication Services identity stored during identity creation and then used to issue the tokens being refreshed
-let refreshedTokenResponse = await identityClient.issueToken(identityResponse, ["voip"]);
+let refreshedTokenResponse = await identityClient.getToken(identityResponse, ["voip"]);
 ```
 
 

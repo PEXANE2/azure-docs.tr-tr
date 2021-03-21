@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 8a9149119bc754ff0715f2841925da01301faecd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101750474"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>Örnek dosyaları İnceleme ve düzenleme
@@ -17,7 +17,7 @@ ms.locfileid: "101750474"
     
     * C2D-Console-App. csproj-Visual Studio Code için proje dosyası.
     * operations.js, programın çalıştırmasını istediğiniz işlemlerin bir listesi.
-    * Program.cs-örnek program kodu. Bu kod:
+    * Program. cs-örnek program kodu. Bu kod:
 
         * Uygulama ayarlarını yükler.
         * IoT Edge modülündeki canlı video analizinin sunduğu doğrudan yöntemleri çağırır. Doğrudan yöntemlerini çağırarak canlı video akışlarını çözümlemek için modülünü kullanabilirsiniz.

@@ -5,19 +5,25 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 03/12/2021
+ms.date: 03/18/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 9185f502a7d9dd7ab00a149fb2f3365372b350cc
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: 65a06a60b502b0e189ebe8a5e203553494f5d128
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103470745"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721291"
 ---
 # <a name="scaling-hpc-applications"></a>HPC uygulamalarını ölçeklendirme
 
 Azure üzerinde HPC uygulamalarının en iyi ölçeği artırma ve genişleme performansı, belirli bir iş yükü için performans ayarlama ve iyileştirme denemeleri gerektirir. Bu bölüm ve VM dizisine özgü sayfalar, uygulamalarınızın ölçeklendirilmesine yönelik genel rehberlik sunar.
+
+## <a name="application-setup"></a>Uygulama kurulumu
+[Azurehpc deposunun](https://github.com/Azure/azurehpc) birçok örneği vardır:
+- [Uygulamaları](https://github.com/Azure/azurehpc/tree/master/apps) en iyi şekilde ayarlama ve çalıştırma.
+- [Dosya sistemleri ve kümelerin](https://github.com/Azure/azurehpc/tree/master/examples)yapılandırması.
+- Bazı ortak uygulama iş akışlarıyla kolayca çalışmaya nasıl başlayacağınız hakkında [öğreticiler](https://github.com/Azure/azurehpc/tree/master/tutorials) .
 
 ## <a name="optimally-scaling-mpi"></a>MPı en iyi şekilde ölçeklendirme 
 
@@ -48,6 +54,9 @@ En iyi uygulama ölçeklendirme verimliliği, performansı ve tutarlılığı i�
 - Önemli ölçüde daha büyük ölçek çalıştırmaları için, UD veya hibrit RC + UD taşımalarını kullanmanız önerilir. Birçok MPı Kitaplığı/çalışma zamanı kitaplığı bunu dahili olarak (UCX veya MVAPICH2 gibi) ister. Büyük ölçekli çalıştırmalar için aktarım yapılandırmalarınızı denetleyin.
 
 ## <a name="compiling-applications"></a>Uygulamaları derleme
+<br>
+<details>
+<summary>Genişletmek için tıklayın</summary>
 
 Gerekli olmasa da, uygun iyileştirme bayraklarıyla uygulamaları derlemek, HB ve HC Serisi VM 'lerde en iyi genişleme performansını sağlar.
 
@@ -96,6 +105,7 @@ HPC için AMD, GCC derleyicisi 7,3 veya daha yeni bir sürümü önerir. RHEL/Ce
 ```bash
 gcc $(OPTIMIZATIONS) $(OMP) $(STACK) $(STREAM_PARAMETERS) stream.c -o stream.gcc
 ```
+</details>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

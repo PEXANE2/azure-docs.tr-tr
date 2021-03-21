@@ -1,48 +1,61 @@
 ---
 title: Anlam derecelendirmesi
 titleSuffix: Azure Cognitive Search
-description: Bilişsel Arama anlam derecelendirme algoritmasını açıklar.
+description: Anlamsal derecelendirme algoritmasının Azure Bilişsel Arama 'da nasıl çalıştığını öğrenin.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/12/2021
-ms.openlocfilehash: 01c4d6475ec23b8a55d91e18f49cab27760aa907
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/18/2021
+ms.openlocfilehash: bb65a53f1ba6e97a39bd0c0170c5c41da38aee8b
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104604296"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720517"
 ---
 # <a name="semantic-ranking-in-azure-cognitive-search"></a>Azure Bilişsel Arama anlam derecelendirmesi
 
 > [!IMPORTANT]
-> Anlamsal arama özellikleri, yalnızca önizleme REST API aracılığıyla kullanılabilen genel önizlemededir. Önizleme özellikleri, olduğu gibi, [ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)altında sunulur ve genel kullanıma sunulmakta olan uygulamanın garantisi yoktur. Daha fazla bilgi için bkz. [kullanılabilirlik ve fiyatlandırma](semantic-search-overview.md#availability-and-pricing).
+> Anlamsal arama özellikleri, yalnızca önizleme REST API aracılığıyla kullanılabilen genel önizlemededir. Önizleme özellikleri, olduğu gibi, [ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)altında sunulur ve genel kullanıma sunulmakta olan uygulamanın garantisi yoktur. Bu özellikler faturalandırılabilir. Daha fazla bilgi için bkz. [kullanılabilirlik ve fiyatlandırma](semantic-search-overview.md#availability-and-pricing).
 
-Anlamsal sıralama, bir ilk sonuç kümesinin en üst eşleşmelerini yeniden vererek duyarlık ve geri çağırma işlemlerini artıran sorgu yürütme işlem hattının bir uzantısıdır. Anlam derecelendirmesi, anahtar kelimelerle eşleşen dile karşılık olarak doğal dilde ifade edilen, son derece ayrıntılı makine okuma kavrama modelleri tarafından desteklenir. [Varsayılan benzerlik derecelendirme algoritmasındaki](index-ranking-similarity.md)aksine, semantik derecelendiricisini ilgiyi anlamak için, sözcüklerin bağlamını ve anlamını kullanır.
+Anlamsal sıralama, bir ilk sonuç kümesinin en üst eşleşmelerini yeniden vererek duyarlık ve geri çağırma işlemlerini artıran sorgu yürütme işlem hattının bir uzantısıdır. Anlam derecelendirmesi, anahtar kelimelerle eşleşen dile karşılık gelen, doğal dilde ifade edilen sorgular için eğitilen, son derece makine okuma anlama modelleri tarafından desteklenir. [Varsayılan benzerlik derecelendirme algoritmasındaki](index-ranking-similarity.md)aksine, semantik derecelendiricisini ilgiyi anlamak için, sözcüklerin bağlamını ve anlamını kullanır.
 
-## <a name="how-semantic-ranking-works"></a>Anlam derecelendirmesi nasıl kullanılır?
+Anlamsal sıralama, kaynak ve zaman yoğunluğu olur. Bir sorgu işleminin beklenen gecikme süresi içinde işlemeyi tamamlayabilmeniz için, Özet ve analiz 'nin mümkün olduğunca çabuk tamamlanabilmesi için girişler birleştirilir ve basitleştirilir.
 
-Anlamsal sıralama, kaynak ve zaman yoğunluğu olur. Bir sorgu işleminin beklenen gecikme süresi içinde işleme tamamlanabilmesi için, model yalnızca varsayılan [benzerlik derecelendirme algoritmasından](index-ranking-similarity.md)döndürülen ilk 50 belgeyi giriş olarak alır. İlk derecelendirmeden elde edilecek sonuçlar 50 'den fazla eşleşme içerebilir, ancak yalnızca ilk 50 yeniden ayarlanabilir anlamsal olur. 
+## <a name="preparation-for-semantic-ranking"></a>Anlamsal sıralama hazırlığı
 
-Anlam derecelendirmesi için model, her birinin sorgu amacına ne kadar iyi eşleştiğini temel alarak belgeleri yeniden Puanlama için hem makine okuma kavrama hem de aktarım öğrenimini kullanır.
+Yakınlık açısından Puanlama öncesinde, içerik anlamsal derecelendirmeden verimli bir şekilde işlenebilen bir parametre miktarına düşürülmelidir. İçerik azaltma aşağıdaki adım dizisini içerir.
 
-### <a name="preparation-passage-extraction-phase"></a>Hazırlık (paszu ayıklama) aşaması
+1. İçerik azaltma, anahtar sözcük araması için kullanılan varsayılan [benzerlik derecelendirmesi algoritması](index-ranking-similarity.md) tarafından döndürülen ilk sonuçları kullanarak başlar. Arama sonuçları en fazla 1.000 eşleşme içerebilir, ancak anlam derecelendirmesi yalnızca ilk 50 ' i işleyebilir. 
 
-İlk sonuçlardaki her belge için, anahtar paslarını tanımlayan bir paszu ayıklama alıştırması vardır. Bu, içeriğe hafif bir şekilde işlenebilirler.
+   Sorgu verildiğinde ilk sonuçlar, kaç eşleşme bulundığına bağlı olarak 50 ' den çok daha az olabilir. Belge sayısı ne olursa olsun, ilk sonuç kümesi, anlam derecelendirmesi için belge yapı olur.
 
-1. 50 belgelerinin her biri için, searchFields parametresindeki her bir alan ardışık sırayla değerlendirilir. Her bir alandan içerik tek bir Long dize halinde birleştirilir. 
+1. Belge Corpus 'da, "searchFields" içindeki her alanın içeriği ayıklanır ve uzun bir dizeye birleştirilir.
 
-1. Uzun dize daha sonra, genel uzunluğun 8.000 belirteçten fazla olmamasını sağlamak için kırpılır. Bu nedenle, dize içine dahil olmaları için önce kısa alanları konumlandırmanızın kullanılması önerilir. Metin ağır alanları olan çok büyük belgeleriniz varsa, belirteç limitinin ardından herhangi bir şey yok sayılır.
+1. Genel uzunluğunun özetleme modelinin giriş gereksinimlerini karşıladığından emin olmak için, aşırı uzun olan tüm dizeler kırpılır. Bu kırpma işlemi, dizeye dahil olduklarından emin olmak için "searchFields" içindeki kısa alanları ilk olarak konumlandırmak önemlidir. Metin ağır alanları olan çok büyük belgeleriniz varsa, en fazla sınır yoksayıldıktan sonra herhangi bir şey yok sayılır.
 
-1. Her belge artık 8.000 belirtece kadar olan tek bir Long dizesiyle temsil edilir. Bu dizeler özetleme modeline gönderilir, bu da dizeyi daha da azaltır. Özetleme modeli, belgeyi en iyi şekilde özetleyen veya soruyu yanıtlayan önemli tümceler veya paslar için uzun dizeyi değerlendirir.
+Her belge artık tek bir uzun dizeyle temsil edilir.
 
-1. Bu aşamanın çıktısı bir başlık (ve isteğe bağlı olarak bir yanıt). Başlık, belge başına en çok 128 belirtece sahiptir ve belgenin en fazla temsilcisi olarak kabul edilir.
+> [!NOTE]
+> Modellere yönelik parametre girişleri karakter veya sözcük olmayan belirteçlerdir. Simgeleştirme, aranabilir alanlarda çözümleyici ataması tarafından kısmen belirlenir. Dizelerin nasıl simgelendirilebilen hakkında Öngörüler için [Test çözümleyici REST API](/rest/api/searchservice/test-analyzer)kullanarak bir çözümleyici 'nin belirteç çıkışını inceleyebilirsiniz.
+>
+> Şu anda bu önizlemede, uzun dizeler boyut olarak en fazla 8.000 belirteç olabilir. Arama, bir belgede derin bir şekilde beklenen bir yanıt sunamazsa, içerik kırpma hakkında bilinmesi, nedenini anlamanıza yardımcı olur. 
 
-### <a name="scoring-and-ranking-phases"></a>Puanlama ve derecelendirme aşamaları
+## <a name="summarization"></a>Özetleme
 
-Bu aşamada, ilgiyi değerlendirmek için tüm 50 açıklamalı alt yazılar değerlendirilir.
+Dize azaltmasından sonra, hangi Tümcelerin ve tümceciklerin sorguya göre en iyi şekilde özetlendiğini belirleyebilmek için, parametreleri makine okuma kavrama ve dil gösterimi aracılığıyla geçirmek mümkündür.
+
+Özetleme girişleri, hazırlama aşamasından uzun dizedir. Bu girişten, özetleme modeli, en çok temsili olan metinlerin bulmak için içeriği değerlendirir.
+
+Çıktı, düz metin olarak ve vurgularla bir [anlamsal başlıktır](semantic-how-to-query-request.md). Başlık, genellikle belge başına 200 sözcükten az olan uzun dizeden daha küçüktür ve belge temsilcisi olarak kabul edilir. 
+
+"Yanıtlar" parametresini belirttiyseniz, sorgu bir soru olarak ortaya anıyorken ve bu, soruya yönelik olabilecek bir yanıt gibi görünen uzun dizede bir işlem bulunursa, [anlamsal bir yanıt](semantic-answers.md) da döndürülür.
+
+## <a name="scoring-and-ranking"></a>Puanlama ve derecelendirme
+
+Bu noktada, artık her belge için açıklamalı alt yazılar vardır. Açıklamalı alt yazılar sorguyla ilgisi olarak değerlendirilir.
 
 1. Puanlama, girilen sorguya göre kavramsal ve anlamsal ilgi için her bir açıklamalı alt yazı hesaplanarak belirlenir.
 
@@ -50,13 +63,14 @@ Bu aşamada, ilgiyi değerlendirmek için tüm 50 açıklamalı alt yazılar de�
 
    :::image type="content" source="media/semantic-search-overview/semantic-vector-representation.png" alt-text="Bağlam için vektör temsili" border="true":::
 
-1. Bu aşamanın çıktısı @search.rerankerScore her belgeye atanır. Tüm belgeler puanlandıktan sonra, Bunlar azalan sırada listelenir ve sorgu yanıt yüküne dahil edilir.
+1. Bu aşamanın çıktısı @search.rerankerScore her belgeye atanır. Tüm belgeler puanlandıktan sonra, Bunlar azalan sırada listelenir ve sorgu yanıt yüküne dahil edilir. Yük, yanıtlar, düz metin ve vurgulanmış açıklamalı alt yazılar ve bir SELECT yan tümcesinde alınabilir veya belirtilen olarak işaretlediğiniz tüm alanları içerir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Anlamsal sıralama, belirli bölgelerde Standart katmanlarda sunulur. Daha fazla bilgi edinmek ve kaydolmak için bkz. [kullanılabilirlik ve fiyatlandırma](semantic-search-overview.md#availability-and-pricing). Yeni bir sorgu türü, anlamsal aramanın ilgi derecesini ve yanıt yapılarını mümkün bir şekilde sunar. Başlamak için [bir anlam sorgusu oluşturun](semantic-how-to-query-request.md).
+Anlamsal sıralama, belirli bölgelerde Standart katmanlarda sunulur. Kullanılabilir ve kaydolma hakkında daha fazla bilgi için bkz. [kullanılabilirlik ve fiyatlandırma](semantic-search-overview.md#availability-and-pricing). Yeni bir sorgu türü, anlamsal aramanın ilgi derecesini ve yanıt yapılarını mümkün bir şekilde sunar. Başlamak için [bir anlam sorgusu oluşturun](semantic-how-to-query-request.md).
 
-Alternatif olarak, ilgili bilgiler için aşağıdaki makalelerden birini gözden geçirin.
+Alternatif olarak, varsayılan derecelendirmeden aşağıdaki makalelere göz atın. Anlam derecelendirmesi, ilk sonuçları döndürmek için benzerlik derecelendirmesine bağlıdır. Sorgu yürütme ve derecelendirme hakkında bilinmesi, işlemin tamamının nasıl çalıştığına ilişkin ayrıntılı bilgiler sunar.
 
-+ [Anlamsal aramaya genel bakış](semantic-search-overview.md)
-+ [Anlam yanıtı döndürme](semantic-answers.md)
++ [Azure Bilişsel Arama 'de tam metin araması](search-lucene-query-architecture.md)
++ [Azure Bilişsel Arama benzerlik ve Puanlama](index-similarity-and-scoring.md)
++ [Azure Bilişsel Arama metin işleme için çözümleyiciler](search-analyzers.md)

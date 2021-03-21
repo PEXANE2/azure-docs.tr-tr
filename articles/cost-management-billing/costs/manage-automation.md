@@ -3,17 +3,17 @@ title: Otomasyon ile Azure maliyetlerini yönetme
 description: Bu makalede, otomasyon ile Azure maliyetlerini nasıl yönetebileceğiniz açıklanmaktadır.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/08/2021
+ms.date: 03/19/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: a54b8243b5a680168b2e5806dd58c0fa4109728f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2a39f77e3e7409d23ab7506b525f65e01082e99e
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104670282"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720126"
 ---
 # <a name="manage-costs-with-automation"></a>Otomasyon ile maliyetleri yönetme
 
@@ -47,7 +47,7 @@ Maliyet verileriniz küçük bir kümeyse [Kullanım Ayrıntıları API’sini](
 
 [Kullanım Ayrıntıları API’si](/rest/api/consumption/usageDetails) Azure faturanıza karşılık gelen ham, toplu olmayan maliyet verilerini almanın kolay bir yolunu sunar. Kuruluşunuz için programlı bir veri alma çözümüne ihtiyaç duyuyorsanız API’den faydalanabilirsiniz. Daha küçük maliyet verisi kümelerini analiz etmek istiyorsanız API’yi kullanmanız faydalı olabilir. Ancak daha büyük veri kümeleriniz varsa önceden açıklanan diğer çözümleri kullanmanız gerekir. Kullanım Ayrıntılarındaki veriler günlük olarak ölçüm başına sağlanır. Bu veriler, aylık faturanız hesaplanırken kullanılır. Bu API’lerin genel kullanılabilirlik (GA) sürümü, `2019-10-01` sürümüdür. Rezervasyon ve Azure Market satın alımlarına yönelik önizleme sürümüne erişmek için API’lerle `2019-04-01-preview` sürümünü kullanın.
 
-Düzenli olarak büyük miktarlarda dışarı aktarılan veri almak istiyorsanız, bkz. [dışarı aktarmalar ile büyük maliyet veri kümelerini yinelenen olarak alma](ingest-azure-usage-at-scale.md).
+Büyük miktarlarda dışarı aktarılan verileri düzenli olarak almak istiyorsanız, bkz. [dışarı aktarmalar ile büyük maliyetli veri kümelerini elde](ingest-azure-usage-at-scale.md)edin.
 
 ### <a name="usage-details-api-suggestions"></a>Kullanım Ayrıntıları API’si önerileri
 
@@ -74,6 +74,10 @@ Kullanım Ayrıntıları fiyat davranışı - Kullanım dosyalarında ölçeklen
   - Dahil edilen miktar - Örneğin: İlk 100 birim ücretsiz ve sonra birim başına 10 ABD doları.
   - Rezervasyonlar
   - Hesaplamada yapılan yuvarlama – Yuvarlama yapılırken tüketilen miktar, katman/dahil edilen miktar fiyatlandırması ve ölçeklendirilmiş birim fiyatı hesaba katılır.
+
+### <a name="a-single-resource-might-have-multiple-records-for-a-single-day"></a>Tek bir kaynakta birden çok kayıt olabilir
+
+Azure kaynak sağlayıcıları, kullanım ve ücretleri faturalama sistemine yayar ve `Additional Info` kullanım kayıtlarının alanını doldurur. Bazen kaynak sağlayıcıları belirli bir gün için kullanımı yayabilir ve kayıtları kullanım kayıtları alanındaki farklı veri merkezlerine damgalarına alabilir `Additional Info` . Tek bir gün için kullanım dosyanızda ölçüm/kaynak için birden çok kaydın mevcut olmasına neden olabilir. Bu durumda, fazla ücretlendirilmez. Birden çok kayıt, bu gündeki kaynak için ölçüm maliyetinin tamamını temsil eder.
 
 ## <a name="example-usage-details-api-requests"></a>Örnek Kullanım Ayrıntıları API’si istekleri
 

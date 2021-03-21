@@ -1,17 +1,17 @@
 ---
 title: Hızlı başlangıç-Azure Iletişim hizmetlerini kullanarak bir Android uygulamasına çağıran VOıP ekleme
 description: Bu öğreticide, Android için istemci kitaplığı 'nı çağıran Azure Iletişim hizmetlerini kullanmayı öğreneceksiniz.
-author: matthewrobertson
-ms.author: marobert
-ms.date: 08/11/2020
+author: chpalm
+ms.author: mikben
+ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: cde9dd719bb614d9838e50080d4bd9cd758389f4
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 094dbd090b5f2d68a9961f2fb9b8b611e486e7bc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103021754"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104719892"
 ---
 Bu hızlı başlangıçta, Android için istemci kitaplığı 'nı çağıran Azure Iletişim Hizmetleri 'ni kullanarak bir çağrı başlatmayı öğreneceksiniz.
 

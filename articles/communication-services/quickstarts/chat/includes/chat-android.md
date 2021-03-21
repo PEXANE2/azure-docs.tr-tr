@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 02b47d7797eaebf6049099729ea51554a61a765e
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 4a281e547691b7dee2f1a6d3e57b1c0030dbbd57
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103495447"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104612421"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 Başlamadan önce şunları yaptığınızdan emin olun:
@@ -39,8 +39,8 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 Gerekli Iletişim Hizmetleri bağımlılıklarını yüklemek için Gradle kullanacağız. Komut satırında, projenin kök dizininin içine gidin `ChatQuickstart` . Uygulamanın Build. Gradle dosyasını açın ve şu bağımlılıkları `ChatQuickstart` hedefe ekleyin:
 
 ```
-implementation 'com.azure.android:azure-communication-common:1.0.0-beta.7'
-implementation 'com.azure.android:azure-communication-chat:1.0.0-beta.7'
+implementation 'com.azure.android:azure-communication-common:1.0.0-beta.8'
+implementation 'com.azure.android:azure-communication-chat:1.0.0-beta.8'
 ```
 
 #### <a name="exclude-meta-files-in-packaging-options-in-root-buildgradle"></a>Kök derleme. Gradle içindeki paketleme seçeneklerinde meta dosyaları hariç tutun

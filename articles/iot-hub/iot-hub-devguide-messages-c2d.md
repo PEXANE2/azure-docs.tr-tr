@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.custom: mqtt, devx-track-azurecli
-ms.openlocfilehash: 5515d1084b28091cf7d20958cfca8af3f2664563
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 154b496a6c14d307c09ddcd1b42bf4ba568cb315
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102199501"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607900"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>IoT Hub 'ından buluttan cihaza iletileri gönderme
 
@@ -91,6 +91,8 @@ Buluttan cihaza bir ileti gönderdiğinizde, hizmet iletinin son durumu hakkınd
 | UserId       | `{iot hub name}` |
 | ContentType  | `application/vnd.microsoft.iothub.feedback.json` |
 
+Toplu işlem, her ne olursa olsun, toplu iş 64 ileti veya son gönderilme 15 saniye içinde geri bildirimi gönderir. 
+
 Gövde, her biri aşağıdaki özelliklere sahip olan JSON seri hale getirilmiş bir kayıt dizisidir:
 
 | Özellik           | Açıklama |
@@ -98,7 +100,7 @@ Gövde, her biri aşağıdaki özelliklere sahip olan JSON seri hale getirilmiş
 | EnqueuedTimeUtc    | İleti sonucunun ne zaman gerçekleştiğini belirten zaman damgası (örneğin, Merkez geri bildirim iletisini aldı veya özgün iletinin zaman aşımına uğradı) |
 | Originalmessageıd  | Bu geri bildirim bilgilerinin ilişkili olduğu buluttan cihaza mesajın *MessageID* |
 | Durum         | IoT Hub tarafından oluşturulan geri bildirim iletilerinde kullanılan gerekli bir dize: <br/> *Başarılı* <br/> *Süresi Doldu* <br/> *DeliveryCountExceeded* <br/> *Reddedildi* <br/> *Temizlenir* |
-| Açıklama        | *StatusCode* için dize değerleri |
+| Description        | *StatusCode* için dize değerleri |
 | DeviceId           | Bu geri bildirim parçasının ilişkili olduğu buluttan cihaza yönelik iletinin hedef cihazının *DeviceID* 'i |
 | Devicegenerationıd | Bu geri bildirim parçasının ilişkili olduğu buluttan cihaza ileti hedef cihazının *Devicegenerationıd 'si* |
 

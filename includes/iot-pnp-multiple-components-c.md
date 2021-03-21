@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: 398f11c6e55cb62e0b29c148494cf3d590200b9d
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 5a8d270ffdef1f9ae68814fa023284c68216d3ff
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99834208"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104612147"
 ---
 Bu öğreticide, bileşenleriyle bir örnek IoT Tak ve Kullan cihaz uygulaması oluşturma, bunları IoT Hub 'ınıza bağlama ve Azure IoT Gezgini aracını kullanarak hub 'a gönderdiği bilgileri görüntüleme hakkında bilgi verilmektedir. Örnek uygulama C dilinde yazılır ve C için Azure IoT cihaz SDK 'sına dahildir. Bir çözüm Oluşturucusu, herhangi bir cihaz kodunu görüntülemeye gerek olmadan IoT Tak ve Kullan cihazının yeteneklerini anlamak için Azure IoT gezgin aracını kullanabilir.
 
@@ -160,7 +160,7 @@ Cihaz istemcisi örneği başladıktan sonra, çalıştığını doğrulamak iç
 
 ## <a name="review-the-code"></a>Kodu gözden geçirin
 
-Bu örnek, IoT Tak ve Kullan ısı denetleyicisi cihazı uygular. Bu örnek, [birden çok bileşeni](../articles/iot-pnp/concepts-components.md)olan bir model uygular. [Sıcaklık cihazının dijital TWINS tanım dili (DTDL) modeli dosyası](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) , cihazın uyguladığı telemetri, Özellikler ve komutları tanımlar.
+Bu örnek, IoT Tak ve Kullan ısı denetleyicisi cihazı uygular. Bu örnek, [birden çok bileşeni](../articles/iot-pnp/concepts-modeling-guide.md)olan bir model uygular. [Sıcaklık cihazının dijital TWINS tanım dili (DTDL) modeli dosyası](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) , cihazın uyguladığı telemetri, Özellikler ve komutları tanımlar.
 
 ### <a name="iot-plug-and-play-helper-functions"></a>IoT Tak ve Kullan yardımcı işlevleri
 

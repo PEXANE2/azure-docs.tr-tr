@@ -13,19 +13,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/02/2019
+ms.date: 03/17/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4dcc7ed6076c3bac723d709f50f1b3ab2ce8f58
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e8778e50dcb881647696c6e901bf1058b9d6ac43
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95996568"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720347"
 ---
 # <a name="changing-the-adsync-service-account-password"></a>ADSync hizmet hesabı parolasını değiştirme
 ADSync hizmet hesabı parolasını değiştirirseniz, şifreleme anahtarını terk edinceye ve ADSync hizmet hesabı parolasını yeniden başlatana kadar eşitleme hizmeti düzgün şekilde başlayamaz. 
+
+>[!IMPORTANT]
+> 2017 Mart veya daha önceki bir yapıyla Bağlan ' ı kullanırsanız, Windows şifreleme anahtarlarını güvenlik nedenleriyle yok etmek için hizmet hesabındaki parolayı sıfırlamamalısınız. Azure AD Connect yüklemeden hesabı başka bir hesaba değiştiremezsiniz. 2017 Nisan veya sonraki bir sürüme yükseltme yaparsanız, hizmet hesabındaki parolanın değiştirilmesi desteklenir, ancak kullanılan hesabı değiştiremezsiniz. 
 
 Azure AD Connect, Eşitleme Hizmetleri 'nin bir parçası olarak, AD DS bağlayıcı hesabının ve ADSync hizmet hesabının parolalarını depolamak için bir şifreleme anahtarı kullanır.  Bu hesaplar, veritabanında depolanmadan önce şifrelenir. 
 

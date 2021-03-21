@@ -7,14 +7,14 @@ ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: reference
 ms.date: 08/12/2020
-ms.author: anfeldma
+ms.author: rosouz
 ms.custom: devx-track-python
-ms.openlocfilehash: 77cde4fb580ebea14c09856b9ad2e7f093e20db3
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 8487743efd4f18806ae03ed7529927736314988b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102505078"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595703"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>SQL API için Azure Cosmos DB Python SDK’sı: Sürüm notları ve kaynaklar
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -38,17 +38,26 @@ ms.locfileid: "102505078"
 > * [Toplu yürütücü-.NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Toplu yürütücü - Java](sql-api-sdk-bulk-executor-java.md)
 
-| |  |
+| Sayfa| Bağlantı |
 |---|---|
 |**SDK 'Yı indir**|[PyPI](https://pypi.org/project/azure-cosmos)|
-|**API belgeleri**|[Python API başvuru belgeleri](/python/api/azure-cosmos/)|
+|**API belgeleri**|[Python API başvuru belgeleri](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos?view=azure-python&preserve-view=true)|
 |**SDK yükleme yönergeleri**|[Python SDK yükleme yönergeleri](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)|
 |**Kullanmaya başlama**|[Python SDK 'Yı kullanmaya başlama](create-sql-api-python.md)|
 |**Desteklenen geçerli platform**|[Python 2,7](https://www.python.org/downloads/) ve [Python 3.5.3 +](https://www.python.org/downloads/)|
 
 ## <a name="release-history"></a>Yayın geçmişi
 
-### <a name="410-2020-08-10"></a>4.1.0 (2020-08-10)
+## <a name="420"></a>4.2.0
+
+**Hata düzeltmeleri**
+- Sonuçları sayfasına göre almak için query_iterable kullanıldığında devamlılık belirtecinin dikkate alınmamasına neden olan hata düzeltildi.
+- Belge okuma ve silme için kaynak belirteçlerinin kabul edildiği hata düzeltildi. 
+
+**Yeni özellikler**
+- `partitionKey`Değişiklik akışını sorgularken geçiş için destek eklendi.
+
+## <a name="410"></a>4.1.0
 
 - "Yavaş" Dizin oluşturma modu için kullanımdan kaldırma uyarısı eklendi. Arka uç artık bu moda kapsayıcı oluşturulmasına izin vermez ve bunun yerine tutarlı olarak ayarlar.
 
@@ -56,13 +65,14 @@ ms.locfileid: "102505078"
 - Yeni bir kapsayıcı oluştururken analitik depolama TTL 'yi ayarlama özelliği eklendi.
 
 **Hata düzeltmeleri**
-- Get_client API 'Leri için giriş olarak dicts için sabit destek.
+- `dicts`Get_client API 'leri için giriş olarak düzeltilen destek.
 - Sorgu yineleyiciler içinde düzeltilen Python 2/3 uyumluluğu.
-- Sabit tür ipucu hatası (sorun #12570).
-- Upsert_item işlevine seçenek üst bilgilerinin eklendiği hata düzeltildi. Sorun #11791-teşekkürler @aalapatirvbd .
-- Bir öğede dize olmayan bir KIMLIK kullanıldığında düzeltilen hata oluştu. Artık AttributeError yerine TypeError (sorun #11793) oluşturur.
+- Tür ipucu hatası düzeltildi.
+- Upsert_item işlevine seçenek üst bilgilerinin eklendiği hata düzeltildi. 
+- Bir öğede dize olmayan bir KIMLIK kullanıldığında oluşan hata düzeltildi. Şimdi AttributeError yerine TypeError hatası oluşturuyor.
 
-### <a name="400"></a>4.0.0
+
+## <a name="400"></a>4.0.0
 
 * Kararlı sürüm.
 * İstek ve yanıt üst bilgileri için özel bir günlükçüsü geçişine olanak tanımak üzere işlem hattına HttpLoggingPolicy eklendi.
@@ -80,8 +90,8 @@ ms.locfileid: "102505078"
 * Sorgu benzersiz, konum ve limit desteği eklendi.
 * İçin varsayılan belge sorgusu yürütme bağlamı artık kullanıldı
 
-  * Değişiklik akışı sorguları
-  * tek bölümlü sorgular (partitionkey, Partitionkeyrangeıd, seçeneklerde mevcuttur)
+  * Akış sorgularını değiştirme
+  * tek bölümlü sorgular ( `partitionkey` , `partitionKeyRangeId` seçeneklerde mevcuttur)
   * Belge olmayan sorgular
 
 * Birden çok bölümdeki toplamalar için, çapraz bölüm sorgusu ayarı true olarak ayarlanmış ancak "Value" anahtar sözcüğü yok olarak bir hata oluştu
@@ -324,6 +334,8 @@ Microsoft, daha yeni/desteklenen bir sürüme geçişi düzgünleştirmek için 
 
 | Sürüm | Yayın Tarihi | Kullanımdan Kaldırma Tarihi |
 | --- | --- | --- |
+| [4.2.0](#420) |09 Eki, 2020 |--- |
+| [4.1.0](#410) |10 Ağu, 2020 |--- |
 | [4.0.0](#400) |20 Mayıs 2020 |--- |
 | [3.0.2](#302) |15 Kasım 2018 |--- |
 | [3.0.1](#301) |Eki 04, 2018 |--- |

@@ -1,26 +1,26 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: active-directory
 author: curtand
 ms.service: active-directory
 ms.topic: include
-ms.date: 12/11/2020
+ms.date: 03/12/2021
 ms.author: curtand
 ms.custom: include file
-ms.openlocfilehash: 9be85a7da67fa659e29d802d1f77fa09008f4428
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 1102bcc18165d3bc705755f1bbb6faecddec4e91
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97371330"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104612452"
 ---
 Azure Active Directory (Azure AD) hizmetine yönelik kullanım kısıtlamalarını ve diğer hizmet sınırlarını burada bulabilirsiniz.
 
 | Kategori | Sınır |
 | --- | --- |
 | Kiracılar | Tek bir kullanıcı üye veya konuk olarak en fazla 500 Azure AD kiracılarına ait olabilir.<br/>Tek bir Kullanıcı, en fazla 200 dizin oluşturabilir. |
-| Etki Alanları | En fazla 900 yönetilen etki alanı adı ekleyebilirsiniz. Tüm etki alanlarınızı şirket içi Active Directory ile Federasyon için ayarlarsanız, her kiracıya 450 'den fazla etki alanı adı ekleyebilirsiniz. |
+| Etki Alanları | 5000 ' den fazla yönetilen etki alanı adı ekleyebilirsiniz. Tüm etki alanlarınızı şirket içi Active Directory ile Federasyon için ayarlarsanız, her kiracıya 2500 'den fazla etki alanı adı ekleyebilirsiniz. |
 |Kaynaklar |<ul><li>Varsayılan olarak Azure Active Directory ücretsiz sürümü kullanıcıları tarafından tek bir kiracıya en fazla 50.000 Azure AD kaynağı oluşturulabilir. En az bir doğrulanmış etki alanınız varsa, kuruluşunuz için varsayılan Azure AD hizmet kotası 300.000 Azure AD kaynaklarına genişletilir. Self Servis kaydolma tarafından oluşturulan kuruluşlar için Azure AD hizmet kotası, dahili bir yönetim gerçekleştirmesinden ve kuruluşun en az bir doğrulanmış etki alanı ile yönetilen bir kiracıya dönüştürülmesinden sonra bile 50.000 Azure AD kaynakları kalır. Bu hizmet sınırı, Azure AD fiyatlandırma sayfasında 500.000 kaynağın fiyatlandırma katmanı limiti ile ilişkili değildir. Varsayılan kotanın ötesine geçmek için Microsoft Desteği başvurmanız gerekir.</li><li>Yönetici olmayan bir Kullanıcı 250 taneden fazla Azure AD kaynağı oluşturabilir. Hem etkin kaynaklar hem de geri yüklenebilecek silinen kaynaklar bu kotaya doğru sayılır. Yalnızca 30 günden daha kısa bir süre önce silinen Azure AD kaynakları geri yüklemek için kullanılabilir. 30 gün boyunca bir çeyrekte bu kotaya doğru sayımı geri yüklemek için artık kullanılamayan Azure AD kaynakları silindi. Normal görevleri çerçevesinde bu kotayı sürekli olarak aşmaları muhtemel olan geliştiricileriniz varsa, sınırsız sayıda uygulama kaydı oluşturma izniyle [özel bir rol oluşturabilir ve atayabilirsiniz](../articles/active-directory/roles/quickstart-app-registration-limits.md) .</li></ul> |
 | Şema uzantıları |<ul><li>Dize türü uzantılar en fazla 256 karakter olabilir. </li><li>İkili tür uzantılar 256 bayt ile sınırlıdır.</li><li>Tek bir Azure AD kaynağına yalnızca 100 uzantı değeri, *Tüm* türler ve *Tüm* uygulamalar arasında yazılabilir.</li><li>Dize türü veya ikili tür tek değerli özniteliklerle yalnızca User, Group, TenantDetail, Device, Application ve ServicePrincipal varlıkları uzatılabilir.</li><li>Şema uzantıları yalnızca Graph API'si 1.21 önizleme sürümünde kullanılabilir. Bir uzantıyı kaydetmek için uygulamaya yazma erişimi verilmelidir.</li></ul> |
 | Uygulamalar | <ul><li>Tek bir uygulamanın sahibi en fazla 100 kullanıcı olabilir.</li><li>Parola tabanlı SSO uygulamasının 48 Kullanıcı sınırlaması vardır. Bu, uygulama başına Kullanıcı adı/parola çiftleri için 48 anahtar sınırı olduğu anlamına gelir. Ek kullanıcılar eklemek istiyorsanız, [Azure AD 'de parola tabanlı çoklu oturum açma sorunlarını giderme](../articles/active-directory/manage-apps/troubleshoot-password-based-sso.md#i-cant-add-another-user-to-my-password-based-sso-app)konusundaki sorun giderme yönergelerine bakın.</li></ul> |

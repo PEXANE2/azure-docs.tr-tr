@@ -57,7 +57,7 @@ Aynı zamanda, .NET örnekleri deposundaki tüm projeler için ortam değişkenl
 
 ## <a name="examine-the-code-that-performs-live-streaming"></a>Canlı akışı gerçekleştiren kodu inceleme
 
-Bu bölüm, *Liveeventwithdvr* projesinin [program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/Program.cs) dosyasında tanımlanan işlevleri inceler.
+Bu bölüm, *Liveeventwithdvr* projesinin [program. cs](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/Program.cs) dosyasında tanımlanan işlevleri inceler.
 
 Örnek, her kaynak için benzersiz bir sonek oluşturur, böylece örnek birden çok kez temizlemeden çalıştırırsanız ad çarpışmaları olmaz.
 
