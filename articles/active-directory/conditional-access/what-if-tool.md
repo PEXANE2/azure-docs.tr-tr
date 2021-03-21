@@ -12,15 +12,15 @@ manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a3ac799203cade3a907acbe28dee3a8023891db2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93077651"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Koşullu Erişimde What If aracını kullanarak sorunları giderme
 
-[Koşullu erişim](./overview.md) , yetkili kullanıcıların bulut uygulamalarınıza nasıl erişebileceğini denetlemenize olanak tanıyan Azure Active Directory (Azure AD) özelliğidir. Ortamınızdaki koşullu erişim ilkelerinden ne bekleneceğinizi nasıl anlarsınız? Bu soruyu yanıtlamak için **koşullu erişim What If aracı** ' nı kullanabilirsiniz.
+[Koşullu erişim](./overview.md) , yetkili kullanıcıların bulut uygulamalarınıza nasıl erişebileceğini denetlemenize olanak tanıyan Azure Active Directory (Azure AD) özelliğidir. Ortamınızdaki koşullu erişim ilkelerinden ne bekleneceğinizi nasıl anlarsınız? Bu soruyu yanıtlamak için **koşullu erişim What If aracı**' nı kullanabilirsiniz.
 
 Bu makalede, koşullu erişim ilkelerinizi test etmek için bu aracı nasıl kullanabileceğiniz açıklanır.
 
@@ -32,7 +32,7 @@ Bu makalede, koşullu erişim ilkelerinizi test etmek için bu aracı nasıl kul
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
-**Koşullu erişim What If aracında** , önce benzetimini yapmak istediğiniz oturum açma senaryosunun ayarlarını yapılandırmanız gerekir. Bu ayarlar şunlardır:
+**Koşullu erişim What If aracında**, önce benzetimini yapmak istediğiniz oturum açma senaryosunun ayarlarını yapılandırmanız gerekir. Bu ayarlar şunlardır:
 
 - Test etmek istediğiniz Kullanıcı 
 - Kullanıcının erişmeyi deneyeceği bulut uygulamaları
@@ -46,7 +46,7 @@ Değerlendirme tamamlandığında, araç etkilenen ilkelerin bir raporunu oluşt
 
 **What If** aracını, Azure Portal **[koşullu erişim ilkeleri](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)** sayfasında bulabilirsiniz.
 
-Aracı başlatmak için, ilke listesinin üstündeki araç çubuğunda **What If** ' ye tıklayın.
+Aracı başlatmak için, ilke listesinin üstündeki araç çubuğunda **What If**' ye tıklayın.
 
 :::image type="content" source="./media/what-if-tool/01.png" alt-text="Azure portal koşullu erişim Ilkeleri sayfasının ekran görüntüsü. Araç çubuğunda, ne tür öğesi vurgulandığında." border="false":::
 
@@ -56,7 +56,7 @@ Bir değerlendirmeyi çalıştırmadan önce, ayarları yapılandırmanız gerek
 
 Bu bölüm, benzetim çalıştırmasının ayarları hakkında bilgi sağlar.
 
-:::image type="content" source="./media/what-if-tool/02.png" alt-text="Azure portal koşullu erişim Ilkeleri sayfasının ekran görüntüsü. Araç çubuğunda, ne tür öğesi vurgulandığında." border="false":::
+:::image type="content" source="./media/what-if-tool/02.png" alt-text="Azure portal What If sayfasının, bir Kullanıcı, bulut uygulamaları, ı P adresi, bir cihaz platformu, istemci uygulaması ve oturum açma riski içeren ekran görüntüsü." border="false":::
 
 ### <a name="user"></a>Kullanıcı
 
@@ -88,9 +88,9 @@ Bu ayar, [oturum açma risk koşulunu](concept-conditional-access-conditions.md#
 
 ## <a name="evaluation"></a>Değerlendirme 
 
-**What If** ' ye tıklayarak bir değerlendirme başlatabilirsiniz. Değerlendirme sonucu size şunları içeren bir rapor sağlar: 
+**What If**' ye tıklayarak bir değerlendirme başlatabilirsiniz. Değerlendirme sonucu size şunları içeren bir rapor sağlar: 
 
-:::image type="content" source="./media/what-if-tool/03.png" alt-text="Azure portal koşullu erişim Ilkeleri sayfasının ekran görüntüsü. Araç çubuğunda, ne tür öğesi vurgulandığında." border="false":::
+:::image type="content" source="./media/what-if-tool/03.png" alt-text="Değerlendirme raporunun ekran görüntüsü. Metin, klasik en az bir ilkenin yapılandırıldığını gösterir. İlkeleri görüntülemek için sekmeler kullanılabilir." border="false":::
 
 - Ortamınızda klasik ilkelerin var olup olmadığı göstergesi
 - Kullanıcılarınız için uygulanan ilkeler

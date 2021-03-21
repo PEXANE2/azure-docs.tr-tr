@@ -11,10 +11,10 @@ ms.author: jopapa
 ms.custom: seodec18, devx-track-js
 ms.reviewer: sngun
 ms.openlocfilehash: a3097fa539f460ef5e8ffe73598fa5d55516717e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93097813"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>MongoDB için Azure Cosmos DB API 'SI ile angular uygulaması oluşturma-Cosmos DB bağlanmak için Mongoose kullanın
@@ -244,8 +244,8 @@ Uygulamada henüz depolanan Heroes yok. Bu öğreticinin sonraki bölümünde pu
 Kaynaklara artık ihtiyacınız kalmadığında, kaynak grubunu, Azure Cosmos DB hesabı ve tüm ilgili kaynakları silebilirsiniz. Kaynak grubunu silmek için aşağıdaki adımları kullanın:
 
  1. Azure Cosmos DB hesabı oluşturduğunuz kaynak grubuna gidin.
- 1. **Kaynak grubunu sil** 'i seçin.
- 1. Silinecek kaynak grubunun adını onaylayın ve **Sil** ' i seçin.
+ 1. **Kaynak grubunu sil**'i seçin.
+ 1. Silinecek kaynak grubunun adını onaylayın ve **Sil**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
 ms.openlocfilehash: fcb8090427530271600a6699fafa5c488c426784
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97680876"
 ---
 # <a name="tutorial-migrate-a-web-app-from-google-maps"></a>Öğretici: Google Maps 'tan bir Web uygulaması geçirme
@@ -51,7 +51,7 @@ Bir JavaScript çerçevesi kullanılarak geliştirilirken, aşağıdaki açık k
 * [Azure Maps 'e tepki verme bileşeni](https://github.com/WiredSolutions/react-azure-maps) -Azure Maps denetimi için bir tepki düzeyi.
 * [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps) -Vue uygulaması Için bir Azure Maps bileşeni.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 1. [Azure portalında](https://portal.azure.com) oturum açın. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 2. [Azure haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)
@@ -75,7 +75,7 @@ Tabloda, Google Maps v3 JavaScript SDK 'sindeki temel API özellikleri ve Azure 
 | Geocoder hizmeti        | ✓                          |
 | Yönergeler hizmeti      | ✓                          |
 | Uzaklık matrisi hizmeti | ✓                          |
-| Yükseltme hizmeti       | ✓                          |
+| Rakım hizmeti       | ✓                          |
 
 ## <a name="notable-differences-in-the-web-sdks"></a>Web SDK 'lerinde önemli farklılıklar
 
@@ -1030,7 +1030,7 @@ Veri kaynağındaki verileri ekleyin ve yönetin. Veri kaynaklarını ve katmanl
 
 Kümeleme etkinleştirildiğinde veri kaynağı, işleme için katmanlara kümelenmiş ve kümelenmemiş veri noktaları gönderir. Veri kaynağı yüzlerce binlerce veri noktası kümelemesine sahiptir. Kümelenmiş bir veri noktası aşağıdaki özelliklere sahiptir:
 
-| Özellik adı             | Tür    | Açıklama   |
+| Özellik adı             | Tür    | Description   |
 |---------------------------|---------|---------------|
 | `cluster`                 | boolean | Özelliğin bir kümeyi temsil ettiğini belirtir. |
 | `cluster_id`              | string  | Küme için, veri kaynağı `getClusterExpansionZoom` , ve yöntemleriyle kullanılabilecek benzersiz BIR kimlik `getClusterChildren` `getClusterLeaves` . |
@@ -1039,7 +1039,7 @@ Kümeleme etkinleştirildiğinde veri kaynağı, işleme için katmanlara kümel
 
 `DataSource`Sınıfı, kullanarak bir kümeyle ilgili ek bilgilere erişmek için aşağıdaki yardımcı işleve sahiptir `cluster_id` .
 
-| Yöntem | Dönüş türü | Açıklama |
+| Yöntem | Dönüş türü | Description |
 |--------|-------------|-------------|
 | `getClusterChildren(clusterId: number)` | Promise &lt; dizi &lt; özelliği &lt; geometrisi, herhangi bir &gt; \| Şekil&gt;&gt; | Sonraki yakınlaştırma düzeyinde verilen kümenin alt öğelerini alır. Bu alt öğeler şekil ve alt kümelerin bir birleşimi olabilir. Alt kümeler, ClusteredProperties ile eşleşen özelliklerle özellik olacaktır. |
 | `getClusterExpansionZoom(clusterId: number)` | Promise &lt; numarası&gt; | Kümenin genişlemekte veya parçalanmasına başlayacağı yakınlaştırma düzeyini hesaplar. |

@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: kumud
 ms.openlocfilehash: 642a9a9f798492d85ee2a9784a1fe5ad4f854d58
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100574128"
 ---
-# <a name="create-change-or-delete-a-route-table"></a>Rota tablosu oluşturma, değiştirme veya silme
+# <a name="create-change-or-delete-a-route-table"></a>Rota tablosunu oluşturma, değiştirme veya silme
 
 Azure, Azure alt ağları, sanal ağlar ve şirket içi ağlar arasındaki trafiği otomatik olarak yönlendirir. Azure 'un varsayılan yönlendirmesinde herhangi birini değiştirmek istiyorsanız, bir yol tablosu oluşturarak bunu yapabilirsiniz. Sanal ağlarda yönlendirmeye yeni başladıysanız, [sanal ağ trafiği yönlendirme](virtual-networks-udr-overview.md) bölümünde veya bir [öğreticiyi](tutorial-create-route-table-portal.md)tamamlayarak bu konuda daha fazla bilgi edinebilirsiniz.
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
 ms.openlocfilehash: a674f5f653ad420ab8f28ff73c6b86f9c18b154e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92517761"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trelica"></a>Öğretici: Trelica ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -58,7 +58,7 @@ Trelica 'ın Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeriden y
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-trelica"></a>Trelica için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu trelica ile yapılandırın ve test edin. SSO 'nun çalışması için Trelica içindeki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlı bir ilişki kurmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu trelica ile yapılandırın ve test edin. SSO 'nun çalışması için Trelica içindeki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlı bir ilişki kurmanız gerekir.
 
 Azure AD SSO 'yu Trelica ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -73,7 +73,7 @@ Azure AD SSO 'yu Trelica ile yapılandırmak ve test etmek için aşağıdaki ya
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için şu adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com/) **trelica** uygulama tümleştirmesi sayfasında, **Yönet** bölümüne gidin. **Çoklu oturum açma**seçeneğini belirleyin.
+1. [Azure Portal](https://portal.azure.com/) **trelica** uygulama tümleştirmesi sayfasında, **Yönet** bölümüne gidin. **Çoklu oturum açma** seçeneğini belirleyin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
 1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesine tıklayın.
 
@@ -98,11 +98,11 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için şu adımları izleyin:
 
 Bu bölümde, Azure portal B. Simon adlı bir test kullanıcısı oluşturacaksınız.
 
-1. Azure Portal en soldaki bölmede, kullanıcılar **Azure Active Directory**  >  **Users**  >  **tüm kullanıcılar**' ı seçin.
+1. Azure Portal en soldaki bölmede, kullanıcılar **Azure Active Directory**  >    >  **tüm kullanıcılar**' ı seçin.
 1. Ekranın üst kısmında **Yeni Kullanıcı**' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
-   1. **Ad** alanına **B. Simon**girin.
-   1. **Kullanıcı adı** alanına **B.Simon@**_şirketetkialanı_yazın **.** _uzantı_. Örneğin, B.Simon@contoso.com.
+   1. **Ad** alanına **B. Simon** girin.
+   1. **Kullanıcı adı** alanına **B.Simon@**_şirketetkialanı_ yazın **.** _uzantı_. Örneğin, B.Simon@contoso.com.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda gösterilen değeri yazın.
    1. **Oluştur**’u seçin.
 

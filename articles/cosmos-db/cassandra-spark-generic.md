@@ -9,10 +9,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/01/2019
 ms.openlocfilehash: d25e168e342e22af9dc41d31dd7e18530aaa22b8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93090520"
 ---
 # <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>Spark'tan Azure Cosmos DB Cassandra API’sine bağlama
@@ -41,7 +41,7 @@ Bu makale, Spark 'tan Azure Cosmos DB Cassandra API tümleştirmede bir dizi mak
 
 Aşağıdaki tabloda bağlayıcı tarafından sunulan Cassandra API özgü işleme yapılandırma parametreleri listelenmektedir Azure Cosmos DB. Tüm yapılandırma parametrelerinin ayrıntılı bir listesi için bkz. Spark Cassandra Connector GitHub deposunun [yapılandırma başvurusu](https://github.com/datastax/spark-cassandra-connector/blob/master/doc/reference.md) sayfası.
 
-| **Özellik adı** | **Varsayılan değer** | **Açıklama** |
+| **Özellik Adı** | **Varsayılan değer** | **Açıklama** |
 |---------|---------|---------|
 | spark.cassandra.output.batch. size. Rows |  1 |Tek toplu iş başına satır sayısı. Bu parametreyi 1 olarak ayarlayın. Bu parametre ağır iş yükleri için daha yüksek performans elde etmek için kullanılır. |
 | spark.cassandra.connection.connections_per_executor_max  | Yok | Yürütücü başına düğüm başına en fazla bağlantı sayısı. 10 * n, n düğümlü Cassandra kümesinde düğüm başına 10 bağlantıyla eşdeğerdir. Bu nedenle, 5 düğümlü Cassandra kümesi için her düğüm için düğüm başına 5 bağlantı gerekiyorsa, bu yapılandırmayı 25 olarak ayarlamanız gerekir. Bu değeri, paralellik derecesini veya Spark işlerinizin yapılandırıldığı yürütme sayısını temel alarak değiştirin.   |

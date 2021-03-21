@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 12/18/2020
 ms.author: alkohli
 ms.openlocfilehash: 42476e2689cc503edc19e8e299a01ce922f1bf42
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98789204"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box"></a>Öğretici: Azure Data Box için dışarı aktarma siparişi oluşturma
@@ -28,7 +28,7 @@ Bu öğreticide şunları öğrenirsiniz:
 > * Dışarı aktarma sırasını izleyin
 > * Dışarı aktarma sırasını iptal et
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Cihazı sipariş etmeden önce Data Box hizmeti ve cihazı için aşağıdaki yapılandırma önkoşullarını doldurun.
 
@@ -330,7 +330,7 @@ XML dosyalarına göre bazı önemli noktaları:
 
 Aşağıdaki tabloda geçerli blob yollarının örnekleri gösterilmektedir:
 
-   | Seçici | Blob yolu | Açıklama |
+   | Seçici | Blob yolu | Description |
    | --- | --- | --- |
    | İle başlar |/ |Depolama hesabındaki tüm Blobları dışa aktarır |
    | İle başlar |/$root/ |Kök kapsayıcıdaki tüm Blobları dışa aktarır |

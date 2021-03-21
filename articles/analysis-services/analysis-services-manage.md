@@ -8,16 +8,16 @@ ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 91ffcac98b2b919a8fc131d235e699aad4fa215d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93078909"
 ---
 # <a name="manage-analysis-services"></a>Analysis Services’ı yönetme
 Azure 'da bir Analysis Services sunucusu oluşturduktan sonra, hemen gerçekleştirmeniz gereken bazı yönetim ve yönetim görevleri olabilir. Örneğin, işleme verilerini yenileme, sunucunuzdaki modellere kimlerin erişebileceğini denetleme veya sunucunuzun sistem durumunu izleme gibi işlemler gerçekleştirin. Bazı yönetim görevleri yalnızca Azure portal, diğer SQL Server Management Studio (SSMS) ve bazı görevlerde gerçekleştirilebilir.
 
-## <a name="azure-portal"></a>Azure portal
+## <a name="azure-portal"></a>Azure portalı
 [Azure Portal](https://portal.azure.com/) , sunucuları oluşturabileceğiniz ve silebileceğiniz, sunucu kaynaklarını izleyebileceğiniz, boyutu değiştirebileceğiniz ve sunucularınıza kimlerin erişebileceğini yönetebilen yerdir.  Bazı sorunlarla karşılaşırsanız, bir destek isteği de gönderebilirsiniz.
 
 ![Sunucu oluşturup silebileceğiniz, sunucu kaynaklarını izleyip, boyutu değiştirebileceğiniz ve sunucularınıza kimlerin erişebileceğini yönetebilen Azure portal gösteren ekran görüntüsü.](./media/analysis-services-manage/aas-manage-portal.png)
@@ -39,8 +39,8 @@ En son özellikleri ve Azure Analysis Services sunucunuza bağlanırken en iyi d
 1. Bağlanmadan önce sunucu adını almanız gerekir. **Azure portalı** > sunucu > **Genel Bakış** > **Sunucu adı** menüsünde sunucu adını kopyalayın.
    
     ![Azure'da sunucu adını alma](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
-2. SSMS > **Nesne Gezgini** 'nde **Bağlan** > **Analysis Services** 'e tıklayın.
-3. **Sunucuya Bağlan** iletişim kutusunda sunucu adını yapıştırın, ardından **kimlik doğrulaması** ' nda aşağıdaki kimlik doğrulama türlerinden birini seçin:   
+2. SSMS > **Nesne Gezgini**'nde **Bağlan** > **Analysis Services**'e tıklayın.
+3. **Sunucuya Bağlan** iletişim kutusunda sunucu adını yapıştırın, ardından **kimlik doğrulaması**' nda aşağıdaki kimlik doğrulama türlerinden birini seçin:   
     > [!NOTE]
     > **MFA desteğiyle Active Directory** kimlik doğrulaması türü, önerilir.
 

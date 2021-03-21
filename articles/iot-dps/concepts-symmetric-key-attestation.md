@@ -10,10 +10,10 @@ services: iot-dps
 manager: philmea
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 994c2c3124d6822f047af942268ad7a401d5a976
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90531568"
 ---
 # <a name="symmetric-key-attestation"></a>Simetrik anahtar kanıtlama
@@ -53,7 +53,7 @@ Her belirtecin bileşenleri şunlardır:
 | ResourceURI |Cihaz sağlama hizmeti örneği için kapsam KIMLIĞIYLE başlayarak bu belirteçle erişilebilen kayıt uç noktası URI 'SI. Örneğin, `{Scope ID}/registrations/{Registration ID}` |
 | kaç |Süre 00:00:00 UTC 'den bu yana 1 Ocak 1970 ' de geçen saniye sayısı için UTF8 dizeleri. |
 | {URL-Encoded-resourceURI} |Küçük harf URL 'SI-küçük harf Kaynak URI 'sinin kodlaması |
-| PolicyName |Bu belirtecin başvurduğu paylaşılan erişim ilkesinin adı. Simetrik anahtar kanıtlama ile sağlama sırasında kullanılan ilke adı **kayıt**olur. |
+| PolicyName |Bu belirtecin başvurduğu paylaşılan erişim ilkesinin adı. Simetrik anahtar kanıtlama ile sağlama sırasında kullanılan ilke adı **kayıt** olur. |
 
 Bir cihaz tek bir kayıtla karşı test edildiğinde, cihaz SAS belirteci için karma imza oluşturmak üzere ayrı kayıt girişinde tanımlanan simetrik anahtarı kullanır.
 

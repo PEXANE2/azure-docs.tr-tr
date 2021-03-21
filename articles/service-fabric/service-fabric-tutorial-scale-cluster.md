@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: cdc7ba8d6c83ae72ffb8f1afae3954b3a46dc6ec
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98788036"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Öğretici: Azure'daki bir Service Fabric kümesini ölçeklendirme
@@ -33,7 +33,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce:
 

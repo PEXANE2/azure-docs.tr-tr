@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 01/23/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: df7dcf9859b6942662ae447af836f59985e2d11a
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99509511"
 ---
 # <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak birden çok veri kaynağından Dizin
@@ -174,8 +174,8 @@ Bu basit C#/.NET konsol uygulaması aşağıdaki görevleri gerçekleştirir:
 
  Programı çalıştırmadan önce, bu örneğe ilişkin kodu ve dizin ve Dizin Oluşturucu tanımlarını incelemek için bir dakikanızı alın. İlgili kod iki dosyada yer alır:
 
-  + **Hotel.cs** , dizini tanımlayan şemayı içerir
-  + **Program.cs** , Azure bilişsel arama dizinini, veri kaynaklarını ve Dizin oluşturucuyu oluşturan ve Birleşik sonuçları dizine yükleyen işlevleri içerir.
+  + **Otel. cs** , dizini tanımlayan şemayı içerir
+  + **Program. cs** , Azure bilişsel arama dizinini, veri kaynaklarını ve Dizin oluşturucuyu oluşturan ve Birleşik sonuçları dizine yükleyen işlevleri içerir.
 
 ### <a name="create-an-index"></a>Dizin oluşturma
 
@@ -185,7 +185,7 @@ Veri modeli, Otel Sınıfı tarafından tanımlanır ve bu da adres ve oda sın�
 
 Program, bu örneği birden çok kez çalıştırmak istemeniz durumunda yenisini oluşturmadan önce aynı ada sahip mevcut herhangi bir dizini siler.
 
-**Hotel.cs** dosyasındaki aşağıdaki kod parçacıkları tek alanları ve ardından başka bir veri modeli sınıfına yönelik bir başvuruyu, yani **Room.cs** dosyasında (gösterilmez) tanımlanmış olan oda [] öğesini gösterir.
+**Otel. cs** dosyasındaki aşağıdaki kod parçacıkları tek alanları ve ardından başka bir veri modeli sınıfına yönelik bir başvuruyu, yani oda **. cs** dosyasında (gösterilmez) tanımlanmış olan oda [] öğesini gösterir.
 
 ```csharp
 . . .
@@ -199,7 +199,7 @@ public Room[] Rooms { get; set; }
 . . .
 ```
 
-**Program.cs** dosyasında, bir [searchındex](/dotnet/api/azure.search.documents.indexes.models.searchindex) yöntemi tarafından oluşturulan bir ad ve alan koleksiyonuyla tanımlanır `FieldBuilder.Build` ve sonra aşağıdaki gibi oluşturulur:
+**Program. cs** dosyasında, bir [searchındex](/dotnet/api/azure.search.documents.indexes.models.searchindex) yöntemi tarafından oluşturulan bir ad ve alan koleksiyonuyla tanımlanır `FieldBuilder.Build` ve sonra aşağıdaki gibi oluşturulur:
 
 ```csharp
 private static async Task CreateIndexAsync(string indexName, SearchIndexClient indexClient)

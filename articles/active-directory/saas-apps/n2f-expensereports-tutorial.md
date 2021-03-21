@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
 ms.openlocfilehash: b260e51321e14a6ea1d1ee75f88ca7564b83d492
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92516769"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-n2f---expense-reports"></a>Öğretici: N2F-harcama raporlarıyla tümleştirme Azure Active Directory
@@ -61,13 +61,13 @@ N2F-harcama raporlarının tümleştirmesini Azure AD 'ye göre yapılandırmak 
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **N2F-harcama raporları**yazın, sonuç panelinden **N2F-harcama raporları** ' nı seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
+4. Arama kutusuna **N2F-harcama raporları** yazın, sonuç panelinden **N2F-harcama raporları** ' nı seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
 
      ![N2F-sonuçlar listesindeki gider raporları](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test KULLANıCıSıNA göre N2F-harcama raporlarıyla yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test KULLANıCıSıNA göre N2F-harcama raporlarıyla yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve N2F-harcama raporlarında ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açma 'yı N2F-harcama raporlarıyla yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -167,9 +167,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
@@ -226,11 +226,11 @@ Azure AD kullanıcılarının N2F-harcama raporlarında oturum açmasını sağl
 
     ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz bölümünü gösterir.](./media/n2f-expensereports-tutorial/user3.png)
 
-    a. **E-posta adresi** metin kutusuna, **brittasıon \@ contoso.com**gibi kullanıcının e-posta adresini girin.
+    a. **E-posta adresi** metin kutusuna, **brittasıon \@ contoso.com** gibi kullanıcının e-posta adresini girin.
 
-    b. **Ad** metin kutusuna, ilk Kullanıcı adını **Britta**gibi girin.
+    b. **Ad** metin kutusuna, ilk Kullanıcı adını **Britta** gibi girin.
 
-    c. **Ad** metin kutusuna, **Brittasıon**gibi kullanıcının adını girin.
+    c. **Ad** metin kutusuna, **Brittasıon** gibi kullanıcının adını girin.
 
     d. **Rol, doğrudan yönetici (N + 1)** seçeneğini belirleyin ve kuruluş gereksiniminize göre **bölme** yapın.
 

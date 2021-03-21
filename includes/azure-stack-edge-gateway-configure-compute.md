@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 01/07/2021
 ms.author: alkohli
 ms.openlocfilehash: c51577882e75facb1d8eb03c7cfab82467c5ec51
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99524965"
 ---
 Azure Stack Edge Pro ortamınızda işlem yapılandırmak için Azure portal aracılığıyla bir IoT Hub kaynağı oluşturacaksınız.
@@ -27,7 +27,7 @@ Azure Stack Edge Pro ortamınızda işlem yapılandırmak için Azure portal ara
     |---------|---------|
     |Abonelik     |IoT Hub kaynağınız için bir abonelik seçin. Azure Stack Edge kaynağı tarafından kullanılan aboneliğin aynısını kullanabilirsiniz.         |
     |Kaynak grubu     |IoT Hub kaynağınız için bir kaynak grubu seçin. Azure Stack Edge kaynağı tarafından kullanılan aynı kaynak grubunu kullanabilirsiniz.         |
-    |IoT Hub     | **Yeni** veya **mevcut** seçeneklerinden birini belirleyin. <br> Varsayılan olarak IoT kaynağı oluşturulurken Standart katmanı (S1) kullanılır. Bir ücretsiz katman IoT kaynağı kullanmak için kaynağı oluşturun ve sonra da mevcut kaynağı seçin. <br> Her durumda IoT Hub kaynak, Azure Stack Edge kaynağı tarafından kullanılan aynı abonelik ve kaynak grubunu kullanır.     |
+    |IoT Hub     | **Yeni** veya **mevcut** seçeneklerinden birini belirleyin. <br> Varsayılan olarak IoT kaynağı oluşturulurken Standart katmanı (S1) kullanılır. Bir ücretsiz katman IoT kaynağı kullanmak için kaynağı oluşturun ve sonra da mevcut kaynağı seçin. <br> Her durumda IoT Hub kaynağı, Azure Stack Edge kaynağıyla aynı aboneliği ve kaynak grubunu kullanır.     |
     |Name     |Varsayılan adı kabul edin veya IoT Hub kaynağınız için bir ad girin.         |
 
    ![İşlem 2 ile çalışmaya başlama](./media/azure-stack-edge-gateway-configure-compute/configure-compute-3.png)

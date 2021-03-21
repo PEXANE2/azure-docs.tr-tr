@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.openlocfilehash: e10045eb14f6a72648fb9534ade077faaa4ef918
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92517336"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-menlo-security"></a>Öğretici: Menlo güvenliği ile Azure Active Directory tümleştirme
@@ -61,13 +61,13 @@ Menlo güvenliğinin Azure AD ile tümleştirilmesini yapılandırmak için, Gal
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Ara kutusuna **Menlo güvenlik**yazın, sonuç panelinden **Menlo Security** ' yi seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Ara kutusuna **Menlo güvenlik** yazın, sonuç panelinden **Menlo Security** ' yi seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
      ![Sonuçlar listesinde Menlo güvenliği](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açma 'yı, **Britta Simon**adlı bir test kullanıcısına göre Menlo güvenliği ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açma 'yı, **Britta Simon** adlı bir test kullanıcısına göre Menlo güvenliği ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, Menlo güvenlik 'teki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Menlo güvenliği ile Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -130,11 +130,11 @@ Azure AD çoklu oturum açmayı Menlo güvenliği ile yapılandırmak için aşa
     
     ![Tek Sign-On yapılandırma](./media/menlosecurity-tutorial/menlo_user_setup.png)
 
-    a. Onay kutusunun **SAML kullanarak Kullanıcı kimlik doğrulamasını etkinleştirme**onay kutusunu işaretleyin.
+    a. Onay kutusunun **SAML kullanarak Kullanıcı kimlik doğrulamasını etkinleştirme** onay kutusunu işaretleyin.
 
     b. **Dış erişime Izin ver** ' i **Evet**' i seçin.
 
-    c. **SAML sağlayıcı**altında **Azure Active Directory**' yi seçin.
+    c. **SAML sağlayıcı** altında **Azure Active Directory**' yi seçin.
 
     d. **SAML 2,0 uç noktası** : Azure Portal kopyaladığınız **oturum açma URL 'sini** yapıştırın.
 
@@ -160,9 +160,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.

@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
 ms.openlocfilehash: c2fce6d4ee95a56cc087d50184fcd69ac113620f
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98940837"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>MirrorMaker kullanarak Apache Kafka konularını HDInsight üzerinde Kafka ile çoğaltma
@@ -81,7 +81,7 @@ Bu mimari, farklı kaynak gruplarındaki ve sanal ağlardaki iki kümeyi sunar: 
 1. Sanal ağ eşlemesi oluşturun. Bu adım iki eşleme oluşturur: biri **Kafka-Primary-VNET** 'ten **Kafka-ikincil-VNET** 'e, diğeri **Kafka-ikincil VNET** 'ten **Kafka-Primary-VNET**'e kadar bir geri.
     1. **Kafka-Primary-VNET** sanal ağını seçin.
     1. Ayarlar **altında eşlemeler** ' i seçin.
-    1. **Ekle**’yi seçin.
+    1. **Add (Ekle)** seçeneğini belirleyin.
     1. **Eşleme Ekle** ekranında, aşağıdaki ekran görüntüsünde gösterildiği gibi ayrıntıları girin.
 
         ![HDInsight Kafka VNET eşlemesi Ekle](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)

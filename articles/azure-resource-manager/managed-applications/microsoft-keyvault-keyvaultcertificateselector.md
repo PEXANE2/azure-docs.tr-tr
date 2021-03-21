@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/27/2020
 ms.author: tomfitz
 ms.openlocfilehash: 1ac6fd5a3f1e581fc9a676fe7f8f27b9742e1581
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93101230"
 ---
 # <a name="microsoftkeyvaultkeyvaultcertificateselector-ui-element"></a>Microsoft. Keykasası. KeyVaultCertificateSelector Kullanıcı arabirimi öğesi
@@ -22,13 +22,13 @@ Kullanıcıya kullanılabilir bir sertifika seçme seçeneği sunulur.
 
 :::image type="content" source="./media/managed-application-elements/microsoft-keyvault-keyvaultcertificateselector-select.png" alt-text="Microsoft. Keykasası. KeyVaultCertificateSelector":::
 
-**Sertifika seç** ' i seçtikten sonra, Kullanıcı anahtar kasasından bir anahtar kasası ve sertifika belirtebilir.
+**Sertifika seç**' i seçtikten sonra, Kullanıcı anahtar kasasından bir anahtar kasası ve sertifika belirtebilir.
 
-:::image type="content" source="./media/managed-application-elements/microsoft-keyvault-keyvaultcertificateselector-certificate.png" alt-text="Microsoft. Keykasası. KeyVaultCertificateSelector":::
+:::image type="content" source="./media/managed-application-elements/microsoft-keyvault-keyvaultcertificateselector-certificate.png" alt-text="Microsoft. Keykasası. KeyVaultCertificateSelector sertifika seç":::
 
 Denetim, seçili anahtar kasasını ve sertifika adını görüntüleyecek şekilde güncelleştirilir.
 
-:::image type="content" source="./media/managed-application-elements/microsoft-keyvault-keyvaultcertificateselector-result.png" alt-text="Microsoft. Keykasası. KeyVaultCertificateSelector":::
+:::image type="content" source="./media/managed-application-elements/microsoft-keyvault-keyvaultcertificateselector-result.png" alt-text="Microsoft. Keykasası. KeyVaultCertificateSelector seçili sertifikayı göster":::
 
 ## <a name="schema"></a>Şema
 

@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
 ms.openlocfilehash: f1b19f178a60671108ec32ef6fbed1afe73a0cee
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96854759"
 ---
 # <a name="animated-character-detection-preview"></a>Animasyonlu karakter algılama (önizleme)
@@ -40,7 +40,7 @@ Video Indexer hesabınızın türüne bağlı olarak, farklı özellik kümeleri
 
 ### <a name="trial-vs-paid"></a>Deneme ve ücretli
 
-|İşlev|Deneme|Ödenmemiş|
+|İşlev|Deneme|Ücretli|
 |---|---|---|
 |Özel Görüntü İşleme hesabı|Video Indexer tarafından arka planda yönetilir. |Özel Görüntü İşleme hesabınız Video Indexer bağlı.|
 |Animasyon modeli sayısı|Bir|Hesap başına en fazla 100 model (Özel Görüntü İşleme sınırlaması).|

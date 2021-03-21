@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/08/2019
 ms.author: jeedes
 ms.openlocfilehash: 1312a995589b0408edc56a0883cc9fd899fc9e6f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92515449"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-powerschool-performance-matters"></a>Öğretici: Powerokul performansı önemli Azure Active Directory tümleştirme
@@ -61,13 +61,13 @@ Powerokul performansının önemli olarak Azure AD ile tümleştirilmesini yapı
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Powerokul performansı önemli**yazın, sonuç panelinden **Powerokul performansı önemli** ' i seçin, sonra da uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna **Powerokul performansı önemli** yazın, sonuç panelinden **Powerokul performansı önemli** ' i seçin, sonra da uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
     ![Powerokul performansı önemli sonuçlar listesinde](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre Powerokul performansı ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre Powerokul performansı ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve Powerokul performansı açısından ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Powerokul performansı önemli olan Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -145,9 +145,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**yazın.
+    a. **Ad** alanına **Brittasıon** yazın.
   
-    b. **Kullanıcı adı** alanına şunu yazın**brittasimon@yourcompanydomain.extension**  
+    b. **Kullanıcı adı** alanına şunu yazın **brittasimon@yourcompanydomain.extension**  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.

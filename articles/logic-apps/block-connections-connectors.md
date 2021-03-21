@@ -7,10 +7,10 @@ ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.openlocfilehash: 02d9852f6615c3926a02294e0e7eca50f2fbe9a5
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92310030"
 ---
 # <a name="block-connections-created-by-connectors-in-azure-logic-apps"></a>Azure Logic Apps içinde bağlayıcılar tarafından oluşturulan bağlantıları engelle
@@ -47,7 +47,7 @@ Engellemek istediğiniz bağlantıya sahip bir mantıksal uygulamanız zaten var
 
 <a name="connector-ID-portal"></a>
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 1. [Azure Portal](https://portal.azure.com), mantıksal uygulamanızı bulun ve açın.
 
@@ -115,24 +115,24 @@ Bir mantıksal uygulamada bağlantı oluşturmayı tamamen engellemek için şu 
 
    ![Azure portal, "ilke" bulup seçin](./media/block-connections-connectors/find-select-azure-policy.png)
 
-1. **İlke** menüsünde, **yazma**altında, **tanımlar**  >  **+ ilke tanımı**' nı seçin.
+1. **İlke** menüsünde, **yazma** altında, **tanımlar**  >  **+ ilke tanımı**' nı seçin.
 
    !["Tanımlar" > "+ Ilke tanımı" nı seçin](./media/block-connections-connectors/add-new-policy-definition.png)
 
-1. **İlke tanımı**altında, örnek altında açıklanan özelliklere göre ilke tanımınızın bilgilerini sağlayın:
+1. **İlke tanımı** altında, örnek altında açıklanan özelliklere göre ilke tanımınızın bilgilerini sağlayın:
 
    !["Ilke tanımı" özelliklerini gösteren ekran görüntüsü.](./media/block-connections-connectors/policy-definition-create-connections-1.png)
 
    | Özellik | Gerekli | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | **Tanım konumu** | Evet | <*Azure-abonelik-adı*> | İlke tanımı için kullanılacak Azure aboneliği <p><p>1. aboneliğinizi bulmak için üç nokta (**...**) düğmesini seçin. <br>2. **abonelik** listesinden aboneliğinizi bulun ve seçin. <br>3. işiniz bittiğinde **Seç**' i seçin. |
-   | **Ad** | Evet | <*ilke-tanım-adı*> | İlke tanımı için kullanılacak ad |
-   | **Açıklama** | Hayır | <*ilke-tanım-adı*> | İlke tanımı için bir açıklama |
-   | **Kategori** | Evet | **Logic Apps** | İlke tanımı için mevcut bir kategorinin veya yeni kategorinin adı |
-   | **İlke uygulama** | Evet | **Etkin** | Bu ayar, işinizi kaydettiğinizde ilke tanımının etkinleştirilip etkinleştirilmeyeceğini veya devre dışı bırakılacağını belirtir. |
+   | **Tanım konumu** | Yes | <*Azure-abonelik-adı*> | İlke tanımı için kullanılacak Azure aboneliği <p><p>1. aboneliğinizi bulmak için üç nokta (**...**) düğmesini seçin. <br>2. **abonelik** listesinden aboneliğinizi bulun ve seçin. <br>3. işiniz bittiğinde **Seç**' i seçin. |
+   | **Ad** | Yes | <*ilke-tanım-adı*> | İlke tanımı için kullanılacak ad |
+   | **Açıklama** | No | <*ilke-tanım-adı*> | İlke tanımı için bir açıklama |
+   | **Kategori** | Yes | **Logic Apps** | İlke tanımı için mevcut bir kategorinin veya yeni kategorinin adı |
+   | **İlke uygulama** | Yes | **Etkin** | Bu ayar, işinizi kaydettiğinizde ilke tanımının etkinleştirilip etkinleştirilmeyeceğini veya devre dışı bırakılacağını belirtir. |
    ||||
 
-1. **Ilke kuralı**bölümünde JSON düzenleme kutusu bir ilke tanımı şablonuyla önceden doldurulur. Aşağıdaki tabloda açıklanan özelliklere ve bu söz dizimini izleyerek bu şablonu [ilke tanımınızda](../governance/policy/concepts/definition-structure.md) değiştirin:
+1. **Ilke kuralı** bölümünde JSON düzenleme kutusu bir ilke tanımı şablonuyla önceden doldurulur. Aşağıdaki tabloda açıklanan özelliklere ve bu söz dizimini izleyerek bu şablonu [ilke tanımınızda](../governance/policy/concepts/definition-structure.md) değiştirin:
 
    ```json
    {
@@ -236,7 +236,7 @@ Bir mantıksal uygulama içinde bir bağlantı oluşturduğunuzda, bu bağlantı
 
    ![Azure portal, "ilke" bulup seçin](./media/block-connections-connectors/find-select-azure-policy.png)
 
-1. **İlke** menüsünde, **yazma**altında, **tanımlar**  >  **+ ilke tanımı**' nı seçin.
+1. **İlke** menüsünde, **yazma** altında, **tanımlar**  >  **+ ilke tanımı**' nı seçin.
 
    !["Tanımlar" > "+ Ilke tanımı" nı seçin](./media/block-connections-connectors/add-new-policy-definition.png)
 
@@ -246,14 +246,14 @@ Bir mantıksal uygulama içinde bir bağlantı oluşturduğunuzda, bu bağlantı
 
    | Özellik | Gerekli | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | **Tanım konumu** | Evet | <*Azure-abonelik-adı*> | İlke tanımı için kullanılacak Azure aboneliği <p><p>1. aboneliğinizi bulmak için üç nokta (**...**) düğmesini seçin. <br>2. **abonelik** listesinden aboneliğinizi bulun ve seçin. <br>3. işiniz bittiğinde **Seç**' i seçin. |
-   | **Ad** | Evet | <*ilke-tanım-adı*> | İlke tanımı için kullanılacak ad |
-   | **Açıklama** | Hayır | <*ilke-tanım-adı*> | İlke tanımı için bir açıklama |
-   | **Kategori** | Evet | **Logic Apps** | İlke tanımı için mevcut bir kategorinin veya yeni kategorinin adı |
-   | **İlke uygulama** | Evet | **Etkin** | Bu ayar, işinizi kaydettiğinizde ilke tanımının etkinleştirilip etkinleştirilmeyeceğini veya devre dışı bırakılacağını belirtir. |
+   | **Tanım konumu** | Yes | <*Azure-abonelik-adı*> | İlke tanımı için kullanılacak Azure aboneliği <p><p>1. aboneliğinizi bulmak için üç nokta (**...**) düğmesini seçin. <br>2. **abonelik** listesinden aboneliğinizi bulun ve seçin. <br>3. işiniz bittiğinde **Seç**' i seçin. |
+   | **Ad** | Yes | <*ilke-tanım-adı*> | İlke tanımı için kullanılacak ad |
+   | **Açıklama** | No | <*ilke-tanım-adı*> | İlke tanımı için bir açıklama |
+   | **Kategori** | Yes | **Logic Apps** | İlke tanımı için mevcut bir kategorinin veya yeni kategorinin adı |
+   | **İlke uygulama** | Yes | **Etkin** | Bu ayar, işinizi kaydettiğinizde ilke tanımının etkinleştirilip etkinleştirilmeyeceğini veya devre dışı bırakılacağını belirtir. |
    ||||
 
-1. **Ilke kuralı**bölümünde JSON düzenleme kutusu bir ilke tanımı şablonuyla önceden doldurulur. Aşağıdaki tabloda açıklanan özelliklere ve bu söz dizimini izleyerek bu şablonu [ilke tanımınızda](../governance/policy/concepts/definition-structure.md) değiştirin:
+1. **Ilke kuralı** bölümünde JSON düzenleme kutusu bir ilke tanımı şablonuyla önceden doldurulur. Aşağıdaki tabloda açıklanan özelliklere ve bu söz dizimini izleyerek bu şablonu [ilke tanımınızda](../governance/policy/concepts/definition-structure.md) değiştirin:
 
    ```json
    {
@@ -323,22 +323,22 @@ Ardından, ilkeyi zorlamak istediğiniz ilke tanımını atamanız gerekir, örn
 
    ![Azure portal, "Ilke" bulup seçin](./media/block-connections-connectors/find-select-azure-policy.png)
 
-1. **İlke** menüsünde, **yazma**altında, **atamalar**  >  **ilke ata**' yı seçin.
+1. **İlke** menüsünde, **yazma** altında, **atamalar**  >  **ilke ata**' yı seçin.
 
    !["Atama" > "atamalar" ı seçin](./media/block-connections-connectors/add-new-policy-assignment.png)
 
-1. **Temel bilgiler**bölümünde, ilke ataması için şu bilgileri sağlayın:
+1. **Temel bilgiler** bölümünde, ilke ataması için şu bilgileri sağlayın:
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **Kapsam** | Evet | İlke atamasını zorlamak istediğiniz kaynaklar. <p><p>1. **kapsam** kutusunun yanındaki üç nokta (**...**) düğmesini seçin. <br>2. **abonelik** listesinden Azure aboneliğini seçin. <br>3. isteğe bağlı olarak, **kaynak grubu** listesinden kaynak grubunu seçin. <br>4. işiniz bittiğinde **Seç**' i seçin. |
-   | **Dışlamalar** | Hayır | İlke atamasından çıkarılacak tüm Azure kaynakları. <p><p>1. **Dışlamalar** kutusunun yanındaki üç nokta (**...**) düğmesini seçin. <br>2. **kaynak** listesinden, **seçili kapsama eklemek**> kaynak seçin. <br>3. işiniz bittiğinde **Kaydet**' i seçin. |
-   | **İlke tanımı** | Evet | Atamak ve zorlamak istediğiniz ilke tanımının adı. Bu örnek, "Instagram bağlantılarını engelle" adlı örnek bir "%. <p><p>1. **ilke tanımı** kutusunun yanındaki üç nokta (**...**) düğmesini seçin. <br>2. **tür** filtresi veya **arama** kutusunu kullanarak ilke tanımını bulun ve seçin. <br>3. işiniz bittiğinde **Seç**' i seçin. |
-   | **Atama adı** | Evet | İlke tanımından farklıysa, ilke ataması için kullanılacak ad |
-   | **Atama KIMLIĞI** | Evet | İlke ataması için otomatik olarak oluşturulan KIMLIK |
-   | **Açıklama** | Hayır | İlke ataması için bir açıklama |
-   | **İlke uygulama** | Evet | İlke atamasını sağlayan veya devre dışı bırakan ayar |
-   | **Atayan** | Hayır | İlke atamasını oluşturan ve uygulamış olan kişinin adı |
+   | **Kapsam** | Yes | İlke atamasını zorlamak istediğiniz kaynaklar. <p><p>1. **kapsam** kutusunun yanındaki üç nokta (**...**) düğmesini seçin. <br>2. **abonelik** listesinden Azure aboneliğini seçin. <br>3. isteğe bağlı olarak, **kaynak grubu** listesinden kaynak grubunu seçin. <br>4. işiniz bittiğinde **Seç**' i seçin. |
+   | **Dışlamalar** | No | İlke atamasından çıkarılacak tüm Azure kaynakları. <p><p>1. **Dışlamalar** kutusunun yanındaki üç nokta (**...**) düğmesini seçin. <br>2. **kaynak** listesinden, **seçili kapsama eklemek**> kaynak seçin. <br>3. işiniz bittiğinde **Kaydet**' i seçin. |
+   | **İlke tanımı** | Yes | Atamak ve zorlamak istediğiniz ilke tanımının adı. Bu örnek, "Instagram bağlantılarını engelle" adlı örnek bir "%. <p><p>1. **ilke tanımı** kutusunun yanındaki üç nokta (**...**) düğmesini seçin. <br>2. **tür** filtresi veya **arama** kutusunu kullanarak ilke tanımını bulun ve seçin. <br>3. işiniz bittiğinde **Seç**' i seçin. |
+   | **Atama adı** | Yes | İlke tanımından farklıysa, ilke ataması için kullanılacak ad |
+   | **Atama KIMLIĞI** | Yes | İlke ataması için otomatik olarak oluşturulan KIMLIK |
+   | **Açıklama** | No | İlke ataması için bir açıklama |
+   | **İlke uygulama** | Yes | İlke atamasını sağlayan veya devre dışı bırakan ayar |
+   | **Atayan** | No | İlke atamasını oluşturan ve uygulamış olan kişinin adı |
    ||||
 
    Örneğin, bir Azure Kaynak grubuna bir ilkeyi bir Azure Kaynak grubuna atamak için şu örneği kullanın:
@@ -363,7 +363,7 @@ Daha fazla bilgi için bkz. [hızlı başlangıç: uyumlu olmayan kaynakları be
 
 İleti şu bilgileri içerir:
 
-| Açıklama | İçerik |
+| Description | Content |
 |-------------|---------|
 | Hatanın nedeni | `"Resource 'instagram' was disallowed by policy."` |
 | Atama adı | `"Block Instagram connections"` |

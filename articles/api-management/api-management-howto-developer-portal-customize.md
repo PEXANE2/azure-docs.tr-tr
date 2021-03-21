@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.date: 11/16/2020
 ms.author: apimpm
 ms.openlocfilehash: 90544fbafe7393630c3f3fbc694ae367eccb7f90
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96012994"
 ---
 # <a name="tutorial-access-and-customize-the-developer-portal"></a>Öğretici: Geliştirici portalına erişme ve bunları özelleştirme
 
 *Geliştirici Portalı* , API 'lerinizin belgelerinde otomatik olarak oluşturulan ve tamamen özelleştirilebilir bir Web sitesidir. API tüketicilerinin API 'lerinizi keşfedebileceği, nasıl kullanılacağını ve nasıl erişim isteyeceğini burada bulabilirsiniz.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Geliştirici portalının yönetilen sürümüne erişin

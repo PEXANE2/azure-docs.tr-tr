@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 10/08/2020
 ms.author: duau
 ms.openlocfilehash: b9dda384e2ef30808559d10012dea2909b2af0fd
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92206943"
 ---
 # <a name="tutorial-connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>Öğretici: CLı kullanarak bir ExpressRoute devresine sanal ağ bağlama
@@ -26,7 +26,7 @@ Bu öğreticide, Azure CLı kullanarak sanal ağların (VNet) Azure ExpressRoute
 > * [PowerShell (klasik)](expressroute-howto-linkvnet-classic.md)
 > 
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > - Aynı abonelikteki bir sanal ağı bir devreye bağlama
 > - Farklı abonelikteki bir sanal ağı devreye bağlama
@@ -146,7 +146,7 @@ Bir sanal ağ bağlantısının belirli özelliklerini güncelleştirebilirsiniz
 
 **Bağlantı ağırlığını güncelleştirmek için**
 
-Sanal ağınız, birden fazla ExpressRoute devresine bağlanabilir. Birden fazla ExpressRoute devreninden aynı öneki alabilirsiniz. Bu önek için hangi trafiğin gönderileceğini seçmek üzere bir bağlantının *Routingweight* değerini değiştirebilirsiniz. Trafik en yüksek *Routingweight*bağlantısı üzerinden gönderilir.
+Sanal ağınız, birden fazla ExpressRoute devresine bağlanabilir. Birden fazla ExpressRoute devreninden aynı öneki alabilirsiniz. Bu önek için hangi trafiğin gönderileceğini seçmek üzere bir bağlantının *Routingweight* değerini değiştirebilirsiniz. Trafik en yüksek *Routingweight* bağlantısı üzerinden gönderilir.
 
 ```azurecli-interactive
 az network vpn-connection update --name ERConnection --resource-group ExpressRouteResourceGroup --routing-weight 100

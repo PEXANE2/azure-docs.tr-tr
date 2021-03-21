@@ -9,10 +9,10 @@ ms.date: 12/18/2020
 ms.author: jingwang
 ms.custom: include file
 ms.openlocfilehash: a749de57a1c57c828332957def27d68a121318b1
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97691963"
 ---
 | Kategori | Veri deposu |
@@ -61,7 +61,7 @@ ms.locfileid: "97691963"
 | **NoSQL** |[Cassandra](../articles/data-factory/connector-cassandra.md) |
 | &nbsp; |[Couchbase (Önizleme)](../articles/data-factory/connector-couchbase.md) |
 | **Dosya** |[Amazon S3](../articles/data-factory/connector-amazon-simple-storage-service.md) |
-| &nbsp; |[Dosya Sistemi](../articles/data-factory/connector-file-system.md) |
+| &nbsp; |[Dosya sistemi](../articles/data-factory/connector-file-system.md) |
 | &nbsp; |[FTP](../articles/data-factory/connector-ftp.md) |
 | &nbsp; |[Google Cloud Storage](../articles/data-factory/connector-google-cloud-storage.md) |
 | &nbsp; |[HDFS](../articles/data-factory/connector-hdfs.md) |

@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 08/29/2016
 ms.custom: devx-track-csharp, seodec18
 ms.openlocfilehash: 65eb4e8fefb74219c927fe507baceca7c55462be
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101095725"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Visual Studio 'Yu kullanarak Azure App Service uygulama sorunlarını giderme
@@ -174,7 +174,7 @@ Uzaktan hata ayıklama yalnızca sürekli WebJobs ile kullanılabilir. Zamanlanm
 
 1. [Azure Web İşleri SDK 'Sını kullanmaya başlama][GetStartedWJ]bölümünde oluşturduğunuz Web projesini açın.
 
-2. ContosoAdsWebJob projesinde *Functions.cs* öğesini açın.
+2. ContosoAdsWebJob projesinde, *Functions. cs*' yi açın.
 
 3. Yöntemdeki ilk ifadede [bir kesme noktası ayarlayın](/visualstudio/debugger/) `GnerateThumbnail` .
 

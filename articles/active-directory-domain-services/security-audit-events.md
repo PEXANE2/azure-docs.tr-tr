@@ -12,10 +12,10 @@ ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: justinha
 ms.openlocfilehash: caf46850b3d8d6946225575b8a9a732a90847482
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100574141"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services için güvenlik denetimlerini etkinleştir
@@ -38,7 +38,7 @@ Aşağıdaki tabloda, her bir hedef kaynak türü için senaryolar özetlenmekte
 
 | Hedef kaynak | Senaryo |
 |:---|:---|
-|Azure Storage| Bu hedef, birincil ihtiyacınız olduğunda, arşiv amacıyla güvenlik denetim olaylarını depolamak gerektiğinde kullanılmalıdır. Diğer hedefler arşiv amaçlarıyla kullanılabilir, ancak bu hedefler, arşivleme gereksinimlerinden daha fazla yetenek sağlar. <br /><br />Azure AD DS güvenlik denetim olaylarını etkinleştirmeden önce, önce [bir Azure depolama hesabı oluşturun](../storage/common/storage-account-create.md).|
+|Azure Depolama| Bu hedef, birincil ihtiyacınız olduğunda, arşiv amacıyla güvenlik denetim olaylarını depolamak gerektiğinde kullanılmalıdır. Diğer hedefler arşiv amaçlarıyla kullanılabilir, ancak bu hedefler, arşivleme gereksinimlerinden daha fazla yetenek sağlar. <br /><br />Azure AD DS güvenlik denetim olaylarını etkinleştirmeden önce, önce [bir Azure depolama hesabı oluşturun](../storage/common/storage-account-create.md).|
 |Azure Event Hubs| Bu hedef, birincil ihtiyacınız olduğunda, veri analizi yazılımı veya güvenlik bilgileri & olay yönetimi (SıEM) yazılımları gibi ek yazılımlarla güvenlik denetim olaylarını paylaşmak gerektiğinde kullanılmalıdır.<br /><br />Azure AD DS güvenlik denetim olaylarını etkinleştirmeden önce [Azure Portal kullanarak bir olay hub 'ı oluşturun](../event-hubs/event-hubs-create.md)|
 |Azure Log Analytics çalışma alanı| Bu hedef, birincil ihtiyacınız olduğunda, Azure portal doğrudan güvenli denetimleri analiz etmek ve gözden geçirmek gerektiğinde kullanılmalıdır.<br /><br />Azure AD DS güvenlik denetim olaylarını etkinleştirmeden önce, [Azure Portal bir Log Analytics çalışma alanı oluşturun.](../azure-monitor/logs/quick-create-workspace.md)|
 

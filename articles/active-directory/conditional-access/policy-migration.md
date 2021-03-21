@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d1811d5b9ae4d3e34b48e1cdc156438f2bad98d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90601665"
 ---
 # <a name="conditional-access-classic-policy-migration"></a>Koşullu erişim klasik ilke geçişi
@@ -33,7 +33,7 @@ Bu makalede, mevcut koşullu erişim ilkelerinizi yeni çerçeveye geçirmek iç
 
 ## <a name="classic-policies"></a>Klasik ilkeler
 
-[Azure Portal](https://portal.azure.com), koşullu erişim ilkeleri **Azure Active Directory**  >  **güvenlik**  >  **koşullu erişimi**altında bulunabilir. Kuruluşunuz Ayrıca bu sayfa kullanılarak oluşturulmuş eski koşullu erişim ilkelerine sahip olabilir. Bu ilkeler *Klasik ilkeler*olarak bilinir. Klasik ilkeler, içinde oluşturduğunuz koşullu erişim ilkelerdir:
+[Azure Portal](https://portal.azure.com), koşullu erişim ilkeleri **Azure Active Directory**  >  **güvenlik**  >  **koşullu erişimi** altında bulunabilir. Kuruluşunuz Ayrıca bu sayfa kullanılarak oluşturulmuş eski koşullu erişim ilkelerine sahip olabilir. Bu ilkeler *Klasik ilkeler* olarak bilinir. Klasik ilkeler, içinde oluşturduğunuz koşullu erişim ilkelerdir:
 
 - Klasik Azure portalı
 - Klasik Intune portalı
@@ -62,7 +62,7 @@ Seçilen grupları değiştirerek veya belirli grupları dışlayarak, tüm dahi
  
 ## <a name="migration-considerations"></a>Geçiş fikirleri
 
-Bu makalede, Azure AD koşullu erişim ilkelerine *yeni ilkeler*de denir.
+Bu makalede, Azure AD koşullu erişim ilkelerine *yeni ilkeler* de denir.
 Klasik ilkelerinizde, siz devre dışı bırakana kadar yeni ilkeleriniz ile yan yana çalışmaya devam edersiniz. 
 
 Aşağıdaki yönleri bir ilke birleştirme bağlamında önemlidir:

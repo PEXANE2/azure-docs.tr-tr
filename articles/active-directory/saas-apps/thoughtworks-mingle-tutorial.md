@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: c3eeb1577e628965e3e5a35fa20c072224383149
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92514636"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thoughtworks-mingle"></a>Öğretici: En Iyi şekilde çalışmak için Mingle ile tümleştirme Azure Active Directory
@@ -61,13 +61,13 @@ Azure AD 'de, Düşünfile sorunsuz çalışma Mingle tümleştirmesini yapılan
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna, en **iyi**sonuçları yazın, sonuç panelinden, daha sonra **Thoughtworks Mingle** **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna, en **iyi** sonuçları yazın, sonuç panelinden, daha sonra  **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
      ![Düşünte, sonuçlar listesinde Mingle ile çalışmaktadır](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına bağlı olarak, bir test kullanıcısına göre daha iyi bir şekilde yapılandırır ve test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına bağlı olarak, bir test kullanıcısına göre daha iyi bir şekilde yapılandırır ve test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasındaki bir bağlantı ilişkisinin, En Iyi durumda çalışan Mingle üzerinde oluşturulması gerekir.
 
 Azure AD çoklu oturum açmayı, daha Iyi çalışmalarla birlikte yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -152,7 +152,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
     b. **Kullanıcı adı** alanına yazın brittasimon@yourcompanydomain.extension . Örneğin, BrittaSimon@contoso.com
 
@@ -164,11 +164,11 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
 Bu bölümde, bir Azure çoklu oturum açma özelliğini kullanarak, En Iyi şekilde kullanmanız gerekir.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' **ı seçin ve**ardından, daha sonra, daha sonra, daha sonra,
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' **ı seçin ve** ardından, daha sonra, daha sonra, daha sonra,
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, en **iyi**durumda, ' ı seçin.
+2. Uygulamalar listesinde, en **iyi** durumda, ' ı seçin.
 
     ![En Iyi uygulama listesi, uygulamalar listesinde Mingle bağlantısı](common/all-applications.png)
 
@@ -212,7 +212,7 @@ Azure AD kullanıcılarının oturum açabilmeleri için, Azure Active Directory
  
     a. **Oturum açma adı**, **görünen ad**, **parola Seç**, ilgili metin KUTULARıNA sağlamak istediğiniz geçerli bir Azure AD hesabının **parolasını onaylayın** . 
 
-    b. **Kullanıcı türü**olarak, **tam Kullanıcı**' yı seçin.
+    b. **Kullanıcı türü** olarak, **tam Kullanıcı**' yı seçin.
 
     c. **Bu profili oluştur**' a tıklayın.
 

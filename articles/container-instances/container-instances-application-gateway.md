@@ -4,10 +4,10 @@ description: Bir sanal ağda kapsayıcı grubu oluşturun ve bir Azure Applicati
 ms.topic: article
 ms.date: 03/16/2020
 ms.openlocfilehash: 0131780fdb04a71837d5ae9bf5498bf2bd499f8a
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98035062"
 ---
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>Bir kapsayıcı grubu için statik IP adresi kullanıma sunma
@@ -29,7 +29,7 @@ Uygulama ağ geçidi çalıştığı ve kapsayıcı grubu, ağın Temsilcili alt
 
 Tipik bir durumda, zaten bir Azure sanal ağınız olabilir. Bir tane yoksa, aşağıdaki örnek komutlarla gösterildiği gibi bir tane oluşturun. Sanal ağın, uygulama ağ geçidi ve kapsayıcı grubu için ayrı alt ağlara ihtiyacı vardır.
 
-Gerekiyorsa, bir Azure Kaynak grubu oluşturun. Örneğin:
+Gerekiyorsa, bir Azure Kaynak grubu oluşturun. Örnek:
 
 ```azureci
 az group create --name myResourceGroup --location eastus

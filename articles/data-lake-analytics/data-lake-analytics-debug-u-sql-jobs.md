@@ -6,17 +6,17 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 11/30/2017
 ms.openlocfilehash: db1d57e3904087bc5cb3711b23cfe6bcf18c3455
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92218026"
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>Başarısız U-SQL işleri için Kullanıcı tanımlı C# kodunda hata ayıklama
 
 U-SQL, C# kullanarak bir genişletilebilirlik modeli sağlar. U-SQL betiklerine C# işlevlerini çağırmak ve SQL benzeri bildirime dayalı dilin desteklemediği analitik işlevler gerçekleştirmek kolaydır. U-SQL genişletilebilirliği hakkında daha fazla bilgi edinmek için, bkz. [u-SQL programlama kılavuzu](./data-lake-analytics-u-sql-programmability-guide.md#use-user-defined-functions-udf). 
 
-Uygulamada, herhangi bir kod hata ayıklama gerektirebilir, ancak bulut üzerinde sınırlı günlük dosyaları olan özel kodla dağıtılmış bir işin hata ayıklaması zor olabilir. [Visual Studio için Azure Data Lake araçları](https://aka.ms/adltoolsvs) , özel kodunuzda oluşan hatalarda daha kolay hata ayıklamanıza yardımcı olan **başarısız köşe hata ayıklaması**adlı bir özellik sağlar. U-SQL işi başarısız olduğunda, hizmet hata durumunu korur ve araç, hata ayıklama için bulut hatası ortamını yerel makineye indirmenize yardımcı olur. Yerel indirme, tüm giriş verileri ve Kullanıcı kodları dahil olmak üzere tüm bulut ortamını yakalar.
+Uygulamada, herhangi bir kod hata ayıklama gerektirebilir, ancak bulut üzerinde sınırlı günlük dosyaları olan özel kodla dağıtılmış bir işin hata ayıklaması zor olabilir. [Visual Studio için Azure Data Lake araçları](https://aka.ms/adltoolsvs) , özel kodunuzda oluşan hatalarda daha kolay hata ayıklamanıza yardımcı olan **başarısız köşe hata ayıklaması** adlı bir özellik sağlar. U-SQL işi başarısız olduğunda, hizmet hata durumunu korur ve araç, hata ayıklama için bulut hatası ortamını yerel makineye indirmenize yardımcı olur. Yerel indirme, tüm giriş verileri ve Kullanıcı kodları dahil olmak üzere tüm bulut ortamını yakalar.
 
 Aşağıdaki videoda Visual Studio için Azure Data Lake Araçları 'de başarısız köşe hata ayıklaması gösterilmektedir.
 
@@ -56,7 +56,7 @@ C# kaynak kodunun yakalandığı iki durum vardır:
 
 1. Kullanıcı kodu, arka plan kod dosyasında tanımlanır (genellikle `Script.usql.cs` bir U-SQL projesinde adlandırılır).
 
-2. Kullanıcı kodu, U-SQL uygulaması için C# sınıf kitaplığı projesinde tanımlanır ve **hata ayıklama bilgileri**ile derleme olarak kaydedilir.
+2. Kullanıcı kodu, U-SQL uygulaması için C# sınıf kitaplığı projesinde tanımlanır ve **hata ayıklama bilgileri** ile derleme olarak kaydedilir.
 
 Kaynak kodu çözüme içeri aktarıldıysa, sorunu gidermek için Visual Studio hata ayıklama araçları 'nı (izleme, değişkenler vb.) kullanabilirsiniz:
 
@@ -68,7 +68,7 @@ Kaynak kodu çözüme içeri aktarıldıysa, sorunu gidermek için Visual Studio
 
 ### <a name="source-code-is-not-included-in-debugging-solution"></a>Kaynak kodu hata ayıklama çözümüne dahil değildir
 
-Kullanıcı kodu, arka plan kod dosyasına dahil edilmediyseniz veya derlemeyi **hata ayıklama bilgileri**ile kaydetmediyseniz, kaynak kodu hata ayıklama çözümüne otomatik olarak dahil edilmez. Bu durumda, kaynak kodunuzu eklemek için ek adımlara ihtiyacınız vardır:
+Kullanıcı kodu, arka plan kod dosyasına dahil edilmediyseniz veya derlemeyi **hata ayıklama bilgileri** ile kaydetmediyseniz, kaynak kodu hata ayıklama çözümüne otomatik olarak dahil edilmez. Bu durumda, kaynak kodunuzu eklemek için ek adımlara ihtiyacınız vardır:
 
 1. **' VertexDebug ' öğesine sağ tıklayın > mevcut projeyi > ekleyin...** derleme kaynak kodunu bulun ve projeyi hata ayıklama çözümüne ekleyin.
 
@@ -76,7 +76,7 @@ Kullanıcı kodu, arka plan kod dosyasına dahil edilmediyseniz veya derlemeyi *
 
 2. **Failedvertexdebughost** projesi için proje klasörü yolunu alın. 
 
-3. **Eklenen derleme kaynak kodu projesi > özellikleri**Right-Click, sol taraftaki **derleme** sekmesini seçin ve sonra da \bin\Debug Ile biten kopyalanmış yolu **Çıkış > çıkış yolu**olarak yapıştırın. Son çıkış yolu gibidir `<DataLakeTemp path>\fd91dd21-776e-4729-a78b-81ad85a4fba6\loiu0t1y.mfo\FailedVertexDebug\FailedVertexDebugHost\bin\Debug\` .
+3. **Eklenen derleme kaynak kodu projesi > özellikleri** Right-Click, sol taraftaki **derleme** sekmesini seçin ve sonra da \bin\Debug Ile biten kopyalanmış yolu **Çıkış > çıkış yolu** olarak yapıştırın. Son çıkış yolu gibidir `<DataLakeTemp path>\fd91dd21-776e-4729-a78b-81ad85a4fba6\loiu0t1y.mfo\FailedVertexDebug\FailedVertexDebugHost\bin\Debug\` .
 
     ![Azure Data Lake Analytics U-SQL hata ayıklama pdb yolunu ayarla](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-set-pdb-path.png)
 

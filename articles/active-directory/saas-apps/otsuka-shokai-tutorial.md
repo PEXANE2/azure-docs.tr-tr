@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/02/2020
 ms.author: jeedes
 ms.openlocfilehash: ef2151c7f3c03ff8996bae1814e4df638b25490f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92513764"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-otsuka-shokai"></a>Öğretici: Otsuka Shokai ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -57,7 +57,7 @@ Otsuka Shokai 'ın Azure AD 'ye tümleştirilmesini yapılandırmak için, Galer
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-otsuka-shokai"></a>Otsuka Shokai için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Otsuka Shokai Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Otsuka Shokai içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Otsuka Shokai Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Otsuka Shokai içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Otsuka Shokai ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -80,13 +80,13 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **Temel SAML yapılandırması** bölümünde, uygulama **IDP** tarafından başlatılan modda önceden yapılandırılmıştır ve gerekli URL 'ler Azure ile önceden doldurulmuştur. Kullanıcının **Kaydet** düğmesine tıklayarak yapılandırmayı kaydetmesi gerekir.
 
-1. Otsuka Shokai uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde, **NameIdentifier** 'ın **User. UserPrincipalName**ile eşlendiği varsayılan özniteliklerin listesi gösterilmektedir. Otsuka Shokai uygulaması, **NameIdentifier** 'ın **User. ObjectID**ile eşlenmesini bekliyor, bu nedenle, **Düzenle** simgesine tıklayarak ve öznitelik eşlemesini değiştirerek öznitelik eşlemesini düzenlemeniz gerekir.
+1. Otsuka Shokai uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde, **NameIdentifier** 'ın **User. UserPrincipalName** ile eşlendiği varsayılan özniteliklerin listesi gösterilmektedir. Otsuka Shokai uygulaması, **NameIdentifier** 'ın **User. ObjectID** ile eşlenmesini bekliyor, bu nedenle, **Düzenle** simgesine tıklayarak ve öznitelik eşlemesini değiştirerek öznitelik eşlemesini düzenlemeniz gerekir.
 
     ![image](common/default-attributes.png)
 
 1. Genesys uygulamasına göre Purecsesli, daha fazla özniteliğin aşağıda gösterilen SAML yanıtına geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Adı | Kaynak özniteliği|
+    | Name | Kaynak özniteliği|
     | ---------------| --------------- |
     | AppID | `<Application ID>` |
 
@@ -110,7 +110,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 Bu bölümde, Otsuka Shokai erişimi vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde **Otsuka Shokai**öğesini seçin.
+1. Uygulamalar listesinde **Otsuka Shokai** öğesini seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)

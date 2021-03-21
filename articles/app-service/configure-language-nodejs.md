@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
 ms.openlocfilehash: 6a6f782768db12c2ce75f5cf1e66100222f24446
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101095214"
 ---
 # <a name="configure-a-nodejs-app-for-azure-app-service"></a>Azure App Service için Node.js uygulaması yapılandırma
@@ -161,7 +161,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ### <a name="run-npm-start"></a>NPM başlangıcını Çalıştır
 
-Uygulamanızı kullanarak başlatmak için `npm start` , yalnızca bir `start` betiğin dosyada *package.js* olduğundan emin olun. Örneğin:
+Uygulamanızı kullanarak başlatmak için `npm start` , yalnızca bir `start` betiğin dosyada *package.js* olduğundan emin olun. Örnek:
 
 ```json
 {
@@ -209,7 +209,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 Bir * .config.js, *. yıml veya *. YAML* kullanarak çalıştırmanız dışında, [PM2 ile çalışacak](#run-with-pm2)şekilde yapılandırırsanız Node.js uygulamanızda [Visual Studio Code](https://code.visualstudio.com/) uzaktan hata ayıklayabilirsiniz.
 
-Çoğu durumda, uygulamanız için ek yapılandırma gerekmez. Uygulamanız dosyadaki bir *process.js* (varsayılan veya özel) ile ÇALıŞıYORSA, `script` JSON kökünde bir özelliği olmalıdır. Örneğin:
+Çoğu durumda, uygulamanız için ek yapılandırma gerekmez. Uygulamanız dosyadaki bir *process.js* (varsayılan veya özel) ile ÇALıŞıYORSA, `script` JSON kökünde bir özelliği olmalıdır. Örnek:
 
 ```json
 {
@@ -239,7 +239,7 @@ process.env.NODE_ENV
 
 Varsayılan olarak, App Service derleme Otomasyonu çalıştırmaları, `npm install --production` derleme Otomasyonu etkinken git veya ZIP dağıtımı aracılığıyla dağıtılmış bir Node.js uygulaması algıladığında çalışır. Uygulamanız Grsıt, Bower veya Gulp gibi popüler Otomasyon araçlarından herhangi birini gerektiriyorsa, çalıştırmak için [özel bir dağıtım betiği](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script) sağlamanız gerekir.
 
-Bu araçları çalıştırmak üzere deponuzu etkinleştirmek için, bunlarıpackage.jsiçindeki bağımlılıklara eklemeniz gerekir *.* Örneğin:
+Bu araçları çalıştırmak üzere deponuzu etkinleştirmek için, bunlarıpackage.jsiçindeki bağımlılıklara eklemeniz gerekir *.* Örnek:
 
 ```json
 "dependencies": {
@@ -360,7 +360,7 @@ Daha fazla bilgi için [Application Insights uzantısı sürüm notlarına](../a
 Çalışan bir Node.js uygulaması App Service veya hata varsa, şunları deneyin:
 
 - [Günlük akışına erişin](#access-diagnostic-logs).
-- Uygulamayı üretim modunda yerel olarak test edin. App Service, Node.js uygulamalarınızı üretim modunda çalıştırır, bu nedenle projenizin üretim modunda yerel olarak beklendiği gibi çalıştığından emin olmanız gerekir. Örneğin:
+- Uygulamayı üretim modunda yerel olarak test edin. App Service, Node.js uygulamalarınızı üretim modunda çalıştırır, bu nedenle projenizin üretim modunda yerel olarak beklendiği gibi çalıştığından emin olmanız gerekir. Örnek:
     - *package.js* bağlı olarak, üretim modu ( `dependencies` vs.) için farklı paketler yüklenebilir `devDependencies` .
     - Bazı Web çerçeveleri, statik dosyaları üretim modunda farklı şekilde dağıtabilir.
     - Belirli Web çerçeveleri, üretim modunda çalışırken özel başlatma betikleri kullanabilir.

@@ -6,10 +6,10 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 03/21/2017
 ms.openlocfilehash: 6e51c6848476147073626119689407ebc02c036d
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92220967"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-the-azure-portal"></a>Azure portalı kullanarak Azure Data Lake Analytics ile çalışmaya başlama
@@ -19,14 +19,14 @@ Bu makale, Azure Data Lake Analytics hesapları oluşturmak, [U-SQL](data-lake-a
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticiye başlamadan önce bir **Azure aboneliğinizin**olması gerekir. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
+Bu öğreticiye başlamadan önce bir **Azure aboneliğinizin** olması gerekir. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="create-a-data-lake-analytics-account"></a>Data Lake Analytics hesabı oluşturma
 
 Şimdi aynı anda bir Data Lake Analytics ve Azure Data Lake Storage 1. hesabı oluşturacaksınız.  Bu basit bir adımdır ve tamamlanması yaklaşık olarak 60 saniye sürer.
 
 1. [Azure Portal](https://portal.azure.com)oturum açın.
-2. Veri ve analiz **kaynak oluştur ' a**tıklayın  >   **Data + Analytics**  >  **Data Lake Analytics**.
+2. Veri ve analiz **kaynak oluştur ' a** tıklayın  >     >  **Data Lake Analytics**.
 3. Aşağıdaki öğeler için değerleri seçin:
    * **Ad**: Data Lake Analytics hesabınızı adlandırın (Yalnızca küçük harf ve sayı kullanılabilir).
    * **Abonelik**: Analytics hesabı için kullanılan Azure aboneliğini seçin.

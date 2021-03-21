@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
 ms.openlocfilehash: 230f7fd9c62f657ce8ab893db2256808dce9a7ba
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92518373"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-symantec-web-security-service-wss"></a>Öğretici: Symantec Web Security Service (WSS) ile Azure Active Directory tümleştirme
@@ -70,7 +70,7 @@ Symantec Web Security hizmeti 'nin (WSS) Azure AD ile tümleştirilmesini yapıl
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açma 'yı, **Britta Simon**adlı bir test kullanıcısına göre Symantec Web Security SERVICE (WSS) ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açma 'yı, **Britta Simon** adlı bir test kullanıcısına göre Symantec Web Security SERVICE (WSS) ile yapılandırıp test edersiniz.
 Çoklu oturum açma 'nın çalışması için, bir Azure AD kullanıcısı ve Symantec Web Security Service (WSS) içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Symantec Web Security Service (WSS) ile Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -135,9 +135,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.

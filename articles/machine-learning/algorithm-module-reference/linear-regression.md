@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 809b1be4f9f12e1963ff5caeaacd109c84db154f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93323663"
 ---
 # <a name="linear-regression-module"></a>Doğrusal regresyon modülü
@@ -63,11 +63,11 @@ Bu modül, farklı seçeneklerle bir gerileme modeline sığdırma için iki yö
 
 1. Tasarımcıdaki ardışık düzene **Doğrusal regresyon modeli** modülünü ekleyin.
 
-    Bu modülü **Machine Learning** kategorisinde bulabilirsiniz. **Modeli Başlat** ' ı genişletin, **regresyon** ' i genişletin ve sonra **Doğrusal regresyon modeli** modülünü işlem hattınızla sürükleyin.
+    Bu modülü **Machine Learning** kategorisinde bulabilirsiniz. **Modeli Başlat**' ı genişletin, **regresyon**' i genişletin ve sonra **Doğrusal regresyon modeli** modülünü işlem hattınızla sürükleyin.
 
-2. **Özellikler** bölmesinde, **çözüm yöntemi** açılan listesinde, **normal en az kareler** ' i seçin. Bu seçenek, regresyon çizgisini bulmak için kullanılan hesaplama yöntemini belirtir.
+2. **Özellikler** bölmesinde, **çözüm yöntemi** açılan listesinde, **normal en az kareler**' i seçin. Bu seçenek, regresyon çizgisini bulmak için kullanılan hesaplama yöntemini belirtir.
 
-3. **L2 düzenleme ağırlığı** ' nda, L2 düzenleme için ağırlık olarak kullanılacak değeri yazın. Fazla sığdırmayı önlemek için sıfır olmayan bir değer kullanmanızı öneririz.
+3. **L2 düzenleme ağırlığı**' nda, L2 düzenleme için ağırlık olarak kullanılacak değeri yazın. Fazla sığdırmayı önlemek için sıfır olmayan bir değer kullanmanızı öneririz.
 
      Düzenleme model sığdırmayı nasıl etkilediği hakkında daha fazla bilgi edinmek için şu makaleye bakın: [L1 ve L2 düzenleme Machine Learning](/archive/msdn-magazine/2015/february/test-run-l1-and-l2-regularization-for-machine-learning)
 
@@ -96,28 +96,28 @@ Eğitim tamamlandıktan sonra:
 
 1. Tasarımcıdaki ardışık düzene **Doğrusal regresyon modeli** modülünü ekleyin.
 
-    Bu modülü **Machine Learning** kategorisinde bulabilirsiniz. **Modeli Başlat** ' ı genişletin, **regresyon** ' i genişletin ve **Doğrusal regresyon modeli** modülünü ardışık düzene sürükleyin
+    Bu modülü **Machine Learning** kategorisinde bulabilirsiniz. **Modeli Başlat**' ı genişletin, **regresyon**' i genişletin ve **Doğrusal regresyon modeli** modülünü ardışık düzene sürükleyin
 
 2. **Özellikler** bölmesinde, **çözüm yöntemi** açılan listesinde, regresyon çizgisini bulmak için kullanılan hesaplama yöntemi olarak **çevrimiçi gradyan** ' ı seçin.
 
 3. **Oluşturma modu** için, modeli önceden tanımlanmış bir parametre kümesiyle eğmek istediğinizi veya bir parametre süpürme kullanarak modeli iyileştirmek isteyip istemediğinizi belirtin.
 
-    + **Tek parametre** : doğrusal regresyon ağını nasıl yapılandırmak istediğinizi biliyorsanız bağımsız değişken olarak belirli bir değer kümesi sağlayabilirsiniz.
+    + **Tek parametre**: doğrusal regresyon ağını nasıl yapılandırmak istediğinizi biliyorsanız bağımsız değişken olarak belirli bir değer kümesi sağlayabilirsiniz.
     
-    + **Parametre aralığı** : en iyi parametrelerden emin değilseniz ve bir parametre süpürme çalıştırmak istiyorsanız bu seçeneği belirleyin. Yinelemek için bir değer aralığı seçin ve [ayarlama modeli hiper parametreleri](tune-model-hyperparameters.md) , en iyi sonuçları üreten hiper parametreleri belirlemek için, belirttiğiniz ayarların tüm olası birleşimlerinin üzerinde yinelenir.  
+    + **Parametre aralığı**: en iyi parametrelerden emin değilseniz ve bir parametre süpürme çalıştırmak istiyorsanız bu seçeneği belirleyin. Yinelemek için bir değer aralığı seçin ve [ayarlama modeli hiper parametreleri](tune-model-hyperparameters.md) , en iyi sonuçları üreten hiper parametreleri belirlemek için, belirttiğiniz ayarların tüm olası birleşimlerinin üzerinde yinelenir.  
 
    
 4. **Öğrenme oranı** için, stochastik gradyan için en iyi duruma getirme için ilk öğrenme oranını belirtin.
 
 5. **Eğitim dönemlerinde sayısı** için, algoritmanın örneklerle kaç kez yineolmayacağını belirten bir değer yazın. Az sayıda örneğe sahip veri kümelerinde bu sayı yakınsama için büyük olmalıdır.
 
-6. **Özellikleri Normalleştir** : modeli eğleştirmek için kullanılan sayısal verileri zaten normalleştirmeniz durumunda bu seçeneğin seçimini kaldırabilirsiniz. Varsayılan olarak, modül tüm sayısal girdileri 0 ile 1 arasında bir aralığa normalleştirir.
+6. **Özellikleri Normalleştir**: modeli eğleştirmek için kullanılan sayısal verileri zaten normalleştirmeniz durumunda bu seçeneğin seçimini kaldırabilirsiniz. Varsayılan olarak, modül tüm sayısal girdileri 0 ile 1 arasında bir aralığa normalleştirir.
 
     > [!NOTE]
     > 
     > Puanlama için kullanılan yeni verilere aynı normalleştirme yöntemini uygulamayı unutmayın.
 
-7. **L2 düzenleme ağırlığı** ' nda, L2 düzenleme için ağırlık olarak kullanılacak değeri yazın. Fazla sığdırmayı önlemek için sıfır olmayan bir değer kullanmanızı öneririz.
+7. **L2 düzenleme ağırlığı**' nda, L2 düzenleme için ağırlık olarak kullanılacak değeri yazın. Fazla sığdırmayı önlemek için sıfır olmayan bir değer kullanmanızı öneririz.
 
     Düzenleme model sığdırmayı nasıl etkilediği hakkında daha fazla bilgi edinmek için şu makaleye bakın: [L1 ve L2 düzenleme Machine Learning](/archive/msdn-magazine/2015/february/test-run-l1-and-l2-regularization-for-machine-learning)
 

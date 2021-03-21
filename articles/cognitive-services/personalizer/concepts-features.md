@@ -9,10 +9,10 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.openlocfilehash: f49abd4ca1cc1ccdcb7ba2b0fab3bad953dede5d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100380551"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Özellikler, Eylemler ve bağlamla ilgili bilgiler
@@ -155,7 +155,7 @@ Yapay zeka ve çalıştırmaya hazırlanma bilişsel hizmetler, Kişiselleştiri
 
 Yapay zeka hizmetlerini kullanarak öğelerinizi ön işlemden yararlanarak, kişiselleştirmeyle ilgili olabilecek olası bilgileri otomatik olarak ayıklayabilirsiniz.
 
-Örneğin:
+Örnek:
 
 * Sahne öğelerini, metni, yaklaşımı ve diğer birçok özniteliği ayıklamak için [video Indexer](https://azure.microsoft.com/services/media-services/video-indexer/) aracılığıyla bir film dosyası çalıştırabilirsiniz. Bu öznitelikler daha sonra, özgün öğe meta verilerinde bulunmayan özellikleri yansıtacak şekilde daha yoğun hale getirilebilir. 
 * Görüntüler, nesne algılama, yaklaşım, yüz ve benzeri işlemler aracılığıyla çalıştırılabilir.
