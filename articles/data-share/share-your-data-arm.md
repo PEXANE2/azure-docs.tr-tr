@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 08/19/2020
 ms.openlocfilehash: 5abe92120c8b822ac86ced90658869a0858d4ff4
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92487696"
 ---
 # <a name="quickstart-share-data-using-azure-data-share-and-arm-template"></a>Hızlı başlangıç: Azure veri paylaşma ve ARM şablonunu kullanarak veri paylaşma
@@ -77,7 +77,7 @@ Bunun nedeni, dağıtımın Azure rolü atamasının sonlandırılmadan önce ve
     * **Davet e-postası**: veri paylaşımında alıcının Azure oturum açma e-posta adresini girin.  E-posta diğer adı çalışmıyor.
 
     Geri kalan ayarlar için varsayılan değeri kullanın.
-1. **yukarıda belirtilen hüküm ve koşulları**ve **satın alma**seçimini kabul ediyorum ' u seçin.
+1. **yukarıda belirtilen hüküm ve koşulları** ve **satın alma** seçimini kabul ediyorum ' u seçin.
 
 ## <a name="review-deployed-resources"></a>Dağıtılan kaynakları gözden geçirme
 
@@ -87,7 +87,7 @@ Bunun nedeni, dağıtımın Azure rolü atamasının sonlandırılmadan önce ve
 1. Depolama hesabını seçin.  **Ayrıntılar**' ın altında, şablonda yapılandırdığınız eşitleme ayarını görürsünüz.
 
     ![Azure veri paylaşma depolama hesabı eşitleme ayarları](./media/share-your-data-arm/azure-data-share-storage-account-synchronization-settings.png)
-1. Üstten **davetleri** seçin. Şablonu dağıtırken belirttiğiniz e-posta adresini görürsünüz. **Durum** **Beklemede**olacaktır.
+1. Üstten **davetleri** seçin. Şablonu dağıtırken belirttiğiniz e-posta adresini görürsünüz. **Durum** **Beklemede** olacaktır.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

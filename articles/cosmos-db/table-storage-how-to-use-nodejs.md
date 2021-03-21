@@ -10,10 +10,10 @@ author: sakash279
 ms.author: akshanka
 ms.custom: devx-track-js
 ms.openlocfilehash: 2d40b70d49b1934c9dd2d911369245b1b2e4f2ff
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93079720"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Node.js uygulamasından Azure Tablo depolama veya Azure Cosmos DB Tablo API’sini kullanma
@@ -82,7 +82,7 @@ var tableSvc = azure.createTableService('myaccount', 'myaccesskey');
 
 ### <a name="add-an-azure-cosmos-db-connection"></a>Azure Cosmos DB bağlantısını ekleme
 
-Azure Cosmos DB bir bağlantı eklemek için bir nesne oluşturun `TableService` ve hesap adınızı, birincil anahtarınızı ve uç noktasını belirtin. Bu değerleri **Settings**  >  , Cosmos DB hesabınız için Azure Portal ayarlar **bağlantı dizesinden** kopyalayabilirsiniz. Örneğin:
+Azure Cosmos DB bir bağlantı eklemek için bir nesne oluşturun `TableService` ve hesap adınızı, birincil anahtarınızı ve uç noktasını belirtin. Bu değerleri   >  , Cosmos DB hesabınız için Azure Portal ayarlar **bağlantı dizesinden** kopyalayabilirsiniz. Örnek:
 
 ```javascript
 var tableSvc = azure.createTableService('myaccount', 'myprimarykey', 'myendpoint');
@@ -135,8 +135,8 @@ var tableSvc = azure.createTableService().withFilter(retryOperations);
 
 Bir varlık eklemek için ilk olarak varlık özelliklerinizi tanımlayan bir nesne oluşturun. Tüm varlıklar, varlık için benzersiz tanımlayıcılar olan **PartitionKey** ve **RowKey** içermelidir.
 
-* **PartitionKey** : Varlığın depolandığı bölümü belirler.
-* **RowKey** : Bölüm içindeki varlığı benzersiz şekilde tanımlar.
+* **PartitionKey**: Varlığın depolandığı bölümü belirler.
+* **RowKey**: Bölüm içindeki varlığı benzersiz şekilde tanımlar.
 
 Hem **PartitionKey** hem de **RowKey** dize değerleri olmalıdır. Daha fazla bilgi için bkz. [Tablo Hizmeti Veri Modelini anlama](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model).
 
@@ -212,7 +212,7 @@ tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response)
 > Varsayılan olarak, bir varlık güncelleştirildiğinde, güncelleştirilmekte olan verilerin önceden başka bir işlem tarafından değiştirilip değiştirilmediği denetlenmez. Eş zamanlı güncelleştirmeleri desteklemek için:
 >
 > 1. Güncelleştirilmekte olan nesnenin ETag öğesini alın. Bu, herhangi bir varlıkla ilgili işlemin `response` değerinin parçası olarak döndürülür ve `response['.metadata'].etag` aracılığıyla alınabilir.
-> 2. Bir varlık üzerinde bir güncelleştirme işlemi gerçekleştirirken, önceden alınan ETag bilgilerini yeni varlığa ekleyin. Örneğin:
+> 2. Bir varlık üzerinde bir güncelleştirme işlemi gerçekleştirirken, önceden alınan ETag bilgilerini yeni varlığa ekleyin. Örnek:
 >
 >       entity2['.metadata'].etag = currentEtag;
 > 3. Güncelleştirme işlemini gerçekleştirin. Varlık, ETag değerini almanızın ardından değiştirildiyse, (örn. uygulamanızın başka bir örneği), istekte belirtilen güncelleştirme koşulunun karşılanmadığını belirten bir `error` döndürülür.
@@ -261,11 +261,11 @@ Başarılı toplu işlemler için `result`, toplu işteki her bir işlemin bilgi
 
 `operations` özelliğini görüntüleyerek bir toplu işe eklenen işlemleri inceleyebilirsiniz. İşlemlerle çalışmak için aşağıdaki yöntemleri de kullanabilirsiniz:
 
-* **clear** : Bir toplu işteki tüm işlemleri temizler.
-* **getOperations** : Toplu işten bir işlem alır.
-* **hasOperations** : Toplu iş, işlemler içeriyorsa true değerini döndürür.
-* **removeOperations** : Bir işlemi kaldırır.
-* **size** : Toplu işteki işlem sayısını döndürür.
+* **clear**: Bir toplu işteki tüm işlemleri temizler.
+* **getOperations**: Toplu işten bir işlem alır.
+* **hasOperations**: Toplu iş, işlemler içeriyorsa true değerini döndürür.
+* **removeOperations**: Bir işlemi kaldırır.
+* **size**: Toplu işteki işlem sayısını döndürür.
 
 ## <a name="retrieve-an-entity-by-key"></a>Anahtara göre bir varlık alma
 
@@ -285,12 +285,12 @@ Bu işlem tamamlandıktan sonra `result`, varlığı içerir.
 
 Bir tabloyu sorgulamak için, **TableQuery** nesnesini kullanarak aşağıdaki yan tümceleri kullanıp bir sorgu ifadesi oluşturun:
 
-* **select** : Sorgudan döndürülecek alanlar.
-* **where** : Where yan tümcesi.
+* **select**: Sorgudan döndürülecek alanlar.
+* **where**: Where yan tümcesi.
 
-  * **and** : Bir `and` where koşulu.
-  * **or** : Bir `or` where koşulu.
-* **top** : Getirilecek öğe sayısı.
+  * **and**: Bir `and` where koşulu.
+  * **or**: Bir `or` where koşulu.
+* **top**: Getirilecek öğe sayısı.
 
 Aşağıdaki örnek, bir 'hometasks' PartitionKey ile ilk beş öğeyi döndüren bir sorgu derler.
 

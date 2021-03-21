@@ -11,10 +11,10 @@ ms.author: jopapa
 ms.custom: seodec18, devx-track-js
 ms.reviewer: sngun
 ms.openlocfilehash: 181af5cf26d19a9f51e8d456e777badf7efa224d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93097831"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>MongoDB için Azure Cosmos DB API 'SI ile angular uygulaması oluşturma-kullanıcı arabirimini angular ile derleme
@@ -63,7 +63,7 @@ Bu çok parçalı öğreticide, Express ve angular ile Node.js yazılmış yeni 
 
 4. Aynı klasörde **app.module.ts** dosyasını açın. 5. ve 10. satırdaki bildirimlere `HeroesComponent` bileşeninin eklendiğine dikkat edin.
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/app-module-file.png" alt-text="Hero bileşenini yükleme":::
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/app-module-file.png" alt-text="app-module.ts dosyasını açın":::
 
 5. **heroes.component.html** dosyasına dönün ve bu kodları kopyalayın. `<div>`, tüm sayfaya yönelik kapsayıcıdır. Kapsayıcı içinde, oluşturmamız gereken hero'ların bir listesi vardır. Kullanıcı arabiriminde bunları tıklayarak seçebilir, düzenleyebilir veya silebilirsiniz. HTML'de hangisinin seçili olduğunu anlayabilmeniz için bazı stil farklılıkları vardır. Ayrıca yeni hero’yu eklemenizi veya mevcut bir hero’yu düzenlemenizi sağlayan bir düzenleme alanı bulunur. 
 
@@ -104,7 +104,7 @@ Bu çok parçalı öğreticide, Express ve angular ile Node.js yazılmış yeni 
     </div>
     ```
 
-7. HTML’yi oluşturduğumuza göre artık şablonla etkileşim kurmasını sağlamak için **heroes.component.ts** dosyasına eklememiz gerekiyor. Aşağıdaki kod, şablonu bileşen dosyanıza ekler. Bazı hero’ları alan ve tüm verileri almak için hero hizmet bileşenini başlatan bir oluşturucu eklendi. Bu kod ayrıca, kullanıcı arabirimindeki olayları işleyebilmek için gerekli tüm yöntemleri ekler. **heroes.component.ts** ’deki mevcut kodun üzerine aşağıdaki kodu kopyalayabilirsiniz. Hero ve HeroService alanlarında hataları görmeyi bekleyebilirsiniz çünkü bunlara karşılık gelen bileşenler henüz içeri aktarılmamıştır; bu hataları sonraki bölümde düzelteceksiniz. 
+7. HTML’yi oluşturduğumuza göre artık şablonla etkileşim kurmasını sağlamak için **heroes.component.ts** dosyasına eklememiz gerekiyor. Aşağıdaki kod, şablonu bileşen dosyanıza ekler. Bazı hero’ları alan ve tüm verileri almak için hero hizmet bileşenini başlatan bir oluşturucu eklendi. Bu kod ayrıca, kullanıcı arabirimindeki olayları işleyebilmek için gerekli tüm yöntemleri ekler. **heroes.component.ts**’deki mevcut kodun üzerine aşağıdaki kodu kopyalayabilirsiniz. Hero ve HeroService alanlarında hataları görmeyi bekleyebilirsiniz çünkü bunlara karşılık gelen bileşenler henüz içeri aktarılmamıştır; bu hataları sonraki bölümde düzelteceksiniz. 
 
     ```ts
     import { Component, OnInit } from '@angular/core';
@@ -172,7 +172,7 @@ Bu çok parçalı öğreticide, Express ve angular ile Node.js yazılmış yeni 
     }
     ```
 
-8. **Explorer** ’da **app/app.module.ts** dosyasını açın ve `FormsModule`’e yönelik içeri aktarma eklemek için imports bölümünü güncelleştirin. Import bölümü artık şöyle görünmelidir:
+8. **Explorer**’da **app/app.module.ts** dosyasını açın ve `FormsModule`’e yönelik içeri aktarma eklemek için imports bölümünü güncelleştirin. Import bölümü artık şöyle görünmelidir:
 
     ```
     imports: [
@@ -354,7 +354,7 @@ Bu çok parçalı öğreticide, Express ve angular ile Node.js yazılmış yeni 
 
 Şu an bileşenimiz var, peki ekranda görünmesini nasıl sağlarız? **app.component.ts** dosyasındaki varsayılan bileşenleri değiştirelim.
 
-1. Explorer bölmesinde **/app/app.component.ts** 'yi açın, başlığı Heroes olarak değiştirin, ardından **heroes.components.ts** (app-heroes) dosyasında oluşturduğumuz bileşenin adını, yeni bileşene başvurmak üzere ekleyin. Dosyanın içeriği şimdi aşağıdaki gibi görünmelidir: 
+1. Explorer bölmesinde **/app/app.component.ts**'yi açın, başlığı Heroes olarak değiştirin, ardından **heroes.components.ts** (app-heroes) dosyasında oluşturduğumuz bileşenin adını, yeni bileşene başvurmak üzere ekleyin. Dosyanın içeriği şimdi aşağıdaki gibi görünmelidir: 
 
     ```ts
     import { Component } from '@angular/core';
@@ -395,7 +395,7 @@ Bu çok parçalı öğreticide, Express ve angular ile Node.js yazılmış yeni 
 
 5. `Hero` terimine sol tıkladığınızda Visual Studio, kod bloğunun sol tarafında bir ampul simgesi görüntüler. 
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/light-bulb.png" alt-text="Hero bileşenini yükleme":::
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/light-bulb.png" alt-text="Visual Studio Code'da Ampul":::
 
 6. Ampule ve ardından **Import Hero from "/app/hero".** ("/uygulama/hero"dan Hero İçeri Aktar) seçeneğine tıklayın. veya **Import Hero from "./hero".** ("./hero"dan Hero İçeri Aktar.) seçeneğine tıklayın. (İleti, kurulumunuza bağlı olarak değişebilir)
 
@@ -491,7 +491,7 @@ Bu çok parçalı öğreticide, Express ve angular ile Node.js yazılmış yeni 
 
 3. Şimdi bir İnternet tarayıcısı açın ve **localhost:3000** adresine giderek yerel olarak çalışan uygulamayı görüntüleyin.
 
-     :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/azure-cosmos-db-mongodb-mean-app.png" alt-text="Hero bileşenini yükleme":::
+     :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/azure-cosmos-db-mongodb-mean-app.png" alt-text="Yerel olarak çalışan Hero uygulaması":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

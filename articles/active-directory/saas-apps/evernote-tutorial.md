@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 86a314cd5255c06a70d0f9b28d06e3ac4156fdb6
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92453845"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-evernote"></a>Öğretici: Evernote ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, Evernote 'ı Azure Active Directory (Azure AD) ile tümleştirm
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -57,7 +57,7 @@ Evernote 'ın Azure AD 'ye tümleştirilmesini yapılandırmak için, galerisind
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-evernote"></a>Evernote için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Evernote ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Evernote içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Evernote ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Evernote içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Evernote ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -96,7 +96,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![image](./media/evernote-tutorial/samlassertion.png)
 
-    a. **Imzalama seçeneği**için **SAML yanıtı ve onaylama seçeneğini imzala** seçeneğini belirleyin.
+    a. **Imzalama seçeneği** için **SAML yanıtı ve onaylama seçeneğini imzala** seçeneğini belirleyin.
 
     b. **Kaydet**’e tıklayın
 
@@ -136,7 +136,7 @@ Bu bölümde, Evernote 'a erişim vererek Azure çoklu oturum açma özelliğini
 
 ## <a name="configure-evernote-sso"></a>Evernote SSO 'yu yapılandırma
 
-1. Evernote 'daki yapılandırmayı otomatikleştirmek için, **uzantıyı yüklemek**üzere **uygulamalarımı güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
+1. Evernote 'daki yapılandırmayı otomatikleştirmek için, **uzantıyı yüklemek** üzere **uygulamalarımı güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 
     ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
 

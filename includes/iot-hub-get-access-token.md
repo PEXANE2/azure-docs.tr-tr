@@ -5,16 +5,16 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
 ms.openlocfilehash: 7f7dc1483002c2bdfe3227a8aade8dbf2a8da417
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "70803015"
 ---
 ## <a name="obtain-an-azure-resource-manager-token"></a>Azure Resource Manager belirteci edinme
 Azure Active Directory, Azure Resource Manager kullanarak kaynaklarda gerçekleştirdiğiniz tüm görevlerin kimlik doğrulamasından geçmesini sağlamalıdır. Burada gösterilen örnek, parola kimlik doğrulamasını kullanır, diğer yaklaşımlar için bkz. [kimlik doğrulama Azure Resource Manager istekleri][lnk-authenticate-arm].
 
-1. Uygulama kimliği ve parola kullanarak Azure AD 'den bir belirteç almak için, Program.cs içindeki **Main** yöntemine aşağıdaki kodu ekleyin.
+1. Uygulama kimliği ve parola kullanarak Azure AD 'den bir belirteç almak için program. cs ' deki **Main** yöntemine aşağıdaki kodu ekleyin.
    
     ```csharp
     var authContext = new AuthenticationContext(string.Format  

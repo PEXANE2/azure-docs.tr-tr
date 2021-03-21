@@ -16,17 +16,17 @@ ms.date: 01/12/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 12fcc9996697f3bbba35826d79bec238bfb0f8b3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95993000"
 ---
-# <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>StorSimple Sanal dizisine yönelik uyarıları yönetmek için StorSimple Aygıt Yöneticisi kullanma
+# <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>StorSimple Sanal dizisine yönelik uyarıları yönetmek için StorSimple Device Manager kullanma
 
 ## <a name="overview"></a>Genel Bakış
 
-StorSimple Aygıt Yöneticisi hizmetindeki uyarılar özelliği, StorSimple Sanal dizileri ile ilgili uyarıları gerçek zamanlı olarak gözden geçirmeniz ve temizlemeniz için bir yol sağlar. StorSimple Sanal dizilerinizdeki sistem durumu sorunlarını ve genel Microsoft Azure StorSimple çözümünü merkezi olarak izlemek için **hizmet Özeti** dikey penceresindeki uyarıları kullanabilirsiniz.
+StorSimple Device Manager hizmetindeki uyarılar özelliği, StorSimple Sanal dizileri ile ilgili uyarıları gerçek zamanlı olarak gözden geçirmeniz ve temizlemeniz için bir yol sağlar. StorSimple Sanal dizilerinizdeki sistem durumu sorunlarını ve genel Microsoft Azure StorSimple çözümünü merkezi olarak izlemek için **hizmet Özeti** dikey penceresindeki uyarıları kullanabilirsiniz.
 
 Bu öğreticide, uyarı bildirimlerinin, ortak uyarı koşullarının, uyarı önem düzeylerinin ve uyarıların nasıl görüntüleneceği ve izleneceği açıklanır. Ayrıca, belirli bir uyarıyı hızlıca bulmanıza ve uygun şekilde yanıt vermenize olanak sağlayan uyarı hızlı başvuru tabloları da dahildir.
 
@@ -43,7 +43,7 @@ Bir sanal dizi için e-posta bildirimini etkinleştirdikten sonra, bildirim list
 
 #### <a name="to-enable-email-notification-for-alerts"></a>Uyarılar için e-posta bildirimini etkinleştirmek için
 
-1. StorSimple Aygıt Yöneticisi hizmetinize gidin ve **Yönetim** bölümünde **cihazlar**' ı seçin ve tıklatın. Görüntülenmiş cihaz listesinden cihazınızı seçin ve tıklayın.
+1. StorSimple Device Manager hizmetinize gidin ve **Yönetim** bölümünde **cihazlar**' ı seçin ve tıklatın. Görüntülenmiş cihaz listesinden cihazınızı seçin ve tıklayın.
    
     ![Uyarı ayarları](./media/storsimple-virtual-array-manage-alerts/alerts2.png)
 2. Bu, **Ayarlar** dikey penceresini açar. **Cihaz ayarları** bölümünde **genel**' i seçin. Bu, **Genel ayarlar** dikey penceresini açar.
@@ -56,12 +56,12 @@ Bir sanal dizi için e-posta bildirimini etkinleştirdikten sonra, bildirim list
    3. **Ek e-posta alıcıları** alanına, uyarı bildirimlerini alması gereken diğer tüm alıcıların e-posta adreslerini girin. Adları *birisi \@ Somewhere.com* biçiminde girin. E-posta adreslerini ayırmak için noktalı virgül kullanın. Sanal cihaz başına en fazla 20 e-posta adresi yapılandırabilirsiniz.
       
        ![Ekran görüntüsünde, bu adımda açıklanan ayarlarla ilgili uyarı ayarları ayrıntıları gösterilir.](./media/storsimple-virtual-array-manage-alerts/alerts6.png)
-   4. Sınama e-postası bildirimi göndermek için **Test e-postası gönder ' e** tıklayın. StorSimple Aygıt Yöneticisi hizmeti, test bildirimini ileten durum iletilerini görüntüler.
+   4. Sınama e-postası bildirimi göndermek için **Test e-postası gönder ' e** tıklayın. StorSimple Device Manager hizmeti, test bildirimini ileten durum iletilerini görüntüler.
       
        ![Ekran görüntüsü, sınama e-postasını doğrulayan bir bilgilendirici iletişim kutusu gösterir.](./media/storsimple-virtual-array-manage-alerts/alerts7.png)
       
       > [!NOTE]
-      > Test bildirim iletisi gönderilemezse, StorSimple Aygıt Yöneticisi hizmetinde uygun bir ileti görüntülenir. **Tamam**' a tıklayın, birkaç dakika bekleyin ve ardından test bildirim iletinizi yeniden göndermeye çalışın.
+      > Test bildirim iletisi gönderilemezse, StorSimple Device Manager hizmetinde uygun bir ileti görüntülenir. **Tamam**' a tıklayın, birkaç dakika bekleyin ve ardından test bildirim iletinizi yeniden göndermeye çalışın.
       >
       >
    5. Yapılandırmanızı kaydetmek için sayfanın alt kısmındaki **Kaydet** ' e tıklayın. Onayınız istendiğinde **Evet**’e tıklayın.
@@ -72,7 +72,7 @@ Bir sanal dizi için e-posta bildirimini etkinleştirdikten sonra, bildirim list
 
 StorSimple Sanal diziniz, çeşitli koşullara yanıt olarak uyarılar oluşturur. En yaygın uyarı koşulları türleri şunlardır:
 
-* **Bağlantı sorunları** : Bu uyarılar, verileri aktarma konusunda zorluk oluşması durumunda oluşur. Azure depolama hesabına veri aktarımı sırasında veya sanal cihazlarla StorSimple Aygıt Yöneticisi hizmeti arasında bağlantı olmaması nedeniyle iletişim sorunları oluşabilir. Çok sayıda hata noktası olduğundan, iletişim sorunları düzeltilemeyecek bir kısmı. Daha gelişmiş sorun giderme işlemlerine devam etmeden önce ağ bağlantısı ve Internet erişiminin kullanılabilir olduğunu her zaman ilk önce doğrulamanız gerekir. Bağlantı noktaları ve güvenlik duvarı ayarları hakkında bilgi için, [StorSimple Sanal dizi sistem gereksinimleri](storsimple-ova-system-requirements.md)' ne gidin. Sorun giderme konusunda yardım için [Test-Connection cmdlet Ile sorun giderme](./storsimple-8000-troubleshoot-deployment.md)bölümüne gidin.
+* **Bağlantı sorunları** : Bu uyarılar, verileri aktarma konusunda zorluk oluşması durumunda oluşur. Azure depolama hesabına veri aktarımı sırasında veya sanal cihazlarla StorSimple Device Manager hizmeti arasında bağlantı olmaması nedeniyle iletişim sorunları oluşabilir. Çok sayıda hata noktası olduğundan, iletişim sorunları düzeltilemeyecek bir kısmı. Daha gelişmiş sorun giderme işlemlerine devam etmeden önce ağ bağlantısı ve Internet erişiminin kullanılabilir olduğunu her zaman ilk önce doğrulamanız gerekir. Bağlantı noktaları ve güvenlik duvarı ayarları hakkında bilgi için, [StorSimple Sanal dizi sistem gereksinimleri](storsimple-ova-system-requirements.md)' ne gidin. Sorun giderme konusunda yardım için [Test-Connection cmdlet Ile sorun giderme](./storsimple-8000-troubleshoot-deployment.md)bölümüne gidin.
 * **Performans sorunları** : Bu uyarılar, sisteminiz ağır bir yük altında olduğunda olduğu gibi en iyi şekilde gerçekleştirimediğinde oluşur.
 
 Ayrıca, güvenlik, güncelleştirmeler veya iş hatalarıyla ilgili uyarıları görebilirsiniz.
@@ -87,7 +87,7 @@ Uyarılar, uyarı durumunun sahip olacağı etkiye ve uyarıya yanıt gereksinim
 
 ## <a name="view-and-track-alerts"></a>Uyarıları görüntüleme ve izleme
 
-StorSimple Aygıt Yöneticisi hizmeti Özet dikey penceresi, sanal cihazlarınızda önem düzeyine göre düzenlenmiş uyarı sayısına hızlı bir bakış sağlar.
+StorSimple Device Manager hizmeti Özet dikey penceresi, sanal cihazlarınızda önem düzeyine göre düzenlenmiş uyarı sayısına hızlı bir bakış sağlar.
 
 ![Uyarılar panosu](./media/storsimple-virtual-array-manage-alerts/alerts14.png)
 

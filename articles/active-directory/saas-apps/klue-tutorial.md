@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/13/2020
 ms.author: jeedes
 ms.openlocfilehash: bd7ba92c2cc233e2e4b3655779392fe836cc3b06
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92458957"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-klue"></a>Öğretici: klü ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, klü Azure Active Directory (Azure AD) ile tümleştirmeyi öğ
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -56,7 +56,7 @@ Klü 'ın Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden klü
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-klue"></a>Klü için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısını kullanarak Azure AD SSO 'Yu klü ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve klü içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısını kullanarak Azure AD SSO 'Yu klü ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve klü içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu klü ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 

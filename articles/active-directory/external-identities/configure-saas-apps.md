@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e0db5e609a5e6b7d74809810a50f86d72ae85675
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90705519"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>B2B işbirliği için SaaS uygulamalarını yapılandırma
@@ -29,7 +29,7 @@ Uygulamaya özgü yönergelere bakmadan önce, Thumb 'in bazı kuralları aşağ
 
 * Dropbox gibi otomatik kurulumu destekleyen uygulamalar için, uygulamalardan ayrı davetler oluşturulur. Kullanıcılar her daveti kabul ettiğinizden emin olmalıdır.
 
-* Kullanıcı öznitelikleri ' nde, Konuk kullanıcılar içindeki karıştırılmış Kullanıcı profili diski (UPD) ile ilgili sorunları azaltmak için Kullanıcı **tanımlayıcısını** her zaman **Kullanıcı. Mail**olarak ayarlayın.
+* Kullanıcı öznitelikleri ' nde, Konuk kullanıcılar içindeki karıştırılmış Kullanıcı profili diski (UPD) ile ilgili sorunları azaltmak için Kullanıcı **tanımlayıcısını** her zaman **Kullanıcı. Mail** olarak ayarlayın.
 
 
 ## <a name="dropbox-business"></a>Dropbox Business
@@ -86,7 +86,7 @@ SAML protokolünü temel alan Federasyonu kullanarak kullanıcıların Azure AD 
 
    b. **Kullanıcı tanımlayıcısı** kutusuna **User. Mail** (Konuk hesapları için SSO) yazın.
 
-   c. **SAML Imzalama sertifikası**altında **Yeni sertifika oluştur**' a tıklayın.
+   c. **SAML Imzalama sertifikası** altında **Yeni sertifika oluştur**' a tıklayın.
 
    d. Box.com kiracınızı bir kimlik sağlayıcısı olarak Azure AD kullanacak şekilde yapılandırmaya başlamak için, meta veri dosyasını indirin ve ardından yerel sürücünüze kaydedin.
 

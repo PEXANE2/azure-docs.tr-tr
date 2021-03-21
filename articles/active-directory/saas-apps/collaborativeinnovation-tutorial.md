@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/22/2019
 ms.author: jeedes
 ms.openlocfilehash: 6744c3c6f6f56c6defdd4b6c2501a946aeeae1e9
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92455561"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-collaborative-innovation"></a>Öğretici: Işbirliğine dayalı yenilik ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, Işbirlikçi yeniliklerini Azure Active Directory (Azure AD) il
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -58,7 +58,7 @@ Işbirlikçi yeniliklerini Azure AD 'ye tümleştirmeyi yapılandırmak için, G
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-collaborative-innovation"></a>Işbirlikçi yeniliği için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Işbirliğine dayalı yeniliklerle yapılandırın ve test edin. SSO 'nun çalışması için, Işbirlikçi yeniliği içindeki bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Işbirliğine dayalı yeniliklerle yapılandırın ve test edin. SSO 'nun çalışması için, Işbirlikçi yeniliği içindeki bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
 Azure AD SSO 'yu Işbirliğine dayalı yeniliklerle yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 

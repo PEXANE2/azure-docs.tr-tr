@@ -4,10 +4,10 @@ description: Bu makalede, PowerShell kullanarak Windows Server veya Windows iste
 ms.topic: conceptual
 ms.date: 12/2/2019
 ms.openlocfilehash: 582d8123f16b2d5a543d862b8eb3e45895087e4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90987102"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>PowerShell kullanarak Windows Server/Windows İstemcisi için Azure’a yedekleme dağıtma ve yönetme
@@ -42,7 +42,7 @@ Aşağıdaki adımlar, bir kurtarma hizmetleri Kasası oluşturma konusunda size
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "WestUS"
     ```
 
-4. Kullanılacak depolama yedekliliği türünü belirtin. [Yerel olarak yedekli depolama (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage), coğrafi olarak [yedekli depolama (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) veya [bölge yedekli depolama (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage)kullanabilirsiniz. Aşağıdaki örnek, *Testkasasının* **geoyedekli**olarak ayarlandığı **-BackupStorageRedundancy** seçeneğini gösterir.
+4. Kullanılacak depolama yedekliliği türünü belirtin. [Yerel olarak yedekli depolama (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage), coğrafi olarak [yedekli depolama (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) veya [bölge yedekli depolama (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage)kullanabilirsiniz. Aşağıdaki örnek, *Testkasasının* **geoyedekli** olarak ayarlandığı **-BackupStorageRedundancy** seçeneğini gösterir.
 
    > [!TIP]
    > Çoğu Azure Backup cmdlet’i, girdi olarak Kurtarma Hizmetleri kasasını gerektirir. Bu nedenle, yedekleme kurtarma hizmetleri Kasası nesnesinin bir değişkende depolanması uygundur.
@@ -58,7 +58,7 @@ Aşağıdaki adımlar, bir kurtarma hizmetleri Kasası oluşturma konusunda size
 
 Geçerli abonelikteki tüm kasaların listesini görüntülemek için **Get-Azrecoveryserviceskasasını** kullanın. Bu komutu kullanarak yeni bir kasanın oluşturulduğunu denetleyebilir veya abonelikte hangi kasaların kullanılabilir olduğunu görebilirsiniz.
 
-**Get-Azrecoveryserviceskasa**komutunu çalıştırın ve aboneliğin tüm kasaları listelenir.
+**Get-Azrecoveryserviceskasa** komutunu çalıştırın ve aboneliğin tüm kasaları listelenir.
 
 ```powershell
 Get-AzRecoveryServicesVault
@@ -209,7 +209,7 @@ Server properties updated successfully.
 
 Azure Backup gönderilen yedekleme verileri verilerin gizliliğini korumak için şifrelenir. Şifreleme parolası, geri yükleme sırasında verilerin şifresini çözmek için "paroladır".
 
-**Generate** **Settings**  >  **Properties**  >  Azure Portal **Kurtarma Hizmetleri Kasası** bölümünde ayarlar Özellikler**güvenlik PIN** altında Oluştur ' u seçerek bir güvenlik PIN 'i oluşturmanız gerekir.
+   >    >  Azure Portal **Kurtarma Hizmetleri Kasası** bölümünde ayarlar Özellikler **güvenlik PIN** altında Oluştur ' u seçerek bir güvenlik PIN 'i oluşturmanız gerekir.
 
 >[!NOTE]
 > Güvenlik PIN 'ı yalnızca Azure portal ile oluşturulabilir.
@@ -659,7 +659,7 @@ ItemLastModifiedTime : 21-Jun-14 6:43:02 AM
 
 ### <a name="triggering-the-restore-process"></a>Geri yükleme işlemi tetikleniyor
 
-Geri yükleme işlemini tetiklemek için, önce kurtarma seçeneklerini belirtmemiz gerekir. Bu, [New-OBRecoveryOption](/powershell/module/msonlinebackup/new-obrecoveryoption) cmdlet 'i kullanılarak yapılabilir. Bu örnekte, dosyaları *C:\Temp*' e geri yüklemek istiyoruz. Ayrıca, *C:\Temp*hedef klasörü üzerinde zaten var olan dosyaları atlamak istediğinizi de varsayalım. Böyle bir kurtarma seçeneği oluşturmak için aşağıdaki komutu kullanın:
+Geri yükleme işlemini tetiklemek için, önce kurtarma seçeneklerini belirtmemiz gerekir. Bu, [New-OBRecoveryOption](/powershell/module/msonlinebackup/new-obrecoveryoption) cmdlet 'i kullanılarak yapılabilir. Bu örnekte, dosyaları *C:\Temp*' e geri yüklemek istiyoruz. Ayrıca, *C:\Temp* hedef klasörü üzerinde zaten var olan dosyaları atlamak istediğinizi de varsayalım. Böyle bir kurtarma seçeneği oluşturmak için aşağıdaki komutu kullanın:
 
 ```powershell
 $RecoveryOption = New-OBRecoveryOption -DestinationPath "C:\temp" -OverwriteType Skip
@@ -700,7 +700,7 @@ Ancak, Azure 'da depolanan veriler kalır ve sizin tarafınızdan bekletme ilkes
 
 Azure Backup Aracısı, ilkeler ve veri kaynakları etrafındaki tüm yönetim, PowerShell aracılığıyla uzaktan gerçekleştirilebilir. Uzaktan yönetilecek makinenin doğru hazırlanması gerekir.
 
-Varsayılan olarak, WinRM hizmeti el ile başlatma için yapılandırılmıştır. Başlangıç türü *Otomatik* olarak ayarlanmalıdır ve hizmetin başlatılması gerekir. WinRM hizmetinin çalıştığını doğrulamak için Status özelliğinin değeri *çalışıyor*olmalıdır.
+Varsayılan olarak, WinRM hizmeti el ile başlatma için yapılandırılmıştır. Başlangıç türü *Otomatik* olarak ayarlanmalıdır ve hizmetin başlatılması gerekir. WinRM hizmetinin çalıştığını doğrulamak için Status özelliğinin değeri *çalışıyor* olmalıdır.
 
 ```powershell
 Get-Service -Name WinRM

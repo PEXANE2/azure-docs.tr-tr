@@ -6,10 +6,10 @@ ms.date: 07/10/2019
 ms.author: atsenthi
 ms.custom: mvc
 ms.openlocfilehash: 934b679813323fe144f935811eb613ab68b561db
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87089626"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>Hızlı başlangıç: Windows kapsayıcıları Service Fabric'e dağıtma
@@ -43,11 +43,11 @@ Service Fabric SDK’sı ve araçları, bir kapsayıcıyı Service Fabric kümes
 
 Visual Studio'yu “Yönetici” olarak başlatın.  **Dosya**  >  **Yeni**  >  **Proje**' yi seçin.
 
-**Service Fabric uygulama**seçin, "MyFirstContainer" olarak adlandırın ve **Oluştur**' a tıklayın.
+**Service Fabric uygulama** seçin, "MyFirstContainer" olarak adlandırın ve **Oluştur**' a tıklayın.
 
 **Barındırılan Kapsayıcılar ve Uygulamalar** şablonlarından **Kapsayıcı**’yı seçin.
 
-**Görüntü adı**alanına "MCR.Microsoft.com/Windows/ServerCore/iis:windowsservercore-ltsc2016", [Windows Server Core Server ve IIS temel görüntüsünü](https://hub.docker.com/_/microsoft-windows-servercore-iis)girin.
+**Görüntü adı** alanına "MCR.Microsoft.com/Windows/ServerCore/iis:windowsservercore-ltsc2016", [Windows Server Core Server ve IIS temel görüntüsünü](https://hub.docker.com/_/microsoft-windows-servercore-iis)girin.
 
 80 numaralı bağlantı noktasında hizmete gelen isteklerin, kapsayıcı üzerindeki 80 numaralı bağlantı noktasıyla eşlenmesi için kapsayıcının bağlantı noktasından konağa bağlantı noktası eşlenmesini yapılandırın.  **Kapsayıcı Bağlantı Noktası**’nı "80" olarak ve **Ana Bilgisayar Bağlantı Noktası**’nı "80" olarak ayarlayın.  
 
@@ -76,7 +76,7 @@ Microsoft, Windows Server'ın farklı sürümleri üzerinde oluşturulmuş IIS s
 
 Hizmet bildirimi, `mcr.microsoft.com/windows/servercore/iis:windowsservercore-ltsc2016` nano sunucusu için tek bir görüntü belirtmeye devam eder.
 
-Ayrıca, *ApplicationManifest.xml* dosyasında, **Passwordencrypted** **değerini false**olarak değiştirin. Bu hesap ve parola, Docker Hub 'ında bulunan ortak kapsayıcı görüntüsü için boştur, bu nedenle boş bir parolanın şifrelenmesi bir yapı hatası üretecek için şifrelemeyi kapattık.
+Ayrıca, *ApplicationManifest.xml* dosyasında, **Passwordencrypted** **değerini false** olarak değiştirin. Bu hesap ve parola, Docker Hub 'ında bulunan ortak kapsayıcı görüntüsü için boştur, bu nedenle boş bir parolanın şifrelenmesi bir yapı hatası üretecek için şifrelemeyi kapattık.
 
 ```xml
 <RepositoryCredentials AccountName="" Password="" PasswordEncrypted="false" />
@@ -90,7 +90,7 @@ Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/)bulunan yönergele
 
 Aşağıdaki betiği çalıştırmadan önce, PowerShell çalıştırmasında `Connect-AzAccount` Azure ile bir bağlantı oluşturun.
 
-Aşağıdaki betiği Pano 'ya kopyalayın ve **Windows PowerShell ISE**açın.  İçeriği boş Untitled1.ps1 penceresine yapıştırın. Sonra betikteki Değişkenler için değerler sağlayın: `subscriptionId` ,,, `certpwd` `certfolder` `adminuser` ,, vb `adminpwd` .  İçin belirttiğiniz dizin, `certfolder` betiği çalıştırmadan önce mevcut olmalıdır.
+Aşağıdaki betiği Pano 'ya kopyalayın ve **Windows PowerShell ISE** açın.  İçeriği boş Untitled1.ps1 penceresine yapıştırın. Sonra betikteki Değişkenler için değerler sağlayın: `subscriptionId` ,,, `certpwd` `certfolder` `adminuser` ,, vb `adminpwd` .  İçin belirttiğiniz dizin, `certfolder` betiği çalıştırmadan önce mevcut olmalıdır.
 
 [!code-powershell[main](../../powershell_scripts/service-fabric/create-secure-cluster/create-secure-cluster.ps1 "Create a Service Fabric cluster")]
 

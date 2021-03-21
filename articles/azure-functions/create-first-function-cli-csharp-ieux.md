@@ -8,10 +8,10 @@ ms.custom:
 - devx-track-azurecli
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: a78abea5bcc5925cb2e137d918c7217ae92b118e
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102044332"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-from-the-command-line"></a>Hızlı başlangıç: Azure 'da komut satırından C# işlevi oluşturma
@@ -38,7 +38,7 @@ Bu makalenin [Visual Studio Code tabanlı bir sürümü](create-first-function-v
 
 + [Azure Functions Core Tools](functions-run-local.md#v2) sürüm 3. x sürümünü yükler.
 
-+ Her iki <abbr title="Azure portal kullanımına alternatif olarak, yerel geliştirme bilgisayarınızdan Azure kaynaklarıyla çalışmaya yönelik platformlar arası komut satırı araçları kümesi.">Azure CLI</abbr> veya <abbr title="Azure portal kullanımına alternatif olarak, yerel geliştirme bilgisayarınızdan Azure kaynaklarıyla çalışmaya yönelik komutlar sağlayan bir PowerShell modülü.">Azure PowerShell</abbr> Azure kaynakları oluşturmak için:
++ Her iki <abbr title="Azure portal kullanımına alternatif olarak, yerel geliştirme bilgisayarınızdan Azure kaynaklarıyla çalışmaya yönelik platformlar arası komut satırı araçları kümesi.">Azure CLI’si</abbr> veya <abbr title="Azure portal kullanımına alternatif olarak, yerel geliştirme bilgisayarınızdan Azure kaynaklarıyla çalışmaya yönelik komutlar sağlayan bir PowerShell modülü.">Azure PowerShell</abbr> Azure kaynakları oluşturmak için:
 
     + [Azure CLI](/cli/azure/install-azure-cli) sürüm 2,4 veya üzeri.
 
@@ -101,9 +101,9 @@ Bu bölümde, yerel bir <abbr title="Birlikte dağıtılabilecek ve yönetilebil
     
     <br/>   
     <details>  
-    <summary><strong>İsteğe bağlı: HttpExample.cs için kod</strong></summary>  
+    <summary><strong>İsteğe bağlı: HttpExample. cs kodu</strong></summary>  
     
-    *HttpExample.cs* , `Run` değişkende istek verilerini alan bir yöntem içerir `req` , tetikleme davranışını tanımlayan **Httptriggerattribute** ile donatılmış bir [HttpRequest](/dotnet/api/microsoft.aspnetcore.http.httprequest) ' dir.
+    *Httpexample. cs* , `Run` değişkende istek verilerini alan bir yöntem içerir `req` , bu da tetikleme davranışını tanımlayan **Httptriggerattribute** ile donatılmış bir [HttpRequest](/dotnet/api/microsoft.aspnetcore.http.httprequest) 'dir.
 
     :::code language="csharp" source="~/functions-docs-csharp/http-trigger-template/HttpExample.cs":::
         

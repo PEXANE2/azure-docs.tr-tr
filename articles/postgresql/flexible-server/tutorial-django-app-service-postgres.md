@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 09/22/2020
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: bcc9ca0175e0e03c62c2ce2b91d8ec337756a3cc
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92490110"
 ---
 # <a name="tutorial-deploy-django-app-with-app-service-and-azure-database-for-postgresql---flexible-server-preview"></a>Öğretici: App Service ve PostgreSQL için Azure veritabanı ile Docgo uygulaması dağıtma-esnek sunucu (Önizleme)
@@ -57,9 +57,9 @@ cd djangoapp
 
 # <a name="download"></a>[İndir](#tab/download)
 
-Web sitesini ziyaret edin [https://github.com/Azure-Samples/djangoapp](https://github.com/Azure-Samples/djangoapp) ve sonra ZIP 'ı **İndir** **' i**seçin.
+Web sitesini ziyaret edin [https://github.com/Azure-Samples/djangoapp](https://github.com/Azure-Samples/djangoapp) ve sonra ZIP 'ı **İndir** **' i** seçin.
 
-ZIP dosyasını *docgoapp*adlı bir klasöre ayıklayın.
+ZIP dosyasını *docgoapp* adlı bir klasöre ayıklayın.
 
 Ardından bu *docgoapp* klasöründe bir Terminal penceresi açın.
 
@@ -132,7 +132,7 @@ az webapp config appsettings set --settings DJANGO_ENV="production" DBHOST="<pos
 - Uygulama kodu, çeşitli ortam değişkenlerinde veritabanı bilgilerini bulmayı bekler. App Service ortam değişkenlerini ayarlamak için, [az WebApp config appSettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) komutuyla "uygulama ayarları" oluşturursunuz.
 
 > [!TIP]
-> Birçok Azure CLı komutu, kaynak grubunun adı ve App Service planı gibi ortak parametreleri önbelleğe *. Azure/config*dosyasına dönüştürür. Sonuç olarak, sonraki komutlarla aynı parametreyi belirtmeniz gerekmez. Örneğin, değişiklikleri yaptıktan sonra uygulamayı yeniden dağıtmak için `az webapp up` herhangi bir parametre olmadan yalnızca tekrar çalıştırabilirsiniz.
+> Birçok Azure CLı komutu, kaynak grubunun adı ve App Service planı gibi ortak parametreleri önbelleğe *. Azure/config* dosyasına dönüştürür. Sonuç olarak, sonraki komutlarla aynı parametreyi belirtmeniz gerekmez. Örneğin, değişiklikleri yaptıktan sonra uygulamayı yeniden dağıtmak için `az webapp up` herhangi bir parametre olmadan yalnızca tekrar çalıştırabilirsiniz.
 
 ### <a name="run-django-database-migrations"></a>Docgo veritabanı geçişlerini Çalıştır
 
@@ -140,7 +140,7 @@ Docgo veritabanı geçişleri, Azure veritabanı 'ndaki PostgreSQL içindeki şe
 
 1. *Https:// \<app-name> . scm.azurewebsites.net/webssh/Host* sayfasına giderek ve Azure hesabı kimlik bilgilerinizle (veritabanı sunucusu kimlik bilgileri değil) oturum açarak tarayıcıda bir SSH oturumu açın.
 
-1. SSH oturumunda aşağıdaki komutları çalıştırın ( **CTRL** + **SHIFT** + **V**kullanarak komutları yapıştırabilirsiniz):
+1. SSH oturumunda aşağıdaki komutları çalıştırın ( **CTRL** + **SHIFT** + **V** kullanarak komutları yapıştırabilirsiniz):
 
     ```bash
     cd site/wwwroot
@@ -159,9 +159,9 @@ Docgo veritabanı geçişleri, Azure veritabanı 'ndaki PostgreSQL içindeki şe
 
 ### <a name="create-a-poll-question-in-the-app"></a>Uygulamada bir yoklama sorusu oluşturma
 
-1. Bir tarayıcıda *http: \/ / \<app-name> . azurewebsites.net*URL 'sini açın. Veritabanında henüz belirli bir yoklama olmadığından, uygulamanın "hiçbir yoklama yok" iletisini görüntülemesi gerekir.
+1. Bir tarayıcıda *http: \/ / \<app-name> . azurewebsites.net* URL 'sini açın. Veritabanında henüz belirli bir yoklama olmadığından, uygulamanın "hiçbir yoklama yok" iletisini görüntülemesi gerekir.
 
-1. *Http: \/ / \<app-name> . azurewebsites.net/admin*öğesine gidin. Önceki bölümde bulunan Süper Kullanıcı kimlik bilgilerini kullanarak oturum açın ( `root` ve `postgres1` ). **Yoklamalar**altında, **sorular** ' ın yanındaki **Ekle** ' yi seçin ve bazı seçeneklerle bir yoklama sorusu oluşturun.
+1. *Http: \/ / \<app-name> . azurewebsites.net/admin* öğesine gidin. Önceki bölümde bulunan Süper Kullanıcı kimlik bilgilerini kullanarak oturum açın ( `root` ve `postgres1` ). **Yoklamalar** altında, **sorular** ' ın yanındaki **Ekle** ' yi seçin ve bazı seçeneklerle bir yoklama sorusu oluşturun.
 
 1. Soruların artık kullanıcıya sunulduğunu doğrulamak için *http: \/ / \<app-name> . azurewebsites.net/* öğesine tekrar gidin. Bu soruları yanıtlayın, ancak veritabanında bazı veriler oluşturmak istersiniz.
 
@@ -194,17 +194,17 @@ python manage.py runserver
 ```
 Web uygulaması tam olarak yüklendikten sonra, Dmongo geliştirme sunucusu, "geliştirme sunucusu başlatılıyor" iletisinde yerel uygulama URL 'sini sağlar http://127.0.0.1:8000/ . CTRL-BREAK ile sunucudan çıkın.
 
-:::image type="content" source="./media/tutorial-django-app-service-postgres/django-dev-server-output.png" alt-text="Örnek Docgo geliştirme sunucusu çıkışı&quot;:::
+:::image type="content" source="./media/tutorial-django-app-service-postgres/django-dev-server-output.png" alt-text="Örnek Docgo geliştirme sunucusu çıkışı":::
 
 Uygulamayı aşağıdaki adımlarla yerel olarak test edin:
 
-1. *Http: \/ /localhost: 8000* adresine giderek bir tarayıcıda &quot;hiçbir yoklama yok" iletisini görüntülemesi gerekir.
+1. *Http: \/ /localhost: 8000* adresine giderek bir tarayıcıda "hiçbir yoklama yok" iletisini görüntülemesi gerekir.
 
 1. *Http: \/ /localhost: 8000/admin* adresine gidin ve daha önce oluşturduğunuz yönetici kullanıcıyı kullanarak oturum açın. **Yoklamalar**' ın altında, **sorular** ' ın yanındaki **Ekle** ' yi seçin ve bazı seçeneklerle bir yoklama sorusu oluşturun.
 
 1. *Http: \/ /localhost: 8000* ' e gidin ve uygulamayı test etmek için soruyu yanıtlayın.
 
-1. **CTRL**C tuşlarına basarak Docgo sunucusunu durdurun + **C**.
+1. **CTRL** C tuşlarına basarak Docgo sunucusunu durdurun + .
 
 Yerel olarak çalıştırılırken, uygulama yerel bir SQLite3 veritabanı kullanıyor ve üretim veritabanınızı engellemez. İsterseniz üretim ortamınızın benzetimini yapmak için bir yerel PostgreSQL veritabanı da kullanabilirsiniz.
 
@@ -226,9 +226,9 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
-Geliştirme sunucusunu ile yeniden çalıştırın `python manage.py runserver` ve uygulamayı *http: \/ /localhost: 8000/admin*konumunda test edin:
+Geliştirme sunucusunu ile yeniden çalıştırın `python manage.py runserver` ve uygulamayı *http: \/ /localhost: 8000/admin* konumunda test edin:
 
-Docgo Web sunucusunu **CTRL** + **C**ile yeniden durdurun.
+Docgo Web sunucusunu **CTRL** + **C** ile yeniden durdurun.
 
 
 ### <a name="redeploy-the-code-to-azure"></a>Kodu Azure 'a yeniden dağıtın
@@ -247,7 +247,7 @@ Bu komut *. Azure/config* dosyasında önbelleğe alınan parametreleri kullanı
 
 Veri modelinde değişiklikler yaptığınız için, App Service veritabanı geçişlerini yeniden çalıştırmanız gerekir.
 
-*Https:// \<app-name> . scm.azurewebsites.net/webssh/Host*SAYFASıNA giderek bir SSH oturumunu tarayıcıda tekrar açın. Sonra aşağıdaki komutları çalıştırın:
+*Https:// \<app-name> . scm.azurewebsites.net/webssh/Host* SAYFASıNA giderek bir SSH oturumunu tarayıcıda tekrar açın. Sonra aşağıdaki komutları çalıştırın:
 
 ```
 cd site/wwwroot
@@ -270,19 +270,11 @@ python manage.py migrate
 
 [Azure Portal](https://portal.azure.com), uygulama adını arayın ve sonuçlarda uygulamayı seçin.
 
-:::image type="content" source="./media/tutorial-django-app-service-postgres/navigate-to-django-app-in-app-services-in-the-azure-portal.png" alt-text="Örnek Docgo geliştirme sunucusu çıkışı&quot;:::
-
-Uygulamayı aşağıdaki adımlarla yerel olarak test edin:
-
-1. *Http: \/ /localhost: 8000* adresine giderek bir tarayıcıda &quot;hiçbir yoklama yok":::
+:::image type="content" source="./media/tutorial-django-app-service-postgres/navigate-to-django-app-in-app-services-in-the-azure-portal.png" alt-text="Azure portal Python Docgo uygulamanıza gidin":::
 
 Varsayılan olarak, portal genel bir performans görünümü sağlayan uygulamanızın **genel bakış** sayfasını gösterir. Burada, gezinme, durdurma, yeniden başlatma ve silme gibi temel yönetim görevlerini de gerçekleştirebilirsiniz. Sayfanın sol tarafındaki sekmeler, açabileceğiniz farklı yapılandırma sayfalarını gösterir.
 
-:::image type="content" source="./media/tutorial-django-app-service-postgres/manage-django-app-in-app-services-in-the-azure-portal.png" alt-text="Örnek Docgo geliştirme sunucusu çıkışı&quot;:::
-
-Uygulamayı aşağıdaki adımlarla yerel olarak test edin:
-
-1. *Http: \/ /localhost: 8000* adresine giderek bir tarayıcıda &quot;hiçbir yoklama yok":::
+:::image type="content" source="./media/tutorial-django-app-service-postgres/manage-django-app-in-app-services-in-the-azure-portal.png" alt-text="Python Docgo uygulamanızı Azure portal genel bakış sayfasında yönetin":::
 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme

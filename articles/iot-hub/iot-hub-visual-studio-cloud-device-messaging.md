@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: xshi
 ms.openlocfilehash: c56bb7030b2ebc12e3afc24e2d8cb29ce2dda0bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74079487"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Cihazınız ve IoT Hub arasında ileti göndermek ve almak için Visual Studio için Cloud Explorer 'ı kullanın
@@ -54,7 +54,7 @@ Visual Studio 2017 için Visual Studio Yükleyicisi bulut Gezgini bileşeni yaln
 
 Hub 'ınıza erişmek için şu adımları izleyin:
 
-1. Visual Studio 'da bulut Gezgini **View**'ni  >  açmak için**bulut Gezginini** görüntüle ' yi seçin.
+1. Visual Studio 'da bulut Gezgini 'ni  >  açmak için **bulut Gezginini** görüntüle ' yi seçin.
 
 1. Aboneliklerinizi göstermek için hesap yönetimi simgesini seçin.
 
@@ -72,11 +72,11 @@ Hub 'ınıza erişmek için şu adımları izleyin:
 
 Cihazınızdan IoT Hub gönderilen iletileri izlemek için aşağıdaki adımları izleyin:
 
-1. IoT Hub veya cihazınıza sağ tıklayın ve **Izlemeyi Başlat D2C iletisini**seçin.
+1. IoT Hub veya cihazınıza sağ tıklayın ve **Izlemeyi Başlat D2C iletisini** seçin.
 
     ![D2C Iletisini Izlemeye başla](media/iot-hub-visual-studio-cloud-device-messaging/start-monitoring-d2c-message-vs2019.png)
 
-1. İzlenen iletiler **çıktı**altında görünür.
+1. İzlenen iletiler **çıktı** altında görünür.
 
     ![D2C Iletisi sonucunu izleme](media/iot-hub-visual-studio-cloud-device-messaging/monitor-d2c-message-result-vs2019.png)
 
@@ -92,7 +92,7 @@ IoT Hub cihazınıza bir ileti göndermek için şu adımları izleyin:
 
     ![C2D Iletisi gönder](media/iot-hub-visual-studio-cloud-device-messaging/send-c2d-message-test.png)
 
-    Sonuçlar **çıktı**altında görünür.
+    Sonuçlar **çıktı** altında görünür.
 
     ![C2D Ileti sonucunu gönder](media/iot-hub-visual-studio-cloud-device-messaging/send-c2d-message-result-vs2019.png)
 

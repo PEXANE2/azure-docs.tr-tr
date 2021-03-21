@@ -4,10 +4,10 @@ description: PowerShell kullanarak Data Protection Manager (DPM) için Azure Bac
 ms.topic: conceptual
 ms.date: 01/23/2017
 ms.openlocfilehash: 176cbffe5152462055c4ffdb2367cf9c0ab97c1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90968306"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>PowerShell kullanarak Data Protection Manager (DPM) sunucuları için Azure’a yedekleme dağıtma ve yönetme
@@ -69,7 +69,7 @@ Aşağıdaki adımlar, bir kurtarma hizmetleri Kasası oluşturma konusunda size
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "West US"
     ```
 
-4. Kullanılacak depolama yedekliliği türünü belirtin. [Yerel olarak yedekli depolama (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage), coğrafi olarak [yedekli depolama (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage)veya [bölge yedekli depolama (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage)kullanabilirsiniz. Aşağıdaki örnek, *Testkasasının* **geoyedekli**olarak ayarlandığı **BackupStorageRedundancy** seçeneğini gösterir.
+4. Kullanılacak depolama yedekliliği türünü belirtin. [Yerel olarak yedekli depolama (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage), coğrafi olarak [yedekli depolama (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage)veya [bölge yedekli depolama (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage)kullanabilirsiniz. Aşağıdaki örnek, *Testkasasının* **geoyedekli** olarak ayarlandığı **BackupStorageRedundancy** seçeneğini gösterir.
 
    > [!TIP]
    > Çoğu Azure Backup cmdlet’i, girdi olarak Kurtarma Hizmetleri kasasını gerektirir. Bu nedenle, yedekleme kurtarma hizmetleri Kasası nesnesinin bir değişkende depolanması uygundur.
@@ -105,7 +105,7 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 
 Azure Backup aracısını yüklemeden önce, yükleyicinin Windows Server üzerinde indirilip mevcut olması gerekir. Yükleyicinin en son sürümünü [Microsoft Indirme merkezi](https://aka.ms/azurebackup_agent) ' nden veya kurtarma hizmetleri kasasının Pano sayfasından edinebilirsiniz. Yükleyiciyi, gibi kolay erişilebilen bir konuma kaydedin `C:\Downloads\*` .
 
-Aracıyı yüklemek için **DPM sunucusundaki**yükseltilmiş bir PowerShell konsolunda aşağıdaki komutu çalıştırın:
+Aracıyı yüklemek için **DPM sunucusundaki** yükseltilmiş bir PowerShell konsolunda aşağıdaki komutu çalıştırın:
 
 ```powershell
 MARSAgentInstaller.exe /q
@@ -247,7 +247,7 @@ Bu bölümde, DPM 'ye bir üretim sunucusu ekleyecek ve ardından verileri yerel
 $PG = New-DPMProtectionGroup -DPMServerName " TestingServer " -Name "ProtectGroup01"
 ```
 
-Yukarıdaki cmdlet *ProtectGroup01*adlı bir koruma grubu oluşturacaktır. Mevcut bir koruma grubu daha sonra Azure bulutuna yedek eklemek için de değiştirilebilir. Ancak, koruma grubunda herhangi bir değişiklik yapmak için-yeni veya mevcut- [Get-DPMModifiableProtectionGroup](/powershell/module/dataprotectionmanager/get-dpmmodifiableprotectiongroup) cmdlet 'ini kullanarak *değiştirilebilir* bir nesne üzerinde bir tanıtıcı edinmemiz gerekir.
+Yukarıdaki cmdlet *ProtectGroup01* adlı bir koruma grubu oluşturacaktır. Mevcut bir koruma grubu daha sonra Azure bulutuna yedek eklemek için de değiştirilebilir. Ancak, koruma grubunda herhangi bir değişiklik yapmak için-yeni veya mevcut- [Get-DPMModifiableProtectionGroup](/powershell/module/dataprotectionmanager/get-dpmmodifiableprotectiongroup) cmdlet 'ini kullanarak *değiştirilebilir* bir nesne üzerinde bir tanıtıcı edinmemiz gerekir.
 
 ```powershell
 $MPG = Get-ModifiableProtectionGroup $PG

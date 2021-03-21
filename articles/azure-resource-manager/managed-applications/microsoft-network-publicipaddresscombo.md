@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
 ms.openlocfilehash: 5def6db9d551b3882204c9f997f164a0df7ac223
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87063294"
 ---
 # <a name="microsoftnetworkpublicipaddresscombo-ui-element"></a>Microsoft. Network. Publicıpaddresscombo UI öğesi
@@ -80,14 +80,14 @@ Kullanıcı yeni veya mevcut bir IP adresi seçerse, Denetim aşağıdaki çıkt
 }
 ```
 
-- `options.hideNone` **True**olarak belirtildiğinde, `newOrExistingOrNone` yalnızca **Yeni** veya **varolan**bir değere sahip olur.
-- `options.hideDomainNameLabel` **True**olarak belirtildiğinde, `domainNameLabel` bildirilmemiş olur.
+- `options.hideNone` **True** olarak belirtildiğinde, `newOrExistingOrNone` yalnızca **Yeni** veya **varolan** bir değere sahip olur.
+- `options.hideDomainNameLabel` **True** olarak belirtildiğinde, `domainNameLabel` bildirilmemiş olur.
 
 ## <a name="remarks"></a>Açıklamalar
 
-- `constraints.required.domainNameLabel` **True**olarak ayarlanırsa, yenı bir genel IP adresi oluştururken kullanıcının bir etki alanı adı etiketi sağlaması gerekir. Etiketi olmayan mevcut genel IP adresleri seçim için kullanılamaz.
-- `options.hideNone` **True**olarak AYARLANıRSA, genel IP adresi için **hiçbirini** seçme seçeneği gizlenir. Varsayılan değer **false** şeklindedir.
-- `options.hideDomainNameLabel` **True**olarak ayarlanırsa, etki alanı adı etiketinin metin kutusu gizlenir. Varsayılan değer **false** şeklindedir.
+- `constraints.required.domainNameLabel` **True** olarak ayarlanırsa, yenı bir genel IP adresi oluştururken kullanıcının bir etki alanı adı etiketi sağlaması gerekir. Etiketi olmayan mevcut genel IP adresleri seçim için kullanılamaz.
+- `options.hideNone` **True** olarak AYARLANıRSA, genel IP adresi için **hiçbirini** seçme seçeneği gizlenir. Varsayılan değer **false** şeklindedir.
+- `options.hideDomainNameLabel` **True** olarak ayarlanırsa, etki alanı adı etiketinin metin kutusu gizlenir. Varsayılan değer **false** şeklindedir.
 - `options.hideExisting`Doğru ise, Kullanıcı var olan bir genel IP adresini seçemeyebilir. Varsayılan değer **false** şeklindedir.
 - İçin `zone` , yalnızca belirtilen bölge veya bölge dayanıklı genel IP adresleri için genel IP adresleri kullanılabilir.
 

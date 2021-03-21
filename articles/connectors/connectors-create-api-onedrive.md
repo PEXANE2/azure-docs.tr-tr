@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/18/2016
 tags: connectors
 ms.openlocfilehash: 9fe4988b5499943f4b11ec5d640209ceb68e84ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87040239"
 ---
 # <a name="access-and-manage-files-in-onedrive-connector-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak OneDrive bağlayıcıdaki dosyalara erişin ve yönetin
@@ -28,7 +28,7 @@ Logic Apps hakkında daha fazla bilgi edinmek için bkz. [Logic Apps nedir](../l
 
 ## <a name="connect-to-onedrive"></a>OneDrive’a bağlanma
 
-Mantıksal uygulamanızın herhangi bir hizmete erişebilmesi için önce hizmete bir *bağlantı* oluşturmanız gerekir. Bir bağlantı, mantıksal uygulama ile başka bir hizmet arasında bağlantı sağlar. Örneğin, OneDrive 'a bağlanmak için önce OneDrive *bağlantınız*olması gerekir. Bağlantı oluşturmak için, bağlanmak istediğiniz hizmete erişmek için normalde kullandığınız kimlik bilgilerini girin. Bu nedenle, OneDrive ile bağlantıyı oluşturmak için OneDrive hesabınıza ait kimlik bilgilerini girin.
+Mantıksal uygulamanızın herhangi bir hizmete erişebilmesi için önce hizmete bir *bağlantı* oluşturmanız gerekir. Bir bağlantı, mantıksal uygulama ile başka bir hizmet arasında bağlantı sağlar. Örneğin, OneDrive 'a bağlanmak için önce OneDrive *bağlantınız* olması gerekir. Bağlantı oluşturmak için, bağlanmak istediğiniz hizmete erişmek için normalde kullandığınız kimlik bilgilerini girin. Bu nedenle, OneDrive ile bağlantıyı oluşturmak için OneDrive hesabınıza ait kimlik bilgilerini girin.
 
 ### <a name="create-the-connection"></a>Bağlantı oluşturma
 
@@ -42,7 +42,7 @@ Tetikleyici, bir mantıksal uygulamada tanımlanan iş akışını başlatmak i�
 
    !["Microsoft tarafından yönetilen bir P 'yi göster" başlıklı iletişim kutusunda "OneDrive" içeren bir kutu var. Aşağıda dört tetikleyici listesi verilmiştir. Bunlardan ilki "OneDrive-bir dosya oluşturulduğunda" dır. İkinci "OneDrive-bir dosya değiştirildiğinde" seçilidir.](./media/connectors-create-api-onedrive/onedrive-1.png)
 
-2. **Bir dosya değiştirildiğinde**seçin. Bir bağlantı zaten varsa, bir klasör seçmek için seçiciyi göster düğmesini seçin.
+2. **Bir dosya değiştirildiğinde** seçin. Bir bağlantı zaten varsa, bir klasör seçmek için seçiciyi göster düğmesini seçin.
 
    !["Dosya değiştirildiğinde" başlıklı bir iletişim kutusu, ilişkili bir gözatmasına sahip "klasör" başlıklı bir kutu içerir.](./media/connectors-create-api-onedrive/sample-folder.png)
 
@@ -50,7 +50,7 @@ Tetikleyici, bir mantıksal uygulamada tanımlanan iş akışını başlatmak i�
 
    Bu örnekte, mantıksal uygulama, seçtiğiniz klasörde bir dosya güncelleştirildiği zaman çalışır. Bu tetikleyicinin sonuçlarını görmek için size e-posta gönderen başka bir eylem ekleyin. Örneğin, Office 365 Outlook 'a bir dosya güncelleştirildiği sırada size e *-posta gönder* eylemi ekleyin.
 
-3. **Düzenle** düğmesini seçin ve **Sıklık** ve **Aralık** değerlerini ayarlayın. Örneğin, tetikleyicinin 15 dakikada bir yoklamasını istiyorsanız, **sıklığı** **dakika**olarak ayarlayın ve **aralığı** **15**olarak ayarlayın. 
+3. **Düzenle** düğmesini seçin ve **Sıklık** ve **Aralık** değerlerini ayarlayın. Örneğin, tetikleyicinin 15 dakikada bir yoklamasını istiyorsanız, **sıklığı** **dakika** olarak ayarlayın ve **aralığı** **15** olarak ayarlayın. 
 
    !["Dosya değiştirildiğinde" başlıklı bir iletişim kutusu, "klasör", "SıKLıK", "ıNTERVAL", "TIMEZONE" ve "başlangıç zamanı" etiketli beş kutuyu gösterir. "SıKLıK" ve "saat dılımı" alanları için açılan listeler bulunur.](./media/connectors-create-api-onedrive/trigger-properties.png)
 
@@ -60,7 +60,7 @@ Tetikleyici, bir mantıksal uygulamada tanımlanan iş akışını başlatmak i�
 
 Eylem, mantıksal uygulamada tanımlanan iş akışı tarafından yürütülen bir işlemdir. [Eylemler hakkında daha fazla bilgi edinin](../logic-apps/logic-apps-overview.md#logic-app-concepts).
 
-1. Artı işaretini seçin. Birkaç seçenek görürsünüz: **eylem ekleme**, **koşul ekleme**veya **daha fazla** seçenekten biri.
+1. Artı işaretini seçin. Birkaç seçenek görürsünüz: **eylem ekleme**, **koşul ekleme** veya **daha fazla** seçenekten biri.
 
    ![Ekran görüntüsünde dört düğme gösterilir: "+ yeni adım", "Eylem Ekle", "koşul Ekle" ve "... Daha fazla ".](./media/connectors-create-api-onedrive/add-action.png)
 
@@ -70,7 +70,7 @@ Eylem, mantıksal uygulamada tanımlanan iş akışı tarafından yürütülen b
 
    !["Microsoft tarafından yönetilen bir P 'yi göster" başlıklı iletişim kutusunda "OneDrive" içeren bir kutu var. Aşağıda sekiz eylemin listesi verilmiştir. Birincisi "OneDrive-dosya oluştur" ' u ve bu seçilir.](./media/connectors-create-api-onedrive/onedrive-actions.png) 
 
-4. Örneğimizde **OneDrive-dosya oluştur**' u seçin. Zaten bir bağlantı varsa, dosyayı yerleştirmek için **klasör yolunu** seçin, **dosya adını**girin ve istediğiniz **dosya içeriğini** seçin:  
+4. Örneğimizde **OneDrive-dosya oluştur**' u seçin. Zaten bir bağlantı varsa, dosyayı yerleştirmek için **klasör yolunu** seçin, **dosya adını** girin ve istediğiniz **dosya içeriğini** seçin:  
 
    !["Dosya oluştur" başlıklı iletişim kutusu, "klasör yolu", "dosya adı" ve "klasör IÇERIĞI" etiketli üç kutuyu gösterir. "Klasör yolu" kutusunun yanında bir dizin tarama düğmesi vardır.](./media/connectors-create-api-onedrive/sample-action.png)
 

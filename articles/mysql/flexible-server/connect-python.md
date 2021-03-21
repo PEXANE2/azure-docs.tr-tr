@@ -9,10 +9,10 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 9/21/2020
 ms.openlocfilehash: ff14bb1daeef6fc54ee5d11632ad98a29db2a172
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90947891"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-mysql---flexible-server"></a>Hızlı başlangıç: MySQL kullanarak MySQL için Azure veritabanı 'na bağlanma ve veri sorgulama-esnek sunucu
@@ -77,11 +77,11 @@ Bu makaledeki her kod örneği için:
 
 1. Metin düzenleyicisinde yeni bir dosya oluşturun.
 1. Kod örneğini dosyaya ekleyin. Kodda,,, `<mydemoserver>` `<myadmin>` `<mypassword>` ve `<mydatabase>` yer tutucuları MySQL sunucunuzun ve veritabanınızın değerleriyle değiştirin.
-1. Dosyayı, *C:\pythonmysql\createtable.py* veya */Home/username/pythonmysql/CreateTable.py*gibi *. Kopyala* uzantısıyla bir proje klasörüne kaydedin.
+1. Dosyayı, *C:\pythonmysql\createtable.py* veya */Home/username/pythonmysql/CreateTable.py* gibi *. Kopyala* uzantısıyla bir proje klasörüne kaydedin.
 1. Kodu çalıştırmak için, bir komut istemi veya kabuğu açın `bash` ve dizini proje klasörünüze değiştirin (örneğin,) `cd pythonmysql` . `python`Komutun ardından dosya adını yazın `python createtable.py` ve ENTER tuşuna basın. 
    
    > [!NOTE]
-   > Windows 'ta *python.exe* BULUNAMAZSA, yol ortam değişkeninizin Python yolunu eklemeniz veya örneğin *python.exe*tam yolunu sağlamanız gerekebilir `C:\python27\python.exe createtable.py` .
+   > Windows 'ta *python.exe* BULUNAMAZSA, yol ortam değişkeninizin Python yolunu eklemeniz veya örneğin *python.exe* tam yolunu sağlamanız gerekebilir `C:\python27\python.exe createtable.py` .
 
 ### <a name="create-a-table-and-insert-data"></a>Tablo oluşturma ve veri ekleme
 

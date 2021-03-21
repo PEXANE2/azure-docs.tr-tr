@@ -4,10 +4,10 @@ description: Application Insights ile sürekli izlemeyi hızlı bir şekilde aya
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.openlocfilehash: fd7cd6a107ed45adb60167a57661b60be5dc8212
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86517136"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>Yayın ardışık düzenine sürekli izleme ekleme
@@ -24,7 +24,7 @@ Sürekli izleme sayesinde, yayın işlem hatları Application Insights ve diğer
    
 1. **Yeni** ' nin yanındaki oku aşağı kaydırın ve **Yeni sürüm işlem hattı**' nı seçin. Ya da henüz bir işlem hattınız yoksa görüntülenen sayfada yeni işlem **hattı** ' nı seçin.
    
-1. **Şablon seçin** bölmesinde, **sürekli izlemeye sahip Azure App Service dağıtımı**arayıp seçin ve ardından **Uygula**' yı seçin. 
+1. **Şablon seçin** bölmesinde, **sürekli izlemeye sahip Azure App Service dağıtımı** arayıp seçin ve ardından **Uygula**' yı seçin. 
 
    ![Yeni Azure Pipelines yayın işlem hattı](media/continuous-monitoring/001.png)
 
@@ -36,7 +36,7 @@ Sürekli izleme sayesinde, yayın işlem hatları Application Insights ve diğer
 
     | Parametre        | Değer |
    | ------------- |:-----|
-   | **Aşama adı**      | Bir aşama adı sağlayın veya **1. aşamada**bırakın. |
+   | **Aşama adı**      | Bir aşama adı sağlayın veya **1. aşamada** bırakın. |
    | **Azure aboneliği** | Açılır ve kullanmak istediğiniz bağlı Azure aboneliğini seçin.|
    | **Uygulama türü** | Açılır ve uygulama türü ' nü seçin. |
    | **App Service adı** | Azure App Service adını girin. |
@@ -47,7 +47,7 @@ Sürekli izleme sayesinde, yayın işlem hatları Application Insights ve diğer
 
 ## <a name="modify-alert-rules"></a>Uyarı kurallarını değiştirme
 
-Kullanıma hazır, **sürekli izleme şablonuyla Azure App Service dağıtımı** dört uyarı kuralına sahiptir: **kullanılabilirlik**, **başarısız istekler**, **sunucu yanıt süresi**ve **sunucu özel durumları**. Daha fazla kural ekleyebilir veya kural ayarlarını hizmet seviyesi gereksinimlerinize uyacak şekilde değiştirebilirsiniz. 
+Kullanıma hazır, **sürekli izleme şablonuyla Azure App Service dağıtımı** dört uyarı kuralına sahiptir: **kullanılabilirlik**, **başarısız istekler**, **sunucu yanıt süresi** ve **sunucu özel durumları**. Daha fazla kural ekleyebilir veya kural ayarlarını hizmet seviyesi gereksinimlerinize uyacak şekilde değiştirebilirsiniz. 
 
 Uyarı kuralı ayarlarını değiştirmek için:
 
@@ -75,7 +75,7 @@ Dağıtım kapıları eklemek için:
    
    ![Dağıtım öncesi koşulları](media/continuous-monitoring/004.png)
    
-1. **Dağıtım öncesi koşullar** Yapılandırma bölmesinde, **kapıları** öğesini **etkin**olarak ayarlayın.
+1. **Dağıtım öncesi koşullar** Yapılandırma bölmesinde, **kapıları** öğesini **etkin** olarak ayarlayın.
    
 1. **Dağıtım kapıları**' ın yanındaki **Ekle**' yi seçin.
    
@@ -83,7 +83,7 @@ Dağıtım kapıları eklemek için:
    
    ![Azure Izleyici uyarılarını sorgulama](media/continuous-monitoring/005.png)
    
-1. **Değerlendirme seçenekleri**altında, **ağ geçitleri için yeniden değerlendirme ve kapıların** **başarısız olduğu zaman aşımı**arasındaki süre gibi ayarlar için istediğiniz değerleri girin. 
+1. **Değerlendirme seçenekleri** altında, **ağ geçitleri için yeniden değerlendirme ve kapıların** **başarısız olduğu zaman aşımı** arasındaki süre gibi ayarlar için istediğiniz değerleri girin. 
 
 ## <a name="view-release-logs"></a>Yayın günlüklerini görüntüle
 

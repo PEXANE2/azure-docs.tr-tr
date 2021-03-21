@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
 ms.openlocfilehash: ff19275270e5b6572fb7d637b88c4736a3aa6ea0
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92456492"
 ---
 # <a name="tutorial-integrate-carbonite-endpoint-backup-with-azure-active-directory"></a>Öğretici: Carbonite uç nokta yedeklemesini Azure Active Directory ile tümleştirme
@@ -28,7 +28,7 @@ Bu öğreticide, Carbonite uç nokta yedeklemesini Azure Active Directory (Azure
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -54,7 +54,7 @@ Carbonite uç nokta yedeğinin tümleştirmesini Azure AD ile yapılandırmak i�
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Carbonite uç noktası yedeklemesi Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Carbonite uç noktası yedeklemesiyle ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Carbonite uç noktası yedeklemesi Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Carbonite uç noktası yedeklemesiyle ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Carbonite uç noktası yedeklemesi ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -131,7 +131,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![Ekran görüntüsü, şirketin seçtiği Carbonite uç noktasını gösterir.](media/carbonite-endpoint-backup-tutorial/configure1.png)
 
-5. **Çoklu oturum**açma ' ya tıklayın.
+5. **Çoklu oturum** açma ' ya tıklayın.
 
     ![Ekran görüntüsünde çoklu oturum açma seçiliyken şirket görüntülenir.](media/carbonite-endpoint-backup-tutorial/configure2.png)
 

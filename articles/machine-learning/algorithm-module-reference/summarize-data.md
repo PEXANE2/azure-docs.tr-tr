@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 01/27/2020
 ms.openlocfilehash: 5206565b85d1551e5e551f1dfe75d28c93bc53f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90898208"
 ---
 # <a name="summarize-data"></a>Verileri Özetleme
@@ -46,7 +46,7 @@ Modül her bir sütunun önemli puanlarını hesaplar ve giriş olarak girilen h
 
 Modülden rapor aşağıdaki istatistikleri içerebilir. 
 
-|Sütun adı|Açıklama|
+|Sütun adı|Description|
 |------|------|  
 |**Özellik**|Sütunun adı|
 |**Biriktirme**|Tüm satırların sayısı|

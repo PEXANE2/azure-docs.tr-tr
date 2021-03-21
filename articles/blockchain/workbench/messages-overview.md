@@ -5,10 +5,10 @@ ms.date: 09/05/2019
 ms.topic: article
 ms.reviewer: brendal
 ms.openlocfilehash: 14bd0f84bc9490d95d3dbe0b9f122882f0d2059d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74324503"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Azure blok zinciri çalışma ekranı mesajlaşma tümleştirmesi
@@ -63,7 +63,7 @@ Blok zinciri çalışma ekranı aşağıdaki alanlarla bir yanıt döndürür:
 | ConnectionID          | Blok zinciri bağlantısı için benzersiz tanımlayıcı|
 | Iletichemaversion  | Mesajlaşma şeması sürümü |
 | Ileti Gename           | **CreateUserUpdate** |
-| durum                | Kullanıcı oluşturma isteğinin durumu.  Başarılı olursa, değer **başarılı**olur. Hata durumunda, değer **hata**.     |
+| durum                | Kullanıcı oluşturma isteğinin durumu.  Başarılı olursa, değer **başarılı** olur. Hata durumunda, değer **hata**.     |
 | AdditionalInformation | Durum temelinde sunulan ek bilgiler |
 
 Blok zinciri çalışma ekranı 'ndan başarılı bir şekilde **Kullanıcı yanıtı oluştur** :
@@ -344,9 +344,9 @@ Bir Kullanıcı blok zinciri çalışma ekranı 'nda oluşan olaylar hakkında b
 ### <a name="consuming-event-grid-events-with-logic-apps"></a>Logic Apps Event Grid olaylarını kullanma
 
 1. Azure portal yeni bir **Azure mantıksal uygulaması** oluşturun.
-2. Portalda Azure Logic App 'i açarken bir tetikleyici seçmeniz istenir. **Bir kaynak olay gerçekleştiğinde Azure Event Grid**seçin.
+2. Portalda Azure Logic App 'i açarken bir tetikleyici seçmeniz istenir. **Bir kaynak olay gerçekleştiğinde Azure Event Grid** seçin.
 3. İş akışı Tasarımcısı görüntülendiğinde oturum açmanız istenir.
-4. Aboneliği seçin. **Microsoft. EventGrid. konular**olarak kaynak. Azure blok zinciri çalışma ekranı kaynak grubundaki kaynak adı listesinden **kaynak adı** ' nı seçin.
+4. Aboneliği seçin. **Microsoft. EventGrid. konular** olarak kaynak. Azure blok zinciri çalışma ekranı kaynak grubundaki kaynak adı listesinden **kaynak adı** ' nı seçin.
 5. Blok zinciri çalışma ekranının kaynak grubundaki Event Grid seçin.
 
 ## <a name="using-service-bus-topics-for-notifications"></a>Bildirimler için Service Bus konuları kullanma
@@ -354,8 +354,8 @@ Bir Kullanıcı blok zinciri çalışma ekranı 'nda oluşan olaylar hakkında b
 Service Bus konular, kullanıcılara blok zinciri çalışma ekranı 'nda meydana gelen olayları bildirmek için kullanılabilir. 
 
 1. Çalışma ekranının kaynak grubu içindeki Service Bus gidin.
-2. **Konular**' ı seçin.
-3. **Çıkış konusunu**seçin.
+2. **Konu başlıkları**'na tıklayın.
+3. **Çıkış konusunu** seçin.
 4. Bu konuda yeni bir abonelik oluşturun. Bunun için bir anahtar edinin.
 5. Bu abonelikteki olaylara abone olan bir program oluşturun.
 
@@ -364,12 +364,12 @@ Service Bus konular, kullanıcılara blok zinciri çalışma ekranı 'nda meydan
 1. Azure portal yeni bir **Azure mantıksal uygulaması** oluşturun.
 2. Portalda Azure Logic App 'i açarken bir tetikleyici seçmeniz istenir. Arama kutusuna **Service Bus** yazın ve Service Bus sahip olmasını istediğiniz etkileşim türü için uygun tetikleyiciyi seçin. Örneğin, **Service Bus--bir konu aboneliğinde bir ileti alındığında (otomatik olarak tamamlanır)**.
 3. İş akışı Tasarımcısı görüntülendiğinde Service Bus için bağlantı bilgilerini belirtin.
-4. Aboneliğinizi seçin ve çalışma **ekranı-dış**konusunu belirtin.
+4. Aboneliğinizi seçin ve çalışma **ekranı-dış** konusunu belirtin.
 5. Uygulamanız için bu tetikleyiciden gelen iletiden yararlanan mantığı geliştirin.
 
 ## <a name="notification-message-reference"></a>Bildirim iletisi başvurusu
 
-**MessageName**öğesine bağlı olarak, bildirim iletileri aşağıdaki ileti türlerinden birine sahiptir.
+**MessageName** öğesine bağlı olarak, bildirim iletileri aşağıdaki ileti türlerinden birine sahiptir.
 
 ### <a name="block-message"></a>İletiyi engelle
 
@@ -401,7 +401,7 @@ Ayrı bloklarla ilgili bilgiler içerir. *Blockmessage* , blok düzeyi bilgileri
 | TransactionId      | Azure blok zinciri çalışma ekranı içindeki işlem için benzersiz tanımlayıcı |
 | Işlem karması    | Genel muhasebedeki işlemin karması |
 | Kaynak               | İşlem kaynağı için genel muhasebedeki benzersiz tanımlayıcı |
-| şöyle değiştirin:                 | İşlem hedefi için genel muhasebedeki benzersiz tanımlayıcı |
+| kullanıcısı                 | İşlem hedefi için genel muhasebedeki benzersiz tanımlayıcı |
 | provisioningStatus | İşlem için sağlama işleminin geçerli durumunu tanımlar. Olası değerler şunlardır: </br>0 – işlem, veritabanında API tarafından oluşturulmuştur</br>1 – işlem, genel muhasebeye gönderildi</br>2 – işlem, genel muhasebeye başarıyla yürütüldü</br>3 veya 4-işlem, genel muhasebeye işlenemedi</br>5-işlem, genel muhasebeye başarıyla yürütüldü |
 
 Blok zinciri çalışma ekranı 'ndan bir *blok iletisi* örneği:
@@ -463,7 +463,7 @@ Bir sözleşme hakkındaki bilgileri içerir. İleti, sözleşme özelliklerine 
 | TransactionId | Azure blok zinciri çalışma ekranı içindeki işlem için benzersiz tanımlayıcı |
 | Işlem karması | Genel muhasebedeki işlemin karması |
 | Kaynak | İşlem kaynağı için genel muhasebedeki benzersiz tanımlayıcı |
-| şöyle değiştirin: | İşlem hedefi için genel muhasebedeki benzersiz tanımlayıcı |
+| kullanıcısı | İşlem hedefi için genel muhasebedeki benzersiz tanımlayıcı |
 
 #### <a name="contract-properties"></a>Sözleşme Özellikleri
 
@@ -591,7 +591,7 @@ Blok zinciri çalışma ekranı 'ndan bir *ContractMessage* örneği:
 | TransactionId      | Azure blok zinciri çalışma ekranı içindeki işlem için benzersiz tanımlayıcı |
 | Işlem karması    | Genel muhasebedeki işlemin karması |
 | Kaynak               | İşlem kaynağı için genel muhasebedeki benzersiz tanımlayıcı |
-| şöyle değiştirin:                 | İşlem hedefi için genel muhasebedeki benzersiz tanımlayıcı |
+| kullanıcısı                 | İşlem hedefi için genel muhasebedeki benzersiz tanımlayıcı |
 
 Blok zinciri çalışma ekranı 'ndan *Eventmessage Contractfunctionınvocation* örneği:
 

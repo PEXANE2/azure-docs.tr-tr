@@ -9,10 +9,10 @@ ms.service: site-recovery
 ms.date: 12/03/2018
 ms.author: sharrai
 ms.openlocfilehash: b9869ae7dfbf5afd6b8d3b870a2ad4e56fd54c1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91250085"
 ---
 # <a name="upgrade-windows-server-serversystem-center-2012-r2-vmm-to-windows-servervmm-2016"></a>Windows Server Server/System Center 2012 R2 VMM 'yi Windows Server/VMM 2016 'ye yükseltme 
@@ -51,7 +51,7 @@ Yükseltmeden önce şunları göz önünde bulabilirsiniz:-
 
 - Her iki tarafta da SCVMMs tarafından yönetilen sitelerinizden ikisi arasında çoğaltma yapıyorsanız, birincil tarafı yükseltmeden önce kurtarma yüzinizi yükseltdiğinizden emin olun.
   > [!WARNING]
-  > SCVMM 2012 R2 'yi yükseltirken, dağıtılmış anahtar yönetimi altında, **şifreleme anahtarlarını Active Directory ' de depolamayı**seçin. Hizmet hesabı ve dağıtılmış anahtar yönetimi ayarlarını dikkatle seçin. Seçiminize bağlı olarak, şablonlardaki parolalar gibi şifrelenmiş veriler yükseltmeden sonra kullanılamayabilir ve Azure Site Recovery ile çoğaltmayı etkileyebilecek olabilir
+  > SCVMM 2012 R2 'yi yükseltirken, dağıtılmış anahtar yönetimi altında, **şifreleme anahtarlarını Active Directory ' de depolamayı** seçin. Hizmet hesabı ve dağıtılmış anahtar yönetimi ayarlarını dikkatle seçin. Seçiminize bağlı olarak, şablonlardaki parolalar gibi şifrelenmiş veriler yükseltmeden sonra kullanılamayabilir ve Azure Site Recovery ile çoğaltmayı etkileyebilecek olabilir
 
 > [!IMPORTANT]
 > Lütfen [önkoşulların](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#requirements-and-limitations) ayrıntılı SCVMM belgelerine bakın
@@ -75,7 +75,7 @@ Windows sever 2012 R2 konaklarınızı yükseltmeden önce, SCVMM 2012 R2 'yi SC
 
 1.  Denetim Masası-> programlar-> programlar ve Özellikler->Microsoft Azure Site Recovery ' a giderek ASR sağlayıcısını kaldırın ve Kaldır ' a tıklayın.
 2. [SCVMM veritabanını koruma ve işletim sistemini yükseltme](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#back-up-and-upgrade-the-operating-system)
-3. **Program Ekle Kaldır**' da **VMM**  >  **Kaldır**' ı seçin. b. **Özellikleri Kaldır**' ı seçin ve ardından V**mm YÖNETIM sunucusu ve VMM konsolu**' nu seçin. c. **Veritabanı seçenekleri**' nde **veritabanını sakla**' yı seçin. d. Özeti gözden geçirin ve **Kaldır**' a tıklayın.
+3. **Program Ekle Kaldır**' da **VMM**  >  **Kaldır**' ı seçin. b. **Özellikleri Kaldır**' ı seçin ve ardından V **mm YÖNETIM sunucusu ve VMM konsolu**' nu seçin. c. **Veritabanı seçenekleri**' nde **veritabanını sakla**' yı seçin. d. Özeti gözden geçirin ve **Kaldır**' a tıklayın.
 
 4. [VMM 2016 'yi yükler](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#install-vmm-2016)
 5. **Yapılar** sekmesindeki her BIR konağın SCVMM 'yi başlatın ve durumunu denetleyin. En son durumu almak için **Yenile** ' ye tıklayın. Durumu "Ilgilenilmesi gerekiyor" olarak görmeniz gerekir. 

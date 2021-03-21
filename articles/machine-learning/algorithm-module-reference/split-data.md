@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: a4c93b12ad654e54a7f3c7ee0e75507d5cb45e90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90907827"
 ---
 # <a name="split-data-module"></a>Veri modülünü Böl
@@ -30,7 +30,7 @@ Bu modül, verileri eğitim ve test kümelerine ayırmanız gerektiğinde faydal
 > Bölme modunu seçmeden önce, ihtiyacınız olan bölme türünü belirlemek için tüm seçenekleri okuyun.
 > Bölme modunu değiştirirseniz, diğer tüm seçenekler sıfırlanmış olabilir.
 
-1. Tasarımcı 'daki işlem hattınızı **bölünmüş veri** modülünü ekleyin. Bu modülü, **veri dönüştürme**altında, **örnek ve bölünmüş** kategoride bulabilirsiniz.
+1. Tasarımcı 'daki işlem hattınızı **bölünmüş veri** modülünü ekleyin. Bu modülü, **veri dönüştürme** altında, **örnek ve bölünmüş** kategoride bulabilirsiniz.
 
 1. **Ayırma modu**: sahip olduğunuz veri türüne ve onu bölmek istediğiniz bir değere bağlı olarak aşağıdaki modlardan birini seçin. Her bölme modunun farklı seçenekleri vardır.
 
@@ -48,7 +48,7 @@ Bu modül, verileri eğitim ve test kümelerine ayırmanız gerektiğinde faydal
 
 1. Tasarımcı 'daki işlem hattınızı [bölünmüş veri](./split-data.md) modülünü ekleyin ve ayırmak istediğiniz veri kümesini bağlayın.
   
-1. **Ayırma modu**Için **satırları Böl**' ü seçin. 
+1. **Ayırma modu** Için **satırları Böl**' ü seçin. 
 
 1. **İlk çıkış veri kümesindeki satırların kesri**: ilk (sol tarafta) çıktıya kaç satır gideceğini öğrenmek için bu seçeneği kullanın. Diğer tüm satırlar ikinci (sağ taraf) çıktıya gider.
 
@@ -60,9 +60,9 @@ Bu modül, verileri eğitim ve test kümelerine ayırmanız gerektiğinde faydal
 
 1. **Rastgele çekirdek**: kullanılacak örnek dizisini başlatmak için negatif olmayan bir tamsayı değeri girin. Bu varsayılan çekirdek, rastgele sayılar üreten tüm modüllerde kullanılır. 
 
-   Bir çekirdek belirtme, sonuçların tekrarlanabilir olmasını sağlar. Bir bölme işleminin sonuçlarını tekrarlamanız gerekiyorsa, rastgele numara Oluşturucu için bir çekirdek belirtmeniz gerekir. Aksi takdirde, rastgele çekirdek varsayılan olarak **0**olarak ayarlanır; Bu, ilk çekirdek değer sistem saatinden elde edilen anlamına gelir. Sonuç olarak, her bölme yaptığınızda verilerin dağıtılması biraz farklı olabilir. 
+   Bir çekirdek belirtme, sonuçların tekrarlanabilir olmasını sağlar. Bir bölme işleminin sonuçlarını tekrarlamanız gerekiyorsa, rastgele numara Oluşturucu için bir çekirdek belirtmeniz gerekir. Aksi takdirde, rastgele çekirdek varsayılan olarak **0** olarak ayarlanır; Bu, ilk çekirdek değer sistem saatinden elde edilen anlamına gelir. Sonuç olarak, her bölme yaptığınızda verilerin dağıtılması biraz farklı olabilir. 
 
-1. **Ayrılmış bölme**: iki çıkış veri kümesinin *konuşmasıyla Strata sütunu* veya *Stratification Key sütunundaki*değerlerin temsili bir örneğini içermesini sağlamak için bu seçeneği **true** olarak ayarlayın. 
+1. **Ayrılmış bölme**: iki çıkış veri kümesinin *konuşmasıyla Strata sütunu* veya *Stratification Key sütunundaki* değerlerin temsili bir örneğini içermesini sağlamak için bu seçeneği **true** olarak ayarlayın. 
 
    Birbirine bağlı örnekleme ile, veriler her bir çıktı veri kümesinin her bir hedef değerin kabaca aynı yüzdesini almasını sağlayan şekilde bölünür. Örneğin, eğitimin ve test küistemlerinizin, sonuca veya başka bir sütuna (cinsiyet gibi) göre kabaca dengeleneceği şekilde emin olmak isteyebilirsiniz.
 
@@ -73,7 +73,7 @@ Bu modül, verileri eğitim ve test kümelerine ayırmanız gerektiğinde faydal
 
 1. Veri hattınızı [split Data](./split-data.md) modülünü ekleyin ve ayırmak istediğiniz veri kümesine giriş olarak bağlayın.  
   
-1. **Ayırma modu**için **normal ifade Böl**' ü seçin.
+1. **Ayırma modu** için **normal ifade Böl**' ü seçin.
 
 1. **Normal ifade** kutusuna geçerli bir normal ifade girin. 
   
@@ -87,7 +87,7 @@ Aşağıdaki örneklerde, bir veri kümesinin **normal ifade** seçeneği kullan
 
 ### <a name="single-whole-word"></a>Tek bir tam kelime 
 
-Bu örnek, sütundaki metni içeren tüm satırları ilk veri kümesine yerleştirir `Gryphon` `Text` . Diğer satırları **bölünen verilerin**ikinci çıktısına yerleştirir.
+Bu örnek, sütundaki metni içeren tüm satırları ilk veri kümesine yerleştirir `Gryphon` `Text` . Diğer satırları **bölünen verilerin** ikinci çıktısına yerleştirir.
 
 ```text
     \"Text" Gryphon  
@@ -107,18 +107,18 @@ Bu örnek, veri kümesinin ikinci sütunundaki herhangi bir konumda belirtilen d
 
 1. Veri hattınızı [split Data](./split-data.md) modülünü ekleyin ve ayırmak istediğiniz veri kümesine giriş olarak bağlayın.
   
-1. **Ayırma modu**Için **göreli ifade**' ı seçin.
+1. **Ayırma modu** Için **göreli ifade**' ı seçin.
   
 1. **İlişkisel ifade** kutusunda, tek bir sütunda karşılaştırma işlemi gerçekleştiren bir ifade girin.
 
-   **Sayısal sütun**için:
+   **Sayısal sütun** için:
    - Sütun, tarih ve saat veri türleri dahil olmak üzere herhangi bir sayısal veri türü sayı içerir.
    - İfade, en fazla bir sütun adına başvurabilir.
    - `&`Ve işlemi için ve işareti karakterini kullanın. `|`Veya işlemi için kanal karakterini kullanın.
    - Aşağıdaki işleçler desteklenir: `<` ,,, `>` `<=` `>=` , `==` , `!=` .
    - Ve kullanarak işlemleri gruplayabilirsiniz `(` `)` .
    
-   **Dize sütunu**için:
+   **Dize sütunu** için:
    - Aşağıdaki işleçler desteklenir: `==` , `!=` .
 
 1. İşlem hattını gönderme.

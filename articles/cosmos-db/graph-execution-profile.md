@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/27/2019
 ms.author: chrande
 ms.openlocfilehash: 18cefb1dd80368a8ccdad9f6f3ffc30881a8a889
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93087494"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>Gremlin sorgularınızı hesaplamak için yürütme profili adımını kullanma
@@ -22,7 +22,7 @@ Bu makale, Azure Cosmos DB Gremlin API’si graf veritabanları için yürütme 
 
 Bu adımı kullanmak için, yalnızca `executionProfile()` Gremlin sorgusunun sonundaki işlev çağrısını ekleyin. **Gremlin sorgunuz yürütülecektir** ve işlemin sonucu sorgu yürütme PROFILIYLE bir JSON yanıt nesnesi döndürür.
 
-Örneğin:
+Örnek:
 
 ```java
     // Basic traversal
@@ -139,12 +139,12 @@ Aşağıda, döndürülecek çıkışın ek açıklamalı bir örneği verilmiş
 ## <a name="execution-profile-response-objects"></a>Yürütme profili yanıt nesneleri
 
 Bir executionProfile () işlevinin yanıtı, aşağıdaki yapıyla bir JSON nesneleri hiyerarşisi sağlayacak:
-  - **Gremlin Operation nesnesi** : yürütülen tüm Gremlin işlemini temsil eder. Aşağıdaki özellikleri içerir.
+  - **Gremlin Operation nesnesi**: yürütülen tüm Gremlin işlemini temsil eder. Aşağıdaki özellikleri içerir.
     - `gremlin`: Yürütülen açık Gremlin bildirisi.
     - `totalTime`: Bu adımın yürütülmesi için milisaniye cinsinden süre. 
     - `metrics`: Sorguyu yerine getirmek için yürütülen Cosmos DB çalışma zamanı işleçlerini her birini içeren bir dizi. Bu liste, yürütme sırasına göre sıralanır.
     
-  - **Cosmos DB çalışma zamanı işleçleri** : tüm Gremlin işleminin bileşenlerinin her birini temsil eder. Bu liste, yürütme sırasına göre sıralanır. Her nesne aşağıdaki özellikleri içerir:
+  - **Cosmos DB çalışma zamanı işleçleri**: tüm Gremlin işleminin bileşenlerinin her birini temsil eder. Bu liste, yürütme sırasına göre sıralanır. Her nesne aşağıdaki özellikleri içerir:
     - `name`: İşlecin adı. Bu, değerlendirilen ve yürütülen adımın türüdür. Aşağıdaki tabloda daha fazla bilgi edinin.
     - `time`: Belirli bir operatör tarafından geçen süre (milisaniye olarak).
     - `annotations`: Yürütülen işlece özgü ek bilgiler içerir.
@@ -155,7 +155,7 @@ Bir executionProfile () işlevinin yanıtı, aşağıdaki yapıyla bir JSON nesn
     - `storeOps.count`: Bu depolama işleminin döndürdüğü sonuç sayısını temsil eder.
     - `storeOps.size`: Belirli bir depolama işleminin sonucunun bayt cinsinden boyutunu temsil eder.
 
-Cosmos DB Gremlin çalışma zamanı Işleci|Açıklama
+Cosmos DB Gremlin çalışma zamanı Işleci|Description
 ---|---
 `GetVertices`| Bu adım, kalıcılık katmanından tahmine dayalı bir nesne kümesi edinir. 
 `GetEdges`| Bu adım bir köşe kümesine bitişik olan kenarları elde eder. Bu adım bir veya daha fazla depolama işlemine yol açabilir.

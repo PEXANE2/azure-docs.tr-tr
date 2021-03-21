@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/13/2019
 ms.author: jeedes
 ms.openlocfilehash: 2c3b591ae8d4bf1489dcc96ceee3f9bc572ecc26
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92505854"
 ---
 # <a name="tutorial-tutorial-azure-active-directory-single-sign-on-sso-integration-with-pronovos-analytics"></a>Öğretici: Öğretici: ProNovos Analytics ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -56,7 +56,7 @@ ProNovos Analytics 'in tümleştirmesini Azure AD 'ye göre yapılandırmak içi
 
 ## <a name="configure-and-test-azure-ad-sso-for-pronovos-analytics"></a>ProNovos Analytics için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu ProNovos Analytics ile yapılandırın ve test edin. SSO 'nun çalışması için, ProNovos Analytics 'te bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu ProNovos Analytics ile yapılandırın ve test edin. SSO 'nun çalışması için, ProNovos Analytics 'te bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu ProNovos Analytics ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
