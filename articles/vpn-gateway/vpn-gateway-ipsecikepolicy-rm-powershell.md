@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
 ms.openlocfilehash: 96931d2dd94a8a31021ebe62caaefc54f643b007
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94649271"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>S2S VPN veya VNet-VNet bağlantıları için IPsec/IKE ilkesi yapılandırma
@@ -34,8 +34,9 @@ Bu makalede bir IPSec/ıKE İlkesi oluşturup yapılandırma ve yeni veya mevcut
 
 > [!IMPORTANT]
 > 1. IPSec/ıKE ilkesinin yalnızca aşağıdaki ağ geçidi SKU 'Larında çalışmadığını unutmayın:
->    * ***VpnGw1, VpnGw2, VpnGw3** _ (rota tabanlı) _ ***Standart** _ ve _*_HighPerformance_*_ (rota tabanlı)
-> 2. Belirli bir bağlantı için yalnızca _*_bir_*_ ilke birleşimi belirtebilirsiniz.
+>    * ***VpnGw1, VpnGw2, VpnGw3*** (rota tabanlı)
+>    * ***Standart** _ ve _ *_HighPerformance_** (rota tabanlı)
+> 2. Belirli bir bağlantı için yalnızca ***bir*** ilke birleşimi belirtebilirsiniz.
 > 3. IKE (ana mod) ve IPSec (hızlı mod) için tüm algoritmaları ve parametreleri belirtmeniz gerekir. Kısmi ilke belirtimine izin verilmez.
 > 4. İlkenin şirket içi VPN cihazlarınızda desteklendiğinden emin olmak için, VPN cihazınızın satıcı belirtimlerinize başvurun. İlkeler uyumsuz ise, S2S veya VNet-VNet bağlantıları kurulamaz.
 
@@ -55,7 +56,7 @@ Bu makaledeki yönergeler, diyagramda gösterildiği gibi IPSec/ıKE ilkelerini 
 
 Aşağıdaki tabloda, müşteriler tarafından yapılandırılabilen desteklenen şifreleme algoritmaları ve anahtar güçleri listelenmektedir:
 
-| _ *IPSec/Ikev2**  | **Seçenekler**    |
+| **IPsec/IKEv2**  | **Seçenekler**    |
 | ---  | --- 
 | IKEv2 Şifrelemesi | AES256, AES192, AES128, DES3, DES  
 | IKEv2 Bütünlüğü  | SHA384, SHA256, SHA1, MD5  |

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: ca1ee8418bc08d70a031d81a15dc1b4ace2f1a3a
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92461830"
 ---
 # <a name="scenario-custom-isolation-for-vnets"></a>Senaryo: sanal ağlar için özel yalıtım
@@ -33,7 +33,7 @@ Kaç tane yol tablosunun gerekli olacağını anlamak için bir bağlantı matri
 
 Farklı satır desenlerinin sayısı, bu senaryoda ihtiyacımız olacak yol tablolarının sayısı olacaktır. Bu durumda, sanal ağlar için **RT_BLUE** ve **RT_RED** çağıracağız üç yol yolu tablosu ve dallar için **varsayılan** . Dalların her zaman varsayılan yönlendirme tablosuyla ilişkilendirilmesi gerektiğini unutmayın.
 
-Dalların hem kırmızı hem de mavi VNET 'lerden gelen öneklerini öğrenmeleri gerekir. bu nedenle, tüm VNET 'lerin varsayılana yayılması gerekir ( **RT_BLUE** veya **RT_RED**ek olarak). Dallar ön eklerini öğrenmeleri için mavi ve kırmızı VNET 'ler, **RT_BLUE** ve **RT_RED** her iki yol tablosuna yayılır. Sonuç olarak, bu son tasarımdır:
+Dalların hem kırmızı hem de mavi VNET 'lerden gelen öneklerini öğrenmeleri gerekir. bu nedenle, tüm VNET 'lerin varsayılana yayılması gerekir ( **RT_BLUE** veya **RT_RED** ek olarak). Dallar ön eklerini öğrenmeleri için mavi ve kırmızı VNET 'ler, **RT_BLUE** ve **RT_RED** her iki yol tablosuna yayılır. Sonuç olarak, bu son tasarımdır:
 
 * Mavi sanal ağlar:
   * İlişkili yol tablosu: **RT_BLUE**
@@ -62,7 +62,7 @@ Sanal hub yönlendirmesi hakkında daha fazla bilgi için bkz. [sanal hub yönle
 
 Yönlendirmeyi ayarlarken aşağıdaki adımları göz önünde bulundurun.
 
-1. Azure portal, **RT_BLUE** ve **RT_RED**iki özel yol tablosu oluşturun.
+1. Azure portal, **RT_BLUE** ve **RT_RED** iki özel yol tablosu oluşturun.
 2. Yol tablosu için **RT_BLUE**, aşağıdaki ayarlar için:
    * **İlişkilendirme**: tüm mavi VNET 'leri seçin.
    * **Yayma**: dallar için, dalların seçeneğini belirleyin, ımpber DALı (VPN/er/P2S) bağlantıları bu yol tablosuna yolları yayar.

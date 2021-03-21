@@ -12,10 +12,10 @@ ms.author: emtehran
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 87448ea737c11af13a52632e5bf4f67dc54d9ae3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96459225"
 ---
 # <a name="assign-variables-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzları için değişkenler atama
@@ -39,7 +39,7 @@ DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 
 ;
 ```
 
-Aynı DECLARE ifadesinde bir değişkeni başlatamıyor ve kullanamazsınız. Bu noktayı göstermek için, **not** @p1 aynı Declare ifadesinde hem başlatılmış hem de kullanıldığı için aşağıdaki örneğe izin verilmez. Bu nedenle, aşağıdaki örnek bir hata verir:
+Aynı DECLARE ifadesinde bir değişkeni başlatamıyor ve kullanamazsınız. Bu noktayı göstermek için,  @p1 aynı Declare ifadesinde hem başlatılmış hem de kullanıldığı için aşağıdaki örneğe izin verilmez. Bu nedenle, aşağıdaki örnek bir hata verir:
 
 ```sql
 DECLARE @p1 int = 0

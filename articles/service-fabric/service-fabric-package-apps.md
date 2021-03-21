@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 2/23/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 168e6d6dc7ab5bfeccc4e1dabc7bd50efcbe8f34
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98789711"
 ---
 # <a name="package-an-application"></a>Uygulamaları paketleme
@@ -44,7 +44,7 @@ Klasörler, karşılık gelen her öğenin **ad** öznitelikleriyle eşleşecek 
 
 ## <a name="use-setupentrypoint"></a>SetupEntryPoint kullanma
 
-**Setupentrypoint** kullanmanın tipik senaryoları, hizmet başlamadan önce bir yürütülebilir dosya çalıştırmanız veya yükseltilmiş ayrıcalıklarla bir işlem gerçekleştirmeniz gerekir. Örneğin:
+**Setupentrypoint** kullanmanın tipik senaryoları, hizmet başlamadan önce bir yürütülebilir dosya çalıştırmanız veya yükseltilmiş ayrıcalıklarla bir işlem gerçekleştirmeniz gerekir. Örnek:
 
 * Hizmet yürütülebilir dosyasının ihtiyaç duyacağı ortam değişkenlerini ayarlama ve başlatma. Yalnızca Service Fabric programlama modelleriyle yazılmış yürütülebilir dosyalar ile sınırlı değildir. Örneğin npm.exe, bir node.js uygulamasının dağıtımı için yapılandırılmış bazı ortam değişkenlerine ihtiyaç duyuyor.
 * Güvenlik sertifikaları yükleyerek erişim denetimini ayarlama.

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: jeedes
 ms.openlocfilehash: 929c447d1a19b85ab8e12b45198508e5f5747c12
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92521872"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sumtotalcentral"></a>Öğretici: SumTotalCentral ile tümleştirme Azure Active Directory
@@ -61,7 +61,7 @@ SumTotalCentral 'ın Azure AD ile tümleştirilmesini yapılandırmak için, gal
 
 ## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre SumTotalCentral ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre SumTotalCentral ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve SumTotalCentral 'daki ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
 Azure AD çoklu oturum açma 'yı SumTotalCentral ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -118,7 +118,7 @@ Bu bölümde, Azure portal B. Simon adlı bir test kullanıcısı oluşturacaks�
 1. Azure portal sol bölmesinde **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 1. Ekranın üst kısmında **Yeni Kullanıcı**' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
-   1. **Ad** alanına **B. Simon**girin.  
+   1. **Ad** alanına **B. Simon** girin.  
    1. **Kullanıcı adı** alanına, girin `<username>@<companydomain>.<extension>` . Örneğin: `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri unutmayın.
    1. **Oluştur**’u seçin.

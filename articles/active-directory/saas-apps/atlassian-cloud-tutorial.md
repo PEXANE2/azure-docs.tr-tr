@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/02/2020
 ms.author: jeedes
 ms.openlocfilehash: fe83a012cac68f705bc9fabc7748f5a7c7c61bbb
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94330564"
 ---
 # <a name="tutorial-integrate-atlassian-cloud-with-azure-active-directory"></a>Öğretici: Atlasduyi bulutunu Azure Active Directory tümleştirin
@@ -50,8 +50,8 @@ Atlasduyi bulutu 'nın Azure AD ile tümleştirilmesini yapılandırmak için, G
 
 1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama** ' yı seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **atlasduyisi bulutu** yazın.
 1. Sonuçlar panelinden **Atlasduyi bulutu** ' nı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
@@ -106,11 +106,11 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
    ![SAML yapılandırması 2 Ekle](./media/atlassian-cloud-tutorial/add-saml-configuration.png)
 
-1. Azure portal, **Atlasme Cloud** Application Integration sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açmayı ayarla** ' yı seçin.
+1. Azure portal, **Atlasme Cloud** Application Integration sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açmayı ayarla**' yı seçin.
 
    ![SSO 'yu ayarlama](./media/atlassian-cloud-tutorial/set-up-sso.png)
 
-1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML** ' yi seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
 
    ![Azure 'da SAML](./media/atlassian-cloud-tutorial/saml-in-azure.png)
 
@@ -166,7 +166,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
       ![öznitelikler ve talepler](./media/atlassian-cloud-tutorial/user-attributes-and-claims.png)
       
-      b. Atlasme bulutu, **NameIdentifier** 'ın ( **benzersiz kullanıcı tanımlayıcısı** ) kullanıcının e-postasına ( **Kullanıcı. email** ) eşleştirilmesini bekliyor. **Kaynak özniteliğini** düzenleyin ve **Kullanıcı. Mail** olarak değiştirin. Talepte yapılan değişiklikleri kaydedin.
+      b. Atlasme bulutu, **NameIdentifier** 'ın (**benzersiz kullanıcı tanımlayıcısı**) kullanıcının e-postasına eşlenmesini bekliyor (**User.email**). **Kaynak özniteliğini** düzenleyin ve **Kullanıcı. Mail** olarak değiştirin. Talepte yapılan değişiklikleri kaydedin.
 
       ![benzersiz kullanıcı KIMLIĞI](./media/atlassian-cloud-tutorial/unique-user-identifier.png)
       
@@ -180,7 +180,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
       ![görüntü 3](./media/atlassian-cloud-tutorial/email-address.png)
          
-      b. Azure, Azure AD kiracılarında oluşturulan kullanıcılara Microsoft 365 lisansı olmadan **Kullanıcı. Mail** özniteliğini doldurmamışken, bu gibi kullanıcı için e-postayı **userPrincipalName** özniteliğinde depolamaz. Atlasme bulutu, **NameIdentifier** 'ın ( **benzersiz kullanıcı tanımlayıcısı** ) kullanıcının e-postasına ( **User. UserPrincipalName** ) eşlenmesini bekliyor.  **Kaynak özniteliğini** düzenleyin ve **User. UserPrincipalName** olarak değiştirin. Talepte yapılan değişiklikleri kaydedin.
+      b. Azure, Azure AD kiracılarında oluşturulan kullanıcılara Microsoft 365 lisansı olmadan **Kullanıcı. Mail** özniteliğini doldurmamışken, bu gibi kullanıcı için e-postayı **userPrincipalName** özniteliğinde depolamaz. Atlasme bulutu, **NameIdentifier** 'ın (**benzersiz kullanıcı tanımlayıcısı**) kullanıcının e-postasına (**User. UserPrincipalName**) eşlenmesini bekliyor.  **Kaynak özniteliğini** düzenleyin ve **User. UserPrincipalName** olarak değiştirin. Talepte yapılan değişiklikleri kaydedin.
 
       ![e-posta ayarla](./media/atlassian-cloud-tutorial/set-email.png)
          
@@ -192,22 +192,22 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portal sol bölmeden **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur** 'a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, Atlasme bulutuna erişim vererek, B. Simon 'u Azure çoklu oturum açma özelliğini kullanacak şekilde etkinleştireceksiniz.
 
-1. Azure portal **Kurumsal uygulamalar** ' ı seçin ve ardından **tüm uygulamalar** ' ı seçin.
-1. Uygulamalar listesinde, **Atlasduyi bulutu** ' nı seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar** ' ı seçin.
-1. **Kullanıcı Ekle** ' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde, **Atlasduyi bulutu**' nı seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
@@ -216,11 +216,11 @@ Bu bölümde, Atlasme bulutuna erişim vererek, B. Simon 'u Azure çoklu oturum 
 
 Azure AD kullanıcılarının atlasi bulutu 'nda oturum açmasını etkinleştirmek için aşağıdakileri yaparak Atlasme bulutunda Kullanıcı hesaplarını el ile sağlayın:
 
-1. **Yönetim** bölmesinde, **Kullanıcılar** ' ı seçin.
+1. **Yönetim** bölmesinde, **Kullanıcılar**' ı seçin.
 
     ![Atlasme bulut kullanıcıları bağlantısı](./media/atlassian-cloud-tutorial/tutorial-atlassiancloud-14.png)
 
-1. Atlasduyi bulutu 'nda bir kullanıcı oluşturmak için **kullanıcıyı davet et** ' i seçin.
+1. Atlasduyi bulutu 'nda bir kullanıcı oluşturmak için **kullanıcıyı davet et**' i seçin.
 
     ![Atlasduyi bulutu kullanıcısı oluşturma](./media/atlassian-cloud-tutorial/tutorial-atlassiancloud-15.png)
 
@@ -228,7 +228,7 @@ Azure AD kullanıcılarının atlasi bulutu 'nda oturum açmasını etkinleştir
 
     ![Atlasme bulut kullanıcısı](./media/atlassian-cloud-tutorial/tutorial-atlassiancloud-16.png)
 
-1. Kullanıcıya e-posta Daveti göndermek için **kullanıcıları davet et** ' i seçin. Kullanıcıya bir e-posta daveti gönderilir ve daveti kabul ettikten sonra Kullanıcı sistemde etkin olur.
+1. Kullanıcıya e-posta Daveti göndermek için **kullanıcıları davet et**' i seçin. Kullanıcıya bir e-posta daveti gönderilir ve daveti kabul ettikten sonra Kullanıcı sistemde etkin olur.
 
 > [!NOTE]
 > **Kullanıcılar bölümünde** **toplu oluştur** düğmesini seçerek de kullanıcıları toplu olarak oluşturabilirsiniz.

@@ -6,10 +6,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 12/05/2016
 ms.openlocfilehash: d2764e5e3994eb7b80a8e7cf62fb7f437323c97e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96015307"
 ---
 # <a name="analyze-website-logs-using-azure-data-lake-analytics"></a>Azure Data Lake Analytics'i kullanarak Web sitesi günlüklerini çözümleme
@@ -56,7 +56,7 @@ Uygulamaya Kullanıcı tanımlı operatörler ekleme ekleyebilirsiniz.  Daha faz
 
    ![yeni U-SQL Visual Studio projesi](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-new-project.png)
 
-3. **Tamam** düğmesine tıklayın. Visual Studio, Script. usql dosyası ile bir çözüm oluşturur.
+3. **Tamam**'a tıklayın. Visual Studio, Script. usql dosyası ile bir çözüm oluşturur.
 
 4. Script. usql dosyasına aşağıdaki betiği girin:
 

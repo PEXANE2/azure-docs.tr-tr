@@ -9,10 +9,10 @@ ms.date: 06/06/2020
 ms.author: victorh
 ms.custom: fasttrack-edit, references_regions
 ms.openlocfilehash: fad6e27c4ee7e8c10237cb3face5cfab9329b2ed
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98059730"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Otomatik ölçeklendirme ve Alanlar arası yedekli Application Gateway v2 
@@ -27,7 +27,7 @@ Yeni v2 SKU 'SU aşağıdaki geliştirmeleri içerir:
   Bölge yedekliliği yalnızca Azure bölgelerinin kullanılabildiği durumlarda kullanılabilir. Diğer bölgelerde, diğer tüm özellikler desteklenir. Daha fazla bilgi için bkz. [Azure 'Da bölgeler ve kullanılabilirlik alanları](../availability-zones/az-overview.md)
 - **STATIK VIP**: Application Gateway v2 SKU 'SU statik VIP türünü özel olarak destekler. Bu, bir yeniden başlatma işleminden sonra bile, uygulama ağ geçidi ile ilişkili VIP 'nin dağıtımın yaşam döngüsü açısından değişmemesini sağlar.  V1 'de statik bir VIP yok, bu nedenle uygulama ağ geçidi aracılığıyla uygulama hizmetleri 'ne etki alanı adı yönlendirmesi için IP adresi yerine Application Gateway URL 'sini kullanmanız gerekir.
 - **Üstbilgi yeniden yazma**: Application Gateway, v2 SKU 'SU ile http isteği ve yanıt üst bilgilerini eklemenize, kaldırmanıza veya güncelleştirmenize olanak tanır. Daha fazla bilgi için bkz. [http üst bilgilerini Application Gateway yeniden yazma](rewrite-http-headers.md)
-- **Key Vault tümleştirme**: Application Gateway v2, https etkin dinleyicilerine eklenen sunucu sertifikaları için Key Vault tümleştirme desteği sağlar. Daha fazla bilgi için bkz. [Key Vault sertifikalarla TLS sonlandırma](key-vault-certs.md).
+- **Key Vault tümleştirme**: Application Gateway v2, https etkin dinleyicilerine eklenen sunucu sertifikaları için Key Vault tümleştirme desteği sağlar. Daha fazla bilgi için bkz. [Key Vault sertifikalarıyla TLS sonlandırma](key-vault-certs.md).
 - **Azure Kubernetes hizmeti giriş denetleyicisi**: Application Gateway v2 giriş denetleyicisi, Azure Application Gateway aks kümesi olarak bilinen bir Azure Kubernetes hizmeti (aks) için giriş olarak kullanılmasına izin verir. Daha fazla bilgi için bkz. [Application Gateway giriş denetleyicisi nedir?](ingress-controller-overview.md).
 - **Performans iyileştirmeleri**: v2 SKU 'Su, standart/WAF SKU 'su ile karşılaştırıldığında daha ıyı bir TLS yük boşaltma performansı sunar.
 - **Daha hızlı dağıtım ve güncelleştirme zamanı** V2 SKU 'SU, standart/WAF SKU 'suna kıyasla daha hızlı dağıtım ve güncelleştirme süresi sağlar. Bu, WAF yapılandırma değişikliklerini de içerir.

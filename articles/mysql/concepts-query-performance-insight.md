@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/12/2020
 ms.openlocfilehash: 30457b950e6400c799f35924e7b2ee90d868a465
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94535189"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mysql"></a>MySQL için Azure Veritabanı'nda Sorgu Performansı İçgörüleri
@@ -33,9 +33,9 @@ Sorgu Performansı İçgörüleri, en uzun çalışan sorguların ne olduğunu, 
 
 ## <a name="permissions"></a>İzinler
 
-Sorgu Performansı İçgörüleri’ndeki metni görünüm için **Sahip** veya **Katkıda bulunan** izinleri gereklidir. **Okuyucu** , grafikleri ve tabloları görüntüleyebilir ancak metni sorgulayamaz.
+Sorgu Performansı İçgörüleri’ndeki metni görünüm için **Sahip** veya **Katkıda bulunan** izinleri gereklidir. **Okuyucu**, grafikleri ve tabloları görüntüleyebilir ancak metni sorgulayamaz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Sorgu Performansı İçgörüleri çalışması için, verilerin [sorgu deposunda](concepts-query-store.md)bulunması gerekir.
 
@@ -56,7 +56,7 @@ Belirli bir zaman penceresine daraltmak için grafikte tıklayıp sürükleyebil
 ### <a name="wait-statistics"></a>Bekleme istatistikleri
 
 > [!NOTE]
-> Bekleme istatistikleri sorgu performans sorunlarını gidermeye yöneliktir. Yalnızca sorun giderme amacıyla açık olması önerilir. <br>Azure portal "hata iletisini alırsanız, *' Microsoft. DBforMySQL ' için karşılaşılan sorun; istek yerine getirilemiyor. Bu sorun devam ederse veya beklenmiyorsa lütfen bu bilgilerle desteğe başvurun.* " Bekleme istatistiklerini görüntülerken, daha kısa bir zaman aralığı kullanın.
+> Bekleme istatistikleri sorgu performans sorunlarını gidermeye yöneliktir. Yalnızca sorun giderme amacıyla açık olması önerilir. <br>Azure portal "hata iletisini alırsanız,*' Microsoft. DBforMySQL ' için karşılaşılan sorun; istek yerine getirilemiyor. Bu sorun devam ederse veya beklenmiyorsa lütfen bu bilgilerle desteğe başvurun.*" Bekleme istatistiklerini görüntülerken, daha kısa bir zaman aralığı kullanın.
 
 Bekleme istatistikleri, belirli bir sorgunun yürütülmesi sırasında oluşan bekleme olaylarının bir görünümünü sağlar. [MySQL Engine belgelerindeki](https://go.microsoft.com/fwlink/?linkid=2098206)bekleme olayı türleri hakkında daha fazla bilgi edinin.
 

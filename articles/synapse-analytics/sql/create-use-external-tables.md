@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
 ms.openlocfilehash: 5dcd4b7b76752ca5396fc68afc8d4c8e4e1edca5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96462304"
 ---
 # <a name="create-and-use-external-tables-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL havuzunu kullanarak dış tablolar oluşturma ve kullanma
@@ -63,7 +63,7 @@ Bu makaledeki sorgular, örnek veritabanınızda yürütülecektir ve bu nesnele
 
 Azure depolama hesabındaki verilere erişen, Azure AD kimlik veya SAS anahtarı olan kullanıcılara erişim sağlayan dış tablolar oluşturabilirsiniz. Dış tabloları, normal SQL Server dış tablolar oluşturduğunuz şekilde oluşturabilirsiniz. 
 
-Aşağıdaki sorgu, veri kaynağı kullanılarak başvurulan *population.csv* `sqlondemanddemo` ve çağrılan veritabanı kapsamlı kimlik bilgileriyle korunan SynapseSQL demo Azure depolama hesabındanpopulation.csvdosyayı okuyan bir dış tablo oluşturur `sqlondemand` . 
+Aşağıdaki sorgu, veri kaynağı kullanılarak başvurulan  `sqlondemanddemo` ve çağrılan veritabanı kapsamlı kimlik bilgileriyle korunan SynapseSQL demo Azure depolama hesabındanpopulation.csvdosyayı okuyan bir dış tablo oluşturur `sqlondemand` . 
 
 Veri kaynağı ve veritabanı kapsamlı kimlik bilgileri [Kurulum komut](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)dosyasında oluşturulur.
 

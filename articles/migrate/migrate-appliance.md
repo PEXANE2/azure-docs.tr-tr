@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: 08cd0e9d33dd88b9bdc418f3d1bbd382b2d80632
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102038773"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Geçişi gereci
@@ -44,7 +44,7 @@ Gereç birkaç yöntem kullanılarak dağıtılabilir:
 Aşağıdaki tabloda, VMware için Azure geçişi gereç gereksinimleri özetlenmektedir.
 
 > [!Note]
-> VMware ortamınızda çalışan SQL Server örnekleri ve veritabanlarının keşfi ve değerlendirmesi artık önizlemededir. Bu özelliği denemek için **Avustralya Doğu** bölgede bir proje oluşturmak üzere [**Bu bağlantıyı**](https://aka.ms/AzureMigrate/SQL) kullanın. Zaten Avustralya Doğu bir projeniz varsa ve bu özelliği denemek istiyorsanız, lütfen portalda bu [**önkoşulları**](how-to-discover-sql-existing-project.md) tamamladığınızdan emin olun.
+> VMware ortamınızda çalışan SQL Server örnekleri ve veritabanlarının keşfi ve değerlendirmesi artık önizlemededir. Bu özelliği denemek için [**bu bağlantıyı**](https://aka.ms/AzureMigrate/SQL) kullanarak **Doğu Avustralya** bölgesinde bir proje oluşturun. Zaten Doğu Avustralya bölgesinde bir projeniz varsa ve bu özelliği denemek istiyorsanız, lütfen portalda bu [**önkoşulları**](how-to-discover-sql-existing-project.md) tamamladığınızdan emin olun.
 
 **Gereksinim** | **VMware** 
 --- | ---
@@ -274,7 +274,7 @@ Mimari | uname
 Gereç SQL Server örneklerine ve veritabanlarına veri toplar.
 
 > [!Note]
-> VMware ortamınızda çalışan SQL Server örnekleri ve veritabanlarının keşfi ve değerlendirmesi artık önizlemededir. Bu özelliği denemek için **Avustralya Doğu** bölgede bir proje oluşturmak üzere [**Bu bağlantıyı**](https://aka.ms/AzureMigrate/SQL) kullanın. Zaten Avustralya Doğu bir projeniz varsa ve bu özelliği denemek istiyorsanız, lütfen portalda bu [**önkoşulları**](how-to-discover-sql-existing-project.md) tamamladığınızdan emin olun.
+> VMware ortamınızda çalışan SQL Server örnekleri ve veritabanlarının keşfi ve değerlendirmesi artık önizlemededir. Bu özelliği denemek için [**bu bağlantıyı**](https://aka.ms/AzureMigrate/SQL) kullanarak **Doğu Avustralya** bölgesinde bir proje oluşturun. Zaten Doğu Avustralya bölgesinde bir projeniz varsa ve bu özelliği denemek istiyorsanız, lütfen portalda bu [**önkoşulları**](how-to-discover-sql-existing-project.md) tamamladığınızdan emin olun.
 
 #### <a name="sql-database-metadata"></a>SQL veritabanı meta verileri
 

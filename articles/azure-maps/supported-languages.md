@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 50e5d0721eb14d1fcdfad26aaf081bfa370e954e
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96904525"
 ---
 # <a name="localization-support-in-azure-maps"></a>Azure haritalar 'da yerelleştirme desteği
@@ -25,7 +25,7 @@ Azure haritalar, ülkeye/bölgeye göre çeşitli dilleri ve görünümleri dest
 Azure haritalar, hizmetleri genelinde çeşitli dillerde yerelleştirilmiştir. Aşağıdaki tabloda her hizmet için desteklenen dil kodları sağlanmaktadır.  
   
 
-| ID         | Name                   |  Haritalar | Arama | Yönlendirme | Hava Durumu | Trafik olayları | JS eşleme denetimi |
+| ID         | Name                   |  Haritalar | Arayın | Yönlendirme | Hava Durumu | Trafik olayları | JS eşleme denetimi |
 |------------|------------------------|:-----:|:------:|:-------:|:--------:|:-----------------:|:--------------:|
 | AF-ZA      | Afrikaner              |       |    ✓   |    ✓    |         |                   |                |
 | ar-SA      | Arapça                 |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
@@ -147,7 +147,7 @@ Varsayılan olarak, istek içinde tanımlamadığınız halde görünüm paramet
 
 Aşağıdaki tabloda desteklenen görünümler sağlanmaktadır.
 
-| Görüntüle         | Description                            |  Haritalar | Arama | JS Harita Denetimi |
+| Görünüm         | Description                            |  Haritalar | Arayın | JS Harita Denetimi |
 |--------------|----------------------------------------|:-----:|:------:|:--------------:|
 | AE           | Birleşik Arap Emirlikleri (Arapça görünüm)    |   ✓   |        |     ✓          |
 | AR           | Arjantin (argentinian görünümü)           |   ✓   |    ✓   |     ✓          |

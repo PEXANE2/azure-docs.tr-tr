@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 07/02/2020
 ms.author: alkohli
 ms.openlocfilehash: cb0a90db0595c655191006969071bc5b9cceaa75
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94337602"
 ---
 # <a name="tutorial-use-rest-apis-to-copy-data-to-azure-data-box-blob-storage"></a>Öğretici: Azure Data Box blob depolamaya veri kopyalamak için REST API 'Lerini kullanma  
@@ -85,7 +85,7 @@ Sertifikayı indirmek için Azure portal kullanın.
 
 1. Azure Portal’da oturum açın.
 2. Data Box siparişiniz sayfasına gidin ve **genel > cihaz ayrıntılarına** gidin.
-3. **Cihaz kimlik bilgileri** altında cihaza **API erişimi** ' ne gidin. **İndir** 'e tıklayın. Bu eylem bir **\<your order name> . cer** sertifika dosyasını indirir. Bu dosyayı **kaydedin** . Bu sertifikayı, cihaza bağlanmak için kullanacağınız istemci veya ana bilgisayara yüklersiniz.
+3. **Cihaz kimlik bilgileri** altında cihaza **API erişimi** ' ne gidin. **İndir**’e tıklayın. Bu eylem bir **\<your order name> . cer** sertifika dosyasını indirir. Bu dosyayı **kaydedin** . Bu sertifikayı, cihaza bağlanmak için kullanacağınız istemci veya ana bilgisayara yüklersiniz.
 
     ![Azure portal sertifikayı indirin](media/data-box-deploy-copy-data-via-rest/download-cert-1.png)
 
@@ -108,12 +108,12 @@ Bazı uygulamalar için belirli bilgiler bu bölümde belirtilmiştir. Diğer uy
 
 #### <a name="use-windows-server-ui"></a>Windows Server Kullanıcı arabirimini kullanma
 
-1. Dosyaya sağ tıklayın `.cer` ve **sertifikayı yükler** ' i seçin. Bu eylem, sertifika alma Sihirbazı 'nı başlatır.
-2. **Depo konumu** Için **yerel makine** ' yi seçin ve ardından **İleri** ' ye tıklayın.
+1. Dosyaya sağ tıklayın `.cer` ve **sertifikayı yükler**' i seçin. Bu eylem, sertifika alma Sihirbazı 'nı başlatır.
+2. **Depo konumu** Için **yerel makine**' yi seçin ve ardından **İleri**' ye tıklayın.
 
     ![Sertifika Içeri aktarma Sihirbazı, Windows Server](media/data-box-deploy-copy-data-via-rest/import-cert-ws-1.png)
 
-3. **Tüm sertifikaları aşağıdaki depolama alanına yerleştir** ' i seçin ve ardından **görüntüle** ' ye tıklayın. Uzak konağın kök deposuna gidin ve ardından **İleri** ' ye tıklayın.
+3. **Tüm sertifikaları aşağıdaki depolama alanına yerleştir**' i seçin ve ardından **görüntüle**' ye tıklayın. Uzak konağın kök deposuna gidin ve ardından **İleri**' ye tıklayın.
 
     ![Sertifika Içeri aktarma Sihirbazı, sertifika deposu](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
 
@@ -133,7 +133,7 @@ Ubuntu ve deni gibi birkaç tane `update-ca-certificates` komutunu kullanın.
 RHEL, Fedora ve CentOS 'ın son sürümleri `update-ca-trust` komutunu kullanır.
 
 * Sertifika dosyasını `/etc/pki/ca-trust/source/anchors` dizine kopyalayın.
-* `update-ca-trust` komutunu çalıştırın.
+* `update-ca-trust` öğesini çalıştırın.
 
 Ayrıntılar için dağıtıma özgü belgelere başvurun.
 
@@ -171,7 +171,7 @@ Bu adımların her biri, aşağıdaki bölümlerde ayrıntılı olarak açıklan
 
 1. Depolama Gezgini'ni açın.
 2. Sol bölmede, blob kapsayıcısını oluşturmak istediğiniz depolama hesabını genişletin.
-3. **BLOB kapsayıcıları** ' na sağ tıklayın ve bağlam menüsünden **BLOB kapsayıcısı oluştur** ' u seçin.
+3. **BLOB kapsayıcıları**' na sağ tıklayın ve bağlam menüsünden **BLOB kapsayıcısı oluştur**' u seçin.
 
    ![Blob kapsayıcıları bağlam menüsü, blob kapsayıcısı oluştur](media/data-box-deploy-copy-data-via-rest/create-blob-container-1.png)
 

@@ -9,10 +9,10 @@ ms.subservice: common
 ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.openlocfilehash: b5051a5e29f9e34c43963a9a264ee47e2ad7b04a
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92490790"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development"></a>Yerel Azure depolama geliştirmesi için Azurite öykünücüsünü kullanma
@@ -48,7 +48,7 @@ Uzantı aşağıdaki Visual Studio Code komutlarını destekler. Komut paletini 
    - **Azurite: blob hizmetini Başlat** -blob hizmetini Başlat
    - **Azurite: kuyruk hizmetini Başlat** -kuyruk hizmetini Başlat
 
-Visual Studio Code içinde Azurite yapılandırmak için Uzantılar bölmesini seçin. **Azurite**için **Yönet** (dişli) simgesini seçin. **Uzantı ayarları**' nı seçin.
+Visual Studio Code içinde Azurite yapılandırmak için Uzantılar bölmesini seçin. **Azurite** için **Yönet** (dişli) simgesini seçin. **Uzantı ayarları**' nı seçin.
 
 ![Azuri 'ler uzantı ayarlarını yapılandırır](media/storage-use-azurite/azurite-configure-extension-settings.png)
 
@@ -97,7 +97,7 @@ docker run -p 10000:10000 -p 10001:10001 \
 
 **Çalışma alanı konumunu belirtin**:
 
-Aşağıdaki örnekte `-v c:/azurite:/data` parametresi, Azurite kalıcı veri konumu olarak *c:/Azurite* belirtir. Docker komutu çalıştırılmadan önce, *c:/Azurite*dizininin oluşturulması gerekir.
+Aşağıdaki örnekte `-v c:/azurite:/data` parametresi, Azurite kalıcı veri konumu olarak *c:/Azurite* belirtir. Docker komutu çalıştırılmadan önce, *c:/Azurite* dizininin oluşturulması gerekir.
 
 ```console
 docker run -p 10000:10000 -p 10001:10001 \
@@ -136,7 +136,7 @@ Azurite yükledikten ve oluşturduktan sonra, bkz. [komut satırından Azurıite
 > [!NOTE]
 > Yalnızca Visual Studio Code uzantısını yüklediyseniz, Azurite komut satırından çalıştırılamaz. Bunun yerine Visual Studio Code komut paletini kullanın. Daha fazla bilgi için bkz. [Azurite Visual Studio Code uzantısını yükleyip çalıştırma](#install-and-run-the-azurite-visual-studio-code-extension).
 
-Komut satırı ile hemen başlamak için, *c:\azurite*adlı bir dizin oluşturun, ardından aşağıdaki komutu vererek Azurite başlatın:
+Komut satırı ile hemen başlamak için, *c:\azurite* adlı bir dizin oluşturun, ardından aşağıdaki komutu vererek Azurite başlatın:
 
 ```console
 azurite --silent --location c:\azurite --debug c:\azurite\debug.log
@@ -148,7 +148,7 @@ Bu komut, Azurite 'ın tüm verileri belirli bir dizinde ( *c:\azurite*) depolam
 
 Bu bölüm, Azurıite başlatılırken kullanılabilen komut satırı anahtarlarının ayrıntılarını yapar.
 
-### <a name="help"></a>Yardım
+### <a name="help"></a>Help
 
 **Isteğe bağlı** -veya anahtarını kullanarak komut satırı yardımını alın `-h` `--help` .
 
@@ -364,7 +364,7 @@ Azurite, varsayılan olarak her dakikada ortam değişkeninden özel hesap adlar
 
 ### <a name="connection-strings"></a>Bağlantı dizeleri
 
-Uygulamanızdan Azurite 'ya bağlanmanın en kolay yolu, uygulamanızın yapılandırma dosyasında *Usedevelopmentstorage = true*kısayoluna başvuran bir bağlantı dizesi yapılandırmaktır. Bir *app.config* dosyasındaki bağlantı dizesine bir örnek aşağıda verilmiştir:
+Uygulamanızdan Azurite 'ya bağlanmanın en kolay yolu, uygulamanızın yapılandırma dosyasında *Usedevelopmentstorage = true* kısayoluna başvuran bir bağlantı dizesi yapılandırmaktır. Bir *app.config* dosyasındaki bağlantı dizesine bir örnek aşağıda verilmiştir:
 
 ```xml
 <appSettings>
@@ -480,12 +480,12 @@ Depolama Gezgini, aşağıdaki adımları izleyerek Azurite öğesine bağlanın
 
 #### <a name="connect-to-azurite-using-https"></a>HTTPS kullanarak Azurite 'a bağlanma
 
-Varsayılan olarak Depolama Gezgini otomatik olarak imzalanan bir sertifika kullanan bir HTTPS uç noktası açmaz. HTTPS ile Azurite çalıştırıyorsanız, muhtemelen kendinden imzalı bir sertifika kullanıyorsunuz demektir. Depolama Gezgini, SSL sertifikalarını **düzenleme**  ->  **SSL Certificates**  ->  **sertifikaları içeri aktar** iletişim kutusunu kullanarak SSL sertifikalarını içeri aktarın.
+Varsayılan olarak Depolama Gezgini otomatik olarak imzalanan bir sertifika kullanan bir HTTPS uç noktası açmaz. HTTPS ile Azurite çalıştırıyorsanız, muhtemelen kendinden imzalı bir sertifika kullanıyorsunuz demektir. Depolama Gezgini, SSL sertifikalarını **düzenleme**  ->    ->  **sertifikaları içeri aktar** iletişim kutusunu kullanarak SSL sertifikalarını içeri aktarın.
 
 ##### <a name="import-certificate-to-storage-explorer"></a>Sertifikayı Depolama Gezgini içeri aktar
 
 1. Yerel makinenizde sertifikayı bulun.
-1. Depolama Gezgini ' de, **Edit**  ->  **SSL sertifikalarını**düzenleme  ->  **sertifikaları içeri** aktarma ve sertifikanızı içeri aktarma bölümüne gidin.
+1. Depolama Gezgini ' de,   ->  **SSL sertifikalarını** düzenleme  ->  **sertifikaları içeri** aktarma ve sertifikanızı içeri aktarma bölümüne gidin.
 
 Bir sertifikayı içeri aktarmazsanız bir hata alırsınız:
 

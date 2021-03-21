@@ -4,10 +4,10 @@ description: Bu makalede, IoT Edge cihazınızda canlı video analizlerini dağ�
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.openlocfilehash: 01b98c7a1f4073adcd8dea7cbfbfc57abc3787c1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101718939"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>IoT Edge cihazda canlı video analizi dağıtma

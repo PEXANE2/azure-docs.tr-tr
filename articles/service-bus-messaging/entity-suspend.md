@@ -4,10 +4,10 @@ description: Bu makalede Azure Service Bus ileti varlıklarının (kuyruklar, ko
 ms.topic: article
 ms.date: 09/29/2020
 ms.openlocfilehash: ea1acab3d0a86b0064f8b3eef7bfd1496bd17041
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94543060"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>Mesajlaşma varlıklarını askıya alma ve yeniden etkinleştirme (devre dışı bırakma)
@@ -21,10 +21,10 @@ Askıya alma veya yeniden etkinleştirme, Kullanıcı ya da sistem tarafından g
 ## <a name="queue-status"></a>Sıra durumu 
 Bir **kuyruk** için ayarlanabilir durumlar şunlardır:
 
--   **Etkin** : kuyruk etkin. Kuyruğa ileti gönderebilir ve kuyruktan ileti alabilirsiniz. 
--   **Devre dışı** : sıra askıya alındı. Hem **Senddisabled** hem de **receivedisabled** ayarlamaya eşdeğerdir. 
--   **Senddisabled** : kuyruğa ileti gönderemezsiniz, ancak bundan ileti alabilirsiniz. Kuyruğa ileti göndermeye çalışırsanız bir özel durum alırsınız. 
--   **Receivedisabled** : kuyruğa ileti gönderebilirsiniz, ancak bundan ileti alamazsınız. Kuyruğa ileti almaya çalışırsanız bir özel durum alırsınız.
+-   **Etkin**: kuyruk etkin. Kuyruğa ileti gönderebilir ve kuyruktan ileti alabilirsiniz. 
+-   **Devre dışı**: sıra askıya alındı. Hem **Senddisabled** hem de **receivedisabled** ayarlamaya eşdeğerdir. 
+-   **Senddisabled**: kuyruğa ileti gönderemezsiniz, ancak bundan ileti alabilirsiniz. Kuyruğa ileti göndermeye çalışırsanız bir özel durum alırsınız. 
+-   **Receivedisabled**: kuyruğa ileti gönderebilirsiniz, ancak bundan ileti alamazsınız. Kuyruğa ileti almaya çalışırsanız bir özel durum alırsınız.
 
 
 ### <a name="change-the-queue-status-in-the-azure-portal"></a>Azure portal sıra durumunu değiştirin: 
@@ -34,7 +34,7 @@ Bir **kuyruk** için ayarlanabilir durumlar şunlardır:
 1. **Service Bus kuyruğu** sayfasında, sıranın geçerli durumuna bir köprü olarak bakın. Sol menüde **genel bakış** seçilmezse, sıranın durumunu görmek için seçin. Değişiklik için kuyruğun geçerli durumunu seçin. 
 
     :::image type="content" source="./media/entity-suspend/select-state.png" alt-text="Kuyruğun durumunu seçin":::
-4. Kuyruğun yeni durumunu seçin ve **Tamam** ' ı seçin. 
+4. Kuyruğun yeni durumunu seçin ve **Tamam**' ı seçin. 
 
     :::image type="content" source="./media/entity-suspend/entity-state-change.png" alt-text="Kuyruğun durumunu ayarla":::
     
@@ -57,9 +57,9 @@ Azure portal konu durumu ' nu değiştirebilirsiniz. Durumu değiştirmenize ola
 :::image type="content" source="./media/entity-suspend/topic-state-change.png" alt-text="Konu durumunu değiştir":::
 
 Bir **Konu** için ayarlanabilir durumlar şunlardır:
-- **Etkin** : konu etkin. Konuya ileti gönderebilirsiniz. 
-- **Devre dışı** : konu askıya alındı. Konuya ileti gönderemezsiniz. 
-- **Senddisabled** : **devre dışı** olarak aynı etkiye sahiptir. Konuya ileti gönderemezsiniz. Konuya ileti göndermeye çalışırsanız bir özel durum alırsınız. 
+- **Etkin**: konu etkin. Konuya ileti gönderebilirsiniz. 
+- **Devre dışı**: konu askıya alındı. Konuya ileti gönderemezsiniz. 
+- **Senddisabled**: **devre dışı** olarak aynı etkiye sahiptir. Konuya ileti gönderemezsiniz. Konuya ileti göndermeye çalışırsanız bir özel durum alırsınız. 
 
 ## <a name="subscription-status"></a>Abonelik durumu
 Azure portal abonelik durumunu değiştirebilirsiniz. Durumu değiştirmenize olanak sağlayan aşağıdaki sayfayı görmek için aboneliğin geçerli durumunu seçin. 
@@ -67,9 +67,9 @@ Azure portal abonelik durumunu değiştirebilirsiniz. Durumu değiştirmenize ol
 :::image type="content" source="./media/entity-suspend/subscription-state-change.png" alt-text="Abonelik durumunu değiştir":::
 
 Bir **abonelik** için ayarlanabilir durumlar şunlardır:
-- **Etkin** : Abonelik etkin. Aboneliği frm olarak alabilirsiniz.
-- **Devre dışı** : abonelik askıya alındı. Abonelikten ileti alamazsınız. 
-- **Receivedisabled** : **devre dışı** olarak aynı efekt. Abonelikten ileti alamazsınız. Abonelik için ileti almaya çalışırsanız bir özel durum alırsınız.
+- **Etkin**: Abonelik etkin. Aboneliği frm olarak alabilirsiniz.
+- **Devre dışı**: abonelik askıya alındı. Abonelikten ileti alamazsınız. 
+- **Receivedisabled**: **devre dışı** olarak aynı efekt. Abonelikten ileti alamazsınız. Abonelik için ileti almaya çalışırsanız bir özel durum alırsınız.
 
 | Konu durumu | Abonelik durumu | Davranış | 
 | ------------ | ------------------- | -------- | 

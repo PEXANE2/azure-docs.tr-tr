@@ -8,10 +8,10 @@ services: web-application-firewall
 ms.date: 02/26/2020
 ms.author: victorh
 ms.openlocfilehash: 23b893bad591af5f1e923b68e8d30453f859792b
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94563486"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Azure PowerShell kullanarak bir Web uygulaması güvenlik duvarı hız sınırı kuralı yapılandırma
@@ -23,7 +23,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 > [!NOTE]
 > Her istemci IP adresi için hız sınırları uygulanır. Ön kapılarınıza farklı IP adreslerinden erişen birden fazla istemciniz varsa, bunların kendi hız limitleri uygulanmış olur.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bir hız sınırı ilkesi ayarlamaya başlamadan önce, PowerShell ortamınızı ayarlayın ve bir ön kapı profili oluşturun.
 ### <a name="set-up-your-powershell-environment"></a>PowerShell ortamınızı hazırlama
 Azure PowerShell, Azure kaynaklarınızı yönetmek için [Azure Resource Manager](../../azure-resource-manager/management/overview.md) modelini kullanan bir dizi cmdlet sunar. 

@@ -4,10 +4,10 @@ description: Azure CLı kullanarak kurtarma hizmetleri kasasındaki yedeklenen A
 ms.topic: conceptual
 ms.date: 01/16/2020
 ms.openlocfilehash: a025de7bfb9db037b2008d69be7782feabb482f3
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94562330"
 ---
 # <a name="restore-azure-file-shares-with-the-azure-cli"></a>Azure CLı ile Azure dosya paylaşımlarını geri yükleme
@@ -23,7 +23,7 @@ Bu makalenin sonuna kadar, Azure CLı ile aşağıdaki işlemleri gerçekleştir
 >[!NOTE]
 > Azure Backup artık Azure CLı kullanılarak birden çok dosya veya klasörün orijinal veya alternatif bir konuma geri yüklenmesini desteklemektedir. Daha fazla bilgi edinmek için bu belgenin [özgün veya diğer konuma geri yükleme](#restore-multiple-files-or-folders-to-original-or-alternate-location) bölümüne bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede, zaten Azure Backup tarafından yedeklenen bir Azure dosya paylaşımınız olduğu varsayılır. Bir tane yoksa, dosya paylaşımınızla ilgili yedeklemeyi yapılandırmak için bkz. [CLI Ile Azure dosya paylaşımlarını](backup-afs-cli.md) yedekleme. Bu makalede aşağıdaki kaynakları kullanırsınız:
 
@@ -50,8 +50,8 @@ az backup recoverypoint list --vault-name azurefilesvault --resource-group azure
 
 Önceki cmdlet 'i, kapsayıcı ve öğe için kolay adı kullanarak aşağıdaki iki ek parametreyi sağlayarak da çalıştırabilirsiniz:
 
-* **--Backup-Management-Type** : *azurestorage*
-* **--iş yükü-tür** : *azurefileshare*
+* **--Backup-Management-Type**: *azurestorage*
+* **--iş yükü-tür**: *azurefileshare*
 
 ```azurecli-interactive
 az backup recoverypoint list --vault-name azurefilesvault --resource-group azurefiles --container-name afsaccount --backup-management-type azurestorage --item-name azurefiles --workload-type azurefileshare --out table
@@ -75,8 +75,8 @@ Name                Time                        Consistency
 
 Geri yükleme işlemlerini gerçekleştirmek için aşağıdaki parametreleri tanımlayın:
 
-* **--Container-Name** : yedeklenen orijinal dosya paylaşımından barındıran depolama hesabının adı. Kapsayıcının adını veya kolay adını almak için [az Backup Container List](/cli/azure/backup/container#az-backup-container-list) komutunu kullanın.
-* **--öğe-adı** : geri yükleme işlemi için kullanmak istediğiniz yedeklenen orijinal dosya paylaşımının adı. Yedeklenen öğenin adını veya kolay adını almak için [az Backup Item List](/cli/azure/backup/item#az-backup-item-list) komutunu kullanın.
+* **--Container-Name**: yedeklenen orijinal dosya paylaşımından barındıran depolama hesabının adı. Kapsayıcının adını veya kolay adını almak için [az Backup Container List](/cli/azure/backup/container#az-backup-container-list) komutunu kullanın.
+* **--öğe-adı**: geri yükleme işlemi için kullanmak istediğiniz yedeklenen orijinal dosya paylaşımının adı. Yedeklenen öğenin adını veya kolay adını almak için [az Backup Item List](/cli/azure/backup/item#az-backup-item-list) komutunu kullanın.
 
 ### <a name="restore-a-full-share-to-the-original-location"></a>Tam bir paylaşımın özgün konumuna geri yükleme
 
@@ -100,10 +100,10 @@ Name                                  ResourceGroup
 
 Bu seçeneği, bir dosya paylaşımının alternatif bir konuma geri yüklenmesi ve özgün dosya paylaşımının olduğu gibi tutmanız için kullanabilirsiniz. Alternatif konum kurtarma için aşağıdaki parametreleri belirtin:
 
-* **--target-Storage-Account** : yedeklenen içeriğin geri yüklendiği depolama hesabı. Hedef depolama hesabı kasayla aynı konumda olmalıdır.
-* **--target-File-Share** : yedeklenen içeriğin geri yüklendiği hedef depolama hesabı içindeki dosya paylaşma.
-* **--target-Folder** : verilerin geri yüklendiği dosya paylaşımının altındaki klasör. Yedeklenen içerik bir kök klasöre geri yüklenirse, hedef klasör değerlerini boş bir dize olarak verin.
-* **--Resolve-Conflict** : geri yüklenen verilerle bir çakışma varsa yönerge. **Overwrite** veya **Skip** kabul eder.
+* **--target-Storage-Account**: yedeklenen içeriğin geri yüklendiği depolama hesabı. Hedef depolama hesabı kasayla aynı konumda olmalıdır.
+* **--target-File-Share**: yedeklenen içeriğin geri yüklendiği hedef depolama hesabı içindeki dosya paylaşma.
+* **--target-Folder**: verilerin geri yüklendiği dosya paylaşımının altındaki klasör. Yedeklenen içerik bir kök klasöre geri yüklenirse, hedef klasör değerlerini boş bir dize olarak verin.
+* **--Resolve-Conflict**: geri yüklenen verilerle bir çakışma varsa yönerge. **Overwrite** veya **Skip** kabul eder.
 
 Aşağıdaki örnek, *afsaccount* depolama hesabındaki *azurefiles* dosya paylaşımının *afaccount1* depolama hesabındaki *azurefiles1 "* dosya paylaşımında geri yüklenmesi için [az Backup Restore restore-azurefileshare](/cli/azure/backup/restore#az-backup-restore-restore-azurefileshare) WITH restore Mode with *alternatelocation* olarak kullanır.
 
@@ -125,14 +125,14 @@ babeb61c-d73d-4b91-9830-b8bfa83c349a  azurefiles
 
 Geri yükleme işlemlerini gerçekleştirmek için aşağıdaki parametreleri tanımlayın:
 
-* **--Container-Name** : yedeklenen orijinal dosya paylaşımından barındıran depolama hesabının adı. Kapsayıcının adını veya kolay adını almak için [az Backup Container List](/cli/azure/backup/container#az-backup-container-list) komutunu kullanın.
-* **--öğe-adı** : geri yükleme işlemi için kullanmak istediğiniz yedeklenen orijinal dosya paylaşımının adı. Yedeklenen öğenin adını veya kolay adını almak için [az Backup Item List](/cli/azure/backup/item#az-backup-item-list) komutunu kullanın.
+* **--Container-Name**: yedeklenen orijinal dosya paylaşımından barındıran depolama hesabının adı. Kapsayıcının adını veya kolay adını almak için [az Backup Container List](/cli/azure/backup/container#az-backup-container-list) komutunu kullanın.
+* **--öğe-adı**: geri yükleme işlemi için kullanmak istediğiniz yedeklenen orijinal dosya paylaşımının adı. Yedeklenen öğenin adını veya kolay adını almak için [az Backup Item List](/cli/azure/backup/item#az-backup-item-list) komutunu kullanın.
 
 Kurtarmak istediğiniz öğeler için aşağıdaki parametreleri belirtin:
 
-* **SourceFilePath** : dosya paylaşımında, bir dize olarak geri yüklenecek dosyanın mutlak yolu. Bu yol, [az Storage File Download](/cli/azure/storage/file#az-storage-file-download) veya [az Storage File CLI Show](/cli/azure/storage/file#az-storage-file-show) CLI komutlarında kullanılan yoldur.
-* **Sourcefiletype** : bir dizin veya dosya seçili olup olmadığını seçin. **Dizini** veya **dosyayı** kabul eder.
-* **ResolveConflict** : geri yüklenen verilerle bir çakışma varsa yönerge. **Overwrite** veya **Skip** kabul eder.
+* **SourceFilePath**: dosya paylaşımında, bir dize olarak geri yüklenecek dosyanın mutlak yolu. Bu yol, [az Storage File Download](/cli/azure/storage/file#az-storage-file-download) veya [az Storage File CLI Show](/cli/azure/storage/file#az-storage-file-show) CLI komutlarında kullanılan yoldur.
+* **Sourcefiletype**: bir dizin veya dosya seçili olup olmadığını seçin. **Dizini** veya **dosyayı** kabul eder.
+* **ResolveConflict**: geri yüklenen verilerle bir çakışma varsa yönerge. **Overwrite** veya **Skip** kabul eder.
 
 ### <a name="restore-individual-files-or-folders-to-the-original-location"></a>Tek tek dosyaları veya klasörleri özgün konumlarına geri yükleme
 
@@ -156,9 +156,9 @@ df4d9024-0dcb-4edc-bf8c-0a3d18a25319  azurefiles
 
 Belirli dosya veya klasörleri alternatif bir konuma geri yüklemek için, [az Backup Restore restore-azurefiles](/cli/azure/backup/restore#az-backup-restore-restore-azurefiles) cmdlet 'ini restore modu *alternatelocation* olarak ayarlayın ve hedefle ilgili aşağıdaki parametreleri belirtin:
 
-* **--target-Storage-Account** : yedeklenen içeriğin geri yüklendiği depolama hesabı. Hedef depolama hesabı kasayla aynı konumda olmalıdır.
-* **--target-File-Share** : yedeklenen içeriğin geri yüklendiği hedef depolama hesabı içindeki dosya paylaşma.
-* **--target-Folder** : verilerin geri yüklendiği dosya paylaşımının altındaki klasör. Yedeklenen içerik bir kök klasöre geri yüklenirse, hedef klasörün değerini boş bir dize olarak verin.
+* **--target-Storage-Account**: yedeklenen içeriğin geri yüklendiği depolama hesabı. Hedef depolama hesabı kasayla aynı konumda olmalıdır.
+* **--target-File-Share**: yedeklenen içeriğin geri yüklendiği hedef depolama hesabı içindeki dosya paylaşma.
+* **--target-Folder**: verilerin geri yüklendiği dosya paylaşımının altındaki klasör. Yedeklenen içerik bir kök klasöre geri yüklenirse, hedef klasörün değerini boş bir dize olarak verin.
 
 Aşağıdaki örnek, *azurefiles* dosya paylaşımında bulunan *RestoreTest.txt* dosyayı alternatif bir konuma geri yükler: *afaccount1* depolama hesabında barındırılan *azurefiles1* dosya paylaşımındaki *restoredata* klasörü.
 

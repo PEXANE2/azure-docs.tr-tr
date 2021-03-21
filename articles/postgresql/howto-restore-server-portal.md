@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 6/30/2020
 ms.openlocfilehash: 82cec4cc448f0ec30aecf6f8a69f399e0abbdde0
-ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97706958"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Azure portal kullanarak, PostgreSQL için Azure veritabanı 'nda bir sunucuyu yedekleme ve geri yükleme-tek sunucu
@@ -33,7 +33,7 @@ Azure portal aracılığıyla bir sunucu oluştururken, **fiyatlandırma katman�
 Oluşturma sırasında bu değerleri ayarlama hakkında daha fazla bilgi için bkz. [PostgreSQL Için Azure veritabanı sunucu hızlı başlangıç](quickstart-create-server-database-portal.md).
 
 Bir sunucunun yedekleme saklama süresi aşağıdaki adımlarla değiştirilebilir:
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure portal](https://portal.azure.com/) oturum açın.
 2. PostgreSQL için Azure Veritabanı sunucunuzu seçin. Bu eylem **genel bakış** sayfasını açar.
 3. Menüde, **Ayarlar**' ın altında **fiyatlandırma katmanı** ' nı seçin. Kaydırıcıyı kullanarak **yedekleme saklama süresini** 7 ila 35 gün süreyle tercihlerinize göre değiştirebilirsiniz.
 Aşağıdaki ekran görüntüsünde 34 güne yükselmiştir.

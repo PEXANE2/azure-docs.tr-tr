@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.openlocfilehash: f6b1ea00684495333ba7b04dbf146aa6104fa589
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92460521"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-icertis-contract-management-platform"></a>Öğretici: ıcertıs sözleşme yönetimi platformuyla tümleştirme Azure Active Directory
@@ -30,7 +30,7 @@ Iertıs sözleşme yönetimi platformunu Azure AD ile tümleştirmek aşağıdak
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini ıcertıs sözleşme yönetim platformuyla yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -61,13 +61,13 @@ Icertıs sözleşme yönetimi platformunun tümleştirmesini Azure AD 'ye göre 
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **ıcertıs sözleşme yönetim platformu**yazın, sonuç panelinden **ıcertıs sözleşme yönetimi platformu** ' nu seçin ve ardından uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
+4. Arama kutusuna **ıcertıs sözleşme yönetim platformu** yazın, sonuç panelinden **ıcertıs sözleşme yönetimi platformu** ' nu seçin ve ardından uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
 
      ![Sonuçlar listesinde ıcertıs sözleşme yönetimi platformu](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre ıcertıs sözleşme yönetim platformuyla Azure AD çoklu oturum açma 'yı yapılandırıp test edersiniz.
+Bu bölümde, **Britta Simon** adlı bir test kullanıcısına göre ıcertıs sözleşme yönetim platformuyla Azure AD çoklu oturum açma 'yı yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve ıcertıs sözleşme yönetimi platformuyla ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açma 'yı ıcertıs sözleşme yönetim platformuyla yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -112,7 +112,7 @@ Azure AD çoklu oturum açmayı ıcertıs sözleşme yönetim platformuyla yapı
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-6. **Icertıs sözleşme yönetim platformunu ayarla** bölümünde, uygun URL 'leri gereksiniminize göre kopyalayın. **Oturum açma URL 'si**için değeri aşağıdaki Düzenle kullanın:`https://login.microsoftonline.com/_my_directory_id_/wsfed`
+6. **Icertıs sözleşme yönetim platformunu ayarla** bölümünde, uygun URL 'leri gereksiniminize göre kopyalayın. **Oturum açma URL 'si** için değeri aşağıdaki Düzenle kullanın:`https://login.microsoftonline.com/_my_directory_id_/wsfed`
 
     > [!Note]
     > _my_directory_id_ , Azure AD aboneliğinin kiracı kimliğidir.
@@ -143,7 +143,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
     b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension` . Örneğin, BrittaSimon@contoso.com.
 

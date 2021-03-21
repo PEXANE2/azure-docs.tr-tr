@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
 ms.openlocfilehash: f214b0b0751f44ea1357f569fd814a7621af61ab
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397629"
 ---
 # <a name="application-gateway-infrastructure-configuration"></a>Application Gateway altyapı yapılandırması
@@ -56,7 +56,7 @@ Bu senaryo için Application Gateway alt ağında NSG 'leri kullanın. Aşağıd
 
 1. Kaynak IP veya IP aralığından gelen trafiğe, gelen erişim bağlantı noktası (örneğin, HTTP erişimi için bağlantı noktası 80) olarak tüm Application Gateway alt ağ adres aralığı ve hedef bağlantı noktası olarak izin verin.
 2. Application Gateway v1 SKU 'SU için 65503-65534 olarak **kaynak ve hedef** bağlantı **noktası olarak kaynak** kaynaklı gelen isteklere ve [arka uç sistem durumu iletişimi](./application-gateway-diagnostics.md)için v2 SKU 'su için 65200-65535 bağlantı noktalarına izin verin. Bu bağlantı noktası aralığı, Azure altyapı iletişimi için gereklidir. Bu bağlantı noktaları Azure sertifikaları tarafından korunur (kilitlidir). Uygun sertifikalar yerine, dış varlıklar bu uç noktalar üzerinde değişiklik başlatamaz.
-3. [Ağ güvenlik grubundaki](../virtual-network/network-security-groups-overview.md)gelen Azure Load Balancer Araştırmaları ( *AzureLoadBalancer* Tag) ve gelen sanal ağ trafiğine ( *VirtualNetwork* etiketi) izin verin.
+3. [Ağ güvenlik grubundaki](../virtual-network/network-security-groups-overview.md)gelen Azure Load Balancer Araştırmaları (*AzureLoadBalancer* Tag) ve gelen sanal ağ trafiğine (*VirtualNetwork* etiketi) izin verin.
 4. Engelle-All kuralını kullanarak diğer tüm gelen trafiği engelleyin.
 5. Tüm hedefler için Internet 'e giden trafiğe izin verin.
 
@@ -78,7 +78,7 @@ Bu senaryo için Application Gateway alt ağında NSG 'leri kullanın. Aşağıd
    > Yol tablosunun yanlış yapılandırması, Application Gateway v2 'de simetrik yönlendirmeye neden olabilir. Tüm yönetim/denetim düzlemi trafiğinin bir Sanal Gereç üzerinden değil, doğrudan Internet 'e gönderildiğinden emin olun. Günlüğe kaydetme ve ölçümler de etkilenebilir.
 
 
-  **Senaryo 1** : sınır ağ GEÇIDI Protokolü (BGP) yol yaymayı Application Gateway alt ağa devre dışı bırakmak için UDR
+  **Senaryo 1**: sınır ağ GEÇIDI Protokolü (BGP) yol yaymayı Application Gateway alt ağa devre dışı bırakmak için UDR
 
    Bazen varsayılan ağ geçidi yolu (0.0.0.0/0) Application Gateway sanal ağla ilişkili ExpressRoute veya VPN Gateway 'ler aracılığıyla tanıtılabilir. Bu, Internet 'e doğrudan yol gerektiren yönetim düzlemi trafiğini keser. Bu tür senaryolarda, BGP yol yaymayı devre dışı bırakmak için bir UDR kullanılabilir. 
 
@@ -90,11 +90,11 @@ Bu senaryo için Application Gateway alt ağında NSG 'leri kullanın. Aşağıd
 
    Bu senaryo için UDR 'nin etkinleştirilmesi, mevcut tüm kurulumları bozmamalıdır.
 
-  **2. senaryo** : Internet 'e 0.0.0.0/0 öğesini yönlendirmek için UDR
+  **2. senaryo**: Internet 'e 0.0.0.0/0 öğesini yönlendirmek için UDR
 
    0.0.0.0/0 trafiğini doğrudan Internet 'e göndermek için bir UDR oluşturabilirsiniz. 
 
-  **Senaryo 3** : Kubernetes kullanan ile Azure Kubernetes hizmeti için UDR
+  **Senaryo 3**: Kubernetes kullanan ile Azure Kubernetes hizmeti için UDR
 
   Azure Kubernetes hizmeti (AKS) ve Application Gateway giriş denetleyicisi (AGIC) ile Kubernetes kullanan kullanıyorsanız, Application Gateway olan ve alt öğe için gönderilen trafiğin doğru düğüme yönlendirilmesini sağlamak için bir yol tablosu gerekir. Azure CNı kullanıyorsanız bu gerekli değildir. 
 
@@ -109,7 +109,7 @@ Bu senaryo için Application Gateway alt ağında NSG 'leri kullanın. Aşağıd
     
   **v2 desteklenmeyen senaryolar**
 
-  **Senaryo 1** : sanal gereçler için UDR
+  **Senaryo 1**: sanal gereçler için UDR
 
   0.0.0.0/0 ' ın herhangi bir Sanal Gereç aracılığıyla yeniden yönlendirilmesi gereken herhangi bir senaryo, bir hub/bağlı sanal ağ veya şirket içi (Zorlamalı tünel) v2 için desteklenmez.
 

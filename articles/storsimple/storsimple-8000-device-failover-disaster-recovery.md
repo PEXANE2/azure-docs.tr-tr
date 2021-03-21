@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
 ms.openlocfilehash: dffa059b18e159d04b5e3bb8555dabf801ede692
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96017126"
 ---
 # <a name="failover-and-disaster-recovery-for-your-storsimple-8000-series-device"></a>StorSimple 8000 serisi cihazınız için yük devretme ve olağanüstü durum kurtarma
@@ -27,7 +27,7 @@ ms.locfileid: "96017126"
 
 Bu makalede, StorSimple 8000 serisi cihazların cihaz yük devretme özelliği ve bir olağanüstü durum oluşursa StorSimple cihazlarını kurtarmak için bu özelliğin nasıl kullanılabileceği açıklanmaktadır. StorSimple, veri merkezindeki bir kaynak cihazdan başka bir hedef cihaza geçiş yapmak için cihaz yük devretmesini kullanır. Bu makaledeki kılavuz, StorSimple 8000 serisi fiziksel cihazlara ve güncelleştirme 3 ve üzeri yazılım sürümlerini çalıştıran bulut gereçlerine yöneliktir.
 
-StorSimple, cihaz yük devretme özelliğini bir olağanüstü durum durumunda başlatmak için **cihazlar** dikey penceresini kullanır. Bu dikey pencere, StorSimple Aygıt Yöneticisi hizmetinize bağlı olan tüm StorSimple cihazlarını listeler.
+StorSimple, cihaz yük devretme özelliğini bir olağanüstü durum durumunda başlatmak için **cihazlar** dikey penceresini kullanır. Bu dikey pencere, StorSimple Device Manager hizmetinize bağlı olan tüm StorSimple cihazlarını listeler.
 
 ![Cihazlar dikey penceresi](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev1.png)
 
@@ -44,7 +44,7 @@ Yük devretme sırasında, geçiş için birim kapsayıcıları seçebilirsiniz.
 
 ### <a name="cloud-snapshot-used-during-device-failover"></a>Cihaz yük devretmesi sırasında kullanılan bulut anlık görüntüsü
 
-Bir DR 'yi takip eden en son bulut yedeklemesi, verileri hedef cihaza geri yüklemek için kullanılır. Bulut anlık görüntüleri hakkında daha fazla bilgi için bkz. [StorSimple Aygıt Yöneticisi hizmetini kullanarak el ile yedekleme yapın](storsimple-8000-manage-backup-policies-u2.md#take-a-manual-backup).
+Bir DR 'yi takip eden en son bulut yedeklemesi, verileri hedef cihaza geri yüklemek için kullanılır. Bulut anlık görüntüleri hakkında daha fazla bilgi için bkz. [StorSimple Device Manager hizmetini kullanarak el ile yedekleme yapın](storsimple-8000-manage-backup-policies-u2.md#take-a-manual-backup).
 
 StorSimple 8000 serisinde yedekleme ilkeleri yedeklemelerle ilişkilendirilir. Aynı birim için birden çok yedekleme ilkesi varsa, StorSimple, en fazla birim sayısı ile yedekleme ilkesini seçer. StorSimple daha sonra hedef Cihazdaki verileri geri yüklemek için seçili yedekleme ilkesindeki en son yedeği kullanır.
 
@@ -53,7 +53,7 @@ StorSimple 8000 serisinde yedekleme ilkeleri yedeklemelerle ilişkilendirilir. A
 * *Defaultpol*: bir birim, *Vol1*, 10:30 pm itibariyle günlük olarak çalışır.
 * *Custompol*: dört birim, *Vol1*, *VOL2*, *Vol3*, *VOL4*, 10:00 ile başlayarak günlük olarak çalışır.
 
-Bu durumda, kilitlenme tutarlılığı için StorSimple önceliklendirir ve daha fazla birime sahip olan *Custompol* kullanır. Bu ilkeden en son yedekleme, verileri geri yüklemek için kullanılır. Yedekleme ilkeleri oluşturma ve yönetme hakkında daha fazla bilgi için, [yedekleme ilkelerini yönetmek üzere StorSimple Aygıt Yöneticisi hizmetini kullanma](storsimple-8000-manage-backup-policies-u2.md)bölümüne gidin.
+Bu durumda, kilitlenme tutarlılığı için StorSimple önceliklendirir ve daha fazla birime sahip olan *Custompol* kullanır. Bu ilkeden en son yedekleme, verileri geri yüklemek için kullanılır. Yedekleme ilkeleri oluşturma ve yönetme hakkında daha fazla bilgi için, [yedekleme ilkelerini yönetmek üzere StorSimple Device Manager hizmetini kullanma](storsimple-8000-manage-backup-policies-u2.md)bölümüne gidin.
 
 ## <a name="common-considerations-for-device-failover"></a>Cihaz yük devretmesi için dikkat edilmesi gereken yaygın noktalar
 
@@ -67,7 +67,7 @@ Bir cihazın yükünü devretmek için aşağıdaki bilgileri gözden geçirin:
 
 #### <a name="device-failover-across-software-versions"></a>Yazılım sürümleri arasında cihaz yük devretmesi
 
-Bir dağıtımdaki StorSimple Aygıt Yöneticisi hizmeti, her ikisi de fiziksel ve bulut olan ve hepsi farklı yazılım sürümlerini çalıştıran birden fazla cihaza sahip olabilir.
+Bir dağıtımdaki StorSimple Device Manager hizmeti, her ikisi de fiziksel ve bulut olan ve hepsi farklı yazılım sürümlerini çalıştıran birden fazla cihaza sahip olabilir.
 
 Farklı bir yazılım sürümü çalıştıran başka bir cihaza yük devretmek veya geri dönüp yük devredebildiğini ve birim türlerinin DR sırasında nasıl davranacağını belirlemek için aşağıdaki tabloyu kullanın.
 
@@ -124,7 +124,7 @@ A.  Silme işi başarısız olursa, birim kapsayıcılarını el ile silebilirsi
 
 ## <a name="business-continuity-disaster-recovery-bcdr"></a>İş sürekliliği olağanüstü durum kurtarma (BCDR)
 
-Azure veri merkezinin tamamı çalışmayı durdurduğu zaman bir iş sürekliliği olağanüstü durum kurtarma (BCDR) senaryosu oluşur. Bu senaryo, StorSimple Aygıt Yöneticisi hizmetinizi ve ilişkili StorSimple cihazlarını etkileyebilir.
+Azure veri merkezinin tamamı çalışmayı durdurduğu zaman bir iş sürekliliği olağanüstü durum kurtarma (BCDR) senaryosu oluşur. Bu senaryo, StorSimple Device Manager hizmetinizi ve ilişkili StorSimple cihazlarını etkileyebilir.
 
 Bir StorSimple cihazı bir olağanüstü durum olmadan hemen önce kaydedilmişse, bu cihazın bir fabrika sıfırlamasına ihtiyacı olabilir. Olağanüstü durum sonrasında, StorSimple cihazı Azure portal çevrimdışı olarak görünür. Bu cihazın portaldan silinmesi gerekir. Cihazı fabrika ayarlarına sıfırlayın ve hizmeti ile yeniden kaydedin.
 
@@ -139,5 +139,5 @@ Bir cihaz yük devretmesini gerçekleştirmeye hazırsanız, ayrıntılı yöner
 Cihazınızın yük devretme durumunda, aşağıdaki seçeneklerden birini seçin:
 
 * [StorSimple cihazınızı devre dışı bırakın veya silin](storsimple-8000-deactivate-and-delete-device.md).
-* StorSimple [cihazınızı yönetmek Için storsimple Aygıt Yöneticisi hizmetini kullanın](storsimple-8000-manager-service-administration.md).
+* StorSimple [cihazınızı yönetmek Için storsimple Device Manager hizmetini kullanın](storsimple-8000-manager-service-administration.md).
 

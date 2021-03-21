@@ -7,10 +7,10 @@ ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 6a9f2c62d8e7f17f6ea8377982c79fef3dfbb97c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96016837"
 ---
 # <a name="create-a-profile-container-with-azure-netapp-files-and-ad-ds"></a>Azure NetApp Files ve AD DS bir profil kapsayıcısı oluşturun
@@ -166,7 +166,7 @@ Bu bölüm, bir [dosya paylaşımının kullanıldığı bir konak havuzu için 
 
 5. **Lisans hüküm ve koşullarını kabul** ediyorum seçeneğinin yanındaki onay kutusunu işaretleyin.
 
-6. **Yükle**’yi seçin.
+6. **Yükle**'yi seçin.
 
 7. Aracının yüklendiğini doğrulamak için **C: \\ Program Files \\ fslogix \\ uygulamalarına** gidin.
 

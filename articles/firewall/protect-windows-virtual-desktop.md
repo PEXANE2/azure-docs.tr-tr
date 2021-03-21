@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: victorh
 ms.openlocfilehash: ad4f42d0e33f6d70c75abfcd1daab4f5aa9a515f
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94654992"
 ---
-# <a name="use-azure-firewall-to-protect-window-virtual-desktop-deployments"></a>Windows Sanal Masaüstü dağıtımlarını korumak için Azure Güvenlik Duvarı kullanma
+# <a name="use-azure-firewall-to-protect-window-virtual-desktop-deployments"></a>Windows Sanal Masaüstü dağıtımlarını korumak için Azure Güvenlik Duvarı'nı kullanın
 
 Windows sanal masaüstü, Azure 'da çalışan bir masaüstü ve uygulama sanallaştırma hizmetidir. Bir son kullanıcı Windows sanal masaüstü ortamına bağlandığında, oturumları bir konak havuzu tarafından çalıştırılır. Konak havuzu, oturum ana bilgisayarları olarak Windows sanal masaüstüne kaydeden Azure sanal makineleri koleksiyonudur. Bu sanal makineler sanal ağınızda çalışır ve sanal ağ güvenlik denetimlerine tabidir. Windows sanal masaüstü hizmetine giden Internet erişiminin düzgün çalışması ve son kullanıcılar için giden Internet erişimi de gerekebilir. Azure Güvenlik Duvarı, ortamınızı kilitlemenize ve giden trafiği filtrelemenize yardımcı olabilir.
 

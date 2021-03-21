@@ -11,10 +11,10 @@ ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.openlocfilehash: 0e87451531750e502f67dc30e6fbd26c8c944d22
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98678602"
 ---
 # <a name="dedicated-sql-pool-formerly-sql-dw-architecture-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL Havuzu (eski adıyla SQL DW) mimarisi
@@ -45,7 +45,7 @@ Ayrılmış depolama ve işlem ile ayrılmış bir SQL Havuzu (eski adıyla SQL 
 - Verileri olduğu gibi bırakıp işlem kapasitesini duraklatır, böylece yalnızca depolama için ödeme yaparsınız.
 - Çalışma saatleri içinde işlem kapasitesini sürdürme.
 
-### <a name="azure-storage"></a>Azure Storage
+### <a name="azure-storage"></a>Azure Depolama
 
 Adanmış SQL havuzu SQL (eski adıyla SQL DW), kullanıcı verilerinizi güvende tutmak için Azure depolama özelliğinden yararlanır.  Verileriniz Azure depolama tarafından depolandığından ve yönetildiğinden, depolama tüketiminize yönelik ayrı bir ücret alınır. Veriler, sistem performansını iyileştirmek için **dağıtımlarla** birleştirilir. Tabloyu tanımlarken verileri dağıtmak için hangi parçalama deseninin kullanılacağını seçebilirsiniz. Bu parçalı desenler desteklenir:
 

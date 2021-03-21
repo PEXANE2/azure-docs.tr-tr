@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/15/2019
 ms.author: jeedes
 ms.openlocfilehash: dbc1c68f666fed280ef5eea0b74836d0cb9f305d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92505877"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-quantum-workplace"></a>Öğretici: hisse çalışma alanıyla Azure Active Directory tümleştirme
@@ -61,13 +61,13 @@ Hisse çalışma alanı tümleştirmesini Azure AD 'ye göre yapılandırmak iç
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **hisse çalışma alanı**yazın, sonuç panelinden **hisse çalışma alanı** ' nı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **hisse çalışma alanı** yazın, sonuç panelinden **hisse çalışma alanı** ' nı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
     ![Sonuç listesindeki hisse çalışma alanı](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre hisse çalışma alanıyla yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre hisse çalışma alanıyla yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve hisse çalışma alanındaki ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
 Azure AD çoklu oturum açma 'yı hisse çalışma alanıyla yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurmanız gerekir:
@@ -131,7 +131,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
     b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension` . Örneğin, BrittaSimon@contoso.com
 

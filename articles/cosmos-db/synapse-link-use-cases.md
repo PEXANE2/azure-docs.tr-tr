@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
 ms.openlocfilehash: 9855a53ebdf7501907b3e1e63d59823d3a0b0209
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96463125"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Cosmos DB için Azure Synapse Link: Gerçek zamanlıya yakın analiz için kullanım örnekleri
@@ -133,7 +133,7 @@ Tek bir gerçek zamanlı veritabanı, bir envanter yönetimi platformunun hem i�
 
 Daha fazla bilgi için aşağıdaki belgelere bakın:
 
-* [Azure Cosmos DB için Azure SYNAPSE bağlantısı](synapse-link.md) 
+* [Azure Cosmos DB için Azure Synapse Link](synapse-link.md) 
 
 * [Azure Cosmos DB Analiz Deposu](analytical-store-introduction.md)
 
@@ -141,6 +141,6 @@ Daha fazla bilgi için aşağıdaki belgelere bakın:
 
 * [Azure Cosmos DB için Azure Synapse Link hakkında sık sorulan sorular](synapse-link-frequently-asked-questions.md)
 
-* [Azure SYNAPSE Analytics 'te Apache Spark](../synapse-analytics/spark/apache-spark-concepts.md)
+* [Azure Synapse Analytics’te Apache Spark](../synapse-analytics/spark/apache-spark-concepts.md)
 
 * [Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu çalışma zamanı desteği](../synapse-analytics/sql/on-demand-workspace-overview.md)

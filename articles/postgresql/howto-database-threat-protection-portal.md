@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
 ms.openlocfilehash: 5583e8423f0909936d9e55c6d87593835eded8f7
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92489906"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı için Gelişmiş tehdit koruması-tek sunucu
@@ -42,15 +42,15 @@ Anormal veritabanı etkinliklerinin algılanmasıyla bir e-posta bildirimi alır
     
 1. Azure portal başlatmak ve SQL veritabanında algılanan etkin tehditlere genel bir bakış sağlayan Azure Güvenlik Merkezi uyarıları sayfasını görüntülemek için e-postadaki **son Uyarıları görüntüle** bağlantısına tıklayın.
     
-    :::image type="content" source="./media/howto-database-threat-protection-portal/anomalous-activity-report.png" alt-text="Tehdit algılamayı ayarlama":::
+    :::image type="content" source="./media/howto-database-threat-protection-portal/anomalous-activity-report.png" alt-text="Anormal etkinlik raporu":::
 
     Etkin tehditleri görüntüle:
 
-    :::image type="content" source="./media/howto-database-threat-protection-portal/active-threats.png" alt-text="Tehdit algılamayı ayarlama":::
+    :::image type="content" source="./media/howto-database-threat-protection-portal/active-threats.png" alt-text="Etkin tehditler":::
 
 2. Bu tehdidi araştırmaya ve gelecekteki tehditleri incelemeye yönelik ek ayrıntılar ve eylemler almak için belirli bir uyarıya tıklayın.
     
-    :::image type="content" source="./media/howto-database-threat-protection-portal/specific-alert.png" alt-text="Tehdit algılamayı ayarlama":::
+    :::image type="content" source="./media/howto-database-threat-protection-portal/specific-alert.png" alt-text="Özel uyarı":::
 
 ## <a name="explore-threat-detection-alerts"></a>Tehdit algılama uyarılarını keşfet
 
@@ -58,7 +58,7 @@ Gelişmiş tehdit koruması, uyarılarını [Azure Güvenlik Merkezi](https://az
 
 Azure Güvenlik Merkezi uyarıları sayfasını başlatmak için **TEHDIT koruması** altında **güvenlik uyarıları** ' na tıklayın ve veritabanında algılanan etkin SQL tehditleri hakkında genel bir bakış alın.
 
-  :::image type="content" source="./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png" alt-text="Tehdit algılamayı ayarlama":::
+  :::image type="content" source="./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png" alt-text="Tehdit koruması ASC":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

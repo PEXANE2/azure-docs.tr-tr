@@ -4,10 +4,10 @@ description: Bu kılavuz, Azure Lab Services kullanarak laboratuvar hesapları o
 ms.topic: article
 ms.date: 10/20/2020
 ms.openlocfilehash: 3ad3ee38a6c08a6af85822d76012cc6dfc34ff4e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96462470"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services Yönetici Kılavuzu
@@ -116,7 +116,7 @@ Paylaşılan görüntüleri mantıksal olarak gruplamak için aşağıdakilerden
 
 Azure Lab Services kullanmaya başlarken, kaynak grupları, laboratuvar hesapları, laboratuvarlar ve paylaşılan görüntü Galerisi için adlandırma kuralları oluşturmanızı öneririz. Oluşturduğunuz adlandırma kuralları, kuruluşunuzun ihtiyaçlarına göre benzersiz olacaktır, ancak aşağıdaki tabloda genel yönergeler sunulmaktadır:
 
-| Kaynak türü | Role | Önerilen düzen | Örnekler |
+| Kaynak türü | Rol | Önerilen düzen | Örnekler |
 | ------------- | ---- | ----------------- | -------- | 
 | Kaynak grubu | Bir veya daha fazla laboratuvar hesabı ve bir veya daha fazla paylaşılan görüntü Galerisi içerir | \<organization short name\>-\<environment\>-RG<ul><li>**Kuruluş kısa adı** , kaynak grubunun desteklediği kuruluşun adını tanımlar.</li><li>**Ortam** , kaynak için *pilot* veya *Üretim* gibi ortamı tanımlar.</li><li>**RG** , kaynak türü *kaynak grubu* için temsil eder.</li></ul> | contosoüniversıtylabs-RG<br/>contosoüniversıtylabs-pilot-RG<br/>contosoüniversıtylabs-prod-RG |
 | Laboratuvar hesabı | Bir veya daha fazla Laboratuvarı içerir | \<organization short name\>-\<environment\>-La<ul><li>**Kuruluş kısa adı** , kaynak grubunun desteklediği kuruluşun adını tanımlar.</li><li>**Ortam** , kaynak için *pilot* veya *Üretim* gibi ortamı tanımlar.</li><li>**La** , kaynak türü *Laboratuvar hesabı* için temsil eder.</li></ul> | contosoüniversıtylabs-La<br/>mathdeptlabs-La<br/>bilimsel deptlabs-pilot-La<br/>bilimsel deptlabs-prod-La |

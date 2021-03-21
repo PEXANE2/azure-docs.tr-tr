@@ -13,10 +13,10 @@ ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
 ms.openlocfilehash: 68bb846ebb0199691161bc501441df908eb8ad87
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101643618"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>Son kullanıcıların uygulamalara onay verme şeklini yapılandırma
@@ -81,7 +81,7 @@ Kullanıcı onaylamasına izin vermek için, uygulamalara izin vermek üzere kul
 
 `{consent-policy-id}`Uygulamak istediğiniz ILKENIN kimliğiyle değiştirin. Oluşturduğunuz [özel bir uygulama onay ilkesini](manage-app-consent-policies.md#create-a-custom-app-consent-policy) seçebilir veya aşağıdaki yerleşik ilkelerden seçebilirsiniz:
 
-| ID | Açıklama |
+| ID | Description |
 |:---|:------------|
 | Microsoft-Kullanıcı-varsayılan-düşük | **Seçili izinler için doğrulanan yayımcıların uygulamalara yönelik Kullanıcı onaylamasına izin ver**<br /> Yalnızca, kiracınızda kayıtlı Yayımcılar ve uygulamalar için sınırlı kullanıcı onayı ve yalnızca "düşük etki" olarak sınıflandırdığınız izinler için izin verin. (Kullanıcıların izin verdiği izinleri seçmek için [izinleri sınıflandırmaya](configure-permission-classifications.md) unutmayın.) |
 | Microsoft-Kullanıcı-varsayılan-eski | **Uygulamalar için Kullanıcı onaylamasına izin ver**<br /> Bu seçenek, tüm kullanıcıların herhangi bir uygulama için yönetici onayı gerektirmeyen tüm izinlere izin vermesini sağlar |
@@ -145,7 +145,7 @@ Microsoft 'un riski algıladığı veya daha önce devre dışı bırakılmışs
 
 1. Ayarlar değerini anlayın:
 
-    | Ayar       | Tür         | Açıklama  |
+    | Ayar       | Tür         | Description  |
     | ------------- | ------------ | ------------ |
     | _BlockUserConsentForRiskyApps_   | Boole |  Riskli bir istek algılandığında Kullanıcı izninin engellenip engellenmediğini belirten bayrak. |
 

@@ -4,10 +4,10 @@ description: Azure Service Fabric tek başına veya şirket içi küme içinde v
 ms.topic: conceptual
 ms.date: 10/15/2017
 ms.openlocfilehash: d75c644be47ea44f6a8a6ccac91b785af0132833
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98791046"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>X. 509.440 sertifikalarını kullanarak Windows 'da tek başına kümeyi güvenli hale getirme
@@ -348,7 +348,7 @@ Dosyadaki ClusterConfig.X509.MultiMachine.jsgüvenlik bölümünü yapılandırd
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.X509.MultiMachine.json
 ```
 
-Güvenli tek başına Windows kümesinin başarıyla çalışmasını ve bu sunucuya bağlanmak için kimliği doğrulanmış istemcileri ayarlamayı doğruladıktan sonra, bağlanmak için [PowerShell kullanarak bir kümeye bağlanma](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-powershell) bölümündeki adımları izleyin. Örneğin:
+Güvenli tek başına Windows kümesinin başarıyla çalışmasını ve bu sunucuya bağlanmak için kimliği doğrulanmış istemcileri ayarlamayı doğruladıktan sonra, bağlanmak için [PowerShell kullanarak bir kümeye bağlanma](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-powershell) bölümündeki adımları izleyin. Örnek:
 
 ```powershell
 $ConnectArgs = @{  ConnectionEndpoint = '10.7.0.5:19000';  X509Credential = $True;  StoreLocation = 'LocalMachine';  StoreName = "MY";  ServerCertThumbprint = "057b9544a6f2733e0c8d3a60013a58948213f551";  FindType = 'FindByThumbprint';  FindValue = "057b9544a6f2733e0c8d3a60013a58948213f551"   }
