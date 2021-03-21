@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 497e714289c834e026c6b9b767ed2b7af5442783
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92780844"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Azure SQL veritabanı ile kiracı başına veritabanı modelini kullanan çok kiracılı SaaS uygulamasını dağıtma ve araştırma
@@ -38,7 +38,7 @@ Bu öğreticide şunları öğrenirsiniz:
 
 Çeşitli SaaS tasarım ve yönetim düzenlerini araştırmak için bir [dizi ilgili öğretici](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials) sunulmaktadır. Öğreticiler, bu ilk dağıtımın ötesinde derleme içerir. Öğreticileri kullandığınızda, farklı SaaS desenlerinin nasıl uygulandığını görmek için, belirtilen betikleri inceleyebilirsiniz. Betikler, SQL Database özelliklerinin SaaS uygulamalarının geliştirilmesini nasıl basitleştireceğinizi gösterir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için Azure PowerShell yüklü olduğundan emin olun. Daha fazla bilgi için bkz. [Azure PowerShell kullanmaya başlayın](/powershell/azure/get-started-azureps).
 
@@ -48,14 +48,14 @@ Bu öğreticiyi tamamlayabilmeniz için Azure PowerShell yüklü olduğundan emi
 
 Bu bölümün adımlarında, kaynak adlarının genel olarak benzersiz olduğundan emin olmak için kullanılan bir kullanıcı değeri sağlarsınız. Ayrıca, uygulamanın bir dağıtımı tarafından oluşturulan tüm kaynakları içeren kaynak grubu için bir ad sağlarsınız. Ann Finley adlı kurgusal bir kişi için şunları öneririz:
 
-- **User** : *AF1* , Ann 'ın baş harflerinden ve bir basamağdan oluşur. Uygulamayı ikinci kez dağıtırsanız, farklı bir değer kullanın. Örnek olarak AF2.
-- **Kaynak grubu** : *Wingtip-DPT-AF1* , bu, kiracı başına veritabanı uygulaması olduğunu gösterir. Kaynak grubu adını içerdiği kaynakların adlarıyla ilişkilendirmek için AF1 Kullanıcı adını ekleyin.
+- **User**: *AF1* , Ann 'ın baş harflerinden ve bir basamağdan oluşur. Uygulamayı ikinci kez dağıtırsanız, farklı bir değer kullanın. Örnek olarak AF2.
+- **Kaynak grubu**: *Wingtip-DPT-AF1* , bu, kiracı başına veritabanı uygulaması olduğunu gösterir. Kaynak grubu adını içerdiği kaynakların adlarıyla ilişkilendirmek için AF1 Kullanıcı adını ekleyin.
 
 Adlarınızı şimdi seçin ve bunları aşağı yazın.
 
 ### <a name="steps"></a>Adımlar
 
-1. Azure portal, Wingtip bilet SaaS veritabanının kiracı başına Dağıtım şablonunu açmak için, **Azure 'A dağıt** ' ı seçin.
+1. Azure portal, Wingtip bilet SaaS veritabanının kiracı başına Dağıtım şablonunu açmak için, **Azure 'A dağıt**' ı seçin.
 
    [!["Azure 'a dağıt" etiketli bir düğmeyi gösteren resim.](https://azuredeploy.net/deploybutton.png)](https://aka.ms/deploywingtipdpt)
 
@@ -64,15 +64,15 @@ Adlarınızı şimdi seçin ve bunları aşağı yazın.
     > [!IMPORTANT]
     > Bazı kimlik doğrulama ve sunucu güvenlik duvarları, tanıtım amacıyla güvenli şekilde güvenli değildir. Yeni bir kaynak grubu oluşturmanızı öneririz. Mevcut kaynak gruplarını, sunucuları veya havuzları kullanmayın. Bu uygulamayı, betikleri veya üretim için dağıtılan kaynakları kullanmayın. İlgili faturalandırmayı durdurmak için uygulamayla işiniz bittiğinde bu kaynak grubunu silin.
 
-    - **Kaynak grubu** : **Yeni oluştur** ' u seçin ve kaynak grubu için daha önce seçtiğiniz benzersiz adı belirtin.
-    - **Konum** : açılan listeden bir konum seçin.
-    - **Kullanıcı** : daha önce seçtiğiniz Kullanıcı adı değerini kullanın.
+    - **Kaynak grubu**: **Yeni oluştur**' u seçin ve kaynak grubu için daha önce seçtiğiniz benzersiz adı belirtin.
+    - **Konum**: açılan listeden bir konum seçin.
+    - **Kullanıcı**: daha önce seçtiğiniz Kullanıcı adı değerini kullanın.
 
 1. Uygulamayı dağıtın.
 
     a. Hüküm ve koşulları kabul etmek için seçin.
 
-    b. **Satın al** 'ı seçin.
+    b. **Satın al**'ı seçin.
 
 1. Dağıtım durumunu izlemek için **Bildirimler** ' i (arama kutusunun sağındaki zil simgesi) seçin. Wingtip bilet SaaS uygulamasının dağıtımı yaklaşık beş dakika sürer.
 
@@ -86,11 +86,11 @@ Uygulama dağıtıldıktan sonra, kaynak kodu ve yönetim betikleri ' ni indirin
 > . Zip dosyaları bir dış kaynaktan indirilip ayıklandığında, yürütülebilir dosyalar (betikler ve DLL 'Ler) Windows tarafından engelleniyor olabilir. Betikleri Ayıklamadan önce. zip dosyasının engelini kaldırma adımlarını izleyin. Engellemeyi kaldırma, betiklerin çalışmasına izin verilmesini sağlar.
 
 1. [Wingtipbilet ssaas-DbPerTenant GitHub][github-wingtip-dpt]deposuna göz atabilirsiniz.
-1. **Clone or download** 'u (Kopyala veya indir) seçin.
-1. **ZIP 'ı indir** ' i seçin ve dosyayı kaydedin.
-1. **WingtipTicketsSaaS-DbPerTenant-master.zip** dosyasına sağ tıklayın ve ardından **Özellikler** ' i seçin.
-1. **Genel** sekmesinde, Uygula **Kaldır** ' ı seçin  >  **Apply** .
-1. **Tamam** ' ı seçin ve dosyaları ayıklayın
+1. **Clone or download**'u (Kopyala veya indir) seçin.
+1. **ZIP 'ı indir**' i seçin ve dosyayı kaydedin.
+1. **WingtipTicketsSaaS-DbPerTenant-master.zip** dosyasına sağ tıklayın ve ardından **Özellikler**' i seçin.
+1. **Genel** sekmesinde, Uygula **Kaldır**' ı seçin  >  .
+1. **Tamam**' ı seçin ve dosyaları ayıklayın
 
 Betikler.. \\ . içinde bulunur. Wingtipbilet ssaas-DbPerTenant-Master \\ Learning modülleri klasörü.
 
@@ -118,7 +118,7 @@ Merkezi bir **Olay Hub 'ı** sayfası, dağıtımınızdaki kiracılar için ba�
 
 2. Olaylar hub 'ında **fabrikam Cakkulübü** seçin.
 
-    ![Olaylar](./media/saas-dbpertenant-get-started-deploy/fabrikam.png)
+    ![Ekinlikler](./media/saas-dbpertenant-get-started-deploy/fabrikam.png)
 
 ### <a name="azure-traffic-manager"></a>Azure Traffic Manager
 
@@ -128,9 +128,9 @@ Wingtip Application, gelen isteklerin dağıtımını denetlemek için [*Azure T
 
     Önceki biçimin parçaları aşağıdaki tabloda açıklanmıştır.
 
-    | URL bölümü        | Açıklama       |
+    | URL bölümü        | Description       |
     | :-------------- | :---------------- |
-    | olaylar. Wingtip-DPT | Wingtip uygulamasının olaylar bölümü.<br /><br /> *-DPT* , Wingtip bilet 'nin *kiracı başına veritabanı* uygulamasını diğer uygulamalardan ayırır. Bu örnek, *tek* kiracılı kiracı ( *-sa* ) veya *çok kiracılı veritabanı* ( *-MT* ) uygulamalarından örnektir. |
+    | olaylar. Wingtip-DPT | Wingtip uygulamasının olaylar bölümü.<br /><br /> *-DPT* , Wingtip bilet 'nin *kiracı başına veritabanı* uygulamasını diğer uygulamalardan ayırır. Bu örnek, *tek* kiracılı kiracı (*-sa*) veya *çok kiracılı veritabanı* (*-MT*) uygulamalarından örnektir. |
     | . *&lt; Kullanıcı &gt;* | örnekteki *AF1* . |
     | . trafficmanager.net/ | Traffic Manager, temel URL. |
     | fabrikamjazzclub | Fabrikam Cakulüler adlı kiracıyı tanımlar. |

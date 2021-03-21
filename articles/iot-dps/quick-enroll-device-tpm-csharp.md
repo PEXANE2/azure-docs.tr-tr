@@ -10,10 +10,10 @@ services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc, devx-track-csharp
 ms.openlocfilehash: 14f17c6716fe98a11d03e8d1021bcdb1058fe671
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94968120"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>Hızlı başlangıç: C# hizmeti SDK 'sını kullanarak cihaz sağlama hizmeti IoT Hub TPM cihazı kaydetme
@@ -167,7 +167,7 @@ C# hizmet örneğini keşfetmeyi planlıyorsanız, bu hızlı başlangıçta olu
 
     1. TPM simülatör penceresini ve simülasyon cihazının örnek çıkış penceresini kapatın.
 
-    1. Azure Portal'da, cihazınızın sağlandığı IoT Hub'ına gidin. Araştırıcılar altındaki menüde **Explorers**, **IoT cihazları**' nı seçin, bu hızlı BAŞLANGıÇTA kaydettiğiniz cihazın *cihaz kimliği* ' nin yanındaki onay kutusunu Işaretleyin ve ardından bölmenin en üstündeki **Sil** düğmesine basın.
+    1. Azure Portal'da, cihazınızın sağlandığı IoT Hub'ına gidin. Araştırıcılar altındaki menüde , **IoT cihazları**' nı seçin, bu hızlı BAŞLANGıÇTA kaydettiğiniz cihazın *cihaz kimliği* ' nin yanındaki onay kutusunu Işaretleyin ve ardından bölmenin en üstündeki **Sil** düğmesine basın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

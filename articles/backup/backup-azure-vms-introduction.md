@@ -4,10 +4,10 @@ description: Bu makalede, Azure Backup hizmetinin Azure sanal makinelerini nası
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.openlocfilehash: 691fe991ad141696c0c68e915d7225001a1befd0
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98733580"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Azure VM yedeklemesine genel bakış
@@ -121,7 +121,7 @@ VM yedekleme yapılandırması sırasında aşağıdaki yöntemleri uygulamanız
 - VM 'Leri tek bir kasadan geri yüklüyorsanız, hedef depolama hesabının kısıtlanmasını sağlamak için farklı [genel amaçlı v2 depolama hesapları](../storage/common/storage-account-upgrade.md) kullanmanızı önemle tavsiye ederiz. Örneğin, her sanal makinenin farklı bir depolama hesabı olmalıdır. Örneğin, 10 VM geri yüklenirse, 10 farklı depolama hesabı kullanın.
 - Anlık geri yükleme ile Premium depolama kullanan VM 'lerin yedeklenmesi için, **yalnızca** ilk yedekleme için gerekli olan toplam ayrılan depolama alanının *%50* boş alanını ayırmayı öneririz. İlk yedekleme tamamlandıktan sonra %50 boş alan yedeklemeler için bir gereksinim değildir
 - Depolama hesabı başına disk sayısı sınırı, disklere hizmet olarak altyapı (IaaS) VM üzerinde çalışan uygulamalar tarafından hangi düzeyde erişim sağlandığına göre değişir. Genellikle tek bir depolama hesabında 5-10 arası veya daha fazla disk varsa bazı diskleri ayrı depolama hesaplarına taşıyarak yükü dengelemeniz önerilir.
-- PowerShell kullanarak VM 'Leri yönetilen disklere geri yüklemek için, yönetilen disklerin geri yükleneceği kaynak grubunu belirtmek üzere **_Targetresourcegroupname_* _ ek parametresini sağlayın, [daha fazla bilgi edinin](./backup-azure-vms-automation.md#restore-managed-disks).
+- PowerShell kullanarak VM 'Leri yönetilen disklere geri yüklemek için, yönetilen disklerin geri yükleneceği kaynak grubunu belirtmek üzere ***Targetresourcegroupname*** ek parametresini sağlayın, [daha fazla bilgi edinin](./backup-azure-vms-automation.md#restore-managed-disks).
 
 ## <a name="backup-costs"></a>Yedekleme maliyetleri
 
@@ -131,7 +131,7 @@ Azure Backup ile yedeklenen Azure VM 'Leri [Azure Backup fiyatlandırmaya](https
 
 Belirtilen bir VM için faturalandırma yalnızca koruma durdurulmuşsa ve tüm yedekleme verileri silinirse durdurulur. Koruma durdurulduğunda ve etkin yedekleme işi olmadığında, son başarılı VM yedeklemesinin boyutu aylık fatura için kullanılan korumalı örnek boyutu olur.
 
-Korumalı örnek boyutu hesaplaması, sanal makinenin _actual * boyutunu temel alır. VM 'nin boyutu, geçici depolama hariç olmak üzere VM 'deki tüm verilerin toplamıdır. Fiyatlandırma, sanal makineye bağlı her bir veri diski için desteklenen en büyük boyuta göre değil, veri disklerinde depolanan gerçek verileri temel alır.
+Korumalı örnek boyutu hesaplaması, sanal makinenin *gerçek* boyutuna göre belirlenir. VM 'nin boyutu, geçici depolama hariç olmak üzere VM 'deki tüm verilerin toplamıdır. Fiyatlandırma, sanal makineye bağlı her bir veri diski için desteklenen en büyük boyuta göre değil, veri disklerinde depolanan gerçek verileri temel alır.
 
 Benzer şekilde, yedekleme depolama alanı faturanız, her kurtarma noktasındaki gerçek verilerin toplamı olan Azure Backup depolanan veri miktarına bağlıdır.
 

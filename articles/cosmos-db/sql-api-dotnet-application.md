@@ -10,10 +10,10 @@ ms.date: 05/08/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: 528cab915a1ac3918146e428e9ae6b3c401324c8
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96010366"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>Öğretici: .NET SDK kullanarak Azure Cosmos DB ile ASP.NET Core MVC web uygulaması geliştirme
@@ -80,7 +80,7 @@ Sonraki bölümde, yeni bir ASP.NET Core MVC uygulaması oluşturacaksınız.
 
    Visual Studio boş bir MVC uygulaması oluşturur.
 
-1. **Debug**  >  ASP.NET uygulamanızı yerel olarak çalıştırmak için hata **ayıklamayı Başlat** veya F5 ' i seçin.
+1.   >  ASP.NET uygulamanızı yerel olarak çalıştırmak için hata **ayıklamayı Başlat** veya F5 ' i seçin.
 
 ## <a name="step-3-add-azure-cosmos-db-nuget-package-to-the-project"></a><a name="add-nuget-packages"></a>3. Adım: projeye Azure Cosmos DB NuGet paketi ekleme
 
@@ -88,7 +88,7 @@ Bu çözüm için ihtiyaç duyduğumuz ASP.NET Core MVC Framework kodunun çoğu
 
 1. **Çözüm Gezgini**, projenize sağ tıklayın ve **NuGet Paketlerini Yönet**' i seçin.
 
-1. **NuGet Paket Yöneticisi**' nde, **Microsoft. Azure. Cosmos** arayın ve seçin. **Yükle**’yi seçin.
+1. **NuGet Paket Yöneticisi**' nde, **Microsoft. Azure. Cosmos** arayın ve seçin. **Yükle**'yi seçin.
 
    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-nuget.png" alt-text="NuGet paketini yükler":::
 
@@ -106,11 +106,11 @@ Bu çözüm için ihtiyaç duyduğumuz ASP.NET Core MVC Framework kodunun çoğu
 
 ### <a name="add-a-model"></a><a name="add-a-model"></a> Model ekleme
 
-1. **Çözüm Gezgini**, **modeller** klasörüne sağ tıklayın, sınıf **Ekle**' yi seçin  >  **Class**.
+1. **Çözüm Gezgini**, **modeller** klasörüne sağ tıklayın, sınıf **Ekle**' yi seçin  >  .
 
-1. **Yeni öğe Ekle**' de, yeni sınıfınızı *Item.cs* olarak adlandırın ve **Ekle**' yi seçin.
+1. **Yeni öğe Ekle**' de yeni sınıf *öğesini. cs* olarak adlandırın ve **Ekle**' yi seçin.
 
-1. *Item.cs* sınıfının içeriğini şu kodla değiştirin:
+1. *Item. cs* sınıfının içeriğini aşağıdaki kodla değiştirin:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Models/Item.cs":::
 
@@ -128,9 +128,9 @@ Ardından aşağıdaki görünümleri ekleyelim.
 
 #### <a name="create-item-view"></a><a name="AddNewIndexView"></a>Öğe görünümü oluştur
 
-1. **Çözüm Gezgini**, **Görünümler** klasörüne sağ tıklayın ve **Add**  >  **Yeni klasör** Ekle ' yi seçin. Klasör *öğesini* adlandırın.
+1. **Çözüm Gezgini**, **Görünümler** klasörüne sağ tıklayın ve   >  **Yeni klasör** Ekle ' yi seçin. Klasör *öğesini* adlandırın.
 
-1. Boş **öğe** klasörünü sağ tıklatın ve ardından Görünüm **Ekle**' yi seçin  >  **View**.
+1. Boş **öğe** klasörünü sağ tıklatın ve ardından Görünüm **Ekle**' yi seçin  >  .
 
 1. **MVC görünümü Ekle**' de, aşağıdaki değişiklikleri yapın:
 
@@ -138,7 +138,7 @@ Ardından aşağıdaki görünümleri ekleyelim.
    * **Şablon**' da **Oluştur**' u seçin.
    * **Model sınıfı**' nda, **öğe (Todo) öğesini seçin. Modeller)**.
    * **Düzen kullan sayfasını** seçin ve *~/views/Shared/_Layout. cshtml* yazın.
-   * **Ekle**’yi seçin.
+   * **Add (Ekle)** seçeneğini belirleyin.
 
    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-mvc-view.png" alt-text="MVC görünümü Ekle iletişim kutusunu gösteren ekran görüntüsü":::
 
@@ -148,7 +148,7 @@ Ardından aşağıdaki görünümleri ekleyelim.
 
 #### <a name="delete-item-view"></a><a name="AddEditIndexView"></a>Öğe görünümünü sil
 
-1. **Çözüm Gezgini**, **öğe** klasörünü yeniden sağ tıklatın, Görünüm Ekle ' yi seçin **Add**  >  **View**.
+1. **Çözüm Gezgini**, **öğe** klasörünü yeniden sağ tıklatın, Görünüm Ekle ' yi seçin   >  .
 
 1. **MVC görünümü Ekle**' de, aşağıdaki değişiklikleri yapın:
 
@@ -156,7 +156,7 @@ Ardından aşağıdaki görünümleri ekleyelim.
    * **Şablon** kutusunda **Sil**' i seçin.
    * **Model sınıfı** kutusunda **Öğe (todo.Models)** seçeneğini belirleyin.
    * **Düzen kullan sayfasını** seçin ve *~/views/Shared/_Layout. cshtml* yazın.
-   * **Ekle**’yi seçin.
+   * **Add (Ekle)** seçeneğini belirleyin.
 
 1. Sonra **Ekle** ' yi seçin ve Visual Studio 'nun yeni bir şablon görünümü oluşturmasına izin verin. Oluşturulan dosyadaki kodu aşağıdaki içeriklerle değiştirin:
 
@@ -164,7 +164,7 @@ Ardından aşağıdaki görünümleri ekleyelim.
 
 #### <a name="add-a-view-to-get-an-item-details"></a><a name="AddItemIndexView"></a>Öğe ayrıntılarını almak için bir görünüm ekleyin
 
-1. **Çözüm Gezgini**, **öğe** klasörünü yeniden sağ tıklatın, Görünüm **Ekle**' yi seçin  >  **View**.
+1. **Çözüm Gezgini**, **öğe** klasörünü yeniden sağ tıklatın, Görünüm **Ekle**' yi seçin  >  .
 
 1. **MVC görünümü Ekle**' de, aşağıdaki değerleri sağlayın:
 
@@ -179,7 +179,7 @@ Ardından aşağıdaki görünümleri ekleyelim.
 
 #### <a name="add-an-edit-item-view"></a><a name="AddEditIndexView"></a>Düzenleme öğesi görünümü ekleme
 
-1. **Çözüm Gezgini**, **öğe** klasörünü yeniden sağ tıklatın, Görünüm Ekle ' yi seçin **Add**  >  **View**.
+1. **Çözüm Gezgini**, **öğe** klasörünü yeniden sağ tıklatın, Görünüm Ekle ' yi seçin   >  .
 
 1. **MVC görünümü Ekle**' de, aşağıdaki değişiklikleri yapın:
 
@@ -187,7 +187,7 @@ Ardından aşağıdaki görünümleri ekleyelim.
    * **Şablon** kutusunda **Düzenle**'yi seçin.
    * **Model sınıfı** kutusunda **Öğe (todo.Models)** seçeneğini belirleyin.
    * **Düzen kullan sayfasını** seçin ve *~/views/Shared/_Layout. cshtml* yazın.
-   * **Ekle**’yi seçin.
+   * **Add (Ekle)** seçeneğini belirleyin.
 
 1. Sonra **Ekle** ' yi seçin ve Visual Studio 'nun yeni bir şablon görünümü oluşturmasına izin verin. Oluşturulan dosyadaki kodu aşağıdaki içeriklerle değiştirin:
 
@@ -197,7 +197,7 @@ Ardından aşağıdaki görünümleri ekleyelim.
 
 Son olarak, aşağıdaki adımlarla tüm öğeleri almak için bir görünüm ekleyin:
 
-1. **Çözüm Gezgini**, **öğe** klasörünü yeniden sağ tıklatın, Görünüm Ekle ' yi seçin **Add**  >  **View**.
+1. **Çözüm Gezgini**, **öğe** klasörünü yeniden sağ tıklatın, Görünüm Ekle ' yi seçin   >  .
 
 1. **MVC görünümü Ekle**' de, aşağıdaki değişiklikleri yapın:
 
@@ -205,7 +205,7 @@ Son olarak, aşağıdaki adımlarla tüm öğeleri almak için bir görünüm ek
    * **Şablon** kutusunda **Liste**'yi seçin.
    * **Model sınıfı** kutusunda **Öğe (todo.Models)** seçeneğini belirleyin.
    * **Düzen kullan sayfasını** seçin ve *~/views/Shared/_Layout. cshtml* yazın.
-   * **Ekle**’yi seçin.
+   * **Add (Ekle)** seçeneğini belirleyin.
 
 1. Sonra **Ekle** ' yi seçin ve Visual Studio 'nun yeni bir şablon görünümü oluşturmasına izin verin. Oluşturulan dosyadaki kodu aşağıdaki içeriklerle değiştirin:
 
@@ -217,21 +217,21 @@ Bu adımları tamamladıktan sonra, Visual Studio 'daki tüm *cshtml* belgelerin
 
 İlk olarak, Azure Cosmos DB bağlanma ve kullanma mantığını içeren bir sınıf ekleyeceğiz. Bu öğreticide, bu mantığı adlı bir sınıfa `CosmosDbService` ve adlı bir arabirime kapsülliyoruz `ICosmosDbService` . Bu hizmet CRUD işlemlerini yapar. Ayrıca, tamamlanmamış öğeleri Listeleme, öğeleri oluşturma, düzenlemesi ve silme gibi akış işlemlerini de okur.
 
-1. **Çözüm Gezgini**, projenize sağ tıklayın ve **Add**  >  **Yeni klasör** Ekle ' yi seçin. Klasör *hizmetlerini* adlandırın.
+1. **Çözüm Gezgini**, projenize sağ tıklayın ve   >  **Yeni klasör** Ekle ' yi seçin. Klasör *hizmetlerini* adlandırın.
 
-1. **Hizmetler** klasörüne sağ tıklayın, sınıf **Ekle**' yi seçin  >  **Class**. Yeni sınıfı *Cosmosdbservice* olarak adlandırın ve **Ekle**' yi seçin.
+1. **Hizmetler** klasörüne sağ tıklayın, sınıf **Ekle**' yi seçin  >  . Yeni sınıfı *Cosmosdbservice* olarak adlandırın ve **Ekle**' yi seçin.
 
-1. *CosmosDbService.cs* içeriğini aşağıdaki kodla değiştirin:
+1. *Cosmosdbservice. cs* içeriğini şu kodla değiştirin:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/CosmosDbService.cs":::
 
-1. **Hizmetler** klasörüne sağ tıklayın, sınıf **Ekle**' yi seçin  >  **Class**. Yeni sınıfı *ıosmosdbservice* olarak adlandırın ve **Ekle**' yi seçin.
+1. **Hizmetler** klasörüne sağ tıklayın, sınıf **Ekle**' yi seçin  >  . Yeni sınıfı *ıosmosdbservice* olarak adlandırın ve **Ekle**' yi seçin.
 
 1. Aşağıdaki kodu *ıcosmosdbservice* sınıfına ekleyin:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/ICosmosDbService.cs":::
 
-1. Çözümünüzde *Startup.cs* dosyasını açın ve aşağıdaki **ınitializecosmosclientınstanceasync** yöntemini ekleyerek yapılandırmayı okur ve istemciyi başlatır.
+1. Çözümünüzde *Startup. cs* dosyasını açın ve aşağıdaki **ınitializecosmosclientınstanceasync** yöntemini ekleyerek yapılandırmayı okur ve istemciyi başlatır.
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs" id="InitializeCosmosClientInstanceAsync" :::
 
@@ -259,7 +259,7 @@ Bu adımları tamamladıktan sonra, Visual Studio 'daki tüm *cshtml* belgelerin
 
 ### <a name="add-a-controller"></a><a name="add-a-controller"></a>Denetleyici ekleme
 
-1. **Çözüm Gezgini**, **denetleyiciler** klasörüne sağ tıklayın, denetleyici **Ekle**' yi seçin  >  **Controller**.
+1. **Çözüm Gezgini**, **denetleyiciler** klasörüne sağ tıklayın, denetleyici **Ekle**' yi seçin  >  .
 
 1. **Yapı Iskelesi Ekle**' de **MVC denetleyicisi-boş** ' yı seçin ve **Ekle**' yi seçin.
 
@@ -267,7 +267,7 @@ Bu adımları tamamladıktan sonra, Visual Studio 'daki tüm *cshtml* belgelerin
 
 1. Yeni Controller *ıtemcontroller*'ı adlandırın.
 
-1. *ItemController.cs* içeriğini aşağıdaki kodla değiştirin:
+1. *Itemcontroller. cs* içeriğini şu kodla değiştirin:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Controllers/ItemController.cs":::
 

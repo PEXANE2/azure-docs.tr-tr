@@ -11,10 +11,10 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 04/09/2020
 ms.openlocfilehash: ba85bda1e322d3efd467527b48bd4cd90eb7ce8c
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96922615"
 ---
 # <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>Otomatik makine öğrenimi ile fazla sığdırma ve ıdengeli verileri önleme
@@ -27,7 +27,7 @@ Makine öğreniminde fazla sığdırma, bir model eğitim verilerine çok uygun 
 
 Aşağıdaki eğitilen modelleri ve bunlara karşılık gelen tren ve test accuracies göz önünde bulundurun.
 
-| Model | Tren doğruluğu | Test doğruluğu |
+| Modelleme | Tren doğruluğu | Test doğruluğu |
 |-------|----------------|---------------|
 | A | %99,9 | %95 |
 | B | %87 | %87 |
@@ -81,7 +81,7 @@ Makine öğrenimi sınıflandırma senaryolarına ilişkin verilerde yaygın ola
 
 Ayrıca, otomatik ML çalıştırmaları aşağıdaki grafikleri otomatik olarak oluşturur. Bu, modelinizdeki sınıflandırmaların doğruluğunu anlamanıza yardımcı olabilir ve imdenli verilerden etkilenen modelleri tanımlayabilir.
 
-Grafik| Açıklama
+Grafik| Description
 ---|---
 [Karışıklık matrisi](how-to-understand-automated-ml.md#confusion-matrix)| Doğru sınıflandırılan etiketleri verilerin gerçek etiketlerine göre değerlendirir. 
 [Precision-geri çek](how-to-understand-automated-ml.md#precision-recall-curve)| Doğru etiketlerin oranını, verilerin bulunan etiket örneklerinin oranına göre değerlendirir 

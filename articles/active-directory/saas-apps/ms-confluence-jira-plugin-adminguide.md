@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/19/2018
 ms.author: jeedes
 ms.openlocfilehash: 8e73ea3650e631bed277ab95092b714eef7596d4
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94359166"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Azure Active Directory için atlasme Jira ve Confluence Yönetici Kılavuzu
@@ -97,7 +97,7 @@ Eklentiyi yüklemek için şu adımları izleyin:
 
 4. Eklentiyi seçin ve evrensel Eklenti Yöneticisi (UPı) onu yüklenir.
 
-Eklenti yüklendikten sonra, eklentileri **Yönet** ' in **Kullanıcı tarafından yüklenen eklentiler** bölümünde görüntülenir.
+Eklenti yüklendikten sonra, eklentileri **Yönet**' in **Kullanıcı tarafından yüklenen eklentiler** bölümünde görüntülenir.
 
 ## <a name="plug-in-configuration"></a>Eklenti yapılandırması
 
@@ -107,31 +107,31 @@ Aşağıdaki görüntüde hem Jira hem de Confluence içindeki yapılandırma ek
 
 ![Eklenti yapılandırma ekranı](./media/ms-confluence-jira-plugin-adminguide/jira.png)
 
-* **Meta veri URL 'si** : Azure AD 'den Federasyon meta verilerini almaya yönelik URL.
+* **Meta veri URL 'si**: Azure AD 'den Federasyon meta verilerini almaya yönelik URL.
 
-* **Tanımlayıcılar** : Azure AD 'nin isteğin kaynağını doğrulamak IÇIN kullandığı URL. Azure AD 'de **tanımlayıcı** öğeyle eşlenir. Eklenti bu URL 'YI otomatik olarak https:///olarak türetir *\<domain:port>* .
+* **Tanımlayıcılar**: Azure AD 'nin isteğin kaynağını doğrulamak IÇIN kullandığı URL. Azure AD 'de **tanımlayıcı** öğeyle eşlenir. Eklenti bu URL 'YI otomatik olarak https:///olarak türetir *\<domain:port>* .
 
-* **Yanıt URL 'si** : SAML oturum açma işlemini başlatan kimlik sağlayıcınızdaki (IDP) yanıt URL 'si. Azure AD 'de **yanıt URL 'si** öğesine eşlenir. Eklenti bu URL 'YI otomatik olarak https:// *\<domain:port>* /plugins/servlet/SAML/autholarak türetir.
+* **Yanıt URL 'si**: SAML oturum açma işlemini başlatan kimlik sağlayıcınızdaki (IDP) yanıt URL 'si. Azure AD 'de **yanıt URL 'si** öğesine eşlenir. Eklenti bu URL 'YI otomatik olarak https:// *\<domain:port>* /plugins/servlet/SAML/autholarak türetir.
 
-* **Oturum açma URL 'si** : SAML oturum açma Işlemini Başlatan IDP 'inizdeki oturum açma URL 'si. Azure AD 'de **oturum açma** öğesiyle eşlenir. Eklenti bu URL 'YI otomatik olarak https:// *\<domain:port>* /plugins/servlet/SAML/autholarak türetir.
+* **Oturum açma URL 'si**: SAML oturum açma Işlemini Başlatan IDP 'inizdeki oturum açma URL 'si. Azure AD 'de **oturum açma** öğesiyle eşlenir. Eklenti bu URL 'YI otomatik olarak https:// *\<domain:port>* /plugins/servlet/SAML/autholarak türetir.
 
-* **IDP VARLıK kimliği** : IDP 'nizin KULLANDıĞı varlık kimliği. Meta veri URL 'SI çözümlendiğinde bu kutu doldurulur.
+* **IDP VARLıK kimliği**: IDP 'nizin KULLANDıĞı varlık kimliği. Meta veri URL 'SI çözümlendiğinde bu kutu doldurulur.
 
-* **Oturum açma URL 'si** : IDP 'nizden oturum açma URL 'si. Bu kutu, meta veri URL 'SI çözümlendiğinde Azure AD 'den doldurulur.
+* **Oturum açma URL 'si**: IDP 'nizden oturum açma URL 'si. Bu kutu, meta veri URL 'SI çözümlendiğinde Azure AD 'den doldurulur.
 
-* **Oturum kapatma URL 'si** : IDP 'nizden oturum kapatma URL 'si. Bu kutu, meta veri URL 'SI çözümlendiğinde Azure AD 'den doldurulur.
+* **Oturum kapatma URL 'si**: IDP 'nizden oturum kapatma URL 'si. Bu kutu, meta veri URL 'SI çözümlendiğinde Azure AD 'den doldurulur.
 
-* **X. 509.440 sertifikası** : IDP 'nin X. 509.440 sertifikasıdır. Bu kutu, meta veri URL 'SI çözümlendiğinde Azure AD 'den doldurulur.
+* **X. 509.440 sertifikası**: IDP 'nin X. 509.440 sertifikasıdır. Bu kutu, meta veri URL 'SI çözümlendiğinde Azure AD 'den doldurulur.
 
-* **Oturum açma düğmesi adı** : kuruluşunuzun kullanıcıların oturum açma sayfasında görmesini istediğini oturum açma düğmesinin adı.
+* **Oturum açma düğmesi adı**: kuruluşunuzun kullanıcıların oturum açma sayfasında görmesini istediğini oturum açma düğmesinin adı.
 
-* **SAML Kullanıcı kimliği konumları** : SAML yanıtında Jira veya Confluence Kullanıcı kimliğinin beklenen konumu. Bu, **NameID** içinde veya özel bir öznitelik adında olabilir.
+* **SAML Kullanıcı kimliği konumları**: SAML yanıtında Jira veya Confluence Kullanıcı kimliğinin beklenen konumu. Bu, **NameID** içinde veya özel bir öznitelik adında olabilir.
 
-* **Öznitelik adı** : Kullanıcı kimliğinin beklenildiği özniteliğin adı.
+* **Öznitelik adı**: Kullanıcı kimliğinin beklenildiği özniteliğin adı.
 
-* **Giriş bölgesi bulmayı etkinleştir** : Şirket Active Directory Federasyon Hizmetleri (AD FS) (AD FS) tabanlı oturum açma kullanıyorsa yapılacak seçim.
+* **Giriş bölgesi bulmayı etkinleştir**: Şirket Active Directory Federasyon Hizmetleri (AD FS) (AD FS) tabanlı oturum açma kullanıyorsa yapılacak seçim.
 
-* **Etki alanı adı** : oturum açma AD FS tabanlı etki alanı adı.
+* **Etki alanı adı**: oturum açma AD FS tabanlı etki alanı adı.
 
 * **Çoklu** oturum açmayı etkinleştir: Kullanıcı Jira veya confluya oturumunu KAPATTıĞıNDA Azure AD 'den oturumu kapatmak istiyorsanız yapılacak seçim.
 
@@ -139,27 +139,27 @@ Aşağıdaki görüntüde hem Jira hem de Confluence içindeki yapılandırma ek
 
 * **Birden çok sertifika hatası** alıyorsunuz: Azure AD 'de oturum açın ve uygulamada bulunan birden çok sertifikayı kaldırın. Yalnızca bir sertifikanın bulunduğundan emin olun.
 
-* **Azure AD 'de bir sertifika sona ermek üzere** : Eklentiler, sertifikanın otomatik olarak geçişine karşı bir işlem gerçekleştirir. Bir sertifikanın kullanım süreleri dolduğunda, yeni bir sertifika etkin olarak işaretlenmelidir ve kullanılmayan sertifikalar silinmelidir. Bu senaryoda bir Kullanıcı Jira 'da oturum açmaya çalıştığında, eklenti yeni sertifikayı getirir ve kaydeder.
+* **Azure AD 'de bir sertifika sona ermek üzere**: Eklentiler, sertifikanın otomatik olarak geçişine karşı bir işlem gerçekleştirir. Bir sertifikanın kullanım süreleri dolduğunda, yeni bir sertifika etkin olarak işaretlenmelidir ve kullanılmayan sertifikalar silinmelidir. Bu senaryoda bir Kullanıcı Jira 'da oturum açmaya çalıştığında, eklenti yeni sertifikayı getirir ve kaydeder.
 
-* **WebSudo 'ı devre dışı bırakmak istiyorsunuz (güvenli Yönetici oturumunu devre dışı bırak)** :
+* **WebSudo 'ı devre dışı bırakmak istiyorsunuz (güvenli Yönetici oturumunu devre dışı bırak)**:
 
   * Jira için güvenli yönetici oturumları (diğer bir deyişle, yönetim işlevlerine erişmeden önce parola onayı) varsayılan olarak etkinleştirilir. Jira örneğinizdeki bu özelliği kaldırmak istiyorsanız, Jira-config. Properties dosyanızda aşağıdaki satırı belirtin: `jira.websudo.is.disabled = true`
 
   * Confluence için, [Confluence support sitesindeki](https://confluence.atlassian.com/doc/configuring-secure-administrator-sessions-218269595.html)adımları izleyin.
 
-* **Meta veri URL 'si tarafından doldurulması beklenen alanlar doldurulmuyor** :
+* **Meta veri URL 'si tarafından doldurulması beklenen alanlar doldurulmuyor**:
 
   * URL 'nin doğru olup olmadığını denetleyin. Doğru kiracı ve uygulama KIMLIĞINI eşleştirdiyseniz denetleyin.
 
   * URL 'YI bir tarayıcıda girin ve Federasyon meta veri XML 'sini alıp almadıysanız bakın.
 
-* **Bir iç sunucu hatası var** : yüklemenin günlük dizinindeki günlükleri gözden geçirin. Kullanıcı Azure AD SSO 'yu kullanarak oturum açmaya çalışırken hata alıyorsanız, günlükleri destek ekibi ile paylaşabilirsiniz.
+* **Bir iç sunucu hatası var**: yüklemenin günlük dizinindeki günlükleri gözden geçirin. Kullanıcı Azure AD SSO 'yu kullanarak oturum açmaya çalışırken hata alıyorsanız, günlükleri destek ekibi ile paylaşabilirsiniz.
 
-* **Kullanıcı oturum açmayı denediğinde bir "Kullanıcı kimliği bulunamadı" hatası var** : Jira veya Confluence IÇINDE Kullanıcı kimliği oluşturma.
+* **Kullanıcı oturum açmayı denediğinde bir "Kullanıcı kimliği bulunamadı" hatası var**: Jira veya Confluence IÇINDE Kullanıcı kimliği oluşturma.
 
-* **Azure AD 'de "uygulama bulunamadı" hatası** : ilgili URL 'nın Azure AD 'de uygulamayla eşlenip eşlenmediğinden bkz..
+* **Azure AD 'de "uygulama bulunamadı" hatası**: ilgili URL 'nın Azure AD 'de uygulamayla eşlenip eşlenmediğinden bkz..
 
-* **Desteğe ihtiyacınız vardır** : [Azure AD SSO tümleştirme ekibine](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)ulaşın. Takım, 24-48 iş saatlerinde yanıt verir.
+* **Desteğe ihtiyacınız vardır**: [Azure AD SSO tümleştirme ekibine](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)ulaşın. Takım, 24-48 iş saatlerinde yanıt verir.
 
   Ayrıca, Azure portal kanal aracılığıyla Microsoft ile destek bileti de oluşturabilirsiniz.
 

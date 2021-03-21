@@ -13,10 +13,10 @@ ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: edc246a414401c4c1c0248787eda0381fcd63037
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96741771"
 ---
 # <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>Şirket içi Azure AD parola koruma ortamları için günlükleri izleme ve gözden geçirme
@@ -240,7 +240,7 @@ Metin günlüğe kaydetme varsayılan olarak devre dışıdır. Bu değerde yap�
 
 DC aracı hizmeti yazılımı, **Azure AD parola koruması** adlı bir performans sayacı nesnesi yüklüyor. Aşağıdaki performans sayaçları Şu anda kullanılabilir:
 
-|Performans sayacı adı | Açıklama|
+|Performans sayacı adı | Description|
 | --- | --- |
 |İşlenen parolalar |Bu sayaç, son yeniden başlatmadan bu yana işlenen toplam parola sayısını (kabul edilen veya reddedilen) görüntüler.|
 |Kabul edilen parolalar |Bu sayaç, son yeniden başlatmadan bu yana kabul edilen toplam parola sayısını görüntüler.|

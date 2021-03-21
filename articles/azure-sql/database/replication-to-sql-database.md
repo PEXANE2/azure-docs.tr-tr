@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: mathoma
 ms.date: 04/28/2020
 ms.openlocfilehash: 6ff1d485ab4c0662ae8a9d754ce67b1446b76fcc
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92780963"
 ---
 # <a name="replication-to-azure-sql-database"></a>Azure SQL veritabanı 'na çoğaltma
@@ -54,11 +54,11 @@ Farklı [çoğaltma türleri](/sql/relational-databases/replication/types-of-rep
 
 | Çoğaltma | Azure SQL Veritabanı | Azure SQL Yönetilen Örnek |
 | :----| :------------- | :--------------- |
-| [**Standart Işlem**](/sql/relational-databases/replication/transactional/transactional-replication) | Evet (yalnızca abone olarak) | Evet | 
-| [**Anlık Görüntü**](/sql/relational-databases/replication/snapshot-replication) | Evet (yalnızca abone olarak) | Evet|
+| [**Standart Işlem**](/sql/relational-databases/replication/transactional/transactional-replication) | Evet (yalnızca abone olarak) | Yes | 
+| [**Görüntüye**](/sql/relational-databases/replication/snapshot-replication) | Evet (yalnızca abone olarak) | Yes|
 | [**Birleştirme çoğaltması**](/sql/relational-databases/replication/merge/merge-replication) | Hayır | Hayır|
 | [**Eşler arası**](/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Hayır | Hayır|
-| [**Çift yönlü**](/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Hayır | Evet|
+| [**Çift yönlü**](/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Hayır | Yes|
 | [**Güncelleştirilebilir abonelikler**](/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Hayır | Hayır|
 | &nbsp; | &nbsp; | &nbsp; |
 
@@ -127,7 +127,7 @@ Azure SQL veritabanı abonelikleri için aşağıdaki seçenekler desteklenmez:
 Yayın ve gönderme temelli bir abonelik oluşturun. Daha fazla bilgi için bkz.
   
 - [Yayın oluşturma](/sql/relational-databases/replication/publish/create-a-publication)
-- Abone olarak sunucu adını (örneğin, **Nazurestodbdns. Database. Windows. net '** ) ve Azure SQL veritabanı adını hedef veritabanı (örneğin **AdventureWorks** ) olarak kullanarak [bir anında iletme aboneliği oluşturun](/sql/relational-databases/replication/create-a-push-subscription/) .  
+- Abone olarak sunucu adını (örneğin, **Nazurestodbdns. Database. Windows. net '**) ve Azure SQL veritabanı adını hedef veritabanı (örneğin **AdventureWorks**) olarak kullanarak [bir anında iletme aboneliği oluşturun](/sql/relational-databases/replication/create-a-push-subscription/) .  
 
 ## <a name="see-also"></a>Ayrıca Bkz.  
 

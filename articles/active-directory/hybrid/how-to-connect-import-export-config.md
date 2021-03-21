@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d67460c654c854c5a855560dde1d67732fa818c7
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98681964"
 ---
 # <a name="import-and-export-azure-ad-connect-configuration-settings"></a>Azure AD Connect yapılandırma ayarlarını içeri ve dışarı aktarma 
@@ -77,10 +77,10 @@ Ayarları geçirmek için:
 
    ![Azure AD Connect dizinleri gösteren ekran görüntüsü.](media/how-to-connect-import-export-config/migrate1.png)
 
-1. Betiği burada gösterildiği gibi çalıştırın ve tüm alt düzey sunucu yapılandırma dizinini kaydedin. Bu dizini yeni hazırlama sunucusuna kopyalayın. Tüm **aktarılmış-ServerConfiguration-** _ klasörünü yeni sunucuya kopyalamanız gerekir.
+1. Betiği burada gösterildiği gibi çalıştırın ve tüm alt düzey sunucu yapılandırma dizinini kaydedin. Bu dizini yeni hazırlama sunucusuna kopyalayın. Tüm **aktarılmış-ServerConfiguration-*** klasörünü yeni sunucuya kopyalamanız gerekir.
 
    ![Windows PowerShell 'de betiği gösteren ekran görüntüsü. ](media/how-to-connect-import-export-config/migrate2.png)
-    ![ Aktarılmış-ServerConfiguration-_ klasörünü kopyalamayı gösteren ekran görüntüsü.](media/how-to-connect-import-export-config/migrate3.png)
+    ![ Aktarılmış-ServerConfiguration-* klasörünün kopyalanmasını gösteren ekran görüntüsü.](media/how-to-connect-import-export-config/migrate3.png)
 
 1. Masaüstündeki simgeye çift tıklayarak **Azure AD Connect** başlatın. Microsoft yazılımı lisans koşulları 'nı kabul edin ve sonraki sayfada **Özelleştir**' i seçin.
 1. **Eşitleme ayarlarını Içeri aktar** onay kutusunu seçin. Kopyalanabilir olan-ServerConfiguration-* klasörüne gitmek için **Araştır** ' ı seçin. Geçirilen ayarları içeri aktarmak için MigratedPolicy.jsseçin.

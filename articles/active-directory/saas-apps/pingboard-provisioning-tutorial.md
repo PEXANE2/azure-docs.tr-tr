@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.openlocfilehash: ac36f5d6d1f57fd8453c54bcc8cf19dd964f47f6
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94357904"
 ---
 # <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Pingboard 'ı yapılandırma
@@ -65,13 +65,13 @@ Bu bölüm, Azure AD 'nizi Pingboard Kullanıcı hesabı sağlama API 'sine bağ
 
 1. **Yönetici kimlik bilgileri** bölümünde aşağıdaki adımları kullanın:
 
-    a. **Kiracı URL 'si** ' nde girin `https://your_domain.pingboard.com/scim/v2` ve "your_domain" değerini gerçek etki alanınız ile değiştirin.
+    a. **Kiracı URL 'si**' nde girin `https://your_domain.pingboard.com/scim/v2` ve "your_domain" değerini gerçek etki alanınız ile değiştirin.
 
     b. Yönetici hesabınızı kullanarak [Pingboard](https://pingboard.com/) 'da oturum açın.
 
-    c. **Eklentiler Azure Active Directory eklentiler** ' i seçin  >  **Integrations**  >  **Azure Active Directory**.
+    c. **Eklentiler Azure Active Directory eklentiler**' i seçin  >    >  .
 
-    d. **Yapılandır** sekmesine gidin ve **Azure 'Dan Kullanıcı sağlamayı etkinleştir** ' i seçin.
+    d. **Yapılandır** sekmesine gidin ve **Azure 'Dan Kullanıcı sağlamayı etkinleştir**' i seçin.
 
     e. Belirteci **OAuth taşıyıcı belirtecine** kopyalayın ve **gizli belirtece** girin.
 
@@ -79,9 +79,9 @@ Bu bölüm, Azure AD 'nizi Pingboard Kullanıcı hesabı sağlama API 'sine bağ
 
 1. **Bildirim e-postasında** sağlama hatası bildirimlerini almak istediğiniz kişinin veya grubun e-posta adresini girin. Altındaki onay kutusunu seçin.
 
-1. **Kaydet** ’i seçin.
+1. **Kaydet**’i seçin.
 
-1. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Pingboard olarak eşitler** ' ı seçin.
+1. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Pingboard olarak eşitler**' ı seçin.
 
 1. **Öznitelik eşlemeleri** bölümünde, Azure AD 'Den pingboard 'a eşitlenecek Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için pingboard içindeki kullanıcı hesaplarıyla eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** ' i seçin. Daha fazla bilgi için bkz. [Kullanıcı hazırlama öznitelik eşlemelerini özelleştirme](../app-provisioning/customize-application-attributes.md).
 

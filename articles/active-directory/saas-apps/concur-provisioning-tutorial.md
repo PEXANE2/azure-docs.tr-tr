@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.openlocfilehash: edb21287b30f8ba77d6312ec6b456e20aa260598
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94358221"
 ---
 # <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Concur yapılandırma
@@ -58,11 +58,11 @@ Gider hizmetindeki uygulamaları etkinleştirmek için, bir Web hizmeti yönetic
 
 Concur danışmanları veya istemci Yöneticisi farklı bir Web hizmeti yönetici profili oluşturmalı ve Istemci yöneticisinin Web Hizmetleri Yöneticisi işlevleri için bu profili kullanması gerekir (örneğin, uygulamaları etkinleştirme). Bu profillerin istemci yöneticisinin günlük T&E yönetici profilinden ayrı tutulması gerekir (T&E yönetici profilinde WSAdmin rolü atanmamalıdır).
 
-Uygulamayı etkinleştirmek için kullanılacak profili oluştururken, Kullanıcı profili alanlarına istemci yöneticisinin adını girin. Bu, sahipliği profile atar. Bir veya daha fazla profil oluşturulduktan sonra, Web Hizmetleri menüsünde bir Iş ortağı uygulamasının " *Etkinleştir* " düğmesine tıklayarak istemcinin bu profille oturum açması gerekir.
+Uygulamayı etkinleştirmek için kullanılacak profili oluştururken, Kullanıcı profili alanlarına istemci yöneticisinin adını girin. Bu, sahipliği profile atar. Bir veya daha fazla profil oluşturulduktan sonra, Web Hizmetleri menüsünde bir Iş ortağı uygulamasının "*Etkinleştir*" düğmesine tıklayarak istemcinin bu profille oturum açması gerekir.
 
 Aşağıdaki nedenlerden dolayı bu eylem, normal T&E yönetimi için kullandıkları profille yapılmamalıdır.
 
-* İstemci, bir uygulama etkinleştirildikten sonra görüntülenen iletişim penceresinde " *Evet* " i tıkladığı bir değer olmalıdır. Bu, istemcinin Iş ortağı uygulamasının verilerine erişmesini istediğinden emin olur, böylece siz veya Iş ortağı bu Evet düğmesine tıklamamasını sağlar.
+* İstemci, bir uygulama etkinleştirildikten sonra görüntülenen iletişim penceresinde "*Evet*" i tıkladığı bir değer olmalıdır. Bu, istemcinin Iş ortağı uygulamasının verilerine erişmesini istediğinden emin olur, böylece siz veya Iş ortağı bu Evet düğmesine tıklamamasını sağlar.
 
 * T&E yönetici profilini kullanarak bir uygulamayı etkinleştirmiş bir istemci yöneticisi şirketten ayrılırsa (profilin devre dışı bırakılmakta olması halinde), bu profil kullanılarak etkinleştirilen tüm uygulamalar, uygulama başka bir etkin WS yönetici profiliyle etkinleştirilene kadar çalışmaz. Bu nedenle ayrı WS Yönetici profilleri oluşturmanız gerekir.
 
@@ -72,15 +72,15 @@ Aşağıdaki nedenlerden dolayı bu eylem, normal T&E yönetimi için kullandık
 
 1. **Concur** kiracınızda oturum açın.
 
-2. **Yönetim** menüsünden **Web Hizmetleri** ' ni seçin.
+2. **Yönetim** menüsünden **Web Hizmetleri**' ni seçin.
    
     ![Concur kiracısı](./media/concur-provisioning-tutorial/IC721729.png "Concur kiracısı")
 
-3. Sol tarafta, **Web Hizmetleri** bölmesinden **Iş ortağı uygulamasını etkinleştir** ' i seçin.
+3. Sol tarafta, **Web Hizmetleri** bölmesinden **Iş ortağı uygulamasını etkinleştir**' i seçin.
    
     ![Iş ortağı uygulamasını etkinleştir](./media/concur-provisioning-tutorial/ic721730.png "Iş ortağı uygulamasını etkinleştir")
 
-4. **Uygulamayı etkinleştir** listesinden **Azure Active Directory** ' yi seçin ve ardından **Etkinleştir** ' e tıklayın.
+4. **Uygulamayı etkinleştir** listesinden **Azure Active Directory**' yi seçin ve ardından **Etkinleştir**' e tıklayın.
    
     ![Microsoft Azure Active Directory](./media/concur-provisioning-tutorial/ic721731.png "Microsoft Azure Active Directory")
 
@@ -94,7 +94,7 @@ Aşağıdaki nedenlerden dolayı bu eylem, normal T&E yönetimi için kullandık
 
 8. Concur örneğinizi seçin ve **sağlama** sekmesini seçin.
 
-9. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın. 
+9. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın. 
  
     ![Azure portal Concur için sağlama sekmesinin ekran görüntüsü. Sağlama modu otomatik olarak ayarlanır ve Bağlantıyı Sına düğmesi vurgulanır.](./media/concur-provisioning-tutorial/provisioning.png)
 

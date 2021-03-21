@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 8fb891d5a47203c9905a7def9d04199d24327f70
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94357258"
 ---
 # <a name="401003-iothubunauthorized"></a>401003 IoTHubUnauthorized
@@ -26,7 +26,7 @@ Bu makalede, **401003 Iothubyetkilendirilmemiş** hatalara yönelik nedenler ve 
 
 ### <a name="symptom-1"></a>Belirti 1
 
-Günlüklerde, **401003 Iothubyetkilendirilmemiş** , sonrasında **404104 Deviceconnectioncloseduzaktan** ve sonra kısa bir süre sonra başarılı bir şekilde bağlantı kurarak cihazların bir modelini görürsünüz.
+Günlüklerde, **401003 Iothubyetkilendirilmemiş**, sonrasında **404104 Deviceconnectioncloseduzaktan** ve sonra kısa bir süre sonra başarılı bir şekilde bağlantı kurarak cihazların bir modelini görürsünüz.
 
 ### <a name="symptom-2"></a>Belirti 2
 
@@ -56,7 +56,7 @@ IoT Hub auth üstbilgisinin, kuralın veya anahtarın kimliğini doğrulayamadı
 
 ## <a name="solution"></a>Çözüm
 
-### <a name="solution-1"></a>1\. Çözüm
+### <a name="solution-1"></a>Çözüm 1
 
 Cihaz bağlantı dizesini kullanarak bağlantı için IoT SDK kullanıyorsanız hiçbir işlem yapmanız gerekmez. IoT SDK, SAS belirteci süre sonuna yeniden bağlanmak için yeni belirteci yeniden oluşturur.
 
@@ -64,7 +64,7 @@ Varsayılan belirteç kullanım ömrü, SDK 'larda 60 dakikadır; Ancak bazı SD
 
 Cihaz geliştiricileri için, hata hacmi sorun oluşturacaksa, SAS belirtecini sona ermeden önce yenilediğinde C SDK 'sına geçin. AMQP için SAS belirteci, bağlantısı kesilmeden yenilenebilirler.
 
-### <a name="solution-2"></a>2\. Çözüm
+### <a name="solution-2"></a>Çözüm 2
 
 Genel olarak, sunulan hata iletisinde hatanın nasıl düzeltileceğini açıklamalıdır. Bazı nedenlerle hata iletisi ayrıntısına erişiminiz yoksa şunları yaptığınızdan emin olun:
 

@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -9,10 +9,10 @@ ms.date: 12/07/2020
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: d6b8b35b36830568d6ff8c46a381fec0cfc57e84
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96854438"
 ---
 :::image type="content" source="media/event-grid-event-hubs-functions-synapse-analytics/overview.png" alt-text="Uygulamaya genel bakış":::
@@ -55,10 +55,10 @@ Bu adımda, gerekli altyapıyı bir [Kaynak Yöneticisi şablonuyla](https://git
 
 ### <a name="use-azure-cli-to-deploy-the-infrastructure"></a>Altyapıyı dağıtmak için Azure CLı 'yi kullanma
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. 
+1. [Azure portalında](https://portal.azure.com) oturum açın. 
 2. Üstteki **Cloud Shell** düğmesini seçin.
 
-    :::image type="content" source="media/event-grid-event-hubs-functions-synapse-analytics/azure-portal.png" alt-text="Azure Portal":::
+    :::image type="content" source="media/event-grid-event-hubs-functions-synapse-analytics/azure-portal.png" alt-text="Azure portalı":::
 3. Cloud Shell tarayıcının altında açıldığını görürsünüz.
 
     :::image type="content" source="media/event-grid-event-hubs-functions-synapse-analytics/launch-cloud-shell.png" alt-text="Cloud Shell":::

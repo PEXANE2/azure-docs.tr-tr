@@ -11,15 +11,15 @@ ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: cb33e11af26d5f5a2676f5b236ac142179bdb550
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99592849"
 ---
 # <a name="azure-ad-b2c-custom-policy-overview"></a>Azure AD B2C özel ilkeye genel bakış
 
-Özel ilkeler, Azure Active Directory B2C (Azure AD B2C) kiracınızın davranışını tanımlayan yapılandırma dosyalarıdır. [Kullanıcı akışları](user-flow-overview.md) , en yaygın kimlik görevlerinin Azure AD B2C portalında önceden tanımlanmış olsa da, özel ilkeler birçok farklı görevi tamamlayabilmesi için bir kimlik geliştiricisi tarafından tamamen düzenlenebilir.
+Özel ilkeler, Azure Active Directory B2C (Azure AD B2C) kiracınızın davranışlarını tanımlayan yapılandırma dosyalarıdır. [Kullanıcı akışları](user-flow-overview.md) , en yaygın kimlik görevlerinin Azure AD B2C portalında önceden tanımlanmış olsa da, özel ilkeler birçok farklı görevi tamamlayabilmesi için bir kimlik geliştiricisi tarafından tamamen düzenlenebilir.
 
 Özel bir ilke tamamen yapılandırılabilir ve ilke odaklı olur. Özel bir ilke, OpenID Connect, OAuth, SAML ve standart olmayan birkaç standart protokol biçimleri (örneğin, REST API tabanlı sistemden sistem talepleri alışverişi) gibi standart protokol biçimlerindeki varlıklar arasında güveni düzenler. Framework, Kullanıcı dostu, beyaz etiketli deneyimler oluşturur.
 

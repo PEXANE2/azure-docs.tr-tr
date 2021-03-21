@@ -9,10 +9,10 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.openlocfilehash: dab938a526aa89f6fe5a014e10869bd8da8b475d
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98802359"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>Hızlı başlangıç: Xamarin ile Azure Blob depolama istemci kitaplığı V12
@@ -114,7 +114,7 @@ Aşağıdaki kod birkaç sınıf düzeyi değişkenini bildirir. Bu örneğin ge
 
 Bunlar, [depolama bağlantı dizesini yapılandırma](#configure-your-storage-connection-string) bölümünde ayarlanan depolama hesabı için bağlantı dizesine ek niteliğindedir.
 
-Bu kodu *MainPage.xaml.cs* dosyasının içine sınıf düzeyi değişkenleri olarak ekleyin:
+Bu kodu *MainPage. xaml. cs* dosyasında sınıf düzeyi değişkenleri olarak ekleyin:
 
 ```csharp
 string storageConnectionString = "{set in the Configure your storage connection string section}";
@@ -134,7 +134,7 @@ Yeni kapsayıcı için bir ad belirleyin. Aşağıdaki kod, benzersiz olduğunda
 
 [BlobServiceClient](/dotnet/api/azure.storage.blobs.blobserviceclient) sınıfının bir örneğini oluşturun. Ardından, depolama hesabınızda kapsayıcıyı oluşturmak için [Createblobcontainsısync](/dotnet/api/azure.storage.blobs.blobserviceclient.createblobcontainerasync) yöntemini çağırın.
 
-Bu kodu *MainPage.xaml.cs* dosyasına ekleyin:
+Bu kodu *MainPage. xaml. cs* dosyasına ekleyin:
 
 ```csharp
 protected async override void OnAppearing()
@@ -159,7 +159,7 @@ Aşağıdaki kod parçacığı:
 1. Bir `MemoryStream` metin oluşturur.
 1. [Blobcontainerclient](/dotnet/api/azure.storage.blobs.blobcontainerclient) sınıfının [uploadasync](/dotnet/api/azure.storage.blobs.blobcontainerclient.uploadblobasync#Azure_Storage_Blobs_BlobContainerClient_UploadBlobAsync_System_String_System_IO_Stream_System_Threading_CancellationToken_) işlevini çağırarak metin dosyası adına ve metin Içine geçirerek metni bir bloba yükler `MemoryStream` . Bu yöntem, daha önce oluşturulmadıysa bir blob oluşturur, aksi takdirde üzerine yazar.
 
-Bu kodu *MainPage.xaml.cs* dosyasına ekleyin:
+Bu kodu *MainPage. xaml. cs* dosyasına ekleyin:
 
 ```csharp
 async void Upload_Clicked(object sender, EventArgs e)
@@ -179,7 +179,7 @@ async void Upload_Clicked(object sender, EventArgs e)
 
 [Getblobsasync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsasync) yöntemini çağırarak kapsayıcıdaki Blobları listeleyin. Bu durumda, kapsayıcıya yalnızca bir blob eklenmiş, bu nedenle listeleme işlemi yalnızca bir BLOB döndürüyor.
 
-Bu kodu *MainPage.xaml.cs* dosyasına ekleyin:
+Bu kodu *MainPage. xaml. cs* dosyasına ekleyin:
 
 ```csharp
 async void List_Clicked(object sender, EventArgs e)
@@ -198,7 +198,7 @@ async void List_Clicked(object sender, EventArgs e)
 
 [Downloadasync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadasync) yöntemini çağırarak önceden oluşturulmuş blobu indirin. Örnek kod, bir `Stream` Blobun ilk önce bir ' a, `MemoryStream` sonra da metnin görüntülenebilmesi için bir öğesine kopyalar `StreamReader` .
 
-Bu kodu *MainPage.xaml.cs* dosyasına ekleyin:
+Bu kodu *MainPage. xaml. cs* dosyasına ekleyin:
 
 ```csharp
 async void Download_Clicked(object sender, EventArgs e)
@@ -227,7 +227,7 @@ Aşağıdaki kod, [DeleteAsync](/dotnet/api/microsoft.azure.storage.blob.cloudbl
 
 Uygulama ilk olarak blobu ve kapsayıcıyı silmeden önce onaylamanızı ister. Bu, kaynakların silinmeden önce doğru bir şekilde oluşturulduğunu doğrulamak iyi bir şansınız olur.
 
-Bu kodu *MainPage.xaml.cs* dosyasına ekleyin:
+Bu kodu *MainPage. xaml. cs* dosyasına ekleyin:
 
 ```csharp
 async void Delete_Clicked(object sender, EventArgs e)

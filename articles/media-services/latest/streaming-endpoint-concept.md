@@ -49,7 +49,7 @@ SLA bilgileri için bkz. [fiyatlandırma ve SLA](https://azure.microsoft.com/pri
 
 ## <a name="comparing-streaming-types"></a>Akış türlerini karşılaştırma
 
-Öne çıkan özelliği|Standart|Premium
+Özellik|Standart|Premium
 ---|---|---
 Aktarım hızı |600 Mbps 'e kadar, bir CDN kullanıldığında çok daha yüksek bir verimlilik sağlar.|akış birimi başına 200 Mbps (SU). , Bir CDN kullanıldığında daha yüksek etkili bir verimlilik sağlayabilir.
 CDN|Azure CDN, üçüncü taraf CDN veya CDN yok.|Azure CDN, üçüncü taraf CDN veya CDN yok.

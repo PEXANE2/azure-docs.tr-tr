@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 04/28/2020
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: 621773a84db99dbacfaa163f77189974ba102163
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98034824"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Azure Cosmos DB tarafından tetiklenen bir işlev oluşturma
@@ -37,7 +37,7 @@ Tetikleyiciyi oluşturabilmek için SQL API'sini kullanan bir Azure Cosmos DB he
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a name="create-a-function-app-in-azure"></a>Azure 'da bir işlev uygulaması oluşturma
+## <a name="create-a-function-app-in-azure"></a>Azure’da bir işlev uygulaması oluşturma
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
@@ -63,7 +63,7 @@ Ardından, yeni işlev uygulamasında bir işlev oluşturun.
     | **Veritabanı adı** | Görevler | İzlenecek koleksiyonu içeren veritabanının adı. |
     | **Koleksiyon adı** | Öğeler | İzlenecek koleksiyonun adı. |
     | **Kiralamalar için koleksiyon adı** | leases | Kiralamaları depolayacak koleksiyonun adı. |
-    | **Yoksa kira koleksiyonu oluştur** | Evet | Kira koleksiyonunun varlığını denetler ve otomatik olarak oluşturur. |
+    | **Yoksa kira koleksiyonu oluştur** | Yes | Kira koleksiyonunun varlığını denetler ve otomatik olarak oluşturur. |
 
     :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/functions-cosmosdb-trigger-settings.png" alt-text="Azure Cosmos DB tarafından tetiklenen işlevi oluşturma":::
 
@@ -102,7 +102,7 @@ Sonra, Azure Cosmos DB hesabınıza bağlanıp `Items` kapsayıcıyı `Tasks` ve
     | **Veritabanı Kimliği** | Görevler |Yeni veritabanınızın adı. Bu, işlev bağlamanızda tanımlanan adla eşleşmelidir. |
     | **Kapsayıcı Kimliği** | Öğeler | Yeni kapsayıcının adı. Bu, işlev bağlamanızda tanımlanan adla eşleşmelidir.  |
     | **[Bölüm anahtarı](../cosmos-db/partitioning-overview.md)** | /kategori|Verileri her bölüme eşit şekilde dağıtan bir bölüm anahtarı. Doğru bölüm anahtarının seçilmesi, bir performanslı kapsayıcı oluşturmak için önemlidir. | 
-    | **İşlem hızı** |400 RU| Varsayılan değeri kullanın. Daha sonra gecikme süresini azaltmak isterseniz işlem hızının ölçeğini artırabilirsiniz. |    
+    | **İşleme hızı** |400 RU| Varsayılan değeri kullanın. Daha sonra gecikme süresini azaltmak isterseniz işlem hızının ölçeğini artırabilirsiniz. |    
 
 1. Öğeler kapsayıcısını oluşturmak için **Tamam** ' ı tıklatın. Kapsayıcının oluşturulması kısa bir zaman alabilir.
 

@@ -4,10 +4,10 @@ description: Azure Service Bus ile iletişim kurmak için Java Ileti hizmeti (JM
 ms.topic: article
 ms.date: 01/17/2021
 ms.openlocfilehash: 492da46a5ce4f5955a72972d91a8c56d54c385bb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101726963"
 ---
 # <a name="azure-service-bus-jms-20-developer-guide"></a>Azure Service Bus JMS 2,0 Geliştirici Kılavuzu
@@ -16,7 +16,7 @@ Bu kılavuz, Java Ileti hizmeti (JMS) 2,0 API 'sini kullanarak Azure Service Bus
 
 Bir Java geliştiricisi olarak, Azure Service Bus yeni iseniz, lütfen aşağıdaki makaleleri okumayı göz önünde bulundurun.
 
-| Başlarken | Kavramlar |
+| Kullanmaya başlama | Kavramlar |
 |----------------|-------|
 | <ul> <li> [Azure Service Bus nedir?](service-bus-messaging-overview.md) </li> <li> [Kuyruklar, konular ve abonelikler](service-bus-queues-topics-subscriptions.md) </li> </ul> | <ul> <li> [Azure Service Bus-Premium katmanı](service-bus-premium-messaging.md) </li> </ul> |
 

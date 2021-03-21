@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/18/2020
 ms.author: Zhchia
 ms.openlocfilehash: c0738e7033f0aa39ca5f12a44c06d086175eb8fe
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98731491"
 ---
 # <a name="tutorial-configure-papercut-cloud-print-management-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Paperkes bulut yazdırma yönetimini yapılandırın
@@ -33,7 +33,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Paperk
 > * Artık erişim gerektirdiklerinde Paperkes bulut yazdırma yönetiminde kullanıcıları kaldırma
 > * Azure AD ile Paperkes bulut yazdırma yönetimi arasında kullanıcı özniteliklerini eşitlenmiş olarak tut
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 

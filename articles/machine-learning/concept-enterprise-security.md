@@ -11,10 +11,10 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/20/2020
 ms.openlocfilehash: a079504872eaf3840416a99e784c4d33a6828b0c
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94992038"
 ---
 # <a name="enterprise-security-and-governance-for-azure-machine-learning"></a>Azure Machine Learning için kurumsal güvenlik ve idare
@@ -97,7 +97,7 @@ Modelleri Web Hizmetleri olarak dağıttığınızda, Aktarım Katmanı Güvenli
 
 ## <a name="vulnerability-scanning"></a>Güvenlik açığı taraması
 
-[Azure Güvenlik Merkezi](../security-center/security-center-introduction.md) , hibrit bulut iş yükleri arasında Birleşik güvenlik yönetimi ve Gelişmiş tehdit koruması sağlar. Azure Machine Learning için [Azure Container Registry](../container-registry/container-registry-intro.md) kaynağınızın ve Azure Kubernetes hizmet kaynaklarınızın taranmasını etkinleştirmeniz gerekir. Daha fazla bilgi için bkz. Güvenlik Merkezi [Ile Azure Kubernetes hizmet tümleştirmesi ve Güvenlik Merkezi ile](../security-center/defender-for-kubernetes-introduction.md) [Azure Container Registry görüntü tarama](../security-center/defender-for-container-registries-introduction.md) .
+[Azure Güvenlik Merkezi](../security-center/security-center-introduction.md) hibrit bulut iş yükleri arasında birleşik güvenlik yönetimi ve gelişmiş tehdit koruması sağlar. Azure Machine Learning için [Azure Container Registry](../container-registry/container-registry-intro.md) kaynağınızın ve Azure Kubernetes hizmet kaynaklarınızın taranmasını etkinleştirmeniz gerekir. Daha fazla bilgi için bkz. Güvenlik Merkezi [Ile Azure Kubernetes hizmet tümleştirmesi ve Güvenlik Merkezi ile](../security-center/defender-for-kubernetes-introduction.md) [Azure Container Registry görüntü tarama](../security-center/defender-for-container-registries-introduction.md) .
 
 ## <a name="audit-and-manage-compliance"></a>Uyumluluğu denetleme ve yönetme
 

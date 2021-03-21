@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
 ms.openlocfilehash: 3cc5e5114b435965eee4aa096e5898538b0a56e7
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94370450"
 ---
 # <a name="how-to-create-an-azure-application-offer-in-the-commercial-marketplace"></a>Ticari Market 'te Azure uygulaması teklifi oluşturma
@@ -25,9 +25,9 @@ Daha önce yapmadıysanız, [ticari Market için bir Azure Uygulama teklifi plan
 
 1. [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/home)' nde oturum açın.
 
-1. Sol gezinti menüsünde **ticari Market**  >  **genel bakış** ' ı seçin.
+1. Sol gezinti menüsünde **ticari Market**  >  **genel bakış**' ı seçin.
 
-1. Genel Bakış sayfasında **+ yeni teklif**  >  **Azure uygulaması** ' nı seçin.
+1. Genel Bakış sayfasında **+ yeni teklif**  >  **Azure uygulaması**' nı seçin.
 
     ![Sol gezinti menüsünü gösterir.](./media/create-new-azure-app-offer/new-offer-azure-app.png)
 
@@ -35,18 +35,18 @@ Daha önce yapmadıysanız, [ticari Market için bir Azure Uygulama teklifi plan
 
      * Hesabınızdaki her teklifin benzersiz bir teklif KIMLIĞI olmalıdır.
      * Yalnızca küçük harfleri ve rakamları kullanın. Kısa çizgi ve alt çizgi içerebilir, ancak boşluk içeremez ve 50 karakterle sınırlıdır.
-     * Teklif KIMLIĞI, **Oluştur** ' u seçtikten sonra değiştirilemez.
+     * Teklif KIMLIĞI, **Oluştur**' u seçtikten sonra değiştirilemez.
 
 1. Bir **teklif diğer adı** girin. Bu, Iş Ortağı Merkezi 'nde teklif için kullanılan addır.
 
      * Bu ad yalnızca Iş Ortağı Merkezi 'nde görünür ve teklif adından ve müşterilere gösterilen diğer değerlerden farklıdır.
-     * Teklif diğer adı, **Oluştur** ' u seçtikten sonra değiştirilemez.
+     * Teklif diğer adı, **Oluştur**' u seçtikten sonra değiştirilemez.
 
-1. Teklifi oluşturmak ve devam etmek için  **Oluştur** ' u seçin.
+1. Teklifi oluşturmak ve devam etmek için  **Oluştur**' u seçin.
 
 ## <a name="configure-your-azure-application-offer-setup-details"></a>Azure Uygulama teklifi kurulum ayrıntılarını yapılandırma
 
-**Teklif kurulumu** sekmesinde, **Kurulum Ayrıntıları** ' nın altında, bir sınama sürücüsü yapılandırıp yapılandırmayamayacağını seçersiniz. Ayrıca, müşteri ilişkileri yönetimi (CRM) sisteminizi ticari Market teklifinizi kullanarak da bağlayacaksınız.
+**Teklif kurulumu** sekmesinde, **Kurulum Ayrıntıları**' nın altında, bir sınama sürücüsü yapılandırıp yapılandırmayamayacağını seçersiniz. Ayrıca, müşteri ilişkileri yönetimi (CRM) sisteminizi ticari Market teklifinizi kullanarak da bağlayacaksınız.
 
 ### <a name="enable-a-test-drive-optional"></a>Sınama sürücüsünü etkinleştir (isteğe bağlı)
 
@@ -73,7 +73,7 @@ Müşteri ilişkileri yönetimi (CRM) sisteminizi ticari Market teklifinizi kull
    - [Teklifinizi Salesforce 'a göndermek için teklifinizi yapılandırma](partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md#configure-your-offer-to-send-leads-to-salesforce)
 
 1. Verdiğiniz yapılandırmayı doğrulamak için, varsa **Doğrula** bağlantısını seçin.
-1. İletişim kutusunu kapatmak için **Bağlan** ' ı seçin.
+1. İletişim kutusunu kapatmak için **Bağlan**' ı seçin.
 1. Sonraki sekmeye geçmeden önce **Taslağı kaydet** ' i seçin: Özellikler.
 
 > [!NOTE]

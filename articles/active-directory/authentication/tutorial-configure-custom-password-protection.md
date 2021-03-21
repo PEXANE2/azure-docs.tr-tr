@@ -6,16 +6,16 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 07/13/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03a5f355263b80ef2e5e1c829877dc96ca55787a
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 89abdcf4c76c92c2ed967594527d323b2cd8be32
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837898"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "96741193"
 ---
 # <a name="tutorial-configure-custom-banned-passwords-for-azure-active-directory-password-protection"></a>Öğretici: Azure Active Directory parola koruması için özel yasaklanmış parolaları yapılandırma
 
@@ -28,7 +28,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > * Özel yasaklanmış parola listesine giriş ekleme
 > * Parola değişikliklerini yasaklanmış parolayla sına
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
@@ -72,7 +72,7 @@ Bir Kullanıcı, genel veya özel yasaklanmış parola listesindeki bir parolay�
 
     * Özel yasaklanmış parola listesi, en fazla 1000 terim içerebilir.
     * Özel yasaklanmış parola listesi, büyük/küçük harfe duyarsızdır.
-    * Özel yasaklanmış parola listesi, "o" ve "0" gibi genel karakter değişimini ve "a" ve "@" gibi kabul eder.
+    * Özel yasaklanmış parola listesi, "o" ve "0" ya da "a" ve "" gibi ortak karakter değişimini dikkate alır \@ .
     * En küçük dize uzunluğu dört karakterdir ve en fazla 16 karakter uzunluğunda olur.
 
     Aşağıdaki örnekte gösterildiği gibi, Ban için kendi özel parolalarınızı belirtin
@@ -124,4 +124,4 @@ Bu öğreticide, Azure AD için özel parola koruma listelerini etkinleştirmiş
 > * Parola değişikliklerini yasaklanmış parolayla sına
 
 > [!div class="nextstepaction"]
-> [Risk tabanlı Azure AD Multi-Factor Authentication etkinleştirme](./tutorial-enable-azure-mfa.md)
+> [Risk tabanlı Azure AD Multi-Factor Authentication'ı etkinleştirme](./tutorial-enable-azure-mfa.md)

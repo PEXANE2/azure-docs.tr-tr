@@ -7,10 +7,10 @@ author: kanshiG
 ms.author: govindk
 ms.date: 01/07/2021
 ms.openlocfilehash: ec82532b54e7834b62fcc03d3ee7de1345a0f546
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98027817"
 ---
 # <a name="how-to-monitor-normalized-rus-for-an-azure-cosmos-container-or-an-account"></a>Azure Cosmos kapsayıcısı veya bir hesap için normalleştirilmiş RU/s 'yi izleme
@@ -22,7 +22,7 @@ Azure Cosmos DB için Azure Izleyici, hesabınızı izlemek ve panolar oluşturm
 
 ## <a name="what-to-expect-and-do-when-normalized-rus-is-higher"></a>Normalleştirilmiş RU/s daha yüksek olduğunda beklenmeli ve yapılacak
 
-Normalleştirilmiş RU/sn tüketimi, belirtilen bölüm anahtarı aralığı için %100 ' e ulaştığında ve bir istemci bu zaman penceresinde belirli bir bölüm anahtarı aralığına istek yapıyorsa, bu hız sınırlı bir hata alır. İstemci önerilen bekleme süresini dikkate almalıdır ve isteği yeniden dener. SDK, uygun bir şekilde bekleyerek, önceden yapılandırılmış süreleri yeniden denemeden bu durumu daha kolay hale getirir.  Normalleştirilmiş RU %100 değerine ulaştığından, RU oranı sınırlandırma hatasını görmeniz gerekli değildir. Bunun nedeni, normalleştirilmiş RU 'nın tüm bölüm anahtarı aralıkları üzerinde en fazla kullanımı temsil eden tek bir değer olmasından kaynaklanır, bir bölüm anahtar aralığı meşgul olabilir ancak diğer bölüm anahtarı aralıkları sorun olmadan isteklere sunabilir. Örneğin, bir bölüm anahtar aralığındaki tüm RU/s 'leri tüketen saklı yordam gibi tek bir işlem, normalleştirilmiş RU/s tüketimine göre kısa bir ani artış oluşmasına neden olur. Bu gibi durumlarda, istek hızı düşük olduğunda veya farklı bölüm anahtarı aralıklarında diğer bölümlere istekler yapılırsa, hiçbir anında hız sınırlama hatası olmayacaktır. 
+Normalleştirilmiş RU/sn tüketimi, belirtilen bölüm anahtarı aralığı için %100 ' e ulaştığında ve bir istemci bu zaman penceresinde belirli bir bölüm anahtarı aralığına istek yapıyorsa, bu hız sınırlı bir hata alır. İstemci önerilen bekleme süresini dikkate almalıdır ve isteği yeniden dener. SDK, uygun bir şekilde bekleyerek, önceden yapılandırılmış süreleri yeniden denemeden bu durumu daha kolay hale getirir.  Normalleştirilmiş RU %100 değerine ulaştığından, RU oranı sınırlandırma hatasını görmeniz gerekli değildir. Bunun nedeni, normalleştirilmiş RU 'nın tüm bölüm anahtarı aralıkları üzerinde en fazla kullanımı temsil eden tek bir değer olmasından kaynaklanır, bir bölüm anahtar aralığı meşgul olabilir ancak diğer bölüm anahtarı aralıkları sorun olmadan isteklere sunabilir. Örneğin, bir bölüm anahtar aralığındaki tüm RU/s 'leri tüketen saklı yordam gibi tek bir işlem, normalleştirilmiş RU/s tüketimine göre kısa bir ani artış oluşmasına neden olur. Böyle durumlarda, istek hızı düşükse ya da istekler farklı bölüm anahtarı aralıklarındaki başka bölümlere yapıldıysa hemen hız sınırlama hataları oluşmaz. 
 
 Azure Izleyici ölçümleri, **toplam istek** ÖLÇÜMÜNÜ kullanarak SQL API için durum kodu başına işlemleri bulmanıza yardımcı olur. Daha sonra bu isteklere 429 durum kodu ile filtre uygulayabilir ve bunları **Işlem türüne** göre bölebilirsiniz.  
 
@@ -34,7 +34,7 @@ En fazla %100 normalleştirilmiş RU/sn tüketimi veya birden çok bölüm anaht
 
 ## <a name="view-the-normalized-request-unit-consumption-metric"></a>Normalleştirilmiş istek birimi tüketim ölçümünü görüntüleyin
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 2. Sol taraftaki Gezinti çubuğundan **izleyici** ' yi seçin ve **ölçümler**' i seçin.
 

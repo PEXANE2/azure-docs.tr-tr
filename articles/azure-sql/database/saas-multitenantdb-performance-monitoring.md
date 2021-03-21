@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: d37bf2c84b74dba76e5d1921ed67072af7f6c328
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92790908"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>Çok kiracılı bir SaaS uygulamasında parçalı, çok kiracılı Azure SQL veritabanı 'nın performansını izleme ve yönetme
@@ -46,9 +46,9 @@ Veritabanı performans yönetimi, performans verilerini derleyip çözümlemeyi 
 ### <a name="performance-management-strategies"></a>Uygulama performansı stratejileri
 
 * Performansı el ile izlemek zorunda kalmamak için, **veritabanları normal aralıklar dışında bırakıldığında tetiklenecek uyarıları ayarlamak** en etkilidir.
-* Bir veritabanının işlem boyutundaki kısa vadeli dalgalanmalara yanıt vermek için **DTU düzeyi yukarı veya aşağı ölçeklendirilebilir** . Bu dalgalanma düzenli veya öngörülebilir bir şekilde gerçekleşirse, **veritabanının ölçeklendirilmesi otomatik olarak gerçekleşecek şekilde zamanlanabilir** . Örneğin, iş yükünüzün hafif olduğunu bildiğiniz gece veya hafta sonları gibi zamanlarda ölçeği azaltabilirsiniz.
-* Daha uzun süreli dalgalanmalara veya kiracılardaki değişikliklere yanıt vermek için, **tek tek kiracılar diğer veritabanına taşınabilir** .
-* *Tek* tek kiracı yükünde kısa süreli artışlara yanıt vermek için, **tek tek kiracılar bir veritabanını alabilir ve bireysel bir işlem boyutu atanabilir** . Yük düşürültikten sonra kiracı, çok kiracılı veritabanına geri döndürülebilir. Bu, önceden bilindiğinde, veritabanının her zaman gereken kaynaklara sahip olmasını sağlamak ve çok kiracılı veritabanındaki diğer kiracılarda etkileri önlemek için kiracılar preemptively taşınabilir. Popüler bir etkinlik için bilet satışı yoğunluğu yaşanan bir mekanda olduğu gibi bu gereksinim öngörülebildiği takdirde bu yönetim davranışı uygulamayla tümleştirilebilir.
+* Bir veritabanının işlem boyutundaki kısa vadeli dalgalanmalara yanıt vermek için **DTU düzeyi yukarı veya aşağı ölçeklendirilebilir**. Bu dalgalanma düzenli veya öngörülebilir bir şekilde gerçekleşirse, **veritabanının ölçeklendirilmesi otomatik olarak gerçekleşecek şekilde zamanlanabilir**. Örneğin, iş yükünüzün hafif olduğunu bildiğiniz gece veya hafta sonları gibi zamanlarda ölçeği azaltabilirsiniz.
+* Daha uzun süreli dalgalanmalara veya kiracılardaki değişikliklere yanıt vermek için, **tek tek kiracılar diğer veritabanına taşınabilir**.
+* *Tek* tek kiracı yükünde kısa süreli artışlara yanıt vermek için, **tek tek kiracılar bir veritabanını alabilir ve bireysel bir işlem boyutu atanabilir**. Yük düşürültikten sonra kiracı, çok kiracılı veritabanına geri döndürülebilir. Bu, önceden bilindiğinde, veritabanının her zaman gereken kaynaklara sahip olmasını sağlamak ve çok kiracılı veritabanındaki diğer kiracılarda etkileri önlemek için kiracılar preemptively taşınabilir. Popüler bir etkinlik için bilet satışı yoğunluğu yaşanan bir mekanda olduğu gibi bu gereksinim öngörülebildiği takdirde bu yönetim davranışı uygulamayla tümleştirilebilir.
 
 [Azure portalı](https://portal.azure.com), çoğu kaynak üzerinde yerleşik izleme ve uyarı özelliği sağlar. SQL veritabanı için, veritabanlarında izleme ve uyarı verme vardır. Bu yerleşik izleme ve uyarı kaynağa özgüdür, bu nedenle az sayıda kaynak için kullanılması uygundur, ancak birçok kaynakla çalışırken kullanışlı değildir.
 
@@ -64,9 +64,9 @@ Performans izleme ve yönetiminin ölçekli olarak nasıl çalıştığını anl
 
 Önceki bir öğreticide bir grup kiracıyı zaten sağladıysanız, [Tüm kiracı veritabanlarında kullanım benzetimi yap](#simulate-usage-on-all-tenant-databases) bölümüne atlayın.
 
-1. **PowerShell ISE** 'de açın... \\ Öğrenme modülleri \\ performans izleme ve yönetim \\ *Demo-PerformanceMonitoringAndManagement.ps1* . Bu öğretici sırasında birkaç senaryo çalıştıracağından bu betiği açık tutun.
+1. **PowerShell ISE**'de açın... \\ Öğrenme modülleri \\ performans izleme ve yönetim \\ *Demo-PerformanceMonitoringAndManagement.ps1*. Bu öğretici sırasında birkaç senaryo çalıştıracağından bu betiği açık tutun.
 1. **$DemoScenario**  =  **1** ayarlama, _kiracı grubu sağlama_
-1. Betiği çalıştırmak için **F5** 'e basın.
+1. Betiği çalıştırmak için **F5**'e basın.
 
 Betik, 17 kiracıları çok kiracılı veritabanına birkaç dakika içinde dağıtır. 
 
@@ -85,7 +85,7 @@ Betik, 17 kiracıları çok kiracılı veritabanına birkaç dakika içinde dağ
 
 Yük oluşturucu her kiracı veritabanına *yapay* bir yalnızca CPU yükü uygular. Oluşturucu her kiracı veritabanı için yükü oluşturan saklı yordamı düzenli olarak çağıran bir iş başlatır. Yük düzeyleri (DTU 'Lar), süre ve aralıklar tüm veritabanları genelinde farklılık gösterir ve bu da öngörülemeyen kiracı etkinliğinin benzetimini yapılır.
 
-1. **PowerShell ISE** 'de açın... \\ Öğrenme modülleri \\ performans izleme ve yönetim \\ *Demo-PerformanceMonitoringAndManagement.ps1* . Bu öğretici sırasında birkaç senaryo çalıştıracağından bu betiği açık tutun.
+1. **PowerShell ISE**'de açın... \\ Öğrenme modülleri \\ performans izleme ve yönetim \\ *Demo-PerformanceMonitoringAndManagement.ps1*. Bu öğretici sırasında birkaç senaryo çalıştıracağından bu betiği açık tutun.
 1. **$DemoScenario**  =  **2** ayarla, _Normal yoğunluk yükü oluştur_
 1. Tüm kiracılarınıza bir yük uygulamak için **F5** tuşuna basın.
 
@@ -99,7 +99,7 @@ Wingtip bilet SaaS çok kiracılı veritabanı bir SaaS uygulamasıdır ve SaaS 
 Uygulanan yükün sonucu olan kaynak kullanımını izlemek için, portalı, kiracıların bulunduğu **tenants1** çok kiracılı veritabanına açın:
 
 1. [Azure Portal](https://portal.azure.com) açın ve *tenants1-MT- &lt; &gt; User* sunucusuna gidin.
-1. Aşağı kaydırın ve veritabanlarını bulun ve **tenants1** ' a tıklayın. Bu parçalı çok kiracılı veritabanı şimdiye kadar oluşturulan tüm kiracılar içerir.
+1. Aşağı kaydırın ve veritabanlarını bulun ve **tenants1**' a tıklayın. Bu parçalı çok kiracılı veritabanı şimdiye kadar oluşturulan tüm kiracılar içerir.
 
 ![veritabanı grafiği](./media/saas-multitenantdb-performance-monitoring/multitenantdb.png)
 
@@ -110,7 +110,7 @@ Uygulanan yükün sonucu olan kaynak kullanımını izlemek için, portalı, kir
 Veritabanında %75 kullanımı tetikleyen bir uyarı ayarlayın \> :
 
 1. [Azure Portal](https://portal.azure.com) *tenants1* veritabanını ( *tenants1-MT- &lt; user &gt;* Server üzerinde) açın.
-1. **Uyarı Kuralları** ve ardından **+ Uyarı ekle** ’ye tıklayın:
+1. **Uyarı Kuralları** ve ardından **+ Uyarı ekle**’ye tıklayın:
 
    ![uyarı ekle](./media/saas-multitenantdb-performance-monitoring/add-alert.png)
 
@@ -118,9 +118,9 @@ Veritabanında %75 kullanımı tetikleyen bir uyarı ayarlayın \> :
 1. Aşağıdaki değerleri ayarlayın:
    * **Ölçüm = DTU yüzdesi**
    * **Koşul = büyüktür**
-   * **Eşik = 75** .
+   * **Eşik = 75**.
    * **Period = son 30 dakika Içinde**
-1. *Ek yönetici e-postaları* kutusuna bir e-posta adresi ekleyin ve **Tamam** ' a tıklayın.
+1. *Ek yönetici e-postaları* kutusuna bir e-posta adresi ekleyin ve **Tamam**' a tıklayın.
 
    ![uyarı ayarlama](./media/saas-multitenantdb-performance-monitoring/set-alert.png)
 
@@ -128,13 +128,13 @@ Veritabanında %75 kullanımı tetikleyen bir uyarı ayarlayın \> :
 
 Yük düzeyi bir veritabanında veritabanını izleyen ve %100 DTU kullanımına ulaşan bir noktaya yükseliyorsa, veritabanı performansı etkilenir ve sorgu yanıt sürelerini yavaşlatabilirler.
 
-**Kısa dönem** , ek kaynaklar sağlamak ya da kiracıların çok kiracılı veritabanından (bunları çok kiracılı veritabanını tek başına bir veritabanına taşımak) kaldırmak için veritabanını ölçeklendirmeyi düşünün.
+**Kısa dönem**, ek kaynaklar sağlamak ya da kiracıların çok kiracılı veritabanından (bunları çok kiracılı veritabanını tek başına bir veritabanına taşımak) kaldırmak için veritabanını ölçeklendirmeyi düşünün.
 
-**Daha uzun süreli** , veritabanı performansını iyileştirmek için sorguları veya dizin kullanımını iyileştirmeyi düşünün. Uygulamanın performans sorunlarını gidermek için en iyi yöntem, %100 DTU kullanımına ulaşmadan önce bir veritabanını ölçeklendirmektir. Sizi önceden uyarması için bir uyarı ayarlayın.
+**Daha uzun süreli**, veritabanı performansını iyileştirmek için sorguları veya dizin kullanımını iyileştirmeyi düşünün. Uygulamanın performans sorunlarını gidermek için en iyi yöntem, %100 DTU kullanımına ulaşmadan önce bir veritabanını ölçeklendirmektir. Sizi önceden uyarması için bir uyarı ayarlayın.
 
 Oluşturucu tarafından üretilen yükü artırarak, meşgul bir veritabanının benzetimini yapabilirsiniz. Kiracıların daha sık yük vermesine ve daha uzun süre boyunca, tek kiracılar için gereksinimleri değiştirmeden çok kiracılı veritabanı yükünü artırmasına neden olur. Veritabanının ölçeği, portalda veya PowerShell 'den kolayca yapılır. Bu alıştırmada portal kullanılmaktadır.
 
-1. *$DemoScenario*  =  Her kiracı için gereken en yüksek yükü değiştirmeden veritabanındaki Toplam yükün yoğunluğunu artırmak için, $DemoScenario **3** ' ü ayarlayın, veritabanı _başına daha uzun ve daha sık sık yinelenen yük oluşturun_ .
+1.   =  Her kiracı için gereken en yüksek yükü değiştirmeden veritabanındaki Toplam yükün yoğunluğunu artırmak için, $DemoScenario **3**' ü ayarlayın, veritabanı _başına daha uzun ve daha sık sık yinelenen yük oluşturun_ .
 1. Bir yükü tüm kiracı veritabanlarınıza uygulamak için **F5** tuşuna basın.
 1. Azure portal **tenants1** veritabanına gidin.
 
@@ -144,7 +144,7 @@ Oluşturucu tarafından üretilen yükü artırarak, meşgul bir veritabanının
 1. **DTU** ayarını **100** olarak ayarlayın. 
 1. Veritabanını ölçeklendirmeye yönelik isteği göndermek için **Uygula** ' ya tıklayın.
 
-**tenants1**  >  İzleme grafiklerini görüntülemek için tenants1 **genel bakış** bölümüne geri dönün. Veritabanını daha fazla kaynakla sağlama etkisini izleyin (birkaç kiracı ve rastgele bir yük olsa da, bir süredir çalıştırana kadar yaratacağı görmeniz her zaman kolay değildir). Grafikler göz önünde bulundurularak, üstteki grafik üzerinde %100 ' un Şu anda 100 DTU 'yu temsil ettiğini unutmayın. Bu durumda, daha düşük grafik %100 yine de 50 DTU.
+  >  İzleme grafiklerini görüntülemek için tenants1 **genel bakış** bölümüne geri dönün. Veritabanını daha fazla kaynakla sağlama etkisini izleyin (birkaç kiracı ve rastgele bir yük olsa da, bir süredir çalıştırana kadar yaratacağı görmeniz her zaman kolay değildir). Grafikler göz önünde bulundurularak, üstteki grafik üzerinde %100 ' un Şu anda 100 DTU 'yu temsil ettiğini unutmayın. Bu durumda, daha düşük grafik %100 yine de 50 DTU.
 
 İşlem boyunca veritabanları çevrimiçi ve tam olarak kullanılabilir durumdadır. Bırakılan bağlantıları yeniden denemek için uygulama kodu her zaman yazılmalıdır ve bu nedenle veritabanına yeniden bağlanır.
 
@@ -154,10 +154,10 @@ Parçalı çok kiracılı model, diğer kiracıların yanı sıra çok kiracıl�
 
 Kendi veritabanında zaten yeni bir kiracı sağladıysanız, sonraki birkaç adımı atlayın.
 
-1. **PowerShell ISE** 'de açın... \\ Öğrenme modülleri \\ provisionkiracılar \\ *Demo-ProvisionTenants.ps1* . 
+1. **PowerShell ISE**'de açın... \\ Öğrenme modülleri \\ provisionkiracılar \\ *Demo-ProvisionTenants.ps1*. 
 1. Değiştirin **$TenantName = "SALX salsa"** ve **$VenueType = "dans"**
 1. **$Scenario**  =  **2** ayarlama, _Yeni bir tek kiracılı veritabanında kiracı sağlama_
-1. Betiği çalıştırmak için **F5** 'e basın.
+1. Betiği çalıştırmak için **F5**'e basın.
 
 Betik bu kiracıyı ayrı bir veritabanında hazırlar, veritabanını ve kiracıyı katalogla kaydeder ve ardından kiracının etkinlikler sayfasını tarayıcıda açar. Olay Hub 'ı sayfasını yenileyin ve "SALX salsa" nın bir mekan eklendiğini görürsünüz.
 
@@ -170,9 +170,9 @@ Bu alıştırma, popüler bir olay için bilet satışa geldiğinde yüksek bir 
 1. Açın. \\ .. *Demo-PerformanceMonitoringAndManagement.ps1* betiği.
 1. **$DemoScenario = 5** olarak ayarlayın, _tek bir kiracı üzerinde normal yük ve yüksek yük oluşturun (yaklaşık 90 DTU)._
 1. **$SingleTenantName = SALX salsa** ayarla
-1. **F5** ’i kullanarak betiği yürütün.
+1. **F5**’i kullanarak betiği yürütün.
 
-Portal ' a gidin ve **salixsalsa**  >  izleme grafiklerini görüntülemek için salixsalsa **Genel Bakış ' a** gidin. 
+Portal ' a gidin ve   >  izleme grafiklerini görüntülemek için salixsalsa **Genel Bakış ' a** gidin. 
 
 ## <a name="other-performance-management-patterns"></a>Diğer performans yönetimi desenleri
 

@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.openlocfilehash: fcf3e9228c8e651efb8f97067f7ba9eead5959db
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92789684"
 ---
 # <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>Yönetim kaynaklarına erişmek için Azure depolama kaynak sağlayıcısını kullanma
@@ -44,7 +44,7 @@ Azure, arama yönetimi işlemlerine izin veren yerleşik roller sağlar. Azure d
 
 Depolama yönetimi işlemlerini çağırma izinleri veren yerleşik roller, aşağıdaki tabloda açıklanan rolleri içerir:
 
-|    Azure rolü    |    Açıklama    |    Hesap anahtarlarına erişim de dahil edilsin mi?    |
+|    Azure rolü    |    Description    |    Hesap anahtarlarına erişim de dahil edilsin mi?    |
 |---------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
 | **Sahibi** | , Tüm depolama kaynaklarını yönetebilir ve kaynaklara erişebilir.  | Evet, depolama hesabı anahtarlarını görüntülemek ve yeniden oluşturmak için izinler sağlar. |
 | **Katkıda Bulunan**  | Tüm depolama kaynaklarını yönetebilir, ancak kaynaklara erişimi yönetemez. | Evet, depolama hesabı anahtarlarını görüntülemek ve yeniden oluşturmak için izinler sağlar. |
@@ -53,7 +53,7 @@ Depolama yönetimi işlemlerini çağırma izinleri veren yerleşik roller, aşa
 | **Kullanıcı Erişimi Yöneticisi** | , Depolama hesabına erişimi yönetebilir.   | Evet, bir güvenlik sorumlusunun kendilerine ve başkalarına herhangi bir izin atamasını sağlar. |
 | **Sanal Makine Katılımcısı** | , Bağlı oldukları depolama hesabını değil, sanal makineleri yönetebilir.   | Evet, depolama hesabı anahtarlarını görüntülemek ve yeniden oluşturmak için izinler sağlar. |
 
-Tablodaki üçüncü sütun, yerleşik rolün **Microsoft. Storage/storageAccounts/ListKeys/Action** ' i destekleyip desteklemediğini gösterir. Bu eylem, depolama hesabı anahtarlarını okuma ve yeniden oluşturma izinleri verir. Azure depolama yönetimi kaynaklarına erişim izinleri, verilere erişim izinlerini de içermez. Ancak, bir kullanıcının hesap anahtarlarına erişimi varsa, paylaşılan anahtar yetkilendirmesi aracılığıyla Azure Storage verilerine erişmek için hesap anahtarlarını kullanabilirler.
+Tablodaki üçüncü sütun, yerleşik rolün **Microsoft. Storage/storageAccounts/ListKeys/Action**' i destekleyip desteklemediğini gösterir. Bu eylem, depolama hesabı anahtarlarını okuma ve yeniden oluşturma izinleri verir. Azure depolama yönetimi kaynaklarına erişim izinleri, verilere erişim izinlerini de içermez. Ancak, bir kullanıcının hesap anahtarlarına erişimi varsa, paylaşılan anahtar yetkilendirmesi aracılığıyla Azure Storage verilerine erişmek için hesap anahtarlarını kullanabilirler.
 
 ### <a name="custom-roles-for-management-operations"></a>Yönetim işlemleri için özel roller
 

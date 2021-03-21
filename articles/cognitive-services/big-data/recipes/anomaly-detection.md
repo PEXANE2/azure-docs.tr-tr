@@ -12,10 +12,10 @@ ms.date: 07/06/2020
 ms.author: marhamil
 ms.custom: devx-track-python
 ms.openlocfilehash: d2995f39bc61ae5bb87abafd674f411271e57ca2
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94366290"
 ---
 # <a name="recipe-predictive-maintenance-with-the-cognitive-services-for-big-data"></a>Tarif: büyük veriler için bilişsel hizmetler ile tahmine dayalı bakım
@@ -33,7 +33,7 @@ Veride rastgele bir sıklıkta bir grup olabilir. Bu durumlarda, RPM değerleri 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
 * [Sunucusuz Apache Spark havuzuyla](../../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md) yapılandırılmış [Azure SYNAPSE çalışma alanı](../../../synapse-analytics/quickstart-create-workspace.md)
 
-## <a name="setup"></a>Ayarlama
+## <a name="setup"></a>Kurulum
 
 ### <a name="create-an-anomaly-detector-resource"></a>Anomali algılayıcısı kaynağı oluşturma
 
