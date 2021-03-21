@@ -6,10 +6,10 @@ ms.subservice: ''
 ms.date: 04/16/2019
 ms.topic: troubleshooting
 ms.openlocfilehash: e6caf3fed708e89b55a88719ca5358f6174c2ac8
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98896537"
 ---
 # <a name="troubleshoot-azure-automation-state-configuration-issues"></a>Azure Otomasyonu durum yapılandırması sorunlarını giderme
@@ -107,7 +107,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / 
 
 Bu sorun, hatalı veya geçerliliği olumsuz bir sertifika nedeniyle oluşur. Bkz. [bir düğümü yeniden kaydetme](../automation-dsc-onboarding.md#re-register-a-node).
 
-Bu sorun, **_. Azure-Automation.net_* erişimine izin verilmeyen bir ara sunucu yapılandırması nedeniyle de oluşabilir. Daha fazla bilgi için bkz. [özel ağların yapılandırması](../automation-dsc-overview.md#network-planning). 
+Bu sorun, ***. Azure-Automation.net** erişimine izin verilmeyen bir ara sunucu yapılandırması nedeniyle de oluşabilir. Daha fazla bilgi için bkz. [özel ağların yapılandırması](../automation-dsc-overview.md#network-planning). 
 
 ### <a name="resolution"></a>Çözüm
 
@@ -149,7 +149,7 @@ If (($certs.Count) -gt 0)
 
 1. Azure Portal, **ana**  >  **Otomasyon hesapları** > (Otomasyon hesabınız) > **Durum Yapılandırması (DSC)** bölümüne gidin.
 1. **Düğüm** seçin.
-1. **Ekle**’yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 1. Hatalı düğümü seçin.
 1. **Bağlan**' ı seçin ve istediğiniz seçenekleri belirleyin.
 

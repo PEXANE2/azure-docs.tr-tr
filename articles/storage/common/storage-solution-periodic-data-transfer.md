@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: alkohli
 ms.openlocfilehash: a15ebd43861e2116ddbb2d9055b289645962e203
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96573927"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>Düzenli aralıklarla veri aktarımına yönelik çözümler
@@ -52,15 +52,15 @@ Aşağıdaki tabloda, temel özellikler arasındaki farklar özetlenmiştir.
 
 ### <a name="continuous-data-ingestion-over-network"></a>Ağ üzerinden sürekli veri alımı
 
-| Öne çıkan özelliği                                       | Data Box Gateway | Data Box Edge   | Azure Data Factory        |
+| Özellik                                       | Data Box Gateway | Data Box Edge   | Azure Data Factory        |
 |----------------------------------|-----------------------------------------|--------------------------|---------------------------|
 | Form faktörü                                   | Sanal cihaz             | Fiziksel cihaz          | Azure portal hizmeti, şirket içi aracıda                                                            |
 | Donanım                                      | Hiper yöneticinizi            | Microsoft tarafından sağlandı    | NA                                                            |
 | İlk kurulum çabası                          | Düşük (<30 dakika)            | Orta (~ birkaç saat) | Büyük (~ gün)                                                 |
 | Veri biçimi                                   | Azure Blobları, Azure dosyaları   | Azure Blobları, Azure dosyaları | [Veri depoları ve biçimleri için 70 ' ten fazla veri Bağlayıcısı destekler](../../data-factory/copy-activity-overview.md#supported-data-stores-and-formats)|
-| Verileri önceden işleme                           | Hayır                         | Evet, uç işlem ile    | Evet                                                           |
-| Yerel önbellek<br>(Şirket içi verileri depolamak için)    | Evet                        | Evet                      | Hayır                                                            |
-| Diğer bulutlardan aktar                    | Hayır                         | Hayır                       | Evet                                                           |
+| Verileri önceden işleme                           | No                         | Evet, uç işlem ile    | Yes                                                           |
+| Yerel önbellek<br>(Şirket içi verileri depolamak için)    | Yes                        | Yes                      | Hayır                                                            |
+| Diğer bulutlardan aktar                    | Hayır                         | Hayır                       | Yes                                                           |
 | Fiyatlandırma                                       | [Fiyatlandırma](https://azure.microsoft.com/pricing/details/storage/databox/gateway/)                    | [Fiyatlandırma](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                  | [Fiyatlandırma](https://azure.microsoft.com/pricing/details/data-factory/)                                                       |
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -13,12 +13,12 @@ metadata:
   ms.date: 03/03/2021
   featureFlags:
   - clicktale
-  ms.openlocfilehash: 323172092a6530e97de36c1cf50fea855f38da28
-  ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+  ms.openlocfilehash: b7dceb243f0a85166cd1d7180198c6aac95fab7d
+  ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
   ms.translationtype: MT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 03/11/2021
-  ms.locfileid: "103011179"
+  ms.lasthandoff: 03/19/2021
+  ms.locfileid: "104601066"
 highlightedContent:
   items:
   - title: Azure geliştiricileri için başlangıç kılavuzu
@@ -1384,3 +1384,11 @@ additionalContent:
     - title: Azure Çin 21Vianet
       summary: Çin’de bulunan ve 21Vianet tarafından çalıştırılan bir ayrılmış bulut.
       url: /azure/china/
+  - title: İş ortağı çözümleri
+    items:
+    - title: Azure iş ortağı çözümleri
+      summary: Bulut altyapınızı geliştirmek için Azure 'da kullanabileceğiniz tümleşik iş ortağı çözümleri.
+      url: ./partner-solutions/overview.md
+    - title: Ticari market
+      summary: Bağımsız yazılım satıcısı (ISV) iş ortaklarından gelen uygulamalar ve hizmetler için çevrimiçi bir market.
+      url: ./marketplace/index.yml

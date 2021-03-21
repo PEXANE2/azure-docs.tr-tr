@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
 ms.openlocfilehash: 1babf1feb550109486089c45469ab4ce32f72cb3
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102097423"
 ---
 # <a name="data-driven-style-expressions-android-sdk"></a>Veri tabanlı stil ifadeleri (Android SDK)
@@ -24,7 +24,7 @@ Veri odaklı stiller, Stillendirme etrafında iş mantığını uygulamak için 
 
 Azure Haritalar Android SDK Azure Maps web SDK 'Sı ile neredeyse tüm aynı stil ifadelerini destekler, böylece [veri odaklı stil ifadelerinde (Web SDK)](data-driven-style-expressions-web-sdk.md) özetlenen tüm kavramlar bir Android uygulamasına taşınır. Azure Haritalar Android SDK tüm stil ifadeleri `com.microsoft.azure.maps.mapcontrol.options.Expression` ad alanı altında bulunabilir. Birçok farklı tür stil ifadesi vardır.
 
-| İfade türü | Açıklama |
+| İfade türü | Description |
 |---------------------|-------------|
 | [Mantıksal ifadeler](#boolean-expressions) | Boolean ifadeleri, Boole karşılaştırmaları değerlendirmek için bir dizi Boole işleci sağlar. |
 | [Renk ifadeleri](#color-expressions) | Renk ifadeleri renk değerleri oluşturmayı ve işlemeyi kolaylaştırır. |
@@ -219,7 +219,7 @@ Bu videoda, Azure haritalar 'da veri tabanlı stillendirme hakkında genel bakı
 
 Veri ifadeleri bir özelliğin özellik verilerine erişim sağlar.
 
-| Expression | Dönüş türü | Açıklama |
+| Expression | Dönüş türü | Description |
 |------------|-------------|-------------|
 | `accumulated()` | sayı | Şimdiye kadar biriktirilen bir küme özelliğinin değerini alır. |
 | `at(number | Expression, Expression)` | değer | Diziden bir öğe alır. |
@@ -380,7 +380,7 @@ has("fillColor", get("_style"))
 
 Matematik ifadeleri, ifade çerçevesi içinde veri odaklı hesaplamalar gerçekleştirmek için matematik işleçleri sağlar.
 
-| Expression | Dönüş türü | Açıklama |
+| Expression | Dönüş türü | Description |
 |------------|-------------|-------------|
 | `abs(number | Expression)` | sayı | Belirtilen sayının mutlak değerini hesaplar. |
 | `acos(number | Expression)` | sayı | Belirtilen sayının arkkosinüsünü hesaplar. |
@@ -415,7 +415,7 @@ Boolean ifadeleri, Boole karşılaştırmaları değerlendirmek için bir dizi B
 
 Değerler karşılaştırılırken karşılaştırma kesin olarak yazılır. Farklı türlerin değerleri her zaman eşit kabul edilir. Türlerin ayrıştırma zamanında farklı olduğu bilinen durumlar geçersiz olarak değerlendirilir ve bir ayrıştırma hatası oluşturur.
 
-| Expression | Dönüş türü | Açıklama |
+| Expression | Dönüş türü | Description |
 |------------|-------------|-------------|
 | `all(Expression...)` | boolean | `true`Tüm girdilerin `true` , yoksa, döndürür `false` . |
 | `any(Expression...)` | boolean | Girdilerden `true` herhangi biri ise `true` , `false` Aksi takdirde döndürür. |
@@ -680,7 +680,7 @@ val layer = SymbolLayer(source,
 
 Tür ifadeleri, dizeler, sayılar ve Boole değerleri gibi farklı veri türlerini test etmek ve dönüştürmek için araçlar sağlar.
 
-| Expression | Dönüş türü | Açıklama |
+| Expression | Dönüş türü | Description |
 |------------|-------------|-------------|
 | `array(Expression)` | Object [] | Girişin bir dizi olduğunu onaylar. |
 | `bool(Expression)` | boolean | Giriş değerinin bir Boole olduğunu onaylar. |
@@ -699,7 +699,7 @@ Tür ifadeleri, dizeler, sayılar ve Boole değerleri gibi farklı veri türleri
 
 Renk ifadeleri renk değerleri oluşturmayı ve işlemeyi kolaylaştırır.
 
-| Expression | Dönüş türü | Açıklama |
+| Expression | Dönüş türü | Description |
 |------------|-------------|-------------|
 | `color(int)` | color | Color tamsayı değerini bir Color ifadesine dönüştürür. |
 | `rgb(Expression red, Expression green, Expression blue)` \| `rgb(number red, number green, number blue)` | color | Ve arasında aralığa gereken *kırmızı*, *yeşil* ve *mavi* bileşenlerden bir renk değeri oluşturur `0` `255` ve bir alfa bileşeni `1` . Herhangi bir bileşen Aralık dışında olursa ifade bir hatadır. |
@@ -806,7 +806,7 @@ val layer = BubbleLayer(source,
 
 Dize operatörü ifadeleri, büyük/küçük harfe dönüştürme ve dönüştürme gibi dizeler üzerinde dönüştürme işlemleri gerçekleştirir.
 
-| Expression | Dönüş türü | Açıklama |
+| Expression | Dönüş türü | Description |
 |------------|-------------|-------------|
 | `concat(string...)` \| `concat(Expression...)` | string | Birden çok dizeyi birlikte birleştirir. Her değer bir dize olmalıdır. `toString`Gerekirse, diğer değer türlerini dizeye dönüştürmek için tür ifadesini kullanın. |
 | `downcase(string)` \| `downcase(Expression)` | string | Belirtilen dizeyi küçük harfe dönüştürür. |
@@ -1286,7 +1286,7 @@ val layer = HeatMapLayer(source,
 
 Değişken bağlama ifadeleri, bir hesaplamanın sonuçlarını bir değişkende depolar. Bu nedenle, hesaplama sonuçlarının bir ifadenin başka bir yerinde birden çok kez başvurulabilmesini sağlayabilirsiniz. Birçok hesaplamayı içeren ifadeler için yararlı bir iyileştirmedir.
 
-| Expression | Dönüş türü | Açıklama |
+| Expression | Dönüş türü | Description |
 |--------------|---------------|--------------|
 | `let(Expression... input)` | | Bir veya daha fazla değeri `var` , sonucu döndüren alt ifadede ifadesi tarafından kullanılmak üzere değişkenler olarak depolar. |
 | `var(Expression expression)` \| `var(string variableName)` | Nesne | İfadesi kullanılarak oluşturulan bir değişkene başvurur `let` . |

@@ -7,17 +7,17 @@ ms.date: 02/11/2020
 ms.topic: reference
 ms.custom: references_regions
 ms.openlocfilehash: 1b20f7134f1b39853a78ee5b709e732ccf35acac
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96571122"
 ---
 # <a name="regions"></a>Bölgeler
 
 Bu sayfa, Azure uzaktan Işleme ile kullanılmak üzere kullanılabilir olan bölgeleri listeler. En iyi sonuçlar için, her zaman fiziksel konumunuza en yakın bölgeyi kullanın.
 
-| Ad | Region | URL |
+| Name | Region | URL |
 |-----------|:-----------|:-----------|
 | Doğu Avustralya | australiaeast | `https://remoterendering.australiaeast.mixedreality.azure.com` |
 | Doğu ABD | eastus | `https://remoterendering.eastus.mixedreality.azure.com` |

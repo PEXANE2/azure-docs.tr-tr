@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Azure Dev Spaces, Kubernetes 'e köprülemek için geçiş işlemini açıklar
 keywords: Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Kubernetes ile Köprü oluşturma
 ms.openlocfilehash: d48814df30c17f9b51d8642efa0960a26bbd24f4
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94888530"
 ---
 # <a name="migrating-to-bridge-to-kubernetes"></a>Kubernetes Köprüsü’ne geçiş
@@ -46,7 +46,7 @@ Kubernetes 'in Azure Dev Spaces ve Köprüsü benzer özelliklere sahiptir ve ay
 | Azure Kubernetes Service | 15 Azure bölgesinde | Herhangi bir AKS hizmet bölgesi    |
 | **Güvenlik** |
 | Kümenizde güvenlik erişimi gerekiyor  | AKS kümesi Katılımcısı  | Kubernetes RBAC-dağıtım güncelleştirmesi   |
-| Geliştirme bilgisayarınızda güvenlik erişimi gerekli  | YOK  | Yerel yönetici/sudo   |
+| Geliştirme bilgisayarınızda güvenlik erişimi gerekli  | Yok  | Yerel yönetici/sudo   |
 | **Stillerin** |
 | Kubernetes ve Docker yapılarından bağımsız  | Hayır  | Yes   |
 | Değişiklikleri otomatik geri alma, hata ayıklama sonrası  | Hayır  | Yes   |

@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 06/8/2020
 ms.author: chenyl
 ms.openlocfilehash: dee15977318eda7bcd0b1950286bb33f621221dd
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98731593"
 ---
 # <a name="managed-identities-for-azure-signalr-service"></a>Azure SignalR hizmeti için Yönetilen kimlikler
@@ -44,7 +44,7 @@ Kullanıcı tarafından atanan bir kimlikle Azure SignalR hizmeti örneği oluş
 
 4. **Kullanıcı atandı** sekmesinde **Ekle**' yi seçin.
 
-5. Daha önce oluşturduğunuz kimliği arayın ve seçin. **Ekle**’yi seçin.
+5. Daha önce oluşturduğunuz kimliği arayın ve seçin. **Add (Ekle)** seçeneğini belirleyin.
 
     :::image type="content" source="media/signalr-howto-use-managed-identity/user-identity-portal.png" alt-text="Portalda Kullanıcı tarafından atanan bir kimlik ekleme":::
 

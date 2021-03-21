@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/08/2020
 ms.author: jeedes
 ms.openlocfilehash: 741009b1d92d185678080c60078b272d7fb85558
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92509310"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tripactions"></a>Öğretici: TripActions ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -55,7 +55,7 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-tripactions"></a>Deneme için Azure AD çoklu oturum açma yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu üç aylık yapılandırma ve test etme. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu üç aylık yapılandırma ve test etme. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu yapılandırmak ve deneme ile test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -109,7 +109,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 Bu bölümde, üç aylık dönem için erişim izni vererek B. Simon 'u Azure çoklu oturum açma özelliğini etkinleştirecek şekilde etkinleştireceksiniz.
 
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde, **üç aylık**dönem ' i seçin.
+1. Uygulamalar listesinde, **üç aylık** dönem ' i seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)

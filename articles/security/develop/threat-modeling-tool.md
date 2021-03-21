@@ -8,10 +8,10 @@ ms.subservice: security-develop
 ms.topic: article
 ms.date: 02/16/2017
 ms.openlocfilehash: 6a637dc431b0f9cd8c40cfa1c048559a56a6b97f
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94518065"
 ---
 # <a name="microsoft-threat-modeling-tool"></a>Microsoft Threat Modeling Tool
@@ -37,7 +37,7 @@ Araç şunları yapmasını sağlar:
 
 Aşağıdaki tabloda Threat Modeling Tool kullanmaya başlamanızı sağlamak için önemli bağlantılar yer almaktadır: Ayrıca bkz: [sistem gereksinimleri](threat-modeling-tool-releases.md)
 
-| Adım  | Açıklama                                                                                   |
+| Adım  | Description                                                                                   |
 | ----- | --------------------------------------------------------------------------------------------- |
 | **1** | [Threat Modeling Tool indirin](https://aka.ms/threatmodelingtool)                                |
 | **2** | [Başlarken kılavuzumuzu okuyun](threat-modeling-tool-getting-started.md)    |

@@ -8,17 +8,17 @@ ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.openlocfilehash: af8ec9e0aac38240c7da92edd614892ff65712e2
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96553970"
 ---
 # <a name="understand-search-features-in-azure-purview"></a>Azure purview 'da arama özelliklerini anlama
 
 Bu makalede, Azure purview 'daki arama deneyimine genel bir bakış sunulmaktadır. Arama, bir kuruluştaki veri bulma ve verilerin idare deneyimlerini destekleyen bir çekirdek platform özelliğidir.
 
-## <a name="search"></a>Arama
+## <a name="search"></a>Arayın
 
 Takip görünümü arama deneyimi, yönetilen bir arama diziniyle desteklenir. Bir veri kaynağı purview 'a kaydedildikten sonra, verileri kolay bulma sağlamak için arama hizmeti tarafından dizine alınır. Dizin, milyonlarca meta veri varlığını sorgulayarak arama ilgi özellikleri sağlar ve arama isteklerini tamamlar. Arama, verilerin en iyi şekilde yararlanmasına yardımcı olmak için verileri keşfetmenize, anlamanıza ve kullanmanıza yardımcı olur.
 
@@ -38,7 +38,7 @@ Azure purview 'da aramanın hedefi, önemli verileri hızlı bir şekilde bulmak
 
 Birçok kez aynı anda birden fazla proje üzerinde çalışıyor olabilirsiniz. Önceki projelerin sürdürülmesi daha kolay hale getirmek için, takip etme arama, son arama anahtar sözcüklerini ve önerilerini görüntüleme olanağı sağlar. Ayrıca, arama kutusu açılır listesinden **Tümünü görüntüle** ' yi seçerek son arama geçmişini yönetebilirsiniz.
 
-## <a name="filters"></a>FilTReleri
+## <a name="filters"></a>Filtreler
 
 Filtreler ( *model* olarak da bilinir), aramayı tamamlamak için tasarlanmıştır. Filtreler arama sonucu sayfasında gösterilir. Arama sonucu sayfasındaki Filtreler, sınıflandırma, duyarlılık etiketi, veri kaynağı ve sahipler ' i içerir. Kullanıcılar yalnızca eşleşen veri varlıklarını görmek için bir filtredeki belirli değerleri seçebilir ve arama sonucunu eşleşen varlıklarla kısıtlayabilir.
 

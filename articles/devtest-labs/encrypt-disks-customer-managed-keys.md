@@ -4,10 +4,10 @@ description: Azure DevTest Labs 'de müşteri tarafından yönetilen anahtarlar�
 ms.topic: article
 ms.date: 09/01/2020
 ms.openlocfilehash: 26ef4ff1529483da9956c6dcc43807af0ffd6463
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96341229"
 ---
 # <a name="encrypt-operating-system-os-disks-using-customer-managed-keys-in-azure-devtest-labs"></a>Azure DevTest Labs 'de müşteri tarafından yönetilen anahtarları kullanarak işletim sistemi (OS) disklerini şifreleyin
@@ -47,7 +47,7 @@ Aşağıdaki bölümde, bir laboratuar sahibinin, müşteri tarafından yönetil
     1. Araç çubuğunda **Kaydet**’i seçin. 
 
         :::image type="content" source="./media/encrypt-disks-customer-managed-keys/save-role-assignment.png" alt-text="Rol atamasını Kaydet":::
-3. **Abonelik** erişim denetimi (IAM) sayfasını kullanarak, laboratuvarın **sistem tarafından atanan kimliğini** **sanal makine katılımcısı** rolüne ekleyin  ->  **Access control (IAM)** . Adımlar önceki adımlarda olanlarla benzerdir. 
+3. **Abonelik** erişim denetimi (IAM) sayfasını kullanarak, laboratuvarın **sistem tarafından atanan kimliğini** **sanal makine katılımcısı** rolüne ekleyin  ->   . Adımlar önceki adımlarda olanlarla benzerdir. 
 
     
     1. Azure portal **abonelik** sayfasına gidin. 

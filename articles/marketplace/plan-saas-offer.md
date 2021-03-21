@@ -8,16 +8,16 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: 714b7bccea9b1e0c18ad78a4d98ed3526a279f5f
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: e24e1afa0116bc1f240bddef47783b06f4f800d2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879267"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581312"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>Ticari Market için SaaS teklifi planlaması
 
-Bu makalede, Microsoft Commercial Market 'e hizmet olarak yazılım (SaaS) teklifi yayımlamaya yönelik farklı seçenekler ve gereksinimler açıklanmaktadır. SaaS teklifleri, bireysel bilgisayarlara yerel yükleme yerine çevrimiçi bir abonelik aracılığıyla müşterilerinize yazılım çözümleri sunmanıza ve lisanslayamenize imkan tanır. Bu makale, Iş Ortağı Merkezi ile ticari Market 'te yayımlama teklifinizi hazırlamanıza yardımcı olur.
+Bu makalede, Microsoft Commercial Market 'e hizmet olarak yazılım (SaaS) teklifi yayımlamaya yönelik farklı seçenekler ve gereksinimler açıklanmaktadır. SaaS teklifleri, çevrimiçi abonelikler aracılığıyla müşterilerinize yazılım çözümleri sunmanıza ve lisanslamasına olanak sağlar. SaaS yayımcısı olarak, müşterilerinizin teklifinizin kullanımını desteklemek için gereken altyapıyı yönetip ödeyin. Bu makale, Iş Ortağı Merkezi ile ticari Market 'te yayımlama teklifinizi hazırlamanıza yardımcı olur.
 
 ## <a name="listing-options"></a>Listeleme seçenekleri
 

@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.openlocfilehash: 9d03496634c5d30d30b23a76b5b47b1e810af288
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94635407"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>Azure Active Directory kullanarak bloblara ve kuyruklara erişim yetkisi verme
@@ -53,7 +53,7 @@ Azure AD güvenlik sorumlusuna bir Azure rolü atandığında Azure, bu güvenli
 
 Bir güvenlik sorumlusuna Azure yerleşik rolünü atamayı öğrenmek için aşağıdaki makalelerden birine bakın:
 
-- [Blob ve kuyruk verilerine erişim için bir Azure rolü atamak üzere Azure portal kullanın](storage-auth-aad-rbac-portal.md)
+- [Azure portalı kullanarak blob ve kuyruk verilerine erişim için Azure rolü atama](storage-auth-aad-rbac-portal.md)
 - [Blob ve kuyruk verilerine erişim için Azure rolü atamak üzere Azure CLı 'yi kullanma](storage-auth-aad-rbac-cli.md)
 - [Blob ve kuyruk verilerine erişim için bir Azure rolü atamak üzere Azure PowerShell modülünü kullanın](storage-auth-aad-rbac-powershell.md)
 
@@ -77,7 +77,7 @@ Azure portal, bir Azure depolama hesabındaki blob ve kuyruk verilerine erişmek
 
 Blob veya kuyruk verilerine erişmeyi denediğinizde, Azure portal öncelikle **Microsoft. Storage/storageAccounts/ListKeys/Action** Ile bir Azure rolü atanıp atanmadığını denetler. Bu eylemle bir rol atanmışsa Azure portal, paylaşılan anahtar yetkilendirmesi aracılığıyla blob ve kuyruk verilerine erişmek için hesap anahtarını kullanır. Bu eylemle bir rol atamadıysanız, Azure portal Azure AD hesabınızı kullanarak verilere erişmeye çalışır.
 
-Azure AD hesabınızı kullanarak Azure portal blob veya kuyruk verilerine erişmek için, blob ve kuyruk verilerine erişim izinleriniz olmalıdır ve ayrıca Azure portal depolama hesabı kaynakları arasında gezinmek için izinlerinizin olması gerekir. Azure depolama tarafından sunulan yerleşik roller, blob ve kuyruk kaynaklarına erişim izni verir, ancak depolama hesabı kaynaklarına izin vermez. Bu nedenle, portala erişim, Ayrıca, depolama hesabı düzeyi veya daha yüksek olan [okuyucu](../../role-based-access-control/built-in-roles.md#reader) rolü gibi Azure Resource Manager rolün atanmasını da gerektirir. **Okuyucu** rolü, en kısıtlı izinleri verir, ancak depolama hesabı yönetim kaynaklarına erişim izni veren başka bir Azure Resource Manager rolü de kabul edilebilir. Azure AD hesabıyla Azure portal veri erişimi için kullanıcılara izin atama hakkında daha fazla bilgi edinmek için bkz. [BLOB ve kuyruk verilerine erişim Için Azure rolü atamak üzere Azure Portal kullanma](storage-auth-aad-rbac-portal.md).
+Azure AD hesabınızı kullanarak Azure portal blob veya kuyruk verilerine erişmek için, blob ve kuyruk verilerine erişim izinleriniz olmalıdır ve ayrıca Azure portal depolama hesabı kaynakları arasında gezinmek için izinlerinizin olması gerekir. Azure Depolama tarafından sunulan yerleşik roller, blob ve kuyruk kaynaklarına erişim izni verir, ancak depolama hesabı kaynaklarına izin vermez. Bu nedenle, portala erişim için de [Okuyucu](../../role-based-access-control/built-in-roles.md#reader) rolü gibi depolama hesabı kapsamında veya daha geniş kapsamda bir Azure Resource Manager rolü atanması gerekir. **Okuyucu** rolü, en kısıtlı izinleri verir, ancak depolama hesabı yönetim kaynaklarına erişim izni veren başka bir Azure Resource Manager rolü de kabul edilebilir. Azure AD hesabıyla Azure portal veri erişimi için kullanıcılara izin atama hakkında daha fazla bilgi edinmek için bkz. [BLOB ve kuyruk verilerine erişim Için Azure rolü atamak üzere Azure Portal kullanma](storage-auth-aad-rbac-portal.md).
 
 Azure portal, bir kapsayıcıya veya kuyruğa gittiğinizde hangi yetkilendirme şemasının kullanımda olduğunu gösterir. Portalda veri erişimi hakkında daha fazla bilgi için bkz. [Azure Portal blob verilerine erişim yetkisi verme](../blobs/authorize-data-operations-portal.md) ve [Azure Portal kuyruk verilerine erişim yetkisi verme seçme](../queues/authorize-data-operations-portal.md).
 

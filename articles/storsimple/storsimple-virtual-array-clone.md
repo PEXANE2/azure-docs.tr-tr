@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 11/21/2016
 ms.author: alkohli
 ms.openlocfilehash: b6cc89cb082cd0ed32abd88e3a6683c60a27ba90
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96023049"
 ---
 # <a name="clone-from-a-backup-of-your-storsimple-virtual-array"></a>StorSimple Sanal dizininizin bir yedeklemesinden kopyalayın
@@ -42,7 +42,7 @@ Bu makalede, Microsoft Azure StorSimple Sanal dizininizdeki paylaşımlarınız�
    
    b.    Filtrelenmiş yedeklemeler listesinde, kopyalamak için bir yedekleme seçin.
    
-   c.    **Tamam** düğmesine tıklayın.
+   c.    **Tamam**'a tıklayın.
    
    ![Yedek kopyalama 2](./media/storsimple-virtual-array-clone/cloneshare3.png)
 3. **Kopyala** dikey penceresinde **hedef ayarlar** ' a tıklayın ve ardından aşağıdakileri yapın:
@@ -57,7 +57,7 @@ Bu makalede, Microsoft Azure StorSimple Sanal dizininizdeki paylaşımlarınız�
    
    e.    Bu paylaşıma yönelik yöneticileri atayın. Kopyalama işlemi tamamlandıktan sonra, dosya Gezgini ile paylaşma özelliklerini değiştirebileceksiniz.
    
-   f.    **Tamam** düğmesine tıklayın.
+   f.    **Tamam**'a tıklayın.
    
    ![Bir yedeklemeyi Kopyala 3](./media/storsimple-virtual-array-clone/cloneshare6.png)
 
@@ -82,7 +82,7 @@ Bir yedekten kopyalamak için, Azure portal, bir paylaşımın kopyalanırken ol
    
    b.    Filtrelenmiş yedeklemeler listesinde, kopyalamak için bir yedekleme seçin.
    
-   c.    **Tamam** düğmesine tıklayın.
+   c.    **Tamam**'a tıklayın.
    
    ![Birim kopyalama 2](./media/storsimple-virtual-array-clone/clonevolume3.png)
 3. **Kopyala** dikey penceresinde, **hedef birim ayarları** ' na tıklayın ve ardından aşağıdakileri yapın::

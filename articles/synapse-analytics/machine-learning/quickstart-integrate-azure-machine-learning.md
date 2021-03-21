@@ -10,10 +10,10 @@ ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
 ms.openlocfilehash: 800cbf9b7a7fa415452f29b253347188c8917c52
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98219462"
 ---
 # <a name="quickstart-create-a-new-azure-machine-learning-linked-service-in-synapse"></a>Hızlı başlangıç: SYNAPSE 'de yeni Azure Machine Learning bağlantılı hizmet oluşturma
@@ -26,7 +26,7 @@ Bu hızlı başlangıçta, bir Azure SYNAPSE Analytics çalışma alanını Azur
 
 - Azure Machine Learning modeli kayıt defterinden bir makine öğrenimi modeli gerçekleştirerek ve SYNAPSE SQL havuzlarında modeli puanlayarak tahminlerle verilerinizi zenginleştirin. Daha ayrıntılı bilgi için bkz. [öğretici: SYNAPSE SQL havuzları Için makine öğrenimi modeli Puanlama Sihirbazı](tutorial-sql-pool-model-scoring-wizard.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/).
 - Varsayılan depolama alanı olarak yapılandırılmış bir ADLS 2. depolama hesabıyla [SYNAPSE Analytics çalışma alanı](../get-started-create-workspace.md) . Birlikte çalıştığınız ADLS 2. FileSystem 'ın **Depolama Blobu veri katılımcısı** olması gerekir.
@@ -80,4 +80,4 @@ Bu adım, yeni bir hizmet sorumlusu oluşturacak. Mevcut bir hizmet sorumlusunu 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Öğretici: Machine Learning model Puanlama Sihirbazı-adanmış SQL havuzu](tutorial-sql-pool-model-scoring-wizard.md)
-- [Azure SYNAPSE Analytics 'teki Machine Learning özellikleri](what-is-machine-learning.md)
+- [Azure Synapse Analytics'te Makine Öğrenmesi özellikleri](what-is-machine-learning.md)

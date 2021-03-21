@@ -3,12 +3,12 @@ title: Azure Event Grid güvenlik ve kimlik doğrulaması
 description: Azure Event Grid ve kavramlarını açıklar.
 ms.topic: conceptual
 ms.date: 02/12/2021
-ms.openlocfilehash: 326fa00645302eb4b9c9bc59f17c1ca153bdb0b7
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e9bcf00e832e4deaaf9c5f81ba5af51609a1c412
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100371729"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601049"
 ---
 # <a name="authorizing-access-to-event-grid-resources"></a>Event Grid kaynaklarına erişimi yetkilendirme
 Azure Event Grid, farklı kullanıcılara verilen erişim düzeyini, olay abonelikleri listeleme, yenilerini oluşturma ve anahtar oluşturma gibi çeşitli **yönetim işlemlerini** yapmak için denetlemenizi sağlar. Event Grid Azure rol tabanlı erişim denetimi (Azure RBAC) kullanır.
@@ -31,80 +31,23 @@ Aşağıdaki işlemler, normal okuma işlemlerinden filtre uygulanan olası gizl
 
 
 ## <a name="built-in-roles"></a>Yerleşik roller
+Event Grid, aşağıdaki üç yerleşik rolü sağlar. 
 
-Event Grid, olay aboneliklerini yönetmek için iki yerleşik rol sağlar. Kullanıcılara olay etki alanındaki konulara abone olmaları için ihtiyaç duydukları izinleri verdiklerinden, bunlar [olay etki alanlarını](event-domains.md) uygularken önemlidir. Bu roller olay aboneliklerine odaklanılmıştır ve konu başlıkları oluşturma gibi eylemler için erişim vermez.
+Event Grid abonelik okuyucusu ve Event Grid aboneliği katkıda bulunan rolleri, olay aboneliklerinin yönetilmesi içindir. Kullanıcılara olay etki alanındaki konulara abone olmaları için ihtiyaç duydukları izinleri verdiklerinden, bunlar [olay etki alanlarını](event-domains.md) uygularken önemlidir. Bu roller olay aboneliklerine odaklanılmıştır ve konu başlıkları oluşturma gibi eylemler için erişim vermez.
 
-[Bu rolleri bir kullanıcıya veya gruba atayabilirsiniz](../role-based-access-control/quickstart-assign-role-user-portal.md).
+Event Grid katkıda bulunan rolü Event Grid kaynaklarını oluşturmanıza ve yönetmenize olanak sağlar. 
 
-**Eventgrid EventSubscription katılımcısı**: Event Grid abonelik işlemlerini yönetme
 
-```json
-[
-  {
-    "Description": "Lets you manage EventGrid event subscription operations.",
-    "IsBuiltIn": true,
-    "Id": "428e0ff05e574d9ca2212c70d0e0a443",
-    "Name": "EventGrid EventSubscription Contributor",
-    "IsServiceRole": false,
-    "Permissions": [
-      {
-        "Actions": [
-          "Microsoft.Authorization/*/read",
-          "Microsoft.EventGrid/eventSubscriptions/*",
-          "Microsoft.EventGrid/systemtopics/eventsubscriptions/*",
-          "Microsoft.EventGrid/partnertopics/eventsubscriptions/*",
-          "Microsoft.EventGrid/topicTypes/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/topicTypes/eventSubscriptions/read",
-          "Microsoft.Insights/alertRules/*",
-          "Microsoft.Resources/deployments/*",
-          "Microsoft.Resources/subscriptions/resourceGroups/read",
-          "Microsoft.Support/*"
-        ],
-        "NotActions": [],
-        "DataActions": [],
-        "NotDataActions": [],
-        "Condition": null
-      }
-    ],
-    "Scopes": [
-      "/"
-    ]
-  }
-]
-```
+| Rol | Açıklama |
+| ---- | ----------- | 
+| [Event Grid abonelik okuyucusu](../role-based-access-control/built-in-roles.md#eventgrid-eventsubscription-reader) | Event Grid olay aboneliği işlemlerini yönetmenizi sağlar. |
+| [Event Grid abonelik Katılımcısı](../role-based-access-control/built-in-roles.md#eventgrid-eventsubscription-contributor) | Event Grid olay aboneliklerini okumanızı sağlar. |
+| [Katkıda bulunan Event Grid](../role-based-access-control/built-in-roles.md#eventgrid-contributor) | Event Grid kaynaklarını oluşturmanıza ve yönetmenize olanak sağlar. |
 
-**Eventgrid EventSubscription okuyucusu**: Event Grid abonelikleri okuma
 
-```json
-[
-  {
-    "Description": "Lets you read EventGrid event subscriptions.",
-    "IsBuiltIn": true,
-    "Id": "2414bbcf64974faf8c65045460748405",
-    "Name": "EventGrid EventSubscription Reader",
-    "IsServiceRole": false,
-    "Permissions": [
-      {
-        "Actions": [
-          "Microsoft.Authorization/*/read",
-          "Microsoft.EventGrid/eventSubscriptions/read",
-          "Microsoft.EventGrid/topicTypes/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/topicTypes/eventSubscriptions/read",
-          "Microsoft.Resources/subscriptions/resourceGroups/read"
-        ],
-        "NotActions": [],
-        "DataActions": [],
-        "NotDataActions": []
-       }
-    ],
-    "Scopes": [
-      "/"
-    ]
-  }
-]
-```
+> [!NOTE]
+> Rol hakkında daha fazla ayrıntı sağlayan bir makaleye gitmek için ilk sütundaki bağlantıları seçin. RBAC rollerine Kullanıcı veya Grup atama hakkında yönergeler için, [Bu makaleye](../role-based-access-control/quickstart-assign-role-user-portal.md)bakın.
+
 
 ## <a name="custom-roles"></a>Özel roller
 

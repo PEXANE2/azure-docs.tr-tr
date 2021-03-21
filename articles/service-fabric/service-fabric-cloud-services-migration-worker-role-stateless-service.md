@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: cf593f793aabf2a0650684ed8d02fe02d756ec2b
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96575746"
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Durum bilgisi olmayan hizmetlere Service Fabric Web ve çalışan rollerini dönüştürmeye yönelik kılavuz
@@ -31,17 +31,17 @@ Kavramsal olarak, bir çalışan rolü durum bilgisiz iş yükünü temsil eder,
 
 | **Uygulama** | **Desteklenir** | **Geçiş yolu** |
 | --- | --- | --- |
-| ASP.NET Web Forms |Hayır |ASP.NET Core 1 MVC 'ye Dönüştür |
+| ASP.NET Web Forms |No |ASP.NET Core 1 MVC 'ye Dönüştür |
 | ASP.NET MVC |Geçişle |ASP.NET Core 1 MVC 'ye yükselt |
 | ASP.NET Web API |Geçişle |Şirket içinde barındırılan sunucu veya ASP.NET Core 1 kullanın |
-| ASP.NET Core 1 |Evet |Yok |
+| ASP.NET Core 1 |Yes |Yok |
 
 ## <a name="entry-point-api-and-lifecycle"></a>Giriş noktası API 'SI ve yaşam döngüsü
 Çalışan rolü ve Service Fabric hizmeti API 'Leri benzer giriş noktaları sunar: 
 
 | **Girdi Noktası** | **Çalışan rolü** | **Service Fabric hizmeti** |
 | --- | --- | --- |
-| İşleme |`Run()` |`RunAsync()` |
+| İşleniyor |`Run()` |`RunAsync()` |
 | VM başlatma |`OnStart()` |Yok |
 | VM durdur |`OnStop()` |Yok |
 | İstemci istekleri için açık dinleyicisi |Yok |<ul><li> `CreateServiceInstanceListener()` durum bilgisiz için</li><li>`CreateServiceReplicaListener()` durum bilgisi için</li></ul> |

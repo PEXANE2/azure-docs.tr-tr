@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 5/23/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: e0c5f3ecf0334ad2190d8542e54388a2a25d30fb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95999816"
 ---
 # <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>Windows'da Service Fabric Reliable Services ve Reliable Actors kapsayıcıları
@@ -24,7 +24,7 @@ Bu belge, hizmetinizi bir Windows kapsayıcısı içinde çalıştırmaya yönel
 
 1. Service Fabric uygulamanızı Visual Studio 'da açın.
 
-2. [SFBinaryLoader.cs](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/code/SFBinaryLoaderForContainers/SFBinaryLoader.cs) sınıfını projenize ekleyin. Bu sınıftaki kod, bir kapsayıcı içinde çalışırken uygulamanızın içinde Service Fabric çalışma zamanı ikililerini doğru bir şekilde yüklemek için yardımcı olur.
+2. Projenize [Sfbinaryloader. cs](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/code/SFBinaryLoaderForContainers/SFBinaryLoader.cs) sınıfını ekleyin. Bu sınıftaki kod, bir kapsayıcı içinde çalışırken uygulamanızın içinde Service Fabric çalışma zamanı ikililerini doğru bir şekilde yüklemek için yardımcı olur.
 
 3. Kapsayıcılı yapmak istediğiniz her kod paketi için program giriş noktasında Yükleyiciyi başlatın. Aşağıdaki kod parçacığında gösterilen statik oluşturucuyu program giriş noktası dosyanıza ekleyin.
 

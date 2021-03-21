@@ -4,10 +4,10 @@ description: Azure Event Hubs Azure özel bağlantı hizmeti ile tümleştirmeyi
 ms.date: 08/22/2020
 ms.topic: article
 ms.openlocfilehash: 996779e103dae2d2d950f447d2ac72667fc9e754
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94427760"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-via-private-endpoints"></a>Özel uç noktalar aracılığıyla Azure Event Hubs ad alanlarına erişime izin ver 
@@ -66,7 +66,7 @@ Zaten bir Event Hubs ad alanınız varsa, aşağıdaki adımları izleyerek bir 
 
         ![Özel uç nokta oluşturma-temel bilgiler sayfası](./media/private-link-service/create-private-endpoint-basics-page.png)
 8. **Kaynak** sayfasında, aşağıdaki adımları izleyin:
-    1. Bağlantı yöntemi için **dizinimde bir Azure kaynağına bağlan** ' ı seçerseniz şu adımları izleyin: 
+    1. Bağlantı yöntemi için **dizinimde bir Azure kaynağına bağlan**' ı seçerseniz şu adımları izleyin: 
         1. **Event Hubs ad alanının** bulunduğu **Azure aboneliğini** seçin. 
         2. **Kaynak türü** Için, **kaynak türü** için **Microsoft. EventHub/namespaces** ' i seçin.
         3. **Kaynak** için, açılan listeden bir Event Hubs ad alanı seçin. 
@@ -74,7 +74,7 @@ Zaten bir Event Hubs ad alanınız varsa, aşağıdaki adımları izleyerek bir 
         5. Sayfanın alt kısmındaki **İleri: yapılandırma >** düğmesini seçin. 
         
             ![Özel uç nokta oluşturma-kaynak sayfası](./media/private-link-service/create-private-endpoint-resource-page.png)    
-    2. **Kaynak kimliği veya diğer ad ile bir Azure kaynağına bağlan** ' ı seçerseniz, aşağıdaki adımları izleyin:
+    2. **Kaynak kimliği veya diğer ad ile bir Azure kaynağına bağlan**' ı seçerseniz, aşağıdaki adımları izleyin:
         1. **Kaynak kimliğini** veya **diğer adı** girin. Bu, birinin sizinle paylaştığı kaynak KIMLIĞI veya diğer ad olabilir. Kaynak KIMLIĞINI almanın en kolay yolu, Azure portal Event Hubs ad alanına gitmeniz ve URI 'nin ' den başlayarak olan kısmını kopyalamadır `/subscriptions/` . Örnek için aşağıdaki resme bakın. 
         2. **Hedef alt kaynak** için **ad alanı** girin. Bu, Özel uç noktanızın erişebileceği alt kaynağın türüdür.
         3. seçim **İstek iletisi** girin. Kaynak sahibi, Özel uç nokta bağlantısını yönetirken bu iletiyi görür.
@@ -88,7 +88,7 @@ Zaten bir Event Hubs ad alanınız varsa, aşağıdaki adımları izleyerek bir 
 
         ![Özel uç nokta oluşturma-yapılandırma sayfası](./media/private-link-service/create-private-endpoint-configuration-page.png)
 10. **Etiketler** sayfasında, Özel uç nokta kaynağıyla ilişkilendirmek istediğiniz etiketleri (adlar ve değerler) oluşturun. Ardından sayfanın alt kısmındaki **gözden geçir + oluştur** düğmesini seçin. 
-11. **Gözden geçir + oluştur** ' da, tüm ayarları gözden geçirin ve **Oluştur** ' u seçerek özel uç noktasını oluşturun.
+11. **Gözden geçir + oluştur**' da, tüm ayarları gözden geçirin ve **Oluştur** ' u seçerek özel uç noktasını oluşturun.
     
     ![Özel uç nokta oluşturma-sayfa Inceleme ve oluşturma](./media/private-link-service/create-private-endpoint-review-create-page.png)
 12. Oluşturduğunuz özel uç nokta bağlantısının uç noktalar listesinde görüntülendiğini doğrulayın. Bu örnekte, dizininizde bir Azure kaynağına bağlandığınızdan ve yeterli izinlere sahip olduğunuzdan özel uç nokta otomatik olarak onaylanır. 
@@ -214,7 +214,7 @@ Dört sağlama durumu vardır:
 3. **Onayla** düğmesini seçin.
 
     ![Özel uç noktayı Onayla](./media/private-link-service/approve-private-endpoint.png)
-4. **Bağlantıyı Onayla** sayfasında, bir açıklama ekleyin (isteğe bağlı) ve **Evet** ' i seçin. **Hayır** ' ı seçerseniz, hiçbir şey olmaz. 
+4. **Bağlantıyı Onayla** sayfasında, bir açıklama ekleyin (isteğe bağlı) ve **Evet**' i seçin. **Hayır**' ı seçerseniz, hiçbir şey olmaz. 
 5. Listede, **Onaylandı** olarak değiştirilen özel uç nokta bağlantısının durumunu görmeniz gerekir. 
 
 ### <a name="reject-a-private-endpoint-connection"></a>Özel bir uç nokta bağlantısını reddetme
@@ -222,13 +222,13 @@ Dört sağlama durumu vardır:
 1. Reddetmek istediğiniz özel uç nokta bağlantıları varsa, bekleyen bir istek ya da var olan bir bağlantı olup olmadığına bakılmaksızın bağlantıyı seçin ve **Reddet** düğmesine tıklayın.
 
     ![Özel uç noktayı Reddet](./media/private-link-service/private-endpoint-reject-button.png)
-2. **Bağlantıyı Reddet** sayfasında, bir açıklama girin (isteğe bağlı) ve **Evet** ' i seçin. **Hayır** ' ı seçerseniz, hiçbir şey olmaz. 
+2. **Bağlantıyı Reddet** sayfasında, bir açıklama girin (isteğe bağlı) ve **Evet**' i seçin. **Hayır**' ı seçerseniz, hiçbir şey olmaz. 
 3. Listede, **reddedildi** olarak değiştirilen özel uç nokta bağlantısının durumunu görmeniz gerekir. 
 
 ### <a name="remove-a-private-endpoint-connection"></a>Özel uç nokta bağlantısını kaldırma
 
 1. Özel bir uç nokta bağlantısını kaldırmak için listeden seçin ve araç çubuğundan **Kaldır** ' ı seçin.
-2. **Bağlantıyı Sil** sayfasında, Özel uç noktasının silinmesini onaylamak için **Evet** ' i seçin. **Hayır** ' ı seçerseniz, hiçbir şey olmaz.
+2. **Bağlantıyı Sil** sayfasında, Özel uç noktasının silinmesini onaylamak için **Evet** ' i seçin. **Hayır**' ı seçerseniz, hiçbir şey olmaz.
 3. Durumu **bağlı değil** olarak değiştirildiğini görmeniz gerekir. Ardından, uç noktanın listeden kaybolduğunu görürsünüz.
 
 ## <a name="validate-that-the-private-link-connection-works"></a>Özel bağlantı bağlantısının çalışıp çalışmadığını doğrulama
@@ -241,8 +241,8 @@ Dört sağlama durumu vardır:
 
 1. **Sanal ağ** ve **alt ağ** belirtin. Özel uç noktasını dağıttığınız sanal ağı seçmeniz gerekir.
 2. Genel bir **IP** kaynağı belirtin.
-3. **NIC ağ güvenlik grubu** için **hiçbiri** ' ni seçin.
-4. **Yük Dengeleme** için **Hayır** ' ı seçin.
+3. **NIC ağ güvenlik grubu** için **hiçbiri**' ni seçin.
+4. **Yük Dengeleme** için **Hayır**' ı seçin.
 
 VM 'ye bağlanın, komut satırını açın ve şu komutu çalıştırın:
 
@@ -261,11 +261,11 @@ Aliases:  <event-hubs-namespace-name>.servicebus.windows.net
 
 ## <a name="limitations-and-design-considerations"></a>Sınırlamalar ve tasarım konuları
 
-**Fiyatlandırma** : fiyatlandırma bilgileri için bkz. [Azure özel bağlantı fiyatlandırması](https://azure.microsoft.com/pricing/details/private-link/).
+**Fiyatlandırma**: fiyatlandırma bilgileri için bkz. [Azure özel bağlantı fiyatlandırması](https://azure.microsoft.com/pricing/details/private-link/).
 
-**Sınırlamalar** : Bu özellik tüm Azure genel bölgelerinde kullanılabilir.
+**Sınırlamalar**: Bu özellik tüm Azure genel bölgelerinde kullanılabilir.
 
-**Event Hubs ad alanı başına en fazla özel uç nokta sayısı** : 120.
+**Event Hubs ad alanı başına en fazla özel uç nokta sayısı**: 120.
 
 Daha fazla bilgi için bkz [. Azure özel bağlantı hizmeti: sınırlamalar](../private-link/private-link-service-overview.md#limitations)
 

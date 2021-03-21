@@ -4,10 +4,10 @@ description: Bu makalede, Azure Event Grid için tanılama günlüklerini etkinl
 ms.topic: how-to
 ms.date: 12/03/2020
 ms.openlocfilehash: ff00c1438c49cbc9f9e67eba0cf0acef7991a5a4
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96576460"
 ---
 #  <a name="enable-diagnostic-logs-for-azure-event-grid-topics-or-domains"></a>Azure Event Grid konuları veya etki alanları için tanılama günlüklerini etkinleştirme
@@ -26,7 +26,7 @@ Bu makalede, Event Grid konular veya etki alanları için tanılama ayarlarını
 > [!NOTE]
 > Aşağıdaki yordam, bir konu için tanılama günlüklerini etkinleştirmeye yönelik adım adım yönergeler sağlar. Bir etki alanı için tanılama günlüklerini etkinleştirme adımları çok benzerdir. 2. adımda, Azure portal olay Kılavuzu **etki alanına** gidin.  
 
-1. [Azure portalda](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Tanılama günlük ayarlarını etkinleştirmek istediğiniz olay kılavuzu konusuna gidin. 
     1. Üstteki arama çubuğunda **Event Grid konular**' ı arayın. 
     
@@ -55,7 +55,7 @@ Bu makalede, Event Grid konular veya etki alanları için tanılama ayarlarını
 
 ## <a name="enable-diagnostic-logs-for-a-system-topic"></a>Bir sistem konusu için tanılama günlüklerini etkinleştirme
 
-1. [Azure portalda](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Tanılama günlük ayarlarını etkinleştirmek istediğiniz olay kılavuzu konusuna gidin. 
     1. Üstteki arama çubuğunda **Event Grid sistem konuları**' nı arayın. 
     

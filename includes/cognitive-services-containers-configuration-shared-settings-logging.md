@@ -5,10 +5,10 @@ ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: 2bfb700ac5c220b780c05c8d415a4506c7a2f871
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96001225"
 ---
 `Logging`Ayarlar, Kapsayıcınız için ASP.NET Core günlük desteğini yönetir. ASP.NET Core bir uygulama için kullandığınız, Kapsayıcınız için aynı yapılandırma ayarlarını ve değerlerini kullanabilirsiniz. 
@@ -18,7 +18,7 @@ Aşağıdaki günlük oluşturma sağlayıcıları kapsayıcı tarafından deste
 |Sağlayıcı|Amaç|
 |--|--|
 |[Konsol](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#console-provider)|ASP.NET Core `Console` günlük sağlayıcısı. Bu günlüğe kaydetme sağlayıcısı için ASP.NET Core yapılandırma ayarları ve varsayılan değerler desteklenir.|
-|[H](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#debug-provider)|ASP.NET Core `Debug` günlük sağlayıcısı. Bu günlüğe kaydetme sağlayıcısı için ASP.NET Core yapılandırma ayarları ve varsayılan değerler desteklenir.|
+|[Hata Ayıklama](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#debug-provider)|ASP.NET Core `Debug` günlük sağlayıcısı. Bu günlüğe kaydetme sağlayıcısı için ASP.NET Core yapılandırma ayarları ve varsayılan değerler desteklenir.|
 |[Dis](#disk-logging)|JSON günlük sağlayıcısı. Bu günlüğe kaydetme sağlayıcısı günlük verilerini çıkış bağlamalarına yazar.|
 
 Bu kapsayıcı komutu, günlük bilgilerini JSON biçiminde çıktı bağlamaya depolar:
