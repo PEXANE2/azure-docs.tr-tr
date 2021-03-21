@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: jingwang
 author: linda33wj
 ms.custom: seo-lt-2019
-ms.date: 03/08/2021
-ms.openlocfilehash: b1e7511f7666455592b6d5f463a316c3354ec76b
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.date: 03/17/2021
+ms.openlocfilehash: ec24fa1bde21c70aa95fc33c92048aebc9f6659c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102447461"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104597396"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-servicemicrosoft-dataverse-or-dynamics-crm-by-using-azure-data-factory"></a>Ve Azure Data Factory kullanarak Dynamics 365 ' den (Common Data Service/Microsoft Dataverse) veya Dynamics CRM 'den veri kopyalama
 
@@ -84,7 +84,7 @@ Dynamics bağlantılı hizmeti için aşağıdaki özellikler desteklenir.
 | servicePrincipalCredential | Hizmet sorumlusu kimlik bilgileri. <br/><br/>Kimlik bilgisi türü olarak "ServicePrincipalKey" kullandığınızda, `servicePrincipalCredential` bağlantılı hizmet dağıtımı üzerinde Azure Data Factory şifreler bir dize olabilir. Veya Azure Key Vault bir gizli dizi başvurusu olabilir. <br/><br/>Kimlik bilgisi olarak "ServicePrincipalCert" kullandığınızda, `servicePrincipalCredential` Azure Key Vault bir sertifikaya başvuru olmalıdır. | Kimlik doğrulaması "AADServicePrincipal" olduğunda Evet |
 | username | Dynamics 'e bağlanmak için Kullanıcı adı. | Kimlik doğrulaması "Office365" olduğunda Evet |
 | password | Kullanıcı adı olarak belirttiğiniz kullanıcı hesabının parolası. Data Factory güvenli bir şekilde depolamak için bu alanı "SecureString" ile işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Kimlik doğrulaması "Office365" olduğunda Evet |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Hiçbir değer belirtilmemişse, özelliği varsayılan Azure tümleştirme çalışma zamanını kullanır. | Hayır |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Hiçbir değer belirtilmemişse, özelliği varsayılan Azure tümleştirme çalışma zamanını kullanır. | No |
 
 >[!NOTE]
 >Dynamics Connector, Dynamics CRM veya Dynamics 365 çevrimiçi örneğinizi tanımlamak için daha önce isteğe bağlı **Organizasyonadi** özelliğini kullanıyordu. Bu özellik hala çalışmaya devam ederken, örnek bulma için daha iyi performans elde etmek yerine yeni **ServiceUri** özelliğini belirtmenizi öneririz.
@@ -180,7 +180,7 @@ Dynamics Online ile karşılaştırılan ek özellikler **konak adı** ve **bağ
 | authenticationType | Dynamics sunucusuna bağlanmak için kimlik doğrulaması türü. IFD ile Dynamics şirket içi için "IFD" belirtin. | Evet. |
 | username | Dynamics 'e bağlanmak için Kullanıcı adı. | Evet. |
 | password | Kullanıcı adı için belirttiğiniz kullanıcı hesabının parolası. Bu alanı, Data Factory güvenli bir şekilde depolamak için "SecureString" ile işaretleyebilirsiniz. Ya da bir parolayı Key Vault saklayabilir ve veri kopyalama yapıldığında kopyalama etkinliğinin buradan çekmesini sağlayabilirsiniz. [Key Vault Içindeki mağaza kimlik bilgilerinden](store-credentials-in-key-vault.md)daha fazla bilgi edinin. | Evet. |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Hiçbir değer belirtilmemişse, özelliği varsayılan Azure tümleştirme çalışma zamanını kullanır. | Hayır |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Hiçbir değer belirtilmemişse, özelliği varsayılan Azure tümleştirme çalışma zamanını kullanır. | No |
 
 #### <a name="example-dynamics-on-premises-with-ifd-using-ifd-authentication"></a>Örnek: ıFD kimlik doğrulaması kullanarak ıFD ile şirket içi Dynamics
 
@@ -323,6 +323,7 @@ Verileri Dynamics 'e kopyalamak için kopyalama etkinliği **havuzu** bölümü 
 | alternateKeyName | Daha büyük bir çıkış yapmak için varlığınızda tanımlanan alternatif anahtar adı. | Hayır. |
 | writeBatchSize | Her toplu işte Dynamics 'e yazılan verilerin satır sayısı. | Hayır. Varsayılan değer 10'dur. |
 | ıgnorenullvalues | Bir yazma işlemi sırasında anahtar alanları dışındaki giriş verilerinden null değerlerin yoksayılıp yoksayılmayacağı.<br/><br/>Geçerli değerler **true** ve **false** şeklindedir:<ul><li>**Doğru**: bir yukarı veya güncelleştirme işlemi gerçekleştirdiğinizde verileri hedef nesnede değiştirmeden bırakın. Ekleme işlemi yaparken tanımlanmış bir varsayılan değer ekleyin.</li><li>**Yanlış**: bir yukarı veya güncelleştirme işlemi gerçekleştirdiğinizde, hedef nesnedeki verileri null bir değere güncelleştirin. Ekleme işlemi yaparken null değer ekleyin.</li></ul> | Hayır. Varsayılan değer **false**'dur. |
+| maxConcurrentConnections |Etkinlik çalışması sırasında veri deposuna kurulan eşzamanlı bağlantıların üst sınırı. Yalnızca eş zamanlı bağlantıları sınırlandırmak istediğinizde bir değer belirtin.| No |
 
 >[!NOTE]
 >Hem havuz **Writebatchsize** hem de kopyalama etkinliği **[Parallelcopy](copy-activity-performance-features.md#parallel-copy)** for the Dynamics Sink için varsayılan değer 10 ' dur. Bu nedenle, 100 kayıt aynı anda varsayılan olarak Dynamics 'e gönderilir.

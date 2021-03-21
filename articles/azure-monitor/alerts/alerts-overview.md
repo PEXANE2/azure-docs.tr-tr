@@ -4,10 +4,10 @@ description: Azure Izleyici 'de uyarı konusuna genel bakış
 ms.topic: conceptual
 ms.date: 02/14/2021
 ms.openlocfilehash: 6785cfdf673e4c2da03ff26649c9336d57b699c8
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102038059"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure'da uyarılara genel bakış 
@@ -166,7 +166,7 @@ Bir uyarı seçtiğinizde, Bu sayfa uyarının ayrıntılarını sağlar ve duru
 
 Uyarı ayrıntıları sayfası aşağıdaki bölümleri içerir:
 
-| Section | Açıklama |
+| Section | Description |
 |:---|:---|
 | Özet | Uyarı hakkındaki özellikleri ve diğer önemli bilgileri görüntüler. |
 | Geçmiş | Uyarı tarafından gerçekleştirilen her eylemi ve uyarıya yapılan tüm değişiklikleri listeler. Şu anda durum değişiklikleriyle sınırlı. |

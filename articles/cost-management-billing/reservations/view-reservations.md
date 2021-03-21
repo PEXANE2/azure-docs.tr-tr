@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 02/24/2021
+ms.date: 03/17/2021
 ms.author: banders
-ms.openlocfilehash: 477dff9db28672f8231710af34786ac387f43b71
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 1c666602f764e8274cb2a30df204e97479c85ba3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050350"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104583063"
 ---
 # <a name="view-azure-reservations"></a>Azure rezervasyonlarını görüntüleme
 
@@ -39,7 +39,7 @@ Diğer kişilerin rezervasyonları yönetmesine izin vermek için iki seçeneği
     1. Kullanıcıyı ve ardından **Kaydet**'i seçin.
 
 - Bir Kullanıcıyı bir Kurumsal Anlaşma veya bir Microsoft Müşteri Anlaşmasına faturalandırma yöneticisi olarak ekleme:
-    - Kurumsal Anlaşma için, Kurumsal Anlaşma uygulanan tüm rezervasyon siparişlerini görüntülemek ve yönetmek üzere _Kuruluş Yöneticisi_  rolüne sahip kullanıcıları ekleyin. _Kuruluş Yöneticisi (salt okuma) rolü olan kullanıcılar_  yalnızca rezervasyonu görüntüleyebilir. Bölüm yöneticileri ve hesap sahipleri, erişim denetimi (IAM) kullanılarak bunlara açıkça eklenmedikleri _takdirde ayırmaları_ görüntüleyemez. Daha fazla bilgi için bkz. [Azure Enterprise rollerini yönetme](../manage/understand-ea-roles.md).
+    - Kurumsal Anlaşma için, Kurumsal Anlaşma uygulanan tüm rezervasyon siparişlerini görüntülemek ve yönetmek üzere _Kuruluş Yöneticisi_  rolüne sahip kullanıcıları ekleyin. Kurumsal Yöneticiler, rezervasyonları **maliyet yönetimi + faturalandırmaya** göre görüntüleyip **yönetir.** _Kuruluş Yöneticisi (salt okuma) rolü olan kullanıcılar_  yalnızca rezervasyonu görüntüleyebilir. Bölüm yöneticileri ve hesap sahipleri, erişim denetimi (IAM) kullanılarak bunlara açıkça eklenmedikleri _takdirde ayırmaları_ görüntüleyemez. Daha fazla bilgi için bkz. [Azure Enterprise rollerini yönetme](../manage/understand-ea-roles.md).
 
         _Kurumsal Yöneticiler, bir rezervasyon siparişinin sahipliğini alabilir ve erişim denetimi (IAM) kullanarak bir rezervasyona başka kullanıcılar ekleyebilirler._
     - Bir Microsoft Müşteri Anlaşması için, faturalandırma profili sahibi veya faturalandırma profili katılımcısı rolüne sahip kullanıcılar, faturalandırma profilini kullanarak yapılan tüm rezervasyon satın almalarını yönetebilir. Faturalandırma profili okuyucuları ve fatura yöneticileri, faturalandırma profiliyle ilgili ödenen tüm rezervasyonları görüntüleyebilir. Ancak, rezervasyonlar üzerinde değişiklik yapamaz.

@@ -8,10 +8,10 @@ ms.author: vanto
 ms.reviewer: jroth
 ms.date: 03/11/2020
 ms.openlocfilehash: 83fde9e957cb2011ce585603e51d331be171bc08
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97586236"
 ---
 # <a name="tutorial-configure-an-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Öğretici: Azure 'da RHEL sanal makinelerinde SQL Server için bir kullanılabilirlik grubu dinleyicisi yapılandırma
@@ -103,7 +103,7 @@ Araştırma, Azure 'un şu anda kullanılabilirlik grubu dinleyicisine sahip SQL
    | **Aralık** |*5* |
    | **İyi durumda olmayan durum eşiği** |*2* |
 
-4.  **Tamam** düğmesine tıklayın. 
+4.  **Tamam**'a tıklayın. 
 
 5. Tüm sanal makinelerinizde oturum açın ve aşağıdaki komutları kullanarak araştırma bağlantı noktasını açın:
 
@@ -137,7 +137,7 @@ Yük Dengeleme kuralları, yük dengeleyicinin trafiği SQL Server örneklerine 
 
    :::image type="content" source="media/rhel-high-availability-listener-tutorial/add-load-balancing-rule.png" alt-text="Yük Dengeleme kuralı ekle":::
 
-4. **Tamam** düğmesine tıklayın. 
+4. **Tamam**'a tıklayın. 
 5. Azure, Yük Dengeleme kuralını yapılandırır. Artık yük dengeleyici, trafiği kullanılabilirlik grubu için dinleyiciyi barındıran SQL Server örneğine yönlendirmek üzere yapılandırılmıştır. 
 
 Bu noktada, kaynak grubunun tüm SQL Server makinelere bağlanan bir yük dengeleyici vardır. Yük dengeleyici Ayrıca, her makinenin kullanılabilirlik grupları için isteklere yanıt verebilmeleri için SQL Server Always on kullanılabilirlik grubu dinleyicisi için bir IP adresi de içerir.

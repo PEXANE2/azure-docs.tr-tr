@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-ms.openlocfilehash: 3de9eccd001e421ef3255f83630716df12b7a2ee
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4b65d42522f40eb7d0e65356223313a924de3039
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/19/2021
-ms.locfileid: "104595269"
+ms.locfileid: "104657000"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Başvuru IoT Hub kotaları ve azaltma
 
@@ -87,7 +87,7 @@ IoT Hub, aşırı ara trafiğe uyum sağlamak için, sınırlı bir süre için 
 
 Cihaz kimliği kayıt defteri işlemleri, cihaz yönetimi ve sağlama senaryolarında çalışma zamanı kullanımı için tasarlanmıştır. Çok sayıda cihaz kimliği okumak veya güncelleştirmek, [içeri ve dışarı aktarma işleri](iot-hub-devguide-identity-registry.md#import-and-export-device-identities)aracılığıyla desteklenir.
 
-[Toplu cihaz işlemleri](iot-hub-bulk-identity-mgmt.md)aracılığıyla kimlik işlemlerini başlatırken aynı kısıtlama limitleri de geçerlidir. Örneğin, 50 cihaz oluşturmak için toplu işlem göndermek istiyorsanız ve 1 birimiyle bir S1 IoT Hub varsa, bu toplu isteklerin yalnızca ikisi dakikada bir kabul edilir. Bunun nedeni, 1 birimiyle bir S1 IoT Hub için kimlik işlemi kısıtlaması 100/dak/Unit ' dir. Bu durumda, sınıra zaten ulaşıldığı için aynı dakikalık üçüncü bir istek (ve daha fazlası) reddedilir. 
+[Toplu kayıt defteri güncelleştirme işlemleri](https://docs.microsoft.com/rest/api/iothub/service/bulkregistry/updateregistry) aracılığıyla (toplu içeri ve dışarı aktarma işleri *değil* ) kimlik işlemleri başlatılırken, aynı kısıtlama limitleri de geçerlidir. Örneğin, 50 cihaz oluşturmak için toplu işlem göndermek istiyorsanız ve 1 birimiyle bir S1 IoT Hub varsa, bu toplu isteklerin yalnızca ikisi dakikada bir kabul edilir. Bunun nedeni, 1 birimiyle bir S1 IoT Hub için kimlik işlemi kısıtlaması 100/dak/Unit ' dir. Bu durumda, sınıra zaten ulaşıldığı için aynı dakikalık üçüncü bir istek (ve daha fazlası) reddedilir. 
 
 ### <a name="device-connections-throttle"></a>Cihaz bağlantıları kısıtlaması
 

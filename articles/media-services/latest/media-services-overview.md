@@ -78,7 +78,7 @@ Nasıl yapılır kılavuzlarında bir görevi tamamlamayı gösteren kod örnekl
 * [Hesap oluşturma - CLI](./create-account-howto.md)
 * [API'lere erişim - CLI](./access-api-howto.md)
 * [İş girişi olarak HTTPS ile kodlama-.NET](job-input-from-http-how-to.md)  
-* [Olayları izleme - Portal](monitor-events-portal-how-to.md)
+* [Olayları izleme - Portal](monitoring/monitor-events-portal-how-to.md)
 * [Multi-DRM-.NET ile dinamik olarak şifreleyin](protect-with-drm.md) 
 * [Özel bir dönüşümle kodlama-CLı](custom-preset-cli-howto.md)
 

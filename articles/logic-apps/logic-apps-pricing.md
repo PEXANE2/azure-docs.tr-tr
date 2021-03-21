@@ -7,10 +7,10 @@ ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 01/29/2021
 ms.openlocfilehash: 2b37308bcbcd489876c21dce56878de7e0daf545
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101699037"
 ---
 # <a name="pricing-and-billing-models-for-azure-logic-apps"></a>Azure Logic Apps için fiyatlandırma ve faturalandırma modelleri
@@ -25,7 +25,7 @@ Kullanım için ödeme tüketimi fiyatlandırma modeli, genel, "genel", çok kir
 
 Örneğin, bir yoklama tetikleyicisinin yaptığı bir istek, bu tetikleyici atlandığı ve mantıksal uygulama iş akışı örneği oluşturulmasa bile yürütme olarak ölçülmektedir.
 
-| Öğeler | Açıklama |
+| Öğeler | Description |
 |-------|-------------|
 | [Yerleşik](../connectors/apis-list.md#built-in) Tetikleyiciler ve eylemler | Logic Apps hizmetinde yerel olarak çalıştırın ve [ **eylem** fiyatı](https://azure.microsoft.com/pricing/details/logic-apps/)kullanılarak Ücretlendirilebilir. <p><p>Örneğin, HTTP tetikleyicisi ve Istek tetikleyicisi yerleşik tetiklerdir, ancak HTTP eylemi ve yanıt eylemi yerleşik eylemlerdir. Veri işlemleri, toplu işlemler, değişken işlemleri ve döngüler, koşullar, anahtar, paralel dallar vb. gibi [iş akışı denetim eylemleri](../connectors/apis-list.md#control-workflow)de yerleşik eylemlerdir. |
 | [Standart bağlayıcı](../connectors/apis-list.md#managed-connectors) Tetikleyicileri ve eylemleri <p><p>[Özel bağlayıcı](../connectors/apis-list.md#custom) Tetikleyicileri ve eylemleri | [Standart bağlayıcı fiyatı](https://azure.microsoft.com/pricing/details/logic-apps/)kullanılarak Ücretlendirilebilir. |
@@ -70,7 +70,7 @@ Daha doğru tüketim maliyetlerini tahmin etmenize yardımcı olmak için şu ip
 
 Sabit bir fiyatlandırma modeli, bir [ *tümleştirme hizmeti ortamında* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)çalışan Logic Apps için geçerlidir. ISE, oluşturduğunuz [Ise düzeyine veya *SKU*](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) 'ya bağlı olarak [tümleştirme hizmeti ortamı fiyatı](https://azure.microsoft.com/pricing/details/logic-apps)kullanılarak faturalandırılır. Bu fiyatlandırma, ayrılan kapasite ve adanmış kaynaklar için ödeme yaptığınız gibi çok kiracılı fiyatlandırmadan farklıdır.
 
-| ıSE SKU 'SU | Açıklama |
+| ıSE SKU 'SU | Description |
 |---------|-------------|
 | **Premium** | Temel birim [sabit kapasiteye](logic-apps-limits-and-config.md#integration-service-environment-ise) sahiptir ve [Premium SKU 'su için saatlik bir ücret üzerinden faturalandırılır](https://azure.microsoft.com/pricing/details/logic-apps). Daha fazla işleme ihtiyacınız varsa, ıSE veya daha sonra oluşturduğunuz zaman [daha fazla ölçek birimi ekleyebilirsiniz](../logic-apps/ise-manage-integration-service-environment.md#add-capacity) . Her ölçek birimi, [temel birim oranının kabaca yarısı olan saatlik bir ücret](https://azure.microsoft.com/pricing/details/logic-apps)üzerinden faturalandırılır. <p><p>Kapasite ve limit bilgilerini, [Azure Logic Apps Içindeki Ise sınırlarına](logic-apps-limits-and-config.md#integration-service-environment-ise)bakın. |
 | **Geliştirici** | Temel birim [sabit kapasiteye](logic-apps-limits-and-config.md#integration-service-environment-ise) sahiptir ve [Geliştirici SKU 'su için saatlik bir ücret üzerinden faturalandırılır](https://azure.microsoft.com/pricing/details/logic-apps). Ancak, bu SKU, geri dönüştürme sırasında bir hizmet düzeyi sözleşmesi (SLA), ölçek artırma özelliği veya yedekliliği yoktur, bu da gecikme veya kapalı kalma süresi yaşayabileceğiniz anlamına gelir. Arka uç güncelleştirmeleri zaman zaman kesme hizmeti gerektirebilir. <p><p>**Önemli**: Bu SKU 'yu yalnızca araştırma, denemeleri, geliştirme ve test için (üretim veya performans testi için değil) kullandığınızdan emin olun. <p><p>Kapasite ve limit bilgilerini, [Azure Logic Apps Içindeki Ise sınırlarına](logic-apps-limits-and-config.md#integration-service-environment-ise)bakın. |
@@ -78,7 +78,7 @@ Sabit bir fiyatlandırma modeli, bir [ *tümleştirme hizmeti ortamında* (ISE)]
 
 ### <a name="included-at-no-extra-cost"></a>Ek ücret ödemeden dahil değildir
 
-| Öğeler | Açıklama |
+| Öğeler | Description |
 |-------|-------------|
 | [Yerleşik](../connectors/apis-list.md#built-in) Tetikleyiciler ve eylemler | **Çekirdek** etiketi görüntüleyin ve Logic Apps ile aynı Ise 'de çalıştırın. |
 | [Standart bağlayıcılar](../connectors/apis-list.md#managed-connectors) <p><p>[Kurumsal bağlayıcılar](../connectors/apis-list.md#enterprise-connectors) | - **Ise** etiketini görüntüleyen yönetilen bağlayıcılar, şirket içi veri ağ geçidi olmadan çalışacak şekilde özel olarak tasarlanmıştır ve Logic Apps ile aynı çalışma alanında çalışır. ISE fiyatlandırması, istediğiniz kadar kurumsal bağlantı içerir. <p><p>-ISE etiketini görüntülememe dışı bağlayıcılar çok kiracılı Logic Apps hizmetinde çalışır. Ancak, ıSE fiyatlandırması bir ıSE 'de çalışan Logic Apps için bu yürütmeleri içerir. |
@@ -98,7 +98,7 @@ Sınır bilgileri için [Azure Logic Apps Içindeki Ise sınırları](logic-apps
 
 Azure Logic Apps, mantıksal uygulamalarınızın tüketim tabanlı veya ıSE tabanlı olup olmadığına bağlı olarak fiyatlandırma ve [faturalandırma modelinde](logic-apps-pricing.md#integration-accounts) [farklılık](https://azure.microsoft.com/pricing/details/logic-apps/) gösteren bu tümleştirme hesabı düzeylerini veya katmanlarını sunar:
 
-| Katman | Açıklama |
+| Katman | Description |
 |------|-------------|
 | **Temel** | Yalnızca ileti işlemenin veya daha büyük bir iş varlığıyla ticari iş ortağı ilişkisine sahip küçük bir iş ortağı olarak hareket etmesini istediğiniz senaryolar için. <p><p>Logic Apps SLA tarafından desteklenir. |
 | **Standart** | Daha karmaşık B2B ilişkilerinizin olduğu ve yönetmeniz gereken varlıkların sayısı olan senaryolar için. <p><p>Logic Apps SLA tarafından desteklenir. |

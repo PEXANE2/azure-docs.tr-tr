@@ -6,10 +6,10 @@ ms.tgt_pltfrm: dotnet
 ms.date: 11/13/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: ec3f53e6f69614028c013efa5f0e6852cbc3f8ae
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98631649"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-net"></a>Azure Service Bus kuyruklarından ileti gönderme ve iletileri alma (.NET)
@@ -38,7 +38,7 @@ Visual Studio 'Yu başlatın ve C# için yeni bir **konsol uygulaması (.NET Cor
 
 ### <a name="add-code-to-send-messages-to-the-queue"></a>Kuyruğa ileti göndermek için kod ekleme
 
-1. *Program.cs*' de, `using` Sınıf bildiriminden önce, ad alanı tanımının en üstüne aşağıdaki deyimleri ekleyin:
+1. *Program. cs*' de, `using` Sınıf bildiriminden önce, ad alanı tanımının en üstüne aşağıdaki deyimleri ekleyin:
 
     ```csharp
     using System;
@@ -271,5 +271,5 @@ Portalı yeniden kontrol edin.
 Aşağıdaki belgelere ve örneklere bakın:
 
 - [.NET için Azure Service Bus istemci kitaplığı-Benioku](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus)
-- [GitHub’daki örnekler](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus/samples)
+- [GitHub 'daki örnekler](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus/samples)
 - [.NET API'si başvurusu](/dotnet/api/azure.messaging.servicebus?preserve-view=true)

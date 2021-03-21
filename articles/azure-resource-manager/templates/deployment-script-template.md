@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 12/28/2020
+ms.date: 03/18/2021
 ms.author: jgao
-ms.openlocfilehash: 9d045fb75838ac016f3e9b04cd2519d8a8530a4b
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 130deea4e5998d696065df4854a47bf7ffd1183c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175660"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594251"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>ARM şablonlarında dağıtım betikleri kullanma
 
@@ -162,11 +162,11 @@ Aşağıdaki JSON bir örnektir. Daha fazla bilgi için bkz. en son [şablon şe
   > [!NOTE]
   > Azure portal birden çok satır içeren bir dağıtım betiğini ayrıştıramıyor. Azure portal dağıtım betiği içeren bir şablonu dağıtmak için, bir satırda noktalı virgül kullanarak PowerShell komutlarını zincirleyebilir ya da `primaryScriptUri` özelliği bir dış betik dosyası ile kullanabilirsiniz.
 
-- `primaryScriptUri`: Birincil dağıtım betiğinin desteklenen dosya uzantılarına sahip genel olarak erişilebilen bir URL belirtin.
-- `supportingScriptUris`: Ya da ' de çağrılan dosyaları desteklemek için genel olarak erişilebilen bir URL dizisi belirtin `scriptContent` `primaryScriptUri` .
+- `primaryScriptUri`: Birincil dağıtım betiğinin desteklenen dosya uzantılarına sahip genel olarak erişilebilen bir URL belirtin. Daha fazla bilgi için bkz. [dış betikleri kullanma](#use-external-scripts).
+- `supportingScriptUris`: Ya da ' de çağrılan dosyaları desteklemek için genel olarak erişilebilen bir URL dizisi belirtin `scriptContent` `primaryScriptUri` . Daha fazla bilgi için bkz. [dış betikleri kullanma](#use-external-scripts).
 - `timeout`: [Iso 8601 biçiminde](https://en.wikipedia.org/wiki/ISO_8601)belirtilen izin verilen en fazla betik yürütme süresini belirtin. Varsayılan değer **P1D**' dir.
 - `cleanupPreference`. Komut dosyası yürütmesi bir terminal durumunda olduğunda dağıtım kaynaklarını Temizleme tercihini belirtin. Varsayılan ayar **her zaman**, bu, Terminal durumuna (başarılı, başarısız, iptal edildi) rağmen kaynakları silmenin anlamına gelir. Daha fazla bilgi için bkz. [dağıtım betiği kaynaklarını Temizleme](#clean-up-deployment-script-resources).
-- `retentionInterval`: Dağıtım betiği yürütmesi bir Terminal durumuna ulaştıktan sonra hizmetin dağıtım betiği kaynaklarını koruduğunu belirten aralığı belirtin. Bu süre sona erdiğinde dağıtım betiği kaynakları silinir. Süre, [ıso 8601 düzenine](https://en.wikipedia.org/wiki/ISO_8601)göre belirlenir. Saklama aralığı 1 ile 26 saat arasında (PT26H). Bu özellik `cleanupPreference` **onexpiration** olarak ayarlandığında kullanılır. **Onexpiration** özelliği şu anda etkin değil. Daha fazla bilgi için bkz. [dağıtım betiği kaynaklarını Temizleme](#clean-up-deployment-script-resources).
+- `retentionInterval`: Dağıtım betiği yürütmesi bir Terminal durumuna ulaştıktan sonra hizmetin dağıtım betiği kaynaklarını koruduğunu belirten aralığı belirtin. Bu süre sona erdiğinde dağıtım betiği kaynakları silinir. Süre, [ıso 8601 düzenine](https://en.wikipedia.org/wiki/ISO_8601)göre belirlenir. Saklama aralığı 1 ile 26 saat arasında (PT26H). Bu özellik `cleanupPreference` **onexpiration** olarak ayarlandığında kullanılır. Daha fazla bilgi için bkz. [dağıtım betiği kaynaklarını Temizleme](#clean-up-deployment-script-resources).
 
 ### <a name="additional-samples"></a>Ek örnekler
 
@@ -212,7 +212,7 @@ Satır içi betiklerin yanı sıra dış betik dosyalarını da kullanabilirsini
 
 Daha fazla bilgi için bkz. [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/deployment-script/deploymentscript-helloworld-primaryscripturi.json).
 
-Dış betik dosyalarına erişilebilir olmalıdır. Azure depolama hesaplarında depolanan betik dosyalarınızın güvenliğini sağlamak için bkz. [özel ARM ŞABLONUNU SAS belirteci Ile dağıtma](./secure-template-with-sas-token.md).
+Dış betik dosyalarına erişilebilir olmalıdır. Azure depolama hesaplarında depolanan betik dosyalarınızın güvenliğini sağlamak için bir SAS belirteci oluşturun ve şablonun URI 'sine dahil edin. Dağıtım işleminin tamamlanmasına yetecek sürenin sona ereceği süre sonu süresini ayarlayın. Daha fazla bilgi için bkz. [SAS belirteci ile özel ARM şablonu dağıtma](./secure-template-with-sas-token.md).
 
 Ya da dağıtım betiği tarafından başvurulan betiklerin bütünlüğünü sağlamaktan siz sorumlusunuz `primaryScriptUri` `supportingScriptUris` . Yalnızca güvendiğiniz betiklerin başvurusu.
 
@@ -313,7 +313,7 @@ Betik hizmeti, ayarlarına rağmen bir hatayla karşılaştığında, kaynak sa�
 
 ### <a name="pass-secured-strings-to-deployment-script"></a>Güvenli dizeleri dağıtım betiğine geçir
 
-Kapsayıcı örneklerinizin ortam değişkenlerini (EnvironmentVariable) ayarlamak, kapsayıcı tarafından çalıştırılan uygulamanın veya betiğin dinamik yapılandırmasını sağlamanıza olanak tanır. Dağıtım betiği, güvenli olmayan ve güvenli olmayan ortam değişkenlerini Azure Container Instance ile aynı şekilde işler. Daha fazla bilgi için bkz. [kapsayıcı örneklerinde ortam değişkenlerini ayarlama](../../container-instances/container-instances-environment-variables.md#secure-values).
+Kapsayıcı örneklerinizin ortam değişkenlerini (EnvironmentVariable) ayarlamak, kapsayıcı tarafından çalıştırılan uygulamanın veya betiğin dinamik yapılandırmasını sağlamanıza olanak tanır. Dağıtım betiği, güvenli olmayan ve güvenli olmayan ortam değişkenlerini Azure Container Instance ile aynı şekilde işler. Daha fazla bilgi için bkz. [kapsayıcı örneklerinde ortam değişkenlerini ayarlama](../../container-instances/container-instances-environment-variables.md#secure-values). Örnek için bkz. [örnek şablonlar](#sample-templates).
 
 Ortam değişkenleri için izin verilen en büyük boyut 64 KB 'dir.
 
@@ -566,7 +566,7 @@ Betiği başarıyla test edildikten sonra, şablonlarınızı şablonlarda bir d
 
 ## <a name="deployment-script-error-codes"></a>Dağıtım betiği hata kodları
 
-| Hata kodu | Açıklama |
+| Hata kodu | Description |
 |------------|-------------|
 | DeploymentScriptInvalidOperation | Şablondaki dağıtım betiği kaynak tanımı geçersiz özellik adları içeriyor. |
 | DeploymentScriptResourceConflict | Terminal dışı durumda olan bir dağıtım betiği kaynağı silinemez ve yürütme 1 saati aşmadı. Ya da aynı dağıtım betiğini aynı kaynak tanımlayıcısıyla (aynı abonelik, kaynak grubu adı ve kaynak adı), aynı anda farklı betik gövdesi içeriğiyle yeniden çalıştıramıyorum. |

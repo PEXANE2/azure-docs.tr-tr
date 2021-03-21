@@ -4,12 +4,12 @@ description: Azure Application Insights kitaplığı kullanarak Azure Batch .NET
 ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 04/05/2018
-ms.openlocfilehash: d06e2b61725f05d025acd8a2995ea041f138ae4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9decb99c3de798df43dedc2441208066d18e3a13
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88933571"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104605792"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Application Insights ile Azure Batch .NET uygulamasında izleme ve hata ayıklama
 
@@ -23,16 +23,16 @@ Bu makaleye eşlik eden kod içeren örnek bir C# çözümü [GitHub](https://gi
 > Alternatif olarak, Batch çözümünüzü Batch Explorer VM performans sayaçları gibi Application Insights verileri görüntüleyecek şekilde yapılandırın. [Batch Explorer](https://github.com/Azure/BatchExplorer) , Azure Batch uygulamaları oluşturmaya, hata ayıklamanıza ve izlemenize yardımcı olan ücretsiz, zengin özellikli, tek başına bir istemci aracıdır. Mac, Linux veya Windows için [yükleme paketi](https://azure.github.io/BatchExplorer/) indirebilirsiniz. Batch Explorer Application Insights verileri etkinleştirmeye yönelik hızlı adımlar için [Batch-Insights](https://github.com/Azure/batch-insights) deposuna bakın. 
 >
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * [Visual Studio 2017 veya üzeri](https://www.visualstudio.com/vs)
 
 * [Batch hesabı ve bağlı depolama hesabı](batch-account-create-portal.md)
 
 * [Application Insights kaynağı](../azure-monitor/app/create-new-resource.md )
   
-   * Bir Application Insights *kaynağı*oluşturmak için Azure Portal kullanın. *Genel* **uygulama türünü**seçin.
+   * Bir Application Insights *kaynağı* oluşturmak için Azure Portal kullanın. *Genel* **uygulama türünü** seçin.
 
-   * [İzleme anahtarını](../azure-monitor/app/create-new-resource.md #copy-the-instrumentation-key) portaldan kopyalayın. Bu makalenin ilerleyen kısımlarında gereklidir.
+   * [İzleme anahtarını](../azure-monitor/app/create-new-resource.md#copy-the-instrumentation-key) portaldan kopyalayın. Bu makalenin ilerleyen kısımlarında gereklidir.
   
   > [!NOTE]
   > Application Insights depolanan veriler için [ücretlendirilmeyebilirsiniz](https://azure.microsoft.com/pricing/details/application-insights/) . Bu, bu makalede ele alınan tanılama ve izleme verilerini içerir.
@@ -54,9 +54,9 @@ Kodunuzu işaretlemek için çözümünüzün bir Application Insights [Telemetr
 ```xml
 <InstrumentationKey>YOUR-IKEY-GOES-HERE</InstrumentationKey>
 ```
-Ayrıca TopNWords.cs dosyasına izleme anahtarını da ekleyin.
+Ayrıca, TopNWords. cs dosyasına izleme anahtarını ekleyin.
 
-TopNWords.cs ' deki örnek, Application Insights API 'sinden aşağıdaki [izleme çağrılarını](../azure-monitor/app/api-custom-events-metrics.md) kullanır:
+TopNWords. cs dosyasındaki örnek, Application Insights API 'sinden aşağıdaki [izleme çağrılarını](../azure-monitor/app/api-custom-events-metrics.md) kullanır:
 * `TrackMetric()` -Bir işlem düğümünün gerekli metin dosyasını indirmek için ne kadar süreyle sürdüğünü izler.
 * `TrackTrace()` -Kodunuza hata ayıklama çağrıları ekler.
 * `TrackEvent()` -Yakalanacak ilginç olayları izler.
@@ -177,7 +177,7 @@ Telemetri başlatıcısı 'nı etkinleştirmek için, TopNWordsSample projesinde
 
 ## <a name="update-the-job-and-tasks-to-include-application-insights-binaries"></a>Application Insights ikilileri içerecek şekilde işi ve görevleri güncelleştirme
 
-Application Insights işlem düğümleriniz üzerinde doğru şekilde çalışması için ikililerin doğru yerleştirildiğinden emin olun. Görevin yürütüldüğü sırada indirilmeleri için gerekli ikilileri görevin kaynak dosyaları koleksiyonuna ekleyin. Aşağıdaki kod parçacıkları Job.cs içindeki koda benzerdir.
+Application Insights işlem düğümleriniz üzerinde doğru şekilde çalışması için ikililerin doğru yerleştirildiğinden emin olun. Görevin yürütüldüğü sırada indirilmeleri için gerekli ikilileri görevin kaynak dosyaları koleksiyonuna ekleyin. Aşağıdaki kod parçacıkları Job. cs dosyasındaki koda benzerdir.
 
 İlk olarak, karşıya yüklenecek Application Insights dosyaların statik bir listesini oluşturun.
 
@@ -284,10 +284,10 @@ Aşağıdaki ekran görüntülerinde Application Insights, uygulamanızdan oluş
 1. Application Insights kaynağınız **Ölçüm Gezgini**  >  **Grafik Ekle**' ye tıklayın.
 2. Eklenen grafikte **Düzenle** ' ye tıklayın.
 2. Grafik ayrıntılarını aşağıdaki gibi güncelleştirin:
-   * **Grafik türünü** **Grid**olarak ayarlayın.
-   * **Toplamayı** **Ortalama**olarak ayarlayın.
-   * **Group By** - **NodeId**olarak ayarlanır.
-   * **Ölçümler**' de, **Custom**  >  **Saniyeler içinde özel blob indirme**' yı seçin.
+   * **Grafik türünü** **Grid** olarak ayarlayın.
+   * **Toplamayı** **Ortalama** olarak ayarlayın.
+   * **Group By** - **NodeId** olarak ayarlanır.
+   * **Ölçümler**' de,   >  **Saniyeler içinde özel blob indirme**' yı seçin.
    * Görüntü **renk paletini** tercih ettiğiniz şekilde ayarlayın. 
 
 ![Düğüm başına blob indirme süresi](./media/monitor-application-insights/blobdownloadtime.png)

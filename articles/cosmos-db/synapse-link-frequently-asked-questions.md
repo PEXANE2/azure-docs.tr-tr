@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/30/2020
-ms.openlocfilehash: 9fb6e94062639d32707f52f66e0b99531884a636
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 120bec65c92e2a13022682265b83bfe0f69d8ed0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692275"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592102"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure Synapse Link hakkında sık sorulan sorular
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -33,6 +33,10 @@ Analitik mağaza desteğiyle çok bölgeli bir Azure Cosmos DB hesabını yapıl
 ### <a name="can-i-choose-to-enable-azure-synapse-link-for-only-certain-region-and-not-all-regions-in-a-multi-region-account-set-up"></a>Azure SYNAPSE bağlantısını, çok bölgeli bir hesap kümesindeki tüm bölgeler için değil, yalnızca belirli bir bölge için etkinleştirmeyi seçebilir miyim?
 
 Çok bölgeli bir hesap için Azure SYNAPSE bağlantısı etkinleştirildiğinde, analitik depo tüm bölgelerde oluşturulur. Temel alınan veriler işlem deposunda işleme ve işlem tutarlılığı için iyileştirilmiştir.
+
+### <a name="is-analytical-store-supported-in-all-azure-cosmos-db-regions"></a>Analitik depo tüm Azure Cosmos DB bölgelerinde destekleniyor mu?
+
+Evet.
 
 ### <a name="is-backup-and-restore-supported-for-azure-synapse-link-enabled-accounts"></a>Azure SYNAPSE link etkin hesapları için yedekleme ve geri yükleme destekleniyor mu?
 
@@ -165,6 +169,10 @@ Analitik depo ile kimlik doğrulaması, bir işlem deposuyla aynıdır. Belirli 
 ### <a name="can-i-do-spark-structured-streaming-from-analytical-store"></a>Analitik depodan Spark yapılandırılmış akışı yapabilir miyim?
 
 Azure Cosmos DB için Spark yapılandırılmış akış desteği, işlem deposunun değişiklik akışı işlevselliği kullanılarak uygulanır ve henüz analitik depolamadan desteklenmez.
+
+### <a name="is-streaming-supported"></a>Akış destekleniyor mu?
+
+Analitik depodan veri akışını desteklemiyoruz.
 
 ## <a name="azure-synapse-studio"></a>Azure Synapse Studio
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/16/2021
 ms.author: shhazam
 ms.openlocfilehash: e746f37fdf3b67467c1844ebea9191679d52d6d1
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103491274"
 ---
 # <a name="security-recommendations-for-iot-devices"></a>IoT cihazları için güvenlik önerileri
@@ -32,7 +32,7 @@ Bu makalede, IoT cihazlarınızda tetiklenebilecek önerilerin bir listesini bul
 
 Cihaz önerileri, cihaz güvenlik duruşunu geliştirmek için Öngörüler ve öneriler sağlar.
 
-| Önem derecesi | Name | Veri Kaynağı | Açıklama |
+| Önem derecesi | Name | Veri Kaynağı | Description |
 |--|--|--|--|
 | Orta | Cihazda bağlantı noktalarını açma | Klasik Defender-IoT-Micro-Agent| Cihazda bir dinleme uç noktası bulundu. |
 | Orta | Zincirden birinde izin veren güvenlik duvarı ilkesi bulundu. | Klasik Defender-IoT-Micro-Agent| İzin verilen güvenlik duvarı ilkesi bulundu (GIRIŞ/çıkış). Güvenlik duvarı ilkesi varsayılan olarak tüm trafiği reddetmelidir ve cihaza/cihazdan gerekli iletişime izin vermek için kurallar tanımlar. |
@@ -44,7 +44,7 @@ Cihaz önerileri, cihaz güvenlik duruşunu geliştirmek için Öngörüler ve �
 
 İşletimsel öneriler, güvenlik Aracısı yapılandırmasını geliştirmek için Öngörüler ve öneriler sağlar.
 
-| Önem derecesi | Name | Veri Kaynağı | Açıklama |
+| Önem derecesi | Name | Veri Kaynağı | Description |
 |--|--|--|--|
 | Düşük | Aracı unutilized iletileri gönderiyor | Klasik Defender-IoT-Micro-Agent| Son 24 saat boyunca 10 KB veya daha fazla güvenlik iletisi 4 KB 'tan daha küçük. |
 | Düşük | Güvenlik ikizi yapılandırması en uygun değil | Klasik Defender-IoT-Micro-Agent| Güvenlik ikizi yapılandırması en uygun değildir. |

@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 09/08/2020
 titleSuffix: Azure
 ms.openlocfilehash: 68b5b7561cc31e156a745bcfb07e3203de10d425
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101702224"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>Öğretici: OpenVINO™ model sunucusunu kullanarak canlı videoyu çözümleyin – Intel 'ten AI uzantısı 
@@ -90,7 +90,7 @@ Bu çıkarım sunucusunun ilk sürümünde aşağıdaki [modellere](https://gith
 
     * ***C2D-Console-App. csproj*** -Visual Studio Code için proje dosyası.
     * ***operations.js*** , programın çalıştırmasını istediğiniz işlemlerin bir listesi.
-    * ***Program.cs*** -örnek program kodu. Bu kod:
+    * ***Program. cs*** -örnek program kodu. Bu kod:
 
         * Uygulama ayarlarını yükler.
         * IoT Edge modülündeki canlı video analizinin sunduğu doğrudan yöntemleri çağırır. [Doğrudan yöntemlerini](direct-methods.md)çağırarak canlı video akışlarını çözümlemek için modülünü kullanabilirsiniz.

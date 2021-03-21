@@ -8,12 +8,12 @@ ms.date: 01/29/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 51814ba36eec7b1f7d8b95ce80210d93b4cbec3f
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 85d5d5b484163c4c65e7ec14c5d5ce5aea339669
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102564229"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593212"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure Dosya Eşitleme dağıtımı planlama
 
@@ -247,7 +247,7 @@ Azure Dosya Eşitleme ile başka bir HSM çözümü kullanılmamalıdır.
 
 Azure Dosya Eşitleme Aracısı Azure dosya paylaşımlarına bağlanan bir Windows Server makinesinde çalıştığından, etkin eşitleme performansı altyapınızdaki bir dizi etkene bağlıdır: Windows Server ve temel disk yapılandırması, sunucu ile Azure depolama arasındaki ağ bant genişliği, dosya boyutu, toplam veri kümesi boyutu ve veri kümesindeki etkinlik. Azure Dosya Eşitleme dosya düzeyinde çalıştığından Azure Dosya Eşitleme tabanlı bir çözümün performans özellikleri, saniye başına işlenen nesne (dosya ve dizin) sayısında daha fazla ölçülür.
 
-Azure portal veya SMB kullanarak Azure dosya paylaşımında yapılan değişiklikler anında algılanır ve sunucu uç noktasındaki değişiklikler gibi çoğaltılmaz. Azure dosyalarında değişiklik bildirimleri veya günlük kaydı yoktur, bu nedenle dosyalar değiştirildiğinde bir eşitleme oturumu otomatik olarak başlatmak için bir yol yoktur. Windows Server 'da, Azure Dosya Eşitleme dosyalar değiştiğinde eşitleme oturumunu otomatik olarak başlatmak için [WINDOWS USN günlük kaydı](https://docs.microsoft.com/windows/win32/fileio/change-journals) kullanır
+Azure portal veya SMB kullanarak Azure dosya paylaşımında yapılan değişiklikler anında algılanır ve sunucu uç noktasındaki değişiklikler gibi çoğaltılmaz. Azure dosyalarında değişiklik bildirimleri veya günlük kaydı yoktur, bu nedenle dosyalar değiştirildiğinde bir eşitleme oturumu otomatik olarak başlatmak için bir yol yoktur. Windows Server 'da, Azure Dosya Eşitleme dosyalar değiştiğinde eşitleme oturumunu otomatik olarak başlatmak için [WINDOWS USN günlük kaydı](/windows/win32/fileio/change-journals) kullanır
 
 Azure dosya paylaşımında yapılan değişiklikleri algılamak için Azure Dosya Eşitleme, değişiklik algılama işi adlı Zamanlanmış bir iş vardır. Değişiklik algılama işi dosya paylaşımındaki her dosyayı numaralandırır ve ardından bu dosyanın eşitleme sürümüyle karşılaştırır. Değişiklik algılama işi dosyaların değiştiğini belirlediğinde Azure Dosya Eşitleme bir eşitleme oturumu başlatır. Değişiklik algılama işi her 24 saatte bir başlatılır. Değişiklik algılama işi Azure dosya paylaşımındaki her dosyayı numaralandırarak çalıştığından, değişiklik algılama daha büyük ad uzaylarında daha küçük ad uzaylarından daha uzun sürer. Büyük ad alanları için, hangi dosyaların değiştirildiğini belirleyebilmek her 24 saatte bir daha uzun sürebilir.
 
