@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: tomfitz
 ms.openlocfilehash: fa5e59b96aada06c2dd486094d9be6a52c79e43e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84261292"
 ---
 # <a name="use-existing-virtual-network-with-azure-managed-applications"></a>Azure yönetilen uygulamalarla mevcut sanal ağı kullan
@@ -53,7 +53,7 @@ Bu öğe, tüketicinin yeni veya var olan bir sanal ağ seçmesini sağlar.
 Çıktılarında, tüketicinin yeni veya mevcut bir sanal ağ seçmediğini belirten bir değer dahil edersiniz. Ayrıca, yönetilen bir kimlik değeri de vardır.
 
 > [!NOTE]
-> Yönetilen kimliğin çıkış değeri **Managedıdentity**olarak adlandırılmalıdır.
+> Yönetilen kimliğin çıkış değeri **Managedıdentity** olarak adlandırılmalıdır.
 
 :::code language="json" source="~/resourcemanager-templates/managed-app-existing-vnet/createUiDefinition.json" range="136-148" highlight="6,12":::
 

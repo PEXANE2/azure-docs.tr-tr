@@ -11,18 +11,18 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 03/13/2020
+ms.date: 03/16/2021
 ms.author: kumud
-ms.openlocfilehash: e047f46e110e1f7b1d544545c80bd1097ae65167
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: f8090ea9c0d307d1bd290c4cf4dac9bfaabf7c4b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98221927"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104576362"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak bir yönlendirme tablosu ile ağ trafiğini yönlendirme
 
-Azure, varsayılan olarak bir sanal ağ içindeki tüm alt ağlar arasındaki trafiği yönlendirir. Azure’ın varsayılan yönlendirmesini geçersiz kılmak için kendi yönlendirmelerinizi oluşturabilirsiniz. Özel yollar, örneğin bir ağ sanal gereci (NVA) ile alt ağlar arasında trafiği yönlendirmek istediğinizde yararlıdır. Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Azure, varsayılan olarak bir sanal ağ içindeki tüm alt ağlar arasındaki trafiği yönlendirir. Azure’ın varsayılan yönlendirmesini geçersiz kılmak için kendi yönlendirmelerinizi oluşturabilirsiniz. Özel yollar, örneğin bir ağ sanal gereci (NVA) ile alt ağlar arasında trafiği yönlendirmek istediğinizde yararlıdır. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Trafiği yönlendiren bir NVA oluşturma
@@ -36,222 +36,301 @@ Bu öğretici [Azure Portal](https://portal.azure.com)kullanır. [Azure CLI](tut
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
+## <a name="prerequisites"></a>Önkoşullar
+
+- Azure aboneliği.
+
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+
+https://portal.azure.com adresinden Azure portalında oturum açın.
+
+## <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
+
+1. Azure portalı menüsünden **Kaynak oluştur**'u seçin. Azure Marketi 'nden **ağ**  >  **sanal ağı**' nı seçin veya arama kutusunda **sanal ağ** ara ' yı seçin.
+
+2. **Oluştur**’u seçin.
+
+2. **Sanal ağ oluştur**' da bu bilgileri girin veya seçin:
+
+    | Ayar | Değer |
+    | ------- | ----- |
+    | Abonelik | Aboneliğinizi seçin.|
+    | Kaynak grubu | **Yeni oluştur**' u seçin, **myresourcegroup** girin. </br> **Tamam**’ı seçin. |
+    | Name | **MyVirtualNetwork** girin. |
+    | Konum | **Doğu ABD (ABD)** seçin.|
+
+3. **IP adresleri** sekmesini seçin veya sayfanın altındaki **Sonraki: IP adresleri** düğmesini seçin.
+
+4. **IPv4 adres alanı**' nda, var olan adres alanını seçin ve **10.0.0.0/16** olarak değiştirin.
+
+4. + Alt ağ **Ekle**' yi seçin, ardından alt ağ **adı** için **genel** ve **10.0.0.0/24** **alt ağ adres aralığını** girin.
+
+5. **Add (Ekle)** seçeneğini belirleyin.
+
+6. **+** Alt ağ Ekle ' yi seçin ve alt ağ **adres aralığı** için **10.0.1.0/24** alt ağ **adı** için **özel** girin.
+
+7. **Add (Ekle)** seçeneğini belirleyin.
+
+8. + Alt ağ **Ekle**' yi seçin, ardından alt ağ **adı** Için **DMZ** girin ve **alt ağ adres aralığı** için **10.0.2.0/24**
+
+9. **Add (Ekle)** seçeneğini belirleyin.
+
+10. **Güvenlik** sekmesini seçin veya sayfanın altındaki **İleri: güvenlik** düğmesini seçin.
+
+11. **Bastionhost** altında **Etkinleştir**' i seçin. Bu bilgileri girin:
+
+    | Ayar            | Değer                      |
+    |--------------------|----------------------------|
+    | Savunma adı | **Mybastionhost** girin |
+    | AzureBastionSubnet adres alanı | **10.0.3.0/24** girin |
+    | Genel IP Adresi | **Yeni oluştur**’u seçin. </br> **Ad** Için **Mybastionıp** girin. </br> **Tamam**’ı seçin. |
+
+12. **Gözden geçir + oluştur** sekmesini seçin ya da **gözden geçir + oluştur** düğmesini seçin.
+
+13. **Oluştur**’u seçin.
+
 ## <a name="create-an-nva"></a>NVA oluşturma
 
-Ağ sanal gereçleri (NVA 'lar), Yönlendirme ve güvenlik duvarı iyileştirmesi gibi ağ işlevleriyle yardımcı olan sanal makinelerdir. Bu öğretici, **Windows Server 2016 Datacenter** kullandığınızı varsayar. İsterseniz farklı bir işletim sistemi seçebilirsiniz.
+Ağ sanal gereçleri (NVA 'lar), Yönlendirme ve güvenlik duvarı iyileştirmesi gibi ağ işlevleriyle yardımcı olan sanal makinelerdir. Bu öğretici, **Windows Server 2019 Datacenter** kullandığınızı varsayar. İsterseniz farklı bir işletim sistemi seçebilirsiniz.
 
-1. [Azure portalı](https://portal.azure.com) menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin.
+1. Portalın sol üst kısmında **kaynak oluştur**  >  **işlem**  >  **sanal makinesi**' ni seçin. 
+   
+2. **Sanal makine oluştur**' da **temel bilgiler** sekmesinde değerleri yazın veya seçin:
 
-1. **Güvenlik**  >  **Windows Server 2016 Datacenter**' ı seçin.
+    | Ayar | Değer                                          |
+    |-----------------------|----------------------------------|
+    | **Proje ayrıntıları** |  |
+    | Abonelik | Azure aboneliğinizi seçin |
+    | Kaynak Grubu | **Myresourcegroup** seçin |
+    | **Örnek ayrıntıları** |  |
+    | Sanal makine adı | **Myvmnva** girin |
+    | Region | **(US) Doğu ABD** seçin |
+    | Kullanılabilirlik seçenekleri | **Altyapı yedekliliği gerekli değil** ' i seçin |
+    | Görüntü | **Windows Server 2019 Datacenter** seçin |
+    | Azure Spot örneği | **Hayır** seçin |
+    | Boyut | VM boyutunu seçin veya varsayılan ayarı yapın |
+    | **Yönetici hesabı** |  |
+    | Kullanıcı adı | Kullanıcı adı girin |
+    | Parola | Parola girin |
+    | Parolayı onayla | Parolayı yeniden girin |
+    | **Gelen bağlantı noktası kuralları** |    |
+    | Genel gelen bağlantı noktaları | **Hiçbiri** seçeneğini belirtin. |
+    |
 
-    ![Windows Server 2016 Datacenter, VM oluşturma, Azure portal](./media/tutorial-create-route-table-portal/vm-ws2016-datacenter.png)
+3. **Ağ** sekmesini seçin veya **Sonraki: diskler**' i ve sonra **İleri: ağ**' ı seçin.
+  
+4. Ağ sekmesinde, şunu seçin veya girin:
 
-1. **Sanal makine oluştur** sayfasında, **temel** bilgiler altında bu bilgileri girin veya seçin:
-
-    | Section | Ayar | Eylem |
-    | ------- | ------- | ----- |
-    | **Proje ayrıntıları** | Abonelik | Aboneliğinizi seçin. |
-    | | Kaynak grubu | **Yeni oluştur**' u seçin, *Myresourcegroup* girin ve **Tamam**' ı seçin. |
-    | **Örnek ayrıntıları** | Sanal makine adı | *Myvmnva* girin. |
-    | | Bölge | **Doğu ABD (ABD)** seçin. |
-    | | Kullanılabilirlik seçenekleri | **Altyapı yedekliliği gerekli değil**' i seçin. |
-    | | Görüntü | **Windows Server 2016 Datacenter**' ı seçin. |
-    | | Boyut | Varsayılan **Standart DS1 v2**'yi koruyun. |
-    | **Yönetici hesabı** | Kullanıcı adı | Seçtiğiniz bir kullanıcı adını girin. |
-    | | Parola | Seçtiğiniz bir parolayı girin, en az 12 karakter uzunluğunda olmalıdır ve [tanımlanan karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)karşılayın. |
-    | | Parolayı Onayla | Parolayı yeniden girin. |
-    | **Gelen bağlantı noktası kuralları** | Genel gelen bağlantı noktaları | **Hiçbiri** seçin. |
-    | **Tasarruf edin** | Zaten bir Windows Server lisansınız var mı? | Seçim **No**. |
-
-    ![Temel bilgiler, sanal makine oluşturma Azure portal](./media/tutorial-create-route-table-portal/basics-create-virtual-machine.png)
-
-    Ardından Ileri ' yi seçin **: diskler >**.
-
-1. **Diskler** bölümünde, gereksinimlerinize uygun olan ayarları seçin ve ardından İleri ' yi seçin **: ağ >**.
-
-1. **Ağ iletişimi**:
-
-    1. **Sanal ağ** Için **Yeni oluştur**' u seçin.
-    
-    1. **Sanal ağ oluştur** iletişim kutusunda, **ad**' ın altında, *myVirtualNetwork* girin.
-
-    1. **Adres alanı**' nda, var olan adres aralığını *10.0.0.0/16* ile değiştirin.
-
-    1. **Alt ağlarda**, mevcut alt ağı silmek için **Sil** simgesini seçin ve ardından aşağıdaki **alt ağ adı** ve **adres aralığı** birleşimlerini girin. Geçerli bir ad ve Aralık girildikten sonra, altında yeni bir boş satır görüntülenir.
-
-        | Alt ağ adı | Adres aralığı |
-        | ----------- | ------------- |
-        | *Genel* | *10.0.0.0/24* |
-        | *Özel* | *10.0.1.0/24* |
-        | *DMZ* | *10.0.2.0/24* |
-
-    1. İletişim kutusundan çıkmak için **Tamam ' ı** seçin.
-
-    1. **Alt ağda** **DMZ (10.0.2.0/24)** öğesini seçin.
-
-    1. **Genel IP**' de, bu VM internet üzerinden bağlanmadığından **yok**' u seçin.
-
-    1. **İleri ' yi seçin: yönetim >**.
-
-1. **Yönetim** altında:
-
-    1. **Tanılama depolama hesabı**' nda **Yeni oluştur**' u seçin.
-    
-    1. **Depolama hesabı oluştur** iletişim kutusunda şu bilgileri girin veya seçin:
-
-        | Ayar | Değer |
-        | ------- | ----- |
-        | Ad | *mynvastorageaccount* |
-        | Hesap türü | **Depolama (genel amaçlı v1)** |
-        | Performans | **Standart** |
-        | Çoğaltma | **Yerel olarak yedekli depolama (LRS)** |
-    
-    1. İletişim kutusundan çıkmak için **Tamam ' ı** seçin.
-
-    1. **Gözden geçir ve oluştur**’u seçin. **Gözden geçir + oluştur** sayfasına götürülürsünüz ve Azure yapılandırmanızı doğrular.
-
-1. **Doğrulama başarılı** iletisini gördüğünüzde **Oluştur**’u seçin.
-
-    Sanal makinenin oluşturulması birkaç dakika sürer. Azure VM oluşturmayı bitirene kadar bekleyin. **Dağıtım çalışıyor** sayfasında dağıtım ayrıntıları gösterilir.
-
-1. VM 'niz hazırsanız **Kaynağa Git**' i seçin.
+    | Ayar | Değer |
+    |-|-|
+    | **Ağ arabirimi** |  |
+    | Sanal ağ | **MyVirtualNetwork** öğesini seçin. |
+    | Alt ağ | **DMZ** seçin |
+    | Genel IP | **Hiçbirini** seçme |
+    | NIC ağ güvenlik grubu | **Temel** seçin|
+    | Ortak gelen bağlantı noktaları ağı | **Hiçbiri** seçeneğini belirtin. |
+   
+5. **Gözden geçir + oluştur** sekmesini seçin veya sayfanın altındaki mavi **gözden geçir + oluştur** düğmesini seçin.
+  
+6. Ayarları gözden geçirin ve ardından **Oluştur**' u seçin.
 
 ## <a name="create-a-route-table"></a>Yönlendirme tablosu oluşturma
 
 1. [Azure portalı](https://portal.azure.com) menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin.
 
-2. Arama kutusuna *yol tablosu* girin. Arama sonuçlarında **yol tablosu** göründüğünde, bunu seçin.
+2. Arama kutusuna **yol tablosu** girin. Arama sonuçlarında **yol tablosu** göründüğünde, bunu seçin.
 
 3. **Yol tablosu** sayfasında **Oluştur**' u seçin.
 
-4. **Yol tablosu oluştur**' da bu bilgileri girin veya seçin:
+4. **Temel bilgiler** sekmesinde **yol tablosu oluştur** ' da aşağıdaki bilgileri girin veya seçin:
 
     | Ayar | Değer |
     | ------- | ----- |
-    | Ad | *myRouteTablePublic* |
-    | Abonelik | Aboneliğiniz |
-    | Kaynak grubu | **myResourceGroup** |
-    | Konum | **(ABD) Doğu ABD** |
-    | Sanal ağ geçidi yol yayma | **Etkin** |
+    | **Proje ayrıntıları** |   |
+    | Abonelik | Aboneliğinizi seçin.|
+    | Kaynak grubu | **myResourceGroup** öğesini seçin. |
+    | **Örnek ayrıntıları** |    |
+    | Region | **Doğu ABD**’yi seçin. |
+    | Name | **Myroutetablepublic** girin. |
+    | Ağ Geçidi yollarını yayma | **Evet**’i seçin. |
 
-    ![Yol tablosu oluşturma, Azure portal](./media/tutorial-create-route-table-portal/create-route-table.png)
+    :::image type="content" source="./media/tutorial-create-route-table-portal/create-route-table.png" alt-text="Yol tablosu oluşturun, Azure portal." border="true":::
 
-5. **Oluştur**’u seçin.
+5. **Gözden geçir + oluştur** sekmesini seçin veya sayfanın altındaki mavi **gözden geçir + oluştur** düğmesini seçin.
 
 ## <a name="create-a-route"></a>Yönlendirme oluşturma
 
 1. Yol tablonuzu yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Rota tablolarını** arayın ve seçin.
 
-1. Yol tablonuzun adını (**Myroutetablepublic**) seçin.
+2. **Myroutetablepublic** yol tablonuzun adını seçin.
 
-1. **Rotalar**  >  **Ekle**' yi seçin.
+3. **Myroutetablepublic** sayfasında, **Ayarlar** bölümünde **rotalar**' ı seçin.
 
-    ![Rota, yol tablosu, Azure portal ekleyin](./media/tutorial-create-route-table-portal/add-route.png)
+4. Rotalar sayfasında **+ Ekle** düğmesini seçin.
 
-1. **Yol Ekle**' de bu bilgileri girin veya seçin:
+5. **Yol Ekle**' de bu bilgileri girin veya seçin:
 
     | Ayar | Değer |
     | ------- | ----- |
-    | Yönlendirme adı | *ToPrivateSubnet* |
-    | Adres ön eki | *10.0.1.0/24* (daha önce oluşturulan *özel* alt ağın adres aralığı) |
-    | Sonraki atlama türü | **Sanal gereç** |
-    | Sonraki atlama adresi | *10.0.2.4* ( *DMZ* alt ağının adres aralığı içindeki bir adres) |
+    | Yönlendirme adı | **Toprivatesubnet** girin |
+    | Adres ön eki | **10.0.1.0/24** girin (daha önce oluşturulan **özel** alt ağın adres aralığı) |
+    | Sonraki atlama türü | **Sanal gereç**’i seçin. |
+    | Sonraki atlama adresi | **10.0.2.4** girin ( **DMZ** alt ağının adres aralığı içinde bir adres) |
 
-1. **Tamam**’ı seçin.
+6. **Tamam**’ı seçin.
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>Yönlendirme tablosunu bir alt ağ ile ilişkilendirme
 
 1. Sanal ağınızı yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Sanal ağları** arayın ve seçin.
 
-1. Sanal ağınızın adını (**myVirtualNetwork**) seçin.
+2. Sanal ağ **myVirtualNetwork** adını seçin.
 
-1. Sanal ağın menü çubuğunda **alt ağlar**' ı seçin.
+3. **MyVirtualNetwork** sayfasında, **Ayarlar** bölümünde, **alt ağlar**' ı seçin.
 
-1. Sanal ağın alt ağ listesinde **genel**' i seçin.
+4. Sanal ağın alt ağ listesinde **genel**' i seçin.
 
-1. **Yol tablosu**' nda oluşturduğunuz yol tablosunu (**Myroutetablepublic**) seçin ve ardından **Kaydet** ' i seçerek rota tablonuzu *genel* alt ağıyla ilişkilendirin.
+5. **Yol tablosu**' nda, **Myroutetablepublic** oluşturduğunuz yol tablosunu seçin. 
 
-    ![Rota tablosunu, alt ağ listesini, sanal ağı, Azure portal ilişkilendir](./media/tutorial-create-route-table-portal/associate-route-table.png)
+6. Rota tablonuzu **ortak** alt ağla Ilişkilendirmek için **Kaydet** ' i seçin.
+
+    :::image type="content" source="./media/tutorial-create-route-table-portal/associate-route-table.png" alt-text="Rota tablosunu, alt ağ listesini, sanal ağı, Azure portal ilişkilendirin." border="true":::
 
 ## <a name="turn-on-ip-forwarding"></a>IP iletmeyi aç
 
-Ardından, *Myvmnva adlı* yeni NVA sanal MAKINENIZ için IP iletmeyi açın. Azure, *Myvmnva*'ya ağ trafiği gönderdiğinde, trafik farklı bir IP adresine gidiyor Ise, IP iletimi trafiği doğru konuma gönderir.
+Ardından, **Myvmnva adlı** yeni NVA sanal MAKINENIZ için IP iletmeyi açın. Azure, **Myvmnva**'ya ağ trafiği gönderdiğinde, trafik farklı bir IP adresine gidiyor Ise, IP iletimi trafiği doğru konuma gönderir.
 
 1. VM 'nizi yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Sanal makineleri** arayın ve seçin.
 
-1. VM 'nizin adını (**Myvmnva**) seçin.
+2. **Myvmnva** sanal makinenizin adını seçin.
 
-1. NVA sanal makinenizin menü çubuğunda **ağ iletişimi**' ni seçin.
+3. **Myvmnva** Genel Bakış sayfasında, **Ayarlar**' da **ağ**' ı seçin.
 
-1. **Myvmnva123** öğesini seçin. Bu, VM 'niz için oluşturulan Azure ağ arabirimidir. Azure, benzersiz bir ad sağlamak için numaralar ekler.
+4. **Myvmnva**'nın ağ sayfasında, **ağ arabirimi**' nin **yanındaki ağ arabirimini** seçin.  Arabirimin adı **myvmnva** ile başlar.
 
-    ![Ağ iletişimi, ağ sanal gereci (NVA) sanal makinesi (VM), Azure portal](./media/tutorial-create-route-table-portal/virtual-machine-networking.png)
+    :::image type="content" source="./media/tutorial-create-route-table-portal/virtual-machine-networking.png" alt-text="Ağ iletişimi, ağ sanal gereci (NVA) sanal makinesi (VM), Azure portal" border="true":::
 
-1. Ağ arabirimi menü çubuğunda **IP yapılandırması**' nı seçin.
+5. Ağ arabirimine Genel Bakış sayfasında, **Ayarlar**' da **IP yapılandırması**' nı seçin.
 
-1. **IP yapılandırması** sayfasında, **IP iletmeyi** **etkin** olarak ayarlayın ve **Kaydet**' i seçin.
+6. **IP yapılandırması** sayfasında **IP iletmeyi** **etkin** olarak ayarlayın ve ardından **Kaydet**' i seçin.
 
-    ![IP iletmeyi, IP yapılandırmasını, ağ arabirimini, ağ sanal gereç (NVA) sanal makinesini (VM), Azure portal etkinleştir](./media/tutorial-create-route-table-portal/enable-ip-forwarding.png)
+    :::image type="content" source="./media/tutorial-create-route-table-portal/enable-ip-forwarding.png" alt-text="IP iletmeyi etkinleştirme" border="true":::
 
 ## <a name="create-public-and-private-virtual-machines"></a>Genel ve özel sanal makineleri oluşturma
 
-Sanal ağda ortak bir VM ve özel bir VM oluşturun. Daha sonra, Azure 'un *genel* alt ağ trafiğini NVA aracılığıyla *özel* alt ağa yönlendirdiğini görmek için bu uygulamaları kullanacaksınız.
+Sanal ağda ortak bir VM ve özel bir VM oluşturun. Daha sonra, Azure 'un **genel** alt ağ trafiğini NVA aracılığıyla **özel** alt ağa yönlendirdiğini görmek için bu uygulamaları kullanacaksınız.
 
-Ortak VM ve özel VM oluşturmak için daha önce [BIR NVA oluşturma](#create-an-nva) adımlarını izleyin. Dağıtımın bitmesini beklemeniz veya VM kaynağına gitmeniz gerekmez. Aşağıda açıklananlar dışında, aynı ayarların çoğunu kullanacaksınız.
-
-Ortak veya özel VM oluşturmak için **Oluştur** ' u seçmeden önce, farklı olması gereken değerleri gösteren aşağıdaki iki alt bölümüne ([genel VM](#public-vm) ve [özel VM](#private-vm)) gidin. Azure her iki sanal makineyi de dağıtmaya başladıktan sonra bir sonraki bölüme ([trafiği BIR NVA üzerinden yönlendirin](#route-traffic-through-an-nva)) devam edebilirsiniz.
 
 ### <a name="public-vm"></a>Ortak VM
 
-| Tab | Ayar | Değer |
-| --- | ------- | ----- |
-| Temel bilgiler | Kaynak grubu | **myResourceGroup** |
-| | Sanal makine adı | *myVmPublic* |
-| | Genel gelen bağlantı noktaları | **Seçili bağlantı noktalarına izin ver** |
-| | Gelen bağlantı noktalarını seçin | **RDP** |
-| Ağ | Sanal ağ | **myVirtualNetwork** |
-| | Alt ağ | **Ortak (10.0.0.0/24)** |
-| | Genel IP adresi | Varsayılan değer |
-| Yönetim | Tanılama depolama hesabı | **mynvastorageaccount** |
+1. Portalın sol üst kısmında **kaynak oluştur**  >  **işlem**  >  **sanal makinesi**' ni seçin. 
+   
+2. **Sanal makine oluştur**' da **temel bilgiler** sekmesinde değerleri yazın veya seçin:
+
+    | Ayar | Değer                                          |
+    |-----------------------|----------------------------------|
+    | **Proje ayrıntıları** |  |
+    | Abonelik | Azure aboneliğinizi seçin |
+    | Kaynak Grubu | **Myresourcegroup** seçin |
+    | **Örnek ayrıntıları** |  |
+    | Sanal makine adı | **MyVMPublic** girin |
+    | Region | **(US) Doğu ABD** seçin |
+    | Kullanılabilirlik seçenekleri | **Altyapı yedekliliği gerekli değil** ' i seçin |
+    | Görüntü | **Windows Server 2019 Datacenter** seçin |
+    | Azure Spot örneği | **Hayır** seçin |
+    | Boyut | VM boyutunu seçin veya varsayılan ayarı yapın |
+    | **Yönetici hesabı** |  |
+    | Kullanıcı adı | Kullanıcı adı girin |
+    | Parola | Parola girin |
+    | Parolayı onayla | Parolayı yeniden girin |
+    | **Gelen bağlantı noktası kuralları** |    |
+    | Genel gelen bağlantı noktaları | **Hiçbiri** seçeneğini belirtin. |
+    |
+
+3. **Ağ** sekmesini seçin veya **Sonraki: diskler**' i ve sonra **İleri: ağ**' ı seçin.
+  
+4. Ağ sekmesinde, şunu seçin veya girin:
+
+    | Ayar | Değer |
+    |-|-|
+    | **Ağ arabirimi** |  |
+    | Sanal ağ | **MyVirtualNetwork** öğesini seçin. |
+    | Alt ağ | **Ortak** seçin |
+    | Genel IP | **Hiçbirini** seçme |
+    | NIC ağ güvenlik grubu | **Temel** seçin|
+    | Ortak gelen bağlantı noktaları ağı | **Hiçbiri** seçeneğini belirtin. |
+   
+5. **Gözden geçir + oluştur** sekmesini seçin veya sayfanın altındaki mavi **gözden geçir + oluştur** düğmesini seçin.
+  
+6. Ayarları gözden geçirin ve ardından **Oluştur**' u seçin.
 
 ### <a name="private-vm"></a>Özel VM
 
-| Tab | Ayar | Değer |
-| --- | ------- | ----- |
-| Temel bilgiler | Kaynak grubu | **myResourceGroup** |
-| | Sanal makine adı | *myVmPrivate* |
-| | Genel gelen bağlantı noktaları | **Seçili bağlantı noktalarına izin ver** |
-| | Gelen bağlantı noktalarını seçin | **RDP** |
-| Ağ | Sanal ağ | **myVirtualNetwork** |
-| | Alt ağ | **Özel (10.0.1.0/24)** |
-| | Genel IP adresi | Varsayılan değer |
-| Yönetim | Tanılama depolama hesabı | **mynvastorageaccount** |
+1. Portalın sol üst kısmında **kaynak oluştur**  >  **işlem**  >  **sanal makinesi**' ni seçin. 
+   
+2. **Sanal makine oluştur**' da **temel bilgiler** sekmesinde değerleri yazın veya seçin:
+
+    | Ayar | Değer                                          |
+    |-----------------------|----------------------------------|
+    | **Proje ayrıntıları** |  |
+    | Abonelik | Azure aboneliğinizi seçin |
+    | Kaynak Grubu | **Myresourcegroup** seçin |
+    | **Örnek ayrıntıları** |  |
+    | Sanal makine adı | **MyVMPrivate** girin |
+    | Region | **(US) Doğu ABD** seçin |
+    | Kullanılabilirlik seçenekleri | **Altyapı yedekliliği gerekli değil** ' i seçin |
+    | Görüntü | **Windows Server 2019 Datacenter** seçin |
+    | Azure Spot örneği | **Hayır** seçin |
+    | Boyut | VM boyutunu seçin veya varsayılan ayarı yapın |
+    | **Yönetici hesabı** |  |
+    | Kullanıcı adı | Kullanıcı adı girin |
+    | Parola | Parola girin |
+    | Parolayı onayla | Parolayı yeniden girin |
+    | **Gelen bağlantı noktası kuralları** |    |
+    | Genel gelen bağlantı noktaları | **Hiçbiri** seçeneğini belirtin. |
+    |
+
+3. **Ağ** sekmesini seçin veya **Sonraki: diskler**' i ve sonra **İleri: ağ**' ı seçin.
+  
+4. Ağ sekmesinde, şunu seçin veya girin:
+
+    | Ayar | Değer |
+    |-|-|
+    | **Ağ arabirimi** |  |
+    | Sanal ağ | **MyVirtualNetwork** öğesini seçin. |
+    | Alt ağ | **Özel** ' i seçin |
+    | Genel IP | **Hiçbirini** seçme |
+    | NIC ağ güvenlik grubu | **Temel** seçin|
+    | Ortak gelen bağlantı noktaları ağı | **Hiçbiri** seçeneğini belirtin. |
+   
+5. **Gözden geçir + oluştur** sekmesini seçin veya sayfanın altındaki mavi **gözden geçir + oluştur** düğmesini seçin.
+  
+6. Ayarları gözden geçirin ve ardından **Oluştur**' u seçin.
 
 ## <a name="route-traffic-through-an-nva"></a>Trafiği NVA üzerinden yönlendirme
 
-### <a name="sign-in-to-myvmprivate-over-remote-desktop"></a>Uzak Masaüstü üzerinden myVmPrivate 'de oturum açın
+### <a name="sign-in-to-private-vm"></a>Özel VM 'de oturum açma
 
 1. Özel VM 'nizi yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Sanal makineleri** arayın ve seçin.
 
-1. Özel sanal makinenizin adını (**myVmPrivate**) seçin.
+2. **MyVmPrivate** özel sanal makinenizin adını seçin.
 
-1. VM menü çubuğunda, özel VM 'ye Uzak Masaüstü bağlantısı oluşturmak için **Bağlan** ' ı seçin.
+3. VM menü çubuğunda **Bağlan**' ı ve sonra da ' yi **seçin.**
 
-1. **RDP Ile Bağlan** SAYFASıNDA, **RDP dosyasını indir**' i seçin. Azure bir Uzak Masaüstü Protokolü (*. rdp*) dosyası oluşturur ve bilgisayarınıza indirir.
+4. **Bağlan** sayfasında mavi **kullanımı** savunma düğmesini seçin.
 
-1. İndirilen *. rdp* dosyasını açın. İstendiğinde **Bağlan**’ı seçin. **Diğer seçimler**  >  ' i seçin,**farklı bir hesap kullanın** ve ardından özel VM oluştururken belirttiğiniz kullanıcı adını ve parolayı girin.
+5. Savunma sayfasında **,** daha önce sanal makine için oluşturduğunuz Kullanıcı adını ve parolayı girin.
 
-1. **Tamam**’ı seçin.
+6. **Bağlan**’ı seçin.
 
-1. Oturum açma işlemi sırasında bir sertifika uyarısı alırsanız, sanal makineye bağlanmak için **Evet** ' i seçin.
+### <a name="configure-firewall"></a>Güvenlik duvarını yapılandırma
 
-### <a name="enable-icmp-through-the-windows-firewall"></a>Windows Güvenlik Duvarı üzerinden ıCMP 'yi etkinleştirme
+Sonraki bir adımda, yönlendirmeyi test etmek için izleme yönlendirme aracını kullanacaksınız. İzleme yolu, Windows güvenlik duvarının varsayılan olarak engellediği Internet Denetim Iletisi Protokolü 'Nü (ıCMP) kullanır. 
 
-Sonraki bir adımda, yönlendirmeyi test etmek için izleme yönlendirme aracını kullanacaksınız. İzleme yolu, Windows güvenlik duvarının varsayılan olarak engellediği Internet Denetim Iletisi Protokolü 'Nü (ıCMP) kullanır. Windows Güvenlik Duvarı üzerinden ıCMP 'yi etkinleştirin.
+Windows Güvenlik Duvarı üzerinden ıCMP 'yi etkinleştirin.
 
-1. *MyVmPrivate* uzak masaüstünde PowerShell ' i açın.
+1. **MyVMPrivate**'in savunma bağlantısında, PowerShell 'i yönetici ayrıcalıklarıyla açın.
 
-1. Şu komutu girin:
+2. Şu komutu girin:
 
     ```powershell
     New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
@@ -259,34 +338,40 @@ Sonraki bir adımda, yönlendirmeyi test etmek için izleme yönlendirme aracın
 
     Bu öğreticide yönlendirmeyi test etmek için izleme rotası kullanıyorsunuz. Üretim ortamları için Windows Güvenlik Duvarı üzerinden ıCMP 'ye izin vermeyi önermiyoruz.
 
-### <a name="turn-on-ip-forwarding-within-myvmnva"></a>MyVmNva içinde IP iletmeyi aç
+### <a name="turn-on-ip-forwarding-within-myvmnva"></a>MyVMNVA içinde IP iletmeyi aç
 
-Azure kullanarak VM 'nin ağ arabirimi için [IP iletmeyi açtınız](#turn-on-ip-forwarding) . VM 'nin işletim sistemi de ağ trafiğini iletmektir. Bu komutlarla *Myvmnva* VM 'nin işletim SISTEMI için IP iletmeyi açın.
+Azure kullanarak VM 'nin ağ arabirimi için [IP iletmeyi açtınız](#turn-on-ip-forwarding) . Sanal makinenin işletim sistemi de ağ trafiğini iletmektir. 
 
-1. *MyVmPrivate* VM 'deki bir komut Isteminden, *Myvmnva* VM 'ye bir Uzak Masaüstü açın:
+**Myvmnva** için IP iletmeyi Bu komutlarla açın.
 
-    ```cmd
+1. **MyVMPrivate** VM 'deki PowerShell 'Den, **Myvmnva** VM 'ye bir Uzak Masaüstü açın:
+
+    ```powershell
     mstsc /v:myvmnva
     ```
 
-1. *Myvmnva* VM üzerindeki POWERSHELL 'den IP iletmeyi açmak için şu komutu girin:
+2. **Myvmnva** VM üzerindeki POWERSHELL 'den IP iletmeyi açmak için şu komutu girin:
 
     ```powershell
     Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters -Name IpEnableRouter -Value 1
     ```
 
-1. *Myvmnva* VM 'sini yeniden başlatın: görev çubuğundan **Başlangıç**  >  **gücü**' ni, **diğer (planlı)**  >  **devam et**' i seçin.
+3. **Myvmnva**'yı yeniden başlatın.
 
-    Bu, uzak masaüstü oturumunun bağlantısını da keser.
-
-1. *Myvmnva* VM yeniden başlatıldıktan sonra, *myVmPublic* VM 'ye bir Uzak Masaüstü oturumu oluşturun. *MyVmPrivate* VM 'sine hala bağlıyken, bir komut istemi açın ve şu komutu çalıştırın:
-
-    ```cmd
-    mstsc /v:myVmPublic
+    ```powershell
+    Restart-Computer
     ```
-1. *MyVmPublic* uzak masaüstünde PowerShell ' i açın.
 
-1. Şu komutu girerek Windows Güvenlik Duvarı üzerinden ıCMP 'yi etkinleştirin:
+4. **Myvmnva** yeniden başlatıldıktan sonra, **myVMPublic** için bir Uzak Masaüstü oturumu oluşturun. 
+    
+    Hala **myVMPrivate**'e bağlıyken PowerShell 'i açın ve şu komutu çalıştırın:
+
+    ```powershell
+    mstsc /v:myvmpublic
+    ```
+5. **MyVMPublic** uzak masaüstünde PowerShell ' i açın.
+
+6. Şu komutu girerek Windows Güvenlik Duvarı üzerinden ıCMP 'yi etkinleştirin:
 
     ```powershell
     New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
@@ -294,71 +379,79 @@ Azure kullanarak VM 'nin ağ arabirimi için [IP iletmeyi açtınız](#turn-on-i
 
 ## <a name="test-the-routing-of-network-traffic"></a>Ağ trafiğinin yönlendirilmesini test etme
 
-İlk olarak, ağ trafiğinin *myVmPublic* VM 'den *myVmPrivate* VM 'ye yönlendirilmesini test edelim.
+İlk olarak, ağ trafiğinin **myVMPublic** 'ten **myVMPrivate**'ye yönlendirilmesini test edelim.
 
-1. *MyVmPublic* VM 'deki PowerShell 'den şu komutu girin:
+1. **MyVMPublic** üzerinde PowerShell 'den şu komutu girin:
 
     ```powershell
-    tracert myVmPrivate
+    tracert myvmprivate
     ```
 
     Yanıt bu örneğe benzer:
 
     ```powershell
-    Tracing route to myVmPrivate.vpgub4nqnocezhjgurw44dnxrc.bx.internal.cloudapp.net [10.0.1.4]
+    Tracing route to myvmprivate.q04q2hv50taerlrtdyjz5nza1f.bx.internal.cloudapp.net [10.0.1.4]
     over a maximum of 30 hops:
 
-    1    <1 ms     *        1 ms  10.0.2.4
-    2     1 ms     1 ms     1 ms  10.0.1.4
+      1     1 ms     *        2 ms  myvmnva.internal.cloudapp.net [10.0.2.4]
+      2     2 ms     1 ms     1 ms  myvmprivate.internal.cloudapp.net [10.0.1.4]
 
     Trace complete.
     ```
 
-    İlk atlamanın, NVA 'nın özel IP adresi olan 10.0.2.4 'e olduğunu görebilirsiniz. İkinci atlama *myVmPrivate* VM 'nın özel IP adresidir: 10.0.1.4. Daha önce, yolu *Myroutetablepublic* yol tablosuna eklediniz ve bunu *ortak* alt ağla ilişkilendirdiniz. Sonuç olarak, Azure trafiği NVA üzerinden gönderdi ve doğrudan *özel* alt ağa değil.
+    * İlk atlamanın, **Myvmnva 'nın** özel IP adresi olan 10.0.2.4 'e olduğunu görebilirsiniz. 
 
-1. *myVmPublic* VM ile uzak masaüstü oturumunu kapatın. *myVmPrivate* VM bağlantınız hala açıktır.
+    * İkinci atlama **myVMPrivate**: 10.0.1.4 özel IP adresidir. 
 
-1. *MyVmPrivate* VM 'deki bir komut isteminden şu komutu girin:
+    Daha önce, yolu **Myroutetablepublic** yol tablosuna eklediniz ve bunu *ortak* alt ağla ilişkilendirdiniz. Azure, trafiği NVA üzerinden gönderdi ve doğrudan *özel* alt ağa değil.
 
-    ```cmd
-    tracert myVmPublic
+2. **MyVMPublic** için Uzak Masaüstü oturumunu kapatın. Bu, hala **myVMPrivate**'e bağlı kalır.
+
+3. PowerShell 'i **myVMPrivate** üzerinde açın, şu komutu girin:
+
+    ```powershell
+    tracert myvmpublic
     ```
 
     Bu komut, ağ trafiğinin *myVmPrivate* VM 'den *myVmPublic* VM 'ye yönlendirilmesini sınar. Yanıt bu örneğe benzer:
 
     ```cmd
-    Tracing route to myVmPublic.vpgub4nqnocezhjgurw44dnxrc.bx.internal.cloudapp.net [10.0.0.4]
+    Tracing route to myvmpublic.q04q2hv50taerlrtdyjz5nza1f.bx.internal.cloudapp.net [10.0.0.4]
     over a maximum of 30 hops:
 
-    1     1 ms     1 ms     1 ms  10.0.0.4
+      1     1 ms     1 ms     1 ms  myvmpublic.internal.cloudapp.net [10.0.0.4]
 
     Trace complete.
     ```
 
-    Azure 'un trafiği doğrudan *myVmPrivate* VM 'den *myVmPublic* VM 'ye yönlendirdiğini görebilirsiniz. Varsayılan olarak Azure, trafiği doğrudan alt ağlar arasında yönlendirir.
+    Azure 'un trafiği doğrudan *myVMPrivate* 'ten *myVMPublic*'e yönlendirdiğini görebilirsiniz. Varsayılan olarak Azure, trafiği doğrudan alt ağlar arasında yönlendirir.
 
-1. *myVmPrivate* VM ile uzak masaüstü oturumunu kapatın.
+4. **MyVMPrivate** için savunma oturumunu kapatın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Kaynak grubuna artık ihtiyaç duyulmadığında *Myresourcegroup* ve içerdiği tüm kaynakları silin:
+Kaynak grubuna artık ihtiyaç duyulmadığında **Myresourcegroup** ve içerdiği tüm kaynakları silin:
 
 1. Kaynak grubunuzu yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Kaynak gruplarını** arayın ve seçin.
 
-1. Kaynak grubunuzun adını (**Myresourcegroup**) seçin.
+2. Kaynak grubunuzun adını seçin **Myresourcegroup**.
 
-1. **Kaynak grubunu sil**'i seçin.
+3. **Kaynak grubunu sil**'i seçin.
 
-1. Onay iletişim kutusunda, **kaynak grubu adını yazmak** Için *myresourcegroup* yazın ve ardından **Sil**' i seçin. Azure, yol tablolarınız, depolama hesaplarınız, sanal ağlar, VM 'Ler, ağ arabirimleriniz ve genel IP adresleri dahil olmak üzere *Myresourcegroup* ve bu kaynak grubuna bağlı tüm kaynakları siler.
+4. Onay iletişim kutusunda, **kaynak grubu adını yazmak** Için **myresourcegroup** yazın ve ardından **Sil**' i seçin. 
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide bir yönlendirme tablosu oluşturup bir alt ağ ile ilişkilendirdiniz. Bir genel alt ağdan özel alt ağa trafiği yönlendiren basit bir NVA oluşturdunuz. Artık çok sayıda kullanışlı ağ işlevi sağlayan [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking)'nden farklı önceden yapılandırılmış NVA 'lar dağıtabilirsiniz. Yönlendirme hakkında daha fazla bilgi için bkz. [Yönlendirmeye genel bakış](virtual-networks-udr-overview.md) ve [Yönlendirme tablosunu yönetme](manage-route-table.md).
+Bu öğreticide şunları yaptınız:
 
-Bir sanal ağ içinde birçok Azure kaynağı dağıtabilmeniz sırasında Azure, bazı PaaS hizmetleri için bir sanal ağa kaynak dağıtamaz. Bazı Azure PaaS hizmetlerinin kaynaklarına erişimi kısıtlamak mümkündür, ancak kısıtlama yalnızca bir sanal ağ alt ağından gelen trafik olmalıdır. Azure PaaS kaynaklarına ağ erişimini kısıtlama hakkında bilgi edinmek için sonraki öğreticiye bakın.
+* Bir rota tablosu oluşturup bir alt ağla ilişkilendirdi.
+* Trafiği ortak bir alt ağdan özel bir alt ağa yönlendirmeyen basit bir NVA oluşturuldu. 
 
+[Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking)'nden, çok sayıda kullanışlı ağ işlevi sağlayan, önceden yapılandırılmış farklı NVA 'lar dağıtabilirsiniz. 
+
+Yönlendirme hakkında daha fazla bilgi için bkz. [Yönlendirmeye genel bakış](virtual-networks-udr-overview.md) ve [Yönlendirme tablosunu yönetme](manage-route-table.md).
+
+Bir sanal ağdaki ağ trafiğini filtrelemek için, bkz:
 > [!div class="nextstepaction"]
-> [PaaS kaynaklarına ağ erişimini kısıtlama](tutorial-restrict-network-access-to-resources.md)
-
-> [!NOTE] 
-> Azure hizmetleri maliyet parayı. Azure maliyet yönetimi, bütçeleri ayarlamanıza ve denetim altına harcamalarını sağlamak için uyarıları yapılandırmanıza yardımcı olur. Maliyet yönetimi ile Azure maliyetlerinizi çözümleyin, yönetin ve iyileştirin. Daha fazla bilgi edinmek için [maliyetlerinizi çözümlemeye yönelik hızlı başlangıç](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)bölümüne bakın.
+> [Öğretici: Azure portal kullanarak ağ trafiğini ağ güvenlik grubuyla filtreleme](tutorial-filter-network-traffic.md)

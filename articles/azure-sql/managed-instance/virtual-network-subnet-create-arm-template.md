@@ -13,10 +13,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 09/12/2019
 ms.openlocfilehash: 2a23fc0b769727cab5a28d3d313a7791bcfa6eee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91617715"
 ---
 # <a name="create-a-virtual-network-for-azure-sql-managed-instance"></a>Azure SQL Yönetilen Örneği için sanal ağ oluşturma
@@ -43,7 +43,7 @@ Azure SQL yönetilen örneğinin bir Azure [sanal ağı](../../virtual-network/v
 
 Bir sanal ağ oluşturmanın ve yapılandırmanın en kolay yolu Azure Resource Manager dağıtım şablonu kullanmaktır.
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 
 2. **Azure 'A dağıt** düğmesini seçin:
 
@@ -52,7 +52,7 @@ Bir sanal ağ oluşturmanın ve yapılandırmanın en kolay yolu Azure Resource 
    Bu düğme, SQL yönetilen örneği dağıtabileceğiniz ağ ortamını yapılandırmak için kullanabileceğiniz bir form açar.
 
    > [!Note]
-   > Bu Azure Resource Manager şablonu, iki alt ağa sahip bir sanal ağ dağıtır. **ManagedInstances**adlı bir alt ağ SQL yönetilen örneği için ayrılmıştır ve önceden yapılandırılmış bir yol tablosuna sahiptir. **Varsayılan**olarak adlandırılan diğer alt ağ, SQL yönetilen örneğine (örneğin, Azure sanal makineleri) erişmesi gereken diğer kaynaklar için kullanılır.
+   > Bu Azure Resource Manager şablonu, iki alt ağa sahip bir sanal ağ dağıtır. **ManagedInstances** adlı bir alt ağ SQL yönetilen örneği için ayrılmıştır ve önceden yapılandırılmış bir yol tablosuna sahiptir. **Varsayılan** olarak adlandırılan diğer alt ağ, SQL yönetilen örneğine (örneğin, Azure sanal makineleri) erişmesi gereken diğer kaynaklar için kullanılır.
 
 3. Ağ ortamını yapılandırın. Aşağıdaki biçimde, ağ ortamınızın parametrelerini yapılandırabilirsiniz:
 

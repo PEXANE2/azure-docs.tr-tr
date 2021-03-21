@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 05/11/2020
 ms.author: chenyl
 ms.openlocfilehash: 2482a26987ec142880acc51bf470d844655b6e3f
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97763531"
 ---
 # <a name="signalr-service-trigger-binding-for-azure-functions"></a>Azure Işlevleri için SignalR hizmeti tetikleme Bağlayıcısı
@@ -171,7 +171,7 @@ def main(invocation) -> None:
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `SignalRTrigger` .
 
-|function.jsözelliği | Öznitelik özelliği |Açıklama|
+|function.jsözelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
 |**türüyle**| yok | Olarak ayarlanmalıdır `SignalRTrigger` .|
 |**Görünüm**| yok | Olarak ayarlanmalıdır `in` .|
@@ -190,9 +190,9 @@ Tetikleyici giriş türü `InvocationContext` ya da özel bir tür olarak bildir
 
 Invocationcontext, SignalR hizmetinden gönderilen iletinin tüm içeriğini içerir.
 
-|Invocationcontext içindeki Özellik | Açıklama|
+|Invocationcontext içindeki Özellik | Description|
 |------------------------------|------------|
-|Arguments| *İleti* kategorisi için kullanılabilir. [Çağırma iletisinde](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding) *bağımsız değişkenler* içerir|
+|Bağımsız değişkenler| *İleti* kategorisi için kullanılabilir. [Çağırma iletisinde](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding) *bağımsız değişkenler* içerir|
 |Hata| *Bağlantısı kesilmiş* olay için kullanılabilir. Bağlantı hata olmadan kapalıysa veya hata iletilerini içeriyorsa boş olabilir.|
 |Hub| İletinin ait olduğu hub adı.|
 |Kategori| İletinin kategorisi.|

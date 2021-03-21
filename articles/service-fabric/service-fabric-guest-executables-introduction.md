@@ -4,10 +4,10 @@ description: Mevcut bir uygulamayı Konuk yürütülebilir dosyası olarak paket
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.openlocfilehash: 8b808d092001196a4d2150e44d508e031db95554
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96017755"
 ---
 # <a name="deploy-an-existing-executable-to-service-fabric"></a>Service Fabric için mevcut bir yürütülebiliri dağıtın
@@ -19,7 +19,7 @@ Konuk yürütülebilir dosyaları, durum bilgisi olmayan hizmetler gibi Service 
 Service Fabric kümesinde Konuk yürütülebilir dosyası çalıştırmanın çeşitli avantajları vardır:
 
 * Yüksek kullanılabilirlik. Service Fabric çalışan uygulamalar yüksek oranda kullanılabilir hale getirilir. Service Fabric, bir uygulamanın örneklerinin çalıştırılmasını sağlar.
-* Sistem durumunu izleme. Service Fabric sistem durumu izleme, bir uygulamanın çalışıp çalışmadığını algılar ve bir hata varsa tanılama bilgileri sağlar.   
+* Sistem durumu izleme. Service Fabric sistem durumu izleme, bir uygulamanın çalışıp çalışmadığını algılar ve bir hata varsa tanılama bilgileri sağlar.   
 * Uygulama yaşam döngüsü yönetimi. Kapalı kalma süresi olmadan yükseltmeler sağlamanın yanı sıra, yükseltme sırasında hatalı bir sistem durumu olayı oluşursa, Service Fabric önceki sürüme otomatik geri alma olanağı sağlar.    
 * Yoğunluklu. Birden çok uygulamayı bir kümede çalıştırabilirsiniz ve bu, her uygulamanın kendi donanımında çalışması gereksinimini ortadan kaldırır.
 * Keşfedilebilir: REST kullanarak kümedeki diğer hizmetleri bulmak için Service Fabric adlandırma hizmetini çağırabilirsiniz. 

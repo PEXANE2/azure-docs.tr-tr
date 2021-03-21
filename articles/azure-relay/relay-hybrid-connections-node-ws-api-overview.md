@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 558f49c09203192ff4cbb1af392eaeef8d705c94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91263496"
 ---
 # <a name="relay-hybrid-connections-node-api-overview"></a>Geçiş Karma Bağlantılar node API 'sine genel bakış
@@ -121,7 +121,7 @@ Oluşturucu bağımsız değişkenleri:
 - `server` (gerekli)-genellikle WebSocket. createRelayListenUri () yardımcı yöntemiyle oluşturulan bir karma bağlantı adı için tam URI.
 - `token` (gerekli)-bu bağımsız değişken, önceden verilen bir belirteç dizesini veya böyle bir belirteç dizesini elde etmek için çağrılabilecek bir geri çağırma işlevini barındırır. Belirteç yenilemeyi sağladığından geri çağırma seçeneği tercih edilir.
 
-#### <a name="events"></a>Olaylar
+#### <a name="events"></a>Ekinlikler
 
 `RelayedServer` örnekler, gelen istekleri işleyebilmeniz, bağlantılar oluşturmanız ve hata koşullarını algılamanıza olanak tanıyan üç olay yayar. `connect`İletileri işlemek için olaya abone olmanız gerekir. 
 

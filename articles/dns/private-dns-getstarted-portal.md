@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 10/20/2020
 ms.author: rohink
 ms.openlocfilehash: d298dfd5f3ad0beb56a511c124bab056ca25fd27
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92310061"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak bir Azure özel DNS bölgesi oluşturma
@@ -20,7 +20,7 @@ Bu hızlı başlangıç, Azure portal kullanarak ilk özel DNS bölgenizi ve kay
 
 DNS bölgesi, belirli bir etki alanına ait DNS kayıtlarını barındırmak için kullanılır. Etki alanınızı Azure DNS'de barındırmaya başlamak için bir DNS bölgesi oluşturmanız gerekir. Ardından bu DNS bölgesinde etki alanınız için tüm DNS kayıtları oluşturulur. Sanal ağınıza özel bir DNS bölgesi yayımlamak için, bölgedeki kayıtları çözümlemesine izin verilen sanal ağların listesini belirtirsiniz.  Bunlara *bağlı* sanal ağlar denir. Oto kayıt etkinleştirildiğinde Azure DNS, bir sanal makine oluşturulduğunda bölge kayıtlarını da güncelleştirir, ' IP adresini değiştirir veya silinir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -28,23 +28,23 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="create-a-private-dns-zone"></a>Özel bir DNS bölgesi oluşturma
 
-Aşağıdaki örnek, **MyAzureResourceGroup**adlı bir kaynak grubunda **PRIVATE.contoso.com** adlı bir DNS bölgesi oluşturur.
+Aşağıdaki örnek, **MyAzureResourceGroup** adlı bir kaynak grubunda **PRIVATE.contoso.com** adlı bir DNS bölgesi oluşturur.
 
 Bir DNS bölgesi, bir etki alanı için DNS girdilerini içerir. Etki alanınızı Azure DNS barındırılmaya başlamak için, bu etki alanı adı için bir DNS bölgesi oluşturun.
 
 ![Özel DNS bölgeleri arama](media/private-dns-portal/search-private-dns.png)
 
-1. Portal arama çubuğunda, ara metin kutusuna **özel DNS bölgeleri** yazın ve **ENTER**tuşuna basın.
-1. **Özel DNS bölgeyi**seçin.
+1. Portal arama çubuğunda, ara metin kutusuna **özel DNS bölgeleri** yazın ve **ENTER** tuşuna basın.
+1. **Özel DNS bölgeyi** seçin.
 2. **Özel DNS bölgesi oluştur**' u seçin.
 
 1. **Özel DNS bölgesi oluştur** sayfasında, aşağıdaki değerleri yazın veya seçin:
 
-   - **Kaynak grubu**: **Yeni oluştur**' u seçin, *MyAzureResourceGroup*girin ve **Tamam**' ı seçin. Kaynak grubu adı, Azure aboneliği dahilinde benzersiz olmalıdır.
+   - **Kaynak grubu**: **Yeni oluştur**' u seçin, *MyAzureResourceGroup* girin ve **Tamam**' ı seçin. Kaynak grubu adı, Azure aboneliği dahilinde benzersiz olmalıdır.
    -  **Ad**: Bu örnek için *Private.contoso.com* yazın.
-1. **Kaynak grubu konumu**için **Orta Batı ABD**' yi seçin.
+1. **Kaynak grubu konumu** için **Orta Batı ABD**' yi seçin.
 
-1. **Gözden geçir + oluştur**' u seçin.
+1. **Gözden geçir + Oluştur**’u seçin.
 
 1. **Oluştur**’u seçin.
 
@@ -74,9 +74,9 @@ Bu bölümde, adımlarda aşağıdaki parametreleri aşağıdaki bilgilerle değ
 
 1. **MyAzureResourceGroup** kaynak grubunu açın ve **Private.contoso.com** özel bölgesini seçin.
 2. Sol bölmede **sanal ağ bağlantıları**' nı seçin.
-3. **Ekle**’yi seçin.
-4. **Bağlantı adı**Için **MyLink** yazın.
-5. **Sanal ağ**Için, **Myazurevnet**' i seçin.
+3. **Add (Ekle)** seçeneğini belirleyin.
+4. **Bağlantı adı** Için **MyLink** yazın.
+5. **Sanal ağ** Için, **Myazurevnet**' i seçin.
 6. **Otomatik kaydı etkinleştir** onay kutusunu seçin.
 7. **Tamam**’ı seçin.
 
@@ -87,29 +87,29 @@ Bu bölümde, adımlarda aşağıdaki parametreleri aşağıdaki bilgilerle değ
 1. Portal sayfası sol üst köşesinde, **kaynak oluştur**' u seçin ve ardından **Windows Server 2016 Datacenter**' ı seçin.
 1. Kaynak grubu için **MyAzureResourceGroup** öğesini seçin.
 1. Sanal makinenin adı için **myVM01** yazın.
-1. **Bölge**için **Orta Batı ABD** seçin.
+1. **Bölge** için **Orta Batı ABD** seçin.
 1. Yönetici Kullanıcı adı için bir ad girin.
 2. Bir parola girin ve parolayı onaylayın.
-5. **Ortak gelen bağlantı noktaları**için **Seçili bağlantı noktalarına izin ver**' i seçin ve ardından **gelen bağlantı noktalarını Seç**için **RDP (3389)** seçeneğini belirleyin
+5. **Ortak gelen bağlantı noktaları** için **Seçili bağlantı noktalarına izin ver**' i seçin ve ardından **gelen bağlantı noktalarını Seç** için **RDP (3389)** seçeneğini belirleyin
 10. Sayfa için diğer varsayılanları kabul edin ve ardından Ileri ' ye tıklayın **: diskler >**.
 11. **Diskler** sayfasında Varsayılanları kabul edin ve ardından İleri ' ye tıklayın **: ağ >**.
 1. Sanal ağ için **Myazurevnet** ' in seçildiğinden emin olun.
 1. Sayfa için diğer varsayılanları kabul edin ve ardından Ileri ' ye tıklayın **: yönetim >**.
-2. **Önyükleme tanılaması**için **kapalı**' yı seçin, diğer varsayılanları kabul edin ve ardından **gözden geçir + oluştur**' u seçin.
+2. **Önyükleme tanılaması** için **kapalı**' yı seçin, diğer varsayılanları kabul edin ve ardından **gözden geçir + oluştur**' u seçin.
 1. Ayarları gözden geçirin ve ardından **Oluştur**' a tıklayın.
 
-Bu adımları yineleyin ve **myVM02**adlı başka bir sanal makine oluşturun.
+Bu adımları yineleyin ve **myVM02** adlı başka bir sanal makine oluşturun.
 
 Her iki sanal makinenin da tamamlanması birkaç dakika sürer.
 
 ## <a name="create-an-additional-dns-record"></a>Ek bir DNS kaydı oluşturma
 
- Aşağıdaki örnek, **Private.contoso.com**kaynak GRUBUNDAKI **MyAzureResourceGroup**DNS bölgesinde göreli ad **DB** ile bir kayıt oluşturur. Kayıt kümesinin tam nitelikli adı **DB.Private.contoso.com**' dir. Kayıt türü, **MYVM01**IP adresi olan "A" dır.
+ Aşağıdaki örnek, **Private.contoso.com** kaynak GRUBUNDAKI **MyAzureResourceGroup** DNS bölgesinde göreli ad **DB** ile bir kayıt oluşturur. Kayıt kümesinin tam nitelikli adı **DB.Private.contoso.com**' dir. Kayıt türü, **MYVM01** IP adresi olan "A" dır.
 
 1. **MyAzureResourceGroup** kaynak grubunu açın ve **Private.contoso.com** özel bölgesini seçin.
 2. **+ Kayıt kümesi** seçeneğini belirleyin.
-3. **Ad**için **DB**yazın.
-4. **IP adresi**Için, **MYVM01**için gördüğünüz IP adresini yazın. Bu, sanal makine başlatıldığında otomatik olarak kaydedilmelidir.
+3. **Ad** için **DB** yazın.
+4. **IP adresi** Için, **MYVM01** için gördüğünüz IP adresini yazın. Bu, sanal makine başlatıldığında otomatik olarak kaydedilmelidir.
 5. **Tamam**’ı seçin.
 
 ## <a name="test-the-private-zone"></a>Özel bölgeyi test etme
@@ -180,5 +180,5 @@ Artık gerekli değilse, bu hızlı başlangıçta oluşturulan kaynakları silm
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure DNS Özel Bölgeleri senaryolar](private-dns-scenarios.md)
+> [Azure DNS Özel Bölgeleri senaryoları](private-dns-scenarios.md)
 

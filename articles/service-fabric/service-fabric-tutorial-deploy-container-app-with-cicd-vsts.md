@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 08/29/2018
 ms.custom: mvc
 ms.openlocfilehash: bb0eb9226a99f139ff10a8da12a1e22017536c67
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96018860"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>Öğretici: Service Fabric kümesine CI/CD ile kapsayıcı uygulaması dağıtma
@@ -42,7 +42,7 @@ Sürekli tümleştirme iş akışınızda kullanmak üzere uygulama projenizin i
 
 Derleme oluşturabilmeniz için uygulama kaynak dosyalarınızı Azure DevOps 'daki bir takım projesi ile paylaşabilirsiniz.
 
-**Add to Source Control**  ->  Visual Studio 'nun sağ alt köşesindeki durum çubuğunda kaynak denetimine Ekle **Git** ' i seçerek projeniz için yeni bir yerel Git deposu oluşturun.
+  ->  Visual Studio 'nun sağ alt köşesindeki durum çubuğunda kaynak denetimine Ekle **Git** ' i seçerek projeniz için yeni bir yerel Git deposu oluşturun.
 
 **Takım Gezgini**’ndeki **Gönderim** görünümünde **Azure DevOps’a Gönder**’in altında yer alan **Git Deposunda Yayımla** düğmesini seçin.
 
@@ -134,7 +134,7 @@ Derleme tamamlandığında otomatik olarak bir yayın oluşturulması için sür
 
 ![Tetikleyici etkinleştirme][enable-trigger]
 
-**+ Release**  ->  Bir yayını el ile oluşturmak için + yayın **Oluştur oluştur**' u seçin  ->  **Create** . Yayının ilerleme durumunu **Yayınlar** sekmesinden takip edebilirsiniz.
+  ->  Bir yayını el ile oluşturmak için + yayın **Oluştur oluştur**' u seçin  ->   . Yayının ilerleme durumunu **Yayınlar** sekmesinden takip edebilirsiniz.
 
 Dağıtımın başarılı olduğunu ve uygulamanın kümede çalıştığını doğrulayın.  Bir web tarayıcısı açın ve `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/` sayfasına gidin.  Uygulama sürümünü not alın (bu örnekte "1.0.0.20170616.3").
 

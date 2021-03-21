@@ -1,23 +1,23 @@
 ---
 title: StorSimple 8000 serisi cihaz için uyarıları görüntüleyin ve yönetin
-description: StorSimple uyarı koşullarını ve önem derecesini, uyarı bildirimlerinin nasıl yapılandırılacağını ve bildirimleri yönetmek için StorSimple Aygıt Yöneticisi hizmetinin nasıl kullanılacağını açıklar.
+description: StorSimple uyarı koşullarını ve önem derecesini, uyarı bildirimlerinin nasıl yapılandırılacağını ve bildirimleri yönetmek için StorSimple Device Manager hizmetinin nasıl kullanılacağını açıklar.
 author: alkohli
 ms.service: storsimple
 ms.topic: how-to
 ms.date: 03/14/2019
 ms.author: alkohli
 ms.openlocfilehash: 36ed87a75d590a8647e5347b3e90e6f5159dc6b5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96016854"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>StorSimple uyarılarını görüntülemek ve yönetmek için StorSimple Aygıt Yöneticisi hizmetini kullanın
+# <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>StorSimple uyarılarını görüntülemek ve yönetmek için StorSimple Device Manager hizmetini kullanın
 
 ## <a name="overview"></a>Genel Bakış
 
-StorSimple Aygıt Yöneticisi hizmetindeki **Uyarılar** dikey penceresi, StorSimple cihazı ile ilgili uyarıları gerçek zamanlı olarak gözden geçirmeniz ve temizlemeniz için bir yol sağlar. Bu dikey pencerede, StorSimple cihazlarınızın sistem durumu sorunlarını ve genel Microsoft Azure StorSimple çözümünü merkezi olarak izleyebilirsiniz.
+StorSimple Device Manager hizmetindeki **Uyarılar** dikey penceresi, StorSimple cihazı ile ilgili uyarıları gerçek zamanlı olarak gözden geçirmeniz ve temizlemeniz için bir yol sağlar. Bu dikey pencerede, StorSimple cihazlarınızın sistem durumu sorunlarını ve genel Microsoft Azure StorSimple çözümünü merkezi olarak izleyebilirsiniz.
 
 Bu öğreticide, yaygın uyarı koşulları, uyarı önem düzeyleri ve uyarı bildirimlerinin nasıl yapılandırılacağı açıklanmaktadır. Ayrıca, belirli bir uyarıyı hızlıca bulmanıza ve uygun şekilde yanıt vermenize olanak sağlayan uyarı hızlı başvuru tabloları da dahildir.
 
@@ -28,7 +28,7 @@ Bu öğreticide, yaygın uyarı koşulları, uyarı önem düzeyleri ve uyarı b
 StorSimple cihazınız, çeşitli koşullara yanıt olarak uyarılar oluşturur. En yaygın uyarı koşulları türleri şunlardır:
 
 * **Donanım sorunları** : Bu uyarılar, donanımınızın sistem durumunu bildirir. Bellenim yükseltmelerinde, bir ağ arabiriminde sorunlar varsa veya veri sürücülerinizden biriyle ilgili bir sorun olup olmadığını bilmeniz gerekir.
-* **Bağlantı sorunları** : Bu uyarılar, verileri aktarma konusunda zorluk oluşması durumunda oluşur. Azure depolama hesabına veri aktarımı sırasında veya cihazlar ile StorSimple Aygıt Yöneticisi hizmeti arasında bağlantı olmaması nedeniyle iletişim sorunları oluşabilir. Çok sayıda hata noktası olduğundan, iletişim sorunları düzeltilemeyecek bir kısmı. Daha gelişmiş sorun giderme işlemlerine devam etmeden önce ağ bağlantısı ve Internet erişiminin kullanılabilir olduğunu her zaman ilk önce doğrulamanız gerekir. Sorun giderme konusunda yardım için [Test-Connection cmdlet Ile sorun giderme](storsimple-8000-troubleshoot-deployment.md)bölümüne gidin.
+* **Bağlantı sorunları** : Bu uyarılar, verileri aktarma konusunda zorluk oluşması durumunda oluşur. Azure depolama hesabına veri aktarımı sırasında veya cihazlar ile StorSimple Device Manager hizmeti arasında bağlantı olmaması nedeniyle iletişim sorunları oluşabilir. Çok sayıda hata noktası olduğundan, iletişim sorunları düzeltilemeyecek bir kısmı. Daha gelişmiş sorun giderme işlemlerine devam etmeden önce ağ bağlantısı ve Internet erişiminin kullanılabilir olduğunu her zaman ilk önce doğrulamanız gerekir. Sorun giderme konusunda yardım için [Test-Connection cmdlet Ile sorun giderme](storsimple-8000-troubleshoot-deployment.md)bölümüne gidin.
 * **Performans sorunları** : Bu uyarılar, sisteminiz ağır bir yük altında olduğunda olduğu gibi en iyi şekilde gerçekleştirimediğinde oluşur.
 
 Ayrıca, güvenlik, güncelleştirmeler veya iş hatalarıyla ilgili uyarıları görebilirsiniz.
@@ -62,7 +62,7 @@ Bir cihaz için e-posta bildirimini etkinleştirdikten sonra, bildirim listesini
    2. **E-posta hizmeti yöneticileri** alanında, hizmet yöneticisinin ve tüm ortak yöneticilerin uyarı bildirimlerini almasını sağlamak için **Evet** ' i seçin.
    3. **Diğer e-posta alıcıları** alanına, uyarı bildirimlerini alması gereken diğer tüm alıcıların e-posta adreslerini girin. Adları *birisi \@ Somewhere.com* biçiminde girin. E-posta adreslerini ayırmak için noktalı virgül kullanın. Cihaz başına en fazla 20 e-posta adresi yapılandırabilirsiniz. 
       
-3. Sınama e-postası bildirimi göndermek için **Test e-postası gönder ' e** tıklayın. StorSimple Aygıt Yöneticisi hizmeti, test bildirimini ileten durum iletilerini görüntüler.
+3. Sınama e-postası bildirimi göndermek için **Test e-postası gönder ' e** tıklayın. StorSimple Device Manager hizmeti, test bildirimini ileten durum iletilerini görüntüler.
 
     ![Uyarı ayarları](./media/storsimple-8000-manage-alerts/configure-alerts-email3.png)
 
@@ -71,7 +71,7 @@ Bir cihaz için e-posta bildirimini etkinleştirdikten sonra, bildirim listesini
     ![Uyarı sınama bildirimi e-postası gönderildi](./media/storsimple-8000-manage-alerts/configure-alerts-email4.png)
    
    > [!NOTE]
-   > Test bildirim iletisi gönderilemezse, StorSimple Aygıt Yöneticisi hizmetinde uygun bir hata iletisi görüntülenir. Birkaç dakika bekleyin ve ardından test bildirim iletinizi yeniden göndermeye çalışın. 
+   > Test bildirim iletisi gönderilemezse, StorSimple Device Manager hizmetinde uygun bir hata iletisi görüntülenir. Birkaç dakika bekleyin ve ardından test bildirim iletinizi yeniden göndermeye çalışın. 
 
 5. Yapılandırmayı tamamladıktan sonra **Kaydet**' e tıklayın. Onayınız istendiğinde **Evet**’e tıklayın.
 
@@ -79,7 +79,7 @@ Bir cihaz için e-posta bildirimini etkinleştirdikten sonra, bildirim listesini
 
 ## <a name="view-and-track-alerts"></a>Uyarıları görüntüleme ve izleme
 
-StorSimple Aygıt Yöneticisi hizmeti Özet dikey penceresi, cihazlarınızda önem düzeyine göre düzenlenmiş, cihazlarınızdaki uyarı sayısına hızlı bir bakış sağlar.
+StorSimple Device Manager hizmeti Özet dikey penceresi, cihazlarınızda önem düzeyine göre düzenlenmiş, cihazlarınızdaki uyarı sayısına hızlı bir bakış sağlar.
 
 ![Uyarılar panosu](./media/storsimple-8000-manage-alerts/device-summary4.png)
 
@@ -159,7 +159,7 @@ StorSimple üretim cihazınızda bulut bağlantısı başarısız olursa cihazı
 
 | Uyarı metni | Olay | Daha fazla bilgi/Önerilen Eylemler |
 |:--- |:--- |:--- |
-| Kurtarma işlemleri bu hizmetin tüm ayarlarını geri yükleyemedi. Cihaz yapılandırma verileri bazı cihazlar için tutarsız bir durumda. |Olağanüstü durum kurtarma sonrasında veri tutarsızlığı algılandı. |Hizmette şifrelenen veriler, cihazdaki ile eşitlenmez. <cihaz *adı*> storsimple Aygıt Yöneticisi, eşitleme işlemini başlatacak şekilde yetkilendirin. `Restore-HcsmEncryptedServiceData`Güvenlik profilini geri yüklemek için bu cmdlet 'e giriş olarak eski parolayı sağlamak üzere StorSimple Için Windows PowerShell arabirimini kullanın <*cihaz adı*> cmdlet 'ini çalıştırın. Ardından, `Invoke-HcsmServiceDataEncryptionKeyChange` hizmet veri şifreleme anahtarını güncelleştirmek için cmdlet 'ini çalıştırın. Uygun eylemi gerçekleştirdikten sonra uyarılar sayfasından bu uyarıyı temizleyin. |
+| Kurtarma işlemleri bu hizmetin tüm ayarlarını geri yükleyemedi. Cihaz yapılandırma verileri bazı cihazlar için tutarsız bir durumda. |Olağanüstü durum kurtarma sonrasında veri tutarsızlığı algılandı. |Hizmette şifrelenen veriler, cihazdaki ile eşitlenmez. <cihaz *adı*> storsimple Device Manager, eşitleme işlemini başlatacak şekilde yetkilendirin. `Restore-HcsmEncryptedServiceData`Güvenlik profilini geri yüklemek için bu cmdlet 'e giriş olarak eski parolayı sağlamak üzere StorSimple Için Windows PowerShell arabirimini kullanın <*cihaz adı*> cmdlet 'ini çalıştırın. Ardından, `Invoke-HcsmServiceDataEncryptionKeyChange` hizmet veri şifreleme anahtarını güncelleştirmek için cmdlet 'ini çalıştırın. Uygun eylemi gerçekleştirdikten sonra uyarılar sayfasından bu uyarıyı temizleyin. |
 
 ### <a name="hardware-alerts"></a>Donanım uyarıları
 

@@ -11,10 +11,10 @@ ms.author: sstein
 ms.reviewer: MightyPen
 ms.date: 11/07/2018
 ms.openlocfilehash: e17e98e784b7453c87814c5cce5c03568f66b1cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91619755"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde uygulama performansınızı geliştirmek için In-Memory OLTP kullanın
@@ -44,7 +44,7 @@ SSMS, etkin iş yüküne sahip bir veritabanında çalıştırabileceğiniz bir 
 SSMS 'de, raporu oluşturmak için:
 
 * **Nesne Gezgini**, veritabanı düğümünüz ' a sağ tıklayın.
-* **Raporlar**  >  **Standart raporlar**  >  **işlem performansı analizine genel bakış ' a**tıklayın.
+* **Raporlar**  >  **Standart raporlar**  >  **işlem performansı analizine genel bakış ' a** tıklayın.
 
 Daha fazla bilgi için bkz. [In-Memory OLTP 'a bir tablo veya saklı yordam arasında bağlantı olup olmadığını belirleme](/sql/relational-databases/in-memory-oltp/determining-if-a-table-or-stored-procedure-should-be-ported-to-in-memory-oltp).
 
@@ -95,7 +95,7 @@ Bu geçiş seçeneğini kullanmak için:
 2. Tablonuz ve dizinleri için tam T-SQL betiğini edinin.
 
    * SSMS 'de tablo düğümünüz ' a sağ tıklayın.
-   * **Betik tablosu**' na  >  **CREATE To**  >  **Yeni sorgu**oluştur ' a tıklayın.
+   * **Betik tablosu**' na  >    >  **Yeni sorgu** oluştur ' a tıklayın.
 3. Betik penceresinde, CREATE TABLE bildirimine (MEMORY_OPTIMIZED = ON) ekleyin.
 4. KÜMELENMIŞ bir dizin varsa, KÜMELENMEMIŞ olarak değiştirin.
 5. SP_RENAME kullanarak mevcut tabloyu yeniden adlandırın.

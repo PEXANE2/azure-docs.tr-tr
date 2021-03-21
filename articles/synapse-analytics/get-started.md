@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
-ms.date: 11/17/2020
-ms.openlocfilehash: b1339a0ab5be9004643cf2e9f86203eba9a2cc72
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.date: 03/18/2021
+ms.openlocfilehash: 0153797445e2a3f55baa53e49c06ee5c82e3bebe
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445072"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606234"
 ---
 # <a name="get-started-with-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'i kullanmaya başlama
 
@@ -24,11 +24,11 @@ Bu öğretici, Azure SYNAPSE Analytics 'in başlıca özellik alanlarında adım
 Aşağıda *gösterildiği gibi adımları izleyin* ve birçok özelliği kullanarak bir tura katılın ve temel özelliklerini nasıl çalıştıracağınızı öğreneceksiniz.
 
 * [1. adım-bir Synapse çalışma alanı oluşturma ve kurma](get-started-create-workspace.md)
-* [2. adım-adanmış bir SQL havuzu kullanarak çözümleme](get-started-analyze-sql-pool.md)
-* [3. adım-Apache Spark kullanarak çözümleme](get-started-analyze-spark.md)
-* [4. adım-sunucusuz SQL havuzu kullanarak çözümleme](get-started-analyze-sql-on-demand.md)
-* [5. adım-bir depolama hesabındaki verileri çözümleme](get-started-analyze-storage.md)
-* [6. adım-işlem hatları ile düzenleme](get-started-pipelines.md)
-* [7. adım-Power BI verileri görselleştirme](get-started-visualize-power-bi.md)
-* [8. adım-etkinlikleri Izleme](get-started-monitor.md)
-* [9. adım-bilgi merkezini araştırma](get-started-knowledge-center.md)
+* [2. adım-sunucusuz bir SQL havuzu kullanarak çözümleme](get-started-analyze-sql-on-demand.md)
+* [3. ADIM: Apache Spark kullanarak analiz etme](get-started-analyze-spark.md)
+* [4. adım-adanmış bir SQL havuzu kullanarak çözümleme](get-started-analyze-sql-pool.md)
+* [5. ADIM: Depolama hesabındaki verileri analiz etme](get-started-analyze-storage.md)
+* [6. ADIM: İşlem hatları ile düzenleme](get-started-pipelines.md)
+* [7. ADIM: Power BI ile verileri görselleştirme](get-started-visualize-power-bi.md)
+* [8. ADIM: Etkinlikleri izleme](get-started-monitor.md)
+* [9. ADIM: Bilgi merkezini keşfetme](get-started-knowledge-center.md)

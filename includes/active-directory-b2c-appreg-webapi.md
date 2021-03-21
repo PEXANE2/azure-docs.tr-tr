@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 10/16/2019
 ms.author: mimart
 ms.openlocfilehash: 86ca23b23d24174d22deafba68ce170bb7717926
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96025862"
 ---
 Web API kaynakları, erişim belirteci sunan istemci uygulamalarına göre korunan kaynak isteklerini kabul etmeden ve bunlara yanıt verebilmeleri için kiracınızda kayıtlı olmalıdır.
@@ -32,7 +32,7 @@ Ardından, örtük izin akışını etkinleştirin:
 1. **Yönet** altında **kimlik doğrulaması**' nı seçin.
 1. **Yeni deneyimi deneyin** (gösteriliyorsa) seçeneğini belirleyin.
 1. **Örtük izin**' ın altında, **erişim belirteçleri** ve **Kimlik belirteçleri** onay kutularını seçin.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 #### <a name="applications"></a>[Uygulamalar](#tab/applications/)
 

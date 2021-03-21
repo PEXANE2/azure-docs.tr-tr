@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: 43a8600a288a9797edcd326a1cb5dbcc8688d61f
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 1d54429d901ca6caeadabfa7580e7270ceabcf45
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99834186"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104612579"
 ---
 Bu öğreticide, bileşenleriyle bir örnek IoT Tak ve Kullan cihaz uygulaması oluşturma, bunları IoT Hub 'ınıza bağlama ve Azure IoT Gezgini aracını kullanarak hub 'a gönderdiği bilgileri görüntüleme hakkında bilgi verilmektedir. Örnek uygulama Node.js için yazılmıştır ve Node.js için Azure IoT Hub cihaz SDK 'sına dahildir. Bir çözüm Oluşturucusu, herhangi bir cihaz kodunu görüntülemeye gerek olmadan IoT Tak ve Kullan cihazının yeteneklerini anlamak için Azure IoT gezgin aracını kullanabilir.
 
@@ -60,7 +60,7 @@ Bu işlem, örnekleri klasöründe çalıştırmak için gereken ilgili NPM dosy
 
 *Azure-iot-SDK-node\device\samples\pnp* klasörü, IoT Tak ve kullan sıcaklık denetleyicisi cihazının örnek kodunu içerir.
 
-*pnpTemperatureController.js* dosyasındaki kod, bir IoT Tak ve kullan sıcaklık denetleyicisi cihazı uygular. Bu örneğin uyguladığı model [birden çok bileşen](../articles/iot-pnp/concepts-components.md)kullanır. [Sıcaklık cihazının dijital TWINS tanım dili (DTDL) modeli dosyası](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) , cihazın uyguladığı telemetri, Özellikler ve komutları tanımlar.
+*pnpTemperatureController.js* dosyasındaki kod, bir IoT Tak ve kullan sıcaklık denetleyicisi cihazı uygular. Bu örneğin uyguladığı model [birden çok bileşen](../articles/iot-pnp/concepts-modeling-guide.md)kullanır. [Sıcaklık cihazının dijital TWINS tanım dili (DTDL) modeli dosyası](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) , cihazın uyguladığı telemetri, Özellikler ve komutları tanımlar.
 
 *pnpTemperatureController.js* dosyasını seçtiğiniz bir kod düzenleyicisinde açın. Örnek kod, nasıl yapılacağını göstermektedir:
 

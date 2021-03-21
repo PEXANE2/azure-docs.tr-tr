@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
 ms.openlocfilehash: e5ea7a1abbbd6ab4be32955179227fbd539cf641
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98019627"
 ---
 # <a name="azure-functions-output-from-azure-stream-analytics"></a>Azure Stream Analytics Azure Işlevleri çıkışı
@@ -21,7 +21,7 @@ Azure Işlevleri Stream Analytics çıkışı, Azure Çin 21Vianet ve Azure Alma
 
 Azure Stream Analytics HTTP Tetikleyicileri aracılığıyla Azure Işlevlerini çağırır. Azure Işlevleri çıkış bağdaştırıcısı, aşağıdaki yapılandırılabilir özelliklerle kullanılabilir:
 
-| Özellik adı | Açıklama |
+| Özellik adı | Description |
 | --- | --- |
 | İşlev uygulaması |Azure Işlevleri uygulamanızın adı. |
 | İşlev |Azure Işlevleri uygulamanızdaki işlevin adı. |

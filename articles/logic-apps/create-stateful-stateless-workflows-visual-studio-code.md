@@ -7,10 +7,10 @@ ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 03/08/2021
 ms.openlocfilehash: f7f8082cc9120345336610d5cb49741140d3b606
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102557021"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Azure Logic Apps (Önizleme) uzantısıyla Visual Studio Code durum bilgisiz ve durum bilgisi olmayan iş akışları oluşturma
@@ -935,7 +935,7 @@ Mantıksal uygulamanızı, [işlev uygulaması gereksinimlerine benzer şekilde,
          | Önem derecesi | İzleme türü |
          |----------------|------------|
          | Kritik | Mantıksal uygulamanızda kurtarılamaz bir hatayı tanımlayan Günlükler. |
-         | Hata ayıklama | Geliştirme sırasında, örneğin gelen ve giden HTTP çağrılarında İnceleme için kullanabileceğiniz Günlükler. |
+         | Hata Ayıklama | Geliştirme sırasında, örneğin gelen ve giden HTTP çağrılarında İnceleme için kullanabileceğiniz Günlükler. |
          | Hata | İş akışı yürütmesindeki bir hata olduğunu gösteren Günlükler, ancak mantıksal uygulamanızda genel bir hata değildir. |
          | Bilgi | Mantıksal uygulamanızda veya iş akışınızda genel etkinliği izleyen Günlükler, örneğin: <p><p>-Bir tetikleyici, eylem veya çalıştırma başladığında ve sona erdiğinde. <br>-Mantıksal uygulamanız başlatıldığında veya sona erdiğinde. |
          | İzleme | En ayrıntılı iletileri (örneğin, depolama istekleri veya dağıtıcı etkinliği) ve iş akışı yürütme etkinliğiyle ilgili tüm iletileri içeren Günlükler. |

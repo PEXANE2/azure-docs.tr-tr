@@ -4,10 +4,10 @@ description: Bir Azure Container Instance dağıtırken bir kapsayıcı görünt
 ms.topic: article
 ms.date: 04/15/2019
 ms.openlocfilehash: 23221de3dc91c37c2e6fb96489539d3954efcd87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86169638"
 ---
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>Varsayılan komut satırı işlemini geçersiz kılmak için bir kapsayıcı örneğindeki komut satırını ayarlayın
@@ -86,7 +86,7 @@ az container logs --resource-group myResourceGroup --name mycontainer1
 
 Şimdi farklı bir komut satırı belirterek farklı metni çözümlemek için ikinci bir örnek kapsayıcı ayarlayın. Kapsayıcı tarafından yürütülen Python betiği, *WORDCOUNT.py*, BIR URL 'yi bir bağımsız değişken olarak kabul eder ve varsayılan yerine bu sayfanın içeriğini işler.
 
-Örneğin, *Romeo ve Juliet*içinde en az beş karakter uzunluğunda olan ilk 3 sözcüğü belirleme:
+Örneğin, *Romeo ve Juliet* içinde en az beş karakter uzunluğunda olan ilk 3 sözcüğü belirleme:
 
 ```azurecli-interactive
 az container create \
@@ -98,7 +98,7 @@ az container create \
     --command-line "python wordcount.py http://shakespeare.mit.edu/romeo_juliet/full.html"
 ```
 
-Yeniden, kapsayıcı *sonlandırıldıktan*sonra kapsayıcının günlüklerini göstererek çıktıyı görüntüleyin:
+Yeniden, kapsayıcı *sonlandırıldıktan* sonra kapsayıcının günlüklerini göstererek çıktıyı görüntüleyin:
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer2

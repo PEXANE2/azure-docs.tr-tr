@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: de98e25cf5703a43282e551a0eda20d7767c6ce8
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92103637"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-cli"></a>Azure CLı kullanarak Azure Data Lake Storage 1. kullanmaya başlama
@@ -29,7 +29,7 @@ Azure Data Lake Storage 1. hesabı oluşturmak ve klasör oluşturma, veri dosya
 Azure CLI, Azure kaynaklarını yönetmek için Azure tarafından sunulan komut satırı deneyimidir. MacOS, Linux ve Windows’da kullanılabilir. Daha fazla bilgi için bkz. [Azure CLI 'Ya genel bakış](/cli/azure). Komutların ve sözdiziminin tüm listesi için [Azure Data Lake Storage 1. CLI başvurusuna](/cli/azure/dls) da bakabilirsiniz.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu makaleye başlamadan önce aşağıdakilere sahip olmanız ve aşağıdaki işlemleri yapmış olmanız gerekir:
 
 * **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
@@ -38,7 +38,7 @@ Bu makaleye başlamadan önce aşağıdakilere sahip olmanız ve aşağıdaki i�
 
 ## <a name="authentication"></a>Kimlik Doğrulaması
 
-Bu makalede, Son Kullanıcı kullanıcısı olarak oturum açtığınızda Data Lake Storage 1. daha basit bir kimlik doğrulama yaklaşımı kullanılmaktadır. Data Lake Storage 1. hesabının ve dosya sisteminin erişim düzeyi, oturum açmış kullanıcının erişim düzeyine göre yönetilir. Ancak, **Son Kullanıcı kimlik doğrulaması** veya **hizmetten hizmete kimlik doğrulama**olan Data Lake Storage 1. kimlik doğrulaması için başka yaklaşımlar de vardır. Kimlik doğrulaması gerçekleştirmeyle ilgili yönergeler ve daha fazla bilgi için [Son kullanıcı kimlik doğrulaması](data-lake-store-end-user-authenticate-using-active-directory.md) veya [Hizmetten hizmete kimlik doğrulaması](./data-lake-store-service-to-service-authenticate-using-active-directory.md) bölümlerine göz atın.
+Bu makalede, Son Kullanıcı kullanıcısı olarak oturum açtığınızda Data Lake Storage 1. daha basit bir kimlik doğrulama yaklaşımı kullanılmaktadır. Data Lake Storage 1. hesabının ve dosya sisteminin erişim düzeyi, oturum açmış kullanıcının erişim düzeyine göre yönetilir. Ancak, **Son Kullanıcı kimlik doğrulaması** veya **hizmetten hizmete kimlik doğrulama** olan Data Lake Storage 1. kimlik doğrulaması için başka yaklaşımlar de vardır. Kimlik doğrulaması gerçekleştirmeyle ilgili yönergeler ve daha fazla bilgi için [Son kullanıcı kimlik doğrulaması](data-lake-store-end-user-authenticate-using-active-directory.md) veya [Hizmetten hizmete kimlik doğrulaması](./data-lake-store-service-to-service-authenticate-using-active-directory.md) bölümlerine göz atın.
 
 
 ## <a name="log-in-to-your-azure-subscription"></a>Azure aboneliğinizde oturum açın
@@ -132,13 +132,13 @@ Bunun çıktısının aşağıdakine benzer olması gerekir:
 
 ## <a name="rename-download-and-delete-data-from-a-data-lake-storage-gen1-account"></a>Data Lake Storage 1. hesabından verileri yeniden adlandırma, indirme ve silme 
 
-* **Bir dosyayı yeniden adlandırmak için**aşağıdaki komutu kullanın:
+* **Bir dosyayı yeniden adlandırmak için** aşağıdaki komutu kullanın:
   
     ```azurecli
     az dls fs move --account mydatalakestoragegen1 --source-path /mynewfolder/vehicle1_09142014.csv --destination-path /mynewfolder/vehicle1_09142014_copy.csv
     ```
 
-* **Bir dosyayı Indirmek için**aşağıdaki komutu kullanın. Belirttiğiniz hedef yolun önceden var olduğundan emin olun.
+* **Bir dosyayı Indirmek için** aşağıdaki komutu kullanın. Belirttiğiniz hedef yolun önceden var olduğundan emin olun.
   
     ```azurecli     
     az dls fs download --account mydatalakestoragegen1 --source-path /mynewfolder/vehicle1_09142014_copy.csv --destination-path "C:\mysampledata\vehicle1_09142014_copy.csv"
@@ -149,7 +149,7 @@ Bunun çıktısının aşağıdakine benzer olması gerekir:
     > 
     >
 
-* **Bir dosyayı silmek için**aşağıdaki komutu kullanın:
+* **Bir dosyayı silmek için** aşağıdaki komutu kullanın:
   
     ```azurecli
     az dls fs delete --account mydatalakestoragegen1 --path /mynewfolder/vehicle1_09142014_copy.csv

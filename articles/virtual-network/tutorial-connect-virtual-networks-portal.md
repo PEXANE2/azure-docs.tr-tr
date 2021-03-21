@@ -14,15 +14,15 @@ ms.date: 01/22/2020
 ms.author: kumud
 ms.custom: ''
 ms.openlocfilehash: e95441aab6c8ce7de37ba5f6b08d5f7d54e13347
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96017925"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak sanal ağ eşlemesi ile sanal ağları bağlama
 
-Sanal ağ eşlemesi ile sanal ağları birbirine bağlayabilirsiniz. Bu sanal ağlar aynı bölgede veya farklı bölgelerde (Genel Sanal Ağ Eşleme olarak da bilinir) olabilir. Sanal ağlar eşlendikten sonra, kaynaklar aynı sanal ağ üzerindeymiş gibi, aynı gecikme süresi ve bant genişliği ile her iki sanal ağdaki kaynaklar birbiriyle iletişim kurabilir. Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Sanal ağ eşlemesi ile sanal ağları birbirine bağlayabilirsiniz. Bu sanal ağlar aynı bölgede veya farklı bölgelerde (Genel Sanal Ağ Eşleme olarak da bilinir) olabilir. Sanal ağlar eşlendikten sonra, kaynaklar aynı sanal ağ üzerindeymiş gibi, aynı gecikme süresi ve bant genişliği ile her iki sanal ağdaki kaynaklar birbiriyle iletişim kurabilir. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * İki sanal ağ oluşturma
@@ -67,7 +67,7 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 ## <a name="peer-virtual-networks"></a>Sanal ağları eşleme
 
 1. Azure portalının üst kısmındaki Arama kutusuna *MyVirtualNetwork1* yazmaya başlayın. Arama sonuçlarında **myVirtualNetwork1** görüntülendiğinde bunu seçin.
-2. Ayarlar **altında, eşlemeler**' **Settings** i seçin ve ardından aşağıdaki resimde gösterildiği gibi **Ekle**' yi seçin:
+2. Ayarlar **altında, eşlemeler**' i seçin ve ardından aşağıdaki resimde gösterildiği gibi **Ekle**' yi seçin:
 
     ![Eşleme oluşturma](./media/tutorial-connect-virtual-networks-portal/create-peering.png)
 

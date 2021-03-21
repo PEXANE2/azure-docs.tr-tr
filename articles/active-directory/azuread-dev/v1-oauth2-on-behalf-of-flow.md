@@ -15,10 +15,10 @@ ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: f746cc654934464d907c6ad669eb7470e4dcaeeb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88117745"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Şirket adına temsilci Kullanıcı kimliği kullanan hizmetten hizmete çağrılar
@@ -56,7 +56,7 @@ Hem orta katman hizmeti hem de istemci uygulamasını Azure AD 'ye kaydedin.
 1. Sol bölmede **diğer hizmetler** ' i seçin ve **Azure Active Directory**' yi seçin.
 1. **Uygulama kayıtları** ve ardından **Yeni kayıt**' ı seçin.
 1. Uygulama için kolay bir ad girin ve uygulama türü ' nü seçin.
-1. **Desteklenen hesap türleri**altında, **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesaplar**' ı seçin.
+1. **Desteklenen hesap türleri** altında, **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesaplar**' ı seçin.
 1. Yeniden yönlendirme URI 'sini temel URL 'ye ayarlayın.
 1. Uygulamayı kaydetmek için **Kaydet**'i seçin.
 1. Azure portal, uygulamanızı seçin ve **gizli dizileri & sertifikalar**' ı seçin.
@@ -74,7 +74,7 @@ Hem orta katman hizmeti hem de istemci uygulamasını Azure AD 'ye kaydedin.
 1. Sol bölmede **diğer hizmetler** ' i seçin ve **Azure Active Directory**' yi seçin.
 1. **Uygulama kayıtları** ve ardından **Yeni kayıt**' ı seçin.
 1. Uygulama için kolay bir ad girin ve uygulama türü ' nü seçin.
-1. **Desteklenen hesap türleri**altında, **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesaplar**' ı seçin.
+1. **Desteklenen hesap türleri** altında, **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesaplar**' ı seçin.
 1. Yeniden yönlendirme URI 'sini temel URL 'ye ayarlayın.
 1. Uygulamayı kaydetmek için **Kaydet**'i seçin.
 1. Uygulamanız için izinleri yapılandırın. **API izinleri**' nde, **izin Ekle** ve sonra **API 'lerim**' i seçin.
@@ -105,14 +105,14 @@ https://login.microsoftonline.com/<tenant>/oauth2/token
 
 Paylaşılan bir gizli dizi kullanılırken hizmetten hizmete erişim belirteci isteği aşağıdaki parametreleri içerir:
 
-| Parametre | Tür | Açıklama |
+| Parametre | Tür | Description |
 | --- | --- | --- |
-| grant_type |gerekli | Belirteç isteğinin türü. OBO isteği bir JSON Web Token (JWT) kullanır, bu nedenle değer **urn: IETF: params: OAuth: Grant-Type: JWT-taşıyıcı**olmalıdır. |
+| grant_type |gerekli | Belirteç isteğinin türü. OBO isteği bir JSON Web Token (JWT) kullanır, bu nedenle değer **urn: IETF: params: OAuth: Grant-Type: JWT-taşıyıcı** olmalıdır. |
 | onay |gerekli | İstekte kullanılan erişim belirtecinin değeri. |
 | client_id |gerekli | Azure AD 'ye kayıt sırasında çağıran hizmete atanan uygulama KIMLIĞI. Azure portal uygulama KIMLIĞINI bulmak için **Active Directory**' i seçin, dizini seçin ve ardından uygulama adını seçin. |
 | client_secret |gerekli | Azure AD 'de çağıran hizmet için kaydedilen anahtar. Bu değer kayıt sırasında belirtilmiştir. |
 | kaynak |gerekli | Alıcı hizmetin uygulama KIMLIĞI URI 'SI (güvenli kaynak). Azure portal uygulama KIMLIĞI URI 'sini bulmak için **Active Directory** ' i seçin ve dizini seçin. Uygulama adı ' nı seçin, **Tüm ayarlar**' ı seçin ve ardından **Özellikler**' i seçin. |
-| requested_token_use |gerekli | İsteğin nasıl işleneceğini belirtir. Şirket adına, değerin **on_behalf_of**olması gerekir. |
+| requested_token_use |gerekli | İsteğin nasıl işleneceğini belirtir. Şirket adına, değerin **on_behalf_of** olması gerekir. |
 | scope |gerekli | Belirteç isteği için bir alan ayrılmış kapsam listesi. OpenID Connect için, **OpenID** kapsamı belirtilmelidir.|
 
 #### <a name="example"></a>Örnek
@@ -139,15 +139,15 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 Bir sertifikaya sahip hizmetten hizmete erişim belirteci isteği aşağıdaki parametreleri içerir:
 
-| Parametre | Tür | Açıklama |
+| Parametre | Tür | Description |
 | --- | --- | --- |
-| grant_type |gerekli | Belirteç isteğinin türü. OBO isteği bir JWT erişim belirteci kullanır, bu yüzden değer **urn: IETF: params: OAuth: Grant-Type: JWT-taşıyıcı**olmalıdır. |
+| grant_type |gerekli | Belirteç isteğinin türü. OBO isteği bir JWT erişim belirteci kullanır, bu yüzden değer **urn: IETF: params: OAuth: Grant-Type: JWT-taşıyıcı** olmalıdır. |
 | onay |gerekli | İstekte kullanılan belirtecin değeri. |
 | client_id |gerekli | Azure AD 'ye kayıt sırasında çağıran hizmete atanan uygulama KIMLIĞI. Azure portal uygulama KIMLIĞINI bulmak için **Active Directory**' i seçin, dizini seçin ve ardından uygulama adını seçin. |
 | client_assertion_type |gerekli |Değer şu şekilde olmalıdır `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
 | client_assertion |gerekli | Uygulamanız için kimlik bilgileri olarak kaydettiğiniz sertifikayla oluşturduğunuz ve oturum açarken kullanabileceğiniz bir JSON Web Token. Onaylama biçimi ve sertifikanızın nasıl kaydedileceği hakkında bilgi edinmek için bkz.  [sertifika kimlik bilgileri](../develop/active-directory-certificate-credentials.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) .|
 | kaynak |gerekli | Alıcı hizmetin uygulama KIMLIĞI URI 'SI (güvenli kaynak). Azure portal uygulama KIMLIĞI URI 'sini bulmak için **Active Directory** ' i seçin ve dizini seçin. Uygulama adı ' nı seçin, **Tüm ayarlar**' ı seçin ve ardından **Özellikler**' i seçin. |
-| requested_token_use |gerekli | İsteğin nasıl işleneceğini belirtir. Şirket adına, değerin **on_behalf_of**olması gerekir. |
+| requested_token_use |gerekli | İsteğin nasıl işleneceğini belirtir. Şirket adına, değerin **on_behalf_of** olması gerekir. |
 | scope |gerekli | Belirteç isteği için bir alan ayrılmış kapsam listesi. OpenID Connect için, **OpenID** kapsamı belirtilmelidir.|
 
 Bu parametreler, paylaşılan gizli dizi ile aynı şekilde, `client_secret parameter` iki parametre tarafından değiştirilmeleri dışında neredeyse aynıdır: `client_assertion_type` ve `client_assertion` .
@@ -249,14 +249,14 @@ Bazı OAuth tabanlı Web hizmetlerinin, etkileşimli olmayan akışlarda SAML on
 
 SAML onaylama işlemi için hizmetten hizmete yönelik bir istek aşağıdaki parametreleri içerir:
 
-| Parametre | Tür | Açıklama |
+| Parametre | Tür | Description |
 | --- | --- | --- |
-| grant_type |gerekli | Belirteç isteğinin türü. JWT kullanan bir istek için değer **urn: IETF: params: OAuth: Grant-Type: JWT-taşıyıcı**olmalıdır. |
+| grant_type |gerekli | Belirteç isteğinin türü. JWT kullanan bir istek için değer **urn: IETF: params: OAuth: Grant-Type: JWT-taşıyıcı** olmalıdır. |
 | onay |gerekli | İstekte kullanılan erişim belirtecinin değeri.|
 | client_id |gerekli | Azure AD 'ye kayıt sırasında çağıran hizmete atanan uygulama KIMLIĞI. Azure portal uygulama KIMLIĞINI bulmak için **Active Directory**' i seçin, dizini seçin ve ardından uygulama adını seçin. |
 | client_secret |gerekli | Azure AD 'de çağıran hizmet için kaydedilen anahtar. Bu değer kayıt sırasında belirtilmiştir. |
 | kaynak |gerekli | Alıcı hizmetin uygulama KIMLIĞI URI 'SI (güvenli kaynak). Bu, SAML belirtecinin hedef kitlesi olacak kaynaktır. Azure portal uygulama KIMLIĞI URI 'sini bulmak için **Active Directory** ' i seçin ve dizini seçin. Uygulama adı ' nı seçin, **Tüm ayarlar**' ı seçin ve ardından **Özellikler**' i seçin. |
-| requested_token_use |gerekli | İsteğin nasıl işleneceğini belirtir. Şirket adına, değerin **on_behalf_of**olması gerekir. |
+| requested_token_use |gerekli | İsteğin nasıl işleneceğini belirtir. Şirket adına, değerin **on_behalf_of** olması gerekir. |
 | requested_token_type | gerekli | İstenen belirtecin türünü belirtir. Değer **urn: IETF: params: OAuth: Token-Type: SAML2** veya **urn: IETF: params: OAuth: Token-Type: saml1 ile** erişilen kaynağın gereksinimlerine bağlı olarak değişebilir. |
 
 Yanıt, UTF8 ve Base64url içinde kodlanmış bir SAML belirteci içeriyor.
