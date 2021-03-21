@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: mbullwin
 ms.openlocfilehash: 30d8fdf99da7a4854db0985bed6256ecd6f7a366
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93420929"
 ---
 # <a name="how-to-configure-alerts-and-get-notifications-using-a-hook"></a>Nasıl yapılır: bir kanca kullanarak uyarıları yapılandırma ve bildirim alma
@@ -41,7 +41,7 @@ E-posta kancası, anomali uyarıların **e-posta** adresi bölümünde belirtile
 | Dış bağlantı | Sorun giderme notları gibi özelleştirilmiş bir yeniden yönlendirmeyi sağlayan isteğe bağlı alan. |
 | Özelleştirilmiş anomali uyarı başlığı | Başlık şablonu,,,,,,,, `${severity}` `${alertSettingName}` `${datafeedName}` `${metricName}` `${detectConfigName}` `${timestamp}` `${topDimension}` `${incidentCount}``${anomalyCount}`
 
-**Tamam** ' a tıkladıktan sonra bir e-posta kancası oluşturulur. Bunu, anomali uyarılar almak için herhangi bir uyarı ayarlarında kullanabilirsiniz. 
+**Tamam**' a tıkladıktan sonra bir e-posta kancası oluşturulur. Bunu, anomali uyarılar almak için herhangi bir uyarı ayarlarında kullanabilirsiniz. 
 
 ### <a name="web-hook"></a>Web kancası
 
@@ -86,7 +86,7 @@ Bir Azure DevOps kancası oluşturmak için aşağıdaki bilgileri eklemeniz ger
 ## <a name="add-or-edit-alert-settings"></a>Uyarı ayarlarını Ekle veya Düzenle
 
 Ölçüm Ayrıntıları sayfasının sol alt köşesindeki **Uyarı ayarları** bölümünü bulmak için ölçüm ayrıntısı sayfasına gidin. Seçili algılama yapılandırması için uygulanan tüm uyarı ayarlarını listeler. Yeni bir algılama yapılandırması oluşturulduğunda, hiçbir uyarı ayarı yoktur ve hiçbir uyarı gönderilmez.  
-Uyarı ayarlarını değiştirmek için **Ekle** , **Düzenle** ve **Sil** simgelerini kullanabilirsiniz.
+Uyarı ayarlarını değiştirmek için **Ekle**, **Düzenle** ve **Sil** simgelerini kullanabilirsiniz.
 
 :::image type="content" source="../media/alerts/alert-setting.png" alt-text="Uyarı ayarları menü öğesi.":::
 
@@ -94,9 +94,9 @@ Uyarı ayarlarınızı eklemek veya düzenlemek üzere bir pencere almak için *
 
 :::image type="content" source="../media/alerts/edit-alert.png" alt-text="Uyarı ayarlarını Ekle veya Düzenle":::
 
-**Uyarı ayarı adı** : Bu uyarı ayarının adı. Uyarı e-postası başlığında görüntülenecektir.
+**Uyarı ayarı adı**: Bu uyarı ayarının adı. Uyarı e-postası başlığında görüntülenecektir.
 
-**Kancalar** : uyarıların gönderileceği kancalar listesi.
+**Kancalar**: uyarıların gönderileceği kancalar listesi.
 
 Yukarıdaki ekran görüntüsünde işaretlenen bölüm, bir algılama yapılandırmasının ayarlarından biridir. Farklı algılama yapılandırmalarının farklı uyarı ayarlarını yapabilirsiniz. Bu penceredeki üçüncü açılan listeyi kullanarak hedef yapılandırmayı seçin. 
 
@@ -106,10 +106,10 @@ Bir algılama yapılandırması için filtre ayarları aşağıda verilmiştir.
 
 **Için uyarı** , anormallikleri filtrelemek için 4 seçeneğe sahiptir:
 
-* **Tüm serilerde bulunan bozukluklar** : uyarıya tüm bozukluklar dahil edilecek.         
-* **Seri grubundaki bozukluklar** : diziyi boyut değerlerine göre filtreleyin. Bazı boyutlarda belirli değerleri ayarlayın. Bozukluklar yalnızca seri belirtilen değerle eşleştiğinde uyarıya dahil edilir.       
-* **Sık kullanılan serideki bozukluklar** : uyarıya yalnızca sık kullanılan olarak işaretlenen seriler dahil edilir.        |
-* **Tüm serilerin en üstte bulunan bozukluklar** : Bu filtre, yalnızca değeri en üstteki n olan seriler hakkında dikkat etmeniz durumunda olur. Bazı zaman damgalarını geri bakacağız ve bu zaman damgasında serinin değerinin ilk N olup olmadığını kontrol edeceğiz. "İlk n" sayısı belirtilen sayıdan daha büyükse, anomali bir uyarıya dahil edilir.        |
+* **Tüm serilerde bulunan bozukluklar**: uyarıya tüm bozukluklar dahil edilecek.         
+* **Seri grubundaki bozukluklar**: diziyi boyut değerlerine göre filtreleyin. Bazı boyutlarda belirli değerleri ayarlayın. Bozukluklar yalnızca seri belirtilen değerle eşleştiğinde uyarıya dahil edilir.       
+* **Sık kullanılan serideki bozukluklar**: uyarıya yalnızca sık kullanılan olarak işaretlenen seriler dahil edilir.        |
+* **Tüm serilerin en üstte bulunan bozukluklar**: Bu filtre, yalnızca değeri en üstteki n olan seriler hakkında dikkat etmeniz durumunda olur. Bazı zaman damgalarını geri bakacağız ve bu zaman damgasında serinin değerinin ilk N olup olmadığını kontrol edeceğiz. "İlk n" sayısı belirtilen sayıdan daha büyükse, anomali bir uyarıya dahil edilir.        |
 
 **Filtre anomali seçenekleri** aşağıdaki seçeneklere sahip ek bir filtredir:
 

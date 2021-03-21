@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 666b39e2a600fe6ca004798ed4f8371cdd1dfe5f
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96340263"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>Azure portal kullanarak Azure Data Lake Storage 1. ile HDInsight kümeleri oluşturma
 
 > [!div class="op_single_selector"]
-> * [Azure portalını kullanma](data-lake-store-hdinsight-hadoop-use-portal.md)
+> * [Azure portal kullanın](data-lake-store-hdinsight-hadoop-use-portal.md)
 > * [PowerShell kullanma (varsayılan depolama için)](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
 > * [PowerShell kullanma (ek depolama için)](data-lake-store-hdinsight-hadoop-use-powershell.md)
 > * [Kaynak Yöneticisi kullan](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
@@ -127,7 +127,7 @@ Depolama hesabındaki Data Lake Storage 1. kök düzeyinde izin atamak için:
 
 1. Sayfanın alt kısmındaki **Seç** ' e tıklayın.
 1. İzin atamak için **Çalıştır** ' ı seçin.
-1. **Bitti**'yi seçin.
+1. **Bitti** seçeneğini belirleyin.
 
 HDInsight kümesi kök düzeyinde izin atamak için:
 
@@ -137,7 +137,7 @@ HDInsight kümesi kök düzeyinde izin atamak için:
 1. Klasör üzerindeki izinleri ayarlayın.  Varsayılan olarak, okuma, yazma ve yürütme tümü seçilidir.
 1. Sayfanın alt kısmındaki **Seç** ' e tıklayın.
 1. **Çalıştır**'ı seçin.
-1. **Bitti**'yi seçin.
+1. **Bitti** seçeneğini belirleyin.
 
 Ek depolama alanı olarak Data Lake Storage 1. kullanıyorsanız, yalnızca HDInsight kümesinden erişmek istediğiniz klasörlere izin atamanız gerekir. Örneğin, aşağıdaki ekran görüntüsünde yalnızca Data Lake Storage 1. olan bir depolama hesabındaki **myNewFolder** klasörüne erişim sağlarsınız.
 

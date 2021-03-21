@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.custom: mqtt, devx-track-js
 ms.openlocfilehash: cfc0fa45c08f917b2e0b4a0b055e801173a4ba39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91252026"
 ---
 # <a name="get-started-with-device-management-nodejs"></a>Cihaz yönetimini kullanmaya başlama (Node.js)
@@ -34,7 +34,7 @@ Bu öğreticinin sonunda iki Node.js konsol uygulamanız vardır:
 
 * Sanal cihaz uygulamasında doğrudan bir yöntemi çağıran **dmpatterns_getstarted_service.js**, yanıtı görüntüler ve güncelleştirilmiş bildirilen özellikleri görüntüler.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Node.js 10.0. x veya üzeri sürümü. [Geliştirme ortamınızı hazırlama](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) Bu öğretici Için Node.js Windows veya Linux 'ta nasıl yükleneceğini açıklar.
 
@@ -42,7 +42,7 @@ Bu öğreticinin sonunda iki Node.js konsol uygulamanız vardır:
 
 * Güvenlik duvarınızdaki 8883 numaralı bağlantı noktasını açık olduğundan emin olun. Bu makaledeki cihaz örneği, 8883 numaralı bağlantı noktası üzerinden iletişim kuran MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağ ortamlarında engellenebilir. Bu sorunu geçici olarak çözmek için daha fazla bilgi ve IoT Hub bkz. [bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-## <a name="create-an-iot-hub"></a>IoT hub’ı oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -160,7 +160,7 @@ Bu bölümde şunları yapacaksınız:
 
 Bu bölümde, doğrudan bir yöntemi kullanarak bir cihazda Uzaktan yeniden başlatma işlemini başlatan bir Node.js konsol uygulaması oluşturacaksınız. Uygulama, bu cihazın son yeniden başlatma zamanını saptamak için Device ikizi sorgularını kullanır.
 
-1. **Triggerrebootondevice**adlı boş bir klasör oluşturun. Komut istemindeki aşağıdaki komutu kullanarak **triggerrebootondevice** klasöründe package.jsbir dosya oluşturun. Tüm varsayılanları kabul edin:
+1. **Triggerrebootondevice** adlı boş bir klasör oluşturun. Komut istemindeki aşağıdaki komutu kullanarak **triggerrebootondevice** klasöründe package.jsbir dosya oluşturun. Tüm varsayılanları kabul edin:
 
     ```cmd/sh
     npm init

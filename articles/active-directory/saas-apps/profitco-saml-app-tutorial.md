@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: jeedes
 ms.openlocfilehash: 027fb66538dfcead24470507b8080f2e0aacb469
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92515211"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-profitco"></a>Öğretici: Profit.co ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -56,7 +56,7 @@ Profit.co tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-profitco"></a>Profit.co için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Profit.co ile yapılandırın ve test edin. SSO 'nun çalışması için, Profit.co 'deki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlı bir ilişki kurun.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Profit.co ile yapılandırın ve test edin. SSO 'nun çalışması için, Profit.co 'deki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlı bir ilişki kurun.
 
 Azure AD SSO 'yu Profit.co ile yapılandırmak ve test etmek için genel adımlar şunlardır:
 
@@ -71,7 +71,7 @@ Azure AD SSO 'yu Profit.co ile yapılandırmak ve test etmek için genel adımla
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **Profit.co** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun. **Çoklu oturum açma**seçeneğini belirleyin.
+1. [Azure Portal](https://portal.azure.com/), **Profit.co** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun. **Çoklu oturum açma** seçeneğini belirleyin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesini seçin.
 
@@ -87,7 +87,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure Portal sol bölmeden, kullanıcılar **Azure Active Directory**  >  **Users**  >  **tüm kullanıcılar**' ı seçin.
+1. Azure Portal sol bölmeden, kullanıcılar **Azure Active Directory**  >    >  **tüm kullanıcılar**' ı seçin.
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  

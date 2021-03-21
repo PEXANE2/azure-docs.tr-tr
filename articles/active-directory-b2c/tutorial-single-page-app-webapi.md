@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 737810a7d07d0d97b2e42acffa17fdd32986c48b
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93421099"
 ---
 # <a name="tutorial-protect-and-grant-access-to-a-nodejs-web-api-from-a-single-page-application-with-azure-ad-b2c"></a>Öğretici: Azure AD B2C ile tek sayfalı bir uygulamadan Node.js Web API 'sine koruma ve erişim izni verme
@@ -34,7 +34,7 @@ Bu serideki [ilk öğreticide](tutorial-single-page-app.md) , kod örneğini ind
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Öğreticideki adımları ve önkoşulları doldurun [: Azure AD B2C ile tek sayfalı bir uygulamada kimlik doğrulamasını etkinleştirme](tutorial-single-page-app.md)
 * [Visual Studio Code](https://code.visualstudio.com/) veya başka bir kod Düzenleyicisi
@@ -50,7 +50,7 @@ Kapsamlar korumalı kaynaklara erişimi yönetmenin bir yolunu sunar. Kapsamlar 
 
 [!INCLUDE [active-directory-b2c-scopes](../../includes/active-directory-b2c-scopes.md)]
 
-**Scopes** `demo.read` Tek sayfalı uygulamayı yapılandırırken daha sonraki bir adımda kullanılacak kapsamın kapsamları altındaki değeri kaydedin. Tam kapsam değeri öğesine benzerdir `https://contosob2c.onmicrosoft.com/api/demo.read` .
+ `demo.read` Tek sayfalı uygulamayı yapılandırırken daha sonraki bir adımda kullanılacak kapsamın kapsamları altındaki değeri kaydedin. Tam kapsam değeri öğesine benzerdir `https://contosob2c.onmicrosoft.com/api/demo.read` .
 
 ## <a name="grant-permissions"></a>İzinleri verme
 

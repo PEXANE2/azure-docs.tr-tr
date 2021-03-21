@@ -4,10 +4,10 @@ description: Azure Event Grid olaylar için Service Bus kuyrukları ve konuları
 ms.topic: conceptual
 ms.date: 09/03/2020
 ms.openlocfilehash: 12b72420e3475b46a4cd61ce5032b478af740dde
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97399868"
 ---
 # <a name="service-bus-queues-and-topics-as-event-handlers-for-azure-event-grid-events"></a>Service Bus kuyrukları ve konuları Azure Event Grid olaylar için olay işleyicileri olarak

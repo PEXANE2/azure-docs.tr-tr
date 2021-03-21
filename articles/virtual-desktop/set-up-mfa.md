@@ -7,10 +7,10 @@ ms.date: 12/10/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 00aba5d169a05eab25dcc63ca813955e71d09598
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97092389"
 ---
 # <a name="enable-azure-multifactor-authentication-for-windows-virtual-desktop"></a>Windows sanal masaüstü için Azure çok faktörlü kimlik doğrulamasını etkinleştirme
@@ -45,7 +45,7 @@ Windows sanal masaüstüne bağlanırken çok faktörlü kimlik doğrulaması ge
 4. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
 5. **Atamalar** altında **Kullanıcılar ve gruplar**’ı seçin.
 6. **Ekle**' nin altında, **Kullanıcılar ve gruplar**  >  **Kullanıcılar ve gruplar** ' ı seçin > [Önkoşullar](#prerequisites) aşamasında oluşturduğunuz grubu seçin.
-7. **Bitti**’yi seçin.
+7. **Bitti** seçeneğini belirleyin.
 8. **Bulut uygulamaları veya eylemler** altında  >  , **Uygulama Seç**' i seçin.
 9. Kullanmakta olduğunuz Windows sanal masaüstü sürümüne göre aşağıdaki uygulamalardan birini seçin.
    

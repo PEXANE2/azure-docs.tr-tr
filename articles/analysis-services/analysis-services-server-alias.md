@@ -8,10 +8,10 @@ ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 7fb52a0f03fa1f9ab9bc0c6a2c27adf70b4bf2ca
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96491239"
 ---
 # <a name="alias-server-names"></a>Diğer ad sunucu adları
@@ -43,7 +43,7 @@ Bu örnekte, Visual Studio 'da bir ASP.NET Web Forms uygulaması oluşturulur. S
 <%@ Page Title="Home Page" Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="FriendlyRedirect._Default" %>
 ```
 
-Default.aspx.cs ' deki Page_Load olayı Azure Analysis Services sunucu adını döndürmek için Response. Write () yöntemini kullanır.
+Default. aspx. cs ' deki Page_Load olayı, Azure Analysis Services sunucusu adını döndürmek için Response. Write () yöntemini kullanır.
 
 ```
 protected void Page_Load(object sender, EventArgs e)

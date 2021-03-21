@@ -16,10 +16,10 @@ ms.date: 01/04/2021
 ms.author: vinigam
 ms.custom: mvc
 ms.openlocfilehash: 7abaae033d2dbdb329a1f99d8f9845e5965d806c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101712326"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor"></a>Bağlantı Izleyicisi ile ağ bağlantısı Izleme
@@ -287,7 +287,7 @@ Bağlantı Izleyicisi deneyiminden önce oluşturulan bağlantı izleyicilerinde
 
 Ölçümleri kullandığınızda, kaynak türünü Microsoft. Network/networkWatchers/Connectionmonitörleri olarak ayarlayın
 
-| Metric | Görünen ad | Birim | Toplama türü | Açıklama | Boyutlar |
+| Metric | Görünen ad | Birim | Toplama türü | Description | Boyutlar |
 | --- | --- | --- | --- | --- | --- |
 | ProbesFailedPercent (klasik) | % Yoklama başarısız oldu (klasik) | Yüzde | Ortalama | Bağlantı İzleme Araştırmaları yüzdesi başarısız oldu. | Boyut yok |
 | AverageRoundtripMs (klasik) | Ort. gidiş dönüş süresi (MS) (klasik) | Mayacak | Ortalama | Kaynak ve hedef arasında gönderilen bağlantı izleme araştırmaları için Ortalama ağ RTT. |             Boyut yok |

@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 7b2220ffe92446338e1b9db9b329847d93830334
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88005440"
 ---
 #  <a name="windows-virtual-desktop-classic-troubleshooting-overview-feedback-and-support"></a>Windows sanal masaüstü (klasik) sorun gidermeye genel bakış, geri bildirim ve destek
@@ -20,7 +20,7 @@ ms.locfileid: "88005440"
 
 Bu makalede, bir Windows sanal masaüstü kiracı ortamı ayarlarken karşılaşabileceğiniz sorunlara genel bir bakış sağlanır ve sorunları çözmeye yönelik yollar sağlanır.
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 
 Windows Sanal Masaüstü hizmetini ürün ekibi ve etkin topluluk üyeleriyle tartışmak için [Windows sanal masaüstü teknoloji Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) 'yi ziyaret edin.
 

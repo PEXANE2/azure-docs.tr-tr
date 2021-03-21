@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: apimpm
 ms.openlocfilehash: 62f163b9ce649cd5ddb52b4325682570633dfb92
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96183167"
 ---
 # <a name="cicd-for-api-management-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak API Management için CI/CD
@@ -43,7 +43,7 @@ Bu örnekte, iki dağıtım ortamı vardır: *geliştirme* ve *Üretim*. Her bir
 
 Bu önerilen yaklaşımdaki anahtar, tüm API Management yapılandırmalarının [Azure Resource Manager şablonlarda](../azure-resource-manager/templates/template-syntax.md)tutulmasını kullanmaktır. Kuruluş, bu şablonları git gibi bir kaynak denetimi sisteminde tutmalıdır. Görüntüde gösterildiği gibi, bir yayımcı deposu, bir şablon koleksiyonundaki üretim API Management örneğinin tüm yapılandırmasını içerir:
 
-|Şablon  |Açıklama  |
+|Şablon  |Description  |
 |---------|---------|
 |Hizmet şablonu     | API Management örneğinin fiyatlandırma katmanı ve özel etki alanları gibi hizmet düzeyi yapılandırması.         |
 |Paylaşılan Şablonlar     |  Gruplar, ürünler ve Günlükçüler gibi API Management bir örnek genelinde paylaşılan kaynaklar.    |

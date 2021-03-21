@@ -4,10 +4,10 @@ description: MARS aracısının yedekleme senaryolarını nasıl desteklediğini
 ms.topic: conceptual
 ms.date: 08/04/2020
 ms.openlocfilehash: 8e4ace0c17dbe75e989981db56583ed9477b3716
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87562608"
 ---
 # <a name="about-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı hakkında
@@ -26,9 +26,9 @@ MARS Aracısı aşağıdaki yedekleme senaryolarını destekler:
 
 ### <a name="additional-scenarios"></a>İlave senaryolar
 
-- **Azure sanal makineler 'de belirli dosya ve klasörleri**yedekleme: Azure sanal makinelerini (VM) yedeklemeye yönelik BIRINCIL Yöntem VM 'de bir Azure Backup uzantısı kullanmaktır. Uzantı tüm VM 'yi yedekler. Bir VM içindeki belirli dosya ve klasörleri yedeklemek istiyorsanız, Azure VM 'lerine MARS Aracısı 'nı yükleyebilirsiniz. Daha fazla bilgi için bkz. [mimari: yerleşik Azure VM yedeklemesi](./backup-architecture.md#architecture-built-in-azure-vm-backup).
+- **Azure sanal makineler 'de belirli dosya ve klasörleri** yedekleme: Azure sanal makinelerini (VM) yedeklemeye yönelik BIRINCIL Yöntem VM 'de bir Azure Backup uzantısı kullanmaktır. Uzantı tüm VM 'yi yedekler. Bir VM içindeki belirli dosya ve klasörleri yedeklemek istiyorsanız, Azure VM 'lerine MARS Aracısı 'nı yükleyebilirsiniz. Daha fazla bilgi için bkz. [mimari: yerleşik Azure VM yedeklemesi](./backup-architecture.md#architecture-built-in-azure-vm-backup).
 
-- **Çevrimdışı dengeli dağıtım**: Azure 'a verilerin ilk tam yedeklemeleri genellikle büyük miktarda veriyi aktarır ve daha fazla ağ bant genişliği gerektirir. Sonraki yedeklemeler yalnızca Delta veya artımlı, veri miktarını aktarır. Azure Backup ilk yedeklemeleri sıkıştırır. Azure Backup *çevrimdışı dağıtım*sürecinde, sıkıştırılmış ilk yedekleme verilerini çevrimdışı olarak Azure 'a yüklemek için diskleri kullanabilir. Daha fazla bilgi için bkz. [Azure Data Box kullanarak çevrimdışı yedekleme Azure Backup](offline-backup-azure-data-box.md).
+- **Çevrimdışı dengeli dağıtım**: Azure 'a verilerin ilk tam yedeklemeleri genellikle büyük miktarda veriyi aktarır ve daha fazla ağ bant genişliği gerektirir. Sonraki yedeklemeler yalnızca Delta veya artımlı, veri miktarını aktarır. Azure Backup ilk yedeklemeleri sıkıştırır. Azure Backup *çevrimdışı dağıtım* sürecinde, sıkıştırılmış ilk yedekleme verilerini çevrimdışı olarak Azure 'a yüklemek için diskleri kullanabilir. Daha fazla bilgi için bkz. [Azure Data Box kullanarak çevrimdışı yedekleme Azure Backup](offline-backup-azure-data-box.md).
 
 ## <a name="restore-scenarios"></a>Geri yükleme senaryoları
 
@@ -48,7 +48,7 @@ MARS Aracısı aşağıdaki geri yükleme senaryolarını destekler:
 
 ## <a name="backup-process"></a>Yedekleme işlemi
 
-1. Azure portal, bir [Kurtarma Hizmetleri Kasası](install-mars-agent.md#create-a-recovery-services-vault)oluşturun ve **yedekleme hedeflerinden**dosyalar, klasörler ve sistem durumu ' nu seçin.
+1. Azure portal, bir [Kurtarma Hizmetleri Kasası](install-mars-agent.md#create-a-recovery-services-vault)oluşturun ve **yedekleme hedeflerinden** dosyalar, klasörler ve sistem durumu ' nu seçin.
 2. [Kurtarma Hizmetleri Kasası kimlik bilgilerini ve Aracı yükleyicisini](./install-mars-agent.md#download-the-mars-agent) şirket içi bir makineye indirin.
 
 3. [Aracıyı yükleyip](./install-mars-agent.md#install-and-register-the-agent) indirilen kasa kimlik bilgilerini kullanarak makineyi kurtarma hizmetleri kasasına kaydedin.

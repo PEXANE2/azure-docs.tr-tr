@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: sngun
 ms.openlocfilehash: c5404c026385f9ebf06c4f0289a4db0bf944d172
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93341250"
 ---
 # <a name="frequently-asked-questions-about-the-table-api-in-azure-cosmos-db"></a>Azure Cosmos DB Tablo API'si hakkında sık sorulan sorular
@@ -197,7 +197,7 @@ Evet, Azure Cosmos DB Tablo API'si tüm özniteliklerin şema tanımı olmadan o
 
 Evet, Dizin tanımını sağlayarak dizin oluşturma ilkesini değiştirebilirsiniz. Ayarları doğru bir şekilde kodlayıp kaçış yapmanız gerekir.
 
-Non-.NET SDK 'Ları için, dizin oluşturma ilkesi yalnızca **Veri Gezgini** ' de portalda ayarlanabilir, değiştirmek istediğiniz tabloya gidebilir ve sonra **Ölçek & ayarları** ->dizin oluşturma ilkesi ' ne gidebilir, istediğiniz değişikliği yapıp, sonra **tasarruf** edebilirsiniz.
+Non-.NET SDK 'Ları için, dizin oluşturma ilkesi yalnızca **Veri Gezgini**' de portalda ayarlanabilir, değiştirmek istediğiniz tabloya gidebilir ve sonra **Ölçek & ayarları**->dizin oluşturma ilkesi ' ne gidebilir, istediğiniz değişikliği yapıp, sonra **tasarruf** edebilirsiniz.
 
 .NET SDK 'dan app.config dosyasında gönderilebilir:
 

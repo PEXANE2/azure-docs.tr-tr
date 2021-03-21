@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.openlocfilehash: 7e3f8e5e975468b468712ae8907cdca0e80a5f9f
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94352617"
 ---
 # <a name="tutorial-configure-salesforce-sandbox-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için Salesforce korumalı alanını yapılandırma
@@ -61,7 +61,7 @@ Bu bölümün amacı, Active Directory Kullanıcı hesaplarının Salesforce kor
 
 1. Salesforce korumalı alanı örneğinizi seçin, sonra **sağlama** sekmesini seçin.
 
-1. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
+1. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
     ![Ekran görüntüsü, sağlama modu otomatik ve ayarlayabileceğiniz diğer değerlere ayarlanmış olan Salesforce korumalı alanı sağlama sayfasını gösterir.](./media/salesforce-sandbox-provisioning-tutorial/provisioning.png)
 
@@ -71,11 +71,11 @@ Bu bölümün amacı, Active Directory Kullanıcı hesaplarının Salesforce kor
    
     b. **Yönetici parolası** metin kutusuna bu hesabın parolasını yazın.
 
-1. Salesforce korumalı alanı güvenlik belirtecinizi almak için yeni bir sekme açın ve aynı Salesforce korumalı alanı yönetici hesabında oturum açın. Sayfanın sağ üst köşesinde, ad ' a tıklayın ve ardından **Ayarlar** ' a tıklayın.
+1. Salesforce korumalı alanı güvenlik belirtecinizi almak için yeni bir sekme açın ve aynı Salesforce korumalı alanı yönetici hesabında oturum açın. Sayfanın sağ üst köşesinde, ad ' a tıklayın ve ardından **Ayarlar**' a tıklayın.
 
      ![Ekran görüntüsü seçili Ayarlar bağlantısını gösterir.](./media/salesforce-sandbox-provisioning-tutorial/sf-my-settings.png "Otomatik Kullanıcı sağlamayı etkinleştir")
 
-1. Sol gezinti bölmesinde, **Kişisel bilgilerim** ' a tıklayarak ilgili bölümü genişletin ve ardından **güvenlik belirtecimi Sıfırla** ' ya tıklayın.
+1. Sol gezinti bölmesinde, **Kişisel bilgilerim** ' a tıklayarak ilgili bölümü genişletin ve ardından **güvenlik belirtecimi Sıfırla**' ya tıklayın.
   
     ![Ekran görüntüsü kişisel bilgilerim için seçili olan güvenlik belirtecinden sıfırlamayı gösterir.](./media/salesforce-sandbox-provisioning-tutorial/sf-personal-reset.png "Otomatik Kullanıcı sağlamayı etkinleştir")
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 877f589c19663503b9bb0b1627f1dffe0eba1a23
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96302736"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wikispaces"></a>Öğretici: Wkispaces ile tümleştirme Azure Active Directory
@@ -148,7 +148,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**'a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

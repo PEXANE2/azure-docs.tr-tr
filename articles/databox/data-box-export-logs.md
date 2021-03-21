@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.openlocfilehash: 3a915ac8de83a5e183660ec4a3d05044eafff4a9
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94337517"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-export-orders"></a>Azure Data Box için izleme ve olay günlüğü oluşturma ve Azure Data Box Heavy siparişleri dışarı aktarma
@@ -26,7 +26,7 @@ Aşağıdaki tabloda, Data Box dışa aktarma sırası adımlarının bir özeti
 | Data Box dışarı aktarma siparişi aşaması       | İzlenecek ve denetlenecek araç                                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------|
 | Sipariş oluşturma               | [Azure RBAC aracılığıyla sırada erişim denetimini ayarlama](#set-up-access-control-on-the-order) <br> [Ayrıntılı günlüğü sırayla etkinleştirin](#enable-verbose-log-in-the-order)                                                    |
-| Sıra işlendi            | [Sıralamayı izleme](#track-the-order) <ul><li> Azure portal </li><li> Kargo taşıyıcısı Web sitesi </li><li>E-posta bildirimleri</ul> |
+| Sıra işlendi            | [Sıralamayı izleme](#track-the-order) <ul><li> Azure portalı </li><li> Kargo taşıyıcısı Web sitesi </li><li>E-posta bildirimleri</ul> |
 | Cihazı ayarlama              | Cihaz kimlik bilgileri erişim oturum açmış [etkinlik günlükleri](#query-activity-logs-during-setup)              |
 | Cihazdan veri kopyalama        | [Kopyalama günlüklerini gözden geçirme](#copy-log) <br> Verileri kopyalayabilmeniz için önce [ayrıntılı günlükleri gözden geçirin](#verbose-log)            |
 | Cihazdan veri ernure   | Denetim günlükleri ve sıra geçmişi dahil [, gözetim günlüklerinin zincirini görüntüleme](#get-chain-of-custody-logs-after-data-erasure)                |
@@ -129,7 +129,7 @@ Bu dosyaları dışarı aktarmak için aşağıdaki seçenekleri kullanabilirsin
 
 ### <a name="verbose-log"></a>Ayrıntılı günlük
 
-*Ayrıntılı günlük* , Azure Depolama hesabından başarıyla dışarı aktarılmış tüm dosyaların bir listesini içerir. Günlük ayrıca dosya boyutu ve sağlama toplamı hesaplamasını da içerir.
+*Ayrıntılı günlük*, Azure Depolama hesabından başarıyla dışarı aktarılmış tüm dosyaların bir listesini içerir. Günlük ayrıca dosya boyutu ve sağlama toplamı hesaplamasını da içerir.
 
 Ayrıntılı günlük bilgileri aşağıdaki biçimde bulunur:
 
@@ -246,13 +246,13 @@ The authentication information fields provide detailed information about this sp
 
 ## <a name="download-order-history"></a>Sipariş geçmişi indirme
 
-Sipariş geçmişi Azure portal kullanılabilir. Sıra tamamlanmadıysa ve cihaz temizleme (disklerden veri ernemi) tamamlandıktan sonra, cihaz sıraınızdan gidip **sipariş ayrıntıları** ' na gidin. **Sipariş geçmişi indirme** seçeneği bulunur. Daha fazla bilgi için bkz. [yükleme sırası geçmişi](data-box-portal-admin.md#download-order-history).
+Sipariş geçmişi Azure portal kullanılabilir. Sıra tamamlanmadıysa ve cihaz temizleme (disklerden veri ernemi) tamamlandıktan sonra, cihaz sıraınızdan gidip **sipariş ayrıntıları**' na gidin. **Sipariş geçmişi indirme** seçeneği bulunur. Daha fazla bilgi için bkz. [yükleme sırası geçmişi](data-box-portal-admin.md#download-order-history).
 
 Sipariş geçmişi boyunca kaydırırsanız şunu görürsünüz:
 
 - Cihazınız için taşıyıcı izleme bilgileri.
 - *SecureErase* etkinliğine sahip olaylar. Bu olaylar, diskteki verilerin eriyine karşılık gelir.
-- Günlük bağlantılarını Data Box. *Denetim günlükleri* , *kopyalama günlükleri* ve *bom* dosyaları için yollar gösterilir.
+- Günlük bağlantılarını Data Box. *Denetim günlükleri*, *kopyalama günlükleri* ve *bom* dosyaları için yollar gösterilir.
 
 Azure portal sipariş geçmişi günlüğü örneği aşağıda verilmiştir:
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 02/04/2019
 ms.author: alkohli
 ms.openlocfilehash: 10d6ef2c90390f08e38726363416493f937de8f2
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96468013"
 ---
 Yazıılabilecek Azure nesnelerinin boyutları aşağıda verilmiştir. Karşıya yüklenen tüm dosyaların bu sınırlara uygun olduğundan emin olun.

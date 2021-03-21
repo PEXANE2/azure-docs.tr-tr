@@ -10,13 +10,13 @@ ms.author: tisande
 ms.reviewer: sngun
 ms.custom: devx-track-js
 ms.openlocfilehash: b2563a9af0e0ca6943059698e29d139143780d93
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93341000"
 ---
-# <a name="javascript-query-api-in-azure-cosmos-db"></a>Azure Cosmos DB 'de JavaScript sorgu API 'SI
+# <a name="javascript-query-api-in-azure-cosmos-db"></a>Azure Cosmos DB’de JavaScript sorgu API’si
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB SQL API 'sini kullanarak sorgu vermekten ek olarak, [Cosmos DB sunucu tarafı SDK 'sı](https://github.com/Azure/azure-cosmosdb-js-server/) Cosmos DB saklı yordamlar ve tetikleyicilerinde iyileştirilmiş sorgular gerçekleştirmeye yönelik bir JavaScript arabirimi sağlar. Bu JavaScript arabirimini kullanmak için SQL dilini bilmeniz gerekmez. JavaScript sorgu API 'SI, koşul işlevlerini, ECMAScript5's dizisi yerleşik ve Lodash gibi popüler JavaScript kitaplıklarını bilen bir sözdizimi ile program aracılığıyla sorgu oluşturmanızı sağlar. Sorgular JavaScript çalışma zamanı tarafından ayrıştırılır ve Azure Cosmos DB dizinleri kullanılarak verimli bir şekilde yürütülür.

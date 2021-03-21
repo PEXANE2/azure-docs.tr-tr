@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, devx-track-python, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 497b8f5598cf7aa7720f47863d465f5e29789b07
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93321953"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Azure Machine Learning Python istemci kitaplığını kullanarak Python ile veri kümelerine erişim
@@ -90,7 +90,7 @@ Yetkilendirme belirteçleri, **Ayarlar** altındakı **Yetkilendirme belirteçle
 ### <a name="access-datasets-from-a-local-python-application"></a><a name="accessingDatasets"></a>Yerel Python uygulamasından veri kümelerine erişme
 1. Machine Learning Studio (klasik) içinde, sol taraftaki Gezinti çubuğunda **veri kümeleri** ' ne tıklayın.
 2. Erişmek istediğiniz veri kümesini seçin. **Veri kümeleri listesinden veya** **örnekler** listesinden herhangi bir veri kümesinden birini seçebilirsiniz.
-3. Alt araç çubuğundan **veri erişim kodu oluştur** ' a tıklayın. Veriler Python istemci kitaplığıyla uyumsuz bir biçimde ise, bu düğme devre dışı bırakılır.
+3. Alt araç çubuğundan **veri erişim kodu oluştur**' a tıklayın. Veriler Python istemci kitaplığıyla uyumsuz bir biçimde ise, bu düğme devre dışı bırakılır.
    
     ![Ekran görüntüsünde VERI kümesi oluşturma kodu olan VERI kümeleri gösterilmektedir.][datasets]
 4. Görüntülenen pencereden kod parçacığını seçin ve panonuza kopyalayın.
@@ -131,7 +131,7 @@ Aşağıdaki adımlarda bir deneme oluşturan, çalıştıran ve ara veri kümes
 4. CSV modülüne bir [dönüştürme][convert-to-csv] ekleyin ve girişini [bölünmüş][split] modül çıktılarından birine bağlayın.
 5. Denemeyi kaydedin, çalıştırın ve işin bitmesini bekleyin.
 6. [CSV 'ye Dönüştür][convert-to-csv] modülüne çıkış düğümüne tıklayın.
-7. Bağlam menüsü göründüğünde, **veri erişim kodu oluştur** ' u seçin.
+7. Bağlam menüsü göründüğünde, **veri erişim kodu oluştur**' u seçin.
    
     ![Bağlam Menüsü][experiment]
 8. Kod parçacığını seçin ve görüntülenen pencereden panonuza kopyalayın.
@@ -187,7 +187,7 @@ Ya da dizine göre erişebilirsiniz:
 ds = ws.datasets[0]
 ```
 
-### <a name="metadata"></a>Meta Veriler
+### <a name="metadata"></a>Meta veri
 Veri kümelerinde içeriğe ek olarak meta veriler vardır. (Ara veri kümeleri, bu kural için bir özel durumdur ve hiç meta veri içermez.)
 
 Bazı meta veri değerleri Kullanıcı tarafından oluşturma sırasında atanır:

@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.custom: contperf-fy21q2
 ms.date: 12/17/2020
 ms.openlocfilehash: 1e26159c07ca551a78ee2f83a0ca64779c60f7b4
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98018879"
 ---
 # <a name="tutorial-analyze-fraudulent-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Öğretici: Power BI panoda Stream Analytics sahte çağrı verilerini analiz edin ve sonuçları görselleştirin
@@ -38,7 +38,7 @@ Başlamadan önce, aşağıdaki adımları tamamladığınızdan emin olun:
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure Portal](https://portal.azure.com) oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="create-an-azure-event-hub"></a>Azure Olay Hub’ı oluşturma
 
@@ -46,7 +46,7 @@ Stream Analytics’in sahte arama veri akışını analiz edebilmesi için veril
 
 Bir olay hub'ı oluşturmak ve arama verilerini bu olay hub'ına göndermek için aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Event Hubs **nesnelerin interneti kaynak oluştur**' u seçin  >    >  .
 
    ![Portalda bir Azure Olay Hub 'ı oluşturma](media/stream-analytics-real-time-fraud-detection/find-event-hub-resource.png)
@@ -54,7 +54,7 @@ Bir olay hub'ı oluşturmak ve arama verilerini bu olay hub'ına göndermek içi
 
    |**Ayar**  |**Önerilen değer** |**Açıklama**  |
    |---------|---------|---------|
-   |Ad     | asaTutorialEventHub        |  Olay hub'ı ad alanını tanımlamak için benzersiz bir ad.       |
+   |Name     | asaTutorialEventHub        |  Olay hub'ı ad alanını tanımlamak için benzersiz bir ad.       |
    |Abonelik     |   \<Your subscription\>      |   Olay hub'ını oluşturmak istediğiniz Azure aboneliğini seçin.      |
    |Kaynak grubu     |   MyASADemoRG      |  **Yeni Oluştur**’u seçin ve hesabınız için yeni bir kaynak grubu adı girin.       |
    |Konum     |   Batı ABD 2      |    Olay hub'ı ad alanının dağıtılabildiği konum.     |

@@ -10,10 +10,10 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.custom: devx-track-java
 ms.openlocfilehash: cba8b97adb40ca2c277268188ff6ad541c7e9676
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100596467"
 ---
 # <a name="troubleshoot-issues-when-you-use-azure-cosmos-db-java-sdk-v4-with-sql-api-accounts"></a>SQL API hesaplarıyla Java SDK 'Sı v4 Azure Cosmos DB kullandığınızda karşılaşılan sorunları giderme

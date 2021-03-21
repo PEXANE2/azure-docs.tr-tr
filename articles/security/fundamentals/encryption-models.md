@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/09/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 9194f38ddea5570d94ba6c87ea6a537cb41fb98c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102051387"
 ---
 # <a name="data-encryption-models"></a>Veri şifreleme modelleri
@@ -230,7 +230,7 @@ Her şifreleme modelini destekleyen Azure hizmetleri:
 | Dosya Eşitleme                        | Yes                | Yes                | -                  |
 | Kuyruk Depolama                    | Yes                | Yes                | Yes                |
 | Avere vFXT                       | Yes                | -                  | -                  |
-| Redis için Azure Önbelleği            | Yes                | Yok\*              | -                  |
+| Redis için Azure Cache            | Yes                | Yok\*              | -                  |
 | Azure NetApp Files               | Yes                | Yes                | -                  |
 | Arşiv Depolama                  | Yes                | Yes                | -                  |
 | StorSimple                       | Yes                | Yes                | Yes                |

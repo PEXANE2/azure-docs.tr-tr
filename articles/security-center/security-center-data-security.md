@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 10/13/2020
 ms.author: memildin
 ms.openlocfilehash: 0c21c916d152188031212b47704dfb41d3f64a82
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100596286"
 ---
 # <a name="azure-security-center-data-security"></a>Azure Güvenlik Merkezi veri güvenliği
@@ -84,7 +84,7 @@ Müşteriler aşağıdaki veri akışlarından Güvenlik Merkezi ile ilgili veri
 |---------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [Azure etkinlik günlüğü](../azure-monitor/essentials/activity-log.md)                       | Tüm güvenlik uyarıları, onaylanan Güvenlik Merkezi [tam zamanında](security-center-just-in-time.md) erişim istekleri ve [Uyarlamalı uygulama denetimleri](security-center-adaptive-application.md)tarafından oluşturulan tüm uyarılar.|
 | [Azure İzleyici günlükleri](../azure-monitor/data-platform.md)                      | Tüm güvenlik uyarıları.                                                                                                                                                                                                |
-| [Azure Kaynak Grafiği](../governance/resource-graph/overview.md)                      | Güvenlik uyarıları, güvenlik önerileri, güvenlik açığı değerlendirmesi sonuçları, güvenli puan bilgileri, uyumluluk denetimlerinin durumu ve daha fazlası.                                                                       |
+| [Azure Kaynak Grafı](../governance/resource-graph/overview.md)                      | Güvenlik uyarıları, güvenlik önerileri, güvenlik açığı değerlendirmesi sonuçları, güvenli puan bilgileri, uyumluluk denetimlerinin durumu ve daha fazlası.                                                                       |
 | [Azure Güvenlik Merkezi REST API](/rest/api/securitycenter/) | Güvenlik uyarıları, güvenlik önerileri ve daha fazlası.                                                                                                                                                                |
 |                                                                                       |                                                                                                                                                                                                                     |
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/16/2019
 ms.author: jeedes
 ms.openlocfilehash: 34950acc044ccea11aa821d03e75450aed3e4f20
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92516029"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sigstr"></a>Öğretici: Sigstr ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -55,7 +55,7 @@ Sigstr 'ın Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeriden y�
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-sigstr"></a>Sigstr için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak, Sigstr Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Sigstr içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak, Sigstr Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Sigstr içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Sigstr ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -84,7 +84,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Daha fazlasına ek olarak, Sigstr uygulaması SAML yanıtına daha fazla özniteliğin geri geçirilmesini bekler. Kullanıcı öznitelikleri iletişim kutusundaki Kullanıcı talepleri bölümünde aşağıdaki tabloda gösterildiği gibi SAML belirteci özniteliği eklemek için aşağıdaki adımları gerçekleştirin:
 
-    | Adı |  Kaynak özniteliği|
+    | Name |  Kaynak özniteliği|
     | -------|----------- |
     | e-posta | Kullanıcı. Mail |
 
@@ -94,7 +94,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     1. **Ad alanını** boş bırakın.
 
-    1. **Öznitelik**olarak kaynak seçin.
+    1. **Öznitelik** olarak kaynak seçin.
 
     1. **Kaynak özniteliği** listesinde, bu satır için gösterilen öznitelik değerini yazın.
 
@@ -131,7 +131,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 Bu bölümde, Sigstr 'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde **Sigstr**öğesini seçin.
+1. Uygulamalar listesinde **Sigstr** öğesini seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
 ms.openlocfilehash: ad9e1fe10da3d78d652801f885f503d13aafa7c6
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92515942"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smarteru"></a>Öğretici: SmarterU ile tümleştirme Azure Active Directory
@@ -64,13 +64,13 @@ SmarterU 'nın tümleştirmesini Azure AD 'ye göre yapılandırmak için Galeri
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **SmarterU**yazın, sonuç panelinden **SmarterU** seçin, ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **SmarterU** yazın, sonuç panelinden **SmarterU** seçin, ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
      ![Sonuçlar listesinde SmarterU](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre SmarterU ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre SmarterU ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasındaki bir bağlantı ilişkisinin, SmarterU 'da oluşturulması gerekir.
 
 SmarterU ile Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -142,7 +142,7 @@ Azure AD çoklu oturum açmayı SmarterU ile yapılandırmak için aşağıdaki 
   
     e. İndirilen meta veri dosyasının içeriğini kopyalayın ve sonra **IDP meta verileri** metin kutusuna yapıştırın.
 
-    f. **Tanımlayıcı özniteliği/talebi**seçin.
+    f. **Tanımlayıcı özniteliği/talebi** seçin.
   
     örneğin: **Kaydet**’e tıklayın.
 
@@ -162,9 +162,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alan türü**brittasimon@yourcompanydomain.extension**  
+    b. **Kullanıcı adı** alan türü **brittasimon@yourcompanydomain.extension**  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
@@ -205,7 +205,7 @@ Azure AD kullanıcılarının SmarterU 'da oturum açmasını sağlamak için, S
 
 1. **SmarterU** kiracınızda oturum açın.
 
-1. **Kullanıcılara**gidin.
+1. **Kullanıcılara** gidin.
 
 1. Kullanıcı bölümünde aşağıdaki adımları gerçekleştirin:
 

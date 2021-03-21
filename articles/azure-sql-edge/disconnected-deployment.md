@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
 ms.openlocfilehash: fce098767fffd36376399bbd9396699e3d9fbfd3
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93392087"
 ---
 # <a name="deploy-azure-sql-edge-with-docker"></a>Docker ile Azure SQL Edge dağıtma
@@ -22,7 +22,7 @@ Bu hızlı başlangıçta, Azure SQL Edge kapsayıcı görüntüsünü çekmek v
 
 Bu görüntü, Ubuntu 18,04 tabanlı Azure SQL Edge 'ten oluşur. Linux üzerinde veya Mac/Windows için Docker ile Docker motoru 1.8 + ile kullanılabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Docker Engine 1.8 + desteklenen Linux dağıtımında veya Mac/Windows için Docker. Daha fazla bilgi için bkz. [Docker 'ı Install](https://docs.docker.com/engine/installation/). Azure SQL Edge görüntüleri Ubuntu 18,04 tabanlı olduğundan, Ubuntu 18,04 Docker konağını kullanmanız önerilir.
 - Docker **overlay2** depolama sürücüsü. Bu, çoğu kullanıcı için varsayılandır. Bu depolama sağlayıcısını kullanmadığınız ve değiştirmeniz gerektiğini fark ederseniz lütfen [overlay2 'yi yapılandırmak için Docker belgelerindeki](https://docs.docker.com/storage/storagedriver/overlayfs-driver/#configure-docker-with-the-overlay-or-overlay2-storage-driver)yönergeler ve Uyarılar bölümüne bakın.

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.openlocfilehash: fbe711652d11a426d80dd767eb3069170f67f1b3
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92516146"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobile-xpense"></a>Öğretici: mobil Xpeno ile tümleştirme Azure Active Directory
@@ -61,13 +61,13 @@ Mobil xpense 'yi Azure AD 'ye tümleştirmeyi yapılandırmak için, Galeriden m
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Mobile xpeno**yazın, sonuç panelinden **Mobil xpeno** ' ı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna **Mobile xpeno** yazın, sonuç panelinden **Mobil xpeno** ' ı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
      ![Sonuçlar listesinde mobil Xpende](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre mobil Xpende Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
+Bu bölümde, **Britta Simon** adlı bir test kullanıcısına göre mobil Xpende Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve mobil xpense 'deki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açmayı mobil Xpeno ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -148,9 +148,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.

@@ -13,10 +13,10 @@ ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.openlocfilehash: 5816bc542ff550accedd33ba9a7fd9d98583b3d1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101653771"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Öğretici: Microsoft Identity platformunu kullanan çok kiracılı bir Daemon oluşturma
@@ -178,15 +178,15 @@ Bu örnek için ilgili kod aşağıdaki dosyalardır:
    - Microsoft.Owin.Security.OpenIdConnect
    - Microsoft. Identity. Client
 1. **App_Start** klasöründe:
-   1. **Startup.auth.cs** adlı bir sınıf oluşturun.
+   1. **Startup. auth. cs** adlı bir sınıf oluşturun.
    1. Kaldırın **.** Ad alanı adından App_Start.
    1. **Başlangıç** sınıfının kodunu, örnek uygulamanın aynı dosyasındaki kodla değiştirin.
    Tüm sınıf tanımını aldığınızdan emin olun. Tanım, **ortak sınıf başlatmasının** **genel kısmi sınıf başlatması** olarak değişir.
-1. **Startup.auth.cs** Içinde, Visual Studio IntelliSense tarafından önerilen **using** deyimlerini ekleyerek eksik başvuruları çözün.
+1. **Startup. auth. cs** dosyasında, Visual Studio IntelliSense tarafından önerilen **using** deyimlerini ekleyerek eksik başvuruları çözün.
 1. Projeye sağ tıklayın, **Ekle**' yi ve ardından **sınıf**' ı seçin.
-1. Arama kutusuna **Owın** girin. **Owın başlangıç sınıfı** seçim olarak görünür. Bunu seçin ve sınıfı **Startup.cs** olarak adlandırın.
-1. **Startup.cs**' de, **Başlangıç** sınıfının kodunu örnek uygulamanın aynı dosyasındaki kodla değiştirin. Yine, tanımın **ortak sınıf başlatmasından** **genel kısmi sınıf başlatmaya** değiştiği unutulmamalıdır.
-1. **Modeller** klasöründe, **MsGraphUser.cs** adlı yeni bir sınıf ekleyin. Uygulamayı örnekteki aynı adlı dosyanın içeriğiyle değiştirin.
+1. Arama kutusuna **Owın** girin. **Owın başlangıç sınıfı** seçim olarak görünür. Bunu seçin ve sınıfı **Startup. cs** olarak adlandırın.
+1. **Startup. cs** dosyasında, **Başlangıç** sınıfının kodunu örnek uygulamanın aynı dosyasındaki kodla değiştirin. Yine, tanımın **ortak sınıf başlatmasından** **genel kısmi sınıf başlatmaya** değiştiği unutulmamalıdır.
+1. **Modeller** klasöründe **msgraphuser. cs** adlı yeni bir sınıf ekleyin. Uygulamayı örnekteki aynı adlı dosyanın içeriğiyle değiştirin.
 1. **Accountcontroller** adlı yeni bir **MVC 5 denetleyici-boş** örnek ekleyin. Uygulamayı örnekteki aynı adlı dosyanın içeriğiyle değiştirin.
 1. **Usercontroller** adlı yeni bir **MVC 5 denetleyici-boş** örnek ekleyin. Uygulamayı örnekteki aynı adlı dosyanın içeriğiyle değiştirin.
 1. **Synccontroller** adlı yeni BIR **Web API 2 denetleyicisi (boş** örnek) ekleyin. Uygulamayı örnekteki aynı adlı dosyanın içeriğiyle değiştirin.

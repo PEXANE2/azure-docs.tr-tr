@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/31/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a81f2b21545a5362168482f3f0a65fbbbf381c10
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98929166"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Visual Studio için Data Lake araçları 'nı kullanarak Apache Storm için C# topolojileri geliştirme
@@ -132,11 +132,11 @@ Visual Studio 'da C# topolojisi projesi oluşturmak için:
 
 Projeyi oluşturduktan sonra, aşağıdaki dosyalara sahip olmanız gerekir:
 
-* *Program.cs*: projeniz için topoloji tanımı. Bir Spout ve bir sürgüden oluşan varsayılan topoloji varsayılan olarak oluşturulur.
+* *Program. cs*: projeniz için topoloji tanımı. Bir Spout ve bir sürgüden oluşan varsayılan topoloji varsayılan olarak oluşturulur.
 
-* *Spout.cs*: rastgele sayılar sağlayan bir Spout örneği.
+* *Spout. cs*: rastgele sayılar sağlayan bir Spout örneği.
 
-* *Bolt.cs*: Spout tarafından yayılan sayı sayısını tutan bir örnek sürgüsü.
+* *Sürgüsü. cs*: Spout tarafından yayılan sayı sayısını tutan bir örnek sürgüsü.
 
 Projeyi oluşturduğunuzda, NuGet en son [SCP.net paketini](https://www.nuget.org/packages/Microsoft.SCP.Net.SDK/)indirir.
 
@@ -144,7 +144,7 @@ Projeyi oluşturduğunuzda, NuGet en son [SCP.net paketini](https://www.nuget.or
 
 Ardından, bir dış kaynaktan bir topolojideki verileri okumak için kullanılan Spout için kodu ekleyin. Bu Spout, topolojiye rastgele bir tümce yayar.
 
-1. *Spout.cs*'i açın. Spout ana bileşenleri şunlardır:
+1. *Spout. cs*'yi açın. Spout ana bileşenleri şunlardır:
 
    * `NextTuple`: Spout 'in yeni tanımlama gruplarını yaymak için izin verildiğinde fırtınası tarafından çağırılır.
 
@@ -216,18 +216,18 @@ Ardından, bir dış kaynaktan bir topolojideki verileri okumak için kullanıla
 
 Şimdi bu örnekte iki ters fırtınası oluşturun:
 
-1. Varolan *Bolt.cs* dosyasını projeden silin.
+1. Var olan *cıva. cs* dosyasını projeden silin.
 
-2. **Çözüm Gezgini**, projeye sağ tıklayın ve   >  **Yeni öğe** Ekle ' yi seçin. Listeden **fırtınası**' ı seçin ve ad olarak *Splitter.cs* girin. Yeni dosyanın kodunda, ad alanı adını olarak değiştirin `WordCount` . Ardından, *Counter.cs* adlı ikinci bir sürgüyi oluşturmak için bu işlemi tekrarlayın.
+2. **Çözüm Gezgini**, projeye sağ tıklayın ve   >  **Yeni öğe** Ekle ' yi seçin. Listeden **fırtınası**' ı seçin ve ad olarak *Splitter. cs* yazın. Yeni dosyanın kodunda, ad alanı adını olarak değiştirin `WordCount` . Sonra *Counter. cs* adlı ikinci bir sürgüyi oluşturmak için bu işlemi tekrarlayın.
 
-   * *Splitter.cs*: cümleleri tek tek sözcüklere ayıran bir sürgüler uygular ve yeni bir sözcük akışı yayar.
+   * *Splitter. cs*: cümleleri bağımsız sözcüklere ayıran bir sürgüler uygular ve yeni bir sözcük akışı yayar.
 
-   * *Counter.cs*: her bir sözcüğü sayan bir sürgüsü uygular ve yeni bir sözcük akışı ve her bir sözcüğün sayısını yayar.
+   * *Counter. cs*: her bir sözcüğü sayan bir sürgüsü uygular ve her bir sözcük için yeni bir sözcük akışı ve sayı yayar.
 
      > [!NOTE]  
      > Bu cıvatları, akışları okur ve yazar, ancak bir veritabanı veya hizmet gibi kaynaklarla iletişim kurmak için de bir cıvata kullanabilirsiniz.
 
-3. *Splitter.cs*'i açın. Varsayılan olarak yalnızca bir yönteme sahiptir: `Execute` . Bu `Execute` Yöntem, sürgülü işleme için bir demet aldığında çağrılır. Burada, gelen tanımlama gruplarını okuyabilir ve işleyebilir ve giden tanımlama gruplarını görüntüleyebilirsiniz.
+3. *Splitter. cs*'yi açın. Varsayılan olarak yalnızca bir yönteme sahiptir: `Execute` . Bu `Execute` Yöntem, sürgülü işleme için bir demet aldığında çağrılır. Burada, gelen tanımlama gruplarını okuyabilir ve işleyebilir ve giden tanımlama gruplarını görüntüleyebilirsiniz.
 
 4. `Splitter`Sınıfının içeriğini aşağıdaki kodla değiştirin:
 
@@ -275,7 +275,7 @@ Ardından, bir dış kaynaktan bir topolojideki verileri okumak için kullanıla
     }
     ```
 
-5. *Counter.cs*'i açın ve sınıf içeriğini şu kodla değiştirin:
+5. *Counter. cs*' yi açın ve sınıf içeriğini şu kodla değiştirin:
 
     ```csharp
     private Context ctx;
@@ -572,9 +572,9 @@ Bir kümeye topoloji dağıtmak kolay olsa da, bazı durumlarda bir topolojiyi y
    > [!NOTE]
    > Topolojiyi bir kümeye dağıtmadan önce, **çıkış türünü** yeniden **sınıf kitaplığına** değiştirmeyi unutmayın.
 
-1. **Çözüm Gezgini**, projeye sağ tıklayın ve ardından   >  **Yeni öğe** Ekle ' yi seçin. **Sınıf**' ı seçin ve sınıf adı olarak *LocalTest.cs* girin. Son olarak, **Ekle**' yi seçin.
+1. **Çözüm Gezgini**, projeye sağ tıklayın ve ardından   >  **Yeni öğe** Ekle ' yi seçin. **Sınıf**' ı seçin ve sınıf adı olarak *localtest. cs* yazın. Son olarak, **Ekle**' yi seçin.
 
-1. *LocalTest.cs* açın ve aşağıdaki `using` ifadeyi en üste ekleyin:
+1. *Localtest. cs*' yi açın ve `using` üst kısımdaki aşağıdaki ifadeyi ekleyin:
 
     ```csharp
     using Microsoft.SCP;
@@ -661,7 +661,7 @@ Bir kümeye topoloji dağıtmak kolay olsa da, bazı durumlarda bir topolojiyi y
 
     Kod açıklamalarını okumak için bir dakikanızı ayırın. Bu kod, `LocalContext` geliştirme ortamındaki bileşenleri çalıştırmak için kullanır. Yerel sürücüdeki bileşenler arasındaki veri akışını sürdürür.
 
-1. *Program.cs* açın ve yöntemine aşağıdaki kodu ekleyin `Main` :
+1. *Program. cs*' yi açın ve yöntemine aşağıdaki kodu ekleyin `Main` :
 
     ```csharp
     Console.WriteLine("Starting tests");

@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
 ms.openlocfilehash: 8293ed1bfb53895b9631d9730fb75a2364457180
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96452368"
 ---
 # <a name="set-up-a-lab-with-gpu-virtual-machines"></a>GPU sanal makinelerle laboratuvar kurma
@@ -28,13 +28,13 @@ Bu işlemde, **görselleştirme** ya da **işlem** GPU 'ları seçme seçeneğin
 
 Aşağıdaki tabloda açıklandığı gibi, bilgi *işlem* GPU boyutu yoğun işlem gücü uygulamalarına yöneliktir.  Örneğin, [doğal dil işleme sınıfı türünde derin öğrenme](./class-type-deep-learning-natural-language-processing.md) **küçük GPU (işlem)** boyutunu kullanır.  Öğrenciler, büyük veri kümeleriyle derin öğrenme modellerini eğmek üzere [veri bilimi sanal makinesi görüntüsü](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) tarafından sunulan derin öğrenme çerçeveleri ve araçları kullandığından, bu tür bir sınıf için işlem GPU 'su uygundur.
 
-| Boyut | Çekirdekler | RAM | Açıklama | 
+| Boyut | Çekirdekler | RAM | Description | 
 | ---- | ----- | --- | ----------- | 
 | Küçük GPU (Işlem) | -&nbsp;6 &nbsp; çekirdek<br>-&nbsp;56 &nbsp; GB &nbsp; RAM  | [Standard_NC6](../virtual-machines/nc-series.md) |Bu boyut, yapay zeka (AI) ve derin öğrenme gibi yoğun işlem gücü olan uygulamalar için idealdir. |
 
 *Görselleştirme* GPU boyutları grafik yoğun uygulamalar için tasarlanmıştır.  Örneğin, [Solidçalışmamühendisliği sınıf türü](./class-type-solidworks.md) **küçük GPU (görselleştirme)** boyutunu kullanmayı gösterir.  Öğrenciler, düz nesnelerin modellenmesi ve görselleştirilmesi için SOLIDÇALıŞıYOR 3D bilgisayar destekli tasarım (CAD) ortamıyla etkileşimde bulunduğundan, bu tür bir sınıf için görselleştirme GPU 'SU uygundur.
 
-| Boyut | Çekirdekler | RAM | Açıklama | 
+| Boyut | Çekirdekler | RAM | Description | 
 | ---- | ----- | --- | ----------- | 
 | Küçük GPU (görselleştirme) | -&nbsp;6 &nbsp; çekirdek<br>-&nbsp;56 &nbsp; GB &nbsp; RAM  | [Standard_NV6](../virtual-machines/nv-series.md) | Bu boyut, OpenGL ve DirectX gibi çerçeveleri kullanan uzaktan görselleştirme, akış, oyun ve kodlama için idealdir. |
 | Orta ölçekli GPU (görselleştirme) | -&nbsp;12 &nbsp; çekirdek<br>-&nbsp;112 &nbsp; GB &nbsp; RAM  | [Standard_NV12](../virtual-machines/nv-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Bu boyut, OpenGL ve DirectX gibi çerçeveleri kullanan uzaktan görselleştirme, akış, oyun ve kodlama için idealdir. |
@@ -115,6 +115,6 @@ Bu bölümde, GPU sürücülerinizin düzgün şekilde yüklendiği nasıl doğr
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makalelere bakın:
 
-- [Labs oluşturma ve yönetme](how-to-manage-classroom-labs.md)
+- [Laboratuvar oluşturma ve yönetme](how-to-manage-classroom-labs.md)
 - [SOLIDÇALıŞMALAR bilgisayar destekli tasarım (CAD) sınıfı türü](class-type-solidworks.md)
 - [MATLAB (matris Laboratuvarı) sınıf türü](class-type-matlab.md)

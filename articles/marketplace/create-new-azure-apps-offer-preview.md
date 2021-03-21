@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
 ms.openlocfilehash: 1d41e9dc39b50b92351fe38a86587a67811c5eec
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94370461"
 ---
 # <a name="how-to-add-a-preview-audience-for-your-azure-application-offer"></a>Azure Uygulama teklifiniz için Önizleme hedef kitlesi ekleme
@@ -44,8 +44,8 @@ Teklifinizi canlı olarak yayımlanmadan önce kimin önizlemesini düzenleyebil
 1. **Tür** sütununda, bir e-posta adresi olan her satıra **SubscriptionID** ekleyin.
 1. Dosyayı olarak kaydedin. CSV dosyası.
 1. **Izleyiciyi Önizle** sayfasında, **izleyiciyi içeri aktar (CSV)** bağlantısını seçin.
-1. **Onayla** Iletişim kutusunda **Evet** ' i seçin.
-1. Öğesini seçin. CSV dosyası ve sonra **Aç** ' ı seçin.
+1. **Onayla** Iletişim kutusunda **Evet**' i seçin.
+1. Öğesini seçin. CSV dosyası ve sonra **Aç**' ı seçin.
 1. Sonraki sekmeye geçmeden önce **Taslağı kaydet** ' i seçin: teknik yapılandırma.
 
 ## <a name="next-steps"></a>Sonraki adımlar

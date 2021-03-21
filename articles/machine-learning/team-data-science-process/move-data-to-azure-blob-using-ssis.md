@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 9572d612e7ee8e2fd72850ba14447e8449f0f371
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93322010"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>SSIS bağlayıcıları kullanarak verileri Azure Blob depolama alanına veya sunucudan taşıma
@@ -42,8 +42,8 @@ Bu makalede açıklanan görevleri gerçekleştirmek için bir Azure aboneliğin
 
 **SSIS bağlayıcılarını** kullanmak için şunu indirmeniz gerekir:
 
-* **SQL Server 2014 veya 2016 Standard (veya üzeri)** : ınstall, SQL Server Integration Services içerir.
-* **Azure için Microsoft SQL Server 2014 veya 2016 Integration Services özellik paketi** : Bu bağlayıcılar sırasıyla, [SQL Server 2014 tümleştirme hizmetleri](https://www.microsoft.com/download/details.aspx?id=47366) ve [SQL Server 2016 Integration Services](https://www.microsoft.com/download/details.aspx?id=49492) sayfalarından indirilebilir.
+* **SQL Server 2014 veya 2016 Standard (veya üzeri)**: ınstall, SQL Server Integration Services içerir.
+* **Azure için Microsoft SQL Server 2014 veya 2016 Integration Services özellik paketi**: Bu bağlayıcılar sırasıyla, [SQL Server 2014 tümleştirme hizmetleri](https://www.microsoft.com/download/details.aspx?id=47366) ve [SQL Server 2016 Integration Services](https://www.microsoft.com/download/details.aspx?id=49492) sayfalarından indirilebilir.
 
 > [!NOTE]
 > SSIS SQL Server ile yüklenir, ancak Express sürümüne dahil değildir. SQL Server çeşitli sürümlerinde hangi uygulamaların dahil olduğu hakkında bilgi için, bkz. [SQL Server sürümleri](https://www.microsoft.com/en-us/server-cloud/products/sql-server-editions/)

@@ -7,10 +7,10 @@ ms.service: azure-percept
 ms.topic: reference
 ms.date: 02/16/2021
 ms.openlocfilehash: 3e72aea657b82c2111bea1493b5654ec667c491b
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102425286"
 ---
 # <a name="azure-percept-audio-datasheet"></a>Azure Percept ses veri sayfası
@@ -29,7 +29,7 @@ ms.locfileid: "102425286"
 |Algılayıcılar, görsel göstergeler ve bileşenler   |4X bellek algılama Microsystems mikrofonlar (MSM261D3526Z1CM) <br> 2x düğmeler <br> USB hub 'ı <br> DAC <br> 3x LED 'Leri <br> LED sürücüsü          |
 |Güvenlik Crypto-Controller      |ST-Microelectronics STM32L462CE       |
 |Bağlantı noktaları                           |1x USB 2,0 tür mikro B <br> 3,5 mm ses çıkışı     |
-|Sertifikasyon                   |A <br> FILTRESIYLE <br> RoHS <br> ULAŞTıĞıNDA <br> UL    |
+|Sertifika                   |A <br> FILTRESIYLE <br> RoHS <br> ULAŞTıĞıNDA <br> UL    |
 |İşletim sıcaklığı           |0-35 derece C     |
 |Işletim dışı sıcaklık       |-40-85 derece C     |
 |Bağıl nem               |%10 ila %95    |

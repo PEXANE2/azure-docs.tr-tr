@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: storage
 author: tamram
 ms.service: storage
@@ -9,10 +9,10 @@ ms.date: 12/20/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: aec1faa4de1149f08fb6fbc1cc5bf3aa2ab6becd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75371794"
 ---
 Paylaşılan erişim imzası (SAS) Depolama hesabınızdaki kapsayıcılara ve bloblara sınırlı erişim sağlamanıza olanak sağlar. SAS oluşturduğunuzda, bir istemcinin hangi Azure depolama kaynakları erişimine izin verileceğini, bu kaynaklarda sahip oldukları izinleri ve SAS 'ın ne kadar süreyle geçerli olduğunu de içeren kısıtlamalarını belirtirsiniz.
