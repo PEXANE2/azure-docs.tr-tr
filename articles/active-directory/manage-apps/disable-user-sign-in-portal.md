@@ -17,10 +17,10 @@ ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 783de636d4520f48f624f3380f811f1f18366330
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99259245"
 ---
 # <a name="disable-user-sign-ins-for-an-enterprise-app-in-azure-active-directory"></a>Azure Active Directory ' de bir kurumsal uygulama için Kullanıcı oturum açma işlemlerini devre dışı bırakma
@@ -33,8 +33,8 @@ Bir kurumsal uygulamayı devre dışı bırakmak kolaydır, böylece hiçbir Kul
 1. **Tüm hizmetler**' i seçin, metin kutusuna **Azure Active Directory** girin ve ardından **ENTER**' u seçin.
 1. **Azure Active Directory**  -   **_DirectoryName_*_ bölmesinde (diğer bir deyişle, yönettiğiniz dizin için Azure AD bölmesi) _ kurumsal uygulamalar ' ı seçin***.
 1. **Kurumsal uygulamalar-tüm uygulamalar** bölmesinde, yönetebileceğiniz uygulamaların bir listesini görürsünüz. Bir uygulama seçin.
-1. **_Appname_*_ bölmesinde (diğer bir deyişle, başlığında Seçili uygulamanın adını taşıyan bölme) _ Özellikler ' i seçin***.
-1. **_Appname_*_-_* Özellikler** bölmesinde, **kullanıcıların oturum açması** için **Hayır** ' ı seçin.
+1. ***Appname** _ bölmesinde (diğer bir deyişle, başlığında Seçili uygulamanın adını taşıyan bölme) _ * Özellikler * * öğesini seçin.
+1. ***Appname** _-_ *Properties** bölmesinde, **kullanıcıların oturum açmasını etkinleştirmek** için **Hayır** ' ı seçin.
 1. **Kaydet** komutunu seçin.
 
 ## <a name="use-azure-ad-powershell-to-disable-an-unlisted-app"></a>Listelenmemiş bir uygulamayı devre dışı bırakmak için Azure AD PowerShell kullanma

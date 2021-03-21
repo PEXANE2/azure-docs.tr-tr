@@ -13,10 +13,10 @@ adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-arm-template-uiex
 ms.openlocfilehash: 8b048127c8a5581a34a62cfb67c19ba7aa50f2d7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101701595"
 ---
 # <a name="quickstart-create-app-service-app-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak App Service uygulaması oluşturma
@@ -53,7 +53,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablo
 
 Bu şablon, kolaylık olması için önceden tanımlanmış birkaç parametre içerir. Parametre Varsayılanları ve bunların açıklamaları için aşağıdaki tabloya bakın:
 
-| Parametreler | Tür    | Varsayılan değer                | Açıklama |
+| Parametreler | Tür    | Varsayılan değer                | Description |
 |------------|---------|------------------------------|-------------|
 | webAppName | string  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | Uygulama adı |
 | location   | string  | "[[resourceGroup (). Location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | Uygulama bölgesi |
@@ -74,7 +74,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablo
 
 Bu şablon, kolaylık olması için önceden tanımlanmış birkaç parametre içerir. Parametre Varsayılanları ve bunların açıklamaları için aşağıdaki tabloya bakın:
 
-| Parametreler | Tür    | Varsayılan değer                | Açıklama |
+| Parametreler | Tür    | Varsayılan değer                | Description |
 |------------|---------|------------------------------|-------------|
 | webAppName | string  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | Uygulama adı |
 | location   | string  | "[[resourceGroup (). Location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | Uygulama bölgesi |

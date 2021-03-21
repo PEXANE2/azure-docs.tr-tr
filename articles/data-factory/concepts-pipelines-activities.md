@@ -7,10 +7,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.openlocfilehash: 870c812a68f765f987cfd3d1b953e0afeb3e9055
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100364537"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure Data Factory’de işlem hatları ve etkinlikler
@@ -58,8 +58,8 @@ Veri dönüştürme etkinliği | İşlem ortamı
 [U-SQL](transform-data-using-data-lake-analytics.md) | Azure Data Lake Analytics
 [Özel Etkinlik](transform-data-using-dotnet-custom-activity.md) | Azure Batch
 [Databricks Not Defteri](transform-data-databricks-notebook.md) | Azure Databricks
-[Databricks Jar Etkinliği](transform-data-databricks-jar.md) | Azure Databricks
-[Databricks Python Etkinliği](transform-data-databricks-python.md) | Azure Databricks
+[Databricks jar etkinliği](transform-data-databricks-jar.md) | Azure Databricks
+[Databricks Python etkinliği](transform-data-databricks-python.md) | Azure Databricks
 
 Daha fazla bilgi için [veri dönüştürme etkinlikleri](transform-data.md) makalesine bakın.
 
@@ -75,7 +75,7 @@ Denetim etkinliği | Description
 [Meta verileri al](control-flow-get-metadata-activity.md) | GetMetadata etkinliği, Azure Data Factory içindeki herhangi bir verinin meta verilerini almak için kullanılabilir.
 [If Condition Etkinliği](control-flow-if-condition-activity.md) | If Koşulu, doğru veya yanlış sonucunu vermesi temelinde dallanmak için kullanılabilir. If Koşulu etkinliği, programlama dilerindeki If deyimiyle aynı işlevselliği sağlar. Koşul olarak değerlendirildiğinde bir dizi etkinliği değerlendirir `true` ve koşulun değerlendirme sırasında başka bir etkinlik kümesi `false.`
 [Arama Etkinliği](control-flow-lookup-activity.md) | Arama Etkinliği herhangi bir dış kaynaktan bir record/ table name/ değerini okumak veya aramak için kullanılabilir. Sonraki etkinliklerde bu çıktıya daha fazla başvurulabilir.
-[Değişken ayarla](control-flow-set-variable-activity.md) | Mevcut bir değişkenin değerini ayarlayın.
+[Set Variable](control-flow-set-variable-activity.md) | Mevcut bir değişkenin değerini ayarlayın.
 [Until Etkinliği](control-flow-until-activity.md) | Programlama dillerindeki Do-Until döngü yapısına benzer bir Do-Until döngüsü uygular. Etkinlikle ilişkilendirilmiş olan koşul doğru sonucunu verene kadar bir dizi etkinliği döngüsel olarak yürütür. Data Factory'de bitiş etkinliği için bir zaman aşımı değeri belirtebilirsiniz.
 [Doğrulama Etkinliği](control-flow-validation-activity.md) | İşlem hattının yalnızca bir başvuru veri kümesi varsa, belirtilen kriterleri karşılıyorsa veya bir zaman aşımıyla ulaşıldığı takdirde yürütmeye devam ettiğinden emin olun.
 [Wait Etkinliği](control-flow-wait-activity.md) | Bir işlem hattındaki bekleme etkinliğini kullandığınızda, işlem hattı sonraki etkinliklerin yürütülmesine devam etmeden önce belirtilen süreyi bekler.

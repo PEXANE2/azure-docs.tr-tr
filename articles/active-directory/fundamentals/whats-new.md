@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df90857bf30b6fff3c18faf126efabe8c959c0c6
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 0d9769a2cfdbd5f552e97a6cd665263cbd488325
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102633436"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592974"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory yenilikler nelerdir?
 
@@ -79,7 +79,7 @@ Geçici erişim geçişi, güçlü kimlik bilgileri görevi gören ve bir kullan
 **Hizmet kategorisi:** B2C-tüketici kimlik yönetimi  
 **Ürün yeteneği:** B2B/B2C
 
-Yeni nesil B2C Kullanıcı akışları, müşterilerin kalıcı bir tanımlama bilgisi kullanarak Web ve yerel uygulamalarının kullanıcıları için oturum ömrünü genişletmelerine olanak sağlayan Oturumumu [açık tut (KMSı)](https://docs.microsoft.com/azure/active-directory-b2c/session-behavior?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi) işlevini desteklemektedir.  özelliği, kullanıcı tarayıcıyı kapatıp yeniden açtığında bile oturumu etkin tutar ve Kullanıcı oturumunu kapattığında iptal edilir.
+Yeni nesil B2C Kullanıcı akışları, müşterilerin kalıcı bir tanımlama bilgisi kullanarak Web ve yerel uygulamalarının kullanıcıları için oturum ömrünü genişletmelerine olanak sağlayan Oturumumu [açık tut (KMSı)](../../active-directory-b2c/session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi) işlevini desteklemektedir.  özelliği, kullanıcı tarayıcıyı kapatıp yeniden açtığında bile oturumu etkin tutar ve Kullanıcı oturumunu kapattığında iptal edilir.
 
 ---
 
@@ -109,7 +109,7 @@ Müşteriler artık mevcut dış Konuk kullanıcıları, kullanım durumlarını
 **Hizmet kategorisi:** Uygulama sağlama  
 **Ürün yeteneği:** Kimlik yaşam döngüsü yönetimi
  
-Müşteriler artık, eşitleme API 'Lerini çağırmak için uygulama izni olarak Application. ReadWrite. ownedcan kullanabilir. Bu, yalnızca Azure AD 'den üçüncü taraf uygulamalara (örneğin, AWS, veri blokları, vb.) sağlanması için desteklenir. Bu, şu anda HR sağlama (Workday/başarılı faktörleri) veya bulut eşitleme (AD ile Azure AD) için desteklenmiyor. [Daha fazla bilgi edinin](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta).
+Müşteriler artık, eşitleme API 'Lerini çağırmak için uygulama izni olarak Application. ReadWrite. ownedcan kullanabilir. Bu, yalnızca Azure AD 'den üçüncü taraf uygulamalara (örneğin, AWS, veri blokları, vb.) sağlanması için desteklenir. Bu, şu anda HR sağlama (Workday/başarılı faktörleri) veya bulut eşitleme (AD ile Azure AD) için desteklenmiyor. [Daha fazla bilgi edinin](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta).
  
 ---
 
@@ -199,7 +199,7 @@ Artık yeni tümleştirilmiş uygulamalar için Kullanıcı hesapları oluşturm
 - [Iris Intranet](../saas-apps/iris-intranet-provisioning-tutorial.md)
 - [Preciate](../saas-apps/preciate-provisioning-tutorial.md)
 
-Daha fazla bilgi için [Azure AD Ile SaaS uygulamalarına Kullanıcı sağlamayı otomatik hale](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)getirmeyi okuyun.
+Daha fazla bilgi için [Azure AD Ile SaaS uygulamalarına Kullanıcı sağlamayı otomatik hale](../app-provisioning/user-provisioning.md)getirmeyi okuyun.
 
 ---
 
@@ -209,7 +209,7 @@ Daha fazla bilgi için [Azure AD Ile SaaS uygulamalarına Kullanıcı sağlamay�
 **Hizmet kategorisi:** RAPORDAKI  
 **Ürün yeteneği:** Access Control
  
-10 Azure AD yerleşik rolleri, [Microsoft 365 Yönetim Merkezi](https://docs.microsoft.com/microsoft-365/admin/microsoft-365-admin-center-preview), [Azure AD portalı](https://portal.azure.com/)ve [Microsoft Graph](https://developer.microsoft.com/graph/)hizalanabilmesi için yeniden adlandırıldı. Yeni roller hakkında daha fazla bilgi edinmek için [Azure Active Directory Içindeki yönetici rolü izinleri](../roles/permissions-reference.md#all-roles)bölümüne bakın.
+10 Azure AD yerleşik rolleri, [Microsoft 365 Yönetim Merkezi](/microsoft-365/admin/microsoft-365-admin-center-preview), [Azure AD portalı](https://portal.azure.com/)ve [Microsoft Graph](https://developer.microsoft.com/graph/)hizalanabilmesi için yeniden adlandırıldı. Yeni roller hakkında daha fazla bilgi edinmek için [Azure Active Directory Içindeki yönetici rolü izinleri](../roles/permissions-reference.md#all-roles)bölümüne bakın.
 
 ![MS Graph API rol adlarını ve Azure portal ve önerilen son adı API, Azure portal ve Mac arasında gösteren tablo.](media/whats-new/roles-table-rbac.png)
 
@@ -270,20 +270,20 @@ Müşteriler, tarayıcı URL 'sindeki bir özellik bayrağını kullanarak test 
  
 ---
 
-### <a name="public-preview---customize-and-configure-android-shared-devices-for-firstline-workers-at-scale"></a>Genel Önizleme-Ilk satır çalışanları için Android paylaşılan cihazlarını ölçeklendirerek özelleştirin ve yapılandırın
+### <a name="public-preview---customize-and-configure-android-shared-devices-for-frontline-workers-at-scale"></a>Genel Önizleme-Android paylaşılan cihazlarını, en önde bulunan çalışanlar için ölçeklendirerek özelleştirin ve yapılandırın
 
 **Şunu yazın:** Yeni Özellik  
 **Hizmet kategorisi:** Cihaz kaydı ve yönetimi  
 **Ürün yeteneği:** Kimlik güvenliği & koruması
  
-Azure AD ve Microsoft Uç Nokta Yöneticisi ekipleri, Firstline çalışan cihazlarınızı özelleştirme, ölçeklendirme ve güvenli hale getirmeye yönelik özelliği birleştirmelidir.
+Azure AD ve Microsoft Uç Nokta Yöneticisi ekipleri, Frontline çalışan cihazlarınızı özelleştirme, ölçeklendirme ve güvenli hale getirmeye yönelik özelliği birleştirmelidir.
 
 Aşağıdaki Önizleme özellikleri şunları yapmanıza olanak sağlayacak:
 - Microsoft Endpoint Manager ile Android paylaşılan cihazlarını ölçekli olarak sağlama
 - Cihaz tabanlı koşullu erişim kullanarak vardiya çalışanları için erişiminizi güvenli hale getirme
 - Yönetilen giriş ekranı ile vardiya çalışanları için oturum açma deneyimlerini özelleştirin
 
-Daha fazla bilgi edinmek için bkz. [Firstline çalışanları için paylaşılan cihazları ölçeklendirerek özelleştirme ve yapılandırma](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/customize-and-configure-shared-devices-for-firstline-workers-at/ba-p/1751708).
+Daha fazla bilgi edinmek için bkz. [Frontline çalışanları için paylaşılan cihazları ölçeklendirerek özelleştirme ve yapılandırma](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/customize-and-configure-shared-devices-for-firstline-workers-at/ba-p/1751708).
 
 ---
 

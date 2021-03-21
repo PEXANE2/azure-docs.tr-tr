@@ -8,12 +8,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/02/2020
-ms.openlocfilehash: 9894da7486ec3c0dfb92c94c7c7f4db2247ebeb7
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 70d0fc456b3697e3c74a5ec45cc936a02b77e591
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210214"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657663"
 ---
 # <a name="train-vowpal-wabbit-model"></a>Vowpal Wabbit Modelini Eğitme
 Bu makalede, Vowpal Wabbit kullanarak bir makine öğrenimi modeli oluşturmak için Azure Machine Learning tasarımcısında **Vowpal Wabbit modeli** modülünün nasıl kullanılacağı açıklanır.  
@@ -91,6 +91,13 @@ Vowpal Wabbit, mevcut bir modele yeni veri ekleyerek artımlı eğitimi destekle
 
 6. İşlem hattını gönderme.  
 7. Azure Machine Learning çalışma alanınızda güncelleştirilmiş modeli korumak için modülü seçin ve sağ bölmedeki **çıktılar + Günlükler** sekmesinde **veri kümesini kaydet** ' i seçin.  Yeni bir ad belirtmezseniz, güncelleştirilmiş model var olan kaydedilen modelin üzerine yazar.
+
+## <a name="results"></a>Sonuçlar
+
++ Modelden puan oluşturmak için [Vowpal Wabbit modelini](score-vowpal-wabbit-model.md)kullanın.
+
+> [!NOTE]
+> Eğitilen modeli tasarımcıda dağıtmanız gerekiyorsa, **Puanlama modeli** yerine [Vowpal Wabbit modelinin puanı](score-vowpal-wabbit-model.md) , çıkarım ardışık düzeninde [Web hizmeti çıkış modülünün](web-service-input-output.md) girişine bağlı olduğundan emin olun.
 
 ## <a name="technical-notes"></a>Teknik notlar
 

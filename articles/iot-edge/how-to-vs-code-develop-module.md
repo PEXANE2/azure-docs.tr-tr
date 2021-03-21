@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-js
 ms.openlocfilehash: eae6f1ec8cb6917d0d51deca8c9e88725c9b01a7
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103200625"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Azure IoT Edge için modülleri geliştirmek ve hatalarını ayıklamak için Visual Studio Code kullanın
@@ -125,7 +125,7 @@ Sanal sıcaklık modülünün nasıl çalıştığını görmek için [Simulated
 Çözümle birlikte gelen varsayılan modül kodu şu konumda bulunur:
 
 - Azure işlevi (C#): ***&lt; modüllerinizin &gt;*  >  *&lt; &gt;* adı >** modülünüzün adı. cs
-- C#: **modüller > *&lt; modülünüzün adını &gt;* > program.cs**
+- C#: **modüller > program. cs > *&lt; &gt; Modül adınızı***
 - Python: **modüller > *&lt; modülünüzün adını &gt;* > Main.py**
 - Node.js: ***&lt; modül adınızın &gt;* > > modüller app.js**
 - Java: ***&lt; Modül adınızı &gt;* > src > ana > Java > com > Edgemodulemodules > App. Java ' > modüller**

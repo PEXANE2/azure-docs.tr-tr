@@ -7,18 +7,21 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 435cad4d1ef002261b194431dbdb787e072808f5
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 59aa395db27c26a7c94eebdc0e3b34d7776ee75f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100361494"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592005"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Azure Data Factory Web kancası etkinliği
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Web kancası etkinliği, özel kodunuzla işlem hattı yürütülmesini denetleyebilir. Web kancası etkinliğiyle, müşterilerin kodu bir uç nokta çağırabilir ve geri çağırma URL 'SI geçirebilir. İşlem hattı çalıştırması, bir sonraki etkinliğe geçmeden önce geri çağırma çağrısını bekler.
+
+> [!IMPORTANT]
+> Web kancası etkinliği artık hata durumunu ve özel iletileri etkinme ve işlem hattına geri yüklemenize olanak tanır. _Reportstatusoncallback_ öğesini true olarak ayarlayın ve StatusCode ve geri çağırma yükünde _hata_ _kodu_ ekleyin. Daha fazla bilgi için bkz. [ek notlar](#additional-notes) bölümü.
 
 ## <a name="syntax"></a>Syntax
 
@@ -37,6 +40,7 @@ Web kancası etkinliği, özel kodunuzla işlem hattı yürütülmesini denetley
             "key": "value"
         },
         "timeout": "00:03:00",
+        "reportStatusOnCallBack": false,
         "authentication": {
             "type": "ClientCertificate",
             "pfx": "****",
@@ -57,7 +61,7 @@ Web kancası etkinliği, özel kodunuzla işlem hattı yürütülmesini denetley
 **'deki** | Hedef uç nokta ve yol. | Bir dizenin **ResultType** değeri olan bir dize veya ifade. | Yes |
 **bilgisinde** | İsteğe gönderilen üst bilgiler. İşte bir istek üzerinde dili ve türü ayarlayan bir örnek: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }` . | Bir dizenin **ResultType** değeri olan bir dize veya ifade. | Evet. `Content-Type`Gibi bir üst bilgi `"headers":{ "Content-Type":"application/json"}` gereklidir. |
 **bölümü** | Uç noktaya gönderilen yükü temsil eder. | JSON **değeri JSON** olan geçerli JSON veya bir ifade. İstek yükünün şeması için bkz. [istek yük şeması](./control-flow-web-activity.md#request-payload-schema) . | Yes |
-**yetkilendirmesi** | Uç noktayı çağırmak için kullanılan kimlik doğrulama yöntemi. Desteklenen türler şunlardır "temel" ve "ClientCertificate". Daha fazla bilgi için bkz. [Kimlik doğrulaması](./control-flow-web-activity.md#authentication). Kimlik doğrulaması gerekmiyorsa, bu özelliği dışlayın. | Bir dizenin **ResultType** değeri olan bir dize veya ifade. | No |
+**kimlik doğrulaması** | Uç noktayı çağırmak için kullanılan kimlik doğrulama yöntemi. Desteklenen türler şunlardır "temel" ve "ClientCertificate". Daha fazla bilgi için bkz. [Kimlik doğrulaması](./control-flow-web-activity.md#authentication). Kimlik doğrulaması gerekmiyorsa, bu özelliği dışlayın. | Bir dizenin **ResultType** değeri olan bir dize veya ifade. | No |
 **timeout** | Etkinliğin **Callbackuri** tarafından çağrılması için belirtilen geri çağırma için bekleyeceği süre. Varsayılan değer 10 dakikadır ("00:10:00"). Değerler, *d* TimeSpan biçimine sahiptir. *SS*:*dd*:*SS*. | Dize | No |
 **Geri aramada durum bildir** | Bir kullanıcının Web kancası etkinliğinin başarısız durumunu rapormasına olanak sağlar. | Boole | No |
 
@@ -141,7 +145,7 @@ Geri çağırma özelliğinde **rapor durumunu** kullandığınızda, geri çağ
 Data Factory tarafından desteklenen aşağıdaki denetim akışı etkinliklerine bakın:
 
 - [If Condition Etkinliği](control-flow-if-condition-activity.md)
-- [İşlem Hattı Çalıştırma Etkinliği](control-flow-execute-pipeline-activity.md)
+- [İşlem hattı yürütme etkinliği](control-flow-execute-pipeline-activity.md)
 - [Her Bir Etkinlik için](control-flow-for-each-activity.md)
 - [Meta Veri Alma Etkinliği](control-flow-get-metadata-activity.md)
 - [Arama Etkinliği](control-flow-lookup-activity.md)

@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 01/26/2021
 ms.author: apimpm
 ms.openlocfilehash: 2e4a398ab71878134887fb8fba025cd8aa6122ad
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99492863"
 ---
 # <a name="secure-backend-services-using-client-certificate-authentication-in-azure-api-management"></a>Azure API Management istemci sertifikası kimlik doğrulaması kullanarak arka uç hizmetleri güvenli hale getirme
@@ -76,7 +76,7 @@ API Management bir Anahtar Kasası sertifikası eklemek için:
 1. **İstemci kimliği**' nde, sistem tarafından atanan veya Kullanıcı tarafından atanan mevcut bir yönetilen kimlik seçin. [API Management hizmetinize Yönetilen kimlikler ekleme veya değiştirme](api-management-howto-use-managed-service-identity.md)hakkında bilgi edinin.
     > [!NOTE]
     > Kimlik, anahtar kasasından sertifika almak ve listelemek için izinlere ihtiyaç duyuyor. Zaten Anahtar Kasası 'na erişimi yapılandırmadıysanız, API Management kimliği, gerekli izinlerle otomatik olarak yapılandırabilmesi için sizi uyarır.
-1. **Ekle**’yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
     :::image type="content" source="media/api-management-howto-mutual-certificates/apim-client-cert-kv.png" alt-text="Anahtar Kasası sertifikası ekleme":::
 
@@ -90,7 +90,7 @@ API Management bir istemci sertifikası yüklemek için:
 1. **Kimlik** alanına tercih ettiğiniz bir ad girin.
 1. **Sertifika** bölümünde **özel**' i seçin.
 1. Sertifika. pfx dosyasını seçmek için gidin ve parolasını girin.
-1. **Ekle**’yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
     :::image type="content" source="media/api-management-howto-mutual-certificates/apim-client-cert-add.png" alt-text="İstemci sertifikasını karşıya yükle":::
 

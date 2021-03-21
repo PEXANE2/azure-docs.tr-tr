@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/27/2021
 ms.author: apimpm
 ms.openlocfilehash: 22d2960801cac2222f868c384a55b4bf436bc75b
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99492612"
 ---
 # <a name="api-management-authentication-policies"></a>API Management kimlik doğrulaması ilkeleri
@@ -109,7 +109,7 @@ Bu örnekte, istemci sertifikası yerleşik sertifika deposundan alınmaktansa i
 |----------|-----------------|--------------|-------------|  
 |#c0|İstemci sertifikası için parmak izi.|`thumbprint`Ya da `certificate-id` mevcut olmalıdır.|Yok|
 |sertifika kimliği|Sertifika kaynağı adı.|`thumbprint`Ya da `certificate-id` mevcut olmalıdır.|Yok|
-|body|Bir bayt dizisi olarak istemci sertifikası.|Hayır|Yok|
+|body|Bir bayt dizisi olarak istemci sertifikası.|No|Yok|
 |password|İstemci sertifikası için parola.|' De belirtilen sertifika `body` parola korumalı ise kullanılır.|Yok|
   
 ### <a name="usage"></a>Kullanım  
@@ -185,9 +185,9 @@ Sistem tarafından atanan kimlik ve birden çok kullanıcı tarafından atanan k
 |Ad|Açıklama|Gerekli|Varsayılan|  
 |----------|-----------------|--------------|-------------|  
 |kaynak|Dize. Azure Active Directory içindeki hedef Web API 'sinin (güvenli kaynak) uygulama KIMLIĞI.|Yes|Yok|
-|istemci kimliği|Dize. Azure Active Directory içindeki kullanıcı tarafından atanan kimliğin uygulama KIMLIĞI.|Hayır|sistem tarafından atanan kimlik|
-|çıkış-belirteç-değişken-adı|Dize. Bir nesne türü olarak belirteç değeri alacak bağlam değişkeninin adı `string` . |Hayır|Yok|  
-|yoksayma-hata|Boolean. Olarak ayarlanırsa `true` , bir erişim belirteci alınmasa bile ilke ardışık düzeni yürütülmeye devam eder.|Hayır|yanlış|  
+|istemci kimliği|Dize. Azure Active Directory içindeki kullanıcı tarafından atanan kimliğin uygulama KIMLIĞI.|No|sistem tarafından atanan kimlik|
+|çıkış-belirteç-değişken-adı|Dize. Bir nesne türü olarak belirteç değeri alacak bağlam değişkeninin adı `string` . |No|Yok|  
+|yoksayma-hata|Boolean. Olarak ayarlanırsa `true` , bir erişim belirteci alınmasa bile ilke ardışık düzeni yürütülmeye devam eder.|No|yanlış|  
   
 ### <a name="usage"></a>Kullanım  
  Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.  

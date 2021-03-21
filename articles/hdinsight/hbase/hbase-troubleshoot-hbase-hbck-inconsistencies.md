@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/08/2019
 ms.openlocfilehash: cbe4231bbecdf279c637cd334336437a020188d4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98936987"
 ---
 # <a name="scenario-hbase-hbck-command-returns-inconsistencies-in-azure-hdinsight"></a>Senaryo: `hbase hbck` komut Azure HDInsight 'ta tutarsızlıklar döndürüyor
@@ -64,7 +64,7 @@ Olmadığına.
 
 ### <a name="resolution"></a>Çözüm
 
-Bu örtüşen bölgeleri el ile birleştirin. HBase HMaster Web UI tablosu bölümüne gidin, sorunu içeren tablo bağlantısını seçin. Bu tabloya ait her bir bölgenin başlangıç anahtarı/bitiş anahtarını görürsünüz. Ardından bu çakışan bölgeleri birleştirin. HBase kabuğu 'nda bunu yapın `merge_region 'xxxxxxxx','yyyyyyy', true` . Örneğin:
+Bu örtüşen bölgeleri el ile birleştirin. HBase HMaster Web UI tablosu bölümüne gidin, sorunu içeren tablo bağlantısını seçin. Bu tabloya ait her bir bölgenin başlangıç anahtarı/bitiş anahtarını görürsünüz. Ardından bu çakışan bölgeleri birleştirin. HBase kabuğu 'nda bunu yapın `merge_region 'xxxxxxxx','yyyyyyy', true` . Örnek:
 
 ```
 RegionA, startkey:001, endkey:010,

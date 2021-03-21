@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 zone_pivot_groups: programming-languages-set-ten
-ms.openlocfilehash: df913716ff34a61e5bde4c0771ea8b7599db3d30
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: a5889be88dfd0870a2eee868c97787ff354cff68
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521406"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582740"
 ---
 # <a name="iot-plug-and-play-service-developer-guide"></a>IoT Tak ve Kullan hizmeti Geliştirici Kılavuzu
 
@@ -61,8 +61,8 @@ Hizmet SDK 'Ları, masaüstü veya Web uygulaması gibi bir çözümden cihaz bi
 
 Artık cihaz modelleme hakkında bilgi edindiğinize göre, bazı ek kaynaklar aşağıda verilmiştir:
 
-- [Dijital TWINS tanım dili (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl)
+- [Dijital İkiz Tanımlama Dili (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl)
 - [C cihaz SDK’sı](/azure/iot-hub/iot-c-sdk-ref/)
 - [IoT REST API](/rest/api/iothub/device)
-- [Model bileşenleri](./concepts-components.md)
+- [IoT Tak ve Kullan modelleme Kılavuzu](concepts-modeling-guide.md)
 - [DTDL yazma araçlarını yükle ve kullan](howto-use-dtdl-authoring-tools.md)

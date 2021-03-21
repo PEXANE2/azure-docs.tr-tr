@@ -4,10 +4,10 @@ description: Bu öğreticide, canlı video analizinin Azure bilişsel hizmetler 
 ms.topic: tutorial
 ms.date: 09/08/2020
 ms.openlocfilehash: b20cdb9bbc64f9adc49cfbde4ff80576b149dbcd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101698765"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>Uzamsal analizler için Görüntü İşleme ile canlı videoyu çözümleme (Önizleme)
@@ -221,7 +221,7 @@ Bu olayları görmek için şu adımları izleyin:
      
 ## <a name="run-the-program"></a>Programı çalıştırma
 
-Src/buluttan cihaza-Console-App/operations.jsüzerindeki doğrudan yöntemleri çağırabilecek bir program.cs vardır. operations.jskurulum ve medya Graf kullanımı için bir topoloji sağlaması gerekiyor.  
+Src/buluttan cihaza-Console-App/operations.jsüzerinde doğrudan yöntemleri çağırabilecek bir program. cs vardır. operations.jskurulum ve medya Graf kullanımı için bir topoloji sağlaması gerekiyor.  
 
 operations.js:
 

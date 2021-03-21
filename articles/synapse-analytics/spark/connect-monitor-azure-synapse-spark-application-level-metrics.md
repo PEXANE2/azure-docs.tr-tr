@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 01/22/2021
-ms.openlocfilehash: bd04c692655161a2ba8d4ff51a8ff07e9b9bd374
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: cb27401b2925c800ebde3b554c076f0d8cb747ca
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101696129"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593025"
 ---
 # <a name="tutorial-connect-and-monitor-azure-synapse-spark-application-level-metrics"></a>Öğretici: Azure SYNAPSE Spark uygulama düzeyi ölçümlerini bağlama ve izleme
 
@@ -176,7 +176,7 @@ Yanıt şöyle görünür:
 
 ### <a name="2-list-running-applications-in-the-azure-synapse-workspace"></a>2. çalışan uygulamaları Azure SYNAPSE çalışma alanında listeleme
 
-Bir Synapse çalışma alanı için Spark uygulamalarının listesini almak için, bu belge [izleme-Spark Iş listesini](https://docs.microsoft.com/rest/api/synapse/data-plane/monitoring/getsparkjoblist)takip edebilirsiniz.
+Bir Synapse çalışma alanı için Spark uygulamalarının listesini almak için, bu belge [izleme-Spark Iş listesini](/rest/api/synapse/data-plane/monitoring/getsparkjoblist)takip edebilirsiniz.
 
 
 ### <a name="3-collect-spark-application-metrics-with-the-prometheus-or-rest-apis"></a>3. Prometheus veya REST API 'Leriyle Spark uygulama ölçümleri toplayın

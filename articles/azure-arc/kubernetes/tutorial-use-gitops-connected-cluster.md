@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 03/02/2021
 ms.custom: template-tutorial
 ms.openlocfilehash: 64299bd05e82cf6f5452cde3f3da5622eff25e56
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102121482"
 ---
 # <a name="tutorial-deploy-configurations-using-gitops-on-an-azure-arc-enabled-kubernetes-cluster"></a>Öğretici: Azure Arc etkin bir Kubernetes kümesinde giler kullanarak yapılandırma dağıtma 
@@ -235,7 +235,7 @@ Bir yapılandırma oluşturulduğunda veya güncelleştirilirken birkaç şey me
 
 Sağlama işlemi gerçekleşirken, yapılandırma kaynağı birkaç durum değişikliğine göre hareket eder. Yukarıdaki komutla ilerlemeyi izleyin `az k8s-configuration show ...` :
 
-| Aşama değişikliği | Açıklama |
+| Aşama değişikliği | Description |
 | ------------- | ------------- |
 | `complianceStatus`-> `Pending` | İlk ve devam eden durumları temsil eder. |
 | `complianceStatus` -> `Installed`  | `config-agent` küme başarıyla yapılandırıldı ve `flux` hata olmadan dağıtıldı. |

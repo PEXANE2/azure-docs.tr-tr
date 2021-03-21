@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: 9b64dc95c6ee00a834c2741b30026df7350780c0
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: e323b1c15d78da4e8c1a82ae8848df7f59b0dd87
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103565350"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657365"
 ---
 # <a name="migration-guide-access-to-azure-sql-database"></a>Geçiş Kılavuzu: Azure SQL veritabanı 'na erişim
 
@@ -42,17 +42,58 @@ Bir değerlendirme oluşturmak için aşağıdaki adımları izleyin:
 
 1. Erişim için SQL Server Geçiş Yardımcısı açın. 
 1. **Dosya** ' yı ve ardından **Yeni proje**' yi seçin. Geçiş projeniz için bir ad sağlayın. 
-1. **Veritabanı Ekle** ' yi seçin ve yeni projenize eklenecek veritabanlarını seçin
+
+   ![Yeni proje seçin](./media/access-to-sql-database-guide/new-project.png)
+
+1. **Veritabanı Ekle** ' yi seçin ve yeni projenize eklenecek veritabanlarını seçin. 
+
+   ![Veritabanı Ekle 'yi seçin](./media/access-to-sql-database-guide/add-databases.png)
+
 1. **Access meta verileri Gezgini**' nde veritabanına sağ tıklayın ve ardından **rapor oluştur**' u seçin. 
+
+   ![Veritabanına sağ tıklayın ve rapor oluştur ' u seçin.](./media/access-to-sql-database-guide/create-report.png)
+
 1. Örnek değerlendirmesi gözden geçirin. Örnek: 
+
+   ![Örnek rapor değerlendirmesini gözden geçirme](./media/access-to-sql-database-guide/sample-assessment.png)
+
+### <a name="validate-data-types"></a>Veri türlerini doğrula
+
+Varsayılan veri türü eşlemelerini doğrulayın ve gerekirse gereksinimlere göre değiştirin. Bunu yapmak için aşağıdaki adımları izleyin:
+
+1. Menüden **Araçlar** ' ı seçin. 
+1. **Proje ayarları**' nı seçin. 
+1. **Tür eşlemeleri** sekmesini seçin. 
+
+   ![Tür eşlemeleri](./media/access-to-sql-database-guide/type-mappings.png)
+
+1. **Erişim meta verileri Gezgini**' nde tabloyu seçerek her tablo için tür eşlemesini değiştirebilirsiniz.
+
 
 ### <a name="convert-schema"></a>Şemayı Dönüştür
 
 Veritabanı nesnelerini dönüştürmek için aşağıdaki adımları izleyin: 
 
 1. **Azure SQL veritabanı 'Na Bağlan** ' ı seçin ve bağlantı ayrıntılarını sağlayın.
-1. **Access meta veri Gezgini** ' nde veritabanına sağ tıklayın ve **Şemayı Dönüştür**' ü seçin.  
-1. Seçim Tek bir nesneyi dönüştürmek için, nesneye sağ tıklayıp **Şemayı Dönüştür**' ü seçin. Dönüştürülen bir nesne, **Access meta veri Gezgini**'nde kalın görünür: 
+
+   ![Azure SQL Veritabanı'na bağlanma](./media/access-to-sql-database-guide/connect-to-sqldb.png)
+
+1. **Access meta veri Gezgini** ' nde veritabanına sağ tıklayın ve **Şemayı Dönüştür**' ü seçin. Alternatif olarak, veritabanınızı seçtikten sonra üst gezinti çubuğundan **Şemayı Dönüştür** ' i de seçebilirsiniz.
+
+   ![Veritabanına sağ tıklayın ve şemayı Dönüştür ' ü seçin.](./media/access-to-sql-database-guide/convert-schema.png)
+
+   Dönüştürülmüş sorguları özgün sorgularla karşılaştırın: 
+
+   ![Dönüştürülen sorgular, kaynak kodla karşılaştırılabilir](./media/access-to-sql-database-guide/query-comparison.png)
+
+   Dönüştürülmüş nesneleri özgün nesnelerle karşılaştırın: 
+
+   ![Dönüştürülen nesneler, kaynak ile karşılaştırılabilir](./media/access-to-sql-database-guide/table-comparison.png)
+
+1. Seçim Tek bir nesneyi dönüştürmek için, nesneye sağ tıklayıp **Şemayı Dönüştür**' ü seçin. Dönüştürülen nesneler, **Access meta veri Gezgini**'nde kalın görünür: 
+
+   ![Meta veri Gezgini 'nde kalın nesneler dönüştürüldü](./media/access-to-sql-database-guide/converted-items.png)
+ 
 1. Çıkış bölmesinde **sonuçları gözden geçir** ' i seçin ve **hata listesi** bölmesindeki hataları gözden geçirin. 
 
 
@@ -64,9 +105,28 @@ Erişim için SSMA kullanarak verileri geçirmek için şu adımları izleyin:
 
 1. Henüz yapmadıysanız **Azure SQL veritabanı 'Na Bağlan** ' ı seçin ve bağlantı ayrıntılarını sağlayın. 
 1. **Azure SQL veritabanı meta veri Gezgini** ' nden veritabanına sağ tıklayın ve **veritabanıyla Synchronize**' ı seçin. Bu eylem MySQL şemasını Azure SQL veritabanı 'na yayımlar.
+
+   ![Veritabanıyla Synchronize](./media/access-to-sql-database-guide/synchronize-with-database.png)
+
+   Kaynak projeniz ve Hedefinizdeki eşlemeyi gözden geçirin:
+
+   ![Veritabanıyla eşitlemeyi gözden geçirme](./media/access-to-sql-database-guide/synchronize-with-database-review.png)
+
 1. Geçirmek istediğiniz öğelerin yanındaki kutuları denetlemek için **Access meta verileri Gezginini** kullanın. Tüm veritabanını geçirmek istiyorsanız veritabanının yanındaki kutuyu işaretleyin. 
 1. Geçirmek istediğiniz veritabanına veya nesneye sağ tıklayın ve **veri geçişi**' ni seçin. 
    Tüm bir veritabanının verilerini geçirmek için veritabanı adının yanındaki onay kutusunu işaretleyin. Ayrı tablolardan verileri geçirmek için veritabanını genişletin, tablolar ' ı genişletin ve ardından tablonun yanındaki onay kutusunu işaretleyin. Ayrı tablolardaki verileri atlamak için onay kutusunu temizleyin.
+
+    ![Verileri geçirme](./media/access-to-sql-database-guide/migrate-data.png)
+
+    Geçirilen verileri gözden geçirin: 
+
+    ![Veri Incelemesini geçir](./media/access-to-sql-database-guide/migrate-data-review.png)
+
+1. [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) kullanarak Azure SQL veritabanınıza bağlanın ve verileri ve şemayı inceleyerek geçişi doğrulayın.
+
+   ![SSMA 'da doğrula](./media/access-to-sql-database-guide/validate-data.png)
+
+
 
 ## <a name="post-migration"></a>Geçiş sonrası 
 

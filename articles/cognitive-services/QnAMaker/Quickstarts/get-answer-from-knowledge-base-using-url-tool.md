@@ -1,22 +1,22 @@
 ---
-title: "Hızlı başlangıç: Bilgi Bankası 'ndan yanıt almak için URL aracını kullanın-Soru-Cevap Oluşturma"
+title: Bilgi Bankası 'ndan yanıt almak için URL aracını kullanın-Soru-Cevap Oluşturma
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, kıvrımlı veya Postman gibi bir URL test aracı kullanarak bilgi tabanınızdan yanıt alma işlemi adım adım gösterilmektedir.
+description: Bu makalede, kıvrımlı veya Postman gibi bir URL test aracı kullanarak bilgi tabanınızdan yanıt alma işlemi adım adım açıklanmaktadır.
 services: cognitive-services
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 zone_pivot_groups: URL-test-interface
-ms.topic: quickstart
+ms.topic: how-to
 ms.date: 07/16/2020
-ms.openlocfilehash: eddae69c0946ab135540b77d3cc89937079e6293
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 46657cfaf513cdd2dd0ecfd284602d2277781626
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103016262"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104583080"
 ---
-# <a name="quickstart-get-an-answer-from-knowledge-base"></a>Hızlı başlangıç: Bilgi Bankası 'ndan bir yanıt alın
+# <a name="get-an-answer-from-a-knowledge-base"></a>Bilgi bankasından yanıt alın
 
 
 ::: zone pivot="url-test-tool-curl"

@@ -1,5 +1,5 @@
 ---
-title: Tek başına mikro aracıya genel bakış
+title: Tek başına mikro aracıya genel bakış (Önizleme)
 titleSuffix: Azure Defender for IoT
 description: IoT güvenlik aracıları için Azure Defender, yeni IoT cihazlarınıza ve Azure IoT projelerinize doğrudan güvenlik oluşturmanıza olanak sağlar.
 author: shhazam-ms
@@ -8,14 +8,14 @@ ms.author: shhazam
 ms.date: 1/19/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: a3f71860801c7f611a10acd4ec4e8f8ed03ab20a
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 84afa4205b57481efc3ed9df805cfa7a3657a6c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102120088"
 ---
-# <a name="standalone-micro-agent-overview"></a>Tek başına mikro aracıya genel bakış 
+# <a name="standalone-micro-agent-overview-preview"></a>Tek başına mikro aracıya genel bakış (Önizleme)
 
 Güvenlik, IoT uygulayıcıları için neredeyse evrensel bir konudur. IoT cihazlarında uç nokta izleme, güvenlik gönderme yönetimi ve tehdit algılama için benzersiz gereksinimler vardır. Bunlar, yüksek oranda özel performans gereksinimleriyle aynıdır. 
 
@@ -47,4 +47,4 @@ IoT mikro aracısının Azure Defender 'ın dağıtılması kolaydır ve uç nok
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Mikro aracı kimlik doğrulama yöntemlerinizi ](concept-security-agent-authentication.md)denetleyin.
+[Mikro aracı kimlik doğrulama yöntemlerinizi (Önizleme)](concept-security-agent-authentication.md)denetleyin.

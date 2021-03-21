@@ -3,14 +3,14 @@ title: Desteklenen sürümler-MariaDB için Azure veritabanı
 description: MariaDB için Azure veritabanı hizmetinde bulunan MariaDB sunucusu sürümlerinin hangi sürümlerini destekleyeceğinizi öğrenin.
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: conceptual
 ms.date: 7/20/2020
-ms.openlocfilehash: 61add327852471932d75c746127c64b47bb4f3b2
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: dbf32626714200e6712c67b701ebc597c4a7ba7e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98662449"
 ---
 # <a name="supported-azure-database-for-mariadb-server-versions"></a>MariaDB sunucu sürümleri için desteklenen Azure veritabanı

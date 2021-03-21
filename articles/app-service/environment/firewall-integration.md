@@ -8,10 +8,10 @@ ms.date: 09/24/2020
 ms.author: ccompy
 ms.custom: seodec18, references_regions
 ms.openlocfilehash: ec506546b52a2d137d448f07f4b7a6827c01b4d2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100594121"
 ---
 # <a name="locking-down-an-app-service-environment"></a>App Service Ortamı kilitleme
@@ -117,7 +117,7 @@ Aşağıdaki bilgiler yalnızca Azure Güvenlik Duvarı dışında bir güvenlik
 | Uç Nokta |
 |----------|
 | Azure SQL |
-| Azure Storage |
+| Azure Depolama |
 | Azure Event Hub |
 
 #### <a name="ip-address-dependencies"></a>IP adresi bağımlılıkları
@@ -290,7 +290,7 @@ Linux, US Gov bölgelerinde kullanılamaz ve bu nedenle isteğe bağlı bir yap�
 | Uç Nokta |
 |----------|
 | Azure SQL |
-| Azure Storage |
+| Azure Depolama |
 | Azure Event Hub |
 
 #### <a name="ip-address-dependencies"></a>IP adresi bağımlılıkları

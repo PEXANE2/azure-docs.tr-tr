@@ -10,10 +10,10 @@ adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts
 adobe-target-experience: Experience B
 adobe-target-content: ./functions-create-your-first-function-visual-studio-uiex
 ms.openlocfilehash: d691ee60f624f75c89e44e905e5343bf9c71fd4d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101701424"
 ---
 # <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>Hızlı başlangıç: Visual Studio 'Yu kullanarak Azure 'da ilk işlevinizi oluşturma
@@ -40,7 +40,7 @@ Visual Studio, HTTP tetikleyici işlev türü için ortak kod içeren bir proje 
 
 `FunctionName`Yöntem özniteliği, varsayılan olarak olarak oluşturulan işlevin adını ayarlar `Function1` . Araç, projenizi oluştururken varsayılan işlev adını geçersiz kılmanıza izin vermediğinden, işlev sınıfı, dosya ve meta veriler için daha iyi bir ad oluşturmak üzere bir dakikanızı alın.
 
-1. **Dosya Gezgini**'nde, function1.cs dosyasına sağ tıklayın ve olarak yeniden adlandırın `HttpExample.cs` .
+1. **Dosya Gezgini**'nde işlev1. cs dosyasına sağ tıklayın ve olarak yeniden adlandırın `HttpExample.cs` .
 
 1. Kodda, Işlev1 sınıfını ' HttpExample ' olarak yeniden adlandırın.
 

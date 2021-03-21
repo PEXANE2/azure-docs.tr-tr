@@ -6,14 +6,14 @@ ms.author: sumuth
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 09/22/2020
+ms.date: 03/18/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: ab606e357bd911f4d7f266977bd14871f92744a0
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: ff9af90ca0b6b80ffece5ccd7d919c1d93e210c4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546577"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657595"
 ---
 # <a name="tutorial-create-an-azure-database-for-postgresql---flexible-server-with-app-services-web-app-in-virtual-network"></a>Öğretici: Sanal ağda, PostgreSQL için Azure veritabanı-uygulama Hizmetleri Web uygulaması ile esnek sunucu oluşturma
 
@@ -22,9 +22,10 @@ ms.locfileid: "92546577"
 
 Bu öğreticide, bir [sanal ağ](../../virtual-network/virtual-networks-overview.md)Içindeki PostgreSQL Için Azure veritabanı-esnek sunucu (Önizleme) ile bir Azure App Service Web uygulaması oluşturma işlemlerinin nasıl yapılacağı gösterilmektedir.
 
-Bu öğreticide,
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 >[!div class="checklist"]
 > * Sanal ağda bir PostgreSQL esnek sunucusu oluşturma
+> * App Service temsilci seçmek için bir alt ağ oluşturun
 > * Web uygulaması oluşturma
 > * Web uygulamasını sanal ağa ekleme
 > * Web uygulamasından Postgres 'e bağlanma 
@@ -44,7 +45,7 @@ az login
 Birden fazla aboneliğiniz varsa kaynağın faturalanacağı uygun aboneliği seçin. [az account set](/cli/azure/account) komutunu kullanarak hesabınız altındaki belirli bir abonelik kimliğini seçin. **Abonelik kimliği özelliğini aboneliğiniz** için **az oturum açma** çıktısından abonelik kimliği yer tutucusuna koyun.
 
 ```azurecli
-az account set --subscription <subscription id>
+az account set --subscription <subscription ID>
 ```
 
 ## <a name="create-a-postgresql-flexible-server-in-a-new-virtual-network"></a>Yeni bir sanal ağda bir PostgreSQL esnek sunucusu oluşturma
@@ -68,14 +69,21 @@ Bu komut, birkaç dakika sürebilen aşağıdaki eylemleri gerçekleştirir:
 >  az postgres flexible-server firewall-rule list --resource-group myresourcegroup --server-name mydemoserver --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 >  ```
 
+## <a name="create-subnet-for-app-service-endpoint"></a>App Service uç noktası için alt ağ oluşturma
+Artık Web uygulaması uç noktası App Service için temsilci atanmış alt ağa sahip olmanız gerekir. Veritabanı sunucusu oluşturulduğu sanal ağda yeni bir alt ağ oluşturmak için aşağıdaki komutu çalıştırın. 
+
+```azurecli
+az network vnet subnet create -g myresourcegroup --vnet-name VNETName --name webappsubnetName  --address-prefixes 10.0.1.0/24  --delegations Microsoft.Web/serverFarms --service-endpoints Microsoft.Web
+```
+Bu komuttan sonra sanal ağ adını ve alt ağ adını bir yere, oluşturulduktan sonra Web uygulaması için VNET tümleştirme kuralı eklemesi gerekir. 
 
 ## <a name="create-a-web-app"></a>Web Uygulaması oluşturma
-Bu bölümde App Service uygulamasında uygulama konağı oluşturur, bu uygulamayı Postgres veritabanına bağlayın ve ardından kodunuzu bu konağa dağıtın. Terminalde uygulama kodunuzun depo kökünde olduğunuzdan emin olun.
+Bu bölümde App Service uygulamasında uygulama konağı oluşturur, bu uygulamayı Postgres veritabanına bağlayın ve ardından kodunuzu bu konağa dağıtın. Terminalde uygulama kodunuzun depo kökünde olduğunuzdan emin olun. Not temel planı VNET tümleştirmesini desteklemez. Lütfen standart veya Premium kullanın. 
 
 Az WebApp up komutuyla bir App Service uygulaması (ana bilgisayar işlemi) oluşturun
 
 ```azurecli
-az webapp up --resource-group myresourcegroup --location westus2 --plan testappserviceplan --sku B1 --name mywebapp
+az webapp up --resource-group myresourcegroup --location westus2 --plan testappserviceplan --sku P2V2 --name mywebapp
 ```
 
 > [!NOTE]
@@ -85,7 +93,6 @@ az webapp up --resource-group myresourcegroup --location westus2 --plan testapps
 Bu komut, birkaç dakika sürebilen aşağıdaki eylemleri gerçekleştirir:
 
 - Zaten mevcut değilse kaynak grubunu oluşturun. (Bu komutta veritabanını daha önce oluşturduğunuz kaynak grubunu kullanırsınız.)
-- ```testappserviceplan```Mevcut değilse, temel fiyatlandırma katmanında (B1) App Service planı oluşturun. --plan ve--SKU isteğe bağlıdır.
 - Yoksa App Service uygulamasını oluşturun.
 - Zaten etkinleştirilmemişse, uygulama için varsayılan günlüğü etkinleştirin.
 - Derleme Otomasyonu etkinken ZIP dağıtımını kullanarak depoyu karşıya yükleyin.
@@ -94,7 +101,7 @@ Bu komut, birkaç dakika sürebilen aşağıdaki eylemleri gerçekleştirir:
 Bir WebApp 'ye bölgesel sanal ağ tümleştirmesi eklemek için **az WebApp VNET-Integration** komutunu kullanın. <VNET-Name> ve <alt ağ adı>, esnek sunucunun kullandığı sanal ağ ve alt ağ adıyla değiştirin.
 
 ```azurecli
-az webapp vnet-integration add -g myresourcegroup -n  mywebapp --vnet <vnet-name> --subnet <subnet-name>
+az webapp vnet-integration add -g myresourcegroup -n  mywebapp --vnet VNETName --subnet webappsubnetName
 ```
 
 ## <a name="configure-environment-variables-to-connect-the-database"></a>Veritabanını bağlamak için ortam değişkenlerini yapılandırma

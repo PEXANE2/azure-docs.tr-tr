@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: jingwang
 ms.openlocfilehash: 8f6e85d82c01663e404f7046f84706feb209ba5a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100367036"
 ---
 # <a name="copy-and-transform-data-from-hive-using-azure-data-factory"></a>Azure Data Factory kullanarak Hive 'den veri kopyalama ve dönüştürme 
@@ -18,7 +18,7 @@ ms.locfileid: "100367036"
 
 Bu makalede, Hive 'den veri kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Kopyalama etkinliğine genel bir bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesinde oluşturulur.
 
-## <a name="supported-capabilities"></a>Desteklenen yetenekler
+## <a name="supported-capabilities"></a>Desteklenen özellikler
 
 Bu Hive Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 
