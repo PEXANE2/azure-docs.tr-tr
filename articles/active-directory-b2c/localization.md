@@ -12,10 +12,10 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
 ms.openlocfilehash: 3a5afcd8c0ef0c31353cd2369ead332675c9877f
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102453130"
 ---
 # <a name="localization-element"></a>Yerelleştirme öğesi
@@ -42,11 +42,11 @@ ms.locfileid: "102453130"
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Etkin | Hayır | Olası değerler: `true` veya `false` . |
+| Etkin | No | Olası değerler: `true` veya `false` . |
 
 **Yerelleştirme** Öğesı aşağıdaki XML öğelerini içerir
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | SupportedLanguages | 1: n | Desteklenen dillerin listesi. |
 | LocalizedResources | 0: n | Yerelleştirilmiş kaynakların listesi. |
@@ -58,13 +58,13 @@ ms.locfileid: "102453130"
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
 | DefaultLanguage | Yes | Yerelleştirilmiş kaynaklar için varsayılan olarak kullanılacak dil. |
-| MergeBehavior | Hayır | Aynı tanımlayıcıya sahip bir üst ilkede bulunan tüm ClaimType ile birlikte birleştirilmiş değerlerin sabit listesi değerleri. Temel ilkede belirtilen bir talebin üzerine yazdığınızda bu özniteliği kullanın. Olası değerler: `Append` , `Prepend` , veya `ReplaceAll` . `Append`Değer, var olan veri koleksiyonunun üst ilkede belirtilen koleksiyonun sonuna eklenmesi gerektiğini belirtir. `Prepend`Değer, var olan veri koleksiyonunun üst ilkede belirtilen koleksiyondan önce eklenmesi gerektiğini belirtir. `ReplaceAll`Değer, üst ilkede tanımlanan veri koleksiyonunun, bunun yerine geçerli ilkede tanımlanan veriler kullanılarak yoksayılacağını belirtir. |
+| MergeBehavior | No | Aynı tanımlayıcıya sahip bir üst ilkede bulunan tüm ClaimType ile birlikte birleştirilmiş değerlerin sabit listesi değerleri. Temel ilkede belirtilen bir talebin üzerine yazdığınızda bu özniteliği kullanın. Olası değerler: `Append` , `Prepend` , veya `ReplaceAll` . `Append`Değer, var olan veri koleksiyonunun üst ilkede belirtilen koleksiyonun sonuna eklenmesi gerektiğini belirtir. `Prepend`Değer, var olan veri koleksiyonunun üst ilkede belirtilen koleksiyondan önce eklenmesi gerektiğini belirtir. `ReplaceAll`Değer, üst ilkede tanımlanan veri koleksiyonunun, bunun yerine geçerli ilkede tanımlanan veriler kullanılarak yoksayılacağını belirtir. |
 
 ### <a name="supportedlanguages"></a>SupportedLanguages
 
 **Supportedlanguages** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | SupportedLanguage | 1: n | Dilleri tanımlamak için RFC 5646-Tags başına bir dil etiketine uyan içeriği görüntüler. |
 
@@ -78,7 +78,7 @@ ms.locfileid: "102453130"
 
 **Localizedresources** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | LocalizedCollections | 0: n | Çeşitli kültürlerde tüm koleksiyonları tanımlar. Bir koleksiyon çeşitli kültürler için farklı sayıda öğe ve farklı dize içerebilir. Koleksiyon örnekleri, talep türlerinde görünen numaralandırmaları içerir. Örneğin, bir ülke/bölge listesi kullanıcıya bir açılan listede gösterilir. |
 | LocalizedStrings | 0: n | Çeşitli kültürlerde koleksiyonlarda görünen dizeler hariç tüm dizeleri tanımlar. |
@@ -87,7 +87,7 @@ ms.locfileid: "102453130"
 
 **Localizedcollections** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | LocalizedCollection | 1: n | Desteklenen dillerin listesi. |
 
@@ -103,7 +103,7 @@ ms.locfileid: "102453130"
 
 **Localizedcollection** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | Öğe | 0: n | Kullanıcının, açılan menüdeki bir değer gibi kullanıcı arabirimindeki bir talep için seçim yapmak üzere kullanılabilir bir seçenek tanımlar. |
 
@@ -113,7 +113,7 @@ ms.locfileid: "102453130"
 | --------- | -------- | ----------- |
 | Metin | Yes | Bu seçenek için Kullanıcı arabiriminde kullanıcıya gösterilmesi gereken kullanıcı dostu görüntüleme dizesi. |
 | Değer | Yes | Bu seçeneği belirleyerek ilişkili dize talep değeri. |
-| SelectByDefault | Hayır | Bu seçeneğin Kullanıcı arabiriminde varsayılan olarak seçilmesinin gerekip gerekmediğini gösterir. Olası değerler: true veya false. |
+| SelectByDefault | No | Bu seçeneğin Kullanıcı arabiriminde varsayılan olarak seçilmesinin gerekip gerekmediğini gösterir. Olası değerler: true veya false. |
 
 Aşağıdaki örnek, **Localizedcollections** öğesinin kullanımını gösterir. Biri Ingilizce ve diğeri Ispanyolca için olmak üzere iki **Localizedcollection** öğesi içerir. Her ikisi de, bir öğenin **kısıtlama** koleksiyonunu `Gender` İngilizce ve İspanyolca için bir öğe listesiyle ayarlayın.
 
@@ -139,7 +139,7 @@ Aşağıdaki örnek, **Localizedcollections** öğesinin kullanımını gösteri
 
 **Localizedstrings** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | LocalizedString | 1: n | Yerelleştirilmiş bir dize. |
 

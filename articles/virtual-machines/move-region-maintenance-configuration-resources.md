@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 03/04/2020
 ms.author: shants
 ms.openlocfilehash: 88082c441dafdc7571f2b9775bfc07ebe3ca5aa4
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98730515"
 ---
 # <a name="move-resources-in-a-maintenance-control-configuration-to-another-region"></a>Bakım denetim yapılandırmasındaki kaynakları başka bir bölgeye taşıma
@@ -23,7 +23,7 @@ Bir bakım denetimi yapılandırmasıyla ilişkili kaynakları farklı bir Azure
 - Bakım denetimi yapılandırmanızı taşımak, ancak yapılandırmayla ilişkili kaynakları değil, [Bu yönergeleri](move-region-maintenance-configuration.md)izleyin.
 - Bakım yapılandırmasını ve bununla ilişkili kaynakları taşımak için önce [Bu yönergeleri](move-region-maintenance-configuration.md)uygulayın. Ardından, bu makaledeki yönergeleri izleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir bakım denetimi yapılandırmasıyla ilişkili kaynakları taşımaya başlamadan önce:
 

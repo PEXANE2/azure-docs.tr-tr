@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philMea
 ms.openlocfilehash: 2a37e716b7804b11ab396909f746af84294bb4e3
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98895280"
 ---
 # <a name="drawing-package-requirements"></a>Çizim paketi gereksinimleri
@@ -41,7 +41,7 @@ Kolay başvuru için, bu makaleyi okurken önemli olan bazı hüküm ve tanımla
 | Katman | Bir AutoCAD DWG katmanı.|
 | Level | Bir küme yükseltmesinde bina alanı. Örneğin, bir bina tabanı. |
 | XREF  |AutoCAD DWG dosya biçimindeki (. dwg), dış başvuru olarak birincil Çizime eklenen bir dosya.  |
-| Öne çıkan özelliği | Bir geometriyi daha fazla meta veri bilgileriyle birleştiren bir nesne. |
+| Özellik | Bir geometriyi daha fazla meta veri bilgileriyle birleştiren bir nesne. |
 | Özellik sınıfları | Özellikler için ortak bir şema. Örneğin, bir *birim* bir özellik sınıfıdır ve *Office* bir özelliktir. |
 
 ## <a name="drawing-package-structure"></a>Çizim paketi yapısı

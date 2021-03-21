@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 11/29/2018
 ms.custom: mvc, devx-track-python
 ms.openlocfilehash: 7013ef1e9b6dda4554b665fa8199edb86a8a9adb
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97106521"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>Öğretici: Python API’si kullanarak Azure Batch ile paralel iş yükü çalıştırma
@@ -60,7 +60,7 @@ Python ortamınızda `pip` kullanarak gerekli paketleri yükleyin.
 pip install -r requirements.txt
 ```
 
-`config.py` dosyasını açın. Batch ve depolama hesabı kimlik bilgilerini, hesaplarınıza özel değerlerle güncelleştirin. Örneğin:
+`config.py` dosyasını açın. Batch ve depolama hesabı kimlik bilgilerini, hesaplarınıza özel değerlerle güncelleştirin. Örnek:
 
 
 ```Python
@@ -194,7 +194,7 @@ new_pool = batch.models.PoolAddParameter(
 batch_service_client.pool.add(new_pool)
 ```
 
-### <a name="create-a-job"></a>İş oluşturma
+### <a name="create-a-job"></a>Bir iş oluşturma
 
 Bir Batch işi, üzerinde görevlerin çalıştırılacağı bir havuz ve iş için öncelik ile zamanlama gibi isteğe bağlı ayarları belirtir. Örnek, `create_job` çağrısıyla bir iş oluşturur. Bu tanımlı işlev, havuzunuzda bir iş oluşturmak üzere [JobAddParameter](/python/api/azure-batch/azure.batch.models.jobaddparameter) sınıfını kullanır. [Job.add](/python/api/azure-batch/azure.batch.operations.joboperations) yöntemi, havuzu Batch hizmetine gönderir. Başlangıçta iş hiçbir görev içermez.
 

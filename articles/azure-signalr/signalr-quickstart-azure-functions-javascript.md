@@ -9,17 +9,17 @@ ms.date: 12/14/2019
 ms.author: zhshang
 ms.custom: devx-track-js
 ms.openlocfilehash: 061dce01d2437d04d371ac65c115a1d95136fb5d
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94874704"
 ---
 # <a name="quickstart-use-javascript-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>Hızlı başlangıç: Azure Işlevleri ve SignalR hizmeti ile sohbet odası oluşturmak için JavaScript kullanma
 
 Azure SignalR hizmeti, uygulamanıza kolayca gerçek zamanlı işlevselliği eklemenizi sağlar ve Azure Işlevleri, herhangi bir altyapıyı yönetmeden kodunuzu çalıştırmanıza olanak tanıyan sunucusuz bir platformdur. Bu hızlı başlangıçta, SignalR hizmeti ve Işlevleri 'ni kullanarak sunucusuz, gerçek zamanlı bir sohbet uygulaması oluşturmak için JavaScript 'ı kullanırsınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Visual Studio Code](https://code.visualstudio.com/) gibi bir kod Düzenleyicisi
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).

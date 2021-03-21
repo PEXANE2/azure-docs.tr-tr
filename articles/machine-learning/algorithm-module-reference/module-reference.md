@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 11/09/2020
 ms.openlocfilehash: 89ad9aae7c0d01971bbcfc7e392cb9d455ef85cd
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94376851"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer"></a>Azure Machine Learning Tasarımcısı için algoritma & modül başvurusu
@@ -32,24 +32,24 @@ Algoritma seçme konusunda yardım için bkz.
 ## <a name="data-preparation-modules"></a>Veri hazırlama modülleri
 
 
-| İşlev | Açıklama | Modül |
+| İşlev | Description | Modül |
 | --- |--- | --- |
-| Veri girişi ve çıkışı | Verileri bulut kaynaklarından ardışık düzene taşıyın. Sonuçları veya ara verilerinizi Azure Storage, SQL Database veya Hive 'e yazın, işlem hattı çalıştırırken veya işlem hatları arasında veri alışverişi yapmak için bulut depolama kullanın.  | [Verileri El ile Girme](enter-data-manually.md) <br/> [Verileri dışarı aktar](export-data.md) <br/> [Verileri içeri aktar](import-data.md) |
-| Veri Dönüştürme | Makine öğrenimi için benzersiz olan, verileri normalleştirime veya binme, Boyut azaltma ve çeşitli dosya biçimleri arasında veri dönüştürme gibi işlemler.| [Sütun Ekle](add-columns.md) <br/> [Satır Ekleme](add-rows.md) <br/> [Matematik İşlemi Uygulama](apply-math-operation.md) <br/> [SQL Dönüşümü Uygulama](apply-sql-transformation.md) <br/> [Eksik Verileri Temizleme](clean-missing-data.md) <br/> [Değerleri Kırpma](clip-values.md) <br/> [CSV’ye dönüştürme](convert-to-csv.md) <br/> [Veri kümesine dönüştürme](convert-to-dataset.md) <br/> [Gösterge Değerlerine dönüştürme](convert-to-indicator-values.md) <br/> [Meta Verileri Düzenleme](edit-metadata.md) <br/> [Verileri Kutulara Gruplama](group-data-into-bins.md) <br/> [Verileri birleştirme](join-data.md) <br/> [Verileri Normalleştirme](normalize-data.md) <br/> [Bölüm ve Örnek](partition-and-sample.md)  <br/> [Yinelenen Satırları Kaldırma](remove-duplicate-rows.md) <br/> [SMOTE](smote.md) <br/> [Sütun Dönüştürmeyi Seçme](select-columns-transform.md) <br/> [Veri kümesindeki Sütunları seçme](select-columns-in-dataset.md) <br/> [Verileri Bölme](split-data.md) |
+| Veri girişi ve çıkışı | Verileri bulut kaynaklarından ardışık düzene taşıyın. Sonuçları veya ara verilerinizi Azure Storage, SQL Database veya Hive 'e yazın, işlem hattı çalıştırırken veya işlem hatları arasında veri alışverişi yapmak için bulut depolama kullanın.  | [Verileri El ile Girme](enter-data-manually.md) <br/> [Verileri dışarı aktar](export-data.md) <br/> [Verileri İçeri Aktarma](import-data.md) |
+| Veri Dönüştürme | Makine öğrenimi için benzersiz olan, verileri normalleştirime veya binme, Boyut azaltma ve çeşitli dosya biçimleri arasında veri dönüştürme gibi işlemler.| [Sütun Ekle](add-columns.md) <br/> [Satır Ekle](add-rows.md) <br/> [Matematik İşlemi Uygulama](apply-math-operation.md) <br/> [SQL Dönüşümü Uygulama](apply-sql-transformation.md) <br/> [Eksik Verileri Temizleme](clean-missing-data.md) <br/> [Değerleri Kırpma](clip-values.md) <br/> [CSV’ye dönüştürme](convert-to-csv.md) <br/> [Veri kümesine dönüştürme](convert-to-dataset.md) <br/> [Gösterge Değerlerine dönüştürme](convert-to-indicator-values.md) <br/> [Meta Verileri Düzenleme](edit-metadata.md) <br/> [Verileri Kutulara Gruplama](group-data-into-bins.md) <br/> [Verileri birleştirme](join-data.md) <br/> [Verileri Normalleştirme](normalize-data.md) <br/> [Bölüm ve Örnek](partition-and-sample.md)  <br/> [Yinelenen Satırları Kaldırma](remove-duplicate-rows.md) <br/> [SMOTE](smote.md) <br/> [Sütun Dönüştürmeyi Seçme](select-columns-transform.md) <br/> [Veri kümesindeki Sütunları seçme](select-columns-in-dataset.md) <br/> [Verileri Bölme](split-data.md) |
 | Özellik seçimi | Analitik model oluştururken kullanılacak ilgili, yararlı özelliklerin bir alt kümesini seçin. | [Filtre Tabanlı Özellik Seçimi](filter-based-feature-selection.md) <br/> [Permütasyon Özelliği Önem Derecesi](permutation-feature-importance.md) |
 | İstatistiksel İşlevler | Veri bilimi ile ilgili çok çeşitli istatistiksel yöntemler sağlar. | [Verileri Özetleme](summarize-data.md)|
 
 ## <a name="machine-learning-algorithms"></a>Makine öğrenmesi algoritmaları
 
-| İşlev | Açıklama | Modül |
+| İşlev | Description | Modül |
 | --- |--- | --- |
-| Regresyon | Bir değer tahmin edin. | [Artırmalı Karar Ağacı Regresyonu](boosted-decision-tree-regression.md) <br/> [Karar Ormanı Regresyonu](decision-forest-regression.md) <br/> [Hızlı Orman Dağılım Dilimi Regresyonu](fast-forest-quantile-regression.md)  <br/> [Çizgisel Regresyon](linear-regression.md)  <br/> [Sinir Ağı Regresyonu](neural-network-regression.md)  <br/> [Poisson Regresyonu](poisson-regression.md)  <br/>|
+| Regresyon | Bir değer tahmin edin. | [Artırmalı Karar Ağacı Regresyonu](boosted-decision-tree-regression.md) <br/> [Karar Ormanı Regresyonu](decision-forest-regression.md) <br/> [Hızlı Orman Dağılım Dilimi Regresyonu](fast-forest-quantile-regression.md)  <br/> [Doğrusal regresyon](linear-regression.md)  <br/> [Sinir Ağı Regresyonu](neural-network-regression.md)  <br/> [Poisson Regresyonu](poisson-regression.md)  <br/>|
 | Kümeleme | Verileri birlikte gruplandırın.| [K Ortalamaları Kümeleme](k-means-clustering.md)
-| Sınıflandırma | Bir sınıfı tahmin edin.  İkili (iki sınıf) veya birden çok sınıf algoritmalarından birini seçin.| [Çok Sınıflı Artırmalı Karar Ağacı](multiclass-boosted-decision-tree.md) <br/> [Çok Sınıflı Karar Ormanı](multiclass-decision-forest.md) <br/> [Çok Sınıflı Lojistik Regresyon](multiclass-logistic-regression.md)  <br/> [Çok Sınıflı Sinir Ağı](multiclass-neural-network.md) <br/> [Bir - Tüm Çok Sınıflılık Karşılaştırması](one-vs-all-multiclass.md) <br/> [Tek bir ve birden çok Lass](one-vs-one-multiclass.md) <br/>[İki Sınıflı Ortalaması Alınmış Perceptron](two-class-averaged-perceptron.md) <br/>  [İki Sınıflı Artırmalı Karar Ağacı](two-class-boosted-decision-tree.md)  <br/> [İki Sınıflı Karar Ormanı](two-class-decision-forest.md) <br/>  [Çift Sınıflı Lojistik Regresyon](two-class-logistic-regression.md) <br/> [İki Sınıflı Sinir Ağı](two-class-neural-network.md) <br/> [İki Sınıflı Destek Vektör Makinesi](two-class-support-vector-machine.md) | 
+| Sınıflandırma | Bir sınıfı tahmin edin.  İkili (iki sınıf) veya birden çok sınıf algoritmalarından birini seçin.| [Çok Sınıflı Artırmalı Karar Ağacı](multiclass-boosted-decision-tree.md) <br/> [Çok Sınıflı Karar Ormanı](multiclass-decision-forest.md) <br/> [Çok Sınıflı Lojistik Regresyon](multiclass-logistic-regression.md)  <br/> [Çok Sınıflı Sinir Ağı](multiclass-neural-network.md) <br/> [Bir - Tüm Çok Sınıflılık Karşılaştırması](one-vs-all-multiclass.md) <br/> [Bir - Bir Çok Sınıflı](one-vs-one-multiclass.md) <br/>[İki Sınıflı Ortalaması Alınmış Perceptron](two-class-averaged-perceptron.md) <br/>  [İki Sınıflı Artırmalı Karar Ağacı](two-class-boosted-decision-tree.md)  <br/> [İki Sınıflı Karar Ormanı](two-class-decision-forest.md) <br/>  [Çift Sınıflı Lojistik Regresyon](two-class-logistic-regression.md) <br/> [İki Sınıflı Sinir Ağı](two-class-neural-network.md) <br/> [İki Sınıflı Destek Vektör Makinesi](two-class-support-vector-machine.md) | 
 
 ## <a name="modules-for-building-and-evaluating-models"></a>Model oluşturma ve değerlendirme için modüller
 
-| İşlev | Açıklama | Modül |
+| İşlev | Description | Modül |
 | --- |--- | --- |
 | Model eğitimi | Algoritmayı kullanarak verileri çalıştırın. |  [Kümeleme Modelini Eğitme](train-clustering-model.md) <br/> [Model Eğitme](train-model.md) <br/> [Pytorch modelini eğitme](train-pytorch-model.md) <br/> [Model Hiper Parametrelerini Ayarlama](tune-model-hyperparameters.md) |
 | Model Puanlama ve değerlendirme | Eğitilen modelin doğruluğunu ölçün. | [Dönüşüm Uygulama](apply-transformation.md) <br/> [Kümelere Veri Atama](assign-data-to-clusters.md) <br/> [Modeli Çapraz Doğrulama](cross-validate-model.md) <br/> [Modeli Değerlendirme](evaluate-model.md) <br/> [Görüntü Modelini Puanlama](score-image-model.md) <br/> [Puanlama Modeli](score-model.md) |

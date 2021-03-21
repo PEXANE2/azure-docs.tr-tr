@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: altambaw
 ms.openlocfilehash: dc8db3f1eccce2bb85f03d51fcfd1c4113823d49
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98222679"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Sanal ağ eşlemesi oluşturma, değiştirme veya silme
@@ -46,7 +46,7 @@ Eşleme oluşturmadan önce, gereksinimler ve kısıtlamalar ve [gerekli izinler
 1. Azure portal üst kısmındaki arama kutusuna, arama kutusuna *sanal ağlar* girin. Arama sonuçlarında **sanal ağlar** görüntülendiğinde, bunu seçin. Listede görünürse **sanal ağları (klasik)** seçmeyin, ancak klasik dağıtım modeliyle dağıtılan bir sanal ağdan eşleme oluşturamazsınız.
 2. Eşleme oluşturmak istediğiniz sanal ağı listeden seçin.
 3. **Ayarlar** altında, eşlemeler ' **i seçin.**
-4. **+ Ekle** öğesini seçin. 
+4. **+ Ekle**'yi seçin. 
 5. <a name="add-peering"></a>Aşağıdaki ayarlar için değerleri girin veya seçin:
     - **Ad:** Eşleme adı, sanal ağ içinde benzersiz olmalıdır.
     - **Sanal ağ dağıtım modeli:** Sahip olduğunuz sanal ağın hangi dağıtım modeline dağıtıldığını seçin.

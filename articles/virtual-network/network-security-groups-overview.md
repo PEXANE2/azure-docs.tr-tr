@@ -15,10 +15,10 @@ ms.author: kumud
 ms.reviewer: kumud
 ms.custom: contperf-fy21q1
 ms.openlocfilehash: 4e23c6f25145724a5300c9e5cdcb55431fb0b4f2
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97028776"
 ---
 # <a name="network-security-groups"></a>Ağ güvenlik grupları
@@ -52,7 +52,7 @@ Bir ağ güvenlik grubu içinde sınırlı sayıda güvenlik kuralı oluşturabi
 
 Azure, oluşturduğunuz tüm ağ güvenlik gruplarına aşağıdaki varsayılan kuralları ekler:
 
-#### <a name="inbound"></a>Inbound
+#### <a name="inbound"></a>Gelen
 
 ##### <a name="allowvnetinbound"></a>AllowVNetInBound
 
@@ -70,9 +70,9 @@ Azure, oluşturduğunuz tüm ağ güvenlik gruplarına aşağıdaki varsayılan 
 
 |Öncelik|Kaynak|Kaynak bağlantı noktaları|Hedef|Hedef bağlantı noktaları|Protokol|Access|
 |---|---|---|---|---|---|---|
-|65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|Herhangi bir|Reddet|
+|65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|Herhangi biri|Reddet|
 
-#### <a name="outbound"></a>Outbound
+#### <a name="outbound"></a>Giden
 
 ##### <a name="allowvnetoutbound"></a>AllowVnetOutBound
 
@@ -90,7 +90,7 @@ Azure, oluşturduğunuz tüm ağ güvenlik gruplarına aşağıdaki varsayılan 
 
 |Öncelik|Kaynak|Kaynak bağlantı noktaları| Hedef | Hedef bağlantı noktaları | Protokol | Access |
 |---|---|---|---|---|---|---|
-| 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | Herhangi bir | Reddet |
+| 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | Herhangi biri | Reddet |
 
 **Kaynak** ve **Hedef** sütunlarında *VirtualNetwork*, *AzureLoadBalancer* ve *Internet*, için IP adresi yerine [hizmet etiketi](service-tags-overview.md) belirtilir. Protokol sütununda, TCP, UDP ve ıCMP **'yi kapsar.** Bir kural oluştururken TCP, UDP, ıCMP veya any belirtebilirsiniz. **Kaynak** ve **Hedef** sütunlarında yer alan *0.0.0.0/0* ifadesi tüm adresleri temsil eder. Azure portal, Azure CLı veya PowerShell gibi istemciler bu ifade için * veya herhangi birini kullanabilir.
  

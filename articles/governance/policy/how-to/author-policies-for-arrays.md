@@ -4,10 +4,10 @@ description: Dizi parametreleri ve dizi dili ifadeleriyle çalışmayı öğreni
 ms.date: 10/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 650b2ec6bc1bbd12cd10abb1917ef5ea2d6029e9
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98220754"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Azure kaynaklarında dizi özellikleri için yazma ilkeleri
@@ -101,7 +101,7 @@ Bu dizeyi her SDK ile kullanmak için aşağıdaki komutları kullanın:
 
 ### <a name="in-and-notin"></a>`In` ve `notIn`
 
-`in`Ve `notIn` Koşulları yalnızca dizi değerleriyle çalışır. Bir dizideki değerin varlığını kontrol ederler. Dizi, sabit bir JSON dizisi ya da bir dizi parametresine başvuru olabilir. Örneğin:
+`in`Ve `notIn` Koşulları yalnızca dizi değerleriyle çalışır. Bir dizideki değerin varlığını kontrol ederler. Dizi, sabit bir JSON dizisi ya da bir dizi parametresine başvuru olabilir. Örnek:
 
 ```json
 {
@@ -243,7 +243,7 @@ Dizi kaynağı özellikleri genellikle iki farklı diğer ad türü tarafından 
 
 #### <a name="referencing-the-array"></a>Diziye başvurma
 
-İlk diğer ad, istek içeriğinden özelliğin değerini tek bir değer temsil eder `stringArray` . Bu özelliğin değeri bir dizi olduğundan, ilke koşullarında çok yararlı değildir. Örneğin:
+İlk diğer ad, istek içeriğinden özelliğin değerini tek bir değer temsil eder `stringArray` . Bu özelliğin değeri bir dizi olduğundan, ilke koşullarında çok yararlı değildir. Örnek:
 
 ```json
 {
@@ -494,7 +494,7 @@ Ve bu nedenle `count` döndürülür `1` .
 
 #### <a name="accessing-current-array-member-with-template-functions"></a>Geçerli dizi üyesine şablon işlevleriyle erişme
 
-Şablon işlevlerini kullanırken, `current()` geçerli dizi üyesinin değerine veya özelliklerinden herhangi birinin değerlerine erişmek için işlevini kullanın. Geçerli dizi üyesinin değerine erişmek için, içinde tanımlanan diğer adı `count.field` veya alt diğer adlarını işlevine bağımsız değişken olarak geçirin `current()` . Örneğin:
+Şablon işlevlerini kullanırken, `current()` geçerli dizi üyesinin değerine veya özelliklerinden herhangi birinin değerlerine erişmek için işlevini kullanın. Geçerli dizi üyesinin değerine erişmek için, içinde tanımlanan diğer adı `count.field` veya alt diğer adlarını işlevine bağımsız değişken olarak geçirin `current()` . Örnek:
 
 ```json
 {

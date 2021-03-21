@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.custom: seo-lt-2019
 ms.date: 11/02/2020
 ms.openlocfilehash: 568c738284a3d1b54ba907a973139fbced11f139
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98222705"
 ---
 # <a name="quickstart-load-data-into-dedicated-sql-pool-using-the-copy-activity"></a>Hızlı başlangıç: kopyalama etkinliğini kullanarak adanmış SQL havuzuna veri yükleme
@@ -23,7 +23,7 @@ Azure SYNAPSE Analytics, verilerinizi almak, dönüştürmek, modellemek ve anal
 
 Bu hızlı *Başlangıçta Azure SQL veritabanından Azure SYNAPSE Analytics 'e nasıl veri yükleneceğini* öğreneceksiniz. Diğer veri deposu türlerinden veri kopyalamak için benzer adımları izleyebilirsiniz. Bu benzer akış, diğer kaynak ve havuzlar için de veri kopyalama için geçerlidir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği: bir Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 * Azure SYNAPSE çalışma alanı: [hızlı başlangıç: bir Synapse çalışma alanı oluşturma](quickstart-create-workspace.md)yönergelerini takip eden Azure Portal kullanarak bir Synapse çalışma alanı oluşturun.

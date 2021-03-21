@@ -12,10 +12,10 @@ ms.author: danil
 ms.reviewer: wiassaf, sstein
 ms.date: 03/30/2020
 ms.openlocfilehash: 4204254754307f8310d5ccfda19400de57381075
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96500878"
 ---
 # <a name="automatic-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde otomatik ayarlama
@@ -63,9 +63,9 @@ Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde kullanılabilen otom
 
 | Otomatik ayarlama seçeneği | Tek veritabanı ve havuza alınmış veritabanı desteği | Örnek veritabanı desteği |
 | :----------------------------- | ----- | ----- |
-| **Dizin oluşturma** -iş yükünüzün performansını iyileştirebilecek dizinleri tanımlar, dizinler oluşturur ve sorguların performansının iyileştirildiğini otomatik olarak doğrular. | Evet | Hayır |
-| **Drop Index** -benzersiz dizinler ve uzun süredir kullanılmayan dizinler dışında, yedekli ve yinelenen dizinleri her gün tanımlar (>90 gün). Bu seçeneğin bölüm değiştirme ve Dizin ipuçlarını kullanan uygulamalarla uyumlu olmadığına lütfen unutmayın. Kullanılmayan dizinleri bırakma, Premium ve İş Açısından Kritik hizmet katmanlarında desteklenmez. | Evet | Hayır |
-| **Son ıyı planı zorla** (otomatik plan düzeltmesi)-Azure SQL sorgularını, önceki iyi plandan daha yavaş bir yürütme planı kullanarak tanımlar ve gerileme planı yerine bilinen son iyi planı kullanarak sorgular. | Evet | Evet |
+| **Dizin oluşturma** -iş yükünüzün performansını iyileştirebilecek dizinleri tanımlar, dizinler oluşturur ve sorguların performansının iyileştirildiğini otomatik olarak doğrular. | Yes | Hayır |
+| **Drop Index** -benzersiz dizinler ve uzun süredir kullanılmayan dizinler dışında, yedekli ve yinelenen dizinleri her gün tanımlar (>90 gün). Bu seçeneğin bölüm değiştirme ve Dizin ipuçlarını kullanan uygulamalarla uyumlu olmadığına lütfen unutmayın. Kullanılmayan dizinleri bırakma, Premium ve İş Açısından Kritik hizmet katmanlarında desteklenmez. | Yes | Hayır |
+| **Son ıyı planı zorla** (otomatik plan düzeltmesi)-Azure SQL sorgularını, önceki iyi plandan daha yavaş bir yürütme planı kullanarak tanımlar ve gerileme planı yerine bilinen son iyi planı kullanarak sorgular. | Yes | Yes |
 
 ### <a name="automatic-tuning-for-sql-database"></a>SQL veritabanı için otomatik ayarlama
 

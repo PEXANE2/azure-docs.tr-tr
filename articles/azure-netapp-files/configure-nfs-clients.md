@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 11/09/2020
 ms.author: b-juche
 ms.openlocfilehash: c1cdeaa41dda11f2ab520cf8d31ddb2116587082
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94409578"
 ---
 # <a name="configure-an-nfs-client-for-azure-netapp-files"></a>Azure NetApp Files için NFS istemcisini yapılandırma
@@ -46,7 +46,7 @@ Bu bölümdeki örneklerde aşağıdaki etki alanı adı ve IP adresi kullanıl�
 
 1. `/etc/resolv.conf`Doğru DNS sunucusuyla yapılandırın.  
 
-    Örneğin:  
+    Örnek:  
 
     `[root@reddoc cbs]# cat /etc/resolv.conf`   
     `search contoso.com`   
@@ -72,7 +72,7 @@ Bu bölümdeki örneklerde aşağıdaki etki alanı adı ve IP adresi kullanıl�
 
     `sudo realm join $DOMAIN.NAME -U $SERVICEACCOUNT --computer-ou="OU=$YOUROU"`
 
-    Örneğin: 
+    Örnek: 
 
     `sudo realm join CONTOSO.COM -U ad_admin --computer-ou="CN=Computers"`
     
@@ -91,7 +91,7 @@ Bu bölümdeki örneklerde aşağıdaki etki alanı adı ve IP adresi kullanıl�
  
     `sudo kinit $SERVICEACCOUNT@DOMAIN`  
 
-    Örneğin:   
+    Örnek:   
 
     `sudo kinit ad_admin@CONTOSO.COM`
 
@@ -206,14 +206,14 @@ Bu bölümdeki örneklerde aşağıdaki etki alanı adı ve IP adresi kullanıl�
  
     `sudo realm join $DOMAIN.NAME -U $SERVICEACCOUNT --computer-ou="OU=$YOUROU"`
  
-    Örneğin:    
+    Örnek:    
     `sudo realm join CONTOSO.COM -U ad_admin --computer-ou="CN=Computers"`
 
 7. `kinit`Bilet almak için kullanıcıyla birlikte gerçekleştirin: 
  
     `sudo kinit $SERVICEACCOUNT`   
  
-    Örneğin:    
+    Örnek:    
     `sudo kinit ad_admin`  
 
 ### <a name="ubuntu-configuration-if-you-are-using-dual-protocol"></a>İkili protokol kullanıyorsanız Ubuntu yapılandırması  

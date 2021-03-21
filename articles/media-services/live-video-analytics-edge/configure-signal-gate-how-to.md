@@ -4,10 +4,10 @@ description: Bu makalede, bir medya grafiğinde sinyal kapısını yapılandırm
 ms.topic: how-to
 ms.date: 11/3/2020
 ms.openlocfilehash: afcec7c03f1353f08b58311278f5a533e0c911bc
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94410802"
 ---
 # <a name="configure-a-signal-gate-for-event-based-video-recording"></a>Olay tabanlı video kaydı için sinyal kapısı yapılandırma
@@ -58,35 +58,35 @@ Bağıntı kimlikleri her olay için ayarlanır. Bu kimlikler ilk olaydan ayarla
 
 ### <a name="parameters-based-on-the-physical-time-that-events-arrive-at-the-signal-gate"></a>Olayların sinyal kapısını aldığı fiziksel saate göre parametreler
 
-* **minimumactivationtime (en kısa bir kayıt süresi)** : en az umactivationtime tarafından kesintiye uğramadığı sürece, sinyal kapısı işlemcisinin yeni olayları almak için tetiklendikten sonra açık kalacağı en az saniye sayısı.
-* **Maximumactivationtime (bir kaydın en uzun olası süresi)** : ilk olaydan, alınan olayların ne olursa olsun, sinyal kapısı işlemcisinin yeni olayları almak için tetiklendikten sonra açık kaldığı en fazla saniye sayısı.
-* **Activationsignalkayması** : sinyal kapısı işlemcisinin etkinleştirilmesi ile video kaydının başlangıcı arasındaki saniye sayısı. Genellikle, bu değer, tetikleme olayından önce kaydı başlattığı için negatiftir.
-* **activationEvaluationWindow** : ilk tetikleme olayından başlayarak, medya zamanında ilk olaydan önce gerçekleşen bir olayın, yok sayılmadan ve geç olarak kabul edilmeden önce sinyal kapısı işlemcisine gelmesi gereken saniye sayısı.
+* **minimumactivationtime (en kısa bir kayıt süresi)**: en az umactivationtime tarafından kesintiye uğramadığı sürece, sinyal kapısı işlemcisinin yeni olayları almak için tetiklendikten sonra açık kalacağı en az saniye sayısı.
+* **Maximumactivationtime (bir kaydın en uzun olası süresi)**: ilk olaydan, alınan olayların ne olursa olsun, sinyal kapısı işlemcisinin yeni olayları almak için tetiklendikten sonra açık kaldığı en fazla saniye sayısı.
+* **Activationsignalkayması**: sinyal kapısı işlemcisinin etkinleştirilmesi ile video kaydının başlangıcı arasındaki saniye sayısı. Genellikle, bu değer, tetikleme olayından önce kaydı başlattığı için negatiftir.
+* **activationEvaluationWindow**: ilk tetikleme olayından başlayarak, medya zamanında ilk olaydan önce gerçekleşen bir olayın, yok sayılmadan ve geç olarak kabul edilmeden önce sinyal kapısı işlemcisine gelmesi gereken saniye sayısı.
 
 > [!NOTE]
 > *Geç varış* , etkinleştirme değerlendirme penceresi geçtikten sonra, ancak medya zamanında ilk olaydan önce gelen olaydır.
 
 ### <a name="limits-of-parameters"></a>Parametrelerin limitleri
 
-* **activationEvaluationWindow** : 0 saniye ila 10 saniye
-* **Activationsignalkayması** :-1 dakika-1 dakika
-* **Minimumactivationtime** : 1 saniye-1 saat
-* **Maximumactivationtime** : 1 saniye-1 saat
+* **activationEvaluationWindow**: 0 saniye ila 10 saniye
+* **Activationsignalkayması**:-1 dakika-1 dakika
+* **Minimumactivationtime**: 1 saniye-1 saat
+* **Maximumactivationtime**: 1 saniye-1 saat
 
 
 Kullanım durumunda, parametreleri aşağıdaki gibi ayarlarsınız:
 
-* **activationEvaluationWindow** : *K* saniye
-* **Activationsignalkayması** : *-X* saniye
-* **Minimumactivationwindow** : *Y* saniye
-* **Maximumactivationwindow** : *Z* saniye
+* **activationEvaluationWindow**: *K* saniye
+* **Activationsignalkayması**: *-X* saniye
+* **Minimumactivationwindow**: *Y* saniye
+* **Maximumactivationwindow**: *Z* saniye
 
 
 **Sinyal kapısı işlemci** düğümü bölümünün şu parametre değerleri için bir medya grafik topolojisinde nasıl görüneceğine ilişkin bir örnek aşağıda verilmiştir:
-* **activationEvaluationWindow** : 1 saniye
-* **Activationsignalkayması** :-5 saniye
-* en **az Umactivationtime** : 20 saniye
-* **Maximumactivationtime** : 40 saniye
+* **activationEvaluationWindow**: 1 saniye
+* **Activationsignalkayması**:-5 saniye
+* en **az Umactivationtime**: 20 saniye
+* **Maximumactivationtime**: 40 saniye
 
 > [!IMPORTANT]
 > [Iso 8601 süre biçimi](https://en.wikipedia.org/wiki/ISO_8601#Durations
@@ -120,7 +120,7 @@ Bu sinyal kapısı işlemci yapılandırmasının farklı kayıt senaryolarında
 
 ### <a name="recording-scenarios"></a>Kayıt senaryoları
 
-**Bir kaynaktan bir olay ( *normal etkinleştirme* )**
+**Bir kaynaktan bir olay (*normal etkinleştirme*)**
 
 Bir olay, bir olay, ağ geçidi 'ne ulaşmadan önce 5 saniye (etkinleştirme sinyali = 5 saniye) başlayan bir kayıtta sonuçları alan bir sinyal geçidi işlemcisi. Ağ geçidini almak için en düşük etkinleştirme zamanının sonundan önce başka hiçbir olay gelmediğinden, kaydın geri kalanı 20 saniyedir (minimum etkinleştirme süresi = 20 saniye).
 
@@ -131,7 +131,7 @@ Bir olay, bir olay, ağ geçidi 'ne ulaşmadan önce 5 saniye (etkinleştirme si
 * Kayıt süresi =-fark + minimumActivationTime = [E1 + kayması, E1 + minimumActivationTime]
 
 
-**Bir kaynaktan iki olay ( *retriggered etkinleştirme* )**
+**Bir kaynaktan iki olay (*retriggered etkinleştirme*)**
 
 İki olay alan bir sinyal geçidi işlemcisi, olay kapıya ulaşmadan önce 5 saniye (etkinleştirme sinyali kayması = 5 saniye) başlayan bir kayıtla sonuçlanır. Ayrıca, olay 2 olay 1 ' den 5 saniye sonra gider. Olay 2 olay 1 ' in en az etkinleştirme süresi (20 saniye) sonundan önce alındığından, ağ geçidi retriggered olur. Kaydın geri kalanı 20 saniye (en az etkinleştirme süresi = 20 saniye) olduğundan, ağ geçidini yeniden almak için olay 2 ' den en düşük etkinleştirme zamanının sonundan önce hiçbir olay gelmediği için.
 
@@ -142,7 +142,7 @@ Bir olay, bir olay, ağ geçidi 'ne ulaşmadan önce 5 saniye (etkinleştirme si
 * Kayıt süresi =-fark + (olay 2 ' nin varışı-olay 1 ' in varışı) + en düşük Umactivationtime
 
 
-**Bir kaynaktan *N* olay ( *en fazla etkinleştirme* )**
+**Bir kaynaktan *N* olay (*en fazla etkinleştirme*)**
 
 *N* olayları alan bir sinyal geçidi işlemcisi, ağ geçidini ilk olay ulaşmadan önce 5 saniye (etkinleştirme sinyali kayması = 5 saniye) başlatan bir kayıtla sonuçlanır. Her olay, önceki olaydan 20 saniyelik en düşük etkinleştirme zamanının sonundan önce ulaştığında, geçit sürekli olarak retriggered. İlk olaydan sonra 40 saniyelik en fazla etkinleştirme zamanına kadar açık kalır. Ardından, ağ geçidi kapanır ve artık yeni olayları kabul etmez.
 

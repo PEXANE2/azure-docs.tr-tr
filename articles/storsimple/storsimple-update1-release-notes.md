@@ -16,10 +16,10 @@ ms.date: 11/03/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3a5ba4b27ae19999237edb75c50db36ef57a10f1
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94956696"
 ---
 # <a name="update-12-release-notes-for-your-storsimple-8000-series-device"></a>StorSimple 8000 serisi cihazınız için güncelleştirme 1,2 sürüm notları
@@ -64,7 +64,7 @@ Bu özellikler ilk olarak, sınırlı bir Kullanıcı kümesiyle sunulan güncel
 ## <a name="issues-fixed-in-update-12"></a>Güncelleştirme 1,2 ' de düzeltilen sorunlar
 Aşağıdaki tabloda 1,2, 1,1 ve 1 güncelleştirmelerinde düzeltilen sorunların özeti verilmiştir.    
 
-| Hayır. | Öne çıkan özelliği | Sorun | Güncelleştirmede düzeltildi | Fiziksel cihaz için geçerlidir | Sanal cihaz için geçerlidir |
+| Hayır. | Özellik | Sorun | Güncelleştirmede düzeltildi | Fiziksel cihaz için geçerlidir | Sanal cihaz için geçerlidir |
 | --- | --- | --- | --- | --- | --- |
 | 1 |StorSimple için Windows PowerShell |Bir Kullanıcı StorSimple için Windows PowerShell kullanarak StorSimple cihazına uzaktan eriştiğinde ve ardından Kurulum Sihirbazı 'nı başlattığınızda, veri 0 IP 'si girişi gerçekleşerken bir kilitlenme meydana geldi. Bu hata güncelleştirme 1 ' de düzeltildi. |Güncelleştirme 1 |Yes |Yes |
 | 2 |Fabrika sıfırlaması |Bazı örneklerde, bir fabrika sıfırlaması gerçekleştirdiğinizde, StorSimple cihazı takılmış olur ve bu ileti görüntülenir: **fabrika 'ye sıfırlama işlemi devam ediyor (5. aşama)**. Bu, cmdlet devam ederken CTRL + C tuşlarına basıldığında meydana gelen bir durum oluştu. Bu hata artık düzeltildi. |Güncelleştirme 1 |Yes |Hayır |
@@ -82,7 +82,7 @@ Aşağıdaki tabloda 1,2, 1,1 ve 1 güncelleştirmelerinde düzeltilen sorunlar�
 ## <a name="known-issues-in-update-12"></a>Güncelleştirme 1,2 ' de bilinen sorunlar
 Aşağıdaki tabloda, bu sürümdeki bilinen sorunların bir özeti verilmiştir.
 
-| Hayır. | Öne çıkan özelliği | Sorun | Açıklamalar/geçici çözüm | Fiziksel cihaz için geçerlidir | Sanal cihaz için geçerlidir |
+| Hayır. | Özellik | Sorun | Açıklamalar/geçici çözüm | Fiziksel cihaz için geçerlidir | Sanal cihaz için geçerlidir |
 | --- | --- | --- | --- | --- | --- |
 | 1 |Disk çekirdeği |Nadir örneklerde, bir 8600 cihazının EBOD muhafazasının çoğunluğunun bağlantısı kesildiğinde, disk çekirdeği olmadığında depolama havuzu çevrimdışı olur. Diskler yeniden bağlansa bile çevrimdışı olarak kalır. |Cihazı yeniden başlatmanız gerekir. Sorun devam ederse, sonraki adımlar için lütfen Microsoft Desteği başvurun. |Yes |Hayır |
 | 2 |Yanlış denetleyici KIMLIĞI |Bir denetleyici değişikliği gerçekleştirildiğinde, denetleyici 0, denetleyici 1 olarak görünebilir. Denetleyici değişikliği sırasında, görüntü eş düğümünden yüklendiğinde, denetleyici KIMLIĞI başlangıçta eş denetleyicinin KIMLIĞI olarak gösterilir. Nadir örneklerde, bu davranış sistem yeniden başlatıldıktan sonra da görünebilir. |Kullanıcı eylemi gerekli değildir. Bu durum, denetleyici değiştirme işlemi tamamlandıktan sonra kendisini çözmeyecektir. |Yes |Hayır |

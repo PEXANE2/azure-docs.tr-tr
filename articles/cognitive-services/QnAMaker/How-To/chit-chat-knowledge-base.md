@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
 ms.openlocfilehash: 1208d95a282ca6e236d9d6be8013f51dead90d13
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94376663"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>Bilgi Bankası 'na sohbet ekleme
@@ -55,7 +55,7 @@ CHIT-chat veri kümeleri aşağıdaki dillerde desteklenmektedir:
 
 
 ## <a name="add-chit-chat-during-kb-creation"></a>KB oluşturma sırasında CHIT-chat ekleme
-Bilgi Bankası oluşturma sırasında, kaynak URL 'Leri ve dosyalarınız eklendikten sonra, CHIT-chat ekleme seçeneği vardır. Tek bir sohbet için istediğiniz kişiliğinizi seçin. CHIT-chat eklemek istemiyorsanız veya veri kaynaklarınızda zaten bir sohbet desteğine sahipseniz, **hiçbiri** ' ni seçin.
+Bilgi Bankası oluşturma sırasında, kaynak URL 'Leri ve dosyalarınız eklendikten sonra, CHIT-chat ekleme seçeneği vardır. Tek bir sohbet için istediğiniz kişiliğinizi seçin. CHIT-chat eklemek istemiyorsanız veya veri kaynaklarınızda zaten bir sohbet desteğine sahipseniz, **hiçbiri**' ni seçin.
 
 ## <a name="add-chit-chat-to-an-existing-kb"></a>Var olan bir KB 'ye sohbet ekleyin
 KB 'nizi seçin ve **Ayarlar** sayfasına gidin. Uygun **. tsv** biçimindeki tüm CHIT-chat veri kümelerine bir bağlantı vardır. İstediğiniz kişiliğinizi indirin, sonra dosyayı bir dosya kaynağı olarak karşıya yükleyin. Dosyayı indirip karşıya yüklerken biçimi veya meta verileri düzenlemediğinizden emin olun.
@@ -75,7 +75,7 @@ KB 'nizi düzenlediğinizde, seçtiğiniz kişiliğinizi temel alarak, tek bir s
 
 ![Chit-sohbet QnAs 'yi Düzenle](../media/qnamaker-how-to-chit-chat/edit-chit-chat.png)
 
-Meta verileri görüntülemek için, araç çubuğunda **seçenekleri görüntüle** ' yi seçin ve **meta verileri göster** ' i seçin.
+Meta verileri görüntülemek için, araç çubuğunda **seçenekleri görüntüle** ' yi seçin ve **meta verileri göster**' i seçin.
 
 ## <a name="add-additional-chit-chat-questions-and-answers"></a>Ek CHIT-chat soruları ve yanıtları ekleyin
 Önceden tanımlanmış veri kümesinde olmayan yeni bir CHIT-chat QnA çifti ekleyebilirsiniz. CHIT-chat kümesinde zaten kapsanan bir QnA çiftini çoğalttığınızdan emin olun. Yeni bir GIT-chat QnA eklediğinizde, **düzenleme** kaynağınıza eklenir. Derecelendiricisini 'ın bu tek bir sohbet olduğunu anlaması için, aşağıdaki görüntüde görüldüğü gibi "düzenleme: chitchat" meta veri anahtarını/değer çiftini ekleyin:

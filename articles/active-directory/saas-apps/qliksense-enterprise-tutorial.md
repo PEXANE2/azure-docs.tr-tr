@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
 ms.openlocfilehash: 2d046f5f039555e58d9ce4c028e750ce083fd5f4
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98733697"
 ---
 # <a name="tutorial-integrate-qlik-sense-enterprise-with-azure-active-directory"></a>Öğretici: Qlik Sense Enterprise 'ı Azure Active Directory tümleştirme
@@ -27,7 +27,7 @@ Bu öğreticide, Qlik Sense Enterprise 'ı Azure Active Directory (Azure AD) ile
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 

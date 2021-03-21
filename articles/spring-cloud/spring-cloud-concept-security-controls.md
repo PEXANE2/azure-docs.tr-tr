@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: 25636611795a18761a1fc7135efd4abba5af5fe3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96501116"
 ---
 # <a name="security-controls-for-azure-spring-cloud-service"></a>Azure Spring Cloud Hizmeti için güvenlik denetimleri
@@ -26,15 +26,15 @@ Güvenlik denetimi, hizmetin güvenlik açıklarını önleme, algılama ve yan�
 
 | Güvenlik denetimi | Evet/Hayır | Notlar | Belgeler |
 |:-------------|:-------|:-------------------------------|:----------------------|
-| Rest 'te sunucu tarafı şifreleme: Microsoft tarafından yönetilen anahtarlar | Evet | Kaynak ve yapıtları, yapılandırma sunucusu ayarlarını, uygulama ayarlarını ve kalıcı depolama alanındaki verileri karşıya yükleyen kullanıcı, Azure depolama 'da depolanır ve bu, bekleyen içeriği otomatik olarak şifreler.<br><br>Yapılandırma sunucusu önbelleği, karşıya yüklenen kaynaktan oluşturulan çalışma zamanı ikilileri ve uygulama ömrü boyunca uygulama günlükleri, bekleyen içeriği otomatik olarak şifreleyen Azure yönetilen diskine kaydedilir.<br><br>Karşıya yüklenen kullanıcının oluşturduğu kapsayıcı görüntüleri, bekleyen resim içeriğini otomatik olarak şifreleyen Azure Container Registry kaydedilir. | [Bekleyen veri için Azure Depolama şifrelemesi](../storage/common/storage-service-encryption.md)<br><br>[Azure yönetilen disklerinin sunucu tarafı şifrelemesi](../virtual-machines/disk-encryption.md)<br><br>[Azure Container Registry kapsayıcı görüntüsü depolaması](../container-registry/container-registry-storage.md) |
-| Geçici olarak şifreleme | Evet | Kullanıcı uygulaması genel uç noktaları varsayılan olarak gelen trafik için HTTPS kullanır. |  |
-| Şifrelenmiş API çağrıları | Evet | Azure yay bulut hizmetini yapılandırmaya yönelik yönetim çağrıları, HTTPS üzerinden Azure Resource Manager çağrıları aracılığıyla oluşur. | [Azure Resource Manager](../azure-resource-manager/index.yml) |
+| Rest 'te sunucu tarafı şifreleme: Microsoft tarafından yönetilen anahtarlar | Yes | Kaynak ve yapıtları, yapılandırma sunucusu ayarlarını, uygulama ayarlarını ve kalıcı depolama alanındaki verileri karşıya yükleyen kullanıcı, Azure depolama 'da depolanır ve bu, bekleyen içeriği otomatik olarak şifreler.<br><br>Yapılandırma sunucusu önbelleği, karşıya yüklenen kaynaktan oluşturulan çalışma zamanı ikilileri ve uygulama ömrü boyunca uygulama günlükleri, bekleyen içeriği otomatik olarak şifreleyen Azure yönetilen diskine kaydedilir.<br><br>Karşıya yüklenen kullanıcının oluşturduğu kapsayıcı görüntüleri, bekleyen resim içeriğini otomatik olarak şifreleyen Azure Container Registry kaydedilir. | [Bekleyen veri için Azure Depolama şifrelemesi](../storage/common/storage-service-encryption.md)<br><br>[Azure yönetilen disklerinin sunucu tarafı şifrelemesi](../virtual-machines/disk-encryption.md)<br><br>[Azure Container Registry kapsayıcı görüntüsü depolaması](../container-registry/container-registry-storage.md) |
+| Geçici olarak şifreleme | Yes | Kullanıcı uygulaması genel uç noktaları varsayılan olarak gelen trafik için HTTPS kullanır. |  |
+| Şifrelenmiş API çağrıları | Yes | Azure yay bulut hizmetini yapılandırmaya yönelik yönetim çağrıları, HTTPS üzerinden Azure Resource Manager çağrıları aracılığıyla oluşur. | [Azure Resource Manager](../azure-resource-manager/index.yml) |
 
 **Ağ erişim güvenliği denetimleri**
 
 | Güvenlik denetimi | Evet/Hayır | Notlar | Belgeler |
 |:-------------|:-------|:-------------------------------|:----------------------|
-| Hizmet etiketi | Evet | Azure Spring Cloud uygulamalarına giden trafiğe izin vermek için [ağ güvenlik gruplarında](../virtual-network/network-security-groups-overview.md#security-rules) veya [Azure Güvenlik duvarında](../firewall/service-tags.md)giden ağ erişim denetimleri tanımlamak üzere **azurespringcloud** Service etiketini kullanın.<br><br>*Note:* Şu anda yalnızca yeni Azure yay bulut hizmeti örneği, 2020/07/14 sonrasında **Azurespringcloud** Service etiketi destekleniyor. | [Hizmet etiketleri](../virtual-network/service-tags-overview.md) |
+| Hizmet etiketi | Yes | Azure Spring Cloud uygulamalarına giden trafiğe izin vermek için [ağ güvenlik gruplarında](../virtual-network/network-security-groups-overview.md#security-rules) veya [Azure Güvenlik duvarında](../firewall/service-tags.md)giden ağ erişim denetimleri tanımlamak üzere **azurespringcloud** Service etiketini kullanın.<br><br>*Note:* Şu anda yalnızca yeni Azure yay bulut hizmeti örneği, 2020/07/14 sonrasında **Azurespringcloud** Service etiketi destekleniyor. | [Hizmet etiketleri](../virtual-network/service-tags-overview.md) |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

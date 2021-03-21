@@ -7,10 +7,10 @@ ms.topic: quickstart
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.date: 02/24/2020
 ms.openlocfilehash: cd3e997bf2fda5f586fdb1ee4dcedff1adbf41f3
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98946601"
 ---
 # <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak Azure HDInsight 'ta Apache Hadoop kümesi oluşturma
@@ -42,7 +42,7 @@ Bu bölümde, Azure portalını kullanarak HDInsight’ta Hadoop kümesi oluştu
     |Abonelik    |  Aşağı açılan listeden, küme için kullanılan Azure aboneliğini seçin. |
     |Kaynak grubu     | Aşağı açılan listeden, mevcut kaynak grubunuzu seçin veya **Yeni oluştur**' u seçin.|
     |Küme adı   | Genel olarak benzersiz bir ad girin. Ad, harf, sayı ve kısa çizgi gibi en fazla 59 karakter içerebilir. Adın ilk ve son karakterleri kısa çizgi olamaz. |
-    |Bölge    | Aşağı açılan listeden, kümenin oluşturulduğu bir bölge seçin.  Daha iyi performans için kendinize yakın bir konum seçin. |
+    |Region    | Aşağı açılan listeden, kümenin oluşturulduğu bir bölge seçin.  Daha iyi performans için kendinize yakın bir konum seçin. |
     |Küme türü| **Küme türünü seç**' i seçin. Ardından küme türü olarak **Hadoop** ' ı seçin.|
     |Sürüm|Aşağı açılan listeden bir **Sürüm** seçin. Ne seçeceğimizi bilmiyorsanız varsayılan sürümü kullanın.|
     |Küme oturum açma kullanıcı adı ve parolası    | Varsayılan oturum açma adı **admin**' dir. Parola en az 10 karakter uzunluğunda olmalıdır ve en az bir rakam, bir büyük harf ve bir küçük harf, bir alfasayısal olmayan karakter (' "' karakterleri dışında) içermelidir \) . "Pass@word1" gibi genel parolalar **sağlamadığınızdan** emin olun.|

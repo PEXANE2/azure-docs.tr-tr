@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/16/2020
 ms.author: jeedes
 ms.openlocfilehash: e5bb8a32cfd73e67141a25531594e8a3b6f793c6
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98732236"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-check-point-cloudguard-dome9-arc"></a>Öğretici: Check Point CloudGuard Dome9 Arc ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -26,7 +26,7 @@ Bu öğreticide, Check Point CloudGuard Dome9 yay Azure Active Directory (Azure 
 * Kullanıcılarınızın Azure AD hesaplarıyla Point CloudGuard Dome9 yay denetimine otomatik olarak kaydolmalarına imkan tanıyın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 

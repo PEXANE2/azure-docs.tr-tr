@@ -9,10 +9,10 @@ ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
 ms.openlocfilehash: c578da7e83a39f84e72b550038bd87dde3c61d28
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101727473"
 ---
 # <a name="tutorial-how-to-deploy-an-iot-central-application-using-the-video-analytics---object-and-motion-detection-application-template"></a>Öğretici: video analizi-nesne ve hareket algılama uygulama şablonunu kullanarak bir IoT Central uygulaması dağıtma

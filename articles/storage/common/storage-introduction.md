@@ -9,10 +9,10 @@ ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: b49e780714bd5e0662c6cb7ef208c473a8b45ccc
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96498158"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>Temel Azure depolama hizmetlerine giriş
@@ -147,7 +147,7 @@ Bir depolama hesabındaki kaynaklara, HTTP/HTTPS istekleri yapan herhangi bir di
 
 ### <a name="azure-storage-data-api-and-library-references"></a>Azure Depolama veri API’si ve kitaplık başvuruları
 
-- [Azure Depolama REST API](/rest/api/storageservices/)
+- [Azure depolama REST API](/rest/api/storageservices/)
 - [.NET için Azure depolama istemci kitaplığı](/dotnet/api/overview/azure/storage)
 - [Java/Android için Azure depolama istemci kitaplığı](/java/api/overview/azure/storage)
 - [Node.jsiçin Azure depolama istemci kitaplığı ](/javascript/api/overview/azure/storage-overview)

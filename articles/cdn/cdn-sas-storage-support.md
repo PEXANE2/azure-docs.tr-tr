@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 06/21/2018
 ms.author: allensu
 ms.openlocfilehash: ccf55e0e3986de8afe23cb646d4df743b576900c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101725331"
 ---
 # <a name="using-azure-cdn-with-sas"></a>SAS ile Azure CDN kullanma
@@ -134,7 +134,7 @@ Azure CDN güvenlik belirteci kimlik doğrulamasını kullanmak için Verizon pr
 
 SAS parametreleri Azure CDN görünür olmadığından, Azure CDN kendisine göre teslim davranışını değiştiremez. Tanımlanan parametre kısıtlamaları, istemciden Azure CDN istekleri için değil, yalnızca kaynak sunucuya Azure CDN istekleri uygular. Bu ayrım, SAS parametrelerini ayarladığınızda göz önünde bulundurmanız önemlidir. Bu gelişmiş yetenekler gerekliyse ve [seçenek 3](#option-3-using-cdn-security-token-authentication-with-a-rewrite-rule)' ü kullanıyorsanız, Azure CDN güvenlik belirtecinde uygun kısıtlamaları ayarlayın.
 
-| SAS parametre adı | Açıklama |
+| SAS parametre adı | Description |
 | --- | --- |
 | Başlangıç | Azure CDN blob dosyasına erişmeye başlayabileceğiniz zaman. Saat farkı (farklı bileşenler için saat sinyali farklı zamanlara ulaştığında) nedeniyle, varlığın hemen kullanılabilir olmasını istiyorsanız 15 dakika daha erken bir süre seçin. |
 | End | Azure CDN blob dosyasına artık erişememesi gereken süre. Daha önce Azure CDN önbelleğe alınmış dosyalara hala erişilebilir. Dosya sona erme süresini denetlemek için Azure CDN güvenlik belirtecinde uygun süre sonu saatini ayarlayın veya varlığı temizleyin. |

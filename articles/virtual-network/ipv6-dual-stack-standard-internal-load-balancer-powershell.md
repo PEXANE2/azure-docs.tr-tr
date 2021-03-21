@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 10/14/2019
 ms.author: kumud
 ms.openlocfilehash: 3df89b84e748f041f13866c1eb3c0b8a3341209c
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98220839"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-using-standard-internal-load-balancer-in-azure---powershell-preview"></a>Azure-PowerShell (Önizleme) ile standart Iç Load Balancer kullanarak IPv6 ikili yığın uygulaması dağıtma
@@ -43,7 +43,7 @@ Yukarıdaki bir iç yük dengeleyici ön uç yapılandırmasını yapan değişi
 
 PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz, bu makale Azure PowerShell modülü sürümü 6.9.0 veya üstünü gerektirir. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-Az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Azure 'da bir çift yığın uygulamasını dağıtmadan önce, aşağıdaki Azure PowerShell kullanarak aboneliğinizi bu önizleme özelliği için yapılandırmanız gerekir:
 
 Aşağıdaki gibi kaydolun:

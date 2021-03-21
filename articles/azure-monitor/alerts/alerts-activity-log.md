@@ -4,10 +4,10 @@ description: Azure portal, bir Azure Resource Manager şablonu ve Azure PowerShe
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.openlocfilehash: 26ca755f6675fa19c3b122c3528e05d1e8d76845
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102045539"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Azure Izleyici 'yi kullanarak etkinlik günlüğü uyarıları oluşturma, görüntüleme ve yönetme  
@@ -270,7 +270,7 @@ Etkinlik günlüğü uyarıları için kullanılabilir adanmış PowerShell cmdl
 - [Disable-AzActivityLogAlert](/powershell/module/az.monitor/disable-azactivitylogalert): var olan bir etkinlik günlüğü uyarısını devre dışı bırakır ve etiketlerini ayarlar.
 - [Remove-AzActivityLogAlert](/powershell/module/az.monitor/remove-azactivitylogalert): bir etkinlik günlüğü uyarısını kaldırır.
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure CLI’si
 
 Ayarla [az Monitor Activity-Log Alert](/cli/azure/monitor/activity-log/alert) altında ADANMıŞ Azure CLI komutları, etkinlik günlüğü uyarı kurallarını yönetmek için kullanılabilir.
 

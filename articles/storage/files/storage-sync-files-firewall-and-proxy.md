@@ -8,10 +8,10 @@ ms.date: 3/02/2021
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: f0dbe7f32f14eb4da3d591811d619eb2e9bea397
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101729649"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Azure Dosya Eşitleme proxy’si ve güvenli duvarı ayarları
@@ -24,7 +24,7 @@ Bu nasıl yapılır Kılavuzu ' nu okumadan önce [Azure dosya eşitleme ağ kon
 ## <a name="overview"></a>Genel Bakış
 Azure Dosya Eşitleme, Windows sunucunuz, Azure dosya paylaşımınız ve diğer birçok Azure hizmeti arasında, eşitleme grubunuzda açıklandığı gibi verileri eşitlemek için bir Orchestration hizmeti görevi görür. Azure Dosya Eşitleme düzgün şekilde çalışması için sunucularınızı aşağıdaki Azure hizmetleriyle iletişim kuracak şekilde yapılandırmanız gerekecektir:
 
-- Azure Storage
+- Azure Depolama
 - Azure Dosya Eşitleme
 - Azure Resource Manager
 - Kimlik doğrulama hizmetleri

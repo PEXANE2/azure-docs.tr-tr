@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/16/2020
 ms.author: jeedes
 ms.openlocfilehash: a8515920985c569df74b1e328d6bfe1c4ec97195
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98735322"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-catchpoint"></a>Öğretici: Catch noktasıyla çoklu oturum açma tümleştirmesi Azure Active Directory
@@ -26,7 +26,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile catch noktasını tümle�
 * Azure AD hesapları olan kullanıcılar için otomatik catch noktası oturum açma özelliğini etkinleştirin.
 * Hesaplarınızı tek bir merkezi konumda yönetin: Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -68,7 +68,7 @@ Aşağıdaki bölümleri doldurun:
 
 Azure AD SSO 'yu etkinleştirmek için Azure portal aşağıdaki adımları izleyin:
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 1. **Catch noktası** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
 1. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırma** ayarlarını düzenlemek için kurşun kalem simgesini seçin.

@@ -8,10 +8,10 @@ ms.service: security-center
 ms.topic: overview
 ms.date: 03/08/2021
 ms.openlocfilehash: d45dae8b0b3725555bd83a05032339671a9595be
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102454373"
 ---
 # <a name="azure-security-center-free-vs-azure-defender-enabled"></a>Azure Güvenlik Merkezi Ücretsiz vs Azure Defender etkin
@@ -72,7 +72,7 @@ Aboneliğiniz için Azure Defender 'ı etkinleştirmek üzere aşağıdaki yolla
 |-------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
 | Azure portal Azure Güvenlik Merkezi sayfaları | [Azure Defender’ı etkinleştirme](enable-azure-defender.md)                                                                                                  |
 | REST API                                        | [Prmerler API 'SI](/rest/api/securitycenter/pricings)                                                                                                  |
-| Azure CLI                                       | [az Security fiyatlandırması](/cli/azure/security/pricing)                                                                                                 |
+| Azure CLI’si                                       | [az Security fiyatlandırması](/cli/azure/security/pricing)                                                                                                 |
 | PowerShell                                      | [Set-Azsecurityprsosu](/powershell/module/az.security/set-azsecuritypricing)                                                                      |
 | Azure İlkesi                                    | [Paket ları](https://github.com/Azure/Azure-Security-Center/blob/master/Pricing%20%26%20Settings/ARM%20Templates/Set-ASC-Bundle-Pricing.json) |
 |                                                 |                                                                                                                                                    |

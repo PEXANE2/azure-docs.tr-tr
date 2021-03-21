@@ -10,10 +10,10 @@ ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc, devx-track-csharp
 ms.openlocfilehash: f441a1cf97c069c4755b436bbb8cb9268b469eb3
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102199756"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>Öğretici: 2. Bölüm-yönlendirilmiş iletileri görüntüleme
@@ -190,7 +190,7 @@ Bu uygulama, farklı ileti yönlendirme yöntemlerinin her biri için iletiler g
 
 Bu öğreticinin 1. bölümünde yer almayan dosyaları depodan indirmediyseniz, şimdi [IoT cihaz benzetimine](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)giderek indirin. Bu bağlantının seçilmesi, içindeki çeşitli uygulamalarla bir depoyu indirir; Aradığınız çözüm IoT-Hub/öğreticiler/yönlendirme/IoT_SimulatedDevice. sln ' dir. 
 
-Kodu Visual Studio 'da açmak için çözüm dosyasına (IoT_SimulatedDevice. sln) çift tıklayın ve ardından Program.cs ' yi açın. `{your hub name}` değerini IoT hub'ı konak adıyla değiştirin. IoT hub'ı konak adı **{iot-hub-adı}.azure-devices.net** biçimindedid. bu öğreticide, hub konak adı olarak **ContosoTestHub.azure-devices.net** kullanılır. Ardından, `{your device key}` değerini daha önce simülasyon cihazını ayarlarken kaydettiğiniz cihaz anahtarıyla değiştirin. 
+Kodu Visual Studio 'da açmak için çözüm dosyasına (IoT_SimulatedDevice. sln) çift tıklayın ve ardından program. cs dosyasını açın. `{your hub name}` değerini IoT hub'ı konak adıyla değiştirin. IoT hub'ı konak adı **{iot-hub-adı}.azure-devices.net** biçimindedid. bu öğreticide, hub konak adı olarak **ContosoTestHub.azure-devices.net** kullanılır. Ardından, `{your device key}` değerini daha önce simülasyon cihazını ayarlarken kaydettiğiniz cihaz anahtarıyla değiştirin. 
 
    ```csharp
         static string s_myDeviceId = "Contoso-Test-Device";

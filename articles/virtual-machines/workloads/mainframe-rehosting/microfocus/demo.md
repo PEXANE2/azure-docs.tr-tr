@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: 2d48c767b836771600b3491299e0bdb33aacb75b
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98733158"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Azure 'da Micro Focus Enterprise Developer 4,0 için Micro Focus CICS BankDemo ayarlama
@@ -22,7 +22,7 @@ CICS, çevrimiçi ana bilgisayar uygulamalarının birçoğu tarafından kullan�
 > [!NOTE]
 > Yakında: Azure VM 'lerinde [Micro Focus Enterprise Server 5,0](https://techcommunity.microsoft.com/t5/azurecat/micro-focus-enterprise-server-5-0-quick-start-template-on-azure/ba-p/1160110) kurma yönergeleri.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Kurumsal Geliştirici](set-up-micro-focus-azure.md)IÇEREN bir VM. Enterprise Developer 'ın geliştirme ve test amaçlarıyla bunun üzerinde bir Enterprise Server örneği olduğunu aklınızda bulundurun. Bu örnek, demo için kullanılan kurumsal sunucu örneğidir.
 

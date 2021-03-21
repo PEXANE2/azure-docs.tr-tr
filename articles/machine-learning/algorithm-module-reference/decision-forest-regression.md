@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 76fd09b5e2c2540cbc1608558800e7897a6cf839
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94375372"
 ---
 # <a name="decision-forest-regression-module"></a>Karar ormanı gerileme modülü
@@ -42,11 +42,11 @@ Bu algoritmanın ve uygulamasının teorik çerçevesi hakkında daha fazla bilg
 
 ## <a name="how-to-configure-decision-forest-regression-model"></a>Karar ormanı regresyon modelini yapılandırma
 
-1. **Karar verme ormanı gerileme** modülünü ardışık düzene ekleyin. **Machine Learning** , **modeli Başlat** ve **gerileme** ' nın altında, modülü tasarımcıda bulabilirsiniz.
+1. **Karar verme ormanı gerileme** modülünü ardışık düzene ekleyin. **Machine Learning**, **modeli Başlat** ve **gerileme**' nın altında, modülü tasarımcıda bulabilirsiniz.
 
 2. Modül özelliklerini açın ve yeniden **örnekleme yöntemi** için, bireysel ağaçları oluşturmak için kullanılan yöntemi seçin.  **Bagging** veya **çoğaltma** seçeneklerinden birini belirleyebilirsiniz.
 
-    - **Bagging** : Bagging de *önyükleme toplama* olarak adlandırılır. Regresyon kararı ormanındaki her ağaç, tahmin yöntemiyle bir Gauss dağılımı çıkarır. Toplama işlemi, her iki dakika, tek tek ağaçlar tarafından döndürülen tüm dağıtımları birleştirerek verilen Gauss dağıtımlarından oluşan bir süre ile eşleşen bir Gauss bulmadır.
+    - **Bagging**: Bagging de *önyükleme toplama* olarak adlandırılır. Regresyon kararı ormanındaki her ağaç, tahmin yöntemiyle bir Gauss dağılımı çıkarır. Toplama işlemi, her iki dakika, tek tek ağaçlar tarafından döndürülen tüm dağıtımları birleştirerek verilen Gauss dağıtımlarından oluşan bir süre ile eşleşen bir Gauss bulmadır.
 
          Daha fazla bilgi için bkz. [önyükleme toplama](https://wikipedia.org/wiki/Bootstrap_aggregating)Için Vikipedi girişi.
 
@@ -60,7 +60,7 @@ Bu algoritmanın ve uygulamasının teorik çerçevesi hakkında daha fazla bilg
 
       Modeli nasıl yapılandırmak istediğinizi biliyorsanız bağımsız değişken olarak belirli bir değer kümesi sağlayabilirsiniz. Bu değerleri deneme göre öğrenmiş veya bunları kılavuz olarak almış olabilirsiniz.
 
-    - **Parametre aralığı** : en iyi parametrelerden emin değilseniz ve bir parametre süpürme çalıştırmak istiyorsanız bu seçeneği belirleyin. Yinelemek için bir değer aralığı seçin ve [ayarlama modeli hiper parametreleri](tune-model-hyperparameters.md) , en iyi sonuçları üreten hiper parametreleri belirlemek için, belirttiğiniz ayarların tüm olası birleşimlerinin üzerinde yinelenir. 
+    - **Parametre aralığı**: en iyi parametrelerden emin değilseniz ve bir parametre süpürme çalıştırmak istiyorsanız bu seçeneği belirleyin. Yinelemek için bir değer aralığı seçin ve [ayarlama modeli hiper parametreleri](tune-model-hyperparameters.md) , en iyi sonuçları üreten hiper parametreleri belirlemek için, belirttiğiniz ayarların tüm olası birleşimlerinin üzerinde yinelenir. 
 
 
 

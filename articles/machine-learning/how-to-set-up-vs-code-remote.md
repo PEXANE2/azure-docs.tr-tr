@@ -11,10 +11,10 @@ ms.author: luquinta
 author: luisquintanilla
 ms.date: 11/16/2020
 ms.openlocfilehash: 3f3794ed4748eda44e863ff4627dedc0a34691af
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98070108"
 ---
 # <a name="connect-to-an-azure-machine-learning-compute-instance-in-visual-studio-code-preview"></a>Visual Studio Code bir Azure Machine Learning işlem örneğine bağlanma (Önizleme)
@@ -132,7 +132,7 @@ Burada, alanlarla ilgili bazı ayrıntılar verilmiştir:
 
 |Alan|Açıklama|
 |----|---------|
-|Konak|İşlem örneği için istediğiniz toplu şeyi kullanın |
+|Ana bilgisayar|İşlem örneği için istediğiniz toplu şeyi kullanın |
 |HostName|Bu, işlem örneğinin IP adresidir |
 |Bağlantı noktası|Bu, yukarıdaki SSH iletişim kutusunda gösterilen bağlantı noktasıdır |
 |Kullanıcı|Bunun olması gerekir `azureuser` |

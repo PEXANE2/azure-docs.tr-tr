@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/18/2020
 ms.author: Zhchia
 ms.openlocfilehash: 0af41127577c172cdab74ae908f0645733d49a42
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98735767"
 ---
 # <a name="tutorial-configure-grouptalk-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için GroupTalk yapılandırma
@@ -34,7 +34,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem GroupT
 > * Kullanıcı özniteliklerinin Azure AD ile GroupTalk arasında eşitlenmiş olmasını sağlama
 > * GroupTalk 'te grupları ve grup üyeliklerini sağlama
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 

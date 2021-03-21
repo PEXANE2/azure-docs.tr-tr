@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 06/18/2020
 ms.author: caya
 ms.openlocfilehash: f2b9f79f0914e645c736f8a577c46baa42587332
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94874619"
 ---
 # <a name="troubleshoot-common-questions-or-issues-with-ingress-controller"></a>Giriş denetleyicisindeki yaygın soruların veya sorunların sorunlarını giderme
@@ -128,12 +128,12 @@ Sonucu `HTTP/1.1 200 OK` , Application Gateway + AKS + AGIC sisteminin beklendi�
 ## <a name="inspect-kubernetes-installation"></a>Kubernetes yüklemesini İncele
 
 ### <a name="pods-services-ingress"></a>Pods, hizmetler, giriş
-Application Gateway giriş denetleyicisi (AGIC) Şu Kubernetes kaynaklarını sürekli izler: [dağıtım](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#creating-a-deployment) veya [Pod](https://kubernetes.io/docs/concepts/workloads/pods/pod/#what-is-a-pod), [hizmet](https://kubernetes.io/docs/concepts/services-networking/service/), giriş [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/)
+Application Gateway giriş denetleyicisi (AGIC) Şu Kubernetes kaynaklarını sürekli izler: [dağıtım](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#creating-a-deployment) veya [Pod](https://kubernetes.io/docs/concepts/workloads/pods/pod/#what-is-a-pod), [hizmet](https://kubernetes.io/docs/concepts/services-networking/service/), giriş [](https://kubernetes.io/docs/concepts/services-networking/ingress/)
 
 
 AGIC 'in beklenen şekilde çalışması için aşağıdakiler olması gerekir:
   1. Aks 'lerin bir veya daha fazla sağlıklı **Pod** olması gerekir.
-     [Cloud Shell](https://shell.azure.com/) `kubectl get pods -o wide --show-labels` ' A sahip bir pod 'niz varsa `apsnetapp` , çıktınızdan şöyle görünebildiğini Cloud Shell.
+     [](https://shell.azure.com/) `kubectl get pods -o wide --show-labels` ' A sahip bir pod 'niz varsa `apsnetapp` , çıktınızdan şöyle görünebildiğini Cloud Shell.
      ```bash
      delyan@Azure:~$ kubectl get pods -o wide --show-labels
 

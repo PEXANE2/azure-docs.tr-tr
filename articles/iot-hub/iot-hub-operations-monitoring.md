@@ -10,10 +10,10 @@ ms.date: 03/11/2019
 ms.author: robinsh
 ms.custom: amqp, devx-track-csharp
 ms.openlocfilehash: 045d5693c4388c6285bc6983ac2a385ceac9f6d0
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94408133"
 ---
 # <a name="iot-hub-operations-monitoring-deprecated"></a>IoT Hub işlemleri izleme (kullanım dışı)
@@ -39,11 +39,11 @@ IoT Hub altı olay kategorisini izler:
 
 1. IoT Hub 'ı oluşturun. [Başlarken](quickstart-send-telemetry-dotnet.md) kılavuzunda IoT Hub 'ı oluşturma yönergelerini bulabilirsiniz.
 
-2. IoT Hub 'ınızın dikey penceresini açın. Buradan, **işlemler izleme** ' ye tıklayın.
+2. IoT Hub 'ınızın dikey penceresini açın. Buradan, **işlemler izleme**' ye tıklayın.
 
     ![Portalda erişim işlemleri izleme yapılandırması](./media/iot-hub-operations-monitoring/enable-OM-1.png)
 
-3. İzlemek istediğiniz izleme kategorilerini seçin ve ardından **Kaydet** ' e tıklayın. Olaylar, **İzleme ayarlarında** listelenen olay hub 'ı ile uyumlu uç noktadan okumak için kullanılabilir. IoT Hub uç noktası çağrılır `messages/operationsmonitoringevents` .
+3. İzlemek istediğiniz izleme kategorilerini seçin ve ardından **Kaydet**' e tıklayın. Olaylar, **İzleme ayarlarında** listelenen olay hub 'ı ile uyumlu uç noktadan okumak için kullanılabilir. IoT Hub uç noktası çağrılır `messages/operationsmonitoringevents` .
 
     ![IoT Hub 'ınızda işlem izlemeyi yapılandırma](./media/iot-hub-operations-monitoring/enable-OM-2.png)
 
@@ -197,11 +197,11 @@ IoT Hub 'ınızdaki izleme uç noktası, Olay Hub 'ı ile uyumlu bir uç noktas�
 
 1. Portalda IoT Hub kaynak dikey penceresine gidin.
 
-2. **İşlem izleme** ' yi seçin ve **Event hub ile uyumlu adı** ve **Event hub ile uyumlu uç nokta** değerlerini bir yere göz önünde oluşturun:
+2. **İşlem izleme**' yi seçin ve **Event hub ile uyumlu adı** ve **Event hub ile uyumlu uç nokta** değerlerini bir yere göz önünde oluşturun:
 
     ![Olay Hub 'ı ile uyumlu uç nokta değerleri](./media/iot-hub-operations-monitoring/monitoring-endpoint.png)
 
-3. **Paylaşılan erişim ilkeleri** ' ni ve ardından **hizmet** ' i seçin. **Birincil anahtar** değerini bir yere getirin:
+3. **Paylaşılan erişim ilkeleri**' ni ve ardından **hizmet**' i seçin. **Birincil anahtar** değerini bir yere getirin:
 
     ![Hizmet paylaşılan erişim ilkesi birincil anahtarı](./media/iot-hub-operations-monitoring/service-key.png)
 

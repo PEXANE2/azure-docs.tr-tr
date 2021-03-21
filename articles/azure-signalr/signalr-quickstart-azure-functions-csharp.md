@@ -9,17 +9,17 @@ ms.custom: devx-track-csharp
 ms.date: 09/25/2020
 ms.author: zhshang
 ms.openlocfilehash: 1f28058a766144ada3326b3ee4ce09ca503d1896
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94873888"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-c"></a>Hızlı başlangıç: C kullanarak Azure Işlevleri ve SignalR hizmeti ile sohbet odası oluşturma\#
 
 Azure SignalR hizmeti uygulamanıza kolayca gerçek zamanlı işlevsellik eklemenizi sağlar. Azure İşlevleri, herhangi bir altyapı yönetimine gerek kalmadan kodunuzu çalıştırmanıza olanak tanıyan sunucusuz bir platformdur. Bu hızlı başlangıçta, SignalR Hizmeti ve İşlevlerini sunucusuz ve gerçek zamanlı bir sohbet uygulaması oluşturmak için kullanmayı öğrenin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Zaten Visual Studio 2019 yüklü değilse, **ücretsiz** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads)' ı indirip kullanabilirsiniz. Visual Studio kurulumu sırasında **Azure dağıtımını** etkinleştirdiğinizden emin olun.
 

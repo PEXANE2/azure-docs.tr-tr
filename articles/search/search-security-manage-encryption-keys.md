@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/02/2020
 ms.custom: references_regions
 ms.openlocfilehash: 6b1079797f1a753fa8362d6e920f3394087d7e9f
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98119297"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>Azure Bilişsel Arama veri şifrelemesi için müşteri tarafından yönetilen anahtarları yapılandırma
@@ -41,7 +41,7 @@ Anahtarların tümünün aynı anahtar kasasında olması gerekmez. Tek bir aram
 
 Farklı bir bölge veya 1 Ağustos 'Tan önce oluşturulmuş bir hizmet kullanıyorsanız, yönetilen anahtar şifrelemesi, hizmet tarafından kullanılan geçici diskler hariç yalnızca veri diskiyle sınırlıdır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu senaryoda aşağıdaki araçlar ve hizmetler kullanılır.
 

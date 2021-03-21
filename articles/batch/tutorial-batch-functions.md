@@ -7,10 +7,10 @@ ms.date: 05/30/2019
 ms.author: peshultz
 ms.custom: mvc, devx-track-csharp
 ms.openlocfilehash: b441b4c4fcbeb089cef24c3a84fa33021e7840de
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97106391"
 ---
 # <a name="tutorial-trigger-a-batch-job-using-azure-functions"></a>Öğretici: Azure Işlevleri 'ni kullanarak bir Batch işi tetikleyin
@@ -50,7 +50,7 @@ Bu bölümde, OCR görevlerini çalıştıracak toplu iş havuzunu ve toplu işi
     1. `Standard_f2s_v2`Sanal makine boyutu olarak seçin.
     1. Başlangıç görevini etkinleştirin ve komutunu ekleyin `/bin/bash -c "sudo update-locale LC_ALL=C.UTF-8 LANG=C.UTF-8; sudo apt-get update; sudo apt-get -y install ocrmypdf"` . Kullanıcı kimliğini **görev varsayılan kullanıcısı (yönetici)** olarak ayarladığınızdan emin olun. Bu, ile komutları dahil etmek için başlangıç görevlerine izin verir `sudo` .
     1. **Tamam**’ı seçin.
-### <a name="create-a-job"></a>İş oluşturma
+### <a name="create-a-job"></a>Bir iş oluşturma
 
 1. Sol taraftaki çubukta **işler** ' i seçerek havuzda iş oluşturun, sonra arama formunun üzerindeki **Ekle** düğmesine basın. 
     1. Bir KIMLIK ve görünen ad seçin. `ocr-job`Bu örnek için kullanacağız.

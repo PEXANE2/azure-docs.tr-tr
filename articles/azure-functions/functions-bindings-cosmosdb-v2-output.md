@@ -7,10 +7,10 @@ ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
 ms.openlocfilehash: 779b66412319ec8422977a7e56570a4d16f89aa9
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98071553"
 ---
 # <a name="azure-cosmos-db-output-binding-for-azure-functions-2x-and-higher"></a>Azure Işlevleri 2. x ve üzeri için çıkış bağlamasını Azure Cosmos DB
@@ -620,11 +620,11 @@ def main(req: func.HttpRequest, doc: func.Out[func.Document]) -> func.HttpRespon
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `CosmosDB` .
 
-|function.jsözelliği | Öznitelik özelliği |Açıklama|
+|function.jsözelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
 |**türüyle**     | yok | Olarak ayarlanmalıdır `cosmosDB` .        |
 |**Görünüm**     | yok | Olarak ayarlanmalıdır `out` .         |
-|**name**     | yok | İşlevdeki belgeyi temsil eden bağlama parametresinin adı.  |
+|**ada**     | yok | İşlevdeki belgeyi temsil eden bağlama parametresinin adı.  |
 |**Dosyasında** | **Dosyasında**|Belgenin oluşturulduğu koleksiyonu içeren veritabanı.     |
 |**Ma** |**CollectionName**  | Belgenin oluşturulduğu koleksiyonun adı. |
 |**Createıfnotexists çağırmanız**  |**Createıfnotexists çağırmanız**    | Koleksiyonun mevcut olmadığında oluşturulup oluşturulmayacağını belirten bir Boole değeri. Varsayılan değer *false* 'dur çünkü yeni koleksiyonlar, maliyet etkilerine sahip olan ayrılmış aktarım hızı ile oluşturulmuştur. Daha fazla bilgi edinmek için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/cosmos-db/).  |
@@ -670,7 +670,7 @@ Bu bölümde, sürüm 2. x içinde bu bağlama için kullanılabilen genel yapı
 }
 ```
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılan | Description |
 |---------|---------|---------|
 |GatewayMode|Ağ geçidi|Azure Cosmos DB hizmetine bağlanırken işlev tarafından kullanılan bağlantı modu. Seçenekler `Direct` ve `Gateway`|
 |Protokol|'Dir|Azure Cosmos DB hizmetine bağlantı sırasında işlev tarafından kullanılan bağlantı protokolü.  [Her iki modun açıklaması için buraya](../cosmos-db/performance-tips.md#networking) okuyun|
