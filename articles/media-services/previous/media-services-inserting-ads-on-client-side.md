@@ -16,10 +16,10 @@ ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 2d942099d0abbdfc4ddfa0276184500166250728
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103014970"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>İstemci tarafına reklam ekleme
@@ -475,7 +475,7 @@ Bu örnek, program aracılığıyla MediaPlayer ile etkileşime girer. Programma
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4"/>
 ```
 
-ProgrammaticAdPage.xaml.cs dosyası bir AdHandlerPlugin oluşturur, bir ad ne zaman görüntüleneceğini belirtmek için bir TimelineMarker ekler ve sonra da büyük bir dosyaya bir URI belirterek RemoteAdSource 'u yükleyen Markerulaşıldı olayı için bir işleyici ekler ve ardından ad yürütülür.
+ProgrammaticAdPage. xaml. cs dosyası bir AdHandlerPlugin oluşturur, bir ad ne zaman görüntüleneceğini belirtmek için bir TimelineMarker ekler ve sonra da büyük bir dosyaya URI belirten bir RemoteAdSource 'u yükleyen Markerulaşıldı olayı için bir işleyici ekler ve ardından ad yürütülür.
 
 ```csharp
     public sealed partial class ProgrammaticAdPage : Microsoft.PlayerFramework.Samples.Common.LayoutAwarePage

@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/31/2020
+ms.date: 03/17/2021
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: eeb41967ac7e2b73bfb32933f7f019a5722fdc9b
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 72015dd23da60644c3ecb0bbe9616b35ff1acbcb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102454441"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596799"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>Öğretici: DRM dinamik şifrelemesini ve lisans teslim hizmetini kullanın
 
@@ -103,7 +103,7 @@ Bu öğreticide, doğrudan bir [https kaynak URL](job-input-from-http-how-to.md)
 
 ## <a name="wait-for-the-job-to-complete"></a>İşin tamamlanmasını bekleyin
 
-İşin tamamlaması biraz zaman alır. Ne zaman sorulduğunda bildirim almak istersiniz. Aşağıdaki kod örneği, **İş**’in durumu için hizmette nasıl yoklama yapılacağını gösterir. Yoklama, olası gecikme nedeniyle üretim uygulamaları için önerilen en iyi uygulamadır. Yoklama, bir hesap üzerinde gereğinden fazla kullanılırsa kısıtlanabilir. Geliştiricilerin onun yerine Event Grid kullanmalıdır. Bkz. [Olayları özel bir web uç noktasına yönlendirme](job-state-events-cli-how-to.md).
+İşin tamamlaması biraz zaman alır. Ne zaman sorulduğunda bildirim almak istersiniz. Aşağıdaki kod örneği, **İş**’in durumu için hizmette nasıl yoklama yapılacağını gösterir. Yoklama, olası gecikme nedeniyle üretim uygulamaları için önerilen en iyi uygulamadır. Yoklama, bir hesap üzerinde gereğinden fazla kullanılırsa kısıtlanabilir. Geliştiricilerin onun yerine Event Grid kullanmalıdır. Bkz. [Olayları özel bir web uç noktasına yönlendirme](monitoring/job-state-events-cli-how-to.md).
 
 **İş** genellik şu aşamalardan geçer: **Zamanlandı**, **Kuyruğa Alındı**, **İşleniyor**, **Tamamlandı** (son aşama). İş bir hatayla karşılaşmışsa, **hata** durumunu alırsınız. İş iptal edilme süreciiyorsa, tamamlandığında iptal edip **Iptal etmiş** olursunuz **.**
 

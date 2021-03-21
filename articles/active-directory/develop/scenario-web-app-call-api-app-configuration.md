@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 2109705116c323fd3632b7230a81ccd9158c1a64
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: aa377547f7f4961e199ec8d62bf0f1435296f983
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582339"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104669313"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Web API 'Leri çağıran bir Web uygulaması: kod yapılandırması
 
@@ -28,15 +28,11 @@ Web uygulaması, kullanıcılar senaryosunda oturum [açan Web](scenario-web-app
 
 [Kullanıcı senaryolarında oturum açan Web uygulaması](scenario-web-app-sign-user-overview.md) yalnızca ilk adımın kapsamına alınır. Burada, Web uygulamanızı yalnızca içindeki kullanıcıları imzaladığında, ancak artık Web API 'Lerini çağıran bir şekilde nasıl değiştireceğiniz hakkında bilgi edineceksiniz.
 
-## <a name="libraries-that-support-web-app-scenarios"></a>Web uygulaması senaryolarını destekleyen kitaplıklar
+## <a name="microsoft-libraries-supporting-web-apps"></a>Web uygulamalarını destekleyen Microsoft kitaplıkları
 
-Microsoft kimlik doğrulama kitaplığı 'ndaki (MSAL) aşağıdaki kitaplıklar, Web Apps için yetkilendirme kod akışını destekler:
+Aşağıdaki Microsoft kitaplıkları Web uygulamalarını destekler:
 
-| MSAL kitaplığı | Description |
-|--------------|-------------|
-| ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | .NET Framework ve .NET Core platformları için destek. Desteklenmeyen Evrensel Windows Platformu (UWP), Xamarin. iOS ve Xamarin. Android, bu platformlar ortak istemci uygulamaları oluşturmak için kullanılır. <br/><br/>Web uygulamaları ve Web API 'Leri ASP.NET Core için MSAL.NET, [Microsoft. Identity. Web](https://aka.ms/ms-identity-web)adlı daha üst düzey bir kitaplıkta kapsüllenir. |
-| ![MSAL Python](media/sample-v2-code/logo_python.png) <br/> Python için MSAL | Python web uygulamaları için destek. |
-| ![MSAL Java](media/sample-v2-code/logo_java.png) <br/> Java için MSAL | Java Web uygulamaları için destek. |
+[!INCLUDE [active-directory-develop-libraries-webapp](../../../includes/active-directory-develop-libraries-webapp.md)]
 
 İlgilendiğiniz platformun sekmesini seçin:
 
@@ -99,7 +95,7 @@ Aşağıdaki örnekte, `GraphBeta` bölümü bu ayarları belirtir.
 
 ## <a name="startupcs"></a>Startup.cs
 
-Web uygulamanızın aşağı akış API 'SI için bir belirteç edinmesi gerekir. `.EnableTokenAcquisitionToCallDownstreamApi()`Sonra satırı ekleyerek belirlersiniz `.AddMicrosoftIdentityWebApi(Configuration)` . Bu satır, `ITokenAcquisition` denetleyicinizde ve sayfa eylemlerinde kullanabileceğiniz hizmeti sunar. Ancak, aşağıdaki iki seçenekten de göreceğiniz gibi daha basit bir şekilde yapılabilir. Ayrıca, Startup.cs içinde bir belirteç önbelleği uygulamasını seçmeniz gerekir `.AddInMemoryTokenCaches()` : 
+Web uygulamanızın aşağı akış API 'SI için bir belirteç edinmesi gerekir. `.EnableTokenAcquisitionToCallDownstreamApi()`Sonra satırı ekleyerek belirlersiniz `.AddMicrosoftIdentityWebApi(Configuration)` . Bu satır, `ITokenAcquisition` denetleyicinizde ve sayfa eylemlerinde kullanabileceğiniz hizmeti sunar. Ancak, aşağıdaki iki seçenekten de göreceğiniz gibi daha basit bir şekilde yapılabilir. Ayrıca, bir belirteç önbelleği uygulamasını (örneğin `.AddInMemoryTokenCaches()` , *Startup. cs*) seçmeniz gerekir:
 
    ```csharp
    using Microsoft.Identity.Web;
@@ -129,7 +125,7 @@ Belirteci kendiniz almak istemiyorsanız, *Microsoft. Identity. Web* bir Web uyg
 Microsoft Graph çağırmak isterseniz, *Microsoft. Identity. Web* , `GraphServiceClient` API eylemlerinizin (Microsoft Graph SDK tarafından açığa çıkarılan) doğrudan kullanmanıza olanak sağlar. Microsoft Graph ortaya çıkarmak için:
 
 1. Projenize [Microsoft. Identity. Web. MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) NuGet paketini ekleyin.
-1. `.AddMicrosoftGraph()` `.EnableTokenAcquisitionToCallDownstreamApi()` *Startup.cs* dosyasından sonra ekleyin. `.AddMicrosoftGraph()` birkaç geçersiz kılma içerir. Bir yapılandırma bölümünü parametre olarak alan geçersiz kılmayı kullanarak, kod şu şekilde olur:
+1. `.AddMicrosoftGraph()` `.EnableTokenAcquisitionToCallDownstreamApi()` *Başlangıç. cs* dosyasında öğesinden sonra ekleyin. `.AddMicrosoftGraph()` birkaç geçersiz kılma içerir. Bir yapılandırma bölümünü parametre olarak alan geçersiz kılmayı kullanarak, kod şu şekilde olur:
 
    ```csharp
    using Microsoft.Identity.Web;
@@ -179,7 +175,7 @@ Microsoft Graph dışındaki bir Web API 'sini çağırmak için, *Microsoft. Id
 
 Web API 'Lerinde olduğu gibi çeşitli belirteç önbelleği uygulamaları da seçebilirsiniz. Ayrıntılar için bkz. GitHub 'da [Microsoft. Identity. Web-Token Cache serileştirme](https://aka.ms/ms-id-web/token-cache-serialization) .
 
-Aşağıdaki görüntüde *Microsoft. Identity. Web* 'in çeşitli olanakları ve *Startup.cs* dosyası üzerindeki etkileri gösterilmektedir:
+Aşağıdaki görüntüde *Microsoft. Identity. Web* 'in çeşitli olanakları ve *Başlangıç. cs* dosyasındaki etkileri gösterilmektedir:
 
 :::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.svg" alt-text="Bir Web API 'SI çağırmak ve bir belirteç önbelleği uygulamasını belirtmek için başlangıç noktası C 'ler içindeki hizmet yapılandırma seçeneklerini gösteren blok diyagramı":::
 
@@ -218,9 +214,9 @@ Microsoft. Identity. Web, doğru OpenID Connect ayarlarını ayarlayarak, alına
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-ASP.NET \Startup.Auth.cs dosyasında, OpenID Connect 'in yapılandırması ve App_Start olay aboneliği olması dışında, ASP.NET Core benzer şeyleri işler `OnAuthorizationCodeReceived` . [](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs) Kavramlar aynı zamanda ASP.NET Core de benzerdir, ancak ASP.NET içinde, `RedirectUri` [Web.config # L15](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Web.config#L15)içinde belirtmeniz gerekir. Uygulamanızı dağıtırken değiştirmeniz gerektiğinden, bu yapılandırma ASP.NET Core ' den daha az bir sağlamdır.
+ASP.NET \Startup.Auth.cs dosyasında, OpenID Connect 'in yapılandırması ve App_Start olay aboneliği olması dışında, ASP.NET Core benzer şeyleri işler `OnAuthorizationCodeReceived` . [](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs) Kavramlar, ASP.NET ' deki ASP.NET Core de benzerdir, ancak bu da ' deWeb.config#L15 belirtmeniz gerekir `RedirectUri` . [](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Web.config#L15) Uygulamanızı dağıtırken değiştirmeniz gerektiğinden, bu yapılandırma ASP.NET Core ' den daha az bir sağlamdır.
 
-Startup.Auth.cs için kod şöyledir:
+Başlangıç. auth. cs kodu aşağıda verilmiştir:
 
 ```csharp
 public partial class Startup
@@ -391,7 +387,7 @@ Gizli istemci uygulaması, bir istemci parolası yerine, bir istemci sertifikas�
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-ASP.NET Core öğreticisi, uygulamanızın Startup.cs dosyasında belirteç önbelleği uygulamasına karar vermenize olanak sağlamak için bağımlılık ekleme işlemini kullanır. Microsoft. Identity. Web, [belirteç önbelleği serileştirme](msal-net-token-cache-serialization.md#token-cache-for-a-web-app-confidential-client-application)bölümünde açıklanan önceden oluşturulmuş belirteç önbelleği serileştiricileri ile gelir. İlginç bir olasılık ASP.NET Core [Dağıtılmış bellek önbellekler](/aspnet/core/performance/caching/distributed#distributed-memory-cache)' ı seçerdir:
+ASP.NET Core öğreticisi, uygulamanızın başlangıç. cs dosyasında belirteç önbelleği uygulamasına karar vermenize olanak sağlamak için bağımlılık ekleme özelliğini kullanır. Microsoft. Identity. Web, [belirteç önbelleği serileştirme](msal-net-token-cache-serialization.md#token-cache-for-a-web-app-confidential-client-application)bölümünde açıklanan önceden oluşturulmuş belirteç önbelleği serileştiricileri ile gelir. İlginç bir olasılık ASP.NET Core [Dağıtılmış bellek önbellekler](/aspnet/core/performance/caching/distributed#distributed-memory-cache)' ı seçerdir:
 
 ```csharp
 // Use a distributed token cache by adding:

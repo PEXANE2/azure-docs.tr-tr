@@ -12,10 +12,10 @@ ms.date: 02/12/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.openlocfilehash: 9341646f32f6a2e05397b072d3f63186964fbd88
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99258991"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu ile şirket içi API 'lere güvenli erişim
@@ -136,7 +136,7 @@ AppProxyNativeAppSample uygulamasını şimdi Azure Active Directory kaydettiniz
 
 ## <a name="configure-the-native-app-code"></a>Yerel uygulama kodunu yapılandırma
 
-Son adım, yerel uygulamayı yapılandırmaktır. NativeClient örnek uygulamasındaki *Form1.cs* dosyasındaki aşağıdaki kod parçacığı, msal kitaplığının API çağrısını isteme belirtecini almasına ve uygulama üstbilgisine taşıyıcı olarak iliştirmesine neden olur.
+Son adım, yerel uygulamayı yapılandırmaktır. NativeClient örnek uygulamasındaki *Form1. cs* dosyasındaki aşağıdaki kod parçacığı, msal kitaplığının API çağrısını istemek için belirteci almasına ve bunu uygulama üstbilgisine taşıyıcı olarak iliştirmesine neden olur.
 
    ```
    // Acquire Access Token from AAD for Proxy Application

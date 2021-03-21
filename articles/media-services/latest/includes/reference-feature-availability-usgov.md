@@ -4,12 +4,12 @@ ms.service: media-services
 ms.topic: include
 ms.date: 10/28/2020
 ms.author: inhenkel
-ms.openlocfilehash: 738c573196629242a8bee183e89b3e0f1adf393a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e37ea5362598d2e399014e50096a9178b5bff7a5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93331027"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104612469"
 ---
 <!--Feature availability in region-->
 
@@ -17,7 +17,7 @@ ms.locfileid: "93331027"
 
 | Özellik |  Orta US DoD | Doğu US DoD | US Gov Arizona | US Gov Texas | US Gov Virginia | <!-- USNat --> | <!-- USSec--> |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| [Azure EventGrid](../reacting-to-media-services-events.md) |<!-- US DoD Central -->  | <!-- US DoD East -->  |<!-- US Gov Arizona-->  |<!--US Gov Texas--> |<!-- US Gov Virginia--> |<!--USNat--> |<!--USSec--> |
+| [Azure EventGrid](../monitoring/reacting-to-media-services-events.md) |<!-- US DoD Central -->  | <!-- US DoD East -->  |<!-- US Gov Arizona-->  |<!--US Gov Texas--> |<!-- US Gov Virginia--> |<!--USNat--> |<!--USSec--> |
 | [Videoanaliz Zerönayar](../analyzing-video-audio-files-concept.md) |<!-- US DoD Central -->  | <!-- US DoD East -->  |<!-- US Gov Arizona-->  |<!--US Gov Texas--> |<!-- US Gov Virginia--> |<!--USNat--> |<!--USSec--> |
 | [Audioanaliz Zerönayar](../analyzing-video-audio-files-concept.md) |<!-- US DoD Central -->  | <!-- US DoD East -->  |<!-- US Gov Arizona-->  |<!--US Gov Texas--> |<!-- US Gov Virginia--> |<!--USNat--> |<!--USSec--> |
 | [Standardencoderönayar](../encoding-concept.md) | ![Standardencoderönayar US DoD Orta genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) | ![Standardencoderönayar US DoD Doğu genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) | ![Standardencoderönayar US Gov Arizona genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) | ![Standardencoderönayar US Gov Teksas genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) | ![Standardencoderönayar US Gov Virginia genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) |<!-- ![StandardEncoderPreset USNat general availability](../media/azure-clouds-regions/ga.svg)--> |<!-- ![StandardEncoderPreset USSec general availability](../media/azure-clouds-regions/ga.svg)--> |

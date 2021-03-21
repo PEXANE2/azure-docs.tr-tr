@@ -8,10 +8,10 @@ author: iqshahmicrosoft
 ms.author: krsh
 ms.date: 03/10/2021
 ms.openlocfilehash: 976d1dd4044649c9ef5307431c744ff3c2068bca
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103233574"
 ---
 # <a name="how-to-generate-a-sas-uri-for-a-vm-image"></a>VM görüntüsü için SAS URI 'SI oluşturma
@@ -35,7 +35,7 @@ VHD 'yi VM 'nizden ayıklamak için, VM diskinizin bir anlık görüntüsünü a
 
 VM diskinin anlık görüntüsünü alarak başlayın:
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 2. Sol üst taraftan başlayarak, kaynak oluştur ' u seçin, sonra da arama yapın ve anlık görüntü ' i seçin.
 3. Anlık görüntü dikey penceresinde Oluştur ' u seçin.
 4. Anlık görüntü için bir ad girin.

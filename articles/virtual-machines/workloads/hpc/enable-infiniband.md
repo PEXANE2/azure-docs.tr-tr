@@ -5,15 +5,15 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 11/06/2020
+ms.date: 03/18/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: cd4d928217ceba80fa5ea0252a6ed20803a812d3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 089976f2009e006f53dd2a77f09f57d5090429b7
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101666953"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721245"
 ---
 # <a name="enable-infiniband"></a>InfiniBand’i etkinleştirme
 
@@ -22,9 +22,9 @@ ms.locfileid: "101666953"
 Yetenekli VM boyutlarında InfiniBand 'yi etkinleştirmenin çeşitli yolları vardır.
 
 ## <a name="vm-images-with-infiniband-drivers"></a>InfiniBand sürücülerle VM görüntüleri
-[Sanal](configure.md#vm-images) MAKINELERDEKI desteklenen VM görüntülerinin listesi için bkz. InfiniBand sürücülerle (SR-ıOV veya SR-IOV olmayan VM 'ler için) önceden yüklenmiş veya uygun sürücülerle yapılandırılabilir.
-SR-ıOV özellikli [RDMA özellikli VM 'ler](../../sizes-hpc.md#rdma-capable-instances)için, [CENTOS-HPC sürüm 7,6 veya Market 'teki sonrakı bir](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557) sürüm VM görüntüleri, başlamak için en kolay yoldur.
-Ubuntu VM görüntüleri, [Buradaki yönergeler](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351)KULLANıLARAK hem SR-IOV hem de SR-IOV olmayan VM 'ler için doğru sürücülerle yapılandırılabilir.
+[Sanal](configure.md#vm-images) MAKINELERDEKI desteklenen VM görüntülerinin listesi için bkz. (SR-ıOV veya SR-IOV olmayan VM 'ler için) veya [RDMA özellikli VM](../../sizes-hpc.md#rdma-capable-instances)'ler için uygun sürücülerle yapılandırılabilir.
+- Market 'teki [CentOS-HPC](configure.md#centos-hpc-vm-images) VM görüntüleri, başlamak için en kolay yoldur.
+- [Ubuntu](configure.md#ubuntu-vm-images) VM görüntüleri, doğru IB sürücüleriyle yapılandırılabilir.
 
 ## <a name="infiniband-driver-vm-extensions"></a>InfiniBand sürücü VM uzantıları
 Linux 'ta, [ınfinibanddriverlinux sanal makine uzantısı](../../extensions/hpc-compute-infiniband-linux.md) , The SR-IOV etkin H ve N serisi VM 'lerde
@@ -68,6 +68,6 @@ sudo systemctl restart waagent
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Desteklenen çeşitli MPI kitaplıklarını](setup-mpi.md) ve En Iyi yapılandırmalarını VM 'lere yükleme hakkında daha fazla bilgi edinin.
-- Performans ve ölçeklenebilirlik için iş yüklerini en iyi şekilde yapılandırma hakkında bilgi edinmek için [HB Serisi genel bakış](hb-series-overview.md) ve [HC Serisi genel bakışı](hc-series-overview.md) gözden geçirin.
-- En son duyurular ve bazı HPC örnekleri hakkında bilgi edinin ve [Azure Işlem teknik topluluk bloglarında](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)bu sonuçları elde edin.
+- [HBv3-Series genel bakış](hbv3-series-overview.md) ve [HC Serisi genel bakış](hc-series-overview.md)konusunu gözden geçirin.
+- [Azure Işlem Tech Community bloglarında](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)en son Duyurular, HPC iş yükü örnekleri ve performans sonuçları hakkında bilgi edinin.
 - Çalıştırılan HPC iş yüklerinin daha yüksek düzey mimari görünümü için bkz. [Azure 'Da yüksek performanslı bilgi işlem (HPC)](/azure/architecture/topics/high-performance-computing/).

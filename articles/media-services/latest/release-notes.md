@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 10/21/2020
+ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: d7cfb4cf9b6b061f5fb53667e968cb0403f22bfc
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 9e5a6737d2e37392efd305910ff5370adc84940f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103562578"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596748"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 sürüm notları
 
@@ -84,7 +84,7 @@ Sürüm 3 şunları sağlar:
  
 - 7/24 canlı olay desteği
 - ARM REST API 'Leri, .NET Core için istemci SDK 'Ları, Node.js, Python, Java, Go ve Ruby.
-- Müşteri tarafından yönetilen anahtarlar, güvenilen depolama tümleştirmesi, özel bağlantı desteği ve [daha fazlası](https://review.docs.microsoft.com/azure/media-services/latest/migrate-v-2-v-3-migration-benefits)
+- Müşteri tarafından yönetilen anahtarlar, güvenilen depolama tümleştirmesi, özel bağlantı desteği ve [daha fazlası](https://docs.microsoft.com/azure/media-services/latest/migrate-v-2-v-3-migration-benefits)
 
 #### <a name="action-required"></a>Eylem gerekiyor
 
@@ -123,7 +123,6 @@ Lütfen Paket Yöneticisi 'ni kullanarak kod tabanlarınızın en son istemci SD
 - **[Güvenilen depolama](concept-trusted-storage.md)**: Media Services Media Services hesabıyla ilişkili yönetilen bir kimlik kullanılarak Azure depolama 'ya erişecek şekilde yapılandırılabilir. Depolama hesaplarına yönetilen bir kimlik kullanılarak erişildiğinde müşteriler Media Services senaryolarını engellemeden depolama hesabında daha kısıtlayıcı ağ ACL 'Leri yapılandırabilir.
 
 - **[Yönetilen kimlikler](concept-managed-identities.md)**: müşteriler, anahtar kasalarına (müşteri tarafından yönetilen anahtarlar için) ve depolama hesaplarına (güvenilen depolama için) erişim sağlamak amacıyla bir Media Services hesabı Için sistem tarafından atanan yönetilen kimliği etkinleştirebilir.
-
 
 ### <a name="updated-typescript-nodejs-samples-using-isomorphic-sdk-for-javascript"></a>JavaScript için isomorphic SDK kullanılarak TypeScript Node.js örnekleri güncelleştirildi
 
@@ -373,7 +372,7 @@ Artık akış bulucusu için uygulanacak varlık veya hesap filtrelerinin bir li
 
 Media Services v3 artık Azure Ulusal bulutlarında desteklenmektedir. Tüm özellikler henüz tüm bulutlarda kullanılamaz. Ayrıntılar için bkz. [Azure Media Services v3 'nin bulunduğu bulutlar ve bölgeler](azure-clouds-regions.md).
 
-Media Services için Azure Event Grid şemalarına [Microsoft. Media. Joi Putprogress](media-services-event-schemas.md#monitoring-job-output-progress) olayı eklendi.
+Media Services için Azure Event Grid şemalarına [Microsoft. Media. Joi Putprogress](monitoring/media-services-event-schemas.md#monitoring-job-output-progress) olayı eklendi.
 
 ## <a name="january-2019"></a>Ocak 2019
 

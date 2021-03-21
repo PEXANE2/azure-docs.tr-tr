@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/18/2021
+ms.date: 03/12/2021
 ms.author: jeedes
-ms.openlocfilehash: e890ff1cb64961c7747b8865b68504ff0a266a3e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2d0b9e45dc5de0cd4550cf4b9f944fd33ebd7e7e
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104599706"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720737"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aws-single-sign-on"></a>Öğretici: AWS çoklu oturum açma ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -37,7 +37,7 @@ Başlamak için aşağıdaki öğeler gereklidir:
 
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* AWS çoklu oturum açma **, SP ve ıDP** tarafından başlatılan SSO 'yu destekler
+* AWS çoklu oturum açma **, SP ve ıDP** tarafından başlatılan SSO 'yu destekler.
 
 * AWS çoklu oturum açma [**Otomatik Kullanıcı sağlamayı**](./aws-single-sign-on-provisioning-tutorial.md)destekler.
 
@@ -72,7 +72,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Azure portal, **AWS çoklu oturum açma** uygulaması tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -80,9 +80,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     a. **Meta veri dosyasını karşıya yükle**' ye tıklayın.
 
-    ![image1](common/upload-metadata.png)
-
-    b. Meta veri dosyasını seçmek için **klasör logosu** ' na tıklayın ve **karşıya yükle**' ye tıklayın.
+    b. Dosya **logosu** ' na tıklayarak **AWS çoklu oturum açma SSO** (nokta 8) yapılandırma bölümünde indirdiğiniz meta veri dosyasını seçin ve **Ekle**' ye tıklayın.
 
     ![image2](common/browse-upload-metadata.png)
 
@@ -148,15 +146,45 @@ Bu bölümde, AWS çoklu oturum açma erişimine izin vererek Azure çoklu oturu
 
 ## <a name="configure-aws-single-sign-on-sso"></a>AWS çoklu oturum açma SSO 'yu yapılandırma
 
-1. **AWS SSO konsolunu** açın. 
+1. AWS çoklu oturum açma içindeki yapılandırmayı otomatik hale getirmek için, **uzantıyı yüklemek** üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
+
+    ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
+
+2. Tarayıcıya uzantı ekledikten sonra, **AWS çoklu oturum açmayı ayarla** ' ya tıklayarak sizi AWS çoklu oturum açma uygulamasına yönlendirebilirsiniz. Buradan, AWS çoklu oturum açma 'da oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-10 adımlarını otomatikleştirecektir.
+
+    ![Kurulum yapılandırması](common/setup-sso.png)
+
+3. AWS çoklu oturum açmayı el ile ayarlamak istiyorsanız, farklı bir Web tarayıcısı penceresinde, AWS çoklu oturum açma şirket sitenizde yönetici olarak oturum açın.
+
+1. **Hizmetler-> güvenlik, kimlik & uyumluluğu-> AWS çoklu oturum açma**'ya gidin.
 2. Sol gezinti bölmesinde **Ayarlar**' ı seçin.
-3. **Ayarlar** sayfasında **kimlik kaynağını** bulun, **Değiştir**' i seçin.
-4. Dizini Değiştir sayfasında, **dış kimlik sağlayıcısı**' nı seçin.
-5. **Hizmet sağlayıcı meta verileri** bölümünde, **AWS SSO SAML meta verilerini** bulun ve meta veri dosyasını indirmek Için meta **veri dosyasını indir** ' i seçin ve dosyayı bilgisayarınıza kaydedin.
-6. **Kimlik sağlayıcısı meta verileri** bölümünde, Azure Portal indirdiğiniz meta veri dosyasını karşıya yüklemek için **Araştır** ' ı seçin.
-7. Ileri 'yi seçin **: gözden geçir**.
-8. Metin kutusunda, Dizin değiştirmeyi onaylamak için **Onayla** yazın.
-9. **Son**’u seçin.
+3. **Ayarlar** sayfasında **kimlik kaynağını** bulun ve **Değiştir**' e tıklayın.
+
+    ![Kimlik kaynağı değişiklik hizmeti ekran görüntüsü](./media/aws-single-sign-on-tutorial/settings.png)
+
+4. Kimlik kaynağını Değiştir ' de, **dış kimlik sağlayıcısı**' nı seçin.
+
+    
+    ![Dış kimlik sağlayıcısı bölümü seçme ekran görüntüsü](./media/aws-single-sign-on-tutorial/external-identity-provider.png)
+
+
+1. **Dış kimlik sağlayıcısını Yapılandır** bölümünde aşağıdaki adımları gerçekleştirin:
+
+    ![Meta verileri indir ve karşıya yükle bölümünün ekran görüntüsü](./media/aws-single-sign-on-tutorial/upload-metadata.png)
+
+    a. **Hizmet sağlayıcısı meta verileri** bölümünde **AWS SSO SAML meta verilerini** bulun ve meta veri dosyasını indirmek Için **meta veri dosyasını indir** ' i seçin ve bu meta veri dosyasını bilgisayarınıza kaydedin ve Azure Portal karşıya yüklemek için kullanın.
+
+    b. **AWS SSO oturum açma URL 'si** değerini kopyalayın, bu değeri Azure Portal **temel SAML yapılandırması bölümünde** yer **alan URL 'yi aç** metin kutusuna yapıştırın.
+
+    c. **Kimlik sağlayıcısı meta verileri** bölümünde, Azure Portal indirdiğiniz meta veri dosyasını karşıya yüklemek için **Araştır** ' ı seçin.
+
+    d. Ileri 'yi seçin **: gözden geçir**.
+
+8. Metin kutusuna, kimlik kaynağını değiştirmek için **kabul et** yazın.
+
+    ![Yapılandırmayı onaylama ekran görüntüsü](./media/aws-single-sign-on-tutorial/accept.png)
+
+9. **Kimlik kaynağını Değiştir**' e tıklayın.
 
 ### <a name="create-aws-single-sign-on-test-user"></a>AWS çoklu oturum açma testi Kullanıcı Oluştur
 

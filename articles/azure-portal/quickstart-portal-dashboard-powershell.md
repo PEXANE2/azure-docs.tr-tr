@@ -4,12 +4,12 @@ description: Azure PowerShell kullanarak Azure portal Pano oluşturmayı öğren
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
 ms.date: 07/24/2020
-ms.openlocfilehash: 02e243a7296555d73427f8e31c4abdf9c3e56735
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 1b001c8f1ab73d23441697c93202cf1f6ea65687
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745749"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104613333"
 ---
 # <a name="quickstart-create-an-azure-portal-dashboard-with-powershell"></a>Hızlı başlangıç: PowerShell ile Azure portal panosu oluşturma
 
@@ -23,7 +23,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 PowerShell 'i yerel olarak kullanmayı seçerseniz, bu makale az PowerShell modülünü yüklemenizi ve [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet 'Ini kullanarak Azure hesabınıza bağlanmanızı gerektirir. Az PowerShell modülünü yükleme hakkında daha fazla bilgi için bkz. [yükleme Azure PowerShell](/powershell/azure/install-az-ps).
 
 > [!IMPORTANT]
-> **Az. Portal** PowerShell modülü önizlemedeyken, cmdlet 'Ini kullanarak az PowerShell modülünden ayrı olarak yüklemelisiniz `Install-Module` . Bu PowerShell modülü genel kullanıma sunulduğunda, bu, gelecekteki az PowerShell modülü sürümlerinin bir parçası haline gelir ve Azure Cloud Shell içinden yerel olarak kullanılabilir.
+> **Az. Portal** PowerShell modülü önizlemedeyken, cmdlet 'Ini kullanarak az PowerShell modülünden ayrı olarak yüklenmelidir `Install-Module` . Bu PowerShell modülü genel kullanıma sunulduğunda, bu, gelecekteki az PowerShell modülü sürümlerinin bir parçası haline gelir ve Azure Cloud Shell içinden yerel olarak kullanılabilir.
 
 ```azurepowershell-interactive
 Install-Module -Name Az.Portal
@@ -146,19 +146,7 @@ Panonun başarıyla oluşturulduğunu denetleyin.
 Get-AzPortalDashboard -Name $dashboardName -ResourceGroupName $resourceGroupName
 ```
 
-VM hakkındaki verileri Azure portal içinden görebildiğinizi doğrulayın.
-
-1. Azure portalında **Pano**’yu seçin.
-
-   ![Panoya gezinti Azure portal](media/quickstart-portal-dashboard-powershell/navigate-to-dashboards.png)
-
-1. Pano sayfasında, **basıt VM panosu**' nu seçin.
-
-   ![Basit VM panosuna git](media/quickstart-portal-dashboard-powershell/select-simple-vm-dashboard.png)
-
-1. Panoyu gözden geçirin. İçeriğin bazılarının statik olduğunu, ancak VM 'nin performansını gösteren grafikler de olduğunu görebilirsiniz.
-
-   ![Basit VM panosunu gözden geçirme](media/quickstart-portal-dashboard-powershell/review-simple-vm-dashboard.png)
+[!INCLUDE [azure-portal-review-deployed-resources](../../includes/azure-portal-review-deployed-resources.md)]
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

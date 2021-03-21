@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.openlocfilehash: 51059dd1c4c5c93e155cd7a2d34c3cbaf29db6e2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101705611"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Azure Logic Apps'te B2B kurumsal tümleştirmeleri için tümleştirme hesabı oluşturma ve yönetme
@@ -72,7 +72,7 @@ Bu görev için, bu bölümdeki Azure portal, [Azure PowerShell](/powershell/mod
    | **Kaynak grubu** | Yes | <*Azure-Resource-Group-Name*> | İlgili kaynakları düzenlemek için kullanılacak [Azure Kaynak grubunun](../azure-resource-manager/management/overview.md) adı. Bu örnekte, "FabrikamIntegration-RG" adlı yeni bir kaynak grubu oluşturun. |
    | **Fiyatlandırma Katmanı** | Yes | <*fiyatlandırma düzeyi*> | Tümleştirme hesabının daha sonra değiştirebileceğiniz fiyatlandırma katmanı. Bu örnekte, **ücretsiz**' ı seçin. Daha fazla bilgi için şu konulara bakın: <p>- [Logic Apps fiyatlandırma modeli](../logic-apps/logic-apps-pricing.md#integration-accounts) <p>- [Logic Apps sınırları ve yapılandırma](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) <p>- [Logic Apps fiyatlandırması](https://azure.microsoft.com/pricing/details/logic-apps/) |
    | **Konum** | Yes | <*Azure-bölge*> | Tümleştirme hesabı meta verilerinizin depolanacağı bölge. Mantıksal uygulamanızla aynı konumu seçin ya da mantıksal uygulamalarınızı tümleştirme hesabınızla aynı konumda oluşturun. Bu örnekte, "Batı ABD" kullanın. <p>**Note**: bir [tümleştirme hizmeti ortamı (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)içinde bir tümleştirme hesabı oluşturmak için, konum olarak o Ise 'yi seçin. Daha fazla bilgi için bkz. [BIR ıSE tümleştirme hesapları oluşturma](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment). |
-   | **Log Analytics** | Hayır | Kapalı, açık | Bu örnek için **kapalı** ayarını değiştirmeyin. |
+   | **Log Analytics** | No | Kapalı, açık | Bu örnek için **kapalı** ayarını değiştirmeyin. |
    |||||
 
 1. İşiniz bittiğinde **Oluştur**' u seçin.

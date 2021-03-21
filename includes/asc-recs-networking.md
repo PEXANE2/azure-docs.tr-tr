@@ -6,15 +6,15 @@ ms.date: 03/14/2021
 ms.author: memildin
 ms.custom: generated
 ms.openlocfilehash: 2c096953fd89b902d1567399e36fc0fbf1b89572
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103466201"
 ---
 Bu kategoride **14** öneri vardır.
 
-|Öneri |Açıklama |Önem derecesi |
+|Öneri |Description |Önem derecesi |
 |---|---|---|
 |Güvenlik Duvarı ve sanal ağ yapılandırmalarına sahip depolama hesaplarına erişim kısıtlı olmalıdır |Depolama hesabı güvenlik duvarı ayarlarınızda ağ erişiminin ayarlarını gözden geçirin. Ağ kurallarının yalnızca izin verilen ağların uygulamalarının depolama hesabına erişebilmesi için yapılandırılması önerilir. Belirli internet veya şirket içi istemcilerden gelen bağlantılara izin vermek için, belirli Azure sanal ağlarından veya genel İnternet IP adresi aralıklarına yönelik trafiğe erişim verilebilir.<br />(İlgili ilke: [depolama hesapları ağ erişimini kısıtlıyor olmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f34c877ad-507e-4c82-993e-3452a6e0ad3c)) |Düşük |
 |Uyarlamalı ağ sağlamlaştırma önerileri internet 'e yönelik sanal makinelere uygulanmalıdır |Azure Güvenlik Merkezi, aşağıda listelenen sanal makinelerin internet trafiği iletişim düzenlerini çözümlemiştir ve bu kurallarla ilişkili NSG 'lerdeki mevcut kuralların aşırı izin verdiğini belirlemiştir ve bu da daha fazla potansiyel saldırı yüzeyi elde edilir.<br>Bu durum genellikle bu IP adresi bu kaynakla düzenli olarak iletişim kurmazsa oluşur. Alternatif olarak, IP adresi güvenlik merkezi 'nin tehdit bilgileri kaynakları tarafından kötü amaçlı olarak işaretlendi. <a href="https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening">Daha fazla bilgi edinin</a><br />(İlgili ilke: [Uyarlamalı ağ sağlamlaştırma önerileri internet 'e yönelik sanal makinelere uygulanmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f08e6af2d-db70-460a-bfe9-d5bd474ba9d6)) |Yüksek |

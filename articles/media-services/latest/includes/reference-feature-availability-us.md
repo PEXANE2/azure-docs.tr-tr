@@ -4,12 +4,12 @@ ms.service: media-services
 ms.topic: include
 ms.date: 10/28/2020
 ms.author: inhenkel
-ms.openlocfilehash: 8dd84a0c4eb1fd74ef850cb6de4530f50b3bb409
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 54eead8daa6367f9e4869d0d6a19d96c32a2fe3a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93331087"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104612230"
 ---
 <!--Feature availability in region-->
 
@@ -17,7 +17,7 @@ ms.locfileid: "93331087"
 
 | Özellik | Central US | Doğu ABD | Doğu ABD 2 | Orta Kuzey ABD | Orta Güney ABD | ABD Batı | ABD Batı 2 | Orta Batı ABD|
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| [Azure EventGrid](../reacting-to-media-services-events.md) | ![Azure EventGrid Orta ABD Genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid Doğu ABD Genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid Doğu ABD 2 genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid Orta Kuzey ABD Genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid Orta Güney ABD Genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid ABD Batı genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid ABD Batı 2 genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) |  ![Azure EventGrid Batı orta genel kullanılabilirliği](../media/azure-clouds-regions/ga.svg) |
+| [Azure EventGrid](../monitoring/reacting-to-media-services-events.md) | ![Azure EventGrid Orta ABD Genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid Doğu ABD Genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid Doğu ABD 2 genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid Orta Kuzey ABD Genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid Orta Güney ABD Genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid ABD Batı genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid ABD Batı 2 genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) |  ![Azure EventGrid Batı orta genel kullanılabilirliği](../media/azure-clouds-regions/ga.svg) |
 | [Videoanaliz Zerönayar](../analyzing-video-audio-files-concept.md) | ![Videoanaliz Zerönayar Orta ABD Genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) | ![Videoanaliz Zerönayar Doğu ABD Genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) | ![Videoanaliz Zerönayar Doğu ABD 2 genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) | ![Videoanaliz Zerönayar Orta Kuzey ABD Genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) | ![Videoanaliz Zerönayar Orta Güney ABD Genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) | ![Videoanaliz Zerönayar ABD Batı genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) | ![Videoanaliz Zerönayar ABD Batı 2 genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) |  ![Videoanaliz Zerönayar Batı orta genel kullanılabilirliği](../media/azure-clouds-regions/ga.svg) |
 | [Audioanaliz Zerönayar](../analyzing-video-audio-files-concept.md) | ![Audioanalbir ön ayar Orta ABD Genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) | ![Audioanalbir ön ayar Doğu ABD Genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) | ![Audioanalbir ön ayar Doğu ABD 2 genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) | ![Audioanalbir ön ayar Orta Kuzey ABD Genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) | ![Audioanalbir ön ayar Orta Güney ABD Genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) |  ![Audioanalbir ön ayar ABD Batı genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) | ![Audioanalbir ön ayar ABD Batı 2 genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) |  ![Audioanaliz Zerönayarı Batı orta genel kullanılabilirliği](../media/azure-clouds-regions/ga.svg) |
 | [Standardencoderönayar](../encoding-concept.md) | ![Standardencoderönayar Orta ABD Genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) | ![Standardencoderönayar Doğu ABD Genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) | ![Standardencoderönayar Doğu ABD 2 genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) | ![Standardencoderönayar Orta Kuzey ABD Genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) | ![Standardencoderönayar Orta Güney ABD Genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) |  ![Standardencoderönayar ABD Batı genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) | ![Standardencoderönayar ABD Batı 2 genel kullanılabilirlik](../media/azure-clouds-regions/ga.svg) |  ![Standardencoderönayar Batı orta genel kullanılabilirliği](../media/azure-clouds-regions/ga.svg) |

@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 06/02/2020
-ms.openlocfilehash: 290752c0e577e6c2cd58d83f77fea8a5406388e4
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 5ecf2992fa9ea56f73748a9f1f98c75f9076c68f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93240639"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104656898"
 ---
 # <a name="configuring-tls-settings-in-azure-database-for-mysql-using-azure-portal"></a>Azure portal kullanarak MySQL için Azure veritabanı 'nda TLS ayarlarını yapılandırma
 
@@ -37,9 +37,9 @@ MySQL Server en düşük TLS sürümünü ayarlamak için şu adımları izleyin
 
     :::image type="content" source="./media/howto-tls-configurations/setting-tls-value.png" alt-text="MySQL için Azure veritabanı TLS yapılandırması":::
 
-1. Değişiklikleri kaydetmek için **Kaydet** ’e tıklayın.
+1. Değişiklikleri kaydetmek için **Kaydet**’e tıklayın. 
 
-1. Bildirim, bağlantı güvenliği ayarının başarıyla etkinleştirildiğini onaylanır.
+1. Bildirim, bağlantı güvenliği ayarının başarıyla etkinleştirildiğini ve hemen geçerli olduğunu onaylanır. Gerekli veya gerçekleştirilen sunucu **yeniden başlatması yok** . Değişiklikler kaydedildikten sonra, sunucuya yapılan tüm yeni bağlantılar yalnızca TLS sürümü portalda en düşük TLS sürümünden büyük veya buna eşitse kabul edilir.
 
     :::image type="content" source="./media/howto-tls-configurations/setting-tls-value-success.png" alt-text="MySQL için Azure veritabanı TLS yapılandırması başarılı":::
 

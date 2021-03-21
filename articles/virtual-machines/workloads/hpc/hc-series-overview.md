@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/19/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 746c7ec91c888d9a55722c00f8765915d0043a98
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e2f6fb167ec8b1ea15f7f08cf77720e705b2e4a3
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101666080"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721383"
 ---
 # <a name="hc-series-virtual-machine-overview"></a>HC Serisi sanal makineye genel bakış
 
@@ -51,13 +51,13 @@ Aşağıdaki diyagramda, Azure Hiper Yöneticisi ve HC Serisi VM için ayrılan 
 |-----------------------------|-----------------------|
 | Maksimum MPı Işi boyutu            | 13200 çekirdek (tek bir sanal makine ölçek kümesindeki Tekplacementgroup = true ile, 300 VM)  |
 | MPı desteği                 | HPC-X, Intel MPI, OpenMPI, MVAPICH2, MPICH, platform MPı  |
-| Ek çerçeveler       | Birleşik Iletişim X, libfabric, PGAS |
+| Ek çerçeveler       | UCX, libfabric, PGAS |
 | Azure depolama desteği       | Standart ve Premium diskler (en fazla 4 disk) |
-| SRLOV RDMA için işletim sistemi desteği   | CentOS/RHEL 7.6 +, SLES 12 SP4 +, WinServer 2016 +  |
-| Orchestrator desteği        | CycleCloud, Batch  |
+| SRLOV RDMA için işletim sistemi desteği   | CentOS/RHEL 7.6 +, Ubuntu 16.04 +, SLES 12 SP4 +, WinServer 2016 +  |
+| Orchestrator desteği        | CycleCloud, Batch, AKS; [küme yapılandırma seçenekleri](../../sizes-hpc.md#cluster-configuration-options)  |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Intel Xeon SP mimarisi](https://software.intel.com/content/www/us/en/develop/articles/intel-xeon-processor-scalable-family-technical-overview.html)hakkında daha fazla bilgi edinin.
-- En son duyurular ve bazı HPC örnekleri hakkında bilgi edinin ve [Azure Işlem teknik topluluk bloglarında](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)bu sonuçları elde edin.
+- [Azure Işlem Tech Community bloglarında](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)en son Duyurular, HPC iş yükü örnekleri ve performans sonuçları hakkında bilgi edinin.
 - Çalıştırılan HPC iş yüklerinin daha yüksek düzey mimari görünümü için bkz. [Azure 'Da yüksek performanslı bilgi işlem (HPC)](/azure/architecture/topics/high-performance-computing/).

@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
 ms.openlocfilehash: b5ff515f5a6d25285009f6579570aa3afa5a711f
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103463366"
 ---
 # <a name="tutorial-develop-iot-edge-modules-using-windows-containers"></a>Öğretici: Windows kapsayıcıları kullanarak IoT Edge modülleri geliştirme
@@ -153,7 +153,7 @@ Yeni projeniz Visual Studio penceresinde yüklendikten sonra, oluşturduğu dosy
     > [!TIP]
     > Kayıt defteri bilgileri bölümünde, adres, çözümü oluşturduğunuzda verdiğiniz bilgilerden tekrar doldurulur. Ancak,. env dosyasında depolanan Kullanıcı adı ve parola başvuru değişkenleri. Bu,. env dosyası git yoksayıldı, ancak dağıtım şablonu olmadığı için güvenlik içindir.
 * **IotEdgeModule1** adlı bir IoT Edge modülü projesi.
-  * **Program.cs** dosyası, proje şablonuyla birlikte gelen varsayılan C# modül kodunu içerir. Varsayılan modül bir kaynaktan giriş alır ve IoT Hub buna karşı geçirir.
+  * **Program. cs** dosyası, proje şablonuyla birlikte gelen varsayılan C# modül kodunu içerir. Varsayılan modül bir kaynaktan giriş alır ve IoT Hub buna karşı geçirir.
   * Dosya **module.js** , tam görüntü deposu, görüntü sürümü ve desteklenen her platformda kullanılacak Dockerfile dahil olmak üzere modülle ilgili ayrıntıları tutar.
 
 ### <a name="provide-your-registry-credentials-to-the-iot-edge-agent"></a>IoT Edge aracısına kayıt defteri kimlik bilgilerinizi girin
@@ -188,7 +188,7 @@ Her modülün kodunda birden çok *giriş* ve *Çıkış* kuyruğu olabilir. Cih
 
 Proje şablonuyla birlikte gelen örnek C# kodu, .NET için IoT Hub SDK 'sının [Moduleclient sınıfını](/dotnet/api/microsoft.azure.devices.client.moduleclient) kullanır.
 
-1. **Program.cs** dosyasında **Setınputmessagehandlerasync** metodunu bulun.
+1. **Program. cs** dosyasında **Setınputmessagehandlerasync** metodunu bulun.
 
 2. [Setınputmessagehandlerasync](/dotnet/api/microsoft.azure.devices.client.moduleclient.setinputmessagehandlerasync) yöntemi gelen iletileri almak için bir giriş kuyruğu ayarlar. Bu yöntemi gözden geçirin ve **input1** adlı bir giriş kuyruğunu nasıl Başlatan hakkında bilgi alın.
 
