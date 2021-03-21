@@ -3,14 +3,14 @@ title: Yönetim saklı yordamları-MariaDB için Azure veritabanı
 description: MariaDB için Azure veritabanı 'nda bulunan saklı yordamların, veri çoğaltmayı yapılandırmanıza, saat dilimini ayarlamanıza ve sorguları sonlandırmaya yardımcı olmak için yararlı olduğunu öğrenin.
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 8df6c1d6bd00743be4a56b3bfa7e5416848eb62c
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 103bba37f5574185f10f5c4e28e66268da0c7f39
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98664640"
 ---
 # <a name="azure-database-for-mariadb-management-stored-procedures"></a>MariaDB için Azure veritabanı yönetimi saklı yordamları

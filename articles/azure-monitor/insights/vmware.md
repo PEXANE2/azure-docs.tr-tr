@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
 ms.openlocfilehash: 9ade5a51e2251669daee6fbaca9aa4c50f7e9bfc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101704370"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Azure Izleyici 'de VMware İzleme (kullanım dışı) çözümü
@@ -74,7 +74,7 @@ VMware İzleme çözümü, etkinleştirdiğiniz Linux için Log Analytics aracı
 
 Aşağıdaki tabloda veri toplama yöntemleri ve verilerin toplanmasına ilişkin diğer ayrıntılar gösterilmektedir.
 
-| platform | Linux için Log Analytics Aracısı | System Center Operations Manager Aracısı | Azure Storage | Operations Manager gerekli mi? | Yönetim grubu aracılığıyla gönderilen aracı verileri Operations Manager | toplama sıklığı |
+| platform | Linux için Log Analytics Aracısı | System Center Operations Manager Aracısı | Azure Depolama | Operations Manager gerekli mi? | Yönetim grubu aracılığıyla gönderilen aracı verileri Operations Manager | toplama sıklığı |
 | --- | --- | --- | --- | --- | --- | --- |
 | Linux |&#8226; |  |  |  |  |3 dakikada bir |
 

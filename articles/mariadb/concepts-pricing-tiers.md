@@ -3,14 +3,14 @@ title: Fiyatlandırma katmanları - MariaDB için Azure Veritabanı
 description: Bilgi işlem oluşturmaları, depolama türleri, depolama boyutu, sanal çekirdek, bellek ve yedekleme bekletme dönemleri dahil olmak üzere MariaDB için Azure veritabanı için çeşitli fiyatlandırma katmanları hakkında bilgi edinin.
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 6c786ea80ecbe2f174d8c3b701316791e1b6104f
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: b5b5a506b2f932d20a617634ace7ebf02093fbfa
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98664257"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>MariaDB için Azure veritabanı fiyatlandırma katmanları
@@ -76,9 +76,9 @@ Genel Amaçlı ve bellek için Iyileştirilmiş katmanlarımızda depolama sın�
 > Tüm diğer bölgeler 4TB 'a kadar depolamayı ve 6000 ıOPS 'yi destekler.
 >
 
-### <a name="reaching-the-storage-limit"></a>Depolama sınırına ulaşıyor
+### <a name="reaching-the-storage-limit"></a>Depolama sınırına ulaşma
 
-100 GB 'tan daha az kullanılabilir depolama alanı olan sunucular, boş depolama sağlanan depolama boyutunun %5 ' inden küçükse salt okunurdur. Sağlanan depolama alanı 100 GB'tan fazla olan sunucular, boş depolama alanı 5 GB'ın altına düştüğünde salt okunur olarak işaretlenir.
+Sağlanan depolama alanı 100 GB veya daha az olan sunucular, boş depolama alanı sağlanan depolama boyutunun %5'inin altında düştüğünde salt okunur olarak işaretlenir. Sağlanan depolama alanı 100 GB'tan fazla olan sunucular, boş depolama alanı 5 GB'ın altına düştüğünde salt okunur olarak işaretlenir.
 
 Örneğin, 110 GB depolama alanı sağladıysanız ve gerçek kullanım 105 GB 'den fazla olursa sunucu salt okunurdur olarak işaretlenir. Alternatif olarak, 5 GB depolama alanı sağladıysanız, ücretsiz depolama 256 MB 'tan az kaldığında sunucu salt okunurdur olarak işaretlenir.
 

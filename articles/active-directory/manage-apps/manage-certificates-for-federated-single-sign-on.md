@@ -15,12 +15,12 @@ ms.date: 04/04/2019
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9b6e81fd090a625ec7ac86963cc9d5e66f5010e
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 63054b18589cdcc2d950d70452b4f982c324a6c3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99259228"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604007"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Azure Active Directory 'da federe çoklu oturum açma için sertifikaları yönetme
 
@@ -89,6 +89,8 @@ Azure AD, SAML sertifikasının süresi dolmadan 60, 30 ve 7 gün önce bir e-po
 1. Eklemek istediğiniz her e-posta adresi için önceki adımı tekrarlayın.
 1. Silmek istediğiniz her e-posta adresi için, e-posta adresinin yanındaki **Sil** simgesini (çöp kutusu) seçin.
 1. **Kaydet**’i seçin.
+
+Bildirim listesine en çok 5 e-posta adresi ekleyebilirsiniz (uygulamayı ekleyen yöneticinin e-posta adresi dahil). Daha fazla kişiye bildirimde bulunulmasına gerek duyuyorsanız dağıtım listesi e-postalarını kullanın.
 
 Bildirim e-postasını buradan alacaksınız aadnotification@microsoft.com . E-postaları istenmeyen posta konumunuza karşı önlemek için bu e-postayı kişilerinize ekleyin.
 

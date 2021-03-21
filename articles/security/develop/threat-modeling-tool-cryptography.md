@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 6af4fba8ddf50b795d847a2c7b4e2fbc02fe593f
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97587188"
 ---
 # <a name="security-frame-cryptography--mitigations"></a>Güvenlik çerçevesi: şifreleme | Karşı 
@@ -39,7 +39,7 @@ ms.locfileid: "97587188"
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Derleme |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -50,7 +50,7 @@ ms.locfileid: "97587188"
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Derleme |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -61,7 +61,7 @@ ms.locfileid: "97587188"
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Derleme |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -72,7 +72,7 @@ ms.locfileid: "97587188"
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Derleme |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -83,7 +83,7 @@ ms.locfileid: "97587188"
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Derleme |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -94,7 +94,7 @@ ms.locfileid: "97587188"
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Derleme |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -105,7 +105,7 @@ ms.locfileid: "97587188"
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Derleme |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -116,7 +116,7 @@ ms.locfileid: "97587188"
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Veritabanı | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Derleme |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Şifreleme algoritması seçme](/sql/relational-databases/security/encryption/choose-an-encryption-algorithm) |
@@ -127,7 +127,7 @@ ms.locfileid: "97587188"
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Veritabanı | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Derleme |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Dijital Imzalar, [tehdit ve güvenlik açığı azaltma (Tümleştirme Hizmetleri)](/sql/integration-services/security/security-overview-integration-services) [Ile paketlerin kaynağını belirler](/sql/integration-services/security/identify-the-source-of-packages-with-digital-signatures) |
@@ -138,7 +138,7 @@ ms.locfileid: "97587188"
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Veritabanı | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Derleme |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Imza Ekle (Transact-SQL)](/sql/t-sql/statements/add-signature-transact-sql) |
@@ -149,7 +149,7 @@ ms.locfileid: "97587188"
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Veritabanı | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Derleme |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Genişletilebilir anahtar yönetimi (ekm) SQL Server](/sql/relational-databases/security/encryption/extensible-key-management-ekm) [Azure Key Vault kullanarak Genişletilebilir anahtar yönetimi (SQL Server)](/sql/relational-databases/security/encryption/extensible-key-management-using-azure-key-vault-sql-server) |
@@ -160,7 +160,7 @@ ms.locfileid: "97587188"
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Veritabanı | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Derleme |  
 | **İlgili teknolojiler** | SQL Azure, Onprea |
 | **Öznitelikler**              | SQL sürümü-V12, MsSQL2016 |
 | **Başvurular**              | [Always Encrypted (veritabanı altyapısı)](/sql/relational-databases/security/encryption/always-encrypted-database-engine) |
@@ -171,7 +171,7 @@ ms.locfileid: "97587188"
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | IoT cihazı | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Derleme |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Cihaz işletim sistemi-Windows IoT Core, cihaz bağlantısı-Azure IoT cihaz SDK 'Ları |
 | **Başvurular**              | [Windows IoT Core üzerinde TPM](/windows/iot-core/secure-your-device/TPM), [Windows ıOT Core 'ta TPM ayarlama](/windows/iot-core/secure-your-device/setuptpm), [Azure IoT cihaz SDK TPM](https://github.com/Azure/azure-iot-hub-vs-cs/wiki/Device-Provisioning-with-TPM) |
@@ -194,7 +194,7 @@ Görüldüğü gibi, kodda cihaz birincil anahtarı yok. Bunun yerine, 0 yuvada 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | IoT bulut ağ geçidi | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Derleme |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Ağ Geçidi seçimi-Azure IoT Hub |
 | **Başvurular**              | Yok  |
@@ -216,7 +216,7 @@ Görüldüğü gibi, kodda cihaz birincil anahtarı yok. Bunun yerine, 0 yuvada 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Dynamics CRM Outlook Istemcisi | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Derleme |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -238,7 +238,7 @@ Görüldüğü gibi, kodda cihaz birincil anahtarı yok. Bunun yerine, 0 yuvada 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Kimlik Sunucusu | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Derleme |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
 ms.openlocfilehash: 6c0ea6664c7f86a2672cb22091970ef727969dc2
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103562527"
 ---
 # <a name="azure-storage-analytics-and-big-data-partners"></a>Azure depolama Analizi ve büyük veri iş ortakları
@@ -21,7 +21,7 @@ Bu makale, Azure Data Lake Storage ile tümleştirilmiş Microsoft iş ortağı 
 
 ## <a name="verified-partners"></a>Doğrulanan iş ortakları
 
-| İş Ortağı | Açıklama | Web sitesi/ürün bağlantısı |
+| İş Ortağı | Description | Web sitesi/ürün bağlantısı |
 | ------- | ----------- | -------------------- |
 |![Dremio şirket logosu](./media/dremio-logo.png) |**Dremio**<br>Analist ve veri bilimcileri verileri bulabilir, bulabilir ve görüntüleyebilir, ancak Bilişim Teknolojileri (BT) departmanı idare ve güvenlik sağlar. Dremio, BLOB depolama, Azure SQL veritabanı, Azure SYNAPSE SQL, HDInsight ve daha fazlası ile Data Lake Storage katılmayı kolaylaştırır. Dremio ile Power BI analistleri, Data Lake Storage depolanan yeni veri kümelerini arayabilir, bu verilere Power BI anında erişebilir, görselleştirmeler oluşturabilir ve raporları gerçek zamanlı olarak yeniden geliştirebilirsiniz. Analistleri, verileri Data Lake Storage ve diğer veritabanları arasında birleştiren yeni raporlar da oluşturabilir.|[İş ortağı sayfası](https://www.dremio.com/azure/)<br>[Azure Market](https://azuremarketplace.microsoft.com/marketplace/apps/dremiocorporation.dremio_ce)<br>|
 ![Bilgiler şirket logosu](./media/informatica-logo.png) |**Informatica**<br>Bilgiler, kurumsal ölçekte bulut-Yerel veri yönetimi platformu, Azure 'daki kurumsal verilerin keşif, teslim, kalite ve idare işlemlerini otomatikleştirir ve hızlandırır. AI destekli, meta veri odaklı veri tümleştirmesi ve veri kalitesi ve idare özellikleri, analiz modernleştirin ve bir veri ambarına veya Azure 'da bir veri Gölü geçiş sürecinizi hızlandırmanıza olanak tanır.|[İş ortağı sayfası](https://www.informatica.com/azure)<br>[Azure Market](https://azuremarketplace.microsoft.com/marketplace/apps/informatica.annualiics?tab=Overview)|

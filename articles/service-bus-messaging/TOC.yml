@@ -154,14 +154,10 @@
           href: service-bus-to-event-grid-integration-concept.md
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Bölgeler arasında taşıma
-      href: move-across-regions.md
-    - name: Azure Service Manager (klasik) API’lerinden Resource Manager API’lerine geçiş
-      href: deprecate-service-bus-management.md
-    - name: Ad alanı oluşturma
-      href: service-bus-create-namespace-portal.md
     - name: Geliştirme
       items:
+        - name: Ad alanı oluşturma
+          href: service-bus-create-namespace-portal.md
         - name: Abonelik filtrelerini ve eylemlerini ayarlama
           href: service-bus-filter-examples.md
         - name: İleti işleme
@@ -224,6 +220,8 @@
       items:
         - name: ActiveMQ’dan Azure Service Bus’a geçiş
           href: migrate-jms-activemq-to-servicebus.md
+        - name: Azure Service Manager (klasik) API’lerinden Resource Manager API’lerine geçiş
+          href: deprecate-service-bus-management.md
     - name: İzleyici
       items:
         - name: Uçtan uca izleme ve tanılama
@@ -238,6 +236,8 @@
           href: service-bus-integrate-with-rabbitmq.md
     - name: Yönetme
       items:
+        - name: Bölgeler arasında taşıma
+          href: move-across-regions.md
         - name: Mesajlaşma birimlerini otomatik olarak güncelleştirme
           href: automate-update-messaging-units.md
         - name: Varlıkları sağlamak için Azure PowerShell kullanma
