@@ -11,12 +11,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 327673d0765fa807f782494562c995278be4782f
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 6a2c6495ca3685aec1bc132ec7f8a88809ad2d87
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955303"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598295"
 ---
 # <a name="live-streaming-scenario-based-migration-guidance"></a>Canlı akış senaryosu tabanlı geçiş kılavuzu
 
@@ -42,7 +42,7 @@ Azure portal artık canlı olay ayarlama ve yönetimini desteklemektedir.  V2 'y
 - Canlı olaylar için hızlı başlangıç yapmanız gerekiyorsa, yeni [Bekleme modu](live-events-outputs-concept.md#standby-mode) özelliklerini gözden geçirebilirsiniz.
 - Canlı olaylarınızı çalışırken eklemek istiyorsanız, yeni [canlı](live-transcription.md) döküm özelliğini bulun.
 - Daha uzun bir akış süresine ihtiyacınız varsa, v3 'de 24x7x365 canlı olay oluşturun.
-- Canlı olaylarınızı izlemek için [Event Grid](monitor-events-portal-how-to.md) kullanın.
+- Canlı olaylarınızı izlemek için [Event Grid](monitoring/monitor-events-portal-how-to.md) kullanın.
 
 Belirli adımlar için bkz. canlı etkinlik kavramları, öğreticiler ve aşağıdaki kılavuzlar.
 

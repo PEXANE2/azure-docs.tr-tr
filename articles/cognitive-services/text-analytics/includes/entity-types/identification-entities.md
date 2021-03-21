@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 02/17/2021
+ms.date: 03/11/2021
 ms.author: aahi
-ms.openlocfilehash: a376b050d79709885e3542d330bb6b1eea48d046
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 352b81bf2dfeca1d7413e7cac131264d06c7b92e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750314"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599343"
 ---
 ### <a name="financial-account-identification"></a>Finansal hesap kimliği
 
@@ -35,9 +35,18 @@ Bu kategori aşağıdaki varlığı içerir:
         **Ayrıntılar**
 
         American banker Association (ABA) transit yönlendirme numaraları.
+
+        Bu varlık kategorisini almak için parametresine ekleyin `ABARoutingNumber` `pii-categories` . `ABARoutingNumber` , algılanırsa API yanıtında de döndürülür.
       
     :::column-end:::
+    :::column span="2":::
+      **Desteklenen Belge dilleri**
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
+
 
 #### <a name="category-swift-code"></a>Kategori: SWIFT kodu
 
@@ -54,8 +63,16 @@ Bu kategori aşağıdaki varlığı içerir:
         **Ayrıntılar**
 
         Ödeme yönergesi bilgileri için SWIFT kodları.
+
+        Bu varlık kategorisini almak için parametresine ekleyin `SWIFTCode` `pii-categories` . `SWIFTCode` algılanırsa API yanıtında döndürülür.
       
     :::column-end:::
+    :::column span="2":::
+      **Desteklenen Belge dilleri**
+
+      `en`, `es`, `fr`, `de`, `it`, `pt-pt`, `pt-br`, `ja`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="category-credit-card"></a>Kategori: kredi kartı
@@ -73,8 +90,16 @@ Bu kategori aşağıdaki varlığı içerir:
         **Ayrıntılar**
 
         Kredi kartı numaraları. 
-      
+
+        Bu varlık kategorisini almak için parametresine ekleyin `CreditCardNumber` `pii-categories` . `CreditCardNumber` algılanırsa API yanıtında döndürülür.
+
     :::column-end:::
+    :::column span="2":::
+      **Desteklenen Belge dilleri**
+
+      `en`, `es`, `fr`, `de`, `it`, `pt-pt`, `pt-br`, `ja`, `zh-hans`, `ja`, `ko`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="category-international-banking-account-number-iban"></a>Kategori: uluslararası bankacılık hesap numarası (IBAN) 
@@ -92,8 +117,16 @@ Bu kategori aşağıdaki varlığı içerir:
         **Ayrıntılar**
 
         Ödeme yönergesi bilgileri için ıBAN kodları.
+
+        Bu varlık kategorisini almak için parametresine ekleyin `InternationlBankingAccountNumber` `pii-categories` . `InternationlBankingAccountNumber` algılanırsa API yanıtında döndürülür.
       
     :::column-end:::
+    :::column span="2":::
+      **Desteklenen Belge dilleri**
+
+      `en`, `es`, `fr`, `de`, `it`, `pt-pt`, `pt-br`
+      
+   :::column-end:::
 :::row-end:::
 
 ### <a name="government-and-countryregion-specific-identification"></a>Kamu ve ülkeye/bölgeye özgü kimlik
@@ -114,6 +147,18 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Arjantin Ulusal kimlik (DNı) numarası
 
     :::column-end:::
+    :::column span="2":::
+        **Ayrıntılar**
+
+        Bu varlık kategorisini almak için parametresine ekleyin `ARNationalIdentityNumber` `pii-categories` . `ARNationalIdentityNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+      **Desteklenen Belge dilleri**
+
+      `en`, `es`
+      
+   :::column-end:::
 :::row-end:::
 
 
@@ -126,6 +171,18 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Avusturya kimlik kartı
 
     :::column-end:::
+    :::column span="2":::
+        **Ayrıntılar**
+
+        Bu varlık kategorisini almak için parametresine ekleyin `ATIdentityCard` `pii-categories` . `ATIdentityCard` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+      **Desteklenen Belge dilleri**
+
+      `de`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -133,7 +190,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Avusturya vergi kimlik numarası
 
     :::column-end:::
+    :::column span="2":::
 
+        Bu varlık kategorisini almak için parametresine ekleyin `ATTaxIdentificationNumber` `pii-categories` . `ATTaxIdentificationNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `de`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -141,6 +207,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Avusturya değeri eklenen vergi (KDV) numarası
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `ATValueAddedTaxNumber` `pii-categories` . `ATValueAddedTaxNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `de`
+      
+   :::column-end:::
 :::row-end:::
 
 
@@ -154,7 +230,18 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Avustralya banka hesap numarası
 
     :::column-end:::
+    :::column span="2":::
+        **Ayrıntılar**
 
+        Bu varlık kategorisini almak için parametresine ekleyin `AUDriversLicenseNumber` `pii-categories` . `AUDriversLicenseNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+      **Desteklenen Belge dilleri**
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -162,7 +249,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Avustralya iş numarası
 
     :::column-end:::
+    :::column span="2":::
 
+        Bu varlık kategorisini almak için parametresine ekleyin `AUBusinessNumber` `pii-categories` . `AUBusinessNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -170,7 +266,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Avustralya şirket numarası
 
     :::column-end:::
+    :::column span="2":::
 
+        Bu varlık kategorisini almak için parametresine ekleyin `AUCompanyNumber` `pii-categories` . `AUCompanyNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -178,6 +283,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Avustralya sürücüsünün lisansı  
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `AUDriversLicense` `pii-categories` . `AUDriversLicense` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -185,6 +300,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Avustralya tıbbi hesap numarası
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `AUMedicalAccountNumber` `pii-categories` . `AUMedicalAccountNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -192,15 +317,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Avustralya Passport numarası
 
     :::column-end:::
+    :::column span="2":::
 
-:::row-end:::
-:::row:::
+        Bu varlık kategorisini almak için parametresine ekleyin `ATPassportNumber` `pii-categories` . `ATPassportNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
     :::column span="":::
 
-        Avustralya Passport numarası
-
-    :::column-end:::
-
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -208,7 +334,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Avustralya Vergi dosya numarası
 
     :::column-end:::
+    :::column span="2":::
 
+        Bu varlık kategorisini almak için parametresine ekleyin `ATTaxIdentificationNumber` `pii-categories` . `ATTaxIdentificationNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 
 
@@ -221,6 +356,18 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Belçika Ulusal numarası
 
     :::column-end:::
+    :::column span="2":::
+        **Ayrıntılar**
+
+        Bu varlık kategorisini almak için parametresine ekleyin `BENationalNumber` `pii-categories` . `BENationalNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+      **Desteklenen Belge dilleri**
+
+      `fr`, `de`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -228,7 +375,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Belçika değer katma vergisi (KDV) numarası
 
     :::column-end:::
+    :::column span="2":::
 
+        Bu varlık kategorisini almak için parametresine ekleyin `BEValueAddedTaxNumber` `pii-categories` . `BEValueAddedTaxNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `fr`, `de`
+      
+   :::column-end:::
 :::row-end:::
 
 
@@ -240,7 +396,21 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
 
         Brezilya legal varlık numarası (CNPJ)
 
+        
+
     :::column-end:::
+    :::column span="2":::
+        **Ayrıntılar**
+
+        Bu varlık kategorisini almak için parametresine ekleyin `BRLegalEntityNumber` `pii-categories` . `BRLegalEntityNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+      **Desteklenen Belge dilleri**
+
+      `pt-pt`, `pt-br`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -248,7 +418,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Brezilya CPF numarası
 
     :::column-end:::
+    :::column span="2":::
 
+        Bu varlık kategorisini almak için parametresine ekleyin `BRCPFNumber` `pii-categories` . `BRCPFNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `pt-pt`, `pt-br`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -256,6 +435,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Brezilya Ulusal KIMLIK kartı (RG)
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `BRNationalIDRG` `pii-categories` . `BRNationalIDRG` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `pt-pt`, `pt-br`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="canada"></a>Kanada
@@ -267,7 +456,18 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Kanada banka hesap numarası
 
     :::column-end:::
+    :::column span="2":::
+        **Ayrıntılar**
 
+        Bu varlık kategorisini almak için parametresine ekleyin `CABankAccountNumber` `pii-categories` . `CABankAccountNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+      **Desteklenen Belge dilleri**
+
+      `en`, `fr`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -275,13 +475,38 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Kanada sürücüsünün lisans numarası
 
     :::column-end:::
+
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `CADriversLicenseNumber` `pii-categories` . `CADriversLicenseNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+
+    :::column span="":::
+
+      `en`, `fr`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
 
         Kanada sağlık hizmeti numarası
 
+        
     :::column-end:::
+
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `CAHealthServiceNumber` `pii-categories` . `CAHealthServiceNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+
+    :::column span="":::
+
+      `en`, `fr`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -289,6 +514,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Kanada Passport numarası
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `CAPassportNumber` `pii-categories` . `CAPassportNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`, `fr`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -296,7 +531,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Kanada Kişisel sağlık kimlik numarası (PHIN)
 
     :::column-end:::
+    :::column span="2":::
 
+        Bu varlık kategorisini almak için parametresine ekleyin `CAPersonalHealthIdentification` `pii-categories` . `CAPersonalHealthIdentification` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`, `fr`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -304,6 +548,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Kanada Sosyal sigorta numarası
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `CASocialInsuranceNumber` `pii-categories` . `CASocialInsuranceNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`, `fr`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="chile"></a>Şili 
@@ -315,6 +569,18 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Şili kimlik kartı numarası
 
     :::column-end:::
+    :::column span="2":::
+        **Ayrıntılar**
+
+        Bu varlık kategorisini almak için parametresine ekleyin `CLIdentityCardNumber` `pii-categories` . `CLIdentityCardNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+      **Desteklenen Belge dilleri**
+
+      `es`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="china"></a>Çin
@@ -326,6 +592,18 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Çin yerleşik kimlik kartı (ÇHC) numarası
 
     :::column-end:::
+    :::column span="2":::
+        **Ayrıntılar**
+
+        Bu varlık kategorisini almak için parametresine ekleyin `CNResidentIdentityCardNumber` `pii-categories` . `CNResidentIdentityCardNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+      **Desteklenen Belge dilleri**
+
+      `zh-hans`
+      
+   :::column-end:::
 :::row-end:::
 
 
@@ -338,6 +616,18 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         AB banka kartı numarası
 
     :::column-end:::
+    :::column span="2":::
+        **Ayrıntılar**
+
+        Bu varlık kategorisini almak için parametresine ekleyin `EUDebitCardNumber` `pii-categories` . `EUDebitCardNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+      **Desteklenen Belge dilleri**
+
+      `en`, `es`, `fr`, `de`, `it`, `pt-pt` 
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -345,6 +635,33 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         AB sürücüsünün lisans numarası
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `EUDriversLicenseNumber` `pii-categories` . `EUDriversLicenseNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`, `es`, `fr`, `de`, `it`, `pt-pt` 
+      
+   :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        AB GPU koordinatları
+
+    :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `EUGPSCoordinates` `pii-categories` . `EUGPSCoordinates` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`, `es`, `fr`, `de`, `it`, `pt-pt` 
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -352,6 +669,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         AB Ulusal kimlik numarası
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `EUNationalIdentificationNumber` `pii-categories` . `EUNationalIdentificationNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`, `es`, `fr`, `de`, `it`, `pt-pt` 
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -359,6 +686,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         AB Passport numarası
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `EUPassportNumber` `pii-categories` . `EUPassportNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`, `es`, `fr`, `de`, `it`, `pt-pt` 
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -366,6 +703,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         AB sosyal güvenlik numarası (SSN) veya eşdeğer KIMLIK
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `EUSocialSecurityNumber` `pii-categories` . `EUSocialSecurityNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`, `es`, `fr`, `de`, `it`, `pt-pt` 
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -373,13 +720,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         AB vergi kimlik numarası (TIN)
 
     :::column-end:::
-:::row-end:::
-:::row:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `EUTaxIdentificationNumber` `pii-categories` . `EUTaxIdentificationNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
     :::column span="":::
 
-        AB GPS koordinatları
-
-    :::column-end:::
+      `en`, `es`, `fr`, `de`, `it`, `pt-pt` 
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="france"></a>Fransa
@@ -391,6 +741,18 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Fransa sürücüsünün lisans numarası
 
     :::column-end:::
+    :::column span="2":::
+        **Ayrıntılar**
+
+        Bu varlık kategorisini almak için parametresine ekleyin `FRDriversLicenseNumber` `pii-categories` . `FRDriversLicenseNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+      **Desteklenen Belge dilleri**
+
+      `fr` 
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -398,6 +760,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Fransa sağlık sigortası numarası
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `FRHealthInsuranceNumber` `pii-categories` . `FRHealthInsuranceNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `fr` 
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -405,6 +777,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Fransa Ulusal KIMLIK kartı (CNı)
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `FRNationalID` `pii-categories` . `FRNationalID` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `fr` 
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -412,6 +794,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Fransa Passport numarası
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `FRPassportNumber` `pii-categories` . `FRPassportNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `fr` 
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -419,6 +811,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Fransa sosyal güvenlik numarası (ıNSEE)
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `FRSocialSecurityNumber` `pii-categories` . `FRSocialSecurityNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `fr` 
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -426,6 +828,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Fransa vergi kimlik numarası (Numéro SPI)
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `FRTaxIdentificationNumber` `pii-categories` . `FRTaxIdentificationNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `fr` 
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -433,6 +845,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Fransa değeri eklenen vergi (KDV) numarası
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `FRValueAddedTaxNumber` `pii-categories` . `FRValueAddedTaxNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `fr` 
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="germany"></a>Almanya
@@ -444,6 +866,18 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Almanya sürücüsünün lisans numarası
 
     :::column-end:::
+    :::column span="2":::
+        **Ayrıntılar**
+
+        Bu varlık kategorisini almak için parametresine ekleyin `DEDriversLicenseNumber` `pii-categories` . `DEDriversLicenseNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+      **Desteklenen Belge dilleri**
+
+      `de` 
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -451,6 +885,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Almanya kimlik kartı numarası
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `DEIdentityCardNumber` `pii-categories` . `DEIdentityCardNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `de`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -458,6 +902,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Almanya Passport numarası
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `DEPassportNumber` `pii-categories` . `DEPassportNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `de` 
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -465,6 +919,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Almanya vergi kimlik numarası
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `DETaxIdentificationNumber` `pii-categories` . `DETaxIdentificationNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `de`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -472,6 +936,17 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Almanya katma değer vergi numarası
 
     :::column-end:::
+    :::column span="2":::
+        **Ayrıntılar**
+
+        Bu varlık kategorisini almak için parametresine ekleyin `DEValueAddedNumber` `pii-categories` . `DEValueAddedNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `de`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="hong-kong"></a>Hong Kong
@@ -483,6 +958,18 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Hong Kong kimlik kartı (HKıD) numarası
 
     :::column-end:::
+    :::column span="2":::
+        **Ayrıntılar**
+
+        Bu varlık kategorisini almak için parametresine ekleyin `HKIdentityCardNumber` `pii-categories` . `HKIdentityCardNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+      **Desteklenen Belge dilleri**
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="hungary"></a>Macaristan
@@ -494,6 +981,18 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Macaristan kişisel kimlik numarası
 
     :::column-end:::
+    :::column span="2":::
+        **Ayrıntılar**
+
+        Bu varlık kategorisini almak için parametresine ekleyin `HUPersonalIdentificationNumber` `pii-categories` . `HUPersonalIdentificationNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+      **Desteklenen Belge dilleri**
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -501,6 +1000,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Macaristan vergi kimlik numarası
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `HUTaxIdentificationNumber` `pii-categories` . `HUTaxIdentificationNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -508,6 +1017,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Macaristan değeri eklenen vergi numarası
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `HUValueAddedNumber` `pii-categories` . `HUValueAddedNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="india"></a>Hindistan
@@ -519,6 +1038,18 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Hindistan kalıcı hesap numarası (PAN)
 
     :::column-end:::
+    :::column span="2":::
+        **Ayrıntılar**
+
+        Bu varlık kategorisini almak için parametresine ekleyin `INPermanentAccount` `pii-categories` . `INPermanentAccount` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+      **Desteklenen Belge dilleri**
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -526,6 +1057,17 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Hindistan benzersiz tanımlama (aadhaar) numarası
 
     :::column-end:::
+    :::column span="2":::
+        **Ayrıntılar**
+
+        Bu varlık kategorisini almak için parametresine ekleyin `INUniqueIdentificationNumber` `pii-categories` . `INUniqueIdentificationNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 
 
@@ -538,6 +1080,19 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Endonezya kimlik kartı (KTP) numarası
 
     :::column-end:::
+    :::column span="2":::
+
+        **Ayrıntılar**
+
+        Bu varlık kategorisini almak için parametresine ekleyin `IDIdentityCardNumber` `pii-categories` . `IDIdentityCardNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+      **Desteklenen Belge dilleri**
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="ireland"></a>İrlanda
@@ -549,6 +1104,36 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         İrlanda Personal kamu hizmeti (PPS) numarası
 
     :::column-end:::
+    :::column span="2":::
+        **Ayrıntılar**
+
+        Bu varlık kategorisini almak için parametresine ekleyin `IEPersonalPublicServiceNumber` `pii-categories` . `IEPersonalPublicServiceNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+      **Desteklenen Belge dilleri**
+
+      `en`
+      
+   :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+ 
+        İrlanda Personal kamu hizmeti (PPS) numarası v2
+
+    :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `IEPersonalPublicServiceNumberV2` `pii-categories` . `IEPersonalPublicServiceNumberV2` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+      **Desteklenen Belge dilleri**
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="israel"></a>İsrail
@@ -560,6 +1145,18 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         İsrail Ulusal KIMLIĞI
 
     :::column-end:::
+    :::column span="2":::
+        **Ayrıntılar**
+
+        Bu varlık kategorisini almak için parametresine ekleyin `ILNationalID` `pii-categories` . `ILNationalID` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+      **Desteklenen Belge dilleri**
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -567,6 +1164,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         İsrail banka hesap numarası
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `ILBankAccountNumber` `pii-categories` . `ILBankAccountNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="italy"></a>İtalya
@@ -578,6 +1185,18 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         İtalya sürücüsünün lisans KIMLIĞI
 
     :::column-end:::
+    :::column span="2":::
+        **Ayrıntılar**
+
+        Bu varlık kategorisini almak için parametresine ekleyin `ITDriversLicenseNumber` `pii-categories` . `ITDriversLicenseNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+      **Desteklenen Belge dilleri**
+
+      `it`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -585,6 +1204,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         İtalya mali kodu
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `ITFiscalCode` `pii-categories` . `ITFiscalCode` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `it`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -592,6 +1221,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         İtalya değeri eklenen vergi numarası
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `ITValueAddedTaxNumber` `pii-categories` . `ITValueAddedTaxNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `it`
+      
+   :::column-end:::
 :::row-end:::
 
 
@@ -604,7 +1243,18 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Japon banka hesap numarası
 
     :::column-end:::
+    :::column span="2":::
+        **Ayrıntılar**
 
+        Bu varlık kategorisini almak için parametresine ekleyin `JPBankAccountNumber` `pii-categories` . `JPBankAccountNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+      **Desteklenen Belge dilleri**
+
+      `ja`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -612,6 +1262,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Japon sürücüsünün lisans numarası
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `JPDriversLicenseNumber` `pii-categories` . `JPDriversLicenseNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `ja`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -619,6 +1279,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Japonya "benim numaranız" (kişisel)
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `JPMyNumberPersonal` `pii-categories` . `JPMyNumberPersonal` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `ja`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -626,6 +1296,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Japonya "My Number" (Kurumsal)
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `JPMyNumberCorporate` `pii-categories` . `JPMyNumberCorporate` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `ja`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -633,6 +1313,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Japonya yerleşik kayıt numarası
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `ITValueAddedTaxNumber` `pii-categories` . `ITValueAddedTaxNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+     `ja`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -640,6 +1330,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Japon konut kartı numarası
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `JPResidenceCardNumber` `pii-categories` . `JPResidenceCardNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `ja`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -647,6 +1347,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Japonya sosyal sigorta numarası (SIN)
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `JPSocialInsuranceNumber` `pii-categories` . `JPSocialInsuranceNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `ja`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -654,6 +1364,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Japonya Passport numarası
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `JPPassportNumber` `pii-categories` . `JPPassportNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `ja`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="luxembourg"></a>Lüksemburg
@@ -665,6 +1385,18 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Lüksemburg ulusal kimlik numarası (doğal kişiler)
 
     :::column-end:::
+    :::column span="2":::
+        **Ayrıntılar**
+
+        Bu varlık kategorisini almak için parametresine ekleyin `LUNationalIdentificationNumberNatural` `pii-categories` . `LUNationalIdentificationNumberNatural` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+      **Desteklenen Belge dilleri**
+
+      `fr`, `de`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -672,6 +1404,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Lüksemburg ulusal kimlik numarası (doğal olmayan kişiler)
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `LUNationalIdentificationNumberNonNatural` `pii-categories` . `LUNationalIdentificationNumberNonNatural` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `fr`, `de`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="malta"></a>Malta
@@ -683,6 +1425,18 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Malta kimlik kartı numarası
 
     :::column-end:::
+    :::column span="2":::
+        **Ayrıntılar**
+
+        Bu varlık kategorisini almak için parametresine ekleyin `MTIdentityCardNumber` `pii-categories` . `MTIdentityCardNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+      **Desteklenen Belge dilleri**
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -690,6 +1444,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Malta vergi kimlik numarası
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `MTTaxIDNumber` `pii-categories` . `MTTaxIDNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 
 
@@ -702,6 +1466,18 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Yeni Zelanda banka hesap numarası
 
     :::column-end:::
+    :::column span="2":::
+        **Ayrıntılar**
+
+        Bu varlık kategorisini almak için parametresine ekleyin `NZBankAccountNumber` `pii-categories` . `NZBankAccountNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+      **Desteklenen Belge dilleri**
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -709,6 +1485,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Yeni Zelanda sürücüsünün lisans numarası
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `NZDriversLicenseNumber` `pii-categories` . `NZDriversLicenseNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -716,6 +1502,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Yeni Zelanda Inland gelir numarası
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `NZInlandRevenueNumber` `pii-categories` . `NZInlandRevenueNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -723,6 +1519,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Yeni Zelanda sağlık numarası Bakanlığı
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `NZMinistryOfHealthNumber` `pii-categories` . `NZMinistryOfHealthNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -730,6 +1536,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
        Yeni Zelanda sosyal Welfare numarası
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `NZSocialWelfareNumber` `pii-categories` . `NZSocialWelfareNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 
 
@@ -742,6 +1558,18 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Filipinler Birleşik çok amaçlı KIMLIK numarası
 
     :::column-end:::
+    :::column span="2":::
+        **Ayrıntılar**
+
+        Bu varlık kategorisini almak için parametresine ekleyin `PHUnifiedMultiPurposeIDNumber` `pii-categories` . `PHUnifiedMultiPurposeIDNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+      **Desteklenen Belge dilleri**
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="portugal"></a>Portekiz 
@@ -753,6 +1581,18 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Portekiz vatandaşlık kart numarası
 
     :::column-end:::
+    :::column span="2":::
+        **Ayrıntılar**
+
+        Bu varlık kategorisini almak için parametresine ekleyin `PTCitizenCardNumber` `pii-categories` . `PTCitizenCardNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+      **Desteklenen Belge dilleri**
+
+      `pt-pt`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -760,6 +1600,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
        Portekiz vergi kimlik numarası
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `PTTaxIdentificationNumber` `pii-categories` . `PTTaxIdentificationNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `pt-pt`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="singapore"></a>Singapur
@@ -771,6 +1621,18 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Singapur Ulusal kayıt KIMLIĞI kartı (NRIC) numarası
 
     :::column-end:::
+    :::column span="2":::
+        **Ayrıntılar**
+
+        Bu varlık kategorisini almak için parametresine ekleyin `PTTaxIdentificationNumber` `pii-categories` . `PTTaxIdentificationNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+      **Desteklenen Belge dilleri**
+
+      `en`, `zh-hans`
+      
+   :::column-end:::
 :::row-end:::
 
 
@@ -783,6 +1645,18 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Güney Afrika kimlik numarası
 
     :::column-end:::
+    :::column span="2":::
+        **Ayrıntılar**
+
+        Bu varlık kategorisini almak için parametresine ekleyin `ZAIdentificationNumber` `pii-categories` . `ZAIdentificationNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+      **Desteklenen Belge dilleri**
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 
 
@@ -795,6 +1669,18 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Güney Kore yerleşik kayıt numarası
 
     :::column-end:::
+    :::column span="2":::
+        **Ayrıntılar**
+
+        Bu varlık kategorisini almak için parametresine ekleyin `KRResidentRegistrationNumber` `pii-categories` . `KRResidentRegistrationNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+      **Desteklenen Belge dilleri**
+
+      `ko`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="spain"></a>İspanya
@@ -806,6 +1692,18 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         İspanya DNı dili
 
     :::column-end:::
+    :::column span="2":::
+        **Ayrıntılar**
+
+        Bu varlık kategorisini almak için parametresine ekleyin `ESDNI` `pii-categories` . `ESDNI` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+      **Desteklenen Belge dilleri**
+
+      `es`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -813,6 +1711,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         İspanya sosyal güvenlik numarası (SSN)
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `ESSocialSecurityNumber` `pii-categories` . `ESSocialSecurityNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `es`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -820,6 +1728,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         İspanya vergi kimlik numarası
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `ESTaxIdentificationNumber` `pii-categories` . `ESTaxIdentificationNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `es`
+      
+   :::column-end:::
 :::row-end:::
  
 #### <a name="switzerland"></a>İsviçre
@@ -831,6 +1749,18 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         İsviçre sosyal güvenlik numarası AHV
 
     :::column-end:::
+    :::column span="2":::
+        **Ayrıntılar**
+
+        Bu varlık kategorisini almak için parametresine ekleyin `CHSocialSecurityNumber` `pii-categories` . `CHSocialSecurityNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+      **Desteklenen Belge dilleri**
+
+      `fr`, `de`, `it`
+      
+   :::column-end:::
 :::row-end:::
 
 
@@ -843,6 +1773,18 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Tayvan Ulusal KIMLIĞI
 
     :::column-end:::
+    :::column span="2":::
+        **Ayrıntılar**
+
+        Bu varlık kategorisini almak için parametresine ekleyin `TWNationalID` `pii-categories` . `TWNationalID` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+      **Desteklenen Belge dilleri**
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -850,6 +1792,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
        Tayvan yerleşik sertifikası (yay/TARC)
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `TWResidentCertificate` `pii-categories` . `TWResidentCertificate` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -857,6 +1809,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Tayvan Passport numarası
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `TWPassportNumber` `pii-categories` . `TWPassportNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="united-kingdom"></a>Birleşik Krallık
@@ -868,6 +1830,19 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         Krallık Sürücünün lisans numarası
 
     :::column-end:::
+    :::column span="2":::
+        **Ayrıntılar**
+
+        Bu varlık kategorisini almak için parametresine ekleyin `UKDriversLicenseNumber` `pii-categories` . `UKDriversLicenseNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+      **Desteklenen Belge dilleri**
+
+      `en`
+      
+    :::column-end:::
+    
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -875,6 +1850,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
        Krallık Elektrotoral toplama numarası
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `UKNationalInsuranceNumber` `pii-categories` . `UKNationalInsuranceNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -882,6 +1867,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
        Krallık Ulusal Sistem Sağlığı Hizmeti (NHS) numarası
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `UKNationalHealthNumber` `pii-categories` . `UKNationalHealthNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -889,6 +1884,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
        Krallık Ulusal sigorta numarası (NINO)
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `UKNationalInsuranceNumber` `pii-categories` . `UKNationalInsuranceNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -896,7 +1901,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
        Krallık veya ABD Passport numarası
 
     :::column-end:::
+    :::column span="2":::
 
+        Bu varlık kategorisini almak için parametresine ekleyin `USUKPassportNumber` `pii-categories` . `USUKPassportNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -904,7 +1918,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
        Krallık Benzersiz vergi mükellefi başvuru numarası
 
     :::column-end:::
+    :::column span="2":::
 
+        Bu varlık kategorisini almak için parametresine ekleyin `UKUniqueTaxpayerNumber` `pii-categories` . `UKUniqueTaxpayerNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 
 
@@ -917,6 +1940,18 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
         ABD sosyal güvenlik numarası (SSN)
 
     :::column-end:::
+    :::column span="2":::
+        **Ayrıntılar**
+
+        Bu varlık kategorisini almak için parametresine ekleyin `USSocialSecurityNumber` `pii-categories` . `USSocialSecurityNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+      **Desteklenen Belge dilleri**
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -924,6 +1959,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
        ABD sürücüsünün lisans numarası
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `USDriversLicenseNumber` `pii-categories` . `USDriversLicenseNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -931,6 +1976,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
        ABD veya Birleşik Krallık Passport numarası
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `USUKPassportNumber` `pii-categories` . `USUKPassportNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -938,6 +1993,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
        ABD bireysel vergi mükellefi kimlik numarası (ITIN)
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `USIndividualTaxpayerIdentification` `pii-categories` . `USIndividualTaxpayerIdentification` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -945,6 +2010,16 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
        ABD Ilaç zorlama Kurumu (DEA) numarası
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `DrugEnforcementAgencyNumber` `pii-categories` . `DrugEnforcementAgencyNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -952,4 +2027,14 @@ Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
        ABD banka hesap numarası
 
     :::column-end:::
+    :::column span="2":::
+
+        Bu varlık kategorisini almak için parametresine ekleyin `USBankAccountNumber` `pii-categories` . `USBankAccountNumber` algılanırsa API yanıtında döndürülür.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::

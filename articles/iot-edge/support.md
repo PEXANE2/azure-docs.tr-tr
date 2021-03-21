@@ -8,12 +8,12 @@ ms.date: 02/11/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a3656d6dd81132a7fd10103fc0199d55d9288df3
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: f1a2b821c5fd127f8b7bcda7b3a219be34cb8abb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103489620"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598533"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Desteklenen sistemleri Azure IoT Edge
 
@@ -136,7 +136,7 @@ IoT Edge bileşenleri tek tek yüklenebilir ve güncelleştirilmiş olabilir ve 
 | **1.0.6** | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6 |  |
 | **1.0.5** | 1.0.5 | 1.0.5 | 1.0.5 | 3.0.2 |
 
-<sup>1</sup> IoT Edge 1,1, ilk uzun süreli destek (LTS) yayın kanaldır. Bu sürüm yeni özellikler sunmadı, ancak hata düzeltmeleri ve güvenlik düzeltme ekleri alacak. IoT Edge 1,1 LTS, .NET Core 3,1 kullanır ve [.NET Core ve .NET 5 sürüm yaşam döngüsü](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)ile eşleşecek şekilde 3 Aralık 2022 tarihine kadar desteklenecektir.
+<sup>1</sup> IoT Edge 1,1, ilk uzun süreli destek (LTS) yayın kanaldır. Bu sürüm yeni özellikler sunmadı, ancak gerilemeler için güvenlik güncelleştirmeleri ve düzeltmeler alacak. IoT Edge 1,1 LTS, .NET Core 3,1 kullanır ve [.NET Core ve .NET 5 sürüm yaşam döngüsü](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)ile eşleşecek şekilde 3 Aralık 2022 tarihine kadar desteklenecektir.
 
 >[!IMPORTANT]
 >Uzun süreli bir destek kanalının yayımlanması sayesinde, 1.0. x çalıştıran tüm geçerli müşterilerin cihazlarını 1.1. x sürümüne yükselterek devam eden destek almasını öneririz.

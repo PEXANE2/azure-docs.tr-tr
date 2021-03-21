@@ -1,18 +1,18 @@
 ---
 title: Azure API Management için yerleşik ilke tanımları
 description: Azure API Management için Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaklaşımlar sağlar.
-ms.date: 03/10/2021
+ms.date: 03/17/2021
 author: georgewallace
 ms.author: gwallace
 ms.service: api-management
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 5736daae211df6a3f211f66ded5583658d60111f
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: d144208df1b5bf02bba7f0517e888e44fde47871
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102614268"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104605871"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-api-management"></a>Azure API Management için Azure Ilkesi yerleşik ilke tanımları
 

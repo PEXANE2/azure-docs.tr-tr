@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
 ms.openlocfilehash: 608f3d72aecb0c6d53325c0d082b1779822e9c80
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103200524"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Sanal ağ eşleme sorunlarını giderme
@@ -212,7 +212,7 @@ Daha fazla bilgi için bkz. genel eşleme ve [farklı VPN topolojileri](/archive
 
 Bu sorunu gidermek için:
 
-1. Azure Portal’da oturum açın. 
+1. Azure portalında oturum açın. 
 1. Web uygulamasında **ağ**' ı seçin ve ardından **VNET tümleştirmesi**' ni seçin.
 1. Uzak sanal ağı görüp görmeyeceğinizi denetleyin. Uzak sanal ağ adres alanını el ile girin (**ağa eşitleyin** ve **yollar ekleyin**).
 

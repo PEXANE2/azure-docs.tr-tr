@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: f69bbecfc2acc24cd63b87212197342b28723a9f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 4423eea6c35ad44d55ad17f5703a95c6273422b8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102043108"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585868"
 ---
 # <a name="iot-central-device-development-guide"></a>IoT Central cihaz geliştirme Kılavuzu
 
@@ -105,7 +105,7 @@ DTDL modeli, _bileşen_ olmayan veya _çok bileşen_ modeli olabilir:
 - Bileşen olmayan model: basit bir model, gömülü veya basamaklı bileşenleri kullanmaz. Tüm telemetri, özellik ve komutlar tek bir _varsayılan bileşen_ olarak tanımlanmıştır. Bir örnek için bkz. [termostat](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) modeli.
 - Çoklu bileşen modeli. İki veya daha fazla bileşen içeren daha karmaşık bir model. Bu bileşenler tek bir varsayılan bileşeni ve bir veya daha fazla iç içe geçmiş bileşeni içerir. Bir örnek için bkz. [sıcaklık denetleyicisi](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) modeli.
 
-Daha fazla bilgi için bkz. [modellerdeki ıot Tak ve kullan bileşenleri](../../iot-pnp/concepts-components.md)
+Daha fazla bilgi için bkz. [ıot Tak ve kullan modelleme Kılavuzu](../../iot-pnp/concepts-modeling-guide.md)
 
 ### <a name="conventions"></a>Kurallar
 

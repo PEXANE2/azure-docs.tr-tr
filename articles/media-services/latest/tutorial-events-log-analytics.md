@@ -11,18 +11,18 @@ ms.workload: ''
 ms.topic: tutorial
 ms.date: 08/24/2020
 ms.author: inhenkel
-ms.openlocfilehash: c481daf73f916ede2e7063c75448ba4d09e553cc
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8e3b9636dfb900fa0e22bfea8bcd2d0c7edf0241
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100571863"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596714"
 ---
 # <a name="tutorial-store-azure-media-services-events-in-azure-log-analytics"></a>Öğretici: Azure 'da Azure Media Services olaylarını depolama Log Analytics
 
 ## <a name="azure-media-services-events"></a>Azure Media Services olaylar
 
-Azure Media Services v3, olayları [Azure Event Grid](media-services-event-schemas.md)yayar. Olaylara birçok şekilde abone olabilir ve bunları veri depolarında saklayabilirsiniz. Bu öğreticide, bir [günlük uygulama akışı](https://azure.microsoft.com/services/logic-apps/)kullanarak Media Services olaylarına abone olursunuz. Mantıksal uygulama her olay için tetiklenecek ve olayın gövdesini Azure Log Analytics depolayacak. Olaylar Azure Log Analytics ' de olduktan sonra, bu etkinliklerde bir pano oluşturmak, izlemek ve uyarı oluşturmak için diğer Azure hizmetlerini kullanabilirsiniz, ancak bu öğreticide bunu kapsamayacağız.
+Azure Media Services v3, olayları [Azure Event Grid](monitoring/media-services-event-schemas.md)yayar. Olaylara birçok şekilde abone olabilir ve bunları veri depolarında saklayabilirsiniz. Bu öğreticide, bir [günlük uygulama akışı](https://azure.microsoft.com/services/logic-apps/)kullanarak Media Services olaylarına abone olursunuz. Mantıksal uygulama her olay için tetiklenecek ve olayın gövdesini Azure Log Analytics depolayacak. Olaylar Azure Log Analytics ' de olduktan sonra, bu etkinliklerde bir pano oluşturmak, izlemek ve uyarı oluşturmak için diğer Azure hizmetlerini kullanabilirsiniz, ancak bu öğreticide bunu kapsamayacağız.
 
 > [!NOTE]
 > Şirket içi Kodlayıcınız olarak FFmpeg 'yi kullanmayı zaten biliyorsanız faydalı olur.  Aksi takdirde, bu sorun devam etmez. Video akışı için komut satırı ve yönergeler aşağıda verilmiştir.

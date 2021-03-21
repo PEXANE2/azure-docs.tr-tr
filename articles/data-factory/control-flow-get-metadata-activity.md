@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/25/2021
 ms.author: jingwang
 ms.openlocfilehash: bd8fc3383d6d9a0afb7733cb94643623e6879d23
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102178550"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure Data Factory meta veri Al etkinliği
@@ -19,7 +19,7 @@ ms.locfileid: "102178550"
 
 Azure Data Factory ' deki herhangi bir verinin meta verilerini almak için meta veri al etkinliğini kullanabilirsiniz. Doğrulama gerçekleştirmek veya sonraki etkinliklerde meta verileri tüketmek için koşullu ifadelerde meta verileri al etkinliğinden çıktıyı kullanabilirsiniz.
 
-## <a name="supported-capabilities"></a>Desteklenen yetenekler
+## <a name="supported-capabilities"></a>Desteklenen özellikler
 
 Meta veri Al etkinliği bir veri kümesini girdi olarak alır ve meta veri bilgilerini çıkış olarak döndürür. Şu anda, aşağıdaki bağlayıcılar ve karşılık gelen alınabilir meta veriler desteklenir. Döndürülen meta verilerin en büyük boyutu **4 MB**'tır.
 
@@ -70,7 +70,7 @@ Meta veri Al etkinliği bir veri kümesini girdi olarak alır ve meta veri bilgi
 
 İlgili bilgileri almak için meta verileri al etkinlik alan listesinde aşağıdaki meta veri türlerini belirtebilirsiniz:
 
-| Meta veri türü | Açıklama |
+| Meta veri türü | Description |
 |:--- |:--- |
 | ItemName | Dosya veya klasörün adı. |
 | ItemType | Dosya veya klasörün türü. Döndürülen değer `File` veya `Folder` . |
@@ -167,8 +167,8 @@ Meta veri Al etkinliği bir veri kümesini girdi olarak alır ve meta veri bilgi
 -------- | ----------- | --------
 fieldList | Gerekli meta veri bilgileri türleri. Desteklenen meta veriler hakkında daha fazla bilgi için bu makalenin [meta veri seçenekleri](#metadata-options) bölümüne bakın. | Yes 
 veri kümesi | Meta verileri Al etkinliği tarafından alınacak olan başvuru veri kümesi. Desteklenen bağlayıcılar hakkında bilgi için bkz. [yetenekler](#supported-capabilities) bölümü. Veri kümesi sözdizimi ayrıntıları için ilgili bağlayıcı konularına bakın. | Yes
-formatSettings | Biçim türü veri kümesi kullanırken uygulayın. | Hayır
-storeSettings | Biçim türü veri kümesi kullanırken uygulayın. | Hayır
+formatSettings | Biçim türü veri kümesi kullanırken uygulayın. | No
+storeSettings | Biçim türü veri kümesi kullanırken uygulayın. | No
 
 ## <a name="sample-output"></a>Örnek çıktı
 

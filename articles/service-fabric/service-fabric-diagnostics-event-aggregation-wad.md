@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/03/2018
 ms.author: srrengar
 ms.openlocfilehash: eaf40bafb68820b56fc9bf00dd4c11fbb337406f
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102613468"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Windows Azure Tanılama kullanarak olay toplama ve toplama
@@ -282,7 +282,7 @@ Ek kanallara ait Günlükler koleksiyon için de kullanılabilir. Azure 'da çal
 
 Dağıtmak üzere olduğunuz yeni bir uygulamayı temsil eden yeni EventSource kanallarından günlükleri toplamak üzere tanılamayı güncelleştirmek için, var olan bir küme için tanılamayı ayarlama konusunda daha önce açıklanan adımları gerçekleştirin.
 
-`EtwEventSourceProviderConfiguration`PowerShell komutunu kullanarak yapılandırma güncelleştirmesini uygulamadan önce yeni EventSource kanallarının girdilerini eklemek için template.jsdosyadaki bölümünü güncelleştirin `New-AzResourceGroupDeployment` . Olay kaynağının adı, Visual Studio tarafından oluşturulan ServiceEventSource.cs dosyasındaki kodunuzun bir parçası olarak tanımlanır.
+`EtwEventSourceProviderConfiguration`PowerShell komutunu kullanarak yapılandırma güncelleştirmesini uygulamadan önce yeni EventSource kanallarının girdilerini eklemek için template.jsdosyadaki bölümünü güncelleştirin `New-AzResourceGroupDeployment` . Olay kaynağının adı, Visual Studio tarafından oluşturulan ServiceEventSource. cs dosyasındaki kodunuzun bir parçası olarak tanımlanır.
 
 Örneğin, olay kaynağınız My-EventSource olarak adlandırılmışsa, My-Eventsource olayları MyDestinationTableName adlı bir tabloya yerleştirmek için aşağıdaki kodu ekleyin.
 

@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 07/14/2020
 ms.openlocfilehash: e32bf95ef52fdd081eeaa476f44bf5dab99657d6
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102452127"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>HTTP Veri Toplayıcı API 'SI ile günlük verilerini Azure Izleyici 'ye gönderme (Genel Önizleme)
@@ -48,7 +48,7 @@ HTTP Veri Toplayıcı API 'sini kullanmak için, JavaScript Nesne Gösterimi (JS
 | API Sürümü |Bu istekle birlikte kullanılacak API sürümü. Şu anda 2016-04-01. |
 
 ### <a name="request-headers"></a>İstek üst bilgileri
-| Üst bilgi | Açıklama |
+| Üst bilgi | Description |
 |:--- |:--- |
 | Yetkilendirme |Yetkilendirme imzası. Makalenin ilerleyen kısımlarında, HMAC-SHA256 üst bilgisi oluşturma hakkında bilgi edinebilirsiniz. |
 | Log-Type |Gönderilen verilerin kayıt türünü belirtin. Yalnızca harf, rakam ve alt çizgi (_) içerebilir ve 100 karakterden uzun olamaz. |
@@ -182,7 +182,7 @@ HTTP durum kodu 200, isteğin işlenmek üzere alındığı anlamına gelir. Bu 
 
 Bu tabloda, hizmetin döndürebileceğini belirten tüm durum kodları listelenmektedir:
 
-| Kod | Durum | Hata kodu | Açıklama |
+| Kod | Durum | Hata kodu | Description |
 |:--- |:--- |:--- |:--- |
 | 200 |Tamam | |İstek başarıyla kabul edildi. |
 | 400 |Hatalı istek |Inactivecustomer |Çalışma alanı kapatıldı. |
@@ -646,7 +646,7 @@ public class ApiExample {
 ## <a name="alternatives-and-considerations"></a>Alternatifler ve önemli noktalar
 Veri Toplayıcı API 'SI, Azure günlüklerine serbest biçimli veriler toplamak için gereksinimlerinizin çoğunu kapsasa da, API 'nin bazı sınırlamalarını aşmak için alternatif gerekebilecek örnekler vardır. Tüm seçenekleriniz aşağıda verilmiştir:
 
-| Yapıyı | Açıklama | En uygun |
+| Yapıyı | Description | En uygun |
 |---|---|---|
 | [Özel olaylar](../app/api-custom-events-metrics.md?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#properties): APPLICATION INSIGHTS yerel SDK tabanlı alma | Genellikle uygulamanızdaki bir SDK aracılığıyla belgelenmiş olan Application Insights özel olaylar aracılığıyla özel veri göndermenize olanak sağlar. | <ul><li> Uygulamanızda oluşturulan, ancak varsayılan veri türlerinden biri (istekler, bağımlılıklar, özel durumlar vb.) aracılığıyla SDK tarafından çekilmemiş veriler.</li><li> Application Insights ' deki diğer uygulama verileriyle en sık bağıntılı veriler </li></ul> |
 | Azure Izleyici günlüklerinde veri toplayıcı API 'SI | Azure Izleyici günlüklerinde veri toplayıcı API 'SI, verileri almak için tamamen açık uçlu bir yoldur. JSON nesnesinde biçimlendirilen tüm veriler buraya gönderilebilir. Gönderildikten sonra işlenir ve günlüklerde bulunan diğer verilerle bağıntılı veya diğer Application Insights verilerine yönelik Günlükler kullanılabilir. <br/><br/> Verileri bir Azure Blob blob 'una dosya olarak yüklemek oldukça kolaydır, bu dosyaların nerede işleneceğini ve Log Analytics karşıya yükleneceğini buradan yükleyebilirsiniz. Bu tür bir işlem hattının örnek bir uygulanması için lütfen [Bu](./create-pipeline-datacollector-api.md) makaleye bakın. | <ul><li> Application Insights içinde belgelenmiş bir uygulama içinde oluşturulmayan veriler.</li><li> Arama ve olgu tablolarını, başvuru verilerini, ön toplanmış istatistikleri ve benzeri örnekleri içerir. </li><li> Diğer Azure Izleyici verilerine (Application Insights, diğer günlük veri türleri, Güvenlik Merkezi, kapsayıcı öngörüleri/VM 'Ler vb.) karşı çapraz başvuru yapılacak veriler için tasarlanmıştır. </li></ul> |

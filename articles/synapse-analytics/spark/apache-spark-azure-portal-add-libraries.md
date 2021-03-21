@@ -9,12 +9,12 @@ ms.date: 03/01/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: c6d720c3feec29eb32b1cfa9c31ea45839c98ec7
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: e8ad6d072af6979eb8509068c1dcd239e7840950
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102176425"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598023"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te Apache Spark için kitaplıkları yönetme
 Kitaplıklar, programlarınıza veya projelerinize dahil etmek isteyebileceğiniz yeniden kullanılabilir kod sağlar. 
@@ -60,10 +60,6 @@ Bu yetenekler hakkında daha fazla bilgi edinmek için [Python havuz yönetimi](
 Genellikle etkileşimli veri analizi veya makine öğrenimi yaparken, daha yeni paketleri denemek istediğinizi fark edebilir veya Apache Spark havuzunuzdaki henüz kullanılamayan paketlere ihtiyacınız olabilir. Kullanıcılar, havuz yapılandırmasını güncelleştirmek yerine, oturum bağımlılıklarını eklemek, yönetmek ve güncelleştirmek için artık oturum kapsamlı paketler kullanabilir.
 
 Oturum kapsamlı paketler, kullanıcıların oturumunun başlangıcında paket bağımlılıklarını tanımlamasına olanak tanır. Oturum kapsamlı bir paket yüklediğinizde, yalnızca geçerli oturumun belirtilen paketlere erişimi vardır. Sonuç olarak, bu oturum kapsamlı paketler aynı Apache Spark havuzunu kullanan diğer oturumları veya işleri etkilemez. Ayrıca, bu kitaplıklar temel çalışma zamanı ve havuz düzeyi paketlerinin üzerine yüklenir. 
-
-Bu paketler, Python ortamınıza otomatik olarak eklenir. Paketlere *requirements.txt* dosyanızda bahsedilmemelidir.
-
-Bu yöntemin Şu anda yalnızca dosyaları desteklemediğini unutmayın `*.whl` . Kapsayıcıya herhangi bir `*.tar.gz` dosya eklemeyin.
 
 Oturum kapsamlı paketlerin nasıl yönetileceği hakkında daha fazla bilgi edinmek için aşağıdaki nasıl yapılır kılavuzlarını ziyaret edin:
 

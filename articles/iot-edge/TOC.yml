@@ -131,6 +131,8 @@
           href: how-to-update-iot-edge.md
         - name: Cihaz sertifikalarını yönetme
           href: how-to-manage-device-certificates.md
+        - name: Windows VM 'Leri için iç içe sanallaştırmayı yapılandırma
+          href: nested-virtualization.md
     - name: Alternatif cihaz senaryoları
       items:
         - name: Windows kapsayıcıları ile IoT Edge çalıştırma

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: KumudD
 ms.author: kumud
 ms.date: 11/25/2020
-ms.openlocfilehash: 20f61ad92307a16515156151b816494e9aa289f7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: db94a376112b3d715da9095acb05c0b4fd4ea02f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101717477"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104605809"
 ---
 # <a name="azure-monitor-for-networks"></a>Ağlar için Azure İzleyici
 
@@ -108,10 +108,12 @@ Tanılama araç seti, ağ sorunlarını gidermek için kullanılabilen tüm tan�
 
 ![Tanılama araç seti sekmesini gösteren ekran görüntüsü.](media/network-insights-overview/azure-monitor-for-networks-diagnostic-toolkit.png)
 
+## <a name="onboarded-resources"></a>Eklendi kaynakları 
+
+Eklendi kaynaklarında yerleşik çalışma kitapları ve bağımlılık görünümleri vardır. Şu anda eklendi kaynakları sanal WAN, Application Gateway, Load Balancer ve ExpressRoute.
+
 ## <a name="troubleshooting"></a>Sorun giderme 
-
 Genel sorun giderme kılavuzu için, adanmış çalışma kitabı tabanlı Öngörüler [sorun giderme makalesine](troubleshoot-workbooks.md)bakın.
-
 Bu bölüm, ağlar için Azure Izleyici kullandığınızda karşılaşabileceğiniz bazı yaygın sorunları tanılamanıza ve gidermenize yardımcı olur. 
 
 ### <a name="how-do-i-resolve-performance-problems-or-failures"></a>Performans sorunlarını veya başarısızlıklarını çözümlemek Nasıl yaparım? mı?

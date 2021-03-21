@@ -6,14 +6,16 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: ead1a324d342f818551ac05ac385ba4fa5b8b877
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12d68a9539420c77cc23722e1b7b7175d08459e9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89439093"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674640"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Azure Veri Kataloğu 'nda desteklenen veri kaynakları
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 Meta verileri ortak bir API veya bir tıklama-bir kayıt aracı kullanarak ya da doğrudan Azure Veri Kataloğu web portalına el ile girerek yayımlayabilirsiniz. Aşağıdaki tablo, bugün Katalog tarafından desteklenen tüm veri kaynaklarını ve her biri için yayımlama yeteneklerini özetler. Ayrıca, her bir veri kaynağının Portal "açık" deneyimimizden başlatabileceği dış veri araçları da listelenmiştir. İkinci tablo, her veri kaynağı bağlantısı özelliğinin daha teknik bir belirtimini içerir.
 

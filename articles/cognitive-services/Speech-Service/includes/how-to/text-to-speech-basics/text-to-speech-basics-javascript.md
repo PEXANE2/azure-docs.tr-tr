@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 02/10/2021
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: 3fa47935721ccfccdfe18d60a66d5cc480582e7d
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: bfaa9f649fd4d44e45b6d4a513e74e12e169c4f8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102428257"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104719769"
 ---
 Bu hızlı başlangıçta, konuşma SDK 'sını kullanarak metinden konuşmaya senşlerini kullanmaya yönelik yaygın tasarım düzenlerini öğrenirsiniz. Temel yapılandırma ve birleştirme işlemleri gerçekleştirerek başlar ve aşağıdakiler de dahil olmak üzere özel uygulama geliştirme için daha gelişmiş örneklere geçin:
 
@@ -30,7 +30,7 @@ Bu makalede bir Azure hesabınız ve konuşma hizmeti kaynağınız olduğunu va
 ## <a name="install-the-speech-sdk"></a>Konuşma SDK 'sını yükler
 
 Herhangi bir şey yapabilmeniz <a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">için önce JavaScript Için konuşma SDK 'sını </a>yüklemeniz gerekir. Platformunuza bağlı olarak, aşağıdaki yönergeleri kullanın:
-- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=nodejs#get-the-speech-sdk" target="_blank">Node.js <span 
+- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=nodejs#get-the-speech-sdk" target="_blank">Node.js <span
 class="docon docon-navigate-external x-hidden-focus"></span></a>
 - <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=browser#get-the-speech-sdk" target="_blank">Web tarayıcısı </a>
 
@@ -162,14 +162,14 @@ Konuşma uygulaması geliştirmede birçok senaryo için, büyük olasılıkla b
 * Sonucu diğer API 'leri veya hizmetleriyle tümleştirin.
 * Ses verilerini değiştirin, özel üstbilgiler yazın `.wav` vb.
 
-Önceki örnekte bu değişikliği yapmak basittir. İlk `AudioConfig` olarak, daha fazla denetim için çıkış davranışını bu noktadan el ile yöneteceği için bloğu kaldırın. Sonra `undefined` `AudioConfig` Oluşturucu içinde öğesine geçirin `SpeechSynthesizer` . 
+Önceki örnekte bu değişikliği yapmak basittir. İlk `AudioConfig` olarak, daha fazla denetim için çıkış davranışını bu noktadan el ile yöneteceği için bloğu kaldırın. Sonra `undefined` `AudioConfig` Oluşturucu içinde öğesine geçirin `SpeechSynthesizer` .
 
 > [!NOTE]
 > `undefined` `AudioConfig` Yukarıdaki konuşmacı çıktısı örneğinde olduğu gibi değil, için geçirme, geçerli etkin çıkış cihazında varsayılan olarak sesi oynamaz.
 
-Bu kez, sonucu bir [`SpeechSynthesisResult`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisresult) değişkene kaydedersiniz. `SpeechSynthesisResult.audioData`Özelliği `ArrayBuffer` , varsayılan tarayıcı akış türü olan çıkış verilerini döndürür. Sunucu kodu için arrayBuffer 'ı bir arabellek akışına dönüştürün. 
+Bu kez, sonucu bir [`SpeechSynthesisResult`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisresult) değişkene kaydedersiniz. `SpeechSynthesisResult.audioData`Özelliği `ArrayBuffer` , varsayılan tarayıcı akış türü olan çıkış verilerini döndürür. Sunucu kodu için arrayBuffer 'ı bir arabellek akışına dönüştürün.
 
-Aşağıdaki kod, istemci tarafı kodu için geçerlidir. 
+Aşağıdaki kod, istemci tarafı kodu için geçerlidir.
 
 ```javascript
 function synthesizeSpeech() {
@@ -189,9 +189,9 @@ function synthesizeSpeech() {
 }
 ```
 
-Buradan, sonuçta elde edilen nesneyi kullanarak özel davranışları uygulayabilirsiniz `ArrayBuffer` . ArrayBuffer, bir tarayıcıda alacak ve bu biçimden oynatacak ortak bir türdür. 
+Buradan, sonuçta elde edilen nesneyi kullanarak özel davranışları uygulayabilirsiniz `ArrayBuffer` . ArrayBuffer, bir tarayıcıda alacak ve bu biçimden oynatacak ortak bir türdür.
 
-Sunucu tabanlı herhangi bir kod için, bir ArrayBuffer yerine verilerle birlikte çalışmanız gerekiyorsa, nesneyi bir akışa dönüştürmeniz gerekir. 
+Sunucu tabanlı herhangi bir kod için, bir ArrayBuffer yerine verilerle birlikte çalışmanız gerekiyorsa, nesneyi bir akışa dönüştürmeniz gerekir.
 
 ```javascript
 function synthesizeSpeech() {
@@ -342,3 +342,11 @@ Bir sinir sesinize geçiş yapmak için, `name` [sinir Voice seçeneklerinden](.
   </voice>
 </speak>
 ```
+
+## <a name="get-facial-pose-events"></a>Yüz poz olaylarını al
+
+Konuşma, yüz ifadelerinin animasyonunu sağlamak için iyi bir yol olabilir.
+Genellikle [visemes](../../../how-to-speech-synthesis-viseme.md) , belirli bir phoneme oluşturma sırasında LIP 'ler, Jaw ve dil sistemi gibi gözlemlenen konuşmayla ilgili önemli pozları temsil etmek için kullanılır.
+Konuşma SDK 'sında viseme olayına abone olabilirsiniz.
+Daha sonra, konuşma sesi oynatılırken bir karakter yüzünüzü hareketlendirmek için viseme olaylarını uygulayabilirsiniz.
+[Viseme olaylarını nasıl alabileceğinizi](../../../how-to-speech-synthesis-viseme.md#get-viseme-events-with-the-speech-sdk)öğrenin.

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 5954c3083afc73fb25c796086f8fb8809af03ec1
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103200663"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>IoT Edge'de Azure Blob Depolama ile verileri kenarda depolama
@@ -293,7 +293,7 @@ Desteklenen
 
 IoT Edge modülündeki bu Azure Blob depolama alanı, IoT Edge Event Grid ile tümleştirme sağlar. Bu tümleştirmeyle ilgili ayrıntılı bilgi için, [modülleri dağıtma, olayları yayımlama ve olay teslimini doğrulama hakkında öğreticiye](../event-grid/edge/react-blob-storage-events-locally.md)bakın.
 
-## <a name="release-notes"></a>Release Notes (Sürüm Notları)
+## <a name="release-notes"></a>Sürüm Notları
 
 Bu modül için [Docker Hub 'daki sürüm notları](https://hub.docker.com/_/microsoft-azure-blob-storage) aşağıda verilmiştir. Belirli bir sürümün sürüm notlarındaki hata düzeltmeleri ve düzeltme ile ilgili daha fazla bilgi bulabilirsiniz.
 

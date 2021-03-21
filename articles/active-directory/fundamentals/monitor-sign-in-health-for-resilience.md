@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 01/10/2021
+ms.date: 03/17/2021
 ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad99c8d319a22f8b5388838b9d537de2f610478a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: f2092c3f6402d5c6e7a0bc8c93015d3a900b9e38
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101651000"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588004"
 ---
 # <a name="monitoring-application-sign-in-health-for-resilience"></a>Esnekliği için uygulama oturum açma durumunu izleme
 
@@ -43,7 +43,7 @@ Etkileyen bir olay sırasında iki şey meydana gelebilir:
 
 Bu makalede, kullanıcılarınızın oturum açma işlemlerinde kesintiler izlemek için oturum açma sistem durumu çalışma kitabını ayarlama işlemi adım adım gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure AD kiracısı.
 
@@ -56,8 +56,6 @@ Bu makalede, kullanıcılarınızın oturum açma işlemlerinde kesintiler izlem
 * Azure Izleyici günlükleri ile tümleştirilmiş Azure AD günlükleri
 
    * Azure [ad oturum açma günlüklerini Azure Izleyici akışı Ile tümleştirmeyi öğrenin.](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
-
- 
 
 ## <a name="configure-the-app-sign-in-health-workbook"></a>Uygulama oturum açma durumu çalışma kitabını yapılandırma 
 
@@ -78,11 +76,11 @@ Uygulama oturum açma sistem durumu çalışma kitabında, oturum açma işlemle
 
 **İlk grafik saatlik kullanımdır (başarılı Kullanıcı sayısı)**. Geçerli başarılı kullanıcı sayısını tipik bir kullanım süresine göre karşılaştırmak, bir kullanıma araştırma gerektirebilecek kullanımda olan bir bırakma oluşturmanıza yardımcı olur. Kullanım oranının başarıyla düşürülmesi, hata oranının performans ve kullanım sorunlarını tespit etmenize yardımcı olabilir. Örneğin, kullanıcılar oturum açmayı denemek için uygulamanıza ulaşamadıysanız, yalnızca kullanımda olan bir başarısızlık olmaz. Bu veriler için örnek sorgu aşağıdaki bölümde bulunabilir.
 
-İkinci grafik saat hatası oranına sahiptir. Hata oranı 'nda ani artış, kimlik doğrulama mekanizmalarıyla ilgili bir sorun olduğunu gösterebilir. Hata oranı yalnızca kullanıcıların kimlik doğrulamaya çalışabilmesi durumunda ölçülebilir. Kullanıcılar, denemesi yapmak için erişim Sağlayamayabiliyorsa, başarısızlıklar gösterilmez.
+**İkinci grafik saat hatası oranına** sahiptir. Hata oranı 'nda ani artış, kimlik doğrulama mekanizmalarıyla ilgili bir sorun olduğunu gösterebilir. Hata oranı yalnızca kullanıcıların kimlik doğrulamaya çalışabilmesi durumunda ölçülebilir. Kullanıcılar, denemesi yapmak için erişim Sağlayamayabiliyorsa, başarısızlıklar gösterilmez.
 
 Kullanım veya başarısızlık oranı belirtilen eşiği aştığında belirli bir gruba bildirimde bulunan bir uyarı yapılandırabilirsiniz. Bu veriler için örnek sorgu aşağıdaki bölümde bulunabilir.
 
- ## <a name="configure-the-query-and-alerts"></a>Sorgu ve Uyarıları yapılandırma
+## <a name="configure-the-query-and-alerts"></a>Sorgu ve Uyarıları yapılandırma
 
 Azure Izleyici 'de uyarı kuralları oluşturur ve düzenli aralıklarla otomatik olarak kaydedilmiş sorguları veya özel günlük aramalarını çalıştırabilir.
 
@@ -96,116 +94,18 @@ Grafiklerde yansıtılan sorgulara göre e-posta uyarıları oluşturmak için a
 
 Azure Izleyici kullanarak günlük uyarılarını oluşturma, görüntüleme ve yönetme hakkında daha fazla bilgi için bkz. [günlük uyarılarını yönetme](../../azure-monitor/alerts/alerts-log.md).
 
- 
 1. Çalışma kitabında **Düzenle**' yi seçin, sonra grafiğin sağ tarafındaki **Sorgu simgesini** seçin.   
 
    [![Düzenleme çalışma kitabını gösteren ekran görüntüsü.](./media/monitor-sign-in-health-for-resilience/edit-workbook.png)](./media/monitor-sign-in-health-for-resilience/edit-workbook.png)
 
    Sorgu günlüğü açılır.
 
-  [![Sorgu günlüğünü gösteren ekran görüntüsü.](./media/monitor-sign-in-health-for-resilience/query-log.png)](/media/monitor-sign-in-health-for-resilience/query-log.png)
+   [![Sorgu günlüğünü gösteren ekran görüntüsü.](./media/monitor-sign-in-health-for-resilience/query-log.png)](/media/monitor-sign-in-health-for-resilience/query-log.png)
 ‎
 
-2. Yeni bir kusto sorgusu için aşağıdaki örnek betiklerin birini kopyalayın.
-
-**Kullanımda bırakma için kusto sorgusu**
-
-```Kusto
-
-let thisWeek = SigninLogs
-
-| where TimeGenerated > ago(1h)
-
-| project TimeGenerated, AppDisplayName, UserPrincipalName
-
-//| where AppDisplayName contains "Office 365 Exchange Online"
-
-| summarize users = dcount(UserPrincipalName) by bin(TimeGenerated, 1hr)
-
-| sort by TimeGenerated desc
-
-| serialize rn = row_number();
-
-let lastWeek = SigninLogs
-
-| where TimeGenerated between((ago(1h) - totimespan(2d))..(now() - totimespan(2d)))
-
-| project TimeGenerated, AppDisplayName, UserPrincipalName
-
-//| where AppDisplayName contains "Office 365 Exchange Online"
-
-| summarize usersPriorWeek = dcount(UserPrincipalName) by bin(TimeGenerated, 1hr)
-
-| sort by TimeGenerated desc
-
-| serialize rn = row_number();
-
-thisWeek
-
-| join
-
-(
-
- lastWeek
-
-)
-
-on rn
-
-| project TimeGenerated, users, usersPriorWeek, difference = abs(users - usersPriorWeek), max = max_of(users, usersPriorWeek)
-
-| where (difference * 2.0) / max > 0.9
-
-```
-
- 
-
-**Hata oranı artışı için kusto sorgusu**
-
-
-```kusto
-
-let thisWeek = SigninLogs
-
-| where TimeGenerated > ago(1 h)
-
-| project TimeGenerated, UserPrincipalName, AppDisplayName, status = case(Status.errorCode == "0", "success", "failure")
-
-| where AppDisplayName == **APP NAME**
-
-| summarize success = countif(status == "success"), failure = countif(status == "failure") by bin(TimeGenerated, 1h)
-
-| project TimeGenerated, failureRate = (failure * 1.0) / ((failure + success) * 1.0)
-
-| sort by TimeGenerated desc
-
-| serialize rn = row_number();
-
-let lastWeek = SigninLogs
-
-| where TimeGenerated between((ago(1 h) - totimespan(2d))..(ago(1h) - totimespan(2d)))
-
-| project TimeGenerated, UserPrincipalName, AppDisplayName, status = case(Status.errorCode == "0", "success", "failure")
-
-| where AppDisplayName == **APP NAME**
-
-| summarize success = countif(status == "success"), failure = countif(status == "failure") by bin(TimeGenerated, 1h)
-
-| project TimeGenerated, failureRatePriorWeek = (failure * 1.0) / ((failure + success) * 1.0)
-
-| sort by TimeGenerated desc
-
-| serialize rn = row_number();
-
-thisWeek
-
-| join (lastWeek) on rn
-
-| project TimeGenerated, failureRate, failureRatePriorWeek
-
-| where abs(failureRate – failureRatePriorWeek) > **THRESHOLD VALUE**
-
-```
+2. Yeni bir kusto sorgusu için örnek betiklerin birini kopyalayın.  
+   * [Hata oranı artışı için kusto sorgusu](#kusto-query-for-increase-in-failure-rate)
+   * [Kullanımda bırakma için kusto sorgusu](#kusto-query-for-drop-in-usage)
 
 3. Sorguyu pencereye yapıştırın ve **Çalıştır**' ı seçin. Aşağıdaki görüntüde gösterilen tamamlanmış iletiyi görtığınızdan ve bu iletinin altına sonuçtan emin olun.
 
@@ -222,7 +122,7 @@ thisWeek
  
    * **Eşik değeri**: 0. Bu değer, herhangi bir sonucu uyarır.
 
-   * **Değerlendirme süresi (dakika)**: 60. Bu değer bir saat arar
+   * **Değerlendirme süresi (dakika)**: 2880. Bu değer bir saat arar
 
    * **Sıklık (dakika)**: 60. Bu değer, değerlendirme süresini önceki saat için saat başına olacak şekilde ayarlar.
 
@@ -254,9 +154,8 @@ thisWeek
 
    [![Sorguyu Kaydet düğmesinin gösterildiği ekran görüntüsü.](./media/monitor-sign-in-health-for-resilience/save-query.png)](./media/monitor-sign-in-health-for-resilience/save-query.png)
 
-
-
 ### <a name="refine-your-queries-and-alerts"></a>Sorgularınızı ve uyarılarınızı daraltın
+
 Sorgularınızı ve uyarılarınızı en yüksek verimlilik için değiştirin.
 
 * Uyarılarınızı test ettiğinizden emin olun.
@@ -267,11 +166,135 @@ Sorgularınızı ve uyarılarınızı en yüksek verimlilik için değiştirin.
 
 * Azure Izleyici 'de uyarılar sorgusu, yalnızca geçmiş 48 saatten sonuçları içerebilir. [Bu, tasarıma göre geçerli bir kısıtlamadır](https://github.com/MicrosoftDocs/azure-docs/issues/22637).
 
+## <a name="sample-scripts"></a>Örnek betikler
+
+### <a name="kusto-query-for-increase-in-failure-rate"></a>Hata oranı artışı için kusto sorgusu
+
+   En alttaki oran gerektiği şekilde ayarlanabilir ve dün aynı saate kıyasla son bir saat içindeki trafikte yapılan yüzde değişikliğini temsil eder. 0,5, trafikte %50 fark olduğu anlamına gelir.
+
+```kusto
+
+let today = SigninLogs
+
+| where TimeGenerated > ago(1h) // Query failure rate in the last hour
+ 
+| project TimeGenerated, UserPrincipalName, AppDisplayName, status = case(Status.errorCode == "0", "success", "failure")
+
+// Optionally filter by a specific application
+
+//| where AppDisplayName == **APP NAME**
+
+| summarize success = countif(status == "success"), failure = countif(status == "failure") by bin(TimeGenerated, 1h) // hourly failure rate
+
+| project TimeGenerated, failureRate = (failure * 1.0) / ((failure + success) * 1.0)
+
+| sort by TimeGenerated desc
+
+| serialize rowNumber = row_number();
+
+let yesterday = SigninLogs
+
+| where TimeGenerated between((ago(1h) - totimespan(1d))..(now() - totimespan(1d))) // Query failure rate at the same time yesterday
+
+| project TimeGenerated, UserPrincipalName, AppDisplayName, status = case(Status.errorCode == "0", "success", "failure")
+
+// Optionally filter by a specific application
+
+//| where AppDisplayName == **APP NAME**
+
+| summarize success = countif(status == "success"), failure = countif(status == "failure") by bin(TimeGenerated, 1h) // hourly failure rate at same time yesterday
+
+| project TimeGenerated, failureRateYesterday = (failure * 1.0) / ((failure + success) * 1.0)
+
+| sort by TimeGenerated desc
+
+| serialize rowNumber = row_number();
+today
+| join (yesterday) on rowNumber // join data from same time today and yesterday
+
+| project TimeGenerated, failureRate, failureRateYesterday
+
+// Set threshold to be the percent difference in failure rate in the last hour as compared to the same time yesterday
+
+| where abs(failureRate - failureRateYesterday) > 0.5
+
+```
+
+### <a name="kusto-query-for-drop-in-usage"></a>Kullanımda bırakma için kusto sorgusu
+
+Aşağıdaki sorguda, Son saatteki trafiği dün ile aynı saate karşılaştırıyoruz.
+Önceki güne ait aynı anda trafikte büyük bir değişkenlik olması beklendiğinden Cumartesi, Pazar ve Pazartesi 'yi dışlıyoruz. 
+
+En alttaki oran gerektiği şekilde ayarlanabilir ve dün aynı saate kıyasla son bir saat içindeki trafikte yapılan yüzde değişikliğini temsil eder. 0,5, trafikte %50 fark olduğu anlamına gelir.
+
+*Bu değerleri iş çalışma modelinize uyacak şekilde ayarlamanız gerekir*.
+
+```Kusto
+ let today = SigninLogs // Query traffic in the last hour
+
+| where TimeGenerated > ago(1h)
+
+| project TimeGenerated, AppDisplayName, UserPrincipalName
+
+// Optionally filter by AppDisplayName to scope query to a single application
+
+//| where AppDisplayName contains "Office 365 Exchange Online"
+
+| summarize users = dcount(UserPrincipalName) by bin(TimeGenerated, 1hr) // Count distinct users in the last hour
+
+| sort by TimeGenerated desc
+
+| serialize rn = row_number();
+
+let yesterday = SigninLogs // Query traffic at the same hour yesterday
+
+| where TimeGenerated between((ago(1h) - totimespan(1d))..(now() - totimespan(1d))) // Count distinct users in the same hour yesterday
+
+| project TimeGenerated, AppDisplayName, UserPrincipalName
+
+// Optionally filter by AppDisplayName to scope query to a single application
+
+//| where AppDisplayName contains "Office 365 Exchange Online"
+
+| summarize usersYesterday = dcount(UserPrincipalName) by bin(TimeGenerated, 1hr)
+
+| sort by TimeGenerated desc
+
+| serialize rn = row_number();
+
+today
+| join // Join data from today and yesterday together
+(
+yesterday
+)
+on rn
+
+// Calculate the difference in number of users in the last hour compared to the same time yesterday
+
+| project TimeGenerated, users, usersYesterday, difference = abs(users - usersYesterday), max = max_of(users, usersYesterday)
+
+ extend ratio = (difference * 1.0) / max // Ratio is the percent difference in traffic in the last hour as compared to the same time yesterday
+
+// Day variable is the number of days since the previous Sunday. Optionally ignore results on Sat, Sun, and Mon because large variability in traffic is expected.
+
+| extend day = dayofweek(now())
+
+| where day != time(6.00:00:00) // exclude Sat
+
+| where day != time(0.00:00:00) // exclude Sun
+
+| where day != time(1.00:00:00) // exclude Mon
+
+| where ratio > 0.7 // Threshold percent difference in sign-in traffic as compared to same hour yesterday
+
+```
+
 ## <a name="create-processes-to-manage-alerts"></a>Uyarıları yönetmek için işlem oluşturma
 
 Sorgu ve uyarıları ayarladıktan sonra, uyarıları yönetmek için iş süreçlerini oluşturun.
 
 * Çalışma kitabını kim ne zaman izlecektir?
+
 * Bir uyarı oluşturulduğunda, kimler araştıracaktır?
 
 * İletişim ihtiyaçları nelerdir? İletişimleri kimler oluşturacak ve kimler alacak?
@@ -281,8 +304,3 @@ Sorgu ve uyarıları ayarladıktan sonra, uyarıları yönetmek için iş süre�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [Çalışma kitapları hakkında daha fazla bilgi](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
-
- 
-
- 
-

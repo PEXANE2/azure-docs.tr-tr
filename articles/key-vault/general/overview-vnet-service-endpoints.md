@@ -10,10 +10,10 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
 ms.openlocfilehash: 36a94f780fa5c196e28730c051e161633ed3ee3d
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102431066"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault için sanal ağ hizmet uç noktaları
@@ -49,7 +49,7 @@ Hizmet uç noktalarını nasıl kullanabileceğinizi gösteren bazı örnekler �
 |Azure Information Protection|Azure Information Protection için kiracı anahtarına erişime izin ver [.](/azure/information-protection/what-is-information-protection)|
 |Azure App Service|[Key Vault aracılığıyla Azure Web uygulaması sertifikasını dağıtın](https://azure.github.io/AppService/2016/05/24/Deploying-Azure-Web-App-Certificate-through-Key-Vault.html).|
 |Azure SQL Veritabanı|[Azure SQL veritabanı ve Azure SYNAPSE Analytics için kendi anahtarını getir desteğiyle saydam veri şifrelemesi](../../azure-sql/database/transparent-data-encryption-byok-overview.md?view=sql-server-2017&preserve-view=true&viewFallbackFrom=azuresqldb-current).|
-|Azure Storage|[Depolama Hizmeti Şifrelemesi Azure Key Vault müşteri tarafından yönetilen anahtarları kullanma](../../storage/common/customer-managed-keys-configure-key-vault.md).|
+|Azure Depolama|[Depolama Hizmeti Şifrelemesi Azure Key Vault müşteri tarafından yönetilen anahtarları kullanma](../../storage/common/customer-managed-keys-configure-key-vault.md).|
 |Azure Data Lake Store|Müşteri tarafından yönetilen bir anahtarla [Azure Data Lake Store verilerin şifrelenmesi](../../data-lake-store/data-lake-store-encryption.md) .|
 |Azure Synapse Analytics|[Azure Key Vault 'de müşteri tarafından yönetilen anahtarlar kullanılarak verilerin şifrelenmesi](../../synapse-analytics/security/workspaces-encryption.md)|
 |Azure Databricks|[Hızlı, kolay ve işbirliğine dayalı Apache Spark tabanlı analiz hizmeti](/azure/databricks/scenarios/what-is-azure-databricks)|

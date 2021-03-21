@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/07/2021
-ms.openlocfilehash: 07be5d29ccb55fe97f38123ff4a850d28cd39ead
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: ce7c97abfb879e9298edac5f38540bbc026274da
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100387691"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584432"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Kopyalama etkinliği performansını sorun giderme
 
@@ -137,7 +137,7 @@ Kopyalama performansı beklentilerinizi karşılamıyorsa, Azure Integration Run
 
   - Data Factory-> genel bakış sayfanıza Azure portal > şirket içinde barındırılan IR 'nin CPU ve bellek kullanımı eğilimini kontrol edin. CPU kullanımı yüksek veya kullanılabilir bellek düşükse, [ölçeği artırma/genişletme](create-self-hosted-integration-runtime.md#high-availability-and-scalability) için göz önünde bulundurun.
 
-  - Varsa bağlayıcıya özgü verileri yükleme en iyi uygulamasını benimseyin. Örneğin:
+  - Varsa bağlayıcıya özgü verileri yükleme en iyi uygulamasını benimseyin. Örnek:
 
     - [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [Teradata](connector-teradata.md#teradata-as-source), [SAP HANA](connector-sap-hana.md#sap-hana-as-source), [SAP tablosu](connector-sap-table.md#sap-table-as-source)ve [SAP açık hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)'dan verileri kopyalarken, verileri paralel olarak kopyalamak için veri bölümü seçeneklerini etkinleştirin.
 
@@ -168,7 +168,7 @@ Kopyalama performansı beklentilerinizi karşılamıyorsa, Azure Integration Run
   - [Paralel kopyaları](copy-activity-performance-features.md)kademeli olarak ayarlamayı göz önünde bulundurun. çok fazla paralel kopya, hatta performansın zarar görmediğini unutmayın.
 
 
-## <a name="connector-and-ir-performance"></a>Bağlayıcı ve IR performansı
+## <a name="connector-and-ir-performance"></a>Bağlayıcı ve IR performansı 
 
 Bu bölüm, belirli bağlayıcı türü veya tümleştirme çalışma zamanı için bazı performans sorun giderme kılavuzlarını araştırır.
 
@@ -176,9 +176,11 @@ Bu bölüm, belirli bağlayıcı türü veya tümleştirme çalışma zamanı i�
 
 Etkinlik yürütme süresi, veri kümesinin farklı Integration Runtime temel aldığı zaman değişir.
 
-- **Belirtiler**: veri kümesindeki bağlantılı hizmet açılan listesini değiştirmek, aynı işlem hattı etkinliklerini gerçekleştirir, ancak büyük ölçüde farklı çalışma sürelerine sahip olur. Veri kümesi yönetilen sanal ağ Integration Runtime temel alıyorsa, çalışmayı tamamlamaya yönelik ortalama 2 dakikadan uzun sürer, ancak varsayılan Integration Runtime baz alınarak yaklaşık 20 saniye sürer.
+- **Belirtiler**: veri kümesindeki bağlantılı hizmet açılan listesini değiştirmek, aynı işlem hattı etkinliklerini gerçekleştirir, ancak büyük ölçüde farklı çalışma sürelerine sahip olur. Veri kümesi, yönetilen sanal ağ Integration Runtime temel alıyorsa, varsayılan Integration Runtime baz alınarak, bu sürenin ortalaması daha fazla zaman alır.  
 
-- **Neden**: işlem hattı çalışmalarının ayrıntılarını kontrol etmek için, normal bir işlem Azure IR üzerinde çalışırken, yavaş Işlem hattının yönetilen VNET (sanal ağ) IR üzerinde çalıştığını görebilirsiniz. Tasarıma göre, yönetilen VNet IR, Veri Fabrikası başına bir işlem düğümü ayırmadığımızda Azure IR sıra süresi daha uzun sürer. bu nedenle, her kopyalama etkinliğinin başlaması 2 dakika kadar bir süre daha vardır ve öncelikle Azure IR yerine VNet JOIN üzerinde gerçekleşir.
+- **Neden**: işlem hattı çalışmalarının ayrıntılarını kontrol etmek için, normal bir işlem Azure IR üzerinde çalışırken, yavaş Işlem hattının yönetilen VNET (sanal ağ) IR üzerinde çalıştığını görebilirsiniz. Tasarıma göre, yönetilen VNet IR, Veri Fabrikası başına bir işlem düğümü ayırmadığımızda Azure IR sıra süresini daha uzun sürer. bu nedenle, her kopyalama etkinliğinin başlaması için bir sıcak değer vardır ve öncelikle Azure IR yerine VNet JOIN üzerinde gerçekleşir. 
+
+
 
     
 ### <a name="low-performance-when-loading-data-into-azure-sql-database"></a>Azure SQL veritabanı 'na veri yüklenirken düşük performans

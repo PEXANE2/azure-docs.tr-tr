@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/11/2020
 ms.openlocfilehash: c1ca594626d4384c9dfb62990ee2017d2094fca4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100371864"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>Çalışan hizmeti uygulamaları için Application Insights (HTTP olmayan uygulamalar)
@@ -227,7 +227,7 @@ Tam örnek [burada](https://github.com/microsoft/ApplicationInsights-dotnet/tree
 
 1. [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) paketini uygulamaya yükler.
 
-2. Aşağıdaki örnekte Program.cs değiştirin.
+2. Program. cs ' i aşağıda gösterildiği gibi değiştirin.
 
 ```csharp
     using Microsoft.ApplicationInsights;

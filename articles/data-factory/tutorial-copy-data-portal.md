@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 02/18/2021
 ms.author: jingwang
-ms.openlocfilehash: 17f3c31334517ad560cd40fd22b4def031279ca5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 08ab3c9181f4fdcfc9b55bf80c53f88ff26f90ce
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101741064"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584410"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-database-in-azure-sql-database-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Blob depolamadan Azure SQL veritabanı 'ndaki bir veritabanına veri kopyalama
 
@@ -90,7 +90,7 @@ Bu adımda, bir veri fabrikası oluşturacak ve veri fabrikasında bir işlem ha
 
    Azure veri fabrikasının adı *genel olarak benzersiz* olmalıdır. Ad değeriyle ilgili bir hata iletisi alırsanız, veri fabrikası için farklı bir ad girin. (örneğin, Adınızadftutorialdatafactory). Data Factory yapıtlarının adlandırma kuralları için bkz.[Data Factory adlandırma kuralları](naming-rules.md).
 
-     ![Yeni veri fabrikası](./media/doc-common-process/name-not-available-error.png)
+    :::image type="content" source="./media/doc-common-process/name-not-available-error.png" alt-text="Yinelenen ad için yeni veri fabrikası hata iletisi.":::
 
 7. **Sürüm** bölümünde **V2**'yi seçin.
 8. Üstteki **Git yapılandırması** sekmesini seçin ve **Git 'ı daha sonra Yapılandır** onay kutusunu seçin.

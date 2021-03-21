@@ -1,16 +1,16 @@
 ---
 title: Azure Logic Apps için yerleşik ilke tanımları
 description: Azure Logic Apps için Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 03/10/2021
+ms.date: 03/17/2021
 ms.topic: reference
 ms.suite: integration
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 8894c9bc8a99ca60a15b1e0d62ff5f36254674c4
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 1a9023b7f66c6de7e50672683c38190402b06976
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102610200"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595229"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-logic-apps"></a>Azure Logic Apps için Azure Ilkesi yerleşik tanımları
 

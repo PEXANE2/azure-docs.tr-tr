@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/04/2021
 ms.author: alkohli
 ms.openlocfilehash: aae64cad3603725a4062d5afb42df974bbf8ac40
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102438804"
 ---
 # <a name="monitor-your-azure-stack-edge-pro"></a>Azure Stack Edge Pro 'Yu izleyin
@@ -58,12 +58,12 @@ Bu bölümde, cihazınızdaki izleme ölçümleri açıklanmaktadır. Ölçümle
 
 Ölçümlerin tam listesi aşağıdaki tabloda gösterilmiştir:
 
-|Kapasite ölçümleri                     |Açıklama  |
+|Kapasite ölçümleri                     |Description  |
 |-------------------------------------|-------------|
 |**Kullanılabilir kapasite**               | Cihaza yazılabilen verilerin boyutunu ifade eder. Diğer bir deyişle, bu ölçüm cihazda kullanılabilir hale getirilebilir kapasitedir. <br></br>Hem cihaz hem de bulutta bir kopyası olan dosyaların yerel kopyasını silerek cihaz kapasitesini serbest bırakabilirsiniz.        |
 |**Toplam kapasite**                   | , Yerel önbelleğin toplam boyutu olarak da adlandırılan, verileri yazmak için aygıttaki toplam bayt sayısını ifade eder. <br></br> Artık bir veri diski ekleyerek var olan bir sanal cihazın kapasitesini artırabilirsiniz. VM için hiper yönetici yönetimi aracılığıyla bir veri diski ekleyin ve ardından sanal makineyi yeniden başlatın. Ağ Geçidi cihazının yerel depolama havuzu, yeni eklenen veri diskine uyum sağlayacak şekilde genişletilir. <br></br>Daha fazla bilgi için, [Hyper-V sanal makinesi için sabit sürücü ekleme](https://www.youtube.com/watch?v=EWdqUw9tTe4)bölümüne gidin. |
 
-|İşlem ölçümleri              | Açıklama         |
+|İşlem ölçümleri              | Description         |
 |-------------------------------------|---------|
 |**Karşıya yüklenen bulut baytları (cihaz)**    | Cihazınızdaki tüm paylaşımlar genelinde karşıya yüklenen tüm baytların toplamı        |
 |**Karşıya yüklenen bulut baytları (paylaşma)**     | Her bir paylaşılan bayt karşıya yüklendi. Bu ölçüm şu olabilir: <br></br> Ort, (paylaşım başına karşıya yüklenen baytların toplamı/paylaşım sayısı),  <br></br>En fazla, bir paylaşımdan karşıya yüklenen en fazla bayt sayısıdır <br></br>En az, bir paylaşımdan karşıya yüklenen bayt sayısı alt sınırı      |
@@ -74,7 +74,7 @@ Bu bölümde, cihazınızdaki izleme ölçümleri açıklanmaktadır. Ölçümle
 |**Okuma performansı (ağ)**           | Buluttan okunan tüm baytlar için sistem ağı aktarım hızını içerir. Bu görünüm, paylaşımlarla sınırlı olmayan verileri içerebilir. <br></br>Bölmek, bağlı olmayan veya etkin bağdaştırıcılar dahil olmak üzere cihazdaki tüm ağ bağdaştırıcılarının trafiğini gösterir.      |
 |**Yazma işleme (ağ)**       | Buluta yazılan tüm baytlar için sistem ağı aktarım hızını içerir. Bu görünüm, paylaşımlarla sınırlı olmayan verileri içerebilir. <br></br>Bölmek, bağlı olmayan veya etkin bağdaştırıcılar dahil olmak üzere cihazdaki tüm ağ bağdaştırıcılarının trafiğini gösterir.          |
 
-| Edge işlem ölçümleri              | Açıklama         |
+| Edge işlem ölçümleri              | Description         |
 |-------------------------------------|---------|
 |**Edge işlem-bellek kullanımı**      |           |
 |**Edge hesaplama-CPU yüzdesi**    |         |
