@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/26/2021
 ms.reviewer: cynthn
 ms.custom: template-concept; references_regions
-ms.openlocfilehash: 449eb1d65e0104e6c5c74a78901cf29c5aeb3e57
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 01c5d4aaa3896e05bc743be309df050471ece5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102609099"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582060"
 ---
 # <a name="trusted-launch-for-azure-virtual-machines-preview"></a>Azure sanal makineleri için güvenilir başlatma (Önizleme)
 
@@ -73,7 +73,7 @@ Azure, [2. nesil](generation-2.md) VM 'lerin güvenliğini artırmanın sorunsuz
 
 ## <a name="secure-boot"></a>Güvenli önyükleme
 
-Güvenilen başlatma kökünde VM 'niz için güvenli önyükleme gerçekleştirilir. Platform üretici yazılımında uygulanan bu mod, kötü amaçlı yazılım tabanlı kök takımları ve önyükleme setleri yüklemesine karşı koruma sağlar. Güvenli önyükleme, yalnızca imzalı işletim sistemlerinin ve sürücülerin önyüklenebilmesini sağlamak için geçerlidir. VM 'nizin yazılım yığını için bir "güven kökü" oluşturur. Güvenli önyükleme etkin olduğunda, tüm işletim sistemi önyükleme bileşenleri (önyükleme yükleyicisi, çekirdek, çekirdek sürücüler) güvenilen yayımcılar tarafından imzalanması gerekir. Hem Windows hem de Linux dağıtımlarını seçin güvenli önyükleme 'yi destekler. Güvenli önyükleme, görüntünün güvenilen bir yayımcı tarafından imzalandığını doğrulayamazsa, VM 'nin önyüklemesine izin verilmez. Daha fazla bilgi için, bkz. [Güvenli Önyükleme](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-secure-boot).
+Güvenilen başlatma kökünde VM 'niz için güvenli önyükleme gerçekleştirilir. Platform üretici yazılımında uygulanan bu mod, kötü amaçlı yazılım tabanlı kök takımları ve önyükleme setleri yüklemesine karşı koruma sağlar. Güvenli önyükleme, yalnızca imzalı işletim sistemlerinin ve sürücülerin önyüklenebilmesini sağlamak için geçerlidir. VM 'nizin yazılım yığını için bir "güven kökü" oluşturur. Güvenli önyükleme etkin olduğunda, tüm işletim sistemi önyükleme bileşenleri (önyükleme yükleyicisi, çekirdek, çekirdek sürücüler) güvenilen yayımcılar tarafından imzalanması gerekir. Hem Windows hem de Linux dağıtımlarını seçin güvenli önyükleme 'yi destekler. Güvenli önyükleme, görüntünün güvenilen bir yayımcı tarafından imzalandığını doğrulayamazsa, VM 'nin önyüklemesine izin verilmez. Daha fazla bilgi için, bkz. [Güvenli Önyükleme](/windows-hardware/design/device-experiences/oem-secure-boot).
 
 ## <a name="vtpm"></a>vTPM
 
@@ -87,7 +87,7 @@ Güvenilen başlatma, bulut tarafından uzaktan kanıtlama gerçekleştirmek iç
 
 HVCı, Windows çekirdek modu süreçlerini kötü amaçlı veya doğrulanmamış kodların eklenmesine ve yürütülmesine karşı koruyan güçlü bir sistem risk azaltma sürecidir. Çekirdek modu sürücülerini ve ikililerini çalıştırmadan önce denetler ve imzasız dosyaların belleğe yüklenmesini önler. Bu, çalıştırılabilir kodun yüklenmesine izin verildiğinde değiştirilmesini sağlar. VBS ve HVCı hakkında daha fazla bilgi için bkz. [sanallaştırma tabanlı güvenlik (VBS) ve hiper yönetici tarafından zorlanan kod bütünlüğü (hvcı)](https://techcommunity.microsoft.com/t5/windows-insider-program/virtualization-based-security-vbs-and-hypervisor-enforced-code/m-p/240571).
 
-Güvenilen başlatma ve VBS ile, Windows Defender Credential Guard 'ı etkinleştirebilirsiniz. Bu özellik, yalnızca ayrıcalıklı sistem yazılımlarının erişebilmesi için gizli dizileri yalıtır ve korur. Karma değer geçişi (PtH) saldırıları gibi gizli dizileri ve kimlik bilgisi hırsızlığı saldırılarına karşı yetkisiz erişimi önlemeye yardımcı olur. Daha fazla bilgi için bkz. [Credential Guard](https://docs.microsoft.com/windows/security/identity-protection/credential-guard/credential-guard).
+Güvenilen başlatma ve VBS ile, Windows Defender Credential Guard 'ı etkinleştirebilirsiniz. Bu özellik, yalnızca ayrıcalıklı sistem yazılımlarının erişebilmesi için gizli dizileri yalıtır ve korur. Karma değer geçişi (PtH) saldırıları gibi gizli dizileri ve kimlik bilgisi hırsızlığı saldırılarına karşı yetkisiz erişimi önlemeye yardımcı olur. Daha fazla bilgi için bkz. [Credential Guard](/windows/security/identity-protection/credential-guard/credential-guard).
 
 
 ## <a name="security-center-integration"></a>Güvenlik Merkezi tümleştirmesi
@@ -134,7 +134,7 @@ Güvenli önyükleme zincirinde, önyükleme işlemindeki her adım sonraki adı
 
 ### <a name="what-happens-when-an-integrity-fault-is-detected"></a>Bütünlük hatası algılandığında ne olur?
 
-Azure sanal makineleri için güvenilir başlatma, gelişmiş tehditler için izlenir. Bu tür tehditler algılanırsa bir uyarı tetiklenir. Uyarılar yalnızca Azure Güvenlik Merkezi 'nin [Standart katmanında](/azure/security-center/security-center-pricing) kullanılabilir.
+Azure sanal makineleri için güvenilir başlatma, gelişmiş tehditler için izlenir. Bu tür tehditler algılanırsa bir uyarı tetiklenir. Uyarılar yalnızca Azure Güvenlik Merkezi 'nin [Standart katmanında](../security-center/security-center-pricing.md) kullanılabilir.
 Azure Güvenlik Merkezi düzenli aralıklarla kanıtlama gerçekleştirir. Kanıtlama başarısız olursa, orta öneme sahip bir uyarı tetiklenir. Güvenilen başlatma kanıtlama aşağıdaki nedenlerden dolayı başarısız olabilir: 
 - Güvenilir bilgi Işlem tabanının (TCB) bir günlüğünü içeren, güvenilir bir taban çizgisinden (güvenli önyükleme etkinleştirildiğinde olduğu gibi) dahil olan, atsınanan bilgiler. Bu, güvenilmeyen modüllerin yüklendiğini ve işletim sisteminin tehlikede olabileceğini gösterebilir.
 - Kanıtlama teklifinin, atsınanan VM 'nin vTPM 'sinden kaynağı olarak doğrulanamadı. Bu, kötü amaçlı yazılımın mevcut olduğunu ve TPM 'ye giden trafiği kesintiye uğradığını gösterebilir. 

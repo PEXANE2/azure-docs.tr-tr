@@ -4,10 +4,10 @@ description: Bu makalede, IoT Edge üzerindeki canlı video analizlerinde izleme
 ms.topic: reference
 ms.date: 04/27/2020
 ms.openlocfilehash: e81b1e98fb30bb8876c78c8c911585f5448db8f2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101730255"
 ---
 # <a name="monitoring-and-logging"></a>İzleme ve günlüğe kaydetme
@@ -208,7 +208,7 @@ Olay türleri, bu şemaya göre bir ad alanına atanır:
 
 #### <a name="event-classes"></a>Olay sınıfları
 
-|Sınıf adı|Açıklama|
+|Sınıf adı|Description|
 |---|---|
 |Analiz  |İçerik analizinin bir parçası olarak oluşturulan olaylar.|
 |Tanılama    |Sorunların ve performansın tanılanmasına yardımcı olan olaylar.|
@@ -230,7 +230,7 @@ Olay saati bir ISO 8601 dizesinde biçimlendirilir. Olayın gerçekleştiği sü
 
 Bu ölçümler IoT Edge modülündeki canlı video analizinden raporlanır:  
 
-|Ölçüm adı|Tür|Etiketle|Açıklama|
+|Ölçüm adı|Tür|Etiketle|Description|
 |-----------|----|-----|-----------|
 |lva_active_graph_instances|Ölçer|ıothub, edge_device, module_name graph_topology|Topoloji başına toplam etkin grafik sayısı.|
 |lva_received_bytes_total|Sayaç|ıothub, edge_device, module_name, graph_topology, graph_instance, graph_node|Bir düğüm tarafından alınan toplam bayt sayısı. Yalnızca RTSP kaynakları için desteklenir.|

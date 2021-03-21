@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/09/2020
 ms.openlocfilehash: 8bd1e312463cf89ae30d54bc4a32a497fc7a9a78
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98249661"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Azure SQL veritabanı şart sözlüğü
@@ -24,7 +24,7 @@ ms.locfileid: "98249661"
 
 ## <a name="azure-sql-database"></a>Azure SQL Veritabanı
 
-|Bağlam|Terim|Daha fazla bilgi|
+|Bağlam|Süre|Daha fazla bilgi|
 |:---|:---|:---|
 |Azure hizmeti|Azure SQL veritabanı veya SQL veritabanı|[Azure SQL Veritabanı](database/sql-database-paas-overview.md)|
 |Satın alma modeli|DTU tabanlı satın alma modeli|[DTU tabanlı satın alma modeli](database/service-tiers-dtu.md)|
@@ -41,7 +41,7 @@ ms.locfileid: "98249661"
 
 ## <a name="azure-sql-managed-instance"></a>Azure SQL Yönetilen Örnek
 
-|Bağlam|Terim|Daha fazla bilgi|
+|Bağlam|Süre|Daha fazla bilgi|
 |:---|:---|:---|
 |Azure hizmeti|Azure SQL Yönetilen Örnek|[SQL Yönetilen Örnek](managed-instance/sql-managed-instance-paas-overview.md)|
 |Satın alma modeli|Sanal çekirdek tabanlı satın alma modeli|[Sanal çekirdek tabanlı satın alma modeli](database/service-tiers-vcore.md)|

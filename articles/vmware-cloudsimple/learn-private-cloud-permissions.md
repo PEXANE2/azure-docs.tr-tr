@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 1c8cfeda008955006f2fbad1df58c8047bd36541
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97898054"
 ---
 # <a name="cloudsimple-private-cloud-permission-model-of-vmware-vcenter"></a>CloudSimple özel bulut izin modeli VMware vCenter
@@ -57,7 +57,7 @@ Bireysel kullanıcılara özel bulutu yönetme izinleri vermek için, Kullanıc�
 | **Şifreleme işlemleri** | Disk Ekle <br> Kopyalama <br> Şifre Çözme <br> Doğrudan Erişim <br> Şifreleme <br> Yeni şifreleme <br> KMS 'yi yönetme <br> Şifreleme ilkelerini yönetme <br> Anahtarları yönetme <br> Geçiş <br> Yeniden Crypto <br> VM 'yi kaydetme <br> Konağı Kaydet |
 | **dvPort grubu** | Oluştur <br> Sil <br> Değiştir <br> İlke işlemi <br> Kapsam işlemi |
 | **Hatayla** | Alan ayır <br> Veri deposuna gözatamıyorum <br> Veri deposunu yapılandırma <br> Alt düzey dosya işlemleri <br> Veri deposunu taşı <br> Veri deposunu kaldır <br> Dosyayı kaldır <br> Veri deposunu yeniden adlandır <br> Sanal makine dosyalarını Güncelleştir <br> Sanal makine meta verilerini Güncelleştir |
-| **ESX Aracısı Yöneticisi** | Config <br> Değiştir <br> Görüntüle |
+| **ESX Aracısı Yöneticisi** | Config <br> Değiştir <br> Görünüm |
 | **Dahili numara** | Uzantıyı Kaydet <br> Uzantı kaydını sil <br> Uzantıyı Güncelleştir |
 | **Dış istatistik sağlayıcısı**| Kaydol <br> Kaydı Kaldır <br> Güncelleştir |
 | **Klasör** | Klasör oluştur <br> Klasörü Sil <br> Klasörü taşı <br> Klasörü yeniden adlandır |
@@ -68,13 +68,13 @@ Bireysel kullanıcılara özel bulutu yönetme izinleri vermek için, Kullanıc�
 | **vSphere etiketleme** | VSphere etiketi atama veya atamasını kaldırma <br> VSphere etiketi oluştur <br> VSphere etiket kategorisi oluştur <br> VSphere etiketini Sil <br> VSphere etiket kategorisini Sil <br> VSphere etiketini Düzenle <br> VSphere etiket kategorisini Düzenle <br> Kategori Için UsedBy alanını değiştirme <br> Etiket Için UsedBy alanını değiştirme |
 | **Ağ** | Ağ ata <br> Yapılandırma <br> Ağı taşı <br> Kaldır |
 | **Performans** | Aralıkları Değiştir |
-| **Konak profili** | Görüntüle |
+| **Konak profili** | Görünüm |
 | **Kaynak** | Öneriyi Uygula <br> Sanal uygulamayı kaynak havuzuna ata <br> Sanal makineyi kaynak havuzuna ata <br> Kaynak havuzu oluştur <br> Sanal makineyi kapalı geçir <br> Sanal makinede güç geçişi gerçekleştir <br> Kaynak havuzunu Değiştir <br> Kaynak havuzunu taşı <br> VMotion sorgula <br> Kaynak havuzunu kaldır <br> Kaynak havuzunu yeniden adlandır |
 | **Zamanlanmış görev** | Görev oluşturma <br> Görevi Değiştir <br> Görevi kaldır <br> Görevi çalıştır |
 | **Oturumlar** | Kullanıcının kimliğine bürün <br> İleti <br> Oturumu doğrula <br> Oturumları görüntüle ve durdur |
 | **Veri deposu kümesi** | Veri deposu kümesi yapılandırma |
 | **Profil temelli depolama** | Profil temelli depolama güncelleştirmesi <br> Profil temelli depolama alanı görünümü |
-| **Depolama görünümleri** | Hizmeti Yapılandır <br> Görüntüle |
+| **Depolama görünümleri** | Hizmeti Yapılandır <br> Görünüm |
 | **Görevler** | Görev Oluştur <br> Güncelleştirme görevi |
 | **Aktarım Hizmeti**| Yönetme <br> İzleyici |
 | **vApp** | Sanal makine Ekle <br> Kaynak havuzu ata <br> VApp atama <br> Kopyalama <br> Oluştur <br> Sil <br> Dışarı Aktarma <br> İçeri Aktar <br> Taşı <br> Kapatma <br> Açma <br> Rename <br> Askıya Alma <br> Kaydı Kaldır <br> OVF ortamını görüntüle <br> vApp uygulama yapılandırması <br> vApp örneği yapılandırması <br> yapılandırmaya göre vApp Managed <br> vApp kaynak yapılandırması |
@@ -119,7 +119,7 @@ Bireysel kullanıcılara özel bulutu yönetme izinleri vermek için, Kullanıc�
 | **Ana bilgisayar > yapılandırması** | Depolama bölümü yapılandırması |
 | **Veri deposu kümesi** | Veri deposu kümesi yapılandırma |
 | **Profil temelli depolama** | Profil temelli depolama güncelleştirmesi <br> Profil temelli depolama alanı görünümü |
-| **Depolama görünümleri** | Hizmeti Yapılandır <br> Görüntüle |
+| **Depolama görünümleri** | Hizmeti Yapılandır <br> Görünüm |
 
 ### <a name="cloud-network-admin-role"></a>Bulut-ağ-yönetici-rol
 

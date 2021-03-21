@@ -8,17 +8,17 @@ ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
 ms.openlocfilehash: 6d31bd0911b5cf765215e6a482a39b2458c4ba0d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101696195"
 ---
 # <a name="register-and-scan-a-sap-s4hana-source-preview"></a>SAP S/4HANA kaynağını kaydetme ve tarama (Önizleme)
 
 Bu makalede bir SAP S/4HANA kaynağını Takiview 'a kaydetme ve tarama ayarlama özetlenmektedir.
 
-## <a name="supported-capabilities"></a>Desteklenen yetenekler
+## <a name="supported-capabilities"></a>Desteklenen özellikler
 
 SAP S/4HANA kaynağı, bir SAP S/4HANA örneğinden meta verileri ayıklamak üzere **tam taramayı** destekler ve veri varlıkları arasında **kökenini** getirir.
 

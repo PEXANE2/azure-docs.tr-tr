@@ -10,10 +10,10 @@ services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
 ms.openlocfilehash: b6fcf39e05c4649503f0b7a80aadaaa16df24674
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98599556"
 ---
 # <a name="show-traffic-on-the-map"></a>Haritada trafiği göster
@@ -23,7 +23,7 @@ Azure haritalar 'da kullanılabilen iki tür trafik verisi vardır:
 - Olay verileri-oluşturma, yol kapanışları ve kazalardan dolayı gibi şeyler için nokta ve hat tabanlı verilerden oluşur.
 - Akış verileri-yollar üzerindeki trafik akışı hakkında ölçümler sağlar. Genellikle trafik akışı verileri, yolların renklendirmek için kullanılır. Renkler, akışı yavaşlatan, hız sınırına veya başka bir ölçüye göre ne kadar trafik altına göre belirlenir. Haritanın trafik seçeneğine geçirilebilecek dört değer vardır `flow` .
 
-    |Akış değeri | Açıklama|
+    |Akış değeri | Description|
     | :-- | :-- |
     | `none` | Harita üzerinde trafik verilerini görüntülemiyor |
     | `relative` | Yolun serbest akış hızına göre trafik verilerini gösterir |

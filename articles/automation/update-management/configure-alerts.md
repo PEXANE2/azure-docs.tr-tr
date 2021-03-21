@@ -3,14 +3,14 @@ title: Azure Otomasyonu Güncelleştirme Yönetimi için uyarı oluşturma
 description: Bu makalede, Azure uyarılarını güncelleştirme değerlendirmelerinin veya dağıtımların durumu hakkında bilgilendirmek üzere nasıl yapılandıracağınız açıklanır.
 services: automation
 ms.subservice: update-management
-ms.date: 10/19/2020
+ms.date: 03/15/2021
 ms.topic: conceptual
-ms.openlocfilehash: 74207fe088034ff8d102fb2254d8ab78a6d57671
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 224a7b5457a099fd763ac657349fc5497824ab76
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100579708"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601428"
 ---
 # <a name="how-to-create-alerts-for-update-management"></a>Güncelleştirme Yönetimi için uyarı oluşturma
 
@@ -38,51 +38,37 @@ Güncelleştirme dağıtımının durumunu bilmenizi sağlamak üzere uyarılar�
 
 1. Otomasyon hesabınızda, **izleme** altında **Uyarılar** ' ı seçin ve ardından **Yeni uyarı kuralı**' nı seçin.
 
-2. **Uyarı kuralı oluştur** sayfasında, Otomasyon hesabınız kaynak olarak zaten seçilidir. Değiştirmek isterseniz, **Kaynağı Düzenle**' yi seçin.
+1. **Uyarı kuralı oluştur** sayfasında, Otomasyon hesabınız kaynak olarak zaten seçilidir. Değiştirmek isterseniz, **Kaynağı Düzenle**' yi seçin.
 
-3. Kaynak seçin sayfasında, **kaynak türüne göre filtrele** açılan listesinden **Otomasyon hesapları** ' nı seçin.
+1. Kaynak seçin sayfasında, **kaynak türüne göre filtrele** açılan listesinden **Otomasyon hesapları** ' nı seçin.
 
-4. Kullanmak istediğiniz Otomasyon hesabını seçin ve **bitti**' yi seçin.
+1. Kullanmak istediğiniz Otomasyon hesabını seçin ve **bitti**' yi seçin.
 
-5. Gereksinime uygun olan sinyali seçmek için **Koşul Ekle** ' yi seçin.
+1. Gereksinime uygun olan sinyali seçmek için **Koşul Ekle** ' yi seçin.
 
-6. Bir boyut için listeden geçerli bir değer seçin. İstediğiniz değer listede yoksa, boyutun yanındaki ' ı seçin **\+** ve özel adı yazın. Ardından aranacak değeri seçin. Bir boyutun tüm değerlerini seçmek istiyorsanız, **Seç \*** düğmesini seçin. Boyut için bir değer seçmezseniz Güncelleştirme Yönetimi bu boyutu yoksayar.
+1. Bir boyut için listeden geçerli bir değer seçin. İstediğiniz değer listede yoksa, boyutun yanındaki ' ı seçin **\+** ve özel adı yazın. Ardından aranacak değeri seçin. Bir boyutun tüm değerlerini seçmek istiyorsanız, **Seç \*** düğmesini seçin. Boyut için bir değer seçmezseniz Güncelleştirme Yönetimi bu boyutu yoksayar.
 
     ![Sinyal mantığını yapılandırma](./media/manage-updates-for-vm/signal-logic.png)
 
-7. **Uyarı mantığı** altında, **zaman toplama** ve **eşik** alanlarına değerler girip **bitti**' yi seçin.
+1. **Uyarı mantığı** altında, **zaman toplama** ve **eşik** alanlarına değerler girip **bitti**' yi seçin.
 
-8. Sonraki sayfada, uyarı için bir ad ve açıklama girin.
+1. Sonraki sayfada, uyarı için bir ad ve açıklama girin.
 
-9. Başarısız bir çalıştırma için başarılı bir çalıştırma veya **bilgilendirme (sev 1)** Için **önem derecesi** alanını **bilgilendirici (sev 2)** olarak ayarlayın.
+1. Başarısız bir çalıştırma için başarılı bir çalıştırma veya **bilgilendirme (sev 1)** Için **önem derecesi** alanını **bilgilendirici (sev 2)** olarak ayarlayın.
 
     ![Ekran görüntüsü, uyarı kuralı adı, açıklaması ve önem derecesi alanları vurgulanmış şekilde uyarı ayrıntılarını tanımla bölümünü gösterir.](./media/manage-updates-for-vm/define-alert-details.png)
 
-10. Uyarı kuralını etkinleştirmek için **Evet** ' i seçin.
+1. Uyarı kuralını etkinleştirmek için **Evet** ' i seçin.
 
 ## <a name="configure-action-groups-for-your-alerts"></a>Uyarılarınız için eylem gruplarını yapılandırma
 
 Uyarılarınız yapılandırıldıktan sonra, birden çok uyarı arasında kullanılacak bir eylem grubu olan bir eylem grubu ayarlayabilirsiniz. Eylemler e-posta bildirimleri, runbook 'lar, Web kancaları ve çok daha fazlasını içerebilir. Eylem grupları hakkında daha fazla bilgi edinmek için bkz. [Eylem grupları oluşturma ve yönetme](../../azure-monitor/alerts/action-groups.md).
 
-1. Bir uyarı seçin ve ardından **Yeni oluştur** **eylem grupları**' nı seçin.
+1. Bir uyarı seçin ve **Eylemler** altında **eylem grupları Ekle** ' yi seçin. Bu işlem, **Bu uyarı kuralı bölmesine eklenecek bir eylem grubu Seç ' i** görüntüler.
 
-2. Eylem grubu için bir tam ad ve kısa bir ad girin. Güncelleştirme Yönetimi, belirtilen grubu kullanarak bildirim gönderirken kısa adı kullanır.
+   :::image type="content" source="./media/manage-updates-for-vm/select-an-action-group.png" alt-text="Kullanım ve tahmini maliyetler.":::
 
-3. **Eylemler**' in altında, eylemi belirten bir ad girin, örneğin **e-posta bildirimi**.
-
-4. **Eylem türü** için uygun türü seçin (örneğin, **e-posta/SMS/Push/Voice**).
-
-5. **Ayrıntıları düzenle** seçeneğini belirleyin.
-
-6. Eylem türü için bölmeyi girin. Örneğin, **e-posta/SMS/Push/seskullanacaksanız**, bir eylem adı girin, **e-posta** kutusunu seçin, geçerli bir e-posta adresi girin ve **Tamam**' ı seçin.
-
-    ![E-posta eylem grubu yapılandırma](./media/manage-updates-for-vm/configure-email-action-group.png)
-
-7. Eylem grubu ekle bölmesinde **Tamam**'ı seçin.
-
-8. Bir uyarı e-postası için e-posta konusunu özelleştirebilirsiniz. **Kural oluştur** altında **eylemleri Özelleştir** ' i seçin ve **e-posta konusu**' ı seçin
-
-9. İşleminiz bittiğinde **Uyarı kuralı oluştur**'u seçin.
+1. İliştirilecek eylem grubunun onay kutusunu seçin ve Seç ' e basın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

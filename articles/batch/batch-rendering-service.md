@@ -6,10 +6,10 @@ ms.author: markscu
 ms.date: 01/14/2021
 ms.topic: how-to
 ms.openlocfilehash: 1cd07f9322837c03e15aaeabec993820deb3170a
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98232123"
 ---
 # <a name="rendering-using-azure"></a>Azure ile işleme
@@ -43,7 +43,7 @@ Birçok nedenden dolayı işleme, Azure için kusursuz bir iş yüküdür:
 
 En yaygın durum,, PipelineFX Quya, Royal render, Thinkbox son tarihi veya özel bir uygulama gibi bir işleme yönetimi uygulaması tarafından yönetilmekte olan mevcut bir şirket içi oluşturma grubu olması içindir.  Gereksinim, Azure VM 'Leri kullanarak şirket içi işleme grubu kapasitesini genişletmelidir.
 
-Azure altyapı ve Hizmetleri, Azure 'un Şirket içi kapasiteyi tamamlamak için kullanıldığı bir karma ortam oluşturmak için kullanılır. Örneğin:
+Azure altyapı ve Hizmetleri, Azure 'un Şirket içi kapasiteyi tamamlamak için kullanıldığı bir karma ortam oluşturmak için kullanılır. Örnek:
 
 * Azure kaynaklarını şirket içi işleme grubuyla aynı ağa yerleştirmek için bir [sanal ağ](../virtual-network/virtual-networks-overview.md) kullanın.
 * Bant genişliği kullanımını ve gecikme süresini azaltmak için Azure 'da kaynak dosyaları önbelleğe almak için Azure 'da veya Azure [HPC önbelleğinde](../hpc-cache/hpc-cache-overview.md) [avere vfxt](../avere-vfxt/avere-vfxt-overview.md) kullanın, performansı en üst düzeye çıkarın

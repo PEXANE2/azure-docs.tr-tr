@@ -13,10 +13,10 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 226e94510709b37a7e6b1aae90a7e0ec5b4222b9
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103199569"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>Xamarin uygulamalarında Microsoft Authenticator veya Intune Şirket Portalı kullanma
@@ -65,7 +65,7 @@ Daha fazla bilgi için bkz. [Anahtarlık erişimini etkinleştirme](msal-net-xam
 
 ### <a name="step-3-update-appdelegate-to-handle-the-callback"></a>3. Adım: geri aramayı işlemek için AppDelegate 'i güncelleştirme
 
-MSAL.NET aracı çağırdığında, aracı, sınıfının yöntemi aracılığıyla uygulamanıza geri çağrı yapılır `OpenUrl` `AppDelegate` . MSAL, aracının yanıtını beklediği için uygulamanızın MSAL.NET geri çağırmak için birlikte çalışması gerekir. Bu ortak işlemi etkinleştirmek için, *AppDelegate.cs* dosyasını aşağıdaki yöntemi geçersiz kılmak üzere güncelleştirin.
+MSAL.NET aracı çağırdığında, aracı, sınıfının yöntemi aracılığıyla uygulamanıza geri çağrı yapılır `OpenUrl` `AppDelegate` . MSAL, aracının yanıtını beklediği için uygulamanızın MSAL.NET geri çağırmak için birlikte çalışması gerekir. Bu ortak işlemi etkinleştirmek için *Appdelegate. cs* dosyasını aşağıdaki yöntemi geçersiz kılmak üzere güncelleştirin.
 
 ```csharp
 public override bool OpenUrl(UIApplication app, NSUrl url,
@@ -91,23 +91,23 @@ Bu yöntem, uygulama her başlatıldığında çağrılır. Aracıdan gelen yan�
 
 ### <a name="step-4-set-uiviewcontroller"></a>4. Adım: UIViewController () ayarlama
 
-Hala *AppDelegate.cs* dosyasında bir nesne penceresi ayarlayın. Genellikle Xamarin iOS için nesne penceresini ayarlamanız gerekmez, ancak aracıdan yanıt göndermek ve almak için bir nesne penceresi gerekir.
+Hala *Appdelegate. cs* dosyasında bir nesne penceresi ayarlayın. Genellikle Xamarin iOS için nesne penceresini ayarlamanız gerekmez, ancak aracıdan yanıt göndermek ve almak için bir nesne penceresi gerekir.
 
 Nesne penceresini ayarlamak için:
 
-1. *AppDelegate.cs* dosyasında, `App.RootViewController` yeni olarak ayarlayın `UIViewController()` . Bu atama, aracı çağrısının dahil edilmesini sağlar `UIViewController` . Bu ayar yanlış atanmışsa, şu hatayı alabilirsiniz:
+1. *Appdelegate. cs* dosyasında, `App.RootViewController` yeni olarak ayarlayın `UIViewController()` . Bu atama, aracı çağrısının dahil edilmesini sağlar `UIViewController` . Bu ayar yanlış atanmışsa, şu hatayı alabilirsiniz:
 
       `"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker"`
 
 1. `AcquireTokenInteractive`Çağrıda, `.WithParentActivityOrWindow(App.RootViewController)` öğesini kullanın ve ardından kullanacağınız nesne penceresi başvurusunu geçirin.
 
-    *App.cs* içinde:
+    *App. cs*'de:
 
     ```csharp
        public static object RootViewController { get; set; }
     ```
 
-    *AppDelegate.cs* içinde:
+    *Appdelegate. cs* dosyasında:
 
     ```csharp
        LoadApplication(new App());

@@ -7,10 +7,10 @@ ms.date: 10/15/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 42502864cfed177adfe487e9c59247579628fec8
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98539075"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Windows sanal masaüstü hizmeti bağlantıları
@@ -48,7 +48,7 @@ Bunu çözmek için tüm yapmanız gereken, kullanıcıları uygulama grupların
 
 Bu durum, bir CSP sağlayıcısı aboneliği oluşturup müşteriye aktarıldığında de gerçekleşebilir. Bu sorunu çözmek için kaynak sağlayıcıyı yeniden kaydedin.
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 2. **Aboneliğe** gidin ve aboneliğinizi seçin.
 3. Sayfanın sol tarafındaki menüde **kaynak sağlayıcısı**' nı seçin.
 4. **Microsoft. DesktopVirtualization** bulun ve seçin, sonra **yeniden kaydet**' i seçin.

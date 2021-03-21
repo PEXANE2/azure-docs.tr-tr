@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 12/28/2020
 ms.author: shhazam
 ms.openlocfilehash: 2d82aaadf158e45cb8faaeee0b9b4e0fc80a3420
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98247344"
 ---
 # <a name="connect-your-data-from-defender-for-iot-to-azure-sentinel"></a>IoT için Defender 'daki verilerinizi Azure Sentinel 'e bağlama 
@@ -25,7 +25,7 @@ Tüm IoT olayları için Defender 'ı Azure Sentinel 'e aktarmak üzere IoT içi
 
 Bu tümleştirme, kuruluşların genellikle onu ve sınırları aşan çok aşamalı saldırıları hızla algılamasını sağlar. Ayrıca, IoT 'nin Azure Sentinel 'in güvenlik düzenlemesi, otomasyonu ve yanıtı (SOAR) özellikleri ile tümleştirilmesi için Defender, yerleşik olarak iyileştirilmiş PlayBook 'lar kullanılarak otomatik yanıt ve önlemeye imkan tanıyor. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure Sentinel 'in dağıtıldığı çalışma alanında **okuma** ve **yazma** izinleri
 - **IoT Için Defender 'ın** ilgili IoT Hub **etkinleştirilmiş** olması gerekir
