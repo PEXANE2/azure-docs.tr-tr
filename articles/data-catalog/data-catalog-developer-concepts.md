@@ -6,25 +6,28 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: b65697c224f612a1bc9d5bfa193355832cafd73f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddeab4838feb07d1101993cab4ebc86581b4d8b1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88799256"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674708"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Azure Veri Kataloğu geliştirici kavramları
-Microsoft **Azure Veri Kataloğu** , veri kaynağı bulma ve veri kaynağı meta verilerini alma için yetenekler sağlayan, tam olarak yönetilen bir bulut hizmetidir. Geliştiriciler hizmeti REST API 'Leri aracılığıyla kullanabilir. Hizmette uygulanan kavramların anlaşılmasına, geliştiricilerin **Azure Veri Kataloğu**ile başarıyla tümleştirileceği önemli bir öneme sahiptir.
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
+
+Microsoft **Azure Veri Kataloğu** , veri kaynağı bulma ve veri kaynağı meta verilerini alma için yetenekler sağlayan, tam olarak yönetilen bir bulut hizmetidir. Geliştiriciler hizmeti REST API 'Leri aracılığıyla kullanabilir. Hizmette uygulanan kavramların anlaşılmasına, geliştiricilerin **Azure Veri Kataloğu** ile başarıyla tümleştirileceği önemli bir öneme sahiptir.
 
 ## <a name="key-concepts"></a>Önemli kavramlar 
-**Azure Veri Kataloğu** kavramsal modeli, dört temel kavrama dayalıdır: **Katalog**, **Kullanıcılar**, **varlıklar**ve **ek açıklamalar**.
+**Azure Veri Kataloğu** kavramsal modeli, dört temel kavrama dayalıdır: **Katalog**, **Kullanıcılar**, **varlıklar** ve **ek açıklamalar**.
 
 ![Azure Veri Kataloğu kavramsal model çizimi](./media/data-catalog-developer-concepts/concept2.png)
 
 ### <a name="catalog"></a>Katalog
 Bir **Katalog** , bir kuruluşun depoladığı tüm meta veriler için en üst düzey kapsayıcıdır. Azure hesabı başına bir **katalogda** izin verilir. Kataloglar bir Azure aboneliğine bağlıdır, ancak bir hesap birden çok aboneliğe sahip olsa bile, belirli bir Azure hesabı için yalnızca bir **Katalog** oluşturulabilir.
 
-Bir katalog, **kullanıcıları** ve **varlıkları**içerir.
+Bir katalog, **kullanıcıları** ve **varlıkları** içerir.
 
 ### <a name="users"></a>Kullanıcılar
 Kullanıcılar, katalogda eylem gerçekleştirme izinleri olan güvenlik ilkeleridir (katalogda arama yapın, öğe ekleme, düzenleme veya kaldırma, vb.).
@@ -40,7 +43,7 @@ Azure Veri Kataloğu, kimlik ve erişim yönetimi için Azure Active Directory k
 
 Bir varlığın ayrıntı düzeyi veri kaynağına göre farklılık gösterir. SQL Server veya Oracle Database için bir varlık bir tablo veya görünüm olabilir. SQL Server Analysis Services için bir varlık bir ölçü, bir boyut veya bir ana performans göstergesi (KPI) olabilir. SQL Server Reporting Services, bir varlık bir rapordur.
 
-Bir **varlık** , bir katalogdan eklediğiniz veya kaldırdığınız şeydir. **Aramadan**geri alacağınız sonuç birimidir.
+Bir **varlık** , bir katalogdan eklediğiniz veya kaldırdığınız şeydir. **Aramadan** geri alacağınız sonuç birimidir.
 
 Bir **varlık** adından, konumundan ve türünden, daha fazla açıklama içeren açıklamalardan oluşur.
 
@@ -74,13 +77,13 @@ UX daha sonra birleşiminin nasıl görüntüleneceğini seçebilir. Görüntül
 Temel kavramlar bölümünde sunulan **Azure Veri Kataloğu** nesne modeli, varlıklar veya ek açıklamalar içerebilen öğeleri içerir. Öğelerin özellikleri vardır, bu, isteğe bağlı veya gerekli olabilir. Bazı özellikler tüm öğeler için geçerlidir. Bazı özellikler tüm varlıklar için geçerlidir. Bazı özellikler yalnızca belirli varlık türlerine uygulanır.
 
 ### <a name="system-properties"></a>Sistem özellikleri
-<table><tr><td><b>Özellik adı</b></td><td><b>Veri türü</b></td><td><b>Açıklamalar</b></td></tr><tr><td>timestamp</td><td>DateTime</td><td>Öğenin son değiştirildiği zaman. Bu alan, bir öğe eklendiğinde ve bir öğe her güncelleştirildiği zaman sunucu tarafından oluşturulur. Bu özelliğin değeri, yayımlama işlemleri girişi sırasında yok sayılır.</td></tr><tr><td>ID</td><td>Kullanılmamışsa</td><td>Öğenin mutlak URL 'si (salt okunurdur). Bu öğe için benzersiz adreslenebilir URI 'dir.  Bu özelliğin değeri, yayımlama işlemleri girişi sırasında yok sayılır.</td></tr><tr><td>tür</td><td>Dize</td><td>Varlığın türü (salt okunurdur).</td></tr><tr><td>özelliği</td><td>Dize</td><td>Katalogdaki öğeleri güncelleştiren işlemler gerçekleştirilirken iyimser eşzamanlılık denetimi için kullanılabilen öğenin sürümüne karşılık gelen bir dize. "*", herhangi bir değeri eşleştirmek için kullanılabilir.</td></tr></table>
+<table><tr><td><b>Özellik Adı</b></td><td><b>Veri türü</b></td><td><b>Açıklamalar</b></td></tr><tr><td>timestamp</td><td>DateTime</td><td>Öğenin son değiştirildiği zaman. Bu alan, bir öğe eklendiğinde ve bir öğe her güncelleştirildiği zaman sunucu tarafından oluşturulur. Bu özelliğin değeri, yayımlama işlemleri girişi sırasında yok sayılır.</td></tr><tr><td>ID</td><td>Kullanılmamışsa</td><td>Öğenin mutlak URL 'si (salt okunurdur). Bu öğe için benzersiz adreslenebilir URI 'dir.  Bu özelliğin değeri, yayımlama işlemleri girişi sırasında yok sayılır.</td></tr><tr><td>tür</td><td>Dize</td><td>Varlığın türü (salt okunurdur).</td></tr><tr><td>özelliği</td><td>Dize</td><td>Katalogdaki öğeleri güncelleştiren işlemler gerçekleştirilirken iyimser eşzamanlılık denetimi için kullanılabilen öğenin sürümüne karşılık gelen bir dize. "*", herhangi bir değeri eşleştirmek için kullanılabilir.</td></tr></table>
 
 ### <a name="common-properties"></a>Ortak özellikler
 Bu özellikler tüm kök varlık türleri ve tüm ek açıklama türleri için geçerlidir.
 
 <table>
-<tr><td><b>Özellik adı</b></td><td><b>Veri türü</b></td><td><b>Açıklamalar</b></td></tr>
+<tr><td><b>Özellik Adı</b></td><td><b>Veri türü</b></td><td><b>Açıklamalar</b></td></tr>
 <tr><td>fromSourceSystem</td><td>Boole</td><td>Öğelerin verilerinin bir kaynak sistemden türetildiğini (SQL Server veritabanı, Oracle Database) veya bir kullanıcı tarafından yazılmış olduğunu gösterir.</td></tr>
 </table>
 
@@ -88,21 +91,21 @@ Bu özellikler tüm kök varlık türleri ve tüm ek açıklama türleri için g
 <p>
 Bu özellikler tüm kök varlık türleri için geçerlidir.
 
-<table><tr><td><b>Özellik adı</b></td><td><b>Veri türü</b></td><td><b>Açıklamalar</b></td></tr><tr><td>name</td><td>Dize</td><td>Veri kaynağı konum bilgileri 'nden türetilmiş bir ad</td></tr><tr><td>DSL</td><td>DataSourceLocation</td><td>Veri kaynağını benzersiz bir şekilde açıklar ve varlığın tanımlayıcılarından biridir. (Bkz. çift kimlik bölümü).  DSL yapısı protokol ve kaynak türüne göre farklılık gösterir.</td></tr><tr><td>dataSource</td><td>DataSourceInfo</td><td>Varlık türü hakkında daha fazla ayrıntı.</td></tr><tr><td>lastRegisteredBy</td><td>SecurityPrincipal</td><td>Bu varlığı en son kaydeden kullanıcıyı açıklar.  Kullanıcı için benzersiz KIMLIĞI (UPN) ve görünen adı (soyadı ve adı) içerir.</td></tr><tr><td>Kimliği</td><td>Dize</td><td>Veri kaynağı için kapsayıcı varlığının KIMLIĞI. Bu özellik kapsayıcı türü için desteklenmiyor.</td></tr></table>
+<table><tr><td><b>Özellik Adı</b></td><td><b>Veri türü</b></td><td><b>Açıklamalar</b></td></tr><tr><td>name</td><td>Dize</td><td>Veri kaynağı konum bilgileri 'nden türetilmiş bir ad</td></tr><tr><td>DSL</td><td>DataSourceLocation</td><td>Veri kaynağını benzersiz bir şekilde açıklar ve varlığın tanımlayıcılarından biridir. (Bkz. çift kimlik bölümü).  DSL yapısı protokol ve kaynak türüne göre farklılık gösterir.</td></tr><tr><td>dataSource</td><td>DataSourceInfo</td><td>Varlık türü hakkında daha fazla ayrıntı.</td></tr><tr><td>lastRegisteredBy</td><td>SecurityPrincipal</td><td>Bu varlığı en son kaydeden kullanıcıyı açıklar.  Kullanıcı için benzersiz KIMLIĞI (UPN) ve görünen adı (soyadı ve adı) içerir.</td></tr><tr><td>Kimliği</td><td>Dize</td><td>Veri kaynağı için kapsayıcı varlığının KIMLIĞI. Bu özellik kapsayıcı türü için desteklenmiyor.</td></tr></table>
 
 ### <a name="common-non-singleton-annotation-properties"></a>Ortak tekil olmayan ek açıklama özellikleri
 Bu özellikler, tekil olmayan ek açıklama türleri (varlık başına birden fazla olmasına izin verilen ek açıklamalar) için geçerlidir.
 
 <table>
-<tr><td><b>Özellik adı</b></td><td><b>Veri türü</b></td><td><b>Açıklamalar</b></td></tr>
+<tr><td><b>Özellik Adı</b></td><td><b>Veri türü</b></td><td><b>Açıklamalar</b></td></tr>
 <tr><td>anahtar</td><td>Dize</td><td>Geçerli koleksiyonda ek açıklamayı benzersiz bir şekilde tanımlayan Kullanıcı tarafından belirtilen anahtar. Anahtar uzunluğu 256 karakteri aşamaz.</td></tr>
 </table>
 
 ### <a name="root-asset-types"></a>Kök varlık türleri
 Kök varlık türleri, katalogda kayıtlı olabilecek çeşitli veri varlıkları türlerini temsil eden türlerdir. Her kök türü için, görünümde yer alan varlık ve ek açıklamaları açıklayan bir görünüm vardır. Bir varlık REST API kullanılarak yayımlandığında görünüm adı karşılık gelen {view_name} URL segmentinde kullanılmalıdır.
 
-<table><tr><td><b>Varlık türü (görünüm adı)</b></td><td><b>Ek özellikler</b></td><td><b>Veri türü</b></td><td><b>İzin verilen ek açıklamalar</b></td><td><b>Açıklamalar</b></td></tr><tr><td>Table ("Tables")</td><td></td><td></td><td>Açıklama<p>FriendlyName<p>Etiket<p>Şema<p>ColumnDescription<p>ColumnTag<p> Uzman<p>Önizleme<p>AccessInstruction<p>TableDataProfile<p>ColumnDataProfile<p>ColumnDataClassification<p>Belgeler<p></td><td>Tablo tüm tablo verilerini temsil eder.  Örneğin: SQL tablosu, SQL görünümü, Analysis Services tablolu tablo, Analysis Services çok boyutlu boyut, Oracle tablosu vb.   </td></tr><tr><td>Ölçü ("ölçüler")</td><td></td><td></td><td>Açıklama<p>FriendlyName<p>Etiket<p>Uzman<p>AccessInstruction<p>Belgeler<p></td><td>Bu tür bir Analysis Services ölçüsünü temsil eder.</td></tr><tr><td></td><td>meye</td><td>Sütun</td><td></td><td>Ölçüyü açıklayan meta veriler</td></tr><tr><td></td><td>ıshesaplanan </td><td>Boole</td><td></td><td>Ölçünün hesaplanıp hesaplanmayacağını belirtir.</td></tr><tr><td></td><td>measureGroup</td><td>Dize</td><td></td><td>Ölçü için fiziksel kapsayıcı</td></tr><td>KPI ("KPI 'lar")</td><td></td><td></td><td>Açıklama<p>FriendlyName<p>Etiket<p>Uzman<p>AccessInstruction<p>Belgeler</td><td></td></tr><tr><td></td><td>measureGroup</td><td>Dize</td><td></td><td>Ölçü için fiziksel kapsayıcı</td></tr><tr><td></td><td>goalExpression</td><td>Dize</td><td></td><td>Bir MDX sayısal ifadesi veya KPI 'nın hedef değerini döndüren bir hesaplama.</td></tr><tr><td></td><td>valueExpression</td><td>Dize</td><td></td><td>KPI 'nın gerçek değerini döndüren MDX sayısal ifadesi.</td></tr><tr><td></td><td>tüte Sexpression</td><td>Dize</td><td></td><td>Belirtilen zaman noktasındaki KPI 'nın durumunu temsil eden bir MDX ifadesi.</td></tr><tr><td></td><td>trendExpression</td><td>Dize</td><td></td><td>KPI değerini zaman içinde değerlendiren bir MDX ifadesi. Eğilim, belirli bir iş bağlamında yararlı olan herhangi bir zaman tabanlı ölçüt olabilir.</td>
-<tr><td>Rapor ("Reports")</td><td></td><td></td><td>Açıklama<p>FriendlyName<p>Etiket<p>Uzman<p>AccessInstruction<p>Belgeler<p></td><td>Bu tür bir SQL Server Reporting Services raporunu temsil eder </td></tr><tr><td></td><td>assetCreatedDate</td><td>Dize</td><td></td><td></td></tr><tr><td></td><td>assetCreatedBy</td><td>Dize</td><td></td><td></td></tr><tr><td></td><td>assetModifiedDate</td><td>Dize</td><td></td><td></td></tr><tr><td></td><td>assetModifiedBy</td><td>Dize</td><td></td><td></td></tr><tr><td>Kapsayıcı ("kapsayıcılar")</td><td></td><td></td><td>Açıklama<p>FriendlyName<p>Etiket<p>Uzman<p>AccessInstruction<p>Belgeler<p></td><td>Bu tür, bir SQL veritabanı, Azure Blob kapsayıcısı veya Analysis Services modeli gibi diğer varlıkların bir kapsayıcısını temsil eder.</td></tr></table>
+<table><tr><td><b>Varlık türü (görünüm adı)</b></td><td><b>Ek özellikler</b></td><td><b>Veri türü</b></td><td><b>İzin verilen ek açıklamalar</b></td><td><b>Açıklamalar</b></td></tr><tr><td>Table ("Tables")</td><td></td><td></td><td>Description<p>FriendlyName<p>Etiket<p>Şema<p>ColumnDescription<p>ColumnTag<p> Uzman<p>Önizleme<p>AccessInstruction<p>TableDataProfile<p>ColumnDataProfile<p>ColumnDataClassification<p>Belgeler<p></td><td>Tablo tüm tablo verilerini temsil eder.  Örneğin: SQL tablosu, SQL görünümü, Analysis Services tablolu tablo, Analysis Services çok boyutlu boyut, Oracle tablosu vb.   </td></tr><tr><td>Ölçü ("ölçüler")</td><td></td><td></td><td>Description<p>FriendlyName<p>Etiket<p>Uzman<p>AccessInstruction<p>Belgeler<p></td><td>Bu tür bir Analysis Services ölçüsünü temsil eder.</td></tr><tr><td></td><td>meye</td><td>Sütun</td><td></td><td>Ölçüyü açıklayan meta veriler</td></tr><tr><td></td><td>ıshesaplanan </td><td>Boole</td><td></td><td>Ölçünün hesaplanıp hesaplanmayacağını belirtir.</td></tr><tr><td></td><td>measureGroup</td><td>Dize</td><td></td><td>Ölçü için fiziksel kapsayıcı</td></tr><td>KPI ("KPI 'lar")</td><td></td><td></td><td>Description<p>FriendlyName<p>Etiket<p>Uzman<p>AccessInstruction<p>Belgeler</td><td></td></tr><tr><td></td><td>measureGroup</td><td>Dize</td><td></td><td>Ölçü için fiziksel kapsayıcı</td></tr><tr><td></td><td>goalExpression</td><td>Dize</td><td></td><td>Bir MDX sayısal ifadesi veya KPI 'nın hedef değerini döndüren bir hesaplama.</td></tr><tr><td></td><td>valueExpression</td><td>Dize</td><td></td><td>KPI 'nın gerçek değerini döndüren MDX sayısal ifadesi.</td></tr><tr><td></td><td>tüte Sexpression</td><td>Dize</td><td></td><td>Belirtilen zaman noktasındaki KPI 'nın durumunu temsil eden bir MDX ifadesi.</td></tr><tr><td></td><td>trendExpression</td><td>Dize</td><td></td><td>KPI değerini zaman içinde değerlendiren bir MDX ifadesi. Eğilim, belirli bir iş bağlamında yararlı olan herhangi bir zaman tabanlı ölçüt olabilir.</td>
+<tr><td>Rapor ("Reports")</td><td></td><td></td><td>Description<p>FriendlyName<p>Etiket<p>Uzman<p>AccessInstruction<p>Belgeler<p></td><td>Bu tür bir SQL Server Reporting Services raporunu temsil eder </td></tr><tr><td></td><td>assetCreatedDate</td><td>Dize</td><td></td><td></td></tr><tr><td></td><td>assetCreatedBy</td><td>Dize</td><td></td><td></td></tr><tr><td></td><td>assetModifiedDate</td><td>Dize</td><td></td><td></td></tr><tr><td></td><td>assetModifiedBy</td><td>Dize</td><td></td><td></td></tr><tr><td>Kapsayıcı ("kapsayıcılar")</td><td></td><td></td><td>Description<p>FriendlyName<p>Etiket<p>Uzman<p>AccessInstruction<p>Belgeler<p></td><td>Bu tür, bir SQL veritabanı, Azure Blob kapsayıcısı veya Analysis Services modeli gibi diğer varlıkların bir kapsayıcısını temsil eder.</td></tr></table>
 
 ### <a name="annotation-types"></a>Ek açıklama türleri
 Ek açıklama türleri, kataloğun içindeki diğer türlere atanabilecek meta veri türlerini temsil eder.
@@ -176,7 +179,7 @@ Ortak türler özellikler için türler olarak kullanılabilir, ancak öğeler d
 
 <tr><td>SecurityPrincipal</td><td></td><td></td><td>Arka uç, yayımlama sırasında Azure Active Directory tarafından belirtilen özelliklerin doğrulanmasını gerçekleştirmez.</td></tr>
 <tr><td></td><td>'le</td><td>string</td><td>Kullanıcının benzersiz e-posta adresi. ObjectID sağlanmazsa veya "lastRegisteredBy" özelliği bağlamında, aksi takdirde isteğe bağlı olarak belirtilmelidir.</td></tr>
-<tr><td></td><td>Uzantının</td><td>Guid</td><td>Kullanıcı veya güvenlik grubu Azure Active Directory kimliği. İsteğe bağlı. UPN sağlanmamışsa, aksi takdirde isteğe bağlı olarak belirtilmelidir.</td></tr>
+<tr><td></td><td>objectId</td><td>Guid</td><td>Kullanıcı veya güvenlik grubu Azure Active Directory kimliği. İsteğe bağlı. UPN sağlanmamışsa, aksi takdirde isteğe bağlı olarak belirtilmelidir.</td></tr>
 <tr><td></td><td>firstName</td><td>string</td><td>Kullanıcının ilk adı (görüntüleme amaçları için). İsteğe bağlı. Yalnızca "lastRegisteredBy" özelliği bağlamında geçerlidir. "Roles", "Permissions" ve "experts" için güvenlik sorumlusu sağlanarak belirtilemiyor.</td></tr>
 <tr><td></td><td>lastName</td><td>string</td><td>Kullanıcının Soyadı (görüntüleme amaçları için). İsteğe bağlı. Yalnızca "lastRegisteredBy" özelliği bağlamında geçerlidir. "Roles", "Permissions" ve "experts" için güvenlik sorumlusu sağlanarak belirtilemiyor.</td></tr>
 
@@ -236,7 +239,7 @@ Azure Veri Kataloğu iki yetkilendirme mekanizması kullanır:
 * İzin tabanlı yetkilendirme
 
 ### <a name="roles"></a>Roller
-Üç rol vardır: **yönetici**, **sahip**ve **katkıda bulunan**.  Her rolün kapsamı ve hakları vardır ve bu, aşağıdaki tabloda özetlenmiştir.
+Üç rol vardır: **yönetici**, **sahip** ve **katkıda bulunan**.  Her rolün kapsamı ve hakları vardır ve bu, aşağıdaki tabloda özetlenmiştir.
 
 <table><tr><td><b>Role</b></td><td><b>Kapsam</b></td><td><b>Haklar</b></td></tr><tr><td>Yönetici</td><td>Katalog (katalogdaki tüm varlıklar/ek açıklamalar)</td><td>ViewRoles silme oku
 
@@ -258,14 +261,14 @@ Değişiklik sahibi ChangeVisibility ViewPermissions</td></tr><tr><td>Katılımc
 Varsayılan olarak, tüm kimliği doğrulanmış kullanıcılar, görünürlük içindeki her öğe için **okuma** hakkına sahiptir ve görünürlük, izinlerle ilgili bir sorumlu kümesiyle sınırlı değildir.
 
 ## <a name="rest-api"></a>REST API
-**Yerleştirme** ve **gönderi** görünümü öğe istekleri, rol ve izinleri denetlemek için kullanılabilir: öğe yüküne ek olarak, iki sistem özelliği de **Roller** ve **izinler**belirtilebilir.
+**Yerleştirme** ve **gönderi** görünümü öğe istekleri, rol ve izinleri denetlemek için kullanılabilir: öğe yüküne ek olarak, iki sistem özelliği de **Roller** ve **izinler** belirtilebilir.
 
 > [!NOTE]
 > **izinler** yalnızca bir kök öğe için geçerlidir.
 > 
 > **Sahip** rolü yalnızca bir kök öğe için geçerlidir.
 > 
-> Katalogda bir öğe oluşturulduğunda varsayılan olarak kimliği doğrulanmış **Kullanıcı olarak ayarlanır** . Öğe herkes tarafından güncelleştirilebilse, **katkıda bulunanlar** , &lt; &gt; öğe ilk yayımlandığında **Roller** özelliğinde Everyone özel güvenlik sorumlusu olarak ayarlanmalıdır (aşağıdaki örneğe bakın). **Katkıda bulunan** değiştirilemez ve bir öğenin yaşam süresi boyunca aynı kalır (hatta **yönetici** veya **sahip** , **katkıda**bulunanı değiştirme hakkına sahip değildir). **Katkıda** bulunanı açık ayarı için desteklenen tek değer &lt; Herkes &gt; : **katkıda bulunan** yalnızca bir öğeyi veya herkesi oluşturan bir kullanıcı olabilir &lt; &gt; .
+> Katalogda bir öğe oluşturulduğunda varsayılan olarak kimliği doğrulanmış **Kullanıcı olarak ayarlanır** . Öğe herkes tarafından güncelleştirilebilse, **katkıda bulunanlar** , &lt; &gt; öğe ilk yayımlandığında **Roller** özelliğinde Everyone özel güvenlik sorumlusu olarak ayarlanmalıdır (aşağıdaki örneğe bakın). **Katkıda bulunan** değiştirilemez ve bir öğenin yaşam süresi boyunca aynı kalır (hatta **yönetici** veya **sahip** , **katkıda** bulunanı değiştirme hakkına sahip değildir). **Katkıda** bulunanı açık ayarı için desteklenen tek değer &lt; Herkes &gt; : **katkıda bulunan** yalnızca bir öğeyi veya herkesi oluşturan bir kullanıcı olabilir &lt; &gt; .
 > 
 
 ### <a name="examples"></a>Örnekler

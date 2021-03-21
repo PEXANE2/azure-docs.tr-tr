@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: d7b090eb5228a449212ceebd6cd299c5f8860089
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92520804"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pingboard"></a>Öğretici: Pingboard ile Azure Active Directory tümleştirme
@@ -63,13 +63,13 @@ Pingboard 'in Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden 
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **pingboard**yazın, sonuç panelinden **pingboard** ' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **pingboard** yazın, sonuç panelinden **pingboard** ' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
      ![Sonuçlar listesinde pingboard](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre pingboard ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre pingboard ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve Pingboard içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD 'yi Pingboard ile birlikte yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -146,7 +146,7 @@ Azure AD 'yi Pingboard ile çoklu oturum açmayı yapılandırmak için aşağı
 
     ![Pingboard yapılandırma düğmesi](./media/pingboard-tutorial/Pingboard_configure.png)
 
-5. Aşağıdaki sayfada, "Azure SSO tümleştirmesinin etkin" olduğunu fark edersiniz. İndirilen meta veri XML dosyasını bir not defteri içinde açın ve içeriği **IDP meta verilerinde**yapıştırın.
+5. Aşağıdaki sayfada, "Azure SSO tümleştirmesinin etkin" olduğunu fark edersiniz. İndirilen meta veri XML dosyasını bir not defteri içinde açın ve içeriği **IDP meta verilerinde** yapıştırın.
 
     ![Pingboard SSO yapılandırma ekranı](./media/pingboard-tutorial/Pingboard_sso_configure.png)
 
@@ -168,7 +168,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
     b. **Kullanıcı adı** alanına yazın brittasimon@yourcompanydomain.extension . Örneğin, BrittaSimon@contoso.com
 
@@ -218,7 +218,7 @@ Bu bölümün amacı, Pingboard 'de Britta Simon adlı bir Kullanıcı oluşturm
 
     ![Kişileri davet et](./media/pingboard-tutorial/create_testuser_name.png)
 
-    a. **Tam ad** metin kutusuna, **Britta Simon**gibi kullanıcının tam adını yazın.
+    a. **Tam ad** metin kutusuna, **Britta Simon** gibi kullanıcının tam adını yazın.
 
     b. **E-posta** metin kutusuna, gibi kullanıcının e-posta adresini yazın **brittasimon@contoso.com** .
 

@@ -6,12 +6,12 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 12/03/2020
 ms.author: msangapu
-ms.openlocfilehash: 7d6f9564328f81b71c62a4243c5f4cc209a29d8f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0e08d016ab85587d451ad2a1e296e7f494ba283e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101714485"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596034"
 ---
 # <a name="monitor-app-service-instances-using-health-check"></a>Sistem durumu denetimini kullanarak App Service örnekleri izleme
 
@@ -48,7 +48,7 @@ Bu makale, App Service örnekleri izlemek için Azure portal sistem durumu denet
 
 Sistem durumu denetimi seçeneklerini yapılandırmanın yanı sıra, aşağıdaki [uygulama ayarlarını](configure-common.md)da yapılandırabilirsiniz:
 
-| Uygulama ayarı adı | İzin verilen değerler | Açıklama |
+| Uygulama ayarı adı | İzin verilen değerler | Description |
 |-|-|-|
 |`WEBSITE_HEALTHCHECK_MAXPINGFAILURES` | 2 - 10 | En fazla ping başarısızlığı sayısı. Örneğin, olarak ayarlandığında `2` , örneklerinizin başarısız ping işlemleri sonrasında kaldırılacak `2` . Ayrıca, ölçeği büyütme veya küçültme sırasında, yeni örneklerin hazır olmasını sağlamak için sistem durumu denetim yoluna ping App Service. |
 |`WEBSITE_HEALTHCHECK_MAXUNHEALTYWORKERPERCENT` | 0 - 100 | Sağlıklı olmayan örneklere engel olmak için örneklerin yarısını hariç tutulamayacak. Örneğin, bir App Service planı dört örneğe ölçeklenirse ve üçü uygun değilse, en fazla iki durum hariç tutulur. Diğer iki örnek (bir sağlıklı ve bir sağlıksız) istekleri almaya devam edecektir. Tüm örneklerin sağlıksız olduğu en kötü durum senaryosunda, hiçbiri dışlanacaktır. Bu davranışı geçersiz kılmak için, uygulama ayarını ve arasında bir değere `0` ayarlayın `100` . Daha yüksek bir değer, daha sağlıksız örneklerin kaldırılabileceği anlamına gelir (varsayılan değer 50 ' dir). |
@@ -62,6 +62,10 @@ Büyük Kurumsal Geliştirme ekiplerinin genellikle sunulan API 'Ler için güve
 ## <a name="monitoring"></a>İzleme
 
 Uygulamanızın sistem durumu Denetim yolunu sağladıktan sonra, Azure Izleyici 'yi kullanarak sitenizin sistem durumunu izleyebilirsiniz. Portaldaki **sistem durumu denetimi** dikey penceresinde, üst araç çubuğundan **ölçümler** ' e tıklayın. Bu, sitenin geçmiş sistem durumunu görebileceğiniz ve yeni bir uyarı kuralı oluşturabileceğiniz yeni bir dikey pencere açar. Sitelerinizi izleme hakkında daha fazla bilgi için [bkz. Azure izleyici Kılavuzu](web-sites-monitor.md).
+
+## <a name="limitations"></a>Sınırlamalar
+
+Premium Işlevler sitelerinde sistem durumu denetimi etkinleştirilmemelidir. Premium Işlevlerinin hızlı ölçeklendirilmesi nedeniyle, sistem durumu denetimi istekleri HTTP trafiğinden gereksiz dalgalanmalara neden olabilir. Premium Işlevlerin ölçeklendirme kararlarını bilgilendirmek için kullanılan kendi iç sistem durumu araştırmaları vardır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Aboneliğinizdeki tüm otomatik ölçeklendirme motoru işlemlerini izlemek için bir etkinlik günlüğü uyarısı oluşturun](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 528411f7ef662e90bce98a52b67caa9123fad6ad
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92522491"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nimblex"></a>Öğretici: Nimblex ile tümleştirme Azure Active Directory
@@ -63,13 +63,13 @@ Nimblex tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden Ni
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Nimblex**yazın, sonuç panelinden **Nimblex** ' yi seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **Nimblex** yazın, sonuç panelinden **Nimblex** ' yi seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
      ![Sonuç listesinde Nimblex](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre Nimblex ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre Nimblex ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve Nimblex 'deki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açmayı Nimblex ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -150,7 +150,7 @@ Azure AD çoklu oturum açmayı Nimblex ile yapılandırmak için aşağıdaki a
 
     b. Not defteri 'nde, Azure portal indirdiğiniz temel 64 kodlu sertifikayı açın, içeriğini kopyalayın ve ardından **sertifikayı sertifika** kutusuna yapıştırın.
 
-    c. **Kimlik sağlayıcısı SSO hedef URL** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
+    c. **Kimlik sağlayıcısı SSO hedef URL** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
     d. **Kaydet**’e tıklayın.
 
@@ -170,9 +170,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**yazın.
+    a. **Ad** alanına **Brittasıon** yazın.
   
-    b. **Kullanıcı adı** alanına şunu yazın**brittasimon@yourcompanydomain.extension**  
+    b. **Kullanıcı adı** alanına şunu yazın **brittasimon@yourcompanydomain.extension**  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.

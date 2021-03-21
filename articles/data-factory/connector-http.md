@@ -4,14 +4,14 @@ description: Azure Data Factory bir işlem hattındaki kopyalama etkinliği kull
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 12/10/2019
+ms.date: 03/17/2021
 ms.author: jingwang
-ms.openlocfilehash: f3184602bad8aabf654c8fa94d33372d08c11a66
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: 247bec30e9933dfd75b7c31cbce15ff043959243
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103573209"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588894"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Azure Data Factory kullanarak bir HTTP uç noktasından veri kopyalama
 
@@ -66,7 +66,8 @@ HTTP bağlantılı hizmeti için aşağıdaki özellikler desteklenir:
 | tür | **Type** özelliği **httpServer** olarak ayarlanmalıdır. | Yes |
 | url | Web sunucusunun temel URL 'SI. | Yes |
 | enableServerCertificateValidation | Bir HTTP uç noktasına bağlanırken sunucu TLS/SSL sertifika doğrulamasının etkinleştirilip etkinleştirilmeyeceğini belirtin. HTTPS sunucunuz otomatik olarak imzalanan bir sertifika kullanıyorsa, bu özelliği **false** olarak ayarlayın. | No<br /> (varsayılan değer **true**'dur) |
-| authenticationType | Kimlik doğrulama türünü belirtir. İzin verilen değerler **anonim**, **temel**, **Özet**, **Windows** ve **ClientCertificate**'tir. <br><br> Bu kimlik doğrulama türleri için daha fazla özellik ve JSON örnekleri için bu tabloyu izleyen bölümlere bakın. | Yes |
+| authenticationType | Kimlik doğrulama türünü belirtir. İzin verilen değerler **anonim**, **temel**, **Özet**, **Windows** ve **ClientCertificate**'tir. Kullanıcı tabanlı OAuth desteklenmez. Ayrıca, özelliğindeki kimlik doğrulama üstbilgilerini yapılandırabilirsiniz `authHeader` . Bu kimlik doğrulama türleri için daha fazla özellik ve JSON örnekleri için bu tabloyu izleyen bölümlere bakın. | Yes |
+| authHeaders | Kimlik doğrulaması için ek HTTP isteği üst bilgileri.<br/> Örneğin, API anahtarı kimlik doğrulamasını kullanmak için, kimlik doğrulama türü ' nü "anonim" olarak seçebilir ve üst bilgide API anahtarını belirtebilirsiniz. | No |
 | connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanılır. |No |
 
 ### <a name="using-basic-digest-or-windows-authentication"></a>Temel, Özet veya Windows kimlik doğrulamasını kullanma
@@ -163,6 +164,35 @@ Kimlik doğrulaması için **Certparmak izi** kullanırsanız ve sertifika yerel
 }
 ```
 
+### <a name="using-authentication-headers"></a>Kimlik doğrulama üstbilgilerini kullanma
+
+Ayrıca, kimlik doğrulama için istek üst bilgilerini yerleşik kimlik doğrulama türleriyle birlikte yapılandırabilirsiniz.
+
+**Örnek: API anahtarı kimlik doğrulamasını kullanma**
+
+```json
+{
+    "name": "HttpLinkedService",
+    "properties": {
+        "type": "HttpServer",
+        "typeProperties": {
+            "url": "<HTTP endpoint>",
+            "authenticationType": "Anonymous",
+            "authHeader": {
+                "x-api-key": {
+                    "type": "SecureString",
+                    "value": "<API key>"
+                }
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
 Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri](concepts-datasets-linked-services.md) makalesi. 
@@ -224,7 +254,7 @@ Aşağıdaki özellikler, `storeSettings` Biçim tabanlı kopyalama kaynağı ay
 | additionalHeaders         | Ek HTTP istek üstbilgileri.                             | No       |
 | Istek gövdesi              | HTTP isteğinin gövdesi.                               | No       |
 | httpRequestTimeout           | HTTP isteğinin yanıt almak için zaman aşımı ( **TimeSpan** değeri). Bu değer, yanıt verilerinin okunması için zaman aşımı değil, yanıt almaya yönelik zaman aşımı değeridir. Varsayılan değer **00:01:40**' dir. | No       |
-| maxConcurrentConnections | Depolama deposuna aynı anda bağlanacak bağlantı sayısı. Yalnızca veri deposuyla eşzamanlı bağlantıyı sınırlandırmak istediğinizde belirtin. | No       |
+| maxConcurrentConnections |Etkinlik çalışması sırasında veri deposuna kurulan eşzamanlı bağlantıların üst sınırı. Yalnızca eş zamanlı bağlantıları sınırlandırmak istediğinizde bir değer belirtin.| No       |
 
 **Örnek:**
 

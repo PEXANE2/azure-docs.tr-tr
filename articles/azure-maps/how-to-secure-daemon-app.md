@@ -10,10 +10,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 2dd04f404330a6c86e2df09da610e16ba9b721f3
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92895656"
 ---
 # <a name="secure-a-daemon-application"></a>Daemon uygulamasının güvenliğini sağlama
@@ -75,46 +75,46 @@ Yönetilen kimlik avantajları:
 
 Azure olmayan bir ortamda Yönetilen kimlikler üzerinde çalışırken, kullanılabilir değildir. Bu nedenle, Daemon uygulaması için bir Azure AD uygulama kaydı aracılığıyla bir hizmet sorumlusu yapılandırmanız gerekir.
 
-1. Azure Portal Azure hizmetleri listesinde, **Azure Active Directory**  >  **App registrations**  >  **Yeni kayıt** uygulama kayıtları Azure Active Directory ' ni seçin.  
+1. Azure Portal Azure hizmetleri listesinde,   >    >  **Yeni kayıt** uygulama kayıtları Azure Active Directory ' ni seçin.  
 
     > [!div class="mx-imgBorder"]
     > ![Uygulama kaydı](./media/how-to-manage-authentication/app-registration.png)
 
-2. Uygulamanızı zaten kaydolduysanız bir sonraki adımla devam edin. Uygulamanızı kaydolmadıysanız, bir **ad** girin, bir **destek hesabı türü** seçin ve ardından **Kaydet** ' i seçin.  
+2. Uygulamanızı zaten kaydolduysanız bir sonraki adımla devam edin. Uygulamanızı kaydolmadıysanız, bir **ad** girin, bir **destek hesabı türü** seçin ve ardından **Kaydet**' i seçin.  
 
     > [!div class="mx-imgBorder"]
     > ![Uygulama kaydı ayrıntıları](./media/how-to-manage-authentication/app-create.png)
 
-3. Azure haritalar 'a temsil edilen API izinleri atamak için uygulamaya gidin. **Uygulama kayıtları** altında, **API izinleri**  >  **izin Ekle** ' yi seçin. **Kuruluşumun kullandığı API 'ler** altında **Azure haritaları** ' nı arayıp seçin.
+3. Azure haritalar 'a temsil edilen API izinleri atamak için uygulamaya gidin. **Uygulama kayıtları** altında, **API izinleri**  >  **izin Ekle**' yi seçin. **Kuruluşumun kullandığı API 'ler** altında **Azure haritaları**' nı arayıp seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Uygulama API 'SI izinleri ekleme](./media/how-to-manage-authentication/app-permissions.png)
 
-4. **Azure haritalar** ' ın yanındaki onay kutusunu işaretleyin ve ardından **izin Ekle** ' yi seçin.
+4. **Azure haritalar**' ın yanındaki onay kutusunu işaretleyin ve ardından **izin Ekle**' yi seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Uygulama API 'SI izinlerini seçin](./media/how-to-manage-authentication/select-app-permissions.png)
 
 5. Bir istemci parolası oluşturmak veya sertifikayı yapılandırmak için aşağıdaki adımları izleyin.
 
-    * Uygulamanız sunucu veya uygulama kimlik doğrulaması kullanıyorsa, uygulama kayıt sayfanızda, **sertifikalar & parolalar** ' a gidin. Sonra da bir ortak anahtar sertifikası yükleyin veya **yeni istemci parolası** ' nı seçerek bir parola oluşturun.
+    * Uygulamanız sunucu veya uygulama kimlik doğrulaması kullanıyorsa, uygulama kayıt sayfanızda, **sertifikalar & parolalar**' a gidin. Sonra da bir ortak anahtar sertifikası yükleyin veya **yeni istemci parolası**' nı seçerek bir parola oluşturun.
 
         > [!div class="mx-imgBorder"]
         > ![İstemci parolası oluşturma](./media/how-to-manage-authentication/app-keys.png)
 
-    * **Ekle** ' yi seçtikten sonra, parolayı kopyalayın ve Azure Key Vault gibi bir hizmette güvenli bir şekilde saklayın. Sertifikayı veya gizli anahtarı güvenli bir şekilde depolamak için [Azure Key Vault geliştirici kılavuzunu](../key-vault/general/developers-guide.md) gözden geçirin. Azure AD 'den belirteçleri almak için bu gizli anahtarı kullanacaksınız.
+    * **Ekle**' yi seçtikten sonra, parolayı kopyalayın ve Azure Key Vault gibi bir hizmette güvenli bir şekilde saklayın. Sertifikayı veya gizli anahtarı güvenli bir şekilde depolamak için [Azure Key Vault geliştirici kılavuzunu](../key-vault/general/developers-guide.md) gözden geçirin. Azure AD 'den belirteçleri almak için bu gizli anahtarı kullanacaksınız.
 
         > [!div class="mx-imgBorder"]
         > ![İstemci parolası ekleme](./media/how-to-manage-authentication/add-key.png)
 
 ### <a name="grant-role-based-access-for-the-daemon-application-to-azure-maps"></a>Azure Maps 'a Daemon uygulaması için rol tabanlı erişim verme
 
-Oluşturulan yönetilen kimliği veya hizmet sorumlusunu bir veya daha fazla Azure Maps rol tanımına atayarak *Azure rol tabanlı erişim denetimi (Azure RBAC)* verirsiniz. Azure haritalar için kullanılabilen Azure rol tanımlarını görüntülemek için **erişim denetimi 'ne (IAM)** gidin. **Roller** ' i seçin ve ardından *Azure Maps* ile başlayan roller için arama yapın. Bu Azure Maps rolleri, erişim sağlayabilmeniz için kullanabileceğiniz rollerdir.
+Oluşturulan yönetilen kimliği veya hizmet sorumlusunu bir veya daha fazla Azure Maps rol tanımına atayarak *Azure rol tabanlı erişim denetimi (Azure RBAC)* verirsiniz. Azure haritalar için kullanılabilen Azure rol tanımlarını görüntülemek için **erişim denetimi 'ne (IAM)** gidin. **Roller**' i seçin ve ardından *Azure Maps* ile başlayan roller için arama yapın. Bu Azure Maps rolleri, erişim sağlayabilmeniz için kullanabileceğiniz rollerdir.
 
 > [!div class="mx-imgBorder"]
 > ![Kullanılabilir rolleri görüntüle](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
 
-1. **Azure haritalar hesabınıza** gidin. **Erişim denetimi (IAM)** > **Rol atamaları** ’nı seçin.
+1. **Azure haritalar hesabınıza** gidin. **Erişim denetimi (IAM)** > **Rol atamaları**’nı seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Azure RBAC kullanarak erişim verme](./media/how-to-manage-authentication/how-to-grant-rbac.png)
@@ -124,7 +124,7 @@ Oluşturulan yönetilen kimliği veya hizmet sorumlusunu bir veya daha fazla Azu
     > [!div class="mx-imgBorder"]
     > ![Ekran görüntüsü Ekle seçili olan toplama atamalarını gösterir.](./media/how-to-manage-authentication/add-role-assignment.png)
 
-3. **Azure haritalar veri okuyucusu** veya **Azure haritalar veri katılımcısı** gibi yerleşik bir Azure Maps rol tanımı seçin. **Erişim ata** ' nın altında, **Kullanıcı tarafından atanan yönetilen kimlik** sistemine atanmış yönetilen kimlik ile **Azure AD Kullanıcı, Grup veya hizmet sorumlusu** veya yönetilen kimlik ' i seçin  /  **System assigned Managed identity** . Sorumluyu seçin. Sonra **Kaydet** 'i seçin.
+3. **Azure haritalar veri okuyucusu** veya **Azure haritalar veri katılımcısı** gibi yerleşik bir Azure Maps rol tanımı seçin. **Erişim ata**' nın altında, **Kullanıcı tarafından atanan yönetilen kimlik** sistemine atanmış yönetilen kimlik ile **Azure AD Kullanıcı, Grup veya hizmet sorumlusu** veya yönetilen kimlik ' i seçin  /  . Sorumluyu seçin. Sonra **Kaydet**'i seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Rol ataması ekleme](./media/how-to-manage-authentication/how-to-add-role-assignment.png)

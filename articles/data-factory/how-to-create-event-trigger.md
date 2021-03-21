@@ -7,12 +7,12 @@ ms.author: chez
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 03/11/2021
-ms.openlocfilehash: 6474cb10cdb516bae0386b92e40ecd6f17250691
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.openlocfilehash: b559ce31aff7040a61f6a2f788652ffd192420c4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103225480"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593807"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-a-storage-event"></a>Bir depolama olayına yanıt olarak bir işlem hattı çalıştıran bir tetikleyici oluşturma
 
@@ -49,7 +49,7 @@ Bu bölümde, Azure Data Factory Kullanıcı arabirimi içinde bir depolama olay
    > Depolama olayı tetikleyicisi Şu anda yalnızca Azure Data Lake Storage 2. ve genel amaçlı sürüm 2 depolama hesaplarını desteklemektedir. Azure Event Grid sınırlaması nedeniyle, Azure Data Factory yalnızca depolama hesabı başına en fazla 500 depolama olay tetikleyicisi destekler.
 
    > [!NOTE]
-   > Yeni bir depolama olay tetikleyicisi oluşturmak ve değiştirmek için, Data Factory oturum açmak ve depolama Olay tetikleyicisinin yayımlanması için kullanılan Azure hesabı, depolama hesabında uygun rol tabanlı erişim denetimi (Azure RBAC) iznine sahip olmalıdır. Ek izin gerekmez: Azure Data Factory için hizmet sorumlusu, depolama hesabı veya Event Grid için özel _izin gerektirmez._ Erişim denetimi hakkında daha fazla bilgi için bkz. [rol tabanlı erişim denetimi](#role-based-access-control) bölümü.
+   > Yeni bir depolama olayı tetikleyicisi oluşturmak veya var olan bir depolama olay tetikleyicisini değiştirmek için Data Factory oturum açmak için kullanılan Azure hesabı depolama hesabında uygun rol tabanlı erişim denetimi (Azure RBAC) iznine sahip olmalıdır. Ek izin gerekmez: Azure Data Factory için hizmet sorumlusu, depolama hesabı veya Event Grid için özel _izin gerektirmez._ Erişim denetimi hakkında daha fazla bilgi için bkz. [rol tabanlı erişim denetimi](#role-based-access-control) bölümü.
 
 1. **BLOB yolu ile başlar** ve **BLOB yolu, özellikler ile biter** ve olayları almak istediğiniz kapsayıcıları, klasörleri ve BLOB adlarını belirtmenize olanak tanır. Depolama olay Tetikleyiciniz, bu özelliklerden en az birinin tanımlanmasını gerektirir. Her iki **BLOB yolu ile başlar** ve **BLOB yolu** , bu makalenin ilerleyen kısımlarında gösterildiği gibi özellikleriyle biter.
 
@@ -67,12 +67,12 @@ Bu bölümde, Azure Data Factory Kullanıcı arabirimi içinde bir depolama olay
 
     :::image type="content" source="media/how-to-create-event-trigger/event-based-trigger-image3.png" alt-text="Depolama olayı tetikleyicisi önizleme sayfasının ekran görüntüsü.":::
 
-1. Bu tetikleyiciye bir işlem hattı eklemek için işlem hattı tuvaline gidin ve **tetikleyici Ekle** ' ye tıklayın ve **Yeni/Düzenle**' yi seçin. Yan gezinti göründüğünde **tetikleyici seç...** açılan listesine tıklayın ve oluşturduğunuz tetikleyiciyi seçin. Ileri ' ye tıklayın: yapılandırmanın doğru olduğunu doğrulamak için **veri önizleme** ' **ye tıklayın ve ardından veri** önizlemenin doğru olduğundan emin olun.
+1. Bu tetikleyiciye bir işlem hattı eklemek için işlem hattı tuvaline gidin ve **Tetikle** ' e tıklayın ve **Yeni/Düzenle**' yi seçin. Yan gezinti göründüğünde **tetikleyici seç...** açılan listesine tıklayın ve oluşturduğunuz tetikleyiciyi seçin. Ileri ' ye tıklayın: yapılandırmanın doğru olduğunu doğrulamak için **veri önizleme** ' **ye tıklayın ve ardından veri** önizlemenin doğru olduğundan emin olun.
 
 1. İşlem hattınızda parametreler varsa, bunları tetikleyici parametre tarafı gezin ' i çalıştırır ' de belirtebilirsiniz. Depolama olayı tetikleyicisi, Blobun klasör yolunu ve dosya adını özelliklerine ve özelliklerine yakalar `@triggerBody().folderPath` `@triggerBody().fileName` . Bu özelliklerin değerlerini bir işlem hattında kullanmak için, özellikleri işlem hattı parametrelerine eşlemeniz gerekir. Özellikleri parametrelere eşleştirdikten sonra, tetikleyici tarafından yakalanan değerlere işlem `@pipeline().parameters.parameterName` hattı boyunca ifade aracılığıyla erişebilirsiniz. Ayrıntılı açıklama için bkz. işlem hatlarında [başvuru tetikleyici meta verileri](how-to-use-trigger-parameterization.md)
 
     :::image type="content" source="media/how-to-create-event-trigger/event-based-trigger-image4.png" alt-text="Depolama olayı tetikleyicisi eşleme özelliklerinin işlem hattı parametrelerine yönelik ekran görüntüsü.":::
-    
+
     Önceki örnekte tetikleyici, kapsayıcı _örnek verilerinde_. csv dosyasında bir blob yolu oluşturulduğunda,. csv _' de sonlanan_ bir blob yolu başlatıldığında tetiklenecek şekilde yapılandırılmıştır. **FolderPath** ve **filename** özellikleri yeni Blobun konumunu yakalar. Örneğin, yola MoviesDB.csv eklendiğinde-Data/Event-Testing `@triggerBody().folderPath` değeri, değerine sahiptir `sample-data/event-testing` ve değeri vardır `@triggerBody().fileName` `moviesDB.csv` . Bu değerler, örnekte işlem hattı parametrelerine `sourceFolder` ve `sourceFile` sırasıyla, ardışık düzen boyunca kullanılabilecek şekilde eşlenir `@pipeline().parameters.sourceFolder` `@pipeline().parameters.sourceFile` .
 
 1. İşiniz bittiğinde **son** ' a tıklayın.

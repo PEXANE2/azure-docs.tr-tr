@@ -3,12 +3,12 @@ title: Yaygın soruların yanıtları
 description: 'Kurtarma Hizmetleri kasaları, neleri yedekleyebilir, nasıl çalışır, şifreleme ve limitlerin dahil olduğu Azure Backup özellikleriyle ilgili yaygın soruların yanıtları. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: ac58cee66aa2a89efb7194a051801b068628d3bc
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.openlocfilehash: 79ff404192de481965f3971f00328c49a591dd41
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103467638"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104583386"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - Sık sorulan sorular
 
@@ -72,6 +72,13 @@ Evet. Bir aboneliği (bir kasa içeren) farklı bir Azure Active Directory (AD) 
 
 >[!IMPORTANT]
 >Aboneliği taşıdıktan sonra aşağıdaki eylemleri gerçekleştirdiğinizden emin olun:<ul><li>Rol tabanlı erişim denetimi izinleri ve özel roller aktarılamaz. Yeni Azure AD 'de izinleri ve rolleri yeniden oluşturmanız gerekir.</li><li>Yeniden devre dışı bırakıp etkinleştirerek, kasanın yönetilen kimliğini (mı) yeniden oluşturmanız gerekir. Ayrıca, mı izinlerini değerlendirmeniz ve yeniden oluşturmanız gerekir.</li><li>Kasa, [Özel uç noktalar](private-endpoints.md#before-you-start) ve [müşteri tarafından YÖNETILEN anahtarlar](encryption-at-rest-with-cmk.md#before-you-start)gibi mı 'den yararlanan Özellikler kullanıyorsa, özellikleri yeniden yapılandırmanız gerekir.</li></ul>
+
+### <a name="can-i-move-a-subscription-that-contains-a-recovery-services-vault-to-a-different-tenant"></a>Kurtarma Hizmetleri kasasını içeren bir aboneliği farklı bir kiracıya taşıyabilir miyim?
+
+Evet. Aşağıdakileri yapatığınızdan emin olun: 
+
+>[!IMPORTANT]
+>Aboneliği taşıdıktan sonra aşağıdaki eylemleri gerçekleştirdiğinizden emin olun:<ul><li>Kasa CMK kullanıyorsa (müşteri tarafından yönetilen anahtarlar), kasayı güncelleştirmeniz gerekir. Bu, kasasının kasadan yönetilen kimliği ve CMK (yeni kiracıda yer alacak) yeniden oluşturmasını ve yeniden yapılandırmasını sağlar, aksi takdirde yedekler/geri yükleme işlemi başarısız olur.</li><li>Mevcut izinler taşınamadığından abonelikte RBAC izinlerini yeniden yapılandırmanız gerekir.</li></ul>
 
 ## <a name="azure-backup-agent"></a>Azure Backup aracısı
 

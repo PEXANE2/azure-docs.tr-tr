@@ -4,17 +4,17 @@ ms.service: storage
 ms.topic: include
 ms.date: 09/28/2020
 ms.author: normesta
-ms.openlocfilehash: 61576de4a57d55ea9d1ea209c52df556f0069617
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ca8963ed8928745a6d5918c86021199432339c83
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750032"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104612999"
 ---
 | Özellik | Açıklama |
 |:--- |:---|
 |**kimlik/tür** | İsteği yapmak için kullanılan kimlik doğrulaması türü. Örneğin: `OAuth` ,, `Kerberos` , `SAS Key` `Account Key` veya `Anonymous` |
-|**Identity/tokenHash**|Bu alan yalnızca iç kullanım için ayrılmıştır. |
+|**Identity/tokenHash**|İstekte kullanılan kimlik doğrulama belirtecinin SHA-256 karması. <br>Kimlik doğrulama türü olduğunda `Account Key` , biçim "KEY1 \| key2 (anahtarın SHA256 karması)" olur. Örneğin: `key1(5RTE343A6FEB12342672AFD40072B70D4A91BGH5CDF797EC56BF82B2C3635CE)`. <br>Kimlik doğrulama türü olduğunda `SAS Key` , biçim "KEY1 \| key2 (anahtarın SHA 256 karması), SASSIGNATURE (SAS BELIRTECI için SHA 256 karması)" olur. Örneğin: `key1(0A0XE8AADA354H19722ED12342443F0DC8FAF3E6GF8C8AD805DE6D563E0E5F8A),SasSignature(04D64C2B3A704145C9F1664F201123467A74D72DA72751A9137DDAA732FA03CF)`. Kimlik doğrulama türü olduğunda `OAuth` , biçim "OAuth BELIRTECININ SHA 256 karması" olur. Örnek: `B3CC9D5C64B3351573D806751312317FE4E910877E7CBAFA9D95E0BE923DW25C`<br> Diğer kimlik doğrulama türleri için, tokenHash alanı yoktur. |
 |**Yetkilendirme/eylem** | İsteğe atanan eylem. |
 |**Authorization/Roleatamakimliği** | Rol atama KIMLIĞI. Örneğin: `4e2521b7-13be-4363-aeda-111111111111`.|
 |**Yetkilendirme/Roledefinitionıd** | Rol tanımı KIMLIĞI. Örneğin: `ba92f5b4-2d11-453d-a403-111111111111"`.|

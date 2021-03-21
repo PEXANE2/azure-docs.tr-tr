@@ -4,15 +4,15 @@ description: Azure Marketi 'nde bir sanal makine oluşturulurken karşılaşıla
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
-author: iqshahmicrosoft
-ms.author: iqshah
+author: kriti-ms
+ms.author: krsh
 ms.date: 03/10/2021
-ms.openlocfilehash: a74170af61c05d07a189b5ceb61dc0c9b7e14298
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 2975d1f1558bc7f9e4a12c18882e43a163b97982
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103200434"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593433"
 ---
 # <a name="common-questions-about-vm-in-azure-marketplace"></a>Azure Market 'te VM hakkında sık sorulan sorular
 
@@ -56,7 +56,7 @@ Bu sorun genellikle kilidi olan bir VHD 'den bir VM oluşturduysanız görüntü
 
 Bu bölümde, Kullanıcı tarafından belirtilen bir sanal makine (VM) görüntüsünün nasıl oluşturulacağı ve dağıtılacağı açıklanmaktadır. Bunu, Azure tarafından dağıtılan bir sanal sabit diskten işletim sistemi ve veri diski VHD görüntüleri sağlayarak yapabilirsiniz. Bu adımlar, genelleştirilmiş VHD kullanarak VM 'yi dağıtır.
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 2. Genelleştirilmiş işletim sistemi VHD 'nizi ve veri diski VHD 'nizi Azure depolama hesabınıza yükleyin.
 3. Giriş sayfasında, kaynak oluştur ' u seçin, "şablon dağıtımı" ifadesini arayın ve Oluştur ' u seçin.
 4. Düzenleyicide kendi şablonunuzu oluşturun öğesini seçin.
@@ -470,6 +470,17 @@ $objAzureKeyVaultSecret.Id -vhdUrl "$vhdUrl" -vmSize "Standard\_A2" -publicIPAdd
 # deploying VM with existing VHD
 New-AzResourceGroupDeployment -Name "dplisvvm$postfix" -ResourceGroupName "$rgName"
 ```
+
+## <a name="how-do-i-test-a-hidden-preview-image"></a>Gizli önizleme görüntüsünü test Nasıl yaparım??
+
+Hızlı Başlangıç şablonlarını kullanarak gizli önizleme görüntülerini dağıtabilirsiniz.
+Önizleme görüntüsünü dağıtmak için 
+1. [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux) veya [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)için ilgili hızlı başlangıç şablonunu goto, "Azure 'a dağıt" ı seçin. Bu, sizi Azure portal götürebilmelidir.
+2. Azure portal, "şablonu Düzenle" seçeneğini belirleyin.
+3. JSON şablonunda, ImageReference araması yapın ve PublisherId, OfferId, skuid ve görüntünün sürümünü güncelleştirin. Önizleme görüntüsünü test etmek için, OfferId 'ye "-PREVIEW" ekleyin.
+ ![image](https://user-images.githubusercontent.com/79274470/110191995-71c7d500-7de0-11eb-9f3c-6a42f55d8f03.png)
+4. Kaydet’e tıklayın.
+5. Ayrıntıların geri kalanını doldurun. İnceleme ve oluşturma
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

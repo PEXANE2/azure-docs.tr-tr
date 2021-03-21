@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service 'te (AKS) Kubernetes rol tabanlı erişim denetimi (Kubernetes RBAC) kullanarak küme kaynaklarına erişimi kısıtlamak için Azure Active Directory grubu üyeliğini nasıl kullanacağınızı öğrenin
 services: container-service
 ms.topic: article
-ms.date: 07/21/2020
-ms.openlocfilehash: 585e51f5131bf20d39cf43ab2e843774d61a708f
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.date: 03/17/2021
+ms.openlocfilehash: 72b2c456d62b899f2b04041929434da668cad82d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102178244"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104583539"
 ---
 # <a name="control-access-to-cluster-resources-using-kubernetes-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>Azure Kubernetes hizmetinde Kubernetes rol tabanlı erişim denetimi ve Azure Active Directory kimliklerini kullanarak küme kaynaklarına erişimi denetleme
 
@@ -81,15 +81,27 @@ az role assignment create \
 
 Uygulama geliştiricilerimiz ve SREs için Azure AD 'de oluşturulan iki örnek grup ile, artık iki örnek kullanıcı oluşturmaya izin verir. Makalenin sonundaki Kubernetes RBAC tümleştirmesini test etmek için, AKS kümesinde bu hesaplarla oturum açın.
 
+Uygulama geliştiricileri için Kullanıcı asıl adını (UPN) ve parolayı ayarlayın. Aşağıdaki komut, UPN için sizi uyarır ve daha sonraki bir komutta kullanılmak üzere *AAD_DEV_UPN* ayarlar (Bu makaledeki komutların bash kabuğu 'na girildiğini unutmayın). UPN, kiracınızın doğrulanmış etki alanı adını (örneğin,) içermelidir `aksdev@contoso.com` .
+
+```azurecli-interactive
+echo "Please enter the UPN for application developers: " && read AAD_DEV_UPN
+```
+
+Aşağıdaki komut, parolayı ister ve daha sonra kullanmak üzere *AAD_DEV_PW* olarak ayarlar.
+
+```azurecli-interactive
+echo "Please enter the secure password for application developers: " && read AAD_DEV_PW
+```
+
 [Az ad User Create][az-ad-user-create] komutunu kullanarak Azure AD 'de ilk kullanıcı hesabını oluşturun.
 
-Aşağıdaki örnek, görünen ad *aks dev* ve Kullanıcı asıl adı (UPN) olan bir kullanıcı oluşturur `aksdev@contoso.com` . UPN 'yi Azure AD kiracınız için doğrulanmış bir etki alanı içerecek şekilde güncelleştirin ( *contoso.com* yerine kendi etki alanınızı değiştirin) ve kendi güvenli kimlik bilgilerinizi sağlayın `--password` :
+Aşağıdaki örnek, *AAD_DEV_UPN* ve *AAD_DEV_PW* değerlerini kullanarak görünen ad *aks dev* ve UPN ve güvenli parola ile bir kullanıcı oluşturur:
 
 ```azurecli-interactive
 AKSDEV_ID=$(az ad user create \
   --display-name "AKS Dev" \
-  --user-principal-name aksdev@contoso.com \
-  --password P@ssw0rd1 \
+  --user-principal-name $AAD_DEV_UPN \
+  --password $AAD_DEV_PW \
   --query objectId -o tsv)
 ```
 
@@ -99,14 +111,26 @@ AKSDEV_ID=$(az ad user create \
 az ad group member add --group appdev --member-id $AKSDEV_ID
 ```
 
-İkinci bir kullanıcı hesabı oluşturun. Aşağıdaki örnek, görünen adı *aks SRE* ve Kullanıcı asıl adı (UPN) olan bir kullanıcı oluşturur `akssre@contoso.com` . Daha sonra, UPN 'yi Azure AD kiracınız için doğrulanmış bir etki alanı içerecek şekilde güncelleştirin ( *contoso.com* yerine kendi etki alanınızı değiştirin) ve kendi güvenli kimlik bilgilerinizi sağlayın `--password` :
+SREs için UPN ve parolayı ayarlayın. Aşağıdaki komut, UPN için sizi uyarır ve daha sonraki bir komutta kullanılmak üzere *AAD_SRE_UPN* ayarlar (Bu makaledeki komutların bash kabuğu 'na girildiğini unutmayın). UPN, kiracınızın doğrulanmış etki alanı adını (örneğin,) içermelidir `akssre@contoso.com` .
+
+```azurecli-interactive
+echo "Please enter the UPN for SREs: " && read AAD_SRE_UPN
+```
+
+Aşağıdaki komut, parolayı ister ve daha sonra kullanmak üzere *AAD_SRE_PW* olarak ayarlar.
+
+```azurecli-interactive
+echo "Please enter the secure password for SREs: " && read AAD_SRE_PW
+```
+
+İkinci bir kullanıcı hesabı oluşturun. Aşağıdaki örnek, *AAD_SRE_UPN* ve *AAD_SRE_PW* değerlerini kullanarak görünen adı *aks SRE* ve UPN ve güvenli parola ile birlikte bir kullanıcı oluşturur:
 
 ```azurecli-interactive
 # Create a user for the SRE role
 AKSSRE_ID=$(az ad user create \
   --display-name "AKS SRE" \
-  --user-principal-name akssre@contoso.com \
-  --password P@ssw0rd1 \
+  --user-principal-name $AAD_SRE_UPN \
+  --password $AAD_SRE_PW \
   --query objectId -o tsv)
 
 # Add the user to the opssre Azure AD group
@@ -266,13 +290,13 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --ov
 *Geliştirme* ad alanındaki [kubectl Run][kubectl-run] komutunu kullanarak temel NGINX Pod 'u zamanlayın:
 
 ```console
-kubectl run nginx-dev --image=nginx --namespace dev
+kubectl run nginx-dev --image=mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine --namespace dev
 ```
 
 Oturum açma isteminde, makalenin başlangıcında oluşturulan kendi hesabınızın kimlik bilgilerini girin `appdev@contoso.com` . Başarıyla oturum açtıktan sonra, hesap belirteci gelecekteki komutlar için önbelleğe alınır `kubectl` . Aşağıdaki örnek çıktıda gösterildiği gibi NGıNX başarıyla zamanlanır:
 
 ```console
-$ kubectl run nginx-dev --image=nginx --namespace dev
+$ kubectl run nginx-dev --image=mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine --namespace dev
 
 To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code B24ZD6FP8 to authenticate.
 
@@ -313,7 +337,7 @@ Error from server (Forbidden): pods is forbidden: User "aksdev@contoso.com" cann
 Aynı şekilde, farklı bir ad alanında (örneğin, *SRE* ad alanı) bir pod zamanlamaya çalışın. Aşağıdaki örnek çıktıda gösterildiği gibi, kullanıcının grup üyeliği bir Kubernetes rolü ve RoleBinding ile hizalanmaz:
 
 ```console
-$ kubectl run nginx-dev --image=nginx --namespace sre
+$ kubectl run nginx-dev --image=mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine --namespace sre
 
 Error from server (Forbidden): pods is forbidden: User "aksdev@contoso.com" cannot create resource "pods" in API group "" in the namespace "sre"
 ```
@@ -331,14 +355,14 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --ov
 Atanan *SRE* ad alanında Pod 'yi zamanlamayı ve görüntülemeyi deneyin. İstendiğinde, `opssre@contoso.com` makalenin başlangıcında oluşturduğunuz kendi kimlik bilgilerinizle oturum açın:
 
 ```console
-kubectl run nginx-sre --image=nginx --namespace sre
+kubectl run nginx-sre --image=mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine --namespace sre
 kubectl get pods --namespace sre
 ```
 
 Aşağıdaki örnek çıktıda gösterildiği gibi, pods 'yi başarıyla oluşturabilir ve görüntüleyebilirsiniz:
 
 ```console
-$ kubectl run nginx-sre --image=nginx --namespace sre
+$ kubectl run nginx-sre --image=mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine --namespace sre
 
 To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code BM4RHP3FD to authenticate.
 
@@ -354,7 +378,7 @@ nginx-sre   1/1     Running   0
 
 ```console
 kubectl get pods --all-namespaces
-kubectl run nginx-sre --image=nginx --namespace dev
+kubectl run nginx-sre --image=mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine --namespace dev
 ```
 
 `kubectl`Aşağıdaki örnek çıktıda gösterildiği gibi bu komutlar başarısız olur. Kullanıcının grup üyeliği ve Kubernetes rolü ve RoleBindings, diğer ad alanlarında kaynak oluşturma veya Yönetici kaynakları için izin vermez:
@@ -363,7 +387,7 @@ kubectl run nginx-sre --image=nginx --namespace dev
 $ kubectl get pods --all-namespaces
 Error from server (Forbidden): pods is forbidden: User "akssre@contoso.com" cannot list pods at the cluster scope
 
-$ kubectl run nginx-sre --image=nginx --namespace dev
+$ kubectl run nginx-sre --image=mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine --namespace dev
 Error from server (Forbidden): pods is forbidden: User "akssre@contoso.com" cannot create pods in the namespace "dev"
 ```
 

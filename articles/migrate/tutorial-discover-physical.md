@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
 ms.openlocfilehash: 548cee262d874f5bc0f6024a857c2bb8a5466106
-ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98541351"
 ---
 # <a name="tutorial-discover-physical-servers-with-server-assessment"></a>Öğretici: Sunucu değerlendirmesi ile fiziksel sunucuları bulma
@@ -20,7 +20,7 @@ Azure 'a geçiş yolculuğunun bir parçası olarak, sunucularınızı değerlen
 
 Bu öğreticide, basit bir Azure geçişi gereci kullanarak Azure geçişi: Sunucu değerlendirmesi aracı ile şirket içi fiziksel sunucuları nasıl keşfedebileceğiniz gösterilmektedir. Makine ve performans meta verilerini sürekli olarak saptamak için gereci fiziksel sunucu olarak dağıtırsınız.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Bir Azure hesabı ayarlayın.

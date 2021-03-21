@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: jingwang
 ms.openlocfilehash: 0aee6030e5608b5413864d6a32dc8442dd346f42
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100392791"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>Kopyalama etkinliğinde şema ve veri türü eşleme

@@ -12,12 +12,12 @@ ms.date: 2/23/2021
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdcdd387575faec87656430860e24fee56387775
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: fa025f7e21f76b4dde547ccabf675511e9156359
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050911"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589336"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>SaaS bulut uygulamalarına erişimi yönetmek için kiracı kısıtlamalarını kullanın
 
@@ -178,9 +178,9 @@ Fiddler, http üst bilgilerini ekleme de dahil olmak üzere HTTP/HTTPS trafiğin
       }
    ```
 
-Birden çok kiracıya izin vermeniz gerekiyorsa, kiracı adlarını ayırmak için virgül kullanın. Örnek:
+   Birden çok kiracıya izin vermeniz gerekiyorsa, kiracı adlarını ayırmak için virgül kullanın. Örnek:
 
-      `oSession.oRequest["Restrict-Access-To-Tenants"] = "contoso.onmicrosoft.com,fabrikam.onmicrosoft.com";`
+   `oSession.oRequest["Restrict-Access-To-Tenants"] = "contoso.onmicrosoft.com,fabrikam.onmicrosoft.com";`
 
 4. CustomRules dosyasını kaydedin ve kapatın.
 
@@ -197,13 +197,13 @@ Belirli Ayrıntılar için proxy sunucusu belgelerinize bakın.
 
 ## <a name="blocking-consumer-applications-public-preview"></a>Tüketici uygulamalarını engelleme (Genel Önizleme)
 
-Microsoft 'un hem tüketici hesaplarını hem de [OneDrive](https://onedrive.live.com/) veya [Microsoft Learn](https://docs.microsoft.com/learn/)gibi kuruluş hesaplarını destekleyen UYGULAMALARı, bazen aynı URL üzerinde barındırılabilir.  Bu, iş için URL 'ye erişmesi gereken kullanıcıların kişisel kullanım için de erişim sahibi olması gerektiği anlamına gelir ve bu da işletim kılavuzlarınızın altında izin verilmiyor olabilir.
+Microsoft 'un hem tüketici hesaplarını hem de [OneDrive](https://onedrive.live.com/) veya [Microsoft Learn](/learn/)gibi kuruluş hesaplarını destekleyen UYGULAMALARı, bazen aynı URL üzerinde barındırılabilir.  Bu, iş için URL 'ye erişmesi gereken kullanıcıların kişisel kullanım için de erişim sahibi olması gerektiği anlamına gelir ve bu da işletim kılavuzlarınızın altında izin verilmiyor olabilir.
 
 Bazı kuruluşlar `login.live.com` Kişisel hesapların kimlik doğrulamasını engellemek için bunu engellemeye çalışır.  Bu, birkaç aşağı tarafa sahiptir:
 
 1. Engelleme `login.live.com` , B2B Konuk senaryolarında kişisel hesapların kullanımını engeller. Bu, ziyaretçiler ve işbirliği konusunda intrude olabilir.
-1. [Autopilot 'in `login.live.com` kullanımını gerektirir](https://docs.microsoft.com/mem/autopilot/networking-requirements) ' i dağıtın. Intune ve Autopilot senaryoları engellendiğinde başarısız olabilir `login.live.com` .
-1. Cihaz kimlikleri için login.live.com hizmetine bağlı olan kurumsal telemetri ve Windows güncelleştirmeleri [çalışmayı durduracaktır](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#feature-updates-are-not-being-offered-while-other-updates-are).
+1. [Autopilot 'in `login.live.com` kullanımını gerektirir](/mem/autopilot/networking-requirements) ' i dağıtın. Intune ve Autopilot senaryoları engellendiğinde başarısız olabilir `login.live.com` .
+1. Cihaz kimlikleri için login.live.com hizmetine bağlı olan kurumsal telemetri ve Windows güncelleştirmeleri [çalışmayı durduracaktır](/windows/deployment/update/windows-update-troubleshooting#feature-updates-are-not-being-offered-while-other-updates-are).
 
 ### <a name="configuration-for-consumer-apps"></a>Tüketici uygulamaları için yapılandırma
 
@@ -216,7 +216,7 @@ Bazı kuruluşlar `login.live.com` Kişisel hesapların kimlik doğrulamasını 
 `restrict-msa`İlke, tüketici uygulamalarının kullanımını engeller, ancak birkaç farklı trafik ve kimlik doğrulaması türüne izin verir:
 
 1. Cihazlar için Kullanıcı tarafından daha az trafik.  Buna Autopilot, Windows Update ve kurumsal telemetri için trafik dahildir.
-1. Tüketici hesaplarının B2B kimlik doğrulaması. [Bir kiracıyla işbirliği yapmaya davet](https://docs.microsoft.com/azure/active-directory/external-identities/redemption-experience#invitation-redemption-flow) edilen Microsoft hesabı olan kullanıcılar, bir kaynak kiracısına erişmek için login.Live.com ile kimlik doğrular.
+1. Tüketici hesaplarının B2B kimlik doğrulaması. [Bir kiracıyla işbirliği yapmaya davet](../external-identities/redemption-experience.md#invitation-redemption-flow) edilen Microsoft hesabı olan kullanıcılar, bir kaynak kiracısına erişmek için login.Live.com ile kimlik doğrular.
     1. Bu erişim, bu `Restrict-Access-To-Tenants` kaynak kiracısına erişim izni vermek veya erişimi reddetmek için üst bilgi kullanılarak denetlenir.
 1. Birçok Azure uygulaması tarafından kullanılan "PASSTHROUGH" kimlik doğrulaması ve Office.com, uygulamaların bir tüketici bağlamında tüketici kullanıcıları oturumu açmak için Azure AD kullanması.
     1. Bu erişim, `Restrict-Access-To-Tenants` özel "PASSTHROUGH" kiracısına () erişim izni vermek veya erişimi reddetmek için üst bilgi kullanılarak da denetlenir `f8cdef31-a31e-4b4a-93e4-5f571e91255a` .  Bu kiracı `Restrict-Access-To-Tenants` izin verilen etki alanları listenizde görünmezse, tüketici hesapları Azure AD tarafından bu uygulamalarda oturum açmasını engellenecektir.

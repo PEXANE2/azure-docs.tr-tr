@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
 ms.openlocfilehash: deac4dcde51049d744706b7479f5b5f3bbb4d9c0
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92520869"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-periscope-data"></a>Öğretici: Periscope verileriyle tümleştirme Azure Active Directory
@@ -61,13 +61,13 @@ Periscope verilerinin Azure AD ile tümleştirilmesini yapılandırmak için gal
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Periscope Data**yazın, sonuç panelinden **Periscope verileri** seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **Periscope Data** yazın, sonuç panelinden **Periscope verileri** seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
      ![Sonuçlar listesindeki Periscope verileri](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre Periscope VERILERIYLE Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
+Bu bölümde, **Britta Simon** adlı bir test kullanıcısına göre Periscope VERILERIYLE Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve Periscope verilerinde ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açma 'yı Periscope verilerle yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -137,11 +137,11 @@ Azure AD çoklu oturum açmayı Periscope verileriyle yapılandırmak için aşa
 
     f. XML dosyasının ilk etiketini bulun, **EntityId** değerini kopyalayın ve **veren** metin kutusuna yapıştırın.
 
-    örneğin: SAML protokolüyle **ıdpssodescriptor** etiketini bulur. Bu bölüm içinde, **Use = imzalamayı**Içeren etiket **KeyDescriptor** ' ı bulun. **X509Certificate** değerini kopyalayın ve **sertifika** metin kutusuna yapıştırın.
+    örneğin: SAML protokolüyle **ıdpssodescriptor** etiketini bulur. Bu bölüm içinde, **Use = imzalamayı** Içeren etiket **KeyDescriptor** ' ı bulun. **X509Certificate** değerini kopyalayın ve **sertifika** metin kutusuna yapıştırın.
 
     h. Birden çok boşluk içeren siteler **varsayılan alandan** açılan varsayılan alanı seçebilir. Bu, yeni kullanıcıların ilk kez Periscope verilerinde oturum açtıklarında eklendiği ve Active Directory çoklu oturum açma yoluyla sağlandığı zaman bir alandır.
 
-    i. Son olarak **Kaydet** ' e tıklayın ve **oturum kapatma**yazarak SSO ayarları değişikliğini **onaylayın** .
+    i. Son olarak **Kaydet** ' e tıklayın ve **oturum kapatma** yazarak SSO ayarları değişikliğini **onaylayın** .
 
     ![Metin kutusunda "oturum kapatma" ve "Onayla" düğmesinin seçili olduğu "güncelleştirme S S O yapılandırması" iletişim kutusunu gösteren ekran görüntüsü.](./media/periscope-data-tutorial/configure02.png)
 
@@ -161,9 +161,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
@@ -212,11 +212,11 @@ Azure AD kullanıcılarının Periscope verilerinde oturum açmasını sağlamak
 
       ![Periscope verileri yapılandırma bilgileri](./media/periscope-data-tutorial/configure04.png)
 
-    a. **Ad** metin kutusuna, ilk Kullanıcı adını **Britta**gibi girin.
+    a. **Ad** metin kutusuna, ilk Kullanıcı adını **Britta** gibi girin.
 
-    b. **Soyadı** metin kutusuna, **Simon**gibi kullanıcı adının soyadını girin.
+    b. **Soyadı** metin kutusuna, **Simon** gibi kullanıcı adının soyadını girin.
 
-    c. **E-posta** metin kutusuna, **brittasıon \@ contoso.com**gibi kullanıcının e-postasını girin.
+    c. **E-posta** metin kutusuna, **brittasıon \@ contoso.com** gibi kullanıcının e-postasını girin.
 
     d. **Ekle**' ye tıklayın.
 

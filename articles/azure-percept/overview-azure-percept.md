@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 02/18/2021
 ms.custom: template-overview
 ms.openlocfilehash: eca0c28b016b2e57f6fe47495c90bf113f0179a6
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103490118"
 ---
 # <a name="introduction-to-azure-percept"></a>Azure Percept 'a giriş
@@ -37,7 +37,7 @@ Azure Percept ana bileşenleri şunlardır:
     - Cihaz oluşturucular, çözüm oluşturucular ve müşteriler için çok çeşitli prototip yazma senaryolarını desteklemeye yetecek kadar esnek bir geliştirme seti.
 
         > [!div class="nextstepaction"]
-        > [Şimdi satın alın](https://go.microsoft.com/fwlink/p/?LinkId=2155270)
+        > [Hemen satın alın](https://go.microsoft.com/fwlink/p/?LinkId=2155270)
 
 3. Edge AI modelinin ve çözüm geliştirmenin hızlandırmasına yönelik hizmetler ve iş akışları.
 

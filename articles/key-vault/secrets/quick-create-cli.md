@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-azurecli
 ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: e84a9fe15f648311c22fb0f7e8f8374454f5668a
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 1443ab37beb28706227159c53d336384216d8387
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99989155"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582468"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>Hızlı başlangıç: Azure CLI kullanarak Azure Key Vault'tan gizli dizi ayarlama ve alma
 
@@ -39,7 +39,7 @@ Bu hızlı başlangıçta Azure CLı ile Azure Key Vault bir Anahtar Kasası olu
 
 Kasaya bir gizli dizi eklemek için birkaç ek adım uygulamanız gerekir. Bu parola bir uygulama tarafından kullanılabilir. Parola, **Examplepassword** olarak adlandırılır ve **hVFkk965BuUv** değerini bunun içinde depolayacaktır.
 
-**HVFkk965BuUv** değerini depolayacak **examplepassword** adlı Key Vault bir gizli dizi oluşturmak için aşağıdaki komutları yazın:
+**HVFkk965BuUv** değerini depolayacak **examplepassword** adlı Key Vault bir gizli dizi oluşturmak için aşağıdaki Azure CLI [az keykasası Secret set](/cli/azure/keyvault/secret#az_keyvault_secret_set) komutunu kullanın:
 
 ```azurecli
 az keyvault secret set --vault-name "<your-unique-keyvault-name>" --name "ExamplePassword" --value "hVFkk965BuUv"
@@ -64,5 +64,6 @@ Artık bir Key Vault oluşturdunuz, bir gizli dizli depoladınız ve bunu aldın
 Bu hızlı başlangıçta bir Key Vault oluşturup bir gizli dizi depoladınız. Key Vault ve uygulamalarınızla tümleştirme hakkında daha fazla bilgi edinmek için aşağıdaki makalelere ilerleyin.
 
 - [Azure Key Vault genel bakışını](../general/overview.md) okuyun
+- [Çok satırlı gizli dizileri Key Vault nasıl depolayacağınızı](multiline-secrets.md) öğrenin
 - Azure CLı için başvuruya bakın [az keykasa komutları](/cli/azure/keyvault)
 - [Key Vault güvenliğine genel bakış](../general/security-overview.md) konusunu gözden geçirin

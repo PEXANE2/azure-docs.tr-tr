@@ -4,10 +4,10 @@ description: Bu makalede, Azure Backup verileri için Azure Izleyici Log Analyti
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.openlocfilehash: 004c5a6c0c2c4dcfcf13134bd5a5143ba647048f
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102500997"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Azure Backup verileri için Log Analytics veri modeli
@@ -173,7 +173,7 @@ Bu tablo, işle ilgili alanlarla ilgili ayrıntıları sağlar.
 
 Bu tablo ilkeyle ilgili alanlarla ilgili ayrıntıları sağlar.
 
-| Alan | Veri Türü | Uygulanabilir sürümler | Açıklama |
+| Alan | Veri Türü | Uygulanabilir sürümler | Description |
 | --- | --- | --- | --- |
 | EventName_s |Metin ||Bu alan bu olayın adını temsil eder. Her zaman AzureBackupCentralReport |
 | SchemaVersion_s |Metin ||Bu alan, şemanın geçerli sürümünü gösterir. **V2** 'dir |
@@ -221,7 +221,7 @@ Bu tablo ilkeyle ilgili alanlarla ilgili ayrıntıları sağlar.
 
 Bu tablo, çeşitli varlıklarla ilke ilişkilendirmeleri hakkında ayrıntılar sağlar.
 
-| Alan | Veri Türü | Uygulanabilir sürümler | Açıklama |
+| Alan | Veri Türü | Uygulanabilir sürümler | Description |
 | --- | --- | --- | --- |
 | EventName_s |Metin ||Bu alan bu olayın adını temsil eder. Her zaman AzureBackupCentralReport |
 | SchemaVersion_s |Metin ||Bu alan, şemanın geçerli sürümünü gösterir. **V2** 'dir |
@@ -350,7 +350,7 @@ Bu tablo, bir birimin ilişkilendirildiği iş yüklerini belirtir.
 
 Bu tablo, temel korumalı örneklerle ilgili alanları sağlar.
 
-| Alan | Veri Türü |Uygulanabilir sürümler | Açıklama |
+| Alan | Veri Türü |Uygulanabilir sürümler | Description |
 | --- | --- | --- | --- |
 | BackupItemUniqueId_s |Metin |v2|DPM, MABS kullanılarak yedeklenen VM 'Ler için yedekleme öğesini tanımlamak üzere kullanılan benzersiz KIMLIK|
 | ProtectedContainerUniqueId_s |Metin |v2|DPM, MABS kullanılarak yedeklenen VM 'Ler hariç her şey için korunan kapsayıcıyı tanımlamak üzere kullanılan benzersiz KIMLIK|
