@@ -9,10 +9,10 @@ ms.date: 06/29/2020
 ms.service: virtual-machines-sql
 ms.subservice: deployment
 ms.openlocfilehash: a20cb27ac91a0b01ed9cc3a5ac4c5c57f90ceda1
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97359651"
 ---
 # <a name="quickstart-create-sql-server-vm-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak SQL Server VM oluşturma
@@ -124,7 +124,7 @@ Write-Host "Press [ENTER] to continue..."
 > [ Öğretici: ilk ARM şablonunuzu oluşturma ve dağıtma](../../../azure-resource-manager/templates/template-tutorial-create-first-template.md)
 
 SQL Server VM dağıtmanın diğer yolları için bkz.: 
-- [Azure Portal](create-sql-vm-portal.md)
+- [Azure portalı](create-sql-vm-portal.md)
 - [PowerShell](create-sql-vm-powershell.md)
 
 Daha fazla bilgi edinmek için bkz. [Azure VM 'lerinde SQL Server genel bakış](sql-server-on-azure-vm-iaas-what-is-overview.md).

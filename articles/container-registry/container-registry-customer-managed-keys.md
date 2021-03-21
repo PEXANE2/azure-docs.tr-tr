@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 03/03/2021
 ms.custom: ''
 ms.openlocfilehash: aad9419fdb139ff615bfe07075be78a2ca4ee4ac
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102489081"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>Müşteri tarafından yönetilen anahtar kullanarak kayıt defterini şifreleme
@@ -454,7 +454,7 @@ Bir anahtar döndürürken, genellikle kayıt defteri oluştururken kullanılan 
 
 Yaygın bir senaryo, müşteri tarafından yönetilen anahtar olarak kullanılan anahtarın sürümünü güncelleştirmedir. Kayıt defteri şifrelemesinin nasıl yapılandırıldığına bağlı olarak, Azure Container Registry içindeki müşteri tarafından yönetilen anahtar otomatik olarak güncelleştirilir veya el ile güncelleştirilmeleri gerekir.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Anahtar Kasası Anahtarlarınızı oluşturmak veya yönetmek için [az keykasakey][az-keyvault-key] komutları kullanın. Yeni bir anahtar sürümü oluşturmak için [az keykasa Key Create][az-keyvault-key-create] komutunu çalıştırın:
 

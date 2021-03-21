@@ -4,10 +4,10 @@ description: Azure Service Fabric durum bilgisi olan Reliable Services için tan
 ms.topic: conceptual
 ms.date: 8/24/2018
 ms.openlocfilehash: 774a771d0c9701076a5d6c070963bf6224a571dd
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98789340"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>Durum Bilgisi Olan Reliable Services için tanılama işlevi
@@ -93,7 +93,7 @@ Yukarıdaki örnekte, `00d0126d-3e36-4d68-98da-cc4f7195d85e` Service Fabric böl
 
 Reliable Services Runtime, kategori altında aşağıdaki olayları yayar `Service Fabric Transactional Replicator`
 
- Sayaç adı | Açıklama |
+ Sayaç adı | Description |
 | --- | --- |
 | Başlangıç TXN Işlemi/sn | Saniye başına oluşturulan yeni yazma işlemi sayısı.|
 | TXN Işlemi/sn | Saniye başına güvenilir koleksiyonlar üzerinde gerçekleştirilen ekleme/güncelleştirme/silme işlemlerinin sayısı.|
@@ -106,7 +106,7 @@ Reliable Services Runtime, kategori altında aşağıdaki olayları yayar `Servi
 
 Reliable Services Runtime, kategori altında aşağıdaki olayları yayar `Service Fabric TStore`
 
- Sayaç adı | Açıklama |
+ Sayaç adı | Description |
 | --- | --- |
 | Öğe sayısı | Depodaki öğelerin sayısı.|
 | Disk Boyutu | Mağaza için denetim noktası dosyalarının bayt cinsinden toplam disk boyutu.|

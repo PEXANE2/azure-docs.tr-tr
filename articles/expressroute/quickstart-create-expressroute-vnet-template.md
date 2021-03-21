@@ -10,10 +10,10 @@ ms.custom: subject-armqs
 ms.date: 10/12/2020
 ms.author: duau
 ms.openlocfilehash: 7521344a2bb6aae67724c8bfbb9131e2ff1e6b94
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92789735"
 ---
 # <a name="quickstart-create-an-expressroute-circuit-with-private-peering-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak özel eşleme ile bir ExpressRoute devresi oluşturma
@@ -34,7 +34,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablonlarından](https://azure.microsoft.com/resources/templates/101-expressroute-private-peering-vnet) alınmıştır.
 
-Bu hızlı başlangıçta, hizmet sağlayıcısı olarak *Equinx* Ile bir ExpressRoute devresi oluşturacaksınız. Devre, *50 Mbps* bant genişliğine sahip BIR *Premium SKU* ve *Washington DC* 'nin eşleme konumunu kullanacaktır. Özel eşleme, sırasıyla *192.168.10.16/30* ve *192.168.10.20/30* birincil ve ikincil alt ağıyla etkinleştirilecek. Ayrıca, bir sanal ağ, *HighPerformance ExpressRoute ağ geçidiyle* birlikte oluşturulur.
+Bu hızlı başlangıçta, hizmet sağlayıcısı olarak *Equinx* Ile bir ExpressRoute devresi oluşturacaksınız. Devre, *50 Mbps* bant genişliğine sahip BIR *Premium SKU* ve *Washington DC*'nin eşleme konumunu kullanacaktır. Özel eşleme, sırasıyla *192.168.10.16/30* ve *192.168.10.20/30* birincil ve ikincil alt ağıyla etkinleştirilecek. Ayrıca, bir sanal ağ, *HighPerformance ExpressRoute ağ geçidiyle* birlikte oluşturulur.
 
 :::code language="json" source="~/quickstart-templates/101-expressroute-private-peering-vnet/azuredeploy.json":::
 
@@ -70,7 +70,7 @@ ExpressRoute ile ilgili daha fazla şablon bulmak için bkz. [Azure hızlı baş
 
 1. PowerShell betiğini kopyalamak için önceki kod bloğundan **Kopyala** ' yı seçin.
 
-1. Kabuk konsol bölmesine sağ tıklayın ve ardından **Yapıştır** ' ı seçin.
+1. Kabuk konsol bölmesine sağ tıklayın ve ardından **Yapıştır**' ı seçin.
 
 1. Değerleri girin.
 
@@ -84,7 +84,7 @@ Azure PowerShell, şablonu dağıtmak için kullanılır. Azure PowerShell ek ol
 
 ## <a name="validate-the-deployment"></a>Dağıtımı doğrulama
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Sol bölmeden **kaynak grupları** ' nı seçin.
 
@@ -92,11 +92,11 @@ Azure PowerShell, şablonu dağıtmak için kullanılır. Azure PowerShell ek ol
 
 1. Kaynak grubunun burada görülen aşağıdaki kaynakları içermesi gerekir:
 
-     :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-resource-group.png" alt-text="ExpressRoute Kaynak Yöneticisi şablonu PowerShell dağıtım çıkışı":::
+     :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-resource-group.png" alt-text="ExpressRoute dağıtım kaynak grubu":::
 
 1. Devre durumunun **etkin** olduğunu doğrulamak Için ExpressRoute bağlantı hattı **-CK01** ' ı seçin, sağlayıcı durumu **sağlanmadı** ve özel eşleme **sağlanan** durumuna sahip.
 
-    :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-circuit.png" alt-text="ExpressRoute Kaynak Yöneticisi şablonu PowerShell dağıtım çıkışı":::
+    :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-circuit.png" alt-text="ExpressRoute dağıtım devresi":::
 
 > [!NOTE]
 > Sanal ağı devre 'ya bağlayabilmeniz için önce sağlayıcıyı çağırmanız gerekir.

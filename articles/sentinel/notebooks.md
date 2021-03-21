@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 09/06/2020
 ms.openlocfilehash: 43d7a697b3cb013a73a0b14db8ec1758244ae3b9
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97092202"
 ---
-# <a name="use-jupyter-notebook-to-hunt-for-security-threats"></a>Güvenlik tehditleri aramak için Jupyter Notebook kullanın
+# <a name="use-jupyter-notebook-to-hunt-for-security-threats"></a>Güvenlik tehditlerini avlamak için Jupyter Notebook kullanma
 
 Azure Sentinel 'in temeli veri deposudur; yüksek performanslı sorgulamayı, dinamik şemayı birleştirir ve çok büyük veri birimlerine ölçeklendirir. Azure portal ve tüm Azure Sentinel araçları, bu veri deposuna erişmek için ortak bir API kullanır. Aynı API, [jupi](https://jupyter.org/) Not defterleri ve Python gibi dış araçlar için de kullanılabilir. Portalda birçok ortak görev gerçekleştirilebilirken, Jupyıter bu verilerle yapabileceklerinizi kapsamını genişletir. Makine öğrenimi, görselleştirme ve veri analizi için çok büyük bir kitaplık koleksiyonuyla tam programlama ile birleşir. Bu öznitelikler, Jupa 'nın güvenlik araştırması ve araştırma için etkileyici bir araç haline getirir.
 
@@ -66,7 +66,7 @@ Not defterlerini kullanmak için, önce bir Azure Machine Learning (ML) çalış
     |Abonelik|Kullanmak istediğiniz Azure aboneliğini seçin.|
     |Kaynak grubu|Aboneliğinizde mevcut kaynak gruplarından birini seçin veya bir ad girerek yeni bir kaynak grubu oluşturun. Kaynak grubu, bir Azure çözümü için ilgili kaynakları barındırır. Bu örnekte, **AzureMLRG** kullanacağız.|
     |Çalışma alanı adı|Çalışma alanınızı tanımlayan benzersiz bir ad girin. Bu örnekte, **testworkspace1** kullanacağız. Adlar, kaynak grubu genelinde benzersiz olmalıdır. Başkaları tarafından oluşturulan çalışma alanlarını birbirinden ayırmak ve geri çekmek için kolay bir ad kullanın.|
-    |Bölge|Çalışma alanınızı oluşturmak için kullanıcılarınıza en yakın konumu ve veri kaynaklarını seçin.|
+    |Region|Çalışma alanınızı oluşturmak için kullanıcılarınıza en yakın konumu ve veri kaynaklarını seçin.|
     |Çalışma alanı sürümü|Bu örnekte, çalışma alanı türü olarak **temel** ' yı seçin. Çalışma alanı türü (temel & kurumsal), erişim ve fiyatlandırmaya sahip olduğunuz özellikleri belirler.|
 
     > [!div class="mx-imgBorder"]

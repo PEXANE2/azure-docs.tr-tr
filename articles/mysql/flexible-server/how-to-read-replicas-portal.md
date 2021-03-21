@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 10/26/2020
 ms.openlocfilehash: d33734dc7404e49aed94dffae8644b2bc4386925
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96492837"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-flexible-server-using-the-azure-portal"></a>Azure portal kullanarak MySQL için Azure veritabanı esnek sunucusu 'nda okuma çoğaltmaları oluşturma ve yönetme
@@ -34,7 +34,7 @@ Bu makalede, Azure portal kullanarak MySQL için Azure veritabanı esnek sunucus
 
 Aşağıdaki adımlar kullanılarak, bir okuma çoğaltması sunucusu oluşturulabilir:
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure portal](https://portal.azure.com/) oturum açın.
 
 2. Kaynak olarak kullanmak istediğiniz MySQL için mevcut Azure veritabanı esnek sunucusunu seçin. Bu eylem **genel bakış** sayfasını açar.
 

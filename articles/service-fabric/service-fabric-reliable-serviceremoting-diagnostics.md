@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: pepogors
 ms.openlocfilehash: 9c7d466d6e8fd36b4445966b92ee753becf96c64
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98791770"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Güvenilir hizmet uzaktan Iletişimi için tanılama ve performans izleme
@@ -74,7 +74,7 @@ Yukarıdaki örnekte, `ivoicemailboxservice.leavemessageasync` Yöntem adı, `2`
 
 Güvenilir hizmet çalışma zamanı, hizmet yöntemlerinin yürütülmesi ile ilgili aşağıdaki performans sayaçlarını yayımlar.
 
-| Kategori adı | Sayaç adı | Açıklama |
+| Kategori adı | Sayaç adı | Description |
 | --- | --- | --- |
 | Service Fabric hizmeti yöntemi |Saniyedeki çağırma sayısı |Hizmet yönteminin saniye başına çağrılme sayısı |
 | Service Fabric hizmeti yöntemi |Çağrı başına ortalama milisaniye |Hizmet yönteminin yürütülmesi için harcanan süre (milisaniye) |
@@ -83,7 +83,7 @@ Güvenilir hizmet çalışma zamanı, hizmet yöntemlerinin yürütülmesi ile i
 ### <a name="service-request-processing-performance-counters"></a>Hizmet isteği işleme performans sayaçları
 Bir istemci bir hizmet proxy nesnesi aracılığıyla bir yöntemi çağırdığında, ağ üzerinden uzaktan iletişim hizmetine bir istek iletisi gönderilmesine neden olur. Hizmet, istek iletisini işler ve istemciye geri yanıt gönderir. Güvenilir ServiceRemoting çalışma zamanı, hizmet isteği işlemeyle ilgili aşağıdaki performans sayaçlarını yayınlar.
 
-| Kategori adı | Sayaç adı | Açıklama |
+| Kategori adı | Sayaç adı | Description |
 | --- | --- | --- |
 | Service Fabric hizmeti |bekleyen istek sayısı |Hizmette işlenmekte olan istek sayısı |
 | Service Fabric hizmeti |İstek başına ortalama milisaniye |Bir isteği işlemek için hizmete göre geçen süre (milisaniye cinsinden) |

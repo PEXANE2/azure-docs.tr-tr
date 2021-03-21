@@ -6,13 +6,13 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 06/30/2017
 ms.openlocfilehash: 0842a2cfa021ef8ea45c19ec885c7dec371730de
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96512645"
 ---
-# <a name="use-user-defined-applier"></a>Kullanıcı tanımlı uygulayıcı kullanma 
+# <a name="use-user-defined-applier"></a>Kullanıcı tarafından tanımlanan uygulayıcıyı kullanma 
 
 ## <a name="u-sql-udo-user-defined-applier"></a>U-SQL UDO: Kullanıcı tanımlı Uygulayıcı
 U-SQL Kullanıcı tanımlı bir uygulayıcı, bir sorgunun dış tablo ifadesiyle döndürülen her satır için özel bir C# işlevini çağırmanızı sağlar. Doğru giriş, sol girdinin her bir satırı için değerlendirilir ve üretilen satırlar nihai çıkış için birleştirilir. APPLY işleci tarafından üretilen sütunların listesi, sol taraftaki sütun kümesinin ve doğru girişin birleşimidir.

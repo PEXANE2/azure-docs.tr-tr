@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.openlocfilehash: 74d2654c54d1ab2ac5d47aa24449c41c20a90b74
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98791147"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure Veritabanı fiyatlandırma katmanları - Tek Sunucu
@@ -65,7 +65,7 @@ Temel katman, ıOPS garantisi sağlamıyor. Genel Amaçlı ve bellek için Iyile
 
 G/ç tüketiminizi Azure portal veya Azure CLı komutlarını kullanarak izleyebilirsiniz. İzlenecek ilgili ölçümler [depolama sınırı, depolama yüzdesi, kullanılan depolama alanı ve yüzde GÇ](concepts-monitoring.md)' dır.
 
-### <a name="reaching-the-storage-limit"></a>Depolama sınırına ulaşıyor
+### <a name="reaching-the-storage-limit"></a>Depolama sınırına ulaşma
 
 100 GB 'tan daha az kullanılabilir depolama alanı olan sunucular, boş depolama alanı 512 MB 'tan veya sağlanan depolama boyutunun %5 ' inden küçükse salt okunurdur. Sağlanan depolama alanı 100 GB'tan fazla olan sunucular, boş depolama alanı 5 GB'ın altına düştüğünde salt okunur olarak işaretlenir.
 

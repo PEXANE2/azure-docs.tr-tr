@@ -8,10 +8,10 @@ ms.date: 12/13/2020
 ms.topic: article
 ms.service: azure
 ms.openlocfilehash: cb984ca1a74d8b3838b857f2f5679264d1445187
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99508617"
 ---
 # <a name="basic-concepts"></a>Temel kavramlar 
@@ -83,7 +83,7 @@ IoT için Defender, birden çok dağıtımın etkili yönetimini ve ağın kapsa
 
 İş ortağı sistemleriyle hem cihaz hem de uyarı bilgilerini paylaşarak IoT için Defender 'ın yeteneklerini genişletebilirsiniz. Tümleştirmeler, kuruluşların cihaz görünürlüğünü ve tehdit bilgilerini önemli ölçüde geliştirmek için daha önce yığılıyor güvenlik çözümlerini köprüleyin. Tümleştirmeler, kuruluşların sistem genelinde yanıtları hızlandırmasına yardımcı olur ve riskleri daha hızlı azaltır. 
 
-Tümleştirmeler karmaşıklığı azaltır ve var olan SOC iş akışlarınızla ve güvenlik yığınınıza tümleştirerek bu ve OT ortadan kaldırır. Örneğin:
+Tümleştirmeler karmaşıklığı azaltır ve var olan SOC iş akışlarınızla ve güvenlik yığınınıza tümleştirerek bu ve OT ortadan kaldırır. Örnek:
 
 - IBM QRadar, splunk, Arcgözetimi, LogRhythm ve RSA Nettanık gibi Sıems
 

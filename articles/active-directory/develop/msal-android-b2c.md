@@ -14,10 +14,10 @@ ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
 ms.openlocfilehash: 1a9b9481d0b4086505bbfd3c2cd654ce228d1ae2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101688884"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>B2C ile Android için MSAL kullanma
@@ -119,7 +119,7 @@ AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()
 pca.acquireToken(parameters);
 ```
 
-## <a name="silently-renew-a-token"></a>Bir belirteci sessizce yenileme
+## <a name="silently-renew-a-token"></a>Belirteci sessizce yenileme
 
 MSAL ile sessizce bir belirteç elde etmek için bir `AcquireTokenSilentParameters` örnek oluşturup `acquireTokenSilentAsync` yönteme sağlayın. Yönteminden farklı olarak, `acquireToken` `authority` belirteci sessizce almak için belirtilmelidir.
 
@@ -196,7 +196,7 @@ new AuthenticationCallback() {
 
 Başarılı belirteç alımı bir nesne ile sonuçlanır `IAuthenticationResult` . Erişim belirtecini, Kullanıcı taleplerini ve meta verileri içerir.
 
-### <a name="get-the-access-token-and-related-properties"></a>Erişim belirtecini ve ilgili özellikleri al
+### <a name="get-the-access-token-and-related-properties"></a>Erişim belirtecini ve ilgili özelliklerini alma
 
 ```java
 // Get the raw bearer token

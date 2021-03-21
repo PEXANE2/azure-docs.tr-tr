@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 9e0b438e0cfa729300099463086248780c69484c
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95019849"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kontiki"></a>Öğretici: Kontiki ile tümleştirme Azure Active Directory
@@ -126,7 +126,7 @@ Kontiki tarafında çoklu oturum açmayı yapılandırmak için, indirilen Feder
 
 Bu bölümde, Azure portal Britta Simon adlı bir test kullanıcısı oluşturacaksınız.
 
-1. Azure Portal, kullanıcılar **Azure Active Directory**  >  **Users**  >  **tüm kullanıcılar**' ı seçin.
+1. Azure Portal, kullanıcılar **Azure Active Directory**  >    >  **tüm kullanıcılar**' ı seçin.
 
     ![Kullanıcılar ve tüm kullanıcılar seçenekleri](common/users.png)
 

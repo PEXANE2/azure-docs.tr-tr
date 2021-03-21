@@ -1,16 +1,16 @@
 ---
-title: Kurtarma noktalarını yönet
+title: Kurtarma noktalarını yönetme
 description: Azure Backup hizmetinin sanal makineler için kurtarma noktalarını nasıl yönettiğini öğrenin
 ms.topic: conceptual
 ms.date: 11/08/2020
 ms.openlocfilehash: 256df693aba0f799c24bcba6defe846e5c37ccaa
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94428810"
 ---
-# <a name="manage-recovery-points"></a>Kurtarma noktalarını yönet
+# <a name="manage-recovery-points"></a>Kurtarma noktalarını yönetme
 
 Bu makalede, sanal makinelerde bekletme nasıl çalıştığı açıklanır. Yedeklemeler gerçekleştiğinde, hangi geri yükleme işlemlerinin gerçekleştirilebileceği kurtarma noktaları oluşturulur.
 
@@ -68,21 +68,21 @@ Kurtarma noktasının süresi dolduğunda, silinir ya da birleştirilir.
 
 - İlk yedekleme sırasında oluşturulan *Kurtarma noktası 1* , sanal makinenin tam yedeklemesini içerir.
 - *Kurtarma noktası 1* süresi dolduğunda, *Kurtarma noktası 2* bir sonraki tam yedekleme olur.
-- Bir blok D1, kurtarma noktası *2 ' de* , blok 2 ' deki verilerin üzerine yazıldığından, *Kurtarma noktası 2* ile birleştirilir ve D2 silinir. Bu değişiklik D2 ' i engelle olarak yakalanır.
+- Bir blok D1, kurtarma noktası *2 ' de*, blok 2 ' deki verilerin üzerine yazıldığından, *Kurtarma noktası 2* ile birleştirilir ve D2 silinir. Bu değişiklik D2 ' i engelle olarak yakalanır.
 - Bir sonraki yedeklemeden önce üzerinde yapılan herhangi bir değişiklik olana kadar D1 blok, ardışık kurtarma noktalarında olduğu gibi tutulur.
 
 ![İlk durum](./media/manage-recovery-points/first-case.png)
 
 ### <a name="case-2-in-between-incremental-recovery-point-expires"></a>Durum 2: Içinde artımlı kurtarma noktası süre sonu
 
-- Kurtarma noktası *2* ' yi *Kurtarma noktası 1* ' den önce dolarsa, *Kurtarma noktası 2* ' deki veriler bir sonraki kullanılabilir kurtarma noktasıyla birleştirilir: *Kurtarma noktası 3*. Bu nedenle Block D3, *Kurtarma noktası 3* ile birleştirilir.
+- Kurtarma noktası *2* ' yi *Kurtarma noktası 1*' den önce dolarsa, *Kurtarma noktası 2* ' deki veriler bir sonraki kullanılabilir kurtarma noktasıyla birleştirilir: *Kurtarma noktası 3*. Bu nedenle Block D3, *Kurtarma noktası 3* ile birleştirilir.
 - *Kurtarma noktası 1* , D1 ve D2 bloğundaki tam yedekleme olmaya devam etmektedir.
 
 ![İkinci durum](./media/manage-recovery-points/second-case.png)
 
 ### <a name="case-3-on-demand-recovery-point-expires"></a>Durum 3: isteğe bağlı kurtarma noktası süre sonu
 
-Bu örnekte, bir zamanlama (günlük yedekleme) ilkesi *n* gün bekletme süresiyle çalışacak şekilde zamanlanır.  İsteğe bağlı bir yedekleme, bir sonraki zamanlanmış yedeklemeden önceki dördüncü günde tetikleniyorsa ve Bekletme dönemi 10 gün olarak belirtildiğinde, hala artımlı bir yedekleme olur. Kurtarma noktası *3* sonrasında ve kurtarma *noktası 4* ' ten önce bir kurtarma noktası ( *isteğe bağlı RP1* ) oluşturulur.  14. günün sonunda, isteğe bağlı kurtarma noktası ( *isteğe bağlı RP1* ) sona erer ve bir sonraki kullanılabilir kurtarma noktasıyla birleştirilir. Sunucuda hala mevcut olan veri blokları birleştirilir, ancak değiştirilen (üzerine yazılan veya silinen) veri blokları, zaman aşımına uğradı kurtarma noktasından silinir.
+Bu örnekte, bir zamanlama (günlük yedekleme) ilkesi *n* gün bekletme süresiyle çalışacak şekilde zamanlanır.  İsteğe bağlı bir yedekleme, bir sonraki zamanlanmış yedeklemeden önceki dördüncü günde tetikleniyorsa ve Bekletme dönemi 10 gün olarak belirtildiğinde, hala artımlı bir yedekleme olur. Kurtarma noktası *3* sonrasında ve kurtarma *noktası 4*' ten önce bir kurtarma noktası (*isteğe bağlı RP1*) oluşturulur.  14. günün sonunda, isteğe bağlı kurtarma noktası (*isteğe bağlı RP1*) sona erer ve bir sonraki kullanılabilir kurtarma noktasıyla birleştirilir. Sunucuda hala mevcut olan veri blokları birleştirilir, ancak değiştirilen (üzerine yazılan veya silinen) veri blokları, zaman aşımına uğradı kurtarma noktasından silinir.
 
 ![Üçüncü durum](./media/manage-recovery-points/third-case.png)
 

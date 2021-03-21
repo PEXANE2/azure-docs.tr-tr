@@ -10,10 +10,10 @@ ms.date: 08/25/2020
 ms.author: alehall
 ms.reviewer: jrasnick
 ms.openlocfilehash: 8a56b325dd5e1180b1229465965167241fab76a8
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101676453"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-cli"></a>Hızlı başlangıç: Azure CLı ile Azure SYNAPSE çalışma alanı oluşturma
@@ -38,7 +38,7 @@ Bu hızlı başlangıçta, Azure CLı kullanarak bir Synapse çalışma alanı o
 
 1. Azure SYNAPSE çalışma alanı için kaynak oluşturmak üzere gerekli ortam değişkenlerini tanımlayın.
 
-    | Ortam Değişkeni Adı | Açıklama |
+    | Ortam Değişkeni Adı | Description |
     |---|---|---|
     |StorageAccountName| Mevcut ADLS 2. depolama hesabınızın adı.|
     |StorageAccountResourceGroup| Mevcut ADLS 2. depolama hesabı kaynak grubunuzun adı. |

@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: c4e5dedf2075a2e13cc91c5eed2c0f03ba498b97
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96021529"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>App Service Ortamı ile Iç Load Balancer kullanma
@@ -58,12 +58,12 @@ ILB ATıCı oluşturmak, normal olarak bir AO oluşturmaktan daha farklı değil
 
 Sanal ağ bölmesinde, bir dış VIP veya Iç VIP arasında seçim yapmanızı sağlayan bir VNet yapılandırma seçeneği vardır. Varsayılan seçenek Dış’tır. Dış olarak ayarlandıysa Ao 'niz internet 'e erişilebilir bir VIP kullanır. İç’i seçerseniz ASE’niz sanal ağınızın içindeki bir IP adresinde bulunan ILB ile yapılandırılır. 
 
-Dahili ' ı seçtikten sonra Ao verilerinize daha fazla IP adresi ekleyebilme kaldırılır ve bunun yerine Ao 'nun alt etki alanını sağlamanız gerekir. Bir dış VIP ile Ao 'da, Ao 'nun adı bu Ao 'da oluşturulan uygulamalar için alt etki alanında kullanılır. Ao 'niz "*_contosotest_* _" olarak adlandırılmışsa ve bu Ao 'nun adı _*_MyTest_*_ olarak adlandırılmışsa, alt etki alanı _*_contosotest.p.azurewebsites.net_*_ biçimindedir ve uygulamanın URL 'si _*_MyTest.contosotest.p.azurewebsites.net_*_ olur. VIP türünü Iç olarak ayarlarsanız Ao adınız Ao 'nun alt etki alanında kullanılmaz. Alt etki alanını açık olarak belirtirsiniz. Alt etki alanı _*_contoso.Corp.net_*_ ise ve bu, _*_timeretaşıma_*_ adlı bir uygulama yaptıysanız, bu uygulamanın URL 'si _*_timereporting.contoso.Corp.net_*_ olur.
+Dahili ' ı seçtikten sonra Ao verilerinize daha fazla IP adresi ekleyebilme kaldırılır ve bunun yerine Ao 'nun alt etki alanını sağlamanız gerekir. Bir dış VIP ile Ao 'da, Ao 'nun adı bu Ao 'da oluşturulan uygulamalar için alt etki alanında kullanılır. Ao 'niz "**contosotest** _" olarak adlandırılmışsa ve bu Ao 'nun adı _*_MyTest_*_ olarak adlandırılmışsa, alt etki alanı _*_contosotest.p.azurewebsites.net_*_ biçimindedir ve bu uygulamanın URL 'si _* _MyTest.contosotest.p.azurewebsites.net_* * olur. VIP türünü Iç olarak ayarlarsanız Ao adınız Ao 'nun alt etki alanında kullanılmaz. Alt etki alanını açık olarak belirtirsiniz. Alt etki alanı ***contoso.Corp.net** ise_ ve bu, _*_timeretıs_*_ adlı bir uygulama yaptıysanız, bu uygulamanın URL 'si _ *_timereporting.contoso.Corp.net_* * olur.
 
 ## <a name="apps-in-an-ilb-ase"></a>ILB Ao 'da uygulamalar
 ILB Ao 'da bir uygulama oluşturmak, genellikle bir uygulama oluşturmak için de aynıdır. 
 
-1. Azure portal _ *kaynak oluştur-> Web ve mobil-> Web** veya **Mobil** ya da **API uygulaması**' nı seçin.
+1. Azure portal, **kaynak oluştur-> Web ve mobil-> Web** veya **Mobil** ya da **API uygulaması** seçin.
 2. Uygulamanın adını girin.
 3. Aboneliğinizi seçin.
 4. Kaynak grubunu seçin veya oluşturun.
@@ -123,7 +123,7 @@ Dış VIP kullanılırken DNS, Azure tarafından yönetilir. ASE’nizde oluştu
 - ftp
 - publish
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 App Service ortamları ile çalışmaya başlamak için bkz. [App Service ortamlarına giriş][WhatisASE]
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]

@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
 ms.openlocfilehash: 2343800f8801105ca75f285972b441ecb027d1a0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793254"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>Kiracı SaaS düzenine göre uygulama kullanarak yeni kiracılar sağlayın ve kataloglayın
@@ -68,7 +68,7 @@ Uygulamayı dağıtmak ve yapılandırmak için bir Azure Resource Manager şabl
 
 Bu öğreticinin sonunda, her bir veritabanı katalogda kayıtlı olan bir tek başına kiracı uygulamaları kümesine sahip olursunuz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdaki ön koşulların karşılandığından emin olun:
 
@@ -82,7 +82,7 @@ Bu görevde, tüm kiracı veritabanlarını kaydetmek için kullanılan kataloğ
 * Azure Kaynak Yönetimi şablonu kullanarak **Katalog veritabanını sağlayın** . Veritabanı bacpac dosyası içeri aktarılmasıyla başlatılır.
 * Daha önce dağıttığınız **örnek kiracı uygulamalarını kaydettirin** .  Her kiracı, kiracı adının karmasından oluşturulmuş bir anahtar kullanılarak kaydedilir.  Kiracı adı, katalogdaki bir uzantı tablosunda da depolanır.
 
-1. PowerShell ıSE 'de *. ..\Learning Modules\userconfig.exe* dosyasını açın ve **\<user\>** değeri üç örnek uygulamayı dağıttığınızda kullandığınız değere güncelleştirin.  **Dosyayı kaydedin** .
+1. PowerShell ıSE 'de *. ..\Learning Modules\userconfig.exe* dosyasını açın ve **\<user\>** değeri üç örnek uygulamayı dağıttığınızda kullandığınız değere güncelleştirin.  **Dosyayı kaydedin**.
 1. PowerShell ıSE 'de *. ..\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* açın ve **$Scenario = 1** olarak ayarlayın. Kiracı kataloğunu dağıtın ve önceden tanımlanmış kiracılar 'ı kaydedin.
 
 1. İmlecinizi,, `& $PSScriptRoot\New-Catalog.ps1` ve ardından **F9** tuşuna basarak bir yere yerleştirerek bir kesme noktası ekleyin.
@@ -120,8 +120,8 @@ Bu görevde, tek bir kiracı uygulamasını sağlamayı öğreneceksiniz. Şunla
 
 * Kiracı için **Yeni bir kaynak grubu oluşturun** .
 * Azure Kaynak Yönetimi şablonu kullanarak **uygulamayı ve veritabanını** yeni kaynak grubuna sağlayın.  Bu eylem, bir bacpac dosyasını içeri aktararak ortak şema ve başvuru verileriyle veritabanını başlatmayı içerir.
-* **Veritabanını temel kiracı bilgileriyle başlatın** . Bu eylem, olay Web sitesinde arka plan olarak kullanılan fotoğrafı belirleyen mekan türünü belirtmeyi içerir.
-* **Veritabanını Katalog veritabanına kaydedin** .
+* **Veritabanını temel kiracı bilgileriyle başlatın**. Bu eylem, olay Web sitesinde arka plan olarak kullanılan fotoğrafı belirleyen mekan türünü belirtmeyi içerir.
+* **Veritabanını Katalog veritabanına kaydedin**.
 
 1. PowerShell ıSE 'de *. ..\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* açın ve **$Scenario = 2** olarak ayarlayın. Kiracı kataloğunu dağıtma ve önceden tanımlanmış kiracılar kaydetme
 

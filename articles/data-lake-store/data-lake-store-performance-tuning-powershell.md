@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: twooley
 ms.openlocfilehash: 4ac2bbb21fd1a987d544a536d0f52628824e0bf4
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97723839"
 ---
 # <a name="performance-tuning-guidance-for-using-powershell-with-azure-data-lake-storage-gen1"></a>PowerShell 'i Azure Data Lake Storage 1. kullanmaya yönelik performans ayarlama Kılavuzu
@@ -21,7 +21,7 @@ Bu makalede, PowerShell kullanırken Data Lake Storage 1. çalışmak için daha
 
 ## <a name="performance-related-properties"></a>Performansla ilgili özellikler
 
-| Özellik            | Varsayılan | Açıklama |
+| Özellik            | Varsayılan | Description |
 |---------------------|---------|-------------|
 | PerFileThreadCount  | 10      | Bu parametre, her bir dosya karşıya yüklenirken veya indirilirken kaç paralel iş parçacığı kullanılacağını seçmenize olanak tanır. Bu sayı, dosya başına ayrılabilecek en fazla iş parçacığını temsil eder, ancak senaryonuza bağlı olarak daha az iş parçacığı alabilirsiniz (örneğin, 1 KB 'lık bir dosyayı karşıya yüklüyorsanız, 20 iş parçacığı sorsanız bile bir iş parçacığı alırsınız).  |
 | ConcurrentFileCount | 10      | Bu parametre özellikle klasörlerin karşıya yüklenmesi ve indirilmesi içindir. Bu parametre, karşıya yüklenebilecek veya indirilebilecek eş zamanlı dosya sayısını belirler. Bu sayı, tek seferde karşıya yüklenebilen veya indirilebilecek en fazla eş zamanlı dosya sayısını temsil eder, ancak senaryonuza bağlı olarak daha az eşzamanlılık alabilirsiniz (örneğin, iki dosyayı karşıya yüklüyorsanız, 15 ' i sorsanız bile iki eş zamanlı dosyayı karşıya yüklemeniz gerekir). |

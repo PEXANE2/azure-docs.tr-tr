@@ -4,10 +4,10 @@ description: Kayıt defteri depolarınızda gönderme veya çekme eylemleri ger�
 ms.topic: article
 ms.date: 05/24/2019
 ms.openlocfilehash: 5374b58ba72727500294a173c26e9a131b29fe34
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101722254"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Azure Container Registry Web kancalarını kullanma
@@ -65,7 +65,7 @@ Web kancasını kullanmadan önce **ping** düğmesini kullanarak test edebilirs
 
 ![Azure portal ACR Web kancası oluşturma kullanıcı arabirimi](./media/container-registry-webhook/webhook-02.png)
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Bir ACR Web kancasını Azure CLı ile test etmek için [az ACR Web kancası ping](/cli/azure/acr/webhook#az-acr-webhook-ping) komutunu kullanın.
 
@@ -85,7 +85,7 @@ az acr webhook list-events --registry mycontainerregistry08 --name myacrwebhook0
 
 Her Web kancası, Web kancası ve ardından Azure portal **Sil** düğmesi seçilerek silinebilir.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 ```azurecli-interactive
 az acr webhook delete --registry mycontainerregistry --name myacrwebhook01

@@ -15,13 +15,13 @@ ms.topic: how-to
 ms.date: 11/18/2020
 ms.author: b-juche
 ms.openlocfilehash: 5ce7a591acd8203775808457219b0ec392cd696e
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95249903"
 ---
-# <a name="delete-volume-replications-or-volumes"></a>Birim çoğaltmaları veya birimleri silme
+# <a name="delete-volume-replications-or-volumes"></a>Birim çoğaltmalarını veya birimleri silme
 
 Bu makalede birim çoğaltmaları silme işlemini açıklar. Ayrıca, kaynak veya hedef birimin nasıl silineceğini de açıklar.
 
@@ -34,10 +34,10 @@ Birim çoğaltmasını silerek kaynak ve hedef birimler arasındaki çoğaltma b
     1. *Hedef* birimi seçin. Depolama hizmeti altında **çoğaltma** ' ya tıklayın.  
 
     2.  Devam etmeden önce aşağıdaki alanları kontrol edin:  
-        * Yansıtma durumunun ***yansıtmalı** _ ' i belirttiğinden emin olun.   
-            Yansıtma durumu _Uninitialized * gösteriyorsa çoğaltma eşlemesini kesmeyi denemeyin.
-        * Ilişki durumunun ***Idle** _ ' i belirttiğinden emin olun.   
-            Ilişki durumu _Transferring * gösteriyorsa çoğaltma eşlemesini kesmeyi denemeyin.   
+        * Yansıtma durumunun ***yansıtmalı*** olduğundan emin olun.   
+            Yansıtma durumu *başlatılmamış* olarak görünüyorsa çoğaltma eşlemesini kesmeyi denemeyin.
+        * Ilişki durumunun ***Boşta*** gösterildiğinden emin olun.   
+            Ilişki durumu *aktarmayı* gösteriyorsa çoğaltma eşlemesini kesmeyi denemeyin.   
 
         Bkz. [çoğaltma ilişkisinin sistem durumunu görüntüleme](cross-region-replication-display-health-status.md). 
 

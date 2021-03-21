@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 562c90dcc4f802290b0ed8b4d544fce9d526fa10
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99524677"
 ---
 # <a name="continuous-access-evaluation"></a>Sürekli erişim değerlendirmesi
@@ -146,7 +146,7 @@ CAE için, yalnızca adlandırılmış IP tabanlı adlandırılmış konumlara i
 
 ### <a name="ip-address-configuration"></a>IP adresi yapılandırması
 
-Kimlik sağlayıcınız ve kaynak sağlayıcılarınız farklı IP adresleri görebilir. Bu uyumsuzluk, kuruluşunuzdaki ağ proxy uygulamaları veya kimlik sağlayıcınız ile kaynak sağlayıcınız arasında yanlış IPv4/IPv6 yapılandırması nedeniyle oluşabilir. Örneğin:
+Kimlik sağlayıcınız ve kaynak sağlayıcılarınız farklı IP adresleri görebilir. Bu uyumsuzluk, kuruluşunuzdaki ağ proxy uygulamaları veya kimlik sağlayıcınız ile kaynak sağlayıcınız arasında yanlış IPv4/IPv6 yapılandırması nedeniyle oluşabilir. Örnek:
 
 - Kimlik sağlayıcınız istemciden bir IP adresi görür.
 - Kaynak sağlayıcınız bir proxy üzerinden geçtikten sonra istemciden farklı bir IP adresi görür.

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 03/08/2021
 ms.author: memildin
 ms.openlocfilehash: 17e54dfc5c369a8cbb35db50ff2cbab131d34c2d
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102453776"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Güvenlik Merkezi 'nin tümleşik EDR çözümü ile uç noktalarınızı koruyun: uç nokta için Microsoft Defender
@@ -41,7 +41,7 @@ Uç nokta için Microsoft Defender, bütünsel, bulut tarafından sunulan bir u�
 | Desteklenen Windows sürümleri:  |  • **Genel kullanılabilirlik (GA)-** Windows Server 2016, 2012 r2 ve 2008 R2 SP1 'de algılama<br> • Windows Server 2019, [Windows sanal masaüstü (WVD)](../virtual-desktop/overview.md)ve [Windows 10 Enterprise multi-session](../virtual-desktop/windows-10-multisession-faq.md) (eski adıyla sanal masaüstleri) üzerinde **Önizleme-** algılama|
 | Desteklenmeyen işletim sistemleri:  |  • Windows 10 (EVD veya WVD dışında)<br> • Linux|
 | Gerekli roller ve izinler: | Tümleştirmeyi etkinleştirmek/devre dışı bırakmak için: **Güvenlik Yöneticisi** veya **sahibi**<br>Güvenlik Merkezi 'nde MDADTP uyarılarını görüntülemek için: **güvenlik okuyucu**, **okuyucu**, **kaynak grubu katılımcısı**, **kaynak grubu sahibi**, **Güvenlik Yöneticisi**, **abonelik sahibi** veya **abonelik katılımcısı**|
-| Larının                         | ![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Hayır](./media/icons/no-icon.png) Çin gov, diğer gov                                                        |
+| Larının                         | ![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Çin gov, diğer gov                                                        |
 |                                 |                                                                                                                                                                                                                                                                                                               |
 
 ## <a name="microsoft-defender-for-endpoint-features-in-security-center"></a>Güvenlik Merkezi 'nde uç nokta özellikleri için Microsoft Defender

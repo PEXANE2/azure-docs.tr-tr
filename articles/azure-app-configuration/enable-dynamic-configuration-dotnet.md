@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 07/24/2020
 ms.author: alkemper
 ms.openlocfilehash: 03940a86176d0bc93c5066977fdc87de5c456060
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96932770"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-framework-app"></a>Öğretici: .NET Framework uygulamasında dinamik yapılandırmayı kullanma
@@ -60,7 +60,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 ## <a name="reload-data-from-app-configuration"></a>Uygulama yapılandırmasından verileri yeniden yükleme
 1. Projenize sağ tıklayın ve **NuGet Paketlerini Yönet**' i seçin. **Araştır** sekmesindeMicrosoft.Extensions.Configurma 'yı arayın ve ekleyin *. AzureAppConfiguration* NuGet paketini projenize. Bulamıyorsanız, **ön sürümü dahil** et onay kutusunu seçin.
 
-1. *Program.cs*'i açın ve .NET Core uygulama yapılandırma sağlayıcısına bir başvuru ekleyin.
+1. *Program. cs*' yi açın ve .NET Core uygulama yapılandırma sağlayıcısına bir başvuru ekleyin.
 
     ```csharp
     using Microsoft.Extensions.Configuration;
