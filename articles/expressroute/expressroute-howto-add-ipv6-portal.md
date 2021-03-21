@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 03/09/2021
 ms.author: duau
 ms.openlocfilehash: 9926102a2e6b25060c2a8840b56d690ce2868ade
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102618803"
 ---
 # <a name="add-ipv6-support-for-private-peering-using-the-azure-portal-preview"></a>Azure portal kullanarak özel eşleme için IPv6 desteği ekleme (Önizleme)

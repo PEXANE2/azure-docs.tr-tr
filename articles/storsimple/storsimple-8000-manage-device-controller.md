@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/19/2017
 ms.author: alkohli
 ms.openlocfilehash: 090797549cc61aa27945114e5ef8b666226b66e2
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94957002"
 ---
 # <a name="manage-your-storsimple-device-controllers"></a>StorSimple cihaz denetleyicilerinizi yönetin
@@ -29,10 +29,10 @@ Bu öğreticide, StorSimple cihaz denetleyicilerinizde gerçekleştirilebilecek 
 
 Bu öğreticide, cihaz denetleyicilerini yönetmek için adım adım yönergeler yer almaktadır:
 
-* StorSimple Aygıt Yöneticisi hizmetinde cihazınızın **denetleyiciler** dikey penceresi.
+* StorSimple Device Manager hizmetinde cihazınızın **denetleyiciler** dikey penceresi.
 * StorSimple için Windows PowerShell.
 
-StorSimple Aygıt Yöneticisi hizmeti aracılığıyla cihaz denetleyicilerini yönetmenizi öneririz. Bir eylem yalnızca StorSimple için Windows PowerShell kullanılarak gerçekleştirilemiyorsa, öğretici bunu bir yere getirir.
+StorSimple Device Manager hizmeti aracılığıyla cihaz denetleyicilerini yönetmenizi öneririz. Bir eylem yalnızca StorSimple için Windows PowerShell kullanılarak gerçekleştirilemiyorsa, öğretici bunu bir yere getirir.
 
 Bu öğreticiyi okuduktan sonra şunları yapabilirsiniz:
 
@@ -49,12 +49,12 @@ Pasif denetleyicinin kullanılabilir olduğu varsayılırsa, cihazın yeniden ba
 > * **Çalışan bir denetleyici asla fiziksel olarak kaldırılmamalıdır, çünkü bu durum yedekliliğe ve kapalı kalma süresinin artmasına neden olur.**
 > * Aşağıdaki yordam yalnızca StorSimple fiziksel cihazı için geçerlidir. StorSimple Cloud Appliance başlatma, durdurma ve yeniden başlatma hakkında daha fazla bilgi için bkz. [bulut gereci Ile çalışma](storsimple-8000-cloud-appliance-u2.md#work-with-the-storsimple-cloud-appliance).
 
-StorSimple Aygıt Yöneticisi hizmeti veya StorSimple için Windows PowerShell Azure portal aracılığıyla tek bir cihaz denetleyicisini yeniden başlatabilir veya kapatabilirsiniz.
+StorSimple Device Manager hizmeti veya StorSimple için Windows PowerShell Azure portal aracılığıyla tek bir cihaz denetleyicisini yeniden başlatabilir veya kapatabilirsiniz.
 
 Cihaz denetleyicilerinizi Azure portal yönetmek için aşağıdaki adımları gerçekleştirin.
 
 #### <a name="to-restart-or-shut-down-a-controller-in-azure-portal"></a>Azure portal bir denetleyiciyi yeniden başlatmak veya kapatmak için
-1. StorSimple Aygıt Yöneticisi hizmetinizde **cihazlar**' a gidin. Cihaz listesinden cihazınızı seçin. 
+1. StorSimple Device Manager hizmetinizde **cihazlar**' a gidin. Cihaz listesinden cihazınızı seçin. 
 
     ![Cihaz seçin](./media/storsimple-8000-manage-device-controller/manage-controller1.png)
 
@@ -160,4 +160,4 @@ Bu bölümde, StorSimple cihaz denetleyicilerini yönetme hakkında sık sorulan
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * StorSimple cihaz denetleyicilerinizde Bu öğreticide listelenen yordamları kullanarak çözemayacağınızı sorun yaşarsanız [Microsoft desteği başvurun](storsimple-8000-contact-microsoft-support.md).
-* StorSimple Aygıt Yöneticisi hizmetini kullanma hakkında daha fazla bilgi edinmek için StorSimple [Aygıt Yöneticisi hizmetini kullanarak StorSimple cihazınızı yönetin](storsimple-8000-manager-service-administration.md)sayfasına gidin.
+* StorSimple Device Manager hizmetini kullanma hakkında daha fazla bilgi edinmek için StorSimple [Device Manager hizmetini kullanarak StorSimple cihazınızı yönetin](storsimple-8000-manager-service-administration.md)sayfasına gidin.

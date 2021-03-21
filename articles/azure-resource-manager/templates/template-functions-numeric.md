@@ -4,10 +4,10 @@ description: Sayılarla çalışmak için bir Azure Resource Manager şablonunda
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.openlocfilehash: f3687581d94f80cc923614a0655da1813bd5c97b
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97359719"
 ---
 # <a name="numeric-functions-for-arm-templates"></a>ARM şablonları için sayısal işlevler
@@ -20,7 +20,7 @@ Kaynak Yöneticisi, Azure Resource Manager şablonunuzda (ARM şablonu) tamsayı
 * [float](#float)
 * [int](#int)
 * [Biçimlendir](#max)
-* [Min](#min)
+* [dk](#min)
 * [alma](#mod)
 * [MUL](#mul)
 * [alt](#sub)
@@ -35,10 +35,10 @@ Belirtilen iki tam sayının toplamını döndürür. `add`Işlev Bıcep içinde
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-|operand1 |Evet |int |Eklenecek ilk numara. |
-|işlenen2 |Evet |int |Eklenecek ikinci sayı. |
+|operand1 |Yes |int |Eklenecek ilk numara. |
+|işlenen2 |Yes |int |Eklenecek ikinci sayı. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -106,10 +106,10 @@ Yineleme döngüsünün dizinini döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| loopName | Hayır | string | Yinelemeyi alma döngüsünün adı. |
-| uzaklık |Hayır |int |Sıfır tabanlı yineleme değerine eklenecek sayı. |
+| loopName | No | string | Yinelemeyi alma döngüsünün adı. |
+| uzaklık |No |int |Sıfır tabanlı yineleme değerine eklenecek sayı. |
 
 ### <a name="remarks"></a>Açıklamalar
 
@@ -180,10 +180,10 @@ Belirtilen iki tamsayının tamsayı bölümünü döndürür. `div`Işlev Bıce
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| operand1 |Evet |int |Bölünmekte olan sayı. |
-| işlenen2 |Evet |int |Bölmek için kullanılan sayı. 0 olamaz. |
+| operand1 |Yes |int |Bölünmekte olan sayı. |
+| işlenen2 |Yes |int |Bölmek için kullanılan sayı. 0 olamaz. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -251,9 +251,9 @@ Değeri kayan noktalı sayıya dönüştürür. Bu işlevi yalnızca, bir mantı
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |dize veya tamsayı |Kayan noktalı sayıya dönüştürülecek değer. |
+| arg1 |Yes |dize veya tamsayı |Kayan noktalı sayıya dönüştürülecek değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -294,9 +294,9 @@ Belirtilen değeri bir tamsayıya dönüştürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |Evet |dize veya tamsayı |Tamsayıya dönüştürülecek değer. |
+| valueToConvert |Yes |dize veya tamsayı |Tamsayıya dönüştürülecek değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -353,9 +353,9 @@ Tamsayılar dizisinden en büyük değeri veya virgülle ayrılmış tamsayılar
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |tamsayılar dizisi veya virgülle ayrılmış tamsayılar listesi |En büyük değeri almak için koleksiyon. |
+| arg1 |Yes |tamsayılar dizisi veya virgülle ayrılmış tamsayılar listesi |En büyük değeri almak için koleksiyon. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -423,9 +423,9 @@ Tamsayılar dizisinden en küçük değeri veya virgülle ayrılmış tamsayıla
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |tamsayılar dizisi veya virgülle ayrılmış tamsayılar listesi |En küçük değeri almak için koleksiyon. |
+| arg1 |Yes |tamsayılar dizisi veya virgülle ayrılmış tamsayılar listesi |En küçük değeri almak için koleksiyon. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -493,10 +493,10 @@ Belirtilen iki tamsayının kullanıldığı tamsayı bölümünün kalanını d
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| operand1 |Evet |int |Bölünmekte olan sayı. |
-| işlenen2 |Evet |int |Bölmek için kullanılan sayı 0 olamaz. |
+| operand1 |Yes |int |Bölünmekte olan sayı. |
+| işlenen2 |Yes |int |Bölmek için kullanılan sayı 0 olamaz. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -564,10 +564,10 @@ Belirtilen iki tamsayının çarpma sayısını döndürür. `mul`Işlev Bıcep 
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| operand1 |Evet |int |Çarpılacak ilk sayı. |
-| işlenen2 |Evet |int |Çarpılacak ikinci sayı. |
+| operand1 |Yes |int |Çarpılacak ilk sayı. |
+| işlenen2 |Yes |int |Çarpılacak ikinci sayı. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -635,10 +635,10 @@ Belirtilen iki tamsayının çıkarma sayısını döndürür. `sub`Işlev Bıce
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| operand1 |Evet |int |Çıkarılan sayı. |
-| işlenen2 |Evet |int |Çıkarılan sayı. |
+| operand1 |Yes |int |Çıkarılan sayı. |
+| işlenen2 |Yes |int |Çıkarılan sayı. |
 
 ### <a name="return-value"></a>Döndürülen değer
 

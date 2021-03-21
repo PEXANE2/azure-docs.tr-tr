@@ -14,10 +14,10 @@ ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 7b6ffd885e1be2dd59cea87cacd6e5fd5e0f8f49
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96861179"
 ---
 # <a name="azure-active-directory-authentication-libraries"></a>Azure Active Directory Kimlik Doğrulama Kitaplıkları
@@ -37,7 +37,7 @@ Azure Active Directory kimlik doğrulama kitaplığı (ADAL) v 1.0, uygulama gel
 
 ## <a name="microsoft-supported-client-libraries"></a>Microsoft tarafından desteklenen Istemci kitaplıkları
 
-| Platform | Kitaplık | İndir | Kaynak kodu | Örnek | Başvuru
+| Platform | Kitaplık | İndir | Kaynak Kodu | Örnek | Başvuru
 | --- | --- | --- | --- | --- | --- |
 | .NET Istemcisi, Windows Mağazası, UWP, Xamarin iOS ve Android |ADAL .NET v3 |[NuGet](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet) | [Masaüstü uygulaması](../develop/quickstart-v2-windows-desktop.md) |[Başvuru](/dotnet/api/microsoft.identitymodel.clients.activedirectory) |
 | JavaScript |ADAL.js |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-js) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-js) |[Tek sayfalı uygulama](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) | |
@@ -49,7 +49,7 @@ Azure Active Directory kimlik doğrulama kitaplığı (ADAL) v 1.0, uygulama gel
 
 ## <a name="microsoft-supported-server-libraries"></a>Microsoft tarafından desteklenen sunucu kitaplıkları
 
-| Platform | Kitaplık | İndir | Kaynak kodu | Örnek | Başvuru
+| Platform | Kitaplık | İndir | Kaynak Kodu | Örnek | Başvuru
 | --- | --- | --- | --- | --- | --- |
 | .NET |AzureAD için OWıN|[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.ActiveDirectory/) |[GitHub](https://github.com/aspnet/AspNetKatana/tree/dev/src/Microsoft.Owin.Security.ActiveDirectory) |[MVC uygulaması](../develop/quickstart-v2-aspnet-webapp.md) | |
 | .NET |Openıdconnect için OWIN |[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect) |[GitHub](https://github.com/aspnet/AspNetKatana/tree/dev/src/Microsoft.Owin.Security.OpenIdConnect) |[Web uygulaması](https://github.com/AzureADSamples/WebApp-OpenIDConnect-DotNet) | |

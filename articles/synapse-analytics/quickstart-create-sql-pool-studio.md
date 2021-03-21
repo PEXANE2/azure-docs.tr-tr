@@ -10,10 +10,10 @@ ms.date: 10/16/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.openlocfilehash: 3644891f12a6475ec9cfec51f572df4742481e8f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94541853"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-using-synapse-studio"></a>Hızlı başlangıç: SYNAPSE Studio kullanarak adanmış bir SQL havuzu oluşturma
@@ -25,7 +25,7 @@ Bu hızlı başlangıçta, SYNAPSE Studio kullanarak bir Synapse çalışma alan
 Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - [SYNAPSE çalışma alanı](quickstart-create-workspace.md)
@@ -74,15 +74,15 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
     > [!IMPORTANT]
     > Adanmış SQL havuzlarının kullanabileceği adlarla ilgili belirli sınırlamalar olduğunu unutmayın. Adlar özel karakterler içeremez, 15 veya daha az karakter olmalı, ayrılmış sözcükler içermemelidir ve çalışma alanında benzersiz olmalıdır.
 
-4. Bir sonraki sekmede, **ek ayarlar** ' da, VERI olmadan SQL havuzunu sağlamak için **hiçbiri** ' ni seçin. Varsayılan harmanlamayı seçili olarak bırakın.
+4. Bir sonraki sekmede, **ek ayarlar**' da, VERI olmadan SQL havuzunu sağlamak için **hiçbiri** ' ni seçin. Varsayılan harmanlamayı seçili olarak bırakın.
 
-    Adanmış SQL havuzunuzu bir geri yükleme noktasından geri yüklemek istiyorsanız **geri yükleme noktası** ' nı seçin. Geri yükleme gerçekleştirme hakkında daha fazla bilgi için bkz [. nasıl yapılır: var olan ayrılmış BIR SQL havuzunu geri yükleme](backuprestore/restore-sql-pool.md)
+    Adanmış SQL havuzunuzu bir geri yükleme noktasından geri yüklemek istiyorsanız **geri yükleme noktası**' nı seçin. Geri yükleme gerçekleştirme hakkında daha fazla bilgi için bkz [. nasıl yapılır: var olan ayrılmış BIR SQL havuzunu geri yükleme](backuprestore/restore-sql-pool.md)
 
     ![SQL havuzu akış oluşturma-ek ayarlar sekmesi.](media/quickstart-create-sql-pool/create-sql-pool-studio-25.png)
 
-1. Şimdilik hiç etiket eklememiz, daha sonra **gözden geçir + oluştur** ' u seçin.
+1. Şimdilik hiç etiket eklememiz, daha sonra **gözden geçir + oluştur**' u seçin.
 
-1. **Gözden geçir + oluştur** sekmesinde, ayrıntıların daha önce girilmiş olan öğesine göre doğru göründüğünden emin olun ve **Oluştur** ' a basın. 
+1. **Gözden geçir + oluştur** sekmesinde, ayrıntıların daha önce girilmiş olan öğesine göre doğru göründüğünden emin olun ve **Oluştur**' a basın. 
 
     ![SQL havuzu akış oluşturma-ayarları gözden geçirme sekmesi.](media/quickstart-create-sql-pool/create-sql-pool-studio-26.png)
 
@@ -103,10 +103,10 @@ SYNAPSE Studio kullanarak çalışma alanından adanmış SQL havuzunu silmek i�
 Adanmış SQL havuzunu silmek istiyorsanız aşağıdakileri yapın:
 
 1. SYNAPSE Studio 'daki yönetim hub 'ındaki SQL havuzlarına gidin.
-1. Özel SQL havuzu için komutları göstermek üzere, silinecek adanmış SQL havuzunda (Bu durumda **contosoedw** ) üç nokta simgesini seçin:
+1. Özel SQL havuzu için komutları göstermek üzere, silinecek adanmış SQL havuzunda (Bu durumda **contosoedw**) üç nokta simgesini seçin:
 
     ![Son oluşturulan havuz seçiliyken SQL havuzlarının listelenmesi.](media/quickstart-create-sql-pool/create-sql-pool-studio-28.png)
-1. **Sil** 'e basın.
+1. **Sil**'e basın.
 1. Silmeyi onaylayın ve **Sil** düğmesine basın.
 1. İşlem başarıyla tamamlandığında, adanmış SQL havuzu artık çalışma alanı kaynaklarında listelenmez.
 

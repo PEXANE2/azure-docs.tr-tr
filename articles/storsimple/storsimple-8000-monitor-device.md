@@ -1,24 +1,24 @@
 ---
 title: StorSimple 8000 serisi cihazınızı izleyin
-description: StorSimple Aygıt Yöneticisi hizmetinin kullanımı, g/ç performansını ve kapasite kullanımını izlemek için nasıl kullanılacağını açıklar.
+description: StorSimple Device Manager hizmetinin kullanımı, g/ç performansını ve kapasite kullanımını izlemek için nasıl kullanılacağını açıklar.
 author: alkohli
 ms.service: storsimple
 ms.topic: how-to
 ms.date: 10/17/2017
 ms.author: alkohli
 ms.openlocfilehash: de4cae90f2cc1223271672d9fc5ba5b42e4409e4
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94962442"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>StorSimple cihazınızı izlemek için StorSimple Aygıt Yöneticisi hizmetini kullanın
+# <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>StorSimple cihazınızı izlemek için StorSimple Device Manager hizmetini kullanın
 
 ## <a name="overview"></a>Genel Bakış
-StorSimple çözümünüzün içindeki belirli cihazları izlemek için StorSimple Aygıt Yöneticisi hizmetini kullanabilirsiniz. G/ç performansı, kapasite kullanımı, ağ aktarım hızı ve cihaz performans ölçümlerini temel alan özel grafikler oluşturabilir ve bunları panoya sabitleyebilirsiniz. Daha fazla bilgi için [Portal panonuzu özelleştirme](../azure-portal/azure-portal-dashboards.md)bölümüne gidin.
+StorSimple çözümünüzün içindeki belirli cihazları izlemek için StorSimple Device Manager hizmetini kullanabilirsiniz. G/ç performansı, kapasite kullanımı, ağ aktarım hızı ve cihaz performans ölçümlerini temel alan özel grafikler oluşturabilir ve bunları panoya sabitleyebilirsiniz. Daha fazla bilgi için [Portal panonuzu özelleştirme](../azure-portal/azure-portal-dashboards.md)bölümüne gidin.
 
-Belirli bir cihazın izleme bilgilerini görüntülemek için Azure portal, StorSimple Aygıt Yöneticisi hizmetini seçin. Cihaz listesinden cihazınızı seçin ve ardından **izleyici**'ye gidin. Daha sonra seçili cihaz için **kapasiteyi**, **kullanımı** ve **performans** grafiklerini görebilirsiniz.
+Belirli bir cihazın izleme bilgilerini görüntülemek için Azure portal, StorSimple Device Manager hizmetini seçin. Cihaz listesinden cihazınızı seçin ve ardından **izleyici**'ye gidin. Daha sonra seçili cihaz için **kapasiteyi**, **kullanımı** ve **performans** grafiklerini görebilirsiniz.
 
 ## <a name="capacity"></a>Kapasite
 **Kapasite** , sağlanan alanı ve cihazda kalan alanı izler. Kalan kapasite daha sonra yerel olarak sabitlenmiş veya katmanlı olarak görüntülenir.
@@ -139,5 +139,5 @@ Veri 1 arabirim üretilen iş grafiğine baktığımızda, yalnızca Iscsı öze
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [StorSimple aygıt yöneticisi hizmeti cihaz panosunu kullanmayı](./storsimple-8000-device-dashboard.md)öğrenin.
-* StorSimple [cihazınızı yönetmek Için storsimple Aygıt Yöneticisi hizmetini nasıl kullanacağınızı](./storsimple-8000-manager-service-administration.md)öğrenin.
+* [StorSimple Device Manager hizmeti cihaz panosunu kullanmayı](./storsimple-8000-device-dashboard.md)öğrenin.
+* StorSimple [cihazınızı yönetmek Için storsimple Device Manager hizmetini nasıl kullanacağınızı](./storsimple-8000-manager-service-administration.md)öğrenin.

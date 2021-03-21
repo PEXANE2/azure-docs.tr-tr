@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: aahi
 ms.openlocfilehash: 2fb03721baa80e77a5fd387600a272e6b1cfc7d3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95013651"
 ---
 # <a name="migrate-from-the-translator-speech-api-to-the-speech-service"></a>Translator Konuşma Çevirisi API'si konuşma hizmetine geçirme
@@ -26,7 +26,7 @@ Uygulamalarınızı Microsoft Translator Konuşma Çevirisi API'si 'den [konuşm
 
 ## <a name="comparison-of-features"></a>Özelliklerin karşılaştırması
 
-| Öne çıkan özelliği                                           | Translator Konuşma Çevirisi API’si                                  | Konuşma hizmeti | Ayrıntılar                                                                                                                                                                                                                                                                            |
+| Özellik                                           | Translator Konuşma Çevirisi API’si                                  | Konuşma hizmeti | Ayrıntılar                                                                                                                                                                                                                                                                            |
 |---------------------------------------------------|-----------------------------------------------------------------|------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Metne çeviri                               | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | Konuşmaya çeviri                             | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
@@ -39,7 +39,7 @@ Uygulamalarınızı Microsoft Translator Konuşma Çevirisi API'si 'den [konuşm
 | WebSockets bağlantıları                            | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | Diller API 'SI                                     | :heavy_check_mark:                                              | : heavy_minus_sign:                 | Konuşma hizmeti, [Çevirmen dilleri başvuru]() makalesinde açıklanan dil aralığını destekler. |
 | Küfür filtresi ve Işaretleyici                       | : heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
-| Giriş olarak. WAV/PCM                                 | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
+| . Girdi olarak WAV/PCM                                 | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | Giriş olarak diğer dosya türleri                         | : heavy_minus_sign:                                              | : heavy_minus_sign:                 |                                                                                                                                                                                                                                                                                    |
 | Kısmi sonuçlar                                   | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | Zamanlama bilgisi                                       | :heavy_check_mark:                                              | : heavy_minus_sign:                 |                                                                                                                                                                 |

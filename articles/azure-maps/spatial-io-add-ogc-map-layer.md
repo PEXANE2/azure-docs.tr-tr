@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 7d94a681fa987a4b23dbcda744c2f8516da4437a
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92891674"
 ---
 # <a name="add-a-map-layer-from-the-open-geospatial-consortium-ogc"></a>Open Geospatial Consortium eşleme katmanını ekleme (OGC)
@@ -28,7 +28,7 @@ Aşağıdaki bölümlerde, sınıfı tarafından desteklenen Web harita hizmeti 
 - Getfeatureınfo, hizmetin `EPSG:4326` yeniden tahminleri desteklemesini veya işlemesini gerektirir. 
 - Desteklenen işlemler:
 
-    | İşlem | Açıklama |
+    | İşlem | Description |
     | :-- | :-- |
     | GetCapabilities | Desteklenen yeteneklere sahip hizmet hakkındaki meta verileri alır |
     | GetMap | Belirtilen bölge için bir harita görüntüsü alır |
@@ -42,7 +42,7 @@ Aşağıdaki bölümlerde, sınıfı tarafından desteklenen Web harita hizmeti 
 - TileMatrix tanımlayıcısı, eşlemedeki yakınlaştırma düzeyine karşılık gelen bir tamsayı değeri olmalıdır. Azure haritasında yakınlaştırma düzeyi ve arasında bir değerdir `"0"` `"22"` . Bu nedenle `"0"` desteklenir, ancak `"00"` desteklenmez.
 - Desteklenen işlemler:
 
-    | İşlem | Açıklama |
+    | İşlem | Description |
     | :-- | :-- |
     | GetCapabilities | Desteklenen işlemleri ve özellikleri alır |
     | GetTile | Belirli bir kutucuk için canlandırın alır |
@@ -55,7 +55,7 @@ Aşağıdaki kod, haritada bir OGC Haritası katmanının nasıl kaplamasıyla i
 
 <br/>
 
-<iframe height='700' scrolling='no' title='OGC Map katman örneği' src='//codepen.io/azuremaps/embed/xxGLZWB/?height=700&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen 'da Azure Maps () ile kalem <a href='https://codepen.io/azuremaps/pen/xxGLZWB/'>ogc Haritası katman örneğine</a> bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+<iframe height='700' scrolling='no' title='OGC Map katman örneği' src='//codepen.io/azuremaps/embed/xxGLZWB/?height=700&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen 'da Azure Maps () ile kalem <a href='https://codepen.io/azuremaps/pen/xxGLZWB/'>ogc Haritası katman örneğine</a> bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 ## <a name="ogc-map-layer-options"></a>OGC eşleme katmanı seçenekleri
@@ -64,7 +64,7 @@ Aşağıdaki örnek farklı OGC Haritası katman seçeneklerini gösterir. Kod k
 
 <br/>
 
-<iframe height='700' scrolling='no' title='OGC eşleme katmanı seçenekleri' src='//codepen.io/azuremaps/embed/abOyEVQ/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen 'da Azure Maps () tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/abOyEVQ/'>ogc Haritası katman seçeneklerine</a> bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+<iframe height='700' scrolling='no' title='OGC eşleme katmanı seçenekleri' src='//codepen.io/azuremaps/embed/abOyEVQ/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen 'da Azure Maps () tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/abOyEVQ/'>ogc Haritası katman seçeneklerine</a> bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 ## <a name="ogc-web-map-service-explorer"></a>OGC Web harita hizmet Gezgini
@@ -73,7 +73,7 @@ Aşağıdaki araç, Web harita Hizmetleri (WMS) ve Web harita kutucuk Hizmetleri
 
 <br/>
 
-<iframe height='750' style='width: 100%;' scrolling='no' title='OGC Web harita hizmet Gezgini' src='//codepen.io/azuremaps/embed/YzXxYdX/?height=750&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen üzerinde Azure Maps () tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/YzXxYdX/'>ogc Web Haritası hizmet Gezgini</a> ' ne bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+<iframe height='750' style='width: 100%;' scrolling='no' title='OGC Web harita hizmet Gezgini' src='//codepen.io/azuremaps/embed/YzXxYdX/?height=750&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen üzerinde Azure Maps () tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/YzXxYdX/'>ogc Web Haritası hizmet Gezgini</a> ' ne bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 Ayrıca, bir proxy hizmeti kullanmak için eşleme ayarlarını belirtebilirsiniz. Proxy hizmeti, CORS 'nin etkinleştirildiği etki alanlarında barındırılan kaynakları yüklemenize olanak sağlar.

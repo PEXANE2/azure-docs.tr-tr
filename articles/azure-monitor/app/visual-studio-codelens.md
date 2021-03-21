@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 03/17/2017
 ms.custom: vs-azure
 ms.openlocfilehash: 2cfc4e06dcb5671f34ff98794c9569b6ed5ddae7
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94538504"
 ---
 # <a name="application-insights-telemetry-in-visual-studio-codelens"></a>Visual Studio CodeLens’te Application Insights telemetrisi
@@ -38,10 +38,10 @@ Daha fazla ayrıntı için CodeLens özel durum göstergesine tıklayın:
 
 * Önceki 24 saat le onun öncesindeki 24 saat arasında özel durum sayısında meydana gelen değişiklik yüzdesi
 * Özel durumu oluşturan işlevin kaynak koduna gitmek için **Koda git** öğesini seçin
-* Bu özel durumun son 24 saat içinde gerçekleşen tüm örneklerini sorgulamak için **Ara** ’yı seçin
-* Bu özel durumun son 24 saat içinde gerçekleşen tüm örneklerine ilişkin bir eğilim görselini görüntülemek için **Eğilim** ’i seçin
-* Son 24 saat içinde gerçekleşen tüm özel durumları sorgulamak için **Bu uygulamadaki tüm özel durumları görüntüle** ’yi seçin
-* Son 24 saat içinde gerçekleşen tüm özel durumlara ilişkin bir eğilim görselini görüntülemek için **Özel durum eğilimlerini keşfet** ’i seçin. 
+* Bu özel durumun son 24 saat içinde gerçekleşen tüm örneklerini sorgulamak için **Ara**’yı seçin
+* Bu özel durumun son 24 saat içinde gerçekleşen tüm örneklerine ilişkin bir eğilim görselini görüntülemek için **Eğilim**’i seçin
+* Son 24 saat içinde gerçekleşen tüm özel durumları sorgulamak için **Bu uygulamadaki tüm özel durumları görüntüle**’yi seçin
+* Son 24 saat içinde gerçekleşen tüm özel durumlara ilişkin bir eğilim görselini görüntülemek için **Özel durum eğilimlerini keşfet**’i seçin. 
 
 > [!TIP]
 > CodeLens’te "0 özel durum" görmenize karşın özel durumlar olması gerektiğini biliyorsanız CodeLens’te doğru Application Insights kaynağının seçildiğinden emin olun. Başka bir kaynak seçmek için Çözüm Gezgini'nde projenize sağ tıklayın ve **Application Insights > Telemetri Kaynağı Seç** öğesini seçin. CodeLens, uygulamanızda yalnızca son 24 saat içinde en sık gerçekleşen 15 özel durum için gösterilir; dolayısıyla özel durum en sık gerçekleşen 16. veya daha sonraki bir özel durumsa "0 özel durum" görürsünüz. ASP.NET görünümlerindeki özel durumlar bu görünümleri oluşturan denetleyici yöntemlerinde görünmeyebilir.
@@ -60,8 +60,8 @@ Daha fazla ayrıntı için CodeLens istek göstergesine tıklayın:
 
 * Son 24 saat ile ondan önceki 24 saat içinde gerçekleşen istek, başarısız istek ve ortalama yanıt sürelerinin mutlak değişimleri ile değişiklik yüzdelerini karşılaştırma
 * Son 24 saatte başarısız olmayan isteklerin yüzdesi olarak hesaplanan yöntem güvenilirliği
-* Son 24 saatte gerçekleşen tüm (başarısız) istekleri sorgulamak üzere istekler ya da başarısız istekler için **Ara** ’yı seçin
-* Son 24 saatte gerçekleşen istek, başarısız istek veya ortalama yanıt sürelerine ilişkin bir eğilim görselini görüntülemek için **Eğilim** ’i seçin.
+* Son 24 saatte gerçekleşen tüm (başarısız) istekleri sorgulamak üzere istekler ya da başarısız istekler için **Ara**’yı seçin
+* Son 24 saatte gerçekleşen istek, başarısız istek veya ortalama yanıt sürelerine ilişkin bir eğilim görselini görüntülemek için **Eğilim**’i seçin.
 * CodeLens verilerinin kaynağını değiştirmek için CodeLens ayrıntılı görünümünün sol üst köşesinden Application Insights kaynağının adını seçin.
 
 ## <a name="next-steps"></a><a name="next"></a>Sonraki adımlar

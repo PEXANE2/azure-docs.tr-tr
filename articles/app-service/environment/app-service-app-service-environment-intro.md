@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 878cef39ade0487c03dba83c9e3631fe3c72088f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96008642"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>App Service Ortamı v1 'ye giriş
@@ -70,7 +70,7 @@ Uygulamalar, iç veritabanları ve web hizmetleri gibi şirket kaynaklarına da 
 
 App Service ortamlarının sanal ağlarla ve şirket içi ağlarda nasıl çalıştığı hakkında daha fazla bilgi için, [ağ mimarisi][NetworkArchitectureOverview]üzerinde aşağıdaki makalelere bakın, [gelen trafiği kontrol][ControllingInboundTraffic]edin ve arka [uçlara güvenli][SecurelyConnectingToBackends]bir şekilde bağlanma. 
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 App Service ortamları ile çalışmaya başlamak için bkz. [nasıl App Service ortamı oluşturma][HowToCreateAnAppServiceEnvironment]
 

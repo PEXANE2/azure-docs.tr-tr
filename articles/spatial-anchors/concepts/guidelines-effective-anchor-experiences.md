@@ -9,10 +9,10 @@ ms.date: 11/20/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: a6bc500516de7e554c38a335ea57519a39c8f602
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95487512"
 ---
 # <a name="create-an-effective-anchor-experience-by-using-azure-spatial-anchors"></a>Azure uzamsal bağlayıcıları kullanarak etkin bir bağlantı deneyimi oluşturma
@@ -76,7 +76,7 @@ Benzer şekilde, çoğu nesne hareket ettiğinden görsel özelliklerin değişm
 
 Birçok durumda, bağlayıcı uygulamanızın deneyimine yönelik bir giriş noktasıdır. Bu adımı hızla ve güvenilir bir şekilde almak isteyeceksiniz, böylece kullanıcılar deneyiminizi girebilir. Kullanıcıların bağlayıcılarınızı nasıl bulacağız önemli bir tasarım adımındaki harcama süresi. İki geniş senaryo açısından çıpası bulmayı düşünmek yararlı olur: *hedefler* ve *Odalar*.
 
-### <a name="targets"></a>Hedefler
+### <a name="targets"></a>Targets
 
 Hedef senaryoda, bir bağlayıcının konumu iyi bilinmektedir. Örneğin, kurgusal bir karma gerçeklik boyama uygulamasında, bir Kullanıcı duvara sanal bir tuval koyar. Odadaki diğer kullanıcılara, bağlayıcıyı bulmak ve deneyime başlamak için, cihazlarını duvardaki aynı yere işaret etmelerini söyler.
 

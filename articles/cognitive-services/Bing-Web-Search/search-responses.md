@@ -12,10 +12,10 @@ ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 3dda95312a0b9191ddc11de62959f308ee19fff4
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94380989"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Bing Web Araması API'si yanıt yapısı ve yanıt türleri  
@@ -309,7 +309,7 @@ Matematik ifadesi aşağıdaki sembolleri içerebilir:
 
 Matematik ifadesinde aşağıdaki sabitler bulunabilir:
 
-|Sembol|Açıklama|
+|Sembol|Description|
 |------------|-----------------|
 |Pi|3,14159...|
 |Ölçüde|Ölçüde|
@@ -319,7 +319,7 @@ Matematik ifadesinde aşağıdaki sabitler bulunabilir:
 
 Matematik ifadesi aşağıdaki işlevleri içerebilir:
 
-|Sembol|Açıklama|
+|Sembol|Description|
 |------------|-----------------|
 |Sırala|Kare kök|
 |Sin [x], cos [x], tan [x]<br />CSC [x], SEC [x], COT [x]|Trigonometrik İşlevler (radyan cinsinden bağımsız değişkenlerle)|
@@ -333,7 +333,7 @@ Değişkenleri içeren matematik ifadeleri (örneğin, 4X + 6 = 18, burada x de�
 
 ## <a name="timezone-answer"></a>Saat dilimi yanıtı
 
-Kullanıcı bir saat veya tarih sorgusu girerse, yanıt bir [saat dilimi](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#timezone) yanıtı içerebilir. Bu yanıt örtük veya açık sorguları destekler. Kapalı bir sorgu; Örneğin, *ne zaman* olduğu gibi, kullanıcının konumuna göre yerel saati döndürür. Bir açık sorgu (örneğin, *Seattle 'Da ne zaman)?* , Seattle, WA için yerel saati döndürür.
+Kullanıcı bir saat veya tarih sorgusu girerse, yanıt bir [saat dilimi](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#timezone) yanıtı içerebilir. Bu yanıt örtük veya açık sorguları destekler. Kapalı bir sorgu; Örneğin, *ne zaman* olduğu gibi, kullanıcının konumuna göre yerel saati döndürür. Bir açık sorgu (örneğin, *Seattle 'Da ne zaman)?*, Seattle, WA için yerel saati döndürür.
 
 `timeZone`Yanıt, konumun adını, belirtilen konumdaki GEÇERLI UTC tarihini ve saatini ve UTC farkını sağlar. Konumun sınırı birden çok saat dilimi içindeyse, yanıt, sınırın içindeki tüm saat dilimlerinin geçerli UTC Tarih ve saatini içerir. Örneğin, Florida durumu iki saat diliminin içinde olduğundan, yanıt her iki saat dilimindeki yerel tarih ve saati içerir.  
 
@@ -424,7 +424,7 @@ Query: What time is it in the U.S.
 
 ## <a name="spellsuggestion-answer"></a>Yazım önerisi yanıtı
 
-Bing, kullanıcının farklı bir şeyi aramak için tasarlanmış olabileceğini belirlerse, yanıt bir [yazım önerisi](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#spellsuggestions) nesnesi içerir. Örneğin, Kullanıcı *Carlos Pen* 'u arayıyorsa, Bing kullanıcının bunun yerine Carlos pena aramak için (yani, *Carlos Pen* 'ın başkaları tarafından geçmiş aramalara bağlı olarak) arama yapma amacını belirleyebilir. Aşağıda örnek bir yazım yanıtı gösterilmektedir.
+Bing, kullanıcının farklı bir şeyi aramak için tasarlanmış olabileceğini belirlerse, yanıt bir [yazım önerisi](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#spellsuggestions) nesnesi içerir. Örneğin, Kullanıcı *Carlos Pen*'u arayıyorsa, Bing kullanıcının bunun yerine Carlos pena aramak için (yani, *Carlos Pen*'ın başkaları tarafından geçmiş aramalara bağlı olarak) arama yapma amacını belirleyebilir. Aşağıda örnek bir yazım yanıtı gösterilmektedir.
 
 ```json
 "spellSuggestions": {
@@ -440,7 +440,7 @@ Bing, kullanıcının farklı bir şeyi aramak için tasarlanmış olabileceğin
 
 Bing Web Araması API'si yanıtları aşağıdaki üst bilgileri içerebilir:
 
-| Üst bilgi | Açıklama |
+| Üst bilgi | Description |
 |-|-|
 |`X-MSEdge-ClientID`|Bing 'in kullanıcıya atadığı benzersiz KIMLIK|
 |`BingAPIs-Market`|İsteği yerine getirmek için kullanılan Pazar|

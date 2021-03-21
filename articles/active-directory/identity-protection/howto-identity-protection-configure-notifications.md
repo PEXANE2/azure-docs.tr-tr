@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9536cf41add73f494bfff451c201d36e951864e3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95997673"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Kimlik Koruması bildirimleri
@@ -68,7 +68,7 @@ Genel yönetici, güvenlik yöneticisi veya güvenlik okuyucusu rollerinin kulla
 
 Yönetici olarak, haftalık bir Özet e-postası göndermeyi veya kapatmayı değiştirebilir ve e-postayı almak için atanan kullanıcıları seçebilirsiniz.
 
-**Azure portal** **Azure Active Directory**  >  **güvenlik**  >  **kimlik koruması**  >  **haftalık Özeti** altındaki Azure Portal Haftalık Özet e-postasını yapılandırın.
+ **Azure Active Directory**  >  **güvenlik**  >  **kimlik koruması**  >  **haftalık Özeti** altındaki Azure Portal Haftalık Özet e-postasını yapılandırın.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

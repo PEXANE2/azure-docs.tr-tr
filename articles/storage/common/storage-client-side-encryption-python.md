@@ -12,10 +12,10 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.openlocfilehash: ffdfd4dc8a81587d757e3f9853f1bb34e0b93c0d
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102043754"
 ---
 # <a name="client-side-encryption-with-python"></a>Python ile istemci tarafı şifreleme
@@ -80,7 +80,7 @@ Sıra iletileri herhangi bir biçimde olduğundan, istemci kitaplığı, ileti m
 
 Şifre çözme sırasında, Sarmalanan anahtar kuyruk iletisinden ayıklanır ve sarmalanmamış. IV Ayrıca kuyruk iletisinden çıkarılır ve sıra ileti verilerinin şifresini çözmek için sarmalanmamış anahtarla birlikte kullanılır. Şifreleme meta verilerinin küçük olduğunu unutmayın (500 bayt altında), bu nedenle bir kuyruk iletisi için 64 KB sınırına doğru sayılır, etki alanı yönetilebilir olmalıdır.
 
-### <a name="tables"></a>Tablolar
+### <a name="tables"></a>Tables
 İstemci kitaplığı, ekleme ve değiştirme işlemleri için varlık özelliklerinin şifrelenmesini destekler.
 
 > [!NOTE]

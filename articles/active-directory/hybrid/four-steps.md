@@ -14,10 +14,10 @@ ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 795f5ede382e561ee810e54e1f8897c5d806e8b8
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94412383"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Azure Active Directory ile güçlü bir kimlik temeli için dört adım
@@ -83,7 +83,7 @@ Modern kuruluşlarda, BT departmanları genellikle kullanıcıların işlerini y
 
 [Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) (MCAS), KULLANıCıLARıN, SSO ve koşullu erişim gibi yeteneklerden yararlanması için, Kullanıcı tarafından tasdikli ve kurumsal uygulamalar galerisine ekleyebileceği yararlı uygulamaları belirlemenize yardımcı olabilir.
 
-<em>" **Cloud App Security** , Accenture korumaya yardımcı olan temel güvenlik ilkelerini destekleyecek şekilde, insanlarımızın bulut ve SaaS uygulamalarınızı doğru şekilde kullandığından emin olmamıza yardımcı olur."</em> --- [John Blasi, Direktörü yönetme, bilgi güvenliği, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
+<em>"**Cloud App Security** , Accenture korumaya yardımcı olan temel güvenlik ilkelerini destekleyecek şekilde, insanlarımızın bulut ve SaaS uygulamalarınızı doğru şekilde kullandığından emin olmamıza yardımcı olur."</em> --- [John Blasi, Direktörü yönetme, bilgi güvenliği, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
 MCAS Ayrıca, gölge BT 'nin risk düzeyini tespit edebilir, kurumsal verilere yetkisiz erişimi, olası veri sızıntısını ve uygulamalarda bulunan diğer güvenlik risklerini de belirleyebilir.
 

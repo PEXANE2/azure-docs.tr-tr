@@ -6,10 +6,10 @@ ms.author: spelluru
 ms.date: 10/07/2020
 ms.topic: article
 ms.openlocfilehash: 66de9a4ff65c73264257cb6f7f215fc15820c95f
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94427156"
 ---
 # <a name="allow-access-to-azure-service-bus-namespaces-via-private-endpoints"></a>Özel uç noktalar aracılığıyla Azure Service Bus ad alanlarına erişime izin ver
@@ -76,7 +76,7 @@ Zaten mevcut bir ad alanınız varsa, aşağıdaki adımları izleyerek özel bi
 
         ![Özel uç nokta oluşturma-temel bilgiler sayfası](./media/private-link-service/create-private-endpoint-basics-page.png)
 8. **Kaynak** sayfasında, aşağıdaki adımları izleyin:
-    1. Bağlantı yöntemi için **dizinimde bir Azure kaynağına bağlan** ' ı seçerseniz şu adımları izleyin:   
+    1. Bağlantı yöntemi için **dizinimde bir Azure kaynağına bağlan**' ı seçerseniz şu adımları izleyin:   
         1. **Service Bus ad alanının** bulunduğu **Azure aboneliğini** seçin. 
         2. **Kaynak türü** Için, **kaynak türü** Için **Microsoft. ServiceBus/namespaces** ' i seçin.
         3. **Kaynak** için, açılan listeden bir Service Bus ad alanı seçin. 
@@ -84,7 +84,7 @@ Zaten mevcut bir ad alanınız varsa, aşağıdaki adımları izleyerek özel bi
         5. Sayfanın alt kısmındaki **İleri: yapılandırma >** düğmesini seçin. 
         
             ![Özel uç nokta oluşturma-kaynak sayfası](./media/private-link-service/create-private-endpoint-resource-page.png)
-    2. **Kaynak kimliği veya diğer ad ile bir Azure kaynağına bağlan** ' ı seçerseniz, aşağıdaki adımları izleyin:
+    2. **Kaynak kimliği veya diğer ad ile bir Azure kaynağına bağlan**' ı seçerseniz, aşağıdaki adımları izleyin:
         1. **Kaynak kimliğini** veya **diğer adı** girin. Bu, birinin sizinle paylaştığı kaynak KIMLIĞI veya diğer ad olabilir. Kaynak KIMLIĞINI almanın en kolay yolu, Azure portal Service Bus ad alanına gitmeniz ve URI 'nin ' den başlayarak olan kısmını kopyalamadır `/subscriptions/` . Örnek için aşağıdaki resme bakın. 
         2. **Hedef alt kaynak** için **ad alanı** girin. Bu, Özel uç noktanızın erişebileceği alt kaynağın türüdür. 
         3. seçim **İstek iletisi** girin. Kaynak sahibi, Özel uç nokta bağlantısını yönetirken bu iletiyi görür. 
@@ -98,7 +98,7 @@ Zaten mevcut bir ad alanınız varsa, aşağıdaki adımları izleyerek özel bi
 
         ![Özel uç nokta oluşturma-yapılandırma sayfası](./media/private-link-service/create-private-endpoint-configuration-page.png)
 10. **Etiketler** sayfasında, Özel uç nokta kaynağıyla ilişkilendirmek istediğiniz etiketleri (adlar ve değerler) oluşturun. Ardından sayfanın alt kısmındaki **gözden geçir + oluştur** düğmesini seçin. 
-11. **Gözden geçir + oluştur** ' da, tüm ayarları gözden geçirin ve **Oluştur** ' u seçerek özel uç noktasını oluşturun.
+11. **Gözden geçir + oluştur**' da, tüm ayarları gözden geçirin ve **Oluştur** ' u seçerek özel uç noktasını oluşturun.
     
     ![Özel uç nokta oluşturma-sayfa Inceleme ve oluşturma](./media/private-link-service/create-private-endpoint-review-create-page.png)
 12. Özel uç noktanın oluşturulduğunu doğrulayın. Kaynak sahibiyseniz ve **bağlantı yöntemi** için **Dizinimde bir Azure kaynağına bağlan** seçeneğini belirlediyseniz, uç nokta bağlantısı **otomatik olarak onaylanmalıdır**. **Bekleme** durumundaysa, [Azure Portal kullanarak özel uç noktaları yönetme](#manage-private-endpoints-using-azure-portal) bölümüne bakın.
@@ -197,7 +197,7 @@ Dört sağlama durumu vardır:
 3. **Onayla** düğmesini seçin.
 
     ![Özel uç noktayı Onayla](./media/private-link-service/private-endpoint-approve.png)
-4. **Bağlantıyı Onayla** sayfasında, isteğe bağlı bir **Açıklama** girin ve **Evet** ' i seçin. **Hayır** ' ı seçerseniz, hiçbir şey olmaz. 
+4. **Bağlantıyı Onayla** sayfasında, isteğe bağlı bir **Açıklama** girin ve **Evet**' i seçin. **Hayır**' ı seçerseniz, hiçbir şey olmaz. 
 
     ![Bağlantı sayfasını Onayla](./media/private-link-service/approve-connection-page.png)
 5. Listede, **Onaylandı** olarak değiştirilen bağlantının durumunu görmeniz gerekir. 
@@ -209,7 +209,7 @@ Dört sağlama durumu vardır:
 1. Reddetmek istediğiniz özel uç nokta bağlantıları varsa, bekleyen bir istek ya da daha önce onaylanmış mevcut bir bağlantı olup olmadığı takdirde, uç nokta bağlantısını seçin ve **Reddet** düğmesine tıklayın.
 
     ![Reddetme düğmesi](./media/private-link-service/private-endpoint-reject.png)
-2. **Bağlantıyı Reddet** sayfasında, isteğe bağlı bir açıklama girin ve **Evet** ' i seçin. **Hayır** ' ı seçerseniz, hiçbir şey olmaz. 
+2. **Bağlantıyı Reddet** sayfasında, isteğe bağlı bir açıklama girin ve **Evet**' i seçin. **Hayır**' ı seçerseniz, hiçbir şey olmaz. 
 
     ![Bağlantıyı Reddet sayfası](./media/private-link-service/reject-connection-page.png)
 3. **Reddedilen** değiştirilen listede bağlantının durumunu görmeniz gerekir. 
@@ -222,7 +222,7 @@ Dört sağlama durumu vardır:
 1. Özel bir uç nokta bağlantısını kaldırmak için listeden seçin ve araç çubuğundan **Kaldır** ' ı seçin. 
 
     ![Kaldır düğmesi](./media/private-link-service/remove-endpoint.png)
-2. **Bağlantıyı Sil** sayfasında, Özel uç noktasının silinmesini onaylamak için **Evet** ' i seçin. **Hayır** ' ı seçerseniz, hiçbir şey olmaz. 
+2. **Bağlantıyı Sil** sayfasında, Özel uç noktasının silinmesini onaylamak için **Evet** ' i seçin. **Hayır**' ı seçerseniz, hiçbir şey olmaz. 
 
     ![Bağlantı sayfasını Sil](./media/private-link-service/delete-connection-page.png)
 3. Durumu **bağlı değil** olarak değiştirildiğini görmeniz gerekir. Ardından, uç noktanın listeden kaybolduğunu görürsünüz. 
@@ -237,8 +237,8 @@ Dört sağlama durumu vardır:
 
 1. **Sanal ağ** ve **alt ağ** belirtin. Özel uç noktasını dağıttığınız sanal ağı seçmeniz gerekir.
 2. Genel bir **IP** kaynağı belirtin.
-3. **NIC ağ güvenlik grubu** için **hiçbiri** ' ni seçin.
-4. **Yük Dengeleme** için **Hayır** ' ı seçin.
+3. **NIC ağ güvenlik grubu** için **hiçbiri**' ni seçin.
+4. **Yük Dengeleme** için **Hayır**' ı seçin.
 
 VM 'ye bağlanın, komut satırını açın ve şu komutu çalıştırın:
 
@@ -257,11 +257,11 @@ Aliases:  <service-bus-namespace-name>.servicebus.windows.net
 
 ## <a name="limitations-and-design-considerations"></a>Sınırlamalar ve tasarım konuları
 
-**Fiyatlandırma** : fiyatlandırma bilgileri için bkz. [Azure özel bağlantı fiyatlandırması](https://azure.microsoft.com/pricing/details/private-link/).
+**Fiyatlandırma**: fiyatlandırma bilgileri için bkz. [Azure özel bağlantı fiyatlandırması](https://azure.microsoft.com/pricing/details/private-link/).
 
-**Sınırlamalar** : Bu özellik tüm Azure genel bölgelerinde kullanılabilir.
+**Sınırlamalar**: Bu özellik tüm Azure genel bölgelerinde kullanılabilir.
 
-**Service Bus ad alanı başına en fazla özel uç nokta sayısı** : 120.
+**Service Bus ad alanı başına en fazla özel uç nokta sayısı**: 120.
 
 Daha fazla bilgi için bkz [. Azure özel bağlantı hizmeti: sınırlamalar](../private-link/private-link-service-overview.md#limitations)
 

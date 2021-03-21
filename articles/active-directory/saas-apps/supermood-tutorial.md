@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/31/2019
 ms.author: jeedes
 ms.openlocfilehash: b1f8fb4c6586281352b6da05978c6ca4dac23ce5
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92504890"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-supermood"></a>Öğretici: süper ruh ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -55,7 +55,7 @@ Süper ruh 'un tümleştirmesini Azure AD 'ye göre yapılandırmak için, galer
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-supermood"></a>Süper ruh için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu süper ruh ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu süper ruh ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu süper ruh ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -94,7 +94,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Süper ruh, yukarıdakine ek olarak, aşağıda gösterilen SAML yanıtında birkaç özniteliğin daha fazla özniteliğe geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Adı | Kaynak özniteliği|
+    | Name | Kaynak özniteliği|
     | ---------------| ------|
     | firstName | Kullanıcı. |
     | lastName | User. soyadı |
@@ -145,7 +145,7 @@ Bu bölümde, süper ruh 'a erişim vererek Azure çoklu oturum açma özelliği
 
     ![Sertifika ekleme](./media/supermood-tutorial/tutorial_supermood_add.png)
 
-1. **Bir e-posta etki alanı IÇIN SAML 2,0 yapılandırması ekleme**sayfasında. bölümünde aşağıdaki adımları uygulayın:
+1. **Bir e-posta etki alanı IÇIN SAML 2,0 yapılandırması ekleme** sayfasında. bölümünde aşağıdaki adımları uygulayın:
 
     ![Sertifika SAML](./media/supermood-tutorial/tutorial_supermood_saml.png)
 

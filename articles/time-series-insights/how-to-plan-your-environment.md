@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
 ms.openlocfilehash: c8d96d7b5952c020493af278ee1ea8ad5ff46716
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95016794"
 ---
 # <a name="plan-your-azure-time-series-insights-gen2-environment"></a>Azure Time Series Insights Gen2 ortamınızı planlayın
@@ -64,7 +64,7 @@ Yeni bir Azure Time Series Insights ortamı oluşturmak için bir zaman serisi K
 > [!IMPORTANT]
 > Zaman serisi kimlikleri *daha sonra değiştirilemez*. Son seçim ve ilk kullanmadan önce her birini doğrulayın.
 
-Kaynaklarınızı benzersiz şekilde ayırt etmek için en fazla üç anahtar seçebilirsiniz. Daha fazla bilgi için, [zaman SERISI kimliği ve alım kuralları seçmek üzere en iyi uygulamaları](./how-to-select-tsid.md) okuyun. [Ingestion rules](concepts-json-flattening-escaping-rules.md)
+Kaynaklarınızı benzersiz şekilde ayırt etmek için en fazla üç anahtar seçebilirsiniz. Daha fazla bilgi için, [zaman SERISI kimliği ve alım kuralları seçmek üzere en iyi uygulamaları](./how-to-select-tsid.md) okuyun. [](concepts-json-flattening-escaping-rules.md)
 
 **Timestamp** özelliği de önemlidir. Olay kaynaklarını eklediğinizde bu özelliği belirleyebilirsiniz. Her olay kaynağında, olay kaynaklarını zaman içinde izlemek için kullanılan isteğe bağlı bir zaman damgası özelliği vardır. Zaman damgası değerleri büyük/küçük harfe duyarlıdır ve her bir olay kaynağının tek bir belirtimine biçimlendirilmelidir.
 

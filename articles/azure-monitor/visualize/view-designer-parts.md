@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/12/2018
 ms.openlocfilehash: 6e971db01322fc031dd0fa8abe82f76a5b45d256
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102045267"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Azure Izleyici 'de tasarımcı görselleştirme parçalarını görüntülemek için başvuru kılavuzu
@@ -23,7 +23,7 @@ Görünüm Tasarımcısı hakkında daha fazla bilgi için bkz.
 
 Kullanılabilir görünüm Tasarımcısı kutucuk türleri aşağıdaki tabloda açıklanmıştır:
 
-| Görünüm türü | Açıklama |
+| Görünüm türü | Description |
 |:--- |:--- |
 | [Sorgu listesi](#list-of-queries-part) |Günlük sorgularının bir listesini görüntüler. Sonuçlarını göstermek için her bir sorguyu seçebilirsiniz. |
 | [Sayı ve liste](#number-and-list-part) |Üst bilgi, bir günlük sorgusundan kayıt sayısını gösteren tek bir sayı görüntüler. Liste, bir sorgunun ilk on sonucunu, sayısal bir sütunun göreli değerini veya zaman içindeki değişikliğini gösteren bir grafiği görüntüler. |

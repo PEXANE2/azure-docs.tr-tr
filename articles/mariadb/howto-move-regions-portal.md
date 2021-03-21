@@ -3,15 +3,15 @@ title: Azure bölgelerini taşıma-Azure portal-MariaDB için Azure veritabanı
 description: MariaDB sunucusu için bir Azure veritabanını bir Azure bölgesinden diğerine, okuma çoğaltması ve Azure portal kullanarak taşıyın.
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/29/2020
-ms.openlocfilehash: adb82b3ff371bdcdecbd964fef3c1d0c971df71a
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: f4ce34bc1a1af7b2c0ee57a3297415bd9d033517
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98664945"
 ---
 # <a name="move-an-azure-database-for-mariadb-server-to-another-region-by-using-the-azure-portal"></a>MariaDB sunucusu için Azure veritabanı 'nı Azure portal kullanarak başka bir bölgeye taşıma
@@ -33,7 +33,7 @@ Farklı bir bölgeye taşıma işlemini gerçekleştirmek için MariaDB [bölgel
 
 Azure portal kullanarak hedef bölgede çapraz bölge okuma çoğaltması sunucusu oluşturmak için aşağıdaki adımları kullanın:
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure portal](https://portal.azure.com/) oturum açın.
 1. Kaynak sunucu olarak kullanmak istediğiniz MariaDB sunucusu için mevcut Azure veritabanını seçin. Bu eylem **genel bakış** sayfasını açar.
 1. **Ayarlar**' ın altında, menüden **çoğaltma** ' yı seçin.
 1. **Çoğaltma ekle**' yi seçin.

@@ -12,10 +12,10 @@ ms.date: 06/18/2020
 ms.author: xiaojul
 ms.custom: devx-track-csharp
 ms.openlocfilehash: fa3a6d16b79800043bdcd3f183dd86fa278dd1a9
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95026036"
 ---
 # <a name="integrate-with-a-client-application-using-speech-sdk"></a>Konuşma SDK 'sını kullanarak bir istemci uygulamasıyla tümleştirme
@@ -406,9 +406,9 @@ Arka plan kod kaynağını aşağıdaki gibi ekleyin:
 
 ## <a name="try-it-out"></a>Deneyin
 
-1. Menü çubuğundan **Build**  >  uygulamayı derlemek için derleme **Build Solution** ' ı seçin. Kodun hatasız derlenmesi gerekir.
+1. Menü çubuğundan   >  uygulamayı derlemek için derleme **Build Solution** ' ı seçin. Kodun hatasız derlenmesi gerekir.
 
-1. **Debug**  >  Uygulamayı başlatmak için hata **ayıklamayı Başlat** ' ı seçin (veya **F5** tuşuna basın). **HelloWorld** penceresi görüntülenir.
+1.   >  Uygulamayı başlatmak için hata **ayıklamayı Başlat** ' ı seçin (veya **F5** tuşuna basın). **HelloWorld** penceresi görüntülenir.
 
    ![C# ' de örnek UWP Sanal Yardımcısı uygulaması-hızlı başlangıç](media/sdk/qs-voice-assistant-uwp-helloworld-window.png)
 

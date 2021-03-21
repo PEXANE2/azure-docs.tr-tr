@@ -4,10 +4,10 @@ description: Nesnelerle çalışmak için bir Azure Resource Manager şablonunda
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.openlocfilehash: 5e13177db1a7cf2f19a822363cb3884474566add
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96920457"
 ---
 # <a name="object-functions-for-arm-templates"></a>ARM şablonları için nesne işlevleri
@@ -25,7 +25,7 @@ Kaynak Yöneticisi, Azure Resource Manager şablonunuzda nesnelerle çalışmak 
 
 [!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
 
-## <a name="contains"></a>şunu içerir
+## <a name="contains"></a>contains
 
 `contains(container, itemToFind)`
 
@@ -33,10 +33,10 @@ Bir dizinin bir değer içerip içermediğini denetler, bir nesne anahtar içeri
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| kapsayıcı |Evet |dizi, nesne veya dize |Bulunacak değeri içeren değer. |
-| ıtemtofind |Evet |dize veya tamsayı |Bulunacak değer. |
+| kapsayıcı |Yes |dizi, nesne veya dize |Bulunacak değeri içeren değer. |
+| ıtemtofind |Yes |dize veya tamsayı |Bulunacak değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -145,12 +145,12 @@ Anahtarlar ve değerlerden bir nesne oluşturur. `createObject`Işlev Bıcep tar
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| key1 |Hayır |string |Anahtarın adı. |
-| value1 |Hayır |int, Boolean, String, nesne veya dizi |Anahtarın değeri. |
-| ek anahtarlar |Hayır |string |Anahtarların ek adları. |
-| ek değerler |Hayır |int, Boolean, String, nesne veya dizi |Anahtarlar için ek değerler. |
+| key1 |No |string |Anahtarın adı. |
+| value1 |No |int, Boolean, String, nesne veya dizi |Anahtarın değeri. |
+| ek anahtarlar |No |string |Anahtarların ek adları. |
+| ek değerler |No |int, Boolean, String, nesne veya dizi |Anahtarlar için ek değerler. |
 
 İşlev yalnızca çift sayıda parametreyi kabul eder. Her anahtar eşleşen bir değere sahip olmalıdır.
 
@@ -219,9 +219,9 @@ Bir dizi, nesne veya dize boş olup olmadığını belirler.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| ıtemtotest |Evet |dizi, nesne veya dize |Boş olup olmadığını denetlemek için değer. |
+| ıtemtotest |Yes |dizi, nesne veya dize |Boş olup olmadığını denetlemek için değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -300,11 +300,11 @@ Parametrelerden ortak öğelerle tek bir dizi veya nesne döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |dizi veya nesne |Ortak öğeleri bulmak için kullanılacak ilk değer. |
-| arg2 |Evet |dizi veya nesne |Ortak öğeleri bulmak için kullanılacak ikinci değer. |
-| ek bağımsız değişkenler |Hayır |dizi veya nesne |Ortak öğeleri bulmak için kullanılacak ek değerler. |
+| arg1 |Yes |dizi veya nesne |Ortak öğeleri bulmak için kullanılacak ilk değer. |
+| arg2 |Yes |dizi veya nesne |Ortak öğeleri bulmak için kullanılacak ikinci değer. |
+| ek bağımsız değişkenler |No |dizi veya nesne |Ortak öğeleri bulmak için kullanılacak ek değerler. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -407,9 +407,9 @@ Geçerli bir JSON dizesini JSON veri türüne dönüştürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |string |JSON 'a dönüştürülecek değer. Dize, düzgün şekilde biçimlendirilen bir JSON dizesi olmalıdır. |
+| arg1 |Yes |string |JSON 'a dönüştürülecek değer. Dize, düzgün şekilde biçimlendirilen bir JSON dizesi olmalıdır. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -538,9 +538,9 @@ Bir dizideki öğelerin sayısını, bir dizedeki karakterleri veya bir nesnedek
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |dizi, dize veya nesne |Öğe sayısının alınması için kullanılacak dizi, karakter sayısını almak için kullanılacak dize veya kök düzeyi özelliklerinin sayısını almak için kullanılacak nesne. |
+| arg1 |Yes |dizi, dize veya nesne |Öğe sayısının alınması için kullanılacak dizi, karakter sayısını almak için kullanılacak dize veya kök düzeyi özelliklerinin sayısını almak için kullanılacak nesne. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -690,11 +690,11 @@ Parametrelerden tüm öğeleri içeren tek bir dizi veya nesne döndürür. Yine
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |dizi veya nesne |Öğeleri birleştirmek için kullanılacak ilk değer. |
-| arg2 |Evet |dizi veya nesne |Öğeleri birleştirmek için kullanılacak ikinci değer. |
-| ek bağımsız değişkenler |Hayır |dizi veya nesne |Öğeleri birleştirmek için kullanılacak ek değerler. |
+| arg1 |Yes |dizi veya nesne |Öğeleri birleştirmek için kullanılacak ilk değer. |
+| arg2 |Yes |dizi veya nesne |Öğeleri birleştirmek için kullanılacak ikinci değer. |
+| ek bağımsız değişkenler |No |dizi veya nesne |Öğeleri birleştirmek için kullanılacak ek değerler. |
 
 ### <a name="return-value"></a>Döndürülen değer
 

@@ -7,10 +7,10 @@ ms.date: 03/18/2020
 ms.author: azfuncdf
 zone_pivot_groups: code-editors-set-one
 ms.openlocfilehash: d5b6ecc12cee983cee0772da8b6f8f26a3b5a8ae
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96008251"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>C 'de ilk dayanıklı işlevinizi oluşturma\#
@@ -88,7 +88,7 @@ Aşağıdaki adımlar, projenizde dayanıklı işlev kodu oluşturmak için bir 
 
 Projeye yeni işlevleri içeren bir sınıf eklenir. VS Code Ayrıca depolama hesabı bağlantı dizesini *local.settings.jsüzerine* ve [`Microsoft.Azure.WebJobs.Extensions.DurableTask`](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) *. csproj* proje dosyasına bir NuGet paketine bir başvuruya ekler.
 
-İçeriği görüntülemek için yeni *HelloOrchestration.cs* dosyasını açın. Bu dayanıklı işlev, aşağıdaki yöntemlerle basit bir işlev zincirleme örneğidir:  
+İçeriğini görüntülemek için yeni *Helloorchestration. cs* dosyasını açın. Bu dayanıklı işlev, aşağıdaki yöntemlerle basit bir işlev zincirleme örneğidir:  
 
 | Yöntem | Ifadelerini | Description |
 | -----  | ------------ | ----------- |
@@ -181,7 +181,7 @@ Bu öğreticiyi tamamlamak için:
 
 Azure Işlevleri şablonu, Azure 'da bir işlev uygulamasına yayımlanmakta olabilecek bir proje oluşturur. İşlev uygulaması, kaynakların daha kolay yönetilmesi, dağıtılması, ölçeklendirilmesi ve paylaşılması için işlevleri bir mantıksal birim olarak gruplandırmanıza olanak tanır.
 
-1. Visual Studio 'da Dosya menüsünden **Yeni**  >  **Proje** ' yi **File** seçin.
+1. Visual Studio'da **Dosya** menüsünden **Yeni** > **Proje**’yi seçin.
 
 1. **Yeni proje oluştur** iletişim kutusunda, arama `functions` yapın, **Azure Işlevleri** şablonunu seçin ve **İleri**' yi seçin. 
 
@@ -205,7 +205,7 @@ Azure Işlevleri şablonu, Azure 'da bir işlev uygulamasına yayımlanmakta ola
 
 Aşağıdaki adımlar, projenizde dayanıklı işlev kodu oluşturmak için bir şablon kullanır.
 
-1. Visual Studio 'da projeye sağ tıklayın ve **Add**  >  **yeni Azure işlevi** Ekle ' yi seçin.
+1. Visual Studio 'da projeye sağ tıklayın ve   >  **yeni Azure işlevi** Ekle ' yi seçin.
 
     ![Yeni işlev Ekle](./media/durable-functions-create-first-csharp/functions-vs-add-function.png)
 

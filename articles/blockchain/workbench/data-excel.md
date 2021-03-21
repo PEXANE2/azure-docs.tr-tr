@@ -5,10 +5,10 @@ ms.date: 09/05/2019
 ms.topic: how-to
 ms.reviewer: mmercuri
 ms.openlocfilehash: 4dd941abdded6a93510f4a71119769cd73855bcc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96000173"
 ---
 # <a name="view-azure-blockchain-workbench-data-with-microsoft-excel"></a>Azure Blockchain Workbench verilerini Microsoft Excel ile görüntüleme
@@ -27,7 +27,7 @@ Bir Blockchain Workbench veritabanına bağlanmak için:
 2. **Veri** sekmesinde **Veri Al**’ı seçin.
 3. Sırayla **Azure’dan** ve **Azure SQL Veritabanı'ndan** seçeneğini belirleyin.
 
-   ![Azure SQL Veritabanı’na bağlanma](./media/data-excel/connect-sql-db.png)
+   ![Azure SQL Veritabanı'na bağlanma](./media/data-excel/connect-sql-db.png)
 
 4. **SQL Server veritabanı** iletişim kutusunda:
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.openlocfilehash: 924c21037a464770fac13c9b45ddcf261ff5a058
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96905188"
 ---
 # <a name="define-and-use-moderation-jobs-api-console"></a>Denetleme işlerini tanımlama ve kullanma (API konsolu)
@@ -26,7 +26,7 @@ Bir denetleme işi, içerik denetleme, iş akışı ve gözden geçirme işlevle
 - Content Moderator [İnceleme aracı](https://contentmoderator.cognitive.microsoft.com/) sitesinde oturum açın veya hesap oluşturun.
 - Seçim İşle birlikte kullanılacak [özel bir iş akışı tanımlayın](./Review-Tool-User-Guide/Workflows.md) ; Varsayılan iş akışını da kullanabilirsiniz.
 
-## <a name="create-a-job"></a>İş oluşturma
+## <a name="create-a-job"></a>Bir iş oluşturma
 
 Bir denetleme işi oluşturmak için, [iş-](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5) API başvurusu Oluştur sayfasına gidin ve abonelik bölgeniz için düğmeyi seçin. Bölgenizi [İnceleme aracının](https://contentmoderator.cognitive.microsoft.com/) **kimlik bilgileri** sayfasında uç nokta URL 'si içinde bulabilirsiniz. Bu, REST API çağrılarını kolayca oluşturabileceğiniz ve çalıştırabileceğiniz API konsolunu başlatır.
 
@@ -115,7 +115,7 @@ REST çağrı parametrelerini yukarıdaki bölümde olduğu gibi girin. Bu adım
 
 ### <a name="examine-the-new-reviews"></a>Yeni Gözden geçirme (ler) i inceleyin
 
-İçerik işiniz bir gözden geçirme oluşturma işlemi ile sonuçlanmasıyla, [Gözden geçirme aracında](https://contentmoderator.cognitive.microsoft.com)görüntüleyebilirsiniz. **Review**  >  **Görüntü** / **metni** / **videosunu** gözden geçir ' i seçin (kullandığınız içeriğe bağlı olarak). İçerik, insan gözden geçirmesi için hazırlanmalıdır. İnsan aracı otomatik olarak atanan etiketleri ve tahmin verilerini gözden geçirdikten ve son bir denetleme kararı gönderdikten sonra, işler API 'SI tüm bu bilgileri belirtilen geri çağırma uç noktasına gönderir.
+İçerik işiniz bir gözden geçirme oluşturma işlemi ile sonuçlanmasıyla, [Gözden geçirme aracında](https://contentmoderator.cognitive.microsoft.com)görüntüleyebilirsiniz.   >  **Görüntü** / **metni** / **videosunu** gözden geçir ' i seçin (kullandığınız içeriğe bağlı olarak). İçerik, insan gözden geçirmesi için hazırlanmalıdır. İnsan aracı otomatik olarak atanan etiketleri ve tahmin verilerini gözden geçirdikten ve son bir denetleme kararı gönderdikten sonra, işler API 'SI tüm bu bilgileri belirtilen geri çağırma uç noktasına gönderir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

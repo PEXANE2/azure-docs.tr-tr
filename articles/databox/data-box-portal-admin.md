@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 12/18/2020
 ms.author: alkohli
 ms.openlocfilehash: 46a18cb2b6e1682427d5674be28b240f35b120fe
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97678645"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box ve Azure Data Box Heavy yönetmek için Azure portal kullanın
@@ -206,7 +206,7 @@ Portalda cihaz durumu değiştiğinde bir e-posta ile bildirilir.
 
 İçeri aktarma siparişi için durumlar aşağıda verilmiştir.
 
-|Sipariş durumu |Açıklama |
+|Sipariş durumu |Description |
 |---------|---------|
 |Sipariş edildi     | Sipariş başarıyla oluşturuldu. <br>Cihaz kullanılabilir durumdaysa Microsoft tarafından gönderilecek cihaz belirlenir ve cihaz hazırlanır. <br> Cihaz hemen kullanılamıyorsa, cihaz kullanılabilir hale geldiğinde sıra işlenir. Siparişin işleme alınması birkaç gün ile birkaç ay sürebilir. Sipariş 90 gün içinde karşılanmıyorsa, sipariş iptal edilir ve size bildirilir.         |
 |İşlendi     | Siparişin işlenmesi tamamlandı. Siparişiniz uyarınca cihaz gönderilmek üzere veri merkezinde hazırlanır.         |
@@ -225,7 +225,7 @@ Portalda cihaz durumu değiştiğinde bir e-posta ile bildirilir.
 
 Dışarı aktarma siparişi için durumlar aşağıda verilmiştir.
 
-|Sipariş durumu |Açıklama |
+|Sipariş durumu |Description |
 |---------|---------|
 |Sipariş edildi     | Dışarı aktarma sırası başarıyla yerleştirildi. <br>Cihaz kullanılabilir durumdaysa Microsoft tarafından gönderilecek cihaz belirlenir ve cihaz hazırlanır. <br> Cihaz o anda mevcut değilse sipariş cihaz mevcut olduğunda işleme alınır. Siparişin işleme alınması birkaç gün ile birkaç ay sürebilir. Sipariş 90 gün içinde gerçekleştirilemiyorsa sipariş iptal edilir ve bu size bildirilir.         |
 |İptal edildi            |Sipariş iptal edildi. <br> Siparişi iptal etmiş olursunuz (yalnızca sipariş işlenmeden önce iptal edebilirsiniz) ya da bir hata ile karşılaşıldıktan sonra hizmet siparişi iptal etmiş olursunuz. Sipariş 90 gün içinde gerçekleştirilemiyorsa sipariş iptal edilir ve bu size bildirilir.     |
@@ -248,7 +248,7 @@ Dışarı aktarma siparişi için durumlar aşağıda verilmiştir.
 
 Otomatik olarak yönetilen kargo kullanıyorsanız, kopyalama işlemi tamamlandıktan sonra ve cihazı almadan önce aşağıdaki durumları görürsünüz (önceki tabloda bahsedilen durumlar yerine):
 
-|Sipariş durumu |Açıklama |
+|Sipariş durumu |Description |
 |---------|---------|
 |Azure veri merkezinde toplama için hazırlanma      |Cihaz, Azure veri merkezinde hazırlanmaya uygun.        |
 |Teslim alındı    |Cihazı tamamladınız.         |

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/02/2020
 ms.custom: seodec18
 ms.openlocfilehash: 89efc1d4f34b250d211f9fd7492588bd2896eb6e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95016862"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-gen2"></a>Azure Time Series Insights Gen2 'de veri modelleme
@@ -38,7 +38,7 @@ Başlamak için, Azure Time Series Insights Explorer **Çözümle** görünümü
 
     [![Önce örnekleri seçerek tek bir örnek oluşturun.](media/v2-update-how-to-tsm/how-to-tsm-instances-panel.png)](media/v2-update-how-to-tsm/how-to-tsm-instances-panel.png#lightbox)
 
-1. **+ Ekle** öğesini seçin.
+1. **+ Ekle**'yi seçin.
 
     [![+ Ekle düğmesini seçerek bir örnek ekleyin.](media/v2-update-how-to-tsm/how-to-tsm-add-instance.png)](media/v2-update-how-to-tsm/how-to-tsm-add-instance.png#lightbox)
 
@@ -86,7 +86,7 @@ Başlamak için, Azure Time Series Insights Explorer **Çözümle** görünümü
 
     [![Bölme aracılığıyla bir hiyerarşi oluşturun.](media/v2-update-how-to-tsm/how-to-tsm-hierarchy-panel.png)](media/v2-update-how-to-tsm/how-to-tsm-hierarchy-panel.png#lightbox)
 
-1. **+ Ekle** öğesini seçin.
+1. **+ Ekle**'yi seçin.
 
     [![Hiyerarşi + Ekle düğmesi.](media/v2-update-how-to-tsm/how-to-tsm-add-new-hierarchy.png)](media/v2-update-how-to-tsm/how-to-tsm-add-new-hierarchy.png#lightbox)
 

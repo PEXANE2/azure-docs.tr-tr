@@ -12,10 +12,10 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 1f4d113f3bc6add67dd34a7ef5e3f8cdc08cecf0
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98677530"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-workload-classifier-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak adanmış bir SQL havuzu iş yükü Sınıflandırıcısı oluşturma
@@ -90,7 +90,7 @@ Sınıflandırma, istekleri bir dizi kurala göre iş yükü grubuna yönlendirm
 8.  `ELTLogin` **Üye** için girin.
 9.  `High` **İstek önemi** için seçin.  *Isteğe bağlı*, normal önem varsayılandır.
 10. `fact_loads` **Etiket** için girin.
-11. **Ekle**’yi seçin.
+11. **Add (Ekle)** seçeneğini belirleyin.
 12. **Kaydet**’i seçin.
 
     ![Yapılandırma ' ya tıklayın](./media/quickstart-create-a-workload-classifier-portal/config-wc.png)

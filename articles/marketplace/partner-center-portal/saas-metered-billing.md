@@ -8,10 +8,10 @@ ms.date: 05/08/2020
 author: mingshen-ms
 ms.author: mingshen
 ms.openlocfilehash: 9f72d54fda8f66c2fce35f0520b51406aa276bb0
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92892762"
 ---
 # <a name="metered-billing-for-saas-using-the-commercial-marketplace-metering-service"></a>Ticari Market ölçüm hizmeti kullanılarak SaaS için ölçülen faturalandırma
@@ -37,7 +37,7 @@ Teklif hiyerarşisini anlamak, teklifin fiyatlandırma modelleriyle birlikte tan
 
 - Her SaaS teklifi, Microsoft aracılığıyla satış yapmak üzere yapılandırılmıştır.  Bir teklif yayımlandıktan sonra bu seçenek değiştirilemez.
 - Microsoft ile satış için yapılandırılmış her SaaS teklifinin bir veya daha fazla planı olabilir.  Kullanıcı SaaS teklifine abone olur, ancak Microsoft aracılığıyla bir plan bağlamı dahilinde satın alınır.
-- Her planda ilişkili bir fiyatlandırma modeli vardır: **sabit oran** veya **Kullanıcı başına** . Bir teklifinizin tüm planların aynı fiyatlandırma modeliyle ilişkilendirilmesi gerekir. Örneğin, bir sabit hızlı fiyatlandırma modeli için planlar ve diğeri de Kullanıcı başına fiyatlandırma modeli olan bir teklif olamaz.
+- Her planda ilişkili bir fiyatlandırma modeli vardır: **sabit oran** veya **Kullanıcı başına**. Bir teklifinizin tüm planların aynı fiyatlandırma modeliyle ilişkilendirilmesi gerekir. Örneğin, bir sabit hızlı fiyatlandırma modeli için planlar ve diğeri de Kullanıcı başına fiyatlandırma modeli olan bir teklif olamaz.
 - Bir sabit fiyat faturalandırma modeli için yapılandırılmış her bir planda en az bir yinelenen ücret ($0 olabilir) dahildir:
     - Yinelenen **aylık** ücret: Kullanıcı planı satın aldığında aylık bir tekrarda önceden ödenen Sabit aylık ücret.
     - Yinelenen **yıllık** ücret: Kullanıcı planı satın aldığında yıllık bir tekrarda önceden ödenen sabit yıllık ücret.
@@ -73,12 +73,12 @@ Seçilen plana bağlı olarak, CNS SaaS teklifine yönelik bir Azure müşteri s
 
 Her faturalandırma boyutu, ISV 'nin kullanım olaylarını yayarak kullandığı özel bir birimi tanımlar.  Fatura boyutları Ayrıca, müşteriyle yazılım kullanımı için faturalandırılabilecekleri müşteriyle iletişim kurmak için de kullanılır.  Bunlar aşağıdaki gibi tanımlanır:
 
-- **ID** : kullanım olayları yayırken başvurulan sabit boyut tanımlayıcısı.
-- **Görünen ad** : boyutla ilişkili görünen ad (örneğin, "gönderilen metin iletileri").
-- **Ölçü birimi** : Faturalandırma biriminin açıklaması, örneğin "metin başına ileti" veya "100 başına e-posta".
-- **USD cinsinden birim başına fiyat** : boyutun bir birimi için fiyat.  0 olabilir. 
-- **Temele dahil edilen aylık miktar** : müşterilerin yinelenen aylık ücreti ödeyerek aylık olarak dahil edilen boyut miktarı, bir tamsayı olmalıdır. 0 veya sınırsız olabilir.
-- **Temele dahil edilen yıllık miktar** : müşteriler için her yıl dahil edilen boyut miktarı, yinelenen yıllık ücret ödeyerek bir tamsayı olmalıdır. 0 veya sınırsız olabilir.
+- **ID**: kullanım olayları yayırken başvurulan sabit boyut tanımlayıcısı.
+- **Görünen ad**: boyutla ilişkili görünen ad (örneğin, "gönderilen metin iletileri").
+- **Ölçü birimi**: Faturalandırma biriminin açıklaması, örneğin "metin başına ileti" veya "100 başına e-posta".
+- **USD cinsinden birim başına fiyat**: boyutun bir birimi için fiyat.  0 olabilir. 
+- **Temele dahil edilen aylık miktar**: müşterilerin yinelenen aylık ücreti ödeyerek aylık olarak dahil edilen boyut miktarı, bir tamsayı olmalıdır. 0 veya sınırsız olabilir.
+- **Temele dahil edilen yıllık miktar**: müşteriler için her yıl dahil edilen boyut miktarı, yinelenen yıllık ücret ödeyerek bir tamsayı olmalıdır. 0 veya sınırsız olabilir.
 
 Fatura boyutları, bir teklif için tüm planlar arasında paylaşılır.  Bazı öznitelikler, tüm planlar genelinde boyut için geçerlidir ve diğer öznitelikler plana özgüdür.
 
@@ -145,7 +145,7 @@ Bir plan yayımlandığında, plan düzeyi ayrıntıları artık değiştirileme
 
 Tek bir teklif için yapılandırılabilecek maksimum boyut sayısı 30 benzersiz boyutlardır.
 
-## <a name="get-support"></a>Destek alma
+## <a name="get-support"></a>Destek alın
 
 Aşağıdaki sorunlardan birine sahipseniz bir destek bileti açabilirsiniz.
 

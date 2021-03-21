@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: f58b8feda0e88d8a5e7cddaabbc650b0f0ab3973
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98788171"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>Hızlı başlangıç: Linux kapsayıcıları Service Fabric'e dağıtma
@@ -19,7 +19,7 @@ Bu hızlı başlangıçta, Linux kapsayıcılarını Azure 'da bir Service Fabri
 
 ![Oylama uygulaması web sayfası][quickstartpic]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlamak için:
 
@@ -177,7 +177,7 @@ ResourceGroupName="containertestcluster"
 az group delete --name $ResourceGroupName
 ```
 
-Kümenizle çalışmayı tamamladıysanız, sertifikayı sertifika deposundan kaldırabilirsiniz. Örneğin:
+Kümenizle çalışmayı tamamladıysanız, sertifikayı sertifika deposundan kaldırabilirsiniz. Örnek:
 - Windows: [Sertifikalar MMC ek bileşenini](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) kullanın. Ek bileşeni eklerken **Kullanıcı hesabım**’ı seçtiğinizden emin olun. `Certificates - Current User\Personal\Certificates` sayfasına gidip sertifikayı kaldırın.
 - Mac: Anahtarlık uygulamasını kullanın.
 - Ubuntu: Sertifikaları görüntülemek ve sertifikayı kaldırmak için kullandığınız adımları izleyin.

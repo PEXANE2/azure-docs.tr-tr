@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
 ms.openlocfilehash: a83cd68df2f1d722517d6239bf6959075860d0b8
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94888547"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>Güvenlik işlemlerini Microsoft Graph güvenlik & tümleştirerek tehdit korumasını geliştirebilirsiniz Azure Logic Apps
@@ -91,7 +91,7 @@ Bu örnek, uygulamanıza yeni uyarılar gönderildiğinde bir mantıksal uygulam
 
 1.  Tetikleyicide, izlemek istediğiniz uyarılar hakkında bilgi sağlayın. Daha fazla özellik için **yeni parametre Ekle** listesini açın ve bu özelliği tetikleyiciye eklemek için bir parametre seçin.
 
-   | Özellik | Özellik (JSON) | Gerekli | Tür | Açıklama |
+   | Özellik | Özellik (JSON) | Gerekli | Tür | Description |
    |----------|-----------------|----------|------|-------------|
    | **Aralık** | `interval` | Yes | Tamsayı | İş akışının sıklık temelinde ne sıklıkta çalışacağını açıklayan pozitif bir tamsayı. En düşük ve en büyük aralıklar aşağıda verilmiştir: <p><p>-Ay: 1-16 ay <br>Gün: 1-500 gün <br>-Saat: 1-12000 saat <br>-Dakika: 1-72000 dakika <br>-İkinci: 1-9999999 saniye <p>Örneğin, Aralık 6 ve Sıklık "month" ise, yinelenme 6 aydır. |
    | **Sıklık** | `frequency` | Evet | Dize | Yinelenme için zaman birimi: **saniye**, **dakika**, **saat**, **gün**, **hafta** veya **ay** |
@@ -109,7 +109,7 @@ Microsoft Graph güvenlik Bağlayıcısı ile kullanılabilen çeşitli eylemler
 
 ### <a name="manage-alerts"></a>Uyarıları yönetme
 
-En son sonuçları filtrelemek, sıralamak veya almak için *yalnızca* [Microsoft Graph tarafından desteklenen OData sorgu parametrelerini](/graph/query-parameters)sağlayın. *Don't specify* Tüm temel URL 'YI veya http eylemini (örneğin, ya da `https://graph.microsoft.com/v1.0/security/alerts` `GET` veya işlem) belirtmeyin `PATCH` . Yüksek önem derecesine sahip bir liste istediğinizde, **uyarıları al** eyleminin parametrelerini gösteren belirli bir örnek aşağıda verilmiştir:
+En son sonuçları filtrelemek, sıralamak veya almak için *yalnızca* [Microsoft Graph tarafından desteklenen OData sorgu parametrelerini](/graph/query-parameters)sağlayın.  Tüm temel URL 'YI veya http eylemini (örneğin, ya da `https://graph.microsoft.com/v1.0/security/alerts` `GET` veya işlem) belirtmeyin `PATCH` . Yüksek önem derecesine sahip bir liste istediğinizde, **uyarıları al** eyleminin parametrelerini gösteren belirli bir örnek aşağıda verilmiştir:
 
 `Filter alerts value as Severity eq 'high'`
 
@@ -138,7 +138,7 @@ Microsoft Graph [*abonelikleri*](/graph/api/resources/subscription)veya [*Web ka
 
 ### <a name="manage-threat-intelligence-indicators"></a>Tehdit zekası göstergelerini yönetme
 
-En son sonuçları filtrelemek, sıralamak veya almak için *yalnızca* [Microsoft Graph tarafından desteklenen OData sorgu parametrelerini](/graph/query-parameters)sağlayın. *Don't specify* Tüm temel URL 'YI veya http eylemini (örneğin, ya da `https://graph.microsoft.com/beta/security/tiIndicators` `GET` veya işlem) belirtmeyin `PATCH` . Tehdit türüne sahip bir listeyi istediğiniz zaman **Al** eyleminin parametrelerini gösteren belirli bir örnek aşağıda verilmiştir `DDoS` :
+En son sonuçları filtrelemek, sıralamak veya almak için *yalnızca* [Microsoft Graph tarafından desteklenen OData sorgu parametrelerini](/graph/query-parameters)sağlayın.  Tüm temel URL 'YI veya http eylemini (örneğin, ya da `https://graph.microsoft.com/beta/security/tiIndicators` `GET` veya işlem) belirtmeyin `PATCH` . Tehdit türüne sahip bir listeyi istediğiniz zaman **Al** eyleminin parametrelerini gösteren belirli bir örnek aşağıda verilmiştir `DDoS` :
 
 `Filter threat intelligence indicator value as threatType eq 'DDoS'`
 

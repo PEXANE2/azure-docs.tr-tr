@@ -8,16 +8,16 @@ ms.date: 10/13/2020
 ms.author: govindk
 ms.reviewer: sngun
 ms.openlocfilehash: 2629e9c6e048620d9490a1e091a16c138fd1e615
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99525441"
 ---
-# <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Azure Cosmos DB çevrimiçi yedekleme ve isteğe bağlı veri yükleme
+# <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Azure Cosmos DB'de çevrimiçi yedekleme ve isteğe bağlı veri geri yükleme
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos DB, düzenli aralıklarla verilerinizin yedeklerini otomatik olarak alır. Otomatik yedeklemeler, veritabanı işlemlerinin performansını veya kullanılabilirliğini etkilemeden alınır. Tüm yedeklemeler bir depolama hizmetinde ayrı olarak depolanır. Azure Cosmos hesabınızı, veritabanınızı veya kapsayıcısını yanlışlıkla sildikten veya güncelleştirdiğinizde ve daha sonra veri kurtarmayı gerektirdiğinde, otomatik yedeklemeler senaryolarda yardımcı olur. İki yedekleme modu vardır:
+Azure Cosmos DB düzenli aralıklarla otomatik olarak verilerinizin yedeğini alır. Otomatik yedeklemeler yapılırken veritabanı işlemlerinin performansı veya kullanılabilirliği etkilenmez. Yedeklerin tümü bir depolama hizmetinde ayrı olarak depolanır. Otomatik yedeklemeler Azure Cosmos hesabınızı, veritabanınızı veya kapsayıcınızı yanlışlıkla sildiğiniz veya güncelleştirdiğiniz ve daha sonra verileri kurtarmaya gerek duyduğunuz senaryolarda yararlı olur. İki yedekleme modu vardır:
 
 * **Düzenli yedekleme modu** -Bu mod, mevcut tüm hesaplar için varsayılan yedekleme modudur. Bu modda, yedekleme düzenli aralıklarla alınır ve destek ekibiyle bir istek oluşturularak veriler geri yüklenir. Bu modda, hesabınız için bir yedekleme aralığı ve bekletme yapılandırırsınız. Maksimum bekletme süresi bir aya genişletilir. En düşük yedekleme aralığı bir saat olabilir.  Daha fazla bilgi için bkz. [düzenli yedekleme modu](configure-periodic-backup-restore.md) makalesi.
 

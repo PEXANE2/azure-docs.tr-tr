@@ -9,10 +9,10 @@ ms.date: 01/07/2021
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 35e080e0fe45c18ad6a6d5392e0c78b116853c3e
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98027477"
 ---
 # <a name="troubleshooting-network-performance"></a>Ağ performansı sorunlarını giderme
@@ -162,7 +162,7 @@ Test kurulumu:
  - Özel eşleme etkinken belirlenen konumda 10 Gbps Premium ExpressRoute devresi.
  - Belirtilen bölgede UltraPerformance ağ geçidine sahip bir Azure sanal ağı.
  - VNet üzerinde Windows Server 2016 çalıştıran bir DS5v2 VM. VM, varsayılan Azure görüntüsünden (iyileştirme veya özelleştirme olmadan) AzureCT yüklü olarak oluşturulan etki alanına katılmamış.
- - Tüm testler, altı test çalıştırmalarının her biri için 5 dakikalık bir yük testi ile AzureCT Get-LinkPerformance komutunu kullanır. Örneğin:
+ - Tüm testler, altı test çalıştırmalarının her biri için 5 dakikalık bir yük testi ile AzureCT Get-LinkPerformance komutunu kullanır. Örnek:
 
     ```powershell
     Get-LinkPerformance -RemoteHost 10.0.0.1 -TestSeconds 300

@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 11/07/2018
 ms.openlocfilehash: 896f4edb1e94c1eca06b046382727a5042375e3b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793288"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Azure SQL veritabanı 'nı kullanan tek başına tek kiracılı bir uygulama dağıtma ve araştırma
@@ -60,16 +60,16 @@ Uygulamayı belirtilen üç kiracı için dağıtın:
     > Bazı kimlik doğrulama ve sunucu güvenlik duvarları, tanıtım amacıyla güvenli şekilde güvenli değildir. Her uygulama dağıtımı için **Yeni bir kaynak grubu oluşturun** .  Mevcut bir kaynak grubunu kullanmayın. Üretim için bu uygulamayı veya oluşturduğu kaynakları kullanmayın. İlgili faturalandırmayı durdurmak için uygulamalarla işiniz bittiğinde tüm kaynak gruplarını silin.
 
     Kaynak adlarınızdan yalnızca küçük harf, sayı ve kısa çizgi kullanmak en iyisidir.
-    * **Kaynak grubu** Için yeni oluştur ' u seçin ve ardından kaynak grubu için küçük harfli bir ad sağlayın. **Wingtip-sa- \<venueName\> - \<user\>** Önerilen modeldir.  İçin \<venueName\> , mekan adını boşluk yok ile değiştirin. İçin \<user\> , Kullanıcı değerini aşağıdan değiştirin.  Bu düzende, kaynak grubu adları *Wingtip-sa-contosoconcerthall-AF1* , *Wingtip-sa-dogwooddojo-AF1* , *Wingtip-sa-fabrikamjazzclub-AF1* olabilir.
+    * **Kaynak grubu** Için yeni oluştur ' u seçin ve ardından kaynak grubu için küçük harfli bir ad sağlayın. **Wingtip-sa- \<venueName\> - \<user\>** Önerilen modeldir.  İçin \<venueName\> , mekan adını boşluk yok ile değiştirin. İçin \<user\> , Kullanıcı değerini aşağıdan değiştirin.  Bu düzende, kaynak grubu adları *Wingtip-sa-contosoconcerthall-AF1*, *Wingtip-sa-dogwooddojo-AF1*, *Wingtip-sa-fabrikamjazzclub-AF1* olabilir.
     * Açılan listeden bir **konum** seçin.
 
-    * **Kullanıcı** için-adınızın baş ve bir basamak gibi kısa bir kullanıcı değeri önerilir: Örneğin, *AF1* .
+    * **Kullanıcı** için-adınızın baş ve bir basamak gibi kısa bir kullanıcı değeri önerilir: Örneğin, *AF1*.
 
 
-3. **Uygulamayı dağıtın** .
+3. **Uygulamayı dağıtın**.
 
     * Hüküm ve koşulları kabul etmek için tıklayın.
-    * **Satın al** ’a tıklayın.
+    * **Satın al**’a tıklayın.
 
 4. **Bildirimler** ' e tıklayarak üç dağıtımın durumunu izleyin (arama kutusunun sağındaki zil simgesi). Uygulamaları dağıtmak yaklaşık beş dakika sürer.
 
@@ -86,7 +86,7 @@ Uygulama Vitrini olayları barındıran olaylar.  Havalandırma noktaları, uygu
 
      (Her URL 'de, &lt; kullanıcıyı &gt; dağıtımınızın Kullanıcı değeriyle değiştirin.)
 
-   ![Olaylar](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
+   ![Ekinlikler](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
 
 Uygulama, gelen isteklerin dağıtımını denetlemek için [*Azure Traffic Manager*](../../traffic-manager/traffic-manager-overview.md)kullanır. Kiracıya özgü her uygulama örneği, URL 'deki etki alanı adının bir parçası olarak kiracı adını içerir. Tüm kiracı URL 'Leri, belirli **Kullanıcı** değerini içerir. URL 'Ler aşağıdaki biçimi izler:
 - http://events.&lt; venuename &gt; . &lt; user &gt; . trafficmanager.net
