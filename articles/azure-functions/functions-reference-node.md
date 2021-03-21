@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/07/2021
 ms.custom: devx-track-js
 ms.openlocfilehash: 971fb2a3239614a708e14c109e567081f1ec9ff6
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102614913"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Işlevleri JavaScript Geliştirici Kılavuzu
@@ -18,7 +18,7 @@ Bu kılavuz, JavaScript kullanarak Azure Işlevleri geliştirmeye yardımcı ola
 
 Express.js, Node.js veya JavaScript geliştiricisi olarak Azure Işlevleri 'ne yeni bir deyişle, lütfen önce aşağıdaki makalelerden birini okuyun:
 
-| Başlarken | Kavramlar| Kılavuzlu öğrenme |
+| Kullanmaya başlama | Kavramlar| Kılavuzlu öğrenme |
 | -- | -- | -- | 
 | <ul><li>[ Visual Studio Code kullanarakNode.js işlevi](./create-first-function-vs-code-node.md)</li><li>[ Terminal/komut istemiyleNode.js işlevi](./create-first-function-cli-node.md)</li><li>[ Azure portal kullanarakNode.js işlevi](functions-create-function-app-portal.md)</li></ul> | <ul><li>[Geliştirici kılavuzu](functions-reference.md)</li><li>[Barındırma seçenekleri](functions-scale.md)</li><li>[TypeScript işlevleri](#typescript)</li><li>[Performans &nbsp; konuları](functions-best-practices.md)</li></ul> | <ul><li>[Sunucusuz uygulamalar oluşturma](/learn/paths/create-serverless-applications/)</li><li>[Node.js ve hızlı API 'Leri sunucusuz API 'lere yeniden düzenleme](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
 

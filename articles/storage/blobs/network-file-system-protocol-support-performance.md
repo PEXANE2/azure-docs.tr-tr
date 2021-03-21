@@ -9,12 +9,12 @@ ms.date: 02/23/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 3b596d14ea770bfcd7560903a234d2ab77b66201
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 28fb5ffc0ce9c554294eaca9e460694856cb95a0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102614335"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589880"
 ---
 # <a name="network-file-system-nfs-30-performance-considerations-in-azure-blob-storage-preview"></a>Ağ dosya sistemi (NFS) 3,0 performans konuları Azure Blob depolama (Önizleme)
 
@@ -46,7 +46,7 @@ Aşağıdaki grafikteki her çubuk, Premium ve standart performans depolama hesa
 > [!div class="mx-imgBorder"]
 > ![Göreli performans](./media/network-file-system-protocol-support-performance/relative-performance.png)
 
-## <a name="avoid-frequent-overwrites-on-date"></a>Tarihte sık kullanılan üzerine yazma yapmaktan kaçının
+## <a name="avoid-frequent-overwrites-on-data"></a>Verilerdeki sık kullanılan üzerine yazma yapmaktan kaçının
 
 Yeni yazma işleminden farklı bir üzerine yazma işlemi tamamlaması daha uzun zaman alır. Bunun nedeni, özellikle kısmen yerinde bir dosya düzenleme işlemi olan bir NFS üzerine yazma işlemi, temel alınan blob işlemlerinin bir birleşimidir: okuma, değiştirme ve yazma işlemi. Bu nedenle, sık sık yerinde düzenleme gerektiren bir uygulama, NFS etkin BLOB depolama hesapları için uygun değildir. 
 

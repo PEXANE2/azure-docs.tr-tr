@@ -8,17 +8,17 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 2/26/2021
 ms.openlocfilehash: 098f62365971fd634001706ab99fd414a6b25056
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102123573"
 ---
 # <a name="register-and-scan-azure-multiple-sources"></a>Azure birden çok kaynağı kaydetme ve tarama
 
 Bu makalede, bir Azure çoklu kaynağını (Azure abonelikleri veya kaynak grupları) purview 'a kaydetme ve üzerinde tarama ayarlama özetlenmektedir.
 
-## <a name="supported-capabilities"></a>Desteklenen yetenekler
+## <a name="supported-capabilities"></a>Desteklenen özellikler
 
 Azure birden çok kaynak, takip eden pek çok Azure Kaynak türü üzerinde meta verileri ve şemayı yakalamaya yönelik taramaları destekler. Ayrıca, verileri sistem ve özel sınıflandırma kurallarına göre otomatik olarak sınıflandırır.
 

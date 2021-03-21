@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 02/22/2021
 ms.author: alkohli
 ms.openlocfilehash: 67dd2b35229c15ae4df5ec8acb357aa35621d67c
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102436643"
 ---
 # <a name="troubleshooting-certificate-errors"></a>Sertifika hatalarını giderme
@@ -28,7 +28,7 @@ Aşağıdaki tabloda, yaygın Sertifika hataları ve bu hatalar ve olası çöz�
 > [!NOTE]
 > &#8220;{0} , {1} ,..., {n} &#8221;, konumsal parametreleri gösterir. Konumsal parametreler, kullanmakta olduğunuz sertifikalara göre değerleri alır.
 
-| Hata Kodu | Açıklama |
+| Hata Kodu | Description |
 |---|---|
 | CertificateManagement_UntrustedCertificate | Konu adı olan sertifikada {0} sertifika zinciri kopuk. Bu sertifikayı karşıya yüklemeden önce imzalama zinciri sertifikasını karşıya yükleyin.|
 | CertificateManagement_DeviceNotRegistered| Cihazınız etkinleştirilmemiş. Yalnızca etkinleştirme sonrasında bir destek sertifikası yükleyebilirsiniz.|

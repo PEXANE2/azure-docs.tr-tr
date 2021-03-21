@@ -7,10 +7,10 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 02/16/2018
 ms.openlocfilehash: e46517865ba01a0d4d113696fbadabf5ae7b0105
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102037940"
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>Eylem gruplarında SMS uyarı davranışı
@@ -29,7 +29,7 @@ Bir eylem grubunun parçası olarak yapılandırılmış bir SMS alıcısı, bir
 * Bu uyarının gönderildiği eylem grubunun ShortName 'ı
 * Uyarının başlığı
 
-| YANITLA | Açıklama |
+| YANITLA | Description |
 | ----- | ----------- |
 | Dıı `<Action Group Short name>` | Eylem grubundan daha fazla SMS 'yi devre dışı bırakır |
 | ETKINLEŞTIREBILIR `<Action Group Short name>` | Eylem grubundan SMS 'yi yeniden etkinleştirilir |

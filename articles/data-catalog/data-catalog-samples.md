@@ -6,14 +6,16 @@ author: JasonWHowell
 ms.author: jasonh
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 7d0e27802745dda62f87e412053650907e9b812c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15b48bc41e230ca5b9003675e2caab25741bcbfd
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68950150"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674776"
 ---
 # <a name="azure-data-catalog-developer-samples"></a>Azure Veri Kataloğu geliştirici örnekleri
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 Veri Kataloğu REST API kullanarak Azure Veri Kataloğu uygulamaları geliştirmeye başlayın. Veri Kataloğu REST API, veri varlıklarını programlı bir şekilde kaydetmek, bunlara açıklama eklemek ve aramak için veri kataloğu kaynaklarına programlı erişim sağlayan REST tabanlı bir API 'dir.
 

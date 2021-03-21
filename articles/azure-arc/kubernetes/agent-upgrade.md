@@ -9,10 +9,10 @@ ms.author: shasb
 description: Azure Arc etkin Kubernetes için Denetim Aracısı yükseltmeleri
 keywords: Kubernetes, yay, Azure, K8s, kapsayıcılar, aracı, yükseltme
 ms.openlocfilehash: 172654f655e594c295a8807b417c32d7849bd4b1
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102121924"
 ---
 # <a name="upgrading-azure-arc-enabled-kubernetes-agents"></a>Azure Arc etkin Kubernetes aracılarını yükseltme

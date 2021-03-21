@@ -8,10 +8,10 @@ ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: f7766b57b5a3b9ffc73691303b5d8bcaa63fce4c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101721676"
 ---
 # <a name="azure-security-baseline-for-azure-firewall"></a>Azure Güvenlik Duvarı için Azure Güvenlik temeli
@@ -214,7 +214,7 @@ Azure Izleyici günlükleri, uygulamanızın genel gerçek zamanlı olarak izlen
 
 - [Azure Güvenlik Duvarı günlükleri ve ölçümleri](logs-and-metrics.md)
 
-- [Tanılama günlükleri](https://docs.microsoft.com/azure/firewall/logs-and-metrics#diagnostic-logs)
+- [Tanılama Günlükleri](https://docs.microsoft.com/azure/firewall/logs-and-metrics#diagnostic-logs)
 
 **Sorumluluk**: Müşteri
 

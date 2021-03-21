@@ -9,10 +9,10 @@ ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
 ms.openlocfilehash: ede650ae072ef53ed40a9372a292ab69fe8cc1af
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103492741"
 ---
 # <a name="sip-interface-infrastructure-requirements"></a>SIP arabirimi altyapı gereksinimleri 
@@ -48,7 +48,7 @@ Aşağıdaki tabloda, ad, kiracı için kayıtlı DNS adları örnekleri ve bu a
 |DNS adı|SBC FQDN için kullanılabilir|FQDN adı örnekleri|
 |:--- |:--- |:--- |
 contoso.com|Yes|**Geçerli adlar:**<br/>sbc1.contoso.com<br/>ssbcs15.contoso.com<br/>europe.contoso.com|
-|contoso.onmicrosoft.com|Hayır|SBC adlarında *. onmicrosoft.com etki alanlarının kullanılması desteklenmez
+|contoso.onmicrosoft.com|No|SBC adlarında *. onmicrosoft.com etki alanlarının kullanılması desteklenmez
 
 Office 365 müşterisiyseniz, SBC etki alanı adının Office 365 kiracının etki alanlarında kayıtlı olması gerekir. Office 365 ve Azure Iletişim hizmeti 'nin birlikte bulunma örneği aşağıda verilmiştir:
 

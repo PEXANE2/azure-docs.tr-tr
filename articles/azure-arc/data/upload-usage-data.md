@@ -10,16 +10,16 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
-ms.openlocfilehash: 578f0d1ca742fe4445b8aeed6876d1a73fd3f79e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0c72eda59f375c70274b17796ca53614ef95505b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92378126"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104669517"
 ---
 # <a name="upload-usage-data-to-azure-monitor"></a>Kullanım verilerini Azure Izleyici 'ye yükleme
 
-Kullanım bilgilerini düzenli aralıklarla dışarı aktarabilirsiniz. Bu bilgilerin dışa ve karşıya yüklenmesi, Azure 'da veri denetleyicisi, SQL yönetilen örneği ve PostgreSQL hiper ölçek sunucu grubu kaynaklarını oluşturur ve güncelleştirir.
+Kullanım bilgilerini düzenli aralıklarla dışarı aktarabilirsiniz. Bu bilgilerin dışarı ve karşıya yüklenmesi, Azure 'da veri denetleyicisi, SQL yönetilen örneği ve PostgreSQL hiper ölçek sunucu grubu kaynaklarını oluşturur ve güncelleştirir.
 
 > [!NOTE] 
 > Önizleme dönemi boyunca, Azure Arc etkin veri hizmetlerini kullanma maliyeti yoktur.
@@ -64,7 +64,7 @@ Envanter ve kaynak kullanımı gibi kullanım bilgileri aşağıdaki iki adıml�
 
 Ölçümleri ve günlükleri Zamanlanmış olarak yüklemek isterseniz, bir komut dosyası oluşturup birkaç dakikada bir Zamanlayıcı üzerinde çalıştırabilirsiniz. Bir Linux kabuğu betiği kullanarak karşıya yüklemeyi otomatikleştirme örneği aşağıda verilmiştir.
 
-En sevdiğiniz metin/kod düzenleyicide, dosyaya aşağıdaki betiği ekleyin ve. sh (Linux/Mac) veya. cmd,. bat,. ps1 gibi bir betik yürütülebilir dosyası olarak kaydedin.
+En sevdiğiniz metin/kod düzenleyicide, dosyaya aşağıdaki betiği ekleyin ve `.sh` (Linux/Mac) veya, ya da gibi bir betik yürütülebilir dosyası olarak kaydedin `.cmd` `.bat` `.ps1` .
 
 ```console
 azdata arc dc export --type metrics --path metrics.json --force

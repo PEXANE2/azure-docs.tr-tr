@@ -10,18 +10,18 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 83c5595dc64b46e1c30f3c36866e0efbbd8d3c7f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 27cc53c3eef1bb2a9962d2c21ae80db3c8b0383d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101674132"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585443"
 ---
 # <a name="design-tables-using-synapse-sql-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SYNAPSE SQL kullanarak tablo tasarlama
 
 Bu belgede adanmış SQL havuzu ve sunucusuz SQL havuzu ile tablo tasarlamaya yönelik temel kavramlar yer almaktadır.  
 
-[Sunucusuz SQL havuzu](on-demand-workspace-overview.md) , Data Lake 'unuzdaki veriler üzerinde bir sorgu hizmetidir. Veri alımı için yerel depolama alanı yoktur. [ADANMıŞ SQL havuzu](best-practices-sql-pool.md) , SYNAPSE SQL kullanılırken sağlanmakta olan analitik kaynakların koleksiyonunu temsil eder. Adanmış bir SQL havuzunun boyutu, veri ambarı birimleri (DWU) tarafından belirlenir.
+[Sunucusuz SQL havuzu](on-demand-workspace-overview.md) , Data Lake 'unuzdaki veriler üzerinde bir sorgu hizmetidir. Veri alımı için yerel depolama alanı yoktur. [ADANMıŞ SQL havuzu](best-practices-dedicated-sql-pool.md) , SYNAPSE SQL kullanılırken sağlanmakta olan analitik kaynakların koleksiyonunu temsil eder. Adanmış bir SQL havuzunun boyutu, veri ambarı birimleri (DWU) tarafından belirlenir.
 
 Aşağıdaki tabloda adanmış SQL havuzu ve sunucusuz SQL havuzu ile ilgili konular listelenmektedir:
 
@@ -206,7 +206,7 @@ Adanmış SQL havuzunda, BIRINCIL anahtar yalnızca KÜMELENMEMIŞ ve ZORLANMAZ 
 
 Adanmış SQL havuzu için yeni bir boş tablo olarak tablo oluşturabilirsiniz. Ayrıca bir SELECT ifadesinin sonuçlarıyla bir tablo oluşturup doldurabilirsiniz. Aşağıda tablo oluşturmak için T-SQL komutları verilmiştir.
 
-| T-SQL ekstresi | Açıklama |
+| T-SQL ekstresi | Description |
 |:----------------|:------------|
 | [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true) | Tüm tablo sütunlarını ve seçeneklerini tanımlayarak boş bir tablo oluşturur. |
 | [DıŞ TABLO OLUŞTUR](/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest&preserve-view=true) | Dış tablo oluşturur. Tablonun tanımı adanmış SQL havuzunda depolanır. Tablo verileri Azure Blob depolamada veya Azure Data Lake Storage depolanır. |

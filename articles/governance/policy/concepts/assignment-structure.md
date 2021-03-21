@@ -1,14 +1,14 @@
 ---
 title: İlke atama yapısının ayrıntıları
 description: Değerlendirme için kaynaklarla ilke tanımlarını ve parametreleri ilişkilendirmek üzere Azure Ilkesi tarafından kullanılan ilke atama tanımını açıklar.
-ms.date: 01/29/2021
+ms.date: 03/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 625314a8b83a4d0cc76eae51eae8d357e39d2a6a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 909c1c361e092c512a73854a40e22a67efe5f2f8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581955"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604874"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure İlkesi atama yapısı
 
@@ -88,7 +88,10 @@ Bu alan, bir ilke tanımının ya da bir girişim tanımının tam yol adı olma
 
 ## <a name="non-compliance-messages"></a>Uyumsuzluk iletileri
 
-Bir kaynağın neden ilke veya girişim tanımıyla uyumsuz olduğunu tanımlayan özel bir ileti ayarlamak için `nonComplianceMessages` atama tanımında ayarlayın. Bu düğüm, girdilerden oluşan bir dizidir `message` . Bu özel ileti, uyumsuz olmayan ve isteğe bağlı olarak varsayılan hata iletisine ek niteliğindedir.
+Bir kaynağın ilkeyle veya girişim tanımıyla uyumsuz olduğunu açıklayan özel bir ileti ayarlamak için `nonComplianceMessages` atama tanımında ayarlayın. Bu düğüm, girdilerden oluşan bir dizidir `message` . Bu özel ileti, uyumsuz olmayan ve isteğe bağlı olarak varsayılan hata iletisine ek niteliğindedir.
+
+> [!IMPORTANT]
+> Uyumsuzluk için özel iletiler yalnızca [Kaynak Yöneticisi mod](./definition-structure.md#resource-manager-modes) tanımlarına sahip tanımlarda veya girişimlerle desteklenir.
 
 ```json
 "nonComplianceMessages": [

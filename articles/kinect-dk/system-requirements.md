@@ -1,22 +1,22 @@
 ---
 title: Azure Kinect algılayıcı SDK sistem gereksinimleri
 description: Windows ve Linux 'ta Azure Kinect algılayıcısı SDK 'Sı için sistem gereksinimlerini anlayın.
-author: tesych
-ms.author: tesych
+author: qm13
+ms.author: quentinm
 ms.custom:
 - CI 115266
 - CSSTroubleshooting
 manager: dcscontentpm
 ms.prod: kinect-dk
-ms.date: 03/12/2020
+ms.date: 03/05/2021
 ms.topic: article
 keywords: Azure, Kinect, sistem gereksinimleri, CPU, GPU, USB, ayarlama, kurulum, minimum, gereksinimler
-ms.openlocfilehash: 5cf313114b62532ee3f2b3d7a5142f79218954c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 558c1b9ca264874fa808aeba5f1e8a809a8f722d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85277732"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104656983"
 ---
 # <a name="azure-kinect-sensor-sdk-system-requirements"></a>Azure Kinect algılayıcı SDK sistem gereksinimleri
 
@@ -52,7 +52,7 @@ Gövde izleme BILGISAYAR ana bilgisayar gereksinimi, genel BILGISAYAR ana bilgis
 
 - Yedinci Gen Intel &reg; CoreTM I5 işlemcisi (dört çekirdekli 2,4 GHz veya daha hızlı)
 - 4 GB bellek
-- NVıDıA GEFORCE GTX 1070 veya daha iyi
+- NVıDıA GEFORCE GTX 1050 veya eşdeğeri
 - Adanmış USB3 bağlantı noktası
 
 Önerilen en düşük yapılandırma, K4A_DEPTH_MODE_NFOV_UNBINNED derinlik modunun, 30fps izleme 5 kişi üzerinde olduğunu varsayar. Küçük veya daha eski CPU 'Lar ve NVıDıA GPU 'lar, kullanım durumunuza göre de çalışabilir.

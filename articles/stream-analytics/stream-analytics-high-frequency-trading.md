@@ -5,14 +5,14 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 12/07/2018
+ms.date: 03/16/2021
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 3f8f7744e07abb56d825ce44d5bb30190e7e87c4
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: f632c916c3de61b94532e96be23da511ad5863ea
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020426"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593042"
 ---
 # <a name="high-frequency-trading-simulation-with-stream-analytics"></a>Stream Analytics ile yüksek frekanslı alım-satım simülasyonu
 Azure Stream Analytics’te SQL dili ve JavaScript kullanıcı tanımlı işlevleri (UDF) ile kullanıcı tanımlı toplamların (UDAs) birleşimi, kullanıcıların gelişmiş analiz gerçekleştirmesine olanak tanır. Gelişmiş analizler, çevrimiçi makine öğrenimi eğitim ve puanlamasının yanı sıra durum bilgisi olan işlem simülasyonunu içerebilir. Bu makalede, yüksek frekanslı bir alım-satım senaryosunda sürekli çalıştıran ve puanlama yapan bir Azure Stream Analytics işinde nasıl doğrusal regresyon gerçekleştirileceği açıklanır.
@@ -349,7 +349,7 @@ JavaScript UDA `init` işlevindeki tüm biriktiricileri başlatır, pencereye ek
 - Satış sinyali alındığında ve hissedarlık olduğunda stok satmak.
 - Hissedarlık yoksa satmak. 
 
-Satış pozisyonu söz konusuysa ve satın alma sinyali alınırsa, açığı kapatmak için alım yaparız. Bu simülasyonda hiçbir zaman 10 hisse tutmayız veya satmayız. İşlem maliyet tam 8 USD’dir.
+Satış pozisyonu söz konusuysa ve satın alma sinyali alınırsa, açığı kapatmak için alım yaparız. Bu simülasyonda bir stok için bir hisse senedi veya kısa 10 paylaşım yaptık. İşlem maliyet tam 8 USD’dir.
 
 ```javascript
 function main() {
