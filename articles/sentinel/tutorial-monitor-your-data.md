@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2020
 ms.author: yelevin
-ms.openlocfilehash: 3a07670e3348f74fb5c6eaec57f5e9da627e8c09
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 048a089209ef7c5f20c96f77593e2cf39590147e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100586724"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600535"
 ---
 # <a name="tutorial-visualize-and-monitor-your-data"></a>Öğretici: Verilerinizi görselleştirme ve izleme
 
@@ -76,6 +76,17 @@ Bu öğretici, verilerinizi Azure Sentinel 'de görselleştirmenize yardımcı o
 
    ![Çalışma kitaplarını değiştirme](./media/tutorial-monitor-data/switch-workbooks.png)
 
+
+## <a name="print-a-workbook-or-save-as-pdf"></a>Çalışma kitabını Yazdır veya PDF olarak kaydet
+
+Bir çalışma kitabını yazdırmak veya bir PDF olarak kaydetmek için, çalışma kitabı başlığının sağındaki Seçenekler menüsünü kullanın.
+
+1. :::image type="icon" source="media/whats-new/print-icon.png" border="false"::: **İçerik Yazdır**> Seçenekler ' i seçin. 
+2. Yazdırma ekranında, yazdırma ayarlarınızı gerektiği gibi ayarlayın veya yerel olarak kaydetmek için **PDF olarak kaydet** ' i seçin.
+
+Örnek:
+
+:::image type="content" source="media/whats-new/print-workbook.png" alt-text="Çalışma kitabınızı yazdırın veya PDF olarak kaydedin.":::
 
 ## <a name="how-to-delete-workbooks"></a>Çalışma kitaplarını silme
 

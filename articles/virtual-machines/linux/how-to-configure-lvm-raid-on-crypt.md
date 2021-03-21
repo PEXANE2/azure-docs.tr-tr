@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.author: jofrance
 ms.date: 03/17/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: ec9f99d0a13b5b92bc267f184d364ebabe36a050
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: bdd897e76df941130e3acdf9c30ea8edd41147e9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102566116"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601933"
 ---
 # <a name="configure-lvm-and-raid-on-encrypted-devices"></a>Şifrelenmiş cihazlarda LVM ve RAID yapılandırma
 
@@ -261,7 +261,7 @@ Bu dosyadaki bağlama noktalarıyla uğraşmayın. Azure disk şifrelemesi, bu �
 LVM 'nin bir parçası olarak kullanılacak disklerdeki dosya sistemlerini çıkarın.
 
 ```bash
-for disk in c d e f; do unmount /tempdata${disk}; done
+for disk in c d e f; do umount /tempdata${disk}; done
 ```
 Ve/etc/fstab girdilerini kaldırın:
 
@@ -423,6 +423,9 @@ mkfs.ext4 /dev/md10
 ```
 
 Dosya sistemi için yeni bir bağlama noktası oluşturun, yeni dosya sistemini/etc/fstab öğesine ekleyin ve bağlayın:
+
+>[!NOTE] 
+>Bu döngüye yalnızca bir cihazda yineleme yapılır, bu örnek, gerekirse birden çok MD cihazında kullanılması için bu şekilde oluşturulmuştur.
 
 ```bash
 for device in md10; do diskuuid="$(blkid -s UUID -o value /dev/${device})"; \

@@ -6,15 +6,15 @@ ms.date: 03/14/2021
 ms.author: memildin
 ms.custom: generated
 ms.openlocfilehash: 4817a68ad74ed9a51f8b9ea67f3d271bbaa3423b
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103466216"
 ---
 Bu kategoride **31** öneri bulunur.
 
-|Öneri |Açıklama |Önem derecesi |
+|Öneri |Description |Önem derecesi |
 |---|---|---|
 |API uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır |HTTPS kullanımı, sunucu/hizmet kimlik doğrulamasını sağlar ve ağ katmanı gizlice dinleme saldırılarına karşı geçiş sırasında verileri korur.<br />(İlgili ilke: [API uygulaması yalnızca https üzerinden erişilebilir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fb7ddfbdc-1260-477d-91fd-98bd9be789a6)olmalıdır) |Orta |
 |App Service için Azure Defender etkinleştirilmelidir |App Service için Azure Defender, bulut ölçeğinden yararlanır ve Azure 'un ortak Web uygulaması saldırılarını izlemek için bir bulut sağlayıcısı olarak sahip olduğu görünürlüğe sahiptir.<br>App Service için Azure Defender, uygulamalarınızda gerçekleştirilen saldırıları bulabilir ve gelişen saldırıları tanımlayabilir.<br><br>Önemli: bu öneriyi yeniden yapmak App Service planlarınızı koruma ücretlerine neden olur. Bu abonelikte hiç App Service planınız yoksa, hiçbir ücret ödemeyecektir.<br>Gelecekte bu abonelikte herhangi bir App Service planı oluşturursanız, bunlar otomatik olarak korunur ve ücretler bu anda başlayacaktır.<br> <a href='https://docs.microsoft.com/azure/security-center/security-center-app-services'>App Service için Azure Defender hakkında daha fazla bilgi edinin.</a><br />(İlgili ilke: [App Service Için Azure Defender etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicyDefinitions%2f2913021d-f2fd-4f3d-b958-22354e2bdbcb)) |Yüksek |

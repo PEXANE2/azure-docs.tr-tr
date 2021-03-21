@@ -131,10 +131,10 @@
       href: core/concepts-architecture.md
     - name: Cihaz geliştirici kılavuzu
       href: core/overview-iot-central-developer.md
-    - name: Operatör Kılavuzu
-      href: core/overview-iot-central-operator.md
     - name: Çözüm Oluşturucu Kılavuzu
       href: core/overview-iot-central-solution-builder.md
+    - name: Operatör Kılavuzu
+      href: core/overview-iot-central-operator.md
     - name: Uygulama şablonları nedir?
       href: core/concepts-app-templates.md
     - name: Sektöre özgü uygulama şablonları

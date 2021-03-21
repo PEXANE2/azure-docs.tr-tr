@@ -10,10 +10,10 @@ ms.date: 02/25/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 6291964aff7c215df7f738ab103947dcb9b1b1d4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102036898"
 ---
 # <a name="scenario-route-traffic-through-nvas-by-using-custom-settings"></a>Senaryo: özel ayarları kullanarak trafiği NVA 'lar aracılığıyla yönlendirme
@@ -64,14 +64,14 @@ Aşağıdaki bilgileri unutmayın:
 
 Bu statik yollar, sanal ağa ve daldan gelen ve giden trafiğin hizmet VNet 'inde (VNet 4) NVA üzerinden geçmemesini sağlar:
 
-| Açıklama | Yol tablosu | Statik yol              |
+| Description | Yol tablosu | Statik yol              |
 | ----------- | ----------- | ------------------------- |
 | Dallar    | RT_V2B      | 10.2.0.0/16-> vnet4conn  |
 | NVA tekerlek  | Varsayılan     | 10.1.0.0/16-> vnet4conn  |
 
 Artık, sanal WAN 'ı kullanarak paketlerin gönderileceği doğru bağlantıyı seçebilirsiniz. Ayrıca, bu paketleri alırken gerçekleştirilecek doğru eylemi seçmek için sanal WAN kullanmanız gerekir. Bunun için bağlantı yolu tablolarını aşağıdaki gibi kullanırsınız:
 
-| Açıklama | Bağlantı | Statik yol            |
+| Description | Bağlantı | Statik yol            |
 | ----------- | ---------- | ----------------------- |
 | VNet2Branch | vnet4conn  | 10.2.0.0/16-> 10.4.0.5 |
 | Branch2VNet | vnet4conn  | 10.1.0.0/16-> 10.4.0.5 |

@@ -16,10 +16,10 @@ ms.date: 03/10/2021
 ms.author: inhenkel
 ms.reviewer: willzhan
 ms.openlocfilehash: 576ac636f166e2daebbb9919d6666fea913a17be
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103017061"
 ---
 # <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>Azure Media Services’ta Widevine lisansları vermek için castLabs kullanma
@@ -89,10 +89,10 @@ Konsol uygulamasını kullanmak için:
 
 1. AMS kimlik bilgilerini, ROI Labs kimlik bilgilerini, STS yapılandırmasını ve paylaşılan anahtarı ayarlamak için app.config değiştirin.
 2. Bir varlığı AMS 'ye yükleyin.
-3. Karşıya yüklenen varlığın UUID 'sini alın ve Program.cs dosyasında 32 satırını değiştirin:
+3. Karşıya yüklenen varlığın UUID 'sini alın ve program. cs dosyasında 32 satırını değiştirin:
    
       var Objivarlık = _context. Varlıklar. burada (x => x.Id = = "NB: CID: UUID: dac53a5d-1500-80bd-b864-f1e4b62594cf"). FirstOrDefault ();
-4. AssetId kullanarak, sabit kıymeti sisteminde (Program.cs dosyasında Line 44) varlığı adlandırmak için bir kullanın.
+4. AssetId kullanarak, sabit kıymeti sisteminde varlığı (program. cs dosyasında satır 44) adlandırmak için kullanın.
    
    AssetId **için şunu** ayarlamanız gerekir; benzersiz bir alfasayısal dize olması gerekir.
 5. Programı çalıştırın.

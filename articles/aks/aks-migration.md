@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 19de94db517afb2a8eeb855e76f2381096f8d7c0
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: e0c3e331dba08fc95f471e3ad40dfcbb10cc2f0c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102609116"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670639"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service 'e (AKS) geçiş
 
@@ -18,6 +18,7 @@ Bu makale, Azure Kubernetes Service (AKS) için başarılı bir geçiş planlay�
 
 Bu belge, aşağıdaki senaryoları desteklemeye yardımcı olmak için kullanılabilir:
 
+* [Azure geçişi](../migrate/migrate-services-overview.md) 'ni kullanarak belirli uygulamaları kapsayıma ve onları aks 'e geçirme
 * [Kullanılabilirlik kümeleri](../virtual-machines/windows/tutorial-availability-sets.md) tarafından desteklenen bir aks kümesini [sanal makine ölçek kümelerine](../virtual-machine-scale-sets/overview.md) geçirme
 * AKS kümesini [Standart SKU yük dengeleyici](./load-balancer-standard.md) kullanmak üzere geçirme
 * [Azure Container Service (ACS)-devre dışı bırakma 31 ocak 2020,](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/) aks 'e geçiriliyor
@@ -38,6 +39,7 @@ Kubernetes 'in daha yeni bir sürümüne geçiş yapıyorsanız, [Kubernetes sü
 Bu makalede, için geçiş ayrıntılarını özetliyoruz:
 
 > [!div class="checklist"]
+> * Azure geçişi ile uygulama Kapsayıcılı hale getirme 
 > * Standart Load Balancer ve sanal makine ölçek kümeleri ile AKS 'ler
 > * Mevcut bağlı Azure hizmetleri
 > * Geçerli kotalar olduğundan emin olun
@@ -45,6 +47,13 @@ Bu makalede, için geçiş ayrıntılarını özetliyoruz:
 > * Durum bilgisi olmayan uygulamalarla ilgili konular
 > * Durum bilgisi olan uygulamalarla ilgili konular
 > * Küme yapılandırmanızın dağıtımı
+
+## <a name="use-azure-migrate-to-migrate-your-applications-to-aks"></a>Uygulamalarınızı AKS 'e geçirmek için Azure geçişi 'ni kullanma
+
+Azure geçişi, Azure şirket içi sunucuları, altyapısı, uygulamaları ve verileri değerlendirmek ve bu uygulamalara geçiş yapmak için birleştirilmiş bir platform sunar. AKS için Azure geçişi 'ni aşağıdakiler için kullanabilirsiniz:
+
+* [ASP.NET uygulamaları kapsayıklaın ve AKS 'e geçiş](../migrate/tutorial-containerize-aspnet-kubernetes.md)
+* [Java Web uygulamalarını containerleştirme ve AKS 'e geçirme](../migrate/tutorial-containerize-java-kubernetes.md)
 
 ## <a name="aks-with-standard-load-balancer-and-virtual-machine-scale-sets"></a>Standart Load Balancer ve sanal makine ölçek kümeleri ile AKS 'ler
 
