@@ -13,10 +13,10 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 96f7d7c94ce908d953a6941bfa237fe8da1dc482
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98752662"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft Identity platformu ve OAuth 2,0 istemci kimlik bilgileri akışı
@@ -261,7 +261,7 @@ curl -X GET -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbG...." 'https://graph
 
 Microsoft kimlik doğrulama kitaplığı 'nda [istemci kimlik bilgilerine genel bakış belgelerini](https://aka.ms/msal-net-client-credentials) okuyun
 
-| Örnek | Platform |Açıklama |
+| Örnek | Platform |Description |
 |--------|----------|------------|
 |[Active-Directory-dotnetcore-Daemon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) | .NET Core 2,1 konsolu | Kullanıcı adına değil, uygulamanın kimliğini kullanarak Microsoft Graph sorgulayan bir kiracının kullanıcılarını görüntüleyen basit bir .NET Core uygulaması. Örnek ayrıca kimlik doğrulaması için sertifikaları kullanan çeşitlemesi gösterir. |
 |[Active-Directory-DotNet-Daemon-v2](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)|ASP.NET MVC | Bir kullanıcı adına değil, uygulamanın kimliğini kullanarak Microsoft Graph verileri eşitlenen bir Web uygulaması. |

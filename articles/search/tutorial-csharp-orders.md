@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 01/26/2021
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 1f8100dd6340383eadec5d10b7f23db59ba0ebdf
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98786393"
 ---
 # <a name="tutorial-order-search-results-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak arama sonuçlarını sıralama
@@ -34,7 +34,7 @@ Bu öğreticideki kodun tamamlanmış bir sürümü aşağıdaki projede bulunab
 
 * [5-sıra-sonuçlar (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/5-order-results)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [2B-Add-Infinite-Scroll (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/2b-add-infinite-scroll) çözümü. Bu proje, önceki öğreticiden ya da GitHub 'dan bir kopyadan oluşturulmuş kendi sürümünüz olabilir.
 
@@ -50,7 +50,7 @@ Sıralamayı etkinleştirmek için modellerden herhangi birini değiştirmenize 
 
 ### <a name="add-the-orderby-property-to-the-search-parameters"></a>OrderBy özelliğini Arama parametrelerine ekleyin
 
-1. HomeController.cs ' de, **OrderBy** seçeneğini ekleyin ve derecelendirme özelliğini azalan sıralama düzeni ile birlikte ekleyin. **Dizin (SearchData model)** yönteminde, Arama parametrelerine aşağıdaki satırı ekleyin.
+1. HomeController. cs ' de, **OrderBy** seçeneğini ekleyin ve derecelendirme özelliğini azalan sıralama düzeni ile birlikte ekleyin. **Dizin (SearchData model)** yönteminde, Arama parametrelerine aşağıdaki satırı ekleyin.
 
     ```cs
     options.OrderBy.Add("Rating desc");
@@ -120,7 +120,7 @@ Sıralamayı etkinleştirmek için modellerden herhangi birini değiştirmenize 
     ```
 
     > [!Tip]
-    > Tarayıcılar genellikle CSS dosyalarını önbelleğe alabilir ve bu, eski bir CSS dosyasının kullanılmasına yol açabilir ve düzenlemeleriniz yok sayılır. Bunun iyi bir yolu, bağlantıya sürüm parametresi olan bir sorgu dizesi eklemektir. Örneğin:
+    > Tarayıcılar genellikle CSS dosyalarını önbelleğe alabilir ve bu, eski bir CSS dosyasının kullanılmasına yol açabilir ve düzenlemeleriniz yok sayılır. Bunun iyi bir yolu, bağlantıya sürüm parametresi olan bir sorgu dizesi eklemektir. Örnek:
     >
     >```html
     >   <link rel="stylesheet" href="~/css/hotels.css?v1.1" />
@@ -213,7 +213,7 @@ Sıralamayı etkinleştirmek için modellerden herhangi birini değiştirmenize 
 
 ### <a name="add-the-range-of-room-rates-to-the-view"></a>Görünüme Oda oranları aralığını ekleyin
 
-1. Hotel.cs modeline en ucuz ve en pahalı oda oranını içeren özellikleri ekleyin.
+1. Otel. cs modeline en ucuz ve en pahalı oda oranını içeren özellikleri ekleyin.
 
     ```cs
     // Room rate range
@@ -631,7 +631,7 @@ Puanlama profilleri, tasarım zamanında bir arama dizininde tanımlanır. Micro
     </body>
     ```
 
-1. SearchData.cs dosyasını açın ve **Searchdata** sınıfını aşağıdaki kodla değiştirin.
+1. SearchData. cs dosyasını açın ve **searchdata** sınıfını aşağıdaki kodla değiştirin.
 
     ```cs
     public class SearchData

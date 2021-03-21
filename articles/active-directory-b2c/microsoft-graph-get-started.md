@@ -12,10 +12,10 @@ ms.date: 01/21/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 67870a458138101f3b8a009f7c96c74991396284
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98675195"
 ---
 # <a name="register-a-microsoft-graph-application"></a>Microsoft Graph uygulaması kaydetme
@@ -80,7 +80,7 @@ Uygulamanızın veya betiğinizin kullanıcıları silmesi veya parolalarını g
 1. **Kullanıcı Yöneticisi** rolünü seçin.
 1. **Atama Ekle**' yi seçin.
 1. Metin **Seç** kutusuna daha önce kaydettiğiniz uygulamanın adını girin, örneğin, *managementapp1*. Arama sonuçlarında göründüğünde uygulamanızı seçin.
-1. **Ekle**’yi seçin. İzinlerin tam olarak yayılması birkaç dakika sürebilir.
+1. **Add (Ekle)** seçeneğini belirleyin. İzinlerin tam olarak yayılması birkaç dakika sürebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

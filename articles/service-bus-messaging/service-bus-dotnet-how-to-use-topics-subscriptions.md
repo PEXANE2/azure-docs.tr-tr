@@ -3,42 +3,78 @@ title: Azure-mesajlaşma-ServiceBus kullanarak Azure Service Bus konularına ile
 description: Bu hızlı başlangıçta, Azure-mesajlaşma-ServiceBus paketini kullanarak Azure Service Bus konularına nasıl ileti göndereceğiniz gösterilmektedir.
 ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
-ms.date: 11/13/2020
+ms.date: 03/16/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 60504bcf9e2c3f9460eee9a2e72d18767c0cfa71
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 7b313caf6709429de9e0dcac219a4180c7391cf7
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98631683"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607625"
 ---
 # <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-net"></a>Azure Service Bus konuya ileti gönderme ve aboneliklerden konuya ileti alma (.NET)
-Bu öğreticide, Service Bus konuya ileti gönderen ve konunun aboneliğinden iletileri alan bir .NET Core konsol uygulamasının nasıl oluşturulacağı gösterilmektedir. 
+Bu öğreticide, aşağıdaki görevleri yapmak için bir C# uygulaması oluşturacaksınız:
 
-> [!Important]
-> Bu hızlı başlangıç, yeni **Azure. Messaging. ServiceBus** paketini kullanır. Eski Microsoft. Azure. ServiceBus paketini kullanan bir hızlı başlangıç için bkz. [Microsoft. Azure. ServiceBus paketini kullanarak Ileti gönderme ve alma](service-bus-dotnet-how-to-use-topics-subscriptions-legacy.md).
+1. Service Bus bir konuya ileti gönderin. 
+
+    Service Bus konu başlığı, gönderen uygulamaların ileti göndermesini sağlayan bir uç nokta sağlar. Bir konu, bir veya daha fazla aboneliğe sahip olabilir. Bir konunun her aboneliği, konuya gönderilen iletinin bir kopyasını alır. Service Bus konuları hakkında daha fazla bilgi için bkz. [Azure Service Bus nedir?](service-bus-messaging-overview.md). 
+1. Konunun aboneliğinden ileti alma. 
+
+    :::image type="content" source="./media/service-bus-messaging-overview/about-service-bus-topic.png" alt-text="Service Bus konu başlıkları ve abonelikler":::
+
+    > [!Important]
+    > Bu hızlı başlangıç, yeni **Azure. Messaging. ServiceBus** paketini kullanır. Eski Microsoft. Azure. ServiceBus paketini kullanıyorsanız, bkz. [Microsoft. Azure. ServiceBus paketini kullanarak Ileti gönderme ve alma](service-bus-dotnet-how-to-use-topics-subscriptions-legacy.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- [Visual Studio 2019](https://www.visualstudio.com/vs)
 - Azure aboneliği. Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. [Visual Studio veya MSDN abonesi avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) etkinleştirebilir veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)için kaydolabilirsiniz.
-- Hızlı başlangıçtaki adımları izleyin [: konuya bir Service Bus konu ve abonelik oluşturmak için Azure Portal kullanın](service-bus-quickstart-topics-subscriptions-portal.md). Bağlantı dizesi, konu adı ve abonelik adı ' nı aklınızda edin. Bu hızlı başlangıç için yalnızca bir abonelik kullanacaksınız. 
+- Bu [hızlı](service-bus-quickstart-topics-subscriptions-portal.md) başlangıçtaki adımları izleyerek konuya bir Service Bus konu ve abonelik oluşturun. 
 
+    > [!NOTE]
+    > Bağlantı dizesini ad alanı, konu adı ve bu öğreticideki konunun aboneliklerinden birinin adı olarak kullanacaksınız.  
+- [Visual Studio 2019](https://www.visualstudio.com/vs). 
+ 
 ## <a name="send-messages-to-a-topic"></a>Konu başlığına ileti gönderme
-Bu bölümde, Visual Studio 'da bir .NET Core konsol uygulaması oluşturacaksınız, oluşturduğunuz konuya ileti göndermek için kod eklersiniz. 
+Bu bölümde, Visual Studio 'da bir .NET Core konsol uygulaması oluşturacaksınız, oluşturduğunuz Service Bus konuya ileti göndermek için kod eklersiniz. 
 
 ### <a name="create-a-console-application"></a>Konsol uygulaması oluşturma
-Visual Studio 'Yu başlatın ve C# için yeni bir **konsol uygulaması (.NET Core)** projesi oluşturun. 
+Visual Studio 'Yu kullanarak bir .NET Core konsol uygulaması oluşturun. 
+
+1. Visual Studio 'Yu başlatın.  
+1. **Başlarken** sayfasını görürseniz **Yeni proje oluştur**' u seçin. 
+1. **Yeni proje oluştur** sayfasında, şu adımları izleyin: 
+    1. Programlama dili için **C#**' ı seçin. 
+    1. Proje türü için **konsol**' ı seçin. 
+    1. Şablonlar listesinden **konsol uygulaması (.NET Core)** seçeneğini belirleyin. 
+    1. Ardından **İleri**' yi seçin. 
+    
+        :::image type="content" source="./media/service-bus-dotnet-how-to-use-topics-subscriptions/create-console-project.png" alt-text="Konsol uygulaması projesi oluşturma":::
+1. **Yeni projenizi yapılandırın** sayfasında, şu adımları izleyin: 
+    1. **Proje adı** için proje için bir ad girin. 
+    1. **Konum** için, proje ve çözüm dosyaları için bir konum seçin. 
+    1. **Çözüm adı** için çözüm için bir ad girin. Visual Studio çözümünde bir veya daha fazla proje olabilir. Bu hızlı başlangıç bölümünde, çözümün yalnızca bir projesi olacaktır. 
+    1. Projeyi oluşturmak için **Oluştur**'u seçin. 
+            
+        :::image type="content" source="./media/service-bus-dotnet-how-to-use-topics-subscriptions/create-console-project-2.png" alt-text="Proje ve çözüm adı ve konumunu girin":::    
+
 
 ### <a name="add-the-service-bus-nuget-package"></a>Service Bus NuGet paketi ekleme
-
 1. Yeni oluşturulan projeye sağ tıklayın ve **NuGet Paketlerini Yönet**’i seçin.
-1. **Gözat**'ı seçin. **[Azure. Messaging. ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus/)** araması yapın ve seçin.
-1. Yüklemeyi **gerçekleştirmek için yükleme** ' yi seçin ve ardından NuGet Paket Yöneticisi ' ni kapatın.
+
+    :::image type="content" source="./media/service-bus-dotnet-how-to-use-topics-subscriptions/manage-nuget-packages-menu.png" alt-text="NuGet paketleri menüsünü Yönet":::        
+1. **Tarama** sekmesine geçin.
+1. **[Azure. Messaging. ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus/)** araması yapın ve seçin.
+1. Yüklemeyi tamamlamak için **Yükle**'yi seçin.
+
+    :::image type="content" source="./media/service-bus-dotnet-how-to-use-topics-subscriptions/select-service-bus-package.png" alt-text="NuGet paketini Service Bus seçin.":::
+5. **Değişiklikleri Önizle** iletişim kutusunu görürseniz devam etmek için **Tamam** ' ı seçin. 
+1. **Lisans kabulü** sayfasını görürseniz devam etmek Için **kabul ediyorum** ' u seçin. 
+    
 
 ### <a name="add-code-to-send-messages-to-the-topic"></a>Konuya ileti göndermek için kod ekleme 
 
-1. Program.cs’de, ad alanı tanımının üst kısmına, sınıf bildiriminden önce aşağıdaki `using` deyimlerini ekleyin:
+1. **Çözüm Gezgini** penceresinde, **program. cs** ' ye çift tıklayarak dosyayı düzenleyicide açın. 
+1. Aşağıdaki deyimlerini, `using` Sınıf bildiriminden önce ad alanı tanımının üst kısmına ekleyin:
    
     ```csharp
     using System;
@@ -46,34 +82,43 @@ Visual Studio 'Yu başlatın ve C# için yeni bir **konsol uygulaması (.NET Cor
     using System.Threading.Tasks;
     using Azure.Messaging.ServiceBus;
     ```
-1. `Program`Sınıfında, aşağıdaki değişkenleri bildirin:
+1. `Program`Sınıfında, `Main` işlevinin üzerinde aşağıdaki değişkenleri bildirin:
 
     ```csharp
         static string connectionString = "<NAMESPACE CONNECTION STRING>";
-        static string topicName = "<TOPIC NAME>";
-        static string subscriptionName = "<SUBSCRIPTION NAME>";
+        static string topicName = "<SERVICE BUS TOPIC NAME>";
+        static string subscriptionName = "<SERVICE BUS - TOPIC SUBSCRIPTION NAME>";
     ```
 
     Aşağıdaki değerleri değiştirin:
     - `<NAMESPACE CONNECTION STRING>` Service Bus ad alanına bağlantı dizesi ile
     - `<TOPIC NAME>` konusunun adı ile
     - `<SUBSCRIPTION NAME>` Abonelik adı ile
-2. Konuya bir ileti gönderen adlı adlı bir yöntem ekleyin `SendMessageToTopicAsync` . 
 
-    ```csharp
-        static async Task SendMessageToTopicAsync()
+### <a name="send-a-single-message-to-the-topic"></a>Konuya tek bir ileti gönderin
+`SendMessageToTopicAsync` `Program` Yönteminin altındaki veya altındaki sınıfa adlı bir yöntem ekleyin `Main` . Bu yöntem, konuya tek bir ileti gönderir.
+
+```csharp
+    static async Task SendMessageToTopicAsync()
+    {
+        // create a Service Bus client 
+        await using (ServiceBusClient client = new ServiceBusClient(connectionString))
         {
-            // create a Service Bus client 
-            await using (ServiceBusClient client = new ServiceBusClient(connectionString))
-            {
-                // create a sender for the topic
-                ServiceBusSender sender = client.CreateSender(topicName);
-                await sender.SendMessageAsync(new ServiceBusMessage("Hello, World!"));
-                Console.WriteLine($"Sent a single message to the topic: {topicName}");
-            }
+            // create a sender for the topic
+            ServiceBusSender sender = client.CreateSender(topicName);
+            await sender.SendMessageAsync(new ServiceBusMessage("Hello, World!"));
+            Console.WriteLine($"Sent a single message to the topic: {topicName}");
         }
-    ```
-1. `CreateMessages`Sınıfına bir sıra (.NET kuyruğu) oluşturmak için adlı bir yöntem ekleyin `Program` . Genellikle, bu iletileri uygulamanızın farklı bölümlerinden alırsınız. Burada, örnek iletiler için bir kuyruk oluşturacağız.
+    }
+```
+
+Bu yöntem aşağıdaki adımları yapar: 
+1. Ad alanına bağlantı dizesini kullanarak bir [Servicebusclient](/dotnet/api/azure.messaging.servicebus.servicebusclient) nesnesi oluşturur. 
+1. , `ServiceBusClient` Belirtilen Service Bus konusu Için [Servicebussender](/dotnet/api/azure.messaging.servicebus.servicebussender) nesnesi oluşturmak için nesnesini kullanır. Bu adım [Servicebusclient. CreateSender](/dotnet/api/azure.messaging.servicebus.servicebusclient.createsender) metodunu kullanır.
+1. Sonra, yöntemi [Servicebussender. SendMessageAsync](/dotnet/api/azure.messaging.servicebus.servicebussender.sendmessageasync) yöntemini kullanarak Service Bus konuya tek bir test iletisi gönderir. 
+
+### <a name="send-a-batch-of-messages-to-the-topic"></a>Konuya bir toplu ileti gönderin
+1. `CreateMessages`Sınıfına ileti için bir sıra (.NET kuyruğu değil, Service Bus kuyruğu) oluşturma adlı bir yöntem ekleyin `Program` . Genellikle, bu iletileri uygulamanızın farklı bölümlerinden alırsınız. Burada, örnek iletiler için bir kuyruk oluşturacağız. .NET kuyrukları hakkında bilgi sahibi değilseniz, bkz. [Queue. kuyruğa al](/dotnet/api/system.collections.queue.enqueue).
 
     ```csharp
         static Queue<ServiceBusMessage> CreateMessages()
@@ -86,7 +131,7 @@ Visual Studio 'Yu başlatın ve C# için yeni bir **konsol uygulaması (.NET Cor
             return messages;
         }
     ```
-1. Sınıfına adlı bir yöntem ekleyin `SendMessageBatchAsync` `Program` ve aşağıdaki kodu ekleyin. Bu yöntem bir ileti kuyruğu alır ve bir veya daha fazla toplu işi Service Bus konusuna gönderecek şekilde hazırlar. 
+1. Sınıfı adlı bir yöntem `SendMessageBatchAsync` ekleyin `Program` ve aşağıdaki kodu ekleyin. Bu yöntem bir ileti kuyruğu alır ve bir veya daha fazla toplu işi Service Bus konusuna gönderecek şekilde hazırlar. 
 
     ```csharp
         static async Task SendMessageBatchToTopicAsync()
@@ -138,20 +183,32 @@ Visual Studio 'Yu başlatın ve C# için yeni bir **konsol uygulaması (.NET Cor
                 Console.WriteLine($"Sent a batch of {messageCount} messages to the topic: {topicName}");
             }
         }
-    ```
-1. `Main()`Yöntemini aşağıdaki **Async** `Main` yöntemiyle değiştirin. Tek bir ileti ve konuya bir toplu ileti göndermek için gönderme yöntemlerini çağırır.  
+    ```    
 
-    ```csharp
-        static async Task Main()
-        {
-            // send a message to the topic
-            await SendMessageToTopicAsync();
+    Koddan önemli adımlar şunlardır:
+    1. Ad alanına bağlantı dizesini kullanarak bir [Servicebusclient](/dotnet/api/azure.messaging.servicebus.servicebusclient) nesnesi oluşturur. 
+    1. [](/dotnet/api/azure.messaging.servicebus.servicebusclient.createsender) `ServiceBusClient` Belirtilen Service Bus konusu Için [servicebussender](/dotnet/api/azure.messaging.servicebus.servicebussender) nesnesi oluşturmak üzere nesnesinde createsender yöntemini çağırır. 
+    1. `GetMessages`Service Bus konusuna gönderilecek ileti kuyruğunu almak için yardımcı yöntemini çağırır. 
+    1. [Servicebussender. CreateMessageBatchAsync](/dotnet/api/azure.messaging.servicebus.servicebussender.createmessagebatchasync)kullanarak bir [Servicebusmessagebatch](/dotnet/api/azure.messaging.servicebus.servicebusmessagebatch) oluşturur.
+    1. [Servicebusmessagebatch. TryAddMessage](/dotnet/api/azure.messaging.servicebus.servicebusmessagebatch.tryaddmessage)kullanarak toplu işe ileti ekleyin. İletiler toplu işe eklendikçe, .NET kuyruğundan kaldırılır. 
+    1. [Servicebussender. SendMessagesAsync](/dotnet/api/azure.messaging.servicebus.servicebussender.sendmessagesasync) yöntemini kullanarak ileti toplu işini Service Bus konusuna gönderir.
 
-            // send a batch of messages to the topic
-            await SendMessageBatchToTopicAsync();
-        }
-    ```
-5. Uygulamayı çalıştırın. Aşağıdaki çıkışı görmeniz gerekir:
+### <a name="update-the-main-method"></a>Main metodunu güncelleştirme
+`Main()`Yöntemini aşağıdaki **Async** `Main` yöntemiyle değiştirin. Tek bir ileti ve konuya bir toplu ileti göndermek için gönderme yöntemlerini çağırır.  
+
+```csharp
+    static async Task Main()
+    {
+        // send a single message to the topic
+        await SendMessageToTopicAsync();
+
+        // send a batch of messages to the topic
+        await SendMessageBatchToTopicAsync();
+    }
+```
+
+### <a name="test-the-app-to-send-messages-to-the-topic"></a>Konuya ileti göndermek için uygulamayı test etme
+1. Uygulamayı çalıştırın. Aşağıdaki çıkışı görmeniz gerekir:
 
     ```console
     Sent a single message to the topic: mytopic
@@ -219,6 +276,13 @@ Visual Studio 'Yu başlatın ve C# için yeni bir **konsol uygulaması (.NET Cor
             }
         }
     ```
+
+    Koddan önemli adımlar şunlardır:
+    1. Ad alanına bağlantı dizesini kullanarak bir [Servicebusclient](/dotnet/api/azure.messaging.servicebus.servicebusclient) nesnesi oluşturur. 
+    1. [](/dotnet/api/azure.messaging.servicebus.servicebusclient.createprocessor) `ServiceBusClient` Belirtilen Service Bus konusu ve abonelik birleşimi Için [servicebusprocessor](/dotnet/api/azure.messaging.servicebus.servicebusprocessor) nesnesi oluşturmak üzere nesnesinde createprocessor yöntemini çağırır. 
+    1. Nesnenin [Processmessageasync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.processmessageasync) ve [processerrorasync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.processerrorasync) olayları için işleyicileri belirtir `ServiceBusProcessor` . 
+    1. Nesnesinde [Startprocessingasync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.startprocessingasync) öğesini çağırarak iletileri işlemeye başlar `ServiceBusProcessor` . 
+    1. Kullanıcı işlemeyi bitirmek için bir tuşa bastığında, nesnesinde [Stopprocessingasync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.stopprocessingasync) öğesini çağırır `ServiceBusProcessor` . 
 1. Yöntemine bir çağrı ekleyin `ReceiveMessagesFromSubscriptionAsync` `Main` . `SendMessagesToTopicAsync`Yalnızca ileti alma sınamasını yapmak istiyorsanız yöntemine açıklama ekleyin. Bunu yapmazsanız, konuya başka dört ileti gönderildiğini görürsünüz. 
 
     ```csharp
@@ -269,5 +333,5 @@ Portalı yeniden kontrol edin.
 Aşağıdaki belgelere ve örneklere bakın:
 
 - [.NET için Azure Service Bus istemci kitaplığı-Benioku](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus)
-- [GitHub’daki örnekler](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus/samples)
+- [GitHub 'da Azure Service Bus için .NET örnekleri](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus/samples)
 - [.NET API'si başvurusu](/dotnet/api/azure.messaging.servicebus?preserve-view=true)

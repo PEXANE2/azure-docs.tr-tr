@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotga
 ms.openlocfilehash: 322d6b590863d8065454c0439c5d899107a6abe7
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98784974"
 ---
 # <a name="roles-and-operations"></a>Roller ve işlemler
@@ -23,7 +23,7 @@ Sağlama Ayrıca, [kanıtlama mekanizmasını](concepts-service.md#attestation-m
 
 Sol taraftaki içindekiler tablosunda, uygulamalı deneyim aracılığıyla otomatik sağlamayı açıklamaya yardımcı olmak üzere bir dizi hızlı başlangıç sağlanır. Öğrenme sürecini kolaylaştırmak/basitleştirmek için, yazılım kayıt ve kayıt için fiziksel bir cihazın benzetimini yapmak üzere kullanılır. Bazı hızlı başlangıçları, hızlı Başlangıçlarının benzetimiyle dolayı, mevcut olmayan roller için işlemler de dahil olmak üzere birden çok rol için işlemleri karşılamanız gerekir.
 
-| Rol | İşlem | Açıklama |
+| Rol | İşlem | Description |
 |------| --------- | ------------|
 | Üretici | Kimliği ve kayıt URL 'sini kodla | Kullanılan kanıtlama mekanizmasına bağlı olarak, üretici cihaz kimliği bilgilerini ve cihaz sağlama hizmeti kayıt URL 'sini kodlamadan sorumludur.<br><br>**Hızlı başlangıç**: cihaz benzetildiğinden üretici rolü yoktur. Örnek bir kayıt uygulaması kodlamak için kullanılan bu bilgileri nasıl alacağınız hakkında ayrıntılar için geliştirici rolüne bakın. |
 | | Cihaz kimliği sağlama | Cihaz kimliği bilgisinin kaynağı olarak, üretici onu işleçle (veya belirlenen bir aracı) iletmekten veya API aracılığıyla cihaz sağlama hizmetine doğrudan kaydetmekten sorumludur.<br><br>**Hızlı başlangıç**: cihaz benzetildiğinden üretici rolü yoktur. Cihaz kimliğini nasıl alacağınız hakkındaki ayrıntılar için bkz. operatör rolü, cihaz sağlama hizmeti Örneğinizde sanal bir cihazı kaydetmek için kullanılır. |
