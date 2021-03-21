@@ -1,18 +1,18 @@
 ---
 title: Azure Kinect bilinen sorunlar ve sorun giderme
 description: Azure ınect DK ile algılayıcı SDK kullanırken, bilinen sorunlar ve sorun giderme ipuçları hakkında bilgi edinin.
-author: tesych
-ms.author: tesych
+author: qm13
+ms.author: quentinm
 ms.prod: kinect-dk
-ms.date: 06/26/2019
+ms.date: 03/05/2021
 ms.topic: conceptual
 keywords: sorun giderme, güncelleştirme, hata, Kinect, geri bildirim, kurtarma, günlüğe kaydetme, ipuçları
-ms.openlocfilehash: 5f13815b8f8b26f6a08da28181a4a6164b7b89a3
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 32a86deb0b6ab70e42ae3d659504256baae76202
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102038829"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654773"
 ---
 # <a name="azure-kinect-known-issues-and-troubleshooting"></a>Azure Kinect bilinen sorunlar ve sorun giderme
 
@@ -172,18 +172,54 @@ Linux üzerinde Azure Kinect derinlik altyapısı OpenGL kullanır. OpenGL, bir 
 
 1. Kullanmayı planladığınız kullanıcı hesabı için otomatik oturum açmayı etkinleştirin. Otomatik oturum açmayı etkinleştirme yönergeleri için [Bu](https://vitux.com/how-to-enable-disable-automatic-login-in-ubuntu-18-04-lts/) makaleye bakın.
 2. Sistemin gücünü yapın, izleyicinin bağlantısını kesin ve sistemi kapatın. Otomatik oturum açma, bir x-sunucu oturumunun oluşturulmasına zorlar.
-2. SSH ile bağlanma ve ekran env değişkenini ayarlama `export DISPLAY=:0`
-3. Azure Kinect uygulamanızı başlatın.
+3. SSH ile bağlanma ve ekran env değişkenini ayarlama `export DISPLAY=:0`
+4. Azure Kinect uygulamanızı başlatın.
 
 [Xtrlock](http://manpages.ubuntu.com/manpages/xenial/man1/xtrlock.1x.html) yardımcı programı, otomatik oturum açma işleminden sonra ekranı hemen kilitlemek için kullanılabilir. Başlangıç uygulamasına veya systemd hizmetine aşağıdaki komutu ekleyin:
 
-`bash -c “xtrlock -b”` 
+`bash -c “xtrlock -b”`
 
 ## <a name="missing-c-documentation"></a>Eksik C# belgeleri
 
 Algılayıcı SDK C# belgeleri [burada](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/namespace_microsoft_1_1_azure_1_1_kinect_1_1_sensor.html)yer alır.
 
 Gövde Izleme SDK 'Sı C# belgeleri [burada](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/namespace_microsoft_1_1_azure_1_1_kinect_1_1_body_tracking.html)yer alır.
+
+## <a name="specifying-onnx-runtime-execution-environment"></a>ONNX çalışma zamanı yürütme ortamını belirtme
+
+Gövde Izleme SDK 'Sı, poz tahmini modelinin çıkarımını sağlamak için CPU, CUDA, DirectML (yalnızca Windows) ve TensorRT yürütme ortamlarını destekler. `K4ABT_TRACKER_PROCESSING_MODE_GPU`Linux üzerinde CUDA yürütme ve Windows üzerinde DirectML yürütmesi varsayılan değerdir. Belirli yürütme ortamlarını seçmek için üç ek mod eklenmiştir: `K4ABT_TRACKER_PROCESSING_MODE_GPU_CUDA` , `K4ABT_TRACKER_PROCESSING_MODE_GPU_DIRECTML` , ve `K4ABT_TRACKER_PROCESSING_MODE_GPU_TENSORRT` .
+
+ONNX çalışma zamanı, TensorRT modelinin önbelleğe alınmasını denetlemek için ortam değişkenlerini içerir. Önerilen değerler şunlardır:
+- ORT_TENSORRT_ENGINE_CACHE_ENABLE = 1 
+- ORT_TENSORRT_ENGINE_CACHE_PATH = "PATHNAME"
+
+Gövde izlemeye başlamadan önce klasörün oluşturulması gerekir.
+
+TensorRT yürütme ortamı hem FP32 (varsayılan) hem de FP16 destekler. FP16 tesis, en az doğruluk azalması için 2x performans artışı. FP16 belirtmek için:
+- ORT_TENSORRT_FP16_ENABLE = 1
+
+## <a name="required-dlls-for-onnx-runtime-execution-environments"></a>ONNX çalışma zamanı yürütme ortamları için gerekli dll 'Ler
+
+|Mod      | CUDA 11,1            | CUDNN 8.0.5          | TensorRT 7.2.1       |
+|----------|----------------------|----------------------|----------------------|
+| CPU      | cudart64_110         | cudnn64_8            | -                    |
+|          | cufft64_10           |                      |                      |
+|          | cublas64_11          |                      |                      |
+|          | cublasLt64_11        |                      |                      |
+| CUDA     | cudart64_110         | cudnn64_8            | -                    |
+|          | cufft64_10           | cudnn_ops_infer64_8  |                      |
+|          | cublas64_11          | cudnn_cnn_infer64_8  |                      |
+|          | cublasLt64_11        |                      |                      |
+| DirectML | cudart64_110         | cudnn64_8            | -                    |
+|          | cufft64_10           |                      |                      |
+|          | cublas64_11          |                      |                      |
+|          | cublasLt64_11        |                      |                      |
+| TensorRT | cudart64_110         | cudnn64_8            | nvinfer              |
+|          | cufft64_10           | cudnn_ops_infer64_8  | nvinfer_plugin       |
+|          | cublas64_11          | cudnn_cnn_infer64_8  | myelin64_1           |
+|          | cublasLt64_11        |                      |                      |
+|          | nvrtc64_111_0        |                      |                      |
+|          | nvrtc-builtins64_111 |                      |                      |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

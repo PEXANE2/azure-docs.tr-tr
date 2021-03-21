@@ -16,10 +16,10 @@ ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: ab64765fc4e329c8edbf7a4db813113d20d476b3
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100557518"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-rest-api"></a>REST API kullanarak Azure özel rolleri oluşturun veya güncelleştirin
@@ -44,7 +44,7 @@ Bir dizindeki tüm özel rolleri listelemek için, [rol tanımları-liste](/rest
 1. *{Filter}* öğesini rol türüyle değiştirin.
 
     > [!div class="mx-tableFixed"]
-    > | Filtre | Açıklama |
+    > | Filtre | Description |
     > | --- | --- |
     > | `$filter=type+eq+'CustomRole'` | CustomRole türünü temel alan filtre |
 
@@ -71,7 +71,7 @@ Bir dizindeki tüm özel rolleri listelemek için, [rol tanımları-liste](/rest
 1. *{Filter}* öğesini rol türüyle değiştirin.
 
     > [!div class="mx-tableFixed"]
-    > | Filtre | Açıklama |
+    > | Filtre | Description |
     > | --- | --- |
     > | `$filter=type+eq+'CustomRole'` | CustomRole türünü temel alan filtre |
 
@@ -98,7 +98,7 @@ Görünen adına göre özel bir rol hakkında bilgi almak için, [get REST API 
 1. *{Filter}* değerini rolün görünen adıyla değiştirin.
 
     > [!div class="mx-tableFixed"]
-    > | Filtre | Açıklama |
+    > | Filtre | Description |
     > | --- | --- |
     > | `$filter=roleName+eq+'{roleDisplayName}'` | Rolün tam ekran adının URL kodlamalı formunu kullanın. Örneğin, `$filter=roleName+eq+'Virtual%20Machine%20Contributor'` |
 

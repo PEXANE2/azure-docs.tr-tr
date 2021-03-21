@@ -30,6 +30,8 @@
       href: data-flow-create.md
 - name: Öğreticiler
   items:
+    - name: Öğreticiler listesi
+      href: data-factory-tutorials.md
     - name: Verileri kopyalama ve alma
       items:
         - name: Azure Blob Depolama’dan Azure SQL Veritabanı’na
@@ -694,14 +696,16 @@
           href: azure-ssis-integration-runtime-package-store.md
     - name: Tetikleyici oluşturma
       items:
-        - name: Depolama olayı tetikleyicisi oluşturma
-          href: how-to-create-event-trigger.md
         - name: Zamanlama tetikleyicisi oluşturma
           href: how-to-create-schedule-trigger.md
         - name: Atlayan pencere tetikleyicisi oluşturma
           href: how-to-create-tumbling-window-trigger.md
         - name: Atlayan pencere tetikleyici bağımlılığı oluşturma
           href: tumbling-window-trigger-dependency.md
+        - name: Depolama olayı tetikleyicisi oluşturma
+          href: how-to-create-event-trigger.md
+        - name: Özel olay tetikleyicisi oluşturma
+          href: how-to-create-custom-event-trigger.md
         - name: İşlem hattındaki başvuru tetikleyicisi meta verileri
           href: how-to-use-trigger-parameterization.md
     - name: Veri Kataloğu ve İdare

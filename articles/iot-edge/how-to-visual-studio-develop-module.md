@@ -9,10 +9,10 @@ ms.date: 3/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
 ms.openlocfilehash: 6e5b5c021eb6a83de9ecfb31757855065b70c290
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103196976"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Azure IoT Edge için modülleri geliştirmek ve hatalarını ayıklamak için Visual Studio 2019 kullanın
@@ -114,7 +114,7 @@ Sanal sıcaklık algılayıcısı 'nın nasıl çalıştığını görmek için 
 
 ## <a name="develop-your-module"></a>Modülünüzü geliştirme
 
-Çözümle birlikte gelen varsayılan modül kodu **IotEdgeModule1**  >  **program.cs** (C# için) veya **Main. C** (c) konumunda bulunur. Modül ve dosya, `deployment.template.json` Çözümü derlemek, kapsayıcı Kayıt defterinize gönderebilmeniz ve herhangi bir koda dokunmadan teste başlamak için bir cihaza dağıtabilmeniz için ayarlanır. Modül bir kaynaktan giriş almak için oluşturulmuştur (Bu durumda, verileri taklit eden **SimulatedTemperatureSensor** modülü) ve Azure IoT Hub 'yi kanal oluşturarak.
+Çözümle birlikte gelen varsayılan modül kodu **IotEdgeModule1**  >  **program. cs** (C# için) veya **Main. C** (c) konumunda bulunur. Modül ve dosya, `deployment.template.json` Çözümü derlemek, kapsayıcı Kayıt defterinize gönderebilmeniz ve herhangi bir koda dokunmadan teste başlamak için bir cihaza dağıtabilmeniz için ayarlanır. Modül bir kaynaktan giriş almak için oluşturulmuştur (Bu durumda, verileri taklit eden **SimulatedTemperatureSensor** modülü) ve Azure IoT Hub 'yi kanal oluşturarak.
 
 Modül şablonunu kendi kodunuzla özelleştirmeye hazır olduğunuzda, güvenlik, cihaz yönetimi ve güvenilirlik gibi IoT çözümlerinin temel ihtiyaçlarını ele alan modüller oluşturmak için [Azure IoT Hub SDK](../iot-hub/iot-hub-devguide-sdks.md) 'larını kullanın.
 
@@ -149,7 +149,7 @@ Genellikle, birden çok modülle bir çözümün tamamında çalıştırmadan ö
 
    ![Modül çalışıyor](./media/how-to-visual-studio-develop-csharp-module/single-module-run.png)
 
-1. C# dilinde geliştirme yapıyorsanız, Program.cs işlevindeki bir kesme noktası ayarlayın `PipeMessage()` ; C kullanıyorsanız, `InputQueue1Callback()` **Main. c** içindeki işlevde bir kesme noktası ayarlayın. Ardından, **Git Bash** veya **WSL Bash** kabuğu 'nda aşağıdaki komutu çalıştırarak bir ileti göndererek test edebilirsiniz. ( `curl` Komutu bir PowerShell veya komut isteminden çalıştıramazsınız.)
+1. C# dilinde geliştirme yapıyorsanız, `PipeMessage()` **program. cs**; işlevinde bir kesme noktası ayarlayın. c kullanıyorsanız, `InputQueue1Callback()` **Main. c** içindeki işlevde bir kesme noktası ayarlayın. Ardından, **Git Bash** veya **WSL Bash** kabuğu 'nda aşağıdaki komutu çalıştırarak bir ileti göndererek test edebilirsiniz. ( `curl` Komutu bir PowerShell veya komut isteminden çalıştıramazsınız.)
 
     ```bash
     curl --header "Content-Type: application/json" --request POST --data '{"inputName": "input1","data":"hello world"}' http://localhost:53000/api/v1/messages

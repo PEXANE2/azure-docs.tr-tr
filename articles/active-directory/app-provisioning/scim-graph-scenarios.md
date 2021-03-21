@@ -12,10 +12,10 @@ ms.date: 04/26/2020
 ms.author: kenwith
 ms.reviewer: arvinh, celested
 ms.openlocfilehash: 0a5d84585f28f6d13cbceb1fec41d6cdabf6d08c
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99255636"
 ---
 # <a name="using-scim-and-microsoft-graph-together-to-provision-users-and-enrich-your-application-with-the-data-it-needs"></a>Kullanıcı sağlamak ve uygulamanızı gereken verilere göre zenginleştirmek için SCıM ve Microsoft Graph birlikte kullanma
@@ -38,7 +38,7 @@ Azure AD, sağlama için kullanıma hazır bir hizmet ve uygulamalarınızı olu
 ## <a name="scenario-1-automatically-create-users-in-my-app"></a>Senaryo 1: uygulamamda otomatik olarak Kullanıcı oluşturma
 Günümüzde, BT yöneticileri kullanıcı hesaplarını el ile oluşturarak veya CSV dosyalarını uygulamama düzenli olarak yükleyerek kullanıcıları temin etmek. İşlem, müşteriler için zaman alabilir ve uygulamamın benimsenmesini yavaşlatır. Bir kullanıcı oluşturmak için tüm gerekli ad, e-posta ve userPrincipalName gibi temel Kullanıcı bilgileri gereklidir. 
 
-**Öneri**: 
+**Öneri:** 
 * Müşterileriniz çeşitli IDPs kullanıyorsa ve her biriyle tümleşecek bir eşitleme altyapısı sürdürmek istemiyorsanız, SCıM uyumlu [/Users](https://aka.ms/scimreferencecode) uç noktasını destekler. Müşterileriniz, Azure AD sağlama hizmeti ile tümleştirme için bu uç noktayı kolayca kullanabilir ve erişmesi gerektiğinde otomatik olarak Kullanıcı hesapları oluşturabilir. Uç noktayı bir kez derleyebilir ve tüm IDPs ile uyumlu hale gelir. Bir kullanıcının SCıM kullanarak nasıl oluşturulacağı için aşağıdaki örnek isteği inceleyin.
 * Azure AD 'de Kullanıcı nesnesinde ve Microsoft 'un diğer verilerinde bulunan kullanıcı verilerine ihtiyacınız varsa, Kullanıcı sağlaması için bir SCıM uç noktası oluşturmayı ve verilerin geri kalanını almak için Microsoft Graph çağırmayı düşünün. 
 

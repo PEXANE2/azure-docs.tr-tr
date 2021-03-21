@@ -265,22 +265,8 @@
           href: /python/api/azure-mgmt-policyinsights/azure.mgmt.policyinsights
     - name: REST
       items:
-        - name: Olaylar
-          href: /rest/api/policy-insights/policyevents
-        - name: Durumlar
-          href: /rest/api/policy-insights/policystates
-        - name: Atamalar
-          href: /rest/api/resources/policyassignments
-        - name: İlke Tanımları
-          href: /rest/api/resources/policydefinitions
-        - name: İlke Muafiyetleri
-          href: /rest/api/resources/policyexemptions
-        - name: Girişim Tanımları
-          href: /rest/api/resources/policysetdefinitions
-        - name: İlke Tarafından İzlenen Kaynaklar
-          href: /rest/api/policy-insights/policytrackedresources
-        - name: Düzeltmeler
-          href: /rest/api/policy-insights/remediations
+        - name: İlke
+          href: /rest/api/policy/
         - name: Konuk Yapılandırması
           href: /rest/api/guestconfiguration/
     - name: Resource Manager şablonları

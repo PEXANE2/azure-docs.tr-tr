@@ -17,10 +17,10 @@ ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-csharp
 ms.openlocfilehash: c816fbad05831c83c891c70849986b38cb7fdbeb
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97589551"
 ---
 # <a name="security-frame-input-validation--mitigations"></a>Güvenlik çerçevesi: giriş doğrulaması | Karşı 
@@ -37,7 +37,7 @@ ms.locfileid: "97589551"
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Derleme |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [XSLT güvenliği](/previous-versions/windows/desktop/ms763800(v=vs.85)), [XsltSettings. EnableScript özelliği](/dotnet/api/system.xml.xsl.xsltsettings.enablescript) |
@@ -69,7 +69,7 @@ doc.setProperty("AllowXsltScript", false); // CORRECT. Setting to false disables
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Derleme |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [IE8 güvenlik bölümü V-kapsamlı koruma](/archive/blogs/ie/ie8-security-part-v-comprehensive-protection)  |
@@ -138,7 +138,7 @@ this.Response.Headers[""X-Content-Type-Options""] = ""nosniff"";
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Derleme |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [XML varlık genişletmesi](https://capec.mitre.org/data/definitions/197.html), [XML hizmet reddi saldırıları ve savunmaları](/archive/msdn-magazine/2009/november/xml-denial-of-service-attacks-and-defenses), [MSXML güvenliğine genel bakış](/previous-versions/windows/desktop/ms754611(v=vs.85)), [MSXML kodu güvenliğini sağlamaya yönelik En Iyi uygulamalar](/previous-versions/windows/desktop/ms759188(v=vs.85)), [nsxmlparserdelegate protokol başvurusu](https://developer.apple.com/library/ios/#documentation/cocoa/reference/NSXMLParserDelegate_Protocol/Reference/Reference.html), [dış başvuruları çözme](/dotnet/standard/data/xml/resolving-external-resources) |
@@ -200,7 +200,7 @@ MSXML6 'da, Probitdtd 'nin varsayılan olarak true (DTD işlemesini devre dış�
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Derleme |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -211,7 +211,7 @@ MSXML6 'da, Probitdtd 'nin varsayılan olarak true (DTD işlemesini devre dış�
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Derleme |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Kısıtlanmamış dosya yükleme](https://owasp.org/www-community/vulnerabilities/Unrestricted_File_Upload), [Dosya imza tablosu](https://www.garykessler.net/library/file_sigs.html) |
@@ -327,7 +327,7 @@ Dosya biçimi imza doğrulamasında ilgili son nokta için, Ayrıntılar için a
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Derleme |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -357,7 +357,7 @@ Yukarıdaki kod örneğinde, giriş değeri 11 karakterden daha uzun olamaz. Ver
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Derleme |  
 | **İlgili teknolojiler** | MVC5, MVC6 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Meta veri öznitelikleri](/dotnet/api/system.componentmodel.dataannotations.metadatatypeattribute), [ortak anahtar güvenlik açığı ve hafifletme](https://github.com/blog/1068-public-key-security-vulnerability-and-mitigation), [ASP.NET MVC 'de toplu ATAMAYA yönelik KAPSAMLı kılavuz](https://odetocode.com/Blogs/scott/archive/2012/03/11/complete-guide-to-mass-assignment-in-asp-net-mvc.aspx), [MVC kullanarak EF ile çalışmaya](https://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost) başlama |
@@ -368,7 +368,7 @@ Yukarıdaki kod örneğinde, giriş değeri 11 karakterden daha uzun olamaz. Ver
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Derleme |  
 | **İlgili teknolojiler** | Genel, Web Forms, MVC5, MVC6 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [ASP.net](/previous-versions/msp-n-p/ff649310(v=pandp.10)), siteler arası komut dosyası [oluşturma](https://cwe.mitre.org/data/definitions/79.html), [XSS (siteler arası betik oluşturma) engellemesini engelleme sayfası](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html) |
@@ -393,7 +393,7 @@ Yukarıdaki kod örneğinde, giriş değeri 11 karakterden daha uzun olamaz. Ver
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Derleme |  
 | **İlgili teknolojiler** | Generic, MVC5, MVC6 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Doğrulama ekleme](https://www.asp.net/mvc/overview/getting-started/introduction/adding-validation), [bir MVC uygulamasındaki model verilerini](/previous-versions/dd410404(v=vs.90))doğrulama, [ASP.NET MVC uygulamalarınız için temel ilkeler](/archive/msdn-magazine/2009/brownfield/extreme-asp-net-guiding-principles-for-your-asp-net-mvc-applications) |
@@ -404,7 +404,7 @@ Yukarıdaki kod örneğinde, giriş değeri 11 karakterden daha uzun olamaz. Ver
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Derleme |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Güvenli olmayan girişi kodlama](/previous-versions/msp-n-p/ff647397(v=pandp.10)#paght000003_step3), [HTML temizleme](https://github.com/mganss/HtmlSanitizer) |
@@ -415,7 +415,7 @@ Yukarıdaki kod örneğinde, giriş değeri 11 karakterden daha uzun olamaz. Ver
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Derleme |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -437,7 +437,7 @@ Kullanmayın `innerHtml` ; bunun yerine kullanın `innerText` . Benzer şekilde,
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Derleme |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [OAuth 2,0 yetkilendirme çerçevesi-açık Redirectors](https://tools.ietf.org/html/rfc6749#section-10.15) |
@@ -448,7 +448,7 @@ Kullanmayın `innerHtml` ; bunun yerine kullanın `innerText` . Benzer şekilde,
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Derleme |  
 | **İlgili teknolojiler** | Generic, MVC5, MVC6 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [MVC uygulamasındaki model verilerini doğrulama](/previous-versions/dd410404(v=vs.90)), [ASP.NET MVC uygulamalarınız için temel ilkeler](/archive/msdn-magazine/2009/brownfield/extreme-asp-net-guiding-principles-for-your-asp-net-mvc-applications) |
@@ -459,7 +459,7 @@ Kullanmayın `innerHtml` ; bunun yerine kullanın `innerText` . Benzer şekilde,
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Derleme |  
 | **İlgili teknolojiler** | Genel, Web Forms, MVC5, MVC6  |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [DefaultRegexMatchTimeout özelliği](/dotnet/api/system.web.configuration.httpruntimesection.defaultregexmatchtimeout) |
@@ -477,7 +477,7 @@ Kullanmayın `innerHtml` ; bunun yerine kullanın `innerText` . Benzer şekilde,
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Derleme |  
 | **İlgili teknolojiler** | MVC5, MVC6 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -502,7 +502,7 @@ Aşağıdakiler güvenli olmayan bir örnektir:
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Veritabanı | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Derleme |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -562,7 +562,7 @@ AS
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web API | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Derleme |  
 | **İlgili teknolojiler** | MVC5, MVC6 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [ASP.NET Web API 'de model doğrulaması](https://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
@@ -619,7 +619,7 @@ namespace MyApi.Controllers
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web API | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Derleme |  
 | **İlgili teknolojiler** | Genel, MVC 5, MVC 6 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [MVC uygulamasındaki model verilerini doğrulama](/previous-versions/dd410404(v=vs.90)), [ASP.NET MVC uygulamalarınız için temel ilkeler](/archive/msdn-magazine/2009/brownfield/extreme-asp-net-guiding-principles-for-your-asp-net-mvc-applications) |
@@ -630,7 +630,7 @@ namespace MyApi.Controllers
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web API | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Derleme |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -660,7 +660,7 @@ Yukarıdaki kod örneğinde, giriş değeri 11 karakterden daha uzun olamaz. Ver
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Azure belge DB | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Derleme |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Azure Cosmos DB 'da SQL Parametreleştirme duyurusu](https://azure.microsoft.com/blog/announcing-sql-parameterization-in-documentdb/) |
@@ -671,7 +671,7 @@ Yukarıdaki kod örneğinde, giriş değeri 11 karakterden daha uzun olamaz. Ver
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | WCF | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Derleme |  
 | **İlgili teknolojiler** | Genel, NET Framework 3 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [MSDN](/previous-versions/msp-n-p/ff647820(v=pandp.10)) |
@@ -682,7 +682,7 @@ Yukarıdaki kod örneğinde, giriş değeri 11 karakterden daha uzun olamaz. Ver
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | WCF | 
-| **SDL aşaması**               | Yapı |  
+| **SDL aşaması**               | Derleme |  
 | **İlgili teknolojiler** | Genel, NET Framework 3 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [MSDN](/previous-versions/msp-n-p/ff647875(v=pandp.10)) |
