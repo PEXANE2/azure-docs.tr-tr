@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18, devx-track-java
 ms.openlocfilehash: ca1fdbd9aa2c98358489d91fe0839c98adec293b
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102212714"
 ---
 # <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>Öğretici: anahtar/değer verilerini depolamak için bir Java uygulaması kullanarak Azure Cosmos DB Cassandra API hesabı oluşturma
@@ -47,7 +47,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 3. **Yeni hesap** bölmesinde yeni Azure Cosmos hesabının ayarlarını girin. 
 
-   |Ayar   |Önerilen değer  |Açıklama  |
+   |Ayar   |Önerilen değer  |Description  |
    |---------|---------|---------|
    |ID   |   Benzersiz bir ad girin    | Bu Azure Cosmos hesabını tanımlamak için benzersiz bir ad girin. <br/><br/>Cassandra.cosmosdb.azure.com, iletişim noktanızı oluşturmak için sağladığınız KIMLIĞE eklendiği için benzersiz ancak tanımlanabilir bir KIMLIK kullanın.         |
    |API    |  Cassandra   |  API, oluşturulacak hesap türünü belirler. <br/> **Cassandra**' ı seçin, bu makalede Cassandra sorgu DILI (CQL) sözdizimi kullanılarak sorgulanabilecek geniş sütunlu bir veritabanı oluşturacaksınız.  |

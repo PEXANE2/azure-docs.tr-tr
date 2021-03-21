@@ -16,10 +16,10 @@ ms.topic: reference
 ms.date: 01/04/2021
 ms.author: yelevin
 ms.openlocfilehash: daba8fc1f645b51dc8668c806be63744b6ae0842
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97901793"
 ---
 # <a name="azure-sentinel-ueba-enrichments-reference"></a>Azure Sentinel ueba zenginleştirmeleri başvurusu
@@ -35,7 +35,7 @@ Bu tablolar, güvenlik olaylarınızın araştırılmasını odaklamak ve keskin
 
 ## <a name="user-insights-table"></a>Kullanıcı öngörüleri tablosu
 
-| Zenginleştirme adı | Açıklama | Örnek değer |
+| Zenginleştirme adı | Description | Örnek değer |
 | --- | --- | --- | --- |
 | **Hesap görünen adı**<br>*(AccountDisplayName)* | Kullanıcının hesap görünen adı. | Yönetici, Hayden Cook |
 | **Hesap etki alanı**<br>*(AccountDomain)* | Kullanıcının hesap etki alanı adı. |  |
@@ -49,7 +49,7 @@ Bu tablolar, güvenlik olaylarınızın araştırılmasını odaklamak ve keskin
 
 ## <a name="device-insights-table"></a>Cihaz öngörüleri tablosu
 
-| Zenginleştirme adı | Açıklama | Örnek değer |
+| Zenginleştirme adı | Description | Örnek değer |
 | --- | --- | --- | --- |
 | **Tarayıcı**<br>*Tarayıcılarından* | Eylemde kullanılan tarayıcı. | Kenar, Chrome |
 | **Cihaz ailesi**<br>*(DeviceFamily)* | Eylemde kullanılan cihaz ailesi. | Windows |
@@ -66,7 +66,7 @@ Bu tablolar, güvenlik olaylarınızın araştırılmasını odaklamak ve keskin
 
 #### <a name="action-performed"></a>Gerçekleştirilen eylem
 
-| Zenginleştirme adı | [Taban çizgisi](#baseline-explained) (gün) | Açıklama | Örnek değer |
+| Zenginleştirme adı | [Taban çizgisi](#baseline-explained) (gün) | Description | Örnek değer |
 | --- | --- | --- | --- |
 | **Kullanıcı ilk kez eylem gerçekleştirdi**<br>*(Firsttimeuserperformedadction)* | 180 | Eylem, Kullanıcı tarafından ilk kez gerçekleştirildi. | Doğru, yanlış |
 | **Kullanıcı tarafından yaygın olarak gerçekleştirilen eylem**<br>*(ActionUncommonlyPerformedByUser)* | 10 | Eylem Kullanıcı tarafından yaygın olarak gerçekleştirilmez. | Doğru, yanlış |
@@ -77,7 +77,7 @@ Bu tablolar, güvenlik olaylarınızın araştırılmasını odaklamak ve keskin
 
 #### <a name="app-used"></a>Kullanılan uygulama
 
-| Zenginleştirme adı | [Taban çizgisi](#baseline-explained) (gün) | Açıklama | Örnek değer |
+| Zenginleştirme adı | [Taban çizgisi](#baseline-explained) (gün) | Description | Örnek değer |
 | --- | --- | --- | --- |
 | **Kullanıcı ilk kez kullanılan uygulama**<br>*(FirstTimeUserUsedApp)* | 180 | Uygulama, Kullanıcı tarafından ilk kez kullanıldı. | Doğru, yanlış |
 | **Kullanıcı tarafından yaygın olarak kullanılan uygulama**<br>*(AppUncommonlyUsedByUser)* | 10 | Uygulama, Kullanıcı tarafından yaygın olarak kullanılmaz. | Doğru, yanlış |
@@ -88,7 +88,7 @@ Bu tablolar, güvenlik olaylarınızın araştırılmasını odaklamak ve keskin
 
 #### <a name="browser-used"></a>Kullanılan tarayıcı
 
-| Zenginleştirme adı | [Taban çizgisi](#baseline-explained) (gün) | Açıklama | Örnek değer |
+| Zenginleştirme adı | [Taban çizgisi](#baseline-explained) (gün) | Description | Örnek değer |
 | --- | --- | --- | --- |
 | **Kullanıcı tarayıcı ile ilk kez bağlandı**<br>*(FirstTimeUserConnectedViaBrowser)* | 30 | Tarayıcı, Kullanıcı tarafından ilk kez gözlemlendi. | Doğru, yanlış |
 | **Kullanıcı tarafından yaygın olarak kullanılan tarayıcı**<br>*(BrowserUncommonlyUsedByUser)* | 10 | Tarayıcı Kullanıcı tarafından yaygın olarak kullanılmaz. | Doğru, yanlış |
@@ -99,7 +99,7 @@ Bu tablolar, güvenlik olaylarınızın araştırılmasını odaklamak ve keskin
 
 #### <a name="country-connected-from"></a>Ülke bağlı
 
-| Zenginleştirme adı | [Taban çizgisi](#baseline-explained) (gün) | Açıklama | Örnek değer |
+| Zenginleştirme adı | [Taban çizgisi](#baseline-explained) (gün) | Description | Örnek değer |
 | --- | --- | --- | --- |
 | **İlk kez Kullanıcı ülkeden bağlanır**<br>*(FirstTimeUserConnectedFromCountry)* | 90 | IP adresinden çözülen coğrafi konum, Kullanıcı tarafından ilk kez bağlandı. | Doğru, yanlış |
 | **Kullanıcı tarafından yaygın olarak bağlanan ülke**<br>*(CountryUncommonlyConnectedFromByUser)* | 10 | IP adresinden çözülen coğrafi konum, genellikle kullanıcı tarafından bağlı değildir. | Doğru, yanlış |
@@ -110,7 +110,7 @@ Bu tablolar, güvenlik olaylarınızın araştırılmasını odaklamak ve keskin
 
 #### <a name="device-used-to-connect"></a>Bağlanmak için kullanılan cihaz
 
-| Zenginleştirme adı | [Taban çizgisi](#baseline-explained) (gün) | Açıklama | Örnek değer |
+| Zenginleştirme adı | [Taban çizgisi](#baseline-explained) (gün) | Description | Örnek değer |
 | --- | --- | --- | --- |
 | **Cihazdan ilk kez kullanıcı bağlandığında**<br>*(FirstTimeUserConnectedFromDevice)* | 30 | Kaynak cihaz, Kullanıcı tarafından ilk kez bağlandı. | Doğru, yanlış |
 | **Kullanıcı tarafından yaygın olarak kullanılmayan cihaz**<br>*(DeviceUncommonlyUsedByUser)* | 10 | Cihaz, Kullanıcı tarafından yaygın olarak kullanılmaz. | Doğru, yanlış |
@@ -121,7 +121,7 @@ Bu tablolar, güvenlik olaylarınızın araştırılmasını odaklamak ve keskin
 
 #### <a name="other-device-related"></a>Cihazla ilgili diğer
 
-| Zenginleştirme adı | [Taban çizgisi](#baseline-explained) (gün) | Açıklama | Örnek değer |
+| Zenginleştirme adı | [Taban çizgisi](#baseline-explained) (gün) | Description | Örnek değer |
 | --- | --- | --- | --- |
 | **İlk kez Kullanıcı cihazda oturum açtı**<br>*(FirstTimeUserLoggedOnToDevice)* | 180 | Hedef cihaz, Kullanıcı tarafından ilk kez bağlandı. | Doğru, yanlış |
 | **Kiracı içinde yaygın olarak kullanılmayan cihaz ailesi**<br>*(DeviceFamilyUncommonlyUsedInTenant)* | 30 | Cihaz ailesi kuruluşunuzda yaygın olarak kullanılmaz. | Doğru, yanlış |
@@ -129,7 +129,7 @@ Bu tablolar, güvenlik olaylarınızın araştırılmasını odaklamak ve keskin
 
 #### <a name="internet-service-provider-used-to-connect"></a>Bağlanmak için kullanılan Internet hizmeti sağlayıcısı
 
-| Zenginleştirme adı | [Taban çizgisi](#baseline-explained) (gün) | Açıklama | Örnek değer |
+| Zenginleştirme adı | [Taban çizgisi](#baseline-explained) (gün) | Description | Örnek değer |
 | --- | --- | --- | --- |
 | **İlk kez Kullanıcı ISS aracılığıyla bağlanır**<br>*(Firsttimeuserconnectedviaıss)* | 30 | ISS, Kullanıcı tarafından ilk kez gözlemlendi. | Doğru, yanlış |
 | **Kullanıcı tarafından yaygın olarak kullanılmayan ISS**<br>*(Ipuncommonlyusedbyuser)* | 10 | ISS, Kullanıcı tarafından yaygın olarak kullanılmaz. | Doğru, yanlış |
@@ -140,7 +140,7 @@ Bu tablolar, güvenlik olaylarınızın araştırılmasını odaklamak ve keskin
 
 #### <a name="resource-accessed"></a>Erişilen kaynak
 
-| Zenginleştirme adı | [Taban çizgisi](#baseline-explained) (gün) | Açıklama | Örnek değer |
+| Zenginleştirme adı | [Taban çizgisi](#baseline-explained) (gün) | Description | Örnek değer |
 | --- | --- | --- | --- |
 | **İlk kez Kullanıcı kaynağa erişti**<br>*(FirstTimeUserAccessedResource)* | 180 | Kaynağa Kullanıcı tarafından ilk kez erişildi. | Doğru, yanlış |
 | **Kullanıcı tarafından yaygın olarak erişilemeyen kaynak**<br>*(ResourceUncommonlyAccessedByUser)* | 10 | Kaynak, Kullanıcı tarafından yaygın olarak erişilmez. | Doğru, yanlış |
@@ -151,7 +151,7 @@ Bu tablolar, güvenlik olaylarınızın araştırılmasını odaklamak ve keskin
 
 #### <a name="miscellaneous"></a>Çeşitli
 
-| Zenginleştirme adı | [Taban çizgisi](#baseline-explained) (gün) | Açıklama | Örnek değer |
+| Zenginleştirme adı | [Taban çizgisi](#baseline-explained) (gün) | Description | Örnek değer |
 | --- | --- | --- | --- |
 | **Kullanıcı eylemi son gerçekleştirmedi**<br>*(Lasttimeuserperformedadction)* | 180 | Kullanıcının aynı eylemi gerçekleştirdiği son zaman. | <Timestamp> |
 | **Benzer eylem geçmişte gerçekleştirilmedi**<br>*(SimilarActionWasn'tPerformedInThePast)* | 30 | Kullanıcı tarafından aynı kaynak sağlayıcıda hiçbir eylem gerçekleştirilmedi. | Doğru, yanlış |

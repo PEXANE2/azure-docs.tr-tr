@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: trbye
 ms.openlocfilehash: 1a002b6efbe2603ae254c19f9e3cc7377198cea2
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97935827"
 ---
 # <a name="develop-custom-commands-applications"></a>Özel komut uygulamaları geliştirme
@@ -96,7 +96,7 @@ Kurallar ve tamamlama kuralları hakkında daha fazla bilgi için bkz. [özel ko
     | Ayar    | Önerilen değer                          | Açıklama                                        |
     | ---------- | ---------------------------------------- | -------------------------------------------------- |
     | **Ad**       | `ConfirmationResponse`                  | Kuralın amacını açıklayan bir ad          |
-    | **Koşullar** | Hiçbiri                                     | Kuralın ne zaman çalıştırılabilmesine belirleme koşulları    |
+    | **Koşullar** | Yok                                     | Kuralın ne zaman çalıştırılabilmesine belirleme koşulları    |
     | **Eylemler**    | **Konuşma yanıtı gönder**  >  **Basit düzenleyici**  >  **İlk değişim** > `Ok, turning the tv on` | Kural koşulu true olduğunda gerçekleştirilecek eylem |
 
    > [!div class="mx-imgBorder"]
@@ -119,7 +119,7 @@ Ardından **var olan** tamamlama kurallarını aşağıdaki gibi düzenleyin:
 | Ayar    | Önerilen değer                          |
 | ---------- | ---------------------------------------- |
 | **Ad**  | `ConfirmationResponse`                  |
-| **Koşullar** | Hiçbiri                                     |
+| **Koşullar** | Yok                                     |
 | **Eylemler**    | **Konuşma yanıtı gönder**  >  **Basit düzenleyici**  >  **İlk değişim** > `Ok, setting temperature to 40 degrees` |
 
 Komutta yapılan tüm değişiklikleri kaydetmek için **Kaydet** ' i seçin.
@@ -131,7 +131,7 @@ Yeni bir `SetAlarm` komut oluşturun. Örnek cümlesini kullanın `Set an alarm 
 | Ayar    | Önerilen değer                          |
 | ---------- | ---------------------------------------- |
 | **Ad**  | `ConfirmationResponse`                  |
-| **Koşullar** | Hiçbiri                                     |
+| **Koşullar** | Yok                                     |
 | **Eylemler**    | **Konuşma yanıtı gönder**  >  **Basit düzenleyici**  >  **İlk değişim** > `Ok, setting an alarm for 9 am tomorrow` |
 
 Komutta yapılan tüm değişiklikleri kaydetmek için **Kaydet** ' i seçin.
@@ -221,7 +221,7 @@ Bu bölümde, komutlarınıza nasıl parametre ekleneceğini öğrenirsiniz. Kom
 
 #### <a name="modify-example-sentences"></a>Örnek cümleleri değiştirme
 
-Parametreleri kullanan komutlar için, olası tüm birleşimleri kapsayan örnek cümleler eklemek yararlıdır. Örneğin:
+Parametreleri kullanan komutlar için, olası tüm birleşimleri kapsayan örnek cümleler eklemek yararlıdır. Örnek:
 
 * Parametre bilgilerini doldurun: `turn {OnOff} the {SubjectDevice}`
 * Kısmi parametre bilgileri: `turn it {OnOff}`
@@ -365,7 +365,7 @@ Bu bölümde, aşağıdakiler dahil olmak üzere gelişmiş parametre yapıland�
 |----|----|
 | **Ad** | `getDevices` |
 | **URL** | `https://aka.ms/speech/cc-sampledevices` |
-| **Yöntem** | **GET** |
+| **Yöntem** | **Al** |
 
 
 URL için önerilen değer sizin için çalışmazsa, denetlenebilecek cihazların listesinden oluşan bir JSON dosyası döndüren bir Web uç noktası yapılandırın ve barındırın. Web uç noktası aşağıdaki gibi biçimlendirilen bir JSON dosyası döndürmelidir:
@@ -396,7 +396,7 @@ Daha sonra **Subjectdevice** parametre ayarları sayfasına gidin. Aşağıdaki 
 | ----| ---- |
 | **Yapılandırma** | **Dış katalogdan önceden tanımlanmış girişleri kabul et** |                               
 | **Katalog uç noktası** | `getDevices` |
-| **Yöntem** | **GET** |
+| **Yöntem** | **Al** |
 
 Sonra **Kaydet**'i seçin.
 

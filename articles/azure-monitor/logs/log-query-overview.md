@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 10/09/2020
 ms.openlocfilehash: 529fc432bf8777ef7e2b527f08e9cb59e42bf156
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102041034"
 ---
 # <a name="log-queries-in-azure-monitor"></a>Azure Izleyici 'de günlük sorguları
@@ -25,7 +25,7 @@ Azure Izleyici 'de sorguları kullanacağınız yerlerde şunlar yer alır:
 - [PowerShell](/powershell/module/az.operationalinsights/get-azoperationalinsightssearchresult). Bir komut satırından veya Get-Azoperationalınsightssearchresults kullanan bir Azure Otomasyonu runbook 'tan bir PowerShell betiğindeki günlük sorgusunun sonuçlarını kullanın.
 - [Azure Izleyici günlükleri API 'si](https://dev.loganalytics.io). Herhangi bir REST API istemcisinden çalışma alanından günlük verilerini alın.  API isteği alınacak verileri belirlemede Azure Izleyici 'ye karşı çalıştırılan bir sorgu içerir.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 KQL kullanarak günlük sorgularını yazmaya başlamak için en iyi yol, kullanılabilir öğreticileri ve örnekleri kullanmaktır.
 
 - [Log Analytics öğretici](./log-analytics-tutorial.md) -sorguları düzenlemek ve çalıştırmak için Azure Portal kullanacağınız araç olan Log Analytics özelliklerini kullanma hakkında öğretici. Ayrıca sorgu diliyle doğrudan çalışmaksızın basit sorgular yazmanızı sağlar. Daha önce Log Analytics kullanmadıysanız, diğer öğreticiler ve örneklerle kullanacağınız aracı anlamak için Buradan başlayın.

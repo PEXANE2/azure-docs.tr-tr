@@ -5,10 +5,10 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/10/2019
 ms.openlocfilehash: 6737f64773f91ede1631d42cd7f28c7d961c0454
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92368630"
 ---
 # <a name="run-a-failover-from-on-premises-to-azure"></a>Şirket içinden Azure’a yük devretme çalıştırma
@@ -32,7 +32,7 @@ Yük devretmenin ardından RDP/SSH kullanarak Azure VM 'lerine bağlanmak isters
 
 **Yük devretmeden sonra** | **Konum** | **Eylemler**
 --- | --- | ---
-**Windows çalıştıran Azure VM** | Yük devretmeden önce şirket içi makine | Azure VM 'ye internet üzerinden erişmek için, RDP 'yi etkinleştirin ve TCP ve UDP kurallarının **genel**'e eklendiğinden emin olun ve **Windows Güvenlik Duvarı**  >  **izin verilen uygulamalar**'daki tüm profiller için RDP 'ye izin verildiğinden emin olun.<br/><br/> Azure VM 'ye siteden siteye bağlantı üzerinden erişmek için makinede RDP 'yi etkinleştirin ve **Windows Firewall**  ->  **etki alanı ve özel** ağlar için Windows Güvenlik Duvarı**izin verilen uygulamalar ve Özellikler**'de RDP 'ye izin verildiğinden emin olun.<br/><br/> <br/><br/> Tüm statik kalıcı rotaları ve WinHTTP proxy 'yi kaldırın. İşletim sistemi SAN ilkesinin **OnlineAll**olarak ayarlandığından emin olun. [Daha fazla bilgi edinin](https://support.microsoft.com/kb/3031135).<br/><br/> Yük devretme tetiklemeniz sırasında VM 'de bekleyen bir Windows güncelleştirmesi olmadığından emin olun. Yük devretmek için Windows Update başlayabilir ve güncelleştirme tamamlanana kadar VM 'de oturum açamazsınız.
+**Windows çalıştıran Azure VM** | Yük devretmeden önce şirket içi makine | Azure VM 'ye internet üzerinden erişmek için, RDP 'yi etkinleştirin ve TCP ve UDP kurallarının **genel**'e eklendiğinden emin olun ve **Windows Güvenlik Duvarı**  >  **izin verilen uygulamalar**'daki tüm profiller için RDP 'ye izin verildiğinden emin olun.<br/><br/> Azure VM 'ye siteden siteye bağlantı üzerinden erişmek için makinede RDP 'yi etkinleştirin ve   ->  **etki alanı ve özel** ağlar için Windows Güvenlik Duvarı **izin verilen uygulamalar ve Özellikler**'de RDP 'ye izin verildiğinden emin olun.<br/><br/> <br/><br/> Tüm statik kalıcı rotaları ve WinHTTP proxy 'yi kaldırın. İşletim sistemi SAN ilkesinin **OnlineAll** olarak ayarlandığından emin olun. [Daha fazla bilgi edinin](https://support.microsoft.com/kb/3031135).<br/><br/> Yük devretme tetiklemeniz sırasında VM 'de bekleyen bir Windows güncelleştirmesi olmadığından emin olun. Yük devretmek için Windows Update başlayabilir ve güncelleştirme tamamlanana kadar VM 'de oturum açamazsınız.
 **Linux çalıştıran Azure VM** | Yük devretmeden önce şirket içi makine | VM 'deki Secure Shell hizmetinin sistem önyüklemesi üzerinde otomatik olarak başlayacak şekilde ayarlandığından emin olun.<br/><br/> Güvenlik duvarı kurallarının gerçekleştirilecek SSH bağlantısına izin verdiğinden emin olun.
 
 
@@ -48,12 +48,12 @@ Kurtarma planı yük devretmesini aşağıdaki gibi çalıştırın:
 
     ![Daha fazla menüden seçili yük devretme ile ADRP bölmesini gösteren Azure Site Recovery ekran görüntüsü.](./media/site-recovery-failover/Failover.png)
 
-3. **Yük**devretme  >  **yük devretmesi yönü**' nde, Azure 'a çoğaltma yapıyorsanız varsayılan olarak bırakın.
-4. **Yük devretme**bölümünde yük devretmek Için bir **Kurtarma noktası** seçin.
+3. **Yük** devretme  >  **yük devretmesi yönü**' nde, Azure 'a çoğaltma yapıyorsanız varsayılan olarak bırakın.
+4. **Yük devretme** bölümünde yük devretmek Için bir **Kurtarma noktası** seçin.
 
     - **En son**: en son noktayı kullanın. Bu, Site Recovery hizmetine gönderilen tüm verileri işler ve her makine için bir kurtarma noktası oluşturur. Yük devretmeden sonra oluşturulan VM, yük devretme tetiklendiğinde Site Recovery çoğaltılan tüm verilere sahip olduğundan, bu seçenek en düşük RPO (kurtarma noktası hedefi) sağlar.
     Kaynak bölgesi kaldığında, mümkün olan daha fazla günlük işlemi olmadığını lütfen unutmayın. Bu nedenle, en son Işlenen kurtarma noktasına yük devretmeye ihtiyacınız olacak. Daha fazla anlamak için sonraki noktaya bakın.
-   - **En son işlenen**: Site Recovery tarafından zaten işlenen en son kurtarma noktasına VM 'lerin yükünü devretmek için bu seçeneği kullanın. En son işlenen kurtarma noktasını VM **en son kurtarma noktalarında**görebilirsiniz. Bu seçenek, işlenmemiş verileri işlemek için bir süre harcanması için düşük bir RTO sağlar
+   - **En son işlenen**: Site Recovery tarafından zaten işlenen en son kurtarma noktasına VM 'lerin yükünü devretmek için bu seçeneği kullanın. En son işlenen kurtarma noktasını VM **en son kurtarma noktalarında** görebilirsiniz. Bu seçenek, işlenmemiş verileri işlemek için bir süre harcanması için düşük bir RTO sağlar
    - **En son uygulamayla tutarlı**: Site Recovery tarafından işlenen en son uygulamayla tutarlı kurtarma noktasına VM 'leri devretmek için bu seçeneği kullanın.
    - **En son çoklu VM işlendi**: Bu seçenek, çoğaltma grubunun bir parçası olan VM 'lerin en son ortak çoklu VM tutarlı kurtarma noktasına devredilmesine sahiptir. Diğer sanal makineler, son işlenen kurtarma noktasına yük devreder. Bu seçenek yalnızca çoklu VM tutarlılığı etkinleştirilmiş en az bir VM içeren kurtarma planları içindir.
    - **En son çoklu VM uygulaması-tutarlı**: Bu seçenek, bir çoğaltma grubunun parçası olan VM 'ler, en son ortak çoklu VM ile uygulamayla tutarlı kurtarma noktasına yük devreder. Diğer sanal makineler, uygulamayla tutarlı en son kurtarma noktasına yük devreder. Yalnızca çoklu VM tutarlılığı etkinleştirilmiş en az bir VM 'ye sahip kurtarma planları için.
@@ -66,7 +66,7 @@ Kurtarma planı yük devretmesini aşağıdaki gibi çalıştırın:
 
 6. **İşler** sayfasında yük devretme ilerlemesini izleyin. Hatalar gerçekleşse bile kurtarma planı tamamlanana kadar çalışır.
 7. Yük devretmeden sonra, doğrulamak için VM 'de oturum açın. 
-8. Yük devretme için kullanılacak farklı bir kurtarma noktasına geçiş yapmak istiyorsanız, **değişiklik kurtarma noktasını**kullanın.
+8. Yük devretme için kullanılacak farklı bir kurtarma noktasına geçiş yapmak istiyorsanız, **değişiklik kurtarma noktasını** kullanın.
 9. Hazırsanız, yük devretmeyi gerçekleştirebilirsiniz. **Kaydetme** eylemi, hizmetle kullanılabilen tüm kurtarma noktalarını siler. **Kurtarma noktasını Değiştir** seçeneği artık kullanılabilir olmayacaktır.
 
 ## <a name="run-a-planned-failover-hyper-v"></a>Planlı Yük devretmeyi çalıştırma (Hyper-V)

@@ -13,10 +13,10 @@ ms.reviewer: sahandle
 ms.custom: contperf-fy21q1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6e274d35fde6a3d55c05bcb5a9f22e75a37aa3c6
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97955408"
 ---
 # <a name="what-is-identity-protection"></a>Kimlik Koruması nedir?
@@ -47,7 +47,7 @@ Microsoft 'un kimlik güvenliği ve koruma ekibine bakmakta olan Ekim 2018 Alex 
 
 Kimlik koruması, riskleri aşağıdaki sınıflandırmalarla tanımlar:
 
-| Risk algılama türü | Açıklama |
+| Risk algılama türü | Description |
 | --- | --- |
 | Anonim IP adresi | Anonim bir IP adresinden oturum açın (örneğin: Tor tarayıcısı, anonimleştirici VPN 'Ler). |
 | Olağandışı yolculuk | Kullanıcının en son oturum açma işlemlerini temel alarak sıradan bir konumdan oturum açın. |
@@ -112,7 +112,7 @@ Koşullu erişim yöneticileri, bir koşul olarak oturum açma riskini gösteren
 | Güvenlik raporları | Genel Bakış |  Hayır | Hayır |Yes |
 | Güvenlik raporları | Riskli kullanıcılar  | Sınırlı bilgi. Yalnızca orta ve yüksek riskli kullanıcılar gösterilir. Ayrıntılı çekmece veya risk geçmişi yoktur. | Sınırlı bilgi. Yalnızca orta ve yüksek riskli kullanıcılar gösterilir. Ayrıntılı çekmece veya risk geçmişi yoktur. | Tam erişim|
 | Güvenlik raporları | Riskli oturum açma işlemleri  | Sınırlı bilgi. Risk ayrıntısı veya risk düzeyi gösterilmez. | Sınırlı bilgi. Risk ayrıntısı veya risk düzeyi gösterilmez. | Tam erişim|
-| Güvenlik raporları | Risk algılamaları   | Hayır | Sınırlı bilgi. Ayrıntı çekmecesi yok.| Tam erişim|
+| Güvenlik raporları | Risk algılamaları   | No | Sınırlı bilgi. Ayrıntı çekmecesi yok.| Tam erişim|
 | Bildirimler | Risk altındaki kullanıcılar uyarılar tespit etti  | Hayır | Hayır |Yes |
 | Bildirimler | Haftalık Özet| Hayır | Hayır | Yes | 
 | | Çok faktörlü kimlik doğrulaması kayıt ilkesi | Hayır | Hayır | Yes |

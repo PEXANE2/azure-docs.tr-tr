@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: ddec53b18cd6f374a5665298b43b46122bcfa143
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98016159"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Stream Analytics kullanarak IoT çözümü oluşturma
@@ -42,7 +42,7 @@ Bu çözüm iki veri akışı ile birlikte kullanılabilir. Ücretli istasyonlar
 ### <a name="entry-data-stream"></a>Giriş veri akışı
 Giriş veri akışı, ücretli istasyonlara girerken otomobiller hakkında bilgiler içerir. Çıkış verileri olayları, örnek uygulamada yer alan bir Web uygulamasından bir olay hub 'ı kuyruğuna canlı olarak kaydedilir.
 
-| Tollıd | EntryTime | Licenselevha | Durum | Marka | Model | VehicleType | VehicleWeight | Numarası | Etiket |
+| Tollıd | EntryTime | Licenselevha | Durum | Marka | Modelleme | VehicleType | VehicleWeight | Numarası | Etiket |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 |2014-09-10 12:01:00.000 |JNB 7001 |NY |Honda |CRV |1 |0 |7 | |
 | 1 |2014-09-10 12:02:00.000 |YıLXZ 1001 |NY |Toyota |Camry |1 |0 |4 |123456789 |
@@ -60,7 +60,7 @@ Aşağıda sütunların kısa bir açıklaması verilmiştir:
 | Licenselevha |Araç için lisans levha numarası |
 | Durum |Birleşik Devletler bir durum |
 | Marka |Otomobil üreticisi |
-| Model |Otomobil 'nin model numarası |
+| Modelleme |Otomobil 'nin model numarası |
 | VehicleType |Yolcular için 1 veya ticari araçlar için 2 |
 | Ağırlıklı TType |Ton cinsinden ton ağırlığı; yolcular taşıtlar için 0 |
 | Numarası |ABD Doları cinsinden ücretli değer |

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/21/2019
 ms.author: cawa
 ms.openlocfilehash: 48f00d964a87790b8d8c9b1d8eceaed26d15199e
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95531976"
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer"></a>Azure Blob Depolama kaynaklarını Depolama Gezgini'yle yönetme
@@ -160,7 +160,7 @@ Aşağıdaki adımlarda, bir blob kapsayıcısı için genel erişim düzeyinin 
 5. **Kapsayıcı genel erişim düzeyini ayarla** iletişim kutusunda istenen erişim düzeyini belirtin.
 
    ![Genel erişim düzeyi seçeneklerini ayarla][14]
-6. **Apply** (Uygula) seçeneğini belirleyin.
+6. **Uygula**’yı seçin.
 
 ## <a name="managing-blobs-in-a-blob-container"></a>Blob kapsayıcısında blob 'ları yönetme
 
@@ -205,7 +205,7 @@ Aşağıdaki adımlarda blob kapsayıcısı içindeki Blobların (ve klasörleri
      1. İndirmek istediğiniz blobu seçin.
      2. Ana bölmedeki araç çubuğunda **İndir**’i seçin.
      3. **İndirilen blob 'un kaydedileceği yeri belirtin** iletişim kutusunda, blob 'un indirilmesini istediğiniz konumu ve vermek istediğiniz adı belirtin.  
-     4. **Kaydet**'i seçin.
+     4. **Kaydet**’i seçin.
    * **Yerel bilgisayarınızda bir blob açın**
 
      1. Açmak istediğiniz blobu seçin.

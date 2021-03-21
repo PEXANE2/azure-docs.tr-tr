@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e4c456e7788280b7ca5328342e1cd848ba3a583a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95972768"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-microsoft-365-resources"></a>Eşitleme Azure Active Directory Connect: Microsoft 365 kaynaklar için tercih edilen veri konumunu yapılandırın
@@ -92,7 +92,7 @@ Azure AD 'ye aktarılan istenmeyen değişikliklerden kaçınmak için, eşitlem
 
 1. Azure AD Connect sunucusunda bir PowerShell oturumu başlatın.
 2. Şu cmdlet 'i çalıştırarak zamanlanmış eşitlemeyi devre dışı bırak: `Set-ADSyncScheduler -SyncCycleEnabled $false` .
-3. Eşitleme hizmeti 'ni **Başlat**' a giderek **Synchronization Service Manager** başlatın  >  **Synchronization Service**.
+3. Eşitleme hizmeti 'ni **Başlat**' a giderek **Synchronization Service Manager** başlatın  >  .
 4. **İşlemler** sekmesini seçin ve *sürmekte* olan bir işlem olmadığından emin olun.
 
 ![Synchronization Service Manager ekran görüntüsü](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step1.png)
@@ -135,7 +135,7 @@ Varsayılan olarak, **Preferreddatalocation** ÖZNITELIĞI Azure ad bağlayıcı
 ## <a name="step-5-create-an-inbound-synchronization-rule"></a>5. Adım: gelen eşitleme kuralı oluşturma
 Gelen eşitleme kuralı, öznitelik değerinin şirket içi Active Directory kaynak özniteliğinden metadize 'ye akmasını sağlar.
 
-1. Eşitleme kuralları düzenleyicisini **Başlat**' a giderek **eşitleme kuralları düzenleyicisini** başlatın  >  **Synchronization Rules Editor**.
+1. Eşitleme kuralları düzenleyicisini **Başlat**' a giderek **eşitleme kuralları düzenleyicisini** başlatın  >  .
 2. Arama filtresi **yönünü** **gelen** olarak ayarlayın.
 3. Yeni bir gelen kuralı oluşturmak için **Yeni kural ekle**' yi seçin.
 4. **Açıklama** sekmesinde aşağıdaki yapılandırmayı sağlayın:
@@ -155,7 +155,7 @@ Gelen eşitleme kuralı, öznitelik değerinin şirket içi Active Directory kay
 
     | Akış türü | Target özniteliği | Kaynak | Bir kez Uygula | Birleştirme türü |
     | --- | --- | --- | --- | --- |
-    |Direct | preferredDataLocation | Kaynak özniteliğini seçin | Olmayan | Güncelleştir |
+    |Direct | preferredDataLocation | Kaynak özniteliğini seçin | İşaretlemeyin | Güncelleştir |
 
 7. Gelen kuralı oluşturmak için **Ekle**' yi seçin.
 
@@ -192,7 +192,7 @@ Giden eşitleme kuralı, öznitelik değerinin meta veri deposundaki Azure AD 'd
 
     | Akış türü | Target özniteliği | Kaynak | Bir kez Uygula | Birleştirme türü |
     | --- | --- | --- | --- | --- |
-    | Direct | preferredDataLocation | preferredDataLocation | Olmayan | Güncelleştir |
+    | Direct | preferredDataLocation | preferredDataLocation | İşaretlemeyin | Güncelleştir |
 
 7. Giden kuralı oluşturmak için **Ekle** ' ye kapatın.
 

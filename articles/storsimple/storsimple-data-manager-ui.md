@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: 802f732e8d62f5df861be525316b3c31ab4d0655
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94957937"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>StorSimple Veri Yöneticisi hizmetini Azure portal yönetme
@@ -44,11 +44,11 @@ StorSimple Veri Yöneticisi bir hizmet oluşturmak için aşağıdaki adımları
 
    3. Var olan bir kaynak grubunu seçin veya yeni bir grup oluşturun. Daha fazla bilgi edinmek için bkz. [Azure kaynak grupları](../azure-resource-manager/management/manage-resource-groups-portal.md).
 
-   4. Hizmetinizin depolama hesaplarınızın ve StorSimple Veri Yöneticisi hizmetinizin barındırıldığı **konumu** belirtin. StorSimple Aygıt Yöneticisi hizmetiniz, Veri Yöneticisi hizmetiniz ve ilişkili depolama hesabı, tümünün desteklenen bölgelerde olması gerekir.
+   4. Hizmetinizin depolama hesaplarınızın ve StorSimple Veri Yöneticisi hizmetinizin barındırıldığı **konumu** belirtin. StorSimple Device Manager hizmetiniz, Veri Yöneticisi hizmetiniz ve ilişkili depolama hesabı, tümünün desteklenen bölgelerde olması gerekir.
     
    5. Panonuzda bu hizmetin bağlantısını almak için **panoya sabitle**' yi seçin.
     
-   6. **Oluştur**'a tıklayın.
+   6. **Oluştur**’a tıklayın.
 
       ![StorSimple Veri Yöneticisi hizmeti oluşturma 3](./media/storsimple-data-manager-ui/create-service-4.png)
 
@@ -76,7 +76,7 @@ Bir iş tanımı oluşturmak için aşağıdaki adımları gerçekleştirin.
 
 6. Bu yeni bir Veri Yöneticisi hizmeti olduğundan, veri depoları yapılandırılmadı. **Veri kaynağını Yapılandır** bölümünde, storsimple 8000 serisi cihazınızın ayrıntılarını ve ilgilendiğiniz verileri belirtin.
 
-   StorSimple Aygıt Yöneticisi veri deposu olarak eklemek için, veri deposu açılan menüsünde **Yeni Ekle** ' ye tıklayın ve sonra **veri deposu Ekle**' ye tıklayın.
+   StorSimple Device Manager veri deposu olarak eklemek için, veri deposu açılan menüsünde **Yeni Ekle** ' ye tıklayın ve sonra **veri deposu Ekle**' ye tıklayın.
 
     ![Yeni veri deposu Ekle](./media/storsimple-data-manager-ui/create-job-definition-3.png)
   
@@ -84,15 +84,15 @@ Bir iş tanımı oluşturmak için aşağıdaki adımları gerçekleştirin.
     
    2. Kaynak veri havuzunuz için kolay bir ad girin.
     
-   3. Açılan listeden, StorSimple Aygıt Yöneticisi hizmetinize ilişkin bir abonelik seçin.
+   3. Açılan listeden, StorSimple Device Manager hizmetinize ilişkin bir abonelik seçin.
     
-   4. **Kaynak** Için storsimple Aygıt Yöneticisi adını sağlayın.
+   4. **Kaynak** Için storsimple Device Manager adını sağlayın.
 
-   5. StorSimple Aygıt Yöneticisi hizmeti için **hizmet veri şifreleme** anahtarını girin. 
+   5. StorSimple Device Manager hizmeti için **hizmet veri şifreleme** anahtarını girin. 
 
       ![Kaynak veri deposu yapılandırma 1](./media/storsimple-data-manager-ui/create-job-definition-4.png)
 
-      Bittiğinde **Tamam** ' a tıklayın. Bu, veri deponuzu kaydeder. Bu StorSimple Aygıt Yöneticisi, bu parametreleri tekrar girmeden diğer iş tanımlarında yeniden kullanın. Yeni oluşturulan kaynak veri deposunun açılan menüde görünmesi için **Tamam** ' a tıkladıktan sonra birkaç saniye sürer.
+      Bittiğinde **Tamam** ' a tıklayın. Bu, veri deponuzu kaydeder. Bu StorSimple Device Manager, bu parametreleri tekrar girmeden diğer iş tanımlarında yeniden kullanın. Yeni oluşturulan kaynak veri deposunun açılan menüde görünmesi için **Tamam** ' a tıkladıktan sonra birkaç saniye sürer.
 
 7. **Veri deposunun** açılan listesinden, oluşturduğunuz veri deposunu seçin. 
 
@@ -104,7 +104,7 @@ Bir iş tanımı oluşturmak için aşağıdaki adımları gerçekleştirin.
 
    4. Veri dönüştürme hizmeti yalnızca Azure 'a gönderilen verilerin en son anlık görüntüsünde çalışır.
 
-   5. **Tamam** düğmesine tıklayın.
+   5. **Tamam**'a tıklayın.
 
       ![Kaynak veri deposu yapılandırma 2](./media/storsimple-data-manager-ui/create-job-definition-8.png)
 
@@ -121,7 +121,7 @@ Bir iş tanımı oluşturmak için aşağıdaki adımları gerçekleştirin.
     
     1. Hedef **Hesap adındaki** açılan listeden hedef olarak oluşturduğunuz depoyu seçin.
 
-    2. Depolama türünü blob 'lar veya dosyalar olarak seçin. Dönüştürülen verilerin bulunduğu depolama kapsayıcısının adını belirtin. **Tamam** düğmesine tıklayın.
+    2. Depolama türünü blob 'lar veya dosyalar olarak seçin. Dönüştürülen verilerin bulunduğu depolama kapsayıcısının adını belirtin. **Tamam**'a tıklayın.
 
         ![Hedef veri deposu depolama hesabını yapılandırma](./media/storsimple-data-manager-ui/create-job-definition-16.png)
 

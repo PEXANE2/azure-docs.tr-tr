@@ -7,17 +7,17 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/29/2019
 ms.openlocfilehash: e7d16de8a7a5c6f5353d64e25580b19845ce96c1
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98016414"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>Azure Stream Analytics işi için bir SQL veritabanındaki başvuru verilerini kullanma
 
 Azure Stream Analytics, Azure SQL veritabanını başvuru verileri için giriş kaynağı olarak destekler. SQL veritabanını, Azure portal ve Visual Studio 'da Stream Analytics araçlarla Stream Analytics işiniz için başvuru verileri olarak kullanabilirsiniz. Bu makalede her iki yöntemin de nasıl yapılacağı gösterilmektedir.
 
-## <a name="azure-portal"></a>Azure portal
+## <a name="azure-portal"></a>Azure portalı
 
 Azure portal kullanarak Azure SQL veritabanını başvuru giriş kaynağı olarak eklemek için aşağıdaki adımları kullanın:
 

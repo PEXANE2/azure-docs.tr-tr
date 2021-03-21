@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 3551327f9aa07fe218d3b05f73057e36f92abcad
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97895572"
 ---
 # <a name="frequently-asked-questions-about-vmware-solution-by-cloudsimple"></a>CloudSimple ile VMware çözümü hakkında sık sorulan sorular
@@ -131,7 +131,7 @@ CloudSimple, özel bulutun tüm donanım bileşenlerini sürekli olarak izler.  
 
 **Şirket içinden uygulamalar ve veriler için büyük ölçekli karşıya yükleme veya geçiş Nasıl yaparım? istiyor musunuz?**
 
-CloudSimple, yerel bir VMware vSphere çözümü sağlar.  Toplu veri geçişi için tüm VMware araçları, özel bulutunuz ile kullanılabilir.  Seçenekler arasında şunlar bulunur:
+CloudSimple, yerel bir VMware vSphere çözümü sağlar.  Toplu veri geçişi için tüm VMware araçları, özel bulutunuz ile kullanılabilir.  Seçeneklere şunlar dahildir:
 
 * Verilerin toplu geçirilmesi için VMware HCX.
 * Şirket içinden CloudSimple 'a Depolama vMotion kullanılarak verilerin soğuk geçirilmesi.

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.custom: contperf-fy21q1
 ms.date: 06/21/2019
 ms.openlocfilehash: 7884f8baa24180fcb94f77a45c3457ba62d3f351
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98018148"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics işleri için uyarıları ayarlama
@@ -57,7 +57,7 @@ Aşağıdaki örnekte, işiniz başarısız durumuna girdiğinde için uyarılar
 
 Stream Analytics işinizin performansını izlemek için aşağıdaki uyarılar önerilir. Bu ölçümler, son 5 dakikalık dönemde dakikada bir değerlendirilmelidir.
 
-|Ölçüm|Koşul|Zaman toplama|Eşik|Düzeltici eylemler|
+|Metric|Koşul|Zaman toplama|Eşik|Düzeltici eylemler|
 |-|-|-|-|-|
 |SU kullanımı yüzdesi|Büyüktür|Maksimum|80|% SU kullanımını artıran birden fazla faktör vardır. Sorgu paralelleştirme ile ölçeklendirebilir veya akış birimi sayısını artırabilirsiniz. Daha fazla bilgi için bkz. [Azure Stream Analytics'te sorgu paralelleştirmesinden yararlanma](stream-analytics-parallelization.md).|
 |Çalışma zamanı hataları|Büyüktür|Toplam|0|Etkinlik veya kaynak günlüklerini inceleyin ve giriş, sorgu veya çıkışlara uygun değişiklikler yapın.|

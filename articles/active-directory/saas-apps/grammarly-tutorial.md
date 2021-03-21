@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/01/2020
 ms.author: jeedes
 ms.openlocfilehash: 13b62646728eb03a7470d9bb57741bcb90cc24fb
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92447747"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-grammarly"></a>Öğretici: Grammarly ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -26,7 +26,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile Grammarly tümleştirmeyi
 * Kullanıcılarınızın Azure AD hesaplarıyla daha zengin bir şekilde oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -57,7 +57,7 @@ Dilinizin Azure AD ile tümleştirilmesini yapılandırmak için Galeri 'den yö
 
 ## <a name="configure-and-test-azure-ad-sso-for-grammarly"></a>Azure AD SSO 'yu dilbilgisi için yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Grammarly ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Mmarly ile ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Grammarly ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Mmarly ile ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
 Azure AD SSO 'yu Grammarly ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
@@ -123,7 +123,7 @@ Bu bölümde, dilbilgisi erişimi vererek Azure çoklu oturum açma özelliğini
 
 ## <a name="configure-grammarly-sso"></a>Grammarly SSO 'yu yapılandırma
 
-**Dilbilgisi**içinde çoklu oturum açmayı yapılandırmak Için, **oturum açma URL**'sini, **Azure ad tanımlayıcısını**ve indirilen **sertifikayı (base64)** dilsiz yönetici paneline kopyalamanız gerekir. [Nasıl yapılacağını öğrenin](https://support.grammarly.com/hc/en-us/articles/360048683092-How-do-I-set-up-SAML-single-sign-on-for-my-Grammarly-Business-account-).
+**Dilbilgisi** içinde çoklu oturum açmayı yapılandırmak Için, **oturum açma URL**'sini, **Azure ad tanımlayıcısını** ve indirilen **sertifikayı (base64)** dilsiz yönetici paneline kopyalamanız gerekir. [Nasıl yapılacağını öğrenin](https://support.grammarly.com/hc/en-us/articles/360048683092-How-do-I-set-up-SAML-single-sign-on-for-my-Grammarly-Business-account-).
 
 ### <a name="create-grammarly-test-user"></a>Grammarly test kullanıcısı oluşturma
 

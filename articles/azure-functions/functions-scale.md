@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 490fa46deabc822e416705fe9bf9c5cdb58f8cd6
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97936774"
 ---
 # <a name="azure-functions-hosting-options"></a>Azure Işlevleri barındırma seçenekleri
@@ -32,7 +32,7 @@ Aşağıda, Işlevleri için üç ana barındırma planının avantajlarından o
 | --- | --- |  
 |**[Tüketim planı](consumption-plan.md)**| Otomatik olarak ölçeklendirin ve işlevleriniz çalışırken yalnızca işlem kaynakları için ödeme yapın.<br/><br/>Tüketim planında, Işlevler ana bilgisayarının örnekleri, gelen olayların sayısına göre dinamik olarak eklenir ve kaldırılır.<br/><br/> ✔ Varsayılan barındırma planı.<br/>✔ Yalnızca işlevleriniz çalışırken ödeyin.<br/>✔, Yüksek yük dönemlerinde bile otomatik olarak ölçeklendirilir.|  
 |**[Premium planı](functions-premium-plan.md)**|, Boşta kaldıktan sonra gecikme olmadan uygulamaları çalıştıran, daha güçlü örneklerde çalışan ve sanal ağlara bağlanan, önceden çarpımış çalışanları kullanarak isteğe bağlı olarak otomatik olarak ölçeklendirin. <br/><br/>Aşağıdaki durumlarda Azure Işlevleri Premium planını göz önünde bulundurun: <br/><br/>İşlev uygulamalarınızın sürekli veya neredeyse sürekli çalışmasını ✔.<br/>✔ Yüksek sayıda küçük yürütmeler ve yüksek bir yürütme faturanız, ancak tüketim planında düşük GB saniyedir.<br/>✔ Tüketim planı tarafından sağlandıkından daha fazla CPU veya bellek seçeneği gerekir.<br/>Kodunuzun, tüketim planında izin verilen en uzun yürütme süresinden daha uzun süre çalışmasını ✔.<br/>✔, Sanal ağ bağlantısı gibi tüketim planında kullanılamayan özellikler gerektirir.|  
-|**[Adanmış plan](dedicated-plan.md)** |İşlevlerinizi düzenli [App Service plan ücretlerindeki](https://azure.microsoft.com/pricing/details/app-service/windows/)bir App Service planı içinde çalıştırın.<br/><br/>[Dayanıklı işlevler](durable/durable-functions-overview.md) kullanılamayacak uzun süre çalışan senaryolar için idealdir. Aşağıdaki durumlarda bir App Service planı düşünün:<br/><br/>Daha önce başka App Service örnekleri çalıştıran mevcut, az kullanılan VM 'Ler ✔.<br/>İşlevlerinizin çalıştırılacağı özel bir görüntü sağlamak ✔. <br/>Tahmine dayalı ölçekleme ve maliyetler ✔ gereklidir.|  
+|**[Ayrılmış plan](dedicated-plan.md)** |İşlevlerinizi düzenli [App Service plan ücretlerindeki](https://azure.microsoft.com/pricing/details/app-service/windows/)bir App Service planı içinde çalıştırın.<br/><br/>[Dayanıklı işlevler](durable/durable-functions-overview.md) kullanılamayacak uzun süre çalışan senaryolar için idealdir. Aşağıdaki durumlarda bir App Service planı düşünün:<br/><br/>Daha önce başka App Service örnekleri çalıştıran mevcut, az kullanılan VM 'Ler ✔.<br/>İşlevlerinizin çalıştırılacağı özel bir görüntü sağlamak ✔. <br/>Tahmine dayalı ölçekleme ve maliyetler ✔ gereklidir.|  
 
 Bu makaledeki karşılaştırma tabloları, işlev uygulamalarınızın çalıştırılacağı en yüksek denetim ve yalıtım miktarını sağlayan aşağıdaki barındırma seçeneklerini de içerir.  
 
@@ -51,7 +51,7 @@ Aşağıdaki tabloda barındırma planları için desteklenen işletim sistemi v
 | --- | --- | --- | --- |
 | **[Tüketim planı](consumption-plan.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python | .NET Core<br/>Node.js<br/>Java<br/>PowerShell Core | Destek yok  |
 | **[Premium planı](functions-premium-plan.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python|.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python  | 
-| **[Adanmış plan](dedicated-plan.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python|.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python |
+| **[Ayrılmış plan](dedicated-plan.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python|.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python |
 | **[ASE](dedicated-plan.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core  |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python | 
 | **[Kubernetes](functions-kubernetes-keda.md)** | yok | yok |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python |
 
@@ -81,7 +81,7 @@ Aşağıdaki tabloda, çeşitli barındırma planlarının ölçeklendirme davra
 | -- | -- |
 | **[Tüketim &nbsp; planı](consumption-plan.md)** | Boşta kaldığında uygulamalar sıfıra ölçeklendirebilir, ancak bazı isteklerin başlangıçta ek gecikmesi olabilir.  Tüketim planı, işlev Konağı ve dil işlemlerini çalıştıran önceden çarpımış yer tutucu işlevlerden çekme dahil olmak üzere soğuk başlangıç süresini azaltmanıza yardımcı olmak için bazı iyileştirmeler içerir. |
 | **[Premium planı](functions-premium-plan.md)** | Tüm soğuk başlarını önlemek için sıcak örnekler adet sürekli. |
-| **[Adanmış plan](dedicated-plan.md)** | Adanmış bir planda çalışırken, Işlevler ana bilgisayarı sürekli çalışabilir ve bu da soğuk başlatması aslında bir sorun değildir. |
+| **[Ayrılmış plan](dedicated-plan.md)** | Adanmış bir planda çalışırken, Işlevler ana bilgisayarı sürekli çalışabilir ve bu da soğuk başlatması aslında bir sorun değildir. |
 | **[ASE](dedicated-plan.md)** | Adanmış bir planda çalışırken, Işlevler ana bilgisayarı sürekli çalışabilir ve bu da soğuk başlatması aslında bir sorun değildir. |
 | **[Kubernetes](functions-kubernetes-keda.md)**  | KEDA yapılandırmasına bağlı olarak, uygulamalar soğuk başlangıçtan kaçınmak için yapılandırılabilir. Sıfıra ölçeklendirilmesi için yapılandırıldıysa, yeni olaylar için soğuk başlatmaya bir deneyim yaşanır. 
 

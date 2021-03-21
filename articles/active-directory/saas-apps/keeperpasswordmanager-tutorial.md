@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/13/2020
 ms.author: jeedes
 ms.openlocfilehash: b70c50e7c2900f884dd4d91c6650205bc626326e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96178050"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-keeper-password-manager--digital-vault"></a>Öğretici: Man Password Manager ile Azure Active Directory tümleştirme & dijital kasa
@@ -28,7 +28,7 @@ Bu tümleştirme size aşağıdaki avantajları sağlar:
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz: Azure portal.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini, Man Password Manager & dijital kasa ile yapılandırmak için şunlar gerekir:
 
@@ -102,7 +102,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Ayrıca, Man Password Manager & dijital kasa uygulaması, SAML yanıtına daha fazla özniteliğin geri geçirilmesini bekler. Bunlar aşağıdaki tabloda gösterilmiştir. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre gözden geçirebilirsiniz.
 
-    | Adı | Kaynak özniteliği|
+    | Name | Kaynak özniteliği|
     | ------------| --------- |
     | Birinci | Kullanıcı. |
     | Son | User. soyadı |
@@ -120,7 +120,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 Bu bölümde, adlı Azure portal bir test kullanıcısı oluşturacaksınız `B.Simon` .
 
-1. Azure Portal sol bölmeden, kullanıcılar **Azure Active Directory**  >  **Users**  >  **tüm kullanıcılar**' ı seçin.
+1. Azure Portal sol bölmeden, kullanıcılar **Azure Active Directory**  >    >  **tüm kullanıcılar**' ı seçin.
 1. Ekranın üst kısmında **Yeni Kullanıcı**' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** için girin `B.Simon` .  
@@ -135,7 +135,7 @@ Bu bölümde, Man Password Manager & dijital kasaya erişim vererek Azure çoklu
 1. Azure Portal **Kurumsal uygulamalar**  >  **tüm uygulamalar**' ı seçin.
 1. Uygulamalar listesinde, **Man Password Manager & dijital kasa**' yı seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
-1. **Kullanıcı ekle**'yi seçin. **Atama Ekle**' de, **Kullanıcılar ve gruplar**' ı seçin.
+1. **Kullanıcı ekle**'yi seçin. **Atama Ekle** bölümünde **Kullanıcılar ve gruplar**’ı seçin.
 1. **Kullanıcılar ve gruplar**' da, Kullanıcı listesinden **B. Simon** ' u seçin. Ardından ekranın alt kısmında **Seç** ' i seçin.
 1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, **varsayılan erişim** rolü seçilidir.
 1. **Atama Ekle**' de, **ata**' yı seçin.

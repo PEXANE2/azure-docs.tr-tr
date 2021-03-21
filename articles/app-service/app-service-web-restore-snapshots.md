@@ -7,10 +7,10 @@ ms.date: 04/04/2018
 ms.reviewer: nicking
 ms.custom: seodec18
 ms.openlocfilehash: f7edb632559dc8da2de32c58d994a7c51b1b09e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86169994"
 ---
 # <a name="restore-an-app-in-azure-from-a-snapshot"></a>Azure 'da bir uygulamayı bir anlık görüntüden geri yükleme
@@ -43,12 +43,12 @@ Anlık görüntülerden geri yükleme, **Premium** katmanda veya üzeri sürüml
    
     ![Geri yüklenecek anlık görüntünün nasıl seçdiğinin gösterildiği ekran görüntüsü. ](./media/app-service-web-restore-snapshots/2.png)
    
-3. **Geri yükleme hedefinde**uygulama geri yükleme hedefini belirtin.
+3. **Geri yükleme hedefinde** uygulama geri yükleme hedefini belirtin.
    
     ![Geri yükleme hedefinin nasıl belirtildiğinin gösterildiği ekran görüntüsü.](./media/app-service-web-restore-snapshots/3.png)
    
    > [!WARNING]
-   > **Üzerine yaz**seçeneğini belirlerseniz, uygulamanızın geçerli dosya sistemindeki tüm mevcut veriler silinir ve üzerine yazılır. **Tamam**' a tıklamadan önce, yapmak istediğiniz durum olduğundan emin olun.
+   > **Üzerine yaz** seçeneğini belirlerseniz, uygulamanızın geçerli dosya sistemindeki tüm mevcut veriler silinir ve üzerine yazılır. **Tamam**' a tıklamadan önce, yapmak istediğiniz durum olduğundan emin olun.
    > 
    > 
       

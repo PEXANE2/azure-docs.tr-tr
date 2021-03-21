@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/14/2021
 ms.author: xujing
 ms.openlocfilehash: ba81be54592e591f734b05235bb3ce183a07a11c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101709895"
 ---
 # <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub cihaz sağlama hizmeti ile sorun giderme
@@ -32,7 +32,7 @@ Aşağıdaki yordamda IoT Hub cihaz sağlama hizmeti ölçümünde uyarının na
 4. İstediğiniz ölçümü seçin. 
    <br />Şu anda DPS için üç ölçüm vardır:
 
-    | Ölçüm Adı | Açıklama |
+    | Ölçüm Adı | Description |
     |-------|------------|
     | Kanıtlama denemeleri | Cihaz sağlama hizmeti ile kimlik doğrulamaya çalıştı cihaz sayısı|
     | Kayıt denemeleri | Başarılı kimlik doğrulamasından sonra IoT Hub kaydolmaya çalışılan cihazların sayısı|
@@ -58,7 +58,7 @@ Daha fazla bilgi için bkz. [Azure izleyici 'de uyarılar](../azure-monitor/plat
 
 5. İstenen günlüklerin toplanmasını sağlar.
 
-    | Günlük Adı | Açıklama |
+    | Günlük Adı | Description |
     |-------|------------|
     | DeviceOperations Işlemleri | Cihaz bağlantı olaylarıyla ilgili Günlükler |
     | ServiceOperations | Service SDK kullanımıyla ilgili olay günlükleri (ör. kayıt grupları oluşturma veya güncelleştirme)|
@@ -75,7 +75,7 @@ Daha fazla bilgi için bkz. [Azure izleyici 'de uyarılar](../azure-monitor/plat
 ## <a name="common-error-codes"></a>Genel hata kodları
 Sık karşılaşılan hataları anlamak ve çözmek için bu tabloyu kullanın.
 
-| Hata Kodu| Açıklama | HTTP durum kodu |
+| Hata Kodu| Description | HTTP durum kodu |
 |-------|------------|------------|
 | 400 | İsteğin gövdesi geçerli değil; Örneğin, ayrıştırılamıyor veya nesne doğrulanamıyor.| 400 Hatalı biçim |
 | 401 | Yetkilendirme belirteci doğrulanamıyor; Örneğin, zaman aşımına uğradı veya isteğin URI 'SI için uygulanmaz. Bu hata kodu, TPM kanıtlama akışının bir parçası olarak cihazlara de döndürülür. | 401 Yetkisiz|

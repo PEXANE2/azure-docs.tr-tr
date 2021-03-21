@@ -9,10 +9,10 @@ ms.date: 07/18/2018
 ms.author: alkohli
 ms.custom: include file
 ms.openlocfilehash: 8ef8b9d3350d0599ab00dfdbb018cf8dd900e316
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95554386"
 ---
 #### <a name="to-install-updates-via-the-azure-portal"></a>Azure portalı aracılığıyla güncelleştirmeleri yüklemek için
@@ -27,7 +27,7 @@ ms.locfileid: "95554386"
 
     Tarama başladığında ve başarıyla tamamlandığında size bildirilir.
  
-4. Güncelleştirmeleri tarandıktan sonra **Güncelleştirmeleri indir**’e tıklayın. **Yeni güncelleştirmeler** altında sürüm notlarını gözden geçirin. Güncelleştirmeler indirildikten sonra, yüklemeyi onaylamanız gerektiğini de unutmayın. **Tamam** düğmesine tıklayın.
+4. Güncelleştirmeleri tarandıktan sonra **Güncelleştirmeleri indir**’e tıklayın. **Yeni güncelleştirmeler** altında sürüm notlarını gözden geçirin. Güncelleştirmeler indirildikten sonra, yüklemeyi onaylamanız gerektiğini de unutmayın. **Tamam**'a tıklayın.
 
     ![Cihaz güncelleştirmeleri ' nde güncelleştirmeleri Indir düğmesi vurgulanır. Yeni güncelleştirmelerde, sürüm notları ve güncelleştirmeler indirildikten sonra yüklemeyi onaylamak için bir ileti bağlantısı vardır. Tamam düğmesi vardır.](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate6m.png)
 

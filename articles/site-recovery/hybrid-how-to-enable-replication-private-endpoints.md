@@ -7,10 +7,10 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/14/2020
 ms.openlocfilehash: 7f10654e1c96f1756e5864d20fa2a6817385e994
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98629802"
 ---
 # <a name="replicate-on-premises-machines-by-using-private-endpoints"></a>Özel uç noktaları kullanarak şirket içi makineleri çoğaltma
@@ -191,7 +191,7 @@ Site Recovery sağlayıcısının (Hyper-V makineleri için) veya Işlem sunucus
 
    Şimdi, oluşturduğunuz özel DNS bölgesini atlamaya bağlamanız gerekir.
 
-   1. Önceki adımda oluşturduğunuz özel DNS bölgesine gidin ve sol bölmedeki **sanal ağ bağlantıları** ' na gidin. **Ekle**’yi seçin.
+   1. Önceki adımda oluşturduğunuz özel DNS bölgesine gidin ve sol bölmedeki **sanal ağ bağlantıları** ' na gidin. **Add (Ekle)** seçeneğini belirleyin.
 
    1. Gerekli ayrıntıları girin. **Abonelik** ve **sanal ağ** listelerinde, atlama ağına karşılık gelen ayrıntıları seçin. Diğer alanlarda varsayılan değerleri değiştirmeyin.
 
