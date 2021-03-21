@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 05/08/2020
 ms.openlocfilehash: 7c65c8272172cab9f5361d16141bf7b229037480
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98786953"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Dil ortak Sözlük ve kavramların sözlüğünü anlama
@@ -280,11 +280,11 @@ Konuşma tanıma, senaryolarınız için [konuşma hizmetleriyle](../speech-serv
 
 İlk olarak lusıs kullanarak ilk kez başlatıldığında kullanılacak olan ücretsiz bir anahtar.
 
-## <a name="synonyms"></a>Eş anlamlılar
+## <a name="synonyms"></a>Eş Anlamlı Sözcükler
 
 LUıN [listesi varlıkları](reference-entity-list.md)' nda, her birinin bir eş anlamlı listesine sahip olabilen normalleştirilmiş bir değer oluşturabilirsiniz. Örneğin, küçük, orta, büyük ve çok büyük normalleştirilmiş değerler içeren bir boyut varlığı oluşturursanız. Şöyle her bir değer için eş anlamlı oluşturabilirsiniz:
 
-|Önemli değer| Eş anlamlılar|
+|Önemli değer| Eş Anlamlı Sözcükler|
 |--|--|
 |Küçük| küçük bir tane, 8 ons|
 |Orta| normal, 12 ons|

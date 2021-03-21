@@ -4,10 +4,10 @@ description: Bu makalede Kafka için Azure Event Hubs ile Kafka Connect 'in nas�
 ms.topic: how-to
 ms.date: 01/06/2021
 ms.openlocfilehash: f82dcdafa7921f4a994361371536b2f1ace7cbc5
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97935164"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs"></a>Azure Event Hubs'a Apache Kafka Connect desteğiyle tümleştirme
@@ -36,7 +36,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 > * Kafka Connect'i çalıştırma
 > * Bağlayıcıları oluşturma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu yol gösterici adımları tamamlamak için aşağıdaki önkoşulların karşılandığından emin olun:
 
 - Azure aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.

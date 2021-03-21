@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 9/14/2020
 ms.custom: mvc
 ms.openlocfilehash: 4d2b0fbb377beacdb75a1a5552855936bee2b205
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102041320"
 ---
 # <a name="tutorial-discover-servers-running-in-vmware-environment-with-azure-migrate-server-assessment"></a>Öğretici: Azure geçişi: Sunucu değerlendirmesi ile VMware ortamında çalışan sunucuları bulma
@@ -47,7 +47,7 @@ Bu öğreticiye başlamadan önce, bu önkoşulların yerinde olup olmadığın�
 **Sunucular** | Tüm Windows ve Linux işletim sistemi sürümleri, yapılandırma ve performans meta verilerinin bulunması için desteklenir. <br/><br/> Sunucularda uygulama bulma işlemini gerçekleştirmek için, tüm Windows ve Linux işletim sistemi sürümleri desteklenir. Aracısız bağımlılık analizi için desteklenen işletim sistemi sürümleri için [buraya](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) bakın.<br/><br/> Yüklü uygulamalar bulmayı ve aracısız bağımlılık analizini yapmak için, VMware araçlarının (10.2.0 ' den sonraki sürümler) sunucularda yüklü ve çalışıyor olması gerekir. Windows sunucularında PowerShell sürüm 2,0 veya üzeri yüklü olmalıdır.<br/><br/> SQL Server örnekleri ve veritabanlarını öğrenmek için, desteklenen Windows işletim sistemi sürümleri ve kimlik doğrulama mekanizmaları, desteklenen SQL Server sürümleri ve sürümleri için [buraya](migrate-support-matrix-vmware.md#requirements-for-discovery-of-sql-server-instances-and-databases) bakın.
 
 > [!Note]
-> VMware ortamınızda çalışan SQL Server örnekleri ve veritabanlarının keşfi ve değerlendirmesi artık önizlemededir. Bu özelliği denemek için **Avustralya Doğu** bölgede bir proje oluşturmak üzere [**Bu bağlantıyı**](https://aka.ms/AzureMigrate/SQL) kullanın. Zaten Avustralya Doğu bir projeniz varsa ve bu özelliği denemek istiyorsanız, lütfen portalda bu [**önkoşulları**](how-to-discover-sql-existing-project.md) tamamladığınızdan emin olun.
+> VMware ortamınızda çalışan SQL Server örnekleri ve veritabanlarının keşfi ve değerlendirmesi artık önizlemededir. Bu özelliği denemek için [**bu bağlantıyı**](https://aka.ms/AzureMigrate/SQL) kullanarak **Doğu Avustralya** bölgesinde bir proje oluşturun. Zaten Doğu Avustralya bölgesinde bir projeniz varsa ve bu özelliği denemek istiyorsanız, lütfen portalda bu [**önkoşulları**](how-to-discover-sql-existing-project.md) tamamladığınızdan emin olun.
 
 ## <a name="prepare-an-azure-user-account"></a>Azure Kullanıcı hesabı hazırlama
 
@@ -274,7 +274,7 @@ Gereçinin, sunucuların yapılandırma ve performans verilerini bulması için 
 :::image type="content" source="./media/tutorial-discover-vmware/appliance-server-credentials-mapping.png" alt-text="Sunucu ayrıntıları için gereç Yapılandırma Yöneticisi 'nde panel 3":::
 
 > [!Note]
-> VMware ortamınızda çalışan SQL Server örnekleri ve veritabanlarının keşfi ve değerlendirmesi artık önizlemededir. Bu özelliği denemek için **Avustralya Doğu** bölgede bir proje oluşturmak üzere [**Bu bağlantıyı**](https://aka.ms/AzureMigrate/SQL) kullanın. Zaten Avustralya Doğu bir projeniz varsa ve bu özelliği denemek istiyorsanız, lütfen portalda bu [**önkoşulları**](how-to-discover-sql-existing-project.md) tamamladığınızdan emin olun.
+> VMware ortamınızda çalışan SQL Server örnekleri ve veritabanlarının keşfi ve değerlendirmesi artık önizlemededir. Bu özelliği denemek için [**bu bağlantıyı**](https://aka.ms/AzureMigrate/SQL) kullanarak **Doğu Avustralya** bölgesinde bir proje oluşturun. Zaten Doğu Avustralya bölgesinde bir projeniz varsa ve bu özelliği denemek istiyorsanız, lütfen portalda bu [**önkoşulları**](how-to-discover-sql-existing-project.md) tamamladığınızdan emin olun.
 
 Bu özelliklerden yararlanmak istiyorsanız aşağıdaki adımları izleyerek sunucu kimlik bilgileri sağlayabilirsiniz. Gereç, bulma özelliklerini gerçekleştirmek için kimlik bilgilerini sunucularla otomatik olarak eşlemeye çalışır.
 

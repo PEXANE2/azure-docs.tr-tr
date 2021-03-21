@@ -1,6 +1,6 @@
 ---
-title: Azure Sentinel ile uyarıları araştırın | Microsoft Docs
-description: Şüpheli bir sorun olduğunda size bildirimde bulunan yerleşik, yerleşik Azure tehdit algılama şablonlarını nasıl kullanacağınızı öğrenin.
+title: Azure Sentinel 'de yerleşik analiz kuralları ile tehditleri algılama | Microsoft Docs
+description: Şüpheli bir sorun olduğunda size bildirimde bulunan yerleşik şablonları temel alan yerleşik tehdit algılama kurallarını nasıl kullanacağınızı öğrenin.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/06/2020
 ms.author: yelevin
-ms.openlocfilehash: f1cfd941d8205a9bdc100ab69b115618af9f736d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b8a304d523052f1fe839f94608806df51d35fdf9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101726980"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589931"
 ---
 # <a name="tutorial-detect-threats-out-of-the-box"></a>Öğretici: Hemen tehditleri algılayabilme
 
@@ -78,4 +78,3 @@ Aşağıdaki şablon türleri kullanılabilir:
 Bu öğreticide, Azure Sentinel kullanarak tehditleri algılamaya nasıl başlacağınız hakkında daha fazla öğrenirsiniz. 
 
 Tehditlere yönelik yanıtlarınızı otomatik hale getirmeyi öğrenmek için [Azure Sentinel 'de otomatik tehdit yanıtları ayarlayın](tutorial-respond-threats-playbook.md).
-

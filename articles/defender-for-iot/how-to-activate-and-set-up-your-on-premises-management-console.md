@@ -1,18 +1,18 @@
 ---
 title: Şirket içi yönetim konsolunuzu etkinleştirme ve ayarlama
-description: Yönetim Konsolu etkinleştirme ve kurulumu, algılayıcıların Azure 'a kaydedilmesini ve şirket içi yönetim konsoluna bilgi göndermesini ve şirket içi yönetim konsolunun bağlı sensörlerde yönetim görevleri kapsamasını sağlar.
+description: Yönetim konsolunun etkinleştirilmesi, sensörların Azure 'a kaydedilmesini ve şirket içi yönetim konsoluna bilgi göndermesini ve şirket içi yönetim konsolunun bağlı sensörlerde yönetim görevleri kapsamasını sağlar.
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 1/12/2021
+ms.date: 3/18/2021
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: d326a90ffb957604dba74982d8983acedc6ab85d
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.service: defender-for-iot
+ms.openlocfilehash: f659b25abbbad5f2150ed44766d30dc1f64dd3bb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522589"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104602765"
 ---
 # <a name="activate-and-set-up-your-on-premises-management-console"></a>Şirket içi yönetim konsolunuzu etkinleştirme ve ayarlama 
 
@@ -30,24 +30,32 @@ ms.locfileid: "100522589"
 
 Yönetim konsolunda oturum açmak için:
 
-- Bir Web tarayıcısı açın ve sistem yüklemesi sırasında şirket içi yönetim konsolu için aldığınız IP adresini ve parolayı girin. Parolanızı unuttuysanız **parolayı kurtar** ' ı seçin ve [parola kurtarma](how-to-manage-the-on-premises-management-console.md#password-recovery)bölümüne bakın.
+1. Sistem yüklemesi sırasında şirket içi yönetim konsolu için aldığınız IP adresine gidin.
+ 
+1. Sistem yüklemesi sırasında şirket içi yönetim konsolu için aldığınız kullanıcı adını ve parolayı girin. 
 
-## <a name="upload-an-activation-file"></a>Bir etkinleştirme dosyasını karşıya yükle
 
-İlk kez oturum açtıktan sonra, IoT portalının Azure Defender 'ın **fiyatlandırma** sayfasından bir etkinleştirme dosyası indirerek şirket içi yönetim konsolunu etkinleştirin. Bu dosya ekleme işlemi sırasında tanımlanan toplam kaydedilmiş cihazları içerir. **Kaydedilen cihazlar** , her abonelik Için Defender 'ın IoT tarafından izleneceği cihaz sayısını belirtir.
+Parolanızı unuttuysanız parolayı **kurtar**  seçeneğini belirleyin ve parolanızı nasıl kurtaracağınız hakkında yönergeler için [parola kurtarma](how-to-manage-the-on-premises-management-console.md#password-recovery) bölümüne bakın.
 
-Bir etkinleştirme dosyasını karşıya yüklemek için:
+## <a name="get-and-upload-an-activation-file"></a>Bir etkinleştirme dosyası al ve yükle
 
-1. IoT için Defender **fiyatlandırma** sayfasına gidin.
+İlk kez oturum açtıktan sonra, bir etkinleştirme dosyası alarak ve yükleyerek şirket içi yönetim konsolunu etkinleştirmeniz gerekir. 
+
+Bir etkinleştirme dosyası almak için:
+
+1. IoT portalının Azure Defender 'ın **fiyatlandırma** sayfasına gidin. 
+1. Şirket içi yönetim konsolunu ile ilişkilendirilecek aboneliği seçin.
 1. **Yönetim Konsolu için etkinleştirme dosyasını indirin** sekmesini seçin. Etkinleştirme dosyası indirilir.
 
    :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/cloud_download_opm_activation_file.png" alt-text="Etkinleştirme dosyasını indirin.":::
 
-1. Yönetim konsolundan **sistem ayarları** ' nı seçin.
-1. **Etkinleştirme**'yi seçin.
-1. **Dosya Seç** ' i seçin ve kaydettiğiniz dosyayı seçin.
+Bir etkinleştirme dosyasını karşıya yüklemek için:
 
-İlk etkinleştirmeden sonra, izlenen cihazların sayısı ekleme sırasında tanımlanan kaydedilmiş cihazların sayısını aşabilir. Bu, örneğin, yönetim konsoluna daha fazla algılayıcı bağladığınızda meydana gelebilir. İzlenen cihazların sayısıyla kaydedilmiş cihazların sayısı arasında bir tutarsızlık varsa, yönetim konsolunda bir uyarı görüntülenir. Bu durumda yeni bir etkinleştirme dosyası yüklemeniz gerekir.
+1. Şirket içi yönetim konsolundaki **sistem ayarları** sayfasına gidin.
+1. **Etkinleştirme** simgesini seçin :::image type="icon" source="media/how-to-manage-sensors-from-the-on-premises-management-console/activation-icon.png" border="false"::: .
+1. **Dosya Seç**' i seçin ve indirilen dosyayı seçin.
+
+İlk etkinleştirmeden sonra, izlenen cihazların sayısı ekleme sırasında tanımlanan kaydedilmiş cihazların sayısını aşabilir. Bu, yönetim konsoluna daha fazla algılayıcı bağladığınızda oluşur. İzlenen cihazların sayısı ile kaydedilmiş cihazların sayısı arasında bir tutarsızlık varsa, yönetim konsolunda bir uyarı görüntülenir. Bu durumda yeni bir etkinleştirme dosyası yükleyin.
 
 ## <a name="set-up-a-certificate"></a>Sertifika ayarlama
 
@@ -316,6 +324,6 @@ Bir sensör atamasını kaldırmak ve silmek için:
 
 3. Atanmamış algılayıcıyı siteden silmek için, atanmamış algılayıcılar listesinden algılayıcı ' ı seçin ve öğesini seçin :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/delete-icon.png" border="false"::: .
 
-## <a name="next-steps"></a>Sonraki adımlar
+## <a name="see-also"></a>Ayrıca bkz.
 
 [Algılayıcı ve şirket içi yönetim konsolunda sorun giderme](how-to-troubleshoot-the-sensor-and-on-premises-management-console.md)

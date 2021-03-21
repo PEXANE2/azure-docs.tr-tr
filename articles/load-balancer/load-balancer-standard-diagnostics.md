@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 01/25/2021
 ms.author: allensu
 ms.openlocfilehash: 29584a9453fa052745f417cba0bbe940766c30e9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101699088"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Ölçümler, uyarılar ve kaynak durumu ile Standart Load Balancer
@@ -34,7 +34,7 @@ Azure Load Balancer, Azure portal Azure ölçümleri aracılığıyla çok boyut
 
 Çeşitli Standart Load Balancer yapılandırmalarında aşağıdaki ölçümler sağlanır:
 
-| Metric | Kaynak türü | Açıklama | Önerilen toplama |
+| Metric | Kaynak türü | Description | Önerilen toplama |
 | --- | --- | --- | --- |
 | Veri yolu kullanılabilirliği | Genel ve iç yük dengeleyici | Standart Load Balancer bir bölgedeki veri yolunu sürekli olarak yük dengeleyicinin ön ucuna (VM’nizi destekleyen SDN yığınına kadar) aktarır. Sağlıklı örnekler kaldığı sürece ölçüm, uygulamanızın yük dengeli trafiğiyle aynı yolu izler. Müşterilerinizin kullandığı veri yolu da doğrulanır. Ölçümler uygulamanızda görünmez ve diğer işlemleri engellemez.| Ortalama |
 | Sistem durumu yoklama durumu | Genel ve iç yük dengeleyici | Standart Load Balancer, yapılandırma ayarlarınıza göre uygulama uç noktanızın sistem durumunu izleyen dağıtılmış bir sistem durumu algılama hizmeti kullanır. Bu ölçüm, yük dengeleyici havuzundaki her örnek uç noktası için toplu veya uç noktası başına filtrelenmiş bir görünüm sunar. Durum yoklaması yapılandırmanızın belirttiği gibi Load Balancer’ın uygulamanızın durumunu nasıl görüntülediğini görebilirsiniz. |  Ortalama |
@@ -247,7 +247,7 @@ Kullanılan SNAT bağlantı noktalarından daha yüksek bir risk ile karşı, SN
 
 Standart Load Balancer kaynaklarının sistem durumu, **izleme > hizmeti sistem durumu** altında mevcut **kaynak sistem durumu** aracılığıyla gösterilir. Ön uç Yük Dengeleme uç noktalarınızın kullanılabilir olup olmadığını belirleyen veri yolu kullanılabilirliğini ölçerek her **iki dakikada** bir değerlendirilir.
 
-| Kaynak sistem durumu | Açıklama |
+| Kaynak sistem durumu | Description |
 | --- | --- |
 | Kullanılabilir | Standart yük dengeleyici kaynağınız sağlıklı ve kullanılabilir durumda. |
 | Düzeyi düşürüldü | Standart yük dengeleyiciye, performansı etkileyen platform veya Kullanıcı tarafından başlatılan olaylar vardır. Veri Yolu Kullanılabilirliği ölçümü en az iki dakika süreyle %90’dan az ama %25’ten fazla durum bildirdi. Orta derecede önemli performans etkisi yaşayacaktır. Kullanılabilirliğinin etkilenmesine neden olan kullanıcı tarafından başlatılan olaylar olup olmadığını öğrenmek için [sorun giderme RHC kılavuzunu izleyin](./troubleshoot-rhc.md) .

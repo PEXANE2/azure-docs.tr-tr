@@ -3,16 +3,16 @@ title: CLı betiği-yavaş sorgu günlüklerini Indirme-MariaDB için Azure veri
 description: Bu örnek Azure CLı betiği, MariaDB sunucusu için Azure veritabanı 'nın yavaş sorgu günlüklerini etkinleştirme ve indirme işlemini gösterir.
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 12/02/2019
-ms.openlocfilehash: 150467a5770cd8d2fa0f1fabe562674b55711bcc
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 2e185997f887e0fd90a7966087350f91aabee6d1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98664575"
 ---
 # <a name="enable-and-download-server-slow-query-logs-of-an-azure-database-for-mariadb-server-using-azure-cli"></a>Azure CLı kullanarak MariaDB için Azure veritabanı sunucusunun yavaş sorgu günlüklerini etkinleştirme ve indirme

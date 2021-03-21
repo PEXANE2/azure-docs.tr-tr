@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
 ms.openlocfilehash: 57b1d47fa40c0af4bced1e4169fe60cd759ee2f3
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97963647"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---admin-ui"></a>Öğretici: Palo Alto Networks-admin kullanıcı arabirimi ile Azure Active Directory tümleştirme
@@ -27,7 +27,7 @@ Azure AD ile Palo Alto Networks-admin kullanıcı arabirimine tümleştirme, aş
 * Kullanıcılarınızın Azure AD hesaplarıyla Networks-admin kullanıcı arabirimine (çoklu oturum açma) otomatik olarak oturum açmasını sağlayabilirsiniz.
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Palo Alto Networks-admin kullanıcı arabirimine göre yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -100,7 +100,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Yukarıdaki ' a ek olarak, Palo Alto Networks-admin kullanıcı arabirimi uygulaması, daha az sayıda özniteliğin aşağıda gösterilen SAML yanıtına geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Ad |  Kaynak özniteliği|
+    | Name |  Kaynak özniteliği|
     | --- | --- |
     | username | User. UserPrincipalName |
     | adminrole | customadmin |

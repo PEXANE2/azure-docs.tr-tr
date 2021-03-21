@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 07/28/2020
-ms.openlocfilehash: c6e3d56958168cd279c98a4ba4c021c2362c2694
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.date: 03/19/2021
+ms.openlocfilehash: 90755aef66fa51084d83d036722187b61449a6fc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421320"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104656915"
 ---
 # <a name="export-data-module"></a>Veri modülünü dışarı aktarma
 
@@ -45,13 +45,16 @@ Verilerinizi dışarı aktarmadan önce, önce Azure Machine Learning çalışma
     > [!NOTE]
     > Belirli bir veri türünün verilerinin başka bir veri türü olarak belirtilen bir SQL veritabanı sütununa aktarılması desteklenmez. Hedef tablonun önce mevcut olması gerekmez.
 
-1. Onay kutusu, **çıktıyı yeniden oluştur** , çalışma zamanında çıktıyı yeniden oluşturmak için modülün yürütülüp yürütülmeyeceğine karar verir. 
+1. Onay kutusu, **çıktıyı yeniden oluştur**, çalışma zamanında çıktıyı yeniden oluşturmak için modülün yürütülüp yürütülmeyeceğine karar verir. 
 
     Bu, varsayılan olarak seçili değildir, bu da modülün aynı parametrelerle daha önce yürütülmesi durumunda sistemin, çalışma süresini azaltmak için son çalıştırışınızda çıktıyı yeniden kullanacağı anlamına gelir. 
 
     Seçilirse, sistem çıktıyı yeniden oluşturmak için modülü yeniden yürütür.
 
-1. Verilerin bulunduğu veri deposundaki yolu tanımlayın. Yol, göreli bir yoldur. Boş yollara veya URL yollarına izin verilmez.
+1. Verilerin bulunduğu veri deposundaki yolu tanımlayın. Yol, göreli bir yoldur. `data/testoutput` Örnek olarak, **dışarı aktarma verilerinin** giriş verilerinin, `data/testoutput` modülün **Çıkış ayarlarında** ayarladığınız veri deposunda dışarı aktarılacağı anlamına gelir.
+
+    > [!NOTE]
+    > Boş yollar veya **URL yollarına** izin verilmez.
 
 
 1. **Dosya biçimi** için verilerin depolanacağı biçimi seçin.

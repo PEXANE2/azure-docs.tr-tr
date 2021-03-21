@@ -8,12 +8,12 @@ ms.date: 08/28/2020
 ms.author: cynthn
 ms.subservice: disks
 ms.collection: linux
-ms.openlocfilehash: a6ef2cd62fc14958e8505a03e69e4b20cf6ce49f
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 0fe584ea8559c285ee7e25caca958ff56aa9454d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102556834"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601842"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Bir Linux VM 'sine veri diski eklemek için portalı kullanma 
 Bu makalede, Azure portal aracılığıyla bir Linux sanal makinesine hem yeni hem de mevcut diskleri nasıl ekleyebileceğiniz gösterilmektedir. Ayrıca [, Azure Portal bir WINDOWS sanal makinesine veri diski ekleyebilirsiniz](../windows/attach-managed-disk-portal.md). 
@@ -81,7 +81,7 @@ Bu örnekte, eklediğim disk `sdc` . Bu bir LUN 0 ve 1 GB 'dir.
 
 Daha karmaşık bir örnek için, portalda birden çok veri diski şöyle görünür:
 
-:::image type="content" source="./media/attach-disk-portal/create-new-md.png" alt-text="Disk ayarlarını gözden geçirin.":::
+:::image type="content" source="./media/attach-disk-portal/find-disk.png" alt-text="Portalda gösterilen birden çok diskin ekran görüntüsü.":::
 
 Görüntüde 3 veri diski olduğunu görebilirsiniz: LUN 0 üzerinde 4 GB, LUN 1 ' de 16GB ve LUN 2 ' de 32G.
 
@@ -227,6 +227,6 @@ Linux sanal makinenizde KıRPMA desteğini etkinleştirmenin iki yolu vardır. H
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi edinmek ve disk sorunlarını gidermeye yardımcı olmak için bkz. [LINUX VM cihaz adı değişikliklerinde sorun giderme](../troubleshooting/troubleshoot-device-names-problems.md).
+Daha fazla bilgi edinmek ve disk sorunlarını gidermeye yardımcı olmak için bkz. [LINUX VM cihaz adı değişikliklerinde sorun giderme](/troubleshoot/azure/virtual-machines/troubleshoot-device-names-problems).
 
 Ayrıca, Azure CLı kullanarak [bir veri diski](add-disk.md) ekleyebilirsiniz.

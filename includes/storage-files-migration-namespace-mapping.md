@@ -8,10 +8,10 @@ ms.date: 2/20/2020
 ms.author: fauhse
 ms.subservice: files
 ms.openlocfilehash: 265d14d7cca05ff510e747c8d3a3b071e44a0a68
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102202408"
 ---
 Bu adımda, kaç tane Azure dosya paylaşımının gerekli olduğunu değerlendirirsiniz. Tek bir Windows Server örneği (veya kümesi), 30 adede kadar Azure dosya paylaşımını eşitleyebilir.

@@ -4,10 +4,10 @@ description: Bu makalede, kapsayıcının nasıl çalıştığını ve performan
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.openlocfilehash: 58797221fa3380e4f7533a710e2f8dc658cb676c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101708365"
 ---
 # <a name="enable-container-insights"></a>Kapsayıcı öngörülerini etkinleştir
@@ -86,7 +86,7 @@ Aşağıdaki tabloda kapsayıcı öngörüleri ile iletişim kurmak üzere Kapsa
 
 Aşağıdaki tabloda, Azure Çin 21Vianet için proxy ve güvenlik duvarı yapılandırma bilgileri listelenmektedir:
 
-|Aracı kaynağı|Bağlantı noktası |Açıklama | 
+|Aracı kaynağı|Bağlantı noktası |Description | 
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.cn` | 443 | Veri alımı |
 | `*.oms.opinsights.azure.cn` | 443 | OMS ekleme |
@@ -94,7 +94,7 @@ Aşağıdaki tabloda, Azure Çin 21Vianet için proxy ve güvenlik duvarı yapı
 
 Aşağıdaki tabloda, Azure ABD kamu için proxy ve güvenlik duvarı yapılandırma bilgileri listelenmektedir:
 
-|Aracı kaynağı|Bağlantı noktası |Açıklama | 
+|Aracı kaynağı|Bağlantı noktası |Description | 
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.us` | 443 | Veri alımı |
 | `*.oms.opinsights.azure.us` | 443 | OMS ekleme |

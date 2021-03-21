@@ -11,11 +11,11 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e163ea34948906060996ee952f45ec0cdb467557
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: bbb4298d0d9a9d7589c4a2055b4d55a0b852f951
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97504364"
 ---
 # <a name="hybrid-identity-considerations-for-the-azure-government-cloud"></a>Azure Kamu Bulutu için karma kimlik konuları
@@ -24,9 +24,6 @@ Bu makalede, karma bir ortamı Microsoft Azure Kamu bulutu ile tümleştirmeyle 
 
 > [!NOTE]
 > Azure Kamu bulutu ile bir Microsoft Active Directory ortamını (Şirket içinde veya aynı bulut örneğinin parçası olan bir IaaS 'de barındırılan) bütünleştirmek için, en son [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)sürümüne yükseltmeniz gerekir.
-
-> [!NOTE]
-> Bu makalede, Microsoft tarafından kullanılmayan bir terim olan *beyaz liste* teriminin başvuruları yer almaktadır. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
 
 Savunma uç noktalarının Birleşik Devletler kamu departmanı tam listesi için [belgelere](/office365/enterprise/office-365-u-s-government-dod-endpoints)bakın.
 

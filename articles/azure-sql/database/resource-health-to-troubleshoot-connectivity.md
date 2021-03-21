@@ -12,10 +12,10 @@ ms.author: aamalvea
 ms.reviewer: wiassaf, sstein
 ms.date: 02/26/2019
 ms.openlocfilehash: 1a74a2f44ac9b03e39e9fea48a3428b82111a48c
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103472007"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği ile ilgili bağlantı sorunlarını gidermek için Kaynak Durumu kullanma

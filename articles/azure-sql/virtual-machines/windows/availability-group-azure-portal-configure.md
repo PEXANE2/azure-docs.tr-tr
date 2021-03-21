@@ -15,10 +15,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019, devx-track-azurecli
 ms.openlocfilehash: 14760b4244d42e57aaed7f7d96f487a66147a554
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97359515"
 ---
 # <a name="use-azure-portal-to-configure-an-availability-group-preview-for-sql-server-on-azure-vm"></a>Azure VM 'de SQL Server için bir kullanılabilirlik grubu (Önizleme) yapılandırmak üzere Azure portal kullanma 
@@ -60,7 +60,7 @@ Zaten bir kümeniz varsa, bu bölümü atlayın ve bunun yerine [var olan kümey
 
 Zaten mevcut bir kümeniz yoksa, aşağıdaki adımlarla Azure portal kullanarak oluşturun:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. 
+1. [Azure portal](https://portal.azure.com) oturum açın. 
 1. [SQL sanal makineler](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) kaynağına gidin. 
 1. **Ayarlar** altında **yüksek kullanılabilirlik** ' i seçin. 
 1. **Windows Yük devretme kümesini Yapılandır** sayfasını açmak Için **+ Yeni Windows Server yük devretme kümesi ' ni** seçin.  
@@ -91,7 +91,7 @@ SQL Server VM ortamınızda yapılandırılmış bir kümeniz zaten varsa, bunu 
 
 Bunu yapmak için aşağıdaki adımları izleyin:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. 
+1. [Azure portal](https://portal.azure.com) oturum açın. 
 1. [SQL sanal makineler](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) kaynağına gidin. 
 1. **Ayarlar** altında **yüksek kullanılabilirlik** ' i seçin. 
 1. **Mevcut Windows Server yük devretme kümesini** ekleme ' yi seçerek **Windows Server yük devretme kümesi** ekleme sayfasını açın. 
@@ -105,7 +105,7 @@ Bunu yapmak için aşağıdaki adımları izleyin:
 
 Kümeniz oluşturulduktan veya eklendi olduktan sonra, Azure portal kullanarak kullanılabilirlik grubunu oluşturun. Bunu yapmak için aşağıdaki adımları izleyin:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. 
+1. [Azure portal](https://portal.azure.com) oturum açın. 
 1. [SQL sanal makineler](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) kaynağına gidin. 
 1. **Ayarlar** altında **yüksek kullanılabilirlik** ' i seçin. 
 1. **Kullanılabilirlik grubu oluştur** sayfasını açmak Için **+ Yeni Always on kullanılabilirlik grubu '** nu seçin.
@@ -160,7 +160,7 @@ Veritabanları eklendikten sonra, Azure portal kullanılabilirlik grubunuzun dur
 
 Kümeye daha fazla SQL Server VM eklemek için şu adımları izleyin: 
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. 
+1. [Azure portal](https://portal.azure.com) oturum açın. 
 1. [SQL sanal makineler](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) kaynağına gidin. 
 1. **Ayarlar** altında **yüksek kullanılabilirlik** ' i seçin. 
 1. Windows Server yük devretme kümesini **Yapılandır** sayfasını açmak Için **Windows Server yük devretme kümesini Yapılandır** ' ı seçin. 
@@ -248,7 +248,7 @@ Portal aracılığıyla küme ve kullanılabilirlik grubundaki değişiklikler d
 
 Dağıtımın günlüklerini görüntülemek ve dağıtım geçmişini denetlemek için şu adımları izleyin:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure portal](https://portal.azure.com) oturum açın.
 1. Kaynak grubunuza gidin.
 1. **Ayarlar** altında **dağıtımlar** ' ı seçin.
 1. Dağıtım hakkında daha fazla bilgi edinmek için ilgilendiğiniz dağıtımı seçin. 

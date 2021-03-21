@@ -15,10 +15,10 @@ ms.date: 09/1/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
 ms.openlocfilehash: 083bd56b2b211d11206a277bf31eea797b37cdb9
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99979938"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Öğretici: ASP.NET Core uygulamasında dinamik yapılandırmayı kullanma
@@ -66,7 +66,7 @@ Devam etmeden önce, önce [uygulama yapılandırması ile bir ASP.NET Core uygu
     dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore
     ```
 
-1. *Program.cs*'i açın ve `CreateWebHostBuilder` yöntemi eklemek için yöntemi güncelleştirin `config.AddAzureAppConfiguration()` .
+1. *Program. cs*' yi açın ve yöntemi `CreateWebHostBuilder` eklemek için yöntemi güncelleştirin `config.AddAzureAppConfiguration()` .
 
    #### <a name="net-5x"></a>[.NET 5. x](#tab/core5x)
 
@@ -142,7 +142,7 @@ Devam etmeden önce, önce [uygulama yapılandırması ile bir ASP.NET Core uygu
 
     Bir yenileme işlemini gerçekten tetiklemek için, herhangi bir değişiklik gerçekleştiğinde uygulamanın yapılandırma verilerini yenilemesi için bir yenileme ara yazılımı yapılandırmanız gerekir. Bu, sonraki bir adımda nasıl yapılacağını göreceksiniz.
 
-2. Yeni bir sınıfı tanımlayan ve uygulayan Controllers dizinine bir *Settings.cs* dosyası ekleyin `Settings` . Ad alanını projenizin adıyla değiştirin. 
+2. Yeni bir sınıfı tanımlayan ve uygulayan Controllers dizinine bir *Settings. cs* dosyası ekleyin `Settings` . Ad alanını projenizin adıyla değiştirin. 
 
     ```csharp
     namespace TestAppConfig
@@ -157,7 +157,7 @@ Devam etmeden önce, önce [uygulama yapılandırması ile bir ASP.NET Core uygu
     }
     ```
 
-3. *Startup.cs*' yi açın ve `IServiceCollection.Configure<T>` yöntemi içinde kullanarak `ConfigureServices` yapılandırma verilerini `Settings` sınıfa bağlayın.
+3. *Başlangıç. cs*' yi açın ve `IServiceCollection.Configure<T>` yöntemi içinde kullanarak `ConfigureServices` yapılandırma verilerini `Settings` sınıfa bağlayın.
 
     #### <a name="net-5x"></a>[.NET 5. x](#tab/core5x)
 
@@ -291,7 +291,7 @@ Devam etmeden önce, önce [uygulama yapılandırması ile bir ASP.NET Core uygu
 
 ## <a name="use-the-latest-configuration-data"></a>En son yapılandırma verilerini kullan
 
-1. Denetleyiciler dizininde *HomeController.cs* ' i açın ve pakete bir başvuru ekleyin `Microsoft.Extensions.Options` .
+1. Controllers dizinindeki *HomeController. cs* ' yi açın ve pakete bir başvuru ekleyin `Microsoft.Extensions.Options` .
 
     ```csharp
     using Microsoft.Extensions.Options;

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 23c2b55fd56677a15f444e1b568517bdf1c32c99
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: ad6d5308638b112afe2b51c4e149f876651e429d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102200810"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592532"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex"></a>Öğretici: Cisco WebEx ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -38,7 +38,7 @@ Başlamak için aşağıdaki öğeler gereklidir:
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
 * Cisco WebEx, **SP** tarafından başlatılan SSO 'yu destekler.
-* Cisco WebEx [**Otomatik Kullanıcı sağlamayı**](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-webex-provisioning-tutorial)destekler.
+* Cisco WebEx [**Otomatik Kullanıcı sağlamayı**](./cisco-webex-provisioning-tutorial.md)destekler.
 
 ## <a name="adding-cisco-webex-from-the-gallery"></a>Galeriden Cisco WebEx ekleme
 
@@ -159,7 +159,7 @@ Bu bölümde, Cisco WebEx erişimi vererek Azure çoklu oturum açma özelliğin
 
 ### <a name="create-cisco-webex-test-user"></a>Cisco WebEx test kullanıcısı oluşturma
 
-Bu bölümde, Cisco WebEx içinde B. Simon adlı bir Kullanıcı oluşturulur. Bu uygulama, iş kurallarınız temelinde otomatik sağlama ve sağlamayı kaldırma sağlayan otomatik Kullanıcı sağlamayı destekler.  Microsoft, mümkün olduğunda otomatik sağlama kullanılmasını önerir. Bkz. [Cisco WebEx](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-webex-provisioning-tutorial)için otomatik sağlamayı etkinleştirme.
+Bu bölümde, Cisco WebEx içinde B. Simon adlı bir Kullanıcı oluşturulur. Bu uygulama, iş kurallarınız temelinde otomatik sağlama ve sağlamayı kaldırma sağlayan otomatik Kullanıcı sağlamayı destekler.  Microsoft, mümkün olduğunda otomatik sağlama kullanılmasını önerir. Bkz. [Cisco WebEx](./cisco-webex-provisioning-tutorial.md)için otomatik sağlamayı etkinleştirme.
 
 El ile bir kullanıcı oluşturmanız gerekiyorsa aşağıdaki adımları gerçekleştirin:
 
@@ -195,7 +195,7 @@ Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki se�
 
 * Cisco WebEx oturum açma URL 'sine doğrudan gidin ve oturum akışını buradan başlatın.
 
-* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım içindeki Cisco WebEx kutucuğuna tıkladığınızda bu işlem Cisco WebEx oturum açma URL 'sine yönlendirilir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım içindeki Cisco WebEx kutucuğuna tıkladığınızda bu işlem Cisco WebEx oturum açma URL 'sine yönlendirilir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
