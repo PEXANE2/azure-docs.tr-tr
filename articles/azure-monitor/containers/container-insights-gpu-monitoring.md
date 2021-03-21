@@ -4,10 +4,10 @@ description: Bu makalede, kapsayıcı öngörüleri ile NVıDıA ve AMD GPU etki
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.openlocfilehash: 2958b000ac0dabcd7fddf75a58f553b705a95e9a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101731876"
 ---
 # <a name="configure-gpu-monitoring-with-container-insights"></a>Kapsayıcı öngörüleri ile GPU izlemeyi yapılandırma
@@ -27,7 +27,7 @@ Kapsayıcı öngörüleri, düğüm üzerindeki GPU kullanımını otomatik olar
 >[!NOTE]
 >Küme, GPU düğümleri ile sağlandıktan sonra GPU iş yüklerini çalıştırmak için AKS 'in gerektirdiği şekilde [GPU sürücüsünün](../../aks/gpu-cluster.md) yüklü olduğundan emin olun. Kapsayıcı öngörüleri, düğüm içinde çalışan GPU sürücü Pod aracılığıyla GPU ölçümleri toplar. 
 
-|Ölçüm adı |Ölçüm boyutu (Etiketler) |Açıklama |
+|Ölçüm adı |Ölçüm boyutu (Etiketler) |Description |
 |------------|------------------------|------------|
 |Containergpudutyıcycle |container.azm.ms/clusterId, container.azm.ms/clusterName, containerName, gpuId, gpuModel, gpuVendor|GPU 'nun bir kapsayıcı için meşgul/etkin olarak işlenmesi sırasında geçen örnek dönem (60 saniye) üzerinden geçen sürenin yüzdesi. Vergi çevrimi 1 ile 100 arasında bir sayıdır. |
 |Containergpulimit |container.azm.ms/clusterId, container.azm.ms/clusterName, containerName |Her kapsayıcı, bir veya daha fazla GPU olarak sınırlar belirtebilir. GPU 'nun bir kesiri istemek veya sınırlamak mümkün değildir. |

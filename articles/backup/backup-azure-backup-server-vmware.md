@@ -4,10 +4,10 @@ description: Bu makalede, VMware vCenter/ESXi sunucusunda çalışan VMware VM '
 ms.topic: conceptual
 ms.date: 05/24/2020
 ms.openlocfilehash: db5e5c4bdac64e2faf5babb107ecec61a02d6468
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96002962"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Azure Backup Sunucusu ile VMware VM 'lerini yedekleme
@@ -213,7 +213,7 @@ Aşağıdaki tablo, oluşturduğunuz Kullanıcı hesabına atamanız gereken ayr
 | Global. Manage özel öznitelikler | DataStore. AllocateSpace |
 | Global. set özel özniteliği | VirtualMachine.Config. Değişiklik izleme dosyanız |
 | Ana bilgisayar. yerel işlemler. Sanal makine oluştur | VirtualMachine. State. RemoveSnapshot |
-| Network. Ağ ata | VirtualMachine. State. CreateSnapshot |
+| Ağ. Ağ ata | VirtualMachine. State. CreateSnapshot |
 | Kaynak. Sanal makineyi kaynak havuzuna ata | VirtualMachine. sağlama. DiskRandomRead |
 | Sanal machine.Configurlama. Yeni Disk Ekle | VirtualMachine. etkileşim. PowerOff |
 | Sanal machine.Configurlama. İleri | VirtualMachine. Inventory. Create |

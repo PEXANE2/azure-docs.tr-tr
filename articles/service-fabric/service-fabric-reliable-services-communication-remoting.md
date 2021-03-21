@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/20/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a0486a27d76c978a65c4a3cfd81df52a12e4ea1d
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98791586"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>Reliable Services Ile C# ' de hizmet uzaktan iletişimi
@@ -267,7 +267,7 @@ V2_1 yığınına geçmek için aşağıdaki adımları izleyin.
 
 ### <a name="use-explicit-remoting-classes-to-create-a-listenerclient-factory-for-the-v2-interface-compatible-version"></a>V2 (arabirim ile uyumlu) sürümü için bir dinleyici/istemci fabrikası oluşturmak üzere açık uzaktan iletişim sınıfları kullanın
 
-Şu adımları uygulayın:
+Şu adımları izleyin:
 
 1. Hizmet bildiriminde "ServiceEndpointV2_1" adlı bir uç nokta kaynağı ekleyin.
 
@@ -356,7 +356,7 @@ Bu adım, hizmetin yalnızca v2 dinleyicisine dinlediğinden emin olmanızı sa�
 ### <a name="use-custom-serialization-with-a-remoting-wrapped-message"></a>Uzaktan, Sarmalanan bir ileti ile özel serileştirme kullanma
 
 Uzaktan iletişim sarmalanmış bir ileti için, içinde bir alan olarak tüm parametreleri içeren tek bir Sarmalanan nesne oluşturacağız.
-Şu adımları uygulayın:
+Şu adımları izleyin:
 
 1. `IServiceRemotingMessageSerializationProvider`Özel serileştirme için uygulama sağlamak üzere arabirimini uygulayın.
     Bu kod parçacığı, uygulamanın nasıl göründüğünü gösterir.

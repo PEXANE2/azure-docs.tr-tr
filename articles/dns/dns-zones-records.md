@@ -10,10 +10,10 @@ ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: rohink
 ms.openlocfilehash: 41eb15a38c97532951723f12d1ac74c90c838eb1
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94968205"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>DNS bölgelerine ve kayıtlarına genel bakış
@@ -113,7 +113,7 @@ Etiketler, ad-değer çiftleri listesidir ve kaynakları etiketlemek için Azure
 
 Azure DNS, DNS bölge kaynaklarında Azure Resource Manager etiketlerin kullanılmasını destekler.  DNS kayıt kümelerinde etiketleri desteklemez, ancak aşağıda açıklandığı gibi DNS kayıt kümelerinde alternatif bir ' Metadata ' desteklenir.
 
-### <a name="metadata"></a>Meta Veriler
+### <a name="metadata"></a>Meta veri
 
 Kayıt kümesi etiketlerinin bir alternatifi olarak Azure DNS, ' Metadata ' kullanarak kayıt kümelerine açıklama eklemeyi destekler.  Etiketlere benzer şekilde meta veriler, ad-değer çiftlerini her bir kayıt kümesiyle ilişkilendirmenizi sağlar.  Bu, örneğin, her bir kayıt kümesinin amacını kaydetmek yararlı olabilir.  Etiketlerin aksine, meta veriler Azure faturanızda filtrelenmiş bir görünüm sağlamak için kullanılamaz ve bir Azure Resource Manager ilkesinde belirtilemez.
 

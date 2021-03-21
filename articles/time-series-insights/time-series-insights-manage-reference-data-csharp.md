@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: d6f0e5230fb3c59cab690620e837f476f3392a48
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95020087"
 ---
 # <a name="manage-reference-data-for-an-azure-time-series-insights-gen-1-environment-using-c-sharp"></a>C Sharp kullanarak Azure Time Series Insights Gen 1 ortamı için başvuru verilerini yönetme
@@ -23,7 +23,7 @@ ms.locfileid: "95020087"
 > [!CAUTION]
 > Bu bir Gen1 makaledir.
 
-Bu makalede, MSAL.NET Gen 1 [başvuru VERI YÖNETIMI apı](/rest/api/time-series-insights/gen1-reference-data-api)Azure Time Series Insights 'SINE programlı API istekleri yapmak Için C#, [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)ve Azure Active Directory nasıl birleştirileceğini gösterilmektedir.
+Bu makalede, MSAL.NET Gen 1 [başvuru VERI YÖNETIMI apı](/rest/api/time-series-insights/gen1-reference-data-api)Azure Time Series Insights 'SINE programlı API istekleri yapmak Için C#, [](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)ve Azure Active Directory nasıl birleştirileceğini gösterilmektedir.
 
 > [!TIP]
 > ' Deki GA C# kod örneklerini görüntüleyin [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen1-sample/csharp-tsi-gen1-sample) .
@@ -61,10 +61,10 @@ Aşağıdaki örnek kod aşağıdaki özellikleri göstermektedir:
 
 ## <a name="project-dependencies"></a>Proje bağımlılıkları
 
-Visual Studio 'nun en yeni sürümünü ve **Netcore. app**' i kullanmanız önerilir:
+Visual Studio ve **NETCore.app**'ın en yeni sürümünü kullanmanız önerilir:
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) -sürüm 16.4.2 +
-* [Netcore. app](https://www.nuget.org/packages/Microsoft.NETCore.App/2.2.8) -Version 2.2.8
+* [NETCore.app](https://www.nuget.org/packages/Microsoft.NETCore.App/2.2.8) -sürüm 2.2.8
 
 Örnek kodun iki zorunlu bağımlılığı vardır:
 

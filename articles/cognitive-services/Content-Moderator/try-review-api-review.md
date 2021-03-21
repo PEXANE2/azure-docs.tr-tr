@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: pafarley
 ms.openlocfilehash: 479c7c455f07d098edd327196803e85df24dfb6d
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96905177"
 ---
 # <a name="create-human-reviews-api-console"></a>İnsan incelemeleri oluşturma (API konsolu)
@@ -135,7 +135,7 @@ Varsayılan istek gövdesi, oluşturabileceğiniz farklı gözden geçirmeler t�
 
 ### <a name="examine-the-new-review"></a>Yeni incelemeyi inceleyin
 
-[İnceleme aracında](https://contentmoderator.cognitive.microsoft.com)görüntü metni videosunu **gözden geçir**' i  >  **Image** / **Text** / **Video** (kullandığınız içeriğe göre) seçin. Karşıya yüklediğiniz içerik görünür, insan gözden geçirmesi için hazırlanın.
+[İnceleme aracında](https://contentmoderator.cognitive.microsoft.com)görüntü metni videosunu **gözden geçir**' i  >   /  /  (kullandığınız içeriğe göre) seçin. Karşıya yüklediğiniz içerik görünür, insan gözden geçirmesi için hazırlanın.
 
 ![Futbol topu araç görüntüsünü gözden geçirme](images/test-drive-review-5.PNG)
 

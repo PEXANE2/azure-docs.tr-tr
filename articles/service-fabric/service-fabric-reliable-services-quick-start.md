@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: sfrev, devx-track-csharp
 ms.openlocfilehash: 45341c98a40cbcabfa8b96f2016f02f1755fe2b3
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98791536"
 ---
 # <a name="get-started-with-reliable-services"></a>Reliable Services özelliğini kullanmaya başlayın
@@ -47,7 +47,7 @@ Daha sonra, *Merhaba worlddurumsuz* adlı **.NET Core 2,0** kullanarak durum bil
 
 ## <a name="implement-the-service"></a>Hizmeti uygulama
 
-**HelloWorldStateless.cs** dosyasını hizmet projesinde açın. Service Fabric, bir hizmet herhangi bir iş mantığını çalıştırabilir. Service API 'SI, kodunuz için iki giriş noktası sağlar:
+Hizmet projesindeki **Merhaba Dünya durum bilgisiz. cs** dosyasını açın. Service Fabric, bir hizmet herhangi bir iş mantığını çalıştırabilir. Service API 'SI, kodunuz için iki giriş noktası sağlar:
 
 * Uzun süre çalışan işlem iş yükleri dahil olmak üzere herhangi bir iş yükünü yürütmeye başlayabileceğiniz *RunAsync* adlı bir açık uçlu giriş noktası yöntemi.
 
@@ -127,7 +127,7 @@ Uygulamanızın Şu anda iki hizmeti olmalıdır: durum bilgisi olmayan hizmet *
 
 Durum bilgisi olan bir hizmet, durum bilgisi olmayan bir hizmetle aynı giriş noktalarına sahiptir. Temel fark, durumu güvenilir bir şekilde depolayabilen bir *durum sağlayıcısının* kullanılabilirliğinden oluşur. Service Fabric, güvenilir [koleksiyonlar](service-fabric-reliable-services-reliable-collections.md)adlı bir durum sağlayıcısı uygulamasıyla birlikte gelir, bu da güvenilir durum Yöneticisi aracılığıyla çoğaltılan veri yapıları oluşturmanızı sağlar. Durum bilgisi olan güvenilir bir hizmet, varsayılan olarak bu durum sağlayıcısını kullanır.
 
-Aşağıdaki RunAsync metodunu içeren *Merhaba Dünya durum bilgisi* içinde **HelloWorldStateful.cs** açın:
+Aşağıdaki RunAsync metodunu içeren Merhaba Dünya *durum* bilgisi olan Merhaba Dünya durum **bilgisi. cs** açın:
 
 ```csharp
 protected override async Task RunAsync(CancellationToken cancellationToken)

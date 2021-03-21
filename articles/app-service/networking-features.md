@@ -8,10 +8,10 @@ ms.date: 10/18/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 730f26039db0f5441563ac7bf5d6b0ab536cbcd2
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99593138"
 ---
 # <a name="app-service-networking-features"></a>App Service ağ özellikleri
@@ -43,7 +43,7 @@ Not edilen özel durumlar dışında, bu özelliklerin tümünü birlikte kullan
 
 Belirli bir kullanım durumu için, sorunu çözmenin birkaç yolu olabilir. En iyi özelliğin seçilmesi, bazen kullanım durumunun ötesinde gelir. Aşağıdaki gelen kullanım örnekleri, uygulamanıza giden trafiği denetleme sorunlarını gidermek için App Service ağ özelliklerini kullanmayı önerir:
  
-| Gelen kullanım durumu | Öne çıkan özelliği |
+| Gelen kullanım durumu | Özellik |
 |---------------------|-------------------|
 | Uygulamanız için IP tabanlı SSL gereksinimlerini destekleme | Uygulama tarafından atanan adres |
 | Uygulamanız için paylaşılmayan adanmış gelen adresi destekleme | Uygulama tarafından atanan adres |
@@ -56,7 +56,7 @@ Belirli bir kullanım durumu için, sorunu çözmenin birkaç yolu olabilir. En 
 
 Aşağıdaki giden kullanım örnekleri, uygulamanız için giden erişim ihtiyaçlarını çözümlemek üzere App Service ağ özelliklerini kullanmayı önerir:
 
-| Giden kullanım durumu | Öne çıkan özelliği |
+| Giden kullanım durumu | Özellik |
 |---------------------|-------------------|
 | Aynı bölgedeki bir Azure sanal ağındaki kaynaklara erişme | Sanal Ağ Tümleştirmesi </br> ASE |
 | Farklı bir bölgedeki Azure sanal ağındaki kaynaklara erişme | Ağ Geçidi-gerekli VNet tümleştirmesi </br> ATıCı ve sanal ağ eşlemesi |

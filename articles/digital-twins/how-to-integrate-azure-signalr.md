@@ -8,10 +8,10 @@ ms.date: 02/12/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 89bd77c30ec52a72087598b86f22e85659fa1b0e
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102203904"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Azure Digital TWINS 'i Azure SignalR hizmeti ile tümleştirme
@@ -65,7 +65,7 @@ Bu bölümde, iki Azure işlevi ayarlayacaksınız:
 
 Visual Studio 'Yu (veya seçtiğiniz başka bir kod düzenleyicisini) başlatın ve Code çözümünü *Digital-TWINS-Samples-master > ADTSampleApp* klasöründe açın. Ardından, işlevleri oluşturmak için aşağıdaki adımları uygulayın:
 
-1. *Samplefunctionsapp* projesinde, **SignalRFunctions.cs** adlı yeni bir C# sınıfı oluşturun.
+1. *Samplefunctionsapp* projesinde, **signalrfunctions. cs** adlı yeni bir C# sınıfı oluşturun.
 
 1. Sınıf dosyasının içeriğini aşağıdaki kodla değiştirin:
     

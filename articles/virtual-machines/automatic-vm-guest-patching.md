@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 02/17/2021
 ms.author: manayar
 ms.openlocfilehash: 276762bc2b8624f687cbb77e1af771478791a57b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101680319"
 ---
 # <a name="preview-automatic-vm-guest-patching-for-azure-vms"></a>Önizleme: Azure VM 'Leri için otomatik VM Konuk düzeltme eki uygulama
@@ -308,7 +308,7 @@ Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM" -Status
 
 PowerShell Şu anda yalnızca yama uzantısı hakkında bilgi sağlamaktadır. Hakkındaki bilgiler `patchStatus` yakında PowerShell aracılığıyla da kullanılabilir.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 VM 'niz için örnek görünümüne erişmek için [az VM Get-instance-View](/cli/azure/vm#az-vm-get-instance-view) kullanın.
 
 ```azurecli-interactive
@@ -343,7 +343,7 @@ Sanal makineniz için kullanılabilir düzeltme eklerini değerlendirmek üzere 
 Invoke-AzVmPatchAssessment -ResourceGroupName "myResourceGroup" -VMName "myVM"
 ```
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 Sanal makineniz için kullanılabilir düzeltme eklerini değerlendirmek için [az VM değerlendir-Patches](/cli/azure/vm#az-vm-assess-patches) kullanın.
 
 ```azurecli-interactive

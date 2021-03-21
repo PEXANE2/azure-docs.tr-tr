@@ -14,17 +14,17 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.openlocfilehash: 86543b961698e736b2211553b0dca367b28158ef
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98795665"
 ---
 # <a name="application-model"></a>Uygulama modeli
 
 Uygulamalar, kullanıcıların kendilerine oturum açmasını veya bir kimlik sağlayıcısı için oturum açma yetkisini devredebilir. Bu makalede, bir uygulamayı Microsoft Identity platformu ile kaydetmek için gereken adımlar ele alınmaktadır.
 
-## <a name="register-an-application"></a>Uygulamaları kaydetme
+## <a name="register-an-application"></a>Bir uygulamayı kaydetme
 
 Bir kimlik sağlayıcısının bir kullanıcının belirli bir uygulamaya erişimi olduğunu bilmesini sağlamak için, hem Kullanıcı hem de uygulamanın kimlik sağlayıcısına kayıtlı olması gerekir. Uygulamanızı Azure Active Directory (Azure AD) ile kaydettiğinizde, uygulamanız için Microsoft Identity platformu ile tümleşmesini sağlayan bir kimlik yapılandırması sağladığınızı unutmayın. Uygulamayı kaydetmek şunları da sağlar:
 

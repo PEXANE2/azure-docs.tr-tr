@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
 ms.openlocfilehash: 639f2ef12d190a56e04a9b48d96ea0a6537d243c
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95020121"
 ---
 # <a name="azure-time-series-insights-gen1-explorer"></a>Azure Time Series Insights Gen1 Gezgini
@@ -111,7 +111,7 @@ Olay kaynağınızı Azure Time Series Insights ortamınıza bağlama sırasınd
 
 1. Belirli bir sorgudaki benzersiz veya anormal veri serisini hızlıca belirlemek için **ısı haritasını** ' i kullanın. Tek bir arama terimi, heatmap olarak görselleştirilir.
 
-    [Time Series Insights Explorer ısı haritasını grafiğini](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)oluşturma] (Media/Time-Series-Insights-Explorer/tsi-ga-example-heatmap-charting.png # lightbox)
+    [Time Series Insights Explorer ısı haritasını grafiğini](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)oluşturma] (medya/saat-serisi-Öngörüler-gezgin/tsi-ga-example-heatmap-charting.png#lightbox)
 
 1. Olayları araştırdığınızda veya sağ tıkladıktan sonra **Olaylar** paneli kullanılabilir hale getirilir. Burada, tüm ham olaylarınızı gözden geçirebilir ve olaylarınızı JSON veya CSV dosyaları olarak dışarı aktarabilirsiniz. Azure Time Series Insights tüm ham verileri depolar.
 

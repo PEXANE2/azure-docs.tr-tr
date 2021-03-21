@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
 ms.openlocfilehash: 43c39c40af6e02861211a8666fefa57c34072f32
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96905205"
 ---
 # <a name="content-moderation-reviews-workflows-and-jobs"></a>İçerik denetleme incelemeleri, iş akışları ve işler
@@ -30,7 +30,7 @@ Content Moderator, gerçek dünyada senaryolar için en iyi denetleme sürecini 
 
 ### <a name="manage-reviews"></a>İncelemeleri yönetme
 
-Panodan yönetici **Admin**  ->  ekranını görüntülemek için yönetici **gözden geçirmeleri Yönet** ' e gidin. Burada, tüm incelemelerinin bir listesini görebilirsiniz (bekliyor ve tamamlandı).
+Panodan yönetici   ->  ekranını görüntülemek için yönetici **gözden geçirmeleri Yönet** ' e gidin. Burada, tüm incelemelerinin bir listesini görebilirsiniz (bekliyor ve tamamlandı).
 
 Her incelemede üç noktalı **Eylemler** düğmesi İnceleme ekranına gitmenizi veya gözden geçirin geçmişini incelemenizi sağlar.
 

@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 5f94564c5e769d3cf0e0abbe92a309a1ee2117a1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96003880"
 ---
 # <a name="deploy-the-storsimple-snapshot-manager-mmc-snap-in"></a>StorSimple Snapshot Manager MMC ek bileşenini dağıtma
@@ -117,7 +117,7 @@ StorSimple Snapshot Manager StorSimple cihazına bağlamak için aşağıdaki ad
 2. **Kapsam** bölmesinde, **cihazlar** düğümüne sağ tıklayın ve ardından **cihaz yapılandırma**' ya tıklayın. **Cihaz Yapılandır** iletişim kutusu görüntülenir.
    
     ![Cihaz yapılandırma](./media/storsimple-snapshot-manager-deployment/HCS_SSM_config_device.png) 
-3. **Cihaz** liste kutusunda Microsoft Azure StorSimple cihazının veya sanal cihazın IP adresini seçin. **Parola** metin kutusuna, Azure Portal cihaz Için oluşturduğunuz storsimple Snapshot Manager parolasını yazın. **Tamam** düğmesine tıklayın.
+3. **Cihaz** liste kutusunda Microsoft Azure StorSimple cihazının veya sanal cihazın IP adresini seçin. **Parola** metin kutusuna, Azure Portal cihaz Için oluşturduğunuz storsimple Snapshot Manager parolasını yazın. **Tamam**'a tıklayın.
 4. StorSimple Snapshot Manager, tanımladığınız cihazı arar. Cihaz kullanılabiliyorsa, StorSimple Snapshot Manager bir bağlantı ekler. Bağlantının başarıyla eklendiğini doğrulamak için [cihazla olan bağlantıyı doğrulayabilirsiniz](#to-verify-the-connection) .
    
     Cihaz herhangi bir nedenle kullanılamıyorsa, StorSimple Snapshot Manager bir hata mesajı döndürür. **Tamam** ' a tıklayarak hata iletisini kapatın ve ardından **iptal** ' e tıklayarak **bir cihaz Yapılandır** iletişim kutusunu kapatın.
@@ -173,7 +173,7 @@ StorSimple Snapshot Manager veritabanının bir kopyasını oluşturmak ve kayde
    3. **Hizmetler** sayfasında, **Microsoft StorSimple yönetim hizmeti**' ni seçin.
    4. Sağ bölmedeki **Microsoft StorSimple yönetim hizmeti** altında **hizmeti Durdur**' a tıklayın.
       
-        ![StorSimple Aygıt Yöneticisi hizmetini durdurun](./media/storsimple-snapshot-manager-deployment/HCS_SSM_stop_service.png)
+        ![StorSimple Device Manager hizmetini durdurun](./media/storsimple-snapshot-manager-deployment/HCS_SSM_stop_service.png)
 2. C:\programdata\microsoft\storsimple\bacatalogdizinine göz atın. 
    
    > [!NOTE]

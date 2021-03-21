@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 12/03/2020
 ms.author: Zhchia
 ms.openlocfilehash: 0e160def31a43bc94e4f6151b46efe72e585e953
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98735733"
 ---
 # <a name="tutorial-configure-gtmhub-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Gtmhub yapılandırma
@@ -36,7 +36,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Gtmhub
 > * Azure AD ile Gtmhub arasında kullanıcı özniteliklerini eşitlenmiş halde tutun.
 > * Kullanıcıları otomatik olarak ekiplerine eşleyin ve hizalayın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 

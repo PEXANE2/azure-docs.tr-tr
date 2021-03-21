@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/21/2020
 ms.author: alkohli
 ms.openlocfilehash: 887aaf32592c74a5884916bc7ad63d79544fb554
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99575864"
 ---
 # <a name="azure-stack-edge-blob-storage-requirements"></a>Azure Stack Edge BLOB depolama gereksinimleri
@@ -23,7 +23,7 @@ Azure Stack Edge BLOB depolama alanına bağlanmadan önce bilgileri dikkatlice 
 
 ## <a name="storage-differences"></a>Depolama farklılıkları
 
-|     Öne çıkan özelliği                                             |     Azure Storage                                     |     Azure Stack Edge blob depolaması |
+|     Özellik                                             |     Azure Depolama                                     |     Azure Stack Edge blob depolaması |
 |---------------------------------------------------------|-------------------------------------------------------|---------------------------|
 |    Azure Dosya Depolama                                   |    Bulut tabanlı SMB dosya paylaşımları destekleniyor              |    Desteklenmez      |
 |    Depolama hesabı türü                                 |    Genel amaçlı ve Azure Blob depolama hesapları    |    Yalnızca genel amaçlı v1|

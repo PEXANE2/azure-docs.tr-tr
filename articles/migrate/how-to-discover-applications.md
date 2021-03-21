@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 06/10/2020
 ms.openlocfilehash: 8266b585881546b37bbb21b82780ab26d85dada7
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102048089"
 ---
 # <a name="discover-installed-applications-roles-and-features-software-inventory-and-sql-server-instances-and-databases"></a>Yüklü uygulamaları, rolleri ve özellikleri (yazılım envanteri) ve SQL Server örnekleri ve veritabanlarını bulma
@@ -20,7 +20,7 @@ Bu makalede, Azure geçişi: Sunucu değerlendirmesi Aracı kullanılarak yükle
 Yazılım envanteri gerçekleştirmek, iş yükleriniz için Azure 'a geçiş yolunu belirlemenize ve uyarlamanıza yardımcı olur. Yazılım envanteri, sunucu kimlik bilgilerini kullanarak bulma işlemi gerçekleştirmek için Azure geçişi gereci kullanır. Tamamen aracısız değildir, bu verileri toplamak için sunuculara hiçbir aracı yüklenmez.
 
 > [!NOTE]
-> Yazılım envanteri şu anda yalnızca VMware ortamında çalışan sunucular için önizleme aşamasındadır ve yalnızca bulma ile sınırlıdır. Şu anda uygulama tabanlı değerlendirme sunmuyoruz.<br/> VMware ortamınızda çalışan SQL Server örnekleri ve veritabanlarının keşfi ve değerlendirmesi artık önizlemededir. Bu özelliği denemek için **Avustralya Doğu** bölgede bir proje oluşturmak üzere [**Bu bağlantıyı**](https://aka.ms/AzureMigrate/SQL) kullanın. Zaten Avustralya Doğu bir projeniz varsa ve bu özelliği denemek istiyorsanız, lütfen portalda bu [**önkoşulları**](how-to-discover-sql-existing-project.md) tamamladığınızdan emin olun.
+> Yazılım envanteri şu anda yalnızca VMware ortamında çalışan sunucular için önizleme aşamasındadır ve yalnızca bulma ile sınırlıdır. Şu anda uygulama tabanlı değerlendirme sunmuyoruz.<br/> VMware ortamınızda çalışan SQL Server örnekleri ve veritabanlarının keşfi ve değerlendirmesi artık önizlemededir. Bu özelliği denemek için [**bu bağlantıyı**](https://aka.ms/AzureMigrate/SQL) kullanarak **Doğu Avustralya** bölgesinde bir proje oluşturun. Zaten Doğu Avustralya bölgesinde bir projeniz varsa ve bu özelliği denemek istiyorsanız, lütfen portalda bu [**önkoşulları**](how-to-discover-sql-existing-project.md) tamamladığınızdan emin olun.
 
 ## <a name="before-you-start"></a>Başlamadan önce
 

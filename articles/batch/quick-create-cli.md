@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 08/13/2020
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 297af47b6280381646e654eaededfe8b71a5d874
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97106691"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>Hızlı başlangıç: Azure CLI ile ilk Batch işinizi çalıştırma
@@ -91,7 +91,7 @@ az batch pool show --pool-id mypool \
 
 Havuzun durumu değişirken iş ve görevleri oluşturmak için aşağıdaki adımlarla devam edin. Ayırma durumu `steady` olduğunda ve düğümler çalıştığında havuz tamamen görev çalıştırmaya hazır olur.
 
-## <a name="create-a-job"></a>İş oluşturma
+## <a name="create-a-job"></a>Bir iş oluşturma
 
 Bir havuza sahip olduktan sonra üzerinde çalıştıracak bir iş oluşturun. Batch işi bir veya daha fazla görevin mantıksal grubudur. Bir iş, öncelik gibi görevler arasında ortak olan ayarları ve görevlerin çalıştırılacağı havuzu içerir. [az toplu işlem işi oluşturma](/cli/azure/batch/job#az-batch-job-create) komutunu kullanarak Batch işi oluşturma. Aşağıdaki örnek, *mypool* havuzunda *myjob* adlı işi oluşturur. Başlangıçta iş hiçbir görev içermez.
 
@@ -166,7 +166,7 @@ az batch task file download \
     --destination ./stdout.txt
 ```
 
-`stdout.txt` dosyasının içeriğini bir metin düzenleyicisinde görüntüleyebilirsiniz. İçerik, düğüm üzerinde ayarlanmış Azure Batch ortam değişkenlerini gösterir. Kendi Batch işlerinizi oluşturduğunuzda, görev komut satırlarında bu görev değişkenlerine ve komut satırları tarafından çalıştırılan uygulama ve betiklere başvurabilirsiniz. Örneğin:
+`stdout.txt` dosyasının içeriğini bir metin düzenleyicisinde görüntüleyebilirsiniz. İçerik, düğüm üzerinde ayarlanmış Azure Batch ortam değişkenlerini gösterir. Kendi Batch işlerinizi oluşturduğunuzda, görev komut satırlarında bu görev değişkenlerine ve komut satırları tarafından çalıştırılan uygulama ve betiklere başvurabilirsiniz. Örnek:
 
 ```
 AZ_BATCH_TASK_DIR=/mnt/batch/tasks/workitems/myjob/job-1/mytask1

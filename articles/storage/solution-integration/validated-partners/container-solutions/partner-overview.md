@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
 ms.openlocfilehash: 8b46ad7a34be99aefeb067591fa1b029dba2361e
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103561898"
 ---
 # <a name="azure-storage-container-management-partners"></a>Azure depolama kapsayıcısı yönetim iş ortakları
@@ -21,7 +21,7 @@ Bu makalede, kapsayıcı tabanlı çözümlerin ölçek temelinde Otomasyonu, ve
 
 ## <a name="verified-partners"></a>Doğrulanan iş ortakları
 
-| İş Ortağı | Açıklama | Web sitesi/ürün bağlantısı |
+| İş Ortağı | Description | Web sitesi/ürün bağlantısı |
 | ------- | ----------- | -------------------- |
 | ![Kasten şirket logosu](./media/kasten-logo.png) |**Kasten**<br>Kasten by Veead, Kubernetes yedekleme ve olağanüstü durum kurtarma için bir çözüm sağlar. Kasten, kuruluşların, Kubernetes üzerinde uygulamaları güvenle çalıştırmak için gün 2 veri yönetimi sorunlarını ortadan kaldırmanıza yardımcı olur.<br><br>Kasten K10 veri yönetimi yazılım platformu, kurumsal işlemler ekiplerine BCDR ve Kubernetes uygulamalarının taşınabilirliği için ölçeklenebilir ve güvenli bir sistem sağlar.|[İş ortağı sayfası](https://docs.kasten.io/latest/install/azure/azure.html)|
 | ![Portworx şirket logosu](./media/portworx-logo.png) |**Portworx**<br>Saf depolamaya göre portworx, Kubernetes üzerinde tümleşik çalışan uygulamalar için kalıcı depolama, BCDR, veri güvenliği, platformlar arası ve veri geçişleri için bir çözüm sağlar.|[İş ortağı sayfası](https://portworx.com/azure/)|
