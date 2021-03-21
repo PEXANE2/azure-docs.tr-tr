@@ -1,14 +1,14 @@
 ---
 title: İlke uyumluluk verilerini al
 description: Azure Ilke değerlendirmeleri ve etkileri uyumluluğu tespit edin. Azure kaynaklarınızın uyumluluk ayrıntılarını nasıl alabileceğinizi öğrenin.
-ms.date: 10/05/2020
+ms.date: 03/16/2021
 ms.topic: how-to
-ms.openlocfilehash: 3c1c128b414444c6004f32f3f3173548f81a82e1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: cdd23d685750fb8a5d3803f4b6030e7e67bbddce
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577114"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598550"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Azure kaynaklarının uyumluluk verilerini alın
 
@@ -26,7 +26,7 @@ Uyumluluk hakkında raporlama yöntemlerine bakmadan önce uyumluluk bilgilerini
 
 ## <a name="evaluation-triggers"></a>Değerlendirme Tetikleyicileri
 
-Tamamlanmış bir değerlendirme döngüsünün sonuçları, `Microsoft.PolicyInsights` kaynak sağlayıcıda `PolicyStates` ve işlemler aracılığıyla kullanılabilir `PolicyEvents` . Azure Policy Insights REST API işlemleri hakkında daha fazla bilgi için bkz. [Azure Ilke öngörüleri](/rest/api/policy-insights/).
+Tamamlanmış bir değerlendirme döngüsünün sonuçları, `Microsoft.PolicyInsights` kaynak sağlayıcıda `PolicyStates` ve işlemler aracılığıyla kullanılabilir `PolicyEvents` . Azure Policy Insights REST API işlemleri hakkında daha fazla bilgi için bkz. [Azure Ilke öngörüleri](/rest/api/policy/).
 
 Atanan ilkelerin ve girişimlerin değerlendirmeleri çeşitli olayların sonucu olarak gerçekleşir:
 
@@ -237,13 +237,13 @@ Bir kaynağın **uyumsuz** olduğu belirlendiğinde birçok olası neden vardır
 
 ## <a name="command-line"></a>Komut satırı
 
-Portalda bulunan bilgiler, REST API ( [Armclient](https://github.com/projectkudu/ARMClient)dahil), Azure PowerShell ve Azure CLI ile alınabilir. REST API hakkında tam Ayrıntılar için bkz. [Azure Policy Insights](/rest/api/policy-insights/) başvurusu. REST API başvuru sayfalarında, her bir işlemin üzerinde yeşil bir ' deneyin ' düğmesi vardır ve bu, tarayıcıyı tarayıcıda doğrudan denemenize olanak tanır.
+Portalda bulunan bilgiler, REST API ( [Armclient](https://github.com/projectkudu/ARMClient)dahil), Azure PowerShell ve Azure CLI ile alınabilir. REST API hakkında tam Ayrıntılar için bkz. [Azure ilke](/rest/api/policy/) başvurusu. REST API başvuru sayfalarında, her bir işlemin üzerinde yeşil bir ' deneyin ' düğmesi vardır ve bu, tarayıcıyı tarayıcıda doğrudan denemenize olanak tanır.
 
 REST API örnekleri için Azure kimlik doğrulamasını işlemek üzere ARMClient veya benzer bir araç kullanın.
 
 ### <a name="summarize-results"></a>Sonuçları özetleme
 
-REST API, özetleme kapsayıcı, tanım veya atamaya göre gerçekleştirilebilir. Azure Policy Insight 'ın abonelik Özeti kullanılarak abonelik düzeyinde [özetlemeye](/rest/api/policy-insights/policystates/summarizeforsubscription)bir örnek aşağıda verilmiştir:
+REST API, özetleme kapsayıcı, tanım veya atamaya göre gerçekleştirilebilir. Azure Policy Insight 'ın abonelik Özeti kullanılarak abonelik düzeyinde [özetlemeye](/rest/api/policy/policystates/summarizeforsubscription)bir örnek aşağıda verilmiştir:
 
 ```http
 POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/summarize?api-version=2019-10-01
@@ -353,7 +353,7 @@ Sonuçlarınız aşağıdaki örneğe benzer:
 }
 ```
 
-İlke olaylarını sorgulama hakkında daha fazla bilgi için bkz. [Azure Ilke olayları](/rest/api/policy-insights/policyevents) başvuru makalesi.
+İlke olaylarını sorgulama hakkında daha fazla bilgi için bkz. [Azure Ilke olayları](/rest/api/policy/policyevents) başvuru makalesi.
 
 ### <a name="azure-cli"></a>Azure CLI’si
 
@@ -648,7 +648,7 @@ $policyEvents = Get-AzPolicyEvent -Filter "ResourceType eq '/Microsoft.Network/v
 $policyEvents | ConvertTo-Csv | Out-File 'C:\temp\policyEvents.csv'
 ```
 
-Nesnenin çıktısı aşağıdakine `$policyEvents` benzer:
+`$policyEvents`Nesnenin çıktısı aşağıdaki çıktı gibi görünür:
 
 ```output
 Timestamp                  : 9/19/2020 5:18:53 AM

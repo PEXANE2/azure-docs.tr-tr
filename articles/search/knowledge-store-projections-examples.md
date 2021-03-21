@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.openlocfilehash: 3985564d49ce8a5c62b15f9537364418c0a8f5da
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97509929"
 ---
 # <a name="how-to-shape-and-export-enrichments"></a>Zenginleştirme ve dışarı aktarma
@@ -29,7 +29,7 @@ Bu makalede sunulan örnekler, bir HTTP istemcisinde indirebileceğiniz ve çal�
 
 Üç tür [projeksiyonlar](knowledge-store-projection-overview.md)vardır:
 
-+ Tablolar
++ Tables
 + Nesneler
 + Dosyalar
 
@@ -653,7 +653,7 @@ Farklı türlerin projeksiyonlarını oluştururken, önce dosya ve nesne projek
     }
 ```
 
-## <a name="common-issues"></a>Genel Sorunlar
+## <a name="common-issues"></a>Sık Karşılaşılan Sorunlar
 
 Projeksiyon tanımlarken, beklenmeyen sonuçlara neden olabilecek bazı yaygın sorunlar vardır. Bilgi deposunda çıkış beklediğiniz gibi değilse bu sorunları kontrol edin.
 

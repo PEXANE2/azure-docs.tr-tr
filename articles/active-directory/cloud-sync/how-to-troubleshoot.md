@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
 ms.openlocfilehash: 174ec8c42ea17ccae04769d7c0baaa91b8e7025b
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102517880"
 ---
 # <a name="cloud-sync-troubleshooting"></a>Bulut eşitleme sorunlarını giderme
@@ -43,7 +43,7 @@ Bu öğeler Azure portal ve aracıyı çalıştıran yerel sunucu üzerinde doğ
 
 Aracının Azure tarafından görüleceği ve sağlıklı olduğundan emin olmak için aşağıdaki adımları izleyin.
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 1. Sol tarafta **Azure Active Directory**  >  **Azure AD Connect**' yı seçin. Ortasında, **Eşitlemeyi Yönet**' i seçin.
 1. **Azure AD Connect bulut eşitleme** ekranında **tüm aracıları gözden geçir**' i seçin.
 

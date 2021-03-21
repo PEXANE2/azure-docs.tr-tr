@@ -9,16 +9,26 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 7b71fc2f3afb67d766bfe267888674b55af6a3a5
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 62035b2fe6c3db71e392a05946ea3f230dfa030e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102503922"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604667"
 ---
 # <a name="how-to-enable-key-vault-logging"></a>Key Vault günlüğü etkinleştirme
 
 Bir veya daha fazla Anahtar Kasası oluşturduktan sonra muhtemelen anahtar kasalarınızın nasıl ve ne zaman erişildiğini ve kim tarafından yapılacağını izlemek isteyeceksiniz. Özelliği hakkında tam Ayrıntılar için bkz. [Key Vault Logging](logging.md).
+
+Günlüğe kaydedilen:
+
+* Erişim izinlerinin, sistem hatalarının veya hatalı isteklerin sonucu olarak başarısız istekler dahil tüm kimliği doğrulanmış REST API istekleri.
+* Oluşturma, silme, Anahtar Kasası erişim ilkelerini ayarlama ve Etiketler gibi Anahtar Kasası özniteliklerini güncelleştirme dahil olmak üzere anahtar kasasındaki işlemler.
+* Anahtar kasasındaki anahtarlar ve gizli diziler için aşağıdakiler de dahil olmak üzere işlemler:
+  * Bu anahtarları veya parolaları oluşturma, değiştirme veya silme.
+  * Anahtarları imzalama, doğrulama, şifreleme, şifre çözme, sarmalama ve kaldırma, gizli dizileri alma ve anahtarları ve gizli dizileri (ve bunların sürümlerini) listeleme.
+* Bir 401 yanıtına neden olan kimliği doğrulanmamış istekler. Örnek olarak, hatalı biçimlendirilmiş veya geçerliliği olmayan ya da geçersiz bir belirtece sahip bir taşıyıcı belirteci olmayan isteklerdir.  
+* Süresi dolmak üzere olan, süre sonu ve kasa erişimi ilkesi değişti (yeni sürüm olayı günlüğe kaydedilmez). Event Grid Anahtar kasasında olay aboneliği oluşturulmuş olmasına bakılmaksızın olaylar günlüğe kaydedilir. Daha fazla bilgi için bkz. [Key Vault için olay şeması Event Grid](../../event-grid/event-schema-key-vault.md)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -58,7 +68,7 @@ Daha fazla yönetim kolaylığı için, anahtar kasasını içeren kaynakla ayn�
 
 Ayrıca, bir depolama hesabı adı sağlamamız gerekir. Depolama hesabı adları benzersiz olmalı, 3 ila 24 karakter uzunluğunda olmalıdır ve yalnızca sayılar ve küçük harfler kullanılmalıdır.  Son olarak, "Standard_LRS" SKU 'sunda bir depolama hesabı oluşturacağız.
 
-Azure CLı ile [az Storage Account Create](/cli/azure/storage/account#az_storage_account_create) komutunu kullanın.
+Azure CLı ile [az Storage Account Create](/cli/azure/storage/account#az_storage_account_create) komutunu kullanın. 
 
 ```azurecli-interactive
 az storage account create --name "<your-unique-storage-account-name>" -g "myResourceGroup" --sku "Standard_LRS"
@@ -100,44 +110,67 @@ Get-AzKeyVault -VaultName "<your-unique-keyvault-name>"
 
 Anahtar kasanızın kaynak KIMLIĞI "/Subscriptions/<-Subscription-ID>/resourceGroups/myResourceGroup/providers/Microsoft.KeyVault/vaults/<-Unique-keykasaadı>" biçiminde olur. Sonraki adım için bunu yapın.
 
-## <a name="enable-logging-using-azure-powershell"></a>Azure PowerShell kullanarak günlüğü etkinleştirme
+## <a name="enable-logging"></a>Günlüğe kaydetmeyi etkinleştir
 
-Key Vault günlük kaydını etkinleştirmek için, depolama hesabı KIMLIĞI ve Anahtar Kasası kaynak KIMLIĞIYLE birlikte Azure CLı [az Monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings) komutunu veya [set-azdiagnosticsetting](/powershell/module/az.monitor/set-azdiagnosticsetting) cmdlet 'ini kullanacağız.
+Azure CLı, Azure PowerShell veya Azure portal kullanarak Key Vault için günlük kaydını etkinleştirebilirsiniz.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+### <a name="azure-cli"></a>Azure CLI’si
+
+Depolama hesabı KIMLIĞI ve Anahtar Kasası kaynak KIMLIĞIYLE birlikte Azure CLı [az Monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings) komutunu kullanın.
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --storage-account "<storage-account-id>" --resource "<key-vault-resource-id>" --name "Key vault logs" --logs '[{"category": "AuditEvent","enabled": true}]' --metrics '[{"category": "AllMetrics","enabled": true}]'
 ```
 
-Azure PowerShell, [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) cmdlet 'ini, **etkin** bayrağı **$true** olarak ayarlanmış şekilde ve kategori olarak ayarlanmış şekilde `AuditEvent` (Key Vault günlüğe kaydetme için tek kategori) kullanacak şekilde kullanacağız:
+İsteğe bağlı olarak, eski günlüklerin belirli bir süre geçtikten sonra otomatik olarak silinmesi için günlüklerinizi için bir bekletme ilkesi ayarlayabilirsiniz. Örneğin, 90 günden daha eski günlükleri otomatik olarak silen bir bekletme ilkesi ayarlayabilirsiniz.
+
+Azure CLı ile [az Monitor Diagnostic-Settings Update](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_update) komutunu kullanın. 
+
+```azurecli-interactive
+az monitor diagnostic-settings update --name "Key vault retention policy" --resource "<key-vault-resource-id>" --set retentionPolicy.days=90
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+[Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) cmdlet 'ini kullanarak **-Enabled** bayrağı **$true** olarak, kategori olarak ayarlanır `AuditEvent` (Key Vault günlük için tek kategori):
 
 ```powershell-interactive
 Set-AzDiagnosticSetting -ResourceId "<key-vault-resource-id>" -StorageAccountId $sa.id -Enabled $true -Category "AuditEvent"
 ```
 
-İsteğe bağlı olarak, eski günlüklerin belirli bir süre geçtikten sonra otomatik olarak silinmesi için günlüklerinizi için bir bekletme ilkesi ayarlayabilirsiniz. Örneğin, 90 günden daha eski günlükleri otomatik olarak silen ayarlama bekletme ilkesi ayarlayabilirsiniz.
+İsteğe bağlı olarak, eski günlüklerin belirli bir süre geçtikten sonra otomatik olarak silinmesi için günlüklerinizi için bir bekletme ilkesi ayarlayabilirsiniz. Örneğin, 90 günden daha eski günlükleri otomatik olarak silen bir bekletme ilkesi ayarlayabilirsiniz.
 
-<!-- With the Azure CLI, use the [az monitor diagnostic-settings update](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_update) command. 
-
-```azurecli-interactive
-az monitor diagnostic-settings update 
-```
--->
-
-Azure PowerShell, [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) cmdlet 'ini kullanın. 
+Azure PowerShell, [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) cmdlet 'ini kullanın.
 
 ```powershell-interactive
 Set-AzDiagnosticSetting "<key-vault-resource-id>" -StorageAccountId $sa.id -Enabled $true -Category AuditEvent -RetentionEnabled $true -RetentionInDays 90
 ```
 
-Günlüğe kaydedilen:
+# <a name="azure-portal"></a>[Azure portalı](#tab/azure-portal)
 
-* Erişim izinlerinin, sistem hatalarının veya hatalı isteklerin sonucu olarak başarısız istekler dahil tüm kimliği doğrulanmış REST API istekleri.
-* Oluşturma, silme, Anahtar Kasası erişim ilkelerini ayarlama ve Etiketler gibi Anahtar Kasası özniteliklerini güncelleştirme dahil olmak üzere anahtar kasasındaki işlemler.
-* Anahtar kasasındaki anahtarlar ve gizli diziler için aşağıdakiler de dahil olmak üzere işlemler:
-  * Bu anahtarları veya parolaları oluşturma, değiştirme veya silme.
-  * Anahtarları imzalama, doğrulama, şifreleme, şifre çözme, sarmalama ve kaldırma, gizli dizileri alma ve anahtarları ve gizli dizileri (ve bunların sürümlerini) listeleme.
-* Bir 401 yanıtına neden olan kimliği doğrulanmamış istekler. Örnek olarak, hatalı biçimlendirilmiş veya geçerliliği olmayan ya da geçersiz bir belirtece sahip bir taşıyıcı belirteci olmayan isteklerdir.  
-* Süresi dolmak üzere olan, süre sonu ve kasa erişimi ilkesi değişti (yeni sürüm olayı günlüğe kaydedilmez). Event Grid Anahtar kasasında olay aboneliği oluşturulmuş olmasına bakılmaksızın olaylar günlüğe kaydedilir. Daha fazla bilgi için bkz. [Key Vault için olay şeması Event Grid](../../event-grid/event-schema-key-vault.md)
+Portalda tanılama ayarlarını yapılandırmak için aşağıdaki adımları izleyin.
+
+1. Kaynak dikey penceresi menüsünde tanılama ayarlarını seçin.
+
+    :::image type="content" source="../media/diagnostics-portal-1.png" alt-text="Tanılama Portalı 1":::
+
+1. "+ Tanılama ayarı Ekle" ye tıklayın
+
+    :::image type="content" source="../media/diagnostics-portal-2.png" alt-text="Tanılama Portalı 2":::
+ 
+1. Tanılama ayarınızı çağırmak için bir ad seçin. Key Vault için Azure Izleyici günlük kaydını yapılandırmak için "AuditEvent" seçeneğini ve "Log Analytics çalışma alanına gönder" seçeneğini belirleyin. Ardından, günlüklerinizi göndermek istediğiniz aboneliği ve Log Analytics çalışma alanını seçin.
+
+    :::image type="content" source="../media/diagnostics-portal-3.png" alt-text="Tanılama Portalı 3":::
+
+    Aksi takdirde, seçmek istediğiniz günlüklere ait seçenekleri belirleyin
+
+1. İstediğiniz seçenekleri seçtikten sonra Kaydet ' i seçin.
+
+    :::image type="content" source="../media/diagnostics-portal-4.png" alt-text="Tanılama Portalı 4":::
+
+---
 
 ## <a name="access-your-logs"></a>Günlüklerinize erişme
 

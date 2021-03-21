@@ -8,12 +8,12 @@ ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 6c9b4a9ee1a778ba7a534377f8b2abe9d9a7e18a
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: eea5c800d7aa9c8d1e6c0c507136b86ab8bf21f3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102504739"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604041"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Azure yönetilen disklerine giriş
 
@@ -100,7 +100,7 @@ Bu diskin en fazla 4.095 GiB kapasitesi vardır.
 
 ### <a name="temporary-disk"></a>Geçici disk
 
-Çoğu VM, yönetilen bir disk olmayan geçici bir disk içerir. Geçici disk, uygulamalar ve süreçler için kısa vadeli depolama sağlar ve yalnızca sayfa veya takas dosyaları gibi verileri depolamak için tasarlanmıştır. Geçici diskteki veriler, [bakım olayı](./understand-vm-reboots.md) sırasında veya [bir VM 'yi](troubleshooting/redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json)yeniden dağıttığınızda kaybolabilir. Sanal makinenin başarılı bir standart yeniden başlatması sırasında, geçici diskteki veriler devam edecektir. Geçici diskler olmadan VM 'Ler hakkında daha fazla bilgi için, bkz. [Yerel geçici disk Içermeyen Azure VM boyutları](azure-vms-no-temp-disk.md).
+Çoğu VM, yönetilen bir disk olmayan geçici bir disk içerir. Geçici disk, uygulamalar ve süreçler için kısa vadeli depolama sağlar ve yalnızca sayfa veya takas dosyaları gibi verileri depolamak için tasarlanmıştır. Geçici diskteki veriler, [bakım olayı](./understand-vm-reboots.md) sırasında veya [bir VM 'yi](/troubleshoot/azure/virtual-machines/redeploy-to-new-node-windows?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)yeniden dağıttığınızda kaybolabilir. Sanal makinenin başarılı bir standart yeniden başlatması sırasında, geçici diskteki veriler devam edecektir. Geçici diskler olmadan VM 'Ler hakkında daha fazla bilgi için, bkz. [Yerel geçici disk Içermeyen Azure VM boyutları](azure-vms-no-temp-disk.md).
 
 Azure Linux VM 'lerinde geçici disk genellikle/dev/sdb ve Windows VM 'lerinde geçici disk D: varsayılan olarak olur. Konakta şifrelemeyi etkinleştirmediğiniz takdirde geçici disk sunucu tarafı şifrelemesi tarafından şifrelenmez.
 

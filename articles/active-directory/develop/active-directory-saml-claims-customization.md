@@ -14,10 +14,10 @@ ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.openlocfilehash: 0cccf45037320b476b1a44cafa8074bacadacbc8
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103600958"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Nasıl yapılır: kurumsal uygulamalar için SAML belirtecinde verilen talepleri özelleştirme
@@ -128,7 +128,7 @@ Talepleri dönüştürmek için aşağıdaki işlevleri kullanabilirsiniz.
 | **JOIN ()** | İki özniteliği birleştirerek yeni bir değer oluşturur. İsteğe bağlı olarak, iki öznitelik arasında bir ayırıcı kullanabilirsiniz. NameID talep dönüştürmesi için, JOIN doğrulanmış bir etki alanıyla kısıtlıdır. Seçilen Kullanıcı tanımlayıcı değeri bir etki alanına sahipse, seçilen doğrulanmış etki alanını eklemek için Kullanıcı adını ayıklar. Örneğin, joe_smith@contoso.com Kullanıcı tanımlayıcı değeri olarak e-postayı () seçer ve doğrulanmış etki alanı olarak contoso.onmicrosoft.com ' ı seçerseniz, bu sonuç olarak olur joe_smith@contoso.onmicrosoft.com . |
 | **Toküçük ()** | Seçili özniteliğin karakterlerini küçük harfli karakterlere dönüştürür. |
 | **Tobüyük ()** | Seçili özniteliğin karakterlerini büyük harfli karakterlere dönüştürür. |
-| **Contains ()** | Giriş belirtilen değerle eşleşiyorsa bir öznitelik veya sabit verir. Aksi takdirde, eşleşme yoksa başka bir çıktı belirleyebilirsiniz.<br/>Örneğin, "" etki alanını içeriyorsa değerin kullanıcının e-posta adresi olduğu bir talep oluşturmak istiyorsanız @contoso.com , aksi takdirde Kullanıcı asıl adını çıkarmak isteyebilirsiniz. Bunu yapmak için, aşağıdaki değerleri yapılandırırsınız:<br/>*Parametre 1 (giriş)*: User. email<br/>*Değer*: " @contoso.com "<br/>Parametre 2 (çıkış): User. email<br/>Parametre 3 (eşleşme yoksa çıkış): User. UserPrincipalName |
+| **Contains ()** | Giriş belirtilen değerle eşleşiyorsa bir öznitelik veya sabit verir. Aksi takdirde, eşleşme yoksa başka bir çıktı belirleyebilirsiniz.<br/>Örneğin, "" etki alanını içeriyorsa değerin kullanıcının e-posta adresi olduğu bir talep oluşturmak istiyorsanız @contoso.com , aksi takdirde Kullanıcı asıl adını çıkarmak isteyebilirsiniz. Bunu yapmak için, aşağıdaki değerleri yapılandırırsınız:<br/>*Parametre 1 (giriş)*: User.email<br/>*Değer*: " @contoso.com "<br/>Parametre 2 (çıkış): user.email<br/>Parametre 3 (eşleşme yoksa çıkış): User. UserPrincipalName |
 | **EndWith ()** | Giriş belirtilen değerle sona ererse bir öznitelik veya sabit verir. Aksi takdirde, eşleşme yoksa başka bir çıktı belirleyebilirsiniz.<br/>Örneğin, çalışan KIMLIĞI "000" ile bitiyorsa değerin kullanıcının çalışan KIMLIĞI olduğu bir talep oluşturmak istiyorsanız, aksi takdirde bir uzantı özniteliği çıktısını almak istersiniz. Bunu yapmak için, aşağıdaki değerleri yapılandırırsınız:<br/>*Parametre 1 (giriş)*: User. EmployeeID<br/>*Değer*: "000"<br/>Parametre 2 (çıkış): User. EmployeeID<br/>Parametre 3 (eşleşme yoksa çıkış): User. extensionAttribute1 |
 | **StartWith ()** | Giriş belirtilen değerle başlıyorsa bir öznitelik veya sabit verir. Aksi takdirde, eşleşme yoksa başka bir çıktı belirleyebilirsiniz.<br/>Örneğin, ülke/bölge "ABD" ile başlıyorsa değerin kullanıcının çalışan KIMLIĞI olduğu bir talep oluşturmak istiyorsanız, aksi takdirde bir uzantı özniteliği çıktısını almak isteyebilirsiniz. Bunu yapmak için, aşağıdaki değerleri yapılandırırsınız:<br/>*Parametre 1 (giriş)*: User. Country<br/>*Değer*: "US"<br/>Parametre 2 (çıkış): User. EmployeeID<br/>Parametre 3 (eşleşme yoksa çıkış): User. extensionAttribute1 |
 | **Ayıkla ()-sonrasında eşleme** | Belirtilen değerle eşleştirdikten sonra alt dizeyi döndürür.<br/>Örneğin, girişin değeri "Finance_BSimon" ise, eşleşen değer "Finance_" ise, talebin çıktısı "Bsıon" olur. |
@@ -155,7 +155,7 @@ Kullanıcı türü şu olabilir:
 - **Dış konuklar**: Konuk Kullanıcı Azure AD olmayan bir dış kuruluşa aittir.
 
 
-Bunun yararlı olduğu bir senaryo, bir talebin kaynağı bir konuk ve bir uygulamaya erişen çalışan için farklılık gösteren bir senaryodur. Kullanıcı bir çalışan ise, NameID 'nin Kullanıcı. email kaynağı olduğunu belirtmek isteyebilirsiniz, ancak kullanıcı bir konuysanız, NameID User. extensionAttribute1 'tan kaynaklıdır.
+Bunun yararlı olduğu bir senaryo, bir talebin kaynağı bir konuk ve bir uygulamaya erişen çalışan için farklılık gösteren bir senaryodur. Kullanıcı bir çalışan ise, NameID 'nin user.email adresinden kaynaklandığı, ancak kullanıcı bir konuk ise, NameID User. extensionAttribute1 ' den kaynaklıdır.
 
 Talep koşulu eklemek için:
 

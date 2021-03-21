@@ -14,10 +14,10 @@ ms.date: 09/17/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
 ms.openlocfilehash: 327bc687c466a30d4f92810e48dc08f822f752ec
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101726436"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Öğretici: ASP.NET Core uygulamasında Özellik bayraklarını kullanma
@@ -99,7 +99,7 @@ public class Startup
 
 ASP.NET Core uygulamanızı uygulama yapılandırmasına bağlanmanın en kolay yolu, NuGet paketine dahil edilen yapılandırma sağlayıcıdır `Microsoft.Azure.AppConfiguration.AspNetCore` . Pakete bir başvuru eklendikten sonra, bu NuGet paketini kullanmak için aşağıdaki adımları izleyin.
 
-1. *Program.cs* dosyasını açın ve aşağıdaki kodu ekleyin.
+1. *Program. cs* dosyasını açın ve aşağıdaki kodu ekleyin.
     > [!IMPORTANT]
     > `CreateHostBuilder``CreateWebHostBuilder`.NET Core 3. x içindeki yerini alır. Ortamınıza göre doğru söz dizimini seçin.
 
@@ -151,7 +151,7 @@ ASP.NET Core uygulamanızı uygulama yapılandırmasına bağlanmanın en kolay 
     ```
     ---
 
-2. *Startup.cs* ' i açın ve `Configure` `ConfigureServices` adlı yerleşik ara yazılımı eklemek için ve metodunu güncelleştirin `UseAzureAppConfiguration` . Bu ara yazılım, ASP.NET Core Web uygulaması istekleri almaya devam ederken, özellik bayrağı değerlerinin yinelenen bir aralıkta yenilenmesini sağlar.
+2. *Başlangıç. cs* ' i açın ve `Configure` `ConfigureServices` adlı yerleşik ara yazılımı eklemek için ve metodunu güncelleştirin `UseAzureAppConfiguration` . Bu ara yazılım, ASP.NET Core Web uygulaması istekleri almaya devam ederken, özellik bayrağı değerlerinin yinelenen bir aralıkta yenilenmesini sağlar.
 
 
 

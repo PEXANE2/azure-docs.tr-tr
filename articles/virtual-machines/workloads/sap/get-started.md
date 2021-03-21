@@ -13,15 +13,15 @@ ms.assetid: ad8e5c75-0cf6-4564-ae62-ea1246b4e5f2
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/03/2021
+ms.date: 03/17/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a212975817eefe75443bad98ccb72e0a8c3bf58c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 5ab23b9c2ba4b4ef3c20188b2207d7718c30cfe6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102038637"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599893"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP iş yükü senaryolarını barındırmak ve çalıştırmak için Azure kullanın
 
@@ -82,7 +82,8 @@ Bu bölümde, Microsoft Power BI tümleştirme hakkındaki belgeleri SAP veri ka
 
 
 ## <a name="change-log"></a>Değişiklik Günlüğü
-
+- 03/17/2021: [SLES 'Deki Azure VM 'lerinde SAP HANA Için ha](./sap-hana-high-availability.md)değiştirme, RHEL ve ha üzerinde Azure [VM 'lerinde SAP HANA için, Khel 'de azure sanal](./sap-hana-high-availability-rhel.md) makinelerinde [SAP HANA ölçeği ile](./sap-hana-high-availability-netapp-files-red-hat.md)
+- 03/15/2021: SAP ascs [/SCS ÖRNEĞINDE wsfc ve dosya paylaşımıyla](./sap-high-availability-guide-wsfc-file-share.md)değiştirin, SAP Ass/SCS örneği [ve hem](./sap-ascs-ha-multi-sid-wsfc-file-share.md) wsfc hem de dosya paylaşımıyla SAP Ass/SCS örneği, SAP ascs/SCS[örneği](./sap-high-availability-installation-wsfc-file-share.md) ve SOFS paylaşımının ayrı kümelerde dağıtılması gerektiğini açıklığa kavuşturun
 - 03/03/2021: SAP sistem yüklemesi sırasında SWPM çalıştıran kullanıcı için yükseltilmiş ayrıcalıkların gerekli olduğunu belirten bir uyarı eklemek için, [wsfc ve Azure NetApp Files (SMB) Ile SAP ASCS/SCS Için ha kılavuzunda](./high-availability-guide-windows-netapp-files-smb.md) değişiklik yapın
 - 02/11/2021: RHEL 8. x için [Red Hat Enterprise Linux sunucusundaki Azure VM 'LERINDE IBM DB2 LUW 'ın yüksek kullanılabilirliğe sahip](./high-availability-guide-rhel-ibm-db2-luw.md) değişiklikler
 - 02/03/2021: [Azure 'da RHEL 'de paceyapıcısı ayarlama](./high-availability-guide-rhel-pacemaker.md) , stonıth Create komutunda pcmk_host_map güncelleştirmek için değiştirin

@@ -10,10 +10,10 @@ ms.author: alkohli
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
 ms.openlocfilehash: e878be5351362923e163c0a6f617b96ab72a36d8
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102177587"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Azure Blob depolamadan verileri dışarı aktarmak için Azure İçeri/Dışarı Aktarma hizmetini kullanma
@@ -399,7 +399,7 @@ Bu *isteğe bağlı* adım, dışa aktarma işi için gereken sürücü sayısı
 
     Parametreler aşağıdaki tabloda açıklanmıştır:
 
-    |Komut satırı parametresi|Açıklama|
+    |Komut satırı parametresi|Description|
     |--------------------------|-----------------|
     |**/logdir:**|İsteğe bağlı. Günlük dizini. Ayrıntılı günlük dosyaları bu dizine yazılır. Belirtilmemişse, geçerli dizin günlük dizini olarak kullanılır.|
     |**sn**|Gereklidir. Dışarı aktarma işi için depolama hesabının adı.|
@@ -453,7 +453,7 @@ Number of drives needed:        3
 
 Aşağıdaki tabloda geçerli blob yollarının örnekleri gösterilmektedir:
 
-   | Seçici | Blob yolu | Açıklama |
+   | Seçici | Blob yolu | Description |
    | --- | --- | --- |
    | Ile başlar |/ |Depolama hesabındaki tüm Blobları dışa aktarır |
    | Ile başlar |/$root/ |Kök kapsayıcıdaki tüm Blobları dışa aktarır |

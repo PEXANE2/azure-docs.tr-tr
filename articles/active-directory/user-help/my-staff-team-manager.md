@@ -1,5 +1,5 @@
 ---
-title: Personel (Önizleme) ile parolaları ve telefon numaralarını yönetme-Azure AD | Microsoft Docs
+title: Personmy-Azure AD | parolalarını ve telefon numaralarını yönetme | Microsoft Docs
 description: Kullanıcılarımızla kullanıcılarınızın parolalarını ve telefon numaralarını yönetme
 services: active-directory
 documentationcenter: ''
@@ -9,18 +9,18 @@ ms.topic: end-user-help
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.date: 04/14/2020
+ms.date: 03/17/2021
 ms.author: curtand
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 56ee7df52abf97c920dfe2fa4ba5d1d858975f7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b435c56f53001275fbdb1a3b3cfae25536a9a63
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537099"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104583607"
 ---
-# <a name="delegate-user-management-with-my-staff-preview"></a>Kullanıcı yönetimini personelime (Önizleme) devretmek
+# <a name="delegate-user-management-with-my-staff"></a>Kullanıcı yönetimini Personuygulamam ile temsilci seçme
 
 Kuruluşunuz, personelin ihtiyaç duydukları uygulamalara erişmesine yardımcı olmak için bir mağaza yöneticisi veya ekip lideri gibi yetkili şekillere Kullanıcı yönetimi görevleri atamak için **personelimi** kullanabilir. Ekip üyesiyseniz bir parolayı unutmaları nedeniyle bir uygulamaya erişemediği için üretkenlik kaybedilir. Bu ayrıca destek maliyetlerini de azaltır ve yönetim süreçlerinizde performans sorunlarına neden olur.  Personeli sayesinde, hesaplarına erişemesiz bir takım üyesi, yönetici yardımı gerekmeden yalnızca birkaç tıklamayla erişim elde edebilir.
 

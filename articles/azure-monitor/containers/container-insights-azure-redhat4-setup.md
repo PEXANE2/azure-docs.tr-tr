@@ -4,10 +4,10 @@ description: Bu makalede, Azure Red Hat OpenShift sürüm 4 veya sonraki sürüm
 ms.topic: conceptual
 ms.date: 03/05/2021
 ms.openlocfilehash: 02cb794463b965ebafef0b6861477dbf69227511
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102506421"
 ---
 # <a name="configure-azure-red-hat-openshift-v4x-with-container-insights"></a>Azure Red Hat OpenShift v4. x 'i kapsayıcı öngörüleri ile yapılandırma

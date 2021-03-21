@@ -12,10 +12,10 @@ ms.date: 02/15/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 62bae22b6a4bb06b1e97c18e52ad614fd2439902
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103489330"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
@@ -67,7 +67,7 @@ Aşağıdaki örnekte, yerelleştirilmiş kaynakların içerik tanımı tanımla
 
 **ContentDefinition** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | LoadUri | 1:1 | İçerik tanımının HTML5 sayfasının URL 'sini içeren bir dize. |
 | RecoveryUri | 1:1 | İçerik tanımıyla ilgili bir hata görüntülemek için HTML sayfasının URL 'sini içeren bir dize. Şu anda kullanılmıyor, değer olmalıdır `~/common/default_page_error.html` . |
@@ -79,7 +79,7 @@ Aşağıdaki örnekte, yerelleştirilmiş kaynakların içerik tanımı tanımla
 
 **Datauri** öğesi, sayfa tanımlayıcısını belirtmek için kullanılır. Azure AD B2C, Kullanıcı arabirimi öğelerini ve istemci tarafı JavaScript 'i yüklemek ve başlatmak için sayfa tanımlayıcısını kullanır. Değerin biçimi `urn:com:microsoft:aad:b2c:elements:page-name:version` . Aşağıdaki tabloda kullanabileceğiniz sayfa tanımlayıcıları listelenmektedir.
 
-| Sayfa tanımlayıcısı | Açıklama |
+| Sayfa tanımlayıcısı | Description |
 | ----- | ----------- |
 | `globalexception` | Bir özel durum veya hata ile karşılaşıldığında bir hata sayfası görüntüler. |
 | `providerselection`, `idpselection` | Kullanıcıların oturum açma sırasında aralarından seçim yapabileceğiniz kimlik sağlayıcılarını listeler.  |
@@ -168,7 +168,7 @@ Aşağıdaki örnekte, içerik tanımı tanımlayıcıları ve en son sayfa sür
 
 **Meta veri** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | Öğe | 0: n | İçerik tanımıyla ilgili meta veriler. |
 
@@ -184,13 +184,13 @@ Aşağıdaki örnekte, içerik tanımı tanımlayıcıları ve en son sayfa sür
 
 | Anahtar | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| DisplayName | Hayır | İçerik tanımının adını içeren bir dize. |
+| DisplayName | No | İçerik tanımının adını içeren bir dize. |
 
 ### <a name="localizedresourcesreferences"></a>LocalizedResourcesReferences
 
 **Localizedresourcesreferences** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | LocalizedResourcesReference | 1: n | İçerik tanımı için yerelleştirilmiş kaynak başvurularının listesi. |
 
@@ -225,7 +225,7 @@ Aşağıdaki örnekte, Ingilizce, Fransızca ve Ispanyolca için yerelleştirmey
 
 **ContentDefinition** öğesinin ID özniteliği, içerik tanımıyla ilgili sayfa türünü belirtir. Öğesi, özel bir HTML5/CSS şablonunun uygulanacağı bağlamı tanımlar. Aşağıdaki tabloda, kimlik deneyimi çerçevesi tarafından tanınan içerik tanımı kimlikleri ve bunlarla ilgili sayfa türleri açıklanmaktadır. Rastgele bir KIMLIK ile kendi içerik tanımlarınızı oluşturabilirsiniz.
 
-| ID | Varsayılan şablon | Açıklama |
+| ID | Varsayılan şablon | Description |
 | -- | ---------------- | ----------- |
 | **api. Error** | [Exception. cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Hata sayfası** -bir özel durum veya hata ile karşılaşıldığında hata sayfası görüntüler. |
 | **api. ıdpseçimlerin** | [ıdpselector. cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Kimlik sağlayıcısı seçim sayfası** -kullanıcıların oturum açma sırasında seçebileceği kimlik sağlayıcılarını listeler. Seçenekler genellikle kurumsal kimlik sağlayıcılardır, Facebook ve Google + gibi sosyal kimlik sağlayıcılarıdır veya yerel hesaplardır. |

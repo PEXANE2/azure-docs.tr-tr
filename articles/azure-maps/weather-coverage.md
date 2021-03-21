@@ -10,10 +10,10 @@ services: azure-maps
 ms.custom: references_regions
 manager: philmea
 ms.openlocfilehash: 6c4e9eb765a72b7a0b495f81a954b484ef6aa2b7
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96905494"
 ---
 # <a name="azure-maps-weather-services-preview-coverage"></a>Azure haritalar Hava durumu Hizmetleri (Önizleme) kapsamı
@@ -80,7 +80,7 @@ Aşağıdaki tabloda, her bir ülke/bölgeden isteyebilmeniz gereken hava durumu
 | Paraguay                                 | ✓ |   | |✓| 
 | Peru                                     | ✓ |   | |✓| 
 | Porto Riko                              | ✓ |   | ✓ |✓| 
-| Saint Barthélimy                         | ✓ |   | |✓| 
+| Saint Barthelemy                         | ✓ |   | |✓| 
 | Saint Kitts ve Nevis                    | ✓ |   | |✓| 
 | Saint Lucia                              | ✓ |   | |✓| 
 | Saint Martin                             | ✓ |   | |✓| 
@@ -92,7 +92,7 @@ Aşağıdaki tabloda, her bir ülke/bölgeden isteyebilmeniz gereken hava durumu
 | Surinam                                 | ✓ |   | |✓| 
 | Trinidad ve Tobago                      | ✓ |   | |✓| 
 | Turks ve Caicos Adaları                 | ✓ |   | |✓| 
-| ABD Küçük Harici Adaları                    | ✓ |   | |✓| 
+| ABD harici Adaları                    | ✓ |   | |✓| 
 | ABD Virgin Adaları                      | ✓ |   | ✓|✓| 
 | Birleşik Devletler                            | ✓ | ✓ | ✓| ✓| 
 | Uruguay                                  | ✓ |   | |✓| 

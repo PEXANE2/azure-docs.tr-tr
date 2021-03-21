@@ -12,10 +12,10 @@ ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 7a9caf1c1785055cbc81ef56958fe8ce2aca229c
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102428312"
 ---
 # <a name="tutorial-create-a-windows-presentation-framework-wpf-app-to-display-face-data-in-an-image"></a>Öğretici: bir görüntüde yüz verileri göstermek için bir Windows Presentation Framework (WPF) uygulaması oluşturma
@@ -68,7 +68,7 @@ Bu bölümde, uygulamanın temel çerçevesini, yüz özgü özellikleri olmadan
 
 ### <a name="create-the-main-class"></a>Ana sınıfı oluşturma
 
-*MainWindow.xaml.cs* 'i açın ve diğer gerekli ad alanlarıyla birlikte istemci kitaplığı ad alanlarını ekleyin. 
+*MainWindow. xaml. cs* ' yi açın ve diğer gerekli ad alanlarıyla birlikte istemci kitaplığı ad alanlarını ekleyin. 
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_using)]
 

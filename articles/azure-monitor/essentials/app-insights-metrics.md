@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
-ms.openlocfilehash: bd28fa9f20775be659de6cef99f9ceda29fe52cc
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: bae7980137c1da5e1755450863af4f9029d6ed62
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049143"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104583471"
 ---
 # <a name="application-insights-log-based-metrics"></a>Günlük tabanlı ölçümleri Application Insights
 
@@ -95,6 +95,8 @@ Tarayıcı ölçümleri, gerçek Son Kullanıcı tarayıcılarından Application
 
 ### <a name="browser-page-load-time-browsertimingstotalduration"></a>Tarayıcı sayfa yükleme süresi (Browserzamanlamalar/totalDuration)
 
+DOM, stil sayfaları, betikler ve görüntüler yükleninceye kadar Kullanıcı isteğinden geçen süre.
+
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|
 |---|---|---|
 |Mayacak|Ortalama, en düşük, en fazla|Yok|
@@ -110,6 +112,8 @@ browserTimings
 ```
 
 ### <a name="client-processing-time-browsertimingprocessingduration"></a>İstemci işlem süresi (Browserzamanlaması/processingDuration)
+
+DOM yükleninceye kadar belgenin son baytını alma arasındaki süre. Zaman uyumsuz istekler hala işlenmeye devam edebilir.
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|
 |---|---|---|
@@ -127,6 +131,8 @@ browserTimings
 
 ### <a name="page-load-network-connect-time-browsertimingsnetworkduration"></a>Sayfa yükleme ağ bağlantı süresi (Browserzamanlamalar/networkDuration)
 
+Kullanıcı isteği ile ağ bağlantısı arasındaki süre. DNS arama ve aktarım bağlantısı içerir.
+
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|
 |---|---|---|
 |Mayacak|Ortalama, en düşük, en fazla|Yok|
@@ -143,6 +149,8 @@ browserTimings
 
 ### <a name="receiving-response-time-browsertimingsreceiveduration"></a>Yanıt süresini alma (Browserzamanlamalar/receiveDuration)
 
+İlk ve son bayt veya bağlantının kesilmesi arasındaki süre.
+
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|
 |---|---|---|
 |Mayacak|Ortalama, en düşük, en fazla|Yok|
@@ -158,6 +166,8 @@ browserTimings
 ```
 
 ### <a name="send-request-time-browsertimingssendduration"></a>Gönderme isteği süresi (Browserzamanlamalar/sendDuration)
+
+Ağ bağlantısı ve ilk baytın alınması arasındaki süre.
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|
 |---|---|---|

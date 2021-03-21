@@ -5,18 +5,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/14/2020
-ms.openlocfilehash: 0f6599bb9f379cf471dafbb83a7deefbb05c0dbe
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 6bda6c9e5f6e23e9e15c12fd507645fc72159302
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102052220"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104583454"
 ---
 # <a name="configure-monitoring-in-vm-insights-guest-health-preview"></a>VM öngörüleri Konuk sistem durumu 'nda izlemeyi yapılandırma (Önizleme)
 VM öngörüleri Konuk durumu, bir sanal makinenin durumunu, düzenli aralıklarla örneklendiği bir dizi performans ölçümlerine göre tanımlanan şekilde görüntülemenize olanak sağlar. Bu makalede, Azure portal kullanarak varsayılan izlemenin nasıl değiştirileceği açıklanır. Ayrıca, [bir veri toplama kuralı kullanarak izlemeyi yapılandırmak](vminsights-health-configure-dcr.md)için gereken izleyicilerin temel kavramlarını açıklar.
 
 ## <a name="open-monitor-configuration"></a>İzleyici yapılandırmasını aç
-İzleyici yapılandırma depo Azure portal açın ve ardından **yapılandırma** sekmesini seçin.
+İzleyici ve **yapılandırma** sekmesini seçerek Azure Portal İzleyici yapılandırmasını açın.
 
 [![İzleme ayrıntıları yapılandırması](media/vminsights-health-overview/monitor-details-configuration.png)](media/vminsights-health-overview/monitor-details-configuration.png#lightbox)
 

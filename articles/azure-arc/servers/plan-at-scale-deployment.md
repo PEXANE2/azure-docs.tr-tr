@@ -1,18 +1,18 @@
 ---
-title: Azure Arc etkin sunucularının ölçekli dağıtımını nasıl planlayacaksanız
+title: Azure Arc etkin sunucularını planlamak ve dağıtmak
 description: Azure 'da önemli güvenlik, yönetim ve izleme özellikleri yapılandırmasını basitleştirmek için Azure Arc etkin sunucularına çok sayıda makinenin nasıl etkinleştirileceğini öğrenin.
-ms.date: 03/12/2021
+ms.date: 03/18/2021
 ms.topic: conceptual
-ms.openlocfilehash: 63e224180cff8cab6e700bc72b8a5c39a7f26857
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.openlocfilehash: 401725dcfed85a6675c95434270dd7dbff482b6e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103461309"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104591189"
 ---
-# <a name="plan-and-deploy-arc-enabled-servers-at-scale"></a>Arc etkin sunucularını ölçekli olarak planlayın ve dağıtın
+# <a name="plan-and-deploy-arc-enabled-servers"></a>Yay özellikli sunucuları planlayın ve dağıtın
 
-Bir BT Altyapısı hizmetinin veya iş uygulamasının dağıtımı, tüm şirketler için zorluk sergilemektir. Bunu iyi şekilde yürütmek ve hoş geldiniz sürprizlerini ve planlanmamış maliyetleri önlemek için, mümkün olduğunca uygun olduğundan emin olmak için kapsamlı bir plan yapmanız gerekir. Azure Arc etkin sunucularının ölçeğini ölçeğinde bir şekilde dağıtmak için, bir yerleşik dağıtımı desteklemek üzere görevleri başarıyla tamamlaması için karşılanması gereken tasarım ve dağıtım ölçütlerini kapsamalıdır.
+Bir BT Altyapısı hizmetinin veya iş uygulamasının dağıtımı, tüm şirketler için zorluk sergilemektir. Bunu iyi şekilde yürütmek ve hoş geldiniz sürprizlerini ve planlanmamış maliyetleri önlemek için, mümkün olduğunca uygun olduğundan emin olmak için kapsamlı bir plan yapmanız gerekir. Azure Arc etkin sunucularının herhangi bir ölçekte dağıtılmasını planlamak için, görevleri başarıyla tamamlaması için karşılanması gereken tasarım ve dağıtım ölçütünü kapsamalıdır.
 
 Dağıtımın sorunsuz bir şekilde devam edebilmesi için planınızın açık bir şekilde anlaşılmaları gerekir:
 
@@ -71,7 +71,7 @@ Daha sonra, yay etkin sunucular bağlı makine aracısına hazırlık ve dağıt
 
 |Görev |Ayrıntı |Süre |
 |-----|-------|---------|
-| Önceden tanımlanmış yükleme betiğini indirin | Otomatik dağıtım gereksinimlerinizi desteklemek için bağlı makine aracısının ölçekli dağıtımı için önceden tanımlanmış yükleme betiğini gözden geçirin ve özelleştirin.<br><br> Örnek ölçek ekleme kaynakları:<br><br> <ul><li> [Temel dağıtım betiği ölçeklendirin](onboard-service-principal.md)</ul></li> <ul><li>[Windows Server VM 'Leri VMware vSphere ölçekli ekleme](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_win.md)</ul></li> <ul><li>[Linux sanal makinelerini VMware vSphere ölçekli ekleme](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_linux.md)</ul></li> <ul><li>[Anerişilebilir kullanarak, ölçeklendirerek AWS EC2 örnekleri ekleme](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/aws_scale_ansible.md)</ul></li> <ul><li>[PowerShell uzaktan iletişimini kullanarak ölçekli dağıtım](https://docs.microsoft.com/azure/azure-arc/servers/onboard-powershell) (yalnızca Windows)</ul></li>| Gereksinimlere bağlı olarak bir veya daha fazla gün, kurumsal süreçler (örneğin, değişiklik ve Release Management) ve kullanılan otomasyon yöntemi. |
+| Önceden tanımlanmış yükleme betiğini indirin | Otomatik dağıtım gereksinimlerinizi desteklemek için bağlı makine aracısının ölçekli dağıtımı için önceden tanımlanmış yükleme betiğini gözden geçirin ve özelleştirin.<br><br> Ölçek ekleme kaynaklarında örnek:<br><br> <ul><li> [Ölçek temel dağıtım betiği](onboard-service-principal.md)</ul></li> <ul><li>[Ölçek ekleme VMware vSphere Windows Server VM 'Leri](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_win.md)</ul></li> <ul><li>[Ölçek ekleme VMware vSphere Linux VM 'Leri](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_linux.md)</ul></li> <ul><li>[Ölçeği kullanarak AWS EC2 örnekleri ekleme](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/aws_scale_ansible.md)</ul></li> <ul><li>[PowerShell uzaktan iletişimini kullanarak ölçekli dağıtımda](https://docs.microsoft.com/azure/azure-arc/servers/onboard-powershell) (yalnızca Windows)</ul></li>| Gereksinimlere bağlı olarak bir veya daha fazla gün, kurumsal süreçler (örneğin, değişiklik ve Release Management) ve kullanılan otomasyon yöntemi. |
 | [Hizmet sorumlusu oluşturma](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) |Makineleri etkileşimli olmayan Azure PowerShell veya portaldan kullanarak bağlamak için bir hizmet sorumlusu oluşturun.| Bir saat |
 | Bağlı makine aracısını hedef sunucularınız ve makinelerinize dağıtın |Komut dosyalarını sunucularınıza dağıtmak ve Azure 'a bağlamak için Otomasyon aracınızı kullanın.| Yayın planınıza bağlı olarak bir veya daha fazla gün ve aşamalı bir dağıtım takip ediyorsanız. |
 

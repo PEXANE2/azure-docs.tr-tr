@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/24/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4390291eb96c11b8fb7fdb48eb92abaf802b80c0
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 748ad9fdab781ba03135f026ab846099fe50c51f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030790"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604415"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Sorgu için otomatik tamamlamayı ve önerilen sonuçları etkinleştirmek üzere bir öneri aracı oluşturun
 
@@ -66,7 +66,7 @@ Bir çözümleyici seçiminiz, alanların nasıl simgeleştirilmiş ve daha sonr
 
 Çözümleyiciler değerlendirirken, koşulların nasıl işlendiği hakkında Öngörüler için [metin ANALIZI API](/rest/api/searchservice/test-analyzer) 'sini kullanmayı göz önünde bulundurun. Bir dizin oluşturduktan sonra, belirteç çıkışını görüntülemek için bir dizedeki çeşitli Çözümleyicileri deneyebilirsiniz.
 
-[Özel çözümleyiciler](index-add-custom-analyzers.md) veya [önceden tanımlanmış çözümleyiciler](index-add-custom-analyzers.md#predefined-analyzers-reference) kullanan alanlar (Standart Lucene hariç), zayıf sonuçları engellemek için açıkça izin verilmez.
+[Özel çözümleyiciler](index-add-custom-analyzers.md) veya [yerleşik çözümleyiciler](index-add-custom-analyzers.md#built-in-analyzers) kullanan alanlar (Standart Lucene hariç), zayıf sonuçları engellemek için açıkça izin verilmez.
 
 > [!NOTE]
 > Çözümleyici kısıtlamasından çalışmanız gerekiyorsa, örneğin belirli sorgu senaryolarında bir anahtar sözcük veya Ngram Çözümleyicisi gerekiyorsa, aynı içerik için iki ayrı alan kullanmanız gerekir. Bu, diğer alanlardan birinin bir öneri aracı sahip olmasını sağlar, ancak diğeri özel bir çözümleyici yapılandırmasıyla ayarlanacaktır.

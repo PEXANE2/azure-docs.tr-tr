@@ -1,5 +1,5 @@
 - name: Azure depolama tarafından doğrulanan iş ortağı çözümleri
-  href: /azure/storage/solution-integration
+  href: ./index.yml
 - name: Analiz ve büyük veri iş ortakları
   items:
     - name: Doğrulanan iş ortaklarına genel bakış
