@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 8dc9bff86a07f3d4a0ec6fd224de6d5633165a6d
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: d903f04055d1607ee782bd502d99a8fd9cde87ca
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582850"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578456"
 ---
 # <a name="daemon-app-that-calls-web-apis---move-to-production"></a>Web API 'Lerini çağıran Daemon uygulaması-üretime taşı
 
@@ -54,18 +54,43 @@ Müşterilerinize bu işlemleri gerçekleştirme hakkında açıklayabilmeniz ge
 
     ![topology](media/scenario-daemon-app/damon-app-sample-web.svg)
 
+# <a name="java"></a>[Java](#tab/java)
+
+Hızlı Başlangıç ['ı bir belirteç alma ve uygulama kimliğini kullanarak bir Java konsol uygulamasından MICROSOFT Graph API çağrısı](quickstart-v2-java-daemon.md)yapın.
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+- Daha fazla bilgi için bkz.
+  - [Yapılandırmayı](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-node/docs/configuration.md) anlama
+  - [ConfidentialClientApplication](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-node/docs/initialize-confidential-client-application.md) örneğini oluşturma
+  - [SSS](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-node/docs/faq.md)
+- Diğer örnekler/Öğreticiler:
+  - [MSAL node konsol Daemon örneği](https://github.com/Azure-Samples/ms-identity-javascript-nodejs-console)
+
+# <a name="python"></a>[Python](#tab/python)
+
+Hızlı Başlangıç ['ı bir belirteç alma ve uygulama kimliğini kullanarak bir Python konsol uygulamasından MICROSOFT Graph API çağrısı](quickstart-v2-python-daemon.md)yapın.
+
 ---
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Daha fazla bilgi edinmenize yardımcı olacak birkaç bağlantı aşağıda verilmiştir:
 
-# <a name="python"></a>[Python](#tab/python)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
-Hızlı Başlangıç ['ı bir belirteç alma ve uygulama kimliğini kullanarak bir Python konsol uygulamasından MICROSOFT Graph API çağrısı](./quickstart-v2-python-daemon.md)yapın.
+Hızlı Başlangıç ['ı bir belirteç edinin ve uygulamanın kimliğini kullanarak bir .NET Core konsol uygulamasından MICROSOFT Graph API çağrısı](quickstart-v2-netcore-daemon.md)yapın.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Hızlı Başlangıç ['ı bir belirteç alma ve uygulama kimliğini kullanarak bir Java konsol uygulamasından MICROSOFT Graph API çağrısı](./quickstart-v2-java-daemon.md)yapın.
+Hızlı Başlangıç ['ı bir belirteç alma ve uygulama kimliğini kullanarak bir Java konsol uygulamasından MICROSOFT Graph API çağrısı](quickstart-v2-java-daemon.md)yapın.
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Hızlı Başlangıç ['ı bir belirteç alma ve uygulama kimliğini kullanarak bir Node.js konsol uygulamasından MICROSOFT Graph API çağrısı](quickstart-v2-nodejs-console.md)yapın.
+
+# <a name="python"></a>[Python](#tab/python)
+
+Hızlı Başlangıç ['ı bir belirteç alma ve uygulama kimliğini kullanarak bir Python konsol uygulamasından MICROSOFT Graph API çağrısı](quickstart-v2-python-daemon.md)yapın.
 
 ---

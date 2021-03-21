@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
 ms.openlocfilehash: e268cca87479625af023b5970bb27c56721f6d39
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102049857"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>Azure dijital TWINS örneğini farklı bir Azure bölgesine taşıma
@@ -47,7 +47,7 @@ Dikkate alınacak bazı sorular şunlardır:
     - Azure Event Grid, Azure Event Hubs veya Azure Service Bus
     - Azure İşlevleri
     - Azure Logic Apps
-    - Azure Zaman Serisi Görüşleri
+    - Azure Time Series Insights
     - Azure Haritalar
     - Azure IoT Hub Cihazı Sağlama Hizmeti
 * Örneğime hangi *kişisel veya Şirket uygulamaları* bağlanmalıyım?

@@ -17,10 +17,10 @@ ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8f08c25749bbd21e3624dee898d9a8c97fd74164
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98059390"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde bağlı bir kuruluş ekleme
@@ -49,7 +49,7 @@ Bu durumda, iki bağlı kuruluş yapılandırabilirsiniz. Grafik Tasarım Enstit
 Azure AD dizininden veya etki alanındaki kullanıcıların kimlik doğrulaması, kimlik doğrulama türüne bağlıdır. Bağlı kuruluşların kimlik doğrulama türleri şunlardır:
 
 - Azure AD
-- [Doğrudan federasyon](../external-identities/direct-federation.md)
+- [Doğrudan Federasyon](../external-identities/direct-federation.md)
 - [Bir kerelik geçiş kodu](../external-identities/one-time-passcode.md) (etki alanı)
 
 Bağlı bir kuruluşun nasıl ekleneceğini gösteren bir gösterim için aşağıdaki videoyu izleyin:

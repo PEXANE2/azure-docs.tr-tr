@@ -11,10 +11,10 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, responsible-ml
 ms.openlocfilehash: a2c8b765f109408b8cb08f78a4b3ad2283f35eb9
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98223593"
 ---
 # <a name="how-to-deploy-an-encrypted-inferencing-web-service-preview"></a>Şifrelenmiş bir ınlebilme Web hizmeti dağıtma (Önizleme)
@@ -34,7 +34,7 @@ ACI, model dağıtımı iş akışını test etmek ve anlamak için harika bir �
 
 Bu örnekte kullanılan şifreleme yöntemi [homomorphic şifredir](https://github.com/Microsoft/SEAL#homomorphic-encryption). Homomorphic şifrelemesi, bir gizli dizi (şifre çözme) anahtarına erişmek gerekmeden, şifrelenmiş verilerde hesaplamalar yapılmasına izin verir. Hesaplamaların sonuçları şifrelenir ve yalnızca gizli anahtar sahibi tarafından açığa çıkarlenebilir. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu kılavuzda, Azure Machine Learning kayıtlı bir görüntü sınıflandırma modeliniz olduğunu varsaymaktadır. Aksi takdirde, modeli [önceden eğitilen bir model](https://github.com/Azure/MachineLearningNotebooks/raw/master/tutorials/image-classification-mnist-data/sklearn_mnist_model.pkl) kullanarak kaydedin veya [Azure Machine Learning öğreticisi ile görüntü sınıflandırma modeliyle eğitme](tutorial-train-models-with-aml.md)işlemini tamamlayarak kendinizinkini oluşturun.
 

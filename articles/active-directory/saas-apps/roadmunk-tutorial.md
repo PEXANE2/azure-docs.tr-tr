@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/28/2020
 ms.author: jeedes
 ms.openlocfilehash: a7f4682be2f7fbf308aba32768efa932f27b7a87
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96181734"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-roadmunk"></a>Öğretici: Roadmunk ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -26,7 +26,7 @@ Bu öğreticide, Roadmunk 'i Azure Active Directory (Azure AD) ile tümleştirme
 * Kullanıcılarınızın Azure AD hesaplarını kullanarak Roadmunk ' de otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin, Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -107,7 +107,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için şu adımları izleyin:
 
 Bu bölümde, Azure portal bir test kullanıcısı oluşturacaksınız. *B. Simon* kullanıcısını adlandırın.
 
-1. Azure Portal sol bölmeden, kullanıcılar **Azure Active Directory**  >  **Users**  >  **tüm kullanıcılar**' ı seçin.
+1. Azure Portal sol bölmeden, kullanıcılar **Azure Active Directory**  >    >  **tüm kullanıcılar**' ı seçin.
 1. Pencerenin üst kısmında **Yeni Kullanıcı**' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  

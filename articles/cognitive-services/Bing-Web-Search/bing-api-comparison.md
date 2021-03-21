@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: aahi
 ms.openlocfilehash: 72b4755c6f01a10851e79cf274842f1599bc2c55
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96349546"
 ---
 # <a name="what-are-the-bing-search-apis"></a>Bing Arama API'leri nedir?
@@ -36,7 +36,7 @@ Tüm ilgili Web içeriği türlerini aramak zorunda olabilecek uygulamalarda Bin
 
 Aşağıdaki Bing arama API 'Leri, Web 'den görüntüler, Haberler, yerel işletmeler ve videolar gibi belirli içerikleri döndürür.
 
-| Bing API 'SI | Açıklama |
+| Bing API 'SI | Description |
 | -- | -- |
 | [Varlık Arama](../Bing-Entities-Search/overview.md) | Bing Varlık Arama API'si kişi, yer veya şeyler olabilen varlıklar içeren arama sonuçları döndürür. Sorguya bağlı olarak, API arama sorgusunu karşılayan bir veya daha fazla varlık döndürür. Arama sorgusu, önemli bireyler, yerel işletmeler, yer işaretleri, hedefler ve daha fazlasını içerebilir. |
 | [Resim Arama](../Bing-Image-Search/overview.md) | Bing Resim Arama API'si, [Bing.com/images](https://www.Bing.com/images)ile benzer yüksek kaliteli statik ve animasyonlu görüntüleri aramanıza ve bulmanıza olanak tanır. Boyut, renk, lisans ve yenilik dahil olmak üzere, görüntüleri özniteliğe göre dahil etmek veya hariç tutmak için aramaları iyileştirebilirsiniz. Ayrıca, popüler görüntüleri arayabilir, bunları bunlarla ilgili Öngörüler elde etmek için görüntüleri karşıya yükleyebilir ve küçük resim önizlemeleri görüntüleyebilirsiniz. |

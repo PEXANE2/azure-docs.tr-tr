@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: lajanuar
 ms.openlocfilehash: 5211c1263af599eb5fd09ad276545c725ce5c867
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103467004"
 ---
 # <a name="form-recognizer-prebuilt-business-cards-model"></a>Form tanıyıcı önceden oluşturulmuş iş kartları modeli 
@@ -31,7 +31,7 @@ Azure form tanıyıcı, önceden oluşturulmuş iş kartları modelini kullanara
 
 ### <a name="fields-extracted"></a>Ayıklanan alanlar:
 
-|Ad| Tür | Açıklama | Metin | 
+|Ad| Tür | Description | Metin | 
 |:-----|:----|:----|:----|
 | ContactNames | nesne dizisi | İş kartından ayıklanan kişi adı | [{"FirstName": "John", "LastName": "tikan"}] |
 | FirstName | string | İlk (verilen) kişi adı | \ | 

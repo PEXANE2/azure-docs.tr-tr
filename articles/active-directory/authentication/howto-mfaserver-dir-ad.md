@@ -13,10 +13,10 @@ ms.reviewer: michmcla
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8b3778ea68edf1fbbb41efb899749e6f35b39bae
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96742298"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Azure MFA Sunucusu ile Active Directory arasında dizin tümleştirme
@@ -92,7 +92,7 @@ Belirli bir dizinin özniteliklerini gerektiği şekilde özelleştirebilirsini
 | Soyadı |Kullanıcı kaydındaki soyadını içeren özniteliğin öznitelik adını girin.  sn varsayılandır. |
 | E-posta adresi |Kullanıcı kaydındaki e-posta adresini içeren özniteliğin öznitelik adını girin.  E-posta adresi kullanıcıya karşılama ve güncelleştirme e-postaları göndermek için kullanılır.  mail varsayılandır. |
 | Kullanıcı grubu |Kullanıcı kaydındaki kullanıcı grubunu içeren özniteliğin öznitelik adını girin.  Kullanıcı grubu, aracıda ve Multi-Factor Auth Sunucusu Yönetim Portalı’ndaki raporlarında bulunan kullanıcıları filtrelemek için kullanılabilir. |
-| Açıklama |Kullanıcı kaydındaki açıklamayı içeren özniteliğin öznitelik adını girin.  Açıklama yalnızca arama için kullanılır.  description varsayılandır. |
+| Description |Kullanıcı kaydındaki açıklamayı içeren özniteliğin öznitelik adını girin.  Açıklama yalnızca arama için kullanılır.  description varsayılandır. |
 | Telefon araması dili |Kullanıcıya yönelik sesli aramalar için kullanılacak dilin kısa adını içeren özniteliğin öznitelik adını girin. |
 | SMS dili |Kullanıcıya yönelik SMS iletileri için kullanılacak dilin kısa adını içeren özniteliğin öznitelik adını girin. |
 | Mobil uygulama dili |Kullanıcıya yönelik telefon uygulama metin iletileri için kullanılacak dilin kısa adını içeren özniteliğin öznitelik adını girin. |
@@ -104,7 +104,7 @@ Belirli bir dizinin özniteliklerini gerektiği şekilde özelleştirebilirsini
 | Faks |Kullanıcı kaydındaki faks numarasını içeren özniteliğin öznitelik adını girin.  facsimileTelephoneNumber varsayılandır. |
 | IP telefonu |Kullanıcı kaydındaki IP telefonu numarasını içeren özniteliğin öznitelik adını girin.  ipPhone varsayılandır. |
 | Özel |Kullanıcı kaydında özel bir telefon numarası içeren özniteliğin öznitelik adını girin.  Varsayılan boştur. |
-| Uzantı |Kullanıcı kaydındaki telefon numarası dahili numarasını içeren özniteliğin öznitelik adını girin.  Dahili numara alanının değeri yalnızca birincil telefon numarası için dahili numara olarak kullanılır.  Varsayılan boştur. <br><br>Dahili numara özniteliği belirtilmezse, dahili numaralar telefon özniteliğinin parçası olarak eklenebilir. Bu durumda, uzantının düzgün ayrıştırılabilmesi için önüne 'x' ekleyin.  Örneğin, 555-123-4567 x890, telefon numarası olarak 555-123-4567 ve dahili numara olarak 890’ı ifade eder. |
+| Dahili numara |Kullanıcı kaydındaki telefon numarası dahili numarasını içeren özniteliğin öznitelik adını girin.  Dahili numara alanının değeri yalnızca birincil telefon numarası için dahili numara olarak kullanılır.  Varsayılan boştur. <br><br>Dahili numara özniteliği belirtilmezse, dahili numaralar telefon özniteliğinin parçası olarak eklenebilir. Bu durumda, uzantının düzgün ayrıştırılabilmesi için önüne 'x' ekleyin.  Örneğin, 555-123-4567 x890, telefon numarası olarak 555-123-4567 ve dahili numara olarak 890’ı ifade eder. |
 | Varsayılanları Geri Yükle düğmesi |Tüm öznitelikleri varsayılan değerlerine geri döndürmek için **Varsayılanları Geri Yükle**’ye tıklayın.  Varsayılanlar normal Active Directory ya da ADAM şemasıyla düzgün çalışmalıdır. |
 
 Öznitelikleri düzenlemek için, öznitelikler sekmesinde **Düzenle** ' ye tıklayın.  Bu, öznitelikleri düzenleyebileceğiniz bir pencere getirir. Herhangi bir özniteliğin yanındaki **...** simgesini seçerek hangi özelliklerin görüntüleneceğini seçebileceğiniz pencereyi açın.

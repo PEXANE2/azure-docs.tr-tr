@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/23/2020
 ms.author: jeedes
 ms.openlocfilehash: 046ded816c28c2153e5609992eb4b7c7cd7f2978
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98729619"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sosafe"></a>Öğretici: SoSafe ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -26,7 +26,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile SoSafe tümleştirme hakk
 * Kullanıcılarınızın Azure AD hesaplarıyla güvenli bir şekilde oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 

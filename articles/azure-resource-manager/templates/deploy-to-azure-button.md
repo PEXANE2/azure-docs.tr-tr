@@ -4,17 +4,17 @@ description: Bir GitHub deposundan Azure Resource Manager şablonları dağıtma
 ms.topic: conceptual
 ms.date: 11/10/2020
 ms.openlocfilehash: abe59f377474540e9209691df8b1d1a7b806c26d
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98028752"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>GitHub deposundan şablon dağıtmak için bir dağıtım düğmesi kullanın
 
 Bu makalede, bir GitHub deposundan şablon dağıtmak için **Azure 'Da dağıtma** düğmesinin nasıl kullanılacağı açıklanır. Düğme doğrudan GitHub deponuzdaki _README.MD_ dosyasına eklenebilir. İsterseniz, depoya başvuran bir Web sayfasına düğmeyi de ekleyebilirsiniz.
 
-Dağıtım kapsamı, şablon şemasına göre belirlenir. Daha fazla bilgi için bkz:
+Dağıtım kapsamı, şablon şemasına göre belirlenir. Daha fazla bilgi için bkz.
 
 - [kaynak grupları](deploy-to-resource-group.md)
 - [Aboneliklerin](deploy-to-subscription.md)

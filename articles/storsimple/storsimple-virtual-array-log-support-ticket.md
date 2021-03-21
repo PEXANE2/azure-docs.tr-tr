@@ -1,6 +1,6 @@
 ---
-title: StorSimple ile destek bileti günlük Aygıt Yöneticisi | Microsoft Docs
-description: StorSimple Aygıt Yöneticisi Tanılama özelliğini açıklar ve StorSimple Sanal diziniz sorunlarını gidermek için nasıl kullanılacağını açıklar.
+title: StorSimple ile destek bileti günlük Device Manager | Microsoft Docs
+description: StorSimple Device Manager Tanılama özelliğini açıklar ve StorSimple Sanal diziniz sorunlarını gidermek için nasıl kullanılacağını açıklar.
 services: storsimple
 documentationcenter: ''
 author: manuaery
@@ -15,21 +15,21 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: 57cd9b55f529bde3f6bcb0a25a95c70333f6d8dd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96005784"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-log-a-support-request-for-the-storsimple-virtual-array"></a>StorSimple Aygıt Yöneticisi hizmetini kullanarak StorSimple Sanal dizisi için bir Destek isteği günlüğe kaydedin
+# <a name="use-the-storsimple-device-manager-service-to-log-a-support-request-for-the-storsimple-virtual-array"></a>StorSimple Device Manager hizmetini kullanarak StorSimple Sanal dizisi için bir Destek isteği günlüğe kaydedin
 
 ## <a name="overview"></a>Genel Bakış
 
-StorSimple Aygıt Yöneticisi, hizmet Özeti dikey penceresinde **Yeni bir destek isteği kaydetme** yeteneği sağlar. Bu makalede, yeni bir destek isteğini nasıl günlüğe kaydedebilir ve kendi yaşam döngüsünü Portal içinden yönetebilirsiniz.
+StorSimple Device Manager, hizmet Özeti dikey penceresinde **Yeni bir destek isteği kaydetme** yeteneği sağlar. Bu makalede, yeni bir destek isteğini nasıl günlüğe kaydedebilir ve kendi yaşam döngüsünü Portal içinden yönetebilirsiniz.
 
 ## <a name="new-support-request"></a>Yeni destek isteği
 
-[Destek planınıza](https://azure.microsoft.com/support/plans/)bağlı olarak, StorSimple Sanal dizinizdeki bir sorun Için doğrudan storsimple Aygıt Yöneticisi hizmet Özeti dikey penceresinden destek bileti oluşturabilirsiniz.
+[Destek planınıza](https://azure.microsoft.com/support/plans/)bağlı olarak, StorSimple Sanal dizinizdeki bir sorun Için doğrudan storsimple Device Manager hizmet Özeti dikey penceresinden destek bileti oluşturabilirsiniz.
 
 #### <a name="to-log-a-new-request"></a>Yeni bir isteği günlüğe kaydetmek için
 
@@ -41,13 +41,13 @@ StorSimple Aygıt Yöneticisi, hizmet Özeti dikey penceresinde **Yeni bir deste
 
     1. **Sorun türü** açılan listesinden **Teknik**' i seçin. 
     
-    2. Geçerli **abonelik**, **hizmet** türü ve **kaynak** (StorSimple aygıt yöneticisi hizmeti) otomatik olarak seçilir. 
+    2. Geçerli **abonelik**, **hizmet** türü ve **kaynak** (StorSimple Device Manager hizmeti) otomatik olarak seçilir. 
 
     3. Hizmetinize kayıtlı sorun yaşayan bir veya daha fazla cihaz belirtin.
 
     4. Aboneliğinizle ilişkili birden çok planınız varsa, uygun bir **destek planı** seçin. Teknik desteğe olanak tanımak için ücretli bir destek planına ihtiyacınız vardır.
 
-3. **2. adımda** **önem derecesini** seçin ve sorunun dizi ya da StorSimple aygıt yöneticisi hizmetiyle ilgili olup olmadığını belirtin. Ayrıca, bu sorun için bir **Kategori** seçin ve sorun hakkında daha fazla **ayrıntı** sağlayın.
+3. **2. adımda** **önem derecesini** seçin ve sorunun dizi ya da StorSimple Device Manager hizmetiyle ilgili olup olmadığını belirtin. Ayrıca, bu sorun için bir **Kategori** seçin ve sorun hakkında daha fazla **ayrıntı** sağlayın.
    
     ![Ekran görüntüsü, destek isteğinizin sorun türünü, kategorisini ve ayrıntılarını girebileceğiniz sorun bölmesini gösterir.](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket2.png)
 

@@ -12,10 +12,10 @@ ms.topic: how-to
 ms.date: 02/27/2021
 ms.author: rolyon
 ms.openlocfilehash: 9780902a1c5f4a711e1abffa6b508c28efe269ac
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101735889"
 ---
 # <a name="list-azure-role-assignments-using-the-rest-api"></a>REST API kullanarak Azure rol atamalarını listeleyin
@@ -52,7 +52,7 @@ Azure RBAC 'de, erişimi listelemek için rol atamalarını listeleyin. Rol atam
 1. *{Filter}* değerini, rol atama listesini filtrelemek için uygulamak istediğiniz koşulla değiştirin.
 
     > [!div class="mx-tableFixed"]
-    > | Filtre | Açıklama |
+    > | Filtre | Description |
     > | --- | --- |
     > | `$filter=atScope()` | Alt kapsamlardaki rol atamalarını dahil etmez, yalnızca belirtilen kapsam için rol atamalarını listeler. |
     > | `$filter=assignedTo('{objectId}')` | Belirtilen kullanıcı veya hizmet sorumlusu için rol atamalarını listeler.<br/>Kullanıcı, rol ataması olan bir grubun üyesiyse, bu rol ataması da listelenir. Bu filtre, Kullanıcı bir grubun üyesiyse ve bu grup rol ataması olan başka bir grubun üyesiyse, bu rol atamasının de listelenmediği anlamına gelen gruplar için geçişlidir.<br/>Bu filtre yalnızca bir kullanıcı veya hizmet sorumlusu için bir nesne KIMLIĞI kabul eder. Bir grup için nesne KIMLIĞI geçirilemez. |

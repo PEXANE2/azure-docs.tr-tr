@@ -4,10 +4,10 @@ description: Azure Işlevlerinde Openapı desteğine genel bakış
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.openlocfilehash: 499d4f685e3802fcc37c8a3050ae367207f192d2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96000223"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Azure Işlevlerinde Openapı 2,0 meta veri desteği (Önizleme)
@@ -62,7 +62,7 @@ Aşağıdaki tablo, oluşturulan Swagger iskelet ile eşlendiği için function.
 
 ## <a name="use-cicd-to-set-an-api-definition"></a><a name="CICD"></a>Bir API tanımı ayarlamak için CI/CD kullanma
 
- Kaynak denetiminden API tanımınızı değiştirmek için kaynak denetimini etkinleştirmeden önce portalda API tanımı barındırmayı etkinleştirmeniz gerekir. Aşağıdaki yönergeleri izleyin:
+ Kaynak denetiminden API tanımınızı değiştirmek için kaynak denetimini etkinleştirmeden önce portalda API tanımı barındırmayı etkinleştirmeniz gerekir. Şu yönergeleri izleyin:
 
 1. İşlev uygulaması ayarlarınızda **API tanımına (Önizleme)** gidin.
    1. **API tanımı kaynağını** **işlev** olarak ayarlayın.

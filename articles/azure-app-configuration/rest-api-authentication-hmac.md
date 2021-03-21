@@ -7,10 +7,10 @@ ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
 ms.openlocfilehash: d5b5470b30848fd31be63f25c85c23f88cdaf0c6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101732233"
 ---
 # <a name="hmac-authentication---rest-api-reference"></a>HMAC kimlik doğrulaması-REST API başvurusu
@@ -49,7 +49,7 @@ Authorization: HMAC-SHA256 Credential={Access Key ID}&SignedHeaders=x-ms-date;ho
 
 ``Authorization``: **HMAC-SHA256**```Credential```=\<value\>&```SignedHeaders```=\<value\>&```Signature```=\<value\>
 
-|  Bağımsız Değişken | Açıklama  |
+|  Bağımsız Değişken | Description  |
 | ------ | ------ |
 | **HMAC-SHA256** | Yetkilendirme düzeni. _istenir_ |
 | **Kimlik Bilgisi** | İmzayı hesaplamak için kullanılan erişim anahtarının KIMLIĞI. _istenir_ |
@@ -87,7 +87,7 @@ _Dizeden Imzalanacak =_
 
 **HTTP_METHOD** + ' \n ' + **path_and_query** + ' \n ' + **signed_headers_values**
 
-|  Bağımsız Değişken | Açıklama  |
+|  Bağımsız Değişken | Description  |
 | ------ | ------ |
 | **HTTP_METHOD** | İstekle birlikte kullanılan büyük harfli HTTP yöntemi adı. Daha fazla bilgi için bkz. [Bölüm 9](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html). |
 |**path_and_query** | İstek mutlak URI yolu ve sorgu dizesi birleştirme. Daha fazla bilgi için bkz. [bölüm 3,3](https://tools.ietf.org/html/rfc3986#section-3.3).

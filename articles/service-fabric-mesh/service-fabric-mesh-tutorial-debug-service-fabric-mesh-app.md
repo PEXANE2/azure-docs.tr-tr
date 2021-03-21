@@ -7,10 +7,10 @@ ms.date: 10/31/2018
 ms.author: gwallace
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 9e3dc16481340c0266cd398d0970e2147648e17f
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99625457"
 ---
 # <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>Öğretici: Yerel geliştirme kümenizde çalışan bir Service Fabric Mesh uygulamasının hatalarını ayıklama
@@ -89,8 +89,8 @@ Uygulama başlatıldığında **404** hatası alırsanız, **service.yaml** içi
 ### <a name="debug-in-visual-studio"></a>Visual Studio'da hata ayıklama
 
 Visual Studio 'da bir Service Fabric kafes uygulamasında hata ayıkladığınızda, yerel bir Service Fabric geliştirme kümesi kullanıyorsunuz demektir. Arka uç hizmetinden yapılacaklar öğelerinin nasıl alındığını görmek için OnGet() yönteminde hata ayıklaması yapın.
-1. **Webön uç** projesinde, **Pages**  >  **Index. cshtml**  >  **Index.cshtml.cs** ' ı açın ve **OnGet** yönteminde (17. satır) bir kesme noktası ayarlayın.
-2. **ToDoService** projesinde, **TodoController.cs** öğesini açın ve **Get** yönteminde (15. satır) bir kesme noktası ayarlayın.
+1. **Webön uç** projesinde,   >  **Index. cshtml**  >  **index. cshtml. cs** dosyasını açın ve **OnGet** yönteminde (17. satır) bir kesme noktası ayarlayın.
+2. **ToDoService** projesinde, **TodoController. cs** ' yi açın ve **Get** yönteminde (15. satır) bir kesme noktası ayarlayın.
 3. Tarayıcınıza geri dönüp sayfayı yenileyin. Web ön ucu `OnGet()` yönteminde kesme noktasına ulaşırsınız. `backendUrl` değişkenini inceleyerek **service.yaml** dosyasında tanımladığınız ortam değişkenlerinin arka uç hizmetiyle bağlantı kurmak için kullanılan URL'yle nasıl birleştirildiği görebilirsiniz.
 4. `client.GetAsync(backendUrl).GetAwaiter().GetResult())` çağrısından ilerleyin (F10); denetleyicinin `Get()` kesme noktasına ulaşırsınız. Bu yöntemde, yapılacaklar öğesi listesinin bellek içi listeden nasıl alındığını görebilirsiniz.
 5. İşiniz bittiğinde, **SHIFT + F5** tuşlarına basarak Visual Studio 'da projenizin hatalarını ayıklamayı durdurun.

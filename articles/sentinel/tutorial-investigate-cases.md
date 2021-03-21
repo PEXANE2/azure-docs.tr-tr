@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/25/2021
 ms.author: yelevin
 ms.openlocfilehash: 8853f3774bb35361746c8b706f38bc54079d74f7
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98790995"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Öğretici: Azure Sentinel ile olayları araştırın
@@ -36,8 +36,8 @@ Bu makalede şunları ele alınmaktadır:
 
 Bir olay birden çok uyarı içerebilir. Bu, belirli bir araştırma için ilgili tüm kanıtın bir toplamadır. **Analiz** sayfasında oluşturduğunuz analiz kuralları temel alınarak bir olay oluşturulur. Önem ve durum gibi uyarılarla ilgili özellikler olay düzeyinde ayarlanır. Azure Sentinel 'e hangi tür tehditleri aradığınızı ve bunların nasıl bulunacağını öğrendikten sonra, olayları inceleyerek algılanan tehditleri izleyebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
-- Yalnızca analiz kuralınızı ayarlarken varlık eşleme alanlarını kullandıysanız olayı araştırabileceksiniz. Araştırma grafiğinde, özgün olaylarınızın varlıkları içermesi gerekir.
+## <a name="prerequisites"></a>Önkoşullar
+- Yalnızca analiz kuralınızı ayarlarken varlık eşleme alanlarını kullandıysanız olayı araştırabileceksiniz. Araştırma grafiği için özgün olayınızın varlıkları içermesi gerekir.
 
 - Olayları atamak için gereken bir Konuk kullanıcı varsa, kullanıcının Azure AD kiracınızda [Dizin okuyucu](../active-directory/roles/permissions-reference.md#directory-readers) rolüne atanması gerekir. Normal (konuk olmayan) kullanıcılara varsayılan olarak bu rol atanır.
 
@@ -80,7 +80,7 @@ Araştırma grafiğini kullanmak için:
 1. Bir olay seçin ve ardından **Araştır**' ı seçin. Bu sizi araştırma grafiğine götürür. Grafik, uyarıya doğrudan bağlı varlıkların bir tanım haritasını ve her bir kaynağı daha fazla bağlantılı olarak sağlar.
 
    > [!IMPORTANT] 
-   > - Yalnızca analiz kuralınızı ayarlarken varlık eşleme alanlarını kullandıysanız olayı araştırabileceksiniz. Araştırma grafiğinde, özgün olaylarınızın varlıkları içermesi gerekir.
+   > - Yalnızca analiz kuralınızı ayarlarken varlık eşleme alanlarını kullandıysanız olayı araştırabileceksiniz. Araştırma grafiği için özgün olayınızın varlıkları içermesi gerekir.
    >
    > - Azure Sentinel Şu anda **30 güne kadar eski olay** araştırmasını desteklemektedir.
 

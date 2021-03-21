@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: lajanuar
 ms.openlocfilehash: 81e8cd5cf4af8da76ae4eb09bed5a4ee0368da4b
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103467366"
 ---
 # <a name="form-recognizer-prebuilt-receipt-model"></a>Form tanıyıcı önceden oluşturulmuş makbuz modeli
@@ -36,7 +36,7 @@ Makbuz API 'SI, büyük miktarda alma işlemi senaryolarını etkinleştirmek i�
 
 ### <a name="fields-extracted"></a>Ayıklanan alanlar
 
-|Ad| Tür | Açıklama | Metin | Değer (standartlaştırılmış çıkış) |
+|Ad| Tür | Description | Metin | Değer (standartlaştırılmış çıkış) |
 |:-----|:----|:----|:----| :----|
 | Pottype | string | Satış alındısı türü | 'Nün |  |
 | MerchantName | string | Okundu bilgisini veren satıcı adı | Contoso |  |

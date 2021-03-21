@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 230e158a970f8c815b1575403c013e30749124c5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96005070"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>Öğretici: IoT Edge BLOB depolama olaylarına tepki verme (Önizleme)

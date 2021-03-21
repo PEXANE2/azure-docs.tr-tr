@@ -7,10 +7,10 @@ ms.topic: reference
 ms.date: 09/30/2020
 ms.author: bwren
 ms.openlocfilehash: 721563fa140dfddbfb5984db8465187fb90018e5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102049177"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure etkinlik günlüğü olay şeması
@@ -140,7 +140,7 @@ Bu kategori, Kaynak Yöneticisi aracılığıyla gerçekleştirilen tüm oluştu
 ```
 
 ### <a name="property-descriptions"></a>Özellik açıklamaları
-| Öğe Adı | Açıklama |
+| Öğe Adı | Description |
 | --- | --- |
 | yetkilendirme |Etkinliğin Azure RBAC özelliklerinin blobu. Genellikle "Action", "role" ve "scope" özelliklerini içerir. |
 | yapana |Kullanılabilirliği temel alarak işlemi, UPN talebini veya SPN talebini gerçekleştiren kullanıcının e-posta adresi. |
@@ -287,7 +287,7 @@ Bu kategori, Azure kaynaklarınızda oluşan herhangi bir kaynak sistem durumu o
 ```
 
 ### <a name="property-descriptions"></a>Özellik açıklamaları
-| Öğe Adı | Açıklama |
+| Öğe Adı | Description |
 | --- | --- |
 | lardan | Her zaman "Yönetici, Işlem" |
 | correlationId | Dize biçimindeki bir GUID. |
@@ -380,7 +380,7 @@ Bu kategori, klasik Azure uyarılarının tüm etkinleştirmeleri kaydını içe
 ```
 
 ### <a name="property-descriptions"></a>Özellik açıklamaları
-| Öğe Adı | Açıklama |
+| Öğe Adı | Description |
 | --- | --- |
 | yapana | Her zaman Microsoft. Insights/alertRules |
 | lardan | Her zaman "Yönetici, Işlem" |
@@ -406,7 +406,7 @@ Bu kategori, klasik Azure uyarılarının tüm etkinleştirmeleri kaydını içe
 Özellikler alanı, uyarı olayının kaynağına göre farklı değerler içerecektir. İki ortak uyarı olay sağlayıcısı, etkinlik günlüğü uyarıları ve ölçüm uyarılarıdır.
 
 #### <a name="properties-for-activity-log-alerts"></a>Etkinlik günlüğü uyarıları özellikleri
-| Öğe Adı | Açıklama |
+| Öğe Adı | Description |
 | --- | --- |
 | Properties. SubscriptionID | Etkinlik günlüğü olayından bu etkinlik günlüğü uyarı kuralının etkinleştirilmesini sağlayan abonelik KIMLIĞI. |
 | Properties. Eventdataıd | Etkinlik günlüğü olayından bu etkinlik günlüğü uyarı kuralının etkinleştirilmesini sağlayan olay veri KIMLIĞI. |
@@ -417,7 +417,7 @@ Bu kategori, klasik Azure uyarılarının tüm etkinleştirmeleri kaydını içe
 | Properties. Status | Etkinlik günlüğü olayından bu etkinlik günlüğü uyarı kuralının etkinleştirilmesini sağlayan durum.|
 
 #### <a name="properties-for-metric-alerts"></a>Ölçüm uyarıları özellikleri
-| Öğe Adı | Açıklama |
+| Öğe Adı | Description |
 | --- | --- |
 | özelliklerinin. RuleUri | Ölçüm uyarı kuralının kaynak KIMLIĞI. |
 | özelliklerinin. RuleName | Ölçüm uyarı kuralının adı. |
@@ -490,7 +490,7 @@ Bu kategori, aboneliğinizde tanımladığınız otomatik ölçeklendirme ayarla
 ```
 
 ### <a name="property-descriptions"></a>Özellik açıklamaları
-| Öğe Adı | Açıklama |
+| Öğe Adı | Description |
 | --- | --- |
 | yapana | Her zaman Microsoft. Insights/oto Scalesettings |
 | lardan | Her zaman "Yönetici, Işlem" |
@@ -580,7 +580,7 @@ Bu kategori, Azure Güvenlik Merkezi tarafından oluşturulan uyarıların kayd�
 ```
 
 ### <a name="property-descriptions"></a>Özellik açıklamaları
-| Öğe Adı | Açıklama |
+| Öğe Adı | Description |
 | --- | --- |
 | lardan | Always "Işlem" |
 | correlationId | Dize biçimindeki bir GUID. |
@@ -661,7 +661,7 @@ Bu kategori, hizmetleriniz için oluşturulan tüm yeni önerilerin kaydını i�
 
 ```
 ### <a name="property-descriptions"></a>Özellik açıklamaları
-| Öğe Adı | Açıklama |
+| Öğe Adı | Description |
 | --- | --- |
 | lardan | Always "Işlem" |
 | correlationId | Dize biçimindeki bir GUID. |
@@ -771,7 +771,7 @@ Bu kategori, [Azure ilkesi](../../governance/policy/overview.md)tarafından ger�
 
 ### <a name="policy-event-property-descriptions"></a>İlke olayı Özellik açıklamaları
 
-| Öğe Adı | Açıklama |
+| Öğe Adı | Description |
 | --- | --- |
 | yetkilendirme | Etkinliğin Azure RBAC özellikleri dizisi. Yeni kaynaklar için bu işlem, değerlendirmeyi tetikleyen isteğin bir sonucudur. Mevcut kaynaklar için, eylem "Microsoft. resources/Checkpolicyuyumluluk/Read" olur. |
 | yapana | Yeni kaynaklar için, bir dağıtımı Başlatan kimlik. Mevcut kaynaklar için Microsoft Azure Policy Insights RP 'nin GUID 'SI. |

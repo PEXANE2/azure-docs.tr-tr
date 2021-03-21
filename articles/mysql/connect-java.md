@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.devlang: java
 ms.date: 08/17/2020
 ms.openlocfilehash: 457f7e07391c647d2ab0e7d78197086f6f5e2cf7
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96187791"
 ---
 # <a name="quickstart-use-java-and-jdbc-with-azure-database-for-mysql"></a>Hızlı başlangıç: MySQL için Azure veritabanı ile Java ve JDBC kullanma
@@ -21,7 +21,7 @@ Bu konu başlığı altında, [MySQL Için Azure veritabanı](./index.yml)'nda b
 
 JDBC, geleneksel ilişkisel veritabanlarına bağlanmak için standart Java API 'sidir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure hesabı. Hiç kimse yoksa [ücretsiz deneme sürümü alın](https://azure.microsoft.com/free/).
 - [Azure Cloud Shell](../cloud-shell/quickstart.md) veya [Azure CLI](/cli/azure/install-azure-cli). Otomatik olarak oturum açabileceksiniz ve ihtiyacınız olan tüm araçlara erişebilmek için Azure Cloud Shell önerilir.

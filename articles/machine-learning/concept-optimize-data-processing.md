@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 06/26/2020
 ms.custom: data4ml
 ms.openlocfilehash: 5ab7bac635a0b670087800212727b0d2e2b96934
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103472201"
 ---
 # <a name="optimize-data-processing-with-azure-machine-learning"></a>Azure Machine Learning ile veri işlemeyi iyileştirme
@@ -62,7 +62,7 @@ RAM belirtimleri için, [dv2-Dsv2 serisi](../virtual-machines/dv2-dsv2-series-me
 
 Makinenize daha fazla RAM ekleyemiyorum, CPU iş yüklerini en aza indirmek ve işlem sürelerini iyileştirmek için aşağıdaki teknikleri uygulayabilirsiniz. Bu öneriler hem tek hem de Dağıtılmış sistemlere aittir.
 
-Teknik | Açıklama
+Teknik | Description
 ----|----
 Sıkıştırma | Verileriniz için, daha az bellek kullanan ve hesaplamanızın sonuçlarını önemli ölçüde etkilemeyen bir şekilde farklı bir gösterim kullanın.<br><br>*Örnek:* Girişleri her giriş için yaklaşık 10 bayt veya daha fazla olan bir dize olarak depolamak yerine, bunları bir Boolean, true veya false olarak depolayarak 1 baytlık bir biçimde saklayabilirsiniz.
 Öbekleme | Verileri alt kümeler (parçalar) halinde belleğe yükleyin, verileri zamanında bir alt küme veya paralel olarak birden çok alt küme ile işleme. Bu yöntem, tüm verileri işleyebilmeniz, ancak tüm verileri tek seferde belleğe yüklemeniz gerekmiyorsa en iyi şekilde geçerlidir. <br><br>*Örnek:* Her seferinde bir yıl boyunca verilerin tam olarak işlenmesi yerine verileri bir ay yükleyin ve işleyin.

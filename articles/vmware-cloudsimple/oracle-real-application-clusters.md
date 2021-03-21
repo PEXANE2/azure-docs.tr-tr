@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 3959aae5f490af10c6747cfa67d9960e0c4a203f
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97899278"
 ---
 # <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>Oracle RAC 'yi yüklemek için CloudSimple özel bulutunuzu iyileştirin
@@ -46,14 +46,14 @@ Aşağıdaki örnek aşağıdaki tabloda tanımlanan diskleri kullanır.
 
 | Disk                                      | Amaç                                       | Paylaşılan Disk |
 |-------------------------------------------|-----------------------------------------------|-------------|
-| İşletim Sistemi                                        | İşletim sistemi diski                         | Hayır          |
-| ÇIZGISI                                      | Oracle Grid yazılımının yükleneceği konum     | Hayır          |
-| VERITABANıNıZı                                  | Oracle veritabanı yazılımının konumunu yükler | Hayır          |
-| ORAHOME                                   | Oracle veritabanı ikilileri için temel konum    | Hayır          |
-| VERI1, VERI2, DATA3, DATA4                | Oracle veritabanı dosyalarının depolandığı disk   | Evet         |
-| REDO1, REDO2, REDO3, REDO4, REDO5, REDO6  | Günlük disklerini Yinele                                | Evet         |
-| OCR1, OCR2, OCR3, OCR4, OCR5              | Oylama diskleri                                  | Evet         |
-| FRA1, FRA2                                | Hızlı kurtarma alanı diskleri                      | Evet         |
+| İşletim Sistemi                                        | İşletim sistemi diski                         | No          |
+| ÇIZGISI                                      | Oracle Grid yazılımının yükleneceği konum     | No          |
+| VERITABANıNıZı                                  | Oracle veritabanı yazılımının konumunu yükler | No          |
+| ORAHOME                                   | Oracle veritabanı ikilileri için temel konum    | No          |
+| VERI1, VERI2, DATA3, DATA4                | Oracle veritabanı dosyalarının depolandığı disk   | Yes         |
+| REDO1, REDO2, REDO3, REDO4, REDO5, REDO6  | Günlük disklerini Yinele                                | Yes         |
+| OCR1, OCR2, OCR3, OCR4, OCR5              | Oylama diskleri                                  | Yes         |
+| FRA1, FRA2                                | Hızlı kurtarma alanı diskleri                      | Yes         |
 
 ![Oracle sanal makine diski yapılandırması](media/oracle-vmdk.png)
 

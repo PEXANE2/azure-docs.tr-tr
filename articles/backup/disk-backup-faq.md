@@ -4,10 +4,10 @@ description: Azure disk yedekleme hakkında sık sorulan soruların yanıtların
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.openlocfilehash: 3ef18a7d178075194e24889477768583f05f0cdd
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98734571"
 ---
 # <a name="frequently-asked-questions-about-azure-disk-backup-in-preview"></a>Azure disk yedeklemesi hakkında sık sorulan sorular (önizlemede)
@@ -79,7 +79,7 @@ Evet, diski yedeklemenin alındığı kaynak tarafından yönetilen diskten fark
 
 Hayır, bir sanal makineye bağlı birden çok diskin zaman içindeki anlık görüntüleri desteklenmez. Daha fazla bilgi için bkz. [yedeklemeyi yapılandırma](backup-managed-disks.md#configure-backup) ve sınırlamalar hakkında daha fazla bilgi edinmek için [destek matrisine](disk-backup-support-matrix.md)bakın.
 
-### <a name="what-are-my-options-to-back-up-disks-across-multiple-subscriptions"></a>Birden çok aboneliğe disk yedeklemek için seçeneklerim nelerdir?
+### <a name="what-are-my-options-to-back-up-disks-across-multiple-subscriptions"></a>Birden çok abonelikteki diskleri yedeklemek için seçeneklerim nelerdir?
 
 Şu anda, disklerin yedeklenmesini yapılandırmak için Azure portal kullanılması, aynı abonelikte en fazla 20 diskle sınırlıdır.
 

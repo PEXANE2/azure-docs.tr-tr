@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4ca618dc234ff4383083ff5eb21299fb1e3e7128
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96348747"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Azure Active Directory Raporlama API 'sine erişim önkoşulları
@@ -32,13 +32,13 @@ Raporlama API 'SI, Web API 'Lerine erişim yetkisi vermek için [OAuth](../../ap
 
 Raporlama API 'sine erişiminizi hazırlamak için şunları yapmanız gerekir:
 
-1. [Rol atama](#assign-roles)
+1. [Rolleri atama](#assign-roles)
 2. [Lisans gereksinimleri](#license-requirements)
 3. [Uygulamayı kaydetme](#register-an-application)
 4. [İzinleri verme](#grant-permissions)
 5. [Yapılandırma ayarlarını topla](#gather-configuration-settings)
 
-## <a name="assign-roles"></a>Rol atama
+## <a name="assign-roles"></a>Rolleri atama
 
 API aracılığıyla raporlama verilerine erişim sağlamak için, aşağıdaki rollerden birine atanmış olması gerekir:
 
@@ -53,7 +53,7 @@ API aracılığıyla raporlama verilerine erişim sağlamak için, aşağıdaki 
 Bir kiracının oturum açma raporlarına erişebilmek için bir Azure AD kiracısının ilişkili Azure AD Premium lisansı olması gerekir. Azure AD Premium P1 (veya üzeri), herhangi bir Azure AD kiracısına yönelik oturum açma raporlarına erişmek için gereklidir. Alternatif olarak, Dizin türü Azure AD B2C ise, oturum açma raporlarına ek lisans gereksinimi olmadan API aracılığıyla erişilebilir. 
 
 
-## <a name="register-an-application"></a>Uygulamaları kaydetme
+## <a name="register-an-application"></a>Bir uygulamayı kaydetme
 
 Raporlama API 'sine bir betik kullanarak erişiyorsanız bile kayıt gereklidir. Kayıt, yetkilendirme çağrıları için gerekli olan bir **uygulama kimliği** sağlar ve kodunuzun belirteçleri almasını sağlar.
 

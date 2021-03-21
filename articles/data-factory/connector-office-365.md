@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/20/2019
 ms.author: jingwang
 ms.openlocfilehash: a7df69e7c5701074b40d6fa8340d8a0e247f00de
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100393012"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>Azure Data Factory kullanarak Office 365 ' deki verileri Azure 'a kopyalama
@@ -20,7 +20,7 @@ Azure Data Factory, [Microsoft Graph veri bağlantısı](/graph/data-connect-con
 
 Bu makalede, Office 365 ' den veri kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Kopyalama etkinliğine genel bir bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesinde oluşturulur.
 
-## <a name="supported-capabilities"></a>Desteklenen yetenekler
+## <a name="supported-capabilities"></a>Desteklenen özellikler
 ADF Office 365 Bağlayıcısı ve Microsoft Graph veri bağlantısı, Exchange e-posta etkin posta kutularındaki, adres defteri kişileri, takvim olayları, e-posta iletileri, Kullanıcı bilgileri, posta kutusu ayarları vb. gibi farklı veri kümesi türlerinin ölçeğini alma işlemi sırasında etkinleştirilir.  Kullanılabilir veri kümelerinin tüm listesini görmek için [buraya](/graph/data-connect-datasets) başvurun.
 
 Şimdilik tek bir kopyalama etkinliği içinde, yalnızca **Office 365 ' den [Azure Blob depolama](connector-azure-blob-storage.md)alanına, [Azure Data Lake Storage 1.](connector-azure-data-lake-store.md)ve [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md) JSON biçiminde** (setofobjects) veri kopyalayabilirsiniz. Office 365 ' i diğer veri deposu türlerine veya başka biçimlerde yüklemek istiyorsanız, [desteklenen ADF hedef depolarından](copy-activity-overview.md#supported-data-stores-and-formats) birine veri yüklemek için ilk kopyalama etkinliğini sonraki bir kopyalama etkinliğiyle zincirleyebilirsiniz ("desteklenen veri depoları ve biçimleri" tablosunda "havuz olarak desteklenir" sütununa bakın).

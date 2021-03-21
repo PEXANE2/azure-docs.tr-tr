@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
 ms.openlocfilehash: 203abe2b6def478dc1747dd4ce638b5b62707612
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101659231"
 ---
 # <a name="create-external-stream-transact-sql"></a>Dış AKıŞ oluşturma (Transact-SQL)
@@ -24,7 +24,7 @@ Ayrıca, bir dış AKıŞ, Olay Hub 'ı veya blob depolama gibi hizmetler için 
 
 Azure SQL Edge Şu anda yalnızca akış girişleri ve çıkışları olarak aşağıdaki veri kaynaklarını destekler.
 
-| Veri kaynağı türü | Girdi | Çıktı | Açıklama |
+| Veri kaynağı türü | Girdi | Çıktı | Description |
 |------------------|-------|--------|------------------|
 | Azure IoT Edge hub 'ı | E | E | Bir Azure IoT Edge hub 'ına akış verilerini okumak ve yazmak için veri kaynağı. Daha fazla bilgi için bkz. [IoT Edge hub](../iot-edge/iot-edge-runtime.md#iot-edge-hub).|
 | SQL Veritabanı | N | E | SQL veritabanına akış verileri yazmak için veri kaynağı bağlantısı. Veritabanı, Azure SQL Edge 'deki bir yerel veritabanı veya SQL Server ya da Azure SQL veritabanı 'ndaki uzak bir veritabanı olabilir.|

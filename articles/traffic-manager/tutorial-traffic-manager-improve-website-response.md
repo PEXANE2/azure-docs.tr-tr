@@ -12,17 +12,17 @@ ms.workload: infrastructure-services
 ms.date: 10/19/2020
 ms.author: duau
 ms.openlocfilehash: d8262a80fac42f103d571523c75c5064d5d43949
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96003829"
 ---
 # <a name="tutorial-improve-website-response-using-traffic-manager"></a>Öğretici: Traffic Manager kullanarak Web sitesi yanıtını geliştirme
 
 Bu öğreticide, Kullanıcı trafiğini en düşük gecikmeyle Web sitesine yönlendirerek yüksek oranda yanıt veren bir Web sitesi oluşturmak için Traffic Manager nasıl kullanılacağı açıklanmaktadır. Genellikle, en düşük gecikme süresine sahip veri merkezi, coğrafi mesafede en yakın bir değer olacaktır.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * IIS üzerinde basit bir web sitesi çalıştıran iki VM oluşturma
@@ -136,7 +136,7 @@ Bu bölümde, her bir Azure bölgesinde (**Doğu ABD** ve **Batı Avrupa**) bir 
 
 En düşük gecikme süresine sahip bir uç noktaya göndererek Kullanıcı trafiğini yönlendiren bir Traffic Manager profili oluşturun.
 
-1. Ekranın sol üst kısmında, **Create a resource**  >  **Networking**  >  **profil**  >  **Oluştur** Traffic Manager kaynak ağı oluştur ' u seçin.
+1. Ekranın sol üst kısmında,   >    >  **profil**  >  **Oluştur** Traffic Manager kaynak ağı oluştur ' u seçin.
 2. **Traffic Manager profili oluştur** ekranında aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin ve sonra **Oluştur**'u seçin:
 
     | Ayar                 | Değer                                              |
@@ -152,7 +152,7 @@ En düşük gecikme süresine sahip bir uç noktaya göndererek Kullanıcı traf
 
 ## <a name="add-traffic-manager-endpoints"></a>Traffic Manager uç noktalarını ekleme
 
-Kullanıcı *myIISVMEastUS*  &  trafiğini kullanıcıya en yakın uç noktaya yönlendirmek için IIS sunucularını çalıştıran iki VM 'yi ekleyin-myIISVMEastUS *myIISVMWestEurope* .
+Kullanıcı   &  trafiğini kullanıcıya en yakın uç noktaya yönlendirmek için IIS sunucularını çalıştıran iki VM 'yi ekleyin-myIISVMEastUS *myIISVMWestEurope* .
 
 1. Portalın arama çubuğunda önceki bölümde oluşturduğunuz Traffic Manager profili adını arayın ve görüntülenen sonuçların arasından bu profili seçin.
 2. **Traffic Manager profili** sayfasının **Ayarlar** bölümünde **Uç noktalar**'a ve ardından **Ekle**'ye tıklayın.

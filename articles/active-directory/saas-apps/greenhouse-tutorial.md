@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/25/2020
 ms.author: jeedes
 ms.openlocfilehash: 77f72d6c63231f0854b58470f86c65ffc81c9775
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98731928"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-greenhouse"></a>Öğretici: Çevhouse ile tümleştirme Azure Active Directory
@@ -26,7 +26,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile bir doğa ile tümleşmey
 * Kullanıcılarınızın Azure AD hesaplarıyla otomatik olarak yerleşik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
