@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
 ms.openlocfilehash: 0af327f624d0fed648012ce1d12bacabca688cec
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102044196"
 ---
 # <a name="clustering-point-data"></a>Kümeleme noktası verileri
@@ -48,7 +48,7 @@ var datasource = new atlas.source.DataSource(null, {
 
 `DataSource`Sınıfı, kümeleme ile ilgili aşağıdaki yöntemleri de sağlar.
 
-| Yöntem | Dönüş türü | Açıklama |
+| Yöntem | Dönüş türü | Description |
 |--------|-------------|-------------|
 | getClusterChildren (Clusterıd: Number) | Promise &lt; dizi &lt; özelliği &lt; geometrisi, herhangi bir &gt; \| Şekil&gt;&gt; | Sonraki yakınlaştırma düzeyinde verilen kümenin alt öğelerini alır. Bu alt öğeler şekil ve alt kümelerin bir birleşimi olabilir. Alt kümeler, ClusteredProperties ile eşleşen özelliklerle özellik olacaktır. |
 | getClusterExpansionZoom (Clusterıd: Number) | Promise &lt; numarası&gt; | Kümenin genişlemekte veya parçalanmasına başlayacağı yakınlaştırma düzeyini hesaplar. |
@@ -92,7 +92,7 @@ Codepen 'da Azure Maps () tarafından bulunan kalem <a href='https://codepen.io/
 
 Kümelenmiş veri noktaları içeren bir katmanda fare olayları gerçekleştiğinde, kümelenmiş veri noktası olaya GeoJSON Point özellik nesnesi olarak döner. Bu nokta özelliği aşağıdaki özelliklere sahip olacaktır:
 
-| Özellik adı             | Tür    | Açıklama   |
+| Özellik adı             | Tür    | Description   |
 |---------------------------|---------|---------------|
 | `cluster`                 | boolean | Özelliğin bir kümeyi temsil ettiğini belirtir. |
 | `cluster_id`              | string  | Küme için, veri kaynağı `getClusterExpansionZoom` , ve yöntemleriyle kullanılabilecek benzersiz BIR kimlik `getClusterChildren` `getClusterLeaves` . |

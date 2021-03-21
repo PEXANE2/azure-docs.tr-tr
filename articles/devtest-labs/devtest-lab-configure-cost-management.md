@@ -4,10 +4,10 @@ description: Bu makalede, Azure DevTest Labs ' de laboratuvarınızın maliyetin
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 6a2a9bef9e54ef7deda123aad34cf0c576fd158f
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98892346"
 ---
 # <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs bir laboratuvarda ilişkili maliyetleri izleyin
@@ -28,7 +28,7 @@ Aylık tahmini maliyet eğilimi grafiğini görüntülemek için aşağıdaki ad
 
     **Tahmini maliyet** değeri, geçerli takvim ayının tahmini maliyetlidir. **Öngörülen maliyet** , geçerli takvim ayının tamamı için, önceki beş güne ait laboratuvar maliyeti kullanılarak hesaplanan tahmini maliyettir.
 
-    Maliyet miktarları bir sonraki tam sayıya yuvarlanır. Örneğin: 
+    Maliyet miktarları bir sonraki tam sayıya yuvarlanır. Örnek: 
 
    * 5,01, 6 ' ya kadar yuvarlar 
    * 5,50, 6 ' ya kadar yuvarlar

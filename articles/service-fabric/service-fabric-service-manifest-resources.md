@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/16/2020
 ms.custom: contperf-fy21q1
 ms.openlocfilehash: 0ed5a4aa8993f52d42b97288cd143e6114ff36ff
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97033315"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Hizmet bildiriminde kaynakları belirtme
@@ -199,7 +199,7 @@ Parametreleri aşağıda ekleyin:
   </Parameters>
 ```
 
-Uygulamayı dağıttığınızda, bu değerleri ApplicationParameters olarak geçirebilirsiniz.  Örneğin:
+Uygulamayı dağıttığınızda, bu değerleri ApplicationParameters olarak geçirebilirsiniz.  Örnek:
 
 ```powershell
 PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -ApplicationTypeName "AppType" -ApplicationTypeVersion "1.0.0" -ApplicationParameter @{Port='1001'; Protocol='https'; Type='Input'; Port1='2001'; Protocol='http'}
@@ -207,7 +207,7 @@ PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -Application
 
 Note: belirli bir ApplicationParameter için sağlanan değer boşsa, ilgili EndPointName için ServiceManifest içinde sağlanan varsayılan değere geri döneceğiz.
 
-Örneğin:
+Örnek:
 
 Belirttiğiniz hizmet bildiriminde
 

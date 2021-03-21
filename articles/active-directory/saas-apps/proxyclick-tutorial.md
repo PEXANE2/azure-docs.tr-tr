@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 23ae1a2c1371cda9435ea76f02cebc79c141c904
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92522249"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-proxyclick"></a>Öğretici: Proxyclick ile tümleştirme Azure Active Directory
@@ -60,7 +60,7 @@ Proxyclick 'in Azure AD 'ye tümleştirmesini ayarlamak için galerideki yöneti
 
     ![Yeni uygulama seçin](common/add-new-app.png)
 
-4. Arama kutusuna **Proxyclick**yazın. Arama sonuçlarında **Proxyclick ' i** seçin ve ardından **Ekle**' yi seçin.
+4. Arama kutusuna **Proxyclick** yazın. Arama sonuçlarında **Proxyclick ' i** seçin ve ardından **Ekle**' yi seçin.
 
      ![Arama sonuçları](common/search-new-app.png)
 
@@ -137,7 +137,7 @@ Azure AD çoklu oturum açmayı Proxyclick ile yapılandırmak için şu adımla
 
 1. Yeni bir Web tarayıcısı penceresinde, Proxyclick şirket sitesinde yönetici olarak oturum açın.
 
-2. **Hesap & ayarlarını**seçin:
+2. **Hesap & ayarlarını** seçin:
 
     ![Hesap & ayarlarını seçin](./media/proxyclick-tutorial/configure1.png)
 
@@ -179,9 +179,9 @@ Bu bölümde, Azure portal Britta Simon adlı bir test kullanıcısı oluşturac
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    1. **Ad** kutusuna **Brittasıon**yazın.
+    1. **Ad** kutusuna **Brittasıon** yazın.
   
-    1. **Kullanıcı adı** kutusuna **BrittaSimon@ girin \<yourcompanydomain> . \<extension> ** (Örneğin, BrittaSimon@contoso.com .)
+    1. **Kullanıcı adı** kutusuna **BrittaSimon@ girin \<yourcompanydomain> . \<extension>** (Örneğin, BrittaSimon@contoso.com .)
 
     1. **Parolayı göster**' i seçin ve ardından **parola** kutusunda değer ' i yazın.
 

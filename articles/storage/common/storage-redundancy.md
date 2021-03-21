@@ -10,10 +10,10 @@ ms.date: 03/02/2021
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 955d3330d3f08d7e7f024ec2c36941d02244d9ba
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101726845"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Depolama yedekliliği
@@ -70,7 +70,7 @@ Aşağıdaki tabloda hangi depolama hesabı türlerinin hangi bölgelerde ZRS de
 
 | Depolama hesabı türü | Desteklenen bölgeler | Desteklenen hizmetler |
 |--|--|--|
-| Genel amaçlı v2<sup>1</sup> | Güneydoğu Asya<br /> Doğu Avustralya<br /> Kuzey Avrupa<br />  Batı Avrupa<br /> Orta Fransa<br /> Doğu Japonya<br /> Güney Afrika - Kuzey<br /> Güney Birleşik Krallık<br /> ABD Orta<br /> ABD Doğu<br /> ABD Doğu 2<br /> ABD Batı 2 | Blok blobları<br /> Sayfa Blobları<sup>2</sup><br /> Dosya paylaşımları (Standart)<br /> Tablolar<br /> Kuyruklar<br /> |
+| Genel amaçlı v2<sup>1</sup> | Güneydoğu Asya<br /> Doğu Avustralya<br /> Kuzey Avrupa<br />  Batı Avrupa<br /> Orta Fransa<br /> Doğu Japonya<br /> Güney Afrika - Kuzey<br /> Güney Birleşik Krallık<br /> ABD Orta<br /> ABD Doğu<br /> ABD Doğu 2<br /> ABD Batı 2 | Blok blobları<br /> Sayfa Blobları<sup>2</sup><br /> Dosya paylaşımları (Standart)<br /> Tables<br /> Kuyruklar<br /> |
 | BlockBlobStorage<sup>1</sup> | Güneydoğu Asya<br /> Doğu Avustralya<br /> Kuzey Avrupa<br /> Batı Avrupa<br /> Orta Fransa <br /> Doğu Japonya<br /> Güney Birleşik Krallık <br /> ABD Doğu <br /> ABD Doğu 2 <br /> ABD Batı 2| Yalnızca Premium blok Blobları |
 | Dosya depolama | Güneydoğu Asya<br /> Doğu Avustralya<br /> Kuzey Avrupa<br /> Batı Avrupa<br /> Orta Fransa <br /> Doğu Japonya<br /> Güney Birleşik Krallık <br /> ABD Doğu <br /> ABD Doğu 2 <br /> ABD Batı 2 | Yalnızca Premium dosya paylaşımları |
 

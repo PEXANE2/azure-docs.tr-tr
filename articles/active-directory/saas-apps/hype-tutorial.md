@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/05/2019
 ms.author: jeedes
 ms.openlocfilehash: 5dcca2c6465713400786e1094d68f445829252ae
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92460596"
 ---
 # <a name="tutorial-integrate-hype-with-azure-active-directory"></a>Öğretici: hype ile tümleştirin Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, hype 'i Azure Active Directory (Azure AD) ile tümleştirmeyi �
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -55,7 +55,7 @@ Hype tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden hype 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu hype ile yapılandırın ve test edin. SSO 'nun çalışması için, hype içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu hype ile yapılandırın ve test edin. SSO 'nun çalışması için, hype içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu hype ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 

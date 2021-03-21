@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/02/2020
 ms.author: jeedes
 ms.openlocfilehash: 181d58baf128c4848a538e776aea0e43213994dc
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92458617"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-the-lensesio-dataops-portal"></a>Öğretici: Lenses.io DataOps portalı ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, [lenses.io](https://lenses.io/) dataops portalını Azure Activ
 
 Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure AD ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -106,7 +106,7 @@ Mercekler 'in, [merme SSO belgelerinde](https://docs.lenses.io/install_setup/con
 1. Azure portal sol bölmesinde **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 1. Ekranın üst kısmında **Yeni Kullanıcı**' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
-   1. **Ad** kutusuna **B. Simon**girin.  
+   1. **Ad** kutusuna **B. Simon** girin.  
    1. **Kullanıcı adı** kutusuna, girin username@companydomain.extension . Örneğin, B.Simon@contoso.com.
    1. **Parolayı göster** onay kutusunu seçin. **Parola kutusunda gösterilen** parolayı yazın.
    1. **Oluştur**’u seçin.
@@ -115,19 +115,19 @@ Mercekler 'in, [merme SSO belgelerinde](https://docs.lenses.io/install_setup/con
 
 1. **Azure Active Directory**' e gidin ve ardından **gruplar**' ı seçin.
 1. Ekranın üst kısmında **Yeni Grup**' u seçin.
-1. **Grup özelliklerinde**şu adımları izleyin:
+1. **Grup özelliklerinde** şu adımları izleyin:
    1. **Grup türü** kutusunda **güvenlik**' i seçin.
-   1. **Grup adı** kutusuna **lensesusers**yazın.
+   1. **Grup adı** kutusuna **lensesusers** yazın.
    1. **Oluştur**’u seçin.
 1. **Mersesusers** grubunu seçin ve **nesne kimliğini** (örneğin, f8b5c1ec-45de-4ABD-AF5C-e874091fb5f7) kopyalayın. Bu KIMLIĞI, Grup kullanıcılarını [doğru izinlerle](https://docs.lenses.io/install_setup/configuration/security.html#id3)eşlemek Için merler içinde kullanacaksınız.  
 
 **Grubu test kullanıcısına atamak için:**
 
 1. **Azure Active Directory**' e gidin ve ardından **Kullanıcılar**' ı seçin.
-1. **B. Simon**test kullanıcısını seçin.
-1. **Grupları**seçin.
+1. **B. Simon** test kullanıcısını seçin.
+1. **Grupları** seçin.
 1. Ekranın üst kısmında, **Üyelik Ekle**' yi seçin.
-1. **Merseskullanıcıları**için arama yapın ve seçin.
+1. **Merseskullanıcıları** için arama yapın ve seçin.
 1. **Seç**’e tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama

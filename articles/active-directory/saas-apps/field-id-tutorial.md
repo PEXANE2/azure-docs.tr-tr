@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/28/2020
 ms.author: jeedes
 ms.openlocfilehash: 55a66f3f287ffb50d932263e407772efffa839ba
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92453544"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-field-id"></a>Öğretici: alan kimliğiyle çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, alan kimliğini Azure Active Directory (Azure AD) ile tümleşt
 
 Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için gerekli olanlar:
 
@@ -55,7 +55,7 @@ Alan kimliğinin Azure AD ile tümleştirilmesini yapılandırmak için galeride
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-field-id"></a>Alan kimliği için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu alan kimliğiyle yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve alan kimliği içindeki ilgili Kullanıcı arasında bağlı bir ilişki kurmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu alan kimliğiyle yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve alan kimliği içindeki ilgili Kullanıcı arasında bağlı bir ilişki kurmanız gerekir.
 
 Azure AD SSO 'yu alan kimliğiyle yapılandırmak ve test etmek için aşağıdaki adımları izleyin:
 
@@ -70,7 +70,7 @@ Azure AD SSO 'yu alan kimliğiyle yapılandırmak ve test etmek için aşağıda
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **alan kimliği** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun. Sonra **Çoklu oturum açma**seçeneğini belirleyin.
+1. [Azure Portal](https://portal.azure.com/), **alan kimliği** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun. Sonra **Çoklu oturum açma** seçeneğini belirleyin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesini seçin.
 
@@ -85,7 +85,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [alan kimliği destek ekibine](mailto:support@ecompliance.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde Kopyala simgesini seçerek **uygulama Federasyon meta verileri URL 'sini**kopyalayın. Bu dosyayı bilgisayarınıza kaydedin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde Kopyala simgesini seçerek **uygulama Federasyon meta verileri URL 'sini** kopyalayın. Bu dosyayı bilgisayarınıza kaydedin.
 
     ![SAML Imzalama sertifikasının, kopya simgesi vurgulanmış ekran görüntüsü](common/copy-metadataurl.png)
 
@@ -93,11 +93,11 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure Portal sol bölmeden, kullanıcılar **Azure Active Directory**  >  **Users**  >  **tüm kullanıcılar**' ı seçin.
+1. Azure Portal sol bölmeden, kullanıcılar **Azure Active Directory**  >    >  **tüm kullanıcılar**' ı seçin.
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
-   1. **Ad**için girin `B.Simon` .  
-   1. **Kullanıcı adı**için username@companydomain.extension (örneğin, `B.Simon@contoso.com` ) girin.
+   1. **Ad** için girin `B.Simon` .  
+   1. **Kullanıcı adı** için username@companydomain.extension (örneğin, `B.Simon@contoso.com` ) girin.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda gösterilen değeri yazın.
    1. **Oluştur**’u seçin.
 

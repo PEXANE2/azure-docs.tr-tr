@@ -12,10 +12,10 @@ ms.date: 03/04/2021
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3a3c2812a4ecfa1a80539804122042bc2dc2f3a2
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102199195"
 ---
 # <a name="upload-and-index-your-videos"></a>Videolarınızı karşıya yükleme ve dizinleme  
@@ -321,7 +321,7 @@ public class AccountContractSlim
 
 Upload işlemi aşağıdaki tabloda listelenen durum kodlarını döndürebilir.
 
-|Durum kodu|ErrorType (yanıt gövdesinde)|Açıklama|
+|Durum kodu|ErrorType (yanıt gövdesinde)|Description|
 |---|---|---|
 |409|VIDEO_INDEXING_IN_PROGRESS|Bu video zaten aynı hesapta işleniyor.|
 |400|VIDEO_ALREADY_FAILED|Bu videonun işlenmesi 2 saatten daha kısa bir süre önce aynı hesapta başarısız oldu. API istemcilerin videoyu yeniden yüklemek için en az 2 saat beklemesi gerekir.|

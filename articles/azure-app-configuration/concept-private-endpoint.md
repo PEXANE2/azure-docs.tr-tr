@@ -8,10 +8,10 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 07/15/2020
 ms.openlocfilehash: 6cadadfb3623d05dd3ae3851acd5eaca13860023
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96929852"
 ---
 # <a name="using-private-endpoints-for-azure-app-configuration"></a>Azure Uygulama yapılandırması için özel uç noktaları kullanma
@@ -48,7 +48,7 @@ Azure, VNet 'ten gelen bağlantıları özel bir bağlantı üzerinden yapıland
 
 ## <a name="dns-changes-for-private-endpoints"></a>Özel uç noktalar için DNS değişiklikleri
 
-Özel bir uç nokta oluşturduğunuzda, yapılandırma deposu için DNS CNAME kaynak kaydı, ön ek içeren bir alt etki alanındaki diğer ada güncelleştirilir `privatelink` . Azure, [private DNS zone](../dns/private-dns-overview.md) `privatelink` Özel uç noktalar için DNS a kaynak kayıtlarıyla birlikte alt etki alanına karşılık gelen özel bir DNS bölgesi de oluşturur.
+Özel bir uç nokta oluşturduğunuzda, yapılandırma deposu için DNS CNAME kaynak kaydı, ön ek içeren bir alt etki alanındaki diğer ada güncelleştirilir `privatelink` . Azure, [](../dns/private-dns-overview.md) `privatelink` Özel uç noktalar için DNS a kaynak kayıtlarıyla birlikte alt etki alanına karşılık gelen özel bir DNS bölgesi de oluşturur.
 
 Uç nokta URL 'sini özel uç noktasını barındıran VNet içinden çözdüğünde, deponun özel uç noktasına çözümlenir. VNet dışından çözümlendiğinde, uç nokta URL 'SI genel uç noktaya dönüşür. Özel bir uç nokta oluşturduğunuzda, genel uç nokta devre dışıdır.
 

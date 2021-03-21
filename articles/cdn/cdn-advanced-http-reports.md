@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: e2ef1367cbbb1fb71159c4520c3d1481904c1769
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92779331"
 ---
 # <a name="analyze-usage-statistics-with-azure-cdn-advanced-http-reports"></a>Azure CDN gelişmiş HTTP raporları ile kullanım istatistiklerini analiz etme
@@ -33,7 +33,7 @@ Bu belgede Microsoft Azure CDN 'de gelişmiş HTTP raporlaması açıklanmaktad�
     ![CDN profili dikey penceresi Yönet düğmesi](./media/cdn-advanced-http-reports/cdn-manage-btn.png)
    
     CDN yönetim portalı açılır.
-2. **Analiz** sekmesinin üzerine gelin ve ardından **Gelişmiş http raporları** açılır öğesi üzerine gelin.  **Http büyük platformu** ' na tıklayın.
+2. **Analiz** sekmesinin üzerine gelin ve ardından **Gelişmiş http raporları** açılır öğesi üzerine gelin.  **Http büyük platformu**' na tıklayın.
    
     ![CDN yönetim portalı-gelişmiş raporlar menüsü](./media/cdn-advanced-http-reports/cdn-advanced-reports.png)
    
@@ -48,7 +48,7 @@ Her bölge için ayrıntılı trafik ve bant genişliği bilgileri, doğrudan ha
 
 Her harita tabanlı Coğrafya raporu türü için aşağıda kısaca bir açıklama verilmiştir.
 
-| Rapor Adı | Açıklama |
+| Rapor Adı | Description |
 | --- | --- |
 | Dünya Haritası |Bu rapor, CDN içeriğiniz için dünya çapında talebi görüntülemenizi sağlar. Her ülke/bölge, bu bölgeden kaynaklanan isabetlerin yüzdesini belirtmek için dünya haritasında renk kodludur. |
 | Birleşik Devletler eşleme |Bu rapor, Birleşik Devletler CDN içeriğiniz için talebi görüntülemenize olanak sağlar. Her durum bu haritada, bu bölgeden kaynaklı isabetlerin yüzdesini göstermek için renk kodludur. |
@@ -71,7 +71,7 @@ Grafiğin sol tarafı (y ekseni), belirtilen bölgede kaç isabetlerin oluştuğ
 
 Aşağıdaki tür raporların her ikisi için de kısa bir açıklama verilmiştir.
 
-| Rapor Adı | Açıklama |
+| Rapor Adı | Description |
 | --- | --- |
 | En çok şehir |Bu rapor, şehri ilgili bölgeden kaynaklanan isabet sayısına göre derecelendirir. |
 | Popüler ülkeler |Bu rapor, ülkeleri/bölgeleri, bu ülke/bölgeden kaynaklanan isabetlerin sayısına göre derecelendirir. |

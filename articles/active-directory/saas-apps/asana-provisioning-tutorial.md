@@ -12,10 +12,10 @@ ms.date: 03/27/2019
 ms.author: arvinh
 ms.reviewer: celested
 ms.openlocfilehash: 4abc117ae0e983cf684f0e70a363758f9be196aa
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94359435"
 ---
 # <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Asana yapılandırma
@@ -72,23 +72,23 @@ Bu bölüm, Azure AD 'nizi Asana Kullanıcı hesabı sağlama API 'sine bağlama
 
     c. **Hizmet hesapları** sekmesine gidin.
 
-    d. **Hizmet hesabı ekle** ' yi seçin.
+    d. **Hizmet hesabı ekle**' yi seçin.
 
-    e. **Ad** ve **hakkında** ve profil fotoğrafınızı gerektiği şekilde güncelleştirin. Belirteci **belirtece** kopyalayın ve **değişiklikleri kaydedin** ' de seçin.
+    e. **Ad** ve **hakkında** ve profil fotoğrafınızı gerektiği şekilde güncelleştirin. Belirteci **belirtece** kopyalayın ve **değişiklikleri kaydedin**' de seçin.
 
 1. Azure portal Azure AD 'nin Asana uygulamanıza bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' yı seçin. Bağlantı başarısız olursa, Asana hesabınızın yönetici izinlerine sahip olduğundan emin olun ve **bağlantıyı test** etme adımını yeniden deneyin.
 
 1. **Bildirim e-postasında** sağlama hatası bildirimlerini almak istediğiniz kişinin veya grubun e-posta adresini girin. Altındaki onay kutusunu seçin.
 
-1. **Kaydet** ’i seçin.
+1. **Kaydet**’i seçin.
 
-1. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Asana olarak eşitler** ' ı seçin.
+1. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Asana olarak eşitler**' ı seçin.
 
 1. **Öznitelik eşlemeleri** bölümünde, Azure AD 'Den Asana 'a eşitlenecek Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Asana 'daki Kullanıcı hesaplarıyla eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** ' i seçin. Daha fazla bilgi için bkz. [Kullanıcı sağlama özniteliği eşlemelerini özelleştirme](../app-provisioning/customize-application-attributes.md).
 
 1. Azure AD sağlama hizmetini Asana için etkinleştirmek üzere **Ayarlar** bölümünde, **sağlama durumunu** **Açık** olarak değiştirin.
 
-1. **Kaydet** ’i seçin.
+1. **Kaydet**’i seçin.
 
 Artık ilk eşitleme, **Kullanıcılar** bölümünde Asana 'ya atanan tüm kullanıcılar için başlar. İlk eşitlemenin daha sonra, hizmetin çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. İlerleme durumunu izlemek ve etkinlik günlüklerinin sağlanması için bağlantıları izlemek üzere **eşitleme ayrıntıları** bölümünü kullanın. Denetim günlükleri, Asana uygulamanızdaki sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri anlatmaktadır.
 

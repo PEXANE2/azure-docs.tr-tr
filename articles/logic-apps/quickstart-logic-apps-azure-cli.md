@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli, contperf-fy21q2
 ms.date: 11/23/2020
 ms.openlocfilehash: bc172fd1702addf8f4e34094452a779b09320a4d
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97033383"
 ---
 # <a name="quickstart-create-and-manage-logic-apps-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak Logic Apps oluşturma ve yönetme
@@ -270,7 +270,7 @@ Komutlarınız ile aşağıdaki isteğe bağlı Global Azure CLı parametrelerin
 | Çıkış biçimi | `--output -o` | [Çıkış biçimini](/cli/azure/format-output-azure-cli) varsayılan JSON ' dan değiştirin. |
 | Yalnızca hataları göster | `--only-show-errors` | Uyarıları gösterme ve yalnızca hataları göster. |
 | Ayrıntılı | `--verbose` | Ayrıntılı günlükleri göster. |
-| Hata ayıklama | `--debug` | Tüm hata ayıklama günlüklerini gösterir. |
+| Hata Ayıklama | `--debug` | Tüm hata ayıklama günlüklerini gösterir. |
 | Yardım iletisi | `--help -h` | Yardım iletişimini göster. |
 | Sorgu | `--query` | JSON çıktısı için bir JMESPath sorgu dizesi ayarlayın. |
 

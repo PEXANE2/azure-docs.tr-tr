@@ -8,15 +8,15 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.openlocfilehash: 9656e6ab608665e325ac5f772e06df9ac296c521
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92485384"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nda yedekleme ve geri yükleme-hiper ölçek (Citus)
 
-PostgreSQL için Azure veritabanı – Hyperscale (Citus), her bir düğümün yedeklemesini otomatik olarak oluşturur ve yerel olarak yedekli depolamada depolar. Yedeklemeler, hiper ölçek (Citus) kümenizi belirtilen bir zamana geri yüklemek için kullanılabilir. Yedekleme ve geri yükleme, verilerinizi yanlışlıkla bozulmasından veya silmekten koruyan bir iş sürekliliği stratejisinin önemli bir parçasıdır.
+PostgreSQL için Azure veritabanı – Hyperscale (Citus), her bir düğümün yedeklemesini otomatik olarak oluşturur ve yerel olarak yedekli depolamada depolar. Yedeklemeler, hiper ölçek (Citus) kümenizi belirtilen bir zamana geri yüklemek için kullanılabilir. Yedekleme ve geri yükleme her iş sürekliliği stratejisinin temel parçalarıdır çünkü bunlar verilerinizi yanlışlıkla bozulmalara veya silmelere karşı korur.
 
 ## <a name="backups"></a>Yedeklemeler
 
@@ -44,7 +44,7 @@ PostgreSQL için Azure veritabanı 'nda, hiper ölçek (Citus) kümesini geri y�
 ### <a name="point-in-time-restore-pitr"></a>Zaman içinde bir noktaya geri yükleme (ıNR)
 
 Bir kümeyi, son 35 gün içinde herhangi bir zaman noktasına geri yükleyebilirsiniz.
-Bir noktadan noktaya geri yükleme, birden çok senaryoda faydalıdır. Örneğin, bir kullanıcı verileri yanlışlıkla sildiğinde, önemli bir tabloyu veya veritabanını bırakır veya bir uygulama yanlışlıkla hatalı veriler içeren iyi verilerin üzerine yazar.
+Bir noktadan noktaya geri yükleme, birden çok senaryoda faydalıdır. Örneğin kullanıcı yanlışlıkla verileri silebilir, önemli bir tabloyu veya veritabanını bırakabilir ya da bir uygulama yanlışlıkla iyi verilerin üzerine hatalı verileri yazabilir.
 
 Geri yükleme işlemi, orijinal olarak aynı Azure bölgesinde, abonelikte ve kaynak grubunda yeni bir küme oluşturur. Kümenin özgün yapılandırması vardır: aynı düğüm sayısı, sanal çekirdek sayısı, depolama boyutu, Kullanıcı rolleri, PostgreSQL sürümü ve Citus uzantısının sürümü.
 

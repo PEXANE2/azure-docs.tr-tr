@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 08/06/2020
 ms.author: lajanuar
 ms.openlocfilehash: d46fef0159b983f2685be40e2a0ab5471b96883b
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98895450"
 ---
 # <a name="translator-30-translate"></a>Translator 3,0: çeviri
@@ -43,7 +43,7 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
     <td><em>Gerekli parametre</em>.<br/>İstemci tarafından istenen API 'nin sürümü. Değer olmalıdır <code>3.0</code> .</td>
   </tr>
   <tr>
-    <td>şöyle değiştirin:</td>
+    <td>kullanıcısı</td>
     <td><em>Gerekli parametre</em>.<br/>Çıkış metninin dilini belirtir. Hedef dil, kapsamda bulunan <a href="./v3-0-languages.md">desteklenen dillerden</a> biri olmalıdır <code>translation</code> . Örneğin, <code>to=de</code> Almanca 'ya çevirmek için kullanın.<br/>Sorgu dizesindeki parametresini tekrarlayarak birden fazla dile aynı anda çeviri yapılabilir. Örneğin, <code>to=de&to=it</code> Almanca ve İtalyanca 'e çevirmek için kullanın.</td>
   </tr>
 </table>
@@ -391,7 +391,7 @@ Kaynak metinde küfür varlığından bağımsız olarak çeviride küfür almay
   </tr>
 </table> 
 
-Örneğin:
+Örnek:
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'This is a freaking good idea.'}]"

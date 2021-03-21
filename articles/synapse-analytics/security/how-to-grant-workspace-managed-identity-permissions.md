@@ -9,10 +9,10 @@ ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
 ms.openlocfilehash: 46fe27205a2c30d6cb2319bf620c6fe1ee34c31e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96459000"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity"></a>Çalışma alanı yönetilen kimliğine izin verme
@@ -80,7 +80,7 @@ Yönetilen kimliğe *Depolama Blobu veri katılımcısı* rolünü vermek için 
 
 #### <a name="step-4-add-a-new-role-assignment"></a>4. Adım: yeni bir rol ataması ekleme
 
-**+ Ekle** öğesini seçin.
+**+ Ekle**'yi seçin.
 
 ![Yeni rol ataması Ekle](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-9.png)
 

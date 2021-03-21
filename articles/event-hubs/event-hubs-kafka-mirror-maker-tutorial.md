@@ -4,10 +4,10 @@ description: Bu makalede, AzureEvent hub 'Larda bir Kafka kümesini yansıtmak i
 ms.topic: how-to
 ms.date: 01/04/2021
 ms.openlocfilehash: 654e9e19dfde0d0c58d00e41cf8ab0ba8e1484d7
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97861000"
 ---
 # <a name="use-apache-kafka-mirrormaker-with-event-hubs"></a>Event Hubs ile Apache Kafka MirrorMaker kullanma
@@ -22,7 +22,7 @@ Bu öğreticide, Kafka MirrorMaker kullanarak bir Kafka aracısının Azure Olay
 > [!NOTE]
 > Bu makalede, Microsoft tarafından kullanılmayan bir terim olan *beyaz liste* teriminin başvuruları yer almaktadır. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Event Hubs ad alanı oluşturma
 > * Örnek projeyi kopyalama

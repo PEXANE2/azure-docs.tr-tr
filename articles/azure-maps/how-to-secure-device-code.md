@@ -10,10 +10,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 3833cbfd0802f334e482203d269984eb0e299797
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92895639"
 ---
 # <a name="secure-an-input-constrained-device-with-azure-ad-and-azure-maps-rest-apis"></a>Azure AD ve Azure haritalar REST API 'Leri ile giriş kısıtlı bir cihazın güvenliğini sağlama
@@ -30,7 +30,7 @@ Bu kılavuzda, gizli dizileri güvenli bir şekilde depolayabilen veya tarayıc�
 
 Azure AD oturum açma özelliğini etkinleştirmek için Azure AD 'de cihaz tabanlı uygulamayı oluşturun. Bu uygulamaya Azure Maps REST API 'Leri erişimi verilecektir.
 
-1. Azure Portal Azure hizmetleri listesinde, **Azure Active Directory**  >  **App registrations**  >  **Yeni kayıt** uygulama kayıtları Azure Active Directory ' ni seçin.  
+1. Azure Portal Azure hizmetleri listesinde,   >    >  **Yeni kayıt** uygulama kayıtları Azure Active Directory ' ni seçin.  
 
     > [!div class="mx-imgBorder"]
     > ![Uygulama kaydı](./media/how-to-manage-authentication/app-registration.png)
@@ -40,17 +40,17 @@ Azure AD oturum açma özelliğini etkinleştirmek için Azure AD 'de cihaz taba
     > [!div class="mx-imgBorder"]
     > ![Ad ve yeniden yönlendirme URI 'si için uygulama kaydı ayrıntılarını ekleyin](./media/azure-maps-authentication/devicecode-app-registration.png)
 
-3. **Kimlik doğrulaması** ' na gidin ve **uygulamayı ortak istemci olarak değerlendir** ' i etkinleştirin. Bu, Azure AD ile cihaz kodu kimlik doğrulamasını etkinleştirir.
+3. **Kimlik doğrulaması** ' na gidin ve **uygulamayı ortak istemci olarak değerlendir**' i etkinleştirin. Bu, Azure AD ile cihaz kodu kimlik doğrulamasını etkinleştirir.
     
     > [!div class="mx-imgBorder"]
     > ![Uygulama kaydını ortak istemci olarak etkinleştir](./media/azure-maps-authentication/devicecode-public-client.png)
 
-4.  Azure haritalar 'a temsil edilen API izinleri atamak için uygulamaya gidin. Ardından **API izinleri**  >  **bir izin Ekle** ' yi seçin. **Kuruluşumun kullandığı API 'ler** altında **Azure haritaları** ' nı arayıp seçin.
+4.  Azure haritalar 'a temsil edilen API izinleri atamak için uygulamaya gidin. Ardından **API izinleri**  >  **bir izin Ekle**' yi seçin. **Kuruluşumun kullandığı API 'ler** altında **Azure haritaları**' nı arayıp seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Uygulama API 'SI izinleri ekleme](./media/how-to-manage-authentication/app-permissions.png)
 
-5. **Azure haritalar** ' ın yanındaki onay kutusunu işaretleyin ve ardından **izin Ekle** ' yi seçin.
+5. **Azure haritalar**' ın yanındaki onay kutusunu işaretleyin ve ardından **izin Ekle**' yi seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Uygulama API 'SI izinlerini seçin](./media/how-to-manage-authentication/select-app-permissions.png)

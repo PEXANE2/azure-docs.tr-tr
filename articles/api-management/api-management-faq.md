@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
 ms.openlocfilehash: eea3c8525d31a3ca551e9cbc7d21d7dde163b5cc
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94698011"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API Management SSS
@@ -49,7 +49,7 @@ Azure API Management için sık sorulan soruların, desenlerin ve en iyi yöntem
 Bir özellik önizlemede olduğunda, özelliğin sizin için nasıl çalıştığı konusunda etkin bir şekilde geri bildirimde bulunduğumuz anlamına gelir. Önizlemedeki bir özellik işlevsel olarak tamamlanmıştır, ancak müşteri geri bildirimlerine yanıt olarak bir değişiklik yapacağız olasıdır. Üretim ortamınızda önizlemede olan bir özelliğe bağlı memenizi öneririz.
 
 ### <a name="how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services"></a>API Management ağ geçidi ile arka uç hizmetleri arasındaki bağlantının güvenliğini nasıl sağlayabilirim?
-API Management ağ geçidi ile arka uç hizmetleriniz arasındaki bağlantıyı güvenli hale getirmek için çeşitli seçenekleriniz vardır. Şunları yapabilirsiniz:
+API Management ağ geçidi ile arka uç hizmetleriniz arasındaki bağlantıyı güvenli hale getirmek için çeşitli seçenekleriniz vardır. Seçenekleriniz şunlardır:
 
 * HTTP temel kimlik doğrulaması kullanın. Daha fazla bilgi için bkz. [Ilk API 'Nizi Içeri aktarma ve yayımlama](import-and-publish.md).
 * [Azure API Management 'de istemci sertifikası kimlik doğrulaması kullanarak arka uç hizmetlerini güvenli hale getirme](api-management-howto-mutual-certificates.md)bölümünde AÇıKLANDıĞı gibi TLS karşılıklı kimlik doğrulaması kullanın.
@@ -57,7 +57,7 @@ API Management ağ geçidi ile arka uç hizmetleriniz arasındaki bağlantıyı 
 * API Management örneğinizi bir Azure sanal ağına bağlayın.
 
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>API Management hizmet örneğimi yeni bir örneğe nasıl kopyalayabilirim?
-Yeni bir örneğe API Management bir örnek kopyalamak istiyorsanız, birkaç seçeneğiniz vardır. Şunları yapabilirsiniz:
+Yeni bir örneğe API Management bir örnek kopyalamak istiyorsanız, birkaç seçeneğiniz vardır. Seçenekleriniz şunlardır:
 
 * API Management 'de yedekleme ve geri yükleme işlevini kullanın. Daha fazla bilgi için bkz. [Azure API Management 'de hizmet yedeklemesi ve geri yükleme kullanarak olağanüstü durum kurtarma uygulama](api-management-howto-disaster-recovery-backup-restore.md).
 * [API Management REST API](/rest/api/apimanagement/)kullanarak kendi yedekleme ve geri yükleme özelliğini oluşturun. Varlıkları istediğiniz hizmet örneğinden kaydetmek ve geri yüklemek için REST API kullanın.
@@ -77,7 +77,7 @@ Yöneticiler grupları, sabit bir sistem grubudur. Azure abonelik yöneticileri 
 Eklemek istediğiniz ilke, ilke düzenleyicisinde soluk veya gölgeli görünüyorsa, ilke için doğru kapsamda olduğunuzdan emin olun. Her ilke açıklaması, belirli kapsamlar ve ilke bölümlerinde kullanabilmeniz için tasarlanmıştır. İlke bölümlerini ve bir ilkeye ait kapsamları gözden geçirmek için, [API Management ilkeleri](./api-management-policies.md)' nde ilkenin kullanımı bölümüne bakın.
 
 ### <a name="how-do-i-set-up-multiple-environments-in-a-single-api"></a>Tek bir API 'de birden çok ortam ayarlamak Nasıl yaparım??
-Birden çok ortamı (örneğin, bir test ortamı ve bir üretim ortamı) ayarlamak için, tek bir API 'de iki seçeneğiniz vardır. Şunları yapabilirsiniz:
+Birden çok ortamı (örneğin, bir test ortamı ve bir üretim ortamı) ayarlamak için, tek bir API 'de iki seçeneğiniz vardır. Seçenekleriniz şunlardır:
 
 * Aynı kiracıda farklı API 'Leri barındırın.
 * Farklı kiracılarda aynı API 'Leri barındırın.

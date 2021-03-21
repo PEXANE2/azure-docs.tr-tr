@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 63db8375379144b2ede78d9e7010a350b3f69b12
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101726419"
 ---
 # <a name="orchestrator-function-code-constraints"></a>Orchestrator işlev kodu kısıtlamaları
@@ -65,7 +65,7 @@ Görevler, tüm geçmiş yeniden yürütülene kadar tek bir iş parçacığı k
 
 Bu bölümün çalışma zamanı davranışının açıklaması, bir Orchestrator işlevinin neden `await` veya `yield` dayanıklı olmayan bir görevde nasıl kullanamadığına yardımcı olmalıdır. İki neden vardır: Dağıtıcı iş parçacığı görevin bitmesini bekleyemez ve bu görev tarafından yapılan geri çağırma işlemi Orchestrator işlevinin izleme durumunu bozabilir. Bu ihlallerin algılanmasına yardımcı olmak için bazı çalışma zamanı denetimleri yerinde.
 
-Dayanıklı görev çerçevesinin Orchestrator işlevlerini nasıl çalıştırdığı hakkında daha fazla bilgi edinmek için [GitHub 'Daki dayanıklı görev kaynak koduna](https://github.com/Azure/durabletask)başvurun. Özellikle, bkz. [TaskOrchestrationExecutor.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationExecutor.cs) and [TaskOrchestrationContext.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationContext.cs).
+Dayanıklı görev çerçevesinin Orchestrator işlevlerini nasıl çalıştırdığı hakkında daha fazla bilgi edinmek için [GitHub 'Daki dayanıklı görev kaynak koduna](https://github.com/Azure/durabletask)başvurun. Özellikle, bkz. [TaskOrchestrationExecutor. cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationExecutor.cs) ve [TaskOrchestrationContext. cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationContext.cs).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/06/2019
 ms.openlocfilehash: 97b23a2b9e3b95a5ea0efcd27d0ec185b1c456f1
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98946550"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>HDInsight 'ta Apache Hadoop üzerinde Apache Hive ve Apache Pig ile C# Kullanıcı tanımlı işlevleri kullanma
@@ -57,7 +57,7 @@ Apache Hive UDF için C# projesi oluşturmak için:
 
 4. **Yeni projeyi yapılandırın** penceresinde, *hivecsharp* için bir **Proje adı** girin ve yeni projenin kaydedileceği bir konum oluşturun veya **konuma** gidin. Ardından **Oluştur**’u seçin.
 
-5. Visual Studio IDE 'de, *program.cs* içeriğini aşağıdaki kodla değiştirin:
+5. Visual Studio IDE 'de, *program. cs* ' nin içeriğini aşağıdaki kodla değiştirin:
 
     ```csharp
     using System;
@@ -124,7 +124,7 @@ Apache Hive UDF için C# projesi oluşturmak için:
 
 4. **Yeni projeyi yapılandırın** penceresinde, *pigudf* için bir **Proje adı** girin ve yeni projenin kaydedileceği bir konum oluşturun veya **konuma** gidin. Ardından **Oluştur**’u seçin.
 
-5. Visual Studio IDE 'de, *program.cs* içeriğini aşağıdaki kodla değiştirin:
+5. Visual Studio IDE 'de, *program. cs* ' nin içeriğini aşağıdaki kodla değiştirin:
 
     ```csharp
     using System;

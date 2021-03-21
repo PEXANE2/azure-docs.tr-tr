@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 59c599167089d222324ed880c18e68d763f5e468
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94358465"
 ---
 # <a name="tutorial-configure-cornerstone-ondemand-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için temel taş OnDemand yapılandırma
@@ -42,11 +42,11 @@ Azure AD ile otomatik Kullanıcı sağlama için köşeli temel taş OnDemand ' 
 
 Market 'ten temel taş OnDemand eklemek için aşağıdaki adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com)sol taraftaki gezinti bölmesinde **Azure Active Directory** ' i seçin.
+1. [Azure Portal](https://portal.azure.com)sol taraftaki gezinti bölmesinde **Azure Active Directory**' i seçin.
 
     ![Azure Active Directory simgesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
+2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -54,7 +54,7 @@ Market 'ten temel taş OnDemand eklemek için aşağıdaki adımları izleyin.
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna, **köşeli kenar** kutucuğuna girin ve sonuç panelinden **köşeli kenar** kutucuğuna tıklayın. Uygulamayı eklemek için **Ekle** ' yi seçin.
+4. Arama kutusuna, **köşeli kenar** kutucuğuna girin ve sonuç panelinden **köşeli kenar** kutucuğuna tıklayın. Uygulamayı eklemek için **Ekle**' yi seçin.
 
     ![Sonuç listesinde temel taş OnDemand](common/search-new-app.png)
 
@@ -76,11 +76,11 @@ Bu bölüm, Azure AD sağlama hizmetini yapılandırma adımlarında size rehber
 
 Azure AD 'de temel pul OnDemand için otomatik Kullanıcı sağlamayı yapılandırmak üzere aşağıdaki adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. **Kurumsal uygulamalar**  >  **tüm uygulamalar** temel  >  **taş OnDemand** ' i seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Kurumsal uygulamalar**  >  **tüm uygulamalar** temel  >  **taş OnDemand**' i seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **köşeli kenar taşı** ' yı seçin.
+2. Uygulamalar listesinde, **köşeli kenar taşı**' yı seçin.
 
     ![Uygulamalar listesindeki temel taş OnDemand bağlantısı](common/all-applications.png)
 
@@ -108,13 +108,13 @@ Azure AD 'de temel pul OnDemand için otomatik Kullanıcı sağlamayı yapıland
 
     ![Köşeli kenar, Ondemandnotification e-postası](./media/cornerstone-ondemand-provisioning-tutorial/EmailNotification.png)
 
-8. **Kaydet** ’i seçin.
+8. **Kaydet**’i seçin.
 
-9. **Eşlemeler** bölümü altında, Azure Active Directory kullanıcılarını, temel aşağı **Taşı OnDemand olacak şekilde eşitler** ' ı seçin.
+9. **Eşlemeler** bölümü altında, Azure Active Directory kullanıcılarını, temel aşağı **Taşı OnDemand olacak şekilde eşitler**' ı seçin.
 
     ![Köşeli kenar, Ondemandsynchronization](./media/cornerstone-ondemand-provisioning-tutorial/UserMapping.png)
 
-10. **Öznitelik eşlemeleri** bölümünde, Azure AD 'den temel alınan kullanıcı özniteliklerini bir şekilde gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme işlemleri Için temel taş OnDemand Kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri kaydetmek için **Kaydet** ' i seçin.
+10. **Öznitelik eşlemeleri** bölümünde, Azure AD 'den temel alınan kullanıcı özniteliklerini bir şekilde gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme işlemleri Için temel taş OnDemand Kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri kaydetmek için **Kaydet**' i seçin.
 
     ![Köşeli kenar, Ondemandattribute eşlemeleri](./media/cornerstone-ondemand-provisioning-tutorial/UserMappingAttributes.png)
 
@@ -128,7 +128,7 @@ Azure AD 'de temel pul OnDemand için otomatik Kullanıcı sağlamayı yapıland
 
     ![Köşeli kenar, Ondemandscope](./media/cornerstone-ondemand-provisioning-tutorial/SyncScope.png)
 
-14. Sağlamaya hazırsanız **Kaydet** ' i seçin.
+14. Sağlamaya hazırsanız **Kaydet**' i seçin.
 
     ![Temel taş OnDemand Kaydet](./media/cornerstone-ondemand-provisioning-tutorial/Save.png)
 

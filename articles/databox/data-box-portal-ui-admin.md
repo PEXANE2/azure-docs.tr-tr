@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 01/09/2019
 ms.author: alkohli
 ms.openlocfilehash: 538a650c6063422f89c8ed3d1753981a293693b7
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94338178"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>Data Box Disk’inizi yönetmek için Azure portalını kullanma
@@ -27,7 +27,7 @@ Siparişinizi verdikten sonra çeşitli nedenlerle iptal etmeniz gerekebilir. Si
 
 Bir siparişi iptal etmek için aşağıdaki adımları gerçekleştirin.
 
-1.  **Genel bakış > İptal** 'e gidin. 
+1.  **Genel bakış > İptal**'e gidin. 
 
     ![Bir siparişin Genel Bakış sekmesinde iptal komutu](media/data-box-portal-ui-admin/portal-ui-admin-cancel-command.png)
 
@@ -47,11 +47,11 @@ Kopyalama belirli durumlarda kullanışlıdır. Örneğin kullanıcı, veri akta
 
 Siparişi kopyalamak için aşağıdaki adımları gerçekleştirin.
 
-1.  **Genel bakış > Kopyala** 'ya gidin. 
+1.  **Genel bakış > Kopyala**'ya gidin. 
 
     ![Bir siparişin Genel Bakış sekmesinde kopyalama komutu](media/data-box-portal-ui-admin/portal-ui-admin-clone-command.png)
 
-2.  Siparişin tüm ayrıntıları aynı şekilde korunur. Siparişin adı, özgün siparişin adına *-Kopya* eklenerek oluşturulur. Gizlilik bilgilerini gözden geçirdiğinizi onaylamak için onay kutusunu seçin. **Oluştur** 'a tıklayın.    
+2.  Siparişin tüm ayrıntıları aynı şekilde korunur. Siparişin adı, özgün siparişin adına *-Kopya* eklenerek oluşturulur. Gizlilik bilgilerini gözden geçirdiğinizi onaylamak için onay kutusunu seçin. **Oluştur**’a tıklayın.    
 
 Kopya sipariş birkaç dakikada oluşturulur ve portal yeni siparişi gösterecek şekilde güncelleştirilir.
 
@@ -63,15 +63,15 @@ Tamamlanan siparişleri silmek isteyebilirsiniz. Siparişte adınız, adresiniz 
 
 Yalnızca tamamlanan veya iptal edilen siparişleri silebilirsiniz. Siparişi silmek için aşağıdaki adımları gerçekleştirin.
 
-1. **Tüm kaynaklar** 'a gidin. Siparişinizi arayın.
+1. **Tüm kaynaklar**'a gidin. Siparişinizi arayın.
 
     ![Siparişlerde ara](media/data-box-portal-ui-admin/portal-ui-admin-search-data-box-disk-orders.png)
 
-2. Silmek istediğiniz siparişe tıklayın ve **Genel bakış** 'a gidin. Komut çubuğundan **Sil** 'e tıklayın.
+2. Silmek istediğiniz siparişe tıklayın ve **Genel bakış**'a gidin. Komut çubuğundan **Sil**'e tıklayın.
 
     ![Bir siparişi silme](media/data-box-portal-ui-admin/portal-ui-admin-delete-command.png)
 
-3. Siparişi silme işlemini onaylamanız istendiğinde siparişin adını girin. **Sil** 'e tıklayın.
+3. Siparişi silme işlemini onaylamanız istendiğinde siparişin adını girin. **Sil**'e tıklayın.
 
      ![Sipariş Silmeyi Onayla](media/data-box-portal-ui-admin/portal-ui-admin-confirm-deletion.png)
 
@@ -95,7 +95,7 @@ Siparişi verdikten sonra teslimat adresini düzenlemeniz gerekebilir. Bu işlem
 
 Siparişi düzenlemek için aşağıdaki adımları gerçekleştirin.
 
-1. **Sipariş ayrıntıları > Teslimat adresini düzenle** 'ye gidin.
+1. **Sipariş ayrıntıları > Teslimat adresini düzenle**'ye gidin.
 
     ![Sipariş ayrıntılarında sevkiyat adresini Düzenle komutu](media/data-box-portal-ui-admin/portal-ui-admin-edit-shipping-address-command.png)
 
@@ -109,7 +109,7 @@ Sipariş durumu e-postalarının gönderilmesini istediğiniz kullanıcıları d
 
 Bildirim ayrıntılarını düzenlemek için aşağıdaki adımları gerçekleştirin.
 
-1. **Sipariş ayrıntıları > Bildirim ayrıntılarını düzenle** 'ye gidin.
+1. **Sipariş ayrıntıları > Bildirim ayrıntılarını düzenle**'ye gidin.
 
     ![Bildirim ayrıntılarını Düzenle komutu sıralı Ayrıntılar](media/data-box-portal-ui-admin/portal-ui-admin-edit-notification-details-command.png)
 

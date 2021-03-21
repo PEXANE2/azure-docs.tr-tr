@@ -7,10 +7,10 @@ ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 4a847b273472ecc9d2aaa3993ec9d88aa46f2e7f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96017177"
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>StorSimple 8000 serisi için destek paketi oluşturma ve yönetme
@@ -78,7 +78,7 @@ Export-HcsSupportPackage cmdlet 'i ile aşağıdaki parametreleri kullanabilirsi
 Bir destek paketi oluşturduktan sonra, hassas bilgileri kaldırmak için paketi düzenlemeniz gerekebilir. Bu, günlük dosyalarından birim adlarını, cihaz IP adreslerini ve yedek adlarını içerebilir.
 
 > [!IMPORTANT]
-> Yalnızca StorSimple için Windows PowerShell aracılığıyla oluşturulmuş bir destek paketini düzenleyebilirsiniz. StorSimple Aygıt Yöneticisi hizmetiyle Azure portal oluşturulan bir paketi düzenleyemezsiniz.
+> Yalnızca StorSimple için Windows PowerShell aracılığıyla oluşturulmuş bir destek paketini düzenleyebilirsiniz. StorSimple Device Manager hizmetiyle Azure portal oluşturulan bir paketi düzenleyemezsiniz.
 
 Bir destek paketini Microsoft Desteği siteye yüklemeden önce düzenlemek için önce destek paketinin şifresini çözün, dosyaları düzenleyin ve ardından yeniden şifreleyin. Aşağıdaki adımları uygulayın.
 
@@ -147,5 +147,5 @@ PS C:\WINDOWS\system32>
 
 * [Destek paketinde toplanan bilgiler](https://support.microsoft.com/help/3193606/storsimple-support-packages-and-device-logs) hakkında bilgi edinin
 * [Cihaz dağıtımınızın sorunlarını gidermek için destek paketlerini ve cihaz günlüklerini nasıl kullanacağınızı](storsimple-8000-troubleshoot-deployment.md#support-packages-and-device-logs-available-for-troubleshooting)öğrenin.
-* StorSimple [cihazınızı yönetmek Için storsimple Aygıt Yöneticisi hizmetini nasıl kullanacağınızı](storsimple-8000-manager-service-administration.md)öğrenin.
+* StorSimple [cihazınızı yönetmek Için storsimple Device Manager hizmetini nasıl kullanacağınızı](storsimple-8000-manager-service-administration.md)öğrenin.
 

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: alkohli
 ms.openlocfilehash: d2c7f729f4accf7c9ca212c6e4b4b5d565c3114c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96021546"
 ---
 # <a name="safely-install-and-operate-your-azure-data-box-heavy"></a>Azure Data Box Heavy güvenle yükleyip çalıştırın
@@ -35,7 +35,7 @@ Data Box kurarken ve çalıştırırken gözlenecek güvenlik önlemleri gözden
 | ![Bildirim simgesi ](./media/data-box-heavy-safety/notice-icon.png) **bildirimi:** |Önemli kabul edilen, ancak tehlike ile ilgili olmayan bilgileri gösterir. |
 | ![Elektrik sarsıntısı simgesi ](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png) **elektrik şok hasar** |Yüksek voltaj. |
 | ![Ağır kalınlık simgesi ](./media/data-box-heavy-safety/heavy-weight-hazard-icon.png) **ağır ağırlık** | |
-| ![Kullanıcı tarafından ](./media/data-box-heavy-safety/no-user-serviceable-parts-icon.png) **No user serviceable parts** hizmet içermeyen parçalar simgesi yok |Uygun şekilde Eğitilmediğiniz müddetçe bu erişimi kullanmayın. |
+| ![Kullanıcı tarafından ](./media/data-box-heavy-safety/no-user-serviceable-parts-icon.png)  hizmet içermeyen parçalar simgesi yok |Uygun şekilde Eğitilmediğiniz müddetçe bu erişimi kullanmayın. |
 | ![Güvenlik bildirimi okuma simgesi ](./media/data-box-heavy-safety/read-safety-and-health-information-icon.png) **ilk olarak tüm yönergeleri oku** | |
 | ![İpucu hasar simgesi ](./media/data-box-heavy-safety/tip-hazard-icon.png) **İpucu rastlantı** | |
 | ![Aşırı yükleme ipucu hasar simgesi ](./media/data-box-heavy-safety/overload-tip-hazard-icon.png) **aşırı yükleme ipucu hasar** | |

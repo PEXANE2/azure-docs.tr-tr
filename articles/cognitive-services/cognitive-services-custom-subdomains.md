@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/04/2020
 ms.author: erhopf
 ms.openlocfilehash: 4746aad2d7cd62cb309a1823f8c50487e6f7e87c
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97032975"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>Bilişsel hizmetler için özel alt etki alanı adları
@@ -68,11 +68,11 @@ Evet. Bu, Azure bilişsel hizmetler kaynaklarıyla kullanabileceğiniz bölgesel
 > [!NOTE]
 > Translator hizmeti ve Bing Arama API'leri genel uç noktaları kullanır.
 
-| Uç nokta türü | Bölge | Uç Nokta |
+| Uç nokta türü | Region | Uç Nokta |
 |---------------|--------|----------|
 | Genel | Genel (Translator & Bing) | `https://api.cognitive.microsoft.com` |
 | | Doğu Avustralya | `https://australiaeast.api.cognitive.microsoft.com` |
-| | Brezilya Güney | `https://brazilsouth.api.cognitive.microsoft.com` |
+| | Güney Brezilya | `https://brazilsouth.api.cognitive.microsoft.com` |
 | | Orta Kanada | `https://canadacentral.api.cognitive.microsoft.com` |
 | | Central US | `https://centralus.api.cognitive.microsoft.com` |
 | | Doğu Asya | `https://eastasia.api.cognitive.microsoft.com` |

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: mbullwin
 ms.openlocfilehash: 6c461983053a145dfda58b9e3d26b39db0c339e5
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92893429"
 ---
 # <a name="metrics-advisor-glossary-of-common-vocabulary-and-concepts"></a>Ortak Sözlük ve kavramların ölçüm Danışmanı sözlüğü
@@ -31,7 +31,7 @@ Veri akışı, Cosmos DB veya bir SQL Server gibi veri kaynağınızdan alınan 
 * sıfır veya daha fazla boyut
 * bir veya daha fazla ölçü. 
 
-## <a name="metric"></a>Ölçüm
+## <a name="metric"></a>Metric
 
 Ölçüm, belirli bir iş sürecinin durumunu izlemek ve değerlendirmek için kullanılan, ölçülebilir bir ölçüdür. Bu, boyutlara bölünen birden çok zaman serisi değerinin bir birleşimi olabilir. Örneğin, bir *Web durumu* ölçümü *Kullanıcı sayısı* ve *en-US pazarında* boyut içerebilir.
 
@@ -47,7 +47,7 @@ Bir boyut bir veya daha fazla kategorik değer. Bu değerlerin birleşimi, belir
 
 İşletmenizin gelirine ilişkin verileriniz olduğunu varsayalım. Zaman serisi verileriniz şuna benzer görünebilir:
 
-| Zaman damgası | Kategori | Pazara | Gelir |
+| Timestamp | Kategori | Pazara | Gelir |
 | ----------|----------|--------|----- |
 | 2020-6-1 | Yemek | ABD | 1000 |
 | 2020-6-1 | Giyim | ABD | 2000 |
@@ -60,7 +60,7 @@ Bu örnekte, *Kategori* ve *Pazar* boyutlardır. *Gelir* , farklı kategorilere 
 
 Bir uygulamada günlüğe kaydedilen hataların sayısı için verileriniz olduğunu varsayalım. Zaman serisi verileriniz şuna benzer görünebilir:
 
-| Zaman damgası | Uygulama bileşeni | Bölge | Hata sayısı |
+| Timestamp | Uygulama bileşeni | Region | Hata sayısı |
 | ----------|----------|--------|----- |
 | 2020-6-1 | Çalışan veritabanı | BATı AB | 9000 |
 | 2020-6-1 | İleti kuyruğu | DOĞU ABD | 1000 |
@@ -139,29 +139,29 @@ Ayrıca, bir dizi grubuna veya belirli bir gruba ayarlama parametreleri uygulaya
 
 Birden çok makine öğrenimi algoritması kullanarak anomali algılama.
 
-**Duyarlılık** : anomali algılama toleransını ayarlamak için sayısal bir değer. Görsel olarak değer arttıkça, zaman serisi etrafında üst ve alt sınır daha dar olur.
+**Duyarlılık**: anomali algılama toleransını ayarlamak için sayısal bir değer. Görsel olarak değer arttıkça, zaman serisi etrafında üst ve alt sınır daha dar olur.
 
 ### <a name="hard-threshold"></a>Sabit eşik
 
 Üst veya alt sınırların dışındaki değerler düşüktür.
 
-**Min** : alt sınır
+**Min**: alt sınır
 
-**Maksimum** : üst sınır
+**Maksimum**: üst sınır
 
 ### <a name="change-threshold"></a>Değişiklik eşiği
 
 Bu noktanın bir anomali olup olmadığını anlamak için önceki nokta değerini kullanın.
 
-**Değişiklik yüzdesi** : önceki noktaya kıyasla, değişikliğin yüzdesi bu parametreden daha büyükse geçerli nokta bir anomali olur.
+**Değişiklik yüzdesi**: önceki noktaya kıyasla, değişikliğin yüzdesi bu parametreden daha büyükse geçerli nokta bir anomali olur.
 
-**Noktaları üzerinde Değiştir** : kaç noktaya geri bakacağız.
+**Noktaları üzerinde Değiştir**: kaç noktaya geri bakacağız.
 
 ### <a name="common-parameters"></a>Ortak Parametreler
 
-**Yön** : bir nokta, yalnızca sapma yönü *yukarı* , *aşağı* veya *her ikisinde* meydana geldiğinde bir anomali olur.
+**Yön**: bir nokta, yalnızca sapma yönü *yukarı*, *aşağı* veya *her ikisinde* meydana geldiğinde bir anomali olur.
 
-**Şu kadar geçerli anomali değil** : bir veri noktası yalnızca belirtilen önceki noktaların yüzdesi de bozukluklar olduğunda bir anomali olur.
+**Şu kadar geçerli anomali değil**: bir veri noktası yalnızca belirtilen önceki noktaların yüzdesi de bozukluklar olduğunda bir anomali olur.
 
 ## <a name="alert-settings"></a>Uyarı ayarları
 
@@ -173,17 +173,17 @@ Ayrıca, ölçümler arasında bir uyarı oluşturabilirsiniz. Örneğin, yalnı
 
 Uyarı kapsamı, uyarının uygulandığı kapsamı ifade eder. Dört seçenek vardır:
 
-**Tüm serilerin anormallikleri** : tüm seriler içindeki tüm serilerde bulunan uyarılar tetiklenecek.
+**Tüm serilerin anormallikleri**: tüm seriler içindeki tüm serilerde bulunan uyarılar tetiklenecek.
 
-**Seri grubundaki bozukluklar** : uyarılar yalnızca seri grubunun belirli boyutlarında olan bozukluklar için tetiklenecektir. Belirtilen boyutların sayısı, toplam sayı boyutlarından daha küçük olmalıdır.
+**Seri grubundaki bozukluklar**: uyarılar yalnızca seri grubunun belirli boyutlarında olan bozukluklar için tetiklenecektir. Belirtilen boyutların sayısı, toplam sayı boyutlarından daha küçük olmalıdır.
 
-**Sık kullanılan serideki bozukluklar** : uyarılar yalnızca sık kullanılanlar olarak eklenen bozukluklar için tetiklenecektir. Her algılama yapılandırması için sık kullanılan olarak bir seri grubu seçebilirsiniz.
+**Sık kullanılan serideki bozukluklar**: uyarılar yalnızca sık kullanılanlar olarak eklenen bozukluklar için tetiklenecektir. Her algılama yapılandırması için sık kullanılan olarak bir seri grubu seçebilirsiniz.
 
-**Tüm serilerin Ilk n ' de bozukluklar** : uyarılar yalnızca ilk n serideki bozukluklar için tetiklenecektir. Hesaba eklenecek zaman damgası sayısını ve uyarı göndermek için kaç anomali olması gerektiğini belirtmek için parametreleri ayarlayabilirsiniz.
+**Tüm serilerin Ilk n ' de bozukluklar**: uyarılar yalnızca ilk n serideki bozukluklar için tetiklenecektir. Hesaba eklenecek zaman damgası sayısını ve uyarı göndermek için kaç anomali olması gerektiğini belirtmek için parametreleri ayarlayabilirsiniz.
 
-### <a name="severity"></a>Önem Derecesi
+### <a name="severity"></a>Önem derecesi
 
-Önem derecesi, ölçüm Danışmanı 'nın, *yüksek* , *Orta* ve *düşük* dahil olmak üzere olayın önem derecesini anlatmak için kullandığı bir düzeydir.
+Önem derecesi, ölçüm Danışmanı 'nın, *yüksek*, *Orta* ve *düşük* dahil olmak üzere olayın önem derecesini anlatmak için kullandığı bir düzeydir.
 
 Şu anda ölçüm Danışmanı, uyarı önem derecesini ölçmek için aşağıdaki faktörleri kullanır:
 1. Değer oranı ve ölçümde anormal sayı oranı.
@@ -200,7 +200,7 @@ Erteleme davranışı ölçüm düzeyi veya seri düzeyinde ayarlanabilir.
 
 ### <a name="ingestion-time-offset"></a>Alım zaman aralığı
 
-Varsayılan olarak, veriler ayrıntı düzeyine ( *günlük* ) göre yapılır. Pozitif bir tam sayı kullanarak, verilerin içeri alımını belirtilen değere erteleyebilirsiniz. Negatif bir sayı kullanarak alımı belirtilen değere göre ilerletebilirsiniz.
+Varsayılan olarak, veriler ayrıntı düzeyine ( *günlük*) göre yapılır. Pozitif bir tam sayı kullanarak, verilerin içeri alımını belirtilen değere erteleyebilirsiniz. Negatif bir sayı kullanarak alımı belirtilen değere göre ilerletebilirsiniz.
 
 ### <a name="max-ingestion-per-minute"></a>Dakika başına en fazla alma
 
@@ -238,7 +238,7 @@ Bu seçenek sıfıra ayarlandığında, *kullanılamayan* her zaman damgası bir
 
 ## <a name="data-feed-permissions"></a>Veri akışı izinleri
 
-Veri akışı izinlerini yönetmek için iki rol vardır: *yönetici* ve *Görüntüleyici* . 
+Veri akışı izinlerini yönetmek için iki rol vardır: *yönetici* ve *Görüntüleyici*. 
 
 * Bir *yönetici* , veri akışı ve içindeki ölçümler üzerinde tam denetime sahiptir. Bunlar, veri akışını etkinleştirebilir, duraklatabilir, silebilir ve akışlar ve yapılandırmalarda güncelleştirmeler yapabilir. Bir *yönetici* genellikle ölçümlerin sahibidir.
 
