@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 2b5e852e3a32c4fb40dbe7ebc50a00302b4b82b4
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92519108"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-yuhu-property-management-platform"></a>Öğretici: yuhu özelliği yönetim platformuyla çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -54,7 +54,7 @@ Yuhu özelliği yönetim platformunun tümleştirmesini Azure AD 'ye göre yapı
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-yuhu-property-management-platform"></a>Yuhu özelliği yönetim platformu için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak, yuhu özelliği yönetim platformuyla Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, yuhu özelliği yönetim platformunda bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak, yuhu özelliği yönetim platformuyla Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, yuhu özelliği yönetim platformunda bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu, yuhu özelliği yönetim platformuyla yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -90,7 +90,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Yukarıdaki, yuhu özelliği yönetim platformu uygulaması, daha fazla özniteliğin aşağıda gösterilen SAML yanıtına geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Adı | Kaynak özniteliği|
+    | Name | Kaynak özniteliği|
     | ---------------| --------------- |
     | firstName | Kullanıcı. |
     | lastName | User. soyadı ||

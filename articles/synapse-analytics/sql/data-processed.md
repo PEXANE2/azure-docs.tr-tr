@@ -10,10 +10,10 @@ ms.date: 11/05/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.openlocfilehash: 8a26f8ced5e91810f8cadff0a27796dc817e6517
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94491593"
 ---
 # <a name="cost-management-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu için maliyet yönetimi
@@ -71,23 +71,23 @@ Sorgu başına işlenen veri miktarını en iyi hale getirebilir ve verilerinizi
 - Population_parquet tablo, population_csv tabloyla aynı verilere sahiptir. 1 TB 'lık Parquet dosyası tarafından desteklenir. Veriler Parquet biçiminde sıkıştırıldığından, bu tablo öncekinden daha küçüktür.
 - Very_small_csv tablosu, 100 KB/CSV dosyası tarafından desteklenir.
 
-**Sorgu 1** : population_csv Sum (popülasyon) seçin
+**Sorgu 1**: population_csv Sum (popülasyon) seçin
 
 Bu sorgu, popülasyon sütunu için değerleri almak üzere tüm dosyaları okur ve ayrıştırır. Düğümler bu tablonun parçalarını işler ve her parçanın popülasyon toplamı düğümler arasında aktarılır. Son Toplam, uç noktanıza aktarılır. 
 
 Bu sorgu 5 TB veri ve parçaların toplamlarını aktarmaya yönelik küçük bir ek yük tutar.
 
-**Sorgu 2** : population_parquet Sum (popülasyon) seçin
+**Sorgu 2**: population_parquet Sum (popülasyon) seçin
 
 Parquet gibi sıkıştırılmış ve sütun tabanlı biçimleri sorguladığınızda, sorgu 1 ' den daha az veri okundu. Sunucusuz SQL havuzu dosyanın tamamı yerine tek bir sıkıştırılmış sütun okuduğu için bu sonucu görürsünüz. Bu durumda, 0,2 TB okunurdur. (Beş eşit boyutlu sütunlar her biri 0,2 TB 'dir.) Düğümler bu tablonun parçalarını işler ve her parçanın popülasyon toplamı düğümler arasında aktarılır. Son Toplam, uç noktanıza aktarılır. 
 
 Bu sorgu 0,2 TB ve parçaların toplamlarını aktarmaya yönelik küçük bir ek yük tutar.
 
-**Sorgu 3** : select * from population_parquet
+**Sorgu 3**: select * from population_parquet
 
 Bu sorgu tüm sütunları okur ve tüm verileri sıkıştırılmamış bir biçimde aktarır. Sıkıştırma biçimi 5:1 ise sorgu 6 TB 'yi işleyerek 1 TB 'yi okuyup sıkıştırılmamış verileri 5 TB 'a aktarır.
 
-**Sorgu 4** : very_small_csv Count (*) seçin
+**Sorgu 4**: very_small_csv Count (*) seçin
 
 Bu sorgu tüm dosyaları okur. Bu tablo için depolama alanındaki dosyaların toplam boyutu 100 KB 'dir. Düğümler bu tablonun parçalarını işler ve her parçanın toplamı düğümler arasında aktarılır. Son Toplam, uç noktanıza aktarılır. 
 

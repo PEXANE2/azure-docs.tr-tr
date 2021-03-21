@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 02/13/2020
 ms.openlocfilehash: c315e1df473f3d23bab7e2a78ce166f22272ee70
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93242254"
 ---
 # <a name="troubleshoot-data-encryption-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda veri şifreleme sorunlarını giderme-tek sunucu
@@ -19,7 +19,7 @@ Bu makale, müşteri tarafından yönetilen anahtar kullanılarak veri şifrelem
 
 ## <a name="introduction"></a>Giriş
 
-Veri şifrelemesini Azure Key Vault bir müşteri tarafından yönetilen anahtar kullanacak şekilde yapılandırdığınızda, sunucu anahtara sürekli erişim gerektirir. Sunucu, Azure Key Vault müşterinin yönettiği anahtara erişimi kaybederse, tüm bağlantıları reddeder, uygun hata iletisini döndürür ve Azure portal durumunu * **erişilemeyen** _ olarak değiştirir.
+Veri şifrelemesini Azure Key Vault bir müşteri tarafından yönetilen anahtar kullanacak şekilde yapılandırdığınızda, sunucu anahtara sürekli erişim gerektirir. Sunucu, Azure Key Vault müşterinin yönettiği anahtara erişimi kaybederse, tüm bağlantıları reddeder, uygun hata iletisini döndürür ve durumunu Azure portal ***erişilemez*** olarak değiştirir.
 
 Artık PostgreSQL için Azure veritabanı 'na erişilemiyor sunucusuna ihtiyacınız yoksa, maliyetleri durdurmak için bunu silebilirsiniz. Anahtar kasasına erişim geri yüklenene ve sunucu kullanılabilir olana kadar sunucuda başka bir eyleme izin verilmez. Ayrıca, `Yes` `No` müşteri tarafından yönetilen bir anahtarla şifrelendiğinde erişilemeyen bir sunucuda veri şifreleme seçeneğini (müşteri tarafından yönetilen) olarak değiştirmek mümkün değildir. Sunucuya yeniden erişilebilmesi için anahtarı el ile yeniden doğrulamanız gerekecektir. Bu eylem, müşteri tarafından yönetilen anahtar izinleri iptal edilirken verileri yetkisiz erişimden korumak için gereklidir.
 
@@ -44,12 +44,12 @@ Aşağıdaki yapılandırma hataları Azure Key Vault anahtarları kullanan veri
 #### <a name="disabled-key-vault"></a>Devre dışı Anahtar Kasası
 
 - `AzureKeyVaultKeyDisabledMessage`
-- _ * Açıklama * *: Azure Key Vault anahtarı devre dışı olduğundan, işlem sunucuda tamamlanamadı.
+- **Açıklama**: Azure Key Vault anahtarı devre dışı bırakıldığından, işlem sunucuda tamamlanamadı.
 
 #### <a name="missing-key-vault-permissions"></a>Anahtar Kasası izinleri eksik
 
 - `AzureKeyVaultMissingPermissionsMessage`
-- **Açıklama** : sunucu, Azure Key Vault Için gereken get, Wrap ve Unwrap izinlerine sahip değil. Hizmet sorumlusuna KIMLIĞI olan eksik izinleri verin.
+- **Açıklama**: sunucu, Azure Key Vault Için gereken get, Wrap ve Unwrap izinlerine sahip değil. Hizmet sorumlusuna KIMLIĞI olan eksik izinleri verin.
 
 ### <a name="mitigation"></a>Risk azaltma
 

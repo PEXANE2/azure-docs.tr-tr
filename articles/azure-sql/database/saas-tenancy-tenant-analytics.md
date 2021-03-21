@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: 98896b5b728a729a29f989b3b9a76f29131af8d7
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93305979"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>Ayıklanan verileri kullanan çapraz kiracı Analizi-tek kiracılı uygulama
@@ -93,7 +93,7 @@ Aşağıdaki adımlarda, **tenantanalytics** adlı analiz deposunu dağıtırsı
     - SQL veritabanı 'nı sütun deposuyla birlikte kullanmak için, **$DemoScenario**  =  **3** ' ü ayarlayın  
 3. , Kiracı Analizi deposunu oluşturan demo betiğini ( *Deploy-TenantAnalytics \<XX> . ps1* betiğini çağırır) çalıştırmak için **F5** tuşuna basın. 
 
-Uygulamayı dağıttığınıza ve ilgi çekici kiracı verileriyle doldurduktan sonra, oturum açma = *Geliştirici* , parola = *P \@ ssword1* kullanarak **tenants1-DPT- &lt; user &gt;** ve **Catalog-DPT- &lt; user &gt;** sunucularını bağlamak için [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) kullanın. Daha fazla bilgi için bkz. [giriş öğreticisi](./saas-dbpertenant-wingtip-app-overview.md) .
+Uygulamayı dağıttığınıza ve ilgi çekici kiracı verileriyle doldurduktan sonra, oturum açma = *Geliştirici*, parola = *P \@ ssword1* kullanarak **tenants1-DPT- &lt; user &gt;** ve **Catalog-DPT- &lt; user &gt;** sunucularını bağlamak için [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) kullanın. Daha fazla bilgi için bkz. [giriş öğreticisi](./saas-dbpertenant-wingtip-app-overview.md) .
 
 ![SQL Server bağlanmak için gereken bilgileri gösteren ekran görüntüsü.](./media/saas-tenancy-tenant-analytics/ssmsSignIn.png)
 
@@ -107,7 +107,7 @@ Nesne Gezgini, aşağıdaki adımları gerçekleştirin:
 Analiz deposu düğümünü genişleterek SSMS Nesne Gezgini aşağıdaki veritabanı öğelerine bakın:
 
 - Tablo **biletleri** , ham veri ve **olayları** , işlenmemiş veri tutan verileri kiracı veritabanlarından ayıklamalıdır.
-- Yıldız şeması tabloları **fact_Tickets** , **dim_Customers** , **dim_Venues** , **dim_Events** ve **dim_Dates**.
+- Yıldız şeması tabloları **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events** ve **dim_Dates**.
 - Saklı yordam, yıldız şeması tablolarını ham veri tablolarından doldurmak için kullanılır.
 
 ![SSMS Nesne Gezgini gösterilen veritabanı öğelerinin ekran görüntüsü.](./media/saas-tenancy-tenant-analytics/tenantAnalytics.png)
@@ -133,7 +133,7 @@ Devam etmeden önce, iş hesabını ve jobaccount veritabanını dağıttığın
 Her iş verilerini ayıklar ve analiz deposuna gönderir. Ayıklanan verileri analiz yıldızı-şemasına shreds ayrı bir iş vardır.
 
 1. SSMS 'de, Catalog-DPT-User Server 'daki **jobaccount** veritabanına bağlanın &lt; &gt; .
-2. SSMS 'de, *. ..\Learning Modules\işletimsel Analtics\tenant Analtics\tenant Analyzer* ' ı açın.
+2. SSMS 'de, *. ..\Learning Modules\işletimsel Analtics\tenant Analtics\tenant Analyzer*' ı açın.
 3. @UserBetiğin en üstünde değişiklik yapın ve bunu, `<User>` Wingtip SaaS uygulamasını dağıtırken kullanılan kullanıcı adıyla değiştirin 
 4. Her kiracı veritabanından bilet ve müşteri verilerini çıkaran işi oluşturan ve çalıştıran betiği çalıştırmak için F5 ' e basın. İş, verileri analiz deposuna kaydeder.
 5. Tablonun tüm kiracılardan bilet bilgileriyle doldurulduğundan emin olmak için tenantanalytics veritabanındaki bilet Srawdata tablosunu sorgulayın.
@@ -169,17 +169,17 @@ Star şeması tablosundaki veriler, analizinizi için gereken tüm bilet satış
 Power BI bağlanmak ve daha önce oluşturduğunuz görünümleri içeri aktarmak için aşağıdaki adımları kullanın:
 
 1. Power BI Desktop 'ı başlatın.
-2. Giriş şeridinde **veri al** ' ı seçin ve **daha fazla...** seçeneğini belirleyin. menüsünde.
+2. Giriş şeridinde **veri al**' ı seçin ve **daha fazla...** seçeneğini belirleyin. menüsünde.
 3. **Veri al** PENCERESINDE Azure SQL veritabanı ' nı seçin.
 4. Veritabanı oturum açma penceresinde sunucunuzun adını (Katalog-DPT- &lt; user &gt; . Database.Windows.net) girin. **Veri bağlantısı modu** Için **içeri aktar** ' ı seçin ve ardından Tamam ' a tıklayın. 
 
     ![signınpowerbı](./media/saas-tenancy-tenant-analytics/powerBISignIn.PNG)
 
-5. Sol bölmedeki **veritabanı** ' nı seçin, ardından Kullanıcı adı = *Geliştirici* yazın ve parola = *P \@ ssword1* girin. **Bağlan** 'a tıklayın.  
+5. Sol bölmedeki **veritabanı** ' nı seçin, ardından Kullanıcı adı = *Geliştirici* yazın ve parola = *P \@ ssword1* girin. **Bağlan**'a tıklayın.  
 
     ![Ekran görüntüsü, bir Kullanıcı adı ve parola girebileceğiniz SQL Server veritabanı iletişim kutusunu gösterir.](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 
-6. **Gezgin** bölmesinde, analiz veritabanı altında, yıldız şema tablolarını seçin: fact_Tickets, dim_Events, dim_Venues, dim_Customers ve dim_Dates. Sonra **Yükle** ' yi seçin. 
+6. **Gezgin** bölmesinde, analiz veritabanı altında, yıldız şema tablolarını seçin: fact_Tickets, dim_Events, dim_Venues, dim_Customers ve dim_Dates. Sonra **Yükle**' yi seçin. 
 
 Tebrikler! Verileri başarıyla Power BI yüklendi. Artık kiracılarınız hakkında öngörüler elde etmenize yardımcı olmak için ilginç görselleştirmeleri keşfetmeye başlayabilirsiniz. Ardından analizler tarafından, Wingtip bilet iş ekibine veri odaklı öneriler sağlamanıza nasıl olanak sağlayacağız. Öneriler, iş modelini ve müşteri deneyimini iyileştirmenize yardımcı olabilir.
 

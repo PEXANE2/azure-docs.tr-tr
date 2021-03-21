@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 10/14/2020
 ms.author: apimpm
 ms.openlocfilehash: 1cb902c4b59193c46dbeca47bb355f0695a0f2c7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100572796"
 ---
 # <a name="tutorial-monitor-published-apis"></a>Öğretici: yayımlanan API 'Leri Izleme
@@ -92,7 +92,7 @@ Bir istek ölçüsüne göre örnek bir uyarı kuralı yapılandırmak için:
 
 1. Uyarı kuralının adını ve açıklamasını girip önem derecesini seçin. 
 1. **Uyarı kuralı oluşturma**’yı seçin.
-1. Şimdi, bir API anahtarı olmadan konferans API 'sini çağırarak uyarı kuralını test edin. Örneğin:
+1. Şimdi, bir API anahtarı olmadan konferans API 'sini çağırarak uyarı kuralını test edin. Örnek:
 
     ```bash
     curl GET https://apim-hello-world.azure-api.net/conference/speakers HTTP/1.1 

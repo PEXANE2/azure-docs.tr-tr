@@ -12,13 +12,13 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cd91d1d2c9f5a4a413f9ea64cfdef649823d0f09
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93131029"
 ---
-# <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Şirket içi uygulamalarınıza Azure AD erişimi için B2B kullanıcıları verme
+# <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Azure AD’de B2B kullanıcılarına şirket içi uygulamalarınıza erişim verme
 
 Konuk kullanıcıları iş ortağı kuruluşlarınızdan Azure AD 'ye davet etmek için Azure Active Directory (Azure AD) B2B işbirliği özelliklerini kullanan bir kuruluş olarak, bu B2B kullanıcılarına şirket içi uygulamalara erişimi sağlayabilirsiniz. Bu şirket içi uygulamalar, SAML tabanlı kimlik doğrulaması veya tümleşik Windows kimlik doğrulaması (ıWA) kullanarak Kerberos kısıtlanmış temsili (KCD) kullanabilir.
 
@@ -39,8 +39,8 @@ Aşağıdakilerden her ikisini de yapmanız gerekir:
 
 B2B kullanıcılarına, tümleşik Windows kimlik doğrulaması ve Kerberos kısıtlı temsilcisiyle güvenliği sağlanmış şirket içi uygulamalara erişim sağlamak için aşağıdaki bileşenlere ihtiyacınız vardır:
 
-- **Azure AD uygulama ara sunucusu aracılığıyla kimlik doğrulaması** . B2B kullanıcılarının şirket içi uygulamada kimlik doğrulaması yapabilmesi gerekir. Bunu yapmak için şirket içi uygulamayı Azure AD Uygulama Ara Sunucusu aracılığıyla yayımlamanız gerekir. Daha fazla bilgi için bkz. [öğretici: uygulama proxy 'si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme](../manage-apps/application-proxy-add-on-premises-application.md).
-- **Şirket içi dizindeki BIR B2B Kullanıcı nesnesi aracılığıyla yetkilendirme** . Uygulamanın kullanıcı erişim denetimleri gerçekleştirebilmesi ve doğru kaynaklara erişim izni vermesi gerekir. IWA ve KCD, bu yetkilendirmeyi tamamlaması için şirket içi Windows Server Active Directory bir kullanıcı nesnesi gerektirir. [KCD ile çoklu oturum açma konusunda](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works)açıklandığı gibi, uygulama proxy 'si, kullanıcının kimliğine bürünmesi ve uygulamaya Kerberos belirteci alması için bu kullanıcı nesnesine ihtiyaç duyuyor. 
+- **Azure AD uygulama ara sunucusu aracılığıyla kimlik doğrulaması**. B2B kullanıcılarının şirket içi uygulamada kimlik doğrulaması yapabilmesi gerekir. Bunu yapmak için şirket içi uygulamayı Azure AD Uygulama Ara Sunucusu aracılığıyla yayımlamanız gerekir. Daha fazla bilgi için bkz. [öğretici: uygulama proxy 'si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme](../manage-apps/application-proxy-add-on-premises-application.md).
+- **Şirket içi dizindeki BIR B2B Kullanıcı nesnesi aracılığıyla yetkilendirme**. Uygulamanın kullanıcı erişim denetimleri gerçekleştirebilmesi ve doğru kaynaklara erişim izni vermesi gerekir. IWA ve KCD, bu yetkilendirmeyi tamamlaması için şirket içi Windows Server Active Directory bir kullanıcı nesnesi gerektirir. [KCD ile çoklu oturum açma konusunda](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works)açıklandığı gibi, uygulama proxy 'si, kullanıcının kimliğine bürünmesi ve uygulamaya Kerberos belirteci alması için bu kullanıcı nesnesine ihtiyaç duyuyor. 
 
    > [!NOTE]
    > Azure AD Uygulama Ara Sunucusu yapılandırdığınızda, tümleşik Windows kimlik doğrulaması (ıWA) için çoklu oturum açma yapılandırmasında, **temsilci oturum açma kimliğinin** **Kullanıcı asıl adı** (varsayılan) olarak ayarlandığından emin olun.
@@ -64,7 +64,7 @@ Aşağıdaki diyagramda, B2B kullanıcılarına şirket içi ıWA ve KCD uygulam
 
 ### <a name="lifecycle-management-policies"></a>Yaşam döngüsü yönetim ilkeleri
 
-Şirket içi B2B Kullanıcı nesnelerini yaşam döngüsü yönetim ilkeleri aracılığıyla yönetebilirsiniz. Örneğin:
+Şirket içi B2B Kullanıcı nesnelerini yaşam döngüsü yönetim ilkeleri aracılığıyla yönetebilirsiniz. Örnek:
 
 - Uygulama proxy kimlik doğrulaması sırasında MFA kullanılacak şekilde Konuk Kullanıcı için Multi-Factor Authentication (MFA) ilkeleri ayarlayabilirsiniz. Daha fazla bilgi için bkz. [B2B işbirliği kullanıcıları Için koşullu erişim](conditional-access.md).
 - Bulut B2B kullanıcısı üzerinde gerçekleştirilen tüm sponsorships, erişim incelemeleri, hesap doğrulamaları vb. Şirket içi kullanıcılar için geçerlidir. Örneğin, bulut kullanıcısı yaşam döngüsü yönetimi ilkeleriniz aracılığıyla silinirse, şirket içi Kullanıcı de MıM eşitleme veya Azure AD Connect eşitleme aracılığıyla silinir. Daha fazla bilgi için bkz. [Azure AD erişim gözden geçirmeleri ile konuk erişimini yönetme](../governance/manage-guest-access-with-access-reviews.md).

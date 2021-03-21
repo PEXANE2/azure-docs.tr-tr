@@ -1,6 +1,6 @@
 ---
 title: StorSimple Sanal dizisinde birimleri yönetme | Microsoft Docs
-description: StorSimple Aygıt Yöneticisi açıklar ve StorSimple Sanal dizinizdeki birimleri yönetmek için nasıl kullanılacağını açıklar.
+description: StorSimple Device Manager açıklar ve StorSimple Sanal dizinizdeki birimleri yönetmek için nasıl kullanılacağını açıklar.
 services: storsimple
 documentationcenter: ''
 author: manuaery
@@ -15,19 +15,19 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: 79e3ce8c1605e5d68ff44901f53854d2f5f10abc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96014389"
 ---
 # <a name="use-storsimple-device-manager-service-to-manage-volumes-on-the-storsimple-virtual-array"></a>StorSimple Sanal Dizisinde birimleri yönetmek için StorSimple Device Manager hizmetini kullanma
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu öğreticide, StorSimple Sanal dizinizdeki birimleri oluşturmak ve yönetmek için StorSimple Aygıt Yöneticisi hizmetinin nasıl kullanılacağı açıklanmaktadır.
+Bu öğreticide, StorSimple Sanal dizinizdeki birimleri oluşturmak ve yönetmek için StorSimple Device Manager hizmetinin nasıl kullanılacağı açıklanmaktadır.
 
-StorSimple Aygıt Yöneticisi hizmeti, StorSimple çözümünüzü tek bir web arabiriminden yönetmenizi sağlayan Azure portal bir uzantıdır. Paylaşımları ve birimleri yönetmeye ek olarak, StorSimple Aygıt Yöneticisi hizmetini kullanarak cihazları görüntüleyebilir ve yönetebilir, uyarıları görüntüleyebilir, yedekleme ilkelerini ve yedekleme kataloğunu görüntüleyebilir ve yönetebilirsiniz.
+StorSimple Device Manager hizmeti, StorSimple çözümünüzü tek bir web arabiriminden yönetmenizi sağlayan Azure portal bir uzantıdır. Paylaşımları ve birimleri yönetmeye ek olarak, StorSimple Device Manager hizmetini kullanarak cihazları görüntüleyebilir ve yönetebilir, uyarıları görüntüleyebilir, yedekleme ilkelerini ve yedekleme kataloğunu görüntüleyebilir ve yönetebilirsiniz.
 
 ## <a name="volume-types"></a>Birim türleri
 
@@ -39,7 +39,7 @@ StorSimple birimleri şu olabilir:
 ### <a name="provisioned-capacity"></a>Sağlanan kapasite
 Her birim türü için sağlanan maksimum kapasite için aşağıdaki tabloya bakın.
 
-| **Sınır tanımlayıcı**                                       | **Sınır**     |
+| **Sınır tanımlayıcı**                                       | **Sınırlı**     |
 |------------------------------------------------------------|---------------|
 | Katmanlı birimin en küçük boyutu                            | 500 GB        |
 | Katmanlı birimin en büyük boyutu                            | 5 TB          |

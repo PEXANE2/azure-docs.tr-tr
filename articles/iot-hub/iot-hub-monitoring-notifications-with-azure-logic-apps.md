@@ -10,10 +10,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 07/18/2019
 ms.author: robinsh
 ms.openlocfilehash: cd14ff0688f4230aeedac748ca4b32609bdd2938
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92490331"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>IoT Hub 'ınızı ve posta kutunuzu bağlama Azure Logic Apps IoT uzaktan izleme ve bildirimler
@@ -70,7 +70,7 @@ Service Bus ad alanı ve kuyruğu oluşturun. Bu konunun ilerleyen kısımların
 
 ### <a name="create-a-service-bus-namespace"></a>Service Bus ad alanı oluşturma
 
-1. [Azure Portal](https://portal.azure.com/) **+ kaynak**  >  **tümleştirme**  >  **Service Bus**oluştur ' u seçin.
+1. [Azure Portal](https://portal.azure.com/) **+ kaynak**  >  **tümleştirme**  >  **Service Bus** oluştur ' u seçin.
 
 1. **Ad alanı oluştur** bölmesinde aşağıdaki bilgileri sağlayın:
 
@@ -96,7 +96,7 @@ Service Bus ad alanı ve kuyruğu oluşturun. Bu konunun ilerleyen kısımların
 
    ![Azure portal bir Service Bus kuyruğu ekleme](media/iot-hub-monitoring-notifications-with-azure-logic-apps/create-service-bus-queue.png)
 
-1. **Service Bus ad alanı** bölmesine geri dönün, **varlıklar**altında **Kuyruklar**' ı seçin. Listeden Service Bus kuyruğunu açın ve sonra **paylaşılan erişim ilkeleri**  >  **+ Ekle**' yi seçin.
+1. **Service Bus ad alanı** bölmesine geri dönün, **varlıklar** altında **Kuyruklar**' ı seçin. Listeden Service Bus kuyruğunu açın ve sonra **paylaşılan erişim ilkeleri**  >  **+ Ekle**' yi seçin.
 
 1. İlke için bir ad girin, **Yönet**' i işaretleyin ve ardından **Oluştur**' u seçin.
 
@@ -110,7 +110,7 @@ IoT Hub 'ınıza Service Bus kuyruğu için özel bir uç nokta ekleyin ve bir s
 
 1. IoT Hub 'ınızı açın. IoT Hub 'a almanın en kolay yolu kaynak **grupları** kaynak bölmesinden seçmeniz, kaynak grubunuzu seçmeniz ve ardından kaynak listesinden IoT Hub 'ınızı seçmeniz gerekir.
 
-1. **Mesajlaşma**altında **ileti yönlendirme**' yi seçin. **İleti yönlendirme** bölmesinde **Özel uç noktalar** sekmesini seçin ve **+ Ekle**' yi seçin. Aşağı açılan listeden **Service Bus kuyruğu**' nu seçin.
+1. **Mesajlaşma** altında **ileti yönlendirme**' yi seçin. **İleti yönlendirme** bölmesinde **Özel uç noktalar** sekmesini seçin ve **+ Ekle**' yi seçin. Aşağı açılan listeden **Service Bus kuyruğu**' nu seçin.
 
    ![Service Bus kuyruğu seçeneğini vurgulayan ekran görüntüsü.](media/iot-hub-monitoring-notifications-with-azure-logic-apps/select-iot-hub-custom-endpoint.png)
 
@@ -150,7 +150,7 @@ Yukarıdaki bölümde, IoT Hub 'ınızı Service Bus kuyruğuna bir sıcaklık u
 
 ### <a name="create-a-logic-app"></a>Mantıksal uygulama oluşturma
 
-1. **Kaynak**  >  **tümleştirme**  >  **mantıksal uygulaması**oluştur ' u seçin.
+1. **Kaynak**  >  **tümleştirme**  >  **mantıksal uygulaması** oluştur ' u seçin.
 
 1. Aşağıdaki bilgileri girin:
 
@@ -176,7 +176,7 @@ Yukarıdaki bölümde, IoT Hub 'ınızı Service Bus kuyruğuna bir sıcaklık u
 
    ![Mantıksal uygulamanızı oluşturmaya başlamak için Service Bus seçin Azure portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/6-select-service-bus-when-creating-blank-logic-app-azure-portal.png)
 
-1. **Tetikleyiciler**altında **bir veya daha fazla ileti bir sıraya ulaştığında (otomatik olarak tamamlanır)** seçeneğini belirleyin.
+1. **Tetikleyiciler** altında **bir veya daha fazla ileti bir sıraya ulaştığında (otomatik olarak tamamlanır)** seçeneğini belirleyin.
 
    ![Azure portal mantıksal uygulamanız için tetikleyiciyi seçin](media/iot-hub-monitoring-notifications-with-azure-logic-apps/select-service-bus-trigger.png)
 
@@ -189,7 +189,7 @@ Yukarıdaki bölümde, IoT Hub 'ınızı Service Bus kuyruğuna bir sıcaklık u
 
       ![Azure portal mantıksal uygulamanız için bir hizmet veri yolu bağlantısı oluşturma](media/iot-hub-monitoring-notifications-with-azure-logic-apps/7-create-service-bus-connection-in-logic-app-azure-portal.png)
 
-   1. Son ekranda, **kuyruk adı**için, açılan listeden oluşturduğunuz kuyruğu seçin. `175` **En fazla ileti sayısı**için girin.
+   1. Son ekranda, **kuyruk adı** için, açılan listeden oluşturduğunuz kuyruğu seçin. `175` **En fazla ileti sayısı** için girin.
 
       ![Mantıksal uygulamanızdaki Service Bus bağlantısı için en fazla ileti sayısını belirtin](media/iot-hub-monitoring-notifications-with-azure-logic-apps/8-specify-maximum-message-count-for-service-bus-connection-logic-app-azure-portal.png)
 
@@ -199,7 +199,7 @@ Yukarıdaki bölümde, IoT Hub 'ınızı Service Bus kuyruğuna bir sıcaklık u
 
 1. Bir SMTP hizmet bağlantısı oluşturun.
 
-   1. **Yeni adım**'ı seçin. **Bir eylem seçin**bölümünde **Tümü** sekmesini seçin.
+   1. **Yeni adım**'ı seçin. **Bir eylem seçin** bölümünde **Tümü** sekmesini seçin.
 
    1. `smtp`Arama kutusuna yazın, arama sonucunda **SMTP** hizmetini seçin ve ardından **e-posta gönder**' i seçin.
 
@@ -218,7 +218,7 @@ Yukarıdaki bölümde, IoT Hub 'ınızı Service Bus kuyruğuna bir sıcaklık u
 
       ![SMTP bağlantısı e-posta alanlarını seçin](media/iot-hub-monitoring-notifications-with-azure-logic-apps/smtp-connection-choose-fields.png)
 
-   1. E-posta **adresinizi ve ' yi,** **From** `High temperature detected` **Konu** ve **gövde**için girin. **Bu akış iletişim kutusunda kullanılan uygulamalardan ve bağlayıcılardan dinamik Içerik Ekle** iletişim kutusu açılırsa, kapatmak için **Gizle** ' yi seçin. Bu öğreticide dinamik içerik kullanmayın.
+   1. E-posta **adresinizi ve ' yi,**  `High temperature detected` **Konu** ve **gövde** için girin. **Bu akış iletişim kutusunda kullanılan uygulamalardan ve bağlayıcılardan dinamik Içerik Ekle** iletişim kutusu açılırsa, kapatmak için **Gizle** ' yi seçin. Bu öğreticide dinamik içerik kullanmayın.
 
       ![SMTP bağlantısı e-posta alanlarını doldur](media/iot-hub-monitoring-notifications-with-azure-logic-apps/fill-in-smtp-connection-fields.png)
 
@@ -226,11 +226,11 @@ Yukarıdaki bölümde, IoT Hub 'ınızı Service Bus kuyruğuna bir sıcaklık u
 
 1. Seçim E-posta sağlayıcınızla bağlantı kurmak için TLS 'yi devre dışı bırakmanız ve yeniden etkinleştirmek istiyorsanız aşağıdaki adımları izleyin:
 
-   1. **Mantıksal uygulama** bölmesindeki **geliştirme araçları**altında **API bağlantıları**' nı seçin.
+   1. **Mantıksal uygulama** bölmesindeki **geliştirme araçları** altında **API bağlantıları**' nı seçin.
 
    1. API bağlantıları listesinden SMTP bağlantısını seçin.
 
-   1. **SMTP API bağlantısı** bölmesinde, **genel**altında, **API bağlantısını Düzenle**' yi seçin.
+   1. **SMTP API bağlantısı** bölmesinde, **genel** altında, **API bağlantısını Düzenle**' yi seçin.
 
    1. **API bağlantısını Düzenle** bölmesinde **SSL 'yi etkinleştir**' i seçin, e-posta hesabınız için parolayı yeniden girin ve **Kaydet**' i seçin.
 

@@ -8,10 +8,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 09/14/2018
 ms.openlocfilehash: 95b638b85e0746d2995488f2a28a5fb2512b1063
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96015273"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics için CI/CD işlem hattı ayarlama  
@@ -93,7 +93,7 @@ Komut satırına ek olarak, Azure Pipelines ' de U-SQL projeleri oluşturmak iç
 
 ![U-SQL projesi için MSBuild görevi](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-task.png)
 
-1. `Azure.DataLake.USQL.SDK`MSBuild 'In U-SQL dil hedeflerini bulabilmesi için, çözümü bulunan NuGet paketini içeren çözüme başvurulu bir NuGet geri yükleme görevi ekleyin. **Advanced**  >  **Destination directory** `$(Build.SourcesDirectory)/packages` Doğrudan adım 2 ' de MSBuild bağımsız değişkenleri örneğini kullanmak istiyorsanız, gelişmiş hedef dizinini olarak ayarlayın.
+1. `Azure.DataLake.USQL.SDK`MSBuild 'In U-SQL dil hedeflerini bulabilmesi için, çözümü bulunan NuGet paketini içeren çözüme başvurulu bir NuGet geri yükleme görevi ekleyin.   >   `$(Build.SourcesDirectory)/packages` Doğrudan adım 2 ' de MSBuild bağımsız değişkenleri örneğini kullanmak istiyorsanız, gelişmiş hedef dizinini olarak ayarlayın.
 
    ![U-SQL projesi için NuGet geri yükleme görevi](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-nuget-task.png)
 
@@ -332,7 +332,7 @@ Komut satırına ek olarak, Azure Pipelines ' de U-SQL veritabanı projelerini d
 
    ![U-SQL projesi için CI/CD MSBuild görevi](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-task.png)
 
-1. `Azure.DataLake.USQL.SDK`MSBuild 'In U-SQL dil hedeflerini bulabileceği şekilde, Çözümle başvurulan NuGet paketini içeren bir NuGet geri yükleme görevi ekleyin. **Advanced**  >  **Destination directory** `$(Build.SourcesDirectory)/packages` Doğrudan adım 2 ' de MSBuild bağımsız değişkenleri örneğini kullanmak istiyorsanız, gelişmiş hedef dizinini olarak ayarlayın.
+1. `Azure.DataLake.USQL.SDK`MSBuild 'In U-SQL dil hedeflerini bulabileceği şekilde, Çözümle başvurulan NuGet paketini içeren bir NuGet geri yükleme görevi ekleyin.   >   `$(Build.SourcesDirectory)/packages` Doğrudan adım 2 ' de MSBuild bağımsız değişkenleri örneğini kullanmak istiyorsanız, gelişmiş hedef dizinini olarak ayarlayın.
 
    ![U-SQL projesi için CI/CD NuGet görevi](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-nuget-task.png)
 

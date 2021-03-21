@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d61962667953b20f4b542874e902411bb579b9c3
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93122852"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory portalındaki oturum açma etkinlik raporları
@@ -58,7 +58,7 @@ Kullanıcı oturum açma işlemleri raporu, aşağıdaki soruların yanıtların
 * Bir hafta içerisinde kaç kullanıcı oturum açtı?
 * Bu açılan oturumların durumu nedir?
 
-[Azure Portal](https://portal.azure.com) menüsünde **Azure Active Directory** ' i seçin veya herhangi bir sayfadan **Azure Active Directory** arayın ve seçin.
+[Azure Portal](https://portal.azure.com) menüsünde **Azure Active Directory**' i seçin veya herhangi bir sayfadan **Azure Active Directory** arayın ve seçin.
 
 ![Azure Active Directory'yi seçin](./media/concept-sign-ins/select-azure-active-directory.png "Azure Active Directory")
 
@@ -82,7 +82,7 @@ Oturum açma günlüklerinin aşağıdakileri gösteren bir varsayılan liste g�
 
 ![Ekran görüntüsünde Office 365 SharePoint Online oturum açma işlemleri gösterilir.](./media/concept-sign-ins/sign-in-activity.png "Oturum açma etkinliği")
 
-Araç çubuğunda **Sütunlar** ’a tıklayarak liste görünümünü özelleştirebilirsiniz.
+Araç çubuğunda **Sütunlar**’a tıklayarak liste görünümünü özelleştirebilirsiniz.
 
 ![Ekran görüntüsü, oturum açma sayfasındaki sütunlar seçeneğini gösterir.](./media/concept-sign-ins/19.png "Oturum açma etkinliği")
 
@@ -143,7 +143,7 @@ Daha ayrıntılı bilgi edinmek için liste görünümünde bir öğe seçin.
 ![İstemci uygulama filtresi](./media/concept-sign-ins/client-app-filter.png)
 
 
-|Ad|Modern kimlik doğrulaması|Açıklama|
+|Name|Modern kimlik doğrulaması|Description|
 |---|:-:|---|
 |Kimliği doğrulanmış SMTP| |POP ve IMAP istemci tarafından e-posta iletileri göndermek için kullanılır.|
 |Otomatik bulma| |Outlook ve EAS istemcileri tarafından Exchange Online 'daki posta kutularını bulmak ve bağlamak için kullanılır.|
@@ -177,11 +177,11 @@ Daha ayrıntılı bilgi edinmek için liste görünümünde bir öğe seçin.
 
 **Koşullu erişim** -uygulanan koşullu erişim kurallarının durumu
 
-- **Uygulanmadı** : oturum açma sırasında Kullanıcı ve uygulamaya ilke uygulanmaz.
+- **Uygulanmadı**: oturum açma sırasında Kullanıcı ve uygulamaya ilke uygulanmaz.
 
-- **Başarılı** : oturum açma sırasında Kullanıcı ve uygulamaya (diğer koşullar olması gerekmez) uygulanan bir veya daha fazla koşullu erişim ilkesi. 
+- **Başarılı**: oturum açma sırasında Kullanıcı ve uygulamaya (diğer koşullar olması gerekmez) uygulanan bir veya daha fazla koşullu erişim ilkesi. 
 
-- **Hata** : oturum açma, en az bir koşullu erişim ilkesinin Kullanıcı ve uygulama koşulunu karşıladı ve izin verme denetimleri karşılanmadı ya da erişimi engelle olarak ayarlı değil.
+- **Hata**: oturum açma, en az bir koşullu erişim ilkesinin Kullanıcı ve uygulama koşulunu karşıladı ve izin verme denetimleri karşılanmadı ya da erişimi engelle olarak ayarlı değil.
 
 
 

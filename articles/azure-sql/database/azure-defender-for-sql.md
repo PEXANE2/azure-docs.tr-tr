@@ -11,10 +11,10 @@ manager: rkarlin
 author: memildin
 ms.date: 03/08/2021
 ms.openlocfilehash: 27f17b3d1060e8b693c2a34cdb4643840f1bfd13
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102452326"
 ---
 # <a name="azure-defender-for-sql"></a>SQL için Azure Defender
@@ -63,7 +63,7 @@ Aboneliğiniz için Azure Defender 'ı etkinleştirmek üzere aşağıdaki araç
 | Yöntem       | Yönergeler                                                                                                                                       |
 |--------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
 | REST API     | [Prmerler API 'SI](/rest/api/securitycenter/pricings)                                                                                                  |
-| Azure CLI    | [az Security fiyatlandırması](/cli/azure/security/pricing)                                                                                                 |
+| Azure CLI’si    | [az Security fiyatlandırması](/cli/azure/security/pricing)                                                                                                 |
 | PowerShell   | [Set-Azsecurityprsosu](/powershell/module/az.security/set-azsecuritypricing)                                                                      |
 | Azure İlkesi | [Paket ları](https://github.com/Azure/Azure-Security-Center/blob/master/Pricing%20%26%20Settings/ARM%20Templates/Set-ASC-Bundle-Pricing.json) |
 |              |                                                                                                                                                    |

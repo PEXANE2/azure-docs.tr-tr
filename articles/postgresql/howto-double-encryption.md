@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/30/2020
 ms.openlocfilehash: ea486b534ac3e703849ddb3922d7c3a428dd076b
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93242237"
 ---
 # <a name="infrastructure-double-encryption-for-azure-database-for-postgresql"></a>PostgreSQL için Azure veritabanı için altyapı Çift şifreleme
@@ -27,7 +27,7 @@ Azure portal altyapı çift şifrelemesi ile bir MySQL için Azure veritabanı s
 
 1. Portalın sol üst köşesinde bulunan **kaynak oluştur** (+) seçeneğini belirleyin.
 
-2. **Veritabanları**  >  **PostgreSQL için Azure veritabanı** ' nı seçin. Hizmeti bulmak için arama kutusuna PostgreSQL ' i de girebilirsiniz. **Tek sunuculu** dağıtım seçeneği etkinleştirildi.
+2. **Veritabanları**  >  **PostgreSQL için Azure veritabanı**' nı seçin. Hizmeti bulmak için arama kutusuna PostgreSQL ' i de girebilirsiniz. **Tek sunuculu** dağıtım seçeneği etkinleştirildi.
 
    :::image type="content" source="./media/quickstart-create-database-portal/1-create-database.png" alt-text="Menüdeki PostgreSQL için Azure veritabanı":::
 

@@ -11,10 +11,10 @@ ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
 ms.openlocfilehash: 0000e7690ab92f469a7417e82cb375c524e0b343
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96014771"
 ---
 # <a name="connect-a-rigado-cascade-500-gateway-device-to-your-azure-iot-central-application"></a>Bir Rigado basamaklı 500 ağ geçidi cihazını Azure IoT Central uygulamanıza bağlama
@@ -42,14 +42,14 @@ Basamaklı 500 ağ geçidi cihazını Azure IoT Central uygulama örneğinize ek
 Basamaklı 500 cihaz şablonu eklemek için: 
 
 1. Sol bölmedeki ***cihaz şablonları** _ sekmesine gidin, _ * + yeni * *: ![ yeni cihaz şablonu oluştur ' u seçin.](./media/howto-connect-rigado-cascade-500/device-template-new.png)
-1. Sayfa size **_özel şablon oluşturma_* _ veya _*_önceden yapılandırılmış bir cihaz şablonu kullanma_*_ seçeneği sunar
+1. Sayfa size ***özel şablon oluşturma** _ veya _ ' i *_önceden yapılandırılmış bir cihaz şablonu kullanma_* seçeneği sunar.*
 1. Önceden yapılandırılmış cihaz şablonları listesinden aşağıda gösterildiği gibi C500 cihaz şablonunu seçin: ![ C500 cihaz şablonu seçin](./media/howto-connect-rigado-cascade-500/device-template-preconfigured.png)
-1. Sonraki adıma devam etmek için Ileri 'yi seçin _*_: Özelleştir_*_ . 
-1. Bir sonraki ekranda, C500 cihaz şablonunu IoT Central uygulamanıza eklemek için _*_Oluştur_*_ ' u seçin.
+1. Sonraki adıma devam etmek için Ileri 'yi seçin ***: Özelleştir*** . 
+1. Bir sonraki ekranda, C500 cihaz şablonunu IoT Central uygulamanıza eklemek için ***Oluştur*** ' u seçin.
 
 ## <a name="retrieve-application-connection-details"></a>Uygulama bağlantısı ayrıntılarını al
 
-Cascade 500 cihazını bağlamak için artık Azure IoT Central uygulamanız için _ *scope ID** ve **birincil anahtarını** almanız gerekir. 
+Cascade 500 cihazını bağlamak için artık Azure IoT Central uygulamanızın **kapsam kimliğini** ve **birincil anahtarını** almanız gerekir. 
 
 1. Sol bölmedeki **Yönetim**  ' e gidin ve **cihaz bağlantısı**' na tıklayın. 
 2. IoT Central uygulamanızın **kapsam kimliğini** bir yere getirin.

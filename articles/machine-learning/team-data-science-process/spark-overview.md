@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 1dd82fb00c55e3676929999f204eae8755671038
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93314743"
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>Azure HDInsight 'ta Spark kullanarak veri bilimine genel bakış
@@ -152,17 +152,17 @@ Bu dosyaların% 0,1 bir örneğini aldık ve seyahat \_ verilerini ve seyahat \_
 | tip_class |İpucu sınıfı (0: $0, 1: $0-5, 2: $6-10, 3: $11-20, 4: > $20) |
 
 ## <a name="execute-code-from-a-jupyter-notebook-on-the-spark-cluster"></a>Spark kümesindeki bir Jupyter Not defterinden kod yürütme
-Jupyter Notebook Azure portal başlatabilirsiniz. Panonuzda Spark kümenizi bulun ve kümenizin yönetim sayfasına girmek için tıklayın. Spark kümesiyle ilişkili Not defterini açmak için Jupyter Notebook **küme panoları** ' na tıklayın  ->  **Jupyter Notebook**.
+Jupyter Notebook Azure portal başlatabilirsiniz. Panonuzda Spark kümenizi bulun ve kümenizin yönetim sayfasına girmek için tıklayın. Spark kümesiyle ilişkili Not defterini açmak için Jupyter Notebook **küme panoları**' na tıklayın  ->  .
 
 ![Küme panoları](./media/spark-overview/spark-jupyter-on-portal.png)
 
-*_`https://CLUSTERNAME.azurehdinsight.net/jupyter`_* Jupi not defterlerine erişmek için * _ konumuna da gidebilirsiniz. Bu URL 'nin CLUSTERNAME bölümünü kendi kümenizin adıyla değiştirin. Not defterlerine erişmek için Yönetici hesabınızın parolasının olması gerekir.
+Ayrıca ***`https://CLUSTERNAME.azurehdinsight.net/jupyter`*** , jupi not defterlerine erişmek için öğesine de gidebilirsiniz. Bu URL 'nin CLUSTERNAME bölümünü kendi kümenizin adıyla değiştirin. Not defterlerine erişmek için Yönetici hesabınızın parolasının olması gerekir.
 
 ![Jupyıter not defterlerine gözatıyorum](./media/spark-overview/spark-jupyter-notebook.png)
 
 PySpark API kullanan önceden paketlenmiş not defterlerine birkaç örnek içeren bir dizini görmek için PySpark ' ı seçin. Bu Spark konusunun kod örneklerini içeren Not defterleri [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) 'da kullanılabilir
 
-Not defterlerini doğrudan [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) 'dan Spark kümenizdeki Jupyter Not defteri sunucusuna yükleyebilirsiniz. Jupi 'nın ana sayfasında, ekranın sağ bölümünde _ *karşıya yükle* * düğmesine tıklayın. Bir dosya Gezgini açar. Burada, Not defterinin GitHub (ham içerik) URL 'sini yapıştırabilir ve **Aç** ' a tıklayabilirsiniz.
+Not defterlerini doğrudan [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) 'dan Spark kümenizdeki Jupyter Not defteri sunucusuna yükleyebilirsiniz. Jupi 'nizin giriş sayfasında, ekranın sağ tarafındaki **karşıya yükle** düğmesine tıklayın. Bir dosya Gezgini açar. Burada, Not defterinin GitHub (ham içerik) URL 'sini yapıştırabilir ve **Aç**' a tıklayabilirsiniz.
 
 Dosya adını Jupyıter dosya listenizde bir kez **karşıya yükle** düğmesine yeniden görürsünüz. Bu **karşıya yükle** düğmesine tıklayın. Artık Not defterini içeri aktardınız. Bu yönergeden diğer not defterlerini karşıya yüklemek için bu adımları tekrarlayın.
 
@@ -175,7 +175,7 @@ Artık şunları yapabilirsiniz:
 
 * Not defterine tıklayarak koda bakın.
 * Her hücreyi **SHIFT-enter** tuşlarına basarak yürütün.
-* Tüm Not defteri ' ni tıklatarak **hücre**  ->  **Çalıştır** ' a tıklayın.
+* Tüm Not defteri ' ni tıklatarak **hücre**  ->  **Çalıştır**' a tıklayın.
 * Sorguların otomatik görselleştirilmesini kullanın.
 
 > [!TIP]

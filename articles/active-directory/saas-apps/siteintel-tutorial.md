@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/02/2020
 ms.author: jeedes
 ms.openlocfilehash: 0c8224bf84a2235086d941df7d02ab6f458f3f16
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92510007"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-siteintel"></a>Öğretici: Siteıntel ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -55,7 +55,7 @@ Siteıntel 'in Azure AD 'ye tümleştirilmesini yapılandırmak için, galeridek
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-siteintel"></a>Siteıntel için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-*B. Simon*adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu siteıntel ile yapılandırın ve test edin. SSO 'nun çalışması için, Siteıntel 'te bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlantı ilişkisi oluşturmanız gerekir.
+*B. Simon* adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu siteıntel ile yapılandırın ve test edin. SSO 'nun çalışması için, Siteıntel 'te bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Siteıntel ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -104,11 +104,11 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için aşağıdakileri yapın:
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure Portal sol bölmede, kullanıcılar **Azure Active Directory**  >  **Users**  >  **tüm kullanıcılar**' ı seçin.
+1. Azure Portal sol bölmede, kullanıcılar **Azure Active Directory**  >    >  **tüm kullanıcılar**' ı seçin.
 1. Bölmenin en üstünde bulunan **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şunları yapın:
 
-   a. **Ad** kutusuna **B. Simon**girin.  
+   a. **Ad** kutusuna **B. Simon** girin.  
 
    b. **Kullanıcı adı** kutusuna şu biçimde Kullanıcı adını girin: `username@companydomain.extension` (örneğin, `B.Simon@contoso.com` ).
 

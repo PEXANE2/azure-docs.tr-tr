@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
 ms.openlocfilehash: 913ffc0670e40e749bd28382d492a16891fdc5c9
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92522283"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-percolate"></a>Öğretici: Percogeç ile tümleştirme Azure Active Directory
@@ -104,7 +104,7 @@ Azure AD çoklu oturum açmayı Percogeç olarak yapılandırmak için şu adım
 5. Uygulamayı SP tarafından başlatılan modda yapılandırmak istiyorsanız **ek URL 'Ler ayarla** ' yı seçin ve **oturum açma URL 'si** kutusuna şunu girin **https://percolate.com/app/login** :
 
    !["Ek U r ls 'yi ayarla" seçeneğinin seçili olduğunu gösteren ekran görüntüsü](common/metadata-upload-additional-signon.png)
-6. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini**kopyalamak için **Kopyala** simgesini seçin. Bu URL 'YI kaydedin.
+6. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak için **Kopyala** simgesini seçin. Bu URL 'YI kaydedin.
 
     ![Uygulama Federasyon meta veri URL 'sini Kopyala](common/copy-metadataurl.png)
 
@@ -126,7 +126,7 @@ Azure AD çoklu oturum açmayı Percogeç olarak yapılandırmak için şu adım
     
     ![Ayarlar'ı seçin](./media/percolate-tutorial/configure01.png)
 
-3. Sol bölmede, **kuruluş**altında **SSO** ' yı seçin:
+3. Sol bölmede, **kuruluş** altında **SSO** ' yı seçin:
 
     ![Kuruluş altında SSO seçin](./media/percolate-tutorial/configure02.png)
 
@@ -136,7 +136,7 @@ Azure AD çoklu oturum açmayı Percogeç olarak yapılandırmak için şu adım
 
     1. Not defteri 'nde, Azure portal indirdiğiniz Base-64 kodlu sertifikayı açın. İçeriğini kopyalayıp **x509 sertifikaları** kutusuna yapıştırın.
 
-    1. **E-posta özniteliği** kutusuna **emaadresi**girin.
+    1. **E-posta özniteliği** kutusuna **emaadresi** girin.
 
     1. **Kimlik sağlayıcısı meta veri URL 'si** kutusu isteğe bağlı bir alandır. Azure portal bir **uygulama Federasyon meta veri URL 'si** kopyaladıysanız, bu kutuya yapıştırabilirsiniz.
 
@@ -162,9 +162,9 @@ Bu bölümde, Azure portal Britta Simon adlı bir test kullanıcısı oluşturac
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    1. **Ad** kutusuna **Brittasıon**yazın.
+    1. **Ad** kutusuna **Brittasıon** yazın.
   
-    1. **Kullanıcı adı** kutusuna **BrittaSimon@ girin \<yourcompanydomain> . \<extension> ** (Örneğin, BrittaSimon@contoso.com .)
+    1. **Kullanıcı adı** kutusuna **BrittaSimon@ girin \<yourcompanydomain> . \<extension>** (Örneğin, BrittaSimon@contoso.com .)
 
     1. **Parolayı göster**' i seçin ve ardından **parola** kutusunda değer ' i yazın.
 
@@ -204,7 +204,7 @@ Bir kullanıcı hesabı oluşturmak için şu adımları uygulayın:
 
 1. Yönetici olarak Percogeç 'de oturum açın.
 
-2. Sol bölmede, **kuruluş**altındaki **Kullanıcılar** ' ı seçin. **Yeni kullanıcıları**seçin:
+2. Sol bölmede, **kuruluş** altındaki **Kullanıcılar** ' ı seçin. **Yeni kullanıcıları** seçin:
 
     ![Yeni Kullanıcı Seç](./media/percolate-tutorial/configure03.png)
 

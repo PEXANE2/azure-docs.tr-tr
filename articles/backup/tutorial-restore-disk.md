@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 999682c9bf4a4d70d886f0e85cede99f215aa046
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97694726"
 ---
 # <a name="restore-a-vm-with-azure-cli"></a>Azure CLI ile bir VM’yi geri yükleme
@@ -72,7 +72,7 @@ Yedeklenen sanal makinede yönetilen diskler varsa ve kurtarma noktasından yön
         --sku Standard_LRS
     ```
 
-2. [az backup restore restore-disks](/cli/azure/backup/restore#az-backup-restore-restore-disks) komutuyla kurtarma noktanızdan diski geri yükleyin. *mystorageaccount* değerini, önceki komutta oluşturduğunuz depolama hesabının adıyla değiştirin. *Myrecoverypointname* değerini, önceki [az Backup RecoveryPoint List](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list) komutunun çıktısında edindiğiniz kurtarma noktası adıyla değiştirin. ***Ayrıca, yönetilen disklerin _ öğesine geri yüklendiği hedef kaynak grubunu belirtin**.
+2. [az backup restore restore-disks](/cli/azure/backup/restore#az-backup-restore-restore-disks) komutuyla kurtarma noktanızdan diski geri yükleyin. *mystorageaccount* değerini, önceki komutta oluşturduğunuz depolama hesabının adıyla değiştirin. *Myrecoverypointname* değerini, önceki [az Backup RecoveryPoint List](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list) komutunun çıktısında edindiğiniz kurtarma noktası adıyla değiştirin. ***Ayrıca, yönetilen disklerin geri yüklendiği hedef kaynak grubunu da sağlayın***.
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -86,7 +86,7 @@ Yedeklenen sanal makinede yönetilen diskler varsa ve kurtarma noktasından yön
     ```
 
     > [!WARNING]
-    > _ *Target-Resource-Group** sağlanmazsa, yönetilen diskler, belirtilen depolama hesabına yönetilmeyen diskler olarak geri yüklenir. Diskleri geri yüklemek için geçen süre tamamen verilen depolama hesabına bağlı olduğundan, bu geri yükleme saatine önemli sonuçlara sahip olur. Yalnızca Target-Resource-Group parametresi verildiğinde anında geri yükleme avantajını elde edersiniz. Yönetilen diskleri yönetilmeyen olarak geri yüklemek için amaç, **hedef-kaynak grubu** parametresini sağlamamıştır ve bunun yerine, aşağıda gösterildiği gibi, **yönetilmeyen disk parametresini geri yükle** parametresini sağlar. Bu parametre az 3.4.0 onenlerden kullanılabilir.
+    > **Target-Resource-Group** sağlanmazsa, yönetilen diskler, belirtilen depolama hesabına yönetilmeyen diskler olarak geri yüklenir. Diskleri geri yüklemek için geçen süre tamamen verilen depolama hesabına bağlı olduğundan, bu geri yükleme saatine önemli sonuçlara sahip olur. Yalnızca Target-Resource-Group parametresi verildiğinde anında geri yükleme avantajını elde edersiniz. Yönetilen diskleri yönetilmeyen olarak geri yüklemek için amaç, **hedef-kaynak grubu** parametresini sağlamamıştır ve bunun yerine, aşağıda gösterildiği gibi, **yönetilmeyen disk parametresini geri yükle** parametresini sağlar. Bu parametre az 3.4.0 onenlerden kullanılabilir.
 
     ```azurecli-interactive
     az backup restore restore-disks \

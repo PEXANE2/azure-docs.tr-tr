@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 11/10/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 58e7c024d6494aee745884997e42b527c51ab237
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94489548"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-flexible-server-using-the-azure-cli"></a>Azure CLı kullanarak MySQL için Azure veritabanı esnek sunucusu 'nda sunucu parametrelerini yapılandırma
@@ -59,7 +59,7 @@ Bir parametrenin değerini sıfırlamak istiyorsanız, isteğe bağlı `--value`
 ```azurecli-interactive
 az mysql flexible-server parameter set --name slow_query_log --resource-group myresourcegroup --server-name mydemoserver
 ```
-Bu kod, **yavaş \_ sorgu \_ günlüğünü** varsayılan değere sıfırlar. **OFF** 
+Bu kod, **yavaş \_ sorgu \_ günlüğünü** varsayılan değere sıfırlar.  
 
 ## <a name="setting-non-modifiable-server-parameters"></a>Değiştirilemeyen sunucu parametreleri ayarlanıyor
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/24/2020
 ms.author: jeedes
 ms.openlocfilehash: 29040795f16ee804e2413b52d2692b38ab0f814c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92510568"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-raumfrraum"></a>Öğretici: Çum ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory für [Çum
@@ -54,7 +54,7 @@ Oyum] für [oyumu 'nı Azure AD 'ye tümleştirmeyi yapılandırmak için, Galer
 
 ## <a name="configure-and-test-azure-ad-sso-for-raumfrraum"></a>Azure AD SSO 'yu şu şekilde yapılandırma ve test etme] für [Çum
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu oyum ile yapılandırma ve test etme] für [oyum. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında korum] für [rampaı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu oyum ile yapılandırma ve test etme] für [oyum. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında korum] für [rampaı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu şu şekilde yapılandırmak ve test etmek için, für [Çum ile, aşağıdaki adımları uygulayın:
 

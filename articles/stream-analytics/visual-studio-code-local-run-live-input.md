@@ -7,10 +7,10 @@ ms.author: sujie
 ms.date: 11/14/2019
 ms.topic: how-to
 ms.openlocfilehash: dd4966ee75e9dc0ff401823e4291f8d299c8893c
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93122903"
 ---
 # <a name="test-stream-analytics-queries-locally-against-live-stream-input-by-using-visual-studio-code"></a>Visual Studio Code kullanarak canlı akış girişine göre Stream Analytics sorguları yerel olarak test edin
@@ -29,7 +29,7 @@ Stream Analytics işlerinizi canlı akış girişine karşı yerel olarak test e
 
    ![Girişler klasöründen giriş ekleme](./media/quick-create-visual-studio-code/add-input-from-inputs-folder.png)
 
-   Ayrıca, **CTRL + SHIFT + P** ' yi seçerek komut paletini açabilir ve **asa: giriş Ekle** ' yi girebilirsiniz.
+   Ayrıca, **CTRL + SHIFT + P** ' yi seçerek komut paletini açabilir ve **asa: giriş Ekle**' yi girebilirsiniz.
 
    ![Visual Studio Code Stream Analytics girişi ekleme](./media/quick-create-visual-studio-code/add-input.png)
 
@@ -57,7 +57,7 @@ Giriş verilerinin geldiğinden emin olmak için, en üstteki satırdaki canlı 
 
 ## <a name="run-queries-locally"></a>Sorguları yerel olarak çalıştır
 
-Sorgu düzenleyicinize dönün ve **yerel olarak çalıştır** ' ı seçin. Ardından açılan listeden **canlı girişi kullan** ' ı seçin.
+Sorgu düzenleyicinize dönün ve **yerel olarak çalıştır**' ı seçin. Ardından açılan listeden **canlı girişi kullan** ' ı seçin.
 
 ![Sorgu Düzenleyicisi 'nde "yerel olarak çalıştır" seçeneğini belirleyin](./media/vscode-local-run/run-locally.png)
 

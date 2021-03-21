@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.openlocfilehash: 59e6e73c99569b0a35c56d65c1a7ccdfcb394c0f
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95026430"
 ---
 # <a name="scale-a-hyperscale-citus-server-group"></a>Hiper ölçek (Citus) sunucu grubunu ölçeklendirme
@@ -27,14 +27,14 @@ Düğüm eklemek için, Hyperscale (Citus) sunucu grubundaki **işlem + depolama
 Değiştirilen değerin etkili olması için **Kaydet** düğmesine tıklayın.
 
 > [!NOTE]
-> Arttırıldıktan ve kaydedildikten sonra, çalışan düğümlerinin sayısı kaydırıcı kullanılarak azaltılemez.
+> Sayıları artırılıp kaydedildikten sonra çalışan düğümlerinin sayısı kaydırıcı kullanılarak düşürülemez.
 
 > [!NOTE]
 > Yeni eklenen düğümlerin avantajlarından yararlanmak için, [Dağıtılmış tablo](howto-hyperscale-scale-rebalance.md)parçaları 'nı yeniden dengelemeniz gerekir, bu [da bazı parçaları](concepts-hyperscale-distributed-data.md#shards) mevcut düğümlerden yeni olanlara taşımak anlamına gelir.
 
 ## <a name="increase-or-decrease-vcores-on-nodes"></a>Düğümlerdeki sanal çekirdekleri artırma veya azaltma
 
-Yeni düğümler eklemenin yanı sıra, mevcut düğümlerin yeteneklerini de artırabilirsiniz. İşlem kapasitesini yukarı ve aşağı ayarlamak, performans denemeleri ve trafik taleplerine yönelik kısa veya uzun süreli değişiklikler için yararlı olabilir.
+Yeni düğümler eklemek yerine mevcut düğümlerin yeteneklerini artırabilirsiniz. İşlem kapasitesini yukarı ve aşağı ayarlamak, performans denemeleri ve trafik taleplerine yönelik kısa veya uzun süreli değişiklikler için yararlı olabilir.
 
 Tüm çalışan düğümlerinin sanal çekirdeğini değiştirmek için **yapılandırma (çalışan düğümü başına)** altındaki **vçekirdekler** kaydırıcısını ayarlayın. Düzenleyici düğümünün sanal çekirdekleri bağımsız olarak ayarlanabilir. **Yapılandırma (düzenleyici düğümü)** altında **vçekirdekler** kaydırıcısını ayarlayın.
 

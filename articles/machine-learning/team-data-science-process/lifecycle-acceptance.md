@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: f2294ccb1d958b229a71e45bb502b8134d8d5c7f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93305665"
 ---
 # <a name="customer-acceptance-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Işlem yaşam döngüsünün müşteri kabul aşaması
@@ -34,13 +34,13 @@ TDSP yaşam döngüsünün görsel bir gösterimi aşağıda verilmiştir:
 
 
 ## <a name="goal"></a>Hedef
-**Proje teslim edilebilirleri Sonlandır** : işlem hattının, modelin ve bir üretim ortamındaki dağıtımının müşterinin hedeflerini karşıladığından emin olun.
+**Proje teslim edilebilirleri Sonlandır**: işlem hattının, modelin ve bir üretim ortamındaki dağıtımının müşterinin hedeflerini karşıladığından emin olun.
 
 ## <a name="how-to-do-it"></a>Nasıl yapılır?
 Bu aşamada belirtilen iki ana görev vardır:
 
-   * **Sistem doğrulaması** : dağıtılan modelin ve işlem hattının müşterinin gereksinimlerini karşıladığını onaylayın.
-   * **Proje el ile** : projeyi üretimde çalıştırmaya devam eden varlığa bırakın.
+   * **Sistem doğrulaması**: dağıtılan modelin ve işlem hattının müşterinin gereksinimlerini karşıladığını onaylayın.
+   * **Proje el ile**: projeyi üretimde çalıştırmaya devam eden varlığa bırakın.
 
 Müşteri, sistemin kendi iş gereksinimlerini karşıladığını ve sistemin, istemci uygulaması tarafından kullanılmak üzere uygulamayı üretime dağıtmak için kabul edilebilir doğrulukla soruların yanıt verdiği doğrulaması gerekir. Tüm belgeler sonlandırılır ve gözden geçirilir. Proje, işlemlerden sorumlu varlığa devredilmiştir. Bu varlık, örneğin, bir BT veya müşteri veri bilimi ekibi ya da müşterinin üretimde sistem çalıştırmasından sorumlu bir aracı olabilir. 
 

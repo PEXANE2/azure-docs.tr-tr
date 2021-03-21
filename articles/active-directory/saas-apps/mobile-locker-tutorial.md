@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/24/2020
 ms.author: jeedes
 ms.openlocfilehash: 9c98071695d16b8a5e6deeaefc5e485cbc7c8aa4
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92521153"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mobile-locker"></a>Öğretici: mobil dolap ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -56,7 +56,7 @@ Mobil dolap 'ın Azure AD ile tümleştirilmesini yapılandırmak için, Galerid
 
 ## <a name="configure-and-test-azure-ad-sso-for-mobile-locker"></a>Mobil dolap için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu mobil dolap ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve mobil dolap içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu mobil dolap ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve mobil dolap içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu mobil dolap ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 

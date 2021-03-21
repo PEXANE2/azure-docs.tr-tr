@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/26/2017
 ms.author: abhisram
 ms.openlocfilehash: ebaedb5369f3b39372262bfde526706e8d069418
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98789625"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>Reliable Actors için tanılama ve performans izlemesi
@@ -23,7 +23,7 @@ EventSource olaylarını toplama ve/veya görüntüleme konusunda yardımcı ola
 ### <a name="keywords"></a>Anahtar sözcükler
 Reliable Actors EventSource 'e ait olan tüm olaylar bir veya daha fazla anahtar sözcük ile ilişkilendirilir. Bu, toplanan olayların filtrelenmesini mümkün bir şekilde sunar. Aşağıdaki anahtar sözcük bitleri tanımlanmıştır.
 
-| Sürümleri | Açıklama |
+| Sürümleri | Description |
 | --- | --- |
 | 0x1 |Yapı aktör çalışma zamanının işlemini özetleyen önemli olaylar kümesi. |
 | 0x2 |Aktör yöntemi çağrılarını tanımlayan olay kümesi. Daha fazla bilgi için [aktörlerin giriş konusuna](service-fabric-reliable-actors-introduction.md)bakın. |
@@ -83,7 +83,7 @@ Yukarıdaki örnekte, `ivoicemailboxactor.leavemessageasync` Yöntem adı, `2` �
 ### <a name="actor-method-events-and-performance-counters"></a>Aktör yöntemi olayları ve performans sayaçları
 Reliable Actors Runtime, [aktör yöntemleriyle](service-fabric-reliable-actors-introduction.md)ilgili aşağıdaki olayları yayar.
 
-| Olay adı | Olay Kimliği | Level | Sözcükle | Açıklama |
+| Olay adı | Olay Kimliği | Level | Sözcükle | Description |
 | --- | --- | --- | --- | --- |
 | ActorMethodStart |7 |Ayrıntılı |0x2 |Aktör çalışma zamanı bir aktör yöntemi çağırmak için. |
 | ActorMethodStop |8 |Ayrıntılı |0x2 |Aktör yöntemi yürütmeyi bitirdi. Diğer bir deyişle, çalışma zamanının aktör metoduna zaman uyumsuz çağrısı döndürülür ve aktör yöntemi tarafından döndürülen görev tamamlanmıştır. |
@@ -91,7 +91,7 @@ Reliable Actors Runtime, [aktör yöntemleriyle](service-fabric-reliable-actors-
 
 Reliable Actors Runtime, aktör yöntemlerinin yürütülmesi ile ilgili aşağıdaki performans sayaçlarını yayımlar.
 
-| Kategori adı | Sayaç adı | Açıklama |
+| Kategori adı | Sayaç adı | Description |
 | --- | --- | --- |
 | Service Fabric aktör yöntemi |Saniyedeki çağırma sayısı |Aktör hizmeti metodunun saniye başına çağrılme sayısı |
 | Service Fabric aktör yöntemi |Çağrı başına ortalama milisaniye |Aktör hizmeti yönteminin yürütülmesi için harcanan süre (milisaniye) |
@@ -100,13 +100,13 @@ Reliable Actors Runtime, aktör yöntemlerinin yürütülmesi ile ilgili aşağ�
 ### <a name="concurrency-events-and-performance-counters"></a>Eşzamanlılık olayları ve performans sayaçları
 Reliable Actors Runtime [eşzamanlılık](service-fabric-reliable-actors-introduction.md#concurrency)ile ilgili aşağıdaki olayları yayar.
 
-| Olay adı | Olay Kimliği | Level | Sözcükle | Açıklama |
+| Olay adı | Olay Kimliği | Level | Sözcükle | Description |
 | --- | --- | --- | --- | --- |
 | ActorMethodCallsWaitingForLock |12 |Ayrıntılı |0x8 |Bu olay, bir aktör içindeki her yeni bir öğenin başlangıcında yazılır. Bu, çift tabanlı eşzamanlılık uygulayan aktör başına kilidi almak için bekleyen, bekleyen aktör çağrılarının sayısını içerir. |
 
 Reliable Actors Runtime eşzamanlılık ile ilgili aşağıdaki performans sayaçlarını yayınlar.
 
-| Kategori adı | Sayaç adı | Açıklama |
+| Kategori adı | Sayaç adı | Description |
 | --- | --- | --- |
 | Aktör Service Fabric |aktör kilidi için bekleyen aktör çağrısı sayısı |Etkinleştirme başına eşzamanlılık uygulayan, aktör başına kilit elde etmek için bekleyen aktör çağrısı sayısı |
 | Aktör Service Fabric |Kilit bekleme başına ortalama milisaniye |Çift tabanlı eşzamanlılık uygulayan aktör başına kilidi almak için geçen süre (milisaniye cinsinden) |
@@ -115,14 +115,14 @@ Reliable Actors Runtime eşzamanlılık ile ilgili aşağıdaki performans saya�
 ### <a name="actor-state-management-events-and-performance-counters"></a>Aktör durumu yönetim olayları ve performans sayaçları
 Reliable Actors Runtime, [aktör durumu yönetimiyle](service-fabric-reliable-actors-state-management.md)ilgili aşağıdaki olayları yayar.
 
-| Olay adı | Olay Kimliği | Level | Sözcükle | Açıklama |
+| Olay adı | Olay Kimliği | Level | Sözcükle | Description |
 | --- | --- | --- | --- | --- |
 | ActorSaveStateStart |10 |Ayrıntılı |4, |Aktör çalışma zamanı aktör durumunu kaydetmek için kullanılır. |
 | ActorSaveStateStop |11 |Ayrıntılı |4, |Aktör çalışma zamanı aktör durumunu kaydetmeyi tamamladı. |
 
 Reliable Actors Runtime, aktör durumu yönetimiyle ilgili aşağıdaki performans sayaçlarını yayınlar.
 
-| Kategori adı | Sayaç adı | Açıklama |
+| Kategori adı | Sayaç adı | Description |
 | --- | --- | --- |
 | Aktör Service Fabric |Durum kaydetme işlemi başına ortalama milisaniye |Aktör durumunu milisaniye olarak kaydetmek için geçen süre |
 | Aktör Service Fabric |Yük durumu işlemi başına ortalama milisaniye |Aktör durumu yükleme için harcanan süre (milisaniye) |
@@ -130,7 +130,7 @@ Reliable Actors Runtime, aktör durumu yönetimiyle ilgili aşağıdaki performa
 ### <a name="events-related-to-actor-replicas"></a>Aktör çoğaltmalarıyla ilgili olaylar
 Reliable Actors Runtime, [aktör çoğaltmalarıyla](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors)ilgili aşağıdaki olayları yayar.
 
-| Olay adı | Olay Kimliği | Level | Sözcükle | Açıklama |
+| Olay adı | Olay Kimliği | Level | Sözcükle | Description |
 | --- | --- | --- | --- | --- |
 | Replicachangeroletoprımary |1 |Bilgilendirici |0x1 |Aktör çoğaltma rolü birincil olarak değiştirildi. Bu, bu bölümün aktörleri bu çoğaltma içinde oluşturulacak anlamına gelir. |
 | ReplicaChangeRoleFromPrimary |2 |Bilgilendirici |0x1 |Aktör çoğaltma rolü birincil olmayan olarak değiştirildi. Bu, bu bölümün aktörlerin artık bu çoğaltma içinde oluşturulmayacağı anlamına gelir. Bu çoğaltma içinde önceden oluşturulmuş aktörler için yeni istek teslim edilecek. Tüm sürmekte olan istekler tamamlandıktan sonra aktörler yok edilir. |
@@ -138,21 +138,21 @@ Reliable Actors Runtime, [aktör çoğaltmalarıyla](service-fabric-reliable-act
 ### <a name="actor-activation-and-deactivation-events-and-performance-counters"></a>Aktör etkinleştirme ve devre dışı bırakma olayları ve performans sayaçları
 Reliable Actors Runtime, [aktör etkinleştirme ve devre dışı bırakma](service-fabric-reliable-actors-lifecycle.md)ile ilgili aşağıdaki olayları yayar.
 
-| Olay adı | Olay Kimliği | Level | Sözcükle | Açıklama |
+| Olay adı | Olay Kimliği | Level | Sözcükle | Description |
 | --- | --- | --- | --- | --- |
 | ActorActivated |5 |Bilgilendirici |0x1 |Aktör etkinleştirildi. |
 | Actora devre dışı |6 |Bilgilendirici |0x1 |Aktör devre dışı bırakıldı. |
 
 Reliable Actors Runtime, aktör etkinleştirme ve devre dışı bırakma ile ilgili aşağıdaki performans sayaçlarını yayınlar.
 
-| Kategori adı | Sayaç adı | Açıklama |
+| Kategori adı | Sayaç adı | Description |
 | --- | --- | --- |
 | Aktör Service Fabric |Ortalama OnActivateAsync milisaniyesi |OnActivateAsync yönteminin yürütülmesi için harcanan süre (milisaniye) |
 
 ### <a name="actor-request-processing-performance-counters"></a>Aktör isteği işleme performans sayaçları
 İstemci bir aktör proxy nesnesi aracılığıyla bir yöntemi çağırdığında, ağ üzerinden aktör hizmetine bir istek iletisi gönderilmesine neden olur. Hizmet, istek iletisini işler ve istemciye geri yanıt gönderir. Reliable Actors Runtime, aktör isteği işlemeyle ilgili aşağıdaki performans sayaçlarını yayınlar.
 
-| Kategori adı | Sayaç adı | Açıklama |
+| Kategori adı | Sayaç adı | Description |
 | --- | --- | --- |
 | Aktör Service Fabric |bekleyen istek sayısı |Hizmette işlenmekte olan istek sayısı |
 | Aktör Service Fabric |İstek başına ortalama milisaniye |Bir isteği işlemek için hizmete göre geçen süre (milisaniye cinsinden) |

@@ -18,10 +18,10 @@ ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: c3443cb73e85fc69349e7293597a5f4a723959d3
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93130060"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Öğretici: sertifikalarla Azure Active Directory Raporlama API 'sini kullanarak veri edinme
@@ -34,7 +34,7 @@ Bu öğreticide, raporlama için MS Graph API erişmek üzere bir test sertifika
 
 1. Oturum açma verilerine erişmek için Premium (P1/P2) lisansına sahip bir Azure Active Directory kiracınız olduğundan emin olun. Azure Active Directory sürümünüzü yükseltmek için bkz. [Azure Active Directory Premium kullanmaya](../fundamentals/active-directory-get-started-premium.md) başlama. Yükseltmeden önce herhangi bir etkinlik veriniz yoksa, Premium bir lisansa yükselttikten sonra verilerin raporlarda gösterilmesi birkaç gün sürecek şekilde değişir. 
 
-2. Kiracı için **genel yönetici** , **Güvenlik Yöneticisi** , **güvenlik okuyucusu** veya **rapor okuyucu** rolünde bir kullanıcı hesabı oluşturun veya bu hesaba geçiş yapın. 
+2. Kiracı için **genel yönetici**, **Güvenlik Yöneticisi**, **güvenlik okuyucusu** veya **rapor okuyucu** rolünde bir kullanıcı hesabı oluşturun veya bu hesaba geçiş yapın. 
 
 3. [Azure Active Directory Raporlama API 'sine erişmek için önkoşulları](howto-configure-prerequisites-for-reporting-api.md)doldurun. 
 
@@ -62,11 +62,11 @@ Bu öğreticide, raporlama için MS Graph API erişmek üzere bir test sertifika
 
 ## <a name="get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Sertifikalarla Azure Active Directory raporlama API’sini kullanarak veri alma
 
-1. [Azure Portal](https://portal.azure.com)gidin, **Azure Active Directory** ' i seçin ve **uygulama kayıtları** ' yı seçin ve listeden uygulamanızı seçin. 
+1. [Azure Portal](https://portal.azure.com)gidin, **Azure Active Directory**' i seçin ve **uygulama kayıtları** ' yı seçin ve listeden uygulamanızı seçin. 
 
-2. Uygulama kaydı dikey penceresinde **Yönet** bölümünde **Sertifikalar & gizlilikler** ' ı seçin ve **sertifikayı karşıya yükle** ' yi seçin.
+2. Uygulama kaydı dikey penceresinde **Yönet** bölümünde **Sertifikalar & gizlilikler** ' ı seçin ve **sertifikayı karşıya yükle**' yi seçin.
 
-3. Önceki adımdan sertifika dosyasını seçin ve **Ekle** ' yi seçin. 
+3. Önceki adımdan sertifika dosyasını seçin ve **Ekle**' yi seçin. 
 
 4. Uygulama KIMLIĞINI ve uygulamanıza yeni kaydettiğiniz sertifikanın parmak izini göz önünde bulabilirsiniz. Portı bulmak için, portaldaki uygulama sayfanızda, **Yönet** bölümünde **Sertifikalar & gizli** dizileri ' ne gidin. Parmak izi, **Sertifikalar** listesinde olacaktır.
 

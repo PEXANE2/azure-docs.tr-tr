@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: videor, jeevanb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6d4dd6e64053af41d66e3accbb7fc9b21d951fc6
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96860222"
 ---
 # <a name="conditional-access-programmatic-access"></a>Koşullu erişim: programlı erişim
@@ -50,7 +50,7 @@ Bir şablon kullanarak, ön üretim ortamınızda koşullu erişim ilkeleri dağ
 
 - [Microsoft Graph API şablonlarıyla koşullu erişim ilkelerini yapılandırma](https://github.com/Azure-Samples/azure-ad-conditional-access-apis/tree/main/01-configure/templates)
 
-## <a name="test"></a>Test etme
+## <a name="test"></a>Test
 
 Bu örnek, üretim ortamınız gibi bir ortamdan, koşullu erişim ilkelerini bir ortamdan diğerine kopyalayasağlayan onay iş akışlarıyla daha güvenli dağıtım uygulamalarını modeller.
 
@@ -62,7 +62,7 @@ Bu örnek, aşamalı bir dağıtım koşullu erişim ilkelerini Kullanıcı pop�
 
 - [Koşullu erişim ilkelerini, onay iş akışlarıyla üretim ortamlarına dağıtma](https://github.com/Azure-Samples/azure-ad-conditional-access-apis/tree/main/03-deploy)
 
-## <a name="monitor"></a>İzleme
+## <a name="monitor"></a>İzleyici
 
 Bu örnek, zaman içinde koşullu erişim ilkesi değişikliklerini izlemek için bir mekanizma sağlar ve anahtar ilkeleri değiştirildiğinde uyarıları tetikleyebilirsiniz.
 

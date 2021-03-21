@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/11/2020
 ms.author: jeedes
 ms.openlocfilehash: d38ff5c8f33bda5b12f6267e7a8cdf477db6c7d7
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92511452"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pulse-secure-pcs"></a>Öğretici: Pulse Secure BILGISAYARLARıYLA çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -53,7 +53,7 @@ Pulse Secure BILGISAYARLARıNıN Azure AD ile tümleştirilmesini yapılandırma
 
 ## <a name="configure-and-test-azure-ad-sso-for-pulse-secure-pcs"></a>Pulse Secure PC 'ler için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Pulse Secure bilgisayarlarıyla yapılandırın ve test edin. SSO 'nun çalışması için bir Azure AD kullanıcısı ve Pulse Secure PC 'lerde ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Pulse Secure bilgisayarlarıyla yapılandırın ve test edin. SSO 'nun çalışması için bir Azure AD kullanıcısı ve Pulse Secure PC 'lerde ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Pulse Secure BILGISAYARLARıYLA yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
@@ -138,7 +138,7 @@ Aşağıdaki sayfada aşağıdaki adımları gerçekleştirin:
 1. **System-> Configuration-> SAML** 'a gidin
 1. **Yeni meta veri sağlayıcısına** tıklayın
 1. **Ad** metin kutusuna geçerli bir ad sağlayın
-1. İndirilen meta veri XML dosyasını Azure portal 'den **Azure AD meta veri dosyasına**yükleyin.
+1. İndirilen meta veri XML dosyasını Azure portal 'den **Azure AD meta veri dosyasına** yükleyin.
 1. **Imzasız meta verileri kabul et** 'i seçin
 1. Rol **kimlik sağlayıcısı** olarak seç
 1. **Değişiklikleri Kaydet**' e tıklayın.
@@ -156,17 +156,17 @@ Aşağıdaki sayfada aşağıdaki adımları gerçekleştirin:
 
     a. Metin kutusunda **sunucu adı** sağlayın.
 
-    b. **SAML sürüm 2,0** ve **yapılandırma modunu** **meta veriler**olarak seçin.
+    b. **SAML sürüm 2,0** ve **yapılandırma modunu** **meta veriler** olarak seçin.
 
     c. **Connect Secure varlık kimliği** değerini kopyalayın ve Azure Portal **temel SAML yapılandırması** iletişim kutusundaki **tanımlayıcı URL 'si** kutusuna yapıştırın.
 
-    d. **Kimlik sağlayıcısı varlık kimliği açılan listesinden**Azure AD varlık kimliği değeri ' ni seçin.
+    d. **Kimlik sağlayıcısı varlık kimliği açılan listesinden** Azure AD varlık kimliği değeri ' ni seçin.
 
-    e. **Kimlik sağlayıcısı tek Sign-On hizmet URL 'si açılan listesinden**Azure AD oturum açma URL 'si değerini seçin.
+    e. **Kimlik sağlayıcısı tek Sign-On hizmet URL 'si açılan listesinden** Azure AD oturum açma URL 'si değerini seçin.
 
     f. **Çoklu oturum kapatma** isteğe bağlı bir ayardır. Bu seçenek işaretliyse, oturum kapatıldıktan sonra yeni bir kimlik doğrulaması ister. Bu seçenek seçilmezse ve tarayıcıyı kapatmamış olursunuz, kimlik doğrulaması olmadan yeniden bağlanabilirsiniz.
 
-    örneğin: **Istenen AuthN bağlamı sınıfını** **parola** olarak ve **karşılaştırma yöntemini** **tam**olarak seçin.
+    örneğin: **Istenen AuthN bağlamı sınıfını** **parola** olarak ve **karşılaştırma yöntemini** **tam** olarak seçin.
 
     h. **Meta veri geçerliliğini** gün sayısı cinsinden ayarlayın.
     
