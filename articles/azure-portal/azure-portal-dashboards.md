@@ -5,10 +5,10 @@ ms.assetid: ff422f36-47d2-409b-8a19-02e24b03ffe7
 ms.topic: how-to
 ms.date: 03/23/2020
 ms.openlocfilehash: 10c322c9d9d18f7b79a4419bd9efa2e366a5b7c3
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96745834"
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>Azure portalında pano oluşturma ve paylaşma
@@ -117,7 +117,7 @@ Bir panodaki kutucuğu kaldırmak için şu adımları izleyin:
 
 * Kutucuğun sağ üst köşesindeki bağlam menüsünü seçin ve **panodan kaldır**' ı seçin. Veya
 
-* ![ ](./media/azure-portal-dashboards/dashboard-edit-icon.png) **Edit** Özelleştirme modunu girmek için Düzenle simgesini Düzenle ' yi seçin. Kutucuğun sağ üst köşesine gelin, sonra ![ ](./media/azure-portal-dashboards/dashboard-delete-icon.png) kutucuğu panodan kaldırmak için simgeyi Sil simgesini seçin.
+* ![ ](./media/azure-portal-dashboards/dashboard-edit-icon.png)  Özelleştirme modunu girmek için Düzenle simgesini Düzenle ' yi seçin. Kutucuğun sağ üst köşesine gelin, sonra ![ ](./media/azure-portal-dashboards/dashboard-delete-icon.png) kutucuğu panodan kaldırmak için simgeyi Sil simgesini seçin.
 
    ![Panodan kutucuğun nasıl kaldırılacağını gösteren ekran görüntüsü](./media/azure-portal-dashboards/dashboard-delete-tile.png)
 
@@ -127,7 +127,7 @@ Mevcut bir panoyu yeni bir Pano için şablon olarak kullanmak için şu adımla
 
 1. Pano görünümünün kopyalamak istediğiniz panoyu göstermesini sağlayın.
 
-1. Sayfa üstbilgisinde ![ Kopyala simgesini Kopyala ' yı seçin ](./media/azure-portal-dashboards/dashboard-clone.png) **Clone**.
+1. Sayfa üstbilgisinde ![ Kopyala simgesini Kopyala ' yı seçin ](./media/azure-portal-dashboards/dashboard-clone.png) .
 
 1. Panonun **bir kopyası,** *Pano adınızın* kopyası adlı düzenleme modunda açılır. Panoyu yeniden adlandırmak ve özelleştirmek için bu makaledeki yukarıdaki adımları kullanın.
 
@@ -161,7 +161,7 @@ Paylaşılan bir panoyu bulup açmak için şu adımları izleyin:
 
 1. Pano adının yanındaki listeden silmek istediğiniz panoyu seçin.
 
-1. Sayfa üstbilgisindeki Sil simgesini Sil ' i seçin ![ ](./media/azure-portal-dashboards/dashboard-delete-icon.png) **Delete** .
+1. Sayfa üstbilgisindeki Sil simgesini Sil ' i seçin ![ ](./media/azure-portal-dashboards/dashboard-delete-icon.png)  .
 
 1. Özel bir Pano için onay iletişim kutusunda **Tamam** ' ı seçerek panoyu kaldırın. Paylaşılan bir Pano için, onay iletişim kutusunda, yayımlanan panonun artık başkaları tarafından görüntülenemeyeceği onaylanacak onay kutusunu seçin. Ardından **Tamam**'ı seçin.
 

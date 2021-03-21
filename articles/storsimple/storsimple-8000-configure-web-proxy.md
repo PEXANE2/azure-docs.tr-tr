@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/19/2017
 ms.author: alkohli
 ms.openlocfilehash: 48671e7558ea1bd613d33372c96fa3c563407e81
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96017228"
 ---
 # <a name="configure-web-proxy-for-your-storsimple-device"></a>StorSimple cihazınız için Web proxy 'yi yapılandırma
@@ -34,7 +34,7 @@ Web proxy, StorSimple cihazınız için _isteğe bağlı_ bir yapılandırmadır
 1. Önce, Kurulum Sihirbazı veya StorSimple için Windows PowerShell cmdlet 'leri aracılığıyla Web proxy ayarlarını yapılandırırsınız.
 2. Daha sonra, StorSimple için Windows PowerShell cmdlet 'leri aracılığıyla yapılandırılmış Web proxy ayarlarını etkinleştirirsiniz.
 
-Web proxy yapılandırması tamamlandıktan sonra, yapılandırılan Web proxy ayarlarını hem Microsoft Azure StorSimple Aygıt Yöneticisi hizmetinde hem de StorSimple için Windows PowerShell görüntüleyebilirsiniz.
+Web proxy yapılandırması tamamlandıktan sonra, yapılandırılan Web proxy ayarlarını hem Microsoft Azure StorSimple Device Manager hizmetinde hem de StorSimple için Windows PowerShell görüntüleyebilirsiniz.
 
 Bu öğreticiyi okuduktan sonra şunları yapabilirsiniz:
 
@@ -71,7 +71,7 @@ Web proxy yapılandırması adımlarında size rehberlik etmek için Kurulum Sih
 4. Kimlik doğrulama türünü **NTLM**, **temel** veya **none** olarak seçin. Temel, proxy sunucusu yapılandırması için en az güvenli kimlik doğrulamadır. NT LAN Manager (NTLM), bir kullanıcının kimliğini doğrulamak için üç yönlü bir mesajlaşma sistemi (bazen ek bütünlük gerekliyse dördü) kullanan yüksek düzeyde güvenli ve karmaşık bir kimlik doğrulama protokolüdür. Varsayılan kimlik doğrulaması NTLM 'dir. Daha fazla bilgi için bkz. [temel](https://hc.apache.org/httpclient-3.x/authentication.html) ve [NTLM kimlik doğrulaması](https://hc.apache.org/httpclient-3.x/authentication.html). 
    
    > [!IMPORTANT]
-   > **StorSimple Aygıt Yöneticisi hizmetinde, cihazın ara sunucu yapılandırmasında temel veya NTLM kimlik doğrulaması etkinleştirildiğinde cihaz izleme grafikleri çalışmaz. İzleme grafiklerinin çalışması için, kimlik doğrulamasının NONE olarak ayarlandığından emin olmanız gerekir.**
+   > **StorSimple Device Manager hizmetinde, cihazın ara sunucu yapılandırmasında temel veya NTLM kimlik doğrulaması etkinleştirildiğinde cihaz izleme grafikleri çalışmaz. İzleme grafiklerinin çalışması için, kimlik doğrulamasının NONE olarak ayarlandığından emin olmanız gerekir.**
   
 5. Kimlik doğrulamasını etkinleştirdiyseniz, bir **Web Proxy Kullanıcı adı** ve bir **Web proxy parolası** sağlayın. Parolayı da onaylamanız gerekir.
    
@@ -122,7 +122,7 @@ Cihazınızda Web proxy 'sini etkinleştirmek için StorSimple için Windows Pow
 Web proxy ayarları Windows PowerShell arabirimi aracılığıyla yapılandırılır ve Portal içinden değiştirilemez. Ancak, bu yapılandırılan ayarları portalda görüntüleyebilirsiniz. Web proxy 'yi görüntülemek için aşağıdaki adımları gerçekleştirin.
 
 #### <a name="to-view-web-proxy-settings"></a>Web proxy ayarlarını görüntülemek için
-1. **StorSimple aygıt yöneticisi hizmeti > cihazlara** gidin. Bir cihazı seçip tıklatın ve ardından **cihaz ayarları > ağ**' a gidin.
+1. **StorSimple Device Manager hizmeti > cihazlara** gidin. Bir cihazı seçip tıklatın ve ardından **cihaz ayarları > ağ**' a gidin.
 
     ![Ağ seçeneğine tıklayın](./media/storsimple-8000-configure-web-proxy/view-web-proxy-1.png)
 
@@ -151,8 +151,8 @@ Web proxy ayarları yanlış yapılandırılmışsa, StorSimple için Windows Po
 
 > [!NOTE]
 > * Yukarıdaki hata iletileri listesi ayrıntılı değildir.
-> * Web proxy ayarlarıyla ilgili hatalar, StorSimple Aygıt Yöneticisi hizmetinizde Azure portal gösterilmez. Yapılandırma tamamlandıktan sonra Web proxy ile ilgili bir sorun varsa, cihaz durumu klasik portalda **çevrimdışı** olarak değişir. |
+> * Web proxy ayarlarıyla ilgili hatalar, StorSimple Device Manager hizmetinizde Azure portal gösterilmez. Yapılandırma tamamlandıktan sonra Web proxy ile ilgili bir sorun varsa, cihaz durumu klasik portalda **çevrimdışı** olarak değişir. |
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 * Cihazınızı dağıtma veya Web proxy ayarlarını yapılandırma sırasında herhangi bir sorunla karşılaşırsanız, [StorSimple cihaz dağıtımınızda sorun giderme](./storsimple-8000-troubleshoot-deployment.md)bölümüne bakın.
-* StorSimple Aygıt Yöneticisi hizmetini kullanmayı öğrenmek için, StorSimple cihazınızı yönetmek için StorSimple [Aygıt Yöneticisi hizmetini kullanma](storsimple-8000-manager-service-administration.md)bölümüne gidin.
+* StorSimple Device Manager hizmetini kullanmayı öğrenmek için, StorSimple cihazınızı yönetmek için StorSimple [Device Manager hizmetini kullanma](storsimple-8000-manager-service-administration.md)bölümüne gidin.

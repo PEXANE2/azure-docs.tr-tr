@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
 ms.openlocfilehash: 36b3666f12b48468467e76f4c281d58d8018478c
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102098545"
 ---
 # <a name="show-traffic-data-on-the-map-android-sdk"></a>Haritadaki trafik verilerini göster (Android SDK)
@@ -31,7 +31,7 @@ Azure haritalar 'da kullanılabilen iki tür trafik verisi vardır:
 - Olay verileri-oluşturma, yol kapanışları ve kazalardan dolayı gibi şeyler için nokta ve hat tabanlı verilerden oluşur.
 - Akış verileri-yollar üzerindeki trafik akışı hakkında ölçümler sağlar. Genellikle trafik akışı verileri, yolların renklendirmek için kullanılır. Renkler, akışı yavaşlatan, hız sınırına veya başka bir ölçüye göre ne kadar trafik altına göre belirlenir. Haritanın trafik seçeneğine geçirilebilecek dört değer vardır `flow` .
 
-    |Akış değeri | Açıklama|
+    |Akış değeri | Description|
     | :-- | :-- |
     | TrafficFlow. NONE | Harita üzerinde trafik verilerini görüntülemiyor |
     | TrafficFlow. GÖRELI | Yolun serbest akış hızına göre trafik verilerini gösterir |

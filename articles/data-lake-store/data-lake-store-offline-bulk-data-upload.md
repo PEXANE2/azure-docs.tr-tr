@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 940b7ac90f85e0254d59459b70ccc15312cd69f4
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98700848"
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-storage-gen1"></a>Azure Içeri/dışarı aktarma hizmetini kullanarak verilerin çevrimdışı kopyası Data Lake Storage 1.
@@ -19,7 +19,7 @@ Bu makalede, [Azure içeri/dışarı aktarma hizmeti](../import-export/storage-i
 
 Azure Içeri/dışarı aktarma hizmeti, sabit disk sürücülerinizi bir Azure veri merkezine aktararak Azure Blob depolama alanına büyük miktarlarda veri aktarmanıza yardımcı olur.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 

@@ -7,14 +7,14 @@ manager: femila
 ms.service: media-services
 ms.topic: conceptual
 ms.workload: media
-ms.date: 1/14/2020
+ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: e093e22e2f1db3b432fdf328a077e56a8e56d92b
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 915fdcb059d9e7bf9e1853040b90b82a0457652e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102612511"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598414"
 ---
 # <a name="encoding-scenario-based-migration-guidance"></a>Senaryo tabanlı geçiş kılavuzunu kodlama
 
@@ -76,7 +76,7 @@ Daha büyük bir sürümü görmek için aşağıdaki görüntüye tıklayın.
         - Çıkış varlıkları
         - Bir kaynak grubu
         - AMS hesap adı  
-1. İşinizi izlemek için [Event Grid](monitor-events-portal-how-to.md) kullanın.
+1. İşinizi izlemek için [Event Grid](monitoring/monitor-events-portal-how-to.md) kullanın.
 1. İşi gönder.
 
 ## <a name="custom-presets-from-v2-to-v3-encoding"></a>V2 'den v3 kodlamaya özel ön ayarlar

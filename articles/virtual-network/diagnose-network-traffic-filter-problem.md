@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: kumud
 ms.openlocfilehash: 73562d8d32f265fa43ca80d2f8d4f84b1b631ec6
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98223678"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>Bir sanal makine ağ trafiği Filtreleme sorununu Tanıla
@@ -171,7 +171,7 @@ Bu makaledeki [senaryoda](#scenario) sunulan sorunu tanılamak için Azure [port
 | Özellik                | Değer                                                                              |
 |---------                |---------                                                                           |
 | Kaynak                  | Herhangi bir                                                                                |
-| Kaynak bağlantı noktası aralıkları      | Herhangi bir                                                                                |
+| Kaynak bağlantı noktası aralıkları      | Herhangi biri                                                                                |
 | Hedef             | VM 'nin IP adresi, bir IP adresi aralığı veya alt ağdaki tüm adresler. |
 | Hedef bağlantı noktası aralıkları | 80                                                                                 |
 | Protokol                | TCP                                                                                |

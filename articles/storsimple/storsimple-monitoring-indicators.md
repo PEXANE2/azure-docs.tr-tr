@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 97209dca7d30de037dbd21f5cc145b2941060e70
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96015409"
 ---
 # <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>Cihazınızı yönetmek için StorSimple izleme göstergelerini kullanın
@@ -55,13 +55,13 @@ Cihaz veya EBOD Kasası için ön panelde bulunan LED 'ler tarafından belirtile
 
 | Sistem gücü | Modül hatası | Mantıksal hata | Alarm | Durum |
 | --- | --- | --- | --- | --- |
-| Red-, |KAPALI |KAPALI |YOK |AC güç kaybı, yedekleme gücüyle çalışma veya AC gücü açık ve denetleyici modülleri kaldırılmıştır. |
-| Yeşil |AÇIK |AÇIK |YOK |Ops panel güç açma (5 s) test durumu |
-| Yeşil |KAPALI |KAPALI |YOK |Power On, tüm işlevler iyi |
-| Yeşil |AÇIK |YOK |PCM hata LED 'Leri, fan hata LED 'Leri |Herhangi bir PCM hatası, fan hatası, sıcaklığın üzerinde veya altında |
-| Yeşil |AÇIK |YOK |G/ç Modülü LED 'Leri |Herhangi bir denetleyici modülü hatası |
+| Red-, |KAPALI |KAPALI |Yok |AC güç kaybı, yedekleme gücüyle çalışma veya AC gücü açık ve denetleyici modülleri kaldırılmıştır. |
+| Yeşil |AÇIK |AÇIK |Yok |Ops panel güç açma (5 s) test durumu |
+| Yeşil |KAPALI |KAPALI |Yok |Power On, tüm işlevler iyi |
+| Yeşil |AÇIK |Yok |PCM hata LED 'Leri, fan hata LED 'Leri |Herhangi bir PCM hatası, fan hatası, sıcaklığın üzerinde veya altında |
+| Yeşil |AÇIK |Yok |G/ç Modülü LED 'Leri |Herhangi bir denetleyici modülü hatası |
 | Yeşil |AÇIK |Yok |Yok |Kasa mantığı hatası |
-| Yeşil |In |YOK |Modül durumu denetleyici modülünde ışığı. PCM hata LED 'Leri, fan hata LED 'Leri |Bilinmeyen denetleyici modülü türü yüklendi, ı2C veri yolu hatası, denetleyici modülü önemli ürün verileri (VPD) yapılandırma hatası |
+| Yeşil |In |Yok |Modül durumu denetleyici modülünde ışığı. PCM hata LED 'Leri, fan hata LED 'Leri |Bilinmeyen denetleyici modülü türü yüklendi, ı2C veri yolu hatası, denetleyici modülü önemli ürün verileri (VPD) yapılandırma hatası |
 
 ## <a name="power-cooling-module-pcm-indicator-leds"></a>Güç soğutma modülü (PCM) göstergesi LED 'Leri
 Güç soğutma modülü (PCM) göstergesi LED 'Leri, her bir PCM modülündeki birincil kutunun arkasında veya EBOD Kasası bulunabilir. Bu konuda, StorSimple cihazınızın durumunu izlemek için aşağıdaki LED 'ler nasıl kullanılacağı ele alınmaktadır.  
@@ -91,7 +91,7 @@ PCM 'nin durumu,, LED panelinde belirtilir. Cihaz PCM LED paneli altı LED 'e sa
 | AC gücü yok (e-kasa) |KAPALI |KAPALI |KAPALI |KAPALI |
 | AC gücü yok (yalnızca bu PCM) |KAPALI |AÇIK |KAPALI |AÇIK |
 | AC mevcut PCM-Tamam |AÇIK |KAPALI |KAPALI |KAPALI |
-| PCM başarısız (fan başarısız) |KAPALI |KAPALI |AÇIK |YOK |
+| PCM başarısız (fan başarısız) |KAPALI |KAPALI |AÇIK |Yok |
 | PCM hatası (amp üzerinde, voltaj üzeri, güncel) |KAPALI |AÇIK |AÇIK |AÇIK |
 | PCM (tolerans dışı fan) |AÇIK |KAPALI |KAPALI |AÇIK |
 | Bekleme modu |Yanıp sönen |KAPALI |KAPALI |KAPALI |

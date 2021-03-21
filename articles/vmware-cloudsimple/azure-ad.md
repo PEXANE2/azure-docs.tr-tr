@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: f55a0f52f5e028f9cbf7a9fabbb3c24ad43c3800
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97898615"
 ---
 # <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>CloudSimple özel bulutu 'nda vCenter için kimlik sağlayıcısı olarak Azure AD kullanma
@@ -32,7 +32,7 @@ Bu kılavuzda, Azure AD 'yi kimlik kaynağı olarak ayarlamak için gereken gör
 
 Azure AD, Microsoft çok kiracılı, bulut tabanlı dizin ve kimlik yönetimi hizmetidir.  Azure AD, kullanıcıların kimliğini doğrulamak ve Azure 'da farklı hizmetlere erişmek için ölçeklenebilir, tutarlı ve güvenilir bir kimlik doğrulama mekanizması sağlar.  Ayrıca, Azure AD 'yi bir kimlik doğrulama/kimlik kaynağı olarak kullanmak üzere herhangi bir üçüncü taraf hizmeti için Güvenli LDAP hizmetleri sağlar.  Azure AD, özel bulutu yöneten kullanıcılar için özel bulutunuzun erişimine izin vermek üzere kullanılabilen temel dizin hizmetlerini, Gelişmiş kimlik idare ve uygulama erişim yönetimini birleştirir.
 
-Azure AD 'yi vCenter ile bir kimlik kaynağı olarak kullanmak için Azure AD ve Azure AD etki alanı Hizmetleri 'ni ayarlamanız gerekir. Aşağıdaki yönergeleri izleyin:
+Azure AD 'yi vCenter ile bir kimlik kaynağı olarak kullanmak için Azure AD ve Azure AD etki alanı Hizmetleri 'ni ayarlamanız gerekir. Şu yönergeleri izleyin:
 
 1. [Azure AD ve Azure AD etki alanı Hizmetleri 'ni ayarlama](#set-up-azure-ad-and-azure-ad-domain-services)
 2. [Özel bulut vCenter 'unuzda bir kimlik kaynağı ayarlama](#set-up-an-identity-source-on-your-private-cloud-vcenter)

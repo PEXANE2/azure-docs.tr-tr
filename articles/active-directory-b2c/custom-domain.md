@@ -8,20 +8,22 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/17/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 869bd7b02186873f490d324cec863c7f26ee8469
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 2de419885938b27ebce4a934db5ef966965b3dbd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103555691"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580173"
 ---
 # <a name="enable-custom-domains-for-azure-active-directory-b2c"></a>Azure Active Directory B2C için özel etki alanlarını etkinleştir
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
+
+[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 Bu makalede, Azure Active Directory B2C (Azure AD B2C) için yeniden yönlendirme URL 'Lerinde özel etki alanlarının nasıl etkinleştirileceği açıklanır. Uygulamanızla özel bir etki alanı kullanmak, daha sorunsuz bir kullanıcı deneyimi sağlar. Kullanıcının perspektifinden, *kiracı adı>. b2clogin.com<* Azure AD B2C varsayılan etki alanına yönlendirmek yerine, oturum açma işlemi sırasında etki alanında kalırlar.
 
@@ -48,7 +50,7 @@ Aşağıdaki diyagramda Azure ön kapı tümleştirmesi gösterilmektedir:
 
 - Birden çok özel etki alanı ayarlayabilirsiniz. Desteklenen en fazla özel etki alanı sayısı için bkz. Azure [ad hizmet sınırları ve kısıtlamaları](../active-directory/enterprise-users/directory-service-limits-restrictions.md) Azure AD B2C ve [Azure aboneliği ve hizmet limitleri, Kotalar](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-front-door-service-limits) ve Azure ön kapılarına yönelik kısıtlamalar.
 - Azure ön kapısı ayrı bir Azure hizmetidir, bu nedenle ek ücretler uygulanır. Daha fazla bilgi için bkz. [ön kapı fiyatlandırması](https://azure.microsoft.com/pricing/details/frontdoor).
-- Şu anda Azure ön kapılı [Web uygulaması güvenlik duvarı](../web-application-firewall/afds/afds-overview.md) özelliği desteklenmez.
+- Azure ön kapısının [Web uygulaması güvenlik duvarını](../web-application-firewall/afds/afds-overview.md)kullanmak için, güvenlik duvarı yapılandırmanızın ve kurallarınızın Azure AD B2C Kullanıcı akışlarınızla doğru şekilde çalıştığını onaylamanız gerekir.
 - Özel etki alanlarını yapılandırdıktan sonra, kullanıcılar *<kiracı adı>. b2clogin.com* Azure AD B2C varsayılan etki alanı adına erişebilir (özel bir ilke kullanmıyorsanız ve [erişimi engellemeniz](#block-access-to-the-default-domain-name)mümkün değilse).
 - Birden çok uygulamanız varsa, tarayıcı Azure AD B2C oturumu şu anda kullanılmakta olan etki alanı adının altında depoladığından, tümünü özel etki alanına geçirin.
 
@@ -193,7 +195,7 @@ Değiştir:
 - ilke adını ilke adınızla **adlandırın** . [Azure AD B2C ilkeleri hakkında daha fazla bilgi edinin](technical-overview.md#identity-experiences-user-flows-or-custom-policies). 
 
 
-[SAML hizmeti sağlayıcısı](connect-with-saml-service-providers.md) meta verileri aşağıdaki gibi görünebilir: 
+[SAML hizmeti sağlayıcısı](./saml-service-provider.md) meta verileri aşağıdaki gibi görünebilir: 
 
 ```html
 https://custom-domain-name/tenant-name/policy-name/Samlp/metadata
@@ -258,12 +260,10 @@ URL 'YI kopyalayın, etki alanı adını el ile değiştirin ve ardından taray�
 
 Azure ön kapısı kullanıcının özgün IP adresini geçirir. Bu, denetim raporlama veya özel ilkenizde göreceğiniz IP adresidir.
 
-### <a name="can-i-use-a-third-party-wab-application-firewall-waf-with-b2c"></a>B2C ile bir üçüncü taraf WAB uygulaması güvenlik duvarını (WAF) kullanabilir miyim?
+### <a name="can-i-use-a-third-party-web-application-firewall-waf-with-b2c"></a>B2C ile bir üçüncü taraf Web uygulaması güvenlik duvarını (WAF) kullanabilir miyim?
 
-Şu anda, Azure AD B2C özel bir etki alanını yalnızca Azure ön kapısının kullanımı üzerinden destekler. Azure ön kapısının önüne başka bir WAF eklemeyin.
-
+Azure ön kapısının önünde kendi Web uygulaması güvenlik duvarını kullanmak için, her şeyin Azure AD B2C Kullanıcı akışlarınızla doğru şekilde çalıştığından emin olmanız ve doğrulamanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [OAuth yetkilendirme istekleri](protocols-overview.md)hakkında bilgi edinin.
-

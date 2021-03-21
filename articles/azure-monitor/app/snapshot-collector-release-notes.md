@@ -6,10 +6,10 @@ author: pharring
 ms.author: pharring
 ms.date: 11/10/2020
 ms.openlocfilehash: 4a787c6e2a9b59874f965a2bbcebea9ce02d8082
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97093269"
 ---
 # <a name="release-notes-for-microsoftapplicationinsightssnapshotcollector"></a>Microsoft. ApplicationInsights. SnapshotCollector için sürüm notları
@@ -67,10 +67,10 @@ Birkaç yüksek etki sorunu gidermek için bir nokta yayını.
 
 ## <a name="135"></a>[1.3.5](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.5)
 - Sogeign bulutları için destek ekleme (eski sürümler, sogeign bulutlarında çalışmaz)
-- AddSnapshotCollector () kullanılarak anlık görüntü toplayıcısı ekleme daha kolay hale getirilir. [Burada](./snapshot-debugger-appservice.md)daha fazla bilgi bulabilirsiniz.
+- AddSnapshotCollector () kullanılarak anlık görüntü toplayıcısı ekleme daha kolay hale getirilir. [Burada](./snapshot-debugger-appservice.md) daha fazla bilgi bulabilirsiniz.
 - Blob bloklarını doğrulamak için FıMMA MD5 ayarını kullanın. Bu, işletim sistemi FIPS uyumlu moda ayarlandığında kullanılamayan varsayılan .NET MD5 şifre algoritmasını önler.
 - İşlev çağrılarını en iyi duruma getirirken .NET Framework çerçevelerini yoksayın. Bu davranış, DeoptimizeIgnoredModules yapılandırma ayarı tarafından denetlenebilir.
-- Birden `DeoptimizeMethodCount` fazla işlev çağrısının en iyi duruma getirilmesini sağlayan yapılandırma ayarı ekleyin. Burada daha fazla bilgi bulabilirsiniz
+- Birden `DeoptimizeMethodCount` fazla işlev çağrısının en iyi duruma getirilmesini sağlayan yapılandırma ayarı ekleyin. Buradan daha fazla bilgi
 
 ## <a name="134"></a>[1.3.4](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.4)
 - Yapılandırılmış Izleme anahtarlarına izin verin.

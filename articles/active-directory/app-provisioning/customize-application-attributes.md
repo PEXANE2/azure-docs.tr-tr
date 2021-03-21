@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/08/2021
+ms.date: 03/17/2021
 ms.author: kenwith
-ms.openlocfilehash: 100f66d6217533ff6eba7881f938e877b98c735e
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 738b89ee9347a25e2d24369a48e966f0bec6daf0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100091117"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579476"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Öğretici-Kullanıcı sağlama özniteliğini özelleştirme-Azure Active Directory SaaS uygulamaları için eşlemeler
 
@@ -113,13 +113,13 @@ Ancak, bazı uygulamalar özel öznitelikleri destekler ve Azure AD sağlama hiz
 - ServiceNow
 - Active Directory/Workday için Workday Azure Active Directory
 - Azure Active Directory için Active Directory/başarılı faktörlerin başarılı olması
-- Azure Active Directory ([Azure AD Graph API varsayılan öznitelikleri](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity) ve özel dizin uzantıları desteklenir)
+- Azure Active Directory ([Azure AD Graph API varsayılan öznitelikleri](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity) ve özel dizin uzantıları desteklenir). [Uzantı oluşturma](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning-sync-attributes-for-mapping#create-an-extension-attribute-on-a-cloud-only-user) ve [bilinen sınırlamalar](https://docs.microsoft.com/azure/active-directory/app-provisioning/known-issues)hakkında daha fazla bilgi edinin. 
 - [SCIM 2,0](https://tools.ietf.org/html/rfc7643) ' i destekleyen uygulamalar
 - Workday veya başarılı faktörlerdeki Azure Active Directory geri yazma için, desteklenen öznitelikler (XPATH ve JSONPath) için ilgili meta verileri güncelleştirmek desteklenir, ancak varsayılan şemaya dahil olanların ötesinde yeni iş günü veya başarılı etken öznitelikleri eklemek desteklenmez
 
 
 > [!NOTE]
-> Desteklenen özniteliklerin listesinin düzenlenmesiyle yalnızca, uygulamalarının ve sistemlerinin şemasını özelleştiren Yöneticiler için önerilir ve özel özniteliklerinin nasıl tanımlandıkları hakkında ilk bilgiye sahip olmanız gerekir. Bu, bazen bir uygulama veya sistem tarafından sunulan API 'Ler ve geliştirici araçları hakkında daha fazla benzerlik gerektirir. Desteklenen özniteliklerin listesini düzenleme özelliği varsayılan olarak kilitlidir, ancak müşteriler aşağıdaki URL 'ye giderek yeteneği etkinleştirebilir: https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true . Daha sonra, [yukarıda](#editing-the-list-of-supported-attributes)açıklanan öznitelik listesini görüntülemek için uygulamanıza gidebilirsiniz. 
+> Desteklenen özniteliklerin listesinin düzenlenmesiyle, yalnızca uygulama ve sistemlerinin şemasını özelleştiren Yöneticiler önerilir ve özel özniteliklerinin nasıl tanımlandığınıza veya bir kaynak özniteliğin Azure Portal Kullanıcı arabiriminde otomatik olarak gösterilmemesiyle ilgili bilgi sahibi olur. Bu, bazen bir uygulama veya sistem tarafından sunulan API 'Ler ve geliştirici araçları hakkında daha fazla benzerlik gerektirir. Desteklenen özniteliklerin listesini düzenleme özelliği varsayılan olarak kilitlidir, ancak müşteriler aşağıdaki URL 'ye giderek yeteneği etkinleştirebilir: https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true . Daha sonra, [yukarıda](#editing-the-list-of-supported-attributes)açıklanan öznitelik listesini görüntülemek için uygulamanıza gidebilirsiniz. 
 
 Desteklenen özniteliklerin listesi düzenlenirken aşağıdaki özellikler sağlanır:
 

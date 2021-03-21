@@ -15,10 +15,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 42afa073da9197c12e4cbd316d311a7699d9a95f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96013045"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Azure portalda etkinlik raporlarını bulma
@@ -147,7 +147,7 @@ Algılanan risk algılamaları hakkındaki raporlara, [Azure portal](https://por
 
 #### <a name="symptoms"></a>Belirtiler 
 
-Etkinlik günlüklerini (denetim veya oturum açma) indirdim ve seçtiğim süre için tüm kayıtları göremiyorum. Neden mi? 
+Etkinlik günlüklerini (denetim veya oturum açma) indirdim ve seçtiğim süre için tüm kayıtları göremiyorum. Neden? 
 
  ![Ekran görüntüsü etkinlik raporundaki Indir düğmesini gösterir.](./media/troubleshoot-missing-data-download/01.png)
  
@@ -205,7 +205,7 @@ Eylemler, etkinlik günlüklerinde hemen görünmez. Aşağıdaki tabloda etkinl
 
 #### <a name="symptoms"></a>Belirtiler
 
-Azure portalda 30 günden daha eski oturum açma ve denetim verilerini görüntüleyemiyorum. Neden mi? 
+Azure portalda 30 günden daha eski oturum açma ve denetim verilerini görüntüleyemiyorum. Neden? 
 
  ![Ekran görüntüsü Tarih menüsünü gösterir.](./media/troubleshoot-missing-audit-data/03.png)
 

@@ -12,10 +12,10 @@ ms.date: 10/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f962bf131b87f17712186145b8c8b8e6090f7002
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98730666"
 ---
 # <a name="tutorial-to-deploy-f5-big-ip-virtual-edition-vm-in-azure-iaas-for-secure-hybrid-access"></a>Güvenli karma erişim için Azure IaaS 'de F5 BIG-IP Virtual Edition VM dağıtma öğreticisi
@@ -26,7 +26,7 @@ Bu öğretici, Azure IaaS 'de büyük IP Vitürel sürümlerini (VE) dağıtman�
 
 - Yeni büyük IP sistem güncelleştirmelerini ve düzeltmeleri test etmek için kullanılan hazırlama örneği
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Önceki F5 büyük IP deneyimi veya bilgi gerekli değildir, ancak [F5 büyük IP terminolojisini](https://www.f5.com/services/resources/glossary)alıştırarak kendiniz öneririz. SHA için Azure 'da büyük IP dağıtımı şunları gerektirir:
 
@@ -83,7 +83,7 @@ BÜYÜK IP, farklı topolojilerde dağıtılabilir. Bu kılavuz, tek bir ağ ara
  |Kaynak grubu | Mevcut Azure Kaynak grubu büyük IP sanal makinesi içine dağıtılacak veya bir tane oluşturacak. DC ve IIS sanal makinelerinizin aynı kaynak grubu olmalıdır|
  | **Örnek ayrıntıları**|  |
  |VM Adı| Örnek büyük-IP-VM |
- |Bölge | BÜYÜK IP-VM için hedef Azure coğrafi |
+ |Region | BÜYÜK IP-VM için hedef Azure coğrafi |
  |Kullanılabilirlik seçenekleri| Yalnızca üretimde VM kullanılıyorsa etkinleştirin|
  |Görüntü| F5 BIG-IP VE-ALL (KLG, 2 önyükleme konumu)|
  |Azure Spot örneği| Hayır ancak uygunsa etkinleştirmek için ücretsiz |
@@ -107,7 +107,7 @@ BÜYÜK IP, farklı topolojilerde dağıtılabilir. Bu kılavuz, tek bir ağ ara
  |NIC ağ güvenlik grubu| Önceki adımlarda seçtiğiniz Azure alt ağı zaten bir ağ güvenlik grubu (NSG) ile ilişkilendirilmişse hiçbiri ' ni seçin; Aksi takdirde temel seçin|
  |Ağı hızlandırma| Kapalı |
  |**Yük dengeleme**|     |
- |Yük Dengeleme VM 'si| Hayır|
+ |Yük Dengeleme VM 'si| No|
 
 10. **İleri: yönetim** ' i seçin ve bu ayarları doldurun.
 

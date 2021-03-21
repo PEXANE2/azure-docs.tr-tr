@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 01/17/2021
 ms.openlocfilehash: b6ea3e762ad098e373baa8487d8926105820f226
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101666514"
 ---
 # <a name="classification-insights-about-your-data-from-azure-purview"></a>Azure purview 'daki verilerinize ilişkin öngörüleri sınıflandırma
@@ -62,7 +62,7 @@ Purview, Microsoft 365 ile aynı hassas bilgi türlerini kullanır ve bu, mevcut
 
    Ana **Sınıflandırma öngörüleri** sayfasında aşağıdaki bölgeler görüntülenir:
 
-   |Alan  |Açıklama  |
+   |Alan  |Description  |
    |---------|---------|
    |**Sınıflandırmalarla kaynaklara genel bakış**     |Şunları sağlayan kutucukları görüntüler: <br>-Verilerinizde bulunan aboneliklerin sayısı <br>-Verilerinizde bulunan benzersiz sınıflandırmaların sayısı <br>-Bulunan sınıflandırılmış kaynakların sayısı <br>-Bulunan sınıflandırılmış dosya sayısı <br>-Bulunan sınıflandırılmış tablo sayısı         |
    |**Sınıflandırılmış verileri olan en popüler kaynaklar (son 30 gün)**     |Sınıflandırılmış verilerle bulunan kaynak sayısının son 30 günü boyunca eğilimi gösterir.            |

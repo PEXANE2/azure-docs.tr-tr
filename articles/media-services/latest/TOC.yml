@@ -86,7 +86,7 @@
           href: stream-files-nodejs-quickstart.md
     - name: Python
       items:
-        - name: Python temel kodlama hızlı başlangıç
+        - name: Python temel kodlama
           href: quickstart-basic-encoding-python.md
     - name: Azure portal
       items:
@@ -223,9 +223,9 @@
         - name: Event Grid ile izleme
           items:
             - name: Event Grid ile olaylar
-              href: reacting-to-media-services-events.md
+              href: monitoring/reacting-to-media-services-events.md
             - name: Event Grid şemaları
-              href: media-services-event-schemas.md
+              href: monitoring/media-services-event-schemas.md
     - name: Uyumlu oyuncular
       items:
         - name: Media Services için medya yürütücüleri
@@ -394,15 +394,15 @@
     - name: Event Grid kullanma
       items:
         - name: Olayları izleme - Portal
-          href: monitor-events-portal-how-to.md
+          href: monitoring/monitor-events-portal-how-to.md
         - name: Olayları izleme - CLI
-          href: job-state-events-cli-how-to.md
+          href: monitoring/job-state-events-cli-how-to.md
     - name: Azure İzleyici’yi kullanma
       items:
         - name: İzleyici ölçümleri
-          href: media-services-metrics-howto.md
+          href: monitoring/media-services-metrics-howto.md
         - name: Tanılama günlüklerini izleme
-          href: media-services-diagnostic-logs-howto.md
+          href: monitoring/media-services-diagnostic-logs-howto.md
     - name: İçerik koruma
       items:
         - name: İçerik anahtarı ilkesini edinme
