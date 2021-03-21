@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 03/03/2021
 ms.custom: template-tutorial
 ms.openlocfilehash: 72caca47cde960eb7298ec2cf0c6994755cb3159
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102121618"
 ---
 # <a name="tutorial-implement-cicd-with-gitops-using-azure-arc-enabled-kubernetes-clusters"></a>Öğretici: Azure Arc özellikli Kubernetes kümelerini kullanarak Gile ile CI/CD uygulama
@@ -119,7 +119,7 @@ Bir Gila bağlantısını eşitlemediğiniz için bildirimleri oluşturan CI/CD 
 
 Uygulama deposu, `.pipeline` PR 'ler, CI ve CD için kullanacağınız işlem hatlarını içeren bir klasör içerir. Örnek depoda belirtilen üç işlem hattını içeri aktarıp yeniden adlandırın:
 
-| İşlem hattı dosya adı | Açıklama |
+| İşlem hattı dosya adı | Description |
 | ------------- | ------------- |
 | [`.pipelines/az-vote-pr-pipeline.yaml`](https://github.com/Azure/arc-cicd-demo-src/blob/master/.pipelines/az-vote-pr-pipeline.yaml)  | **Yay-cicd-demo-src PR** ADLı Application PR işlem hattı |
 | [`.pipelines/az-vote-ci-pipeline.yaml`](https://github.com/Azure/arc-cicd-demo-src/blob/master/.pipelines/az-vote-ci-pipeline.yaml) | **Yay-cicd-demo-src CI** ADLı uygulama CI işlem hattı |

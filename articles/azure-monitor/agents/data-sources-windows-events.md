@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/26/2021
-ms.openlocfilehash: a3baa83e2ae306f1e43aee52e29a151bad6f85d9
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 0eaa73fa7e0a9896a875af7e3a3aab22db2a37d0
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036613"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657068"
 ---
 # <a name="collect-windows-event-log-data-sources-with-log-analytics-agent"></a>Log Analytics aracısıyla Windows olay günlüğü veri kaynaklarını toplama
 Windows olay günlükleri, birçok uygulama Windows olay günlüğü 'ne yazdığından, Windows sanal makinelerinde Log Analytics aracıları için en yaygın [veri kaynaklarından](../agents/agent-data-sources.md) biridir.  İzlemeniz gereken uygulamalar tarafından oluşturulan özel günlüklerin belirtilmesine ek olarak, sistem ve uygulama gibi standart günlüklerden olayları toplayabilirsiniz.
@@ -28,6 +28,10 @@ Azure Izleyici yalnızca ayarlarda belirtilen Windows olay günlüklerinden olay
 Bir olay günlüğünün adını yazdığınızda Azure Izleyici, ortak olay günlüğü adları için öneriler sağlar. Eklemek istediğiniz günlük listede görünmezse, yine de günlüğün tam adını yazarak eklemeye devam edebilirsiniz. Olay Görüntüleyicisi 'ni kullanarak günlüğün tam adını bulabilirsiniz. Olay Görüntüleyicisi 'nde, günlük için *Özellikler* sayfasını açın ve dizeyi *tam ad* alanından kopyalayın.
 
 [![Windows olaylarını yapılandırma](media/data-sources-windows-events/configure.png)](media/data-sources-windows-events/configure.png#lightbox)
+
+> [!IMPORTANT]
+> Çalışma alanından güvenlik olayları koleksiyonu yapılandıramazsınız. Güvenlik olaylarını toplamak için [Azure Güvenlik Merkezi](../../security-center/security-center-enable-data-collection.md) 'Ni veya [Azure Sentinel](../../sentinel/connect-windows-security-events.md) 'i kullanmış olmanız gerekir.
+
 
 > [!NOTE]
 > Windows olay günlüğü 'ndeki kritik olaylar, Azure Izleyici günlüklerinde "hata" önem derecesine sahip olur.
@@ -62,7 +66,7 @@ Windows olay kayıtları bir tür **olaya** sahiptir ve aşağıdaki tabloda bul
 ## <a name="log-queries-with-windows-events"></a>Windows olaylarıyla sorguları günlüğe kaydet
 Aşağıdaki tabloda, Windows olay kayıtlarını alan günlük sorgularının farklı örnekleri verilmiştir.
 
-| Sorgu | Açıklama |
+| Sorgu | Description |
 |:---|:---|
 | Olay |Tüm Windows olayları. |
 | Olay &#124; EventLevelName = = "Error" |Hata önem derecesine sahip tüm Windows olayları. |

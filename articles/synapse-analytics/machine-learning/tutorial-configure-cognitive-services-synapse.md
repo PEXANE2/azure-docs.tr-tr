@@ -10,10 +10,10 @@ ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
 ms.openlocfilehash: 3ab861caca0ef6f58c2c1bc722412774deb725ce
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98936675"
 ---
 # <a name="tutorial-prerequisites-for-using-cognitive-services-in-azure-synapse-analytics"></a>Öğretici: Azure SYNAPSE Analytics 'te bilişsel hizmetler kullanma önkoşulları
@@ -82,4 +82,4 @@ Artık Azure SYNAPSE Studio 'da Azure bilişsel hizmetler deneyimini kullanmaya 
 - [Öğretici: Azure bilişsel hizmetler ile yaklaşım Analizi](tutorial-cognitive-services-sentiment.md)
 - [Öğretici: Azure bilişsel hizmetler ile anomali algılama](tutorial-cognitive-services-sentiment.md)
 - [Öğretici: Azure SYNAPSE ADANMıŞ SQL havuzlarında makine öğrenimi modeli Puanlama](tutorial-sql-pool-model-scoring-wizard.md).
-- [Azure SYNAPSE Analytics 'teki Machine Learning özellikleri](what-is-machine-learning.md)
+- [Azure Synapse Analytics'te Makine Öğrenmesi özellikleri](what-is-machine-learning.md)

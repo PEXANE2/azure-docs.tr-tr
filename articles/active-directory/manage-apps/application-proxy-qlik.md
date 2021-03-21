@@ -15,10 +15,10 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0a03f3c57d3fbc7efe20055343eab3db33aa8194
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99259093"
 ---
 # <a name="application-proxy-and-qlik-sense"></a>Uygulama proxy 'Si ve Qlik Sense 
@@ -56,7 +56,7 @@ Aşağıdaki özel durumlarla birlikte uygulama #1 ile aynı adımları izleyin:
 **Adım #10:** SSO 'yu ayarlama ve **Çoklu oturum açmayı devre dışı** bırakma
  
  
-## <a name="testing"></a>Sınama 
+## <a name="testing"></a>Test Etme 
 Uygulamanız şimdi test etmeye hazırdır. Uygulama #1 'da QlikSense yayımlamak için kullandığınız dış URL 'ye erişin ve her iki uygulama için de bir kullanıcı olarak oturum açın.  
 
 ## <a name="additional-references"></a>Ek başvurular

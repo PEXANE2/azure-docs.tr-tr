@@ -11,10 +11,10 @@ ms.topic: include
 ms.custom: include file
 ms.author: mikben
 ms.openlocfilehash: 80d6c4d3f0b2eef5bc6012f2aab3fcbeab0e31b8
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103495432"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
@@ -28,7 +28,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 ### <a name="create-a-new-c-application"></a>Yeni bir C# uygulaması oluşturma
 
-Konsol penceresinde (cmd, PowerShell veya Bash gibi), `dotnet new` adıyla yeni bir konsol uygulaması oluşturmak için komutunu kullanın `ChatQuickstart` . Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: **program.cs**.
+Konsol penceresinde (cmd, PowerShell veya Bash gibi), `dotnet new` adıyla yeni bir konsol uygulaması oluşturmak için komutunu kullanın `ChatQuickstart` . Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: **program. cs**.
 
 ```console
 dotnet new console -o ChatQuickstart
@@ -66,7 +66,7 @@ Bir sohbet istemcisi oluşturmak için, Iletişim Hizmetleri uç noktanızı ve 
 
 Bu hızlı başlangıç, sohbet uygulamanız için belirteçleri yönetmek üzere bir hizmet katmanı oluşturmayı kapsamaz, ancak önerilir. [Sohbet mimarisi](../../../concepts/chat/concepts.md) hakkında daha fazla bilgi edinin
 
-Aşağıdaki kod parçacıklarını kopyalayın ve kaynak dosyasına yapıştırın: **program.cs**
+Aşağıdaki kod parçacıklarını kopyalayın ve kaynak dosyasına yapıştırın: **program. cs**
 ```csharp
 using Azure;
 using Azure.Communication;

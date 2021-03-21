@@ -1,5 +1,5 @@
 ---
-title: Olay toplama
+title: Olay toplama (Önizleme)
 titleSuffix: Azure Defender for IoT
 description: IoT güvenlik aracıları için Defender, yerel cihazınızdaki verileri ve sistem olaylarını toplar ve verileri işlenmek üzere Azure bulutuna ve analiz için gönderir.
 author: shhazam-ms
@@ -8,14 +8,14 @@ ms.author: shhazam
 ms.date: 1/20/2021
 ms.topic: conceptual
 ms.service: azure
-ms.openlocfilehash: 53811c20330d96b279eeb24e1aa90248b60fcb32
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 9ce24a44e48f090a0dc7d355952b3cf50dd4318c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102120054"
 ---
-# <a name="event-aggregation"></a>Olay toplama 
+# <a name="event-aggregation-preview"></a>Olay toplama (Önizleme)
 
 IoT güvenlik aracıları için Defender, yerel cihazınızdaki verileri ve sistem olaylarını toplar ve verileri işlenmek üzere Azure bulutuna ve analiz için gönderir. IoT Micro Agent için Defender, yeni süreçler ve tüm yeni bağlantı olayları gibi birçok cihaz olayı türünü toplar. Hem yeni işlem hem de yeni bağlantı olayları, genellikle ikinci bir cihazda bir aygıtta meydana gelebilir. Bu özellik kapsamlı güvenlik için önemlidir, ancak, güvenlik aracılarının gönderdikleri ileti sayısı IoT Hub kotayı ve maliyet limitlerini hızla karşılayabilir veya aşabilir. Bununla birlikte, bu olaylar, cihazınızı korumak için önemli olan önemli ölçüde önemli güvenlik bilgilerini içerir. 
 

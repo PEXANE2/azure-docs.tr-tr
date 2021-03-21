@@ -216,8 +216,6 @@
               href: manage/programmatically-create-subscription-microsoft-customer-agreement.md
             - name: Program aracılığıyla MPA abonelikleri oluşturma
               href: manage/programmatically-create-subscription-microsoft-partner-agreement.md
-            - name: Abonelik oluşturma - ARM şablonu
-              href: manage/create-subscription-template.md
             - name: Program aracılığıyla abonelik oluşturma - önizleme API’leri
               href: manage/programmatically-create-subscription-preview.md
         - name: Kurumsal Sözleşme aboneliklerini yönetme

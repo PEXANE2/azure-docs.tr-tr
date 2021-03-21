@@ -15,12 +15,12 @@ ms.custom:
 - contperf-fy21q1
 - fasttrack-edit
 - iot
-ms.openlocfilehash: cbc4bbf73c65d4d7eddad556f3776bc0bbd653ba
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 9cedf861594903cd160c24ea35545d388bf1f6ce
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102431270"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582723"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT protokolünü kullanarak IoT Hub 'ınız ile iletişim kurma
 
@@ -81,11 +81,11 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 
 |Dil  |Varsayılan etkin tut aralığı  |Yapılandırılabilir  |
 |---------|---------|---------|
-|Node.js     |   180 saniye      |     Hayır    |
-|Java     |    230 saniye     |     Hayır    |
+|Node.js     |   180 saniye      |     No    |
+|Java     |    230 saniye     |     No    |
 |C     | 240 saniye |  [Evet](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md#mqtt-transport)   |
 |C#     | 300 saniye |  [Evet](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/src/Transport/Mqtt/MqttTransportSettings.cs#L89)   |
-|Python   | 60 saniye |  Hayır   |
+|Python   | 60 saniye |  No   |
 
 [MQTT belirtiminin](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718081)ardından IoT Hub etkin tut ping aralığı, istemci canlı tutma değerinin 1,5 katına kaydedilir. Ancak, tüm Azure hizmetleri Azure yük dengeleyici TCP boşta kalma zaman aşımı süresi olan 29,45 (1767 saniye) ile birlikte IoT Hub en fazla sunucu tarafı zaman aşımını 29,45 dakikaya (saniye) sınırlar. 
 
@@ -151,6 +151,8 @@ Bir cihaz, cihaz SDK 'larını kullanalamazsanız, bağlantı noktası 8883 üze
 
     `contoso.azure-devices.net/MyDevice01/?api-version=2018-06-30`
 
+    Alana api-Version eklenmesi önemle önerilir. Aksi takdirde, beklenmeyen davranışlara neden olabilir. 
+    
 * **Parola** alanı IÇIN bir SAS belirteci kullanın. SAS belirtecinin biçimi hem HTTPS hem de AMQP protokolleriyle aynıdır:
 
   `SharedAccessSignature sig={signature-string}&se={expiry}&sr={URL-encoded-resourceURI}`
@@ -317,7 +319,7 @@ IoT Hub, **Konu adı** ile `devices/{device_id}/messages/devicebound/` veya `dev
 
 Buluttan cihaza iletilerde, özellik çantasındaki değerler aşağıdaki tabloda olarak temsil edilir:
 
-| Özellik değeri | İmle | Açıklama |
+| Özellik değeri | İmle | Description |
 |----|----|----|
 | `null` | `key` | Özellik paketinde yalnızca anahtar görünür |
 | boş dize | `key=` | Bu anahtar, değer olmadan eşittir işareti izler |

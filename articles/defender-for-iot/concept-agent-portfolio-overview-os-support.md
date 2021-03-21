@@ -1,5 +1,5 @@
 ---
-title: Aracı portföyüne genel bakış ve işletim sistemi desteği
+title: Aracı portföyüne genel bakış ve işletim sistemi desteği (Önizleme)
 description: IoT için Azure Defender, cihaz türüne göre büyük bir aracı portföyü sağlar.
 author: shhazam-ms
 manager: rkarlin
@@ -7,14 +7,14 @@ ms.author: shhazam
 ms.date: 1/20/2021
 ms.topic: quickstart
 ms.service: azure
-ms.openlocfilehash: e2897018d1695bde665e1d1aca180e5268851a0b
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: f731b034b5d4f795bae51107e9ff4e2e90788d7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102120156"
 ---
-# <a name="agent-portfolio-overview-and-os-support"></a>Aracı portföyüne genel bakış ve işletim sistemi desteği 
+# <a name="agent-portfolio-overview-and-os-support-preview"></a>Aracı portföyüne genel bakış ve işletim sistemi desteği (Önizleme)
 
 IoT için Azure Defender, cihaz türüne göre büyük bir aracı portföyü sağlar. 
 
@@ -38,4 +38,4 @@ IoT Micro Agent için Azure Defender, Azure RTOS NetX Duo bileşeninin bir parç
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Tek başına mikro aracıya genel bakış ](concept-standalone-micro-agent-overview.md)hakkında daha fazla bilgi edinin.
+[Tek başına mikro aracıya genel bakış (Önizleme)](concept-standalone-micro-agent-overview.md)hakkında daha fazla bilgi edinin.
