@@ -3,13 +3,13 @@ title: Azure destek isteği oluşturma
 description: Yardıma ihtiyacı olan müşteriler, self servis çözümlerini bulmak ve destek istekleri oluşturmak ve yönetmek için Azure portal kullanabilir.
 ms.assetid: fd6841ea-c1d5-4bb7-86bd-0c708d193b89
 ms.topic: how-to
-ms.date: 06/25/2020
-ms.openlocfilehash: 71aba8f2769a75805f47d90b71a8db4eeb26a97a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/16/2021
+ms.openlocfilehash: 395fc0d5905389ffb8f68d8bbc4c6f8b3a871d36
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100652403"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774889"
 ---
 # <a name="create-an-azure-support-request"></a>Azure destek isteği oluşturma
 
@@ -42,7 +42,7 @@ Bir destek isteği oluşturmak için, abonelik düzeyindeki [destek Isteği kat�
 
 Azure portal her yerden bir destek talebi başlatmak için:
 
-1. Seçin **?** Genel üst bilgisinde. **Yardım + Destek**' i seçin.
+1. Seçin **?** Genel üst bilgisinde **Yardım + Destek**' i seçin.
 
    ![Yardım ve Destek](./media/how-to-create-azure-support-request/helpandsupportnewlower.png)
 
@@ -52,7 +52,7 @@ Azure portal her yerden bir destek talebi başlatmak için:
 
 ### <a name="go-to-help--support-from-a-resource-menu"></a>Kaynak menüsünden Yardım + Destek 'e gidin
 
-Kaynak bağlamında bir destek talebi başlatmak için şu anda çalışıyorsunuz:
+Şu anda çalıştığınız kaynak bağlamında bir destek talebi başlatmak için:
 
 1. Kaynak menüsünde, **destek + sorun giderme** bölümünde **Yeni destek isteği**' ni seçin.
 

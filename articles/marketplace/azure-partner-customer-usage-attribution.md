@@ -6,14 +6,14 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: cpercy737
 ms.author: camper
-ms.date: 03/19/2021
+ms.date: 03/22/2021
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 79f3276347aa64655f0c9086db5f152c4ff5fbcf
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: ed7f27b0b8fde902f4ae9b65b9f6b4ada78f79c6
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104771099"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799199"
 ---
 # <a name="azure-customer-usage-attribution"></a>Azure müşteri kullanım atısyonu
 
@@ -39,7 +39,9 @@ Ticari Market 'te yayımlanan Azure uygulamalarından Azure kullanımını izlem
 Azure Resource Manager API 'Leri kullanıyorsanız, kodunuz, kaynak dağıttığı için Azure Resource Manager iletmek üzere izleme KIMLIĞINIZI [Aşağıdaki yönergeler](#use-resource-manager-apis) temelinde eklemeniz gerekecektir. Bu KIMLIK, planınızın teknik yapılandırma sayfasında Iş Ortağı Merkezi 'nde görünür. 
 
 > [!NOTE]
-> Mevcut Azure uygulamaları için, her planın teknik yapılandırmasındaki izleme kimliklerini güncelleştirmek üzere Mart 2021 ' de bir kerelik geçiş gerçekleştirildi. Bu tekliflerin geçmiş dağıtımlarından kullanım, Microsoft sistemlerinde izlenmeye devam edecektir.
+> Mevcut Azure uygulamaları için, her planın teknik yapılandırmasındaki izleme kimliklerini güncelleştirmek üzere Mart 2021 ' de bir kerelik geçiş başladı. Bu tekliflerin geçmiş dağıtımlarından kullanım, Microsoft sistemlerinde izlenmeye devam edecektir.
+>
+>Tekliflerinizi güncelleştirdiğinizde, artık ana şablon dosyanıza **Microsoft. resources/dağıtımlar** kaynak türünü eklemeniz gerekmez.
 
 ## <a name="other-use-cases"></a>Diğer kullanım örnekleri 
 

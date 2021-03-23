@@ -4,15 +4,15 @@ description: Bu makalede, Azure VM 'de değişiklikleri nasıl giderebileceğini
 services: automation
 ms.subservice: change-inventory-management
 keywords: değişiklik, izleme, değişiklik izleme, stok, Otomasyon
-ms.date: 12/05/2018
+ms.date: 03/21/2021
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: a223ac4296dd160bbdd904e1d3443552d4f49a23
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 980740d387f9e953d1ea764327c8aa13f8650948
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "100587936"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775824"
 ---
 # <a name="troubleshoot-changes-on-an-azure-vm"></a>Azure VM 'deki değişikliklerle ilgili sorunları giderme
 
@@ -208,15 +208,15 @@ Azure portalda değişiklikleri görüntülemek faydalı olabilir ancak durdurul
 
 14. **Eylemler** için, eylem Için **e-posta yöneticileri** gibi bir ad girin. 
 
-15. **Eylem türü** Için **e-posta/SMS/Push/Voice**' ı seçin. 
+15. **Eylem türü** Için **e-posta/SMS ileti/gönderim/ses**' i seçin. 
 
 16. **Ayrıntılar** Için **Ayrıntıları Düzenle**' yi seçin.
 
-    ![Eylem grubu ekle](./media/automation-tutorial-troubleshoot-changes/add-action-group.png)
+    :::image type="content" source="./media/automation-tutorial-troubleshoot-changes/add-action-group.png" alt-text="Kullanım ve tahmini maliyetler." lightbox="./media/automation-tutorial-troubleshoot-changes/add-action-group.png":::
 
-17. E-posta/SMS/gönderim/ses bölmesine bir ad girin, **e-posta** kutusunu seçin ve ardından geçerli bir e-posta adresi girin. İşiniz bittiğinde, bölmedeki **Tamam** ' a ve ardından eylem grubu Ekle sayfasında **Tamam** ' a tıklayın.
+17. **E-posta/SMS ileti/gönderim/ses** bölmesinde bir ad girin, **e-posta** kutusunu seçin ve ardından geçerli bir e-posta adresi girin. İşiniz bittiğinde, bölmedeki **Tamam** ' a ve ardından **eylem grubu Ekle** sayfasında **Tamam** ' a tıklayın.
 
-18. Uyarı e-postası konusunu özelleştirmek için, **eylemleri Özelleştir**' i seçin. 
+18. Uyarı e-postası konusunu özelleştirmek için, **eylemleri Özelleştir**' i seçin.
 
 19. **Oluşturma kuralı** Için **e-posta konusu**' ı seçin ve **Uyarı kuralı oluştur**' u seçin. Bu uyarı, bir güncelleştirme dağıtımı başarılı olduğunda sizi uyarır ve güncelleştirme dağıtımı çalıştırmasının hangi makineleri kapsadığını bildirir. Aşağıdaki görüntü, W3SVC hizmeti durdurulduğunda alınan örnek bir e-postadır.
 

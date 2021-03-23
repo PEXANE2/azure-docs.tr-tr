@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/09/2020
-ms.openlocfilehash: a480c8f2dfdda0ce7a1eb879554fb79c96adbe1e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/22/2021
+ms.openlocfilehash: 0a203531e026d00b274ac98784076d33b22666d8
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97347821"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800151"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB'deki tutarlılık düzeyleri
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -51,15 +51,19 @@ Azure Cosmos hesabınızda varsayılan tutarlılık düzeyini dilediğiniz zaman
 
 Azure Cosmos DB, okuma isteklerinin yüzde 100 ' unun seçilen tutarlılık düzeyi için tutarlılık garantisi karşıladığını garanti eder. [Azure-Cosmos-TLA](https://github.com/Azure/azure-cosmos-tla) GitHub deposunda Azure Cosmos DB içindeki beş tutarlılık DÜZEYININ, TLA + belirtim dilini kullanarak kesin tanımları sunulmaktadır.
 
-Beş tutarlılık düzeyinin semantiği aşağıda açıklanmıştır:
+Beş tutarlılık düzeyinin semantiği aşağıdaki bölümlerde açıklanmıştır.
 
-- **Güçlü**: güçlü tutarlılık, bir doğrizlebilirlik garantisi sunar. Doğrizlebilirlik istekleri aynı anda sunma anlamına gelir. Okumaların, bir öğenin en son kaydedilmiş sürümünü döndürmesi garanti edilir. İstemci hiçbir şekilde işlenmemiş veya kısmi yazma görmez. Kullanıcıların her zaman en son yürütülen yazma okuma garantisi vardır.
+### <a name="strong-consistency"></a>Güçlü tutarlılık
+
+Güçlü tutarlılık, doğrusallaştırma garantisi sunar. Doğrizlebilirlik istekleri aynı anda sunma anlamına gelir. Okumaların, bir öğenin en son kaydedilmiş sürümünü döndürmesi garanti edilir. İstemci hiçbir şekilde işlenmemiş veya kısmi yazma görmez. Kullanıcıların her zaman en son yürütülen yazma okuma garantisi vardır.
 
   Aşağıdaki grafikte, müzik notlarıyla güçlü tutarlılık gösterilmektedir. Veriler "Batı ABD 2" bölgesine yazıldıktan sonra, diğer bölgelerden gelen verileri okurken en son değeri alırsınız:
 
   :::image type="content" source="media/consistency-levels/strong-consistency.gif" alt-text="Güçlü tutarlılık düzeyinin çizimi":::
 
-- **Sınırlanmış Eskime durumu**: okumaların tutarlı ön ek garantisi kabul edilmesi garanti edilir. Okumalar, bir öğenin (yani "Güncelleştirmeler"  ) veya *"T"* zaman aralığına göre yazma işlemlerinin arkasında, hangisi önce erişilerek gecikme gösterebilir. Diğer bir deyişle, sınırlanmış Eskime durumu ' nu seçtiğinizde, "stalet" iki şekilde yapılandırılabilir:
+### <a name="bounded-staleness-consistency"></a>Sınırlanmış eskime durumu tutarlılığı
+
+Sınırlı şekilde tutarlılık açısından, okuma tutarlılığı, tutarlı ön ek garantisi sağlamak açısından garanti edilir. Okumalar, bir öğenin (yani "Güncelleştirmeler"  ) veya *"T"* zaman aralığına göre yazma işlemlerinin arkasında, hangisi önce erişilerek gecikme gösterebilir. Diğer bir deyişle, sınırlanmış Eskime durumu ' nu seçtiğinizde, "stalet" iki şekilde yapılandırılabilir:
 
 - Öğenin sürüm sayısı (*K*)
 - Zaman aralığı (*T*) okuma işlemleri, yazma işlemlerinin arkasında kalabilir
@@ -79,7 +83,9 @@ Stalet penceresinin içinde, sınırlanmış Eskime durumu aşağıdaki tutarlı
 
   :::image type="content" source="media/consistency-levels/bounded-staleness-consistency.gif" alt-text="Sınırlanmış stalet tutarlılık düzeyinin çizimi":::
 
-- **Oturum**: tek bir istemci oturumu okumalarının içinde, tutarlı ön ek, monoton okumaları, monoton yazmaları, okuma-yazma ve yazma ile okuma garantisi için kabul edilmesi garanti edilir. Bu, tek bir "yazıcı" oturumunun olduğunu varsayar veya birden çok yazıcı için oturum belirtecini paylaşıyor.
+### <a name="session-consistency"></a>Oturum tutarlılığı
+
+Oturum tutarlılığı ' nda, tek bir istemci oturumu okuma, tutarlı ön ek, monoton okuma, monoton yazma, okuma-yazma ve yazma ile okuma garantisi garanti edilir. Bu, tek bir "yazıcı" oturumunun olduğunu varsayar veya birden çok yazıcı için oturum belirtecini paylaşıyor.
 
 Oturum yazma işlemi dışındaki istemciler aşağıdaki garantilere sahip olur:
 
@@ -92,7 +98,9 @@ Oturum yazma işlemi dışındaki istemciler aşağıdaki garantilere sahip olur
 
   :::image type="content" source="media/consistency-levels/session-consistency.gif" alt-text="Oturum tutarlılığı düzeyi çizimi":::
 
-- **Tutarlı ön ek**: döndürülen güncelleştirmeler boşluklar olmadan tüm güncelleştirmelerin bazı ön eklerini içerir. Tutarlı ön ek tutarlılık düzeyi, okumaların hiçbir şekilde sıra dışı yazmaları görmeme garantisi sağlar.
+### <a name="consistent-prefix-consistency"></a>Tutarlı ön ek tutarlılığı
+
+Tutarlı ön ek seçeneğinde, döndürülen güncelleştirmeler boşluklar olmadan tüm güncelleştirmelerin bazı ön eklerini içerir. Tutarlı ön ek tutarlılık düzeyi, okumaların hiçbir şekilde sıra dışı yazmaları görmeme garantisi sağlar.
 
 Sıralamada yazma işlemleri gerçekleştirildiyse, istemci, veya `A, B, C` `A` `A,B` `A,B,C` gibi hiçbir bir sıra dışı permütasyon görür `A,C` `B,A,C` . Tutarlı ön ek, nihai tutarlılık ile karşılaştırılabilir yazma gecikmeleri, kullanılabilirlik ve okuma üretilen işi sağlar, ancak aynı zamanda siparişin önemli olduğu senaryoların ihtiyaçlarına uygun sıra garantisi sağlar.
 
@@ -107,7 +115,9 @@ Aşağıdaki grafikte, müzik notlarıyla tutarlılık ön eki tutarlılığı g
 
   :::image type="content" source="media/consistency-levels/consistent-prefix.gif" alt-text="Tutarlı ön ek çizimi":::
 
-- **Nihai**: okumalar için sıralama garantisi yoktur. Yazma işlemleri kesildiğinde çoğaltmalar nihai tutarlılığa ulaşacaktır.  
+### <a name="eventual-consistency"></a>Nihai tutarlılık
+
+Nihai tutarlılık bölümünde, okuma için sıralama garantisi yoktur. Yazma işlemleri kesildiğinde çoğaltmalar nihai tutarlılığa ulaşacaktır.  
 Son tutarlılık, bir istemci, daha önce okuduğundan daha eski olan değerleri okuyabileceğinden en zayıf tutarlılık biçimidir. Nihai tutarlılık, uygulamanın herhangi bir sıralama garantisi gerektirmediğinden idealdir. Örnek olarak yeniden doldurulabilir, beğeni veya iş parçacıklı yorumların sayısını verilebilir. Aşağıdaki grafikte, müzik notlarıyla nihai tutarlılık gösterilmektedir.
 
   :::image type="content" source="media/consistency-levels/eventual-consistency.gif" alt-text="nihai tutarlılık için Vinillüstrasyon":::

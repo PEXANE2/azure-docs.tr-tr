@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 2a4d3f3f9465b8813cdf6ee26760d819d73a08c1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c5df0a5fc054a12e3fa2ef1e352645c57c357b01
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94353113"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798740"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Salesforce yapılandırma
 
@@ -27,6 +27,9 @@ Bu öğreticide anlatılan senaryoda aşağıdakilere sahip olduğunuz kabul edi
 
 * Azure Active Directory kiracısı
 * Bir Salesforce.com kiracısı
+
+> [!Note]
+> Rol içeri aktarmaları sırasında Azure Active Directory roller el ile düzenlenmemelidir.
 
 > [!IMPORTANT]
 > Bir Salesforce.com deneme hesabı kullanıyorsanız otomatik Kullanıcı sağlamayı yapılandıracaksınız. Deneme hesaplarında, satın alınana kadar gerekli API erişimi etkin değildir. Bu öğreticiyi tamamlamaya yönelik ücretsiz bir [Geliştirici hesabı](https://developer.salesforce.com/signup) kullanarak bu sınırlamayı aşabilirsiniz.

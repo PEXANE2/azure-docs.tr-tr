@@ -1,15 +1,15 @@
 ---
 title: Azure panoları üzerinde özel markaşağı kutucuğu kullanma
 description: Statik içeriği göstermek için bir Azure panosuna markın kutucuğu ekleme hakkında bilgi edinin
-ms.date: 01/08/2020
+ms.date: 03/19/2021
 ms.topic: how-to
 ms.custom: devx-track-js
-ms.openlocfilehash: 5121142ecf568aa1ac9a7ec19f7211c6f9a6253f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8324b736565cfa353e48cf49b76e2784866f47f7
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96745766"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774465"
 ---
 # <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>Özel içerik göstermek için Azure panolarında markaşağı kutucuğu kullanın
 
@@ -21,7 +21,7 @@ ms.locfileid: "96745766"
 
    ![Portal kenar çubuğunu gösteren ekran görüntüsü](./media/azure-portal-markdown-tile/azure-portal-nav.png)
 
-1. Herhangi bir özel Pano oluşturduysanız, pano görünümünde, özel markı kutucuğunun görünmesi gereken panoyu seçmek için açılan eklentiyi kullanın. **Kutucuk galerisini** açmak için Düzenle simgesini seçin.
+1. Pano görünümünde, özel markı kutucuğunun görünmesi gereken panoyu seçin ve ardından **Düzenle**' yi seçin.
 
    ![Pano düzenleme görünümünü gösteren ekran görüntüsü](./media/azure-portal-markdown-tile/azure-portal-dashboard-edit.png)
 
@@ -53,8 +53,8 @@ ms.locfileid: "96745766"
 Markaşağı kutucuğunda herhangi bir düz metin, markı sözdizimi ve HTML içeriği birleşimini kullanabilirsiniz. Azure portal, içeriğinizi kutucukta gösterilen HTML 'ye dönüştürmek için _işaretlenen_ adlı açık kaynaklı bir kitaplık kullanır. _İşaretlenen_ tarafından üretilen HTML, portal tarafından işlenmeden önce önceden işlenir. Bu adım, özelleştirmenin güvenlik veya portalın yerleşimini etkilememesini sağlamaya yardımcı olur. Bu ön işleme sırasında, olası bir tehdit oluşturan HTML 'nin herhangi bir bölümü kaldırılır. Portalın şu içerik türlerine izin verilmiyor:
 
 * JavaScript – `<script>` etiketleri ve satır Içi JavaScript değerlendirmeleri kaldırılır.
-* iframe 'ler- `<iframe>` Etiketler kaldırılacak.
-* Stil `<style>` etiketleri kaldırılacak. HTML öğelerinde satır içi stil öznitelikleri resmi olarak desteklenmez. Bazı satır içi stil öğelerinin sizin için çalıştığını fark edebilirsiniz, ancak portalın düzenine müdahale ediyorsanız, çalışmayı durdurabilir. Markaşağı kutucuğu, portalın varsayılan stillerini kullanan temel ve statik içeriğe yöneliktir.
+* iframe 'ler- `<iframe>` Etiketler kaldırılır.
+* Stil `<style>` etiketleri kaldırılır. HTML öğelerinde satır içi stil öznitelikleri resmi olarak desteklenmez. Bazı satır içi stil öğelerinin sizin için çalıştığını fark edebilirsiniz, ancak portalın düzenine müdahale ediyorsanız, çalışmayı durdurabilir. Markaşağı kutucuğu, portalın varsayılan stillerini kullanan temel ve statik içeriğe yöneliktir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

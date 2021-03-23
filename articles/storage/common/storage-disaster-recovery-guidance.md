@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 03/22/2021
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: f556c7acd903c108193f9c12a2849500645b119b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 11d9b38d71d428a3c6c829b508318389338f5a15
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102506710"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800372"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>Olağanüstü durum kurtarma ve depolama hesabı yükünü devretme
 
@@ -23,7 +23,7 @@ Microsoft, Azure hizmetlerinin her zaman kullanılabilir olduğundan emin olmaya
 
 Azure depolama, coğrafi olarak yedekli depolama hesapları için hesap yük devretmesini destekler. Hesap yük devretmeyle, birincil uç nokta kullanılamaz hale gelirse depolama hesabınız için yük devretme işlemini başlatabilirsiniz. Yük devretme, ikincil bitiş noktasını, depolama hesabınız için birincil uç nokta olacak şekilde güncelleştirir. Yük devretme işlemi tamamlandıktan sonra istemciler yeni birincil uç noktaya yazmaya başlayabilir.
 
-Hesap yük devretme özelliği Azure Resource Manager dağıtımlarıyla genel amaçlı v1, genel amaçlı v2 ve Blob depolama hesabı türlerinde kullanılabilir. Hesap yük devretmesi tüm ortak bölgeler için desteklenir, ancak şu anda sogeign veya National bulutlar içinde kullanılamaz.
+Hesap yük devretme özelliği Azure Resource Manager dağıtımlarıyla genel amaçlı v1, genel amaçlı v2 ve Blob depolama hesabı türlerinde kullanılabilir. Hesap yük devretmesi tüm ortak bölgeler için desteklenir, ancak şu anda sogeign veya National bulutlar içinde kullanılamaz. Hiyerarşik bir ad alanı etkin olan depolama hesapları için hesap yük devretmesi desteklenmez.
 
 Bu makalede, hesap yük devretmesi ile ilgili kavramlar ve işlemler açıklanmakta ve depolama hesabınızın en az müşteri etkisi miktarına göre kurtarmaya nasıl hazırlanacağı anlatılmaktadır. Azure portal veya PowerShell 'de hesap yük devretmesini başlatmayı öğrenmek için bkz. [Hesap yük devretmesi başlatma](storage-initiate-account-failover.md).
 
@@ -67,6 +67,8 @@ Microsoft ayrıca, yazma hatalarıyla ilgili hazırlanabilmesi için uygulamanı
 ## <a name="understand-the-account-failover-process"></a>Hesap yük devretme sürecini anlayın
 
 Müşteri tarafından yönetilen hesap yük devretmesi, birincil bölge herhangi bir nedenden dolayı kullanılamaz hale gelirse tüm depolama hesabınızı ikincil bölgeye devrederlemenize olanak sağlar. İkincil bölgeye yük devretmeyi zorlarsanız, istemciler yük devretme tamamlandıktan sonra ikincil uç noktaya veri yazmaya başlayabilir. Yük devretme genellikle yaklaşık bir saat sürer.
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ### <a name="how-an-account-failover-works"></a>Hesap yük devretmesi nasıl çalışır?
 

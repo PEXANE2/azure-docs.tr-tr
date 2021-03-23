@@ -5,13 +5,13 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 01/19/2021
-ms.openlocfilehash: 007bf845bab6f493fae91debefde27a4929d9f95
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/22/2021
+ms.openlocfilehash: f33490e273104105502ecc8f4f255c354a2d2f3b
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98611041"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800032"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB hizmet kotaları
 
@@ -137,7 +137,7 @@ Kullandığınız API 'ye bağlı olarak bir Azure Cosmos kapsayıcısı bir kol
 | --- | --- |
 | En fazla veritabanı veya kapsayıcı adı uzunluğu | 255 |
 | Kapsayıcı başına en fazla saklı yordam | 100 <sup>*</sup>|
-| Kapsayıcı başına en fazla UDF | 250 <sup>*</sup>|
+| Kapsayıcı başına en fazla UDF | 50 <sup>*</sup>|
 | Dizin oluşturma ilkesindeki en fazla yol sayısı| 100 <sup>*</sup>|
 | Kapsayıcı başına en fazla benzersiz anahtar sayısı|( <sup>*</sup>|
 | Benzersiz anahtar kısıtlaması başına en fazla yol sayısı|k <sup>*</sup>|

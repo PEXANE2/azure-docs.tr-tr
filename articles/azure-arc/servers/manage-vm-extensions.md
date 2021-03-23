@@ -1,14 +1,14 @@
 ---
 title: Azure Arc etkin sunucularıyla VM Uzantısı yönetimi
 description: Azure Arc etkin sunucuları, Azure olmayan VM 'lerle dağıtım sonrası yapılandırma ve otomasyon görevleri sağlayan sanal makine uzantılarının dağıtımını yönetebilir.
-ms.date: 03/01/2021
+ms.date: 03/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 039c52ccbee03636da0f5acc0fc5844be9b646f5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9af2700f036352188e646188485285482ee70c69
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101687915"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799590"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Azure Arc özellikli sunucularla sanal makine uzantısı yönetimi
 
@@ -42,6 +42,9 @@ VM Uzantısı işlevselliği yalnızca [Desteklenen bölgeler](overview.md#suppo
 Bu sürümde, Windows ve Linux makinelerinde aşağıdaki VM uzantılarını destekliyoruz.
 
 Azure bağlı makine Aracısı paketi ve uzantı Aracısı bileşeni hakkındaki ayrıntılar hakkında bilgi edinmek için bkz. [aracıya genel bakış](agent-overview.md#agent-component-details).
+
+> [!NOTE]
+> Yay etkin sunucular için en son DSC VM uzantısı desteği kaldırılmıştır. Alternatif olarak, sunucunuzun veya makinenizin dağıtım sonrası yapılandırmasını yönetmek için özel betik uzantısının kullanılması önerilir.
 
 ### <a name="windows-extensions"></a>Windows uzantıları
 

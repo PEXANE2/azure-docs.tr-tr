@@ -3,16 +3,16 @@ title: Azure Data Factory sistem değişkenleri
 description: Bu makalede Azure Data Factory tarafından desteklenen sistem değişkenleri açıklanır. Data Factory varlıkları tanımlarken bu değişkenleri ifadelerde kullanabilirsiniz.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/12/2018
-ms.openlocfilehash: a5d2043c29db87876cc0d5ddb5b3708abad033c5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b85efa7ac4481ab9eb2b2637aee7d9e5e76e8f3f
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104591990"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786065"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Azure Data Factory tarafından desteklenen sistem değişkenleri
 
@@ -24,7 +24,7 @@ Bu makalede Azure Data Factory tarafından desteklenen sistem değişkenleri aç
 
 Bu sistem değişkenlerine JSON işlem hattı içinde herhangi bir yerde başvurulabilir.
 
-| Değişken Adı | Description |
+| Değişken Adı | Açıklama |
 | --- | --- |
 | @pipeline(). DataFactory |İşlem hattı çalıştırmasının çalıştırıldığı veri fabrikasının adı |
 | @pipeline(). Konfigüre |İşlem hattının adı |
@@ -41,7 +41,7 @@ Bu sistem değişkenlerine JSON işlem hattı içinde herhangi bir yerde başvur
 
 Bu sistem değişkenlerine, [scheduletrigger](concepts-pipeline-execution-triggers.md#schedule-trigger)türünde Tetikleyiciler IÇIN Trigger JSON içinde herhangi bir yerde başvurulabilir.
 
-| Değişken Adı | Description |
+| Değişken Adı | Açıklama |
 | --- | --- |
 | @trigger(). scheduledTime |Tetikleyicinin işlem hattı çalıştırmasını çağırmak için zamanlandığı zaman. |
 | @trigger(). başlangıçsaati |Tetikleyicinin işlem hattı çalıştırmasını çağırmak için **aslında** tetikleyeceği zaman. Bu, tetikleyicinin zamanlanan zamanından biraz farklı olabilir. |
@@ -50,7 +50,7 @@ Bu sistem değişkenlerine, [scheduletrigger](concepts-pipeline-execution-trigge
 
 Bu sistem değişkenlerine, [Tumblingwindowtrigger](concepts-pipeline-execution-triggers.md#tumbling-window-trigger)türündeki Tetikleyiciler IÇIN Trigger JSON içinde herhangi bir yerde başvurulabilir.
 
-| Değişken Adı | Description |
+| Değişken Adı | Açıklama |
 | --- | --- |
 | @trigger(). çıktılar. windowStartTime |Tetikleyici çalıştırması ile ilişkili pencerenin başlangıcı. |
 | @trigger(). çıktılar. Windowbitişsaati |Tetikleyici çalıştırması ile ilişkili pencerenin sonu. |
@@ -61,7 +61,7 @@ Bu sistem değişkenlerine, [Tumblingwindowtrigger](concepts-pipeline-execution-
 
 Bu sistem değişkenlerine, [BlobEventsTrigger](concepts-pipeline-execution-triggers.md#event-based-trigger)türündeki Tetikleyiciler IÇIN tetikleyici JSON içinde herhangi bir yerde başvurulabilir.
 
-| Değişken Adı | Description |
+| Değişken Adı | Açıklama |
 | --- | --- |
 | @triggerBody(). fileName  |Oluşturma veya silme işlemi tetikleyiciye neden olan dosyanın adı.   |
 | @triggerBody(). KlasörAdı  |Tarafından belirtilen dosyayı içeren klasörün yolu `@triggerBody().fileName` . Klasör yolunun ilk segmenti, Azure Blob depolama kapsayıcısının adıdır.  |
@@ -74,7 +74,7 @@ Bu sistem değişkenlerine, [Customeventçabagger](concepts-pipeline-execution-t
 >[!NOTE]
 >Azure Data Factory, özel olayın [Azure Event Grid olay şemasıyla](../event-grid/event-schema.md)biçimlendirilmesini bekler.
 
-| Değişken Adı | Description
+| Değişken Adı | Açıklama
 | --- | --- |
 | @triggerBody(). Event. eventType | Özel olay tetikleyicisi çalıştırmayı tetikleyen olayların türü. Olay türü müşteri tanımlı alanıdır ve dize türündeki tüm değerleri alır. |
 | @triggerBody(). Event. Subject | Tetikleyicinin tetiklenmesine neden olan özel olayın konusu. |

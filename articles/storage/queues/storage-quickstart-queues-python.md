@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-python
-ms.openlocfilehash: 0eeb1333952533cdf392b93a926f256097557151
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b4c25ceb2e7b3f224dccdd7d24d86389100c8a2e
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97585505"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801919"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-python"></a>Hızlı başlangıç: Python için Azure kuyruk depolama istemci kitaplığı V12
 
@@ -40,7 +40,7 @@ Ek kaynaklar:
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - Azure depolama hesabı- [depolama hesabı oluşturma](../common/storage-account-create.md)
-- İşletim sisteminiz için [Python](https://www.python.org/downloads/) -2,7, 3,5 veya üzeri
+- İşletim sisteminiz için [Python](https://www.python.org/downloads/) -2,7 veya 3.6 +
 
 ## <a name="setting-up"></a>Ayarlanıyor
 

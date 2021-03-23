@@ -3,17 +3,17 @@ title: Windows sanal masaüstündeki yenilikler nelerdir? - Azure
 description: Windows sanal masaüstü için yeni özellikler ve ürün güncelleştirmeleri.
 author: Heidilohr
 ms.topic: overview
-ms.date: 02/23/2021
+ms.date: 03/20/2021
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: c0b4ad17c5aefe29a313b9eaf75fc87ce4d88720
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: acb9b6d9d2080c63243ec4b924d07a927d6ccdfd
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102499892"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774448"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Windows sanal masaüstündeki yenilikler nelerdir?
 
@@ -35,6 +35,15 @@ Windows sanal masaüstü ve Uzak Masaüstü Hizmetleri istemcilerimize yönelik 
 - [iOS](/windows-server/remote/remote-desktop-services/clients/ios-whatsnew)
 - [Android](/windows-server/remote/remote-desktop-services/clients/android-whatsnew)
 - [Web](/windows-server/remote/remote-desktop-services/clients/web-client-whatsnew)
+
+## <a name="windows-virtual-desktop-agent-updates"></a>Windows sanal masaüstü Aracısı güncelleştirmeleri
+
+Windows sanal masaüstü Aracısı ayda en az bir kez güncelleştirilir.
+
+Windows sanal masaüstü aracısında şu şekilde değişiklik yapılır:
+
+- Sürüm 1.0.2800.2800: Bu güncelleştirme Mart 2021 ' de yayımlanmıştır ve ters bir bağlantı sorunu düzeltildi.
+- Sürüm 1.0.2800.2700: Bu güncelleştirme Şubat 2021 ' de yayımlanmıştır ve erişim reddedildi düzenleme sorunu düzeltildi.
 
 ## <a name="fslogix-updates"></a>FSLogix güncelleştirmeleri
 

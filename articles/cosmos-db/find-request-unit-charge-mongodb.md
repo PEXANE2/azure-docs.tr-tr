@@ -5,15 +5,15 @@ author: ThomasWeiss
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 10/14/2020
+ms.date: 03/19/2021
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: e488d1acfe116409caf571e7878e454628a9dea9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6b2944c1d29849ea44b5afd878d5b0e030358cc5
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103201322"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801834"
 ---
 # <a name="find-the-request-unit-charge-for-operations-executed-in-azure-cosmos-db-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'sinde yürütülen işlemler için istek birimi ücreti bulma
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -34,13 +34,17 @@ RU ücreti adlı özel bir [veritabanı komutu](https://docs.mongodb.com/manual/
 
 1. **Veri Gezgini** bölmesine gidin ve üzerinde çalışmak istediğiniz kapsayıcıyı seçin.
 
-1. **Yeni Sorgu**’yu seçin.
+1. Kapsayıcı adının yanındaki **...** öğesini seçin ve **Yeni sorgu**' yı seçin.
 
 1. Geçerli bir sorgu girin ve sonra **sorguyu Yürüt**' ü seçin.
 
-1. Yürüttüğünüz istek için gerçek istek ücreti göstermek üzere **sorgu istatistikleri** ' ni seçin.
+1. Yürüttüğünüz istek için gerçek istek ücreti göstermek üzere **sorgu istatistikleri** ' ni seçin. Bu sorgu Düzenleyicisi, yalnızca sorgu koşullarına yönelik istek birimi ücretlerini çalıştırmanızı ve görüntülemenizi sağlar. INSERT deyimleri gibi veri işleme komutları için bu düzenleyiciyi kullanamazsınız.
 
-:::image type="content" source="./media/find-request-unit-charge/portal-mongodb-query.png" alt-text="Azure portal MongoDB sorgu isteği ücreti ekran görüntüsü":::
+   :::image type="content" source="./media/find-request-unit-charge/portal-mongodb-query.png" alt-text="Azure portal MongoDB sorgu isteği ücreti ekran görüntüsü":::
+
+1. Veri işleme komutlarına yönelik istek ücretleri almak için, `getLastRequestStatistics` komutu Mongo kabuğu, [Robo 3T](mongodb-robomongo.md), [MongoDB pusula](mongodb-compass.md)gibi bir kabuk tabanlı kullanıcı arabiriminden veya Shell komut dosyası ile vs Code uzantısıyla çalıştırın.
+
+   `db.runCommand({getLastRequestStatistics: 1})`
 
 ## <a name="use-the-mongodb-net-driver"></a>MongoDB .NET sürücüsünü kullanma
 

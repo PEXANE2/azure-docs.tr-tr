@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/16/2021
+ms.date: 03/01/2021
 ms.author: b-juche
-ms.openlocfilehash: 91f4f90658281282cdcb01b091bd9c9647d8d702
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6a8de9b373a14eab45df28b28bb3f94314c1d89a
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100635498"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801096"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files için SMB birimi oluşturma
 
@@ -89,8 +89,32 @@ SMB birimi oluşturmadan önce bir Active Directory bağlantısı oluşturmanız
     * Birimin protokol türü olarak **SMB** ' yi seçin. 
     * Açılır listeden **Active Directory** bağlantınızı seçin.
     * **Paylaşım adı**' nda paylaşılan birimin adını belirtin.
+    * SMB birimi için sürekli kullanılabilirliği etkinleştirmek istiyorsanız **sürekli kullanılabilirliği etkinleştir**' i seçin.    
 
-    ![SMB protokolünü belirtin](../media/azure-netapp-files/azure-netapp-files-protocol-smb.png)
+        > [!IMPORTANT]   
+        > SMB sürekli kullanılabilirliği özelliği şu anda genel önizlemededir. **[Azure NetApp Files SMB sürekli kullanılabilirlik paylaşımları genel önizleme eklenebileceğinizi gönderim sayfası](https://aka.ms/anfsmbcasharespreviewsignup)** aracılığıyla özelliğe erişmek için bir eklenebileceğinizi isteği göndermeniz gerekir. Sürekli kullanılabilirlik özelliğini kullanmadan önce Azure NetApp Files ekibinden resmi bir onay e-postası için bekleyin.   
+        > 
+        > Yalnızca SQL iş yükleri için sürekli kullanılabilirliği etkinleştirmeniz gerekir. SQL Server dışındaki iş yükleri için SMB sürekli kullanılabilirlik paylaşımlarının *kullanılması desteklenmez.* Bu özellik şu anda Windows SQL Server 'de desteklenmektedir. Linux SQL Server şu anda desteklenmiyor. SQL Server yüklemek için yönetici olmayan bir hesap kullanıyorsanız, hesapta gerekli güvenlik ayrıcalığının atandığından emin olun. Etki alanı hesabı gerekli güvenlik ayrıcalığına () sahip değilse `SeSecurityPrivilege` ve ayrıcalık etki alanı düzeyinde ayarlanamıyor ise, Active Directory bağlantıları 'Nın **güvenlik ayrıcalığı kullanıcıları** alanını kullanarak ayrıcalığı hesaba verebilirsiniz. Bkz. [Active Directory bağlantı oluşturma](create-active-directory-connections.md#create-an-active-directory-connection).
+
+    <!-- [1/13/21] Commenting out command-based steps below, because the plan is to use form-based (URL) registration, similar to CRR feature registration -->
+    <!-- 
+        ```azurepowershell-interactive
+        Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSMBCAShare
+        ```
+
+        Check the status of the feature registration: 
+
+        > [!NOTE]
+        > The **RegistrationState** may be in the `Registering` state for up to 60 minutes before changing to`Registered`. Wait until the status is `Registered` before continuing.
+
+        ```azurepowershell-interactive
+        Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSMBCAShare
+        ```
+        
+        You can also use [Azure CLI commands](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` and `az feature show` to register the feature and display the registration status. 
+    --> 
+
+    ![SMB birimi oluşturma protokolünün protokol sekmesini açıklayan ekran görüntüsü.](../media/azure-netapp-files/azure-netapp-files-protocol-smb.png)
 
 5. Birim ayrıntılarını gözden geçirmek için **gözden geçir + oluştur** ' a tıklayın.  Ardından, SMB birimini oluşturmak için **Oluştur** ' a tıklayın.
 

@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: spot
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 06/26/2020
+ms.date: 03/22/2021
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 33172004ac4361de51b92389fbf56bd699f7124f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9a2ad2eb197af613919efa4414da1759cd47e2e7
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102096454"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802752"
 ---
 # <a name="deploy-azure-spot-virtual-machines-using-azure-powershell"></a>Azure PowerShell kullanarak Azure spot sanal makineleri dağıtma
 
@@ -76,20 +76,53 @@ Get-AzVM -ResourceGroupName $resourceGroup | `
 
 ## <a name="simulate-an-eviction"></a>Çıkargı benzetimi yap
 
-Uygulamanızın ani bir çıkargı için ne kadar iyi yanıt olacağını test etmek üzere bir Azure spot sanal makinesi [çıkarması benzetimi](/rest/api/compute/virtualmachines/simulateeviction) yapabilirsiniz. 
+Uygulamanızın ani bir çıkarmasına ne kadar iyi yanıt vereceğini test etmek için REST, PowerShell veya CLı kullanarak bir Azure spot sanal makinesi çıkarması benzetimi yapabilirsiniz.
 
-Aşağıdaki bilgilerinizi ile değiştirin: 
+Çoğu durumda, REST API sanal makineleri kullanmak isteyeceksiniz-uygulamaların otomatikleştirilmiş test edilmesine yardımcı olmak için [çıkarmayı benzetim](/rest/api/compute/virtualmachines/simulateeviction) . REST için, `Response Code: 204` benzetimi yapılan çıkargı başarılı oldu demektir. Sanal makine çıkarıldığında uygulamanızın nasıl yanıt vereceğini otomatik hale getirmek için [planlı olay hizmeti](scheduled-events.md)ile benzetilen çıkarmaları birleştirebilirsiniz.
 
-- `subscriptionId`
-- `resourceGroupName`
-- `vmName`
+Zamanlanan olayları işlem içinde görmek için [Azure Cuma 'yı izleyin-VM bakımına hazırlanmak Için azure zamanlanan olaylar kullanma](https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Scheduled-Events-to-Prepare-for-VM-Maintenance).
 
 
-```rest
-POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/simulateEviction?api-version=2020-06-01
+### <a name="quick-test"></a>Hızlı test
+
+Bir sanal makinenin nasıl çalıştığını göstermek için hızlı bir test için, PowerShell kullanarak bir çıkarma benzetimi yaparken nasıl göründüğünü görmek üzere zamanlanmış olay hizmetini sorgulama adımlarını inceleyelim.
+
+Olay için ilk kez istek yaptığınızda zamanlanan olay hizmeti hizmetiniz için etkinleştirilir. 
+
+Sanal makinenize uzaktan ekleyin ve ardından bir komut istemi açın. 
+
+SANAL makinenizin komut isteminden şunu yazın:
+
+```
+curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01
 ```
 
-`Response Code: 204` , sanal çıkaralma işleminin başarılı olduğu anlamına gelir. 
+Bu ilk yanıt 2 dakikaya kadar sürebilir. Bundan sonra çıktıyı neredeyse hemen görüntülemesi gerekir.
+
+Az PowerShell modülünün yüklü olduğu bir bilgisayardan (yerel makineniz gibi) [set-AzVM](https://docs.microsoft.com/powershell/module/az.compute/set-azvm)kullanarak bir çıkarma benzetimi yapın. Kaynak grubu adını ve VM adını kendi adınızla değiştirin. 
+
+```azurepowershell-interactive
+Set-AzVM -ResourceGroupName "mySpotRG" -Name "mySpotVM" -SimulateEviction
+```
+
+Yanıt çıkışı, `Status: Succeeded` isteğin başarılı bir şekilde yapılmış olması durumunda olacaktır.
+
+Spot sanal makinenize hızlı bir şekilde uzak bağlantınıza dönün ve Zamanlanan Olaylar uç noktasını tekrar sorgulayın. Daha fazla bilgi içeren bir çıkış yapana kadar aşağıdaki komutu yineleyin:
+
+```
+curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01
+```
+
+Zamanlanan olay hizmeti çıkarma bildirimini aldığında şuna benzer bir yanıt alacaksınız:
+
+```output
+{"DocumentIncarnation":1,"Events":[{"EventId":"A123BC45-1234-5678-AB90-ABCDEF123456","EventStatus":"Scheduled","EventType":"Preempt","ResourceType":"VirtualMachine","Resources":["myspotvm"],"NotBefore":"Tue, 16 Mar 2021 00:58:46 GMT","Description":"","EventSource":"Platform"}]}
+```
+
+Bunu `"EventType":"Preempt"` ve KAYNAĞıN VM kaynağı olduğunu görebilirsiniz `"Resources":["myspotvm"]` . 
+
+Ayrıca, değeri denetleyerek VM 'nin ne zaman çıkartıyor olduğunu da görebilirsiniz `"NotBefore"` . VM, ' de verilen süreden önce çıkarılmayacak `NotBefore` , bu sayede uygulamanızın uygulamanız düzgün bir şekilde kapatılabilir.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

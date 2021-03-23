@@ -1,20 +1,16 @@
 ---
 title: Bağlantı noktası ve VLAN ad çözümlemesini geliştirme
 description: Algılayıcılarınızın bağlantı noktası ve VLAN adlarını, cihaz çözümlemesine zengin bir şekilde özelleştirin.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/13/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 9c976671bccb420ae24d8def7a6574098d86ce6d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: de6fbe70d5a5359ad4e4c276642b9b9ed0cef00f
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98803585"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784178"
 ---
-# <a name="enhance-port-and-vlan-name-resolution"></a>Bağlantı noktası ve VLAN ad çözümlemesini geliştirme
+# <a name="enhance-port-vlan-and-os-resolution"></a>Bağlantı noktası, VLAN ve işletim sistemi çözünürlüğünü geliştirme
 
 Algılayıcılarınızın bağlantı noktası ve VLAN adlarını, cihaz çözümlemesine zengin olarak özelleştirebilirsiniz.
 
@@ -72,7 +68,7 @@ VLAN adları en fazla 50 ASCII karakter içerebilir.
 > VLAN adları, algılayıcı ve yönetim konsolu arasında eşitlenmez. Adı yönetim konsolunda de tanımlamanız gerekir.  
 Cisco anahtarları için, yayılma yapılandırmasına aşağıdaki satırı ekleyin: `monitor session 1 destination interface XX/XX encapsulation dot1q` . Bu komutta, *xx/xx* bağlantı noktasının adı ve numarasıdır.
 
-VLAN 'Ları yapılandırmak için:
+VLAN adlarını yapılandırmak için:
 
 1. Yan menüde **sistem ayarları**' nı seçin.
 
@@ -81,6 +77,21 @@ VLAN 'Ları yapılandırmak için:
     :::image type="content" source="media/how-to-enrich-asset-information/edit-vlan.png" alt-text="VLAN 'larınızı düzenlemek için sistem ayarlarını kullanın.":::
 
 3. Her VLAN KIMLIĞININ yanına benzersiz bir ad ekleyin.
+
+## <a name="improve-device-operating-system-classification-data-enhancement"></a>Cihaz işletim sistemi sınıflandırmasını iyileştirme: veri geliştirme
+
+Sensörler, işletim sistemi türleri de dahil olmak üzere yeni cihazların yanı sıra önceden bulunan cihazlarda yapılan değişiklikleri sürekli olarak otomatik olarak bulur.
+
+Belirli koşullarda, çakışmalar bulunan işletim sistemlerinde algılanabilir. Bu durum, örneğin, masaüstü veya sunucu sistemlerine başvuran bir işletim sistemleri sürümüne sahipseniz olabilir. Bu durumda, isteğe bağlı işletim sistemi sınıflandırmalarını içeren bir bildirim alırsınız.
+
+:::image type="content" source="media/how-to-enrich-asset-information/enhance-data-screen.png" alt-text="Verileri geliştirin.":::
+
+İşletim sistemi sınıflandırmasını zenginleştirmek için önerileri araştırın. Bu sınıflandırma cihaz envanterinde, veri araştırma raporlarında ve diğer ekranlarda görüntülenir. Bu bilgilerin güncel olduğundan emin olmak uyarıların, tehditlerin ve risk analizi raporlarının doğruluğunu iyileştirebilirler.
+
+İşletim sistemi önerilerine erişmek için:
+
+1. **Sistem ayarları**' nı seçin.
+1. **Veri geliştirmeyi** seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

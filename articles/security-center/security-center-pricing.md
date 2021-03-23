@@ -6,13 +6,13 @@ ms.author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 03/08/2021
-ms.openlocfilehash: d45dae8b0b3725555bd83a05032339671a9595be
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.date: 03/22/2021
+ms.openlocfilehash: ede812dc2ce063ec38423db73f4b269a7618e00c
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102454373"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799624"
 ---
 # <a name="azure-security-center-free-vs-azure-defender-enabled"></a>Azure Güvenlik Merkezi Ücretsiz vs Azure Defender etkin
 Azure Defender, ilk 30 gün boyunca ücretsizdir. 30 günün sonunda hizmeti kullanmaya devam etmeyi seçmeniz gerekir, kullanım için otomatik olarak ücretlendirmeye başlayacağız.
@@ -48,6 +48,7 @@ Güvenlik Merkezi iki modda sunulur:
 - [Bir Log Analytics Aracısı birden çok çalışma alanına rapor veriyor, iki kez ücretlendirilecektir.](#if-a-log-analytics-agent-reports-to-multiple-workspaces-will-i-be-charged-twice)
 - [Bir Log Analytics Aracısı birden fazla çalışma alanına bildirirse, tüm bunlar üzerinde 500 MB boş veri alma işlemi kullanılabilir mi?](#if-a-log-analytics-agent-reports-to-multiple-workspaces-is-the-500-mb-free-data-ingestion-available-on-all-of-them)
 - [Tüm çalışma alanı veya tamamen makine başına 500 MB boş veri alımı mi hesaplansın?](#is-the-500-mb-free-data-ingestion-calculated-for-an-entire-workspace-or-strictly-per-machine)
+- [500 MB boş veri sınırına hangi veri türleri dahildir?](#what-data-types-are-included-in-the-500-mb-free-data-limit)
 
 ### <a name="how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-security-center"></a>Kuruluşumun, güvenlik merkezi 'ndeki Azure Defender değişikliklerini etkinleştirdiğim kişileri nasıl izleyebilirim?
 Azure aboneliklerinde fiyatlandırma ayarlarını değiştirme izinlerine sahip birden çok yönetici olabilir. Hangi kullanıcının bir değişiklik yaptığını öğrenmek için Azure etkinlik günlüğünü kullanın.
@@ -72,7 +73,7 @@ Aboneliğiniz için Azure Defender 'ı etkinleştirmek üzere aşağıdaki yolla
 |-------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
 | Azure portal Azure Güvenlik Merkezi sayfaları | [Azure Defender’ı etkinleştirme](enable-azure-defender.md)                                                                                                  |
 | REST API                                        | [Prmerler API 'SI](/rest/api/securitycenter/pricings)                                                                                                  |
-| Azure CLI’si                                       | [az Security fiyatlandırması](/cli/azure/security/pricing)                                                                                                 |
+| Azure CLI                                       | [az Security fiyatlandırması](/cli/azure/security/pricing)                                                                                                 |
 | PowerShell                                      | [Set-Azsecurityprsosu](/powershell/module/az.security/set-azsecuritypricing)                                                                      |
 | Azure İlkesi                                    | [Paket ları](https://github.com/Azure/Azure-Security-Center/blob/master/Pricing%20%26%20Settings/ARM%20Templates/Set-ASC-Bundle-Pricing.json) |
 |                                                 |                                                                                                                                                    |
@@ -114,6 +115,24 @@ Evet. Log Analytics aracınızı, verileri iki veya daha fazla farklı Log Analy
 Çalışma alanına bağlı her makine için günde 500 MB boş veri alımı alacaksınız. Özellikle Azure Güvenlik Merkezi tarafından doğrudan toplanan güvenlik veri türleri için.
 
 Bu veri miktarı tüm düğümler arasında ortalama günlük orandır. Bu nedenle, bazı makineler 100 MB gönderiyor ve diğerleri 800-MB gönderiyor olsa da, toplam **[makine sayısı] x 500-MB** boş sınırı aşarsa ek ücret ödemezsiniz.
+
+### <a name="what-data-types-are-included-in-the-500-mb-free-data-limit"></a>500 MB boş veri sınırına hangi veri türleri dahildir?
+
+Güvenlik Merkezi 'nin faturalandırması, Log Analytics için faturalandırmaya yakın bir şekilde bağlıdır. Güvenlik Merkezi, aşağıdaki [güvenlik veri türleri](/azure/azure-monitor/reference/tables/tables-category.md#security)alt KÜMESIYLE 500 MB/node/Day tahsisi sağlar:
+- WindowsEvent
+- SecurityAlert
+- SecurityBaseline
+- SecurityBaselineSummary
+- SecurityDetection
+- SecurityEvent
+- WindowsFirewall
+- MaliciousIPCommunication
+- LinuxAuditLog
+- SysmonEvent
+- ProtectionStatus
+- Güncelleştirme Yönetimi çözümü çalışma alanında çalışmadığı veya çözüm hedefleme etkin olduğunda Update ve UpdateSummary veri türleri
+
+Çalışma alanı eski düğüm başına fiyatlandırma katmanındaysa, güvenlik merkezi ve Log Analytics ayırmaları birleştirilir ve tüm faturalandırılabilir veriler için birleştirilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu makalede Güvenlik Merkezi 'nin fiyatlandırma seçenekleri açıklanmaktadır. İlgili malzemeler için bkz.:

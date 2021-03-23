@@ -14,18 +14,22 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 03/11/2021
 ms.author: b-juche
-ms.openlocfilehash: 84213832e59c50c85d9731ced39bbce6264df47e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f4019a28e98e06ad4a115e57b2cc9d3fb6f0a807
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104590917"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802939"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Azure NetApp Files yenilikleri
 
 Azure NetApp Files düzenli olarak güncelleştirilir. Bu makale, en son yeni özellikler ve geliştirmeler hakkında bir Özet sağlar. 
 
-## <a name="march-2021"></a>Mart 2021 
+## <a name="march-2021"></a>Mart 2021
+
+* SMB sürekli kullanılabilirlik (CA) paylaşımları (Önizleme)  
+
+    SMB saydam yük devretme, SMB birimlerinde verileri depolayan ve bunlara erişen sunucu uygulamalarına bağlantıyı kesintiye uğramadan Azure NetApp Files hizmetinde bakım işlemlerine olanak sağlar. SMB saydam yük devretmeyi desteklemek için Azure NetApp Files artık Azure VM 'lerinde çalışan SMB üzerinde SQL Server uygulamalarla birlikte kullanılacak SMB sürekli kullanılabilirlik paylaşımları seçeneğini desteklemektedir. Bu özellik şu anda Windows SQL Server 'de desteklenmektedir. Linux SQL Server şu anda desteklenmiyor. Bu özelliği etkinleştirmek [, tek örnek, Always-On yük devretme kümesi örneği ve Always-On kullanılabilirlik grubu dağıtımları](azure-netapp-files-solution-architectures.md#sql-server)için önemli SQL Server performans iyileştirmeleri ve ölçek ve maliyet avantajları sağlar. [SQL Server dağıtımı için Azure NetApp Files kullanma avantajlarına](solutions-benefits-azure-netapp-files-sql-server.md)bakın.
 
 * [Çapraz bölge çoğaltma hedef biriminin otomatik olarak yeniden boyutlandırılması](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-cross-region-replication-destination-volume)
 
@@ -33,7 +37,7 @@ Azure NetApp Files düzenli olarak güncelleştirilir. Bu makale, en son yeni ö
 
 ## <a name="december-2020"></a>Aralık 2020
 
-* [Azure uygulamayla tutarlı anlık görüntü aracı](azacsnap-introduction.md) (Genel Önizleme)    
+* [Azure uygulamayla tutarlı anlık görüntü aracı](azacsnap-introduction.md) (Önizleme)    
 
     Azure uygulamayla tutarlı anlık görüntü aracı (AzAcSnap), Linux ortamlarında (örneğin, SUSE ve RHEL) üçüncü taraf veritabanları (SAP HANA) için veri korumasını basitleştirmenizi sağlayan bir komut satırı aracıdır.   
 
@@ -53,7 +57,7 @@ Azure NetApp Files düzenli olarak güncelleştirilir. Bu makale, en son yeni ö
 
 ## <a name="september-2020"></a>Eylül 2020
 
-* [Çapraz bölge çoğaltmasını Azure NetApp Files](cross-region-replication-introduction.md) (Genel Önizleme)
+* [Çapraz bölge çoğaltmasını Azure NetApp Files](cross-region-replication-introduction.md) (Önizleme)
 
   Azure NetApp Files, bölgeler arası çoğaltmayı desteklemektedir. Bu yeni olağanüstü durum kurtarma özelliği sayesinde, Azure NetApp Files birimlerinizi bir Azure bölgesinden diğerine hızlı ve ekonomik bir şekilde çoğaltıp, verileri öngörülebilir bölgesel hatalardan koruyabilirsiniz. Azure NetApp Files çapraz bölge çoğaltma, NetApp anlık görüntü® teknolojisini kullanır; yalnızca değiştirilen bloklar ağ üzerinden sıkıştırılmış, etkin bir biçimde gönderilir. Bu özel teknoloji, bölgeler genelinde çoğaltmak için gereken veri miktarını en aza indirir, bu nedenle veri aktarımı maliyetleri kaydediliyor. Ayrıca çoğaltma süresini kısaltır, bu sayede daha küçük bir geri yükleme noktası hedefi (RPO) elde edebilirsiniz.
 

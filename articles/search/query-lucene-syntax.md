@@ -8,22 +8,22 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/14/2020
-ms.openlocfilehash: 0dbf418d0a673dd0799f0f638e454c484f837fd7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: fc3662d8198e6ab6ab215ac1e9e8eac585f4250b
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97516597"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801596"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Azure Bilişsel Arama Lucene sorgu söz dizimi
 
 Sorgu oluştururken, özel sorgu formları için [Lucene sorgu ayrıştırıcı](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) sözdizimini kabul edebilirsiniz: joker karakter, benzer arama, yakınlık arama, normal ifadeler. Lucene sorgu ayrıştırıcısı sözdiziminin çoğu, deyimler aracılığıyla oluşturulan *Aralık aramaları* dışında [Azure bilişsel arama ' de bir şekilde uygulanır](search-lucene-query-architecture.md) **`$filter`** . 
 
-Full Lucene sözdizimi, **`search`** bir [arama belgeleri (REST API)](/rest/api/searchservice/search-documents) isteğinin parametresinde geçirilen sorgu ifadeleri için kullanılır, aynı istekteki ve ifadelerinde kullanılan [OData sözdizimiyle](query-odata-filter-orderby-syntax.md) karıştırılmamalıdır [**`$filter`**](search-filters.md) [**`$orderby`**](search-query-odata-orderby.md) . OData parametrelerinin sorgu oluşturma, kaçış dizeleri vb. için farklı sözdizimi ve kuralları vardır.
+Tam Lucene sözdizimini kullanmak için, queryType öğesini "Full" olarak ayarlayacaksınız ve joker karakter, belirsiz arama veya tam sözdizimi tarafından desteklenen diğer sorgu formlarından biri için bir sorgu ifadesi desenli şekilde geçirilecek. BEKLEYEN ' de sorgu ifadeleri, **`search`** [arama belgeleri (REST API)](/rest/api/searchservice/search-documents) isteğinin parametresinde sağlanır.
 
 ## <a name="example-full-syntax"></a>Örnek (tam sözdizimi)
 
-**`queryType`** Tam Lucene belirtmek için parametresini ayarlayın. Aşağıdaki örnek, alan içi arama ve terim arttırma için çağırır. Bu sorgu, Kategori alanının "bütçe" terimini içerdiği oteller için arama yapar. "Son randevu" ifadesini içeren tüm belgeler, artırma değeri (3) sonucu olarak daha yüksektir.  
+Aşağıdaki örnek, tam sözdizimi kullanılarak oluşturulan bir arama isteğidir. Bu belirli örnekte, alan içi arama ve terim arttırma gösterilmektedir. Kategori alanında "bütçe" teriminin bulunduğu oteller için arama yapar. "Son randevu" ifadesini içeren tüm belgeler, artırma değeri (3) sonucu olarak daha yüksektir.  
 
 ```http
 POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
@@ -34,9 +34,9 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 }
 ```
 
-**`searchMode`** Parametresi bu örnekle ilgilidir. Her operatör sorgu üzerinde olduğunda, genellikle `searchMode=all` ölçütlerin *tümünün* eşleştiğinden emin olmak için ayarlamanız gerekir.  
+Herhangi bir sorgu türüne özgü olmasa da **`searchMode`** parametresi bu örnekle ilgilidir. Her operatör sorgu üzerinde olduğunda, genellikle `searchMode=all` ölçütlerin *tümünün* eşleştiğinden emin olmak için ayarlamanız gerekir.  
 
-Daha fazla örnek için bkz. [Lucene sorgu söz dizimi örnekleri](search-query-lucene-examples.md). Sorgu isteği ve parametreleri hakkında daha fazla bilgi için bkz. [arama belgeleri (REST API)](/rest/api/searchservice/Search-Documents).
+Daha fazla örnek için bkz. [Lucene sorgu söz dizimi örnekleri](search-query-lucene-examples.md). SearchMode dahil olmak üzere sorgu isteği ve parametreleri hakkındaki ayrıntılar için bkz. [arama belgeleri (REST API)](/rest/api/searchservice/Search-Documents).
 
 ## <a name="syntax-fundamentals"></a><a name="bkmk_syntax"></a> Sözdizimi temelleri  
 

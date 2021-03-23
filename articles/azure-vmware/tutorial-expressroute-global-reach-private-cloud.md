@@ -3,12 +3,12 @@ title: Eğitim-şirket içi ortamlarından özel bir buluta
 description: Azure VMware çözümünde özel buluta ExpressRoute Global Reach eşlemesi oluşturmayı öğrenin.
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: ae92bf89a08c5fade8757e3ee596c4ed4a5e6389
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 08a461ab7d441eb813d435086dfcea121ef4a7f1
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103494197"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786915"
 ---
 # <a name="tutorial-peer-on-premises-environments-to-a-private-cloud"></a>Öğretici: şirket içi ortamlar için özel bir buluta
 
@@ -37,7 +37,7 @@ ExpressRoute Global Reach kullanarak iki ExpressRoute bağlantı hattı arasınd
 >[!IMPORTANT]
 >Bu önkoşulların bağlamında, şirket içi ExpressRoute bağlantı hattı devre _1_' dir ve özel bulut ExpressRoute devreniz farklı bir abonelikte ve _devre 2_' etiketlidir.
 
-## <a name="create-an-expressroute-authorization-key-in-the-on-premises-circuit"></a>Şirket içi devreye göre ExpressRoute yetkilendirme anahtarı oluşturma
+## <a name="create-an-expressroute-authorization-key-in-the-private-cloud-expressroute-circuit"></a>Özel bulut ExpressRoute devresinde bir ExpressRoute yetkilendirme anahtarı oluşturma
 
 [!INCLUDE [request-authorization-key](includes/request-authorization-key.md)]
  

@@ -1,19 +1,14 @@
 ---
 title: Splunk tümleştirmesi hakkında
-titleSuffix: Azure Defender for IoT
 description: Güvenlik ve ağ dayanıklılığı açısından bir görünürlük olmaması için, IoT için Defender, IoT ve splunk için Defender ile ilgili Birleşik bir yaklaşım ve güvenlik gibi yerel bir tümleştirme sağlayan IoT, IIoT ve ICS tehdit izleme uygulaması için Defender 'ı geliştirmiştir.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/4/2021
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: 91d877d644b4b5ca7231f5f81f9163a0fd3cbe25
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 28bdc6deaac09d795c45460bb211126a105b80c8
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98558573"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104785929"
 ---
 # <a name="defender-for-iot-and-ics-threat-monitoring-application-for-splunk"></a>Splunk için IoT ve ICS tehdit izleme uygulaması
 
@@ -158,7 +153,7 @@ Bir iletme kuralı oluşturmak için:
     | **Önem derecesi seçin** | İletilmek üzere en az güvenlik düzeyi olay. Örneğin, ara seçilirse, bu önem düzeyinin üzerindeki küçük uyarılar ve herhangi bir uyarı iletilir. |
     | **Protokoller** | Varsayılan olarak, tüm protokoller seçilidir. Belirli bir protokolü seçmek için, **özel** ' i seçin ve bu kuralın uygulandığı protokolü seçin. |
     | **Yapılarının** | Varsayılan olarak, tüm güvenlik motorları dahil edilir. Bu kuralın uygulandığı belirli bir güvenlik altyapısını seçmek için, **özel** ' i seçin ve altyapıyı seçin. |
-    | **Sistem bildirimleri** | Sensöri çevrimiçi/çevrimdışı durumu ilet. Bu seçenek yalnızca merkezi yöneticisinde oturum açtıysanız kullanılabilir. |                                            |
+    | **Sistem bildirimleri** | Sensöri çevrimiçi/çevrimdışı durumu ilet. Bu seçenek yalnızca merkezi yöneticisinde oturum açtıysanız kullanılabilir. |
 
 1. Defender 'ın IoT için varlık bilgilerini splunk 'a göndermesini bildirmek üzere **eylem**' i seçin ve ardından **splunk sunucusuna gönder**' i seçin.
 

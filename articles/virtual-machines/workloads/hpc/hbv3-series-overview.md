@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/12/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: b1f2800c3787cd28437afa70b78ef8388461e413
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: d1abd03f517f9e0b13a2994418cbae5cfbe22454
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104721172"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801884"
 ---
 # <a name="hbv3-series-virtual-machine-overview"></a>HBv3-serisi sanal makineye genel bakış 
 
@@ -32,6 +32,9 @@ Sonuç olarak, sunucu her 32 çekirdekte çekirdek olarak 4 NUMA etki alanı (yu
 Azure Hiper Yöneticisi 'nin VM ile kesintiye uğramadan çalışması için oda sağlamak üzere sunucu başına 8 fiziksel çekirdek ayırdık. 
 
 Kısıtlanmış çekirdek VM boyutlarının yalnızca VM 'ye açık olan fiziksel çekirdek sayısını azaltdığına göz önünde unutmayın. Tüm genel paylaşılan varlıklar (RAM, bellek bant genişliği, L3 önbelleği, GMı ve Xgmı bağlantısı, InfiniBand, Azure Ethernet ağı, yerel SSD) sabit kalır. Bu, bir müşterinin belirli bir iş yükü veya yazılım lisanslama gereksinimlerine göre en uygun bir VM boyutu seçmesine olanak sağlar.
+
+Aşağıdaki diyagramda, Azure Hiper Yöneticisi (sarı) ve HBv3 serisi VM (yeşil) için ayrılan çekirdekler gösterilmektedir.
+![Azure hiper yönetici ve HBv3 serisi VM için ayrılan çekirdekler](./media/architecture/hbv3-segregation-cores.png)
 
 ## <a name="infiniband-networking"></a>InfiniBand ağ iletişimi
 HBv3 VM 'Leri, 200 Gigabit/sn 'ye kadar çalışan NVIDIA Mellanox HDR InfiniBand ağ bağdaştırıcıları (ConnectX-6) özelliğini de kullanabilir. NIC, SRLOV aracılığıyla sanal makineye geçirilir ve ağ trafiğini hiper yöneticiyi atlayacak şekilde etkinleştirir. Sonuç olarak, müşteriler çıplak bir ortama göre HBv3 VM 'lerinde standart Mellanox Ed sürücüleri yükler.

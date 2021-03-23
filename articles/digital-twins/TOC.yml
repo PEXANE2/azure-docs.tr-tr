@@ -255,8 +255,8 @@
           href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/digital_twins_endpoint_servicebus'
     - name: Araçlar ve örnek projeler
       items:
-        - name: Cihaz simülatörü hizmeti
-          href: 'https://github.com/Azure/device-simulation-dotnet/tree/master'
+        - name: Azure dijital TWINS Postman koleksiyonu
+          href: 'https://github.com/microsoft/azure-digital-twins-postman-samples'
         - name: Azure Digital Twins uçtan uca örnekleri
           href: /samples/azure-samples/digital-twins-samples/digital-twins-samples/
         - name: Azure Digital Twins gezgini (örnek)
@@ -275,6 +275,8 @@
           href: /samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/
         - name: Logic Apps bağlayıcısı için özel Swagger’lar
           href: /samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/
+        - name: Cihaz simülatörü hizmeti
+          href: 'https://github.com/Azure/device-simulation-dotnet/tree/master'
     - name: DTDL
       items:
         - name: VS Code için DTDL uzantısı

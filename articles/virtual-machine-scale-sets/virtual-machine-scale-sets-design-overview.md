@@ -10,12 +10,12 @@ ms.subservice: management
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 99dc7a2350631f662e1c993908f7ef56e4f9a194
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 04446243ed827cca4972a4b606c4930e74a2c704
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88648573"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774975"
 ---
 # <a name="design-considerations-for-scale-sets"></a>Ölçek Kümeleri Için tasarım konuları
 Bu makalede, sanal makine ölçek kümelerine ilişkin tasarım konuları ele alınmaktadır. Sanal makine ölçek kümelerinin ne olduğu hakkında bilgi için [sanal makine ölçek kümelerine genel bakış](./overview.md)bölümüne bakın.
@@ -67,4 +67,4 @@ Kullanıcı tarafından yönetilen depolama hesaplarıyla yapılandırılmış b
 
 Özel bir görüntüde oluşturulan ölçek kümesi (sizin tarafınızdan oluşturulan), Azure yönetilen disklerle yapılandırıldığında 600 sanal makineye kadar kapasiteye sahip olabilir. Ölçek kümesi Kullanıcı tarafından yönetilen depolama hesaplarıyla yapılandırıldıysa, tek bir depolama hesabında tüm işletim sistemi diski VHD 'lerini oluşturması gerekir. Sonuç olarak, özel bir görüntü ve Kullanıcı tarafından yönetilen depolama üzerinde oluşturulan bir ölçek kümesindeki en fazla önerilen sanal makine sayısı 20 ' dir. Aşırı sağlamayı kapatırsanız 40 'e kadar gidebilirsiniz.
 
-Bu limitlerin izin verenden daha fazla VM için, [Bu şablonda](https://github.com/Azure/azure-quickstart-templates/tree/master/301-custom-images-at-scale)gösterildiği gibi birden çok ölçek kümesi dağıtmanız gerekir.
+Bu limitlerin izin verenden daha fazla VM için, [Bu şablonda](https://azure.microsoft.com/resources/templates/301-custom-images-at-scale/)gösterildiği gibi birden çok ölçek kümesi dağıtmanız gerekir.

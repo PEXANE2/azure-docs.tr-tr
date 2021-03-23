@@ -1,24 +1,15 @@
 ---
 title: Defender-IoT-mikro-aracı Azure RTOS API 'SI
 description: Azure RTOS için Defender-IoT-Micro-Agent için başvuru API 'SI.
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: mlottner
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/07/2020
 ms.author: mlottner
-ms.openlocfilehash: 9a285636ba10f7ca0668f597d0e9016cff73494a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e7000a7e6d8ba332432f1ececa12bd9543e9e4a7
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103494301"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779401"
 ---
 # <a name="defender-iot-micro-agent-for-azure-rtos-api-preview"></a>Defender-IoT-mikro-aracı Azure RTOS API (Önizleme)
 
@@ -34,7 +25,7 @@ Bu API yalnızca Azure RTOS için Defender-IoT-mikro-Agent ile kullanılmaya yö
 UINT nx_azure_iot_security_module_enable(NX_AZURE_IOT *nx_azure_iot_ptr);
 ```
 
-### <a name="description"></a>Description
+### <a name="description"></a>Açıklama
 
 Bu yordam, Azure IoT Defender-IoT-mikro-Agent alt sistemini sunar. Bir iç durum makinesi güvenlik olaylarının toplanmasını yönetir ve bunları Azure IoT Hub gönderir. Veri toplamayı yönetmek için yalnızca bir NX_AZURE_IOT_SECURITY_MODULE örneği gerekir ve gereklidir.
 
@@ -46,7 +37,7 @@ Bu yordam, Azure IoT Defender-IoT-mikro-Agent alt sistemini sunar. Bir iç durum
 
 ### <a name="return-values"></a>Dönüş değerleri
 
-|Dönüş değerleri  |Description |
+|Dönüş değerleri  |Açıklama |
 |---------|---------|
 |NX_AZURE_IOT_SUCCESS|   Azure IoT güvenlik modülü başarıyla etkinleştirildi.     |
 |NX_AZURE_IOT_FAILURE   |  Azure IoT güvenlik modülü bir iç hata nedeniyle etkinleştirilemedi.    |
@@ -67,7 +58,7 @@ Bu yordam, Azure IoT Defender-IoT-mikro-Agent alt sistemini sunar. Bir iç durum
 UINT nx_azure_iot_security_module_disable(NX_AZURE_IOT *nx_azure_iot_ptr);
 ```
 
-### <a name="description"></a>Description
+### <a name="description"></a>Açıklama
 
 Bu yordam, Azure IoT Defender-IoT-mikro-Agent alt sistemini devre dışı bırakır.
 
@@ -79,7 +70,7 @@ Bu yordam, Azure IoT Defender-IoT-mikro-Agent alt sistemini devre dışı bırak
 
 ### <a name="return-values"></a>Dönüş değerleri
 
-|Dönüş değerleri  |Description |
+|Dönüş değerleri  |Açıklama |
 |---------|---------|
 |NX_AZURE_IOT_SUCCESS     |   Azure IoT güvenlik modülü başarıyla devre dışı bırakıldığında başarılı olur.      |
 |NX_AZURE_IOT_INVALID_PARAMETER   |  Azure IoT Hub örneği, Singleton bileşik örneğinden farklı.       |

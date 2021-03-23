@@ -10,12 +10,12 @@ ms.date: 03/03/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: da869091fb1f7bf31a29ba1bc6db8c1c42254dc4
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: b959038753dd15282de357da746ef9b0e0cf2be5
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102618092"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802276"
 ---
 # <a name="point-in-time-restore-for-block-blobs"></a>Blok Blobları için noktadan noktaya geri yükleme
 
@@ -53,9 +53,11 @@ Tek seferde bir depolama hesabında yalnızca bir geri yükleme işlemi çalış
 
 Zaman içinde geri yükleme, zaman içinde nokta geri yüklemeyi etkinleştirebilmeniz için aşağıdaki Azure depolama özelliklerinin etkinleştirilmesini gerektirir:
 
-- [Geçici silme](./soft-delete-blob-overview.md)
+- [Geçici silme](soft-delete-blob-overview.md)
 - [Akışı Değiştir](storage-blob-change-feed.md)
 - [Blob sürümü oluşturma](versioning-overview.md)
+
+Bu özelliklerin etkinleştirilmesi ek ücretler oluşmasına neden olabilir. Güncel nokta geri yükleme ve önkoşul özelliklerini etkinleştirmeden önce faturalandırma etkilerini anladığınızdan emin olun.
 
 ### <a name="retention-period-for-point-in-time-restore"></a>Zaman içinde bir noktaya geri yükleme için bekletme süresi
 
@@ -88,6 +90,8 @@ Blok Blobları için bir noktadan noktaya geri yükleme aşağıdaki sınırlama
 > Blok bloblarını 22 Eylül 2020 ' den önceki bir noktaya geri yüklerseniz, zaman içinde nokta geri yükleme için Önizleme sınırlamaları geçerli olur. Microsoft, genel kullanıma açık zaman noktası geri yükleme özelliğinden yararlanmak için 22 Eylül 2020 ' den veya sonraki bir sürüme eşit olan bir geri yükleme noktası seçmenizi önerir.
 
 ## <a name="pricing-and-billing"></a>Fiyatlandırma ve Faturalama
+
+Zaman içinde geri yüklemeyi etkinleştirmek için ücret alınmaz. Ancak, zaman içinde geri yüklemeyi etkinleştirmek, blob sürümü oluşturma, geçici silme ve değişiklik akışını, bunların her biri ek ücretlere neden olabilecek şekilde etkinleştirir.
 
 Bir noktadan noktaya geri yükleme için faturalandırma, geri yükleme işlemini gerçekleştirmek için işlenen veri miktarına bağlıdır. İşlenen veri miktarı, geri yükleme noktası ve var olan süre arasında gerçekleşen değişiklik sayısına göre belirlenir. Örneğin, bir depolama hesabındaki blob verilerini engellemek için görece sabit bir değişiklik oranının olduğunu varsayarsak, 1 gün içinde geri kalan geri yükleme işlemi 10 gün sonra geri kalan bir geri yükleme maliyeti 1/10 ' dur.
 

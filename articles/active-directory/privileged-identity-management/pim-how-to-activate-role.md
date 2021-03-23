@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/18/2020
+ms.date: 03/22/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 079dcdc9d1667809779489c5d1126bc85cafb881
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fa9861dd1ffbdd33f59abe76c7ebbd1befe3e7a6
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96511348"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799437"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>PIM'de Azure AD rollerimi etkinleştirme
 
@@ -110,11 +110,7 @@ Onay gerektiren bir rolün etkinleştirilmesini gerektirmiyorsa, bekleyen bir is
 
 ### <a name="permissions-are-not-granted-after-activating-a-role"></a>Rol etkinleştirildikten sonra izinler verilmiyor
 
-Privileged Identity Management bir rolü etkinleştirdiğinizde, etkinleştirme ayrıcalıklı rol gerektiren tüm portallara anında yaymayabilir. Bazı durumlarda değişiklik yayılsa bile portalda web önbelleği değişikliğin anında geçerlilik kazanmamasına yol açabilir. Etkinleştirme gecikirse, yapmanız gerekenler aşağıda verilmiştir.
-
-1. Azure portalında oturumunuzu kapatın ve sonra yeniden oturum açın.
-
-1. Privileged Identity Management, rolün üyesi olarak listelendiğinizi doğrulayın.
+Privileged Identity Management bir rolü etkinleştirdiğinizde, etkinleştirme ayrıcalıklı rol gerektiren tüm portallara anında yaymayabilir. Bazı durumlarda değişiklik yayılsa bile portalda web önbelleği değişikliğin anında geçerlilik kazanmamasına yol açabilir. Etkinleştirme gecikirse, eylemi gerçekleştirmeye çalıştığınız portalın oturumunu kapatın ve yeniden oturum açın. Azure portal, PıM oturumunuzu otomatik olarak kapatır ve geri dönebilir.
 
 # <a name="previous-version"></a>[Önceki sürüm](#tab/previous)
 
@@ -216,13 +212,7 @@ Onay gerektiren bir rolün etkinleştirilmesini gerektirmiyorsa, bekleyen bir is
 
 ### <a name="permissions-are-not-granted-after-activating-a-role"></a>Rol etkinleştirildikten sonra izinler verilmiyor
 
-Privileged Identity Management bir rolü etkinleştirdiğinizde, etkinleştirme ayrıcalıklı rol gerektiren tüm portallara anında yaymayabilir. Bazı durumlarda değişiklik yayılsa bile portalda web önbelleği değişikliğin anında geçerlilik kazanmamasına yol açabilir. Etkinleştirme gecikirse, yapmanız gerekenler aşağıda verilmiştir.
-
-1. Azure portalında oturumunuzu kapatın ve sonra yeniden oturum açın.
-
-    Bir Azure AD rolünü etkinleştirdiğinizde, etkinleştirmesinin aşamalarını görürsünüz. Tüm aşamalar tamamlandıktan sonra bir **Oturumu kapat** bağlantısı görürsünüz. Oturumu kapatmak için bu bağlantıyı kullanabilirsiniz. Bu, etkinleştirme gecikmesi için çoğu durumu çöztirecek.
-
-1. Privileged Identity Management, rolün üyesi olarak listelendiğinizi doğrulayın.
+Privileged Identity Management bir rolü etkinleştirdiğinizde, etkinleştirme, Office 365 Portalı gibi Azure portal dışındaki yönetim portallarında gecikiyor olabilir. Etkinleştirme gecikirse, kullandığınız portalın oturumunu kapatın ve yeniden oturum açın. Ardından, rolün üyesi olarak listelendiğinizi doğrulamak için Privileged Identity Management kullanın.
 
  ---
 

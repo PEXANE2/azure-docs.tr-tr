@@ -366,8 +366,6 @@
           href: search-query-troubleshoot-collection-filters.md
         - name: Koleksiyon filtrelerini anlama
           href: search-query-understand-collection-filters.md
-        - name: Dile göre filtrele
-          href: search-filters-language.md
         - name: Metni Normalleştir
           href: search-normalizers.md
     - name: İlgi düzeyi
@@ -442,7 +440,7 @@
           href: cognitive-search-common-errors-warnings.md
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/search
     - name: Azure PowerShell
       href: /powershell/module/az.search

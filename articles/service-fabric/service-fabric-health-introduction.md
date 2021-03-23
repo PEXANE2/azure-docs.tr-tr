@@ -5,12 +5,12 @@ author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
-ms.openlocfilehash: f691eb6433907ed10737329de3edd78547f130f1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6c96651fa48acc2f88658148c7e60be2f3fa09da
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96008285"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800168"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Service Fabric sistem durumu izlemeye giriş
 Azure Service Fabric, zengin, esnek ve Genişletilebilir sistem durumu değerlendirmesi ve raporlama sağlayan bir sistem durumu modeli sunar. Model, küme durumunun ve üzerinde çalışan hizmetlerin neredeyse gerçek zamanlı olarak izlenmesine olanak tanır. Kolayca sistem durumu bilgilerini alabilir ve olası sorunları basamaklandırmadan ve büyük kesintilere neden olacak şekilde düzeltebilirsiniz. Tipik modelde, hizmetler raporları yerel görünümlerine göre gönderir ve bu bilgiler genel bir küme düzeyi görünüm sağlamak için toplanır.
@@ -79,6 +79,7 @@ Varsayılan olarak Service Fabric, üst-alt hiyerarşik ilişki için katı kura
 
 ### <a name="cluster-health-policy"></a>Küme durumu ilkesi
 Küme [sistem durumu ilkesi](/dotnet/api/system.fabric.health.clusterhealthpolicy) , küme sistem durumu ve düğüm durumu durumlarını değerlendirmek için kullanılır. İlke, küme bildiriminde tanımlanabilir. Mevcut değilse, varsayılan ilke (sıfır toleranslı başarısızlık) kullanılır.
+
 Küme durumu ilkesi şunları içerir:
 
 * [ConsiderWarningAsError](/dotnet/api/system.fabric.health.clusterhealthpolicy.considerwarningaserror). Sistem durumu değerlendirmesi sırasında uyarı durumu raporlarının hata olarak değerlendirilip değerlendirilmeyeceğini belirtir. Varsayılan: false.
@@ -87,18 +88,33 @@ Küme durumu ilkesi şunları içerir:
 * [Applicationtypehealthpolicymap](/dotnet/api/system.fabric.health.clusterhealthpolicy.applicationtypehealthpolicymap). Uygulama türü sistem durumu ilkesi eşlemesi, özel uygulama türlerini belirtmek için küme durumu değerlendirmesi sırasında kullanılabilir. Varsayılan olarak, tüm uygulamalar bir havuza konur ve Maxyüztunhealthuygulamaplications ile değerlendirilir. Bazı uygulama türleri farklı şekilde değerlendirilmelidir, bu, genel havuzdan alınmış olabilir. Bunun yerine, haritadaki uygulama türü adlarıyla ilişkili yüzdelerle değerlendirilir. Örneğin, bir kümede farklı türlerde binlerce uygulama vardır ve özel bir uygulama türünün birkaç denetim uygulaması örneği vardır. Denetim uygulamaları asla hata içermemelidir. Bazı hatalara sızmak için genel Maxyüztunhealthtoplications ' ı %20 olarak belirtebilirsiniz ancak "ControlApplicationType" uygulama türü için Maxyüztunhealthtoplications değerini 0 olarak ayarlayın. Bu şekilde, birçok uygulamanın bir kısmı sağlıksız ise, ancak genel sağlıksız yüzdesinin altında, küme uyarı olarak değerlendirilir. Uyarı sistem durumu, küme yükseltmesini veya hata sistem durumu tarafından tetiklenen diğer izlemeyi etkilemez. Aynı olsa da, hata içindeki bir denetim uygulaması, yükseltme yapılandırmasına bağlı olarak, küme yükseltmesini tetikleyen veya durakladığında kümeyi sağlıksız hale getirir.
   Haritada tanımlanan uygulama türleri için, tüm uygulama örnekleri genel uygulama havuzunda alınır. Bu uygulamalar, eşlemedeki belirli Maxyüztunhealthme plications kullanılarak uygulama türünün Toplam uygulama sayısına göre değerlendirilir. Tüm uygulamaların geri kalanı genel havuzda kalır ve Maxyüztunhealthyapplications ile değerlendirilir.
 
-Aşağıdaki örnek, bir küme bildiriminin alıntısıdır. Uygulama türü eşlemesinde girdileri tanımlamak için, parametre adının önüne "Applicationtypemaxyüztunhealthyapplications-" ve ardından uygulama türü adını ekleyin.
+  Aşağıdaki örnek, bir küme bildiriminin alıntısıdır. Uygulama türü eşlemesinde girdileri tanımlamak için, parametre adının önüne "Applicationtypemaxyüztunhealthyapplications-" ve ardından uygulama türü adını ekleyin.
 
-```xml
-<FabricSettings>
-  <Section Name="HealthManager/ClusterHealthPolicy">
-    <Parameter Name="ConsiderWarningAsError" Value="False" />
-    <Parameter Name="MaxPercentUnhealthyApplications" Value="20" />
-    <Parameter Name="MaxPercentUnhealthyNodes" Value="20" />
-    <Parameter Name="ApplicationTypeMaxPercentUnhealthyApplications-ControlApplicationType" Value="0" />
-  </Section>
-</FabricSettings>
-```
+  ```xml
+  <FabricSettings>
+    <Section Name="HealthManager/ClusterHealthPolicy">
+      <Parameter Name="ConsiderWarningAsError" Value="False" />
+      <Parameter Name="MaxPercentUnhealthyApplications" Value="20" />
+      <Parameter Name="MaxPercentUnhealthyNodes" Value="20" />
+      <Parameter Name="ApplicationTypeMaxPercentUnhealthyApplications-ControlApplicationType" Value="0" />
+    </Section>
+  </FabricSettings>
+  ```
+
+* [Nodetypehealthpolicymap](/dotnet/api/system.fabric.health.clusterhealthpolicy.nodetypehealthpolicymap). Düğüm türü sistem durumu ilkesi eşlemesi, özel düğüm türlerini belirtmek için küme durumu değerlendirmesi sırasında kullanılabilir. Düğüm türleri, haritadaki düğüm türü adlarıyla ilişkili yüzdelerde değerlendirilir. Bu değerin ayarlanması için kullanılan düğümlerin genel havuzu üzerinde hiçbir etkisi yoktur `MaxPercentUnhealthyNodes` . Örneğin, bir kümede farklı türlerde yüzlerce düğüm ve önemli işleri barındıran birkaç düğüm türü vardır. Bu türde hiçbir düğüm kapatılamadı. `MaxPercentUnhealthyNodes`Tüm düğümlerde bazı hatalara yönelik olarak genel ' i %20 ' yi belirtebilir, ancak düğüm türü için `SpecialNodeType` , öğesini `MaxPercentUnhealthyNodes` 0 olarak ayarlayın. Bu şekilde, bazı çok sayıda düğüm sağlıksız olsa da genel sağlıksız yüzdesinin altındaysa, küme uyarı sistem durumunda olduğu gibi değerlendirilir. Uyarı sistem durumu, küme yükseltmesini veya hata sistem durumu tarafından tetiklenen diğer izlemeyi etkilemez. Ancak, `SpecialNodeType` bir hata sağlık durumunda türünde bir düğüm bile, yükseltme yapılandırmasına bağlı olarak, kümeyi sağlıksız hale getirir ve geri alma işlemini tetikler veya küme yükseltmesini duraklatıp. Buna karşılık, genel ' i `MaxPercentUnhealthyNodes` 0 ' a ayarlamak ve `SpecialNodeType` hata durumunda en fazla sağlıksız düğümleri 100 olarak ayarlamak, `SpecialNodeType` genel kısıtlama bu durumda daha sıkı olduğundan kümeyi bir hata durumuna koymaya devam eder. 
+
+  Aşağıdaki örnek, bir küme bildiriminin alıntısıdır. Düğüm türü eşlemesindeki girdileri tanımlamak için, parametre adının önüne "Nodetypemaxyüztunhealthyınodes-" ekleyin ve ardından düğüm türü adını ekleyin.
+
+  ```xml
+  <FabricSettings>
+    <Section Name="HealthManager/ClusterHealthPolicy">
+      <Parameter Name="ConsiderWarningAsError" Value="False" />
+      <Parameter Name="MaxPercentUnhealthyApplications" Value="20" />
+      <Parameter Name="MaxPercentUnhealthyNodes" Value="20" />
+      <Parameter Name="NodeTypeMaxPercentUnhealthyNodes-SpecialNodeType" Value="0" />
+    </Section>
+  </FabricSettings>
+  ```
 
 ### <a name="application-health-policy"></a>Uygulama sistem durumu ilkesi
 [Uygulama sistem durumu ilkesi](/dotnet/api/system.fabric.health.applicationhealthpolicy) , uygulamalar ve bunların alt öğeleri için olay değerlendirmesinin ve alt durum toplama işlemlerinin nasıl yapıldığını açıklar. Uygulama paketindeki **ApplicationManifest.xml** uygulama bildiriminde tanımlanabilir. Hiçbir ilke belirtilmemişse Service Fabric, bir sistem durumu raporu veya uyarı ya da hata sistem durumunda alt öğe varsa varlığın sağlıksız olduğunu varsayar.

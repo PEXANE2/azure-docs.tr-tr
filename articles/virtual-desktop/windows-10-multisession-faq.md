@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: aafac1133b2bee54624d5f0b00061c5332fcd90b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5c03d3f9769aec0736d23f18372701e08ad93dac
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102631889"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802803"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Windows 10 Enterprise çoklu oturum hakkında SSS
 
@@ -33,9 +33,13 @@ Windows 10 Enterprise çoklu oturum, Windows 10 Enterprise 'ın sanal bir sürü
 
 Windows 10 Enterprise çoklu oturum, Azure için Windows sanal masaüstü hizmeti için iyileştirildiğinden, şirket içi üretim ortamlarında çalıştırılamaz. Üretim amacıyla Azure dışında Windows 10 Kurumsal Çoklu oturum çalıştırmak için lisanslama anlaşmasıyla karşılaştırılır. Windows 10 Enterprise çoklu oturum, şirket içi anahtar yönetim hizmetleri 'nde (KMS) etkinleştirilemez.
 
+## <a name="can-i-upgrade-a-windows-10-vm-to-windows-10-enterprise-multi-session"></a>Windows 10 VM 'yi Windows 10 Kurumsal Çoklu oturum 'ye yükseltebilir miyim?
+
+Hayır. Windows 10 Professional veya Enterprise çalıştıran var olan bir sanal makineyi (VM) Windows 10 Enterprise çoklu oturumuna yükseltmek mümkün değildir. Ayrıca, bir Windows 10 Kurumsal Çoklu oturum sanal makinesi dağıtıp daha sonra ürün anahtarını başka bir sürüme güncelleştirirseniz, VM 'yi yeniden Windows 10 Kurumsal Çoklu oturum 'a ve VM 'yi yeniden dağıtmanız gerekecektir.
+
 ## <a name="how-do-i-customize-the-windows-10-enterprise-multi-session-image-for-my-organization"></a>Windows 10 Enterprise çoklu oturum görüntüsünü Kuruluşum için Nasıl yaparım? özelleştirmek ister misiniz?
 
-Azure 'da bir sanal makineyi (VM) Windows 10 Windows 10 Enterprise çoklu oturum ile başlatabilir ve LOB uygulamalarını yükleyerek, Sysprep/genelleştirin ve ardından Azure portal kullanarak bir görüntü oluşturabilirsiniz.
+Azure 'da bir VM 'yi Windows 10 Windows 10 Enterprise çoklu oturum ile başlatabilir ve LOB uygulamalarını yükleyerek, Sysprep/genelleştirin ve ardından Azure portal kullanarak bir görüntü oluşturabilirsiniz.
 
 Başlamak için, Windows 10 Enterprise çoklu oturum ile Azure 'da bir VM oluşturun. VM 'yi Azure 'da başlatmak yerine doğrudan VHD 'yi indirebilirsiniz. Bundan sonra, Hyper-V ' y i destekleyen bir Windows 10 bilgisayarında yeni nesil 1 VM oluşturmak için indirdiğiniz VHD 'yi kullanabileceksiniz.
 

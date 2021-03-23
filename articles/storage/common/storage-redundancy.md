@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/02/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 955d3330d3f08d7e7f024ec2c36941d02244d9ba
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7ecf3d23f745d9281008433eee471c14c7afe337
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101726845"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802208"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Depolama yedekliliği
 
@@ -32,6 +32,9 @@ Azure depolama hesabındaki veriler her zaman birincil bölgede üç kez çoğal
 
 - **Yerel olarak yedekli depolama (LRS)** , verilerinizi, birincil bölgedeki tek bir fiziksel konum içinde zaman uyumlu olarak üç kez kopyalar. LRS, en az maliyetli çoğaltma seçeneğidir, ancak yüksek kullanılabilirlik gerektiren uygulamalar için önerilmez.
 - Bölgesel olarak **yedekli depolama (ZRS)** , verilerinizi, birincil bölgedeki üç Azure kullanılabilirlik bölgesi üzerinden eşzamanlı olarak kopyalar. Microsoft, yüksek kullanılabilirlik gerektiren uygulamalar için birincil bölgede ZRS kullanımını ve ayrıca bir ikincil bölgeye çoğaltmayı önerir.
+
+> [!NOTE]
+> Microsoft, Azure Data Lake Storage 2. iş yükleri için birincil bölgede ZRS kullanılmasını önerir.
 
 ### <a name="locally-redundant-storage"></a>Yerel olarak yedekli depolama
 

@@ -1,18 +1,14 @@
 ---
 title: Yüksek kullanılabilirliği ayarlama
 description: Şirket içi yönetim konsolu yüksek kullanılabilirlik gereci yükleyerek Defender 'ın IoT dağıtımı esnekliğini artırın. Yüksek kullanılabilirlik dağıtımları, yönetilen sensörlerinizin etkin bir şirket içi yönetim konsoluna sürekli olarak raporlabilirliğini sağlar.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: eb5f2c6293042f44de5e3c061c6d379bee6e5b06
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d0e09cd37fbae91d1903ca8f175c0592b567da6e
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100523898"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781662"
 ---
 # <a name="about-high-availability"></a>Yüksek kullanılabilirlik hakkında
 

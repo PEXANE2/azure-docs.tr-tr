@@ -1,7 +1,14 @@
 - name: Azure
-  tocHref: /azure/
+  tocHref: /azure
   topicHref: /azure/index
   items:
-    - name: Endüstriyel IoT
-      tocHref: /azure/sql-database/
-      topicHref: /azure/industrial-iot/index
+    - name: Nesnelerin İnterneti
+      tocHref: /azure/iot-fundamentals/
+      topicHref: /azure/iot-fundamentals/index
+      items:
+        - name: Endüstriyel IoT
+          tocHref: /azure/industrial-iot/
+          topicHref: /azure/industrial-iot/index
+        - name: IoT Çözüm Hızlandırıcıları
+          tocHref: /azure/iot-fundamentals/
+          topicHref: /azure/industrial-iot/index

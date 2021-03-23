@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/16/2020
-ms.openlocfilehash: 4061df2dfcfb4cf993e2312fb3438de66863a476
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 717c3c8052c89825b161f77614d7411c5912d1cd
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98942673"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799913"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>HDInsight 'ta Apache Hadoop kümelerinde boş kenar düğümlerini kullanma
 
@@ -58,7 +58,7 @@ Edge düğümü oluşturduktan sonra, SSH kullanarak kenar düğümüne bağlana
 > [!WARNING]
 > Edge düğümüne yüklenen özel bileşenler, Microsoft 'tan ticari olarak makul bir destek alır. Bu, karşılaştığınız sorunların çözümlenmesinde ortaya çıkabilir. Ya da, daha fazla yardım için topluluk kaynaklarına da başvurulabilir. Topluluktan yardım almak için en etkin sitelerin bazıları aşağıda verilmiştir:
 >
-> * [Microsoft Q&HDInsight için soru sayfası] (/Yanıtlayıcı/topics/azure-hdinsight.html
+> * [HDInsight için Microsoft Q&soru sayfası](/answers/topics/azure-hdinsight.html)
 > * [https://stackoverflow.com](https://stackoverflow.com).
 >
 > Apache teknolojisi kullanıyorsanız, üzerinde Apache Hadoop sitesi gibi Apache proje siteleri aracılığıyla yardım bulabilirsiniz [https://apache.org](https://apache.org) . [](https://hadoop.apache.org/)

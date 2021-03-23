@@ -5,22 +5,18 @@ services: active-directory
 documentationcenter: ''
 author: rolyon
 manager: mtillman
-ms.assetid: ''
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/18/2021
+ms.date: 03/22/2021
 ms.author: rolyon
-ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: f6ae9ff27e773c36626812387b1284d660cbf39d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5b2ec3289d187997763ee0d9280a777d4fa1f396
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98602465"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801766"
 ---
 # <a name="understand-azure-role-definitions"></a>Azure rol tanımlarını anlama
 
@@ -63,7 +59,7 @@ Aşağıdaki tabloda rol özelliklerinin anlamı açıklanmaktadır.
 | Özellik | Açıklama |
 | --- | --- |
 | `Name`</br>`roleName` | Rolün görünen adı. |
-| `Id`</br>`name` | Rolün benzersiz KIMLIĞI. |
+| `Id`</br>`name` | Rolün benzersiz KIMLIĞI. Yerleşik roller, bulutlar genelinde aynı rol KIMLIĞINE sahiptir. |
 | `IsCustom`</br>`roleType` | Bunun özel bir rol olup olmadığını gösterir. `true`Özel roller için veya olarak ayarlayın `CustomRole` . `false`Yerleşik roller için veya olarak ayarlayın `BuiltInRole` . |
 | `Description`</br>`description` | Rolün açıklaması. |
 | `Actions`</br>`actions` | Rolün gerçekleştirilmesine izin verdiği yönetim işlemlerini belirten dizeler dizisi. |
@@ -80,7 +76,7 @@ Aşağıdaki tabloda rol özelliklerinin anlamı açıklanmaktadır.
 
 Bir `{action}` işlem dizesinin bölümü, bir kaynak türü üzerinde gerçekleştirebileceğiniz işlem türünü belirtir. Örneğin, içinde aşağıdaki alt dizeleri görürsünüz `{action}` :
 
-| Eylem alt dizesi    | Description         |
+| Eylem alt dizesi    | Açıklama         |
 | ------------------- | ------------------- |
 | `*` | Joker karakter karakteri dize ile eşleşen tüm işlemlere erişim verir. |
 | `read` | Okuma işlemlerini (GET) etkinleştirilir. |
@@ -281,7 +277,7 @@ REST API veri işlemlerini görüntülemek ve kullanmak için, **API sürümü**
 `Actions`İzin, rolün gerçekleştirilmesine izin verdiği yönetim işlemlerini belirler. Azure Kaynak sağlayıcılarının güvenli kılınabilir işlemlerini tanımlayan bir işlem dizeleri koleksiyonudur. Burada, ' de kullanılabilen yönetim işlemlerine ilişkin bazı örnekler verilmiştir `Actions` .
 
 > [!div class="mx-tableFixed"]
-> | İşlem dizesi    | Description         |
+> | İşlem dizesi    | Açıklama         |
 > | ------------------- | ------------------- |
 > | `*/read` | Tüm Azure Kaynak sağlayıcılarının tüm kaynak türleri için okuma işlemlerine erişim izni verir.|
 > | `Microsoft.Compute/*` | Microsoft. COMPUTE kaynak sağlayıcısındaki tüm kaynak türleri için tüm işlemlere erişim verir.|
@@ -318,7 +314,7 @@ Bir rol ataması erişimine izin veriyorsa, atamaları Reddet, kullanıcıların
 `DataActions`İzin, rolün bu nesne içindeki verilerinize yapılmasına izin verdiği veri işlemlerini belirler. Örneğin, bir kullanıcının depolama hesabına yönelik blob veri okuma erişimi varsa, bu depolama hesabındaki Blobları okuyabilirler. İşte kullanılabilecek veri işlemlerine ilişkin bazı örnekler aşağıda verilmiştir `DataActions` .
 
 > [!div class="mx-tableFixed"]
-> | İşlem dizesi    | Description         |
+> | İşlem dizesi    | Açıklama         |
 > | ------------------- | ------------------- |
 > | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read` | Blob veya Blobların listesini döndürür. |
 > | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write` | Blob yazma sonucunu döndürür. |

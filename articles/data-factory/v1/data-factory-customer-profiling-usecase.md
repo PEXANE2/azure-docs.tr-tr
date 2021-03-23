@@ -3,16 +3,16 @@ title: Kullanım örneği-müşteri profili oluşturma
 description: Oyun müşterilerinin profilini oluşturmak için veri odaklı bir iş akışı (işlem hattı) oluşturmak üzere Azure Data Factory nasıl kullanıldığını öğrenin.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: bb7f0fb6184a813dd9fd3c193bc5e3bda5628f2d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b8193039edd21db5a52eabca37c1e61880e49cfe
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100376726"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779758"
 ---
 # <a name="use-case---customer-profiling"></a>Kullanım örneği-müşteri profili oluşturma
 Azure Data Factory, çözüm Hızlandırıcıların Cortana Intelligence Suite uygulamak için kullanılan birçok hizmetlerden biridir.  Cortana Intelligence hakkında daha fazla bilgi için [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics)ziyaret edin. Bu belgede, Azure Data Factory ortak analiz sorunlarını nasıl çözebileceğini anlamak için basit bir kullanım durumu açıklıyoruz.

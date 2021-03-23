@@ -5,21 +5,22 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: ff6d532d3c391ffecfbfb54a761c73ff24c823d9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 03c4babc8fa70c951d80b720c4d4693968011532
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102040269"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104772272"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Log Analytics ve Application Insights'da depolanan kişisel veriler için kılavuz
 
 Log Analytics kişisel verilerin bulunma olasılığı olan bir veri deposudur. Application Insights verilerini Log Analytics bir bölümde depolar. Bu makale, Log Analytics nerede olduğunu ve bu verilerin tipik olarak Application Insights olduğunu ve bu tür verileri işleyebileceğiniz özellikleri tartışacaktır.
 
 > [!NOTE]
-> Bu makalenin _günlük verileri_ , bir Log Analytics çalışma alanına gönderilen verileri ifade ederken, _uygulama verileri_ Application Insights tarafından toplanan verilere başvurur.
+> Bu makalenin _günlük verileri_ , bir Log Analytics çalışma alanına gönderilen verileri ifade ederken, _uygulama verileri_ Application Insights tarafından toplanan verilere başvurur. Çalışma alanı tabanlı bir Application Insights kaynağı kullanıyorsanız, günlük verileri hakkında bilgiler geçerli olur ancak klasik Application Insights kaynağını kullanıyorsanız, uygulama verileri uygulanır.
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../../includes/gdpr-dsr-and-stp-note.md)]
+
 
 ## <a name="strategy-for-personal-data-handling"></a>Kişisel veri işleme stratejisi
 
@@ -27,7 +28,7 @@ Siz ve şirketiniz size özel verilerinizi işleyeceği stratejiyi (Eğer varsa)
 
 * Mümkün olduğunda, toplamayı durdurun, bir araya getirebilir, Anonimleştir veya aksi takdirde, toplanan verileri "Private" olarak kabul edilmeden hariç tutun. Bu, tercih edilen yaklaşımdan _yararlanarak_ çok maliyetli ve kesin bir veri işleme stratejisi oluşturmanız için ihtiyaç duymaktır.
 * Mümkün olmadığı durumlarda veri platformu ve performans üzerindeki etkiyi azaltmak için verileri normalleştirmeye çalışın. Örneğin, bir açık kullanıcı KIMLIĞINI günlüğe kaydetmek yerine, Kullanıcı adını ve ayrıntılarını daha sonra günlüğe kaydedilebilir bir iç KIMLIKLE bağıntılı bir arama verileri oluşturun. Bu şekilde, kullanıcılarınızın kişisel bilgilerini silmenizi istemesi gerekir, yalnızca kullanıcıya karşılık gelen arama tablosundaki satırı silmek mümkündür. 
-* Son olarak, özel verilerin toplanması gerekiyorsa, bir kullanıcıyla ilişkili tüm özel verileri dışarı ve silmeye yönelik tüm yükümlülükleri karşılamak üzere Temizleme API 'si yolu ve var olan sorgu API 'SI yolu etrafında bir işlem oluşturun. 
+* Son olarak, özel verilerin toplanması gerekiyorsa, bir kullanıcıyla ilişkili tüm özel verileri dışarı ve silmeye yönelik tüm yükümlülükleri karşılamak üzere Temizleme API 'si yolu ve var olan sorgu API 'SI yolu etrafında bir işlem oluşturun.
 
 ## <a name="where-to-look-for-private-data-in-log-analytics"></a>Log Analytics özel verilerin nerede aranacağı?
 

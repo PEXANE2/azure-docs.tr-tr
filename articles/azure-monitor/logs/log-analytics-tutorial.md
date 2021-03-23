@@ -5,12 +5,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2020
-ms.openlocfilehash: 06a73b495cefc361db88d80413f4f4be50e105d1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a5788e5ac64c1c74a06c94c5634a05315ee098b8
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102041153"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799301"
 ---
 # <a name="log-analytics-tutorial"></a>Log Analytics öğreticisi
 Log Analytics, Azure Izleyici günlükleri tarafından toplanan verilerden günlük sorgularını düzenlemek ve çalıştırmak ve sonuçları etkileşimli olarak analiz etmek için Azure portal bir araçtır. Belirli ölçütlere uyan kayıtları almak, eğilimleri belirlemek, desenleri analiz etmek ve verilerinize çeşitli Öngörüler sağlamak için Log Analytics sorguları kullanabilirsiniz. 
@@ -72,7 +72,7 @@ Sorguya, seçtiğiniz değere sahip bir **WHERE** ifadesinin eklendiği. Sonuçl
 ## <a name="time-range"></a>Zaman aralığı
 Log Analytics çalışma alanındaki tüm tablolar, **TimeGenerated** adlı ve kaydın oluşturulduğu zaman olan bir sütuna sahiptir. Tüm sorguların, sonuçları bu Aralık içinde **TimeGenerated** değeri olan kayıtlarla sınırlayan bir zaman aralığı vardır. Zaman aralığı, sorguda veya ekranın en üstündeki seçiciyle ayarlanabilir.
 
-Varsayılan olarak, sorgu son 24 saat için kayıtlar formunu döndürür. **Zaman aralığı** açılan listesini seçin ve **7 güne** değiştirin. Sonuçları döndürmek için yeniden **Çalıştır** ' a tıklayın. Sonuçların döndürüldüğünü görebilirsiniz, ancak sonuçların tümünü görmedik ve burada bir ileti sunuyoruz. Bunun nedeni Log Analytics en fazla 10.000 kayıt döndürebildiğinden ve sorgumuz bundan daha fazla kayıt döndürdüğünden. 
+Varsayılan olarak, sorgu son 24 saat için kayıtlar formunu döndürür. **Zaman aralığı** açılan listesini seçin ve **7 güne** değiştirin. Sonuçları döndürmek için yeniden **Çalıştır** ' a tıklayın. Sonuçların döndürüldüğünü görebilirsiniz, ancak sonuçların tümünü görmedik ve burada bir ileti sunuyoruz. Bunun nedeni Log Analytics en fazla 30.000 kayıt döndürebildiğinden ve sorgumuz bundan daha fazla kayıt döndürdüğünden. 
 
 [![Zaman aralığı](media/log-analytics-tutorial/query-results-max.png)](media/log-analytics-tutorial/query-results-max.png#lightbox)
 

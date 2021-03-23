@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 08/11/2020
 ms.author: rosouz
 ms.custom: devx-track-python
-ms.openlocfilehash: 4a1cd5b1773a58cf385fc6cc5c22be8df7b21e20
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 947a958b7cce6909332ebdb1832be168bfdd0bde
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98018964"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801817"
 ---
 # <a name="azure-cosmos-db-python-examples"></a>Azure Cosmos DB Python örnekleri
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -43,7 +43,7 @@ Azure Cosmos DB kaynaklarında CRUD işlemlerini ve diğer yaygın işlemleri ge
     * Azure etkin aboneliği olmadan:
         * 30 gün boyunca bir test ortamı olan [ücretsiz Azure Cosmos DB deneyin](https://azure.microsoft.com/try/cosmosdb/).
         * [Azure Cosmos DB Öykünücüsü](https://aka.ms/cosmosdb-emulator) 
-- İçinde yürütülebilir dosya ile [Python 2,7 veya 3.5.3 +](https://www.python.org/downloads/) `python` `PATH` .
+- İçinde yürütülebilir dosya ile [Python 2,7 veya 3.6 +](https://www.python.org/downloads/) `python` `PATH` .
 - [Visual Studio Code](https://code.visualstudio.com/).
 - [Visual Studio Code Için Python uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-python.python#overview).
 - [Git](https://www.git-scm.com/downloads). 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 509d267dcdaef58a9792609a60c8a9401e90e867
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: eb468dba1156087bdeb6086f5bc24b214e576e18
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103199706"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773309"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory cihaz yönetimi SSS
 
@@ -267,7 +267,7 @@ Y **:** Sorun giderme bilgileri için şu makalelere bakın:
 
 Y **:** Kullanıcılarınız etki alanına katılmış bir cihazdaki hesaplarını uygulamalara eklerken, **Windows 'a hesap ekleme** istenebilir. İstem üzerine **Evet** girerseniz, CIHAZ Azure AD 'ye kaydolur. Güven türü, Azure AD kayıtlı olarak işaretlenir. Kuruluşunuzda karma Azure AD katılmasını etkinleştirdikten sonra cihaz, karma Azure AD 'ye katılmış olarak da alınır. Daha sonra aynı cihaz için iki cihaz durumu gösterilir. 
 
-Karma Azure AD katılımı, Azure AD kayıtlı durumuna göre önceliklidir. Bu nedenle, cihazınız herhangi bir kimlik doğrulaması ve koşullu erişim değerlendirmesi için karma Azure AD 'ye katılmış olarak değerlendirilir. Azure AD kayıtlı cihaz kaydını Azure AD portalından güvenle silebilirsiniz. [Windows 10 makinesinde bu iki durumu kullanmaktan kaçının veya temizleyeceğinizi](hybrid-azuread-join-plan.md#review-things-you-should-know)öğrenin. 
+Çoğu durumda, hibrit Azure AD katılım, Azure AD kayıtlı durumuna göre öncelikli olduğundan, cihazınızın herhangi bir kimlik doğrulaması ve koşullu erişim değerlendirmesi için karma Azure AD 'ye katılmış olarak kabul edilmesine yol açar. Ancak, bu iki durum bazen cihazın belirleyici olmayan değerlendirmesiyle sonuçlanabilir ve erişim sorunlarına neden olabilir. Azure AD kayıtlı durumunu otomatik olarak temizlediğimiz Windows 10 sürüm 1803 ve üzeri sürümlere yükseltmeniz önemle önerilir. [Windows 10 makinesinde bu iki durumu nasıl önleyeceğinizi veya temizleyeceğinizi](hybrid-azuread-join-plan.md#review-things-you-should-know)öğrenin. 
 
 ---
 
