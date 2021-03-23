@@ -3,16 +3,16 @@ title: Veri tümleştirme hizmeti Data Factory giriş
 description: 'Azure Data Factory’nin ne olduğunu öğrenin: verilerin taşınmasını ve dönüştürülmesini düzenleyen ve otomatikleştiren bir bulut veri tümleştirme hizmetidir.'
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: overview
 ms.date: 01/22/2018
-ms.openlocfilehash: 1cee5f92af4e23a6bc0d195bc13bc3f11f53443d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 220c1969055ffaa5d1bea41ab547efd4596f8a20
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100382982"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786473"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure Data Factory'ye giriş 
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -135,7 +135,7 @@ Azure Data Factory'de veri işlem hatları oluşturmak için bu araç veya API'l
 
 Veri işlem hatları ile veri fabrikaları oluşturmayı öğrenmek için aşağıdaki öğreticilerde yer alan adım adım yönergeleri izleyin:
 
-| Öğretici | Description |
+| Öğretici | Açıklama |
 | --- | --- |
 | [İki bulut veri deposu arasında veri taşıma](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) |Blob depolamadan SQL veritabanına veri taşıyan bir işlem hattı ile veri fabrikası oluşturun. |
 | [Hadoop kümesi kullanarak veri dönüştürme](data-factory-build-your-first-pipeline.md) |Bir Azure HDInsight (Hadoop) kümesinde Hive betiği çalıştırarak veri işleyen bir veri işlem hattı ile ilk Azure veri fabrikanızı oluşturun. |

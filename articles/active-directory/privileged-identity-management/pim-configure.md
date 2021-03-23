@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: pim
 ms.topic: overview
-ms.date: 09/29/2020
+ms.date: 03/19/2021
 ms.author: curtand
 ms.custom: pim ; azuread-video-2020
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3c7003ce3e8c65f6fdb7f3d847947114aee251f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d42611705b7756ed2fd0c7a488339f0f638fb5b4
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92370194"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802174"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management nedir?
 
@@ -83,7 +83,7 @@ Privileged Identity Management aşağıdaki senaryoları destekler:
 
 Privileged Identity Management ve belgelerini daha iyi anlamak için aşağıdaki koşulları gözden geçirmeniz gerekir.
 
-| Terim veya kavram | Rol atama kategorisi | Description |
+| Terim veya kavram | Rol atama kategorisi | Açıklama |
 | --- | --- | --- |
 | lebilecek | Tür | Bir kullanıcının rolü kullanmak için bir veya daha fazla eylem gerçekleştirmesini gerektiren bir rol ataması. Bir Kullanıcı bir rol için uygun hale getirildiğinde, ayrıcalıklı görevleri gerçekleştirmeleri gerektiğinde rolü etkinleştirebilecekleri anlamına gelir. Kalıcı ve uygun bir rol atamasına karşılık gelen bir kişiye verilen erişimde fark yoktur. Tek fark, bazı kişilerin her zaman erişim gereksinimi yoktur. |
 | active | Tür | Rolü kullanmak için bir kullanıcının herhangi bir eylem gerçekleştirmesini gerektirmeyen bir rol ataması. Etkin olarak atanan kullanıcılara role atanmış ayrıcalıklar vardır. |
@@ -92,8 +92,8 @@ Privileged Identity Management ve belgelerini daha iyi anlamak için aşağıdak
 | etkinleştirilemediğini | Durum | Uygun rol atamasına sahip bir Kullanıcı, rolü etkinleştirmek için eylemleri gerçekleştirmiştir ve artık etkindir.  Etkinleştirildikten sonra, Kullanıcı yeniden etkinleştirilmeleri için önceden yapılandırılmış bir süre için rolü kullanabilir. |
 | kalıcı uygun | Süre | Kullanıcının her zaman rolü etkinleştirmesine uygun olduğu rol ataması. |
 | kalıcı etkin | Süre | Bir kullanıcının herhangi bir eylem yapmadan her zaman rol kullanabileceği rol ataması. |
-| kullanım süresi uygun | Süre | Bir kullanıcının belirtilen başlangıç ve bitiş tarihi içinde rolü etkinleştirmesine uygun olduğu rol ataması. |
-| etkin süre sonu | Süre | Bir kullanıcının belirtilen bir başlangıç ve bitiş tarihi içinde herhangi bir eylem gerçekleştirmeden rolü kullanabileceği rol ataması. |
+| zaman sınırı uygun | Süre | Kullanıcının rolü yalnızca başlangıç ve bitiş tarihleri içinde etkinleştirmesine uygun olduğu rol ataması. |
+| zamana bağlanma etkin | Süre | Kullanıcının rolü yalnızca başlangıç ve bitiş tarihleri içinde kullanabileceği rol ataması. |
 | tam zamanında (JıT) erişim |  | Kullanıcıların ayrıcalıklı görevleri gerçekleştirmek için geçici izinleri aldığı, kötü amaçlı veya yetkisiz kullanıcıların izinlerin süre dolduktan sonra erişim kazanmasını önleyen bir model. Erişim yalnızca kullanıcılara ihtiyaç duymadan verilir. |
 | en az ayrıcalık erişimi ilkesi |  | Her kullanıcının yalnızca, gerçekleştirme yetkisine sahip oldukları görevleri gerçekleştirmek için gereken en düşük ayrıcalıklarla sağlandığı önerilen bir güvenlik uygulaması. Bu uygulama, genel yönetici sayısını en aza indirir ve bunun yerine belirli senaryolar için belirli yönetici rollerini kullanır. |
 

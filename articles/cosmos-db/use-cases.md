@@ -6,12 +6,12 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: 04de6dce6cbab4dc0716ae841707b1d61d6bc375
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4aed956fc7052f844080b830aa4cc3b2a07235a1
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93073766"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799420"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Azure Cosmos DB için yaygın kullanım örnekleri
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -48,7 +48,7 @@ IoT kullanım örnekleri, verileri alma, işleme ve depolama gibi bazı desenler
 
 :::image type="content" source="./media/use-cases/iot.png" alt-text="Azure Cosmos DB IoT başvuru mimarisi" border="false":::
 
-Düşük gecikme süresine sahip yüksek aktarım hızı veri alımı sağladığından Azure Event Hubs veri kaynakları tarafından alınabilir. Gerçek zamanlı içgörüler için işlenmesi gereken veriler gerçek zamanlı analizler için Azure Stream Analytics. Veriler, geçici sorgulama için Azure Cosmos DB yüklenebilir. Veriler Azure Cosmos DB ' ye yüklendikten sonra, veriler sorgulanmaya uygulanabilir. Ayrıca, yeni veriler ve mevcut verilerde yapılan değişiklikler değişiklik akışında okunabilir. Değişiklik akışı, yalnızca Cosmos kapsayıcılarındaki değişiklikleri sıralı sırada depolayan kalıcı, yalnızca bir Append günlüğü. Tüm veriler veya yalnızca Azure Cosmos DB verilerde yapılan değişiklikler gerçek zamanlı analizler için başvuru verileri olarak kullanılabilir. Ayrıca, veriler, Pig, Hive veya eşleme/azaltma işleri için Azure Cosmos DB verileri HDInsight 'a bağlayarak daha sonra yeniden görüntülenebilir ve işlenebilir.  Daha sonra raporlama için Azure Cosmos DB arka arkaya veriler yüklenir.   
+Düşük gecikme süresine sahip yüksek aktarım hızı veri alımı sağladığından Azure Event Hubs veri kaynakları tarafından alınabilir. Gerçek zamanlı içgörüler için işlenmesi gereken veriler gerçek zamanlı analizler için Azure Stream Analytics. Veriler, geçici sorgulama için Azure Cosmos DB yüklenebilir. Veriler Azure Cosmos DB ' ye yüklendikten sonra, veriler sorgulanmaya uygulanabilir. Ayrıca, yeni veriler ve mevcut verilerde yapılan değişiklikler değişiklik akışında okunabilir. Değişiklik akışı, yalnızca Cosmos kapsayıcılarındaki değişiklikleri sıralı sırada depolayan kalıcı, yalnızca bir Append günlüğü. Bundan sonra tüm veriler veya Azure Cosmos DB verilerde yapılan değişiklikler gerçek zamanlı analizler kapsamında başvuru verileri olarak kullanılabilir. Ayrıca, veriler, Pig, Hive veya eşleme/azaltma işleri için Azure Cosmos DB verileri HDInsight 'a bağlayarak daha sonra yeniden görüntülenebilir ve işlenebilir.  Daha sonra raporlama için Azure Cosmos DB arka arkaya veriler yüklenir.   
 
 Azure Cosmos DB, EventHubs ve fırtınası kullanan örnek bir IoT çözümü için [GitHub 'da HDInsight-fırtınası-örnekler deposuna](https://github.com/hdinsight/hdinsight-storm-examples/)bakın.
 

@@ -4,12 +4,12 @@ ms.service: iot-edge
 ms.topic: include
 ms.date: 08/26/2020
 ms.author: v-tcassi
-ms.openlocfilehash: c7be10e14daf3ee769e86d51f648cc6b656a416a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b5450e4846c3c49c89830ae65c50a95ee0c8d6eb
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89303730"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104803221"
 ---
 ## <a name="verify-iot-edge-cicd-with-the-build-and-release-pipelines"></a>Derleme ve yayın işlem hatları ile IoT Edge CI/CD 'yi doğrulama
 
@@ -36,3 +36,5 @@ Bir yapı işini tetiklemek için, kaynak kodu deposuna bir kayıt gönderebilir
 6. Yayın günlüklerini görmek için **geliştirme** aşaması ' na tıklayın.
 
     ![Yayın günlükleri](./media/iot-edge-verify-iot-edge-continuous-integration-continuous-deployment/release-logs.png)
+
+7. İşlem hatlarınız başarısız olursa günlüklere bakarak başlayın. İşlem hattı çalıştırma özetine gidip işi ve görevi seçerek günlükleri görüntüleyebilirsiniz. Belirli bir görev başarısız olursa, bu görev için günlüklere bakın. Günlükleri yapılandırma ve kullanma hakkında ayrıntılı yönergeler için bkz. işlem [hattı sorunlarını tanılamak için günlükleri gözden geçirme](/azure/devops/pipelines/troubleshooting/review-logs).

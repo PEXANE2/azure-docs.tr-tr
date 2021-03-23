@@ -4,15 +4,15 @@ description: Bir olaya yanıt olarak bir işlem hattı çalıştıran Azure Data
 ms.service: data-factory
 author: chez-charlie
 ms.author: chez
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 03/11/2021
-ms.openlocfilehash: b559ce31aff7040a61f6a2f788652ffd192420c4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: deaa414a17240e8cdbdad7f4ba9b3e596b4f191f
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104593807"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104780336"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-a-storage-event"></a>Bir depolama olayına yanıt olarak bir işlem hattı çalıştıran bir tetikleyici oluşturma
 
@@ -87,7 +87,7 @@ Aşağıdaki tabloda, depolama olay tetikleyicilerle ilgili şema öğelerine ge
 | **olayları** | Bu tetikleyicinin tetiklenmesine neden olan olayların türü. | Dizi    | Microsoft. Storage. BlobCreated, Microsoft. Storage. BlobDeleted | Evet, bu değerlerin herhangi bir birleşimi. |
 | **blobPathBeginsWith** | Blob yolu, tetikleyicinin tetiklenmesi için belirtilen Düzenle başlamalı. Örneğin, `/records/blobs/december/` yalnızca `december` kapsayıcının altındaki klasörde bulunan bloblara yönelik tetikleyiciyi tetikler `records` . | Dize   | | Şu özelliklerden en az biri için bir değer belirtin: `blobPathBeginsWith` veya `blobPathEndsWith` . |
 | **blobPathEndsWith** | Blob yolu, tetikleyicinin tetiklenmesi için belirtilen Düzenle bitmelidir. Örneğin, `december/boxes.csv` yalnızca bir klasörde adlı Bloblar için tetikleyiciyi harekete geçirilir `boxes` `december` . | Dize   | | Şu özelliklerden en az biri için bir değer belirtmeniz gerekir: `blobPathBeginsWith` veya `blobPathEndsWith` . |
-| **ıgnoreemptyblob 'Lar** | Sıfır baytlık Blobların bir işlem hattı çalıştırmasını tetikleyip tetikleyemayacağı. Varsayılan olarak, bu true olarak ayarlanır. | Boole | true veya false | No |
+| **ıgnoreemptyblob 'Lar** | Sıfır baytlık Blobların bir işlem hattı çalıştırmasını tetikleyip tetikleyemayacağı. Varsayılan olarak, bu true olarak ayarlanır. | Boole | true veya false | Hayır |
 
 ## <a name="examples-of-storage-event-triggers"></a>Depolama olay tetikleyicisi örnekleri
 
@@ -96,7 +96,7 @@ Bu bölümde, depolama olay tetikleyicisi ayarlarının örnekleri verilmiştir.
 > [!IMPORTANT]
 > `/blobs/`Her kapsayıcı ve klasör, kapsayıcı ve dosya ya da kapsayıcı, klasör ve dosya belirttiğinizde, aşağıdaki örneklerde gösterildiği gibi yolun segmentini eklemeniz gerekir. **Blobpathbeginswith** için, Data Factory kullanıcı ARABIRIMI, `/blobs/` JSON tetikleyicisi içindeki klasör ve kapsayıcı adı arasına otomatik olarak eklenir.
 
-| Özellik | Örnek | Description |
+| Özellik | Örnek | Açıklama |
 |---|---|---|
 | **Blob yolu şununla başlar** | `/containername/` | Kapsayıcıdaki tüm Bloblar için olayları alır. |
 | **Blob yolu şununla başlar** | `/containername/blobs/foldername/` | Kapsayıcı ve klasördeki Bloblar için olayları alır `containername` `foldername` . |

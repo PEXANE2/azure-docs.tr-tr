@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/15/2021
-ms.openlocfilehash: d01f80a803c5b0f9da067dd23ab8cdb4cc591a79
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b9c5db14bec87b30e51d39b1430ecc1f3cbef855
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104610123"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798298"
 ---
 # <a name="monitor-your-sql-deployments-with-sql-insights-preview"></a>SQL Insights ile SQL dağıtımlarınızı izleme (Önizleme)
 SQL Insights, SQL dağıtımlarınızın performansını ve sistem durumunu izler.  Performans sorunlarını ve sorunlarını tanımlayarak bir SQL arka ucunun çevresinde oluşturduğunuz önemli iş yüklerinin öngörülebilir bir performans ve kullanılabilirliğini sunmaya yardımcı olabilir. SQL Insights, verilerini [Azure Izleyici günlüklerinde](../logs/data-platform-logs.md)depolar ve bu sayede güçlü toplama ve filtreleme olanağı sunar ve zaman içinde veri eğilimlerini analiz edebilir. Bu verileri Azure Izleyici 'den bu teklifin bir parçası olarak gönderdiğimiz görünümlerde görüntüleyebilir ve sorguları çalıştırmak ve eğilimleri çözümlemek için doğrudan günlük verilerine Delve yapabilirsiniz.
@@ -59,7 +59,7 @@ Sorun gidermeye yönelik adımlara ek olarak SQL Insights 'ı etkinleştirmek i�
 
 
 ## <a name="data-collected-by-sql-insights"></a>SQL Insights tarafından toplanan veriler
-Genel önizlemede, SQL Insights yalnızca izleme uzak yöntemini destekler. SQL Server telegraf Aracısı yüklü değil. Telegraf için SQL Server giriş eklentisini kullanır ve farklı türde SQL It izleyicilerinde üç sorgu grubunu kullanır: Azure SQL VERITABANı, Azure SQL yönetilen örneği, bir Azure VM üzerinde çalışan SQL Server. 
+Genel önizlemede, SQL Insights yalnızca izleme uzak yöntemini destekler. SQL Server [telegraf Aracısı](https://www.influxdata.com/time-series-platform/telegraf/) yüklü değil. [Telegraf için SQL Server giriş eklentisini](https://www.influxdata.com/integration/microsoft-sql-server/) kullanır ve farklı türde SQL It izleyicilerinde üç sorgu grubunu kullanır: Azure SQL veritabanı, Azure SQL yönetilen örneği, BIR Azure VM ÜZERINDE çalışan SQL Server. 
 
 Aşağıdaki tablolarda aşağıdakiler özetlenmektedir:
 
@@ -75,7 +75,7 @@ Aşağıdaki tablolarda aşağıdakiler özetlenmektedir:
 
 | Sorgu adı | DMV | Ad Alanı | Varsayılan olarak etkin | Varsayılan toplama sıklığı |
 |:---|:---|:---|:---|:---|
-| Azuresddbwaitstats |  sys.dm_db_wait_stats | sqlserver_azuredb_waitstats | No | NA |
+| Azuresddbwaitstats |  sys.dm_db_wait_stats | sqlserver_azuredb_waitstats | Hayır | NA |
 | Azuresddbresourcestats | sys.dm_db_resource_stats | sqlserver_azure_db_resource_stats | Yes | 60 saniye |
 | Azuressqldbresourceidare | sys.dm_user_db_resource_governance | sqlserver_db_resource_governance | Yes | 60 saniye |
 | Azuressqldbdatabaseıo | sys.dm_io_virtual_file_stats<br>sys.database_files<br>tempdb.sys .database_files | sqlserver_database_io | Yes | 60 saniye |
@@ -83,8 +83,8 @@ Aşağıdaki tablolarda aşağıdakiler özetlenmektedir:
 | AzureSQLDBOsWaitstats | sys.dm_os_wait_stats | sqlserver_waitstats | Yes | 60 saniye |
 | AzureSQLDBMemoryClerks | sys.dm_os_memory_clerks | sqlserver_memory_clerks | Yes | 60 saniye |
 | Azuresddbperformancecounters | sys.dm_os_performance_counters<br>sys.databases | sqlserver_performance | Yes | 60 saniye |
-| Azuresddbrequests | sys.dm_exec_sessions<br>sys.dm_exec_requests<br>sys.dm_exec_sql_text | sqlserver_requests | No | NA |
-| AzureSQLDBSchedulers | sys.dm_os_schedulers | sqlserver_schedulers | No | NA  |
+| Azuresddbrequests | sys.dm_exec_sessions<br>sys.dm_exec_requests<br>sys.dm_exec_sql_text | sqlserver_requests | Hayır | NA |
+| AzureSQLDBSchedulers | sys.dm_os_schedulers | sqlserver_schedulers | Hayır | NA  |
 
 ### <a name="azure-sql-managed-instance-data"></a>Azure SQL yönetilen örnek verileri 
 
@@ -97,8 +97,8 @@ Aşağıdaki tablolarda aşağıdakiler özetlenmektedir:
 | AzureSQLMIOsWaitstats | sys.dm_os_wait_stats | sqlserver_waitstats | Yes | 60 saniye |
 | AzureSQLMIMemoryClerks | sys.dm_os_memory_clerks | sqlserver_memory_clerks | Yes | 60 saniye |
 | Azuressqlmıperformancecounters | sys.dm_os_performance_counters<br>sys.databases | sqlserver_performance | Yes | 60 saniye |
-| Azuressqlmırequests | sys.dm_exec_sessions<br>sys.dm_exec_requests<br>sys.dm_exec_sql_text | sqlserver_requests | No | NA |
-| Azuressqlmischedulers | sys.dm_os_schedulers | sqlserver_schedulers | No | NA |
+| Azuressqlmırequests | sys.dm_exec_sessions<br>sys.dm_exec_requests<br>sys.dm_exec_sql_text | sqlserver_requests | Hayır | NA |
+| Azuressqlmischedulers | sys.dm_os_schedulers | sqlserver_schedulers | Hayır | NA |
 
 ### <a name="sql-server-data"></a>SQL Server verileri
 
@@ -109,8 +109,8 @@ Aşağıdaki tablolarda aşağıdakiler özetlenmektedir:
 | Sqlserverdatabaseıo | sys.dm_io_virtual_file_stats<br>sys.master_files | sqlserver_database_io | Yes | 60 saniye |
 | SQLServerProperties | sys.dm_os_sys_info | sqlserver_server_properties | Yes | 60 saniye |
 | SQLServerMemoryClerks | sys.dm_os_memory_clerks | sqlserver_memory_clerks | Yes | 60 saniye |
-| SQLServerSchedulers | sys.dm_os_schedulers | sqlserver_schedulers | No | NA |
-| SQLServerRequests | sys.dm_exec_sessions<br>sys.dm_exec_requests<br>sys.dm_exec_sql_text | sqlserver_requests | No | NA |
+| SQLServerSchedulers | sys.dm_os_schedulers | sqlserver_schedulers | Hayır | NA |
+| SQLServerRequests | sys.dm_exec_sessions<br>sys.dm_exec_requests<br>sys.dm_exec_sql_text | sqlserver_requests | Hayır | NA |
 | SQLServerVolumeSpace | sys.master_files | sqlserver_volume_space | Yes | 60 saniye |
 | SQLServerCpu | sys.dm_os_ring_buffers | sqlserver_cpu | Yes | 60 saniye |
 | Sqlserverkullanılabilirliği Bilityreplicastates | sys.dm_hadr_availability_replica_states<br>sys.availability_replicas<br>sys.availability_groups<br>sys.dm_hadr_availability_group_states | sqlserver_hadr_replica_states | | 60 saniye |

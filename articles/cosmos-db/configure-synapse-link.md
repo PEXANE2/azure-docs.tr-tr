@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: rosouz
 ms.custom: references_regions
-ms.openlocfilehash: 64b9b6690eafe8f28fdf9711cd0534f4d7d96908
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7accf705ee64be5ba416be9df2f92693b07e8a8c
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104584593"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799658"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure Synapse Link'i yapılandırma ve kullanma
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -52,7 +52,7 @@ Azure SYNAPSE link, Azure Cosmos DB SQL API kapsayıcıları veya Mongo DB kolek
 > [!NOTE]
 > SYNAPSE bağlantısının etkinleştirilmesi, analitik depoyu otomatik olarak yapmaz. Cosmos DB hesapta SYNAPSE bağlantısını etkinleştirdikten sonra, işlem verilerinizi analitik depoya Çoğaltmaya başlamak için, onları oluşturduğunuz sırada kapsayıcı üzerinde analitik depoyu etkinleştirin. 
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 Aşağıdaki bağlantılarda, SYNAPSE bağlantısının Azure CLı kullanılarak nasıl etkinleştirildiği gösterilmektedir:
 
@@ -175,7 +175,7 @@ except exceptions.CosmosResourceExistsError:
     print('A container with already exists')
 ```
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 Aşağıdaki bağlantılar, Azure CLı kullanarak bir analitik depo etkin kapsayıcıları oluşturmayı göstermektedir:
 
@@ -241,7 +241,7 @@ container.replace(containerProperties).block();
 Şu anda desteklenmiyor.
 
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 Aşağıdaki bağlantılarda, Azure CLı kullanılarak analitik TTL 'nin nasıl güncelleştirilmesi gösterilmektedir:
 
@@ -276,7 +276,7 @@ Azure Cosmos DB için SYNAPSE link üzerinden sunucusuz bir SQL havuzu veritaban
 
 [Azure Resource Manager şablonu](./manage-with-templates.md#azure-cosmos-account-with-analytical-store) , SQL API 'si için etkin bir Synapse bağlantısı Azure Cosmos DB hesabı oluşturur. Bu şablon, analitik TTL etkin olarak yapılandırılmış bir kapsayıcı içeren bir bölgede bir çekirdek (SQL) API hesabı oluşturur ve el ile veya otomatik ölçeklendirme üretimi kullanma seçeneği sağlar. Bu şablonu dağıtmak için Benioku sayfasında **Azure 'A dağıt** ' a tıklayın.
 
-## <a name="getting-started-with-azure-synpase-link---samples"></a><a id="cosmosdb-synapse-link-samples"></a> Azure Synpao bağlantısı ile çalışmaya başlama-örnekler
+## <a name="getting-started-with-azure-synapse-link---samples"></a><a id="cosmosdb-synapse-link-samples"></a> Azure SYNAPSE bağlantısı ile çalışmaya başlama-örnekler
 
 [GitHub](https://aka.ms/cosmosdb-synapselink-samples)'Da Azure SYNAPSE bağlantısı ile çalışmaya başlama örneklerini bulabilirsiniz. Bu, IoT ve perakende senaryolarıyla uçtan uca çözümler sergileme. MongoDB için Azure Cosmos DB API 'sine karşılık gelen örnekleri [MongoDB](https://github.com/Azure-Samples/Synapse/tree/main/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples) klasörü altındaki aynı depoda da bulabilirsiniz. 
 

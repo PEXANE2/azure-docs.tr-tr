@@ -3,16 +3,16 @@ title: İlk Data Factory 'nizi derleme (REST)
 description: Bu öğreticide Data Factory REST API’sini kullanarak örnek bir Azure Data Factory işlem hattı oluşturursunuz.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 11/01/2017
-ms.openlocfilehash: 9aa3e7f2b5f382e1212955479d8e35f91b458bf0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: eb9ce65985521fb3f82032f04aec62538a157639
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100392026"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104785476"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>Öğretici: Data Factory REST API kullanarak ilk Azure data factory’nizi derleme
 > [!div class="op_single_selector"]
@@ -483,7 +483,7 @@ Bu öğreticide, HDInsight hadoop kümesindeki Hive betiği çalıştırılarak 
 Bu makalede, isteğe bağlı Azure HDInsight kümesinde bir Hive betiği çalıştıran dönüştürme etkinliğine (HDInsight Etkinliği) sahip işlem hattı oluşturdunuz. Verileri Azure Blob’tan Azure SQL’e kopyalamak için Kopyalama Etkinliği’nin kullanılması hakkında bilgi için bkz. [Öğretici: Verileri Azure Blob’dan Azure SQL’e kopyalama](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 ## <a name="see-also"></a>Ayrıca Bkz.
-| Konu | Description |
+| Konu | Açıklama |
 |:--- |:--- |
 | [Data Factory REST API Başvurusu](/rest/api/datafactory/) |Data Factory cmdlet'leri hakkında kapsamlı belgelere bakma |
 | [Pipelines](data-factory-create-pipelines.md) |Bu makale, Azure Data Factory’de işlem hatlarının ve etkinliklerini anlamanıza ve senaryonuz ya da işletmeniz için uçtan uca veri odaklı iş akışları oluşturmak amacıyla bunları nasıl kullanacağınızı anlamanıza yardımcı olur. |

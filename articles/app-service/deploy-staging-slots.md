@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1c4cff264b63506432daf350be3557bae7234584
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c779e95b790d91b801d5d35b4702191f5e7986d5
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "100594242"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802973"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service’ta hazırlık ortamları ayarlama
 <a name="Overview"></a>
@@ -214,6 +214,7 @@ Ayrıca, aşağıdaki [uygulama ayarlarından](configure-common.md)biri veya her
 
 - `WEBSITE_SWAP_WARMUP_PING_PATH`: Sitenizi ısınma için ping yapılacak yol. Değer olarak eğik çizgiyle başlayan özel bir yol belirterek bu uygulama ayarını ekleyin. `/statuscheck` bunun bir örneğidir. `/` varsayılan değerdir. 
 - `WEBSITE_SWAP_WARMUP_PING_STATUSES`: Isınma işlemi için geçerli HTTP yanıt kodları. Bu uygulama ayarını, virgülle ayrılmış bir HTTP kodları listesi ile ekleyin. Örnek olarak bir örnektir `200,202` . Döndürülen durum kodu listede yoksa, ısınma ve takas işlemleri durdurulur. Varsayılan olarak, tüm yanıt kodları geçerlidir.
+- `WEBSITE_WARMUP_PATH`: Site her yeniden başlatıldığında (yalnızca yuva takas sırasında değil) ping yapılacak şekilde, sitedeki göreli bir yol. Örnek değerler `/statuscheck` , veya kök yolu içerir `/` .
 
 > [!NOTE]
 > `<applicationInitialization>`Yapılandırma öğesi her uygulamanın bir parçasıdır, ancak iki ısınma davranışı uygulama ayarları yalnızca yuva takas için geçerlidir.

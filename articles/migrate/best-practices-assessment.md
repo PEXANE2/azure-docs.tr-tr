@@ -1,40 +1,39 @@
 ---
-title: Azure geçişi sunucu değerlendirmesi için en iyi değerlendirme uygulamaları
-description: Azure geçişi sunucu değerlendirmesi ile değerlendirmeler oluşturmaya yönelik ipuçları.
+title: Azure geçişi bulma ve değerlendirme aracında en iyi değerlendirme uygulamaları
+description: Azure geçişi bulma ve değerlendirme aracı ile değerlendirmeler oluşturmaya yönelik ipuçları.
 author: rashi-ms
 ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: c1fff5b5b7f6450ad8d1977e55a1f6b255f3d668
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1bf844dafe450e90213db2e447bb5392064eb245
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96754326"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786779"
 ---
 # <a name="best-practices-for-creating-assessments"></a>Değerlendirme oluşturmak için en iyi uygulamalar
 
 [Azure geçişi](./migrate-services-overview.md) , Microsoft Azure için uygulamaları, altyapıyı ve iş yüklerini keşfetmenize, değerlendirmenize ve geçirmenize yardımcı olan araçların merkezini sağlar. Hub, Azure geçiş araçları ve üçüncü taraf bağımsız yazılım satıcısı (ISV) tekliflerini içerir.
 
-Bu makalede, Azure geçişi sunucu değerlendirmesi Aracı kullanılarak değerlendirmeler oluşturulurken en iyi yöntemler özetlenmektedir.
+Bu makalede, Azure geçişi bulma ve değerlendirme aracı kullanılarak değerlendirmeler oluşturulurken en iyi yöntemler özetlenmektedir.
 
-## <a name="about-assessments"></a>Değerlendirmeler hakkında
-
-Azure geçişi sunucu değerlendirmesi ile oluşturduğunuz değerlendirmeler, verilerin bir zaman noktası anlık görüntüsüdür. Azure geçişi kullanarak oluşturabileceğiniz iki tür değerlendirme vardır: Sunucu değerlendirmesi:
+Azure geçişi ile oluşturduğunuz değerlendirmeler: bulma ve değerlendirme aracı, verilerin bir zaman noktası anlık görüntüsüdür. Azure geçişi: bulma ve değerlendirme kullanarak oluşturabileceğiniz üç tür değerlendirme vardır:
 
 **Değerlendirme Türü** | **Ayrıntılar**
 --- | --- 
-**Azure VM** | Şirket içi sunucularınızı Azure sanal makinelerine geçirmeye yönelik değerlendirmeler. <br/><br/> Bu değerlendirme türünü kullanarak şirket içi ortamınızdaki [VMware VM'lerini](how-to-set-up-appliance-vmware.md), [Hyper-V VM'lerini](how-to-set-up-appliance-hyper-v.md) ve [fiziksel sunucuları](how-to-set-up-appliance-physical.md) Azure geçişi için değerlendirebilirsiniz. [Daha fazla bilgi edinin](concepts-assessment-calculation.md)
+**Azure VM** | Şirket içi sunucularınızı Azure sanal makinelerine geçirmeye yönelik değerlendirmeler. <br/><br/> Bu değerlendirme türünü kullanarak, [VMware](how-to-set-up-appliance-vmware.md) ve [Hyper-V](how-to-set-up-appliance-hyper-v.md) ortamındaki şirket içi sunucularınızı ve Azure 'a geçiş için [fiziksel sunucuları](how-to-set-up-appliance-physical.md) değerlendirebilirsiniz. [Daha fazla bilgi edinin](concepts-assessment-calculation.md)
+**Azure SQL** | Şirket içi SQL Server 'larınızı VMware ortamınızdan Azure SQL veritabanı 'na veya Azure SQL yönetilen örneğine geçirmeye yönelik değerlendirmeler. [Daha Fazla Bilgi](concepts-azure-sql-assessment-calculation.md)
 **Azure VMware Çözümü (AVS)** | Şirket içi sunucularınızı [Azure VMware Çözümü'ne (AVS)](../azure-vmware/introduction.md) geçirmeye yönelik değerlendirmeler. <br/><br/> Bu değerlendirme türünü kullanarak Azure VMware çözümüne (AVS) geçiş için şirket içi [VMware VM](how-to-set-up-appliance-vmware.md) 'lerinizi değerlendirebilirsiniz. [Daha fazla bilgi edinin](concepts-azure-vmware-solution-assessment-calculation.md)
 
 
 ### <a name="sizing-criteria"></a>Boyutlandırma ölçütü
-Sunucu Değerlendirmesi iki boyutlandırma ölçütü seçeneği sunar:
+Azure geçiş değerlendirmelerinde boyutlandırma ölçütü seçenekleri:
 
 **Boyutlandırma ölçütü** | **Ayrıntılar** | **Veriler**
 --- | --- | ---
-**Performans tabanlı** | Toplanan performans verilerine göre öneriler sunan değerlendirmeler | **Azure VM değerlendirmesi**: VM boyutu önerisi, CPU ve bellek kullanımı verilerini dikkate alır.<br/><br/> Disk türü önerisi (standart HDD/SSD veya premium yönetilen diskler), şirket içi ortamda bulunan disklerin IOPS ve aktarım hızı verilerini dikkate alır.<br/><br/> **Azure VMware Çözümü (AVS) değerlendirmesi**: AVS düğümü önerisi, CPU ve bellek kullanımı verilerini dikkate alır.
+**Performans tabanlı** | Toplanan performans verilerine göre öneriler sunan değerlendirmeler | **Azure VM değerlendirmesi**: VM boyutu önerisi, CPU ve bellek kullanımı verilerini dikkate alır.<br/><br/> Disk türü önerisi (standart HDD/SSD veya premium yönetilen diskler), şirket içi ortamda bulunan disklerin IOPS ve aktarım hızı verilerini dikkate alır.<br/><br/>**Azure SQL değerlendirmesi**: Azure SQL YAPıLANDıRMASı; CPU kullanımı, bellek kullanımı, IOPS (veri ve günlük dosyaları), aktarım hızı ve GÇ işlemlerinin gecikme SÜRESINI içeren SQL örnekleri ve veritabanlarının performans verilerini temel alır.<br/><br/>**Azure VMware Çözümü (AVS) değerlendirmesi**: AVS düğümü önerisi, CPU ve bellek kullanımı verilerini dikkate alır.
 **Şirket içinde olduğu gibi** | Bu değerlendirmeler, öneride bulunmak için performans verilerini kullanmaz. | **Azure VM değerlendirmesi**: VM boyutu önerisi, şirket içi VM boyutunu temel alır<br/><br> Önerilen disk türü, değerlendirme için belirlediğiniz depolama türü ayarına bağlıdır.<br/><br/> **Azure VMware Çözümü (AVS) değerlendirmesi**: AVS düğümü önerisi, şirket içi VM boyutunu temel alır.
 
 #### <a name="example"></a>Örnek
@@ -53,7 +52,7 @@ Sunucu Değerlendirmesi iki boyutlandırma ölçütü seçeneği sunar:
 
 Azure geçişi gereci, şirket içi ortamınızı sürekli olarak profiller ve meta verileri ve performans verilerini Azure 'a gönderir. Bir gereç kullanılarak bulunan sunucuların değerlendirmelerinde bu en iyi uygulamaları izleyin:
 
-- Bir **as-to değerlendirmesi oluştur**: makineleriniz Azure geçişi portalında görünür.
+- Bir **as-to değerlendirmesi oluştur**: sunucularınız Azure geçişi portalında gösterildikten sonra as-to değerlendirmesi oluşturabilirsiniz. Boyutlandırma ölçütleriyle "Şirket içi olarak" bir Azure SQL değerlendirmesi oluşturamazsınız.
 - **Performans tabanlı değerlendirme oluşturma**: bulmayı ayarladıktan sonra, performans tabanlı bir değerlendirmeyi çalıştırmadan önce en az bir gün beklemeniz önerilir:
     - Performans verilerinin toplanması zaman alır. En az bir günün beklenmesi, değerlendirmeyi çalıştırmadan önce yeterli performans veri noktası olmasını sağlar.
     - Performans tabanlı değerlendirmeler çalıştırırken ortamınızı değerlendirme süresi boyunca profillediğinizden emin olun. Örneğin, bir haftalık olarak ayarlanan performans süresiyle bir değerlendirme oluşturursanız, tüm veri noktalarının toplanması için bulmayı başlattıktan sonra en az bir hafta beklemeniz gerekir. Aksi takdirde, değerlendirme beş yıldızlı bir derecelendirme almaz.
@@ -61,7 +60,7 @@ Azure geçişi gereci, şirket içi ortamınızı sürekli olarak profiller ve m
 
 Azure geçişi ile içeri aktarılan sunucuların değerlendirmesi için bu en iyi uygulamaları izleyin. CSV dosyası:
 
-- Bir **as-to değerlendirmesi oluştur**: makineleriniz Azure geçişi portalında görünür.
+- Bir **as-to değerlendirmesi oluştur**: sunucularınız Azure geçişi portalında gösterildikten sonra as-to değerlendirmesi oluşturabilirsiniz.
 - **Performans tabanlı değerlendirme oluştur**: Bu, özellikle de şirket içinde fazla sağlanmış sunucu kapasiteniz varsa daha iyi maliyet tahmini sağlamaya yardımcı olur. Ancak, performans tabanlı değerlendirmenin doğruluğu, sunucular için sizin tarafınızdan belirtilen performans verilerine bağlıdır. 
 - **Değerlendirmeleri yeniden hesapla**: Değerlendirmeler, zaman içinde anlık görüntüler olduğundan, en son verilerle otomatik olarak güncellenmez. En son içeri aktarılan verilerle bir değerlendirmeyi güncelleştirmek için yeniden hesaplamanız gerekir.
  
@@ -81,9 +80,16 @@ AVS 'de kullanılan depolama altyapısı vSAN ' dır. vSAN depolama ilkeleri san
 ## <a name="best-practices-for-confidence-ratings"></a>Güvenirlik derecelendirmeleri için en iyi uygulamalar
 
 Performans tabanlı değerlendirmeler çalıştırdığınızda, değerlendirmeye 1-yıldız (en düşük) ile 5 yıldız (en yüksek) arasında bir güvenilirlik derecesi verilir. Güvenilirlik derecelendirmelerini etkin bir şekilde kullanmak için:
-- Azure geçişi sunucu değerlendirmesi VM CPU 'SU/belleği için kullanım verilerine ihtiyaç duyuyor.
-- Şirket içi VM 'ye bağlı her disk için okuma/yazma ıOPS/aktarım hızı verileri gerekir.
-- SANAL makineye bağlı her ağ bağdaştırıcısı için ağ/çıkış verileri gerekir.
+
+- Azure VM ve AVS değerlendirmelerinde şunlar gerekir:
+    - Sunucuların her biri için CPU ve bellek kullanımı verileri
+    - Şirket içi sunucuya bağlı her bir disk için okuma/yazma ıOPS/işleme verileri
+    - Sunucuya bağlı her ağ bağdaştırıcısı için ağ/çıkış verileri.
+     
+- Azure SQL değerlendirmelerinde, SQL örneklerinin ve değerlendirilmekte olan veritabanlarının performans verileri gerekir ve bunlar şunları içerir:
+    - CPU ve bellek kullanımı verileri
+    - Verilerin ve günlük dosyalarının okuma/yazma ıOPS/aktarım hızı verileri
+    - GÇ işlemlerinin gecikmesi
 
 Seçilen süre için kullanılabilir olan veri noktalarının yüzdesine bağlı olarak, bir değerlendirmenin güvenilirlik derecelendirmesi aşağıdaki tabloda özetlenen şekilde sağlanır.
 
@@ -102,12 +108,12 @@ Değerlendirmeleri etkileyen bazı yaygın ortam sorunlarının nasıl ele alın
 
 ###  <a name="out-of-sync-assessments"></a>Eşitleme dışı değerlendirmeler
 
-Bir değerlendirme oluşturduktan sonra bir gruba makine ekler veya kaldırırsanız, oluşturduğunuz değerlendirme **eşitlenmemiş** olarak işaretlenir. Grup değişikliklerini yansıtmak için değerlendirmeyi yeniden çalıştırın (**yeniden hesapla**).
+Bir değerlendirme oluşturduktan sonra bir gruba sunucu ekler veya kaldırırsanız, oluşturduğunuz değerlendirme **eşitlenmemiş** olarak işaretlenir. Grup değişikliklerini yansıtmak için değerlendirmeyi yeniden çalıştırın (**yeniden hesapla**).
 
 ### <a name="outdated-assessments"></a>Güncel olmayan değerlendirmeler
 
-Değerlendirilen bir gruptaki VM 'lerde şirket içi değişiklikler varsa, değerlendirme **güncelliğini yitirmiş** olarak işaretlenir. Aşağıdaki özelliklerde bir veya daha fazla değişiklik olduğundan, bir değerlendirme "güncel değil" olarak işaretlenebilir:
-
+#### <a name="azure-vm-assessment-and-avs-assessment"></a>Azure VM değerlendirmesi ve AVS değerlendirmesi
+Değerlendirilen bir gruptaki şirket içi sunucularda değişiklikler varsa, değerlendirme **süresi geçmiş** olarak işaretlenir. Aşağıdaki özelliklerde bir veya daha fazla değişiklik olduğundan, bir değerlendirme "güncel değil" olarak işaretlenebilir:
 - İşlemci çekirdekleri sayısı
 - Ayrılan bellek
 - Önyükleme türü veya bellenim
@@ -116,24 +122,43 @@ Değerlendirilen bir gruptaki VM 'lerde şirket içi değişiklikler varsa, değ
 - Ağ bağdaştırıcısı sayısı
 - Disk boyutu değişikliği (GB ayrılmış)
 - NIC özellikleri güncelleştirmesi. Örnek: MAC adresi değişiklikleri, IP adresi ekleme vb.
-
+    
 Değişiklikleri yansıtmak için değerlendirmeyi yeniden çalıştırın (yeniden **Hesapla**).
+    
+#### <a name="azure-sql-assessment"></a>Azure SQL değerlendirmesi
+Üzerinde değerlendirilen bir gruptaki şirket içi SQL örneklerinde ve veritabanlarında değişiklikler varsa, değerlendirme **süresi geçmiş** olarak işaretlenir. Aşağıdaki nedenlerden biri veya birkaçı nedeniyle bir değerlendirme "tarihi geçmiş" olarak işaretlenebilir:
+- Sunucuda SQL örneği eklendi veya kaldırıldı
+- SQL örneğinde SQL veritabanı eklendi veya kaldırıldı
+- SQL örneğindeki toplam veritabanı boyutu %20'den fazla değiştirildi
+- İşlemci çekirdekleri sayısı değişikliği
+- Ayrılmış bellekte değişiklik        
+  
+    Değişiklikleri yansıtmak için değerlendirmeyi yeniden çalıştırın (yeniden **Hesapla**).
 
 ### <a name="low-confidence-rating"></a>Düşük güvenilirlikli derecelendirme
 
 Bir değerlendirme, birkaç nedenden dolayı tüm veri noktalarına sahip olmayabilir:
 
-- Değerlendirmeyi oluşturduğunuz süre boyunca ortamınızın profilini oluşturmadınız. Örneğin, performans süresi bir hafta olarak ayarlanan *performans tabanlı bir değerlendirme* oluşturuyorsanız, toplanan tüm veri noktaları için bulmayı başlattıktan sonra en az bir hafta beklemeniz gerekir. En son geçerli güvenilirlik derecelendirmesini görmek için her zaman **yeniden hesapla** ' yı tıklayabilirsiniz. Güvenilirlik derecelendirmesi yalnızca *performans tabanlı* bir değerlendirme oluşturduğunuzda uygulanabilir.
+- Değerlendirmeyi oluşturduğunuz süre boyunca ortamınızın profilini oluşturmadınız. Örneğin değerlendirmeyi bir hafta olarak ayarlanmış performans süresiyle oluşturuyorsanız, toplanacak tüm veri noktalarının keşfini başlattıktan sonra en az bir hafta beklemeniz gerekir. Süreyi bekleyemiyorsanız, performans süresini daha kısa olacak şekilde değiştirin ve değerlendirmeyi 'Yeniden Hesaplayın'.
+ 
+- Değerlendirme, değerlendirme süresi içinde sunucuların bir bölümü veya tümü için performans verilerini toplayamıyor. Yüksek güvenilirlikli bir derecelendirme için lütfen şunları doğrulayın: 
+    - Değerlendirme süresi boyunca sunucular açık
+    - 443 bağlantı noktalarında giden bağlantılara izin verilir
+    - Hyper-V sunucuları için dinamik bellek etkin 
+    - Azure geçişi 'ndeki aracıların bağlantı durumu ' Connected ' ve son sinyali denetle
+    - Azure SQL değerlendirmelerinde, tüm SQL örnekleri için Azure geçişi bağlantı durumu bulunan SQL örneği dikey penceresinde "bağlandı" olarak ayarlanır
 
-- Değerlendirmenin hesaplandığı dönem boyunca birkaç sanal makine kapatılmıştır. Bazı VM'ler belirli bir süre boyunca kapatıldıysa Sunucu Değerlendirmesi o süreye ait performans verilerini toplayamaz.
+    Güvenilirlik derecelendirmesindeki en son değişiklikleri yansıtacak şekilde değerlendirmeyi 'Yeniden Hesaplayın'.
 
-- Sunucu Değerlendirmesi'nde bulma işlemi başlatıldıktan sonra birkaç VM oluşturulmuştur. Örneğin, son bir ayın performans geçmişi için değerlendirme oluşturuyorsanız, ancak yalnızca bir hafta önce ortamda birkaç sanal makine oluşturulduysa. Bu durumda, sürenin tamamında yeni VM'lerin performans verileri sağlanmaz ve güvenilirlik derecesi düşük olabilir.
+- Azure VM ve AVS değerlendirmelerinde, bulma başlatıldıktan sonra birkaç sunucu oluşturulmuştur. Örneğin, son bir ayın performans geçmişi için bir değerlendirme oluşturuyorsanız ancak ortamda yalnızca bir hafta önce birkaç sunucu oluşturuluyorsa. Bu durumda, yeni sunucular için performans verileri sürenin tamamına uygun olmayacaktır ve güvenirlik derecelendirmesi düşük olacaktır.
+
+- Azure SQL değerlendirmelerinde, bulma başlatıldıktan sonra birkaç SQL örneği veya veritabanı oluşturuldu. Örneğin, son bir ayın performans geçmişi için bir değerlendirme oluşturuyorsanız ancak ortamda yalnızca bir hafta önce birkaç SQL örneği veya veritabanı oluşturuluyorsa. Bu durumda, yeni sunucular için performans verileri sürenin tamamına uygun olmayacaktır ve güvenirlik derecelendirmesi düşük olacaktır.
 
 ### <a name="migration-tool-guidance-for-avs-assessments"></a>AVS değerlendirmesi için geçiş aracı Kılavuzu
 
 Azure VMware Çözümü (AVS) değerlendirmesinin Azure için hazır olma raporunda aşağıdaki önerilen araçları görebilirsiniz: 
-- VMware **HCX veya Enterprise**: VMware makineleri Için VMware karma bulut uzantısı (HCX) çözümü, şirket içi iş yükünüzü Azure VMware çözümünüz (AVS) özel bulutuna geçirmek için önerilen geçiş aracıdır. [Daha Fazla Bilgi Edinin](../azure-vmware/tutorial-deploy-vmware-hcx.md).
-- **Bilinmiyor**: CSV dosya yoluyla içeri aktarılan makinelerde, varsayılan geçiş aracı bilinmiyor. Ancak, VMware makinelerinde, VMware karma bulut uzantısı (HCX) çözümünün kullanılması önerilir.
+- VMware **HCX veya Enterprise**: VMware sunucuları Için VMware karma bulut uzantısı (HCX) çözümü, şirket içi iş yükünüzü Azure VMware çözümünüz (AVS) özel bulutuna geçirmek için önerilen geçiş aracıdır. [Daha Fazla Bilgi Edinin](../azure-vmware/tutorial-deploy-vmware-hcx.md).
+- **Bilinmiyor**: CSV dosyası aracılığıyla içeri aktarılan sunucular için varsayılan geçiş aracı bilinmez. Ancak, VMware ortamındaki sunucular için, VMware karma bulut uzantısı (HCX) çözümünün kullanılması önerilir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: feedc0065419162237c4f4826fe275a6fd947e53
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ea6ecf456bbcea01bf4c1eef5377d918bf0918fd
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98753731"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798961"
 ---
 # <a name="scenario-desktop-app-that-calls-web-apis"></a>Senaryo: Web API 'Lerini çağıran masaüstü uygulaması
 
@@ -30,6 +30,7 @@ Henüz yapmadıysanız, bir hızlı başlangıcı tamamlayarak ilk uygulamanız�
 - [Hızlı Başlangıç: Bir belirteç alma ve bir Windows masaüstü uygulamasından Microsoft Graph API'si çağırma](./quickstart-v2-windows-desktop.md)
 - [Hızlı başlangıç: UWP uygulamasından belirteç alma ve Microsoft Graph API çağırma](./quickstart-v2-uwp.md)
 - [Hızlı başlangıç: bir macOS yerel uygulamasından belirteç alma ve Microsoft Graph API çağrısı](./quickstart-v2-ios.md)
+- [Hızlı başlangıç: Node.js & elektron uygulamadan belirteç alma ve Microsoft Graph API çağrısı](./quickstart-v2-nodejs-desktop.md)
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -39,6 +40,7 @@ Bir masaüstü uygulaması yazar ve kullanıcılara oturum açmak ve Microsoft G
 
   - Masaüstü uygulamanız grafik denetimlerini destekliyorsa (örneğin, bir Windows. form uygulaması, bir WPF uygulaması veya macOS yerel uygulaması).
   - Ya da bir .NET Core uygulaması ise ve Azure Active Directory (Azure AD) ile ilgili kimlik doğrulama etkileşiminin sistem tarayıcısında gerçekleşme olduğunu kabul ediyorsanız.
+  - Ya da bir Kmıum örneğinde çalışan Node.js elektron bir uygulamadır.
 
 - Windows barındırılan uygulamalar için, bir Windows etki alanına katılmış bilgisayarlarda çalışan uygulamalar veya Azure AD 'ye katılmış bir belirteci, tümleşik Windows kimlik doğrulaması kullanarak sessizce bir belirteç elde etmek için de mümkündür.
 - Son olarak, ancak önerilmese de, genel istemci uygulamalarında bir Kullanıcı adı ve parola kullanabilirsiniz. DevOps gibi bazı senaryolarda hala gereklidir. Bunu kullanarak uygulamanıza kısıtlamalar uygular. Örneğin, [çok faktörlü kimlik doğrulaması](../authentication/concept-mfa-howitworks.md) (koşullu erişim) gerçekleştirmesi gereken bir Kullanıcı oturum açamaz. Ayrıca, uygulamanız çoklu oturum açma özelliğinden (SSO) faydalanır.

@@ -1,26 +1,26 @@
 ---
-title: Azure Data Lake Storage 2. verileri yönetmek için JavaScript kullanın
+title: Azure Data Lake Storage 2. verileri yönetmek için JavaScript (Node.js) kullanın
 description: Hiyerarşik ad alanı etkinleştirilmiş depolama hesaplarındaki dizinleri ve dosyaları yönetmek için, JavaScript için Azure Storage Data Lake istemci kitaplığı 'nı kullanın.
 author: normesta
 ms.service: storage
-ms.date: 02/17/2021
+ms.date: 03/19/2021
 ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-js
-ms.openlocfilehash: 8ce5df805ddce6cdb52e4225bb77e2d8dfa9b9b0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 678af3e2fb4111593ece0cc2cdf3811cf0e793a8
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100650176"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774771"
 ---
-# <a name="use-javascript-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. dizinleri ve dosyaları yönetmek için JavaScript kullanın
+# <a name="use-javascript-sdk-in-nodejs-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>Node.js Azure Data Lake Storage 2. dizinleri ve dosyaları yönetmek için JavaScript SDK 'sını kullanın
 
-Bu makalede, hiyerarşik bir ad alanına sahip depolama hesaplarında dizin ve dosya oluşturmak ve yönetmek için JavaScript 'In nasıl kullanılacağı gösterilir.
+Bu makalede, hiyerarşik bir ad alanına sahip depolama hesaplarında dizin ve dosya oluşturmak ve yönetmek için Node.js nasıl kullanılacağı gösterilmektedir.
 
-Dizinlerin ve dosyaların erişim denetim listelerini (ACL) alma, ayarlama ve güncelleştirme hakkında bilgi edinmek için bkz. [Azure Data Lake Storage 2. ACL 'leri yönetmek Için JavaScript kullanma](data-lake-storage-acl-javascript.md).
+Dizinlerin ve dosyaların erişim denetim listelerini (ACL) alma, ayarlama ve güncelleştirme hakkında bilgi edinmek için, [Azure Data Lake Storage 2. ACL 'leri yönetmek üzere Node.js Içindeki JavaScript SDK 'Sını kullanma](data-lake-storage-acl-javascript.md)konusuna bakın.
 
 [Paket (düğüm Paket Yöneticisi)](https://www.npmjs.com/package/@azure/storage-file-datalake)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples)  |  [Geri bildirimde](https://github.com/Azure/azure-sdk-for-java/issues) bulunun
 
@@ -43,7 +43,11 @@ npm install @azure/storage-file-datalake
 `storage-file-datalake`Bu ifadeyi kod dosyanızın en üstüne yerleştirerek paketi içeri aktarın. 
 
 ```javascript
-const AzureStorageDataLake = require("@azure/storage-file-datalake");
+const {
+AzureStorageDataLake,
+DataLakeServiceClient,
+StorageSharedKeyCredential
+} = require("@azure/storage-file-datalake");
 ```
 
 ## <a name="connect-to-the-account"></a>Hesaba Bağlan 

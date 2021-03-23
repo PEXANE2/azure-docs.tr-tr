@@ -61,6 +61,8 @@
               href: solutions-benefits-azure-netapp-files-electronic-design-automation.md
             - name: Windows Sanal Masaüstü ile Azure NetApp Files kullanmanın avantajları
               href: solutions-windows-virtual-desktop.md
+            - name: SQL Server dağıtımı için Azure NetApp Files kullanmanın avantajları
+              href: solutions-benefits-azure-netapp-files-sql-server.md
     - name: Azure NetApp Files hakkında SSS
       href: azure-netapp-files-faqs.md
     - name: Azure Uygulamayla Tutarlı Anlık Görüntü Aracı nedir?
@@ -179,3 +181,5 @@
       href: 'https://azure.microsoft.com/support/legal/sla/netapp/'
     - name: Videolar
       href: azure-netapp-files-videos.md
+    - name: Azure dosyaları ve Azure NetApp Files karşılaştırması
+      href: ../storage/files/storage-files-netapp-comparison.md

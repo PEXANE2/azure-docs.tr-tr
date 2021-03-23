@@ -4,12 +4,12 @@ ms.service: iot-edge
 ms.topic: include
 ms.date: 08/26/2020
 ms.author: v-tcassi
-ms.openlocfilehash: 9572f4c663c820c76a57cdbdcecff082b150b577
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 8009d98ddbfa778cf5f357248ecd943b810e06e3
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104761227"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104803229"
 ---
 ## <a name="create-a-release-pipeline-for-continuous-deployment"></a>Sürekli dağıtım için bir yayın işlem hattı oluşturma
 
@@ -89,6 +89,9 @@ Yeni bir işlem hattı oluşturun ve yeni bir aşama ekleyin:
     | Tek/birden çok cihaz seçin | Yayın işlem hattının bir veya birden çok cihaza dağıtılmasını isteyip istemediğinizi seçin. Tek bir cihaza dağıtıyorsanız **IoT Edge CIHAZ kimliğini** girin. Birden çok cihaza dağıtıyorsanız, cihaz **hedefi koşulunu** belirtin. Hedef koşul, IoT Hub bir IoT Edge cihazları kümesiyle eşleşecek bir filtredir. Cihaz etiketlerini koşul olarak kullanmak istiyorsanız, ilgili cihaz etiketlerinizi IoT Hub Device ikizi ile güncelleştirmeniz gerekir. Gelişmiş ayarlarda **IoT Edge DAĞıTıM kimliğini** ve **Dağıtım önceliğini IoT Edge** güncelleştirin. Birden çok cihaz için dağıtım oluşturma hakkında daha fazla bilgi için bkz. [IoT Edge otomatik dağıtımları anlama](../articles/iot-edge/module-deployment-monitoring.md). |
     | Cihaz KIMLIĞI veya hedef koşulu | Önceki seçime bağlı olarak, birden çok cihaza dağıtılacak bir cihaz KIMLIĞI veya [hedef koşulu](../articles/iot-edge/module-deployment-monitoring.md#target-condition) belirtin. |
     | Gelişmiş | IoT Edge dağıtım KIMLIĞI için, belirtin `$(System.TeamProject)-$(Release.EnvironmentName)` . Bu değişken, proje ve sürüm adını IoT Edge dağıtım KIMLIĞINIZLE eşler. |
+    
+
+    Göreviniz, genel buluta görünmeyen özel bir Docker güvenilen kayıt defterinde bulunan bir görüntünün kullanımını içeriyorsa, **SKIP_MODULE_IMAGE_VALIDATION** ortam değişkenini `true` görüntü doğrulamayı atlayacak şekilde ayarlayabilirsiniz. 
 
     ![Geliştirme aşamalarınız için Azure IoT Edge görevleri ekleyin](./media/iot-edge-create-release-pipeline-for-continuous-deployment/add-quality-assurance-task.png)
 

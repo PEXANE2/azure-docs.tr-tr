@@ -7,12 +7,12 @@ ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
-ms.openlocfilehash: f62b4c354ffa90bf1a03651fccf8780074344e46
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: dbd6a1a0c8643adc4918cc15e214e903dfb1ccb6
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103466431"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775944"
 ---
 # <a name="use-azure-devops-to-create-a-cicd-pipeline-for-a-stream-analytics-job"></a>Stream Analytics işi için bir CI/CD işlem hattı oluşturmak için Azure DevOps kullanın
 
@@ -20,13 +20,13 @@ Bu makalede, Azure Stream Analytics CI/CD araçlarını kullanarak Azure DevOps 
 
 ## <a name="commit-your-stream-analytics-project"></a>Stream Analytics projenizi işleyin
 
-Başlamadan önce, tüm Stream Analytics projelerinizi bir [Azure DevOps](/azure/devops/user-guide/source-control) deposuna kaynak dosya olarak kaydedin. Bu [örnek depoya](https://dev.azure.com/wenyzou/azure-streamanalytics-cicd-demo) başvurabilirsiniz ve Azure Pipelines [Stream Analytics proje kaynak kodunu](https://dev.azure.com/wenyzou/_git/azure-streamanalytics-cicd-demo?path=%2FmyASAProject) kullanabilirsiniz.
+Başlamadan önce, tüm Stream Analytics projelerinizi bir [Azure DevOps](/azure/devops/user-guide/source-control) deposuna kaynak dosya olarak kaydedin. Bu [örnek depoya](https://dev.azure.com/ASA-CICD-sample/azure-streamanalytics-cicd-demo) başvurabilirsiniz ve Azure Pipelines [Stream Analytics proje kaynak kodunu](https://dev.azure.com/ASA-CICD-sample/_git/azure-streamanalytics-cicd-demo) kullanabilirsiniz.
 
 Bu makaledeki adımlarda Stream Analytics Visual Studio Code projesi kullanılır. Bir Visual Studio projesi kullanıyorsanız, [CI/CD araçlarını kullanarak bir Azure Stream Analytics işinin yapılarını, testlerini ve dağıtımlarını otomatik hale](cicd-tools.md)getirme bölümündeki adımları izleyin.
 
 ## <a name="create-a-build-pipeline"></a>Derleme işlem hattı oluşturma
 
-Bu bölümde, derleme işlem hattı oluşturmayı öğreneceksiniz. Azure DevOps 'da Bu örnek [otomatik derleme ve test](https://dev.azure.com/wenyzou/_git/azure-streamanalytics-cicd-demo?path=%2FmyASAProject) işlem hattına başvurabilirsiniz.
+Bu bölümde, derleme işlem hattı oluşturmayı öğreneceksiniz. Azure DevOps 'da Bu örnek [otomatik derleme ve test](https://dev.azure.com/ASA-CICD-sample/azure-streamanalytics-cicd-demo/_build) işlem hattına başvurabilirsiniz.
 
 1. Bir Web tarayıcısı açın ve Azure DevOps 'da projenize gidin.  
 
@@ -155,7 +155,7 @@ Test Özet dosyası ve Azure Resource Manager şablonu dosyaları **yayımlanan*
 
 ## <a name="release-with-azure-pipelines"></a>Azure Pipelines yayın
 
-Bu bölümde, bir yayın işlem hattı oluşturmayı öğreneceksiniz. Azure DevOps 'da Bu örnek [yayın](https://dev.azure.com/wenyzou/azure-streamanalytics-cicd-demo/_release?_a=releases&view=mine&definitionId=2&preserve-view=true) işlem hattına başvurabilirsiniz.
+Bu bölümde, bir yayın işlem hattı oluşturmayı öğreneceksiniz. Azure DevOps 'da Bu örnek [yayın](https://dev.azure.com/ASA-CICD-sample/azure-streamanalytics-cicd-demo/_release?_a=releases&view=mine&definitionId=2) işlem hattına başvurabilirsiniz.
 
 Bir Web tarayıcısı açın ve Azure Stream Analytics Visual Studio Code projenize gidin.
 

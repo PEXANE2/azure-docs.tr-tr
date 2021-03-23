@@ -7,22 +7,10 @@
     - name: AzureIoTSolutions.com
       href: iot-accelerators-permissions.md
     - name: Endüstriyel IoT
-      href: overview-iot-industrial.md
-      items:
-        - name: OPC Twin nedir?
-          href: overview-opc-twin.md
-        - name: OPC Vault nedir?
-          href: overview-opc-vault.md
-        - name: OPC Yayımcısı nedir?
-          href: overview-opc-publisher.md
-        - name: Bağlı Fabrika nedir?
-          href: iot-accelerators-connected-factory-features.md
     - name: Cihaz benzetimi
       href: iot-accelerators-device-simulation-overview.md
 - name: Hızlı Başlangıçlar
   items:
-    - name: Bağlı fabrika çözümünü deneyin
-      href: quickstart-connected-factory-deploy.md
     - name: Cihaz simülasyonu çözüm hızlandırıcısını dağıtma
       href: 'https://github.com/Azure/device-simulation-dotnet/blob/master/README.md'
   expanded: true
@@ -37,47 +25,14 @@
 - name: Kavramlar
   items:
     - name: Endüstriyel IoT
-      items:
-        - name: OPC Twin Mimarisi
-          href: overview-opc-twin-architecture.md
-        - name: OPC Vault Mimarisi
-          href: overview-opc-vault-architecture.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Endüstriyel IoT
       items:
         - name: Bağlı Fabrika
-          items:
-            - name: Panoyu kullanma
-              href: iot-accelerators-connected-factory-dashboard.md
-            - name: Çözüm hızlandırıcısını yapılandırma
-              href: iot-accelerators-connected-factory-configure.md
-            - name: Çözüm hızlandırıcısını özelleştirme
-              href: iot-accelerators-connected-factory-customize.md
         - name: OPC Twin
-          items:
-            - name: OPC Twin hizmetlerini dağıtma
-              href: howto-opc-twin-deploy-existing.md
-            - name: OPC Twin modülünü IoT Edge'e dağıtma
-              href: howto-opc-twin-deploy-modules.md
-            - name: Yalnızca OPC Twin bağımlılıklarını dağıtma
-              href: howto-opc-twin-deploy-dependencies.md
         - name: OPC Vault
-          items:
-            - name: OPC Vault hizmetini dağıtma
-              href: howto-opc-vault-deploy.md
-            - name: OPC Vault hizmetini yönetme
-              href: howto-opc-vault-manage.md
-            - name: OPC Vault ile OPC UA cihaz iletişiminin güvenliğini sağlama
-              href: howto-opc-vault-secure.md
-            - name: OPC Vault hizmetini güvenli çalıştırma
-              href: howto-opc-vault-secure-ca.md
         - name: OPC Yayımcısı
-          items:
-            - name: OPC Yayımcısını Yapılandırma
-              href: howto-opc-publisher-configure.md
-            - name: OPC Yayımcısını Çalıştırma
-              href: howto-opc-publisher-run.md
     - name: Cihaz benzetimi
       items:
         - name: Mevcut bir IoT Hub’ı kullanma
@@ -122,8 +77,6 @@
       items:
         - name: GitHub deposu
           href: 'https://github.com/Azure/azure-iot-connected-factory'
-        - name: Bağlı Fabrika hakkında SSS
-          href: iot-accelerators-faq-cf.md
     - name: Cihaz benzetimi
       items:
         - name: Geliştirici başvuru kılavuzu

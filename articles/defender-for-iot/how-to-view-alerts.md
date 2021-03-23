@@ -1,20 +1,19 @@
 ---
-title: Uyarıları görüntüleme
+title: Uyarılar sayfasından uyarıları filtreleme ve yönetme
 description: Çeşitli kategorilere göre uyarıları görüntüleyin ve ilgilendiğiniz uyarıları bulmanıza yardımcı olması için arama özelliklerini kullanır.
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/02/2020
+ms.date: 3/22/2021
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 6dc2a9683a48f20816adc8ce0ee0c1e8dc57b287
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 391d1872124c7332bdaa6008a244490b47df4bf7
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100523677"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781594"
 ---
-# <a name="view-alerts"></a>Uyarıları görüntüleme
+# <a name="filter-and-manage-alerts-from-the-alerts-page"></a>Uyarılar sayfasından uyarıları filtreleme ve yönetme 
 
 Bu makalede, sensöriz tarafından tetiklenen uyarıların nasıl görüntüleneceği ve bunları uyarı araçlarıyla yönetme işlemlerinin nasıl yapılacağı açıklanır.
 
@@ -32,7 +31,7 @@ Uyarıları görüntülemek için:
 
 Uyarıları **Uyarı** ana görünümündeki çeşitli kategorilere göre görüntüleyebilirsiniz. Ayrıntıları gözden geçirmek ve olayı yönetmek için bir uyarı seçin.
 
-| Türe göre sırala | Description |
+| Türe göre sırala | Açıklama |
 |--|--|
 | **Önemli uyarılar** | Uyarılar önem derecesine göre sıralanır. |
 | **Sabitlenmiş uyarılar** | Kullanıcının daha fazla araştırma için sabitlendiğini uyarır. Sabitlenmiş uyarılar arşivlenmez ve sabitlenmiş klasörde 14 gün boyunca depolanır. |

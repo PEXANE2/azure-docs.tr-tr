@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 03/09/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 9d80c0b8d4d913322c47d1ad278d6dbc033d2409
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 79b88ad58a2eb95a48a140b3b98d606af495cb94
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102620151"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799794"
 ---
 # <a name="apply-an-azure-resource-manager-lock-to-a-storage-account"></a>Depolama hesabına Azure Resource Manager kilidi uygulama
 
@@ -25,8 +25,8 @@ Microsoft, depolama hesabının yanlışlıkla veya kötü amaçlı olarak silin
 
 Azure Resource Manager kilitleri hakkında daha fazla bilgi için bkz. [değişiklikleri engellemek için kaynakları kilitleme](../../azure-resource-manager/management/lock-resources.md).
 
-> [!IMPORTANT]
-> Bir depolama hesabının kilitlenmesi, bu hesabın içindeki verilerin güncelleştirilmesini veya silinmesini engellemez.
+> [!CAUTION]
+> Bir depolama hesabının kilitlenmesi, bu hesabın içindeki kapsayıcıların veya Blobların silinmesini veya üzerine yazılmasını engellemez. Blob verilerini koruma hakkında daha fazla bilgi için bkz. [veri korumasına genel bakış](../blobs/data-protection-overview.md).
 
 ## <a name="configure-an-azure-resource-manager-lock"></a>Azure Resource Manager kilidi yapılandırma
 
@@ -83,4 +83,5 @@ Azure dosyalarındaki veya tablo hizmetindeki veriler, daha önce hesap anahtarl
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Değişiklikleri engellemek için kaynakları kilitle](../../azure-resource-manager/management/lock-resources.md)
+- [Veri korumaya genel bakış](../blobs/data-protection-overview.md)
+- [Değişiklikleri engellemek için kaynakları kilitle](../../azure-resource-manager/management/lock-resources.md)

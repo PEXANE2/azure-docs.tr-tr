@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
-ms.date: 05/04/2020
+ms.date: 03/22/2021
 ms.author: cherylmc
-ms.openlocfilehash: 50f7906992aa19daa205a30f71ce21456bafe558
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4b0c2b734366f9a74a9b007ab9450ab4b4f51feb
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92079165"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800440"
 ---
 # <a name="copy-and-paste-to-a-virtual-machine-azure-bastion"></a>Sanal makineye Kopyala ve Yapıştır: Azure savunma
 
@@ -26,7 +26,7 @@ Gelişmiş Pano API erişimini destekleyen tarayıcılarda, yerel cihazınızdak
 
    ![Panoya izin ver](./media/bastion-vm-manage/allow.png)
 
-Yalnızca metin kopyalama/yapıştırma desteklenir. Doğrudan kopyalama ve yapıştırma için, tarayıcınız, savunma oturumu başlatıldığında Pano erişimi isteyebilir. Web sayfasının panoya erişmesine **Izin verin** .
+Yalnızca metin kopyalama/yapıştırma desteklenir. Doğrudan kopyalama ve yapıştırma için, tarayıcınız, savunma oturumu başlatıldığında Pano erişimi isteyebilir. Web sayfasının panoya erişmesine **Izin verin** . Bir Mac üzerinden çalışıyorsanız, yapıştırılacak klavye kısayolu **SHIFT-CTRL-V**' d ı y i olur.
 
 ## <a name="copy-to-a-remote-session"></a><a name="to"></a>Uzak oturuma Kopyala
 

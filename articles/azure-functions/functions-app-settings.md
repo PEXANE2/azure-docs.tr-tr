@@ -3,12 +3,12 @@ title: Azure İşlevleri için uygulama ayarları başvurusu
 description: Azure Işlevleri uygulama ayarları veya ortam değişkenleri için başvuru belgeleri.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: fb00f0fe16342bf603d534c34a860278dc21deac
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 327f120d387a3a08f0de9db2da718d530346e545
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104595988"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773088"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure İşlevleri için uygulama ayarları başvurusu
 
@@ -186,22 +186,24 @@ Varsayılan değeri olan en fazla dil çalışan işlemi sayısını belirtir `1
 |---|------------|
 |Işlev \_ çalışan \_ işlem \_ sayısı|2|
 
-## <a name="python_threadpool_thread_count"></a>PYTHON \_ THREADPOOL \_ iş parçacığı \_ sayısı
-
-Python dili çalışanının, Python sürümü için varsayılan bir değer ile işlev etkinleştirmeleri yürütmek için kullanacağı en fazla iş parçacığı sayısını belirtir `1` `3.8` . Python sürümü `3.9` ve üstü için değer olarak ayarlanır `None` . Bu ayarın yürütmeler sırasında ayarlanacak iş parçacığı sayısını garanti vermediğini unutmayın. Ayar, Python 'un belirtilen değere iş parçacığı sayısını genişletmesine izin verir. Bu ayar yalnızca Python işlevleri uygulamaları için geçerlidir. Ek olarak, bu ayar, eş zamanlı işlevlere yönelik değil, çağrı için de geçerlidir.
-
-|Anahtar|Örnek değer|En yüksek değer|
-|---|------------|---------|
-|PYTHON \_ THREADPOOL \_ iş parçacığı \_ sayısı|2|32|
-
-
 ## <a name="functions_worker_runtime"></a>IŞLEVLER \_ Worker \_ çalışma zamanı
 
-İşlev uygulamasında yüklenecek dil çalışanı çalışma zamanı.  Bu, uygulamanızda kullanılan dile karşılık gelir (örneğin, "DotNet"). Birden çok dildeki işlevler için, bunları her biri karşılık gelen bir çalışan çalışma zamanı değeri olan birden çok uygulamaya yayımlamanız gerekir.  Geçerli değerler şunlardır `dotnet` (C#/f #), `node` (JavaScript/TypeScript), `java` (Java), `powershell` (PowerShell) ve `python` (Python).
+İşlev uygulamasında yüklenecek dil çalışanı çalışma zamanı.  Bu, uygulamanızda kullanılan dile karşılık gelir (örneğin, `dotnet` ). Azure Işlevleri çalışma zamanının 2. x sürümünden başlayarak, belirli bir işlev uygulaması yalnızca tek bir dili destekleyebilir.   
 
 |Anahtar|Örnek değer|
 |---|------------|
-|IŞLEVLER \_ Worker \_ çalışma zamanı|dotnet|
+|IŞLEVLER \_ Worker \_ çalışma zamanı|node|
+
+Geçerli değerler:
+
+| Değer | Dil |
+|---|---|
+| `dotnet` | [C# (sınıf kitaplığı)](functions-dotnet-class-library.md)<br/>[C# (betik)](functions-reference-csharp.md) |
+| `dotnet-isolated` | [C# (Yalıtılmış işlem)](dotnet-isolated-process-guide.md) |
+| `java` | [Java](functions-reference-java.md) |
+| `node` | [JavaScript](functions-reference-node.md)<br/>[TypeScript](functions-reference-node.md#typescript) |
+| `powershell` | [PowerShell](functions-reference-powershell.md) |
+| `python` | [Python](functions-reference-python.md) |
 
 ## <a name="pip_extra_index_url"></a>PıP \_ ekstra \_ Dizin \_ URL 'si
 
@@ -212,6 +214,14 @@ Bu ayarın değeri, Python uygulamaları için özel bir paket dizin URL 'SI gö
 |PıP \_ ekstra \_ Dizin \_ URL 'si|http://my.custom.package.repo/simple |
 
 Daha fazla bilgi edinmek için bkz. Python geliştirici başvurusunda [özel bağımlılıklar](functions-reference-python.md#remote-build-with-extra-index-url) .
+
+## <a name="python_threadpool_thread_count"></a>PYTHON \_ THREADPOOL \_ iş parçacığı \_ sayısı
+
+Python dili çalışanının, Python sürümü için varsayılan bir değer ile işlev etkinleştirmeleri yürütmek için kullanacağı en fazla iş parçacığı sayısını belirtir `1` `3.8` . Python sürümü `3.9` ve üstü için değer olarak ayarlanır `None` . Bu ayarın yürütmeler sırasında ayarlanacak iş parçacığı sayısını garanti vermediğini unutmayın. Ayar, Python 'un belirtilen değere iş parçacığı sayısını genişletmesine izin verir. Bu ayar yalnızca Python işlevleri uygulamaları için geçerlidir. Ek olarak, bu ayar, eş zamanlı işlevlere yönelik değil, çağrı için de geçerlidir.
+
+|Anahtar|Örnek değer|En yüksek değer|
+|---|------------|---------|
+|PYTHON \_ THREADPOOL \_ iş parçacığı \_ sayısı|2|32|
 
 ## <a name="scale_controller_logging_enabled"></a>ÖLÇEK \_ denetleyicisi \_ günlüğü \_ etkin
 

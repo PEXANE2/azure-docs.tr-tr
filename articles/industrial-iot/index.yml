@@ -1,0 +1,49 @@
+### YamlMime:Landing
+title: Azure endüstriyel IoT Platformu belgeleri
+summary: Azure endüstriyel IoT Platformu, Azure 'da dağıtılan bir Microsoft modül ve hizmet paketidir.
+metadata:
+  description: Hakkında bilgi edinin
+  ms.service: industrial-iot
+  ms.topic: landing-page
+  author: philmea
+  ms.author: philmea
+  ms.date: 3/22/2021
+  ms.openlocfilehash: 8419316a452b9258e8b54cb333aa5fe1ef87b5b9
+  ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+  ms.translationtype: MT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 03/23/2021
+  ms.locfileid: "104800185"
+landingContent:
+- title: Azure endüstriyel IoT Platformu hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Endüstriyel IoT (IIoT) nedir?
+      url: overview-what-is-industrial-iot.md
+    - text: Endüstriyel IoT (IIoT) platformu nedir?
+      url: overview-what-is-industrial-iot-platform.md
+    - text: OPC yayımcısı nedir?
+      url: overview-what-is-opc-publisher.md
+- title: Endüstriyel IoT Platformu (IIoT) ile çalışmaya başlama
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Azure endüstriyel IoT platformunu dağıtma
+      url: tutorial-deploy-industrial-iot-platform.md
+    - text: Endüstriyel IoT bileşenlerini yapılandırma
+      url: tutorial-configure-industrial-iot-components.md
+    - text: Azure endüstriyel IoT verilerini ADX 'e çekme
+      url: tutorial-industrial-iot-azure-data-explorer.md
+    - text: Time Series Insights (TSI) ile verileri görselleştirme
+      url: tutorial-visualize-data-time-series-insights.md
+- title: OPC yayımcısı ile çalışma
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: OPC yayımcısını dağıtma
+      url: tutorial-publisher-deploy-opc-publisher-standalone.md
+    - text: OPC yayımcısını yapılandırma
+      url: tutorial-publisher-configure-opc-publisher.md
+    - text: OPC yayımcısı performansını ve belleğini ayarlama
+      url: tutorial-publisher-performance-memory-tuning-opc-publisher.md

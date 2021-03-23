@@ -290,8 +290,10 @@
               href: application-proxy-understand-cors-issues.md
 - name: Başvuru
   items:
-    - name: Uygulama Ara Sunucusu SSS
+    - name: Uygulama proxy 'Si SSS
       href: application-proxy-faq.md
+    - name: Uygulama yönetimi sertifikaları SSS
+      href: application-management-certs-faq.md
     - name: Uygulama Proxy’si sürüm geçmişi
       href: application-proxy-release-version-history.md
     - name: Uygulamaların Kurumsal Uygulamalar’da görünmesinin nedenleri

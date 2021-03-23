@@ -2,14 +2,14 @@
 title: Havuzlar için VM boyutlarını ve görüntülerini seçin
 description: Azure Batch havuzlarda işlem düğümleri için kullanılabilir VM boyutları ve işletim sistemi sürümleri arasından seçim yapma
 ms.topic: conceptual
-ms.date: 03/08/2021
+ms.date: 11/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 42b8743fac6a6c64e98271490f0bfc4671fa7698
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f108e1347ef6c3c7df45c4b3d807a754f4867097
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102455204"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800491"
 ---
 # <a name="choose-a-vm-size-and-image-for-compute-nodes-in-an-azure-batch-pool"></a>Bir Azure Batch havuzundaki işlem düğümleri için VM boyutu ve görüntüsü seçme
 
@@ -35,11 +35,13 @@ Sanal makine yapılandırmasındaki toplu iş havuzları neredeyse tüm [VM boyu
 | DC | Desteklenmez |
 | Dv2, DSv2 | Tüm Boyutlar |
 | Dv3, Dsv3 | Tüm Boyutlar |
-| Dav4, Dasv4 | Tüm Boyutlar |
+| Dav4 | Tüm Boyutlar |
+| Dasv4 | Tüm Boyutlar |
 | Ddv4, Ddsv4 |  Tüm Boyutlar |
 | Dv4, Dsv4 | Desteklenmez |
 | Ev3, Esv3 | E64is_v3 dışındaki tüm boyutlar |
-| Eav4, Easv4 | Tüm Boyutlar |
+| Eav4 | Tüm Boyutlar |
+| Easv4 | Tüm Boyutlar |
 | Edv4, Edsv4 |  Tüm Boyutlar |
 | Ev4, Esv4 | Desteklenmez |
 | F, FS | Tüm Boyutlar |
@@ -56,7 +58,7 @@ Sanal makine yapılandırmasındaki toplu iş havuzları neredeyse tüm [VM boyu
 | NC | Tüm Boyutlar |
 | NCv2 | Tüm Boyutlar |
 | NCv3 | Tüm Boyutlar |
-| NCasT4_v3 | Tüm Boyutlar |
+| NCasT4_v3 | Hiçbiri-henüz kullanılamıyor |
 | ND | Tüm Boyutlar |
 | NDv2 | Hiçbiri-henüz kullanılamıyor |
 | NV | Tüm Boyutlar |
@@ -100,6 +102,8 @@ Her bir görüntü için düğüm Aracısı SKU kimlikleri dahil olmak üzere Ba
 - Batch hizmeti REST API: [desteklenen görüntüleri listeleme](/rest/api/batchservice/account/listsupportedimages)
 - PowerShell: [Get-AzBatchSupportedImage](/powershell/module/az.batch/get-azbatchsupportedimage)
 - Azure CLı: [az Batch Pool destekleniyor-Images](/cli/azure/batch/pool/supported-images)
+
+Toplu Iş desteği ömrü sonu (EOL) tarihleri olan görüntülerden kaçınmamak kesinlikle önerilir. Bu tarihler [ `ListSupportedImages` API](https://docs.microsoft.com/rest/api/batchservice/account/listsupportedimages), [PowerShell](https://docs.microsoft.com/powershell/module/az.batch/get-azbatchsupportedimage)veya [Azure CLI](https://docs.microsoft.com/cli/azure/batch/pool/supported-images)aracılığıyla bulunabilir. Batch havuzu VM görüntüsü seçimi hakkında daha fazla bilgi için lütfen [toplu işlem en iyi yöntemler kılavuzuna](best-practices.md) bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

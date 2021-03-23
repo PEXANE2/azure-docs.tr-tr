@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 66f11b7a5124f0b9b834b79368d57443ab33e850
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 263397aa2cd09ba24fa750131b76047801869a65
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104578354"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798944"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Web API 'Lerini çağıran masaüstü uygulaması: uygulama kaydı
 
@@ -50,6 +50,7 @@ Azure portal **uygulama kayıtları** içindeki uygulama için [Platform ayarlar
   > En iyi güvenlik uygulaması olarak, `https://login.microsoftonline.com/common/oauth2/nativeclient` `http://localhost` yeniden yönlendirme URI 'si olarak veya öğesini açıkça ayarlamayı öneririz. MSAL.NET gibi bazı kimlik doğrulama kitaplıkları `urn:ietf:wg:oauth:2.0:oob` , başka bir yeniden yönlendirme URI 'si belirtilmediğinde varsayılan bir değeri kullanır; bu önerilmez. Bu varsayılan, sonraki büyük sürümde bir son değişiklik olarak güncelleştirilir.
 
 - MacOS için yerel bir amaç-C veya Swift uygulaması oluşturuyorsanız, yeniden yönlendirme URI 'sini uygulamanızın paket tanımlayıcısına göre aşağıdaki biçimde kaydedin: `msauth.<your.app.bundle.id>://auth` . `<your.app.bundle.id>`Uygulamanızın paket tanımlayıcısı ile değiştirin.
+- Bir Node.js elektron uygulaması oluşturursanız, örneğin, yetkilendirme akışının yeniden yönlendirme adımını işlemek için normal web (https://) yeniden yönlendirme URI 'SI yerine özel bir dosya protokolü kullanın `msal://redirect` . Özel dosya protokolünün adı tahmin edilecek şekilde belirgin olmamalıdır ve [yerel uygulamalar Için OAuth 2.0 belirtiminde](https://tools.ietf.org/html/rfc8252#section-7.1)yapılan önerilere uymalıdır.
 - Uygulamanız yalnızca tümleşik Windows kimlik doğrulaması veya Kullanıcı adı ve parola kullanıyorsa, uygulamanız için bir yeniden yönlendirme URI 'SI kaydetmeniz gerekmez. Bu akışlar Microsoft Identity platform v 2.0 uç noktasına gidiş dönüş yapılır. Uygulamanız belirli bir URI üzerinde geri çağrılmayacaktır.
 - [Cihaz kod akışı](scenario-desktop-acquire-token.md#device-code-flow), [Tümleşik Windows kimlik doğrulaması](scenario-desktop-acquire-token.md#integrated-windows-authentication)ve bir Kullanıcı adı ile gizli bir istemci uygulamasından bir [parolayı ve bir kullanıcı adını ve bir parolayı](scenario-desktop-acquire-token.md#username-and-password) , bir yeniden yönlendirme URI 'si gerektiren [arka plan uygulamaları](scenario-daemon-overview.md)için kullanılan bir istemci kimlik bilgisi akışını kullanarak ayırt etmek için, bunu bir ortak istemci uygulaması olarak Bu yapılandırmayı elde etmek için:
 

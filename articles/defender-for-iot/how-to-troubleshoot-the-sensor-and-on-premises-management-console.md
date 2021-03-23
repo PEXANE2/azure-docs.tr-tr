@@ -1,18 +1,14 @@
 ---
 title: Algılayıcı ve şirket içi yönetim konsolunda sorun giderme
 description: Sahip olabileceğiniz sorunları ortadan kaldırmak için sensörizin ve şirket içi yönetim konsolunuzun sorunlarını giderin.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 03/14/2021
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: ba68bc3eee94689236792f0270d779357dffde9f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 83ffec959a5b38e9f4fd4d7d0dcfd3b1b9faa096
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103465785"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104785453"
 ---
 # <a name="troubleshoot-the-sensor-and-on-premises-management-console"></a>Algılayıcı ve şirket içi yönetim konsolunda sorun giderme
 
@@ -258,7 +254,7 @@ Günlükleri dışarı aktarmak için:
 
 1. Dışarı aktarmak istediğiniz verileri tanımlamak için veri kategorilerini seçin:  
 
-    | Kategoriyi dışarı aktar | Description |
+    | Kategoriyi dışarı aktar | Açıklama |
     |--|--|
     | **İşletim sistemi günlükleri** | İşletim sistemi durumu hakkında bilgi almak için bu seçeneği belirleyin. |
     | **Yükleme/yükseltme günlükleri** | Yükleme ve yükseltme yapılandırma parametrelerinin araştırılması için bu seçeneği belirleyin. |

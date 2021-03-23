@@ -1,0 +1,89 @@
+- name: Azure BareMetal Infrastructure
+  href: index.yml
+- name: Genel Bakış
+  items:
+    - name: BareMetal Altyapısı nedir?
+      href: concepts-baremetal-infrastructure-overview.md
+    - name: Terimleri öğrenme
+      href: know-baremetal-terms.md
+    - name: Azure 'da BareMetal örnek birimlerini bağlama
+      displayName: 'Azure CLI, az baremetalinstance, az baremetalinstance restart'
+      href: connect-baremetal-infrastructure.md
+- name: İş yükleri
+  items:
+    - name: BareMetal iş yükü türleri
+      href: /azure/virtual-machines/workloads/sap/get-started?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+    - name: Azure’da SAP HANA (Büyük Örnekler)
+      items:
+        - name: Sertifika
+          href: /azure/virtual-machines/workloads/sap/hana-certification?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+        - name: HLI için kullanılabilir SKU'lar
+          href: /azure/virtual-machines/workloads/sap/hana-available-skus?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+        - name: Boyutlandırma
+          href: /azure/virtual-machines/workloads/sap/hana-sizing?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+        - name: Ekleme gereksinimleri
+          href: /azure/virtual-machines/workloads/sap/hana-onboarding-requirements?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+        - name: SAP HANA veri katmanlama ve uzantı düğümleri
+          href: /azure/virtual-machines/workloads/sap/hana-data-tiering-extension-nodes?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+        - name: İşlem modeli ve sorumluluklar
+          href: /azure/virtual-machines/workloads/sap/hana-operations-model?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+        - name: Uyumlu İşletim Sistemleri
+          href: /azure/virtual-machines/workloads/sap/os-compatibility-matrix-hana-large-instance?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+        - name: Desteklenen HLI senaryoları
+          href: /azure/virtual-machines/workloads/sap/hana-supported-scenario?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+        - name: Mimari
+          items:
+            - name: Genel mimari
+              href: /azure/virtual-machines/workloads/sap/hana-architecture?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+            - name: Ağ mimarisi
+              href: /azure/virtual-machines/workloads/sap/hana-network-architecture?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+            - name: Depolama mimarisi
+              href: /azure/virtual-machines/workloads/sap/hana-storage-architecture?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+        - name: Altyapı ve bağlantı
+          items:
+            - name: HLI dağıtımı
+              href: /azure/virtual-machines/workloads/sap/hana-overview-infrastructure-connectivity?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+            - name: Azure VM'lerini HANA Büyük Örnekleri'ne bağlama
+              href: /azure/virtual-machines/workloads/sap/hana-connect-azure-vm-large-instances?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+            - name: Sanal ağı HANA Büyük Örneği ExpressRoute'a bağlama
+              href: /azure/virtual-machines/workloads/sap/hana-connect-vnet-express-route?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+            - name: Ek ağ gereksinimleri
+              href: /azure/virtual-machines/workloads/sap/hana-additional-network-requirements?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+        - name: SAP HANA yükleme
+          items:
+            - name: Yapılandırmayı doğrulama
+              href: /azure/virtual-machines/workloads/sap/hana-installation?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+            - name: Örnek HANA Yüklemesi
+              href: /azure/virtual-machines/workloads/sap/hana-example-installation?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+        - name: Yüksek kullanılabilirlik ve olağanüstü durum kurtarma
+          items:
+            - name: Seçenekler ve önemli noktalar
+              href: /azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+            - name: Yedekleme ve geri yükleme
+              href: /azure/virtual-machines/workloads/sap/hana-backup-restore?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+            - name: İlkeler ve hazırlık
+              href: /azure/virtual-machines/workloads/sap/hana-concept-preparation?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+            - name: Olağanüstü durum kurtarma yük devretme yordamı
+              href: /azure/virtual-machines/workloads/sap/hana-failover-procedure?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+        - name: Sorun giderme ve izleme
+          items:
+            - name: HLI'yi izleme
+              href: /azure/virtual-machines/workloads/sap/troubleshooting-monitoring?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+            - name: HANA tarafından izleme ve sorun giderme
+              href: /azure/virtual-machines/workloads/sap/hana-monitor-troubleshoot?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+        - name: Nasıl yapılır
+          items:
+            - name: STONITH ile HA Kurulumu
+              href: /azure/virtual-machines/workloads/sap/ha-setup-with-stonith?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+            - name: Type II SKU'ları için İşletim Sistemi Yedeklemesi
+              href: /azure/virtual-machines/workloads/sap/os-backup-type-ii-skus?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+            - name: HANA Büyük Örnekleri için Kdump’ı etkinleştirme
+              href: /azure/virtual-machines/workloads/sap/hana-large-instance-enable-kdump?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+            - name: HANA Büyük Örnekleri için İşletim Sistemi Yükseltmesi
+              href: /azure/virtual-machines/workloads/sap/os-upgrade-hana-large-instance?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+            - name: SUSE Linux için SMT sunucusunu ayarlama
+              href: /azure/virtual-machines/workloads/sap/hana-setup-smt?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+            - name: HLI’dan Azure VM’ye geçiş
+              href: /azure/virtual-machines/workloads/sap/hana-large-instance-virtual-machine-migration?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+            - name: SAP HANA Büyük Örnekleri rezervasyonu satın alma
+              href: /azure/cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity

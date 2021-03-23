@@ -3,12 +3,12 @@ title: Şema örnekleri dizini
 description: Azure Blueprints ile ortamlar, ilkeler ve Bulut Benimseme Çerçevesi temelleri dağıtmak için uyumluluk ve standart örnek dizini.
 ms.date: 03/11/2021
 ms.topic: sample
-ms.openlocfilehash: 0873de5879a40b13bea03c97e0b78d146f0d6696
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 06dc65ca601c938f6610df3ed22b4ea0f3826208
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103200985"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799471"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints örnekleri
 
@@ -34,6 +34,7 @@ Aşağıdaki tabloda Azure Blueprints'e ait örneklerin bağlantıları yer alı
 | [ISO 27001 Paylaşılan Hizmetler](./iso27001-shared/index.md) | ISO 27001 onayı almaya yardımcı olacak bir dizi uyumlu altyapı deseni ve ilke koruması sağlar. |
 | [ISO 27001 App Service Ortamı/SQL Veritabanı iş yükü](./iso27001-ase-sql-workload/index.md) | [ISO 27001 paylaşılan hizmetleri](./iso27001-shared/index.md) şema örneğine daha fazla altyapı sağlar. |
 | [Medya](./media/index.md) | Medya MPAA ile uyumluluk sağlamaya yardımcı olmak için bir dizi ilke sağlar. |
+| [Yeni Zelanda ıSM kısıtlanmış](./new-zealand-ism.md) | Belirli Yeni Zelanda bilgi güvenliği El Ile denetimlerine yönelik ilkeler atar. |
 | [NIST SP 800-53 R4](./nist-sp-800-53-r4.md) | NıST SP 800-53 R4 uyumluluk için guardrayları sağlar. |
 | [NIST SP 800-171 R2](./nist-sp-800-171-r2.md) | NıST SP 800-171 R2 ile uyumluluk için guardrayları sağlar. |
 | [PCI-DSS v3.2.1](./pci-dss-3.2.1/index.md) | PCI-DSS v3.2.1 uyumluluğunu desteklemeye yönelik bir ilke kümesi sağlar. |

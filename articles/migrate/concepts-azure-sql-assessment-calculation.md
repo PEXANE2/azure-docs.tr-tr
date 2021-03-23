@@ -5,19 +5,16 @@ author: rashi-ms
 ms.author: rajosh
 ms.topic: conceptual
 ms.date: 02/07/2021
-ms.openlocfilehash: d1ea328575cf07a22ce39549c34d5cd21e916427
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e4e726f742d46a4b63563f55c191cf21e49d06fc
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102054989"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104778330"
 ---
 # <a name="assessment-overview-migrate-to-azure-sql"></a>Değerlendirmeye genel bakış (Azure SQL 'e geçiş)
 
 Bu makalede, [Azure geçişi: bulma ve değerlendirme aracı](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-server-assessment-tool)kullanılarak bir VMware ORTAMıNDAN Azure SQL veritabanlarına veya yönetilen örneklere şirket içi SQL Server örnekleri geçirmeye yönelik değerlendirmelere genel bakış sunulmaktadır.
-
-> [!Note]
-> VMware ortamınızda çalışan SQL Server örnekleri ve veritabanlarının keşfi ve değerlendirmesi artık önizlemededir. Bu özelliği denemek için [**bu bağlantıyı**](https://aka.ms/AzureMigrate/SQL) kullanarak **Doğu Avustralya** bölgesinde bir proje oluşturun. Zaten Doğu Avustralya bölgesinde bir projeniz varsa ve bu özelliği denemek istiyorsanız, lütfen portalda bu [**önkoşulları**](how-to-discover-sql-existing-project.md) tamamladığınızdan emin olun.
 
 ## <a name="whats-an-assessment"></a>Değerlendirme nedir?
 Bulma ve değerlendirme aracı ile bir değerlendirme, verilerin zaman içindeki bir noktaya görüntüsüdür ve kullanıma hazır olma durumunu ölçer ve şirket içi sunucuları Azure 'a geçirme etkisini tahmin eder.
@@ -28,9 +25,9 @@ Azure geçişi: bulma ve değerlendirme aracını kullanarak oluşturabileceğin
 
 **Değerlendirme Türü** | **Ayrıntılar**
 --- | --- 
-**Azure VM** | Şirket içi sunucularınızı Azure sanal makinelerine geçirmeye yönelik değerlendirmeler. Bu değerlendirme türünü kullanarak, [VMware](how-to-set-up-appliance-vmware.md) ve [Hyper-V](how-to-set-up-appliance-hyper-v.md) ortamındaki şirket Içi sunucularınızı ve Azure VM 'lerine geçiş için [fiziksel sunucuları](how-to-set-up-appliance-physical.md) değerlendirebilirsiniz.
+**Azure VM** | Şirket içi sunucularınızı Azure sanal makinelerine geçirmeye yönelik değerlendirmeler. <br/><br/> Bu değerlendirme türünü kullanarak, [VMware](how-to-set-up-appliance-vmware.md) ve [Hyper-V](how-to-set-up-appliance-hyper-v.md) ortamındaki şirket Içi sunucularınızı ve Azure VM 'lerine geçiş için [fiziksel sunucuları](how-to-set-up-appliance-physical.md) değerlendirebilirsiniz.
 **Azure SQL** | Şirket içi SQL Server 'larınızı VMware ortamınızdan Azure SQL veritabanı 'na veya Azure SQL yönetilen örneğine geçirmeye yönelik değerlendirmeler.
-**Azure VMware Çözümü (AVS)** | Şirket içi sunucularınızı [Azure VMware Çözümü'ne (AVS)](../azure-vmware/introduction.md) geçirmeye yönelik değerlendirmeler. Bu değerlendirme türünü kullanarak Azure VMware çözümüne (AVS) geçiş için şirket içi [VMware VM](how-to-set-up-appliance-vmware.md) 'lerinizi değerlendirebilirsiniz. [Daha fazla bilgi edinin](concepts-azure-vmware-solution-assessment-calculation.md)
+**Azure VMware Çözümü (AVS)** | Şirket içi sunucularınızı [Azure VMware Çözümü'ne (AVS)](../azure-vmware/introduction.md) geçirmeye yönelik değerlendirmeler. <br/><br/> Bu değerlendirme türünü kullanarak Azure VMware çözümüne (AVS) geçiş için şirket içi [VMware VM](how-to-set-up-appliance-vmware.md) 'lerinizi değerlendirebilirsiniz. [Daha fazla bilgi edinin](concepts-azure-vmware-solution-assessment-calculation.md)
 
 Azure SQL değerlendirmesi bir boyutlandırma ölçütü sağlar:
 
@@ -76,34 +73,34 @@ Azure SQL değerlendirmesi özelliklerine aşağıda verilmiştir:
 **Özellik** | **Ayrıntılar**
 --- | ---
 **Hedef konum** | Geçirmek istediğiniz Azure bölgesi. Azure SQL yapılandırması ve maliyet önerileri belirttiğiniz konuma göre yapılır.
-**Hedef dağıtım türü** | Değerlendirmeyi çalıştırmak istediğiniz hedef dağıtım türü: Azure geçişi 'nin Azure SQL MI ve Azure SQL DB 'ye geçiş için SQL sunucularınızın hazır olduğunu değerlendirmek ve en uygun hedef dağıtım seçeneğini, hedef katmanı, Azure SQL yapılandırmasını ve aylık tahminleri önermesini sağlamak istiyorsanız, **Önerilen**' i seçin. SQL Server 'larınızı yalnızca Azure SQL veritabanlarına geçirmeye değerlendirmek ve hedef katmanı, Azure SQL DB yapılandırması ve aylık tahminleri gözden geçirmek istiyorsanız **Azure SQL veritabanı**' nı seçin. SQL Server 'larınızı yalnızca Azure SQL veritabanlarına geçirmek için değerlendirmek istiyorsanız Azure SQL **mi**' yi seçin ve hedef katmanını, Azure SQL mı yapılandırmasını ve aylık tahminleri gözden geçirin.
-**Ayrılmış kapasite** | Değerlendirmede maliyet tahminleri bunları hesaba alacak şekilde ayrılmış kapasiteyi belirtir. Ayrılmış kapasite seçeneğini belirlerseniz, "Indirim (%)" belirtemezsiniz.
-**Boyutlandırma ölçütü** | Bu özellik, Azure SQL yapılandırmasını sağ boyuta almak için kullanılır. Varsayılan olarak, **performans tabanlı** olarak ayarlanır; Bu, değerlendirmenin en iyi şekilde boyutlandırılmış BIR Azure SQL yönetilen örneği ve/veya Azure SQL veritabanı katmanı/yapılandırma önerisi önermek için SQL Server örnekleri ve veritabanlarının performans ölçümlerini toplayacağı anlamına gelir.
+**Hedef dağıtım türü** | Değerlendirmeyi çalıştırmak istediğiniz hedef dağıtım türü: <br/><br/> Azure geçişi 'nin Azure SQL MI ve Azure SQL DB 'ye geçiş için SQL sunucularınızın hazır olduğunu değerlendirmesini ve en uygun hedef dağıtım seçeneğini, hedef katmanını, Azure SQL yapılandırmasını ve aylık tahminleri önermesini istiyorsanız, **Önerilen**' i seçin.<br/><br/>SQL Server 'larınızı yalnızca Azure SQL veritabanlarına geçirmeye değerlendirmek ve hedef katmanı, Azure SQL DB yapılandırması ve aylık tahminleri gözden geçirmek istiyorsanız **Azure SQL veritabanı**' nı seçin.<br/><br/>SQL Server 'larınızı yalnızca Azure SQL veritabanlarına geçirmek için değerlendirmek istiyorsanız Azure SQL **mi**' yi seçin ve hedef katmanını, Azure SQL mı yapılandırmasını ve aylık tahminleri gözden geçirin.
+**Ayrılmış kapasite** | Değerlendirmede maliyet tahminleri bunları hesaba alacak şekilde ayrılmış kapasiteyi belirtir.<br/><br/> Ayrılmış kapasite seçeneğini belirlerseniz, "Indirim (%)" belirtemezsiniz.
+**Boyutlandırma ölçütü** | Bu özellik, Azure SQL yapılandırmasını sağ boyuta almak için kullanılır. <br/><br/> Varsayılan olarak, **performans tabanlı** olarak ayarlanır; Bu, değerlendirmenin en iyi şekilde boyutlandırılmış BIR Azure SQL yönetilen örneği ve/veya Azure SQL veritabanı katmanı/yapılandırma önerisi önermek için SQL Server örnekleri ve veritabanlarının performans ölçümlerini toplayacağı anlamına gelir.
 **Performans geçmişi** | Performans geçmişi performans verileri değerlendirilirken kullanılan süreyi belirtir.
 **Yüzdebirlik kullanımı** | Yüzdebirlik kullanımı, doğru hale getirmek için kullanılan performans örneğinin yüzdebirlik değerini belirtir.
-**Konfor katsayısı** | Değerlendirme sırasında kullanılan arabellek. Dönemsel kullanım, kısa performans geçmişi ve gelecekteki kullanımlarda olası artışlar gibi sorunlar için BT hesapları. Örneğin, %20 kullanımı olan 10 çekirdekli bir örnek, normalde iki çekirdekli örnekle sonuçlanır. 2,0 ile, sonuç olarak dört çekirdekli bir örnek olur.
+**Konfor katsayısı** | Değerlendirme sırasında kullanılan arabellek. Dönemsel kullanım, kısa performans geçmişi ve gelecekteki kullanımlarda olası artışlar gibi sorunlar için BT hesapları.<br/><br/> Örneğin, %20 kullanımı olan 10 çekirdekli bir örnek, normalde iki çekirdekli örnekle sonuçlanır. 2,0 ile, sonuç olarak dört çekirdekli bir örnek olur.
 **Teklif/lisanslama programı** | Kayıtlı olduğunuz [Azure teklifi](https://azure.microsoft.com/support/legal/offer-details/) . Şu anda yalnızca Kullandıkça öde ve kullandıkça öde geliştirme/test seçeneklerinden birini belirleyebilirsiniz. Ayrılmış kapasiteyi uygulayarak ve kullandıkça öde teklifinin üzerine Azure Hibrit Avantajı ek indirim sunabileceğinize dikkat edin.
-**Hizmet katmanı** | Azure SQL veritabanı ve/veya Azure SQL yönetilen örneği 'ne geçiş için iş ihtiyaçlarınızı karşılamak üzere en uygun hizmet katmanı seçeneği: Azure geçişi 'nin sunucularınız için en uygun hizmet katmanını önermesini istiyorsanız **önerilir** ' ı seçin. Bu genel amaçlı veya Iş açısından kritik olabilir. Bütçe odaklı iş yükleri için tasarlanmış bir Azure SQL yapılandırması istiyorsanız **genel amaçlı** ' yi seçin. [Daha fazla bilgi](https://docs.microsoft.com/azure/azure-sql/database/service-tier-general-purpose) Hatalara ve hızlı yük devretmeleri yüksek olan düşük gecikmeli iş yükleri için tasarlanmış bir Azure SQL yapılandırması istiyorsanız **iş açısından kritik** ' yi seçin. [Daha Fazla Bilgi](https://docs.microsoft.com/azure/azure-sql/database/service-tier-business-critical)
+**Hizmet katmanı** | Azure SQL veritabanı ve/veya Azure SQL yönetilen örneği 'ne geçiş için iş ihtiyaçlarınızı karşılamak üzere en uygun hizmet katmanı seçeneği:<br/><br/>Azure geçişi 'nin sunucularınız için en uygun hizmet katmanını önermesini istiyorsanız **önerilir** . Bu genel amaçlı veya Iş açısından kritik olabilir. <br/><br/> **Genel amaçlı** Bütçe odaklı iş yükleri için tasarlanan bir Azure SQL yapılandırması istiyorsanız. [Daha Fazla Bilgi](https://docs.microsoft.com/azure/azure-sql/database/service-tier-general-purpose) <br/><br/> **İş açısından kritik** Düşük gecikmeli iş yükleri için tasarlanan bir Azure SQL yapılandırmasının, hatalara ve hızlı yük devretmeler ile yüksek dayanıklılık sağlamak istiyorsanız. [Daha Fazla Bilgi](https://docs.microsoft.com/azure/azure-sql/database/service-tier-business-critical)
 **Para Birimi** | Hesabınız için faturalandırma para birimi.
 **İndirim (%)** | Azure teklifinin üzerine aldığınız, aboneliğe özgü tüm indirimler. Varsayılan ayar, %0’dır.
-**Azure Hibrit Avantajı** | Zaten bir SQL Server lisansınızın olup olmadığını belirtir. Bunu yaptıysanız ve SQL Server aboneliklerinin etkin yazılım güvencesi kapsamında ele alındıklarında, lisansları Azure 'a getirdiğinizde Azure Hibrit Avantajı uygulayabilirsiniz.
+**Azure Hibrit Avantajı** | Zaten bir SQL Server lisansınızın olup olmadığını belirtir. <br/><br/> Bunu yaptıysanız ve SQL Server aboneliklerinin etkin yazılım güvencesi kapsamında ele alındıklarında, lisansları Azure 'a getirdiğinizde Azure Hibrit Avantajı uygulayabilirsiniz.
 
 Azure geçişi ile bir değerlendirme oluşturmak için [en iyi uygulamaları gözden geçirin](best-practices-assessment.md) .
 
 ## <a name="calculate-readiness"></a>Hazırlığı hesapla
 
 > [!NOTE]
-> Değerlendirme yalnızca çevrimiçi durumdaki veritabanlarını içerir. Veritabanı başka bir durumdaysa, değerlendirme bu tür veritabanları için hazırlık, boyutlandırma ve maliyet hesaplamasını yoksayar. Bu tür veritabanlarını değerlendirmek istiyorsanız lütfen veritabanının durumunu değiştirin ve değerlendirmeyi bir süre sonra yeniden hesaplayın.
+Değerlendirme yalnızca çevrimiçi durumdaki veritabanlarını içerir. Veritabanı başka bir durumdaysa, değerlendirme bu tür veritabanları için hazırlık, boyutlandırma ve maliyet hesaplamasını yoksayar. Bu tür veritabanlarını değerlendirmek istiyorsanız lütfen veritabanının durumunu değiştirin ve değerlendirmeyi bir süre sonra yeniden hesaplayın.
 
 ### <a name="azure-sql-readiness"></a>Azure SQL hazırlığı
 
 SQL örnekleri ve veritabanları için Azure SQL hazırlığı, Azure SQL veritabanı ve Azure SQL yönetilen örneği ile bir özellik uyumluluğu denetimine dayalıdır:
-- Azure SQL değerlendirmesi, uyumluluk sorunlarını belirlemek için kaynak SQL Server iş yükleri (SQL Aracısı işleri, bağlı sunucular vb.) ve kullanıcı veritabanları şemaları (tablolar, görünümler, Tetikleyiciler, saklı yordamlar vb.) tarafından şu anda kullanılan SQL Server örnek özelliklerini dikkate alır.
-- Hiçbir uyumluluk sorunu bulunmazsa, hazırlık hedef dağıtım türü için **hazır** olarak Işaretlenir (Azure SQL veritabanı veya Azure SQL yönetilen örneği)
-- Belirli bir hedef dağıtım türüne geçiş engellenmeyen düzeyi düşürülmüş veya desteklenmeyen özellikler gibi kritik olmayan uyumluluk sorunları varsa, hazırlık, **Uyarı** ayrıntıları ve önerilen düzeltme kılavuzu ile **hazır** (köprü ve mavi bilgi simgesi) olarak işaretlenir.
-- Belirli bir hedef dağıtım türüne geçişi engelleyebilen herhangi bir uyumluluk sorunu varsa, hazırlık, **sorun** ayrıntıları ve önerilen düzeltme kılavuzu Ile **hazır değil** olarak işaretlenir.
+1. Azure SQL değerlendirmesi, uyumluluk sorunlarını belirlemek için kaynak SQL Server iş yükleri (SQL Aracısı işleri, bağlı sunucular vb.) ve kullanıcı veritabanları şemaları (tablolar, görünümler, Tetikleyiciler, saklı yordamlar vb.) tarafından şu anda kullanılan SQL Server örnek özelliklerini dikkate alır.
+1. Hiçbir uyumluluk sorunu bulunmazsa, hazırlık hedef dağıtım türü için **hazır** olarak Işaretlenir (Azure SQL veritabanı veya Azure SQL yönetilen örneği)
+1. Belirli bir hedef dağıtım türüne geçiş engellenmeyen düzeyi düşürülmüş veya desteklenmeyen özellikler gibi kritik olmayan uyumluluk sorunları varsa, hazırlık, **Uyarı** ayrıntıları ve önerilen düzeltme kılavuzu ile **hazır** (köprü ve mavi bilgi simgesi) olarak işaretlenir.
+1. Belirli bir hedef dağıtım türüne geçişi engelleyebilen herhangi bir uyumluluk sorunu varsa, hazırlık, **sorun** ayrıntıları ve önerilen düzeltme kılavuzu Ile **hazır değil** olarak işaretlenir.
     - Belirli bir hedef dağıtım türü için mevcut olmayan bir SQL örneğinde bile bir veritabanı varsa, örnek bu dağıtım türü için **kullanılamaz** olarak işaretlenir.
-- Bulma devam ediyor veya bir SQL örneği ya da veritabanı için herhangi bir bulma sorunu varsa, değerlendirme bu SQL örneği için hazırlık işlemini hesaplamadığından, hazırlık **bilinmiyor** olarak işaretlenir.
+1. Bulma devam ediyor veya bir SQL örneği ya da veritabanı için herhangi bir bulma sorunu varsa, değerlendirme bu SQL örneği için hazırlık işlemini hesaplamadığından, hazırlık **bilinmiyor** olarak işaretlenir.
 
 ### <a name="recommended-deployment-type"></a>Önerilen dağıtım türü
 
@@ -113,11 +110,11 @@ Azure SQL değerlendirme özelliklerinde **Önerilen** hedef dağıtım türün�
 
  **Azure SQL DB hazırlığı** | **Azure SQL MI hazırlığı** | **Önerilen dağıtım türü** | **Azure SQL yapılandırması ve maliyet tahminleri hesaplandı mı?**
  --- | --- | --- | --- |
- Hazır | Hazır | Azure SQL VERITABANı veya Azure SQL MI | Yes
- Hazır | Ready veya Unknown | Azure SQL DB | Yes
- Ready veya Unknown | Hazır | Azure SQL MI | Yes
- Hazırlanma | Hazırlanma | Azure VM için hazırlanma olasılığı | No
- Ready veya Unknown | Ready veya Unknown | Bilinmiyor | No
+ Hazır | Hazır | Azure SQL DB veya <br/>Azure SQL MI | Yes
+ Hazır | Hazırlanma veya<br/> Bilinmiyor | Azure SQL DB | Yes
+ Hazırlanma veya<br/>Bilinmiyor | Hazır | Azure SQL MI | Yes
+ Hazırlanma | Hazırlanma | Azure VM için hazırlanma olasılığı | Hayır
+ Hazırlanma veya<br/>Bilinmiyor | Hazırlanma veya<br/>Bilinmiyor | Bilinmiyor | Hayır
 
 > [!NOTE]
 > Önerilen dağıtım türü değerlendirme özelliklerinde **önerildiği** şekilde seçilirse ve kaynak SQL Server hem Azure SQL veritabanı tek veritabanı hem de Azure SQL yönetilen örneği için uygun ise, değerlendirme, maliyetinizi en iyi duruma getirmek ve boyut ve performans sınırlarının içine sığması için belirli bir seçenek önerir.
@@ -171,7 +168,7 @@ Bu tabloda, kullanılabilir veri noktalarının yüzdesine bağlı olan değerle
 
 #### <a name="low-confidence-ratings"></a>Düşük güvenilirlikli derecelendirmeler
 Bir değerlendirmenin en düşük güvenilirlik derecelendirmesinin neden olmasının birkaç nedeni aşağıda verilmiştir:
-- Değerlendirmeyi oluşturmakta olduğunuz süre için ortamınızı profildiniz. Örneğin, performans süresi ile bir gün ayarlanmış bir değerlendirme oluşturursanız, toplanan tüm veri noktaları için bulmayı başlattıktan sonra en az bir gün beklemeniz gerekir.
+- Değerlendirmeyi oluşturduğunuz süre boyunca ortamınızın profilini oluşturmadınız. Örneğin, performans süresi ile bir gün ayarlanmış bir değerlendirme oluşturursanız, toplanan tüm veri noktaları için bulmayı başlattıktan sonra en az bir gün beklemeniz gerekir.
 - Değerlendirme, değerlendirme süresi içinde sunucuların bir bölümü veya tümü için performans verilerini toplayamıyor. Yüksek güvenilirlikli bir derecelendirme için lütfen şunları doğrulayın:
     - Değerlendirme süresi boyunca sunucular açık
     - 443 bağlantı noktalarında giden bağlantılara izin verilir

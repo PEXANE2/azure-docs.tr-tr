@@ -3,12 +3,12 @@ title: En iyi uygulamalar
 description: Azure Batch çözümlerinizi geliştirmek için en iyi uygulamaları ve yararlı ipuçlarını öğrenin.
 ms.date: 03/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: 697ac5d213bbe2e52134cad519f69c233f1cd593
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7ef94b07a5131726c42a94088fd3ee1f413dbec7
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104583284"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802361"
 ---
 # <a name="azure-batch-best-practices"></a>En iyi Azure Batch uygulamalar
 
@@ -31,7 +31,12 @@ Bu makalede, Batch ile gerçek yaşam deneyimlerine bağlı olarak Azure Batch h
 
 - **Havuzlar birden çok işlem düğümüne sahip olmalıdır:** Bağımsız düğümlerin her zaman kullanılabilir olması garanti edilmez. Yaygın olarak, donanım hataları, işletim sistemi güncelleştirmeleri ve diğer sorunların bir konağı, tek tek düğümlerin çevrimdışı olmasına neden olabilir. Batch iş yükünüz belirleyici gerektiriyorsa, garantili ilerleme durumunda birden çok düğüm içeren havuzlar ayırmanız gerekir.
 
-- **Kaynak adlarını yeniden kullanma:** Batch kaynakları (işler, havuzlar vb.) genellikle zaman içinde gelir ve zaman içinde gider. Örneğin, Pazartesi günü bir havuz oluşturabilir, Salı günü silebilir ve ardından Perşembe üzerinde başka bir havuz oluşturabilirsiniz. Oluşturduğunuz her yeni kaynağa, daha önce kullanmadığınız benzersiz bir ad verilmelidir. Bu, bir GUID kullanılarak (tüm kaynak adı olarak veya bunun bir parçası olarak) ya da kaynağın kaynak adında oluşturulduğu zamanı katıştırarak yapılabilir. Batch, gerçek kaynak KIMLIĞI insana sahip olmayan bir şey olsa da kaynağa okunabilir bir ad vermek için kullanılabilen [DisplayName](/dotnet/api/microsoft.azure.batch.jobspecification.displayname)'i destekler. Benzersiz adların kullanılması, hangi belirli kaynağın günlüklerde ve ölçümlerde bir şeyler olduğunu ayırt etmenize daha kolay hale getirir. Ayrıca, bir kaynak için bir destek durumu dosyası oluşturmanız gerekiyorsa belirsizlik kaldırılır.
+- **Yaklaşan yaşam süresi (EOL) tarihleriyle görüntüleri kullanmayın.**
+    Toplu Iş desteği ömrü sonu (EOL) tarihleri olan görüntülerden kaçınmamak kesinlikle önerilir. Bu tarihler [ `ListSupportedImages` API](https://docs.microsoft.com/rest/api/batchservice/account/listsupportedimages), [PowerShell](https://docs.microsoft.com/powershell/module/az.batch/get-azbatchsupportedimage)veya [Azure CLI](https://docs.microsoft.com/cli/azure/batch/pool/supported-images)aracılığıyla bulunabilir. Havuzlarınız için uygun olan EOL tarihlerinin görünümünü düzenli olarak yenilemek ve EOL tarihi gerçekleşmeden önce iş yüklerinizi geçirmek sizin sorumluluğunuzdadır. Belirtilen bir düğüm aracısına sahip özel bir görüntü kullanıyorsanız, özel görüntünüzün türetildiği veya ile hizalandığı görüntü için toplu Iş desteğini, yaşam bitiş tarihlerini izlediğinizden emin olmanız gerekir.
+
+- **Kaynak adlarını yeniden kullanmayın.**
+    Batch kaynakları (işler, havuzlar vb.) genellikle zaman içinde gelir ve zaman içinde gider. Örneğin, Pazartesi günü bir havuz oluşturabilir, Salı günü silebilir ve ardından Perşembe üzerinde başka bir havuz oluşturabilirsiniz. Oluşturduğunuz her yeni kaynağa, daha önce kullanmadığınız benzersiz bir ad verilmelidir. Bu, bir GUID kullanılarak (tüm kaynak adı olarak veya bunun bir parçası olarak) ya da kaynağın kaynak adında oluşturulduğu zamanı katıştırarak yapılabilir. Batch, gerçek kaynak KIMLIĞI insana sahip olmayan bir şey olsa da kaynağa okunabilir bir ad vermek için kullanılabilen [DisplayName](/dotnet/api/microsoft.azure.batch.jobspecification.displayname)'i destekler. Benzersiz adların kullanılması, hangi belirli kaynağın günlüklerde ve ölçümlerde bir şeyler olduğunu ayırt etmenize daha kolay hale getirir. Ayrıca, bir kaynak için bir destek durumu dosyası oluşturmanız gerekiyorsa belirsizlik kaldırılır.
+
 
 - **Havuz bakımı sırasında süreklilik ve hata:** İşlerinizin havuzları dinamik olarak kullanması en iyisidir. İşleriniz her şey için aynı havuzu kullanıyorsa, havuzda bir sorun oluşursa işlerin çalıştırılmayabileceği bir şansınız vardır. Bu, özellikle zamana duyarlı iş yükleri için önemlidir. Bunu çözmek için, her bir işi zamanlarken bir havuzu dinamik olarak seçin veya oluşturun veya uygun olmayan bir havuzu atlayabilmeniz için havuz adını geçersiz kılmak üzere bir yol belirtin.
 

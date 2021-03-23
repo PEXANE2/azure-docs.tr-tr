@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, jovanpop, sachinp
 ms.date: 09/14/2020
-ms.openlocfilehash: 9a96da607ceea5a6d5cb6ef02df5a9a4db24562e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ee0c673027892e6d3ee55b6ec5f67a30d88be683
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97770970"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104780353"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Azure SQL Yönetilen Örneği kaynak sınırlarına genel bakış
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -76,7 +76,7 @@ SQL yönetilen örneği iki hizmet katmanına sahiptir: [genel amaçlı](../data
 | Örnek başına en fazla veritabanı dosyası sayısı | Örnek depolama boyutu veya [Azure Premium disk depolama ayırma alanı](../database/doc-changes-updates-release-notes.md#exceeding-storage-space-with-small-database-files) sınırına ulaşılmadığı takdirde 280 'e kadar. | örnek depolama boyutu sınırına ulaşılmadığı takdirde veritabanı başına 32.767 dosya. |
 | En büyük veri dosyası boyutu | Şu anda kullanılabilir örnek depolama boyutu (en fazla 2 TB-8 TB) ve [Azure Premium disk depolama alanı ayırma alanı](../database/doc-changes-updates-release-notes.md#exceeding-storage-space-with-small-database-files)ile sınırlıdır. | Şu anda kullanılabilir örnek depolama boyutuyla sınırlıdır (en fazla 1 TB-4 TB). |
 | Günlük dosyası boyutu üst sınırı | 2 TB ile sınırlıdır ve şu anda kullanılabilir örnek depolama boyutu. | 2 TB ile sınırlıdır ve şu anda kullanılabilir örnek depolama boyutu. |
-| Veri/günlük ıOPS (yaklaşık) | Örnek başına en fazla 30-40 K ıOPS *, 500-dosya başına 7500<br/>\*[Daha fazla ıOPS almak için dosya boyutunu artırın](#file-io-characteristics-in-general-purpose-tier)| 10 k-200 K (4000 ıOPS/vCore)<br/>Daha iyi GÇ performansı almak için daha fazla sanal çekirdek ekleyin. |
+| Veri/günlük ıOPS (yaklaşık) | Örnek başına en fazla 30-40 K ıOPS *, 500-dosya başına 7500<br/>\*[Daha fazla ıOPS almak için dosya boyutunu artırın](#file-io-characteristics-in-general-purpose-tier)| 16 k-320 K (4000 ıOPS/vCore)<br/>Daha iyi GÇ performansı almak için daha fazla sanal çekirdek ekleyin. |
 | Günlük yazma verimlilik sınırı (örnek başına) | Sanal çekirdek başına 3 MB/s<br/>Örnek başına en fazla 120 MB/sn<br/>VERITABANı başına 22-65 MB/s<br/>\*[Daha iyi GÇ performansı almak için dosya boyutunu artırın](#file-io-characteristics-in-general-purpose-tier) | vCore başına 4 MB/s<br/>En fazla 96 MB/sn |
 | Veri işleme (yaklaşık) | dosya başına 100-250 MB/s<br/>\*[Daha iyi GÇ performansı almak için dosya boyutunu artırın](#file-io-characteristics-in-general-purpose-tier) | Sınırlı değildir. |
 | Depolama GÇ gecikmesi (yaklaşık) | 5-10 MS | 1-2 MS |

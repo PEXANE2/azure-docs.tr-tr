@@ -8,20 +8,30 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/17/2020
+ms.date: 03/22/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a42cb97d123d0943dab02bf1f70fcf306d6bcd96
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 21da8f79772d9648836bedec89cb5d7014486dc6
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97629141"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798368"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeleri kullanarak parola değişikliğini yapılandırma
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
+
+Azure Active Directory B2C (Azure AD B2C) ' de, bir yerel hesapla oturum açan kullanıcıların, kimliğini bir e-posta doğrulaması aracılığıyla kanıtlamaları gerekmeden parolalarını değiştirmesine olanak sağlayabilirsiniz. Parola değiştirme akışı aşağıdaki adımları içerir:
+
+1. Kullanıcı kendi yerel hesabında oturum açar. Oturum hala etkinse, Azure AD B2C kullanıcıyı yetkilendirir ve sonraki adıma atlar.
+1. Kullanıcı **eski parolayı** doğrular ve ardından **Yeni parolayı** oluşturur ve onaylar.
+
+![Parola değiştirme akışı](./media/add-password-change-policy/password-change-flow.png)  
+
+> [!TIP]
+> Parola değiştirme akışı, kullanıcıların parolasını yalnızca Kullanıcı parolasını öğrendiğinde ve değiştirmek istediğinde parolalarını değiştirmesine izin verir. Ayrıca, kullanıcının parolasını unutması için [self servis parola sıfırlamayı](add-password-reset-policy.md) da etkinleştirmenizi öneririz.
 
 ::: zone pivot="b2c-user-flow"
 
@@ -30,15 +40,6 @@ ms.locfileid: "97629141"
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
-
-[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
-
-Azure Active Directory B2C (Azure AD B2C) ' de, yerel bir hesapla oturum açan kullanıcıların, kendi kimlik doğrulamasını e-posta doğrulamaya göre kanıtlamaları gerekmeden parolalarını değiştirmesine olanak sağlayabilirsiniz. Parola değiştirme akışı aşağıdaki adımları içerir:
-
-1. Yerel bir hesapla oturum açın. Oturum hala etkinse, Azure AD B2C kullanıcıyı yetkilendirir ve sonraki adıma atlar.
-1. Kullanıcıların **eski parolayı** doğrulaması, oluşturması ve **Yeni parolayı** doğrulama olmaları gerekir.
-
-![Parola değiştirme akışı](./media/add-password-change-policy/password-change-flow.png)
 
 ## <a name="prerequisites"></a>Önkoşullar
 

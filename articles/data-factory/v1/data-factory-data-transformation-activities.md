@@ -3,16 +3,16 @@ title: 'Veri dönüştürme: Işlem & dönüştürme verileri '
 description: Hadoop, Azure Machine Learning Studio (klasik) veya Azure Data Lake Analytics kullanarak Azure Data Factory verileri veya işleme verilerini nasıl dönüştürebileceğinizi öğrenin.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: c9818bfd2a9519cd14d34ecc810179d66aa57e52
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 422acbaab097182b800e3bad35b0121284db9cd8
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100363993"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782937"
 ---
 # <a name="transform-data-in-azure-data-factory-version-1"></a>Azure Data Factory sürüm 1 ' deki verileri dönüştürme
 > [!div class="op_single_selector"]

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c30ad26f079e6353dc4763b9ae968c33882d8ab6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cfea22c10d98adf3b8c89491c248bf7a934ba1ed
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96029356"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798893"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Cihaz kimliği ve Masaüstü Sanallaştırması
 
@@ -52,12 +52,12 @@ VDı ortamınız için Azure AD 'de cihaz kimliklerini yapılandırmadan önce, 
 |   |   | Windows geçerli | Kalıcı olmayan | Evet<sup>5</sup> |
 |   |   | Windows alt düzey | Kalıcı olmayan | Evet<sup>6</sup> |
 |   | Yönetilen<sup>4</sup> | Windows geçerli ve Windows alt düzeyi | Kalıcı | Yes |
-|   |   | Windows geçerli | Kalıcı olmayan | No |
+|   |   | Windows geçerli | Kalıcı olmayan | Hayır |
 |   |   | Windows alt düzey | Kalıcı olmayan | Evet<sup>6</sup> |
-| Azure AD'ye katılanlar | Federe | Windows geçerli | Kalıcı | No |
-|   |   |   | Kalıcı olmayan | No |
-|   | Yönetilen | Windows geçerli | Kalıcı | No |
-|   |   |   | Kalıcı olmayan | No |
+| Azure AD'ye katılanlar | Federe | Windows geçerli | Kalıcı | Hayır |
+|   |   |   | Kalıcı olmayan | Hayır |
+|   | Yönetilen | Windows geçerli | Kalıcı | Hayır |
+|   |   |   | Kalıcı olmayan | Hayır |
 | Azure AD kayıtlı | Federasyon/yönetilen | Windows geçerli/Windows alt düzeyi | Kalıcı/kalıcı olmayan | Geçerli değil |
 
 <sup>1</sup> Windows **geçerli** cihaz Windows 10, Windows Server 2016 V1803 veya üzeri ve Windows Server 2019 ' i temsil eder.
@@ -79,6 +79,8 @@ Yöneticiler, karma Azure AD JOIN 'in nasıl yapılandırılacağını öğrenme
 - [Federasyon ortamına yönelik karma Azure Active Directory birleştirmesini yapılandırma](hybrid-azuread-join-federated-domains.md)
 - [Yönetilen ortam için karma Azure Active Directory birleştirmesini yapılandırma](hybrid-azuread-join-managed-domains.md)
 
+### <a name="non-persistent-vdi"></a>Kalıcı olmayan VDı
+
 Kalıcı olmayan VDı dağıtımı yaparken, Microsoft BT yöneticilerinin aşağıdaki kılavuzu uygulamasını önerir. Bunun yapılmaması, dizininizdeki kalıcı olmayan VDı platformunuzun çok sayıda eski karma Azure AD 'ye katılmış cihazına sahip olmasına neden olur. bu da, kiracı kotasında daha fazla basınç elde edilmesine ve kiracı kotasının tükenmesini sağlamak için hizmet kesintisi riskini artırmıştır.
 
 - Sistem Hazırlama Aracı 'nı (sysprep.exe) kullanıyorsanız ve yükleme için Windows 10 1809 öncesi bir görüntü kullanıyorsanız, görüntünün Azure AD 'ye karma Azure AD 'ye katılmış olarak zaten kayıtlı olan bir cihazdan olmadığından emin olun.
@@ -92,6 +94,15 @@ Kalıcı olmayan VDı dağıtımı yaparken, Microsoft BT yöneticilerinin aşa�
 - [Eski cihazları yönetmek](manage-stale-devices.md)için işlem tanımlayın ve uygulayın.
    - Kalıcı olmayan karma Azure AD 'ye katılmış cihazlarınızı (ör. bilgisayar görünen adı önekini kullanarak) belirleme stratejiniz varsa, dizininizin çok sayıda eski cihaz ile tüketilmemesini sağlamak için bu cihazların temizlenmesi üzerinde daha Agresif olmanız gerekir.
    - Windows geçerli ve alt düzeyde kalıcı olmayan VDı dağıtımları için, 15 günden daha eski olan **yaklaşık bir Telastlogontimestamp** olan cihazları silmelisiniz.
+
+### <a name="persistent-vdi"></a>Kalıcı VDı
+
+Kalıcı VDı dağıtımı yaparken, Microsoft BT yöneticilerinin aşağıdaki kılavuzu uygulamasını önerir. Bunun yapılmaması, dağıtım ve kimlik doğrulama sorunlarına neden olur. 
+
+- Sistem Hazırlama Aracı 'nı (sysprep.exe) kullanıyorsanız ve yükleme için Windows 10 1809 öncesi bir görüntü kullanıyorsanız, görüntünün Azure AD 'ye karma Azure AD 'ye katılmış olarak zaten kayıtlı olan bir cihazdan olmadığından emin olun.
+- Ek VM 'Ler oluşturmak için bir sanal makine (VM) anlık görüntüsüne güvenmek istiyorsanız, anlık görüntünün Azure AD 'ye karma Azure AD katılımı olarak zaten kayıtlı olan bir VM 'den olmadığından emin olun.
+
+Ayrıca, [eski cihazların yönetilmesi](manage-stale-devices.md)için işlem uygulamanız önerilir. Bu, sanal makinelerinizi düzenli olarak sıfırlarsanız, dizininizin çok sayıda eski cihaz ile tüketilmemesini güvence altına alır.
  
 ## <a name="next-steps"></a>Sonraki adımlar
 

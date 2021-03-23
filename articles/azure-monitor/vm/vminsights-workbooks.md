@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: bebe9424df24792f7450620657c5e2da5f08196a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 874df4301165aaf253dd0f4316adee7ab9ce7ce5
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102046525"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798859"
 ---
 # <a name="create-interactive-reports-vm-insights-with-workbooks"></a>Çalışma kitapları ile etkileşimli raporlar VM öngörüleri oluşturma
 
@@ -25,17 +25,17 @@ ms.locfileid: "102046525"
 
 Aşağıdaki tabloda, sanal makine öngörülerinin, başlamanızı sağlamak için içerdiği çalışma kitapları özetlenmektedir.
 
-| Çalışma Kitabı | Description | Kapsam |
+| Çalışma Kitabı | Açıklama | Kapsam |
 |----------|-------------|-------|
-| Performans | , Etkinleştirdiğiniz tüm Log Analytics performans sayaçlarından yararlanan tek bir çalışma kitabında En Iyi N liste ve grafik görünümümüzün özelleştirilebilir bir sürümünü sağlar.| Ölçekte |
-| Performans sayaçları | Çok sayıda performans sayacı üzerinde Ilk N grafik görünümü. | Ölçekte |
-| Bağlantılar | Bağlantılar, izlenen sanal makinelerinizden gelen ve giden bağlantıların derinlemesine bir görünümünü sağlar. | Ölçekte |
-| Etkin Bağlantı Noktaları | İzlenen sanal makinelerdeki bağlantı noktalarına ve bunların seçili zaman diliminde etkinliklerine bağlı işlemlerin bir listesini sağlar. | Ölçekte |
-| Açık Bağlantı Noktaları | İzlenen sanal makinelerinizdeki açık bağlantı noktası sayısını ve bu açık bağlantı noktalarıyla ilgili ayrıntıları sağlar. | Ölçekte |
-| Başarısız Bağlantılar | İzlenen sanal makinelerinizdeki başarısız bağlantı sayısını, başarısızlık eğilimi 'ni ve hata yüzdesinin zaman içinde arttığını görüntüleyin. | Ölçekte |
-| Güvenlik ve Denetim | Genel bağlantılarda, kötü amaçlı bağlantılardan ve IP uç noktalarının küresel olarak bulunduğu TCP/IP trafiğinizin analizi.  Tüm özellikleri etkinleştirmek için güvenlik algılamayı etkinleştirmeniz gerekir. | Ölçekte |
-| TCP Trafiği | Bir kılavuzda izlenen sanal makinelerinize ve gönderdikleri, alınmış ve toplam ağ trafiğine yönelik bir derecelendirilmiş rapor ve eğilim çizgisi olarak görüntülenen. | Ölçekte |
-| Trafik Karşılaştırması | Bu çalışma kitapları, tek bir makine veya makine grubu için ağ trafiği eğilimlerini karşılaştırmanızı sağlar. | Ölçekte |
+| Performans | , Etkinleştirdiğiniz tüm Log Analytics performans sayaçlarından yararlanan tek bir çalışma kitabında En Iyi N liste ve grafik görünümümüzün özelleştirilebilir bir sürümünü sağlar.| Birden çok VM |
+| Performans sayaçları | Çok sayıda performans sayacı üzerinde Ilk N grafik görünümü. | Birden çok VM |
+| Bağlantılar | Bağlantılar, izlenen sanal makinelerinizden gelen ve giden bağlantıların derinlemesine bir görünümünü sağlar. | Birden çok VM |
+| Etkin Bağlantı Noktaları | İzlenen sanal makinelerdeki bağlantı noktalarına ve bunların seçili zaman diliminde etkinliklerine bağlı işlemlerin bir listesini sağlar. | Birden çok VM |
+| Açık Bağlantı Noktaları | İzlenen sanal makinelerinizdeki açık bağlantı noktası sayısını ve bu açık bağlantı noktalarıyla ilgili ayrıntıları sağlar. | Birden çok VM |
+| Başarısız Bağlantılar | İzlenen sanal makinelerinizdeki başarısız bağlantı sayısını, başarısızlık eğilimi 'ni ve hata yüzdesinin zaman içinde arttığını görüntüleyin. | Birden çok VM |
+| Güvenlik ve Denetim | Genel bağlantılarda, kötü amaçlı bağlantılardan ve IP uç noktalarının küresel olarak bulunduğu TCP/IP trafiğinizin analizi.  Tüm özellikleri etkinleştirmek için güvenlik algılamayı etkinleştirmeniz gerekir. | Birden çok VM |
+| TCP Trafiği | Bir kılavuzda izlenen sanal makinelerinize ve gönderdikleri, alınmış ve toplam ağ trafiğine yönelik bir derecelendirilmiş rapor ve eğilim çizgisi olarak görüntülenen. | Birden çok VM |
+| Trafik Karşılaştırması | Bu çalışma kitapları, tek bir makine veya makine grubu için ağ trafiği eğilimlerini karşılaştırmanızı sağlar. | Birden çok VM |
 | Performans | , Etkinleştirdiğiniz tüm Log Analytics performans sayaçlarından yararlanan performans görünümümüzün özelleştirilebilir bir sürümünü sağlar. | Tek VM | 
 | Bağlantılar | Bağlantılar, sanal makinenizin gelen ve giden bağlantılarının derinlemesine bir görünümünü sağlar. | Tek VM |
  

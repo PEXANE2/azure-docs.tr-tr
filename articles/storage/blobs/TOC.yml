@@ -153,6 +153,8 @@
               href: ../common/network-routing-preference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Veri koruma
           items:
+            - name: Genel Bakış
+              href: data-protection-overview.md
             - name: Kapsayıcılar için geçici silme
               href: soft-delete-container-overview.md
             - name: Sürüm oluşturma

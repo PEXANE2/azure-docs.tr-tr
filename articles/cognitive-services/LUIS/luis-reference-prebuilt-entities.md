@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 07/20/2020
-ms.openlocfilehash: 7a4654b8f389ad18010bb4ad211103f2816a18ee
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: cb3c74a2176ee7fcac53afb5185e8c62e66f4dfb
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91542011"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798808"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>LUSıS modelinizde kültür başına varlık
 
@@ -40,7 +40,7 @@ Aksi belirtilmediği takdirde, önceden oluşturulmuş varlıklar tüm LUıN uyg
 |Korece|[ko-KR](#korean-entity-support)||
 |Portekizce|[PT-BR (Brezilya)](#portuguese-brazil-entity-support)||
 |İspanyolca|[es-es (İspanya)](#spanish-spain-entity-support), [es-MX (Meksika)](#spanish-mexico-entity-support)||
-|Türkçe|[Türkçe](#turkish-entity-support)|Türkçe 'da önceden oluşturulmuş varlık desteklenmez|
+|Türkçe|[Türkçe](#turkish-entity-support)||
 
 ## <a name="prediction-endpoint-runtime"></a>Tahmin uç noktası çalışma zamanı
 
@@ -268,6 +268,8 @@ Aşağıdaki varlıklar desteklenir:
 [Sıcaklık](luis-reference-prebuilt-temperature.md):<br>Fahrenhayt<br>Kelvin<br>Rankine dili<br>Delisle<br>çevirip   |    V2, V3   |
 [URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
+KeyPhrase, Portekizce (Brezilya)-tüm alt kültürleri için kullanılamaz ```pt-BR``` .
+
 ## <a name="spanish-spain-entity-support"></a>İspanyolca (Ispanya) varlık desteği
 
 Aşağıdaki varlıklar desteklenir:
@@ -314,34 +316,25 @@ Aşağıdaki varlıklar desteklenir:
 
 [Kullanım dışı bırakılan varlıklarda](luis-reference-prebuilt-deprecated.md) notlara bakın
 
-KeyPhrase, Portekizce (Brezilya)-tüm alt kültürleri için kullanılamaz ```pt-BR``` .
-
 ## <a name="turkish-entity-support"></a>Türkçe varlık desteği
 
-**Türkçe sürümünde desteklenen önceden oluşturulmuş varlık yok.**
-
-<!--
-
-| Prebuilt entity | tr-tr |
+| Önceden oluşturulmuş varlık | tr-tr |
 | --------------- | :---: |
-[Age](luis-reference-prebuilt-age.md):<br>year<br>month<br>week<br>day   |    -   |
-[Currency (money)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (ex: penny)  |    -   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    -   |
-[Dimension](luis-reference-prebuilt-dimension.md):<br>volume<br>area<br>weight<br>information (ex: bit/byte)<br>length (ex: meter)<br>speed (ex: mile per hour)  |    -   |
-[Email](luis-reference-prebuilt-email.md)   |    -   |
-[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
+[Yaş](luis-reference-prebuilt-age.md):<br>yıl<br>ay<br>hafta<br>gün   |    -   |
+[Para birimi (para)](luis-reference-prebuilt-currency.md):<br>Doları<br>kesir birimi (örn: kuruş)  |    -   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>dateRange<br>time<br>timerange   |    -   |
+[Boyut](luis-reference-prebuilt-dimension.md):<br>Ses düzeyi<br>alan<br>ağırlık<br>bilgi (örn: bit/bayt)<br>Uzunluk (örn: ölçüm)<br>Hız (örn. mil/saat)  |    -   |
+[E-posta](luis-reference-prebuilt-email.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    -   |
-[Number](luis-reference-prebuilt-number.md)   |    -   |
-[Ordinal](luis-reference-prebuilt-ordinal.md)   |    -   |
-[Percentage](luis-reference-prebuilt-percentage.md)   |    -   |
-[PersonName](luis-reference-prebuilt-person.md)   |    -   |
-[Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    -   |
-[Temperature](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    -   |
+[Sayı](luis-reference-prebuilt-number.md)   |    -   |
+[Sıralı](luis-reference-prebuilt-ordinal.md)   |    -   |
+[Yüzde](luis-reference-prebuilt-percentage.md)   |    -   |
+[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    -   |
+[Sıcaklık](luis-reference-prebuilt-temperature.md):<br>Fahrenhayt<br>Kelvin<br>Rankine dili<br>Delisle<br>çevirip   |    -   |
 [URL](luis-reference-prebuilt-url.md)   |    -   |
 
+<!---
 See notes on [Deprecated prebuilt entities](luis-reference-prebuilt-deprecated.md)
-
-
 KeyPhrase is not available.
 -->
 

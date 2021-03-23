@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/22/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 43c57950d317de42df666ddd25cbcb2e9a4c9611
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 32f9df410dabf1902e9a7d9aadbf47288bfa90f5
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103488882"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798247"
 ---
 # <a name="configure-saml-identity-provider-options-with-azure-active-directory-b2c"></a>SAML kimlik sağlayıcısı seçeneklerini Azure Active Directory B2C ile yapılandırma
 
@@ -85,9 +85,11 @@ Aşağıda, iki bağlama sahip Azure AD meta verileri çoklu oturum açma hizmet
 </IDPSSODescriptor>
 ```
 
-SAML yanıtları HTTP POST bağlaması aracılığıyla Azure AD B2C iletilir. Azure AD B2C ilke meta verileri, `AssertionConsumerService` bağlantısını olarak ayarlar `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST` .
+### <a name="assertion-consumer-service"></a>Onaylama tüketici hizmeti
 
-Aşağıda, Azure AD B2C ilkesi meta verileri onaylama tüketici hizmeti öğesine bir örnek verilmiştir.
+Onaylama tüketici hizmeti (veya ACS), kimlik sağlayıcısı SAML yanıtlarının Azure AD B2C tarafından gönderilebildiği ve alınabileceği yerdir. SAML yanıtları HTTP POST bağlaması aracılığıyla Azure AD B2C iletilir. ACS konumu, bağlı olan tarafın temel ilkesini işaret eder. Örneğin, bağlı ilke *B2C_1A_signup_signin*, ACS, *B2C_1A_signup_signin* *B2C_1A_TrustFrameworkBase* gibi temel ilkedir.
+
+Aşağıda, Azure AD B2C ilkesi meta verileri onaylama tüketici hizmeti öğesine bir örnek verilmiştir. 
 
 ```xml
 <SPSSODescriptor AuthnRequestsSigned="true" protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">

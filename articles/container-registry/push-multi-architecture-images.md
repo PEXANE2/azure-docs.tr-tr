@@ -4,12 +4,12 @@ description: Multi-Architecture (çok katmanlı) görüntüler oluşturmak, içe
 ms.topic: article
 ms.date: 02/07/2021
 ms.custom: ''
-ms.openlocfilehash: f8467cd3108ae4faea9ecb4c9d9ae339f476c311
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 520518a275e0a9d191ae770e560a0e6e8278eae2
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100012351"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802463"
 ---
 # <a name="multi-architecture-images-in-your-azure-container-registry"></a>Azure Container kayıt defterinizde çok mimarili görüntüler
 
@@ -165,7 +165,7 @@ steps:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Farklı mimarilerin kapsayıcı görüntülerini derlemek için [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines.md) kullanın.
+* Farklı mimarilerin kapsayıcı görüntülerini derlemek için [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) kullanın.
 * Deneysel Docker [buildx](https://docs.docker.com/buildx/working-with-buildx/) eklentisini kullanarak çok platformlu görüntüler oluşturma hakkında bilgi edinin.
 
 <!-- LINKS - external -->

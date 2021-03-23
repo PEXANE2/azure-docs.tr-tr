@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 4d75e60d0e497dcdd2aa121f8da73f11a7e2af5b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 50c6b4f309eb78acee0cfa59d1b540adba65cab2
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103015225"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774822"
 ---
 # <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. 'de erişim denetim listeleri (ACL 'Ler)
 
@@ -40,8 +40,9 @@ Dosya ve dizin düzeyindeki izinleri ayarlamak için aşağıdaki makalelerden b
 |.NET |[Azure Data Lake Storage 2. ACL 'Leri ayarlamak için .NET kullanın](data-lake-storage-acl-dotnet.md)|
 |Java|[Azure Data Lake Storage 2. ACL 'Leri ayarlamak için Java kullanma](data-lake-storage-acl-java.md)|
 |Python|[Azure Data Lake Storage 2. ACL 'Leri ayarlamak için Python kullanma](data-lake-storage-acl-python.md)|
+|JavaScript (Node.js)|[Azure Data Lake Storage 2. ACL 'Leri ayarlamak için Node.js içindeki JavaScript SDK 'sını kullanın](data-lake-storage-directory-file-acl-javascript.md)|
 |PowerShell|[Azure Data Lake Storage 2. ACL 'Leri ayarlamak için PowerShell kullanma](data-lake-storage-acl-powershell.md)|
-|Azure CLI’si|[Azure Data Lake Storage 2. ACL 'Leri ayarlamak için Azure CLı 'yi kullanma](data-lake-storage-acl-cli.md)|
+|Azure CLI|[Azure Data Lake Storage 2. ACL 'Leri ayarlamak için Azure CLı 'yi kullanma](data-lake-storage-acl-cli.md)|
 |REST API |[Yol-Güncelleştir](/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]

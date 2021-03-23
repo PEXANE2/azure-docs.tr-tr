@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/22/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8b3224333a3915b7827242004d1dec0f4695f479
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f451d08dfbde643d91705f54296e9757a51c9d88
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104581924"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798402"
 ---
 # <a name="set-up-a-password-reset-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C bir parola sıfırlama akışı ayarlayın
 
@@ -35,6 +35,9 @@ ms.locfileid: "104581924"
 ![Parola sıfırlama akışı](./media/add-password-reset-policy/password-reset-flow.png)
 
 Parola sıfırlama akışı, oturum açma için parola ile bir [e-posta adresi](identity-provider-local.md#email-sign-in) veya [kullanıcı adı](identity-provider-local.md#username-sign-in) kullanan Azure AD B2C yerel hesaplar için geçerlidir.
+
+> [!TIP]
+> Self servis parola sıfırlama akışı, Kullanıcı parolasını unuttuğunda ve sıfırlamak istediğinde kullanıcıların parolalarını değiştirmesine izin verir. Bir [parola değişiklik akışını](add-password-change-policy.md) , bir kullanıcının parolasını bildiği ve değiştirmek istediği durumları destekleyecek şekilde yapılandırmayı düşünün.
 
 Kullanıcıları rastgele parolalarla Azure AD B2C geçirmeden önce, kullanıcıların kendi e-posta adreslerini doğrulaması ve ilk oturum açma işlemi sırasında parolalarını sıfırlamalarından daha yaygın bir uygulamadır. Ayrıca, bir yönetici parolasını değiştirdikten sonra kullanıcıyı parolasını sıfırlamasına zorlamak için de yaygındır. Bu özelliği etkinleştirmek için [parola sıfırlamayı zorla](force-password-reset.md) bölümüne bakın.
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: bb38a76de41885b6f39a1c6dce7c44bcb52a4d60
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 659f61734001163ada6fd26caabe2fb007892f61
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "86027452"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774499"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Spark tarafından oluşturulan Machine Learning modellerini çalıştırma
 
@@ -266,7 +266,8 @@ Hücrenin yürütülmesi için geçen süre: 5,37 saniye
 ### <a name="create-rdd-objects-with-feature-arrays-for-input-into-models"></a>Modellerdeki giriş için özellik dizileri ile RDD nesneleri oluşturma
 Bu bölüm, bir RDD nesnesi olarak kategorik metin verilerinin nasıl dizininin oluşturulacağını ve tek yönlü bir kodlama olduğunu ve bu sayede MLlib Lojistik gerileme ve ağaç tabanlı modelleri eğitmek ve test etmek için kullanılabilecek kodu içerir. Dizinli veriler dayanıklı [Dağıtılmış veri kümesi (RDD)](https://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) nesnelerinde depolanır. RDDs Spark 'ta temel soyutlamadır. RDD nesnesi, Spark ile paralel olarak üzerinde işletilebilir, sabit, bölümlenmiş bir öğe koleksiyonunu temsil eder.
 
-Ayrıca, `StandardScalar` çok çeşitli makine öğrenimi modellerini eğitmek için popüler bir algoritma olan Stochastic gradyanı (SGD) ile doğrusal regresyonla kullanılmak üzere MLlib tarafından sağlanarak verilerin nasıl ölçeklenmesi gerektiğini gösteren kodu içerir. [Standartscaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) , özellikleri birim varyansı ölçeklendirmek için kullanılır. Veri normalleştirmesi olarak da bilinen özellik ölçeklendirme, yöntem, yaygın olarak kullanılan değerlere sahip özellikler, amaç işlevinde aşırı ağırlık olarak verilmez. 
+Ayrıca, `StandardScalar` çok çeşitli makine öğrenimi modellerini eğitmek için popüler bir algoritma olan Stochastic gradyanı (SGD) ile doğrusal regresyonla kullanılmak üzere MLlib tarafından sağlanarak verilerin nasıl ölçeklenmesi gerektiğini gösteren kodu içerir. [Standartscaler](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.mllib.tree.RandomForest.html#pyspark.mllib.tree.RandomForest
+) , özellikleri birim varyansı ölçeklendirmek için kullanılır. Veri normalleştirmesi olarak da bilinen özellik ölçeklendirme, yöntem, yaygın olarak kullanılan değerlere sahip özellikler, amaç işlevinde aşırı ağırlık olarak verilmez. 
 
 ```python
 # CREATE RDD OBJECTS WITH FEATURE ARRAYS FOR INPUT INTO MODELS

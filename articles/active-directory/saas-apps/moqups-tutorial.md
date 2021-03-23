@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2021
 ms.author: jeedes
-ms.openlocfilehash: ac31323547ec2d0b6330b0b1c13dd9f219f224e7
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: c6db83dd46d988b5e8b4122a9e89e3c36136ad89
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104726929"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799022"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-moqups"></a>Öğretici: Moqups ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -127,7 +127,15 @@ Bu bölümde, Moqups erişimi vererek Azure çoklu oturum açma özelliğini kul
 
 ## <a name="configure-moqups-sso"></a>Moqups SSO 'yu yapılandırma
 
-**Moqups** tarafında çoklu oturum açmayı yapılandırmak Için, **uygulama Federasyon meta verileri URL 'Sini** [moqups destek ekibine](mailto:support@moqups.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+1. Moqups Web sitesinde yönetici olarak oturum açın.
+
+1.  **Hesaba** gidin ve **tümleştirme** sekmesini seçin.
+
+1. **SAML kimlik doğrulaması** bölümünde, Azure Portal kopyaladığınız **uygulama Federasyon meta veri URL 'si** değerini yapıştırın.
+
+    ![Yapılandırma bölümünün ekran görüntüsü.](./media/moqups-tutorial/saml-authentication.png)
+
+1. **Yapılandır** düğmesine tıklayın.
 
 ### <a name="create-moqups-test-user"></a>Moqups test kullanıcısı oluşturma
 

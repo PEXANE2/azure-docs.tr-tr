@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 372efa217e400ffd4bcecd286f3c3dc7b81f64d6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 27ee58a19191c6f8232a62b8251816784a98d373
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103007982"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799063"
 ---
 # <a name="desktop-app-that-calls-web-apis-code-configuration"></a>Web API 'Lerini çağıran masaüstü uygulaması: kod yapılandırması
 
@@ -188,19 +188,6 @@ PublicClientApplication pca = PublicClientApplication.builder(CLIENT_ID)
         .build();
 ```
 
-# <a name="python"></a>[Python](#tab/python)
-
-```Python
-config = json.load(open(sys.argv[1]))
-
-app = msal.PublicClientApplication(
-    config["client_id"], authority=config["authority"],
-    # token_cache=...  # Default cache is in memory only.
-                       # You can learn how to use SerializableTokenCache from
-                       # https://msal-python.rtfd.io/en/latest/#msal.SerializableTokenCache
-    )
-```
-
 # <a name="macos"></a>[MacOS](#tab/macOS)
 
 Aşağıdaki kod, bir ortak istemci uygulaması başlatır ve Microsoft Azure genel buluttaki kullanıcılara bir iş veya okul hesabı ya da kişisel Microsoft hesabı işaretler.
@@ -253,6 +240,69 @@ let authority = try? MSALAADAuthority(cloudInstance: .usGovernmentCloudInstance,
 let config = MSALPublicClientApplicationConfig(clientId: "<your-client-id-here>", redirectUri: "<your-redirect-uri-here>", authority: authority)
 if let application = try? MSALPublicClientApplication(configuration: config) { /* Use application */}
 ```
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Yapılandırma parametreleri, bir JSON dosyası veya ortam değişkenleri gibi birçok kaynaktan yüklenebilir. Aşağıda bir *. env* dosyası kullanılır. 
+
+```Text
+# Credentials
+CLIENT_ID=Enter_the_Application_Id_Here
+TENANT_ID=Enter_the_Tenant_Info_Here
+
+# Configuration
+REDIRECT_URI=msal://redirect
+
+# Endpoints
+AAD_ENDPOINT_HOST=Enter_the_Cloud_Instance_Id_Here
+GRAPH_ENDPOINT_HOST=Enter_the_Graph_Endpoint_Here
+
+# RESOURCES
+GRAPH_ME_ENDPOINT=v1.0/me
+GRAPH_MAIL_ENDPOINT=v1.0/me/messages
+
+# SCOPES
+GRAPH_SCOPES=User.Read Mail.Read
+```
+
+*. Env* dosyasını ortam değişkenlerine yükleyin. MSAL düğümü, aşağıda belirtildiği gibi en az bir şekilde başlatılabilir. Kullanılabilir [yapılandırma seçeneklerine](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-node/docs/configuration.md)bakın.  
+
+```JavaScript
+const { PublicClientApplication } = require('@azure/msal-node');
+
+const MSAL_CONFIG = {
+    auth: {
+        clientId: process.env.CLIENT_ID,
+        authority: `${process.env.AAD_ENDPOINT_HOST}${process.env.TENANT_ID}`,
+        redirectUri: process.env.REDIRECT_URI,
+    },
+    system: {
+        loggerOptions: {
+            loggerCallback(loglevel, message, containsPii) {
+                console.log(message);
+            },
+            piiLoggingEnabled: false,
+            logLevel: LogLevel.Verbose,
+        }
+    }
+};
+
+clientApplication = new PublicClientApplication(MSAL_CONFIG);
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+```Python
+config = json.load(open(sys.argv[1]))
+
+app = msal.PublicClientApplication(
+    config["client_id"], authority=config["authority"],
+    # token_cache=...  # Default cache is in memory only.
+                       # You can learn how to use SerializableTokenCache from
+                       # https://msal-python.rtfd.io/en/latest/#msal.SerializableTokenCache
+    )
+```
+
 ---
 
 ## <a name="next-steps"></a>Sonraki adımlar

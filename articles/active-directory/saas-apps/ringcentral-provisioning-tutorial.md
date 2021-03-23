@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: f57114fc4cb76c500cc422966635273c3a923046
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1891af9acae2b976a18f68983693a7df559b6476
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96181637"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800810"
 ---
 # <a name="tutorial-configure-ringcentral-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için RingCentral 'ı yapılandırma
 
@@ -46,15 +46,7 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 
 ## <a name="step-2-configure-ringcentral-to-support-provisioning-with-azure-ad"></a>Adım 2. Azure AD ile sağlamayı desteklemek için RingCentral 'ı yapılandırma
 
-1. [Halka yönetim konsolunda](https://login.ringcentral.com/sw.html)oturum açın. **Araçlar > Dizin tümleştirmesi**' ne gidin.
-
-    ![RingCentral Yönetici Konsolu](media/ringcentral-provisioning-tutorial/admin.png)
-
-2.  **Dizin Sağlayıcısı seç** altında **SCIM** öğesini seçin. (Gelecekte Azure Active Directory) olarak adlandırılan bir seçenek olacaktır. **SCıM hizmetini etkinleştir**' e tıklayın.
-
-    ![Halka merkezi Add SCıM](media/ringcentral-provisioning-tutorial/scim.png)
-
-3.  matthew.hunt@ringcentral.comBir **SCIM kimlik doğrulama belirteci** Için ' de halka Merkezi Destek ekibine başvurun. Bu değer, Azure portal halka merkezi uygulamanızın sağlama sekmesindeki gizli belirteç alanına girilir.
+5. adımdaki yönetici kimlik bilgileri bölümünde yetkilendirmek için bir [halka merkezi](https://www.ringcentral.com/office/plansandpricing.html) yönetici hesabı gereklidir.
 
 > [!NOTE]
 > Kullanıcılara lisans atamak için [buradaki](https://support.ringcentral.com/s/article/5-10-Adding-Extensions-via-Web?language)video bağlantısına bakın.
@@ -94,9 +86,13 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
-5. **Yönetici kimlik bilgileri** bölümünün altında, `https://platform.ringcentral.com/scim/v2` **kiracı URL 'sini** girin. **Gizli belirteçte** daha önce alınan **SCIM kimlik doğrulama belirteci** değerini girin. Azure AD 'nin RingCentral 'a bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, halka merkezi hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. **Yönetici kimlik bilgileri** bölümünde **Yetkilendir**' e tıklayın. Halka merkezi 'nin oturum açma sayfasına yönlendirilirsiniz. E-postanızı/telefon numaranızı ve parolanızı girin ve **oturum aç** düğmesine tıklayın. Halka Merkezi **erişim isteği** sayfasında **Yetkilendir** ' e tıklayın. Azure AD 'nin RingCentral 'a bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, halka merkezi hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
-    ![Kiracı URL 'SI ve gizli belirteç metin alanlarının ekran görüntüsü, test bağlantısı seçeneği olarak adlandırılır.](./media/ringcentral-provisioning-tutorial/provisioning.png)
+   ![AAD](./media/ringcentral-provisioning-tutorial/admincredentials.png)
+
+   ![Access](./media/ringcentral-provisioning-tutorial/authorize.png)
+
+   ![Yetkilendir](./media/ringcentral-provisioning-tutorial/accessrequest.png)
 
 6. **Bildirim E-postası** alanına hazırlama hatası bildirimlerinin gönderilmesini istediğiniz kişinin veya grubun e-posta adresini yazıp **Hata oluştuğunda e-posta bildirimi gönder** onay kutusunu seçin.
 
@@ -151,6 +147,7 @@ Hazırlama ayarlarını yapılandırdıktan sonra dağıtımınızı izlemek iç
 ## <a name="change-log"></a>Değişiklik günlüğü
 
 * 09/10/2020-"displayName" ve "Manager" öznitelikleri için destek kaldırıldı.
+* 03/15/2021-kalıcı taşıyıcı belirtecinden OAuth kod verme akışına olan yetkilendirme yöntemi güncelleştirildi.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

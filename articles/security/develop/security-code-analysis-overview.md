@@ -4,7 +4,7 @@ description: Microsoft Güvenlik kodu analiz uzantısı hakkında bilgi edinin. 
 author: sukhans
 manager: sukhans
 ms.author: terrylan
-ms.date: 07/31/2019
+ms.date: 03/22/2021
 ms.topic: article
 ms.service: security
 services: azure
@@ -12,14 +12,17 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: a3af3307892e82ecd0697124954e99837ad5eb9e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4443bdbc134f222256c6af8bb1f52c684cdb4624
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94515702"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801205"
 ---
 # <a name="about-microsoft-security-code-analysis"></a>Microsoft Güvenlik kodu analizi hakkında
+
+> [!Note]
+> 1 Mart 2022 ' den itibaren geçerli olmak üzere Microsoft Güvenlik kodu Analizi (MSCA) uzantısı kullanımdan kaldırılacak. Var olan MSCA müşterileri, 1 Mart 2022 ' e kadar MSCA erişimini koruacaktır. Azure DevOps 'daki alternatif seçenekler için lütfen [OWASP kaynak kodu çözümleme araçlarına](https://owasp.org/www-community/Source_Code_Analysis_Tools) bakın. GitHub 'a geçirmeyi planlayan müşteriler için [GitHub gelişmiş güvenlik](https://docs.github.com/github/getting-started-with-github/about-github-advanced-security)' i kullanıma alabilirsiniz.
 
 Microsoft Güvenlik kodu analiz Uzantısı ile takımlar, Azure DevOps sürekli tümleştirme ve teslim (CI/CD) işlem hatlarına güvenlik kodu analizi ekleyebilir. Bu analiz, Microsoft 'ta [güvenli geliştirme yaşam döngüsü (SDL)](https://www.microsoft.com/securityengineering/sdl/practices) uzmanları tarafından önerilir.
 
