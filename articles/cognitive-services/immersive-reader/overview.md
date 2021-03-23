@@ -12,12 +12,12 @@ ms.date: 01/4/2020
 ms.author: metang
 ms.custom: cog-serv-seo-aug-2020
 keywords: okuyucular, dil öğrenenler, resim görüntüleme, okuma, okuma içeriği, çeviri
-ms.openlocfilehash: 6affc0a2b94c7ea950a8995981d63470722d981f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1911d3ce62434f1dc24966798e9ace259ae072bc
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104599536"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801579"
 ---
 # <a name="what-is-immersive-reader"></a>Tam Ekran Okuyucu nedir?
 
@@ -25,8 +25,8 @@ ms.locfileid: "104599536"
 
 Bu belge aşağıdaki makale türlerini içerir:  
 
-* **[Hızlı başlangıç](quickstarts/client-libraries.md)** , hizmete çağrı yapıp sonuçları elde etmeniz için adım adım yönergeler sağlar.
-* **[Nasıl yapılır kılavuzlarında](how-to-create-immersive-reader.md)** , hizmetin daha belirli veya özelleştirilmiş yollarla kullanılmasına ilişkin yönergeler bulunur.  
+* **[Hızlı](quickstarts/client-libraries.md)** başlangıçlarda, hizmette istek yapma konusunda size kılavuzluk eden başlangıç yönergeleri bulunur.
+* **[Nasıl yapılır kılavuzlarında](how-to-create-immersive-reader.md)** , hizmetin daha belirli veya özelleştirilmiş yollarla kullanılmasına ilişkin yönergeler bulunur.
 
 ## <a name="use-immersive-reader-to-improve-reading-accessibility"></a>Modern okuyucu kullanarak okuma erişilebilirliği geliştirme 
 

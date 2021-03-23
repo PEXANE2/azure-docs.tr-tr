@@ -4,7 +4,7 @@ description: Bu makalede, Microsoft Güvenlik kodu analiz uzantısı 'ndaki tüm
 author: sukhans
 manager: sukhans
 ms.author: terrylan
-ms.date: 11/29/2019
+ms.date: 03/22/2021
 ms.topic: article
 ms.service: security
 services: azure
@@ -12,14 +12,17 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 6985107dd8f13e26875cf5ea7428b3280d00cea1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a41a788a84770201996fd369d9b47031674afee3
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "85367266"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799556"
 ---
 # <a name="yaml-configuration-options-to-customize-the-build-tasks"></a>Derleme görevlerini özelleştirmek için YAML yapılandırma seçenekleri
+
+> [!Note]
+> 1 Mart 2022 ' den itibaren geçerli olmak üzere Microsoft Güvenlik kodu Analizi (MSCA) uzantısı kullanımdan kaldırılacak. Var olan MSCA müşterileri, 1 Mart 2022 ' e kadar MSCA erişimini koruacaktır. Azure DevOps 'daki alternatif seçenekler için lütfen [OWASP kaynak kodu çözümleme araçlarına](https://owasp.org/www-community/Source_Code_Analysis_Tools) bakın. GitHub 'a geçirmeyi planlayan müşteriler için [GitHub gelişmiş güvenlik](https://docs.github.com/github/getting-started-with-github/about-github-advanced-security)' i kullanıma alabilirsiniz.
 
 Bu makalede, her derleme görevinin her birinde bulunan tüm YAML yapılandırma seçenekleri listelenir. Makale, güvenlik kodu analiz araçları görevleriyle başlar. İşlem sonrası görevlerle biter.
 

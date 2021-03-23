@@ -147,7 +147,7 @@
     - name: Başvuru
       items:
         - name: Belge çevirisi REST API
-          href: /rest/api/cognitiveservices/translator/translation
+          href: /rest/api/cognitiveservices/translator/documenttranslation
 - name: Çevirmen kaynakları
   items:
     - name: Destek ve yardım seçenekleri

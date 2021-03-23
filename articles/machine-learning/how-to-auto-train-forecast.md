@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 66fa56b45e8d3cff7a8ace300a450b9c41df9bc0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 161d565aa1d2dd08434ebd8ea155ac5a92e09ac0
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104588724"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802922"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Zaman serisi tahmin modelini otomatik eğitme
 
@@ -128,11 +128,11 @@ Otomatik makine öğrenimi, model oluşturma ve ayarlama sürecinin bir parças�
 >[!Tip]
 > Geleneksel regresyon modelleri tahmin denemeleri için öneri sisteminin bir parçası olarak da test edilir. Modellerin tam listesi için [desteklenen model tablosuna](how-to-configure-auto-train.md#supported-models) bakın. 
 
-Modeller| Description | Avantajlar
+Modeller| Açıklama | Avantajlar
 ----|----|---
 Prophet (Önizleme)|Prophet, önemli dönemsel etkileri ve geçmiş verilerin çeşitli mevsimlerine sahip zaman serisiyle en iyi şekilde çalışmaktadır. Bu modelden yararlanmak için kullanarak yerel olarak yüklemesini yapın `pip install fbprophet` . | Daha hızlı, güçlü ve aykırı verilere, eksik verilere ve zaman serinizdeki önemli değişikliklere göre doğru &.
 Otomatik-ARıMA (Önizleme)|Otomatik gerileme tümleşik hareketli ortalama (ARıMA), veriler sabit olduğunda en iyi şekilde çalışır. Bu, ortalama ve fark gibi istatistiksel özelliklerinin tüm küme üzerinde sabit olduğu anlamına gelir. Örneğin, bir para alanı çevirdiğinizde, bugün, yarın veya sonraki yılda bir değer çevirmenize bakılmaksızın kafa alma olasılığı %50 ' dir.| Sonraki değerleri tahmin etmek için geçmiş değerler kullanıldığından, tek değişkenli seriler için harika.
-Forekaletcn (Önizleme)| Forekaletcn, en zorlu tahmin görevlerinin üstesinden gelmek, verilerinizdeki doğrusal olmayan yerel ve küresel eğilimleri ve zaman serileri arasındaki ilişkileri yakalamak için tasarlanan bir sinir ağ modelidir.|Verilerinizdeki karmaşık eğilimleri kullanmaktan ve veri kümelerinin en büyük katına kolayca ölçeklenebilme özelliği.
+Forekaletcn (Önizleme)| Forekaletcn, en zorlu tahmin görevlerinin üstesinden gelmeye yönelik olarak tasarlanan bir sinir ağ modelidir. Verilerinize ve zaman serileri arasındaki ilişkilerde doğrusal olmayan yerel ve küresel eğilimleri yakalar.|Verilerinizdeki karmaşık eğilimleri kullanmaktan ve veri kümelerinin en büyük katına kolayca ölçeklenebilme özelliği.
 
 ### <a name="configuration-settings"></a>Yapılandırma ayarları
 
@@ -146,11 +146,12 @@ Aşağıdaki tabloda bu ek parametreler özetlenmektedir. Sözdizimi tasarım de
 |`forecast_horizon`|Kaç dönem ileri tahmin etmek istediğinizi tanımlar. Ufku, zaman serisi sıklığının birimleridir. Birimler, eğitim verilerinizin zaman aralığına göre yapılır, örneğin aylık, haftalık, öngörülebilir bir şekilde tahmin etmelidir.|✓|
 |`enable_dnn`|[Tahmini DNNs 'Leri etkinleştirin]().||
 |`time_series_id_column_names`|Aynı zaman damgasına sahip birden çok satırı olan verilerdeki zaman serisini benzersiz şekilde tanımlamak için kullanılan sütun adları. Zaman serisi tanımlayıcıları tanımlanmazsa, veri kümesinin bir adet zaman serisi olduğu varsayılır. Tek seferlik seriler hakkında daha fazla bilgi edinmek için [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand)bakın.||
-|`freq`| Zaman serisi veri kümesi sıklığı. Bu parametre günlük, haftalık, yıllık vb. gibi olayların gerçekleşmesi beklenen süreyi temsil eder. Sıklık bir [Pandas kenar boşluğu diğer adı](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects)olmalıdır.||
+|`freq`| Zaman serisi veri kümesi sıklığı. Bu parametre günlük, haftalık, yıllık vb. gibi olayların gerçekleşmesi beklenen süreyi temsil eder. Sıklık bir [Pandas kenar boşluğu diğer adı](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects)olmalıdır. [Sıklık] hakkında daha fazla bilgi edinin. (#frequency--Target-Data-toplamasını)||
 |`target_lags`|Hedef değerleri, verilerin sıklığından sonra gecikme olacak satır sayısı. Gecikme bir liste veya tek tamsayı olarak temsil edilir. Bağımsız değişkenler ve bağımlı değişken arasındaki ilişki, varsayılan olarak birbiriyle eşleşmediği veya ilişkilendirilemiyor durumunda gecikme kullanılmalıdır. ||
 |`feature_lags`| Belirlenen özellikler, ayarlandığında otomatik ML tarafından otomatik olarak kararilir `target_lags` ve olarak `feature_lags` ayarlanır `auto` . Özellik lags özelliğinin etkinleştirilmesi doğruluğu artırmaya yardımcı olabilir. Özellik lags varsayılan olarak devre dışıdır. ||
 |`target_rolling_window_size`|tahmin edilen değerler oluşturmak için *kullanılacak geçmiş dönem* <= eğitim kümesi boyutu. Atlanırsa, *n* tam eğitim kümesi boyutudur. Modele eğitim yaparken yalnızca belirli bir geçmişi düşünmek istediğinizde bu parametreyi belirtin. [Hedef sıralı pencere toplama](#target-rolling-window-aggregation)hakkında daha fazla bilgi edinin.||
-|`short_series_handling_config`| Yetersiz veri nedeniyle eğitim sırasında hata oluşmasını önlemek için kısa süre serisi işlemeyi sağlar. Kısa seri işleme `auto` Varsayılan olarak olarak ayarlanır. [Kısa seri işleme](#short-series-handling)hakkında daha fazla bilgi edinin.|
+|`short_series_handling_config`| Yetersiz veri nedeniyle eğitim sırasında hata oluşmasını önlemek için kısa süre serisi işlemeyi sağlar. Kısa seri işleme `auto` Varsayılan olarak olarak ayarlanır. [Kısa seri işleme](#short-series-handling)hakkında daha fazla bilgi edinin.||
+|`target_aggregation_function`| Parametresi aracılığıyla belirtilen sıklık ile uyumlu olmak için zaman serisi hedef sütununu toplamak için kullanılacak işlev `freq` . `freq`Kullanmak için parametresi ayarlanmalıdır `target_aggregation_function` . `None`Çoğu senaryonun kullanılması `sum` yeterlidir.<br> [Hedef sütun toplama](#frequency--target-data-aggregation)hakkında daha fazla bilgi edinin. 
 
 
 Aşağıdaki kod, 
@@ -258,12 +259,36 @@ Denemeniz için Azure Machine Learning Studio kullanıyorsanız, bkz. [Studio 'd
 
 Derin öğrenimi etkinleştirme ve hedef sıralı pencere toplamayı belirleme gibi ek isteğe bağlı yapılandırma işlemleri tahmin etmek için kullanılabilir. 
 
+### <a name="frequency--target-data-aggregation"></a>Sıklık & hedef veri toplama
+
+, `freq` Saat veya günlük veriler gibi bir set temposunda ' ı izmeyen verilerin düzensiz verilerden kaynaklanan hatalardan kaçınmanıza yardımcı olması için sıklık, parametre parametresinden yararlanın. 
+
+Yüksek oranda düzensiz veriler veya değişen iş ihtiyaçları için, kullanıcılar isteğe bağlı olarak istenen tahmin sıklığını ayarlayabilir `freq` ve `target_aggregation_function` zaman serisinin hedef sütununu toplamak için öğesini belirtebilir. Nesnenizin bu iki ayarı `AutoMLConfig` , veri hazırlığında bir süre sonra kaydetmeye yardımcı olabilir. 
+
+`target_aggregation_function`Parametresi kullanıldığında,
+* Hedef sütun değerleri belirtilen işleme göre toplanır. Genellikle `sum` çoğu senaryo için uygundur.
+
+* Verilerinizde sayısal tahmine dayalı sütunlar Sum, ortalama, minimum değer ve maksimum değere göre toplanır. Sonuç olarak, otomatik ML toplama işlevi adıyla yeni bir sonekli yeni sütun oluşturur ve seçili toplama işlemini uygular. 
+
+* Kategorik tahmin sütunları için, veriler, penceredeki en belirgin kategori olan moda göre toplanır.
+
+* Tarih Tahmini sütunları en küçük değer, en yüksek değer ve mod tarafından toplanır. 
+
+Hedef sütun değerleri için desteklenen toplama işlemleri şunlardır:
+
+|İşlev | açıklama
+|---|---
+|`sum`| Hedef değerlerinin toplamı
+|`mean`| Hedef değerlerin ortalaması veya ortalaması
+|`min`| Bir hedefin en düşük değeri  
+|`max`| Bir hedefin maksimum değeri  
+
 ### <a name="enable-deep-learning"></a>Derin öğrenmeyi etkinleştir
 
 > [!NOTE]
 > Otomatik Machine Learning tahmini için DNN desteği **Önizleme** aşamasındadır ve yerel çalıştırmalar için desteklenmez.
 
-Ayrıca, modelinizin puanlarını geliştirmek için derin sinir Networks, DNNs ile derin öğrenime de yararlanabilirsiniz. Otomatikleştirilmiş ML 'nin derin öğrenimi, tek tek ve zaman serisi verilerinin tahmin edilmesini sağlar.
+Ayrıca, modelinizin puanlarını geliştirmek için derin sinir Networks, DNNs ile derin öğrenme de uygulayabilirsiniz. Otomatikleştirilmiş ML 'nin derin öğrenimi, tek tek ve zaman serisi verilerinin tahmin edilmesini sağlar.
 
 Derin öğrenme modellerinin üç iç özelliği vardır:
 1. Girişler ile çıkış arasında rastgele eşlemelerden bilgi verebilir
@@ -283,10 +308,10 @@ automl_config = AutoMLConfig(task='forecasting',
 
 Azure Machine Learning Studio 'da oluşturulan bir oto ml denemesi için DNN 'yi etkinleştirmek için, [Studio nasıl yapılır ile ilgili görev türü ayarlarına](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment)bakın.
 
-DNNs ile ilgili ayrıntılı kod örneği için [Beten oluşan üretim tahmin Not defterini](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb) görüntüleyin.
+DNNs kullanarak ayrıntılı kod örneği için [Bemeşte üretim tahmin Not defterini](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb) görüntüleyin.
 
 ### <a name="target-rolling-window-aggregation"></a>Hedef kayan pencere toplamı
-Genellikle, bir Forecaster 'ın en iyi bilgileri, hedefin en son değeridir.  Hedef yuvarlama penceresi toplamaları, veri değerlerinin sıralı toplamasını özellik olarak eklemenize olanak tanır. Bu ek özellikleri oluşturma ve kullanma ek bağlamsal veriler, tren modelinin doğruluğuna yardımcı olur.
+Genellikle, bir Forecaster 'ın en iyi bilgileri, hedefin en son değeridir.  Hedef yuvarlama penceresi toplamaları, veri değerlerinin sıralı toplamasını özellik olarak eklemenize olanak tanır. Bu özelliklerin oluşturulması ve kullanılması ek bağlamsal veriler olarak, tren modelinin doğruluğuna yardımcı olur.
 
 Örneğin, enerji talebini tahmin etmek istediğinizi varsayalım. Isıtılan boşlukların ısı değişikliklerine yönelik hesaba üç güne ait bir sıralı pencere özelliği eklemek isteyebilirsiniz. Bu örnekte, oluşturucuda ayarlayarak bu pencereyi oluşturun `target_rolling_window_size= 3` `AutoMLConfig` . 
 
@@ -294,7 +319,7 @@ Tablo, pencere toplama uygulandığında ortaya çıkan özellik mühendisliğin
 
 ![hedef sıralı pencere](./media/how-to-auto-train-forecast/target-roll.svg)
 
-[Hedef sıralı pencere toplama özelliğinden](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)yararlanarak bir Python kod örneği görüntüleyin.
+[Hedef sıralı pencere toplama özelliğini](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)uygulayan bir Python kod örneği görüntüleyin.
 
 ### <a name="short-series-handling"></a>Kısa seri işleme
 

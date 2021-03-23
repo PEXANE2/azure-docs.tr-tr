@@ -7,12 +7,12 @@ ms.reviewer: susabat
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 03/12/2021
-ms.openlocfilehash: 4be015b1a8ba4b6fc6ea3acc74318f9a8b298e8e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2b6f97f0966cb2c92dbd88c4a70188282ed3ed27
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103418105"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802042"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>ADF 'de CI-CD, Azure DevOps ve GitHub sorunlarını giderme 
 
@@ -101,8 +101,7 @@ Data Factory değişiklikleri yayımlamaya çalışırken şu hata iletisini al�
         "details": null
     }
 `
-
-#### <a name="symptom"></a>Belirti
+### <a name="cause"></a>Nedeni
 
 Git yapılandırmasını ayırdıktan sonra, Data Factory "eşitleme sırasında" olarak ayarlayan "kaynakları Içeri aktar" bayrağı seçili olacak şekilde yeniden ayarlayın. Bu, yayımlanacak hiçbir değişiklik olmadığı anlamına gelir.
 
@@ -150,11 +149,7 @@ Kullanıcı olarak bir müşteri rolü oluşturdunuz ve gerekli izne sahip deği
 
 Bu sorunu çözmek için şu izni rolünüze eklemeniz gerekir: *Microsoft. DataFactory/Factory/queryFeaturesValue/Action*. Bu izin, varsayılan olarak "Data Factory katkıda bulunan" rolünde yer almalıdır.
 
-###  <a name="automatic-publishing-for-cicd-without-clicking-publish-button"></a>Yayınla düğmesine tıklamadan CI/CD için otomatik yayımlama  
-
-#### <a name="issue"></a>Sorun
-
-ADF portalında el ile yayımlama düğmesi, otomatik CI/CD işlemini etkinleştirmez.
+###  <a name="cannot-automate-publishing-for-cicd"></a>CI/CD için yayımlama otomatikleştirilemez 
 
 #### <a name="cause"></a>Nedeni
 
@@ -178,15 +173,14 @@ Azure Resource Manager şablon boyutunu 4mb olarak kısıtlar. Şablonunuzun boy
 
 Küçük ve orta ölçekli çözümler için tek bir şablonun anlaşılması ve bakımının yapılması daha kolay olacaktır. Tüm kaynakları ve değerleri tek bir dosyada görebilirsiniz. Gelişmiş senaryolarda bağlantılı şablonlar çözümü hedeflenen bileşenlere ayırmanıza sağlar. Lütfen [bağlı ve Iç Içe Şablonlar kullanma](../azure-resource-manager/templates/linked-templates.md?tabs=azure-powershell)konusunda en iyi uygulamaları izleyin.
 
-### <a name="cannot-connect-to-git-enterprise-cloud"></a>GIT Enterprise buluta bağlanılamıyor 
+### <a name="cannot-connect-to-git-enterprise"></a>GIT Enterprise 'a bağlanılamıyor  
 
 ##### <a name="issue"></a>Sorun
 
-İzin sorunları nedeniyle GIT Enterprise buluta bağlanamazsınız. **422-Proceslabilen varlık** gibi bir hata görebilirsiniz.
+İzin sorunları nedeniyle GIT Enterprise 'a bağlanamazsınız. **422-Proceslabilen varlık** gibi bir hata görebilirsiniz.
 
 #### <a name="cause"></a>Nedeni
 
-* Pred sunucusunda git Enterprise kullanıyorsunuz. 
 * ADF için OAuth yapılandırmadı. 
 * URL 'niz yanlış yapılandırılmış.
 
@@ -194,7 +188,7 @@ Küçük ve orta ölçekli çözümler için tek bir şablonun anlaşılması ve
 
 İlk olarak ADF 'ye OAuth erişimi verirsiniz. Ardından, GIT Enterprise 'a bağlanmak için doğru URL 'yi kullanmanız gerekir. Yapılandırma, müşteri organizasyonları olarak ayarlanmalıdır. Örneğin, ADF ilk olarak *https://hostname/api/v3/search/repositories?q=user%3 <customer credential> ....* ve başarısız olur. Sonra, *https://hostname/api/v3/orgs/ <org> / <repo> ...* ve başarılı olur. 
  
-### <a name="recover-from-a-deleted-data-factory"></a>Silinen bir veri fabrikasından kurtar
+### <a name="cannot-recover-from-a-deleted-data-factory"></a>Silinen bir veri fabrikasından kurtarılamıyor
 
 #### <a name="issue"></a>Sorun
 Müşteri tarafından silinen veri fabrikası veya Data Factory içeren kaynak grubu. Silinen bir veri fabrikasını geri yüklemeyi öğrenmek ister misiniz?
@@ -211,7 +205,7 @@ Kaynak denetimine sahip Silinen Data Factory kurtarmak için aşağıdaki adıml
 
  * Yeni bir Azure Data Factory oluşturun.
 
- * Git 'i aynı ayarlarla yeniden yapılandırın, ancak mevcut Data Factory kaynaklarını seçili depoya Içeri aktarıp yeni dal ' ı seçin.
+ * Git 'i aynı ayarlarla yeniden yapılandırın, ancak mevcut Data Factory kaynaklarını seçili depoya içeri aktardığınızdan emin olun ve yeni dal ' ı seçin.
 
  * İşbirliği dalında yapılan değişiklikleri birleştirmek ve yayımlamak için bir çekme isteği oluşturun.
 

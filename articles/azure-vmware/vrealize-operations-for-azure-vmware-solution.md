@@ -3,12 +3,12 @@ title: Azure VMware çözümü için sanal Işlemleri ayarlama
 description: Azure VMware çözümünüz özel bulutunuz için sanal Işlemleri ayarlamayı öğrenin.
 ms.topic: how-to
 ms.date: 01/26/2021
-ms.openlocfilehash: 3d2617f893c34fde6a154f9f93b5bda520c5a91a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8015bb61a7401b4c97807e0256e06d4967c39026
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101738438"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802497"
 ---
 # <a name="set-up-vrealize-operations-for-azure-vmware-solution"></a>Azure VMware çözümü için sanal Işlemleri ayarlama
 
@@ -61,7 +61,7 @@ Başka bir seçenek de, özel buluttaki bir vSphere kümesine bir vanOperations 
 
 ## <a name="known-limitations"></a>Bilinen sınırlamalar
 
-- Azure VMware çözümünde **cloudadmin \@ vSphere. Local** kullanıcısı [sınırlı ayrıcalıklara](concepts-role-based-access-control.md)sahiptir.  Azure VMware çözümünde sanal makineler (VM), VMware araçları kullanılarak Konuk içi bellek toplamayı desteklemez.  Etkin ve tüketilen bellek kullanımı bu durumda çalışmaya devam eder.
+- Azure VMware çözümünde **cloudadmin \@ vSphere. Local** kullanıcısı [sınırlı ayrıcalıklara](concepts-identity.md)sahiptir.  Azure VMware çözümünde sanal makineler (VM), VMware araçları kullanılarak Konuk içi bellek toplamayı desteklemez.  Etkin ve tüketilen bellek kullanımı bu durumda çalışmaya devam eder.
 - Azure VMware çözümleri, DRS ayarları dahil olmak üzere küme yapılandırmasını yönettiğinden, ana bilgisayar tabanlı iş amacı için iş yükü iyileştirmesi çalışmıyor.
 - Küme tabanlı iş amacını kullanarak SDDC içindeki çapraz küme yerleştirme için iş yükü iyileştirmesi, Operations Manager 8,0 ve sonraki sürümlerde tam olarak desteklenmektedir. Ancak, iş yükü iyileştirmesi kaynak havuzlarından haberdar değildir ve VM 'Leri küme düzeyinde yerleştirmez. Bir Kullanıcı bunu Azure VMware Çözüm vCenter Server arabiriminde el ile düzeltebilir.
 - Azure VMware çözümünüzü vCenter Server kimlik bilgilerinizi kullanarak Operations Manager VNET 'te oturum açamazsınız. 

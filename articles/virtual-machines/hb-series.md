@@ -5,15 +5,15 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: vm-sizes-hpc
 ms.topic: conceptual
-ms.date: 03/19/2021
+ms.date: 03/22/2021
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: f3e6f40833f3536bb915af74b7e0d80143fe0d13
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 92a46c7f9d7cf86787bb1707c41ae0e44c37fc60
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104774805"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800916"
 ---
 # <a name="hb-series"></a>HB serisi
 
@@ -36,9 +36,9 @@ HB Serisi VM 'Ler özelliği 100 GB/sn Mellanox EDR InfiniBand. Bu VM 'Ler, iyil
 | Standard_HB60rs | 60 | AMD EPYıC 7551 | 228 | 263 | 2.0 | 2.55 | 2.55 | 100 | Tümü | 700 | 4 | 8 |
 
 Hakkında daha fazla bilgi edinin:
-- [mimari ve VM topolojisi](./workloads/hpc/hb-series-overview.md),
-- Desteklenen işletim sistemi dahil desteklenen [yazılım yığını](./workloads/hpc/hb-series-overview.md#software-specifications) ve
-- HB Serisi VM 'nin beklenen [performansı](./workloads/hpc/hb-series-performance.md) .
+- [Mimari ve VM topolojisi](./workloads/hpc/hb-series-overview.md)
+- Desteklenen işletim sistemi dahil desteklenen [yazılım yığını](./workloads/hpc/hb-series-overview.md#software-specifications)
+- HB Serisi VM 'nin beklenen [performansı](./workloads/hpc/hb-series-performance.md)
 
 [!INCLUDE [hpc-include.md](./workloads/hpc/includes/hpc-include.md)]
 

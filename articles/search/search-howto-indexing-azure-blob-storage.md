@@ -7,18 +7,20 @@ author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/03/2021
+ms.date: 03/22/2021
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 74813fabec4d5fe43cd158bb4aa359c2a3b0188a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6f70ae726cf41395e46760dc5cf7da5b4d61478a
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99988713"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802905"
 ---
 # <a name="how-to-configure-blob-indexing-in-cognitive-search"></a>Bilişsel Arama blob dizinlemeyi yapılandırma
 
-Bu makalede, Azure Bilişsel Arama 'de metin tabanlı belgelerin (PDF 'Ler, Microsoft Office belgeler ve diğerleri gibi) dizinini oluşturmak için bir blob dizin oluşturucunun nasıl yapılandırılacağı gösterilmektedir. Dizin Oluşturucu kavramları hakkında bilginiz yoksa, [Azure bilişsel arama Dizin oluşturucularıyla](search-indexer-overview.md) başlayın ve BLOB dizinlemeye girmeden önce [bir arama Dizin Oluşturucu oluşturun](search-howto-create-indexers.md) .
+Blob Dizin Oluşturucu, Azure Blob depolamadan bir Bilişsel Arama dizinine içerik almak için kullanılır. Blob Dizinleyicileri genellikle [AI zenginleştirme](cognitive-search-concept-intro.md)'de kullanılır. burada, ekli bir [beceri](cognitive-search-working-with-skillsets.md) , aranabilir içerik oluşturmak için görüntü ve doğal dil işleme ekler. Ancak PDF 'Ler, Microsoft Office belgeler ve dosya biçimleri gibi metin tabanlı belgelerden içerik almak için AI zenginleştirme olmadan blob dizinleyicileri de kullanabilirsiniz.
+
+Bu makalede, her iki senaryo için bir blob dizin oluşturucunun nasıl yapılandırılacağı gösterilir. Dizin Oluşturucu kavramları hakkında bilginiz yoksa, [Azure bilişsel arama Dizin oluşturucularıyla](search-indexer-overview.md) başlayın ve BLOB dizinlemeye girmeden önce [bir arama Dizin Oluşturucu oluşturun](search-howto-create-indexers.md) .
 
 <a name="SupportedFormats"></a>
 
@@ -30,7 +32,7 @@ Azure Bilişsel Arama blob Indexer, aşağıdaki belge biçimlerinden metin ayı
 
 ## <a name="data-source-definitions"></a>Veri kaynağı tanımları
 
-Blob Indexer ve diğer herhangi bir Dizin Oluşturucu arasındaki fark, dizin oluşturucuya atanan veri kaynağı tanımıdır. Veri kaynağı, dizine eklenecek içeriğin türünü, bağlantısını ve konumunu belirten tüm özellikleri saklar.
+Blob Indexer ve diğer herhangi bir Dizin Oluşturucu arasındaki birincil fark, dizin oluşturucuya atanan veri kaynağı tanımıdır. Veri kaynağı tanımı, veri kaynağı türünü ("tür": "azureblob"), kimlik doğrulama ve dizine eklenecek içeriğe bağlantı için diğer özellikleri belirtir.
 
 Blob veri kaynağı tanımı, aşağıdaki örneğe benzer şekilde görünür:
 
@@ -72,7 +74,7 @@ SAS, kapsayıcıda liste ve okuma izinlerine sahip olmalıdır. Depolama paylaş
 
 ## <a name="index-definitions"></a>Dizin tanımları
 
-Dizin, bir belge, öznitelik ve arama deneyimini şekillendirip diğer yapıların alanlarını belirtir. Aşağıdaki örnek, [create INDEX (REST API)](/rest/api/searchservice/create-index)kullanarak basit bir dizin oluşturur. 
+Dizin, bir belge, öznitelik ve arama deneyimini şekillendirip diğer yapıların alanlarını belirtir. Tüm Dizin oluşturucular, hedef olarak bir arama Dizin tanımı belirtmenizi gerektirir. Aşağıdaki örnek, [create INDEX (REST API)](/rest/api/searchservice/create-index)kullanarak basit bir dizin oluşturur. 
 
 ```http
 POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
@@ -90,7 +92,7 @@ api-key: [admin key]
 
 Dizin tanımları, koleksiyonda bir alanın `"fields"` belge anahtarı olarak davranmasını gerektirir. Dizin tanımları ayrıca içerik ve meta veriler için alanları içermelidir.
 
-Bir **`content`** alan, bloblardan ayıklanan metinleri depolamak için kullanılır. Bu alanın tanımınız yukarıdaki şuna benzer bir şekilde görünebilir. Bu adı kullanmanız gerekmez, ancak bunu yapmak örtük alan eşleştirmelerinden yararlanmanızı sağlar. Blob Indexer, blob içeriğini dizindeki bir içerik Edm. String alanına gönderebilir, hiçbir alan eşlemesi gerekmez.
+**`content`** Alan, blob içeriği için ortaktır. Bloblardan ayıklanan metni içerir. Bu alanın tanımınız yukarıdaki şuna benzer bir şekilde görünebilir. Bu adı kullanmanız gerekmez, ancak bunu yapmak örtük alan eşleştirmelerinden yararlanmanızı sağlar. Blob Indexer, bir alan eşlemesi gerekmeden, dizin içindeki bir içerik Edm. String alanına blob içeriği gönderebilir.
 
 Dizinde istediğiniz blob meta verileri için de alanlar ekleyebilirsiniz. Dizin Oluşturucu özel meta veri özelliklerini, [Standart meta veri](#indexing-blob-metadata) özelliklerini ve [içeriğe özel meta veri](search-blob-metadata-properties.md) özelliklerini okuyabilir. Dizinler hakkında daha fazla bilgi için bkz. [Dizin oluşturma](search-what-is-an-index.md).
 

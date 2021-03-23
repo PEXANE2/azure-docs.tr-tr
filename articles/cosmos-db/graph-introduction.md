@@ -5,14 +5,14 @@ author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
-ms.date: 11/25/2020
+ms.date: 03/22/2021
 ms.author: chrande
-ms.openlocfilehash: 806904943f4e4a20734d595f835dc9450afdded5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ffe11fafa6ba217572f9d12d40324a5201b62630
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100547290"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801698"
 ---
 # <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>Azure Cosmos DB Gremlin API 'sine giriş
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -26,11 +26,14 @@ Bu makale, Azure Cosmos DB Gremlin API 'sine genel bir bakış sağlar ve milyar
 Azure Cosmos DB Gremlin API 'SI, grafik veritabanı algoritmalarının gücünü yüksek düzeyde ölçeklenebilir, yönetilen altyapıyla birleştirerek esneklik ve ilişkisel yaklaşımlarla ilişkili en yaygın veri sorunlarına yönelik benzersiz ve esnek bir çözüm sunar.
 
 > [!NOTE]
-> [Sunucusuz kapasite modu](serverless.md) artık Azure Cosmos DB Gremlin API 'sinde kullanılabilir.
+> Azure Cosmos DB Graph Engine, Apache TinkerPop belirtimine yakından uyar. Ancak, Azure Cosmos DB için özel uygulama ayrıntılarında bazı farklılıklar vardır. Apache TinkerPop tarafından desteklenen bazı özellikler Azure Cosmos DB kullanılamıyor, desteklenmeyen özellikler hakkında daha fazla bilgi edinmek için bkz. [Apache tinkerpop ile uyumluluk](gremlin-support.md) makalesi.
 
 ## <a name="features-of-azure-cosmos-dbs-gremlin-api"></a>Azure Cosmos DB Gremlin API 'SI özellikleri
- 
+
 Azure Cosmos DB; genel dağıtım, depolama ve aktarım hızında esnek ölçeklendirme, otomatik dizinleme ve sorgu, ayarlanabilir tutarlılık düzeyleri ve TinkerPop standardı desteği sunan, tam olarak yönetilen bir graf veritabanıdır.
+
+> [!NOTE]
+> [Sunucusuz kapasite modu](serverless.md) artık Azure Cosmos DB Gremlin API 'sinde kullanılabilir.
 
 Azure Cosmos DB Gremlin API 'nin sunduğu farklı özellikler şunlardır:
 

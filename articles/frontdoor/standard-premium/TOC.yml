@@ -63,6 +63,8 @@
       href: how-to-compression.md
     - name: Özel bağlantıyı etkinleştir
       items:
+        - name: İç yük dengeleyiciye bağlanma
+          href: how-to-enable-private-link-internal-load-balancer.md
         - name: Bir depolama hesabına bağlanma
           href: how-to-enable-private-link-storage-account.md
         - name: Web uygulamasına bağlanma

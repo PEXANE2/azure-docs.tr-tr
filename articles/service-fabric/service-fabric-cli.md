@@ -5,12 +5,12 @@ author: jeffj6123
 ms.topic: conceptual
 ms.date: 5/19/2020
 ms.author: jejarry
-ms.openlocfilehash: b3714f8401def9bed68e4b0845d025734a480cb3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a1b0598f34fe894e078dc647149cff4ac74e1fea
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "83681807"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802157"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI'sı
 
@@ -22,7 +22,7 @@ Azure Service Fabric komut satırı arabirimi (CLI) Service Fabric varlıklarıy
 
 Yüklemeden önce ortamınızda Python ve pip uygulamalarının yüklü olduğundan emin olun. Daha fazla bilgi için [pip hızlı başlangıç belgelerine](https://pip.pypa.io/en/latest/quickstart/) ve resmi [Python yükleme belgelerine](https://wiki.python.org/moin/BeginnersGuide/Download) bakın.
 
-CLı, 2,7, 3,5, 3,6 ve 3,7 Python sürümlerini destekler. Python 2,7, destek sonuna kadar yakında iletişime geçecağından, Python 3. x önerilen sürümdür.
+CLı, Python 3. x ile önerilen Python 2,7 ve 3.6 + sürümlerini destekler.
 
 ### <a name="service-fabric-target-runtime"></a>Service Fabric hedef çalışma zamanı
 

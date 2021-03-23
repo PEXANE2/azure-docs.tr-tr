@@ -1,70 +1,148 @@
 ---
 title: Ingilizce olmayan arama sorguları için çok dilli dizin oluşturma
 titleSuffix: Azure Cognitive Search
-description: Azure Bilişsel Arama, Microsoft 'un Lucene ve doğal dil Işleme teknolojisinden dil çözümleyicilerinden yararlanarak 56 dili destekler.
+description: Çoklu dil içeriğini destekleyen bir dizin oluşturun ve ardından bu içeriğin kapsamına alınmış sorgular oluşturun.
 manager: nitinme
-author: yahnoosh
-ms.author: jlembicz
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/12/2020
-ms.openlocfilehash: 588de9c9cae114b5f5396db17f7ecb19bcde25c6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/22/2021
+ms.openlocfilehash: 627ec77af4e492b4f22404972729cecdb1c40f06
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93423088"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801613"
 ---
 # <a name="how-to-create-an-index-for-multiple-languages-in-azure-cognitive-search"></a>Azure Bilişsel Arama birden çok dil için dizin oluşturma
 
-Dizinler, birden fazla dilin içeriğini içeren alanları içerebilir, örneğin dile özgü dizeler için ayrı alanlar oluşturabilir. Dizin oluşturma ve sorgulama sırasında en iyi sonuçlar için, uygun dil kurallarını sağlayan bir dil Çözümleyicisi atayın. 
+Çok dilli arama uygulamasındaki önemli bir gereksinim, kullanıcının kendi dilinde arama ve sonuç alma olanağıdır. Azure Bilişsel Arama, çok dilli bir uygulamanın dil gereksinimlerini karşılamanın bir yolu, belirli bir dilde dizeleri depolamak için ayrılmış alanlar oluşturmaktır ve sonra tam metin aramasını sorgu sırasında yalnızca bu alanlarla kısıtlar.
 
-Azure Bilişsel Arama, her iki Lucene ve Microsoft 'tan gelen ve çözümleyici özelliği kullanılarak tek tek alanlara atanabilecek dil çözümleyicilerinin büyük bir seçimini sunmaktadır. Portalda, bu makalede açıklandığı gibi bir dil Çözümleyicisi de belirtebilirsiniz.
++ Alan tanımlarında, hedef dilin dilsel kurallarını çağıran bir dil Çözümleyicisi ayarlayın. Desteklenen çözümleyiciler listesinin tam listesini görüntülemek için bkz. [dil Çözümleyicileri ekleme](index-add-language-analyzers.md).
 
-## <a name="add-analyzers-to-fields"></a>Alanlara çözümleyiciler ekleme
++ Sorgu isteğinde, parametreleri tam metin araması olarak belirli alanlara ayarlayın ve ardından, sunmak istediğiniz arama deneyimiyle uyumlu içerik sağlamayan alanların sonuçlarını kırpın.
 
-Bir alan oluşturulduğunda dil Çözümleyicisi belirtilir. Var olan bir alan tanımına çözümleyici eklemek için, dizini üzerine yazma (ve yeniden yükleme) ya da orijinalle özdeş yeni bir alan oluşturma (çözümleyici atamasıyla) gerekir. Daha sonra, kullanılmayan alanı dilediğiniz zaman silebilirsiniz.
+Bu teknik, alan içeriklerinin bütünlüğünden başarılı oldu. Azure Bilişsel Arama, sorgu yürütmenin bir parçası olarak dizeleri çevirmez veya dil algılamayı gerçekleştirmez. Alanların, istediğiniz dizeleri içerdiğinden emin olmanız gerekir.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın ve arama hizmetinizi bulun.
-1. Yeni bir dizin başlatmak için hizmet panosunun en üstündeki komut çubuğunda **Dizin Ekle** ' ye tıklayın veya var olan bir dizine eklemekte olduğunuz yeni alanlara bir çözümleyici ayarlamak için mevcut bir dizini açın.
-1. Bir ad sağlayarak alan tanımı başlatın.
-1. EDM. String veri türünü seçin. Yalnızca dize alanları tam metin aranabilir.
-1. Çözümleyici özelliğini etkinleştirmek için **aranabilir** özniteliği ayarlayın. Bir dil Çözümleyicisi 'nin kullanılabilmesi için alanın metin tabanlı olması gerekir.
-1. Kullanılabilir çözümleyiciler arasından birini seçin. 
+## <a name="define-fields-for-content-in-different-languages"></a>Farklı dillerdeki içerik için alanları tanımlama
 
-![Alan tanımı sırasında dil Çözümleyicileri atama](media/search-language-support/select-analyzer.png "Alan tanımı sırasında dil Çözümleyicileri atama")
+Azure Bilişsel Arama 'de sorgular tek bir dizini hedefler. Tek bir arama deneyiminde dile özgü dizeler sağlamak isteyen geliştiriciler genellikle değerleri depolamak için ayrılmış alanlar tanımlar: Ingilizce dizeler için bir alan, Fransızca için bir, vb.
 
-Varsayılan olarak, tüm aranabilir alanlar, dilden bağımsız olan [Standart Lucene çözümleyici](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) 'yi kullanır. Desteklenen çözümleyiciler listesinin tam listesini görüntülemek için bkz. [Azure bilişsel arama dizinine dil Çözümleyicileri ekleme](index-add-language-analyzers.md).
+Bir alan tanımındaki "çözümleyici" özelliği, [dil Çözümleyicisi](index-add-language-analyzers.md)'ni ayarlamak için kullanılır. Bu, hem dizin oluşturma hem de sorgu yürütme için kullanılacaktır.
 
-Portalda, çözümleyiciler olduğu gibi kullanılmak üzere tasarlanmıştır. Özelleştirmeler veya filtre ve belirteçlerin belirli bir yapılandırmasına ihtiyacınız varsa, kodda [özel bir çözümleyici oluşturmanız](index-add-custom-analyzers.md) gerekir. Portal özel Çözümleyicileri seçmeyi veya yapılandırmayı desteklemez.
+```JSON
+{
+  "name": "hotels-sample-index",
+  "fields": [
+    {
+      "name": "Description",
+      "type": "Edm.String",
+      "retrievable": true,
+      "searchable": true,
+      "analyzer": "en.microsoft"
+    },
+    {
+      "name": "Description_fr",
+      "type": "Edm.String",
+      "retrievable": true,
+      "searchable": true,
+      "analyzer": "fr.microsoft"
+    },
+```
 
-## <a name="query-language-specific-fields"></a>Dile özgü alanları sorgulama
+## <a name="build-and-load-an-index"></a>Dizin oluşturma ve yükleme
 
-Bir alan için dil Çözümleyicisi seçildikten sonra, bu alan için her bir dizin oluşturma ve arama isteğiyle birlikte kullanılacaktır. Farklı çözümleyiciler kullanılarak birden çok alana karşı bir sorgu verildiğinde, sorgu her bir alan için atanan çözümleyiciler tarafından bağımsız olarak işlenir.
+Ara (ve belirgin) bir adım sorgu oluşturmadan önce [dizini derleyip doldurmanız](search-get-started-dotnet.md) gerekir. Bu adımdan daha fazla bahsedin. Dizin kullanılabilirliğini belirlemenin bir yolu, [portaldaki](https://portal.azure.com)dizinler listesini denetleyerek.
 
-Bir sorgu veren aracının dili biliniyorsa, bir arama isteği, **Searchfields** sorgu parametresi kullanılarak belirli bir alana kapsam yapılabilir. Aşağıdaki sorgu yalnızca Lehçe 'daki açıklamaya göre verilecek:
+> [!TIP]
+> Dil algılama ve metin çevirisi, [AI zenginleştirme](cognitive-search-concept-intro.md) ve [becerileri](cognitive-search-working-with-skillsets.md)aracılığıyla veri alımı sırasında desteklenir. Karma dil içeriğine sahip bir Azure veri kaynağınız varsa, [veri Içeri aktarma Sihirbazı](cognitive-search-quickstart-blob.md)'nı kullanarak dil algılama ve çeviri özelliklerini deneyebilirsiniz.
 
-`https://[service name].search.windows.net/indexes/[index name]/docs?search=darmowy&searchFields=PolishContent&api-version=2020-06-30`
+## <a name="constrain-the-query-and-trim-results"></a>Sorgu ve kırpma sonuçlarını kısıtlama
 
-Yukarıdaki gibi bir sorguya benzer bir sorgu yapıştırmak için [**Arama Gezgini**](search-explorer.md) 'ni kullanarak portalınızın dizinini sorgulayabilirsiniz.
+Sorgudaki parametreler, aramayı belirli alanlarla sınırlandırmak için kullanılır ve sonra herhangi bir alanın sonuçlarını senaryonuz için faydalı olmayan şekilde kırpabilir. 
+
+| Parametreler | Amaç |
+|-----------|--------------|
+| **searchFields** | Tam metin aramasını adlandırılmış alanlar listesiyle sınırlandırır. |
+| **$select** | Yanıtı yalnızca belirttiğiniz alanları içerecek şekilde kırpar. Varsayılan olarak, tüm alınabilir alanlar döndürülür. **$Select** parametresi, hangi hangilerinin dönebileceği seçmenize olanak sağlar. |
+
+Arama, Fransızca dizeleri içeren alanlara kısıtlama hedefi verildiğinde, sorguyu Bu dildeki dizeleri içeren alanlara hedeflemek için **Searchfields** 'i kullanırsınız.
+
+Bir sorgu isteğinde çözümleyici belirtilmesi gerekli değildir. Alan tanımında bir dil Çözümleyicisi her zaman sorgu işleme sırasında kullanılacaktır. Farklı dil Çözümleyicileri çağıran birden çok alanı belirten sorgular için, hüküm veya tümcecikler her alan için atanan çözümleyiciler tarafından bağımsız olarak işlenir.
+
+Varsayılan olarak, bir arama alınabilir olarak işaretlenen tüm alanları döndürür. Bu nedenle, sağlamak istediğiniz dile özgü arama deneyimiyle uyumlu olmayan alanları dışlamak isteyebilirsiniz. Özellikle, Fransızca dizelerini içeren bir alanla aramayı sınırlandırdıysanız, muhtemelen sonuçlardan Ingilizce dizeler içeren alanları dışlamak isteyebilirsiniz. **$Select** Query parametresinin kullanılması, çağıran uygulamaya hangi alanların döndürüleceğini denetlemenizi sağlar.
+
+#### <a name="example-in-rest"></a>REST içinde örnek
+
+```http
+POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
+{
+    "search": "animaux acceptés",
+    "searchFields": "Tags, Description_fr",
+    "select": "HotelName, Description_fr, Address/City, Address/StateProvince, Tags",
+    "count": "true"
+}
+```
+
+#### <a name="example-in-c"></a>C 'de örnek #
+
+```csharp
+private static void RunQueries(SearchClient srchclient)
+{
+    SearchOptions options;
+    SearchResults<Hotel> response;
+
+    options = new SearchOptions()
+    {
+        IncludeTotalCount = true,
+        Filter = "",
+        OrderBy = { "" }
+    };
+
+    options.Select.Add("HotelId");
+    options.Select.Add("HotelName");
+    options.Select.Add("Description_fr");
+    options.SearchFields.Add("Tags");
+    options.SearchFields.Add("Description_fr");
+
+    response = srchclient.Search<Hotel>("*", options);
+    WriteDocuments(response);
+}
+```
 
 ## <a name="boost-language-specific-fields"></a>Dile özgü alanları arttırma
 
-Bazen bir sorguyu veren aracının dili, bu durumda sorgunun tüm alanlara aynı anda verilebileceği anlamına gelir. Gerekirse, belirli bir dilin sonuçları için tercih, [Puanlama profilleri](index-add-scoring-profiles.md)kullanılarak tanımlanabilir. Aşağıdaki örnekte, Ingilizce 'deki açıklamada bulunan eşleşmeler, Lehçe ve Fransızca 'daki eşleştirmelere göre daha yüksek puanlanacaktır:
+Bazen bir sorguyu veren aracının dili, bu durumda sorgunun tüm alanlara aynı anda verilebileceği anlamına gelir. Belirli bir dilin sonuçları için IA tercihi, [Puanlama profilleri](index-add-scoring-profiles.md)kullanılarak tanımlanabilir. Aşağıdaki örnekte, Ingilizce 'deki açıklamada bulunan eşleşmeler, diğer dillerdeki eşleştirmelere göre daha yüksek puanlanacaktır:
 
-```http
-    "scoringProfiles": [
-      {
-        "name": "englishFirst",
-        "text": {
-          "weights": { "description_en": 2 }
-        }
+```JSON
+  "scoringProfiles": [
+    {
+      "name": "englishFirst",
+      "text": {
+        "weights": { "description": 2 }
       }
-    ]
+    }
+  ]
 ```
 
-`https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2020-06-30`
+Ardından, arama isteğine Puanlama profilini dahil edebilirsiniz:
+
+```http
+POST /indexes/hotels/docs/search?api-version=2020-06-30
+{
+  "search": "pets allowed",
+  "searchFields": "Tags, Description",
+  "select": "HotelName, Tags, Description",
+  "scoringProfile": "englishFirst",
+  "count": "true"
+}
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-.NET geliştiricisiyseniz, [Azure bilişsel arama .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Search) ve [LexicalAnalyzer](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzer) özelliğini kullanarak dil Çözümleyicileri yapılandırabileceğinizi unutmayın.
++ [Dil çözümleyicileri](index-add-language-analyzers.md)
++ [Azure Bilişsel Arama’da tam metin araması nasıl çalışır?](search-lucene-query-architecture.md)
++ [Belgelerde Arama REST API'si](/rest/api/searchservice/search-documents)
++ [AI zenginleştirme genel bakış](cognitive-search-concept-intro.md)
++ [Becerileri genel bakış](cognitive-search-working-with-skillsets.md)

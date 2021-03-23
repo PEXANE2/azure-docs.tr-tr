@@ -10,16 +10,16 @@ ms.date: 03/05/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: f157b44e92289d0e9c5b88108550c144344c5206
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 54e703b096ea4e3572a6fc00aa6b7b2b99c4bcad
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102211150"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800753"
 ---
 # <a name="soft-delete-for-containers-preview"></a>Kapsayıcılar için geçici silme (Önizleme)
 
-Kapsayıcılar için geçici silme (Önizleme), verilerinizin yanlışlıkla veya kötü amaçlı olarak silinmesini önler. Bir depolama hesabı için kapsayıcı geçici silme etkinleştirildiğinde, silinen tüm kapsayıcı ve içerikleri, belirttiğiniz süre boyunca Azure Storage 'da tutulur. Saklama süresi boyunca, daha önce silinen kapsayıcıları geri yükleyebilirsiniz. Kapsayıcının geri yüklenmesi, bu kapsayıcıdaki tüm Blobları silindiği zaman geri yükler.
+Kapsayıcılar için geçici silme (Önizleme), verilerinizin yanlışlıkla veya kötü amaçlı olarak silinmesini önler. Depolama hesabında kapsayıcıyı geçici silme etkinleştirildiğinde, silinen tüm kapsayıcılar ve bunların içeriği sizin belirttiğiniz süre boyunca Azure Depolama'da saklanır. Daha önce silinmiş olan kapsayıcıları saklama süresi boyunca geri yükleyebilirsiniz. Kapsayıcı geri yüklendiğinde, kapsayıcının silindiği sırada içinde bulunan tüm bloblar geri yüklenir.
 
 Blob verilerinize yönelik uçtan uca koruma için, Microsoft aşağıdaki veri koruma özelliklerini etkinleştirmeyi önerir:
 
@@ -35,6 +35,9 @@ Blob verilerinize yönelik uçtan uca koruma için, Microsoft aşağıdaki veri 
 Kapsayıcı geçici silmeyi etkinleştirdiğinizde, 1 ila 365 gün arasında silinen kapsayıcılar için bir saklama süresi belirtebilirsiniz. Varsayılan saklama süresi 7 gündür. Saklama süresi boyunca, **kapsayıcıyı geri yükleme** işlemini çağırarak silinen kapsayıcıyı kurtarabilirsiniz.
 
 Bir kapsayıcıyı geri yüklediğinizde, kapsayıcının blob 'ları ve BLOB sürümleri de geri yüklenir. Ancak, kapsayıcının kendisi silinmişse Blobları geri yüklemek için yalnızca kapsayıcı geçici silme özelliğini kullanabilirsiniz. Silinen bir blobu, üst kapsayıcısı silinmediği zaman geri yüklemek için blob geçici silme veya blob sürümü oluşturma kullanmanız gerekir.
+
+> [!WARNING]
+> Kapsayıcı geçici silme, yalnızca tüm kapsayıcıları ve silme sırasında içerdikleri Blobları geri yükleyebilir. Kapsayıcı içinde silinen bir blobu kapsayıcı geçici silme özelliğini kullanarak geri yükleyemezsiniz.
 
 Aşağıdaki diyagramda, kapsayıcı geçici silme etkinken silinen kapsayıcının nasıl geri yüklenebildiğinden gösterilmektedir:
 

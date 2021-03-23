@@ -13,12 +13,12 @@ ms.custom:
 - seo-javascript-september2019
 - seo-python-october2019
 - devx-track-python
-ms.openlocfilehash: c74da5e612609ce6a0525b24e5868059f06da179
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fee0591622c1ee07b6e954b3cadc208a300ab6a5
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93078807"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798791"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>Hızlı başlangıç: Azure Cosmos DB SQL API hesabı kullanarak bir Python uygulaması oluşturma
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -44,7 +44,7 @@ Bu hızlı başlangıçta, Azure portal ve Visual Studio Code içinden GitHub 'd
     * Azure etkin aboneliği olmadan:
         * 30 gün boyunca bir test ortamı olan [ücretsiz Azure Cosmos DB deneyin](https://azure.microsoft.com/try/cosmosdb/).
         * [Azure Cosmos DB Öykünücüsü](https://aka.ms/cosmosdb-emulator) 
-- İçinde yürütülebilir dosya ile [Python 2,7 veya 3.5.3 +](https://www.python.org/downloads/) `python` `PATH` .
+- İçinde yürütülebilir dosya ile [Python 2,7 veya 3.6 +](https://www.python.org/downloads/) `python` `PATH` .
 - [Visual Studio Code](https://code.visualstudio.com/).
 - [Visual Studio Code Için Python uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-python.python#overview).
 - [Git](https://www.git-scm.com/downloads). 

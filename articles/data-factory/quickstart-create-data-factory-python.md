@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/15/2021
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 1c44e0daf3111f75d50f2d084e73b5dc28bf9497
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: c21956e47d2eb7634a9950751929f82875f490fb
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104783294"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801647"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Hızlı Başlangıç: Python kullanarak veri fabrikası ve işlem hattı oluşturma
 
@@ -66,7 +66,7 @@ Azure Data Factory, veri taşıma ve veri dönüştürmeyi düzenlemek ve otomat
     pip install azure-mgmt-datafactory
     ```
 
-    [Data Factory Için Python SDK 'Sı](https://github.com/Azure/azure-sdk-for-python) Python 2,7, 3,3, 3,4, 3,5, 3,6 ve 3,7 'yi destekler.
+    [Data Factory Için Python SDK 'Sı](https://github.com/Azure/azure-sdk-for-python) Python 2,7 ve 3.6 + ' yı destekler.
 
 4. Azure kimlik doğrulaması için Python paketini yüklemek için aşağıdaki komutu çalıştırın:
 

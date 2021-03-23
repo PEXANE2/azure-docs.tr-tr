@@ -7,12 +7,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/19/2021
-ms.openlocfilehash: 1f9169d4f3f6361e557c41a4d612cf6c439257fb
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 23c5d138463a52f4ff4c52b4a919b71a87b7fd6d
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104722523"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802888"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>Azure Bilişsel Arama Dizin oluşturucudan Azure sanal makinesinde SQL Server bağlantı yapılandırma
 
@@ -87,9 +87,12 @@ Hizmet etiketinin IP adresi aralığını `AzureCognitiveSearch` [](../virtual-n
 
 ### <a name="include-the-azure-cognitive-search-portal-ip-addresses"></a>Azure Bilişsel Arama portal IP adreslerini ekleme
 
-Bir dizin oluşturucu oluşturmak için Azure portal kullanıyorsanız, Azure Bilişsel Arama portal mantığının oluşturma sırasında SQL Azure sanal makinenize erişmesi da gerekir. Azure Bilişsel Arama portal IP adresleri `stamp2.search.ext.azure.com` , Traffic Manager etki alanı olan ping işlemi tarafından bulunabilir.
+Bir dizin oluşturucu oluşturmak için Azure portal kullanıyorsanız, portala SQL Azure sanal makinenize gelen erişimi vermeniz gerekir. Güvenlik duvarındaki bir gelen kuralı portalın IP adresini sağlamanızı gerektirir.
 
-Farklı bölgelerdeki kümeler bu Traffic Manager 'a bağlanır. Ping, IP adresini ve etki alanını döndürebilir `stamp2.search.ext.azure.com` , ancak hizmetiniz farklı bir bölgedeyse IP ve etki alanı adı farklı olacaktır. Ping işleminden döndürülen IP adresi, bölgenizdeki Azure portal için doğru bir adrestir.
+Portal IP adresini almak için, `stamp2.ext.search.windows.net` trafik yöneticisinin etki alanı olan PING. İstek zaman aşımına uğrar, ancak IP adresi durum iletisinde görünür olur. Fo Örneğin, "ping azsyrie.northcentralus.cloudapp.azure.com [52.252.175.48]" iletisinde, IP adresi "52.252.175.48" olur.
+
+> [!NOTE]
+> Farklı bölgelerdeki kümeler farklı trafik yöneticilerine bağlanır. Etki alanı adından bağımsız olarak, Ping işleminden döndürülen IP adresi, bölgenizdeki Azure portal için gelen bir güvenlik duvarı kuralı tanımlarken kullanılacak doğru adrestir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

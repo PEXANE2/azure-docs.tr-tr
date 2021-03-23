@@ -3,12 +3,12 @@ title: Kavramlar-depolama
 description: Azure VMware Çözüm özel bulutlarında anahtar depolama özellikleri hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 03/13/2021
-ms.openlocfilehash: 2551b11ada8b6118fb7524d9fe36f8b4b568aca1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 83a4a52f8414e656b5bc688796db6e93a53d4d76
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103462482"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801630"
 ---
 #  <a name="azure-vmware-solution-storage-concepts"></a>Azure VMware Çözüm depolama kavramları
 
@@ -44,7 +44,7 @@ Azure Storage hizmetlerini özel bulutunuzda çalışan iş yüklerinde kullanab
 Artık Azure VMware Çözüm depolama kavramlarını kapsadığınıza göre, şunları öğrenmek isteyebilirsiniz:
 
 - [Özel bulut kimliği kavramları](concepts-identity.md).
-- [Azure VMware çözümü Için vSphere rol tabanlı erişim denetimi](concepts-role-based-access-control.md).
+- [Azure VMware çözümü Için vSphere rol tabanlı erişim denetimi](concepts-identity.md).
 - [Azure VMware Çözüm kaynağını etkinleştirme](enable-azure-vmware-solution.md).
 - [Azure VMware çözümü ile Azure NetApp Files](netapp-files-with-azure-vmware-solution.md)
 

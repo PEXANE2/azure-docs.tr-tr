@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/16/2021
+ms.date: 03/01/2021
 ms.author: b-juche
-ms.openlocfilehash: 44959b2f60f9aafd7d9430c9c19baea72344293f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ccc88cabfa81e2d911546fae776f581885ed8fa6
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102183888"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801266"
 ---
 # <a name="create-and-manage-active-directory-connections-for-azure-netapp-files"></a>Azure NetApp Files için Active Directory bağlantıları oluşturma ve yönetme
 
@@ -206,6 +206,18 @@ Bu ayar, **NetApp hesabı** altındaki **Active Directory bağlantılarında** y
         ```
         
         Ayrıca, [Azure CLI komutlarını](/cli/azure/feature) kullanarak `az feature register` `az feature show` özelliği kaydedebilir ve kayıt durumunu görüntüleyebilirsiniz. 
+
+     * **Güvenlik ayrıcalığı kullanıcıları**   <!-- SMB CA share feature -->   
+        `SeSecurityPrivilege`Azure NetApp Files birimlerine erişmek için yükseltilmiş ayrıcalık gerektiren kullanıcılara güvenlik ayrıcalığı () verebilirsiniz. Belirtilen kullanıcı hesaplarının, varsayılan olarak etki alanı kullanıcılarına atanmamış güvenlik ayrıcalığı gerektiren Azure NetApp Files SMB paylaşımlarında belirli eylemler gerçekleştirmesine izin verilir.   
+
+        Örneğin, belirli senaryolarda SQL Server yüklemek için kullanılan kullanıcı hesaplarına yükseltilmiş güvenlik ayrıcalığı verilmelidir. SQL Server yüklemek için yönetici olmayan (etki alanı) hesabı kullanıyorsanız ve hesaba atanmış güvenlik ayrıcalığı yoksa, hesaba güvenlik ayrıcalığı eklemeniz gerekir.  
+
+        > [!IMPORTANT]
+        > SQL Server yüklemek için kullanılan etki alanı hesabının, **güvenlik ayrıcalıkları kullanıcıları** alanına eklemeden önce mevcut olması gerekir. SQL Server yükleyicinin hesabını **güvenlik ayrıcalıkları kullanıcılarına** eklediğinizde, Azure NetApp Files hizmeti etki alanı denetleyicisiyle iletişim kurarak hesabı doğrulayabilir. Etki alanı denetleyicisiyle iletişim kurabilmesi durumunda komut başarısız olabilir.  
+
+        Ve SQL Server hakkında daha fazla bilgi için `SeSecurityPrivilege` , [Kurulum hesabının belirli kullanıcı haklarına sahip olmaması durumunda SQL Server yükleme başarısız olur](/troubleshoot/sql/install/installation-fails-if-remove-user-right).
+
+        ![Active Directory bağlantıları penceresinin güvenlik ayrıcalığı kullanıcıları kutusunu gösteren ekran görüntüsü.](../media/azure-netapp-files/security-privilege-users.png) 
 
      * **Yedekleme ilkesi kullanıcıları**  
         Azure NetApp Files ile kullanım için oluşturulan bilgisayar hesabına yükseltilmiş ayrıcalıklar gerektiren ek hesaplar ekleyebilirsiniz. Belirtilen hesapların dosya veya klasör düzeyinde NTFS izinlerini değiştirmesine izin verilir. Örneğin, Azure NetApp Files bir SMB dosya paylaşımında veri geçirmek için kullanılan ayrıcalıklı olmayan bir hizmet hesabı belirtebilirsiniz.  

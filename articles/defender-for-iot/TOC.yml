@@ -93,7 +93,7 @@
               displayName: 'custom, setting, properties'
               href: concept-baseline.md
             - name: IoT için Azure Defender için Azure Güvenlik temeli
-              displayName: 'identity management, active directory, privileged access, data protection, asset management, incident response, posture, vulnerability, governance'
+              displayName: 'identity management, active directory, privileged access, data protection, incident response, posture, vulnerability, governance'
               href: security-baseline.md
             - name: Defender-IoT-Micro-Agent klasik olay toplama
               displayName: 'twin, default, configuration, alerts'
@@ -114,10 +114,10 @@
               href: how-to-identify-required-appliances.md
               displayName: 'virtual, Dell, HPE, SMB, certified, hardware, deployment, DL20, EL300, R340, enterprise, SMB, corporate'
             - name: Ağınızı kurma
-              displayName: 'passive, browsers, network access, TAP, switch, mirroring, firewall, SPAN, monitoring, tuning'
+              displayName: 'passive, browsers, setup, deployment, network access, TAP, switch, mirroring, firewall, SPAN, monitoring, tuning'
               href: how-to-set-up-your-network.md
             - name: Yazılımı yükleme
-              displayName: 'virtual, Dell, HPE, SMB, certified, hardware, port mirroring, ESXi, DL20, EL300, R340,enterprise, SMB, corporate'
+              displayName: 'setup, deployment, virtual, Dell, HPE, SMB, certified, hardware, port mirroring, ESXi, DL20, EL300, R340,enterprise, SMB, corporate'
               href: how-to-install-software.md
         - name: Algılayıcılarınızı hazırlama
           items:
@@ -125,12 +125,12 @@
               displayName: 'onboard, cloud, register, activate, offboard, subscription, subscriptions'
               href: how-to-manage-sensors-on-the-cloud.md
             - name: Algılayıcınızı etkinleştirme ve ayarlama
-              displayName: 'onboard, register, activation, SSL, TLS, certificate, cloud connected, sign in, login, setup, learning mode, initial'
+              displayName: 'deployment, onboard, register, activation, SSL, TLS, certificate, cloud connected, sign in, login, setup, learning mode, initial'
               href: how-to-activate-and-set-up-your-sensor.md
         - name: Şirket içi yönetim konsolunuzu hazırlama
           items:
             - name: Şirket içi yönetim konsolunuzu etkinleştirme ve ayarlama
-              displayName: 'activate, certificate, sign in, SSL, TLS, login, setup, initial, committed activation file'
+              displayName: 'deployment, activate, certificate, sign in, SSL, TLS, login, setup, initial, committed activation file'
               href: how-to-activate-and-set-up-your-on-premises-management-console.md
             - name: Yüksek kullanılabilirliği ayarlama
               displayName: 'primary, secondary, failover, failback fail, recovery'
@@ -166,19 +166,22 @@
               displayName: classification
             - name: Bir cihaz envanterinde algılayıcı algılamalarını araştırma
               href: how-to-investigate-sensor-detections-in-a-device-inventory.md
-              displayName: 'classification, Windows registry, asset, device, firmware, import'
+              displayName: 'classification, Windows registry, device, firmware, import'
         - name: Algılayıcı cihaz eşlemesiyle çalışma
           href: how-to-work-with-the-sensor-device-map.md
           displayName: 'connections, Purdue, zoom, delete device'
         - name: Bir algılayıcı tarafından algılanan uyarılarla çalışma
           items:
-            - name: Algılayıcınızda uyarıyla çalışma
+            - name: Algılayıcı uyarıları hakkında
               href: how-to-work-with-alerts-on-your-sensor.md
-            - name: Uyarıları görüntüleme
+            - name: Uyarılar sayfasından uyarıları filtreleme ve yönetme
               href: how-to-view-alerts.md
-            - name: Uyarlarda verilen bilgileri görüntüleme
+            - name: Uyarı iletileri hakkında
               href: how-to-view-information-provided-in-alerts.md
-              displayName: PCAP
+              displayName: 'PCAP, metadata, alerts, link, device map,'
+            - name: Uyarı türleri ve açıklamaları
+              href: alert-engine-messages.md
+              displayName: 'alert, alerts, description, engine, anomaly, protocol, policy, malware, violation, operational'
             - name: Uyarı olayını yönetme
               href: how-to-manage-the-alert-event.md
               displayName: 'PCAP, acknowledge, learn, mute, policy'
@@ -191,6 +194,9 @@
         - name: 'Küresel, bölgesel ve yerel tehditlere yönelik içgörü elde etme'
           href: how-to-gain-insight-into-global-regional-and-local-threats.md
           displayName: 'site, business unit, region, map'
+        - name: 'Bölge başına birkaç bilgi cihazı, uyarı ve algılayıcı'
+          href: how-to-view-information-per-zone.md
+          displayName: zones
         - name: Şirket içi yönetim konsolunda uyarılarla çalışma
           href: how-to-work-with-alerts-on-premises-management-console.md
         - name: Rapor oluşturma

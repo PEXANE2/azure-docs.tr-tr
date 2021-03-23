@@ -4,12 +4,12 @@ ms.service: key-vault
 ms.topic: include
 ms.date: 03/09/2021
 ms.author: ambapat
-ms.openlocfilehash: d934d40cad5f4eec929cfd273b6e30ea291e48d5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c2548b1669366564809ed2fde725cb3399922a29
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103010974"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104803325"
 ---
 Azure Key Vault hizmet iki kaynak türünü destekler: kasa ve yönetilen HSM 'ler. Aşağıdaki iki bölüm, her birinin hizmet sınırlarını sırasıyla anlatmaktadır.
 
@@ -50,6 +50,17 @@ Bu bölüm, kaynak türü için hizmet sınırlarını açıklar `vaults` .
 Bu sınırlar aşıldığında azaltmayı işleme hakkında daha fazla bilgi için bkz. [Azure Key Vault azaltma Kılavuzu](../articles/key-vault/general/overview-throttling.md).
 
 <sup>1</sup> tüm işlem türleri için abonelik genelinde sınır, Anahtar Kasası sınırı başına beş kat olur. Örneğin, HSM-abonelik başına diğer işlemler, abonelik başına 10 saniye içinde 5.000 işlem ile sınırlıdır.
+
+#### <a name="backup-keys-secrets-certificates"></a>Yedekleme anahtarları, gizlilikler, sertifikalar
+
+Gizli dizi, anahtar veya sertifika gibi bir Anahtar Kasası nesnesini yedeklerken, yedekleme işlemi nesneyi şifreli bir blob olarak indirir. Bu Blobun Azure dışından şifresi çözülemiyor. Bu bloba kullanılabilir verileri almak için, blobu aynı Azure aboneliği ve Azure coğrafya içindeki bir anahtar kasasında geri yüklemeniz gerekir
+
+| İşlem türü | İzin verilen maksimum Anahtar Kasası nesne sürümleri |
+| --- | --- |
+| Tek tek anahtar, gizli dizi, certfiicate |500 |
+
+> [!NOTE]
+> Yukarıdaki sınırdan daha fazla sürümü olan bir anahtar, gizli dizi ya da sertifika nesnesi yedeklemeye çalışılması bir hataya neden olur. Bir anahtar, gizli dizi ya da sertifikanın önceki sürümlerini silmek mümkün değildir. 
 
 #### <a name="azure-private-link-integration"></a>Azure özel bağlantı tümleştirmesi
 

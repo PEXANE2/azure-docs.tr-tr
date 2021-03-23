@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/19/2020
+ms.date: 03/22/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3395afbe95b2a7f35893a0ce7f60c3871597acd0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 50eac71203a94ffb5c7dddc8995b56980c3f8815
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98614709"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798723"
 ---
 # <a name="pilot-cloud-sync-for-an-existing-synced-ad-forest"></a>Mevcut eşitlenmiş bir AD Ormanı için pilot bulut eşitlemesi 
 
@@ -208,20 +208,7 @@ Pilot 'ın beklendiği gibi çalışmayolmaması durumunda aşağıdaki adımlar
 1.  Azure portal sağlama yapılandırmasını devre dışı bırakın. 
 2.  Eşitleme kuralı Düzenleyicisi aracını kullanarak bulut sağlaması için oluşturulan tüm özel eşitleme kurallarını devre dışı bırakın. Devre dışı bırakma, tüm bağlayıcılarda tam eşitlemeye neden olmalıdır.
 
-## <a name="configure-azure-ad-connect-sync-to-exclude-the-pilot-ou"></a>Pilot OU 'yu dışlamak için Azure AD Connect eşitlemesini yapılandırın
-Pilot OU 'dan gelen kullanıcıların bulut eşitlemesi tarafından başarıyla yönetildiğini doğruladıktan sonra, yukarıda oluşturulan pilot OU 'yu dışlamak için Azure AD Connect yeniden yapılandırabilirsiniz.  Bulut sağlama Aracısı, ileri giderek bu kullanıcıların eşitlemesini işleyecek.  Azure AD Connect kapsam için aşağıdaki adımları kullanın.
 
- 1. Azure AD Connect çalıştıran sunucuda Azure AD Connect simgesine çift tıklayın.
- 2. **Yapılandır** ' a tıklayın
- 3. **Eşitleme seçeneklerini Özelleştir** ' i seçin ve ileri ' ye tıklayın.
- 4. Azure AD 'de oturum açın ve **İleri**' ye tıklayın.
- 5. **Dizinlerinizi bağlama** ekranında **İleri**' ye tıklayın.
- 6. **Etki alanı ve OU filtreleme** ekranında **Seçili etki alanlarını ve OU 'ları Eşitle**' yi seçin.
- 7. Etki alanınızı genişletin ve **Cpusers** OU 'sunu devre dışı olarak **seçin** .  **İleri**’ye tıklayın.
-![kapsam](media/tutorial-existing-forest/scope-1.png)</br>
- 9. **Isteğe bağlı özellikler** ekranında **İleri**' ye tıklayın.
- 10. **Yapılandırmaya hazırlanma** ekranında **Yapılandır**' a tıklayın.
- 11. Tamamlandıktan sonra **Çıkış**' a tıklayın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 
