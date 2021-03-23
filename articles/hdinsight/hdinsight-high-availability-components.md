@@ -4,12 +4,12 @@ description: HDInsight kümeleri tarafından kullanılan çeşitli yüksek kulla
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 336fe91174a8fc6d73d6e45c5fd1e2bf244eda52
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 93d2317c85f93ce8a22f2d434fbc081a88265a74
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945315"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863726"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Azure HDInsight tarafından desteklenen yüksek kullanılabilirlik Hizmetleri
 
@@ -34,7 +34,7 @@ Bu altyapı, bazıları Microsoft tarafından tasarlanan bir dizi hizmet ve yaz�
 - Bağımlı yüksek kullanılabilirlik hizmeti
 - Ana yüksek kullanılabilirlik hizmeti
 
-![yüksek kullanılabilirlik altyapısı](./media/hdinsight-high-availability-components/high-availability-architecture.png)
+:::image type="content" source="./media/hdinsight-high-availability-components/high-availability-architecture.png" alt-text="yüksek kullanılabilirlik altyapısı" border="false":::
 
 Ayrıca, açık kaynaklı Apache güvenilirlik bileşenleri tarafından desteklenen diğer yüksek kullanılabilirlik hizmetleri de vardır. Bu bileşenler HDInsight kümelerinde da mevcuttur:
 
@@ -91,7 +91,7 @@ Master-ha-Service yalnızca etkin baş düğümüne üzerinde çalışır, bekle
 
 ### <a name="the-failover-process"></a>Yük devretme işlemi
 
-![Yük devretme işlemi](./media/hdinsight-high-availability-components/failover-steps.png)
+:::image type="content" source="./media/hdinsight-high-availability-components/failover-steps.png" alt-text="Yük devretme işlemi" border="false":::
 
 Bir sistem durumu İzleyicisi, Zookeeper çekirdeğe sinyal bildirimleri göndermek için ana yük devretme denetleyicisiyle birlikte her bir yayın düğümünde çalışır. Bu senaryoda, baş düğümüne bir ha hizmeti olarak kabul edilir. Sistem durumu İzleyicisi, her bir yüksek kullanılabilirlik hizmetinin sağlıklı olup olmadığını ve liderlik seçimi 'ne katılmayı hazır olup olmadığını denetler. Yanıt Evet ise, bu baş düğümüne seçim içinde rekabet eder. Aksi takdirde, tekrar hazır olana kadar seçimi çıkar.
 

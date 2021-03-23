@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2021
 ms.author: Zhchia
-ms.openlocfilehash: acfe74577f58cbdc0b1fe235e7fc1f661543fd90
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ca01289ce66afe642081e5be17373e640dd1e46d
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104609982"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864831"
 ---
 # <a name="tutorial-configure-grammarly-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için Grammarly yapılandırma
 
@@ -85,7 +85,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı veya grup a
 
     ![Sağlama modunun otomatik olarak ayarlandığını gösteren ekran görüntüsü.](common/provisioning-automatic.png)
 
-1. **Yönetici kimlik bilgileri** bölümünde, Grammarly **kiracı URL 'sini** ve **gizli belirteç** bilgilerini girin. Azure AD 'nin Grammarly 'e bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' yı seçin. Bağlantı başarısız olursa, Grammarly hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+1. **Yönetici kimlik bilgileri** bölümünde, **kiracı URL 'si** girin alanına girin `https://sso.grammarly.com/scim/v2` ve **gizli belirteç** alanına, dilbilgisi tarafından sunulan belirteci girin (yukarıdaki 2. adıma bakın). Azure AD 'nin Grammarly 'e bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Grammarly hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
     ![Kiracı URL 'SI ve gizli belirteç kutularını gösteren ekran görüntüsü.](common/provisioning-testconnection-tenanturltoken.png)
 

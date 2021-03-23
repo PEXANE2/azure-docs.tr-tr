@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: a9394a5e117a577c903eccdf91cf22d0c359df2b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d1c2fd2ac7f809b4a70a0edffbddfb6e733fed57
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104581125"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871410"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 hakkında sık sorulan sorular
 
@@ -47,12 +47,6 @@ Videonuz daha önce Media Services v3 API kullanılarak Media Services hesabına
 ### <a name="how-do-i-stream-to-apple-ios-devices"></a>Apple iOS cihazlarına akış Nasıl yaparım? mı?
 
 Akış kaynak sunucusuna Apple iOS Native cihazlarda tüketim için HTTP Canlı Akışı (HLS) içeriği döndürmesini bildirmek üzere yolun sonunda (  **Biçim = M3U8-AAPL)** bulunduğundan emin olun. Ayrıntılar için bkz. [Içerik sunma](dynamic-packaging-overview.md).
-
-### <a name="how-do-i-configure-media-reserved-units"></a>Medya ayrılmış birimleri Nasıl yaparım? yapılandırmak mi?
-
-Media Services v3 veya Video Indexer tarafından tetiklenen ses analizi ve video analizi işleri için, hesabınızı 10 S3 medya ayrılmış birimi (MRUs) ile sağlamanızı öneririz. 10 ' dan fazla S3 MRU 'a ihtiyacınız varsa [Azure Portal](https://portal.azure.com/)kullanarak bir destek bileti açın.
-
-Ayrıntılar için bkz. [medya Işlemeyi ölçeklendirme](media-reserved-units-cli-how-to.md).
 
 ### <a name="what-is-the-recommended-method-to-process-videos"></a>Videoları işlemek için önerilen yöntem nedir?
 

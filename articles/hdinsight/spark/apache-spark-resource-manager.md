@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/12/2021
-ms.openlocfilehash: ff7cfe8ad09201df20db89e14f8c175e678e5107
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7027e4af9c11db628990d42430c6877340de3534
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98929800"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868452"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Azure HDInsight 'ta Apache Spark kümesi için kaynakları yönetme
 
@@ -28,7 +28,7 @@ Spark geçmiş sunucusu, tamamlanan ve Spark uygulamalarının çalıştırıld�
 
 2. **Küme panolarından** **Yarn**' yi seçin. İstendiğinde Spark kümesi için yönetici kimlik bilgilerini girin.
 
-    ![YARN Kullanıcı arabirimini Başlat](./media/apache-spark-resource-manager/azure-portal-dashboard-yarn.png)
+    :::image type="content" source="./media/apache-spark-resource-manager/azure-portal-dashboard-yarn.png" alt-text="YARN Kullanıcı arabirimini Başlat" border="true":::
 
    > [!TIP]  
    > Alternatif olarak, Ayrıca, ambarı kullanıcı arabiriminden YARN Kullanıcı arabirimini de başlatabilirsiniz. Ambarı kullanıcı arabiriminden, **Yarn**  >  **hızlı bağlantılar**  >  **etkin**  >  **Kaynak Yöneticisi Kullanıcı arabirimine** gidin.
@@ -43,15 +43,15 @@ Uygulama gereksinimlerine bağlı olarak Spark yapılandırması için kullanıl
 
 1. Ambarı kullanıcı arabiriminden **Spark2**  >  **configs**  >  **Custom Spark2-Defaults** adresine gidin.
 
-    ![Ambarı özel kullanarak parametreleri ayarlama](./media/apache-spark-resource-manager/ambari-ui-spark2-configs.png "Ambarı özel kullanarak parametreleri ayarlama")
+    :::image type="content" source="./media/apache-spark-resource-manager/ambari-ui-spark2-configs.png " alt-text="Ambarı özel kullanarak parametreleri ayarlama" border="true":::
 
 1. Varsayılan değerler, küme üzerinde aynı anda dört Spark uygulamasının çalışması için uygundur. Aşağıdaki ekran görüntüsünde gösterildiği gibi kullanıcı arabiriminden bu değerleri değiştirebilirsiniz:
 
-    ![Ambarı kullanarak parametreleri ayarlama](./media/apache-spark-resource-manager/ambari-ui-spark2-defaults.png "Ambarı kullanarak parametreleri ayarlama")
+    :::image type="content" source="./media/apache-spark-resource-manager/ambari-ui-spark2-defaults.png " alt-text="Ambarı kullanarak parametreleri ayarlama" border="true":::
 
 1. Yapılandırma değişikliklerini kaydetmek için **Kaydet** ' i seçin. Sayfanın üst kısmında, etkilenen tüm hizmetleri yeniden başlatmanız istenir. **Yeniden Başlat**' ı seçin.
 
-    ![Hizmetleri yeniden Başlat](./media/apache-spark-resource-manager/apache-ambari-restart-services.png)
+    :::image type="content" source="./media/apache-spark-resource-manager/apache-ambari-restart-services.png" alt-text="Hizmetleri yeniden Başlat" border="true":::
 
 ### <a name="change-the-parameters-for-an-application-running-in-jupyter-notebook"></a>Jupyter Notebook çalıştıran bir uygulamanın parametrelerini değiştirme
 
@@ -93,11 +93,11 @@ Spark Thrift sunucusu Spark dinamik yürütücü ayırmayı kullanır ve bu nede
 
 * Parametreleri güncelleştirmek için **Advanced spark2-Thrift-parlak conf** kategorisini genişletin `spark.dynamicAllocation.maxExecutors` `spark.dynamicAllocation.minExecutors` .
 
-    ![Spark Thrift sunucusunu yapılandırma](./media/apache-spark-resource-manager/ambari-ui-advanced-thrift-sparkconf.png "Spark Thrift sunucusunu yapılandırma")
+    :::image type="content" source="./media/apache-spark-resource-manager/ambari-ui-advanced-thrift-sparkconf.png " alt-text="Spark Thrift sunucusunu yapılandırma" border="true":::
 
 * Parametreleri güncelleştirmek için **Custom spark2-Thrift-parlak conf** kategorisini genişletin `spark.executor.cores` `spark.executor.memory` .
 
-    ![Spark Thrift sunucu parametresini yapılandırma](./media/apache-spark-resource-manager/ambari-ui-custom-thrift-sparkconf.png "Spark Thrift sunucu parametresini yapılandırma")
+    :::image type="content" source="./media/apache-spark-resource-manager/ambari-ui-custom-thrift-sparkconf.png " alt-text="Spark Thrift sunucu parametresini yapılandırma" border="true":::
 
 ### <a name="change-the-driver-memory-of-the-spark-thrift-server"></a>Spark Thrift sunucusunun sürücü belleğini değiştirme
 
@@ -113,38 +113,38 @@ Spark dinamik ayırma nedeniyle, yalnızca Thrift sunucusu tarafından tüketile
 
 2. Sonraki sayfada **Spark2 Thrift sunucuları**' nı seçin.
 
-    ![Yeniden başlatma Sunucu1](./media/apache-spark-resource-manager/ambari-ui-spark2-thrift-servers.png "Yeniden başlatma Sunucu1")
+    :::image type="content" source="./media/apache-spark-resource-manager/ambari-ui-spark2-thrift-servers.png " alt-text="Yeniden başlatma Sunucu1" border="true":::
 
 3. Spark2 Thrift sunucusunun çalıştığı iki headnode görmeniz gerekir. Yayın düğümlerinden birini seçin.
 
-    ![Yeniden başlatma, Sunucu2](./media/apache-spark-resource-manager/restart-thrift-server-2.png "Yeniden başlatma, Sunucu2")
+    :::image type="content" source="./media/apache-spark-resource-manager/restart-thrift-server-2.png " alt-text="Yeniden başlatma, Sunucu2" border="true":::
 
 4. Sonraki sayfada, o headnode üzerinde çalışan tüm hizmetler listelenir. Listeden Spark2 Thrift Server ' ın yanındaki açılan düğmeyi seçin ve ardından **Durdur**' u seçin.
 
-    ![Yeniden başlatma Thrift Server3](./media/apache-spark-resource-manager/ambari-ui-spark2-thriftserver-restart.png "Yeniden başlatma Thrift Server3")
+    :::image type="content" source="./media/apache-spark-resource-manager/ambari-ui-spark2-thriftserver-restart.png " alt-text="Yeniden başlatma Thrift Server3" border="true":::
 5. Bu adımları diğer baş düğümüne üzerinde de yineleyin.
 
 ## <a name="restart-the-jupyter-service"></a>Jupyıter hizmetini yeniden başlatma
 
 Makalenin başlangıcında gösterildiği gibi, ambarı Web Kullanıcı arabirimini başlatın. Sol gezinti bölmesinden **Jupo**' ı seçin, **hizmet eylemleri**' ni seçin ve ardından **Tümünü Yeniden Başlat**' ı seçin. Bu, Jupyıter hizmetini tüm yayın düğümlerinde başlatır.
 
-![Jupyter’i yeniden başlatın](./media/apache-spark-resource-manager/apache-ambari-restart-jupyter.png "Jupyter’i yeniden başlatın")
+:::image type="content" source="./media/apache-spark-resource-manager/apache-ambari-restart-jupyter.png " alt-text="Jupyter’i yeniden başlatın" border="true":::
 
 ## <a name="monitor-resources"></a>Kaynakları izleme
 
 Makalenin başlangıcında gösterildiği gibi Yarn Kullanıcı arabirimini başlatın. Ekranın üstündeki küme ölçümleri tablosunda, **kullanılan bellek** ve **bellek toplam** sütunları değerlerini denetleyin. İki değer yakınsa, bir sonraki uygulamayı başlatmak için yeterli kaynak bulunmayabilir. Aynı, **kullanılan sanal çekirdekler** ve **sanal çekirdekler** için de geçerlidir. Ayrıca, ana görünümde, **kabul edilmiş** durumda olan ve **çalışan** ya da **başarısız** durumuna geçmemiş bir uygulama varsa, bu, başlamak için yeterli kaynak bulunmadığını de ifade eder.
 
-![Kaynak sınırı](./media/apache-spark-resource-manager/apache-ambari-resource-limit.png "Kaynak sınırı")
+:::image type="content" source="./media/apache-spark-resource-manager/apache-ambari-resource-limit.png " alt-text="Kaynak sınırı" border="true":::
 
 ## <a name="kill-running-applications"></a>Çalışan uygulamaları Sonlandır
 
 1. Yarn Kullanıcı arabiriminde sol panelinden **çalışıyor**' u seçin. Çalışan uygulamalar listesinden, sonlandırılacak uygulamayı belirleyin ve **kimliği** seçin.
 
-    ![KILL APP1](./media/apache-spark-resource-manager/apache-ambari-kill-app1.png "KILL APP1")
+    :::image type="content" source="./media/apache-spark-resource-manager/apache-ambari-kill-app1.png " alt-text="KILL APP1" border="true":::
 
 2. Sağ üst köşedeki **Uygulamayı Sonlandır** ' ı seçin ve ardından **Tamam**' ı seçin.
 
-    ![KILL app2](./media/apache-spark-resource-manager/apache-ambari-kill-app2.png "KILL app2")
+    :::image type="content" source="./media/apache-spark-resource-manager/apache-ambari-kill-app2.png " alt-text="KILL app2" border="true":::
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

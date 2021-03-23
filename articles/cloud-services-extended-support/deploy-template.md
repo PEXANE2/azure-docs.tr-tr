@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 1e2a0859227ad790763dc9ae07cb408a72538f90
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 6d54216d8992b5bb233c79919284f96b24385651
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104773377"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865596"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>ARM şablonları kullanarak bir bulut hizmeti (genişletilmiş destek) dağıtma
 
@@ -141,7 +141,7 @@ Bu öğreticide, [ARM şablonları](../azure-resource-manager/templates/overview
     ```
  
 
-4.  `OsProfile`   ARM şablonunun bölümüne Anahtar Kasası başvurunuz ekleyin. Key Vault, Cloud Services ilişkili sertifikaları (genişletilmiş destek) depolamak için kullanılır. Sertifikaları Key Vault ekleyin ve ardından hizmet yapılandırma (. cscfg) dosyasındaki sertifika parmak izleriyle referans yapın. Ayrıca, Cloud Services (genişletilmiş destek) kaynağının Key Vault gizli dizi olarak depolanan sertifikayı alabilmesi için uygun izinler için Key Vault etkinleştirmeniz gerekir. Anahtar Kasası, bulut hizmeti ile aynı bölgede ve abonelikte yer almalıdır ve benzersiz bir ada sahip olmalıdır. Daha fazla bilgi için bkz. [Cloud Services sertifikaları kullanma (genişletilmiş destek)](certificates-and-key-vault.md).
+4.  `OsProfile`   ARM şablonunun bölümüne Anahtar Kasası başvurunuz ekleyin. Key Vault, Cloud Services ilişkili sertifikaları (genişletilmiş destek) depolamak için kullanılır. Sertifikaları Key Vault ekleyin ve ardından hizmet yapılandırma (. cscfg) dosyasındaki sertifika parmak izleriyle referans yapın. Ayrıca, Cloud Services (genişletilmiş destek) kaynağı Key Vault gizli dizi olarak depolanan sertifikayı alabilmesi için, ' erişim için Azure sanal makineler ' için Key Vault ' erişim ilkeleri ' ' ni etkinleştirmeniz gerekir. Anahtar Kasası, bulut hizmeti ile aynı bölgede ve abonelikte yer almalıdır ve benzersiz bir ada sahip olmalıdır. Daha fazla bilgi için bkz. [Cloud Services sertifikaları kullanma (genişletilmiş destek)](certificates-and-key-vault.md).
      
     ```json
     "osProfile": { 

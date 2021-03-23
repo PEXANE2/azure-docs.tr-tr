@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: ba58c007dc0bc3776f429366651cb79404b137b3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 969dda4b57deb35d745cf7c7d263b78e6fe577d2
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98928479"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867551"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Azure HDInsight'ta Apache Spark kümesiyle Apache Zeppelin not defterlerini kullanma
 
@@ -32,13 +32,13 @@ HDInsight Spark kümeleri [Apache Zeppelin](https://zeppelin.apache.org/) not de
 
 2. Yeni bir not defteri oluşturun. Üstbilgi bölmesinden **Not defteri**  >  **Yeni Not oluştur**' a gidin.
 
-    ![Yeni bir Zeppelin Not defteri oluşturun](./media/apache-spark-zeppelin-notebook/hdinsight-create-zeppelin-notebook.png "Yeni bir Zeppelin Not defteri oluşturun")
+    :::image type="content" source="./media/apache-spark-zeppelin-notebook/hdinsight-create-zeppelin-notebook.png " alt-text="Yeni bir Zeppelin Not defteri oluşturun" border="true":::
 
     Not defteri için bir ad girin ve **Not oluştur**' u seçin.
 
 3. Not defteri üstbilgisinin bağlı bir durum belirttiğinden emin olun. Sağ üst köşedeki yeşil noktayla gösterilir.
 
-    ![Zeppelin Not defteri durumu](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-connected.png "Zeppelin Not defteri durumu")
+    :::image type="content" source="./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-connected.png " alt-text="Zeppelin Not defteri durumu" border="true":::
 
 4. Örnek verilerini geçici bir tabloya yükleyin. HDInsight 'ta bir Spark kümesi oluşturduğunuzda, örnek veri dosyası `hvac.csv` altındaki ilişkili depolama hesabına kopyalanır `\HdiSamples\SensorSampleData\hvac` .
 
@@ -70,7 +70,7 @@ HDInsight Spark kümeleri [Apache Zeppelin](https://zeppelin.apache.org/) not de
 
     Kod parçacığını çalıştırmak için **SHIFT + enter** tuşlarına basın veya paragrafın **oynat** düğmesini seçin. Paragrafın sağ köşesindeki durum, TAMAMLANDı, beklıyor, çalışıyor olarak çalışır hale gelmelidir. Çıktı, aynı paragrafın en altında görüntülenir. Ekran görüntüsü aşağıdaki görüntüye benzer şekilde görünür:
 
-    ![Ham verilerden geçici bir tablo oluşturma](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-load-data.png "Ham verilerden geçici bir tablo oluşturma")
+    :::image type="content" source="./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-load-data.png " alt-text="Ham verilerden geçici bir tablo oluşturma" border="true":::
 
     Ayrıca her paragrafa bir başlık sağlayabilirsiniz. Paragrafın sağ köşesinden, **Ayarlar** simgesini (Sprocket) seçin ve ardından **Başlığı göster**' i seçin.  
 
@@ -88,7 +88,7 @@ HDInsight Spark kümeleri [Apache Zeppelin](https://zeppelin.apache.org/) not de
 
 6. Ekranı değiştirmek için **çubuk grafik** simgesini seçin.  **Ayarlar**, **çubuk grafik** seçildikten sonra görünür, **anahtarlar** ve **değerler** seçmenize olanak sağlar.  Aşağıdaki ekran görüntüsünde çıkış gösterilmektedir.
 
-    ![Notebook1 kullanarak Spark SQL ifadesini çalıştırma](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-1.png "Notebook1 kullanarak Spark SQL ifadesini çalıştırma")
+    :::image type="content" source="./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-1.png " alt-text="Notebook1 kullanarak Spark SQL ifadesini çalıştırma" border="true":::
 
 7. Spark SQL deyimlerini, sorgudaki değişkenleri kullanarak da çalıştırabilirsiniz. Sonraki kod parçacığında, sorgu `Temp` içinde, sorgulamak istediğiniz olası değerleri içeren bir değişkenin nasıl tanımlanacağı gösterilmektedir. Sorguyu ilk kez çalıştırdığınızda, bir açılan liste, değişken için belirttiğiniz değerlerle otomatik olarak doldurulur.
 
@@ -106,7 +106,7 @@ HDInsight Spark kümeleri [Apache Zeppelin](https://zeppelin.apache.org/) not de
 
      Aşağıdaki ekran görüntüsünde çıkış gösterilmektedir.
 
-     ![Notebook2 kullanarak Spark SQL ifadesini çalıştırma](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-2.png "Notebook2 kullanarak Spark SQL ifadesini çalıştırma")
+     :::image type="content" source="./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-2.png " alt-text="Notebook2 kullanarak Spark SQL ifadesini çalıştırma" border="true":::
 
 ## <a name="how-do-i-use-external-packages-with-the-notebook"></a>Nasıl yaparım? Not defteri ile harici paketler mi kullanıyorsunuz?
 
@@ -116,15 +116,15 @@ Bu makalede, [Spark-CSV](https://search.maven.org/#artifactdetails%7Ccom.databri
 
 1. Yorumlayıcı ayarlarını açın. Sağ üst köşeden oturum açmış kullanıcı adını seçip **yorumlayıcı**' yı seçin.
 
-    ![Yorumlayıcı 'yı Başlat](./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png "Hive çıkışı")
+    :::image type="content" source="./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png " alt-text="Yorumlayıcı 'yı Başlat" border="true":::
 
 2. **Livy2**' ye kaydırın ve **Düzenle**' yi seçin.
 
-    ![Yorumlayıcı Ayarları1 değiştirme](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-1.png "Yorumlayıcı Ayarları1 değiştirme")
+    :::image type="content" source="./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-1.png " alt-text="Yorumlayıcı Ayarları1 değiştirme" border="true":::
 
 3. Anahtar ' a gidin `livy.spark.jars.packages` ve değerini biçimde ayarlayın `group:id:version` . Bu nedenle, [Spark-CSV](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) paketini kullanmak istiyorsanız, anahtarın değerini olarak ayarlamanız gerekir `com.databricks:spark-csv_2.10:1.4.0` .
 
-    ![Yorumlayıcı settings2 değiştirme](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-2.png "Yorumlayıcı settings2 değiştirme")
+    :::image type="content" source="./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-2.png " alt-text="Yorumlayıcı settings2 değiştirme" border="true":::
 
     **Kaydet** ' i ve ardından **Tamam** ' ı seçerek Livy yorumlayıcısını yeniden başlatın.
 
@@ -134,7 +134,7 @@ Bu makalede, [Spark-CSV](https://search.maven.org/#artifactdetails%7Ccom.databri
 
     b. Deposundan **GroupID**, **ArtifactId** ve **Version** değerlerini toplayın.
 
-    ![Jupyter Notebook ile dış paketleri kullanma](./media/apache-spark-zeppelin-notebook/use-external-packages-with-jupyter.png "Jupyter Notebook ile dış paketleri kullanma")
+    :::image type="content" source="./media/apache-spark-zeppelin-notebook/use-external-packages-with-jupyter.png " alt-text="Jupyter Notebook ile dış paketleri kullanma" border="true":::
 
     c. İki nokta üst üste (**:**) ayırarak üç değeri birleştirir.
 
@@ -146,7 +146,7 @@ Bu makalede, [Spark-CSV](https://search.maven.org/#artifactdetails%7Ccom.databri
 
 Zeppelin Not defterleri küme yayın düğümlerine kaydedilir. Bu nedenle, kümeyi silerseniz Not defterleri de silinir. Not defterlerinizi daha sonra diğer kümeler üzerinde kullanılmak üzere korumak istiyorsanız, işleri çalıştırmayı bitirdikten sonra bunları dışarı aktarmanız gerekir. Bir not defterini dışarı aktarmak için, aşağıdaki görüntüde gösterildiği gibi **dışa aktarma** simgesini seçin.
 
-![Not defteri indir](./media/apache-spark-zeppelin-notebook/zeppelin-download-notebook.png "Not defterini indir")
+:::image type="content" source="./media/apache-spark-zeppelin-notebook/zeppelin-download-notebook.png " alt-text="Not defteri indir" border="true":::
 
 Bu eylem, Not defterini indirme konumunuza bir JSON dosyası olarak kaydeder.
 
@@ -178,11 +178,11 @@ Böyle bir durumda, bir Zeppelin Not defterinden iş çalıştırmaya başlayabi
 
 1. Zeppelin Not defterinden Livy yorumlayıcısını yeniden başlatın. Bunu yapmak için sağ üst köşedeki oturum açmış kullanıcı adını **seçip yorumlayıcı ' yı seçin.**
 
-    ![Yorumlayıcı 'yı Başlat](./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png "Hive çıkışı")
+    :::image type="content" source="./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png " alt-text="Yorumlayıcı 'yı Başlat" border="true":::
 
 2. **Livy2**' e gidin ve **Yeniden Başlat**' ı seçin.
 
-    ![Livy yorumlayıcısını yeniden başlatın](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "Zeppelin yorumlayıcı 'yı yeniden başlatma")
+    :::image type="content" source="./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png " alt-text="Livy yorumlayıcısını yeniden başlatın" border="true":::
 
 3. Mevcut bir Zeppelin Not defterinden kod hücresi çalıştırın. Bu kod, HDInsight kümesinde yeni bir Livy oturumu oluşturur.
 

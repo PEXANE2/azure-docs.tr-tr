@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/28/2017
-ms.openlocfilehash: 1daf59c47bf71ad019011036bf42bf6727754345
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e6ed52f89c38a9c4c5476bd1db0f5a67326954e4
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98940351"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866276"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>VPN aracılığıyla HDInsight 'ta Apache Spark uygulamalarında uzaktan hata ayıklamak için Azure Toolkit for IntelliJ kullanma
 
@@ -50,19 +50,19 @@ Azure HDInsight 'ta oluşturduğunuz Azure sanal ağının bir parçası olan bi
 
 1. Baş düğümün IP adresini alın. Küme için ambarı Kullanıcı arabirimini açın. Küme dikey penceresinde **Pano**' yı seçin.
 
-    ![Apache ambarı 'nda Pano seçme](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/launch-apache-ambari.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/launch-apache-ambari.png" alt-text="Apache ambarı 'nda Pano seçme" border="true":::
 
 1. Ambarı kullanıcı arabiriminden, **konaklar**' ı seçin.
 
-    ![Apache ambarı 'nda Konakları seçin](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/apache-ambari-hosts1.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/apache-ambari-hosts1.png" alt-text="Apache ambarı 'nda Konakları seçin" border="true":::
 
 1. Baş düğümlerin, çalışan düğümlerinin ve Zookeeper düğümlerin bir listesini görürsünüz. Baş düğümlerin bir **hn*** öneki vardır. İlk baş düğümü seçin.
 
-    ![Apache ambarı 'nda baş düğümü bulma](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/ambari-cluster-headnodes.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/ambari-cluster-headnodes.png" alt-text="Apache ambarı 'nda baş düğümü bulma" border="true":::
 
 1. Açılan sayfanın alt kısmındaki **Özet** bölmesinden baş düğümün **IP adresini** ve **ana bilgisayar** adını kopyalayın.
 
-    ![Apache ambarı 'nda IP adresini bulma](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/headnode-ip-address1.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/headnode-ip-address1.png" alt-text="Apache ambarı 'nda IP adresini bulma" border="true":::
 
 1. Ana düğümün IP adresini ve ana bilgisayar adını, çalıştırmak istediğiniz bilgisayardaki **konaklar** dosyasına ekleyin ve Spark işinde uzaktan hata ayıklayın. Bu, ana bilgisayar adının yanı sıra IP adresini kullanarak baş düğümle iletişim kurmanızı sağlar.
 
@@ -93,7 +93,7 @@ Azure HDInsight 'ta oluşturduğunuz Azure sanal ağının bir parçası olan bi
 
 1. IntelliJ FIKRINI açın ve yeni bir proje oluşturun. **Yeni Proje** iletişim kutusunda aşağıdakileri yapın:
 
-    ![IntelliJ FIKRNDE yeni proje şablonunu seçin](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-hdi-scala-app.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-hdi-scala-app.png" alt-text="IntelliJ FIKRNDE yeni proje şablonunu seçin" border="true":::
 
     a.   >  **HDInsight 'ta HDInsight Spark (Scala)** seçeneğini belirleyin.
 
@@ -106,7 +106,7 @@ Azure HDInsight 'ta oluşturduğunuz Azure sanal ağının bir parçası olan bi
 
     - **Spark sürümü** açılan listesinde, Scala proje oluşturma SIHIRBAZı Spark SDK ve Scala SDK için uygun sürümü tümleştirir. Spark kümesi sürümü 2.0’dan eskiyse **Spark 1.x** seçeneğini belirleyin. Aksi takdirde, **Spark2.x** seçeneğini belirleyin. Bu örnek, **Spark 2.0.2 (Scala 2.11.8)** kullanır.
   
-   ![Proje SDK 'sını ve Spark sürümünü seçin](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-scala-project-details.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-scala-project-details.png" alt-text="Proje SDK 'sını ve Spark sürümünü seçin" border="true":::
   
 1. Spark projesi sizin için otomatik olarak bir yapı oluşturur. Yapıtı görüntülemek için aşağıdakileri yapın:
 
@@ -114,7 +114,7 @@ Azure HDInsight 'ta oluşturduğunuz Azure sanal ağının bir parçası olan bi
 
     b. **Proje yapısı** iletişim kutusunda, oluşturulan varsayılan yapıtı görüntülemek Için **yapıtlar** ' ı seçin. Ayrıca, artı işaretini () seçerek kendi yapıtlarınızı oluşturabilirsiniz **+** .
 
-   ![IntelliJ fıkır yapıları jar oluştur](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-default-artifact.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-default-artifact.png" alt-text="IntelliJ fıkır yapıları jar oluştur" border="true":::
 
 1. Projenize kitaplık ekleyin. Bir kitaplık eklemek için aşağıdakileri yapın:
 
@@ -122,7 +122,7 @@ Azure HDInsight 'ta oluşturduğunuz Azure sanal ağının bir parçası olan bi
 
     b. **Proje yapısı** Iletişim kutusunda **Kitaplıklar**' ı seçin, ( **+** ) sembolünü seçin ve **Maven**' ı seçin.
 
-    ![IntelliJ fıkır yükleme kitaplığı](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-add-library.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-add-library.png" alt-text="IntelliJ fıkır yükleme kitaplığı" border="true":::
 
     c. **Maven deposundan kitaplığı indir** iletişim kutusunda aşağıdaki kitaplıkları arayın ve ekleyin:
 
@@ -178,11 +178,11 @@ Azure HDInsight 'ta oluşturduğunuz Azure sanal ağının bir parçası olan bi
 
 1. Uygulamanız için ana sınıf ekleyin. **Proje Gezgini**'nde **src** öğesine sağ tıklayın, **Yeni**' nin üzerine gelin ve ardından **Scala sınıfı**' nı seçin.
 
-    ![IntelliJ fıkır ana sınıfı seçin](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code.png" alt-text="IntelliJ fıkır ana sınıfı seçin" border="true":::
 
 1. **Yeni Scala sınıfı oluştur** iletişim kutusunda bir ad belirtin, **tür** kutusundan **nesne** ' yi seçin ve ardından **Tamam**' ı seçin.
 
-    ![IntelliJ fıkır yeni Scala sınıfı oluştur](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code-object.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code-object.png" alt-text="IntelliJ fıkır yeni Scala sınıfı oluştur" border="true":::
 
 1. `MyClusterAppMain.scala`Dosyasında aşağıdaki kodu yapıştırın. Bu kod Spark bağlamını oluşturur ve `executeJob` nesnesinden bir yöntem açar `SparkSample` .
 
@@ -254,47 +254,47 @@ Azure HDInsight 'ta oluşturduğunuz Azure sanal ağının bir parçası olan bi
 
 1. Sınıfında, `*RemoteClusterDebugging` `test` anahtar sözcüğünü sağ tıklatın ve ardından **Remoteclusterdebugging yapılandırması oluştur**' u seçin.
 
-    ![IntelliJ fıkır uzak yapılandırma oluşturma](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-remote-config.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-remote-config.png" alt-text="IntelliJ fıkır uzak yapılandırma oluşturma" border="true":::
 
 1. **RemoteClusterDebugging yapılandırması oluştur** iletişim kutusunda yapılandırma için bir ad girin **ve test** **türü olarak test türü** ' nü seçin. Diğer tüm değerleri varsayılan ayarlar olarak bırakın. **Uygula**’yı ve sonra **Tamam**’ı seçin.
 
-    ![RemoteClusterDebugging yapılandırması oluştur](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/provide-config-value.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/provide-config-value.png" alt-text="RemoteClusterDebugging yapılandırması oluştur" border="true":::
 
 1. Artık menü çubuğunda bir **Uzaktan çalıştırma** yapılandırması açılır listesini görmeniz gerekir.
 
-    ![Uzaktan çalıştırma açılan listesini IntelliJ](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-config-remote-run.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-config-remote-run.png" alt-text="Uzaktan çalıştırma açılan listesini IntelliJ" border="true":::
 
 ## <a name="step-5-run-the-application-in-debug-mode"></a>5. Adım: uygulamayı hata ayıklama modunda çalıştırma
 
 1. IntelliJ fıkır projenizde, ' nin `SparkSample.scala` yanında bir kesme noktası açın ve oluşturun `val rdd1` . Açılır menü **Için kesme noktası oluştur** menüsünde, **executejob işlevinde satır**' ı seçin.
 
-    ![IntelliJ fıkır kesme noktası ekleme](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-create-breakpoint.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-create-breakpoint.png" alt-text="IntelliJ fıkır kesme noktası ekleme" border="true":::
 
 1. Uygulamayı çalıştırmak için **Uzaktan çalıştırma** yapılandırması açılan listesinin yanındaki **Hata Ayıkla Çalıştır** düğmesini seçin.
 
-    ![IntelliJ fıkır hata ayıklama çalıştırması düğmesini seçin](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-run-mode-button.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-run-mode-button.png" alt-text="IntelliJ fıkır hata ayıklama çalıştırması düğmesini seçin" border="true":::
 
 1. Program yürütme kesme noktasına ulaştığında, alt bölmede bir **hata ayıklayıcı** sekmesi görürsünüz.
 
-    ![IntelliJ fıkır hata ayıklayıcı sekmesini görüntüleme](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-debugger-tab.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-debugger-tab.png" alt-text="IntelliJ fıkır hata ayıklayıcı sekmesini görüntüleme" border="true":::
 
 1. Bir izleme eklemek için ( **+** ) simgesini seçin.
 
-    ![IntelliJ hata ayıklama-Add-Watch-değişken](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable.png" alt-text="IntelliJ hata ayıklama-Add-Watch-değişken" border="true":::
 
     Bu örnekte, uygulama, değişken oluşturulmadan önce bir sorun `rdd1` yaratmıştı. Bu gözcü kullanıldığında, değişkende ilk beş satırı görebiliriz `rdd` . **Enter** tuşunu seçin.
 
-    ![IntelliJ programı hata ayıklama modunda çalıştır](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable-value.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable-value.png" alt-text="IntelliJ programı hata ayıklama modunda çalıştır" border="true":::
 
     Önceki görüntüde gördükleriniz, çalışma zamanında, terabaytlarca veri sorgulayabilir ve uygulamanızın ilerlediği şekilde hata ayıklaması yapabilirsiniz. Örneğin, önceki görüntüde gösterilen çıktıda çıktının ilk satırının bir üst bilgi olduğunu görebilirsiniz. Bu çıktıyı temel alarak, gerekirse üst bilgi satırını atlamak için uygulama kodunuzu değiştirebilirsiniz.
 
 1. Artık uygulama çalıştırmaya devam etmek için **programı sürdürme** simgesini seçebilirsiniz.
 
-    ![IntelliJ fıkır programı özgeçmişi seçin](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-continue-remote-run.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-continue-remote-run.png" alt-text="IntelliJ fıkır programı özgeçmişi seçin" border="true":::
 
 1. Uygulama başarıyla tamamlanerdiğinde, aşağıdakine benzer bir çıktı görmeniz gerekir:
 
-    ![IntelliJ fıkır hata ayıklayıcı konsol çıktısı](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-complete-window.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-complete-window.png" alt-text="IntelliJ fıkır hata ayıklayıcı konsol çıktısı" border="true":::
 
 ## <a name="next-steps"></a><a name="seealso"></a>Sonraki adımlar
 

@@ -4,12 +4,12 @@ description: Azure HDInsight 'ta Apache Spark kümesi için çeşitli OutOfMemor
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: a15d79f2ae9c3d20a73ec557c57a5c189b18111b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: dd33972810ab3b0d51bbd82282d0e6cf6cd9d96c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946347"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868673"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Spark için OutOfMemoryError özel durumları
 
@@ -59,7 +59,7 @@ Bu özel durumun en olası nedeni, Java sanal makinelerine (JVM 'Ler) yeterli y�
 
 1. Kullanılacak HDInsight kümesinin, Spark uygulamasını barındırmak için yeterli kaynağa (bellek ve ayrıca çekirdek olarak) sahip olduğundan emin olun. Bu, **kullanılan bellek** **değerleri ve kullanılan bellek ve** **sanal** çekirdek sayısı karşılaştırması için kümenin Yarn Kullanıcı arabirimine ait küme ölçümleri bölümü görüntülenirken **belirlenebilir.**
 
-    ![Yarn çekirdek bellek görünümü](./media/apache-spark-ts-outofmemory/yarn-core-memory-view.png)
+    :::image type="content" source="./media/apache-spark-ts-outofmemory/yarn-core-memory-view.png" alt-text="Yarn çekirdek bellek görünümü" border="true":::
 
 1. Aşağıdaki Spark yapılandırmasını uygun değerlere ayarlayın. Uygulama gereksinimlerini kümedeki kullanılabilir kaynaklarla dengeleyin. Bu değerler, YARN tarafından görüntülenen kullanılabilir bellek ve çekirdekler için %90 ' ı aşmamalıdır ve Spark uygulamasının en düşük bellek gereksinimini de karşılamalıdır:
 
@@ -117,11 +117,11 @@ Spark yapılandırmasındaki özelliği düzenleyerek Spark geçmiş sunucu bell
 
 Bunu, Spark2/config/Advanced Spark2-env bölümünü seçerek, ambarı tarayıcısı kullanıcı arabiriminden yapabilirsiniz.
 
-![Advanced spark2-env bölümü](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image01.png)
+:::image type="content" source="./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image01.png" alt-text="Advanced spark2-env bölümü" border="true":::
 
 Spark geçmiş sunucusu belleğini 1G 'den 4g 'ye değiştirmek için aşağıdaki özelliği ekleyin: `SPARK_DAEMON_MEMORY=4g` .
 
-![Spark özelliği](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image02.png)
+:::image type="content" source="./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image02.png" alt-text="Spark özelliği" border="true":::
 
 Tüm etkilenen hizmetleri ambarı 'ndan yeniden başlattığınızdan emin olun.
 

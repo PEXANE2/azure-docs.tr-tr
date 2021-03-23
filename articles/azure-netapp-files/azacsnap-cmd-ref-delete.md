@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: 0e2e4beebedb93524da43c5a3fad750b0295f5cd
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1f2c767d45bb08e25a057c7db1f380ceb250f607
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97633064"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864916"
 ---
 # <a name="delete-using-azure-application-consistent-snapshot-tool-preview"></a>Azure uygulaması tutarlı anlık görüntü aracı 'nı (Önizleme) kullanarak Sil
 
@@ -36,11 +36,11 @@ Komutuyla birim anlık görüntülerini ve veritabanı kataloğu girdilerini sil
 
 `-c delete`Komut aşağıdaki seçeneklere sahiptir:
 
-- `--delete hana` seçeneklerle birlikte kullanıldığında `--hanasid <SID>` ve `--hanabackupid <HANA backup id>` ölçütlere uyan SAP HANA yedekleme kataloğundan girişleri silecek.
+- `--delete hana` seçeneklerle birlikte kullanıldığında `--dbsid <SID>` ve `--hanabackupid <HANA backup id>` ölçütlere uyan SAP HANA yedekleme kataloğundan girişleri silecek.
 
 - `--delete storage` seçeneğiyle birlikte kullanıldığında, `--snapshot <snapshot name>` arka uç depolama sisteminden anlık görüntüyü siler.
 
-- `--delete sync` seçeneklerle birlikte kullanıldığında `--hanasid <SID>` ve `--hanabackupid <HANA backup id>` için yedekleme kataloğundan depolama anlık görüntüsü adını alır `<HANA backup id>` ve ardından yedekleme kataloğundaki girişi _ve_ anlık görüntüyü, adlandırılmış anlık görüntüyü içeren birimlerden siler.
+- `--delete sync` seçeneklerle birlikte kullanıldığında `--dbsid <SID>` ve `--hanabackupid <HANA backup id>` için yedekleme kataloğundan depolama anlık görüntüsü adını alır `<HANA backup id>` ve ardından yedekleme kataloğundaki girişi _ve_ anlık görüntüyü, adlandırılmış anlık görüntüyü içeren birimlerden siler.
 
 - `--delete sync`ile birlikte kullanıldığında `--snapshot <snapshot name>` , için yedekleme kataloğunda herhangi bir girişi kontrol eder `<snapshot name>` , SAP HANA yedekleme kimliğini alır ve hem yedekleme kataloğunda girişi hem de adlandırılmış anlık görüntüyü içeren birimlerden  herhangi bir anlık görüntüyü siler.
 
@@ -51,7 +51,7 @@ Komutuyla birim anlık görüntülerini ve veritabanı kataloğu girdilerini sil
 ### <a name="delete-a-snapshot-using-sync-option"></a>' Seçeneğini kullanarak anlık görüntüyü Sil `sync`
 
 ```bash
-azacsnap -c delete --delete sync --hanasid H80 --hanabackupid 157979797979
+azacsnap -c delete --delete sync --dbsid H80 --hanabackupid 157979797979
 ```
 
 > [!NOTE]
@@ -67,7 +67,7 @@ azacsnap -c delete --delete sync --snapshot hana_hourly.2020-01-22_2358
 ### <a name="delete-a-snapshot-using-hana-option"></a>' Seçeneğini kullanarak anlık görüntüyü Sil `hana`
 
 ```bash
-azacsnap -c delete --delete hana --hanasid H80 --hanabackupid 157979797979
+azacsnap -c delete --delete hana --dbsid H80 --hanabackupid 157979797979
 ```
 
 > [!NOTE]

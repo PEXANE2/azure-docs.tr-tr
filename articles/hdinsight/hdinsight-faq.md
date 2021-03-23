@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: 84124f33f6aa02f63c0c47a24bd7d2a71ced2d11
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 47f0ea34fa650371d39252ce6b0ee6a15f3124d6
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101699309"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871189"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: Sık sorulan sorular
 
@@ -78,11 +78,11 @@ Hayır, aynı HDInsight kümesinde Apache Kafka ve Apache Spark çalıştırmak 
 1. Konumundaki ambarı Web Kullanıcı arabirimini açın `https://CLUSTERNAME.azurehdinsight.net` , burada clustername kümenizin adıdır.
 2. Sağ üst köşede Yönetici ' yi seçin | Ayarlar. 
 
-   ![Ambarı ayarları](media/hdinsight-faq/ambari-settings.png)
+   :::image type="content" source="media/hdinsight-faq/ambari-settings.png" alt-text="Ambarı ayarları":::
 
 3. Kullanıcı ayarları penceresinde, saat dilimi açılan penceresindeki yeni saat dilimini seçin ve ardından Kaydet ' e tıklayın.
 
-   ![Ambarı Kullanıcı ayarları](media/hdinsight-faq/ambari-user-settings.png)
+   :::image type="content" source="media/hdinsight-faq/ambari-user-settings.png" alt-text="Ambarı Kullanıcı ayarları":::
 
 ## <a name="metastore"></a>Meta veri deposu
 

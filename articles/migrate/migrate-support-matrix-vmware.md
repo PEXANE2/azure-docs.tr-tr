@@ -6,16 +6,16 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/17/2021
-ms.openlocfilehash: 943223ee99838b2b6d6de7eecb3c3b8c06d3562c
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 520aedd9dbb618788107bc83c5d72ad237acea22
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104773598"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870747"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware değerlendirmesi için destek matrisi 
 
-Bu makalede, Azure geçişi [: bulma ve değerlendirme](migrate-services-overview.md#azure-migrate-server-assessment-tool) Aracı ' nı kullanarak, VMware ortamında çalışan sunucuları bulma ve değerlendirme sırasında önkoşulları ve destek gereksinimleri özetlenmektedir. Sunucuları değerlendirmek için, projeye Azure geçişi: bulma ve değerlendirme aracını ekleyen bir proje oluşturursunuz. Araç eklendikten sonra Azure geçişi gereci dağıtırsınız. Gereç, şirket içi sunucuları sürekli olarak bulur ve Azure 'a yapılandırma ve performans meta verilerini gönderir. Bulma işlemi tamamlandıktan sonra keşfedilen sunucuları gruplar halinde toplar ve bir grup için değerlendirme çalıştırırsınız.
+Bu makalede, Azure geçişi [: bulma ve değerlendirme](migrate-services-overview.md#azure-migrate-discovery-and-assessment-tool) Aracı ' nı kullanarak, VMware ortamında çalışan sunucuları bulma ve değerlendirme sırasında önkoşulları ve destek gereksinimleri özetlenmektedir. Sunucuları değerlendirmek için, projeye Azure geçişi: bulma ve değerlendirme aracını ekleyen bir proje oluşturursunuz. Araç eklendikten sonra Azure geçişi gereci dağıtırsınız. Gereç, şirket içi sunucuları sürekli olarak bulur ve Azure 'a yapılandırma ve performans meta verilerini gönderir. Bulma işlemi tamamlandıktan sonra keşfedilen sunucuları gruplar halinde toplar ve bir grup için değerlendirme çalıştırırsınız.
 
 VMware sunucularını Azure 'a geçirmek istiyorsanız, [geçiş desteği matrisini](migrate-support-matrix-vmware-migration.md)gözden geçirin.
 
@@ -25,7 +25,7 @@ VMware sunucularını Azure 'a geçirmek istiyorsanız, [geçiş desteği matris
 
 **Gereksinim** | **Ayrıntılar**
 --- | ---
-**Proje limitleri** | Bir Azure aboneliğinde birden çok proje oluşturabilirsiniz.<br/><br/> Tek bir [projede](migrate-support-matrix.md#azure-migrate-projects)VMware ortamından en fazla 50.000 sunucuyu bulabilir ve değerlendirebilirsiniz. Bir proje, fiziksel sunucuları ve Hyper-V ortamından, değerlendirme sınırlarına kadar olan sunucuları da içerebilir.
+**Proje limitleri** | Bir Azure aboneliğinde birden çok proje oluşturabilirsiniz.<br/><br/> Tek bir [projede](migrate-support-matrix.md#project)VMware ortamından en fazla 50.000 sunucuyu bulabilir ve değerlendirebilirsiniz. Bir proje, fiziksel sunucuları ve Hyper-V ortamından, değerlendirme sınırlarına kadar olan sunucuları da içerebilir.
 **Bulma** | Azure geçişi gereci bir vCenter Server en fazla 10.000 sunucu bulabilir.
 **Değerlendirme** | Tek bir gruba en fazla 35.000 sunucu ekleyebilirsiniz.<br/><br/> Tek bir değerlendirmede en fazla 35.000 sunucu değerlendirebilirsiniz.
 
@@ -78,9 +78,6 @@ Sunucuları bulmanın yanı sıra Azure geçişi: bulma ve değerlendirme, sunuc
 **Bağlantı noktası erişimi** | Azure geçişi gereci, uygulama bulma işlemini gerçekleştirmek istediğiniz sunucuları çalıştıran ESXi konaklarında TCP bağlantı noktası 443 ' e bağlanabilmelidir. VCenter Server, yazılım envanterinin ayrıntılarını içeren dosyayı indirmek için bir ESXi ana bilgisayar bağlantısı döndürür.
 
 ## <a name="requirements-for-discovery-of-sql-server-instances-and-databases"></a>SQL Server örnekleri ve veritabanlarını bulma gereksinimleri
-
-> [!Note]
-> VMware ortamınızda çalışan SQL Server örnekleri ve veritabanlarının keşfi ve değerlendirmesi artık önizlemededir. Bu özelliği denemek için [**bu bağlantıyı**](https://aka.ms/AzureMigrate/SQL) kullanarak **Doğu Avustralya** bölgesinde bir proje oluşturun. Zaten Doğu Avustralya bölgesinde bir projeniz varsa ve bu özelliği denemek istiyorsanız, lütfen portalda bu [**önkoşulları**](how-to-discover-sql-existing-project.md) tamamladığınızdan emin olun.
 
 [Uygulama bulma](how-to-discover-applications.md) SQL Server örnekleri tanımlar. Bu bilgileri kullanarak, Gereç, Windows kimlik doğrulaması veya gereç üzerinde sunulan SQL Server kimlik doğrulama kimlik bilgileri aracılığıyla ilgili SQL Server örneklerine bağlanmaya çalışır. Bağlantı kurulduktan sonra, Gereç SQL Server örneklerinin ve veritabanlarının yapılandırma ve performans verilerini toplar. SQL Server yapılandırma verileri her 24 saatte bir güncelleştirilir ve performans verileri her 30 saniyede yakalanır.
 

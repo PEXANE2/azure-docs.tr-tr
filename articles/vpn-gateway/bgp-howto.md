@@ -6,14 +6,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/18/2020
+ms.date: 03/22/2021
 ms.author: yushwang
-ms.openlocfilehash: db19b1ae017fa7981747b0e7b4c82e97efc61ed3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 479a8fac111be6e5b1ae2c6ea21fff801ba26f83
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98878893"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863590"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways"></a>Azure VPN ağ geçitleri üzerinde BGP 'yi yapılandırma
 
@@ -79,13 +79,15 @@ Bu adımda, karşılık gelen BGP parametreleriyle bir VPN ağ geçidi oluşturu
 
    * **Azure APIPA BGP IP adresi** alanı isteğe bağlıdır. Şirket içi VPN cihazlarınız BGP için APIPA adresini kullanıyorsa, VPN için Azure ayrılmış APIPA adres aralığından, **169.254.21.0** ile **169.254.22.255** arasında bir adres seçmeniz gerekir. Bu örnek, 169.254.21.11 kullanır.
 
-   * Etkin-etkin bir VPN ağ geçidi oluşturuyorsanız BGP bölümünde **ikinci bir Ikinci özel Azure APIPA BGP IP adresi** gösterilir. İzin verilen APIPA aralığından farklı bir adres belirtin (**169.254.21.0** to **169.254.22.255**).
+   * Etkin-etkin bir VPN ağ geçidi oluşturuyorsanız BGP bölümünde **ikinci bir Ikinci özel Azure APIPA BGP IP adresi** gösterilir. İzin verilen APIPA aralığından (**169.254.21.0** to **169.254.22.255**), başka bir IP adresi seçin. İkinci IP adresi ilk adresten farklı olmalıdır.
 
    > [!IMPORTANT]
    >
    > * Azure, varsayılan olarak, Azure VPN ağ geçidinde Azure BGP IP adresi olarak otomatik olarak GatewaySubnet önek aralığından özel bir IP adresi atar. Şirket içi VPN cihazlarınız, BGP IP 'si olarak bir APIPA adresi (169.254.0.1-169.254.255.254) kullanırken özel Azure APIPA BGP adresi gereklidir. Karşılık gelen yerel ağ geçidi kaynağı (Şirket içi ağ) BGP eşi IP 'si olarak bir APIPA adresine sahipse Azure VPN Gateway özel APIPA adresini seçer. Yerel ağ geçidi, normal bir IP adresi (APIPA değil) kullanıyorsa Azure VPN Gateway, GatewaySubnet aralığından özel IP adresine döndürülür.
    >
    > * APIPA BGP adresleri, şirket içi VPN cihazları ve tüm bağlı Azure VPN ağ geçitleri arasında çakışmamalıdır.
+   >
+   > * Azure VPN ağ geçitlerinde APIPA adresleri kullanıldığında, ağ geçitleri, APIPA kaynak IP adresleriyle BGP eşleme oturumları başlatmaz. Şirket içi VPN cihazı BGP eşleme bağlantıları 'nı başlatmalıdır.
    >
 
 1. Doğrulamayı çalıştırmak için **gözden geçir + oluştur** ' u seçin. Doğrulama başarılı olduktan sonra, VPN ağ geçidini dağıtmak için **Oluştur** ' u seçin. Bir ağ geçidinin, tam olarak oluşturulması ve dağıtılması 45 dakika sürebilir. Dağıtım durumunu ağ geçidinizin Genel Bakış sayfasında görebilirsiniz.

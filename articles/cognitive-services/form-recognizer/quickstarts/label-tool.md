@@ -11,18 +11,18 @@ ms.date: 03/15/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: Belge işleme
-ms.openlocfilehash: 89de0752b3015fb8132bfa50c7dbdce174061bcc
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.openlocfilehash: f83e13155fa851a06c8b7d36b87c3038257c0b3a
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103467302"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864389"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
 <!-- markdownlint-disable MD033 -->
 <!-- markdownlint-disable MD034 -->
-# <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Örnek etiketleme aracını kullanarak form tanıyıcı modelini etiketlerle eğitme
+# <a name="train-a-custom-model-using-the-sample-labeling-tool"></a>Örnek etiketleme aracını kullanarak özel bir modeli eğitme
 
 Bu hızlı başlangıçta, el ile etiketlenmiş verilerle özel bir belge işleme modelini eğitebilmeniz için örnek etiketleme aracı ile REST API tanıyıcı formunu kullanacaksınız. Form tanıyıcı ile denetimli öğrenme hakkında daha fazla bilgi edinmek için genel bakışın [etiketlerle eğitme](../overview.md#train-with-labels) bölümüne bakın.
 

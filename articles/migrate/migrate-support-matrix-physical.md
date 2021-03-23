@@ -1,21 +1,21 @@
 ---
-title: Azure geçişi 'nde fiziksel sunucu değerlendirmesi desteği
-description: Azure geçişi bulma ve değerlendirmesi ile fiziksel sunucu değerlendirmesi desteği hakkında bilgi edinin
+title: Azure geçişi 'nde fiziksel bulma ve değerlendirme desteği
+description: Azure geçişi bulma ve değerlendirmesi ile fiziksel bulma ve değerlendirme desteği hakkında bilgi edinin
 author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: 18176c5a79eda080c72b387781e6c7c9b0c66673
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: b62160861f686c6ea5a8ebfd03d904da2ad5d80a
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104773207"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869455"
 ---
 # <a name="support-matrix-for-physical-server-discovery-and-assessment"></a>Fiziksel sunucu bulma ve değerlendirmesi için destek matrisi 
 
-Bu makalede, Azure geçişi [: bulma ve değerlendirme](migrate-services-overview.md#azure-migrate-server-assessment-tool) Aracı kullanılarak Azure 'a geçiş için fiziksel sunucuları değerlendirmekte olan Önkoşullar ve destek gereksinimleri özetlenmektedir. Fiziksel sunucuları Azure 'a geçirmek istiyorsanız, [geçiş desteği matrisini](migrate-support-matrix-physical-migration.md)gözden geçirin.
+Bu makalede, Azure geçişi [: bulma ve değerlendirme](migrate-services-overview.md#azure-migrate-discovery-and-assessment-tool) Aracı kullanılarak Azure 'a geçiş için fiziksel sunucuları değerlendirmekte olan Önkoşullar ve destek gereksinimleri özetlenmektedir. Fiziksel sunucuları Azure 'a geçirmek istiyorsanız, [geçiş desteği matrisini](migrate-support-matrix-physical-migration.md)gözden geçirin.
 
 Fiziksel sunucuları değerlendirmek için bir proje oluşturun ve Azure geçişi: bulma ve değerlendirme aracını projeye ekleyin. Araç eklendikten sonra [Azure geçişi](migrate-appliance.md)gereci dağıtırsınız. Gereç, şirket içi sunucuları sürekli olarak bulur ve sunucu meta verilerini ve performans verilerini Azure 'a gönderir. Bulma işlemi tamamlandıktan sonra keşfedilen sunucuları gruplar halinde toplar ve bir grup için değerlendirme çalıştırırsınız.
 
@@ -23,7 +23,7 @@ Fiziksel sunucuları değerlendirmek için bir proje oluşturun ve Azure geçiş
 
 **Destek** | **Ayrıntılar**
 --- | ---
-**Değerlendirme limitleri** | Tek bir [projede](migrate-support-matrix.md#azure-migrate-projects)en fazla 35.000 fiziksel sunucu bulabilir ve değerlendirebilirsiniz.
+**Değerlendirme limitleri** | Tek bir [projede](migrate-support-matrix.md#project)en fazla 35.000 fiziksel sunucu bulabilir ve değerlendirebilirsiniz.
 **Proje limitleri** | Bir Azure aboneliğinde birden çok proje oluşturabilirsiniz. Fiziksel sunuculara ek olarak, bir proje VMware ve Hyper-V üzerindeki sunucuları her biri için değerlendirme sınırlarına kadar içerebilir.
 **Bulma** | Azure geçişi gereci en fazla 1000 fiziksel sunucu bulabilir.
 **Değerlendirme** | Tek bir gruba en fazla 35.000 sunucu ekleyebilirsiniz.<br/><br/> Tek bir değerlendirmede en fazla 35.000 sunucu değerlendirebilirsiniz.
@@ -84,4 +84,4 @@ Aşağıdaki tabloda, değerlendirme için bağlantı noktası gereksinimleri ö
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Fiziksel sunucu değerlendirmesi Için hazırlanma](./tutorial-discover-physical.md).
+[Fiziksel bulma ve değerlendirme Için hazırlanma](./tutorial-discover-physical.md).

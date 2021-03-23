@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: 00aaa5bdc0d48adb735679fc4a71b3431970ef09
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 458f4d3f29cb08a94095167ed45133f5cd70f5f4
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98737176"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869200"
 ---
 # <a name="install-azure-application-consistent-snapshot-tool-preview"></a>Azure uygulaması tutarlı anlık görüntü aracı 'nı (Önizleme) yükler
 
@@ -239,71 +239,6 @@ veritabanı, IP adresini, Kullanıcı adlarını ve parolaları uygun şekilde d
     ENV : <IP_address_of_host>:
     USER: AZACSNAP
     ```
-
-### <a name="additional-instructions-for-using-the-log-trimmer-sap-hana-20-and-later"></a>Günlük kırpıcıyı (SAP HANA 2,0 ve üzeri) kullanmaya yönelik ek yönergeler
-
-Günlük kırpıcıyı kullanıyorsanız, aşağıdaki örnek komutlar bir SAP HANA 2,0 veritabanı sistemindeki KIRACı veritabanında bir Kullanıcı (AZACSNAP) ayarlar. IP adresini, Kullanıcı adlarını ve parolaları uygun şekilde değiştirmeyi unutmayın:
-
-1. Kullanıcıyı oluşturmak için kiracı veritabanına bağlanın, kiracıya özgü ayrıntılar ve ' dir `<IP_address_of_host>` `<SYSTEM_USER_PASSWORD>` .  Ayrıca, `30015` kiracı veritabanıyla iletişim kurmak için gereken bağlantı noktasını () göz önünde bulabilirsiniz.
-
-    ```bash
-    hdbsql -n <IP_address_of_host>:30015 - i 00 -u SYSTEM -p <SYSTEM_USER_PASSWORD>
-    ```
-
-    ```output  
-    Welcome to the SAP HANA Database interactive terminal.
-
-    Type: \h for help with commands
-    \q to quit
-
-    hdbsql TENANTDB=>
-    ```
-
-1. Kullanıcı oluşturma
-
-    Bu örnek, SYSTEMDB 'de AZACSNAP kullanıcısını oluşturur.
-
-    ```sql
-    hdbsql TENANTDB=> CREATE USER AZACSNAP PASSWORD <AZACSNAP_PASSWORD_CHANGE_ME> NO FORCE_FIRST_PASSWORD_CHANGE;
-    ```
-
-1. Kullanıcı izinlerini verme
-
-    Bu örnek, AZACSNAP kullanıcısının iznini, veritabanı ile tutarlı bir depolama anlık görüntüsü gerçekleştirmeye izin verecek şekilde ayarlar.
-
-    ```sql
-    hdbsql TENANTDB=> GRANT BACKUP ADMIN, CATALOG READ, MONITORING TO AZACSNAP;
-    ```
-
-1. *Isteğe bağlı* -kullanıcının parolasının süresinin dolmasını engelle
-
-    > [!NOTE]
-    > Bu değişikliği yapmadan önce şirket ilkesiyle görüşün.
-
-   Bu örnek, AZACSNAP kullanıcısı için parola süre sonunu devre dışı bırakır, bu değişiklik yapılmadan kullanıcının parolasının süresi, anlık görüntülerin doğru şekilde yapılmasını önler.  
-
-   ```sql
-   hdbsql TENANTDB=> ALTER USER AZACSNAP DISABLE PASSWORD LIFETIME;
-   ```
-
-> [!NOTE]  
-> Tüm kiracı veritabanları için bu adımları tekrarlayın. SYSTEMDB 'de aşağıdaki SQL sorgusunu kullanarak tüm kiracıların bağlantı ayrıntılarını almak mümkündür.
-
-```sql
-SELECT HOST, SQL_PORT, DATABASE_NAME FROM SYS_DATABASES.M_SERVICES WHERE SQL_PORT LIKE '3%'
-```
-
-Aşağıdaki örnek sorgu ve çıkışa bakın.
-
-```bash
-hdbsql -jaxC -n 10.90.0.31:30013 -i 00 -u SYSTEM -p <SYSTEM_USER_PASSWORD> " SELECT HOST,SQL_PORT, DATABASE_NAME FROM SYS_DATABASES.M_SERVICES WHERE SQL_PORT LIKE '3%' "
-```
-
-```output
-sapprdhdb80,30013,SYSTEMDB
-sapprdhdb80,30015,H81
-sapprdhdb80,30041,H82
-```
 
 ### <a name="using-ssl-for-communication-with-sap-hana"></a>SAP HANA ile iletişim için SSL kullanma
 

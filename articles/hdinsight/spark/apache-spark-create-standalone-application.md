@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: contperf-fy21q1
 ms.date: 08/21/2020
-ms.openlocfilehash: d2c7c4feca32544a0e15e876c7207c49dee39341
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3cbeb1dbd207eec7f58465a24f33808bf2e7c7c0
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98940527"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867619"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>Öğretici: IntelliJ kullanarak HDInsight 'ta Apache Spark için bir Scala Maven uygulaması oluşturma
 
@@ -46,11 +46,11 @@ Scala eklentisini yüklemek için aşağıdaki adımları uygulayın:
 
 2. Giriş ekranında , eklentiler  >  penceresini açmak için **eklentileri** Yapılandır ' a gidin  .
 
-    ![' IntelliJ fıkır Scala pluginenable '](./media/apache-spark-create-standalone-application/enable-scala-plugin1.png)
+    :::image type="content" source="./media/apache-spark-create-standalone-application/enable-scala-plugin1.png" alt-text="' IntelliJ fıkır Scala pluginenable '" border="true":::
 
 3. Yeni pencerede tanıtılan Scala eklentisine yönelik **Install** öğesini seçin.  
 
-    ![' IntelliJ fıkır Install Scala plugin'](./media/apache-spark-create-standalone-application/install-scala-plugin.png)
+    :::image type="content" source="./media/apache-spark-create-standalone-application/install-scala-plugin.png" alt-text="' IntelliJ fıkır Install Scala plugin'" border="true":::
 
 4. Eklenti başarıyla yüklendikten sonra IDE’yi yeniden başlatmanız gerekir.
 
@@ -66,7 +66,7 @@ Scala eklentisini yüklemek için aşağıdaki adımları uygulayın:
       * Scala projesi oluşturma Sihirbazı desteği için **Maven** .
       * Scala projesi için bağımlılıkları ve oluşturmayı yönetmek üzere **SBT** .
 
-   ![Yeni proje iletişim kutusunu IntelliJ](./media/apache-spark-create-standalone-application/intellij-project-apache-spark.png)
+   :::image type="content" source="./media/apache-spark-create-standalone-application/intellij-project-apache-spark.png" alt-text="Yeni proje iletişim kutusunu IntelliJ" border="true":::
 
 5. **İleri**’yi seçin.
 
@@ -79,7 +79,7 @@ Scala eklentisini yüklemek için aşağıdaki adımları uygulayın:
   	|Proje SDK 'Sı| Bu alan, ilk fıkrın kullanımı üzerinde boştur.  **Yeni...** öğesini seçin ve JDK 'nize gidin.|
   	|Spark sürümü|Oluşturma Sihirbazı Spark SDK ve Scala SDK için doğru sürümü tümleştirir. Spark kümesi sürümü 2.0’dan eskiyse **Spark 1.x** seçeneğini belirleyin. Aksi takdirde, **Spark2.x** seçeneğini belirleyin. Bu örnek **Spark 2.3.0 (Scala 2.11.8)** kullanır.|
 
-    ![Spark SDK 'sını seçen IntelliJ fıkır](./media/apache-spark-create-standalone-application/hdi-scala-new-project.png)
+    :::image type="content" source="./media/apache-spark-create-standalone-application/hdi-scala-new-project.png" alt-text="Spark SDK 'sını seçen IntelliJ fıkır" border="true":::
 
 7. **Son**'u seçin.
 
@@ -95,7 +95,7 @@ Scala eklentisini yüklemek için aşağıdaki adımları uygulayın:
 
 5. Arşiv türleri listesinden öğesini seçin **`org.scala-tools.archetypes:scala-archetype-simple`** . Bu arşiv ETYPE doğru dizin yapısını oluşturur ve Scala programını yazmak için gerekli varsayılan bağımlılıkları indirir.
 
-    ![Ekran görüntüsü yeni proje penceresinde seçili bir arşiv ETYPE gösterir.](./media/apache-spark-create-standalone-application/intellij-project-create-maven.png)
+    :::image type="content" source="./media/apache-spark-create-standalone-application/intellij-project-create-maven.png" alt-text="Ekran görüntüsü yeni proje penceresinde seçili bir arşiv ETYPE gösterir." border="true":::
 
 6. **İleri**’yi seçin.
 
@@ -104,7 +104,7 @@ Scala eklentisini yüklemek için aşağıdaki adımları uygulayın:
     - **GroupID:** com. Microsoft. spark. example
     - **ArtifactId:** Mini Simpleapp
 
-    ![Ekran görüntüsü yeni proje penceresindeki yapıt koordinatları seçeneğini gösterir.](./media/apache-spark-create-standalone-application/intellij-artifact-coordinates.png)
+    :::image type="content" source="./media/apache-spark-create-standalone-application/intellij-artifact-coordinates.png" alt-text="Ekran görüntüsü yeni proje penceresindeki yapıt koordinatları seçeneğini gösterir." border="true":::
 
 8. **İleri**’yi seçin.
 
@@ -124,7 +124,7 @@ Scala eklentisini yüklemek için aşağıdaki adımları uygulayın:
 
 16. **Uygula**’yı ve sonra **Tamam**’ı seçin.  Ardından proje penceresine geri dönersiniz.
 
-    ![Maven’i otomatik yüklemeler için yapılandırma](./media/apache-spark-create-standalone-application/configure-maven-download.png)
+    :::image type="content" source="./media/apache-spark-create-standalone-application/configure-maven-download.png" alt-text="Maven’i otomatik yüklemeler için yapılandırma" border="true":::
 
 17. Sol bölmeden **src**  >  **Main**  >  **Scala**  >  **com. Microsoft. spark. example**' a gidin ve App. Scala 'yı açmak için **uygulama** ' ya çift tıklayın.
 
@@ -182,27 +182,27 @@ Scala eklentisini yüklemek için aşağıdaki adımları uygulayın:
 
     2. **Proje yapısı** penceresinde,   >    >    >  **bağımlılıklara sahip modüllerden** artı sembol + jar öğesine gidin...
 
-        ![' IntelliJ fıkır proje yapısı jar Ekle '](./media/apache-spark-create-standalone-application/hdinsight-create-jar1.png)
+        :::image type="content" source="./media/apache-spark-create-standalone-application/hdinsight-create-jar1.png" alt-text="' IntelliJ fıkır proje yapısı jar Ekle '" border="true":::
 
     3. **MODÜLLERDEN jar oluştur** penceresinde, **ana sınıf** metin kutusunda klasör simgesini seçin.
 
     4. **Ana Sınıf Seç** penceresinde, varsayılan olarak görüntülenen sınıfı seçin ve ardından **Tamam**' ı seçin.
 
-        ![' IntelliJ fıkır proje yapısı Sınıf Seç '](./media/apache-spark-create-standalone-application/hdinsight-create-jar2.png)
+        :::image type="content" source="./media/apache-spark-create-standalone-application/hdinsight-create-jar2.png" alt-text="' IntelliJ fıkır proje yapısı Sınıf Seç '" border="true":::
 
     5. **MODÜLLERDEN jar oluştur** penceresinde, **hedef jar 'e Ayıkla** seçeneğinin seçili olduğundan emin olun ve ardından **Tamam**' ı seçin.  Bu ayar, tüm bağımlılıklarla tek bir JAR oluşturur.
 
-        ![IntelliJ fıkır modülünden proje yapısı jar](./media/apache-spark-create-standalone-application/hdinsight-create-jar3.png)
+        :::image type="content" source="./media/apache-spark-create-standalone-application/hdinsight-create-jar3.png" alt-text="IntelliJ fıkır modülünden proje yapısı jar" border="true":::
 
     6. **Çıkış düzeni** sekmesi, Maven projesinin bir parçası olarak dahil olan tüm jar dosyaları dışındaki türlerini listeler. Scala uygulamasının doğrudan bağımlılığı olmayan jar dosyalarını seçip silebilirsiniz. Uygulama için, burada oluşturduğunuz son bir tane (**basit Simpleapp derleme çıkışı**) ekleyebilirsiniz. Silinecek jar dosyaları dışındaki ' ı seçin ve ardından negatif sembolü seçin **-** .
 
-        ![' IntelliJ fıkır proje yapısı çıktıyı Sil '](./media/apache-spark-create-standalone-application/hdi-delete-output-jars.png)
+        :::image type="content" source="./media/apache-spark-create-standalone-application/hdi-delete-output-jars.png" alt-text="' IntelliJ fıkır proje yapısı çıktıyı Sil '" border="true":::
 
         **Proje derlemesi 'Ne dahil et** onay kutusunun işaretli olduğundan emin olun. Bu seçenek, proje oluşturulduğu veya güncelleştirildiği her seferinde jar 'in oluşturulmasını sağlar. **Uygula** ' yı ve ardından **Tamam**' ı seçin.
 
     7. Jar 'yi oluşturmak **için derleme**  >  **Yapı yapıtları**  >  **derlemesi**' ne gidin. Projenin yaklaşık 30 saniye içinde derlenmesi gerekir.  Çıktı jar dosyası, **\out\artifacts** altında oluşturulur.
 
-        ![IntelliJ fıkır proje yapısı çıkışı](./media/apache-spark-create-standalone-application/hdi-artifact-output-jar.png)
+        :::image type="content" source="./media/apache-spark-create-standalone-application/hdi-artifact-output-jar.png" alt-text="IntelliJ fıkır proje yapısı çıkışı" border="true":::
 
 ## <a name="run-the-application-on-the-apache-spark-cluster"></a>Apache Spark kümesinde uygulamayı çalıştırma
 
@@ -226,7 +226,7 @@ Bu uygulamayı kullanmaya devam etmeyecekecekseniz, oluşturduğunuz kümeyi aş
 
 1. **Sil**’i seçin. **Evet**’i seçin.
 
-![' HDInsight Azure portalı Kümeyi Sil '](./media/apache-spark-create-standalone-application/hdinsight-azure-portal-delete-cluster.png "HDInsight kümesini Sil")
+:::image type="content" source="./media/apache-spark-create-standalone-application/hdinsight-azure-portal-delete-cluster.png " alt-text="' HDInsight Azure Portal ' kümesini silme ' kümesini Sil" border="true":::' "Border =" true ":::
 
 ## <a name="next-step"></a>Sonraki adım
 

@@ -5,14 +5,14 @@ services: vpn-gateway
 author: chadmath
 ms.service: vpn-gateway
 ms.topic: troubleshooting
-ms.date: 09/16/2019
+ms.date: 03/22/2021
 ms.author: genli
-ms.openlocfilehash: 4454afbe543f374ebd745af7cd59be1ab745036f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cebb05b35379573fc9797e89dee3c0c2bf3de6e2
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104670896"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867296"
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>Sorun giderme: bir Azure siteden siteye VPN bağlantısı bağlanamaz ve çalışmayı durduruyor
 
@@ -81,9 +81,7 @@ Ağ geçidi alt ağında Kullanıcı tanımlı yönlendirmeyi (UDR) veya ağ gü
 
 ### <a name="step-5-check-the-on-premises-vpn-device-external-interface-address"></a>5. Adım. Şirket içi VPN cihazı dış arabirim adresini denetleyin
 
-- VPN cihazının Internet 'e yönelik IP adresi, Azure 'daki **yerel ağ** tanımına dahil ise, tek biçimli, tek bağlantılarla karşılaşabilirsiniz.
-- Cihazın dış arabirimi doğrudan Internet üzerinde olmalıdır. Internet ile cihaz arasında ağ adresi çevirisi veya güvenlik duvarı olmaması gerekir.
-- Güvenlik Duvarı kümelemesini bir sanal IP 'ye sahip olacak şekilde yapılandırmak için, kümeyi kesmeniz ve VPN gerecini doğrudan ağ geçidinin arabirim oluşturup gönderebileceği ortak bir arabirim üzerinde kullanıma sunmalısınız.
+VPN cihazının Internet 'e yönelik IP adresi, Azure 'daki **yerel ağ** tanımına dahil ise, tek biçimli, tek bağlantılarla karşılaşabilirsiniz.
 
 ### <a name="step-6-verify-that-the-subnets-match-exactly-azure-policy-based-gateways"></a>6. Adım. Alt ağların tam olarak eşleştiğini doğrulama (Azure ilke tabanlı ağ geçitleri)
 

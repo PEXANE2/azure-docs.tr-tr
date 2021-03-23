@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: d85aad16049dee6496cb1eaf9def5451625ab876
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 21433e1a0441ef458dd5f8ea4b968211ef82cd46
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104773480"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865613"
 ---
 # <a name="prerequisites-for-deploying-azure-cloud-services-extended-support"></a>Azure Cloud Services dağıtımı önkoşulları (genişletilmiş destek)
 
@@ -133,7 +133,7 @@ Eski tanılama eklentilerini kullanan dağıtımlar, hizmet tanımı (. csdef) d
 
 ## <a name="key-vault-creation"></a>Key Vault oluşturma 
 
-Key Vault, Cloud Services ilişkili sertifikaları (genişletilmiş destek) depolamak için kullanılır. Sertifikaları Key Vault ekleyin ve ardından hizmet yapılandırma dosyasında sertifika parmak izleriyle referans yapın. Ayrıca, Cloud Services (genişletilmiş destek) kaynağı, Key Vault gizli dizi olarak depolanan sertifikayı alabilmesi için, ' erişim ilkelerini ' (portal 'da) ' ve ' şablon dağıtımı için Azure Resource Manager ' Key Vault etkinleştirmeniz gerekir. [Azure Portal](../key-vault/general/quick-create-portal.md) veya [PowerShell](../key-vault/general/quick-create-powershell.md)kullanarak bir Anahtar Kasası oluşturabilirsiniz. Anahtar Kasası, bulut hizmeti ile aynı bölgede ve abonelikte oluşturulmalıdır. Daha fazla bilgi için bkz. [Azure Cloud Services sertifikaları kullanma (genişletilmiş destek)](certificates-and-key-vault.md).
+Key Vault, Cloud Services ilişkili sertifikaları (genişletilmiş destek) depolamak için kullanılır. Sertifikaları Key Vault ekleyin ve ardından hizmet yapılandırma dosyasında sertifika parmak izleriyle referans yapın. Ayrıca, Cloud Services (genişletilmiş destek) kaynağı Key Vault gizli dizi olarak depolanan sertifikayı alabilmesi için ' dağıtım için Azure sanal makineler ' için Key Vault ' erişim ilkelerini ' (portalda) etkinleştirmeniz gerekir. [Azure Portal](../key-vault/general/quick-create-portal.md) veya [PowerShell](../key-vault/general/quick-create-powershell.md)kullanarak bir Anahtar Kasası oluşturabilirsiniz. Anahtar Kasası, bulut hizmeti ile aynı bölgede ve abonelikte oluşturulmalıdır. Daha fazla bilgi için bkz. [Azure Cloud Services sertifikaları kullanma (genişletilmiş destek)](certificates-and-key-vault.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 - Cloud Services için [dağıtım önkoşullarını](deploy-prerequisite.md) gözden geçirin (genişletilmiş destek).

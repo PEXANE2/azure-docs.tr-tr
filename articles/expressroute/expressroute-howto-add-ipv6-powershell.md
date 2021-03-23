@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: 253fce7d47d694c03d470fefdf81318a6bff77b3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e893216eb8e2d7e44e3f272f6b965b84c6253f7f
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102123063"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870339"
 ---
 # <a name="add-ipv6-support-for-private-peering-using-azure-powershell-preview"></a>Azure PowerShell kullanarak özel eşleme için IPv6 desteği ekleme (Önizleme)
 
@@ -177,6 +177,7 @@ IPv6 desteği, Kullanılabilirlik Alanları bölgelerdeki dağıtımlara bağlan
 * ExpressRoute devreleri arasında bağlantı Global Reach
 * Sanal WAN ile ExpressRoute kullanımı
 * ExpressRoute doğrudan devrelerine sahip FastPath
+* Şu eşleme konumlarında devrelere sahip FastPath: Dubai
 * VPN Gateway birlikte bulunma
 
 ## <a name="next-steps"></a>Sonraki adımlar

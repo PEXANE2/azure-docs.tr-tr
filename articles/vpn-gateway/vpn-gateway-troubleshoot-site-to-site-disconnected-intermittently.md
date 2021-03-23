@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: chadmath
 ms.service: vpn-gateway
 ms.topic: troubleshooting
-ms.date: 02/10/2021
+ms.date: 03/22/2021
 ms.author: genli
-ms.openlocfilehash: 582077c46f5fc7176b457cf0d392af48fbe7d40b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 38846bbe717912092ccfe2b236b717770b79302f
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100369348"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867262"
 ---
 # <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>Sorun giderme: Azure Siteden Siteye VPN bağlantısı aralıklı olarak kesiliyor
 
@@ -56,9 +56,7 @@ Ilke tabanlı sanal ağ geçidi 200 alt ağ güvenlik Ilişkisi çifti sınırı
 
 ### <a name="step-6-check-on-premises-vpn-device-external-interface-address"></a>Adım 6 şirket içi VPN cihazı dış arabirim adresini denetle
 
-- VPN cihazının Internet 'e yönelik IP adresi, Azure 'daki **yerel ağ geçidi** tanımına dahil ise, tek tek, tek bir ADIC bağlantısı yaşayabilirsiniz.
-- Cihazın dış arabirimi doğrudan Internet üzerinde olmalıdır. Internet ile cihaz arasında ağ adresi çevirisi (NAT) veya güvenlik duvarı olmaması gerekir.
--  Güvenlik Duvarı kümelemesini bir sanal IP 'ye sahip olacak şekilde yapılandırırsanız, kümeyi kesmeniz ve VPN gerecini doğrudan ağ geçidinin arabirim oluşturup gönderebileceği bir ortak arabirime kullanıma sunmalısınız.
+VPN cihazının Internet 'e yönelik IP adresi, Azure 'daki **yerel ağ geçidi** tanımına dahil ise, tek tek, tek bir ADIC bağlantısı yaşayabilirsiniz.
 
 ### <a name="step-7-check-whether-the-on-premises-vpn-device-has-perfect-forward-secrecy-enabled"></a>7. adım şirket içi VPN cihazında kusursuz Iletme gizliliği 'nin etkin olup olmadığını denetleyin
 

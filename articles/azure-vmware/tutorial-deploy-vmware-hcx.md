@@ -3,12 +3,12 @@ title: Öğretici-VMware HCX 'i dağıtma ve yapılandırma
 description: Azure VMware çözümünüz özel bulutunuz için bir VMware HCX çözümünü dağıtmayı ve yapılandırmayı öğrenin.
 ms.topic: tutorial
 ms.date: 03/13/2021
-ms.openlocfilehash: d4607483e64e6b7daa45f576f70ce3f5eeef65ca
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: ab59b4a29f8ba372c1892613d5e0461bf3fdc512
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/23/2021
-ms.locfileid: "104801120"
+ms.locfileid: "104869098"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>VMware HCX’i dağıtma ve yapılandırma
 
@@ -265,7 +265,7 @@ Bu yordama uçtan uca genel bakış için [Azure VMware çözümü: HCX ağ prof
 1. **Ağ uzantıları Için dağıtılmış anahtarlar seçin** sayfasında, katman 2 genişletilmiş ağ üzerinde Azure VMware çözümüne geçirilecek sanal makineleri içeren anahtarları seçin. Daha sonra **Devam** seçeneğini belirleyin.
 
    > [!NOTE]
-   > Katman 2 Genişletilmiş ağlardaki sanal makineleri geçiriyorsanız, bu adımı atlayabilirsiniz.
+   > Katman 2 (L2) genişletilmiş ağlardaki sanal makineleri geçiriyorsanız, bu adımı atlayabilirsiniz.
    
    :::image type=" content" source="media/tutorial-vmware-hcx/select-layer-2-distributed-virtual-switch.png" alt-text="Dağıtılmış sanal anahtarların ve devam düğmesinin seçimini gösteren ekran görüntüsü." lightbox="media/tutorial-vmware-hcx/select-layer-2-distributed-virtual-switch.png":::
 
@@ -376,4 +376,4 @@ HCX kullanma hakkında daha fazla bilgi için VMware teknik belgelerine gidin:
 * [VMware HCX belgeleri](https://docs.vmware.com/en/VMware-HCX/index.html)
 * [VMware HCX ile sanal makineleri geçirme](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g)
 * [HCX gereken bağlantı noktaları](https://ports.vmware.com/home/VMware-HCX)
-* [Lisans anahtarını onaylamadan önce bir HCX proxy servr ayarlayın](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-920242B3-71A3-4B24-9ACF-B20345244AB2.html?hWord=N4IghgNiBcIA4CcD2APAngAgBIGEAaIAvkA)
+* [Lisans anahtarını onaylamadan önce bir HCX ara sunucusu ayarlama](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-920242B3-71A3-4B24-9ACF-B20345244AB2.html?hWord=N4IghgNiBcIA4CcD2APAngAgBIGEAaIAvkA)
