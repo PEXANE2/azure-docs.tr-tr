@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: 5ac0f0677be6b641d496a941c5a8e1343fd017bc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7d40dcf80d9ec566146bbe46bc2cb3c558584fcd
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103562567"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775774"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC önbelleği önkoşulları
 
@@ -156,13 +156,6 @@ Daha fazla bilgi için [bkz. NAS yapılandırması ve NFS depolama hedefi sorunl
     Bazı sistemler bu hizmetler için farklı bağlantı noktası numaraları kullanır-emin olmak için depolama sisteminizin belgelerine başvurun.
 
   * Bu gerekli bağlantı noktalarının tümünde trafiğe izin verdiklerinden emin olmak için güvenlik duvarı ayarlarını kontrol edin. Azure 'da kullanılan güvenlik duvarlarını, veri merkezinizdeki şirket içi güvenlik duvarlarını da denetlediğinizden emin olun.
-
-* **Dizin erişimi:** `showmount` Depolama sisteminde komutunu etkinleştirin. Azure HPC Cache, depolama hedefi yapılandırmanızın geçerli bir dışarı aktarmaya işaret ettiğini ve ayrıca birden çok takın aynı alt dizinlere (dosya çarpışması için risk) eriş, emin olup olmadığını denetlemek için bu komutu kullanır.
-
-  > [!NOTE]
-  > NFS depolama sisteminizde NetApp 'ın ONTAP 9,2 işletim sistemi kullanılıyorsa, ' yi **etkinleştirmeyin `showmount`**. Yardım için [Microsoft hizmetine ve desteğe başvurun](hpc-cache-support-ticket.md) .
-
-  NFS depolama hedef [sorun giderme makalesinde](troubleshoot-nas.md#enable-export-listing)Dizin listeleme erişimi hakkında daha fazla bilgi edinin.
 
 * **Kök erişimi** (okuma/yazma): önbellek arka uç SISTEMINE Kullanıcı kimliği 0 olarak bağlanır. Depolama sisteminizde bu ayarları kontrol edin:
   

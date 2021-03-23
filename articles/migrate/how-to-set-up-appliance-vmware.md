@@ -1,30 +1,30 @@
 ---
 title: VMware için Azure geçişi gereci ayarlama
-description: VMware VM 'lerini değerlendirmek ve geçirmek için bir Azure geçiş gereci ayarlamayı öğrenin.
+description: VMware ortamındaki sunucuları değerlendirmek ve geçirmek için bir Azure geçiş gereci ayarlamayı öğrenin.
 author: vikram1988
 ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 04/16/2020
-ms.openlocfilehash: bac82b2939e5b6a674c75be2cd330dd0fa4b8487
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1217b51ea91758d25b76394b27d3b21b2e9808b3
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102035803"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104780880"
 ---
-# <a name="set-up-an-appliance-for-vmware-vms"></a>VMware VM 'Leri için bir gereç ayarlama
+# <a name="set-up-an-appliance-for-servers-in-vmware-environment"></a>VMware ortamındaki sunucular için bir gereç ayarlama
 
-Azure geçişi [: sunucu değerlendirme](migrate-services-overview.md#azure-migrate-server-assessment-tool) aracı ve Azure geçişi [: sunucu geçiş](migrate-services-overview.md#azure-migrate-server-migration-tool) Aracı kullanılarak aracısız geçiş için Azure geçişi gereci ayarlamak için bu makaleyi izleyin.
+Azure geçişi [: bulma ve değerlendirme](migrate-services-overview.md#azure-migrate-server-assessment-tool) aracı ile değerlendirme Için Azure geçişi gereci ayarlamak ve [Azure geçişi: sunucu geçiş](migrate-services-overview.md#azure-migrate-server-migration-tool) aracını kullanarak aracısız geçiş yapmak için bu makaleyi izleyin.
 
-[Azure geçişi](migrate-appliance.md) gereci, Azure geçişi tarafından kullanılan hafif bir gerecdir: vCenter Server çalıştıran sunucuları bulmaya, sunucu yapılandırma ve performans meta verilerini Azure 'a göndermenizi ve aracısız geçiş kullanarak sunucuların çoğaltılmasını sağlamak Için Sunucu değerlendirmesi ve sunucu geçişi.
+[Azure geçişi](migrate-appliance.md) gereci, Azure geçişi tarafından kullanılan hafif bir gerecdir: vCenter Server çalıştıran sunucuları bulmak için bulma ve değerlendirme ve sunucu geçişi, Azure 'a sunucu yapılandırma ve performans meta verileri gönderme ve aracısız geçiş kullanarak sunucuların çoğaltılması.
 
 Gereci birkaç yöntem kullanarak dağıtabilirsiniz:
 
 - İndirilen bir OVA şablonunu kullanarak vCenter Server bir sunucu oluşturun. Bu, bu makalede açıklanan yöntemdir.
 - Bir PowerShell yükleyici betiği kullanarak var olan bir sunucuda gereç ayarlayın. [Bu yöntem](deploy-appliance-script.md) , ova şablonunu kullansanız veya Azure Kamu kullanıyorsanız kullanılmalıdır.
 
-Gereci oluşturduktan sonra Azure geçişi: Sunucu değerlendirmesi ' ne bağlanıp bağlanmayacağından emin olun, Azure geçişi projesine kaydedin ve gereci bulmayı başlatmak üzere yapılandırın.
+Gereci oluşturduktan sonra Azure geçişi: bulma ve değerlendirme 'a bağlanıp bağlanamadıktan sonra Azure geçişi projesi ile kaydedip gereci bulmayı başlatacak şekilde yapılandırın.
 
 ## <a name="deploy-with-ova"></a>OVA ile dağıtma
 
@@ -36,8 +36,8 @@ Bir OVA şablonunu kullanarak gereci ayarlamak için:
 
 ### <a name="1-generate-the-azure-migrate-project-key"></a>1. Azure geçişi proje anahtarını oluşturma
 
-1. **Geçiş hedefleri** > **Sunucular** > **Azure Geçişi: Sunucu Değerlendirmesi** bölümünde **Bul**'u seçin.
-2. Makinelerde **bulunan makinelerde**  >  **makineler sanallaştırılmış mı?**, **VMware vSphere hiper yöneticiyle Evet '** i seçin.
+1. **Geçiş hedefleri**  >  **sunucularında**  >  **Azure geçişi: bulma ve değerlendirme** bölümünde **bul**' u seçin.
+2. Sunucularınızdaki **sunucular**  >  **sanallaştırılmış mı?**, **VMware vSphere hiper yöneticiyle Evet '** i seçin.
 3. **1: Azure geçişi proje anahtarı oluşturma**' da, VMware ortamınızda sunucu keşfi için ayarlayabileceğiniz Azure geçiş gereci için bir ad sağlayın. Ad 14 karakter veya daha kısa bir harf olmalıdır.
 1. Gerekli Azure kaynaklarını oluşturmaya başlamak için **anahtar oluştur** ' a tıklayın. Lütfen kaynak oluşturma sırasında bul sayfasını kapatmayın.
 1. Azure kaynakları başarıyla oluşturulduktan sonra bir **Azure geçişi proje anahtarı** oluşturulur.
@@ -95,7 +95,7 @@ Gereci ilk kez ayarlayın.
 
 1. VSphere Istemci konsolunda sunucuya sağ tıklayın ve ardından **Konsolu Aç**' ı seçin.
 2. Gereç için dil, saat dilimi ve parola sağlayın.
-3. Gereç sunucusuna bağlanabilecek herhangi bir makinede bir tarayıcı açın ve gereç Yapılandırma Yöneticisi 'nin URL 'sini açın: `https://appliance name or IP address: 44368` .
+3. Gereç sunucusuna bağlanabilecek herhangi bir sunucuda bir tarayıcı açın ve gereç Yapılandırma Yöneticisi 'nin URL 'sini açın: `https://appliance name or IP address: 44368` .
 
    Alternatif olarak, Configuration Manager kısayolunu seçerek, Gereç sunucu masaüstündeki Configuration Manager ' ı açabilirsiniz.
 1. **Lisans koşullarını** kabul edin ve üçüncü taraf bilgilerini okuyun.
@@ -117,7 +117,7 @@ Gereci ilk kez ayarlayın.
 
 ## <a name="register-the-appliance-with-azure-migrate"></a>Gereci Azure geçişi ile kaydetme
 
-1. Portaldan kopyalanmış **Azure geçişi proje anahtarını** yapıştırın. Anahtarınız yoksa, sunucu değerlendirmesi ' ne gidin **> var olan gereçlerini keşfet> yönetin**, anahtar oluşturma sırasında verdiğiniz gereç adını seçin ve ilgili anahtarı kopyalayın.
+1. Portaldan kopyalanmış **Azure geçişi proje anahtarını** yapıştırın. Anahtarınız yoksa, **bulma ve değerlendirme ' ya gidin> var olan gereçlerini bulmak> yönetin**, anahtar oluşturma sırasında verdiğiniz gereç adını seçin ve karşılık gelen anahtarı kopyalayın.
 1. Azure ile kimlik doğrulaması yapmak için bir cihaz koduna ihtiyacınız olacaktır. **Oturum** açmak için tıkladığınızda, aşağıda gösterildiği gibi cihaz koduyla kalıcı olarak açılır.
 
     :::image type="content" source="./media/tutorial-discover-vmware/device-code.png" alt-text="Cihaz kodunu kalıcı olarak gösterme":::
@@ -141,7 +141,7 @@ Gereçinin, sunucuların yapılandırma ve performans verilerini bulması için 
 
 1. **1. Adım: kimlik bilgilerini vCenter Server sağlayın**' de kimlik bilgileri için kolay bir ad belirtmek üzere **kimlik bilgileri ekle** ' ye tıklayın, gerecin vCenter Server çalıştıran sunucuları bulmaya kullanacağı vCenter Server hesabı Için **Kullanıcı adı** ve **parola** ekleyin.
     - Yukarıdaki bu makalede ele alınan gerekli izinlere sahip bir hesap ayarlamış olmanız gerekir.
-    - Bulma işlemini belirli VMware nesneleri (vCenter Server veri merkezleri, kümeler, bir küme klasörü, konaklar, bir konaklar klasörü veya ayrı VM 'Ler) olarak atamak istiyorsanız, Azure geçişi tarafından kullanılan hesabı kısıtlamak için [Bu makaledeki](set-discovery-scope.md) yönergeleri gözden geçirin.
+    - Bulma işlemini belirli VMware nesneleri (vCenter Server veri merkezleri, kümeler, bir küme klasörü, konaklar, konaklar klasörü veya ayrı sunucular) için kapsama eklemek istiyorsanız, Azure geçişi tarafından kullanılan hesabı kısıtlamak için [Bu makaledeki](set-discovery-scope.md) yönergeleri gözden geçirin.
 1. **2. Adım: vCenter Server ayrıntıları belirtin** bölümünde, açılan listeden kimlik bilgileri için kolay ad seçmek üzere **bulma kaynağı Ekle** ' ye tıklayın, vCenter Server **IP adresini/FQDN** 'yi belirtin. **Bağlantı noktasını** varsayılan (443) olarak bırakabilir veya vCenter Server dinlediği ve **Kaydet**' e tıklayarak özel bir bağlantı noktası belirtebilirsiniz.
 1. **Kaydet**'e tıklanınca, Gereç vCenter Server bağlantısını doğrulamayı dener ve tablodaki **doğrulama durumunu** vCenter Server IP adresine/FQDN 'ye göre gösterir.
 1. Bulmayı başlatmadan önce vCenter Server bağlantıyı **yeniden doğrulayabilirsiniz** .

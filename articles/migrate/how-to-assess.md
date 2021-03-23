@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: 9a4ed5542945b8d281ec750d9bbd3a8f444e44d2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 37f3748b4f0f3db47bbd6fbe9bc06a307781c2f8
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96752269"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786813"
 ---
 # <a name="add-assessment-tools"></a>Değerlendirme araçları ekleme
 
@@ -25,23 +25,23 @@ Bu makalede, [Azure geçişi](./migrate-services-overview.md)'nde değerlendirme
 1. Azure geçişi projesinde **Genel Bakış ' a** tıklayın.
 2. Değerlendirme senaryosunu seçin:
 
-    - Azure 'a geçiş için makineleri ve iş yüklerini bulup değerlendirmek üzere **sunucuları değerlendir ve geçir**' i seçin.
+    - Veri merkezinizden veya diğer bulutlardan Azure 'a sunucu (fiziksel veya sanal) bulma, değerlendirme ve geçiş yapmak için **bul, değerlendir ve geçir**' i seçin. Ayrıca, bu geçiş hedefini kullanarak VMware ortamınızdan SQL Server bulabilir ve değerlendirebilirsiniz.
     - Şirket içi SQL Server veritabanlarını değerlendirmek için **veritabanlarını değerlendir ve geçir**' i seçin.
     - Şirket içi Web uygulamalarını değerlendirmek veya geçirmek için **daha fazla Web Apps keşfet**' i seçin  >  .
     - Sanal Masaüstü altyapınızı değerlendirmek için **daha fazla**  >  **sanal masaüstü altyapısını** keşfet ' i seçin.
 
     ![Değerlendirme senaryosu seçme seçenekleri](./media/how-to-assess/assess-scenario.png)
 
-## <a name="select-a-server-assessment-tool"></a>Sunucu değerlendirmesi aracı seçin 
+## <a name="select-a-discovery-and-assessment-tool"></a>Bulma ve değerlendirme aracı seçin 
 
 
 1. Araç ekleme:
 
-    - Portalda **sunucuları değerlendir ve geçir** seçeneğini kullanarak bir Azure geçişi projesi oluşturduysanız, Azure geçişi sunucu değerlendirmesi aracı projeye otomatik olarak eklenir. Diğer değerlendirme araçları eklemek için **, bkz.** **değerlendirme araçları**' nın yanında, **daha fazla araç ekle**' yi seçin.
-    
+    - Portalda **sunucuları değerlendir ve geçir** seçeneğini kullanarak bir Azure geçişi projesi oluşturduysanız, Azure geçişi bulma ve değerlendirme aracı projeye otomatik olarak eklenir. **Windows, Linux ve SQL Server** ek değerlendirme araçları eklemek için **değerlendirme araçları**' nın yanındaki **daha fazla araç ekle**' yi seçin.
+
          ![Ek değerlendirme araçları ekleme düğmesi](./media/how-to-assess/add-assessment-tool.png)
 
-    - Farklı bir seçenek kullanarak bir proje oluşturduysanız ve henüz herhangi bir değerlendirme aracı yoksa, **sunucular**  >  **değerlendirmesi araçları**' nda **buraya tıklayın ' ı** seçin.
+    - Farklı bir seçenek kullanarak bir proje oluşturduysanız ve henüz herhangi bir değerlendirme aracı yoksa, **Windows, Linux ve SQL Server**  >  **değerlendirme araçları**'nda **buraya tıklayın ' ı** seçin.
 
         ![İlk değerlendirme aracı eklenecek düğme](./media/how-to-assess/no-assessment-tool.png)
 
@@ -83,4 +83,4 @@ Portalda **daha fazla keşfet** webapps seçeneğini kullanarak bir Azure geçi�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[VMware](./tutorial-discover-vmware.md) VM 'Leri, [Hyper-V](./tutorial-discover-hyper-v.md)veya [fiziksel sunucular](./tutorial-discover-physical.md) için Azure geçişi sunucu değerlendirmesi aracı 'nı kullanarak değerlendirme için şirket içi makineleri bulma
+[VMware](./tutorial-discover-vmware.md), [Hyper-V](./tutorial-discover-hyper-v.md)veya [fiziksel sunucular](./tutorial-discover-physical.md) için Azure geçişi bulma ve değerlendirme aracı 'nı kullanarak değerlendirme için şirket içi sunucuları keşfetme

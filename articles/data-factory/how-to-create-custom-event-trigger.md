@@ -4,15 +4,15 @@ description: Event Grid yayımlanan özel bir olaya yanıt olarak bir işlem hat
 ms.service: data-factory
 author: chez-charlie
 ms.author: chez
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 03/11/2021
-ms.openlocfilehash: e372808250b1d5b21cd5f6c5226922d5d6ad0f77
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2d2f26b24e7fa10d9244de8f99d78c64a44b3d61
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104610054"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104785657"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-a-custom-event-preview"></a>Özel bir olaya yanıt olarak bir işlem hattı çalıştıran bir tetikleyici oluşturma (Önizleme)
 
@@ -94,8 +94,8 @@ Aşağıdaki tabloda, özel olay tetikleyicilerle ilgili şema öğelerine genel
 | ---------------- | --------------- | -------- | ------------------ | ------------ |
 | **kapsam** | Olay Kılavuzu konusunun Azure Resource Manager kaynak KIMLIĞI. | Dize | Azure Resource Manager KIMLIĞI | Yes |
 | **olayları** | Bu tetikleyicinin tetiklenmesine neden olan olayların türü. | Dizeler dizisi    |  | Evet, en az bir değer beklenmektedir |
-| **subjectBeginsWith** | Konu alanının tetiklenmesi için belirtilen Düzenle başlaması gerekir. Örneğin, `factories` yalnızca ile başlayan olay konusu için tetikleyiciyi tetikleyin `factories` . | Dize   | | No |
-| **subjectEndsWith** | Konu alanının tetiklenmesi için belirtilen örüntüle bitmesi gerekir. | Dize   | | No |
+| **subjectBeginsWith** | Konu alanının tetiklenmesi için belirtilen Düzenle başlaması gerekir. Örneğin, `factories` yalnızca ile başlayan olay konusu için tetikleyiciyi tetikleyin `factories` . | Dize   | | Hayır |
+| **subjectEndsWith** | Konu alanının tetiklenmesi için belirtilen örüntüle bitmesi gerekir. | Dize   | | Hayır |
 
 ## <a name="role-based-access-control"></a>Rol tabanlı erişim denetimi
 

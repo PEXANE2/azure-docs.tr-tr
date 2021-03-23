@@ -1,22 +1,22 @@
 ---
-title: Azure AD 'yi uygulamalarla tümleştirmeyle çalışmaya başlama
+title: Azure Active Directory uygulamalarla tümleştirmeyle çalışmaya başlama
 description: Bu makale, Azure Active Directory (AD) Şirket içi uygulamalarla ve bulut uygulamalarıyla tümleştirmek için bir başlangıç kılavuzudur.
 services: active-directory
 author: kenwith
 manager: daveba
 ms.service: active-directory
+ms.subservice: app-mgmt
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/16/2018
+ms.date: 03/19/2021
 ms.author: kenwith
 ms.reviewer: asteen
-ms.openlocfilehash: 8b321acb00e6e9b4b6cca117afba8bf0c9432719
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: de06bb4f97568eaa40b0b09e9bc2b50608424aa8
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99258475"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775604"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Azure Active Directory uygulamalar ile tümleştirme kılavuzunu kullanmaya başlama
 
@@ -47,7 +47,7 @@ Uygulamaları Azure AD ile tümleştirmadan önce nerede olduğunuzu ve nereye g
   * Gruplarınız nasıl düzenlenir?
   * Grup üyeleri kim?
   * Şu anda grupları olan izinler/rol atamaları var mı?
-* Tümleştirmadan önce Kullanıcı/Grup veritabanlarını temizlemeniz gerekecek mi?  (Bu oldukça önemli bir sorudır. Çöp kutusu, atık çıkış.)
+* Tümleştirmadan önce Kullanıcı/Grup veritabanlarını temizlemeniz gerekecek mi?  (Bu önemli bir sorudır. Çöp kutusu, atık çıkış.)
 
 ### <a name="access-management-inventory"></a>Erişim yönetimi envanteri
 * Şu anda uygulamalara Kullanıcı erişimini nasıl yönetirsiniz? Bunun değiştirilmesi gerekiyor mu?  Örneğin [Azure RBAC](../../role-based-access-control/role-assignments-portal.md) gibi farklı erişimi yönetmenin diğer yollarını kabul etmeniz mi gerekiyor?
@@ -66,8 +66,19 @@ Aşağıdaki makalelerde, uygulamaların Azure AD ile tümleştirilmesine yönel
 * [Azure Uygulama galerisinde uygulama kullanma](what-is-single-sign-on.md)
 * [SaaS uygulamalarını tümleştirme öğreticiler listesi](../saas-apps/tutorial-list.md)
 
+## <a name="capabilities-for-apps-not-listed-in-the-azure-ad-gallery"></a>Azure AD galerisinde listelenmeyen uygulamalar için yetenekler
+
+Kuruluşunuzda zaten var olan herhangi bir uygulamayı veya Azure AD Galerisi 'nin parçası olmayan bir satıcıdan herhangi bir üçüncü taraf uygulamayı ekleyebilirsiniz. [Lisans sözleşmenize](https://azure.microsoft.com/pricing/details/active-directory/)bağlı olarak aşağıdaki yetenekler mevcuttur:
+
+- [Security assertion Markup Language (SAML) 2,0](https://wikipedia.org/wiki/SAML_2.0) kimlik sağlayıcılarını destekleyen tüm uygulamaların self servis TÜMLEŞTIRMESI (SP tarafından başlatılan veya IDP-başlatıldı)
+- [Parola tabanlı SSO](sso-options.md#password-based-sso) kullanarak HTML tabanlı bir oturum açma sayfasına sahip herhangi bir Web uygulamasının self servis tümleştirmesi
+- [Kullanıcı sağlaması Için etki alanları arası kimlik yönetimi (SCıM) protokolü Için sistemi](../app-provisioning/use-scim-to-provision-users-and-groups.md) kullanan uygulamaların Self Servis bağlantısı
+- [Office 365 uygulama başlatıcısı](https://www.microsoft.com/microsoft-365/blog/2014/10/16/organize-office-365-new-app-launcher-2/) veya [uygulamalarınızda](sso-options.md#linked-sign-on) herhangi bir uygulamaya bağlantı ekleme özelliği
+
+Özel uygulamaları Azure AD ile tümleştirme hakkında Geliştirici Kılavuzu arıyorsanız bkz. [Azure AD Için kimlik doğrulama senaryoları](../develop/authentication-vs-authorization.md). Kullanıcıların kimliğini doğrulamak için [OpenID Connect/OAuth](../develop/active-directory-v2-protocols.md) gibi modern bir protokol kullanan bir uygulama geliştirirken, Azure Portal [uygulama kayıtları](../develop/quickstart-register-app.md) deneyimini kullanarak Microsoft Identity platformuna kaydedebilirsiniz.
+
 ### <a name="authentication-types"></a>Kimlik doğrulama türleri
-Uygulamalarınızın her biri farklı kimlik doğrulama gereksinimlerine sahip olabilir. Azure AD ile imzalama sertifikaları, SAML 2,0, WS-Federation veya OpenID Connect protokollerinin yanı sıra parola çoklu oturum açma 'yı kullanan uygulamalarla kullanılabilir. Azure AD ile kullanım için uygulama kimlik doğrulama türleri hakkında daha fazla bilgi için bkz. Azure Active Directory ve [parola tabanlı çoklu oturum açma](what-is-single-sign-on.md) [içindeki federe tek Sign-On için sertifikaları yönetme](manage-certificates-for-federated-single-sign-on.md) .
+Uygulamalarınızın her biri farklı kimlik doğrulama gereksinimlerine sahip olabilir. Azure AD ile, imzalama sertifikaları SAML 2,0, WS-Federation veya OpenID Connect protokolleri ve parola çoklu oturum açma kullanan uygulamalarla kullanılabilir. Uygulama kimlik doğrulama türleri hakkında daha fazla bilgi için bkz. Azure Active Directory ve [parola tabanlı çoklu oturum açma](what-is-single-sign-on.md) [içindeki federe tek Sign-On için sertifikaları yönetme](manage-certificates-for-federated-single-sign-on.md) .
 
 ### <a name="enabling-sso-with-azure-ad-app-proxy"></a>Azure AD Uygulaması Proxy ile SSO 'yu etkinleştirme
 Microsoft Azure AD uygulama proxy 'Si ile, özel ağınızın içinde bulunan uygulamalara, her yerden ve herhangi bir cihazdan erişim sağlayabilirsiniz. Ortamınızda bir uygulama proxy Bağlayıcısı yükledikten sonra, Azure AD ile kolayca yapılandırılabilir.
@@ -85,11 +96,9 @@ Aşağıdaki makalelerde, Azure AD bağlayıcıları ve Azure AD 'yi kullanarak 
 * [Hesapları paylaşma](../enterprise-users/users-sharing-accounts.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Ayrıntılı bilgi için, [GitHub](../fundamentals/active-directory-deployment-plans.md)'dan Azure Active Directory dağıtım planlarını indirebilirsiniz. Galeri uygulamaları için, [Azure Portal](https://portal.azure.com)aracılığıyla çoklu oturum açma, koşullu erişim ve Kullanıcı sağlama için dağıtım planlarını indirebilirsiniz. 
+Ayrıntılı bilgi için, [GitHub](../fundamentals/active-directory-deployment-plans.md)'dan Azure Active Directory dağıtım planlarını indirebilirsiniz. Galeri uygulamaları için, [Azure Portal](https://portal.azure.com)aracılığıyla çoklu oturum açma, koşullu erişim ve Kullanıcı sağlama için dağıtım planlarını indirebilirsiniz.
 
 Azure portal bir dağıtım planı indirmek için:
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. **Kurumsal uygulamaları** seçin  |  **bir uygulama**  |  **dağıtım planı** seçin.
-
-Lütfen [dağıtım planı anketini](https://aka.ms/DeploymentPlanFeedback)alarak dağıtım planlarında geri bildirim sağlayın.

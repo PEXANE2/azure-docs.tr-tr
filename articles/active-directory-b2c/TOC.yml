@@ -496,6 +496,7 @@
       href: custom-policy-developer-notes.md
     - name: Sayfa düzeni sürümleri
       href: page-layout.md
+      displayName: Page version
     - name: Bölge kullanılabilirliği ve veri yerleşikliği
       href: data-residency.md
     - name: Dayanıklılığı gözeterek oluşturma

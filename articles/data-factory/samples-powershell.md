@@ -4,15 +4,15 @@ description: Azure PowerShell örnekleri-veri fabrikaları oluşturmanıza ve y�
 ms.service: data-factory
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 03/16/2021
-ms.openlocfilehash: 99b7725f4b693b3eb42444dca1516bdcef34b8a7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 21ab661dd19d76526cd97b75660b9749e1342e09
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104595558"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104783243"
 ---
 # <a name="azure-powershell-samples-for-azure-data-factory"></a>Azure Data Factory için Azure PowerShell örnekleri
 
@@ -20,7 +20,7 @@ ms.locfileid: "104595558"
 
 Aşağıdaki tablo, Azure Data Factory için örnek Azure PowerShell betiklerinin bağlantılarını içerir.
 
-| Komut Dosyası | Description  |
+| Komut Dosyası | Açıklama  |
 |---|---|
 |**Verileri kopyalama**||
 |[Blob 'ları bir klasörden bir Azure Blob depolama alanındaki başka bir klasöre kopyalama](scripts/copy-azure-blob-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bu PowerShell betiği, Blobları Azure Blob depolama alanındaki bir klasörden aynı BLOB depolama alanındaki başka bir klasöre kopyalar. |

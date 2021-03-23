@@ -1,24 +1,14 @@
 ---
 title: Taban çizgisi ve özel denetimler
 description: IoT temeli için Azure Defender kavramı hakkında bilgi edinin.
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: mlottner
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/07/2019
-ms.author: mlottner
-ms.openlocfilehash: bced45474a3a851bc5785f662c0b2e50ae3a380c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1b8b9d62918e40262da6b3df48d0fece842e050f
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103491087"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779367"
 ---
 # <a name="azure-defender-for-iot-baseline-and-custom-checks"></a>IoT için Azure Defender temel ve özel denetimler
 
@@ -66,7 +56,7 @@ Temel özel denetimleri yapılandırmak için:
 
 ## <a name="baseline-custom-check-properties"></a>Taban çizgisi özel denetim özellikleri
 
-| Name| Durum | Geçerli değerler| Varsayılan değerler| Description |
+| Name| Durum | Geçerli değerler| Varsayılan değerler| Açıklama |
 |------|-----|------|-----|-----|
 |baselineCustomChecksEnabled|Gerekli: true |Geçerli değerler: **Boolean** |Varsayılan değer: **false** |Yüksek öncelikli iletiler gönderilmeden önce en uzun zaman aralığı.|
 |baselineCustomChecksFilePath |Gerekli: true|Geçerli değerler: **String**, **null** |Varsayılan değer: **null** |Taban çizgisi XML yapılandırmasının tam yolu|

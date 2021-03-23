@@ -323,6 +323,8 @@
           href: /azure/azure-monitor/logs/query-optimization
     - name: UEBA zenginleştirmeleri
       href: ueba-enrichments.md
+    - name: CEF günlük alanı eşleme
+      href: cef-name-mapping.md
 - name: Kaynaklar
   items:
     - name: Yararlı kaynaklar

@@ -1,18 +1,14 @@
 ---
 title: Tüm kurumsal sensörler tarafından bulunan cihazlar hakkında bilgi edinin
 description: Bağlı sensörlerden cihaz bilgilerinin kapsamlı bir görünümünü almak için şirket içi yönetim konsolunda cihaz envanterini kullanın. Bu bilgileri yönetmek için içeri aktarma, dışarı aktarma ve filtreleme araçlarını kullanın.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/02/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 9da5c8c89ee124e527584164b21b096ac815e5ca
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0ae59123b59cfb54cba2a2ee9bdeefb411c8793b
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100524034"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782189"
 ---
 # <a name="investigate-all-enterprise-sensor-detections-in-the-device-inventory"></a>Cihaz envanterindeki tüm kurumsal algılayıcı algılamalarını araştırın
 
@@ -155,76 +151,6 @@ Cihaz envanterini filtrelemek için:
 
 5. Filtre tanımlarını değiştirmek için tanımları değiştirin ve **Değişiklikleri Kaydet**' i seçin.
 
-## <a name="view-device-information-per-zone"></a>Her bölge için cihaz bilgilerini görüntüleme
-
-Bir bölgedeki cihazlarla ilgili olarak aşağıdaki bilgileri öğrenebilirsiniz.
-
-### <a name="view-a-device-map"></a>Bir cihaz haritasını görüntüleme
-
-Seçili bir bölge için bir algılayıcı cihaz haritasını görüntülemek için:
-
-- **Site yönetimi** penceresinde, bölge adını Içeren çubuktan **bölge haritasını görüntüle** ' yi seçin.
-
-  :::image type="content" source="media/how-to-work-with-asset-inventory-information/default-region-to-default-business-unit-v2.png" alt-text="Varsayılan bölge varsayılan iş birimidir.":::
-
-**Cihaz Haritası** penceresi görüntülenir. Bu, algılayıcı, bunlara bağlı cihazlar ve diğer bilgiler dahil olmak üzere seçili bölge ile ilgili tüm ağ öğelerini gösterir.
-
-:::image type="content" source="media/how-to-work-with-asset-inventory-information/zone-map-screenshot.png" alt-text="Bölge eşlemesinin ekran görüntüsü.":::
-
-Haritalardan cihazları ve cihaz bilgilerini görüntülemek için aşağıdaki araçlar kullanılabilir. Bu özelliklerin her biri hakkında ayrıntılı bilgi için bkz. *IoT Platformu Için Defender Kullanıcı Kılavuzu*.
-
-- **Harita yakınlaştırma görünümleri**: Basitleştirilmiş görünüm, bağlantılar görünümü ve ayrıntılı görünüm. Görüntülenmiş harita görünümü haritanın yakınlaştırma düzeyine bağlı olarak değişir. Yakınlaştırma düzeylerini ayarlayarak harita görünümleri arasında geçiş yapabilirsiniz.
-
-  :::image type="icon" source="media/how-to-work-with-asset-inventory-information/zoom-icon.png" border="false":::
-
-- **Harita arama ve Düzen araçları**: değişen ağ kesimlerini, cihazları, cihaz gruplarını veya katmanları göstermek için kullanılan araçlar.
-
-  :::image type="content" source="media/how-to-work-with-asset-inventory-information/search-and-layout-tools.png" alt-text="Arama ve yerleşim araçları görünümünün ekran görüntüsü.":::
-
-- **Cihazlarda Etiketler ve göstergeler:** Örneğin, bir BT ağındaki bir alt ağda gruplandırılan cihazların sayısı. Bu örnekte 8 ' dir.
-
-  :::image type="content" source="media/how-to-work-with-asset-inventory-information/labels-and-indicators.png" alt-text="Etiketlerin ve göstergelerin ekran görüntüsü.":::
-
-- **Cihaz özelliklerini görüntüle**: Örneğin, cihazı izleyen algılayıcı ve temel cihaz özellikleri. Cihaz özelliklerini görüntülemek için cihaza sağ tıklayın.
-
-  :::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-properties-v2.png" alt-text="Cihaz özellikleri görünümünün ekran görüntüsü.":::
-
-- **Bir cihazla Ilişkili uyarı:** İlgili uyarıları görüntülemek için cihaza sağ tıklayın.
-
-  :::image type="content" source="media/how-to-work-with-asset-inventory-information/show-alerts.png" alt-text="Uyarıları göster görünümünün ekran görüntüsü.":::
-
-### <a name="view-alerts-associated-with-a-zone"></a>Bir bölgeyle ilişkili uyarıları görüntüleme
-
-Belirli bir bölgeyle ilişkili uyarıları görüntülemek için:
-
-- **Bölge** penceresini oluşturan uyarı simgesini seçin. 
-
-  :::image type="content" source="media/how-to-work-with-asset-inventory-information/business-unit-view-v2.png" alt-text="Örneklerle varsayılan Iş birimi görünümü.":::
-
-Daha fazla bilgi için bkz. [genel bakış: uyarılarla çalışma](how-to-work-with-alerts-on-premises-management-console.md).
-
-### <a name="view-the-device-inventory-of-a-zone"></a>Bir bölgenin cihaz envanterini görüntüleme
-
-Belirli bir bölgeyle ilişkili cihaz envanterini görüntülemek için:
-
-- **Bölge** penceresinden **cihaz envanterini görüntüle** ' yi seçin.
-
-  :::image type="content" source="media/how-to-work-with-asset-inventory-information/default-business-unit.png" alt-text="Cihaz envanteri ekranı görüntülenir.":::
-
-Daha fazla bilgi için bkz. [cihaz envanterinde tüm kurumsal algılayıcı algılamalarını araştırın](how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md).
-
-### <a name="view-additional-zone-information"></a>Ek bölge bilgilerini görüntüle
-
-Aşağıdaki ek bölge bilgileri kullanılabilir:
-
-- **Bölge ayrıntıları**: Bölgeyle ilişkili cihaz, uyarı ve algılayıcı sayısını görüntüleyin.
-
-- **Algılayıcı ayrıntıları**: bölgeye atanan her algılayıcının adını, IP adresini ve sürümünü görüntüleyin.
-
-- **Bağlantı durumu**: bir algılayıcı bağlantısı kesilirse sensörden bağlanın. Bkz. [Şirket içi yönetim konsoluna algılayıcıların bağlanmasını sağlar](how-to-activate-and-set-up-your-on-premises-management-console.md#connect-sensors-to-the-on-premises-management-console). 
-
-- **Güncelleştirme ilerlemesi**: bağlı algılayıcı yükseltiliyorsa, yükseltme durumları görüntülenir. Yükseltme sırasında şirket içi yönetim konsolu, algılayıcıdan cihaz bilgilerini almaz.
-
-## <a name="see-also"></a>Ayrıca bkz.
+## <a name="next-steps"></a>Sonraki adımlar
 
 [Bir cihaz envanterinde algılayıcı algılamalarını araştırma](how-to-investigate-sensor-detections-in-a-device-inventory.md)

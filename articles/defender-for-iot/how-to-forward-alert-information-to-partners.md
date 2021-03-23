@@ -1,18 +1,14 @@
 ---
 title: Uyarı bilgilerini iletme
 description: İletme kurallarıyla çalışarak, iş ortağı sistemlerine uyarı bilgileri gönderebilirsiniz.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/02/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 0b71f7ca3f812de1514612f8b0dd5915f3f81bc4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: bc405f7d4837bf81d9cfcd859d562b7152cfc54b
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100522742"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104778806"
 ---
 # <a name="forward-alert-information"></a>Uyarı bilgilerini iletme
 
@@ -112,7 +108,7 @@ Aşağıdaki parametreleri girin:
     
 :::image type="content" source="media/how-to-work-with-alerts-sensor/configure-encryption.png" alt-text="İletme kuralınız için şifrelemeyi yapılandırın.":::
 
-| Syslog metin iletisi çıkış alanları | Description |
+| Syslog metin iletisi çıkış alanları | Açıklama |
 |--|--|
 | Tarih ve saat | Syslog sunucusu makinesinin bilgileri aldığı tarih ve saat. |
 | Öncelik | Kullanıcı. Alert |
@@ -121,7 +117,7 @@ Aşağıdaki parametreleri girin:
 | İleti | Algılayıcı: algılayıcı adı.<br /> Uyarı: uyarının başlığı.<br /> Tür: uyarının türü. **Protokol ihlali**, **ilke ihlali**, **kötü amaçlı yazılım**, **anomali** veya **işletimsel** olabilir.<br /> Önem derecesi: uyarının önem derecesi. **Uyarı**, **İkincil**, **büyük** veya **kritik** olabilir.<br /> Kaynak: kaynak cihaz adı.<br /> Kaynak IP: kaynak cihaz IP adresi.<br /> Hedef: hedef cihaz adı.<br /> Hedef IP: hedef cihazın IP adresi.<br /> İleti: uyarının iletisi.<br /> Uyarı grubu: uyarıyla ilişkili olan uyarı grubu. |
 
 
-| Syslog nesne çıktısı | Description |
+| Syslog nesne çıktısı | Açıklama |
 |--|--|
 | Tarih ve Saat |   Syslog sunucusu makinesinin bilgileri aldığı tarih ve saat. |  
 | Öncelik |    Kullanıcı. Alert | 
@@ -129,14 +125,14 @@ Aşağıdaki parametreleri girin:
 | İleti | Algılayıcı adı: Gereç adı. <br /> Uyarı Zamanı: uyarının algılandığı zaman: Syslog Sunucu makinesi zamanından farklı olabilir ve iletme kuralının saat dilimi yapılandırmasına bağlıdır. <br /> Uyarı başlığı: uyarının başlığı. <br /> Uyarı iletisi: uyarının iletisi. <br /> Uyarı önem derecesi: uyarının önem derecesi: **Uyarı**, **İkincil**, **büyük** veya **kritik**. <br /> Uyarı türü: **protokol ihlali**, **ilke ihlali**, **kötü amaçlı yazılım**, **anomali** veya **işletimsel**. <br /> Protokol: uyarının protokolü.  <br /> **Source_MAC**: IP adresi, adı, satıcı veya kaynak cihazın işletim sistemi. <br /> Destination_MAC: IP adresi, adı, satıcı veya hedefin işletim sistemi. Veriler eksikse **değer yok olur.** <br /> alert_group: uyarıyla ilişkili olan uyarı grubu. |
 
 
-| Syslog CEF çıkış biçimi | Description |
+| Syslog CEF çıkış biçimi | Açıklama |
 |--|--|
 | Tarih ve saat | Syslog sunucusu makinesinin bilgileri aldığı tarih ve saat. |
 | Öncelik | Kullanıcı. Alert | 
 | Konak adı | Algılayıcı IP adresi |
 | İleti | CEF: 0 <br />IoT için Azure Defender <br />Algılayıcı adı: algılayıcı gerecinin adı. <br />Algılayıcı sürümü <br />Uyarı başlığı: uyarının başlığı. <br />Msg: uyarının iletisi. <br />protokol: uyarının protokolü. <br />önem derecesi: **Uyarı**, **İkincil**, **büyük** veya **kritik**. <br />Tür: **protokol ihlali**, **ilke ihlali**, **kötü amaçlı yazılım**, **anomali** veya **işletimsel**. <br /> başlangıç: uyarının algılandığı zaman. <br />Syslog Sunucu makinesi zamanından farklı olabilir ve iletme kuralının saat dilimi yapılandırmasına bağlıdır. <br />src_ip: kaynak cihazın IP adresi.  <br />dst_ip: hedef cihazın IP adresi.<br />Cat: uyarıyla ilişkili olan uyarı grubu.  |
 
-| Syslog LEEF çıkış biçimi | Description |
+| Syslog LEEF çıkış biçimi | Açıklama |
 |--|--|
 | Tarih ve saat |   Syslog sunucusu makinesinin bilgileri aldığı tarih ve saat. |  
 | Öncelik |    Kullanıcı. Alert | 

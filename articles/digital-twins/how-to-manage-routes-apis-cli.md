@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b0e440f9fe0b7ce1591318362ac0419b9aa01baf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 97fad1b984ad34722a952a31d8245eb68417a2ab
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102433310"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779979"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Azure dijital TWINS 'te uç noktaları ve yolları yönetme (API 'Ler ve CLı)
 
@@ -237,6 +237,9 @@ Bitiş noktaları, filtrelemeden Azure dijital TWINS 'ten çeşitli olaylar alı
 * Yaşam döngüsü olayları, TWINS veya ilişkiler oluşturulduğunda veya silindiğinde tetiklenir
 
 Olay yolıza bir uç nokta için **filtre** ekleyerek gönderilmekte olan olayları kısıtlayabilirsiniz.
+
+>[!NOTE]
+> Filtreler **büyük/küçük harfe duyarlıdır** ve yük durumuyla eşleşmesi gerekir (model durumuyla eşleşmeyebilir).
 
 Bir filtre eklemek için, aşağıdaki gövdeyi kullanarak *https://{-Azure-Digital-Twins-hostname}/eventRoutes/{Event-Route-Name}. api-Version = 2020-10-31* IÇIN bir PUT isteği kullanabilirsiniz:
 

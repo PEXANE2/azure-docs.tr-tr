@@ -236,6 +236,9 @@
   items:
     - name: Azure PowerShell
       href: /powershell/module/az.migrate/
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Kaynaklar
   items:
     - name: Bulut Benimseme Çerçevesi kapsamında geçiş

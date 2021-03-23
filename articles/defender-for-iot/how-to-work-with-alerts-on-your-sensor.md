@@ -1,22 +1,18 @@
 ---
-title: Sensörinizdeki uyarılarla çalışma
+title: Algılayıcı uyarıları hakkında
 description: Ağınızın güvenliğini ve çalışmasını geliştirmenize yardımcı olması için uyarılarla çalışın.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 11/30/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 00207ffb8480ae99c2f1aad74183fca9ea45ee17
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 178d3aedb44c29f53aab481894defeb4b9355d39
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100523558"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781356"
 ---
-# <a name="work-with-alerts-on-your-sensor"></a>Sensörinizdeki uyarılarla çalışma
+# <a name="about-sensor-alerts"></a>Algılayıcı uyarıları hakkında
 
-Ağınızın güvenliğini ve çalışmasını geliştirmenize yardımcı olması için uyarılarla çalışın. Uyarılar hakkında bilgi sağlar:
+Uyarılar, ağınızın güvenliğini ve çalışmasını geliştirmenize yardımcı olur. Uyarılar hakkında bilgi sağlar:
 
 - Yetkili ağ etkinliğinin sapmaları
 
@@ -48,7 +44,7 @@ Uyarı araştırmasını geliştirmenize ve hızlandırmanıza yardımcı olan e
 
 Algılayıcı motorları ağ trafiğinden ve ilgilenmeniz gereken davranıştaki değişiklikleri tespit edildiğinde uyarılar tetiklenir. Bu makalede, her altyapının tetiklediği Uyarı türleri açıklanmaktadır.
 
-| Uyarı türü | Description |
+| Uyarı türü | Açıklama |
 |-|-|
 | İlke ihlali uyarıları | Ilke Ihlali altyapısı, daha önce öğrenilen trafikten sapma algıladığında tetiklenir. Örnek: <br /> -Yeni bir cihaz algılandı.  <br /> -Bir cihazda yeni bir yapılandırma algılandı. <br /> -Programlama cihazı olarak tanımlanmayan bir cihaz, programlama değişikliğini yürütür. <br /> -Bir bellenim sürümü değişti. |
 | Protokol ihlali uyarıları | Protokol Ihlali altyapısı, protokol belirtimine uymayan paket yapılarını veya alan değerlerini algıladığında tetiklenir. | 

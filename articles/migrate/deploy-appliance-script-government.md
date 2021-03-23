@@ -5,47 +5,46 @@ author: vikram1988
 ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
-ms.date: 04/16/2020
-ms.openlocfilehash: 6778c8e5e1e4fa83d34141fd13ba21d483ab76e9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/13/2021
+ms.openlocfilehash: c4ca8d8ac24ac174158957e44b5eabe4a89a5340
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102041357"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775213"
 ---
 # <a name="set-up-an-appliance-in-azure-government"></a>Azure Kamu 'da gereç ayarlama 
 
-Bir Azure Kamu bulutundaki VMware VM 'Leri, Hyper-V VM 'Leri ve fiziksel sunucular için bir [Azure geçiş](./migrate-appliance-architecture.md) gereci dağıtmak üzere bu makaleye uyun. Gereci oluşturmak için bir komut dosyası çalıştırın ve Azure 'a bağlanabildiğini doğrulayın. Genel bulutta bir gereç kurmak istiyorsanız [Bu makaleyi](deploy-appliance-script.md)izleyin.
+Bir Azure Kamu bulutundaki VMware ortamındaki sunucular, Hyper-V ve fiziksel sunuculardaki sunucular için bir [Azure geçiş](./migrate-appliance-architecture.md) gereci dağıtmak üzere bu makaleyi izleyin. Gereci oluşturmak için bir komut dosyası çalıştırın ve Azure 'a bağlanabildiğini doğrulayın. Genel bulutta bir gereç kurmak istiyorsanız [Bu makaleyi](deploy-appliance-script.md)izleyin.
 
 
 > [!NOTE]
-> Şablonu kullanarak bir gereci dağıtma seçeneği (VMware VM 'Leri ve Hyper-V VM 'Leri için) Azure Kamu 'da desteklenmez.
+> Bir cihazı kullanarak (VMware ortamındaki sunucular ve Hyper-V ortamındaki sunucular için) bir gereç dağıtma seçeneği, Azure Kamu 'da desteklenmez.
 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Betik, mevcut bir fiziksel makineye veya VM 'ye Azure geçişi gereci ayarlar.
+Betik, Azure geçişi gerecini mevcut bir fiziksel sunucuda veya sanallaştırılmış bir sunucuda ayarlar.
 
-- Gereç işlevi görecek makinenin Windows Server 2016, 32 GB bellek, 5. disk depolaması ve bir dış sanal anahtar ile birlikte sekiz V80 CPU çalıştırması gerekir. Statik veya dinamik bir IP adresi ve internet erişimi gerektirir.
-- Gereci dağıtmadan önce, [VMware VM 'leri](migrate-appliance.md#appliance---vmware), [Hyper-V VM 'leri](migrate-appliance.md#appliance---hyper-v)ve [fiziksel sunucular](migrate-appliance.md#appliance---physical)için ayrıntılı gereç gereksinimlerini gözden geçirin.
+- Gereç işlevi görecek sunucu Windows Server 2016 ' i, 32 GB bellek, 5. disk depolaması ve bir dış sanal anahtar ile birlikte sekiz V80 CPU ile çalıştırıyor olmalıdır. Statik veya dinamik bir IP adresi ve internet erişimi gerektirir.
+- Gereci dağıtmadan önce, VMware, [Hyper-V](migrate-appliance.md#appliance---hyper-v)ve [fiziksel sunuculardaki](migrate-appliance.md#appliance---physical) [sunucular](migrate-appliance.md#appliance---vmware)için ayrıntılı gereç gereksinimlerini gözden geçirin.
 - Betiği mevcut bir Azure geçiş gereci üzerinde çalıştırmayın.
 
 ## <a name="set-up-the-appliance-for-vmware"></a>VMware için gereci ayarlama
 
-VMware için gereci ayarlamak üzere Azure portal daraltılmış bir dosya indirir ve içeriği ayıklayabilir. Gereç Web uygulamasını başlatmak için PowerShell betiğini çalıştırın. Gereci ayarlayın ve ilk kez yapılandırın. Ardından, gereci Azure geçişi projesi ile kaydedersiniz.
+VMware için gereci ayarlamak üzere Azure portal daraltılmış bir dosya indirir ve içeriği ayıklayabilir. Gereç Web uygulamasını başlatmak için PowerShell betiğini çalıştırın. Gereci ayarlayın ve ilk kez yapılandırın. Ardından, gereci projeye kaydedersiniz.
 
 ### <a name="download-the-script"></a>Betiği indir
 
-1.  **Geçiş hedefleri**  >  **sunucuları**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde **keşfet**' e tıklayın.
-2.  Makinelerde **bulunan makinelerde**  >  **makineler sanallaştırılmış mı?**, **VMware vSphere hiper yöneticiyle Evet '** i seçin.
-3.  Sıkıştırılmış dosyayı indirmek için **İndir**' e tıklayın. 
-
+1. **Geçiş hedefleri**  >  **Windows, Linux ve SQL Server**  >  **Azure geçişi: bulma ve değerlendirme** için **bul**' a tıklayın.
+2. **Sunucu bul**'da  >  **sunucularınız sanallaştırılmış mı?**, **VMware vSphere hiper yöneticiyle Evet '** i seçin.
+3. Sıkıştırılmış dosyayı indirmek için **İndir**' e tıklayın.
 
 ### <a name="verify-file-security"></a>Dosya güvenliğini doğrula
 
 Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
 
-1. Dosyayı indirdiğiniz makinede yönetici komut penceresi açın.
+1. Dosyayı indirdiğiniz sunucuda, bir yönetici komut penceresi açın.
 2. Daraltılmış dosyanın karmasını oluşturmak için aşağıdaki komutu çalıştırın
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Örnek: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMWare-USGov.zip SHA256```
@@ -71,10 +70,10 @@ Komut dosyası şu şekildedir:
 
 Betiği çalıştırmak için:
 
-1. Sıkıştırılmış dosyayı, gereci barındıracak makinedeki bir klasöre ayıklayın. Betiği mevcut bir Azure geçişi gereci üzerinde bir makinede çalıştırmayın emin olun.
-2. Makinede, yönetici (yükseltilmiş) ayrıcalıklarla PowerShell 'i başlatın.
+1. Sıkıştırılmış dosyayı, Gereç barındıracak sunucuda bir klasöre ayıklayın. Betiği, mevcut bir Azure geçiş gereci ile bir sunucuda çalıştırmayın.
+2. Yönetici (yükseltilmiş) ayrıcalıklarla sunucuda PowerShell 'i başlatın.
 3. PowerShell dizinini, indirilen sıkıştırılmış dosyadan ayıklanan içerikleri içeren klasör olarak değiştirin.
-4. Komut dosyası **AzureMigrateInstaller.ps1** aşağıdaki gibi çalıştırın: 
+4. Komut dosyası **AzureMigrateInstaller.ps1** aşağıdaki gibi çalıştırın:
     
     ``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-VMWare-USGov>.\AzureMigrateInstaller.ps1 ```
 1. Betik başarıyla çalıştıktan sonra gereci ayarlayabilmeniz için gereç Web uygulamasını başlatır. Herhangi bir sorunla karşılaşırsanız, C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log konumundaki betik günlüklerini gözden geçirin.
@@ -86,12 +85,12 @@ Gerecin [kamu bulutları](migrate-appliance.md#government-cloud-urls)Için Azure
 
 ## <a name="set-up-the-appliance-for-hyper-v"></a>Hyper-V için gereci ayarlama
 
-Hyper-V için gereci ayarlamak üzere Azure portal daraltılmış bir dosya indirir ve içeriği ayıklayabilir. Gereç Web uygulamasını başlatmak için PowerShell betiğini çalıştırın. Gereci ayarlayın ve ilk kez yapılandırın. Ardından, gereci Azure geçişi projesi ile kaydedersiniz.
+Hyper-V için gereci ayarlamak üzere Azure portal daraltılmış bir dosya indirir ve içeriği ayıklayabilir. Gereç Web uygulamasını başlatmak için PowerShell betiğini çalıştırın. Gereci ayarlayın ve ilk kez yapılandırın. Ardından, gereci projeye kaydedersiniz.
 
 ### <a name="download-the-script"></a>Betiği indir
 
-1.  **Geçiş hedefleri**  >  **sunucuları**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde **keşfet**' e tıklayın.
-2.  Makinelerde **bulunan makineler**  >  **sanallaştırılmış mı?**, **Hyper-V ile Evet '** i seçin.
+1.  **Geçiş hedefleri**  >  **Windows, Linux ve SQL Server**  >  **Azure geçişi: bulma ve değerlendirme** için **bul**' a tıklayın.
+2.  Sunucuları **bul**' da  >  **sunucularınız sanallaştırılır mi?**, **Hyper-V ile Evet '** i seçin.
 3.  Sıkıştırılmış dosyayı indirmek için **İndir**' e tıklayın. 
 
 
@@ -99,7 +98,7 @@ Hyper-V için gereci ayarlamak üzere Azure portal daraltılmış bir dosya indi
 
 Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
 
-1. Dosyayı indirdiğiniz makinede yönetici komut penceresi açın.
+1. Dosyayı indirdiğiniz sunucuda, bir yönetici komut penceresi açın.
 2. Daraltılmış dosyanın karmasını oluşturmak için aşağıdaki komutu çalıştırın
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Örnek: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-HyperV-USGov.zip SHA256```
@@ -126,8 +125,8 @@ Komut dosyası şu şekildedir:
 
 Betiği çalıştırmak için:
 
-1. Sıkıştırılmış dosyayı, gereci barındıracak makinedeki bir klasöre ayıklayın. Betiği mevcut bir Azure geçişi gereci üzerinde bir makinede çalıştırmayın emin olun.
-2. Makinede, yönetici (yükseltilmiş) ayrıcalıklarla PowerShell 'i başlatın.
+1. Sıkıştırılmış dosyayı, Gereç barındıracak sunucuda bir klasöre ayıklayın. Betiği, var olan bir Azure geçiş gereci çalıştıran bir sunucuda çalıştırmayın emin olun.
+2. Yönetici (yükseltilmiş) ayrıcalıklarla sunucuda PowerShell 'i başlatın.
 3. PowerShell dizinini, indirilen sıkıştırılmış dosyadan ayıklanan içerikleri içeren klasör olarak değiştirin.
 4. Komut dosyası **AzureMigrateInstaller.ps1** aşağıdaki gibi çalıştırın: 
 
@@ -141,20 +140,19 @@ Gerecin [kamu bulutları](migrate-appliance.md#government-cloud-urls)Için Azure
 
 ## <a name="set-up-the-appliance-for-physical-servers"></a>Fiziksel sunucular için gereci ayarlama
 
-VMware için gereci ayarlamak üzere Azure portal daraltılmış bir dosya indirir ve içeriği ayıklayabilir. Gereç Web uygulamasını başlatmak için PowerShell betiğini çalıştırın. Gereci ayarlayın ve ilk kez yapılandırın. Ardından, gereci Azure geçişi projesi ile kaydedersiniz.
+VMware için gereci ayarlamak üzere Azure portal daraltılmış bir dosya indirir ve içeriği ayıklayabilir. Gereç Web uygulamasını başlatmak için PowerShell betiğini çalıştırın. Gereci ayarlayın ve ilk kez yapılandırın. Ardından, gereci projeye kaydedersiniz.
 
 ### <a name="download-the-script"></a>Betiği indir
 
-1.  **Geçiş hedefleri**  >  **sunucuları**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde **keşfet**' e tıklayın.
-2.  Makinelerde **bulunan makineler**  >  **sanallaştırılmış mi?**, **sanallaştırılmamış/diğer**' i seçin.
-3.  Sıkıştırılmış dosyayı indirmek için **İndir**' e tıklayın. 
-
+1. **Geçiş hedefleri**  >  **Windows, Linux ve SQL Server**  >  **Azure geçişi: bulma ve değerlendirme** için **bul**' a tıklayın.
+2. Sunucuları **bul**' da  >  **sunucularınız sanallaştırılır mi?**, **sanallaştırılmış/diğer** seçeneğini belirleyin.
+3. Sıkıştırılmış dosyayı indirmek için **İndir**' e tıklayın.
 
 ### <a name="verify-file-security"></a>Dosya güvenliğini doğrula
 
 Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
 
-1. Dosyayı indirdiğiniz makinede yönetici komut penceresi açın.
+1. Dosyayı indirdiğiniz sunucularda, bir yönetici komut penceresi açın.
 2. Daraltılmış dosyanın karmasını oluşturmak için aşağıdaki komutu çalıştırın
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Örnek: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip SHA256```
@@ -180,10 +178,10 @@ Komut dosyası şu şekildedir:
 
 Betiği çalıştırmak için:
 
-1. Sıkıştırılmış dosyayı, gereci barındıracak makinedeki bir klasöre ayıklayın. Betiği mevcut bir Azure geçişi gereci üzerinde bir makinede çalıştırmayın emin olun.
-2. Makinede, yönetici (yükseltilmiş) ayrıcalıklarla PowerShell 'i başlatın.
+1. Sıkıştırılmış dosyayı, Gereç barındıracak sunucuda bir klasöre ayıklayın. Betiği, var olan bir Azure geçiş gereci çalıştıran bir sunucuda çalıştırmayın emin olun.
+2. Yönetici (yükseltilmiş) ayrıcalıklarla sunucuda PowerShell 'i başlatın.
 3. PowerShell dizinini, indirilen sıkıştırılmış dosyadan ayıklanan içerikleri içeren klasör olarak değiştirin.
-4. Komut dosyası **AzureMigrateInstaller.ps1** aşağıdaki gibi çalıştırın: 
+4. Komut dosyası **AzureMigrateInstaller.ps1** aşağıdaki gibi çalıştırın:
 
     ``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>.\AzureMigrateInstaller.ps1 ```
 1. Betik başarıyla çalıştıktan sonra gereci ayarlayabilmeniz için gereç Web uygulamasını başlatır. Herhangi bir sorunla karşılaşırsanız, C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log konumundaki betik günlüklerini gözden geçirin.
@@ -194,7 +192,7 @@ Gerecin [kamu bulutları](migrate-appliance.md#government-cloud-urls)Için Azure
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Gereci dağıttıktan sonra, ilk kez yapılandırmanız ve Azure geçişi projesine kaydetmeniz gerekir.
+Gereci dağıttıktan sonra, ilk kez yapılandırmanız ve projeye kaydetmeniz gerekir.
 
 - [VMware](how-to-set-up-appliance-vmware.md#4-configure-the-appliance)için gereç ayarlayın.
 - [Hyper-V](how-to-set-up-appliance-hyper-v.md#configure-the-appliance)için gereci ayarlayın.

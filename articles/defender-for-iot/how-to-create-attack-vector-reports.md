@@ -1,18 +1,14 @@
 ---
 title: Saldırı vektör raporları oluşturma
 description: Saldırı vektör raporları, açıktan yararlanılabilecek bir cihaz güvenlik açığı zincirinin grafik gösterimini sağlar.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/17/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: e22bf80cd9dbcd80a0de84fd5d044354b1fc4e2d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6c178f379561ca4a572a7ae8f556ae6753d6e2be
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100522334"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784382"
 ---
 # <a name="attack-vector-reporting"></a>Saldırı vektörü raporlaması
 

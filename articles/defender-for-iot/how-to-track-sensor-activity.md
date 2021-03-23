@@ -1,18 +1,14 @@
 ---
 title: Algılayıcı etkinliğini izleme
 description: Olay zaman çizelgesi, ağınızda algılanan etkinlikleri, uyarılar ve uyarı Yönetim eylemleri, ağ olayları ve Kullanıcı oturum açma ve Kullanıcı silme gibi kullanıcı işlemleri dahil olmak üzere bir zaman çizelgesi gösterir.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/10/2020
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: 6dbe15da85a85303742ef28c7ca609755193f25e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 195908001fbd247ed2e0fa007bc8dcd5ebf28e60
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100523609"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781628"
 ---
 # <a name="track-sensor-activity"></a>Algılayıcı etkinliğini izleme
 

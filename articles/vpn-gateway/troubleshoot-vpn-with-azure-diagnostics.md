@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: stegag
-ms.openlocfilehash: 4e65dcd448a2ab2fad635cab12f41d858416becf
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 232e084e44696c6aa88a9dd33092c48a96e35f85
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104726109"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104772017"
 ---
 # <a name="troubleshoot-azure-vpn-gateway-using-diagnostic-logs"></a>Tanılama günlüklerini kullanarak Azure VPN Gateway sorunlarını giderme
 
@@ -24,11 +24,11 @@ Aşağıdaki Günlükler Azure 'da kullanılabilir:
 
 |***Ad** _ | _ *_Açıklaması_** |
 |---        | ---               |
-|**GatewayDiagnosticLog** | Ağ Geçidi yapılandırma olayları, birincil değişiklikler ve bakım olayları için tanılama günlüklerini içerir |
-|**Tüneldiagnosticlog** | Tünel durumu değişikliği olaylarını içerir. Tünel bağlantısı/bağlantı kesme olayları, uygunsa durum değişikliği için özetlenen bir nedene sahiptir |
-|**RouteDiagnosticLog** | Ağ geçidinde gerçekleşen statik rotalara ve BGP olaylarına yapılan değişiklikleri günlüğe kaydeder |
-|**Ikediagnosticlog** | Ağ geçidinde ıKE denetim iletilerini ve olaylarını günlüğe kaydeder |
-|**P2SDiagnosticLog** | Ağ geçidinde Noktadan siteye denetim iletilerini ve olaylarını günlüğe kaydeder |
+|**GatewayDiagnosticLog** | Ağ Geçidi yapılandırma olayları, birincil değişiklikler ve bakım olayları için tanılama günlükleri içerir. |
+|**Tüneldiagnosticlog** | Tünel durumu değişikliği olaylarını içerir. Tünel bağlantısı/bağlantı kesme olayları, uygunsa durum değişikliği için özetlenen bir nedene sahiptir. |
+|**RouteDiagnosticLog** | Ağ geçidinde gerçekleşen statik rotalara ve BGP olaylarına yapılan değişiklikleri günlüğe kaydeder. |
+|**Ikediagnosticlog** | Ağ geçidinde ıKE denetim iletilerini ve olaylarını günlüğe kaydeder. |
+|**P2SDiagnosticLog** | Ağ geçidinde Noktadan siteye denetim iletilerini ve olayları günlüğe kaydeder. |
 
 Bu tablolarda birkaç sütun kullanılabilir olduğuna dikkat edin. Bu makalede, daha kolay günlük tüketimine yönelik yalnızca en ilgili olanları sunuyoruz.
 
@@ -38,7 +38,7 @@ Azure Log Analytics kullanarak Azure VPN Gateway tanılama günlüğü olayları
 
 ## <a name="gatewaydiagnosticlog"></a><a name="GatewayDiagnosticLog"></a>GatewayDiagnosticLog
 
-Yapılandırma değişiklikleri **Gatewaydiagnosticlog** tablosunda denetlenir. Yürütmeniz gereken değişikliklerin günlüklere yansıtılmasından birkaç dakika sürebileceğini unutmayın.
+Yapılandırma değişiklikleri **Gatewaydiagnosticlog** tablosunda denetlenir. Yürütmeniz gereken değişikliklerin günlüklere yansıtılması birkaç dakika sürebilir.
 
 Burada, başvuru olarak örnek bir sorgunuz vardır.
 
@@ -53,13 +53,13 @@ AzureDiagnostics
 
 |***Ad** _ | _ *_Açıklaması_** |
 |---        | ---               |
-|**TimeGenerated** | Her olayın zaman damgası, UTC saat diliminde|
-|**OperationName** |meydana gelen olay. *Setgatewayconfiguration, SetConnectionConfiguration, HostMaintenanceEvent, GatewayTenantPrimaryChanged, MigrateCustomerSubscription, GatewayResourceMove, ValidateGatewayConfiguration* seçeneklerinden biri olabilir|
+|**TimeGenerated** | UTC saat diliminde her olayın zaman damgası.|
+|**OperationName** |meydana gelen olay. *Setgatewayconfiguration, SetConnectionConfiguration, HostMaintenanceEvent, GatewayTenantPrimaryChanged, MigrateCustomerSubscription, GatewayResourceMove, ValidateGatewayConfiguration* seçeneklerinden biri olabilir.|
 |**İleti** | işlemin ayrıntıları ve başarılı/başarısız sonuçları listeler.|
 
 Aşağıdaki örnekte, yeni bir yapılandırma uygulandığında günlüğe kaydedilen etkinlik gösterilmektedir:
 
-:::image type="content" source="./media/troubleshoot-vpn-with-azure-diagnostics/image-26-set-gateway.png" alt-text="Ağ Geçidi Işlemi örneğini ayarla.":::
+:::image type="content" source="./media/troubleshoot-vpn-with-azure-diagnostics/image-26-set-gateway.png" alt-text="GatewayDiagnosticLog içinde görülen bir set Gateway Işlemi örneği.":::
 
 
 Bir VPN Gateway veya yerel ağ geçidi üzerinde her yapılandırma değiştirildiğinde bir SetGatewayConfiguration 'ın günlüğe kaydedileceğini görürsünüz.
@@ -83,16 +83,16 @@ AzureDiagnostics
 
 |***Ad** _ | _ *_Açıklaması_** |
 |---        | ---               |
-|**TimeGenerated** | Her olayın zaman damgası, UTC saat diliminde|
+|**TimeGenerated** | UTC saat diliminde her olayın zaman damgası.|
 |**OperationName** | meydana gelen olay. Bu, *tünelden bağlı* veya *tünelden bağlantısı kesilebilir*.|
-| **Örnek \_ s** | olayı tetikleyen Ağ Geçidi rol örneği. Bu, \_ \_ \_ \_ ağ geçidinin iki örneğinin adı olan 1 ' de gatewaytenantworker veya bir gatewaytenantworker olabilir.|
+| **Örnek \_ s** | olayı tetikleyen Ağ Geçidi rol örneği. Bu, \_ \_ \_ \_ ağ geçidinin iki örneğinin adı olan 0 veya GatewayTenantWorker ' da gatewaytenantworker olabilir.|
 | **Kaynak** | VPN ağ geçidinin adını gösterir. |
 | **Kaynak** | ağ geçidinin bulunduğu kaynak grubunu gösterir.|
 
 
 Örnek çıktı:
 
-:::image type="content" source="./media/troubleshoot-vpn-with-azure-diagnostics/image-16-tunnel-connected.png" alt-text="Tünel bağlantılı olay örneği.":::
+:::image type="content" source="./media/troubleshoot-vpn-with-azure-diagnostics/image-16-tunnel-connected.png" alt-text="Tüneldiagnosticlog içinde görülen tünel bağlantılı olay örneği.":::
 
 
 **Tüneldiagnosticlog** , beklenmeyen VPN bağlantısı ile ilgili geçmiş olayların giderilmesi için çok faydalı olur. Hafif doğası, büyük zaman aralıklarını birkaç güne kadar az çabayla analiz etme olasılığını sunar.
@@ -101,7 +101,7 @@ Yalnızca bir bağlantının zaman damgasını tanımladıktan sonra, IPSec ile 
 
 Bazı sorun giderme ipuçları:
 - Bir ağ geçidi örneğinde bir bağlantı kesilmesi olayı görürseniz, **farklı** ağ geçidi örneğindeki bir bağlantı olayı, bir ağ geçidi yük devretmeye bakıyorsunuzdur. Bu, genellikle bir ağ geçidi örneğindeki bakım nedeniyle beklenen bir davranıştır. Bu davranış hakkında daha fazla bilgi edinmek için bkz. [Azure VPN Gateway artıklığı hakkında](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-highlyavailable#about-azure-vpn-gateway-redundancy).
-- Azure tarafında kasıtlı olarak bir ağ geçidi sıfırlamayı çalıştırırsanız aynı davranış gözlenir. Bu, etkin ağ geçidi örneğinin yeniden başlatılmasına neden olur. Bu davranış hakkında daha fazla bilgi edinmek için bkz. [VPN Gateway sıfırlama](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-resetgw-classic)
+- Azure tarafında kasıtlı olarak bir ağ geçidi sıfırlamayı çalıştırırsanız aynı davranış gözlenir. Bu, etkin ağ geçidi örneğinin yeniden başlatılmasına neden olur. Bu davranış hakkında daha fazla bilgi edinmek için [VPN Gateway sıfırlama](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-resetgw-classic)bölümüne bakın.
 - Tek bir ağ geçidi örneğinde bir bağlantı olayı ve ardından **aynı** ağ geçidi örneği üzerinde birkaç saniye içinde bir bağlantı olayı görürseniz, bir ağ hatası nedeniyle bir DPD zaman aşımı veya şirket içi cihaz tarafından hatalı bağlantı kesilmesi olabilir.
 
 ## <a name="routediagnosticlog"></a><a name="RouteDiagnosticLog"></a>RouteDiagnosticLog
@@ -120,8 +120,8 @@ AzureDiagnostics
 
 |***Ad** _ | _ *_Açıklaması_** |
 |---        | ---               |
-|**TimeGenerated** | Her olayın zaman damgası, UTC saat diliminde|
-|**OperationName** | meydana gelen olay. *Staticrouteupdate, BgpRouteUpdate, BgpConnectedEvent, BgpDisconnectedEvent* olabilir|
+|**TimeGenerated** | UTC saat diliminde her olayın zaman damgası.|
+|**OperationName** | meydana gelen olay. *Staticrouteupdate, BgpRouteUpdate, BgpConnectedEvent, BgpDisconnectedEvent* olabilir.|
 | **İleti** | işlemin ayrıntıları.|
 
 Çıktı, bağlı/bağlantısı kesilen ve alınan rotalar ile ilgili yararlı bilgileri gösterir.
@@ -129,7 +129,7 @@ AzureDiagnostics
 Örnek:
 
 
-:::image type="content" source="./media/troubleshoot-vpn-with-azure-diagnostics/image-31-bgp-route.png" alt-text="BGP yolu örnekleri.":::
+:::image type="content" source="./media/troubleshoot-vpn-with-azure-diagnostics/image-31-bgp-route.png" alt-text="RouteDiagnosticLog içinde görülen BGP Route Exchange etkinliğinin örneği.":::
 
 
 ## <a name="ikediagnosticlog"></a><a name="IKEDiagnosticLog"></a>Ikediagnosticlog
@@ -153,27 +153,27 @@ AzureDiagnostics
 
 |***Ad** _ | _ *_Açıklaması_** |
 |---        | ---               |
-|**TimeGenerated** | Her olayın zaman damgası, UTC saat diliminde|
-| **RemoteIP** | Şirket içi VPN cihazının IP adresi. Gerçek dünya senaryolarında, ilgili şirket içi cihazın IP adresine göre filtre uygulamak yararlı olacaktır |
-|**LocalIP** | sorun giderdiğimiz VPN Gateway IP adresi. Gerçek dünya senaryolarında, ilgili VPN ağ geçidinin IP adresine göre filtrelemeniz, aboneliğinizde birden çok tane olacaktır |
-|**Olay** | sorun giderme için yararlı bir tanılama iletisi içerir. Genellikle bir anahtar sözcükle başlar ve Azure ağ geçidi **\[ \] gönderme** tarafından gerçekleştirilen eylemlere başvurur. **\[ alınan \]** Azure ağ geçidi tarafından gönderilen bir IPsec paketinin neden olduğu bir olayın, Şirket **içi cihazdan \[ \] alınan** bir paketin sonucunda oluşan bir olayın, Azure ağ geçidi tarafından yerel olarak alınmış bir işlem olduğunu belirtir |
+|**TimeGenerated** | UTC saat diliminde her olayın zaman damgası.|
+| **RemoteIP** | Şirket içi VPN cihazının IP adresi. Gerçek dünya senaryolarında, ilgili şirket içi cihazın IP adresine göre filtre uygulamak yararlı olacaktır. |
+|**LocalIP** | sorun giderdiğimiz VPN Gateway IP adresi. Gerçek dünya senaryolarında, ilgili VPN ağ geçidinin IP adresine göre filtrelemeniz, aboneliğinizde birden fazla olması gerekir. |
+|**Olay** | sorun giderme için yararlı bir tanılama iletisi içerir. Genellikle bir anahtar sözcükle başlar ve Azure Gateway tarafından gerçekleştirilen eylemlere başvurur: **\[ Send \]** , Azure ağ geçidi tarafından gönderilen bir IPsec paketinin neden olduğu bir olayı gösterir.  **\[ Alındı \]** , şirket içi cihazdan alınan bir paketin sonucunda bir olay olduğunu gösterir.  **\[ Yerel \]** , Azure ağ geçidi tarafından yerel olarak gerçekleştirilen bir eylemi gösterir. |
 
 
-AzureDiagnostics veritabanındaki özgün sütun listesinde Remoteıp, Localıp ve olay sütunlarının nasıl mevcut olmadığı, ancak analizine basitleşmesi için "Ileti" sütununun çıktısını ayrıştırarak sorguya Eklenme hakkında dikkat edin.
+AzureDiagnostics veritabanındaki özgün sütun listesinde Remoteıp, Localıp ve olay sütunlarının nasıl mevcut olmadığı, ancak analizine basitleşmesi için "Ileti" sütununun çıktısı ayrıştırılırken sorguya Eklenme hakkında dikkat edin.
 
 Sorun giderme ipuçları:
 
 - IPSec görüşmesinin başlangıcını belirlemek için ilk SA \_ INIT iletisini bulmanız gerekir. Bu tür bir ileti tünelin her iki tarafında da gönderilebilir. İlk paketi, IPSec terminolojisinde "başlatıcı" olarak adlandırılır, diğer taraftan "Yanıtlayıcı" olur. İlk SA \_ INIT iletisi her zaman rCookie = 0 ' dır.
 
-- IPSec tüneli kuramazsa, Azure birkaç saniyede bir yeniden denemeye devam eder. Bu nedenle, sorunu yeniden oluşturmak için beklemek zorunda olmadığınızdan, "VPN azaltma" sorunları, ıkediagnosticlog üzerinde oldukça uygundur. Ayrıca, her deneyişinizde hata her zaman aynı olur, böylece her zaman bir "örnek" başarısız anlaşmaya yaklaşmanız yeterlidir.
+- IPSec tüneli kuramazsa, Azure birkaç saniyede bir yeniden denemeye devam eder. Bu nedenle, sorunu yeniden oluşturmak için beklemek zorunda olmadığınızdan, "VPN azaltma" sorunlarını giderme, ıkediagnosticlog üzerinde çok uygundur. Ayrıca, her deneyişinizde hata her zaman aynı olur, böylece her zaman bir "örnek" başarısız anlaşmaya yaklaşmanız yeterlidir.
 
 - SA \_ INIT, eşin bu IPSec anlaşması için kullanmak Istediği IPSec parametrelerini içerir. Resmi belge   
-[Varsayılan IPSec/IKE parametreleri](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices#ipsec) varsayılan ayarlarla Azure ağ geçidi tarafından desteklenen IPSec parametrelerini listeler
+[Varsayılan IPSec/IKE parametreleri](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices#ipsec) varsayılan ayarlarla Azure ağ geçidi tarafından desteklenen IPSec parametrelerini listeler.
 
 
 ## <a name="p2sdiagnosticlog"></a><a name="P2SDiagnosticLog"></a>P2SDiagnosticLog
 
-VPN Tanılama için kullanılabilir son tablo **P2SDiagnosticLog**' dir. Bu, Noktadan siteye yönelik etkinliği izler.
+VPN Tanılama için kullanılabilir son tablo **P2SDiagnosticLog**' dir. Bu tablo, Noktadan siteye yönelik etkinliği izler.
 
 Burada, başvuru olarak örnek bir sorgunuz vardır.
 
@@ -187,17 +187,17 @@ AzureDiagnostics
 
 |***Ad** _ | _ *_Açıklaması_** |
 |---        | ---               |
-|**TimeGenerated** | Her olayın zaman damgası, UTC saat diliminde|
-|**OperationName** | meydana gelen olay. *P2SLogEvent* olacaktır|
+|**TimeGenerated** | UTC saat diliminde her olayın zaman damgası.|
+|**OperationName** | meydana gelen olay. *P2SLogEvent* olacaktır.|
 | **İleti** | işlemin ayrıntıları.|
 
 Çıktı, ağ geçidinin uygulandığı site ayarlarının yanı sıra IPSec ilkelerinin de yer aldığı tüm noktaları gösterir.
 
-:::image type="content" source="./media/troubleshoot-vpn-with-azure-diagnostics/image-28-p2s-log-event.png" alt-text="P2S logs örneği.":::
+:::image type="content" source="./media/troubleshoot-vpn-with-azure-diagnostics/image-28-p2s-log-event.png" alt-text="P2SDiagnosticLog içinde görülen site bağlantısı noktası örneği.":::
 
 Ayrıca, bir istemci Ikev2 veya OpenVPN noktası üzerinden sitesine her bağlandığında, bu tablo paket etkinliğini, EAP/RADIUS konuşmalarını ve başarılı/başarısız sonuçlarını kullanıcıya göre günlüğe kaydeder.
 
-:::image type="content" source="./media/troubleshoot-vpn-with-azure-diagnostics/image-29-eap.png" alt-text="EAP günlükleri örneği.":::
+:::image type="content" source="./media/troubleshoot-vpn-with-azure-diagnostics/image-29-eap.png" alt-text="P2SDiagnosticLog içinde görülen EAP kimlik doğrulaması örneği.":::
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 

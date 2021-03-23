@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 53f873013a6f16ce5a28ee5d915afa556057f643
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 94827916f28c9028d46bf7b5461a4fbd941b2a96
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98744674"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773411"
 ---
 # <a name="apply-the-remote-desktop-extension-to-azure-cloud-services-extended-support"></a>Uzak Masaüstü uzantısını Azure Cloud Services uygulama (genişletilmiş destek)
 
@@ -27,8 +27,9 @@ Azure portal, uygulama dağıtıldıktan sonra bile uzak masaüstünü etkinleş
 2. **Add (Ekle)** seçeneğini belirleyin.
 3. İçin uzak masaüstünü etkinleştirmek üzere rolleri seçin.
 4. Kullanıcı adı, parola, süre sonu ve sertifika (gerekli değil) için gerekli alanları girin.
+> Notun Uzak Masaüstü parolası 8-123 karakter uzunluğunda olmalıdır ve şunlardan en az 3 parola karmaşıklığı gereksinimini karşılamalıdır: 1) bir büyük harfli karakter 2) içeren bir büyük harf 3), bir sayısal basamak 4) bir özel karakter içerir 5) denetim karakterlerine izin verilmez
 
-    :::image type="content" source="media/remote-desktop-2.png" alt-text="Görüntü, Uzak masaüstüne bağlanmak için gereken bilgileri gösterir.":::
+   :::image type="content" source="media/remote-desktop-2.png" alt-text="Görüntü, Uzak masaüstüne bağlanmak için gereken bilgileri gösterir.":::
 
 5. İşiniz bittiğinde **Kaydet**' i seçin. Rol örneklerinizin bağlantı almaya hazırlanmadan önce bu işlem birkaç dakika sürer.
 

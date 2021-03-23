@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: edd2ec633bd78ce1a596782deab57105e9d7f1c3
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: b76934d3f16ec5f87ed1380135d22bc5d943652c
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102487755"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779776"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) uygulama proxy 'Si hakkında sık sorulan sorular
 
@@ -45,7 +45,7 @@ Bunun nedeni, Güncelleştirici hizmetin doğru çalışmaması veya hizmetin y�
 Güncelleştirici hizmeti çalışıyorsa ve olay günlüğünde kayıtlı bir hata yoksa (uygulamalar ve hizmetler günlükleri-> Microsoft-> AadApplicationProxy-> Güncelleştirici-> admin). 
 
 > [!IMPORTANT]
-> Yalnızca ana sürümler otomatik yükseltme için serbest bırakılır. Bağlayıcıyı düzenli bir zamanlamaya göre el ile güncelleştirmenizi öneririz. Yeni sürümler hakkında daha fazla bilgi için yayın türü (indirme, otomatik yükseltme), hata düzeltmeleri ve yeni özellikler Bkz. [Azure AD uygulama ara sunucusu: sürüm sürümü geçmişi](application-proxy-release-version-history.md).
+> Yalnızca ana sürümler otomatik yükseltme için serbest bırakılır. Bağlayıcınızı yalnızca gerekliyse el ile güncelleştirmenizi öneririz. Örneğin, bilinen bir sorunu çözmeniz veya yeni bir özellik kullanmak istemeniz gerektiğinden, büyük bir yayın için bekleyemez. Yeni sürümler hakkında daha fazla bilgi için yayın türü (indirme, otomatik yükseltme), hata düzeltmeleri ve yeni özellikler Bkz. [Azure AD uygulama ara sunucusu: sürüm sürümü geçmişi](application-proxy-release-version-history.md).
 
 Bağlayıcıyı el ile yükseltmek için:
 

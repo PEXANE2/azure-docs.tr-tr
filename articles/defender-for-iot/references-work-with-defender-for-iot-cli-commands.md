@@ -1,18 +1,14 @@
 ---
 title: IoT CLI komutları için Defender ile çalışma
 description: Bu makalede, sensörlerde ve şirket içi yönetim konsollarında IoT CLı komutları için Defender açıklanır.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/12/2020
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: 93efc89722d3152d92b6f8c8038deaa566741f7c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9cd3f4325db2bc45ddcd6cc011dd4993e385a43c
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100636569"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104778687"
 ---
 # <a name="work-with-defender-for-iot-cli-commands"></a>IoT CLI komutları için Defender ile çalışma
 
@@ -258,7 +254,7 @@ Komutuyla aşağıdaki öznitelikleri kullanabilirsiniz `directions` :
 ## <a name="system-actions"></a>Sistem eylemleri
 Aşağıdaki tabloda, IoT için Defender içinde çeşitli sistem eylemleri gerçekleştirmek üzere kullanılabilecek komutlar açıklanmaktadır:
 
-|Name|Kod|Description|
+|Name|Kod|Açıklama|
 |----|----|-----------|
 |Tarihi göster|`date`|Ana bilgisayarda GMT biçiminde geçerli tarihi döndürür.|
 |Konağı yeniden başlatın|`system reboot`|Konak cihazını yeniden başlatır.|
@@ -287,7 +283,7 @@ Komut aşağıdaki giriş bayraklarını destekler:
 | --anahtar | . \* Key dosyası. Anahtar uzunluğu en az 2.048 bit olmalıdır. |
 | --Zinciri | Sertifika zinciri dosyasının yolu (isteğe bağlı). |
 | --Pass | Sertifikayı şifrelemek için kullanılan parola (isteğe bağlı). |
-| --parola-ayarla | Varsayılan değer **yanlış**, **kullanılmıyor** şeklindedir. <br />Önceki sertifikayla sağlanan önceki parolayı kullanmak için **true** olarak ayarlayın (isteğe bağlı). |  |
+| --parola-ayarla | Varsayılan değer **yanlış**, **kullanılmıyor** şeklindedir. <br />Önceki sertifikayla sağlanan önceki parolayı kullanmak için **true** olarak ayarlayın (isteğe bağlı). | 
 
 Aracı kullanırken:
 

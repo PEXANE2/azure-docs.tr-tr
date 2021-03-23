@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: v-erkel
-ms.openlocfilehash: e8f1b3fffefcdf1d2ec8bd3e9b1aaea93697ca8a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f587de4ee2ce051cb771db90d7f9ce00ce66b07f
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103471967"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104772714"
 ---
 # <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>Azure HPC Cache için müşteri tarafından yönetilen şifreleme anahtarlarını kullanma
 
@@ -21,8 +21,6 @@ Azure HPC Cache 'te verilerinizi şifrelemek için kullanılan anahtarların sah
 > Azure 'da depolanan tüm veriler, önbellek disklerinde de dahil olmak üzere varsayılan olarak Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir. Yalnızca verilerinizi şifrelemek için kullanılan anahtarları yönetmek istiyorsanız bu makaledeki adımları izlemeniz gerekir.
 
 Azure HPC önbelleği, önbellek diskleri için bir müşteri anahtarı eklemeseniz bile, önbelleğe alınmış verilerinizi tutan yönetilen disklerde [VM ana bilgisayar şifrelemesi](../virtual-machines/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data) ile de korunur. Çift şifreleme için müşteri tarafından yönetilen bir anahtar eklemek, yüksek güvenlik gereksinimlerine sahip müşteriler için ek bir güvenlik düzeyi sağlar. Ayrıntılar için [Azure disk depolaması 'Nın sunucu tarafı şifrelemesini](../virtual-machines/disk-encryption.md) okuyun.
-
-<!-- This feature is available only in some of the Azure regions where Azure HPC Cache is available. Refer to the [Region availability](hpc-cache-overview.md#region-availability) list for details. -->
 
 Azure HPC Cache için müşteri tarafından yönetilen anahtar şifrelemeyi etkinleştirmek için üç adım vardır:
 
@@ -69,14 +67,14 @@ Anahtar Kasası erişim izinleri:
 Ayrıntılar için [Azure Key Vault belgelerini](../key-vault/general/overview.md) okuyun.
 
 > [!NOTE]
-> Azure Key Vault aynı aboneliği kullanmalıdır ve Azure HPC önbelleğiyle aynı bölgede olmalıdır. Seçtiğiniz bölgenin [müşteri tarafından yönetilen anahtarlar özelliğini desteklediğinden](hpc-cache-overview.md#region-availability)emin olun.
+> Azure Key Vault aynı aboneliği kullanmalıdır ve Azure HPC önbelleğiyle aynı bölgede olmalıdır. Seçtiğiniz bölgenin [her iki ürünü de desteklediğinden](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=hpc-cache,key-vault)emin olun.
 
 ## <a name="2-create-the-cache-with-customer-managed-keys-enabled"></a>2. bir önbelleği, müşteri tarafından yönetilen anahtarlar etkin olarak oluşturun
 
 Azure HPC önbelleğinizi oluştururken şifreleme anahtarı kaynağını belirtmeniz gerekir. [Azure HPC önbelleği oluşturma](hpc-cache-create.md)bölümündeki yönergeleri Izleyin ve **disk şifreleme anahtarları** sayfasında anahtar kasasını ve anahtarı belirtin. Önbellek oluşturma sırasında yeni bir anahtar kasası ve anahtar oluşturabilirsiniz.
 
 > [!TIP]
-> **Disk şifreleme anahtarları** sayfası görünmezse, önbelleğinizin desteklenen bölgelerden birinde olduğundan emin olun.
+> **Disk şifreleme anahtarları** sayfası görünmezse, önbelleğinizin [desteklenen bölgelerden](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=hpc-cache,key-vault)birinde olduğundan emin olun.
 
 Önbelleği oluşturan kullanıcının [Key Vault katkıda bulunan rolüne](../role-based-access-control/built-in-roles.md#key-vault-contributor) veya üstüne eşit ayrıcalıklara sahip olması gerekir.
 

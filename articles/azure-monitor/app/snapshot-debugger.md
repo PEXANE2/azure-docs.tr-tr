@@ -7,12 +7,12 @@ ms.date: 10/23/2019
 author: cweining
 ms.author: cweining
 ms.reviewer: cweining
-ms.openlocfilehash: bd196e60fed8a18064bfa59e343e51a878a11237
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b0c26aa95d8c3aba5df164fb0707b4833accd052
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102217406"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786490"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET uygulamalarında özel durumlarda anlık görüntü hatalarını ayıklama
 Bir özel durum oluştuğunda, Canlı Web uygulamanızdan otomatik olarak bir hata ayıklama anlık görüntüsü toplayabilirsiniz. Anlık görüntü, kaynak kodu ve değişkenlerin durumunu özel durumun oluşturulduğu anda gösterir. [Azure Application Insights](./app-insights-overview.md) Snapshot Debugger Web uygulamanızdan özel durum telemetrisini izler. Üretim aşamasındaki sorunları tanılamak için ihtiyaç duyduğunuz bilgilere sahip olmanız için, en önemli özel durumlarınızın anlık görüntülerini toplar. [Anlık görüntü toplayıcısı NuGet paketini](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) uygulamanıza ekleyin ve isteğe bağlı olarak [ApplicationInsights.config](./configuration-with-applicationinsights-config.md)koleksiyon parametrelerini yapılandırın. Anlık görüntüler Application Insights portalındaki [özel durumlar](./asp-net-exceptions.md) üzerinde görünür.
@@ -24,7 +24,10 @@ Hata ayıklama anlık görüntüleri 15 gün boyunca depolanır. Bu bekletme ilk
 ## <a name="enable-application-insights-snapshot-debugger-for-your-application"></a>Uygulamanız için Application Insights Snapshot Debugger etkinleştirin
 Anlık görüntü koleksiyonu şu için kullanılabilir:
 * .NET Framework 4,5 veya üstünü çalıştıran uygulamalar .NET Framework ve ASP.NET.
-* .NET Core 2,0 ve ASP.NET Core 2,0 Windows üzerinde çalışan uygulamalar.
+* .NET Core ve Windows 'da .NET Core 2,1 (LTS) veya 3,1 (LTS) çalıştıran uygulamalar ASP.NET Core.
+* Windows üzerinde .NET 5,0 uygulamaları.
+
+Destek dışı olduklarından, .NET Core 2,0, 2,2 veya 3,0 kullanılmasını önermiyoruz.
 
 Aşağıdaki ortamlar desteklenir:
 

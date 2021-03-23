@@ -1,18 +1,14 @@
 ---
 title: Algılayıcıları ayrı ayrı yönetme
 description: Etkinleştirme dosyalarını yönetme, yedeklemeleri gerçekleştirme ve tek başına algılayıcıyı güncelleştirme dahil olmak üzere tek tek algılayıcıları yönetmeyi öğrenin.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 02/02/2021
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: c8bb44d323574f6815aa570b271ed4c0df1fc6be
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: df1d1dd6ca2085fb3ab12c104723c63e32249403
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100526927"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781968"
 ---
 # <a name="manage-individual-sensors"></a>Algılayıcıları ayrı ayrı yönetme
 
@@ -282,7 +278,7 @@ CLı komutunu kullanırken:
 
 Aşağıdaki komutlarla sertifikalarınızı yönetin:
 
-| Description | CLı komutu |
+| Açıklama | CLı komutu |
 |--|--|
 | Yeni bir özel anahtar ve sertifika Imzalama Isteği oluştur | `openssl req -out CSR.csr -new -newkey rsa:2048 -nodes -keyout privateKey.key` |
 | Otomatik olarak imzalanan bir sertifika oluşturma | `openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out certificate.crt` |
@@ -292,7 +288,7 @@ Aşağıdaki komutlarla sertifikalarınızı yönetin:
 
 Bir sertifika, CSR veya özel anahtar içindeki bilgileri denetlemeniz gerekiyorsa, bu komutları kullanın;
 
-| Description | CLı komutu |
+| Açıklama | CLı komutu |
 |--|--|
 | Sertifika Imzalama Isteği 'ni (CSR) denetleme | `openssl req -text -noout -verify -in CSR.csr` |
 | Özel anahtarı denetleme | `openssl rsa -in privateKey.key -check` |
@@ -300,13 +296,13 @@ Bir sertifika, CSR veya özel anahtar içindeki bilgileri denetlemeniz gerekiyor
 
 Özel anahtarın sertifikayla eşleşmemesi veya bir siteye yüklediğiniz bir sertifikanın güvenilir olmadığını belirten bir hata alırsanız, hatayı onarmak için bu komutları kullanın;
 
-| Description | CLı komutu |
+| Açıklama | CLı komutu |
 |--|--|
 | Bir CSR veya özel anahtardaki ile eşleştiğinden emin olmak için ortak anahtarın MD5 karmasını denetleyin | 1. `openssl x509 -noout -modulus -in certificate.crt | openssl md5` <br /> iki. `openssl rsa -noout -modulus -in privateKey.key | openssl md5` <br /> 03. `openssl req -noout -modulus -in CSR.csr | openssl md5 ` |
 
 Sertifikaları ve anahtarları, belirli sunucu türleri veya yazılımlar ile uyumlu hale getirmek üzere farklı biçimlere dönüştürmek için, bu komutları kullanın;
 
-| Description | CLı komutu |
+| Açıklama | CLı komutu |
 |--|--|
 | DER dosyasını (. CRT. cer. der) ped 'ye Dönüştür  | `openssl x509 -inform der -in certificate.cer -out certificate.pem`  |
 | PED dosyasını DER öğesine Dönüştür | `openssl x509 -outform der -in certificate.pem -out certificate.der`  |

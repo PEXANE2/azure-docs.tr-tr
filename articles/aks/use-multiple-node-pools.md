@@ -3,13 +3,13 @@ title: Azure Kubernetes hizmetinde (AKS) birden çok düğüm havuzu kullanma
 description: Azure Kubernetes Service (AKS) ' de bir küme için birden çok düğüm havuzu oluşturma ve yönetme hakkında bilgi edinin
 services: container-service
 ms.topic: article
-ms.date: 04/08/2020
-ms.openlocfilehash: 3e029695e9dce79473ada0bae3e7f0bbfd30db89
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 02/11/2021
+ms.openlocfilehash: 8f18e19eca8895549f17c9f0f6822ecb4da2914b
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102218494"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773513"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ile bir küme için birden çok düğüm havuzu oluşturma ve yönetme
 
@@ -134,7 +134,7 @@ Bir iş yükü, kümenin düğümlerini mantıksal yalıtım için ayrı havuzla
 * Kümeyi oluşturduktan sonra VNET 'i genişletirseniz, özgün CIDR dışında bir alt ağ eklemeden önce kümenizi güncelleştirmeniz gerekir (yönetilen clster işlemi gerçekleştirin ancak düğüm havuzu işlemleri sayılmaz). Bu durumda, ilk olarak izin verdiğimiz halde, aracı havuzunda hata dışarı çıkar. Küme dosyanızı bir destek bileti ile nasıl mutabık kılınabileceğinizi bilmiyorsanız. 
 * Calıco ağ Ilkesi desteklenmiyor. 
 * Azure ağ Ilkesi desteklenmiyor.
-* Kuin-proxy, tek bir bitişik CIDR bekler ve bunu üç optmizations için kullanır. Bu [K.E.P.](https://github.com/kubernetes/enhancements/blob/master/keps/sig-network/20191104-iptables-no-cluster-cidr.md ) bakın ve--daha fazla bilgi için [burada](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/) CIDR. Azure CNI 'de, ilk düğüm havuzunuzun alt ağı Kube-proxy ' ye verilecek. 
+* Kuin-proxy, tek bir bitişik CIDR bekler ve bunu üç optmizations için kullanır. Bu [K.E.P.](https://github.com/kubernetes/enhancements/tree/master/keps/sig-network/2450-Remove-knowledge-of-pod-cluster-CIDR-from-iptables-rules) bakın ve--daha fazla bilgi için [burada](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/) CIDR. Azure CNI 'de, ilk düğüm havuzunuzun alt ağı Kube-proxy ' ye verilecek. 
 
 Ayrılmış bir alt ağa sahip bir düğüm havuzu oluşturmak için, düğüm havuzu oluştururken alt ağ kaynak KIMLIĞINI ek bir parametre olarak geçirin.
 
@@ -716,33 +716,11 @@ az deployment group create \
 
 Kaynak Yöneticisi şablonunuzda tanımladığınız düğüm havuzu ayarlarına ve işlemlerine bağlı olarak AKS kümenizin güncelleştirilmesi birkaç dakika sürebilir.
 
-## <a name="assign-a-public-ip-per-node-for-your-node-pools-preview"></a>Düğüm havuzlarınız için düğüm başına genel IP atama (Önizleme)
+## <a name="assign-a-public-ip-per-node-for-your-node-pools"></a>Düğüm havuzlarınız için düğüm başına genel IP atama
 
-> [!WARNING]
-> Düğüm başına genel IP özelliğini kullanmak için 0.4.43 veya daha büyük CLı önizleme uzantısını yüklemelisiniz.
+AKS düğümleri iletişim için kendi genel IP adreslerini gerektirmez. Ancak senaryolar, düğüm havuzundaki düğümlerin kendi adanmış genel IP adreslerini almasını gerektirebilir. Yaygın bir senaryo, bir konsolun, atlamaları en aza indirmek için bir bulut sanal makinesine doğrudan bağlantı kurmak için ihtiyaç duyacağı oyun iş yükleri içindir. Bu senaryoya, düğüm genel IP 'si kullanılarak AKS üzerinde ulaşılabilir.
 
-AKS düğümleri iletişim için kendi genel IP adreslerini gerektirmez. Ancak senaryolar, düğüm havuzundaki düğümlerin kendi adanmış genel IP adreslerini almasını gerektirebilir. Yaygın bir senaryo, bir konsolun, atlamaları en aza indirmek için bir bulut sanal makinesine doğrudan bağlantı kurmak için ihtiyaç duyacağı oyun iş yükleri içindir. Bu senaryo, bir önizleme özelliği, düğüm genel IP (Önizleme) için kaydolarak AKS üzerinde elde edilebilir.
-
-En son aks-Preview uzantısını yüklemek ve güncelleştirmek için aşağıdaki Azure CLı komutlarını kullanın:
-
-```azurecli
-az extension add --name aks-preview
-az extension update --name aks-preview
-az extension list
-```
-
-Aşağıdaki Azure CLı komutuyla düğüm genel IP özelliğine kaydolun:
-
-```azurecli-interactive
-az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
-```
-Özelliğin kaydedilmesi birkaç dakika sürebilir.  Durumu aşağıdaki komutla kontrol edebilirsiniz:
-
-```azurecli-interactive
- az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/NodePublicIPPreview')].{Name:name,State:properties.state}"
-```
-
-Kayıt başarılı olduktan sonra yeni bir kaynak grubu oluşturun.
+İlk olarak, yeni bir kaynak grubu oluşturun.
 
 ```azurecli-interactive
 az group create --name myResourceGroup2 --location eastus
@@ -760,12 +738,9 @@ Mevcut AKS kümelerinde Ayrıca yeni bir düğüm havuzu ekleyebilir ve düğüm
 az aks nodepool add -g MyResourceGroup2 --cluster-name MyManagedCluster -n nodepool2 --enable-node-public-ip
 ```
 
-> [!Important]
-> Önizleme süresince Azure Instance Metadata Service, Standart katman VM SKU 'SU için genel IP adreslerinin alınmasını desteklememektedir. Bu sınırlama nedeniyle, düğümlere atanan genel IP 'Leri göstermek için kubectl komutlarını kullanamazsınız. Ancak, IP 'Ler atanır ve hedeflenen şekilde çalışır. Düğümlerinizin genel IP 'Leri, sanal makine ölçek kümenizdeki örneklere eklenir.
-
 Düğümleriniz için genel IP 'Leri çeşitli yollarla bulabilirsiniz:
 
-* Azure CLı komutunu kullanın [az VMSS List-instance-public-IP][az-list-ips]
+* [Az VMSS List-instance-public-IP][az-list-ips]Azure CLI komutunu kullanın.
 * [PowerShell veya bash komutlarını][vmss-commands]kullanın. 
 * Ayrıca, sanal makine ölçek kümesindeki örnekleri görüntüleyerek Azure portal genel IP 'Leri görüntüleyebilirsiniz.
 
@@ -818,20 +793,20 @@ AKS uygulamalarınızın gecikmesini azaltmak için [yakınlık yerleştirme gru
 
 <!-- INTERNAL LINKS -->
 [aks-windows]: windows-container-cli.md
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
-[az-aks-create]: /cli/azure/aks#az-aks-create
-[az-aks-get-upgrades]: /cli/azure/aks#az-aks-get-upgrades
-[az-aks-nodepool-add]: /cli/azure/aks/nodepool#az-aks-nodepool-add
-[az-aks-nodepool-list]: /cli/azure/aks/nodepool#az-aks-nodepool-list
-[az-aks-nodepool-update]: /cli/azure/aks/nodepool#az-aks-nodepool-update
-[az-aks-nodepool-upgrade]: /cli/azure/aks/nodepool#az-aks-nodepool-upgrade
-[az-aks-nodepool-scale]: /cli/azure/aks/nodepool#az-aks-nodepool-scale
-[az-aks-nodepool-delete]: /cli/azure/aks/nodepool#az-aks-nodepool-delete
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
-[az-group-create]: /cli/azure/group#az-group-create
-[az-group-delete]: /cli/azure/group#az-group-delete
-[az-deployment-group-create]: /cli/azure/deployment/group#az_deployment_group_create
+[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest&preserve-view=true#az_aks_get_credentials
+[az-aks-create]: /cli/azure/aks?view=azure-cli-latest&preserve-view=true#az_aks_create
+[az-aks-get-upgrades]: /cli/azure/aks?view=azure-cli-latest&preserve-view=true#az_aks_get_upgrades
+[az-aks-nodepool-add]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_add
+[az-aks-nodepool-list]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_list
+[az-aks-nodepool-update]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_update
+[az-aks-nodepool-upgrade]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_upgrade
+[az-aks-nodepool-scale]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_scale
+[az-aks-nodepool-delete]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_delete
+[az-extension-add]: /cli/azure/extension?view=azure-cli-latest&preserve-view=true#az_extension_add
+[az-extension-update]: /cli/azure/extension?view=azure-cli-latest&preserve-view=true#az_extension_update
+[az-group-create]: /cli/azure/group?view=azure-cli-latest&preserve-view=true#az_group_create
+[az-group-delete]: /cli/azure/group?view=azure-cli-latest&preserve-view=true#az_group_delete
+[az-deployment-group-create]: /cli/azure/deployment/group?view=azure-cli-latest&preserve-view=true#az_deployment_group_create
 [gpu-cluster]: gpu-cluster.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
@@ -844,5 +819,5 @@ AKS uygulamalarınızın gecikmesini azaltmak için [yakınlık yerleştirme gru
 [ip-limitations]: ../virtual-network/virtual-network-ip-addresses-overview-arm#standard
 [node-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks
 [vmss-commands]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine
-[az-list-ips]: /cli/azure/vmss.md#az-vmss-list-instance-public-ips
+[az-list-ips]: /cli/azure/vmss?view=azure-cli-latest&preserve-view=true#az_vmss_list_instance_public_ips
 [reduce-latency-ppg]: reduce-latency-ppg.md
