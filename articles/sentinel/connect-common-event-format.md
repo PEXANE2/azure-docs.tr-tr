@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 6010242e7fbd14aa117c481dee0d05e92928ef1b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 54fd6c0c085c0055f3114fde606f8f7d2f2e055e
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98747500"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104772068"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Ortak olay biçimini kullanarak dış çözümünüzü bağlama
 
@@ -99,5 +99,7 @@ Bu belgede, Azure Sentinel 'in güvenlik çözümleri ve gereçlerden CEF günl�
 - 3. Adım: [bağlantıyı doğrulama](connect-cef-verify.md)
 
 Azure Sentinel 'de topladığınız verilerle ne yapacaklarınız hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
+
+- [CEF ve CommonSecurityLog alan eşlemesi](cef-name-mapping.md)hakkında bilgi edinin.
 - [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
 - [Azure Sentinel ile tehditleri algılamaya](./tutorial-detect-threats-built-in.md)başlayın.

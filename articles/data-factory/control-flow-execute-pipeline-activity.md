@@ -3,16 +3,16 @@ title: Azure Data Factory içinde işlem hattı etkinliğini yürütme
 description: Başka bir Data Factory işlem hattından bir Data Factory işlem hattını çağırmak için ardışık düzen yürütme etkinliğini nasıl kullanabileceğinizi öğrenin.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 9bcf8fd62e3b20701136d7912074afb37d567e2f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a24bd6988a9bc8f15723ebf931f2751a09c42e26
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100383356"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104783753"
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>Azure Data Factory içinde işlem hattı etkinliğini yürütme
 
@@ -65,8 +65,8 @@ ms.locfileid: "100383356"
 name | İşlem hattının yürütülmesi etkinliğinin adı. | Dize | Yes
 tür | : **Executepipeline** olarak ayarlanmalıdır. | Dize | Yes
 konfigüre | Bu işlem hattının çağırdığı bağımlı işlem hattına işlem hattı başvurusu. İşlem hattı başvuru nesnesi iki özelliğe sahiptir: **ReferenceName** ve **Type**. ReferenceName özelliği, başvuru işlem hattının adını belirtir. Type özelliği PipelineReference olarak ayarlanmalıdır. | PipelineReference | Yes
-parameters | Çağrılan işlem hattına geçirilecek parametreler | Parametre adlarını bağımsız değişken değerleriyle eşleyen bir JSON nesnesi | No
-waitOnCompletion | Etkinlik yürütmenin bağımlı işlem hattı yürütmenin bitmesini bekleyip beklemediğini tanımlar. Varsayılan değer false’tur. | Boole | No
+parameters | Çağrılan işlem hattına geçirilecek parametreler | Parametre adlarını bağımsız değişken değerleriyle eşleyen bir JSON nesnesi | Hayır
+waitOnCompletion | Etkinlik yürütmenin bağımlı işlem hattı yürütmenin bitmesini bekleyip beklemediğini tanımlar. Varsayılan değer false’tur. | Boole | Hayır
 
 ## <a name="sample"></a>Örnek
 Bu senaryonun iki işlem hattı vardır:

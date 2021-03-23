@@ -1,18 +1,14 @@
 ---
 title: Tehdit zekası verilerini güncelleştirme
 description: Tehdit bilgileri veri paketi, her bir IoT sürümü için yeni bir Defender ile veya yayınlar arasında gerekliyse sağlanır.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/14/2020
-ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: ddf2eb2fab6281e76bac0a958024b639d18a7ccc
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 386d59d33c4f9695b8fc5243dab345321cff4a5f
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100521416"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784059"
 ---
 # <a name="threat-intelligence-research-and-packages"></a>Tehdit bilgileri araştırması ve paketleri
 

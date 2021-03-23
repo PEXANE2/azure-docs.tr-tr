@@ -15,17 +15,17 @@ ms.workload: infrastructure
 ms.date: 12/31/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d32adab35852cd19933fe3877c2742a21ddc5f1e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 07094e399f153f56746a931a4a100b3c0d38f92f
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101676988"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104772085"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>Azure portalı üzerinden Azure HANA Büyük Örnekler denetimi
 
 >[!NOTE]
->Rev 4,2 için, [Azure Portal bölümünde BareMetal örneklerini yönetme](../../../baremetal-infrastructure/workloads/sap/baremetal-infrastructure-portal.md) konusundaki yönergeleri izleyin.
+>Rev 4,2 için, [Azure Portal bölümünde BareMetal örneklerini yönetme](../../../baremetal-infrastructure/connect-baremetal-infrastructure.md) konusundaki yönergeleri izleyin.
 
 Bu belge, [Hana büyük örneklerinin](./hana-overview-architecture.md) [Azure Portal](https://portal.azure.com) nasıl sunulduğunu ve sizin Için dağıtılan Hana büyük örnek birimleri ile Azure Portal aracılığıyla hangi etkinliklerin yapılabileceğini anlatmaktadır. Azure portal 'daki HANA büyük örneklerin görünürlüğü, şu anda genel önizlemede olan HANA büyük örnekleri için bir Azure Kaynak sağlayıcısı aracılığıyla sunulmaktadır
 

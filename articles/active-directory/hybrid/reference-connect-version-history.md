@@ -12,12 +12,12 @@ ms.date: 03/16/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a19babffa63667b0d2deb954d432421a2b7868b8
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 71eaccd615f5c3460e7b48b2e92d5f874c8de12e
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104722149"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104772119"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: sürüm sürümü geçmişi
 Azure Active Directory (Azure AD) ekibi, yeni özellikler ve işlevlerle Azure AD Connect düzenli olarak güncelleştirir. Tüm eklemeler tüm izleyiciler için geçerli değildir.
@@ -58,7 +58,7 @@ Bununla birlikte, tüm en son özellikleri ve güncelleştirmeleri beğenmezseni
 >Kullanımdan kaldırılan sürümlerde sürüm geçmişi bilgileri için bkz. [Azure AD Connect sürüm sürümü geçmişi Arşivi](reference-connect-version-history-archive.md)
 
 
-## <a name="1623"></a>1.6.2.3
+## <a name="1624"></a>1.6.2.4
 
 >[!NOTE]
 > - Bu sürüm yalnızca indirileceği için kullanılabilir hale getirilir.
@@ -66,7 +66,7 @@ Bununla birlikte, tüm en son özellikleri ve güncelleştirmeleri beğenmezseni
 > - Bu sürüm, AADConnect sunucusunu yeni v2 uç noktasına varsayılan olarak alır. Bu uç noktasının, Almanya Ulusal bulutu, Çince Ulusal bulut ve ABD kamu bulutu 'nda desteklenmediğini ve bu sürümü bu bulutlarda dağıtmanız gerekiyorsa, v1 uç noktasına dönmek için [Bu yönergeleri](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-endpoint-api-v2#rollback) izlemeniz gerekir. Bunun yapılmaması eşitlemede hatalara neden olur.
 
 ### <a name="release-status"></a>Yayın durumu
-3/17/2021: indirilmek üzere yayınlandı
+3/19/2021: indirilmek üzere yayınlandı
 
 ### <a name="functional-changes"></a>İşlevsel değişiklikler
 

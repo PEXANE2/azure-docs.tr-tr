@@ -5,13 +5,13 @@ author: deborahc
 ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/12/2020
-ms.openlocfilehash: b91c846b5a79125c1cee9c36ce81b5c3d3229ba9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/19/2021
+ms.openlocfilehash: ab1b7028ce5f1afef861e696c98f25b56e78ef36
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99627787"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104772476"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Azure Cosmos DB'de bölümleme ve yatay ölçeklendirme
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -63,8 +63,6 @@ Saniyede 18.000 istek birimi (RU/sn) üretilen işi sağlarsanız, üç fiziksel
 Azure Cosmos DB, mantıksal bölümleri fiziksel bölümler arasında yaymak için karma tabanlı bölümleme kullanır. Bir öğenin bölüm anahtarı değerini karma Azure Cosmos DB. Karma hale getirilmiş sonuç fiziksel bölümü belirler. Ardından Azure Cosmos DB, bölüm anahtarı karmalarının anahtar alanını fiziksel bölümler arasında eşit olarak ayırır.
 
 İşlemlere (saklı yordamlarda veya tetikleyicilere) yalnızca tek bir mantıksal bölümdeki öğelere karşı izin verilir.
-
-[Azure Cosmos DB bölümleri nasıl yönettiği](partitioning-overview.md)hakkında daha fazla bilgi edinebilirsiniz. (Uygulamalarınızı derlemek veya çalıştırmak için dahili ayrıntıların anlaşılması gerekmez, ancak bunu merak eden bir okuyucu için buraya eklemiş olmanız gerekmez.)
 
 ## <a name="replica-sets"></a>Çoğaltma kümeleri
 

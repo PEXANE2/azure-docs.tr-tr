@@ -10,16 +10,20 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 1318c47bcded47159006977db09604bb53674973
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: cea425a3f133c54fecda06daa57e6e5e6d22a5d8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103487964"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104783621"
 ---
-[!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 **İOS Için Hero örneğini çağıran** Azure Iletişim Hizmetleri grubu, iOS istemci kitaplığı 'Nı çağıran iletişim hizmetlerinin, ses ve video içeren bir grup çağırma deneyimi oluşturmak için nasıl kullanılabileceğini gösterir. Bu örnek hızlı başlangıçta, örneği ayarlamayı ve çalıştırmayı öğreneceksiniz. Bağlam için örneğe genel bir bakış sağlanır.
+
+## <a name="download-code"></a>Kodu indirin
+
+Bu hızlı başlangıç için [GitHub](https://github.com/Azure-Samples/communication-services-ios-calling-hero)'da son kodu bulun.
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -29,7 +33,7 @@ ms.locfileid: "103487964"
 
 :::image type="content" source="../media/calling/landing-page-ios.png" alt-text="Örnek uygulamanın giriş sayfasını gösteren ekran görüntüsü.":::
 
-"Yeni çağrıya başla" düğmesine bastığınızda iOS uygulaması yeni bir çağrı oluşturur ve bu dosyayı birleştirir. Bu uygulama, var olan çağrının KIMLIĞINI belirterek mevcut bir Azure Iletişim Hizmetleri çağrısına katılırsanız de olanak tanır.
+"Yeni çağrıya başla" düğmesine bastığınızda iOS uygulaması yeni bir çağrı oluşturur ve bu dosyayı birleştirir. Uygulama, var olan çağrının KIMLIĞINI belirterek mevcut bir Azure Iletişim Hizmetleri çağrısına katılırsanız izin verir. Ayrıca, toplantının davetine de bulunan JOIN bağlantısını sağlayarak bir takımlar Toplantısı ' na de katılabilir.  (JOIN bağlantısı şu biçimdedir: `https://teams.microsoft.com/l/meetup-join/` ). Takımlar birlikte çalışma hakkında daha fazla bilgi için [takımlar birlikte çalışma kavramsal belgelerini](../../concepts/teams-interop.md)ziyaret edin.
 
 Bir çağrıya katıldıktan sonra, bilgisayarınıza kameranıza ve mikrofona erişim izni vermeniz istenir. Ayrıca, bir görünen ad girmeniz istenir.
 
@@ -51,7 +55,7 @@ Aşağıda, önkoşulları ve örneği ayarlama adımlarını hakkında daha faz
 - Etkin aboneliği olan bir Azure hesabı. Ayrıntılar için bkz. [ücretsiz hesap oluşturma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Anahtarınıza yüklenmiş geçerli bir geliştirici sertifikasıyla birlikte [Xcode](https://go.microsoft.com/fwLink/p/?LinkID=266532)çalıştıran bir Mac.
 - Bir Azure Iletişim Hizmetleri kaynağı. Ayrıntılar için bkz. [Azure Iletişim kaynağı oluşturma](../../quickstarts/create-communication-resource.md).
-- Erişim belirteçleri getirmek için [Güvenilen hizmet mantığını](../../tutorials/trusted-service-tutorial.md) çalıştıran bir Azure işlevi.
+- Erişim belirteçleri getirmek için [kimlik doğrulama uç noktası](../../tutorials/trusted-service-tutorial.md) çalıştıran bir Azure işlevi.
 
 ## <a name="running-sample-locally"></a>Örneği yerel olarak çalıştırma
 
@@ -60,8 +64,8 @@ Grup çağırma örneği, XCode kullanılarak yerel olarak çalıştırılabilir
 ### <a name="before-running-the-sample-for-the-first-time"></a>Örneği ilk kez çalıştırmadan önce
 
 1. Çalıştırarak bağımlılıkları yükler `pod install` .
-2. `ACSCall.xcworkspace`XCode 'da açın.
-3. Güncelleştirin `AppSettings.plist` . Anahtar için değeri `acsTokenFetchUrl` kimlik doğrulama uç noktanızın URL 'si olacak şekilde ayarlayın.
+2. `AzureCalling.xcworkspace`XCode 'da açın.
+3. Güncelleştirin `AppSettings.plist` . Anahtar için değeri `communicationTokenFetchUrl` kimlik doğrulama uç noktanızın URL 'si olacak şekilde ayarlayın.
 
 ### <a name="run-sample"></a>Örnek Çalıştır
 
@@ -69,9 +73,9 @@ Grup çağırma örneği, XCode kullanılarak yerel olarak çalıştırılabilir
 
 ## <a name="optional-securing-an-authentication-endpoint"></a>Seçim Kimlik doğrulama uç noktasının güvenliğini sağlama
 
-Tanıtım amacıyla bu örnek, varsayılan olarak bir Azure Iletişim Hizmetleri belirteci getirmek için genel olarak erişilebilen bir uç nokta kullanır. Üretim senaryolarında kendi belirteçlerinizi sağlamak için kendi güvenli uç noktanızı kullanmanızı öneririz.
+Tanıtım amacıyla bu örnek, varsayılan olarak bir Azure Iletişim Hizmetleri erişim belirteci getirmek için genel olarak erişilebilen bir uç nokta kullanır. Üretim senaryolarında kendi belirteçlerinizi sağlamak için kendi güvenli uç noktanızı kullanmanızı öneririz.
 
-Ek yapılandırma ile bu örnek, uygulamanın bir Azure Iletişim Hizmetleri belirtecini getirmesi için Kullanıcı oturum açması gereken **Azure Active Directory** (Azure AD) korumalı bir uç noktaya bağlanmayı destekler. Aşağıdaki adımlara bakın:
+Ek yapılandırma ile bu örnek, uygulamanın bir Azure Iletişim Hizmetleri erişim belirteci getirmesi için Kullanıcı oturum açması gereken **Azure Active Directory** (Azure AD) korumalı bir uç noktaya bağlanmayı destekler. Aşağıdaki adımlara bakın:
 
 1. Uygulamanızda Azure Active Directory kimlik doğrulamasını etkinleştirin.  
    - [Uygulamanızı Azure Active Directory altına kaydetme (iOS/macOS platform ayarlarını kullanarak)](../../../active-directory/develop/tutorial-v2-ios.md) 
@@ -81,7 +85,7 @@ Ek yapılandırma ile bu örnek, uygulamanın bir Azure Iletişim Hizmetleri bel
 :::image type="content" source="../media/calling/aad-overview.png" alt-text="Azure portal Yapılandırma Azure Active Directory.":::
 
 3. `AppSettings.plist`Xcode 'da açın, aşağıdaki anahtar değerlerini ekleyin:
-   - `acsTokenFetchUrl`: Azure Iletişim Hizmetleri belirteci istemek için URL 
+   - `communicationTokenFetchUrl`: Azure Iletişim Hizmetleri belirteci istemek için URL 
    - `isAADAuthEnabled`: Azure Iletişim Hizmetleri belirtecinin kimlik doğrulamasının gerekli olup olmadığını belirten bir Boole değeri
    - `aadClientId`: Uygulamanızın (istemci) KIMLIĞI
    - `aadTenantId`: Dizininiz (kiracı) KIMLIĞINIZ
@@ -94,6 +98,9 @@ Bir Iletişim Hizmetleri aboneliğini temizleyip kaldırmak istiyorsanız, kayna
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+>[!div class="nextstepaction"]
+>[GitHub 'dan örneği indirin](https://github.com/Azure-Samples/communication-services-ios-calling-hero)
+
 Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 - [Çağıran istemci kitaplığını kullanma](../../quickstarts/voice-video-calling/calling-client-samples.md) hakkında bilgi edinin
@@ -101,4 +108,6 @@ Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 ### <a name="additional-reading"></a>Ek okuma
 
+- [Azure Iletişim GitHub](https://github.com/Azure/communication) -resmi GitHub sayfasında daha fazla örnek ve bilgi bulun
 - [Örnekler](./../overview.md) -örneklere genel bakış sayfamızda daha fazla örnek ve örnek bulun.
+- [Azure Iletişim çağırma özellikleri](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/calling-sdk-features) -çağıran iOS SDK 'sı hakkında daha fazla bilgi edinmek Için[Azure COMMUNICATION iOS çağıran SDK](https://github.com/Azure/Communication/releases/)

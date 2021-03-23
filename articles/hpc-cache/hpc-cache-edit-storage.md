@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 03/10/2021
 ms.author: v-erkel
-ms.openlocfilehash: 78010ef2d93b23a12fc7f3e988a536b4993b4dd4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 0c505937d4adbe2596e91ed7269676e60ada8253
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103471830"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104772610"
 ---
 # <a name="edit-storage-targets"></a>Depolama hedeflerini düzenleme
 
@@ -76,7 +76,7 @@ Azure HPC önbelleğiniz için **ad alanı** sayfasını kullanın. Ad alanı sa
 
 Değiştirmek istediğiniz yolun adına tıklayın ve görüntülenen düzenleme penceresinde yeni yolu oluşturun.
 
-![Blob ad alanı yoluna tıkladıktan sonra ad alanı sayfasının ekran görüntüsü-düzenleme alanları sağdaki bir bölmede görüntülenir](media/edit-namespace-blob.png)
+![Blob ad alanı yoluna tıkladıktan sonra ad alanı sayfasının ekran görüntüsü-düzenleme alanları sağdaki bir bölmede görüntülenir](media/update-namespace-blob.png)
 
 Değişiklik yaptıktan sonra, depolama hedefini güncelleştirmek için **Tamam** ' ı tıklatın veya değişiklikleri atmak için **iptal** ' i tıklatın.
 

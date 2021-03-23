@@ -1,17 +1,17 @@
 ---
 title: Altyapı Çift şifreleme-Azure portal-PostgreSQL için Azure veritabanı
 description: PostgreSQL için Azure veritabanınız için altyapı çift şifrelemeyi ayarlamayı ve yönetmeyi öğrenin.
-author: mksuni
-ms.author: sumuth
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 06/30/2020
-ms.openlocfilehash: ea486b534ac3e703849ddb3922d7c3a428dd076b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/14/2021
+ms.openlocfilehash: 0b1079a084072556ae79a18a12f6b35f74c92775
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93242237"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771660"
 ---
 # <a name="infrastructure-double-encryption-for-azure-database-for-postgresql"></a>PostgreSQL için Azure veritabanı için altyapı Çift şifreleme
 
@@ -23,7 +23,7 @@ PostgreSQL için Azure veritabanınız için altyapı ikili şifrelemesini ayarl
 
 ## <a name="create-an-azure-database-for-postgresql-server-with-infrastructure-double-encryption---portal"></a>Altyapı çift şifrelemesi ile PostgreSQL için Azure veritabanı sunucusu oluşturma-Portal
 
-Azure portal altyapı çift şifrelemesi ile bir MySQL için Azure veritabanı sunucusu oluşturmak için aşağıdaki adımları izleyin:
+Azure portal altyapı çift şifrelemesi ile PostgreSQL için Azure veritabanı sunucusu oluşturmak üzere şu adımları izleyin:
 
 1. Portalın sol üst köşesinde bulunan **kaynak oluştur** (+) seçeneğini belirleyin.
 
@@ -45,7 +45,7 @@ Azure portal altyapı çift şifrelemesi ile bir MySQL için Azure veritabanı s
 
 ## <a name="create-an-azure-database-for-postgresql-server-with-infrastructure-double-encryption---cli"></a>Altyapı çift şifrelemesi ile PostgreSQL için Azure veritabanı sunucusu oluşturma-CLı
 
-CLı 'dan altyapı çift şifrelemesi ile bir MySQL için Azure veritabanı sunucusu oluşturmak için aşağıdaki adımları izleyin:
+CLı 'dan altyapı çift şifrelemesi ile PostgreSQL için Azure veritabanı sunucusu oluşturmak üzere şu adımları izleyin:
 
 Bu örnek, konumunda adlı bir kaynak grubu oluşturur `myresourcegroup` `westus` .
 

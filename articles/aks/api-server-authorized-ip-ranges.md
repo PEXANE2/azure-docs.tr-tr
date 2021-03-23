@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) ' de API sunucusuna erişim için bi
 services: container-service
 ms.topic: article
 ms.date: 09/21/2020
-ms.openlocfilehash: ca6e1c06b3ad90ef12c9bf375bae50d46c5f7c37
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 20c3d46e9a19c66c727e5a21bccd6caa0dc5f0ba
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98890653"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771932"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki yetkili IP adresi aralıklarını kullanarak API sunucusuna güvenli erişim
 
@@ -27,7 +27,7 @@ Azure CLı sürüm 2.0.76 veya sonraki bir sürümün yüklü ve yapılandırıl
 
 API sunucusu yetkilendirilmiş IP aralıkları özelliği aşağıdaki sınırlamalara sahiptir:
 - API sunucusu yetkilendirilmiş IP adresi aralıklarının ön izleme 2019 ' de önizleme dışına taşındıktan sonra oluşturulan kümelerde, API sunucusu yetkilendirilmiş IP adresi aralıkları yalnızca *Standart* SKU yük dengeleyicide desteklenir. Yapılandırılmış *temel* SKU yük dengeleyiciye ve API sunucusu yetkilendirilmiş IP adresi aralıklarına sahip mevcut kümeler, olduğu gibi çalışmaya devam eder, ancak *Standart* bir SKU yük dengeleyiciye geçirilemez. Bu mevcut kümeler, Kubernetes sürümü veya denetim düzlemi yükseltildiyse de çalışmaya devam edecektir. API sunucusu yetkilendirilmiş IP adresi aralıkları özel kümeler için desteklenmez.
-- Bu özellik, [düğüm düğüm havuzları önizleme özelliği başına genel IP](use-multiple-node-pools.md#assign-a-public-ip-per-node-for-your-node-pools-preview)kullanan kümelerle uyumlu değildir.
+- Bu özellik, [düğüm başına genel IP](use-multiple-node-pools.md#assign-a-public-ip-per-node-for-your-node-pools)kullanan kümelerle uyumlu değildir.
 
 ## <a name="overview-of-api-server-authorized-ip-ranges"></a>API sunucusu yetkilendirilmiş IP aralıklarına genel bakış
 

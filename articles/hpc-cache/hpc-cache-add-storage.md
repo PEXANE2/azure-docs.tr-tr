@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: bba6745a4cc0be30648e23501f9a9e2f0cc6c8db
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: afb896100ea60c21aaf37890d7b520bf38c6ce18
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103563253"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104772731"
 ---
 # <a name="add-storage-targets"></a>Depolama hedefleri ekleme
 
@@ -164,7 +164,7 @@ Bir NFS depolama hedefi, bir BLOB depolama hedefinden farklı ayarlara sahiptir.
 > Bir NFS depolama hedefi oluşturmadan önce, depolama sisteminizin Azure HPC önbelleğinden erişilebilir olduğundan ve izin gereksinimlerini karşıladığından emin olun. Önbellek depolama sistemine erişemeyecektir depolama hedefi oluşturma işlemi başarısız olur. Ayrıntılar için [NFS depolama gereksinimlerini](hpc-cache-prerequisites.md#nfs-storage-requirements) okuyun ve [NAS yapılandırma ve NFS depolama hedefi sorunlarını giderin](troubleshoot-nas.md) .
 
 ### <a name="choose-a-usage-model"></a>Kullanım modeli seçin
-<!-- referenced from GUI - update aka.ms link to point at new article when published -->
+<!-- referenced from GUI by aka.ms link -->
 
 Depolama sistemine ulaşmak için NFS kullanan bir depolama hedefi oluşturduğunuzda, bu hedef için bir kullanım modeli seçmeniz gerekir. Bu model, verilerinizin nasıl önbelleğe alınacağını belirler.
 
@@ -195,16 +195,6 @@ Diğer seçeneklerle ilgili ayrıntılar için bkz. [kullanım modellerini anlay
 Bu tablo tüm kullanım modelleri arasındaki farkları özetler:
 
 [!INCLUDE [usage-models-table.md](includes/usage-models-table.md)]
-
-<!-- | Usage model | Caching mode | Back-end verification | Maximum write-back delay |
-|--|--|--|--|
-| Read heavy, infrequent writes | Read | Never | None |
-| Greater than 15% writes | Read/write | 8 hours | 20 minutes |
-| Clients bypass the cache | Read | 30 seconds | None |
-| Greater than 15% writes, frequent back-end checking (30 seconds) | Read/write | 30 seconds | 20 minutes |
-| Greater than 15% writes, frequent back-end checking (60 seconds) | Read/write | 60 seconds | 20 minutes |
-| Greater than 15% writes, frequent write-back | Read/write | 30 seconds | 30 seconds |
-| Read heavy, checking the backing server every 3 hours | Read | 3 hours | None | -->
 
 > [!NOTE]
 > **Arka uç doğrulama** değeri, önbelleğin, dosyalarını uzak depolamadaki kaynak dosyalarla otomatik olarak karşılaştırdığı zamanı gösterir. Ancak, arka uç depolama sisteminde readdirplus işlemini içeren bir istemci isteği göndererek karşılaştırmayı tetikleyebilirsiniz. Readdirplus, dizin meta verileri döndüren standart bir NFS API 'sidir (genişletilmiş okuma olarak da bilinir). Bu, önbelleğin dosyaları karşılaştırmasına ve güncelleştirmesine neden olur.
