@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/16/2020
+ms.date: 03/22/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6b0bdc5a5b58c205d888c8892a4333225a9b316f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c42c6465af8e895d833332be847c134b97ee8ddc
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100557137"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781305"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C Kullanıcı akışları oluşturma
 
@@ -25,8 +25,9 @@ Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Kaydolma ve oturum açma Kullanıcı akışı oluşturma
+> * Kendi kendine parola sıfırlamayı etkinleştirme
 > * Profil düzenlemesi Kullanıcı akışı oluşturma
-> * Parola sıfırlama Kullanıcı akışı oluşturma
+
 
 Bu öğreticide, Azure portal kullanarak önerilen bazı Kullanıcı akışlarını nasıl oluşturacağınız gösterilmektedir. Uygulamanızda bir kaynak sahibi parola kimlik bilgileri (ROPC) akışının nasıl ayarlanacağı hakkında bilgi arıyorsanız, bkz. [Azure AD B2C kaynak sahibi parola kimlik bilgileri akışını yapılandırma](add-ropc-policy.md).
 
@@ -85,6 +86,24 @@ Kaydolma ve oturum açma Kullanıcı akışı, hem kayıt hem de oturum açma de
 > [!NOTE]
 > "Kullanıcı akışını Çalıştır" deneyimi şu anda yetkilendirme kodu akışını kullanan SPA yanıt URL 'SI türüyle uyumlu değil. "Kullanıcı akışını Çalıştır" deneyimini bu tür uygulamalarla kullanmak için, "Web" türünde bir yanıt URL 'SI kaydedin ve [burada](tutorial-register-spa.md)açıklandığı gibi örtük akışı etkinleştirin.
 
+## <a name="enable-self-service-password-reset"></a>Kendi kendine parola sıfırlamayı etkinleştirme
+
+Kaydolma veya oturum açma Kullanıcı akışı için [self servis parola sıfırlamayı](add-password-reset-policy.md) etkinleştirmek için:
+
+1. Oluşturduğunuz kaydolma veya oturum açma kullanıcı akışını seçin.
+1. Sol menüdeki **Ayarlar** ' ın altında **Özellikler**' i seçin.
+1. **Parola karmaşıklığı** bölümünde **self servis parola sıfırlama**' yı seçin.
+1. **Kaydet**’i seçin.
+
+### <a name="test-the-user-flow"></a>Kullanıcı akışını test etme
+
+1. Genel Bakış sayfasını açmak için oluşturduğunuz kullanıcı akışını seçin ve ardından **Kullanıcı akışını Çalıştır**' ı seçin.
+1. **Uygulama** için, daha önce kaydettiğiniz *WebApp1* adlı Web uygulamasını seçin. **Yanıt URL 'si** gösterilmesi gerekir `https://jwt.ms` .
+1. **Kullanıcı akışını Çalıştır**' ı seçin.
+1. Kaydolma veya oturum açma sayfasından **parolanızı unuttum?** seçeneğini belirleyin.
+1. Daha önce oluşturduğunuz hesabın e-posta adresini doğrulayın ve sonra **devam**' ı seçin.
+1. Artık Kullanıcı parolasını değiştirme fırsatına sahipsiniz. Parolayı değiştirin ve **devam**' ı seçin. Belirteç öğesine döner `https://jwt.ms` ve size gösterilmesi gerekir.
+
 ## <a name="create-a-profile-editing-user-flow"></a>Profil düzenlemesi Kullanıcı akışı oluşturma
 
 Kullanıcıların uygulamanızdaki profilini düzenlemesini etkinleştirmek istiyorsanız, bir profil düzenleme Kullanıcı akışı kullanın.
@@ -103,26 +122,6 @@ Kullanıcıların uygulamanızdaki profilini düzenlemesini etkinleştirmek isti
 1. **Uygulama** için, daha önce kaydettiğiniz *WebApp1* adlı Web uygulamasını seçin. **Yanıt URL 'si** gösterilmesi gerekir `https://jwt.ms` .
 1. **Kullanıcı akışını Çalıştır**' a tıklayın ve daha önce oluşturduğunuz hesapla oturum açın.
 1. Artık Kullanıcı için görünen adı ve iş başlığını değiştirme fırsatına sahipsiniz. **Devam**’a tıklayın. Belirteç öğesine döner `https://jwt.ms` ve size gösterilmesi gerekir.
-
-## <a name="create-a-password-reset-user-flow"></a>Parola sıfırlama Kullanıcı akışı oluşturma
-
-Uygulamanızın kullanıcılarının parolasını sıfırlamasına olanak tanımak için, parola sıfırlama kullanıcı akışını kullanırsınız.
-
-1. Azure AD B2C kiracı genel bakış menüsünde **Kullanıcı akışları**' nı seçin ve ardından **Yeni Kullanıcı akışı**' nı seçin.
-1. **Kullanıcı akışı oluştur** sayfasında, **parola sıfırlama** Kullanıcı akışını seçin. 
-1. **Sürüm seçin** altında **Önerilen**' i seçin ve ardından **Oluştur**' u seçin.
-1. Kullanıcı akışı için bir **ad** girin. Örneğin, *passwordreset1*.
-1. **Kimlik sağlayıcıları** için **e-posta adresini kullanarak parolayı sıfırlamayı** etkinleştirin.
-2. Uygulama talepleri bölümünde **daha fazla göster** ' e tıklayın ve uygulamanıza geri gönderilen yetkilendirme belirteçlerinde döndürülmesini istediğiniz talepleri seçin. Örneğin, **Kullanıcının Nesne Kimliği**’ni seçin.
-3. **Tamam**'a tıklayın.
-4. Kullanıcı akışını eklemek için **Oluştur** ' a tıklayın. *B2C_1* bir ön eki otomatik olarak ada eklenir.
-
-### <a name="test-the-user-flow"></a>Kullanıcı akışını test etme
-
-1. Genel Bakış sayfasını açmak için oluşturduğunuz kullanıcı akışını seçin ve ardından **Kullanıcı akışını Çalıştır**' ı seçin.
-1. **Uygulama** için, daha önce kaydettiğiniz *WebApp1* adlı Web uygulamasını seçin. **Yanıt URL 'si** gösterilmesi gerekir `https://jwt.ms` .
-1. **Kullanıcı akışını Çalıştır**' a tıklayın, daha önce oluşturduğunuz hesabın e-posta adresini doğrulayın ve **devam**' ı seçin.
-1. Artık Kullanıcı parolasını değiştirme fırsatına sahipsiniz. Parolayı değiştirin ve **devam**' ı seçin. Belirteç öğesine döner `https://jwt.ms` ve size gösterilmesi gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

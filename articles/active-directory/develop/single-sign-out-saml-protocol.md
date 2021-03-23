@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/19/2017
+ms.date: 03/22/2021
 ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
-ms.openlocfilehash: 2064ab7e759798d8934facb8d293e8ac60ec6c82
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 040e49ee870704107e1d4118f1484119d98a9ebf
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97703424"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781220"
 ---
 # <a name="single-sign-out-saml-protocol"></a>Tek Sign-Out SAML Protokolü
 
-Azure Active Directory (Azure AD), SAML 2,0 Web tarayıcısı çoklu oturum açma profilini destekler. Çoklu oturum açma 'nın düzgün çalışması için uygulama kaydı sırasında uygulamanın **LogoutURL 'Sinin** Azure AD 'ye açık olarak kaydedilmesi gerekir. Azure AD, oturumu kapattıktan sonra kullanıcıları yeniden yönlendirmek için LogoutURL 'yi kullanır.
+Azure Active Directory (Azure AD), SAML 2,0 Web tarayıcısı çoklu oturum açma profilini destekler. Çoklu oturum açma 'nın düzgün çalışması için uygulama kaydı sırasında uygulamanın **LogoutURL 'Sinin** Azure AD 'ye açık olarak kaydedilmesi gerekir. Uygulama [Azure Uygulama Galerisine eklenirse](v2-howto-app-gallery-listing.md) , bu değer varsayılan olarak ayarlanabilir. Aksi takdirde, değer belirlenmesi ve uygulamayı Azure AD kiracısına ekleyen kişi tarafından ayarlanması gerekir. Azure AD, oturumu kapattıktan sonra kullanıcıları yeniden yönlendirmek için LogoutURL 'yi kullanır. 
 
 Azure AD yeniden yönlendirme bağlamasını (HTTP GET), HTTP SONRASı bağlamayı destekler.
 

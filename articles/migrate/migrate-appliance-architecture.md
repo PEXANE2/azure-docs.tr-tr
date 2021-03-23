@@ -1,32 +1,32 @@
 ---
 title: Azure Geçişi aleti mimarisi
-description: Sunucu değerlendirmesi ve geçişte kullanılan Azure geçişi gerecine genel bakış sağlar.
-author: vikram1988
-ms.author: vibansa
+description: Sunucu bulma, değerlendirme ve geçiş konusunda kullanılan Azure geçiş gerecine genel bir bakış sağlar.
+author: vineetvikram
+ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
-ms.date: 06/09/2020
-ms.openlocfilehash: d695758849fd4f7e6f595820221f6b8606fe7cf1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/18/2021
+ms.openlocfilehash: f3a94576ef58eabf9d747c6e6c3a6372569d4cf1
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102096199"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104785249"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Azure Geçişi aleti mimarisi
 
-Bu makalede Azure geçiş gereci mimarisi ve süreçler açıklanmaktadır. Azure geçişi gereci, Azure 'a geçiş için VM 'Leri ve fiziksel sunucuları bulmayı sağlayan, şirket içinde dağıtılan hafif bir gereç.
+Bu makalede Azure geçiş gereci mimarisi ve süreçler açıklanmaktadır. Azure geçişi gereci, şirket içinde dağıtılan ve Azure 'a geçiş için sunucuları bulmaya yönelik hafif bir gereç.
 
 ## <a name="deployment-scenarios"></a>Dağıtım senaryoları
 
 Azure geçişi gereci aşağıdaki senaryolarda kullanılır.
 
-**Senaryo** | **Araç** | **Kullanıldığı yer** 
+**Senaryo** | **Araç** | **Kullanıldığı yer**
 --- | --- | ---
-**VMware ortamında çalışan sunucuların keşfi ve değerlendirmesi** | Azure geçişi: Sunucu değerlendirmesi | VMware ortamınızda çalışan sunucuları bulma<br/><br/> Yüklü uygulamalar bulmayı, aracısız bağımlılık analizini ve SQL Server örnekleri ve veritabanlarını bulmayı gerçekleştirin.<br/><br/> Değerlendirmeler için sunucu yapılandırma ve performans meta verilerini toplayın.
+**VMware ortamında çalışan sunucuların keşfi ve değerlendirmesi** | Azure geçişi: bulma ve değerlendirme | VMware ortamınızda çalışan sunucuları bulma<br/><br/> Yüklü yazılım envanteri, aracısız bağımlılık Analizi ve SQL Server örnekleri ve veritabanlarını bulma işlemini gerçekleştirin.<br/><br/> Değerlendirmeler için sunucu yapılandırma ve performans meta verilerini toplayın.
 **VMware ortamında çalışan sunucuların aracısız geçişi** | Azure geçişi: sunucu geçişi | VMware ortamınızda çalışan sunucuları bulun.<br/><br/> Herhangi bir aracı yüklemeden sunucuları çoğaltın.
-**Hyper-V ortamında çalışan sunucuların keşfi ve değerlendirmesi** | Azure geçişi: Sunucu değerlendirmesi | Hyper-V ortamınızda çalışan sunucuları bulun.<br/><br/> Değerlendirmeler için sunucu yapılandırma ve performans meta verilerini toplayın.
-**Şirket içi fiziksel veya sanallaştırılmış sunucuların bulunması ve değerlendirmesi** |  Azure geçişi: Sunucu değerlendirmesi |  Şirket içi fiziksel veya sanallaştırılmış sunucuları bulun.<br/><br/> Değerlendirmeler için sunucu yapılandırma ve performans meta verilerini toplayın.
+**Hyper-V ortamında çalışan sunucuların keşfi ve değerlendirmesi** | Azure geçişi: bulma ve değerlendirme | Hyper-V ortamınızda çalışan sunucuları bulun.<br/><br/> Değerlendirmeler için sunucu yapılandırma ve performans meta verilerini toplayın.
+**Şirket içi fiziksel veya sanallaştırılmış sunucuların bulunması ve değerlendirmesi** |  Azure geçişi: bulma ve değerlendirme |  Şirket içi fiziksel veya sanallaştırılmış sunucuları bulun.<br/><br/> Değerlendirmeler için sunucu yapılandırma ve performans meta verilerini toplayın.
 
 ## <a name="deployment-methods"></a>Dağıtım yöntemleri
 
@@ -53,7 +53,6 @@ Gereç aşağıdaki hizmetlere sahiptir:
 > [!Note]
 > Son 3 hizmet yalnızca VMware ortamınızda çalışan sunucuların bulunması ve değerlendirmesi için kullanılan gereç içinde kullanılabilir.<br/> VMware ortamınızda çalışan SQL Server örnekleri ve veritabanlarının keşfi ve değerlendirmesi artık önizlemededir. Bu özelliği denemek için [**bu bağlantıyı**](https://aka.ms/AzureMigrate/SQL) kullanarak **Doğu Avustralya** bölgesinde bir proje oluşturun. Zaten Doğu Avustralya bölgesinde bir projeniz varsa ve bu özelliği denemek istiyorsanız, lütfen portalda bu [**önkoşulları**](how-to-discover-sql-existing-project.md) tamamladığınızdan emin olun.
 
-
 ## <a name="discovery-and-collection-process"></a>Bulma ve toplama işlemi
 
 :::image type="content" source="./media/migrate-appliance-architecture/architecture1.png" alt-text="Gereç mimarisi":::
@@ -64,9 +63,9 @@ Gereç, aşağıdaki işlemi kullanarak bulma kaynaklarıyla iletişim kurar.
 ---|---|---|---
 **Bulmayı Başlat** | Gereç, varsayılan olarak TCP bağlantı noktası 443 üzerindeki vCenter Server ile iletişim kurar. VCenter sunucusu farklı bir bağlantı noktasını dinliyorsa, bunu gereç Yapılandırma Yöneticisi 'nde yapılandırabilirsiniz. | Gereç, WinRM bağlantı noktası 5985 (HTTP) üzerindeki Hyper-V konaklarıyla iletişim kurar. | Gereç, 22 (TCP) bağlantı noktası üzerinden Linux sunucularıyla WinRM bağlantı noktası 5985 (HTTP) üzerinden Windows sunucularıyla iletişim kurar.
 **Yapılandırma ve performans meta verilerini toplayın** | Gereç, bağlantı noktası 443 (varsayılan bağlantı noktası) veya başka herhangi bir bağlantı noktası üzerinden vCenter Server, vSphere API 'Leri kullanarak, vCenter Server üzerinde çalışan sunucuların meta verilerini toplar. | Gereç, 5985 numaralı bağlantı noktasında konaklarla Genel Bilgi Modeli (CıM) oturumu kullanarak Hyper-V konaklarında çalışan sunucuların meta verilerini toplar.| Gereç, 5985 numaralı bağlantı noktasında ve numaralı bağlantı noktasında SSH bağlantısı kullanan Linux sunucularından Genel Bilgi Modeli (CıM) oturumu kullanarak Windows sunucularından meta verileri toplar.
-**Bulgu verileri gönder** | Gereç, toplanan verileri Azure geçişi 'ne gönderir: Sunucu değerlendirmesi ve Azure geçişi: SSL bağlantı noktası 443 üzerinden sunucu geçişi.<br/><br/> Gereç, internet üzerinden veya ExpressRoute aracılığıyla Azure 'a bağlanabilir (Microsoft eşlemesi gerektirir). | Gereç, toplanan verileri Azure geçişi 'ne gönderir: SSL bağlantı noktası 443 üzerinden sunucu değerlendirmesi.<br/><br/> Gereç, internet üzerinden veya ExpressRoute aracılığıyla Azure 'a bağlanabilir (Microsoft eşlemesi gerektirir).| Gereç, toplanan verileri Azure geçişi 'ne gönderir: SSL bağlantı noktası 443 üzerinden sunucu değerlendirmesi.<br/><br/> Gereç, internet üzerinden veya ExpressRoute aracılığıyla Azure 'a bağlanabilir (Microsoft eşlemesi gerektirir).
+**Bulgu verileri gönder** | Gereç, toplanan verileri Azure geçişi 'ne gönderir: bulma ve değerlendirme ve Azure geçişi: SSL bağlantı noktası 443 üzerinden sunucu geçişi.<br/><br/> Gereç, internet üzerinden veya ExpressRoute aracılığıyla Azure 'a bağlanabilir (Microsoft eşlemesi gerektirir). | Gereç, toplanan verileri Azure geçişi: SSL bağlantı noktası 443 üzerinden bulma ve değerlendirme 'a gönderir.<br/><br/> Gereç, internet üzerinden veya ExpressRoute aracılığıyla Azure 'a bağlanabilir (Microsoft eşlemesi gerektirir).| Gereç, toplanan verileri Azure geçişi: SSL bağlantı noktası 443 üzerinden bulma ve değerlendirme 'a gönderir.<br/><br/> Gereç, internet üzerinden veya ExpressRoute aracılığıyla Azure 'a bağlanabilir (Microsoft eşlemesi gerektirir).
 **Veri toplama sıklığı** | Yapılandırma meta verileri, her 30 dakikada bir toplanır ve gönderilir. <br/><br/> Performans meta verileri 20 saniyede bir toplanır ve her 10 dakikada bir veri noktasını Azure 'a göndermek için toplanır. <br/><br/> Yazılım envanteri verileri her 12 saatte bir Azure 'a gönderilir. <br/><br/> Aracısız bağımlılık verileri 5 dakikada bir toplanır ve her 6 saatte bir Azure 'a gönderilir. <br/><br/> SQL Server yapılandırma verileri her 24 saatte bir güncelleştirilir ve performans verileri her 30 saniyede yakalanır.| Yapılandırma meta verileri, her 30 dakikada bir toplanır ve gönderilir. <br/><br/> Performans meta verileri 30 saniyede bir toplanır ve Azure 'a her 10 dakikada bir veri noktası göndermek için toplanır.|  Yapılandırma meta verileri, her 30 dakikada bir toplanır ve gönderilir. <br/><br/> Performans meta verileri 5 dakikada bir toplanır ve her 10 dakikada bir veri noktasını Azure 'a göndermek için toplanır.
-**Değerlendirme ve geçirme** | Azure geçişi: Sunucu değerlendirmesi aracını kullanarak gereç tarafından toplanan meta verilerden değerlendirmeler oluşturabilirsiniz.<br/><br/>Ayrıca, Azure geçişi: sunucu geçiş aracını kullanarak, aracısız sunucu çoğaltmasını organize etmek için VMware ortamınızda çalışan sunucuları geçirmeyi de başlatabilirsiniz.| Azure geçişi: Sunucu değerlendirmesi aracını kullanarak gereç tarafından toplanan meta verilerden değerlendirmeler oluşturabilirsiniz. | Azure geçişi: Sunucu değerlendirmesi aracını kullanarak gereç tarafından toplanan meta verilerden değerlendirmeler oluşturabilirsiniz.
+**Değerlendirme ve geçirme** | Azure geçişi: bulma ve değerlendirme aracı kullanılarak gereç tarafından toplanan meta verilerden değerlendirmeler oluşturabilirsiniz.<br/><br/>Ayrıca, Azure geçişi: sunucu geçiş aracını kullanarak, aracısız sunucu çoğaltmasını organize etmek için VMware ortamınızda çalışan sunucuları geçirmeyi de başlatabilirsiniz.| Azure geçişi: bulma ve değerlendirme aracı kullanılarak gereç tarafından toplanan meta verilerden değerlendirmeler oluşturabilirsiniz. | Azure geçişi: bulma ve değerlendirme aracı kullanılarak gereç tarafından toplanan meta verilerden değerlendirmeler oluşturabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

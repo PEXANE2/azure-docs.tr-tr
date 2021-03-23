@@ -1,18 +1,14 @@
 ---
 title: Gerekli gereçlerini tanımlama
 description: IoT sensörlerine ve şirket içi yönetim konsoluna yönelik sertifikalı Defender için donanım ve sanal gereçler hakkında bilgi edinin.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 01/13/2021
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 2ad5bf08542cd98f7acae36827b1a7b284a893b0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 242e88e92d6197fd018c56fa55a4dd8166f5d027
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103149312"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782767"
 ---
 # <a name="identify-required-appliances"></a>Gerekli gereçlerini tanımlama
 
@@ -109,7 +105,7 @@ Bu bölümde, aşağıdaki gereçlere yönelik donanım belirtimleri açıklanma
 
 ### <a name="appliance-bom"></a>Gereç ürün ağacı
 
-| DÖNÜŞTÜRME | Description | Miktar |
+| DÖNÜŞTÜRME | Açıklama | Miktar |
 |--|--|--|
 | P19766-B21 | HPE DL360 Gen10 8SFF NC CTO sunucusu | 1 |
 | P19766-B21 | Avrupa-çok dilli yerelleştirme | 1 |
@@ -180,7 +176,7 @@ Bu bölümde, aşağıdaki gereçlere yönelik donanım belirtimleri açıklanma
 
 ### <a name="appliance-bom"></a>Gereç ürün ağacı
 
-| DÖNÜŞTÜRME | Description | Miktar |
+| DÖNÜŞTÜRME | Açıklama | Miktar |
 |--|--|--|
 | P06961-B21 | HPE DL20 Gen10 NHP 2LFF CTO sunucusu | 1 |
 | P06961-B21 | HPE DL20 Gen10 NHP 2LFF CTO sunucusu | 1 |
@@ -216,7 +212,7 @@ Bu bölümde, aşağıdaki gereçlere yönelik donanım belirtimleri açıklanma
 | Şok | 10G 10ms, yarım sinüs, her eksen için üç. (Pozitif & negatif Pulse) – DIN |
 
 ### <a name="appliance-bom"></a>Gereç ürün ağacı
-| Ürün | Description |
+| Ürün | Açıklama |
 |--|--|
 | P25828-B21 | HPE Edgeline EL300 v2 yakınsanmış uç sistemi |
 | P25828-B21 B19 | HPE EL300 v2 Yakınsanan uç sistemi |
@@ -248,7 +244,7 @@ Bu bölümde, aşağıdaki gereçlere yönelik donanım belirtimleri açıklanma
 
 | Tür | Kurumsal |
 |--|--|
-| Description | Kurumsal Dağıtım türleri için Sanal Gereç |
+| Açıklama | Kurumsal Dağıtım türleri için Sanal Gereç |
 | Sanal işlemci | 8 |
 | Bellek | 32 GB |
 | Depolama | 1,8 TB |
@@ -272,27 +268,6 @@ Bu bölümde, Microsoft tarafından sertifikalı ancak önceden yapılandırılm
 Gereci satın aldıktan sonra,   >  yazılımı indirmek için IoT **ağ sensör ISO**  >  **yüklemesi** Defender ' a gidin.
 
 :::image type="content" source="media/how-to-prepare-your-network/azure-defender-for-iot-sensor-download-software-screen.png" alt-text="Ağ sensörleri ISO.":::
-
-## <a name="enterprise-deployment-dell-poweredge-r340-xl"></a>Kurumsal Dağıtım: Dell PowerEdge R340 XL
-
-| Bileşen | Teknik özellikler |
-|--|--|
-| Kasa | 1U raf sunucusu
-| Boyutlar | 42,8 x 434,0 x 596 (mm)/1,67 "x 17,09" x 23,5 "(içinde) |
-| Ağırlık | Maksimum 29,98 lb/13,6 kg |
-| İşlemci | Intel Xeon E-2144G 3,6 GHz, 8M önbellek, 4C/8T, Turbo (71 W) |
-| Ç | Intel C246 |
-| Bellek | 32 GB = 2 x 16-GB 2666MT/s DDR4 ECC UDıMM |
-| Depolama | 3 x 2-TB 7,2 K RPM SATA 6-Gbps 512n 3,5-Hot-Plug sabit sürücü-RAID 5 |
-| Ağ denetleyicisi | Yerleşik: 2 x 1 GB Broadcom BCM5720<br>Yerleşik LOM: Idrac bağlantı noktası kartı 1-GB Broadcom BCM5720 <br><br>Harici: 1 x Intel Ethernet i350 QP 1-GB sunucu bağdaştırıcısı, düşük profil |
-| Yönetim | Idrac dokuz kurumsal |
-| Cihaz erişimi | İki arka USB 3,0 <br> Bir ön USB 3,0 |
-| Güç | Çift Hot plug güç kaynakları 350 W |
-| Raf desteği | Daha az bir araç daha az kablo yönetimi ARM desteğiyle 4 ' te, iş parçacıklı yuvarlak delikleri ya da 4 ' te akıtılan delik raflarını içeren 4. |
-
-## <a name="dell-r340-bom"></a>Dell R340 BOM
-
-:::image type="content" source="media/how-to-prepare-your-network/enterprise-deployment-for-azure-defender-for-iot-dell-r340-bom.png" alt-text="Dell R340 BOM.":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

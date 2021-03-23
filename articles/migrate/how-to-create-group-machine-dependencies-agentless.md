@@ -1,24 +1,24 @@
 ---
-title: Azure geçişi sunucu değerlendirmesi ' nde aracısız bağımlılık analizini ayarlama
-description: Azure geçişi sunucu değerlendirmesi ' nde aracısız bağımlılık analizini ayarlayın.
+title: Azure geçişi 'nde aracısız bağımlılık analizini ayarlama
+description: Azure geçişi 'nde aracısız bağımlılık analizini ayarlayın.
 author: vikram1988
 ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 6/08/2020
-ms.openlocfilehash: c3aa2aea764af8469152b007e60427724fea398a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7966750d7c3e0f12bb9404a4d78bbc27e4075c52
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102045862"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786592"
 ---
 # <a name="analyze-server-dependencies-agentless"></a>Sunucu bağımlılıklarını çözümleme (aracısız)
 
-Bu makalede, Azure geçişi: Sunucu değerlendirmesi kullanılarak aracısız bağımlılık analizinin nasıl ayarlanacağı açıklanır. [Bağımlılık Analizi](concepts-dependency-visualization.md) , Azure 'a değerlendirme ve geçiş için sunucular genelinde bağımlılıkları belirlemenize ve anlamanıza yardımcı olur.
+Bu makalede, Azure geçişi: bulma ve değerlendirme aracı kullanılarak aracısız bağımlılık analizinin nasıl ayarlanacağı açıklanır. [Bağımlılık Analizi](concepts-dependency-visualization.md) , Azure 'a değerlendirme ve geçiş için sunucular genelinde bağımlılıkları belirlemenize ve anlamanıza yardımcı olur.
 
 > [!IMPORTANT]
-> Aracısız bağımlılık analizi, Azure geçişi: Sunucu değerlendirmesi aracı ile keşfedilen, VMware ortamınızda çalışan sunucular için şu anda önizlemededir.
+> Aracısız bağımlılık analizi, Azure geçişi: bulma ve değerlendirme aracı ile keşfedilen, VMware ortamınızda çalışan sunucular için şu anda önizlemededir.
 > Bu önizleme müşteri desteği kapsamında ele alınmıştır ve üretim iş yükleri için kullanılabilir.
 > Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
@@ -30,7 +30,7 @@ Bu makalede, Azure geçişi: Sunucu değerlendirmesi kullanılarak aracısız ba
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
-- Azure geçişi: Sunucu değerlendirmesi aracı eklenmiş [bir Azure geçişi projesi oluşturduğunuzdan](./create-manage-projects.md) emin olun.
+- Azure geçişi: bulma ve değerlendirme aracı eklenmiş [bir proje oluşturduğunuzdan](./create-manage-projects.md) emin olun.
 - Bağımlılık analizi gerçekleştirmek için [VMware gereksinimlerini](migrate-support-matrix-vmware.md#vmware-requirements) gözden geçirin.
 - Gereci ayarlamadan önce [gereç gereksinimlerini](migrate-support-matrix-vmware.md#azure-migrate-appliance-requirements) gözden geçirin.
 - Sunucularda bağımlılık analizini etkinleştirmeden önce [bağımlılık Analizi gereksinimlerini gözden geçirin](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) .
@@ -41,7 +41,7 @@ Bu makalede, Azure geçişi: Sunucu değerlendirmesi kullanılarak aracısız ba
 2. Gereçlerin [ortak](migrate-appliance.md#public-cloud-urls) ve [kamu bulutlarında](migrate-appliance.md#government-cloud-urls)erişmesi gereken Azure URL 'lerini gözden geçirin.
 3. Bulma ve değerlendirme sırasında gereç tarafından toplanan [verileri gözden geçirin](migrate-appliance.md#collected-data---vmware) .
 4. Gereç [için bağlantı noktası](migrate-support-matrix-vmware.md#port-access-requirements) erişim gereksinimleri.
-5. Bulmayı başlatmak için [Azure geçişi gereci dağıtın](how-to-set-up-appliance-vmware.md) . Gereci dağıtmak için, bir OVA şablonunu indirip vCenter Server çalıştıran bir sunucu oluşturmak için VMware 'ye içeri aktarabilirsiniz. Gereci dağıttıktan sonra Azure geçişi projesi ile kaydetmeniz ve bulmayı başlatmak için yapılandırmanız gerekir.
+5. Bulmayı başlatmak için [Azure geçişi gereci dağıtın](how-to-set-up-appliance-vmware.md) . Gereci dağıtmak için, bir OVA şablonunu indirip vCenter Server çalıştıran bir sunucu oluşturmak için VMware 'ye içeri aktarabilirsiniz. Gereci dağıttıktan sonra projeyi projeye kaydetmeniz ve bulmayı başlatacak şekilde yapılandırmanız gerekir.
 6. Gereci yapılandırırken, Gereç Yapılandırma Yöneticisi 'nde aşağıdakileri belirtmeniz gerekir:
     - Bağlanmak istediğiniz vCenter Server ayrıntıları.
     - VMware ortamınızdaki sunucuları bulmaya yönelik kapsamlı kimlik bilgileri vCenter Server.
@@ -50,7 +50,7 @@ Bu makalede, Azure geçişi: Sunucu değerlendirmesi kullanılarak aracısız ba
 ## <a name="verify-permissions"></a>İzinleri doğrulama
 
 - Bulma ve değerlendirme için [vCenter Server salt okunurdur bir hesap oluşturmanız](./tutorial-discover-vmware.md#prepare-vmware) gerekir. Bir salt okuma hesabının   >  , bağımlılık verilerini toplamak üzere sunucularla etkileşime geçmesini sağlamak için sanal makineler **Konuk işlemleri** için etkinleştirilmiş ayrıcalıklara ihtiyacı vardır.
-- Sunucu değerlendirmesi, bağımlılık verilerini toplamak üzere sunucuya erişebilmeleri için bir kullanıcı hesabına ihtiyacınız vardır. Windows ve Linux sunucuları için hesap gereksinimleri hakkında [bilgi edinin](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) .
+- Azure geçişi 'nin bağımlılık verilerini toplamak üzere sunucuya erişebilmeleri için bir kullanıcı hesabına ihtiyacınız vardır. Windows ve Linux sunucuları için hesap gereksinimleri hakkında [bilgi edinin](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) .
 
 ### <a name="add-credentials-and-initiate-discovery"></a>Kimlik bilgileri ekleme ve bulmayı başlatma
 
@@ -67,7 +67,7 @@ Bu makalede, Azure geçişi: Sunucu değerlendirmesi kullanılarak aracısız ba
 
 Bağımlılık bulmayı etkinleştirmek istediğiniz sunucuları seçin.
 
-1. **Azure geçişi: Sunucu değerlendirmesi**' nde, **bulunan sunucular**' a tıklayın.
+1. **Azure geçişi: bulma ve değerlendirme** bölümünde **bulunan sunucular**' a tıklayın.
 2. Bulmayı gözden geçirmek istediğiniz **gereç adını** seçin.
 1. **Bağımlılıklar (aracısız)** sütununda sunucuların doğrulama durumunu görebilirsiniz.
 1. **Bağımlılık Analizi** açılır düğmesine tıklayın.
@@ -81,7 +81,7 @@ Sunucularda bağımlılık analizini etkinleştirdikten sonra, altı saat etraf�
 
 ## <a name="visualize-dependencies"></a>Bağımlılıkları görselleştirin
 
-1. **Azure geçişi: Sunucu değerlendirmesi**' nde, **bulunan sunucular**' a tıklayın.
+1. **Azure geçişi: bulma ve değerlendirme** bölümünde **bulunan sunucular**' a tıklayın.
 1. Bulmayı gözden geçirmek istediğiniz **gereç adını** seçin.
 1. Bağımlılıklarını görmek istediğiniz sunucu için arama yapın.
 1. **Bağımlılıklar (aracısız)** sütununun altında, **bağımlılıkları görüntüle** ' ye tıklayın.
@@ -100,7 +100,7 @@ Sunucularda bağımlılık analizini etkinleştirdikten sonra, altı saat etraf�
 
 ## <a name="export-dependency-data"></a>Bağımlılık verilerini dışarı aktar
 
-1. **Azure geçişi: Sunucu değerlendirmesi**' nde, **bulunan sunucular**' a tıklayın.
+1. **Azure geçişi: bulma ve değerlendirme** bölümünde **bulunan sunucular**' a tıklayın.
 2. **Bağımlılık Analizi** açılır düğmesine tıklayın.
 3. **Uygulama bağımlılıklarını dışarı aktar**' a tıklayın.
 4. **Uygulama bağımlılıklarını dışarı aktar** sayfasında, istenen sunucuları bulan gereç adını seçin.
@@ -132,7 +132,7 @@ Hedef bağlantı noktası | Hedef sunucudaki bağlantı noktası numarası
 
 Bağımlılık bulmayı durdurmak istediğiniz sunucuları seçin.
 
-1. **Azure geçişi: Sunucu değerlendirmesi**' nde, **bulunan sunucular**' a tıklayın.
+1. **Azure geçişi: bulma ve değerlendirme** bölümünde **bulunan sunucular**' a tıklayın.
 1. Bulmayı gözden geçirmek istediğiniz **gereç adını** seçin.
 1. **Bağımlılık Analizi** açılır düğmesine tıklayın.
 1. **Sunucuları kaldır**' a tıklayın.
@@ -157,7 +157,7 @@ GitHub 'daki [Azure PowerShell örnekleri](https://github.com/Azure/azure-docs-p
     Connect-AzAccount -EnvironmentName AzureUSGovernment
     ```
 
-2. Azure geçişi projesini oluşturduğunuz aboneliği seçin 
+2. Projeyi oluşturduğunuz aboneliği seçin 
 
     ```PowerShell
     select-azsubscription -subscription "Fabrikam Demo Subscription"
@@ -171,7 +171,7 @@ GitHub 'daki [Azure PowerShell örnekleri](https://github.com/Azure/azure-docs-p
 
 ### <a name="enable-or-disable-dependency-data-collection"></a>Bağımlılık veri toplamayı etkinleştir veya devre dışı bırak
 
-1. Aşağıdaki komutları kullanarak, Azure geçişi projenizde bulunan sunucuların listesini alın. Aşağıdaki örnekte, proje adı FabrikamDemoProject ve ait olduğu kaynak grubu FabrikamDemoRG. Sunucu listesi FabrikamDemo_VMs.csv ' de kaydedilecek
+1. Aşağıdaki komutları kullanarak projenizdeki bulunan sunucuların listesini alın. Aşağıdaki örnekte, proje adı FabrikamDemoProject ve ait olduğu kaynak grubu FabrikamDemoRG. Sunucu listesi FabrikamDemo_VMs.csv ' de kaydedilecek
 
     ```PowerShell
     Get-AzMigDiscoveredVMwareVMs -ResourceGroupName "FabrikamDemoRG" -ProjectName "FabrikamDemoProject" -OutputCsvFile "FabrikamDemo_VMs.csv"
@@ -212,7 +212,7 @@ Azure geçişi, aynı anda birçok sunucunun ağ bağlantılarını görselleşt
         Connect-AzAccount -EnvironmentName AzureUSGovernment
         ```
 
-    - Azure geçişi projesini oluşturduğunuz aboneliği seçin
+    - Projeyi oluşturduğunuz aboneliği seçin
 
         ```PowerShell
         select-azsubscription -subscription "Fabrikam Demo Subscription"

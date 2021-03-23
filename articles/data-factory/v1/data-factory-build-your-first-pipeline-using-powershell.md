@@ -3,16 +3,16 @@ title: İlk Data Factory 'nizi derleme (PowerShell)
 description: Bu öğreticide Azure PowerShell kullanarak örnek bir Azure Data Factory işlem hattı oluşturursunuz.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 60fb3a8c1fed8e8005ba0b8f67865a7d39c754d5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f25e3d9f3b3d6319493856e3b15c894301289c29
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100392060"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104783026"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-powershell"></a>Öğretici: Azure PowerShell kullanarak ilk Azure data factory’nizi derleme
 > [!div class="op_single_selector"]
@@ -407,7 +407,7 @@ Bu makalede, isteğe bağlı Azure HDInsight kümesinde bir Hive betiği çalı�
 
 ## <a name="see-also"></a>Ayrıca Bkz.
 
-| Konu | Description |
+| Konu | Açıklama |
 |:--- |:--- |
 | [Data Factory Cmdlet Başvurusu](/powershell/module/az.datafactory) |Data Factory cmdlet'leri hakkında kapsamlı belgelere bakma |
 | [Pipelines](data-factory-create-pipelines.md) |Bu makale, Azure Data Factory’de işlem hatlarının ve etkinliklerini anlamanıza ve senaryonuz ya da işletmeniz için uçtan uca veri odaklı iş akışları oluşturmak amacıyla bunları nasıl kullanacağınızı anlamanıza yardımcı olur. |

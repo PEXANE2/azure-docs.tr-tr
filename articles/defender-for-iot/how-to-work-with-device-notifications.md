@@ -1,18 +1,14 @@
 ---
 title: Cihaz bildirimleri ile çalışma
 description: Bildirimler, bu etkinliği işlemeye yönelik önerilerle birlikte ilgilenmeniz gerekebilecek ağ etkinliği hakkında bilgiler sağlar.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/12/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: cac8d609272be1d9f34b7e0d6404e0a0ea524df7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c0c2fc5a4c01a8a31512cd43c340bf3fadc259b1
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100523575"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781339"
 ---
 # <a name="work-with-device-notifications"></a>Cihaz bildirimleri ile çalışma
 
@@ -24,11 +20,7 @@ Bildirimler, bu etkinliği işlemeye yönelik önerilerle birlikte ilgilenmeniz 
 
 Bildirimlere yanıt vermek cihaz eşlemesinde, cihaz envanterinde ve veri araştırma sorgularında ve raporlarında belirtilen bilgileri geliştirir. Ayrıca, meşru ağ değişikliklerine ve olası ağ yapılandırması hatalarına yönelik öngörüler sağlar.
 
-Bildirimlere erişmek için:
-
-- **Sistem ayarları** ' nı seçin ve ardından **veri geliştirme**' yi seçin.
-
-## <a name="notifications-vs-alerts"></a>Bildirimler ve uyarılar
+**Bildirimler ve uyarılar**
 
 Ağ etkinliğinde bildirim almaya ek olarak, *Uyarılar* alabilirsiniz. Bildirimler, bir tehdit sunmaya ağ değişiklikleri veya çözümlenmemiş cihaz özellikleri hakkında bilgi sağlar. Uyarılar ağ sapmaları ve ağda tehdit oluşturabilecek değişiklikler hakkında bilgi sağlar.
 
@@ -48,7 +40,7 @@ Bildirimleri görüntülemek için:
 
 İlgilendiğiniz bildirimleri göstermek için arama filtrelerini kullanın.
 
-| Filtreleme ölçütü | Description |
+| Filtreleme ölçütü | Açıklama |
 |--|--|
 | Türe göre filtrele | İlgilendiğiniz belirli bir alanı kapsayan bildirimleri görüntüleyin. Örneğin, yalnızca etkin olmayan cihazlara ilişkin bildirimleri görüntüleyin. |
 | Tarih aralığına göre filtrele | Belirli bir zaman aralığını kapsayan bildirimleri görüntüler. Örneğin, yalnızca geçen hafta boyunca gönderilen bildirimleri görüntüleyin. |
@@ -58,7 +50,7 @@ Bildirimleri görüntülemek için:
 
 Aşağıdaki tabloda, aldığınız bildirim olay türleri ve bunları işleme seçenekleriyle birlikte açıklanmaktadır. Cihaz bilgilerini önerilen bir değerle güncelleştirebilir veya bildirimi kapatabilirsiniz. Bir bildirimi kapattığınızda, cihaz bilgileri önerilen bilgilerle güncellenmez. Trafik tekrar algılanırsa, bildirim yeniden gönderilir.
 
-| Bildirim olayı türleri | Description | Yanıtlar |
+| Bildirim olayı türleri | Açıklama | Yanıtlar |
 |--|--|--|
 | Yeni IP algılandı | Yeni bir IP adresi cihazla ilişkili. Beş senaryo algılanmayabilir: <br /><br /> Bir cihazla ek bir IP adresi ilişkilendirildi. Bu cihaz, var olan bir MAC adresiyle de ilişkilendirilir.<br /><br /> Var olan bir MAC adresini kullanan bir cihaz için yeni bir IP adresi algılandı. Şu anda cihaz bir IP adresi kullanarak iletişim kurmamaktadır.<br /> <br /> NetBIOS adı kullanan bir cihaz için yeni bir IP adresi algılandı. <br /><br /> Bir MAC adresiyle ilişkili bir cihaz için yönetim arabirimi olarak bir IP adresi algılandı. <br /><br /> Sanal IP adresi kullanan bir cihaz için yeni bir IP adresi algılandı. | **Cihaza ek IP ayarlama** (cihazları birleştirme) <br /> <br />**Mevcut IP 'yi Değiştir** <br /> <br /> **At**<br /> Bildirimi kaldırın. |
 | Etkin olmayan cihazlar | Cihazda 60 günden daha uzun bir süre için trafik algılanmadı. | **Silme** <br /> Bu cihaz ağınızın bir parçası değilse, kaldırın. <br /><br />**At** <br /> Cihaz ağınızın bir parçasıysa bildirimi kaldırın. Cihaz etkin değilse (örneğin, ağdan yanlışlıkla bağlantısı kesildiğinde), bildirimi kapatın ve cihazı yeniden bağlayın. |
@@ -85,18 +77,6 @@ Bildirimleri göstermek ve bildirimleri işlemek için:
 2. Yeni algılanan bilgilerin seçili cihazlara uygulanmasını **öğrenin**' i seçerek sensöre bildirin. Ya da, algılayıcı ' ı seçerek sensöre yeni algılanan bilgileri yoksaymasını **söyleyin.** Aynı anda bir şekilde öğrenmekte ve kapatabilmeniz gereken bildirimlerin sayısı ile birlikte, tek yapmanız gereken bildirimlerin sayısı gösterilir.
 
 **Yeni IP 'ler** ve **hiçbir alt ağ** yapılandırılmadı olayı aynı anda işlenemez. El ile onay gerektirir.
-
-## <a name="improve-device-os-classification-data-enhancement"></a>Cihaz işletim sistemi sınıflandırmasını iyileştirme: veri geliştirme 
-
-Algılayıcı, yeni OT cihazlarını sürekli olarak oto bulur. Ayrıca, işletim sistemi türleri de dahil olmak üzere daha önce bulunan cihazlarda yapılan değişiklikleri kısaca bulur.
-
-Belirli koşullarda, çakışmalar bulunan işletim sistemlerinde algılanabilir. Bu durum, masaüstü veya sunucu sistemlerine başvuran bir işletim sistemi sürümüne sahip olduğunuz için meydana gelebilir. Bu durumda, isteğe bağlı işletim sistemi sınıflandırmalarını içeren bir bildirim alırsınız.
-
-:::image type="content" source="media/how-to-enrich-asset-information/enhance-data-screen.png" alt-text="Verileri geliştirin.":::
-
-İşletim sistemi sınıflandırmasını zenginleştirmek için önerileri araştırın. Bu bilgiler cihaz envanterinde, veri araştırma raporlarında ve diğer ekranlarda görüntülenir. Ayrıca, uyarıların, tehditlerin ve risk analizinin doğruluğunu da iyileştirebilirler.
-
-Bir önerisi kabul ettiğinizde, işletim sistemi tür bilgileri sensörde güncelleştirilecektir.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

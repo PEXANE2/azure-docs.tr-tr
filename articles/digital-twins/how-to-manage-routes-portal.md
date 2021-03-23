@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e61d2ff3807b65022d72414615af9fa729359358
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: df826a682eec15d09b60857e63c363b0f9941c01
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101715726"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779945"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Azure dijital TWINS 'te uç noktaları ve yolları yönetme (portal)
 
@@ -151,6 +151,9 @@ Daha özel bir filtre tanımlayarak gönderilmekte olan olay türlerini kısıtl
 Bir olay yolu oluştururken bir olay filtresi eklemek için, *olay yolu oluşturma* sayfasının _olay yol filtresi ekle_ bölümünü kullanın. 
 
 Bazı temel ortak filtre seçeneklerinden birini seçebilir veya kendi özel filtrelerinizi yazmak için gelişmiş filtre seçeneklerini kullanabilirsiniz.
+
+>[!NOTE]
+> Filtreler **büyük/küçük harfe duyarlıdır** ve yük durumuyla eşleşmesi gerekir (model durumuyla eşleşmeyebilir).
 
 #### <a name="use-the-basic-filters"></a>Temel filtreleri kullanma
 

@@ -1,19 +1,19 @@
 ---
 title: H serisi-Azure sanal makineleri
 description: H serisi VM 'Ler için belirtim.
-author: ju-shim
+author: vermagit
 ms.service: virtual-machines
 ms.subservice: vm-sizes-hpc
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 7a5ff47bb5de6d54564a86c0700ad69aa450887d
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: b3e3beb51256bbf22d29d74b51c52ca3a6bee0c4
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102566150"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774788"
 ---
 # <a name="h-series"></a>H Serisi
 
@@ -40,10 +40,21 @@ H serisi VM 'Ler, yüksek CPU sıklıklarca veya çekirdek gereksinimlerine gör
 
 <sup>1</sup> MPI uygulamaları için, adanmış RDMA arka uç ağı, FDR InfiniBand ağı tarafından etkinleştirilir.
 
-[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
-
 > [!NOTE]
-> [RDMA özellikli VM 'ler](sizes-hpc.md#rdma-capable-instances)arasında, H SERISI-SR-IOV ' n i n etkin değildir. Bu nedenle, desteklenen [VM görüntüleri](./workloads/hpc/configure.md#vm-images), [InfiniBand sürücü](./workloads/hpc/enable-infiniband.md) gereksinimleri ve desteklenen [MPI kitaplıkları](./workloads/hpc/setup-mpi.md) , SR-IOV özellikli VM 'lerden farklıdır.
+> [RDMA özellikli VM 'ler](sizes-hpc.md#rdma-capable-instances)arasında, H serisi SR-IOV ' n i n etkin değildir. Bu nedenle, desteklenen [VM görüntüleri](./workloads/hpc/configure.md#vm-images), [InfiniBand sürücü](./workloads/hpc/enable-infiniband.md) gereksinimleri ve desteklenen [MPI kitaplıkları](./workloads/hpc/setup-mpi.md) , SR-IOV özellikli VM 'lerden farklıdır.
+
+## <a name="software-specifications"></a>Yazılım belirtimleri
+
+| Yazılım belirtimleri     |HC Serisi VM           |
+|-----------------------------|-----------------------|
+| Maksimum MPı Işi boyutu            | 4800 çekirdek (tek bir sanal makine ölçek kümesindeki Tekplacementgroup = true ile, 300 VM)  |
+| MPı desteği                 | Intel MPı 5. x, MS-MPı  |
+| SRLOV olmayan RDMA için işletim sistemi desteği   | CentOS/RHEL 6,5-7,4, SLES 12 SP4 +, WinServer 2012-2016  |
+| Orchestrator desteği        | CycleCloud, Batch, AKS  |
+
+[!INCLUDE [hpc-include](./workloads/hpc/includes/hpc-include.md)]
+
+[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
 ## <a name="other-sizes"></a>Diğer boyutlar
 
@@ -56,7 +67,6 @@ H serisi VM 'Ler, yüksek CPU sıklıklarca veya çekirdek gereksinimlerine gör
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Sanal makinelerinizi yapılandırma](./workloads/hpc/configure.md)hakkında daha fazla bilgi edinin, [InfiniBand 'Yi etkinleştirir](./workloads/hpc/enable-infiniband.md) [ve Azure](./workloads/hpc/setup-mpi.md) için HPC uygulamalarını [HPC iş yüklerinde](./workloads/hpc/overview.md)optimize edin.
-- En son duyurular ve bazı HPC örnekleri hakkında bilgi edinin ve [Azure Işlem teknik topluluk bloglarında](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)bu sonuçları elde edin.
+- [Azure Işlem Tech Community bloglarında](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)en son Duyurular, HPC iş yükü örnekleri ve performans sonuçları hakkında bilgi edinin.
 - Çalıştırılan HPC iş yüklerinin daha yüksek düzey mimari görünümü için bkz. [Azure 'Da yüksek performanslı bilgi işlem (HPC)](/azure/architecture/topics/high-performance-computing/).
 - Azure [işlem birimlerinin (ACU)](acu.md) Azure SKU 'ları genelinde işlem performansını karşılaştırmanıza nasıl yardımcı olabileceğini öğrenin.

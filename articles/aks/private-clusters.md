@@ -4,12 +4,12 @@ description: Özel bir Azure Kubernetes hizmeti (AKS) kümesi oluşturmayı öğ
 services: container-service
 ms.topic: article
 ms.date: 3/5/2021
-ms.openlocfilehash: 190658e23ee02651e64c3718824315c0265c0f04
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 21d839df04c868d2c21932f96a6b72a32b0404e5
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102556545"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771864"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Özel bir Azure Kubernetes hizmet kümesi oluşturma
 
@@ -72,7 +72,7 @@ az aks create \
 
 - "Sistem" varsayılan değerdir. --Private-DNS-Zone bağımsız değişkeni atlanırsa, AKS, düğüm kaynak grubunda bir Özel DNS bölgesi oluşturur.
 - "None", AKS 'in bir Özel DNS bölgesi oluşturmayacağı anlamına gelir.  Bu, kendi DNS sunucunuzu yapmanızı ve özel FQDN için DNS çözümlemesini yapılandırmanızı gerektirir.  DNS çözümlemesini yapılandırmazsanız DNS yalnızca aracı düğümleri içinde çözülebilir ve dağıtımdan sonra küme sorunlarına neden olur. 
-- "CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID", Azure genel bulutu için bu biçimde bir Özel DNS bölgesi oluşturmanızı gerektirir: `privatelink.<region>.azmk8s.io` . Özel DNS bölgenin devam ettiğinin kaynak kimliği gerekir.  Ayrıca, en azından rolüyle Kullanıcı tarafından atanan kimliğe veya hizmet sorumlusuna sahip olmanız gerekir `private dns zone contributor` .
+- "CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID", Azure genel bulutu için bu biçimde bir Özel DNS bölgesi oluşturmanızı gerektirir: `privatelink.<region>.azmk8s.io` . Özel DNS bölgenin devam ettiğinin kaynak kimliği gerekir.  Ayrıca, en azından ve rollerinin atandığı bir kullanıcı kimliği veya hizmet sorumlusu gerekir `private dns zone contributor` `vnet contributor` .
 - "FQDN-alt etki alanı" yalnızca için alt etki alanı yetenekleri sağlamak üzere "CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID" ile kullanılabilir `privatelink.<region>.azmk8s.io`
 
 ### <a name="prerequisites"></a>Önkoşullar

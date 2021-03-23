@@ -3,16 +3,16 @@ title: Azure portal ve PowerShell kullanarak işlem hatlarını izleme ve yönet
 description: Azure portal ve Azure PowerShell kullanarak oluşturduğunuz Azure veri fabrikalarını ve işlem hatlarını izleyip yönetme hakkında bilgi edinin.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: c728654e868bcb8213e6a4039fa1e2e169b0078c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0744a7d915d6bee868b160abc29964d58947dd28
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100576384"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779639"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Azure portal ve PowerShell 'i kullanarak Azure Data Factory işlem hatlarını izleme ve yönetme
 > [!div class="op_single_selector"]
@@ -83,7 +83,7 @@ Data Factory 'deki veri kümesi dilimleri aşağıdaki durumlardan birine sahip 
 
 <table>
 <tr>
-    <th align="left">Durum</th><th align="left">Alt</th><th align="left">Description</th>
+    <th align="left">Durum</th><th align="left">Alt</th><th align="left">Açıklama</th>
 </tr>
 <tr>
     <td rowspan="8">Bekleme</td><td>ScheduleTime</td><td>Dilimin çalışması için geçen süre.</td>

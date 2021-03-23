@@ -1,18 +1,14 @@
 ---
 title: Uyarı iş akışlarını hızlandırma
 description: Uyarı ve olay iş akışlarını geliştirme.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/02/2020
-ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: 0a445abe0f448c28742282aedd1a886fae0f5a43
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c12d1135b7a7bc87a38a609aeeb6ada8caa9a25e
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100526298"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779129"
 ---
 # <a name="accelerate-alert-workflows"></a>Uyarı iş akışlarını hızlandırma
 
@@ -81,16 +77,29 @@ Bu alanlar, uyarı grubu adını göstermek için iş ortağı çözümünde yap
 ### <a name="default-alert-groups"></a>Varsayılan uyarı grupları
 
 Aşağıdaki uyarı grupları otomatik olarak tanımlanmıştır:
-|  |  |  |
-|--|--|--|
-| Olağan dışı iletişim davranışı | Özel uyarılar | Uzaktan erişim |
-| Olağan dışı HTTP iletişim davranışı | Bulma | Yeniden başlatma ve durdurma komutları |
-| Kimlik Doğrulaması | Üretici yazılımı değişikliği | Tarama |
-| Yetkisiz iletişim davranışı | Geçersiz komutlar | Algılayıcı trafiği |
-| Bant genişliği bozukluklar | İnternet erişimi | Kötü amaçlı yazılımın şüphesi |
-| Arabellek taşması | İşlem sorunları | Kötü amaçlı şüphesi etkinliği |
-| Komut sorunları | İşletim sorunları |  |
-| Yapılandırma değişiklikleri | Program |  |
+
+- Olağan dışı iletişim davranışı
+- Özel uyarılar
+- Uzaktan erişim
+- Olağan dışı HTTP iletişim davranışı
+- Bulma
+- Yeniden başlatma ve durdurma komutları
+- Kimlik Doğrulaması
+- Üretici yazılımı değişikliği
+- Tarama
+- Yetkisiz iletişim davranışı
+- Geçersiz komutlar
+- Algılayıcı trafiği
+- Bant genişliği bozukluklar
+- İnternet erişimi
+- Kötü amaçlı yazılımın şüphesi
+- Arabellek taşması 
+- İşlem sorunları
+- Kötü amaçlı şüphesi etkinliği
+- Komut sorunları
+- İşletim sorunları
+- Yapılandırma değişiklikleri
+- Program
 
 Uyarı grupları önceden tanımlanmıştır. Uyarı gruplarıyla ilişkili uyarılar ve özel uyarı grupları oluşturma hakkında daha fazla bilgi için [Microsoft desteği](https://support.microsoft.com/supportforbusiness/productselection?sapId=82c8f35-1b8e-f274-ec11-c6efdd6dd099)başvurun.
 

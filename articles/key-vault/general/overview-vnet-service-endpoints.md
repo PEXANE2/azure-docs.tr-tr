@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 36a94f780fa5c196e28730c051e161633ed3ee3d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 148f67fb87072a8ffd25f0fe1dfdb444be052173
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102431066"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771626"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault için sanal ağ hizmet uç noktaları
 
@@ -59,6 +59,7 @@ Hizmet uç noktalarını nasıl kullanabileceğinizi gösteren bazı örnekler �
 |Azure Service Bus|[Müşteri tarafından yönetilen anahtarlar senaryosu için anahtar kasasına erişime izin ver](../../service-bus-messaging/configure-customer-managed-key.md)|
 |Azure İçeri/Dışarı Aktarma| [Içeri/dışarı aktarma hizmeti için Azure Key Vault 'de müşteri tarafından yönetilen anahtarları kullanın](../../import-export/storage-import-export-encryption-key-portal.md)
 |Azure Container Registry|[Müşteri tarafından yönetilen anahtarları kullanarak kayıt defteri şifreleme](../../container-registry/container-registry-customer-managed-keys.md)
+|Azure Application Gateway |[HTTPS etkin dinleyiciler için Key Vault sertifikaları kullanma](../../application-gateway/key-vault-certs.md)
 
 > [!NOTE]
 > İlgili hizmetlerin Key Vault erişimi almasını sağlamak için ilgili Key Vault erişim ilkelerini ayarlamanız gerekir.

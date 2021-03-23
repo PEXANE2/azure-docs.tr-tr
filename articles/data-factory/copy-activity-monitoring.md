@@ -4,14 +4,14 @@ description: Azure Data Factory kopyalama etkinliği yürütmesini izleme hakkı
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 03/22/2021
 ms.author: jingwang
-ms.openlocfilehash: 58860e404dff3030e51ff2977eaee081a15247f7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4aefeea33e61b6ee2541e929dbeb3fc36343cac5
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100388303"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771388"
 ---
 # <a name="monitor-copy-activity"></a>Kopyalama etkinliğini izleme
 
@@ -45,7 +45,7 @@ En son **yürütme ayrıntıları ve süreleri** , kopyalama etkinliğinizin üz
 
 Kopyalama etkinliği yürütme ayrıntıları ve performans özellikleri,   >  Kullanıcı arabirimi izleme görünümünü oluşturmak için kullanılan etkinlik çalıştırma sonucu **çıktısını** Kopyala bölümünde de döndürülür. Aşağıda, döndürülebilecek özelliklerin tamamı listelenmiştir. Yalnızca kopyalama senaryonuz için geçerli olan özellikleri görürsünüz. Etkinlik çalışmalarının genel olarak nasıl izleneceği hakkında daha fazla bilgi için bkz. [programlı bir Azure Data Factory 'yi izleme](monitor-programmatically.md).
 
-| Özellik adı  | Description | Çıkışdaki birim |
+| Özellik adı  | Açıklama | Çıkışdaki birim |
 |:--- |:--- |:--- |
 | dataRead | Kaynaktaki okunan gerçek veri miktarı. | Int64 değeri, bayt cinsinden |
 | Veri yazıldı | Havuza yazılan/havuza kaydedilen verilerin gerçek bağlaması. Boyut, `dataRead` her veri deposunun verileri nasıl depoladığını birbirleriyle ilişkilendiren şekilde boyutundan farklı olabilir. | Int64 değeri, bayt cinsinden |
@@ -59,7 +59,7 @@ Kopyalama etkinliği yürütme ayrıntıları ve performans özellikleri,   >  K
 | rowscop | Havuza kopyalanmış satır sayısı. Bu ölçüm, dosyalar ayrıştırılmadan olduğu gibi kopyalanırken uygulanmaz; Örneğin, kaynak ve havuz veri kümeleri ikili biçim türü veya aynı ayarlara sahip başka biçim türüdür.  | Int64 değeri (birim yok) |
 | rowsSkipped | Atlanan uyumsuz satır sayısı. Doğru ayarı yaparak, uyumsuz satırların atlanmasını sağlayabilirsiniz `enableSkipIncompatibleRow` . | Int64 değeri (birim yok) |
 | copyDuration | Kopya çalıştırmasının süresi. | Int32 değeri, saniye cinsinden |
-| aktarım hızı | Veri aktarımı oranı. | Kayan nokta sayısı, KBps cinsinden |
+| aktarım hızı | Veri aktarımı oranı, bölünmüş olarak hesaplanır `dataRead` `copyDuration` . | Kayan nokta sayısı, KBps cinsinden |
 | Kaynakcepeakconnections | Kopyalama etkinliği sırasında kaynak veri deposuna kurulan en yüksek eşzamanlı bağlantı sayısı. | Int32 değeri (birim yok) |
 | sinkPeakConnections| Kopyalama etkinliği sırasında havuz veri deposuna kurulan en yüksek eşzamanlı bağlantı sayısı.| Int32 değeri (birim yok) |
 | sqlDwPolyBase | Veriler Azure SYNAPSE Analytics 'e kopyalandığında PolyBase 'in kullanılıp kullanılmayacağını belirtir. | Boole |

@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 03/10/2021
+ms.date: 03/18/2021
 ms.author: memildin
-ms.openlocfilehash: 49141f7f11c0e8ead090459238e15b56f57b990b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b9a93286b6a546160b6c621d084437f671eab4d3
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102633725"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773581"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Azure Güvenlik Merkezi 'Nde yapılan önemli değişiklikler
 
@@ -26,26 +26,15 @@ En son sürüm notlarını arıyorsanız, bunları [Azure Güvenlik Merkezi 'nde
 
 ## <a name="planned-changes"></a>Planlanan değişiklikler
 
-- [AWS 'nin önerileri genel kullanıma sunulacaktır (GA)](#recommendations-from-aws-will-be-released-for-general-availability-ga)
-- ["Sistem güncelleştirmelerini Uygula" güvenlik denetiminin kullanım dışı olmasının iki önerisi](#two-recommendations-from-apply-system-updates-security-control-being-deprecated)
-- [SQL veri sınıflandırması önerisine yönelik geliştirmeler](#enhancements-to-sql-data-classification-recommendation)
-- [11 Azure Defender uyarılarının kullanımdan kaldırılması](#deprecation-of-11-azure-defender-alerts)
-
-
-### <a name="recommendations-from-aws-will-be-released-for-general-availability-ga"></a>AWS 'nin önerileri genel kullanıma sunulacaktır (GA)
-
-**Değişikliğin tahmini tarihi:** 2021 Nisan
-
-Azure Güvenlik Merkezi, Azure, Amazon Web Services (AWS) ve Google Cloud Platform (GCP) iş yüklerini korur.
-
-AWS güvenlik hub 'ından gelen öneriler, bulut bağlayıcıları tanıtıldığından önizleme aşamasındadır. **Önizleme** olarak işaretlenen öneriler, güvenli puanınızın hesaplamalarına dahil değildir, ancak yine de düzeltilmelidir, böylece önizleme dönemi sona erdiğinde puanınızın altına katkıda bulunur.
-
-Bu değişiklik ile, AWS önerilerinden oluşan iki küme GA 'ye taşınır:
-
-- [Güvenlik Merkezi 'nin PCI DSS denetimleri](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-pci-controls.html)
-- [Güvenlik Merkezi 'nin CIS AWS temelleri kıyaslama denetimleri](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html)
-
-Bunlar GA ve değerlendirmeler AWS kaynaklarınız üzerinde çalıştırıldığında, sonuçlar tüm çok ve karma bulut kaynaklarınız için Birleşik güvenli puanınızı etkiler. 
+| Planlı değişiklik                                                                                                                                                        | Değişikliğin tahmini tarihi |
+|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------|
+| ["Sistem güncelleştirmelerini Uygula" güvenlik denetiminin kullanım dışı olmasının iki önerisi](#two-recommendations-from-apply-system-updates-security-control-being-deprecated) | Mart 2021                |
+| [11 Azure Defender uyarılarının kullanımdan kaldırılması](#deprecation-of-11-azure-defender-alerts)                                                                                   | Mart 2021                |
+| [21 güvenlik denetimleri arasında hareket eden öneriler](#21-recommendations-moving-between-security-controls)                                                           | 2021 Nisan                |
+| ["Sistem güncelleştirmelerini Uygula" güvenlik denetiminin kullanım dışı bırakılmakta olan iki ek öneri](#two-further-recommendations-from-apply-system-updates-security-control-being-deprecated)                                                                                         | 2021 Nisan                |
+| [AWS 'nin önerileri genel kullanıma sunulacaktır (GA)](#recommendations-from-aws-will-be-released-for-general-availability-ga)                     | 2021 Nisan                |
+| [SQL veri sınıflandırması önerisine yönelik geliştirmeler](#enhancements-to-sql-data-classification-recommendation)                                                     | S2 2021                   |
+|                                                                                                                                                                       |                           |
 
 
 ### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>"Sistem güncelleştirmelerini Uygula" güvenlik denetiminin kullanım dışı olmasının iki önerisi 
@@ -60,14 +49,6 @@ Aşağıdaki iki öneri Şubat 2021 ' de kullanımdan kalkmak üzere zamanlandı
 Bu önerilerin bunlara dahil edilip edilmeyeceğini görmek için sürekli dışarı aktarma ve iş akışı Otomasyonu yapılandırmalarının denetlenmesini öneririz. Ayrıca, bunları kullanıyor olabilecek panolar veya diğer izleme araçları da buna uygun şekilde güncelleştirilmeleri gerekir.
 
 [Güvenlik önerileri başvuru sayfasında](recommendations-reference.md)bu öneriler hakkında daha fazla bilgi edinin.
-
-
-### <a name="enhancements-to-sql-data-classification-recommendation"></a>SQL veri sınıflandırması önerisine yönelik geliştirmeler
-
-**Değişikliğin tahmini tarihi:** S2 2021
-
-**SQL veritabanlarınızdaki önerinin önemli verileri** , **veri sınıflandırması Uygula** güvenlik denetiminde sınıflandırılmalıdır ve Microsoft 'un veri sınıflandırması stratejisiyle daha iyi hizalanmış yeni bir sürümle değiştirilmelidir. Sonuç olarak, önerinin KIMLIĞI de değişecektir (Şu anda, b0df6f56-862D-4730-8597-38c0fd4ebd59).
-
 
 ### <a name="deprecation-of-11-azure-defender-alerts"></a>11 Azure Defender uyarılarının kullanımdan kaldırılması
 
@@ -98,6 +79,57 @@ Sonraki ay, aşağıda listelenen on bir Azure Defender uyarısı kullanım dı�
     | AADAı               | Azure AD AI                   |
     |                     |                               |
  
+
+
+
+
+### <a name="21-recommendations-moving-between-security-controls"></a>21 güvenlik denetimleri arasında hareket eden öneriler 
+
+**Değişikliğin tahmini tarihi:** 2021 Nisan
+
+Aşağıdaki öneriler farklı bir güvenlik denetimine taşınıyor. Güvenlik denetimleri, ilgili güvenlik önerilerinin mantıksal gruplarıdır ve savunmasız saldırı yüzeylerinizi yansıtır. Bu taşıma, Bu önerilerin her birinin amacını karşılamak için en uygun denetimde olmasını sağlar. 
+
+Güvenlik denetimlerinde ve bunların önerilerinde her güvenlik denetiminde hangi önerilerin olduğunu öğrenin.
+
+|Öneri |Değişiklik ve etki  |
+|---------|---------|
+|Güvenlik açığı değerlendirmesi SQL sunucularınızda etkinleştirilmelidir<br>SQL yönetilen örneklerinizin üzerinde güvenlik açığı değerlendirmesi etkinleştirilmelidir<br>SQL veritabanlarınızdaki güvenlik açıkları yeni bir kez düzeltilmelidir<br>VM 'lerdeki SQL veritabanlarınızdaki güvenlik açıkları düzeltilmelidir     |Düzeltme açıklarına geçme (6 noktaya kadar)<br>Güvenlik yapılandırmalarının düzeltilmesi için (4 puntoya).<br>Ortamınıza bağlı olarak, Bu önerilerin puanınız üzerinde daha az etkisi olacaktır.|
+|Aboneliğinize birden fazla sahip atanmalıdır<br>Otomasyon hesabı değişkenleri şifrelenmelidir<br>IoT cihazları-Auditd işlemi olayları göndermeyi durdurdu<br>IoT cihazları-Işletim sistemi taban çizgisi doğrulama hatası<br>IoT cihazları-TLS şifre paketi yükseltmesi gerekli<br>IoT cihazları-cihazda bağlantı noktalarını açma<br>IoT cihazları-zincirden birindeki Izin veren güvenlik duvarı ilkesi bulundu<br>IoT cihazları-giriş zincirindeki Izin veren güvenlik duvarı kuralı bulundu<br>IoT cihazları-çıkış zincirindeki Izin veren güvenlik duvarı kuralı bulundu<br>IoT Hub tanılama günlükleri etkinleştirilmelidir<br>IoT cihazları-aracı az kullanılan iletiler gönderiyor<br>IoT cihazları-varsayılan IP filtresi Ilkesi reddetme olmalıdır<br>IoT cihazları-IP filtre kuralı büyük IP aralığı<br>IoT cihazları-aracı ileti aralıkları ve boyutu ayarlanmalıdır<br>IoT cihazları-aynı kimlik doğrulama kimlik bilgileri<br>IoT cihazları-denetlenen işlem olay göndermeyi durdurdu<br>IoT cihazları-Işletim sistemi (OS) taban çizgisi yapılandırması düzeltilmelidir|**En iyi güvenlik uygulamalarını uygulamak** için taşınıyor.<br>Bir öneri en iyi güvenlik uygulamaları uygulama güvenlik denetimine geçerse, hiçbir puan değer vermez, öneri artık güvenli puanınızı etkilemeyecek.|
+|||
+
+
+### <a name="two-further-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>"Sistem güncelleştirmelerini Uygula" güvenlik denetiminin kullanım dışı bırakılmakta olan iki ek öneri
+
+**Değişikliğin tahmini tarihi:** 2021 Nisan
+
+Aşağıdaki iki öneri kullanım dışı bırakılmıştır:
+
+- **Bulut hizmeti rolleriniz Için Işletim sistemi sürümü güncellenmelidir** . varsayılan olarak, Azure Konuk işletim sistemini, Windows Server 2016 gibi hizmet yapılandırmanızda (. cscfg) belirttiğiniz işletim sistemi ailesi içinde en son desteklenen görüntüye düzenli olarak güncelleştirir.
+- **Kubernetes Hizmetleri, güvenlik açığı olmayan bir Kubernetes sürümüne yükseltilmelidir** . bu önerinin değerlendirmeleri, aralarında olmasını istediğimizde geniş kapsamlı değildir. Bu önerinin geçerli sürümü, sonunda müşterinin güvenlik gereksinimleriyle daha iyi hizalanan gelişmiş bir sürümle değiştirilmiştir.
+
+
+### <a name="recommendations-from-aws-will-be-released-for-general-availability-ga"></a>AWS 'nin önerileri genel kullanıma sunulacaktır (GA)
+
+**Değişikliğin tahmini tarihi:** 2021 Nisan
+
+Azure Güvenlik Merkezi, Azure, Amazon Web Services (AWS) ve Google Cloud Platform (GCP) iş yüklerini korur.
+
+AWS güvenlik hub 'ından gelen öneriler, bulut bağlayıcıları tanıtıldığından önizleme aşamasındadır. **Önizleme** olarak işaretlenen öneriler, güvenli puanınızın hesaplamalarına dahil değildir, ancak yine de düzeltilmelidir, böylece önizleme dönemi sona erdiğinde puanınızın altına katkıda bulunur.
+
+Bu değişiklik ile, AWS önerilerinden oluşan iki küme GA 'ye taşınır:
+
+- [Güvenlik Merkezi 'nin PCI DSS denetimleri](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-pci-controls.html)
+- [Güvenlik Merkezi 'nin CIS AWS temelleri kıyaslama denetimleri](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html)
+
+Bunlar GA ve değerlendirmeler AWS kaynaklarınız üzerinde çalıştırıldığında, sonuçlar tüm çok ve karma bulut kaynaklarınız için Birleşik güvenli puanınızı etkiler. 
+
+
+
+### <a name="enhancements-to-sql-data-classification-recommendation"></a>SQL veri sınıflandırması önerisine yönelik geliştirmeler
+
+**Değişikliğin tahmini tarihi:** S2 2021
+
+**SQL veritabanlarınızdaki önerinin önemli verileri** , **veri sınıflandırması Uygula** güvenlik denetiminde sınıflandırılmalıdır ve Microsoft 'un veri sınıflandırması stratejisiyle daha iyi hizalanmış yeni bir sürümle değiştirilmelidir. Sonuç olarak, önerinin KIMLIĞI de değişecektir (Şu anda, b0df6f56-862D-4730-8597-38c0fd4ebd59).
 
 
 

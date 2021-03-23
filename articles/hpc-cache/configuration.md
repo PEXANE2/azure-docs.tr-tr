@@ -4,14 +4,14 @@ description: MTU, özel NTP ve DNS yapılandırması gibi önbellek için ek aya
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/17/2021
 ms.author: v-erkel
-ms.openlocfilehash: 06feefe3a934d1ee02793fab442852e5ef40899a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6e1e1283cb82dcb900da6473de65ef087a5cea82
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103563394"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773241"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>Ek Azure HPC önbellek ayarlarını yapılandırma
 
@@ -75,6 +75,8 @@ DNS yapılandırmanızın bir Azure HPC önbelleği için kullanmadan önce bu �
   > [!NOTE]
   > The cache will use only the first DNS server it successfully finds. -->
 
+Bir üretim ortamında kullanmadan önce DNS kurulumunuzu denetlemek ve iyileştirmek için bir test önbelleği kullanmayı göz önünde bulundurun.
+
 ### <a name="refresh-storage-target-dns"></a>Depolama hedefi DNS 'yi Yenile
 
 DNS sunucunuz IP adreslerini güncelleştirirse, ilişkili NFS depolama hedefleri geçici olarak kullanılamıyor olur. [Depolama hedefleri düzenleme](hpc-cache-edit-storage.md#update-ip-address-custom-dns-configurations-only)bölümünde özel DNS sistem IP adreslerinizi güncelleştirme hakkında bilgi edinin.
@@ -94,10 +96,10 @@ Bu özellik yalnızca Azure Blob depolama hedefleri için kullanılabilir ve yap
 
 Anlık görüntüler, UTC 0:00, 08:00 ve 16:00 ' de sekiz saatte bir alınır.
 
-Azure HPC Cache, günlük, haftalık ve aylık anlık görüntüleri yeni olanlar tarafından değiştirilene kadar depolar. Sınırlar şunlardır:
+Azure HPC Cache, günlük, haftalık ve aylık anlık görüntüleri yeni olanlar tarafından değiştirilene kadar depolar. Anlık görüntü bekletme sınırları şunlardır:
 
 * En fazla 20 günlük anlık görüntü
 * 8 haftalık anlık görüntüye kadar
 * En fazla 3 aylık anlık görüntü
 
-`.snapshot`BLOB depolama hedefinin ad alanındaki dizindeki anlık görüntülere erişin.
+`.snapshot`Bağlı BLOB depolama hedefinin kökündeki dizinden anlık görüntülere erişin.

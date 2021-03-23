@@ -61,7 +61,7 @@
     - name: Ayrılmış örnek ile maliyet tasarrufu yapma
       href: reserved-instance.md
     - name: Geçiş değerlendirmesi
-      href: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=/azure/migrate/context/migrate-context.json
+      href: /azure/migrate/how-to-create-azure-vmware-solution-assessment?context=/azure/azure-vmware/context/context
     - name: DHCP'yi yönetme
       href: manage-dhcp.md
     - name: NSX ağ bileşenlerini yapılandırma
@@ -112,6 +112,8 @@
       items:
         - name: VM’ler için yedekleme çözümleri
           href: ecosystem-back-up-vms.md
+        - name: VM 'Ler için geçiş çözümleri
+          href: ecosystem-migration-vms.md
 - name: Kaynaklar
   items:
     - name: Sorun giderme
@@ -132,7 +134,7 @@
           href: 'https://youtu.be/NoNG-hkksrA'
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/ext/vmware/vmware
     - name: Azure PowerShell
       href: /powershell/module/az.vmware/

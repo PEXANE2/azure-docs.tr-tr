@@ -11,18 +11,22 @@ ms.topic: conceptual
 ms.date: 03/18/2021
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 8f3e8d72db6679a766991160c303948557719bb9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1bd91ca63034f77553abb00f4fbf05431a45bd55
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104657748"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773394"
 ---
 # <a name="speech-service-release-notes"></a>Konuşma hizmeti sürüm notları
 
 ## <a name="speech-sdk-1160-2021-march-release"></a>Konuşma SDK 1.16.0:2021-Mart yayını
 
 **Note**: Windows üzerinde konuşma SDK 'Sı, Visual Studio 2015, 2017 ve 2019 için paylaşılan Microsoft Visual C++ yeniden dağıtılabilir 'e bağlıdır. [Buradan](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)indirin.
+
+**Bilinen sorunlar**
+
+**C++/c #/Java**: `DialogServiceConnector` `CustomCommandsConfig` özel bir komut uygulamasına erişmek için kullanılamaz ve bunun yerine bir bağlantı hatasıyla karşılaşır. Bu, uygulama KIMLIĞINIZI ile isteğe el ile ekleyerek geçici bir çözüm olabilir `config.SetServiceProperty("X-CommandsAppId", "your-application-id", ServicePropertyChannel.UriQueryParameter)` . Beklenen davranışı `CustomCommandsConfig` sonraki sürümde geri yüklenecektir.
 
 **Vurgular Özeti**
 - Daha az bellek ve disk ayak izi SDK 'Yı daha verimli hale getirir. bu kez odaklanma Android üzerinde.

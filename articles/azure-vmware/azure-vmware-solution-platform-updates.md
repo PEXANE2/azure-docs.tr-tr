@@ -3,12 +3,12 @@ title: Azure VMware çözümü için platform güncelleştirmeleri
 description: Azure VMware çözümüne yönelik platform güncelleştirmeleri hakkında bilgi edinin.
 ms.topic: reference
 ms.date: 03/16/2021
-ms.openlocfilehash: 73bd1d088f9055ebd80a28c6247ea9dfa6229093
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ce25df2cb221c032f6dd430f292522fe86e69ceb
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104586242"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771779"
 ---
 # <a name="platform-updates-for-azure-vmware-solution"></a>Azure VMware çözümü için platform güncelleştirmeleri
 
@@ -16,7 +16,7 @@ Azure VMware çözümünde önemli güncelleştirmeler, Mart 2021 ' den itibaren
 
 ## <a name="march-15-2021"></a>15 Mart 2021 
 
-- Azure VMware çözüm hizmeti, 20201 Mart ' e kadar, özel bulutunuzda vCenter Server 'ı güncelleştirme 3l sürümünü 6,7 vCenter Server.
+- Azure VMware çözüm hizmeti, 2021 Mart ' e kadar, özel bulutunuzda vCenter Server 'ı güncelleştirme 3l sürümünü 6,7 vCenter Server.
 
 - Bu süre boyunca VMware vCenter kullanılamaz ve VM 'Leri yönetemeyeceksiniz (durdurma, başlatma, oluşturma, silme). Özel bulut Ölçeklendirmesi (sunucu ve küme ekleme/kaldırma) de kullanılamaz. VMware yüksek kullanılabilirlik (HA), mevcut VM 'Ler için koruma sağlamak üzere çalışmaya devam edecektir. 
  

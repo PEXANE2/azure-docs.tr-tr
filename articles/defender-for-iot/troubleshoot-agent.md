@@ -1,24 +1,14 @@
 ---
 title: Güvenlik Aracısı Başlangıç (Linux) sorunlarını giderme
 description: Linux için IoT güvenlik aracıları için Azure Defender ile çalışma sorunlarını giderin.
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: mlottner
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/09/2020
-ms.author: mlottner
-ms.openlocfilehash: 7be6cf1df15d7afd7cb9447be68ff70ff7b14d03
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9c9c36b822ab6acb9f9a48d4ba809ad32f6f4695
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102449229"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782597"
 ---
 # <a name="security-agent-troubleshoot-guide-linux"></a>Güvenlik aracısı sorun giderme kılavuzu (Linux)
 
@@ -91,19 +81,18 @@ Defender for IoT agent encountered an error! Error in: {Error Code}, reason: {Er
 ```
 
 | Hata Kodu | Hata alt kodu | Hata ayrıntıları | C 'yi düzelt | C 'yi düzelt # |
-|:-----------|:---------------|:--------|:------------|:------------|
-| Yerel yapılandırma | Eksik yapılandırma | Yerel yapılandırma dosyasında bir yapılandırma eksik. Hata iletisi hangi anahtarın eksik olduğunu durumdur. | Eksik anahtarı/var/LocalConfiguration.jsdosyasına ekleyin, Ayrıntılar için [CS-localconfig-Reference](azure-iot-security-local-configuration-c.md) bölümüne bakın.| Eksik anahtarı General.config dosyasına ekleyin, Ayrıntılar için [c#-localconfig-Reference](azure-iot-security-local-configuration-csharp.md) bölümüne bakın. |
-| Yerel yapılandırma | Yapılandırma ayrıştırması yapılamıyor | Yapılandırma değeri ayrıştırılamıyor. Hata iletisi hangi anahtarın ayrıştırılamadığına yönelik olmalıdır. Değer beklenen türde olmadığından veya değer Aralık dışında olduğundan, bir yapılandırma değeri ayrıştırılamaz. | Dosyadaki/var/LocalConfiguration.jsdeğerini LocalConfiguration şemasıyla eşleşecek şekilde düzelttikten sonra Ayrıntılar için [c#-localconfig-Reference](azure-iot-security-local-configuration-csharp.md) bölümüne bakın. |  General.config dosyadaki anahtarın değerini, şemayla eşleşecek şekilde düzelttikten sonra Ayrıntılar için [CS-localconfig-Reference](azure-iot-security-local-configuration-c.md) dosyasına bakın.|
-| Yerel yapılandırma | Dosya Biçimi | Yapılandırma dosyası ayrıştırılamadı. | Yapılandırma dosyası bozuk, aracıyı indirip yeniden yükleyin. | |
-| Uzaktan yapılandırma | Zaman aşımı | Aracı, zaman aşımı süresi içinde ikizi azureiotsecurity modülünü getiremedi. | Kimlik doğrulama yapılandırmasının doğru olduğundan emin olun ve yeniden deneyin. | Aracı, zaman aşımı süresi içinde ikizi azureiotsecurity modülünü getiremedi. | Kimlik doğrulama yapılandırmasının doğru olduğundan emin olun ve yeniden deneyin. |
-| Kimlik Doğrulaması | Dosya yok | Verilen yoldaki dosya yok. | Dosyanın belirtilen yolda mevcut olduğundan emin olun veya dosyadaki **LocalConfiguration.js** gidin ve **FilePath** yapılandırmasını değiştirin. | Dosyanın belirtilen yolda mevcut olduğundan emin olun veya **Authentication.config** dosyasına gidin ve **FilePath** yapılandırmasını değiştirin.|
+|--|--|--|--|--|
+| Yerel yapılandırma | Eksik yapılandırma | Yerel yapılandırma dosyasında bir yapılandırma eksik. Hata iletisi hangi anahtarın eksik olduğunu durumdur. | Eksik anahtarı/var/LocalConfiguration.jsdosyasına ekleyin, Ayrıntılar için [CS-localconfig-Reference](azure-iot-security-local-configuration-c.md) bölümüne bakın. | Eksik anahtarı General.config dosyasına ekleyin, Ayrıntılar için [c#-localconfig-Reference](azure-iot-security-local-configuration-csharp.md) bölümüne bakın. |
+| Yerel yapılandırma | Yapılandırma ayrıştırması yapılamıyor | Yapılandırma değeri ayrıştırılamıyor. Hata iletisi hangi anahtarın ayrıştırılamadığına yönelik olmalıdır. Değer beklenen türde olmadığından veya değer Aralık dışında olduğundan, bir yapılandırma değeri ayrıştırılamaz. | Dosyadaki/var/LocalConfiguration.jsdeğerini LocalConfiguration şemasıyla eşleşecek şekilde düzelttikten sonra Ayrıntılar için [c#-localconfig-Reference](azure-iot-security-local-configuration-csharp.md) bölümüne bakın. | General.config dosyadaki anahtarın değerini, şemayla eşleşecek şekilde düzelttikten sonra Ayrıntılar için [CS-localconfig-Reference](azure-iot-security-local-configuration-c.md) dosyasına bakın. |
+| Yerel yapılandırma | Dosya Biçimi | Yapılandırma dosyası ayrıştırılamadı. | Yapılandırma dosyası bozuk, aracıyı indirip yeniden yükleyin. | - |
+| Uzaktan yapılandırma | Zaman aşımı | Aracı, zaman aşımı süresi içinde ikizi azureiotsecurity modülünü getiremedi. | Kimlik doğrulama yapılandırmasının doğru olduğundan emin olun ve yeniden deneyin. | Aracı, zaman aşımı süresi içinde ikizi azureiotsecurity modülünü getiremedi. Kimlik doğrulama yapılandırmasının doğru olduğundan emin olun ve yeniden deneyin. |
+| Kimlik Doğrulaması | Dosya yok | Verilen yoldaki dosya yok. | Dosyanın belirtilen yolda mevcut olduğundan emin olun veya dosyadaki **LocalConfiguration.js** gidin ve **FilePath** yapılandırmasını değiştirin. | Dosyanın belirtilen yolda mevcut olduğundan emin olun veya **Authentication.config** dosyasına gidin ve **FilePath** yapılandırmasını değiştirin. |
 | Kimlik Doğrulaması | Dosya Izni | Aracı, dosyayı açmak için yeterli izinlere sahip değil. | **Asciotagent** kullanıcısına verilen yoldaki dosya üzerinde okuma izinleri verin. | Dosyanın erişilebilir olduğundan emin olun. |
 | Kimlik Doğrulaması | Dosya Biçimi | Verilen dosya doğru biçimde değil. | Dosyanın doğru biçimde olduğundan emin olun. Desteklenen dosya türleri. pfx ve. ped. | Dosyanın geçerli bir sertifika dosyası olduğundan emin olun. |
-| Kimlik Doğrulaması | Yetkisiz | Aracı verilen kimlik bilgileriyle IoT Hub karşı kimlik doğrulaması yapamadı. | LocalConfiguration dosyasında kimlik doğrulama yapılandırmasını doğrulayın, kimlik doğrulama yapılandırması ' na gidin ve tüm ayrıntıların doğru olduğundan emin olun, dosyadaki gizli dizinin kimliği doğrulanmış kimlikle eşleştiğini doğrulayın. | Kimlik doğrulama yapılandırmasını doğrulama Authentication.config, kimlik doğrulama yapılandırması ' na gidin ve tüm ayrıntıların doğru olduğundan emin olun, ardından dosyadaki gizli dizinin kimliği doğrulanmış kimlikle eşleştiğini doğrulayın.
-| Kimlik Doğrulaması | Bulunamadı | Cihaz/modül bulundu. | Kimlik doğrulama yapılandırmasını doğrulama-ana bilgisayar adının doğru olduğundan, cihazın IoT Hub olduğundan ve bir azureiotsecurity ikizi modülüne sahip olduğundan emin olun. |  Kimlik doğrulama yapılandırmasını doğrulama-ana bilgisayar adının doğru olduğundan, cihazın IoT Hub olduğundan ve bir azureiotsecurity ikizi modülüne sahip olduğundan emin olun. |
-| Kimlik Doğrulaması | Eksik yapılandırma | *Authentication.config* dosyasında bir yapılandırma eksik. Hata iletisi hangi anahtarın eksik olduğunu durumdur. | Dosyadaki *LocalConfiguration.js* eksik anahtarı ekleyin.| Eksik anahtarı *Authentication.config* dosyasına ekleyin, Ayrıntılar için [c#-localconfig-Reference](azure-iot-security-local-configuration-csharp.md) bölümüne bakın. |
-| Kimlik Doğrulaması | Yapılandırma ayrıştırması yapılamıyor | Yapılandırma değeri ayrıştırılamıyor. Hata iletisi hangi anahtarın ayrıştırılamadığına yönelik olmalıdır. Değer beklenen türde olmadığından veya değer Aralık dışında olduğundan, bir yapılandırma değeri ayrıştırılamıyor. |Dosyadaki **LocalConfiguration.js** anahtarın değerini onarın. |**Authentication.config** dosyasındaki anahtarın değerini şemayla eşleşecek şekilde düzeltir, Ayrıntılar için [CS-localconfig-Reference](azure-iot-security-local-configuration-c.md) bölümüne bakın.|
-|
+| Kimlik Doğrulaması | Yetkisiz | Aracı verilen kimlik bilgileriyle IoT Hub karşı kimlik doğrulaması yapamadı. | LocalConfiguration dosyasında kimlik doğrulama yapılandırmasını doğrulayın, kimlik doğrulama yapılandırması ' na gidin ve tüm ayrıntıların doğru olduğundan emin olun, dosyadaki gizli dizinin kimliği doğrulanmış kimlikle eşleştiğini doğrulayın. | Kimlik doğrulama yapılandırmasını doğrulama Authentication.config, kimlik doğrulama yapılandırması ' na gidin ve tüm ayrıntıların doğru olduğundan emin olun, ardından dosyadaki gizli dizinin kimliği doğrulanmış kimlikle eşleştiğini doğrulayın. |
+| Kimlik Doğrulaması | Bulunamadı | Cihaz/modül bulundu. | Kimlik doğrulama yapılandırmasını doğrulama-ana bilgisayar adının doğru olduğundan, cihazın IoT Hub olduğundan ve bir azureiotsecurity ikizi modülüne sahip olduğundan emin olun. | Kimlik doğrulama yapılandırmasını doğrulama-ana bilgisayar adının doğru olduğundan, cihazın IoT Hub olduğundan ve bir azureiotsecurity ikizi modülüne sahip olduğundan emin olun. |
+| Kimlik Doğrulaması | Eksik yapılandırma | *Authentication.config* dosyasında bir yapılandırma eksik. Hata iletisi hangi anahtarın eksik olduğunu durumdur. | Dosyadaki *LocalConfiguration.js* eksik anahtarı ekleyin. | Eksik anahtarı *Authentication.config* dosyasına ekleyin, Ayrıntılar için [c#-localconfig-Reference](azure-iot-security-local-configuration-csharp.md) bölümüne bakın. |
+| Kimlik Doğrulaması | Yapılandırma ayrıştırması yapılamıyor | Yapılandırma değeri ayrıştırılamıyor. Hata iletisi hangi anahtarın ayrıştırılamadığına yönelik olmalıdır. Değer beklenen türde olmadığından veya değer Aralık dışında olduğundan, bir yapılandırma değeri ayrıştırılamıyor. | Dosyadaki **LocalConfiguration.js** anahtarın değerini onarın. | **Authentication.config** dosyasındaki anahtarın değerini şemayla eşleşecek şekilde düzeltir, Ayrıntılar için [CS-localconfig-Reference](azure-iot-security-local-configuration-c.md) bölümüne bakın.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

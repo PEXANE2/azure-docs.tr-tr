@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: victorh
-ms.openlocfilehash: 694868f2a75cc66bf9e3ede9d12e30a2cc3d7af9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8a64956deb7849568e70e94c9b58170df60db1e3
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98185946"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775756"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>Key Vault sertifikaları ile TLS sonlandırma
 
@@ -47,10 +47,19 @@ Key Vault ile tümleştirme Application Gateway üç adımlı bir yapılandırma
 
 1. **Anahtar kasanızı yapılandırma**
 
-   Daha sonra mevcut bir sertifikayı içeri aktarırsınız veya Anahtar Kasanızda yeni bir sertifika oluşturacaksınız. Sertifika, uygulama ağ geçidi aracılığıyla çalışan uygulamalar tarafından kullanılacaktır. Bu adımda, parola kullanmayan, temel 64 kodlu PFX dosyası olarak depolanan bir Anahtar Kasası gizli anahtarını da kullanabilirsiniz. Anahtar kasasındaki sertifika türü nesneleriyle kullanılabilen otomatik yenileme özelliği nedeniyle bir sertifika türü kullanmanızı öneririz. Bir sertifika veya gizli dizi oluşturduktan sonra, kimliğe gizli dizi *erişimi verilmesini sağlamak* için anahtar kasasında erişim ilkeleri tanımlarsınız.
+   Daha sonra mevcut bir sertifikayı içeri aktarırsınız veya Anahtar Kasanızda yeni bir sertifika oluşturacaksınız. Sertifika, uygulama ağ geçidi aracılığıyla çalışan uygulamalar tarafından kullanılacaktır. Bu adımda, parola daha az, Base-64 kodlu PFX dosyası depolamayı da sağlayan bir Key Vault gizli dizisi de kullanabilirsiniz. Key Vault, bu tür nesneler ile kullanılabilen otomatik yenileme özelliği nedeniyle bir "sertifika" türü kullanmanızı öneririz. Bir sertifika veya gizli dizi oluşturduktan sonra, kimliğe gizli erişim izni verilmesini sağlamak için Key Vault erişim Ilkeleri tanımlamanız gerekir.
    
    > [!IMPORTANT]
-   > Application Gateway, tümleştirmeden yararlanmak üzere tüm ağlardan erişime izin vermek için Key Vault gereklidir. Key Vault yalnızca özel uç noktalara izin verecek şekilde ayarlandığında ve ağların erişimini seçerken Key Vault tümleştirmeyi desteklemez. Özel ve seçim ağları desteği, Application Gateway Key Vault tam tümleştirmesi için çalışmalardır. 
+   > 15 Mart 2021 ' den itibaren, Key Vault Azure Application Gateway güvenilen hizmetlerden biri olarak tanır, böylece Azure 'da güvenli bir ağ sınırı oluşturmanıza olanak tanınır. Bu, tüm ağlardan gelen trafiğe erişimi reddedebilmenizi sağlar (internet trafiği dahil) Key Vault, ancak aboneliğiniz altında Application Gateway kaynak için yine de erişilebilir hale getirir. 
+
+   > Application Gateway kısıtlanmış bir ağda Key Vault aşağıdaki şekilde yapılandırabilirsiniz. <br />
+   > a) Key Vault ağ dikey penceresinde <br />
+   > b) "güvenlik duvarı ve sanal ağlar" sekmesinde Özel uç nokta ve seçili ağları seçin <br/>
+   > c) ardından sanal ağları kullanarak Application Gateway sanal ağını ve alt ağını ekleyin. İşlem sırasında, ' Microsoft. Keykasası ' hizmet uç noktasını da onay kutusunu seçerek yapılandırın. <br/>
+   > d) son olarak, güvenilen hizmetlerin Key Vault güvenlik duvarını atlamasına izin vermek için "Evet" seçeneğini belirleyin. <br/>
+   > 
+   > ![Key Vault güvenlik duvarı](media/key-vault-certs/key-vault-firewall.png)
+
 
    > [!NOTE]
    > Application Gateway 'i Azure CLı veya PowerShell kullanarak ya da Azure portal dağıtılan bir Azure uygulaması aracılığıyla bir ARM şablonuyla dağıtırsanız, SSL sertifikası anahtar kasasında Base64 kodlamalı PFX dosyası olarak depolanır. [Dağıtım sırasında güvenli parametre değeri geçirmek için Azure Key Vault kullanma](../azure-resource-manager/templates/key-vault-parameter.md)adımlarını gerçekleştirmeniz gerekir. 

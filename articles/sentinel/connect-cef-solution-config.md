@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 368bae515697599dba35a913ebdb9f2b4065c152
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 60ce503d4a89f245f28d5034924cb8c89c926b3f
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101711930"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771303"
 ---
 # <a name="step-2-configure-your-security-solution-to-send-cef-messages"></a>2. Adım: Güvenlik çözümünüzü CEF iletileri gönderecek şekilde yapılandırma
 
@@ -80,5 +80,7 @@ Belirli güvenlik çözümünüz için bir bağlayıcı yoksa, günlükleri CEF 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu belgede CEF gereçlerini Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
+
+- [CEF ve CommonSecurityLog alan eşlemesi](cef-name-mapping.md)hakkında bilgi edinin.
 - [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
 - [Azure Sentinel ile tehditleri algılamaya](./tutorial-detect-threats-built-in.md)başlayın.

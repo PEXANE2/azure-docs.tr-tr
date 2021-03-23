@@ -7,12 +7,12 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 3/2/2021
 ms.author: rahugup
-ms.openlocfilehash: 7c9b4032346e61eb3bfd21c0c4067e2364bc28af
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ffc97984a335b72a3aa8c8d8cca65a3fddf7af38
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104670859"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104780744"
 ---
 # <a name="containerize-aspnet-applications-and-migrate-to-azure-kubernetes-service"></a>ASP.NET uygulamaları Kapsayılaştırır ve Azure Kubernetes hizmetine geçiş yapın
 
@@ -59,7 +59,7 @@ Bu öğreticiye başlamadan önce karşılamanız gereken ön koşullar şunlard
 
 **Gereksinim** | **Ayrıntılar**
 --- | ---
-**Aracı yüklemek için bir makine tanımla** | Azure geçişi: uygulama Kapsayıcılama aracı 'nı yüklemek ve çalıştırmak için bir Windows makinesi. Windows makinesi bir sunucu (Windows Server 2016 veya üzeri) veya istemci (Windows 10) işletim sistemi olabilir. Bu, aracın masaüstünüzde da çalıştırılabileceği anlamına gelir. <br/><br/> Aracı çalıştıran Windows makinesi, Kapsayıcılı ASP.NET uygulamalarını barındıran sunucularla/sanal makinelere ağ bağlantısına sahip olmalıdır.<br/><br/> Uygulama yapıtlarını depolamak için Azure geçişi: uygulama Kapsayıcılama aracı 'nı çalıştıran Windows makinesinde 6 GB 'lık alanın kullanılabilir olduğundan emin olun. <br/><br/> Windows makinesi, doğrudan veya bir proxy aracılığıyla internet erişimine sahip olmalıdır. <br/> <br/>Uygulama Kapsayıcılama Yardımcısı aracı 'nı çalıştıran makineye Microsoft Web Dağıtımı aracını ve henüz yüklenmemişse uygulama sunucusunu yükleme. Aracı [buradan](https://aka.ms/webdeploy3.6) indirebilirsiniz
+**Aracı yüklemek için bir makine tanımla** | Azure geçişi: uygulama Kapsayıcılama aracı 'nı yüklemek ve çalıştırmak için bir Windows makinesi. Windows makinesi bir sunucu (Windows Server 2016 veya üzeri) veya istemci (Windows 10) işletim sistemi olabilir. Bu, aracın masaüstünüzde da çalıştırılabileceği anlamına gelir. <br/><br/> Aracı çalıştıran Windows makinesinin, kapsayıcıya alınacak ASP.NET uygulamalarını barındıran sunuculara/sanal makinelere ağ bağlantısı olmalıdır.<br/><br/> Uygulama yapıtlarını depolamak için Azure geçişi: uygulama Kapsayıcılama aracı 'nı çalıştıran Windows makinesinde 6 GB 'lık alanın kullanılabilir olduğundan emin olun. <br/><br/> Windows makinesinin doğrudan veya ara sunucu üzerinden İnternet erişimi olmalıdır. <br/> <br/>Uygulama Kapsayıcılama Yardımcısı aracı 'nı çalıştıran makineye Microsoft Web Dağıtımı aracını ve henüz yüklenmemişse uygulama sunucusunu yükleme. Aracı [buradan](https://aka.ms/webdeploy3.6) indirebilirsiniz
 **Uygulama sunucuları** | Uygulama sunucularında PowerShell uzaktan iletişimini etkinleştir: uygulama sunucusunda oturum açın ve PowerShell uzaktan iletişimini açmak için [Bu](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/enable-psremoting) yönergeleri izleyin. <br/><br/> Uygulama sunucusu Windows Server 2008 R2 çalıştırıyorsa, PowerShell 5,1 ' nin uygulama sunucusunda yüklü olduğundan emin olun. Uygulama sunucusuna PowerShell 5,1 indirmek ve yüklemek için [buradaki](https://docs.microsoft.com/powershell/scripting/windows-powershell/wmf/setup/install-configure) yönergeleri izleyin. <br/><br/> Uygulama Kapsayıcılama Yardımcısı aracı 'nı çalıştıran makineye Microsoft Web Dağıtımı aracını ve henüz yüklenmemişse uygulama sunucusunu yükleme. Aracı [buradan](https://aka.ms/webdeploy3.6) indirebilirsiniz
 **ASP.NET uygulaması** | Araç şu anda destekliyor <br/><br/> -Microsoft .NET Framework 3,5 veya üstünü kullanan uygulamalar ASP.NET.<br/> -Windows Server 2008 R2 veya üstünü çalıştıran uygulama sunucuları (uygulama sunucuları PowerShell sürüm 5,1 çalıştırmalıdır). <br/> -Internet Information Services (IIS) 7,5 veya üzeri sürümlerde çalışan uygulamalar. <br/><br/> Araç şu anda desteklenmiyor <br/><br/> -Windows kimlik doğrulaması gerektiren uygulamalar (AKS Şu anda gMSA 'Yı desteklemez). <br/> -IIS dışında barındırılan diğer Windows hizmetlerine bağımlı uygulamalar.
 
@@ -105,7 +105,7 @@ Aboneliğiniz kurulduktan sonra, aşağıdakileri içeren bir Azure Kullanıcı 
 3. Komutunu kullanarak yükleme betiğini çalıştırın
 
    ```powershell
-   .\App ContainerizationInstaller.ps1
+   .\AppContainerizationInstaller.ps1
    ```
 
 ## <a name="launch-the-app-containerization-tool"></a>Uygulama Kapsayıcılama aracını Başlat
@@ -152,7 +152,7 @@ Azure hesabınızda oturum açmak için **oturum aç** ' a tıklayın.
 Uygulama Kapsayıcılama Yardımcısı Aracı, belirtilen kimlik bilgilerini kullanarak uygulama sunucularına uzaktan bağlanır ve uygulama sunucularında barındırılan ASP.NET uygulamalarını bulmaya çalışır.
 
 1. Uygulama bulma için sunucuya uzaktan bağlanmak üzere kullanılması gereken ASP.NET uygulamasını çalıştıran sunucunun **IP adresini/FQDN 'sini ve kimlik bilgilerini** belirtin.
-    - Belirtilen kimlik bilgileri, uygulama sunucusunda bir yerel yönetici (Windows) için olmalıdır.
+    - Sağlanan kimlik bilgileri uygulama sunucusundaki bir yerel yöneticiye (Windows) ait olmalıdır.
     - Etki alanı hesapları için (kullanıcının uygulama sunucusunda bir yönetici olması gerekir), Kullanıcı adını *<etkialanı \ kullanıcıadı>* biçiminde etki alanı adıyla önek yapın.
     - Uygulama bulmayı aynı anda en fazla beş sunucu için çalıştırabilirsiniz.
 

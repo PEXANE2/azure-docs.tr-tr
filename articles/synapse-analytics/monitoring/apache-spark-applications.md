@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 00407b4a55b3c074fa77d4c3664f6e218c23fe21
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ea08c82ed5772be7e3a6094f5477c4450975c1fa
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99584531"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775902"
 ---
 # <a name="use-synapse-studio-to-monitor-your-apache-spark-applications"></a>Apache Spark uygulamalarınızı izlemek için SYNAPSE Studio 'Yu kullanma
 
@@ -157,9 +157,16 @@ Tüm Apache Spark uygulamalarını **izleyici**  ->  **Apache Spark uygulamalar�
    ![başarısız iş bilgileri](./media/how-to-monitor-spark-applications/failed-job-info.png)
 
 ## <a name="compare-apache-spark-applications"></a>Apache Spark uygulamalarını karşılaştırın
-**Uygulamaları Karşılaştır** düğmesine tıklayın ve performansı karşılaştırmak için bir uygulama seçin, kullanıcılar iki uygulama arasındaki farkı görebilir.
+
+Uygulamaları karşılaştırmak için iki yol vardır. Bir **karşılaştırma uygulaması** seçerek karşılaştırabilir veya Not defteri 'nde görüntülemek için **Not defterine Karşılaştır** düğmesini tıklayabilirsiniz.
+
+### <a name="compare-by-choose-an-application"></a>Uygulama seçerek karşılaştırın
+
+**Uygulamaları Karşılaştır** düğmesine tıklayın ve performansı karşılaştırmak için bir uygulama seçin, iki uygulama arasındaki farkı görebilirsiniz.
 
 ![uygulamaları karşılaştırın](./media/how-to-monitor-spark-applications/compare-applications.png)
+
+![Ayrıntılar uygulamaları Karşılaştır](./media/how-to-monitor-spark-applications/details-compare-applications.png)
 
 1. Fareyi kullanarak bir uygulamaya gelin ve ardından **uygulamaları Karşılaştır** simgesi görüntülenir.
 
@@ -167,7 +174,7 @@ Tüm Apache Spark uygulamalarını **izleyici**  ->  **Apache Spark uygulamalar�
 
 3. **Karşılaştırma uygulaması Seç** sayfasını açmak Için **Uygulama Seç** düğmesine tıklayın.
 
-4. Karşılaştırma uygulamasını seçerken, kullanıcıların uygulama URL 'sini girmesi ya da yinelenen listeden seçim yapması gerekir. Ardından **Tamam** düğmesine tıklayın. 
+4. Karşılaştırma uygulamasını seçerken, uygulama URL 'sini girmeniz veya yinelenen listeden seçim yapmanız gerekir. Ardından **Tamam** düğmesine tıklayın. 
 
    ![karşılaştırma uygulaması seçin](./media/how-to-monitor-spark-applications/choose-comparison-application.png)
 
@@ -175,6 +182,15 @@ Tüm Apache Spark uygulamalarını **izleyici**  ->  **Apache Spark uygulamalar�
 
    ![karşılaştırma sonucu](./media/how-to-monitor-spark-applications/comparison-result.png)
 
+### <a name="compare-by-compare-in-notebook"></a>Not defterindeki karşılaştırmaya göre karşılaştır
+
+**Uygulamayı Karşılaştır** sayfasındaki not defterinde **Karşılaştır** düğmesine tıklayarak Not defterini açın. . İpynb dosyasının varsayılan adı **yinelenen uygulama analizinden** oluşur.
+
+![Not defterinde Karşılaştır](./media/how-to-monitor-spark-applications/compare-in-notebook.png)
+
+Not Defteri: yinelenen uygulama analizi dosyasında, Spark havuzunu ve dilini ayarladıktan sonra doğrudan çalıştırabilirsiniz.
+
+![Yinelenen uygulama analizi](./media/how-to-monitor-spark-applications/recurrent-application-analytics.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

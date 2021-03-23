@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 03/11/2021
+ms.date: 03/22/2021
 ms.author: memildin
-ms.openlocfilehash: 4f2b31a4760a07779eebdd9492731ffe7e324d37
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f6ec14c577d1203b92085b791f89e4873a97c41a
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103149651"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786116"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler nelerdir?
 
@@ -26,7 +26,6 @@ Güvenlik Merkezi 'ne yakında çıkacak *planlı* değişiklikler hakkında bil
 > Altı aydan eski olan öğeleri arıyorsanız, [Azure Güvenlik Merkezi 'ndeki yenilikler Için arşivde](release-notes-archive.md)bulabilirsiniz.
 
 
-
 ## <a name="march-2021"></a>Mart 2021
 
 Mart 'taki güncelleştirmeler şunları içerir:
@@ -38,6 +37,7 @@ Mart 'taki güncelleştirmeler şunları içerir:
 - [Öneri verileri, Azure Kaynak grafiğinde "ARG 'da keşfet" ile görüntülenebilir](#recommendation-data-can-be-viewed-in-azure-resource-graph-with-explore-in-arg)
 - [İş akışı Otomasyonu dağıtmaya yönelik ilkelere yönelik güncelleştirmeler](#updates-to-the-policies-for-deploying-workflow-automation)
 - [Artık doğrudan Azure etkinlik günlüğüne veri yazmayan iki eski öneri](#two-legacy-recommendations-no-longer-write-data-directly-to-azure-activity-log)
+- [Öneriler sayfası iyileştirmeleri](#recommendations-page-enhancements)
 
 
 ### <a name="azure-firewall-management-integrated-into-security-center"></a>Güvenlik Merkezi ile tümleştirilmiş Azure Güvenlik Duvarı yönetimi
@@ -140,6 +140,22 @@ Bu iki eski öneri şunlardır:
 
 Bu iki öneriye ilişkin bilgilere, Etkinlik günlüğünün "TaskDiscovery türü önerisi" kategorisinin bilgilerine erişiyorsanız, artık kullanılamaz.
 
+
+### <a name="recommendations-page-enhancements"></a>Öneriler sayfası iyileştirmeleri 
+
+Bir bakışta daha fazla bilgi sunmak için öneriler listesinin gelişmiş bir sürümünü yayımladık.
+
+Şimdi şu sayfada göreceksiniz:
+
+1. Her güvenlik denetiminin en fazla puanı ve geçerli puanı.
+1. **Hızlı düzelme** ve **Önizleme** gibi etiketleri değiştirme simgeleri.
+1. "Denetimleri Gruplandır" devre dışı bırakıldığında, her öneriye ilişkin [ilke girişiminin](security-policy-concept.md) gösterildiği yeni bir sütun.
+
+:::image type="content" source="media/release-notes/recommendations-grid-enhancements.png" alt-text="Azure Güvenlik Merkezi 'nin öneriler sayfasında geliştirmeler-Mart 2021" lightbox="media/release-notes/recommendations-grid-enhancements.png":::
+
+:::image type="content" source="media/release-notes/recommendations-grid-enhancements-initiatives.png" alt-text="Azure Güvenlik Merkezi 'nin öneriler ' düz ' listesi geliştirmeleri-Mart 2021" lightbox="media/release-notes/recommendations-grid-enhancements-initiatives.png":::
+
+[Azure Güvenlik Merkezi 'Nde güvenlik önerileri](security-center-recommendations.md)hakkında daha fazla bilgi edinin.
 
 
 ## <a name="february-2021"></a>Şubat 2021

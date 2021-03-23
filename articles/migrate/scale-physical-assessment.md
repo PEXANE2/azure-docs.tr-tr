@@ -6,16 +6,16 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 01/19/2020
-ms.openlocfilehash: 45954a42613fb1716e3b66305c0485a3966b8e37
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 232475c50ab56fe6fb7a39a3497a8de3947fe851
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96753697"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104780319"
 ---
 # <a name="assess-large-numbers-of-physical-servers-for-migration-to-azure"></a>Azure 'a geçiş için çok sayıda fiziksel sunucuyu değerlendirin
 
-Bu makalede, Azure geçişi sunucu değerlendirmesi Aracı kullanılarak Azure 'a geçiş için çok sayıda şirket içi fiziksel sunucuyu nasıl değerlendireceğiniz açıklanır.
+Bu makalede, Azure geçişi bulma ve değerlendirme aracı kullanılarak Azure 'a geçiş için çok sayıda şirket içi fiziksel sunucuyu değerlendirme işlemi açıklanır.
 
 [Azure geçişi](migrate-services-overview.md) , Microsoft Azure için uygulamaları, altyapıyı ve iş yüklerini keşfetmenize, değerlendirmenize ve geçirmenize yardımcı olan araçların merkezini sağlar. Hub, Azure geçiş araçları ve üçüncü taraf bağımsız yazılım satıcısı (ISV) tekliflerini içerir. 
 
@@ -36,7 +36,7 @@ Bu makalede şunları öğreneceksiniz:
 Çok sayıda fiziksel sunucu değerlendirmesi için planlama yaparken, göz önünde bulundurmanız gereken birkaç nokta vardır:
 
 - **Azure geçişi projelerini planlayın**: Azure geçişi projelerinin nasıl dağıtılacağını öğrenin. Örneğin, Veri merkezleriniz farklı coğrafi bölgelerde ise ya da bulma, değerlendirme veya geçişle ilgili meta verileri farklı bir Coğrafya 'da depolamanız gerekirse, birden çok proje gerekebilir.
-- **Gereçler planı**: Azure geçişi, bir Windows makinesinde dağıtılan ve şirket Içi Azure geçiş gereci kullanarak, değerlendirme ve geçiş için sunucuları sürekli olarak bulur. Gereç, VM 'Leri, diskleri veya ağ bağdaştırıcılarını ekleme gibi ortam değişikliklerini izler. Ayrıca, Azure 'a bunlarla ilgili meta veriler ve performans verileri de gönderir. Dağıtım için kaç gereç belirlemeniz gerekir.
+- **Gereçlerde plan** yapın: Azure geçişi, bir Windows Server 'a dağıtılan, şirket Içi bir Azure geçiş gereci kullanarak, değerlendirme ve geçiş için sunucuları sürekli olarak bulur. Gereç, sunucu, disk veya ağ bağdaştırıcısı ekleme gibi ortam değişikliklerini izler. Ayrıca, Azure 'a bunlarla ilgili meta veriler ve performans verileri de gönderir. Dağıtım için kaç gereç belirlemeniz gerekir.
 
 
 ## <a name="planning-limits"></a>Planlama limitleri
@@ -57,7 +57,7 @@ Planlama için bu tabloda özetlenen limitleri kullanın.
 
 ## <a name="prepare-for-assessment"></a>Değerlendirme için hazırlanma
 
-Azure ve fiziksel sunucuları sunucu değerlendirmesi için hazırlayın. 
+Azure ve fiziksel sunucuları bulma ve değerlendirme aracı için hazırlayın:  
 
 1. [Fiziksel sunucu desteği gereksinimlerini ve sınırlamalarını](migrate-support-matrix-physical.md)doğrulayın.
 2. Azure hesabınız için Azure geçişi ile etkileşime geçmek üzere izinleri ayarlayın.
@@ -70,7 +70,7 @@ Bu ayarları yapılandırmak için [Bu öğreticideki](./tutorial-discover-physi
 Planlama gereksinimlerinize uygun olarak şunları yapın:
 
 1. Bir Azure Geçişi projesi oluşturun.
-2. Azure geçişi sunucu değerlendirmesi aracını projelere ekleyin.
+2. Azure geçişi bulma ve değerlendirme aracını projelere ekleyin.
 
 [Daha fazla bilgi edinin](./create-manage-projects.md)
 

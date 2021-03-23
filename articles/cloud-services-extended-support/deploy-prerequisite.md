@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 79d6fecddf060909a74664ff29e08301f45d7042
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d85aad16049dee6496cb1eaf9def5451625ab876
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103472311"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773480"
 ---
 # <a name="prerequisites-for-deploying-azure-cloud-services-extended-support"></a>Azure Cloud Services dağıtımı önkoşulları (genişletilmiş destek)
 
@@ -86,6 +86,9 @@ Hizmet yapılandırma (. cscfg) dosyasındaki her bir rol için eski tanılama a
 
 ## <a name="required-service-definition-file-csdef-updates"></a>Gerekli hizmet tanımı dosyası (. csdef) güncelleştirmeleri
 
+> [!NOTE]
+> Hizmet tanımı dosyası (. csdef) içindeki değişiklikler, paket dosyasının (. cspkg) yeniden oluşturulmasını gerektirir. Lütfen bulut hizmetiniz için en son ayarları almak üzere. cspkg gönderinizi oluşturup yeniden paketleyin. csdef dosyasında aşağıdaki değişiklikleri yapın
+
 ### <a name="1-virtual-machine-sizes"></a>1) sanal makine boyutları
 Aşağıdaki boyutlar Azure Resource Manager kullanım dışıdır. Ancak, bunları kullanmaya devam etmek istiyorsanız, `vmsize` adı ilişkili Azure Resource Manager adlandırma kuralına göre güncelleştirin.  
 
@@ -130,7 +133,7 @@ Eski tanılama eklentilerini kullanan dağıtımlar, hizmet tanımı (. csdef) d
 
 ## <a name="key-vault-creation"></a>Key Vault oluşturma 
 
-Key Vault, Cloud Services ilişkili sertifikaları (genişletilmiş destek) depolamak için kullanılır. Sertifikaları Key Vault ekleyin ve ardından hizmet yapılandırma dosyasında sertifika parmak izleriyle referans yapın. Ayrıca, Cloud Services (genişletilmiş destek) kaynağının Key Vault gizli dizi olarak depolanan sertifikayı alabilmesi için uygun izinler için Key Vault etkinleştirmeniz gerekir. [Azure Portal](../key-vault/general/quick-create-portal.md) veya [PowerShell](../key-vault/general/quick-create-powershell.md)kullanarak bir Anahtar Kasası oluşturabilirsiniz. Anahtar Kasası, bulut hizmeti ile aynı bölgede ve abonelikte oluşturulmalıdır. Daha fazla bilgi için bkz. [Azure Cloud Services sertifikaları kullanma (genişletilmiş destek)](certificates-and-key-vault.md).
+Key Vault, Cloud Services ilişkili sertifikaları (genişletilmiş destek) depolamak için kullanılır. Sertifikaları Key Vault ekleyin ve ardından hizmet yapılandırma dosyasında sertifika parmak izleriyle referans yapın. Ayrıca, Cloud Services (genişletilmiş destek) kaynağı, Key Vault gizli dizi olarak depolanan sertifikayı alabilmesi için, ' erişim ilkelerini ' (portal 'da) ' ve ' şablon dağıtımı için Azure Resource Manager ' Key Vault etkinleştirmeniz gerekir. [Azure Portal](../key-vault/general/quick-create-portal.md) veya [PowerShell](../key-vault/general/quick-create-powershell.md)kullanarak bir Anahtar Kasası oluşturabilirsiniz. Anahtar Kasası, bulut hizmeti ile aynı bölgede ve abonelikte oluşturulmalıdır. Daha fazla bilgi için bkz. [Azure Cloud Services sertifikaları kullanma (genişletilmiş destek)](certificates-and-key-vault.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 - Cloud Services için [dağıtım önkoşullarını](deploy-prerequisite.md) gözden geçirin (genişletilmiş destek).

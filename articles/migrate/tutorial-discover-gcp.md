@@ -1,31 +1,31 @@
 ---
-title: Azure geçişi sunucu değerlendirmesi ile GCP VM örneklerini bulma
-description: Azure geçişi sunucu değerlendirmesi ile GCP VM örneklerini bulmayı öğrenin.
+title: Azure geçişi bulma ve değerlendirmesi ile GCP örneklerinde sunucuları bulma
+description: Azure geçişi bulma ve değerlendirmesi ile GCP üzerinde sunucuları bulmayı öğrenin.
 author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: tutorial
-ms.date: 09/14/2020
+ms.date: 03/13/2021
 ms.custom: mvc
-ms.openlocfilehash: 079f176a741fa3423081cb96503691f0f2e2e7b2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c5d57705ca0d49db1fb1d67e20beb609f21b1d5b
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98541436"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771439"
 ---
-# <a name="tutorial-discover-google-cloud-platform-gcp-instances-with-server-assessment"></a>Öğretici: Sunucu değerlendirmesi ile Google Cloud Platform (GCP) örneklerini bulma
+# <a name="tutorial-discover-google-cloud-platform-gcp-instances-with-azure-migrate-discovery-and-assessment"></a>Öğretici: Azure geçişi ile Google Cloud Platform (GCP) örneklerini bulma: bulma ve değerlendirme
 
 Azure 'a geçiş yolculuğunun bir parçası olarak, sunucularınızı değerlendirme ve geçiş için keşfedeceksiniz.
 
-Bu öğreticide, basit bir Azure geçişi gereci kullanarak Azure geçişi: Sunucu değerlendirmesi aracı ile Google Cloud Platform (GCP) örneklerini nasıl keşfedebileceğiniz gösterilmektedir. Gereci, makine ve performans meta verilerini sürekli olarak bulacak bir GCP VM örneğine dağıtırsınız.
+Bu öğreticide, basit bir Azure geçişi gereci kullanarak Azure geçişi: bulma ve değerlendirme aracı ile Google Cloud Platform (GCP) örneklerinin nasıl keşfedilmesi gösterilmektedir. Makine ve performans meta verilerini sürekli olarak saptamak için gereci GCP üzerinde bir sunucuya dağıtırsınız.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Bir Azure hesabı ayarlayın.
-> * GCP sanal makine örneklerini bulma için hazırlayın.
-> * Bir Azure Geçişi projesi oluşturun.
+> * Sunucu, bulma için GCP üzerinde hazırlanıyor.
+> * Bir proje oluşturun.
 > * Azure geçişi gereci ayarlayın.
 > * Sürekli bulmayı başlatın.
 
@@ -40,15 +40,16 @@ Bu öğreticiye başlamadan önce, bu önkoşulların yerinde olup olmadığın�
 
 **Gereksinim** | **Ayrıntılar**
 --- | ---
-**Elektrikli** | Azure geçişi gerecinin çalıştırılacağı bir GCP VM örneğine ihtiyacınız vardır. Makine şunları içermelidir:<br/><br/> -Windows Server 2016 yüklendi.<br/> Gereci _Windows Server 2019 ile bir makinede çalıştırmak desteklenmez_.<br/><br/> -16 GB RAM, 8 vCPU, 80 GB disk depolaması ve harici bir sanal anahtar.<br/><br/> -Doğrudan veya bir ara sunucu üzerinden internet erişimi olan statik veya dinamik bir IP adresi.
-**Windows VM örnekleri** | BT 'nin yapılandırma ve performans meta verilerini çekebilmesi için WinRM bağlantı noktası 5985 (HTTP) üzerinde gelen bağlantılara izin verin.
-**Linux VM örnekleri** | 22 (TCP) numaralı bağlantı noktasında gelen bağlantılara izin verin.
+**Elektrikli** | Azure geçişi gerecini çalıştırmak için GCP üzerinde bir sunucuya ihtiyacınız vardır. Makine şunları içermelidir:<br/><br/> -Windows Server 2016 yüklendi.<br/> Gereci _Windows Server 2019 ile bir makinede çalıştırmak desteklenmez_.<br/><br/> -16 GB RAM, 8 vCPU, 80 GB disk depolaması ve harici bir sanal anahtar.<br/><br/> -Doğrudan veya bir ara sunucu üzerinden internet erişimi olan statik veya dinamik bir IP adresi.
+**Windows Server örnekleri** | BT 'nin yapılandırma ve performans meta verilerini çekebilmesi için WinRM bağlantı noktası 5985 (HTTP) üzerinde gelen bağlantılara izin verin.
+**Linux sunucu örnekleri** | 22 (TCP) numaralı bağlantı noktasında gelen bağlantılara izin verin.
 
 ## <a name="prepare-an-azure-user-account"></a>Azure Kullanıcı hesabı hazırlama
 
-Azure geçişi projesi oluşturmak ve Azure geçişi gerecini kaydettirmek için, şu bir hesaba sahip olmanız gerekir:
-- Azure aboneliğinde katkıda bulunan veya sahip izinleri.
-- Azure Active Directory (AAD) uygulamalarını kaydetme izinleri.
+Bir proje oluşturmak ve Azure geçişi gerecini kaydettirmek için, şu bir hesaba sahip olmanız gerekir:
+
+* Azure aboneliğinde katkıda bulunan veya sahip izinleri.
+* Azure Active Directory (AAD) uygulamalarını kaydetme izinleri.
 
 Ücretsiz Azure hesabı oluşturduysanız aboneliğinizin sahibi siz olursunuz. Abonelik sahibi değilseniz, izinleri aşağıdaki şekilde atamak için sahibiyle birlikte çalışın:
 
@@ -56,7 +57,7 @@ Azure geçişi projesi oluşturmak ve Azure geçişi gerecini kaydettirmek için
 
     ![Azure aboneliğini aramak için arama kutusu](./media/tutorial-discover-gcp/search-subscription.png)
 
-2. **Abonelikler** sayfasında, Azure geçişi projesi oluşturmak istediğiniz aboneliği seçin. 
+2. **Abonelikler** sayfasında, bir proje oluşturmak istediğiniz aboneliği seçin.
 3. Abonelikte **erişim denetimi (IAM)**  >  **erişimi denetle**' yi seçin.
 4. **Erişimi denetle**' de ilgili Kullanıcı hesabını arayın.
 5. **Rol ataması Ekle**' de, **Ekle**' ye tıklayın.
@@ -77,21 +78,21 @@ Azure geçişi projesi oluşturmak ve Azure geçişi gerecini kaydettirmek için
 
 ## <a name="prepare-gcp-instances"></a>GCP örneklerini hazırlama
 
-Gereç 'nin GCP VM örneklerine erişmek için kullanabileceği bir hesap ayarlayın.
+Yöneticinin GCP üzerindeki sunuculara erişmek için kullanabileceği bir hesap ayarlayın.
 
-- **Windows sunucuları** için:
-    - Etki alanına katılmış olmayan makinelerde yerel bir kullanıcı hesabı ve bulma sırasında dahil etmek istediğiniz etki alanına katılmış olmayan makinelerde bir etki alanı hesabı ayarlayın. Kullanıcı hesabını aşağıdaki gruplara ekleyin: 
-        - Uzaktan Yönetim Kullanıcıları
-        - Performans Izleyicisi kullanıcıları
-        - Performans günlüğü kullanıcıları.
-- **Linux sunucuları** için:
-    - Bulunmasını istediğiniz Linux sunucularında bir kök hesabınız olması gerekir. Kök hesabı sağlayasağlamazsanız, alternatif olarak [destek matrisindeki](migrate-support-matrix-physical.md#physical-server-requirements) yönergelere bakın.
-    - Azure geçişi AWS örneklerini keşfederken parola kimlik doğrulamasını kullanır. AWS örnekleri varsayılan olarak parola kimlik doğrulamasını desteklemez. Örneği keşfedebilmeniz için önce parola kimlik doğrulamasını etkinleştirmeniz gerekir.
+* **Windows sunucuları** için:
+    * Etki alanına katılmış olmayan sunucularda yerel bir kullanıcı hesabı ve bulma sırasında dahil etmek istediğiniz etki alanına katılmış sunucularda bir etki alanı hesabı ayarlayın. Kullanıcı hesabını aşağıdaki gruplara ekleyin: 
+        * Uzaktan Yönetim Kullanıcıları
+        * Performans Izleyicisi kullanıcıları
+        * Performans günlüğü kullanıcıları.
+* **Linux sunucuları** için:
+    * Bulunmasını istediğiniz Linux sunucularında bir kök hesabınız olması gerekir. Kök hesabı sağlayasağlamazsanız, alternatif olarak [destek matrisindeki](migrate-support-matrix-physical.md#physical-server-requirements) yönergelere bakın.
+    * Azure geçişi AWS örneklerini keşfederken parola kimlik doğrulamasını kullanır. AWS örnekleri varsayılan olarak parola kimlik doğrulamasını desteklemez. Örneği keşfedebilmeniz için önce parola kimlik doğrulamasını etkinleştirmeniz gerekir.
         1. Her bir Linux makinesinde oturum açın.
         2. Sshd_config dosyasını açın: VI/etc/ssh/sshd_config
         3. Dosyasında, **Passwordaduthentication** satırını bulun ve değeri **Evet** olarak değiştirin.
         4. Dosyayı kaydedin ve kapatın. SSH hizmetini yeniden başlatın.
-    - Linux sanal makinelerinizi keşfettiğiniz bir kök Kullanıcı kullanıyorsanız, VM 'lerde kök oturum açmaya izin verildiğinden emin olun.
+    * Linux sunucularınızı keşfettiğiniz bir kök Kullanıcı kullanıyorsanız, sunucularda kök oturum açmaya izin verildiğinden emin olun.
         1. Her Linux makinesinde oturum açın
         2. Sshd_config dosyasını açın: VI/etc/ssh/sshd_config
         3. Dosyasında, **PermitRootLogin** satırını bulun ve değeri **Evet** olarak değiştirin.
@@ -99,18 +100,18 @@ Gereç 'nin GCP VM örneklerine erişmek için kullanabileceği bir hesap ayarla
 
 ## <a name="set-up-a-project"></a>Proje ayarlama
 
-Yeni bir Azure geçişi projesi ayarlayın.
+Yeni bir proje ayarlayın.
 
 1. Azure portalı > **Tüm hizmetler** bölümünde **Azure Geçişi**’ni arayın.
 2. **Hizmetler** altında **Azure Geçişi**’ni seçin.
 3. **Genel bakış** bölümünde **proje oluştur**' u seçin.
-5. **Proje oluştur**' da Azure aboneliğinizi ve kaynak grubunuzu seçin. Yoksa, bir kaynak grubu oluşturun.
-6. **Proje ayrıntıları**' nda projeyi oluşturmak istediğiniz proje adını ve coğrafi konumu belirtin. [Kamu](migrate-support-matrix.md#supported-geographies-public-cloud) ve [kamu bulutları](migrate-support-matrix.md#supported-geographies-azure-government)için desteklenen coğrafi lıkları gözden geçirin.
+4. **Proje oluştur**' da Azure aboneliğinizi ve kaynak grubunuzu seçin. Yoksa, bir kaynak grubu oluşturun.
+5. **Proje ayrıntıları**' nda projeyi oluşturmak istediğiniz proje adını ve coğrafi konumu belirtin. [Kamu](migrate-support-matrix.md#supported-geographies-public-cloud) ve [kamu bulutları](migrate-support-matrix.md#supported-geographies-azure-government)için desteklenen coğrafi lıkları gözden geçirin.
 
    ![Proje adı ve bölgesi için kutular](./media/tutorial-discover-gcp/new-project.png)
 
-7. **Oluştur**’u seçin.
-8. Azure geçişi projesinin dağıtılması için birkaç dakika bekleyin. **Azure geçişi: Sunucu değerlendirmesi** Aracı, varsayılan olarak yeni projeye eklenir.
+6. **Oluştur**’u seçin.
+7. Projenin dağıtılması için birkaç dakika bekleyin. **Azure geçişi: bulma ve değerlendirme** aracı varsayılan olarak yeni projeye eklenir.
 
 ![Varsayılan olarak eklenen sunucu değerlendirmesi aracını gösteren sayfa](./media/tutorial-discover-gcp/added-tool.png)
 
@@ -119,27 +120,28 @@ Yeni bir Azure geçişi projesi ayarlayın.
 
 ## <a name="set-up-the-appliance"></a>Gereci ayarlama
 
-Azure geçişi gereci, aşağıdakileri yapmak için Azure geçişi sunucu değerlendirmesi tarafından kullanılan hafif bir gereç.
+Azure geçişi gereci, aşağıdakileri yapmak için Azure geçişi: bulma ve değerlendirme tarafından kullanılan hafif bir gereç:
 
-- Şirket içi sunucuları bulun.
-- Bulunan sunucular için meta verileri ve performans verilerini Azure geçişi sunucu değerlendirmesi ' ne gönderin.
+* Şirket içi sunucuları bulun.
+* Bulunan sunucular için meta verileri ve performans verilerini Azure geçişi: bulma ve değerlendirme 'a gönderin.
 
 Azure geçişi gereci hakkında [daha fazla bilgi edinin](migrate-appliance.md) .
 
 Gereci kurmak için şunları yapın:
-1. Portal 'da bir gereç adı sağlayın ve bir Azure geçişi proje anahtarı oluşturun.
+
+1. Portalda bir gereç adı sağlayın ve bir proje anahtarı oluşturun.
 1. Azure geçişi yükleyicisi komut dosyasıyla Azure portal sıkıştırılmış bir dosyayı indirin.
 1. Sıkıştırılmış dosyadan içerikleri ayıklayın. Yönetim ayrıcalıklarıyla PowerShell konsolunu başlatın.
 1. Gereç Web uygulamasını başlatmak için PowerShell betiğini yürütün.
-1. Gereci ilk kez yapılandırın ve Azure geçişi projesi anahtarını kullanarak Azure geçişi projesi ile kaydedin.
+1. Gereci ilk kez yapılandırın ve proje anahtarını kullanarak projeyi projeye kaydedin.
 
-### <a name="1-generate-the-azure-migrate-project-key"></a>1. Azure geçişi proje anahtarını oluşturma
+### <a name="1-generate-the-project-key"></a>1. proje anahtarı oluştur
 
-1. **Geçiş hedefleri** > **Sunucular** > **Azure Geçişi: Sunucu Değerlendirmesi** bölümünde **Bul**'u seçin.
-2. Makinelerde **bulunan makineler**  >  **sanallaştırılmış mı?**, **fiziksel veya diğer (AWS, GCP, Xen, vb.)** öğesini seçin.
-3. **1: Azure geçişi proje anahtarı oluşturma**' da, GCP sanal sunucularınızın bulunması için ayarlayabileceğiniz Azure geçiş gereci için bir ad sağlayın. Ad 14 karakter veya daha kısa bir harf olmalıdır.
-4. Gerekli Azure kaynaklarını oluşturmaya başlamak için **anahtar oluştur** ' a tıklayın. Kaynak oluşturma sırasında makineleri keşfet sayfasını kapatmayın.
-5. Azure kaynakları başarıyla oluşturulduktan sonra bir **Azure geçişi proje anahtarı** oluşturulur.
+1. **Geçiş hedefleri**  >  **Windows, Linux ve SQL Server**  >  **Azure geçişi: bulma ve değerlendirme** bölümünde **bul**' u seçin.
+2. Sunucuları **bul**' da  >  **sunucularınız sanallaştırılır mi?**, **fiziksel veya diğer (AWS, GCP, Xen, vb.)** öğesini seçin.
+3. **1: proje anahtarı oluştur**' da, GCP sanal sunucularınızın bulunması Için ayarladığınız Azure geçiş gereci için bir ad sağlayın. Ad 14 karakter veya daha kısa bir harf olmalıdır.
+4. Gerekli Azure kaynaklarını oluşturmaya başlamak için **anahtar oluştur** ' a tıklayın. Kaynak oluşturma sırasında sunucuları keşfet sayfasını kapatmayın.
+5. Azure kaynakları başarıyla oluşturulduktan sonra bir **Proje anahtarı** oluşturulur.
 6. Yapılandırma sırasında gereç kaydını tamamlamamak için gerekli olacak şekilde anahtarı kopyalayın.
 
 ### <a name="2-download-the-installer-script"></a>2. yükleyici betiğini indirin
@@ -200,7 +202,7 @@ Herhangi bir sorun yaşıyorsanız, sorun giderme için C:\ProgramData\Microsoft
 
 ### <a name="verify-appliance-access-to-azure"></a>Azure 'a gereç erişimini doğrulama
 
-Gereç sanal makinesinin, [kamu](migrate-appliance.md#public-cloud-urls) ve [kamu](migrate-appliance.md#government-cloud-urls) bulutları için Azure URL 'lerine bağlanabildiğinizden emin olun.
+Gerecin [ortak](migrate-appliance.md#public-cloud-urls) ve [kamu](migrate-appliance.md#government-cloud-urls) bulutları için Azure URL 'lerine bağlanabildiğinizden emin olun.
 
 ### <a name="4-configure-the-appliance"></a>4. gereci yapılandırma
 
@@ -212,22 +214,22 @@ Gereci ilk kez ayarlayın.
 2. **Lisans koşullarını** kabul edin ve üçüncü taraf bilgilerini okuyun.
 1. **Önkoşulları ayarlamak**> Web uygulamasında şunları yapın:
     - **Bağlantı**: uygulama, sunucunun internet erişimi olup olmadığını denetler. Sunucu bir proxy kullanıyorsa:
-        - Proxy 'yi **Ayarla** ' ya tıklayın ve proxy adresini (form http://ProxyIPAddress veya http://ProxyFQDN) dinleme bağlantı noktasında) belirtin.
+        - **Ara sunucu** ' ya tıklayın ve proxy adresini (form http://ProxyIPAddress veya http://ProxyFQDN) dinleme bağlantı noktası) belirtin.
         - Proxy için kimlik doğrulaması gerekiyorsa kimlik bilgilerini gerekin.
         - Yalnızca HTTP proxy’si desteklenir.
         - Proxy ayrıntıları eklediyseniz veya proxy ve/veya kimlik doğrulamasını devre dışı bırakırsanız, bağlantıyı tetiklemek için **Kaydet** 'e tıklayarak bağlantı denetimini yeniden başlatın.
     - **Zaman eşitleme**: Saat doğrulandı. Sunucu bulmanın düzgün çalışması için gereç saatinin internet ile eşitlenmiş olması gerekir.
-    - **Güncelleştirmeleri yükleme**: Azure geçişi sunucu değerlendirmesi, gerecin en son güncelleştirmelerin yüklü olduğunu denetler. Denetim tamamlandıktan sonra gereç **hizmetlerini görüntüle** ' ye tıklayarak gereç üzerinde çalışan bileşenlerin durumunu ve sürümlerini görebilirsiniz.
+    - **Güncelleştirmeleri yükleme**: Azure geçişi: bulma ve değerlendirme, gerecin en son güncelleştirmelerin yüklü olduğunu denetler. Denetim tamamlandıktan sonra gereç **hizmetlerini görüntüle** ' ye tıklayarak gereç üzerinde çalışan bileşenlerin durumunu ve sürümlerini görebilirsiniz.
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>Gereci Azure geçişi ile kaydetme
 
-1. Portaldan kopyalanmış **Azure geçişi proje anahtarını** yapıştırın. Anahtarınız yoksa, sunucu değerlendirmesi ' ne gidin **> var olan gereçlerini keşfet> yönetin**, anahtar oluşturma sırasında verdiğiniz gereç adını seçin ve ilgili anahtarı kopyalayın.
+1. Portaldan kopyalanmış **Proje anahtarını** yapıştırın. Anahtarınız yoksa **Azure geçişi: bulma ve değerlendirme> var olan gereçlerini bulmak> yönetmek** için, anahtar oluşturma sırasında verdiğiniz gereç adını seçin ve karşılık gelen anahtarı kopyalayın.
 1. Azure ile kimlik doğrulaması yapmak için bir cihaz koduna ihtiyacınız olacaktır. **Oturum** açmak için tıkladığınızda, aşağıda gösterildiği gibi cihaz koduyla kalıcı olarak açılır.
 
     ![Cihaz kodunu kalıcı olarak gösterme](./media/tutorial-discover-vmware/device-code.png)
 
 1. Cihaz kodunu kopyalamak ve yeni bir tarayıcı sekmesinde bir Azure oturum açma istemi açmak için **kodu kopyala & oturum** aç ' a tıklayın. Görünmüyorsa, tarayıcıda açılır pencere engelleyicisini devre dışı bırakmış olduğunuzdan emin olun.
-1. Yeni sekmede, cihaz kodunu yapıştırın ve Azure Kullanıcı adınızı ve parolanızı kullanarak oturum açın.
+1. Yeni sekmede, Azure Kullanıcı adınızı ve parolanızı kullanarak cihaz kodunu yapıştırın ve oturum açın.
    
    PIN ile oturum açma desteklenmez.
 3. Oturum açmadan oturum açma sekmesini yanlışlıkla kapatırsanız, oturum açma düğmesini yeniden etkinleştirmek için gereç Yapılandırma Yöneticisi 'nin tarayıcı sekmesini yenilemeniz gerekir.
@@ -240,12 +242,12 @@ Gereci ilk kez ayarlayın.
 Şimdi, Gereç üzerinden keşfedilecek GCP sunucularına bağlanın ve bulmayı başlatın.
 
 1. **1. Adım: Windows ve Linux fiziksel veya sanal sunucularının bulunması için kimlik bilgilerini sağlayın** bölümünde **kimlik bilgileri ekle**' ye tıklayın.
-1. Windows Server için, kaynak türünü **Windows Server** olarak seçin, kimlik bilgileri için kolay bir ad belirtin, Kullanıcı adını ve parolayı ekleyin. **Kaydet**' e tıklayın.
-1. Linux sunucusu için parola tabanlı kimlik doğrulaması kullanıyorsanız, Linux sunucusu olarak kaynak türünü **(parola tabanlı)** seçin, kimlik bilgileri için kolay bir ad belirtin, Kullanıcı adını ve parolayı ekleyin. **Kaydet**' e tıklayın.
+1. Windows Server için, kaynak türünü **Windows Server** olarak seçin, kimlik bilgileri için kolay bir ad belirtin, Kullanıcı adını ve parolayı ekleyin. **Kaydet**'e tıklayın.
+1. Linux sunucusu için parola tabanlı kimlik doğrulaması kullanıyorsanız, Linux sunucusu olarak kaynak türünü **(parola tabanlı)** seçin, kimlik bilgileri için kolay bir ad belirtin, Kullanıcı adını ve parolayı ekleyin. **Kaydet**'e tıklayın.
 1. Linux sunucusu için SSH anahtar tabanlı kimlik doğrulaması kullanıyorsanız, Linux sunucusu olarak kaynak türünü seçebilirsiniz **(SSH anahtar tabanlı)**, kimlik bilgileri için kolay bir ad belirtebilir, Kullanıcı adını ekleyebılır, SSH özel anahtar dosyasına gözatıp seçebilirsiniz. **Kaydet**'e tıklayın.
 
     - Azure geçişi, RSA, DSA, ECDSA ve Ed25519 algoritmalarını kullanarak SSH-keygen komutu tarafından oluşturulan SSH özel anahtarını destekler.
-    - Şu anda Azure geçişi, parola tabanlı SSH anahtarını desteklemez. Lütfen parola olmadan bir SSH anahtarı kullanın.
+    - Şu anda Azure geçişi, parola tabanlı SSH anahtarını desteklemez. Parola olmadan bir SSH anahtarı kullanın.
     - Şu anda Azure geçişi, PuTTY tarafından oluşturulan SSH özel anahtar dosyasını desteklemez.
     - Azure geçişi, aşağıda gösterildiği gibi SSH özel anahtar dosyasının OpenSSH biçimini destekler:
     
@@ -257,13 +259,13 @@ Gereci ilk kez ayarlayın.
 4. **Tek seferde tek bir öğe ekleyebilir** veya tek bir go içinde **birden fazla öğe ekleyebilirsiniz** . Ayrıca, **Içeri aktarma CSV** aracılığıyla sunucu ayrıntılarını sağlamak için bir seçenek de vardır.
 
     - **Tek öğe Ekle**' yi seçerseniz, işletim sistemi türünü seçebilir, kimlik bilgileri için kolay ad belirtebilir, sunucu **IP adresi/FQDN** ekleyebilir ve **Kaydet**' e tıklayabilirsiniz.
-    - **Birden çok öğe Ekle**' yi seçerseniz, metin kutusunda kimlik bilgileri için kolay ada sahip sunucu **IP adresi/FQDN** belirterek, bir kerede birden çok kayıt ekleyebilirsiniz. Eklenen kayıtları **doğrulayın** ve **Kaydet**' e tıklayın.
+    - **Birden çok öğe Ekle**' yi seçerseniz, metin kutusunda kimlik bilgileri için kolay ada sahip sunucu **IP adresi/FQDN** belirterek, bir kerede birden çok kayıt ekleyebilirsiniz. * * Eklenen kayıtlar ' ı doğrulayın ve **Kaydet**' e tıklayın.
     - **CSV 'Yi Içeri aktar** ' ı _(varsayılan olarak seçilidir)_ seçerseniz, bir CSV şablon dosyası Indirebilir, dosyayı sunucu **IP adresi/FQDN** ve kimlik bilgileri için kolay ad ile doldurabilirsiniz. Sonra dosyayı gereç içine aktarır, dosyadaki kayıtları **doğrulayın** ve **Kaydet**' e tıklayın.
 
 5. Kaydet ' e tıkladığınızda, Gereç eklenen sunucularla bağlantıyı doğrulamayı dener ve tablodaki **doğrulama durumunu** her bir sunucuya göre gösterir.
     - Sunucu için doğrulama başarısız olursa, tablonun durum sütununda **doğrulama** ' ya tıklayarak hatayı gözden geçirin. Sorunu düzeltin ve tekrar doğrulayın.
     - Bir sunucuyu kaldırmak için **Sil**' e tıklayın.
-6. Keşfi başlatmadan önce sunucularla bağlantı **yeniden doğrulayabilirsiniz** .
+6. Keşfi başlatmadan önce sunuculara olan bağlantıyı **yeniden doğrulayabilirsiniz** .
 7. Başarıyla doğrulanan sunucuları bulmayı **başlatmak için bulmayı Başlat**' a tıklayın. Bulma işlemi başarılı bir şekilde başlatıldıktan sonra, tablodaki her bir sunucu için bulma durumunu denetleyebilirsiniz.
 
 
@@ -274,9 +276,9 @@ Bu, bulmayı başlatır. Sunucu başına, bulunan sunucunun meta verilerinin Azu
 Bulma işlemi tamamlandıktan sonra, sunucuların portalda göründüğünü doğrulayabilirsiniz.
 
 1. Azure Geçişi panosunu açın.
-2. **Azure geçişi-sunucular**  >  **Azure geçişi: Sunucu değerlendirmesi** sayfasında, **bulunan sunucuların** sayısını görüntüleyen simgeye tıklayın.
+2. **Azure geçişi-Windows, Linux ve SQL sunucuları**  >  **Azure geçişi: bulma ve değerlendirme** sayfasında, **bulunan sunucuların** sayısını görüntüleyen simgeye tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure VM 'lerine geçiş için [GCP sunucularını değerlendirin](tutorial-assess-gcp.md) .
-- Bulma sırasında gereç tarafından toplanan [verileri gözden geçirin](migrate-appliance.md#collected-data---physical) .
+* Azure VM 'lerine geçiş için [GCP sunucularını değerlendirin](tutorial-assess-gcp.md) .
+* Bulma sırasında gereç tarafından toplanan [verileri gözden geçirin](migrate-appliance.md#collected-data---physical) .

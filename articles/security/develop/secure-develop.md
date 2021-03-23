@@ -4,7 +4,7 @@ description: Bu makalede, Web uygulaması projenizin uygulama ve doğrulama aşa
 author: TerryLanfear
 manager: barbkess
 ms.author: terrylan
-ms.date: 06/12/2019
+ms.date: 03/21/2021
 ms.topic: article
 ms.service: security
 ms.subservice: security-develop
@@ -13,15 +13,16 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 52c93bef4529f27ad38677f17209e7b48e997368
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 8edceb31a0cdde36c987076e91350116a4f81255
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102548453"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782410"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Azure üzerinde güvenli uygulamalar geliştirme
-Bu makalede, bulut için uygulama geliştirirken göz önünde bulundurmanız gereken güvenlik etkinlikleri ve denetimler sunuyoruz. Microsoft [güvenlik geliştirme yaşam döngüsü 'nin (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) uygulama ve doğrulama aşamaları sırasında göz önünde bulundurmanız gereken güvenlik soruları ve kavramlar ele alınmıştır. Amaç, daha güvenli bir uygulama geliştirmek için kullanabileceğiniz etkinlikleri ve Azure hizmetlerini tanımlamanıza yardımcı olmaktır.
+
+Bu makalede, bulut için uygulama geliştirirken göz önünde bulundurmanız gereken güvenlik etkinliklerini ve denetimleri sunuyoruz. Microsoft [güvenlik geliştirme yaşam döngüsü 'nin (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) uygulama ve doğrulama aşamaları sırasında göz önünde bulundurmanız gereken güvenlik soruları ve kavramlar ele alınmıştır. Amaç, daha güvenli bir uygulama geliştirmek için kullanabileceğiniz etkinlikleri ve Azure hizmetlerini tanımlamanıza yardımcı olmaktır.
 
 Aşağıdaki SDL aşamaları bu makalede ele alınmıştır:
 
@@ -29,6 +30,7 @@ Aşağıdaki SDL aşamaları bu makalede ele alınmıştır:
 - Doğrulama
 
 ## <a name="implementation"></a>Uygulama
+
 Uygulama aşamasının odağı, erken önleme için en iyi yöntemleri oluşturmak ve koddan güvenlik sorunlarını algılayıp kaldırmasıdır.
 Uygulamanızın kullanılmasını amaçlamadığınız yollarla kullanılacağını varsayın. Bu, uygulamanızın yanlışlıkla veya kasıtlı olarak kötüye kullanılmasına karşı koruma sağlamanıza yardımcı olur.
 
@@ -89,11 +91,11 @@ Bu, gerçek verilerinize daha az sayıda kişinin erişimi olduğu anlamına gel
 
 Deneme yanılma ve sözlük tabanlı tahminlere karşı savunmak için, kullanıcıların karmaşık bir parola oluşturmasını sağlamak için güçlü bir parola ilkesi uygulamanız gerekir (örneğin, 12 karakter minimum uzunluğu ve alfasayısal ve özel karakterler gerektirir).
 
-Parola ilkeleri oluşturmak ve zorlamak için bir kimlik çerçevesi kullanabilirsiniz. Azure AD B2C, [Yerleşik ilkeler](../../active-directory-b2c/tutorial-create-user-flows.md#create-a-password-reset-user-flow), [self servis parola sıfırlama](../../active-directory-b2c/user-flow-self-service-password-reset.md)ve daha fazlasını sağlayarak parola yönetimine yardımcı olur.
+Azure Active Directory B2C, [self servis parola sıfırlama](../../active-directory-b2c/add-password-reset-policy.md), [parola sıfırlamayı zorlama](../../active-directory-b2c/force-password-reset.md)ve daha fazlasını sağlayarak parola yönetimine yardımcı olur.
 
 Varsayılan hesapların saldırılarına karşı savunmak için tüm anahtarların ve parolaların değiştirilebilen ve kaynakları yükledikten sonra oluşturulduğunu veya değiştirildiğini doğrulayın.
 
-Uygulamanın parolaları otomatik olarak oluşturması gerekiyorsa, oluşturulan parolaların rastgele olduğundan ve yüksek entrokdıklarından emin olun.
+Uygulamanın parolaları AutoGenerate olması gerekiyorsa, oluşturulan parolaların rastgele olduğundan ve yüksek entrokdıklarından emin olun.
 
 ### <a name="validate-file-uploads"></a>Karşıya dosya yüklemelerini doğrula
 
@@ -108,6 +110,7 @@ Kötü amaçlı yazılımdan koruma, virüsler, casus yazılım ve diğer kötü
 Gizli içeriği tarayıcıda önbelleğe alma. Tarayıcılar, önbelleğe alma ve geçmiş bilgilerini saklayabilir. Önbelleğe alınan dosyalar, Internet Explorer durumunda Temporary Internet Files klasörü gibi bir klasörde depolanır. Bu sayfalara yeniden başvurulur tarayıcı, sayfaları önbelleğinden görüntüler. Kullanıcıya gizli bilgiler (adres, kredi kartı ayrıntıları, sosyal güvenlik numarası, Kullanıcı adı) görüntüleniyorsa, bilgiler tarayıcının önbelleğinde depolanabilir ve tarayıcının önbelleğini inceleyerek veya tarayıcının **geri** düğmesine basılarak alınabilir.
 
 ## <a name="verification"></a>Doğrulama
+
 Doğrulama aşaması, kodun önceki aşamalarda oluşturulan güvenlik ve gizlilik tenetlerini karşıladığından emin olmak için kapsamlı bir çaba içerir.
 
 ### <a name="find-and-fix-vulnerabilities-in-your-application-dependencies"></a>Uygulamanızın bağımlılıklarındaki güvenlik açıklarını bulun ve onarın
@@ -151,6 +154,7 @@ Uygulamanızın güvenli olmasını sağlamak, diğer tüm işlevleri test etmek
 [Azure Için güvenli DevOps Kit](https://azsk.azurewebsites.net/index.html) (azsk), Azure platformunun birden çok hizmeti Için SVTS 'yi içerir. Azure aboneliğinizin ve uygulamanızı oluşturan farklı kaynakların güvenli bir durumda olduğundan emin olmak için bu SVTs 'yi düzenli olarak çalıştırırsınız. Bu testleri, AzSK 'nin sürekli tümleştirme/sürekli dağıtım (CI/CD) uzantıları özelliğini kullanarak otomatikleştirin ve bu da SVTs 'nin bir Visual Studio uzantısı olarak kullanılabilmesini sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 Aşağıdaki makalelerde, güvenli uygulamaları tasarlamanıza ve dağıtmanıza yardımcı olabilecek güvenlik denetimleri ve etkinlikleri önerilir.
 
 - [Güvenli uygulamalar tasarlama](secure-design.md)

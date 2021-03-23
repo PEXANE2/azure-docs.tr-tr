@@ -1,25 +1,14 @@
 ---
 title: Aracı tabanlı öneriler
-titleSuffix: Azure Defender for IoT
 description: Güvenlik önerileri kavramı ve bunların IoT cihazları için Defender için nasıl kullanıldığı hakkında bilgi edinin.
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: shhazam-ms
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 02/16/2021
-ms.author: shhazam
-ms.openlocfilehash: e746f37fdf3b67467c1844ebea9191679d52d6d1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a29957f459edad8b768daea7bc4567d77c80b165
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103491274"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784994"
 ---
 # <a name="security-recommendations-for-iot-devices"></a>IoT cihazları için güvenlik önerileri
 
@@ -32,7 +21,7 @@ Bu makalede, IoT cihazlarınızda tetiklenebilecek önerilerin bir listesini bul
 
 Cihaz önerileri, cihaz güvenlik duruşunu geliştirmek için Öngörüler ve öneriler sağlar.
 
-| Önem derecesi | Name | Veri Kaynağı | Description |
+| Önem derecesi | Name | Veri Kaynağı | Açıklama |
 |--|--|--|--|
 | Orta | Cihazda bağlantı noktalarını açma | Klasik Defender-IoT-Micro-Agent| Cihazda bir dinleme uç noktası bulundu. |
 | Orta | Zincirden birinde izin veren güvenlik duvarı ilkesi bulundu. | Klasik Defender-IoT-Micro-Agent| İzin verilen güvenlik duvarı ilkesi bulundu (GIRIŞ/çıkış). Güvenlik duvarı ilkesi varsayılan olarak tüm trafiği reddetmelidir ve cihaza/cihazdan gerekli iletişime izin vermek için kurallar tanımlar. |
@@ -44,11 +33,11 @@ Cihaz önerileri, cihaz güvenlik duruşunu geliştirmek için Öngörüler ve �
 
 İşletimsel öneriler, güvenlik Aracısı yapılandırmasını geliştirmek için Öngörüler ve öneriler sağlar.
 
-| Önem derecesi | Name | Veri Kaynağı | Description |
+| Önem derecesi | Name | Veri Kaynağı | Açıklama |
 |--|--|--|--|
-| Düşük | Aracı unutilized iletileri gönderiyor | Klasik Defender-IoT-Micro-Agent| Son 24 saat boyunca 10 KB veya daha fazla güvenlik iletisi 4 KB 'tan daha küçük. |
-| Düşük | Güvenlik ikizi yapılandırması en uygun değil | Klasik Defender-IoT-Micro-Agent| Güvenlik ikizi yapılandırması en uygun değildir. |
-| Düşük | Güvenlik ikizi yapılandırması çakışması | Klasik Defender-IoT-Micro-Agent| Güvenlik ikizi yapılandırmasında çakışmalar tanımlandı. |  |
+| Düşük | Aracı unutilized iletileri gönderiyor | Klasik Defender-IoT-Micro-Agent | Son 24 saat boyunca 10 KB veya daha fazla güvenlik iletisi 4 KB 'tan daha küçük. |
+| Düşük | Güvenlik ikizi yapılandırması en uygun değil | Klasik Defender-IoT-Micro-Agent | Güvenlik ikizi yapılandırması en uygun değildir. |
+| Düşük | Güvenlik ikizi yapılandırması çakışması | Klasik Defender-IoT-Micro-Agent | Güvenlik ikizi yapılandırmasında çakışmalar tanımlandı. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

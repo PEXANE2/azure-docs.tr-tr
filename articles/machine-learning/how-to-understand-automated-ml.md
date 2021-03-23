@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/09/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q2, automl
-ms.openlocfilehash: 6d8c56bc306a7ab0bf118d04f64d6523fc385cdd
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: b60e5f656b675a1382b8b4776975723a437183bc
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102520787"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773122"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>Otomatik makine öğrenimi sonuçlarını değerlendir
 
@@ -91,6 +91,8 @@ weighted_accuracy|Ağırlıklı doğruluk, her bir örneğin aynı sınıfa ait 
 Otomatikleştirilmiş ML ikili ve çok sınıflı ölçümler arasında ayrım yapmaz. Aynı doğrulama ölçümleri, bir veri kümesinin iki sınıfa veya ikiden fazla sınıfa sahip olup olmadığını rapor edilir. Ancak bazı ölçümler çok sınıflı sınıflandırmaya yöneliktir. Bir ikili veri kümesine uygulandığında, bu ölçümler, bekleolabileceğiniz gibi sınıf olarak hiçbir sınıfı kabul eder `true` . Birden çok sınıf için açıkça amaçlanan ölçümler,, veya ile sonlanmış `micro` `macro` `weighted` . Örnekler,,, `average_precision_score` `f1_score` ve içerir `precision_score` `recall_score` `AUC` .
 
 Örneğin, geri çekmeyi hesaplamak yerine `tp / (tp + fn)` , `micro` `macro` `weighted` bir ikili sınıflandırma veri kümesinin her iki sınıfının birden çok Lass ortalaması (, veya) ortalamaları. Bu, sınıf için geri çekmenin hesaplanmasının ve `true` `false` sonra ikisinin ortalamasını alan eşdeğerdir.
+
+Otomatikleştirilmiş ML ikili sınıflandırma veri kümeleri için ölçümler olan ikili ölçümleri hesaplamaz. Ancak bu ölçümler, otomatik ML 'nin bu belirli çalışma için oluşturduğu [karışıklık matrisi](#confusion-matrix) kullanılarak el ile hesaplanabilir. Örneğin, `tp / (tp + fp)` bir 2x2 karışıklık matris grafiğinde gösterilen doğru pozitif ve yanlış pozitif değerler ile duyarlık hesaplayabilirsiniz.
 
 ## <a name="confusion-matrix"></a>Karışıklık matrisi
 

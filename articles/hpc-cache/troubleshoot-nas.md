@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: troubleshooting
 ms.date: 03/18/2020
 ms.author: v-erkel
-ms.openlocfilehash: d2a5ffa337f789c4edc3a34b3be81285337473e2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: bb17918774d23dbeb2747fa55eefc4956812e254
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103471708"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775706"
 ---
 # <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>NAS yapılandırma ve NFS depolama hedefi sorunlarını giderme
 
@@ -91,16 +91,15 @@ Arka uç depolama sistemi, dosya tanıtıcıları için iç diğer adları tutar
 
 Birden çok dışarı aktarmada bulunan dosyalar için bu olası dosya çarpışmasını önlemek için Azure HPC Cache, yoldaki (örnekteki) otomatik olarak kullanılabilir dışarı aktarmayı otomatik olarak bağlar ``/ifs`` ve bu dışarı aktarma işleminden verilen dosya tanıtıcısını kullanır. Birden çok dışa aktarma aynı temel yolu kullanıyorsa, Azure HPC Cache 'in bu yola kök erişimi olması gerekir.
 
-## <a name="enable-export-listing"></a>Dışarı aktarma listesini etkinleştir
-<!-- link in prereqs article -->
+<!-- ## Enable export listing
 
-Azure HPC Cache tarafından sorgulandığında NAS 'ıN dışarı aktarmaları listemalıdır.
+The NAS must list its exports when the Azure HPC Cache queries it.
 
-Çoğu NFS depolama sisteminde, bir Linux istemcisinden aşağıdaki sorguyu göndererek bunu test edebilirsiniz: ``showmount -e <storage IP address>``
+On most NFS storage systems, you can test this by sending the following query from a Linux client: ``showmount -e <storage IP address>``
 
-Mümkünse önbelleğiniz ile aynı sanal ağdaki bir Linux istemcisini kullanın.
+Use a Linux client from the same virtual network as your cache, if possible.
 
-Bu komut dışarı aktarmaları listemezse, önbellekte depolama sisteminize bağlanma sorunu olur. Dışarı aktarma listesini etkinleştirmek için NAS satıcınızla birlikte çalışın.
+If that command doesn't list the exports, the cache will have trouble connecting to your storage system. Work with your NAS vendor to enable export listing.  -->
 
 ## <a name="adjust-vpn-packet-size-restrictions"></a>VPN paket boyutu kısıtlamalarını ayarla
 <!-- link in prereqs article and configuration article -->

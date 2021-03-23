@@ -3,16 +3,16 @@ title: Azure Data Factory örnekleri
 description: Azure Data Factory hizmetiyle birlikte gelen örneklerle ilgili ayrıntıları sağlar.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 82c871e8914d70dde7f2586b7dbf6556ebd2621f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0d78cc9d99bd7ace2d214c2a2a1d7f75a74df098
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100387045"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104785062"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory örnekleri
 > [!NOTE]
@@ -42,7 +42,7 @@ ms.locfileid: "100387045"
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager şablonları
 GitHub üzerinde Data Factory için aşağıdaki Azure Resource Manager şablonları bulabilirsiniz.
 
-| Şablon | Description |
+| Şablon | Açıklama |
 | --- | --- |
 | [Azure Blob depolama alanından Azure SQL veritabanına kopyalama](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy) |Bu şablonu dağıtmak, verileri belirtilen Azure Blob depolamadan Azure SQL veritabanı 'na kopyalayan bir işlem hattı ile bir Azure veri fabrikası oluşturur |
 | [Salesforce 'tan Azure Blob depolamaya kopyalama](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy) |Bu şablonu dağıtmak, belirtilen Salesforce hesabından Azure Blob depolama alanına veri kopyalayan bir işlem hattına sahip bir Azure veri fabrikası oluşturur. |

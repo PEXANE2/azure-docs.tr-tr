@@ -59,8 +59,6 @@
       items:
         - name: Uygulama tümleştirmesini kullanmaya başlama
           href: plan-an-application-integration.md
-        - name: Galeride listelenmeyen uygulamaları planlama
-          href: non-gallery-apps.md
         - name: Uygulamalarım dağıtımı planlama
           href: my-apps-deployment-plan.md
     - name: Çoklu oturum açma

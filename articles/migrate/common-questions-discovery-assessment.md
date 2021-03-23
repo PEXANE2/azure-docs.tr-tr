@@ -1,17 +1,17 @@
 ---
 title: Azure geçişi 'nde bulma, değerlendirme ve bağımlılık analizi ile ilgili sorular
 description: Azure geçişi 'nde bulma, değerlendirme ve bağımlılık analizi hakkında sık sorulan soruların yanıtlarını alın.
-author: vineetvikram
-ms.author: vivikram
+author: rashijoshi
+ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 6c4dfed27a105fad951ae12ca053b6d86772717a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f9fe4109d2b21f7c44ba340db53dc24311652441
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102032577"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782359"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Keşif, değerlendirme ve bağımlılık analizi-genel sorular
 
@@ -28,18 +28,15 @@ Bu makalede, Azure geçişi 'nde bulma, değerlendirme ve bağımlılık analizl
 [Genel](migrate-support-matrix.md#supported-geographies-public-cloud) ve [kamu bulutları](migrate-support-matrix.md#supported-geographies-azure-government) için desteklenen coğrafyaları inceleyin.
 
 
-## <a name="how-many-vms-can-i-discover-with-an-appliance"></a>Bir gereç ile kaç tane VM keşfedebilirim?
+## <a name="how-many-servers-can-i-discover-with-an-appliance"></a>Bir gereç ile kaç sunucu keşfedebilirim?
 
-En fazla 10.000 VMware VM, en fazla 5.000 Hyper-V VM ve tek bir gereç kullanarak en fazla 1000 fiziksel sunucu bulabilirsiniz. Daha fazla makineniz varsa, [Hyper-V değerlendirmesi ölçekleme](scale-hyper-v-assessment.md), [bir VMware değerlendirmesi ölçekleme](scale-vmware-assessment.md)veya [fiziksel sunucu değerlendirmesini ölçeklendirme](scale-physical-assessment.md)hakkında bilgi edinin.
+VMware ortamından en fazla 10.000 sunucusu, Hyper-V ortamından en fazla 5.000 sunucuya ve tek bir gereç kullanarak en çok 1000 fiziksel sunucuya kadar bulabilirsiniz. Daha fazla sunucunuz varsa, [Hyper-V değerlendirmesi ölçekleme](scale-hyper-v-assessment.md), [bir VMware değerlendirmesi ölçekleme](scale-vmware-assessment.md)veya [fiziksel sunucu değerlendirmesini ölçeklendirme](scale-physical-assessment.md)hakkında bilgi edinin.
 
 ## <a name="how-do-i-choose-the-assessment-type"></a>Değerlendirme türünü nasıl seçebilirim?
 
-- Azure VM 'lerine geçiş için şirket içi [VMware VM](how-to-set-up-appliance-vmware.md)'lerinizi, [Hyper-V VM](how-to-set-up-appliance-hyper-v.md)'lerini ve [fiziksel sunucuları](how-to-set-up-appliance-physical.md) değerlendirmek istediğinizde **Azure VM değerlendirmelerini** kullanın. [Daha Fazla Bilgi](concepts-assessment-calculation.md)
+- Şirket içi [VMware](how-to-set-up-appliance-vmware.md) ve [Hyper-V](how-to-set-up-appliance-hyper-v.md) ortamınızdan SUNUCULARı değerlendirmek istediğinizde **Azure VM değerlendirmelerini** ve Azure VM 'lerine geçiş için [fiziksel sunucuları](how-to-set-up-appliance-physical.md) kullanın. [Daha Fazla Bilgi](concepts-assessment-calculation.md)
 
 - Azure SQL veritabanı veya Azure SQL yönetilen örneği 'ne geçiş için, VMware ortamınızdan şirket içi SQL Server değerlendirmek istediğinizde, değerlendirme türü **Azure SQL** ' i kullanın. [Daha Fazla Bilgi](concepts-assessment-calculation.md)
-
-    > [!Note]
-    > VMware ortamınızda çalışan SQL Server örnekleri ve veritabanlarının keşfi ve değerlendirmesi artık önizlemededir. Bu özelliği denemek için [**bu bağlantıyı**](https://aka.ms/AzureMigrate/SQL) kullanarak **Doğu Avustralya** bölgesinde bir proje oluşturun. Zaten Doğu Avustralya bölgesinde bir projeniz varsa ve bu özelliği denemek istiyorsanız, lütfen portalda bu [**önkoşulları**](how-to-discover-sql-existing-project.md) tamamladığınızdan emin olun.
 
 - Bu değerlendirme türünü kullanarak [Azure VMware çözümüne (AVS)](../azure-vmware/introduction.md) geçiş için şirket Içi [VMware VM](how-to-set-up-appliance-vmware.md) 'Lerinizi değerlendirmek istediğinizde **Azure VMware çözümü (AVS)** değerlendirmelerini kullanın. [Daha fazla bilgi edinin](concepts-azure-vmware-solution-assessment-calculation.md)
 
@@ -48,10 +45,10 @@ En fazla 10.000 VMware VM, en fazla 5.000 Hyper-V VM ve tek bir gereç kullanara
 
 ## <a name="why-is-performance-data-missing-for-someall-servers-in-my-azure-vm-andor-avs-assessment-report"></a>Azure VM 'mdeki ve/veya AVS değerlendirmesi raporundaki bazı/tüm sunucular için performans verileri neden eksik?
 
-"Performans tabanlı" değerlendirmede Azure Geçişi aleti şirket içi VM’ler için performans verilerini toplayamazsa değerlendirme raporu dışarı aktarmasında 'PercentageOfCoresUtilizedMissing' veya 'PercentageOfMemoryUtilizedMissing' hatası verir. Lütfen şunu denetleyin:
+"Performans tabanlı" değerlendirme için, Azure geçiş gereci şirket içi sunucular için performans verilerini toplayamazsa, değerlendirme raporu dışarı aktarma ' PercentageOfCoresUtilizedMissing ' veya ' PercentageOfMemoryUtilizedMissing ' diyor. Lütfen şunu denetleyin:
 
-- Değerlendirmeyi oluşturduğunuz süre boyunca VM'lerin açılıp açılmadığı
-- Yalnızca bellek sayaçları eksikse ve Hyper-V VM 'lerini değerlendirmeye çalışıyorsanız. Bu senaryoda, lütfen VM 'lerde dinamik belleği etkinleştirin ve en son değişiklikleri yansıtacak şekilde değerlendirmesi ' yeniden hesaplayın '. Gereç, Hyper-V VM 'lerinin bellek kullanım değerlerini yalnızca sanal makinede dinamik bellek etkinken toplayabilir.
+- Değerlendirme oluşturduğunuz süre boyunca sunucular açık ise
+- Yalnızca bellek sayaçları eksikse ve Hyper-V ortamındaki sunucuları değerlendirmeye çalışıyorsanız. Bu senaryoda, lütfen sunucularda dinamik belleği etkinleştirin ve en son değişiklikleri yansıtacak şekilde değerlendirmesi ' yeniden hesaplayın '. Gereç, Hyper-V ortamındaki yarı sunucular için bellek kullanım değerlerini yalnızca sunucuda dinamik bellek etkinken toplayabilir.
 
 - Tüm performans sayaçları eksikse, 443 (HTTPS) bağlantı noktalarında giden bağlantılara izin verildiğinden emin olun.
 
@@ -89,11 +86,6 @@ Performans sayaçlarından herhangi biri eksikse, Azure SQL değerlendirmesi Bu 
 
 - Azure SQL değerlendirmelerinde, bulma başlatıldıktan sonra birkaç SQL örneği veya veritabanı oluşturuldu. Örneğin, son bir ayın performans geçmişi için bir değerlendirme oluşturuyorsanız ancak ortamda yalnızca bir hafta önce birkaç SQL örneği veya veritabanı oluşturuluyorsa. Bu durumda, yeni sunucular için performans verileri sürenin tamamına uygun olmayacaktır ve güvenirlik derecelendirmesi düşük olacaktır. [Daha fazla bilgi edinin](./concepts-azure-sql-assessment-calculation.md#confidence-ratings)
 
-## <a name="i-want-to-try-out-the-new-azure-sql-assessment-feature-in-azure-migrate"></a>Azure Geçişi'nde yeni Azure SQL değerlendirme özelliğini denemek istiyorum
-Bu özelliği denemek için [bu bağlantıyı](https://go.microsoft.com/fwlink/?linkid=2155668L) kullanarak **Doğu Avustralya** bölgesinde bir proje oluşturun.
-- Başlamak için [Bulma](https://docs.microsoft.com/azure/migrate/tutorial-discover-vmware) ve [değerlendirme](https://docs.microsoft.com/azure/migrate/tutorial-assess-sql) öğreticilerine bakın.
-- VMware ortamınızda çalıştırılan SQL Server örnekleri ve veritabanlarını bulma ve değerlendirme özelliğinin şu anda önizlemede olduğunu unutmayın.
-
 ## <a name="i-cant-see-some-servers-when-i-am-creating-an-azure-sql-assessment"></a>Azure SQL değerlendirmesi oluştururken bazı sunucuları göremiyorum
 
 - Azure SQL değerlendirmesi yalnızca SQL örneklerinin bulunduğu, çalışan sunucularda yapılabilir. Değerlendirmek istediğiniz sunucuları ve SQL örneklerini göremiyorsanız bulma işleminin tamamlanması için bir süre bekleyin ve ardından değerlendirmeyi oluşturun. 
@@ -117,7 +109,7 @@ SQL bulma her 24 saatte bir gerçekleştirilir ve en son yapılandırma değişi
 ## <a name="my-assessment-is-in-outdated-state"></a>Değerlendirmem Süresi geçmiş durumda
 
 ### <a name="azure-vmavs-assessment"></a>Azure VM/AVS değerlendirmesi
-Değerlendirilen bir gruptaki VM 'lerde şirket içi değişiklikler varsa, değerlendirme güncelliğini yitirmiş olarak işaretlenir. Aşağıdaki özelliklerde bir veya daha fazla değişiklik olduğundan, bir değerlendirme "güncel değil" olarak işaretlenebilir:
+Değerlendirilen bir gruptaki sunucularda şirket içi değişiklikler varsa, değerlendirme süresi geçmiş olarak işaretlenir. Aşağıdaki özelliklerde bir veya daha fazla değişiklik olduğundan, bir değerlendirme "güncel değil" olarak işaretlenebilir:
 - İşlemci çekirdekleri sayısı
 - Ayrılan bellek
 - Önyükleme türü veya bellenim
@@ -166,18 +158,18 @@ Azure SQL yönetilen örneği için, ilk 32 GB/örnek/ay depolaması için bir d
 - AVS değerlendirmesi yalnızca VMware makineleri içeren gruplarda yapılabilir. AVS değerlendirmesi yapmayı amaçlıyorsanız VMware dışı tüm makineleri gruptan kaldırın.
 - Azure Geçişi'nde AVS değerlendirmelerini ilk kez çalıştırıyorsanız, yeni bir VMware makineleri grubu oluşturmanız önerilir.
 
-## <a name="i-cant-see-some-vm-types-in-azure-government"></a>Azure Kamu 'da bazı VM türlerini göremiyorum
+## <a name="i-cant-see-some-vm-types-and-sizes-in-azure-government"></a>Azure Kamu 'da bazı VM türlerini ve boyutlarını göremiyorum
 
-Değerlendirme ve geçiş için desteklenen VM türleri, Azure Kamu konumunda kullanılabilirliğine bağlıdır. Azure Kamu 'da VM türlerini [gözden geçirebilir ve karşılaştırabilirsiniz](https://azure.microsoft.com/global-infrastructure/services/?regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia&products=virtual-machines) .
+Değerlendirme ve geçiş için desteklenen VM türleri ve boyutları, Azure Kamu konumunda kullanılabilirliğine bağlıdır. Azure Kamu 'da VM türlerini [gözden geçirebilir ve karşılaştırabilirsiniz](https://azure.microsoft.com/global-infrastructure/services/?regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia&products=virtual-machines) .
 
-## <a name="the-size-of-my-vm-changed-can-i-run-an-assessment-again"></a>VM 'imin boyutu değişti. Bir değerlendirmeyi yeniden çalıştırabilir miyim?
+## <a name="the-size-of-my-server-changed-can-i-run-an-assessment-again"></a>Sunucu boyutu değişti. Bir değerlendirmeyi yeniden çalıştırabilir miyim?
 
-Azure geçişi gereci, şirket içi ortam hakkındaki bilgileri sürekli olarak toplar.  Değerlendirme, şirket içi VM 'lerin bir zaman noktası anlık görüntüsüdür. Değerlendirmek istediğiniz bir VM 'deki ayarları değiştirirseniz, en son değişikliklerle değerlendirmesi güncelleştirmek için yeniden hesapla seçeneğini kullanın.
+Azure geçişi gereci, şirket içi ortam hakkındaki bilgileri sürekli olarak toplar.  Değerlendirme, şirket içi sunucuların bir zaman noktası anlık görüntüsüdür. Değerlendirmek istediğiniz bir sunucuda ayarları değiştirirseniz, en son değişikliklerle değerlendirmesi güncelleştirmek için yeniden hesapla seçeneğini kullanın.
 
-## <a name="how-do-i-discover-vms-in-a-multitenant-environment"></a>Çok kiracılı bir ortamda VM 'Leri Nasıl yaparım?.
+## <a name="how-do-i-discover-servers-in-a-multitenant-environment"></a>Nasıl yaparım? çok kiracılı bir ortamda sunucu keşfet mi?
 
-- **VMware**: bir ortam kiracılar arasında paylaşılmışsa ve bir kiracının başka bir kiracının aboneliğindeki VM 'leri keşfetmeniz gerekmiyorsa, yalnızca keşfetmeyi Istediğiniz VM 'lere erişebilen VMware vCenter Server kimlik bilgileri oluşturun. Daha sonra, Azure geçiş gereci 'nda bulmaya başladığınızda bu kimlik bilgilerini kullanın.
-- **Hyper-v**: bulma Işlemi, Hyper-v ana bilgisayar kimlik bilgilerini kullanır. VM 'Ler aynı Hyper-V konağını paylaşıyorsa, şu anda bulmayı ayırmanın bir yolu yoktur.  
+- **VMware**: bir ortam kiracılar arasında paylaşılmışsa ve başka bir kiracının aboneliğindeki bir kiracının sunucularını öğrenmek istemiyorsanız, yalnızca keşfetmesini istediğiniz sunuculara erişebilen VMware vCenter Server kimlik bilgileri oluşturun. Daha sonra, Azure geçiş gereci 'nda bulmaya başladığınızda bu kimlik bilgilerini kullanın.
+- **Hyper-v**: bulma Işlemi, Hyper-v ana bilgisayar kimlik bilgilerini kullanır. Sunucular aynı Hyper-V konağını paylaşıyorsa, şu anda bulmayı ayırmanın bir yolu yoktur.  
 
 ## <a name="do-i-need-vcenter-server"></a>VCenter Server ihtiyacım var mı?
 
@@ -185,9 +177,9 @@ Evet, Azure geçişi, bulma işlemini gerçekleştirmek için bir VMware ortamı
 
 ## <a name="what-are-the-sizing-options-in-an-azure-vm-assessment"></a>Azure VM değerlendirmesinde boyutlandırma seçenekleri nelerdir?
 
-Şirket içi olarak boyutlandırılması sayesinde Azure geçişi, değerlendirme için VM performans verilerini kabul etmez. Azure değerlendirir VM boyutlarını şirket içi yapılandırmaya göre geçirin. Performans tabanlı boyutlandırma ile boyutlandırma, kullanım verilerini temel alır.
+Azure geçişi, şirket içi olarak boyutlandırılması için sunucu performansı verilerini değerlendirme için kabul etmez. Azure değerlendirir VM boyutlarını şirket içi yapılandırmaya göre geçirin. Performans tabanlı boyutlandırma ile boyutlandırma, kullanım verilerini temel alır.
 
-Örneğin, bir şirket içi VM 'nin %50 CPU kullanımı ve %50 bellek kullanımı için dört çekirdeğe ve 8 GB belleğe sahip olması durumunda:
+Örneğin, bir şirket içi sunucuda %50 CPU kullanımı ve %50 bellek kullanımı için dört çekirdek ve 8 GB bellek varsa:
 - Şirket içi boyutlandırma, dört çekirdeğe ve 8 GB belleğe sahip bir Azure VM SKU 'SU önerir.
 - Performans tabanlı boyutlandırma, kullanım yüzdesi kabul edildiği için iki çekirdeğe ve 4 GB belleğe sahip bir VM SKU 'SU önermenizi sağlayacak.
 
@@ -230,7 +222,7 @@ Bir CSV dosyası aracılığıyla içeri aktarılan makineler için, bir AVS de�
 
 ## <a name="what-is-dependency-visualization"></a>Bağımlılık görselleştirmesi nedir?
 
-Bağımlılık görselleştirmesi, daha fazla güvenle geçirilecek VM gruplarını değerlendirmenize yardımcı olabilir. Bağımlılık görselleştirmesi, değerlendirme çalıştırmadan önce makine bağımlılıklarını çapraz denetler. Bu, herhangi bir şeyin gerisinde kalmasını sağlamaya yardımcı olur ve Azure 'a geçiş yaparken beklenmedik kesintilerden kaçınmaya yardımcı olur. Azure geçişi, bağımlılık görselleştirmesini etkinleştirmek için Azure Izleyici 'de Hizmet Eşlemesi çözümünü kullanır. [Daha fazla bilgi edinin](concepts-dependency-visualization.md).
+Bağımlılık görselleştirmesi, daha fazla güvenle geçirilecek sunucu gruplarını değerlendirmenize yardımcı olabilir. Bağımlılık görselleştirmesi, değerlendirme çalıştırmadan önce makine bağımlılıklarını çapraz denetler. Bu, herhangi bir şeyin gerisinde kalmasını sağlamaya yardımcı olur ve Azure 'a geçiş yaparken beklenmedik kesintilerden kaçınmaya yardımcı olur. Azure geçişi, bağımlılık görselleştirmesini etkinleştirmek için Azure Izleyici 'de Hizmet Eşlemesi çözümünü kullanır. [Daha fazla bilgi edinin](concepts-dependency-visualization.md).
 
 > [!NOTE]
 > Aracı tabanlı bağımlılık analizi, Azure Kamu 'da kullanılamaz. Aracısız bağımlılık analizini kullanabilirsiniz
@@ -241,7 +233,7 @@ Aracısız görselleştirme ve aracı tabanlı görselleştirme arasındaki fark
 
 **Gereksinim** | **Aracısız** | **Aracı tabanlı**
 --- | --- | ---
-Destek | Bu seçenek şu anda önizleme aşamasındadır ve yalnızca VMware VM 'Leri için kullanılabilir. Desteklenen işletim sistemlerini [gözden geçirin](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) . | Genel kullanılabilirlik (GA).
+Destek | Bu seçenek şu anda önizleme aşamasındadır ve yalnızca VMware ortamındaki sunucular için kullanılabilir. Desteklenen işletim sistemlerini [gözden geçirin](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) . | Genel kullanılabilirlik (GA).
 Aracı | Çapraz denetlemek istediğiniz makinelere aracı yüklemeye gerek yoktur. | Çözümlemek istediğiniz her şirket içi makineye yüklenecek aracılar: [Microsoft Monitoring Agent (MMA)](../azure-monitor/agents/agent-windows.md)ve [bağımlılık Aracısı](../azure-monitor/agents/agents-overview.md#dependency-agent). 
 Önkoşullar | Önkoşulları ve dağıtım gereksinimlerini [gözden geçirin](concepts-dependency-visualization.md#agentless-analysis) . | Önkoşulları ve dağıtım gereksinimlerini [gözden geçirin](concepts-dependency-visualization.md#agent-based-analysis) .
 Log Analytics | Gerekli değildir. | Azure geçişi, bağımlılık görselleştirmesi için [Azure izleyici günlüklerinde](../azure-monitor/logs/log-query-overview.md) [hizmet eşlemesi](../azure-monitor/vm/service-map.md) çözümünü kullanır. [Daha fazla bilgi edinin](concepts-dependency-visualization.md#agent-based-analysis).
@@ -296,9 +288,9 @@ Aracı tabanlı görselleştirme için, bağımlılıkları bir saate kadar gör
 
 Aracısız görselleştirme için, tek bir sunucunun bağımlılık haritasını bir saat ile 30 gün arasında bir süre izleyebilirsiniz.
 
-## <a name="can-i-visualize-dependencies-for-groups-of-more-than-10-vms"></a>10 ' dan fazla VM 'nin bağımlılıklarını görselleştirebilir miyim?
+## <a name="can-i-visualize-dependencies-for-groups-of-more-than-10-servers"></a>10 ' dan fazla sunucu grubu için bağımlılıkları görselleştirebilir miyim?
 
-10 adede kadar VM 'ye sahip olan gruplar için [bağımlılıkları görselleştirebilirsiniz](./how-to-create-a-group.md#refine-a-group-with-dependency-mapping) . 10 ' dan fazla VM 'ye sahip bir grubunuz varsa, grubu daha küçük gruplara bölmeniz ve sonra bağımlılıkları görselleştirmenizi öneririz.
+10 adede kadar sunucusuna sahip gruplar için [bağımlılıkları görselleştirebilirsiniz](./how-to-create-a-group.md#refine-a-group-with-dependency-mapping) . 10 ' dan fazla sunucusu olan bir grubunuz varsa, grubu daha küçük gruplara bölmeniz ve sonra bağımlılıkları görselleştirmenizi öneririz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

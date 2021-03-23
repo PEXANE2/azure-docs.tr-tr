@@ -1,24 +1,14 @@
 ---
 title: 'Hızlı başlangıç: IoT çözümünüze Azure kaynakları ekleme'
 description: Bu hızlı başlangıçta IoT için Azure Defender 'ı kullanarak uçtan uca IoT çözümünüzü nasıl yapılandıracağınızı öğrenin.
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: Shhazam-ms
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/25/2021
-ms.author: shhazam
-ms.openlocfilehash: e6d83dafbe4b7f7013ab32039acaff7d8faa4a91
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1bde15919f9fa69bb9f9de7459895a70e9b74f71
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103487760"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781033"
 ---
 # <a name="quickstart-configure-your-azure-defender-for-iot-solution"></a>Hızlı başlangıç: IoT için Azure Defender çözümünüzü yapılandırma
 
