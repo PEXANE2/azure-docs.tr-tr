@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: bb65a53f1ba6e97a39bd0c0170c5c41da38aee8b
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 1406f865d60e6715b5f6a974225dc48958e8da6d
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104720517"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775179"
 ---
 # <a name="semantic-ranking-in-azure-cognitive-search"></a>Azure Bilişsel Arama anlam derecelendirmesi
 
@@ -51,7 +51,7 @@ Dize azaltmasından sonra, hangi Tümcelerin ve tümceciklerin sorguya göre en 
 
 Çıktı, düz metin olarak ve vurgularla bir [anlamsal başlıktır](semantic-how-to-query-request.md). Başlık, genellikle belge başına 200 sözcükten az olan uzun dizeden daha küçüktür ve belge temsilcisi olarak kabul edilir. 
 
-"Yanıtlar" parametresini belirttiyseniz, sorgu bir soru olarak ortaya anıyorken ve bu, soruya yönelik olabilecek bir yanıt gibi görünen uzun dizede bir işlem bulunursa, [anlamsal bir yanıt](semantic-answers.md) da döndürülür.
+"Yanıtlar" parametresini belirttiyseniz, sorgu bir soru olarak ortaya anıdıysa ve bu, soruya yanıt veren uzun dizede bir işlem bulunursa, [anlamsal bir yanıt](semantic-answers.md) da döndürülür.
 
 ## <a name="scoring-and-ranking"></a>Puanlama ve derecelendirme
 

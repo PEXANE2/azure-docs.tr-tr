@@ -3,17 +3,17 @@ title: İlk Data Factory 'nizi derleme (Visual Studio)
 description: Bu öğreticide Visual Studio kullanarak örnek bir Azure Data Factory işlem hattı oluşturursunuz.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: vs-azure
 ms.date: 01/22/2018
-ms.openlocfilehash: 2ae8e24b10a6661f5a18f3d04e243232436b2911
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7431dcbdcd94b74482786625a052bc5abc31c164
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100377457"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104783175"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>Öğretici: Visual Studio kullanarak veri fabrikası oluşturma
 > [!div class="op_single_selector" title="Tools/SDKs"]
@@ -559,7 +559,7 @@ Bir etkinliğin çıkış veri kümesini diğer etkinliğin giriş veri kümesi 
 
 ## <a name="see-also"></a>Ayrıca Bkz.
 
-| Konu | Description |
+| Konu | Açıklama |
 |:--- |:--- |
 | [Pipelines](data-factory-create-pipelines.md) |Bu makale, Azure Data Factory’de işlem hatlarını ve etkinlikleri anlamanıza, senaryonuz ya da işletmeniz için veri odaklı iş akışları oluşturmak amacıyla bunları nasıl kullanacağınızı öğrenmenize yardımcı olur. |
 | [Veri kümeleri](data-factory-create-datasets.md) |Bu makale, Azure Data Factory’deki veri kümelerini anlamanıza yardımcı olur. |

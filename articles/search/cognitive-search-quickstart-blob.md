@@ -7,19 +7,21 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 01/12/2021
-ms.openlocfilehash: d07b52d8abeab34d565ebde4bac58eec66780dce
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/21/2021
+ms.openlocfilehash: d3e1b73789d6bd4df3dfe9a0e05048f9bbbb25bb
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98179274"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104770980"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal Azure Bilişsel Arama bilişsel bir beceri oluşturma
 
-Beceri, büyük ölçekli metin veya resim dosyalarından bilgi ve yapı ayıklamak için derin öğrenme modelleri kullanan ve Azure Bilişsel Arama hem dizine eklenebilir hem de aranabilir olan içerikleri oluşturan bir AI tabanlı özelliktir. 
+Bu hızlı başlangıçta portalda optik karakter tanıma (OCR) ve varlık tanımanın, görüntü ve uygulama dosyalarından aranabilir metin içeriği oluşturmak için nasıl kullanılabileceğini gösteren beceri desteği gösterilmektedir.
 
-Bu hızlı başlangıçta, beceri oluşturmak için Azure bulutundaki Hizmetleri ve verileri birleştirebilirsiniz. Her şey olduktan sonra, Azure portal **verileri Içeri aktarma** Sihirbazı 'nı bir araya getirin. Nihai sonuç, AI işleme tarafından oluşturulan verilerle doldurulan ve portalda ([Arama Gezgini](search-explorer.md)) sorgulayabilmeniz için aranabilir bir dizindir.
+Hazırlanmak için birkaç kaynak oluşturacak ve örnek görüntüleri ve uygulama içerik dosyalarını karşıya yükleyeceksiniz. Her şey olduktan sonra, Azure portal **verileri Içeri aktarma** Sihirbazı 'nı bir araya getirin. Nihai sonuç, AI işleme tarafından oluşturulan verilerle doldurulan ve portalda ([Arama Gezgini](search-explorer.md)) sorgulayabilmeniz için aranabilir bir dizindir.
+
+Kodla başlamasını tercih etmek istiyor musunuz? Bkz [. Öğretici: Azure Bloblarından veya öğreticiden aranabilir içerik oluşturmak IÇIN REST ve AI kullanma](cognitive-search-tutorial-blob.md) : bunun yerine [, Azure Bloblarından aranabilir içerik oluşturmak IÇIN .net ve AI](cognitive-search-tutorial-blob-dotnet.md) kullanın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -44,7 +46,7 @@ Aşağıdaki adımlarda, heterojen içerik dosyalarını depolamak için Azure d
 
    + Bant genişliği ücretlerinden kaçınmak için Azure Bilişsel Arama ile aynı bölgeyi seçin. 
 
-   + Bilgi deposu özelliğini daha sonra denemek istiyorsanız, başka bir yönergede StorageV2 (genel amaçlı v2) hesap türünü seçin. Aksi takdirde herhangi bir tür seçin.
+   + StorageV2 (genel amaçlı v2) öğesini seçin.
 
 1. Blob Hizmetleri sayfalarını açın ve bir kapsayıcı oluşturun. Varsayılan genel erişim düzeyini kullanabilirsiniz. 
 

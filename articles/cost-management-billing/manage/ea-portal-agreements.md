@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: c2c3636e98d67616826b03cca9657b806c5bd653
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
-ms.translationtype: HT
+ms.openlocfilehash: d03ae5062cc81b3e042ed3b714838e14929dbba2
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598017"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104778228"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA sözleşmeleri ve düzeltmeleri
 
@@ -145,7 +145,7 @@ Yukarıda belirtilmeyen kotalar Hizmet Ön Ödemesi değildir. Microsoft’un Hi
 
 ## <a name="requesting-a-quota-increase"></a>Kota artışı isteğinde bulunma
 
-Dilediğiniz zaman [çevrimi istek](https://g.microsoftonline.com/0WAEP00en/6) göndererek kota artışı isteğinde bulunabilirsiniz. İsteğinizin işleme alınması için şu bilgileri iletin:
+Dilediğiniz zaman [çevrimi istek](https://ms.portal.azure.com/) göndererek kota artışı isteğinde bulunabilirsiniz. İsteğinizin işleme alınması için şu bilgileri iletin:
 
 - Aboneliğinizin hesap sahibiyle ilişkili Microsoft hesabı ya da iş veya okul hesabı. Bu, aboneliklerinizi yönetme amacıyla Microsoft Azure portalında oturum açmak için kullanılan e-posta adresidir. Lütfen bu hesabın bir EA kaydıyla ilişkilendirilmiş olduğundan da emin olun.
 - Kota artış isteğinde bulunduğunuz kaynaklar ve miktarları.

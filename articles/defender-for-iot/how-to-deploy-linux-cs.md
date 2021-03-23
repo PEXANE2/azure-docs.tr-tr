@@ -1,25 +1,14 @@
 ---
 title: Linux C# aracısını yükler & dağıtın
 description: Linux 'ta IoT C# tabanlı güvenlik Aracısı için Defender 'ı yüklemeyi ve dağıtmayı öğrenin
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: mlottner
-manager: rkarlin
-editor: ''
-ms.devlang: na
-ms.custom: devx-track-csharp
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/09/2020
-ms.author: mlottner
-ms.openlocfilehash: f2251ef79f568677d6ef09d918cb61ffeba07888
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c84a70928be13212b56636ad1fbb9baaadd0e7d0
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103494555"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784212"
 ---
 # <a name="deploy-defender-for-iot-c-based-security-agent-for-linux"></a>Linux için, IoT C# tabanlı güvenlik Aracısı için Defender 'ı dağıtma
 

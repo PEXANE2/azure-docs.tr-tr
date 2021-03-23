@@ -3,16 +3,16 @@ title: Azure Data Factory Pig etkinliğini kullanarak verileri dönüştürme
 description: Bir isteğe bağlı/kendi HDInsight kümeniz üzerinde Pig betikleri çalıştırmak için Azure Data Factory v1 'de Pig etkinliğini nasıl kullanabileceğinizi öğrenin.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 2f59734b5452b5a06b49583954f8851e84e8f84d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 85c34bfc306b49bb826a342846bf5e4557e3052f
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100387181"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786371"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Azure Data Factory Pig etkinliğini kullanarak verileri dönüştürme
 > [!div class="op_single_selector" title1="Dönüştürme etkinlikleri"]
@@ -80,14 +80,14 @@ Bir [Data Factory işlem](data-factory-create-pipelines.md) hattındaki HDInsigh
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
 | name |Etkinliğin adı |Yes |
-| açıklama |Etkinliğin ne için kullanıldığını açıklayan metin |No |
+| açıklama |Etkinliğin ne için kullanıldığını açıklayan metin |Hayır |
 | tür |HDinsightPig |Yes |
-| girişi |Pig etkinliği tarafından tüketilen bir veya daha fazla giriş |No |
+| girişi |Pig etkinliği tarafından tüketilen bir veya daha fazla giriş |Hayır |
 | çıkışı |Pig etkinliği tarafından üretilen bir veya daha fazla çıkış |Yes |
 | linkedServiceName |Data Factory bağlı hizmet olarak kaydedilen HDInsight kümesine başvuru |Yes |
-| betik |Pig betiğini satır içi olarak belirt |No |
-| scriptPath |Pig betiğini bir Azure Blob depolama alanına depolayın ve dosyanın yolunu sağlayın. ' Script ' veya ' scriptPath ' özelliğini kullanın. İkisi birlikte kullanılamaz. Dosya adı büyük/küçük harfe duyarlıdır. |No |
-| tanımlar |Pig betiği içinde başvurmak için parametreleri anahtar/değer çiftleri olarak belirtin |No |
+| betik |Pig betiğini satır içi olarak belirt |Hayır |
+| scriptPath |Pig betiğini bir Azure Blob depolama alanına depolayın ve dosyanın yolunu sağlayın. ' Script ' veya ' scriptPath ' özelliğini kullanın. İkisi birlikte kullanılamaz. Dosya adı büyük/küçük harfe duyarlıdır. |Hayır |
+| tanımlar |Pig betiği içinde başvurmak için parametreleri anahtar/değer çiftleri olarak belirtin |Hayır |
 
 ## <a name="example"></a>Örnek
 Bir oyun günlüğü analizinin bir örneğini, şirketiniz tarafından başlatılan oyuncuların oynatılması için harcadığı süreyi belirlemek istediğiniz yere göz atalım.

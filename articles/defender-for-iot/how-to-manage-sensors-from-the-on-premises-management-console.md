@@ -1,18 +1,14 @@
 ---
 title: Algılayıcıları şirket içi yönetim konsolundan yönetme
 description: Algılayıcı sürümlerini güncelleştirme, sistem ayarlarını sensörlerden iletme ve algılayıcılar üzerinde altyapıları etkinleştirme ve devre dışı bırakma dahil olmak üzere yönetim konsolundan algılayıcıları yönetmeyi öğrenin.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 73eb693ab9f06535fd523eb386969e2cce961eef
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4706fbcf58b8e5f5eed6532f9a08f65c7716e07e
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100523966"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781934"
 ---
 # <a name="manage-sensors-from-the-management-console"></a>Yönetim konsolundan algılayıcıları yönetme
 
@@ -144,7 +140,7 @@ Bağlantısı kesilen algılayıcılar hakkında bilgi içeren üçüncü tarafl
 
 Algılayıcılar, IoT motorları için beş Defender tarafından korunur. Bağlı sensörler için altyapıları etkinleştirebilir veya devre dışı bırakabilirsiniz.
 
-| Altyapı | Description | Örnek senaryo |
+| Altyapı | Açıklama | Örnek senaryo |
 |--|--|--|
 | Protokol ihlali altyapısı | Paket yapısı veya alan değerleri protokol belirtimine uymadığında protokol ihlali oluşur. | "Geçersiz MODBUS Işlemi (Işlev kodu sıfır)" uyarısı. Bu uyarı, birincil bir cihazın bir ikincil cihaza 0 işlev koduna sahip bir istek gönderdiğini gösterir. Bu, protokol belirtimine göre kullanılamaz ve ikincil cihaz girişi doğru şekilde işleyemeyebilir. |
 | İlke ihlali altyapısı | Öğrenilen veya yapılandırılan ilkede tanımlanan taban çizgisi davranışından sapmayla bir ilke ihlali meydana gelir. | "Yetkisiz HTTP Kullanıcı Aracısı" uyarısı. Bu uyarı, ilke tarafından öğrenilen veya onaylanan bir uygulamanın bir cihazda HTTP istemcisi olarak kullanıldığını belirtir. Bu, bu cihazdaki yeni bir Web tarayıcısı veya uygulama olabilir. |

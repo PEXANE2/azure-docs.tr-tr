@@ -9,12 +9,12 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: daveba
-ms.openlocfilehash: cd46bb1c6905747ffb98c7e950f66e648c541534
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5b645efe2bbaadeca31b4a0a3b957ff53f5ed3aa
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103601772"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775520"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Uygulama yönetimi Azure Active Directory: yenilikler
 
@@ -141,7 +141,6 @@ Azure Active Directory Uygulama yönetimi belgelerindeki yenilikler ' e hoş gel
 
 ### <a name="new-articles"></a>Yeni makaleler
 - [SAML tabanlı çoklu oturum açmayı yapılandırma](configure-saml-single-sign-on.md)
-- [Uygulama galerisinde listelenmeyen uygulamalar için Azure AD kullanma](non-gallery-apps.md)
 - [Şimdi alın-Azure Marketi 'nden bir uygulama ekleyin](get-it-now-azure-marketplace.md)
 - [Hızlı başlangıç: Azure Active Directory (Azure AD) kiracınızdaki bir uygulama için özellikleri yapılandırma](add-application-portal-configure.md)
 - [Hızlı başlangıç: Azure Active Directory (Azure AD) kiracınızdaki bir uygulama için çoklu oturum açma (SSO) ayarlama](add-application-portal-setup-sso.md)

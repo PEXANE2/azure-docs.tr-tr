@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: b3fd8dcd5f2e73b798f6e9529b5811b9935bc393
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1e2a0859227ad790763dc9ae07cb408a72538f90
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104605775"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773377"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>ARM şablonları kullanarak bir bulut hizmeti (genişletilmiş destek) dağıtma
 
@@ -45,7 +45,7 @@ Bu öğreticide, [ARM şablonları](../azure-resource-manager/templates/overview
 ## <a name="deploy-a-cloud-service-extended-support"></a>Bulut hizmeti dağıtma (genişletilmiş destek)
 
 > [!NOTE]
-> Bulut hizmetinizi dağıtmanın alternatif bir yolu (genişletilmiş destek) [Azure Portal](https://portal.azure.com)aracılığıyla yapılır. [Oluşturulan ARM şablonunu](generate-template-portal.md) , gelecekteki dağıtımlarınız için Portal aracılığıyla indirebilirsiniz
+> ARM şablonunuzu ve parametre dosyanızı oluşturmanın daha kolay ve daha hızlı bir yolu [Azure Portal](https://portal.azure.com)aracılığıyla yapılır. Bulut hizmetinizi PowerShell aracılığıyla oluşturmak için, [oluşturulan ARM şablonunu](generate-template-portal.md) Portal aracılığıyla indirebilirsiniz
  
 1. Sanal ağ oluşturun. Sanal ağın adı, hizmet yapılandırma (. cscfg) dosyasındaki başvurularla aynı olmalıdır. Var olan bir sanal ağı kullanıyorsanız, ARM şablonundan bu bölümü atlayın.
 
@@ -191,7 +191,9 @@ Bu öğreticide, [ARM şablonları](../azure-resource-manager/templates/overview
     ```
 
 6. Seçim Bulut hizmetinize uzantı eklemek için bir uzantı profili oluşturun. Bu örnekte, uzak masaüstü ve Windows Azure tanılama uzantısı ekliyoruz.
-    
+   > [!Note] 
+   > Uzak Masaüstü parolası 8-123 karakter uzunluğunda olmalıdır ve şunlardan en az 3 parola karmaşıklığı gereksinimini karşılamalıdır: 1) bir büyük harfli karakter 2) içeren bir büyük harf 3), bir sayısal basamak 4) bir özel karakter içerir 5) denetim karakterlerine izin verilmez
+
     ```json
         "extensionProfile": {
           "extensions": [

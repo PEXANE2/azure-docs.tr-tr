@@ -3,16 +3,16 @@ title: Azure Data Factory-müşteri örnek olay incelemeleri
 description: Müşterilerimizden bazılarının Azure Data Factory nasıl kullandığını öğrenin.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 43148cdd0790ad03a1521e46fcf6d2684cbdc24a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 98814ce9fbf1171ff57b9e82e5cb1af33f9756ce
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100376556"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779707"
 ---
 # <a name="azure-data-factory---customer-case-studies"></a>Azure Data Factory-müşteri örnek olay incelemeleri
 Data Factory, verilerin hareketini ve dönüştürülmesini otomatikleştiren bulut tabanlı bir bilgi yönetimi hizmetidir. Birçok sektördeki müşteriler, analiz işlem hatlarını oluşturmak ve iş sorunlarını gidermek için Data Factory ve diğer Azure hizmetlerini kullanır.  Müşterilerimizden Data Factory nasıl ve neden kullandığını doğrudan öğrenin.

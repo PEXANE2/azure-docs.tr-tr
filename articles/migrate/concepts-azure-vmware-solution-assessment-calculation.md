@@ -6,18 +6,18 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: b3975d30fca1f7f542f27742ef8408b1feecc146
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1d9918786b22faddaeb07a12f0840b36a11ffe4d
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101727201"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104778390"
 ---
 # <a name="assessment-overview-migrate-to-azure-vmware-solution"></a>Değerlendirmeye genel bakış (Azure VMware çözümüne geçiş)
 
 [Azure geçişi](migrate-services-overview.md) , şirket içi uygulamalarınızın ve iş yüklerinizin bulmayı, değerlendirmesini ve geçişini izlemek için bir merkezi Merkez sağlar. Ayrıca, özel ve genel bulut örneklerinizi Azure 'da izler. Hub, değerlendirme ve geçiş için Azure geçiş araçları ve ayrıca üçüncü taraf bağımsız yazılım satıcısı (ISV) teklifleri sunar.
 
-Sunucu değerlendirmesi, Azure 'da değerlendirir şirket içi sunucuların Azure IaaS sanal makinelerine ve Azure VMware çözümüne (AVS) geçiş için geçişini sağlayan bir araçtır. Bu makalede, Azure VMware çözümü (AVS) değerlendirmelerinin nasıl hesaplandığı hakkında bilgi sağlanır.
+Azure sanal makinelere ve Azure VMware çözümüne (AVS) geçiş için Azure 'da değerlendirir on-premises Server 'daki bulma ve değerlendirme aracı. Bu makalede, Azure VMware çözümü (AVS) değerlendirmelerinin nasıl hesaplandığı hakkında bilgi sağlanır.
 
 > [!NOTE]
 > Azure VMware çözümü (AVS) değerlendirmesi yalnızca VMware VM 'Leri için oluşturulabilir.
@@ -26,10 +26,11 @@ Sunucu değerlendirmesi, Azure 'da değerlendirir şirket içi sunucuların Azur
 
 Azure geçişi ile oluşturduğunuz değerlendirmeler, verilerin bir zaman noktası anlık görüntüsüdür. Azure geçişi 'ni kullanarak oluşturabileceğiniz iki tür değerlendirme vardır:
 
-| **Değerlendirme Türü** | **Ayrıntılar** |
-| - | - |
-| **Azure VM** | Şirket içi sunucularınızı Azure sanal makinelerine geçirmeye yönelik değerlendirmeler. Bu değerlendirme türünü kullanarak,[VMware](how-to-set-up-appliance-vmware.md) veya [Hyper-V](how-to-set-up-appliance-hyper-v.md) ortamınızda çalışan şirket içi sunucuları ve Azure 'a geçiş için [fiziksel sunucuları](how-to-set-up-appliance-physical.md) değerlendirebilirsiniz. [Daha fazla bilgi](concepts-assessment-calculation.md) |
-| **Azure VMware Çözümü (AVS)** | Şirket içi VMware sanal makinenizin veya sunucularınızın[ Azure VMware çözümüne (AVS)](../azure-vmware/introduction.md)geçirilmesi için değerlendirmeler.  Bu değerlendirme türünü kullanarak Azure VMware çözümüne (AVS) geçiş için, [VMware](how-to-set-up-appliance-vmware.md) ortamınızda çalışan şirket içi sunucularınızı değerlendirebilirsiniz. [Daha fazla bilgi](concepts-azure-vmware-solution-assessment-calculation.md) |
+**Değerlendirme Türü** | **Ayrıntılar**
+--- | --- 
+**Azure VM** | Şirket içi sunucularınızı Azure sanal makinelerine geçirmeye yönelik değerlendirmeler. Bu değerlendirme türünü kullanarak, [VMware](how-to-set-up-appliance-vmware.md) ve [Hyper-V](how-to-set-up-appliance-hyper-v.md) ortamındaki şirket Içi sunucularınızı ve Azure VM 'lerine geçiş için [fiziksel sunucuları](how-to-set-up-appliance-physical.md) değerlendirebilirsiniz.
+**Azure SQL** | Şirket içi SQL Server 'larınızı VMware ortamınızdan Azure SQL veritabanı 'na veya Azure SQL yönetilen örneğine geçirmeye yönelik değerlendirmeler.
+**Azure VMware Çözümü (AVS)** | Şirket içi sunucularınızı [Azure VMware Çözümü'ne (AVS)](../azure-vmware/introduction.md) geçirmeye yönelik değerlendirmeler. Bu değerlendirme türünü kullanarak Azure VMware çözümüne (AVS) geçiş için şirket içi [VMware VM](how-to-set-up-appliance-vmware.md) 'lerinizi değerlendirebilirsiniz. [Daha fazla bilgi edinin](concepts-azure-vmware-solution-assessment-calculation.md)
 
 Azure VMware çözümü (AVS) değerlendirmesi iki boyutlandırma ölçütü seçeneği sağlar:
 
@@ -42,18 +43,18 @@ Azure VMware çözümü (AVS) değerlendirmesi iki boyutlandırma ölçütü se�
 
 Bir değerlendirme çalıştırmak için birkaç yol vardır.
 
-- Hafif bir Azure geçişi gereci tarafından toplanan sunucu meta verilerini kullanarak makineleri değerlendirin. Gereç, şirket içi makineleri bulur. Daha sonra, Azure geçişi 'ne makine meta verilerini ve performans verilerini gönderir. Bu, daha fazla duyarlık sağlar.
-- Bir virgülle ayrılmış değerler (CSV) biçiminde içeri aktarılan sunucu meta verilerini kullanarak makineleri değerlendirin.
+- Hafif bir Azure geçişi gereci tarafından toplanan sunucu meta verilerini kullanarak sunucuları değerlendirin. Gereç, şirket içi sunucuları bulur. Daha sonra Azure geçişi 'ne sunucu meta verilerini ve performans verilerini gönderir. Bu, daha fazla duyarlık sağlar.
+- Bir virgülle ayrılmış değerler (CSV) biçiminde içeri aktarılan sunucu meta verilerini kullanarak sunucuları değerlendirin.
 
 ## <a name="how-do-i-assess-with-the-appliance"></a>Gereç ile Nasıl yaparım? değerlendirin?
 
 Şirket içi sunucuları bulmaya yönelik bir Azure geçiş gereci dağıtıyorsanız, aşağıdaki adımları uygulayın:
 
 1. Azure 'u ve şirket içi ortamınızı Azure geçişi ile çalışacak şekilde ayarlayın.
-2. İlk değerlendirmenizi için bir Azure projesi oluşturun ve sunucu değerlendirmesi aracını buna ekleyin.
-3. Hafif bir Azure geçişi gereci dağıtın. Gereç, şirket içi makineleri sürekli bulur ve Azure geçişi 'ne makine meta verilerini ve performans verilerini gönderir. Gereci bir VM olarak dağıtın. Değerlendirmek istediğiniz makinelere herhangi bir şey yüklemeniz gerekmez.
+2. İlk değerlendirmenize, bir Azure projesi oluşturun ve bulma ve değerlendirme aracını buna ekleyin.
+3. Hafif bir Azure geçişi gereci dağıtın. Gereç, şirket içi sunucuları sürekli bulur ve Azure geçişi 'ne sunucu meta verilerini ve performans verilerini gönderir. Gereci bir VM olarak dağıtın. Değerlendirmek istediğiniz sunuculara herhangi bir şey yüklemeniz gerekmez.
 
-Gereç makine bulmayı başlattıktan sonra, değerlendirmek istediğiniz makineleri bir gruba toplayıp değerlendirme türü **Azure VMware çözümü (AVS)** olan grup için bir değerlendirme çalıştırabilirsiniz.
+Gereç sunucu bulmayı başlattıktan sonra, değerlendirmek istediğiniz sunucuları bir gruba toplayıp değerlendirme türü **Azure VMware çözümü (AVS)** olan grup için bir değerlendirme çalıştırabilirsiniz.
 
 [Buradaki](how-to-create-azure-vmware-solution-assessment.md)adımları Izleyerek Ilk Azure VMware çözümünüz (AVS) değerlendirmesini oluşturun.
 
@@ -62,7 +63,7 @@ Gereç makine bulmayı başlattıktan sonra, değerlendirmek istediğiniz makine
 Sunucuları bir CSV dosyası kullanarak değerlendiriyorsanız, bir gereç olması gerekmez. Bunun yerine, aşağıdaki adımları uygulayın:
 
 1. Azure 'ı Azure geçişi ile çalışacak şekilde ayarlayın.
-2. İlk değerlendirmenizi için bir Azure projesi oluşturun ve sunucu değerlendirmesi aracını buna ekleyin.
+2. İlk değerlendirmenize, bir Azure projesi oluşturun ve bulma ve değerlendirme aracını buna ekleyin.
 3. Bir CSV şablonu indirin ve buna sunucu verileri ekleyin.
 4. Şablonu Azure geçişi 'ne aktarın.
 5. İçeri aktarma ile eklenen sunucuları bulun, bir gruba toplayın ve değerlendirme türü **Azure VMware çözümü (AVS)** olan grup için bir değerlendirme çalıştırın.
@@ -97,7 +98,7 @@ Aşağıdaki performans verileri toplanır ancak AVS değerlendirmelerine yönel
 
 ## <a name="how-are-avs-assessments-calculated"></a>AVS değerlendirmesi nasıl hesaplanır?
 
-AVS değerlendirmesi, değerlendirmeleri hesaplamak için şirket içi makinelerin meta verilerini ve performans verilerini kullanır. Azure geçişi gerecini dağıtırsanız, değerlendirme gereç tarafından toplanan verileri kullanır. Ancak bir CSV dosyası kullanarak içeri aktarılan bir değerlendirmeyi çalıştırırsanız, hesaplama için meta verileri sağlarsınız.
+AVS değerlendirmesi, değerlendirmeleri hesaplamak için şirket içi sunucuların meta verilerini ve performans verilerini kullanır. Azure geçişi gerecini dağıtırsanız, değerlendirme gereç tarafından toplanan verileri kullanır. Ancak bir CSV dosyası kullanarak içeri aktarılan bir değerlendirmeyi çalıştırırsanız, hesaplama için meta verileri sağlarsınız.
 
 Hesaplamalar şu üç aşamada gerçekleşir:
 
@@ -105,7 +106,7 @@ Hesaplamalar şu üç aşamada gerçekleşir:
 2. **Düğüm GENELINDEKI AVS düğümlerinin ve kullanımının sayısını hesapla**: tüm düğümlerde VMware VM 'lerini çalıştırmak için gereken ve tahmini CPU, bellek ve depolama kullanımı IÇIN beklenen AVS düğüm sayısı.
 3. **Aylık maliyet tahmini**: Şirket Içi VM 'leri çalıştıran tüm Azure VMware çözümü (AVS) düğümlerine yönelik tahmini aylık maliyetler.
 
-Hesaplamalar önceki sıradadır. Bir makine sunucusu, yalnızca öncekini geçerse daha sonraki bir aşamaya geçer. Örneğin, bir sunucu AVS hazırlık aşamasına geçemezse, Azure için uygun değil olarak işaretlenir. Bu sunucu için boyutlandırma ve maliyet hesaplamaları yapılmadı
+Hesaplamalar önceki sıradadır. Sunucu daha sonraki bir aşamaya geçer ve yalnızca bir öncekini geçerse. Örneğin, bir sunucu AVS hazırlık aşamasına geçemezse, Azure için uygun değil olarak işaretlenir. Bu sunucu için boyutlandırma ve maliyet hesaplamaları yapılmadı
 
 ## <a name="whats-in-an-azure-vmware-solution-avs-assessment"></a>Azure VMware Çözüm (AVS) değerlendirmesi nelerdir?
 
@@ -119,9 +120,9 @@ Aşağıda bir AVS değerlendirmesi verilmiştir:
 | **Düğüm türü** | Azure 'da kullanılmak üzere kullanılan [AVS düğüm türünü](../azure-vmware/concepts-private-clouds-clusters.md) belirtir. Varsayılan düğüm türü AV36 ' dir. Daha fazla düğüm türü gelecekte kullanılabilir olabilir.  Azure geçişi, sanal makinelerin AVS 'ye geçirilmesi için gerekli sayıda düğüm önermenizi önerir. |
 | **FTT ayarı, RAID düzeyi** | Tolerans ve RAID birleşimlerine yönelik hataların geçerli birleşimini belirtir. RAID düzeyiyle birleştirilmiş seçili FTT seçeneği ve şirket içi VM diski gereksinimi, AVS 'de gereken toplam vSAN depolama alanını tespit edecektir. Hesaplamalardan sonra toplam kullanılabilir depolama alanı, vCenter ve b gibi yönetim nesneleri için ayrılmış bir alan içerir) vSAN işlemleri için %25 depolama bolluğu gerekir. |
 | **Boyutlandırma ölçütü** | AVS düğümlerine yönelik bellek, CPU ve depolama gereksinimlerini belirlemede kullanılacak ölçütleri ayarlar. Performans geçmişini dikkate almadan *performans tabanlı* boyutlandırmayı veya *Şirket içi olarak* tercih edebilirsiniz. Yalnızca kaldırmak ve açmak için şirket içi olarak seçin. Kullanım tabanlı boyutlandırmayı almak için performans tabanlı ' ı seçin. |
-| **Performans geçmişi** | Makinelerin performans verilerini değerlendirmek için göz önünde bulundurulması gereken süreyi ayarlar. Bu özellik yalnızca boyutlandırma ölçütü *performans tabanlı* olduğunda geçerlidir. |
+| **Performans geçmişi** | Sunucuların performans verilerini değerlendirmek için göz önünde bulundurulması gereken süreyi ayarlar. Bu özellik yalnızca boyutlandırma ölçütü *performans tabanlı* olduğunda geçerlidir. |
 | **Yüzdebirlik kullanımı** | Sağ boyutlandırmanın kabul edileceği performans örneği kümesinin yüzdebirlik değerini belirtir. Bu özellik yalnızca boyutlandırma performans tabanlı olduğunda geçerlidir. |
-| **Konfor katsayısı** | Azure Geçişi, değerlendirme sırasında bir tamponu (konfor katsayısı) göz önünde bulundurur. Bu arabellek VM 'Ler için makine kullanım verilerinin üzerine uygulanır (CPU, bellek ve disk). Konfor katsayısı; sezona özgü kullanım, kısa performans geçmişi ve gelecek kullanımlarda oluşabilecek artışlar gibi konuları hesaba katar. Örneğin, %20 kullanıma sahip 10 çekirdekli bir VM normalde 2 çekirdekli VM ile sonuçlanır. Ancak, 2.0x konfor katsayısı ile sonuç 4 çekirdekli VM olur. |
+| **Konfor katsayısı** | Azure Geçişi, değerlendirme sırasında bir tamponu (konfor katsayısı) göz önünde bulundurur. Bu arabellek VM 'Ler (CPU, bellek ve disk) için sunucu kullanım verilerinin üzerine uygulanır. Konfor katsayısı; sezona özgü kullanım, kısa performans geçmişi ve gelecek kullanımlarda oluşabilecek artışlar gibi konuları hesaba katar. Örneğin, %20 kullanıma sahip 10 çekirdekli bir VM normalde 2 çekirdekli VM ile sonuçlanır. Ancak, 2.0x konfor katsayısı ile sonuç 4 çekirdekli VM olur. |
 | **Teklif** | Kayıtlı olduğunuz [Azure teklifini](https://azure.microsoft.com/support/legal/offer-details/) görüntüler. Azure Geçişi, buna göre bir maliyet tahmini oluşturur. |
 | **Para Birimi** | Hesabınız için faturalandırma para birimini gösterir. |
 | **İndirim (%)** | Azure teklifinin üzerine aldığınız aboneliğe özgü tüm indirimi listeler. Varsayılan ayar, %0’dır. |
@@ -132,39 +133,39 @@ Aşağıda bir AVS değerlendirmesi verilmiştir:
 
 ## <a name="azure-vmware-solution-avs-suitability-analysis"></a>Azure VMware çözümü (AVS) uygunluk Analizi
 
-AVS değerlendirmeleri, makine özelliklerini inceleyerek her bir şirket içi VM 'yi AVS 'ye uygunluk açısından değerlendirir. Ayrıca, her bir değerlendirilen makineyi aşağıdaki uygunluk kategorilerinden birine atar:
+AVS değerlendirmeleri, sunucu özelliklerini inceleyerek her şirket içi VM 'yi AVS 'ye uygunluk açısından değerlendirir. Ayrıca, her bir Değerlendirilmiş sunucuyu aşağıdaki uygunluk kategorilerinden birine atar:
 
-- **AVS Için hazırlanma**: makine, Azure 'A (AVS) herhangi bir değişiklik yapılmadan olarak geçirilebilir. Tam AVS desteğiyle AVS 'de başlatılır.
+- **AVS Için hazırlanma**: sunucu, herhangi bir değişiklik yapılmadan Azure 'A (AVS) olarak geçirilebilir. Tam AVS desteğiyle AVS 'de başlatılır.
 - **Koşullara göre**: VM, geçerli vSphere sürümü ile uyumluluk sorunlarına ve VM 'deki tam işlevselliği AVS 'de elde etmeden önce büyük olasılıkla VMware araçları ve veya diğer ayarları gerektirmek olabilir.
 - **AVS için hazırlanma**: VM, AVS 'de başlamaz. Örneğin, şirket içi VMware VM 'sinde CD-ROM gibi bir dış cihaz varsa VMware VMotion işlem başarısız olur (VMware VMotion kullanılıyorsa).
-- **Hazır olma durumu bilinmiyor**: Azure geçişi, şirket içi ortamdan toplanan meta verilerin yetersiz olması nedeniyle makinenin hazır olduğunu saptayamadık.
+- **Hazır olma bilinmiyor**: Azure geçişi, şirket içi ortamdan toplanan meta veriler nedeniyle sunucunun hazır olduğunu saptayamadık.
 
-Değerlendirme, makine özelliklerini gözden geçirir ve şirket içi makinenin Azure hazırlığını tespit edin.
+Değerlendirme, sunucu özelliklerini gözden geçirir ve şirket içi sunucunun Azure 'un hazır olduğunu tespit edin.
 
-### <a name="machine-properties"></a>Makine özellikleri
+### <a name="server-properties"></a>Sunucu özellikleri
 
 Değerlendirme, şirket içi sanal makinenin aşağıdaki özelliğini inceleyip Azure VMware çözümünde (AVS) çalışıp çalışmadığını tespit edebilir.
 
 | **Özellik** | **Ayrıntılar** | **AVS hazırlık durumu** |
 | - | - | - |
-| **Internet Protokolü** | Azure Şu anda uçtan uca IPv6 internet adreslemesini desteklemez. Makinenizde IPv6 olduğu algılanırsa düzeltme yönergelerinde rehberlik için yerel MSFT AVS GBB ekibinize başvurun. | Koşullu olarak Ready Internet Protokolü |
+| **Internet Protokolü** | Azure Şu anda uçtan uca IPv6 internet adreslemesini desteklemez. Sunucunuz IPv6 ile algılanıyorsa düzeltme kılavuzumuzu göstermek için yerel MSFT AVS GBB ekibine başvurun. | Koşullu olarak Ready Internet Protokolü |
 
 ### <a name="guest-operating-system"></a>Konuk işletim sistemi
 
 Şu anda, AVS değerlendirmelerinde, uygunluk analizinin bir parçası olarak işletim sistemi incelenmez. Şirket içi VM 'lerde çalışan tüm işletim sistemleri, Azure VMware çözümünde (AVS) çalışıyor olabilir.
 
-VM özellikleriyle birlikte değerlendirme, makinelerin Konuk işletim sistemine bakar ve Azure üzerinde çalışıp çalışmadığını tespit edebilir.
+VM özellikleriyle birlikte, değerlendirme, Azure 'da çalışıp çalışmadığını öğrenmek için sunucuların Konuk işletim sistemine bakar.
 
 ## <a name="sizing"></a>Boyutlandırma
 
-Bir makine AVS için Ready olarak işaretlendikten sonra, AVS değerlendirmesi, uygun şirket içi VM gereksinimlerini tanımlamayı ve gereken AVS düğümlerinin toplam sayısını bulmayı içeren düğüm boyutlandırma önerilerini oluşturur. Bu öneriler, belirtilen değerlendirme özelliklerine bağlı olarak farklılık gösterir.
+Sunucu AVS için hazırlanın olarak işaretlendikten sonra, AVS değerlendirmesi, uygun şirket içi VM gereksinimlerini tanımlamayı ve gereken AVS düğümlerinin toplam sayısını bulmayı içeren düğüm boyutlandırma önerilerini oluşturur. Bu öneriler, belirtilen değerlendirme özelliklerine bağlı olarak farklılık gösterir.
 
-- Değerlendirme *performans tabanlı boyutlandırma* kullanıyorsa, Azure GEÇIŞI, AVS 'nin uygun boyutlandırma önerilerini sağlamak için makinenin performans geçmişini dikkate alır. Bu yöntem, şirket içi VM 'yi aşırı ayırdıysanız ancak kullanım düşükse ve maliyetleri kazanmak için AVS 'de sanal makineyi doğru boyuta eklemek istiyorsanız özellikle yararlıdır. Bu yöntem, geçiş sırasında boyutları iyileştirmenize yardımcı olur.
-- VM boyutlandırma için performans verilerini göz önünde bulundurmayın ve şirket içi makineleri, AVS 'ye kadar yapmak istiyorsanız, boyutlandırma ölçütünü "Şirket içi" olarak ayarlayabilirsiniz. Daha sonra değerlendirme, VM 'Leri kullanım verilerini dikkate almadan şirket içi yapılandırmaya göre boyutlandıracaktır.
+- Değerlendirme *performans tabanlı boyutlandırma* kullanıyorsa, Azure GEÇIŞI, AVS için uygun boyutlandırma önerisi yapmak üzere sunucunun performans geçmişini dikkate alır. Bu yöntem, şirket içi VM 'yi aşırı ayırdıysanız ancak kullanım düşükse ve maliyetleri kazanmak için AVS 'de sanal makineyi doğru boyuta eklemek istiyorsanız özellikle yararlıdır. Bu yöntem, geçiş sırasında boyutları iyileştirmenize yardımcı olur.
+- VM boyutlandırma için performans verilerini göz önünde bulundurmayın ve şirket içi sunucuları, AVS 'ye kadar yapmak istiyorsanız, boyutlandırma ölçütünü "Şirket içi" olarak ayarlayabilirsiniz. Daha sonra değerlendirme, VM 'Leri kullanım verilerini dikkate almadan şirket içi yapılandırmaya göre boyutlandıracaktır.
 
 ### <a name="ftt-sizing-parameters"></a>FTT boyutlandırma parametreleri
 
-AVS 'de kullanılan depolama altyapısı vSAN ' dır. vSAN depolama ilkeleri, sanal makineleriniz için depolama gereksinimlerini tanımlar. Bu ilkeler sanal makineler için gerekli hizmet düzeyini garanti eder çünkü depolamanın sanal makineye nasıl ayrıldığını belirler. Kullanılabilir FTT-Raid birleşimleri şunlardır:
+AVS 'de kullanılan depolama altyapısı vSAN ' dır. vSAN depolama ilkeleri sunucularınız için depolama gereksinimlerini tanımlar. Bu ilkeler sanal makineler için gerekli hizmet düzeyini garanti eder çünkü depolamanın sanal makineye nasıl ayrıldığını belirler. Kullanılabilir FTT-Raid birleşimleri şunlardır:
 
 | **Tolerans Hataları (FTT)** | **RAID Yapılandırması** | **Gereken Minimum Konak Sayısı** | **Boyutlandırmada dikkat edilmesi gerekenler** |
 | - | - | - | - |
@@ -254,7 +255,7 @@ Kullanılabilir veri noktalarının yüzdesine bağlı olarak, değerlendirmenin
 
 Bir değerlendirmenin en düşük güvenilirlik derecelendirmesinin neden olmasının birkaç nedeni aşağıda verilmiştir:
 
-- Değerlendirmeyi oluşturmakta olduğunuz süre için ortamınızı profildiniz. Örneğin, performans süresi ile bir gün ayarlanmış bir değerlendirme oluşturursanız, toplanan tüm veri noktaları için bulmayı başlattıktan sonra en az bir gün beklemeniz gerekir.
+- Değerlendirmeyi oluşturduğunuz süre boyunca ortamınızın profilini oluşturmadınız. Örneğin, performans süresi ile bir gün ayarlanmış bir değerlendirme oluşturursanız, toplanan tüm veri noktaları için bulmayı başlattıktan sonra en az bir gün beklemeniz gerekir.
 - Değerlendirme, değerlendirme süresinde sanal makinelerin bazıları veya tümü için performans verilerini toplayamayabilir. Yüksek güvenilirlikli bir derecelendirme için lütfen şunları doğrulayın:
 
   - Değerlendirme süresi boyunca VM 'Ler açık
@@ -281,8 +282,8 @@ Azure VMware çözümü (AVS) fiyatlandırması düğüm başına olduğunda, to
 
 Azure VMware Çözümü (AVS) değerlendirmesinin Azure için hazır olma raporunda aşağıdaki önerilen araçları görebilirsiniz:
 
-- VMware **HCX veya Enterprise**: VMware makineleri Için VMware karma bulut uzantısı (HCX) çözümü, şirket içi iş yükünüzü Azure VMware çözümünüz (AVS) özel bulutuna geçirmek için önerilen geçiş aracıdır. [Daha Fazla Bilgi Edinin](../azure-vmware/tutorial-deploy-vmware-hcx.md).
-- **Bilinmiyor**: CSV dosya yoluyla içeri aktarılan makinelerde, varsayılan geçiş aracı bilinmiyor. Ancak VMware makinelerinde, VMware karma bulut uzantısı (HCX) çözümünün kullanılması önerilir.
+- VMware **HCX veya Enterprise**: VMware sunucuları Için VMware karma bulut uzantısı (HCX) çözümü, şirket içi iş yükünüzü Azure VMware çözümünüz (AVS) özel bulutuna geçirmek için önerilen geçiş aracıdır. [Daha Fazla Bilgi Edinin](../azure-vmware/tutorial-deploy-vmware-hcx.md).
+- **Bilinmiyor**: CSV dosyası aracılığıyla içeri aktarılan sunucular için varsayılan geçiş aracı bilinmez. Ancak VMware sunucuları için, VMware karma bulut uzantısı (HCX) çözümünün kullanılması önerilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

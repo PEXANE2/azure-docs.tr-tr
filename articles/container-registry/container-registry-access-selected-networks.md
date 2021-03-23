@@ -2,13 +2,13 @@
 title: Ortak kayıt defteri erişimini yapılandırma
 description: Seçilen ortak IP adreslerinden veya adres aralıklarından bir Azure Container Registry 'ye erişimi etkinleştirmek için IP kurallarını yapılandırın.
 ms.topic: article
-ms.date: 08/17/2020
-ms.openlocfilehash: 4e4ee817e2534bcca09cba89daafd379ff3f03f0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/08/2021
+ms.openlocfilehash: 727aa1dc028b5f52a022e54c2cd252ae372e78fe
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89488771"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773071"
 ---
 # <a name="configure-public-ip-network-rules"></a>Genel IP ağ kurallarını yapılandırma
 
@@ -17,6 +17,8 @@ Azure Container Registry, varsayılan olarak herhangi bir ağdaki konaklardan in
 IP ağ kuralları genel kayıt defteri uç noktasında yapılandırılır. IP ağ kuralları [özel bağlantı](container-registry-private-link.md) ile yapılandırılmış özel uç noktalara uygulanmıyor
 
 IP erişim kurallarını yapılandırma, **Premium** kapsayıcı kayıt defteri hizmet katmanında kullanılabilir. Kayıt defteri hizmeti katmanları ve limitleri hakkında bilgi için bkz. [Azure Container Registry katmanları](container-registry-skus.md).
+
+Her kayıt defteri en fazla 100 ağ erişim kuralını destekler.
 
 [!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]
 

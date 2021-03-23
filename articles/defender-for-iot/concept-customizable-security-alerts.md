@@ -1,24 +1,14 @@
 ---
 title: IoT Hub için özel güvenlik uyarıları
 description: IoT Hub özellikleri ve hizmeti için Defender 'ı kullanarak özelleştirilebilir güvenlik uyarıları ve önerilen düzeltme hakkında bilgi edinin.
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: shhazam-ms
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 2/16/2021
-ms.author: shhazam
-ms.openlocfilehash: 04198432f2b600a3c703d5e4f253656f116000db
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d7a58bcdb759c3f31290cc7930eba6ca52fcc17b
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100636535"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784739"
 ---
 # <a name="defender-for-iot-hub-custom-security-alerts"></a>IoT Hub özel güvenlik uyarıları için Defender
 
@@ -30,7 +20,7 @@ IoT uyarıları için aşağıdaki Defender listeleri, beklenen IoT Hub davranı
 
 ## <a name="built-in-custom-alerts-in-the-iot-hub"></a>IoT Hub yerleşik özel uyarılar
 
-| Önem derecesi | Uyarı adı | Veri kaynağı | Description | Önerilen düzeltme |
+| Önem derecesi | Uyarı adı | Veri kaynağı | Açıklama | Önerilen düzeltme |
 |--|--|--|--|--|
 | Düşük | Özel uyarı-AMQP protokolündeki cihaz iletilerinin bulut sayısı izin verilen aralığın dışında | IoT Hub | Belirli bir zaman penceresi içindeki bulut-cihaz iletileri (AMQP Protokolü) sayısı, şu anda yapılandırılmış ve izin verilen aralığın dışında. |  |
 | Düşük | Özel uyarı-AMQP protokolündeki cihaz iletilerine reddedilen bulut sayısı izin verilen aralığın dışında | IoT Hub | Cihaz tarafından reddedilen bulut ve cihaz iletileri (AMQP Protokolü) sayısı, belirli bir zaman penceresi içinde şu anda yapılandırılmış ve izin verilen aralığın dışında. |  |

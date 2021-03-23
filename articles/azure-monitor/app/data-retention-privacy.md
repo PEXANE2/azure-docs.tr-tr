@@ -4,12 +4,12 @@ description: Bekletme ve Gizlilik ilkesi bildirimi
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 54d3e53b71b5f63da84e41a752bbbb6fce65c045
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6a7545d4d927418e6153ce3bf439fc8c3e2dc702
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100579574"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774924"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights'da veri toplama, saklama ve depolama
 
@@ -294,6 +294,10 @@ SDK 'lar platformlar arasında farklılık gösterir ve yükleyebileceğiniz bir
 
 > [!NOTE]
 > İstemci IP 'si coğrafi konumu çıkarmakta kullanılır, ancak varsayılan olarak IP verileri artık depolanmaz ve tüm sıfırlardan ilişkili alana yazılır. Kişisel veri işleme hakkında daha fazla bilgi edinmek için bu [makaleyi](../logs/personal-data-mgmt.md#application-data)öneririz. IP adresi verilerini depolamanız gerekirse, [IP adresi toplama makalemiz](./ip-collection.md) , seçenekleriniz boyunca size yol gösterir.
+
+## <a name="can-i-modify-or-update-data-after-it-has-been-collected"></a>Toplandıktan sonra verileri değiştirebilir veya güncelleştirebilir miyim?
+
+Hayır, veri salt okunurdur ve yalnızca temizleme işlevselliği aracılığıyla silinebilir. [Log Analytics ve Application Insights depolanan kişisel veriler için](../logs/personal-data-mgmt.md#delete)daha fazla bilgi edinin.
 
 ## <a name="credits"></a>Krediler
 Bu ürün, tarafından sağlanan, Maxakılda tarafından oluşturulan GeoLite2 verilerini içerir [https://www.maxmind.com](https://www.maxmind.com) .

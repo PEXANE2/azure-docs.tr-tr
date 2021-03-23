@@ -1,54 +1,54 @@
 ---
-title: Azure geçişi sunucu değerlendirmesi 'nde aracı tabanlı bağımlılık analizini ayarlama
-description: Bu makalede, Azure geçişi sunucu değerlendirmesi ' nde aracı tabanlı bağımlılık analizinin nasıl ayarlanacağı açıklanır.
+title: Azure geçişi 'nde aracı tabanlı bağımlılık analizini ayarlama
+description: Bu makalede, Azure geçişi 'nde aracı tabanlı bağımlılık analizinin nasıl ayarlanacağı açıklanır.
 author: rashi-ms
 ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 772602a11878276da3b81b84e7f4016997375077
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 84a672f76de4b11558f2b39bf417a3eda2e31a36
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102183072"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786541"
 ---
 # <a name="set-up-dependency-visualization"></a>Bağımlılık görselleştirmesini ayarlama
 
-Bu makalede, Azure geçişi: Sunucu değerlendirmesi ' nde aracı tabanlı bağımlılık analizinin nasıl ayarlanacağı açıklanır. [Bağımlılık Analizi](concepts-dependency-visualization.md) , değerlendirmek ve Azure 'a geçirmek istediğiniz makineler arasında bağımlılıkları belirlemenize ve anlamanıza yardımcı olur.
+Bu makalede, Azure geçişi: bulma ve değerlendirme 'da aracı tabanlı bağımlılık analizinin nasıl ayarlanacağı açıklanır. [Bağımlılık Analizi](concepts-dependency-visualization.md) , değerlendirmek ve Azure 'a geçirmek istediğiniz sunucular genelinde bağımlılıkları belirlemenize ve anlamanıza yardımcı olur.
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
 - İçin aracı tabanlı bağımlılık analizine yönelik destek ve dağıtım gereksinimlerini gözden geçirin:
-    - [VMware Sanal Makineleri](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agent-based)
+    - [VMware ortamındaki sunucular](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agent-based)
     - [Fiziksel sunucular](migrate-support-matrix-physical.md#agent-based-dependency-analysis-requirements)
-    - [Hyper-V Sanal Makineleri](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements)
+    - [Hyper-V ortamındaki sunucular](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements)
 - Şunları yaptığınızdan emin olun:
     - Bir Azure geçişi projesi vardır. Bunu yapmazsanız, şimdi bir tane [oluşturun](./create-manage-projects.md) .
-    - Projeye Azure geçişi: Sunucu değerlendirmesi aracını [eklemişseniz](how-to-assess.md) ' i kontrol edin.
-    - Şirket içi makineleri keşfetmeye yönelik bir [Azure geçiş](migrate-appliance.md) gereci ayarlayın. Gereç, şirket içi makineleri bulur ve Azure geçişi: Sunucu değerlendirmesi ' ne meta veri ve performans verileri gönderir. İçin bir gereç ayarlayın:
-        - [VMware](how-to-set-up-appliance-vmware.md) VM 'ler
-        - [Hyper-V](how-to-set-up-appliance-hyper-v.md) VM 'ler
+    - Projeye Azure geçişi: bulma ve değerlendirme aracını [eklemişseniz](how-to-assess.md) .
+    - Şirket içi sunucuları bulmaya yönelik bir [Azure geçiş](migrate-appliance.md) gereci ayarlayın. Gereç, şirket içi sunucuları bulur ve Azure geçişi: bulma ve değerlendirme için meta verileri ve performans verilerini gönderir. İçin bir gereç ayarlayın:
+        - [VMware ortamındaki sunucular](how-to-set-up-appliance-vmware.md)
+        - [Hyper-V ortamındaki sunucular](how-to-set-up-appliance-hyper-v.md)
         - [Fiziksel sunucular](how-to-set-up-appliance-physical.md)
 - Bağımlılık görselleştirmesini kullanmak için bir [Log Analytics çalışma alanını](../azure-monitor/logs/manage-access.md) Azure geçişi projesiyle ilişkilendirirsiniz:
-    - Bir çalışma alanını yalnızca Azure geçiş gereci ayarladıktan sonra ve Azure geçişi projesindeki makineleri keşfetmek için ekleyebilirsiniz.
+    - Bir çalışma alanını yalnızca Azure geçiş gereci ayarladıktan ve Azure geçişi projesindeki sunucuları bulduktan sonra ekleyebilirsiniz.
     - Abonelikte Azure geçişi projesini içeren bir çalışma alanı olduğundan emin olun.
     - Çalışma alanı Doğu ABD, Güneydoğu Asya veya Batı Avrupa bölgelerinde bulunmalıdır. Diğer bölgelerdeki çalışma alanları bir projeyle ilişkilendirilemez.
     - Çalışma alanının [hizmet eşlemesi desteklendiği](../azure-monitor/vm/vminsights-configure-workspace.md#supported-regions)bir bölgede olması gerekir.
     - Yeni veya mevcut bir Log Analytics çalışma alanını Azure geçişi projesiyle ilişkilendirebilirsiniz.
-    - Bir makine için bağımlılık görselleştirmesini ilk kez ayarladığınızda çalışma alanını iliştirebilirsiniz. Bir Azure geçişi projesi çalışma alanı eklendikten sonra değiştirilemez.
+    - Bir sunucu için bağımlılık görselleştirmesini ilk kez ayarladığınızda çalışma alanını iliştirebilirsiniz. Bir Azure geçişi projesi çalışma alanı eklendikten sonra değiştirilemez.
     - Log Analytics, Azure geçişi ile ilişkili çalışma alanı, geçiş projesi anahtarıyla ve proje adıyla etiketlenir.
 
 ## <a name="associate-a-workspace"></a>Çalışma alanını ilişkilendirme
 
-1. Makineleri değerlendirme için bulduktan sonra, **sunucular**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde **Genel Bakış ' a** tıklayın.  
-2. **Azure geçişi: Sunucu değerlendirmesi**' nde, **temel** bileşenler ' e tıklayın.
+1. Sunucuları değerlendirme için bulduktan sonra,   >  **Azure geçişi: bulma ve değerlendirme** sunucularında **Genel Bakış ' a** tıklayın.  
+2. **Azure geçişi: bulma ve değerlendirme** bölümünde **temel** bileşenler ' e tıklayın.
 3. **OMS çalışma alanında** **yapılandırma gerekiyor**' a tıklayın.
 
      ![Log Analytics çalışma alanını yapılandırma](./media/how-to-create-group-machine-dependencies/oms-workspace-select.png)   
 
 4. **OMS çalışma alanını Yapılandır**' da, yeni bir çalışma alanı oluşturmak isteyip istemediğinizi belirtin veya var olanı kullanın.
-    - Proje taşıma aboneliğindeki tüm çalışma alanlarından mevcut bir çalışma alanı seçebilirsiniz.
+    - Proje aboneliğindeki tüm çalışma alanlarından var olan bir çalışma alanı seçebilirsiniz.
     - İlişkilendirmek için çalışma alanına okuyucu erişimine ihtiyacınız vardır.
 5. Yeni bir çalışma alanı oluşturursanız, onun için bir konum seçin.
 
@@ -57,13 +57,13 @@ Bu makalede, Azure geçişi: Sunucu değerlendirmesi ' nde aracı tabanlı bağ�
 
 ## <a name="download-and-install-the-vm-agents"></a>Sanal makine aracılarını indirip yükleme
 
-Çözümlemek istediğiniz her makinede aracıları yükleyebilirsiniz.
+Çözümlemek istediğiniz her bir sunucuda aracıları yükleyebilirsiniz.
 
 > [!NOTE]
-> System Center Operations Manager 2012 R2 veya üzeri tarafından izlenen makinelerde MMA aracısını yüklemeniz gerekmez. Hizmet Eşlemesi Operations Manager tümleştirilir. Tümleştirme kılavuzunu [izleyin](../azure-monitor/vm/service-map-scom.md#prerequisites) .
+> System Center Operations Manager 2012 R2 veya üzeri tarafından izlenen sunucular için MMA aracısını yüklemeniz gerekmez. Hizmet Eşlemesi Operations Manager tümleştirilir. Tümleştirme kılavuzunu [izleyin](../azure-monitor/vm/service-map-scom.md#prerequisites) .
 
-1. **Azure geçişi: Sunucu değerlendirmesi**' nde, **bulunan sunucular**' a tıklayın.
-2. Bağımlılık görselleştirmesi ile çözümlemek istediğiniz her makine için, **Bağımlılıklar** sütununda, **Aracı yüklemesi gerektirir öğesine** tıklayın.
+1. **Azure geçişi: bulma ve değerlendirme** bölümünde **bulunan sunucular**' a tıklayın.
+2. Bağımlılık görselleştirmesi ile çözümlemek istediğiniz her sunucu için, **Bağımlılıklar** sütununda, **Aracı yüklemesi gerektirir**' a tıklayın.
 3. **Bağımlılıklar** sayfasında, Windows veya Linux için MMA ve bağımlılık aracısını indirin.
 4. **MMA Aracısını Yapılandır** altında, çalışma alanı kimliğini ve anahtarı kopyalayın. MMA aracısını yüklerken bunlara ihtiyacınız vardır.
 
@@ -72,11 +72,11 @@ Bu makalede, Azure geçişi: Sunucu değerlendirmesi ' nde aracı tabanlı bağ�
 
 ## <a name="install-the-mma"></a>MMA’yı yükleme
 
-Çözümlemek istediğiniz her Windows veya Linux makinesine MMA 'yı yükleyebilirsiniz.
+Çözümlemek istediğiniz her Windows veya Linux sunucusuna MMA 'yı yükleyebilirsiniz.
 
-### <a name="install-mma-on-a-windows-machine"></a>Windows makinesine MMA 'yı yükler
+### <a name="install-mma-on-a-windows-server"></a>Windows Server 'da MMA 'yı yükler
 
-Aracıyı bir Windows makinesine yüklemek için:
+Aracıyı bir Windows sunucusuna yüklemek için:
 
 1. İndirilen aracıya çift tıklayın.
 2. **Hoş Geldiniz** sayfasında **İleri**'ye tıklayın. **Lisans Koşulları** sayfasında **Kabul Ediyorum**’a tıklayarak lisansı kabul edin.
@@ -89,9 +89,9 @@ Aracıyı komut satırından veya Configuration Manager veya [ıntigua](https://
 - MMA aracısı bu [betik](https://github.com/brianbar-MSFT/Install-MMA) kullanılarak da yüklenebilir.
 - MMA tarafından desteklenen Windows işletim sistemleri hakkında [daha fazla bilgi edinin](../azure-monitor/agents/agents-overview.md#supported-operating-systems) .
 
-### <a name="install-mma-on-a-linux-machine"></a>Linux makinesine MMA 'yı yükler
+### <a name="install-mma-on-a-linux-server"></a>Linux sunucusuna MMA 'yı yükler
 
-Bir Linux makinesine MMA 'yı yüklemek için:
+MMA 'yı bir Linux sunucusuna yüklemek için:
 
 1. SCP/SFTP kullanarak uygun paketi (x86 veya x64) Linux bilgisayarınıza aktarın.
 2. --İnstall bağımsız değişkenini kullanarak paketi yükler.
@@ -102,8 +102,8 @@ MMA tarafından Linux işletim sistemleri desteğinin listesi hakkında [daha fa
 
 ## <a name="install-the-dependency-agent"></a>Bağımlılık aracısını yükleme
 
-1. Bağımlılık aracısını bir Windows makinesine yüklemek için kurulum dosyasına çift tıklayın ve Sihirbazı izleyin.
-2. Bir Linux makinesine bağımlılık Aracısı 'nı yüklemek için, aşağıdaki komutu kullanarak kök olarak ' yi kullanın:
+1. Bağımlılık aracısını bir Windows sunucusuna yüklemek için kurulum dosyasına çift tıklayın ve Sihirbazı izleyin.
+2. Bir Linux sunucusuna bağımlılık Aracısı 'nı yüklemek için, aşağıdaki komutu kullanarak kök olarak ' yi kullanın:
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
@@ -117,33 +117,33 @@ MMA tarafından Linux işletim sistemleri desteğinin listesi hakkında [daha fa
 
 
 > [!NOTE]
-> Bağımlılıklarını görselleştirmek istediğiniz gruplar 10 ' dan fazla makine içermemelidir. 10 ' dan fazla makineniz varsa, bunları daha küçük gruplara ayırın.
+> Bağımlılıklarını görselleştirmek istediğiniz gruplar 10 ' dan fazla sunucu içermemelidir. 10 ' dan fazla sunucunuz varsa, bunları daha küçük gruplara ayırın.
 
-1. **Azure geçişi: Sunucu değerlendirmesi**' nde, **bulunan sunucular**' a tıklayın.
-2. **Bağımlılıklar** sütununda, gözden geçirmek istediğiniz her makine Için **bağımlılıkları görüntüle** ' ye tıklayın.
+1. **Azure geçişi: bulma ve değerlendirme** bölümünde **bulunan sunucular**' a tıklayın.
+2. **Bağımlılıklar** sütununda, gözden geçirmek istediğiniz her sunucu Için **bağımlılıkları görüntüle** ' ye tıklayın.
 3. Bağımlılık eşlemesinde, aşağıdakileri görebilirsiniz:
-    - Makineden gelen (istemciler) ve giden (sunucular) TCP bağlantıları.
-    - Bağımlılık aracıları yüklü olmayan bağımlı makineler, bağlantı noktası numaralarına göre gruplandırılır.
-    - Bağımlılık aracıları yüklü bağımlı makineler ayrı kutular olarak gösterilir.
-    - Makine içinde çalışan süreçler. Her makine kutusunu genişleterek süreçlerini görüntüleyin.
-    - Makine Özellikleri (FQDN, işletim sistemi, MAC adresi dahil). Ayrıntıları görüntülemek için her bir makine kutusuna tıklayın.
+    - Sunucudan gelen (istemciler) ve giden (sunucular) TCP bağlantıları.
+    - Bağımlılık aracıları yüklü olmayan bağımlı sunucular, bağlantı noktası numaralarına göre gruplandırılır.
+    - Bağımlılık aracıları yüklü bağımlı sunucular ayrı kutular olarak gösterilir.
+    - Sunucu içinde çalışan süreçler. İşlem görüntülemek için her bir sunucu kutusunu genişletin.
+    - Sunucu Özellikleri (FQDN, işletim sistemi, MAC adresi dahil). Ayrıntıları görüntülemek için her bir sunucu kutusuna tıklayın.
 
 4. Zaman aralığı etiketindeki zaman süresine tıklayarak farklı zaman sürelerine yönelik bağımlılıklara bakabilirsiniz.
     - Aralık varsayılan olarak bir saattir. 
     - Zaman aralığını değiştirebilir veya başlangıç ve bitiş tarihlerini ve süreyi belirtebilirsiniz.
     - Zaman aralığı bir saate kadar sürebilir. Daha uzun bir aralığa ihtiyacınız varsa, bağımlı verileri daha uzun bir süre sorgulamak için Azure Izleyici 'yi kullanın.
 
-5. Gruplamak istediğiniz bağımlı makineleri tanımladıktan sonra, haritada birden fazla makine seçmek için CTRL + tıklama tuşlarını kullanın ve **Grup makineleri**' ne tıklayın.
+5. Gruplamak istediğiniz bağımlı sunucuları tanımladıktan sonra, haritada birden çok sunucu seçmek için CTRL + tıklama tuşlarını kullanın ve **Grup makineleri**' ne tıklayın.
 6. Bir grup adı belirtin.
-7. Bağımlı makinelerin Azure geçişi tarafından bulunduğundan emin olun.
+7. Bağımlı sunucuların Azure geçişi tarafından keşfedildiğini doğrulayın.
 
-    - Azure geçişi: Sunucu değerlendirmesi tarafından bağımlı bir makine bulunamadıysa gruba ekleyemezsiniz.
-    - Bir makine eklemek için, bulmayı yeniden çalıştırın ve makinenin bulunduğunu doğrulayın.
+    - Azure geçişi: bulma ve değerlendirme tarafından bağımlı bir sunucu bulunamadıysa gruba ekleyemezsiniz.
+    - Bir sunucu eklemek için bulma işlemini yeniden çalıştırın ve sunucunun bulunduğunu doğrulayın.
 
 8. Bu grup için bir değerlendirme oluşturmak istiyorsanız, grup için yeni bir değerlendirme oluşturmak üzere onay kutusunu seçin.
 8. Grubu kaydetmek için **Tamam** ' ı tıklatın.
 
-Grubu oluşturduktan sonra gruptaki tüm makinelere aracılar yüklemenizi ve sonra tüm grubun bağımlılıklarını görselleştirmenizi öneririz.
+Grubu oluşturduktan sonra gruptaki tüm sunuculara aracılar yüklemenizi ve sonra tüm grubun bağımlılıklarını görselleştirmenizi öneririz.
 
 ## <a name="query-dependency-data-in-azure-monitor"></a>Azure Izleyici 'de bağımlılık verilerini sorgulama
 
@@ -155,7 +155,7 @@ Azure geçişi projesiyle ilişkili Log Analytics çalışma alanındaki Hizmet 
 Bağımlılık verileri için aşağıdaki gibi bir sorgu çalıştırın:
 
 1. Aracıları yükledikten sonra portala gidin ve **Genel Bakış ' a** tıklayın.
-2. **Azure geçişi: Sunucu değerlendirmesi**' nde **Genel Bakış ' a** tıklayın. **Temelleri** genişletmek için aşağı oka tıklayın.
+2. **Azure geçişi: bulma ve değerlendirme** bölümünde **Genel Bakış ' a** tıklayın. **Temelleri** genişletmek için aşağı oka tıklayın.
 3. **OMS çalışma** alanında, çalışma alanı adına tıklayın.
 3. Log Analytics çalışma alanı sayfasında **genel**> **Günlükler**' e tıklayın.
 4. Sorgunuzu yazın ve **Çalıştır**' a tıklayın.
@@ -170,14 +170,14 @@ Bağımlılık verilerini ayıklamak için kullanabileceğiniz birkaç örnek so
 
 #### <a name="sample-review-inbound-connections"></a>Örnek: gelen bağlantıları gözden geçirme
 
-Bir VM kümesi için gelen bağlantıları gözden geçirin.
+Bir sunucu kümesi için gelen bağlantıları gözden geçirin.
 
 - Bağlantı ölçümleri (VMConnection) tablosundaki kayıtlar tek tek fiziksel ağ bağlantılarını temsil etmez.
 - Birden çok fiziksel ağ bağlantısı mantıksal bir bağlantı halinde gruplandırılır.
 - Fiziksel ağ bağlantısı verilerinin VMConnection 'da nasıl toplandığından [daha fazla bilgi edinin](../azure-monitor/vm/service-map.md#connections) .
 
 ```
-// the machines of interest
+// the servers of interest
 let ips=materialize(ServiceMapComputer_CL
 | summarize ips=makeset(todynamic(Ipv4Addresses_s)) by MonitoredMachine=ResourceName_s
 | mvexpand ips to typeof(string));
@@ -192,10 +192,10 @@ VMConnection
 
 #### <a name="sample-summarize-sent-and-received-data"></a>Örnek: gönderilen ve alınan verileri özetleme
 
-Bu örnek, bir makine kümesi arasındaki gelen bağlantılarda gönderilen ve alınan verilerin hacmini özetler.
+Bu örnek, bir sunucular kümesi arasındaki gelen bağlantılarda gönderilen ve alınan verilerin hacmini özetler.
 
 ```
-// the machines of interest
+// the servers of interest
 let ips=materialize(ServiceMapComputer_CL
 | summarize ips=makeset(todynamic(Ipv4Addresses_s)) by MonitoredMachine=ResourceName_s
 | mvexpand ips to typeof(string));

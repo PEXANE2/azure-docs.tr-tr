@@ -3,24 +3,19 @@ title: Azure rol tabanlı erişim denetimi kullanarak Azure portal panoları pay
 description: Bu makalede, Azure rol tabanlı erişim denetimi kullanarak Azure portal bir panonun nasıl paylaşılacağını açıklanmaktadır.
 ms.assetid: 8908a6ce-ae0c-4f60-a0c9-b3acfe823365
 ms.topic: how-to
-ms.date: 03/23/2020
-ms.openlocfilehash: de2efd75d07c3dc7df771aad1bd9c73453dad212
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/19/2021
+ms.openlocfilehash: 336bfe9792c5ba4246458368e008a8c50833ed03
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96745987"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771558"
 ---
 # <a name="share-azure-dashboards-by-using-azure-role-based-access-control"></a>Azure rol tabanlı erişim denetimi kullanarak Azure panoları paylaşma
 
-Bir panoyu yapılandırdıktan sonra yayımlayabilir ve kuruluşunuzdaki diğer kullanıcılarla paylaşabilirsiniz. Diğer kullanıcıların, [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/role-assignments-portal.md)kullanarak panonuzu görüntülemesine izin verebilirsiniz. Bir role Kullanıcı veya Kullanıcı grubu atayın. Bu rol, bu kullanıcıların yayınlanan panoyu görüntüleyip görüntüleyemeyeceğini veya değiştiremeyeceklerini tanımlar.
+Bir panoyu yapılandırdıktan sonra yayımlayabilir ve kuruluşunuzdaki diğer kullanıcılarla paylaşabilirsiniz. Diğer kullanıcıların, [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/role-assignments-portal.md)kullanarak panonuzu görüntülemesine izin verebilirsiniz. Bir role tek bir kullanıcı veya Kullanıcı grubu atayın. Bu rol, bu kullanıcıların yayınlanan panoyu görüntüleyip görüntüleyemeyeceğini veya değiştiremeyeceklerini tanımlar.
 
-Yayımlanan tüm panolar Azure kaynakları olarak uygulanır. Abonelikleriniz içinde yönetilebilir öğeler olarak mevcuttur ve bir kaynak grubunda yer alır. Bir erişim denetimi perspektifinden, panolar, sanal makine veya depolama hesabı gibi diğer kaynaklardan farklı değildir.
-
-> [!TIP]
-> Panodaki tek Kutucuklar, görüntülenen kaynaklara göre kendi erişim denetimi gereksinimlerini zorunlu tutar. Tek tek bölmelerde verileri korurken bir panoyu büyük ölçüde paylaşabilirsiniz.
-> 
-> 
+Yayımlanan tüm panolar Azure kaynakları olarak uygulanır. Abonelikleriniz içinde yönetilebilir öğeler olarak mevcuttur ve bir kaynak grubunda yer alır. Bir erişim denetimi perspektifinden, panolar, sanal makine veya depolama hesabı gibi diğer kaynaklardan farklı değildir. Panodaki tek Kutucuklar, görüntülenen kaynaklara göre kendi erişim denetimi gereksinimlerini zorunlu tutar. Tek tek bölmelerde verileri korurken bir panoyu büyük ölçüde paylaşabilirsiniz.
 
 ## <a name="understanding-access-control-for-dashboards"></a>Panolar için erişim denetimini anlama
 
@@ -34,9 +29,9 @@ Atadığınız izinler abonelikten kaynağa doğru bir şekilde devralınır. Ya
 
 Azure aboneliğiniz olduğunu ve takımınızın çeşitli üyelerine abonelik için *sahip*, *katkıda bulunan* veya *okuyucu* rollerinin atandığını varsayalım. Sahip veya katkıda bulunanlar olan kullanıcılar, abonelik içinde panoları listeleyebilir, görüntüleyebilir, oluşturabilir, değiştirebilir veya silebilir. Okuyucular olan kullanıcılar panoları listeleyebilir ve görüntüleyebilir, ancak bunları değiştiremez veya silemez. Okuyucu erişimi olan kullanıcılar, yayımlanan bir panoda bir sorunu giderirken, ancak bu değişiklikleri sunucuya geri yayımlayamazlar. Bunlar için panonun özel bir kopyasını oluşturabilir.
 
-Ayrıca, çeşitli panolar veya ayrı bir Pano içeren kaynak grubuna izinler atayabilirsiniz. Örneğin, bir Kullanıcı grubunun abonelik genelinde sınırlı izinleri olması ve belirli bir panoya daha fazla erişimi olması gerektiğine karar verebilirsiniz. Bu kullanıcıları bu pano için bir role atayın.
+Kaynak grubuna çeşitli panolar veya ayrı bir Pano içeren izinler atayabilirsiniz. Örneğin, bir Kullanıcı grubunun abonelik genelinde sınırlı izinleri olması ve belirli bir panoya daha fazla erişimi olması gerektiğine karar verebilirsiniz. Bu kullanıcıları bu pano için bir role atayın.
 
-## <a name="publish-dashboard"></a>Panoyu yayımlama
+## <a name="publish-a-dashboard"></a>Pano yayımlama
 
 Aboneliğinizdeki bir kullanıcı grubuyla paylaşmak istediğiniz bir panoyu yapılandıralım. Aşağıdaki adımlarda, bir panonun depolama yöneticileri adlı bir grup ile nasıl paylaşılacağını gösterilmektedir. Grubunuzu dilediğiniz gibi adlandırabilirsiniz. Daha fazla bilgi için bkz. [Azure Active Directory grupları yönetme](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
@@ -58,19 +53,15 @@ Panonuz artık yayımlandı. Abonelikten devralınan izinler uygunsa, daha fazla
 
 Bu Pano için bir kullanıcı grubunu bir role atayabilirsiniz.
 
-1. Panoyu yayımladıktan sonra **Paylaşım + erişim denetimine** erişmek için **Paylaşım** veya paylaşımı **Kaldır** seçeneğini belirleyin.
+1. Panoyu yayımladıktan sonra **paylaşımı Yönet**' i seçin.
 
-1. **Paylaşım ve erişim denetimi**' nde **Kullanıcıları Yönet**' i seçin.
-
-    ![kullanıcıları bir Pano için yönetme](./media/azure-portal-dashboard-share-access/manage-users-for-access-control.png)
-
-1. Bu Pano için zaten bir rol atanmış var olan kullanıcıları görmek için **rol atamaları** ' nı seçin.
+1. **Access Control** bu pano için zaten bir rolün atandığı mevcut kullanıcıları görmek için **rol atamaları** ' nı seçin.
 
 1. Yeni bir kullanıcı veya grup eklemek için **Ekle** ve **rol ataması Ekle**' yi seçin.
 
     ![panoya erişim için Kullanıcı ekleme](./media/azure-portal-dashboard-share-access/manage-users-existing-users.png)
 
-1. Verilecek izinleri temsil eden rolü seçin. Bu örnek için **katkıda bulunan**' ı seçin.
+1. **Katkıda bulunan** gibi izinleri temsil eden rolü seçin.
 
 1. Role atanacak Kullanıcı veya grubu seçin. Listede Aradığınız kullanıcıyı veya grubu görmüyorsanız arama kutusunu kullanın. Kullanılabilir gruplar listeniz, Active Directory oluşturduğunuz gruplara bağlıdır.
 

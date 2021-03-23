@@ -1,19 +1,14 @@
 ---
 title: Horizon SDK’sı
-titleSuffix: Azure Defender for IoT
 description: Ufıt SDK 'Sı, IoT geliştiricilerin IoT Ağ Analizi programları için otomatik Defender tarafından işlenebilmesi için, IoT geliştiricilerine yönelik olarak ağ trafiğinin kodunu çözen bir sektör eklentileri tasarlamasına olanak tanır.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/13/2021
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: 53aafc4146680c89dd01174ec5fde765f1cc0c01
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 500f1d78a6a2ab91284c993a5c56ef8e679db83f
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100523371"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782495"
 ---
 # <a name="horizon-proprietary-protocol-dissector"></a>Ufuk özel protokol dissektör
 
@@ -326,7 +321,7 @@ Bu bölümde temel parametreler açıklanmaktadır.
 
 Bu bölümde diğer alanlar açıklanmaktadır.
 
-| Parametre etiketi | Description |
+| Parametre etiketi | Açıklama |
 |-----------------|--------|
 | **listelere izin ver** | Protokol değerlerini dizinedebilir ve bunları veri araştırma raporlarında görüntüleyebilirsiniz. Bu raporlar, ağ temelinizi yansıtır. :::image type="content" source="media/references-horizon-sdk/data-mining.png" alt-text="Veri araştırma görünümü örneği."::: <br /> Daha fazla bilgi için bkz. Ayrıntılar için [Dizin oluşturma hizmetine (Baseline) bağlanma](#connect-to-an-indexing-service-baseline) . |
 | **yazılımında** | Bellenim bilgilerini ayıklayabilir, dizin değerlerini tanımlayabilir ve eklenti protokolü için bellenim uyarılarını tetikleyebilirsiniz. Daha fazla bilgi için bkz. Ayrıntılar için [bellenim verilerini ayıklama](#extract-firmware-data) . |
@@ -817,7 +812,7 @@ Bazı protokoller işlev kodu bir hata gösterebilir. Örneğin, protokol her za
 
 Bu bölümde JSON yapılandırma alanları açıklanmaktadır. 
 
-| Alan adı | Description | Olası değerler |
+| Alan adı | Açıklama | Olası değerler |
 |--|--|--|
 | **ID** | Tek bir uyarı KIMLIĞINI temsil eder. Bu bağlamda benzersiz olmalıdır. | Sayısal değer 0-10000 |
 | **message** | Kullanıcıya görüntülenecek bilgiler. Bu alan, farklı alanlar kullanmanıza izin verir. | Protokolinizdeki herhangi bir alanı veya herhangi bir alt katman protokolünü kullanın. |

@@ -14,7 +14,7 @@
       href: ../virtual-machines/windows/quick-create-portal.md?toc=/azure/azure-portal/toc.json&bc=/azure/azure-portal/breadcrumb/toc.json
     - name: Pano oluşturma
       items:
-        - name: Azure CLI’si
+        - name: Azure CLI
           href: quickstart-portal-dashboard-azure-cli.md
         - name: Azure PowerShell
           href: quickstart-portal-dashboard-powershell.md
@@ -35,11 +35,11 @@
           href: azure-portal-dashboards.md
         - name: Azure panosu paylaşma
           href: azure-portal-dashboard-share-access.md
+        - name: Özel Markdown kutucuğunu kullanma
+          href: azure-portal-markdown-tile.md
         - name: Programlı olarak bir Azure panosu oluşturma
           href: azure-portal-dashboards-create-programmatically.md
           displayName: 'Azure CLI, az portal dashboard, az portal'
-        - name: Özel Markdown kutucuğunu kullanma
-          href: azure-portal-markdown-tile.md
     - name: Azure portalı nasıl yapılır video serisi
       href: azure-portal-video-series.md
     - name: Destek isteklerini oluşturma ve yönetme

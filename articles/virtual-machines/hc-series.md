@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/05/2021
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 6ec629629fc774ddb5423db91fe0d71a49305ca1
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 43f8b6efd7c4cc510dac8fcbe84ab38f59008ed9
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102566048"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773546"
 ---
 # <a name="hc-series"></a>HC serisi
 
@@ -29,14 +29,16 @@ HC Serisi VM 'Ler özelliği 100 GB/sn Mellanox EDR InfiniBand. Bu VM 'Ler, iyil
 [VM oluşturma desteği](generation-2.md): 1. ve 2. nesil<br>
 [Hızlandırılmış ağ](../virtual-network/create-vm-accelerated-networking-cli.md): desteklenir (performans ve olası sorunlar hakkında[daha fazla bilgi edinin](https://techcommunity.microsoft.com/t5/azure-compute/accelerated-networking-on-hb-hc-hbv2-and-ndv2/ba-p/2067965) )<br>
 [Kısa ömürlü işletim sistemi diskleri](ephemeral-os-disks.md): desteklenir <br>
-
 <br>
 
 | Boyut | Sanal işlemci | İşlemci | Bellek (GiB) | Bellek bant genişliği GB/sn | Taban CPU sıklığı (GHz) | Tüm çekirdekler sıklığı (GHz, tepe) | Tek çekirdekli sıklık (GHz, tepe) | RDMA performansı (GB/sn) | MPı desteği | Geçici depolama (GiB) | Maksimum veri diskleri | En fazla Ethernet vNIC |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_HC44rs | 44 | Intel Xeon Platinum 8168 | 352 | 191 | 2.7 | 3.4 | 3.7 | 100 | Tümü | 700 | 4 | 8 |
 
-Temel [mimari, VM topolojisi](./workloads/hpc/hc-series-overview.md) ve HC Serisi VM 'nin beklenen [performansı](./workloads/hpc/hc-series-performance.md) hakkında daha fazla bilgi edinin.
+Hakkında daha fazla bilgi edinin:
+- [mimari ve VM topolojisi](./workloads/hpc/hc-series-overview.md),
+- Desteklenen işletim sistemi dahil desteklenen [yazılım yığını](./workloads/hpc/hc-series-overview.md#software-specifications) ve
+- HC Serisi VM 'nin beklenen [performansı](./workloads/hpc/hc-series-performance.md) .
 
 [!INCLUDE [hpc-include](./workloads/hpc/includes/hpc-include.md)]
 

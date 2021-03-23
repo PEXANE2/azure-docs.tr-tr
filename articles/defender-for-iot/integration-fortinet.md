@@ -1,19 +1,14 @@
 ---
 title: Fortinet tümleştirmesi hakkında
-titleSuffix: Azure Defender for IoT
 description: IoT ve BT için Defender, IoT ve ICS ağlarında saldırıları algılayıp durdurmak için bir teknoloji ortaklığı kurdu.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/17/2021
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: 313db90d4c9be30ef588b00caf1d6e4ce32b113b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e2119a9e01a4e58cd9d2ca1b9b3384ec9629784c
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98558553"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784025"
 ---
 # <a name="defender-for-iot-and-fortinet-iiot-and-ics-threat-detection--prevention"></a>IoT ve Fortinet IIoT ve ICS tehdit algılama & önleme için Defender
 

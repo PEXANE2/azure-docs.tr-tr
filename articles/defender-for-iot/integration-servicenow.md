@@ -1,19 +1,14 @@
 ---
 title: ServiceNow tümleştirmesi hakkında
-titleSuffix: Azure Defender for IoT
 description: ServiceNow için IoT ICS yönetim uygulaması için Defender, endüstriyel ortamlarda dağıtılan özel OT protokollerine ve IoT cihazlarına, şüpheli veya anormal davranışları hızlı bir şekilde algılamak için ICS kullanan davranış analizlerine çok boyutlu görünürlük sağlayan SOC analistleri sağlar.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/17/2021
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: f2a4c3e79a762de19c6e8c029256cd70dedfe3dc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6e39c3d018003983f6dc5b5e16a9791de84d6005
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98558733"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786014"
 ---
 # <a name="the-defender-for-iot-ics-management-application-for-servicenow"></a>ServiceNow için IoT ICS yönetim uygulaması Defender
 
@@ -329,7 +324,7 @@ Bu makalede ServiceNow 'a gönderilen cihaz uyarı bilgileri açıklanmaktadır.
 | Oluşturulan | Uyarının oluşturulduğu saat ve tarih. |
 | Altyapı | Olayı algılayan altyapı. |
 | Başlık | Uyarı başlığı. |
-| Description | Uyarı açıklaması. |
+| Açıklama | Uyarı açıklaması. |
 | Protokol | Trafikte algılanan protokol. |
 | Önem derecesi | IoT için Defender tarafından tanımlanan uyarı önem derecesi. |
 | Elektrikli | Trafiği algılayan algılayıcının adı. |
@@ -349,7 +344,7 @@ Uyarı bilgilerini bir formda görüntülemek için oluşturulan sütunda giriş
 
 Bu makalede, her altyapının tetiklediği uyarıların türü açıklanmaktadır.
 
-| Uyarı türü | Description |
+| Uyarı türü | Açıklama |
 |--|--|
 | İlke ihlali uyarıları | Ilke Ihlali altyapısı, daha önce öğrenilen trafikten sapma algıladığında tetiklenir. Örnek: <br /><br />-Yeni bir cihaz algılandı. <br /><br />-Bir cihazda yeni bir yapılandırma algılandı. <br /><br />-Programlama cihazı olarak tanımlanmayan bir cihaz, programlama değişikliğini yürütür. <br /><br />-Bir bellenim sürümü değişti. |
 | Protokol ihlali uyarıları | Protokol Ihlali altyapısı, protokol belirtimine uymayan bir paket yapıları veya alan değerleri algıladığında tetiklenir. |

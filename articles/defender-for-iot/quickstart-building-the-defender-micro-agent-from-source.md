@@ -1,19 +1,14 @@
 ---
 title: Kaynak koddan Defender Micro Agent 'ı oluşturma (Önizleme)
-titleSuffix: Azure Defender for IoT
 description: Mikro Aracı, dağıtımınızı özelleştirmek için kullanılabilecek bir altyapı içerir.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/18/2021
 ms.topic: quickstart
-ms.service: azure
-ms.openlocfilehash: 29cac544c858b030cff8e9101737b30e96b863bf
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: aac9bf224064dd8393acfeb2928f5ed2d1f84381
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102506608"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781118"
 ---
 # <a name="build-the-defender-micro-agent-from-source-code-preview"></a>Kaynak koddan Defender Micro Agent 'ı oluşturma (Önizleme)
 

@@ -1,18 +1,14 @@
 ---
 title: IoT için Defender sözlüğü
 description: Bu sözlük, IoT Platformu hüküm ve kavramları için önemli bir Defender hakkında kısa bir açıklama sağlar.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/09/2020
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: f26cea9442aa3fbbe7f475cc5d16bea792b83fb3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 191b94ca37118ed6413149dd6047f94c5ee568cd
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103493994"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786830"
 ---
 # <a name="defender-for-iot-glossary"></a>IoT için Defender sözlüğü
 

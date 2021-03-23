@@ -336,6 +336,8 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Videolar
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=storage'
+    - name: Azure dosyaları ve Azure NetApp Files karşılaştırması
+      href: storage-files-netapp-comparison.md
     - name: NuGet paketleri (.NET)
       items:
         - name: Microsoft.Azure.Storage.Common (sürüm 11.x)

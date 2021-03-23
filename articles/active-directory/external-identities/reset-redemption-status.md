@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dea13444a6bd18bd67f05d93a38af70b3b7a2368
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 2998c3ea0d65bd3c96bd1ac5bdfa8ff148c6c4cc
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102556324"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104780438"
 ---
 # <a name="reset-redemption-status-for-a-guest-user"></a>Konuk Kullanıcı için kullanım durumunu sıfırlama
 
@@ -28,9 +28,20 @@ Bir Konuk Kullanıcı, B2B işbirliği davetinizi tamamladıktan sonra, oturum a
 
 Daha önce bu senaryoları yönetmek için, Konuk kullanıcının hesabını dizininizden el ile silip kullanıcıyı yeniden davet etmeniz gerekiyordu. Artık Kullanıcı kullanım durumunu sıfırlamak ve kullanıcının nesne KIMLIĞINI, grup üyeliklerini ve uygulama atamalarını korurken kullanıcıyı yeniden davet etmek için PowerShell veya Microsoft Graph davet API 'sini kullanabilirsiniz. Kullanıcı yeni daveti önceden kullanırken, kullanıcının UPN 'si değişmez, ancak kullanıcının oturum açma adı yeni e-postaya değişir. Kullanıcı daha sonra yeni e-posta veya Kullanıcı nesnesinin özelliğine eklemiş olduğunuz bir e-posta kullanarak oturum açabilir `otherMails` .
 
+## <a name="reset-the-email-address-used-for-sign-in"></a>Oturum açma için kullanılan e-posta adresini sıfırlayın
+
+Kullanıcı farklı bir e-posta kullanarak oturum açmak isterse:
+
+1. Yeni e-posta adresinin `mail` Kullanıcı nesnesinin veya özelliğine eklendiğinden emin olun `otherMails` . 
+2.  Özelliğindeki e-posta adresini `InvitedUserEmailAddress` Yeni e-posta adresiyle değiştirin.
+3. Kullanıcının kullanım durumunu sıfırlamak için aşağıdaki yöntemlerden birini kullanın.
+
+> [!NOTE]
+>Genel Önizleme sırasında, kullanıcının e-posta adresini sıfırlarken, `mail` özelliği yeni e-posta adresine ayarlamayı öneririz. Bu şekilde Kullanıcı, davetteki kullanım bağlantısını kullanmaya ek olarak dizininizde oturum açarak daveti kullanabilir.
+>
 ## <a name="use-powershell-to-reset-redemption-status"></a>Kullanım durumunu sıfırlamak için PowerShell 'i kullanma
 
-En son AzureADPreview PowerShell modülünü kurun ve `InvitedUserEMailAddress` Yeni e-posta adresine ayarlı yeni bir davet oluşturun ve `ResetRedemption` olarak ayarlayın `true` .
+En son AzureADPreview PowerShell modülünü kurun ve `InvitedUserEmailAddress` Yeni e-posta adresine ayarlı yeni bir davet oluşturun ve `ResetRedemption` olarak ayarlayın `true` .
 
 ```powershell  
 Uninstall-Module AzureADPreview 
@@ -43,7 +54,7 @@ New-AzureADMSInvitation -InvitedUserEmailAddress <<external email>> -SendInvitat
 
 ## <a name="use-microsoft-graph-api-to-reset-redemption-status"></a>Kullanım durumunu sıfırlamak için Microsoft Graph API kullanma
 
-[Microsoft Graph davet API](/graph/api/resources/invitation)'sini kullanarak `resetRedemption` özelliğini olarak ayarlayın `true` ve özelliğindeki yeni e-posta adresini belirtin `invitedUserEmailAddress` .
+[Microsoft Graph davet API](/graph/api/resources/invitation?view=graph-rest-1.0)'sini kullanarak `resetRedemption` özelliğini olarak ayarlayın `true` ve özelliğindeki yeni e-posta adresini belirtin `invitedUserEmailAddress` .
 
 ```json
 POST https://graph.microsoft.com/beta/invitations  

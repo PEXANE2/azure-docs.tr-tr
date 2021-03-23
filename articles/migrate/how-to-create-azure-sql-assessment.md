@@ -5,12 +5,12 @@ author: rashi-ms
 ms.author: rajosh
 ms.topic: tutorial
 ms.date: 02/07/2021
-ms.openlocfilehash: 14197516c0669055f756614b9559f1423703c6a8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 21553adf81d5b34813785db7cd6bbe3caf71c210
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102055597"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104780505"
 ---
 # <a name="create-an-azure-sql-assessment"></a>Azure SQL değerlendirmesi oluşturma
 
@@ -18,7 +18,7 @@ Azure 'a geçiş sürecinizin bir parçası olarak, bulut hazırlığını ölç
 Bu makalede, Azure geçişi: bulma ve değerlendirme aracı kullanılarak Azure SQL 'e geçiş hazırlığı sırasında keşfedilen SQL örneklerinin nasıl değerlendirireceğiniz gösterilmektedir.
 
 > [!Note]
-> VMware ortamınızda çalışan SQL Server örnekleri ve veritabanlarının keşfi ve değerlendirmesi artık önizlemededir. Bu özelliği denemek için [**bu bağlantıyı**](https://aka.ms/AzureMigrate/SQL) kullanarak **Doğu Avustralya** bölgesinde bir proje oluşturun. Zaten Doğu Avustralya bölgesinde bir projeniz varsa ve bu özelliği denemek istiyorsanız, lütfen portalda bu [**önkoşulları**](how-to-discover-sql-existing-project.md) tamamladığınızdan emin olun.
+> VMware ortamınızda çalışan SQL Server örnekleri ve veritabanlarının keşfi ve değerlendirmesi artık önizlemededir. 
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
@@ -138,8 +138,8 @@ Aylık maliyet tahmini, önerilen Azure SQL veritabanı ve/veya Azure SQL yönet
         Hazır | Hazır | Azure SQL VERITABANı veya Azure SQL MI [daha fazla bilgi](concepts-azure-sql-assessment-calculation.md#recommended-deployment-type) | Yes
         Hazır | Ready veya Unknown | Azure SQL DB | Yes
         Ready veya Unknown | Hazır | Azure SQL MI | Yes
-        Hazırlanma | Hazırlanma | Azure VM için hazırım [daha fazla bilgi](concepts-azure-sql-assessment-calculation.md#potentially-ready-for-azure-vm) | No
-        Ready veya Unknown | Ready veya Unknown | Bilinmiyor | No
+        Hazırlanma | Hazırlanma | Azure VM için hazırım [daha fazla bilgi](concepts-azure-sql-assessment-calculation.md#potentially-ready-for-azure-vm) | Hayır
+        Ready veya Unknown | Ready veya Unknown | Bilinmiyor | Hayır
     
     - **Hedef dağıtım türü** (değerlendirme özelliklerinde seçildiği gibi): **Azure SQL DB**
     
@@ -147,7 +147,7 @@ Aylık maliyet tahmini, önerilen Azure SQL veritabanı ve/veya Azure SQL yönet
         --- | --- |
         Hazır | Yes
         Hazırlanma | Hayır
-        Bilinmiyor | No
+        Bilinmiyor | Hayır
     
     - **Hedef dağıtım türü** (değerlendirme özelliklerinde seçildiği gibi): **Azure SQL mı**
     
@@ -155,7 +155,7 @@ Aylık maliyet tahmini, önerilen Azure SQL veritabanı ve/veya Azure SQL yönet
          --- | --- |
         Hazır | Yes
         Hazırlanma | Hayır
-        Bilinmiyor | No
+        Bilinmiyor | Hayır
 
 4. Kullanıcı veritabanlarının sayısını görmek için detaya git ' e tıklayın, örnek özellikleri, bilgi işlem (kapsamlı örnek) ve kaynak veritabanı depolama ayrıntıları dahil örnek ayrıntıları.
 5. Veritabanlarının listesini ve bunların ayrıntılarını gözden geçirmek için kullanıcı veritabanlarının sayısına tıklayın. Örnek olarak (yalnızca Örneğin, tahminler ve maliyetler): :::image type="content" source="./media/tutorial-assess-sql/assessment-db.png" alt-text="SQL örneği ayrıntısı":::

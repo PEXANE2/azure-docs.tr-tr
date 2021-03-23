@@ -3,12 +3,12 @@ title: Azure BareMetal altyapısının koşullarını öğrenin
 description: Azure BareMetal altyapısının koşullarını öğrenin.
 ms.topic: conceptual
 ms.date: 1/4/2021
-ms.openlocfilehash: fd7a39854c86f728ef152f8e7d858157e1ad26f4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b22a6cecb2647df3878cb8fd4ade93d9a7d963fd
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97861922"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104770895"
 ---
 # <a name="know-the-terms-for-baremetal-infrastructure"></a>BareMetal altyapısının koşullarını öğrenin
 
@@ -23,4 +23,4 @@ Bu makalede bazı önemli BareMetal terimleri ele alacağız.
 - **Kiracı**: BareMetal örnek damgasında dağıtılan bir müşteri bir *kiracıya yalıtılmış.* Bir kiracı, diğer kiracılardan ağ, depolama ve işlem katmanında yalıtılmıştır. Farklı kiracılara atanan depolama ve işlem birimleri, her birinin veya BareMetal örnek damgası düzeyinde birbirleriyle iletişim kuramazlar. Müşteri, farklı kiracılarda dağıtımları olmasını seçebilir. Daha sonra bile, BareMetal örnek damgası düzeyinde kiracılar arasında iletişim yoktur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Baremetal altyapısı](workloads/sap/baremetal-overview-architecture.md) hakkında daha fazla bilgi edinin veya [Baremetal örnek birimlerinin nasıl tanımlanacağına ve etkileşime gireceğini](workloads/sap/baremetal-infrastructure-portal.md)öğrenin. 
+[Baremetal altyapısı](concepts-baremetal-infrastructure-overview.md) hakkında daha fazla bilgi edinin veya [Baremetal örnek birimlerinin nasıl tanımlanacağına ve etkileşime gireceğini](connect-baremetal-infrastructure.md)öğrenin. 

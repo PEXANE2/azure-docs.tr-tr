@@ -2,13 +2,13 @@
 title: Azure Kaynak bilgilerini görüntüleme ve filtreleme
 description: Azure kaynaklarınızı daha iyi anlamak için bilgileri filtreleyin ve farklı görünümler kullanın.
 ms.topic: how-to
-ms.date: 09/11/2020
-ms.openlocfilehash: d3ad0c225a260fd0ae6b131b951b53c28042f4d9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/16/2021
+ms.openlocfilehash: bb48d0b0a7bf6017fbf407a95c33ef17729e34e3
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101738642"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771643"
 ---
 # <a name="view-and-filter-azure-resource-information"></a>Azure Kaynak bilgilerini görüntüleme ve filtreleme
 
@@ -48,7 +48,7 @@ Bir görünümü silmek için:
 
 1. **Yönet görünümü** ' nü seçin ve **tüm görünümlere gözatamazsınız**.
 
-1. **"Tüm kaynaklar" bölmesindeki kaydedilen görünümlerde** görünümü seçin ve **Sil** simgesini ![ görünümü Sil simgesini seçin ](media/manage-filter-resource-views/icon-delete.png) .
+1. **Kaydedilen görünümler** bölmesinde Görünüm ' ü seçin ve **Sil** simgesini ![ görünümü Sil simgesini seçin ](media/manage-filter-resource-views/icon-delete.png) .
 
 ## <a name="export-information-from-a-view"></a>Bir görünümden bilgileri dışarı aktarma
 
@@ -64,7 +64,7 @@ Portalda gezinirsiniz, tek bir kaynak grubu gibi bilgileri dışarı aktarabilec
 
 ## <a name="summarize-resources-with-visuals"></a>Görsellerle kaynakları özetleme
 
-Şimdiye kadar baktığı Görünümler _liste görünümlerdik_, ancak görselleri içeren _Özet görünümler_ de vardır. Bu görünümleri, görünümleri listeleyebilir gibi kaydedebilir ve kullanabilirsiniz. Filtreler iki tür görünüm arasında kalır. Aşağıda gösterilen **konum** görünümü gibi standart görünümlerin yanı sıra, Azure Storage **durum** görünümü gibi belirli hizmetlerle ilgili görünümler de vardır.
+Şimdiye kadar baktığı Görünümler _liste görünümlerdik_, ancak görselleri içeren _Özet görünümler_ de vardır. Bu görünümleri, liste görünümlerinde olduğu gibi kaydedebilir ve kullanabilirsiniz. Filtreler iki tür görünüm arasında kalır. Aşağıda gösterilen **konum** görünümü gibi standart görünümlerin yanı sıra, Azure Storage **durum** görünümü gibi belirli hizmetlerle ilgili görünümler de vardır.
 
 :::image type="content" source="media/manage-filter-resource-views/summary-map.png" alt-text="Harita görünümündeki kaynakların Özeti":::
 

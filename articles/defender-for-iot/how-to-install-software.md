@@ -1,18 +1,14 @@
 ---
 title: IoT yüklemesi için Defender
 description: IoT için Azure Defender için bir algılayıcı ve şirket içi yönetim konsolu yüklemeyi öğrenin.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/2/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 175f006adbc18d21e0f0c5d859737aedb00bc457
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5bdb292750ea041be68a22519583511f58b3b517
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103574671"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782257"
 ---
 # <a name="defender-for-iot-installation"></a>IoT yüklemesi için Defender
 
@@ -851,7 +847,7 @@ Yazılımı yüklemek için:
 
 1. Oturum açma kimlik bilgileri otomatik olarak oluşturulup sunulur. Oturum açma ve yönetim için gerekli olduklarından, bu kimlik bilgilerini güvenli bir yerde saklayın.
 
-    | Kullanıcı adı | Description |
+    | Kullanıcı adı | Açıklama |
     |--|--|
     | Destek | Kullanıcı yönetimi için yönetici kullanıcı. |
     | Six | Gerecle erişmek için kökün eşdeğeri. |

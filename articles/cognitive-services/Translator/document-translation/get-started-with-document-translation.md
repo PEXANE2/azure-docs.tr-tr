@@ -6,12 +6,12 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 03/05/2021
-ms.openlocfilehash: cb6b3af8d8fb6c2d3fe63964e59f8e3e32f0f0fd
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 21df853d9b1c7250e9a6eea37a68835a180f610d
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102486667"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773054"
 ---
 # <a name="get-started-with-document-translation-preview"></a>Belge çevirisi 'ni kullanmaya başlama (Önizleme)
 
@@ -20,7 +20,10 @@ ms.locfileid: "102486667"
 ## <a name="prerequisites"></a>Önkoşullar
 
 > [!NOTE]
-> Genellikle, Azure portal bir bilişsel hizmet kaynağı oluşturduğunuzda, çok sunuculu bir abonelik anahtarı veya tek servis abonelik anahtarı oluşturma seçeneğiniz vardır. Ancak, belge çevirisi şu anda yalnızca Translator (tek hizmet) kaynağında desteklenir ve **bilişsel** hizmetler (çok hizmet) kaynağına dahil değildir.
+>
+> 1. Genellikle, Azure portal bir bilişsel hizmet kaynağı oluşturduğunuzda, çok sunuculu bir abonelik anahtarı veya tek servis abonelik anahtarı oluşturma seçeneğiniz vardır. Ancak, belge çevirisi şu anda yalnızca Translator (tek hizmet) kaynağında desteklenir ve **bilişsel** hizmetler (çok hizmet) kaynağına dahil değildir.
+> 2. Belge çevirisi şu anda **S1 standart hizmet planında** kullanılabilir. _Bkz_ . bilişsel [Hizmetler fiyatlandırması — çevirici](https://azure.microsoft.com/pricing/details/cognitive-services/translator/).
+>
 
 Başlamak için şunlar gerekir:
 
@@ -29,8 +32,6 @@ Başlamak için şunlar gerekir:
 * Bir [**Translator**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) hizmet kaynağı (**bilişsel** hizmetler kaynağı değil).
 
 * [**Azure Blob depolama hesabı**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). BLOB verilerinizi depolama hesabınızda depolamak ve düzenlemek için kapsayıcılar oluşturacaksınız.
-
-* Azure aboneliğinizin yeni belge çevirisi özelliğini kullanmasını sağlamak için tamamlanmış bir [**belge çevirisi (Önizleme) formu**](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-riVR3Xj0tOnIRdZOALbM9UOEE4UVdFQVBRQVBWWDBRQUM3WjYxUEpUTC4u) .
 
 ## <a name="get-your-custom-domain-name-and-subscription-key"></a>Özel etki alanı adınızı ve abonelik anahtarınızı alın
 
@@ -186,7 +187,7 @@ Bir Batch belge çevirisi isteği, bir POST isteği aracılığıyla Translator 
 
 Her belge çevirisi API isteğine aşağıdaki üstbilgiler dahildir:
 
-|HTTP üstbilgisi|Description|
+|HTTP üstbilgisi|Açıklama|
 |---|--|
 |Ocp-Apim-Subscription-Key|**Gerekli**: değer, çevirmen veya bilişsel hizmetler kaynağınız için Azure abonelik anahtarıdır.|
 |İçerik Türü|**Gerekli**: yükün içerik türünü belirtir. Kabul edilen değerler Application/JSON veya charset = UTF-8 ' dir.|

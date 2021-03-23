@@ -3,12 +3,12 @@ title: Hizmet uç noktası kullanarak erişimi kısıtlama
 description: Azure sanal ağındaki bir hizmet uç noktasını kullanarak bir Azure Container Registry 'ye erişimi kısıtlayın. Hizmet uç noktası erişimi, Premium hizmet katmanının bir özelliğidir.
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 5f9bc7c9a6c8f2061765510a6396611502fd4a2a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c49595ee4ee79aef264a87dd48bccd03f3d4f5a5
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93026233"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773904"
 ---
 # <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>Bir Azure sanal ağında hizmet uç noktası kullanarak bir kapsayıcı kayıt defterine erişimi kısıtlama
 
@@ -26,7 +26,6 @@ Bir kayıt defteri hizmet uç noktası yapılandırmak **Premium** kapsayıcı k
 * Azure Container Registry için hizmet uç noktalarının gelecekte geliştirilmesi planlanmamaktadır. Bunun yerine [Özel uç noktalar](container-registry-private-link.md) kullanmanızı öneririz.
 * Kayıt defterindeki hizmet uç noktalarını yapılandırmak için Azure portal kullanamazsınız.
 * Bir hizmet uç noktası kullanılarak kapsayıcı kayıt defterine erişmek için bir konak olarak yalnızca bir [Azure Kubernetes hizmet](../aks/intro-kubernetes.md) kümesi veya Azure [sanal makinesi](../virtual-machines/linux/overview.md) kullanılabilir. *Azure Container Instances dahil diğer Azure hizmetleri desteklenmez.*
-* Her kayıt defteri en fazla 100 ağ erişim kuralını destekler.
 * Azure Container Registry için hizmet uç noktaları, Azure ABD kamu bulutu veya Azure Çin bulutu 'nda desteklenmez.
 
 [!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]

@@ -1,18 +1,14 @@
 ---
 title: Global kullanıcı erişim denetimini tanımlama
 description: Büyük kuruluşlarda, Kullanıcı izinleri karmaşık olabilir ve standart site ve bölge yapısına ek olarak genel bir kuruluş yapısıyla belirlenebilir.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/08/2020
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: 399eee06d472204eaf6dbc333f15cee7c4373739
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8f5f8df56a5dcb4152fc0ae9fcae3d504d6cf3e2
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100522283"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784297"
 ---
 # <a name="define-global-access-control"></a>Genel erişim denetimi tanımlama
 

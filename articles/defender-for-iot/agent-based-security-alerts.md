@@ -1,25 +1,14 @@
 ---
 title: Aracı tabanlı güvenlik uyarıları
-titleSuffix: Azure Defender for IoT
 description: IoT cihazının Özellikler ve hizmeti için Defender 'ı kullanarak güvenlik uyarıları ve önerilen düzeltme hakkında bilgi edinin.
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: shhazam-ms
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 2/16/2021
-ms.author: shhazam
-ms.openlocfilehash: 9e4a65e67200a682313dae8e326128edce3367d1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b586eb4bebfc584e6cec4c27df859dbebb817e2d
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495768"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784943"
 ---
 # <a name="defender-for-iot-devices-security-alerts"></a>IoT cihazları için Defender güvenlik uyarıları
 
@@ -33,7 +22,7 @@ Daha fazla bilgi için bkz. [özelleştirilebilir uyarılar](concept-customizabl
 
 ## <a name="agent-based-security-alerts"></a>Aracı tabanlı güvenlik uyarıları
 
-| Name | Önem derecesi | Veri Kaynağı | Description | Önerilen düzeltme adımları |
+| Name | Önem derecesi | Veri Kaynağı | Açıklama | Önerilen düzeltme adımları |
 |--|--|--|--|--|
 | **Yüksek** önem derecesi |  |  |  |
 | İkili komut satırı | Yüksek | Klasik Defender-IoT-Micro-Agent | Komut satırından çağrılan/yürütülen LA Linux ikilisi algılandı. Bu işlem meşru bir etkinlik veya cihazınızın güvenliğinin aşıldığını belirten bir gösterge olabilir. | Komutunu çalıştıran kullanıcıyla birlikte gözden geçirin ve cihazın cihazda çalıştırılması beklenen bir işlem olup olmadığını denetleyin. Aksi takdirde, uyarıyı bilgi güvenliği ekibinize iletin. |

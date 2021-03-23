@@ -9,21 +9,21 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/18/2021
 ms.custom: references_regions
-ms.openlocfilehash: d4b0a4107b3894d65dd8e168cd58566d4a4b5090
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: e0656c06f446ed6241b64040f063ed7ba419a942
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104720500"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771321"
 ---
 # <a name="semantic-search-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de anlamsal arama
 
 > [!IMPORTANT]
 > Anlamsal arama genel önizlemede, yalnızca önizleme REST API kullanılabilir. Önizleme özellikleri, olduğu gibi, [ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)altında sunulur ve genel kullanıma sunulmakta olan uygulamanın garantisi yoktur. Bu özellikler faturalandırılabilir. Daha fazla bilgi için bkz. [kullanılabilirlik ve fiyatlandırma](semantic-search-overview.md#availability-and-pricing).
 
-Anlamsal arama, daha yüksek kaliteli, daha doğal bir sorgu deneyimini destekleyen, sorguyla ilgili özelliklerin bir koleksiyonudur. 
+Anlamsal arama, arama sonuçlarına semantik ilgi ve dil anlama ekleyen, sorguyla ilgili yetenekler koleksiyonudur. *Anlam derecelendirmesi* , bir sorgu verildiğinde daha mantıklı olan eşleşmeleri yükseltir, şartlar arasında bağlam ve relatedsliği arar. Dil anlama, içeriğinizin, eşleşen belgeyi özetleyen veya bir soruyu yanıtlayan, daha sonra daha üretken bir arama deneyimi için bir arama sonuçları sayfasında oluşturulabilen *açıklamalı alt yazılar* ve *yanıtlar* bulur.
 
-Bu yetenekler, ilgili hüküm ve tümceciklere göre anlamlı bir vurgulama ve başlık ve yanıt ayıklama gibi bir anlamlı arama sonuçları açıklaması içerir. Son derece önceden eğitilen modeller ayıklama ve derecelendirme için kullanılır. Kullanıcıların aramanın beklediği hızlı performansı korumak için, semantik özetleme ve derecelendirme, [varsayılan benzerlik Puanlama algoritmasına](index-similarity-and-scoring.md#similarity-ranking-algorithms)göre puanlanmış olarak yalnızca ilk 50 sonuca uygulanır. Bu sonuçları belge Corpus olarak kullanarak, anlam derecelendirmesi bu sonuçları eşleşmenin anlam gücüne göre yeniden alır.
+Son derece önceden eğitilen modeller özetleme ve derecelendirme için kullanılır. Kullanıcıların aramanın beklediği hızlı performansı korumak için, semantik özetleme ve derecelendirme, [varsayılan benzerlik Puanlama algoritmasına](index-similarity-and-scoring.md#similarity-ranking-algorithms)göre puanlanmış olarak yalnızca ilk 50 sonuca uygulanır. Bu sonuçları belge Corpus olarak kullanarak, anlam derecelendirmesi bu sonuçları eşleşmenin anlam gücüne göre yeniden alır.
 
 Temel alınan teknoloji Bing ve Microsoft Research ' dir ve Bilişsel Arama altyapısına eklenti özelliği olarak tümleştirilir. Araştırmayı yedekleyen araştırma ve AI yatırımları hakkında daha fazla bilgi için bkz. [Bing 'den AI 'Nin Azure bilişsel arama (Microsoft Research blogu) nasıl güçlemesinden](https://www.microsoft.com/research/blog/the-science-behind-semantic-search-how-ai-from-bing-is-powering-azure-cognitive-search/).
 
