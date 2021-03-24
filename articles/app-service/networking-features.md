@@ -4,15 +4,15 @@ description: Azure App Service ağ özellikleri hakkında bilgi edinin ve güven
 author: ccompy
 ms.assetid: 5c61eed1-1ad1-4191-9f71-906d610ee5b7
 ms.topic: article
-ms.date: 10/18/2020
+ms.date: 03/26/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 730f26039db0f5441563ac7bf5d6b0ab536cbcd2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9ba85ecfe2b57ceb1eed5c51929107a95f5a4669
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99593138"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889153"
 ---
 # <a name="app-service-networking-features"></a>App Service ağ özellikleri
 
@@ -129,11 +129,15 @@ Bu özellik için bazı kullanım örnekleri:
 ![Application Gateway ile hizmet uç noktalarının kullanımını gösteren diyagram.](media/networking-features/service-endpoints-appgw.png)
 
 Hizmet uç noktalarını uygulamanızla yapılandırma hakkında daha fazla bilgi için bkz. [Azure App Service erişim kısıtlamaları][serviceendpoints].
-#### <a name="access-restriction-rules-based-on-service-tags-preview"></a>Hizmet etiketlerine göre erişim kısıtlama kuralları (Önizleme)
+
+#### <a name="access-restriction-rules-based-on-service-tags"></a>Hizmet etiketlerine dayalı erişim kısıtlama kuralları
+
 [Azure hizmet etiketleri][servicetags] , Azure HIZMETLERI için IP adreslerinin iyi tanımlanmış kümeleridir. Hizmet etiketleri, çeşitli Azure hizmetlerinde kullanılan IP aralıklarını gruplar ve genellikle belirli bölgelerin kapsamına alınır. Bu, belirli Azure hizmetlerinden *gelen* trafiği filtrelemenizi sağlar. 
 
 Etiketlerin tam listesi ve daha fazla bilgi için yukarıdaki hizmet etiketi bağlantısını ziyaret edin. Bu özelliği nasıl etkinleştireceğinizi öğrenmek için bkz. [erişim kısıtlamalarını yapılandırma][iprestrictions].
-#### <a name="http-header-filtering-for-access-restriction-rules-preview"></a>Erişim kısıtlama kuralları için http üst bilgisi filtrelemesi (Önizleme)
+
+#### <a name="http-header-filtering-for-access-restriction-rules"></a>Erişim kısıtlama kuralları için http üst bilgisi filtrelemesi
+
 Her erişim kısıtlama kuralı için, ek http üst bilgisi filtrelemesi ekleyebilirsiniz. Bu, gelen isteği ve belirli http üst bilgi değerlerine göre filtrelemenizi sağlar. Her üstbilginin kural başına en fazla 8 değeri olabilir. Aşağıdaki http üstbilgileri listesi şu anda desteklenmektedir: 
 * X-Iletilmiş-Için
 * X-Iletilen-konak
@@ -143,6 +147,7 @@ Her erişim kısıtlama kuralı için, ek http üst bilgisi filtrelemesi ekleyeb
 Http üst bilgisi filtrelemesinin bazı kullanım örnekleri şunlardır:
 * Ana bilgisayar adını ileten proxy sunucularından gelen trafiğe erişimi kısıtla
 * Belirli bir Azure ön kapısına erişimi bir hizmet etiketi kuralıyla ve X-Azure-FDıD üst bilgi kısıtlamasıyla kısıtla
+
 ### <a name="private-endpoint"></a>Özel Uç Nokta
 
 Özel uç nokta, Web uygulamanıza Azure özel bağlantısı tarafından özel olarak ve güvenli bir şekilde bağlanan bir ağ arabirimidir. Özel uç nokta, sanal ağınızdan, Web uygulamasını etkin bir şekilde sanal ağınıza getiren özel bir IP adresi kullanır. Bu özellik yalnızca Web uygulamanıza *gelen* akışlara yöneliktir.

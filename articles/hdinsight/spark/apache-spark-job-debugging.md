@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: f332416a10aa86cb7e0bc7ba560537955d9f2faa
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0dd250f0a8f67d7e370b8ff453e9cff4d88b7896
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98930563"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866106"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Azure HDInsight üzerinde çalışan Apache Spark işlerinin hatasını ayıklama
 
@@ -28,20 +28,20 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. YARN Kullanıcı arabirimini başlatın. **Küme panoları** altında **Yarn** ' yi seçin.
 
-    ![Azure portal YARN Kullanıcı arabirimini başlatın](./media/apache-spark-job-debugging/launch-apache-yarn-ui.png)
+    :::image type="content" source="./media/apache-spark-job-debugging/launch-apache-yarn-ui.png" alt-text="Azure portal YARN Kullanıcı arabirimini başlatın" border="true":::
 
    > [!TIP]  
    > Alternatif olarak, Ayrıca, ambarı kullanıcı arabiriminden YARN Kullanıcı arabirimini de başlatabilirsiniz. Ambarı Kullanıcı arabirimini başlatmak için **küme panoları** altında, **ambarı giriş** ' i seçin. Ambarı kullanıcı arabiriminden,   >  etkin kaynak yöneticisi > **Kaynak Yöneticisi Kullanıcı arabirimine**> Yarn **hızlı bağlantılar** ' a gidin.
 
 2. Jupiter not defterlerini kullanarak Spark işini başlattığınız için, uygulamanın **remoteparlak mıknatıcs** (not defterlerinden başlatılan tüm uygulamaların adı) adına sahip olması gerekir. İş hakkında daha fazla bilgi edinmek için uygulama adına karşı uygulama KIMLIĞI ' ni seçin. Bu eylem uygulama görünümünü başlatır.
 
-    ![Spark geçmiş sunucusu Spark uygulama KIMLIĞINI bul](./media/apache-spark-job-debugging/find-application-id1.png)
+    :::image type="content" source="./media/apache-spark-job-debugging/find-application-id1.png" alt-text="Spark geçmiş sunucusu Spark uygulama KIMLIĞINI bul" border="true":::
 
     Jupyter not defterlerinden başlatılan uygulamalar için, Not defterinizden çıkana kadar durum her zaman **çalışır** .
 
 3. Uygulama görünümünden, uygulamayla ve günlüklerle (stdout/stderr) ilişkili kapsayıcıları bulmak için daha fazla ayrıntıya gidebilirsiniz. Spark Kullanıcı arabirimini aşağıda gösterildiği gibi **Izleme URL**'sine karşılık gelen bağlamaya tıklayarak da başlatabilirsiniz.
 
-    ![Spark geçmiş sunucusu kapsayıcı günlüklerini indirme](./media/apache-spark-job-debugging/download-container-logs.png)
+    :::image type="content" source="./media/apache-spark-job-debugging/download-container-logs.png" alt-text="Spark geçmiş sunucusu kapsayıcı günlüklerini indirme" border="true":::
 
 ## <a name="track-an-application-in-the-spark-ui"></a>Spark Kullanıcı arabirimindeki bir uygulamayı izleme
 
@@ -49,29 +49,29 @@ Spark Kullanıcı arabiriminde, daha önce başlattığınız uygulama tarafınd
 
 1. Spark Kullanıcı arabirimini başlatmak için, uygulama görünümünden, yukarıdaki ekran yakalama bölümünde gösterildiği gibi **izleme URL 'sine** karşı bağlantıyı seçin. Jupyter Notebook çalışan uygulama tarafından başlatılan Spark işlerinin tümünü görebilirsiniz.
 
-    ![Spark geçmiş sunucusu işleri sekmesi](./media/apache-spark-job-debugging/view-apache-spark-jobs.png)
+    :::image type="content" source="./media/apache-spark-job-debugging/view-apache-spark-jobs.png" alt-text="Spark geçmiş sunucusu işleri sekmesi" border="true":::
 
 2. Her bir yürütücü için işleme ve depolama bilgilerini görmek üzere **Yürüticileri** sekmesini seçin. Ayrıca, **Iş parçacığı döküm** bağlantısını seçerek çağrı yığınını da alabilirsiniz.
 
-    ![Spark geçmiş sunucu yürüticileri sekmesi](./media/apache-spark-job-debugging/view-spark-executors.png)
+    :::image type="content" source="./media/apache-spark-job-debugging/view-spark-executors.png" alt-text="Spark geçmiş sunucu yürüticileri sekmesi" border="true":::
 
 3. Uygulamayla ilişkili aşamaları görmek için **aşamalar** sekmesini seçin.
 
-    ![Spark geçmiş sunucusu aşamaları sekmesi](./media/apache-spark-job-debugging/view-apache-spark-stages.png "Spark aşamalarını görüntüle")
+    :::image type="content" source="./media/apache-spark-job-debugging/view-apache-spark-stages.png " alt-text="Spark geçmiş sunucusu aşamaları sekmesi" border="true":::
 
     Her aşamada, aşağıda gösterildiği gibi, yürütme istatistiklerini görüntüleyebileceğiniz birden fazla görev olabilir.
 
-    ![Spark geçmiş sunucusu aşamaları sekme ayrıntıları](./media/apache-spark-job-debugging/view-spark-stages-details.png "Spark aşamaları ayrıntılarını görüntüle")
+    :::image type="content" source="./media/apache-spark-job-debugging/view-spark-stages-details.png " alt-text="Spark geçmiş sunucusu aşamaları sekme ayrıntıları" border="true":::
 
 4. Aşama ayrıntıları sayfasında, DAG görselleştirmesini başlatabilirsiniz. Aşağıda gösterildiği gibi sayfanın üst kısmındaki **dag görselleştirme** bağlantısını genişletin.
 
-    ![Spark aşamaları DAG görselleştirmesini görüntüle](./media/apache-spark-job-debugging/view-spark-stages-dag-visualization.png)
+    :::image type="content" source="./media/apache-spark-job-debugging/view-spark-stages-dag-visualization.png" alt-text="Spark aşamaları DAG görselleştirmesini görüntüle" border="true":::
 
     DAG veya Direct Aclyic Graph, uygulamadaki farklı aşamaları temsil eder. Grafikteki her mavi kutu, uygulamadan çağrılan bir Spark işlemini temsil eder.
 
 5. Aşama ayrıntıları sayfasında, uygulama zaman çizelgesi görünümünü de başlatabilirsiniz. Sayfanın üst kısmındaki **olay zaman çizelgesi** bağlantısını aşağıda gösterildiği gibi genişletin.
 
-    ![Spark aşamaları olay zaman çizelgesini görüntüle](./media/apache-spark-job-debugging/view-spark-stages-event-timeline.png)
+    :::image type="content" source="./media/apache-spark-job-debugging/view-spark-stages-event-timeline.png" alt-text="Spark aşamaları olay zaman çizelgesini görüntüle" border="true":::
 
     Bu görüntü, Spark olaylarını bir zaman çizelgesi biçiminde görüntüler. Zaman çizelgesi görünümü, işler arasında, iş içinde ve bir aşamada olmak üzere üç düzeyde kullanılabilir. Yukarıdaki görüntü, belirli bir aşama için zaman çizelgesi görünümünü yakalar.
 
@@ -92,14 +92,14 @@ Bir iş tamamlandıktan sonra, işle ilgili bilgiler Spark geçmiş sunucusunda 
 
 1. Spark geçmiş sunucusunu başlatmak için, **genel bakış** sayfasında, **küme panoları** altında **Spark geçmiş sunucusu** ' nu seçin.
 
-    ![Spark geçmiş sunucusu Azure portal Başlat](./media/apache-spark-job-debugging/launch-spark-history-server.png "Spark geçmişini Başlat Sunucu1")
+    :::image type="content" source="./media/apache-spark-job-debugging/launch-spark-history-server.png " alt-text="Spark geçmiş sunucusu Azure portal Başlat" border="true":::
 
    > [!TIP]  
    > Alternatif olarak, aynı zamanda, ambarı kullanıcı arabiriminden Spark geçmiş sunucusu kullanıcı arabirimini de başlatabilirsiniz. Ambarı Kullanıcı arabirimini başlatmak için genel bakış dikey penceresinden, **küme panoları** altında, **ambarı giriş** ' i seçin. Ambarı kullanıcı arabiriminden **Spark2**  >  **hızlı bağlantılar**  >  **Spark2 geçmiş sunucusu kullanıcı arabirimi**' ne gidin.
 
 2. Listelenen tüm tamamlanmış uygulamaları görürsünüz. Daha fazla bilgi için bir uygulamanın ayrıntısına gitmek üzere bir uygulama KIMLIĞI seçin.
 
-    ![Spark geçmiş sunucusu tamamlanan uygulamalar](./media/apache-spark-job-debugging/view-completed-applications.png "Spark geçmişini Başlat Sunucu2")
+    :::image type="content" source="./media/apache-spark-job-debugging/view-completed-applications.png " alt-text="Spark geçmiş sunucusu tamamlanan uygulamalar" border="true":::
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

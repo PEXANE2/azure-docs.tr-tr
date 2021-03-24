@@ -4,12 +4,12 @@ description: Bu makalede, e-posta bildirimleri için bir Apache ambarı ile Send
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 03/10/2020
-ms.openlocfilehash: 63d0f87925f14fddf3dbd722fa72326ee8b04f31
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5b344c0c4b1db9159d0223c861e5d371cb225f5a
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946977"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867211"
 ---
 # <a name="tutorial-configure-apache-ambari-email-notifications-in-azure-hdinsight"></a>Öğretici: Azure HDInsight 'ta Apache ambarı e-posta bildirimlerini yapılandırma
 
@@ -33,15 +33,15 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 1. Hesabınız için SendGrid Web sayfasına gitmek üzere Genel Bakış sayfasında **Yönet**' i seçin.
 
-    ![Azure portalında SendGrid 'e genel bakış](./media/apache-ambari-email/azure-portal-sendgrid-manage.png)
+    :::image type="content" source="./media/apache-ambari-email/azure-portal-sendgrid-manage.png" alt-text="Azure portalında SendGrid 'e genel bakış":::
 
 1. Sol menüden hesap adınız ' ne ve ardından **Hesap ayrıntıları**' na gidin.
 
-    ![SendGrid Pano gezintisi](./media/apache-ambari-email/sendgrid-dashboard-navigation.png)
+    :::image type="content" source="./media/apache-ambari-email/sendgrid-dashboard-navigation.png" alt-text="SendGrid Pano gezintisi":::
 
 1. **Hesap ayrıntıları** sayfasında, **Kullanıcı adını** kaydedin.
 
-    ![SendGrid hesap ayrıntıları](./media/apache-ambari-email/sendgrid-account-details.png)
+    :::image type="content" source="./media/apache-ambari-email/sendgrid-account-details.png" alt-text="SendGrid hesap ayrıntıları":::
 
 ## <a name="configure-ambari-e-mail-notification"></a>Ambarı e-posta bildirimini yapılandırma
 
@@ -51,7 +51,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 1. **Uyarı bildirimlerini yönet** penceresinde **+** simgesini seçin.
 
-    ![Ekran görüntüsü, uyarı bildirimlerini Yönet iletişim kutusunu gösterir.](./media/apache-ambari-email/azure-portal-create-notification.png)
+    :::image type="content" source="./media/apache-ambari-email/azure-portal-create-notification.png" alt-text="Ekran görüntüsü, uyarı bildirimlerini Yönet iletişim kutusunu gösterir.":::
 
 1. **Uyarı bildirimi oluştur** iletişim kutusunda aşağıdaki bilgileri sağlayın:
 
@@ -60,7 +60,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
     |Ad|Bildirim için bir ad girin.|
     |Gruplar|İstediğiniz şekilde yapılandırın.|
     |Önem derecesi|İstediğiniz şekilde yapılandırın.|
-    |Description|İsteğe bağlı.|
+    |Açıklama|İsteğe bağlı.|
     |Yöntem|**E-postada** bırakın.|
     |E-posta|Bildirimleri alacak e-postaları virgülle ayırarak belirtin.|
     |SMTP Sunucusu|`smtp.sendgrid.net`|
@@ -72,7 +72,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
     |Parola onayı|Parolayı yeniden girin.|
     |TLS 'yi Başlat|Bu onay kutusunu seçin|
 
-    ![Ekran görüntüsü, uyarı bildirimi oluştur iletişim kutusunu gösterir.](./media/apache-ambari-email/ambari-create-alert-notification.png)
+    :::image type="content" source="./media/apache-ambari-email/ambari-create-alert-notification.png" alt-text="Ekran görüntüsü, uyarı bildirimi oluştur iletişim kutusunu gösterir.":::
 
     **Kaydet**’i seçin. **Uyarı bildirimlerini yönet** penceresine geri dönersiniz.
 

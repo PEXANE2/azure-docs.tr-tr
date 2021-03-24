@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 3eb761a793c41c2e2cc2cb952e4fb9f241b41ab6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 602fa1cab71a797dd25aca263e0c6a9f2aa616bb
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98929708"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870237"
 ---
 # <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>YARN ile yüksek kullanılabilirliğe sahip Apache Spark akışı işleri oluşturma
 
@@ -18,7 +18,7 @@ ms.locfileid: "98929708"
 
 Spark akışı, verilere dönüşümler uygulayabileceğiniz ve ardından sonuçları filesystems, veritabanları, panolar ve konsola gönderebilecek uzun süre çalışan işler oluşturur. Spark akışı, önce tanımlı bir zaman aralığı boyunca bir olay toplu işi toplayarak mikro-veri yığınlarını işler. Ardından, bu toplu işlem, işleme ve çıkış için tarihinde gönderilir. Toplu iş zaman aralıkları genellikle saniyenin kesirleri olarak tanımlanır.
 
-![Spark Streaming](./media/apache-spark-streaming-high-availability/apache-spark-streaming.png)
+:::image type="content" source="./media/apache-spark-streaming-high-availability/apache-spark-streaming.png" alt-text="Spark akışı" border="false":::
 
 ## <a name="dstreams"></a>DStreams
 
@@ -26,13 +26,13 @@ Spark akışı, *ayrık bir akış* (dstream) kullanarak sürekli bir veri akı�
 
 Spark Core, *Esnek dağıtılmış veri kümeleri* (rdds) kullanır. RDDs, verileri kümedeki birden çok düğüme dağıtarak, her düğümün en iyi performansı elde etmek için verileri tamamen bellek içinde tutar. Her RDD bir toplu iş aralığı üzerinden toplanan olayları temsil eder. Toplu iş aralığı geçtiğinde, Spark akışı bu aralıktaki tüm verileri içeren yeni bir RDD oluşturur. Bu sürekli RDDs kümesi bir DStream 'e toplanır. Spark akış uygulaması, her bir Batch 'in RDD ' de depolanan verileri işler.
 
-![Spark DStream](./media/apache-spark-streaming-high-availability/apache-spark-dstream.png)
+:::image type="content" source="./media/apache-spark-streaming-high-availability/apache-spark-dstream.png" alt-text="Spark DStream" border="false":::
 
 ## <a name="spark-structured-streaming-jobs"></a>Spark yapılandırılmış akış işleri
 
 Spark yapılandırılmış akış, Spark 2,0 ' de, yapılandırılmış veri akışı için kullanılmak üzere analitik bir altyapı olarak sunulmuştur. Spark yapısal akışı, Mini SQL toplu işlem altyapısı API 'Lerini kullanır. Spark akışında olduğu gibi, Spark yapılandırılmış akış, zaman içinde sürekli olarak gelen mikro-veri yığınlarıyla ilgili hesaplamalar çalıştırır. Spark yapılandırılmış akış, bir veri akışını sınırsız satır içeren bir giriş tablosu olarak temsil eder. Diğer bir deyişle, giriş tablosu yeni veri geldiğinde büyümeye devam eder. Bu giriş tablosu, uzun süre çalışan bir sorgu tarafından sürekli işlenir ve sonuçlar bir çıktı tablosuna yazılır.
 
-![Spark yapılandırılmış akışı](./media/apache-spark-streaming-high-availability/structured-streaming.png)
+:::image type="content" source="./media/apache-spark-streaming-high-availability/structured-streaming.png" alt-text="Spark yapılandırılmış akışı" border="false":::
 
 Yapılandırılmış akışta, veriler sisteme ulaşır ve hemen giriş tablosuna alınır. Bu giriş tablosuna karşı işlem gerçekleştiren sorgular yazarsınız. Sorgu çıktısı, sonuçlar tablosu olarak adlandırılan başka bir tablo oluşturur. Sonuçlar tablosu, bir ilişkisel veritabanı gibi bir dış veri deposuna gönderilmek üzere veri çizeceğiniz sorgunun sonuçlarını içerir. *Tetikleyici aralığı* , giriş tablosundan verilerin işlendiği zaman için zamanlamayı ayarlar. Varsayılan olarak, yapılandırılmış akış, verileri ulaştığı anda işler. Ancak, tetikleyiciyi daha uzun bir aralıkta çalışacak şekilde de yapılandırabilirsiniz, böylece akış verileri zaman tabanlı toplu işlerle işlenir. Sonuçlar tablosundaki veriler, akış sorgusunun başlamasından bu yana tüm çıkış verilerini içermesi (*tam mod*) ve yalnızca sorgunun işlendiği son tarihten bu yana yalnızca yeni olan verileri (*ekleme modu*) içermesi için her yeni veri bir kez yenilenebilir.
 
@@ -54,7 +54,7 @@ Her bir olayı bir kez (ve yalnızca bir kez) işleyen bir uygulama oluşturmak 
 
 HDInsight 'ta küme çalışması, *henüz başka bir kaynak Negotiator* (Yarn) tarafından koordine edilir. Spark akışı için yüksek kullanılabilirlik tasarlama, Spark akışı ve ayrıca YARN bileşenleri için teknikler içerir.  YARN kullanan örnek bir yapılandırma aşağıda gösterilmiştir.
 
-![YARN mimarisi](./media/apache-spark-streaming-high-availability/hdi-yarn-architecture.png)
+:::image type="content" source="./media/apache-spark-streaming-high-availability/hdi-yarn-architecture.png" alt-text="YARN mimarisi" border="false":::
 
 Aşağıdaki bölümlerde bu yapılandırmaya ilişkin tasarım konuları açıklanır.
 

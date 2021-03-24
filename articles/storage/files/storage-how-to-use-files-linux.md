@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5161d8e169a7eb9e757dfbfa71fa697880e1806e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4ace5620bf98b06956c294a12b6b08881422e718
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98673696"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952346"
 ---
 # <a name="use-azure-files-with-linux"></a>Azure Dosyaları'nı Linux ile kullanma
 [Azure Dosyaları](storage-files-introduction.md), Windows'un kolay kullanılan bulut dosya sistemidir. Azure dosya paylaşımları, [SMB çekirdek istemcisi](https://wiki.samba.org/index.php/LinuxCIFS)kullanılarak Linux dağıtımları ile bağlanabilir. Bu makalede bir Azure dosya paylaşımının bağlanması için iki yol gösterilmektedir: `mount` ' de bir giriş oluşturarak, komut ve önyükleme ile isteğe bağlı `/etc/fstab` .
@@ -94,7 +94,7 @@ uname -r
     Şirket ağınızda 445 numaralı bağlantı noktasını açabilmeniz veya bir ISS tarafından bu işlemi gerçekleştirmek engelleniyorsa, bağlantı noktası 445 ' yi çözmek için bir VPN bağlantısı veya ExpressRoute kullanabilirsiniz. Daha fazla bilgi için bkz. [doğrudan Azure dosya paylaşma erişimi Için ağ değerlendirmeleri](storage-files-networking-overview.md).
 
 ## <a name="mounting-azure-file-share"></a>Azure dosya paylaşımından bağlama
-Linux dağıtımına sahip bir Azure dosya paylaşımının kullanılması için Azure dosya paylaşımının bağlama noktası olarak kullanılacak bir dizin oluşturmanız gerekir. Bir bağlama noktası, Linux sisteminizde herhangi bir yerde oluşturulabilir, ancak bunu/mntın altında oluşturmak yaygın bir kuraldır. Bağlama noktası oluşturulduktan sonra, `mount` Azure dosya paylaşımında erişim için komutunu kullanırsınız.
+Linux dağıtımına sahip bir Azure dosya paylaşımının kullanılması için Azure dosya paylaşımının bağlama noktası olarak kullanılacak bir dizin oluşturmanız gerekir. Bir bağlama noktası, Linux sisteminizde herhangi bir yerde oluşturulabilir, ancak bunu/Mount altında oluşturmak yaygın bir kuraldır. Bağlama noktası oluşturulduktan sonra, `mount` Azure dosya paylaşımında erişim için komutunu kullanırsınız.
 
 İsterseniz aynı Azure dosya paylaşımının birden çok bağlama noktasına bağlayabilirsiniz.
 
@@ -106,7 +106,7 @@ Linux dağıtımına sahip bir Azure dosya paylaşımının kullanılması için
     storageAccountName="<your-storage-account>"
     fileShareName="<your-file-share>"
 
-    mntPath="/mnt/$storageAccountName/$fileShareName"
+    mntPath="/mount/$storageAccountName/$fileShareName"
 
     sudo mkdir -p $mntPath
     ```
@@ -135,14 +135,14 @@ Linux dağıtımına sahip bir Azure dosya paylaşımının kullanılması için
 Azure dosya paylaşımını kullanarak işiniz bittiğinde, `sudo umount $mntPath` paylaşımını çıkarmak için kullanabilirsiniz.
 
 ### <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>İle Azure dosya paylaşımının kalıcı bir bağlama noktası oluşturun `/etc/fstab`
-1. **Bağlama noktası için bir klasör oluşturun**: bir bağlama noktası klasörü dosya sisteminde herhangi bir yerde oluşturulabilir, ancak bunu/mntın altında oluşturmak yaygın bir kuraldır. Örneğin, aşağıdaki komut yeni bir dizin oluşturur,, ve ile `<your-resource-group>` `<your-storage-account>` `<your-file-share>` ortamınıza uygun bilgileri alır:
+1. **Bağlama noktası için bir klasör oluşturun**: bir bağlama noktası klasörü dosya sisteminde herhangi bir yerde oluşturulabilir, ancak bunu/Mount altında oluşturmak yaygın bir kuraldır. Örneğin, aşağıdaki komut yeni bir dizin oluşturur,, ve ile `<your-resource-group>` `<your-storage-account>` `<your-file-share>` ortamınıza uygun bilgileri alır:
 
     ```bash
     resourceGroupName="<your-resource-group>"
     storageAccountName="<your-storage-account>"
     fileShareName="<your-file-share>"
 
-    mntPath="/mnt/$storageAccountName/$fileShareName"
+    mntPath="/mount/$storageAccountName/$fileShareName"
 
     sudo mkdir -p $mntPath
     ```
@@ -250,22 +250,22 @@ Linux Kernel 4,18 ' den itibaren, eski nedenler için çağrılan SMB çekirdek 
 
 | Dağıtım | SMB 1 devre dışı bırakabilir |
 |--------------|-------------------|
-| Ubuntu 14.04-16.04 | No |
+| Ubuntu 14.04-16.04 | Hayır |
 | Ubuntu 18.04 | Yes |
 | Ubuntu 19.04 + | Yes |
-| De, 8-9 | No |
+| De, 8-9 | Hayır |
 | De, 10 + | Yes |
 | Fedora 29 + | Yes |
-| CentOS 7 | No | 
+| CentOS 7 | Hayır | 
 | CentOS 8 + | Yes |
-| Red Hat Enterprise Linux 6. x-7. x | No |
+| Red Hat Enterprise Linux 6. x-7. x | Hayır |
 | Red Hat Enterprise Linux 8 + | Yes |
-| openSUSE artık 15,0 | No |
+| openSUSE artık 15,0 | Hayır |
 | openSUSE artık 15.1 + | Yes |
 | openSUSE Tpoed | Yes |
-| SUSE Linux Enterprise 11. x-12. x | No |
-| SUSE Linux Enterprise 15 | No |
-| SUSE Linux Enterprise 15,1 | No |
+| SUSE Linux Enterprise 11. x-12. x | Hayır |
+| SUSE Linux Enterprise 15 | Hayır |
+| SUSE Linux Enterprise 15,1 | Hayır |
 
 Aşağıdaki komutla, Linux dağılımının modül parametresini destekleyip desteklemediğini kontrol edebilirsiniz `disable_legacy_dialects` .
 

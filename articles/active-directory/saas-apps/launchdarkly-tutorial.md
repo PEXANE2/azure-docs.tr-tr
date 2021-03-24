@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: jeedes
-ms.openlocfilehash: ddfffb77ca889aea9ff32c7be1ce2e4cb7fc04a7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d9db86e400d862dd67582ede0bf44b9e9fd1c893
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102037616"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954811"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-launchdarkly"></a>Öğretici: Launchkaranlık ile tümleştirme Azure Active Directory
 
@@ -159,8 +159,8 @@ Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki se�
 
 * Azure portal bu uygulamayı test et ' e tıklayın ve SSO 'yu ayarladığınız başlatma için otomatik olarak oturum açmış olmanız gerekir.
 
-* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım üzerinde Launchkaranlık Kutucuğa tıkladığınızda, SSO 'yu ayarladığınız başlatma için otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım üzerinde Launchkaranlık Kutucuğa tıkladığınızda, SSO 'yu ayarladığınız başlatma için otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Launchkaranlık 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve kurtarılmasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+Launchkaranlık 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve kurtarılmasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).

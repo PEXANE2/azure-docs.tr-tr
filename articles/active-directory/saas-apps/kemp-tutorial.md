@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/04/2021
 ms.author: jeedes
-ms.openlocfilehash: aa36d8522f548101ef3354237d93128b0f041eac
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 91f6db79b7d18dc8b34ba1712d74a92000d63528
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101648970"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953689"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-kemp-loadmaster-azure-ad-integration"></a>Öğretici: Kemp LoadMaster Azure AD tümleştirmesiyle SSO tümleştirmesi Azure Active Directory
 
@@ -371,8 +371,8 @@ Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki se�
 
 * Azure portal bu uygulamayı test et ' e tıklayın ve SSO 'yu ayarladığınız Kemp LoadMaster Azure AD tümleştirmesinde otomatik olarak oturum açmış olmanız gerekir.
 
-* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım içindeki Kemp LoadMaster Azure AD tümleştirme kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Kemp LoadMaster Azure AD tümleştirmesinde otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım içindeki Kemp LoadMaster Azure AD tümleştirme kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Kemp LoadMaster Azure AD tümleştirmesinde otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kemp LoadMaster Azure AD tümleştirmesini yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+Kemp LoadMaster Azure AD tümleştirmesini yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).

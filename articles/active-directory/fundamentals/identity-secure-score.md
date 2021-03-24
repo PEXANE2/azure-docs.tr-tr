@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 03/23/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: tilarso
+ms.reviewer: guptashi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c319489fe4c884cd5de48ac2d3e47e7beb3026f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 23832d9f1205105f1f9711cdf3260b74ee4a9bb1
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90705495"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952272"
 ---
 # <a name="what-is-the-identity-secure-score-in-azure-active-directory"></a>Azure Active Directory kimlik güvenli puanı nedir?
 
@@ -24,7 +24,7 @@ Azure AD kiracınız ne düzeyde güvenli? Bu sorunun nasıl yanıtlandığını
 
 ## <a name="what-is-an-identity-secure-score"></a>Kimlik güvenliği puanı nedir?
 
-Kimlik güvenli puanı, 1 ile 223 arasında, Microsoft 'un güvenlik için en iyi yöntem önerileriyle nasıl hizalanacağını gösteren bir gösterge olarak işlev görür. Kimlik güvenli puanı 'ndaki her geliştirme eylemi, özel yapılandırmanıza göre tasarlanmıştır.  
+Kimlik güvenli puanı, Microsoft 'un güvenlik için en iyi yöntem önerileriyle nasıl hizalandığı hakkında bir gösterge olarak işlev gören yüzdesidir. Kimlik güvenli puanı 'ndaki her geliştirme eylemi, özel yapılandırmanıza göre tasarlanmıştır.  
 
 ![Güvenlik puanı](./media/identity-secure-score/identity-secure-score-overview.png)
 
@@ -78,7 +78,7 @@ Kimlik güvenliği puanı aşağıdaki roller tarafından kullanılabilir:
 
 ### <a name="how-are-controls-scored"></a>Denetimler nasıl puanlanır?
 
-Denetimler iki şekilde puanlanır. Bazıları ikili bir biçimde puanlanır. önerimize göre yapılandırılmış özellik veya ayar varsa puanın %100 ' i elde edersiniz. Diğer puanlar Toplam yapılandırmanın yüzdesi olarak hesaplanır. Örneğin, geliştirme önerisi, tüm kullanıcılarınızı MFA ile koruyorarsa ve yalnızca 5/100 Toplam Kullanıcı korunuyorsa, 2 punto (5 korumalı/100 toplam * 30 maksimum Pts = 2 Pts kısmi puanı) için kısmi bir puan vermiş olursunuz.
+Denetimler iki şekilde puanlanır. Bazıları ikili bir biçimde puanlanır. önerimize göre yapılandırılmış özellik veya ayar varsa puanın %100 ' i elde edersiniz. Diğer puanlar Toplam yapılandırmanın yüzdesi olarak hesaplanır. Örneğin, iyileştirme önerisi, tüm kullanıcılarınızı MFA ile koruduysanız ve yalnızca 5/100 Toplam Kullanıcı korunuyorsa, yalnızca 5 ' e kadar% 10,71 ' a kadar bir kısmi 0,53 puan elde edersiniz (5 korunan/100 Total * 10,71% maksimum = 0,53% kısmi puan).
 
 ### <a name="what-does-not-scored-mean"></a>[Puanlanmadı] ne anlama geliyor?
 
@@ -98,7 +98,7 @@ Kısacası, hayır. Güvenli puan, ihlal alma olasıınızın mutlak bir ölçü
 
 ### <a name="how-should-i-interpret-my-score"></a>Puanımı nasıl yorumlayabilirim?
 
-Önerilen güvenlik özelliklerini yapılandırmanızdan veya güvenlikle ilgili görevleri (raporları okuma gibi) gerçekleştirmenizden dolayı size puan verilir. Kullanıcılarınız için Multi-Factor Authentication'ı (MFA) etkinleştirmeniz gibi bazı eylemler, kısmen tamamlanmış olarak puanlanır. Güvenli puanınız, kullandığınız Microsoft güvenlik hizmetlerinin doğrudan temsilcisidir. Güvenliğin kullanılabilirlik ile dengelenmesi gerektiğini unutmayın. Tüm güvenlik denetimlerinin bir de kullanıcı etkisi bileşeni vardır. Düşük kullanıcı etkisine sahip denetimlerin, kullanıcılarınızın gündelik işlemleri üzerinde çok az etkisi olması veya hiç olmaması gerekir.
+Puanınız önerilen güvenlik özelliklerini yapılandırma veya güvenlikle ilgili görevleri (raporları okuma gibi) gerçekleştirmeye yönelik olarak geliştirilmiştir. Kullanıcılarınız için Multi-Factor Authentication'ı (MFA) etkinleştirmeniz gibi bazı eylemler, kısmen tamamlanmış olarak puanlanır. Güvenli puanınız, kullandığınız Microsoft güvenlik hizmetlerinin doğrudan temsilcisidir. Güvenliğin kullanılabilirlik ile dengelenmesi gerektiğini unutmayın. Tüm güvenlik denetimlerinin bir de kullanıcı etkisi bileşeni vardır. Düşük kullanıcı etkisine sahip denetimlerin, kullanıcılarınızın gündelik işlemleri üzerinde çok az etkisi olması veya hiç olmaması gerekir.
 
 Puan geçmişinizi görmek için [Microsoft 365 Güvenlik Merkezi](https://security.microsoft.com/) ' ne gidin ve genel Microsoft güvenli puanınızı gözden geçirin. Görünüm geçmişi ' ne tıklayarak genel güvenli puanınızın değişikliklerini gözden geçirebilirsiniz. Belirli bir tarih seçerek o gün hangi denetimlerin etkinleştirildiğini ve her birinden kaç puan kazandığınızı görün.
 

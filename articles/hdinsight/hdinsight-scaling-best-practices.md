@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 3524b5d2274c52aa94fa1c3420fb0d3245d9b730
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6e6c692e8fc13d1703df44c99e9969ba4db5f119
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98932072"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872107"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight kümelerini ölçeklendirme
 
@@ -36,7 +36,7 @@ Microsoft, kümeleri ölçeklendirmek için aşağıdaki yardımcı programları
 |[Azure Klasik CLI](hdinsight-administer-use-command-line.md)|`azure hdinsight cluster resize CLUSTERNAME NEWSIZE` |
 |[Azure portalı](https://portal.azure.com)|HDInsight kümesi bölmesini açın, sol taraftaki menüden **küme boyutu** ' nu seçin, ardından küme boyutu bölmesinde çalışan düğümlerinin sayısını yazın ve Kaydet ' i seçin.|  
 
-![Azure portal ölçeği kümesi seçeneği](./media/hdinsight-scaling-best-practices/azure-portal-settings-nodes.png)
+:::image type="content" source="./media/hdinsight-scaling-best-practices/azure-portal-settings-nodes.png" alt-text="Azure portal ölçeği kümesi seçeneği":::
 
 Bu yöntemlerin herhangi birini kullanarak, HDInsight kümenizi dakikalar içinde yukarı veya aşağı ölçeklendirebilirsiniz.
 
@@ -82,7 +82,7 @@ Veri düğümlerinin sayısını değiştirmenin etkisi, HDInsight tarafından d
 
     1. Yeniden dengelemek istediğiniz topolojiyi seçin, sonra yeniden **Dengeleme** düğmesini seçin. Yeniden dengeleme işlemi yapılmadan önce gecikme girin.
 
-        ![HDInsight fırtınası ölçeği yeniden dengeleme](./media/hdinsight-scaling-best-practices/hdinsight-portal-scale-cluster-storm-rebalance.png)
+        :::image type="content" source="./media/hdinsight-scaling-best-practices/hdinsight-portal-scale-cluster-storm-rebalance.png" alt-text="HDInsight fırtınası ölçeği yeniden dengeleme":::
 
   * Komut satırı arabirimi (CLı) aracı
 
@@ -130,13 +130,13 @@ Bekleyen ve çalışan işlerin bir listesini görmek için, aşağıdaki adıml
 3. Ambarı kullanıcı arabiriminden, sol taraftaki menüdeki hizmetler listesinden **Yarn** ' yi seçin.  
 4. YARN sayfasında **hızlı bağlantılar** ' ı seçin ve etkin baş düğümün üzerine gelin ve **Kaynak Yöneticisi Kullanıcı arabirimi**' ni seçin.
 
-    ![Apache ambarı hızlı bağlantılar Kaynak Yöneticisi Kullanıcı arabirimi](./media/hdinsight-scaling-best-practices/resource-manager-ui1.png)
+    :::image type="content" source="./media/hdinsight-scaling-best-practices/resource-manager-ui1.png" alt-text="Apache ambarı hızlı bağlantılar Kaynak Yöneticisi Kullanıcı arabirimi":::
 
 Kaynak Yöneticisi Kullanıcı arabirimine doğrudan erişim sağlayabilirsiniz `https://<HDInsightClusterName>.azurehdinsight.net/yarnui/hn/cluster` .
 
 İşlerin bir listesini geçerli durumuyla birlikte görürsünüz. Ekran görüntüsünde Şu anda çalışan bir iş vardır:
 
-![Kaynak Yöneticisi UI uygulamaları](./media/hdinsight-scaling-best-practices/resourcemanager-ui-applications.png)
+:::image type="content" source="./media/hdinsight-scaling-best-practices/resourcemanager-ui-applications.png" alt-text="Kaynak Yöneticisi UI uygulamaları":::
 
 Çalışan uygulamayı el ile sonlandırmak için SSH kabuğundan aşağıdaki komutu yürütün:
 

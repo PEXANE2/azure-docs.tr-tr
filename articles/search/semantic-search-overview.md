@@ -9,17 +9,17 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/18/2021
 ms.custom: references_regions
-ms.openlocfilehash: e0656c06f446ed6241b64040f063ed7ba419a942
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 7e3bfa9d91929530ae53c87ceabf639a16a5a0e6
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104771321"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104888915"
 ---
 # <a name="semantic-search-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de anlamsal arama
 
 > [!IMPORTANT]
-> Anlamsal arama genel önizlemede, yalnızca önizleme REST API kullanılabilir. Önizleme özellikleri, olduğu gibi, [ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)altında sunulur ve genel kullanıma sunulmakta olan uygulamanın garantisi yoktur. Bu özellikler faturalandırılabilir. Daha fazla bilgi için bkz. [kullanılabilirlik ve fiyatlandırma](semantic-search-overview.md#availability-and-pricing).
+> Anlamsal arama genel önizlemede, önizleme REST API ve Portal aracılığıyla kullanılabilir. Önizleme özellikleri, olduğu gibi, [ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)altında sunulur ve genel kullanıma sunulmakta olan uygulamanın garantisi yoktur. Bu özellikler faturalandırılabilir. Daha fazla bilgi için bkz. [kullanılabilirlik ve fiyatlandırma](semantic-search-overview.md#availability-and-pricing).
 
 Anlamsal arama, arama sonuçlarına semantik ilgi ve dil anlama ekleyen, sorguyla ilgili yetenekler koleksiyonudur. *Anlam derecelendirmesi* , bir sorgu verildiğinde daha mantıklı olan eşleşmeleri yükseltir, şartlar arasında bağlam ve relatedsliği arar. Dil anlama, içeriğinizin, eşleşen belgeyi özetleyen veya bir soruyu yanıtlayan, daha sonra daha üretken bir arama deneyimi için bir arama sonuçları sayfasında oluşturulabilen *açıklamalı alt yazılar* ve *yanıtlar* bulur.
 

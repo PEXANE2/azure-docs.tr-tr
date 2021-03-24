@@ -19,7 +19,7 @@
       items:
         - name: Azure portal
           href: event-hubs-create.md
-        - name: Azure CLI’si
+        - name: Azure CLI
           href: event-hubs-quickstart-cli.md
         - name: Azure PowerShell
           href: event-hubs-quickstart-powershell.md
@@ -145,24 +145,20 @@
           href: event-hubs-amqp-troubleshoot.md
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Şema kayıt defteri oluşturma
-      href: create-schema-registry.md
-    - name: Taşı
-      items:
-        - name: Bir ad alanını başka bir bölgeye taşıma
-          href: move-across-regions.md
-        - name: Ayrılmış bir kümeyi başka bir bölgeye taşıma
-          href: move-cluster-across-regions.md
-    - name: Dinamik olarak bölüm ekleme
-      href: dynamically-add-partitions.md
-    - name: Azure Stack Hub üzerinde denetim noktası deposu olarak Blob Depolama’yı kullanma
-      href: use-blob-storage-checkpoint-store-azure-stack-hub.md
-    - name: Azure Service Manager (klasik) API’lerinden Resource Manager API’lerine geçiş
-      href: ../service-bus-messaging/deprecate-service-bus-management.md?toc=%2fazure%2fevent-hubs%2ftoc.json
     - name: Geliştirme
       items:
         - name: Event Hubs bağlantı dizesini alma
           href: event-hubs-get-connection-string.md
+        - name: Olaylara özel veriler ekleme
+          href: add-custom-data-event.md
+        - name: Şema kayıt defteri oluşturma
+          href: create-schema-registry.md
+        - name: Dinamik olarak bölüm ekleme
+          href: dynamically-add-partitions.md
+        - name: Azure Stack Hub üzerinde denetim noktası deposu olarak Blob Depolama’yı kullanma
+          href: use-blob-storage-checkpoint-store-azure-stack-hub.md
+        - name: Azure Service Manager (klasik) API’lerinden Resource Manager API’lerine geçiş
+          href: ../service-bus-messaging/deprecate-service-bus-management.md?toc=%2fazure%2fevent-hubs%2ftoc.json
         - name: Farklı protokoller kullanan uygulamalar arasında olay alışverişi yapma
           href: event-hubs-exchange-events-different-protocols.md
         - name: Programlama kılavuzları
@@ -247,6 +243,12 @@
           href: event-hubs-messaging-exceptions.md
         - name: Kaynak Yöneticisi özel durumları
           href: resource-manager-exceptions.md
+    - name: Taşı
+      items:
+        - name: Bir ad alanını başka bir bölgeye taşıma
+          href: move-across-regions.md
+        - name: Ayrılmış bir kümeyi başka bir bölgeye taşıma
+          href: move-cluster-across-regions.md
 - name: Başvuru
   items:
     - name: SDK’lar

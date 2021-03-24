@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: 70e1823b30814d7dc29fef69215fcb53a2a2ab96
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 554fa394179e7cfc5b86a2b50eb754547d137a44
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98730879"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870406"
 ---
 # <a name="disaster-recovery-using-azure-application-consistent-snapshot-tool-preview"></a>Azure uygulaması tutarlı anlık görüntü aracı (Önizleme) kullanılarak olağanüstü durum kurtarma
 
@@ -146,13 +146,13 @@ HDB stop
 #### <a name="step-4-restore-the-volumes"></a>4. Adım: birimleri geri yükleme
 
 ```bash
-azacsnap -c restore --restore revertvolume --hanasid H80
+azacsnap -c restore --restore revertvolume --dbsid H80
 ```
 
 **_Dr yük devretme komutunun çıktısı_**.
 
 ```bash
-azacsnap --configfile DR.json -c restore --restore revertvolume --hanasid H80
+azacsnap --configfile DR.json -c restore --restore revertvolume --dbsid H80
 ```
 
 ```output

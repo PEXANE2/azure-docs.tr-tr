@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: ec43fa995fc9772964db399baa0b6f8c2a7db1db
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a1b97586eeeab1d5d1917f2d1cec9e0f71e9e329
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98665149"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867466"
 ---
 # <a name="private-link-for-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı için özel bağlantı
 
@@ -85,7 +85,8 @@ Ağ Yöneticisi özel uç nokta (PE) oluşturduğunda, yönetici özel uç nokta
 
 ## <a name="use-cases-of-private-link-for-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı için özel bağlantı durumları kullanın
 
-İstemciler aynı VNet 'ten özel uç noktaya, aynı bölgedeki eşlenmiş VNet 'e veya bölgeler arasında VNet-VNet bağlantısı aracılığıyla bağlanabilir. Ayrıca, istemciler ExpressRoute, özel eşleme veya VPN tüneli kullanarak şirket içinden bağlanabilir. Aşağıda, yaygın kullanım durumlarını gösteren basitleştirilmiş bir diyagram bulunur.
+
+İstemciler aynı VNet 'ten özel uç noktaya, aynı bölgedeki veya bölgelerde bulunan eşlenmiş [VNET](../virtual-network/virtual-network-peering-overview.md) 'e veya bölgeler arasında [VNET-VNet bağlantısı](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) aracılığıyla bağlanabilir. Ayrıca, istemciler ExpressRoute, özel eşleme veya VPN tüneli kullanarak şirket içinden bağlanabilir. Aşağıda, yaygın kullanım durumlarını gösteren basitleştirilmiş bir diyagram bulunur.
 
 ![Özel uç noktaya genel bakış ' ı seçin](media/concepts-data-access-and-security-private-link/show-private-link-overview.png)
 

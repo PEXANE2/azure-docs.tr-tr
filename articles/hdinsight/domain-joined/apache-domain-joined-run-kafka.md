@@ -4,12 +4,12 @@ description: Öğretici-Azure HDInsight 'ta Kurumsal Güvenlik Paketi ile Kafka 
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: 552998de23bebd98f56ba28eb6ad581689e52e41
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bab3df857dfdac3ca3b9193bda1caea0040a4cbb
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98933687"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866990"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Öğretici: HDInsight 'ta Kurumsal Güvenlik Paketi ile Apache Kafka ilkeleri yapılandırma (Önizleme)
 
@@ -33,7 +33,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 2. Azure Active Directory (AD) yönetici kimlik bilgilerinizi kullanarak oturum açın. Azure AD yönetici kimlik bilgileri HDInsight küme kimlik bilgileri veya Linux HDInsight düğümü SSH kimlik bilgileriyle aynı değildir.
 
-   ![HDInsight Apache Ranger yönetici kullanıcı arabirimi](./media/apache-domain-joined-run-kafka/apache-ranger-admin-login.png)
+   :::image type="content" source="./media/apache-domain-joined-run-kafka/apache-ranger-admin-login.png" alt-text="HDInsight Apache Ranger yönetici kullanıcı arabirimi" border="true":::
 
 ## <a name="create-domain-users"></a>Etki alanı kullanıcılarını oluşturma
 
@@ -61,7 +61,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
    * ’*’ karakterlerin sıfır veya daha fazla kez geçtiğini gösterir.
    * ’?‘ tek karakteri gösterir.
 
-   ![Apache Ranger yönetici kullanıcı arabirimi Policy1 oluşturma](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy.png)
+   :::image type="content" source="./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy.png" alt-text="Apache Ranger yönetici kullanıcı arabirimi Policy1 oluşturma" border="true":::
 
    **Select User** için bir etki alanı kullanıcısı otomatik olarak doldurulmazsa, Ranger’ın Azure AD ile eşitlenmesi için birkaç dakika bekleyin.
 
@@ -76,7 +76,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
    |Kullanıcı Seçin  |  marketing_user1 |
    |İzinler  | yayımlama, kullanma, oluşturma |
 
-   ![Apache Ranger yönetici kullanıcı arabirimi Policy2 oluşturma](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy-2.png)  
+   :::image type="content" source="./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy-2.png" alt-text="Apache Ranger yönetici kullanıcı arabirimi Policy2 oluşturma" border="true":::  
 
 6. İlkeyi kaydetmek için **Ekle** ' yi seçin.
 
@@ -177,7 +177,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 8. Ranger kullanıcı arabiriminden denetim erişimi olaylarını görüntüleyin.
 
-   ![Ranger UI ilkesi denetim erişim olayları ](./media/apache-domain-joined-run-kafka/apache-ranger-admin-audit.png)
+   :::image type="content" source="./media/apache-domain-joined-run-kafka/apache-ranger-admin-audit.png" alt-text="Ranger UI ilkesi denetim erişim olayları " border="true":::
    
 ## <a name="produce-and-consume-topics-in-esp-kafka-by-using-the-console"></a>Konsolunu kullanarak ESP Kafka ile ilgili konular oluşturun ve kullanın
 

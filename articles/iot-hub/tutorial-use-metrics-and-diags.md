@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - devx-track-azurecli
 - devx-track-csharp
-ms.openlocfilehash: bf834a6dd648ffc8f4b1633dbb383f33cd99335f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1e2983fb50ce3ad1482db85025677cba5fee0c2e
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98625207"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889606"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-logs-with-an-iot-hub"></a>Öğretici: IoT Hub ile ölçümleri ve günlükleri ayarlama ve kullanma
 
@@ -219,7 +219,7 @@ IoT Hub ile kota ve azaltma limitleri hakkında daha fazla bilgi için bkz. [Kot
 
 1. Önce uyarının tetikleyeceği koşulu yapılandırın.
 
-    1. **Koşul** bölümünde **Koşul Seç**' i seçin. **Sinyal mantığını Yapılandır** bölmesinde, arama kutusuna "Telemetri" yazın ve **gönderilen telemetri iletileri**' ni seçin.
+    1. **Koşul** bölümünde **Koşul Ekle**' yi seçin. **Sinyal mantığını Yapılandır** bölmesinde, arama kutusuna "Telemetri" yazın ve **gönderilen telemetri iletileri**' ni seçin.
 
        :::image type="content" source="media/tutorial-use-metrics-and-diags/configure-signal-logic-telemetry-messages-sent.png" alt-text="Ölçüm seçmeyi gösteren ekran görüntüsü.":::
 
@@ -245,7 +245,7 @@ IoT Hub ile kota ve azaltma limitleri hakkında daha fazla bilgi için bkz. [Kot
 
 1. Uyarı için eylemi şimdi yapılandırın.
 
-    1. **Uyarı kuralı oluştur** bölmesine geri dönün, **Eylemler** altında **eylem grubu seç**' i seçin. **Bu uyarı kuralına iliştirilecek bir eylem grubu seçin** sayfasında, **eylem grubu oluştur**' u seçin.
+    1. **Uyarı kuralı oluştur** bölmesine geri dönün, **Eylemler** altında **eylem grupları Ekle**' yi seçin. **Bu uyarı kuralına iliştirilecek bir eylem grubu seçin** sayfasında, **eylem grubu oluştur**' u seçin.
 
     1. **Eylem grubu oluştur** bölmesindeki **temel bilgiler** sekmesinde, eylem grubunuza bir ad ve görünen ad verin.
 
@@ -313,7 +313,7 @@ Bu ayarlarla bir uyarı tetiklenir ve 5 dakikalık bir zaman dilimi içinde 1000
 
 ## <a name="run-the-simulated-device-app"></a>Sanal cihaz uygulamasını çalıştırma
 
-[Kaynakları ayarla](#set-up-resources) bölümünde, IoT cihazını kullanarak benzetim yapmak için kullanılacak bir cihaz kimliği kaydettiniz. Bu bölümde, bir IoT Hub cihazdan buluta iletiler gönderen bir cihaza benzetim yapan bir .NET konsol uygulaması indirirler, bu iletileri IoT Hub 'ınıza gönderecek şekilde yapılandırabilir ve sonra çalıştırmalısınız. 
+[Kaynakları ayarla](#set-up-resources) bölümünde, IoT cihazını kullanarak benzetim yapmak için kullanılacak bir cihaz kimliği kaydettiniz. Bu bölümde, bir IoT Hub cihazdan buluta iletiler gönderen bir cihaza benzetim yapan bir .NET konsol uygulaması indirirler, bu iletileri IoT Hub 'ınıza gönderecek şekilde yapılandırabilir ve sonra çalıştırmalısınız.
 
 > [!IMPORTANT]
 >

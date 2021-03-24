@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-azurecli, contperf-fy21q2
 ms.date: 03/09/2021
-ms.openlocfilehash: 00ed8c26bbafeb94b1481e6157a242dad7ed84c6
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 0b0fc1062f9e57ab716aa0fa88f90924f0485b08
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102610272"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864882"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Betik eylemlerini kullanarak Azure HDInsight kümelerini özelleştirme
 
@@ -24,21 +24,21 @@ Bir betik eylemi, HDInsight kümesindeki düğümlerde çalışan Bash betiktir.
 
 - HDInsight kümesinden erişilebilen bir URI üzerinde depolanmalıdır. Olası depolama konumları aşağıda verilmiştir:
 
-    - Normal (ESP olmayan) kümeler için:
-      - Data Lake Storage 1./Gen2: hizmet sorumlusu HDInsight 'ın, Data Lake Storage erişmek için kullandığı hizmet, betikte okuma erişimine sahip olmalıdır. Data Lake Storage 1. depolanan betiklerin URI biçimi `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file` . 
-      - HDInsight kümesi için birincil veya ek depolama hesabı olan bir Azure depolama hesabındaki blob. HDInsight, küme oluşturma sırasında bu tür depolama hesaplarının her ikisine de erişim izni verilir.
+  - Normal (ESP olmayan) kümeler için:
+    - Data Lake Storage 1./Gen2: hizmet sorumlusu HDInsight 'ın, Data Lake Storage erişmek için kullandığı hizmet, betikte okuma erişimine sahip olmalıdır. Data Lake Storage 1. depolanan betiklerin URI biçimi `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file` .
+    - HDInsight kümesi için birincil veya ek depolama hesabı olan bir Azure depolama hesabındaki blob. HDInsight, küme oluşturma sırasında bu tür depolama hesaplarının her ikisine de erişim izni verilir.
 
-        > [!IMPORTANT]  
-        > Bu Azure depolama hesabında depolama anahtarını döndürmeyin, çünkü bu komut dosyası eylemlerinin sonraki betiklerin başarısız olmasına neden olur.
+    > [!IMPORTANT]  
+    > Bu Azure depolama hesabında depolama anahtarını döndürmeyin, çünkü bu komut dosyası eylemlerinin sonraki betiklerin başarısız olmasına neden olur.
 
-      - Yollar aracılığıyla erişilebilen ortak bir dosya paylaşım hizmeti `http://` . Azure blob, GitHub veya OneDrive örnekleri verilmiştir. Örneğin URI 'Ler için bkz. [örnek betik eylemi betikleri](#example-script-action-scripts).
-    - ESP içeren kümeler için, `wasb://` veya `wasbs://` veya `http[s]://` URI 'leri desteklenir.
+    - Yollar aracılığıyla erişilebilen ortak bir dosya paylaşım hizmeti `http://` . Azure blob, GitHub veya OneDrive örnekleri verilmiştir. Örneğin URI 'Ler için bkz. [örnek betik eylemi betikleri](#example-script-action-scripts).
+  - ESP içeren kümeler için, `wasb://` veya `wasbs://` veya `http[s]://` URI 'leri desteklenir.
 
 - Yalnızca belirli düğüm türlerinde çalışacak şekilde kısıtlanabilir. Örnekler, baş düğüm veya çalışan düğümlerdir.
 - Kalıcı veya *geçici* olabilir.
 
-    - Kalıcı betik eylemlerinin benzersiz bir adı olmalıdır. Kalıcı betikler, ölçek işlemleri aracılığıyla kümeye eklenen yeni çalışan düğümlerini özelleştirmek için kullanılır. Kalıcı bir betik, ölçeklendirme işlemleri gerçekleştiğinde başka bir düğüm türüne değişiklikler de uygulayabilir. Bir baş düğüm bir örnektir.
-    - *Geçici betikler kalıcı* değildir. Küme oluşturma sırasında kullanılan betik eylemleri otomatik olarak kalıcı hale getirilir. Betik çalıştırıldıktan sonra kümeye eklenen çalışan düğümlerine uygulanmaz. Ardından *, geçici bir* betiği kalıcı bir betiğe yükseltebilir veya kalıcı bir betiği *geçici* bir komut dosyasına indirgeyebilirsiniz. Özel olarak olması gerektiğini gösterseniz bile, başarısız olan betikler kalıcı olmaz.
+  - Kalıcı betik eylemlerinin benzersiz bir adı olmalıdır. Kalıcı betikler, ölçek işlemleri aracılığıyla kümeye eklenen yeni çalışan düğümlerini özelleştirmek için kullanılır. Kalıcı bir betik, ölçeklendirme işlemleri gerçekleştiğinde başka bir düğüm türüne değişiklikler de uygulayabilir. Bir baş düğüm bir örnektir.
+  - *Geçici betikler kalıcı* değildir. Küme oluşturma sırasında kullanılan betik eylemleri otomatik olarak kalıcı hale getirilir. Betik çalıştırıldıktan sonra kümeye eklenen çalışan düğümlerine uygulanmaz. Ardından *, geçici bir* betiği kalıcı bir betiğe yükseltebilir veya kalıcı bir betiği *geçici* bir komut dosyasına indirgeyebilirsiniz. Özel olarak olması gerektiğini gösterseniz bile, başarısız olan betikler kalıcı olmaz.
 
 - , Yürütme sırasında komut dosyası tarafından kullanılan parametreleri kabul edebilir.
 - Küme düğümlerinde kök düzeyi ayrıcalıklarla çalıştırın.
@@ -83,7 +83,8 @@ Küme oluşturma sırasında kullanılan betik eylemleri, var olan bir kümede �
 
 Aşağıdaki diyagramda, oluşturma işlemi sırasında betik eyleminin ne zaman çalıştığı gösterilmektedir:
 
-![Küme oluşturma sırasında HDInsight kümesi özelleştirmesi ve aşamaları][img-hdi-cluster-states]
+
+:::image type="content" source="./media/hdinsight-hadoop-customize-cluster-linux/cluster-provisioning-states.png" alt-text="Küme oluşturma sırasında aşamalar" border="false":::
 
 HDInsight yapılandırılırken betik çalışır. Betik, kümedeki tüm belirtilen düğümlerde paralel olarak çalışır. Düğümlerde kök ayrıcalıklarla çalışır.
 
@@ -139,29 +140,29 @@ Bu bölümde, HDInsight kümesi oluştururken betik eylemlerini kullanmanın far
 
 1. [Azure Portal kullanarak HDInsight 'Ta Linux tabanlı kümeler oluşturma](hdinsight-hadoop-create-linux-clusters-portal.md)bölümünde açıklandığı gibi bir küme oluşturmaya başlayın. **Yapılandırma + fiyatlandırma** sekmesinden **+ betik eylemi Ekle**' yi seçin.
 
-    ![Azure portal kümesi betik eylemi](./media/hdinsight-hadoop-customize-cluster-linux/azure-portal-cluster-configuration-scriptaction.png)
+   :::image type="content" source="./media/hdinsight-hadoop-customize-cluster-linux/azure-portal-cluster-configuration-scriptaction.png" alt-text="Azure portal kümesi betik eylemi":::
 
 1. Önceden oluşturulmuş bir betik seçmek için __betik Seç__ girişini kullanın. Özel bir komut dosyası kullanmak için __özel__' i seçin. Ardından, betiğiniz için __ad__ ve __Bash betiği URI 'si__ sağlayın.
 
-    ![Betik Seç formuna betik ekleme](./media/hdinsight-hadoop-customize-cluster-linux/hdinsight-select-script.png)
+   :::image type="content" source="./media/hdinsight-hadoop-customize-cluster-linux/hdinsight-select-script.png" alt-text="Betik Seç formuna betik ekleme":::
 
-    Aşağıdaki tablo, formundaki öğeleri açıklar:
+   Aşağıdaki tablo, formundaki öğeleri açıklar:
 
-    | Özellik | Değer |
-    | --- | --- |
-    | Betik seçin | Kendi komut dosyanızı kullanmak için __özel__' i seçin. Aksi takdirde, belirtilen betiklerin birini seçin. |
-    | Name |Betik eylemi için bir ad belirtin. |
-    | Bash betiği URI 'SI |Betiğin URI 'sini belirtin. |
-    | Baş/çalışan/ZooKeeper |Betiğin çalıştırıldığı düğümleri belirtin: **Head**, **Worker** veya **ZooKeeper**. |
-    | Parametreler |Komut dosyası için gerekliyse parametreleri belirtin. |
+   | Özellik | Değer |
+   | --- | --- |
+   | Betik seçin | Kendi komut dosyanızı kullanmak için __özel__' i seçin. Aksi takdirde, belirtilen betiklerin birini seçin. |
+   | Name |Betik eylemi için bir ad belirtin. |
+   | Bash betiği URI 'SI |Betiğin URI 'sini belirtin. |
+   | Baş/çalışan/ZooKeeper |Betiğin çalıştırıldığı düğümleri belirtin: **Head**, **Worker** veya **ZooKeeper**. |
+   | Parametreler |Komut dosyası için gerekliyse parametreleri belirtin. |
 
-    Komut dosyasının ölçeklendirme işlemleri sırasında uygulandığından emin olmak için __bu betiği Sürdür eylem__ girişini kullanın.
+   Komut dosyasının ölçeklendirme işlemleri sırasında uygulandığından emin olmak için __bu betiği Sürdür eylem__ girişini kullanın.
 
 1. Betiği kaydetmek için __Oluştur__ ' u seçin. Daha sonra başka bir betik eklemek için __+ Yeni Gönder__ ' i kullanabilirsiniz.
 
-    ![HDInsight birden çok betik eylemi](./media/hdinsight-hadoop-customize-cluster-linux/multiple-scripts-actions.png)
+   :::image type="content" source="./media/hdinsight-hadoop-customize-cluster-linux/multiple-scripts-actions.png" alt-text="HDInsight birden çok betik eylemi":::
 
-    Betikler ekleme işiniz bittiğinde **yapılandırma + fiyatlandırma** sekmesine dönersiniz.
+   Betikler ekleme işiniz bittiğinde **yapılandırma + fiyatlandırma** sekmesine dönersiniz.
 
 1. Kalan küme oluşturma adımlarını her zamanki gibi doldurun.
 
@@ -212,23 +213,23 @@ Bu bölümde, çalışan bir kümede betik eylemlerinin nasıl uygulanacağı a�
 
 1. **Betik eylemleri** sayfasının en üstünden **+ Yeni Gönder**' i seçin.
 
-    ![Çalışan bir kümeye betik ekleme](./media/hdinsight-hadoop-customize-cluster-linux/add-script-running-cluster.png)
+   :::image type="content" source="./media/hdinsight-hadoop-customize-cluster-linux/add-script-running-cluster.png" alt-text="Çalışan bir kümeye betik ekleme":::
 
 1. Önceden oluşturulmuş bir betik seçmek için __betik Seç__ girişini kullanın. Özel bir komut dosyası kullanmak için __özel__' i seçin. Ardından, betiğiniz için __ad__ ve __Bash betiği URI 'si__ sağlayın.
 
-    ![Betik Seç formuna betik ekleme](./media/hdinsight-hadoop-customize-cluster-linux/hdinsight-select-script.png)
+   :::image type="content" source="./media/hdinsight-hadoop-customize-cluster-linux/hdinsight-select-script.png" alt-text="Betik Seç formuna betik ekleme":::
 
-    Aşağıdaki tablo, formundaki öğeleri açıklar:
+   Aşağıdaki tablo, formundaki öğeleri açıklar:
 
-    | Özellik | Değer |
-    | --- | --- |
-    | Betik seçin | Kendi komut dosyanızı kullanmak için __özel__' i seçin. Aksi takdirde, bir belirtilen betiği seçin. |
-    | Name |Betik eylemi için bir ad belirtin. |
-    | Bash betiği URI 'SI |Betiğin URI 'sini belirtin. |
-    | Baş/çalışan/Zookeeper |Betiğin çalıştırıldığı düğümleri belirtin: **Head**, **Worker** veya **ZooKeeper**. |
-    | Parametreler |Komut dosyası için gerekliyse parametreleri belirtin. |
+   | Özellik | Değer |
+   | --- | --- |
+   | Betik seçin | Kendi komut dosyanızı kullanmak için __özel__' i seçin. Aksi takdirde, bir belirtilen betiği seçin. |
+   | Name |Betik eylemi için bir ad belirtin. |
+   | Bash betiği URI 'SI |Betiğin URI 'sini belirtin. |
+   | Baş/çalışan/Zookeeper |Betiğin çalıştırıldığı düğümleri belirtin: **Head**, **Worker** veya **ZooKeeper**. |
+   | Parametreler |Komut dosyası için gerekliyse parametreleri belirtin. |
 
-    Komut dosyasının ölçeklendirme işlemleri sırasında uygulandığından emin olmak için __bu betiği Sürdür eylem__ girişini kullanın.
+   Komut dosyasının ölçeklendirme işlemleri sırasında uygulandığından emin olmak için __bu betiği Sürdür eylem__ girişini kullanın.
 
 1. Son olarak, komut dosyasını kümeye uygulamak için **Oluştur** düğmesini seçin.
 
@@ -255,19 +256,19 @@ Başlamadan önce Azure CLı 'yi yüklediğinizden ve yapılandırmadığınızd
 
 1. Azure aboneliğinizde kimlik doğrulaması yapın:
 
-    ```azurecli
-    az login
-    ```
+   ```azurecli
+   az login
+   ```
 
 1. Çalışan bir kümeye betik eylemi uygulayın:
 
-    ```azurecli
-    az hdinsight script-action execute --cluster-name CLUSTERNAME --name SCRIPTNAME --resource-group RESOURCEGROUP --roles ROLES
-    ```
+   ```azurecli
+   az hdinsight script-action execute --cluster-name CLUSTERNAME --name SCRIPTNAME --resource-group RESOURCEGROUP --roles ROLES
+   ```
 
-    Geçerli roller şunlardır,,, `headnode` `workernode` `zookeepernode` `edgenode` . Betiğin birkaç düğüm türüne uygulanması gerekiyorsa, rolleri bir boşlukla ayırın. Örneğin, `--roles headnode workernode`.
+   Geçerli roller şunlardır,,, `headnode` `workernode` `zookeepernode` `edgenode` . Betiğin birkaç düğüm türüne uygulanması gerekiyorsa, rolleri bir boşlukla ayırın. Örneğin, `--roles headnode workernode`.
 
-    Betiği kalıcı hale getirmek için, ekleyin `--persist-on-success` . Ayrıca, kullanarak betiği daha sonra da kalıcı hale getirebilirsiniz `az hdinsight script-action promote` .
+   Betiği kalıcı hale getirmek için, ekleyin `--persist-on-success` . Ayrıca, kullanarak betiği daha sonra da kalıcı hale getirebilirsiniz `az hdinsight script-action promote` .
 
 ### <a name="apply-a-script-action-to-a-running-cluster-by-using-rest-api"></a>REST API kullanarak çalışan bir kümeye betik eylemi uygulama
 
@@ -287,15 +288,15 @@ Bir kümeye betikleri uygulamak üzere .NET SDK kullanmanın bir örneği için 
 
 1. Bu küme için betikler geçmişi betik eylemleri bölümünde görüntülenir. Bu bilgiler, kalıcı betikler listesini içerir. Aşağıdaki ekran görüntüsünde, bu kümede Solr betiğinin çalıştırıldığı gösterilmektedir. Ekran görüntüsünde kalıcı betikler gösterilmez.
 
-    ![Portal betik eylemleri gönderme geçmişi](./media/hdinsight-hadoop-customize-cluster-linux/script-action-history.png)
+   :::image type="content" source="./media/hdinsight-hadoop-customize-cluster-linux/script-action-history.png" alt-text="Portal betik eylemleri gönderme geçmişi":::
 
 1. Bu betiğin **Özellikler** bölümünü göstermek için geçmişten bir komut dosyası seçin. Ekranın en üstünden betiği yeniden çalıştırabilir veya yükseltebilirsiniz.
 
-    ![Betik eylemleri özellikleri yükseltir](./media/hdinsight-hadoop-customize-cluster-linux/promote-script-actions.png)
+   :::image type="content" source="./media/hdinsight-hadoop-customize-cluster-linux/promote-script-actions.png" alt-text="Betik eylemleri özellikleri yükseltir":::
 
 1. Ayrıca, eylemler için komut dosyası eylemleri bölümünde girişlerin sağındaki **..**. üç nokta simgesini de seçebilirsiniz.
 
-    ![Kalıcı betik eylemleri silme](./media/hdinsight-hadoop-customize-cluster-linux/hdi-delete-promoted-sa.png)
+   :::image type="content" source="./media/hdinsight-hadoop-customize-cluster-linux/hdi-delete-promoted-sa.png" alt-text="Kalıcı betik eylemleri silme":::
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -310,7 +311,7 @@ Aşağıdaki örnek betik, bir betiği yükseltmek ve alçaltmak için cmdlet 'l
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/use-script-action/use-script-action.ps1?range=123-140)]
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 | Komut | Açıklama |
 | --- | --- |
@@ -333,5 +334,3 @@ Aşağıdaki örnek betik, bir betiği yükseltmek ve alçaltmak için cmdlet 'l
 * [HDInsight için betik eylem betikleri geliştirme](hdinsight-hadoop-script-actions-linux.md)
 * [HDInsight kümesine ek depolama ekleme](hdinsight-hadoop-add-storage.md)
 * [Betik eylemlerindeki sorunları giderme](troubleshoot-script-action.md)
-
-[img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/cluster-provisioning-states.png "Küme oluşturma sırasında aşamalar"

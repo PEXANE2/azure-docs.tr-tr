@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 02/16/2021
-ms.openlocfilehash: f1761851f91e6d0c0aadb3315dbb7980a00bba5b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f7a37e761e37e295bbb92e442b1813ebded2a7cd
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100633827"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955287"
 ---
 # <a name="azure-hybrid-benefit---azure-sql-database--sql-managed-instance"></a>Azure Hibrit Avantajı-Azure SQL veritabanı & SQL yönetilen örneği
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -52,7 +52,6 @@ PowerShell kullanarak lisans türünü ayarlamak veya güncelleştirmek için:
 Azure CLı kullanarak lisans türünü ayarlamak veya güncelleştirmek için:
 
 - [az sql db create](/cli/azure/sql/db#az-sql-db-create)
-- [az sql db update](/cli/azure/sql/db#az-sql-db-update)
 - [az SQL mı oluştur](/cli/azure/sql/mi#az-sql-mi-create)
 - [az SQL mı güncelleştirmesi](/cli/azure/sql/mi#az-sql-mi-update)
 

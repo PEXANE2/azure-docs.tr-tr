@@ -8,19 +8,21 @@ ms.topic: article
 ms.date: 03/18/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: e8d191dfed5b33116dadaf34b17d5f6525060e13
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 297bc24c570298dddf10a101a0c0c528bddecc10
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104721199"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889833"
 ---
 # <a name="known-issues-with-h-series-and-n-series-vms"></a>H serisi ve N serisi VM’lerdeki bilinen sorunlar
 
 Bu makale, [H serisi](../../sizes-hpc.md) ve [N SERISI](../../sizes-gpu.md) HPC ve GPU VM 'lerini kullanırken en son yaygın sorunları ve çözümlerini listemaya çalışır.
 
 ## <a name="mofed-installation-on-ubuntu"></a>Ubuntu 'da MOFED yüklemesi
-Ubuntu-18,04 üzerinde, 5.4.0-1041-Azure çekirdek sürümü, MOFED Versions 5.2-2 ve 5.2-1.0.4.0 ile uyumsuzdur. Çekirdek sürümü 5.4.0-1040-Azure ' a geri dönüp veya eski çekirdekte bir market görüntüsü kullanarak ve çekirdeği güncelleştirmemeniz önerilir. Bu sorunun daha yeni bir MOFED (TBD) ile çözümlenmesi beklenmektedir.
+Ubuntu-18,04 ' de, Mellanox on çekirdekler `5.4.0-1039-azure #42` ve daha yeni bir sürümü ile birlikte VM önyükleme süresi yaklaşık 30 dakika boyunca artmaya neden oldu. Bu, hem Mellanox OFED Versions 5.2-1.0.4.0 ve 5.2-2.2.0.0 sürümleri için bildirilmiştir.
+Geçici çözüm, çekirdeği güncelleştirmek için **kurallı: UbuntuServer: 18_04-LTS-Gen2:18.04.202101290** Market Image veya daha eski bir sürümü kullanmaktır.
+Bu sorunun daha yeni bir MOFED (TBD) ile çözümlenmesi beklenmektedir.
 
 ## <a name="known-issues-on-hbv3"></a>HBv3 ile ilgili bilinen sorunlar
 - Şu anda InfiniBand yalnızca 120 çekirdekli VM 'de desteklenir (Standard_HB120rs_v3).

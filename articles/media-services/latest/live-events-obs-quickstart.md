@@ -6,19 +6,19 @@ ms.service: media-services
 ms.topic: quickstart
 ms.author: inhenkel
 author: IngridAtMicrosoft
-ms.date: 08/31/2020
-ms.openlocfilehash: 83f072b67f5aa162137a55d2b311dccf0daf7f53
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/20/2021
+ms.openlocfilehash: d52affbdc4dc433c40be687f2e56afae4bcf4c2a
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98956081"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104949936"
 ---
 # <a name="create-an-azure-media-services-live-stream-with-obs"></a>OBS ile Azure Media Services canlı akış oluşturma
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Bu hızlı başlangıç, Azure portal ve açık yayın Studio 'Yu (OBS) kullanarak Azure Media Services canlı bir akış oluşturmanıza yardımcı olur. Azure aboneliğiniz olduğunu ve bir Media Services hesabı oluşturduğunuzu varsayar.
+Bu hızlı başlangıç, Azure portal kullanarak Media Services canlı bir olay oluşturmanıza yardımcı olur. Azure aboneliğiniz olduğunu ve bir Media Services hesabı oluşturduğunuzu varsayar.
 
 Bu hızlı başlangıçta şunları ele alacağız:
 
@@ -45,34 +45,34 @@ Web tarayıcınızı açın ve [Microsoft Azure Portal](https://portal.azure.com
 
 1. Media Services listesinde **akış uç noktalarını** seçin.
 
-   ![Akış uç noktaları menü öğesi](media/live-events-obs-quickstart/streaming-endpoints.png)
+   ![Akış uç noktaları menü öğesi.](media/live-events-obs-quickstart/streaming-endpoints.png)
 1. Varsayılan akış uç noktası durumu durdurulmuşsa, bunu seçin. Bu adım sizi bu uç noktanın sayfasına götürür.
 1. **Başlat**'ı seçin.
 
-   ![Akış uç noktası için Başlat düğmesi](media/live-events-obs-quickstart/start.png)
+   ![Akış uç noktası için Başlat düğmesi.](media/live-events-obs-quickstart/start.png)
 
 ## <a name="set-up-an-azure-media-services-live-stream"></a>Azure Media Services canlı akış ayarlama
 
 1. Portalda Azure Media Services hesabına gidin ve **Media Services** listesinden **canlı akış** ' ı seçin.
 
-   ![Canlı akış bağlantısı](media/live-events-obs-quickstart/select-live-streaming.png)
+   ![Canlı akış bağlantısı.](media/live-events-obs-quickstart/select-live-streaming.png)
 1. Yeni bir canlı akış olayı oluşturmak için **canlı etkinlik Ekle** ' yi seçin.
 
-   ![Canlı olay simgesi ekle](media/live-events-obs-quickstart/add-live-event.png)
+   ![Canlı olay simgesi ekle.](media/live-events-obs-quickstart/add-live-event.png)
 1. Yeni olaylarınız için, **canlı olay adı** kutusuna *testliveevent* gibi bir ad girin.
 
-   ![Canlı olay adı kutusu](media/live-events-obs-quickstart/live-event-name.png)
+   ![Canlı olay adı kutusu.](media/live-events-obs-quickstart/live-event-name.png)
 1. **Açıklama** kutusuna olay için isteğe bağlı bir açıklama girin.
 1. **Doğrudan geçiş – bulut kodlaması yok** seçeneğini belirleyin.
 
-   ![Bulut kodlama seçeneği](media/live-events-obs-quickstart/cloud-encoding.png)
+   ![Bulut kodlama seçeneği.](media/live-events-obs-quickstart/cloud-encoding.png)
 1. **RTMP** seçeneğini belirleyin.
 1. Canlı etkinlik için ücretsiz olarak faturalandırılmaya engel olmak için, **canlı etkinlik Başlat** için **Hayır** seçeneğinin seçildiğinden emin olun. (Faturalandırma, canlı etkinlik başlatıldığında başlayacaktır.)
 
-   ![Canlı etkinlik seçeneğini Başlat](media/live-events-obs-quickstart/start-live-event-no.png)
+   ![Canlı etkinlik seçeneğini başlatın.](media/live-events-obs-quickstart/start-live-event-no.png)
 1. Ayarları gözden geçirmek için **gözden geçir + oluştur** düğmesini seçin.
 1. Canlı etkinliği oluşturmak için **Oluştur** düğmesini seçin. Daha sonra canlı etkinlik listesine döndürüyorsunuz.
-1. Yeni oluşturduğunuz canlı etkinliğin bağlantısını seçin. Olaylarınızın durdurulduğundan emin olun.
+1. Oluşturduğunuz canlı etkinliğin bağlantısını seçin. Olaylarınızın durdurulduğundan emin olun.
 1. Bu sayfayı tarayıcınızda açık tutun. Daha sonra bu yüklemeye geri döneceğiz.
 
 ## <a name="set-up-a-live-stream-by-using-obs-studio"></a>OBS Studio 'Yu kullanarak canlı akış ayarlama
@@ -83,53 +83,53 @@ OBS varsayılan sahneye başlar, ancak hiçbir giriş seçilmemiş.
 
 ### <a name="add-a-video-source"></a>Video kaynağı ekleme
 
-1. **Kaynaklar** panelinden, yeni bir kaynak cihaz seçmek için **Ekle** simgesine tıklayın. **Kaynaklar** menüsü açılır.
+1. **Kaynaklar** panelinden yeni bir kaynak cihaz seçmek için **Ekle** simgesini seçin. **Kaynaklar** menüsü açılır.
 
 1. Kaynak cihaz menüsünden **video yakalama cihazı** ' nı seçin. **Kaynak oluştur/Seç** menüsü açılır.
 
-   ![Video cihazı seçiliyken OBS kaynakları menüsü](media/live-events-obs-quickstart/live-event-obs-video-device-menu.png)
+   ![Video cihazının seçili olduğu OBS kaynakları menüsü.](media/live-events-obs-quickstart/live-event-obs-video-device-menu.png)
 
-1. **Var olan radyo ekle** düğmesini seçin ve ardından **Tamam**' a tıklayın. **Video aygıtı menüsü özellikleri** açılır.
+1. **Var olan radyo ekle** düğmesini seçin ve ardından **Tamam**' ı seçin. **Video aygıtı menüsü özellikleri** açılır.
 
-   ![Var olanı Ekle seçiliyken yeni video kaynağı menüsü](media/live-events-obs-quickstart/live-event-obs-new-video-source.png)
+   ![Var olanı Ekle seçiliyken yeni video kaynağı menüsü.](media/live-events-obs-quickstart/live-event-obs-new-video-source.png)
 
-1. **Cihaz** açılan listesinden, yayınınız için kullanmak istediğiniz video girişini seçin. Geri kalan ayarları hemen bırakın ve **Tamam**' a tıklayın. Giriş kaynağı **kaynaklar** paneline eklenir ve video giriş görünümü **Önizleme** alanında görüntülenir.
+1. **Cihaz** açılan listesinden, yayınınız için kullanmak istediğiniz video girişini seçin. Geri kalan ayarları hemen bırakın ve **Tamam**' ı seçin. Giriş kaynağı **kaynaklar** paneline eklenir ve video giriş görünümü **Önizleme** alanında görüntülenir.
 
    ![OBS kamera ayarları](media/live-events-obs-quickstart/live-event-surface-camera.png)
 
 ### <a name="add-an-audio-source"></a>Ses kaynağı ekleme
 
-1. **Kaynaklar** panelinden, yeni bir kaynak cihaz seçmek için **Ekle** simgesine tıklayın. Kaynak cihaz menüsü açılır.
+1. **Kaynaklar** panelinden yeni bir kaynak cihaz seçmek için **Ekle** simgesini seçin. Kaynak cihaz menüsü açılır.
 
 1. Kaynak cihaz menüsünden **ses girişi yakalama** ' yı seçin. **Kaynak oluştur/Seç** menüsü açılır.
 
-   ![Ses cihazı seçiliyken OBS kaynakları menüsü](media/live-events-obs-quickstart/live-event-obs-audio-device-menu.png)
+   ![Ses cihazı seçiliyken OBS kaynakları menüsü.](media/live-events-obs-quickstart/live-event-obs-audio-device-menu.png)
 
-1. **Var olan radyo ekle** düğmesini seçin ve ardından **Tamam**' a tıklayın. **Ses girişi yakalama menüsü özellikleri** açılır.
+1. **Var olan radyo ekle** düğmesini seçin ve ardından **Tamam**' ı seçin. **Ses girişi yakalama menüsü özellikleri** açılır.
 
-   ![Var olan ekle seçili olan OBS ses kaynağı ](media/live-events-obs-quickstart/live-event-obs-new-audio-source.png)
+   ![Var olan ekle seçili olan OBS ses kaynağı.](media/live-events-obs-quickstart/live-event-obs-new-audio-source.png)
 
-1. **Cihaz** açılan listesinden, yayınınız için kullanmak istediğiniz ses yakalama cihazını seçin. Geri kalan ayarları hemen bırakın ve Tamam ' a tıklayın. Ses yakalama aygıtı ses karıştırıcı paneline eklenecektir.
+1. **Cihaz** açılan listesinden, yayınınız için kullanmak istediğiniz ses yakalama cihazını seçin. Geri kalan ayarları hemen bırakın ve Tamam ' ı seçin. Ses yakalama aygıtı ses karıştırıcı paneline eklenecektir.
 
    ![OBS ses cihazı seçim açılan listesi](media/live-events-obs-quickstart/live-event-select-audio-device.png)
 
-### <a name="set-up-streaming-in-obs"></a>OBS 'de akış ayarlama
+### <a name="set-up-streaming-and-advanced-encoding-settings-in-obs"></a>OBS 'de akış ve gelişmiş kodlama ayarları ayarlama
 
 Sonraki yordamda, çıkış ayarlarına girmek üzere giriş URL 'sini kopyalamak için tarayıcınızda Azure Media Services geri dönebilirsiniz:
 
 1. Portalın Azure Media Services sayfasında, canlı akış olayını başlatmak için **Başlat** ' ı seçin. (Faturalandırma şimdi başlar.)
 
-   ![Başlangıç simgesi](media/live-events-obs-quickstart/start.png)
+   ![Başlangıç simgesi.](media/live-events-obs-quickstart/start.png)
 1. **RTMP** 'Yi **RTMPS** olarak ayarlayın.
 1. **Giriş URL 'si** kutusuna URL 'yi panonuza kopyalayın.
 
-   ![Giriş URL 'SI](media/live-events-obs-quickstart/input-url.png)
+   ![Giriş URL 'SI.](media/live-events-obs-quickstart/input-url.png)
 
 1. OBS uygulamasına geçiş yapın.
 
-1. **Denetimler** panelinde **Ayarlar** düğmesine tıklayın. Ayarlar seçenekleri açılır.
+1. **Denetimler** panelinde **Ayarlar** düğmesini seçin. Ayarlar seçenekleri açılır.
 
-   ![Ayarlar seçiliyken OBS denetimleri paneli](media/live-events-obs-quickstart/live-event-obs-settings.png)
+   ![Ayarlar seçiliyken OBS denetimleri paneli.](media/live-events-obs-quickstart/live-event-obs-settings.png)
 
 1. **Ayarlar** menüsünden **akış** ' ı seçin.
 
@@ -139,23 +139,97 @@ Sonraki yordamda, çıkış ayarlarına girmek üzere giriş URL 'sini kopyalama
 
 1. **Akış anahtarı** alanına bir öğe girin.  Bu, ne olduğu konusunda gerçekten bağımsız değildir, ancak bir değere sahip olması gerekir.
 
-    ![OBS akış ayarları](media/live-events-obs-quickstart/live-event-obs-stream-settings.png)
+    ![OBS akış ayarları.](media/live-events-obs-quickstart/live-event-obs-stream-settings.png)
 
 1. **Ayarlar** menüsünden **Çıkış ' ı** seçin.
 
-1. **Ana kare aralığı** alanına *2* yazın. Bu, parça uzunluğunu 2 saniyeye ayarlar. Düşük gecikmeli canlı teslim için 1 saniye değerini kullanın.
+1. Sayfanın üst kısmındaki **çıkış modu** açılan listesini seçin ve kullanılabilir tüm kodlayıcı ayarlarına erişmek için **Gelişmiş** ' i seçin.
 
-1. Isteğe bağlı: işlem gücü düşük olan bir bilgisayar kullanıyorsanız, **CPU kullanımı ön ayarını** *veryfast* olarak ayarlayın. İsteğe bağlı olarak, istenmeyen ağ koşulları varsa, kbps 'yi daha düşük bir değere ayarlayabilirsiniz.
+1. Kodlayıcıyı ayarlamak için **akış** sekmesini seçin.
 
-   ![OBS çıkış ayarları](media/live-events-obs-quickstart/live-event-obs-advanced-output-settings.png)
+1. Sisteminiz için doğru kodlayıcıyı seçin.  Donanımınız GPU hızlandırmasını destekliyorsa, NVıDıA **Nvenc** H., veya Intel **QuickSync** H. ation ' dan birini seçin. Sisteminizde desteklenen bir GPU yoksa, **x264** Software Encoder seçeneğini belirleyin.
 
-1. Geri kalan ayarları değiştirmeden bırakın ve **Tamam**' a tıklayın.
+#### <a name="x264-encoder-settings"></a>X264 kodlayıcı ayarları
+
+1. **X264** Encoding seçeneğini belirlediyseniz, **Rescale çıkış** kutusunu seçin. Standart (720P) canlı bir olay kullanıyorsanız, Media Services veya 1280x720 ' de Premium canlı etkinlik kullanıyorsanız 1920x1080 ' yi seçin.  Bir geçişli canlı etkinlik kullanıyorsanız, kullanılabilir herhangi bir çözümü seçebilirsiniz.
+
+1. **Bit hızını** 1500 kbps ve 4000 kbps arasında bir yere ayarlayın. 720P 'de standart kodlama canlı olayı kullanıyorsanız 2500 kbps önerilir. 1080P Premium canlı etkinliği kullanıyorsanız, 4000 kbps önerilir. İstenen kalite ayarını elde etmek için ağınızdaki kullanılabilir CPU özelliklerine ve bant genişliğine göre bit hızını ayarlamak isteyebilirsiniz.
+
+1. **Ana kare aralığı** alanına *2* yazın. Değer, anahtar kare aralığını 2 saniyeye ayarlar ve bu, Media Services, HLS veya DASH üzerinden teslim edilen parçaların son boyutunu denetler. Anahtar çerçeve aralığını 4 saniyeden daha yükseğe hiçbir zaman ayarlayın.  Yayın sırasında yüksek gecikme süresi görüyorsanız, uygulama kullanıcılarınızı her zaman bu değeri 2 saniyeye ayarlamaya yönelik her zaman iki kez göz atın veya bildirmeniz gerekir. Düşük gecikmeli canlı teslim almaya çalışırken, bu değeri 1 saniye düşük olarak ayarlamayı tercih edebilirsiniz.
+
+1. Isteğe bağlı: CPU kullanımı ön ayarını **veryfast** olarak ayarlayın ve bir veya daha fazla ek yük ile, yerel CPU 'nun bit hızı ve önayar birleşimini işleyebileceğini görmek için bir denemeleri çalıştırın. Canlı akış sırasında herhangi bir sorunu önlemek için %80 ' den yüksek bir CPU ile sonuçlanacak ayarları kullanmaktan kaçının. Kaliteyi artırmak için, CPU sınırlamalarına ulaşana kadar **daha hızlı** ve **hızlı** önceden ayarlanmış ayarlarla test edebilirsiniz.
+
+   ![OBS x264 kodlayıcı ayarları](media/live-events-obs-quickstart/live-event-obs-x264-settings.png)
+
+1. Geri kalan ayarları değiştirmeden bırakın ve **Tamam**' ı seçin.
+
+#### <a name="nvidia-nvenc-encoder-settings"></a>NVIDIA NVENC kodlayıcı ayarları
+
+1. **Nvenc** GPU kodlama seçeneğini belirlediyseniz, **Recale çıkış** kutusunu Işaretleyin ve Media Services veya standart (720p) canlı bir olay kullanıyorsanız, 1920x1080 veya 1280x720 ' de bir Premium canlı etkinlik kullanıyorsanız, bu seçeneği belirleyin. Bir geçişli canlı etkinlik kullanıyorsanız, kullanılabilir herhangi bir çözümü seçebilirsiniz.
+
+1. Sabit bit hızı hız denetimi için **hız DENETIMINI** CBR olarak ayarlayın.
+
+1. **Bit hızını** 1500 kbps ve 4000 kbps arasında bir yere ayarlayın. 720P 'de standart kodlama canlı olayı kullanıyorsanız 2500 kbps önerilir. 1080P Premium canlı etkinliği kullanıyorsanız, 4000 kbps önerilir. Bu ayarı, istenen kalite ayarını elde etmek için ağınızdaki kullanılabilir CPU özelliklerine ve bant genişliğine göre ayarlamayı tercih edebilirsiniz.
+
+1. X264 seçeneklerinin altında belirtilen **ana kare aralığını** 2 saniyeye ayarlayın. Bu, canlı yayınınızın gecikmesini önemli ölçüde etkileyebileceğinden 4 saniyeyi aşmayın.
+
+1. Yerel makinenizde CPU hızına bağlı olarak, **önceden ayarlanan ayarı** düşük gecikme süresi, Low-Latency performans veya Low-Latency kalitesi olarak ayarlayın. Kendi donanımınızın kalite ve CPU kullanımı arasındaki en iyi dengeyi elde etmek için bu ayarlarla denemeler yapın.
+
+1. Daha güçlü bir donanım yapılandırması kullanıyorsanız, **profili** "Main" veya "High" olarak ayarlayın.
+
+1. **İleri** işaretini işaretsiz bırakın. Çok güçlü bir makineniz varsa bunu kontrol edebilirsiniz.
+
+1. **Psycho görsel ayarlamasını** işaretsiz bırakın. Çok güçlü bir makineniz varsa bunu kontrol edebilirsiniz.
+
+1. Hangi GPU 'Ların ayıracağına otomatik olarak karar vermek için **GPU 'yu** 0 olarak ayarlayın. İsterseniz GPU kullanımını kısıtlayabilirsiniz.
+
+1. **En fazla B karesini** 2 olarak ayarlayın
+
+   ![OBS NVIDIA NVIDIA NVENC GPU Kodlayıcısı ayarları.](media/live-events-obs-quickstart/live-event-obs-nvidia-settings.png)
+
+#### <a name="intel-quicksync-encoder-settings"></a>Intel QuickSync Kodlayıcısı ayarları
+
+1. Intel **QuickSync** GPU kodlama seçeneğini belirlediyseniz, **Recale çıkış** kutusunu Işaretleyin ve Media Services veya standart (720p) canlı bir olay kullanıyorsanız, 1920x1080 veya 1280X720 ' de bir Premium canlı etkinlik kullanıyorsanız, bu seçeneği belirleyin. Bir geçişli canlı etkinlik kullanıyorsanız, kullanılabilir herhangi bir çözümü seçebilirsiniz.
+
+1. **Hedef kullanımını** "dengeli" olarak AYARLAYıN veya CPU ve GPU Birleşik yüküne göre gereken şekilde ayarlayın. Donanımınızın üretme yeteneğine sahip olduğu kaliteyle ortalama olarak %80 maksimum CPU kullanımı elde etmek için gereken şekilde ayarlayın ve deneyin. Daha kısıtlamalı bir donanımınız varsa, performans sorunlarınız varsa "hızlı" veya "çok hızlı" ile test edin.
+
+1. Daha güçlü bir donanım yapılandırması kullanıyorsanız, **profili** "Main" veya "High" olarak ayarlayın.
+
+1. X264 seçeneklerinin altında belirtilen **ana kare aralığını** 2 saniyeye ayarlayın. Bu, canlı yayınınızın gecikmesini önemli ölçüde etkileyebileceğinden 4 saniyeyi aşmayın.
+
+1. Sabit bit hızı hız denetimi için **hız DENETIMINI** CBR olarak ayarlayın.
+
+1. **Bit hızı** 1500 Ile 4000 kbps arasında bir yere ayarlayın.  720P 'de standart kodlama canlı olayı kullanıyorsanız 2500 kbps önerilir. 1080P Premium canlı etkinliği kullanıyorsanız, 4000 kbps önerilir. Bu ayarı, istenen kalite ayarını elde etmek için ağınızdaki kullanılabilir CPU özelliklerine ve bant genişliğine göre ayarlamayı tercih edebilirsiniz.
+
+1. **Gecikmeyi** "düşük" olarak ayarlayın.
+
+1. **B çerçevelerini** 2 olarak ayarlayın.
+
+1. **Öznel video geliştirmelerini** işaretsiz bırakın.
+
+   ![OBS Intel QuickSync GPU Kodlayıcısı ayarları.](media/live-events-obs-quickstart/live-event-obs-intel-settings.png)
+
+### <a name="set-audio-settings"></a>Ses ayarlarını ayarla
+
+Sonraki yordamda, ses kodlama ayarlarını ayarlayacaksınız.
+
+1. Ayarlar ' da çıkış->ses sekmesini seçin.
+
+1. 1 **Ses bit hızını** 128 kbps olarak ayarlayın.
+
+   ![OBS ses bit hızı ayarları.](media/live-events-obs-quickstart/live-event-obs-audio-output-panel.png)
+
+1. Ayarlar ' da ses sekmesini seçin.
+
+1. **Örnek hızını** 44,1 kHz olarak ayarlayın.
+
+   ![OBS ses örneği hız ayarları.](media/live-events-obs-quickstart/live-event-obs-audio-sample-rate-settings.png)
 
 ### <a name="start-streaming"></a>Akışı Başlat
 
 1. **Denetimler** panelinde **akışı Başlat**' a tıklayın.
 
-    ![OBS Akış Başlat düğmesi](media/live-events-obs-quickstart/live-event-obs-start-streaming.png)
+    ![OBS akışı Başlat düğmesi.](media/live-events-obs-quickstart/live-event-obs-start-streaming.png)
 
 2. Tarayıcınızda Azure Media Services canlı etkinlik ekranına geçin ve **Player 'ı yeniden yükle** bağlantısına tıklayın. Artık Stream 'i önizleme yürütücüsünde görmeniz gerekir.
 
@@ -169,12 +243,12 @@ Bu bölüm, çıktılarınızı ayarlar ve canlı akışınızın bir kaydını 
 1. **Çıktılar** video görüntüleyicisinin altındaki **çıktıları oluştur** bağlantısını seçin.
 1. İsterseniz, daha sonra kolayca bulabilmek için **ad** kutusunda çıktının adını daha kolay bir şekilde düzenleyin.
 
-   ![Çıkış adı kutusu](media/live-events-wirecast-quickstart/output-name.png)
+   ![Çıkış adı kutusu.](media/live-events-wirecast-quickstart/output-name.png)
 1. Tüm kutularının geri kalanını şimdilik bırakın.
 1. Bir akış Bulucu eklemek için **İleri ' yi** seçin.
 1. Bulucunun adını, isterseniz daha kolay bir şekilde değiştirin.
 
-   ![Konumlandırıcı ad kutusu](media/live-events-wirecast-quickstart/live-event-locator.png)
+   ![Konumlandırıcı ad kutusu.](media/live-events-wirecast-quickstart/live-event-locator.png)
 1. Bu ekranda bulunan her şeyi şimdilik yalnız bırakın.
 1. **Oluştur**’u seçin.
 

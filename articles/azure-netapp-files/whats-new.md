@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 03/11/2021
+ms.date: 03/19/2021
 ms.author: b-juche
-ms.openlocfilehash: f4019a28e98e06ad4a115e57b2cc9d3fb6f0a807
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: f2167159b03cd0387acfccf4bbd0a2e840f739df
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104802939"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955267"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Azure NetApp Files yenilikleri
 
@@ -27,7 +27,7 @@ Azure NetApp Files düzenli olarak güncelleştirilir. Bu makale, en son yeni ö
 
 ## <a name="march-2021"></a>Mart 2021
 
-* SMB sürekli kullanılabilirlik (CA) paylaşımları (Önizleme)  
+* [SMB sürekli kullanılabilirlik (CA) paylaşımları](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) (Önizleme)  
 
     SMB saydam yük devretme, SMB birimlerinde verileri depolayan ve bunlara erişen sunucu uygulamalarına bağlantıyı kesintiye uğramadan Azure NetApp Files hizmetinde bakım işlemlerine olanak sağlar. SMB saydam yük devretmeyi desteklemek için Azure NetApp Files artık Azure VM 'lerinde çalışan SMB üzerinde SQL Server uygulamalarla birlikte kullanılacak SMB sürekli kullanılabilirlik paylaşımları seçeneğini desteklemektedir. Bu özellik şu anda Windows SQL Server 'de desteklenmektedir. Linux SQL Server şu anda desteklenmiyor. Bu özelliği etkinleştirmek [, tek örnek, Always-On yük devretme kümesi örneği ve Always-On kullanılabilirlik grubu dağıtımları](azure-netapp-files-solution-architectures.md#sql-server)için önemli SQL Server performans iyileştirmeleri ve ölçek ve maliyet avantajları sağlar. [SQL Server dağıtımı için Azure NetApp Files kullanma avantajlarına](solutions-benefits-azure-netapp-files-sql-server.md)bakın.
 

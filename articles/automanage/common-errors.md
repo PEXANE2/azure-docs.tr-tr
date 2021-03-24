@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: alsin
-ms.openlocfilehash: 2bdf04143121e1286ffc7bfa86b4a9ee291ae6ef
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 18165ce5f39b32fe1c5af28bc88e8e1bd0e9cb62
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103561875"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955559"
 ---
 # <a name="troubleshoot-common-automanage-onboarding-errors"></a>Ortak oto yönetimi ekleme hatalarını giderme
 Oto yönetimi, bir makineyi hizmete eklemek için başarısız olabilir. Bu belgede dağıtım hatalarının nasıl giderileceği, dağıtımların başarısız olmasının bazı yaygın nedenlerini nasıl paylaştığı ve hafifletme konusunda olası bir sonraki adım açıklanmaktadır.
@@ -38,7 +38,11 @@ Hata |  Risk azaltma
 :-----|:-------------|
 Hesap yetersiz izin hatası | Bu durum, yeni bir oto Yönet hesabı içeren bir aboneliği yeni bir kiracıya yakın zamanda taşıdıysanız meydana gelebilir. Bu sorunu çözmeye yönelik adımlar [burada](./repair-automanage-account.md)yer alır.
 Bölge eşleme gereksinimleriyle eşleşmeyen çalışma alanı bölgesi | Otomatik Yönet, makinenizi ekleyemedi, ancak makinenin Şu anda bağlı olduğu Log Analytics çalışma alanı desteklenen bir Otomasyon bölgesine eşlenmemiş. Mevcut Log Analytics çalışma alanınızın ve otomasyon hesabınızın [desteklenen bir bölge eşlemesinde](../automation/how-to/region-mappings.md)bulunduğundan emin olun.
-"' Yönetilen uygulama tarafından oluşturulan ' sistem reddetme ataması '" adlı reddetme ataması nedeniyle erişim engellendi " | Kaynağınızın, kaynağına erişimini engelleyen bir [denyAssignment](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments) oluşturuldu. Bunun nedeni, bir [Blueprint](https://docs.microsoft.com/azure/governance/blueprints/concepts/resource-locking) veya [yönetilen bir uygulamadır](https://docs.microsoft.com/azure/azure-resource-manager/managed-applications/overview).
+"' Yönetilen uygulama tarafından oluşturulan ' sistem reddetme ataması '" adlı reddetme ataması nedeniyle erişim engellendi " | Kaynağınızın, kaynağına erişimini engelleyen bir [denyAssignment](../role-based-access-control/deny-assignments.md) oluşturuldu. Bunun nedeni, bir [Blueprint](../governance/blueprints/concepts/resource-locking.md) veya [yönetilen bir uygulamadır](../azure-resource-manager/managed-applications/overview.md).
+"OS ınformation: Name = ' (null) ', ver = ' (null) ', aracı durumu = ' Ready '." | [En az desteklenen bir aracı sürümü](/troubleshoot/azure/virtual-machines/support-extensions-agent-version)([Linux](/troubleshoot/azure/virtual-machines/linux-azure-guest-agent) ve [Windows](/troubleshoot/azure/virtual-machines/windows-azure-guest-agent)) çalıştırdığından ve aracının güncel olduğundan emin olun ([Linux](../virtual-machines/extensions/update-linux-agent.md) ve [Windows](../virtual-machines/extensions/agent-windows.md)).
+"VM, ' ıaasantimalware ' uzantısını işlerken bir hata bildirdi" | VM 'nize zaten yüklü başka bir kötü amaçlı yazılımdan koruma/virüsten koruma teklifi olmadığından emin olun. Başarısız olursa, desteğe başvurun.
+ASC çalışma alanı: oto yönetimi şu anda _konumunda_ Log Analytics hizmetini desteklememektedir. | SANAL makinenizin [desteklenen bir bölgede](./automanage-virtual-machines.md#supported-regions)bulunduğundan emin olun.
+İlke ihlali nedeniyle şablon dağıtımı başarısız oldu. Daha fazla bilgi için lütfen ayrıntılara bakın. | Bir ilke, VM 'nizi ekleme işlemini yapmanızı önler. Aboneliğinize veya sizin için eklemek istediğiniz VM 'nizi içeren kaynak grubunuza uygulanan ilkeleri kontrol edin.
 "Atama başarısız oldu; kullanılabilir ek bilgi yok " | Lütfen Microsoft Azure desteğiyle bir servis talebi açın.
 
 ## <a name="next-steps"></a>Sonraki adımlar

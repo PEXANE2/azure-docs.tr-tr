@@ -5,3 +5,9 @@
     - name: Azure portal belgeleri
       tocHref: /azure/azure-portal/
       topicHref: /azure/azure-portal/index
+    - name: Azure portal belgeleri
+      tocHref: /azure/virtual-machines/
+      topicHref: /azure/azure-portal/index
+    - name: Azure portal belgeleri
+      tocHref: /power-bi
+      topicHref: /azure/azure-portal/index

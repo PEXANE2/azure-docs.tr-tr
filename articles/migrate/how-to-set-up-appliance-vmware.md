@@ -6,16 +6,16 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 04/16/2020
-ms.openlocfilehash: 1217b51ea91758d25b76394b27d3b21b2e9808b3
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 64be28838abb5d5021f0a8cefc0eed2c2516498b
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104780880"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865239"
 ---
 # <a name="set-up-an-appliance-for-servers-in-vmware-environment"></a>VMware ortamındaki sunucular için bir gereç ayarlama
 
-Azure geçişi [: bulma ve değerlendirme](migrate-services-overview.md#azure-migrate-server-assessment-tool) aracı ile değerlendirme Için Azure geçişi gereci ayarlamak ve [Azure geçişi: sunucu geçiş](migrate-services-overview.md#azure-migrate-server-migration-tool) aracını kullanarak aracısız geçiş yapmak için bu makaleyi izleyin.
+Azure geçişi [: bulma ve değerlendirme](migrate-services-overview.md#azure-migrate-discovery-and-assessment-tool) aracı ile değerlendirme Için Azure geçişi gereci ayarlamak ve [Azure geçişi: sunucu geçiş](migrate-services-overview.md#azure-migrate-server-migration-tool) aracını kullanarak aracısız geçiş yapmak için bu makaleyi izleyin.
 
 [Azure geçişi](migrate-appliance.md) gereci, Azure geçişi tarafından kullanılan hafif bir gerecdir: vCenter Server çalıştıran sunucuları bulmak için bulma ve değerlendirme ve sunucu geçişi, Azure 'a sunucu yapılandırma ve performans meta verileri gönderme ve aracısız geçiş kullanarak sunucuların çoğaltılması.
 
@@ -24,23 +24,23 @@ Gereci birkaç yöntem kullanarak dağıtabilirsiniz:
 - İndirilen bir OVA şablonunu kullanarak vCenter Server bir sunucu oluşturun. Bu, bu makalede açıklanan yöntemdir.
 - Bir PowerShell yükleyici betiği kullanarak var olan bir sunucuda gereç ayarlayın. [Bu yöntem](deploy-appliance-script.md) , ova şablonunu kullansanız veya Azure Kamu kullanıyorsanız kullanılmalıdır.
 
-Gereci oluşturduktan sonra Azure geçişi: bulma ve değerlendirme 'a bağlanıp bağlanamadıktan sonra Azure geçişi projesi ile kaydedip gereci bulmayı başlatacak şekilde yapılandırın.
+Gereci oluşturduktan sonra Azure geçişi: bulma ve değerlendirme 'a bağlanıp bağlanamadıktan sonra projeyi projeye kaydeder ve gereci bulmayı başlatacak şekilde yapılandırın.
 
 ## <a name="deploy-with-ova"></a>OVA ile dağıtma
 
 Bir OVA şablonunu kullanarak gereci ayarlamak için:
-1. Portal 'da bir gereç adı sağlayın ve bir Azure geçişi proje anahtarı oluşturun.
+1. Portalda bir gereç adı sağlayın ve bir proje anahtarı oluşturun.
 1. Bir OVA şablon dosyasını indirip vCenter Server içe aktarın. OVA 'nın güvenli olduğunu doğrulayın.
 1. OVA dosyasından gereç sanal makinesini oluşturun ve Azure geçişi 'ne bağlanıp bağlanamadığından emin olun.
-1. Gereci ilk kez yapılandırın ve Azure geçişi proje anahtarını kullanarak projeyi projeye kaydedin.
+1. Gereci ilk kez yapılandırın ve proje anahtarını kullanarak projeyi projeye kaydedin.
 
-### <a name="1-generate-the-azure-migrate-project-key"></a>1. Azure geçişi proje anahtarını oluşturma
+### <a name="1-generate-the-project-key"></a>1. proje anahtarı oluştur
 
 1. **Geçiş hedefleri**  >  **sunucularında**  >  **Azure geçişi: bulma ve değerlendirme** bölümünde **bul**' u seçin.
 2. Sunucularınızdaki **sunucular**  >  **sanallaştırılmış mı?**, **VMware vSphere hiper yöneticiyle Evet '** i seçin.
-3. **1: Azure geçişi proje anahtarı oluşturma**' da, VMware ortamınızda sunucu keşfi için ayarlayabileceğiniz Azure geçiş gereci için bir ad sağlayın. Ad 14 karakter veya daha kısa bir harf olmalıdır.
+3. **1: proje anahtarı oluştur**' da, VMware ortamınızda sunucu keşfi Için ayarladığınız Azure geçiş gereci için bir ad sağlayın. Ad 14 karakter veya daha kısa bir harf olmalıdır.
 1. Gerekli Azure kaynaklarını oluşturmaya başlamak için **anahtar oluştur** ' a tıklayın. Lütfen kaynak oluşturma sırasında bul sayfasını kapatmayın.
-1. Azure kaynakları başarıyla oluşturulduktan sonra bir **Azure geçişi proje anahtarı** oluşturulur.
+1. Azure kaynakları başarıyla oluşturulduktan sonra bir **Proje anahtarı** oluşturulur.
 1. Yapılandırma sırasında gereç kaydını tamamlamamak için gerekli olacak şekilde anahtarı kopyalayın.
 
 ### <a name="2-download-the-ova-template"></a>2. OVA şablonunu indirin
@@ -117,7 +117,7 @@ Gereci ilk kez ayarlayın.
 
 ## <a name="register-the-appliance-with-azure-migrate"></a>Gereci Azure geçişi ile kaydetme
 
-1. Portaldan kopyalanmış **Azure geçişi proje anahtarını** yapıştırın. Anahtarınız yoksa, **bulma ve değerlendirme ' ya gidin> var olan gereçlerini bulmak> yönetin**, anahtar oluşturma sırasında verdiğiniz gereç adını seçin ve karşılık gelen anahtarı kopyalayın.
+1. Portaldan kopyalanmış **Proje anahtarını** yapıştırın. Anahtarınız yoksa, **bulma ve değerlendirme ' ya gidin> var olan gereçlerini bulmak> yönetin**, anahtar oluşturma sırasında verdiğiniz gereç adını seçin ve karşılık gelen anahtarı kopyalayın.
 1. Azure ile kimlik doğrulaması yapmak için bir cihaz koduna ihtiyacınız olacaktır. **Oturum** açmak için tıkladığınızda, aşağıda gösterildiği gibi cihaz koduyla kalıcı olarak açılır.
 
     :::image type="content" source="./media/tutorial-discover-vmware/device-code.png" alt-text="Cihaz kodunu kalıcı olarak gösterme":::
@@ -154,8 +154,6 @@ Gereçinin, sunucuların yapılandırma ve performans verilerini bulması için 
 
 :::image type="content" source="./media/tutorial-discover-vmware/appliance-server-credentials-mapping.png" alt-text="Sunucu ayrıntıları için gereç Yapılandırma Yöneticisi 'nde panel 3":::
 
-> [!Note]
-> VMware ortamınızda çalışan SQL Server örnekleri ve veritabanlarının keşfi ve değerlendirmesi artık önizlemededir. Bu özelliği denemek için [**bu bağlantıyı**](https://aka.ms/AzureMigrate/SQL) kullanarak **Doğu Avustralya** bölgesinde bir proje oluşturun. Zaten Doğu Avustralya bölgesinde bir projeniz varsa ve bu özelliği denemek istiyorsanız, lütfen portalda bu [**önkoşulları**](how-to-discover-sql-existing-project.md) tamamladığınızdan emin olun.
 
 Bu özelliklerden yararlanmak istiyorsanız aşağıdaki adımları izleyerek sunucu kimlik bilgileri sağlayabilirsiniz. Gereç, bulma özelliklerini gerçekleştirmek için kimlik bilgilerini sunucularla otomatik olarak eşlemeye çalışır.
 

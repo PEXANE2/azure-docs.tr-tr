@@ -8,12 +8,12 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: a4cc898744109475bc119f37350d1b689c550f58
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4d36b2c2178c7205246cd7c59aefedef3358e473
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102209603"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951751"
 ---
 # <a name="managed-hsm-role-management"></a>Yönetilen HSM rol yönetimi
 
@@ -33,7 +33,7 @@ Tüm yönetilen HSM yerleşik rollerinin ve izin verdikleri işlemlerin listesi 
 Bu makaledeki Azure CLı komutlarını kullanmak için aşağıdaki öğelere sahip olmanız gerekir:
 
 * Bir Microsoft Azure aboneliği. Hesabınız yoksa, [ücretsiz deneme için kaydolabilirsiniz](https://azure.microsoft.com/pricing/free-trial).
-* Azure CLı sürüm 2.12.0 veya üzeri. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme]( /cli/azure/install-azure-cli).
+* Azure CLı sürüm 2.21.0 veya üzeri. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme]( /cli/azure/install-azure-cli).
 * Aboneliğinizde yönetilen bir HSM. Bkz. [hızlı başlangıç: Azure CLI kullanarak](quick-create-cli.md) yönetilen bir HSM sağlama ve etkinleştirme.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
@@ -113,6 +113,70 @@ az keyvault role assignment delete --hsm-name ContosoMHSM --role "Managed HSM Cr
 ```azurecli-interactive
 az keyvault role definition list --hsm-name ContosoMHSM
 ```
+
+## <a name="create-a-new-role-definition"></a>Yeni bir rol tanımı oluştur
+
+Yönetilen HSM, en yaygın kullanım senaryoları için faydalı olan çeşitli yerleşik (önceden tanımlanmış) roller içerir. Rolün gerçekleştirmesine izin verilen belirli eylemlerin bir listesiyle kendi rolünüzü tanımlayabilirsiniz. Ardından, belirtilen eylemlere izin vermek için bu rolü sorumlularına atayabilirsiniz. 
+
+`az keyvault role definition create`BIR JSON dizesi kullanarak **özel rol** adlı bir rol için komutunu kullanın.
+```azurecli-interactive
+az keyvault role definition create --hsm-name ContosoMHSM --role-definition '{
+    "roleName": "My Custom Role",
+    "description": "The description of the custom rule.",
+    "actions": [],
+    "notActions": [],
+    "dataActions": [
+        "Microsoft.KeyVault/managedHsm/keys/read/action"
+    ],
+    "notDataActions": []
+}'
+```
+
+`az keyvault role definition create`Bir rol tanımı IÇIN JSON dizesini içeren **my-custom-role-definition.js** adlı dosyadan bir rol için komutunu kullanın. Yukarıdaki örneğe bakın.
+```azurecli-interactive
+az keyvault role definition create --hsm-name ContosoMHSM --role-definition @my-custom-role-definition.json
+```
+
+## <a name="show-details-of-a-role-definition"></a>Rol tanımının ayrıntılarını göster
+
+`az keyvault role definition show`Adı (bır GUID) kullanarak belirli bir rol tanımının ayrıntılarını görmek için komutunu kullanın.
+
+```azurecli-interactive
+az keyvault role definition show --hsm-name ContosoMHSM --name xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+```
+
+## <a name="update-a-custom-role-definition"></a>Özel bir rol tanımını güncelleştirme
+
+`az keyvault role definition update`JSON dizesi kullanarak **özel rolmy** adlı bir rolü güncelleştirmek için komutunu kullanın.
+```azurecli-interactive
+az keyvault role definition create --hsm-name ContosoMHSM --role-definition '{
+            "roleName": "My Custom Role",
+            "name": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            "id": "Microsoft.KeyVault/providers/Microsoft.Authorization/roleDefinitions/xxxxxxxx-
+        xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            "description": "The description of the custom rule.",
+            "actions": [],
+            "notActions": [],
+            "dataActions": [
+                "Microsoft.KeyVault/managedHsm/keys/read/action",
+                "Microsoft.KeyVault/managedHsm/keys/write/action",
+                "Microsoft.KeyVault/managedHsm/keys/backup/action",
+                "Microsoft.KeyVault/managedHsm/keys/create"
+            ],
+            "notDataActions": []
+        }'
+```
+
+## <a name="delete-custom-role-definition"></a>Özel rol tanımını sil
+
+`az keyvault role definition delete`Adı (bır GUID) kullanarak belirli bir rol tanımının ayrıntılarını görmek için komutunu kullanın. 
+```azurecli-interactive
+az keyvault role definition delete --hsm-name ContosoMHSM --name xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+```
+
+> [!NOTE]
+> Yerleşik roller silinemez. Özel roller silindiğinde, bu özel rolü kullanan tüm rol atamaları işlevsiz olur.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

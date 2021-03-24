@@ -4,155 +4,153 @@
 - name: Genel Bakış
   items:
     - name: Azure Spring Cloud nedir?
-      href: spring-cloud-overview.md
+      href: overview.md
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
     - name: İlk uygulamanızı yayınlama
-      href: spring-cloud-quickstart.md
+      href: quickstart.md
     - name: Mikro hizmetler oluşturun ve çalıştırın
       expanded: true
       items:
         - name: Örnek uygulamaya giriş
-          href: spring-cloud-quickstart-sample-app-introduction.md
+          href: quickstart-sample-app-introduction.md
         - name: Azure Spring Cloud hizmetini sağlama
-          href: spring-cloud-quickstart-provision-service-instance.md
+          href: quickstart-provision-service-instance.md
         - name: Yapılandırma sunucusu ayarlama
-          href: spring-cloud-quickstart-setup-config-server.md
+          href: quickstart-setup-config-server.md
         - name: Uygulama oluşturma ve dağıtma
-          href: spring-cloud-quickstart-deploy-apps.md
+          href: quickstart-deploy-apps.md
         - name: 'Günlükleri, ölçümleri ve izlemeyi kullanma'
-          href: spring-cloud-quickstart-logs-metrics-tracing.md
+          href: quickstart-logs-metrics-tracing.md
 - name: Öğreticiler
   items:
     - name: Uyarılar ve eylem grupları
-      href: spring-cloud-tutorial-alerts-action-groups.md
+      href: tutorial-alerts-action-groups.md
     - name: Devre Kesici Panosu
-      href: spring-cloud-tutorial-circuit-breaker.md
+      href: tutorial-circuit-breaker.md
     - name: Özel DNS adı
-      href: spring-cloud-tutorial-custom-domain.md
-    - name: Yönetilen kimlik kullanarak Key Vault'u Azure Spring Cloud uygulamasına bağlama
-      href: spring-cloud-tutorial-managed-identities-key-vault.md
-    - name: Azure Spring Cloud uygulamasından Azure İşlevleri çağırmak için yönetilen kimlik kullanma
-      href: spring-cloud-tutorial-managed-identities-functions.md
+      href: tutorial-custom-domain.md
+    - name: Bağlanılacak yönetilen kimlik Key Vault
+      href: tutorial-managed-identities-key-vault.md
+    - name: Azure Işlevlerini çağırmak için yönetilen kimlik
+      href: tutorial-managed-identities-functions.md
 - name: Kavramlar
   items:
-    - name: Uygulama ve dağıtımı anlama
-      href: spring-cloud-concept-understand-app-and-deployment.md
-    - name: Kotaları ve sınırları anlama
-      href: spring-cloud-quotas.md
-    - name: Ölçümleri anlama
-      href: spring-cloud-concept-metrics.md
+    - name: Uygulama ve dağıtım
+      href: concept-understand-app-and-deployment.md
+    - name: Kotalar ve sınırlar
+      href: quotas.md
+    - name: Ölçümler
+      href: concept-metrics.md
     - name: Azure Spring Boot Actuator
-      href: spring-cloud-concept-manage-monitor-app-spring-boot-actuator.md
-    - name: Güvenlik
-      items:
-        - name: Güvenlik denetimleri
-          href: spring-cloud-concept-security-controls.md
-        - name: Azure İlkesi’ne göre güvenlik denetimleri
-          href: ./security-controls-policy.md
+      href: concept-manage-monitor-app-spring-boot-actuator.md
+- name: Güvenlik
+  items:
+    - name: Güvenlik denetimleri
+      href: concept-security-controls.md
+    - name: Azure Ilkesi güvenlik denetimleri
+      href: ./security-controls-policy.md
     - name: Uygulama durumunu anlama
-      href: spring-cloud-concept-app-status.md
+      href: concept-app-status.md
     - name: Olağanüstü durum kurtarma için planlama
       href: disaster-recovery.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Geliştirme
       items:
-        - name: Uygulamayı dağıtıma hazırlama
-          href: spring-cloud-tutorial-prepare-app-deployment.md
+        - name: Java Spring uygulamasını dağıtım için hazırlama
+          href: how-to-prepare-app-deployment.md
         - name: Yapılandırma Sunucusunu ayarlama
-          href: spring-cloud-tutorial-config-server.md
-        - name: Hizmet kaydını etkinleştir
-          href: spring-cloud-service-registration.md
+          href: how-to-config-server.md
+        - name: Hizmet Kaydını Etkinleştirme
+          href: how-to-service-registration.md
     - name: Dağıtma
       items:
         - name: Hazırlık ortamını ayarlama
-          href: spring-cloud-howto-staging-environment.md
+          href: how-to-staging-environment.md
         - name: Kaynak kodundan Java uygulaması başlatma
-          href: spring-cloud-howto-launch-from-source.md
+          href: how-to-launch-from-source.md
         - name: IntelliJ kullanarak uygulamaları dağıtma
-          href: spring-cloud-tutorial-intellij-deploy-apps.md
+          href: how-to-intellij-deploy-apps.md
         - name: Uygulamaları dağıtmak için VS Code kullanma
           href: 'https://code.visualstudio.com/docs/java/java-spring-cloud'
         - name: Azure PowerShell ile Azure Spring Cloud dağıtma
-          href: spring-cloud-howto-deploy-powershell.md
+          href: how-to-deploy-powershell.md
     - name: Yapılandırma
       items:
         - name: 'Uygulamayı başlatma, durdurma ve silme'
-          href: spring-cloud-howto-start-stop-delete.md
+          href: how-to-start-stop-delete.md
         - name: Kalıcı depolama kullanma
-          href: spring-cloud-howto-persistent-storage.md
+          href: how-to-persistent-storage.md
     - name: Ölçek
       items:
         - name: Uygulamayı el ile ölçeklendirme
-          href: spring-cloud-tutorial-scale-manual.md
+          href: how-to-scale-manual.md
         - name: Uygulamayı otomatik ölçeklendirme
-          href: spring-cloud-tutorial-setup-autoscale.md
+          href: how-to-setup-autoscale.md
         - name: Giden genel IP adresleri tanımlama
-          href: spring-cloud-howto-outbound-public-ip.md
+          href: how-to-outbound-public-ip.md
     - name: İzleme
       items:
         - name: Dağıtılmış izleme ve Uygulama İçgörüleri
-          href: spring-cloud-tutorial-distributed-tracing.md
+          href: how-to-distributed-tracing.md
         - name: Günlükleri ve ölçümleri analiz etme
           href: diagnostic-services.md
         - name: Günlüklerin gerçek zamanlı akışı
-          href: spring-cloud-howto-log-streaming.md
+          href: how-to-log-streaming.md
         - name: Java Süreç Aracısını kullanarak Application Insights
-          href: spring-cloud-howto-application-insights.md
+          href: how-to-application-insights.md
         - name: Resilience4J Devre Kesici Ölçümleri
-          href: spring-cloud-howto-circuit-breaker-metrics.md
+          href: how-to-circuit-breaker-metrics.md
         - name: Yapılandırılmış uygulama günlüğü
-          href: spring-cloud-structured-app-log.md
+          href: structured-app-log.md
     - name: Ağ
       items:
         - name: Azure Spring Cloud 'ı bir sanal ağda dağıtma
-          href: spring-cloud-tutorial-deploy-in-azure-virtual-network.md
+          href: how-to-deploy-in-azure-virtual-network.md
         - name: Uygulamanıza özel bir ağda erişin
-          href: spring-cloud-access-app-virtual-network.md
+          href: access-app-virtual-network.md
         - name: Uygulamaları Internet 'Te kullanıma sunma
-          href: spring-cloud-expose-apps-gateway-azure-firewall.md
+          href: expose-apps-gateway-azure-firewall.md
         - name: VNET 'te Azure yay bulutu 'nı çalıştıran müşteri sorumlulukları
-          href: spring-cloud-vnet-customer-responsibilities.md
+          href: vnet-customer-responsibilities.md
         - name: Sanal ağlarda Azure Spring Cloud sorunlarını giderme
-          href: spring-cloud-troubleshooting-vnet.md
+          href: troubleshooting-vnet.md
     - name: Güvenlik
       items:
         - name: Sistem tarafından atanan yönetilen kimliği etkinleştirme
-          href: spring-cloud-howto-enable-system-assigned-managed-identity.md
+          href: how-to-enable-system-assigned-managed-identity.md
         - name: Rol ve izinler oluşturma
-          href: spring-cloud-howto-permissions.md
-        - name: Azure AD RBAC ile veri düzlemine erişme
-          href: spring-cloud-howto-access-data-plane-azure-ad-rbac.md
+          href: how-to-permissions.md
     - name: Tümleştirme
       items:
         - name: Uygulamayı Azure CosmosDB’ye bağlama
-          href: spring-cloud-tutorial-bind-cosmos.md
+          href: how-to-bind-cosmos.md
         - name: Uygulamayı Redis için Azure Cache'e bağlama
-          href: spring-cloud-tutorial-bind-redis.md
+          href: how-to-bind-redis.md
         - name: Uygulamayı Azure MySQL'e bağlama
-          href: spring-cloud-tutorial-bind-mysql.md
+          href: how-to-bind-mysql.md
         - name: Azure Load Balance Çözümleriyle tümleştirme
-          href: spring-cloud-howto-integrate-azure-load-balancers.md
+          href: how-to-integrate-azure-load-balancers.md
     - name: Otomatikleştirme
       items:
         - name: Azure DevOps ile CI/CD
-          href: spring-cloud-howto-cicd.md
+          href: how-to-cicd.md
         - name: GitHub Actions ile CI/CD
-          href: spring-cloud-howto-github-actions.md
+          href: how-to-github-actions.md
         - name: GitHub Actions'da Key Vault ile Kimlik Doğrulaması
-          href: spring-cloud-github-actions-key-vault.md
+          href: github-actions-key-vault.md
         - name: Terrayform ile Azure Spring Cloud örneğini sağlama
-          href: spring-cloud-tutorial-provision-azure-spring-cloud-instance-terraform.md
+          href: how-to-provision-azure-spring-cloud-instance-terraform.md
     - name: Sorun giderme
       items:
         - name: Sorunları kendi kendine tanılama ve çözme
-          href: spring-cloud-howto-self-diagnose-solve.md
+          href: how-to-self-diagnose-solve.md
         - name: VNET 'te çalışan kendi kendine tanılama
-          href: spring-cloud-howto-self-diagnose-running-in-vnet.md
+          href: how-to-self-diagnose-running-in-vnet.md
         - name: Sorun giderme kılavuzu
-          href: spring-cloud-troubleshoot.md
+          href: troubleshoot.md
     - name: Geçirme
       items:
         - name: Spring Cloud
@@ -164,7 +162,7 @@
 - name: Mimari
   items:
     - name: Başvuru mimarisi
-      href: spring-cloud-reference-architecture.md
+      href: reference-architecture.md
 - name: DevOps dağıtımı
   items:
     - name: Azure DevOps ile CI/CD
@@ -176,7 +174,7 @@
 - name: Sorun giderme
   items:
     - name: Sorun giderme kılavuzu
-      href: spring-cloud-troubleshoot.md
+      href: troubleshoot.md
 - name: Başvuru
   items:
     - name: Azure CLı eklentisi
@@ -184,9 +182,9 @@
     - name: Azure PowerShell
       href: /powershell/module/az.springcloud
     - name: Kaynaklar
-      href: spring-cloud-resources.md
+      href: resources.md
     - name: Sık sorulan sorular
-      href: spring-cloud-faq.md
+      href: faq.md
     - name: REST API başvurusu
       href: /rest/api/azurespringcloud/
     - name: Azure İlkesi yerleşik ilkeler

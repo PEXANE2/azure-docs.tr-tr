@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: quickstart
 ms.date: 04/20/2020
-ms.openlocfilehash: 1634731381be6ebbb8750746f88b8ff9e761025d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0d0fa88fdf182ae2214da40ee3fe8b20ced025e4
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98879199"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104956069"
 ---
 # <a name="azure-media-player-quickstart"></a>Azure Media Player hızlı başlangıcı
 Azure Media Player kolayca ayarlanabilir. Azure Media Services hesabınızdan medya içeriğinin temel oynatımını almak yalnızca birkaç dakika sürer. Bu bölümde ayrıntılara girilmeden temel adımlar anlatılmaktadır. Aşağıdaki bölümlerde Azure Media Player ayarlama ve yapılandırma hakkında size ilişkin ayrıntılar verilmektedir.  Aşağıdakileri belgenizin `<head>` bölümüne eklemeniz yeterlidir:
@@ -39,7 +39,7 @@ Ardından, `<video>` öğeyi normalde yaptığınız gibi, ancak herhangi bir se
 
 Otomatik kurulum 'u kullanmak istemiyorsanız, `data-setup` özniteliği atlayabilir ve bir video öğesini el ile başlatabilirsiniz.
 
-```html
+```javascript
     var myPlayer = amp('vid1', { /* Options */
             "nativeControlsForTouch": false,
             autoplay: false,
@@ -52,7 +52,7 @@ Otomatik kurulum 'u kullanmak istemiyorsanız, `data-setup` özniteliği atlayab
                // add an event listener
               this.addEventListener('ended', function() {
                 console.log('Finished!');
-            }
+            });
           }
     );
     myPlayer.src([{

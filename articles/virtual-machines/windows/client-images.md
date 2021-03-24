@@ -1,19 +1,19 @@
 ---
 title: Azure 'da Windows istemci görüntülerini kullanma
 description: Azure 'da geliştirme ve test senaryoları için Windows 7, Windows 8 veya Windows 10 dağıtmak üzere Visual Studio abonelik avantajlarını kullanma
-author: cynthn
+author: mimckitt
 ms.subservice: imaging
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
-ms.author: cynthn
-ms.openlocfilehash: 21038a8d1eabfcca21329c093b866607f0343070
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.author: mimckitt
+ms.openlocfilehash: 7879e355573d2b9952728828bd3780094a919fe3
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103199996"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869064"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Azure’da geliştirme/test senaryoları için Windows istemcisini kullanma
 Azure 'da, uygun bir Visual Studio (eski adıyla MSDN) aboneliğine sahip olduğunuz geliştirme ve test senaryoları için Windows 7, Windows 8 veya Windows 10 Enterprise (x64) kullanabilirsiniz. 
@@ -28,6 +28,9 @@ Azure Marketi 'nden belirli Windows istemci görüntülerini bulabilirsiniz. Her
 
 ## <a name="eligible-offers-and-client-images"></a>Uygun teklifler ve istemci görüntüleri
 Aşağıdaki tabloda, Azure Marketi aracılığıyla Windows istemci görüntülerini dağıtmaya uygun teklif kimliklerinin ayrıntıları verilmiştir. Windows istemci görüntüleri yalnızca aşağıdaki tekliflere görünür. 
+
+> [!NOTE]
+> Görüntü teklifleri, Azure Marketi 'nde **Windows istemcisi** altındadır. Visual Studio aboneleri için kullanılabilen istemci görüntülerini ararken **Windows istemcisini** kullanın. 
 
 | Teklif Adı | Teklif numarası | Kullanılabilir istemci görüntüleri | 
 |:--- |:---:|:---:|

@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 description: Bu makalede, Azure Arc etkin Kubernetes aracılarına yönelik mimari bir genel bakış sunulmaktadır
 keywords: Kubernetes, yay, Azure, kapsayıcılar
-ms.openlocfilehash: 5e53e99c492f08deab8dea89ec95190782661012
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ec95efdfef871777e7f53617b057529e301739dd
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121907"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953077"
 ---
 # <a name="azure-arc-enabled-kubernetes-agent-architecture"></a>Azure Arc etkin Kubernetes aracı mimarisi
 
@@ -85,7 +85,7 @@ ms.locfileid: "102121907"
 
 ## <a name="understand-connectivity-modes"></a>Bağlantı modlarını anlama
 
-| Bağlantı modu | Description |
+| Bağlantı modu | Açıklama |
 | ----------------- | ----------- |
 | Tam bağlantı | Aracılar, Gilar yapılandırmalarının yaymasına, Azure Ilke ve Gatekeeper ilkelerine zorlamaya ve Azure Izleyici 'de iş yükü ölçümlerinin ve günlüklerinin toplanmasını çok kısa bir gecikmeyle Azure ile sürekli olarak iletişim kurabilir. |
 | Yarı bağlı | Tarafından çekilecek MSI sertifikası, `clusteridentityoperator` sertifikanın süresi dolmadan 90 gün önce geçerlidir. Süre dolduktan sonra, Azure Arc etkin Kubernetes kaynağı çalışmayı durduruyor. Kümedeki tüm Azure Arc özelliklerini yeniden etkinleştirmek için, Azure Arc etkin Kubernetes kaynak ve aracılarını silin ve yeniden oluşturun. 90 gün boyunca, kümeyi en az 30 günde bir bağlayın. |
@@ -93,5 +93,5 @@ ms.locfileid: "102121907"
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Bir Kubernetes kümesini Azure yaya bağlamak](./connect-cluster.md)için hızlı başlangıç deneyimimizi gözden geçir.
+* [Bir Kubernetes kümesini Azure yaya bağlamak](./quickstart-connect-cluster.md)için hızlı başlangıç deneyimimizi gözden geçir.
 * [Azure Arc etkinleştirilmiş Kubernetes ile bir yapılandırma kaynağı](./conceptual-configurations.md)olarak kümeniz ve git deposu arasında bağlantı oluşturma hakkında daha fazla bilgi edinin.

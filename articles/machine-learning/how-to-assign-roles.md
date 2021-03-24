@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 01/20/2020
 ms.custom: how-to, seodec18, devx-track-azurecli, contperf-fy21q2
-ms.openlocfilehash: 8420aecbc160fa6df2640d2ba0ae8a8b77702b67
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bdd59c80408910bf8ca51bf787c8ff15dc2a4893
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98624549"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889765"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanına erişimi yönetme
 
@@ -464,7 +464,7 @@ Azure rol tabanlı erişim denetimi (Azure RBAC) kullanırken dikkat etmeniz ger
 - Aynı Azure Active Directory kullanıcıya eylem/NotActions bölümleri ile aynı olan iki rol ataması olduğunda, bir rolden NotActions bölümünde listelenen işlemler, başka bir roldeki eylemler olarak da listelendiklerinde etkili olmayabilir. Azure 'un rol atamalarını nasıl ayrıştırdığı hakkında daha fazla bilgi edinmek için, [kullanıcının bir kaynağa erişip erişemeyeceğini Azure RBAC 'Nin nasıl belirlediğini](../role-based-access-control/overview.md#how-azure-rbac-determines-if-a-user-has-access-to-a-resource) okuyun
 
 - İşlem kaynaklarınızı bir sanal ağ içinde dağıtmak için aşağıdaki eylemler için açıkça izinlerinizin olması gerekir:
-    - `Microsoft.Network/virtualNetworks/join/action` , VNet kaynağında.
+    - `Microsoft.Network/virtualNetworks/*/read` , VNet kaynakları üzerinde.
     - `Microsoft.Network/virtualNetworks/subnet/join/action` alt ağ kaynağında.
     
     Ağ ile Azure RBAC hakkında daha fazla bilgi için bkz. [ağ yerleşik rolleri](../role-based-access-control/built-in-roles.md#networking).

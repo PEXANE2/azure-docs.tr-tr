@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/29/2020
-ms.openlocfilehash: 102bb1a7bf1bd3cb799d52ce13045e01a2a34297
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: acb497b2f0111d36650ec415c8f1f580d116b55e
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102505265"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863301"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak Azure HDInsight 'ta Apache Kafka kümesi oluşturma
 
@@ -36,7 +36,7 @@ HDInsight üzerinde Apache Kafka kümesi oluşturmak için aşağıdaki adımlar
 
 1. Üstteki menüden **+ kaynak oluştur**' u seçin.
 
-    ![Azure portal kaynak HDInsight oluşturma](./media/apache-kafka-get-started/azure-portal-create-resource.png)
+    :::image type="content" source="./media/apache-kafka-get-started/azure-portal-create-resource.png" alt-text="Azure portal kaynak HDInsight oluşturma" border="true":::
 
 1. **Analiz**  >  **Azure HDInsight** ' ı seçerek **HDInsight kümesi oluşturma** sayfasına gidin.
 
@@ -54,7 +54,7 @@ HDInsight üzerinde Apache Kafka kümesi oluşturmak için aşağıdaki adımlar
     |Secure Shell (SSH) kullanıcı adı | Varsayılan kullanıcı adı **sshuser** şeklindedir.  SSH kullanıcı adı için başka bir ad sağlayabilirsiniz. |
     |SSH için küme oturum açma parolasını kullanma| SSH kullanıcısı için, küme oturum açma kullanıcısı için sağladınız aynı parolayı kullanmak üzere bu onay kutusunu işaretleyin.|
 
-   ![Azure portal küme temelleri oluşturma](./media/apache-kafka-get-started/azure-portal-cluster-basics.png)
+   :::image type="content" source="./media/apache-kafka-get-started/azure-portal-cluster-basics.png" alt-text="Azure portal küme temelleri oluşturma" border="true":::
 
     Her Azure bölgesi (konum) _hata etki alanları_ sağlar. Hata etki alanı, bir Azure veri merkezinde temel donanımlardan oluşan mantıksal bir gruplandırmadır. Her hata etki alanı ortak bir güç kaynağı ve ağ anahtarına sahiptir. Bir HDInsight kümesi içindeki düğümleri uygulayan sanal makineler ve yönetilen diskler, bu hata etki alanlarına dağıtılır. Bu mimari, fiziksel donanım hatalarının olası etkisini sınırlar.
 
@@ -71,7 +71,7 @@ HDInsight üzerinde Apache Kafka kümesi oluşturmak için aşağıdaki adımlar
     |Birincil depolama hesabı|Açılan listeyi kullanarak mevcut bir depolama hesabını seçin veya **Yeni oluştur**' u seçin. Yeni bir hesap oluşturursanız, ad 3 ila 24 karakter uzunluğunda olmalı ve yalnızca rakamlar ve küçük harfler içerebilir|
     |Kapsayıcı|Otomatik doldurulmuş değeri kullanın.|
 
-    ![HDInsight Linux kullanmaya başlama küme depolama değerlerini sağlama](./media/apache-kafka-get-started/azure-portal-cluster-storage.png "HDInsight kümesi oluşturmak için depolama değerleri sağlama")
+    :::image type="content" source="./media/apache-kafka-get-started/azure-portal-cluster-storage.png " alt-text="HDInsight Linux kullanmaya başlama küme depolama değerlerini sağlama" border="true":::
 
     **Güvenlik + ağ** sekmesini seçin.
 
@@ -79,7 +79,7 @@ HDInsight üzerinde Apache Kafka kümesi oluşturmak için aşağıdaki adımlar
 
    Kümenizi bir sanal ağa bağlamak istiyorsanız, aşağı açılan **Sanal ağ** listesinden bir sanal ağ seçin.
 
-   ![Sanal ağa küme ekleme](./media/apache-kafka-get-started/azure-portal-cluster-security-networking-kafka-vnet.png)
+   :::image type="content" source="./media/apache-kafka-get-started/azure-portal-cluster-security-networking-kafka-vnet.png" alt-text="Sanal ağa küme ekleme" border="true":::
 
     **Yapılandırma + fiyatlandırma** sekmesini seçin.
 
@@ -87,13 +87,13 @@ HDInsight üzerinde Apache Kafka kümesi oluşturmak için aşağıdaki adımlar
 
     **Çalışan düğümü başına standart disk** girdisi, hdınsight üzerinde Apache Kafka ölçeklenebilirliğini yapılandırır. HDInsight üzerinde Apache Kafka, veri depolamak için kümedeki sanal makinelerin yerel diskini kullanır. Apache Kafka yoğun G/Ç kullandığından yüksek aktarım hızı ve düğüm başına daha fazla depolama alanı sağlamak için [Azure Yönetilen Diskler](../../virtual-machines/managed-disks-overview.md) kullanılır. Yönetilen diskin türü __Standart__ (HDD) veya __Premium__ (SSD) olabilir. Disk türü, çalışan düğümler (Apache Kafka aracıları) tarafından kullanılan sanal makine boyutuna bağlıdır. Premium diskler otomatik olarak DS ve GS serisi sanal makinelerle kullanılır. Diğer tüm VM türleri standart disk kullanır.
 
-   ![Apache Kafka küme boyutunu ayarlama](./media/apache-kafka-get-started/azure-portal-cluster-configuration-pricing-kafka.png)
+   :::image type="content" source="./media/apache-kafka-get-started/azure-portal-cluster-configuration-pricing-kafka.png" alt-text="Apache Kafka küme boyutunu ayarlama" border="true":::
 
     **Gözden geçir + oluştur** sekmesini seçin.
 
 1. Kümenin yapılandırmasını gözden geçirin. Yanlış olan ayarları değiştirin. Son olarak, kümeyi oluşturmak için **Oluştur** ' u seçin.
 
-    ![Kafka kümesi yapılandırma özeti](./media/apache-kafka-get-started/azure-portal-cluster-review-create-kafka.png)
+    :::image type="content" source="./media/apache-kafka-get-started/azure-portal-cluster-review-create-kafka.png" alt-text="Kafka kümesi yapılandırma özeti" border="true":::
 
     Kümenin oluşturulması 20 dakika sürebilir.
 

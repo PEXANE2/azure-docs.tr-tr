@@ -12,14 +12,17 @@ ms.date: 03/03/2021
 ms.author: yulili
 ms.custom: references_regions
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.openlocfilehash: 8c50bb2c6b4e702a76b22302e7d16247f8bf5b40
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 15fa1dd230b7f07846653278533805fa66ed2195
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104654331"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870407"
 ---
 # <a name="get-facial-pose-events"></a>Yüz poz olaylarını al
+
+> [!NOTE]
+> Viseme yalnızca `en-US-AriaNeural` Şu anda Batı ABD () bölgesinde ses için çalışır `westus` ve `en-US` Nisan, 2021 sonuna kadar tüm seslerde kullanılabilir olacaktır.
 
 Viseme, konuşulan dilde bir Fonem 'nin görsel açıklamasıdır.
 Bir sözcük konuşurken yüzün ve ağız konumunu tanımlar.

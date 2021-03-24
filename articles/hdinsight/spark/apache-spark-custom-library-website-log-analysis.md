@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 12/27/2019
-ms.openlocfilehash: 591804a31c100e5c8211ec6d73fc483c9ac85c72
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d99bf914d3ef746fe328d2447426565fc15e52b4
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98940296"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866327"
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>HDInsight üzerinde Apache Spark kümesiyle özel bir Python kitaplığı kullanarak Web sitesi günlüklerini çözümleme
 
@@ -30,11 +30,11 @@ Verileriniz bir Apache Hive tablo olarak kaydedildikten sonra, sonraki bölümde
 
 1. Yeni bir not defteri oluşturun. **Yeni** ve ardından **pyspark**' ı seçin.
 
-    ![Yeni bir Apache Jupyter Notebook oluştur](./media/apache-spark-custom-library-website-log-analysis/hdinsight-create-jupyter-notebook.png "Yeni bir Jupyter Notebook oluştur")
+    :::image type="content" source="./media/apache-spark-custom-library-website-log-analysis/hdinsight-create-jupyter-notebook.png " alt-text="Yeni bir Apache Jupyter Notebook oluştur" border="true"::: Not defteri "Border =" true ":::
 
 1. Yeni bir not defteri oluşturulur ve Untitled.pynb adı ile açılır. Üstteki Not defteri adını seçin ve kolay bir ad girin.
 
-    ![Not defteri adını belirtme](./media/apache-spark-custom-library-website-log-analysis/hdinsight-name-jupyter-notebook.png "Not defteri adını belirtme")
+    :::image type="content" source="./media/apache-spark-custom-library-website-log-analysis/hdinsight-name-jupyter-notebook.png " alt-text="Not defteri tebook için bir ad sağlayın" border="true":::"Border =" true ":::
 
 1. PySpark çekirdeği kullanarak bir not defteri oluşturduğunuz için, açıkça herhangi bir bağlam oluşturmanız gerekmez. Birinci kod hücresini çalıştırdığınızda Spark ve Hive bağlamları sizin için otomatik olarak oluşturulur. Bu senaryo için gerekli olan türleri içeri aktararak başlayabilirsiniz. Aşağıdaki kod parçacığını boş bir hücreye yapıştırın ve ardından **SHIFT + enter** tuşlarına basın.
 
@@ -173,7 +173,7 @@ Verileriniz bir Apache Hive tablo olarak kaydedildikten sonra, sonraki bölümde
 
    Aşağıdaki görüntüde olduğu gibi bir çıktı görmeniz gerekir:
 
-   ![HDInsight jupyıter SQL sorgu çıktısı](./media/apache-spark-custom-library-website-log-analysis/hdinsight-jupyter-sql-qyery-output.png "SQL sorgu çıktısı")
+   :::image type="content" source="./media/apache-spark-custom-library-website-log-analysis/hdinsight-jupyter-sql-qyery-output.png " alt-text="HDInsight Jupyter SQL sorgu çıkış" border="true":::yter SQL sorgu çıktısı "Border =" true ":::
 
    Magic hakkında daha fazla bilgi için `%%sql` bkz. [%% SQL Magic Ile desteklenen parametreler](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
 
@@ -191,7 +191,7 @@ Verileriniz bir Apache Hive tablo olarak kaydedildikten sonra, sonraki bölümde
 
    Aşağıdaki görüntüde olduğu gibi bir çıktı görmeniz gerekir:
 
-   ![Apache Spark Web günlüğü analiz çizimi](./media/apache-spark-custom-library-website-log-analysis/hdinsight-apache-spark-web-log-analysis-plot.png "Matplotlib çıkışı")
+   :::image type="content" source="./media/apache-spark-custom-library-website-log-analysis/hdinsight-apache-spark-web-log-analysis-plot.png " alt-text="Apache Spark Web günlüğü analiz çizimi" border="true":::EB günlüğü analiz çizimi "Border =" true ":::
 
 1. Uygulamayı çalıştırmayı bitirdikten sonra, kaynakları serbest bırakmak için Not defterini kapatmanız gerekir. Bunu yapmak için not defterindeki **Dosya** menüsünde **Kapat ve Durdur**’u seçin. Bu eylem kapatılacak ve Not defterini kapatacak.
 

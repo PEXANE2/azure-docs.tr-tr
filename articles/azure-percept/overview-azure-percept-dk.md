@@ -5,58 +5,62 @@ author: elqu20
 ms.author: v-elqu
 ms.service: azure-percept
 ms.topic: conceptual
-ms.date: 02/18/2021
+ms.date: 03/23/2021
 ms.custom: template-concept
-ms.openlocfilehash: 74e7d1a54b1d760979dbf9833e85ec728b4e5e3a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 722beda6eddb64581be3b724a8de5235f953bc6e
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104595898"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953791"
 ---
 # <a name="azure-percept-dk-overview"></a>Azure Percept DK genel bakış
 
-Azure Percept DK, kavram ve ses AI kanıtı kavramlarının geliştirilmesi için tasarlanan bir Edge AI ve IoT geliştirme setidir. [Azure Percept Studio](./overview-azure-percept-studio.md) ve [Azure Percept sesiyle](./overview-azure-percept-audio.md)birleştirildiğinde, çok ÇEŞITLI Vision veya Audio AI uygulamaları için Edge AI çözümleri oluşturmaya yönelik güçlü, kullanımı kolay bir platform haline gelir. [Microsoft Online Store](https://go.microsoft.com/fwlink/p/?LinkId=2155270)'da satın alınabilir.
+Azure Percept DK, [Azure Percept Studio](./overview-azure-percept-studio.md)ile Vision ve Audio AI çözümleri geliştirmek için tasarlanan BIR Edge AI geliştirme sedir. Azure Percept DK, [Microsoft Online Mağazası](https://go.microsoft.com/fwlink/p/?LinkId=2155270)'nda satın alınabilir.
 
 > [!div class="nextstepaction"]
-> [Şimdi satın alın](https://go.microsoft.com/fwlink/p/?LinkId=2155270)
+> [Hemen satın alın](https://go.microsoft.com/fwlink/p/?LinkId=2155270)
 
-<!---
-:::image type="content" source="./media/overview-azure-percept-dk/dk-image.png" alt-text="Azure Percept DK device.":::
---->
 </br>
 
 > [!VIDEO https://www.youtube.com/embed/Qj8NGn-7s5A]
 
-## <a name="key-features"></a>Temel Özellikler
+## <a name="key-features"></a>Önemli özellikler
 
-- **Kenarda AI çalıştırma özelliği**. Yerleşik donanım hızlandırma sayesinde, bulut bağlantısı olmadan Vision AI modellerini çalıştırabilir.
-- **Yerleşik güven güvenliği donanım kökü**. Daha fazla bilgi için bkz. [Azure Percept Security](./overview-percept-security.md) 'ye genel bakış.
-- **[Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819)** ve diğer Azure hizmetleriyle sorunsuz tümleştirme. Azure IoT Hub, Azure bilişsel hizmetler ve [canlı video analizi](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/overview) gibi
-- **İsteğe bağlı [Azure Percept Audio](./overview-azure-percept-audio.md) ile sorunsuz tümleştirme**
-- **En üst AI platformları Için destek**. ONNX ve TensorFlow gibi.
-- **80/20 kenle sistemiyle tümleştirme**. Üretim ortamlarında Prototiplerde derleme yapmayı kolaylaştırın. [80/20 tümleştirmesi](./overview-8020-integration.md)hakkında daha fazla bilgi edinin.
+- Kenarda AI çalıştırın. Yerleşik donanım hızlandırma sayesinde, Dev Kit, buluta bağlantı olmadan AI modellerini çalıştırabilir.
+
+- Yerleşik güven güvenliği donanım kökü. [Azure Percept güvenliği](./overview-percept-security.md)hakkında daha fazla bilgi edinin.
+
+- Azure [Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) ve Azure IoT Hub, Azure bilişsel hizmetler ve [canlı video analizi](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/overview)gibi diğer Azure hizmetleriyle sorunsuz tümleştirme.
+
+- AI ses çözümleri oluşturmaya yönelik isteğe bağlı bir aksesuar olan [Azure Percept Audio](./overview-azure-percept-audio.md)ile uyumludur.
+
+- ONNX ve TensorFlow gibi üçüncü taraf AI araçları için destek.
+
+- Sınırsız cihaz bağlama yapılandırmalarına izin veren 80/20 kenle sistemiyle tümleştirme. [80/20 tümleştirmesi](./overview-8020-integration.md)hakkında daha fazla bilgi edinin.
 
 ## <a name="hardware-components"></a>Donanım bileşenleri
 
-- Azure Percept DK taşıyıcı panosu
+- Azure Percept DK taşıyıcı panosu:
     - NXP iMX8m işlemcisi
     - Güvenilir Platform Modülü (TPM) sürüm 2,0
-    - WiFi ve Bluetooth bağlantısı
-    - Tam [veri sayfasına](./azure-percept-dk-datasheet.md) bakın
-- Modül üzerinde Azure Percept Vision sistemi (SoM)
+    - Wi-Fi ve Bluetooth bağlantısı
+    - Daha fazla bilgi için bkz. [Azure PERCEPT dk veri sayfası](./azure-percept-dk-datasheet.md)
+
+- Azure Percept Vision System-on-Module (SoM):
     - Intel Movidius Myriad X (MA2085) Vision işleme birimi (VPU)
-    - İkinci bir ekleyebilme özelliğine sahip RGB kamera algılayıcısı
-    - Tam [veri sayfasına](./azure-percept-vision-datasheet.md) bakın
+    - RGB kamera algılayıcısı
+    - Daha fazla bilgi için bkz. [Azure Percept Vision veri sayfası](./azure-percept-vision-datasheet.md)
 
-## <a name="get-started-with-the-azure-percept-dk"></a>Azure Percept DK ile çalışmaya başlama
+## <a name="getting-started-with-azure-percept-dk"></a>Azure Percept DK ile çalışmaya başlama
 
-- Bu hızlı başlar
+- Geliştirme setini ayarlayın:
     - [Azure Percept DK 'yi kutudan kaldırma ve birleştirme](./quickstart-percept-dk-unboxing.md)
-    - [Azure Percept DK 'yi ayarlama ve ilk Vision AI modelinizi çalıştırma](./quickstart-percept-dk-set-up.md)
-- Bu öğreticilerle kavram kanıtı oluşturmaya başlayın
+    - [Azure Percept DK kurulum deneyimini doldurun](./quickstart-percept-dk-set-up.md)
+
+- Vision ve Audio çözümleri oluşturmaya başlayın:
     - [Azure Percept Studio 'da kod içermeyen bir Vision çözümü oluşturma](./tutorial-nocode-vision.md)
-    - [Azure Percept Studio 'da bir ses Yardımcısı oluşturma](./tutorial-no-code-speech.md)
+    - [Azure Percept Studio 'da kod içermeyen bir konuşma çözümü oluşturma](./tutorial-no-code-speech.md) (Azure Percept Audio donatısı gereklidir)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

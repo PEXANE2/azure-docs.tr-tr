@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
-ms.openlocfilehash: d17d067b88add3006bc5c7fb10caa6b80a80a827
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 99a61d3e445bf6887db0c97e365e6e4489eb79e1
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98931773"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872022"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Azure HDInsight için NSG hizmet etiketleri
 
@@ -40,7 +40,7 @@ HDInsight kümeniz ile hizmet etiketleri kullanmaya başlamanın en kolay yolu, 
 
 1. **Kaynak hizmet etiketi** açılan listesinden **HDInsight**' ı seçin.
 
-    ![Azure portal bir hizmet etiketi ekleyin](./media/hdinsight-service-tags/azure-portal-add-service-tag.png)
+    :::image type="content" source="./media/hdinsight-service-tags/azure-portal-add-service-tag.png" alt-text="Azure portal bir hizmet etiketi ekleyin":::
 
 Bu etiket, HDInsight 'ın kullanılabildiği tüm bölgeler için sistem durumu ve yönetim hizmetlerinin IP adreslerini içerir. Etiketi, kümenizin nerede oluşturulduğuna bakılmaksızın gerekli sistem durumu ve yönetim hizmetleriyle iletişim kurabildiğinden emin olur.
 

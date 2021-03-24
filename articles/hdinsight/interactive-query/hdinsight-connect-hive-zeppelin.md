@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: hdinsightactive
 ms.date: 12/03/2019
-ms.openlocfilehash: 1199fee82532eacf1f0ef41b877b970d7d9f2cf5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 75f758054f867c58dd4180fe5e728e66785e3b11
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98941070"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869778"
 ---
 # <a name="quickstart-execute-apache-hive-queries-in-azure-hdinsight-with-apache-zeppelin"></a>Hızlı başlangıç: Apache Zeppelin ile Azure HDInsight 'ta Apache Hive sorguları yürütme
 
@@ -28,7 +28,7 @@ Etkileşimli sorgu kümesi An HDInsight. HDInsight kümesi oluşturmak için bkz
 
 2. Küme oturum açma kullanıcı adınızı ve parolanızı girin. Zeppelin sayfasından yeni bir not oluşturabilir veya var olan notları açabilirsiniz. **Hivesample** bazı örnek Hive sorguları içerir.  
 
-    ![HDInsight etkileşimli sorgu Zeppelin](./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin.png)
+    :::image type="content" source="./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin.png" alt-text="HDInsight etkileşimli sorgu Zeppelin" border="true":::
 
 3. **Yeni dekont oluştur**' u seçin.
 
@@ -46,7 +46,7 @@ Etkileşimli sorgu kümesi An HDInsight. HDInsight kümesi oluşturmak için bkz
     show tables
     ```
 
-    ![HDInsight etkileşimli sorgu Zeppelin çalıştırmaları sorgusu](./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin-query.png)
+    :::image type="content" source="./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin-query.png" alt-text="HDInsight etkileşimli sorgu Zeppelin çalıştırmaları sorgusu" border="true":::
 
     İlk satırdaki **% JDBC (Hive)** deyimleri, Not DEFTERINE Hive JDBC yorumlayıcı kullanmasını söyler.
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: has-adal-ref, devx-track-python
 ms.date: 04/03/2020
-ms.openlocfilehash: a9a007d33226c508e193368b08b189001bf53401
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bc3cbe5d0d7cf5e5a78112ae5df63ebb88a97f5a
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98944078"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864848"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>REST proxy kullanarak Azure HDInsight 'ta Apache Kafka kümeleriyle etkileşim kurma
 
@@ -22,7 +22,7 @@ Kafka REST API tarafından desteklenen işlemler için bkz. [HDInsight Kafka Res
 
 ## <a name="background"></a>Arka Plan
 
-![Kafka REST ara sunucu tasarımı](./media/rest-proxy/rest-proxy-architecture.png)
+:::image type="content" source="./media/rest-proxy/rest-proxy-architecture.png" alt-text="Kafka REST ara sunucu tasarımı" border="false":::
 
 API tarafından desteklenen işlemlerin tam belirtimi için [Apache Kafka Rest Proxy API 'sine](/rest/api/hdinsight-kafka-rest-proxy)bakın.
 
@@ -49,10 +49,10 @@ Kendi VNet 'nizi getirip ağ güvenlik grupları ile ağ trafiğini denetlemeniz
 1. Bir Azure AD güvenlik grubu oluşturun. Azure AD 'ye kaydettiğiniz uygulamayı, grubun bir **üyesi** olarak güvenlik grubuna ekleyin. Bu güvenlik grubu, REST proxy ile etkileşime girmesine izin verilen uygulamaları denetlemek için kullanılacaktır. Azure AD grupları oluşturma hakkında daha fazla bilgi için bkz. [temel Grup oluşturma ve Azure Active Directory kullanarak üye ekleme](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
     Grubun **güvenlik** tür olduğunu doğrulayın.
-    ![Güvenlik grubu](./media/rest-proxy/rest-proxy-group.png)
+    :::image type="content" source="./media/rest-proxy/rest-proxy-group.png" alt-text="Güvenlik grubu" border="true":::
 
     Uygulamanın grubun üyesi olduğunu doğrulayın.
-    ![Üyeliği denetle](./media/rest-proxy/rest-proxy-membergroup.png)
+    :::image type="content" source="./media/rest-proxy/rest-proxy-membergroup.png" alt-text="Üyeliği denetle" border="true":::
 
 ## <a name="create-a-kafka-cluster-with-rest-proxy-enabled"></a>REST proxy etkinken bir Kafka kümesi oluşturma
 
@@ -60,17 +60,17 @@ Aşağıdaki adımlar Azure portal kullanır. Azure CLı kullanan bir örnek iç
 
 1. Kafka kümesi oluşturma iş akışı sırasında, **güvenlik + ağ** sekmesinde, **Kafka Rest proxy 'yi etkinleştir** seçeneğini işaretleyin.
 
-     ![Ekran görüntüsü, güvenlik + ağ seçiliyken H D Insight Cluster oluştur sayfasını gösterir.](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest.png)
+     :::image type="content" source="./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest.png" alt-text="Ekran görüntüsü, güvenlik + ağ seçiliyken H D Insight Cluster oluştur sayfasını gösterir." border="true":::
 
 1. **Güvenlik grubu seç**' e tıklayın. Güvenlik grupları listesinden REST proxy 'sine erişimi olmasını istediğiniz güvenlik grubunu seçin. Uygun güvenlik grubunu bulmak için arama kutusunu kullanabilirsiniz. Alttaki **Seç** düğmesine tıklayın.
 
-     ![Ekran görüntüsü, bir güvenlik grubu seçme seçeneğiyle H D Insight Cluster oluştur sayfasını gösterir.](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest2.png)
+     :::image type="content" source="./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest2.png" alt-text="Ekran görüntüsü, bir güvenlik grubu seçme seçeneğiyle H D Insight Cluster oluştur sayfasını gösterir." border="true":::
 
 1. [Azure Portal kullanarak Azure HDInsight 'ta Apache Kafka kümesi oluşturma](./apache-kafka-get-started.md)bölümünde açıklandığı gibi kümenizi oluşturmak için kalan adımları izleyin.
 
 1. Küme oluşturulduktan sonra, Kafka REST proxy URL 'sini kaydetmek için küme özelliklerine gidin.
 
-     ![REST proxy URL 'sini görüntüle](./media/rest-proxy/apache-kafka-rest-proxy-view-proxy-url.png)
+     :::image type="content" source="./media/rest-proxy/apache-kafka-rest-proxy-view-proxy-url.png" alt-text="REST proxy URL 'sini görüntüle" border="true":::
 
 ## <a name="client-application-sample"></a>İstemci uygulaması örneği
 

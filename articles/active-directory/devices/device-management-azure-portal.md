@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23c74a8a35255162c7c9ddee6c917d4d98d83b89
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4269ba32a22538eeba35ba484fae0c98cd219b7c
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103561660"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952788"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Azure portalını kullanarak cihaz kimliklerini yönetme
 
@@ -174,7 +174,7 @@ Azure portal cihaz ayarlarını görüntülemek veya yönetmek için aşağıdak
 > - Bir cihazın katılması veya kaydedilmesi için Multi-Factor Authentication 'ı zorunlu tutmanın koşullu erişim 'teki ["cihazları Kaydet veya katılım" Kullanıcı eyleminin](../conditional-access/concept-conditional-access-cloud-apps.md#user-actions) kullanılması önerilir. 
 > - Multi-Factor authencation gerektirmek için koşullu erişim ilkesi kullanıyorsanız bu ayarı **Hayır** olarak ayarlamanız gerekir. 
 
-- **En fazla cihaz sayısı** -Bu ayar, bir kullanıcının Azure AD 'de sahip olduğu en fazla Azure AD 'ye katılmış veya Azure AD kayıtlı cihaz sayısını seçmenize olanak sağlar. Bir Kullanıcı bu kotaya ulaşırsa, mevcut cihazların bir veya daha fazlası kaldırılana kadar ek cihaz ekleyemeyecektir. Varsayılan değer **50**' dir.
+- **En fazla cihaz sayısı** -Bu ayar, bir kullanıcının Azure AD 'de sahip olduğu en fazla Azure AD 'ye katılmış veya Azure AD kayıtlı cihaz sayısını seçmenize olanak sağlar. Bir Kullanıcı bu kotaya ulaşırsa, mevcut cihazların bir veya daha fazlası kaldırılana kadar ek cihaz ekleyemeyecektir. Varsayılan değer **50**' dir. Değeri 100 ' e kadar artırabilirsiniz ve 100 ' ye bir değer girerseniz, Azure AD bunu 100 olarak ayarlar. Ayrıca, mevcut kota limitinden farklı bir sınır olmadan zorlamak için sınırsız değer kullanabilirsiniz.
 
 > [!NOTE]
 > Azure AD 'ye katılmış ya da Azure AD 'ye kayıtlı cihazlar için **en fazla cihaz sayısı** ayarı geçerlidir. Bu ayar, karma Azure AD 'ye katılmış cihazlar için geçerlidir.

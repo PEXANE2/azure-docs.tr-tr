@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: ef1a49301cf150f92d30c163dee262a22f1515d9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 95ee4e5f326dd9b76645d22ff735bc36437c72fb
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101714961"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870134"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Kullanılabilirlik Alanları arasında bir Azure Service Fabric kümesi dağıtma
 Azure 'daki Kullanılabilirlik Alanları, uygulamalarınızı ve verilerinizi veri merkezi hatalarından koruyan yüksek kullanılabilirliğe sahip bir tekliftir. Bir kullanılabilirlik alanı, bir Azure bölgesi içinde bağımsız güç, soğutma ve ağ ile donatılmış benzersiz bir fiziksel konumdur.
@@ -35,7 +35,19 @@ Birincil düğüm türü için önerilen topoloji, aşağıda özetlenen kaynakl
 >[!NOTE]
 > Service Fabric alanları kapsayan tek bir sanal makine ölçek kümesini desteklemediğinden, sanal makine ölçek kümesi tek yerleşim grubu özelliği true olarak ayarlanmalıdır.
 
- ![Azure Service Fabric kullanılabilirlik alanı mimarisini gösteren diyagram.][sf-architecture]
+![Azure Service Fabric kullanılabilirlik alanı mimarisini gösteren azure Service Fabric kullanılabilirliği bölge mimarisi diyagramını gösteren diyagram.][sf-architecture]
+
+Bir sanal makine ölçek kümesi kapsayıcı bölgelerindeki FD/UD biçimlerini gösteren örnek düğüm listesi
+
+ ![Bir sanal makine ölçek kümesi kapsayıcı bölgelerindeki FD/UD biçimlerini gösteren örnek düğüm listesi.][sf-multi-az-nodes]
+
+**Bölgeler arasında hizmet çoğaltmaları dağıtımı**: bir hizmet, bölgeleri kapsayan nodetypes üzerinde dağıtıldığında çoğaltmalar, ayrı bölgelerde yer aldığından emin olmak için yerleştirilir. Bu nodeTypes ' ın her birinde bulunan düğümlerdeki hata etki alanı bölge bilgileri ile yapılandırıldığı için bu değer gereklidir (ör. FD = FD://ay/1 vb...). Örneğin: 5 çoğaltma veya bir hizmetin örnekleri için dağıtım 2-2-1 olur ve çalışma zamanı AZs genelinde eşit dağıtım sağlamaya çalışacaktır.
+
+**Kullanıcı Hizmeti çoğaltma yapılandırması**: çapraz kullanılabilirlik bölgesi nodetypes üzerinde dağıtılan durum bilgisi olan Kullanıcı hizmetlerinin bu yapılandırmayla yapılandırılması gerekir: hedef = 9, en az = 5 olan çoğaltma sayısı. Bu yapılandırma, 6 çoğaltma diğer iki bölgede hala devam ettiğinden, bir bölgenin bir arada kaldığında bile hizmetin çalışmaya yardımcı olur. Böyle bir senaryoda uygulama yükseltmesi de devam edecektir.
+
+**Küme Rahatlımadüzeyi**: Bu, kümedeki çekirdek düğümlerin sayısını ve ayrıca sistem hizmetlerinin çoğaltma boyutunu tanımlar. Çapraz kullanılabilirlik alanı kurulumu, bölge dayanıklılığı sağlamak için bölgelere yayılan daha yüksek sayıda düğüme sahip olduğundan, daha yüksek güvenilirlik değeri düğüm daha fazla çekirdek düğümlerinin ve sistem hizmeti çoğaltmalarının mevcut olmasını ve bölge genelinde eşit bir şekilde dağıtılmasını sağlar; böylece, küme hatası ve sistem hizmetleri etkilenmeden kalır. "Relidiitylevel = Platinum", her bölgede 3 çekirdekler ile, bu sayede çapraz kullanılabilirlik bölgesi kurulumu için önerilir.
+
+**Bölge aşağı senaryosu**: bir bölge kaldığında, bu bölgedeki tüm düğümler aşağı görünür. Bu düğümlerdeki hizmet çoğaltmaları da kaldırılacak. Diğer bölgelerde çoğaltmalar olduğundan, hizmet, çalışmakta olan bölgelere yük devretmeye yönelik birincil çoğaltmalarla yanıt vermeye devam eder. Hedef çoğaltma sayısı henüz ulaşılmadığından ve VM sayısı en az bir hedef çoğaltma boyutundan fazla olduğundan, hizmetler uyarı durumunda görüntülenir. Daha sonra Service Fabric yük dengeleyici, yapılandırılan hedef çoğaltma sayısıyla eşleşecek şekilde çalışma bölgesindeki çoğaltmaları getirir. Bu noktada hizmetler sağlıklı olarak görünür. Kapatılmış bölge, yük dengelemeye geri geldiğinde, tüm bölgelere eşit olarak tüm hizmet çoğaltmalarını yayacaktır.
 
 ## <a name="networking-requirements"></a>Ağ gereksinimleri
 ### <a name="public-ip-and-load-balancer-resource"></a>Genel IP ve Load Balancer kaynağı
@@ -345,7 +357,7 @@ Bir sanal makine ölçek kümesindeki bölgeleri etkinleştirmek için, sanal ma
 
 * İlk değer, sanal makine ölçek kümesinde var olan Kullanılabilirlik Alanları belirten **Zones** özelliğidir.
 * İkinci değer, true olarak ayarlanması gereken "singlePlacementGroup" özelliğidir. **3 AZ ' de yayılmış ölçek kümesi, "singlePlacementGroup = true" ile birlikte 300 VM 'ye ölçeklendirebilir.**
-* Üçüncü değer "bölge bakiyesi" olur ve bu da katı bölge dengelemesi sağlar. Bu, sanal makinelerin bölgeler arasında dengesiz dağıtımını önlemek için "true" olmalıdır. Bölgelerde, bölge genelinde dengesiz VM dağıtımı olan bir küme, bölgenin esininin altına düşmesine daha düşüktür. [Bölge Dengeleme](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md#zone-balancing)hakkında bilgi edinin.
+* Üçüncü değer "bölge bakiyesi" olur ve bu da katı bölge dengelemesi sağlar. Bu değer "true" olmalıdır. Bu, bölgelerin tamamında VM dağıtımlarının dengesizolmamasını sağlar. bu sayede bölgelerden biri kaldığında, diğer iki bölgenin, kümenin çalışmayı kesintiye uğratılmasını sağlamak için yeterli VM 'Ler vardır. Dengesiz bir VM dağıtımına sahip bir küme, bu bölge VM 'lerin çoğunluğuna sahip olabileceğinden bölge azaltma senaryosunu sürdürmeyebilir. Bölgeler arasında dengesiz VM dağıtımı, altyapı güncelleştirmelerinin takılmasına & hizmet yerleştirme ile ilgili sorunlara da neden olur. [Bölge Dengeleme](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md#zone-balancing)hakkında bilgi edinin.
 * FaultDomain ve UpgradeDomain geçersiz kılmalarını yapılandırmak için gerekli değildir.
 
 ```json
@@ -363,7 +375,7 @@ Bir sanal makine ölçek kümesindeki bölgeleri etkinleştirmek için, sanal ma
 ```
 
 >[!NOTE]
-> * **SF kümelerinin en az bir tane birincil nodeType olmalıdır. Birincil nodeTypes 'ın durda daha yüksek düzeyi veya üzeri olması gerekir.**
+> * **Service Fabric kümeler en az bir birincil nodeType içermelidir. Birincil nodeTypes 'ın durda daha yüksek düzeyi veya üzeri olması gerekir.**
 > * AZ yayılmış sanal makine ölçek kümesi, Dureriþitylevel ' dan bağımsız olarak en az 3 kullanılabilirlik bölgesi ile yapılandırılmalıdır.
 > * AZ gümüş dayanıklılık (veya üzeri) ile sanal makine ölçek kümesi, en az 15 VM 'ye sahip olmalıdır.
 > * AZ önce bronz dayanıklılık ile sanal makine ölçek kümesi yayılmalı, en az 6 VM olmalıdır.
@@ -373,13 +385,13 @@ Birden çok kullanılabilirlik bölgesini desteklemek için Service Fabric nodeT
 
 * İlk değer, nodeType için true olarak ayarlanması gereken **Çoğulkullanılabilirliği Bilityzones** ' dır.
 * İkinci değer **Sfzonalupgrademode** ' dır ve isteğe bağlıdır. Kümede birden çok AZ olan NodeType zaten varsa, bu özellik değiştirilemez.
-      Özelliği, yükseltme etki alanlarında VM 'lerin mantıksal gruplandırmasını denetler.
-          Değer "Parallel" olarak ayarlandıysa: NodeType altındaki VM 'Ler, 5 UDs 'deki bölge bilgilerini yoksayarak Uılılar altında gruplandırılır.
-          Değer atlanırsa veya "hiyerarşik" olarak ayarlanırsa: VM 'Ler, en fazla 15 UDs 'ye kadar olan makineleri yansıtacak şekilde gruplandırılır. 3 bölgenin her biri 5 UDs 'ye sahip olacaktır.
-          Bu özellik yalnızca ServiceFabric uygulaması ve kod yükseltmeleri için yükseltme davranışını tanımlar. Temel alınan sanal makine ölçek kümesi yükseltmeleri, tüm AZ olarak paralel olmaya devam edecektir.
-      Bu özelliğin, birden çok bölgesi etkin olmayan düğüm türleri için UD dağıtımı üzerinde hiçbir etkisi olmayacaktır.
+  Özelliği, yükseltme etki alanlarında VM 'lerin mantıksal gruplandırmasını denetler.
+  **Değer "Parallel" olarak ayarlandıysa:** NodeType altında bulunan VM 'Ler, 5 UDs 'deki bölge bilgilerini yoksayarak Uılılar halinde gruplandırılır. Bu, tüm bölgelerde UD0 aynı anda yükseltilmesine neden olur. Bu dağıtım modu yükseltmeler için daha hızlıdır, ancak bu durum, güncelleştirmelerin aynı anda yalnızca bir bölge uygulanması gerektiği konusunda, bu durum, SDP yönergelerine karşı bir süredir uygulandığından önerilmez.
+  **Değer atlanırsa veya "sıradüzensel" olarak ayarlandıysa:** VM 'Ler, en fazla 15 UDs 'ye kadar olan dağılımı yansıtacak şekilde gruplandırılır. 3 bölgenin her biri 5 UDs 'ye sahip olacaktır. Bu, güncelleştirmelerin bölge temelinde, ilk bölge içinde 5 UDs 'yi tamamladıktan sonra, kümenin ve Kullanıcı uygulamasının perspektifinden daha güvenli bir şekilde 15 UDs (3 bölge, 5 SSD) boyunca yavaş bir şekilde hareket edilmesini sağlar.
+  Bu özellik yalnızca ServiceFabric uygulaması ve kod yükseltmeleri için yükseltme davranışını tanımlar. Temel alınan sanal makine ölçek kümesi yükseltmeleri, tüm AZ olarak paralel olmaya devam edecektir.
+  Bu özelliğin, birden çok bölgesi etkin olmayan düğüm türleri için UD dağıtımı üzerinde hiçbir etkisi olmayacaktır.
 * Üçüncü değer **Vmsszonalupgrademode = Parallel** değeridir. Bu, birden fazla AZs içeren bir nodeType eklenirse kümede yapılandırılacak *zorunlu* bir özelliktir. Bu özellik, tüm az bir kez paralel olarak gerçekleştirilecek sanal makine ölçek kümesi güncelleştirmeleri için yükseltme modunu tanımlar.
-      Şimdi bu özellik yalnızca paralel olarak ayarlanabilir.
+  Şimdi bu özellik yalnızca paralel olarak ayarlanabilir.
 * Service Fabric küme kaynağı apiVersion, "2020-12-01-Preview" veya üzeri olmalıdır.
 * Küme kodu sürümü "7.2.445" veya üzeri olmalıdır.
 
@@ -408,7 +420,7 @@ Birden çok kullanılabilirlik bölgesini desteklemek için Service Fabric nodeT
 >[!NOTE]
 > * Genel IP ve Load Balancer kaynakları, makalenin önceki kısımlarında açıklandığı gibi standart SKU 'YU kullanmalıdır.
 > * nodeType üzerinde "Çoğulkullanılabilirliği Bilityzones" özelliği yalnızca nodeType oluşturma sırasında tanımlanabilir ve daha sonra değiştirilemez. Bu nedenle, mevcut nodeTypes bu özellikle yapılandırılamaz.
-> * "SfZonalUpgradeMode" atlandığında veya "sıradüzenli" olarak ayarlandığında, kümede daha fazla yükseltme etki alanı olduğu için küme ve uygulama dağıtımları daha yavaş olur. Yükseltme ilkesi zaman aşımlarını, 15 yükseltme etki alanı için yükseltme süresi boyunca içerecek şekilde doğru şekilde ayarlamanız önemlidir.
+> * "SfZonalUpgradeMode" atlandığında veya "sıradüzenli" olarak ayarlandığında, kümede daha fazla yükseltme etki alanı olduğu için küme ve uygulama dağıtımları daha yavaş olur. Yükseltme ilkesi zaman aşımlarını, 15 yükseltme etki alanı için yükseltme süresi boyunca içerecek şekilde doğru şekilde ayarlamanız önemlidir. Dağıtımın, 12 saatlik Azure Kaynak İlkesi dağıtım zaman aşımlarını aşmadığından emin olmak için hem uygulama hem de küme için yükseltme ilkesi güncelleştirilmeleri gerekir. Bu, dağıtımın 15 saatten fazla sürmeyeceği anlamına gelir (örneğin, 40 dakikadan daha fazla sürmemelidir.
 > * Kümenin bir bölge alt senaryosunu kullandığından emin olmak için, küme **Rahatlılılevel = Platinum** değerini ayarlayın.
 
 >[!NOTE]
@@ -426,3 +438,4 @@ Tüm geçiş senaryoları için, birden çok kullanılabilirlik bölgesi destekl
 
 [sf-architecture]: ./media/service-fabric-cross-availability-zones/sf-cross-az-topology.png
 [sf-multi-az-arch]: ./media/service-fabric-cross-availability-zones/sf-multi-az-topology.png
+[sf-multi-az-nodes]: ./media/service-fabric-cross-availability-zones/sf-multi-az-nodes.png

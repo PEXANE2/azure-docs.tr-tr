@@ -1,5 +1,5 @@
 ---
-title: Birden çok sözlük koşullarını seçili varlıkların bir listesine etiketleme
+title: Sınıflandırma, Sözlük terimleri ve değişiklik kişilerini etiketlemek için varlıkları toplu olarak düzenleme
 description: Azure purview 'da varlıkları Toplu Düzenle hakkında bilgi edinin.
 author: nayenama
 ms.author: nayenama
@@ -7,12 +7,12 @@ ms.service: data-catalog
 ms.subservice: data-catalog-gen2
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 493d3ceb596bb29da0e60ab08518375412417a0e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 149a70ea9b3fad919e771e8eb279e01d1492b3b3
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102049500"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952465"
 ---
 # <a name="how-to-bulk-edit-assets-to-tag-glossary-terms"></a>Sözlük koşullarını etiketlemek için varlıkları toplu düzenleme
 

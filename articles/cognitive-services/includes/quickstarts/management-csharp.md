@@ -6,14 +6,14 @@ author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 08/05/2020
+ms.date: 3/22/2021
 ms.author: pafarley
-ms.openlocfilehash: 7da10fbdff0b6771fcffb6cc303d5ab183df190a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 1ecfd58e961e70182bfc2e0cc8eaf77f5053eb77
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98947963"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104879559"
 ---
 [Başvuru belgeleri](/dotnet/api/overview/azure/cognitiveservices/management)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Microsoft.Azure.Management.CognitiveServices)  |  [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Management.CognitiveServices/)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Microsoft.Azure.Management.CognitiveServices/tests)
 
@@ -28,7 +28,7 @@ ms.locfileid: "98947963"
 
 ## <a name="create-a-new-c-application"></a>Yeni bir C# uygulaması oluşturma
 
-Yeni bir .NET Core uygulaması oluşturun. Konsol penceresinde (cmd, PowerShell veya Bash gibi), `dotnet new` adıyla yeni bir konsol uygulaması oluşturmak için komutunu kullanın `azure-management-quickstart` . Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: *program.cs*. 
+Yeni bir .NET Core uygulaması oluşturun. Konsol penceresinde (cmd, PowerShell veya Bash gibi), `dotnet new` adıyla yeni bir konsol uygulaması oluşturmak için komutunu kullanın `azure-management-quickstart` . Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: *program. cs*. 
 
 ```console
 dotnet new console -n azure-management-quickstart
@@ -64,13 +64,13 @@ Visual Studio IDE kullanıyorsanız, istemci kitaplığı indirilebilir bir NuGe
 
 ### <a name="import-libraries"></a>Kitaplıkları içeri aktarma
 
-*Program.cs* açın ve aşağıdaki `using` deyimlerini dosyanın en üstüne ekleyin:
+*Program. cs* dosyasını açın ve aşağıdaki `using` deyimlerini dosyanın en üstüne ekleyin:
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/azure_management_service/create_delete_resource.cs?name=snippet_using)]
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
-Aşağıdaki alanları *program.cs* köküne ekleyin ve oluşturduğunuz hizmet sorumlusunu ve Azure hesap bilgilerinizi kullanarak değerlerini doldurun.
+Aşağıdaki alanları *program. cs* köküne ekleyin ve oluşturduğunuz hizmet sorumlusunu ve Azure hesap bilgilerinizi kullanarak değerlerini doldurun.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/azure_management_service/create_delete_resource.cs?name=snippet_constants)]
 
@@ -122,7 +122,9 @@ dotnet run
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [Azure Yönetim SDK 'Sı başvuru belgeleri](/dotnet/api/overview/azure/cognitiveservices/management)
-* [Azure bilişsel hizmetler nedir?](../../what-are-cognitive-services.md)
-* [Azure bilişsel hizmetler 'e yönelik isteklerin kimliğini doğrulama](../../authentication.md)
-* [Azure portalını kullanarak yeni kaynak oluşturma](../../cognitive-services-apis-create-account.md)
+* Bilişsel hizmetlerle güvenli bir şekilde çalışmak için bkz. Azure bilişsel **[Hizmetler 'e yönelik kimlik doğrulama istekleri](../../authentication.md)** .
+* Bilişsel hizmetler 'deki farklı kategorilerin listesini almak için bkz. **[Azure bilişsel hizmetler nedir?](../../what-are-cognitive-services.md)** .
+* Bilişsel hizmetlerin desteklediği doğal dillerin listesini görmek için bkz. **[doğal dil desteği](../../language-support.md)** .
+* Bilişsel hizmetler 'in şirket içi hizmetlerini nasıl kullanacağınızı anlamak için bkz. bilişsel **[Hizmetler 'i kapsayıcı olarak kullanma](../../cognitive-services-container-support.md)** .
+* Bilişsel hizmetler 'in kullanım maliyetini tahmin etmek için bilişsel **[Hizmetler 'in maliyetlerini planlayın ve yönetin](../../plan-manage-costs.md)** bölümüne bakın.
+* Yönetim SDK 'Sı hakkında daha fazla bilgi için bilişsel **[Hizmetler Yönetim SDK 'sı başvuru belgelerine](/dotnet/api/overview/azure/cognitiveservices/management)** bakın.

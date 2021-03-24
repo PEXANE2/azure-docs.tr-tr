@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/06/2020
+ms.date: 03/08/2021
 ms.author: justinha
-ms.openlocfilehash: a89c898e150facc9860d86e18a7acc42f5e0f441
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5fa19e23767af0e121d07872970199a2a1705ea8
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96618867"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951949"
 ---
 # <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services yönetilen bir etki alanının güvenliğini sağlamak için zayıf şifre ve parola karma eşitlemesini devre dışı bırakın
 
@@ -34,14 +34,25 @@ Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklara ihtiyacınız vardı
     * Gerekirse, [bir Azure Active Directory kiracı oluşturun][create-azure-ad-tenant] veya [bir Azure aboneliğini hesabınızla ilişkilendirin][associate-azure-ad-tenant].
 * Azure AD kiracınızda etkinleştirilmiş ve yapılandırılmış Azure Active Directory Domain Services yönetilen bir etki alanı.
     * Gerekirse, [Azure Active Directory Domain Services yönetilen bir etki alanı oluşturun ve yapılandırın][create-azure-ad-ds-instance].
-* Azure PowerShell'i yükleyip yapılandırın.
-    * Gerekirse, [Azure PowerShell modülünü yüklemek ve Azure aboneliğinize bağlanmak](/powershell/azure/install-az-ps)için yönergeleri izleyin.
-    * [Connect-AzAccount][Connect-AzAccount] cmdlet 'Ini kullanarak Azure aboneliğinizde oturum açın.
-* Azure AD PowerShell 'i yükleyip yapılandırın.
-    * Gerekirse, [Azure AD PowerShell modülünü yüklemek ve Azure AD 'ye bağlanmak](/powershell/azure/active-directory/install-adv2)için yönergeleri izleyin.
-    * [Connect-AzureAD][Connect-AzureAD] cmdlet 'Ini kullanarak Azure AD kiracınızda oturum açarak emin olun.
 
-## <a name="disable-weak-ciphers-and-ntlm-password-hash-sync"></a>Zayıf şifre ve NTLM parola karma eşitlemesini devre dışı bırak
+## <a name="use-security-settings-to-disable-weak-ciphers-and-ntlm-password-hash-sync"></a>Zayıf şifrelemeleri ve NTLM parola karması eşitlemesini devre dışı bırakmak için güvenlik ayarlarını kullanın
+
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. Arama yapın ve **Azure AD Domain Services** seçin.
+1. *Aaddscontoso.com* gibi yönetilen etki alanınızı seçin.
+1. Sol taraftaki **güvenlik ayarları**' nı seçin.
+1. Aşağıdaki ayarlar için **devre dışı bırak** 'a tıklayın:
+   - **Yalnızca TLS 1,2 modu**
+   - **NTLM kimlik doğrulaması**
+   - **Şirket içinden NTLM parola eşitleme**
+
+   ![Zayıf şifrelemeleri ve NTLM parola karması eşitlemesini devre dışı bırakma güvenlik ayarlarının ekran görüntüsü](media/secure-your-domain/security-settings.png)
+
+## <a name="use-powershell-to-disable-weak-ciphers-and-ntlm-password-hash-sync"></a>Zayıf şifrelemeleri ve NTLM parola karması eşitlemesini devre dışı bırakmak için PowerShell 'i kullanma
+
+Gerekirse, [Azure PowerShell yükleyip yapılandırın](/powershell/azure/install-az-ps). [Connect-AzAccount][Connect-AzAccount] cmdlet 'Ini kullanarak Azure aboneliğinizde oturum açın. 
+
+Ayrıca gerekirse, [Azure AD PowerShell 'i yükleyip yapılandırın](/powershell/azure/active-directory/install-adv2). [Connect-AzureAD][Connect-AzureAD] cmdlet 'Ini kullanarak Azure AD kiracınızda oturum açarak emin olun.
 
 Zayıf şifre paketlerini ve NTLM kimlik bilgisi karma eşitlemesini devre dışı bırakmak için Azure hesabınızda oturum açın, sonra [Get-AzResource][Get-AzResource] cmdlet 'Ini kullanarak Azure AD DS kaynağını alın:
 

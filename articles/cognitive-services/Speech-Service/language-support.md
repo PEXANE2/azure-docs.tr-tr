@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 43456655d057ee79ed347e4a94c008d825bfa639
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 17511778f63a2d7270178042c4bb414cdd6630c3
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103470243"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955474"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Konuşma hizmeti için dil ve ses desteği
 
@@ -74,7 +74,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | İngilizce (Güney Afrika)             | `en-ZA` | Metin                                   |                           |
 | İngilizce (Tanzanya)                 | `en-TZ` | Metin                                   |                           |
 | İngilizce (İngiltere)           | `en-GB` | Ses (20201019)<br>Metin<br>İşi| Yes                          |
-| İngilizce (ABD)            | `en-US` | Ses (20201019)<br>Metin<br>İşi| Yes                          |
+| İngilizce (ABD)            | `en-US` | Ses (20201019, 20210223)<br>Metin<br>İşi| Yes                          |
 | Estonya dili (Estonya)                  | `et-EE` | Metin                                   |                           |
 | Filipin Dili (Filipinler)             | `fil-PH`| Metin                                   |                           |
 | Fince (Finlandiya)                  | `fi-FI` | Metin                                   |     Yes                      |

@@ -5,12 +5,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 8742b590af89954cb8480e5282827bcd5228673b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: aec23c28e075dd38fa65f1315f9abd9e21cdc9cb
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101095830"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951479"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Azure 'da mikro hizmetleri öngörülebilir bir şekilde sağlayın ve dağıtın
 Bu öğreticide, tek bir birim olarak [Azure App Service](https://azure.microsoft.com/services/app-service/) [mikro hizmetlerden](https://en.wikipedia.org/wiki/Microservices) oluşan bir uygulamanın nasıl SAĞLANACAĞı ve dağıtılacağı ve JSON kaynak grubu şablonlarının ve PowerShell betiği kullanılarak öngörülebilir bir şekilde dağıtılması gösterilmektedir. 
@@ -45,7 +45,7 @@ Daha fazla bilgi için bkz. [Azure Resource Manager ile Azure PowerShell kullanm
 Bu [Önizleme Aracı](https://resources.azure.com) , aboneliğinizdeki tüm kaynak gruplarının JSON tanımlarını ve bireysel kaynakları araştırmanıza olanak sağlar. Araçta, bir kaynağın JSON tanımlarını düzenleyebilir, kaynakların tüm hiyerarşisini silebilir ve yeni kaynaklar oluşturabilirsiniz.  Bu araçta kullanıma hazır olan bilgiler, şablon yazma için çok yararlıdır, çünkü belirli bir kaynak türü için ayarlamanız gereken özellikleri, doğru değerleri vb. gösterir. Kaynak grubunuzu [Azure portalında](https://portal.azure.com/)da oluşturabilir, ardından kaynak grubunu şablonlarınıza yardımcı olması için gezgın aracında JSON tanımlarını inceleyebilirsiniz.
 
 ### <a name="deploy-to-azure-button"></a>Azure'a Dağıt düğmesi
-Kaynak denetimi için GitHub kullanıyorsanız, BENIOKU 'nize bir [Azure 'A dağıtım düğmesi](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-to-azure-button) koyabilirsiniz. Bu, Azure 'a bir anahtar dağıtımı Kullanıcı arabirimi sağlayan MD. Bunu herhangi bir basit uygulama için yapabilmeniz mümkün olsa da, depo kökündeki bir azuredeploy.jsdosyaya yerleştirerek bir kaynak grubunun tamamını dağıtmaya olanak tanımak için bunu genişletebilirsiniz. Kaynak grubu şablonunu içeren bu JSON dosyası, kaynak grubu oluşturmak için Azure 'a dağıt düğmesine göre kullanılacaktır. Bir örnek için, bu öğreticide kullanacağınız [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) örneğine bakın.
+Kaynak denetimi için GitHub kullanıyorsanız, BENIOKU 'nize bir [Azure 'A dağıtım düğmesi](../azure-resource-manager/templates/deploy-to-azure-button.md) koyabilirsiniz. Bu, Azure 'a bir anahtar dağıtımı Kullanıcı arabirimi sağlayan MD. Bunu herhangi bir basit uygulama için yapabilmeniz mümkün olsa da, depo kökündeki bir azuredeploy.jsdosyaya yerleştirerek bir kaynak grubunun tamamını dağıtmaya olanak tanımak için bunu genişletebilirsiniz. Kaynak grubu şablonunu içeren bu JSON dosyası, kaynak grubu oluşturmak için Azure 'a dağıt düğmesine göre kullanılacaktır. Bir örnek için, bu öğreticide kullanacağınız [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) örneğine bakın.
 
 ## <a name="get-the-sample-resource-group-template"></a>Örnek kaynak grubu şablonunu al
 Şimdi ona hemen bakalım.

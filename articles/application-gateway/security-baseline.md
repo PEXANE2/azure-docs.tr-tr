@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 75d219a207fef4f1f122799af5f4f4ef2765bca4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4fc26d8e154dc0a58bb3436a8161d2e21efa2b86
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101723869"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952023"
 ---
 # <a name="azure-security-baseline-for-application-gateway"></a>Application Gateway için Azure Güvenlik temeli
 
@@ -60,7 +60,7 @@ Daha fazla bilgi için aşağıdaki başvurulara bakın.
 
 - [Azure Güvenlik Merkezi tarafından sunulan ağ güvenliğini anlama](../security-center/security-center-network-recommendations.md)
 
-- [Azure Application Gateway için tanılama ve günlüğe kaydetme hakkında SSS](/azure/application-gateway/application-gateway-faq#what-types-of-logs-does-application-gateway-provide)
+- [Azure Application Gateway için tanılama ve günlüğe kaydetme hakkında SSS](./application-gateway-faq.yml#what-types-of-logs-does-application-gateway-provide)
 
 **Sorumluluk**: Müşteri
 
@@ -118,7 +118,7 @@ Daha fazla bilgi için aşağıdaki başvurulara bakın.
 
 - [Azure Güvenlik Merkezi tarafından sunulan ağ güvenliğini anlama](../security-center/security-center-network-recommendations.md)
 
-- [Azure Application Gateway için tanılama ve günlüğe kaydetme hakkında SSS](/azure/application-gateway/application-gateway-faq#what-types-of-logs-does-application-gateway-provide)
+- [Azure Application Gateway için tanılama ve günlüğe kaydetme hakkında SSS](./application-gateway-faq.yml#what-types-of-logs-does-application-gateway-provide)
 
 **Sorumluluk**: Müşteri
 
@@ -140,7 +140,7 @@ Alternatif olarak, Azure için ID/IP 'ler özellikleri içeren Azure Marketi 'nd
 
 - [Azure WAF dağıtma](../web-application-firewall/ag/create-waf-policy-ag.md)
 
-- [Barbcuda WAF bulut hizmetini anlama](https://docs.microsoft.com/azure/app-service/environment/app-service-app-service-environment-web-application-firewall#configuring-your-barracuda-waf-cloud-service)
+- [Barbcuda WAF bulut hizmetini anlama](../app-service/environment/app-service-app-service-environment-web-application-firewall.md#configuring-your-barracuda-waf-cloud-service)
 
 **Sorumluluk**: Müşteri
 
@@ -210,9 +210,9 @@ Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynakları aray
 
 **Kılavuz**: Azure etkinlik günlüğü 'nü kullanarak ağ kaynak yapılandırmasını Izleyin ve Azure Application Gateway dağıtımlarınızla ilgili ağ ayarları ve kaynakları için değişiklikleri tespit edin. Kritik ağ ayarlarında veya kaynaklarda değişiklik yapıldığında tetiklenecek Azure Izleyici içinde uyarılar oluşturun.
 
-- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Izleyici 'de uyarı oluşturma](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Sorumluluk**: Müşteri
 
@@ -230,7 +230,7 @@ Etkinlik günlüklerine ek olarak, Azure Application Gateway dağıtımlarınız
 
 Azure Application Gateway Ayrıca Azure Application Insights ile yerleşik tümleştirme sunar. Application Insights günlük, performans ve hata verilerini toplar. Application Insights, performans bozuklularını otomatik olarak algılar ve sorunları tanılamanıza ve Web uygulamalarınızın nasıl kullanıldığını anlamanıza yardımcı olacak güçlü analiz araçları içerir. Verileri standart saklama süresinden daha uzun tutmak için Application Insights Telemetriyi merkezi bir konuma aktarmak üzere sürekli dışarı aktarmayı etkinleştirebilirsiniz.
 
-- [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](/azure/azure-monitor/platform/activity-log)
+- [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/essentials/activity-log.md)
 
 - [Azure Application Gateway için tanılama ayarlarını etkinleştirme](application-gateway-diagnostics.md)
 
@@ -250,7 +250,7 @@ Etkinlik günlüklerine ek olarak, Azure Application Gateway dağıtımlarınız
 
 Azure Application Gateway Ayrıca Azure Application Insights ile yerleşik tümleştirme sunar. Application Insights günlük, performans ve hata verilerini toplar. Application Insights, performans bozuklularını otomatik olarak algılar ve sorunları tanılamanıza ve Web uygulamalarınızın nasıl kullanıldığını anlamanıza yardımcı olacak güçlü analiz araçları içerir. Verileri standart saklama süresinden daha uzun tutmak için Application Insights Telemetriyi merkezi bir konuma aktarmak üzere sürekli dışarı aktarmayı etkinleştirebilirsiniz.
 
-- [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/essentials/activity-log.md)
 
 - [Azure Application Gateway için tanılama ayarlarını etkinleştirme](application-gateway-diagnostics.md)
 
@@ -266,7 +266,7 @@ Azure Application Gateway Ayrıca Azure Application Insights ile yerleşik tüml
 
 **Kılavuz**: Azure izleyici 'de, Log Analytics çalışma alanı saklama dönemini kuruluşunuzun uyumluluk düzenlemelerine göre ayarlayın. Uzun süreli/arşiv depolama için Azure depolama hesaplarını kullanın.
 
-- [Log Analytics çalışma alanları için günlük saklama parametrelerini ayarlama](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Log Analytics çalışma alanları için günlük saklama parametrelerini ayarlama](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Sorumluluk**: Müşteri
 
@@ -280,7 +280,7 @@ Azure Application Gateway 'leriniz de dahil olmak üzere tüm dağıtılan ağ k
 
 İsteğe bağlı olarak, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri etkinleştirebilir ve bu verileri ayarlayabilirsiniz. 
 
-- [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](/azure/azure-monitor/platform/activity-log)
+- [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/essentials/activity-log.md)
 
 - [Azure Application Gateway için tanılama ayarlarını etkinleştirme](application-gateway-diagnostics.md)
 
@@ -300,13 +300,13 @@ Azure Application Gateway 'leriniz de dahil olmak üzere tüm dağıtılan ağ k
 
 - [Azure WAF dağıtma](../web-application-firewall/ag/create-waf-policy-ag.md)
 
-- [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](/azure/azure-monitor/platform/activity-log)
+- [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/essentials/activity-log.md)
 
 - [Azure Application Gateway için tanılama ayarlarını etkinleştirme](application-gateway-diagnostics.md)
 
 - [Ağlar için Azure Izleyicisini kullanma](../azure-monitor/insights/network-insights-overview.md)
 
-- [Azure 'da uyarı oluşturma](/azure/azure-monitor/learn/tutorial-response)
+- [Azure 'da uyarı oluşturma](../azure-monitor/alerts/tutorial-response.md)
 
 **Sorumluluk**: Müşteri
 
@@ -334,9 +334,9 @@ Azure Application Gateway dağıtımlarınız için tanılama ayarlarını yapı
 
 **Rehberlik**: Azure Active Directory (Azure AD), açıkça atanması ve sorgulanabilir olması gereken yerleşik roller içerir. Yönetim gruplarının üyesi olan hesapları bulmaya yönelik geçici sorgular gerçekleştirmek için Azure AD PowerShell modülünü kullanın.
 
-- [Azure AD 'de PowerShell ile dizin rolü alma](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
+- [Azure AD 'de PowerShell ile dizin rolü alma](/powershell/module/azuread/get-azureaddirectoryrole?preserve-view=true&view=azureadps-2.0)
 
-- [Azure AD 'de PowerShell ile bir dizin rolünün üyelerini alma](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [Azure AD 'de PowerShell ile bir dizin rolünün üyelerini alma](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
 **Sorumluluk**: Müşteri
 
@@ -444,7 +444,7 @@ Daha fazla bilgi için aşağıdaki başvurulara bakın.
 
 **Rehberlik**: Azure Active Directory (Azure AD) eski hesapların keşfedilmesine yardımcı olmak için Günlükler sağlar. Ayrıca, grup üyeliklerini etkin bir şekilde yönetmek, kurumsal uygulamalara erişmek ve rol atamaları için Azure kimlik erişimi Incelemelerini kullanın. Yalnızca doğru kullanıcıların erişmeye devam ettiğinden emin olmak için, Kullanıcı erişimi düzenli olarak incelenebilir.
 
-- [Azure AD raporlamayı anlama](/azure/active-directory/reports-monitoring/)
+- [Azure AD raporlamayı anlama](../active-directory/reports-monitoring/index.yml)
 
 - [Azure kimlik erişimi Incelemelerini kullanma](../active-directory/governance/access-reviews-overview.md)
 
@@ -458,7 +458,7 @@ Daha fazla bilgi için aşağıdaki başvurulara bakın.
 
 Bu işlemi, Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturarak ve Log Analytics çalışma alanına denetim günlüklerini ve oturum açma günlüklerini göndererek kolaylaştırabilirsiniz. İstenen uyarıları Log Analytics çalışma alanı içinde yapılandırabilirsiniz.
 
-- [Azure Etkinlik Günlüklerini Azure İzleyici ile tümleştirme](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure Etkinlik Günlüklerini Azure İzleyici ile tümleştirme](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Sorumluluk**: Müşteri
 
@@ -486,7 +486,7 @@ Bu işlemi, Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturar
 
 **Rehberlik**: hassas bilgileri depolayan veya işleyen Azure kaynaklarını izlemeye yardımcı olması için etiketleri kullanın. 
 
-- [Etiketler oluşturma ve kullanma](/azure/azure-resource-manager/resource-group-using-tags)
+- [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
 **Sorumluluk**: Müşteri
 
@@ -546,7 +546,7 @@ Bu işlemi, Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturar
 
 **Kılavuz**: Azure Izleyici 'Yi Azure etkinlik günlüğü ile birlikte kullanarak, üretim Azure Application Gateway örneklerine ve diğer kritik veya ilgili kaynaklara yönelik değişikliklerin ne zaman gerçekleştiği hakkında uyarılar oluşturun.
 
-- [Azure etkinlik günlüğü olayları için uyarı oluşturma](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Sorumluluk**: Müşteri
 
@@ -604,7 +604,7 @@ Klasik Azure kaynakları kaynak Graph aracılığıyla bulunabilse de, ileri do�
 
 - [Azure Kaynak Graf ile sorgu oluşturma](../governance/resource-graph/first-query-portal.md)
 
-- [Azure aboneliklerinizi görüntüleme](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Azure aboneliklerinizi görüntüleme](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Azure RBAC 'yi anlama](../role-based-access-control/overview.md)
 
@@ -667,7 +667,7 @@ Daha fazla bilgi için aşağıdaki başvurulara bakın.
 
 - [Azure İlkesi'ni yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Ilkesiyle belirli bir kaynak türünü reddetme](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Azure Ilkesiyle belirli bir kaynak türünü reddetme](../governance/policy/samples/built-in-policies.md#general)
 
 **Sorumluluk**: Müşteri
 
@@ -709,7 +709,7 @@ Daha fazla bilgi için aşağıdaki başvurulara bakın.
 
 **Rehberlik**: Azure Application Gateway dağıtımlarınızla ilgili ağ ayarları için standart güvenlik yapılandırması tanımlayın ve uygulayın. Azure Application Gateway, Azure sanal ağları ve ağ güvenlik gruplarının ağ yapılandırmasını denetlemek veya zorlamak üzere özel ilkeler oluşturmak için "Microsoft. Network" ad alanındaki Azure Ilke diğer adlarını kullanın. Ayrıca, yerleşik ilke tanımını da kullanabilirsiniz.
 
-- [Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Azure İlkesi'ni yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
@@ -733,9 +733,9 @@ Daha fazla bilgi için aşağıdaki başvurulara bakın.
 
 **Kılavuz**: özel Azure ilke tanımları kullanıyorsanız, kodunuzu güvenli bir şekilde depolamak ve yönetmek Için Azure devops veya Azure Repos kullanın.
 
-- [Azure DevOps 'da kod depolama](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Azure DevOps 'da kod depolama](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Azure Repos belgeleri](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Azure Repos belgeleri](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Sorumluluk**: Müşteri
 
@@ -817,7 +817,7 @@ Azure Application Gateway dağıtımlarınız için tanılama ayarlarını yapı
 
 **Kılavuz**: Azure Web uygulaması güvenlik duvarı (WAF) kullanılırken WAF ilkelerini yapılandırabilirsiniz. Bir WAF ilkesi iki tür güvenlik kuralından oluşur: müşteri tarafından yazılan özel kurallar ve Azure tarafından yönetilen önceden yapılandırılmış kuralların bir koleksiyonu olan yönetilen kural kümeleri. Azure tarafından yönetilen kural kümeleri, yaygın bir güvenlik tehditleri kümesine karşı koruma dağıtmanın kolay bir yolunu sağlar. Bu tür RuleSets 'ler Azure tarafından yönetildiğinden, yeni saldırı imzalarından korunmak için kurallar gerektiği şekilde güncelleştirilir.
 
-- [Azure tarafından yönetilen WAF kural kümelerini anlama](https://docs.microsoft.com/azure/web-application-firewall/ag/ag-overview#waf-policy-and-rules)
+- [Azure tarafından yönetilen WAF kural kümelerini anlama](../web-application-firewall/ag/ag-overview.md#waf-policy-and-rules)
 
 **Sorumluluk**: Paylaşılan
 
@@ -833,11 +833,11 @@ Azure Application Gateway dağıtımlarınız için tanılama ayarlarını yapı
 
 Azure DevOps Services donanım hatası, hizmet kesintisi veya bölge çapında olağanüstü durum gibi durumlarda verilerin kullanılabilir olmasını sağlamak için Azure depolama alanlarına özgü birçok farklı özellikten faydalanır. Azure DevOps ekibi ayrıca verileri yanlışlıkla veya kötü niyetli kişiler tarafından silinmeye karşı korumak için gerekli yordamları izler.
 
-- [Azure DevOps 'da veri kullanılabilirliğini anlama](https://docs.microsoft.com/azure/devops/organizations/security/data-protection?view=azure-devops#data-availability&amp;preserve-view=true)
+- [Azure DevOps 'da veri kullanılabilirliğini anlama](/azure/devops/organizations/security/data-protection?preserve-view=true&view=azure-devops#data-availability)
 
-- [Azure DevOps 'da kod depolama](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Azure DevOps 'da kod depolama](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Azure Repos belgeleri](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Azure Repos belgeleri](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Sorumluluk**: Müşteri
 
@@ -963,5 +963,5 @@ Ayrıca, abonelikleri açıkça işaretleyin (örn. üretim, üretim dışı) ve
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bkz. [Azure Güvenlik Karşılaştırması 2.0 sürümüne genel bakış](/azure/security/benchmarks/overview)
-- [Azure güvenlik temelleri](/azure/security/benchmarks/security-baselines-overview) hakkında daha fazla bilgi edinin
+- Bkz. [Azure Güvenlik Karşılaştırması 2.0 sürümüne genel bakış](../security/benchmarks/overview.md)
+- [Azure güvenlik temelleri](../security/benchmarks/security-baselines-overview.md) hakkında daha fazla bilgi edinin

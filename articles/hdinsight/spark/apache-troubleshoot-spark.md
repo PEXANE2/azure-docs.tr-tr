@@ -6,12 +6,12 @@ ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: af488cd253e8a8ebedd838aa5286185ea556f69d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b54b9d932505ada890ac21c1b8de3178ad2f0042
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98942507"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867517"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Azure HDInsight kullanarak Apache Spark sorunlarını giderme
 
@@ -25,49 +25,49 @@ Spark yapılandırma değerleri, Apache Spark bir uygulama özel durumuyla karş
 
 1. **Spark2**  >  **configs** sayfasına gidin.
 
-    ![Configs sekmesini seçin](./media/apache-troubleshoot-spark/apache-spark-ambari-config2.png)
+    :::image type="content" source="./media/apache-troubleshoot-spark/apache-spark-ambari-config2.png" alt-text="Configs sekmesini seçin" border="true":::
 
 1. Yapılandırma listesinde **Custom-spark2-Defaults**' ı seçin ve genişletin.
 
 1. **spark.executor. Memory** gibi ayarlamanız gereken değer ayarını bulun. Bu durumda, **9728dk** değeri çok yüksektir.
 
-    ![Özel-Spark-varsayılanlar seçin](./media/apache-troubleshoot-spark/apache-spark-ambari-config4.png)
+    :::image type="content" source="./media/apache-troubleshoot-spark/apache-spark-ambari-config4.png" alt-text="Özel-Spark-varsayılanlar seçin" border="true":::
 
 1. Değeri önerilen ayarı olarak ayarlayın. Bu ayar için **2048m** değeri önerilir.
 
 1. Değeri kaydedin ve sonra yapılandırmayı kaydedin. **Kaydet**’i seçin.
 
-    ![Değeri 20 48m olarak değiştir](./media/apache-troubleshoot-spark/apache-spark-ambari-config6a.png)
+    :::image type="content" source="./media/apache-troubleshoot-spark/apache-spark-ambari-config6a.png" alt-text="Değeri 20 48m olarak değiştir" border="true":::
 
     Yapılandırma değişiklikleriyle ilgili bir konum yazın ve ardından **Kaydet**' i seçin.
 
-    ![Yaptığınız değişiklikler hakkında bir bilgi girin](./media/apache-troubleshoot-spark/apache-spark-ambari-config6c.png)
+    :::image type="content" source="./media/apache-troubleshoot-spark/apache-spark-ambari-config6c.png" alt-text="Yaptığınız değişiklikler hakkında bir bilgi girin" border="true":::
 
     Herhangi bir yapılandırmaya dikkat edilmesi gerekiyorsa size bildirilir. Öğeleri aklınızda ve **yine de devam et**' i seçin.
 
-    ![Yine de devam et 'i seçin](./media/apache-troubleshoot-spark/apache-spark-ambari-config6b.png)
+    :::image type="content" source="./media/apache-troubleshoot-spark/apache-spark-ambari-config6b.png" alt-text="Yine de devam et 'i seçin" border="true":::
 
 1. Bir yapılandırma her kaydedildiğinde hizmeti yeniden başlatmanız istenir. **Yeniden Başlat**' ı seçin.
 
-    ![Yeniden Başlat 'ı seçin](./media/apache-troubleshoot-spark/apache-spark-ambari-config7a.png)
+    :::image type="content" source="./media/apache-troubleshoot-spark/apache-spark-ambari-config7a.png" alt-text="Yeniden Başlat 'ı seçin" border="true":::
 
     Yeniden başlatmayı onaylayın.
 
-    ![Tümünü yeniden başlatmayı Onayla seçeneğini belirleyin](./media/apache-troubleshoot-spark/apache-spark-ambari-config7b.png)
+    :::image type="content" source="./media/apache-troubleshoot-spark/apache-spark-ambari-config7b.png" alt-text="Tümünü yeniden başlatmayı Onayla seçeneğini belirleyin" border="true":::
 
     Çalıştıran işlemlerin gözden geçirilmesini sağlayabilirsiniz.
 
-    ![Çalışan işlemlerin gözden geçirilmesi](./media/apache-troubleshoot-spark/apache-spark-ambari-config7c.png)
+    :::image type="content" source="./media/apache-troubleshoot-spark/apache-spark-ambari-config7c.png" alt-text="Çalışan işlemlerin gözden geçirilmesi" border="true":::
 
 1. Yapılandırma ekleyebilirsiniz. Yapılandırma listesinde **Custom-spark2-Defaults**' ı seçin ve ardından **Özellik Ekle**' yi seçin.
 
-    ![Özellik Ekle ' yi seçin](./media/apache-troubleshoot-spark/apache-spark-ambari-config8.png)
+    :::image type="content" source="./media/apache-troubleshoot-spark/apache-spark-ambari-config8.png" alt-text="Özellik Ekle ' yi seçin" border="true":::
 
 1. Yeni bir özellik tanımlayın. Veri türü gibi belirli ayarlar için bir iletişim kutusu kullanarak tek bir özellik tanımlayabilirsiniz. Ya da her satır için bir tanım kullanarak birden çok özellik tanımlayabilirsiniz.
 
     Bu örnekte, **spark. Driver. Memory** özelliği **4g** değeri ile tanımlanmıştır.
 
-    ![Yeni özellik tanımla](./media/apache-troubleshoot-spark/apache-spark-ambari-config9.png)
+    :::image type="content" source="./media/apache-troubleshoot-spark/apache-spark-ambari-config9.png" alt-text="Yeni özellik tanımla" border="true":::
 
 1. Yapılandırmayı kaydedin ve ardından 6. ve 7. adımlarda açıklandığı gibi hizmeti yeniden başlatın.
 
@@ -77,7 +77,7 @@ Bu değişiklikler küme genelinde olmakla kalmaz, Spark işini gönderdiğinizd
 
 Jupyter Notebook ilk hücresinde, **%% Configure** direktifinden sonra Spark YAPıLANDıRMALARıNıN geçerli JSON biçiminde belirtilmesi gerekir. Gerçek değerleri gerektiği gibi değiştirin:
 
-![Yapılandırma ekleme](./media/apache-troubleshoot-spark/add-configuration-cell.png)
+:::image type="content" source="./media/apache-troubleshoot-spark/add-configuration-cell.png" alt-text="Yapılandırma ekleme" border="true":::
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-apache-livy-on-clusters"></a>Kümeler üzerinde Apache Livy kullanarak bir Apache Spark uygulamasını nasıl yapılandırabilirim?
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 02/28/2020
-ms.openlocfilehash: a649c448e4d51929421a8dadbcd1948d7e130df1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a8ad0c787235b94a600d14a3b447bbfee052321b
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945669"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864865"
 ---
 # <a name="connect-to-hdinsight-apache-hadoop-using-ssh"></a>SSH kullanarak HDInsight’a (Apache Hadoop) bağlanma
 
@@ -86,9 +86,9 @@ Anahtar oluşturma işlemi sırasında bilgi girmeniz istenir. Örneğin, anahta
 
 | Oluşturma yöntemi | Ortak anahtarı kullanma |
 | ------- | ------- |
-| Azure portalı | __SSH için küme oturum açma parolası kullan__ seçeneğinin işaretini kaldırın ve ardından SSH kimlik doğrulaması türü olarak __ortak anahtar__ ' ı seçin. Son olarak, ortak anahtar dosyasını seçin veya dosyanın metin içeriğini __SSH ortak anahtarı__ alanına yapıştırın.</br>![HDInsight küme oluşturma işleminde SSH ortak anahtarı iletişim kutusu](./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-public-key.png) |
+| Azure portalı | __SSH için küme oturum açma parolası kullan__ seçeneğinin işaretini kaldırın ve ardından SSH kimlik doğrulaması türü olarak __ortak anahtar__ ' ı seçin. Son olarak, ortak anahtar dosyasını seçin veya dosyanın metin içeriğini __SSH ortak anahtarı__ alanına yapıştırın.</br>:::image type="content" source="./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-public-key.png" alt-text="HDInsight küme oluşturma işleminde SSH ortak anahtarı iletişim kutusu"::: |
 | Azure PowerShell | `-SshPublicKey` [New-AzHdinsightCluster](/powershell/module/az.hdinsight/new-azhdinsightcluster) cmdlet 'inin parametresini kullanın ve ortak anahtarın içeriğini dize olarak geçirin.|
-| Azure CLI’si | `--sshPublicKey`Komutun parametresini kullanın [`az hdinsight create`](/cli/azure/hdinsight#az-hdinsight-create) ve ortak anahtarın içeriğini dize olarak geçirin. |
+| Azure CLI | `--sshPublicKey`Komutun parametresini kullanın [`az hdinsight create`](/cli/azure/hdinsight#az-hdinsight-create) ve ortak anahtarın içeriğini dize olarak geçirin. |
 | Resource Manager Şablonu | SSH anahtarlarını şablonla kullanma örneği için bkz. [HDInsight’ı SSH anahtarı ile Linux’a dağıtma](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-publickey/). [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/101-hdinsight-linux-ssh-publickey/azuredeploy.json) dosyasında `publicKeys` öğesi, kümeyi oluştururken Azure’a anahtarları geçirmek için kullanılır. |
 
 ## <a name="authentication-password"></a>Kimlik doğrulaması: Parola
@@ -105,9 +105,9 @@ SSH hesaplarının güvenliği bir parola kullanılarak sağlanabilir. SSH kulla
 
 | Oluşturma yöntemi | Parola belirtme |
 | --------------- | ---------------- |
-| Azure portalı | Varsayılan olarak, SSH kullanıcı hesabı ile küme oturum açma hesabı aynı parolaya sahiptir. Farklı bir parola kullanmak için __SSH için küme oturum açma parolası kullan__' ın işaretini kaldırın ve ardından __SSH parolası__ alanına parolayı girin.</br>![HDInsight küme oluşturma işleminde SSH parolası iletişim kutusu](./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-password.png)|
+| Azure portalı | Varsayılan olarak, SSH kullanıcı hesabı ile küme oturum açma hesabı aynı parolaya sahiptir. Farklı bir parola kullanmak için __SSH için küme oturum açma parolası kullan__' ın işaretini kaldırın ve ardından __SSH parolası__ alanına parolayı girin.</br>:::image type="content" source="./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-password.png" alt-text="HDInsight küme oluşturma işleminde SSH parolası iletişim kutusu":::|
 | Azure PowerShell | `--SshCredential` [New-AzHdinsightCluster](/powershell/module/az.hdinsight/new-azhdinsightcluster) cmdlet 'inin PARAMETRESINI kullanın ve `PSCredential` SSH kullanıcı hesabı adını ve parolasını içeren bir nesne geçirin. |
-| Azure CLI’si | `--ssh-password`Komutun parametresini kullanın [`az hdinsight create`](/cli/azure/hdinsight#az-hdinsight-create) ve parola değerini sağlayın. |
+| Azure CLI | `--ssh-password`Komutun parametresini kullanın [`az hdinsight create`](/cli/azure/hdinsight#az-hdinsight-create) ve parola değerini sağlayın. |
 | Resource Manager Şablonu | Parolayı şablonla kullanma örneği için bkz. [HDInsight’ı SSH parolası ile Linux’a dağıtma](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-password/). [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/101-hdinsight-linux-ssh-password/azuredeploy.json) dosyasındaki `linuxOperatingSystemProfile` öğesi, kümeyi oluştururken SSH hesabı adı ile parolasını Azure’a geçirmek için kullanılır.|
 
 ### <a name="change-the-ssh-password"></a>SSH parolasını değiştirme

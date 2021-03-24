@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/25/2020
 ms.custom: mvc, seodec18
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: ca1308c969227336bfb4970f7c5c77b9f2e0cc22
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 32ad6fa122083b40a948345e360bf5b9b0f09e96
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102216539"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954862"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Öğretici: mevcut bir özel DNS adını Azure App Service eşleme
 
@@ -121,7 +121,7 @@ Uygulamanıza özel bir etki alanı eklemek için etki alanı sağlayıcınızla
 
     <details>
         <summary>Azure kullanarak etki alanı sağlayıcımda DNS 'i yönetebilir miyim?</summary>
-        İsterseniz, etki alanınız için DNS kayıtlarını yönetmek ve Azure App Service için özel bir DNS adı yapılandırmak üzere Azure DNS kullanabilirsiniz. Daha fazla bilgi için bkz. <a href="https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns">öğretici: etki alanınızı Azure DNS>barındırın </a>.
+        İsterseniz, etki alanınız için DNS kayıtlarını yönetmek ve Azure App Service için özel bir DNS adı yapılandırmak üzere Azure DNS kullanabilirsiniz. Daha fazla bilgi için bkz. <a href="/azure/dns/dns-delegate-domain-azure-dns">öğretici: etki alanınızı Azure DNS>barındırın </a>.
     </details>
 
 1. DNS kayıtlarını yönetme sayfasını bulun. 
@@ -146,7 +146,7 @@ Uygulamanıza özel bir etki alanı eklemek için etki alanı sağlayıcınızla
             <ul>
             <li>Kök etki alanını (örneğin,) eşlemek için <code>contoso.com</code> bir kayıt kullanın. Kök kaydı için CNAME kaydını kullanmayın (bilgi için bkz. <a href="https://en.wikipedia.org/wiki/CNAME_record">Vikipedi entry</a>).</li>
             <li>Bir alt etki alanını (örneğin,) eşlemek için <code>www.contoso.com</code> BIR CNAME kaydı kullanın.</li>
-            <li>Bir alt etki alanını uygulamanın IP adresine doğrudan bir kayıtla eşleyebilirsiniz, ancak <a href="https://docs.microsoft.com/azure/app-service/overview-inbound-outbound-ips#when-inbound-ip-changes">IP adresinin değiştirilmesi</a>mümkündür. CNAME, uygulamanın ana bilgisayar adına eşlenir, bu da değişikliğe karşı daha düşüktür.</li>
+            <li>Bir alt etki alanını uygulamanın IP adresine doğrudan bir kayıtla eşleyebilirsiniz, ancak <a href="/azure/app-service/overview-inbound-outbound-ips#when-inbound-ip-changes">IP adresinin değiştirilmesi</a>mümkündür. CNAME, uygulamanın ana bilgisayar adına eşlenir, bu da değişikliğe karşı daha düşüktür.</li>
             <li><a href="https://en.wikipedia.org/wiki/Wildcard_DNS_record">Joker bir etki alanını</a> (örneğin,) eşlemek IÇIN <code>*.contoso.com</code> bir CNAME kaydı kullanın.</li>
             </ul>
         </div>
@@ -247,7 +247,7 @@ Bir alt etki alanını `www.contoso.com` ÖNERILEN CNAME kaydı yerine a kaydıy
 
     <details>
         <summary><strong>Güvenli olmayan</strong> uyarı etiketi nedir?</summary>
-        Özel etki alanınız için bir uyarı etiketi henüz bir TLS/SSL sertifikasına bağlanmamış demektir. Bir tarayıcıdan özel etki alanınızı HTTPS istekleri, tarayıcıya bağlı olarak bir hata veya uyarı alır. TLS bağlama eklemek için, bkz. <a href="https://docs.microsoft.com/azure/app-service/configure-ssl-bindings">Azure App Service BIR TLS/SSL bağlaması ile özel BIR DNS adını güvenli hale getirme</a>.
+        Özel etki alanınız için bir uyarı etiketi henüz bir TLS/SSL sertifikasına bağlanmamış demektir. Bir tarayıcıdan özel etki alanınızı HTTPS istekleri, tarayıcıya bağlı olarak bir hata veya uyarı alır. TLS bağlama eklemek için, bkz. <a href="/azure/app-service/configure-ssl-bindings">Azure App Service BIR TLS/SSL bağlaması ile özel BIR DNS adını güvenli hale getirme</a>.
     </details>
 
     Bir adım kaçırdıysanız veya daha önce bir yerde yazım hatası yaptıysanız, sayfanın alt kısmında bir doğrulama hatası görüntülenir.
@@ -274,7 +274,7 @@ Bir alt etki alanını `www.contoso.com` ÖNERILEN CNAME kaydı yerine a kaydıy
 
     <details>
         <summary><strong>Güvenli olmayan</strong> uyarı etiketi nedir?</summary>
-        Özel etki alanınız için bir uyarı etiketi henüz bir TLS/SSL sertifikasına bağlanmamış demektir. Bir tarayıcıdan özel etki alanınızı HTTPS istekleri, tarayıcıya bağlı olarak bir hata veya uyarı alır. TLS bağlama eklemek için, bkz. <a href="https://docs.microsoft.com/azure/app-service/configure-ssl-bindings">Azure App Service BIR TLS/SSL bağlaması ile özel BIR DNS adını güvenli hale getirme</a>.
+        Özel etki alanınız için bir uyarı etiketi henüz bir TLS/SSL sertifikasına bağlanmamış demektir. Bir tarayıcıdan özel etki alanınızı HTTPS istekleri, tarayıcıya bağlı olarak bir hata veya uyarı alır. TLS bağlama eklemek için, bkz. <a href="/azure/app-service/configure-ssl-bindings">Azure App Service BIR TLS/SSL bağlaması ile özel BIR DNS adını güvenli hale getirme</a>.
     </details>
     
     Bir adım kaçırdıysanız veya daha önce bir yerde yazım hatası yaptıysanız, sayfanın alt kısmında bir doğrulama hatası görüntülenir.
@@ -297,7 +297,7 @@ Bir alt etki alanını `www.contoso.com` ÖNERILEN CNAME kaydı yerine a kaydıy
 
     <details>
         <summary><strong>Güvenli olmayan</strong> uyarı etiketi nedir?</summary>
-        Özel etki alanınız için bir uyarı etiketi henüz bir TLS/SSL sertifikasına bağlanmamış demektir. Bir tarayıcıdan özel etki alanınızı HTTPS istekleri, tarayıcıya bağlı olarak bir hata veya uyarı alır. TLS bağlama eklemek için, bkz. <a href="https://docs.microsoft.com/azure/app-service/configure-ssl-bindings">Azure App Service BIR TLS/SSL bağlaması ile özel BIR DNS adını güvenli hale getirme</a>.
+        Özel etki alanınız için bir uyarı etiketi henüz bir TLS/SSL sertifikasına bağlanmamış demektir. Bir tarayıcıdan özel etki alanınızı HTTPS istekleri, tarayıcıya bağlı olarak bir hata veya uyarı alır. TLS bağlama eklemek için, bkz. <a href="/azure/app-service/configure-ssl-bindings">Azure App Service BIR TLS/SSL bağlaması ile özel BIR DNS adını güvenli hale getirme</a>.
     </details>
 
 -----
@@ -352,7 +352,7 @@ Bu, yaygın bir senaryo olsa da aslında özel etki alanı eşlemesi içermez, a
 
 [Azure CLI](/cli/azure/install-azure-cli) veya [Azure PowerShell](/powershell/azure/)kullanarak betiklerle özel etki alanlarının yönetimini otomatik hale getirebilirsiniz.
 
-#### <a name="azure-cli"></a>Azure CLI’si
+#### <a name="azure-cli"></a>Azure CLI
 
 Aşağıdaki komut, App Service uygulamasına özel bir DNS adı yapılandırır.
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
-ms.openlocfilehash: 9f92007c271da5b6d2cb8db6c3904a62b114e7c2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fd65177fb6202b0396545043c2e63a87c7f01bbb
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98929498"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864610"
 ---
 # <a name="overview-of-apache-spark-structured-streaming"></a>Apache Spark yapılandırılmış akışa genel bakış
 
@@ -20,7 +20,7 @@ Yapılandırılmış akış uygulamaları, HDInsight Spark kümelerinde çalış
 
 Yapılandırılmış akış, giriş verilerine seçim, projeksiyon, toplama, Pencereleme ve başvuru veri çerçevesi ile birleştirme gibi işlemler uyguladığınızda uzun süre çalışan bir sorgu oluşturur. Daha sonra, sonuçları dosya depolama alanına (Azure Storage blob 'Ları veya Data Lake Storage) veya özel kod (örneğin, SQL veritabanı veya Power BI) kullanarak herhangi bir veri deposuna çıktı olarak alırsınız. Yapılandırılmış akış, HDInsight 'ta hata ayıklama için oluşturulan verileri görebileceğiniz şekilde, yerel olarak hata ayıklama için konsola ve bellek içi tabloya yönelik çıktıyı da sağlar.
 
-![HDInsight ve Spark yapılandırılmış akışı ile akış Işleme](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming.png)
+:::image type="content" source="./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming.png" alt-text="HDInsight ve Spark yapılandırılmış akışı ile akış Işleme" border="false":::
 
 > [!NOTE]  
 > Spark yapısal akışı Spark akışını (DStreams) değiştiriyor. İleri, yapılandırılmış akış geliştirmeler ve bakım alacak, ancak DStreams yalnızca bakım modunda olacak. Yapılandırılmış akış şu anda özellik dışında, desteklediği kaynaklar ve havuzlar için DStreams olarak, uygun Spark akış işleme seçeneğini belirlemek için gereksinimlerinizi değerlendirin.
@@ -29,7 +29,7 @@ Yapılandırılmış akış, giriş verilerine seçim, projeksiyon, toplama, Pen
 
 Spark yapılandırılmış akış, bir veri akışını derinlemesine sınırsız bir tablo olarak temsil eder, diğer bir deyişle, yeni veri geldiğinde tablo büyümeye devam eder. Bu *giriş tablosu* , uzun süre çalışan bir sorgu tarafından sürekli olarak işlenir ve bir *Çıkış tablosuna* gönderilir:
 
-![Yapılandırılmış akış kavramı](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-concept.png)
+:::image type="content" source="./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-concept.png" alt-text="Yapılandırılmış akış kavramı" border="false":::
 
 Yapılandırılmış akışta, veriler sisteme ulaşır ve hemen bir giriş tablosuna alınır. Bu giriş tablosuna yönelik işlemler gerçekleştiren sorguları (DataFrame ve DataSet API 'Leri kullanarak) yazarsınız. Sorgu çıktısı başka bir tablo, *Sonuçlar tablosu* oluşturur. Sonuçlar tablosu, bir dış veri deposu için veri çizdiğiniz, örneğin ilişkisel bir veritabanının sonuçlarını içerir. Giriş tablosundan verilerin işlendiği zaman zamanlaması, *tetikleyici aralığı* tarafından denetlenir. Varsayılan olarak, tetikleyici aralığı sıfırdır, bu nedenle yapılandırılmış akış, verileri ulaştığı anda işlemeye çalışır. Uygulamada, bu, yapılandırılmış akış önceki sorgunun çalışmasını işlemeyi tamamladıktan sonra, yeni alınan tüm verilere karşı başka bir işlem çalıştırması başlattığı anlamına gelir. Tetikleyiciyi, zaman tabanlı toplu işlerle işlenmek üzere bir aralıkta çalışacak şekilde yapılandırabilirsiniz.
 
@@ -41,7 +41,7 @@ Append modunda, yalnızca son sorgu çalıştırmasından sonra sonuçlar tablos
 
 Bir termostat gibi Sıcaklık sensörlerinden Telemetriyi işlemekte olduğunuz bir senaryoyu düşünün. İlk tetikleyicinin, cihaz 1 ' de 95 derecenin okuduğu bir olayın 00:01. saatinde tek bir olay işlediğini varsayın. Sorgunun ilk tetikleyicisinde, sonuçlar tablosunda yalnızca 00:01 olan satır görüntülenir. Başka bir olay ulaştığında, yalnızca yeni satır 00:02 saat olur ve sonuç tablosu yalnızca bir satır içerir. 00:02
 
-![Yapılandırılmış akış ekleme modu](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-append-mode.png)
+:::image type="content" source="./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-append-mode.png" alt-text="Yapılandırılmış akış ekleme modu" border="false":::
 
 Append modunu kullanırken sorgunuz, tahminleri (ilgili olduğu sütunları seçerek), filtrelemeye (yalnızca belirli koşullara uyan satırları seçerek) veya katılımını (statik bir arama tablosundaki verilerle verileri genişlettirecek) uyguluyor. Ekleme modu, yalnızca ilgili yeni veri noktalarını dış depolamaya itmeyi kolaylaştırır.
 
@@ -51,7 +51,7 @@ Bu kez, tüm modunu kullanarak aynı senaryoyu göz önünde bulundurun. Tam mod
 
 Şimdiye kadar beş saniyelik verilerin zaten işlenmiş olduğunu varsayın ve altıncı saniye için verileri işlemeye zaman atalım. Giriş tablosunda 00:01 saati ve 00:03 zamanı için olaylar bulunur. Bu örnek sorgu hedefi, cihazın ortalama sıcaklığını beş saniyede bir vermektir. Bu sorgunun uygulanması, her 5 saniyelik pencerede kalan tüm değerleri alan bir toplama uygular, sıcaklığın ortalığını ve bu aralığa göre ortalama sıcaklık için bir satır üretir. İlk 5 saniyelik pencerenin sonunda, iki tanımlama grubu vardır: (00:01, 1, 95) ve (00:03, 1, 98). Bu nedenle, Windows 00:00-00:05 için toplama, 96,5 derecenin ortalama sıcaklığını içeren bir tanımlama grubu oluşturur. Sonraki 5 saniyelik pencerede 00:06 sırasında yalnızca bir veri noktası bulunur, bu nedenle elde edilen ortalama sıcaklık 98 derece olur. Bu zaman 00:10, tam modu kullanarak, sorgu yalnızca yenilerini değil, tüm toplanmış satırları çıktıdığı için, sonuçlar tablosu hem Windows 00:00-00:05 hem de 00:05-00:10 için satırlara sahiptir. Bu nedenle, yeni pencereler eklendikçe sonuçlar tablosu büyümeye devam eder.
 
-![Yapılandırılmış akış tamamlanma modu](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-complete-mode.png)
+:::image type="content" source="./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-complete-mode.png" alt-text="Yapılandırılmış akış tamamlanma modu" border="false":::
 
 Tüm sorguların tamamı, tablonun sınır olmadan büyümesine neden olur.  Önceki örnekte, zaman içindeki sıcaklığın ortalamasını değil, cihaz KIMLIĞI tarafından bunun ortalaması altında düşünün. Sonuç tablosu, bu cihazdan alınan tüm veri noktalarında cihaz için Ortalama sıcaklığa sahip sabit sayıda satır (cihaz başına bir tane) içerir. Yeni sıcaklıklar alındığından, tablodaki ortalamalar her zaman geçerli olacak şekilde sonuçlar tablosu güncellenir.
 
@@ -141,7 +141,7 @@ Yapılandırılmış akış esneklik ve hataya dayanıklılık sağlamak için, 
 
 Genellikle bir JAR dosyasına yerel olarak bir Spark akış uygulaması derleyin ve ardından JAR dosyasını HDInsight üzerinde Spark 'a dağıtarak, JAR dosyasını HDInsight kümenize bağlı varsayılan depolama alanına kopyalarsınız. Bir POST işlemi kullanarak, uygulamanızı kümenizde bulunan [Apache Livy](https://livy.incubator.apache.org/) REST API 'leriyle başlatabilirsiniz. GÖNDERI gövdesi, JAR 'nizin yolunu sağlayan bir JSON belgesi, ana yöntemi, akış uygulamasını tanımlayan ve çalıştıran sınıfın adı ve isteğe bağlı olarak işin kaynak gereksinimleri (yürütme sayısı, bellek ve çekirdek sayısı gibi) ve uygulama kodunuzun gerektirdiği tüm yapılandırma ayarlarını içerir.
 
-![Spark akış uygulaması dağıtma](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png)
+:::image type="content" source="./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png" alt-text="Spark akış uygulaması dağıtma" border="false":::
 
 Tüm uygulamaların durumu, bir al uç noktasına karşı bir GET isteğiyle de denetlenebilir. Son olarak, çalışan bir uygulamayı, LIVY uç noktasına karşı SILME isteği vererek sonlandırabilirsiniz. LIVY API 'SI ile ilgili ayrıntılar için bkz. [Apache Livy Ile uzak işler](apache-spark-livy-rest-interface.md)
 
