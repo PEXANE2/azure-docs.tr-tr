@@ -3,12 +3,12 @@ title: Dağıtım için şablonları bağlama
 description: Modüler şablon çözümü oluşturmak için bir Azure Resource Manager şablonunda (ARM şablonu) bağlantılı şablonların nasıl kullanılacağını açıklar. Parametre değerlerinin nasıl geçirileceğini, bir parametre dosyası ve dinamik olarak oluşturulan URL 'Leri gösterir.
 ms.topic: conceptual
 ms.date: 01/26/2021
-ms.openlocfilehash: 3636ea64227a7c013134d96647144d4f1e2ae31e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6076cbae43e420ac354b5c9d7d101a9c541c078d
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102211320"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889187"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Azure kaynaklarını dağıtırken bağlı ve iç içe şablonları kullanma
 
@@ -37,7 +37,7 @@ Bir şablonu iç içe aktarmak için ana şablonunuza bir [dağıtımlar kaynağ
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-10-01",
+      "apiVersion": "2020-10-01",
       "name": "nestedTemplate1",
       "properties": {
         "mode": "Incremental",
@@ -66,7 +66,7 @@ Aşağıdaki örnek, iç içe geçmiş bir şablon aracılığıyla bir depolama
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-10-01",
+      "apiVersion": "2020-10-01",
       "name": "nestedTemplate1",
       "properties": {
         "mode": "Incremental",
@@ -103,7 +103,7 @@ Kapsamını özelliği aracılığıyla ayarlarsınız `expressionEvaluationOpti
 ```json
 {
   "type": "Microsoft.Resources/deployments",
-  "apiVersion": "2019-10-01",
+  "apiVersion": "2020-10-01",
   "name": "nestedTemplate1",
   "properties": {
     "expressionEvaluationOptions": {
@@ -130,7 +130,7 @@ Aşağıdaki şablon, şablon ifadelerinin kapsama göre nasıl çözümlendiği
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-10-01",
+      "apiVersion": "2020-10-01",
       "name": "nestedTemplate1",
       "properties": {
         "expressionEvaluationOptions": {
@@ -214,7 +214,7 @@ Aşağıdaki örnek, bir SQL Server dağıtır ve parola için kullanılacak bir
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-10-01",
+      "apiVersion": "2020-10-01",
       "name": "dynamicSecret",
       "properties": {
         "mode": "Incremental",
@@ -321,7 +321,7 @@ Aşağıdaki alıntıda hangi değerlerin güvenli olduğunu ve bunların güven
     {
       "name": "outer",
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-10-01",
+      "apiVersion": "2020-10-01",
       "properties": {
         "expressionEvaluationOptions": {
           "scope": "outer"
@@ -351,7 +351,7 @@ Aşağıdaki alıntıda hangi değerlerin güvenli olduğunu ve bunların güven
     {
       "name": "inner",
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-10-01",
+      "apiVersion": "2020-10-01",
       "properties": {
         "expressionEvaluationOptions": {
           "scope": "inner"
@@ -417,7 +417,7 @@ Bir şablonu bağlamak için ana şablonunuza bir [dağıtımlar kaynağı](/azu
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-10-01",
+      "apiVersion": "2020-10-01",
       "name": "linkedTemplate",
       "properties": {
         "mode": "Incremental",
@@ -453,7 +453,7 @@ Bağlı şablonunuz için parametreleri bir dış dosyada ya da satır içi olar
 "resources": [
   {
     "type": "Microsoft.Resources/deployments",
-    "apiVersion": "2019-10-01",
+    "apiVersion": "2020-10-01",
     "name": "linkedTemplate",
     "properties": {
       "mode": "Incremental",
@@ -476,7 +476,7 @@ Parametre değerlerini satır içi olarak geçirmek için `parameters` özelliğ
 "resources": [
   {
     "type": "Microsoft.Resources/deployments",
-    "apiVersion": "2019-10-01",
+    "apiVersion": "2020-10-01",
     "name": "linkedTemplate",
     "properties": {
       "mode": "Incremental",
@@ -641,7 +641,7 @@ Aşağıdaki örnek şablon, `copy` iç içe geçmiş bir şablonla nasıl kulla
 "resources": [
   {
     "type": "Microsoft.Resources/deployments",
-    "apiVersion": "2019-10-01",
+    "apiVersion": "2020-10-01",
     "name": "[concat('nestedTemplate', copyIndex())]",
     // yes, copy works here
     "copy": {
@@ -758,7 +758,7 @@ Aşağıdaki şablon önceki şablona bağlantı sağlar. Üç genel IP adresi o
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-10-01",
+      "apiVersion": "2020-10-01",
       "name": "[concat('linkedTemplate', copyIndex())]",
       "copy": {
         "count": 3,
@@ -828,7 +828,7 @@ Aşağıdaki örnek, bir şablona bağlanırken bir SAS belirtecinin nasıl geç
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-10-01",
+      "apiVersion": "2020-10-01",
       "name": "linkedTemplate",
       "properties": {
         "mode": "Incremental",
@@ -882,7 +882,7 @@ az deployment group create --resource-group ExampleGroup --template-uri $url?$to
 
 Aşağıdaki örneklerde, bağlantılı şablonların yaygın kullanımları gösterilmektedir.
 
-|Ana şablon  |Bağlantılı şablon |Description  |
+|Ana şablon  |Bağlantılı şablon |Açıklama  |
 |---------|---------| ---------|
 |[Hello World](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[bağlantılı şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | Bağlantılı şablondan dize döndürür. |
 |[Genel IP adresi ile Load Balancer](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[bağlantılı şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |Bağlı şablondan ortak IP adresini döndürür ve yük dengeleyicide bu değeri ayarlar. |

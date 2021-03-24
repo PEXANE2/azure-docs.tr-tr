@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b878abbead68b3268891e1f35087e5942969730c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4e1f4c7272c3db3b1e4cd834a621b66f519c6f69
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104579068"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952822"
 ---
 # <a name="conditional-access-users-and-groups"></a>Koşullu erişim: kullanıcılar ve gruplar
 
@@ -38,7 +38,7 @@ Koşullu erişim ilkesi oluştururken aşağıdaki seçenekler bulunabilir.
    - Tüm konuk ve dış kullanıcılar
       - Bu seçim, özniteliği olarak ayarlanmış herhangi bir kullanıcı dahil olmak üzere tüm B2B konukları ve harici kullanıcıları içerir `user type` `guest` . Bu seçim Ayrıca, bulut çözümü sağlayıcısı (CSP) gibi farklı bir kuruluştan oturum açmış tüm dış kullanıcılar için de geçerlidir. 
    - Dizin rolleri
-      - Yöneticilerin, ilke atamasını belirlemek için kullanılan yerleşik Azure AD dizin rollerini seçmesine olanak sağlar. Örneğin kuruluşlar, genel yönetici rolüne atanan kullanıcılara daha kısıtlayıcı bir ilke oluşturabilir. Yönetim birimi kapsamlı Dizin rolleri, özel roller de dahil olmak üzere diğer rol türleri desteklenmez.
+      - Yöneticilerin, ilke atamasını belirlemek için kullanılan yerleşik Azure AD dizin rollerini seçmesine olanak sağlar. Örneğin kuruluşlar, genel yönetici rolüne atanan kullanıcılara daha kısıtlayıcı bir ilke oluşturabilir. Yönetim birimi kapsamındaki roller ve özel roller de dahil olmak üzere diğer rol türleri desteklenmez.
    - Kullanıcılar ve gruplar
       - Belirli kullanıcı kümelerinin hedeflenmesini sağlar. Örneğin, kuruluşlar, bulut uygulaması olarak bir ık uygulaması seçildiğinde ık departmanın tüm üyelerini içeren bir grup seçebilir. Bir grup, dinamik veya atanan güvenlik ve dağıtım grupları dahil olmak üzere Azure AD 'de herhangi bir grup türü olabilir. İlke, iç içe geçmiş kullanıcılara ve gruplara uygulanır.
 

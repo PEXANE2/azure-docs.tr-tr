@@ -4,12 +4,12 @@ description: Azure HDInsight GÇ önbelleği ve Apache Spark performansını gel
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/23/2019
-ms.openlocfilehash: 32f0756e59f81ad2c5d155581feed8c4fef09808
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9df585c102e2c7307e949e38b6b69147372c38dd
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98940131"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866310"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Azure HDInsight GÇ önbelleği 'ni kullanarak Apache Spark iş yüklerinin performansını iyileştirme
 
@@ -37,7 +37,7 @@ Azure HDInsight GÇ önbelleği, önizleme aşamasında varsayılan olarak devre
 
 1. **Eylemleri** (hdı 3,6 ' de **hizmet eylemleri** ) ve **Etkinleştir**' i seçin.
 
-    ![Ambarı 'nda GÇ önbellek hizmetini etkinleştirme](./media/apache-spark-improve-performance-iocache/ambariui-enable-iocache.png "Ambarı 'nda GÇ önbellek hizmetini etkinleştirme")
+    :::image type="content" source="./media/apache-spark-improve-performance-iocache/ambariui-enable-iocache.png " alt-text="Ambarı 'nda GÇ önbellek hizmetini etkinleştirme" border="true":::
 
 1. Kümedeki tüm etkilenen hizmetlerin yeniden başlatılmasını onaylayın.
 
@@ -52,7 +52,7 @@ GÇ önbelleğini etkinleştirdikten sonra Spark işlerini çalıştıran disk a
 
 1. **Configs** ve **Gelişmiş** sekmelerini seçin.
 
-    ![Bir Gelişmiş yapılandırmayı Düzenle](./media/apache-spark-improve-performance-iocache/ambariui-hdfs-service-configs-advanced.png "Bir Gelişmiş yapılandırmayı Düzenle")
+    :::image type="content" source="./media/apache-spark-improve-performance-iocache/ambariui-hdfs-service-configs-advanced.png " alt-text="Bir Gelişmiş yapılandırmayı Düzenle" border="true":::
 
 1. Aşağı kaydırın ve **özel çekirdek sitesi** alanını genişletin.
 
@@ -60,13 +60,13 @@ GÇ önbelleğini etkinleştirdikten sonra Spark işlerini çalıştıran disk a
 
 1. Kutudaki değeri değiştirin.
 
-    ![GÇ önbelleği tamlık yüzdesini Düzenle](./media/apache-spark-improve-performance-iocache/ambariui-cache-data-fullness-percentage-property.png "GÇ önbelleği tamlık yüzdesini Düzenle")
+    :::image type="content" source="./media/apache-spark-improve-performance-iocache/ambariui-cache-data-fullness-percentage-property.png " alt-text="GÇ önbelleği tamlık yüzdesini Düzenle" border="true":::
 
 1. Sağ üst köşedeki **Kaydet** ' i seçin.
 
 1. **Yeniden** Başlat ' ı seçin  >  **Tümünü etkilendi**.
 
-    ![Apache ambarı etkilenen tümünü yeniden başlatır](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "Etkilenen tümünü yeniden Başlat")
+    :::image type="content" source="./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png " alt-text="Apache ambarı etkilenen tümünü yeniden başlatır" border="true":::
 
 1. **Tümünü yeniden başlatmayı Onayla** seçeneğini belirleyin.
 

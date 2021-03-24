@@ -5,18 +5,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/17/2019
-ms.openlocfilehash: 7f249bb0e81bf3a371b8743a304ef49baffaed7a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 05199968339329632c2e68e9604e3f5308e8b12b
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98941378"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871665"
 ---
 # <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-hdinsight"></a>HDInsight 'ta doğrudan sorgu kullanarak Microsoft Power BI ile etkileşimli sorgu Apache Hive verilerini görselleştirme
 
 Bu makalede, Microsoft Power BI 'yi Azure HDInsight etkileşimli sorgu kümelerine bağlama ve doğrudan sorgu kullanarak Apache Hive verileri görselleştirme açıklanır. Belirtilen örnek, verileri bir `hivesampletable` Hive tablosundan Power BI yükler. `hivesampletable`Hive tablosu bazı cep telefonu kullanım verilerini içerir. Ardından, kullanım verilerini bir dünya eşlemesinde çizdirebilirsiniz:
 
-![Eşleme raporu Power BI HDInsight](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-visualization.png)
+:::image type="content" source="./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-visualization.png" alt-text="Eşleme raporu Power BI HDInsight" border="true":::
 
 Power BI Desktop Genel ODBC Bağlayıcısı aracılığıyla içeri aktarmak için [Apache HIVE ODBC sürücüsünden](../hadoop/apache-hadoop-connect-hive-power-bi.md) yararlanabilirsiniz. Ancak, Hive sorgu altyapısının etkileşimli olmayan doğası olarak verilen bı iş yükleri için önerilmez. [HDInsight etkileşimli sorgu Bağlayıcısı](./apache-hadoop-connect-hive-power-bi-directquery.md) ve [HDInsight Apache Spark Bağlayıcısı](/power-bi/spark-on-hdinsight-with-direct-connect) , performansı için daha iyi seçimlerdir.
 
@@ -34,7 +34,7 @@ Bu makaleye geçmeden önce aşağıdaki öğelere sahip olmanız gerekir:
 
 2. Menü çubuğundan **ana**  >  **veri al**  >  **daha fazla...** seçeneğine gidin.
 
-    ![HDInsight Power BI verileri daha fazla al](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-open-odbc.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-open-odbc.png" alt-text="HDInsight Power BI verileri daha fazla al" border="true":::
 
 3. **Veri al** penceresinde, arama kutusuna **HDInsight** girin.  
 
@@ -50,7 +50,7 @@ Bu makaleye geçmeden önce aşağıdaki öğelere sahip olmanız gerekir:
     |Veritabanı |Bu makale için **varsayılan** girin.|
     |Veri Bağlantısı modu |Bu makale için **DirectQuery** 'yi seçin.|
 
-    ![HDInsight etkileşimli sorgu Power BI DirectQuery Connect](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-interactive-query-power-bi-connect.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-interactive-query-power-bi-connect.png" alt-text="HDInsight etkileşimli sorgu Power BI DirectQuery Connect" border="true":::
 
 7. HTTP kimlik bilgilerini girin ve sonra **Bağlan**' ı seçin. Varsayılan Kullanıcı adı **admin**' dir.
 
@@ -58,7 +58,7 @@ Bu makaleye geçmeden önce aşağıdaki öğelere sahip olmanız gerekir:
 
 9. Ana pencereden **Yükle** ' yi seçin.
 
-    ![HDInsight etkileşimli sorgu Power BI hivesampletable](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-interactive-query-power-bi-hivesampletable.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-interactive-query-power-bi-hivesampletable.png" alt-text="HDInsight etkileşimli sorgu Power BI hivesampletable" border="true":::
 
 ## <a name="visualize-data-on-a-map"></a>Haritada verileri görselleştirme
 
@@ -66,7 +66,7 @@ Son yordamdan devam edin.
 
 1. Görsel öğeler **bölmesinden, dünya simgesini seçin.** Daha sonra ana pencerede bir genel harita görüntülenir.
 
-    ![HDInsight Power BI raporu özelleştirir](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-customize.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-customize.png" alt-text="HDInsight Power BI raporu özelleştirir" border="true":::
 
 2. Alanlar bölmesinde, **ülke** ve **devicemake**' ı seçin. Veri noktalarıyla bir dünya haritası, birkaç dakika sonra ana pencerede görüntülenir.
 

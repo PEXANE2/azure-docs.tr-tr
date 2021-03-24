@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 08/06/2020
-ms.openlocfilehash: d36c8f1f592bbe714a9e31cad8131523049f29ad
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a3bfcfbe59ccc15278b30470c6a060a9c1dd609c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98931353"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871753"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Azure HDInsight’ta dış meta veri depolarını kullanma
 
@@ -18,7 +18,7 @@ HDInsight, dış veri depolarıyla verilerinizin ve meta verilerinizin denetimin
 
 HDInsight 'ta Apache Hive meta veri, Apache Hadoop mimarisinin önemli bir parçasıdır. Bir meta veri deposu merkezi şema deposudur. Meta veri deposu, Apache Spark, etkileşimli sorgu (LLAP), Presto veya Apache Pig gibi diğer büyük veri erişim araçları tarafından kullanılır. HDInsight, Hive meta veri deposu olarak bir Azure SQL veritabanı kullanır.
 
-![HDInsight Hive meta veri deposu mimarisi](./media/hdinsight-use-external-metadata-stores/metadata-store-architecture.png)
+:::image type="content" source="./media/hdinsight-use-external-metadata-stores/metadata-store-architecture.png" alt-text="HDInsight Hive meta veri deposu mimarisi" border="false":::
 
 HDInsight kümeleriniz için bir meta veri deposu kurmak için kullanabileceğiniz iki yol vardır:
 
@@ -56,7 +56,7 @@ HDInsight, üretim kümeleri için önerilen özel meta tasmres 'i de destekler:
 
 * Küme ve dış meta veri deposu aynı bölgede barındırılmalıdır.
 
-![HDInsight Hive meta veri deposu kullanım örneği](./media/hdinsight-use-external-metadata-stores/metadata-store-use-case.png)
+:::image type="content" source="./media/hdinsight-use-external-metadata-stores/metadata-store-use-case.png" alt-text="HDInsight Hive meta veri deposu kullanım örneği" border="false":::
 
 ### <a name="create-and-config-azure-sql-database-for-the-custom-metastore"></a>Özel meta veri deposu için Azure SQL veritabanı oluşturma ve yapılandırma
 
@@ -66,15 +66,15 @@ Küme oluştururken, HDInsight hizmetinin dış meta veri deposu 'na bağlanmas�
 
 SQL depoları için özel uç noktalar yalnızca resourceproviderconnection ile oluşturulan kümelerde desteklenir `outbound` . Daha fazla bilgi edinmek için bkz. bu [belgetaa](./hdinsight-private-link.md).
 
-![Sunucu güvenlik duvarı 'nı ayarla düğmesi](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png)
+:::image type="content" source="./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png" alt-text="Sunucu güvenlik duvarı 'nı ayarla düğmesi":::
 
-![Azure hizmetlerine erişime izin ver](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall2.png)
+:::image type="content" source="./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall2.png" alt-text="Azure hizmetlerine erişime izin ver":::
 
 ### <a name="select-a-custom-metastore-during-cluster-creation"></a>Küme oluşturma sırasında özel bir meta veri deposu seçin
 
 Kümenizi dilediğiniz zaman daha önce oluşturulmuş bir Azure SQL veritabanına işaret edebilirsiniz. Portal üzerinden küme oluşturma için, bu seçenek **depolama > meta veri deposu ayarlarından** belirtilir.
 
-![HDInsight Hive meta veri deposu Azure portal](./media/hdinsight-use-external-metadata-stores/azure-portal-cluster-storage-metastore.png)
+:::image type="content" source="./media/hdinsight-use-external-metadata-stores/azure-portal-cluster-storage-metastore.png" alt-text="HDInsight Hive meta veri deposu Azure portal":::
 
 ## <a name="hive-metastore-guidelines"></a>Hive meta veri deposu yönergeleri
 

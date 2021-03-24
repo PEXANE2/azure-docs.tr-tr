@@ -5,14 +5,14 @@ author: elqu20
 ms.author: v-elqu
 ms.service: azure-percept
 ms.topic: overview
-ms.date: 02/18/2021
+ms.date: 03/23/2021
 ms.custom: template-overview
-ms.openlocfilehash: eca0c28b016b2e57f6fe47495c90bf113f0179a6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 12ca7dff7d106941cc8947d9d3040bcefefde00a
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103490118"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953615"
 ---
 # <a name="introduction-to-azure-percept"></a>Azure Percept 'a giriş
 
@@ -22,30 +22,30 @@ Sınır AI çözümlerini ölçekte dağıtmaya çalışırken bir yüzü tümle
 
 - Çözümlerin gücünü sağlamak için sağ Silicon 'i tanımlama ve seçme.
 - Donanım, yazılım, model ve verilerin toplu güvenliğini sağlama.
-- Ölçekteki sorunsuz şekilde çalışan çözümler oluşturma ve yönetme özelliği.
+- Ölçekte sorunsuz şekilde çalışan çözümler oluşturma ve yönetme özelliği.
 
 ## <a name="components-of-azure-percept"></a>Azure Percept bileşenleri
 
 Azure Percept ana bileşenleri şunlardır:
 
-1. AI donanım başvuru tasarımı ve sertifika programları.
-
-    - , Azure AI ve IoT hizmetleriyle kolayca tümleştirilebilen Edge AI donanımı geliştirmeye yönelik desenler ve en iyi uygulamalar için, yazılım geliştiricilerinin ekosistemini sağlar.
-
-2. Azure Percept DK (devkit).
+1. [Azure Percept DK.](./overview-azure-percept-dk.md)
 
     - Cihaz oluşturucular, çözüm oluşturucular ve müşteriler için çok çeşitli prototip yazma senaryolarını desteklemeye yetecek kadar esnek bir geliştirme seti.
 
         > [!div class="nextstepaction"]
         > [Hemen satın alın](https://go.microsoft.com/fwlink/p/?LinkId=2155270)
 
-3. Edge AI modelinin ve çözüm geliştirmenin hızlandırmasına yönelik hizmetler ve iş akışları.
+1. Edge AI modelini ve çözüm geliştirmeyi hızlandıran hizmetler ve iş akışları.
 
     - Geliştirme iş akışları ve önceden oluşturulmuş modeller [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819)'dan erişilebilir.
     - Model geliştirme hizmetleri.
-    - Ölçek için cihaz yönetimi hizmetleri.
+    - Ölçeklendirme için cihaz yönetim hizmetleri.
     - Uçtan uca güvenlik.
+
+1. AI donanım başvuru tasarımı ve sertifika programları.
+
+    - , Azure AI ve IoT hizmetleriyle kolayca tümleştirilebilen Edge AI donanımı geliştirmeye yönelik desenler ve en iyi uygulamalar için, yazılım geliştiricilerinin ekosistemini sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure PERCEPT dk](./overview-azure-percept-dk.md)ile çalışmaya başlayın. 
+[Azure PERCEPT dk](./overview-azure-percept-dk.md) ve [Azure Percept Studio](./overview-azure-percept-studio.md)hakkında daha fazla bilgi edinin.

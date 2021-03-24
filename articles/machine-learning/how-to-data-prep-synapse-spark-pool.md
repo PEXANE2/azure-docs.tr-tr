@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/02/2021
 ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: d7cc948d3631e69882eb252672e5a3eb5d5f9751
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 9ced4da7f71a0499e538e499644d89240611f1ea
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104867449"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104956222"
 ---
 # <a name="attach-apache-spark-pools-powered-by-azure-synapse-analytics-for-data-wrangling-preview"></a>Veri denetimi (Önizleme) için Apache Spark havuzları (Azure SYNAPSE Analytics tarafından desteklenir) iliştirme
 
@@ -127,6 +127,21 @@ ws.compute_targets['Synapse Spark pool alias']
 
 ## <a name="launch-synapse-spark-pool-for-data-preparation-tasks"></a>Veri hazırlama görevleri için SYNAPSE Spark havuzunu Başlat
 
+Apache Spark havuzuyla veri hazırlığı başlatmak için, Apache Spark havuzu adını belirtin:
+
+> [!IMPORTANT]
+> Apache Spark havuzunu kullanmaya devam etmek için, `%synapse` tek satırlık kod ve `%%synapse` birden çok satır için olan veri denetimi görevleriniz genelinde hangi bilgi işlem kaynağını kullanacağınızı belirtmeniz gerekir. 
+
+```python
+%synapse start -c SynapseSparkPoolAlias
+```
+
+Oturum başladıktan sonra, oturumun meta verilerini kontrol edebilirsiniz.
+
+```python
+%synapse meta
+```
+
 Apache Spark oturumunuz sırasında kullanmak üzere bir [Azure Machine Learning ortamı](concept-environments.md) belirleyebilirsiniz. Yalnızca ortamda belirtilen Conda bağımlılıkları devreye girer. Docker görüntüsü desteklenmez.
 
 >[!WARNING]
@@ -146,21 +161,11 @@ env.python.conda_dependencies.add_conda_package("numpy==1.17.0")
 env.register(workspace=ws)
 ```
 
-Apache Spark havuzuyla veri hazırlığı başlatmak için, Apache Spark havuzu adını belirtin ve abonelik KIMLIĞINIZI, Machine Learning çalışma alanı kaynak grubunu, Machine Learning çalışma alanının adını ve Apache Spark oturumu sırasında hangi ortamın kullanılacağını belirtin. 
-
-> [!IMPORTANT]
-> Apache Spark havuzunu kullanmaya devam etmek için, `%synapse` tek satırlık kod ve `%%synapse` birden çok satır için olan veri denetimi görevleriniz genelinde hangi bilgi işlem kaynağını kullanacağınızı belirtmeniz gerekir. 
+Apache Spark havuzu ve özel ortamınız ile veri hazırlığı başlatmak için, Apache Spark havuzu adını ve Apache Spark oturumu sırasında hangi ortamı kullanacağınızı belirtin. Ayrıca, abonelik KIMLIĞINIZI, Machine Learning çalışma alanı kaynak grubunu ve makine öğrenimi çalışma alanının adını da sağlayabilirsiniz.
 
 ```python
-%synapse start -c SynapseSparkPoolAlias -s AzureMLworkspaceSubscriptionID -r AzureMLworkspaceResourceGroupName -w AzureMLworkspaceName -e myenv
+%synapse start -c SynapseSparkPoolAlias -e myenv -s AzureMLworkspaceSubscriptionID -r AzureMLworkspaceResourceGroupName -w AzureMLworkspaceName
 ```
-
-Oturum başladıktan sonra, oturumun meta verilerini kontrol edebilirsiniz.
-
-```python
-%synapse meta
-```
-
 ## <a name="load-data-from-storage"></a>Verileri depolamadan yükle
 
 Apache Spark oturumunuz başladıktan sonra, hazırlamak istediğiniz verileri okuyun. Azure Blob depolama için veri yükleme desteklenir ve 1. ve 2. nesil Azure Data Lake Storage.
@@ -226,14 +231,22 @@ df = spark.read.csv("abfss://<container name>@<storage account>.dfs.core.windows
 
 ### <a name="read-in-data-from-registered-datasets"></a>Kayıtlı veri kümelerinden verilerde okuma
 
-Ayrıca, çalışma alanınızda var olan bir kayıtlı veri kümesini alabilir ve bunu bir Spark veri çerçevesine dönüştürerek üzerinde veri hazırlığı gerçekleştirebilirsiniz.  
+Ayrıca, çalışma alanınızda var olan bir kayıtlı veri kümesini alabilir ve bunu bir Spark veri çerçevesine dönüştürerek üzerinde veri hazırlığı gerçekleştirebilirsiniz.
 
-Aşağıdaki örnek, `blob_dset` BLOB depolamadaki dosyalara başvuran ve bir Spark dataframe 'e dönüştüren kayıtlı bir TabularDataset dosyası alır. Veri kümelerinizi Spark veri çerçevesine dönüştürdüğünüzde, `pyspark` veri araştırma ve hazırlık kitaplıklarından yararlanabilirsiniz.  
+Aşağıdaki örnek çalışma alanının kimliğini doğrular, kayıtlı bir TabularDataset alır, `blob_dset` BLOB depolama alanındaki dosyalara başvurur ve bunu bir Spark veri çerçevesine dönüştürür. Veri kümelerinizi Spark veri çerçevesine dönüştürdüğünüzde, `pyspark` veri araştırma ve hazırlık kitaplıklarından yararlanabilirsiniz.  
 
 ``` python
 
 %%synapse
 from azureml.core import Workspace, Dataset
+
+subscription_id = "<enter your subscription ID>"
+resource_group = "<enter your resource group>"
+workspace_name = "<enter your workspace name>"
+
+ws = Workspace(workspace_name = workspace_name,
+               subscription_id = subscription_id,
+               resource_group = resource_group)
 
 dset = Dataset.get_by_name(ws, "blob_dset")
 spark_df = dset.to_spark_dataframe()

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/02/2019
-ms.openlocfilehash: 360a9730025dc24eda93868903fcd356c37d06ef
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3cf97039983ecec44a7c3a32e178fdcf9f9c45ff
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100576335"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872192"
 ---
 # <a name="query-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>HDInsight kümelerini izlemek için Azure Izleyici günlüklerini sorgulama
 
@@ -37,13 +37,13 @@ HDInsight kümeniz için belirli ölçümleri nasıl bakacağınızı öğrenin.
     search *
     ```
 
-    ![Apache ambarı Analizi tüm ölçümleri ara](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-metrics.png "Tüm ölçümleri ara")
+    :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-metrics.png" alt-text="Apache ambarı Analizi tüm ölçümleri ara":::
 
 1. Sol menüden **filtre** sekmesini seçin.
 
 1. **Tür** altında **sinyal**' yı seçin. Sonra **uygula & Çalıştır**' ı seçin.
 
-    ![Günlük Analizi arama belirli ölçümler](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-metrics.png "Belirli ölçümleri arama")
+    :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-metrics.png" alt-text="Günlük Analizi arama belirli ölçümler":::
 
 1. Metin kutusundaki sorgunun şu şekilde değişdiğine dikkat edin:
 
@@ -54,13 +54,13 @@ HDInsight kümeniz için belirli ölçümleri nasıl bakacağınızı öğrenin.
 
 1. Sol menüde bulunan seçenekleri kullanarak daha ayrıntılı bir şekilde izleyebilirsiniz. Örnek:
 
-    - Belirli bir düğümdeki günlükleri görmek için:
+   - Belirli bir düğümdeki günlükleri görmek için:
 
-        ![Belirli hataları ara output1](./media/hdinsight-hadoop-oms-log-analytics-use-queries/log-analytics-specific-node.png "Belirli hataları ara output1")
+     :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-use-queries/log-analytics-specific-node.png" alt-text="Belirli hataları ara output1":::
 
-    - Günlükleri belirli zamanlarda görmek için:
+   - Günlükleri belirli zamanlarda görmek için:
 
-        ![Belirli hataları ara output2](./media/hdinsight-hadoop-oms-log-analytics-use-queries/log-analytics-specific-time.png "Belirli hataları ara output2")
+     :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-use-queries/log-analytics-specific-time.png" alt-text="Belirli hataları ara output2":::
 
 1. **Uygula & Çalıştır** ' ı seçin ve sonuçları gözden geçirin. Sorgunun şu şekilde güncelleştirildiğini de unutmayın:
 
@@ -102,11 +102,11 @@ Uyarı oluşturmanın ilk adımı, uyarının tetiklendiği bir sorguya ulaşaca
 
 1. Sayfanın üst kısmında **Yeni uyarı kuralı** ' nı seçin.
 
-    ![Bir alert1 oluşturmak için sorgu girin](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert-query.png "Bir alert1 oluşturmak için sorgu girin")
+    :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert-query.png" alt-text="Yeni uyarı kuralı":::
 
 1. **Kural oluştur** penceresinde, bir uyarı oluşturmak için sorguyu ve diğer ayrıntıları girin ve ardından **Uyarı kuralı oluştur**' u seçin.
 
-    ![Bir alert2 oluşturmak için sorgu girin](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert.png "Bir alert2 oluşturmak için sorgu girin")
+    :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert.png" alt-text="Uyarı koşulunu tanımlayın.":::
 
 ### <a name="edit-or-delete-an-existing-alert"></a>Var olan bir uyarıyı düzenleme veya silme
 
@@ -120,7 +120,7 @@ Uyarı oluşturmanın ilk adımı, uyarının tetiklendiği bir sorguya ulaşaca
 
 1. Şu seçeneklere sahipsiniz: **Kaydet**, **çıkart**, **devre dışı bırak** ve **Sil**.
 
-    ![HDInsight Azure Izleyici günlükleri uyarı silme düzenlemesi](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
+    :::image type="content" source="media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png" alt-text="HDInsight Azure Izleyici günlükleri uyarı silme düzenlemesi":::
 
 Daha fazla bilgi için bkz. [Azure izleyici kullanarak ölçüm uyarıları oluşturma, görüntüleme ve yönetme](../azure-monitor/alerts/alerts-metric.md).
 

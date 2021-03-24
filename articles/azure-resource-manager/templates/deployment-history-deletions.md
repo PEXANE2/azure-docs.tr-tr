@@ -2,13 +2,13 @@
 title: Dağıtım geçmişi silme işlemleri
 description: Azure Resource Manager dağıtım geçmişinden dağıtımları otomatik olarak silme işlemini açıklar. Geçmiş 800 sınırını aşmaya yakın olduğunda dağıtımlar silinir.
 ms.topic: conceptual
-ms.date: 10/01/2020
-ms.openlocfilehash: 13c65f3311e308708034bb5befb7e3c3ee158d38
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/23/2021
+ms.openlocfilehash: fc4f7f33cdd7ccce3158aa95bd002f12c8c44c00
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91652491"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951972"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>Dağıtım geçmişinden otomatik silme işlemleri
 
@@ -53,6 +53,12 @@ Bir kilidi silmek için Azure CLı kullanmak için aşağıdaki komutları çal�
 lockid=$(az lock show --resource-group lockedRG --name deleteLock --output tsv --query id)
 az lock delete --ids $lockid
 ```
+
+## <a name="required-permissions"></a>Gerekli izinler
+
+Silme işlemleri, şablonu dağıtan kullanıcının kimliği altında istenir. Dağıtımları silmek için kullanıcının **Microsoft. resources/dağıtımlar/Delete** eylemine erişimi olması gerekir. Kullanıcı gerekli izinlere sahip değilse, dağıtımlar geçmişten silinmez.
+
+Geçerli Kullanıcı gerekli izinlere sahip değilse, bir sonraki dağıtımda otomatik silme işlemi yeniden denenir.
 
 ## <a name="opt-out-of-automatic-deletions"></a>Otomatik silme işlemleri devre dışı
 

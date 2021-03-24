@@ -3,12 +3,12 @@ title: Azure Service Bus-ileti süre sonu
 description: Bu makalede Azure Service Bus iletilerinin yaşam süresi ve yaşam süresi hakkında bilgi verilmektedir. Bu süre dolduktan sonra ileti artık teslim alınmaz.
 ms.topic: conceptual
 ms.date: 02/17/2021
-ms.openlocfilehash: 74df8909633c2fa048c23c559ffdd315a8616e11
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5d60d84bdc0d437d97c369296a414d55beda4167
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102042836"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952329"
 ---
 # <a name="message-expiration-time-to-live"></a>İleti süre sonu (Yaşam Süresi)
 Bir iletideki yük veya bir iletinin alıcıyı ileten bir komut ya da sorgulama, neredeyse her zaman bir uygulama düzeyi sona erme tarihi biçimine tabidir. Bu süre sonunda, içerik artık teslim edilmemiş veya istenen işlem artık yürütülmemiş.
@@ -46,7 +46,7 @@ Service Bus kuyrukları, konuları ve abonelikleri, belirli bir süre boyunca ku
  
 Otomatik Temizleme, varlıkların dinamik olarak oluşturulduğu ve bir veya hata ayıklamanın çalışmasının kesintiye uğraması nedeniyle, kullanım sonrasında temizlenmeyen geliştirme ve test senaryolarında yararlıdır. Ayrıca, bir uygulama bir yanıt kuyruğu gibi dinamik varlıklar oluştururken, bir Web sunucusu işlemine geri yanıt almak için veya nesne örneği kaybolduğunda bu varlıkları güvenilir bir şekilde temizlemek zor olan başka görece kısa süreli bir nesne için de yararlıdır.
 
-Özelliği, ad alanındaki **Boştayken otomatik olarak sil** özelliği kullanılarak etkinleştirilir. Bu özellik otomatik olarak silinmeden önce bir varlığın boşta (kullanılmamış) olması gereken süreye ayarlanır. Bu özellik için en düşük değer 5 ' tir.
+Özelliği, ad alanındaki **Boştayken otomatik olarak sil** özelliği kullanılarak etkinleştirilir. Bu özellik otomatik olarak silinmeden önce bir varlığın boşta (kullanılmamış) olması gereken süreye ayarlanır. Bu özellik için en düşük değer 5 dakikadır.
  
 ## <a name="idleness"></a>Uyku modu
 

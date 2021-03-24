@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: 4761c1fb6d245071a02fc69677fc9cd50a972fdd
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 297c1d4afca5a1d605a046d69b086a05a9322bc7
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100574602"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872090"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Güvenlik duvarını kullanarak Azure HDInsight kümeleri için giden ağ trafiği yapılandırma
 
@@ -52,7 +52,7 @@ Kümenin önemli iletişimleri göndermesini ve almasını sağlayan bir uygulam
 
 1. **Ayarlar**  >  **kuralları**  >  **uygulama kuralı koleksiyonu**  >  **+ uygulama kuralı koleksiyonu Ekle**' ye gidin.
 
-    ![Başlık: uygulama kuralı koleksiyonu Ekle](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png)
+    :::image type="content" source="./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png" alt-text="Başlık: uygulama kuralı koleksiyonu Ekle":::
 
 1. **Uygulama kuralı koleksiyonu Ekle** ekranında, aşağıdaki bilgileri sağlayın:
 
@@ -78,7 +78,7 @@ Kümenin önemli iletişimleri göndermesini ve almasını sağlayan bir uygulam
     | Rule_3 | * | https:443 | login.microsoftonline.com | Windows oturum açma etkinliğine izin verir |
     | Rule_4 | * | https: 443, http: 80 | storage_account_name. blob. Core. Windows. net | `storage_account_name`Gerçek depolama hesabı adınızla değiştirin. YALNıZCA HTTPS bağlantılarını kullanmak için depolama hesabında ["güvenli aktarım gerekli"](../storage/common/storage-require-secure-transfer.md) özelliğinin etkinleştirildiğinden emin olun. Depolama hesaplarına erişmek için özel uç nokta kullanıyorsanız, bu adım gerekli değildir ve depolama trafiği güvenlik duvarından iletilmez.|
 
-   ![Başlık: uygulama kuralı koleksiyonu ayrıntılarını girin](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
+   :::image type="content" source="./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png" alt-text="Başlık: uygulama kuralı koleksiyonu ayrıntılarını girin":::
 
 1. **Add (Ekle)** seçeneğini belirleyin.
 
@@ -105,7 +105,7 @@ HDInsight kümenizi doğru şekilde yapılandırmak için ağ kuralları oluştu
     | Rule_5 | TCP | * | SQL | 1433 | HDInsight tarafından sunulan varsayılan SQL sunucularını kullanıyorsanız SQL için SQL trafiğini günlüğe kaydederek ve denetim altına alacak olan hizmet etiketleri bölümünde bir ağ kuralı yapılandırın. HDInsight alt ağında SQL Server için hizmet uç noktaları yapılandırmadığınız takdirde, güvenlik duvarını atlayacak olur. Ambarı, Oozie, Ranger ve Hive meta depolar için özel SQL Server kullanıyorsanız yalnızca kendi özel SQL sunucularınız için trafiğe izin vermeniz gerekir.|
     | Rule_6 | TCP | * | Azure İzleyici | * | seçim Otomatik ölçeklendirme özelliğini kullanmayı planlayan müşterilerin bu kuralı eklemesi gerekir. |
     
-   ![Başlık: uygulama kuralı koleksiyonu girin](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
+   :::image type="content" source="./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png" alt-text="Başlık: uygulama kuralı koleksiyonu girin":::
 
 1. **Add (Ekle)** seçeneğini belirleyin.
 

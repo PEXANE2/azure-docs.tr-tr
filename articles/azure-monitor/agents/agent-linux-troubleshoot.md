@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: f8558644fc24f3190247e57b4de7228af161a2a8
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 6c262e75bfc3fe9c7fb5ce3e00b42b0ff6cbe3bb
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102631175"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952958"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Linux için Log Analytics aracısıyla ilgili sorunları giderme 
 
@@ -19,7 +19,7 @@ Bu makalede, Azure Izleyici 'de Linux için Log Analytics aracısında karşıla
 Bu adımlardan hiçbiri sizin için çalışmazsa, aşağıdaki destek kanalları da kullanılabilir:
 
 * Premier destek avantajlarına sahip müşteriler, [Premier](https://premier.microsoft.com/)ile bir destek isteği açabilir.
-* Azure destek sözleşmeleri olan müşteriler [Azure Portal](https://manage.windowsazure.com/?getsupport=true)bir destek talebi açabilir.
+* Azure destek sözleşmeleri olan müşteriler [Azure Portal](https://azure.microsoft.com/support/options/)bir destek talebi açabilir.
 * OMI sorunlarını, [OMI sorun giderme kılavuzuyla](https://github.com/Microsoft/omi/blob/master/Unix/doc/diagnose-omi-problems.md)tanılayın.
 * Bir [GitHub sorunu](https://github.com/Microsoft/OMS-Agent-for-Linux/issues)dosyası.
 * Gönderilen fikirleri ve hataları gözden geçirmek [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback) veya yeni bir dosya göndermek için Log Analytics geri bildirim sayfasını ziyaret edin. 

@@ -240,8 +240,12 @@
               href: azure-stack-edge-gpu-deploy-virtual-machine-custom-script-extension.md
             - name: VM görüntüsü oluşturma
               href: azure-stack-edge-gpu-create-virtual-machine-image.md
+            - name: Windows Genelleştirilmiş görüntüsünü kullan
+              href: azure-stack-edge-gpu-prepare-windows-vhd-generalized-image.md
             - name: 'Desteklenen VM boyutları, türleri'
               href: azure-stack-edge-gpu-virtual-machine-sizes.md
+            - name: VM konsoluna bağlanma
+              href: azure-stack-edge-gpu-connect-virtual-machine-console.md
         - name: Sertifikaları yönetme
           items:
             - name: Gereksinimler
@@ -310,7 +314,9 @@
               href: azure-stack-edge-contact-microsoft-support.md
     - name: Paylaşılan sürüm notları
       items:
-        - name: 2101-geçerli
+        - name: 2103-geçerli
+          href: azure-stack-edge-gpu-2103-release-notes.md
+        - name: 2101
           href: azure-stack-edge-gpu-2101-release-notes.md
         - name: 2010
           href: azure-stack-edge-gpu-2010-release-notes.md
