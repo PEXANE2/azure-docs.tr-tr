@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 01/13/2020
-ms.openlocfilehash: bd52157e2f0e20e9282d944b07f656c08d9e57da
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c993b3f70f609fb79c51ba9be08fa3d5dc7e8317
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98932643"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864117"
 ---
 # <a name="scp-programming-guide-for-apache-storm-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Storm için SCP Programlama Kılavuzu
 
@@ -28,7 +28,7 @@ SCP 'deki veriler, tanımlama gruplarının sürekli akışları olarak modellen
 1. , Bir fırtınası topolojisi içinde barındırılan iş mantığına göre alınır ve dönüştürülür.
 1. Çıkışları, başka bir SCP sistemine yönelik tanımlama grupları olarak veya dağıtılmış dosya sistemleri ve SQL Server gibi veritabanları gibi mağazalara kararlıdır.
 
-![Bir kuyruğun bir diyagramı, verileri işlenecek şekilde beslemenin yanı sıra bir veri deposunun beslemelerini sağlar](./media/apache-storm-scp-programming-guide/queue-feeding-data-to-processing-to-data-store.png)
+:::image type="content" source="./media/apache-storm-scp-programming-guide/queue-feeding-data-to-processing-to-data-store.png" alt-text="Bir kuyruğun bir diyagramı, verileri işlenecek şekilde beslemenin yanı sıra bir veri deposunun beslemelerini sağlar" border="false":::
 
 Fırtınası ' da, bir uygulama topolojisi bir hesaplama grafiğini tanımlar. Bir topolojideki her düğüm, işlem mantığını içerir. Düğümler arasındaki bağlantılar veri akışını gösterir.
 
@@ -431,7 +431,7 @@ SCP topolojisi belirtimi, SCP topolojilerini tanımlamak ve yapılandırmak içi
 
 SCP.NET, işlem topolojilerini tanımlamak için aşağıdaki işlevleri ekledi:
 
-| Yeni işlev | Parametreler | Description |
+| Yeni işlev | Parametreler | Açıklama |
 | --- | --- | --- |
 | **TX-topolopy** |*topoloji-adı*<br />*Spout eşleme*<br />*cıvata eşleme* |Topoloji adı, Spout tanım eşlemesi ve cıvatalar tanım eşlemesi ile bir işlem topolojisini tanımlar. |
 | **SCP-TX-Spout** |*exec-adı*<br />*args*<br />*alanını* |İşlem biriktirme listesini tanımlar. İşlevi, *Exec-Name* tarafından belirtilen uygulamayı çalıştırır ve *bağımsız değişkenleri* kullanır.<br /><br />*Fields* parametresi, Spout için çıkış alanlarını belirtir. |
@@ -443,7 +443,7 @@ SCP.NET, işlem topolojilerini tanımlamak için aşağıdaki işlevleri ekledi:
 
 SCP.NET aşağıdaki anahtar sözcükleri tanımlar:
 
-| Sözcükle | Description |
+| Sözcükle | Açıklama |
 | --- | --- |
 | **: ad** |Topoloji adı |
 | **: topoloji** |Önceki tabloda ve yerleşik işlevlerde bulunan işlevleri kullanan topoloji |
@@ -570,7 +570,7 @@ Burada, `examples\HybridTopology\java\target\` Java Spout/CıVAM jar dosyasını
 
 Bir SCP bileşeni, Java tarafını ve C# tarafını içerir. Yerel Java spotları/cıvataları ile etkileşim kurmak için aşağıdaki grafikte gösterildiği gibi, serileştirme ve seri durumdan çıkarma Java yan ve C# tarafı arasında gerçekleşmelidir:
 
-![SCP bileşenine gönderilen ve daha sonra farklı bir Java bileşenine gönderen Java bileşeni diyagramı](./media/apache-storm-scp-programming-guide/java-compent-sending-to-scp-component-sending-to-java-component.png)
+:::image type="content" source="./media/apache-storm-scp-programming-guide/java-compent-sending-to-scp-component-sending-to-java-component.png" alt-text="SCP bileşenine gönderilen ve daha sonra farklı bir Java bileşenine gönderen Java bileşeni diyagramı" border="false":::
 
 #### <a name="serialization-in-the-java-side-and-deserialization-in-the-c-side"></a>C# tarafında Java tarafında serileştirme ve seri durumdan çıkarma
 

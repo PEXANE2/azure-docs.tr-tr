@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 10/14/2019
-ms.openlocfilehash: 50a72d0400b23162e05b17b37bdad48783261072
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ff963e661a2b258c1eb452ed63f41f4e7d84c6a0
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98944770"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867789"
 ---
 # <a name="use-apache-zeppelin-to-run-apache-phoenix-queries-over-apache-hbase-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache HBase üzerinde Apache Phoenix sorguları çalıştırmak için Apache Zeppelin kullanma
 
@@ -30,68 +30,68 @@ HDInsight 'ta Apache HBase kümesi. Bkz. [Apache HBase ile çalışmaya başlama
 
 1. Zeppelin sayfasında **Yeni dekont oluştur**' u seçin.
 
-    ![HDInsight etkileşimli sorgu Zeppelin](./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-create-note.png)
+   :::image type="content" source="./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-create-note.png" alt-text="HDInsight etkileşimli sorgu Zeppelin" border="true":::
 
 1. **Yeni nota oluştur** iletişim kutusunda aşağıdaki değerleri yazın veya seçin:
 
-    - Note adı: nota bir ad girin.
-    - Varsayılan yorumlayıcı: açılan listeden **JDBC** ' ı seçin.
+   - Note adı: nota bir ad girin.
+   - Varsayılan yorumlayıcı: açılan listeden **JDBC** ' ı seçin.
 
-    Ardından, **Note oluştur**' u seçin.
+   Ardından, **Note oluştur**' u seçin.
 
 1. Not defteri üstbilgisinin bağlı bir durum belirttiğinden emin olun. Sağ üst köşedeki yeşil noktayla gösterilir.
 
-    ![Zeppelin Not defteri durumu](./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-connected.png "Zeppelin Not defteri durumu")
+   :::image type="content" source="./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-connected.png" alt-text="Zeppelin Not defteri durumu" border="true":::
 
 1. Bir HBase tablosu oluşturun. Aşağıdaki komutu girin ve ardından **SHIFT + enter** tuşlarına basın:
 
-    ```sql
-    %jdbc(phoenix)
-    CREATE TABLE Company (
-        company_id INTEGER PRIMARY KEY,
-        name VARCHAR(225)
-    );
-    ```
+   ```sql
+   %jdbc(phoenix)
+   CREATE TABLE Company (
+       company_id INTEGER PRIMARY KEY,
+       name VARCHAR(225)
+   );
+   ```
 
-    İlk satırdaki **% JDBC (Phoenix)** deyimleri, Not DEFTERINE Phoenix JDBC yorumlayıcı kullanmasını söyler.
+   İlk satırdaki **% JDBC (Phoenix)** deyimleri, Not DEFTERINE Phoenix JDBC yorumlayıcı kullanmasını söyler.
 
 1. Oluşturulan tabloları görüntüleyin.
 
-    ```sql
-    %jdbc(phoenix)
-    SELECT DISTINCT table_name
-    FROM SYSTEM.CATALOG
-    WHERE table_schem is null or table_schem <> 'SYSTEM';
-    ```
+   ```sql
+   %jdbc(phoenix)
+   SELECT DISTINCT table_name
+   FROM SYSTEM.CATALOG
+   WHERE table_schem is null or table_schem <> 'SYSTEM';
+   ```
 
 1. Tablodaki değerleri ekleyin.
 
-    ```sql
-    %jdbc(phoenix)
-    UPSERT INTO dbo.Company VALUES(1, 'Microsoft');
-    UPSERT INTO dbo.Company (name, company_id) VALUES('Apache', 2);
-    ```
+   ```sql
+   %jdbc(phoenix)
+   UPSERT INTO dbo.Company VALUES(1, 'Microsoft');
+   UPSERT INTO dbo.Company (name, company_id) VALUES('Apache', 2);
+   ```
 
 1. Tabloyu sorgulayın.
 
-    ```sql
-    %jdbc(phoenix)
-    SELECT * FROM dbo.Company;
-    ```
+   ```sql
+   %jdbc(phoenix)
+   SELECT * FROM dbo.Company;
+   ```
 
 1. Bir kaydı silin.
 
-    ```sql
-    %jdbc(phoenix)
-    DELETE FROM dbo.Company WHERE COMPANY_ID=1;
-    ```
+   ```sql
+   %jdbc(phoenix)
+   DELETE FROM dbo.Company WHERE COMPANY_ID=1;
+   ```
 
 1. Tabloyu bırakın.
 
-    ```sql
-    %jdbc(phoenix)
-    DROP TABLE dbo.Company;
-    ```
+   ```sql
+   %jdbc(phoenix)
+   DROP TABLE dbo.Company;
+   ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/01/2019
-ms.openlocfilehash: 6c020153d5c5cb5aad593c5b15e60e67951b89d4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d061832022b983e4d5fd55e72c1d4789b82f6633
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945192"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863233"
 ---
 # <a name="set-up-tls-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Kafka için TLS şifrelemesini ve kimlik doğrulamasını ayarlama
 
@@ -128,11 +128,11 @@ Yapılandırma değişikliğini gerçekleştirmek için aşağıdaki adımları 
 1. **Kafka Aracısı** altında, **Listeners** özelliğini`PLAINTEXT://localhost:9092,SSL://localhost:9093`
 1. **Gelişmiş Kafka-aracı** altında **Security. Inter. Broker. Protocol** özelliğini olarak ayarlayın`SSL`
 
-    ![Kafka SSL yapılandırma özelliklerini ambarı 'nda Düzenle](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari.png)
+    :::image type="content" source="./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari.png" alt-text="Kafka SSL yapılandırma özelliklerini ambarı 'nda Düzenle" border="true":::
 
 1. **Özel Kafka-Broker** altında **SSL. Client. auth** özelliğini olarak ayarlayın `required` . Bu adım yalnızca kimlik doğrulaması ve şifrelemeyi ayarlıyorsanız gereklidir.
 
-    ![Kafka SSL yapılandırma özelliklerini ambarı 'nda Düzenle](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari2.png)
+    :::image type="content" source="./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari2.png" alt-text="Kafka SSL yapılandırma özelliklerini ambarı 'nda Düzenle" border="true":::
 
 1. HDI sürüm 3,6 için, ambarı Kullanıcı arabirimine gidin ve **Gelişmiş Kafka-env** ve **Kafka-env Template** özelliği altına aşağıdaki konfigürasyonları ekleyin.
 
@@ -153,11 +153,11 @@ Yapılandırma değişikliğini gerçekleştirmek için aşağıdaki adımları 
 
     HDI sürüm 3,6 için:
 
-    ![Kafka-env Template özelliğini, ambarı 'nda Düzenle](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env.png)
+    :::image type="content" source="./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env.png" alt-text="Kafka-env Template özelliğini, ambarı 'nda Düzenle" border="true":::
 
     HDI sürüm 4,0 için:
 
-     ![Kafka-env Template özelliği, ambarı dört içinde düzenleniyor](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env-four.png)
+     :::image type="content" source="./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env-four.png" alt-text="Kafka-env Template özelliği, ambarı dört içinde düzenleniyor" border="true":::
 
 1. Tüm Kafka aracılarını yeniden başlatın.
 

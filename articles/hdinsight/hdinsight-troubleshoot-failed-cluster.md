@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: eae5b5e1430f4e9bf1db62a4413e3b7abe3744cc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 660c80a471739f7dc0163e915f45e3a067e1e4b2
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101699326"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871971"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>HDInsight kümesinde yavaş veya başarısız olan bir işin sorunlarını giderme
 
@@ -51,7 +51,7 @@ Sorunu belirlemenize yardımcı olması için aşağıdaki soruları göz önün
 
 Azure portal bu bilgileri verebilir:
 
-![HDInsight Azure portal bilgileri](./media/hdinsight-troubleshoot-failed-cluster/hdi-azure-portal-info.png)
+:::image type="content" source="./media/hdinsight-troubleshoot-failed-cluster/hdi-azure-portal-info.png" alt-text="HDInsight Azure portal bilgileri":::
 
 [Azure CLI](/cli/azure/)'yi de kullanabilirsiniz:
 
@@ -77,7 +77,7 @@ Her HDInsight kümesi çeşitli Azure hizmetlerini ve Apache HBase ve Apache Spa
 
 Apache ambarı, bir Web Kullanıcı arabirimi ve REST API bir HDInsight kümesinin yönetimini ve izlenmesini sağlar. Ambarı, Linux tabanlı HDInsight kümelerine dahildir. Azure portal HDInsight sayfasında **küme Pano** bölmesini seçin.  Bu Kullanıcı arabirimini açmak için **HDInsight kümesi Pano** bölmesini seçin ve küme oturum açma kimlik bilgilerini girin.  
 
-![Apache ambarı panosuna genel bakış](./media/hdinsight-troubleshoot-failed-cluster/apache-ambari-overview.png)
+:::image type="content" source="./media/hdinsight-troubleshoot-failed-cluster/apache-ambari-overview.png" alt-text="Apache ambarı panosuna genel bakış":::
 
 Hizmet görünümlerinin bir listesini açmak için Azure portal sayfasındaki **ambarı görünümleri** ' ni seçin.  Bu liste, hangi kitaplıkların yüklü olduğuna bağlıdır. Örneğin, YARN kuyruğu Yöneticisi, Hive görünümü ve tez görünümü ' ne bakabilirsiniz.  Yapılandırma ve hizmet bilgilerini görmek için bir hizmet bağlantısı seçin.
 
@@ -124,7 +124,7 @@ curl -u admin:{HTTP PASSWD} https://{CLUSTERNAME}.azurehdinsight.net/templeton/v
 
 Ambarı, WebHCat hizmetinin altında çalıştığı Konakları gösteren bir uyarı görüntüler. Hizmeti ana bilgisayarında yeniden başlatarak WebHCat hizmetini geri getirmeyi deneyebilirsiniz.
 
-![Apache ambarı yeniden başlatma WebHCat Server](./media/hdinsight-troubleshoot-failed-cluster/restart-webhcat-server.png)
+:::image type="content" source="./media/hdinsight-troubleshoot-failed-cluster/restart-webhcat-server.png" alt-text="Apache ambarı yeniden başlatma WebHCat Server":::
 
 Bir WebHCat sunucusu hala gelmezse, hata iletileri için işlem günlüğünü kontrol edin. Daha ayrıntılı bilgi için, `stderr` `stdout` düğümde başvurulan ve dosyalarını denetleyin.
 
@@ -173,7 +173,7 @@ YARN düzeyinde iki zaman aşımı türü vardır:
 
     Aşağıdaki görüntüde,% 714,4 fazla kullanılan iş başlatıcısı sırası gösterilmektedir. Bu, varsayılan kuyrukta içinden ödünç almak için hala ücretsiz kapasite olduğu için kabul edilebilir. Ancak, küme tam olarak kullanıldığında ve YARN belleği %100 kapasiteye sahip olduğunda, yeni işlerin beklenmesi gerekir ve bu süre sonunda zaman aşımına neden olur.
 
-    ![HDInsight Iş başlatıcısı sıra görünümü](./media/hdinsight-troubleshoot-failed-cluster/hdi-job-launcher-queue.png)
+    :::image type="content" source="./media/hdinsight-troubleshoot-failed-cluster/hdi-job-launcher-queue.png" alt-text="HDInsight Iş başlatıcısı sıra görünümü":::
 
     Bu sorunu çözmek için iki yol vardır: gönderilen yeni işlerin hızını azaltın ya da kümeyi ölçeklendirerek eski işlerin tüketim hızını artırın.
 
@@ -205,7 +205,7 @@ Bu sorunları tanılamak için:
 
 Ambarı Kullanıcı arabirimi **yığını ve sürümü** sayfası, Küme Hizmetleri Yapılandırması ve hizmet sürümü geçmişi hakkında bilgi sağlar.  Hatalı Hadoop hizmeti kitaplık sürümleri, küme hatasının nedeni olabilir.  Ambarı Kullanıcı arabiriminde, **yönetici** menüsünü ve ardından  **yığınlar ve sürümler**' i seçin.  Hizmet sürümü bilgilerini görmek için sayfada **sürümler** sekmesini seçin:
 
-![Apache ambarı yığını ve sürümleri](./media/hdinsight-troubleshoot-failed-cluster/ambari-stack-versions.png)
+:::image type="content" source="./media/hdinsight-troubleshoot-failed-cluster/ambari-stack-versions.png" alt-text="Apache ambarı yığını ve sürümleri":::
 
 ## <a name="step-5-examine-the-log-files"></a>5. Adım: günlük dosyalarını Inceleme
 
@@ -229,7 +229,7 @@ HDInsight ambarı Kullanıcı arabirimi, bir dizi **hızlı bağlantı** bölüm
 
 Örneğin, bu günlük için:
 
-![Günlük dosyaları için ambarı hızlı bağlantıları](./media/hdinsight-troubleshoot-failed-cluster/apache-ambari-quick-links.png)
+:::image type="content" source="./media/hdinsight-troubleshoot-failed-cluster/apache-ambari-quick-links.png" alt-text="Günlük dosyaları için ambarı hızlı bağlantıları":::
 
 ### <a name="view-hadoop-generated-log-files"></a>Hadoop tarafından oluşturulan günlük dosyalarını görüntüle
 

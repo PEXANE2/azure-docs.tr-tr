@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/06/2019
-ms.openlocfilehash: 97b23a2b9e3b95a5ea0efcd27d0ec185b1c456f1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b5682ff58ad827f5a165342f11f03fb49bbe6d2d
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946550"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867891"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>HDInsight 'ta Apache Hadoop üzerinde Apache Hive ve Apache Pig ile C# Kullanıcı tanımlı işlevleri kullanma
 
@@ -171,7 +171,7 @@ Ardından, Hive ve Pig UDF uygulamalarını bir HDInsight kümesindeki depolamay
 
 1. Bu uygulamayı dağıtmak istediğiniz HDInsight kümesini genişletin. Metin **(varsayılan depolama hesabı)** içeren bir giriş listelenir.
 
-    ![Varsayılan depolama hesabı, HDInsight kümesi, Sunucu Gezgini](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-storage-account.png)
+    :::image type="content" source="./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-storage-account.png" alt-text="Varsayılan depolama hesabı, HDInsight kümesi, Sunucu Gezgini" border="true":::
 
     * Bu girdi genişletilirse, küme için varsayılan depolama alanı olarak bir **Azure depolama hesabı** kullanıyorsunuz demektir. Küme için varsayılan depolamada bulunan dosyaları görüntülemek için, girdiyi genişletin ve **(varsayılan kapsayıcı)** öğesine çift tıklayın.
 
@@ -181,7 +181,7 @@ Ardından, Hive ve Pig UDF uygulamalarını bir HDInsight kümesindeki depolamay
 
     * Bir **Azure depolama hesabı** kullanıyorsanız, **karşıya yükleme blobu** simgesini seçin.
 
-        ![Yeni proje için HDInsight karşıya yükleme simgesi](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-upload-icon.png)
+        :::image type="content" source="./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-upload-icon.png" alt-text="Yeni proje için HDInsight karşıya yükleme simgesi" border="true":::
 
         **Yeni dosyayı karşıya yükle** Iletişim kutusundaki **dosya adı** altında, **Araştır**' ı seçin. **Blobu karşıya yükle** iletişim kutusunda, *hivecsharp* proje için *bin\Debug* klasörüne gidin ve *HiveCSharp.exe* dosyasını seçin. Son olarak, **Aç** ' ı ve ardından **Tamam** ' ı seçerek karşıya yüklemeyi tamamlayabilirsiniz.
 

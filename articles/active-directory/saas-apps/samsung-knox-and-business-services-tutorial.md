@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 3c1ec38e792987f4bd7208c3bf57a882a05f4f46
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 330c02f15c0818f0a5c69088757c92a91a523589
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101648059"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952673"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-samsung-knox-and-business-services"></a>Öğretici: Samsung KNOX ve Business Services ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -141,7 +141,7 @@ Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki se�
 
 * Doğrudan [SamsungKnox.com](https://samsungknox.com/) adresine gidin ve oturum akışını buradan başlatın.
 
-* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım bölümünde Samsung KNOX ve Iş Hizmetleri kutucuğuna tıkladığınızda, bu [SamsungKnox.com](https://samsungknox.com/)'e yeniden yönlendirilir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım bölümünde Samsung KNOX ve Iş Hizmetleri kutucuğuna tıkladığınızda, bu [SamsungKnox.com](https://samsungknox.com/)'e yeniden yönlendirilir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

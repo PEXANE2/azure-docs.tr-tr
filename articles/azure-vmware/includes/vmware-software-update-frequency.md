@@ -2,17 +2,21 @@
 title: VMware yazılım güncelleştirme sıklığı
 description: Azure VMware çözümü için desteklenen VMware yazılım güncelleştirme sıklığı.
 ms.topic: include
-ms.date: 03/16/2021
-ms.openlocfilehash: a202e99efbe1232598645fed8a03ebf66a1e173b
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.date: 03/22/2021
+ms.openlocfilehash: a3290ed704b493fae3e86223857ff9f1c5617f1a
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104773937"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869872"
 ---
 <!-- Used in faq.md and concepts-private-clouds-clusters.md -->
 
-Microsoft, özel bulutta VMware yazılımının (ESXi, vCenter, PSC ve NXS) yaşam döngüsü yönetiminden sorumludur.
+Microsoft, Azure VMware Çözüm özel bulutu 'ndaki VMware yazılımlarının (ESXi, vCenter, PSC ve NXS) yaşam döngüsü yönetiminden sorumludur.
+
+Özel bulut yazılımı, VMware 'den yazılım paketi yayınını izleyen bir zamanlamaya göre yükseltilir. Özel bulutunuz yükseltmeler için kapalı kalma süresi gerektirmez.
+
+Özel bulut yazılım paketi yükseltmeleri, Yazılımı VMware 'den en son yazılım paketi sürümünün bir sürümü içinde tutar. Özel bulut yazılımı sürümleri, bireysel yazılım bileşenlerinin en son sürümlerinden (ESXi, NSX-T, vCenter, vSAN) farklı olabilir.
 
 Yazılım güncelleştirmeleri şunları içerir:
 

@@ -270,7 +270,7 @@
           href: use-pod-security-policies.md
         - name: API sunucusu tarafından yetkilendirilen IP aralıklarını tanımlama
           href: api-server-authorized-ip-ranges.md
-        - name: Azure İlkesi ile dağıtımları denetleme (önizleme)
+        - name: Azure Ilkesiyle dağıtımları denetleme
           href: ../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/aks/toc.json
         - name: Küme kimlik bilgilerini güncelleştirme
           href: update-credentials.md

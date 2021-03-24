@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: a5732c2dc0a92bd5727eeff39a529630e45683d7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bb448a4befb15618485b2b5951222761180a1f22
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946681"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866752"
 ---
 # <a name="visualize-apache-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>Azure HDInsight’ta ODBC kullanarak Microsoft Power BI ile Apache Hive verilerini görselleştirme
 
@@ -21,7 +21,7 @@ Microsoft Power BI Desktop 'yi ODBC kullanarak Azure HDInsight 'a bağlamayı ve
 
 Bu makalede, verileri `hivesampletable` Power BI için bir Hive tablosundan yüklersiniz. Hive tablosu bazı cep telefonu kullanım verilerini içerir. Ardından, kullanım verilerini bir dünya eşlemesinde çizdirebilirsiniz:
 
-![Eşleme raporu Power BI HDInsight](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-visualization.png)
+:::image type="content" source="./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-visualization.png" alt-text="Eşleme raporu Power BI HDInsight" border="true":::
 
 Bilgiler ayrıca yeni [etkileşimli sorgu](../interactive-query/apache-interactive-query-get-started.md) kümesi türü için de geçerlidir. Doğrudan sorgu kullanarak HDInsight etkileşimli sorgusuna bağlanma için bkz. [Azure HDInsight 'ta doğrudan sorgu kullanarak Microsoft Power BI etkileşimli sorgu Hive verilerini görselleştirme](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).
 
@@ -45,7 +45,7 @@ Bkz. [HIVE ODBC veri kaynağı oluşturma](apache-hadoop-connect-excel-hive-odbc
 
 1. Üstteki menüden, **ana**  >  **veri al**  >  **daha fazla...** seçeneğine gidin.
 
-    ![HDInsight Excel Power BI açık verileri](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-open-odbc.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-open-odbc.png" alt-text="HDInsight Excel Power BI açık verileri" border="true":::
 
 1. **Veri al** iletişim kutusundan soldan **diğer** ' i seçin, sağ taraftaki **ODBC** ' i seçin ve ardından alt kısımdaki **Bağlan** ' ı seçin.
 
@@ -61,7 +61,7 @@ Son yordamdan devam edin.
 
 1. Görsel Öğeler bölmesinde **eşle**' yi seçin, bir dünya simgesi.
 
-    ![HDInsight Power BI raporu özelleştirir](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-customize.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-customize.png" alt-text="HDInsight Power BI raporu özelleştirir" border="true":::
 
 1. **Alanlar** bölmesinde, **ülke** ve **devicemake**' ı seçin. Haritada çizili verileri görebilirsiniz.
 

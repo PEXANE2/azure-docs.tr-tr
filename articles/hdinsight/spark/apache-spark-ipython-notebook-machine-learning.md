@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc, devx-track-python
 ms.date: 04/07/2020
-ms.openlocfilehash: 88a71eb5a8ca9a6f2bf1d17fc4eaf9780527d2cb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 13e5609c965a28405804b8a993280b13755b2d3c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98930553"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866078"
 ---
 # <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>Öğretici: Azure HDInsight 'ta Apache Spark Machine Learning uygulaması oluşturma
 
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Uygulama varsayılan olarak tüm kümelerdeki kullanılabilir örnek **HVAC.csv** verilerini kullanır. Dosya konumunda bulunur `\HdiSamples\HdiSamples\SensorSampleData\hvac` . Veriler, HVAC sistemlerinin yüklü olduğu bazı binaların hedef sıcaklığı ile gerçek sıcaklığını gösterir. **System** sütunu sistem kimliğini, **SystemAge** sütunu ise HVAC sisteminin binada kaç yıldır kullanıldığını ifade eder. Bir binanın, hedef sıcaklığa, sistem KIMLIĞINE ve sistem yaşı temelinde bir bina veya harmanlama olacağını tahmin edebilirsiniz.
 
-![Spark Machine Learning örneği için kullanılan verilerin anlık görüntüsü](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-understand-data.png "Spark Machine Learning örneği için kullanılan verilerin anlık görüntüsü")
+:::image type="content" source="./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-understand-data.png " alt-text="Spark Machine Learning örneği için kullanılan verilerin anlık görüntüsü" border="true":::
 
 ## <a name="develop-a-spark-machine-learning-application-using-spark-mllib"></a>Spark MLlib kullanarak Spark makine öğrenimi uygulaması geliştirme
 
@@ -138,7 +138,7 @@ Bu uygulama bir belge sınıflandırması yapmak için Spark [ml işlem hattı](
 
     Çıktıyı ham CSV dosyasıyla karşılaştırın. Örneğin, CSV dosyasının bu verileri içeren ilk satırı:
 
-    ![Spark Machine Learning örneği için çıkış verileri anlık görüntüsü](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-output-data.png "Spark Machine Learning örneği için çıkış verileri anlık görüntüsü")
+    :::image type="content" source="./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-output-data.png " alt-text="Spark Machine Learning örneği için çıkış verileri anlık görüntüsü" border="true":::
 
     Binanın soğuk olduğunu göstermek üzere gerçek sıcaklığın hedef sıcaklıktan az olduğuna dikkat edin. İlk satırdaki **etiket** değeri **0,0**, bu da yapı etkin değil anlamına gelir.
 
@@ -199,7 +199,7 @@ Bu uygulamayı kullanmaya devam etmeyecekecekseniz, oluşturduğunuz kümeyi aş
 
 1. **Sil**’i seçin. **Evet**’i seçin.
 
-![Azure portal bir HDInsight kümesini siler](./media/apache-spark-ipython-notebook-machine-learning/hdinsight-azure-portal-delete-cluster.png "HDInsight kümesini Sil")
+:::image type="content" source="./media/apache-spark-ipython-notebook-machine-learning/hdinsight-azure-portal-delete-cluster.png " alt-text="Azure portal bir HDInsight kümesini siler" border="true":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

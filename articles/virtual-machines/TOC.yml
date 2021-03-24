@@ -101,6 +101,8 @@
       href: ./linux/tutorial-elasticsearch.md
     - name: Ana bilgisayar yeniden barındırma
       href: ./workloads/mainframe-rehosting/overview.md
+    - name: Azure gizli Işlem
+      href: ../confidential-computing/overview.md
     - name: Sanal makinelerde SQL
       href: ../azure-sql/virtual-machines/index.yml
     - name: Yüksek Performanslı Bilgi İşlem (HPC)

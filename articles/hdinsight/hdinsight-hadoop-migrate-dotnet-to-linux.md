@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 02/27/2018
-ms.openlocfilehash: 1ceb5d323ecfed54b4e01d13d66c640769a224ee
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9e626d08e7fd315ca70765477c5dae56030521c6
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945598"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866412"
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>Windows tabanlı HDInsight için .NET çözümlerini Linux tabanlı HDInsight 'a geçirme
 
@@ -33,7 +33,7 @@ Mono ve .NET arasındaki uyumlulukla ilgili daha fazla bilgi için bkz. [mono uy
 
 2. Visual Studio 2015 ' den   >  __taşınabilirlik Çözümleyicisi ayarlarını__ Çözümle ' yi seçin ve __mono__ bölümünde __4,5__ ' nin işaretli olduğundan emin olun.
 
-    ![4,5, çözümleyici ayarları için mono bölümünde işaretlendi](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-settings.png)
+    :::image type="content" source="./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-settings.png" alt-text="4,5, çözümleyici ayarları için mono bölümünde işaretlendi":::
 
     Yapılandırmayı kaydetmek için __Tamam ' ı__ seçin.
 
@@ -41,7 +41,7 @@ Mono ve .NET arasındaki uyumlulukla ilgili daha fazla bilgi için bkz. [mono uy
 
 4. Analiz tamamlandıktan sonra,   >  __Görünüm analiz raporlarını__ analiz et ' i seçin. __Taşınabilirlik Analizi sonuçlarında__ rapor açmak Için __raporu aç__ ' ı seçin.
 
-    ![Taşınabilirlik Çözümleyicisi sonuçları iletişim kutusu](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-results.png)
+    :::image type="content" source="./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-results.png" alt-text="Taşınabilirlik Çözümleyicisi sonuçları iletişim kutusu":::
 
 > [!IMPORTANT]  
 > Çözümleyici, çözümünüzle ilgili her sorunu yakalayabilir. Örneğin, `c:\temp\file.txt` mono Windows üzerinde çalışıyorsa bir dosya yolu tamam olarak değerlendirilir. Aynı yol bir Linux platformunda geçerli değildir.

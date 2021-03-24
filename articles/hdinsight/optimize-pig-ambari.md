@@ -4,12 +4,12 @@ description: Apache Pig 'yi yapılandırmak ve iyileştirmek için Apache ambar�
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 690cfc66d0f08e63ac6ef1d21b6722fed59eca14
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 43159360342063af1682a984db037ae286721411
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98939014"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871172"
 ---
 # <a name="optimize-apache-pig-with-apache-ambari-in-azure-hdinsight"></a>Apache Pig 'i Azure HDInsight 'ta Apache ambarı ile iyileştirme
 
@@ -23,7 +23,7 @@ Apache Pig özellikleri, Pig sorgularını ayarlamak için, ambarı Web kullanı
 
 1. Yeni değeri kaydetmek için pencerenin sağ üst tarafındaki **Kaydet** ' i seçin. Bazı özellikler, bir hizmetin yeniden başlatılmasını gerektirebilir.
 
-    ![Gelişmiş Apache Pig özellikleri](./media/optimize-pig-ambari/advanced-pig-properties.png)
+    :::image type="content" source="./media/optimize-pig-ambari/advanced-pig-properties.png" alt-text="Gelişmiş Apache Pig özellikleri" border="true":::
 
 > [!NOTE]  
 > Herhangi bir oturum düzeyi ayarı, dosyadaki özellik değerlerini geçersiz kılar `pig.properties` .

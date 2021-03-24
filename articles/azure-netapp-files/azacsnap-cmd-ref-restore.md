@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: 1c6b7ec6c4ef24ec00fbfc55a65a968e00561c2e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 793b4da8fcf46ba4d5618f8ada86f9c3c8026ffd
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97633062"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865273"
 ---
 # <a name="restore-using-azure-application-consistent-snapshot-tool-preview"></a>Azure uygulaması tutarlı anlık görüntü aracı 'nı (Önizleme) kullanarak geri yükleme
 
@@ -41,7 +41,7 @@ Bir anlık görüntüden toplu geri yükleme yapmak komutu kullanılarak yapıl�
 - `--restore revertvolume` Hedef birimi en son anlık görüntüye göre önceki bir duruma geri döndürür.  Bu komutu, DR yük devretmesinin parçası olarak eşleştirilmiş DR bölgesine kullanmaktır. Bu komut, birincil siteden ikincil siteye depolama çoğaltmasını **sonlandırır** ve hedef Dr birimini, geri dönülebilecek Dr birimleri için önerilen dosya bağlama NOKTALARıYLA birlikte Dr birimlerindeki kullanılabilir en son anlık görüntüsüne geri döndürür. Bu komut, **Dr bölgesindeki** (yani, hedef sistemde başarısız olan) Azure büyük örnek sisteminde çalıştırılmalıdır.
     > [!NOTE]
     > Alt komut ( `--restore revertvolume` ) yalnızca Azure büyük örneği için kullanılabilir ve Azure NetApp Files için kullanılamaz.
-- `--hanasid <SAP HANA SID>` , birim geri yükleme komutlarının ' ye uygulanması için yapılandırma dosyasından seçilmiş olan SAP HANA SID 'sidir.
+- `--dbsid <SAP HANA SID>` , birim geri yükleme komutlarının ' ye uygulanması için yapılandırma dosyasından seçilmiş olan SAP HANA SID 'sidir.
 
 - `[--configfile <config filename>]` , özel yapılandırma dosyası adlarına izin veren isteğe bağlı bir parametredir.
 
@@ -64,7 +64,7 @@ Yapılandırma dosyası (örneğin, `DR.json` ) üretim birimleri değil yalnız
 ### <a name="output-of-the-azacsnap--c-restore---restore-snaptovol-command-for-single-node-scenario"></a>`azacsnap -c restore --restore snaptovol`Komutun çıkışı (Single-Node senaryosu için)
 
 ```output
-> azacsnap --configfile DR.json -c restore --restore snaptovol --hanasid H80
+> azacsnap --configfile DR.json -c restore --restore snaptovol --dbsid H80
 * This program is designed for those customers who have previously installed the
   Production HANA instance in the Disaster Recovery Location either as a
   stand-alone instance or as part of a multi-purpose environment.

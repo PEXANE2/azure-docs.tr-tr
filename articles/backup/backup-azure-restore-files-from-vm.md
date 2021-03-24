@@ -4,12 +4,12 @@ description: Bu makalede, Azure sanal makine kurtarma noktasından dosya ve klas
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: 63714773d1b6f84b88bd2207aca4196fa16f1a94
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ed231a4870af7489d48ff54548be380c2cf0799c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103493535"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864899"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure sanal makine yedeklemesinden dosyaları kurtarma
 
@@ -35,7 +35,7 @@ Kurtarma noktasından dosya veya klasörleri geri yüklemek için sanal makineye
 
 3. Yedekleme panosu menüsünde **dosya kurtarma**' yı seçin.
 
-    ![Dosya kurtarma seçin](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)
+    ![Dosya kurtarma seçin](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)32
 
     **Dosya kurtarma** menüsü açılır.
 
@@ -81,6 +81,7 @@ Büyük disk ile yedeklenen VM 'lerden dosyaları geri yükleme gereksinimlerine
 [Windows İşletim Sistemi](#for-backed-up-vms-with-large-disks-windows)<br>
 [Linux işletim sistemi](#for-backed-up-vms-with-large-disks-linux)
 
+ILR betiğini çalıştırmak için doğru makineyi seçtikten sonra, [Işletim sistemi gereksinimlerini](#step-3-os-requirements-to-successfully-run-the-script) ve [erişim gereksinimlerini](#step-4-access-requirements-to-successfully-run-the-script)karşıladığından emin olun. 
 
 ## <a name="step-3-os-requirements-to-successfully-run-the-script"></a>3. Adım: betiği başarıyla çalıştırmak için işletim sistemi gereksinimleri
 
@@ -126,6 +127,8 @@ Betik Ayrıca, Python ve Bash bileşenlerinin kurtarma noktasına güvenli bir �
 | .NET | 4.6.2 ve üzeri |
 | TLS | 1,2 desteklenmelidir  |
 
+Ayrıca, [ILR betiğini yürütmek için doğru makineye](#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script) sahip olduğunuzdan emin olun ve [erişim gereksinimlerini](#step-4-access-requirements-to-successfully-run-the-script)karşılar.
+
 ## <a name="step-4-access-requirements-to-successfully-run-the-script"></a>4. Adım: betiği başarıyla çalıştırmak için erişim gereksinimleri
 
 Betiği kısıtlı erişimi olan bir bilgisayarda çalıştırırsanız, erişimi olduğundan emin olun:
@@ -148,12 +151,13 @@ Linux için, betik ' Open-iSCSI ' ve ' lshw ' bileşenlerinin kurtarma noktasın
 
 `download.microsoft.com`Komut dosyasının çalıştırıldığı makine ve kurtarma noktasındaki veriler arasında güvenli bir kanal oluşturmak için kullanılan bileşenleri indirmek için erişim gerekir.
 
+Ayrıca, [ILR betiğini yürütmek için doğru makineye](#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script) sahip olduğunuzdan emin olun ve [işletim sistemi gereksinimlerini](#step-3-os-requirements-to-successfully-run-the-script)karşılar.
 
 ## <a name="step-5-running-the-script-and-identifying-volumes"></a>5. Adım: betiği çalıştırma ve birimleri tanımlama
 
 ### <a name="for-windows"></a>Windows için
 
-2. adım, 3. adım ve 4. adım 'da listelenen tüm gereksinimleri karşıladıktan sonra, betiği indirilen konumdan (genellikle Indirmeler klasörü) kopyalayın, çalıştırılabilir veya betiğe sağ tıklayın ve yönetici kimlik bilgileriyle çalıştırın. İstendiğinde, parolayı yazın veya parolayı bellekten yapıştırın ve ENTER tuşuna basın. Geçerli parola girildikten sonra, komut dosyası kurtarma noktasına bağlanır.
+[Adım 2](#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script)' de listelenen tüm gereksinimleri karşıladıktan sonra [Adım 3](#step-3-os-requirements-to-successfully-run-the-script) ve [Adım 4](#step-4-access-requirements-to-successfully-run-the-script)' te, betiği indirilen konumdan (genellikle indirmeler klasörü) kopyalayın, bkz. 1. [adım betiği oluşturma ve indirme hakkında bilgi edinin](#step-1-generate-and-download-script-to-browse-and-recover-files). Yürütülebilir dosyaya sağ tıklayın ve yönetici kimlik bilgileriyle çalıştırın. İstendiğinde, parolayı yazın veya parolayı bellekten yapıştırın ve ENTER tuşuna basın. Geçerli parola girildikten sonra, komut dosyası kurtarma noktasına bağlanır.
 
   ![Yürütülebilir çıkış](./media/backup-azure-restore-files-from-vm/executable-output.png)
 
@@ -180,7 +184,7 @@ Dosya kurtarma işlemi, dosya geri yükleme betiğini çalıştırdıktan sonra 
 
 ### <a name="for-linux"></a>Linux için
 
-Linux makinelerinde, bir Python betiği oluşturulur. Betiği indirin ve ilgili/uyumlu Linux sunucusuna kopyalayın. İle yürütmek için izinleri değiştirmeniz gerekebilir ```chmod +x <python file name>``` . Sonra Python dosyasını ile çalıştırın ```./<python file name>``` .
+[2](#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script). adım, adım [3](#step-3-os-requirements-to-successfully-run-the-script) ve [4](#step-4-access-requirements-to-successfully-run-the-script). adımda listelenen tüm gereksinimleri karşıladıktan sonra, Linux makineleri için bir Python betiği oluşturun. [Betik oluşturma ve indirme hakkında bilgi edinmek için](#step-1-generate-and-download-script-to-browse-and-recover-files)bkz. 1. adım. Betiği indirin ve ilgili/uyumlu Linux sunucusuna kopyalayın. İle yürütmek için izinleri değiştirmeniz gerekebilir ```chmod +x <python file name>``` . Sonra Python dosyasını ile çalıştırın ```./<python file name>``` .
 
 
 Linux 'ta, kurtarma noktasının birimleri betiğin çalıştırıldığı klasöre bağlanır. Eklenen diskler, birimler ve ilgili bağlama yolları buna göre gösterilir. Bu bağlama yolları kök düzeyinde erişime sahip kullanıcılar tarafından görülebilir. Betik çıktısında belirtilen birimlere göz atabilirsiniz.

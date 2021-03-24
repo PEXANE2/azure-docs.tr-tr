@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: a16ec623d7475a80e546df43495db1a357a5fa66
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ef2bc5e00779200e5447c8829a437824657a2227
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98930391"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865987"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Spark kümelerinde Jupyter Notebook kernels
 
@@ -32,7 +32,7 @@ HDInsight 'ta bir Apache Spark kümesi. Yönergeler için bkz. [Azure HDInsight'
 
 2. **Genel bakış** görünümünden **küme panoları** kutusunda **Jupyter Notebook**' yi seçin. İstenirse, küme için yönetici kimlik bilgilerini girin.
 
-    ![Apache Spark Jupyter Notebook](./media/apache-spark-jupyter-notebook-kernels/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "Spark üzerinde Jupyter Notebook")
+    :::image type="content" source="./media/apache-spark-jupyter-notebook-kernels/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png " alt-text="Apache Spark Jupyter Notebook" border="true":::
   
    > [!NOTE]  
    > Ayrıca, tarayıcınızda aşağıdaki URL 'YI açarak Spark kümesindeki Jupyter Notebook de ulaşabilirsiniz. **CLUSTERNAME** değerini kümenizin adıyla değiştirin:
@@ -41,7 +41,7 @@ HDInsight 'ta bir Apache Spark kümesi. Yönergeler için bkz. [Azure HDInsight'
 
 3. **Yeni**' yi seçin ve ardından bir not defteri oluşturmak Için **pyspark**, **PySpark3** veya **Spark** ' ı seçin. Scala uygulamaları için Spark çekirdeğini, Python2 uygulamaları için PySpark çekirdeği ve Python3 uygulamaları için PySpark3 çekirdeğini kullanın.
 
-    ![Spark üzerinde Jupyter Notebook için kernels](./media/apache-spark-jupyter-notebook-kernels/kernel-jupyter-notebook-on-spark.png "Spark üzerinde Jupyter Notebook için kernels")
+    :::image type="content" source="./media/apache-spark-jupyter-notebook-kernels/kernel-jupyter-notebook-on-spark.png " alt-text="Spark üzerinde Jupyter Notebook için kernels" border="true":::
 
 4. Seçtiğiniz çekirdekle bir not defteri açılır.
 
@@ -67,7 +67,7 @@ Spark HDInsight kümelerinde Jupyter Notebook yeni çekirdekler kullanmanın baz
 
     Aşağıdaki tabloda kernels aracılığıyla kullanılabilen farklı mıknatıler listelenmiştir.
 
-   | Magic | Örnek | Description |
+   | Magic | Örnek | Açıklama |
    | --- | --- | --- |
    | Yardım |`%%help` |Örnek ve açıklama ile tüm kullanılabilir mıknatıc 'nin bir tablosunu oluşturur |
    | bilgiler |`%%info` |Geçerli Livy uç noktası için oturum bilgilerini çıkışlar |
@@ -87,7 +87,7 @@ Spark HDInsight kümelerinde Jupyter Notebook yeni çekirdekler kullanmanın baz
 
 `%%sql`Magic, sorguları çalıştırdığınızda aldığınız çıkışın türünü denetlemek için kullanabileceğiniz farklı parametreleri destekler. Aşağıdaki tabloda çıkış listelenmiştir.
 
-| Parametre | Örnek | Description |
+| Parametre | Örnek | Açıklama |
 | --- | --- | --- |
 | -o |`-o <VARIABLE NAME>` |Sorgunun sonucunu%% yerel Python bağlamında [Pandas](https://pandas.pydata.org/) dataframe olarak kalıcı hale getirmek için bu parametreyi kullanın. Dataframe değişkeninin adı belirttiğiniz değişken adıdır. |
 | -q |`-q` |Hücrenin görselleştirmeleri devre dışı bırakmak için bu parametreyi kullanın. Bir hücrenin içeriğini görselleştirmeyi ve yalnızca bir veri çerçevesi olarak yakalamak istemiyorsanız, öğesini kullanın `-q -o <VARIABLE>` . Sonuçları yakalamadan görselleştirmeleri devre dışı bırakmak istiyorsanız (örneğin, bir SQL sorgusunu bir ifade gibi çalıştırmak için `CREATE TABLE` ), `-q` bir `-o` bağımsız değişken belirtmeden kullanın. |

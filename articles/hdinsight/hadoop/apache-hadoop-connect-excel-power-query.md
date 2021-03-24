@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: bcca511bcb61ceab8395ee56b377efa99f095586
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 13862e642c6a91fe6f3c635df2efde91672ecbad
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946693"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866820"
 ---
 # <a name="connect-excel-to-apache-hadoop-by-using-power-query"></a>Power Query kullanarak Excel 'i Apache Hadoop bağlama
 
@@ -42,13 +42,13 @@ Excel için Power Query eklentisi, HDInsight kümenizdeki verileri Excel 'e akta
 
      * Azure   >    >    >  **HDInsight 'tan Azure HDInsight 'tan** veri almak > verileri seçin.
 
-       ![HDI. PowerQuery. SelectHdiSource. 2016](./media/apache-hadoop-connect-excel-power-query/powerquery-selecthdisource-excel2016.png)
+       :::image type="content" source="./media/apache-hadoop-connect-excel-power-query/powerquery-selecthdisource-excel2016.png" alt-text="HDI. PowerQuery. SelectHdiSource. 2016" border="true":::
 
    * Excel 2013/2010
 
      * Microsoft Azure HDInsight   >  **Azure 'dan** Power Query seçin  >  .
 
-       ![HDI. PowerQuery. SelectHdiSource](./media/apache-hadoop-connect-excel-power-query/powerquery-selecthdisource.png)
+       :::image type="content" source="./media/apache-hadoop-connect-excel-power-query/powerquery-selecthdisource.png" alt-text="HDI. PowerQuery. SelectHdiSource" border="true":::
 
        **Note:** **Power Query** menüsünü görmüyorsanız, **Dosya**  >  **seçenekleri**  >  **eklentileri**' ne gidin ve sayfanın alt kısmındaki aşağı açılan **Yönet** kutusundan **com eklentileri** ' ni seçin. **Git...** düğmesini seçin ve Excel eklentisi için Power Query kutusunun işaretli olduğunu doğrulayın.
 
@@ -62,11 +62,11 @@ Excel için Power Query eklentisi, HDInsight kümenizdeki verileri Excel 'e akta
 
 1. **Ad** sütununda **HiveSampleData.txt** bulun (klasör yolu **... /Hive/Warehouse/hivesampletable/**) ve ardından HiveSampleData.txt sol tarafında **ikili** ' ı seçin. HiveSampleData.txt tüm kümeyle birlikte gelir. İsteğe bağlı olarak, kendi dosyanızı kullanabilirsiniz.
 
-    ![HDI Excel Power Query verileri içeri aktarma](./media/apache-hadoop-connect-excel-power-query/powerquery-importdata.png)
+    :::image type="content" source="./media/apache-hadoop-connect-excel-power-query/powerquery-importdata.png" alt-text="HDI Excel Power Query verileri içeri aktarma" border="true":::
 
 1. İsterseniz, sütun adlarını yeniden adlandırabilirsiniz. Hazırsanız **& yükle**' yi seçin.  Veriler çalışma kitabınıza yüklendi:
 
-    ![HDI Excel Power Query içeri aktarılan tablosu](./media/apache-hadoop-connect-excel-power-query/powerquery-importedtable.png)
+    :::image type="content" source="./media/apache-hadoop-connect-excel-power-query/powerquery-importedtable.png" alt-text="HDI Excel Power Query içeri aktarılan tablosu" border="true":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

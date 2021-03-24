@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/08/2021
 ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: d1c4defc53c4af0fb481a57c0a455e987fdd480a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9d2b416955234cae7a30ac65dff7d64dedad3b1d
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102520006"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889119"
 ---
 # <a name="link-azure-synapse-analytics-and-azure-machine-learning-workspaces-preview"></a>Azure SYNAPSE Analytics ve Azure Machine Learning çalışma alanlarını bağlama (Önizleme)
 
@@ -102,12 +102,14 @@ Machine Learning çalışma alanınızı ve SYNAPSE çalışma alanınızı, Azu
 1. [Azure Machine Learning Studio](https://ml.azure.com/)'da oturum açın.
 1. Sol bölmedeki **Yönet** bölümünde **bağlı hizmetler** ' i seçin.
 1. **Tümleştirme Ekle**' yi seçin.
-1. **Bağlantı çalışma alanı** formunda, alanları doldurun 
-    Alan| Açıklama    
-    ---|---
-    Ad| Bağlı hizmetiniz için bir ad sağlayın. Bu ad, bu bağlı hizmete başvurmak için kullanılacak olan addır.
-    Abonelik adı | Makinenizin öğrenimi çalışma alanınız ile ilişkili aboneliğinizin adını seçin. 
-    SYNAPSE çalışma alanı | Bağlamak istediğiniz SYNAPSE çalışma alanını seçin.
+1. **Bağlantı çalışma alanı** formunda, alanları doldurun
+
+    |Alan| Açıklama    
+    |---|---
+    |Ad| Bağlı hizmetiniz için bir ad sağlayın. Bu ad, bu bağlı hizmete başvurmak için kullanılacak olan addır.
+    |Abonelik adı | Makinenizin öğrenimi çalışma alanınız ile ilişkili aboneliğinizin adını seçin. 
+    |SYNAPSE çalışma alanı | Bağlamak istediğiniz SYNAPSE çalışma alanını seçin.
+    
 1. **İleri ' yi** seçerek **Spark havuzlarını seçin (isteğe bağlı)** formunu açın. Bu formda, çalışma alanınıza iliştirilecek SYNAPSE Spark havuzunu seçersiniz
 
 1. **İnceleme** formunu açmak ve seçimlerinizi denetlemek için **İleri ' yi** seçin.

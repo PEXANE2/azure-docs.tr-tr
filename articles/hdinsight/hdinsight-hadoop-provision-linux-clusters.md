@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.date: 08/06/2020
-ms.openlocfilehash: a04d976ed3d9be253425b4c8a5a5c0effb6f80b8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 04da79509ac40ba870014995d8318a49c98e1ce5
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101741846"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863420"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Apache Hadoop, Apache Spark, Apache Kafka ve daha fazlasıyla HDInsight'ta küme oluşturma
 
@@ -42,7 +42,7 @@ Bu makalede, bir HDInsight kümesi oluşturabileceğiniz [Azure Portal](https://
 
 ## <a name="basics"></a>Temel Bilgiler
 
-![HDInsight oluşturma seçenekleri özel hızlı](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-basics-blank-fs.png)
+:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-basics-blank-fs.png" alt-text="HDInsight oluşturma seçenekleri özel hızlı":::
 
 ### <a name="project-details"></a>Proje ayrıntıları
 
@@ -107,7 +107,7 @@ SSH Kullanıcı adı aşağıdaki kısıtlamalara sahiptir:
 
 ## <a name="storage"></a>Depolama
 
-![Küme depolama ayarları:,, uyumlu uç noktalar](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-storage.png)
+:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-storage.png" alt-text="Küme depolama ayarları:,, uyumlu uç noktalar":::
 
 Hadoop 'un Şirket içi yüklemesi kümedeki depolama için Hadoop Dağıtılmış Dosya Sistemi (bir) kullanıyor olsa da bulutta, kümeye bağlı depolama uç noktaları kullanılır. Bulut depolama kullanmak, verileri korurken hesaplama için kullanılan HDInsight kümelerini güvenle silebilmeniz anlamına gelir.
 
@@ -165,7 +165,7 @@ Ambarı, HDInsight kümelerini izlemek, yapılandırma değişiklikleri yapmak v
 
 ## <a name="security--networking"></a>Güvenlik + ağ
 
-![HDInsight oluşturma seçenekleri kurumsal güvenlik paketini seçin](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-security-networking.png)
+:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-security-networking.png" alt-text="HDInsight oluşturma seçenekleri kurumsal güvenlik paketini seçin":::
 
 ### <a name="enterprise-security-package"></a>Kurumsal güvenlik paketi
 
@@ -201,7 +201,7 @@ Daha fazla bilgi için bkz. [Azure HDInsight 'Ta Yönetilen kimlikler](./hdinsig
 
 ## <a name="configuration--pricing"></a>Yapılandırma + fiyatlandırma
 
-![HDInsight düğüm boyutunuzu seçin](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-configuration.png)
+:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-configuration.png" alt-text="HDInsight düğüm boyutunuzu seçin":::
 
 Küme mevcut olduğu sürece düğüm kullanımı için faturalandırılırsınız. Faturalandırma, küme oluşturulduğunda başlar ve küme silindiğinde duraklar. Kümeler serbest olarak ayrılamaz veya beklemeye alınamaz.
 
@@ -211,10 +211,10 @@ Her küme türünün kendi düğüm sayısı, düğüm terminolojisi ve varsayı
 
 | Tür | Düğümler | Diyagram |
 | --- | --- | --- |
-| Hadoop |Baş düğüm (2), çalışan düğümü (1 +) |![HDInsight Hadoop küme düğümleri](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hadoop-cluster-type-nodes.png) |
-| HBase |Baş sunucu (2), bölge sunucusu (1 +), ana/ZooKeeper düğüm (3) |![HDInsight HBase küme türü kurulumu](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hbase-cluster-type-setup.png) |
-| Storm |Nimbus node (2), gözetmen sunucusu (1 +), ZooKeeper node (3) |![HDInsight fırtınası küme türü kurulumu](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-storm-cluster-type-setup.png) |
-| Spark |Baş düğüm (2), çalışan düğümü (1 +), ZooKeeper node (3) (a1 ZooKeeper VM boyutu için ücretsiz) |![HDInsight Spark küme türü kurulumu](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-spark-cluster-type-setup.png) |
+| Hadoop |Baş düğüm (2), çalışan düğümü (1 +) |:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hadoop-cluster-type-nodes.png" alt-text="HDInsight Hadoop küme düğümleri" border="false"::: |
+| HBase |Baş sunucu (2), bölge sunucusu (1 +), ana/ZooKeeper düğüm (3) |:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hbase-cluster-type-setup.png" alt-text="HDInsight HBase küme türü kurulumu" border="false"::: |
+| Storm |Nimbus node (2), gözetmen sunucusu (1 +), ZooKeeper node (3) |:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-storm-cluster-type-setup.png" alt-text="HDInsight fırtınası küme türü kurulumu" border="false"::: |
+| Spark |Baş düğüm (2), çalışan düğümü (1 +), ZooKeeper node (3) (a1 ZooKeeper VM boyutu için ücretsiz) |:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-spark-cluster-type-setup.png" alt-text="HDInsight Spark küme türü kurulumu" border="false"::: |
 
 Daha fazla bilgi için bkz. "HDInsight 'ta Hadoop bileşenleri ve sürümleri nelerdir?" içindeki [kümeler Için varsayılan düğüm yapılandırması ve sanal makine boyutları](hdinsight-supported-node-configuration.md) .
 
@@ -222,7 +222,7 @@ HDInsight kümelerinin maliyeti düğüm sayısına ve düğümlerin sanal makin
 
 Farklı küme türlerinde farklı düğüm türleri, düğüm sayıları ve düğüm boyutları vardır:
 * Hadoop kümesi türü varsayılanı:
-    * İki *baş düğüm*  
+    * İki *baş düğüm*
     * Dört *çalışan düğümü*
 * Fırtınası kümesi türü varsayılanı:
     * İki *Nimbus düğümü*

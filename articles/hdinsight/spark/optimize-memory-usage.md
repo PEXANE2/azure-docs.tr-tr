@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: d54cf4e9025dfd75d9029dec534fc5dc5dd990a5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4e23c5977b2492d2ea8a7a8cc050c77c512c3e16
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98944169"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868384"
 ---
 # <a name="memory-usage-optimization-for-apache-spark"></a>Apache Spark için bellek kullanımı iyileştirmesi
 
@@ -31,7 +31,7 @@ Başvurunuz için Spark bellek yapısı ve bazı önemli yürütücü belleği p
 
 Apache Hadoop YARN kullanıyorsanız, YARN her Spark düğümündeki tüm kapsayıcılar tarafından kullanılan belleği denetler.  Aşağıdaki diyagramda, temel nesneler ve bunların ilişkileri gösterilmektedir.
 
-![YARN Spark bellek yönetimi](./media/apache-spark-perf/apache-yarn-spark-memory.png)
+:::image type="content" source="./media/apache-spark-perf/apache-yarn-spark-memory.png" alt-text="YARN Spark bellek yönetimi" border="false":::
 
 ' Bellek yetersiz ' iletilerini ele almak için şunu deneyin:
 

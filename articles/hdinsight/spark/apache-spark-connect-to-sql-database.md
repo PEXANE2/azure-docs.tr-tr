@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 4d42cedbc5dc20c929703be106e732b4806f3902
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0c9c3b2d915e54cf954703c56c2087637cc80aa0
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98940600"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864627"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Azure SQL veritabanı 'na veri okumak ve yazmak için HDInsight Spark kümesi kullanma
 
@@ -35,7 +35,7 @@ Spark kümesiyle ilişkili bir Jupyter Notebook oluşturarak başlayın. Bu maka
 1. [Azure Portal](https://portal.azure.com/), kümenizi açın.
 1. Sağ tarafta **küme panoları** altında **Jupyter Notebook** seçin.  **Küme panoları** görmüyorsanız, sol menüden **genel bakış** ' ı seçin. İstenirse, küme için yönetici kimlik bilgilerini girin.
 
-    ![Apache Spark Jupyter Notebook](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Spark üzerinde Jupyter Notebook")
+    :::image type="content" source="./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png " alt-text="Apache Spark Jupyter Notebook" border="true":::
 
    > [!NOTE]  
    > Ayrıca, tarayıcınızda aşağıdaki URL 'YI açarak Spark kümesindeki Jupyter Notebook de erişebilirsiniz. **CLUSTERNAME** değerini kümenizin adıyla değiştirin:
@@ -44,7 +44,7 @@ Spark kümesiyle ilişkili bir Jupyter Notebook oluşturarak başlayın. Bu maka
 
 1. Jupyter Notebook, sağ üst köşedeki **Yeni**' ye ve ardından **Spark** ' a tıklayarak bir Scala Not defteri oluşturun. HDInsight Spark kümesindeki jupi Not defterleri, Python2 uygulamaları için **Pyspark** çekirdeği ve Python3 uygulamaları için **PySpark3** çekirdeğini de sağlar. Bu makalede bir Scala Not defteri oluşturacağız.
 
-    ![Spark üzerinde Jupyter Notebook için kernels](./media/apache-spark-connect-to-sql-database/kernel-jupyter-notebook-on-spark.png "Spark üzerinde Jupyter Notebook için kernels")
+    :::image type="content" source="./media/apache-spark-connect-to-sql-database/kernel-jupyter-notebook-on-spark.png " alt-text="Spark üzerinde Jupyter Notebook için kernels" border="true":::
 
     Çekirdekler hakkında daha fazla bilgi için bkz. [HDInsight 'ta Apache Spark kümeleriyle Jupyter Notebook çekirdekler kullanma](apache-spark-jupyter-notebook-kernels.md).
 
@@ -53,7 +53,7 @@ Spark kümesiyle ilişkili bir Jupyter Notebook oluşturarak başlayın. Bu maka
 
 1. Varsayılan adla yeni bir not defteri **açılır.** Not defteri adına tıklayın ve seçtiğiniz bir adı girin.
 
-    ![Not defteri adını belirtme](./media/apache-spark-connect-to-sql-database/hdinsight-spark-jupyter-notebook-name.png "Not defteri adını belirtme")
+    :::image type="content" source="./media/apache-spark-connect-to-sql-database/hdinsight-spark-jupyter-notebook-name.png " alt-text="Not defteri adını belirtme" border="true":::
 
 Artık uygulamanızı oluşturmaya başlayabilirsiniz.
 
@@ -100,7 +100,7 @@ Bu bölümde, AdventureWorks veritabanında bulunan bir tablodan (örneğin, **S
 
     Aşağıdaki görüntüye benzer bir çıktı görürsünüz:
 
-    ![şema çıkışı](./media/apache-spark-connect-to-sql-database/read-from-sql-schema-output.png "şema çıkışı")
+    :::image type="content" source="./media/apache-spark-connect-to-sql-database/read-from-sql-schema-output.png " alt-text="şema çıkışı" border="true":::
 
 1. Ayrıca, ilk 10 satırı alma gibi işlemleri de yapabilirsiniz.
 
@@ -167,11 +167,11 @@ Bu bölümde, veritabanında bir tablo oluşturmak ve verileri veriyle doldurmak
 
     a. SSMS 'yi başlatın ve aşağıdaki ekran görüntüsünde gösterildiği gibi bağlantı ayrıntılarını sağlayarak Azure SQL veritabanına bağlanın.
 
-    ![SSMS1 kullanarak SQL veritabanı 'na bağlanma](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms.png "SSMS1 kullanarak SQL veritabanı 'na bağlanma")
+    :::image type="content" source="./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms.png " alt-text="SSMS1 kullanarak SQL veritabanı 'na bağlanma" border="true":::
 
     b. **Nesne Gezgini**, **dbo. hboş tablosunun** oluşturulduğunu görmek için veritabanını ve tablo düğümünü genişletin.
 
-    ![SSMS2 kullanarak SQL veritabanı 'na bağlanma](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms-locate-table.png "SSMS2 kullanarak SQL veritabanı 'na bağlanma")
+    :::image type="content" source="./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms-locate-table.png " alt-text="SSMS2 kullanarak SQL veritabanı 'na bağlanma" border="true":::
 
 1. Tablodaki sütunları görmek için SSMS 'de bir sorgu çalıştırın.
 
@@ -209,7 +209,7 @@ Bu bölümde, önceki bölümde oluşturduğunuz içine veri akışı yaptık `h
 
 1. Çıktıda **HVAC.csv** şeması gösterilmektedir. `hvactable`Aynı şemaya da sahiptir. Çıktı, tablodaki sütunları listeler.
 
-    ![' HDInsight Apache Spark şeması tablosu '](./media/apache-spark-connect-to-sql-database/hdinsight-schema-table.png "Tablo şeması")
+    :::image type="content" source="./media/apache-spark-connect-to-sql-database/hdinsight-schema-table.png " alt-text="' HDInsight Apache Spark şeması tablosu '" border="true":::
 
 1. Son olarak, HVAC.csv verileri okumak ve veritabanınızdaki içine aktarmak için aşağıdaki kod parçacığını kullanın `hvactable` . Parçacığı bir kod hücresine yapıştırın, yer tutucu değerlerini veritabanınızın değerleriyle değiştirin ve ardından çalıştırmak için **SHIFT + enter** tuşlarına basın.
 

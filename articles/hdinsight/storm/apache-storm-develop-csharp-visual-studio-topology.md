@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/31/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a81f2b21545a5362168482f3f0a65fbbbf381c10
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5360057ec2dfbd2b40c6f086f5e910103c544b62
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98929166"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865460"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Visual Studio için Data Lake araçları 'nı kullanarak Apache Storm için C# topolojileri geliştirme
 
@@ -128,7 +128,7 @@ Visual Studio 'da C# topolojisi projesi oluşturmak için:
 
 1. **Yeni projenizi yapılandırın** penceresinde, *WORDCOUNT* için bir **Proje adı** girin, proje için bir **konum** dizini yolu seçin veya oluşturun ve ardından **Oluştur**' u seçin.
 
-    ![Fırtınası uygulaması, yeni projenizi yapılandırma iletişim kutusu, Visual Studio](./media/apache-storm-develop-csharp-visual-studio-topology/apache-storm-new-project.png)
+    :::image type="content" source="./media/apache-storm-develop-csharp-visual-studio-topology/apache-storm-new-project.png" alt-text="Fırtınası uygulaması, yeni projenizi yapılandırma iletişim kutusu, Visual Studio" border="true":::
 
 Projeyi oluşturduktan sonra, aşağıdaki dosyalara sahip olmanız gerekir:
 
@@ -333,7 +333,7 @@ Ardından, bir dış kaynaktan bir topolojideki verileri okumak için kullanıla
 
 Spout ve cıvatları, verilerin bileşenler arasında nasıl akacağını tanımlayan bir grafikte düzenlenir. Bu topoloji için grafik aşağıdaki gibidir:
 
-![Spout ve cıvam bileşeni düzenleme diyagramı, fırtınası topolojisi](./media/apache-storm-develop-csharp-visual-studio-topology/word-count-topology1.png)
+:::image type="content" source="./media/apache-storm-develop-csharp-visual-studio-topology/word-count-topology1.png" alt-text="Spout ve cıvam bileşeni düzenleme diyagramı, fırtınası topolojisi" border="false":::
 
 Spout, Splitter sürgüsü örneklerine dağıtılan cümleler yayar. Bölümlendirici, tümce, sayaç ayraçına dağıtılan kelimelerin içine alınır.
 
@@ -413,7 +413,7 @@ Artık topolojiyi HDInsight kümenize göndermeye hazırsınız.
 
     Topoloji başarıyla gönderildiğinde, küme için **fırtınası topolojileri görünüm** penceresi görünmelidir. Çalışan topoloji hakkındaki bilgileri görüntülemek için listeden **WORDCOUNT** topolojisini seçin.
 
-    ![Fırtınası topolojisi Görünüm penceresi, HDInsight kümesi, Visual Studio](./media/apache-storm-develop-csharp-visual-studio-topology/storm-topology-view.png)
+    :::image type="content" source="./media/apache-storm-develop-csharp-visual-studio-topology/storm-topology-view.png" alt-text="Fırtınası topolojisi Görünüm penceresi, HDInsight kümesi, Visual Studio" border="true":::
 
     > [!NOTE]  
     > Ayrıca, **Sunucu Gezgini** karşı **fırtınası topolojilerini** görüntüleyebilirsiniz. **Azure**  >  **HDInsight**' ı genişletin, HDInsight kümesinde bir fırtınası ' a sağ tıklayın ve ardından **fırtınası topolojilerini görüntüle**' yi seçin.
@@ -567,7 +567,7 @@ Bir kümeye topoloji dağıtmak kolay olsa da, bazı durumlarda bir topolojiyi y
 
 1. **Çözüm Gezgini**, projeye sağ tıklayın ve **Özellikler**' i seçin. Proje özelliklerinde. Ardından **çıktı türünü** **konsol uygulaması** olarak değiştirin.
 
-   ![HDInsight fırtınası uygulaması, proje özellikleri, çıkış türü](./media/apache-storm-develop-csharp-visual-studio-topology/hdi-output-type-window.png)
+   :::image type="content" source="./media/apache-storm-develop-csharp-visual-studio-topology/hdi-output-type-window.png" alt-text="HDInsight fırtınası uygulaması, proje özellikleri, çıkış türü" border="true":::
 
    > [!NOTE]
    > Topolojiyi bir kümeye dağıtmadan önce, **çıkış türünü** yeniden **sınıf kitaplığına** değiştirmeyi unutmayın.

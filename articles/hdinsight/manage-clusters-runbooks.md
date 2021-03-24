@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 12/27/2019
-ms.openlocfilehash: 255542d820d135d1a88e193a8ef13ae590ce4016
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5eb0f353579233041bb5ccba46de2549ada7e9b7
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98944040"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864797"
 ---
 # <a name="tutorial-create-azure-hdinsight-clusters-with-azure-automation"></a>Öğretici: Azure Otomasyonu ile Azure HDInsight kümeleri oluşturma
 
@@ -38,16 +38,16 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 1. Kutuya **Azurerd. Profile** yazın ve aramak için ENTER tuşuna basın. Kullanılabilir arama sonucunu seçin.
 1. **Azurerd. Profile** ekranında **içeri aktar**' ı seçin. Azure modüllerini güncelleştirmek için kutuyu işaretleyin ve ardından **Tamam**' ı seçin.
 
-    ![Azurerd. Profile modülünü içeri aktarma](./media/manage-clusters-runbooks/import-azurermprofile-module.png)
+    :::image type="content" source="./media/manage-clusters-runbooks/import-azurermprofile-module.png" alt-text="Azurerd. Profile modülünü içeri aktarma" border="false":::
 
 1. **Paylaşılan kaynaklar** altında **modüller Galerisi** ' ni seçerek modüller galerisine dönün.
 1. **HDInsight** yazın. **Azurerd. HDInsight** öğesini seçin.
 
-    ![HDInsight modüllerine gözatamıyorum](./media/manage-clusters-runbooks/browse-modules-hdinsight.png)
+    :::image type="content" source="./media/manage-clusters-runbooks/browse-modules-hdinsight.png" alt-text="HDInsight modüllerine gözatamıyorum" border="true":::
 
 1. **Azurerd. HDInsight** panelinde **Içeri aktar** ve **Tamam**' ı seçin.
 
-    ![Azurerd. HDInsight modülünü içeri aktarma](./media/manage-clusters-runbooks/import-azurermhdinsight-module.png)
+    :::image type="content" source="./media/manage-clusters-runbooks/import-azurermhdinsight-module.png" alt-text="Azurerd. HDInsight modülünü içeri aktarma" border="true":::
 
 ## <a name="create-credentials"></a>Kimlik bilgileri oluştur
 
@@ -65,7 +65,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 1. **Oluştur**’u seçin.
 1. `ssh-password`Kullanıcı adı `sshuser` ve seçtiğiniz bir parolayla aynı işlemi tekrarlayın. **Oluştur**’u seçin. Bu kimlik bilgisi, kümenizin SSH parolasını deposıdır.
 
-    ![kimlik bilgisi oluşturma](./media/manage-clusters-runbooks/create-credentials.png)
+    :::image type="content" source="./media/manage-clusters-runbooks/create-credentials.png" alt-text="kimlik bilgisi oluşturma" border="true":::
 
 ## <a name="create-a-runbook-to-create-a-cluster"></a>Küme oluşturmak için Runbook oluşturma
 
@@ -74,11 +74,11 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 1. **Runbook oluştur** panelinde, runbook için gibi bir ad girin `hdinsight-cluster-create` . **Runbook türü** açılan listesinden **PowerShell** ' i seçin.
 1. **Oluştur**’u seçin.
 
-    ![Runbook oluştur](./media/manage-clusters-runbooks/create-runbook.png)
+    :::image type="content" source="./media/manage-clusters-runbooks/create-runbook.png" alt-text="Runbook oluştur" border="true":::
 
 1. **PowerShell runbook 'Unu Düzenle** ekranına aşağıdaki kodu girin ve **Yayımla**' yı seçin:
 
-    ![Runbook 'u Yayımla](./media/manage-clusters-runbooks/publish-runbook.png)
+    :::image type="content" source="./media/manage-clusters-runbooks/publish-runbook.png" alt-text="Runbook 'u Yayımla" border="true":::
 
     ```powershell
     Param
@@ -154,7 +154,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 1. Runbook 'u hemen yürütmek için **Başlat** ' ı seçin. Ayrıca, runbook 'ları düzenli aralıklarla çalışacak şekilde zamanlayabilirsiniz. Bkz. [Azure Otomasyonu 'nda Runbook zamanlama](../automation/shared-resources/schedules.md)
 1. Betik için gerekli parametreleri girin ve **Tamam**' ı seçin. Bu, **clustername** parametresinde belirttiğiniz ada sahip yeni bir HDInsight kümesi oluşturur.
 
-    ![küme oluşturma runbook 'unu yürütme](./media/manage-clusters-runbooks/execute-create-runbook.png)
+    :::image type="content" source="./media/manage-clusters-runbooks/execute-create-runbook.png" alt-text="küme oluşturma runbook 'unu yürütme" border="true":::
 
 ### <a name="delete-a-cluster"></a>Küme silme
 

@@ -3,12 +3,12 @@ title: Microsoft Azure Kurtarma Hizmetleri kasasını silme
 description: Bu makalede, bağımlılıkları kaldırmayı ve sonra bir Azure Backup Recovery Services kasasını silmeyi öğrenin.
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 8df2528edebbb654e501b8aaaac91c24d932604c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1526e9aeef1574f261dcb1a58ee12a12fbf08866
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104670571"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864967"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Azure Backup Recovery Services kasasını silme
 
@@ -48,6 +48,7 @@ Bir kasayı doğru bir şekilde silmek için şu sırada bulunan adımları izle
   - **Mabs veya DPM Yönetim sunucuları**: **Yedekleme altyapısı**  >  **yedekleme yönetim sunucuları**> kasa panosu menüsüne gidin. DPM veya Azure Backup Sunucusu (MABS) varsa, burada listelenen tüm öğelerin, yedekleme verileriyle birlikte silinmesi veya kaydı kaldırılmalıdır. Yönetim sunucularını silmek için [aşağıdaki adımları izleyin](#delete-protected-items-on-premises) .
 
 - **4. adım**: tüm kayıtlı depolama hesaplarının silindiğinden emin olmanız gerekir. **Yedekleme altyapısı**  >  **depolama hesaplarına**> kasa panosu menüsüne gidin. Burada listelenen depolama hesaplarınız varsa, bunların tümünün kaydını silmeniz gerekir. Hesabın kaydını silme hakkında bilgi edinmek için bkz. [depolama hesabının kaydını silme](manage-afs-backup.md#unregister-a-storage-account).
+- **5. adım**: kasa Için oluşturulmuş özel uç nokta olmadığından emin olun. Kasa Pano menüsüne git ' ayarlar > ' altındaki **Özel uç nokta bağlantıları** > kasalarda oluşturulmuş veya oluşturmaya çalışılan özel uç nokta bağlantıları varsa, kasa silme işlemine devam etmeden önce bunların kaldırıldığından emin olun. 
 
 Bu adımları tamamladıktan sonra [kasayı silmeye](#delete-the-recovery-services-vault)devam edebilirsiniz.
 

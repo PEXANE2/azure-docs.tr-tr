@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 824ba2c3316ccb34b59a9e435b9a6e582f137090
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fe5b2a1f083e246ea61854c9cbe03932e6655fdb
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945920"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866599"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>Linux tabanlı HDInsight 'ta Apache Hadoop Hizmetleri için yığın dökümlerini etkinleştirme
 
@@ -82,15 +82,15 @@ Bir hizmetin yapılandırmasını değiştirmek için aşağıdaki adımları ku
 
 2. Sol taraftaki listesini kullanarak, değiştirmek istediğiniz hizmet alanını seçin. Örneğin **, bir**. Orta alanda, **configs** sekmesini seçin.
 
-    ![Şu kadar bir Web ambarı](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-service-config-tab.png)
+    :::image type="content" source="./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-service-config-tab.png" alt-text="Şu kadar bir Web ambarı":::
 
 3. **Filter...** girişini kullanarak **OptIn**'yi girin. Yalnızca bu metni içeren öğeler görüntülenir.
 
-    ![Apache ambarı yapılandırması filtrelenmiş listesi](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdinsight-filter-list.png)
+    :::image type="content" source="./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdinsight-filter-list.png" alt-text="Apache ambarı yapılandırması filtrelenmiş listesi":::
 
 4. Yığın dökümlerini etkinleştirmek istediğiniz hizmet için **\* \_ opts** girişini bulun ve etkinleştirmek istediğiniz seçenekleri ekleyin. Aşağıdaki görüntüde, `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` **HADOOP \_ süs Yot \_ opts** girdisine ekledik:
 
-    ![Apache ambarı Hadoop-süs Yot-opts](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hadoop-namenode-opts.png)
+    :::image type="content" source="./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hadoop-namenode-opts.png" alt-text="Apache ambarı Hadoop-süs Yot-opts":::
 
    > [!NOTE]  
    > Eşleme için yığın dökümlerini etkinleştirirken veya alt işlemi azalttığında **MapReduce. admin. Map. child. Java. opts** ve **MapReduce. admin. küçültme. child. Java. opts** adlı alanları arayın.
@@ -99,15 +99,15 @@ Bir hizmetin yapılandırmasını değiştirmek için aşağıdaki adımları ku
 
 5. Değişiklikler uygulandıktan sonra, bir veya daha fazla hizmetin yanında **yeniden başlatma gerekiyor** simgesi görüntülenir.
 
-    ![yeniden başlatma gerekli simgesi ve yeniden Başlat düğmesi](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/restart-required-icon.png)
+    :::image type="content" source="./media/hdinsight-hadoop-collect-debug-heap-dump-linux/restart-required-icon.png" alt-text="yeniden başlatma gerekli simgesi ve yeniden Başlat düğmesi":::
 
 6. Yeniden başlatma gerektiren her hizmeti seçin ve **bakım modunu açmak** Için **hizmet eylemleri** düğmesini kullanın. Bakım modu, yeniden başlattığınızda uyarıların hizmetten oluşturulmasını engeller.
 
-    ![HDI bakım modu menüsünü aç](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-maintenance-mode.png)
+    :::image type="content" source="./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-maintenance-mode.png" alt-text="HDI bakım modu menüsünü aç":::
 
 7. Bakım modunu etkinleştirdikten sonra, hizmetin **tüm efektleri yeniden başlatması** Için **yeniden başlatma** düğmesini kullanın
 
-    ![Apache ambarı etkilenen tüm girişleri yeniden Başlat](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-restart-all-button.png)
+    :::image type="content" source="./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-restart-all-button.png" alt-text="Apache ambarı etkilenen tüm girişleri yeniden Başlat":::
 
    > [!NOTE]  
    > **Yeniden başlatma** düğmesi girişleri, diğer hizmetler için farklı olabilir.

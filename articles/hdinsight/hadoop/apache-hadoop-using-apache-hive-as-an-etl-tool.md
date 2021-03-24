@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: e2b76fbc2afaad465773860ff45f18261edad138
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bcf2f39423f033ccd5bfdb6bf51ebc89e254f802
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98933440"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867823"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>Ayıklama, dönüştürme ve yükleme (ETL) aracı olarak Apache Hive kullanma
 
@@ -20,7 +20,7 @@ Genellikle gelen verileri analiz için uygun bir hedefe yüklemeden önce temizl
 
 Aşağıdaki şekilde, ETL otomasyonu için kullanım örneğine ve modele ilişkin bir genel bakış gösterilmektedir. Giriş verileri, uygun çıktıyı oluşturmak için dönüştürülür.  Bu dönüştürme sırasında, veri şekli, veri türü ve hatta dil değişir.  ETL işlemlerinde, kusurdan ölçüm 'e dönüştürülebilir, saat dilimlerini değiştirebilir ve hedefteki mevcut verilerle doğru şekilde uyum sağlamak için duyarlık geliştirebilirsiniz. ETL süreçler Ayrıca yeni verileri, raporlamayı güncel tutmak veya mevcut veriler hakkında daha fazla öngörü sağlamak için mevcut verilerle birleştirebilir. Raporlama araçları ve hizmetleri gibi uygulamalar bu verileri istenen biçimde tüketebilir.
 
-![ETL mimarisi olarak Apache Hive](./media/apache-hadoop-using-apache-hive-as-an-etl-tool/hdinsight-etl-architecture.png)
+:::image type="content" source="./media/apache-hadoop-using-apache-hive-as-an-etl-tool/hdinsight-etl-architecture.png" alt-text="ETL mimarisi olarak Apache Hive" border="false":::
 
 Hadoop genellikle çok sayıda metin dosyası (CSV gibi) içeri aktarılan ETL işlemlerinde kullanılır. Ya da daha küçük, sık sık değişen metin dosyası sayısı veya her ikisi.  Hive, verileri veri hedefine yüklemeden önce hazırlamak için kullanılan harika bir araçtır.  Hive, CSV üzerinde bir şema oluşturmanıza ve verilerle etkileşime geçen MapReduce programları oluşturmak için SQL benzeri bir dil kullanmanıza olanak sağlar.
 
