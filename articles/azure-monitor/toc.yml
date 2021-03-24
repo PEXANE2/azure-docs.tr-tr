@@ -101,7 +101,7 @@
           href: containers/resource-manager-container-insights.md
         - name: VM öngörüleri
           href: vm/resource-manager-vminsights.md
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: cli-samples.md
     - name: Azure PowerShell
       href: powershell-samples.md
@@ -722,6 +722,8 @@
                       items:
                         - name: JMX ölçümleri
                           href: app/java-jmx-metrics-configuration.md
+                        - name: Örnekleme geçersiz kılmaları
+                          href: app/java-standalone-sampling-overrides.md
                         - name: Telemetri işlemcileri
                           items:
                             - name: Genel Bakış

@@ -3,12 +3,12 @@ title: Azure Resource Manager şablonları için bıcep dili
 description: Azure Resource Manager şablonları aracılığıyla Azure 'a altyapı dağıtmak için Bıcep dilini açıklar.
 ms.topic: conceptual
 ms.date: 03/23/2021
-ms.openlocfilehash: 0edd0063ea08978b89c3ad3067f41ae743451df7
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: 74028c682b48a492c2e8f13bef538d1694370cbd
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889697"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955916"
 ---
 # <a name="what-is-bicep-preview"></a>Bicep (Önizleme) nedir?
 
@@ -16,11 +16,15 @@ Bıcep, Azure kaynaklarını bildirimli olarak dağıtmaya yönelik bir dildir. 
 
 Şablon oluşturmak için JSON sözdizimi ayrıntılı olabilir ve karmaşık ifade gerektirebilir. Bıcep, bir JSON şablonunun özelliklerini kaybetmeden bu deneyimi geliştirir. ARM şablonları için JSON üzerinde saydam bir soyutlamadır. Her bicep dosyası standart bir ARM şablonuna derlenir. Bir ARM şablonunda geçerli olan kaynak türleri, API sürümleri ve özellikler bir Bıcep dosyasında geçerlidir. Geçerli sürümde bazı [bilinen sınırlamalar](#known-limitations) vardır.
 
+Bıcep Şu anda önizleme aşamasındadır. Çalışmanın durumunu izlemek için, [Bıcep proje deposuna](https://github.com/Azure/bicep)bakın.
+
 Bıcep hakkında bilgi edinmek için aşağıdaki videoya bakın.
+
+> [!VIDEO https://www.youtube.com/embed/sc1kJfcRQgY]
 
 ## <a name="get-started"></a>başlarken
 
-Bıcep 'yi kullanmaya başlamak için [araçları yüklemelisiniz](https://github.com/Azure/bicep/blob/main/docs/installing.md).
+Bıcep 'yi kullanmaya başlamak için [araçları yüklemelisiniz](bicep-install.md).
 
 Araçları yükledikten sonra [Bıcep öğreticisini](./bicep-tutorial-create-first-bicep.md)deneyin. Öğretici serisi, Bıcep 'nin yapısı ve özellikleri boyunca size yol gösterir. Bıcep dosyalarını dağıtır ve bir ARM şablonunu eşdeğer Bıcep dosyasına dönüştürebilirsiniz.
 

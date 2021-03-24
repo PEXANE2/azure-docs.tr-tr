@@ -9,12 +9,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: ac71d8d7830f1d740d0156886a364b1d53ab247f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d78b106464bfbd3c86b9899a5c3543eed5dc0924
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100519567"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104888966"
 ---
 # <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Azure veri bilimi sanal makinelerinde makine öğrenimi ve veri bilimi araçları
 Azure veri bilimi sanal makineleri (DSVMs), Python, R ve Julia gibi popüler dillerde makine öğrenimi için zengin bir araç ve kitaplık kümesine sahiptir.
@@ -99,7 +99,7 @@ Dsvms üzerinde, `scikit-learn` dsvms Için Anaconda Python dağıtımının par
 | Desteklenen sürümler     | Windows, Linux     |
 | Tipik kullanımlar      | Genel makine-öğrenme kitaplığı      |
 | Nasıl yapılandırılır veya yüklenir?      |  GPU desteğiyle yüklendi   |
-| Nasıl kullanılır veya çalıştırılır      | Python kitaplığı (2,7 ve 3,5), R paketi ve yol üzerine komut satırı aracı ( `C:\dsvm\tools\xgboost\bin\xgboost.exe` Windows ve `/dsvm/tools/xgboost/xgboost` Linux için) olarak    |
+| Nasıl kullanılır veya çalıştırılır      | Python kitaplığı (2,7 ve 3.6 +), R paketi ve yol üzerine komut satırı aracı ( `C:\dsvm\tools\xgboost\bin\xgboost.exe` Windows ve `/dsvm/tools/xgboost/xgboost` Linux için) olarak    |
 | Örneklere bağlantılar      | Örnekler, sanal makinede, `/dsvm/tools/xgboost/demo` Linux ve `C:\dsvm\tools\xgboost\demo` Windows üzerinde bulunur.   |
 | İlgili araçlar      | LightGBM, MXNet   |
 

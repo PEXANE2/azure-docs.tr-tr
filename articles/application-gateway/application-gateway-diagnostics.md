@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
-ms.openlocfilehash: e18267d5a810826e41e05eb3dde3cd82a8eb9197
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 32d96ce79844cd89e06035036bfa68703a738ed1
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98065329"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950493"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Application Gateway için arka uç sistem durumu ve tanılama günlükleri
 
@@ -306,7 +306,7 @@ Güvenlik duvarı günlüğü, önceki adımlarda açıklandığı şekilde, yal
 |ruleSetVersion     | Kural kümesi sürümü kullanıldı. Kullanılabilir değerler 2.2.9 ve 3,0 ' dir.     |
 |RuleId     | Tetikleme olayının kural KIMLIĞI.        |
 |message     | Tetikleme olayı için Kullanıcı dostu ileti. Ayrıntılar bölümünde daha fazla ayrıntı sağlanır.        |
-|eylem     |  İstek üzerinde gerçekleştirilen eylem. Kullanılabilir değerler eşleşiyor ve engellendi.      |
+|eylem     |  İstek üzerinde gerçekleştirilen eylem. Kullanılabilir değerler engellenir ve Izin verilir (özel kurallar için), eşleştirilir (bir kural isteğin bir bölümüyle eşleştiğinde) ve algılanır ve engellenir (bunlar hem WAF 'nin algılama veya önleme modunda olmasına bağlı olarak zorunlu kurallar için geçerlidir).      |
 |Site     | Günlüğün oluşturulduğu site. Şu anda, kurallar genel olduğundan yalnızca küresel olarak listelenir.|
 |bilgileri     | Tetikleme olayının ayrıntıları.        |
 |Ayrıntılar. ileti     | Kuralın açıklaması.        |

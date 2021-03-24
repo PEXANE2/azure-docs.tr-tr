@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/24/2021
 ms.author: jeedes
-ms.openlocfilehash: 5c0601e087c5059d3a4d4a73d64ee8786d02ab8f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 633e2b6e8a7402ce94045fe290b4e08af73b124e
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102055593"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951411"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-securitystudio"></a>Öğretici: SecurityStudio ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -123,8 +123,8 @@ Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki se�
 
 * Azure portal bu uygulamayı test et ' e tıklayın ve SSO 'Yu ayarladığınız SecurityStudio 'da otomatik olarak oturum açmış olmanız gerekir.
 
-* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım içindeki SecurityStudio kutucuğuna tıkladığınızda, SSO 'Yu ayarladığınız SecurityStudio 'da otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım içindeki SecurityStudio kutucuğuna tıkladığınızda, SSO 'Yu ayarladığınız SecurityStudio 'da otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-SecurityStudio 'Yu yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+SecurityStudio 'Yu yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).
