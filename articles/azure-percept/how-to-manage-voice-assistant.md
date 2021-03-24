@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/15/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 5e41dea3b47c608b9e82ac57fa1cfe5247ea6cc2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8f22379049b74428787b738af832802081be7bf8
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102099021"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105022900"
 ---
 # <a name="managing-your-voice-assistant"></a>Ses yardımcınızı yönetme
 
@@ -60,7 +60,7 @@ Anahtar sözcüğü, bir sesli yardımcıyı etkinleştirmek için kullanılan b
 
 [Konuşma Studio](https://speech.microsoft.com/)ile, sesli yardımcınız için özel bir anahtar sözcük oluşturabilirsiniz. Temel bir özel anahtar sözcük modelinin eğitilmesi 30 dakikaya kadar sürer.
 
-Özel anahtar sözcük oluşturma yönergeleri için [konuşma Studio belgelerini](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws) izleyin. Yapılandırıldıktan sonra yeni anahtar kelimedir, Ses Yardımcısı uygulamanızla birlikte kullanılmak üzere Noel Cruz portalında proje için kullanılabilir olacaktır.
+Özel anahtar sözcük oluşturma yönergeleri için [konuşma Studio belgelerini](../cognitive-services/speech-service/custom-keyword-basics.md) izleyin. Yapılandırıldıktan sonra yeni anahtar kelimedir, Ses Yardımcısı uygulamanızla birlikte kullanılmak üzere Noel Cruz portalında proje için kullanılabilir olacaktır.
 
 ## <a name="commands-configuration"></a>Komutlar yapılandırması
 
@@ -88,7 +88,7 @@ Anahtar sözcüğü, bir sesli yardımcıyı etkinleştirmek için kullanılan b
 
 [Konuşma Studio](https://speech.microsoft.com/)ile, ses yardımcınızın yürütülmesi için özel komutlar oluşturabilirsiniz.
 
-Özel komutlar oluşturma yönergeleri için [konuşma Studio belgelerini](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-custom-commands-application) izleyin. Bir kez yapılandırıldıktan sonra, yeni komutlarınız, sesli yardım uygulamanızla birlikte kullanılmak üzere Azure Percept Studio 'da kullanıma sunulacaktır.
+Özel komutlar oluşturma yönergeleri için [konuşma Studio belgelerini](../cognitive-services/speech-service/quickstart-custom-commands-application.md) izleyin. Bir kez yapılandırıldıktan sonra, yeni komutlarınız, sesli yardım uygulamanızla birlikte kullanılmak üzere Azure Percept Studio 'da kullanıma sunulacaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

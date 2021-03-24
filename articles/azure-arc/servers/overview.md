@@ -4,12 +4,12 @@ description: Azure 'un dışında barındırılan sunucuları Azure kaynağı gi
 keywords: Azure Otomasyonu, DSC, PowerShell, istenen durum yapılandırması, güncelleştirme yönetimi, değişiklik izleme, envanter, runbook 'lar, Python, grafik, karma
 ms.date: 02/18/2021
 ms.topic: overview
-ms.openlocfilehash: 92de3b1a9cf07c25b13e2d038534e93318882bb1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 863cab073018c5a592cba6e94451a9af038ebd52
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102175983"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023342"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Azure Arc özellikli sunucular nedir?
 
@@ -23,7 +23,7 @@ Makinenizi Azure Arc etkin sunucularına bağladığınızda, aşağıdaki yapı
 
 - Azure sanal makineleri için ilke atamayla aynı deneyimi kullanarak [Azure ilke Konuk yapılandırması](../../governance/policy/concepts/guest-configuration.md) atayın. Günümüzde, çoğu konuk yapılandırma ilkesi yapılandırmaları uygulamaz, yalnızca makinenin içindeki ayarları denetlarlar. Azure Ilke Konuk yapılandırma ilkelerini Arc etkin sunucularla kullanma maliyetini anlamak için bkz. Azure Ilkesi [fiyatlandırma Kılavuzu](https://azure.microsoft.com/pricing/details/azure-policy/).
 
-- Azure Otomasyonu [değişiklik izleme ve envanter](../../automation/change-tracking/overview.md) ve [Azure Güvenlik Merkezi dosya bütünlüğü izlemeyi](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring)kullanarak, [sunucular için Azure Defender](https://docs.microsoft.com/azure/security-center/defender-for-servers-introduction)ile etkinleştirilen sunucular için yüklü yazılımlar, Microsoft Hizmetleri, Windows kayıt defteri ve dosyalar ve Linux Daemon 'ları hakkındaki yapılandırma değişikliklerini bildirin.
+- Azure Otomasyonu [değişiklik izleme ve envanter](../../automation/change-tracking/overview.md) ve [Azure Güvenlik Merkezi dosya bütünlüğü izlemeyi](../../security-center/security-center-file-integrity-monitoring.md)kullanarak, [sunucular için Azure Defender](../../security-center/defender-for-servers-introduction.md)ile etkinleştirilen sunucular için yüklü yazılımlar, Microsoft Hizmetleri, Windows kayıt defteri ve dosyalar ve Linux Daemon 'ları hakkındaki yapılandırma değişikliklerini bildirin.
 
 - Bağlı makine konuk işletim sistemi performansınızı izleyin ve uygulamanın [VM'ler için Azure izleyici](../../azure-monitor/vm/vminsights-overview.md)kullanarak iletişim kurduğu diğer kaynaklarla işlem ve bağımlılıklarını izlemek için uygulama bileşenlerini bulun.
 

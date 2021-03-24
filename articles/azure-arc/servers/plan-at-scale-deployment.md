@@ -3,12 +3,12 @@ title: Azure Arc etkin sunucularını planlamak ve dağıtmak
 description: Azure 'da önemli güvenlik, yönetim ve izleme özellikleri yapılandırmasını basitleştirmek için Azure Arc etkin sunucularına çok sayıda makinenin nasıl etkinleştirileceğini öğrenin.
 ms.date: 03/18/2021
 ms.topic: conceptual
-ms.openlocfilehash: 401725dcfed85a6675c95434270dd7dbff482b6e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5aa7022dba943fa3de247404522408f4660e80e3
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104591189"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023291"
 ---
 # <a name="plan-and-deploy-arc-enabled-servers"></a>Yay özellikli sunucuları planlayın ve dağıtın
 
@@ -57,7 +57,7 @@ Bu aşamada, sistem mühendisleri veya yöneticileri, makinelerinizi yay özelli
 |Görev |Ayrıntı |Süre |
 |-----|-------|---------|
 | [Kaynak grubu oluşturma](../../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups) | Yalnızca yay özellikli sunucuları dahil etmek ve bu kaynakların yönetimini ve izlemesini sağlamak için ayrılmış bir kaynak grubu. | Bir saat |
-| Makineleri düzenlemeye yardımcı olmak için [Etiketler](../../azure-resource-manager/management/tag-resources.md) uygulayın. | Yay özellikli sunucularınızı yönetmenin karmaşıklığını azaltmaya ve yönetim kararları almayı basitleştirmeye yardımcı olabilecek, BT hizalanmış bir [etiketleme stratejisini](/cloud-adoption-framework/decision-guides/resource-tagging/) değerlendirin ve geliştirin. | Bir günde |
+| Makineleri düzenlemeye yardımcı olmak için [Etiketler](../../azure-resource-manager/management/tag-resources.md) uygulayın. | Yay özellikli sunucularınızı yönetmenin karmaşıklığını azaltmaya ve yönetim kararları almayı basitleştirmeye yardımcı olabilecek, BT hizalanmış bir [etiketleme stratejisini](/azure/cloud-adoption-framework/decision-guides/resource-tagging/) değerlendirin ve geliştirin. | Bir günde |
 | [Azure Izleyici günlüklerini](../../azure-monitor/logs/data-platform-logs.md) tasarlama ve dağıtma | Kuruluşunuzun, karma sunuculardan ve makinelerden toplanan günlük verilerini depolamak için mevcut bir Log Analytics veya başka bir çalışma alanı uygulayıp uygulamamı kullanacağını belirleme [Tasarım ve dağıtım konularını](../../azure-monitor/logs/design-logs-deployment.md) değerlendirin. <sup>1</sup> | Bir günde |
 | [Azure ilke](../../governance/policy/overview.md) Idare planı geliştirme | Azure Ilkesi ile abonelik veya kaynak grubu kapsamında Karma sunucular ve makineler için nasıl idare uygulayacağınızı öğrenin. | Bir günde |
 | [Rol tabanlı erişim denetimini](../../role-based-access-control/overview.md) (RBAC) yapılandırma | Yay etkin sunucuları yönetme ve diğer Azure hizmetlerinden ve çözümlerinden verileri görüntüleme yeteneği olan kimlerin erişimi olduğunu denetlemek için bir erişim planı geliştirin. | Bir günde |
@@ -71,7 +71,7 @@ Daha sonra, yay etkin sunucular bağlı makine aracısına hazırlık ve dağıt
 
 |Görev |Ayrıntı |Süre |
 |-----|-------|---------|
-| Önceden tanımlanmış yükleme betiğini indirin | Otomatik dağıtım gereksinimlerinizi desteklemek için bağlı makine aracısının ölçekli dağıtımı için önceden tanımlanmış yükleme betiğini gözden geçirin ve özelleştirin.<br><br> Ölçek ekleme kaynaklarında örnek:<br><br> <ul><li> [Ölçek temel dağıtım betiği](onboard-service-principal.md)</ul></li> <ul><li>[Ölçek ekleme VMware vSphere Windows Server VM 'Leri](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_win.md)</ul></li> <ul><li>[Ölçek ekleme VMware vSphere Linux VM 'Leri](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_linux.md)</ul></li> <ul><li>[Ölçeği kullanarak AWS EC2 örnekleri ekleme](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/aws_scale_ansible.md)</ul></li> <ul><li>[PowerShell uzaktan iletişimini kullanarak ölçekli dağıtımda](https://docs.microsoft.com/azure/azure-arc/servers/onboard-powershell) (yalnızca Windows)</ul></li>| Gereksinimlere bağlı olarak bir veya daha fazla gün, kurumsal süreçler (örneğin, değişiklik ve Release Management) ve kullanılan otomasyon yöntemi. |
+| Önceden tanımlanmış yükleme betiğini indirin | Otomatik dağıtım gereksinimlerinizi desteklemek için bağlı makine aracısının ölçekli dağıtımı için önceden tanımlanmış yükleme betiğini gözden geçirin ve özelleştirin.<br><br> Örnek ölçek ekleme kaynakları:<br><br> <ul><li> [Temel dağıtım betiği ölçeklendirin](onboard-service-principal.md)</ul></li> <ul><li>[Windows Server VM 'Leri VMware vSphere ölçekli ekleme](https://github.com/microsoft/azure_arc/blob/main/docs/azure_arc_jumpstart/azure_arc_servers/scaled_deployment/vmware_scaled_powercli_win/_index.md)</ul></li> <ul><li>[Linux sanal makinelerini VMware vSphere ölçekli ekleme](https://github.com/microsoft/azure_arc/blob/main/docs/azure_arc_jumpstart/azure_arc_servers/scaled_deployment/vmware_scaled_powercli_linux/_index.md)</ul></li> <ul><li>[Anerişilebilir kullanarak, ölçeklendirerek AWS EC2 örnekleri ekleme](https://github.com/microsoft/azure_arc/blob/main/docs/azure_arc_jumpstart/azure_arc_servers/scaled_deployment/aws_scaled_ansible/_index.md)</ul></li> <ul><li>[PowerShell uzaktan iletişimini kullanarak ölçekli dağıtım](./onboard-powershell.md) (yalnızca Windows)</ul></li>| Gereksinimlere bağlı olarak bir veya daha fazla gün, kurumsal süreçler (örneğin, değişiklik ve Release Management) ve kullanılan otomasyon yöntemi. |
 | [Hizmet sorumlusu oluşturma](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) |Makineleri etkileşimli olmayan Azure PowerShell veya portaldan kullanarak bağlamak için bir hizmet sorumlusu oluşturun.| Bir saat |
 | Bağlı makine aracısını hedef sunucularınız ve makinelerinize dağıtın |Komut dosyalarını sunucularınıza dağıtmak ve Azure 'a bağlamak için Otomasyon aracınızı kullanın.| Yayın planınıza bağlı olarak bir veya daha fazla gün ve aşamalı bir dağıtım takip ediyorsanız. |
 

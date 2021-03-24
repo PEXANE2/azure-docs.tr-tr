@@ -3,12 +3,12 @@ title: Azure hizmetlerine göre kaynak sağlayıcıları
 description: Azure Resource Manager için tüm kaynak sağlayıcısı ad alanlarını listeler ve bu ad alanı için Azure hizmetini gösterir.
 ms.topic: conceptual
 ms.date: 03/16/2021
-ms.openlocfilehash: ee8cb054f3f10c3b33d5235b2b03cdfeac266139
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d8239a9305560eb77ac2c714b993373f0d5b16fb
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104592170"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023019"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure hizmetleri için kaynak sağlayıcıları
 
@@ -28,7 +28,7 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft. AnalysisServices | [Azure Analysis Services](../../analysis-services/index.yml) |
 | Microsoft. Apimanane | [API Management](../../api-management/index.yml) |
 | Microsoft. AppConfiguration | [Azure Uygulama Yapılandırması](../../azure-app-configuration/index.yml) |
-| Microsoft. AppPlatform | [Azure Spring Cloud](../../spring-cloud/spring-cloud-overview.md) |
+| Microsoft. AppPlatform | [Azure Spring Cloud](../../spring-cloud/overview.md) |
 | Microsoft. kanıtlama | Azure kanıtlama hizmeti |
 | Microsoft. Authorization- [kayıtlı](#registration) | [Azure Resource Manager](../index.yml) |
 | Microsoft. Automation | [Otomasyon](../../automation/index.yml) |
@@ -125,7 +125,7 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft. MarketplaceApps | çekirdeğin |
 | Microsoft. Marketplacesıralaması- [kayıtlı](#registration) | çekirdeğin |
 | Microsoft. Media | [Media Services](../../media-services/index.yml) |
-| Microsoft. Microservices4Spring | [Azure Spring Cloud](../../spring-cloud/spring-cloud-overview.md) |
+| Microsoft. Microservices4Spring | [Azure Spring Cloud](../../spring-cloud/overview.md) |
 | Microsoft. Migrate | [Azure Geçişi](../../migrate/migrate-services-overview.md) |
 | Microsoft. MixedReality | [Azure Spatial Anchors](../../spatial-anchors/index.yml) |
 | Microsoft. NetApp | [Azure NetApp Files](../../azure-netapp-files/index.yml) |
@@ -147,7 +147,7 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft. RecoveryServices | [Azure Site Recovery](../../site-recovery/index.yml) |
 | Microsoft. RedHatOpenShift | [Azure Red Hat OpenShift](../../virtual-machines/linux/openshift-get-started.md) |
 | Microsoft. Relay | [Azure Geçişi](../../azure-relay/relay-what-is-it.md) |
-| Microsoft. ResourceGraph- [kayıtlı](#registration) | [Azure Kaynak Grafiği](../../governance/resource-graph/index.yml) |
+| Microsoft. ResourceGraph- [kayıtlı](#registration) | [Azure Kaynak Grafı](../../governance/resource-graph/index.yml) |
 | Microsoft. ResourceHealth | [Azure Hizmet Durumu](../../service-health/index.yml) |
 | Microsoft. Resources- [kayıtlı](#registration) | [Azure Resource Manager](../index.yml) |
 | Microsoft. SaaS | çekirdeğin |
@@ -155,7 +155,7 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft. Search | [Azure Bilişsel Arama](../../search/index.yml) |
 | Microsoft.Security | [Güvenlik Merkezi](../../security-center/index.yml) |
 | Microsoft. Securityınsights | [Azure Sentinel](../../sentinel/index.yml) |
-| Microsoft. SerialConsole- [kayıtlı](#registration) | [Windows için Azure seri konsol](../../virtual-machines/troubleshooting/serial-console-windows.md) |
+| Microsoft. SerialConsole- [kayıtlı](#registration) | [Windows için Azure seri konsol](/troubleshoot/azure/virtual-machines/serial-console-windows) |
 | Microsoft.ServiceBus | [Service Bus](/azure/service-bus/) |
 | Microsoft. ServiceFabric | [Service Fabric](../../service-fabric/index.yml) |
 | Microsoft. Servicefabrickafesi | [Service Fabric Mesh](../../service-fabric-mesh/index.yml) |
@@ -173,7 +173,7 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft. Subscription | çekirdeğin |
 | Microsoft. support- [kayıtlı](#registration) | çekirdeğin |
 | Microsoft. SYNAPSE | [Azure Synapse Analytics](/azure/sql-data-warehouse/) |
-| Microsoft. Timeseriesınsights | [Azure Zaman Serisi Görüşleri](../../time-series-insights/index.yml) |
+| Microsoft. Timeseriesınsights | [Azure Time Series Insights](../../time-series-insights/index.yml) |
 | Microsoft. Token | Belirteç |
 | Microsoft. Virtualmachineımages | [Azure Görüntü Oluşturucusu](../../virtual-machines/image-builder-overview.md) |
 | Microsoft. VisualStudio | [Azure DevOps](/azure/devops/) |
