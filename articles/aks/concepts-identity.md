@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 98044f6ff6311241717cb66a6e26a72702d749e6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 12900a64d9e023e4bddd5b5862b6a127fcba1d36
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102181457"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950000"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) için erişim ve kimlik seçenekleri
 
@@ -73,6 +73,7 @@ Belirli özniteliklere sahip bir küme oluşturulurken aşağıdaki ek izinler k
 | Microsoft. Network/virtualNetworks/alt ağlar/okuma <br/> Microsoft. Network/virtualNetworks/alt ağlar/JOIN/Action | Özel VNET gibi başka bir kaynak grubunda bir alt ağ kullanılıyorsa gereklidir. |
 | Microsoft. Network/routeTables/rotalar/Read <br/> Microsoft. Network/routeTables/rotalar/Write | Özel bir yol tablosu olan özel VNET gibi başka bir kaynak grubundaki yol tablosuyla ilişkili bir alt ağ kullanılıyorsa gereklidir. Diğer kaynak grubundaki alt ağ için bir alt ağın zaten mevcut olup olmadığını doğrulamak için gereklidir. |
 | Microsoft. Network/virtualNetworks/alt ağlar/okuma | Başka bir kaynak grubunda iç yük dengeleyici kullanılıyorsa gereklidir. Kaynak grubundaki iç yük dengeleyici için bir alt ağın zaten mevcut olup olmadığını doğrulamak için gereklidir. |
+| Microsoft. Network/privatednszones/* | Özel bir privateDNSZone gibi başka bir kaynak grubunda özel bir DNS bölgesi kullanılıyorsa gereklidir. |
 
 ## <a name="kubernetes-role-based-access-control-kubernetes-rbac"></a>Kubernetes rol tabanlı erişim denetimi (Kubernetes RBAC)
 
@@ -199,7 +200,7 @@ Bu tabloda, Azure AD tümleştirmesi etkinleştirildiğinde, kullanıcıların K
 
 İkinci sütunda başvurulan rol verme, Azure portal **Access Control** sekmesinde GÖSTERILEN Azure RBAC rolü verlüdür. Küme Yöneticisi Azure AD grubu, portaldaki **yapılandırma** sekmesinde (veya `--aad-admin-group-object-ids` Azure CLI 'de parametre adı ile) gösterilir.
 
-| Description        | Rol verme gerekli| Küme Yöneticisi Azure AD grupları | Kullanılması gereken durumlar |
+| Açıklama        | Rol verme gerekli| Küme Yöneticisi Azure AD grupları | Kullanılması gereken durumlar |
 | -------------------|------------|----------------------------|-------------|
 | İstemci sertifikası kullanarak eski yönetici oturumu açma| **Azure Kubernetes yönetici rolü**. Bu rol, `az aks get-credentials` `--admin` [eski (Azure dışı ad) küme yönetici sertifikasını](control-kubeconfig-access.md) kullanıcının kullanıcısına indiren bayrağıyla birlikte kullanılmasına izin verir `.kube/config` . Bu, "Azure Kubernetes yönetici rolü" nin tek amacı değildir.|yok|Kalıcı olarak engellendiyse, kümenize erişimi olan geçerli bir Azure AD grubuna erişemez.| 
 | El ile (küme) RoleBindings ile Azure AD| **Azure Kubernetes Kullanıcı rolü**. "Kullanıcı" rolü `az aks get-credentials` bayrak olmadan kullanılmasına izin verir `--admin` . (Bu, "Azure Kubernetes Kullanıcı rolü" öğesinin tek amacı olur.) Sonuç olarak, Azure AD özellikli bir kümede [boş bir girdinin](control-kubeconfig-access.md) indirilmesi, bu, `.kube/config` tarafından ilk kez kullanıldığında tarayıcı tabanlı kimlik doğrulamasını tetikler `kubectl` .| Kullanıcı bu grupların hiçbirinde değil. Kullanıcı herhangi bir Küme Yöneticisi grubunda olmadığından, hakları tamamen küme yöneticileri tarafından ayarlanan herhangi bir RoleBindings veya ClusterRoleBindings tarafından denetlenir. (Küme) RoleBindings, [Azure AD kullanıcılarını veya Azure AD gruplarını](azure-ad-rbac.md) oldukları gibi aday olarak belirler `subjects` . Böyle bir bağlama ayarlanmamışsa, Kullanıcı herhangi bir `kubectl` komutu kullanamaz.|Ayrıntılı erişim denetimi istiyorsanız ve Kubernetes yetkilendirmesi için Azure RBAC kullanmıyorsanız. Bağlamaları ayarlayan kullanıcının bu tabloda listelenen diğer yöntemlerden biriyle oturum açması gerektiğini unutmayın.|

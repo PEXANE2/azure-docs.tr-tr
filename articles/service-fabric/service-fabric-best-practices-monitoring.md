@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: a7b1c1b3fc3196557b862c488ee01af8b8e1f04f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 0eb9ce24f9ead44b7ba5a4d28d24177e62cb7757
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "86529259"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950527"
 ---
 # <a name="monitoring-and-diagnostic-best-practices-for-azure-service-fabric"></a>Azure Service Fabric için en iyi izleme ve tanılama uygulamaları
 
@@ -34,7 +34,7 @@ Linux kümelerinde Azure Izleyici günlükleri de Azure platformu ve altyapı iz
 
 ## <a name="watchdogs"></a>Watchdogs
 
-Genellikle, izleme, hizmetler genelinde sistem durumunu ve yükünü izleyen, uç noktalara ping yapan ve kümedeki beklenmeyen sistem durumu olaylarını raporlayan ayrı bir hizmettir. Bu, yalnızca tek bir hizmetin performansına göre algılanamayan hataları önlemeye yardımcı olabilir. Watchdogs, belirli zaman aralıklarında depolama alanındaki günlük dosyalarını temizleme gibi kullanıcı etkileşimi gerektirmeyen düzeltici eylem gerçekleştiren kodu barındırmak için de iyi bir yerdir. [Syslog 'daki Service Fabric Linux küme olaylarında](https://github.com/Azure-Samples/service-fabric-watchdog-service)örnek bir izleme hizmeti uygulamasına bakın.
+Genellikle, izleme, hizmetler genelinde sistem durumunu ve yükünü izleyen, uç noktalara ping yapan ve kümedeki beklenmeyen sistem durumu olaylarını raporlayan ayrı bir hizmettir. Bu, yalnızca tek bir hizmetin performansına göre algılanamayan hataları önlemeye yardımcı olabilir. Watchdogs, belirli zaman aralıklarında depolama alanındaki günlük dosyalarını temizleme gibi kullanıcı etkileşimi gerektirmeyen düzeltme eylemleri gerçekleştiren bir kod barındırmak için de iyi bir yerdir. Kullanımı kolay bir izleme genişletilebilirlik modeli içeren ve hem Windows hem de Linux kümelerinde çalışan, tam olarak uygulanan açık kaynaklı bir SF izleme hizmeti istiyorsanız, bkz. [Fabricgözlemci](https://aka.ms/sf/FabricObserver) projesi. Fabricgözlemci üretime hazırlamış bir yazılımdır. Test ve üretim kümelerinize Fabricgözlemci dağıtmanızı ve kendi eklenti modeli aracılığıyla ya da kendi yerleşik gözlemci sunucularınızı yazarak gereksinimlerinizi karşılayacak şekilde genişletmenizi öneririz. Eski (eklentiler) önerilen yaklaşımdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
