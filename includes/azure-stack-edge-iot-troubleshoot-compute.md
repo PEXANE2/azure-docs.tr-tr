@@ -3,13 +3,13 @@ author: v-dalc
 ms.service: databox
 ms.author: alkohli
 ms.topic: include
-ms.date: 03/02/2021
-ms.openlocfilehash: 57415ec76a3e8d9fc3c160b47668d3419ff6ea5c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/23/2021
+ms.openlocfilehash: 34d0d55ba6eb403055be96758b57b7bd0c2ab704
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103622099"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104987942"
 ---
 İşlem ile ilgili hataları gidermek için IoT Edge Aracısı çalışma zamanı yanıtlarını kullanın. Olası yanıtların bir listesi aşağıda verilmiştir:
 
@@ -66,3 +66,43 @@ Cihazınızın yerel Web Kullanıcı arabiriminde aşağıdaki adımları uygula
 1. **Uygula**’yı seçin. Değiştirilen IP aralığı hemen geçerli olacaktır.
 
 Daha fazla bilgi için bkz. [kapsayıcılar için dış hizmet IP 'Lerini değiştirme](../articles/databox-online/azure-stack-edge-j-series-manage-compute.md#change-external-service-ips-for-containers).
+
+### <a name="configure-static-ips-for-iot-edge-modules"></a>IoT Edge modülleri için statik IP 'Leri yapılandırma
+
+#### <a name="problem-description"></a>Sorun açıklaması
+
+Kubernetes, Azure Stack Edge Pro GPU cihazındaki her bir IoT Edge modülüne dinamik IP 'Ler atar. Modüller için statik IP 'Leri yapılandırmak için bir yöntem gereklidir.
+
+#### <a name="suggested-solution"></a>Önerilen çözüm
+
+Aşağıda açıklandığı gibi, IoT Edge modülleriniz için sabit IP adreslerini K8s-deneysel bölümü aracılığıyla belirtebilirsiniz: 
+
+```yaml
+{
+  "k8s-experimental": {
+    "serviceOptions" : {
+      "loadBalancerIP" : "100.23.201.78",
+      "type" : "LoadBalancer"
+    }
+  }
+}
+```
+### <a name="expose-kubernetes-service-as-cluster-ip-service-for-internal-communication"></a>İç iletişim için Kubernetes hizmetini küme IP hizmeti olarak kullanıma sunma
+
+#### <a name="problem-description"></a>Sorun açıklaması
+
+Varsayılan olarak, IoT hizmeti türü, yük dengeleyici türüdür ve dışarıdan yönelik IP adresleri atanır. Uygulamanız için bir dış IP adresi istemiyor olabilirsiniz. Kubernetes kümesi içindeki Pod 'leri dışarıdan sunulan yük dengeleyici hizmeti olarak değil, diğer düğüm olarak erişim için kullanıma açmanız gerekebilir. 
+
+#### <a name="suggested-solution"></a>Önerilen çözüm
+
+Oluşturma seçeneklerini K8s-deneysel bölümü aracılığıyla kullanabilirsiniz. Aşağıdaki hizmet seçeneği bağlantı noktası bağlamalarıyla birlikte çalışmalıdır.
+
+```yaml
+{
+"k8s-experimental": {
+  "serviceOptions" : {
+    "type" : "ClusterIP"
+    }
+  }
+}
+```

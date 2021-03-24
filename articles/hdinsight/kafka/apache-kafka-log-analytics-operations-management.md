@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/17/2020
-ms.openlocfilehash: 51301bd38bf0700ce42ef33a47b9e763da8d4ed6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 74db121c33864ee72ad984b49c8fa43afa0f598c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100595293"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870526"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>HDInsight üzerinde Apache Kafka için günlükleri çözümleme
 
@@ -22,7 +22,7 @@ HDInsight üzerinde Apache Kafka tarafından oluşturulan günlükleri çözüml
 
 Kümedeki Apache Kafka Günlükler konumunda bulunur `/var/log/kafka` . Yönetilen diskler kullanılıyorsa, Kafka günlükleri küme yaşam döngüleri arasında kaydedilmez veya kalıcı olmaz. Aşağıdaki tabloda kullanılabilir Günlükler gösterilmektedir.
 
-|Günlük |Description |
+|Günlük |Açıklama |
 |---|---|
 |Kafka. Out|Kafka işleminin stdout ve stderr 'i. Bu dosyada Kafka başlangıç ve kapalı günlükleri bulacaksınız.|
 |Server. log|Ana Kafka sunucu günlüğü. Tüm Kafka Aracısı günlükleri burada sona erdir.|
@@ -91,13 +91,13 @@ HDInsight için Azure Izleyici günlüklerini etkinleştirme adımları tüm HDI
 
     `*`Günlüğe kaydedilen tüm türleri aramak için de girebilirsiniz. Şu anda sorgularda aşağıdaki Günlükler mevcuttur:
 
-    | Günlük türü | Description |
+    | Günlük türü | Açıklama |
     | ---- | ---- |
     | log \_ kafkaserver \_ CL | Kafka Broker Server. log |
     | log \_ kafkacontroller \_ CL | Kafka Broker Controller. log |
     | ölçümler \_ Kafka \_ CL | Kafka JMX ölçümleri |
 
-    ![Apache Kafka Log Analytics CPU kullanımı](./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png)
+    :::image type="content" source="./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png" alt-text="Apache Kafka Log Analytics CPU kullanımı" border="true":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/07/2020
-ms.openlocfilehash: a539acc423feeab500830fb33262d1b824101072
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b62e41f280d02664b3df631c3413960f1265356f
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98935844"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863182"
 ---
 # <a name="requesting-quota-increases-for-azure-hdinsight"></a>Azure HDInsight için kota artışı isteniyor
 
@@ -34,7 +34,7 @@ Kota artışı istemek için aşağıdaki adımları uygulayın:
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
 1. Sayfanın sol alt tarafında **Yardım + Destek** ' i seçin.
 
-    ![Yardım ve destek düğmesi](./media/quota-increase-request/help-support-button.png)
+    :::image type="content" source="./media/quota-increase-request/help-support-button.png" alt-text="Yardım ve destek düğmesi" border="true":::
 
 1. **Yeni destek isteği**’ni seçin.
 1. **Yeni destek isteği** sayfasının **Temel Bilgiler** sekmesinde aşağıdaki seçenekleri belirtin:
@@ -43,20 +43,20 @@ Kota artışı istemek için aşağıdaki adımları uygulayın:
    - **Abonelik**: değiştirmek istediğiniz abonelik
    - **Kota türü**: **HDInsight**
 
-     ![HDInsight çekirdek kotasını artırmak için bir destek isteği oluşturma](./media/quota-increase-request/hdinsight-quota-support-request.png)
+     :::image type="content" source="./media/quota-increase-request/hdinsight-quota-support-request.png" alt-text="HDInsight çekirdek kotasını artırmak için bir destek isteği oluşturma" border="true":::
 
 1. **İleri ' yi seçin: çözümler >>**.
 1. **Ayrıntılar** sayfasında, sorun için bir açıklama girin, sorunun önem derecesini, tercih ettiğiniz iletişim yöntemini ve diğer gerekli alanları seçin. Gerekli bilgileri sağladığınızdan emin olmak için aşağıda listelenen şablonu kullanın. Kota artışı istekleri, HDInsight ürün ekibi tarafından değil, Azure kapasite ekibi tarafından değerlendirilir. Sağladığınız daha fazla bilgi, isteğiniz daha büyük olasılıkla onaylanır.
 
-    ```
-    I would like to request [SPECIFY DESIRED AMOUNT] on [DESIRED SKU] for [SUBSCRIPTION ID].
-    
-    My current quota on this subscription is [CURRENT QUOTA AMOUNT].
-    
-    I would like to use the extra cores for [DETAIL REASON].
-    ```
+   ```text
+   I would like to request [SPECIFY DESIRED AMOUNT] on [DESIRED SKU] for [SUBSCRIPTION ID].
+   
+   My current quota on this subscription is [CURRENT QUOTA AMOUNT].
+   
+   I would like to use the extra cores for [DETAIL REASON].
+   ```
 
-    ![Sorun ayrıntıları](./media/quota-increase-request/problem-details.png)
+   :::image type="content" source="./media/quota-increase-request/problem-details.png" alt-text="Sorun ayrıntıları" border="true":::
 
 1. **İleri ' yi seçin: gözden geçir + oluştur >>**.
 1. **Gözden geçir + oluştur** sekmesinde **Oluştur**' u seçin.

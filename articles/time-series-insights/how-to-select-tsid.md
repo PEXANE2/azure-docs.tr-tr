@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 03/23/2021
 ms.custom: seodec18
-ms.openlocfilehash: c3f6f6a5ac1068f2eabca351e85376b8e16d1058
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8aefa6efa5f10dae8a28e7126b91b7b5f6ac77a6
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95016760"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950748"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>Zaman Serisi Kimliği seçmek için en iyi uygulamalar
 
@@ -24,6 +24,11 @@ Bu makale, Azure Time Series Insights Gen2 ortamınız için zaman serisi KIMLI�
 ## <a name="choose-a-time-series-id"></a>Zaman Serisi Kimliği
 
 Uygun bir zaman serisi KIMLIĞINI seçmek kritik öneme sahiptir. Bir zaman serisi KIMLIĞI seçilmesi, bir veritabanı için bölüm anahtarı seçmeye benzer. Bir Azure Time Series Insights Gen2 ortamı oluşturduğunuzda bu gereklidir.
+
+Zaman serisi KIMLIĞININ ayrıntılı bir açıklaması için ortam sağlama öğreticisini izleyin. İki farklı JSON telemetri yük örneği ve her biri için doğru zaman serisi KIMLIĞI seçimi görüntülenir.</br>
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWzk3P]
+
 
 > [!IMPORTANT]
 > Zaman serisi kimlikleri şunlardır:

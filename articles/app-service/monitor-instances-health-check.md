@@ -6,12 +6,12 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 12/03/2020
 ms.author: msangapu
-ms.openlocfilehash: 0e08d016ab85587d451ad2a1e296e7f494ba283e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e9d92c60e74ac9106246ccd445afaca926065e5f
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104596034"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871206"
 ---
 # <a name="monitor-app-service-instances-using-health-check"></a>Sistem durumu denetimini kullanarak App Service örnekleri izleme
 
@@ -48,7 +48,7 @@ Bu makale, App Service örnekleri izlemek için Azure portal sistem durumu denet
 
 Sistem durumu denetimi seçeneklerini yapılandırmanın yanı sıra, aşağıdaki [uygulama ayarlarını](configure-common.md)da yapılandırabilirsiniz:
 
-| Uygulama ayarı adı | İzin verilen değerler | Description |
+| Uygulama ayarı adı | İzin verilen değerler | Açıklama |
 |-|-|-|
 |`WEBSITE_HEALTHCHECK_MAXPINGFAILURES` | 2 - 10 | En fazla ping başarısızlığı sayısı. Örneğin, olarak ayarlandığında `2` , örneklerinizin başarısız ping işlemleri sonrasında kaldırılacak `2` . Ayrıca, ölçeği büyütme veya küçültme sırasında, yeni örneklerin hazır olmasını sağlamak için sistem durumu denetim yoluna ping App Service. |
 |`WEBSITE_HEALTHCHECK_MAXUNHEALTYWORKERPERCENT` | 0 - 100 | Sağlıklı olmayan örneklere engel olmak için örneklerin yarısını hariç tutulamayacak. Örneğin, bir App Service planı dört örneğe ölçeklenirse ve üçü uygun değilse, en fazla iki durum hariç tutulur. Diğer iki örnek (bir sağlıklı ve bir sağlıksız) istekleri almaya devam edecektir. Tüm örneklerin sağlıksız olduğu en kötü durum senaryosunda, hiçbiri dışlanacaktır. Bu davranışı geçersiz kılmak için, uygulama ayarını ve arasında bir değere `0` ayarlayın `100` . Daha yüksek bir değer, daha sağlıksız örneklerin kaldırılabileceği anlamına gelir (varsayılan değer 50 ' dir). |
@@ -57,7 +57,7 @@ Sistem durumu denetimi seçeneklerini yapılandırmanın yanı sıra, aşağıda
 
 Sistem durumu denetimi App Service kimlik doğrulaması ve yetkilendirme özellikleriyle tümleştirilir. Bu güvenlik özellikleri etkinse ek ayar yapmanız gerekmez. Ancak, kendi kimlik doğrulama sisteminizi kullanıyorsanız, sistem durumu denetimi yolu anonim erişime izin vermelidir. Site **yalnızca http 'yi** etkinleştirmişse, sistem durumu denetımı Isteği http **s** aracılığıyla gönderilir.
 
-Büyük Kurumsal Geliştirme ekiplerinin genellikle sunulan API 'Ler için güvenlik gereksinimlerine uyması gerekir. Sistem durumu denetimi uç noktasının güvenliğini sağlamak için öncelikle, uygulama erişimini kısıtlamak üzere [IP kısıtlamaları](app-service-ip-restrictions.md#set-an-ip-address-based-rule), [istemci sertifikaları](app-service-ip-restrictions.md#set-an-ip-address-based-rule)veya bir sanal ağ gibi özellikleri kullanmanız gerekir. Gelen istek eşleşmelerini isteyerek sistem durumu denetimi uç noktasının güvenliğini sağlayabilirsiniz `User-Agent` `ReadyForRequest/1.0` . İstek önceki güvenlik özellikleri tarafından zaten güvenli hale getirildiğinden User-Agent taklit olamaz.
+Büyük Kurumsal Geliştirme ekiplerinin genellikle sunulan API 'Ler için güvenlik gereksinimlerine uyması gerekir. Sistem durumu denetimi uç noktasının güvenliğini sağlamak için öncelikle, uygulama erişimini kısıtlamak üzere [IP kısıtlamaları](app-service-ip-restrictions.md#set-an-ip-address-based-rule), [istemci sertifikaları](app-service-ip-restrictions.md#set-an-ip-address-based-rule)veya bir sanal ağ gibi özellikleri kullanmanız gerekir. Gelen istek eşleşmelerini isteyerek sistem durumu denetimi uç noktasının güvenliğini sağlayabilirsiniz `User-Agent` `HealthCheck/1.0` . İstek önceki güvenlik özellikleri tarafından zaten güvenli hale getirildiğinden User-Agent taklit olamaz.
 
 ## <a name="monitoring"></a>İzleme
 

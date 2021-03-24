@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/15/2021
-ms.openlocfilehash: b9c5db14bec87b30e51d39b1430ecc1f3cbef855
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: b5add466a60bc855e08917d02fecaf60a35deeb1
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/23/2021
-ms.locfileid: "104798298"
+ms.locfileid: "104889578"
 ---
 # <a name="monitor-your-sql-deployments-with-sql-insights-preview"></a>SQL Insights ile SQL dağıtımlarınızı izleme (Önizleme)
 SQL Insights, SQL dağıtımlarınızın performansını ve sistem durumunu izler.  Performans sorunlarını ve sorunlarını tanımlayarak bir SQL arka ucunun çevresinde oluşturduğunuz önemli iş yüklerinin öngörülebilir bir performans ve kullanılabilirliğini sunmaya yardımcı olabilir. SQL Insights, verilerini [Azure Izleyici günlüklerinde](../logs/data-platform-logs.md)depolar ve bu sayede güçlü toplama ve filtreleme olanağı sunar ve zaman içinde veri eğilimlerini analiz edebilir. Bu verileri Azure Izleyici 'den bu teklifin bir parçası olarak gönderdiğimiz görünümlerde görüntüleyebilir ve sorguları çalıştırmak ve eğilimleri çözümlemek için doğrudan günlük verilerine Delve yapabilirsiniz.
@@ -59,7 +59,12 @@ Sorun gidermeye yönelik adımlara ek olarak SQL Insights 'ı etkinleştirmek i�
 
 
 ## <a name="data-collected-by-sql-insights"></a>SQL Insights tarafından toplanan veriler
-Genel önizlemede, SQL Insights yalnızca izleme uzak yöntemini destekler. SQL Server [telegraf Aracısı](https://www.influxdata.com/time-series-platform/telegraf/) yüklü değil. [Telegraf için SQL Server giriş eklentisini](https://www.influxdata.com/integration/microsoft-sql-server/) kullanır ve farklı türde SQL It izleyicilerinde üç sorgu grubunu kullanır: Azure SQL veritabanı, Azure SQL yönetilen örneği, BIR Azure VM ÜZERINDE çalışan SQL Server. 
+
+SQL Insights yalnızca SQL izleme uzak yöntemini destekler. SQL Server çalıştıran VM 'Lere hiçbir aracı yüklemeiyoruz. SQL kaynaklarınızdan verileri uzaktan toplamak için kullandığımız bir veya daha fazla adanmış izleme sanal makinesi gereklidir. 
+
+Bu izleme VM 'lerinin her biri, [Azure izleyici aracısının](https://docs.microsoft.com/azure/azure-monitor/agents/azure-monitor-agent-overview) üzerinde iş yükü öngörüleri (wli) uzantısıyla birlikte yüklü olacaktır. 
+
+WLI uzantısı açık kaynak [telegraf aracısını](https://www.influxdata.com/time-series-platform/telegraf/)içerir.  Azure SQL VERITABANı, Azure SQL yönetilen örneği ve Azure VM 'de çalışan SQL Server toplanacak verileri belirtmek üzere [SqlServer giriş eklentisini](https://www.influxdata.com/integration/microsoft-sql-server/) yapılandırmak için [veri toplama kurallarını](https://docs.microsoft.com/azure/azure-monitor/agents/data-collection-rule-overview) kullanırız. 
 
 Aşağıdaki tablolarda aşağıdakiler özetlenmektedir:
 

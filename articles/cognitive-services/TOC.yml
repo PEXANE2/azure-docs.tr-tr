@@ -32,7 +32,7 @@
       items:
         - name: Kapsayıcılar
           items:
-            - name: Kapsayıcı desteği
+            - name: Bilişsel hizmetler kapsayıcıları
               href: cognitive-services-container-support.md
             - name: Kapsayıcı görüntüsü etiketleri ve sürüm notları
               href: ./containers/container-image-tags.md
@@ -112,7 +112,7 @@
       href: /java/api/overview/azure/cognitiveservices/resourcemanagement?view=azure-java-stable
     - name: Go
       href: 'https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v52.5.0+incompatible/services/cognitiveservices/mgmt/2017-04-18/cognitiveservices'
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
     - name: Azure PowerShell
       href: /powershell/module/azurerm.cognitiveservices/

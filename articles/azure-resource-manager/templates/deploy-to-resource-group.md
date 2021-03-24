@@ -3,12 +3,12 @@ title: Kaynakları kaynak gruplarına dağıtma
 description: Azure Resource Manager şablonunda kaynakların nasıl dağıtılacağını açıklar. Birden fazla kaynak grubunun nasıl hedeflenecek gösterilmektedir.
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.openlocfilehash: c3401346f31d34d92da1f52ca79f691e94e7eb78
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1d636be9ffab5a4398e3e12867e601ce6df382bf
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99491563"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889799"
 ---
 # <a name="resource-group-deployments-with-arm-templates"></a>ARM şablonlarıyla kaynak grubu dağıtımları
 
@@ -301,7 +301,7 @@ Bir kaynak grubu dağıtımından, bir abonelik düzeyine geçebilir ve bir kayn
                     "resources": [
                         {
                             "type": "Microsoft.Resources/resourceGroups",
-                            "apiVersion": "2020-06-01",
+                            "apiVersion": "2020-10-01",
                             "name": "[parameters('newResourceGroupName')]",
                             "location": "[parameters('location')]",
                             "properties": {}

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: contperf-fy21q1
 ms.date: 08/21/2020
-ms.openlocfilehash: d1c32bf749850ac40e23c1a9cb9c5cd7755d45c6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cbaa84c73a5e332dca60286bc35200761e546dd3
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98939431"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864236"
 ---
 # <a name="what-is-azure-hdinsight"></a>Azure HDInsight nedir?
 
@@ -52,31 +52,31 @@ Ayıklama, dönüştürme ve yükleme (ETL), heterojen veri kaynaklarından yap�
 
 Herhangi bir biçimdeki yapılandırılmış veya yapılandırılmamış veriler üzerinde petabayt ölçeğinde etkileşimli sorgular gerçekleştirmek için HDInsight kullanabilirsiniz. Ayrıca bunları BI araçlarına bağlayan modeller de oluşturabilirsiniz.
 
-![HDInsight mimarisi: Veri ambarlama](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-data-warehouse.png "HDInsight veri ambarı mimarisi")
+:::image type="content" source="./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-data-warehouse.png" alt-text="HDInsight mimarisi: Veri ambarlama":::
 
 ### <a name="internet-of-things-iot"></a>Nesnelerin İnterneti (IoT)
 
 Farklı türde cihazlardan gerçek zamanlı olarak alınan akış verilerini işlemek için HDInsight kullanabilirsiniz. Daha fazla bilgi edinmek için [Azure tarafından hazırlanan ve Azure Yönetilen disklerle HDInsight’ta Apache Kafka önizlemesinin genel önizlemeye sunulduğunu duyuran bu blog gönderisini okuyun](https://azure.microsoft.com/blog/announcing-public-preview-of-apache-kafka-on-hdinsight-with-azure-managed-disks/).
 
-![HDInsight mimarisi: Nesnelerin İnterneti](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-iot.png "HDInsight IoT mimarisi")
+:::image type="content" source="./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-iot.png" alt-text="HDInsight mimarisi: Nesnelerin İnterneti":::
 
 ### <a name="data-science"></a>Veri bilimi
 
 Verilerden kritik öngörüleri ayıklayan uygulamalar oluşturmak için HDInsight kullanabilirsiniz. İşletmeniz için gelecekteki eğilimleri tahmin etmek için buna ek olarak Azure Machine Learning de kullanabilirsiniz. Daha fazla bilgi için, [bu müşteri başarı öyküsünü okuyun](https://customers.microsoft.com/story/pros).
 
-![HDInsight mimarisi: Veri bilimi](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-data-science.png "HDInsight veri bilimi mimarisi")
+:::image type="content" source="./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-data-science.png" alt-text="HDInsight mimarisi: Veri bilimi":::
 
 ### <a name="hybrid"></a>Hibrit
 
 Bulutun gelişmiş analiz özelliklerinden yararlanmak üzere mevcut şirket içi büyük veri altyapınızı Azure’a genişletmek için HDInsight kullanabilirsiniz.
 
-![HDInsight mimarisi: Karma](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-hybrid.png "HDInsight karma mimarisi")
+:::image type="content" source="./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-hybrid.png" alt-text="HDInsight mimarisi: Karma":::
 
 ## <a name="cluster-types-in-hdinsight"></a>HDInsight’taki küme türleri
 
 HDInsight belirli küme türlerinin yanı sıra bileşen, yardımcı program ve dil ekleme olanağı gibi küme özelleştirme özelliklerini de içerir. HDInsight şu küme türlerini sunar:
 
-|Küme Türü | Description |
+|Küme Türü | Açıklama |
 |---|---|
 |[Apache Hadoop](./hadoop/apache-hadoop-introduction.md)|İşlem verilerini paralel olarak işlemek ve analiz etmek için, ", YARN kaynak yönetimini ve basit bir MapReduce programlama modelini kullanan bir çerçeve.|
 |[Apache Spark](./spark/apache-spark-overview.md)|Büyük veri analizi uygulamalarının performansını artırmak üzere bellek içi işlemeyi destekleyen açık kaynaklı bir paralel işleme çerçevesidir. Bkz. [HDInsight’ta Apache Spark nedir?](./spark/apache-spark-overview.md)|

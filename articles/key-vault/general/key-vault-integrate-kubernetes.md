@@ -7,17 +7,17 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: 907f95bb150e0e5127c129595739a15ea712771b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b83905280faf4486d2febfbd81514e1d85273ad5
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104604721"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950765"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Öğretici: Kubernetes 'te gizli dizi için Azure Key Vault sağlayıcıyı yapılandırma ve çalıştırma
 
 > [!IMPORTANT]
-> Gizli dizileri deposu CSı sürücüsü, Azure teknik desteği tarafından desteklenmeyen açık kaynaklı bir projem. Lütfen sayfanın en altındaki GitHub bağlantısında, CSı sürücüsüyle ilgili tüm geri bildirimleri ve sorunları bildirin Key Vault tümleştirme. Bu araç, kullanıcıların kümelere kendi kendine yüklenmesi ve topluluğumuza geri bildirim toplaması için sağlanır.
+> Gizli dizileri deposu CSı sürücüsü, Azure teknik desteği tarafından desteklenmeyen açık kaynaklı bir projem. Lütfen CSı sürücü [GitHub](https://github.com/kubernetes-sigs/secrets-store-csi-driver)'DA, csı sürücüsü Key Vault tümleştirmesiyle ilgili tüm geri bildirimleri ve sorunları bildirin. Bu araç, kullanıcıların kümelere kendi kendine yüklenmesi ve topluluğumuza geri bildirim toplaması için sağlanır.
 
 Bu öğreticide, gizli dizileri bir birim olarak Kubernetes Pod 'ye bağlamak için gizli dizi kapsayıcısı depolama arabirimi (CSI) sürücüsünü kullanarak Azure anahtar kasanızdan gizli dizi ve parola alırsınız.
 

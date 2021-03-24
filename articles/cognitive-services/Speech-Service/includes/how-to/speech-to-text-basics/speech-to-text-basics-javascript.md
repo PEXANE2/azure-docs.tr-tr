@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/04/2021
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: cc5e306aa9677c7370d03dbb26ef3fe69293a630
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: dd92cf24cf007418e52cb5091eb390b46d7a5571
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102180064"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104987801"
 ---
 Konuşma hizmetinin temel özelliklerinden biri de insan konuşmanızı tanıyabilme ve (genellikle konuşma-metin olarak adlandırılır). Bu hızlı başlangıçta, uygulama ve ürünlerinize yönelik konuşma SDK 'sını kullanarak yüksek kaliteli bir konuşmayı metne dönüştürme işlemini nasıl gerçekleştireceğinizi öğreneceksiniz.
 
@@ -62,11 +62,7 @@ Konuşmayı bir mikrofondan tanıma **Node.jsdesteklenmez** ve yalnızca tarayı
 
 ## <a name="recognize-from-file"></a>Dosyadan tanı 
 
-Node.js bir ses dosyasından konuşmayı tanımak için, bir gönderme akışı kullanan alternatif bir tasarım deseninin kullanılması gerekir, çünkü JavaScript `File` nesnesi bir Node.js çalışma zamanında kullanılamaz. Aşağıdaki kod:
-
-* Kullanarak bir gönderme akışı oluşturur `createPushStream()`
-* `.wav`Bir okuma akışı oluşturarak dosyayı açar ve gönderme akışına yazar
-* Gönderim akışını kullanarak bir ses yapılandırması oluşturur
+Bir ses dosyasından konuşmayı tanımak için, `AudioConfig` `fromWavFileInput()` bir nesnesi kabul eden bir using oluşturun `Buffer` . Ardından, ve ' yi geçirerek bir başlatın [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest) `audioConfig` `speechConfig` .
 
 ```javascript
 const fs = require('fs');
@@ -74,6 +70,31 @@ const sdk = require("microsoft-cognitiveservices-speech-sdk");
 const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
 
 function fromFile() {
+    let audioConfig = sdk.AudioConfig.fromWavFileInput(fs.readFileSync("YourAudioFile.wav"));
+    let recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
+
+    recognizer.recognizeOnceAsync(result => {
+        console.log(`RECOGNIZED: Text=${result.text}`);
+        recognizer.close();
+    });
+}
+fromFile();
+```
+
+## <a name="recognize-from-in-memory-stream"></a>Bellek içi akıştan tanıma
+
+Birçok kullanım durumu için, ses veriniz blob depolamadan geliyor olabilir, aksi takdirde [`ArrayBuffer`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer) veya benzer bir ham veri yapısı olarak zaten bellek içi olabilir. Aşağıdaki kod:
+
+* Kullanarak bir anında iletme akışı oluşturur `createPushStream()` .
+* `.wav`Tanıtım amacıyla kullanarak bir dosya okur `fs.createReadStream` , ancak zaten bir içinde ses veriniz varsa `ArrayBuffer` , içeriği giriş akışına yazmak için doğrudan atlayabilirsiniz.
+* Gönderim akışını kullanarak bir ses yapılandırması oluşturur.
+
+```javascript
+const fs = require('fs');
+const sdk = require("microsoft-cognitiveservices-speech-sdk");
+const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
+
+function fromStream() {
     let pushStream = sdk.AudioInputStream.createPushStream();
 
     fs.createReadStream("YourAudioFile.wav").on('data', function(arrayBuffer) {
@@ -89,7 +110,7 @@ function fromFile() {
         recognizer.close();
     });
 }
-fromFile();
+fromStream();
 ```
 
 Giriş olarak bir gönderim akışı kullanmak, ses verilerinin ham PCM olduğunu varsayar, ör. herhangi bir üst bilgi atlanıyor.

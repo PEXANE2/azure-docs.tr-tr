@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/04/2020
-ms.openlocfilehash: 14268e58296554cedc9488e48b41719421797a57
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2146ccb0c4d7f263c3e1a69db9b172649fcd25ea
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98933281"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863505"
 ---
 # <a name="optimize-clusters-with-apache-ambari-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache ambarı ile kümeleri iyileştirme
 
@@ -20,7 +20,7 @@ Ambarı Web Kullanıcı arabirimini kullanmaya giriş için bkz [. Apache ambar�
 
 Küme kimlik bilgilerinizle, ambarı ' nda oturum açın `https://CLUSTERNAME.azurehdidnsight.net` . İlk ekranda Genel Bakış Panosu görüntülenir.
 
-![Apache ambarı Kullanıcı panosu görüntülendi](./media/hdinsight-changing-configs-via-ambari/apache-ambari-dashboard.png)
+:::image type="content" source="./media/hdinsight-changing-configs-via-ambari/apache-ambari-dashboard.png" alt-text="Apache ambarı Kullanıcı panosu görüntülendi":::
 
 Ambarı Web Kullanıcı arabirimi, Konakları, Hizmetleri, uyarıları, konfigürasyonları ve görünümleri yönetmek için kullanılır. Bir HDInsight kümesi oluşturmak veya Hizmetleri yükseltmek için ambarı kullanılamaz. Ayrıca yığınları ve sürümleri yönetemez, ana bilgisayarları kullanımdan çıkarmayı veya yeniden komisyon veya kümeye hizmet ekleme.
 
@@ -28,7 +28,7 @@ Ambarı Web Kullanıcı arabirimi, Konakları, Hizmetleri, uyarıları, konfigü
 
 Yapılandırma ayarları belirli bir hizmeti ayarlamanıza yardımcı olur. Hizmetin yapılandırma ayarlarını değiştirmek için **Hizmetler** kenar çubuğundan (solda) hizmeti seçin. Ardından hizmet ayrıntısı sayfasında **, yapılandırma sekmesine gidin** .
 
-![Apache ambarı Hizmetleri kenar çubuğu](./media/hdinsight-changing-configs-via-ambari/ambari-services-sidebar.png)
+:::image type="content" source="./media/hdinsight-changing-configs-via-ambari/ambari-services-sidebar.png" alt-text="Apache ambarı Hizmetleri kenar çubuğu":::
 
 ## <a name="modify-namenode-java-heap-size"></a>Süs Code Java yığın boyutunu değiştir
 
@@ -38,23 +38,23 @@ Süs Yot Java yığın boyutunu değiştirmek için:
 
 1. Hizmetler **kenar çubuğundan bir i seçin ve** **configs** sekmesine gidin.
 
-    ![Apache ambarı, yapılandırma](./media/hdinsight-changing-configs-via-ambari/ambari-apache-hdfs-config.png)
+    :::image type="content" source="./media/hdinsight-changing-configs-via-ambari/ambari-apache-hdfs-config.png" alt-text="Apache ambarı, yapılandırma":::
 
 1. **Süs Code Java yığın boyutu** ayarını bulun. Belirli bir ayarı yazmak ve bulmak için **filtre** metin kutusunu da kullanabilirsiniz. Ayar adının yanındaki **kalem** simgesini seçin.
 
-    ![Apache ambarı süs Code Java yığın boyutu](./media/hdinsight-changing-configs-via-ambari/ambari-java-heap-size.png)
+    :::image type="content" source="./media/hdinsight-changing-configs-via-ambari/ambari-java-heap-size.png" alt-text="Apache ambarı süs Code Java yığın boyutu":::
 
 1. Metin kutusuna yeni değeri yazın ve ardından değişikliği kaydetmek için **ENTER** tuşuna basın.
 
-    ![Ambarı düzenleme süs Code Java yığın size1](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edit1.png)
+    :::image type="content" source="./media/hdinsight-changing-configs-via-ambari/java-heap-size-edit1.png" alt-text="Ambarı düzenleme süs Code Java yığın size1":::
 
 1. Süs Code Java yığın boyutu 2 GB 'tan 1 GB olarak değişir.
 
-    ![Düzenlenmiş süs Code Java yığın size2](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edited.png)
+    :::image type="content" source="./media/hdinsight-changing-configs-via-ambari/java-heap-size-edited.png" alt-text="Düzenlenmiş süs Code Java yığın size2":::
 
 1. Yapılandırma ekranının üstündeki yeşil **Kaydet** düğmesine tıklayarak yaptığınız değişiklikleri kaydedin.
 
-    ![' Apache ambarı kayıt yapılandırması '](./media/hdinsight-changing-configs-via-ambari/ambari-save-changes1.png)
+    :::image type="content" source="./media/hdinsight-changing-configs-via-ambari/ambari-save-changes1.png" alt-text="' Apache ambarı kayıt yapılandırması '":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

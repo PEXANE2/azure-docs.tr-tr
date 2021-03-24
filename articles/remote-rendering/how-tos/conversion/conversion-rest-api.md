@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: f33e5717cd5556e72d996e7e943867c16805e71b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e3db4b9c9b4a05142f1327f681b067748cb1a2f9
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101705186"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951649"
 ---
 # <a name="use-the-model-conversion-rest-api"></a>Model dönüştürme REST API’yi kullanma
 
@@ -18,9 +18,9 @@ ms.locfileid: "101705186"
 
 ## <a name="rest-api-reference"></a>REST API başvurusu
 
-Uzaktan Işleme REST API başvuru belgeleri [burada](/rest/api/mixedreality/2021-01-01preview/remoterendering)ve Swagger tanımlarını [burada](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mixedreality/data-plane/Microsoft.MixedReality)bulabilirsiniz.
+Uzaktan Işleme REST API başvuru belgeleri [burada](/rest/api/mixedreality/2021-01-01/remoterendering)ve Swagger tanımlarını [burada](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mixedreality/data-plane/Microsoft.MixedReality)bulabilirsiniz.
 
-*Conversion.ps1* adlı *betikler* klasöründeki [ARR örnekleri deposunda](https://github.com/Azure/azure-remote-rendering) , hizmetimizin kullanımını gösteren bir PowerShell betiği sağlıyoruz. Betik ve yapılandırması burada açıklanmıştır: [örnek PowerShell betikleri](../../samples/powershell-example-scripts.md). Ayrıca, [.net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/mixedreality/Azure.MixedReality.RemoteRendering), Java ve Python için SDK 'lar sunuyoruz.
+*Conversion.ps1* adlı *betikler* klasöründeki [ARR örnekleri deposunda](https://github.com/Azure/azure-remote-rendering) , hizmetimizin kullanımını gösteren bir PowerShell betiği sağlıyoruz. Betik ve yapılandırması burada açıklanmıştır: [örnek PowerShell betikleri](../../samples/powershell-example-scripts.md). Ayrıca [.net](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/remoterendering/Azure.MixedReality.RemoteRendering/README.md) ve [Java]( https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/remoterendering/azure-mixedreality-remoterendering/README.md)için SDK 'lar sunuyoruz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

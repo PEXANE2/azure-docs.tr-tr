@@ -11,12 +11,12 @@ ms.date: 03/15/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: Otomatik veri işleme, belge işleme, otomatik veri girişi, form işleme
-ms.openlocfilehash: fdd482a6b0d6ca53d99cd17076ccd9a3545f7879
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.openlocfilehash: 4465f88e3b0ccab8eace1936f426af8dd32af27b
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103467331"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872260"
 ---
 # <a name="what-is-form-recognizer"></a>Form Tanıma nedir?
 
@@ -26,7 +26,16 @@ Azure form tanıyıcı, makine öğrenimi teknolojisini kullanarak otomatik veri
 
 Form tanıyıcı özel belge işleme modellerinden, faturalar, alındılar, kimlikler ve iş kartları ve düzen modeli için önceden oluşturulmuş modellerden oluşur. Karmaşıklığı azaltmak ve iş akışınız veya uygulamanızla bütünleştirmek için bir REST API veya istemci kitaplığı SDK 'Ları kullanarak form tanıyıcı modellerini çağırabilirsiniz.
 
-Form tanıyıcı aşağıdaki hizmetlerden oluşur:
+Bu belge aşağıdaki makale türlerini içerir:  
+
+* [**Hızlı**](quickstarts/client-library.md) başlangıçlarda, hizmette istek yapma konusunda size kılavuzluk eden başlangıç yönergeleri bulunur.  
+* [**Nasıl yapılır kılavuzlarında**](build-training-data-set.md) , hizmetin daha belirli veya özelleştirilmiş yollarla kullanılmasına ilişkin yönergeler bulunur.  
+* [**Kavramlar**](concept-layout.md) , hizmet işlevselliği ve özelliklerinin ayrıntılı açıklamalarını sağlar.  
+* [**Öğreticiler**](tutorial-bulk-processing.md) daha fazla iş çözümlerinde hizmeti bir bileşen olarak nasıl kullanacağınızı gösteren kılavuzlardır.  
+
+## <a name="form-recognizer-features"></a>Form tanıyıcı özellikleri
+
+Form tanıyıcı ile, bu özelliklerle form verilerini kolayca ayıklayabilir ve analiz edebilirsiniz:
 
 * **[Düzen API 'si](#layout-api)** -metin, seçim işaretleri ve tablo yapılarını, belgelerden sınırlayıcı kutu koordinatlarıyla birlikte ayıklayın.
 * **[Özel modeller](#custom-models)** -metin, anahtar/değer çiftleri, seçim işaretleri ve formlardan tablo verilerini ayıklar. Bu modeller kendi verileriniz ile eğitilmiş olduğundan, formlarınıza göre uyarlanmıştır.
@@ -38,11 +47,10 @@ Form tanıyıcı aşağıdaki hizmetlerden oluşur:
   * [Kartvizitler](./concept-business-cards.md)
   * [Kimlik (ID) kartları](./concept-identification-cards.md)
 
-## <a name="try-it-out"></a>Deneyin
 
-Form tanıyıcı hizmetini denemek için çevrimiçi örnek UI aracına gidin:
-<!-- markdownlint-disable MD025 -->
-<!-- markdownlint-disable MD024 -->
+## <a name="get-started"></a>başlarken
+
+Düzen, önceden oluşturulmuş modeller denemek ve belgeleriniz için özel bir model geliştirmek üzere örnek form tanıyıcı aracını kullanın. Form tanıyıcı hizmetini denemek için bir Azure aboneliğine ([**ücretsiz olarak bir tane oluşturun**](https://azure.microsoft.com/free/cognitive-services)) ve bir [**form tanıyıcı kaynak**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) uç noktası ve anahtarına ihtiyacınız olacaktır.
 
 ### <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)
 
@@ -55,8 +63,45 @@ Form tanıyıcı hizmetini denemek için çevrimiçi örnek UI aracına gidin:
 > [Form tanıyıcıyı deneyin](https://fott.azurewebsites.net/)
 
 ---
+Belgelerinizden veri çıkarmaya başlamak için [istemci kitaplığı/REST API hızlı](./quickstarts/client-library.md) başlangıcı ' nı izleyin. Teknolojiyi öğrenirken ücretsiz hizmeti kullanmanızı öneririz. Ücretsiz sayfa sayısının ayda 500 ile sınırlı olduğunu unutmayın.
 
-Form tanıyıcı hizmetini denemek için bir Azure aboneliğine ([ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)) ve bir [form tanıyıcı kaynak](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) uç noktası ve anahtarına ihtiyacınız olacaktır.
+Kullanmaya başlamak için REST örneklerini (GitHub) de kullanabilirsiniz. 
+
+* Belgelerden metin, seçim işaretleri ve tablo yapısını Ayıkla
+  * [Düzen verilerini ayıklama-Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-layout.md)
+* Özel modeller eğitme ve form verilerini ayıklama
+  * [Etiketler olmadan eğitme-Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-train-extract.md)
+  * [Etiketlerle eğitme-Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md)
+* Faturalardan verileri Ayıkla
+  * [Fatura verilerini Ayıkla-Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-invoices.md)
+* Satış makbuzlarından veri ayıklama
+  * [Alma verilerini Ayıkla-Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-receipts.md)
+* Kartvizitlerden veri ayıklama
+  * [İş kartı verilerini Ayıkla-Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-business-cards.md)
+
+### <a name="review-the-rest-apis"></a>REST API 'Leri gözden geçirme
+
+Modelleri eğitmek ve formlardan yapılandırılmış verileri ayıklamak için aşağıdaki API 'Leri kullanacaksınız.
+
+|Ad |Açıklama |
+|---|---|
+| **Düzeni çözümle** | Belgedeki metin, seçim işaretleri, tablolar ve yapıyı ayıklamak için akış olarak geçirilmiş bir belgeyi çözümleme |
+| **Özel modeli eğitme**| Formlarınızı aynı türden beş form kullanarak analiz etmek için yeni bir model eğitme. _Uselabelfile_ parametresini, `true` el ile etiketlenmiş verileri eğit olacak şekilde ayarlayın. |
+| **Formu çözümle** |Metin, anahtar/değer çiftleri ve tablolardaki tabloları özel modelinize çıkarmak için akış olarak geçirilmiş bir formu analiz edin.  |
+| **Faturayı çözümle** | Ana bilgileri, tabloları ve diğer fatura metinlerini ayıklamak için bir faturayı çözümleyin.|
+| **Okundu bilgisi** | Anahtar bilgilerini ve diğer makbuz metnini ayıklamak için bir makbuz belgesi çözümleyin.|
+| **Analiz KIMLIĞI** | Anahtar bilgilerini ve diğer tanımlama kartı metnini ayıklamak için bir KIMLIK kartı belgesini çözümleyin.|
+| **Iş kartını çözümle** | Anahtar bilgileri ve metin ayıklamak için bir iş kartını analiz edin.|
+
+### <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)
+
+Daha fazla bilgi edinmek için [REST API başvuru belgelerini](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm) inceleyin. API 'nin önceki bir sürümüne alışkın değilseniz, son değişiklikler hakkında bilgi edinmek için [Yenilikler](./whats-new.md) makalesine bakın.
+
+### <a name="v20"></a>[v2.0](#tab/v2-0)
+
+Daha fazla bilgi edinmek için [REST API başvuru belgelerini](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm) inceleyin. API 'nin önceki bir sürümüne alışkın değilseniz, son değişiklikler hakkında bilgi edinmek için [Yenilikler](./whats-new.md) makalesine bakın.
+
+---
 
 ## <a name="layout-api"></a>Düzen API 'SI
 
@@ -113,61 +158,6 @@ Kimlik (ID) kartları modeli, dünya genelinde Passport ve ABD sürücü lisansl
 Iş kartları modeli, kişinin adı, iş unvanı, adres, e-posta, şirket ve telefon numarası gibi bilgileri, iş kartlarından Ingilizce olarak ayıklamanızı sağlar. Daha fazla bilgi için bkz. [iş kartları](./concept-business-cards.md) kavramsal Kılavuzu.
 
 :::image type="content" source="./media/overview-business-card.jpg" alt-text="örnek iş kartı" lightbox="./media/overview-business-card.jpg":::
-
-## <a name="get-started"></a>başlarken
-
-Düzen, önceden oluşturulmuş modeller denemek ve belgeleriniz için özel bir model geliştirmek üzere örnek form tanıyıcı aracını kullanın:  
-
-### <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)
-
-> [!div class="nextstepaction"]
-> [Form tanıyıcıyı deneyin](https://fott-preview.azurewebsites.net/)
-
-### <a name="v20"></a>[v2.0](#tab/v2-0)
-
-> [!div class="nextstepaction"]
-> [Form tanıyıcıyı deneyin](https://fott.azurewebsites.net/)
-
----
-Belgelerinizden veri çıkarmaya başlamak için [istemci kitaplığı/REST API hızlı](./quickstarts/client-library.md) başlangıcı ' nı izleyin. Teknolojiyi öğrenirken ücretsiz hizmeti kullanmanızı öneririz. Ücretsiz sayfa sayısının ayda 500 ile sınırlı olduğunu unutmayın.
-
-Kullanmaya başlamak için REST örneklerini (GitHub) de kullanabilirsiniz. 
-
-* Belgelerden metin, seçim işaretleri ve tablo yapısını Ayıkla
-  * [Düzen verilerini ayıklama-Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-layout.md)
-* Özel modeller eğitme ve form verilerini ayıklama
-  * [Etiketler olmadan eğitme-Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-train-extract.md)
-  * [Etiketlerle eğitme-Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md)
-* Faturalardan verileri Ayıkla
-  * [Fatura verilerini Ayıkla-Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-invoices.md)
-* Satış makbuzlarından veri ayıklama
-  * [Alma verilerini Ayıkla-Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-receipts.md)
-* Kartvizitlerden veri ayıklama
-  * [İş kartı verilerini Ayıkla-Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-business-cards.md)
-
-### <a name="review-the-rest-apis"></a>REST API 'Leri gözden geçirme
-
-Modelleri eğitmek ve formlardan yapılandırılmış verileri ayıklamak için aşağıdaki API 'Leri kullanacaksınız.
-
-|Ad |Açıklama |
-|---|---|
-| **Düzeni çözümle** | Belgedeki metin, seçim işaretleri, tablolar ve yapıyı ayıklamak için akış olarak geçirilmiş bir belgeyi çözümleme |
-| **Özel modeli eğitme**| Formlarınızı aynı türden beş form kullanarak analiz etmek için yeni bir model eğitme. _Uselabelfile_ parametresini, `true` el ile etiketlenmiş verileri eğit olacak şekilde ayarlayın. |
-| **Formu çözümle** |Metin, anahtar/değer çiftleri ve tablolardaki tabloları özel modelinize çıkarmak için akış olarak geçirilmiş bir formu analiz edin.  |
-| **Faturayı çözümle** | Ana bilgileri, tabloları ve diğer fatura metinlerini ayıklamak için bir faturayı çözümleyin.|
-| **Okundu bilgisi** | Anahtar bilgilerini ve diğer makbuz metnini ayıklamak için bir makbuz belgesi çözümleyin.|
-| **Analiz KIMLIĞI** | Anahtar bilgilerini ve diğer tanımlama kartı metnini ayıklamak için bir KIMLIK kartı belgesini çözümleyin.|
-| **Iş kartını çözümle** | Anahtar bilgileri ve metin ayıklamak için bir iş kartını analiz edin.|
-
-### <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)
-
-Daha fazla bilgi edinmek için [REST API başvuru belgelerini](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm) inceleyin. API 'nin önceki bir sürümüne alışkın değilseniz, son değişiklikler hakkında bilgi edinmek için [Yenilikler](./whats-new.md) makalesine bakın.
-
-### <a name="v20"></a>[v2.0](#tab/v2-0)
-
-Daha fazla bilgi edinmek için [REST API başvuru belgelerini](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm) inceleyin. API 'nin önceki bir sürümüne alışkın değilseniz, son değişiklikler hakkında bilgi edinmek için [Yenilikler](./whats-new.md) makalesine bakın.
-
----
 
 ## <a name="input-requirements"></a>Giriş gereksinimleri
 

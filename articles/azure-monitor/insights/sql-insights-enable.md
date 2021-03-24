@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/15/2021
-ms.openlocfilehash: 5ab51fc4ea64dfd678f5c9acfc80b5e380782153
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ac37a6de4197d5e7cae20d2bde759b98fe474047
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104610142"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889629"
 ---
 # <a name="enable-sql-insights-preview"></a>SQL Insights 'ı etkinleştir (Önizleme)
 Bu makalede, SQL dağıtımlarınızı izlemek için [SQL Insights](sql-insights-overview.md) 'ın nasıl etkinleştirileceği açıklanır. İzleme, SQL dağıtımlarınıza bir bağlantı yapan ve izleme verilerini toplamak için dinamik yönetim görünümleri (DMVs) kullanan bir Azure sanal makineden gerçekleştirilir. Hangi veri kümelerinin toplanacağını ve bir izleme profili kullanan koleksiyon sıklığını denetleyebilirsiniz.
@@ -92,13 +92,16 @@ Her SQL türü, izleme sanal makinenizin SQL 'e güvenli bir şekilde erişmesi 
 
 ### <a name="azure-sql-databases"></a>Azure SQL Veritabanları  
 
-[Öğretici-Azure özel uç nokta kullanarak Azure SQL Server 'A bağlanma-Azure Portal](../../private-link/tutorial-private-endpoint-sql-portal.md) , veritabanınıza erişmek için kullanabileceğiniz özel bir uç noktanın nasıl ayarlanacağını gösteren bir örnek sağlar.  Bu yöntemi kullanırsanız, izleme sanal makinelerinizin özel uç nokta için kullanacağınız VNET ve alt ağda olduğundan emin olmanız gerekir.  Daha önce yapmadıysanız, veritabanınızda özel uç nokta oluşturabilirsiniz. 
+SQL Insights, Azure SQL veritabanınıza hem genel uç nokta hem de sanal ağı aracılığıyla erişmeyi destekler.
 
-SQL veritabanınıza erişim sağlamak için bir [güvenlik duvarı ayarı](../../azure-sql/database/firewall-configure.md) kullanırsanız, izleme sanal MAKINESININ genel IP adresinden erişim sağlamak için bir güvenlik duvarı kuralı eklemeniz gerekir. Güvenlik Duvarı ayarlarına portalda **Azure SQL veritabanına genel bakış** sayfasından erişebilirsiniz. 
+Genel uç nokta üzerinden erişim için, **güvenlik duvarı ayarları** sayfası ve [IP güvenlik duvarı ayarları](https://docs.microsoft.com/azure/azure-sql/database/network-access-controls-overview#ip-firewall-rules) bölümü altına bir kural eklersiniz.  Bir sanal ağdan erişim belirtmek için, [sanal ağ güvenlik duvarı kurallarını](https://docs.microsoft.com/azure/azure-sql/database/network-access-controls-overview#virtual-network-firewall-rules) ayarlayabilir ve [Azure izleyici aracısının gerektirdiği hizmet etiketlerini](https://docs.microsoft.com/azure/azure-monitor/agents/azure-monitor-agent-overview#networking)ayarlayabilirsiniz.  [Bu makalede](https://docs.microsoft.com/azure/azure-sql/database/network-access-controls-overview#ip-vs-virtual-network-firewall-rules) , bu iki güvenlik duvarı kuralı türü arasındaki farklar açıklanmaktadır.
 
 :::image type="content" source="media/sql-insights-enable/set-server-firewall.png" alt-text="Sunucu güvenlik duvarı ayarla" lightbox="media/sql-insights-enable/set-server-firewall.png":::
 
 :::image type="content" source="media/sql-insights-enable/firewall-settings.png" alt-text="Güvenlik Duvarı ayarları." lightbox="media/sql-insights-enable/firewall-settings.png":::
+
+> [!NOTE]
+> SQL Insights Şu anda Azure SQL veritabanı için Azure özel uç noktasını desteklememektedir.  [Azure izleyici aracısının desteklediği](https://docs.microsoft.com/azure/azure-monitor/agents/azure-monitor-agent-overview#networking)ağ güvenlik grubunuzda veya sanal ağ güvenlik duvarı ayarlarınızda [hizmet etiketlerinin](https://docs.microsoft.com/azure/virtual-network/service-tags-overview) kullanılmasını öneririz.
 
 ### <a name="azure-sql-managed-instances"></a>Azure SQL Yönetilen Örnekleri 
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 06/02/2020
+ms.date: 03/08/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f8f270f740951b95b0d4c00cbcf9b08e20a8e0c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5d332c831cc764c61a4672ea5ad1db231b68e106
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96743733"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952380"
 ---
 # <a name="licensing-requirements-for-azure-active-directory-self-service-password-reset"></a>Azure Active Directory self servis parola sıfırlama için lisans gereksinimleri
 
@@ -26,7 +26,7 @@ Bu makalede, self servis parola sıfırlamanın lisanslanması ve kullanılması
 
 ## <a name="compare-editions-and-features"></a>Sürümleri ve özellikleri karşılaştırma
 
-SSPR Kullanıcı başına lisanslanır. Uyumluluğun korunması için, kuruluşların kullanıcılarına uygun lisansı ataması gerekir.
+SSPR yalnızca kiracı için bir lisans gerektirir. 
 
 Aşağıdaki tabloda parola değiştirme, sıfırlama veya şirket içi geri yazma için farklı SSPR senaryoları ve hangi SKU 'Ların özelliği sağladığı özetlenmektedir.
 
@@ -46,12 +46,6 @@ Maliyetler de dahil olmak üzere ek lisans bilgileri için aşağıdaki sayfalar
 * [Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)
 * [Microsoft 365 Kurumsal](https://www.microsoft.com/microsoft-365/enterprise)
 * [Microsoft 365 İş](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)
-
-## <a name="enable-group-or-user-based-licensing"></a>Grup veya Kullanıcı tabanlı lisanslamayı etkinleştirme
-
-Azure AD, grup tabanlı lisanslamayı destekler. Yöneticiler, lisansları tek seferde atamak yerine bir kullanıcı grubuna toplu olarak atayabilirler. Daha fazla bilgi için bkz. [lisanslarla ilgili sorunları atama, doğrulama ve çözme](../enterprise-users/licensing-groups-assign.md#step-1-assign-the-required-licenses).
-
-Bazı Microsoft Hizmetleri tüm konumlarda kullanılamaz. Bir lisansın bir kullanıcıya atanabilmesi için, yöneticinin kullanıcı üzerinde **Kullanım konumu** özelliğini belirtmesi gerekir. Lisansların atanması Azure Portal **Kullanıcı**  >  **profili**  >  **ayarları** bölümünde yapılabilir. *Grup lisansı atamasını kullandığınızda, kullanım konumu belirtilmemiş tüm kullanıcılar dizinin konumunu alır.*
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
