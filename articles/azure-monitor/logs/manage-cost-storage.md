@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/03/2021
 ms.author: bwren
-ms.openlocfilehash: 89264bc17180aaf47611aef73c9fd20427bce104
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 4d546401baa7edc7725e3fdb23065009895f9c1e
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104772289"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105027440"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure İzleyici Günlükleri ile kullanımı ve maliyetleri yönetme    
 
@@ -93,7 +93,7 @@ Kullanımınızı daha iyi anlamak için [Azure portalından kullanım bilgileri
     
 3. Son 31 güne göre Tahmini maliyetleri gözden geçirdikten sonra, fiyatlandırma katmanını değiştirmeye karar verirseniz **Seç**' e tıklayın.  
 
-Ayrıca, parametresini kullanarak (Azure Resource Manager şablonunda) [Azure Resource Manager aracılığıyla fiyatlandırma katmanını ayarlayabilirsiniz](../samples/resource-manager-workspace.md) `sku` `pricingTier` . 
+Ayrıca, parametresini kullanarak (Azure Resource Manager şablonunda) [Azure Resource Manager aracılığıyla fiyatlandırma katmanını ayarlayabilirsiniz](./resource-manager-workspace.md) `sku` `pricingTier` . 
 
 ## <a name="legacy-pricing-tiers"></a>Eski fiyatlandırma katmanları
 
@@ -145,7 +145,7 @@ Aşağıdaki adımlarda, çalışma alanınızda günlük verilerinin ne kadar s
 
 Bekletme düşürüldü ise, yeni saklama ayarından daha eski olan veriler kaldırılmadan birkaç gün yetkisiz kullanım süresi vardır. 
 
-**Veri saklama** sayfası, 30, 31, 60, 90, 120, 180, 270, 365, 550 ve 730 gün bekletme ayarlarına izin verir. Başka bir ayar gerekliyse, parametresi kullanılarak [Azure Resource Manager](../samples/resource-manager-workspace.md) yapılandırılabilir `retentionInDays` . Veri bekletmesini 30 güne ayarladığınızda, parametresini kullanarak eski verilerin hemen temizliğini tetikleyebilirsiniz `immediatePurgeDataOn30Days` (birkaç günlük yetkisiz kullanım süresini ortadan kaldırır). Bu, acil veri kaldırma işleminin zorunludur uyumlulukla ilgili senaryolar için yararlı olabilir. Bu anlık Temizleme işlevselliği yalnızca Azure Resource Manager aracılığıyla sunulur. 
+**Veri saklama** sayfası, 30, 31, 60, 90, 120, 180, 270, 365, 550 ve 730 gün bekletme ayarlarına izin verir. Başka bir ayar gerekliyse, parametresi kullanılarak [Azure Resource Manager](./resource-manager-workspace.md) yapılandırılabilir `retentionInDays` . Veri bekletmesini 30 güne ayarladığınızda, parametresini kullanarak eski verilerin hemen temizliğini tetikleyebilirsiniz `immediatePurgeDataOn30Days` (birkaç günlük yetkisiz kullanım süresini ortadan kaldırır). Bu, acil veri kaldırma işleminin zorunludur uyumlulukla ilgili senaryolar için yararlı olabilir. Bu anlık Temizleme işlevselliği yalnızca Azure Resource Manager aracılığıyla sunulur. 
 
 30 günlük tutulan çalışma alanları, verileri 31 gün boyunca koruyabilir. Verilerin yalnızca 30 gün boyunca tutulması gerekiyorsa, bekletmenin 30 güne ve parametresiyle ayarlanması için Azure Resource Manager kullanın `immediatePurgeDataOn30Days` .  
 
@@ -322,7 +322,7 @@ Faturanızda bulunan birim sayısı, sorguda temsil edilen düğüm * ay birimle
 
 
 > [!TIP]
-> `find`Veri türlerinde taramalar için [kaynakların yürütülmesi yoğun](../log-query/query-optimization.md#query-performance-pane) olduğundan, bu sorguları dikkatli bir şekilde kullanın. **Bilgisayar başına** sonuçlara Ihtiyacınız yoksa kullanım verileri türü üzerinde sorgulama yapın (aşağıya bakın).
+> `find`Veri türlerinde taramalar için [kaynakların yürütülmesi yoğun](./query-optimization.md#query-performance-pane) olduğundan, bu sorguları dikkatli bir şekilde kullanın. **Bilgisayar başına** sonuçlara Ihtiyacınız yoksa kullanım verileri türü üzerinde sorgulama yapın (aşağıya bakın).
 
 ## <a name="understanding-ingested-data-volume"></a>Alınan veri birimini anlama
 
@@ -406,7 +406,7 @@ find where TimeGenerated > ago(24h) project _IsBillable, Computer
 ```
 
 > [!TIP]
-> `find`Veri türlerinde taramalar için [kaynakların yürütülmesi yoğun](../log-query/query-optimization.md#query-performance-pane) olduğundan, bu sorguları dikkatli bir şekilde kullanın. **Bilgisayar başına** sonuçlara gerek yoksa kullanım verileri türü üzerinde sorgulama yapın.
+> `find`Veri türlerinde taramalar için [kaynakların yürütülmesi yoğun](./query-optimization.md#query-performance-pane) olduğundan, bu sorguları dikkatli bir şekilde kullanın. **Bilgisayar başına** sonuçlara gerek yoksa kullanım verileri türü üzerinde sorgulama yapın.
 
 ### <a name="data-volume-by-azure-resource-resource-group-or-subscription"></a>Azure kaynağına, kaynak grubuna veya aboneliğe göre veri hacmi
 
@@ -445,7 +445,7 @@ Ayrıca, gerekirse daha kapsamlı bir şekilde de ayrıştırılabilir `_Resourc
 ```
 
 > [!TIP]
-> `find`Veri türlerinde taramalar için [kaynakların yürütülmesi yoğun](../log-query/query-optimization.md#query-performance-pane) olduğundan, bu sorguları dikkatli bir şekilde kullanın. Abonelik başına sonuçlara, kaynak grubuna veya kaynak adına ihtiyaç duymayın, ardından kullanım veri türü üzerinde sorgulama yapın.
+> `find`Veri türlerinde taramalar için [kaynakların yürütülmesi yoğun](./query-optimization.md#query-performance-pane) olduğundan, bu sorguları dikkatli bir şekilde kullanın. Abonelik başına sonuçlara, kaynak grubuna veya kaynak adına ihtiyaç duymayın, ardından kullanım veri türü üzerinde sorgulama yapın.
 
 > [!WARNING]
 > Kullanım verileri türünün bazı alanları şemada hala kullanım dışı bırakılmıştır ve değerleri artık doldurulmayacaktır. Bunlar, **bilgisayar** ve alma (**totaltoplu işler**, **batcheswithınsla**, **batchesoutsidesla**, **batchescaıda** **averageprocessingtimems**) ile ilgili alanlardır.
@@ -479,7 +479,7 @@ Toplanan günlüklerin hacmini azaltmaya yönelik bazı öneriler şunlardır:
 
 | Yüksek veri hacminin kaynağı | Veri hacmi nasıl azaltılır |
 | -------------------------- | ------------------------- |
-| Kapsayıcı İçgörüleri         | [Kapsayıcı öngörülerini](../insights/container-insights-cost.md#controlling-ingestion-to-reduce-cost) yalnızca gerekli verileri toplayacak şekilde yapılandırın. |
+| Kapsayıcı İçgörüleri         | [Kapsayıcı öngörülerini](../containers/container-insights-cost.md#controlling-ingestion-to-reduce-cost) yalnızca gerekli verileri toplayacak şekilde yapılandırın. |
 | Güvenlik olayları            | [Yaygın veya en az güvenlik olaylarını](../../security-center/security-center-enable-data-collection.md#data-collection-tier) seçin <br> Güvenlik denetimi ilkesini yalnızca gerekli olayları toplayacak şekilde değiştirin. Özellikle, şunlarla ilgili olayları toplamak gerekip gerekmediğini gözden geçirin: <br> - [filtre platformu denetimi](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772749(v=ws.10)) <br> - [kayıt defteri denetimi](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [dosya sistemi denetimi](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [çekirdek nesnesi denetimi](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [tanıtıcı değiştirme denetimi](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> - çıkarılabilir depolama birimi denetimi |
 | Performans sayaçları       | [Performans sayacı yapılandırmasını](../agents/data-sources-performance-counters.md) şöyle değiştirin: <br> - Koleksiyonun sıklığını azaltın <br> - Performans sayaçlarının sayısını azaltın |
 | Olay günlükleri                 | [Olay günlüğü yapılandırmasını](../agents/data-sources-windows-events.md) şöyle değiştirin: <br> - Toplanan olay günlüklerinin sayısını azaltın <br> - Yalnızca gerekli olay düzeylerini toplayın. Örneğin, *Bilgi* düzeyindeki olayları toplamayın |
@@ -487,8 +487,8 @@ Toplanan günlüklerin hacmini azaltmaya yönelik bazı öneriler şunlardır:
 | AzureDiagnostics           | [Kaynak günlük koleksiyonunu](../essentials/diagnostic-settings.md#create-in-azure-portal) Değiştir: <br> - Log Analytics’e günlük gönderen kaynak sayısını azaltma <br> - Yalnızca gerekli günlükleri toplama |
 | Çözüm ihtiyacı olmayan bilgisayarlardan toplanan çözüm verileri | Yalnızca gerekli bilgisayar gruplarından veri toplamak için [çözüm hedefleme](../insights/solution-targeting.md) kullanın. |
 | Application Insights | İçin seçenekleri gözden geçirin [https://docs.microsoft.com/azure/azure-monitor/app/pricing#managing-your-data-volume](managing Application Insights data volume) |
-| [SQL Analytics](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | Denetim ayarlarını ayarlamak için [set-AzSqlServerAudit](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserveraudit) komutunu kullanın. |
-| Azure Sentinel | Daha önce ek veri hacmi kaynakları olarak etkinleştirdiğiniz [Sentinel veri kaynaklarını](https://docs.microsoft.com/azure/sentinel/connect-data-sources) gözden geçirin. |
+| [SQL Analytics](../insights/azure-sql.md) | Denetim ayarlarını ayarlamak için [set-AzSqlServerAudit](/powershell/module/az.sql/set-azsqlserveraudit) komutunu kullanın. |
+| Azure Sentinel | Daha önce ek veri hacmi kaynakları olarak etkinleştirdiğiniz [Sentinel veri kaynaklarını](../../sentinel/connect-data-sources.md) gözden geçirin. |
 
 ### <a name="getting-nodes-as-billed-in-the-per-node-pricing-tier"></a>Düğüm başına fiyatlandırma katmanında düğümleri faturalandırılan alma
 

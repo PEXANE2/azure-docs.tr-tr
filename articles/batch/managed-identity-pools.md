@@ -2,14 +2,14 @@
 title: Batch havuzlarında yönetilen kimlikleri yapılandırma
 description: Toplu havuzlarda Kullanıcı tarafından atanan yönetilen kimlikleri ve düğümlerin içinde yönetilen kimliklerin nasıl kullanılacağını öğrenin.
 ms.topic: conceptual
-ms.date: 02/10/2021
+ms.date: 03/23/2021
 ms.custom: references_regions
-ms.openlocfilehash: 4a59383d119f88bb3ee180f629ba0a6ea6ac2f44
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7fab213ac1545c0bff9b74bc46504717b6038e8e
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100418069"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950170"
 ---
 # <a name="configure-managed-identities-in-batch-pools"></a>Batch havuzlarında yönetilen kimlikleri yapılandırma
 
@@ -100,3 +100,4 @@ Daha fazla bilgi için bkz. bir [Azure VM 'de Azure kaynakları için Yönetilen
 
 - [Azure kaynakları Için Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md)hakkında daha fazla bilgi edinin.
 - [Müşteri tarafından yönetilen anahtarların Kullanıcı tarafından yönetilen kimliklerle](batch-customer-managed-key.md)nasıl kullanılacağını öğrenin.
+- [Bir Batch havuzunda otomatik sertifika döndürmeyi etkinleştirmeyi](automatic-certificate-rotation.md)öğrenin.

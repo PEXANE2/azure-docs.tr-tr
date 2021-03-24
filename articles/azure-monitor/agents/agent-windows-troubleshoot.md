@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 4e2531d511193586ef4605cc3732968b6db28d9f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7ab67602ebba2ae5446ecc0052ef4b03bba1e1bf
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100621421"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952992"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>Windows için Log Analytics aracısıyla ilgili sorunları giderme 
 
@@ -19,7 +19,7 @@ Bu makalede, Azure Izleyici 'de Windows için Log Analytics aracısında karşı
 Bu adımlardan hiçbiri sizin için çalışmazsa, aşağıdaki destek kanalları da kullanılabilir:
 
 * Premier destek avantajlarına sahip müşteriler, [Premier](https://premier.microsoft.com/)ile bir destek isteği açabilir.
-* Azure destek sözleşmeleri olan müşteriler [Azure Portal](https://manage.windowsazure.com/?getsupport=true)bir destek talebi açabilir.
+* Azure destek sözleşmeleri olan müşteriler [Azure Portal](https://azure.microsoft.com/support/options/)bir destek talebi açabilir.
 * Gönderilen fikirleri ve hataları gözden geçirmek [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback) veya yeni bir dosya göndermek için Log Analytics geri bildirim sayfasını ziyaret edin. 
 
 ## <a name="log-analytics-troubleshooting-tool"></a>Log Analytics sorun giderme aracı
@@ -89,7 +89,7 @@ Aracının Azure Izleyici ile başarılı bir şekilde iletişim kurduğunu doğ
 
     Bilgisayar hizmetle başarılı bir şekilde iletişim kurduğundan sorgu bir sonuç döndürmelidir. Sorgu bir sonuç döndürmezse, önce aracının doğru çalışma alanına rapor verecek şekilde yapılandırıldığını doğrulayın. Doğru yapılandırılmışsa, adım 3 ' e ilerleyin ve Windows olay günlüğü 'nde, aracının Azure Izleyici ile iletişim kurmasını önlemek için hangi sorunun günlüğe kaydedilmesine neden olduğunu belirlemek için arama yapın.
 
-- Bir bağlantı sorununu belirlemek için başka bir yöntem **Testcloudconnectivity aracını çalıştırmıştır** . Araç varsayılan olarak *%systemroot%\Program Files\Microsoft Monitoring sagent* klasöründe aracı ile yüklenir. Yükseltilmiş bir komut isteminden klasöre gidin ve aracı çalıştırın. Araç sonuçları ve testin başarısız olduğunu vurgular (örneğin, engellenen belirli bir bağlantı noktası/URL ile ilgiliyse). 
+- Bir bağlantı sorununu belirlemek için başka bir yöntem **Testcloudconnectivity aracını çalıştırmıştır** . Araç varsayılan olarak *%systemroot%\Program Files\Microsoft Monitoring sagent* klasöründe aracı ile yüklenir. Yükseltilmiş komut isteminden klasöre gidin ve aracı çalıştırın. Araç sonuçları ve testin başarısız olduğunu vurgular (örneğin, engellenen belirli bir bağlantı noktası/URL ile ilgiliyse). 
 
     ![TestCloudConnection Aracı yürütme sonuçları](./media/agent-windows-troubleshoot/output-testcloudconnection-tool-01.png)
 

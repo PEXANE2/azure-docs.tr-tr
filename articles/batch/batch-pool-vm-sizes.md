@@ -2,25 +2,20 @@
 title: Havuzlar için VM boyutlarını ve görüntülerini seçin
 description: Azure Batch havuzlarda işlem düğümleri için kullanılabilir VM boyutları ve işletim sistemi sürümleri arasından seçim yapma
 ms.topic: conceptual
-ms.date: 11/24/2020
+ms.date: 03/18/2021
 ms.custom: seodec18
-ms.openlocfilehash: f108e1347ef6c3c7df45c4b3d807a754f4867097
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 2c3b90d6188dc6660233ae659fb4280dc1d4f2a5
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104800491"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105027389"
 ---
 # <a name="choose-a-vm-size-and-image-for-compute-nodes-in-an-azure-batch-pool"></a>Bir Azure Batch havuzundaki işlem düğümleri için VM boyutu ve görüntüsü seçme
 
 Bir Azure Batch havuzu için bir düğüm boyutu seçtiğinizde, Azure 'da kullanılabilir olan neredeyse tüm VM boyutlarının arasından seçim yapabilirsiniz. Azure, farklı iş yükleri için Linux ve Windows VM 'Leri için bir dizi boyut sunar.
 
 ## <a name="supported-vm-series-and-sizes"></a>Desteklenen VM Serisi ve boyutları
-
-Batch havuzunuz için bir VM boyutu seçmeye yönelik birkaç özel durum ve sınırlama vardır:
-
-- Batch 'de bazı VM serileri veya VM boyutları desteklenmez.
-- Bazı VM boyutları kısıtlıdır ve ayrılabilmeleri için özel olarak etkinleştirilmesi gerekir.
 
 ### <a name="pools-in-virtual-machine-configuration"></a>Sanal makine yapılandırmasındaki havuzlar
 
@@ -32,16 +27,14 @@ Sanal makine yapılandırmasındaki toplu iş havuzları neredeyse tüm [VM boyu
 | A | Standard_A0, Standard_A8, Standard_A9, Standard_A10 ve Standard_A11 *hariç* tüm boyutlar |
 | AV2 | Tüm Boyutlar |
 | B | Desteklenmez |
-| DC | Desteklenmez |
+| DCsv2 | Tüm Boyutlar |
 | Dv2, DSv2 | Tüm Boyutlar |
 | Dv3, Dsv3 | Tüm Boyutlar |
-| Dav4 | Tüm Boyutlar |
-| Dasv4 | Tüm Boyutlar |
+| Dav4, Dasv4 | Tüm Boyutlar |
 | Ddv4, Ddsv4 |  Tüm Boyutlar |
 | Dv4, Dsv4 | Desteklenmez |
 | Ev3, Esv3 | E64is_v3 dışındaki tüm boyutlar |
-| Eav4 | Tüm Boyutlar |
-| Easv4 | Tüm Boyutlar |
+| Eav4, Easv4 | Tüm Boyutlar |
 | Edv4, Edsv4 |  Tüm Boyutlar |
 | Ev4, Esv4 | Desteklenmez |
 | F, FS | Tüm Boyutlar |
@@ -50,6 +43,7 @@ Sanal makine yapılandırmasındaki toplu iş havuzları neredeyse tüm [VM boyu
 | H | Tüm Boyutlar |
 | HB | Tüm Boyutlar |
 | HBv2 | Tüm Boyutlar |
+| HBv3 | Standard_HB120rs_v3 (henüz kullanılamayan diğer boyutlar) |
 | HC | Tüm Boyutlar |
 | Ls | Tüm Boyutlar |
 | Lsv2 | Tüm Boyutlar |
@@ -58,7 +52,7 @@ Sanal makine yapılandırmasındaki toplu iş havuzları neredeyse tüm [VM boyu
 | NC | Tüm Boyutlar |
 | NCv2 | Tüm Boyutlar |
 | NCv3 | Tüm Boyutlar |
-| NCasT4_v3 | Hiçbiri-henüz kullanılamıyor |
+| NCasT4_v3 | Tüm Boyutlar |
 | ND | Tüm Boyutlar |
 | NDv2 | Hiçbiri-henüz kullanılamıyor |
 | NV | Tüm Boyutlar |

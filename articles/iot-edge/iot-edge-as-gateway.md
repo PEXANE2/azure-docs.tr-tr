@@ -4,19 +4,19 @@ description: Birden çok aşağı akış aygıtından buluta veri gönderen veya
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/10/2020
+ms.date: 03/23/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: ca8f02b375420590bcf1cc732c067a165e22b3fa
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: aa8b7372af91fc7cb194dfc3a6212cb4ce1fa0a2
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103492719"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105027355"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>IoT Edge cihazını ağ geçidi olarak kullanma
 
@@ -24,12 +24,7 @@ ms.locfileid: "103492719"
 
 IoT Edge cihazlar ağ geçitleri olarak çalışabilir ve ağdaki diğer aygıtlar arasında bir bağlantı sağlar IoT Hub.
 
-IoT Edge hub modülü IoT Hub gibi davranır, bu nedenle diğer IoT Edge cihazları da dahil olmak üzere IoT Hub kimliği olan herhangi bir cihazdan bağlantı işleyebilir. Bu tür ağ geçidi deseninin nedeni, iletiler arasında bir ağ geçidi olmamasına rağmen iletiler aşağı akış aygıtlarından IoT Hub 'e geçebildiğinden *saydam* olarak adlandırılır.
-
-<!-- 1.2.0 -->
-::: moniker range=">=iotedge-2020-11"
-IoT Edge sürüm 1,2 ' den başlayarak, saydam ağ geçitleri diğer IoT Edge cihazlarındaki aşağı akış bağlantılarını işleyebilir.
-::: moniker-end
+IoT Edge hub modülü IoT Hub gibi davranır, bu nedenle aynı IoT Hub 'ına sahip bir kimliğe sahip diğer cihazlardan gelen bağlantıları işleyebilir. Bu tür ağ geçidi deseninin nedeni, iletiler arasında bir ağ geçidi olmamasına rağmen iletiler aşağı akış aygıtlarından IoT Hub 'e geçebildiğinden *saydam* olarak adlandırılır.
 
 IoT Hub, kendilerine ait olmayan veya bağlanmadıkları cihazlarda, IoT Edge ağ geçitleri bu bağlantıyı verebilir. IoT Edge cihazın, IoT Hub iletilmek üzere gelen aşağı akış cihaz iletilerinde işlem yapması gerektiğinden, bu tür ağ geçidi düzenine *çeviri* denir. Bu senaryolar, işleme adımlarını işlemek için IoT Edge ağ geçidinde ek modüller gerektirir.
 
@@ -51,17 +46,19 @@ IoT Edge hub 'ının aşağı akış cihazları ve bulutu arasındaki iletişimi
 
 <!-- 1.1 -->
 ::: moniker range="iotedge-2018-06"
-
-IoT Edge cihazlar IoT Edge bir ağ geçidinin bir aşağı akış olamaz.
-
 ![Diyagram-saydam ağ geçidi kalıbı](./media/iot-edge-as-gateway/edge-as-gateway-transparent.png)
+
+>[!NOTE]
+>IoT Edge sürüm 1,1 ve daha eski sürümlerde IoT Edge cihazlar IoT Edge bir ağ geçidinin bir aşağı akış olamaz.
+>
+>IoT Edge sürüm 1,2 ' den başlayarak, saydam ağ geçitleri, yukarı akış IoT Edge cihazlarındaki bağlantıları işleyebilir. Daha fazla bilgi için bu makalenin [IoT Edge 1,2](?view=iotedge-2020-11&preserve-view=true) sürümüne geçin.
 
 ::: moniker-end
 
-<!-- 1.2.0 -->
+<!-- 1.2 -->
 ::: moniker range=">=iotedge-2020-11"
 
-Sürüm 1.2.0 'den başlayarak IoT Edge cihazlar saydam ağ geçitleri aracılığıyla bağlanabilir.
+IoT Edge sürüm 1,2 ' den başlayarak, saydam ağ geçitleri, yukarı akış IoT Edge cihazlarındaki bağlantıları işleyebilir.
 
 <!-- TODO add a downstream IoT Edge device to graphic -->
 
