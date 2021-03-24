@@ -4,12 +4,12 @@ description: Azure HDInsight hizmetinde Hive için Kurumsal Güvenlik Paketi Apa
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.openlocfilehash: fbe4361033321f2ba81478c41a138937f70b5498
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 15c406576b373577a2a3a50108acad7ccbf36699
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101705713"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863267"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Kurumsal Güvenlik Paketi ile HDInsight içinde Apache Hive ilkelerini yapılandırma
 
@@ -30,7 +30,7 @@ Apache Hive için Apache Ranger ilkelerini yapılandırma hakkında bilgi edinin
 
 2. Küme yöneticisi etki alanı kullanıcı adı ve parolasını kullanarak oturum açın:
 
-    ![HDInsight ESP Ranger giriş sayfası](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-ranger-home-page.png)
+    :::image type="content" source="./media/apache-domain-joined-run-hive/hdinsight-domain-joined-ranger-home-page.png" alt-text="HDInsight ESP Ranger giriş sayfası" border="true":::
 
     Ranger şu an için yalnızca Yarn ve Hive ile birlikte çalışmaktadır.
 
@@ -57,7 +57,7 @@ Bu bölümde, hivesampletable 'a erişmek için iki Ranger ilkesi oluşturacaks�
     |Kullanıcı Seçin|hiveuser1 kullanıcısının|
     |İzinler|seçin|
 
-    ![HDInsight ESP Ranger Hive ilkeleri yapılandırma](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png).
+    :::image type="content" source="./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png" alt-text="HDıNSIGHT ESP Ranger Hive ilkeleri yapılandırır" border="true":::.
 
     > [!NOTE]  
     > Select User alanında etki alanı kullanıcısı yoksa Ranger’ın AAD ile eşitlenmesi için birkaç dakika bekleyin.
@@ -101,7 +101,7 @@ Son bölümde iki ilke yapılandırdınız.  hiveuser1 tüm sütunlarda select i
 
 1. ODBC 'den başlatmak için **veri** sekmesinden   >    >  **ODBC 'den**  diğer kaynaklardan veri al ' a gidin.
 
-    ![Veri bağlantısı açma Sihirbazı](./media/apache-domain-joined-run-hive/simbahiveodbc-excel-dataconnection1.png)
+    :::image type="content" source="./media/apache-domain-joined-run-hive/simbahiveodbc-excel-dataconnection1.png" alt-text="Veri bağlantısı açma Sihirbazı" border="true":::
 
 1. Aşağı açılan listeden, son bölümde oluşturduğunuz veri kaynağı adını seçin ve ardından **Tamam**' ı seçin.
 

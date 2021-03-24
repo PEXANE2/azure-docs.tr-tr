@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.date: 02/24/2020
-ms.openlocfilehash: cd3e997bf2fda5f586fdb1ee4dcedff1adbf41f3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 92520be7e9d2bb83cb61856fe3df38487445ad9a
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946601"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863896"
 ---
 # <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak Azure HDInsight 'ta Apache Hadoop kümesi oluşturma
 
@@ -31,52 +31,52 @@ Bu bölümde, Azure portalını kullanarak HDInsight’ta Hadoop kümesi oluştu
 
 1. Üstteki menüden **+ kaynak oluştur**' u seçin.
 
-    ![Kaynak HDInsight kümesi oluşturma](./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-create-resource.png "Kaynak HDInsight kümesi oluşturma")
+   :::image type="content" source="./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-create-resource.png" alt-text="Kaynak HDInsight kümesi oluşturma" border="true":::
 
 1. **Analiz**  >  **Azure HDInsight** ' ı seçerek **HDInsight kümesi oluşturma** sayfasına gidin.
 
 1. **Temel bilgiler** sekmesinde, aşağıdaki bilgileri sağlayın:
 
-    |Özellik  |Açıklama  |
-    |---------|---------|
-    |Abonelik    |  Aşağı açılan listeden, küme için kullanılan Azure aboneliğini seçin. |
-    |Kaynak grubu     | Aşağı açılan listeden, mevcut kaynak grubunuzu seçin veya **Yeni oluştur**' u seçin.|
-    |Küme adı   | Genel olarak benzersiz bir ad girin. Ad, harf, sayı ve kısa çizgi gibi en fazla 59 karakter içerebilir. Adın ilk ve son karakterleri kısa çizgi olamaz. |
-    |Region    | Aşağı açılan listeden, kümenin oluşturulduğu bir bölge seçin.  Daha iyi performans için kendinize yakın bir konum seçin. |
-    |Küme türü| **Küme türünü seç**' i seçin. Ardından küme türü olarak **Hadoop** ' ı seçin.|
-    |Sürüm|Aşağı açılan listeden bir **Sürüm** seçin. Ne seçeceğimizi bilmiyorsanız varsayılan sürümü kullanın.|
-    |Küme oturum açma kullanıcı adı ve parolası    | Varsayılan oturum açma adı **admin**' dir. Parola en az 10 karakter uzunluğunda olmalıdır ve en az bir rakam, bir büyük harf ve bir küçük harf, bir alfasayısal olmayan karakter (' "' karakterleri dışında) içermelidir \) . "Pass@word1" gibi genel parolalar **sağlamadığınızdan** emin olun.|
-    |Secure Shell (SSH) kullanıcı adı | Varsayılan kullanıcı adı **sshuser** şeklindedir.  SSH kullanıcı adı için başka bir ad sağlayabilirsiniz. |
-    |SSH için küme oturum açma parolasını kullanma| SSH kullanıcısı için, küme oturum açma kullanıcısı için sağladınız aynı parolayı kullanmak üzere bu onay kutusunu işaretleyin.|
+   |Özellik  |Açıklama  |
+   |---------|---------|
+   |Abonelik    |  Aşağı açılan listeden, küme için kullanılan Azure aboneliğini seçin. |
+   |Kaynak grubu     | Aşağı açılan listeden, mevcut kaynak grubunuzu seçin veya **Yeni oluştur**' u seçin.|
+   |Küme adı   | Genel olarak benzersiz bir ad girin. Ad, harf, sayı ve kısa çizgi gibi en fazla 59 karakter içerebilir. Adın ilk ve son karakterleri kısa çizgi olamaz. |
+   |Region    | Aşağı açılan listeden, kümenin oluşturulduğu bir bölge seçin.  Daha iyi performans için kendinize yakın bir konum seçin. |
+   |Küme türü| **Küme türünü seç**' i seçin. Ardından küme türü olarak **Hadoop** ' ı seçin.|
+   |Sürüm|Aşağı açılan listeden bir **Sürüm** seçin. Ne seçeceğimizi bilmiyorsanız varsayılan sürümü kullanın.|
+   |Küme oturum açma kullanıcı adı ve parolası    | Varsayılan oturum açma adı **admin**' dir. Parola en az 10 karakter uzunluğunda olmalıdır ve en az bir rakam, bir büyük harf ve bir küçük harf, bir alfasayısal olmayan karakter (' "' karakterleri dışında) içermelidir \) . "Pass@word1" gibi genel parolalar **sağlamadığınızdan** emin olun.|
+   |Secure Shell (SSH) kullanıcı adı | Varsayılan kullanıcı adı **sshuser** şeklindedir.  SSH kullanıcı adı için başka bir ad sağlayabilirsiniz. |
+   |SSH için küme oturum açma parolasını kullanma| SSH kullanıcısı için, küme oturum açma kullanıcısı için sağladınız aynı parolayı kullanmak üzere bu onay kutusunu işaretleyin.|
 
-    ![HDInsight Linux kullanmaya başlama küme temel değerlerini sağlama](./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-cluster-basics.png "HDInsight kümesi oluşturmak için temel değerler sağlama")
+   :::image type="content" source="./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-cluster-basics.png" alt-text="HDInsight Linux kullanmaya başlama küme temel değerlerini sağlama" border="true":::
 
-    **Sonraki: depolama >>** depolama ayarlarına ilerlemek için seçin.
+   **Sonraki: depolama >>** depolama ayarlarına ilerlemek için seçin.
 
 1. **Depolama** sekmesinden aşağıdaki değerleri sağlayın:
 
-    |Özellik  |Açıklama  |
-    |---------|---------|
-    |Birincil depolama türü|Varsayılan **Azure Storage** değerini kullanın.|
-    |Seçim yöntemi|Varsayılan değer **listesinden Seç ' i** kullanın.|
-    |Birincil depolama hesabı|Açılan listeyi kullanarak mevcut bir depolama hesabını seçin veya **Yeni oluştur**' u seçin. Yeni bir hesap oluşturursanız, ad 3 ila 24 karakter uzunluğunda olmalı ve yalnızca rakamlar ve küçük harfler içerebilir|
-    |Kapsayıcı|Oto doldurulmuş değeri kullanın.|
+   |Özellik  |Açıklama  |
+   |---------|---------|
+   |Birincil depolama türü|Varsayılan **Azure Storage** değerini kullanın.|
+   |Seçim yöntemi|Varsayılan değer **listesinden Seç ' i** kullanın.|
+   |Birincil depolama hesabı|Açılan listeyi kullanarak mevcut bir depolama hesabını seçin veya **Yeni oluştur**' u seçin. Yeni bir hesap oluşturursanız, ad 3 ila 24 karakter uzunluğunda olmalı ve yalnızca rakamlar ve küçük harfler içerebilir|
+   |Kapsayıcı|Oto doldurulmuş değeri kullanın.|
 
-    ![HDInsight Linux kullanmaya başlama küme depolama değerlerini sağlama](./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-cluster-storage.png "HDInsight kümesi oluşturmak için depolama değerleri sağlama")
+   :::image type="content" source="./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-cluster-storage.png" alt-text="HDInsight Linux kullanmaya başlama küme depolama değerlerini sağlama" border="true":::
 
-    Her kümenin bir [Azure depolama hesabı](../hdinsight-hadoop-use-blob-storage.md), bir [Azure Data Lake Gen1](../hdinsight-hadoop-use-data-lake-storage-gen1.md)veya bir bağımlılığı vardır [`Azure Data Lake Storage Gen2`](../hdinsight-hadoop-use-data-lake-storage-gen2.md)  . Bu, varsayılan depolama hesabı olarak adlandırılır. HDInsight kümesi ve varsayılan depolama hesabı aynı Azure bölgesinde birlikte bulunmalıdır. Küme silme, depolama hesabını silmez.
+   Her kümenin bir [Azure depolama hesabı](../hdinsight-hadoop-use-blob-storage.md), bir [Azure Data Lake Gen1](../hdinsight-hadoop-use-data-lake-storage-gen1.md)veya bir bağımlılığı vardır [`Azure Data Lake Storage Gen2`](../hdinsight-hadoop-use-data-lake-storage-gen2.md) . Bu, varsayılan depolama hesabı olarak adlandırılır. HDInsight kümesi ve varsayılan depolama hesabı aynı Azure bölgesinde birlikte bulunmalıdır. Küme silme, depolama hesabını silmez.
 
-    **Gözden geçir + oluştur** sekmesini seçin.
+   **Gözden geçir + oluştur** sekmesini seçin.
 
 1. **Gözden geçir + oluştur** sekmesinden, önceki adımlarda seçtiğiniz değerleri doğrulayın.
 
-    ![HDInsight Linux kullanmaya başlama kümesi Özeti](./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-cluster-review-create-hadoop.png "HDInsight Linux kullanmaya başlama kümesi Özeti")
+   :::image type="content" source="./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-cluster-review-create-hadoop.png" alt-text="HDInsight Linux kullanmaya başlama kümesi Özeti" border="true":::
 
 1. **Oluştur**’u seçin. Bir küme oluşturmak yaklaşık 20 dakika sürer.
 
-    Küme oluşturulduktan sonra, Azure portalında kümeye genel bakış sayfasını görürsünüz.
+   Küme oluşturulduktan sonra, Azure portalında kümeye genel bakış sayfasını görürsünüz.
 
-    ![HDInsight Linux kullanmaya başlama küme ayarları](./media/apache-hadoop-linux-create-cluster-get-started-portal/cluster-settings-overview.png "HDInsight kümesi özellikleri")
+   :::image type="content" source="./media/apache-hadoop-linux-create-cluster-get-started-portal/cluster-settings-overview.png" alt-text="HDInsight Linux kullanmaya başlama küme ayarları" border="true":::
 
 ## <a name="run-apache-hive-queries"></a>Apache Hive sorguları çalıştırma
 
@@ -87,37 +87,37 @@ Bu bölümde, Azure portalını kullanarak HDInsight’ta Hadoop kümesi oluştu
 
 1. Ambari’yi açmak için, önceki ekran görüntüsünden **Küme Panosu**’nu seçin.  Ayrıca,  `https://ClusterName.azurehdinsight.net` `ClusterName` önceki bölümde oluşturduğunuz kümenin bulunduğu yere de gidebilirsiniz.
 
-    ![HDInsight Linux kullanmaya başlama kümesi panosu](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-linux-get-started-open-cluster-dashboard.png "HDInsight Linux kullanmaya başlama kümesi panosu")
+   :::image type="content" source="./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-linux-get-started-open-cluster-dashboard.png" alt-text="HDInsight Linux kullanmaya başlama kümesi panosu" border="true":::
 
 2. Kümeyi oluştururken belirlediğiniz Hadoop kullanıcı adını ve parolasını girin. Varsayılan kullanıcı adı **admin** şeklindedir.
 
 3. Aşağıdaki ekran görüntüsünde gösterildiği gibi **Hive Görünümü**’nü açın:
 
-    ![Ambarı 'ndan Hive görünümü seçme](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdi-select-hive-view.png "HDInsight Hive Görüntüleyicisi menüsü")
+   :::image type="content" source="./media/apache-hadoop-linux-create-cluster-get-started-portal/hdi-select-hive-view.png" alt-text="Ambarı 'ndan Hive görünümü seçme" border="true":::
 
 4. Sayfadaki **SORGU** sekmesinde, aşağıdaki HiveQL ifadelerini çalışma sayfasına yapıştırın:
 
-    ```sql
-    SHOW TABLES;
-    ```
+   ```sql
+   SHOW TABLES;
+   ```
 
-    ![HDInsight Hive görünümü sorgu Düzenleyicisi](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdi-apache-hive-view1.png "HDInsight Hive görünümü sorgu Düzenleyicisi")
+    :::image type="content" source="./media/apache-hadoop-linux-create-cluster-get-started-portal/hdi-apache-hive-view1.png" alt-text="HDInsight Hive görünümü sorgu Düzenleyicisi" border="true":::
 
-5. **Yürüt**’ü seçin. **SORGU** sekmesinin altında bir **SONUÇLAR** sekmesi görünür. Bu sekmede işle ilgili bilgiler görüntülenir. 
+5. **Yürüt**’ü seçin. **SORGU** sekmesinin altında bir **SONUÇLAR** sekmesi görünür. Bu sekmede işle ilgili bilgiler görüntülenir.
 
-    Sorgu tamamlandıktan sonra **sorgu** sekmesi işlemin sonuçlarını görüntüler. **hivesampletable** adlı bir tablo görürsünüz. Bu örnek Hive tablosu tüm HDInsight kümeleri ile birlikte gelir.
+   Sorgu tamamlandıktan sonra **sorgu** sekmesi işlemin sonuçlarını görüntüler. **hivesampletable** adlı bir tablo görürsünüz. Bu örnek Hive tablosu tüm HDInsight kümeleri ile birlikte gelir.
 
-    ![HDInsight Apache Hive sonuçları görüntüle](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-hive-views.png "HDInsight Apache Hive sonuçları görüntüle")
+   :::image type="content" source="./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-hive-views.png" alt-text="HDInsight Apache Hive sonuçları görüntüle" border="true":::
 
 6. Aşağıdaki sorguyu çalıştırmak için 4. ve 5. adımı yineleyin:
 
-    ```sql
-    SELECT * FROM hivesampletable;
-    ```
+   ```sql
+   SELECT * FROM hivesampletable;
+   ```
 
 7. Ayrıca sorgunun sonuçlarını da kaydedebilirsiniz. Sağdaki menü düğmesini seçtikten sonra, sonuçları CSV dosyası olarak indirme veya kümeyle ilişkili depolama hesabında depolama seçeneklerinden birini belirleyin.
 
-    ![Apache Hive sorgusunun sonucunu Kaydet](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-linux-hive-view-save-results.png "Apache Hive sorgusunun sonucunu Kaydet")
+   :::image type="content" source="./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-linux-hive-view-save-results.png" alt-text="Apache Hive sorgusunun sonucunu Kaydet" border="true":::
 
 Bir Hive işini tamamladıktan sonra, [sonuçları Azure SQL veritabanı 'na veya SQL Server veritabanına aktarabilirsiniz](apache-hadoop-use-sqoop-mac-linux.md), ayrıca [Excel kullanarak sonuçları görselleştirebilirsiniz](apache-hadoop-connect-excel-power-query.md). HDInsight 'ta Hive kullanma hakkında daha fazla bilgi için bkz. [HDInsight 'ta Apache Hadoop ile Apache Hive ve HiveQL kullanarak örnek Apache Log4J dosyası çözümleme](hdinsight-use-hive.md).
 
@@ -132,7 +132,7 @@ Hızlı başlangıcı tamamladıktan sonra kümeyi silmek isteyebilirsiniz. HDIn
 
 1. Azure portalın bulunduğu tarayıcı sekmesine dönün. Kümeye genel bakış sayfasında olmalısınız. Yalnızca kümeyi silmek, ancak varsayılan depolama hesabını korumak istiyorsanız **Sil**’i seçin.
 
-    ![Azure HDInsight küme silme](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-delete-cluster.png "Azure HDInsight kümesini silme")
+   :::image type="content" source="./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-delete-cluster.png" alt-text="Azure HDInsight küme silme" border="true":::
 
 2. Kümeyi ve varsayılan depolama hesabını silmek istiyorsanız, kaynak grubu sayfasını açmak için kaynak grubu adını (önceki ekran görüntüsünde vurgulanan) seçin.
 

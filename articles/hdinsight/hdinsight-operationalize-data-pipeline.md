@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/25/2019
-ms.openlocfilehash: a306890560497b0c7196f1286de3f73039821ea2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c81eb092fa59cb890093e1e9acd0511e39b5047b
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98939525"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864219"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Veri analizi işlem hattını kullanıma hazır hale getirme
 
@@ -30,7 +30,7 @@ Aşağıdaki senaryoda, giriş verileri bir ay için bir dizi uçuş verisi içe
 
 Aşağıdaki diyagramda örnek işlem hattı gösterilmektedir.
 
-![HDI uçuş örneği veri ardışık düzenine genel bakış](./media/hdinsight-operationalize-data-pipeline/flight-pipeline-overview.png)
+:::image type="content" source="./media/hdinsight-operationalize-data-pipeline/flight-pipeline-overview.png" alt-text="HDI uçuş örneği veri ardışık düzenine genel bakış" border="false":::
 
 ## <a name="apache-oozie-solution-overview"></a>Apache Oozie çözümüne genel bakış
 
@@ -40,7 +40,7 @@ Oozie, *işlem hatlarını işlemler*, *iş akışları* ve *Koordinatörler* a�
 
 Aşağıdaki diyagramda Bu örnek Oozie işlem hattının üst düzey tasarımı gösterilmektedir.
 
-![Oozie uçuş örneği veri işlem hattı](./media/hdinsight-operationalize-data-pipeline/pipeline-overview-oozie.png)
+:::image type="content" source="./media/hdinsight-operationalize-data-pipeline/pipeline-overview-oozie.png" alt-text="Oozie uçuş örneği veri işlem hattı" border="false":::
 
 ## <a name="provision-azure-resources"></a>Azure kaynaklarını sağlama
 
@@ -131,11 +131,11 @@ Koordinatör ve iş akışı örneklerinizin durumunu görüntülemek için Oozi
 
 2. Hizmetler listesinden **Hive** öğesini seçin.
 
-    ![Apache ambarı hizmetleri listesi Hive seçme](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png)
+    :::image type="content" source="./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png" alt-text="Apache ambarı hizmetleri listesi Hive seçme":::
 
 3. Hive görünümü 2,0 etiketinin yanındaki **görünümü görüntülemek Için git** ' i seçin.
 
-    ![Ambarı Apache Hive özet listesi](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-summary.png)
+    :::image type="content" source="./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-summary.png" alt-text="Ambarı Apache Hive özet listesi":::
 
 4. Sorgu metin alanında, tabloyu oluşturmak için aşağıdaki deyimleri yapıştırın `rawFlights` . `rawFlights`Tablo, `/example/data/flights` Azure depolama 'daki klasörü içinde CSV dosyaları için bir şema okuması sağlar.
 
@@ -164,7 +164,7 @@ Koordinatör ve iş akışı örneklerinizin durumunu görüntülemek için Oozi
 
 5. Tabloyu oluşturmak için **Yürüt** ' ü seçin.
 
-    ![HDI ambarı Hizmetleri Hive sorgusu](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-query.png)
+    :::image type="content" source="./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-query.png" alt-text="HDI ambarı Hizmetleri Hive sorgusu":::
 
 6. Tabloyu oluşturmak için `flights` , sorgu metin alanındaki metni aşağıdaki deyimlerle değiştirin. `flights`Tablo, verileri yıla, aya ve aya göre yüklenen verileri bölümleyerek Hive tarafından yönetilen bir tablodur. Bu tablo, uçuşa göre bir satırın kaynak verilerinde en düşük ayrıntı düzeyi olan tüm geçmiş uçuş verilerini içerir.
 
@@ -253,18 +253,18 @@ Ardından, belirli ortamınızın değerlerini güncelleştirin. Metnin altında
     INSERT OVERWRITE TABLE flights
     PARTITION (YEAR, MONTH, DAY_OF_MONTH)
     SELECT 
-        FL_DATE,
-        CARRIER,
-        FL_NUM,
-        ORIGIN,
-        DEST,
-        DEP_DELAY,
-        ARR_DELAY,
-        ACTUAL_ELAPSED_TIME,
-        DISTANCE,
+          FL_DATE,
+          CARRIER,
+          FL_NUM,
+          ORIGIN,
+          DEST,
+          DEP_DELAY,
+          ARR_DELAY,
+          ACTUAL_ELAPSED_TIME,
+          DISTANCE,
         YEAR,
-        MONTH,
-        DAY_OF_MONTH
+          MONTH,
+          DAY_OF_MONTH
     FROM rawflights
     WHERE year = ${year} AND month = ${month} AND day_of_month = ${day};
     ```
@@ -278,17 +278,17 @@ Ardından, belirli ortamınızın değerlerini güncelleştirin. Metnin altında
     CREATE EXTERNAL TABLE ${hiveTableName}
     (
         YEAR INT,
-        MONTH INT,
-        DAY_OF_MONTH INT,
-        CARRIER STRING,
-        AVG_DEP_DELAY FLOAT,
-        AVG_ARR_DELAY FLOAT,
-        TOTAL_DISTANCE FLOAT
+          MONTH INT,
+          DAY_OF_MONTH INT,
+          CARRIER STRING,
+          AVG_DEP_DELAY FLOAT,
+          AVG_ARR_DELAY FLOAT,
+          TOTAL_DISTANCE FLOAT
     )
     ROW FORMAT DELIMITED
     FIELDS TERMINATED BY '\t' STORED AS TEXTFILE LOCATION '${hiveDataFolder}';
     INSERT OVERWRITE TABLE ${hiveTableName}
-    SELECT  year, month, day_of_month, carrier, avg(dep_delay) avg_dep_delay, 
+    SELECT     year, month, day_of_month, carrier, avg(dep_delay) avg_dep_delay, 
             avg(arr_delay) avg_arr_delay, sum(distance) total_distance 
     FROM flights
     GROUP BY year, month, day_of_month, carrier 
@@ -415,7 +415,7 @@ Oozie iş akışınızı ( `workflow.xml` ), Hive sorgularını ( `hive-load-fli
 
 1. Oozie web konsolunu kullanarak durumu gözlemleyin. Ambarı içinden **Oozie**, **hızlı bağlantılar** ve sonra **Oozie Web Konsolu**' nu seçin. **Iş akışı işleri** sekmesinde **tüm işler**' i seçin.
 
-    ![HDI Oozie Web konsolu iş akışları](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-workflows.png)
+    :::image type="content" source="./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-workflows.png" alt-text="HDI Oozie Web konsolu iş akışları":::
 
 1. Durum başarılı olduğunda, ekli satırları görüntülemek için SQL veritabanı tablosunu sorgulayın. Azure portal kullanarak, SQL veritabanınızın bölmesine gidin, **Araçlar**' ı seçin ve **sorgu düzenleyicisini** açın.
 
@@ -593,11 +593,11 @@ Bu dosyada sunulan tek yeni özellikler `job.properties` şunlardır:
 
 5. Oozie web konsolunu kullanarak durumu doğrulayın, bu kez **Düzenleyici işleri** sekmesini ve ardından  **tüm işleri** seçin.
 
-    ![Oozie Web Konsolu Düzenleyicisi Işleri](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-coordinator-jobs.png)
+    :::image type="content" source="./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-coordinator-jobs.png" alt-text="Oozie Web Konsolu Düzenleyicisi Işleri":::
 
 6. Zamanlanmış eylemlerin listesini göstermek için bir düzenleyici örneği seçin. Bu durumda, 1/1/2017 ile 1/4/2017 arasında bir saat olarak kabul edilen dört eylem görmeniz gerekir.
 
-    ![Oozie Web Konsolu Düzenleyicisi Işi](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-coordinator-instance.png)
+    :::image type="content" source="./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-coordinator-instance.png" alt-text="Oozie Web Konsolu Düzenleyicisi Işi":::
 
     Bu listedeki her bir eylem, bir güne ait verileri işleyen bir iş akışı örneğine karşılık gelir ve bu günün başlangıcı nominal süre ile belirtilir.
 

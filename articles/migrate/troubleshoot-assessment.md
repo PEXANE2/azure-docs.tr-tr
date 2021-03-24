@@ -6,16 +6,16 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 09fbc97b84365cc1d6d40b8e1147e1b8e951cc1f
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 78e54543c94cd6e8434023b61516242c2491f353
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104780710"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863607"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Değerlendirme/bağımlılık görselleştirmesi sorunlarını giderme
 
-Bu makale, [Azure geçişi: bulma ve değerlendirme](migrate-services-overview.md#azure-migrate-server-assessment-tool)ile değerlendirme ve bağımlılık görselleştirmesiyle ilgili sorunları gidermenize yardımcı olur.
+Bu makale, [Azure geçişi: bulma ve değerlendirme](migrate-services-overview.md#azure-migrate-discovery-and-assessment-tool)ile değerlendirme ve bağımlılık görselleştirmesiyle ilgili sorunları gidermenize yardımcı olur.
 
 
 ## <a name="assessment-readiness-issues"></a>Değerlendirme hazırlığı sorunları
@@ -222,7 +222,7 @@ Bağımlılık görselleştirmesi etkin olan sunucuları Azure 'a geçirdikten s
 Aracısız bağımlılık analizinde, işlem adları en iyi çaba temelinde yakalanır. Belirli senaryolarda, kaynak ve hedef sunucu adları ve hedef bağlantı noktası yakalansa da, bağımlılığın her iki ucunda işlem adlarını belirlenmesi uygun değildir. Bu gibi durumlarda, işlem "Bilinmeyen işlem" olarak işaretlenir.
 
 ## <a name="my-log-analytics-workspace-is-not-listed-when-trying-to-configure-the-workspace-in-azure-migrate"></a>Log Analytics çalışma alanım, Azure geçişi 'nde çalışma alanı yapılandırmaya çalışırken listelenmez
-Azure Geçişi şu anda OMS çalışma alanı oluşturulmasını Doğu ABD, Güneydoğu Asya ve Batı Avrupa bölgelerinde desteklemektedir. Çalışma alanı başka bir bölgede Azure geçişi dışında oluşturulduysa, şu anda bir Azure geçiş projesiyle ilişkilendirilemez.
+Azure Geçişi şu anda OMS çalışma alanı oluşturulmasını Doğu ABD, Güneydoğu Asya ve Batı Avrupa bölgelerinde desteklemektedir. Çalışma alanı başka bir bölgede Azure geçişi dışında oluşturulduysa, şu anda bir projeyle ilişkilendirilemez.
 
 
 ## <a name="capture-network-traffic"></a>Ağ trafiğini yakala
