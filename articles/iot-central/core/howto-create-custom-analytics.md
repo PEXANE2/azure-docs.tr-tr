@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 0cee343e6769c815ecfb4b9c791783bd246caaac
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 458c93fd3e13a958137c762a0979af918a70d930
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "104953910"
+ms.locfileid: "105023051"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Azure Databricks kullanarak Azure IoT Central özel analiz ile genişletme
 
@@ -91,7 +91,7 @@ Bir IoT Central uygulamasını bir olay hub 'ına sürekli olarak telemetri dı�
 1. Azure portal, Event Hubs ad alanına gidin ve **+ Event hub ' ı** seçin.
 1. Olay Hub 'ınızı **centralexport** olarak adlandırın.
 1. Ad uzayındaki Olay Hub 'ları listesinde **centralexport**' yi seçin. Ardından **paylaşılan erişim ilkeleri**' ni seçin.
-1. **+ Ekle**'yi seçin. **Dinleme** talebini **dinle** adlı bir ilke oluşturun.
+1. **+ Ekle**'yi seçin. **Gönderme** ve **dinleme** talepleri ile **sendlisten** adlı bir ilke oluşturun.
 1. İlke hazır olduğunda, listeden seçin ve ardından **bağlantı dizesinin birincil anahtar** değerini kopyalayın.
 1. Bu bağlantı dizesini not alın, daha sonra Databricks not defterinizi Olay Hub 'ından okumak üzere yapılandırdığınızda bu bağlantıyı kullanın.
 
@@ -99,42 +99,46 @@ Event Hubs ad alanınız aşağıdaki ekran görüntüsüne benzer şekilde gör
 
 :::image type="content" source="media/howto-create-custom-analytics/event-hubs-namespace.png" alt-text="Event Hubs ad alanının görüntüsü.":::
 
-## <a name="configure-export-in-iot-central-and-create-a-new-destination"></a>IoT Central dışarı aktarmayı yapılandırma ve yeni bir hedef oluşturma
+## <a name="configure-export-in-iot-central"></a>IoT Central dışarı aktarmayı yapılandırma
 
-[Azure IoT Central uygulama Yöneticisi](https://aka.ms/iotcentral) Web sitesinde, contoso şablonundan oluşturduğunuz IoT Central uygulamasına gidin. Bu bölümde, uygulamayı sanal cihazınızdan, Olay Hub 'ınıza Telemetriyi akışa almak üzere yapılandırırsınız. Dışarı aktarmayı yapılandırmak için:
+Bu bölümde, uygulamayı sanal cihazınızdan Olay Hub 'ınıza Telemetriyi akışa almak üzere yapılandırırsınız.
+
+[Azure IoT Central uygulama Yöneticisi](https://aka.ms/iotcentral) Web sitesinde, daha önce oluşturduğunuz IoT Central uygulamasına gidin. Dışarı aktarmayı yapılandırmak için, önce bir hedef oluşturun:
+
+1. **Veri dışa aktarma** sayfasına gidin ve **hedefler**' i seçin.
+1. **+ Yeni hedef**' i seçin.
+1. Bir hedef oluşturmak için aşağıdaki tablodaki değerleri kullanın:
+
+    | Ayar | Değer |
+    | ----- | ----- |
+    | Hedef adı | Telemetri Olay Hub 'ı |
+    | Hedef türü | Azure Event Hubs |
+    | Bağlantı dizesi | Daha önce bir nota yaptığınız Olay Hub 'ı bağlantı dizesi |
+
+    **Olay Hub 'ı** **centralexport** olarak gösterilir.
+
+    :::image type="content" source="media/howto-create-custom-analytics/data-export-1.png" alt-text="Veri dışa aktarma hedefini gösteren ekran görüntüsü":::
+
+1. **Kaydet**’i seçin.
+
+Dışarı aktarma tanımını oluşturmak için:
 
 1. **Veri dışa aktarma** sayfasına gidin ve **+ yeni dışarı aktar**' ı seçin.
-1. İlk pencereyi bitirmeden önce **hedef oluştur**' u seçin.
 
-Pencerede aşağıdaki gibi görünür.  
-
-:::image type="content" source="media/howto-create-custom-analytics/data-export-2.png" alt-text="Veri dışarı aktarma hedef yapılandırması görüntüsü.":::
-
-3. Aşağıdaki değerleri girin:
-
-| Ayar | Değer |
-| ------- | ----- |
-| Hedef adı | Hedef adınız |
-| Hedef türü | Azure Event Hubs |
-| Bağlantı Dizesi| Daha önce bir nota yaptığınız Olay Hub 'ı bağlantı dizesi. | 
-| Olay Hub'ı| Olay Hub 'ınızın adı|
-
-4. Son olarak **Oluştur** ' a tıklayın.
-
-5. Dışarı aktarmayı yapılandırmak için aşağıdaki ayarları kullanın:
+1. Dışarı aktarmayı yapılandırmak için aşağıdaki tablodaki değerleri kullanın:
 
     | Ayar | Değer |
     | ------- | ----- |
-    | Dışarı aktarma adı girin | eventhubexport |
+    | Dışarı aktarma adı | Olay Hub 'ı dışarı aktarma |
     | Etkin | Açık |
-    | Veriler| Telemetriyi seçin | 
-    | Hedefler| Dışa aktarma için aşağıda gösterildiği gibi bir hedef oluşturun ve ardından hedef açılan menüsünde seçin. |
+    | Dışarı aktarılacak veri türü | Telemetri |
+    | Hedefler | **+ Hedef**' i seçin ve ardından **telemetri Olay Hub 'ını** seçin |
 
-:::image type="content" source="media/howto-create-custom-analytics/data-export-1.png" alt-text="Veri dışa aktarma hedef yapılandırması ekran görüntüsü.":::
+1. **Kaydet**’i seçin.
 
-6. İşiniz bittiğinde **Kaydet**' i seçin.
+    :::image type="content" source="media/howto-create-custom-analytics/data-export-2.png" alt-text="Veri dışa aktarma tanımını gösteren ekran görüntüsü":::
 
-Devam etmeden önce dışa aktarma durumunun **çalışmaya** bitmesini bekleyin.
+Devam etmeden önce dışarı aktarma durumunun **veri dışa aktarma** sayfasında **sağlıklı** olmasını bekleyin.
 
 ## <a name="configure-databricks-workspace"></a>Databricks çalışma alanını yapılandırma
 

@@ -13,12 +13,12 @@ ms.date: 10/05/2020
 ms.author: jmprieur
 ms.reviewer: marsma
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 547906e3d3131483468d21623744ac243090ad84
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 1b539c168deab7c1893f071a2453be28310fc132
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104720245"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105022934"
 ---
 # <a name="quickstart-get-a-token-and-call-the-microsoft-graph-api-by-using-a-console-apps-identity"></a>Hızlı başlangıç: bir belirteç alın ve konsol uygulamasının kimliğini kullanarak Microsoft Graph API 'sini çağırın
 
@@ -116,12 +116,10 @@ Bu hızlı başlangıçta [.net core 3,1](https://www.microsoft.com/net/download
 >    ```
 >    Bu kodda:
 >    - `Enter_the_Application_Id_Here` , kaydettiğiniz uygulamanın uygulama (istemci) KIMLIĞIDIR.
+        Uygulama (istemci) KIMLIĞI ve dizin (kiracı) KIMLIĞI değerlerini bulmak için, Azure portal uygulamanın **genel bakış** sayfasına gidin.
 >    - `Enter_the_Tenant_Id_Here`KIRACı kimliği veya kiracı adıyla değiştirin (örneğin, `contoso.microsoft.com` ).
 >    - `Enter_the_Client_Secret_Here`Adım 1 ' de oluşturduğunuz istemci gizli anahtarı ile değiştirin.
-
-> [!div renderon="docs"]
-> > [!TIP]
-> > Uygulama (istemci) KIMLIĞI ve dizin (kiracı) KIMLIĞI değerlerini bulmak için, Azure portal uygulamanın **genel bakış** sayfasına gidin. Yeni bir anahtar oluşturmak için **sertifikalar & gizlilikler** sayfasına gidin.
+    Yeni bir anahtar oluşturmak için **sertifikalar & gizlilikler** sayfasına gidin.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-admin-consent"></a>3. Adım: yönetici onayı
@@ -150,12 +148,11 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 ```
 
 > [!div renderon="docs"]
->> Bu URL 'de:
->> * `Enter_the_Tenant_Id_Here`KIRACı kimliği veya kiracı adıyla değiştirin (örneğin, `contoso.microsoft.com` ).
->> * `Enter_the_Application_Id_Here` , kaydettiğiniz uygulamanın uygulama (istemci) KIMLIĞIDIR.
+> Bu URL 'de:
+> * `Enter_the_Tenant_Id_Here`KIRACı kimliği veya kiracı adıyla değiştirin (örneğin, `contoso.microsoft.com` ).
+> * `Enter_the_Application_Id_Here` , kaydettiğiniz uygulamanın uygulama (istemci) KIMLIĞIDIR.
 
-> [!NOTE]
-> Yukarıdaki URL 'YI kullanarak uygulamaya onay verdikten sonra, "AADSTS50011: uygulama için kayıtlı yanıt adresi yok" hatasını görebilirsiniz. Bu hata, bu uygulama ve URL 'nin bir yeniden yönlendirme URI 'SI olmadığı için oluşur. Bunu yoksayabilirsiniz.
+Yukarıdaki URL 'YI kullanarak uygulamaya onay verdikten sonra, "AADSTS50011: uygulama için kayıtlı yanıt adresi yok" hatasını görebilirsiniz. Bu hata, bu uygulama ve URL 'nin bir yeniden yönlendirme URI 'SI olmadığı için oluşur. Bunu yoksayabilirsiniz.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-4-run-the-application"></a>4. Adım: uygulamayı çalıştırma
@@ -169,14 +166,12 @@ Visual Studio veya Mac için Visual Studio kullanıyorsanız **F5** tuşuna basa
 cd {ProjectFolder}\1-Call-MSGraph\daemon-console
 dotnet run
 ```
-
-> Bu kodda:
-> * `{ProjectFolder}` . zip dosyasını ayıkladığınız klasördür. `C:\Azure-Samples\active-directory-dotnetcore-daemon-v2` bunun bir örneğidir.
+Bu kodda:
+* `{ProjectFolder}` . zip dosyasını ayıkladığınız klasördür. `C:\Azure-Samples\active-directory-dotnetcore-daemon-v2` bunun bir örneğidir.
 
 Sonuç olarak Azure Active Directory kullanıcıların bir listesini görmeniz gerekir.
 
-> [!IMPORTANT]
-> Bu hızlı başlangıç uygulaması, kendisini gizli bir istemci olarak tanımlamak için bir istemci gizli anahtarı kullanır. İstemci parolası, proje dosyalarınıza düz metin dosyası olarak eklenir. Güvenlik nedenleriyle, uygulamayı bir üretim uygulaması olarak düşünmeden önce istemci parolası yerine bir sertifika kullanmanızı öneririz. Sertifika kullanma hakkında daha fazla bilgi için bu örnekteki GitHub deposunda yer alan [yönergelere](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/#variation-daemon-application-using-client-credentials-with-certificates) bakın.
+Bu hızlı başlangıç uygulaması, kendisini gizli bir istemci olarak tanımlamak için bir istemci gizli anahtarı kullanır. İstemci parolası, proje dosyalarınıza düz metin dosyası olarak eklenir. Güvenlik nedenleriyle, uygulamayı bir üretim uygulaması olarak düşünmeden önce istemci parolası yerine bir sertifika kullanmanızı öneririz. Sertifika kullanma hakkında daha fazla bilgi için bu örnekteki GitHub deposunda yer alan [yönergelere](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/#variation-daemon-application-using-client-credentials-with-certificates) bakın.
 
 ## <a name="more-information"></a>Daha fazla bilgi
 Bu bölüm, kullanıcıların oturum açması için gereken koda genel bir bakış sağlar. Bu genel bakış, kodun nasıl çalıştığını, ana bağımsız değişkenlerin ne olduğunu ve var olan bir .NET Core konsol uygulamasına nasıl oturum ekleneceğini anlamak için yararlı olabilir.
@@ -214,11 +209,11 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();
 ```
 
-> | Öğe | Açıklama |
-> |---------|---------|
-> | `config.ClientSecret` | Azure portal uygulama için istemci parolası oluşturuldu. |
-> | `config.ClientId` | Azure portal kayıtlı uygulamanın uygulama (istemci) KIMLIĞI. Bu değeri, Azure portal uygulamanın **genel bakış** sayfasında bulabilirsiniz. |
-> | `config.Authority`    | Seçim Kullanıcının kimlik doğrulaması için güvenlik belirteci hizmeti (STS) uç noktası. Genellikle `https://login.microsoftonline.com/{tenant}` , `{tenant}` kiracınızın adı veya kiracı kimliğiniz olduğu genel bulut içindir.|
+ | Öğe | Açıklama |
+ |---------|---------|
+ | `config.ClientSecret` | Azure portal uygulama için istemci parolası oluşturuldu. |
+ | `config.ClientId` | Azure portal kayıtlı uygulamanın uygulama (istemci) KIMLIĞI. Bu değeri, Azure portal uygulamanın **genel bakış** sayfasında bulabilirsiniz. |
+ | `config.Authority`    | Seçim Kullanıcının kimlik doğrulaması için güvenlik belirteci hizmeti (STS) uç noktası. Genellikle `https://login.microsoftonline.com/{tenant}` , `{tenant}` kiracınızın adı veya kiracı kimliğiniz olduğu genel bulut içindir.|
 
 Daha fazla bilgi için [başvuru belgelerine `ConfidentialClientApplication` ](/dotnet/api/microsoft.identity.client.iconfidentialclientapplication)bakın.
 
@@ -231,9 +226,9 @@ result = await app.AcquireTokenForClient(scopes)
                   .ExecuteAsync();
 ```
 
-> |Öğe| Açıklama |
-> |---------|---------|
-> | `scopes` | İstenen kapsamları içerir. Gizli istemciler için bu değer, şuna benzer bir biçim kullanmalıdır `{Application ID URI}/.default` . Bu biçim, istenen kapsamların Azure portal ayarlanan uygulama nesnesi içinde statik olarak tanımlanmış olanlar olduğunu gösterir. Microsoft Graph için, `{Application ID URI}` öğesine işaret eder `https://graph.microsoft.com` . Özel Web API 'leri için `{Application ID URI}` Azure Portal tanımlanmıştır, **uygulama kaydı (Önizleme)** altında  >  **bir API 'yi kullanıma sunar**. |
+|Öğe| Açıklama |
+|---------|---------|
+| `scopes` | İstenen kapsamları içerir. Gizli istemciler için bu değer, şuna benzer bir biçim kullanmalıdır `{Application ID URI}/.default` . Bu biçim, istenen kapsamların Azure portal ayarlanan uygulama nesnesi içinde statik olarak tanımlanmış olanlar olduğunu gösterir. Microsoft Graph için, `{Application ID URI}` öğesine işaret eder `https://graph.microsoft.com` . Özel Web API 'leri için `{Application ID URI}` Azure Portal tanımlanmıştır, **uygulama kaydı (Önizleme)** altında  >  **bir API 'yi kullanıma sunar**. |
 
 Daha fazla bilgi için [başvuru belgelerine `AcquireTokenForClient` ](/dotnet/api/microsoft.identity.client.confidentialclientapplication.acquiretokenforclient)bakın.
 

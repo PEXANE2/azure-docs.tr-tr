@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 6a5460a691658bda1cd60e503be8c98433c9c343
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: de003025e98109599ecd69c0459e29950c9bd1fd
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101720163"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950578"
 ---
 # <a name="examples-of-an-attestation-policy"></a>Kanıtlama ilkesi örnekleri
 
@@ -35,9 +35,9 @@ c:[type=="x-ms-sgx-mrsigner"] => issue(type="<custom-name>", value=c.value);
 };
 
 ```
-Azure kanıtlama tarafından oluşturulan gelen talepler hakkında daha fazla bilgi için bkz. [talep kümeleri](/azure/attestation/claim-sets). Gelen talepler, ilke yazarları tarafından özel bir ilkede yetkilendirme kuralları tanımlamak için kullanılabilir. 
+Azure kanıtlama tarafından oluşturulan gelen talepler hakkında daha fazla bilgi için bkz. [talep kümeleri](./claim-sets.md). Gelen talepler, ilke yazarları tarafından özel bir ilkede yetkilendirme kuralları tanımlamak için kullanılabilir. 
 
-Verme kuralları bölümü zorunlu değildir. Bu bölüm, Kullanıcı tarafından, kanıtlama belirtecinde özel adlarla oluşturulan ek giden talepler olması için kullanılabilir. Kanıtlama belirtecinde hizmet tarafından oluşturulan giden talepler hakkında daha fazla bilgi için bkz. [talep kümeleri](/azure/attestation/claim-sets).
+Verme kuralları bölümü zorunlu değildir. Bu bölüm, Kullanıcı tarafından, kanıtlama belirtecinde özel adlarla oluşturulan ek giden talepler olması için kullanılabilir. Kanıtlama belirtecinde hizmet tarafından oluşturulan giden talepler hakkında daha fazla bilgi için bkz. [talep kümeleri](./claim-sets.md).
 
 ## <a name="default-policy-for-an-sgx-enclave"></a>Bir SGX kuşatma için varsayılan ilke
 
@@ -59,7 +59,7 @@ issuancerules
 };
 ```
 
-Varsayılan ilkede kullanılan talepler kullanım dışı olarak kabul edilir, ancak tam olarak desteklenir ve ileride dahil olmaya devam edecektir. Kullanımdan kaldırılmayan talep adlarını kullanmanız önerilir. Önerilen talep adları hakkında daha fazla bilgi için bkz. [talep kümeleri](/azure/attestation/claim-sets). 
+Varsayılan ilkede kullanılan talepler kullanım dışı olarak kabul edilir, ancak tam olarak desteklenir ve ileride dahil olmaya devam edecektir. Kullanımdan kaldırılmayan talep adlarını kullanmanız önerilir. Önerilen talep adları hakkında daha fazla bilgi için bkz. [talep kümeleri](./claim-sets.md). 
 
 ## <a name="sample-custom-policy-to-support-multiple-sgx-enclaves"></a>Birden çok SGX şifreleme desteklemek için örnek özel ilke
 
