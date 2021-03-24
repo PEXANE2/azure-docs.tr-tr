@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 03/22/2021
 ms.author: yushwang
-ms.openlocfilehash: 467c2b9fe8758db5c1da43a65c1bfde133df0823
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8ca50ae77d9d9e200db3318b8e087b72697c343a
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98880110"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953485"
 ---
 # <a name="vpn-gateway-faq"></a>VPN Gateway SSS
 
@@ -20,11 +20,15 @@ ms.locfileid: "98880110"
 
 ### <a name="can-i-connect-virtual-networks-in-different-azure-regions"></a>Farklı Azure bölgelerinde sanal ağlara bağlanabilir miyim?
 
-Evet. Aslında, hiçbir bölge kısıtlaması yoktur. Bir sanal ağ aynı bölgedeki veya farklı bir Azure bölgesindeki başka bir sanal ağa bağlanabilir. 
+Evet. Aslında, hiçbir bölge kısıtlaması yoktur. Bir sanal ağ aynı bölgedeki veya farklı bir Azure bölgesindeki başka bir sanal ağa bağlanabilir.
 
 ### <a name="can-i-connect-virtual-networks-in-different-subscriptions"></a>Farklı aboneliklerle sanal ağlara bağlanabilir miyim?
 
 Evet.
+
+### <a name="can-i-specify-private-dns-servers-in-my-vnet-when-configuring-vpn-gateway"></a>VPN Gateway yapılandırırken VNet 'imde özel DNS sunucuları belirtebilir miyim?
+
+VNet dosyanızı oluştururken bir DNS sunucusu veya sunucuları belirttiyseniz, VPN Gateway belirttiğiniz DNS sunucularını kullanır. Bir DNS sunucusu belirtirseniz, DNS sunucunuzun Azure için gereken etki alanı adlarını çözümleyebildiğini doğrulayın.
 
 ### <a name="can-i-connect-to-multiple-sites-from-a-single-virtual-network"></a>Tek bir sanal ağdan birden çok siteye bağlanabilir miyim?
 
@@ -32,7 +36,7 @@ Windows PowerShell ve Azure REST API'lerini kullanarak birden çok siteye bağla
 
 ### <a name="is-there-an-additional-cost-for-setting-up-a-vpn-gateway-as-active-active"></a>VPN ağ geçidini etkin-etkin olarak ayarlamak için ek bir maliyet var mı?
 
-Hayır. 
+Hayır.
 
 ### <a name="what-are-my-cross-premises-connection-options"></a>Şirket içi ve dışı bağlantı seçeneklerim nelerdir?
 
@@ -48,7 +52,7 @@ VPN ağ geçidi bağlantıları hakkında daha fazla bilgi için bkz. [VPN Gatew
 
 ### <a name="what-is-the-difference-between-a-site-to-site-connection-and-point-to-site"></a>Siteden Siteye bağlantı ve Noktadan Siteye bağlantı arasındaki fark nelerdir?
 
-**Siteden Siteye** (IPsec/IKE VPN tüneli) yapılandırmalar, şirket içi konumunuz ile Azure arasında yapılır. Diğer bir deyişle, şirket içinde yer alan bilgisayarlarla sanal makineler arasında ya da yönlendirme ve izin yapılandırmayı nasıl seçtiğinize bağlı olarak sanal ağınızdaki rol örneği ile bağlantı kurabilirsiniz. Her zaman kullanıma uygun şirket içi ve dışı bağlantı için müthiş bir seçenek; karma yapılandırmalar için de çok uygundur. Bu tür bir bağlantı; ağınıza ucuna dağıtılmış olması gereken IPsec VPN uygulamasına bağlıdır (donanım cihazı veya yazılım aracı). Bu tür bir bağlantı oluşturmak için, dışarıdan yönelik bir IPv4 adresine sahip olmanız gerekir.
+**Siteden Siteye** (IPsec/IKE VPN tüneli) yapılandırmalar, şirket içi konumunuz ile Azure arasında yapılır. Diğer bir deyişle, şirket içinde yer alan bilgisayarlarla sanal makineler arasında ya da yönlendirme ve izin yapılandırmayı nasıl seçtiğinize bağlı olarak sanal ağınızdaki rol örneği ile bağlantı kurabilirsiniz. Her zaman kullanılabilir şirket içi bağlantı için harika bir seçenektir ve karma yapılandırmalara uygun hale gelir. Bu tür bir bağlantı; ağınıza ucuna dağıtılmış olması gereken IPsec VPN uygulamasına bağlıdır (donanım cihazı veya yazılım aracı). Bu tür bir bağlantı oluşturmak için, dışarıdan yönelik bir IPv4 adresine sahip olmanız gerekir.
 
 **Noktadan Siteye** (SSTP üzerinden VPN) yapılandırmalar, sanal ağınızda bulunan her yerden her şeye tek bir bilgisayardan bağlanmanızı sağlar. Windows yerleşik VPN istemcisi kullanır. Noktadan Siteye yapılandırmasının bir parçası olarak, bir sertifika ve bir VPN istemci yapılandırma paketi yüklerseniz; bu pakette, bilgisayarınızın sanal ağda herhangi bir sanal makineye veya rol örneğine bağlanmasını sağlayan ayarlar bulunur. Şirket içi olmayan sanal ağa bağlanmak istediğinizde çok yararlıdır. Her ikisi de Siteden Siteye bağlantısına gereken VPN donanımına veya dışarıya dönük IPv4 adresine erişiminiz yoksa bu da iyi bir seçenektir.
 
@@ -66,17 +70,20 @@ VPN ağ geçidi bir sanal ağ geçidi türüdür. VPN ağ geçidi, şifrelenmiş
 
 ### <a name="what-is-a-route-based-dynamic-routing-gateway"></a>Rota tabanlı (dinamik yönlendirme) ağ geçidi nedir?
 
-Rota tabanlı ağ geçitleri yol tabanlı VPN'leri uygular. Rota temelli VPN'ler, paketleri kendi ilgili arabirimlerine yönlendirmek için IP iletme veya yönlendirme tablosunda "yolları" seçeneğini kullanır. Bundan sonra tünel arabirimleri, paketleri tünellerin içinde veya dışında şifreler veya şifrelerini çözer. Rota temelli VPN’lerle ilgili ilke veya trafik seçici herhangi birinden herhangi birine (veya joker karakterler) olarak yapılandırılır.
+Rota tabanlı ağ geçitleri yol tabanlı VPN'leri uygular. Rota temelli VPN'ler, paketleri kendi ilgili arabirimlerine yönlendirmek için IP iletme veya yönlendirme tablosunda "yolları" seçeneğini kullanır. Bundan sonra tünel arabirimleri, paketleri tünellerin içinde veya dışında şifreler veya şifrelerini çözer. Rota tabanlı VPN 'Ler için ilke veya trafik seçicileri, herhangi bir (veya joker karakter) olarak yapılandırılır.
 
 ### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>İlke tabanlı VPN ağ Geçidimi rota temelinde güncelleştirebilir miyim?
 
-Hayır. Bir Azure sanal ağ geçidi türü ilke temelli veya rota temelli olarak değiştirilemez. Ağ geçidinin silinip yeniden oluşturulması gerekir ve bu işlem yaklaşık 60 dakika sürer. Ağ geçidinin IP adresi veya Önceden Paylaşılan Anahtar (PSK) korunmaz.
-1. Silinecek ağ geçidiyle ilişkilendirilmiş bağlantıları silin.
-1. Ağ geçidini silin:
-   - [Azure portalındaki](vpn-gateway-delete-vnet-gateway-portal.md)
-   - [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
-   - [Azure PowerShell-klasik](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
-1. İstediğiniz [türde yeni bir ağ geçidi oluşturun ve VPN kurulumunu doldurun](./tutorial-site-to-site-portal.md#VNetGateway).
+Hayır. Ağ Geçidi türü, ilke tabanlı ya da yol tabanlı olarak, ilke tabanlı olarak değiştirilemez. Bir ağ geçidi türünü değiştirmek için, ağ geçidinin silinip yeniden oluşturulması gerekir. Bu işlem yaklaşık 60 dakika sürer. Yeni ağ geçidini oluşturduğunuzda, özgün ağ geçidinin IP adresini tutamaz.
+
+1. Ağ geçidiyle ilişkili tüm bağlantıları silin.
+
+1. Aşağıdaki makalelerden birini kullanarak ağ geçidini silin:
+
+   * [Azure portalındaki](vpn-gateway-delete-vnet-gateway-portal.md)
+   * [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
+   * [Azure PowerShell-klasik](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
+1. İstediğiniz ağ geçidi türünü kullanarak yeni bir ağ geçidi oluşturun ve ardından VPN kurulumunu doldurun. Adımlar için, [siteden siteye öğreticiye](./tutorial-site-to-site-portal.md#VNetGateway)bakın.
 
 ### <a name="do-i-need-a-gatewaysubnet"></a>'GatewaySubnet' gerekli mi?
 
@@ -102,7 +109,7 @@ Bölgesel olmayan ve olmayan ağ geçitleri (adında _az_ _olmayan ağ_ geçidi 
 
 ### <a name="how-does-my-vpn-tunnel-get-authenticated"></a>VPN tünelimin kimliği nasıl doğrulanır?
 
-Azure VPN PSK (Önceden Paylaşılan Anahtar) kimlik doğrulamasını kullanır. VPN tüneli oluşturduğumuzda önceden paylaşılan anahtar (PSK) oluştururuz. Otomatik olarak oluşturulan PSK’yi, Önceden Paylaştırılan Anahtar PowerShell cmdlet'ini veya REST API’sini Ayarla ile kendi istediğiniz gibi değiştirebilirsiniz.
+Azure VPN PSK (Önceden Paylaşılan Anahtar) kimlik doğrulamasını kullanır. VPN tüneli oluşturduğumuzda önceden paylaşılan anahtar (PSK) oluştururuz. Önceden paylaşılan bir anahtar PowerShell cmdlet 'i veya REST API olarak, otomatik olarak oluşturulmuş bir PSK 'yi değiştirebilirsiniz.
 
 ### <a name="can-i-use-the-set-pre-shared-key-api-to-configure-my-policy-based-static-routing-gateway-vpn"></a>Önceden Paylaşılan Anahtar API’sini Ayarla’yı ilke tabanlı (statik yönlendirme) ağ geçidi VPN’mi yapılandırmak için kullanabilir miyim?
 
@@ -121,11 +128,7 @@ Evet, Önceden Paylaşılan Anahtar API’sini ve PowerShell cmdlet’ini Ayarla
 
 #### <a name="classic-deployment-model"></a>Klasik dağıtım modeli
 
-* Azure portalı: Klasik sanal ağ > VPN bağlantıları > Siteden siteye VPN bağlantıları > Yerel site adı > Yerel site > İstemci adres alanı yolunu izleyin. 
-
-### <a name="can-i-configure-force-tunneling"></a>Zorlamalı Tüneli yapılandırabilir miyim?
-
-Evet. Bkz. [Zorlamalı tüneli yapılandırma](vpn-gateway-about-forced-tunneling.md).
+* Azure portalı: Klasik sanal ağ > VPN bağlantıları > Siteden siteye VPN bağlantıları > Yerel site adı > Yerel site > İstemci adres alanı yolunu izleyin.
 
 ### <a name="can-i-use-nat-t-on-my-vpn-connections"></a>VPN bağlantımda NAT-T kullanabilir miyim?
 
@@ -225,10 +228,13 @@ Evet, bu desteklenir. Daha fazla bilgi için bkz. [Bir arada var olan ExpressRou
 
 [!INCLUDE [vpn-gateway-ipsecikepolicy-faq-include](../../includes/vpn-gateway-faq-ipsecikepolicy-include.md)]
 
-
-## <a name="bgp"></a><a name="bgp"></a>BGP
+## <a name="bgp-and-routing"></a><a name="bgp"></a>BGP ve yönlendirme
 
 [!INCLUDE [vpn-gateway-faq-bgp-include](../../includes/vpn-gateway-faq-bgp-include.md)]
+
+### <a name="can-i-configure-forced-tunneling"></a>Zorlamalı tüneli yapılandırabilir miyim?
+
+Evet. Bkz. [Zorlamalı tüneli yapılandırma](vpn-gateway-about-forced-tunneling.md).
 
 ## <a name="cross-premises-connectivity-and-vms"></a><a name="vms"></a>Şirket içi ve dışı bağlantısı ve VM'ler
 
@@ -245,7 +251,6 @@ Hayır. Bir tek, belirttiğiniz sanal ağ Yerel Ağ Ip adresi aralıklarında bu
 ### <a name="how-do-i-troubleshoot-an-rdp-connection-to-a-vm"></a>VM ile RDP bağlantısı sorunlarını nasıl giderebilirim?
 
 [!INCLUDE [Troubleshoot VM connection](../../includes/vpn-gateway-connect-vm-troubleshoot-include.md)]
-
 
 ## <a name="virtual-network-faq"></a><a name="faq"></a>Sanal ağ hakkında SSS
 

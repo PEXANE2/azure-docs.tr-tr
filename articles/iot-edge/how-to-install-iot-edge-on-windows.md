@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 6361a9c337f5d3897cf15d4739b0410d3e820e57
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 94c3917b0912835799818597f94f3880ea3a7639
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104600947"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889544"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>Windows cihazı üzerinde Linux için Azure IoT Edge'i yükleme ve sağlama (Önizleme)
 
@@ -52,7 +52,9 @@ Bu makalede, bir Windows cihazında IoT Edge ayarlama adımları listelenir. Bu 
 
    1. [Windows Yönetim Merkezi Yükleyicisi 'ni](https://aka.ms/wacdownload)indirin.
 
-   1. İndirilen yükleyiciyi çalıştırın ve Windows Yönetim Merkezi 'Ni yüklemek için Yükleme Sihirbazı istemlerini izleyin. Yüklendikten sonra Windows Yönetim Merkezi 'ni açın.
+   1. İndirilen yükleyiciyi çalıştırın ve Windows Yönetim Merkezi 'Ni yüklemek için Yükleme Sihirbazı istemlerini izleyin. 
+
+   1. Yüklendikten sonra, Windows yönetici merkezini açmak için desteklenen bir tarayıcı kullanın. Desteklenen tarayıcılar Microsoft Edge (Windows 10, sürüm 1709 veya üzeri), Google Chrome ve Microsoft Edge Insider ' ı kapsar.
 
    1. Windows Yönetim Merkezi 'nin ilk sürümünde kullanılacak bir sertifika seçmeniz istenir. Sertifikanız olarak **Windows Yönetim Merkezi istemcisi** ' ni seçin.
 
@@ -61,12 +63,6 @@ Bu makalede, bir Windows cihazında IoT Edge ayarlama adımları listelenir. Bu 
       ![Ayarlara erişmek için panonun sağ üst köşesindeki dişli simgesini seçin.](./media/how-to-install-iot-edge-on-windows/select-gear-icon.png)
 
    1. **Ayarlar** menüsünde, **ağ geçidi** altında, **Uzantılar**' ı seçin.
-
-   1. **Akışlar** sekmesini seçin ve **Ekle**' yi seçin.
-
-   1. https://aka.ms/wac-insiders-feedMetin kutusuna girin ve **Ekle**' yi seçin.
-
-   1. Akış eklendikten sonra **kullanılabilir uzantılar** sekmesine gidin. Uzantılar listesini güncelleştirmek biraz zaman alabilir.
 
    1. **Kullanılabilir uzantılar** sekmesinde, uzantılar listesinde **Azure IoT Edge** bulun. Bunu seçin ve uzantı listesinin üzerindeki **Install** Prompt ' ı seçin.
 
@@ -346,6 +342,9 @@ Windows üzerinde Linux için IoT Edge IoT Edge cihazınıza başarıyla yüklen
    ```azurepowershell-interactive
    Ssh-EflowVm
    ```
+
+   >[!NOTE]
+   >Sanal makineye SSH 'ye izin verilen tek hesap, kendisini oluşturan kullanıcı olur.
 
 1. Oturum açtıktan sonra, aşağıdaki Linux komutunu kullanarak çalışan IoT Edge modülleri listesini denetleyebilirsiniz:
 

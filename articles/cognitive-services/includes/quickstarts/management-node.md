@@ -6,14 +6,14 @@ author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 08/05/2020
+ms.date: 3/22/2021
 ms.author: pafarley
-ms.openlocfilehash: cc1d375de9f45369f6d2902b106a1740f316ad8d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 41f6c8e260968eacd04249b3f887d4865907df0d
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948265"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104879575"
 ---
 [Başvuru belgeleri](/javascript/api/@azure/arm-cognitiveservices/)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices)  |  [Paket (NPM)](https://www.npmjs.com/package/@azure/arm-cognitiveservices)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices#sample-code)
 
@@ -116,7 +116,9 @@ node index.js
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [Azure Yönetim SDK 'Sı başvuru belgeleri](/javascript/api/@azure/arm-cognitiveservices/)
-* [Azure bilişsel hizmetler nedir?](../../what-are-cognitive-services.md)
-* [Azure bilişsel hizmetler 'e yönelik isteklerin kimliğini doğrulama](../../authentication.md)
-* [Azure portalını kullanarak yeni kaynak oluşturma](../../cognitive-services-apis-create-account.md)
+* Bilişsel hizmetlerle güvenli bir şekilde çalışmak için bkz. Azure bilişsel **[Hizmetler 'e yönelik kimlik doğrulama istekleri](../../authentication.md)** .
+* Bilişsel hizmetler 'deki farklı kategorilerin listesini almak için bkz. **[Azure bilişsel hizmetler nedir?](../../what-are-cognitive-services.md)** .
+* Bilişsel hizmetlerin desteklediği doğal dillerin listesini görmek için bkz. **[doğal dil desteği](../../language-support.md)** .
+* Bilişsel hizmetler 'in şirket içi hizmetlerini nasıl kullanacağınızı anlamak için bkz. bilişsel **[Hizmetler 'i kapsayıcı olarak kullanma](../../cognitive-services-container-support.md)** .
+* Bilişsel hizmetler 'in kullanım maliyetini tahmin etmek için bilişsel **[Hizmetler 'in maliyetlerini planlayın ve yönetin](../../plan-manage-costs.md)** bölümüne bakın.
+* Yönetim SDK 'Sı hakkında daha fazla bilgi için bkz. **[Azure YÖNETIM SDK başvuru belgeleri](/javascript/api/@azure/arm-cognitiveservices/)** .

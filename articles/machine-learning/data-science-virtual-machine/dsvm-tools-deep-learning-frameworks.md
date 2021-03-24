@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 0bfdea6c0bbbe40e4c72ab9da70a1b16d4bc4d3a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9ee0e8d8fa660313cb007d53c2bbbfc9b19feec9
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102175677"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889782"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>Azure Veri Bilimi VM'si için derin öğrenme ve AI çerçeveleri
 DSVM üzerindeki derin öğrenme çerçeveleri aşağıda listelenmiştir.
@@ -27,7 +27,7 @@ DSVM üzerindeki derin öğrenme çerçeveleri aşağıda listelenmiştir.
 | Desteklenen sürüm (ler) | |
 | Desteklenen DSVM sürümleri      | Ubuntu 16.04    |
 | DSVM 'de nasıl yapılandırılır/yüklenir?  | Caffe, ' da yüklüdür `/opt/caffe` .   Örnekler içinde `/opt/caffe/examples` .|
-| Nasıl çalıştırılır?      | X2Go kullanarak sanal makinenizde oturum açın ve ardından yeni bir Terminal başlatın ve aşağıdakileri girin:<br/>`cd /opt/caffe/examples`<br/>`source activate root`<br/>`jupyter notebook`<br/><br/>Örnek Not defterleri ile yeni bir tarayıcı penceresi açılır. İkililer/seçenek/Caffe/Build/Install/bina 'da yüklenir.<br/><br/>Caffe 'nin yüklü sürümü Python 2,7 gerektirir ve varsayılan olarak etkinleştirilen Python 3,5 ile çalışmaz. Python 2,7 ' ye geçmek için, `source activate root` Anaconda ortamına geçiş yapmak üzere öğesini çalıştırın.|    
+| Nasıl çalıştırılır?      | X2Go kullanarak sanal makinenizde oturum açın ve ardından yeni bir Terminal başlatın ve aşağıdakileri girin:<br/>`cd /opt/caffe/examples`<br/>`source activate root`<br/>`jupyter notebook`<br/><br/>Örnek Not defterleri ile yeni bir tarayıcı penceresi açılır. İkililer/seçenek/Caffe/Build/Install/bina 'da yüklenir.<br/><br/>Caffe 'nin yüklü sürümü Python 2,7 gerektirir ve varsayılan olarak etkinleştirilen Python 3,6 ile çalışmaz. Python 2,7 ' ye geçmek için, `source activate root` Anaconda ortamına geçiş yapmak üzere öğesini çalıştırın.|    
 
 ## <a name="caffe2"></a>[Caffe2](https://github.com/caffe2/caffe2)
 
