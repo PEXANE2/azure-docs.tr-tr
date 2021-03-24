@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 762938ebb4785a54224771e96c5bca274721dc30
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c61ad4d26c4a03889d9ac80332335543ec4140b7
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945967"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868990"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Öğretici: Azure Data Factory kullanarak HDInsight 'ta isteğe bağlı Apache Hadoop kümeleri oluşturma
 
@@ -185,7 +185,7 @@ Bu makalede, Hive etkinliğini isteğe bağlı bir HDInsight Hadoop kümesi olu�
 
 2. Sol menüden **`+ Create a resource`**  >  **analiz**  >  **Data Factory**' a gidin.
 
-    ![Portalda Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-azure-portal.png "Portalda Azure Data Factory")
+    :::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-azure-portal.png" alt-text="Portalda Azure Data Factory":::
 
 3. **Yeni Data Factory** kutucuğu için aşağıdaki değerleri girin veya seçin:
 
@@ -198,7 +198,7 @@ Bu makalede, Hive etkinliğini isteğe bağlı bir HDInsight Hadoop kümesi olu�
     |Konum | Konum, daha önce kaynak grubunu oluştururken belirttiğiniz konuma otomatik olarak ayarlanır. Bu öğreticide, konum **Doğu ABD** olarak ayarlanır. |
     |GIT 'i etkinleştir|Bu kutunun işaretini kaldırın.|
 
-    ![Azure portal kullanarak Azure Data Factory oluşturma](./media/hdinsight-hadoop-create-linux-clusters-adf/azure-portal-create-data-factory.png "Azure portal kullanarak Azure Data Factory oluşturma")
+    :::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-adf/azure-portal-create-data-factory.png" alt-text="Azure portal kullanarak Azure Data Factory oluşturma":::
 
 4. **Oluştur**’u seçin. Bir veri fabrikası oluşturmak 2 ila 4 dakika arasında bir süre sürebilir.
 
@@ -206,7 +206,7 @@ Bu makalede, Hive etkinliğini isteğe bağlı bir HDInsight Hadoop kümesi olu�
 
 6. Azure Data Factory yazma ve izleme portalını başlatmak için **yazar & İzleyicisi** ' ni seçin.
 
-    ![Azure Data Factory portalına genel bakış](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-portal-overview.png "Azure Data Factory genel bakış")
+    :::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-portal-overview.png" alt-text="Azure Data Factory portalına genel bakış":::
 
 ## <a name="create-linked-services"></a>Bağlı hizmetler oluşturma
 
@@ -219,15 +219,15 @@ Bu bölümde, veri fabrikanızın içinde iki bağlı hizmet yazardınız.
 
 1. **Başlarken** sayfasının sol bölmesinde **Yazar** simgesini seçin.
 
-    ![Azure Data Factory bağlı hizmeti oluşturma](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-edit-tab.png "Azure Data Factory bağlı hizmeti oluşturma")
+    :::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-edit-tab.png" alt-text="Azure Data Factory bağlı hizmeti oluşturma":::
 
 2. Pencerenin sol alt köşesinden **Bağlantılar** ' ı seçin ve ardından **+ Yeni**' yi seçin.
 
-    ![Azure Data Factory bağlantı oluşturma](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-create-new-connection.png "Azure Data Factory bağlantı oluşturma")
+    :::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-create-new-connection.png" alt-text="Azure Data Factory bağlantı oluşturma":::
 
 3. **Yeni bağlı hizmet** Iletişim kutusunda **Azure Blob depolama** ' yı seçip **devam**' ı seçin.
 
-    ![Data Factory için Azure Storage bağlı hizmeti oluşturma](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-storage-linked-service.png "Data Factory için Azure Storage bağlı hizmeti oluşturma")
+    :::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-storage-linked-service.png" alt-text="Data Factory için Azure Storage bağlı hizmeti oluşturma":::
 
 4. Depolama bağlı hizmeti için aşağıdaki değerleri sağlayın:
 
@@ -239,7 +239,7 @@ Bu bölümde, veri fabrikanızın içinde iki bağlı hizmet yazardınız.
 
     **Bağlantıyı Sına** ' yı seçin ve başarılı olursa **Oluştur**' u seçin.
 
-    ![Azure depolama bağlı hizmeti için ad belirtin](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-storage-linked-service-details.png "Azure depolama bağlı hizmeti için ad belirtin")
+    :::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-storage-linked-service-details.png" alt-text="Azure depolama bağlı hizmeti için ad belirtin":::
 
 ### <a name="create-an-on-demand-hdinsight-linked-service"></a>İsteğe bağlı bir HDInsight bağlı hizmeti oluşturma
 
@@ -249,7 +249,7 @@ Bu bölümde, veri fabrikanızın içinde iki bağlı hizmet yazardınız.
 
 3. **Azure HDInsight**' ı seçin ve ardından **devam**' ı seçin.
 
-    ![Azure Data Factory için HDInsight bağlı hizmetini oluşturun](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-linked-service.png "Azure Data Factory için HDInsight bağlı hizmetini oluşturun")
+    :::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-linked-service.png" alt-text="Azure Data Factory için HDInsight bağlı hizmetini oluşturun":::
 
 4. **Yeni bağlı hizmet** penceresinde aşağıdaki değerleri girin ve geri kalanını varsayılan olarak bırakın:
 
@@ -272,21 +272,21 @@ Bu bölümde, veri fabrikanızın içinde iki bağlı hizmet yazardınız.
 
     Ardından **Oluştur**’u seçin.
 
-    ![HDInsight bağlı hizmeti için değerler sağlayın](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-linked-service-details.png "HDInsight bağlı hizmeti için değerler sağlayın")
+    :::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-linked-service-details.png" alt-text="HDInsight bağlı hizmeti için değerler sağlayın":::
 
 ## <a name="create-a-pipeline"></a>İşlem hattı oluşturma
 
 1. **+**(Artı) düğmesini seçin ve ardından Işlem **hattı**' nı seçin.
 
-    ![Azure Data Factory işlem hattı oluşturma](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-create-pipeline.png "Azure Data Factory işlem hattı oluşturma")
+    :::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-create-pipeline.png" alt-text="Azure Data Factory işlem hattı oluşturma":::
 
 1. **Etkinlikler** araç kutusunda **HDInsight**' ı genişletin ve **Hive** etkinliğini ardışık düzen Tasarımcısı yüzeyine sürükleyin. **Genel** sekmesinde, etkinlik için bir ad belirtin.
 
-    ![Data Factory işlem hattına etkinlik ekleme](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-add-hive-pipeline.png "Data Factory işlem hattına etkinlik ekleme")
+    :::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-add-hive-pipeline.png" alt-text="Data Factory işlem hattına etkinlik ekleme":::
 
 1. Hive etkinliğinin seçili olduğundan emin olun, **HDI kümesi** sekmesini seçin. **HDInsight bağlı hizmeti** açılan listesinden, daha önce **HDInsightLinkedService**, HDInsight için oluşturduğunuz bağlı hizmeti seçin.
 
-    ![İşlem hattı için HDInsight kümesi ayrıntılarını sağlama](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-hive-activity-select-hdinsight-linked-service.png "İşlem hattı için HDInsight kümesi ayrıntılarını sağlama")
+    :::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-hive-activity-select-hdinsight-linked-service.png" alt-text="İşlem hattı için HDInsight kümesi ayrıntılarını sağlama":::
 
 1. **Betik** sekmesini seçin ve aşağıdaki adımları uygulayın:
 
@@ -294,27 +294,27 @@ Bu bölümde, veri fabrikanızın içinde iki bağlı hizmet yazardınız.
 
     1. **Dosya yolu** Için, **depolamayı inceleyin** ' i seçin ve örnek Hive betiğinin kullanılabildiği konuma gidin. PowerShell betiğini daha önce çalıştırdıysanız, bu konum olmalıdır `adfgetstarted/hivescripts/partitionweblogs.hql` .
 
-        ![İşlem hattı için Hive betik ayrıntıları sağlayın](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-path.png "İşlem hattı için Hive betik ayrıntıları sağlayın")
+        :::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-path.png" alt-text="İşlem hattı için Hive betik ayrıntıları sağlayın":::
 
     1. **Gelişmiş**  >  **Parametreler** altında öğesini seçin **`Auto-fill from script`** . Bu seçenek, Hive betiğindeki, çalışma zamanında değer gerektiren tüm parametreleri arar.
 
     1. **Değer** metin kutusunda, varolan klasörü biçiminde ekleyin `wasbs://adfgetstarted@<StorageAccount>.blob.core.windows.net/outputfolder/` . Bu yol büyük/küçük harfe duyarlıdır. Bu yol, betiğin çıktısının depolanacağı yerdir. `wasbs`Depolama hesaplarında varsayılan olarak etkinleştirilmiş güvenli aktarım gerekli olduğundan şema gereklidir.
 
-        ![Hive betiği için parametreler sağlama](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-parameters.png "Hive betiği için parametreler sağlama")
+        :::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-parameters.png" alt-text="Hive betiği için parametreler sağlama":::
 
 1. İşlem hattını doğrulamak için **Doğrula** ' yı seçin. **>>** Doğrulama penceresini kapatmak için (sağ ok) düğmesini seçin.
 
-    ![Azure Data Factory ardışık düzeni doğrulama](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-validate-all.png "Azure Data Factory ardışık düzeni doğrulama")
+    :::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-validate-all.png" alt-text="Azure Data Factory ardışık düzeni doğrulama":::
 
 1. Son olarak, yapıAzure Data Factory tları yayımlamak için **Tümünü Yayımla** ' yı seçin.
 
-    ![Azure Data Factory işlem hattını yayımlama](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-publish-pipeline.png "Azure Data Factory işlem hattını yayımlama")
+    :::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-publish-pipeline.png" alt-text="Azure Data Factory işlem hattını yayımlama":::
 
 ## <a name="trigger-a-pipeline"></a>İşlem hattını tetikleme
 
 1. Tasarımcı yüzeyinde araç çubuğundan şimdi **tetikleyici tetikleyicisi Ekle**' yi seçin  >  .
 
-    ![Azure Data Factory işlem hattını tetikleme](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-trigger-pipeline.png "Azure Data Factory işlem hattını tetikleme")
+    :::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-trigger-pipeline.png" alt-text="Azure Data Factory işlem hattını tetikleme":::
 
 2. Açılır taraftaki çubukta **Tamam ' ı** seçin.
 
@@ -322,13 +322,13 @@ Bu bölümde, veri fabrikanızın içinde iki bağlı hizmet yazardınız.
 
 1. Soldaki **İzleyici** sekmesine geçin. **İşlem Hattı Çalıştırmaları** listesinde bir işlem hattı çalıştırması görürsünüz. **Durum** sütununun altında çalıştırmanın durumuna dikkat edin.
 
-    ![Azure Data Factory işlem hattını izleme](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-monitor-pipeline.png "Azure Data Factory işlem hattını izleme")
+    :::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-monitor-pipeline.png" alt-text="Azure Data Factory işlem hattını izleme":::
 
 1. Durumu yenilemek için **Yenile**’yi seçin.
 
 1. Ardışık düzen ile ilişkili etkinlik çalıştırmasını görmek için **etkinlik çalıştırmalarını görüntüle** simgesini de seçebilirsiniz. Aşağıdaki ekran görüntüsünde, oluşturduğunuz işlem hattında yalnızca bir etkinlik olduğundan yalnızca bir etkinlik çalıştırması görürsünüz. Önceki görünüme geri dönmek için sayfanın üst kısmına doğru işlem **hatları** ' nı seçin.
 
-    ![Azure Data Factory işlem hattı etkinliğini izleme](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-monitor-pipeline-activity.png "Azure Data Factory işlem hattı etkinliğini izleme")
+    :::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-monitor-pipeline-activity.png" alt-text="Azure Data Factory işlem hattı etkinliğini izleme":::
 
 ## <a name="verify-the-output"></a>Çıktıyı doğrulama
 
@@ -340,7 +340,7 @@ Bu bölümde, veri fabrikanızın içinde iki bağlı hizmet yazardınız.
 
     * Azure Data Factory iş günlüklerine sahip bir **adfjobs** kapsayıcısı görürsünüz.  
 
-        ![Azure Data Factory işlem hattı çıkışını doğrulama](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-verify-output.png "Azure Data Factory işlem hattı çıkışını doğrulama")
+        :::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-verify-output.png" alt-text="Azure Data Factory işlem hattı çıkışını doğrulama":::
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -356,7 +356,7 @@ Ya da, bu öğretici için oluşturduğunuz kaynak grubunun tamamını silebilir
 1. Kaynak grubunu diğer projelerle paylaşmadığınız takdirde, **kaynaklar** kutucuğunda, varsayılan depolama hesabı ve veri fabrikasının listelenmesi gerekir.
 1. **Kaynak grubunu sil**'i seçin. Bunu yaptığınızda depolama hesabı ve depolama hesabında depolanan veriler silinir.
 
-    ![' Azure portal kaynak grubunu Sil '](./media/hdinsight-hadoop-create-linux-clusters-adf/delete-resource-group.png "Kaynak grubunu silme")
+    :::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-adf/delete-resource-group.png" alt-text="Azure portal kaynak grubunu sil":::
 
 1. Silmeyi onaylamak için kaynak grubunun adını girin ve **Sil**' i seçin.
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: 27d9d5d30dc4c96516d23acba6a11b411827071e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b283cacf94ff3567428787e50a3d7db9ba91fd9c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100378715"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864049"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Azure Haritalar harita denetimini kullanma
 
@@ -258,10 +258,10 @@ Azure haritalar REST hizmetlerine doğrudan erişiyorsanız, URL etki alanını 
 
 Bir JavaScript çerçevesi kullanılarak geliştirilirken, aşağıdaki açık kaynaklı projelerden biri yararlı olabilir:
 
-- [ng-Azure-Maps](https://github.com/arnaudleclerc/ng-azure-maps) -Azure haritaları etrafında angular 10 sarmalayıcı.
-- [AzureMapsControl. Components](https://github.com/arnaudleclerc/AzureMapsControl.Components) -bir Azure Maps Blazor bileşeni.
-- [Azure Maps 'e tepki verme bileşeni](https://github.com/WiredSolutions/react-azure-maps) -Azure Maps denetimi için bir tepki düzeyi.
-- [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps) -Vue uygulaması Için bir Azure Maps bileşeni.
+* [ng-Azure-Maps](https://github.com/arnaudleclerc/ng-azure-maps) -Azure haritaları etrafında angular 10 sarmalayıcı.
+* [AzureMapsControl. Components](https://github.com/arnaudleclerc/AzureMapsControl.Components) -bir Azure Maps Blazor bileşeni.
+* [Azure Maps 'e tepki verme bileşeni](https://github.com/WiredSolutions/react-azure-maps) -Azure Maps denetimi için bir tepki düzeyi.
+* [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps) -Vue uygulaması Için bir Azure Maps bileşeni.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -275,10 +275,10 @@ Bir haritanın stilini nasıl ayarlayacağınızı öğrenin:
 > [!div class="nextstepaction"]
 > [Harita stili seçme](choose-map-style.md)
 
-Haritanızda daha fazla veri eklemek için:
+En iyi uygulamaları öğrenin ve örnekleri inceleyin:
 
 > [!div class="nextstepaction"]
-> [Harita oluşturma](map-create.md)
+> [En iyi uygulamalar](web-sdk-best-practices.md)
 
 > [!div class="nextstepaction"]
 > [Kod örnekleri](/samples/browse/?products=azure-maps)

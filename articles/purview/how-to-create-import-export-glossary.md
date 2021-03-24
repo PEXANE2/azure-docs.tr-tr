@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 12/02/2020
-ms.openlocfilehash: 7466e143f345ea305c7e9ef118d09fb6f685ac16
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6f7f481ae0e0c75b14d894080f791161346cd93f
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101694500"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952414"
 ---
 # <a name="how-to-create-import-and-export-glossary-terms"></a>Sözlük terimleri oluşturma, içeri aktarma ve dışarı aktarma
 
@@ -80,6 +80,9 @@ Terim adlarının büyük/küçük harfe duyarlı olduğuna dikkat edin. Örneğ
 4. . Csv dosyanızı doldurmayı tamamladıktan sonra, içeri aktarılacak dosyanızı seçin ve ardından **Tamam**' ı seçin.
 
 5. Sistem, dosyayı karşıya yükler ve tüm terimleri kataloğunuza ekler.
+ 
+   > [!Important]
+   > Kullanıcılar ve uzmanlar için e-posta adresi, AAD grubundan kullanıcının birincil adresi olmalıdır. Alternatif e-posta, Kullanıcı asıl adı ve AAD olmayan e-postalar henüz desteklenmiyor. 
 
 ## <a name="export-terms-from-glossary-with-custom-attributes"></a>Özel özniteliklere sahip sözlükte terimleri dışarı aktarma
 

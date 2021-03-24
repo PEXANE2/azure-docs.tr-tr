@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 06/27/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1a6274ce36878af6cfbae04be935485c462bc86a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 34ee7eb25b1d106ea8bb53197d69ca5a9d528773
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98941371"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871614"
 ---
 # <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>Öğretici: ODBC ve PowerShell ile Apache Hive sorgulama
 
@@ -42,7 +42,7 @@ Aşağıdaki adımlarda Apache Hive ODBC veri kaynağı oluşturma adımları g�
 
 1. Windows 'da,   >  **Windows Yönetim Araçları**  >  **ODBC veri kaynakları (32 bit)/(64 bit)** Başlat ' a gidin.  **ODBC veri kaynağı Yöneticisi** penceresi açılır.
 
-    ![OBDC veri kaynağı Yöneticisi](./media/apache-hive-query-odbc-driver-powershell/hive-odbc-driver-dsn-setup.png "ODBC veri kaynağı Yöneticisi 'ni kullanarak bir DSN yapılandırma")
+    :::image type="content" source="./media/apache-hive-query-odbc-driver-powershell/hive-odbc-driver-dsn-setup.png " alt-text="OBDC veri kaynağı Yöneticisi" border="true":::
 
 1. **Yeni veri kaynağı oluştur** penceresini açmak IÇIN **Kullanıcı DSN** sekmesinden **Ekle** ' yi seçin.
 
@@ -68,7 +68,7 @@ Aşağıdaki adımlarda Apache Hive ODBC veri kaynağı oluşturma adımları g�
    |  Blok başına getirilen satırlar |Çok sayıda kayıt getirilirken, en iyi performansı sağlamak için bu parametreyi ayarlama gerekebilir. |
    |  Varsayılan dize sütunu uzunluğu, Ikili sütun uzunluğu, ondalık sütun ölçeği |Veri türü uzunlukları ve ön ekleri verilerin nasıl döndürüldüğünü etkileyebilir. Duyarlık ve kesilme kaybı nedeniyle yanlış bilgilerin döndürülmesine neden olur. |
 
-    ![Gelişmiş DSN yapılandırma seçenekleri](./media/apache-hive-query-odbc-driver-powershell/odbc-data-source-advanced-options.png "Gelişmiş DSN yapılandırma seçenekleri")
+    :::image type="content" source="./media/apache-hive-query-odbc-driver-powershell/odbc-data-source-advanced-options.png " alt-text="Gelişmiş DSN yapılandırma seçenekleri" border="true":::
 
 1. Veri kaynağını test etmek için **Test** ' i seçin. Veri kaynağı doğru şekilde yapılandırıldığında, test sonucu **başarıyı** gösterir.  
 

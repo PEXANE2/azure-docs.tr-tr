@@ -12,22 +12,18 @@ ms.date: 09/01/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
 keywords: konuşma çevirisi
-ms.openlocfilehash: 36c2943d7cd5ce2c5c7c4a8501dc0033aa8c9cbc
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 94ddd06068513261b5b73b313877e273c7251d62
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95015214"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954971"
 ---
 # <a name="what-is-speech-translation"></a>Konuşma çevirisi nedir?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Bu genel bakışta, ses akışlarının gerçek zamanlı, çok dilli konuşmadan konuşmaya ve konuşmaya metin çevirisi sağlayan konuşma çevirisi hizmetinin avantajları ve özellikleri hakkında bilgi edinebilirsiniz. Konuşma SDK 'Sı ile uygulamalarınızın, araçların ve cihazlarınızın, sunulan ses için kaynak dökümlerini ve çeviri çıkışlarını erişimi vardır. Okuma tespit edildiğinde ve nihai sonuçlar sentezleştirilmiş konuşmaya dönüştürülebileceğinden, geçici döküm ve çeviri sonuçları döndürülür.
-
-Microsoft 'un çeviri altyapısı iki farklı yaklaşımdan desteklenir: istatistiksel makine çevirisi (SMT) ve sinir makine çevirisi (NMT). SMT, birkaç sözcük bağlamında mümkün olan en iyi çevirileri tahmin etmek için gelişmiş istatistiksel analizler kullanır. NMT ile, sözcükleri çevirmek için Tümcelerin tam bağlamını kullanarak daha doğru, doğal bir şekilde daha doğru, doğal bir çeviri sağlamak için sinir Networks kullanılır.
-
-Günümüzde Microsoft, en popüler dillere çeviri için NMT kullanır. [Konuşma tanıma çevirisi için kullanılabilen tüm diller](language-support.md#speech-translation) NMT tarafından desteklenmektedir. Konuşmaya metin çevirisi, dil çiftine göre SMT veya NMT kullanabilir. Hedef dil NMT tarafından desteklenirken, tam çeviri NMT destekli olur. Hedef dil NMT tarafından desteklenmediğinde, çeviri, iki dil arasında "pivot" olarak Ingilizce kullanan NMT ve SMT 'in bir karması olur.
+Bu genel bakışta, ses akışlarının gerçek zamanlı, [çok dilli konuşmadan](language-support.md#speech-translation) konuşmaya ve konuşmaya metin çevirisi sağlayan konuşma çevirisi hizmetinin avantajları ve özellikleri hakkında bilgi edinebilirsiniz. Konuşma SDK 'Sı ile uygulamalarınızın, araçların ve cihazlarınızın, sunulan ses için kaynak dökümlerini ve çeviri çıkışlarını erişimi vardır. Okuma tespit edildiğinde ve nihai sonuçlar sentezleştirilmiş konuşmaya dönüştürülebileceğinden, geçici döküm ve çeviri sonuçları döndürülür.
 
 ## <a name="core-features"></a>Temel Özellikler
 

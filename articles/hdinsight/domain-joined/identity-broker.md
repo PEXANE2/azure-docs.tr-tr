@@ -4,12 +4,12 @@ description: Etki alanına katılmış Apache Hadoop kümeleri için kimlik doğ
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/03/2020
-ms.openlocfilehash: 47ba11260c3b58566963e5a3ffac80ca461a8a23
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c5bc5bc702dbd54bbad43aa4e1c6c8650c18e088
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946820"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863199"
 ---
 # <a name="azure-hdinsight-id-broker-hib"></a>Azure HDInsight KIMLIK Aracısı (HIB)
 
@@ -34,7 +34,7 @@ Kuruluşunuzun ihtiyaçlarına bağlı olarak en iyi kimlik doğrulama seçeneğ
 
 Aşağıdaki diyagramda,, HDInsight ID Broker etkinleştirildikten sonra Federasyon kullanıcıları dahil tüm kullanıcılar için modern OAuth tabanlı kimlik doğrulama akışı gösterilmektedir:
 
-:::image type="content" source="media/identity-broker/identity-broker-architecture.png" alt-text="HDInsight ID broker ile kimlik doğrulama akışını gösteren diyagram.":::
+:::image type="content" source="media/identity-broker/identity-broker-architecture.png" alt-text="HDInsight ID broker ile kimlik doğrulama akışını gösteren diyagram." border="false":::
 
 Bu diyagramda, istemci (yani, bir tarayıcı veya uygulama) önce OAuth belirtecini edinmesi gerekir. Ardından, bir HTTP isteğindeki ağ geçidine belirteç gösterir. Azure portal gibi diğer Azure hizmetlerinde zaten oturum açtıysanız, HDInsight kümenizde çoklu oturum açma deneyimiyle oturum açabilirsiniz.
 
@@ -42,8 +42,7 @@ Yalnızca temel kimlik doğrulamasını (yani, Kullanıcı adı ve parola) deste
 
 Aşağıdaki diyagramda, Federasyon kullanıcıları için temel kimlik doğrulama akışı gösterilmektedir. İlk olarak, ağ geçidi, [Ropc akışını](../../active-directory/develop/v2-oauth-ropc.md)kullanarak kimlik doğrulamasını tamamlamaya çalışır. Azure AD ile eşitlenen Parola karması yoksa, AD FS uç noktasının keşfedilmesinden ve AD FS uç noktasına erişerek kimlik doğrulamasının tamamlanmasını geri döner.
 
-:::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="Temel kimlik doğrulaması ile mimariyi gösteren diyagram.":::
-
+:::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="Temel kimlik doğrulaması ile mimariyi gösteren diyagram." border="false":::
 
 ## <a name="enable-hdinsight-id-broker"></a>HDInsight KIMLIK Aracısı 'nı etkinleştir
 
@@ -55,7 +54,7 @@ HDInsight ID Broker etkin bir Kurumsal Güvenlik Paketi kümesi oluşturmak içi
 
 HDInsight ID Broker özelliği kümeye bir ek VM ekler. Bu VM, HDInsight ID Broker düğümüdür ve kimlik doğrulamasını desteklemek için sunucu bileşenleri içerir. HDInsight ID Broker düğümü, Azure AD DS etki alanına katılmış etki alanıdır.
 
-![HDInsight ID Broker 'ı etkinleştirme seçeneğini gösteren diyagram.](./media/identity-broker/identity-broker-enable.png)
+:::image type="content" source="./media/identity-broker/identity-broker-enable.png" alt-text="HDInsight ID Broker 'ı etkinleştirme seçeneğini gösteren diyagram." border="true":::
 
 ### <a name="use-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarını kullanma
 

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 01/08/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: fae95e6f3a73d7539f81e1486c4ad021f181aa11
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 69a4955f28bbd42cd7bf5651bd057412e15303de
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102176340"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952924"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes hizmeti (AKS) çalışma süresi SLA 'Sı
 
@@ -37,9 +37,6 @@ Müşteriler, bir hizmet düzeyi hedefi (SLO 99,5) olan sınırsız sayıda ücr
 * [Azure CLI](/cli/azure/install-azure-cli) sürüm 2.8.0 veya üstünü yükler
 
 ## <a name="creating-a-new-cluster-with-uptime-sla"></a>Çalışma süresi SLA 'Sı ile yeni bir küme oluşturma
-
-> [!NOTE]
-> Şu anda çalışma süresi SLA 'sını etkinleştirirseniz, bir kümeden kaldırmanın bir yolu yoktur.
 
 Çalışma süresi SLA 'Sı ile yeni bir küme oluşturmak için Azure CLı 'yi kullanırsınız.
 
@@ -106,6 +103,15 @@ az aks create --resource-group myResourceGroup --name myAKSCluster--node-count 1
     "tier": "Paid"
   },
   ```
+
+## <a name="opt-out-of-uptime-sla"></a>Çalışma süresi SLA 'Sı devre dışı
+
+Kümenizi ücretsiz katmana değiştirecek şekilde güncelleştirebilir ve çalışma süresi SLA 'sını devre dışı bırakabilirsiniz.
+
+```azurecli-interactive
+# Update an existing cluster to opt out of Uptime SLA
+ az aks update --resource-group myResourceGroup --name myAKSCluster --no-uptime-sla
+ ```
 
 ## <a name="clean-up"></a>Temizleme
 

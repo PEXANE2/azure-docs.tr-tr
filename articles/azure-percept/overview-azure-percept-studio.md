@@ -5,40 +5,31 @@ author: elqu20
 ms.author: v-elqu
 ms.service: azure-percept
 ms.topic: conceptual
-ms.date: 02/18/2021
+ms.date: 03/23/2021
 ms.custom: template-concept
-ms.openlocfilehash: d31f59d43765a80a4a57b640a1cf36e410728225
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8aae976e94ebbef22a86e19f00bfe6248338c4d0
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104595881"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953681"
 ---
 # <a name="azure-percept-studio-overview"></a>Azure Percept Studio 'Ya genel bakış
 
-[Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) , Edge AI modelleri ve çözümleri oluşturmak için tek bir başlatma noktasıdır. Azure Percept Studio, Edge AI özellikli donanımlarını ve güçlü Azure AI ve IoT bulut hizmetlerini tümleştirmeyi kolaylaştıran, kılavuzlu iş akışlarını keşfetmenize ve tamamlamanıza olanak tanır.
+[Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) , Edge AI modelleri ve çözümleri oluşturmak için tek bir başlatma noktasıdır. Azure Percept Studio, Edge AI özellikli donanımlarını ve güçlü Azure AI ve IoT bulut hizmetlerini tümleştirmeyi kolaylaştıran, kılavuzlu iş akışlarını bulmanızı ve tamamlamanızı sağlar.
 
-Studio 'da, Edge AI özellikli cihazlarınızı, ilk ve devam eden eğitim verilerinin toplanması için uç noktaları olarak, ayrıca model yinelemeleri için dağıtım hedeflerini görebilirsiniz. Cihazlara ve eğitim verilerine erişim sağlamak, hem [görsel](./tutorial-nocode-vision.md) hem de [konuşma](./tutorial-no-code-speech.md) senaryosu için hızlı prototipleme ve yinelemeli Edge AI modeli geliştirmeye olanak sağlar.
-<!---
-:::image type="content" source="./media/overview-azure-percept-studio/percept-studio-flow.png" alt-text="Flow from homepage in Azure Percept Studio.":::
---->
+Studio 'da, Edge AI özellikli cihazlarınızı, ilk ve devam eden eğitim verilerinin toplanması için uç noktaların yanı sıra model yinelemeleri için dağıtım hedeflerini de görebilirsiniz. Cihazlara ve eğitim verilerine erişim sağlamak, hem [görsel](./tutorial-nocode-vision.md) hem de [konuşma](./tutorial-no-code-speech.md) senaryosu için hızlı prototipleme ve yinelemeli Edge AI modeli geliştirmeye olanak sağlar.
 
-Azure Percept Studio 'daki iş akışları, Azure IoT Hub, Özel Görüntü İşleme, konuşma Studio ve Azure ML hizmetleri gibi birçok temel Azure AI ve IoT hizmetini tümleştirmenize olanak sağlar. bu sayede, bu hizmetleri kullanarak bir uçtan uca çözüm oluşturabilir ve önceden var olan önemli bir bilgi sahibi olabilirsiniz. Bu Azure hizmetlerini zaten biliyorsanız, Azure Percept Studio dışındaki mevcut kaynaklara da bağlanabilir ve bunları değiştirebilirsiniz.
-<!---
-:::image type="content" source="./media/overview-azure-percept-studio/device-flow.png" alt-text="Device flow in Azure Percept Studio.":::
---->
+Azure Percept Studio 'daki iş akışları Azure IoT Hub, Özel Görüntü İşleme, konuşma Studio ve Azure ML gibi birçok Azure AI ve IoT hizmetini tümleştirmenize olanak sağlar. bu sayede, bu hizmetleri kullanarak, önceden var olan önemli bilgileri olmayan bir uçtan uca çözüm oluşturabilirsiniz. Bu Azure hizmetlerini zaten biliyorsanız, Azure Percept Studio dışında mevcut Azure hizmet kaynaklarına da bağlanabilir ve bunları değiştirebilirsiniz.
 
-Başlangıç veya daha gelişmiş bir AI modeli ve çözüm geliştiricisiyseniz, bir prototip üzerinde çalışarak veya bir üretim çözümüne geçerek, konuşma veya Vision Edge AI için Azure Percept Studio, Edge AI çözümleri oluşturma konusunda bilgi almak için kullanabileceğiniz iş akışlarına erişim sağlar.
-<!---
-:::image type="content" source="./media/overview-azure-percept-studio/image-flow.png" alt-text="Image capture flow in Azure Percept Studio.":::
---->
+Bir başlangıç veya gelişmiş bir AI modeli ve çözüm geliştiricisiyseniz, bir prototip üzerinde çalışırken veya bir üretim çözümüne geçerek, Azure Percept Studio, Edge AI çözümleri oluşturma konusunda bir savunma sağlamak için kullanabileceğiniz iş akışlarına erişim sağlar.
+
 </br>
 
 > [!VIDEO https://www.youtube.com/embed/rZsUuCytZWY]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure Percept Studio 'Ya [buradan](https://go.microsoft.com/fwlink/?linkid=2135819) göz atın
+- [Azure Percept Studio 'ya](https://go.microsoft.com/fwlink/?linkid=2135819) göz atın
 - [Microsoft Online Mağazası](https://go.microsoft.com/fwlink/p/?LinkId=2155270) 'Nda Azure Percept dk ve Azure Percept Audio donatısı alın
-- Azure Percept DK kurulum [Hızlı Başlangıç kılavuzunu](./quickstart-percept-dk-set-up.md) doldurun
-- Kod içermeyen [Vision](./tutorial-nocode-vision.md) ve [konuşma](./tutorial-no-code-speech.md) çözümleri oluşturmaya yönelik öğreticileri deneyin
+- [Azure PERCEPT AI modelleri ve çözümleri](./overview-ai-models.md) hakkında daha fazla bilgi edinin

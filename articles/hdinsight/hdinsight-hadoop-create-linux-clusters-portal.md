@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 08/06/2020
-ms.openlocfilehash: c68d342cf21d69fa97ba3d5171ba596662fd845f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 98d18044693bc6f4d23e04e9403e71686df39451
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945826"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872209"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure portal kullanarak HDInsight 'ta Linux tabanlı kümeler oluşturun
 
@@ -32,13 +32,13 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. Üstteki menüden **+ kaynak oluştur**' u seçin.
 
-    ![Azure portal yeni bir küme oluşturun](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-create-resource.png "Azure portal yeni bir küme oluşturma")
+    :::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-create-resource.png" alt-text="Azure portal yeni bir küme oluşturun":::
 
 1. **Analiz**  >  **Azure HDInsight** ' ı seçerek **HDInsight kümesi oluşturma** sayfasına gidin.
 
 ## <a name="basics"></a>Temel Bilgiler
 
-![HDInsight küme oluşturma temelleri](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-basics.png "Azure portal yeni bir küme oluşturma")
+:::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-basics.png" alt-text="HDInsight küme oluşturma temelleri":::
 
 **Temel bilgiler** sekmesinde, aşağıdaki bilgileri sağlayın:
 
@@ -63,7 +63,7 @@ Ileri ' yi seçin: bir sonraki sekmeye ilerlemek için **depolama >>** .
 > [!WARNING] 
 > 15 Haziran 2020 ' den itibaren müşteriler HDInsight kullanarak yeni hizmet sorumlusu oluşturamayacak. Bkz. Azure Active Directory kullanarak [hizmet sorumlusu ve sertifikaları oluşturma](../active-directory/develop/howto-create-service-principal-portal.md) .
 
-![HDInsight küme depolaması oluştur](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-storage.png "Azure portal depolamada yeni bir küme oluşturma")
+:::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-storage.png" alt-text="HDInsight küme depolaması oluştur":::
 
 ### <a name="primary-storage"></a>Birincil depolama alanı
 
@@ -90,7 +90,7 @@ Sonraki sekmeye ilerlemek için **İleri ' yi seçin: güvenlik + ağ >>** .
 
 ## <a name="security--networking"></a>Güvenlik + ağ
 
-![HDInsight küme güvenliği ağı oluşturma](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-security-networking.png "HDInsight küme güvenliği ağı oluşturma")
+:::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-security-networking.png" alt-text="HDInsight küme güvenliği ağı oluşturma":::
 
 **Güvenlik + ağ** sekmesinden aşağıdaki bilgileri sağlayın:
 
@@ -107,7 +107,7 @@ Sonraki sekmeye ilerlemek için **İleri ' yi seçin: yapılandırma + fiyatland
 
 ## <a name="configuration--pricing"></a>Yapılandırma + fiyatlandırma
 
-![HDInsight küme yapılandırması oluştur](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-configuration.png "Yapılandırma ve fiyatlandırma sekmesi")
+:::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-configuration.png" alt-text="HDInsight küme yapılandırması oluştur":::
 
 **Yapılandırma + fiyatlandırma** sekmesinden aşağıdaki bilgileri sağlayın:
 
@@ -123,7 +123,7 @@ Küme yapılandırmasını doğrulamak ve son sekmeye ilerlemek için **gözden 
 
 ## <a name="review--create"></a>Gözden geçirme ve oluşturma
 
-![HDInsight küme Özeti oluştur](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-review-create-hadoop.png "Küme düğümlerinin sayısını belirtin")
+:::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-review-create-hadoop.png" alt-text="HDInsight küme Özeti oluştur":::
 
 Ayarları gözden geçirin. **Oluştur**’u seçerek kümeyi oluşturun.
 
@@ -133,7 +133,7 @@ Kümenin oluşturulması genellikle yaklaşık 20 dakika sürer. Sağlama işlem
 
 Oluşturma işlemi bittikten sonra **dağıtım başarılı** bildiriminde **Kaynağa Git** ' i seçin. Küme penceresi aşağıdaki bilgileri sağlar.
 
-![HDI Azure portal kümesine genel bakış](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-completed.png "Küme özellikleri")
+:::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-completed.png" alt-text="HDI Azure portal kümesine genel bakış":::
 
 Penceredeki simgelerden bazıları şu şekilde açıklanmıştır:
 

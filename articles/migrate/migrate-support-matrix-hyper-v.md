@@ -6,16 +6,16 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: bdd8fd336da12b5549875cf53f9e221cc431c2b9
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 8531d0b2252e6ddff75509046b5a4576b99d339f
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104773224"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870798"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Hyper-V değerlendirmesi için destek matrisi
 
-Bu makalede, Azure geçişi [: bulma ve değerlendirme](migrate-services-overview.md#azure-migrate-server-assessment-tool) Aracı kullanılarak Azure 'a geçiş Için bir Hyper-V ortamında çalışan şirket içi sunucuları bulup değerlendirdikten sonra Önkoşullar ve destek gereksinimleri özetlenmektedir. Hyper-V ' d e çalıştıran sunucuları Azure 'a geçirmek istiyorsanız, [geçiş desteği matrisini](migrate-support-matrix-hyper-v-migration.md)gözden geçirin.
+Bu makalede, Azure geçişi [: bulma ve değerlendirme](migrate-services-overview.md#azure-migrate-discovery-and-assessment-tool) Aracı kullanılarak Azure 'a geçiş Için bir Hyper-V ortamında çalışan şirket içi sunucuları bulup değerlendirdikten sonra Önkoşullar ve destek gereksinimleri özetlenmektedir. Hyper-V ' d e çalıştıran sunucuları Azure 'a geçirmek istiyorsanız, [geçiş desteği matrisini](migrate-support-matrix-hyper-v-migration.md)gözden geçirin.
 
 Hyper-V ' d e çalışan sunucuların bulmayı ve değerlendirmesini ayarlamak için bir proje oluşturun ve projeye Azure geçişi: bulma ve değerlendirme aracını ekleyin. Araç eklendikten sonra [Azure geçişi](migrate-appliance.md)gereci dağıtırsınız. Gereç, şirket içi sunucuları sürekli bulur ve Azure 'a sunucu meta verilerini ve performans verilerini gönderir. Bulma işlemi tamamlandıktan sonra keşfedilen sunucuları gruplar halinde toplar ve bir grup için değerlendirme çalıştırırsınız.
 
@@ -23,7 +23,7 @@ Hyper-V ' d e çalışan sunucuların bulmayı ve değerlendirmesini ayarlamak i
 
 **Destek** | **Ayrıntılar**
 --- | ---
-**Değerlendirme limitleri** | Tek bir [projede](migrate-support-matrix.md#azure-migrate-projects)en fazla 35.000 sunucu bulabilir ve değerlendirebilirsiniz.
+**Değerlendirme limitleri** | Tek bir [projede](migrate-support-matrix.md#project)en fazla 35.000 sunucu bulabilir ve değerlendirebilirsiniz.
 **Proje limitleri** | Bir Azure aboneliğinde birden çok proje oluşturabilirsiniz. Hyper-V üzerindeki sunuculara ek olarak bir proje, VMware ve fiziksel sunuculardaki sunucuları, her biri için değerlendirme sınırlarına kadar içerebilir.
 **Bulma** | Azure geçişi gereci, Hyper-V üzerinde çalışan en fazla 5000 sunucuyu bulabilir.<br/><br/> Gereç, 300 adede kadar Hyper-V konaklarına bağlanabilir.
 **Değerlendirme** | Tek bir gruba en fazla 35.000 sunucu ekleyebilirsiniz.<br/><br/> Bir grup için tek bir değerlendirmede en fazla 35.000 sunucu değerlendirebilirsiniz.

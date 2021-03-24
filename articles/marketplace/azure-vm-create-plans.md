@@ -7,12 +7,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 10/19/2020
-ms.openlocfilehash: e5fb425afdd4b212a0b28ce91418eb0ee9e3632f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c700cce5f50fda7f7a5773e07549e93da1c9f7a2
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97964442"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104956263"
 ---
 # <a name="how-to-create-plans-for-a-virtual-machine-offer"></a>Bir sanal makine teklifi için plan oluşturma
 
@@ -221,6 +221,8 @@ Veri diskleri ( **veri diski Ekle (en fazla 16)** seçin) Ayrıca, Azure depolam
 Kullandığınız işletim sisteminden bağımsız olarak, yalnızca çözüm için gereken en az sayıda veri diski ekleyin. Dağıtım sırasında, müşteriler bir görüntünün parçası olan diskleri kaldıramaz, ancak dağıtım sırasında veya sonrasında her zaman disk ekleyebilirler.
 
 **Taslağı kaydet**' i seçin, sonra yeni oluşturduğunuz planı görmek için sol üstteki **← plana genel bakış** ' ı seçin.
+
+VM Görüntünüz yayımlandıktan sonra, görüntüyü Azure depolamadan silebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

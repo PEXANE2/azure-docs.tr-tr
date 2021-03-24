@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
-ms.date: 02/12/2021
+ms.date: 03/08/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7879b233bf94442de2cad83de8adfe54b6b81e0e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3308c2263f80a0772a389900e08c81cfe8da32a2
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100365523"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952635"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B işbirliği SSS
 
@@ -83,6 +83,7 @@ Evet. Multi-Factor Authentication ve tüketici e-posta hesaplarının her ikisi 
 ### <a name="do-you-support-password-reset-for-azure-ad-b2b-collaboration-users"></a>Azure AD B2B işbirliği kullanıcıları için parola sıfırlamayı destekliyor musunuz?
 Azure AD kiracınız bir kullanıcının giriş dizinidir ve [Kullanıcı parolasını Azure Portal sıfırlayabilirsiniz](../fundamentals/active-directory-users-reset-password-azure-portal.md) . Ancak, başka bir Azure AD dizini veya dış kimlik sağlayıcısı tarafından yönetilen bir hesapla oturum açan bir Konuk kullanıcının parolasını doğrudan sıfırlayamazsınız. Yalnızca kullanıcının giriş dizinindeki Konuk Kullanıcı veya yönetici parolayı sıfırlayabilir. Aşağıda, parola sıfırlamanın Konuk kullanıcılar için nasıl çalıştığı hakkında bazı örnekler verilmiştir:
  
+* Bir Azure AD kiracısındaki "Konuk" (UserType = = konukları) olarak işaretlenen Konuk kullanıcılar SSPR 'ye kaydedilemez [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) . Bu Konuk Kullanıcı türü, yalnızca SSPR 'yi aracılığıyla gerçekleştirebilir [https://aka.ms/sspr](https://aka.ms/sspr) . 
 * Bir Microsoft hesabı (örneğin) ile oturum açan Konuk kullanıcılar, guestuser@live.com Microsoft hesabı self servis parola sıfırlama (SSPR) kullanarak kendi parolalarını sıfırlayabilir. [Microsoft hesabı parolanızı sıfırlama](https://support.microsoft.com/help/4026971/microsoft-account-how-to-reset-your-password)bölümüne bakın.
 * Bir Google hesabı veya başka bir dış kimlik sağlayıcısı ile oturum açan Konuk kullanıcılar, kimlik sağlayıcısının SSPR metodunu kullanarak kendi parolalarını sıfırlayabilir. Örneğin, Google hesabı olan bir Konuk Kullanıcı parolanızı guestuser@gmail.com [değiştirme veya sıfırlama](https://support.google.com/accounts/answer/41078)bölümündeki yönergeleri izleyerek parolalarını sıfırlayabilir.
 * Kimlik kiracısı tam zamanında (JıT) veya "viral" kiracınız (yani ayrı, yönetilmeyen bir Azure kiracısı) ise, yalnızca Konuk Kullanıcı parolasını sıfırlayabilir. Bazen bir kuruluş, çalışanlar hizmetlere kaydolmak için iş e-posta adreslerini kullandıklarında oluşturulan [viral kiracılarının yönetimini ele geçirebilir](../enterprise-users/domains-admin-takeover.md) . Kuruluş bir viral kiracısı gerçekleştirdikten sonra, yalnızca o kuruluştaki bir yönetici kullanıcı parolasını sıfırlayabilir veya SSPR 'yi etkinleştirebilir. Gerekirse, kuruluş olarak, Konuk Kullanıcı hesabını dizininizden kaldırabilir ve bir daveti yeniden gönderebilirsiniz.

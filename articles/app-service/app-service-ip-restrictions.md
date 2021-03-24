@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 12/17/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: fea189952b1452c680255ceb99e38609775a8bd6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4b85397eeda651678fe66c6e78199dd25630dcc4
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102502697"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889899"
 ---
 # <a name="set-up-azure-app-service-access-restrictions"></a>Azure App Service erişim kısıtlamalarını ayarlama
 
@@ -97,26 +97,25 @@ Hizmet uç noktaları ile uygulamanızı uygulama ağ geçitleri veya diğer Web
 > [!NOTE]
 > - Hizmet uç noktaları şu anda IP Güvenli Yuva Katmanı (SSL) sanal IP (VIP) kullanan Web uygulamaları için desteklenmemektedir.
 >
-#### <a name="set-a-service-tag-based-rule-preview"></a>Hizmet etiketi tabanlı kural ayarlama (Önizleme)
+#### <a name="set-a-service-tag-based-rule"></a>Hizmet etiketi tabanlı kural ayarlama
 
-* 4. adım 'da, **tür** açılan listesinde **hizmet etiketi (Önizleme)** öğesini seçin.
+* 4. adım 'da, **tür** açılan listesinde **hizmet etiketi**' ni seçin.
 
-   :::image type="content" source="media/app-service-ip-restrictions/access-restrictions-service-tag-add.png" alt-text="Hizmet etiketi türü seçili olan ' kısıtlama Ekle ' bölmesinin ekran görüntüsü.":::
+   :::image type="content" source="media/app-service-ip-restrictions/access-restrictions-service-tag-add.png?v2" alt-text="Hizmet etiketi türü seçili olan ' kısıtlama Ekle ' bölmesinin ekran görüntüsü.":::
 
 Her hizmet etiketi, Azure hizmetlerinden gelen IP aralıklarının listesini temsil eder. Bu hizmetlerin bir listesi ve belirli aralıklara yönelik bağlantılar [hizmet etiketi belgelerinde][servicetags]bulunabilir.
 
-Aşağıdaki hizmet etiketleri listesi, önizleme aşamasında erişim kısıtlama kurallarında desteklenir:
+Kullanılabilir tüm hizmet etiketleri erişim kısıtlama kurallarında desteklenir. Kolaylık olması için, Azure portal aracılığıyla yalnızca en sık kullanılan etiketlerin bir listesi kullanılabilir. Bölgesel kapsamlı kurallar gibi daha gelişmiş kuralları yapılandırmak için Azure Resource Manager şablonlarını veya komut dosyalarını kullanın. Bunlar Azure portal aracılığıyla kullanılabilen etiketlerdir:
+
 * ActionGroup
+* Applicationınsi, Savailability
 * AzureCloud
 * Azurecognivesearch
-* AzureConnectors
 * AzureEventGrid
 * Azurefrontkapısı. arka uç
 * AzureMachineLearning
-* AzureSignalR
 * AzureTrafficManager
 * LogicApps
-* ServiceFabric
 
 ### <a name="edit-a-rule"></a>Bir kuralı düzenleme
 
@@ -137,6 +136,31 @@ Bir kuralı silmek için, **erişim kısıtlamaları** sayfasında, silmek isted
 
 ## <a name="access-restriction-advanced-scenarios"></a>Erişim kısıtlaması gelişmiş senaryolar
 Aşağıdaki bölümlerde, erişim kısıtlamalarını kullanan bazı gelişmiş senaryolar açıklanır.
+
+### <a name="filter-by-http-header"></a>Http başlığına göre filtrele
+
+Herhangi bir kuralın parçası olarak, ek http üst bilgi filtreleri ekleyebilirsiniz. Aşağıdaki http üst bilgi adları desteklenir:
+* X-Iletilmiş-Için
+* X-Iletilen-konak
+* X-Azure-FDıD
+* X-FD-Healtharaştırması
+
+Her üstbilgi adı için, virgülle ayrılmış 8 ' e kadar değer ekleyebilirsiniz. Http üst bilgi filtreleri kuralın kendisinden sonra değerlendirilir ve kuralın uygulanabilmesi için her iki koşulun de doğru olması gerekir.
+
+### <a name="multi-source-rules"></a>Çoklu kaynak kuralları
+
+Çoklu kaynak kuralları tek bir kuralda en fazla 8 IP aralığı veya 8 hizmet etiketi birleştirmenizi sağlar. Bunu 512 taneden fazla IP aralığı varsa veya birden çok IP aralığının tek bir http üst bilgi filtresiyle birleştirileceği mantıksal kurallar oluşturmak istiyorsanız bunu kullanabilirsiniz.
+
+Çoklu kaynak kuralları, tek kaynak kurallarını tanımladığınız şekilde tanımlanır, ancak her Aralık virgülle ayrılır.
+
+PowerShell örneği:
+
+  ```azurepowershell-interactive
+  Add-AzWebAppAccessRestrictionRule -ResourceGroupName "ResourceGroup" -WebAppName "AppName" `
+    -Name "Multi-source rule" -IpAddress "192.168.1.0/24,192.168.10.0/24,192.168.100.0/24" `
+    -Priority 100 -Action Allow
+  ```
+
 ### <a name="block-a-single-ip-address"></a>Tek bir IP adresini engelle
 
 İlk erişim kısıtlama kuralınızı eklediğinizde, hizmet önceliği 2147483647 olan bir açık *Tümünü reddetme* kuralı ekler. Uygulamada, *tüm açık reddetme* kuralı yürütülecek son kuraldır ve *izin verme* kuralı tarafından açıkça ızın verilmeyen herhangi bir IP adresine erişimi engeller.
@@ -151,17 +175,20 @@ Uygulamanıza erişimi denetleyebilmenin yanı sıra, uygulamanız tarafından k
 
 :::image type="content" source="media/app-service-ip-restrictions/access-restrictions-scm-browse.png" alt-text="SCM sitesi veya uygulama için hiçbir erişim kısıtlaması ayarlanmediğini gösteren Azure portal ' erişim kısıtlamaları ' sayfasının ekran görüntüsü.":::
 
-### <a name="restrict-access-to-a-specific-azure-front-door-instance-preview"></a>Belirli bir Azure ön kapısı örneğine erişimi kısıtla (Önizleme)
-Azure ön kapılarından uygulamanıza giden trafik, Azurefrontkapı. arka uç hizmeti etiketinde tanımlanan iyi bilinen bir IP aralığı kümesinden kaynaklanır. Bir hizmet etiketi kısıtlama kuralı kullanarak, trafiği yalnızca Azure ön kapısından kaynaklanacak şekilde kısıtlayabilirsiniz. Trafiğin yalnızca belirli örnekten kaynaklandığını sağlamak için, Azure ön kapısının gönderdiği benzersiz http üstbilgisine göre gelen istekleri daha fazla filtrelemeniz gerekir. Önizleme süresince bunu PowerShell veya REST/ARM ile elde edebilirsiniz. 
+### <a name="restrict-access-to-a-specific-azure-front-door-instance"></a>Belirli bir Azure ön kapısı örneğine erişimi kısıtla
+Azure ön kapılarından uygulamanıza giden trafik, Azurefrontkapı. arka uç hizmeti etiketinde tanımlanan iyi bilinen bir IP aralığı kümesinden kaynaklanır. Bir hizmet etiketi kısıtlama kuralı kullanarak, trafiği yalnızca Azure ön kapısından kaynaklanacak şekilde kısıtlayabilirsiniz. Trafiğin yalnızca belirli örnekten kaynaklandığını sağlamak için, Azure ön kapısının gönderdiği benzersiz http üstbilgisine göre gelen istekleri daha fazla filtrelemeniz gerekir.
 
-* PowerShell örneği (ön kapı KIMLIĞI Azure portal):
+:::image type="content" source="media/app-service-ip-restrictions/access-restrictions-frontdoor.png" alt-text="Azure ön kapı kısıtlamasının nasıl ekleneceğini gösteren Azure portal ' erişim kısıtlamaları ' sayfasının ekran görüntüsü.":::
 
-   ```azurepowershell-interactive
-    $frontdoorId = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-    Add-AzWebAppAccessRestrictionRule -ResourceGroupName "ResourceGroup" -WebAppName "AppName" `
-      -Name "Front Door example rule" -Priority 100 -Action Allow -ServiceTag AzureFrontDoor.Backend `
-      -HttpHeader @{'x-azure-fdid' = $frontdoorId}
-    ```
+PowerShell örneği:
+
+  ```azurepowershell-interactive
+  $afd = Get-AzFrontDoor -Name "MyFrontDoorInstanceName"
+  Add-AzWebAppAccessRestrictionRule -ResourceGroupName "ResourceGroup" -WebAppName "AppName" `
+    -Name "Front Door example rule" -Priority 100 -Action Allow -ServiceTag AzureFrontDoor.Backend `
+    -HttpHeader @{'x-azure-fdid' = $afd.FrontDoorId}
+  ```
+
 ## <a name="manage-access-restriction-rules-programmatically"></a>Erişim kısıtlama kurallarını programlı olarak yönetme
 
 Aşağıdakilerden birini yaparak erişim kısıtlamalarını programlı bir şekilde ekleyebilirsiniz: 
@@ -181,7 +208,7 @@ Aşağıdakilerden birini yaparak erişim kısıtlamalarını programlı bir şe
       -Name "Ip example rule" -Priority 100 -Action Allow -IpAddress 122.133.144.0/24
   ```
    > [!NOTE]
-   > Hizmet etiketleri, http üstbilgileri veya çok kaynaklı kurallarla çalışma en az sürüm 5.1.0 gerektirir. Yüklü modülün sürümünü,: **Get-ınstalınstallatem-Name az** ile doğrulayabilirsiniz.
+   > Hizmet etiketleri, http üstbilgileri veya çok kaynaklı kurallarla çalışma en az sürüm 5.7.0 gerektirir. Yüklü modülün sürümünü,: **Get-ınstalınstallatem-Name az** ile doğrulayabilirsiniz.
 
 Ayrıca, aşağıdakilerden birini yaparak değerleri el ile de ayarlayabilirsiniz:
 

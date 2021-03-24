@@ -3,12 +3,12 @@ title: Windows için Konuk Yapılandırma ilkeleri oluşturma
 description: Windows için Azure Ilke Konuk yapılandırma ilkesi oluşturmayı öğrenin.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: ae9af51ad3b2eb237f8655c996a1345140a8a635
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 72772743eba23ea7c2a93f5037ac84b671256a66
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99070653"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104887708"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Windows için Konuk Yapılandırma ilkeleri oluşturma
 
@@ -214,10 +214,11 @@ Configuration AuditBitLocker
 }
 
 # Compile the configuration to create the MOF files
-AuditBitLocker ./Config
+AuditBitLocker
 ```
 
-Bu dosyayı `config.ps1` Proje klasörüne kaydedin. Terminalde yürüterek PowerShell 'de çalıştırın `./config.ps1` . Yeni bir MOF dosyası oluşturulur.
+Bu betiği bir PowerShell terminalinde çalıştırın veya bu dosyayı `config.ps1` Proje klasörüne adıyla kaydedin.
+Terminalde yürüterek PowerShell 'de çalıştırın `./config.ps1` . Yeni bir MOF dosyası oluşturulur.
 
 `Node AuditBitlocker`Komut Teknik olarak gerekli değildir `AuditBitlocker.mof` , ancak varsayılan olarak değil adlı bir dosya oluşturur `localhost.mof` . . Mof dosya adının yapılandırılması, ölçeklendirmeye çalışırken birçok dosyayı düzenlemeyi kolaylaştırır.
 
@@ -234,7 +235,7 @@ MOF derlendikten sonra destekleyici dosyaların birlikte paketlenmesi gerekir. T
 ```azurepowershell-interactive
 New-GuestConfigurationPackage `
   -Name 'AuditBitlocker' `
-  -Configuration './Config/AuditBitlocker.mof'
+  -Configuration './AuditBitlocker/AuditBitlocker.mof'
 ```
 
 Yapılandırma paketini oluşturduktan, ancak Azure 'a yayımlamadan önce, paketi iş istasyonunuzdan veya sürekli tümleştirme ve sürekli dağıtım (CI/CD) ortamınızdan test edebilirsiniz. GuestConfiguration cmdlet 'i, `Test-GuestConfigurationPackage` Azure makinelerinde kullanıldığı gibi geliştirme ortamınızda aynı aracıyı içerir. Bu çözümü kullanarak, faturalandırılan bulut ortamlarına bırakmadan önce tümleştirme testini yerel olarak gerçekleştirebilirsiniz.
@@ -257,10 +258,16 @@ Test-GuestConfigurationPackage `
 Cmdlet 'i PowerShell ardışık düzeninde girişi de destekler. Cmdlet 'inin çıkışını `New-GuestConfigurationPackage` `Test-GuestConfigurationPackage` cmdlet 'ine boru.
 
 ```azurepowershell-interactive
-New-GuestConfigurationPackage -Name AuditBitlocker -Configuration ./Config/AuditBitlocker.mof | Test-GuestConfigurationPackage
+New-GuestConfigurationPackage -Name AuditBitlocker -Configuration ./AuditBitlocker/AuditBitlocker.mof | Test-GuestConfigurationPackage
 ```
 
-Sonraki adım, dosyayı Azure Blob depolama alanına yayımlamaktır. Komut `Publish-GuestConfigurationPackage` `Az.Storage` modülü gerektiriyor.
+Sonraki adım, dosyayı Azure Blob depolama alanına yayımlamaktır. Depolama hesabı için özel bir gereksinim yoktur, ancak dosyayı makinelerinizin yakınında bir bölgede barındırmak iyi bir fikirdir. Depolama hesabınız yoksa, aşağıdaki örneği kullanın. Aşağıdaki komutlar, ve dahil olmak üzere `Publish-GuestConfigurationPackage` `Az.Storage` modülü gerektirir.
+
+```azurepowershell-interactive
+# Creates a new resource group, storage account, and container
+New-AzResourceGroup -name myResourceGroupName -Location WestUS
+New-AzStorageAccount -ResourceGroupName myResourceGroupName -Name myStorageAccountName -SkuName 'Standard_LRS' -Location 'WestUs' | New-AzStorageContainer -Name guestconfiguration -Permission Blob
+```
 
 `Publish-GuestConfigurationPackage`Cmdlet parametreleri:
 
@@ -416,111 +423,6 @@ Topluluk çözümleri, etiket [Guestconfiguration](https://www.powershellgallery
 > Konuk yapılandırma genişletilebilirliği "kendi lisansını getir" senaryosudur. Kullanmadan önce herhangi bir üçüncü taraf aracının hüküm ve koşullarını karşıladığınızı doğrulayın.
 
 Geliştirme ortamında DSC kaynağı yüklendikten sonra,  `New-GuestConfigurationPackage` içerik yapıtının üçüncü taraf platformu için Içerik eklemek Için filestoınclude parametresini kullanın.
-
-### <a name="step-by-step-creating-a-content-artifact-that-uses-third-party-tools"></a>Adım adım, üçüncü taraf araçları kullanan bir içerik yapıtı oluşturma
-
-Yalnızca `New-GuestConfigurationPackage` cmdlet, DSC içerik yapıtları için adım adım kılavuzdan bir değişiklik yapılmasını gerektirir. Bu örnekte, `gcInSpec` Linux üzerinde kullanılan yerleşik modül yerine InSpec platformunu kullanarak Windows makinelerini denetlemek üzere Konuk yapılandırmasını genişletmek için modülünü kullanın. Topluluk modülü, [GitHub 'da açık kaynak proje](https://github.com/microsoft/gcinspec)olarak korunur.
-
-Gerekli modülleri geliştirme ortamınıza yükler:
-
-```azurepowershell-interactive
-# Update PowerShellGet if needed to allow installing PreRelease versions of modules
-Install-Module PowerShellGet -Force
-
-# Install GuestConfiguration module prerelease version
-Install-Module GuestConfiguration -allowprerelease
-
-# Install commmunity supported gcInSpec module
-Install-Module gcInSpec
-```
-
-İlk olarak, InSpec tarafından kullanılan YaML dosyasını oluşturun. Dosya, ortam hakkında temel bilgileri sağlar. Aşağıda bir örnek verilmiştir:
-
-```YaML
-name: wmi_service
-title: Verify WMI service is running
-maintainer: Microsoft Corporation
-summary: Validates that the Windows Service 'winmgmt' is running
-copyright: Microsoft Corporation
-license: MIT
-version: 1.0.0
-supports:
-  - os-family: windows
-```
-
-Adlı bu dosyayı `wmi_service.yml` Proje dizininizde adlı bir klasöre kaydedin `wmi_service` .
-
-Sonra, makineyi denetlemek için kullanılan InSpec Language soyutlama ile Ruby dosyasını oluşturun.
-
-```Ruby
-control 'wmi_service' do
-  impact 1.0
-  title 'Verify windows service: winmgmt'
-  desc 'Validates that the service, is installed, enabled, and running'
-
-  describe service('winmgmt') do
-    it { should be_installed }
-    it { should be_enabled }
-    it { should be_running }
-  end
-end
-
-```
-
-Bu dosyayı `wmi_service.rb` Dizin içinde adlı yeni bir klasöre kaydedin `controls` `wmi_service` .
-
-Son olarak, bir yapılandırma oluşturun, **Guestconfiguration** kaynak modülünü içeri aktarın ve `gcInSpec` InSpec profilinin adını ayarlamak için kaynağı kullanın.
-
-```powershell
-# Define the configuration and import GuestConfiguration
-Configuration wmi_service
-{
-    Import-DSCResource -Module @{ModuleName = 'gcInSpec'; ModuleVersion = '2.1.0'}
-    node 'wmi_service'
-    {
-        gcInSpec wmi_service
-        {
-            InSpecProfileName       = 'wmi_service'
-            InSpecVersion           = '3.9.3'
-            WindowsServerVersion    = '2016'
-        }
-    }
-}
-
-# Compile the configuration to create the MOF files
-wmi_service -out ./Config
-```
-
-Artık aşağıdaki gibi bir proje yapısına sahip olmanız gerekir:
-
-```file
-/ wmi_service
-    / Config
-        wmi_service.mof
-    / wmi_service
-        wmi_service.yml
-        / controls
-            wmi_service.rb 
-```
-
-Destekleyici dosyaların birlikte paketlenmesi gerekir. Tamamlanmış paket, Azure Ilke tanımlarını oluşturmak için konuk yapılandırması tarafından kullanılır.
-
-`New-GuestConfigurationPackage`Cmdlet 'i paketi oluşturur. Üçüncü taraf içerik için, InSpec içeriğini pakete eklemek üzere **Filestoınclude** parametresini kullanın. Linux paketleri için **Chefprofilepath** belirtmeniz gerekmez.
-
-- **Ad**: Konuk yapılandırma paketi adı.
-- **Yapılandırma**: derlenen yapılandırma belgesi tam yolu.
-- **Yol**: çıkış klasörü yolu. Bu parametre isteğe bağlıdır. Belirtilmezse, paket geçerli dizinde oluşturulur.
-- **Filesoınclude**: InSpec profile tam yolu.
-
-Önceki adımda verilen yapılandırmayı kullanarak bir paket oluşturmak için aşağıdaki komutu çalıştırın:
-
-```azurepowershell-interactive
-New-GuestConfigurationPackage `
-  -Name 'wmi_service' `
-  -Configuration './Config/wmi_service.mof' `
-  -FilesToInclude './wmi_service'  `
-  -Path './package' 
-```
 
 ## <a name="policy-lifecycle"></a>İlke yaşam döngüsü
 

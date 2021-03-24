@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/17/2021
-ms.openlocfilehash: 998154376895d8bcfc7cf36665a6a36f5c43e3b4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b6ae6c003284b93390bb4f53345d3ba0f8d35e21
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104594997"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952567"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---flexible-server"></a>PostgreSQL için Azure veritabanı 'nda PostgreSQL uzantıları-esnek sunucu
 
@@ -53,7 +53,6 @@ PostgreSQL için Azure veritabanı 'nda, Postgres sürüm 12 ' ye sahip olan esn
 > |[ltree](https://www.postgresql.org/docs/12/ltree.html)                        | 1.1             | hiyerarşik ağaç benzeri yapılar için veri türü|
 > |[pageincele](https://www.postgresql.org/docs/12/pageinspect.html)                        | 1.7             | veritabanı sayfalarının içeriğini düşük bir düzeyde inceleyin|
 > |[pg_buffercache](https://www.postgresql.org/docs/12/pgbuffercache.html)               | 1.3             | Paylaşılan arabellek önbelleğini inceleyin|
-> |[pg_cron](https://github.com/citusdata/pg_cron/tree/b6e7dc9627515bf00e2086f168b3faa660e5fd36)                        | 1.2             | PostgreSQL için iş Zamanlayıcısı|
 > |[pg_freespacemap](https://www.postgresql.org/docs/12/pgfreespacemap.html)               | 1.2             | boş alan haritasını inceleyin (FSD)|
 > |[pg_prewarm](https://www.postgresql.org/docs/12/pgprewarm.html)                   | 1.2             | ön sıcak ilişki verileri|
 > |[pg_stat_statements](https://www.postgresql.org/docs/12/pgstatstatements.html)           | 1.7             | yürütülen tüm SQL deyimlerinin yürütme istatistiklerini izleyin|
@@ -103,7 +102,6 @@ PostgreSQL için Azure veritabanı 'nda, Postgres sürüm 11 ' i içeren esnek s
 > |[ltree](https://www.postgresql.org/docs/11/ltree.html)                        | 1.1             | hiyerarşik ağaç benzeri yapılar için veri türü|
 > |[pageincele](https://www.postgresql.org/docs/11/pageinspect.html)                        | 1.7             | veritabanı sayfalarının içeriğini düşük bir düzeyde inceleyin|
 > |[pg_buffercache](https://www.postgresql.org/docs/11/pgbuffercache.html)               | 1.3             | Paylaşılan arabellek önbelleğini inceleyin|
-> |[pg_cron](https://github.com/citusdata/pg_cron/tree/b6e7dc9627515bf00e2086f168b3faa660e5fd36)                        | 1.2             | PostgreSQL için iş Zamanlayıcısı|
 > |[pg_freespacemap](https://www.postgresql.org/docs/11/pgfreespacemap.html)               | 1.2             | boş alan haritasını inceleyin (FSD)|
 > |[pg_prewarm](https://www.postgresql.org/docs/11/pgprewarm.html)                   | 1.2             | ön sıcak ilişki verileri|
 > |[pg_stat_statements](https://www.postgresql.org/docs/11/pgstatstatements.html)           | 1.6             | yürütülen tüm SQL deyimlerinin yürütme istatistiklerini izleyin|
@@ -131,28 +129,6 @@ PostgreSQL için Azure veritabanı 'nda, Postgres sürüm 11 ' i içeren esnek s
 [dblink](https://www.postgresql.org/docs/current/contrib-dblink-function.html) ve [Postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html) , bir PostgreSQL sunucusundan diğerine veya aynı sunucudaki başka bir veritabanına bağlanmanızı sağlar. Esnek sunucu, herhangi bir PostgreSQL sunucusuna hem gelen hem de giden bağlantıları destekler. Gönderen sunucunun, alıcı sunucuya giden bağlantılara izin sağlaması gerekir. Benzer şekilde, alıcı sunucunun gönderme sunucusundan gelen bağlantılara izin verilmesi gerekir. 
 
 Bu iki uzantıyı kullanmayı planlıyorsanız, sunucularınızı [VNET tümleştirmesiyle](concepts-networking.md) dağıtmanız önerilir. VNet tümleştirmesi varsayılan olarak VNET 'teki sunucular arasında bağlantılara izin verir. Ayrıca, erişimi özelleştirmek için [VNET ağ güvenlik gruplarını](../../virtual-network/manage-network-security-group.md) kullanmayı da seçebilirsiniz.
-
-## <a name="pg_cron"></a>pg_cron
-
-[pg_cron](https://github.com/citusdata/pg_cron/tree/b6e7dc9627515bf00e2086f168b3faa660e5fd36) , bir uzantı olarak veritabanı Içinde çalışan PostgreSQL için basit ve cron tabanlı bir iş çizelgeleyicisi. Pg_cron uzantısı, bir PostgreSQL veritabanı içinde zamanlanmış bakım görevlerini çalıştırmak için kullanılabilir. Örneğin, bir tablonun düzenli bir şekilde çalışmasını veya eski veri işlerini kaldırmayı seçebilirsiniz.
-
-`pg_cron` birden çok işi paralel olarak çalıştırabilir, ancak her seferinde bir işin en çok bir örneğini çalıştırır. İkinci bir çalıştırmanın ilki bitmeden önce başlaması gerekiyorsa ikinci çalıştırma sıraya alınır ve ilk çalıştırma tamamlandıktan hemen sonra başlatılır. Bu, işlerin zamanlandığı kadar çok kez çalışmasını ve kendileriyle aynı anda çalıştırılmamasını sağlar.
-
-Bazı örnekler:
-
-Cumartesi üzerindeki eski verileri 3:30:00:00 (GMT) silmek için
-```
-SELECT cron.schedule('30 3 * * 6', $$DELETE FROM events WHERE event_time < now() - interval '1 week'$$);
-```
-Günde her gün vakum çalıştırmak için 10:00:00:00 (GMT)
-```
-SELECT cron.schedule('0 10 * * *', 'VACUUM');
-```
-
-Tüm görevlerin pg_cron zamanlamasını kaldırmak için
-```
-SELECT cron.unschedule(jobid) FROM cron.job;
-```
 
 ## <a name="pg_prewarm"></a>pg_prewarm
 

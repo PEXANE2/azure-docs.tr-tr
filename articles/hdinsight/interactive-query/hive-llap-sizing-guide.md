@@ -7,12 +7,12 @@ author: aniket-ms
 ms.author: aadnaik
 ms.reviewer: HDI HiveLLAP Team
 ms.date: 05/05/2020
-ms.openlocfilehash: 7df75077785c66215008e045ef0b1e451ba29f57
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ca3ba61de13e0e451b43dc9c8ea40db33fed859a
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98931099"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869676"
 ---
 # <a name="azure-hdinsight-interactive-query-cluster-hive-llap-sizing-guide"></a>Azure HDInsight etkileşimli sorgu kümesi (Hive LLAP) boyutlandırma Kılavuzu
 
@@ -29,7 +29,7 @@ Bu belge, makul bir performansa ulaşmak için tipik bir iş yükü için HDInsi
 ***Note: tüm önerilen yapılandırma değerleri D14 v2 türü çalışan düğümüne dayalıdır***  
 
 ### <a name="configuration"></a>**Yapılandırmada**    
-| Yapılandırma Anahtarı      | Önerilen değer  | Description |
+| Yapılandırma Anahtarı      | Önerilen değer  | Açıklama |
 | :---        |    :----:   | :---     |
 | Yarn. NodeManager. Resource. Memory-MB | 102400 (MB) | Bir düğümdeki tüm YARN kapsayıcıları için, MB olarak verilen toplam bellek | 
 | Yarn. Scheduler. maksimum ayırma-MB | 102400 (MB) | RM 'de, MB cinsinden her kapsayıcı isteği için en yüksek ayırma. Bu değerden daha yüksek bellek istekleri uygulanmayacak |
@@ -47,7 +47,7 @@ Bu belge, makul bir performansa ulaşmak için tipik bir iş yükü için HDInsi
 
 ### <a name="llap-architecturecomponents"></a>**LLAP mimarisi/bileşenleri:**  
 
-![' LLAP mimarisi/bileşenleri '](./media/hive-llap-sizing-guide/LLAP_architecture_sizing_guide.png "LLAP mimarisi/bileşenleri")
+:::image type="content" source="./media/hive-llap-sizing-guide/LLAP_architecture_sizing_guide.png " alt-text="' LLAP mimarisi/bileşenleri '" border="true":::
 
 ### <a name="llap-daemon-size-estimations"></a>**LLAP Daemon boyut tahminleri:** 
 
@@ -81,7 +81,7 @@ Varsayılan HDInsight kümesinde dört çalışan düğümünde çalışan dört
 
 **Hive yapılandırma değişkeni için ambarı UI kaydırıcısı `hive.server2.tez.sessions.per.default.queue` :**
 
-![' LLAP maksimum eşzamanlı sorgu '](./media/hive-llap-sizing-guide/LLAP_sizing_guide_max_concurrent_queries.png "LLAP maksimum eşzamanlı sorgu sayısı")
+:::image type="content" source="./media/hive-llap-sizing-guide/LLAP_sizing_guide_max_concurrent_queries.png " alt-text="' LLAP maksimum eşzamanlı sorgu '" border="true":::
 
 #### <a name="5-tez-container-and-tez-application-master-size"></a>**5. tez kapsayıcısı ve tez uygulama ana boyutu**    
 Yapılandırma: ***tez. har. Resource. Memory. MB, Hive. tez. Container. size***  
@@ -165,7 +165,7 @@ D14 v2 için bu değer 19 x 3 GB = **57 GB** 'tır
 
 `Ambari environment variable for LLAP heap size:`
 
-![' LLAP yığın boyutu '](./media/hive-llap-sizing-guide/LLAP_sizing_guide_llap_heap_size.png "LLAP yığın boyutu")
+:::image type="content" source="./media/hive-llap-sizing-guide/LLAP_sizing_guide_llap_heap_size.png " alt-text="' LLAP yığın boyutu '" border="true":::
 
 SSD önbelleği devre dışı bırakıldığında, bellek içi önbellek, LLAP Daemon kapsayıcı boyutundan gelen yayın odası boyutu ve yığın boyutu alındıktan sonra bırakılan bellek miktarıdır.
 
@@ -197,11 +197,11 @@ Ambarı ortam değişkenleri: ***num_llap_nodes, num_llap_nodes_for_llap_daemons
 
 **num_llap_nodes** -HIVE LLAP hizmeti tarafından kullanılan düğüm sayısını belirtir. Bu, LLAP Daemon, LLAP hizmet yöneticisi ve tez uygulama ana (Tez) çalıştıran düğümleri içerir.  
 
-![' LLAP hizmeti için düğüm sayısı '](./media/hive-llap-sizing-guide/LLAP_sizing_guide_num_llap_nodes.png "LLAP hizmeti için düğüm sayısı")  
+:::image type="content" source="./media/hive-llap-sizing-guide/LLAP_sizing_guide_num_llap_nodes.png " alt-text="' LLAP hizmeti için düğüm sayısı '" border="true":::  
 
 **num_llap_nodes_for_llap_daemons** -yalnızca LLAP Daemon 'ları için kullanılan düğüm sayısı. LLAP Daemon kapsayıcı boyutları maks. düğüme ayarlanır, bu nedenle her düğümde bir LLAP daemon ile sonuçlanır.
 
-![' LLAP Daemon 'ları için düğüm sayısı '](./media/hive-llap-sizing-guide/LLAP_sizing_guide_num_llap_nodes_for_llap_daemons.png "LLAP Daemon 'ları için düğüm sayısı")
+:::image type="content" source="./media/hive-llap-sizing-guide/LLAP_sizing_guide_num_llap_nodes_for_llap_daemons.png " alt-text="' LLAP Daemon 'ları için düğüm sayısı '" border="true":::
 
 Her iki değerin de etkileşimli sorgu kümesindeki çalışan düğümlerinin sayısıyla aynı tutulması önerilir.
 
@@ -222,7 +222,7 @@ Lütfen unutmayın:
 İş yükü yönetimi sıra kapasitesinde 20 GB ile bir kaynak planı `QUERY_PARALLELISM` beş olarak değer belirtebilir, bu da iş yükü yönetiminin her biri 4 GB kapsayıcı boyutuyla beş tez AMs başlatabileceği anlamına gelir. `QUERY_PARALLELISM`Kapasiteden yüksekse, bazı tez AMs durma yanıt verme `ACCEPTED` durumunu görebilirsiniz. Hiveserver2 Interactive, durum içinde olmayan tez AMs 'ye sorgu parçaları gönderemiyor `RUNNING` .
 
 
-#### <a name="next-steps"></a>**Sonraki adımlar**
+#### <a name="next-steps"></a>**Sonraki Adımlar**
 Bu değerleri ayarlamak sorununuzu gidermezse, aşağıdakilerden birini ziyaret edin...
 
 * Azure [topluluk desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıt alın.

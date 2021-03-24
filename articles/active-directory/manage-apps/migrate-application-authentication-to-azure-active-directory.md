@@ -14,12 +14,12 @@ ms.date: 02/05/2021
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db695b55fbef16cb67dce6dc2d3c81ad177c9db6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 629f71c429d6af8583cb15b9ebc96efe6867f78b
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103601806"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104888898"
 ---
 # <a name="migrate-application-authentication-to-azure-active-directory"></a>Uygulama kimlik doğrulamasını Azure Active Directory geçir
 
@@ -489,7 +489,7 @@ Geçişten sonra, başarılı dağıtım kullanıcılarına Kullanıcı bildirer
 
 Geçiş işlemi sırasında, uygulamanız düzenli dağıtımlar sırasında kullanılan bir test ortamına zaten sahip olabilir. Bu ortamı geçiş testi için kullanmaya devam edebilirsiniz. Şu anda bir test ortamı yoksa, uygulama mimarisine bağlı olarak Azure App Service veya Azure sanal makinelerini kullanarak bir tane ayarlayabilirsiniz. Uygulama yapılandırmalarından geliştirme sırasında kullanmak üzere ayrı bir test Azure AD kiracısı ayarlamayı tercih edebilirsiniz. Bu kiracı temiz bir durumda başlayacak ve herhangi bir sistemle eşitlenecek şekilde yapılandırılmayacak.
 
-Her uygulamayı test kullanıcısı ile oturum açarak test edebilir ve tüm işlevlerin geçişten önceki ile aynı olduğundan emin olun. Kullanıcıların [MFA](/active-directory/authentication/howto-mfa-userstates) veya [SSPR](../authentication/tutorial-enable-sspr.md)ayarlarını güncelleştirmesi gereken testi sırasında veya bu işlevselliği geçiş sırasında ekliyorsanız, bunu Son Kullanıcı iletişim planınıza eklediğinizden emin olun. Bkz. [MFA](https://aka.ms/mfatemplates) ve [SSPR](https://aka.ms/ssprtemplates) Son Kullanıcı iletişim şablonları.
+Her uygulamayı test kullanıcısı ile oturum açarak test edebilir ve tüm işlevlerin geçişten önceki ile aynı olduğundan emin olun. Kullanıcıların [MFA](/azure/active-directory/authentication/howto-mfa-userstates) veya [SSPR](../authentication/tutorial-enable-sspr.md)ayarlarını güncelleştirmesi gereken testi sırasında veya bu işlevselliği geçiş sırasında ekliyorsanız, bunu Son Kullanıcı iletişim planınıza eklediğinizden emin olun. Bkz. [MFA](https://aka.ms/mfatemplates) ve [SSPR](https://aka.ms/ssprtemplates) Son Kullanıcı iletişim şablonları.
 
 Uygulamaları geçirdikten sonra, geçişin başarılı olup olmadığını test etmek için [Azure Portal](https://aad.portal.azure.com/) gidin. Aşağıdaki yönergeleri izleyin:
 
@@ -573,7 +573,7 @@ Kullanıcılarınıza uygulamalarını nasıl keşfedeceksiniz hakkında rehberl
 
 Kullanıcılar, **Intune tarafından yönetilen bir tarayıcı** indirebilir:
 
-- **Android cihazlar için**, [Google Play mağazasından](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser)
+- **Android cihazlar için**, [Google Play mağazasından](/azure/active-directory/authentication/howto-mfa-userstates)
 
 - Apple [App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) 'dan **Apple cihazları Için** veya [uygulamalarım mobil uygulaması 'nı iOS için](https://apps.apple.com/us/app/my-apps-azure-active-directory/id824048653) karşıdan yükleyebilir
 

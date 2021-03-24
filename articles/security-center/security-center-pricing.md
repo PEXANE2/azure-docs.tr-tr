@@ -6,13 +6,13 @@ ms.author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 03/22/2021
-ms.openlocfilehash: ede812dc2ce063ec38423db73f4b269a7618e00c
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.date: 03/23/2021
+ms.openlocfilehash: 1825f5be8a4f8a8ddfba931dfbc7e77186b4331f
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/23/2021
-ms.locfileid: "104799624"
+ms.locfileid: "104889459"
 ---
 # <a name="azure-security-center-free-vs-azure-defender-enabled"></a>Azure Güvenlik Merkezi Ücretsiz vs Azure Defender etkin
 Azure Defender, ilk 30 gün boyunca ücretsizdir. 30 günün sonunda hizmeti kullanmaya devam etmeyi seçmeniz gerekir, kullanım için otomatik olarak ücretlendirmeye başlayacağız.
@@ -48,7 +48,8 @@ Güvenlik Merkezi iki modda sunulur:
 - [Bir Log Analytics Aracısı birden çok çalışma alanına rapor veriyor, iki kez ücretlendirilecektir.](#if-a-log-analytics-agent-reports-to-multiple-workspaces-will-i-be-charged-twice)
 - [Bir Log Analytics Aracısı birden fazla çalışma alanına bildirirse, tüm bunlar üzerinde 500 MB boş veri alma işlemi kullanılabilir mi?](#if-a-log-analytics-agent-reports-to-multiple-workspaces-is-the-500-mb-free-data-ingestion-available-on-all-of-them)
 - [Tüm çalışma alanı veya tamamen makine başına 500 MB boş veri alımı mi hesaplansın?](#is-the-500-mb-free-data-ingestion-calculated-for-an-entire-workspace-or-strictly-per-machine)
-- [500 MB boş veri sınırına hangi veri türleri dahildir?](#what-data-types-are-included-in-the-500-mb-free-data-limit)
+- [500 MB veri günlük tahsisatta hangi veri türleri dahil edilir?](#what-data-types-are-included-in-the-500-mb-data-daily-allowance)
+
 
 ### <a name="how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-security-center"></a>Kuruluşumun, güvenlik merkezi 'ndeki Azure Defender değişikliklerini etkinleştirdiğim kişileri nasıl izleyebilirim?
 Azure aboneliklerinde fiyatlandırma ayarlarını değiştirme izinlerine sahip birden çok yönetici olabilir. Hangi kullanıcının bir değişiklik yaptığını öğrenmek için Azure etkinlik günlüğünü kullanın.
@@ -116,7 +117,7 @@ Evet. Log Analytics aracınızı, verileri iki veya daha fazla farklı Log Analy
 
 Bu veri miktarı tüm düğümler arasında ortalama günlük orandır. Bu nedenle, bazı makineler 100 MB gönderiyor ve diğerleri 800-MB gönderiyor olsa da, toplam **[makine sayısı] x 500-MB** boş sınırı aşarsa ek ücret ödemezsiniz.
 
-### <a name="what-data-types-are-included-in-the-500-mb-free-data-limit"></a>500 MB boş veri sınırına hangi veri türleri dahildir?
+### <a name="what-data-types-are-included-in-the-500-mb-data-daily-allowance"></a>500 MB veri günlük tahsisatta hangi veri türleri dahil edilir?
 
 Güvenlik Merkezi 'nin faturalandırması, Log Analytics için faturalandırmaya yakın bir şekilde bağlıdır. Güvenlik Merkezi, aşağıdaki [güvenlik veri türleri](/azure/azure-monitor/reference/tables/tables-category.md#security)alt KÜMESIYLE 500 MB/node/Day tahsisi sağlar:
 - WindowsEvent

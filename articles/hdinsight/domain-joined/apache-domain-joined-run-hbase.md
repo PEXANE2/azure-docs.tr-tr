@@ -4,12 +4,12 @@ description: Öğretici-Kurumsal Güvenlik Paketi ile Azure HDInsight 'ta HBase 
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: deefda126602e9b276b74752330a14cc3eb2aa95
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a18e0b252facb4f00d9ba5c9b6bfe9fe6aefe1ef
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98933723"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867007"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Öğretici: HDInsight 'ta Kurumsal Güvenlik Paketi ile Apache HBase ilkelerini yapılandırma
 
@@ -86,7 +86,7 @@ SSH kullanarak HBase kümelerine bağlanabilir ve ardından, HBase tabloları ol
     scan 'Customers'
     ```
 
-    ![HDInsight Hadoop HBase kabuğu çıkışı](./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png)
+    :::image type="content" source="./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png" alt-text="HDInsight Hadoop HBase kabuğu çıkışı" border="true":::
 
 ## <a name="create-ranger-policies"></a>Ranger ilkelerini oluşturma
 
@@ -94,11 +94,11 @@ SSH kullanarak HBase kümelerine bağlanabilir ve ardından, HBase tabloları ol
 
 1. **Ranger Yönetici Arabirimini** açın. **HBase** altında **\<ClusterName> _hbase** ' ye tıklayın.
 
-   ![HDInsight Apache Ranger yönetici kullanıcı arabirimi](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
+   :::image type="content" source="./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png" alt-text="HDInsight Apache Ranger yönetici kullanıcı arabirimi" border="true":::
 
 2. **Ilke listesi** ekranı, bu küme için oluşturulan tüm Ranger ilkelerini görüntüler. Bir önceden yapılandırılmış ilke listelenebilir. **Yeni Ilke Ekle**' ye tıklayın.
 
-    ![Apache Ranger HBase ilkeleri listesi](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
+    :::image type="content" source="./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png" alt-text="Apache Ranger HBase ilkeleri listesi" border="true":::
 
 3. **Ilke oluştur** ekranında, aşağıdaki değerleri girin:
 
@@ -117,7 +117,7 @@ SSH kullanarak HBase kümelerine bağlanabilir ve ardından, HBase tabloları ol
    * `*` sıfır veya daha fazla karakter örneğini gösterir.
    * `?` tek karakteri gösterir.
 
-   ![Apache Ranger ilkesi satışları oluşturma](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png)
+   :::image type="content" source="./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png" alt-text="Apache Ranger ilkesi satışları oluşturma" border="true":::
 
    >[!NOTE]
    >**Select User** için bir etki alanı kullanıcısı otomatik olarak doldurulmazsa, Ranger’ın Azure AD ile eşitlenmesi için birkaç dakika bekleyin.
@@ -136,7 +136,7 @@ SSH kullanarak HBase kümelerine bağlanabilir ve ardından, HBase tabloları ol
    |Kullanıcı Seçin  | marketing_user1 |
    |İzinler  | Okuma |
 
-   ![Apache Ranger ilkesi pazarlama oluşturma](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
+   :::image type="content" source="./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png" alt-text="Apache Ranger ilkesi pazarlama oluşturma" border="true":::  
 
 6. **Add**’e tıklayarak ilkeyi kaydedin.
 
@@ -226,7 +226,7 @@ SSH kullanarak HBase kümelerine bağlanabilir ve ardından, HBase tabloları ol
 
 1. Ranger kullanıcı arabiriminden denetim erişimi olaylarını görüntüleyin.
 
-   ![HDInsight Ranger Kullanıcı arabirimi Ilke denetimi](./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png)
+   :::image type="content" source="./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png" alt-text="HDInsight Ranger Kullanıcı arabirimi Ilke denetimi" border="true":::
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

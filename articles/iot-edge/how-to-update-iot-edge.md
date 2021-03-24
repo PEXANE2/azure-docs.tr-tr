@@ -9,12 +9,12 @@ ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: feb77339c9c7f36eb17b43dfe2c220dfb54efa25
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: b24276974eba76aa841cdd7f02145210713474eb
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104720534"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872294"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>IoT Edge güvenlik daemon'ını ve çalışma zamanını güncelleştirme
 
@@ -203,7 +203,7 @@ Sürüm 1,2 ' den başlayarak, IoT Edge hizmeti yeni bir paket adı kullanır ve
 * Paket adı, **ıotedge** 'den **azıot-Edge** olarak değiştirildi.
 * **Libiothsm-STD** paketi artık kullanılmıyor. IoT Edge sürümünün bir parçası olarak sunulan standart paketi kullandıysanız, yapılandırmanız yeni sürüme aktarılabilir. Libiothsm-STD ' nin farklı bir uygulamasını kullandıysanız, cihaz kimlik sertifikası, cihaz CA ve güven paketi gibi kullanıcı tarafından sağlanmış tüm sertifikaların yeniden yapılandırılması gerekir.
 * Yeni bir kimlik hizmeti olan **azıot-Identity-Service** , 1,2 sürümünün bir parçası olarak sunulmuştur. Bu hizmet, IoT Edge için kimlik sağlamayı ve yönetimini ve Azure IoT Hub cihaz güncelleştirmesi gibi IoT Hub iletişim kurması gereken diğer cihaz bileşenlerini işler. <!--TODO: add link to ADU when available -->
-* Varsayılan yapılandırma dosyası, yeni bir ad ve konuma sahiptir. `/etc/iotedge/config.yaml`Daha önce, cihaz yapılandırma bilgilerinizin artık varsayılan olarak içinde olması bekleniyor `/etc/aziot/congig.toml` . Bu `iotedge config import` komut, yapılandırma bilgilerinin yeni bir konum ve sözdizimini yeni bir konuma geçirmeye yardımcı olması için kullanılabilir.
+* Varsayılan yapılandırma dosyası, yeni bir ad ve konuma sahiptir. `/etc/iotedge/config.yaml`Daha önce, cihaz yapılandırma bilgilerinizin artık varsayılan olarak içinde olması bekleniyor `/etc/aziot/config.toml` . Bu `iotedge config import` komut, yapılandırma bilgilerinin yeni bir konum ve sözdizimini yeni bir konuma geçirmeye yardımcı olması için kullanılabilir.
 * Kalıcı verileri şifrelemek veya şifresini çözmek için IoT Edge iş yükü API 'sini kullanan tüm modüller, güncelleştirmeden sonra çözülemez. IoT Edge, iç kullanım için dinamik olarak ana kimlik anahtarı ve şifreleme anahtarı oluşturur. Bu anahtar yeni hizmete aktarılmaz. IoT Edge v 1.2 yeni bir tane oluşturur.
 
 Herhangi bir güncelleştirme işlemini otomatikleştirmeye başlamadan önce, test makinelerinde çalıştığını doğrulayın.

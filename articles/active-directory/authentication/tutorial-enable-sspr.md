@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 07/13/2020
+ms.date: 03/23/2021
 ms.author: justinha
 author: justinha
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cd1a68b06814d13c386b873ed715f3b03a7b827
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 253aa080b9c160141a274c57e0895291c78d2048
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102198498"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104887776"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>Öğretici: kullanıcıların Self servis parola sıfırlama Azure Active Directory kullanarak hesaplarının kilidini açma veya parolaları sıfırlamalarını sağlama
 
@@ -138,6 +138,22 @@ Bu öğreticinin bir parçası olarak yapılandırdığınız SSPR işlevini art
 1. **Azure Active Directory** bulun ve seçin ve ardından sol taraftaki menüden **parola sıfırlama** ' yı seçin.
 1. **Özellikler** sayfasında, *self servis parola sıfırlama etkin* seçeneği altında **hiçbiri**' ni seçin.
 1. SSPR değişikliğini uygulamak için **Kaydet**' i seçin.
+
+## <a name="faqs"></a>SSS
+
+Bu bölümde, SSPR 'yi deneyen Yöneticiler ve son kullanıcılar hakkında sık sorulan sorular açıklanmaktadır:
+
+- Şirket içinden eşitlenen parolaları kullanabilmeniz için, bir **parolanızın sıfırlandıktan** sonra, Federasyon kullanıcıları neden 2 dakikaya kadar bekler?
+
+  Parolaları eşitlenen Federasyon kullanıcıları için, parolalar için yetki kaynağı şirket içinde olur. Sonuç olarak, SSPR yalnızca şirket içi parolaları güncelleştirir. Azure AD 'ye geri Parola karması eşitlemesi, her 2 dakikada bir zamanlanır.
+
+- Telefon ve e-posta gibi SSPR verileriyle önceden doldurulan yeni oluşturulan bir Kullanıcı, SSPR kayıt sayfasını ziyaret ettiğinde **hesabınıza erişimi kaybetmeyin!** sayfanın başlığı olarak görünür. SSPR verileri önceden doldurulmadığı diğer kullanıcılar neden iletiyi görmez?
+
+  ' İ görebilen Kullanıcı **hesabınıza erişimi kaybetmez!** , kiracı için yapılandırılmış SSPR/Birleşik kayıt gruplarının üyesidir. Görmediği kullanıcılar **hesabınıza erişimi kaybetmez!** SSPR/Birleşik kayıt gruplarının bir parçası değildi.
+
+- Bazı kullanıcılar SSPR işlemini ilerlerse ve parolalarını sıfırlarsa, neden parola gücü göstergesi görmez?
+
+  Zayıf/güçlü parola gücünü görmeyen kullanıcılar eşitlenmiş parola geri yazma özelliği etkinleştirilmiştir. SSPR, müşterinin Şirket içi ortamının parola ilkesini belirleyelemediğinden, parola gücünü veya zayıf düzeyini doğrulayamaz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -3,17 +3,17 @@ title: Windows Server Azure Edition için hotpatch (Önizleme)
 description: Windows Server Azure Edition için hotpatch 'in nasıl çalıştığını ve nasıl etkinleştirileceği hakkında bilgi edinin
 author: ju-shim
 ms.service: virtual-machines
-ms.subservice: automanage
+ms.subservice: hotpatch
 ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: jushiman
-ms.openlocfilehash: 710e6902be6ebe28caaf40fb446e4ee7cd2bf4dc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 92b8bf240dfd73cc9191675db07f20816b7156a8
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101687575"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953400"
 ---
 # <a name="hotpatch-for-new-virtual-machines-preview"></a>Yeni sanal makineler için hotpatch (Önizleme)
 
@@ -104,7 +104,7 @@ Aboneliğiniz için özellik kaydedildikten sonra, değişikliği işlem kaynak 
 Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 ```
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 ```az feature register```Aboneliğiniz için Önizlemeyi etkinleştirmek üzere kullanın.
 
@@ -129,21 +129,21 @@ az provider register --namespace Microsoft.Compute
 
 ## <a name="patch-installation"></a>Düzeltme eki yüklemesi
 
-Önizleme sırasında, [OTOMATIK VM Konuk düzeltme eki uygulama](https://docs.microsoft.com/azure/virtual-machines/automatic-vm-guest-patching) _Windows Server 2019 Datacenter: Azure Edition_ Ile oluşturulan tüm VM 'ler için otomatik olarak etkinleştirilir. Otomatik VM Konuk düzeltme eki uygulama ile etkin:
+Önizleme sırasında, [OTOMATIK VM Konuk düzeltme eki uygulama](../virtual-machines/automatic-vm-guest-patching.md) _Windows Server 2019 Datacenter: Azure Edition_ Ile oluşturulan tüm VM 'ler için otomatik olarak etkinleştirilir. Otomatik VM Konuk düzeltme eki uygulama ile etkin:
 * Kritik veya güvenlik olarak sınıflandırılan yamalar sanal makineye otomatik olarak indirilir ve uygulanır.
 * Düzeltme ekleri, VM 'nin saat diliminde yoğun olmayan saatlerde uygulanır.
-* Düzeltme Eki düzenleme Azure tarafından yönetilir ve düzeltme ekleri, [kullanılabilirlik-ilk ilkelere](https://docs.microsoft.com/azure/virtual-machines/automatic-vm-guest-patching#availability-first-patching)göre uygulanır.
+* Düzeltme Eki düzenleme Azure tarafından yönetilir ve düzeltme ekleri, [kullanılabilirlik-ilk ilkelere](../virtual-machines/automatic-vm-guest-patching.md#availability-first-patching)göre uygulanır.
 * Platform sistem durumu sinyalleriyle belirlenen sanal makine sistem durumu, düzeltme eki uygulama başarısızlıklarını algılamak için izlenir.
 
 ### <a name="how-does-automatic-vm-guest-patching-work"></a>Otomatik VM Konuk düzeltme eki uygulama nasıl çalışır?
 
-VM 'de [OTOMATIK VM Konuk düzeltme eki uygulama](https://docs.microsoft.com/azure/virtual-machines/automatic-vm-guest-patching) etkinleştirildiğinde, kullanılabilir kritik ve güvenlik düzeltme ekleri otomatik olarak indirilir ve uygulanır. Bu işlem, yeni düzeltme noktaları serbest bırakıldığında otomatik olarak her ay açılır. Düzeltme Eki değerlendirmesi ve yükleme otomatiktir ve işlem VM 'nin gerektiği şekilde yeniden başlatılmasını içerir.
+VM 'de [OTOMATIK VM Konuk düzeltme eki uygulama](../virtual-machines/automatic-vm-guest-patching.md) etkinleştirildiğinde, kullanılabilir kritik ve güvenlik düzeltme ekleri otomatik olarak indirilir ve uygulanır. Bu işlem, yeni düzeltme noktaları serbest bırakıldığında otomatik olarak her ay açılır. Düzeltme Eki değerlendirmesi ve yükleme otomatiktir ve işlem VM 'nin gerektiği şekilde yeniden başlatılmasını içerir.
 
 _Windows Server 2019 Datacenter: Azure Edition_ VM 'Lerinde hotpatch etkinken, aylık güvenlik güncelleştirmelerinin çoğu yeniden başlatma gerektirmeyen hotpatches olarak sunulur. Planlı veya planlanmamış temel aylarda gönderilen en son toplu güncelleştirmeler VM yeniden başlatmaları gerektirir. Ayrıca, sanal makine yeniden başlatmaları gerektirebilecek ek kritik veya güvenlik yamaları düzenli olarak kullanılabilir.
 
 VM, bu VM 'ye yönelik uygun düzeltme eklerini tespit etmek üzere 30 günlük süre içinde her gün otomatik olarak değerlendirilir. Bu otomatik değerlendirme, eksik olan tüm düzeltme eklerinin olası en erken fırsatta bulunmasını sağlar.
 
-Düzeltme ekleri, aylık düzeltme sürümlerinin 30 gün içinde, [önce kullanılabilirlik-ilk ilkelere](https://docs.microsoft.com/azure/virtual-machines/automatic-vm-guest-patching#availability-first-patching)göre yüklenir. Düzeltme ekleri, VM 'nin saat dilimine bağlı olarak VM için yalnızca yoğun olmayan saatlerde yüklenir. Yamaların otomatik olarak yüklenmesi için sanal makinenin yoğun olmayan saatlerde çalışıyor olması gerekir. Bir sanal makine düzenli bir değerlendirme sırasında kapatılmışsa, VM değerlendirilir ve sanal makine açıldığında bir sonraki dönemsel değerlendirme sırasında geçerli düzeltme ekleri otomatik olarak yüklenir. Sonraki düzenli değerlendirme genellikle birkaç gün içinde gerçekleşir.
+Düzeltme ekleri, aylık düzeltme sürümlerinin 30 gün içinde, [önce kullanılabilirlik-ilk ilkelere](../virtual-machines/automatic-vm-guest-patching.md#availability-first-patching)göre yüklenir. Düzeltme ekleri, VM 'nin saat dilimine bağlı olarak VM için yalnızca yoğun olmayan saatlerde yüklenir. Yamaların otomatik olarak yüklenmesi için sanal makinenin yoğun olmayan saatlerde çalışıyor olması gerekir. Bir sanal makine düzenli bir değerlendirme sırasında kapatılmışsa, VM değerlendirilir ve sanal makine açıldığında bir sonraki dönemsel değerlendirme sırasında geçerli düzeltme ekleri otomatik olarak yüklenir. Sonraki düzenli değerlendirme genellikle birkaç gün içinde gerçekleşir.
 
 Tanım güncelleştirmeleri ve kritik veya güvenlik olarak sınıflandırılmayan diğer düzeltme ekleri otomatik VM Konuk düzeltme eki uygulama aracılığıyla yüklenmez.
 
@@ -151,7 +151,7 @@ Tanım güncelleştirmeleri ve kritik veya güvenlik olarak sınıflandırılmay
 
 SANAL makinenizin düzeltme eki durumunu görüntülemek için, Azure portal sanal makinenizin **Konuk + ana bilgisayar güncelleştirmeleri** bölümüne gidin. **Konuk işletim sistemi güncelleştirmeleri** bölümünde, sanal makinenizin en son düzeltme eki durumunu görüntülemek Için ' hotpatch 'e git (Önizleme) ' seçeneğine tıklayın.
 
-Bu ekranda, sanal makinenizin hotpatch durumunu görürsünüz. Ayrıca, VM 'niz için yüklü olmayan herhangi bir düzeltme eki olup olmadığını da inceleyebilirsiniz. Yukarıdaki ' düzeltme eki yükleme ' bölümünde açıklandığı gibi, tüm güvenlik ve kritik güncelleştirmeler [OTOMATIK VM Konuk düzeltme eki uygulama](https://docs.microsoft.com/azure/virtual-machines/automatic-vm-guest-patching) ve ek eylem gereklı olmadan sanal makinenize otomatik olarak yüklenir. Diğer güncelleştirme sınıflandırmalarına sahip düzeltme ekleri otomatik olarak yüklenmez. Bunun yerine, ' güncelleştirme uyumluluğu ' sekmesi altındaki kullanılabilir düzeltme ekleri listesinde görüntülenebilir. Ayrıca, ' güncelleştirme geçmişi ' aracılığıyla sanal makinenizde güncelleştirme dağıtımlarının geçmişini görüntüleyebilirsiniz. Son 30 günden itibaren güncelleştirme geçmişi, düzeltme eki yükleme ayrıntılarıyla birlikte görüntülenir.
+Bu ekranda, sanal makinenizin hotpatch durumunu görürsünüz. Ayrıca, VM 'niz için yüklü olmayan herhangi bir düzeltme eki olup olmadığını da inceleyebilirsiniz. Yukarıdaki ' düzeltme eki yükleme ' bölümünde açıklandığı gibi, tüm güvenlik ve kritik güncelleştirmeler [OTOMATIK VM Konuk düzeltme eki uygulama](../virtual-machines/automatic-vm-guest-patching.md) ve ek eylem gereklı olmadan sanal makinenize otomatik olarak yüklenir. Diğer güncelleştirme sınıflandırmalarına sahip düzeltme ekleri otomatik olarak yüklenmez. Bunun yerine, ' güncelleştirme uyumluluğu ' sekmesi altındaki kullanılabilir düzeltme ekleri listesinde görüntülenebilir. Ayrıca, ' güncelleştirme geçmişi ' aracılığıyla sanal makinenizde güncelleştirme dağıtımlarının geçmişini görüntüleyebilirsiniz. Son 30 günden itibaren güncelleştirme geçmişi, düzeltme eki yükleme ayrıntılarıyla birlikte görüntülenir.
 
 
 :::image type="content" source="media\automanage-hotpatch\hotpatch-management-ui.png" alt-text="Hotpatch yönetimi.":::
@@ -225,5 +225,5 @@ Hotpatch etkin bir Windows Server Azure sürüm VM 'si çalıştırmanın bazı 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Güncelleştirme Yönetimi hakkında [buradan](https://docs.microsoft.com/azure/automation/update-management/overview)bilgi edinin.
-* [Burada](https://docs.microsoft.com/azure/virtual-machines/automatic-vm-guest-patching) otomatik VM Konuk düzeltme eki uygulama hakkında daha fazla bilgi edinin
+* Azure Güncelleştirme Yönetimi hakkında [buradan](../automation/update-management/overview.md)bilgi edinin.
+* [Burada](../virtual-machines/automatic-vm-guest-patching.md) otomatik VM Konuk düzeltme eki uygulama hakkında daha fazla bilgi edinin

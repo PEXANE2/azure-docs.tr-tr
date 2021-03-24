@@ -4,12 +4,12 @@ description: Apache Hive yapılandırmak ve iyileştirmek için Apache ambarı W
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 349f58720e6fff52191dfff65108cd1320e41eed
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 69a4e769677b6f0200f4157305a3a125f82ee76d
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98939252"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864826"
 ---
 # <a name="optimize-apache-hive-with-apache-ambari-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache ambarı ile Apache Hive iyileştirin
 
@@ -26,11 +26,11 @@ Hive iki yürütme altyapısı sağlar: Apache Hadoop MapReduce ve Apache TEZ. T
 
 1. Hive **yapılandırması** sekmesinde, filtre kutusuna **yürütme altyapısı** yazın.
 
-    ![Apache ambarı arama yürütme altyapısı](./media/optimize-hive-ambari/ambari-search-execution.png)
+    :::image type="content" source="./media/optimize-hive-ambari/ambari-search-execution.png" alt-text="Apache ambarı arama yürütme altyapısı" border="true":::
 
 1. **Optimizasyon** özelliğinin varsayılan değeri **tez**' dir.
 
-    ![İyileştirme-Apache Tez altyapısı](./media/optimize-hive-ambari/optimization-apache-tez.png)
+    :::image type="content" source="./media/optimize-hive-ambari/optimization-apache-tez.png" alt-text="İyileştirme-Apache Tez altyapısı" border="true":::
 
 ## <a name="tune-mappers"></a>Mapto ayarla
 
@@ -47,7 +47,7 @@ Performans Kılavuzu olarak, gecikme süresini artırmak için bu parametrelerin
 
 1. Her iki parametreyi de **33.554.432** bayta ayarlayın (32 MB).
 
-    ![Apache ambarı tez gruplama boyutları](./media/optimize-hive-ambari/apache-tez-grouping-size.png)
+    :::image type="content" source="./media/optimize-hive-ambari/apache-tez-grouping-size.png" alt-text="Apache ambarı tez gruplama boyutları" border="true":::
 
 Bu değişiklikler sunucu genelindeki tüm tez işlerini etkiler. En iyi sonucu almak için uygun parametre değerlerini seçin.
 
@@ -63,11 +63,11 @@ Varsayılan ayarlarla Bu örnek dört azaltıcının.
 
 1. Parametreyi değiştirmek için Hive **yapılandırması** ' na gidin ve Ayarlar sayfasında **Reducer başına veri** parametresini bulun.
 
-    ![Reducer başına Apache ambarı verileri](./media/optimize-hive-ambari/ambari-data-per-reducer.png)
+    :::image type="content" source="./media/optimize-hive-ambari/ambari-data-per-reducer.png" alt-text="Reducer başına Apache ambarı verileri" border="true":::
 
 1. Değeri 128 MB (134.217.728 bayt) olarak değiştirmek için **Düzenle** ' yi seçin ve sonra kaydetmek için **ENTER** tuşuna basın.
 
-    ![Reducer başına veri ambarı verileri düzenlendi](./media/optimize-hive-ambari/data-per-reducer-edited.png)
+    :::image type="content" source="./media/optimize-hive-ambari/data-per-reducer-edited.png" alt-text="Reducer başına veri ambarı verileri düzenlendi" border="true":::
   
     Reducer başına 128 MB veri ile 1.024 MB 'lık bir giriş boyutu verildiğinde, sekiz azaltıcının (1024/128) vardır.
 
@@ -81,7 +81,7 @@ Hive sorgusu bir veya daha fazla aşamada yürütülür. Bağımsız aşamalar p
 
 1. Paralel olarak çalışacak işlerin sayısını sınırlandırmak için `hive.exec.parallel.thread.number` özelliği değiştirin. Varsayılan değer 8 ' dir.
 
-    ![Apache Hive exec paralel ekran](./media/optimize-hive-ambari/apache-hive-exec-parallel.png)
+    :::image type="content" source="./media/optimize-hive-ambari/apache-hive-exec-parallel.png" alt-text="Apache Hive exec paralel ekran" border="true":::
 
 ## <a name="enable-vectorization"></a>Vektörleştirmeyi etkinleştir
 
@@ -91,7 +91,7 @@ Hive, veri satırını satıra göre işler. Vektörleştirme, Hive 'yi aynı an
 
 1. Sorgunun azaltılması için vektörleştirilmiş yürütmeyi etkinleştirmek üzere `hive.vectorized.execution.reduce.enabled` parametresini true olarak ayarlayın. Varsayılan değer false'tur.
 
-    ![Apache Hive vektörleştirilmiş yürütme](./media/optimize-hive-ambari/hive-vectorized-execution.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-vectorized-execution.png" alt-text="Apache Hive vektörleştirilmiş yürütme" border="true":::
 
 ## <a name="enable-cost-based-optimization-cbo"></a>Maliyet tabanlı iyileştirmeyi (CBO) etkinleştir
 
@@ -99,7 +99,7 @@ Varsayılan olarak, Hive en iyi bir sorgu yürütme planını bulmak için bir k
 
 CBO 'i etkinleştirmek için **Hive**  >  **configs**  >  **ayarları** ' na gidin ve **maliyet tabanlı İyileştiriciyi etkinleştir**' i bulun ve geçiş düğmesini **Açık** olarak değiştirin.
 
-![HDInsight maliyet tabanlı iyileştirici](./media/optimize-hive-ambari/hdinsight-cbo-config.png)
+:::image type="content" source="./media/optimize-hive-ambari/hdinsight-cbo-config.png" alt-text="HDInsight maliyet tabanlı iyileştirici" border="true":::
 
 Aşağıdaki ek yapılandırma parametreleri, CBO etkin olduğunda Hive sorgu performansını artırır:
 
@@ -107,19 +107,19 @@ Aşağıdaki ek yapılandırma parametreleri, CBO etkin olduğunda Hive sorgu pe
 
     True olarak ayarlandığında Hive, gibi basit sorguları yanıtlamak için meta veri deposu içinde depolanan istatistikleri kullanır `count(*)` .
 
-    ![İstatistikleri kullanarak işlem sorgusunu Apache Hive](./media/optimize-hive-ambari/hive-compute-query-using-stats.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-compute-query-using-stats.png" alt-text="İstatistikleri kullanarak işlem sorgusunu Apache Hive" border="true":::
 
 * `hive.stats.fetch.column.stats`
 
     CBO etkinken sütun istatistikleri oluşturulur. Hive sorguları iyileştirmek için, meta veri deposu içinde depolanan sütun istatistiklerini kullanır. Sütun sayısı yüksek olduğunda her sütun için sütun istatistiklerinin getirilmesi daha uzun sürer. False olarak ayarlandığında, bu ayar sütun istatistiklerini meta veri deposu 'ndan getirmeyi devre dışı bırakır.
 
-    ![Apache Hive stats sütun istatistiklerini ayarla](./media/optimize-hive-ambari/hive-stats-fetch-column-stats.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-stats-fetch-column-stats.png" alt-text="Apache Hive stats sütun istatistiklerini ayarla" border="true":::
 
 * `hive.stats.fetch.partition.stats`
 
     Satır sayısı, veri boyutu ve dosya boyutu gibi temel bölüm istatistikleri, meta veri deposu 'nda depolanır. True olarak ayarlanırsa, Bölüm istatistikleri meta veri deposu 'ndan getirilir. Yanlış olduğunda dosya boyutu dosya sisteminden getirilir. Ve satır sayısı satır şemasından getirilir.
 
-    ![Hive istatistikleri bölüm istatistiklerini ayarlama](./media/optimize-hive-ambari/hive-stats-fetch-partition-stats.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-stats-fetch-partition-stats.png" alt-text="Hive istatistikleri bölüm istatistiklerini ayarlama" border="true":::
 
 ## <a name="enable-intermediate-compression"></a>Ara sıkıştırmayı etkinleştir
 
@@ -131,16 +131,16 @@ Kullanılabilir sıkıştırma türleri şunlardır:
 
 | Biçimlendir | Araç | Algoritma | Dosya Uzantısı | Bölünebilir? |
 | --- | --- | --- | --- | --- |
-| Gzip | Gzip | Söndür | `.gz` | No |
+| Gzip | Gzip | Söndür | `.gz` | Hayır |
 | Bzip2 | Bzip2 | Bzip2 |`.bz2` | Yes |
 | LZO | `Lzop` | LZO | `.lzo` | Dizine alınmışsa Evet |
-| Snappy | Yok | Snappy | Snappy | No |
+| Snappy | Yok | Snappy | Snappy | Hayır |
 
 Genel bir kural olarak, sıkıştırma yöntemi bölünmüş tablo önemli olduğundan, bazı durumlarda birkaç mapas oluşturulur. Giriş verileri metin ise `bzip2` en iyi seçenektir. ORC biçimi için, Snappy en hızlı sıkıştırma seçeneğidir.
 
 1. Ara sıkıştırmayı etkinleştirmek için Hive **yapılandırması** ' na gidin ve ardından `hive.exec.compress.intermediate` parametreyi doğru olarak ayarlayın. Varsayılan değer false'tur.
 
-    ![' Hive exec sıkıştırma ara '](./media/optimize-hive-ambari/hive-exec-compress-intermediate.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-exec-compress-intermediate.png" alt-text="' Hive exec sıkıştırma ara '" border="true":::
 
     > [!NOTE]  
     > Ara dosyaları sıkıştırmak için, codec, yüksek bir sıkıştırma çıkışına sahip olmasa bile daha düşük CPU maliyetiyle bir sıkıştırma codec bileşeni seçin.
@@ -157,7 +157,7 @@ Genel bir kural olarak, sıkıştırma yöntemi bölünmüş tablo önemli oldu�
 
     d. **Add (Ekle)** seçeneğini belirleyin.
 
-    ![' Apache Hive özel Özellik Ekle '](./media/optimize-hive-ambari/hive-custom-property.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-custom-property.png" alt-text="' Apache Hive özel Özellik Ekle '" border="true":::
 
     Bu ayar, Snappy sıkıştırması kullanılarak ara dosyayı sıkıştırır. Özellik eklendikten sonra, özel Hive sitesi bölmesinde görünür.
 
@@ -172,7 +172,7 @@ Son Hive çıktısı da sıkıştırılabilir.
 
 1. Çıkış sıkıştırma codec bileşenini seçmek için, `mapred.output.compression.codec` önceki bölümün adım 3 ' te açıklandığı gibi özel Hive-site bölmesine özel özelliği ekleyin.
 
-    ![Özel özellik Add2 Apache Hive](./media/optimize-hive-ambari/hive-custom-property2.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-custom-property2.png" alt-text="Özel özellik Add2 Apache Hive" border="true":::
 
 ## <a name="enable-speculative-execution"></a>Kurgusal yürütmeyi etkinleştir
 
@@ -182,7 +182,7 @@ Büyük miktarlarda girişi olan uzun süreli MapReduce görevleri için yansım
 
 * Yansımalı yürütmeyi etkinleştirmek için Hive **yapılandırması** ' na gidin ve ardından `hive.mapred.reduce.tasks.speculative.execution` parametreyi doğru olarak ayarlayın. Varsayılan değer false'tur.
 
-    ![' Hive mapred görevleri yansımalı yürütmeyi azaltır '](./media/optimize-hive-ambari/hive-mapred-reduce-tasks-speculative-execution.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-mapred-reduce-tasks-speculative-execution.png" alt-text="' Hive mapred görevleri yansımalı yürütmeyi azaltır '" border="true":::
 
 ## <a name="tune-dynamic-partitions"></a>Dinamik bölümleri ayarla
 
@@ -202,7 +202,7 @@ Yerel mod, Hive 'nin tek bir makinedeki bir işin tüm görevlerini gerçekleşt
 
 Yerel modu etkinleştirmek için, `hive.exec.mode.local.auto` [Ara sıkıştırmayı etkinleştir](#enable-intermediate-compression) bölümünün 3. adımında açıklandığı gibi parametreyi özel Hive-site paneline ekleyin.
 
-![Apache Hive exec modu yerel otomatik](./media/optimize-hive-ambari/hive-exec-mode-local-auto.png)
+:::image type="content" source="./media/optimize-hive-ambari/hive-exec-mode-local-auto.png" alt-text="Apache Hive exec modu yerel otomatik" border="true":::
 
 ## <a name="set-single-mapreduce-multigroup-by"></a>Tek MapReduce çok grubunu ayarla
 
@@ -210,7 +210,7 @@ Bu özellik true olarak ayarlandığında, ortak gruplandırma ölçütü olan b
 
 Bu davranışı etkinleştirmek için `hive.multigroupby.singlereducer` parametreyi, [Ara sıkıştırmayı etkinleştir](#enable-intermediate-compression) bölümünün 3. adımında açıklandığı gibi özel Hive-site bölmesine ekleyin.
 
-![Hive set BY Single MapReduce MultiGROUP](./media/optimize-hive-ambari/hive-multigroupby-singlereducer.png)
+:::image type="content" source="./media/optimize-hive-ambari/hive-multigroupby-singlereducer.png" alt-text="Hive set BY Single MapReduce MultiGROUP" border="true":::
 
 ## <a name="additional-hive-optimizations"></a>Ek Hive iyileştirmeleri
 

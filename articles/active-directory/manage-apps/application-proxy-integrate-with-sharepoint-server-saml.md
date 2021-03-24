@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cadf5b7d92e26e561e570f824295e69ca421e16
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 34aaafcd03e737b1e59529f8001e0c008bd39b70
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101644529"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104888881"
 ---
 # <a name="integrate-with-sharepoint-saml"></a>SharePoint ile tümleştirme (SAML)
 
@@ -68,8 +68,8 @@ Bu adımda, Azure AD kiracınızda uygulama proxy 'Si kullanan bir uygulama olu�
 
  1. Özel etki alanı ile yeni bir Azure AD Uygulama Ara Sunucusu uygulaması oluşturun. Adım adım yönergeler için bkz. [Azure AD uygulama ara sunucusu özel etki alanları](./application-proxy-configure-custom-domain.md).
 
-    - İç URL: https://portal.contoso.com/
-    - Dış URL: https://portal.contoso.com/
+    - İç URL: ' https://portal.contoso.com/ '
+    - Dış URL: ' https://portal.contoso.com/ '
     - Ön kimlik doğrulaması: Azure Active Directory
     - Üst bilgilerdeki URL 'Leri çevir: Hayır
     - Uygulama gövdesinde URL 'Leri çevir: Hayır
@@ -84,4 +84,4 @@ Bu adımda, Azure AD kiracınızda uygulama proxy 'Si kullanan bir uygulama olu�
  
 ## <a name="step-3-test-your-application"></a>3. Adım: uygulamanızı test etme
 
-Dış ağdaki bir bilgisayardan tarayıcı kullanarak, https://portal.contoso.com/) Yayımlama adımı sırasında YAPıLANDıRDıĞıNıZ URL 'ye gidin. Ayarladığınız test hesabıyla oturum açabilmeniz için emin olun.
+Dış ağdaki bir bilgisayardan tarayıcı kullanarak, yayımlama adımı sırasında yapılandırdığınız bağlantıya gidin. Ayarladığınız test hesabıyla oturum açabilmeniz için emin olun.

@@ -5,24 +5,24 @@ ms.service: hdinsight
 ms.custom: contperf-fy21q1
 ms.topic: overview
 ms.date: 09/21/2020
-ms.openlocfilehash: 8bcdb87e04d90aeb3d807e43c53e74d74299091b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 754b82cb0473e13ee7fb0649ef68c70ab5abe900
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102040014"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868741"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>Azure HDInsight’ta Apache Spark nedir?
 
 Apache Spark, büyük veri analizi uygulamalarının performansını artırmak üzere bellek içi işlemeyi destekleyen paralel bir işleme çerçevesidir. Azure HDInsight’ta Apache Spark, Microsoft'un buluttaki Apache Spark uygulamasıdır. HDInsight, Azure’da bir Spark kümesi oluşturup yapılandırmayı kolaylaştırır. HDInsight 'ta Spark kümeleri, [Azure Blob depolama](../../storage/common/storage-introduction.md), [Azure Data Lake Storage 1.](../../data-lake-store/data-lake-store-overview.md)veya [Azure Data Lake Storage 2.](../../storage/blobs/data-lake-storage-introduction.md)uyumludur. Bu nedenle, HDInsight Spark kümelerini Azure’da depolanmış verilerinizi işlemek için kullanabilirsiniz. Bileşenler ve sürüm bilgileri için bkz. [Azure HDInsight 'ta bileşenler ve sürümler Apache Hadoop](../hdinsight-component-versioning.md).
 
-![Spark: birleşik çerçeve](./media/apache-spark-overview/hdinsight-spark-overview.png)
+:::image type="content" source="./media/apache-spark-overview/hdinsight-spark-overview.png" alt-text="Spark: birleşik çerçeve" border="false":::
 
 ## <a name="what-is-apache-spark"></a>Apache Spark nedir?
 
 Spark, bellek içi küme hesaplama için temel bileşenleri sunar. Bir Spark işi, verileri belleğe yükleyip önbelleğe alarak tekrar tekrar sorgulayabilir. Bellek içi bilgi işlem, Hadoop gibi disk tabanlı uygulamalardan daha hızlıdır, bu da Hadoop Dağıtılmış dosya sistemi (II) aracılığıyla verileri paylaşır. Spark ayrıca Scala programlama diliyle tümleştirilerek yerel koleksiyonlar gibi dağıtılmış veri kümelerini işlemenizi sağlar. Her şeyi harita olarak yapılandırmaya gerek olmadığı için işlem sayısı azalmış olur.
 
-![Geleneksel MapReduce ile Spark](./media/apache-spark-overview/map-reduce-vs-spark1.png)
+:::image type="content" source="./media/apache-spark-overview/map-reduce-vs-spark1.png" alt-text="Geleneksel MapReduce ile Spark" border="false":::
 
 HDInsight’ta Spark kümeleri, tam olarak yönetilen bir Spark hizmeti sunar. HDInsight'ta bir Spark kümesi oluşturmanın avantajları burada listelenmiştir.
 
@@ -54,7 +54,7 @@ HDInsight Spark kümeleri, Microsoft Power BI gibi bı araçlarından bağlantı
 
 ## <a name="spark-cluster-architecture"></a>Spark kümesi mimarisi
 
-![HDInsight Spark mimarisi](./media/apache-spark-overview/hdi-spark-architecture.png)
+:::image type="content" source="./media/apache-spark-overview/hdi-spark-architecture.png" alt-text="HDInsight Spark mimarisi" border="false":::
 
 Spark 'ın HDInsight kümelerinde nasıl çalıştığını anlayarak Spark bileşenlerini anlamak kolaydır.
 

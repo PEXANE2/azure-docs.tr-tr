@@ -12,12 +12,12 @@ ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: içerik moderatör, Azure İçerik Aracı, çevrimiçi Aracı, içerik filtreleme yazılımı, içerik denetleme hizmeti, içerik denetleme
-ms.openlocfilehash: 57a390a1da1e3a10b9fda4b531a83ee48e91125b
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: a53611fdad84f06661f3b8928296b6a45851cea4
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560382"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867279"
 ---
 # <a name="what-is-azure-content-moderator"></a>Azure Content Moderator nedir?
 
@@ -26,6 +26,13 @@ ms.locfileid: "97560382"
 Azure Content Moderator, rahatsız edici, riskli veya başka türlü istenmeyen içerikleri işlemenize imkan tanıyan bir AI hizmetidir. Metin, resim ve videoları tarayan ve içerik bayraklarını otomatik olarak uygulayan AI destekli içerik denetleme hizmetini ve ayrıca, bir insan gözden geçirenler ekibi için çevrimiçi bir moderatör ortamı olan gözden geçirme aracını içerir.
 
 Yönetmeliklere uymak veya kullanıcılarınız için amaçlanan ortamı sürdürmek üzere uygulamanıza içerik filtreleme yazılımı oluşturmak isteyebilirsiniz.
+
+Bu belge aşağıdaki makale türlerini içerir:  
+
+* [**Hızlı**](client-libraries.md) başlangıçlarda, hizmette istek yapma konusunda size kılavuzluk eden başlangıç yönergeleri bulunur.  
+* [**Nasıl yapılır kılavuzlarında**](try-text-api.md) , hizmetin daha belirli veya özelleştirilmiş yollarla kullanılmasına ilişkin yönergeler bulunur.  
+* [**Kavramlar**](text-moderation-api.md) , hizmet işlevselliği ve özelliklerinin ayrıntılı açıklamalarını sağlar.  
+* [**Öğreticiler**](ecommerce-retail-catalog-moderation.md) daha fazla iş çözümlerinde hizmeti bir bileşen olarak nasıl kullanacağınızı gösteren kılavuzlardır.  
 
 ## <a name="where-its-used"></a>Kullanıldığı yer
 
@@ -52,7 +59,7 @@ Content Moderator hizmeti, uygunsuz veya sakıncalı olabilecek malzemelere yön
 
 Aşağıdaki tabloda farklı denetleme API 'Leri açıklanmaktadır.
 
-| API grubu | Description |
+| API grubu | Açıklama |
 | ------ | ----------- |
 |[**Metin denetimi**](text-moderation-api.md)| Saldırgan içeriği, cinsel açık veya müstehcen içerik, küfür ve kişisel veriler için metin tarar.|
 |[**Özel terim listeleri**](try-terms-list-api.md)| Metni, yerleşik koşullarla birlikte özel bir terim listesine karşı tarar. İçerik ilkelerinize göre içerik engellemek veya izin vermek için özel listeler kullanabilirsiniz.|  

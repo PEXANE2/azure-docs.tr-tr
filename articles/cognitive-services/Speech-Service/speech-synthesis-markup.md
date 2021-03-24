@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 124e3ef734e03606372dc07059841b77c3a548de
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ffa8528da454fd29c937a2d49accdda617fe62dd
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104584576"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869030"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Konuşma birleştirme biçimlendirme dili (SSML) ile senssıs 'yi geliştirme
 
@@ -44,7 +44,7 @@ SSML kullanırken, tırnak işaretleri, kesme işareti ve köşeli ayraç gibi �
 
 ## <a name="supported-ssml-elements"></a>Desteklenen SSML öğeleri
 
-Her SSML belgesi SSML öğeleri (veya etiketleri) ile oluşturulur. Bu öğeler, sıklık, Prosody, hacim ve daha fazlasını ayarlamak için kullanılır. Aşağıdaki bölümler her bir öğenin nasıl kullanıldığını ve bir öğe gerekli veya isteğe bağlı olduğunu ayrıntılandırır.  
+Her SSML belgesi SSML öğeleri (veya etiketleri) ile oluşturulur. Bu öğeler, sıklık, Prosody, hacim ve daha fazlasını ayarlamak için kullanılır. Aşağıdaki bölümler her bir öğenin nasıl kullanıldığını ve bir öğe gerekli veya isteğe bağlı olduğunu ayrıntılandırır.
 
 > [!IMPORTANT]
 > Öznitelik değerleri etrafında çift tırnak kullanmayı unutmayın. Doğru biçimlendirilmiş, geçerli XML standartları, öznitelik değerlerinin çift tırnak işareti içine alınması gerekir. Örneğin, `<prosody volume="90">` iyi biçimlendirilmiş, geçerli bir öğedir, ancak `<prosody volume=90>` değildir. SSML tırnak içinde olmayan öznitelik değerlerini tanıyamayabilir.
@@ -100,7 +100,7 @@ Her SSML belgesi SSML öğeleri (veya etiketleri) ile oluşturulur. Bu öğeler,
 
 ## <a name="use-multiple-voices"></a>Birden çok ses kullan
 
-Öğesi içinde `speak` , metinden konuşmaya çıkış için birden çok ses belirtebilirsiniz. Bu sesler farklı dillerde olabilir. Her ses için, metnin bir öğe içinde sarmalanması gerekir `voice` . 
+Öğesi içinde `speak` , metinden konuşmaya çıkış için birden çok ses belirtebilirsiniz. Bu sesler farklı dillerde olabilir. Her ses için, metnin bir öğe içinde sarmalanması gerekir `voice` .
 
 **Öznitelikler**
 
@@ -213,7 +213,7 @@ Varsayılan olarak, metinden konuşmaya hizmeti, standart ve sinir sesler için 
 * `zh-CN-XiaoxuanNeural` Önizle
 * `zh-CN-XiaoruiNeural` Önizle
 
-Konuşma stilinin yoğunluğu, kullanım örneğine daha iyi uyum sağlamak için daha fazla değiştirilebilir. `styledegree`Konuşmayı daha anlamlı veya daha fazla ifade etmek için ile daha güçlü veya Softer stili belirtebilirsiniz. 
+Konuşma stilinin yoğunluğu, kullanım örneğine daha iyi uyum sağlamak için daha fazla değiştirilebilir. `styledegree`Konuşmayı daha anlamlı veya daha fazla ifade etmek için ile daha güçlü veya Softer stili belirtebilirsiniz.
 
 Şu anda, bu sinir sesleri için konuşma stil ayarlamaları desteklenir:
 * `zh-CN-XiaoxiaoNeural`
@@ -250,7 +250,7 @@ Yukarıdaki değişiklikler tümce düzeyinde uygulanır ve stiller ve rol oynat
 
 Her sinir sesi için hangi konuşma stillerinin desteklendiğini öğrenmek için bu tabloyu kullanın.
 
-| Ses                   | Stil                     | Description                                                 |
+| Ses                   | Stil                     | Açıklama                                                 |
 |-------------------------|---------------------------|-------------------------------------------------------------|
 | `en-US-AriaNeural`      | `style="newscast-formal"` | Haber teslimi için resmi, güvenilir ve yetkili bir tonu ifade eder |
 |                         | `style="newscast-casual"` | Genel haber teslimi için çok yönlü ve sıradan bir tonu ifade eder        |
@@ -275,11 +275,11 @@ Her sinir sesi için hangi konuşma stillerinin desteklendiğini öğrenmek içi
 |                         | `style="fearful"`         | Daha yüksek aralıklı, daha yüksek Vocal enerji ve daha hızlı bir şekilde bir korya ve nervous sesini ifade eder. Konuşmacı, tenseness ve unkımın durumunda.                          |
 |                         | `style="disgruntled"`     | Bir korinsuz ve şikayetçi tonu ifade eder. Bu duyuşun konuşmayı, depleasure ve Contempt 'yi görüntüler.              |
 |                         | `style="serious"`         | Katı ve bir komut veren tonu ifade eder. Konuşmacı genellikle, matemposunda ile daha az ve çok daha rahat bir şekilde ses çıkarabilir.          |
-|                         | `style="affectionate"`    | Daha yüksek aralıklı ve Vocal enerji ile bir sıcak ve affectionate tonu ifade eder. Konuşmacı, dinleyicinin dikkatini platformunuza çekmenin tutmanın durumundadır. Konuşmacı "Kişilik", genellikle Endearing ' dir.          |     
-|                         | `style="gentle"`          | Daha düşük aralıklı ve Vocal enerji ile hafif, polite ve Pleasant tonu ifade eder         |   
-|                         | `style="lyrical"`         | Bir Melodic ve sentisel şekilde ifade eder         |   
-| `zh-CN-YunyangNeural`   | `style="customerservice"` | Müşteri desteği için kolay ve yararlı bir tonu ifade eder  | 
-| `zh-CN-YunyeNeural`     | `style="calm"`            | Konuşurken seyrek erişimli, toplanan ve oluşan bir atnetme ifade eder. Ton, sıklık, Prosody, diğer konuşma türleriyle karşılaştırıldığında çok daha Tekdüzen.    | 
+|                         | `style="affectionate"`    | Daha yüksek aralıklı ve Vocal enerji ile bir sıcak ve affectionate tonu ifade eder. Konuşmacı, dinleyicinin dikkatini platformunuza çekmenin tutmanın durumundadır. Konuşmacı "Kişilik", genellikle Endearing ' dir.          |
+|                         | `style="gentle"`          | Daha düşük aralıklı ve Vocal enerji ile hafif, polite ve Pleasant tonu ifade eder         |
+|                         | `style="lyrical"`         | Bir Melodic ve sentisel şekilde ifade eder         |
+| `zh-CN-YunyangNeural`   | `style="customerservice"` | Müşteri desteği için kolay ve yararlı bir tonu ifade eder  |
+| `zh-CN-YunyeNeural`     | `style="calm"`            | Konuşurken seyrek erişimli, toplanan ve oluşan bir atnetme ifade eder. Ton, sıklık, Prosody, diğer konuşma türleriyle karşılaştırıldığında çok daha Tekdüzen.    |
 |                         | `style="cheerful"`        | Daha yüksek aralıklı ve Vocal enerji ile bir UPA ve bir şü                         |
 |                         | `style="sad"`             | Daha yüksek bir sıklık, daha az yoğunluk ve daha düşük Vocal enerji ile bir sorun şiddetini ifade eder. Bu duygu tanıma 'un genel göstergeleri, konuşma sırasında göz çıkarıcılar veya eğitme olabilir.            |
 |                         | `style="angry"`           | Daha düşük bir, daha yüksek yoğunluk ve daha yüksek Vocal enerji ile birlikte bir angın ve annokızı ifade eder. Konuşmacı, IRate, görüntüleme kiraladığı ve boşaltmış bir durumdur.       |
@@ -301,22 +301,22 @@ Her sinir sesi için hangi konuşma stillerinin desteklendiğini öğrenmek içi
 |                         | `style="disgruntled"`     | Bir korinsuz ve şikayetçi tonu ifade eder. Bu duyuşun konuşmayı, depleasure ve Contempt 'yi görüntüler.              |
 |                         | `style="serious"`         | Katı ve bir komut veren tonu ifade eder. Konuşmacı genellikle, matemposunda ile daha az ve çok daha rahat bir şekilde ses çıkarabilir.    |
 |                         | `style="embarrassed"`     | Konuşmacı rahatsız edildiğinde belirsiz ve önemli bir tonu ifade eder   |
-|                         | `style="affectionate"`    | Daha yüksek aralıklı ve Vocal enerji ile bir sıcak ve affectionate tonu ifade eder. Konuşmacı, dinleyicinin dikkatini platformunuza çekmenin tutmanın durumundadır. Konuşmacı "Kişilik", genellikle Endearing ' dir.          |     
-|                         | `style="gentle"`          | Daha düşük aralıklı ve Vocal enerji ile hafif, polite ve Pleasant tonu ifade eder         |   
+|                         | `style="affectionate"`    | Daha yüksek aralıklı ve Vocal enerji ile bir sıcak ve affectionate tonu ifade eder. Konuşmacı, dinleyicinin dikkatini platformunuza çekmenin tutmanın durumundadır. Konuşmacı "Kişilik", genellikle Endearing ' dir.          |
+|                         | `style="gentle"`          | Daha düşük aralıklı ve Vocal enerji ile hafif, polite ve Pleasant tonu ifade eder         |
 | `zh-CN-XiaomoNeural`    | `style="cheerful"`        | Daha yüksek aralıklı ve Vocal enerji ile bir UPA ve bir şü                         |
 |                         | `style="angry"`           | Daha düşük bir, daha yüksek yoğunluk ve daha yüksek Vocal enerji ile birlikte bir angın ve annokızı ifade eder. Konuşmacı, IRate, görüntüleme kiraladığı ve boşaltmış bir durumdur.       |
 |                         | `style="fearful"`         | Daha yüksek aralıklı, daha yüksek Vocal enerji ve daha hızlı bir şekilde bir korya ve nervous sesini ifade eder. Konuşmacı, tenseness ve unkımın durumunda.                          |
 |                         | `style="disgruntled"`     | Bir korinsuz ve şikayetçi tonu ifade eder. Bu duyuşun konuşmayı, depleasure ve Contempt 'yi görüntüler.              |
 |                         | `style="serious"`         | Katı ve bir komut veren tonu ifade eder. Konuşmacı genellikle, matemposunda ile daha az ve çok daha rahat bir şekilde ses çıkarabilir.    |
 |                         | `style="depressed"`       | Daha düşük sıklık ve enerji ile bir melanlik ve değişimleri giderilmiş bir ton ifade eder    |
-|                         | `style="gentle"`          | Daha düşük aralıklı ve Vocal enerji ile hafif, polite ve Pleasant tonu ifade eder         |  
+|                         | `style="gentle"`          | Daha düşük aralıklı ve Vocal enerji ile hafif, polite ve Pleasant tonu ifade eder         |
 | `zh-CN-XiaoxuanNeural`  | `style="cheerful"`        | Daha yüksek aralıklı ve Vocal enerji ile bir UPA ve bir şü                         |
 |                         | `style="angry"`           | Daha düşük bir, daha yüksek yoğunluk ve daha yüksek Vocal enerji ile birlikte bir angın ve annokızı ifade eder. Konuşmacı, IRate, görüntüleme kiraladığı ve boşaltmış bir durumdur.       |
 |                         | `style="fearful"`         | Daha yüksek aralıklı, daha yüksek Vocal enerji ve daha hızlı bir şekilde bir korya ve nervous sesini ifade eder. Konuşmacı, tenseness ve unkımın durumunda.                          |
 |                         | `style="disgruntled"`     | Bir korinsuz ve şikayetçi tonu ifade eder. Bu duyuşun konuşmayı, depleasure ve Contempt 'yi görüntüler.              |
 |                         | `style="serious"`         | Katı ve bir komut veren tonu ifade eder. Konuşmacı genellikle, matemposunda ile daha az ve çok daha rahat bir şekilde ses çıkarabilir.    |
 |                         | `style="depressed"`       | Daha düşük sıklık ve enerji ile bir melanlik ve değişimleri giderilmiş bir ton ifade eder    |
-|                         | `style="gentle"`          | Daha düşük aralıklı ve Vocal enerji ile hafif, polite ve Pleasant tonu ifade eder         |   
+|                         | `style="gentle"`          | Daha düşük aralıklı ve Vocal enerji ile hafif, polite ve Pleasant tonu ifade eder         |
 | `zh-CN-XiaoruiNeural`    | `style="sad"`             | Daha yüksek bir sıklık, daha az yoğunluk ve daha düşük Vocal enerji ile bir sorun şiddetini ifade eder. Bu duygu tanıma 'un genel göstergeleri, konuşma sırasında göz çıkarıcılar veya eğitme olabilir.            |
 |                         | `style="angry"`           | Daha düşük bir, daha yüksek yoğunluk ve daha yüksek Vocal enerji ile birlikte bir angın ve annokızı ifade eder. Konuşmacı, IRate, görüntüleme kiraladığı ve boşaltmış bir durumdur.       |
 |                         | `style="fearful"`         | Daha yüksek aralıklı, daha yüksek Vocal enerji ve daha hızlı bir şekilde bir korya ve nervous sesini ifade eder. Konuşmacı, tenseness ve unkımın durumunda.                          |
@@ -398,7 +398,7 @@ Bu SSML kod parçacığı, `role` XiaomoNeural için rol oynamasını değiştir
 | `strength` | Aşağıdaki değerlerden birini kullanarak duraklamanın göreli süresini belirtir:<ul><li>yok</li><li>x-zayıf</li><li>zayıf</li><li>Orta (varsayılan)</li><li>lemenize</li><li>x-Strong</li></ul> | İsteğe Bağlı |
 | `time` | Saniye veya milisaniye cinsinden duraklamanın mutlak süresini belirtir, bu değer 5 000ms 'den az ayarlanmalıdır. Geçerli değerler örnekleri `2s` ve `500ms` | İsteğe Bağlı |
 
-| Gücüyle                      | Description |
+| Gücüyle                      | Açıklama |
 |-------------------------------|-------------|
 | Hiçbiri veya hiçbir değer sağlanmazsa | 0 MS        |
 | x-zayıf                        | 250 MS      |
@@ -418,10 +418,10 @@ Bu SSML kod parçacığı, `role` XiaomoNeural için rol oynamasını değiştir
 ```
 ## <a name="add-silence"></a>Sessizlik Ekle
 
-`mstts:silence`Metinden önce veya sonra veya 2 bitişik cümleden sonra duraklar eklemek için öğesini kullanın. 
+`mstts:silence`Metinden önce veya sonra veya 2 bitişik cümleden sonra duraklar eklemek için öğesini kullanın.
 
 > [!NOTE]
->Ve arasındaki fark `mstts:silence` , `break` `break` metinde yer alan herhangi bir yere eklenebilir, ancak sessizlik yalnızca giriş metninin başlangıcında veya sonunda veya 2 bitişik cümlede sınırında kullanılabilir.  
+>Ve arasındaki fark `mstts:silence` , `break` `break` metinde yer alan herhangi bir yere eklenebilir, ancak sessizlik yalnızca giriş metninin başlangıcında veya sonunda veya 2 bitişik cümlede sınırında kullanılabilir.
 
 
 **Syntax**
@@ -434,18 +434,18 @@ Bu SSML kod parçacığı, `role` XiaomoNeural için rol oynamasını değiştir
 
 | Öznitelik | Açıklama | Gerekli/Isteğe bağlı |
 |-----------|-------------|---------------------|
-| `type` | Sessizlik konumunun ekleneceğini belirtir: <ul><li>Baştaki – metnin başlangıcında </li><li>Takenme – metnin sonunda </li><li>Sentenceboundary – bitişik cümleler arasında </li></ul> | Gerekli |
+| `type` | Sessizlik konumunun ekleneceğini belirtir: <ul><li>`Leading` – metnin başlangıcında </li><li>`Tailing` – metnin sonunda </li><li>`Sentenceboundary` – bitişik cümleler arasında </li></ul> | Gerekli |
 | `Value` | Saniye veya milisaniye cinsinden duraklamanın mutlak süresini belirtir, bu değer 5 000ms 'den az ayarlanmalıdır. Geçerli değerler örnekleri `2s` ve `500ms` | Gerekli |
 
 **Örnek** Bu örnekte, `mtts:silence` iki cümle arasında 200 MS sessizlik eklemek için kullanılır.
 ```xml
-<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">  
-<voice name="en-US-AriaNeural"> 
-<mstts:silence  type="Sentenceboundary" value="200ms"/> 
-If we’re home schooling, the best we can do is roll with what each day brings and try to have fun along the way. 
-A good place to start is by trying out the slew of educational apps that are helping children stay happy and smash their schooling at the same time. 
-</voice> 
-</speak> 
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+<voice name="en-US-AriaNeural">
+<mstts:silence  type="Sentenceboundary" value="200ms"/>
+If we’re home schooling, the best we can do is roll with what each day brings and try to have fun along the way.
+A good place to start is by trying out the slew of educational apps that are helping children stay happy and smash their schooling at the same time.
+</voice>
+</speak>
 ```
 
 ## <a name="specify-paragraphs-and-sentences"></a>Paragrafları ve tümceleri belirtme
@@ -533,7 +533,7 @@ Fonetik alfabeller, bazen birlikte harflerin, sayıların veya karakterlerin üz
 Bazen metinden konuşmaya hizmeti bir sözcüğe doğru pronounce. Örneğin, bir şirketin adı veya bir tıbbi dönem. Geliştiriciler, ve etiketlerini kullanarak SSML 'de tek varlıkların nasıl okunacağını tanımlayabilir `phoneme` `sub` . Ancak, birden çok varlığın nasıl okunduğunu tanımlamanız gerekiyorsa etiketini kullanarak özel bir sözlük oluşturabilirsiniz `lexicon` .
 
 > [!NOTE]
-> Özel sözlük Şu anda UTF-8 kodlamasını desteklemektedir. 
+> Özel sözlük Şu anda UTF-8 kodlamasını desteklemektedir.
 
 > [!NOTE]
 > Bu 5 Ses için özel sözlük (et-EE-AnuNeural, ga-IE-OrlaNeural, lt-LT-OnaNeural, LV-LV-EveritaNeural ve MT-MT-GarceNeural) Şu anda desteklenmez.
@@ -557,18 +557,18 @@ Birden çok varlığın nasıl okunduğunu tanımlamak için, bir. xml veya. pls
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<lexicon version="1.0" 
+<lexicon version="1.0"
       xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-      xsi:schemaLocation="http://www.w3.org/2005/01/pronunciation-lexicon 
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.w3.org/2005/01/pronunciation-lexicon
         http://www.w3.org/TR/2007/CR-pronunciation-lexicon-20071212/pls.xsd"
       alphabet="ipa" xml:lang="en-US">
   <lexeme>
-    <grapheme>BTW</grapheme> 
-    <alias>By the way</alias> 
+    <grapheme>BTW</grapheme>
+    <alias>By the way</alias>
   </lexeme>
   <lexeme>
-    <grapheme> Benigni </grapheme> 
+    <grapheme> Benigni </grapheme>
     <phoneme> bɛˈniːnji</phoneme>
   </lexeme>
 </lexicon>
@@ -580,11 +580,11 @@ Birden çok varlığın nasıl okunduğunu tanımlamak için, bir. xml veya. pls
 
 ```xml
   <lexeme>
-    <grapheme>Scotland MV</grapheme> 
-    <alias>ScotlandMV</alias> 
+    <grapheme>Scotland MV</grapheme>
+    <alias>ScotlandMV</alias>
   </lexeme>
   <lexeme>
-    <grapheme>ScotlandMV</grapheme> 
+    <grapheme>ScotlandMV</grapheme>
     <phoneme>ˈskɒtlənd.ˈmiːdiəm.weɪv</phoneme>
   </lexeme>
 ```
@@ -592,8 +592,8 @@ Birden çok varlığın nasıl okunduğunu tanımlamak için, bir. xml veya. pls
 Ayrıca, kısaltmasının veya kısaltılmış dönemin doğrudan bekleninizi de sağlayabilirsiniz `alias` . Örnek:
 ```xml
   <lexeme>
-    <grapheme>Scotland MV</grapheme> 
-    <alias>Scotland Media Wave</alias> 
+    <grapheme>Scotland MV</grapheme>
+    <alias>Scotland Media Wave</alias>
   </lexeme>
 ```
 
@@ -610,8 +610,8 @@ Sonra, özel sözlük dosyanızı yayımlayın. Bu dosyanın nerede depolanabile
 > `lexicon`Öğe, öğesinin içinde olmalıdır `voice` .
 
 ```xml
-<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" 
-          xmlns:mstts="http://www.w3.org/2001/mstts" 
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis"
+          xmlns:mstts="http://www.w3.org/2001/mstts"
           xml:lang="en-US">
     <voice name="en-US-JennyNeural">
         <lexicon uri="http://www.example.com/customlexicon.xml"/>
@@ -621,7 +621,7 @@ Sonra, özel sözlük dosyanızı yayımlayın. Bu dosyanın nerede depolanabile
 </speak>
 ```
 
-Bu özel sözlük kullanılırken "BTW", "sizin" olarak okunacak. "Benignı", belirtilen IPA "bɛ ˈ nı ː nji" ile okunacaktır.  
+Bu özel sözlük kullanılırken "BTW", "sizin" olarak okunacak. "Benignı", belirtilen IPA "bɛ ˈ nı ː nji" ile okunacaktır.
 
 **Sınırlamalar**
 - Dosya boyutu: özel sözlük dosyası boyutu üst sınırı 100KB, bu boyuttan daha fazla olursa sensıs isteği başarısız olur.
@@ -637,7 +637,7 @@ IPA 'in anımsanması kolay olmadığından, konuşma hizmeti yedi dil (,,,,,, `
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<lexicon version="1.0" 
+<lexicon version="1.0"
       xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.w3.org/2005/01/pronunciation-lexicon
@@ -681,7 +681,7 @@ Bürünsel öznitelik değerleri geniş bir aralığa göre değişebildiğinden
 
 ### <a name="change-speaking-rate"></a>Konuşma hızını değiştir
 
-Konuşma ücreti, sinir seslere ve standart seslere, sözcük veya tümce düzeyinde uygulanabilir. 
+Konuşma ücreti, sinir seslere ve standart seslere, sözcük veya tümce düzeyinde uygulanabilir.
 
 **Örnek**
 
@@ -736,7 +736,7 @@ Sıklık değişiklikleri, standart seslere veya tümce düzeyinde uygulanabilir
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
     <voice name="en-US-AriaNeural">
         <prosody contour="(60%,-60%) (100%,+80%)" >
-            Were you the only person in the room? 
+            Were you the only person in the room?
         </prosody>
     </voice>
 </speak>
@@ -782,7 +782,7 @@ Ve öznitelikleri için desteklenen içerik türleri aşağıda verilmiştir `in
 **Örnek**
 
 Konuşma sennet12 35 Me motoru, "ilk isteğiniz," Ekim 20 10 ' de erken gelişle birlikte, en az bir yere kadar bir yere vardı.
- 
+
 ```XML
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
     <voice name="en-US-JennyNeural">
@@ -871,7 +871,12 @@ SSML belgesi başına yalnızca bir arka plan ses dosyasına izin verilir. Ancak
 
 ## <a name="bookmark-element"></a>Bookmark öğesi
 
-`bookmark`Öğesi SSML 'ye yer işaretleri eklemenizi ve zaman uyumsuz bildirim için her ses akışı yer işaretinin ses sapmasını almanızı sağlar.
+Yer işareti öğesi, her işaretin ses akışındaki sapmasını almak için SSML 'de özel işaretçiler eklemenize olanak tanır.
+Yer işareti öğelerini okuyacağız.
+Bookmark öğesi metin veya etiket dizisindeki belirli bir konuma başvurmak için kullanılabilir.
+
+> [!NOTE]
+> `bookmark` öğesi yalnızca `en-US-AriaNeural` Şu anda Batı ABD () bölgesinde ses için geçerlidir `westus` .
 
 **Syntax**
 
@@ -883,15 +888,16 @@ SSML belgesi başına yalnızca bir arka plan ses dosyasına izin verilir. Ancak
 
 | Öznitelik | Açıklama                                   | Gerekli/Isteğe bağlı                                        |
 |-----------|-----------------------------------------------|------------------------------------------------------------|
-| `mark`     | Öğenin yer işareti metnini belirtir `bookmark` . | Gereklidir. |
+|  `mark`   | Öğenin başvuru metnini belirtir `bookmark` . | Gereklidir. |
 
 **Örnek**
 
+Örnek olarak, her bir çiçek sözcüğünün zaman farkını aşağıdaki şekilde bilmeniz gerekebilir
+
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-GuyNeural">
-        <bookmark mark='bookmark_one'/> one.
-        <bookmark mark='bookmark_two'/> two. three. four.
+    <voice name="en-US-AriaNeural">
+        We are selling <bookmark mark='flower_1'/>roses and <bookmark mark='flower_2'/>daisies.
     </voice>
 </speak>
 ```
@@ -903,6 +909,10 @@ SSML belgesi başına yalnızca bir arka plan ses dosyasına izin verilir. Ancak
 > [!NOTE]
 > `BookmarkReached` olay yalnızca konuşma SDK 'Sı 1.16.0 sürümünden itibaren kullanılabilir.
 
+`BookmarkReached` çıkış ses verileri kullanılabilir hale geldiği için olaylar tetiklenir, bu da çıkış cihazına kayıttan yürütmeyi daha hızlı olacaktır.
+
+* `AudioOffset` sensıs ve Bookmark öğesi arasındaki çıkış sesinin geçen süreyi bildirir. Bu, yüz-nanosaniyelik birim (HNS) ile 10.000 HNS ile 1 milisaniyeye denk ölçülür.
+* `Text` , özniteliğinde ayarladığınız dize olan Bookmark öğesinin başvuru metni `mark` .
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -917,6 +927,12 @@ synthesizer.BookmarkReached += (s, e) =>
 };
 ```
 
+Yukarıdaki SSML örneği için, `BookmarkReached` olay iki kez tetiklenir ve konsol çıktısı şu şekilde olur
+```text
+Bookmark reached. Audio offset: 825ms, bookmark text: flower_1.
+Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
+```
+
 # <a name="c"></a>[C++](#tab/cpp)
 
 Daha fazla bilgi için bkz <a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechsynthesizer#bookmarkreached" target="_blank"> `BookmarkReached` </a>..
@@ -924,11 +940,17 @@ Daha fazla bilgi için bkz <a href="https://docs.microsoft.com/cpp/cognitive-ser
 ```cpp
 synthesizer->BookmarkReached += [](const SpeechSynthesisBookmarkEventArgs& e)
 {
-    cout << "bookmark reached. "
+    cout << "Bookmark reached. "
         // The unit of e.AudioOffset is tick (1 tick = 100 nanoseconds), divide by 10,000 to convert to milliseconds.
         << "Audio offset: " << e.AudioOffset / 10000 << "ms, "
-        << "Bookmark text: " << e.Text << "." << endl;
+        << "bookmark text: " << e.Text << "." << endl;
 };
+```
+
+Yukarıdaki SSML örneği için, `BookmarkReached` olay iki kez tetiklenir ve konsol çıktısı şu şekilde olur
+```text
+Bookmark reached. Audio offset: 825ms, bookmark text: flower_1.
+Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
 ```
 
 # <a name="java"></a>[Java](#tab/java)
@@ -943,6 +965,12 @@ synthesizer.BookmarkReached.addEventListener((o, e) -> {
 });
 ```
 
+Yukarıdaki SSML örneği için, `BookmarkReached` olay iki kez tetiklenir ve konsol çıktısı şu şekilde olur
+```text
+Bookmark reached. Audio offset: 825ms, bookmark text: flower_1.
+Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
+```
+
 # <a name="python"></a>[Python](#tab/python)
 
 Daha fazla bilgi için bkz <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesizer#bookmark-reached" target="_blank"> `bookmark_reached` </a>..
@@ -953,14 +981,26 @@ speech_synthesizer.bookmark_reached.connect(lambda evt: print(
     "Bookmark reached: {}, audio offset: {}ms, bookmark text: {}.".format(evt, evt.audio_offset / 10000, evt.text)))
 ```
 
+Yukarıdaki SSML örneği için, `bookmark_reached` olay iki kez tetiklenir ve konsol çıktısı şu şekilde olur
+```text
+Bookmark reached, audio offset: 825ms, bookmark text: flower_1.
+Bookmark reached, audio offset: 1462.5ms, bookmark text: flower_2.
+```
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Daha fazla bilgi için bkz <a href="https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesizer#bookmarkReached" target="_blank"> `bookmarkReached` </a>..
 
 ```javascript
 synthesizer.bookmarkReached = function (s, e) {
-    window.console.log("(Bookmark reached), Audio offset: " + e.audioOffset / 10000 + "ms. Bookmark text: " + e.text);
+    window.console.log("(Bookmark reached), Audio offset: " + e.audioOffset / 10000 + "ms, bookmark text: " + e.text);
 }
+```
+
+Yukarıdaki SSML örneği için, `bookmarkReached` olay iki kez tetiklenir ve konsol çıktısı şu şekilde olur
+```text
+(Bookmark reached), Audio offset: 825ms, bookmark text: flower_1.
+(Bookmark reached), Audio offset: 1462.5ms, bookmark text: flower_2.
 ```
 
 # <a name="objective-c"></a>[Objective-C](#tab/objectivec)
@@ -972,6 +1012,12 @@ Daha fazla bilgi için bkz <a href="https://docs.microsoft.com/objectivec/cognit
     // The unit of AudioOffset is tick (1 tick = 100 nanoseconds), divide by 10,000 to converted to milliseconds.
     NSLog(@"Bookmark reached. Audio offset: %fms, bookmark text: %@.", eventArgs.audioOffset/10000., eventArgs.text);
 }];
+```
+
+Yukarıdaki SSML örneği için, `BookmarkReached` olay iki kez tetiklenir ve konsol çıktısı şu şekilde olur
+```text
+Bookmark reached. Audio offset: 825ms, bookmark text: flower_1.
+Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
 ```
 
 # <a name="swift"></a>[Swift](#tab/swift)
