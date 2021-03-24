@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/27/2020
 ms.author: jeedes
-ms.openlocfilehash: d13619b818e18c64d9882f9e3181824173403859
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 383b49a7363fdca9327d419f5bed092d489a95d5
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96181399"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951819"
 ---
 # <a name="tutorial-integrate-wandera-radar-admin-with-azure-active-directory"></a>Öğretici: Wandera RADAR yöneticisini Azure Active Directory ile tümleştirme
 
@@ -82,7 +82,8 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://radar.wandera.com/saml/acs/<tenant id>`
 
     > [!NOTE]
-    > Değer gerçek değil. Değeri gerçek yanıt URL 'siyle güncelleştirin. Değeri almak için [Wandera radar yönetici istemci destek ekibine](https://www.wandera.com/about-wandera/contact/#supportsection) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Değer gerçek değil. Değeri gerçek yanıt URL 'siyle güncelleştirin. Değeri almak için [Wandera radar yönetici istemci destek ekibine](https://www.wandera.com/about-wandera/contact/#supportsection) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz. <tenant id>Yukarıdaki URL 'nin bir kısmını,   >    >  wandera hesabınızın içindeki ayarlar yönetimi **Çoklu oturum açma** sayfasında gösterilen kiracı kimliğiyle birlikte dikkatle değiştirin.
+
 
 1. **SAML Ile tekli Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 

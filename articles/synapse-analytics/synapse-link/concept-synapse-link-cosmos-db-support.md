@@ -9,12 +9,13 @@ ms.subservice: synapse-link
 ms.date: 03/02/2021
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: cb2cadadacd914bfa5473b512255c1ab0f856150
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: cosmos-db
+ms.openlocfilehash: a03a96f34861b84754de9d9ee4180100b58fcd37
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101666311"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869234"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-supported-features"></a>Azure Cosmos DB için Azure Synapse Link'in desteklenen özellikleri
 
@@ -44,7 +45,7 @@ SYNAPSE bağlantısını etkinleştirmeden bir Azure Cosmos DB kapsayıcısına 
  
 ## <a name="supported-code-generated-actions-for-spark"></a>Spark için desteklenen kod tarafından oluşturulan eylemler
 
-| Hareket              | Description |OLTP |HTAP  |
+| Hareket              | Açıklama |OLTP |HTAP  |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- |----------------------------------------------------------- |
 | **DataFrame 'e yükle** |Spark DataFrame 'e veri yükleme ve verileri okuma |✓| ✓ |
 | **Spark tablosu oluşturma** |Azure Cosmos DB kapsayıcısına işaret eden tablo oluşturma|✓| ✓ |
@@ -54,7 +55,7 @@ SYNAPSE bağlantısını etkinleştirmeden bir Azure Cosmos DB kapsayıcısına 
 
 ## <a name="supported-code-generated-actions-for-serverless-sql-pool"></a>Sunucusuz SQL havuzu için desteklenen kod tarafından oluşturulan eylemler
 
-| Hareket              | Description |OLTP |HTAP |
+| Hareket              | Açıklama |OLTP |HTAP |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- |----------------------------------------------------------- |
 | **Verileri inceleme** |Tanıdık T-SQL söz dizimi ve otomatik Şema çıkarımı ile bir kapsayıcıdaki verileri araştırma|X| ✓ |
 | **Görünümler oluşturma ve bı raporları oluşturma** |Sunucusuz SQL havuzu aracılığıyla bı için bir kapsayıcıya doğrudan erişim sağlamak üzere bir SQL görünümü oluşturun |X| ✓ |

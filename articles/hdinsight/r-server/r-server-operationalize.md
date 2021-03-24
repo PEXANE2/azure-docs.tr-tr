@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/27/2018
-ms.openlocfilehash: c90642e58c026c78ce854e7fe74dd36963d48b67
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7d597c4dbb81562050e9523c61d47d0020fc9059
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98944000"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869489"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Azure HDInsight 'ta ML hizmetleri kümesini operationleştir
 
@@ -53,31 +53,31 @@ HDInsight 'ta ML hizmetleri kümesini kullandıktan sonra veri modelinizi tamaml
 
 1. Seçim yapabileceğiniz seçeneklerle karşılaşırsınız. **Operationalization için ml Server yapılandırmak** üzere aşağıdaki ekran görüntüsünde gösterildiği gibi ilk seçeneği belirleyin.
 
-    ![R Server yönetim yardımcı programı seçme](./media/r-server-operationalize/admin-util-one-box-1.png)
+    :::image type="content" source="./media/r-server-operationalize/admin-util-one-box-1.png" alt-text="R Server yönetim yardımcı programı seçme" border="true":::
 
 1. Artık ML Server nasıl kullanıma sunmayı istediğinizi belirleme seçeneği sunulur. Görüntülenen seçeneklerden ilk birini girerek **seçin.**
 
-    ![R Server yönetim yardımcı programı operationınitialize](./media/r-server-operationalize/admin-util-one-box-2.png)
+    :::image type="content" source="./media/r-server-operationalize/admin-util-one-box-2.png" alt-text="R Server yönetim yardımcı programı operationınitialize" border="true":::
 
 1. İstendiğinde, bir yerel yönetici kullanıcısının parolasını girin ve yeniden girin.
 
 1. İşlemin başarılı olduğunu öneren çıktılar görmeniz gerekir. Ayrıca, menüden başka bir seçenek de seçmeniz istenir. Ana menüye dönmek için E ' yi seçin.
 
-    ![R Server yönetim yardımcı programı başarılı](./media/r-server-operationalize/admin-util-one-box-3.png)
+    :::image type="content" source="./media/r-server-operationalize/admin-util-one-box-3.png" alt-text="R Server yönetim yardımcı programı başarılı" border="true":::
 
 1. İsteğe bağlı olarak, aşağıdaki gibi bir tanılama testi çalıştırarak tanılama denetimleri gerçekleştirebilirsiniz:
 
     a. Tanılama testlerini çalıştırmak için ana menüden **6** ' yı seçin.
 
-    ![R Server yönetim yardımcı programı tanılaması](./media/r-server-operationalize/hdinsight-diagnostic1.png)
+    :::image type="content" source="./media/r-server-operationalize/hdinsight-diagnostic1.png" alt-text="R Server yönetim yardımcı programı tanılaması" border="true":::
 
     b. Tanılama Testleri menüsünden **bir** seçin. İstendiğinde, yerel yönetici kullanıcısı için verdiğiniz parolayı girin.
 
-    ![R Server yönetim yardımcı programı sınaması](./media/r-server-operationalize/hdinsight-diagnostic2.png)
+    :::image type="content" source="./media/r-server-operationalize/hdinsight-diagnostic2.png" alt-text="R Server yönetim yardımcı programı sınaması" border="true":::
 
     c. Çıktıda genel sistem durumunun bir pass olduğunu gösterdiğini doğrulayın.
 
-    ![R Server yönetim yardımcı programı başarılı](./media/r-server-operationalize/hdinsight-diagnostic3.png)
+    :::image type="content" source="./media/r-server-operationalize/hdinsight-diagnostic3.png" alt-text="R Server yönetim yardımcı programı başarılı" border="true":::
 
     d. Gösterilen menü seçeneklerinde, ana menüye dönmek için **E** yazın ve ardından Yönetici yardımcı programından çıkmak için **8** yazın.
 
@@ -154,7 +154,7 @@ ML Hizmetleri kümesi [Apache Hadoop YARN](https://hadoop.apache.org/docs/curren
 
 1. **Eylemler**  >  **Seçili konaklar**  >  **konaklar**  >  **bakım modunu aç**' a tıklayın. Örneğin, aşağıdaki görüntüde yetkisini almak üzere wn3 ve wn4 seçilmiştir.  
 
-   ![Apache ambarı bakım modunu aç](./media/r-server-operationalize/get-started-operationalization.png)  
+   :::image type="content" source="./media/r-server-operationalize/get-started-operationalization.png" alt-text="Apache ambarı bakım modunu aç" border="true":::  
 
 * Seçili **Eylemler**' i seçin ve sonra da yük  >    >   **Al**' a tıklayın >
 * Seçili **Eylemler** seçin  >    >  **NodeManager** Konakları > **Al**' a tıklayın.

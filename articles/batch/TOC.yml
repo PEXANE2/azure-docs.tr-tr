@@ -163,6 +163,9 @@
         - name: Yönetilen kimlikleri yapılandırma
           displayName: user-assigned
           href: managed-identity-pools.md
+        - name: Sertifika döndürmeyi etkinleştir
+          displayName: 'key vault, keyvault, automatic'
+          href: automatic-certificate-rotation.md
         - name: Sanal dosya sistemi takma
           href: virtual-file-mount.md
         - name: Azure dosya paylaşımını bağlama
@@ -263,7 +266,7 @@
           href: ../data-factory/transform-data-using-dotnet-custom-activity.md?toc=%2fazure%2fbatch%2ftoc.json
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/batch
     - name: Azure PowerShell
       href: /powershell/module/az.batch

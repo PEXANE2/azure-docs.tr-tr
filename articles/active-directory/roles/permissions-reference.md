@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99b74319581b4e74c63045afe73ee66b6efcf53c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 64f74f3aff1153118c54c83bf526c036a775da40
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104585324"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955266"
 ---
 # <a name="azure-ad-built-in-roles"></a>Azure AD yerleşik rolleri
 
@@ -71,7 +71,7 @@ En iyi uygulama olarak, bu rolü kuruluşunuzda beşten az kişiden fazlasına a
 > | [Grup Yöneticisi](#groups-administrator) | Bu rolün üyeleri grupları oluşturabilir/yönetebilir, adlandırma ve süre sonu ilkeleri gibi grup ayarları oluşturabilir/yönetebilir, Grup etkinliklerini ve Denetim raporlarını görüntüleyebilir. | fdd7a751-b60b-444a-984c-02652fe8fa1c |
 > | [Konuk davetci](#guest-inviter) | ' Üyeler konukları davet edebilir ' ayarından bağımsız olarak Konuk kullanıcıları davet edebilir. | 95e79109-95c0-4d8e-aee3-d01accf2d47b |
 > | [Yardım Masası Yöneticisi](#helpdesk-administrator) | , Yönetici olmayanlar ve Yardım Masası yöneticileri için parolaları sıfırlayabilir. | 729827e3-9c14-49f7-bb1b-9608f156bbb8 |
-> | [Karma kimlik yöneticisi](#hybrid-identity-administrator) | AD 'yi Azure AD bulut sağlamasını ve Federasyon ayarlarını yönetebilir. | 8ac3fc64-6eca-42ea-9e69-59f4c7b60eb2 |
+> | [Karma kimlik yöneticisi](#hybrid-identity-administrator) | AD 'yi Azure AD bulut sağlama, Azure AD Connect ve Federasyon ayarları ile yönetebilir. | 8ac3fc64-6eca-42ea-9e69-59f4c7b60eb2 |
 > | [Öngörüler Yöneticisi](#insights-administrator) | Microsoft 365 Insights uygulamasında yönetim erişimine sahiptir. | eb1f4a8d-243a-41f0-9fbd-c7cdf6c5ef7c |
 > | [Öngörüler Iş lideri](#insights-business-leader) | , M365 Insights uygulaması aracılığıyla panoları ve öngörüleri görüntüleyebilir ve paylaşabilir. | 31e939ad-9672-4796-9c2e-873181342d2d |
 > | [Intune Yöneticisi](#intune-administrator) | , Intune ürününün tüm yönlerini yönetebilir. | 3a2c62db-5318-420d-8d74-23afee5d9d5 |
@@ -997,7 +997,7 @@ Bu rol daha önce [Azure Portal](https://portal.azure.com/)"parola Yöneticisi" 
 
 ## <a name="hybrid-identity-administrator"></a>Karma kimlik yöneticisi
 
-Bu roldeki kullanıcılar, bulut sağlama ve Federasyon ayarlarını yönetme işlemlerini kullanarak AD 'den Azure AD 'ye sağlama yapılandırma kurulumu oluşturabilir, yönetebilir ve dağıtabilir. Kullanıcılar ayrıca bu rolü kullanarak günlükleri giderebilir ve izleyebilir.
+Bu roldeki kullanıcılar, bulut sağlama ve Azure AD Connect ve Federasyon ayarlarını yönetme işlemlerini kullanarak AD 'den Azure AD 'ye sağlama yapılandırma kurulumu oluşturabilir, yönetebilir ve dağıtabilir. Kullanıcılar ayrıca bu rolü kullanarak günlükleri giderebilir ve izleyebilir.
 
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |

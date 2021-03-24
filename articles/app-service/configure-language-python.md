@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 03/16/2021
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 11b9ab8e954827cfcc73e440bee1023504e14057
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 094755ed6c018b3ac82d6f62a43f17e2536bbd9a
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104577621"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953519"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Azure App Service için bir Linux Python uygulaması yapılandırma
 
@@ -114,7 +114,7 @@ Mevcut Web uygulamaları Azure 'a aşağıdaki şekilde yeniden dağıtılabilir
 
 1. **Uygulama başlatma**: App Service uygulamanızı nasıl çalıştırmayı denediğinize anlamak için bu makalenin ilerleyen kısımlarında yer alarak [kapsayıcı başlangıç sürecini](#container-startup-process) inceleyin. App Service, varsayılan olarak, uygulama nesneniz veya *wsgi.py* klasörünüzü bulabilmeleri gereken gunicbir Web sunucusunu kullanır. Gerekirse, [Başlangıç komutunu özelleştirebilirsiniz](#customize-startup-command).
 
-1. **Sürekli dağıtım**: Azure Pipelines veya kudu dağıtımı kullanılıyorsa [Azure App Service için sürekli dağıtımda](deploy-continuous-deployment.md) açıklandığı gibi sürekli dağıtım ayarlayın veya GitHub eylemleri kullanılıyorsa [GitHub eylemlerini kullanarak App Service 'e dağıtın](deploy-github-actions.md) .
+1. **Sürekli dağıtım**: Azure Pipelines veya kudu dağıtımı kullanılıyorsa [Azure App Service için sürekli dağıtımda](deploy-continuous-deployment.md) açıklandığı gibi sürekli dağıtım ayarlayın veya GitHub eylemleri kullanılıyorsa [GitHub eylemlerini kullanarak App Service 'e dağıtın](./deploy-continuous-deployment.md) .
 
 1. **Özel eylemler**: uygulamanızı barındıran App Service kapsayıcısı Içinde, Docgo veritabanı geçişleri gibi eylemler gerçekleştirmek IÇIN [kapsayıcıya SSH aracılığıyla bağlanabilirsiniz](configure-linux-open-ssh-session.md). Docgo veritabanı geçişlerini çalıştırmaya ilişkin bir örnek için bkz. [öğretici: PostgreSQL Ile docgo Web uygulaması dağıtma-veritabanı geçişlerini çalıştırma](tutorial-python-postgresql-app.md#43-run-django-database-migrations).
     - Sürekli dağıtım kullanırken, [derleme Otomasyonu 'Nu özelleştirme](#customize-build-automation)altında açıklandığı gibi oluşturma sonrası komutları kullanarak bu eylemleri gerçekleştirebilirsiniz.

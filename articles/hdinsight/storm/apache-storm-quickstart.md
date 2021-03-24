@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 06/14/2019
 ms.custom: mvc
-ms.openlocfilehash: fe7b1cdc96ae95ac361183342ea491432c3ab4b4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 73b0434065b06f25320a0666937fd7969c863b33
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98928855"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870220"
 ---
 # <a name="quickstart-create-and-monitor-an-apache-storm-topology-in-azure-hdinsight"></a>Hızlı başlangıç: Azure HDInsight 'ta Apache Storm topolojisi oluşturma ve izleme
 
@@ -48,7 +48,7 @@ Storm Kullanıcı Arabirimini kullanarak topolojiyi izlemek için aşağıdaki a
 
 2. **Topoloji Özeti** altında **ad** sütununda **WORDCOUNT** girişini seçin. Topoloji hakkında bilgiler görüntülenir.
 
-    ![Storm-starter WordCount topoloji bilgilerini içeren Storm Panosu.](./media/apache-storm-quickstart/hdi-topology-summary.png)
+    :::image type="content" source="./media/apache-storm-quickstart/hdi-topology-summary.png" alt-text="Storm-starter WordCount topoloji bilgilerini içeren Storm Panosu." border="true":::
 
     Yeni sayfa aşağıdaki bilgileri sağlar:
 
@@ -65,7 +65,7 @@ Storm Kullanıcı Arabirimini kullanarak topolojiyi izlemek için aşağıdaki a
 
 3. Bu sayfada **Spout’lar** veya **Cıvatalar** bölümünden bir giriş seçin. Seçilen bileşen hakkında bilgiler görüntülenir.
 
-    ![Seçili bileşenler hakkında bilgi içeren Storm Panosu.](./media/apache-storm-quickstart/hdi-component-summary.png)
+    :::image type="content" source="./media/apache-storm-quickstart/hdi-component-summary.png" alt-text="Seçili bileşenler hakkında bilgi içeren Storm Panosu." border="true":::
 
     Yeni sayfa aşağıdaki bilgileri görüntüler:
 

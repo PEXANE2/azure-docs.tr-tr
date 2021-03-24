@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: 04bbb0465f26e82d247c53e7393c4476b9d36fde
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/23/2021
 ms.locfileid: "100386858"
 ---
 # <a name="tutorial-migrate-web-service-from-google-maps"></a>Öğretici: Google Maps 'tan Web hizmeti geçirme
@@ -116,7 +116,7 @@ Bu tablo, Google Maps API parametrelerine Azure haritalar 'daki karşılaştır�
 | `key`                       | `subscription-key` – Ayrıca bkz. [Azure Maps Ile kimlik doğrulama](azure-maps-authentication.md) belgeleri. |
 | `language`                  | `language` – [Desteklenen diller](supported-languages.md) belgesine bakın.  |
 | `latlng`                    | `query`  |
-| `location_type`             | *Yok*     |
+| `location_type`             | *yok*     |
 | `result_type`               | `entityType`    |
 
 [Arama için en iyi uygulamaları](how-to-use-best-practices-for-search.md)gözden geçirin.
@@ -160,9 +160,9 @@ Tabloda, Google Maps API parametrelerine benzer Azure Maps API parametreleri ile
 
 | Google Maps API parametresi | Karşılaştırılabilir Azure Maps API parametresi |
 |---------------------------|-------------------------------------|
-| `fields`                  | *Yok*                               |
+| `fields`                  | *yok*                               |
 | `input`                   | `query`                             |
-| `inputtype`               | *Yok*                               |
+| `inputtype`               | *yok*                               |
 | `key`                     | `subscription-key` – Ayrıca bkz. [Azure Maps Ile kimlik doğrulama](azure-maps-authentication.md) belgeleri. |
 | `language`                | `language` – [Desteklenen diller](supported-languages.md) belgesine bakın.  |
 | `locationbias`            | `lat``lon`ve`radius`<br/>`topLeft` ve `btmRight`<br/>`countrySet`  |
@@ -179,13 +179,13 @@ Tablo, Google Maps API parametrelerini karşılaştırılabilir Azure Maps API p
 | `keyword`                   | `categorySet` ve `brandSet`        |
 | `language`                  | `language` – [Desteklenen diller](supported-languages.md) belgesine bakın.  |
 | `location`                  | `lat` ve `lon`                     |
-| `maxprice`                  | *Yok*                               |
-| `minprice`                  | *Yok*                               |
+| `maxprice`                  | *yok*                               |
+| `minprice`                  | *yok*                               |
 | `name`                      | `categorySet` ve `brandSet`        |
-| `opennow`                   | *Yok*                               |
+| `opennow`                   | *yok*                               |
 | `pagetoken`                 | `ofs` ve `limit`                   |
 | `radius`                    | `radius`                            |
-| `rankby`                    | *Yok*                               |
+| `rankby`                    | *yok*                               |
 | `type`                      | `categorySet –` Bkz. [desteklenen arama kategorileri](supported-search-categories.md) belgeleri.   |
 
 ## <a name="calculate-routes-and-directions"></a>Rotaları ve yönleri hesapla
@@ -265,10 +265,10 @@ Tablo çapraz başvuruları, Google Maps API parametreleri ile Azure haritalar '
 | `markers`                   | `pins`                             |
 | `path`                      | `path`                             |
 | `region`                    | *Yok* – bu, coğrafi kodlama ile ilgili bir özelliktir. `countrySet`Azure Maps coğrafi kodlama API 'sini kullanırken parametresini kullanın.  |
-| `scale`                     | *Yok*                              |
+| `scale`                     | *yok*                              |
 | `size`                      | `width` ve `height` – boyutu 8192x8192 olabilir. |
-| `style`                     | *Yok*                              |
-| `visible`                   | *Yok*                              |
+| `style`                     | *yok*                              |
+| `visible`                   | *yok*                              |
 | `zoom`                      | `zoom`                             |
 
 > [!NOTE]

@@ -8,17 +8,17 @@ ms.topic: overview
 ms.workload: infrastructure-services
 ms.date: 03/09/2021
 ms.author: duau
-ms.openlocfilehash: 2a5c298c201aa2a1f968c2a96dcfd6963a410cf7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ef3d415f4f0ca82e79df84ef48acc0323a69099a
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103149231"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952159"
 ---
 # <a name="what-is-azure-front-door"></a>Azure Front Door nedir?
 
 > [!IMPORTANT]
-> Bu belge Azure ön kapısına yöneliktir. Azure ön kapısı Standart/Premium (Önizleme) hakkında bilgi mi arıyorsunuz? [Burada](/standard-premium/overview.md)görüntüleyin.
+> Bu belge Azure ön kapısına yöneliktir. Azure ön kapısı Standart/Premium (Önizleme) hakkında bilgi mi arıyorsunuz? [Burada](standard-premium/overview.md)görüntüleyin.
 
 Azure ön kapı, hızlı, güvenli ve yaygın olarak ölçeklenebilir Web uygulamaları oluşturmak için Microsoft Global Edge ağını kullanan küresel, ölçeklenebilir bir giriş noktasıdır. Ön kapı sayesinde küresel tüketici ve kurumsal uygulamalarınızı, Azure aracılığıyla küresel bir hedef kitleye ulaşan içerikle sağlam ve yüksek performanslı modern uygulamalara dönüştürebilirsiniz.
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 03/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: e24a90f05ef52c5164ce966e905e9c27055d1bf4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e5deefabd6a37dbfece9f32abdce5d5144681238
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104670622"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950068"
 ---
 # <a name="update-management-overview"></a>Güncelleştirme Yönetimi’ne genel bakış
 
@@ -22,7 +22,7 @@ Azure Otomasyonu 'ndaki Güncelleştirme Yönetimi kullanarak Azure 'daki Window
 > [!NOTE]
 > Şu anda, bir yay etkin sunucusundan Güncelleştirme Yönetimi doğrudan etkinleştirme desteklenmez. Gereksinimleri anlamak ve sunucunuz için nasıl etkinleştireceğinizi anlamak için bkz. [Otomasyon hesabınızdan güncelleştirme yönetimi etkinleştirme](../../automation/update-management/enable-from-automation-account.md) .
 
-Kullanılabilir *kritik* ve *güvenlik* düzeltme eklerini Azure sanal makinenize otomatik olarak Indirip yüklemek için Windows VM 'leri için [Otomatik VM Konuk düzeltme eki uygulamayı](../../virtual-machines/windows/automatic-vm-guest-patching.md) gözden geçirin.
+Kullanılabilir *kritik* ve *güvenlik* düzeltme eklerini Azure sanal makinenize otomatik olarak Indirip yüklemek için Windows VM 'leri için [Otomatik VM Konuk düzeltme eki uygulamayı](../../virtual-machines/automatic-vm-guest-patching.md) gözden geçirin.
 
 Güncelleştirme Yönetimi dağıtılmadan ve makinelerinizi yönetim için etkinleştirmeden önce, aşağıdaki bölümlerde yer alan bilgileri anladığınızdan emin olun.  
 
@@ -167,7 +167,7 @@ Yönetim paketlerine yönelik güncelleştirmeler hakkında daha fazla bilgi iç
 
 Aşağıdaki tabloda Güncelleştirme Yönetimi tarafından desteklenen bağlı kaynaklar açıklanmaktadır:
 
-| Bağlı kaynak | Desteklenir | Description |
+| Bağlı kaynak | Desteklenir | Açıklama |
 | --- | --- | --- |
 | Windows aracıları |Yes |Güncelleştirme Yönetimi, Windows aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve gerekli güncelleştirmelerin yüklemesini başlatır. |
 | Linux aracıları |Yes |Güncelleştirme Yönetimi, Linux aracılarından sistem güncelleştirmeleriyle ilgili bilgileri toplar ve ardından desteklenen dağıtımlarda gerekli güncelleştirmelerin yüklemesini başlatır. |

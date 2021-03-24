@@ -4,15 +4,15 @@ description: Iş Ortağı Merkezi 'nde Market Web Analytics 'in bir özetine eri
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 11/09/2020
+ms.date: 03/23/2021
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: a8a53a54d30df9a2f7079d705f754e554328c3f7
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: f6ed2029ec333120e3942570c951f5da6e846c7a
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102553944"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953281"
 ---
 # <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>Ticari market analizinde Market İçgörüleri
 
@@ -115,7 +115,9 @@ Bu tabloda, sayfa ziyaretlerinin bir liste görünümü ve seçili teklifleriniz
 | Benimle iletişim kurun | Benimle iletişim kurun | Belirli bir tarih için teklifin sayfasında "benimle Iletişime geçin" ADLı tıklama sayısı. | ContactMe |
 | Test Sürüşü | Test Sürüşü | Belirli bir tarih için teklifin sayfasında "Test Drive" CTA öğesine tıklama sayısı. | TestDrive |
 | Ücretsiz Deneme | Ücretsiz Deneme | Belirli bir tarih için teklifin sayfasındaki "ücretsiz deneme" CTA 'ya tıklama sayısı. | FreeTrial |
-|||||
+| Kampanya | Kampanyanın adı | Kampanya adında Web telemetrisini (sayfa ziyaret ve CTA tıklamaları) anlayabilme özelliği. | Kampanya |
+| yok | Site | Sayfanın ziyaret edilmesi veya CTA tıklamasına ait storefront adı. Olası değerler şunlardır:<br><ul><li>AZUREMARKETPLACE<li>APPSOURCE</ul> | Site |
+|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.date: 02/27/2020
-ms.openlocfilehash: 1e3fc23dd220a8d9764a64c453e9fb856307ac47
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ad1f7422919f224889db84a2599ad3c1c48efcc5
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946521"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863819"
 ---
 # <a name="what-is-apache-hadoop-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Hadoop nedir?
 
@@ -30,7 +30,7 @@ HDInsight üzerindeki kullanılabilir Hadoop teknolojisi yığını bileşenleri
 
 Temel bir sözcük sayısı MapReduce iş örneği aşağıdaki diyagramda gösterilmiştir:
 
- ![HDI. WordCountDiagram](./media/apache-hadoop-introduction/hdi-word-count-diagram.gif)
+ :::image type="content" source="./media/apache-hadoop-introduction/hdi-word-count-diagram.gif" alt-text="HDI. WordCountDiagram" border="true":::
 
 Bu işin çıkışı, metinde her bir sözcüğün kaç kez oluştuğunu gösteren bir saydır.
 

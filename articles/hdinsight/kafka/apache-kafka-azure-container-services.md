@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
-ms.openlocfilehash: d807b591229644984f6658cdacd0bf447759f292
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2216eb5893b77761f4d31c5819d152ceeb985abc
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98933023"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869659"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>HDInsight üzerinde Apache Kafka Azure Kubernetes hizmetini kullanma
 
@@ -42,7 +42,7 @@ Hem HDInsight hem de AKS, işlem kaynakları için kapsayıcı olarak bir Azure 
 
 Aşağıdaki diyagramda bu belgede kullanılan ağ topolojisi gösterilmektedir:
 
-![Tek bir sanal ağda HDInsight, diğer bir deyişle, eşleme kullanarak](./media/apache-kafka-azure-container-services/kafka-aks-architecture.png)
+:::image type="content" source="./media/apache-kafka-azure-container-services/kafka-aks-architecture.png" alt-text="Tek bir sanal ağda HDInsight, diğer bir deyişle, eşleme kullanarak" border="false":::
 
 > [!IMPORTANT]  
 > Ad çözümlemesi, eşlenen ağlar arasında etkin değildir, bu nedenle IP adresleme kullanılır. Varsayılan olarak, HDInsight üzerinde Kafka, istemciler bağlandığında IP adresleri yerine ana bilgisayar adlarını döndürecek şekilde yapılandırılmıştır. Bu belgedeki adımlar, Kafka yerine IP tanıtımı kullanacak şekilde değiştirilir.
@@ -109,15 +109,15 @@ Kafka 'yi etki alanı adları yerine IP adreslerini tanıtmak üzere yapılandı
 
 2. Kafka hakkındaki bilgileri görüntülemek için soldaki listeden __Kafka__ ' yi seçin.
 
-    ![Kafka vurgulanmış hizmet listesi](./media/apache-kafka-azure-container-services/select-kafka-service.png)
+    :::image type="content" source="./media/apache-kafka-azure-container-services/select-kafka-service.png" alt-text="Kafka vurgulanmış hizmet listesi" border="true":::
 
 3. Kafka yapılandırmasını görüntülemek için üst ortadaki __config__ 'ler ' i seçin.
 
-    ![Apache ambarı Hizmetleri Yapılandırması](./media/apache-kafka-azure-container-services/select-kafka-config1.png)
+    :::image type="content" source="./media/apache-kafka-azure-container-services/select-kafka-config1.png" alt-text="Apache ambarı Hizmetleri Yapılandırması" border="true":::
 
 4. __Kafka-env__ yapılandırmasını bulmak için `kafka-env` sağ üst köşedeki __filtre__ alanına girin.
 
-    ![Kafka-env için Kafka yapılandırması](./media/apache-kafka-azure-container-services/search-for-kafka-env.png)
+    :::image type="content" source="./media/apache-kafka-azure-container-services/search-for-kafka-env.png" alt-text="Kafka-env için Kafka yapılandırması" border="true":::
 
 5. IP adreslerini tanıtmak üzere Kafka yapılandırmak için, __Kafka-env-Template__ alanının altına aşağıdaki metni ekleyin:
 
@@ -135,15 +135,15 @@ Kafka 'yi etki alanı adları yerine IP adreslerini tanıtmak üzere yapılandı
 
 8. Yapılandırma değişikliklerini kaydetmek için __Kaydet__ düğmesini kullanın. Değişiklikleri açıklayan bir kısa mesaj girin. Değişiklikler kaydedildikten sonra __Tamam ' ı__ seçin.
 
-    ![Apache ambarı kaydetme yapılandırması](./media/apache-kafka-azure-container-services/save-configuration-button.png)
+    :::image type="content" source="./media/apache-kafka-azure-container-services/save-configuration-button.png" alt-text="Apache ambarı kaydetme yapılandırması" border="true":::
 
 9. Kafka yeniden başlatırken hata oluşmasını engellemek için, __hizmet eylemleri__ düğmesini kullanın ve __bakım modunu aç__' ı seçin. Bu işlemi gerçekleştirmek için Tamam ' ı seçin.
 
-    ![Bakım vurgulanmış şekilde hizmet eylemleri](./media/apache-kafka-azure-container-services/turn-on-maintenance-mode.png)
+    :::image type="content" source="./media/apache-kafka-azure-container-services/turn-on-maintenance-mode.png" alt-text="Bakım vurgulanmış şekilde hizmet eylemleri" border="true":::
 
 10. Kafka 'i yeniden başlatmak için __Yeniden Başlat__ düğmesini kullanın ve __etkilenen tümünü yeniden Başlat__' ı seçin. Yeniden başlatmayı onaylayın ve sonra işlem tamamlandıktan sonra __Tamam__ düğmesini kullanın.
 
-    ![Yeniden Başlat düğmesi tüm etkilenen vurgulanmış vurgulanmış](./media/apache-kafka-azure-container-services/restart-required-button.png)
+    :::image type="content" source="./media/apache-kafka-azure-container-services/restart-required-button.png" alt-text="Yeniden Başlat düğmesi tüm etkilenen vurgulanmış vurgulanmış" border="true":::
 
 11. Bakım modunu devre dışı bırakmak için, __hizmet eylemleri__ düğmesini kullanın ve __bakım modunu__ Kapat ' ı seçin. Bu işlemi gerçekleştirmek için **Tamam ' ı** seçin.
 
@@ -213,7 +213,7 @@ Bu noktada, Kafka ve Azure Kubernetes hizmeti, eşlenmiş sanal ağlarla iletiş
 
 11. Bir Web tarayıcısı açın ve hizmetin dış IP adresini girin. Aşağıdaki görüntüye benzer bir sayfaya ulaşmanız gerekir:
 
-    ![Web sayfası görüntüsünü Apache Kafka test etme](./media/apache-kafka-azure-container-services/test-web-page-image1.png)
+    :::image type="content" source="./media/apache-kafka-azure-container-services/test-web-page-image1.png" alt-text="Web sayfası görüntüsünü Apache Kafka test etme" border="true":::
 
 12. Alana metin girin ve ardından __Gönder__ düğmesini seçin. Veriler Kafka adresine gönderilir. Sonra uygulamadaki Kafka tüketicisi iletiyi okur ve __Kafka bölümündeki iletilere__ ekler.
 

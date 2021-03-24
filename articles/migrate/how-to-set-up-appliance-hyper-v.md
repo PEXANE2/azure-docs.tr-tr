@@ -6,16 +6,16 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/13/2021
-ms.openlocfilehash: 85ab07e0b81bf258a56956f5f0f7e80bad6a32fe
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 71fe30212b31e810bfe3e1ba10f80be6b09ad4fc
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104775230"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863692"
 ---
 # <a name="set-up-an-appliance-for-servers-on-hyper-v"></a>Hyper-V üzerinde sunucular için bir gereç ayarlama
 
-[Azure geçişi: bulma ve değerlendirme](migrate-services-overview.md#azure-migrate-server-assessment-tool) aracı ile Hyper-V ' d e sunucu bulma ve değerlendirme Için Azure geçişi gereci ayarlamak için bu makaleyi izleyin.
+[Azure geçişi: bulma ve değerlendirme](migrate-services-overview.md#azure-migrate-discovery-and-assessment-tool) aracı ile Hyper-V ' d e sunucu bulma ve değerlendirme Için Azure geçişi gereci ayarlamak için bu makaleyi izleyin.
 
 Azure [geçişi](migrate-appliance.md)  gereci, Hyper-V ' d e şirket içi sunucuları bulmak ve Azure 'a sunucu meta verileri/performans verileri göndermek Için Azure geçişi: bulma ve değerlendirme/geçiş tarafından kullanılan hafif bir gereç.
 
@@ -24,31 +24,31 @@ Gereci birkaç yöntem kullanarak dağıtabilirsiniz:
 - İndirilen bir VHD 'yi kullanarak Hyper-V üzerinde bir sunucuda ayarlama yapın. Bu yöntem bu makalede açıklanmıştır.
 - Bir PowerShell yükleyici betiği ile Hyper-V veya fiziksel sunucu üzerinde bir sunucuda ayarlama yapın. [Bu yöntem](deploy-appliance-script.md) , bir VHD kullanarak bir sunucu ayarlayamıyorum veya Azure Kamu kullanıyorsanız kullanılmalıdır.
 
-Gereci oluşturduktan sonra Azure geçişi 'ne bağlanıp bağlanamadıktan sonra, bulma ve değerlendirme ' yı, ilk kez yapılandırıp yapılandırın ve Azure geçişi projesine kaydedin.
+Gereci oluşturduktan sonra Azure geçişi 'ne bağlanıp bağlanamadıktan sonra, bulma ve değerlendirme, ilk kez yapılandırma ve projeye kaydetme işlemini kontrol edebilirsiniz.
 
 ## <a name="appliance-deployment-vhd"></a>Gereç dağıtımı (VHD)
 
 Bir VHD şablonu kullanarak gereci ayarlamak için:
 
-- Portal 'da bir gereç adı sağlayın ve bir Azure geçişi proje anahtarı oluşturun.
+- Portalda bir gereç adı sağlayın ve bir proje anahtarı oluşturun.
 - Azure portal sıkıştırılmış bir Hyper-V VHD 'sini indirin.
 - Gereci oluşturun ve Azure geçişi: bulma ve değerlendirme 'a bağlanıp bağlanamadığından emin olun.
-- Gereci ilk kez yapılandırın ve Azure geçişi projesi anahtarını kullanarak Azure geçişi projesi ile kaydedin.
+- Gereci ilk kez yapılandırın ve proje anahtarını kullanarak projeyi projeye kaydedin.
 
-### <a name="generate-the-azure-migrate-project-key"></a>Azure geçişi proje anahtarını oluşturma
+### <a name="generate-the-project-key"></a>Proje anahtarını oluştur
 
 1. **Geçiş hedefleri**  >  **Windows, Linux ve SQL Server**  >  **Azure geçişi: bulma ve değerlendirme** bölümünde **bul**' u seçin.
 2. Sunucuları **bul**' da  >  **sunucularınız sanallaştırılır mi?**, **Hyper-V ile Evet '** i seçin.
 3. **1: proje anahtarı oluştur**' da, Hyper-V ' d i sunucu keşfi Için ayarlanacak Azure geçiş gereci için bir ad sağlayın. ad 14 karakter veya daha az olmalıdır.
 1. Gerekli Azure kaynaklarını oluşturmaya başlamak için **anahtar oluştur** ' a tıklayın. Kaynak oluşturma sırasında sunucuları keşfet sayfasını kapatmayın.
-1. Azure kaynakları başarıyla oluşturulduktan sonra bir **Azure geçişi proje anahtarı** oluşturulur.
+1. Azure kaynakları başarıyla oluşturulduktan sonra bir **Proje anahtarı** oluşturulur.
 1. Yapılandırma sırasında gereç kaydını tamamlamamak için gerekli olacak şekilde anahtarı kopyalayın.
 
 ### <a name="download-the-vhd"></a>VHD 'YI indirin
 
 **2: Azure geçişi yükleme gereci indirin**, öğesini seçin. VHD dosyası ve **İndir**' e tıklayın.
 
-   ![Bulma makineleri için seçimler](./media/tutorial-assess-hyper-v/servers-discover.png)
+   ![Bulma sunucuları için seçimler](./media/tutorial-assess-hyper-v/servers-discover.png)
 
 
    ![Anahtar oluştur seçimleri](./media/tutorial-assess-hyper-v/generate-key-hyperv.png)

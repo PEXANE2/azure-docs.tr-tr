@@ -7,40 +7,20 @@
       href: overview.md
     - name: Yenilikler
       href: whats-new.md
-- name: Form Tanıma ile çalışmaya başlama
-  expanded: true
+- name: Hızlı Başlangıçlar
   items:
-    - name: İstemci kitaplığını veya REST API'sini kullanma
+    - name: İstemci kitaplığı veya REST API kullanmaya başlama
       href: quickstarts/client-library.md
     - name: Örnek etiketleme aracını kullanma
       href: quickstarts/label-tool.md
-- name: Öğreticiler
+- name: Örnekler
   items:
-    - name: Bilişsel Arama ile Form Tanıma
-      href: ../../search/cognitive-search-custom-skill-form.md
-    - name: AI Builder ile Form Tanıma kullanma
-      href: tutorial-ai-builder.md
-    - name: Azure Işlevleri ile form tanıyıcı kullanma
-      href: tutorial-azure-function.md
-    - name: Verileri toplu olarak ayıklama
-      href: tutorial-bulk-processing.md
-- name: Kavramlar
-  items:
-    - name: Düzen API 'SI
-      expanded: true
-      items:
-        - name: Form verilerini Ayıkla
-          href: concept-layout.md
-    - name: Özel modeller
-      href: concept-custom.md
-    - name: Makbuzlar
-      href: concept-receipts.md
-    - name: Kartvizitler
-      href: concept-business-cards.md
-    - name: Faturalar
-      href: concept-invoices.md
-    - name: Kimlik kartları
-      href: concept-identification-cards.md
+    - name: 'C#/.net: form tanıyıcı istemci kitaplığı SDK ''Sı'
+      href: /samples/azure/azure-sdk-for-net/azure-form-recognizer-client-sdk-samples
+    - name: 'Java: form tanıyıcı istemci kitaplığı SDK ''Sı'
+      href: /samples/azure/azure-sdk-for-java/formrecognizer-java-samples
+    - name: 'Python: form tanıyıcı istemci kitaplığı SDK ''Sı'
+      href: /samples/azure/azure-sdk-for-python/formrecognizer-samples
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Eğitim verileri kümesi oluşturma
@@ -64,6 +44,33 @@
           href: ../containers/index.yml
     - name: Modelleri yedekleme ve kurtarma
       href: disaster-recovery.md
+- name: Kavramlar
+  items:
+    - name: Düzen API 'SI
+      expanded: true
+      items:
+        - name: Form verilerini Ayıkla
+          href: concept-layout.md
+    - name: Özel modeller
+      href: concept-custom.md
+    - name: Makbuzlar
+      href: concept-receipts.md
+    - name: Kartvizitler
+      href: concept-business-cards.md
+    - name: Faturalar
+      href: concept-invoices.md
+    - name: Kimlik kartları
+      href: concept-identification-cards.md
+- name: Öğreticiler
+  items:
+    - name: Verileri toplu olarak ayıklama
+      href: tutorial-bulk-processing.md
+    - name: Bilişsel Arama ile Form Tanıma
+      href: ../../search/cognitive-search-custom-skill-form.md
+    - name: AI Builder ile Form Tanıma kullanma
+      href: tutorial-ai-builder.md
+    - name: Azure Işlevleri ile form tanıyıcı kullanma
+      href: tutorial-azure-function.md
 - name: Başvuru
   items:
     - name: Form tanıyıcı API v 2.1 Preview. 3

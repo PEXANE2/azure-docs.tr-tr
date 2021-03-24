@@ -3,18 +3,18 @@ title: Azure IoT Central özel Analize genişletin | Microsoft Docs
 description: Çözüm geliştiricisi olarak, bir IoT Central uygulamasını özel analiz ve görselleştirmeler yapmak üzere yapılandırın. Bu çözüm Azure Databricks kullanır.
 author: TheRealJasonAndrew
 ms.author: v-anjaso
-ms.date: 02/18/2020
+ms.date: 03/15/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 11e5ba3c0700cc9b29b8a11c0f9aa20cb5adb132
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 0cee343e6769c815ecfb4b9c791783bd246caaac
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102551326"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953910"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Azure Databricks kullanarak Azure IoT Central özel analiz ile genişletme
 
@@ -82,14 +82,14 @@ Aşağıdaki ayarlarla [Azure Databricks bir hizmet oluşturmak için Azure Port
 
 Gerekli kaynakları oluşturduğunuzda, **IoTCentralAnalysis** kaynak grubunuz aşağıdaki ekran görüntüsüne benzer şekilde görünür:
 
-![IoT Central analiz kaynak grubu](media/howto-create-custom-analytics/resource-group.png)
+:::image type="content" source="media/howto-create-custom-analytics/resource-group.png" alt-text="IoT Central analiz kaynak grubunun görüntüsü.":::
 
 ## <a name="create-an-event-hub"></a>Olay hub’ı oluşturma
 
 Bir IoT Central uygulamasını bir olay hub 'ına sürekli olarak telemetri dışarı aktarmak için yapılandırabilirsiniz. Bu bölümde, IoT Central uygulamanızdan telemetri almak için bir olay hub 'ı oluşturursunuz. Olay Hub 'ı işleme için Stream Analytics işinize telemetri sunar.
 
 1. Azure portal, Event Hubs ad alanına gidin ve **+ Event hub ' ı** seçin.
-1. Olay Hub 'ınızı **centralexport** olarak adlandırın ve **Oluştur**' u seçin.
+1. Olay Hub 'ınızı **centralexport** olarak adlandırın.
 1. Ad uzayındaki Olay Hub 'ları listesinde **centralexport**' yi seçin. Ardından **paylaşılan erişim ilkeleri**' ni seçin.
 1. **+ Ekle**'yi seçin. **Dinleme** talebini **dinle** adlı bir ilke oluşturun.
 1. İlke hazır olduğunda, listeden seçin ve ardından **bağlantı dizesinin birincil anahtar** değerini kopyalayın.
@@ -97,26 +97,42 @@ Bir IoT Central uygulamasını bir olay hub 'ına sürekli olarak telemetri dı�
 
 Event Hubs ad alanınız aşağıdaki ekran görüntüsüne benzer şekilde görünür:
 
-![Event Hubs ad alanı](media/howto-create-custom-analytics/event-hubs-namespace.png)
+:::image type="content" source="media/howto-create-custom-analytics/event-hubs-namespace.png" alt-text="Event Hubs ad alanının görüntüsü.":::
 
-## <a name="configure-export-in-iot-central"></a>IoT Central dışarı aktarmayı yapılandırma
+## <a name="configure-export-in-iot-central-and-create-a-new-destination"></a>IoT Central dışarı aktarmayı yapılandırma ve yeni bir hedef oluşturma
 
 [Azure IoT Central uygulama Yöneticisi](https://aka.ms/iotcentral) Web sitesinde, contoso şablonundan oluşturduğunuz IoT Central uygulamasına gidin. Bu bölümde, uygulamayı sanal cihazınızdan, Olay Hub 'ınıza Telemetriyi akışa almak üzere yapılandırırsınız. Dışarı aktarmayı yapılandırmak için:
 
-1. **Veri dışa aktarma** sayfasına gidin, **+ Yeni**' yi ve ardından **Azure Event Hubs**' yi seçin.
-1. Dışarı aktarmayı yapılandırmak için aşağıdaki ayarları kullanın ve **Kaydet**' i seçin:
+1. **Veri dışa aktarma** sayfasına gidin ve **+ yeni dışarı aktar**' ı seçin.
+1. İlk pencereyi bitirmeden önce **hedef oluştur**' u seçin.
+
+Pencerede aşağıdaki gibi görünür.  
+
+:::image type="content" source="media/howto-create-custom-analytics/data-export-2.png" alt-text="Veri dışarı aktarma hedef yapılandırması görüntüsü.":::
+
+3. Aşağıdaki değerleri girin:
+
+| Ayar | Değer |
+| ------- | ----- |
+| Hedef adı | Hedef adınız |
+| Hedef türü | Azure Event Hubs |
+| Bağlantı Dizesi| Daha önce bir nota yaptığınız Olay Hub 'ı bağlantı dizesi. | 
+| Olay Hub'ı| Olay Hub 'ınızın adı|
+
+4. Son olarak **Oluştur** ' a tıklayın.
+
+5. Dışarı aktarmayı yapılandırmak için aşağıdaki ayarları kullanın:
 
     | Ayar | Değer |
     | ------- | ----- |
-    | Görünen Ad | Event Hubs dışarı aktar |
+    | Dışarı aktarma adı girin | eventhubexport |
     | Etkin | Açık |
-    | Event Hubs ad alanı | Event Hubs ad alanı adınız |
-    | Olay hub'ı | centralexport |
-    | Ölçümler | Açık |
-    | Cihazlar | Kapalı |
-    | Cihaz şablonları | Kapalı |
+    | Veriler| Telemetriyi seçin | 
+    | Hedefler| Dışa aktarma için aşağıda gösterildiği gibi bir hedef oluşturun ve ardından hedef açılan menüsünde seçin. |
 
-![Veri dışarı aktarma yapılandırması](media/howto-create-custom-analytics/cde-configuration.png)
+:::image type="content" source="media/howto-create-custom-analytics/data-export-1.png" alt-text="Veri dışa aktarma hedef yapılandırması ekran görüntüsü.":::
+
+6. İşiniz bittiğinde **Kaydet**' i seçin.
 
 Devam etmeden önce dışa aktarma durumunun **çalışmaya** bitmesini bekleyin.
 
@@ -136,7 +152,7 @@ Kümenizi oluşturmak için aşağıdaki tablodaki bilgileri kullanın:
 | Küme modu | Standart |
 | Databricks Runtime sürümü | 5,5 LTS (Scala 2,11, Spark 2.4.5) |
 | Python sürümü | 3 |
-| Otomatik ölçeklendirmeyi etkinleştir | No |
+| Otomatik ölçeklendirmeyi etkinleştir | Hayır |
 | İşlem yapılmadan dakika sonra Sonlandır | 30 |
 | Çalışan türü | Standard_DS3_v2 |
 | Çalışanlarınız | 1 |
@@ -164,7 +180,7 @@ Aşağıdaki adımlarda, örnek ihtiyaçlarınızı kümeye aktarma işlemi gös
 
 1. Kitaplık durumu şimdi **yüklendi**:
 
-    ![Kitaplık yüklendi](media/howto-create-custom-analytics/cluster-libraries.png)
+:::image type="content" source="media/howto-create-custom-analytics/cluster-libraries.png" alt-text="Yüklü kitaplığın ekran görüntüsü.":::
 
 ### <a name="import-a-databricks-notebook"></a>Databricks Not defterini içeri aktarma
 
@@ -178,9 +194,9 @@ IoT Central telemetrinizi analiz etmek ve görselleştirmek için Python kodunu 
 
 1. İçeri aktarılan Not defterini görüntülemek için **çalışma alanını** seçin:
 
-    ![İçeri aktarılan Not defteri](media/howto-create-custom-analytics/import-notebook.png)
+:::image type="content" source="media/howto-create-custom-analytics/import-notebook.png" alt-text="Içeri aktarılan Not defteri 'nin ekran görüntüsü.":::
 
-1. Daha önce kaydettiğiniz Event Hubs bağlantı dizesini eklemek için ilk Python hücresindeki kodu düzenleyin:
+5. Daha önce kaydettiğiniz Event Hubs bağlantı dizesini eklemek için ilk Python hücresindeki kodu düzenleyin:
 
     ```python
     from pyspark.sql.functions import *
@@ -206,7 +222,7 @@ Son hücrede bir hata görebilirsiniz. Bu durumda, önceki hücrelerin çalışt
 
 Not defteri 'nde, cihaz türüne göre geçen ortalama nem sayısını görmek için 14 hücresine kaydırın. Bu çizim, akış telemetri geldiğinde sürekli güncelleştirmeler:
 
-![Düzleştirilmiş telemetri çizimi](media/howto-create-custom-analytics/telemetry-plot.png)
+:::image type="content" source="media/howto-create-custom-analytics/telemetry-plot.png" alt-text="Düzleştirilmiş telemetri grafiğinin ekran görüntüsü.":::
 
 Not defterinde grafiğin boyutunu değiştirebilirsiniz.
 
@@ -214,7 +230,7 @@ Not defterinde grafiğin boyutunu değiştirebilirsiniz.
 
 Not defteri 'nde, [kutu çizimleri](https://en.wikipedia.org/wiki/Box_plot)görmek için aşağı kaydırın. Kutu çizimleri, statik verileri temel alır, böylece onları güncelleştirmek için hücreyi yeniden çalıştırmanız gerekir:
 
-![Kutu çizimleri](media/howto-create-custom-analytics/box-plots.png)
+:::image type="content" source="media/howto-create-custom-analytics/box-plots.png" alt-text="Kutu çizimleri ekran görüntüsü.":::
 
 Not defterindeki çizimleri yeniden boyutlandırabilirsiniz.
 

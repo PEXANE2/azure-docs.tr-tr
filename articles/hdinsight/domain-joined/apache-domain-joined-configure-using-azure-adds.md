@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seodec18,seoapr2020, contperf-fy21q2
 ms.date: 10/30/2020
-ms.openlocfilehash: 15869a547ec5debee939c956d7495bfa58357555
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6f478b97464cd47e9d0e04bfe83bd48a2b3bfe7c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946928"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867109"
 ---
 # <a name="configure-hdinsight-clusters-for-azure-active-directory-integration-with-enterprise-security-package"></a>Kurumsal Güvenlik Paketi ile Azure Active Directory tümleştirme için HDInsight kümelerini yapılandırma
 
@@ -70,7 +70,7 @@ New-SelfSignedCertificate -Subject contoso100.onmicrosoft.com `
 
 **Yönet** kategorisinde **sistem** durumu ' nu seçerek Azure Active Directory Domain Services sistem durumunu görüntüleyin. Azure AD DS durumunun yeşil (çalışıyor) olduğundan ve eşitlemenin tamamlantığınızdan emin olun.
 
-![Azure AD DS sistem durumu](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-health.png)
+:::image type="content" source="./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-health.png" alt-text="Azure AD DS sistem durumu" border="true":::
 
 ### <a name="create-and-authorize-a-managed-identity"></a>Yönetilen kimlik oluşturma ve yetkilendirme
 
@@ -82,7 +82,7 @@ ESP kümelerini ayarlamak için, henüz bir tane yoksa, Kullanıcı tarafından 
 
 Ardından, **HDInsight etki alanı Hizmetleri katılımcısı** rolünü Azure AD DS **erişim denetimindeki** yönetilen kimliğe atayın. Bu rol atamasını yapmak için Azure AD DS yönetici ayrıcalıklarına sahip olmanız gerekir.
 
-![Azure Active Directory Domain Services Access Control](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-configure-managed-identity.png)
+:::image type="content" source="./media/apache-domain-joined-configure-using-azure-adds/hdinsight-configure-managed-identity.png" alt-text="Azure Active Directory Domain Services Access Control" border="true":::
 
 **HDInsight etki alanı Hizmetleri katılımcısı** rolünü atamak, bu kimliğin `on behalf of` Azure AD DS etki alanında etki alanı Hizmetleri işlemlerine uygun () erişimi olmasını sağlar. Bu işlemler OU 'Ları oluşturmayı ve silmeyi içerir.
 
@@ -90,7 +90,7 @@ Yönetilen kimliğe rol verildiğinde Azure AD DS Yöneticisi kendisini kimin ku
 
 Örneğin, Azure AD DS Yöneticisi, bu rolü **sjmsi** tarafından yönetilen kimlik Için **Pazarlama ekibi** grubuna atayabilirler. Aşağıdaki görüntüde bir örnek gösterilmektedir. Bu atama, kuruluştaki doğru kişilerin ESP kümeleri oluşturmak için yönetilen kimliği kullanmasını sağlar.
 
-![HDInsight Yönetilen kimlik Işleci rol ataması](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-managed-identity-operator-role-assignment.png)
+:::image type="content" source="./media/apache-domain-joined-configure-using-azure-adds/hdinsight-managed-identity-operator-role-assignment.png" alt-text="HDInsight Yönetilen kimlik Işleci rol ataması" border="true":::
 
 ### <a name="network-configuration"></a>Ağ yapılandırması
 
@@ -99,17 +99,17 @@ Yönetilen kimliğe rol verildiğinde Azure AD DS Yöneticisi kendisini kimin ku
 
 Azure AD DS 'yi etkinleştirin. Ardından, yerel bir etki alanı adı sistemi (DNS) sunucusu Active Directory sanal makinelerde (VM) çalışır. Azure AD DS Sanal ağınızı bu özel DNS sunucularını kullanacak şekilde yapılandırın. Doğru IP adreslerini bulmak için, **Yönet** kategorisinde **Özellikler** ' i seçin ve **sanal ağdaki IP adresi** bölümüne bakın.
 
-![Yerel DNS sunucularının IP adreslerini bulma](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-dns1.png)
+:::image type="content" source="./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-dns1.png" alt-text="Yerel DNS sunucularının IP adreslerini bulma" border="true":::
 
 Azure AD DS sanal ağındaki DNS sunucularının yapılandırmasını değiştirin. Bu özel IP 'Leri kullanmak için **Ayarlar** kategorisinde **DNS sunucuları** ' nı seçin. Ardından **özel** seçeneğini belirleyin, metin kutusuna ilk IP adresini girin ve **Kaydet**' i seçin. Aynı adımları kullanarak daha fazla IP adresi ekleyin.
 
-![Sanal ağ DNS yapılandırması güncelleştiriliyor](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-vnet-configuration.png)
+:::image type="content" source="./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-vnet-configuration.png" alt-text="Sanal ağ DNS yapılandırması güncelleştiriliyor" border="true":::
 
 Aynı Azure sanal ağına hem Azure AD DS örneğini hem de HDInsight kümesini yerleştirmek daha kolay. Farklı sanal ağlar kullanmayı planlıyorsanız, etki alanı denetleyicisinin HDInsight VM 'lerine görebilmesi için bu sanal ağları eşdüzey yapmanız gerekir. Daha fazla bilgi için bkz. [sanal ağ eşlemesi](../../virtual-network/virtual-network-peering-overview.md).
 
 Sanal ağlar eşlendikten sonra, HDInsight sanal ağını özel bir DNS sunucusu kullanacak şekilde yapılandırın. Ve Azure AD DS özel IP 'lerini DNS sunucusu adresleri olarak girin. Her iki sanal ağ da aynı DNS sunucularını kullandıklarında, özel etki alanı adınız doğru IP 'ye çözümlenir ve HDInsight 'tan erişilecektir. Örneğin, etki alanı adınız ise `contoso.com` , bu adımdan sonra, `ping contoso.com` doğru Azure AD DS IP 'ye çözümlenmelidir.
 
-![Eşlenmiş bir sanal ağ için özel DNS sunucuları yapılandırma](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-peered-vnet-configuration.png)
+:::image type="content" source="./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-peered-vnet-configuration.png" alt-text="Eşlenmiş bir sanal ağ için özel DNS sunucuları yapılandırma" border="true":::
 
 HDInsight alt ağınızda Ağ güvenlik grubu (NSG) kuralları kullanıyorsanız, hem gelen hem de giden trafik için [gerekli IP 'lere](../hdinsight-management-ip-addresses.md) izin vermeniz gerekir.
 
@@ -126,11 +126,11 @@ Ayrıca, küme oluşturma sırasında [HDıNSIGHT kimlik Aracısı](identity-bro
 > [!NOTE]  
 > ESP küme adlarının ilk altı karakteri ortamınızda benzersiz olmalıdır. Örneğin, farklı sanal ağlarda birden çok ESP kümeniz varsa, küme adlarında ilk altı karakterin benzersiz olmasını sağlayan bir adlandırma kuralı seçin.
 
-![Azure HDInsight için etki alanı doğrulama Kurumsal Güvenlik Paketi](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-esp.png)
+:::image type="content" source="./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-esp.png" alt-text="Azure HDInsight için etki alanı doğrulama Kurumsal Güvenlik Paketi" border="true":::
 
 ESP 'yi etkinleştirdikten sonra, Azure AD DS ile ilgili ortak yapılandırma hataları otomatik olarak algılanır ve onaylanır. Bu hataları düzelttikten sonra, bir sonraki adımla devam edebilirsiniz.
 
-![Azure HDInsight Kurumsal Güvenlik Paketi etki alanı doğrulaması başarısız oldu](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-esp-error.png)
+:::image type="content" source="./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-esp-error.png" alt-text="Azure HDInsight Kurumsal Güvenlik Paketi etki alanı doğrulaması başarısız oldu" border="true":::
 
 ESP ile bir HDInsight kümesi oluşturduğunuzda, aşağıdaki parametreleri sağlamanız gerekir:
 
@@ -142,7 +142,7 @@ ESP ile bir HDInsight kümesi oluşturduğunuzda, aşağıdaki parametreleri sa�
 
 Oluşturduğunuz yönetilen kimlik, yeni bir küme oluştururken, **Kullanıcı tarafından atanan yönetilen kimlik** listesinden seçilebilir.
 
-![Azure HDInsight ESP Active Directory Domain Services yönetilen kimliği](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-identity.png).
+:::image type="content" source="./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-identity.png" alt-text="Azure HDInsight tarafından yönetilen kimlik ACTIVE DIRECTORY DOMAIN SERVICES ESP" border="true":::.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

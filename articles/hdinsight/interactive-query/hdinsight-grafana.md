@@ -4,12 +4,12 @@ description: Azure HDInsight 'ta Apache Hadoop kümeleriyle Grafana panosuna eri
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/27/2019
-ms.openlocfilehash: cd2a09b6c3196302dcb74fd363481706021a4d4d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 81fd3b368f9405192c164ed7a0638caad0cd75fc
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98940872"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869761"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>Azure HDInsight'ta Grafana'ya erişme
 
@@ -31,7 +31,7 @@ Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-h
 
 1. Grafana panosu görüntülenir ve şu örneğe benzer şekilde görünür:
 
-    ![HDInsight Grafana Web panosu](./media/hdinsight-grafana/hdinsight-grafana-dashboard.png "HDInsight Grafana panosu")
+    :::image type="content" source="./media/hdinsight-grafana/hdinsight-grafana-dashboard.png " alt-text="HDInsight Grafana Web panosu" border="true":::
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

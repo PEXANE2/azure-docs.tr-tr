@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
-ms.openlocfilehash: 5abbb26e7582d8ddabb73f3a178cf6d87e24db21
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5422fe324ca1f3ef5bb2d14fb04664c8fb03fe3c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98942539"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866242"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>Azure Toolkit for IntelliJ Spark iş hata ayıklaması başarısız oldu (Önizleme)
 
@@ -40,13 +40,13 @@ Hata ayıklamaya devam etmek için bir Spark 2.3.2 projesi oluşturun, bu belged
 
    b. Ana pencereden **hata hata ayıklama örneği (Önizleme) (Scala) Ile Spark projesi** öğesini seçin.
 
-     ![IntelliJ hata ayıklama projesi oluşturma](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-projectfor-failure-debug.png)
+     :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-projectfor-failure-debug.png" alt-text="IntelliJ hata ayıklama projesi oluşturma" border="true":::
 
    c. **İleri**’yi seçin.
 
 2. **Yeni proje** penceresinde aşağıdaki adımları uygulayın:
 
-   ![IntelliJ yeni proje Spark sürümü Seç](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-project.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-project.png" alt-text="IntelliJ yeni proje Spark sürümü Seç" border="true":::
 
    a. Bir proje adı ve proje konumu girin.
 
@@ -64,25 +64,25 @@ Bir Spark Scala/Java uygulaması oluşturun ve ardından aşağıdaki adımları
 
 1. **Yapılandırma Ekle** ' ye tıklayarak **Çalıştır/hata ayıklama yapılandırmaları** penceresini açın.
 
-   ![HDI IntelliJ yapılandırma Ekle](./media/apache-spark-intellij-tool-failure-debug/hdinsight-add-new-configuration.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/hdinsight-add-new-configuration.png" alt-text="HDI IntelliJ yapılandırma Ekle" border="true":::
 
 2. **Çalıştır/hata ayıkla yapılandırma** iletişim kutusunda artı işaretini ( **+** ) seçin. Sonra **HDInsight üzerinde Apache Spark** seçeneğini belirleyin.
 
-   ![IntelliJ yeni yapılandırma Ekle](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-01.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-01.png" alt-text="IntelliJ yeni yapılandırma Ekle" border="true":::
 
 3. Küme sekmesinde **Uzaktan Çalıştır '** a geçiş yapın. **Ad**, **Spark kümesi** ve **ana sınıf adı** bilgilerini girin. Araçlarımız **Yürüticiler** ile hata ayıklamayı destekler. **Numexectors**, varsayılan değer 5 ' tir ve 3 ' ten daha yüksek bir değere ayarlanmamalıdır. Çalışma süresini azaltmak için **spark. yarn. maxAppAttempts** 'Yi **iş yapılandırmalarına** ekleyebilir ve değeri 1 olarak ayarlayabilirsiniz. Yapılandırmayı kaydetmek için **Tamam** düğmesine tıklayın.
 
-   ![IntelliJ hata ayıklama yapılandırmasını yeni Çalıştır](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-002.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-002.png" alt-text="IntelliJ hata ayıklama yapılandırmasını yeni Çalıştır" border="true":::
 
 4. Yapılandırma artık verdiğiniz adla birlikte kaydedilir. Yapılandırma ayrıntılarını görüntülemek için yapılandırma adını seçin. Değişiklik yapmak için, **konfigürasyonları Düzenle**' yi seçin.
 
 5. Yapılandırma ayarlarını tamamladıktan sonra, projeyi uzak kümede çalıştırabilirsiniz.
 
-   ![IntelliJ hata ayıklama uzak Spark Işi uzaktan çalıştırma düğmesi](./media/apache-spark-intellij-tool-failure-debug/hdinsight-local-run-configuration.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/hdinsight-local-run-configuration.png" alt-text="IntelliJ hata ayıklama uzak Spark Işi uzaktan çalıştırma düğmesi" border="true":::
 
 6. Çıkış penceresinden uygulama KIMLIĞI ' ni kontrol edebilirsiniz.
 
-   ![IntelliJ hata ayıklama uzak Spark Işi uzak çalıştırma sonucu](./media/apache-spark-intellij-tool-failure-debug/hdinsight-remotely-run-result.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/hdinsight-remotely-run-result.png" alt-text="IntelliJ hata ayıklama uzak Spark Işi uzak çalıştırma sonucu" border="true":::
 
 ## <a name="download-failed-job-profile"></a>Başarısız iş profilini indir
 
@@ -90,9 +90,9 @@ Bir Spark Scala/Java uygulaması oluşturun ve ardından aşağıdaki adımları
 
 1. **Microsoft Azure Depolama Gezgini** açın, başarısız iş için kümenin HDInsight hesabını bulun, ilgili konumdan başarısız iş kaynaklarını indirin: **\hdp\parlak 2-Events \\ . Spark \\ \<application ID> -başarısızlıklarını** yerel bir klasöre yükleyin. **Etkinlik** penceresinde indirme ilerleme durumu gösterilir.
 
-   ![İndirme hatası Azure Depolama Gezgini](./media/apache-spark-intellij-tool-failure-debug/hdinsight-find-spark-file-001.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/hdinsight-find-spark-file-001.png" alt-text="İndirme hatası Azure Depolama Gezgini" border="true":::
 
-   ![İndirme başarılı Azure Depolama Gezgini](./media/apache-spark-intellij-tool-failure-debug/spark-on-cosmos-doenload-file-2.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/spark-on-cosmos-doenload-file-2.png" alt-text="İndirme başarılı Azure Depolama Gezgini" border="true":::
 
 ## <a name="configure-local-debugging-environment-and-debug-on-failure"></a>Yerel hata ayıklama ortamını yapılandırma ve hatada hata ayıklama
 
@@ -100,13 +100,13 @@ Bir Spark Scala/Java uygulaması oluşturun ve ardından aşağıdaki adımları
 
 1. IntelliJ ıDEA **Spark hata ayıklama** yapılandırma dosyası oluşturun, **Spark iş hatası bağlam konumu** alanı için önceden indirilen başarısız iş kaynaklarından FTD dosyasını seçin.
 
-   ![Crete hata yapılandırması](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-failure-configuration-01.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-failure-configuration-01.png" alt-text="Crete hata yapılandırması" border="true":::
 
 1. Araç çubuğundaki yerel çalıştırma düğmesine tıklayın, hata Çalıştır penceresinde görüntülenir.
 
-   ![çalışma-hata-configuration1](./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuraion-01.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuraion-01.png" alt-text="çalışma-hata-configuration1" border="true":::
 
-   ![çalışma-hata-configuration2](./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuration.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuration.png" alt-text="çalışma-hata-configuration2" border="true":::
 
 1. Günlük gösterdiği için kesme noktası ayarlayın, sonra da IntelliJ 'deki normal Scala/Java projeleriniz gibi yerel hata ayıklama yapmak için yerel hata ayıklama düğmesine tıklayın.
 

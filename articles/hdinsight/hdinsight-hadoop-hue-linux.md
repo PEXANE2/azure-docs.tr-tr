@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 03/31/2020
-ms.openlocfilehash: 8d4663aac6af4abb8d9855d2f972965e997d9c92
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 97a8dd2476642e693b589b4046f612c5569b9c0b
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945675"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865137"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>HDInsight Hadoop kümelerinde ton 'u yükleyip kullanma
 
@@ -80,17 +80,17 @@ Normal kümeler üzerinde ton ile yalnızca bir Kullanıcı hesabınız olabilir
    > [!NOTE]  
    > İlk kez oturum açtığınızda, ton portalında oturum açmak için bir hesap oluşturmanız istenir. Burada belirttiğiniz kimlik bilgileri portalla sınırlandırılır ve kümeyi sağlarken belirttiğiniz yönetici veya SSH kullanıcı kimlik bilgileriyle ilgili değildir.
 
-    ![HDInsight ton portalı oturum açma penceresi](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-login.png "Ton portalı için kimlik bilgilerini belirtin")
+    :::image type="content" source="./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-login.png" alt-text="HDInsight ton portalı oturum açma penceresi":::
 
 ### <a name="run-a-hive-query"></a>Hive sorgusu çalıştırma
 
 1. Ton portalından **Sorgu Düzenleyicileri**' ni seçin ve Hive düzenleyicisini açmak için **Hive** ' ı seçin.
 
-    ![HDInsight ton portalı Hive düzenleyicisini kullanma](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-use-hive.png "Hive kullanma")
+    :::image type="content" source="./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-use-hive.png" alt-text="HDInsight ton portalı Hive düzenleyicisini kullanma":::
 
 2. **Yardım** sekmesinde, **veritabanı** altında, **hivesampletable**' ı görmeniz gerekir. Bu, HDInsight üzerinde tüm Hadoop kümeleriyle birlikte gelen örnek bir tablodur. Sağ bölmede örnek bir sorgu girin ve ekran yakalama bölümünde gösterildiği gibi aşağıdaki bölmedeki **sonuçlar** sekmesinde yer alan çıktıyı görüntüleyin.
 
-    ![HDInsight ton portalı Hive sorgusu](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-hive-query.png "Hive sorgusu Çalıştır")
+    :::image type="content" source="./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-hive-query.png" alt-text="HDInsight ton portalı Hive sorgusu":::
 
     Ayrıca, sonucun görsel gösterimini görmek için **grafik** sekmesini de kullanabilirsiniz.
 
@@ -99,7 +99,7 @@ Normal kümeler üzerinde ton ile yalnızca bir Kullanıcı hesabınız olabilir
 1. Ton portalından, menü çubuğunun sağ üst köşesindeki **dosya tarayıcısı** ' nı seçin.
 2. Varsayılan olarak, dosya tarayıcısı **/User/MyUser** dizininde açılır. Yoldaki Kullanıcı dizininden, kümeyle ilişkili Azure depolama kapsayıcısının köküne gitmek için hemen eğik çizgi seçin.
 
-    ![HDInsight ton portalı dosya tarayıcısı](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-file-browser.png "Dosya tarayıcısını kullan")
+    :::image type="content" source="./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-file-browser.png" alt-text="HDInsight ton portalı dosya tarayıcısı":::
 
 3. Kullanılabilir işlemleri görmek için bir dosyaya veya klasöre sağ tıklayın. Dosyaları geçerli dizine yüklemek için sağ köşedeki **karşıya yükle** düğmesini kullanın. Yeni dosya veya dizin oluşturmak için **Yeni** düğmesini kullanın.
 
@@ -118,7 +118,7 @@ Normal kümeler üzerinde ton ile yalnızca bir Kullanıcı hesabınız olabilir
 
 1. Linux kümeleriyle, Kaynak Yöneticisi ikincil üzerinde çalışırken hizmetlerinizin birincil baş düğümüne üzerinde çalıştığı bir senaryoya sahip olabilirsiniz. Bu tür bir senaryo, kümedeki çalışan işlerin ayrıntılarını görüntülemek için ton kullanılırken hatalara neden olabilirler (aşağıda gösterilen). Ancak, iş tamamlandığında iş ayrıntılarını görüntüleyebilirsiniz.
 
-   ![Ton portalı hatası örnek iletisi](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-error.png "Ton portalı hatası")
+   :::image type="content" source="./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-error.png" alt-text="Ton portalı hatası örnek iletisi":::
 
    Bunun nedeni bilinen bir sorundur. Geçici bir çözüm olarak, Active Kaynak Yöneticisi birincil headnode üzerinde de çalışacak şekilde ambarı değiştirin.
 

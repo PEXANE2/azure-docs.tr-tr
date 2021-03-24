@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: b664dd406a1ab90b4ea5e85005a69935f345c609
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a7978410dbe28a5da5dae81cb380d118fe13a159
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102034668"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869387"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>MySQL için Azure veritabanı esnek sunucusu 'nda sunucu kavramları (Önizleme)
 
@@ -55,7 +55,14 @@ Sunucu durdurulduğunda, sunucuda hiçbir yönetim işlemi gerçekleştirilemez.
 
 ## <a name="how-do-i-manage-a-server"></a>Sunucu Nasıl yaparım? mi?
 
-[Azure Portal](./quickstart-create-server-portal.md) veya [Azure CLI](./quickstart-create-server-cli.md)kullanarak MySQL Için Azure veritabanı esnek sunucusunu yönetebilirsiniz.
+[Azure Portal](./quickstart-create-server-portal.md) veya [Azure CLI](./quickstart-create-server-cli.md)kullanarak oluşturma, silme, sunucu parametre yapılandırma (My. CNF), ölçeklendirme, ağ, güvenlik, yüksek kullanılabilirlik, yedekleme & geri yükleme, MySQL Için Azure veritabanı esnek sunucusunu izleme işlemini yönetebilirsiniz. Ayrıca, bu saklı yordamlar, MySQL için Azure veritabanı 'nda, süper kullanıcı ayrıcalığı sunucu üzerinde desteklenmediğinden bazı veritabanı yönetim görevlerini gerçekleştirmek için kullanılabilir.
+
+|**Saklı yordam adı**|**Giriş parametreleri**|**Çıkış parametreleri**|**Kullanım notunun**|
+|-----|-----|-----|-----|
+|*mysql.az_kill*|processlist_id|Yok|Komuta eşdeğerdir [`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) . , Bağlantının yürütüldüğü tüm deyimleri sonlandırdıktan sonra, belirtilen processlist_id ilişkili bağlantıyı sonlandırır.|
+|*mysql.az_kill_query*|processlist_id|Yok|Komuta eşdeğerdir [`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) . Bağlantı şu anda yürütülmekte olan ifadeyi sonlandırır. Bağlantıyı canlı bırakır.|
+|*mysql.az_load_timezone*|Yok|Yok|Parametrenin adlandırılmış değerlere (örn.) ayarlanbilmesini sağlamak için [saat dilimi tablolarını](../howto-server-parameters.md#working-with-the-time-zone-parameter) yükler `time_zone` . "ABD/Pasifik").|
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/18/2021
 ms.author: wieastbu
 ms.custom: fasttrack-new, fasttrack-update, devx-track-js
-ms.openlocfilehash: 812b54d10ea3cc3c405f534e36ac66abf3466808
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: baa6a0a6995e206924d14de25b98700e450f3a0c
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102449297"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954930"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>OAuth 2,0, Azure Active Directory B2C ve Azure API Management ile SPA arka ucunu koruyun
 
@@ -193,7 +193,7 @@ Portalda Azure AD B2C dikey penceresini açın ve aşağıdaki adımları uygula
 1. En Iyi bilinen açık kimlik yapılandırma uç noktasını veren URL 'SI kutusuna (Bu yapılandırmayı daha önce kaydettik), kayıt ve oturum açma ilkesinden yapıştırın.
 1. ' Gizli dizi ' düğmesine tıklayın ve arka uç uygulamasının istemci gizli anahtarını uygun kutuya yapıştırın.
 1. Kimlik sağlayıcısı seçim dikey penceresine/ekranına geri döndüğünüzde Tamam ' ı seçin.
-1. Gelişmiş ayarlar altında [belirteç deposu](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization#token-store) etkin kalsın (varsayılan).
+1. Gelişmiş ayarlar altında [belirteç deposu](../app-service/overview-authentication-authorization.md#token-store) etkin kalsın (varsayılan).
 1. ' Kaydet ' seçeneğine tıklayın (dikey pencerenin sol üst kısmında).
 
    > [!IMPORTANT]

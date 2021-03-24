@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/17/2019
-ms.openlocfilehash: cfbbc1f11a24379561df26e2fb8d9da20b249317
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 46a22b78ade3d137f25b14e5cbdaff3264208228
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98942750"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868401"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Azure HDInsight 'a üçüncü taraf Apache Hadoop uygulamaları yüklemeyin
 
@@ -20,7 +20,7 @@ An HDInsight uygulama, kullanıcıların bir HDInsight kümesine yükleyebir uyg
 
 Aşağıdaki listede yayımlanan uygulamalar gösterilmektedir:
 
-|Uygulama |Küme türleri | Description |
+|Uygulama |Küme türleri | Açıklama |
 |---|---|---|
 |[AtScale zeka platformu](https://aws.amazon.com/marketplace/pp/AtScale-AtScale-Intelligence-Platform/B07BWWHH18) |Hadoop |AtScale, HDInsight kümenizi genişleme bir OLAP sunucusuna dönüştürür ve Microsoft Excel, Power BI, Tableau Software to QlikView ' den daha önce bildiğiniz, sahip olduğunuz ve sevdiğiniz BI araçlarını kullanarak milyarlarca verileri etkileşimli olarak sorgulamanızı sağlar. |
 |[HDInsight için CDAP](https://azuremarketplace.microsoft.com/marketplace/apps/cask.cdap-for-hdinsight) |HBase |CDAP, Hadoop için zaman değerini hızlandıran ve self servis verileri sağlamasına olanak tanıyan büyük verilere yönelik ilk Birleşik tümleştirme platformudur. Açık kaynak ve genişletilebilir, CDAP yeniliklere yönelik engelleri kaldırır. Gereksinimler: 4 bölge düğümü, min D3 v2. |
@@ -53,10 +53,10 @@ Aşağıdaki yordamda var olan bir HDInsight kümesine HDInsight uygulamaların�
 3. Listeden bir HDInsight kümesi seçin.  Henüz yoksa öncelikle bir tane oluşturmanız gerekir.  bkz. [Küme oluşturma](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 4. **Ayarlar** kategorisi altında **uygulamalar**' ı seçin. Ana pencerede yüklü uygulamaların bir listesini görebilirsiniz. 
    
-    ![HDInsight uygulamaları portal menüsü](./media/hdinsight-apps-install-applications/hdinsight-apps-portal-menu.png)
+    :::image type="content" source="./media/hdinsight-apps-install-applications/hdinsight-apps-portal-menu.png" alt-text="HDInsight uygulamaları portal menüsü":::
 5. Menüden **+ Ekle** ' yi seçin. Kullanılabilir uygulamaların bir listesini görebilirsiniz.  **+ Ekle** gri ise bu, HDInsight kümesinin bu sürümü için bir uygulama olmadığı anlamına gelir.
    
-    ![HDInsight uygulamaları kullanılabilir uygulamalar](./media/hdinsight-apps-install-applications/hdinsight-apps-list1.png)
+    :::image type="content" source="./media/hdinsight-apps-install-applications/hdinsight-apps-list1.png" alt-text="HDInsight uygulamaları kullanılabilir uygulamalar":::
 6. Kullanılabilir uygulamalardan birini seçin ve ardından geçerli koşulları kabul etmek için yönergeleri izleyin.
 
 Yükleme durumunu Portal bildirimlerinden görebilirsiniz (portalın üst kısmındaki zil simgesini seçin). Uygulama yüklendikten sonra, uygulama yüklü uygulamalar listesinde görünür.
@@ -65,7 +65,7 @@ Yükleme durumunu Portal bildirimlerinden görebilirsiniz (portalın üst kısm�
 
 Bir küme oluştururken HDInsight uygulamaları yükleme seçeneğine sahipsiniz. İşlem sırasında, küme oluşturulup çalışır duruma geldikten sonra HDInsight uygulamaları yüklenir. Azure portal kullanarak küme oluşturma sırasında uygulamaları yüklemek için **yapılandırma + fiyatlandırma** sekmesinden **+ Uygulama Ekle**' yi seçin.
 
-![Azure portal kümesi yapılandırma uygulamaları](./media/hdinsight-apps-install-applications/azure-portal-cluster-configuration-applications.png)
+:::image type="content" source="./media/hdinsight-apps-install-applications/azure-portal-cluster-configuration-applications.png" alt-text="Azure portal kümesi yapılandırma uygulamaları":::
 
 ## <a name="list-installed-hdinsight-apps-and-properties"></a>Yüklü HDInsight uygulamalarını ve özelliklerini listeleme
 Portal bir küme için yüklü HDInsight uygulamalarının listesini ve yüklü olan her bir uygulamanın özelliklerini gösterir.
@@ -77,7 +77,7 @@ Portal bir küme için yüklü HDInsight uygulamalarının listesini ve yüklü 
 3. Listeden bir HDInsight kümesi seçin.
 4. **Ayarlar** kategorisi altında **uygulamalar**' ı seçin. Ana pencerede yüklü uygulamaların bir listesini görebilirsiniz. 
    
-    ![HDInsight uygulamaları yüklü uygulamalar](./media/hdinsight-apps-install-applications/hdinsight-apps-installed-apps-with-apps.png)
+    :::image type="content" source="./media/hdinsight-apps-install-applications/hdinsight-apps-installed-apps-with-apps.png" alt-text="HDInsight uygulamaları yüklü uygulamalar":::
 5. Özelliği göstermek için yüklü uygulamalardan birini seçin. Özellik listeleri:
 
     |Özellik | Açıklama |
@@ -86,7 +86,7 @@ Portal bir küme için yüklü HDInsight uygulamalarının listesini ve yüklü 
     |Durum |Uygulama durumu. |
     |Web |Kenar düğümüne dağıttığınız Web uygulamasının URL 'SI. Kimlik bilgisi, küme için yapılandırdığınız HTTP kullanıcısı kimlik bilgileri ile aynıdır. |
     |SSH uç noktası |Kenar düğümüne bağlanmak için SSH kullanabilirsiniz. SSH kimlik bilgileri, küme için yapılandırdığınız SSH kullanıcısı kimlik bilgileriyle aynıdır. Bilgi için bkz. [HDInsight ile SSH kullanma](hdinsight-hadoop-linux-use-ssh-unix.md). |
-    |Description | Uygulama açıklaması. |
+    |Açıklama | Uygulama açıklaması. |
 
 6. Bir uygulamayı silmek için, uygulamaya sağ tıklayın ve ardından bağlam menüsünden **Sil** ' e tıklayın.
 

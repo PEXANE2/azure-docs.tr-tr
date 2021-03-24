@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 1/13/2021
-ms.openlocfilehash: 4b5020b6cf7ac2f7aec586d7e6499285c1447b68
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a167fedcb42560dec55cdbce40e36180d65e0179
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98209772"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951806"
 ---
 # <a name="hyperscale-service-tier"></a>Hiper ölçekli hizmet katmanı
 
@@ -219,14 +219,14 @@ Etkin bölgeler:
 
 Bunlar, GA ile aynı hiper ölçek hizmet katmanına yönelik geçerli sınırlamalardır.  Mümkün olduğunca bu sınırlamaların çoğunu kaldırmak için etkin bir şekilde çalışıyoruz.
 
-| Sorun | Description |
+| Sorun | Açıklama |
 | :---- | :--------- |
 | Bir sunucunun Yedeklemeleri Yönet bölmesi, hiper ölçekli veritabanlarını göstermez. Bunlar görünümden filtrelenecektir.  | Hiper ölçek, yedeklemeleri yönetmek için ayrı bir yönteme sahiptir, bu nedenle Long-Term bekletme ve zaman içinde yedekleme bekletme ayarları uygulanmaz. Buna uygun olarak, hiper ölçekli veritabanları yedekleme bölmesini yönetme bölmesinde görünmez.<br><br>Diğer Azure SQL veritabanı hizmet katmanlarından hiper ölçeğe geçirilmiş veritabanları için, geçiş öncesi yedeklemeler kaynak veritabanının [yedekleme bekletme](automated-backups-overview.md#backup-retention) süresi boyunca tutulur. Bu yedeklemeler, kaynak veritabanını geçişten önceki bir zaman noktasına [geri yüklemek](recovery-using-backups.md#programmatic-recovery-using-automated-backups) için kullanılabilir.|
 | Belirli bir noktaya geri yükleme | Hiper olmayan bir veritabanı hiper ölçekli bir veritabanı olarak geri yüklenemez ve hiper ölçek veritabanı hiper olmayan bir veritabanı olarak geri yüklenemez. Hizmet katmanını değiştirerek hiper ölçeğe geçirilmiş hiper olmayan bir veritabanı için, geçiş işleminden önce ve veritabanının yedekleme saklama süresi içinde bir zaman noktasına geri [yükleyin.](recovery-using-backups.md#programmatic-recovery-using-automated-backups) Geri yüklenen veritabanı hiper olmayan ölçek olacaktır. |
 | Azure SQL veritabanı hizmet katmanını Hyperscale olarak değiştirirken, veritabanında 1 TB 'den büyük bir veri dosyası varsa işlem başarısız olur | Bazı durumlarda, hizmet katmanını Hyperscale olarak değiştirmeye çalışmadan önce büyük dosyaları 1 TB 'tan küçük olacak şekilde [küçülterek](file-space-manage.md#shrinking-data-files) Bu soruna geçici bir çözüm uygulanabilir. Veritabanı dosyalarının geçerli boyutunu öğrenmek için aşağıdaki sorguyu kullanın. `SELECT file_id, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | SQL Yönetilen Örnek | Azure SQL yönetilen örneği şu anda hiper ölçekli veritabanları ile desteklenmiyor. |
 | Esnek Havuzlar |  Esnek havuzlar Şu anda Hyperscale ile desteklenmemektedir.|
-| Hyperscale 'e geçiş Şu anda tek yönlü bir işlemdir | Bir veritabanı hiper ölçeğe geçirildiğinde doğrudan Hyperscale olmayan bir hizmet katmanına geçirilemez. Mevcut olduğunda, bir veritabanını Hiperscale 'den hiper olmayan ölçeğe geçirmenin tek yolu bacpac dosyasını veya diğer veri taşıma teknolojilerini (toplu kopyalama, Azure Data Factory, Azure Databricks, SSIS, vb.) kullanarak dışarı ve içeri aktarmaya yönelik bir yoldur. [Yeni-AzSqlDatabaseExport](/powershell/module/az.sql/new-azsqldatabaseexport) veya [New-Azsqldatabaseımport](/powershell/module/az.sql/new-azsqldatabaseimport)kullanılarak PowerShell 'den, [az SQL DB Export](/cli/azure/sql/db#az-sql-db-export) ve [az SQL DB import](/cli/azure/sql/db#az-sql-db-import)kullanarak Azure CLI 'dan bacpac dışarı [REST API](/rest/api/sql/databases%20-%20import%20export) ve içeri aktarma Azure Portal. Daha küçük hiper ölçekli veritabanları için bacpac içeri/dışarı aktarma (200 GB 'a kadar) SSMS ve [SqlPackage](/sql/tools/sqlpackage) sürüm 18,4 ve üzeri kullanılarak desteklenir. Daha büyük veritabanları için bacpac dışarı aktarma/içeri aktarma uzun sürebilir ve çeşitli nedenlerle başarısız olabilir.|
+| Hyperscale 'e geçiş Şu anda tek yönlü bir işlemdir | Bir veritabanı hiper ölçeğe geçirildiğinde doğrudan Hyperscale olmayan bir hizmet katmanına geçirilemez. Mevcut olduğunda, bir veritabanını Hiperscale 'den hiper olmayan ölçeğe geçirmenin tek yolu bacpac dosyasını veya diğer veri taşıma teknolojilerini (toplu kopyalama, Azure Data Factory, Azure Databricks, SSIS, vb.) kullanarak dışarı ve içeri aktarmaya yönelik bir yoldur. [Yeni-AzSqlDatabaseExport](/powershell/module/az.sql/new-azsqldatabaseexport) veya [New-Azsqldatabaseımport](/powershell/module/az.sql/new-azsqldatabaseimport)kullanılarak PowerShell 'den, [az SQL DB Export](/cli/azure/sql/db#az-sql-db-export) ve [az SQL DB import](/cli/azure/sql/db#az-sql-db-import)kullanarak Azure CLI 'dan bacpac dışarı [REST API](/rest/api/sql/) ve içeri aktarma Azure Portal. Daha küçük hiper ölçekli veritabanları için bacpac içeri/dışarı aktarma (200 GB 'a kadar) SSMS ve [SqlPackage](/sql/tools/sqlpackage) sürüm 18,4 ve üzeri kullanılarak desteklenir. Daha büyük veritabanları için bacpac dışarı aktarma/içeri aktarma uzun sürebilir ve çeşitli nedenlerle başarısız olabilir.|
 | In-Memory OLTP nesneleriyle veritabanlarının geçirilmesi | Hiper ölçek, bellek için iyileştirilmiş tablo türleri, tablo değişkenleri ve yerel koda derlenmiş modüller dahil In-Memory OLTP nesnelerinin bir alt kümesini destekler. Ancak, geçirilmekte olan veritabanında herhangi bir In-Memory OLTP nesneleri varsa, Premium ve İş Açısından Kritik hizmet katmanlarından hiper ölçeğe geçiş desteklenmez. Bu tür bir veritabanını hiper ölçeğe geçirmek için, tüm In-Memory OLTP nesnelerinin ve bağımlılıklarının bırakılması gerekir. Veritabanı geçirildikten sonra, bu nesneler yeniden oluşturulabilir. Dayanıklı ve dayanıklı olmayan bellek için iyileştirilmiş tablolar, şu anda hiper ölçekte desteklenmez ve disk tablolarına değiştirilmelidir.|
 | Coğrafi Çoğaltma  | Azure SQL veritabanı hiper ölçek için Coğrafi çoğaltmayı henüz yapılandıramazsınız. |
 | Veritabanı kopyalama | Hiperscale üzerinde veritabanı kopyalama işlemi artık genel önizlemeye sunuldu. |

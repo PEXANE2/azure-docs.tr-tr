@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 03/09/2021
 ms.author: duau
-ms.openlocfilehash: 9926102a2e6b25060c2a8840b56d690ce2868ade
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 9b85caa3611c484fc17423637dc36ce20b48b823
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102618803"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868486"
 ---
 # <a name="add-ipv6-support-for-private-peering-using-the-azure-portal-preview"></a>Azure portal kullanarak özel eşleme için IPv6 desteği ekleme (Önizleme)
 
@@ -101,6 +101,7 @@ IPv6 desteği, Kullanılabilirlik Alanları bölgelerdeki dağıtımlara bağlan
 * ExpressRoute devreleri arasında bağlantı Global Reach
 * Sanal WAN ile ExpressRoute kullanımı
 * ExpressRoute doğrudan devrelerine sahip FastPath
+* Şu eşleme konumlarında devrelere sahip FastPath: Dubai
 * VPN Gateway birlikte bulunma
 
 ## <a name="next-steps"></a>Sonraki adımlar

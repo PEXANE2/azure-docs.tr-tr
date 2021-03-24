@@ -4,12 +4,12 @@ description: Azure HDInsight kümelerini Kurumsal Güvenlik Paketi ile yönetmey
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/04/2019
-ms.openlocfilehash: b0f8ba4adfa4b08c23d3f69fa4e2b01f4580bb19
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bc31c3d71590a6b8c0b324ffcb8c10129a9f8699
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101742220"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863250"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>HDInsight kümelerini Kurumsal Güvenlik Paketi ile yönetme
 
@@ -116,7 +116,7 @@ HDInsight Kurumsal Güvenlik Paketi aşağıdaki rollere sahiptir:
 2. Sol menüden **Roller**' i seçin.
 3. İzinleri görmek için mavi soru işaretini seçin:
 
-    ![ESP HDInsight rol izinleri](./media/apache-domain-joined-manage/hdinsight-domain-joined-roles-permissions.png)
+    :::image type="content" source="./media/apache-domain-joined-manage/hdinsight-domain-joined-roles-permissions.png" alt-text="ESP HDInsight rol izinleri" border="true":::
 
 ## <a name="open-the-ambari-management-ui"></a>Ambarı yönetimi Kullanıcı arabirimini açın
 
@@ -124,25 +124,25 @@ HDInsight Kurumsal Güvenlik Paketi aşağıdaki rollere sahiptir:
 1. Küme Yöneticisi etki alanı Kullanıcı adı ve parolasını kullanarak, ambarı 'nda oturum açın.
 1. Sağ üst köşedeki **yönetici** açılan menüsünü seçin ve ardından **ambarı Yönet**' i seçin.
 
-    ![ESP HDInsight Apache ambarı 'nı yönetme](./media/apache-domain-joined-manage/hdinsight-domain-joined-manage-ambari.png)
+    :::image type="content" source="./media/apache-domain-joined-manage/hdinsight-domain-joined-manage-ambari.png" alt-text="ESP HDInsight Apache ambarı 'nı yönetme" border="true":::
 
     Kullanıcı arabirimi şöyle görünür:
 
-    ![ESP HDInsight Apache ambarı yönetim kullanıcı arabirimi](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui.png)
+    :::image type="content" source="./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui.png" alt-text="ESP HDInsight Apache ambarı yönetim kullanıcı arabirimi" border="true":::
 
 ## <a name="list-the-domain-users-synchronized-from-your-active-directory"></a>Active Directory eşitlenen etki alanı kullanıcılarını listeleyin
 
 1. Ambarı yönetimi Kullanıcı arabirimini açın.  Bkz. [ambarı yönetimi Kullanıcı arabirimini açma](#open-the-ambari-management-ui).
 2. Sol menüden **Kullanıcılar**' ı seçin. Active Directory HDInsight kümesine eşitlenmiş tüm kullanıcıları görürsünüz.
 
-    ![ESP HDInsight ambarı yönetimi Kullanıcı arabirimi listesi kullanıcıları](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-users.png)
+    :::image type="content" source="./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-users.png" alt-text="ESP HDInsight ambarı yönetimi Kullanıcı arabirimi listesi kullanıcıları" border="true":::
 
 ## <a name="list-the-domain-groups-synchronized-from-your-active-directory"></a>Active Directory eşitlenen etki alanı gruplarını listeleyin
 
 1. Ambarı yönetimi Kullanıcı arabirimini açın.  Bkz. [ambarı yönetimi Kullanıcı arabirimini açma](#open-the-ambari-management-ui).
 2. Sol menüden **gruplar**' ı seçin. Active Directory HDInsight kümesine eşitlenmiş tüm grupları görürsünüz.
 
-    ![ESP HDInsight ambarı yönetimi Kullanıcı arabirimi liste grupları](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-groups.png)
+    :::image type="content" source="./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-groups.png" alt-text="ESP HDInsight ambarı yönetimi Kullanıcı arabirimi liste grupları" border="true":::
 
 ## <a name="configure-hive-views-permissions"></a>Hive görünümlerini yapılandırma izinleri
 
@@ -150,12 +150,12 @@ HDInsight Kurumsal Güvenlik Paketi aşağıdaki rollere sahiptir:
 2. Sol menüden **Görünümler**' i seçin.
 3. Ayrıntıları göstermek için **HIVE** ' ı seçin.
 
-    ![ESP HDInsight ambarı yönetimi UI Hive görünümleri](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views.png)
+    :::image type="content" source="./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views.png" alt-text="ESP HDInsight ambarı yönetimi UI Hive görünümleri" border="true":::
 
 4. Hive görünümlerini yapılandırmak için **Hive görünümü** bağlantısını seçin.
 5. Aşağı kaydırarak **izinler** bölümüne gidin.
 
-    ![ESP HDInsight ambarı yönetimi UI Hive görünümleri izinleri yapılandırma](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views-permissions.png)
+    :::image type="content" source="./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views-permissions.png" alt-text="ESP HDInsight ambarı yönetimi UI Hive görünümleri izinleri yapılandırma" border="true":::
 
 6. **Kullanıcı Ekle** veya **Grup Ekle**' yi seçin ve Hive görünümlerini kullanabileceği kullanıcıları veya grupları belirtin.
 

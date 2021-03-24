@@ -3,12 +3,12 @@ title: PowerShell ve şablon ile kaynakları dağıtma
 description: Azure 'a kaynak dağıtmak için Azure Resource Manager ve Azure PowerShell kullanın. Kaynaklar bir Kaynak Yöneticisi şablonunda veya bir Bıcep dosyasında tanımlanır.
 ms.topic: conceptual
 ms.date: 03/04/2021
-ms.openlocfilehash: 784f17566ce4fb19a7ec5e3fd4a504d7c25f90fe
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: e1d2197064b94d428855bbb36aadbb5eb88d4032
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102521637"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950867"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>ARM şablonları ve Azure PowerShell kaynak dağıtma
 
@@ -115,7 +115,7 @@ Dağıtımın tamamlanması birkaç dakika sürebilir.
 ## <a name="deploy-remote-template"></a>Uzak şablonu dağıtma
 
 > [!NOTE]
-> Şu anda Azure PowerShell uzak bicep dosyalarının dağıtılmasını desteklemez. Uzak bir bicep dosyasını dağıtmak için, önce bir JSON şablonuna Bıcep dosyasını derlemek için CLı Bıcep ' yi kullanın.
+> Şu anda Azure PowerShell uzak bicep dosyalarının dağıtılmasını desteklemez. Bicep [CLI](./bicep-install.md#development-environment) kullanarak bıcep dosyasını bir JSON şablonuna derleyin ve ardından json dosyasını uzak konuma yükleyin.
 
 ARM şablonlarını yerel makinenizde depolamak yerine, bunları bir dış konumda depolamayı tercih edebilirsiniz. Şablonları bir kaynak denetimi deposunda (GitHub gibi) saklayabilirsiniz. İsterseniz kuruluşunuzda paylaşılan erişim sağlamak için bir Azure depolama hesabı kullanabilirsiniz.
 

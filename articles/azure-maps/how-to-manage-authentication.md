@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 57e847116febcea66e1e3ac4ba131617463b6c94
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 955b541bdb4ae38066f1eb4d2f09363ec51be1d2
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92895775"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864083"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Azure haritalar 'da kimlik doğrulamasını yönetme
 
@@ -78,6 +78,31 @@ Azure AD belirteç uç noktasından bir belirteç isteyin. Azure AD isteğiniz i
 | Azure Kamu Bulutu | `https://login.microsoftonline.us`  | `https://atlas.microsoft.com/` |
 
 Kullanıcılar ve hizmet sorumluları için Azure AD 'den erişim belirteçleri isteme hakkında daha fazla bilgi için bkz. [Azure AD Için kimlik doğrulama senaryoları](../active-directory/develop/authentication-vs-authorization.md) ve [senaryolar](./how-to-manage-authentication.md#determine-authentication-and-authorization)tablosunda belirli senaryoları görüntüleme.
+
+## <a name="manage-and-rotate-shared-keys"></a>Paylaşılan anahtarları yönetme ve döndürme
+
+Azure haritalar abonelik anahtarlarınız, Azure haritalar hesabınızın kök parolasıyla benzerdir. Abonelik anahtarlarınızı korumak için her zaman dikkatli olun. Anahtarlarınızı güvenli bir şekilde yönetmek ve döndürmek için Azure Key Vault kullanın. Erişim anahtarlarını diğer kullanıcılara dağıtmaktan, sabit kodlamadan veya başkalarının erişebileceği düz metin olarak herhangi bir yere kaydetmekten kaçının. Anahtarların tehlikede olduğunu düşünüyorsanız, anahtarlarınızı döndürün.
+
+> [!NOTE]
+> Microsoft, mümkünse paylaşılan anahtar yerine istekleri yetkilendirmek için Azure Active Directory (Azure AD) kullanılmasını önerir. Azure AD, paylaşılan anahtar üzerinde üstün güvenlik ve kullanım kolaylığı sağlar.
+
+### <a name="manually-rotate-subscription-keys"></a>Abonelik anahtarlarını el ile döndürme
+
+Microsoft, Azure haritalar hesabınızı güvende tutmaya yardımcı olmak için abonelik anahtarlarınızı düzenli aralıklarla döndürmenizi önerir. Mümkünse, erişim anahtarlarınızı yönetmek için Azure Key Vault kullanın. Key Vault kullanmıyorsanız, anahtarlarınızı el ile döndürmeniz gerekir.
+
+Anahtarlarınızı döndürebilmeniz için iki abonelik anahtarı atanır. İki anahtara sahip olmak, uygulamanızın işlem boyunca Azure Maps 'e erişimini sürdürmesini sağlar.
+
+Azure haritalar abonelik anahtarlarınızı Azure portal döndürmek için:
+
+1. Azure haritalar hesabı ve dağıtımı için ikincil anahtara başvurmak üzere uygulama kodunuzu güncelleştirin.
+2. [Azure Portal](https://portal.azure.com/)Azure Maps hesabınıza gidin.
+3. **Ayarlar** altında **kimlik doğrulaması**' nı seçin.
+4. Azure haritalar hesabınız için birincil anahtarı yeniden oluşturmak üzere birincil anahtarın yanındaki **Oluştur** düğmesini seçin.
+5. Yeni birincil anahtara başvuracak ve dağıtımı yapmak için uygulama kodunuzu güncelleştirin.
+6. İkincil anahtarı aynı şekilde yeniden oluşturun.
+
+> [!WARNING]
+> Microsoft, tüm uygulamalarınızda aynı anda yalnızca bir tane anahtar kullanılmasını önerir. Anahtar 1 ' i bazı yerlerde ve anahtar 2 ' de kullanırsanız, bazı uygulamaları erişimi kaybetmeksizin döndüremezsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 09/17/2020
-ms.openlocfilehash: d54c005ffb17571be172b5716723febb742253a3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5eb6cfc7f0dbc0bc886550e1d601dc52dff66267
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945394"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866378"
 ---
 # <a name="create-a-cluster-with-data-lake-storage-gen2-using-the-azure-portal"></a>Azure portal kullanarak Data Lake Storage 2. bir küme oluşturma
 
@@ -37,7 +37,7 @@ Henüz bir tane yoksa, Kullanıcı tarafından atanan bir yönetilen kimlik olu�
 
 Yönetilen kimliklerin Azure HDInsight 'ta nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Azure HDInsight 'Ta Yönetilen kimlikler](hdinsight-managed-identities.md).
 
-![Kullanıcı tarafından atanan yönetilen kimlik oluşturma](./media/hdinsight-hadoop-use-data-lake-storage-gen2/create-user-assigned-managed-identity-portal.png)
+:::image type="content" source="./media/hdinsight-hadoop-use-data-lake-storage-gen2/create-user-assigned-managed-identity-portal.png" alt-text="Kullanıcı tarafından atanan yönetilen kimlik oluşturma":::
 
 ## <a name="create-a-storage-account-to-use-with-data-lake-storage-gen2"></a>Data Lake Storage 2. ile kullanmak için bir depolama hesabı oluşturma
 
@@ -57,7 +57,7 @@ Azure Data Lake Storage 2. ile kullanmak için bir depolama hesabı oluşturun.
 
 Depolama hesabı oluşturma sırasında diğer seçenekler hakkında daha fazla bilgi için bkz. [hızlı başlangıç: Azure Data Lake Storage 2. için depolama hesabı oluşturma](../storage/blobs/create-data-lake-storage-account.md).
 
-![Azure portal depolama hesabı oluşturmayı gösteren ekran görüntüsü](./media/hdinsight-hadoop-use-data-lake-storage-gen2/azure-data-lake-storage-account-create-advanced.png)
+:::image type="content" source="./media/hdinsight-hadoop-use-data-lake-storage-gen2/azure-data-lake-storage-account-create-advanced.png" alt-text="Azure portal depolama hesabı oluşturmayı gösteren ekran görüntüsü":::
 
 ## <a name="set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2"></a>Data Lake Storage 2. yönetilen kimlik için izinleri ayarlayın
 
@@ -66,12 +66,12 @@ Yönetilen kimliği depolama hesabındaki **Depolama Blobu veri sahibi** rolüne
 1. [Azure Portal](https://portal.azure.com)depolama hesabınıza gidin.
 1. Depolama hesabınızı seçin ve ardından **erişim denetimi (IAM)** öğesini seçerek hesabın erişim denetimi ayarlarını görüntüleyin. Rol atamalarının listesini görmek için **rol atamaları** sekmesini seçin.
 
-    ![Depolama erişim denetimi ayarlarını gösteren ekran görüntüsü](./media/hdinsight-hadoop-use-data-lake-storage-gen2/portal-access-control.png)
+    :::image type="content" source="./media/hdinsight-hadoop-use-data-lake-storage-gen2/portal-access-control.png" alt-text="Depolama erişim denetimi ayarlarını gösteren ekran görüntüsü":::
 
 1. Yeni bir rol eklemek için **+ rol ataması Ekle** düğmesini seçin.
 1. **Rol ataması Ekle** penceresinde, **Depolama Blobu veri sahibi** rolünü seçin. Ardından, yönetilen kimliğe ve depolama hesabına sahip aboneliği seçin. Ardından, daha önce oluşturduğunuz Kullanıcı tarafından atanan yönetilen kimliği bulmak için arama yapın. Son olarak, yönetilen kimliği seçin ve **Seçilen Üyeler** altında listelenecektir.
 
-    ![Azure rolü atamayı gösteren ekran görüntüsü](./media/hdinsight-hadoop-use-data-lake-storage-gen2/add-rbac-role3-window.png)
+    :::image type="content" source="./media/hdinsight-hadoop-use-data-lake-storage-gen2/add-rbac-role3-window.png" alt-text="Azure rolü atamayı gösteren ekran görüntüsü":::
 
 1. **Kaydet**’i seçin. Seçtiğiniz kullanıcı tarafından atanan kimlik artık seçili rol altında listelenmiştir.
 1. Bu ilk kurulum tamamlandıktan sonra Portal aracılığıyla bir küme oluşturabilirsiniz. Küme, depolama hesabıyla aynı Azure bölgesinde olmalıdır. Küme oluşturma menüsünün **depolama** sekmesinde aşağıdaki seçenekleri belirtin:
@@ -81,7 +81,7 @@ Yönetilen kimliği depolama hesabındaki **Depolama Blobu veri sahibi** rolüne
 
     * **Kimlik** altında, yeni oluşturulan kullanıcı tarafından atanan yönetilen kimliği seçin.
 
-        ![Azure HDInsight ile Data Lake Storage 2. kullanmaya yönelik depolama ayarları](./media/hdinsight-hadoop-use-data-lake-storage-gen2/azure-portal-cluster-storage-gentwo.png)
+        :::image type="content" source="./media/hdinsight-hadoop-use-data-lake-storage-gen2/azure-portal-cluster-storage-gentwo.png" alt-text="Azure HDInsight ile Data Lake Storage 2. kullanmaya yönelik depolama ayarları":::
 
     > [!NOTE]
     > * Depolama hesabı düzeyinde Data Lake Storage 2. olan bir ikincil depolama hesabı eklemek için, daha önce oluşturduğunuz yönetilen kimliği, eklemek istediğiniz yeni Data Lake Storage 2. atamanız yeterlidir. Lütfen HDInsight 'ta "ek depolama hesapları" dikey penceresi aracılığıyla Data Lake Storage 2. ikincil depolama hesabı eklemenin desteklenmediğinden emin olun.

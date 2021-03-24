@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
-ms.openlocfilehash: cd787e1c846bfe4728577cbbce069385ce064a10
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f26813176d4286a052772d2096427231759aacc2
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98943404"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863386"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>HDInsight’ı şirket içi ağınıza bağlama
 
@@ -37,7 +37,7 @@ Bu yapılandırma aşağıdaki davranışı etkinleştirir:
 
 Aşağıdaki diyagramda yeşil çizgiler, sanal ağın DNS son ekine biten kaynaklar için isteklerdir. Mavi çizgiler, şirket içi ağdaki veya genel İnternet 'teki kaynaklara yönelik isteklerdir.
 
-![Yapılandırmada DNS isteklerinin nasıl çözümlendiğini gösteren diyagram](./media/connect-on-premises-network/on-premises-to-cloud-dns.png)
+:::image type="content" source="./media/connect-on-premises-network/on-premises-to-cloud-dns.png" alt-text="Yapılandırmada DNS isteklerinin nasıl çözümlendiğini gösteren diyagram" border="false":::
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -64,7 +64,7 @@ Bu adımlar, Azure sanal makinesi oluşturmak için [Azure Portal](https://porta
   
 1. Üstteki menüden **+ kaynak oluştur**' u seçin.
 
-    ![Ubuntu sanal makinesi oluşturma](./media/connect-on-premises-network/azure-portal-create-resource.png)
+    :::image type="content" source="./media/connect-on-premises-network/azure-portal-create-resource.png" alt-text="Ubuntu sanal makinesi oluşturma":::
 
 1.   >  **Sanal makine oluşturma** sayfasına gitmek için işlem **sanal makinesini** seçin.
 
@@ -83,7 +83,7 @@ Bu adımlar, Azure sanal makinesi oluşturmak için [Azure Portal](https://porta
     |Parola veya SSH ortak anahtarı | Kullanılabilir alan, **kimlik doğrulama türü** için seçtiğiniz seçeneğe göre belirlenir.  Uygun değeri girin.|
     |Genel gelen bağlantı noktaları|**Seçili bağlantı noktalarına Izin ver**' i seçin. Ardından **gelen bağlantı noktaları seçin** açılır listesinden **SSH (22)** öğesini seçin.|
 
-    ![Sanal makine temel yapılandırması](./media/connect-on-premises-network/virtual-machine-basics.png)
+    :::image type="content" source="./media/connect-on-premises-network/virtual-machine-basics.png" alt-text="Sanal makine temel yapılandırması":::
 
     Diğer girişleri varsayılan değerlerde bırakın ve sonra **ağ** sekmesini seçin.
 
@@ -95,7 +95,7 @@ Bu adımlar, Azure sanal makinesi oluşturmak için [Azure Portal](https://porta
     |Alt ağ | Daha önce oluşturduğunuz sanal ağ için varsayılan alt ağı seçin. VPN ağ geçidi tarafından kullanılan alt __ağı seçmeyin.__|
     |Genel IP | Oto doldurulmuş değeri kullanın.  |
 
-    ![HDInsight sanal ağ ayarları](./media/connect-on-premises-network/virtual-network-settings.png)
+    :::image type="content" source="./media/connect-on-premises-network/virtual-network-settings.png" alt-text="HDInsight sanal ağ ayarları":::
 
     Diğer girişleri varsayılan değerlerde bırakın ve ardından **gözden geçir + oluştur**' u seçin.
 
@@ -109,7 +109,7 @@ Sanal makine oluşturulduktan sonra **Kaynağa Git** düğmesine sahip bir **da�
 
 2. Daha sonra kullanmak üzere **genel IP adresi/DNS ad etiketi** ve **özel IP adresi** değerlerini aklınızda yapın.
 
-   ![Ortak ve özel IP adresleri](./media/connect-on-premises-network/virtual-machine-ip-addresses.png)
+   :::image type="content" source="./media/connect-on-premises-network/virtual-machine-ip-addresses.png" alt-text="Ortak ve özel IP adresleri":::
 
 ### <a name="install-and-configure-bind-dns-software"></a>Bağlama (DNS yazılımı) yükleyip yapılandırma
 
@@ -245,7 +245,7 @@ Sanal ağı Azure özyinelemeli çözümleyici yerine özel DNS sunucusu kullana
 
 5. __Kaydet__’i seçin.  <br />  
 
-    ![Ağ için özel DNS sunucusunu ayarlama](./media/connect-on-premises-network/configure-custom-dns.png)
+    :::image type="content" source="./media/connect-on-premises-network/configure-custom-dns.png" alt-text="Ağ için özel DNS sunucusunu ayarlama":::
 
 ## <a name="configure-on-premises-dns-server"></a>Şirket içi DNS sunucusunu yapılandırma
 

@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 36a15560b88c823ff2ae41f160839796bf21e4f8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f26d6b258c1e22d5d28353486378acc9aa0bbd5d
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98730794"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889646"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Windows Sanal Masaüstü nedir?
 
@@ -124,7 +124,7 @@ Aşağıdaki uzak masaüstü istemcileri Windows sanal masaüstünü destekler:
 Windows sanal masaüstü aşağıdaki x64 işletim sistemi görüntülerini destekler:
 
 * Windows 10 Enterprise multi-session, sürüm 1809 veya üzeri
-* Windows 10 Enterprise, sürüm 1809 veya üzeri
+* Windows 10 Enterprise, sürüm 1809 veya üzeri (yalnızca yarı yıllık kanal)
 * Windows 7 Enterprise
 * Windows Server 2019
 * Windows Server 2016

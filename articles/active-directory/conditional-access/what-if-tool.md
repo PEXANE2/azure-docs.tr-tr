@@ -11,18 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3ac799203cade3a907acbe28dee3a8023891db2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 119540738ac2703afd79891d9bf8a4a9ff0c7472
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93077651"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952771"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Koşullu Erişimde What If aracını kullanarak sorunları giderme
 
 [Koşullu erişim](./overview.md) , yetkili kullanıcıların bulut uygulamalarınıza nasıl erişebileceğini denetlemenize olanak tanıyan Azure Active Directory (Azure AD) özelliğidir. Ortamınızdaki koşullu erişim ilkelerinden ne bekleneceğinizi nasıl anlarsınız? Bu soruyu yanıtlamak için **koşullu erişim What If aracı**' nı kullanabilirsiniz.
 
 Bu makalede, koşullu erişim ilkelerinizi test etmek için bu aracı nasıl kullanabileceğiniz açıklanır.
+
+> [!VIDEO https://www.youtube.com/embed/M_iQVM-3C3E]
 
 ## <a name="what-it-is"></a>Nedir?
 

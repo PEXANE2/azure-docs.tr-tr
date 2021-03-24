@@ -14,16 +14,25 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: b168167ce4f44d87c396746cca3f271f95f83163
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4ba679459686340396e0e4d65344295c0fa9c4be
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97632828"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869965"
 ---
 # <a name="what-is-azure-application-consistent-snapshot-tool-preview"></a>Azure uygulama ile tutarlı anlık görüntü aracı nedir (Önizleme)
 
-Azure uygulamayla tutarlı anlık görüntü aracı (AzAcSnap), Linux ortamlarında (örneğin, SUSE ve RHEL) üçüncü taraf veritabanları (SAP HANA) için veri korumasını basitleştirmenizi sağlayan bir komut satırı aracıdır.  
+Azure uygulamayla tutarlı anlık görüntü aracı (AzAcSnap), bir depolama anlık görüntüsünü almadan önce bir uygulama tutarlı duruma koymak için gereken tüm düzenleme işlemlerini işleyerek, üçüncü taraf veritabanları için veri korumasına olanak tanıyan bir komut satırı aracıdır.
+
+## <a name="supported-platforms-and-os"></a>Desteklenen platformlar ve işletim sistemi
+
+- **Veritabanları**
+  - SAP HANA (Ayrıntılar için [destek matrisine](azacsnap-get-started.md#snapshot-support-matrix-from-sap) bakın)
+
+- **İşletim sistemleri**
+  - SUSE Linux Enterprise Server 12 +
+  - Red Hat Enterprise Linux 7 +
 
 ## <a name="benefits-of-using-azacsnap"></a>AzAcSnap kullanmanın avantajları
 

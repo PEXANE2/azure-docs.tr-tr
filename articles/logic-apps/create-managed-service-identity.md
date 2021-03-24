@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
 ms.date: 03/09/2021
-ms.openlocfilehash: 7796fc7e2032559ca3ff5c738c46fe025719942d
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: b038a0530d392c80fc14d09486f298657fe0da17
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102556630"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889340"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Azure Logic Apps içindeki yönetilen kimlikleri kullanarak Azure kaynaklarına erişimi kimlik doğrulaması
 
@@ -156,7 +156,7 @@ Mantıksal uygulamanız için Kullanıcı tarafından atanan bir yönetilen kiml
 * Azure PowerShell
   * [Kullanıcı tarafından atanan kimlik oluşturma](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)
   * [Rol ataması ekle](../active-directory/managed-identities-azure-resources/howto-assign-access-powershell.md)
-* Azure CLI’si
+* Azure CLI
   * [Kullanıcı tarafından atanan kimlik oluşturma](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)
   * [Rol ataması ekle](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)
 * Azure REST API
@@ -402,52 +402,54 @@ Bu adımlarda, Azure portal aracılığıyla yönetilen kimliğin bir tetikleyic
 
      Daha fazla bilgi için bkz. [örnek: yönetilen bağlayıcı tetikleyicisinin veya yönetilen bir kimlikle eylem kimlik doğrulaması](#authenticate-managed-connector-managed-identity).
 
-     Yönetilen bir kimlik kullanmak için oluşturduğunuz bağlantılar, yalnızca yönetilen bir kimlikle çalışacak özel bir bağlantı türüdür. Çalışma zamanında, bağlantı mantıksal uygulamada etkinleştirilen yönetilen kimliği kullanır. Bu yapılandırma, `parameters` `$connections` Kullanıcı tarafından atanan kimliğin etkinleştirilmesi durumunda kimliğin kaynak kimliği ile birlikte bağlantı kaynak kimliği işaretçisi içeren nesnesini içeren mantıksal uygulama kaynak tanımı nesnesine kaydedilir.
+### <a name="connections-that-use-managed-identities"></a>Yönetilen kimlikleri kullanan bağlantılar
 
-     Bu örnek, mantıksal uygulama sistem tarafından atanan yönetilen kimliği etkinleştirdiğinde yapılandırmanın nasıl göründüğünü gösterir:
+Yönetilen kimlik kullanan bağlantılar yalnızca yönetilen bir kimlikle çalışacak özel bir bağlantı türüdür. Çalışma zamanında, bağlantı mantıksal uygulamada etkinleştirilen yönetilen kimliği kullanır. Bu yapılandırma, `parameters` `$connections` Kullanıcı tarafından atanan kimliğin etkinleştirilmesi durumunda kimliğin kaynak kimliği ile birlikte bağlantı kaynak kimliği işaretçisi içeren nesnesini içeren mantıksal uygulama kaynak tanımı nesnesine kaydedilir.
 
-     ```json
-     "parameters": {
-        "$connections": {
-           "value": {
-              "<action-name>": {
-                 "connectionId": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/connections/{connection-name}",
-                 "connectionName": "{connection-name}",
-                 "connectionProperties": {
-                    "authentication": {
-                       "type": "ManagedServiceIdentity"
-                    }
-                 },
-                 "id": "/subscriptions/{Azure-subscription-ID}/providers/Microsoft.Web/locations/{Azure-region}/managedApis/{managed-connector-type}"
-              }
-           }
-        }
-     }
-     ```
+Bu örnek, mantıksal uygulama sistem tarafından atanan yönetilen kimliği etkinleştirdiğinde yapılandırmanın nasıl göründüğünü gösterir:
 
-     Bu örnek, mantıksal uygulama kullanıcı tarafından atanan yönetilen kimliği etkinleştirdiğinde yapılandırmanın nasıl göründüğünü gösterir:
+```json
+"parameters": {
+   "$connections": {
+      "value": {
+         "<action-name>": {
+            "connectionId": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/connections/{connection-name}",
+            "connectionName": "{connection-name}",
+            "connectionProperties": {
+               "authentication": {
+                  "type": "ManagedServiceIdentity"
+               }
+            },
+            "id": "/subscriptions/{Azure-subscription-ID}/providers/Microsoft.Web/locations/{Azure-region}/managedApis/{managed-connector-type}"
+         }
+      }
+   }
+}
+ ```
 
-     ```json
-     "parameters": {
-        "$connections": {
-           "value": {
-              "<action-name>": {
-                 "connectionId": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/connections/{connection-name}",
-                 "connectionName": "{connection-name}",
-                 "connectionProperties": {
-                    "authentication": {
-                       "identity": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{resourceGroupName}/providers/microsoft.managedidentity/userassignedidentities/{managed-identity-name}",
-                       "type": "ManagedServiceIdentity"
-                    }
-                 },
-                 "id": "/subscriptions/{Azure-subscription-ID}/providers/Microsoft.Web/locations/{Azure-region}/managedApis/{managed-connector-type}"
-              }
-           }
-        }
-     }
-     ```
+Bu örnek, mantıksal uygulama kullanıcı tarafından atanan yönetilen kimliği etkinleştirdiğinde yapılandırmanın nasıl göründüğünü gösterir:
 
-     Çalışma zamanı sırasında Logic Apps hizmeti, mantıksal uygulamadaki herhangi bir yönetilen bağlayıcı tetikleyicisi ve eylemi yönetilen kimliği kullanacak şekilde ayarlayıp ayarlamadığını ve tüm gerekli izinlerin tetikleyici ve eylemler tarafından belirtilen hedef kaynaklara erişmek için yönetilen kimliği kullanacak şekilde ayarlandığını denetler. Başarılı olursa, Logic Apps hizmeti yönetilen kimlikle ilişkili Azure AD belirtecini alır ve hedef kaynağa erişimin kimliğini doğrulamak ve tetikleyici ve Eylemler ' de yapılandırılan işlemi gerçekleştirmek için bu kimliği kullanır.
+```json
+"parameters": {
+   "$connections": {
+      "value": {
+         "<action-name>": {
+            "connectionId": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/connections/{connection-name}",
+            "connectionName": "{connection-name}",
+            "connectionProperties": {
+               "authentication": {
+                  "identity": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{resourceGroupName}/providers/microsoft.managedidentity/userassignedidentities/{managed-identity-name}",
+                  "type": "ManagedServiceIdentity"
+               }
+            },
+            "id": "/subscriptions/{Azure-subscription-ID}/providers/Microsoft.Web/locations/{Azure-region}/managedApis/{managed-connector-type}"
+         }
+      }
+   }
+}
+```
+
+Çalışma zamanı sırasında Logic Apps hizmeti, mantıksal uygulamadaki herhangi bir yönetilen bağlayıcı tetikleyicisi ve eylemi yönetilen kimliği kullanacak şekilde ayarlayıp ayarlamadığını ve tüm gerekli izinlerin tetikleyici ve eylemler tarafından belirtilen hedef kaynaklara erişmek için yönetilen kimliği kullanacak şekilde ayarlandığını denetler. Başarılı olursa, Logic Apps hizmeti yönetilen kimlikle ilişkili Azure AD belirtecini alır ve hedef kaynağa erişimin kimliğini doğrulamak ve tetikleyici ve Eylemler ' de yapılandırılan işlemi gerçekleştirmek için bu kimliği kullanır.
 
 <a name="authenticate-built-in-managed-identity"></a>
 
@@ -459,8 +461,8 @@ HTTP tetikleyicisi veya eylemi, mantıksal uygulamanız için etkinleştirdiğin
 |----------|----------|-------------|
 | **Yöntem** | Yes | Çalıştırmak istediğiniz işlem tarafından kullanılan HTTP yöntemi |
 | **URI** | Yes | Hedef Azure kaynağına veya varlığına erişmek için uç nokta URL 'SI. URI sözdizimi genellikle Azure kaynağı veya hizmeti için [kaynak kimliğini](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) içerir. |
-| **Üst Bilgiler** | No | İçerik türü gibi giden isteğe dahil etmek veya istediğiniz tüm üst bilgi değerleri |
-| **Sorgular** | No | Belirli bir işlemin parametresi ya da çalıştırmak istediğiniz işlem için API sürümü gibi isteğe dahil etmek istediğiniz veya isteğe dahil etmek istediğiniz sorgu parametreleri |
+| **Üst Bilgiler** | Hayır | İçerik türü gibi giden isteğe dahil etmek veya istediğiniz tüm üst bilgi değerleri |
+| **Sorgular** | Hayır | Belirli bir işlemin parametresi ya da çalıştırmak istediğiniz işlem için API sürümü gibi isteğe dahil etmek istediğiniz veya isteğe dahil etmek istediğiniz sorgu parametreleri |
 | **Kimlik Doğrulaması** | Yes | Hedef kaynağa veya varlığa erişimi doğrulamak için kullanılacak kimlik doğrulaması türü |
 ||||
 
@@ -471,7 +473,7 @@ Belirli bir örnek olarak, [anlık görüntü blobu işlemini](/rest/api/storage
 
 [Anlık görüntü blobu işlemini](/rest/api/storageservices/snapshot-blob)ÇALıŞTıRMAK için http eylemi şu özellikleri belirtir:
 
-| Özellik | Gerekli | Örnek değer | Description |
+| Özellik | Gerekli | Örnek değer | Açıklama |
 |----------|----------|---------------|-------------|
 | **Yöntem** | Yes | `PUT`| Anlık görüntü blobu işleminin kullandığı HTTP yöntemi |
 | **URI** | Yes | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | Bu söz dizimini kullanan Azure genel (genel) ortamındaki bir Azure Blob depolama dosyasının kaynak KIMLIĞI |
@@ -559,7 +561,7 @@ Mantıksal uygulamanız için yönetilen bir kimlik kullanmayı durdurmak için 
 * Azure PowerShell
   * [Rol atamasını Kaldır](../role-based-access-control/role-assignments-powershell.md)
   * [Kullanıcı tarafından atanan kimliği Sil](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)
-* Azure CLI’si
+* Azure CLI
   * [Rol atamasını Kaldır](../role-based-access-control/role-assignments-cli.md)
   * [Kullanıcı tarafından atanan kimliği Sil](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)
 * Azure REST API

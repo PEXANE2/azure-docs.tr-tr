@@ -9,12 +9,12 @@ ms.topic: reference
 ms.service: iot-edge
 services: iot-edge
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: fe04615e234eaf5b006a80e6f584905626c637ba
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 0b49cf4fe28e2a9b4d15f889d227b443777b1efa
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103489495"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889255"
 ---
 # <a name="powershell-scripts-for-iot-edge-for-linux-on-windows"></a>Windows üzerinde Linux için IoT Edge PowerShell betikleri
 
@@ -140,7 +140,7 @@ Bu makalede açıklanan komutlar `AzureEFLOW.psm1` , altında dizininizde buluna
 
 ## <a name="ssh-eflowvm"></a>Ssh-EflowVm
 
-**SSH-EflowVm** komutu, sanal makinede SSH için kullanılır. Daha fazla bilgi için komutunu kullanın `Get-Help Ssh-EflowVm -full` .
+**SSH-EflowVm** komutu, sanal makinede SSH için kullanılır. Sanal makineye SSH 'ye izin verilen tek hesap, kendisini oluşturan kullanıcı olur. Daha fazla bilgi için komutunu kullanın `Get-Help Ssh-EflowVm -full` .
 
 | Parametre | Kabul edilen değerler | Yorumlar |
 | --------- | --------------- | -------- |

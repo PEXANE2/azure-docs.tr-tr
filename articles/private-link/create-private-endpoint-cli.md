@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 11/07/2020
 ms.author: allensu
-ms.openlocfilehash: bba912930a9dff0a79e0b0d81025b7524c238db0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f74a143859f0a6629c88f0dcb61a97697f49d0be
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94368687"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889238"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak özel uç nokta oluşturma
 
@@ -183,9 +183,9 @@ az network private-endpoint create \
 
 ## <a name="configure-the-private-dns-zone"></a>Özel DNS bölgesini yapılandırma
 
-Bu bölümde, [az Network Private-DNS Zone Create](/cli/azure/ext/privatedns/network/private-dns/zone#ext_privatedns_az_network_private_dns_zone_create)kullanarak özel DNS bölgesi oluşturacak ve yapılandıracaksınız.  
+Bu bölümde, [az Network Private-DNS Zone Create](/cli/azure/network/private-dns/zone#ext_privatedns_az_network_private_dns_zone_create)kullanarak özel DNS bölgesi oluşturacak ve yapılandıracaksınız.  
 
-DNS bölgesine sanal ağ bağlantısı oluşturmak için [az Network Private-DNS link VNET oluştur](/cli/azure/ext/privatedns/network/private-dns/link/vnet#ext_privatedns_az_network_private_dns_link_vnet_create) öğesini kullanacaksınız.
+DNS bölgesine sanal ağ bağlantısı oluşturmak için [az Network Private-DNS link VNET oluştur](/cli/azure/network/private-dns/link/vnet#ext_privatedns_az_network_private_dns_link_vnet_create) öğesini kullanacaksınız.
 
 [Az Network Private-Endpoint DNS-Zone-Group Create](/cli/azure/network/private-endpoint/dns-zone-group#az_network_private_endpoint_dns_zone_group_create)komutuyla bir DNS bölgesi grubu oluşturacaksınız.
 

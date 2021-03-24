@@ -3,12 +3,12 @@ title: Bir özelliğin birden çok örneğini tanımlama
 description: Bir kaynak üzerinde bir özellik oluştururken birden çok kez yinelemek için Azure Resource Manager şablonunda kopyalama işlemi kullanın (ARM şablonu).
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: 958deba6152ffa3bcb1d2d79cd026c0cb2eebcbe
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 1bee4fb672fc0794d5372a4af60b1270105f1755
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102521671"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889017"
 ---
 # <a name="property-iteration-in-arm-templates"></a>ARM şablonlarındaki Özellik yinelemesi
 
@@ -25,7 +25,7 @@ Copy öğesi aşağıdaki genel biçime sahiptir:
 ```json
 "copy": [
   {
-    "name": "<name-of-loop>",
+    "name": "<name-of-property>",
     "count": <number-of-iterations>,
     "input": <values-for-the-property>
   }
@@ -254,7 +254,7 @@ Kaynak ve özellik yinelemesini birlikte kullanabilirsiniz. Özellik yinelemesin
 
 Aşağıdaki örnek, bir özellik için birden fazla değer oluşturmak için ortak bir senaryoyu gösterir.
 
-|Şablon  |Description  |
+|Şablon  |Açıklama  |
 |---------|---------|
 |[Değişken sayıda veri diskine sahip VM dağıtımı](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |Bir sanal makine ile birden fazla veri diski dağıtır. |
 

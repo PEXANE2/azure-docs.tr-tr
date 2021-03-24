@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 09/17/2020
+ms.date: 03/22/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 649c5805c600b6282be6d05fefb59cecaf249f4f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3877134f8a00cd627909d7f889fd5b104ccbd8b1
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92526145"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863634"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>BGP tüm Azure VPN Gateway SKU'larında destekleniyor mu?
 BGP, temel SKU hariç tüm Azure VPN Gateway SKU 'Larında desteklenir.
@@ -108,3 +108,8 @@ VPN cihazınıza Azure BGP eş IP adresinin bir konak yolunu ekleyin. Bu yol, IP
 Hayır. Çift yönlü Iletme algılaması (BFD) BGP ile birlikte kullanabileceğiniz ve standart BGP "keepkeep" kullanarak daha hızlı komşu kesinti süresini tespit eden bir protokoldür. BFD, genel İnternet veya geniş alan ağı bağlantılarında değil, LAN ortamlarında çalışmak için tasarlanan alt saniye zamanlayıcıları kullanır.
 
 Genel internet üzerinden yapılan bağlantılar için, belirli paketlerin gecikilmesi veya hatta bırakılması olağandışı olmadığından, bu ısrarlı zamanlayıcılar için bir tutarsızlık eklenebilir. Bu kararsızlık, yolların BGP tarafından sönmesine neden olabilir. Alternatif olarak, şirket içi cihazınızı varsayılan, 60-ikinci "KeepAlive" aralığından ve 180 saniyelik ayrı tutma zamanlayıcıdan daha düşük zamanlayıcılar ile yapılandırabilirsiniz. Bu, daha hızlı yakınsama süresine neden olur.
+
+### <a name="do-azure-vpn-gateways-initiate-bgp-peering-sessions-or-connections"></a>Azure VPN ağ geçitleri BGP eşleme oturumları veya bağlantıları başlatır mi?
+
+Ağ Geçidi, VPN ağ geçitlerinde özel IP adresleri kullanılarak yerel ağ geçidi kaynaklarında belirtilen şirket içi BGP eşi IP adreslerine BGP eşleme oturumları başlatacak. Bu, şirket içi BGP IP adreslerinin APIPA aralığında veya normal özel IP adreslerinde olup olmadığına bakılmaksızın olur. Şirket içi VPN cihazlarınız APIPA adreslerini BGP IP 'si olarak kullanıyorsa, bağlantıları başlatmak için BGP konuşmacıyı yapılandırmanız gerekir.
+

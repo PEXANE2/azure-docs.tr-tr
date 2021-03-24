@@ -6,14 +6,14 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 24a8dd4d21cb6ab6edeb985db4e6e6a1349a758d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2e66b27f7f0c731e17bb9811e2376bbe09c1bc12
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90942046"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950153"
 ---
-# <a name="encrypted-connectivity-using-transport-layer-security-tls-12-in-azure-database-for-mysql---flexible-server"></a>MySQL için Azure veritabanı 'nda Aktarım Katmanı Güvenliği (TLS 1,2) kullanılarak şifrelenmiş bağlantı-esnek sunucu
+# <a name="connect-to-azure-database-for-mysql---flexible-server-over-tls12ssl"></a>MySQL için Azure veritabanı 'na bağlanma-TLS 1.2/SSL üzerinden esnek sunucu
 
 > [!IMPORTANT]
 > MySQL için Azure veritabanı esnek sunucu şu anda genel önizlemede
@@ -22,8 +22,10 @@ MySQL için Azure veritabanı esnek sunucu, istemci uygulamalarınızı, daha ö
 
 MySQL için Azure veritabanı esnek sunucu, yalnızca Aktarım Katmanı Güvenliği (TLS 1,2) kullanılarak şifrelenmiş bağlantıları destekler ve TLS 1,0 ve TLS 1,1 tüm gelen bağlantıları reddedilir. Tüm esnek sunucular için TLS bağlantıları zorlaması etkinleştirilmiştir ve esnek sunucuya bağlanmak için TLS/SSL 'yi devre dışı bırakayükleyemezsiniz.
 
-## <a name="applications-that-require-certificate-verification-for-tlsssl-connectivity"></a>TLS/SSL bağlantısı için sertifika doğrulaması gerektiren uygulamalar
-Bazı durumlarda, uygulamalar güvenli bir şekilde bağlanmak için güvenilir bir sertifika yetkilisi (CA) sertifika dosyasından oluşturulan yerel bir sertifika dosyası gerektirir. MySQL için Azure veritabanı esnek sunucu, *DigiCert genel kök CA 'sını* kullanır. [DigiCert küresel kök CA](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) 'dan SSL üzerinden iletişim kurmak için gereken bu sertifikayı indirin ve sertifika dosyasını tercih ettiğiniz konuma kaydedin. Örneğin, bu öğretici kullanır `c:\ssl` .
+## <a name="download-the-public-ssl-certificate"></a>Ortak SSL sertifikasını indirin
+Appliations ile kullanmak için lütfen [genel SSL sertifikasını](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)indirin.
+
+Sertifika dosyasını tercih ettiğiniz konuma kaydedin. Örneğin, bu öğretici `c:\ssl` `\var\www\html\bin` Yerel ortamınızda veya uygulamanızın barındırıldığı istemci ortamında kullanılır. Bu, uygulamaların SSL üzerinden veritabanına güvenli bir şekilde bağlanmasına imkan tanır. 
 
 ### <a name="connect-using-mysql-command-line-client-with-tlsssl"></a>MySQL komut satırı istemcisini TLS/SSL ile bağlama
 
@@ -58,6 +60,16 @@ Veritabanı Hizmetleri için MySQL kullanan bazı uygulama çerçeveleri, yükle
 Azure portal sunucunuz için kullanılabilir olan "bağlantı dizeleri" sayfasında önceden tanımlanmış bağlantı dizeleri, TLS/SSL kullanarak veritabanı sunucunuza bağlanmak için gereken ortak diller için gerekli parametreleri içerir. TLS/SSL parametresi bağlayıcıya göre değişir. Örneğin, "useSSL = true", "sslmode = Required" veya "ssl_verify_cert = true" ve diğer Çeşitlemeler.
 
 Uygulamanızdaki TLS/SSL üzerinden esnek sunucunuza şifreli bir bağlantı kurmak için aşağıdaki kod örneklerine bakın:
+
+### <a name="wordpress"></a>WordPress
+[SSL ortak sertifikasını](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) indirin ve satırdan sonra wp-config. php içine aşağıdaki satırları ekleyin ```// ** MySQL settings - You can get this info from your web host ** //``` .
+
+```php
+//** Connect with SSL** //
+define('MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL);
+//** SSL CERT **//
+define('MYSQL_SSL_CERT','/FULLPATH/on-client/to/DigiCertGlobalRootCA.crt.pem');
+```
 
 ### <a name="php"></a>PHP
 

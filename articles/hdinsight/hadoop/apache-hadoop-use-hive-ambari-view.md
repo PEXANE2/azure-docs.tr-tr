@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: 1f2dbef014f1b48b554e6bc30af83b936fe532a7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 87a4d3960937450713747fa16bd473b4c34eff0e
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98944867"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867874"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>HDInsight'ta Apache Hadoop ile Apache Ambari Hive Görünümünü Kullanma
 
@@ -30,11 +30,11 @@ HDInsight üzerinde bir Hadoop kümesi. Bkz. [Linux 'Ta HDInsight kullanmaya ba�
 
 1. Görünümler listesinden __Hive görünümü__' nü seçin.
 
-    ![Apache ambarı Apache Hive görünüm seç](./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png)
+    :::image type="content" source="./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png" alt-text="Apache ambarı Apache Hive görünüm seç" border="true":::
 
     Hive görünümü sayfası aşağıdaki görüntüye benzer:
 
-    ![Hive görünümü için sorgu çalışma sayfasının görüntüsü](./media/apache-hadoop-use-hive-ambari-view/ambari-worksheet-view.png)
+    :::image type="content" source="./media/apache-hadoop-use-hive-ambari-view/ambari-worksheet-view.png" alt-text="Hive görünümü için sorgu çalışma sayfasının görüntüsü" border="true":::
 
 1. __Sorgu__ sekmesinden aşağıdaki HiveQL deyimlerini çalışma sayfasına yapıştırın:
 
@@ -99,19 +99,19 @@ Sorgu için tez Kullanıcı arabirimini göstermek için, çalışma sayfasını
 
 __İşler__ sekmesi Hive sorgularının geçmişini görüntüler.
 
-![Apache Hive işleri sekme geçmişini görüntüleme](./media/apache-hadoop-use-hive-ambari-view/apache-hive-job-history.png)
+:::image type="content" source="./media/apache-hadoop-use-hive-ambari-view/apache-hive-job-history.png" alt-text="Apache Hive işleri sekme geçmişini görüntüleme" border="true":::
 
 ## <a name="database-tables"></a>Veritabanı tabloları
 
 Hive veritabanı içindeki tablolarla çalışmak için __Tablolar__ sekmesini kullanabilirsiniz.
 
-![Apache Hive tabloları sekmesinin görüntüsü](./media/apache-hadoop-use-hive-ambari-view/hdinsight-tables-tab.png)
+:::image type="content" source="./media/apache-hadoop-use-hive-ambari-view/hdinsight-tables-tab.png" alt-text="Apache Hive tabloları sekmesinin görüntüsü" border="true":::
 
 ## <a name="saved-queries"></a>Kaydedilen sorgular
 
 **Sorgu** sekmesinden, isteğe bağlı olarak sorguları kaydedebilirsiniz. Bir sorguyu kaydettikten sonra, __kaydedilmiş sorgular__ sekmesinden onu yeniden kullanabilirsiniz.
 
-![Apache Hive kaydedilmiş sorgular sekmesini görüntüleme](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
+:::image type="content" source="./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png" alt-text="Apache Hive kaydedilmiş sorgular sekmesini görüntüleme" border="true":::
 
 > [!TIP]  
 > Kayıtlı sorgular varsayılan küme depolama alanında depolanır. Kaydedilen sorguları yolun altında bulabilirsiniz `/user/<username>/hive/scripts` . Bunlar düz metin dosyaları olarak depolanır `.hql` .
@@ -124,7 +124,7 @@ Kullanıcı tanımlı işlevler (UDF) aracılığıyla Hive 'yi genişletebilirs
 
 Hive görünümünün en üstündeki **udf** sekmesini kullanarak bir UDF kümesi bildirin ve kaydedin. Bu UDF 'ler **sorgu Düzenleyicisi** ile kullanılabilir.
 
-![Apache Hive görünüm UDF sekmesi görüntüleme](./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png)
+:::image type="content" source="./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png" alt-text="Apache Hive görünüm UDF sekmesi görüntüleme" border="true":::
 
 **Sorgu düzenleyicisinin** alt kısmında bir **udf Ekle** düğmesi görünür. Bu giriş, Hive görünümünde tanımlanan UDF 'ler için açılan bir liste görüntüler. UDF 'nin seçilmesi, UDF 'yi etkinleştirmek için sorgulamanızı HiveQL deyimleri ekler.
 
