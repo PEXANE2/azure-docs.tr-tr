@@ -7,14 +7,14 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 3/2/2021
 ms.author: rahugup
-ms.openlocfilehash: ecc31019ccedc21683eed1a3186cec91d4c5c567
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ea7cdfbd30cf698cecbb14a1d70916764ad3247a
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103466601"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023121"
 ---
-# <a name="containerize-java-web-applications-and-migrate-to-azure-kubernetes-service"></a>Java Web uygulamalarını Kapsayılaştırır ve Azure Kubernetes hizmetine geçirin
+# <a name="java-web-app-containerization-and-migration-to-azure-kubernetes-service"></a>Java Web uygulaması kapsayıcılama ve Azure Kubernetes hizmetine geçiş
 
 Bu makalede, Java Web uygulamalarını kapsayılaştırma (Apache Tomcat üzerinde çalışan) ve Azure geçişi: uygulama Kapsayıcılama aracını kullanarak bunları [Azure Kubernetes Service 'e (AKS)](https://azure.microsoft.com/services/kubernetes-service/) geçirme hakkında bilgi edineceksiniz. Kapsayıcı oluşturma işlemi, kod tabanınıza erişim gerektirmez ve mevcut uygulamaları kapsayıtabilecek kolay bir yol sağlar. Araç, uygulama bileşenlerini belirleyebilmek ve bunları bir kapsayıcı görüntüsünde paketlemenize yardımcı olmak için bir sunucudaki uygulamaların çalışma durumunu kullanarak çalışır. Kapsayıcılı uygulama daha sonra Azure Kubernetes Service (AKS) üzerinde dağıtılabilir.
 
@@ -59,7 +59,7 @@ Bu öğreticiye başlamadan önce karşılamanız gereken ön koşullar şunlard
 
 **Gereksinim** | **Ayrıntılar**
 --- | ---
-**Aracı yüklemek için bir makine tanımla** | Azure geçişi: uygulama Kapsayıcılama aracı 'nı yüklemek ve çalıştırmak için bir Windows makinesi. Windows makinesi bir sunucu (Windows Server 2016 veya üzeri) veya istemci (Windows 10) işletim sistemi olabilir. Bu, aracın masaüstünüzde da çalıştırılabileceği anlamına gelir. <br/><br/> Aracı çalıştıran Windows makinesi, Kapsayıcılı ASP.NET uygulamalarını barındıran sunucularla/sanal makinelere ağ bağlantısına sahip olmalıdır.<br/><br/> Uygulama yapıtlarını depolamak için Azure geçişi: uygulama Kapsayıcılama aracı 'nı çalıştıran Windows makinesinde 6 GB 'lık alanın kullanılabilir olduğundan emin olun. <br/><br/> Windows makinesi, doğrudan veya bir proxy aracılığıyla internet erişimine sahip olmalıdır. <br/> <br/>Uygulama Kapsayıcılama Yardımcısı aracı 'nı çalıştıran makineye Microsoft Web Dağıtımı aracını ve henüz yüklenmemişse uygulama sunucusunu yükleme. Aracı [buradan](https://aka.ms/webdeploy3.6) indirebilirsiniz
+**Aracı yüklemek için bir makine tanımla** | Azure geçişi: uygulama Kapsayıcılama aracı 'nı yüklemek ve çalıştırmak için bir Windows makinesi. Windows makinesi bir sunucu (Windows Server 2016 veya üzeri) veya istemci (Windows 10) işletim sistemi olabilir. Bu, aracın masaüstünüzde da çalıştırılabileceği anlamına gelir. <br/><br/> Aracı çalıştıran Windows makinesinin, kapsayıcıya alınacak ASP.NET uygulamalarını barındıran sunuculara/sanal makinelere ağ bağlantısı olmalıdır.<br/><br/> Uygulama yapıtlarını depolamak için Azure geçişi: uygulama Kapsayıcılama aracı 'nı çalıştıran Windows makinesinde 6 GB 'lık alanın kullanılabilir olduğundan emin olun. <br/><br/> Windows makinesinin doğrudan veya ara sunucu üzerinden İnternet erişimi olmalıdır. <br/> <br/>Uygulama Kapsayıcılama Yardımcısı aracı 'nı çalıştıran makineye Microsoft Web Dağıtımı aracını ve henüz yüklenmemişse uygulama sunucusunu yükleme. Aracı [buradan](https://aka.ms/webdeploy3.6) indirebilirsiniz
 **Uygulama sunucuları** | -Kapsayıcıya eklenecek Java uygulamalarının çalıştırıldığı sunucu (lar) da bağlantı noktası 22 ' de Secure Shell (SSH) bağlantısını etkinleştirin. <br/>
 **Java Web uygulaması** | Araç şu anda destekliyor <br/><br/> -Tomcat 8 veya üzeri sürümlerde çalışan uygulamalar.<br/> -Ubuntu Linux 16.04/18.04/20.04, detem 7/8, CentOS 6/7, Red Hat Enterprise Linux 5/6/7 üzerindeki uygulama sunucuları. <br/> -Java sürüm 7 veya üstünü kullanan uygulamalar.  <br/><br/> Araç şu anda desteklenmiyor <br/><br/> -Birden çok Tomcat örneği çalıştıran uygulama sunucuları <br/>  
 
@@ -104,7 +104,7 @@ Aboneliğiniz kurulduktan sonra, aşağıdakileri içeren bir Azure Kullanıcı 
 3. Komutunu kullanarak yükleme betiğini çalıştırın
 
    ```powershell
-   .\App ContainerizationInstaller.ps1
+   .\AppContainerizationInstaller.ps1
    ```
 
 ## <a name="launch-the-app-containerization-tool"></a>Uygulama Kapsayıcılama aracını Başlat

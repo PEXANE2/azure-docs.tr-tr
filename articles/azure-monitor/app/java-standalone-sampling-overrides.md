@@ -6,23 +6,22 @@ ms.date: 03/22/2021
 author: trask
 ms.custom: devx-track-java
 ms.author: trstalna
-ms.openlocfilehash: 03d3093f14d97b2cc64d91e0d1b7adf34204a021
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 17979bd548ca0d7b704ebdeb4d060bf35973b319
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "104962707"
+ms.locfileid: "105024158"
 ---
 # <a name="sampling-overrides-preview---azure-monitor-application-insights-for-java"></a>Örnekleme geçersiz kılmaları (Önizleme)-Java için Azure Izleyici Application Insights
 
 > [!NOTE]
-> Örnekleme geçersiz kılmaları özelliği önizlemededir.
+> Örnekleme geçersiz kılmaları özelliği 3.0.3-BETA sürümünden başlayarak önizlemededir. 2.
 
-Örnekleme geçersiz kılma işlemleri için bazı kullanım durumları şunlardır:
- * Sistem durumu denetimleri için telemetri toplamayı gizleyin.
- * Gürültülü bağımlılık çağrıları için telemetri toplamayı gizleyin.
- * Tamamen etkilemeden sistem durumu denetimlerinden veya gürültülü bağımlılık çağrılarından paraziti azaltın.
- * Önemli bir istek türü için telemetri %100 toplayın (örn. `/login` ), daha düşük bir örnek için yapılandırılmış varsayılan örnekseniz bile.
+Örnekleme geçersiz kılmaları [Varsayılan örnekleme yüzdesini](./java-standalone-config.md#sampling)geçersiz kılmanızı sağlar, örneğin:
+ * Gürültülü durum denetimleri için örnekleme yüzdesini 0 (veya küçük bir değer) olarak ayarlayın.
+ * Gürültülü bağımlılık çağrıları için örnekleme yüzdesini 0 (veya küçük bir değer) olarak ayarlayın.
+ * Örnekleme yüzdesini önemli bir istek türü için 100 olarak ayarlayın (örn. `/login` ), varsayılan örneklemenin daha düşük bir değere yapılandırılmış olmasına rağmen.
 
 ## <a name="terminology"></a>Terminoloji
 
@@ -79,7 +78,7 @@ Yalnızca eşleşen ilk örnekleme geçersiz kılma kullanılır.
 
 Örnekleme hiçbir geçersiz kılma eşleşmezse:
 
-* Bu, izlemenin ilk yayılmasına göre [normal örnekleme yüzdesi](./java-standalone-config.md#sampling) kullanılır.
+* Bu, izlem içindeki ilk yayılma ise, [Varsayılan örnekleme yüzdesi](./java-standalone-config.md#sampling) kullanılır.
 * Bu, izlemede ilk Aralık değilse, ana örnekleme kararı kullanılır.
 
 > [!IMPORTANT]

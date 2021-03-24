@@ -5,12 +5,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2019
-ms.openlocfilehash: 544d6937e412e3e1cfc2cf4e520c02f3f804fc8c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fe8714f38c6a04b311a748f3eb081be82eb86635
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102047171"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105024157"
 ---
 # <a name="azure-monitor-overview"></a>Azure İzleyici'ye genel bakış
 
@@ -144,7 +144,7 @@ Oluşturulan uyarılara erişmenin yanı sıra Azure Izleyici 'ye ve bunlara yö
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdakiler hakkında daha fazla bilgi edinin:
 
-* Azure Izleyici tarafından toplanan veriler için [ölçümler ve Günlükler](https://docs.microsoft.com/azure/azure-monitor/data-platform#metrics) .
+* Azure Izleyici tarafından toplanan veriler için [ölçümler ve Günlükler](./data-platform.md#metrics) .
 * Uygulamanızın farklı bileşenlerinin telemetri gönderme yöntemi için [veri kaynakları](agents/data-sources.md) .
 * Toplanan verileri çözümlemek için [günlük sorguları](logs/log-query-overview.md) .
 * Bulut uygulamalarını ve hizmetlerini izlemeye yönelik [en iyi uygulamalar](/azure/architecture/best-practices/monitoring) .

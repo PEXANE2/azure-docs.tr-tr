@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 516a66ef64512cbe4fa4c3589e651c14ddf18550
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 38b6251c4b464214d66f7240dab9d5d23812f946
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101647634"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023223"
 ---
 # <a name="azure-security-baseline-for-azure-cache-for-redis"></a>Redsıs için Azure önbelleği için Azure Güvenlik temeli
 
@@ -34,7 +34,7 @@ Ayrıca, bir başlangıç ve bitiş IP adresi aralığı ile güvenlik duvarı k
 
 - [Redsıs için Premium Azure önbelleği için sanal ağ desteğini yapılandırma](cache-how-to-premium-vnet.md)
 
-- [Redsıs güvenlik duvarı kuralları için Azure önbelleğini yapılandırma](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#firewall)
+- [Redsıs güvenlik duvarı kuralları için Azure önbelleğini yapılandırma](./cache-configure.md#firewall)
 
 **Sorumluluk**: Müşteri
 
@@ -68,7 +68,7 @@ Reddo örnekleri için Azure önbelleğiyle ilişkili sanal ağlarda, dağıtıl
 
 - [Redsıs için Premium Azure önbelleği için sanal ağ desteğini yapılandırma](cache-how-to-premium-vnet.md)
 
-- [Azure portal kullanarak Azure DDoS koruması standardını yönetme](/azure/virtual-network/manage-ddos-protection)
+- [Azure portal kullanarak Azure DDoS koruması standardını yönetme](../ddos-protection/manage-ddos-protection.md)
 
 **Sorumluluk**: Müşteri
 
@@ -118,7 +118,7 @@ Ayrıca, karmaşık güvenlik yapılandırmasını basitleştirmeye yardımcı o
 
 - [Sanal ağ hizmeti etiketleri](../virtual-network/service-tags-overview.md)
 
-- [Uygulama güvenlik grupları](/azure/virtual-network/security-overview#application-security-groups)
+- [Uygulama güvenlik grupları](../virtual-network/network-security-groups-overview.md#application-security-groups)
 
 **Sorumluluk**: Müşteri
 
@@ -145,7 +145,7 @@ Ayrıca, tek bir şema tanımında Azure Resource Manager şablonları, Azure ro
 
 **Rehberlik**: bir taksonomi halinde mantıksal olarak organize etmek için redsıs dağıtımı Için Azure önbelleğiniz ile ilişkili ağ kaynakları için Etiketler kullanın.
 
-- [Etiketler oluşturma ve kullanma](/azure/azure-resource-manager/resource-group-using-tags)
+- [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
 **Sorumluluk**: Müşteri
 
@@ -155,9 +155,9 @@ Ayrıca, tek bir şema tanımında Azure Resource Manager şablonları, Azure ro
 
 **Kılavuz**: Azure etkinlik günlüğünü kullanarak ağ kaynak yapılandırmasını Izleyin ve redsıs örnekleri Için Azure önbelleğiniz ile ilgili ağ kaynaklarına yönelik değişiklikleri tespit edin. Kritik ağ kaynaklarında yapılan değişiklikler yürürlüğe girdiğinde tetiklenecek Azure Izleyici içinde uyarılar oluşturun.
 
-- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](/azure/azure-monitor/platform/activity-log-view)
+- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Izleyici 'de uyarı oluşturma](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Sorumluluk**: Müşteri
 
@@ -171,7 +171,7 @@ Ayrıca, tek bir şema tanımında Azure Resource Manager şablonları, Azure ro
 
 **Kılavuz**: Azure etkinlik günlüğü tanılama ayarlarını etkinleştirin ve günlükleri bir Log Analytics çalışma alanına, Azure Olay Hub 'ına veya Arşiv için Azure depolama hesabına gönderin. Etkinlik günlükleri, denetim düzlemi düzeyinde Redsıs örnekleri için Azure önbelleğiniz üzerinde gerçekleştirilen işlemlere ilişkin öngörüler sağlar. Azure etkinlik günlüğü verilerini kullanarak, Redsıs örnekleri için Azure önbelleğiniz için denetim düzlemi düzeyinde gerçekleştirilen herhangi bir yazma işlemi (PUT, POST, DELETE) için "ne, kim ve ne zaman" ı belirleyebilirsiniz.
 
-- [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/essentials/activity-log.md)
 
 **Sorumluluk**: Müşteri
 
@@ -183,7 +183,7 @@ Ayrıca, tek bir şema tanımında Azure Resource Manager şablonları, Azure ro
 
 Tanılama ayarlarını etkinleştirerek ölçümler kullanılabilir olsa da, veri düzleminde denetim günlüğü Redsıs için Azure önbelleği için henüz kullanılamıyor.
 
-- [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/essentials/activity-log.md)
 
 **Sorumluluk**: Müşteri
 
@@ -195,7 +195,7 @@ Tanılama ayarlarını etkinleştirerek ölçümler kullanılabilir olsa da, ver
 
 Veri düzlemine yönelik denetim günlüğü kaydının, Redsıs için Azure önbelleği için henüz kullanılabilir olmadığına unutmayın.
 
-- [Günlük tutma parametrelerini ayarlama](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Günlük tutma parametrelerini ayarlama](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Sorumluluk**: Müşteri
 
@@ -207,9 +207,9 @@ Veri düzlemine yönelik denetim günlüğü kaydının, Redsıs için Azure ön
 
 Veri düzlemine yönelik denetim günlüğü kaydının, Redsıs için Azure önbelleği için henüz kullanılabilir olmadığına unutmayın.
 
-- [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/essentials/activity-log.md)
 
-- [Azure Izleyici 'de Log Analytics çalışma alanında Azure etkinlik günlüklerini toplama ve çözümleme](/azure/azure-monitor/platform/activity-log-collect)
+- [Azure Izleyici 'de Log Analytics çalışma alanında Azure etkinlik günlüklerini toplama ve çözümleme](../azure-monitor/essentials/activity-log.md)
 
 **Sorumluluk**: Müşteri
 
@@ -221,7 +221,7 @@ Veri düzlemine yönelik denetim günlüğü kaydının, Redsıs için Azure ön
 
 Tanılama ayarlarını etkinleştirerek ölçümler kullanılabilir olsa da, veri düzleminde denetim günlüğü Redsıs için Azure önbelleği için henüz kullanılamıyor.
 
-- [Redsıs için Azure önbelleği uyarılarını yapılandırma](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-monitor#alerts)
+- [Redsıs için Azure önbelleği uyarılarını yapılandırma](./cache-how-to-monitor.md#alerts)
 
 **Sorumluluk**: Müşteri
 
@@ -235,9 +235,9 @@ Tanılama ayarlarını etkinleştirerek ölçümler kullanılabilir olsa da, ver
 
 **Rehberlik**: Azure Active Directory (Azure AD), açıkça atanması ve sorgulanabilir olması gereken yerleşik roller içerir. Yönetim gruplarının üyesi olan hesapları bulmaya yönelik geçici sorgular gerçekleştirmek için Azure AD PowerShell modülünü kullanın.
 
-- [Azure AD 'de PowerShell ile dizin rolü alma](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
+- [Azure AD 'de PowerShell ile dizin rolü alma](/powershell/module/azuread/get-azureaddirectoryrole?preserve-view=true&view=azureadps-2.0)
 
-- [Azure AD 'de PowerShell ile bir dizin rolünün üyelerini alma](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [Azure AD 'de PowerShell ile bir dizin rolünün üyelerini alma](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
 **Sorumluluk**: Müşteri
 
@@ -251,7 +251,7 @@ Redo için Azure önbelleğine veri düzlemi erişimi, erişim anahtarları arac
 
 Uygulamanızda varsayılan parolalar oluşturmanız önerilmez. Bunun yerine, parolalarınızı Azure Key Vault kaydedebilir ve ardından bunları almak için Azure AD 'yi kullanabilirsiniz.
 
-- [Redsıs erişim tuşları için Azure önbelleğini yeniden üretme](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#settings)
+- [Redsıs erişim tuşları için Azure önbelleğini yeniden üretme](./cache-configure.md#settings)
 
 **Sorumluluk**: Paylaşılan
 
@@ -323,7 +323,7 @@ Ayrıca, riskli Kullanıcı davranışında uyarıları ve raporları görüntü
 
 - [Privileged Identity Management dağıtma (PıM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-- [Azure AD risk algılamalarını anlama](/azure/active-directory/reports-monitoring/concept-risk-events)
+- [Azure AD risk algılamalarını anlama](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Sorumluluk**: Müşteri
 
@@ -353,7 +353,7 @@ Azure AD kimlik doğrulaması, Redsıs ' veri düzlemi için Azure önbelleğine
 
 **Rehberlik**: Azure Active Directory (Azure AD) eski hesapları keşfetmenize yardımcı olacak Günlükler sağlar. Ayrıca, grup üyeliklerini etkin bir şekilde yönetmek, kurumsal uygulamalara erişmek ve rol atamaları için Azure kimlik erişimi Incelemelerini kullanın. Yalnızca doğru kullanıcıların erişmeye devam ettiğinden emin olmak için, Kullanıcı erişimi düzenli olarak incelenebilir.
 
-- [Azure AD raporlamayı anlama](/azure/active-directory/reports-monitoring/)
+- [Azure AD raporlamayı anlama](../active-directory/reports-monitoring/index.yml)
 
 - [Azure kimlik erişimi Incelemelerini kullanma](../active-directory/governance/access-reviews-overview.md)
 
@@ -367,7 +367,7 @@ Azure AD kimlik doğrulaması, Redsıs ' veri düzlemi için Azure önbelleğine
 
 Bu işlemi, Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturarak ve Log Analytics çalışma alanına denetim günlüklerini ve oturum açma günlüklerini göndererek kolaylaştırabilirsiniz. Log Analytics içinde, istenen günlük uyarılarını yapılandırabilirsiniz.
 
-- [Azure Etkinlik Günlüklerini Azure İzleyici ile tümleştirme](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure Etkinlik Günlüklerini Azure İzleyici ile tümleştirme](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [Yerleşik Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -379,7 +379,7 @@ Bu işlemi, Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturar
 
 **Kılavuz**: denetim düzleminde hesap oturum açma davranışı sapması için, Kullanıcı kimlikleriyle ilgili şüpheli eylemler tespit etmek üzere otomatik yanıtları yapılandırmak üzere Azure Active Directory (Azure AD) kimlik koruması ve risk algılama özelliklerini kullanın. Ayrıca, daha fazla araştırma için verileri Azure Sentinel 'e aktarabilirsiniz.
 
-- [Azure AD riskli oturum açma işlemlerini görüntüleme](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Azure AD riskli oturum açma işlemlerini görüntüleme](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Kimlik koruması risk ilkelerini yapılandırma ve etkinleştirme](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -397,7 +397,7 @@ Bu işlemi, Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturar
 
 **Rehberlik**: hassas bilgileri depolayan veya işleyen Azure kaynaklarını izlemeye yardımcı olması için etiketleri kullanın.
 
-- [Etiketler oluşturma ve kullanma](/azure/azure-resource-manager/resource-group-using-tags)
+- [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
 **Sorumluluk**: Müşteri
 
@@ -407,15 +407,15 @@ Bu işlemi, Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturar
 
 **Rehberlik**: geliştirme, test ve üretim için ayrı abonelikler ve/veya yönetim grupları uygulayın. Redsıs örnekleri için Azure önbelleği, sanal ağ/alt ağ ile ayrılmalıdır ve uygun şekilde etiketlenemez. İsteğe bağlı olarak, yalnızca belirtilen IP adresi aralıklarından gelen istemci bağlantılarının önbelleğe bağlanabilmesi için kurallar tanımlamak üzere Redsıs güvenlik duvarı için Azure önbelleğini kullanın.
 
-- [Ek Azure abonelikleri oluşturma](/azure/billing/billing-create-subscription)
+- [Ek Azure abonelikleri oluşturma](../cost-management-billing/manage/create-subscription.md)
 
-- [Yönetim Grupları oluşturma](/azure/governance/management-groups/create)
+- [Yönetim Grupları oluşturma](../governance/management-groups/create-management-group-portal.md)
 
 - [Redsıs için Azure önbelleğini VNET 'e dağıtma](cache-how-to-premium-vnet.md)
 
-- [Redsıs güvenlik duvarı kuralları için Azure önbelleğini yapılandırma](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#firewall)
+- [Redsıs güvenlik duvarı kuralları için Azure önbelleğini yapılandırma](./cache-configure.md#firewall)
 
-- [Etiketler oluşturma ve kullanma](/azure/azure-resource-manager/resource-group-using-tags)
+- [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
 **Sorumluluk**: Müşteri
 
@@ -439,7 +439,7 @@ Microsoft, Redsıs için Azure önbelleği için temel altyapıyı yönetir ve m
 
 - [Redsıs için Azure önbelleği için yoldaki şifrelemeyi anlayın](cache-best-practices.md)
 
-- [VNET önbellek senaryolarında kullanılan gerekli bağlantı noktalarını anlama](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-premium-vnet#outbound-port-requirements)
+- [VNET önbellek senaryolarında kullanılan gerekli bağlantı noktalarını anlama](./cache-how-to-premium-vnet.md#outbound-port-requirements)
 
 **Sorumluluk**: Paylaşılan
 
@@ -493,7 +493,7 @@ Azure depolama 'daki veriler, 256 bit AES şifrelemesi kullanılarak şifrelenmi
 
 **Kılavuz**: Reda ve diğer kritik veya ilgili kaynaklar Için Azure Cache 'in üretim örneklerine değişiklik gerçekleşirken uyarı oluşturmak üzere Azure etkinlik günlüğü Ile Azure izleyici 'yi kullanın.
 
-- [Azure etkinlik günlüğü olayları için uyarı oluşturma](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Sorumluluk**: Müşteri
 
@@ -527,7 +527,7 @@ Klasik Azure kaynakları kaynak Graph aracılığıyla bulunabilse de, ileri do�
 
 - [Azure Kaynak Graf ile sorgu oluşturma](../governance/resource-graph/first-query-portal.md)
 
-- [Azure aboneliklerinizi görüntüleme](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Azure aboneliklerinizi görüntüleme](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Azure RBAC 'yi anlama](../role-based-access-control/overview.md)
 
@@ -539,7 +539,7 @@ Klasik Azure kaynakları kaynak Graph aracılığıyla bulunabilse de, ileri do�
 
 **Kılavuz**: Azure kaynaklarına Etiketler uygulayarak bunları bir taksonomi halinde mantıksal olarak organize etmek için meta veriler verirsiniz.
 
-- [Etiketler oluşturma ve kullanma](/azure/azure-resource-manager/resource-group-using-tags)
+- [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
 **Sorumluluk**: Müşteri
 
@@ -557,11 +557,11 @@ Ayrıca, aşağıdaki yerleşik ilke tanımlarını kullanarak müşteri aboneli
 
 Daha fazla bilgi için aşağıdaki başvuruları inceleyin:
 
-- [Ek Azure abonelikleri oluşturma](/azure/billing/billing-create-subscription)
+- [Ek Azure abonelikleri oluşturma](../cost-management-billing/manage/create-subscription.md)
 
-- [Yönetim grupları oluşturma](/azure/governance/management-groups/create)
+- [Yönetim grupları oluşturma](../governance/management-groups/create-management-group-portal.md)
 
-- [Kaynak etiketleri oluşturma ve kullanma](/azure/azure-resource-manager/resource-group-using-tags)
+- [Kaynak etiketleri oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
 **Sorumluluk**: Müşteri
 
@@ -596,7 +596,7 @@ Daha fazla bilgi için aşağıdaki başvuruları inceleyin:
 
 - [Azure İlkesi'ni yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Ilkesiyle belirli bir kaynak türünü reddetme](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Azure Ilkesiyle belirli bir kaynak türünü reddetme](../governance/policy/samples/built-in-policies.md#general)
 
 **Sorumluluk**: Müşteri
 
@@ -624,7 +624,7 @@ Daha fazla bilgi için aşağıdaki başvuruları inceleyin:
 
 Daha fazla bilgi için aşağıdaki başvuruları inceleyin:
 
-- [Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Azure İlkesi'ni yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
@@ -648,9 +648,9 @@ Daha fazla bilgi için aşağıdaki başvuruları inceleyin:
 
 **Rehberlik**: redsıs örnekleri ve ilgili kaynaklar Için Azure önbelleğiniz Için özel Azure ilke tanımları veya Azure Resource Manager şablonları kullanıyorsanız, kodunuzu güvenli bir şekilde depolamak ve yönetmek için Azure Repos kullanın.
 
-- [Azure DevOps 'da kod depolama](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Azure DevOps 'da kod depolama](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Azure Repos belgeleri](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Azure Repos belgeleri](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Sorumluluk**: Müşteri
 
@@ -684,7 +684,7 @@ Daha fazla bilgi için aşağıdaki başvuruları inceleyin:
 
 - [Key Vault oluşturma](../key-vault/general/quick-create-portal.md)
 
-- [Key Vault kimlik doğrulaması yapma](/azure/key-vault/managed-identity)
+- [Key Vault kimlik doğrulaması yapma](../key-vault/general/assign-access-policy-portal.md)
 
 **Sorumluluk**: Müşteri
 
@@ -772,7 +772,7 @@ Azure Key Vault Sırlarınızın düzenli olarak veri geri yüklemesini test edi
 
 - [Redsıs Içeri aktarma için Azure önbelleğini kullanma](cache-how-to-import-export-data.md)
 
-- [Key Vault parolaları geri yükleme](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultsecret?view=azps-4.8.0&amp;preserve-view=true)
+- [Key Vault parolaları geri yükleme](/powershell/module/az.keyvault/restore-azkeyvaultsecret?preserve-view=true&view=azps-4.8.0)
 
 **Sorumluluk**: Müşteri
 
@@ -868,5 +868,5 @@ Ayrıca, abonelikleri açıkça işaretleyin (örn. üretim, üretim dışı) ve
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bkz. [Azure Güvenlik Karşılaştırması 2.0 sürümüne genel bakış](/azure/security/benchmarks/overview)
-- [Azure güvenlik temelleri](/azure/security/benchmarks/security-baselines-overview) hakkında daha fazla bilgi edinin
+- Bkz. [Azure Güvenlik Karşılaştırması 2.0 sürümüne genel bakış](../security/benchmarks/overview.md)
+- [Azure güvenlik temelleri](../security/benchmarks/security-baselines-overview.md) hakkında daha fazla bilgi edinin

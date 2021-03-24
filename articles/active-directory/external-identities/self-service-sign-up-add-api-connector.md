@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 703e3b4c951bc4c3a22f82b9faa31789d1abf868
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 3d5e25df68bbf793535b22602ad581db24a1426f
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103008731"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105022917"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>Kullanıcı akışına API Bağlayıcısı ekleme
 
@@ -53,13 +53,22 @@ HTTP temel kimlik doğrulaması, [RFC 2617](https://tools.ietf.org/html/rfc2617)
 > [!IMPORTANT]
 > Bu işlevsellik önizlemededir ve hizmet düzeyi anlaşmadan sağlanır. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-İstemci sertifikası kimlik doğrulaması, istemcinin kimliğini kanıtlamak için bir istemci sertifikası sağladığı, karşılıklı sertifika tabanlı bir kimlik doğrulamasıdır. Bu durumda Azure Active Directory, API Bağlayıcısı yapılandırmasının bir parçası olarak karşıya yüklediğiniz sertifikayı kullanır. Bu, SSL el sıkışmasının bir parçası olarak gerçekleşir. API hizmetinize yalnızca uygun sertifikalara sahip olan hizmetler erişebilir. İstemci sertifikası bir X. 509.952 dijital sertifikasıdır. Üretim ortamlarında, bir sertifika yetkilisi tarafından imzalanması gerekir. 
+İstemci sertifikası kimlik doğrulaması, istemcinin kimliğini kanıtlamak için sunucuya bir istemci sertifikası sağladığı karşılıklı sertifika tabanlı bir kimlik doğrulama yöntemidir. Bu durumda Azure Active Directory, API Bağlayıcısı yapılandırmasının bir parçası olarak karşıya yüklediğiniz sertifikayı kullanır. Bu, SSL el sıkışmasının bir parçası olarak gerçekleşir. Daha sonra API hizmetiniz, erişimi yalnızca uygun sertifikalara sahip olan hizmetlere sınırlayabilir. İstemci sertifikası bir PKCS12 (PFX) X. 509.440 dijital sertifikasıdır. Üretim ortamlarında, bir sertifika yetkilisi tarafından imzalanması gerekir. 
 
-Bir sertifika oluşturmak için, imzalanmış sertifikalara yönelik sertifika veren sağlayıcılarıyla otomatik olarak imzalanan sertifikalara ve tümleştirmelere yönelik seçeneklere sahip [Azure Key Vault](../../key-vault/certificates/create-certificate.md)kullanabilirsiniz. Daha sonra [sertifikayı dışa aktarabilir](../../key-vault/certificates/how-to-export-certificate.md) ve API bağlayıcıları yapılandırmasında kullanmak üzere karşıya yükleyebilirsiniz. Parolanın yalnızca bir parola ile korunan sertifika dosyaları için gerekli olduğunu unutmayın. Ayrıca, otomatik olarak imzalanan bir sertifika oluşturmak için PowerShell 'in [New-SelfSignedCertificate cmdlet 'ini](../../active-directory-b2c/secure-rest-api.md#prepare-a-self-signed-certificate-optional) de kullanabilirsiniz.
+Bir sertifika oluşturmak için, imzalanmış sertifikalara yönelik sertifika veren sağlayıcılarıyla otomatik olarak imzalanan sertifikalara ve tümleştirmelere yönelik seçeneklere sahip [Azure Key Vault](../../key-vault/certificates/create-certificate.md)kullanabilirsiniz. Önerilen ayarlar şunlardır:
+- **Konu**: `CN=<yourapiname>.<tenantname>.onmicrosoft.com`
+- **Içerik türü**: `PKCS #12`
+- **Yaşam süresi Acton türü**: `Email all contacts at a given percentage lifetime` veya `Email all contacts a given number of days before expiry`
+- **Dışarı aktarılabilir özel anahtar**: `Yes` (PFX dosyasını verebilmek için)
 
-Azure App Service ve Azure Işlevleri için bkz. API [karşılıklı kimlik doğrulamasını yapılandırma](../../app-service/app-service-web-configure-tls-mutual-auth.md) ve sertifikayı API uç noktanıza nasıl etkinleştireceğinizi ve doğrulayacağınızı öğrenmek için.
+Daha sonra [sertifikayı dışarı aktarabilirsiniz](../../key-vault/certificates/how-to-export-certificate.md). Alternatif olarak, otomatik olarak imzalanan bir sertifika oluşturmak için PowerShell 'in [New-SelfSignedCertificate cmdlet 'ini](../../active-directory-b2c/secure-rest-api.md#prepare-a-self-signed-certificate-optional) kullanabilirsiniz.
 
-Sertifikanızın kullanım süreleri dolduğunda anımsatıcı uyarılarını ayarlamanız önerilir. Var olan bir API bağlayıcısına yeni bir sertifika yüklemek için, **tüm API bağlayıcıları** altında API bağlayıcısını seçin ve **yeni sertifikayı karşıya yükle**' ye tıklayın. Süresi dolmayan ve geçmiş en son karşıya yüklenen sertifika, Azure Active Directory tarafından otomatik olarak kullanılacaktır.
+Bir sertifikanız olduktan sonra, bunu API Bağlayıcısı yapılandırmasının bir parçası olarak yükleyebilirsiniz. Parolanın yalnızca bir parola ile korunan sertifika dosyaları için gerekli olduğunu unutmayın.
+
+API 'nizin, API uç noktalarını korumak için gönderilen istemci sertifikalarına göre yetkilendirmeyi uygulaması gerekir. Azure App Service ve Azure Işlevleri için bkz. *API kodınızdan sertifikayı* etkinleştirme ve doğrulama hakkında bilgi edinmek için bkz. [TLS karşılıklı kimlik doğrulamasını yapılandırma](../../app-service/app-service-web-configure-tls-mutual-auth.md) .  Ayrıca, API 'nizi korumak ve ilke ifadelerini kullanarak istenen değerlere karşı [istemci sertifikası özelliklerini denetlemek](
+../../api-management/api-management-howto-mutual-certificates-for-clients.md) için Azure API Management de kullanabilirsiniz.
+ 
+Sertifikanızın kullanım süreleri dolduğunda anımsatıcı uyarılarını ayarlamanız önerilir. Yeni bir sertifika oluşturmanız ve yukarıdaki adımları yinelemeniz gerekecektir. Yeni sertifika dağıtıldığında API hizmetiniz, eski ve yeni sertifikaları kabul etmeye geçici olarak devam edebilir. Var olan bir API bağlayıcısına yeni bir sertifika yüklemek için, **tüm API bağlayıcıları** altında API bağlayıcısını seçin ve **yeni sertifikayı karşıya yükle**' ye tıklayın. Süresi dolmayan ve geçmiş en son karşıya yüklenen sertifika, Azure Active Directory tarafından otomatik olarak kullanılacak.
 
 ### <a name="api-key"></a>API Anahtarı
 Bazı hizmetler, geliştirme sırasında HTTP uç noktalarınıza erişimi belirsizetmek için bir "API anahtarı" mekanizması kullanır. [Azure işlevleri](../../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)için, bunu `code` **uç nokta URL 'sine** sorgu parametresi olarak ekleyerek yapabilirsiniz. Örneğin, `https://contoso.azurewebsites.net/api/endpoint` <b>`?code=0123456789`</b> ). 
@@ -259,8 +268,8 @@ Content-type: application/json
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | sürüm                                            | Dize            | Yes      | API sürümü.                                                                                                                                                                                                                                                                |
 | eylem                                             | Dize            | Yes      | Değer olmalıdır `Continue` .                                                                                                                                                                                                                                                              |
-| \<builtInUserAttribute>                            | \<attribute-type> | No       | Bir Kullanıcı akışı için API Bağlayıcısı yapılandırmasında ve **Kullanıcı özniteliklerinde** **alma talebi** olarak seçilirse, değerler dizinde depolanabilir. Bir **uygulama talebi** olarak seçilirse, belirteçte değerler döndürülür.                                              |
-| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | No       | Döndürülen talebin içermesi gerekmez `_<extensions-app-id>_` . Döndürülen değerler, bir kullanıcıdan toplanan değerlerin üzerine yazabilir. Ayrıca, uygulamanın bir parçası olarak yapılandırıldıysa belirtece da döndürülebilecek.  |
+| \<builtInUserAttribute>                            | \<attribute-type> | Hayır       | Bir Kullanıcı akışı için API Bağlayıcısı yapılandırmasında ve **Kullanıcı özniteliklerinde** **alma talebi** olarak seçilirse, değerler dizinde depolanabilir. Bir **uygulama talebi** olarak seçilirse, belirteçte değerler döndürülür.                                              |
+| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Hayır       | Döndürülen talebin içermesi gerekmez `_<extensions-app-id>_` . Döndürülen değerler, bir kullanıcıdan toplanan değerlerin üzerine yazabilir. Ayrıca, uygulamanın bir parçası olarak yapılandırıldıysa belirtece da döndürülebilecek.  |
 
 ### <a name="example-of-a-blocking-response"></a>Engelleme yanıtı örneği
 

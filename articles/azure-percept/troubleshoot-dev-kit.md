@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 826759907bfe5ec3359bf5c9125909466372c68f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 313ea98da0426af945dfdea00d33440ab2955cc7
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104608155"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023087"
 ---
 # <a name="azure-percept-dk-dev-kit-troubleshooting"></a>Azure Percept DK (geliştirme seti) sorunlarını giderme
 
@@ -45,7 +45,7 @@ scp [remote username]@[IP address]:[remote file path]/[file name].txt [local hos
 
 ```[local host file path]``` ,. txt dosyasını kopyalamak istediğiniz ana bilgisayar bilgisayarınızdaki konuma başvurur. ```[remote username]``` , [kurulum deneyimi](./quickstart-percept-dk-set-up.md)sırasında SSH Kullanıcı adı seçilir. OOBE sırasında bir SSH oturum açma ayarı yapmadıysanız, uzak kullanıcı adınız olur ```root``` .
 
-Azure IoT Edge komutları hakkında daha fazla bilgi için bkz. [Azure IoT Edge cihaz sorun giderme belgeleri](https://docs.microsoft.com/azure/iot-edge/troubleshoot).
+Azure IoT Edge komutları hakkında daha fazla bilgi için bkz. [Azure IoT Edge cihaz sorun giderme belgeleri](../iot-edge/troubleshoot.md).
 
 |Kategori:         |Komutundaki                    |Çalışmayacaktır                  |
 |------------------|----------------------------|---------------------------|
@@ -105,5 +105,3 @@ Taşıyıcı Pano Muhafazası üzerinde üç küçük LED vardır. 1. LED 'in ya
 |LED 2 (Wi-Fi)   |Hızlı yanıp sönen |Kimlik doğrulama başarılı oldu, cihaz ilişkilendirmesi devam ediyor. |
 |LED 2 (Wi-Fi)   |Açık (Solid) |Kimlik doğrulama ve ilişkilendirme başarılı oldu; cihaz bir Wi-Fi ağa bağlı. |
 |LED 3           |NA         |LED kullanımda değil. |
-
-

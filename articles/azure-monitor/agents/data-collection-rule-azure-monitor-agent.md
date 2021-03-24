@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/16/2021
-ms.openlocfilehash: 2a91062a701ca1b07f47f381a04cdf06c57c5746
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 8943986bf8e8c082889d3a0b18618ac54c75e6d6
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104721537"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105022985"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Azure Izleyici Aracısı için veri toplamayı yapılandırma (Önizleme)
 
@@ -89,10 +89,10 @@ Windows olay günlüğü tarafından desteklenen XPath 'teki sınırlamaların l
 
 Aşağıdaki tabloda özel bir XPath kullanılarak olayların filtrelenmesi için örnekler gösterilmektedir.
 
-| Description |  XPath |
+| Açıklama |  XPath |
 |:---|:---|
 | Yalnızca olay KIMLIĞI = 4648 olan sistem olaylarını topla |  `System!*[System[EventID=4648]]`
-| Yalnızca olay KIMLIĞI = 4648 olan sistem olaylarını ve consent.exe işlem adını toplayın |  `System!*[System[(EventID=4648) and (EventData[@Name='ProcessName']='C:\Windows\System32\consent.exe')]]`
+| Yalnızca olay KIMLIĞI = 4648 olan sistem olaylarını ve consent.exe işlem adını toplayın | `Security!*[System[(EventID=4648)]] and *[EventData[Data[@Name='ProcessName']='C:\Windows\System32\consent.exe']]` |
 | Olay KIMLIĞI = 6 dışında tüm kritik, hata, uyarı ve bilgi olaylarını sistem olay günlüğünden toplayın (sürücü yüklendi) |  `System!*[System[(Level=1 or Level=2 or Level=3) and (EventID != 6)]]` |
 | Olay KIMLIĞI 4624 (başarılı oturum açma) dışında tüm başarı ve başarısızlık güvenlik olaylarını toplayın |  `Security!*[System[(band(Keywords,13510798882111488)) and (EventID != 4624)]]` |
 

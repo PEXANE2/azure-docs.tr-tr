@@ -7,18 +7,18 @@ ms.service: azure-percept
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 3c5e6fd62e4f4db9ccc1306d32d09b8338cbf963
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 76333e11916641be71c72ce6142cd59b496a17e9
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102098035"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023172"
 ---
 # <a name="create-a-voice-assistant-with-azure-percept-dk-and-azure-percept-audio"></a>Azure Percept DK ve Azure Percept Audio ile bir ses Yardımcısı oluşturma
 
 Bu öğreticide, Azure Percept DK ve Azure Percept sesinizle birlikte kullanmak üzere bir şablondan bir ses Yardımcısı oluşturacaksınız. Ses Yardımcısı tanıtımı, [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) içinde çalışır ve sesli kontrollü bir sanal nesne seçimi içerir. Bir nesneyi denetlemek için, bir kelime veya kısa bir ifade olan ve ardından bir komut gelen anahtar kelimeniz söyleyin. Her şablon belirli bir komut kümesine yanıt verir.
 
-Bu kılavuz, cihazlarınızı ayarlama, bir ses Yardımcısı ve gerekli [konuşma Hizmetleri](https://docs.microsoft.com/azure/cognitive-services/speech-service/overview) kaynaklarını oluşturma, sesli yardımcınızı test etme, anahtar kelimenizi yapılandırma ve özel anahtar sözcükler oluşturma sürecinde size yol gösterecektir.
+Bu kılavuz, cihazlarınızı ayarlama, bir ses Yardımcısı ve gerekli [konuşma Hizmetleri](../cognitive-services/speech-service/overview.md) kaynaklarını oluşturma, sesli yardımcınızı test etme, anahtar kelimenizi yapılandırma ve özel anahtar sözcükler oluşturma sürecinde size yol gösterecektir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -172,7 +172,7 @@ Tanıtım penceresi içinden yeni bir özel komut oluşturmak için, sayfanın �
 
     :::image type="content" source="./media/tutorial-no-code-speech/speech-studio.png" alt-text="Konuşma Studio giriş ekranının ekran görüntüsü.":::
 
-Özel komutlar geliştirme hakkında daha fazla bilgi için lütfen [konuşma hizmeti belgelerine](https://docs.microsoft.com/azure/cognitive-services/speech-service/custom-commands)bakın.
+Özel komutlar geliştirme hakkında daha fazla bilgi için lütfen [konuşma hizmeti belgelerine](../cognitive-services/speech-service/custom-commands.md)bakın.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
