@@ -2,29 +2,27 @@
 title: Ölçek medya ayrılmış birimleri (MRUs) CLı
 description: Bu konuda, Azure Media Services ile medya işlemeyi ölçeklendirmek için CLı 'nin nasıl kullanılacağı gösterilmektedir.
 services: media-services
-documentationcenter: ''
 author: IngridAtMicrosoft
 manager: femila
-editor: ''
 ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
-ms.date: 09/30/2020
+ms.date: 03/22/2021
 ms.author: inhenkel
-ms.openlocfilehash: a07c4a20b854e09daf3b320b8c99757ca99b2578
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 06c0c6333b84697415ef598d4c5e853d5c006f08
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102213819"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870169"
 ---
 # <a name="how-to-scale-media-reserved-units"></a>Medya ayrılmış birimlerini ölçeklendirme
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Bu makalede, daha hızlı kodlama için medya ayrılmış birimlerinin (MRSs) nasıl ölçeklenmesi gösterilmektedir.
+
+> [!WARNING]
+> Bu komut, API veya üzeri 2020-05-01 sürümü ile oluşturulan Media Services hesapları için artık çalışmayacaktır. Bu hesaplar için, sistem, yük temelinde otomatik olarak yukarı ve aşağı ölçeklenebileceği için medya ayrılmış birimleri artık gerekli değildir. Azure portal MRU 'yi yönetme seçeneğini görmüyorsanız, 2020-05-01 API 'SI veya sonrasında oluşturulmuş bir hesap kullanıyorsunuz demektir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

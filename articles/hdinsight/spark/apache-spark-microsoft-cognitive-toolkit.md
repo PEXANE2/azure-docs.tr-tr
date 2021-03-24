@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/14/2020
-ms.openlocfilehash: cddbc4b6a5c7a2c787c8305fdf703e34543746f8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6be70f448cec7cf6db2b8152565ad8102d3a3294
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98929964"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868758"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Microsoft Cognitive Toolkit derin öğrenme modelini Azure HDInsight Spark kümesiyle kullanma
 
@@ -73,7 +73,7 @@ Microsoft Cognitive Toolkit Azure HDInsight Spark kümesiyle kullanmak için **C
 
 1. Jupyter Notebook, sağ üst köşedeki **karşıya yükle** ' yi seçin ve ardından İndir ' e gidin ve dosyayı seçin `CNTK_model_scoring_on_Spark_walkthrough.ipynb` .
 
-    ![Jupyter Notebook Azure HDInsight Spark kümesine yükle](./media/apache-spark-microsoft-cognitive-toolkit/hdinsight-microsoft-cognitive-toolkit-load-jupyter-notebook.png "Jupyter Notebook Azure HDInsight Spark kümesine yükle")
+    :::image type="content" source="./media/apache-spark-microsoft-cognitive-toolkit/hdinsight-microsoft-cognitive-toolkit-load-jupyter-notebook.png " alt-text="Jupyter Notebook Azure HDInsight Spark kümesine yükle" border="true":::
 
 1. **Karşıya yükle** ' yi seçin.
 

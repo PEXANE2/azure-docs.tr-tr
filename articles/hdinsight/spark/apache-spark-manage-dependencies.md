@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: f0673523c74a0ea298e7d2d520952c3e98877e91
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c950903522d42b3c279cb89f3a6031043fd49bf3
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98930059"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868809"
 ---
 # <a name="manage-spark-application-dependencies"></a>Spark uygulama bağımlılıklarını yönetme
 
@@ -43,7 +43,7 @@ Bir Spark oturumu, Scala için Spark çekirdekte Jupyter Notebook başlatıldı�
 
 Maven deposundan paketi bulduktan sonra **GroupID**, **ArtifactId** ve **Version** değerlerini toplayın. İki nokta üst üste (**:**) ayırarak üç değeri birleştirir.
 
-   ![Paket şemasını Birleştir](./media/apache-spark-manage-dependencies/spark-package-schema.png "Paket şemasını Birleştir")
+   :::image type="content" source="./media/apache-spark-manage-dependencies/spark-package-schema.png " alt-text="Birleştirme paketi şema" border="true":::Kage şeması "Border =" true ":::
 
 Toplamakta olduğunuz değerlerin kümenize eşleştiğinden emin olun. Bu durumda, HDInsight 3,6 Spark kümesi için Scala 2,11 ve Spark 2,3 için Spark Cosmos DB bağlayıcı paketini kullanıyoruz. Emin değilseniz, `scala.util.Properties.versionString` küme Scala sürümünü almak Için Spark çekirdeğindeki kod hücresinde çalıştırın. `sc.version`Cluster Spark sürümünü almak için öğesini çalıştırın.
 
@@ -70,7 +70,7 @@ import com.microsoft.azure.cosmosdb.spark._
 ### <a name="use-azure-toolkit-for-intellij"></a>Azure Toolkit for IntelliJ kullan
 [Azure Toolkit for IntelliJ eklenti](./apache-spark-intellij-tool-plugin.md) , Spark Scala uygulamasını bir HDInsight kümesine göndermek için UI deneyimi sağlar. `Referenced Jars` `Referenced Files` Spark uygulamasını gönderirken jar kitaplıklar yollarını yapılandırmak için ve özelliklerini sağlar. [HDInsight için Azure Toolkit for IntelliJ eklentisinin kullanımı](./apache-spark-intellij-tool-plugin.md#run-a-spark-scala-application-on-an-hdinsight-spark-cluster)hakkında daha fazla ayrıntı için bkz..
 
-![Spark gönderimi iletişim kutusu](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-02.png)
+:::image type="content" source="./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-02.png" alt-text="Spark gönderimi iletişim kutusu" border="true":::
 
 ## <a name="jar-libs-for-cluster"></a>Küme için jar LIBS
 Bazı durumlarda, her uygulamanın varsayılan olarak aynı bağımlılıklarla ayarlanabilmesi için, küme düzeyinde jar bağımlılıklarını yapılandırmak isteyebilirsiniz. Yaklaşım, jar yollarınızın Spark sürücüsüne ve yürütücü sınıfı yoluna eklenmesi.
@@ -89,11 +89,11 @@ Bazı durumlarda, her uygulamanın varsayılan olarak aynı bağımlılıklarla 
     spark.executor.extraClassPath=/usr/libs/sparklibs/*
     ```
 
-   ![Spark varsayılan yapılandırmasını değiştirme](./media/apache-spark-manage-dependencies/change-spark-default-config.png "Spark varsayılan yapılandırmasını değiştirme")
+   :::image type="content" source="./media/apache-spark-manage-dependencies/change-spark-default-config.png " alt-text="Spark varsayılan yapılandırmasının" border="true":::ULT yapılandırmasını değiştir "Border =" true ":::
 
 3. Değiştirilen konfigürasyonları kaydedin ve etkilenen hizmetleri yeniden başlatın.
 
-   ![Etkilenen hizmetleri yeniden Başlat](./media/apache-spark-manage-dependencies/restart-impacted-services.png "Etkilenen hizmetleri yeniden Başlat")
+   :::image type="content" source="./media/apache-spark-manage-dependencies/restart-impacted-services.png " alt-text="Etkilenen hizmetler hizmetlerini yeniden Başlat" border="true":::"Border =" true ":::
 
 [Betik eylemlerini](../hdinsight-hadoop-customize-cluster-linux.md)kullanarak adımları otomatikleştirebilirsiniz. [Hive özel kitaplıklarını eklemek](https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh) için betik eylemi iyi bir başvurudur. Spark hizmeti yapılandırması değiştirilirken, yapılandırma dosyalarını doğrudan değiştirmek yerine, ambarı API 'Lerini kullandığınızdan emin olun. 
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 7158e9f82ee01b320d448baeab51fcfd122be00d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 73b958964db2d0b308dd6dfc34024d61ce5ad8af
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98944676"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871444"
 ---
 # <a name="troubleshoot-script-actions-in-azure-hdinsight"></a>Azure HDInsight 'ta betik eylemleri sorunlarını giderme
 
@@ -26,11 +26,11 @@ Betik eylemleri tarafından günlüğe kaydedilen bilgileri görüntülemek içi
 
 1. Sayfanın üst kısmındaki çubuktan **Ops** girişini seçin. Bir liste, ambarı aracılığıyla kümede yapılan geçerli ve önceki işlemleri görüntüler.
 
-    ![Ops seçiliyken ambarı Web UI çubuğu](./media/troubleshoot-script-action/hdi-apache-ambari-nav.png)
+    :::image type="content" source="./media/troubleshoot-script-action/hdi-apache-ambari-nav.png" alt-text="Ops seçiliyken ambarı Web UI çubuğu" border="true":::
 
 1. **İşlemler** sütununda **\_ customscriptaction çalıştıran** girişleri bulun. Bu girişler, betik eylemleri çalıştırıldığında oluşturulur.
 
-    ![Apache ambarı betik eylem işlemleri](./media/troubleshoot-script-action/ambari-script-action.png)
+    :::image type="content" source="./media/troubleshoot-script-action/ambari-script-action.png" alt-text="Apache ambarı betik eylem işlemleri" border="true":::
 
     **Stdout** ve **stderr** çıkışını görüntülemek için **run\customscriptaction** girişini seçin ve bağlantılar aracılığıyla detaya gidin. Bu çıktı, komut dosyası çalıştırıldığında üretilir ve yararlı bilgiler içerebilir.
 
@@ -40,7 +40,7 @@ Küme oluşturma bir betik hatası nedeniyle başarısız olursa Günlükler kü
 
 * Depolama günlükleri ' nde kullanılabilir `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\CLUSTER_NAME\DATE` .
 
-    ![Betik eylemi günlükleri](./media/troubleshoot-script-action/script-action-logs-in-storage.png)
+    :::image type="content" source="./media/troubleshoot-script-action/script-action-logs-in-storage.png" alt-text="Betik eylemi günlükleri" border="true":::
 
     Bu dizin altında Günlükler, **baş düğümüne**, **çalışan düğümü** ve **Zookeeper düğümü** için ayrı olarak düzenlenir. Aşağıdaki örneklere bakın:
 

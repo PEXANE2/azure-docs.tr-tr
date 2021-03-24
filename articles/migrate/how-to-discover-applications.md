@@ -6,21 +6,18 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/18/2021
-ms.openlocfilehash: 47ea06fa2143f9a5dc5808ccb98fc80c87fefd93
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: d68c3729e8a63f8342cd51b62413aec3276c6165
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104786711"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871019"
 ---
 # <a name="discover-installed-software-inventory-and-sql-server-instances-and-databases"></a>Yüklü yazılım envanterini bulma ve örnekleri ve veritabanlarını SQL Server
 
 Bu makalede, Azure geçişi: bulma ve değerlendirme aracı kullanılarak yüklenen yazılım envanterinin ve VMware ortamınızda çalışan sunucularda SQL Server örnekleri ve veritabanlarının nasıl keşfedilmesi açıklanmaktadır.
 
 Yazılım envanteri gerçekleştirmek, iş yükleriniz için Azure 'a geçiş yolunu belirlemenize ve uyarlamanıza yardımcı olur. Yazılım envanteri, sunucu kimlik bilgilerini kullanarak bulma işlemi gerçekleştirmek için Azure geçişi gereci kullanır. Tamamen aracısız değildir, bu verileri toplamak için sunuculara hiçbir aracı yüklenmez.
-
-> [!NOTE]
-> Yazılım envanteri şu anda yalnızca VMware ortamında çalışan sunucular için önizleme aşamasındadır ve yalnızca bulma ile sınırlıdır. Şu anda uygulama tabanlı değerlendirme sunmuyoruz.<br/> VMware ortamınızda çalışan SQL Server örnekleri ve veritabanlarının keşfi ve değerlendirmesi artık önizlemededir. Bu özelliği denemek için [**bu bağlantıyı**](https://aka.ms/AzureMigrate/SQL) kullanarak **Doğu Avustralya** bölgesinde bir proje oluşturun. Zaten Doğu Avustralya bölgesinde bir projeniz varsa ve bu özelliği denemek istiyorsanız, lütfen portalda bu [**önkoşulları**](how-to-discover-sql-existing-project.md) tamamladığınızdan emin olun.
 
 ## <a name="before-you-start"></a>Başlamadan önce
 

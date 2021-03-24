@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0be7805493e5acc41254c57ca912b5a2ecf02dae
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c725e7b4e7af33181cb616d2bce2ae19521a5e7d
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98931462"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871886"
 ---
 # <a name="troubleshoot-apache-hadoop-hdfs-by-using-azure-hdinsight"></a>Azure HDInsight kullanarak Apache Hadoop HDFS sorunlarını giderme
 
@@ -116,7 +116,7 @@ Ayrıca, `fs.azure.write.request.size` Apache ambarı 'nı kullanarak genel değ
 3. **Filter...** alanına, girin `fs.azure.write.request.size` .
 4. 262144 (256 KB) değerini yeni değerle değiştirin. Örneğin, 4194304 (4 MB).
 
-    ![Ambarı Web Kullanıcı arabirimi üzerinden değerin değiştirilmesinin görüntüsü](./media/hdinsight-troubleshoot-hdfs/hbase-change-block-write-size.png)
+    :::image type="content" source="./media/hdinsight-troubleshoot-hdfs/hbase-change-block-write-size.png" alt-text="Ambarı Web Kullanıcı arabirimi üzerinden değerin değiştirilmesinin görüntüsü" border="false":::
 
 Ambarı kullanma hakkında daha fazla bilgi için bkz. [Apache ambarı Web Kullanıcı arabirimini kullanarak HDInsight kümelerini yönetme](hdinsight-hadoop-manage-ambari.md).
 

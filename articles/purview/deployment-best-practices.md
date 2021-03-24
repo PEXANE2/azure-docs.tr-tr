@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/23/2020
-ms.openlocfilehash: 48966e481f9cf8796c866b5c15a4e2a8616eade7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e02ad9187743603d46259d70965e49d6839ecd71
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97695865"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104949847"
 ---
 # <a name="azure-purview-deployment-best-practices"></a>Azure purview dağıtımı en iyi uygulamaları
 
@@ -150,7 +150,7 @@ Purview 'ta Katalog yöneticilerinin yaşam döngüsü boyunca tutarlılık ve b
 
 ### <a name="plan-and-implement-different-integration-points-with-purview"></a>Purview ile farklı tümleştirme noktaları planlayın ve uygulayın
 
-Çok büyük bir kuruluşun zaten mevcut bir veri kataloğu vardır. Temel soru, var olan teknolojiyi kullanmaya ve purview ile eşitlemeye devam edilip edilmeyeceğini belirtir. Purview, Atlas API 'Leri aracılığıyla bilgi yayımlamaya izin verir, ancak gerçekten bu tür bir senaryoyu desteklemeye yönelik değildir. Bazı kuruluşlar, varolan veri varlıklarının üzerine diğer veri kataloğu çözümlerinden geçiş yaparak başlangıçta purview kullanımının önyüklenmesine karar verebilir. Bu, Atlas API 'Leri aracılığıyla tek yönlü bir yaklaşım olarak yapılabilir. Farklı Katalog teknolojileri arasında eşitlenmek için uzun vadeli tasarımda düşünülmemelidir. Bu durum genellikle, her bir iş biriminin eski veri varlıkları için mevcut çözümleri kullanmaya devam edebilse de, yeni veri kaynaklarına karşı tarama yapmak için purview kullanılır.
+Çok büyük bir kuruluşun zaten mevcut bir veri kataloğu vardır. Temel soru, var olan teknolojinin kullanılıp kullanılmayacağını ve purview ile eşitlenmesine devam edilip edilmeyeceğini belirtir. Bir kuruluştaki mevcut ürünlerle eşitlemeyi işlemek için, purview, Atlas REST API 'Leri sağlar. Atlas API 'Leri, hem itme hem de çekme senaryolarını işlemek için güçlü ve esnek bir mekanizma sağlar. Bilgiler, önyükleme için Atlas API 'Leri kullanarak veya başka bir sistemden en son güncelleştirmeleri takip edilecek şekilde göndererek takip edebilir. Purview 'da bulunan bilgiler, Atlas API 'Leri kullanılarak okunabilir ve ardından mevcut ürünlere geri eşitlenebilir. 
 
 Anahtar oluşturma, özel kullanıcı arabirimi ve düzenleme gibi diğer tümleştirme senaryolarında Atlas API 'Leri ve Kafka uç noktalarını kullanabilirsiniz. Genel olarak, purview ile dört tümleştirme noktası vardır:
 
