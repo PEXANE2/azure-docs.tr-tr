@@ -8,12 +8,12 @@ ms.author: rifox
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: c21d8696c0c4edd743aab6cbe7866d27ce46a314
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5805734a9253962d672a4236a5650e9de8b37f0a
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103492617"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044303"
 ---
 # <a name="tutorial-sign-and-make-requests-with-postman"></a>Öğretici: oturum açma ve istekleri Postman ile yapma
 Bu öğreticide, HTTP kullanarak Azure Communication Services (ACS) hizmetlerine yönelik bir istek oluşturmak için Postman 'ı ayarlamaya ve kullanmaya başlayacağız. Bu öğreticinin sonunda, ACS ve Postman kullanarak başarıyla SMS iletisi gönderdiniz ve ACS içindeki diğer API 'Leri araştırmak için Postman 'ı kullanabilirsiniz.
@@ -68,7 +68,7 @@ Bu değerleri, değişkenler ekranının "Ilk değer" sütununa girin. Girdikten
 
 ### <a name="creating-a-pre-request-script"></a>İstek öncesi betik oluşturma
 
-Sonraki adım Postman içinde bir ön istek betiği oluşturmaktır. Ön istek betiği, Postman 'daki her istekten önce çalışan ve sizin adınıza istek parametrelerini değiştirebilen veya değiştirebilen bir betiktir. Bunu, ACS 'nin Hizmetleri tarafından yetkilendiribilecekleri HTTP isteklerimizi imzalamak için kullanacağız. Imzalama gereksinimleri hakkında daha fazla bilgi için, [kimlik doğrulamasında kılavuzumuzu okuyabilirsiniz](https://docs.microsoft.com/rest/api/communication/authentication).
+Sonraki adım Postman içinde bir ön istek betiği oluşturmaktır. Ön istek betiği, Postman 'daki her istekten önce çalışan ve sizin adınıza istek parametrelerini değiştirebilen veya değiştirebilen bir betiktir. Bunu, ACS 'nin Hizmetleri tarafından yetkilendiribilecekleri HTTP isteklerimizi imzalamak için kullanacağız. Imzalama gereksinimleri hakkında daha fazla bilgi için, [kimlik doğrulamasında kılavuzumuzu okuyabilirsiniz](/rest/api/communication/authentication).
 
 Bu betiği koleksiyonda bir istekte çalışacak şekilde koleksiyon içinde oluşturacağız. Bunu yapmak için, koleksiyon sekmesinde "istek öncesi betiği" alt sekmesine tıklayın.
 
@@ -186,7 +186,7 @@ Her şey ayarlandığına göre Postman içinde ACS isteği oluşturmaya hazır�
 
 :::image type="content" source="media/postman/create-request.png" alt-text="Postman 'nın artı düğmesi.":::
 
-Bu, Postman 'daki istek için yeni bir sekme oluşturur. Bu oluşturulduktan sonra yapılandırmamız gerekir. SMS gönderme API 'sine karşı bir istek oluşturacağız, [Bu nedenle yardım için bu API 'ye yönelik belgelere](https://docs.microsoft.com/rest/api/communication/sms/send)başvurduğunuzdan emin olun. Postman 'ın isteğini yapılandıralim.
+Bu, Postman 'daki istek için yeni bir sekme oluşturur. Bu oluşturulduktan sonra yapılandırmamız gerekir. SMS gönderme API 'sine karşı bir istek oluşturacağız, [Bu nedenle yardım için bu API 'ye yönelik belgelere](/rest/api/communication/sms/send)başvurduğunuzdan emin olun. Postman 'ın isteğini yapılandıralim.
 
 İstek türü ' ne ayarlayarak `POST` ve `{{endpoint}}/sms?api-version=2021-03-07` istek URL 'si alanına girerek başlayın. Bu URL, `endpoint` ACS kaynağına otomatik olarak göndermek için önceden oluşturulmuş değişkenimizi kullanır.
 
@@ -238,8 +238,8 @@ Her şey iyi sorun olursa, şimdi 202 durum kodu olması gereken ACS 'den yanıt
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [ACS API 'Lerini keşfet](https://docs.microsoft.com/rest/api/communication/) 
->  [Kimlik doğrulaması](https://docs.microsoft.com/rest/api/communication/authentication) 
+> [ACS API 'Lerini keşfet](/rest/api/communication/) 
+>  [Kimlik doğrulaması](/rest/api/communication/authentication) 
 >  hakkında daha fazla bilgi [Postman hakkında daha fazla bilgi edinin](https://learning.postman.com/)
 
 Ayrıca şunları yapmak isteyebilirsiniz:

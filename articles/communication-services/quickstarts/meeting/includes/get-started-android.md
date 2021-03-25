@@ -6,12 +6,12 @@ ms.author: palatter
 ms.date: 01/25/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: e9069b5d43044ef0d0341717a12fcce7c4a72dc7
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 5ac4c53550468d33e9ed533303749d29e772d766
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104804070"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108493"
 ---
 Bu hızlı başlangıçta, Android için Azure Communication Services ekipleri ekleme kitaplığı 'nı kullanarak bir takımlar toplantısına nasıl katılacağınızı öğreneceksiniz.
 
@@ -34,7 +34,7 @@ Android Studio yeni bir Android Studio projesi Başlat ' ı seçin.
 
 :::image type="content" source="../media/android/studio-blank-activity.png" alt-text="Proje şablonu ekranında ' boş etkinlik ' seçeneğinin seçili olduğunu gösteren ekran görüntüsü.":::
 
-Projeyi adlandırın `TeamsEmbedAndroidGettingStarted` , dili Java olarak ayarlayın ve en düşük istemci kitaplığı "API 21: Android 5,0 (Lollipop)" veya daha fazlasını seçin.
+Projeyi adlandırın `TeamsEmbedAndroidGettingStarted` , dili Java olarak ayarlayın ve en düşük SDK "API 21: Android 5,0 (Lollipop)" veya daha fazlasını seçin.
 
 :::image type="content" source="../media/android/studio-calling-min-api.png" alt-text="Proje şablonu ekranı 2 ' de seçili ' boş etkinlik ' seçeneğinin gösterildiği ekran görüntüsü.":::
 
@@ -299,7 +299,7 @@ public String fetchToken() {
 ## <a name="get-the-teams-meeting-link"></a>Takımlar toplantı bağlantısını alın
 
 Takımlar toplantı bağlantısı, Graph API 'Leri kullanılarak alınabilir. Bu, [Graph belgelerinde](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true)ayrıntılıdır.
-İstemci kitaplığını çağıran Iletişim Hizmetleri, bir tam takımlar toplantısı bağlantısını kabul eder. Bu bağlantı, kaynağın bir parçası olarak döndürülür `onlineMeeting` , [ `joinWebUrl` özelliğin](/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true) altında erişilebilir, toplantı davetini davet eden ekipteki **Toplantı** URL 'sinden gerekli toplantı bilgilerini de alabilirsiniz.
+SDK 'Yı çağıran Iletişim Hizmetleri, bir tam takımlar toplantısı bağlantısını kabul eder. Bu bağlantı, kaynağın bir parçası olarak döndürülür `onlineMeeting` , [ `joinWebUrl` özelliğin](/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true) altında erişilebilir, toplantı davetini davet eden ekipteki **Toplantı** URL 'sinden gerekli toplantı bilgilerini de alabilirsiniz.
 
 ## <a name="start-a-meeting-using-the-meeting-client"></a>Toplantı istemcisini kullanarak bir toplantı başlatma
 

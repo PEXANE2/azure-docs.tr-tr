@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: genli
-ms.openlocfilehash: 12ef839cbbbc69230b314bf7c56a63f57a0d6b20
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: a177fc7e17dc91a0d57fa6dee87b80921d7fd8f5
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102556273"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043589"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Azure’a yüklemek için Windows VHD veya VHDX’i hazırlama
 
@@ -522,4 +522,4 @@ Aşağıdaki ayarlar, VHD karşıya yüklemeyi etkilemez. Ancak, bunları yapıl
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Kaynak Yöneticisi dağıtımları için Azure 'a bir Windows VM görüntüsü yükleme](upload-generalized-managed.md)
-- [Azure Windows VM etkinleştirme sorunlarını giderme](../troubleshooting/troubleshoot-activation-problems.md)
+- [Azure Windows VM etkinleştirme sorunlarını giderme](/troubleshoot/azure/virtual-machines/troubleshoot-activation-problems)

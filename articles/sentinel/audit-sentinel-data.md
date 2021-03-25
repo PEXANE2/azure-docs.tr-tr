@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/03/2021
 ms.author: bagol
-ms.openlocfilehash: a8ea32d84da521c8a1af926c6cb5e26bc2738de2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a02be0938b1ab925fb0343351ce1c414cc59c615
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102054981"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044847"
 ---
 # <a name="audit-azure-sentinel-queries-and-activities"></a>Azure Sentinel sorgularını ve etkinliklerini denetleme
 
@@ -132,7 +132,7 @@ Ayrıca, Kullanıcı yetkilendirmelerini ve lisanslarını denetlemek için Azur
 |Ayarları güncelleştirme    |Microsoft. Securityınsights/ayarlar|
 | | |
 
-Daha fazla bilgi için bkz. [Azure etkinlik günlüğü olay şeması](/azure/azure-monitor/essentials/activity-log-schema).
+Daha fazla bilgi için bkz. [Azure etkinlik günlüğü olay şeması](../azure-monitor/essentials/activity-log-schema.md).
 
 
 ## <a name="auditing-with-laquerylogs"></a>LAQueryLogs ile denetim
@@ -157,7 +157,7 @@ LAQueryLogs verileri aşağıdakiler gibi bilgiler içerir:
 
 1. **Laquerylogs** tablosu, Log Analytics çalışma alanınızda varsayılan olarak etkinleştirilmemiştir. Azure Sentinel 'de Denetim yaparken **laquerylogs** verilerini kullanmak için, önce Log Analytics çalışma alanınızın **Tanılama ayarları** alanında yer alan **laquerylogs** ' u etkinleştirin.
 
-    Daha fazla bilgi için bkz. [Azure izleyici günlüklerinde denetim sorguları](/azure/azure-monitor/logs/query-audit).
+    Daha fazla bilgi için bkz. [Azure izleyici günlüklerinde denetim sorguları](../azure-monitor/logs/query-audit.md).
 
 
 1. Ardından, diğer tüm tablolar gibi KQL kullanarak verileri sorgulayın.

@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 2fd0d9d2b6e80d54bdd45b7a13fab7bfa33841c9
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: de16932f1f77e569302b222fe2948de3046fabd6
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889476"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950606"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>Azure dijital TWINS 'e alma IoT Hub telemetrisi
 
@@ -39,7 +39,7 @@ Bu nasıl yapılır, Azure 'da bir işlev kullanarak IoT Hub 'den Azure dijital 
 
 Termostat cihazı tarafından bir sıcaklık telemetri olayı gönderildiğinde, bir işlev Telemetriyi işler ve Digital ikizi 'ın *sıcaklık* özelliği güncellenir. Bu senaryo aşağıdaki diyagramda özetlenmiştir:
 
-:::image type="content" source="media/how-to-ingest-iot-hub-data/events.png" alt-text="Akış grafiğini gösteren diyagram. Grafikte, bir IoT Hub cihaz, Azure dijital TWINS 'teki bir ikizi üzerinde sıcaklık özelliğini güncelleştiren Azure 'daki bir işleve sıcaklık IoT Hub telemetri gönderir." border="false":::
+:::image type="content" source="media/how-to-ingest-iot-hub-data/events.png" alt-text="Azure dijital TWINS 'teki bir ikizi üzerinde sıcaklık özelliği güncelleştiren, Azure 'daki bir işleve IoT Hub aracılığıyla sıcaklık telemetri gönderen IoT Hub cihaz diyagramı." border="false":::
 
 ## <a name="add-a-model-and-twin"></a>Model ve ikiz ekleme
 
@@ -47,14 +47,7 @@ Bu bölümde, Azure dijital TWINS 'de, termostat cihazını temsil edecek bir [d
 
 Bir termostat türü ikizi oluşturmak için önce, bir termostat 'nın özelliklerini açıklayan ve daha sonra ikizi oluşturmak için kullanılacak olan termostat [modelini](concepts-models.md) örneğinizi yüklemeniz gerekir. 
 
-Model şuna benzer:
-:::code language="json" source="~/digital-twins-docs-samples/models/Thermostat.json":::
-
-**Bu modeli TWINS örneğinizi karşıya yüklemek** Için AŞAĞıDAKI Azure CLI komutunu çalıştırın, bu, yukarıdaki modeli satır içi JSON olarak yükler. Komutunu tarayıcınızda [Azure Cloud Shell](/cloud-shell/overview.md) veya CLI 'niz [yerel olarak yüklüyse](/cli/azure/install-azure-cli)makinenizde çalıştırabilirsiniz.
-
-```azurecli-interactive
-az dt model create --models '{  "@id": "dtmi:contosocom:DigitalTwins:Thermostat;1",  "@type": "Interface",  "@context": "dtmi:dtdl:context;2",  "contents": [    {      "@type": "Property",      "name": "Temperature",      "schema": "double"    }  ]}' -n {digital_twins_instance_name}
-```
+[!INCLUDE [digital-twins-thermostat-model-upload.md](../../includes/digital-twins-thermostat-model-upload.md)]
 
 Daha sonra **Bu modeli kullanarak bir ikizi oluşturmanız** gerekecektir. **Thermostat67** adlı bir termostat ikizi oluşturmak ve ilk sıcaklık değeri olarak 0,0 ayarlamak için aşağıdaki komutu kullanın.
 
@@ -62,13 +55,8 @@ Daha sonra **Bu modeli kullanarak bir ikizi oluşturmanız** gerekecektir. **The
 az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id thermostat67 --properties '{"Temperature": 0.0,}' --dt-name {digital_twins_instance_name}
 ```
 
->[!NOTE]
-> PowerShell ortamında Cloud Shell kullanıyorsanız, değerlerinin doğru ayrıştırılabilmesi için satır içi JSON alanlarındaki tırnak işareti karakterlerini atlamanız gerekebilir. Bu değişiklik ile modeli karşıya yükleme ve ikizi oluşturma komutları aşağıda verilmiştir:
->
-> Modeli karşıya yükle:
-> ```azurecli-interactive
-> az dt model create --models '{  \"@id\": \"dtmi:contosocom:DigitalTwins:Thermostat;1\",  \"@type\": \"Interface\",  \"@context\": \"dtmi:dtdl:context;2\",  \"contents\": [    {      \"@type\": \"Property\",      \"name\": \"Temperature\",      \"schema\": \"double\"    }  ]}' -n {digital_twins_instance_name}
-> ```
+> [!Note]
+> PowerShell ortamında Cloud Shell kullanıyorsanız, değerlerinin doğru ayrıştırılabilmesi için satır içi JSON alanlarındaki tırnak işareti karakterlerini atlamanız gerekebilir. Bu değişiklikle ikizi oluşturma komutu aşağıda verilmiştir:
 >
 > İkizi oluştur:
 > ```azurecli-interactive
@@ -117,7 +105,7 @@ Visual Studio 'Nun *IoTHubtoTwins. cs*' ye yeni projeyle oluşturduğu *işlev1.
 
 #### <a name="step-3-publish-the-function-app-to-azure"></a>3. Adım: işlev uygulamasını Azure 'da yayımlama
 
-Projeyi Azure 'da bir işlev uygulamasında yayımlayın.
+Projeyi *IoTHubtoTwins. cs* işleviyle Azure 'daki bir işlev uygulamasına yayımlayın.
 
 Bunun nasıl yapılacağı hakkında yönergeler için bkz. *nasıl yapılır: verileri işlemek için bir Işlev ayarlama* makalesini [**Azure 'Da işlev uygulamasını yayımlama**](how-to-create-azure-function.md#publish-the-function-app-to-azure)
 

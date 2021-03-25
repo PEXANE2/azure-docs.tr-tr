@@ -1,18 +1,18 @@
 ---
 title: 'Hızlı başlangıç: PHP kullanarak bağlanma-esnek sunucu için Azure veritabanı'
 description: Bu hızlı başlangıçta, MySQL için Azure veritabanı-esnek sunucusu 'na bağlanmak ve veri sorgulamak için kullanabileceğiniz birkaç PHP kod örneği sağlanmıştır.
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 9/21/2020
-ms.openlocfilehash: dc6b069e3c7686ec6964dab890e503aa193cf6fe
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: baba4d373d4a79ab0c339aac00bb9ab48de9262b
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92545115"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109616"
 ---
 # <a name="quickstart-use-php-to-connect-and-query-data-in-azure-database-for-mysql---flexible-server"></a>Hızlı başlangıç: MySQL kullanarak MySQL için Azure veritabanı 'na bağlanma ve veri sorgulama-esnek sunucu
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 03/01/2019
 ms.author: kenchen
-ms.openlocfilehash: b1cb48d1ae858dbcd0df80780b4c3cee3deac75b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 996fa53aa105c0bcc27db7134c25d6d00e542a78
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90976487"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110296"
 ---
 # <a name="resiliency-and-disaster-recovery-in-azure-signalr-service"></a>Azure SignalR hizmetinde dayanıklılık ve olağanüstü durum kurtarma
 
@@ -44,13 +44,16 @@ Bu tür topolojiyi gösteren bir diyagram aşağıda verilmiştir:
 
 ![Diyagramda her bir App Server ve bir SignalR hizmeti olan her bir sunucu, her bir sunucunun bölgesindeki SignalR hizmeti ile ve diğer bölgede ikincil olarak hizmet ile ilişkili olduğu iki bölgeyi gösterir.](media/signalr-concept-disaster-recovery/topology.png)
 
-## <a name="configure-app-servers-with-multiple-signalr-service-instances"></a>Birden çok SignalR hizmeti örneğiyle App Servers yapılandırma
+## <a name="configure-multiple-signalr-service-instances"></a>Birden çok SignalR hizmet örneğini yapılandırma
 
-Her bölgede SignalR hizmeti ve uygulama sunucuları oluşturulduktan sonra, uygulama sunucularınızı tüm SignalR hizmeti örneklerine bağlanacak şekilde yapılandırabilirsiniz.
+Hem uygulama sunucularında hem de Azure Işlevlerinde birden çok SignalR hizmeti örneği desteklenir.
 
+Her bölgede SignalR Service ve App Servers/Azure Işlevleri oluşturulduktan sonra, App Servers/Azure işlevlerinizi tüm SignalR hizmeti örneklerine bağlanacak şekilde yapılandırabilirsiniz.
+
+### <a name="configure-on-app-servers"></a>Uygulama sunucularında yapılandırma
 Bunu iki şekilde yapabilirsiniz:
 
-### <a name="through-config"></a>Yapılandırma üzerinden
+#### <a name="through-config"></a>Yapılandırma üzerinden
 
 Adlı bir yapılandırma girişinde, SignalR hizmeti bağlantı dizesinin ortam değişkenleri/uygulama ayarları/Web. cofıg aracılığıyla nasıl ayarlanacağını zaten bilmelisiniz `Azure:SignalR:ConnectionString` .
 Birden çok uç noktalarınız varsa, bunları aşağıdaki biçimde birden çok yapılandırma girişi halinde ayarlayabilirsiniz:
@@ -62,7 +65,7 @@ Azure:SignalR:ConnectionString:<name>:<role>
 `<name>`Uç noktanın adı ve `<role>` rolü (birincil veya ikincil) bulunur.
 Ad isteğe bağlıdır, ancak yönlendirme davranışını birden fazla uç nokta arasında daha fazla özelleştirmek istiyorsanız yararlı olacaktır.
 
-### <a name="through-code"></a>Kod aracılığıyla
+#### <a name="through-code"></a>Kod aracılığıyla
 
 Bağlantı dizelerini başka bir yerde depolamayı tercih ediyorsanız, bunları kodunuzda okuyabilir ve `AddAzureSignalR()` (ASP.NET Core) veya `MapAzureSignalR()` (ASP.net) olarak kullanabilirsiniz.
 
@@ -93,6 +96,9 @@ Birden çok birincil veya ikincil örnek yapılandırabilirsiniz. Birden çok bi
 
 1. Çevrimiçi olarak en az bir birincil örnek varsa, rastgele bir birincil çevrimiçi örnek döndürün.
 2. Tüm birincil örnekler kapalıysa, rastgele bir ikincil çevrimiçi örnek döndürür.
+
+### <a name="configure-on-azure-functions"></a>Azure Işlevleri 'ni yapılandırma
+[Bu makaleye](https://github.com/Azure/azure-functions-signalrservice-extension/blob/dev/docs/sharding.md#configuration-method)bakın.
 
 ## <a name="failover-sequence-and-best-practice"></a>Yük devretme sırası ve en iyi uygulama
 
@@ -137,3 +143,5 @@ Bu tür durumları, son müşterileriniz için saydam hale getirmek üzere istem
 Bu makalede, uygulamanızı SignalR hizmeti için dayanıklılık elde etmek üzere nasıl yapılandıracağınızı öğrendiniz. SignalR hizmetinde sunucu/istemci bağlantısı ve bağlantı yönlendirme hakkında daha fazla ayrıntıyı anlamak için, SignalR hizmeti iç işlevleri için [Bu makaleyi](signalr-concept-internals.md) okuyabilirsiniz.
 
 Çok sayıda bağlantıyı işlemek için birden çok örnek kullanan parçalama gibi ölçeklendirme senaryoları için, [birden çok örneği ölçeklendirme](signalr-howto-scale-multi-instances.md)konusunu okuyun.
+
+Azure Işlevlerinin birden çok SignalR hizmeti örneğiyle nasıl yapılandırılacağı hakkında ayrıntılı bilgi için [Azure işlevlerinde birden çok Azure SignalR hizmet örneği desteğini](https://github.com/Azure/azure-functions-signalrservice-extension/blob/dev/docs/sharding.md)okuyun.

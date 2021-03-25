@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: fe777c3aa7b314dc56a42cc64712d18281a6ea7d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3fe3131263d3cf1984eae1692854d8d6bcd2746a
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121176"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109497"
 ---
 # <a name="configure-active-geo-replication-for-enterprise-azure-cache-for-redis-instances-preview"></a>Redsıs örnekleri için kurumsal Azure önbelleği için etkin Coğrafi çoğaltmayı yapılandırma (Önizleme)
 
@@ -26,9 +26,11 @@ Etkin coğrafi çoğaltma, Redsıs örnekleri için iki veya daha fazla kurumsal
 >
 >
 
-1. **Yeni Redis Cache** oluşturma kullanıcı arabiriminde, **Gelişmiş** sekmesinde **etkin coğrafi çoğaltma** ayarlamak için **Yapılandır** ' a tıklayın.
+1. **Yeni Redis Cache** oluşturma kullanıcı arabiriminin **Gelişmiş** sekmesinde **kümeleme ilkesi** için **kuruluş** ' u seçin.
 
     ![Etkin coğrafi çoğaltmayı yapılandırma](./media/cache-how-to-active-geo-replication/cache-active-geo-replication-not-configured.png)
+
+1. **Etkin coğrafi çoğaltma**'yı ayarlamak için **Yapılandır** ' a tıklayın.
 
 1. İlk önbellek örneği için yeni bir çoğaltma grubu oluşturun veya listeden mevcut bir tane seçin.
 
@@ -38,7 +40,7 @@ Etkin coğrafi çoğaltma, Redsıs örnekleri için iki veya daha fazla kurumsal
 
     ![Etkin coğrafi çoğaltma yapılandırıldı](./media/cache-how-to-active-geo-replication/cache-active-geo-replication-configured.png)
 
-1. Coğrafi çoğaltma grubundaki her ek önbellek örneği için yukarıdaki adımları tekrarlayın.
+1. İlk önbelleğin başarıyla oluşturulmasını bekleyin. Coğrafi çoğaltma grubundaki her ek önbellek örneği için yukarıdaki adımları tekrarlayın.
 
 ## <a name="remove-from-an-active-geo-replication-group"></a>Etkin bir coğrafi çoğaltma grubundan kaldır
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 55440c3bec940e0cd5fd4c4d644801e7012b5e95
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6ab310681ae7b63cb4e9f4e07984983727ae5ff2
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101701488"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953927"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Otomasyon için Azure Güvenlik temeli
 
@@ -40,7 +40,7 @@ Runbook 'larınız için daha fazla yalıtım sağlamak üzere, Azure sanal maki
 
 - [Azure Güvenlik duvarını dağıtma ve yapılandırma](../firewall/tutorial-firewall-deploy-portal.md)
 
-- [Runbook yürütme ortamı](https://docs.microsoft.com/azure/automation/automation-runbook-execution#runbook-execution-environment)
+- [Runbook yürütme ortamı](./automation-runbook-execution.md#runbook-execution-environment)
 
 **Sorumluluk**: Müşteri
 
@@ -132,7 +132,7 @@ Azure şemaları, Azure Kaynak Yöneticisi şablonları, Azure RBAC denetimleri 
 
 - [Azure İlkesi'ni yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
-- [Ağ için Azure Ilke örnekleri](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network)
+- [Ağ için Azure Ilke örnekleri](../governance/policy/samples/built-in-policies.md#network)
 
 - [Azure Blueprint oluşturma](../governance/blueprints/create-blueprint-portal.md)
 
@@ -162,9 +162,9 @@ Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynaklar üzeri
 
 **Rehberlik**: kaynak yapılandırmasını izlemek ve ağ kaynaklarınızda yapılan değişiklikleri algılamak Için Azure etkinlik günlüğü 'nü kullanın. Kritik kaynaklardaki değişiklikler gerçekleşirken tetiklenecek Azure Izleyici içinde uyarılar oluşturun.
 
-- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](/azure/azure-monitor/platform/activity-log-view)
+- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Izleyici 'de uyarı oluşturma](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 **Sorumluluk**: Müşteri
 
@@ -182,7 +182,7 @@ Alternatif olarak, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri et
 
 - [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
-- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](/azure/azure-monitor/platform/diagnostic-settings)
+- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Azure Izleyici ve üçüncü taraf SıEM tümleştirmesi ile çalışmaya başlama](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -202,9 +202,9 @@ Alternatif olarak, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri et
 
 **Rehberlik**: olay kaynağı, tarih, Kullanıcı, zaman damgası, kaynak adresleri, hedef adresler ve diğer yararlı öğeleri içeren denetim ve etkinlik günlüklerinize erişim Için Azure izleyicisini etkinleştirin. 
 
-- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](/azure/azure-monitor/platform/diagnostic-settings) 
+- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 **Sorumluluk**: Müşteri
 
@@ -214,9 +214,9 @@ Alternatif olarak, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri et
 
 **Kılavuz**: Azure izleyici 'de, Log Analytics çalışma alanı saklama dönemini kuruluşunuzun uyumluluk düzenlemelerine göre ayarlayın. Uzun süreli/arşiv depolama için Azure depolama hesaplarını kullanın.
 
-- [Log Analytics veri saklama süresini değiştirme](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Log Analytics veri saklama süresini değiştirme](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-- [Otomasyon hesapları için veri saklama ayrıntıları](https://docs.microsoft.com/azure/automation/automation-managing-data#data-retention)
+- [Otomasyon hesapları için veri saklama ayrıntıları](./automation-managing-data.md#data-retention)
 
 **Sorumluluk**: Müşteri
 
@@ -230,9 +230,9 @@ Alternatif olarak, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri et
 
 - [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
-- [Azure Izleyici 'de günlük sorgularını anlama](/azure/azure-monitor/log-query/log-analytics-tutorial)
+- [Azure Izleyici 'de günlük sorgularını anlama](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Azure Izleyici 'de özel sorgular gerçekleştirme](/azure/azure-monitor/log-query/get-started-queries)
+- [Azure Izleyici 'de özel sorgular gerçekleştirme](../azure-monitor/logs/get-started-queries.md)
 
 **Sorumluluk**: Müşteri
 
@@ -248,7 +248,7 @@ Alternatif olarak, Azure Sentinel 'de ve yerleşik verileri etkinleştirebilir.
 
 - [Azure Güvenlik Merkezi 'nde uyarıları yönetme](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Azure Izleyici günlük verilerinde uyarı alma](/azure/azure-monitor/learn/tutorial-response)
+- [Azure Izleyici günlük verilerinde uyarı alma](../azure-monitor/alerts/tutorial-response.md)
 
 **Sorumluluk**: Müşteri
 
@@ -296,7 +296,7 @@ Alternatif olarak, Azure Sentinel 'de ve yerleşik verileri etkinleştirebilir.
 
 Ayrıca, Microsoft Hizmetleri için ayrıcalıklı rolleri Privileged Identity Management Azure Active Directory (Azure AD) kullanarak tam zamanında/tam erişimi etkinleştirebilirsiniz ve Azure Resource Manager.
 
-- [Privileged Identity Management hakkında daha fazla bilgi edinin](/azure/active-directory/privileged-identity-management/)
+- [Privileged Identity Management hakkında daha fazla bilgi edinin](../active-directory/privileged-identity-management/index.yml)
 
 - [Farklı Çalıştır veya Klasik Farklı Çalıştır hesabını silme](delete-run-as-account.md)
 
@@ -352,7 +352,7 @@ Ayrıca, Microsoft Hizmetleri için ayrıcalıklı rolleri Privileged Identity M
 
 - [Azure Etkinlik Günlüklerini Azure İzleyici ile tümleştirme](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-- [Özel uyarı ve bildirim için eylem gruplarını yapılandırma](/azure/azure-monitor/platform/action-groups)
+- [Özel uyarı ve bildirim için eylem gruplarını yapılandırma](../azure-monitor/alerts/action-groups.md)
 
 **Sorumluluk**: Müşteri
 
@@ -374,7 +374,7 @@ Ayrıca, Microsoft Hizmetleri için ayrıcalıklı rolleri Privileged Identity M
 
 - [Azure AD örneği oluşturma ve yapılandırma](../active-directory-domain-services/tutorial-create-instance.md)
 
-- [Yönetilen kimliklerle runbook kimlik doğrulamasını kullanma](https://docs.microsoft.com/azure/automation/automation-hrw-run-runbooks#runbook-auth-managed-identities)
+- [Yönetilen kimliklerle runbook kimlik doğrulamasını kullanma](./automation-hrw-run-runbooks.md#runbook-auth-managed-identities)
 
 **Sorumluluk**: Müşteri
 
@@ -384,7 +384,7 @@ Ayrıca, Microsoft Hizmetleri için ayrıcalıklı rolleri Privileged Identity M
 
 **Rehberlik**: Azure Active Directory (Azure AD) eski hesapların keşfedilmesine yardımcı olmak için Günlükler sağlar. Ayrıca, grup üyeliklerini etkin bir şekilde yönetmek, kurumsal uygulamalara erişmek ve rol atamaları için Azure kimlik erişimi incelemelerini kullanın. Yalnızca doğru kullanıcıların erişmeye devam ettiğinden emin olmak için, Kullanıcı erişimi düzenli olarak incelenebilir. Runbook 'larınız için Otomasyon hesabı farklı çalıştır hesaplarını kullanırken, bu hizmet sorumluları, genellikle daha fazla zaman yükseltilmiş izinlere sahip olduğundan envanterinizde de izlenir. Sunulan saldırı yüzeyini en aza indirmek için kullanılmayan farklı çalıştır hesaplarını silin.
 
-- [Azure AD raporlamayı anlama](/azure/active-directory/reports-monitoring/)
+- [Azure AD raporlamayı anlama](../active-directory/reports-monitoring/index.yml)
 
 - [Azure kimlik erişimi incelemelerini kullanma](../active-directory/governance/access-reviews-overview.md)
 
@@ -412,7 +412,7 @@ Bu işlemi, Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturar
 
 **Rehberlik**: ağ kaynağınızın Kullanıcı kimlikleriyle ilgili şüpheli eylemler için otomatik yanıtlar yapılandırmak üzere Azure Active Directory (Azure AD) riskini ve kimlik koruması özelliklerini kullanın. Ayrıca, daha fazla araştırma için verileri Azure Sentinel 'e aktarabilirsiniz.
 
-- [Azure AD riskli oturum açma işlemlerini görüntüleme](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Azure AD riskli oturum açma işlemlerini görüntüleme](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Kimlik koruması risk ilkelerini yapılandırma ve etkinleştirme](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -488,7 +488,7 @@ Microsoft tarafından yönetilen temel alınan platform için, Microsoft tüm m�
 
 Azure Güvenlik Merkezi önerilerini, varsa, bekleyen ve geçişte şifreleme için kullanın.
 
-- [Azure ile iletim sırasında şifrelemeyi anlama](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
+- [Azure ile iletim sırasında şifrelemeyi anlama](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
 - [Azure Otomasyonu TLS 1,2 zorlaması](../active-directory/hybrid/reference-connect-tls-enforcement.md)
 
@@ -510,7 +510,7 @@ Azure Güvenlik Merkezi önerilerini, varsa, bekleyen ve geçişte şifreleme i�
 
 - [Azure RBAC 'yi yapılandırma](../role-based-access-control/role-assignments-portal.md)
 
-- [Karma Runbook Worker için Runbook izinleri](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker#runbook-permissions-for-a-hybrid-runbook-worker)
+- [Karma Runbook Worker için Runbook izinleri](./automation-hybrid-runbook-worker.md#runbook-permissions-for-a-hybrid-runbook-worker)
 
 - [Rol izinlerini ve güvenliği yönetme](automation-role-based-access-control.md)
 
@@ -538,7 +538,7 @@ Karma runbook çalışanları kullanılırken, sanal makinelerdeki sanal diskler
 
 - [Windows VM 'Leri için Azure disk şifrelemesi](../virtual-machines/windows/disk-encryption-overview.md)
 
-- [Otomasyon hesabı için müşteri tarafından yönetilen anahtarların kullanımı](https://docs.microsoft.com/azure/automation/automation-secure-asset-encryption#use-of-customer-managed-keys-for-an-automation-account)
+- [Otomasyon hesabı için müşteri tarafından yönetilen anahtarların kullanımı](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
 - [Azure Otomasyonu 'nda yönetilen değişkenler](shared-resources/variables.md)
 
@@ -554,9 +554,9 @@ Karma runbook çalışanları kullanılırken, sanal makinelerdeki sanal diskler
 
 **Rehberlik**: ağ bileşenleri, Azure Otomasyonu hesapları ve Runbook 'lar gibi kritik Azure kaynaklarında değişiklik gerçekleşirken uyarı oluşturmak Için Azure izleyici Ile Azure etkinlik günlüğü 'nü kullanın. 
 
-- [Ağ güvenlik grubu için tanılama günlüğü](https://docs.microsoft.com/azure/private-link/private-link-overview#logging-and-monitoring)
+- [Ağ güvenlik grubu için tanılama günlüğü](../private-link/private-link-overview.md#logging-and-monitoring)
 
-- [Azure etkinlik günlüğü olayları için uyarı oluşturma](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Sorumluluk**: Müşteri
 
@@ -689,7 +689,7 @@ Ayrıca, abonelikleri içindeki kaynakları sorgulamak/öğrenmek için Azure Ka
 
 - [Azure İlkesi'ni yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Ilkesiyle belirli bir kaynak türünü reddetme](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Azure Ilkesiyle belirli bir kaynak türünü reddetme](../governance/policy/samples/built-in-policies.md#general)
 
 **Sorumluluk**: Müşteri
 
@@ -771,7 +771,7 @@ Azure Güvenlik Merkezi 'nin önerilerini Azure kaynaklarınız için güvenli b
 
 - [Azure İlkesi'ni yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
-- [Diğer adları kullanma](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
+- [Diğer adları kullanma](../governance/policy/concepts/definition-structure.md#aliases)
 
 - [Azure Otomasyonu için Azure Ilke örneği yerleşik bileşenleri](policy-reference.md)
 
@@ -831,7 +831,7 @@ Kaynak denetimi deponuzdaki betiklerle Otomasyon hesabınızda runbook 'larını
 
 - [Azure 'da Anahtar Kasası anahtarlarını yedekleme](/powershell/module/az.keyvault/backup-azkeyvaultkey)
 
-- [Otomasyon hesabı için müşteri tarafından yönetilen anahtarların kullanımı](https://docs.microsoft.com/azure/automation/automation-secure-asset-encryption#use-of-customer-managed-keys-for-an-automation-account)
+- [Otomasyon hesabı için müşteri tarafından yönetilen anahtarların kullanımı](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
 - [Kaynak denetimi tümleştirmesini kullanma](source-control-integration.md)
 
@@ -857,9 +857,9 @@ Kaynak denetimi deponuzdaki betiklerle Otomasyon hesabınızda runbook 'larını
 
 - [Azure 'da Anahtar Kasası anahtarlarını yedekleme](/powershell/module/az.keyvault/backup-azkeyvaultkey)
 
-- [Otomasyon hesabı için müşteri tarafından yönetilen anahtarların kullanımı](https://docs.microsoft.com/azure/automation/automation-secure-asset-encryption#use-of-customer-managed-keys-for-an-automation-account)
+- [Otomasyon hesabı için müşteri tarafından yönetilen anahtarların kullanımı](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
-- [Otomasyon hesapları için Azure veri yedeklemesi](https://docs.microsoft.com/azure/automation/automation-managing-data#data-backup)
+- [Otomasyon hesapları için Azure veri yedeklemesi](./automation-managing-data.md#data-backup)
 
 **Sorumluluk**: Müşteri
 
@@ -873,7 +873,7 @@ Kaynak denetimi deponuzdaki betiklerle Otomasyon hesabınızda runbook 'larını
 
 - [Azure 'da Anahtar Kasası anahtarlarını geri yükleme](/powershell/module/az.keyvault/restore-azkeyvaultkey)
 
-- [Otomasyon hesabı için müşteri tarafından yönetilen anahtarların kullanımı](https://docs.microsoft.com/azure/automation/automation-secure-asset-encryption#use-of-customer-managed-keys-for-an-automation-account)
+- [Otomasyon hesabı için müşteri tarafından yönetilen anahtarların kullanımı](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
 **Sorumluluk**: Müşteri
 
@@ -987,5 +987,5 @@ Ayrıca, abonelikleri açıkça işaretleyin (örn. üretim, üretim dışı) et
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bkz. [Azure Güvenlik Karşılaştırması 2.0 sürümüne genel bakış](/azure/security/benchmarks/overview)
-- [Azure güvenlik temelleri](/azure/security/benchmarks/security-baselines-overview) hakkında daha fazla bilgi edinin
+- Bkz. [Azure Güvenlik Karşılaştırması 2.0 sürümüne genel bakış](../security/benchmarks/overview.md)
+- [Azure güvenlik temelleri](../security/benchmarks/security-baselines-overview.md) hakkında daha fazla bilgi edinin

@@ -5,14 +5,14 @@ author: caitlinv39
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 2/19/2021
+ms.date: 3/18/2021
 ms.author: cavoeg
-ms.openlocfilehash: 9ed78baed35312b9a33c71a3e49b7e9dca22eb9f
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: aefb2b4a70fae4ad082243529c8eaf877fb35f22
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103020308"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045322"
 ---
 # <a name="how-to-export-fhir-data"></a>FHıR verilerini dışa aktarma
 
@@ -23,14 +23,19 @@ $Export kullanmadan önce, FHıR için Azure API 'sinin onu kullanmak üzere yap
 
 ## <a name="using-export-command"></a>$export komutu kullanma
 
-Dışarı aktarma işlemi için Azure API 'sını yapılandırdıktan sonra, verileri hizmetten dışarı aktarmak için $export komutunu kullanabilirsiniz. Veriler, dışarı aktarmayı yapılandırırken belirttiğiniz depolama hesabında depolanır. FHıR sunucusunda $export komutu çağırmayı öğrenmek için [HL7 fhır $Export belirtiminde](https://hl7.org/Fhir/uv/bulkdata/export/index.html)belgeleri okuyun. 
+Dışarı aktarma işlemi için Azure API 'sını yapılandırdıktan sonra, verileri hizmetten dışarı aktarmak için $export komutunu kullanabilirsiniz. Veriler, dışarı aktarmayı yapılandırırken belirttiğiniz depolama hesabında depolanır. FHıR sunucusunda $export komutu çağırmayı öğrenmek için [HL7 fhır $Export belirtiminde](https://hl7.org/Fhir/uv/bulkdata/export/index.html)belgeleri okuyun.
+
+
+**İşlemler hatalı durumda takıldı**
+
+Bazı durumlarda, bir işin kötü bir durumda takılmasına yönelik bir potansiyel olur. Bu durum özellikle depolama hesabı izinleri düzgün kurulmamış ise oluşabilir. Dışa aktarma işleminin başarılı olup olmadığını doğrulamak için bir yol, karşılık gelen kapsayıcı (yani ndjson) dosyalarının var olup olmadığını görmek için depolama hesabınızı denetlemektedir. Bunlar yoksa ve çalışan başka bir dışarı aktarma işi yoksa, geçerli işin hatalı durumda takılmasına bir olasılık vardır. İptal isteği göndererek dışarı aktarma işini iptal etmeli ve işi yeniden kuyruğa almaya çalışın. Hatalı bir durumda dışarı aktarma için varsayılan çalışma süresi 10 dakikadır ve yeni bir işe geçiş yapmadan veya dışarı aktarmayı yeniden denemeyecektir. 
 
 FHıR Için Azure API aşağıdaki düzeylerde $export destekler:
 * [Sistem](https://hl7.org/Fhir/uv/bulkdata/export/index.html#endpoint---system-level-export): `GET https://<<FHIR service base URL>>/$export>>`
 * [Hasta](https://hl7.org/Fhir/uv/bulkdata/export/index.html#endpoint---all-patients): `GET https://<<FHIR service base URL>>/Patient/$export>>`
 * [Hastalar grubu *](https://hl7.org/Fhir/uv/bulkdata/export/index.html#endpoint---group-of-patients) -fhır için Azure API 'si tüm ilgili kaynakları dışa aktarır ancak grubun özelliklerini dışarı aktarmaz: `GET https://<<FHIR service base URL>>/Group/[ID]/$export>>`
 
-Veriler verildiğinde, her kaynak türü için ayrı bir dosya oluşturulur. İçe aktarılmış dosyaların çok büyük olmamasını sağlamak için, tek bir içe aktarılmış dosyanın boyutu 64 MB 'tan daha büyük hale gelecek şekilde yeni bir dosya oluşturacağız. Sonuç olarak, her bir kaynak türü için birden çok dosya elde edebilirsiniz (hasta-1. ndjson, hasta-2. ndjson). 
+Veriler verildiğinde, her kaynak türü için ayrı bir dosya oluşturulur. İçe aktarılmış dosyaların çok büyük olmamasını sağlamak için. Tek bir içe aktarılmış dosyanın boyutu 64 MB 'tan büyük olduktan sonra yeni bir dosya oluşturacağız. Sonuç olarak, her bir kaynak türü için birden çok dosya elde edebilirsiniz (yani, hasta-1. ndjson, hasta-2. ndjson). 
 
 
 > [!Note] 
@@ -42,7 +47,7 @@ Ayrıca, aktarım sırasında konum üst bilgisi tarafından döndürülen URL a
 
 Şu anda ADLS 2. etkin depolama hesapları için aşağıdaki sınırlamalara sahip $export destekliyoruz:
 
-- Kullanıcı, [hiyerarşik ad alanlarından](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) henüz yararlanamaz; kapsayıcı içinde belirli bir alt dizine dışa aktarma hedefini hedeflemek için bir yol yoktur. Yalnızca belirli bir kapsayıcıyı hedefleyebilme olanağı sunuyoruz (her dışarı aktarma için yeni bir klasör oluşturacağız).
+- Kullanıcı [hiyerarşik ad alanlarından](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace)yararlanamaz, ancak kapsayıcı içindeki belirli bir alt dizine dışarı aktarmayı hedeflemek için bir yol yoktur. Yalnızca belirli bir kapsayıcıyı hedefleyebilme olanağı sunuyoruz (her dışarı aktarma için yeni bir klasör oluşturacağız).
 
 - Dışarı aktarma işlemi tamamlandıktan sonra, aynı kapsayıcıya yönelik sonraki dışarı aktarmalar yeni oluşturulan bir klasörde yer aldığı için hiçbir şeyi bu klasöre yeniden aktardık.
 
@@ -65,17 +70,20 @@ FHıR için Azure API 'SI aşağıdaki sorgu parametrelerini destekler. Bu param
 | \_tür filtresi | Yes | Daha ayrıntılı filtreleme istemek için, \_ tür parametresiyle birlikte TypeFilter kullanabilirsiniz \_ . _TypeFilter parametresinin değeri, sonuçları daha fazla kısıtlayan FHıR sorgularının virgülle ayrılmış listesidir |
 | \_kapsayıcı | No |  Verilerin verilmesi gereken yapılandırılmış depolama hesabı içindeki kapsayıcıyı belirtir. Bir kapsayıcı belirtilmişse, veriler bu kapsayıcıya ada sahip yeni bir klasörde verilir. Kapsayıcı belirtilmemişse, zaman damgası ve iş KIMLIĞI kullanılarak yeni bir kapsayıcıya aktaralınacaktır. |
 
+> [!Note]
+> Yalnızca, FHıR için Azure API 'SI ile aynı abonelikte bulunan depolama hesaplarının, $export işlemler için hedef olarak kayıtlı olmasına izin verilir.
+
 ## <a name="secure-export-to-azure-storage"></a>Azure depolama 'ya güvenli dışarı aktarma
 
 FHıR için Azure API, güvenli bir dışarı aktarma işlemini destekler. Güvenli bir dışarı aktarma çalıştırmak için bir seçenek, Azure API 'si için Azure API ile ilişkili belirli IP adreslerinin Azure depolama hesabına erişmesine izin verişdedir. Depolama hesabının, FHıR için Azure API 'sinden aynı veya farklı bir konumda olmasına bağlı olarak, konfigürasyonlar farklı olur.
 
 ### <a name="when-the-azure-storage-account-is-in-a-different-region"></a>Azure depolama hesabı farklı bir bölgedeyse
 
-Portaldan Azure Storage hesabının ağ dikey penceresini seçin. 
+Portaldan Azure Storage hesabının **ağını** seçin. 
 
    :::image type="content" source="media/export-data/storage-networking.png" alt-text="Azure depolama ağ ayarları." lightbox="media/export-data/storage-networking.png":::
    
-"Seçili ağlar" ı seçin ve IP adresini,  \| İnternet 'ten veya şirket içi ağlarınızdan erişime ızın vermek için IP aralıkları ekleme güvenlik duvarı bölümünün altındaki adres aralığı kutusunda belirtin. FHıR hizmeti için Azure API 'sinin sağlandığı Azure bölgesi için aşağıdaki tablodan IP adresini bulabilirsiniz.
+**Seçili ağlar**'ı seçin. Güvenlik Duvarı bölümünde, **adres aralığı** kutusunda IP adresini belirtin. İnternet 'ten veya şirket içi ağlarınızdan erişime izin vermek için IP aralıkları ekleyin. IP adresini, FHıR hizmeti için Azure API 'sinin sağlandığı Azure bölgesi için aşağıdaki tabloda bulabilirsiniz.
 
 |**Azure Bölgesi**         |**Genel IP Adresi** |
 |:----------------------|:-------------------|
@@ -106,11 +114,11 @@ Portaldan Azure Storage hesabının ağ dikey penceresini seçin.
 Yapılandırma işlemi, 100.64.0.0/10 yerine CıDR biçimindeki belirli bir IP adresi aralığı kullanıldığı sürece yukarıdaki ile aynıdır. 100.64.0.0 – 100.127.255.255 içeren IP adresi aralığının belirtilmesi nedeni, hizmet tarafından kullanılan gerçek IP adresinin değiştiğinden, ancak her bir $export isteği için Aralık dahilinde olacaktır.
 
 > [!Note] 
-> Bunun yerine 10.0.2.0/24 aralığı içindeki özel bir IP adresi kullanılabilir olabilir. Bu durumda $export işlemi başarısız olur. $Export isteği yeniden deneyebilir, ancak bir dahaki sefer 100.64.0.0/10 aralığı içinde bir IP adresinin kullanılacağının garantisi yoktur. Bu, tasarıma göre bilinen ağ davranışıdır. Diğer bir seçenek de depolama hesabını farklı bir bölgede yapılandırmaktır.
+> Bunun yerine 10.0.2.0/24 aralığı içindeki özel bir IP adresi kullanılabilir olabilir. Bu durumda $export işlemi başarılı olmaz. $Export isteği yeniden deneyebilir, ancak bir dahaki sefer 100.64.0.0/10 aralığı içinde bir IP adresinin kullanılacağının garantisi yoktur. Bu, tasarıma göre bilinen ağ davranışıdır. Diğer bir seçenek de depolama hesabını farklı bir bölgede yapılandırmaktır.
     
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, $export komutu kullanarak FHıR kaynaklarını dışarı aktarmayı öğrendiniz. Ardından, önceden tanımlanmış verileri dışarı aktarmayı öğrenin:
+Bu makalede, $export komutu kullanarak FHıR kaynaklarını dışarı aktarmayı öğrendiniz. Daha sonra, önceden tanımlanmış verileri dışarı aktarma hakkında bilgi edinmek için bkz.:
  
 >[!div class="nextstepaction"]
 >[Belirtilen verileri dışarı aktarma](de-identified-export.md)

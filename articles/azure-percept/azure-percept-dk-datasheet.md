@@ -6,12 +6,12 @@ ms.author: v-elqu
 ms.service: azure-percept
 ms.topic: reference
 ms.date: 02/16/2021
-ms.openlocfilehash: 5b8a84b77fbde41748a2d9ef99a92cb6af1bbea6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0c9f848827db452710b4bca355aae0db99a2c95c
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102097593"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105027372"
 ---
 # <a name="azure-percept-dk-datasheet"></a>Azure Percept DK veri sayfası
 
@@ -24,7 +24,7 @@ ms.locfileid: "102097593"
 |Box 'a dahildir                 |1x Azure Percept DK taşıyıcı panosu  <br> 1x [Azure Percept vizyonu](./azure-percept-vision-datasheet.md) <br> 1x RGB algılayıcısı (kamera) <br> 1x USB 3,0 tür C kablosu <br> 1x DC güç kablosu <br> 1x AC/DC Dönüştürücüsü <br> 2x Wi-Fi antenler  |
 |İşletim Sistemi                              |[CBL-Mariner](https://github.com/microsoft/CBL-Mariner)           |
 |Yönetim Denetim düzlemi        |Azure cihaz Güncelleştirmesi (ADU) <br> [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) <br> [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)          |
-|Desteklenen yazılımlar ve hizmetler |Azure cihaz güncelleştirmesi <br> [Azure IoT](https://azure.microsoft.com/overview/iot/) <br> [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) <br> [Azure IoT Central](https://azure.microsoft.com/services/iot-central/) <br> [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) ve [Market](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1) <br> [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) <br> [Bağlantı ile Azure Mariner OS](https://github.com/microsoft/CBL-Mariner) <br> [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) <br> [ONNX Çalışma Zamanı](https://www.onnxruntime.ai/) <br> [TensorFlow](https://www.tensorflow.org/) <br> [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) <br> IoT Tak Çalıştır <br> [Azure cihaz sağlama hizmeti (DPS)](https://docs.microsoft.com/azure/iot-dps/) <br> [Azure Bilişsel Hizmetler](https://azure.microsoft.com/services/cognitive-services/) <br> [Power BI](https://powerbi.microsoft.com/)      |
+|Desteklenen yazılımlar ve hizmetler |Azure cihaz güncelleştirmesi <br> [Azure IoT](https://azure.microsoft.com/overview/iot/) <br> [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) <br> [Azure IoT Central](https://azure.microsoft.com/services/iot-central/) <br> [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) ve [Market](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1) <br> [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) <br> [Bağlantı ile Azure Mariner OS](https://github.com/microsoft/CBL-Mariner) <br> [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) <br> [ONNX Çalışma Zamanı](https://www.onnxruntime.ai/) <br> [TensorFlow](https://www.tensorflow.org/) <br> [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) <br> IoT Tak Çalıştır <br> [Azure cihaz sağlama hizmeti (DPS)](../iot-dps/index.yml) <br> [Azure Bilişsel Hizmetler](https://azure.microsoft.com/services/cognitive-services/) <br> [Power BI](https://powerbi.microsoft.com/)      |
 |Genel Işlemci               |NXP iMX8m (Azure Percept DK taşıyıcı Panosu)        |
 |AI hızlandırma                 |1x Intel Movidius Myriad X tümleşik ISS (Azure Percept Vision) |
 |Algılayıcılar ve görsel göstergeler   |6P lens ile Sony IMX219 kamera algılayıcısı<br>Çözüm: 8MP saat 30FPS, uzaklık: 50cm-sonsuzluk<br>FoV: 120 derece köşegen, renk: geniş dinamik Aralık, sabit odak kayan perde|

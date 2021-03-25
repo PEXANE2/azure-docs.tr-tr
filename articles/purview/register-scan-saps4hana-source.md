@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: 6d31bd0911b5cf765215e6a482a39b2458c4ba0d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7e00332eca076b55a884682240ef26ea3a4546d1
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101696195"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046071"
 ---
 # <a name="register-and-scan-a-sap-s4hana-source-preview"></a>SAP S/4HANA kaynağını kaydetme ve tarama (Önizleme)
 
@@ -25,7 +25,7 @@ SAP S/4HANA kaynağı, bir SAP S/4HANA örneğinden meta verileri ayıklamak üz
 ## <a name="prerequisites"></a>Önkoşullar
 
 1.  En son [kendi kendine barındırılan tümleştirme çalışma zamanını](https://www.microsoft.com/download/details.aspx?id=39717)ayarlayın.
-    Daha fazla bilgi için, bkz. [Şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma ve yapılandırma](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime).
+    Daha fazla bilgi için, bkz. [Şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma ve yapılandırma](../data-factory/create-self-hosted-integration-runtime.md).
 
 2.  Şirket içinde barındırılan tümleştirme çalışma zamanının yüklü olduğu sanal makinenizde [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) ' in yüklü olduğundan emin olun.
 
@@ -78,7 +78,7 @@ Veri kataloğunuza yeni bir SAP S/4HANA kaynağı kaydetmek için aşağıdakile
 
 Yeni bir tarama oluşturup çalıştırmak için aşağıdakileri yapın:
 
-1.  Yönetim Merkezi 'nde tümleştirme çalışma zamanları ' na tıklayın. Şirket içinde barındırılan bir tümleştirme çalışma zamanının ayarlandığından emin olun. Ayarlanmamışsa, şirket içinde barındırılan tümleştirme çalışma zamanı oluşturmak için [burada](https://docs.microsoft.com/azure/purview/manage-integration-runtimes) bahsedilen adımları kullanın
+1.  Yönetim Merkezi 'nde tümleştirme çalışma zamanları ' na tıklayın. Şirket içinde barındırılan bir tümleştirme çalışma zamanının ayarlandığından emin olun. Ayarlanmamışsa, şirket içinde barındırılan tümleştirme çalışma zamanı oluşturmak için [burada](./manage-integration-runtimes.md) bahsedilen adımları kullanın
 
 2.  Kaynaklara gidin **.**
 

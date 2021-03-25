@@ -11,13 +11,14 @@ ms.topic: how-to
 ms.date: 12/16/2020
 ms.author: mimart
 ms.subservice: B2C
+ms.custom: b2c-support
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 29dd67e9e6e15aaafec0cc47d89da32cbf369938
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fbcdef0002a227d5319fc01e625146480e4c99fc
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97618939"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043759"
 ---
 # <a name="set-up-a-sign-up-and-sign-in-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C oturum açma ve oturum açma akışı ayarlama
 
@@ -66,6 +67,7 @@ Kaydolma ve oturum açma Kullanıcı akışı, hem kayıt hem de oturum açma de
     ![Üç talep seçili olan öznitelikler ve talepler seçim sayfası](./media/add-sign-up-and-sign-in-policy/signup-signin-attributes.png)
 
 1. Kullanıcı akışını eklemek için **Oluştur** ' a tıklayın. *B2C_1* bir ön eki otomatik olarak ada eklenir.
+2. ["Parolanızı unuttum?" akışını işlemek](add-password-reset-policy.md?pivots=b2c-user-flow.md#self-service-password-reset-recommended) için gereken adımları izleyin. kayıt veya oturum açma ilkesi içinde.
 
 ### <a name="test-the-user-flow"></a>Kullanıcı akışını test etme
 
@@ -73,7 +75,7 @@ Kaydolma ve oturum açma Kullanıcı akışı, hem kayıt hem de oturum açma de
 1. **Uygulama** için, daha önce kaydettiğiniz *WebApp1* adlı Web uygulamasını seçin. **Yanıt URL 'si** gösterilmesi gerekir `https://jwt.ms` .
 1. **Kullanıcı akışını Çalıştır**' a tıklayın ve ardından **Şimdi kaydolun**' ı seçin.
 
-    ![Kullanıcı akışını Çalıştır düğmesi vurgulanmış şekilde portalda Kullanıcı akış sayfasını Çalıştır](./media/add-sign-up-and-sign-in-policy/signup-signin-run-now.PNG)
+    ![Kullanıcı akışını Çalıştır düğmesi vurgulanmış şekilde portalda Kullanıcı akış sayfasını Çalıştır](./media/add-sign-up-and-sign-in-policy/signup-signin-run-now.png)
 
 1. Geçerli bir e-posta adresi girin, **doğrulama kodu gönder**' e tıklayın, aldığınız doğrulama kodunu girin ve **kodu doğrula**' yı seçin.
 1. Yeni bir parola girin ve parolayı onaylayın.

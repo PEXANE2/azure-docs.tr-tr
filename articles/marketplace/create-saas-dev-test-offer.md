@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 03/25/2021
-ms.openlocfilehash: 58649e9a864e64ab5781cff3b663e190dac50cb6
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: dbf284305aa3201faeb77668af4198bafbf578b5
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105050726"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110551"
 ---
 # <a name="create-a-test-offer"></a>Test teklifi oluşturma
 
@@ -80,7 +80,7 @@ Fiyatlandırma modelleriyle denemeler yapmak için GELIŞTIRME teklifini kullan�
 DEV teklifinin, planlarda sıfır veya çok düşük fiyatlara sahip planları olmalıdır. ÜRETIM teklifi, müşterilere ücretlendirmenize istediğiniz fiyatlara sahip olacaktır.
 
 > [!NOTE]
-> Önizlemede yapılan Skımingsatınalmaları hem GELIŞTIRME hem de ÜRETIM teklifleri için işlenebilse bile, kullanıcının bildirimde bulunan bilgiler. Bir teklifin $100/ay fiyatı varsa şirketiniz ücretlendirilir $100. Bu durumda, bir [destek bileti](support.md) açabilirsiniz ve tüm miktar için bir ödeme (ve bir acenteücret ödemesiz) olarak ödersiniz.
+> Önizlemede yapılan satın alma işlemleri hem GELIŞTIRME hem de ÜRETIM teklifleri için işlenir. Bir teklifin $100/ay fiyatı varsa şirketiniz ücretlendirilir $100. Bu durumda, bir [destek bileti](support.md) açabilirsiniz ve tüm miktar için bir ödeme (ve bir acenteücret ödemesiz) olarak ödersiniz.
 
 #### <a name="pricing-model"></a>Fiyatlandırma modeli
 

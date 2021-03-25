@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 39a0830806d2d9c7358d175cae703e9c81c45b02
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e7bcfe1afc063d89bc6a5339bf62521cd644b8ca
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93130026"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048349"
 ---
 # <a name="register-a-saas-application"></a>SaaS uygulaması kaydetme
 
@@ -48,7 +48,7 @@ Azure AD'nin özelliklerini kullanmak isteyen her uygulama önce bir Azure AD ki
 **Azure AD uygulama kimliği** , yayımcı Kimliğinizle ilişkilidir, bu nedenle tüm tekliflerinizi aynı *uygulama kimliğinin* kullanıldığından emin olun.
 
 >[!Note]
->Bir yayımcının Iş Ortağı Merkezi 'nde iki farklı hesabı varsa, iki farklı Azure AD uygulama kimliği kullanılması gerekir.  Iş Ortağı Merkezi 'ndeki her iş ortağı hesabı, bu hesap aracılığıyla yayınlanan tüm SaaS teklifleri için benzersiz bir Azure AD uygulama KIMLIĞI kullanmalıdır.
+>Yayımcının Iş Ortağı Merkezi 'nde iki veya daha fazla farklı hesabı varsa, Azure AD uygulama kayıt ayrıntıları yalnızca bir hesapta kullanılabilir. Aynı kiracı KIMLIĞINI kullanan bir teklif için uygulama KIMLIĞI çifti, farklı bir yayımcı hesabı altında desteklenmez.
 
 ## <a name="how-to-get-the-publishers-authorization-token"></a>Yayımcının yetkilendirme belirtecini alma
 

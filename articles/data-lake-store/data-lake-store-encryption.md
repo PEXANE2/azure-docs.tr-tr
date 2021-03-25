@@ -8,12 +8,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: yagupta
-ms.openlocfilehash: f924cb7462f7f8c9939ec261b7ef200ceb8ea70b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 51c9f924c6fe3ac6db86d60e26749d35bc4ab733
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92109162"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108953"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. verilerin şifrelenmesi
 
@@ -135,4 +135,4 @@ Data Lake Storage 1. hesabını ayarlarken kendi anahtarlarınızı kullanmayı 
 Bu işlem iki dakikadan kısa sürer ve anahtar döndürme nedeniyle beklenen kapalı kalma süresi yoktur. İşlem tamamlandıktan sonra anahtarın yeni sürümü kullanılır.
 
 > [!IMPORTANT]
-> Anahtar döndürme işlemi tamamlandıktan sonra anahtarın eski sürümü artık verilerinizi şifrelemek için etkin şekilde kullanılmaz.  Ancak verilerinizin yedek kopyalarının etkilendiği nadiren de olsa karşılaşılan beklenmedik hata durumlarında veriler halen eski anahtarı kullanan bir yedeklemeden geri yüklenebilir. Verilerinizin bu tür nadir durumlarda erişilebilir olmasını sağlamak için, şifreleme anahtarınızın önceki sürümünün bir kopyasını saklayın. Olağanüstü durum kurtarma planlamanızı en iyi uygulamalar için [Data Lake Storage 1. 'deki veriler Için olağanüstü durum kurtarma Kılavuzu '](data-lake-store-disaster-recovery-guidance.md) na bakın.
+> Anahtar döndürme işlemi tamamlandıktan sonra, anahtarın eski sürümü artık yeni verileri şifrelemek için etkin olarak kullanılmaz. Ancak, eski verilere erişmenin eski anahtara ihtiyacı olabileceğinden durumlar olabilir. Bu gibi eski verilerin okunmasına izin vermek için eski anahtarı silmeyin

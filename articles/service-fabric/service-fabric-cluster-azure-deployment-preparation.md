@@ -3,19 +3,19 @@ title: Azure Service Fabric küme dağıtımını planlayın
 description: Azure 'da bir üretim Service Fabric küme dağıtımını planlama ve hazırlama hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 9de59811397eb47809c6d71f608e43beae5bfadb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 82521487b9a3e9438784e010a32cf6df8e7be2ef
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97109632"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046326"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>Küme dağıtımını planlayın ve hazırlayın
 
 Üretim kümesi dağıtımı için planlama ve hazırlanma çok önemlidir.  Göz önünde bulundurulması gereken birçok etken vardır.  Bu makale, küme dağıtımınızı hazırlama adımlarında size yol gösterir.
 
 ## <a name="read-the-best-practices-information"></a>En iyi yöntemler bilgilerini okuyun
-Azure Service Fabric uygulamalarını ve kümelerini başarıyla yönetmek için, üretim ortamınızın güvenilirliğini iyileştirmek üzere yapmanız gereken işlemler oldukça önerilir.  Daha fazla bilgi için [Service Fabric uygulama ve küme en iyi uygulamalarını](service-fabric-best-practices-overview.md)okuyun.
+Azure Service Fabric uygulamalarını ve kümelerini başarıyla yönetmek için, üretim ortamınızın güvenilirliğini iyileştirmek üzere yapmanız gereken işlemler oldukça önerilir.  Daha fazla bilgi için [Service Fabric uygulama ve küme en iyi uygulamalarını](./service-fabric-best-practices-security.md)okuyun.
 
 ## <a name="select-the-os-for-the-cluster"></a>Küme için işletim sistemini seçin
 Service Fabric, Windows Server veya Linux çalıştıran tüm VM 'lerde veya bilgisayarlarda Service Fabric kümelerinin oluşturulmasına izin verir.  Kümenizi dağıtılmadan önce, işletim sistemi: Windows veya Linux ' u seçmeniz gerekir.  Kümedeki her düğüm (sanal makine) aynı işletim sistemini çalıştırır, aynı kümede Windows ve Linux VM 'Leri karıştıramazsınız.
@@ -117,7 +117,7 @@ Yüksek kullanılabilirlik sunmaya yönelik kritik bir bölüm, hizmetlerin tüm
 Uygulamanız ve kümeniz üretim trafiği almaya hazırlanıyor mi? Kümenizin üretime dağıtılmasından önce [Üretim hazırlığı denetim listesini](service-fabric-production-readiness-checklist.md)çalıştırın. Bu denetim listesindeki öğeler aracılığıyla çalışarak uygulamanızın ve kümenizin sorunsuz çalışmasını sağlayın. Üretime geçmeden önce bu öğelerin tümünün kullanıma alınmasını önemle öneririz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Windows çalıştıran bir Service Fabric kümesi oluşturma](service-fabric-best-practices-overview.md)
+* [Windows çalıştıran bir Service Fabric kümesi oluşturma](./service-fabric-best-practices-security.md)
 * [Linux çalıştıran bir Service Fabric kümesi oluşturma](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 
 [placementconstraints]: service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints

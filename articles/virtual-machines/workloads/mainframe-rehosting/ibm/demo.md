@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: fda59cc041cc540b95ababa6d56df6e69b0a8970
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: b1391f81c571879534258c289436d2d086b84bef
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "104956171"
+ms.locfileid: "105045952"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>IBM zD&T v1 'de uygulama geliştiricileri denetimli dağıtımı (ADCD) ayarlama
 
@@ -191,7 +191,7 @@ Tebrikler! Artık Azure 'da bir IBM ana bilgisayar ortamı çalıştırıyorsunu
 
 - [Ana bilgisayar geçişi: Myon ve olgular](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
 - [Azure 'da IBM DB2 pureScale](ibm-db2-purescale-azure.md)
-- [Sorun giderme](../../../troubleshooting/index.yml)
+- [Sorun giderme](/troubleshoot/azure/virtual-machines/welcome-virtual-machines)
 - [Azure geçişine Demystifying ana bilgisayar](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 
 <!-- INTERNAL LINKS -->

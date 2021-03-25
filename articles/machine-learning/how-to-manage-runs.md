@@ -1,7 +1,7 @@
 ---
 title: Python 'da eğitim çalıştırmalarını başlatın, izleyin ve iptal edin
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning Python SDK ile Machine Learning deneme çalışmalarınızı başlatma, durum ve yönetme hakkında bilgi edinin.
+description: Azure Machine Learning Python SDK ile Machine Learning deneme çalışmalarınızın nasıl başlatılacağını, izleneceğini ve izleneceğini öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,24 +12,24 @@ ms.reviewer: nibaccam
 ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 977498abb17fe592cef344f407a662d3b79749b7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 26880fd6e3688dd95cc9f16072a35d5c4ce7c31e
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102634781"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110279"
 ---
-# <a name="start-monitor-and-track-runs"></a>Çalıştırmaları Başlat, izle ve izle 
+# <a name="start-monitor-and-track-run-history"></a>Çalıştırma geçmişini başlatma, izleme ve izleme 
 
-[Python için Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/intro), [Machine Learning CLI](reference-azure-machine-learning-cli.md)ve [Azure Machine Learning Studio](https://ml.azure.com) , eğitim ve deneme için çalıştırmalarını izlemek, düzenlemek ve yönetmek için çeşitli yöntemler sağlar.
+[Python için Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/intro), [Machine Learning CLI](reference-azure-machine-learning-cli.md)ve [Azure Machine Learning Studio](https://ml.azure.com) , eğitim ve deneme için çalıştırmalarını izlemek, düzenlemek ve izlemek için çeşitli yöntemler sağlar. ML çalıştırma geçmişiniz, explainable ve yinelenebilir ML geliştirme sürecinin önemli bir parçasıdır.
 
-Bu makalede aşağıdaki görevlerin örnekleri gösterilmektedir:
+Bu makalede aşağıdaki görevlerin nasıl yapılacağı gösterilmektedir:
 
 * Çalışma performansını izleme.
 * Çalışma durumunu e-posta bildirimine göre izleyin.
 * Etiket ve bulma çalıştırmaları.
 * Çalıştırma açıklaması ekleyin. 
-* Aramayı çalıştırın. 
+* Çalıştırma geçmişiniz üzerinde arama gerçekleştirin. 
 * İptal veya başarısız çalıştırmalar.
 * Alt çalıştırmalar oluşturun.
  
@@ -134,7 +134,7 @@ Aşağıdaki öğeler gerekir:
         print(notebook_run.get_status())
         ```
     
-    * Çalıştırma KIMLIĞINI, yürütme süresini ve çalıştırma hakkında ek ayrıntıları almak için [`get_details()`](/python/api/azureml-core/azureml.core.workspace.workspace#get-details--) yöntemini kullanın.
+    * Çalıştırma KIMLIĞINI, yürütme süresini ve çalıştırmaya ilişkin diğer ayrıntıları almak için [`get_details()`](/python/api/azureml-core/azureml.core.workspace.workspace#get-details--) yöntemini kullanın.
     
         ```python
         print(notebook_run.get_details())
@@ -225,7 +225,7 @@ Aşağıdaki öğeler gerekir:
 
 Çalıştırmaya daha fazla bağlam ve bilgi sağlamak için çalıştırma açıklaması bir çalıştırmaya eklenebilir. Ayrıca, çalıştırmalar listesinde bu açıklamaları arayabilir ve çalıştırma açıklamasını çalıştırmalar listesinde bir sütun olarak ekleyebilirsiniz. 
 
-Çalıştırmanıza ilişkin **ayrıntıları Çalıştır** sayfasına gidin ve çalıştırmanıza yönelik açıklamaları eklemek, düzenlemek veya silmek için Düzenle veya kurşun kalem simgesini seçin. Çalışma listesindeki değişiklikleri kalıcı hale getirmek için, değişiklikleri var olan özel görünüminizdeki veya yeni bir özel görünümdeki kaydedin. Aşağıda gösterildiği gibi görüntülerin gömülmesini ve derin bağlamayı sağlayan çalışma açıklamaları için markas biçimi desteklenir.
+Çalıştırmanıza ilişkin **ayrıntıları Çalıştır** sayfasına gidin ve çalıştırmanıza yönelik açıklamaları eklemek, düzenlemek veya silmek için Düzenle veya kurşun kalem simgesini seçin. Çalışma listesindeki değişiklikleri kalıcı hale getirmek için, değişiklikleri var olan özel görünüminizdeki veya yeni bir özel görünümdeki kaydedin. Aşağıda gösterildiği gibi görüntülerin gömülmesini ve derin bağlanmasına izin veren çalıştırma açıklamaları için markı biçimi desteklenir.
 
 :::image type="content" source="media/how-to-manage-runs/run-description.gif" alt-text="Ekran görüntüsü: çalıştırma açıklaması oluşturma"::: 
 
@@ -285,7 +285,7 @@ Azure Machine Learning ' de, önemli bilgiler için çalıştırmalarınızı d�
     
     # <a name="studio"></a>[Studio](#tab/azure-studio)
     
-    Çalışma etiketlerini Studio 'dan ekleyebilir, düzenleyebilir veya silebilirsiniz. Çalışmanıza ilişkin **ayrıntıları Çalıştır** sayfasına gidin ve çalışmalarınız için Etiketler eklemek, düzenlemek veya silmek için Düzenle veya kurşun kalem simgesini seçin. Ayrıca, çalışma listesi sayfasından bu etiketlerin üzerinde arama ve filtreleme yapabilirsiniz.
+    Studio 'dan çalıştırma etiketleri ekleyebilir, düzenleyebilir veya silebilirsiniz. Çalışmanıza ilişkin **ayrıntıları Çalıştır** sayfasına gidin ve çalışmalarınız için Etiketler eklemek, düzenlemek veya silmek için Düzenle veya kurşun kalem simgesini seçin. Ayrıca, çalışma listesi sayfasından bu etiketlerin üzerinde arama ve filtreleme yapabilirsiniz.
     
     :::image type="content" source="media/how-to-manage-runs/run-tags.gif" alt-text="Ekran görüntüsü: çalıştırma etiketlerini ekleme, düzenleme veya silme":::
     
@@ -405,9 +405,9 @@ with exp.start_logging() as parent_run:
 
 Alt çalıştırmalar da bir üst çalışmadan gönderilebilir. Bu, üst ve alt çalıştırmaların hiyerarşilerini oluşturmanızı sağlar. Parentdaha az alt çalışma oluşturamazsınız: üst çalıştırma Nothing olsa da alt çalıştırmaları çalıştırsa bile, hiyerarşinin oluşturulması hala gereklidir. Tüm çalıştırmaların durumları bağımsızdır: bir `"Completed"` veya daha fazla alt çalışma iptal edildiyse veya başarısız olsa bile üst öğe başarılı durumunda olabilir.  
 
-Çocuğunuzun, üst çalışmadan farklı bir çalıştırma yapılandırması kullanmasını isteyebilirsiniz. Örneğin, çocuklarınız için GPU tabanlı yapılandırmalar kullanırken üst için daha az güçlü ve CPU tabanlı bir yapılandırma kullanabilirsiniz. Diğer bir yaygın, her bir alt öğenin farklı bağımsız değişkenlerini ve verileri geçirmektir. Alt çalışmayı özelleştirmek için `ScriptRunConfig` alt çalıştırma için bir nesne oluşturun. Aşağıdaki kod aşağıdakileri yapar:
+Çocuğunuzun, üst çalışmadan farklı bir çalıştırma yapılandırması kullanmasını isteyebilirsiniz. Örneğin, çocuklarınız için GPU tabanlı yapılandırmalar kullanırken üst için daha az güçlü ve CPU tabanlı bir yapılandırma kullanabilirsiniz. Diğer bir yaygın, her bir alt öğenin farklı bağımsız değişkenlerini ve verileri geçirmektir. Alt çalışmayı özelleştirmek için `ScriptRunConfig` alt çalıştırma için bir nesne oluşturun. Aşağıdaki kod:
 
-- Çalışma alanından adlı bir işlem kaynağı alma `"gpu-cluster"``ws`
+- Çalışma alanından adlı bir işlem kaynağı alır `"gpu-cluster"``ws`
 - Alt nesnelere geçirilecek farklı bağımsız değişken değerlerini yineler `ScriptRunConfig`
 - Özel işlem kaynağını ve bağımsız değişkenini kullanarak yeni bir alt çalışma oluşturur ve gönderir
 - Tüm alt çalışma tamamlanana kadar bloklar
@@ -455,7 +455,7 @@ print(parent_run.get_children())
 
 ### <a name="log-to-parent-or-root-run"></a>Üst veya kök çalıştırmada günlüğe kaydet
 
-`Run.parent`Alanı, geçerli alt çalışmayı başlatan çalıştırmaya erişmek için kullanabilirsiniz. Bunun için genel kullanım örneği, günlük sonuçlarını tek bir yerde birleştirmek istediğinizde kullanılır. Alt çalıştırmanın zaman uyumsuz olarak yürütüleceğini ve üst öğenin alt çalıştırmanın tamamlanmasını bekleyebilme özelliğinden daha fazla bir sıralama veya eşitleme garantisi bulunmadığını unutmayın.
+`Run.parent`Alanı, geçerli alt çalışmayı başlatan çalıştırmaya erişmek için kullanabilirsiniz. Kullanımı için yaygın olarak kullanılan bir kullanım örneği `Run.parent` , günlük sonuçlarının tek bir yerde birleştirilmesine yöneliktir. Alt çalıştırmanın zaman uyumsuz olarak yürütüleceğini ve üst öğenin alt çalıştırmanın tamamlanmasını bekleyebilme özelliğinden daha fazla bir sıralama veya eşitleme garantisi bulunmadığını unutmayın.
 
 ```python
 # in child (or even grandchild) run

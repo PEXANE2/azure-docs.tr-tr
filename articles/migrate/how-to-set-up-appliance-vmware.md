@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 04/16/2020
-ms.openlocfilehash: 64be28838abb5d5021f0a8cefc0eed2c2516498b
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: c2ffa85ed6cb007dd766d4517a86783d21d4913e
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104865239"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110517"
 ---
 # <a name="set-up-an-appliance-for-servers-in-vmware-environment"></a>VMware ortamındaki sunucular için bir gereç ayarlama
 
@@ -29,6 +29,7 @@ Gereci oluşturduktan sonra Azure geçişi: bulma ve değerlendirme 'a bağlanı
 ## <a name="deploy-with-ova"></a>OVA ile dağıtma
 
 Bir OVA şablonunu kullanarak gereci ayarlamak için:
+
 1. Portalda bir gereç adı sağlayın ve bir proje anahtarı oluşturun.
 1. Bir OVA şablon dosyasını indirip vCenter Server içe aktarın. OVA 'nın güvenli olduğunu doğrulayın.
 1. OVA dosyasından gereç sanal makinesini oluşturun ve Azure geçişi 'ne bağlanıp bağlanamadığından emin olun.
@@ -39,8 +40,8 @@ Bir OVA şablonunu kullanarak gereci ayarlamak için:
 1. **Geçiş hedefleri**  >  **sunucularında**  >  **Azure geçişi: bulma ve değerlendirme** bölümünde **bul**' u seçin.
 2. Sunucularınızdaki **sunucular**  >  **sanallaştırılmış mı?**, **VMware vSphere hiper yöneticiyle Evet '** i seçin.
 3. **1: proje anahtarı oluştur**' da, VMware ortamınızda sunucu keşfi Için ayarladığınız Azure geçiş gereci için bir ad sağlayın. Ad 14 karakter veya daha kısa bir harf olmalıdır.
-1. Gerekli Azure kaynaklarını oluşturmaya başlamak için **anahtar oluştur** ' a tıklayın. Lütfen kaynak oluşturma sırasında bul sayfasını kapatmayın.
-1. Azure kaynakları başarıyla oluşturulduktan sonra bir **Proje anahtarı** oluşturulur.
+1. Gerekli Azure kaynaklarını oluşturmaya başlamak için **anahtar oluştur** ' a tıklayın. Kaynak oluşturma sırasında bul sayfasını kapatmayın.
+1. Azure kaynakları başarıyla oluşturulduktan sonra bir proje anahtarı * * oluşturulur.
 1. Yapılandırma sırasında gereç kaydını tamamlamamak için gerekli olacak şekilde anahtarı kopyalayın.
 
 ### <a name="2-download-the-ova-template"></a>2. OVA şablonunu indirin
@@ -101,7 +102,7 @@ Gereci ilk kez ayarlayın.
 1. **Lisans koşullarını** kabul edin ve üçüncü taraf bilgilerini okuyun.
 1. Configuration Manager > **önkoşulları ayarlama** bölümünde şunları yapın:
    - **Bağlantı**: gereç, sunucunun internet erişimi olup olmadığını denetler. Sunucu bir proxy kullanıyorsa:
-     - Form  `http://ProxyIPAddress` veya `http://ProxyFQDN` dinleme bağlantı noktasında proxy adresini belirtmek için proxy ayarla ' ya tıklayın.
+     - Form  `http://ProxyIPAddress` veya `http://ProxyFQDN` dinleme bağlantı noktasında proxy adresini belirtmek için kurulum Proxy 'ye tıklayın.
      - Proxy için kimlik doğrulaması gerekiyorsa kimlik bilgilerini gerekin.
      - Yalnızca HTTP proxy’si desteklenir.
      - Proxy ayrıntıları eklediyseniz veya proxy ve/veya kimlik doğrulamasını devre dışı bırakırsanız, bağlantıyı tetiklemek için **Kaydet** 'e tıklayarak bağlantı denetimini yeniden başlatın.
@@ -123,7 +124,7 @@ Gereci ilk kez ayarlayın.
     :::image type="content" source="./media/tutorial-discover-vmware/device-code.png" alt-text="Cihaz kodunu kalıcı olarak gösterme":::
 
 1. Cihaz kodunu kopyalamak ve yeni bir tarayıcı sekmesinde bir Azure oturum açma istemi açmak için **kodu kopyala & oturum** aç ' a tıklayın. Görünmüyorsa, tarayıcıda açılır pencere engelleyicisini devre dışı bırakmış olduğunuzdan emin olun.
-1. Yeni sekmede, cihaz kodunu yapıştırın ve Azure Kullanıcı adınızı ve parolanızı kullanarak oturum açın.
+1. Yeni sekmede, Azure Kullanıcı adınızı ve parolanızı kullanarak cihaz kodunu yapıştırın ve oturum açın.
    
    PIN ile oturum açma desteklenmez.
 3. Oturum açmadan oturum açma sekmesini yanlışlıkla kapatırsanız, oturum açma düğmesini yeniden etkinleştirmek için gereç Yapılandırma Yöneticisi 'nin tarayıcı sekmesini yenilemeniz gerekir.
@@ -146,7 +147,7 @@ Gereçinin, sunucuların yapılandırma ve performans verilerini bulması için 
 1. **Kaydet**'e tıklanınca, Gereç vCenter Server bağlantısını doğrulamayı dener ve tablodaki **doğrulama durumunu** vCenter Server IP adresine/FQDN 'ye göre gösterir.
 1. Bulmayı başlatmadan önce vCenter Server bağlantıyı **yeniden doğrulayabilirsiniz** .
 
-    :::image type="content" source="./media/tutorial-discover-vmware/appliance-manage-sources.png" alt-text="vCenter Server Ayrıntılar için gereç Yapılandırma Yöneticisi 'nde panel 3":::
+    :::image type="content" source="./media/tutorial-discover-vmware/appliance-manage-sources.png" alt-text="vCenter Server Ayrıntılar için gereç Yapılandırma Yöneticisi paneli":::
 
 ### <a name="provide-server-credentials"></a>Sunucu kimlik bilgilerini belirtin
 
@@ -166,7 +167,7 @@ Bu özelliklerden yararlanmak istiyorsanız aşağıdaki adımları izleyerek su
 - **Kaydet** veya **daha fazla Ekle**' ye tıkladığınızda, Gereç, etki alanı kimlik bilgilerini, etki alanının Active Directory kimliğini doğrular. Bu, Gereç kimlik bilgilerini ilgili sunucularla eşlemek için birden çok yineleme yaparken hesap kilitlenmelerini önlemek için yapılır.
 - Kimlik bilgileri tablosundaki tüm etki alanı kimlik bilgileri için **doğrulama durumunu** görebilirsiniz. Yalnızca etki alanı kimlik bilgileri doğrulanacak.
 - Doğrulama başarısız olursa, karşılaşılan hatayı görmek için **başarısız** durumuna tıklayabilir ve başarısız etki alanı kimlik bilgilerini yeniden doğrulamak için sorunu düzelttikten sonra **kimlik bilgilerini yeniden doğrula** ' ya tıklayabilirsiniz.
-
+    :::image type="content" source="./media/tutorial-discover-vmware/add-server-credentials-multiple.png" alt-text="Birden çok kimlik bilgisi sağlamak için gereç Yapılandırma Yöneticisi 'nde panel 3":::
 
 ### <a name="start-discovery"></a>Bulmayı başlat
 
@@ -176,6 +177,7 @@ Bu özelliklerden yararlanmak istiyorsanız aşağıdaki adımları izleyerek su
 1. Yazılım envanteri sırasında, eklenen sunucu kimlik bilgileri sunuculara göre tekrarlanacaktır ve aracısız bağımlılık analizi için onaylanır. Sunucular için aracısız bağımlılık analizini portaldan etkinleştirebilirsiniz. Aracısız bağımlılık analizini etkinleştirmek için yalnızca doğrulamanın başarılı olduğu sunucular seçilebilir.
 
 Bulma işlemi aşağıdaki gibi çalışmaktadır:
+
 - Keşfedilen sunucular envanterinin portalda görünmesi 15 dakika sürer.
 - Yüklü uygulamaların bulunması biraz zaman alabilir. Süre, bulunan sunucu sayısına bağlıdır. 500 sunucularında, bulunan stokun Azure geçişi portalında görünmesi yaklaşık bir saat sürer.
 - Sunucuları bulma işlemi tamamlandıktan sonra, portaldan sunucular üzerinde aracısız bağımlılık analizini etkinleştirebilirsiniz.

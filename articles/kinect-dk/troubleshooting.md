@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 03/05/2021
 ms.topic: conceptual
 keywords: sorun giderme, güncelleştirme, hata, Kinect, geri bildirim, kurtarma, günlüğe kaydetme, ipuçları
-ms.openlocfilehash: 6b83e2952a9039a52aa3b905e376e5d3beccaf8c
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: da5242a09934a756093a9e02b6d474e6c75fecda
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105026598"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108749"
 ---
 # <a name="azure-kinect-known-issues-and-troubleshooting"></a>Azure Kinect bilinen sorunlar ve sorun giderme
 
@@ -193,7 +193,7 @@ Gövde Izleme SDK 'Sı, poz tahmini modelinin çıkarımını sağlamak için CP
 > ONNX çalışma zamanı, hızlandırılmış olmayan opkodlara yönelik uyarıları görüntüler. Bunlar güvenle yoksayılabilir.
 
 ONNX çalışma zamanı, TensorRT modelinin önbelleğe alınmasını denetlemek için ortam değişkenlerini içerir. Önerilen değerler şunlardır:
-- ORT_TENSORRT_CACHE_ENABLE = 1 
+- ORT_TENSORRT_ENGINE_CACHE_ENABLE = 1 
 - ORT_TENSORRT_CACHE_PATH = "PATHNAME"
 
 Gövde izlemeye başlamadan önce klasörün oluşturulması gerekir.

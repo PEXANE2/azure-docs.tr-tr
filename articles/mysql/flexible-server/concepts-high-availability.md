@@ -1,17 +1,17 @@
 ---
 title: MySQL için Azure veritabanı esnek sunucusu ile bölge yedekli yüksek kullanılabilirliğe genel bakış
 description: MySQL için Azure veritabanı esnek sunucusu ile bölge yedekli yüksek kullanılabilirlik kavramlarını öğrenin
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: f01a0869f7786ee6197835610456f4bb1cbd6b03
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6629beacb5c3edc6fe1d21509051b915c0894479
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99097126"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109701"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>MySQL için Azure veritabanı esnek sunucusu 'nda yüksek kullanılabilirlik kavramları (Önizleme)
 
@@ -45,13 +45,13 @@ HA 'nın sistem durumu sürekli olarak izlenir ve genel bakış sayfasında rapo
 
 Bölge artıklığı HA özelliğini kullanmanın bazı avantajları aşağıda verilmiştir: 
 
--   Bekleme çoğaltması, sanal çekirdekler, depolama alanı, ağ ayarları (VNET, güvenlik duvarı) vb. gibi tam bir VM yapılandırmasında dağıtılır.
--   Yüksek kullanılabilirliği devre dışı bırakarak bekleme çoğaltmasını kaldırma özelliği.
--   Otomatik yedeklemeler, birincil veritabanı sunucusundan gerçekleştirilen ve bölgesel olarak yedekli depolamada saklanan anlık görüntü tabanlıdır.
--   Yük devretme durumunda, MySQL için Azure veritabanı esnek sunucu, yüksek kullanılabilirlik etkinse bekleme çoğaltmaya otomatik olarak yük devretmeye çalışır. Yüksek kullanılabilirlik kurulumu birincil sunucuyu izleyip yeniden çevrimiçi duruma getirir.
--   İstemciler her zaman birincil veritabanı sunucusuna bağlanır.
--   Bir veritabanı kilitlenmesi veya düğüm arızası varsa, yeniden başlatma ilk olarak aynı düğüm üzerinde denenir. Başarısız olursa, otomatik yük devretme tetiklenir.
--   Herhangi bir statik sunucu parametresi değişikliğini seçmek için sunucuyu yeniden başlatma özelliği.
+- Bekleme çoğaltması, sanal çekirdekler, depolama alanı, ağ ayarları (VNET, güvenlik duvarı) vb. gibi tam bir VM yapılandırmasında dağıtılır.
+- Yüksek kullanılabilirliği devre dışı bırakarak bekleme çoğaltmasını kaldırma özelliği.
+- Otomatik yedeklemeler, birincil veritabanı sunucusundan gerçekleştirilen ve bölge yedekli depolamada saklanan anlık görüntü tabanlıdır.
+- Yük devretme durumunda, MySQL için Azure veritabanı esnek sunucu, yüksek kullanılabilirlik etkinse otomatik olarak yedek çoğaltmaya yük devreder. Yüksek kullanılabilirlik kurulumu birincil sunucuyu izler ve yeniden çevrimiçi duruma getirir.
+- İstemciler her zaman birincil veritabanı sunucusuna bağlanır.
+- Veritabanı kilitlenmesi veya düğüm hatası varsa, ilk olarak yeniden başlatma işlemi aynı düğümde denenir. Başarısız olursa, otomatik yük devretme tetiklenir.
+- Herhangi bir statik sunucu parametresi değişikliğini seçmek için sunucuyu yeniden başlatma özelliği.
 
 ## <a name="steady-state-operations"></a>Sabit durum işlemleri
 
@@ -62,7 +62,7 @@ Uygulamalar, veritabanı sunucusu adı kullanılarak birincil sunucuya bağlanı
 
 ### <a name="planned-events"></a>Planlı olaylar
 
-Planlanmış kapalı kalma süresi olayları, Azure tarafından zamanlanan etkinlikleri, düzenli yazılım güncelleştirmeleri, alt sürüm yükseltmeleri veya ölçek işlem ve ölçek depolama işlemleri gibi müşteriler tarafından başlatılan etkinlikler içerir. Tüm bu değişiklikler ilk olarak bekleme çoğaltmaya uygulanır. Bu süre boyunca, uygulamalar birincil sunucuya erişmeye devam eder. Bekleme çoğaltması güncelleştirildikten sonra, birincil sunucu bağlantıları kaldırılır, DNS kaydını güncelleştirerek, bekleme çoğaltmasını aynı veritabanı sunucusu adına sahip birincil olacak şekilde etkinleştiren bir yük devretme tetiklenir. İstemci bağlantılarının bağlantısı kesilir ve bunların işlemlerini yeniden, ve işlemlerini sürdürür. Eski birincil ile aynı bölgede yeni bir bekleme sunucusu kurulacaktır. Genel yük devretme zamanının% 60-120 olması beklenir. 
+Planlanmış kapalı kalma süresi olayları, Azure tarafından zamanlanan etkinlikleri, düzenli yazılım güncelleştirmeleri, alt sürüm yükseltmeleri veya ölçek işlem ve ölçek depolama işlemleri gibi müşteriler tarafından başlatılan etkinlikler içerir. Tüm bu değişiklikler ilk olarak bekleme çoğaltmaya uygulanır. Bu süre boyunca, uygulamalar birincil sunucuya erişmeye devam eder. Bekleme çoğaltması güncelleştirildikten sonra, birincil sunucu bağlantıları kaldırılır, DNS kaydını güncelleştirerek, bekleme çoğaltmasını aynı veritabanı sunucusu adına sahip birincil olacak şekilde etkinleştiren bir yük devretme tetiklenir. İstemci bağlantılarının bağlantısı kesilir ve bunlara yeniden bağlanmaları ve işlemlerini sürdürmeleri gerekir. Eski birincil ile aynı bölgede yeni bir bekleme sunucusu oluşturulur. Genel yük devretme zamanının% 60-120 olması beklenir. 
 
 >[!NOTE]
 > İşlem ölçekleme işlemi söz konusu olduğunda, ikincil çoğaltma sunucusunu ve ardından birincil sunucuyu ölçeklendiririz. Dahil edilen yük devretme yok.
@@ -75,7 +75,7 @@ Planlanmamış hizmet alt süreleri, işlem, ağ, depolama hataları veya güç 
 Esnek sunucular, tercih ettiğiniz günde 30 dakikalık bir pencere seçebileceğiniz, düzeltme eki uygulama veya ikincil sürüm yükseltmeleri gibi Azure bakım işlemlerinin gerçekleşmesine neden olabilir. Yüksek kullanılabilirlik ile yapılandırılmış esnek sunucularınız için, bu bakım etkinlikleri önce bekleme çoğaltma üzerinde gerçekleştirilir. 
 
 ## <a name="point-in-time-restore"></a>Belirli bir noktaya geri yükleme 
-Esnek sunucu yüksek kullanılabilirlik zaman uyumlu olarak verileri çoğaltarak yapılandırılmışsa, bekleme sunucusu birincil ile güncel olacaktır. Birincil (örneğin, bir tablonun yanlışlıkla düşürülme veya yanlış güncelleştirmeler gibi) herhangi bir kullanıcı hatası, bekleme durumuna tamamen çoğaltılır. Bu nedenle, bu tür mantıksal hatalardan kurtarmak için bekleme kullanamazsınız. Bu mantıksal hatalardan kurtarmak için, hata oluşmadan hemen önce zaman içindeki zamana geri yükleme gerçekleştirmeniz gerekir. Esnek sunucu 'nın zaman içinde geri yükleme özelliğini kullanarak, yüksek kullanılabilirliğe sahip veritabanını geri yüklediğinizde, yeni bir veritabanı sunucusu, Kullanıcı tarafından sağlanmış bir ada sahip yeni bir esnek sunucu olarak geri yüklenir. Daha sonra nesneyi veritabanı sunucusundan dışarı aktarabilir ve üretim veritabanı sunucunuza aktarabilirsiniz. Benzer şekilde, veritabanı sunucunuzu test ve geliştirme amaçlarıyla kopyalamak istiyorsanız veya başka amaçlar için geri yüklemek istiyorsanız en son geri yükleme noktasını veya özel bir geri yükleme noktasını seçebilirsiniz. Geri yükleme işlemi, tek bir bölge esnek sunucusu oluşturacaktır.
+Esnek sunucu yüksek kullanılabilirlik zaman uyumlu olarak verileri çoğaltarak yapılandırılmışsa, bekleme sunucusu birincil ile güncel olur. Birincil (örneğin, bir tablonun yanlışlıkla düşürülme veya yanlış güncelleştirmeler gibi) herhangi bir kullanıcı hatası, bekleme durumuna tamamen çoğaltılır. Bu nedenle, bu tür mantıksal hatalardan kurtarmak için bekleme kullanamazsınız. Bu mantıksal hatalardan kurtarmak için, hata oluşmadan hemen önce zaman içindeki zamana geri yükleme gerçekleştirmeniz gerekir. Esnek sunucu 'nın zaman içinde geri yükleme özelliğini kullanarak, yüksek kullanılabilirliğe sahip veritabanını geri yüklediğinizde, yeni bir veritabanı sunucusu, Kullanıcı tarafından sağlanmış bir ada sahip yeni bir esnek sunucu olarak geri yüklenir. Daha sonra nesneyi veritabanı sunucusundan dışarı aktarabilir ve üretim veritabanı sunucunuza aktarabilirsiniz. Benzer şekilde, veritabanı sunucunuzu test ve geliştirme amaçlarıyla kopyalamak istiyorsanız veya başka amaçlar için geri yüklemek istiyorsanız en son geri yükleme noktasını veya özel bir geri yükleme noktasını seçebilirsiniz. Geri yükleme işlemi tek bölgede esnek bir sunucu oluşturur.
 
 ## <a name="mitigate-downtime"></a>Kapalı kalma süresini azaltma 
 Bölge artıklığı HA özelliğini kullanmıyorsanız, uygulamanız için kapalı kalma süresini azaltmaya devam etmeniz gerekir. Zamanlanan düzeltme ekleri, ikincil sürüm yükseltmeleri veya Kullanıcı tarafından başlatılan işlemler gibi planlama hizmeti, zamanlanmış bakım pencerelerinin bir parçası olarak gerçekleştirilebilir. Planlanmış düzeltme ekleri, ikincil sürüm yükseltmeleri veya ölçek işlemi gibi kullanıcı tarafından başlatılan işlemler gibi planlı hizmet, kapalı kalma süresini doğurur. Azure tarafından başlatılan bakım görevleri için uygulama etkisini azaltmak üzere, bunları haftanın günü boyunca zamanlamayı ve en az uygulamayı etkileyen süreyi zamanlamayı tercih edebilirsiniz. 
@@ -86,19 +86,19 @@ Veritabanı kilitlenmesi veya sunucu arızası gibi planlanmamış kapalı kalma
 
 Aşağıda, bölge artıklığı yüksek kullanılabilirliğini kullanırken göz önünde bulundurmanız gereken bazı noktalar verilmiştir: 
 
--   Yüksek kullanılabilirlik **yalnızca** esnek sunucu oluşturma zamanı sırasında ayarlanabilir.
--   Yüksek kullanılabilirlik, Burstable işlem katmanında desteklenmez.
--   Farklı bir kullanılabilirlik bölgesine zaman uyumlu çoğaltma nedeniyle, birincil veritabanı sunucusu yükseltilmiş yazma ve tamamlama gecikmesi ile karşılaşabilir.
--   Bekleme çoğaltması salt okuma sorguları için kullanılamaz.
--   Yük devretme sırasında birincil sunucudaki etkinliğe bağlı olarak, yük devretmenin tamamlanması 60-120 saniye veya daha uzun sürebilir.
--   Statik parametre değişikliklerini seçmek için birincil veritabanı sunucusunu yeniden başlatmak, bekleme çoğaltmasını de yeniden başlatır.
--   Bölge yedekli yüksek kullanılabilirlik sunucuları için okuma çoğaltmalarının yapılandırılması desteklenmez.
--   Yönetilen bakım penceresi sırasında müşterinin başlattığı yönetim görevlerinin yapılandırılması otomatikleştirilemez.
--   Ölçek işlem ve küçük sürüm yükseltmeleri gibi planlı olaylar hem birincil hem de bekleme sırasında aynı anda gerçekleşir. 
+- Yüksek kullanılabilirlik **yalnızca** esnek sunucu oluşturma zamanı sırasında ayarlanabilir.
+- Yüksek kullanılabilirlik, Burstable işlem katmanında desteklenmez.
+- Farklı bir kullanılabilirlik bölgesine zaman uyumlu çoğaltma nedeniyle, birincil veritabanı sunucusu yükseltilmiş yazma ve tamamlama gecikmesi ile karşılaşabilir.
+- Bekleme çoğaltması salt okuma sorguları için kullanılamaz.
+- Yük devretme sırasında birincil sunucudaki etkinliğe bağlı olarak, yük devretmenin tamamlanması 60-120 saniye veya daha uzun sürebilir.
+- Statik parametre değişikliklerini seçmek için birincil veritabanı sunucusunu yeniden başlatmak, bekleme çoğaltmasını de yeniden başlatır.
+- Bölge yedekli yüksek kullanılabilirlik sunucuları için okuma çoğaltmalarının yapılandırılması desteklenmez.
+- Yönetilen bakım penceresi sırasında müşterinin başlattığı yönetim görevlerinin yapılandırılması otomatikleştirilemez.
+- Ölçek işlem ve küçük sürüm yükseltmeleri gibi planlı olaylar hem birincil hem de bekleme sırasında aynı anda gerçekleşir. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
--   [İş sürekliliği](./concepts-business-continuity.md) hakkında bilgi edinin
--   [Bölge yedekli yüksek kullanılabilirlik](./concepts-high-availability.md) hakkında bilgi edinin
--   [Yedekleme ve kurtarma](./concepts-backup-restore.md) hakkında bilgi edinin
+- [İş sürekliliği](./concepts-business-continuity.md) hakkında bilgi edinin
+- [Bölge yedekli yüksek kullanılabilirlik](./concepts-high-availability.md) hakkında bilgi edinin
+- [Yedekleme ve kurtarma](./concepts-backup-restore.md) hakkında bilgi edinin

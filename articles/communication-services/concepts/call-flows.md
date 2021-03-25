@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: cc8e0edd1109162f0b426be31eb875ba8465d091
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8f7bfd63d858fb409286268c318c9f66474e3d53
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103490781"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110925"
 ---
 # <a name="call-flow-basics"></a>Çağrı akışı temelleri
 
@@ -26,7 +26,7 @@ Aşağıdaki bölümde, Azure Iletişim hizmetlerindeki çağrı akışlarına i
 
 Eşler arası veya grup çağrısı yaptığınızda, arka planda iki protokol kullanılır-HTTP (REST) for sinyal ve medya için SRTP.
 
-İstemci kitaplıkları, istemci kitaplıkları ve Iletişim Hizmetleri sinyal denetleyicileri arasında sinyal verme, HTTP REST (TLS) ile işlenir. Real-Time medya trafiği (RTP) için, Kullanıcı veri birimi Protokolü (UDP) tercih edilir. UDP 'nin kullanılması güvenlik duvarınız tarafından engellenmediyse, istemci kitaplığı, medya için Iletim Denetim Protokolü (TCP) kullanır.
+SDK 'lar ile Iletişim Hizmetleri sinyal denetleyicileri arasında sinyal verme, HTTP REST (TLS) ile işlenir. Real-Time medya trafiği (RTP) için, Kullanıcı veri birimi Protokolü (UDP) tercih edilir. Güvenlik duvarınız tarafından UDP kullanımı engellenmediyse, SDK medya için Iletim Denetim Protokolü (TCP) kullanır.
 
 Sinyal ve medya protokollerini çeşitli senaryolarda gözden geçirelim.
 
@@ -34,21 +34,21 @@ Sinyal ve medya protokollerini çeşitli senaryolarda gözden geçirelim.
 
 ### <a name="case-1-voip-where-a-direct-connection-between-two-devices-is-possible"></a>Durum 1: iki cihaz arasında doğrudan bir bağlantının mümkün olduğu VoIP
 
-Bire bir VoIP veya video çağrılarında trafik, en doğrudan yolu tercih eder. "Doğrudan yol", iki istemci kitaplıklarının birbirlerine doğrudan ulaşabulabileceği anlamına gelir; doğrudan bağlantı kurar. Bu, genellikle iki istemci kitaplığı aynı alt ağda olduğunda (örneğin 192.168.1.0/24 ' te) veya her biri birbirini görebileceğiniz alt ağlarda bulunan cihazların (10.10.0.0/16 ve 192.168.1.0/24 alt ağındaki istemci kitaplıkları birbirlerine ulaşabildiğinde) iki istemci kitaplığı olduğunda mümkündür.
+Bire bir VoIP veya video çağrılarında trafik, en doğrudan yolu tercih eder. "Doğrudan yol", iki SDK 'nın birbirlerine doğrudan ulaşabulabileceği anlamına gelir; doğrudan bağlantı kurar. Bu, genellikle iki SDK aynı alt ağda olduğunda (örneğin, 192.168.1.0/24 ' te) veya her biri birbirini görebileceğiniz alt ağlarda (10.10.0.0/16 ve 192.168.1.0/24 alt ağında bulunan SDK 'ların birbirleriyle iletişime geçebileceği) iki SDK olduğunda mümkündür.
 
 :::image type="content" source="./media/call-flows/about-voice-case-1.png" alt-text="Kullanıcılar ve Iletişim Hizmetleri arasında doğrudan bir VOıP çağrısını gösteren diyagram.":::
 
 ### <a name="case-2-voip-where-a-direct-connection-between-devices-is-not-possible-but-where-connection-between-nat-devices-is-possible"></a>Durum 2: cihazlar arasında doğrudan bir bağlantının mümkün olmadığı, ancak NAT cihazları arasındaki bağlantının mümkün olmadığı VoIP
 
-İki cihaz birbirlerine ulaşamayan ağlarda bulunuyorsa (örneğin, Gamze bir kafeterden çalışarak ve can ev ofisinizden çalışıyorsa), ancak NAT cihazları arasındaki bağlantı, istemci tarafı istemci kitaplıkları NAT cihazları aracılığıyla bağlantı kurar.
+İki cihaz birbirlerine ulaşamayan ağlarda bulunuyorsa (örneğin, Gamze bir kafeterden çalışarak ve can ev ofisinizden çalışıyorsa), ancak NAT cihazları arasındaki bağlantı, istemci tarafı SDK 'Ları NAT cihazları aracılığıyla bağlantı kurar.
 
-Çiğdem için kafeterde NAT ve Bob için ev ofisindeki NAT olacaktır. Çiğdem 'in cihazı, NAT 'nin dış adresini gönderecek ve Bob 'un aynı şekilde yapacağız. İstemci kitaplıkları, Azure Iletişim hizmetlerinin ücretsiz olarak sağladığı bir STUN (NAT için oturum çapraz araçları) hizmetinden dış adresler öğrenirler. Çiğdem ve Bob arasındaki el sıkışmasını işleyen mantık, istemci kitaplıkları tarafından sağlanmış olan Azure Iletişim Hizmetleri içine katıştırılır. (Ek yapılandırma gerekmez)
+Çiğdem için kafeterde NAT ve Bob için ev ofisindeki NAT olacaktır. Çiğdem 'in cihazı, NAT 'nin dış adresini gönderecek ve Bob 'un aynı şekilde yapacağız. SDK 'lar, Azure Iletişim hizmetlerinin ücretsiz olarak sağladığı bir STUN (NAT için oturum çapraz araçları) hizmetinin dış adreslerini öğrenirler. Çiğdem ve Bob arasındaki el sıkışmasını işleyen mantık, Azure Communication Services tarafından sunulan SDK 'lara katıştırılır. (Ek yapılandırma gerekmez)
 
 :::image type="content" source="./media/call-flows/about-voice-case-2.png" alt-text="Bir STUN bağlantısını kullanan bir VOıP çağrısını gösteren diyagram.":::
 
 ### <a name="case-3-voip-where-neither-a-direct-nor-nat-connection-is-possible"></a>Durum 3: doğrudan veya NAT bağlantısı mümkün olmayan VoIP
 
-İstemci cihazlarının biri veya her ikisi simetrik bir NAT 'nin arkasında ise, iki istemci kitaplığı arasında medyanın geçişine yönelik ayrı bir bulut hizmeti gereklidir. Bu hizmet, SıRASıYLA (NAT etrafında geçişler kullanılarak çapraz geçiş) olarak adlandırılır ve Iletişim Hizmetleri tarafından da sağlanır. İstemci kitaplığı 'Nı çağıran Iletişim Hizmetleri, algılanan ağ koşullarına bağlı olarak Hizmetleri otomatik olarak kullanır. Microsoft 'un aç hizmetinin kullanımı ayrı olarak ücretlendirilir.
+İstemci cihazlarının biri veya her ikisi simetrik bir NAT 'nin arkasında ise, iki SDK arasında medyanın geçişine yönelik ayrı bir bulut hizmeti gereklidir. Bu hizmet, SıRASıYLA (NAT etrafında geçişler kullanılarak çapraz geçiş) olarak adlandırılır ve Iletişim Hizmetleri tarafından da sağlanır. SDK 'Yı çağıran Iletişim Hizmetleri, algılanan ağ koşullarına göre otomatik olarak ETKINLEŞTIRME hizmetlerini kullanır. Microsoft 'un aç hizmetinin kullanımı ayrı olarak ücretlendirilir.
 
 :::image type="content" source="./media/call-flows/about-voice-case-3.png" alt-text="Bir Aç bağlantısını kullanan bir VOıP çağrısını gösteren diyagram.":::
 
@@ -72,15 +72,15 @@ Grup çağrıları için varsayılan gerçek zamanlı protokol (RTP) Kullanıcı
 
 :::image type="content" source="./media/call-flows/about-voice-group-calls.png" alt-text="Iletişim Hizmetleri içindeki UDP medya işlem akışını gösteren diyagram.":::
 
-İstemci kitaplığı, güvenlik duvarı kısıtlamaları nedeniyle medya için UDP kullanamıyorum, Iletim Denetim Protokolü 'Nü (TCP) kullanmak için bir girişimde bulunuldu. Medya Işlemcisi bileşeninin UDP gerektirdiğini unutmayın. Bu durumda, Iletişim Hizmetleri çevirme hizmeti, TCP ile UDP 'ye çevirmek için Grup çağrısına eklenecektir. ETKINLEŞTIRME özellikleri el ile devre dışı bırakılmadığı takdirde, bu durumda ücretleri ETKINLEŞTIRIN.
+SDK, güvenlik duvarı kısıtlamaları nedeniyle medya için UDP kullanamıyorum, Iletim Denetim Protokolü 'Nü (TCP) kullanmak için bir girişimde bulunuldu. Medya Işlemcisi bileşeninin UDP gerektirdiğini unutmayın. Bu durumda, Iletişim Hizmetleri çevirme hizmeti, TCP ile UDP 'ye çevirmek için Grup çağrısına eklenecektir. ETKINLEŞTIRME özellikleri el ile devre dışı bırakılmadığı takdirde, bu durumda ücretleri ETKINLEŞTIRIN.
 
 :::image type="content" source="./media/call-flows/about-voice-group-calls-2.png" alt-text="Iletişim Hizmetleri içindeki TCP medya işlem akışını gösteren diyagram.":::
 
-### <a name="case-5-communication-services-client-library-and-microsoft-teams-in-a-scheduled-teams-meeting"></a>Durum 5: Iletişim Hizmetleri istemci kitaplığı ve Microsoft ekipleri zamanlanmış bir takımlar toplantısı
+### <a name="case-5-communication-services-sdk-and-microsoft-teams-in-a-scheduled-teams-meeting"></a>Durum 5: zamanlanmış bir ekip toplantısında Iletişim Hizmetleri SDK 'Sı ve Microsoft ekipleri
 
 Sinyal denetleyici üzerinden akan sinyal. Medya, medya Işlemcisi aracılığıyla akar. Sinyal denetleyicisi ve medya Işlemcisi, Iletişim Hizmetleri ve Microsoft ekipleri arasında paylaşılır.
 
-:::image type="content" source="./media/call-flows/teams-communication-services-meeting.png" alt-text="Zamanlanmış bir takımlar toplantısında Iletişim Hizmetleri istemci kitaplığı ve takımlar Istemcisini gösteren diyagram.":::
+:::image type="content" source="./media/call-flows/teams-communication-services-meeting.png" alt-text="Zamanlanmış bir takımlar toplantısında Iletişim Hizmetleri SDK 'sını ve takımlar Istemcisini gösteren diyagram.":::
 
 
 
