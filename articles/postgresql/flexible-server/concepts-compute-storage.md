@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/19/2021
-ms.openlocfilehash: b76b6ff788d3d7f44db33af96944d528282f0ac7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6bcfbc19cbaa078373d6857bdac74eaf86eca104
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101712224"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048060"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-postgresql---flexible-server"></a>PostgreSQL için Azure veritabanı 'nda işlem ve depolama seçenekleri-esnek sunucu
 
@@ -121,7 +121,7 @@ G/ç tüketiminizi Azure portal veya Azure CLı komutlarını kullanarak izleyeb
 , İle işaretlendiğinde \* , IOPS SEÇTIĞINIZ VM türüyle sınırlıdır. Aksi takdirde ıOPS, seçilen depolama boyutuyla sınırlıdır.
 
 >[!NOTE]
-> Disk düzeyinde burdıya nedeniyle ölçümlerde daha yüksek ıOPS görebilirsiniz. Daha fazla ayrıntı için lütfen [belgelere](https://docs.microsoft.com/azure/virtual-machines/disk-bursting#disk-level-bursting) bakın. 
+> Disk düzeyinde burdıya nedeniyle ölçümlerde daha yüksek ıOPS görebilirsiniz. Daha fazla ayrıntı için lütfen [belgelere](../../virtual-machines/disk-bursting.md#disk-level-bursting) bakın. 
 
 ### <a name="maximum-io-bandwidth-mibsec-for-your-configuration"></a>Yapılandırmanız için en fazla g/ç bant genişliği (MIB/sn)
 

@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 03/05/2021
 ms.author: pafarley
-ms.openlocfilehash: 9293d47d8aade11f4cc3ee55bb32574f125dfafc
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f280e1a70ab595a87789c7514d8cce4fccbe8e84
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102428295"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046904"
 ---
 # <a name="whats-new-in-face-service"></a>Yüz Tanıma hizmetindeki yenilikler
 
@@ -23,9 +23,9 @@ Azure yüz hizmeti, sürekli olarak güncelleştirilir. Özellik geliştirmeleri
 
 ## <a name="february-2021"></a>Şubat 2021
 
-* Yeni Yüz Tanıma API'si algılama modeli: yeni algılama 03 modeli, şu anda kullanılabilir en doğru algılama modelidir. Yeni bir müşteriyseniz, bu modeli kullanmanızı öneririz. Algılama 03, resimlerde bulunan daha küçük yüzlerde hem geri çağırma hem de duyarlık geliştirir (64x64 piksel). Ek geliştirmeler, hatalı pozitif sonuçlar ve döndürülen yüz yönleri üzerinde geliştirilmiş algılama gibi genel bir azalma içerir. Algılama 03 ' i yeni tanıma 04 ile birleştirmek, geliştirilmiş tanıma doğruluğunu da sağlar. Daha fazla ayrıntı için bkz. [yüz algılama modeli belirtme](https://docs.microsoft.com/azure/cognitive-services/face/face-api-how-to-topics/specify-detection-model) .
-* Yüz maskesi özniteliği: yüz maskesi özniteliği, en son algılama 03 modeliyle birlikte kullanılabilir ve `"noseAndMouthCovered"` yüz maskesinin, hem burun hem de ağzın yanı sıra, yüz maskesinin ne kadar uygun olduğunu algılayan ek özniteliktir. En son maske algılama özelliğini kullanmak için kullanıcıların API isteğinde algılama modelini belirtmesi gerekir: model sürümünü _detectionModel_ parametresiyle atayın `detection_03` . Daha fazla ayrıntı için bkz. [yüz algılama modeli belirtme](https://docs.microsoft.com/azure/cognitive-services/face/face-api-how-to-topics/specify-detection-model) .
-* Yeni Yüz Tanıma API'si tanıma modeli: yeni tanıma 04 modeli, şu anda kullanılabilir en doğru tanıma modelidir. Yeni bir müşteriyseniz, bu modelin doğrulama ve tanımlama için kullanılmasını öneririz. Bu, tanınma 03 doğruluğunu geliştirir ve bu da, yüz kapamaları (Surgical maskeleri, N95 maskeleri, kumaş maskeleri) içeren kayıtlı kullanıcılara yönelik iyileştirilmiş tanıma da dahildir. Artık müşteriler, kayıtlı bir kullanıcının en son algılama 03 modeliyle bir yüz kapağı takıp takmadığını algılayan ve en son tanıma 04 modeliyle kim olduğunu tanılayan güvenli ve sorunsuz kullanıcı deneyimleri oluşturabilir. Daha fazla ayrıntı için bkz. [yüz tanıma modeli belirtme](https://docs.microsoft.com/azure/cognitive-services/face/face-api-how-to-topics/specify-recognition-model) .
+* Yeni Yüz Tanıma API'si algılama modeli: yeni algılama 03 modeli, şu anda kullanılabilir en doğru algılama modelidir. Yeni bir müşteriyseniz, bu modeli kullanmanızı öneririz. Algılama 03, resimlerde bulunan daha küçük yüzlerde hem geri çağırma hem de duyarlık geliştirir (64x64 piksel). Ek geliştirmeler, hatalı pozitif sonuçlar ve döndürülen yüz yönleri üzerinde geliştirilmiş algılama gibi genel bir azalma içerir. Algılama 03 ' i yeni tanıma 04 ile birleştirmek, geliştirilmiş tanıma doğruluğunu da sağlar. Daha fazla ayrıntı için bkz. [yüz algılama modeli belirtme](./face-api-how-to-topics/specify-detection-model.md) .
+* Yüz maskesi özniteliği: yüz maskesi özniteliği, en son algılama 03 modeliyle birlikte kullanılabilir ve `"noseAndMouthCovered"` yüz maskesinin, hem burun hem de ağzın yanı sıra, yüz maskesinin ne kadar uygun olduğunu algılayan ek özniteliktir. En son maske algılama özelliğini kullanmak için kullanıcıların API isteğinde algılama modelini belirtmesi gerekir: model sürümünü _detectionModel_ parametresiyle atayın `detection_03` . Daha fazla ayrıntı için bkz. [yüz algılama modeli belirtme](./face-api-how-to-topics/specify-detection-model.md) .
+* Yeni Yüz Tanıma API'si tanıma modeli: yeni tanıma 04 modeli, şu anda kullanılabilir en doğru tanıma modelidir. Yeni bir müşteriyseniz, bu modelin doğrulama ve tanımlama için kullanılmasını öneririz. Bu, tanınma 03 doğruluğunu geliştirir ve bu da, yüz kapamaları (Surgical maskeleri, N95 maskeleri, kumaş maskeleri) içeren kayıtlı kullanıcılara yönelik iyileştirilmiş tanıma da dahildir. Artık müşteriler, kayıtlı bir kullanıcının en son algılama 03 modeliyle bir yüz kapağı takıp takmadığını algılayan ve en son tanıma 04 modeliyle kim olduğunu tanılayan güvenli ve sorunsuz kullanıcı deneyimleri oluşturabilir. Daha fazla ayrıntı için bkz. [yüz tanıma modeli belirtme](./face-api-how-to-topics/specify-recognition-model.md) .
 
 
 ## <a name="january-2021"></a>Ocak 2021

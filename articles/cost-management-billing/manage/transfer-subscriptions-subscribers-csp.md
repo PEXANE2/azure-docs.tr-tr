@@ -6,14 +6,14 @@ ms.reviewer: dhgandhi
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 02/11/2021
+ms.date: 03/24/2021
 ms.author: banders
-ms.openlocfilehash: 63fbf76b2211e530707f3598d176b646c317cc53
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: b88a5bc10afeffe7e15ad7a90e28bd8b8ff28688
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100363058"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046564"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>Azure aboneliklerini aboneler ile CSP'ler arasında aktarma
 
@@ -21,7 +21,7 @@ Bu makalede Azure aboneliklerini Bulut Çözümü Sağlayıcıları (CSP) iş or
 
 Aktarım isteğine başlamadan önce, saklamak istediğiniz tüm maliyet ve faturalama bilgilerini indirmeniz veya dışarı aktarmanız gerekir. Faturalama ve kullanım bilgileri abonelikle birlikte aktarılmaz. Maliyet yönetimi verilerini dışarı aktarma hakkında daha fazla bilgi için bkz. [Dışarı aktarılan verileri oluşturma ve yönetme](../costs/tutorial-export-acm-data.md). Faturanızı ve kullanım verilerinizi indirme hakkında daha fazla bilgi için bkz. [Azure faturanızı ve günlük kullanım verilerinizi indirme veya görüntüleme](download-azure-invoice-daily-usage-date.md).
 
-Aboneliği aktardıktan sonra mevcut rezervasyonlarınız uygulanmaya devam etmez. Aboneliği aktarmadan önce [tüm rezervasyonları iptal edip para iadesi aldığınızdan](../reservations/exchange-and-refund-azure-reservations.md) emin olun.
+Mevcut rezervasyonlar varsa, bir aboneliği aktardıktan sonra 90 gün uygulamaktan sonra bu işlemleri durdurur. 90 gün yetkisiz kullanım süresinden sonra ücretlerden kaçınmak için, bir aboneliği aktarmadan önce [Tüm rezervasyonları iptal ettiğinizden ve bunları geri ödediğinizden](../reservations/exchange-and-refund-azure-reservations.md) emin olun.
 
 ## <a name="transfer-ea-subscriptions-to-a-csp-partner"></a>CSP iş ortağına EA aboneliklerinin aktarılması
 

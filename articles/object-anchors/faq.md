@@ -7,12 +7,12 @@ ms.author: crtreasu
 ms.date: 04/01/2020
 ms.topic: overview
 ms.service: azure-object-anchors
-ms.openlocfilehash: 6de027f317072512bd9893303d3a79d0f34f3e3e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: aebc1013dcead6c32dab55512ce915e25f60f94a
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101749082"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047584"
 ---
 # <a name="frequently-asked-questions-about-azure-object-anchors"></a>Azure nesne bağlantıları hakkında sık sorulan sorular
 
@@ -78,7 +78,7 @@ Y **:** Nesne boyutuna ve tarama işlemine bağlıdır. Daha hızlı algılamay�
  1. Doğru işleme almak için göz ayarlama işlemi gerçekleştirin.
  2. Odanın zengin görsel dokusunu ve iyi aydınlatmaya sahip olduğundan emin olun.
  3. Mümkünse nesneyi sabit tutun.
- 4. İsteğe bağlı olarak, HoloLens cihazınızda [uzamsal eşleme](https://docs.microsoft.com/windows/mixed-reality/spatial-mapping) önbelleğini temizleyin.
+ 4. İsteğe bağlı olarak, HoloLens cihazınızda [uzamsal eşleme](/windows/mixed-reality/spatial-mapping) önbelleğini temizleyin.
  5. Nesneyi inceleyerek nesneyi tarayın. Nesnenin çoğunun gözlemlendiği emin olun.
  6. Bir arama alanını nesneyi kapsayacak yeterince büyük olarak ayarlayın.
  7. Nesne, algılama sırasında sabit kalmalıdır.

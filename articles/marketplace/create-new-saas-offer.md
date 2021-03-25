@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 09/02/2020
-ms.openlocfilehash: f689993ce56a1125a1d1de8f65ce05d01f776ea9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/19/2021
+ms.openlocfilehash: f652858f22e26eb7167a0cc7a2cfb8ef4b600ace
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93130077"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047309"
 ---
 # <a name="how-to-create-a-saas-offer-in-the-commercial-marketplace"></a>Ticari Market 'te SaaS teklifi oluşturma
 
@@ -22,6 +22,9 @@ Ticari Market yayımcısı olarak bir hizmet olarak yazılım (SaaS) teklifi olu
 ## <a name="before-you-begin"></a>Başlamadan önce
 
 Daha önce yapmadıysanız, [ticari Market için bir SaaS teklifi planı](plan-saas-offer.md)makalesini okuyun. SaaS uygulamanız için teknik gereksinimleri ve teklifinizi oluştururken ihtiyaç duyacağınız bilgileri ve varlıkları açıklayacak. Ticari Market 'te basit bir liste (**benimle Iletişime geçin** ) yayımlamayı planlamıyorsanız, SaaS uygulamanızın kimlik doğrulama etrafında teknik gereksinimleri karşılaması gerekir.
+
+> [!IMPORTANT]
+> Ayrı bir geliştirme/test (GELIŞTIRME) teklifi ve ayrı bir üretim (ÜRETIM) teklifi oluşturmanızı öneririz. Bu makalede, bir ÜRETIM teklifinin nasıl oluşturulacağı açıklanır. DEV teklifi oluşturma hakkında ayrıntılı bilgi için bkz. [geliştirme ve test teklifi oluşturma](create-saas-dev-test-offer.md).
 
 ## <a name="create-a-new-saas-offer"></a>Yeni bir SaaS teklifi oluşturma
 

@@ -8,12 +8,12 @@ ms.custom: mvc, devcenter, devx-track-python
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 10/28/2020
-ms.openlocfilehash: db94a82112f2670facd4d89178f11653c5316c36
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6c589f3f0913609640ac14534c170c741c16a084
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95998949"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048179"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Hızlı başlangıç: PostgreSQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için Python kullanma-tek sunucu
 
@@ -36,7 +36,7 @@ Bu hızlı başlangıç için şunlar gerekir:
   | **Hizmet uç noktasını yapılandır** | Genel | [Portal](./howto-manage-vnet-using-portal.md) <br/> [CLI](./howto-manage-vnet-using-cli.md)|
   | **Özel bağlantıyı Yapılandır** | Özel | [Portal](./howto-configure-privatelink-portal.md) <br/> [CLI](./howto-configure-privatelink-cli.md) |
 
-- [Python](https://www.python.org/downloads/) 2.7.9 + veya 3.4 +.
+- [Python](https://www.python.org/downloads/) 2,7 veya 3.6 +.
 
 - En son [PIP](https://pip.pypa.io/en/stable/installing/) paketi yükleyicisi.
 - [](https://pypi.python.org/pypi/psycopg2/) `pip install psycopg2` Bir Terminal veya komut istemi penceresinde psycopg2 ' ü kullanarak. Daha fazla bilgi için bkz. [nasıl yüklenir `psycopg2` ](http://initd.org/psycopg/docs/install.html).

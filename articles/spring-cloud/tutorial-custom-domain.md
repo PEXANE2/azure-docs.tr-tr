@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: d1ee13a464002a2e1503541964cd96957da3c651
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: a0fafad208d97e2a4d24036e226b4044764bccb4
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104879227"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047091"
 ---
 # <a name="tutorial-map-an-existing-custom-domain-to-azure-spring-cloud"></a>Öğretici: mevcut bir özel etki alanını Azure Spring Cloud ile eşleme
 
@@ -156,7 +156,7 @@ DNS sağlayıcınıza gidin ve etki alanınızı <service_name>. azuremicroservi
 ![DNS kayıtları sayfası](./media/custom-dns-tutorial/dns-records.png)
 
 ## <a name="map-your-custom-domain-to-azure-spring-cloud-app"></a>Özel etki alanınızı Azure Spring Cloud App 'e eşleyin
-Azure yay bulutu 'nda uygulamanız yoksa [hızlı başlangıç: Azure Portal kullanarak mevcut bir Azure yay bulutu uygulamasını başlatma](/azure/spring-cloud/spring-cloud-quickstart-launch-app-portal)' daki yönergeleri izleyin.
+Azure yay bulutu 'nda uygulamanız yoksa [hızlı başlangıç: Azure Portal kullanarak mevcut bir Azure yay bulutu uygulamasını başlatma](./spring-cloud-quickstart.md)' daki yönergeleri izleyin.
 
 #### <a name="portal"></a>[Portal](#tab/Azure-portal)
 Uygulama sayfasına gidin.
