@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 03/17/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 9567ec2458a01825568cb853728f71db10228ee3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8cecd1b57395fa51fd95c824e88885d9c3ae3f09
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104608303"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023308"
 ---
 # <a name="set-up-your-azure-percept-dk-and-deploy-your-first-ai-model"></a>Azure Percept DK 'yi ayarlama ve ilk AI modelinizi dağıtma
 
@@ -30,7 +30,7 @@ Bu işlem sırasında herhangi bir sorunla karşılaşırsanız, olası çözüm
 - Bir Azure Percept DK (Dev Kit).
 - Wi-Fi özelliğine ve bir Web tarayıcısına sahip bir Windows, Linux veya OS X tabanlı ana bilgisayar.
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-- Azure hesabının, abonelikte **sahip** veya **katkıda bulunan** rolü olmalıdır. Azure hesap rolünüzü denetlemek için aşağıdaki adımları izleyin. Azure rol tanımları hakkında daha fazla bilgi için [Azure rol tabanlı erişim denetimi belgelerine](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles#azure-roles)göz atın.
+- Azure hesabının, abonelikte **sahip** veya **katkıda bulunan** rolü olmalıdır. Azure hesap rolünüzü denetlemek için aşağıdaki adımları izleyin. Azure rol tanımları hakkında daha fazla bilgi için [Azure rol tabanlı erişim denetimi belgelerine](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles)göz atın.
 
     > [!CAUTION]
     > Birden çok Azure hesabınız varsa, tarayıcınız kimlik bilgilerini başka bir hesaptan önbelleğe alabilir. Karışıklığı önlemek için, kullanılmayan tüm tarayıcı pencerelerini kapatmanız ve kurulum deneyimini başlatmadan önce [Azure Portal](https://portal.azure.com/) oturum açmanız önerilir. Doğru hesap ile oturum açtığınızdan emin olmak hakkında daha fazla bilgi için [Kurulum sorun giderme kılavuzu 'na](./how-to-troubleshoot-setup.md) bakın.
@@ -43,7 +43,7 @@ Azure hesabınızın abonelik içinde "sahip" veya "katkıda bulunan" olup olmad
 
 1. **Abonelikler** simgesine tıklayın (sarı bir anahtar gibi görünür).
 
-1. Listeden aboneliğinizi seçin. Aboneliğinizi görmüyorsanız doğru Azure hesabıyla oturum açtığınızdan emin olun. Yeni bir abonelik oluşturmak isterseniz, [aşağıdaki adımları](https://docs.microsoft.com/azure/cost-management-billing/manage/create-subscription)izleyin.
+1. Listeden aboneliğinizi seçin. Aboneliğinizi görmüyorsanız doğru Azure hesabıyla oturum açtığınızdan emin olun. Yeni bir abonelik oluşturmak isterseniz, [aşağıdaki adımları](../cost-management-billing/manage/create-subscription.md)izleyin.
 
 1. Abonelik menüsünden **erişim denetimi (IAM)** seçeneğini belirleyin.
 1. **Erişimimi görüntüle**' ye tıklayın.

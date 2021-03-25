@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: db303d1e7bd5a9cb7b8441f0a5da634a13113066
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5d5aaf84482dae6786ac7fd9f9ee837efca71b34
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948529"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105104518"
 ---
 Bing Web Araması istemci kitaplığı, Bing Web Araması Python uygulamanıza tümleştirmeyi kolaylaştırır. Bu hızlı başlangıçta istek göndermeyi, JSON yanıtı almayı, sonuçları filtrelemeyi ve ayrıştırmayı öğreneceksiniz.
 
@@ -21,9 +21,9 @@ Kodu hemen görmek istiyor musunuz? [Python için Bing arama istemci kitaplıkla
 
 
 ## <a name="prerequisites"></a>Önkoşullar
-Bing Web Araması SDK'sı Python 2.7, 3.3, 3.4, 3.5 ve 3.6 ile uyumludur. Bu hızlı başlangıç için sanal ortam kullanmanızı öneririz.
+Bing Web Araması SDK 'Sı Python 2,7 veya 3.6 + ile uyumludur. Bu hızlı başlangıç için sanal ortam kullanmanızı öneririz.
 
-* Python 2.7, 3.3, 3.4, 3.5 veya 3.6
+* Python 2,7 veya 3.6 +
 * Python 2.7 için [virtualenv](https://docs.python.org/3/tutorial/venv.html)
 * Python 3.x için [venv](https://pypi.python.org/pypi/virtualenv)
 

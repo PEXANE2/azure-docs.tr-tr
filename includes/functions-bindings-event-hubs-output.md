@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: 9fca69804220021ca7935e562f2026c11749515a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cdd8b42f3ef7530809c50925c631b7aa90ee213c
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102623381"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105104588"
 ---
 Olayları bir olay akışına yazmak için Event Hubs çıkış bağlamasını kullanın. Olay yazmak için ilgili olay hub'ında gönderme iznine sahip olmanız gerekir.
 
@@ -265,14 +265,14 @@ Olay Hub 'ının çıkış bağlaması için aşağıdaki parametre türlerini k
 * `string`
 * `byte[]`
 * `POCO`
-* `EventData` -EventData 'ın varsayılan özellikleri, [Microsoft. Azure. EventHubs ad alanı](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)için ' de verilmiştir.
+* `EventData` -EventData 'ın varsayılan özellikleri, [Microsoft. Azure. EventHubs ad alanı](/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)için ' de verilmiştir.
 
 Gibi bir yöntem parametresi kullanarak ileti gönderin `out string paramName` . C# komut dosyasında, `paramName` `name` *üzerindefunction.js* özelliğinde belirtilen değerdir. Birden çok ileti yazmak için, `ICollector<string>` veya yerinde kullanabilirsiniz `IAsyncCollector<string>` `out string` .
 
 ### <a name="additional-types"></a>Ek türler 
-Olay Hub uzantısının 5.0.0 veya daha yüksek sürümünü kullanan uygulamalar, `EventData` [Microsoft. Azure. eventhubs ad alanı](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)yerine [Azure. Messaging. eventhubs](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) türünü kullanır. Bu sürüm, `Body` aşağıdaki türlerin yerine eski tür için desteği bırakır:
+Olay Hub uzantısının 5.0.0 veya daha yüksek sürümünü kullanan uygulamalar, `EventData` [Microsoft. Azure. eventhubs ad alanı](/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)yerine [Azure. Messaging. eventhubs](/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) türünü kullanır. Bu sürüm, `Body` aşağıdaki türlerin yerine eski tür için desteği bırakır:
 
-- [EventBody](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
+- [EventBody](/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
 
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
@@ -283,14 +283,14 @@ Olay Hub 'ının çıkış bağlaması için aşağıdaki parametre türlerini k
 * `string`
 * `byte[]`
 * `POCO`
-* `EventData` -EventData 'ın varsayılan özellikleri, [Microsoft. Azure. EventHubs ad alanı](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)için ' de verilmiştir.
+* `EventData` -EventData 'ın varsayılan özellikleri, [Microsoft. Azure. EventHubs ad alanı](/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)için ' de verilmiştir.
 
 Gibi bir yöntem parametresi kullanarak ileti gönderin `out string paramName` . C# komut dosyasında, `paramName` `name` *üzerindefunction.js* özelliğinde belirtilen değerdir. Birden çok ileti yazmak için, `ICollector<string>` veya yerinde kullanabilirsiniz `IAsyncCollector<string>` `out string` .
 
 ### <a name="additional-types"></a>Ek türler 
-Olay Hub uzantısının 5.0.0 veya daha yüksek sürümünü kullanan uygulamalar, `EventData` [Microsoft. Azure. eventhubs ad alanı](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)yerine [Azure. Messaging. eventhubs](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) türünü kullanır. Bu sürüm, `Body` aşağıdaki türlerin yerine eski tür için desteği bırakır:
+Olay Hub uzantısının 5.0.0 veya daha yüksek sürümünü kullanan uygulamalar, `EventData` [Microsoft. Azure. eventhubs ad alanı](/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)yerine [Azure. Messaging. eventhubs](/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) türünü kullanır. Bu sürüm, `Body` aşağıdaki türlerin yerine eski tür için desteği bırakır:
 
-- [EventBody](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
+- [EventBody](/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 

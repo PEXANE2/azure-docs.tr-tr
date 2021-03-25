@@ -1,5 +1,5 @@
 ---
-title: "Oracle 'dan SQL veritabanı: geçiş kılavuzu"
+title: "Oracle 'dan Azure SQL veritabanı: geçiş kılavuzu"
 description: Bu kılavuzda Oracle şemanızı, Oracle için SQL Server Geçiş Yardımcısı (Oracle için SıMMA) kullanarak Azure SQL veritabanı 'na geçirmeniz öğretilir.
 ms.service: sql-database
 ms.subservice: migration-guide
@@ -9,19 +9,19 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 08/25/2020
-ms.openlocfilehash: f00740de5a327858fd250a0cb561b07c32f3b726
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9b02b0e5d9e3229aafec9b8a4ca21b14c0e596a6
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104655580"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105022288"
 ---
 # <a name="migration-guide-oracle-to-azure-sql-database"></a>Geçiş Kılavuzu: Oracle 'dan Azure SQL veritabanı
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
 Bu kılavuzda Oracle şemalarınızı Oracle için SQL Server Geçiş Yardımcısı kullanarak Azure SQL veritabanı 'na geçirmeniz öğretilir.
 
-Diğer geçiş kılavuzlarında, bkz. [Veritabanı geçişi](https://datamigration.microsoft.com/). 
+Diğer geçiş kılavuzlarında, bkz. [Veritabanı geçişi](https://docs.microsoft.com/data-migration). 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -44,18 +44,15 @@ Oracle şemanızı bir SQL veritabanına geçirmek için şunlar gerekir:
 
 Veritabanı nesnelerini ve verileri gözden geçirmek, geçiş için veritabanlarını değerlendirmek, veritabanı nesnelerini Azure SQL veritabanı 'na geçirmek ve son olarak verileri veritabanına geçirmek için Oracle için SQL Server Geçiş Yardımcısı (SSMA) kullanın. 
 
-
 Bir değerlendirme oluşturmak için aşağıdaki adımları izleyin: 
-
 
 1. [Oracle için SQL Server Geçiş Yardımcısı](https://www.microsoft.com/en-us/download/details.aspx?id=54258)açın. 
 1. **Dosya** ' yı ve ardından **Yeni proje**' yi seçin. 
-1. Projenizin kaydedileceği bir konum belirtin ve ardından açılan listeden geçiş hedefi olarak Azure SQL veritabanı ' nı seçin. **Tamam**’ı seçin.
+1. Projenizin kaydedileceği bir konum belirtin ve ardından açılan listeden geçiş hedefi olarak Azure SQL veritabanı ' nı seçin. **Tamam ' ı** seçin:
 
    ![Yeni Proje](./media/oracle-to-sql-database-guide/new-project.png)
 
-
-1. **Oracle 'A Bağlan**' ı seçin. Oracle **'A Bağlan** Iletişim kutusunda Oracle bağlantı ayrıntıları için değerler girin.
+1. **Oracle 'A Bağlan**' ı seçin. Oracle **'A Bağlan** Iletişim kutusunda Oracle bağlantı ayrıntıları için değerler girin:
 
    ![Oracle 'a Bağlan](./media/oracle-to-sql-database-guide/connect-to-oracle.png)
 
@@ -63,7 +60,7 @@ Bir değerlendirme oluşturmak için aşağıdaki adımları izleyin:
 
    ![Oracle şeması Seç](./media/oracle-to-sql-database-guide/select-schema.png)
 
-1. **Oracle meta veri Gezgini**'nde geçirmek istediğiniz Oracle şemasına sağ tıklayıp **rapor oluştur**' u seçin. Bu, bir HTML raporu oluşturur. Alternatif olarak, veritabanını seçtikten sonra gezinti çubuğundan **rapor oluştur** ' u seçebilirsiniz.
+1. **Oracle meta veri Gezgini**'nde geçirmek istediğiniz Oracle şemasına sağ tıklayıp **rapor oluştur**' u seçin. Bu, bir HTML raporu oluşturur. Alternatif olarak, veritabanını seçtikten sonra gezinti çubuğundan **rapor oluştur** ' u de seçebilirsiniz:
 
    ![Rapor oluştur](./media/oracle-to-sql-database-guide/create-report.png)
 
@@ -81,7 +78,7 @@ Varsayılan veri türü eşlemelerini doğrulayın ve gerekirse gereksinimlere g
 
 1. Menüden **Araçlar** ' ı seçin. 
 1. **Proje ayarları**' nı seçin. 
-1. **Tür eşlemeleri** sekmesini seçin. 
+1. **Tür eşlemeleri** sekmesini seçin: 
 
    ![Tür eşlemeleri](./media/oracle-to-sql-database-guide/type-mappings.png)
 
@@ -94,25 +91,27 @@ Varsayılan veri türü eşlemelerini doğrulayın ve gerekirse gereksinimlere g
 1. Seçim Deyimlere dinamik veya geçici sorgular ekleyin. Düğüme sağ tıklayın ve ardından **deyim Ekle**' yi seçin.
 1. **Azure SQL veritabanı 'Na Bağlan**' ı seçin. 
     1. Veritabanınızı Azure SQL veritabanı 'na bağlamak için bağlantı ayrıntılarını girin.
-    1. Açılan listeden hedef SQL veritabanınızı seçin.
-    1. **Bağlan**’ı seçin.
+    1. Açılan listeden hedef SQL veritabanınızı seçin veya yeni bir ad sağlayın, bu durumda hedef sunucuda bir veritabanının oluşturulması gerekir. 
+    1. Kimlik doğrulama ayrıntılarını sağlayın. 
+    1. **Bağlan**' ı seçin:
 
     ![SQL Veritabanı’na bağlanma](./media/oracle-to-sql-database-guide/connect-to-sql-database.png)
 
 
-1. **Oracle meta veri Gezgini** ' nde Oracle şemasına sağ tıklayıp **Şemayı Dönüştür**' ü seçin. Alternatif olarak, şemanızı seçtikten sonra üst gezinti çubuğundan **Şemayı Dönüştür** ' i de seçebilirsiniz.
+1. **Oracle meta veri Gezgini** ' nde Oracle şemasına sağ tıklayıp **Şemayı Dönüştür**' ü seçin. Alternatif olarak, şemanızı seçtikten sonra üst gezinti çubuğundan **Şemayı Dönüştür** ' i de seçebilirsiniz:
 
    ![Şemayı Dönüştür](./media/oracle-to-sql-database-guide/convert-schema.png)
 
-1. Dönüştürme tamamlandıktan sonra, olası sorunları belirlemek ve bunları önerilere göre ele almak için dönüştürülen nesneleri özgün nesnelere karşılaştırın ve gözden geçirin.
+1. Dönüştürme tamamlandıktan sonra olası sorunları belirlemek ve bunları önerilere göre ele almak için dönüştürülen nesneleri özgün nesnelere karşılaştırın ve gözden geçirin:
 
    ![Öneriler şemasını gözden geçirin](./media/oracle-to-sql-database-guide/table-mapping.png)
 
-   Dönüştürülmüş Transact-SQL metnini özgün Saklı yordamlarla karşılaştırın ve önerileri gözden geçirin. 
+   Dönüştürülmüş Transact-SQL metnini özgün Saklı yordamlarla karşılaştırın ve önerileri gözden geçirin:
 
    ![Önerileri gözden geçirin](./media/oracle-to-sql-database-guide/procedure-comparison.png)
 
-1. Çevrimdışı şema düzeltme alıştırması için projeyi yerel olarak kaydedin. **Dosya** menüsünden **projeyi kaydet** ' i seçin.
+1. Çıkış bölmesinde **sonuçları gözden geçir** ' i seçin ve **hata listesi** bölmesindeki hataları gözden geçirin. 
+1. Çevrimdışı şema düzeltme alıştırması için projeyi yerel olarak kaydedin. **Dosya** menüsünden **projeyi kaydet** ' i seçin. Bu, şemayı SQL veritabanı 'na yayımlamadan önce kaynak ve hedef şemaları çevrimdışına almak ve düzeltmeyi gerçekleştirmek için bir fırsat sağlar.
 
 ## <a name="migrate"></a>Geçiş
 
@@ -120,7 +119,7 @@ Veritabanlarınızı değerlendirmek ve tutarsızlıkları doğruladıktan sonra
 
 Şemanızı yayımlamak ve verilerinizi geçirmek için şu adımları izleyin:
 
-1. Şemayı yayımlama: **Azure SQL veritabanı meta veri Gezgini** ' nde **veritabanları** düğümünden veritabanına sağ tıklayın ve **veritabanıyla Synchronize**' ı seçin.
+1. Şemayı yayımlama: **Azure SQL veritabanı meta veri Gezgini** ' nde **veritabanları** düğümünden veritabanına sağ tıklayın ve **veritabanıyla Synchronize**' ı seçin:
 
    ![Veritabanıyla Synchronize](./media/oracle-to-sql-database-guide/synchronize-with-database.png)
 
@@ -129,22 +128,21 @@ Veritabanlarınızı değerlendirmek ve tutarsızlıkları doğruladıktan sonra
    ![Veritabanı incelemesinin eşitlenmesi](./media/oracle-to-sql-database-guide/synchronize-with-database-review.png)
 
 
-1. Verileri geçirme: **Oracle meta veri Gezgini** ' nden şemaya sağ tıklayın ve **veri geçişi**' ni seçin. Alternatif olarak, şemayı seçtikten sonra üst çizgi gezinti çubuğundan **verileri geçir** ' i de seçebilirsiniz. 
+1. Verileri geçirme: **Oracle meta veri Gezgini**'nde geçirmek istediğiniz veritabanına veya nesneye sağ tıklayın ve **veri geçişi**' ni seçin. Alternatif olarak, üst çizgi gezinti çubuğundan **veri geçişini** seçebilirsiniz. Tüm bir veritabanının verilerini geçirmek için veritabanı adının yanındaki onay kutusunu işaretleyin. Ayrı tablolardan verileri geçirmek için veritabanını genişletin, tablolar ' ı genişletin ve ardından tablonun yanındaki onay kutusunu işaretleyin. Ayrı tablolardaki verileri atlamak için onay kutusunu temizleyin:
 
    ![Verileri geçirme](./media/oracle-to-sql-database-guide/migrate-data.png)
 
 1. Oracle ve Azure SQL veritabanı için bağlantı ayrıntılarını sağlayın.
-1. **Veri geçiş raporunu** görüntüleyin.
+1. Geçiş tamamlandıktan sonra, **veri geçiş raporunu** görüntüleyin:  
 
    ![Veri geçiş raporu](./media/oracle-to-sql-database-guide/data-migration-report.png)
 
-1. [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) kullanarak Azure SQL veritabanınıza bağlanın ve verileri ve şemayı inceleyerek geçişi doğrulayın.
+1. [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) kullanarak Azure SQL veritabanınıza bağlanın ve verileri ve şemayı inceleyerek geçişi doğrulayın:
 
    ![SSMA 'da doğrula](./media/oracle-to-sql-database-guide/validate-data.png)
 
 Alternatif olarak, geçişi gerçekleştirmek için SQL Server Integration Services (SSIS) de kullanabilirsiniz. Daha fazla bilgi edinmek için şu makalelere bakın: 
 
-- [SQL Server Geçiş Yardımcısı: Microsoft dışı veri platformlarındaki verileri değerlendirme ve SQL Server yapma](https://blogs.msdn.microsoft.com/datamigration/2016/11/16/sql-server-migration-assistant-how-to-assess-and-migrate-databases-from-non-microsoft-data-platforms-to-sql-server/)
 - [SQL Server Integration Services kullanmaya başlama](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services)
 - [SQL Server Integration Services: SSIS for Azure ve hibrit veri hareketi](https://download.microsoft.com/download/D/2/0/D20E1C5F-72EA-4505-9F26-FEF9550EFD44/SSIS%20Hybrid%20and%20Azure.docx)
 

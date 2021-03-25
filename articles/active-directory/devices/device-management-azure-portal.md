@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 03/23/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4269ba32a22538eeba35ba484fae0c98cd219b7c
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 18b43a99eb561cbfa340e0b3f318782bef2ca17c
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "104952788"
+ms.locfileid: "105023444"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Azure portalını kullanarak cihaz kimliklerini yönetme
 
@@ -33,6 +33,7 @@ Azure AD, cihaz kimliklerini yönetmek için size merkezi bir yer sağlar.
 - Cihaz kimliği ayarlarınızı yapılandırın.
 - Enterprise State Roaming etkinleştirin veya devre dışı bırakın.
 - Cihazla ilgili denetim günlüklerini gözden geçirme
+- Aygıtları indir (Önizleme)
 
 [![Azure portal tüm cihazlar görünümü](./media/device-management-azure-portal/all-devices-azure-portal.png)](./media/device-management-azure-portal/all-devices-azure-portal.png#lightbox)
 
@@ -144,6 +145,14 @@ Daha önce, cihaz listesini etkinliğe ve etkin duruma göre filtreleyebilirsini
 1. Görüntülenen başlığı seçin, **yeni cihaz filtreleme geliştirmelerini deneyin. Önizlemeyi etkinleştirmek için tıklayın.**
 
 Artık, **tüm cihazlar** görünümlarınıza **filtre ekleme** imkanına sahip olursunuz.
+
+### <a name="download-devices-preview"></a>Aygıtları indir (Önizleme)
+
+Bulut cihaz yöneticileri, Intune yöneticileri ve genel Yöneticiler, cihazların bir CSV dosyasını, uygulanan filtreleri temel alarak dışarı aktarmak için **aygıtları indir (Önizleme)** seçeneğini kullanabilir. Listeye hiçbir filtre uygulanmışsa, tüm cihazlar verilecek. Bir dışarı aktarma işlemi, şu değere bağlı olarak bir saate kadar sürebilir 
+
+Bu liste, aşağıdaki cihaz kimliği özniteliklerini içerir:
+
+`accountEnabled, approximateLastLogonTimeStamp, deviceOSType, deviceOSVersion, deviceTrustType, dirSyncEnabled, displayName, isCompliant, isManaged, lastDirSyncTime, objectId, profileType, registeredOwners, systemLabels, registrationTime, mdmDisplayName`
 
 ## <a name="configure-device-settings"></a>Cihaz ayarlarını yapılandırma
 

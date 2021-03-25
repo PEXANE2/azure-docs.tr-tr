@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/02/2021
 ms.author: yelevin
-ms.openlocfilehash: 7f89780f2ed440898f5a28d78ec541c48a958b90
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4be182b3eee59f7f9d2ef704a3d0f57c6718b45d
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101700947"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044983"
 ---
 # <a name="connect-your-broadcom-symantec-data-loss-prevention-dlp-to-azure-sentinel"></a>Broadcom Symantec veri kaybı engellemesini (DLP) Azure Sentinel 'e bağlama
 
@@ -35,7 +35,7 @@ Bu makalede, Broadcom Symantec DLP gerecinizi Azure Sentinel 'e bağlama açıkl
 
 - Azure Sentinel çalışma alanınızda okuma ve yazma izinlerine sahip olmanız gerekir.
 
-- Çalışma alanı için paylaşılan anahtarlar için okuma izninizin olması gerekir. [Çalışma alanı anahtarları hakkında daha fazla bilgi edinin](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key).
+- Çalışma alanı için paylaşılan anahtarlar için okuma izninizin olması gerekir. [Çalışma alanı anahtarları hakkında daha fazla bilgi edinin](../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key).
 
 ## <a name="send-broadcom-symantec-dlp-logs-to-azure-sentinel"></a>Azure Sentinel 'e Broadcom Symantec DLP günlükleri gönderme
 

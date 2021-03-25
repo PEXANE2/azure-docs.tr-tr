@@ -146,6 +146,8 @@
               href: azure-stack-edge-pro-r-configure-vpn-bcdr.md
         - name: Wi-Fi yönetimi
           href: azure-stack-edge-mini-r-manage-wifi.md
+        - name: Wi-Fi profillerini kullanma
+          href: azure-stack-edge-mini-r-use-wifi-profiles.md
 - name: 'Paylaşılan Pro GPU, Pro R, Mini R'
   items:
     - name: Paylaşılan kavramlar
