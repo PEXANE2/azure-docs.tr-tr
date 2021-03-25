@@ -1,5 +1,5 @@
 ---
-title: "SQL veritabanı 'na SQL Server: geçişe genel bakış"
+title: "Azure SQL veritabanı 'na SQL Server: geçişe genel bakış"
 description: SQL Server veritabanlarınızı Azure SQL veritabanı 'na geçirmek için kullanabileceğiniz farklı araçlar ve seçenekler hakkında bilgi edinin.
 ms.service: sql-database
 ms.subservice: migration-guide
@@ -10,14 +10,14 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 733b2375a26b0157f88bc148b52932e2f3e3f2e2
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: ecb9d1e25647e197614817116921140f0d7fbdf4
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102488282"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105024974"
 ---
-# <a name="migration-overview-sql-server-to-sql-database"></a>Geçişe genel bakış: SQL veritabanı 'na SQL Server
+# <a name="migration-overview-sql-server-to-azure-sql-database"></a>Geçişe genel bakış: Azure SQL veritabanı 'na SQL Server
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
 
 SQL Server Azure SQL veritabanı 'na geçirmek için farklı geçiş seçenekleri ve konuları hakkında bilgi edinin. 
@@ -30,7 +30,7 @@ SQL Server Azure SQL veritabanı 'na geçirmek için farklı geçiş seçenekler
 - İşlem altyapısı (Google Cloud Platform-GCP)  
 - SQL Server için bulut SQL (Google Cloud Platform – GCP) 
 
-Diğer senaryolar için [veritabanı geçiş kılavuzuna](https://datamigration.microsoft.com/)bakın. 
+Diğer geçiş kılavuzlarında, bkz. [Veritabanı geçişi](https://docs.microsoft.com/data-migration). 
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -58,7 +58,7 @@ Farklı iş yükleri ve Kullanıcı tercihleri için farklı araçlar mevcuttur.
 
 ## <a name="choose-appropriate-target"></a>Uygun hedefi seçin
 
-Azure SQL veritabanı 'nın doğru dağıtım modelini ve hizmet katmanını seçmenize yardımcı olacak genel yönergeleri göz önünde bulundurun. Dağıtım sırasında işlem ve depolama kaynaklarını seçebilir ve sonra uygulamanız için kapalı kalma süresi olmadan  [Azure Portal](../../database/scale-resources.md)  kullanarak bunları daha sonra değiştirebilirsiniz.
+Azure SQL veritabanı 'nın doğru dağıtım modelini ve hizmet katmanını seçmenize yardımcı olacak genel yönergeleri göz önünde bulundurun. Dağıtım sırasında işlem ve depolama kaynaklarını seçebilir ve sonra uygulamanız için kapalı kalma süresi olmadan [Azure Portal kullanarak bunları](../../database/scale-resources.md) daha sonra değiştirebilirsiniz.
 
 
 **Dağıtım modelleri**: tek bir veritabanı veya elastik havuz arasında karar vermek için uygulama iş yükünüzü ve kullanım modelini anlayın. 
@@ -195,7 +195,7 @@ Gelişmiş Yönetim ve güvenlik özelliklerine ek olarak SQL veritabanı, [iş 
 
 Ek Yardım için, gerçek dünya geçiş projeleri için geliştirilen aşağıdaki kaynaklara bakın.
 
-|Varlık  |Description  |
+|Varlık  |Açıklama  |
 |---------|---------|
 |[Veri iş yükü değerlendirmesi modeli ve aracı](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| Bu araç, belirli bir iş yükü için önerilen "en uygun" hedef platformları, bulut hazırlığı ve uygulama/veritabanı düzeltme düzeyini sağlar. Otomatikleştirilmiş ve Tekdüzen hedef platformu karar süreci sağlayarak büyük Emlak değerlendirmelerine yardımcı olan basit, tek tıklamayla hesaplama ve rapor oluşturma işlemlerini sunar.|
 |[DBLoader yardımcı programı](https://github.com/microsoft/DataMigrationTeam/tree/master/DBLoader%20Utility)|DBLoader, sınırlandırılmış metin dosyalarından SQL Server içine veri yüklemek için kullanılabilir. Bu Windows konsol yardımcı programı, Azure SQL veritabanı da dahil olmak üzere tüm SQL Server sürümleri üzerinde çalışan SQL Server Native Client BulkLoad arabirimini kullanır.|
@@ -212,7 +212,7 @@ Bu kaynaklar, Azure veri grubu Mühendisliği ekibi tarafından sponsorlu Data S
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-SQL Server Azure SQL veritabanı 'na geçirmeye başlamak için [SQL Server SQL veritabanı geçiş kılavuzuna](sql-server-to-sql-database-guide.md)bakın.
+SQL Server SQL veritabanı 'na geçirmeye başlamak için [Azure SQL veritabanı geçiş kılavuzu 'na SQL Server](sql-server-to-sql-database-guide.md)bakın.
 
 - Çeşitli veritabanı ve veri geçişi senaryolarında ve özel görevlerin yanı sıra size yardımcı olmak için sunulan Microsoft ve üçüncü taraf hizmet ve araçların bir matrisi için bkz. [veri geçişi Için hizmet ve araçlar](../../../dms/dms-tools-matrix.md).
 

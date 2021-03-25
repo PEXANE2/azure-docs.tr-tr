@@ -8,12 +8,12 @@ ms.subservice: ip-services
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: allensu
-ms.openlocfilehash: e6b7648188e2307da4ef40e0ab3daf6201f9d89d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c1ac3f2fa1ef3f1a24077064ad3ad3f3c30c5f3f
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101694878"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048366"
 ---
 # <a name="create-a-public-ip-address-using-the-azure-portal"></a>Azure portal kullanarak genel IP adresi oluşturma
 
@@ -52,7 +52,7 @@ Bu makale, IPv4 adreslerine odaklanır. IPv6 adresleri hakkında daha fazla bilg
 
 > [!NOTE]
 > Bu seçimler [kullanılabilirlik alanları](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones)bölgelerde geçerlidir. </br>
-Bu bölgelerde belirli bir bölgeyi seçebilirsiniz, ancak bu, bir hataya dayanıklı olmaz. </br> Kullanılabilirlik bölgeleri hakkında daha fazla bilgi için bkz. [Kullanılabilirlik alanlarına genel bakış](https://docs.microsoft.com/azure/availability-zones/az-overview).
+Bu bölgelerde belirli bir bölgeyi seçebilirsiniz, ancak bu, bir hataya dayanıklı olmaz. </br> Kullanılabilirlik bölgeleri hakkında daha fazla bilgi için bkz. [Kullanılabilirlik alanlarına genel bakış](../availability-zones/az-overview.md).
 
 \* = Katmanı, şu anda önizleme aşamasında olan [çapraz bölge yük dengeleyici](../load-balancer/cross-region-overview.md) işleviyle ilgilidir.
 

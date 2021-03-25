@@ -3,12 +3,12 @@ title: BD izlemesini kapsayıcı öngörüleri ile yapılandırma | Microsoft Do
 description: Bu makalede, kapsayıcı öngörüleri ile kalıcı birimler ile Kubernetes kümelerini izlemeyi nasıl yapılandırabileceğiniz açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: 578cfe128b7445f8b09771999d1e653e92c4befa
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 16c87177a8911a7b88284606f54f7bf6e0e0daa3
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102200708"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026113"
 ---
 # <a name="configure-pv-monitoring-with-container-insights"></a>BD izlemesini kapsayıcı öngörüleri ile yapılandırma
 
@@ -19,7 +19,7 @@ Kapsayıcı öngörüleri otomatik olarak, 60-sn aralıklarında aşağıdaki ö
 
 | Ölçüm adı | Ölçüm boyutu (Etiketler) | Ölçüm açıklaması | | `pvUsedBytes`| poduıd, podName, pvcName, pvcNamespace, capacityBytes, Clusterıd, clusterName | Belirli bir pod tarafından kullanılan talebe sahip belirli bir kalıcı birim için bayt cinsinden kullanılan alan. `capacityBytes` , veri alma maliyetini azaltmak ve sorguları basitleştirmek için Etiketler alanında bir boyut olarak ikiye katlanır. |
 
-Toplanan [BD ölçümlerini yapılandırma](https://aka.ms/ci/pvconfig)hakkında daha fazla bilgi edinin.
+Toplanan [BD ölçümlerini yapılandırma](./container-insights-agent-config.md)hakkında daha fazla bilgi edinin.
 
 ## <a name="pv-inventory"></a>BD stoku
 
@@ -48,7 +48,7 @@ Sol taraftaki bölmeden, Öngörüler bölmesindeki çalışma **kitaplarını g
 :::image type="content" source="./media/container-insights-persistent-volumes/pv-details-workbook-example.PNG" alt-text="Azure Izleyici BD ayrıntıları çalışma kitabı örneği":::
 
 ### <a name="persistent-volume-usage-recommended-alert"></a>Kalıcı Birim kullanımı önerilir uyarısı
-Bir pod için Ortalama BD kullanımı %80 üzerinde olduğunda sizi uyarmak için önerilen bir uyarı sağlayabilirsiniz. [Burada](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-metric-alerts) uyarma ve varsayılan eşiği [burada](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-metric-alerts#configure-alertable-metrics-in-configmaps)geçersiz kılma hakkında daha fazla bilgi edinin.
+Bir pod için Ortalama BD kullanımı %80 üzerinde olduğunda sizi uyarmak için önerilen bir uyarı sağlayabilirsiniz. [Burada](./container-insights-metric-alerts.md) uyarma ve varsayılan eşiği [burada](./container-insights-metric-alerts.md#configure-alertable-metrics-in-configmaps)geçersiz kılma hakkında daha fazla bilgi edinin.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Toplanan [BD ölçümleri hakkında](./container-insights-agent-config.md)daha fazla bilgi edinin.

@@ -8,12 +8,12 @@ ms.author: nmurav
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 7cfc8fc24aea938b997fead4ca762ce7178e3386
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7eb44987dca033ecdac9ef2ca63fb1da97dc9678
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103490628"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109191"
 ---
 # <a name="tutorial-prepare-a-web-app-for-azure-communication-services-nodejs"></a>Öğretici: Azure Iletişim Hizmetleri için bir Web uygulaması hazırlama (Node.js)
 
@@ -21,7 +21,7 @@ ms.locfileid: "103490628"
 
 Uygulamalarınıza gerçek zamanlı iletişimler eklemek için Azure Iletişim Hizmetleri 'ni kullanabilirsiniz. Bu öğreticide, Azure Iletişim hizmetlerini destekleyen bir Web uygulamasını ayarlamayı öğreneceksiniz. Bu, gerçek zamanlı iletişimlerle çalışmaya başlamak isteyen yeni geliştiriciler için tanıtım amaçlı bir öğreticidir.
 
-Bu öğreticinin sonuna kadar, Azure Communication Services istemci kitaplıkları ile yapılandırılmış bir temel Web uygulamanız olacaktır. Böylece, gerçek zamanlı iletişim çözümünüzü oluşturmaya başlamak için bu uygulamayı kullanabilirsiniz.
+Bu öğreticinin sonuna kadar, Azure Iletişim Hizmetleri SDK 'Ları ile yapılandırılmış bir temel Web uygulamanız olacaktır. Böylece, gerçek zamanlı iletişim çözümünüzü oluşturmaya başlamak için bu uygulamayı kullanabilirsiniz.
 
 Geri bildirim sağlamak için [Azure Communication Services GitHub sayfasını](https://github.com/Azure/communication) ziyaret edebilirsiniz.
 
@@ -37,7 +37,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 - Etkin aboneliği olan bir Azure hesabı. Ayrıntılar için bkz. [ücretsiz hesap oluşturma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). Ücretsiz hesap, herhangi bir hizmet birleşimini denemek için size Azure kredileri $200 sağlar.
 - Yerel geliştirme ortamınızda kodu düzenlemede [Visual Studio Code](https://code.visualstudio.com/) .
 - kodunuzu paketleyip yerel olarak barındırmak için [WebPack](https://webpack.js.org/) .
-- Azure Iletişim Hizmetleri istemci kitaplıkları ve WebPack gibi bağımlılıkları yüklemek ve yönetmek için [Node.js](https://nodejs.org/en/) .
+- Azure Iletişim Hizmetleri SDK 'Ları ve WebPack gibi bağımlılıkları yüklemek ve yönetmek için [Node.js](https://nodejs.org/en/) .
 - Sürüm denetimini işleyecek [NVM ve NPM](/windows/nodejs/setup-on-windows) .
 - Visual Studio Code için [Azure Storage uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage) . Uygulamanızı Azure Storage 'da yayımlamak için bu uzantıya ihtiyacınız vardır. [Azure depolama 'da statik Web sitelerini barındırma hakkında daha fazla bilgi edinin](../../storage/blobs/storage-blob-static-website.md).
 - [Azure App Service uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice). Uzantı, tam olarak yönetilen sürekli tümleştirme ve sürekli teslim (CI/CD) yapılandırma seçeneğiyle Web sitelerinin dağıtılmasına olanak tanır.
@@ -293,7 +293,7 @@ Sunucunuzu durdurmak için `Ctrl+C` terminalinizde çalıştırabilirsiniz. Sunu
 
 ## <a name="add-the-azure-communication-services-packages"></a>Azure Iletişim Hizmetleri paketlerini ekleyin
 
-`npm install`JavaScript için istemci kitaplığı 'nı çağıran Azure Iletişim hizmetlerini yüklemek için komutunu kullanın.
+`npm install`JavaScript için SDK 'Yı çağıran Azure Iletişim hizmetlerini yüklemek için komutunu kullanın.
 
 ```Console
 npm install @azure/communication-common --save

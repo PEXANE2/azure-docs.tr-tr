@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: 69b5927c73dac14c76b94a4ee5bbb21449f8ec98
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a6d4c5811c08aa8c4de2eeea5f5f53967c3006b2
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102047474"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025365"
 ---
 # <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>Using Azure İzleyici Log Analytics'te müşteri tarafından yönetilen depolama hesaplarını kullanma
 
@@ -50,7 +50,7 @@ Depolama hesabının özel bağlantısına başarıyla bağlanması için şunla
 * Azure Izleyici 'nin depolama hesabına erişmesine izin verin. Depolama hesabınıza yalnızca ağ seçme erişimine izin vermeyi seçtiyseniz, "Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine Izin ver" özel durumunu seçmeniz gerekir.
 ![Depolama hesabı güveni MS Services resmi](./media/private-storage/storage-trust.png)
 * Çalışma alanınız diğer ağlardan gelen trafiği de işlediğinde, depolama hesabını ilgili ağlardan/Internet 'ten gelen trafiğe izin verecek şekilde yapılandırmanız gerekir.
-* Aracılar ve depolama hesabı arasında TLS sürümü koordine etmek, Log Analytics TLS 1,2 veya üstünü kullanarak veri göndermeniz önerilir. [Platforma özgü Kılavuzu](https://docs.microsoft.com/azure/azure-monitor/logs/data-security#sending-data-securely-using-tls-12)gözden geçirin ve gerekirse, [aracılarınızı TLS 1,2 kullanacak şekilde yapılandırın](https://docs.microsoft.com/azure/azure-monitor/agents/agent-windows#configure-agent-to-use-tls-12). Mümkün olmayan bir nedenden dolayı depolama hesabını TLS 1,0 kabul edecek şekilde yapılandırın.
+* Aracılar ve depolama hesabı arasında TLS sürümü koordine etmek, Log Analytics TLS 1,2 veya üstünü kullanarak veri göndermeniz önerilir. [Platforma özgü Kılavuzu](./data-security.md#sending-data-securely-using-tls-12)gözden geçirin ve gerekirse, [aracılarınızı TLS 1,2 kullanacak şekilde yapılandırın](../agents/agent-windows.md#configure-agent-to-use-tls-12). Mümkün olmayan bir nedenden dolayı depolama hesabını TLS 1,0 kabul edecek şekilde yapılandırın.
 
 ### <a name="using-a-customer-managed-storage-account-for-cmk-data-encryption"></a>CMK veri şifrelemesi için müşteri tarafından yönetilen bir depolama hesabı kullanma
 Azure depolama, bir depolama hesabındaki bekleyen tüm verileri şifreler. Varsayılan olarak, verileri şifrelemek için Microsoft tarafından yönetilen anahtarları (MMK) kullanır; Ancak Azure depolama, depolama verilerinizi şifrelemek için Azure Anahtar Kasası 'ndan CMK 'yı kullanmanıza da olanak tanır. Kendi anahtarlarınızı Azure Key Vault içeri aktarabilir ya da anahtar oluşturmak için Azure Key Vault API 'Lerini kullanabilirsiniz.

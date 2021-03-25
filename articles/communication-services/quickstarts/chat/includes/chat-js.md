@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 0805537fe0791a622eb1814cc233c04d914dbecd
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5af681b6edf8abc8145caf599fc0fb3c4daf5c15
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104612486"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107071"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 Başlamadan önce şunları yaptığınızdan emin olun:
@@ -43,7 +43,7 @@ npm init -y
 
 ### <a name="install-the-packages"></a>Paketleri yükler
 
-`npm install`JavaScript için aşağıdaki Iletişim Hizmetleri istemci kitaplıklarını yüklemek için komutunu kullanın.
+`npm install`JavaScript için aşağıdaki Communication Services SDK 'larını yüklemek için komutunu kullanın.
 
 ```console
 npm install @azure/communication-common --save
@@ -87,7 +87,7 @@ Uygulamanıza bir `start` betik ekleyin `package.json` , bunu uygulamayı çalı
 }
 ```
 
-Projenizin kök dizininde bir **index.html** dosyası oluşturun. JavaScript için Azure Iletişim sohbeti istemci kitaplığı 'nı kullanarak sohbet özelliği eklemek için bu dosyayı şablon olarak kullanacağız.
+Projenizin kök dizininde bir **index.html** dosyası oluşturun. JavaScript için Azure Iletişim sohbeti SDK 'sını kullanarak bu dosyayı, sohbet özelliği eklemek için şablon olarak kullanacağız.
 
 ```html
 <!DOCTYPE html>
@@ -111,7 +111,7 @@ Web uygulamanızda bir sohbet istemcisi oluşturmak için, Iletişim hizmeti **u
 
 Kullanıcı erişimi belirteçleri, Azure Iletişim hizmetlerinde doğrudan kimlik doğrulayan istemci uygulamaları oluşturmanızı sağlar. Bu hızlı başlangıç, sohbet uygulamanız için belirteçleri yönetmek üzere bir hizmet katmanı oluşturmayı kapsamaz. Sohbet mimarisi ve erişim belirteçleri hakkında daha fazla bilgi için [Kullanıcı erişim belirteçleri](../../access-tokens.md) hakkında daha fazla bilgi için [sohbet kavramlarına](../../../concepts/chat/concepts.md) bakın.
 
-İçinde **client.js** JavaScript Için Azure iletişim sohbeti istemci kitaplığını kullanarak sohbet yeteneği eklemek için aşağıdaki kodda uç nokta ve erişim belirtecini kullanın.
+İçinde **client.js** JavaScript Için Azure iletişim sohbeti SDK 'sını kullanarak sohbet yeteneği eklemek için aşağıdaki kodda uç nokta ve erişim belirtecini kullanın.
 
 ```JavaScript
 
@@ -144,7 +144,7 @@ Azure Communication Chat client created!
 ```
 
 ## <a name="object-model"></a>Nesne modeli
-Aşağıdaki sınıflar ve arabirimler, JavaScript için Azure Iletişim Hizmetleri sohbet istemci kitaplığı 'nın bazı önemli özelliklerinden bazılarını işler.
+Aşağıdaki sınıflar ve arabirimler, JavaScript için Azure Communication Services sohbet SDK 'sının önemli özelliklerinden bazılarını idare edebilir.
 
 | Ad                                   | Açıklama                                                                                                                                                                           |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

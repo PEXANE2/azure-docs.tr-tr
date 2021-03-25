@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 539d11205ffead52d7f40526f2c712e8cf8b5cdd
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 97d63598f6a9cca199779e56cc211b9622117301
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87501449"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048842"
 ---
 # <a name="azure-cli-samples-for-virtual-network"></a>Sanal ağ için Azure CLI örnekleri
 
@@ -35,4 +35,4 @@ Aşağıdaki tablo, Azure CLI komutları ile bash betiklerine yönelik bağlant�
 | [Gelen ve giden sanal makine ağ trafiğini filtreleme](./scripts/virtual-network-cli-sample-filter-network-traffic.md) | Ön uç ve arka uç alt ağları ile sanal ağ oluşturur. Ön uç alt ağına gelen ağ trafiği, HTTP, HTTPS ve SSH ile sınırlıdır. Arka uç alt ağından İnternet’e giden trafiğe izin verilmez. |
 |[Temel Load Balancer IPv4 + IPv6 çift yığın sanal ağını yapılandırma](./scripts/virtual-network-cli-sample-ipv6-dual-stack.md)|İki VM ile çift yığın (IPv4 + IPv6) sanal ağını ve IPv4 ve IPv6 genel IP adreslerine sahip bir Azure temel Load Balancer dağıtır. |
 |[IPv4 + IPv6 çift yığın sanal ağını Standart Load Balancer ile yapılandırma](./scripts/virtual-network-cli-sample-ipv6-dual-stack-standard-load-balancer.md)|İki VM ile çift yığın (IPv4 + IPv6) sanal ağını ve IPv4 ve IPv6 genel IP adreslerine sahip bir Azure Standart Load Balancer dağıtır. |
-|[Öğretici: NAT Gateway oluşturma ve test etme-Azure CLı](../virtual-network/tutorial-create-validate-nat-gateway-cli.md)|Kaynak ve hedef sanal makineyi kullanarak bir NAT ağ geçidi oluşturun ve doğrulayın. |
+|[Öğretici: NAT Gateway oluşturma ve test etme-Azure CLı](./tutorial-create-nat-gateway-cli.md)|Kaynak ve hedef sanal makineyi kullanarak bir NAT ağ geçidi oluşturun ve doğrulayın. |

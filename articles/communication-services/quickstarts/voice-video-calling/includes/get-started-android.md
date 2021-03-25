@@ -1,22 +1,22 @@
 ---
 title: Hızlı başlangıç-Azure Iletişim hizmetlerini kullanarak bir Android uygulamasına çağıran VOıP ekleme
-description: Bu öğreticide, Android için istemci kitaplığı 'nı çağıran Azure Iletişim hizmetlerini kullanmayı öğreneceksiniz.
+description: Bu öğreticide, Android için SDK 'Yı çağıran Azure Iletişim hizmetlerini kullanmayı öğrenirsiniz.
 author: chpalm
 ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 094dbd090b5f2d68a9961f2fb9b8b611e486e7bc
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b68d3a92015a8add2dd97313f9971cf896f8e77e
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104719892"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108311"
 ---
-Bu hızlı başlangıçta, Android için istemci kitaplığı 'nı çağıran Azure Iletişim Hizmetleri 'ni kullanarak bir çağrı başlatmayı öğreneceksiniz.
+Bu hızlı başlangıçta, Android için SDK 'Yı çağıran Azure Iletişim Hizmetleri 'ni kullanarak bir çağrı başlatmayı öğreneceksiniz.
 
 > [!NOTE]
-> Bu belge, çağıran istemci kitaplığının 1.0.0-Beta. 8 sürümünü kullanır.
+> Bu belge, çağıran SDK 'nın 1.0.0-Beta. 8 sürümünü kullanır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -37,7 +37,7 @@ Android Studio yeni bir Android Studio projesi Başlat ' ı seçin.
 
 :::image type="content" source="../media/android/studio-blank-activity.png" alt-text="Proje şablonu ekranında ' boş etkinlik ' seçeneğinin seçili olduğunu gösteren ekran görüntüsü.":::
 
-En düşük istemci kitaplığı "API 26: Android 8,0 (Oreo)" veya daha büyük bir değer seçin.
+En düşük SDK "API 26: Android 8,0 (Oreo)" veya üzerini seçin.
 
 :::image type="content" source="../media/android/studio-calling-min-api.png" alt-text="Proje şablonu ekranı 2 ' de seçili ' boş etkinlik ' seçeneğinin gösterildiği ekran görüntüsü.":::
 
@@ -110,8 +110,8 @@ dependencies {
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <!--Our calling client library depends on the Apache HTTP client library.
-When targeting Android client library 28+, this library needs to be explicitly referenced.
+        <!--Our Calling SDK depends on the Apache HTTP SDK.
+When targeting Android SDK 28+, this library needs to be explicitly referenced.
 See https://developer.android.com/about/versions/pie/android-9.0-changes-28#apache-p-->
         <uses-library android:name="org.apache.http.legacy" android:required="false"/>
         <activity android:name=".MainActivity">
@@ -260,11 +260,11 @@ private void getAllPermissions() {
 
 ## <a name="object-model"></a>Nesne modeli
 
-Aşağıdaki sınıflar ve arabirimler, istemci Kitaplığı çağıran Azure Iletişim Hizmetleri 'nin bazı önemli özelliklerinden bazılarını işler:
+Aşağıdaki sınıflar ve arabirimler, Azure Communication Service 'ın SDK 'yi çağıran bazı önemli özelliklerinden bazılarını işler:
 
 | Ad                                  | Açıklama                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| CallClient| CallClient, çağıran istemci kitaplığı için ana giriş noktasıdır.|
+| CallClient| CallClient, çağıran SDK 'ya ana giriş noktasıdır.|
 | CallAgent | CallAgent, çağrıları başlatmak ve yönetmek için kullanılır. |
 | CommunicationUserCredential | CommunicationUserCredential, CallAgent örneğini oluşturmak için belirteç kimlik bilgileri olarak kullanılır.|
 | Communicationıdentifier | Communicationıdentifier, bir çağrının parçası olabilecek farklı katılımcı türü olarak kullanılır.|

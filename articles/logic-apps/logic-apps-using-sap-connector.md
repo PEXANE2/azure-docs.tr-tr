@@ -7,14 +7,14 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
-ms.date: 03/08/2021
+ms.date: 03/24/2021
 tags: connectors
-ms.openlocfilehash: b9238d099c7b33e904c2fc8de3c4fc08369f1f36
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 86bc43e043e7d67ff149391b111831df8171f34e
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102489846"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048774"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Azure Logic Apps’ten SAP sistemlerine bağlanma
 
@@ -125,9 +125,6 @@ Yönetilen SAP Bağlayıcısı, Şirket [içi veri ağ geçidiniz](../logic-apps
 ### <a name="ise-prerequisites"></a>ISE önkoşulları
 
 Mantıksal uygulamanızı Premium düzeyinde bir ıSE çalıştırıyorsanız bu önkoşullar geçerlidir. Ancak, geliştirici düzeyinde çalışan Logic Apps için uygulanmazlar. ISE, bir Azure sanal ağı tarafından korunan kaynaklara erişim sağlar ve Logic Apps 'in şirket içi veri ağ geçidini kullanmadan şirket içi kaynaklara doğrudan erişmesini sağlayan diğer ıSE-yerel bağlayıcılar sunar.
-
-> [!NOTE]
-> SAP ıSE Bağlayıcısı geliştirici düzeyinde bir ıSE 'nin içinde görünür olsa da, bağlayıcıyı yüklemeye yönelik girişimler başarılı olmayacaktır.
 
 1. Blob kapsayıcısı olan bir Azure depolama hesabınız yoksa [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md) veya [Azure Depolama Gezgini](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)kullanarak bir kapsayıcı oluşturun.
 

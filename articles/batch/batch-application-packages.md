@@ -2,17 +2,17 @@
 title: İşlem düğümlerine uygulama paketleri dağıtma
 description: Toplu işlem düğümlerinde yüklenmek üzere birden çok uygulamayı ve sürümü kolayca yönetmek için Azure Batch uygulama paketleri özelliğini kullanın.
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 03/24/2021
 ms.custom:
 - H1Hack27Feb2017
 - devx-track-csharp
 - contperf-fy21q1
-ms.openlocfilehash: b4c6ab99b0fa93e5fdea4256d6f232cc0fe4218e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d0ed5cc47694d6576e6aea46b62dfab8ecb73459
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97033740"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045799"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Batch uygulama paketleriyle işlem düğümlerine uygulama dağıtma
 
@@ -59,6 +59,9 @@ Uygulama paketleriyle, havuzunuzun başlangıç görevinin düğümlere yüklene
 ## <a name="upload-and-manage-applications"></a>Uygulamaları karşıya yükleme ve yönetme
 
 Batch hesabınızdaki uygulama paketlerini yönetmek için [Azure Portal](https://portal.azure.com) veya Batch yönetimi API 'lerini kullanabilirsiniz. Aşağıdaki bölümlerde, bir depolama hesabının nasıl bağlantılandırmasının yanı sıra Azure portal uygulama ve uygulama paketlerinin nasıl ekleneceği ve yönetileceği açıklanmaktadır.
+
+> [!NOTE]
+> Bir [ARM şablonunun](quick-create-template.md) [Microsoft.Batch/batchaccounts](/templates/microsoft.batch/batchaccounts) kaynağında uygulama değerlerini tanımlayabilmeniz mümkün olsa da, toplu iş hesabınızda kullanmak üzere uygulama paketlerini KARŞıYA yüklemek için bir ARM şablonu kullanmak mümkün değildir. Bunları, [aşağıda](#add-a-new-application)açıklandığı gibi bağlı depolama hesabınıza yüklemeniz gerekir.
 
 ### <a name="link-a-storage-account"></a>Depolama hesabını bağlama
 
