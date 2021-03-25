@@ -6,12 +6,12 @@ ms.date: 10/29/2020
 author: kryalama
 ms.custom: devx-track-java
 ms.author: kryalama
-ms.openlocfilehash: 35e53454e5b2c6265082bbedb4a8b60e82df7191
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 991e52c13a5730b83552abb6b922d4d7a57c5429
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101734579"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105024124"
 ---
 # <a name="telemetry-processors-preview---azure-monitor-application-insights-for-java"></a>Telemetri işlemcileri (Önizleme)-Java için Azure Izleyici Application Insights
 
@@ -21,10 +21,13 @@ ms.locfileid: "101734579"
 Application Insights için Java 3,0 Aracısı, veriler verilene kadar telemetri verilerini işleyebilir.
 
 Telemetri işlemcilerin bazı kullanım örnekleri aşağıda verilmiştir:
- * Hassas verileri oluşturun.
+ * Hassas verileri maskeleme.
  * Özel boyutları koşullu olarak ekleyin.
  * Azure portal benzer Telemetriyi toplamak için kullanılan span adını güncelleştirin.
- * Alım maliyetlerini denetlemek için span özniteliklerini bırakın.
+ * Alım maliyetlerini denetlemek için belirli span özniteliklerini bırakın.
+
+> [!NOTE]
+> Alım maliyetini denetlemek için belirli (tam) yayılmayı arıyorsanız, bkz. [örnekleme geçersiz kılmaları](./java-standalone-sampling-overrides.md).
 
 ## <a name="terminology"></a>Terminoloji
 

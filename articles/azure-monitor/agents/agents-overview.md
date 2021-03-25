@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/12/2021
-ms.openlocfilehash: a2f6023b86b96266be8e625fd5b0d6625500e3fc
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 4d1dd358c03d051be4be5733d9e729d1d7ef5b0c
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102551479"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026181"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Izleyici aracılarına genel bakış
 
@@ -97,7 +97,7 @@ Log Analytics aracısının sınırlamaları şunlardır:
 - Arşivleme için verileri Azure depolama 'ya gönderin veya [Azure Depolama Gezgini](../../vs-azure-tools-storage-manage-with-storage-explorer.md)gibi araçlarla çözümleyin.
 - Verileri, [Ölçüm Gezgini](../essentials/metrics-getting-started.md) ile analiz etmek ve neredeyse gerçek zamanlı [ölçüm uyarıları](../alerts/alerts-metric-overview.md) ve [Otomatik ölçeklendirme](../autoscale/autoscale-overview.md) (yalnızca Windows) gibi özelliklerden yararlanmak için [Azure izleyici ölçümlerine](../essentials/data-platform-metrics.md) veri gönderme.
 - [Azure Event Hubs](./diagnostics-extension-stream-event-hubs.md)kullanarak üçüncü taraf araçlara veri gönderme.
-- VM önyükleme sorunlarını araştırmak için [önyükleme tanılamayı](../../virtual-machines/troubleshooting/boot-diagnostics.md) toplayın.
+- VM önyükleme sorunlarını araştırmak için [önyükleme tanılamayı](/troubleshoot/azure/virtual-machines/boot-diagnostics) toplayın.
 
 Azure tanılama uzantısı sınırlamaları şunlardır:
 

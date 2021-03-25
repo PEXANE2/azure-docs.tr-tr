@@ -11,12 +11,12 @@ ms.workload: media
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: b7efa37747e6d116b4cf26b4cf54377037f22cdd
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a431060be380952940bdb99c65abc7a9740091de
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102212765"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105038167"
 ---
 # <a name="how-to-encode-and-stream-video-files-with-nodejs"></a>Node.JS ile video dosyalarını kodlama ve akışa alma
 
@@ -71,7 +71,7 @@ Aşağıdaki komutu kullanarak, akış Node.js örneğini içeren bir GitHub dep
 
 ## <a name="run-the-sample"></a>Örneği çalıştırma
 
-1. Uygulama kodlanmış dosyaları indirir. Çıkış dosyalarının gitmesini istediğiniz klasörü oluşturun ve [index. TS](https://github.com/Azure-Samples/media-services-v3-node-tutorials/blob/master/AMSv3Samples/StreamFilesSample/index.js#L59) dosyasındaki **outputfolder** değişkeninin değerini güncelleştirin. Varsayılan olarak "Temp" olarak ayarlanır.
+1. Uygulama kodlanmış dosyaları indirir. Çıkış dosyalarının gitmesini istediğiniz klasörü oluşturun ve [index. TS](https://github.com/Azure-Samples/media-services-v3-node-tutorials/blob/main/AMSv3Samples/StreamFilesSample/index.ts#L59) dosyasındaki **outputfolder** değişkeninin değerini güncelleştirin. Varsayılan olarak "Temp" olarak ayarlanır.
 1. Bir **komut istemi** açın, örnek dizinine gidin.
 1. Dizini AMSv3Samples klasörü olarak değiştirin.
 

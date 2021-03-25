@@ -8,12 +8,12 @@ author: tcare
 ms.author: tcare
 description: Bu makalede, Gilar kullanarak bir CI/CD iş akışına kavramsal bir genel bakış sunulmaktadır
 keywords: Gilar, Kubernetes, K8s, Azure, Held, Arc, AKS, Azure Kubernetes hizmeti, kapsayıcılar, CI, CD, Azure DevOps
-ms.openlocfilehash: a51a9f2b32f1088cec390dc4d74300a38f37b160
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 47633ed5bec1a07c878983d0e93e03149d8967ba
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121788"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025875"
 ---
 # <a name="cicd-workflow-using-gitops---azure-arc-enabled-kubernetes"></a>Gilar kullanarak CI/CD iş akışı-Azure Arc etkin Kubernetes
 
@@ -30,7 +30,7 @@ Bir veya daha fazla Kubernetes ortamına dağıtılan bir uygulamayı düşünü
 ### <a name="application-repo"></a>Uygulama deposu
 Uygulama deposu, geliştiricilerin iç döngülerinde üzerinde çalıştığı uygulama kodunu içerir. Uygulamanın dağıtım şablonları, bu depoda, Helm veya Kustomize gibi genel bir formda canlı olarak yer oluşturur. Ortama özgü değerler depolanmaz. Bu depoya yapılan değişiklikler, dağıtım işlemini başlatan bir PR veya CI işlem hattı çağırır.
 ### <a name="container-registry"></a>Container Registry
-Kapsayıcı kayıt defteri, Kubernetes ortamlarında kullanılan tüm birinci ve üçüncü taraf görüntülerini barındırır. Resmi oluşturmak için kullanılan, insanların okunabilir etiketleriyle ve git yürütmesiyle birinci taraf uygulama görüntülerini etiketleyin. Güvenlik, hız ve esnekliği için üçüncü taraf görüntülerini önbelleğe alma. Güvenlik güncelleştirmelerinin zamanında sınanması ve tümleştirilmesi için bir plan ayarlayın. Daha fazla bilgi için bkz. bir örnek için [ACR kullanma ve ortak içeriği koruma](https://docs.microsoft.com/azure/container-registry/tasks-consume-public-content) Kılavuzu.
+Kapsayıcı kayıt defteri, Kubernetes ortamlarında kullanılan tüm birinci ve üçüncü taraf görüntülerini barındırır. Resmi oluşturmak için kullanılan, insanların okunabilir etiketleriyle ve git yürütmesiyle birinci taraf uygulama görüntülerini etiketleyin. Güvenlik, hız ve esnekliği için üçüncü taraf görüntülerini önbelleğe alma. Güvenlik güncelleştirmelerinin zamanında sınanması ve tümleştirilmesi için bir plan ayarlayın. Daha fazla bilgi için bkz. bir örnek için [ACR kullanma ve ortak içeriği koruma](../../container-registry/tasks-consume-public-content.md) Kılavuzu.
 ### <a name="pr-pipeline"></a>PR işlem hattı
 PR 'ler to Application deposunda, PR işlem hattının başarılı bir şekilde çalıştırılması alınır. Bu işlem hattı, uygulama kodunda ve birim testleri gibi temel kalite kapılarını çalıştırır. İşlem hattı, bir Kubernetes ortamına dağıtım için kullanılan uygulamayı ve Lints Dockerfiles ve Held şablonlarını sınar. Docker görüntüleri oluşturulup test edilmelidir, ancak gönderilemez. Ardışık düzen süresini, Hızlı yineleme için izin verecek şekilde nispeten daha kısa tutun.
 ### <a name="ci-pipeline"></a>CI işlem hattı

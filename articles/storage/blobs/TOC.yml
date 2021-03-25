@@ -287,7 +287,7 @@
               href: storage-blob-container-properties-metadata.md
         - name: Blobları oluşturma ve yönetme
           items:
-            - name: Blobları listeleme (.NET)
+            - name: Blobları Listele (SDK)
               href: storage-blobs-list.md
             - name: Blob özelliklerini ve meta verilerini yönetme (.NET)
               href: storage-blob-properties-metadata.md

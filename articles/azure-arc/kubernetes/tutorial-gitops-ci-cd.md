@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 72caca47cde960eb7298ec2cf0c6994755cb3159
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f720cc196f4034d29ec1d628e28d3534b10f3e41
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121618"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025824"
 ---
 # <a name="tutorial-implement-cicd-with-gitops-using-azure-arc-enabled-kubernetes-clusters"></a>Öğretici: Azure Arc özellikli Kubernetes kümelerini kullanarak Gile ile CI/CD uygulama
 
@@ -37,12 +37,12 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 Bu öğreticide, Azure DevOps, Azure Repos ve işlem hatları ve Azure CLı ile ilgili bir benzerlik vardır.
 
 * [Azure DevOps Services](https://dev.azure.com/)oturum açın.
-* CI/CD ortamınız için git dağıtmayı öğrenmek için [önceki öğreticiyi](https://docs.microsoft.com/azure/azure-arc/kubernetes/tutorial-use-gitops-connected-cluster) doldurun.
-* Bu özelliğin [avantajlarını ve mimarisini](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-configurations) anlayın.
+* CI/CD ortamınız için git dağıtmayı öğrenmek için [önceki öğreticiyi](./tutorial-use-gitops-connected-cluster.md) doldurun.
+* Bu özelliğin [avantajlarını ve mimarisini](./conceptual-configurations.md) anlayın.
 * Şunları doğrulayın:
-  * **Arc-cicd-Cluster** adlı [bağlı bir Azure Arc etkin Kubernetes kümesi](https://docs.microsoft.com/azure/azure-arc/kubernetes/quickstart-connect-cluster#connect-an-existing-kubernetes-cluster) .
-  * [Aks tümleştirmesi](https://docs.microsoft.com/azure/aks/cluster-container-registry-integration) veya [aks olmayan küme kimlik doğrulaması](https://docs.microsoft.com/azure/container-registry/container-registry-auth-kubernetes)ile bağlı bir Azure Container Registry (ACR).
-  * [Azure Repos](https://docs.microsoft.com/azure/devops/repos/get-started/what-is-repos) ve [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/pipelines-get-started)için "derleme Yöneticisi" ve "Proje Yöneticisi" izinleri.
+  * **Arc-cicd-Cluster** adlı [bağlı bir Azure Arc etkin Kubernetes kümesi](./quickstart-connect-cluster.md#connect-an-existing-kubernetes-cluster) .
+  * [Aks tümleştirmesi](../../aks/cluster-container-registry-integration.md) veya [aks olmayan küme kimlik doğrulaması](../../container-registry/container-registry-auth-kubernetes.md)ile bağlı bir Azure Container Registry (ACR).
+  * [Azure Repos](/azure/devops/repos/get-started/what-is-repos) ve [Azure Pipelines](/azure/devops/pipelines/get-started/pipelines-get-started)için "derleme Yöneticisi" ve "Proje Yöneticisi" izinleri.
 * Aşağıdaki Azure Arc etkin Kubernetes CLı uzantılarını yükler >= 1.0.0:
 
   ```azurecli
@@ -67,7 +67,7 @@ Bir [uygulama](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-
    * 'DEKI https://github.com/Azure/arc-cicd-demo-gitops
    * , Azure oy uygulamasını barındıran küme kaynaklarınız için bir temel olarak çalışarak.
 
-[Git depoları içeri aktarma](https://docs.microsoft.com/azure/devops/repos/git/import-git-repository)hakkında daha fazla bilgi edinin.
+[Git depoları içeri aktarma](/azure/devops/repos/git/import-git-repository)hakkında daha fazla bilgi edinin.
 
 >[!NOTE]
 > Uygulama ve giler depoları için iki ayrı depoyu içeri aktarıp kullanmak güvenliği ve basitliği iyileştirebilir. Uygulama ve gide depoların izinleri ve görünürlüğü ayrı ayrı ayarlanabilir.
@@ -86,7 +86,7 @@ Oluşturduğunuz Gilar bağlantısı otomatik olarak şunları oluşturacaktır:
 CI/CD iş akışı, uygulamayı dağıtmak için bildirim dizinini ek bildirimler ile doldurur.
 
 
-1. Azure Repos ' de yeni içeri aktarılmış **Arc-cicd-demo-giüstdepolarınız** için [Yeni bir Gila bağlantısı oluşturun](https://docs.microsoft.com/azure/azure-arc/kubernetes/tutorial-use-gitops-connected-cluster) .
+1. Azure Repos ' de yeni içeri aktarılmış **Arc-cicd-demo-giüstdepolarınız** için [Yeni bir Gila bağlantısı oluşturun](./tutorial-use-gitops-connected-cluster.md) .
 
    ```azurecli
    az k8sconfiguration create \
@@ -119,7 +119,7 @@ Bir Gila bağlantısını eşitlemediğiniz için bildirimleri oluşturan CI/CD 
 
 Uygulama deposu, `.pipeline` PR 'ler, CI ve CD için kullanacağınız işlem hatlarını içeren bir klasör içerir. Örnek depoda belirtilen üç işlem hattını içeri aktarıp yeniden adlandırın:
 
-| İşlem hattı dosya adı | Description |
+| İşlem hattı dosya adı | Açıklama |
 | ------------- | ------------- |
 | [`.pipelines/az-vote-pr-pipeline.yaml`](https://github.com/Azure/arc-cicd-demo-src/blob/master/.pipelines/az-vote-pr-pipeline.yaml)  | **Yay-cicd-demo-src PR** ADLı Application PR işlem hattı |
 | [`.pipelines/az-vote-ci-pipeline.yaml`](https://github.com/Azure/arc-cicd-demo-src/blob/master/.pipelines/az-vote-ci-pipeline.yaml) | **Yay-cicd-demo-src CI** ADLı uygulama CI işlem hattı |
@@ -172,7 +172,7 @@ kubectl create secret docker-registry <secret-name> \
 ## <a name="create-environment-variable-groups"></a>Ortam değişken grupları oluşturma
 
 ### <a name="app-repo-variable-group"></a>Uygulama deposu değişken grubu
-**Az-oy-app-Dev** adlı [bir değişken grubu oluşturun](https://docs.microsoft.com/azure/devops/pipelines/library/variable-groups) . Aşağıdaki değerleri ayarlayın:
+**Az-oy-app-Dev** adlı [bir değişken grubu oluşturun](/azure/devops/pipelines/library/variable-groups) . Aşağıdaki değerleri ayarlayın:
 
 | Değişken | Değer |
 | -------- | ----- |
@@ -182,13 +182,13 @@ kubectl create secret docker-registry <secret-name> \
 | ENVIRONMENT_NAME | Geliştirme |
 | MANIFESTS_BRANCH | `master` |
 | MANIFESTS_REPO | Giüstler deponuz için git bağlantı dizesi |
-| PAT | Okuma/yazma kaynağı izinleri ile [oluşturulmuş BIR Pat belirteci](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?#create-a-pat) . Daha sonra değişken grubunu oluştururken kullanmak üzere kaydedin `stage` . |
+| PAT | Okuma/yazma kaynağı izinleri ile [oluşturulmuş BIR Pat belirteci](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate#create-a-pat) . Daha sonra değişken grubunu oluştururken kullanmak üzere kaydedin `stage` . |
 | SRC_FOLDER | `azure-vote` | 
 | TARGET_CLUSTER | `arc-cicd-cluster` |
 | TARGET_NAMESPACE | `dev` |
 
 > [!IMPORTANT]
-> PAT 'nizi gizli bir tür olarak işaretleyin. Uygulamalarınızda, bir [Azure Keykasasından](https://docs.microsoft.com/azure/devops/pipelines/library/variable-groups#link-secrets-from-an-azure-key-vault)gizli dizileri bağlamayı göz önünde bulundurun.
+> PAT 'nizi gizli bir tür olarak işaretleyin. Uygulamalarınızda, bir [Azure Keykasasından](/azure/devops/pipelines/library/variable-groups#link-secrets-from-an-azure-key-vault)gizli dizileri bağlamayı göz önünde bulundurun.
 >
 ### <a name="stage-environment-variable-group"></a>Aşama ortam değişken grubu
 
@@ -255,7 +255,7 @@ Geliştirme ortamı dağıtımdan sonra bir kesme ortaya çıkarırsa, ortam ona
 1. Onaylayanları ve isteğe bağlı bir ileti girin.
 1. El ile onay denetiminin eklenmesini tamamladıktan sonra yeniden **Oluştur** ' u seçin.
 
-Daha fazla ayrıntı için bkz. [onay ve denetimleri tanımlama](https://docs.microsoft.com/azure/devops/pipelines/process/approvals) öğreticisi.
+Daha fazla ayrıntı için bkz. [onay ve denetimleri tanımlama](/azure/devops/pipelines/process/approvals) öğreticisi.
 
 CD işlem hattının bir sonraki çalıştırılışında, işlem hattı, Gima PR oluşturulduktan sonra duraklatılır. Değişikliğin düzgün şekilde eşitlendiğinden emin olun ve temel işlevselliği geçirir. Değişikliğin sonraki ortama akmasını sağlamak için ardışık düzen denetimini onaylayın.
 
@@ -291,7 +291,7 @@ Uygulamanın Dockerfile ve hele grafikleri, uygulamaya benzer bir şekilde kulla
 İşlem hattı çalıştırması tamamlandıktan sonra, uygulama kodunun ve bunu dağıtan şablonun kalitesini garanti edersiniz. Artık PR 'yi onaylayabilir ve tamamlayabilirsiniz. CI, CD işlem hattını tetiklemeden önce şablonları ve bildirimleri yeniden oluşturacak şekilde tekrar çalışır.
 
 > [!TIP]
-> Gerçek bir ortamda, çekme isteğinin kalite kontrollerinizi geçirdiğinden emin olmak için dal ilkeleri ayarlamayı unutmayın. Daha fazla bilgi için bkz. [dal Ilkelerini ayarlama](https://docs.microsoft.com/azure/devops/repos/git/branch-policies) makalesi.
+> Gerçek bir ortamda, çekme isteğinin kalite kontrollerinizi geçirdiğinden emin olmak için dal ilkeleri ayarlamayı unutmayın. Daha fazla bilgi için bkz. [dal Ilkelerini ayarlama](/azure/devops/repos/git/branch-policies) makalesi.
 
 ## <a name="cd-process-approvals"></a>CD işlemi onayları
 

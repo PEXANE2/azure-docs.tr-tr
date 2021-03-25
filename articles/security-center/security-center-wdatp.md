@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 03/08/2021
 ms.author: memildin
-ms.openlocfilehash: 17e54dfc5c369a8cbb35db50ff2cbab131d34c2d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 085f3a5295d60b83536683a57a34b51abccd3067
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102453776"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043028"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Güvenlik Merkezi 'nin tümleşik EDR çözümü ile uç noktalarınızı koruyun: uç nokta için Microsoft Defender
 
@@ -74,7 +74,7 @@ Konumu yapılandırdıktan sonra değiştiremezsiniz. Uç nokta için Microsoft 
 1. Makinenizin Endpoint için Defender için gereken gereksinimleri karşıladığından emin olun:
 
     - **Tüm Windows sürümleri** için:
-        - [Cihaz ara sunucusunu ve Internet bağlantısı ayarlarını yapılandırma](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet) bölümünde açıklanan ağ ayarlarını yapılandırın
+        - [Cihaz ara sunucusunu ve Internet bağlantısı ayarlarını yapılandırma](/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet) bölümünde açıklanan ağ ayarlarını yapılandırın
         - Defender 'ı bir şirket içi makinelere uç noktaya dağıtıyorsanız, [Azure Arc etkin sunucularıyla karma makinelere bağlanma](../azure-arc/servers/learn/quick-enable-hybrid-vm.md) bölümünde açıklandığı gibi Azure yaya bağlayın
     - Ayrıca, **Windows Server 2019 makineleri** için, bunların geçerli bir aracı çalıştırdığından ve microsoftmonitoringagent uzantısının bulunduğunu onaylayın
 

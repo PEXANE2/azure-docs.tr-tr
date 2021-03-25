@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 4c8ee3a65c26d1eb3acb7b9f4c18f11e870e4b82
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: afba973570d75eace8cae8d1ed6ed470db21ef0e
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102434594"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043266"
 ---
 # <a name="about-the-speech-sdk"></a>Konuşma SDK'sı hakkında
 
@@ -114,7 +114,7 @@ Konuşma SDK 'Sı, telefon verilerinin oluşturulduğu, çağrı merkezi senaryo
 
 ### <a name="codec-compressed-audio-input"></a>Codec sıkıştırılmış ses girişi
 
-Konuşma SDK 'Sı programlama dillerinin birkaçı codec sıkıştırılmış ses giriş akışlarını destekler. Daha fazla bilgi için bkz. <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">sıkıştırılmış ses girişi biçimlerini kullanma </a>.
+Konuşma SDK 'Sı programlama dillerinin birkaçı codec sıkıştırılmış ses giriş akışlarını destekler. Daha fazla bilgi için bkz. <a href="/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">sıkıştırılmış ses girişi biçimlerini kullanma </a>.
 
 **Codec ile sıkıştırılmış ses girişi** aşağıdaki platformlarda kullanılabilir:
 

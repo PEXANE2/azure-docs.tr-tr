@@ -3,18 +3,18 @@ title: Öğretici - Azure Maliyet Yönetimi'nden dışarı aktarılan verileri o
 description: Bu makalede, dış sistemlerde kullanabilmeniz için dışarı aktarılan Azure Maliyet Yönetimi verilerini nasıl oluşturup yönetebileceğiniz gösterilir.
 author: bandersmsft
 ms.author: banders
-ms.date: 12/7/2020
+ms.date: 03/24/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: e3c1fa071cd23b871f754e89d6f17eb2cc44b394
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
-ms.translationtype: HT
+ms.openlocfilehash: a386b214c4372c9d8de729a8b6bed4aac9edd9f3
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400361"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043470"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Öğretici: Dışarı aktarılan verileri oluşturma ve yönetme
 
@@ -80,6 +80,8 @@ Yeni dışarı aktarmanız, dışarı aktarma listesinde görünür. Yeni dışa
 Başlangıçta, dışarı aktarmanın çalışmaya başlaması 12 ila 24 saat arası sürebilir. Ancak, verilerin dışarı aktarılan dosyalarda gösterilmesi daha uzun sürebilir.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Programlı olarak bir dışarı aktarma oluşturduğunuzda, `Microsoft.CostManagementExports` kaynak sağlayıcıyı depolama hesabının bulunduğu abonelikle el ile kaydetmeniz gerekir. Azure portal kullanarak dışarı aktarma oluşturduğunuzda kayıt otomatik olarak gerçekleşir. Kaynak sağlayıcılarının nasıl kaydedileceği hakkında daha fazla bilgi için bkz. [kayıt kaynak sağlayıcısı](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
 
 Başlangıç olarak ortamınızı Azure CLI için hazırlayın:
 
@@ -148,6 +150,8 @@ az costmanagement export delete --name DemoExport --scope "subscriptions/0000000
 ```
 
 ### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Programlı olarak bir dışarı aktarma oluşturduğunuzda, `Microsoft.CostManagementExports` kaynak sağlayıcıyı depolama hesabının bulunduğu abonelikle el ile kaydetmeniz gerekir. Azure portal kullanarak dışarı aktarma oluşturduğunuzda kayıt otomatik olarak gerçekleşir. Kaynak sağlayıcılarının nasıl kaydedileceği hakkında daha fazla bilgi için bkz. [kayıt kaynak sağlayıcısı](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
 
 Başlangıç olarak ortamınızı Azure PowerShell için hazırlayın:
 

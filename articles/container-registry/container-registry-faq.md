@@ -3,14 +3,14 @@ title: Sık sorulan sorular
 description: Azure Container Registry hizmetiyle ilgili sık sorulan soruların yanıtları
 author: sajayantony
 ms.topic: article
-ms.date: 09/18/2020
+ms.date: 03/15/2021
 ms.author: sajaya
-ms.openlocfilehash: 055f039d5bba0dba2906e1d3b8410af00c5600ef
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8d5e161a0a663542142081c61bf1ad08be1be484
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97606292"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026249"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry hakkında sık sorulan sorular
 
@@ -260,11 +260,23 @@ Görüntü karantina Şu anda ACR 'nin önizleme özelliğidir. Yalnızca güven
 
 ### <a name="how-do-i-enable-anonymous-pull-access"></a>Anonim çekme erişimini etkinleştirmek Nasıl yaparım? istiyor musunuz?
 
-Anonim (genel) çekme erişimi için bir Azure Kapsayıcı kayıt defteri ayarlama Şu anda bir önizleme özelliğidir. Kayıt defterinizde herhangi bir [kapsam eşlemeniz (Kullanıcı) veya belirteç kaynağınız](./container-registry-repository-scoped-permissions.md) varsa, lütfen bir destek bileti oluşturmadan önce bunları silin (sistem kapsamı eşlemeleri yoksayılabilir). Genel erişimi etkinleştirmek için lütfen adresinde bir destek bileti açın https://aka.ms/acr/support/create-ticket . Ayrıntılar için bkz. [Azure geri bildirim Forumu](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries).
+Anonim (kimliği doğrulanmamış) çekme erişimi için bir Azure Kapsayıcı kayıt defteri ayarlamak, standart ve Premium [Hizmet katmanlarında](container-registry-skus.md)kullanılabilen bir önizleme özelliğidir. 
+
+Anonim çekme erişimini etkinleştirmek için Azure CLı (sürüm 2.21.0 veya üzeri) kullanarak bir kayıt defteri güncelleştirin ve `--anonymous-pull-enabled` parametreyi [az ACR Update](/cli/azure/acr#az_acr_update) komutuna geçirin:
+
+```azurecli
+az acr update --name myregistry --anonymous-pull-enabled
+``` 
+
+' I ' e ayarlayarak dilediğiniz zaman anonim çekme erişimini devre dışı bırakabilirsiniz `--anonymous-pull-enabled` `false` .
 
 > [!NOTE]
-> * Yalnızca bilinen bir görüntüyü çekmek için gereken API 'Ler anonim olarak erişilebilir. Etiket listesi veya depo listesi gibi işlemler için başka API 'Ler anonim olarak erişilebilir değildir.
 > * Anonim çekme işlemini denemeden önce, `docker logout` tüm mevcut Docker kimlik bilgilerini temizlemenizi sağlamak için öğesini çalıştırın.
+> * Yalnızca veri düzlemi işlemleri, kimliği doğrulanmamış istemciler tarafından kullanılabilir.
+> * Kayıt defteri, yüksek oranda kimliği doğrulanmamış isteklerin azaledebilir.
+
+> [!WARNING]
+> Anonim çekme erişimi şu anda kayıt defterindeki tüm depolar için geçerlidir. Depoda [kapsamlı belirteçleri](container-registry-repository-scoped-permissions.md)kullanarak depo erişimini yönetiyorsanız, tüm kullanıcıların anonim çekme için etkinleştirilen bir kayıt defterindeki depolardan çekeceğini unutmayın. Anonim çekme erişimi etkinleştirildiğinde belirteçleri silmenizi öneririz.
 
 ### <a name="how-do-i-push-non-distributable-layers-to-a-registry"></a>Dağıtılabilir olmayan katmanları bir kayıt defterine itmi Nasıl yaparım??
 
