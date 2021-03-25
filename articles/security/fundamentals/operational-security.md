@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 7d71820db3d58931f2fcd8d18441534ad36183c2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ab54243eb7109965941cf60edd9358133550c7d3
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101712003"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046649"
 ---
 # <a name="azure-operational-security"></a>Azure operasyonel güvenlik
 ## <a name="introduction"></a>Tanıtım
@@ -165,7 +165,7 @@ Azure Güvenlik Merkezi, kilitlenme döküm dosyalarının kısa ömürlü kopya
 
 ## <a name="azure-monitor"></a>Azure İzleyici
 
-[Azure izleyici Günlükleri güvenlik](../../security-center/security-center-monitoring.md) ve denetim çözümü, güvenlik olaylarının etkilerini en aza indirmenize yardımcı olan tüm kaynakları etkin bir şekilde izlemesini sağlar. Azure Izleyici günlükleri Güvenlik ve Denetim, kaynakları izlemek için kullanılabilen güvenlik etki alanları vardır. Güvenlik etki alanı, seçeneklere hızlı erişim sağlar, güvenlik izleme için aşağıdaki etki alanları daha ayrıntılı olarak ele alınmıştır:
+[Azure izleyici Günlükleri güvenlik](../../security-center/security-center-remediate-recommendations.md) ve denetim çözümü, güvenlik olaylarının etkilerini en aza indirmenize yardımcı olan tüm kaynakları etkin bir şekilde izlemesini sağlar. Azure Izleyici günlükleri Güvenlik ve Denetim, kaynakları izlemek için kullanılabilen güvenlik etki alanları vardır. Güvenlik etki alanı, seçeneklere hızlı erişim sağlar, güvenlik izleme için aşağıdaki etki alanları daha ayrıntılı olarak ele alınmıştır:
 
 -   Kötü amaçlı yazılım değerlendirmesi
 -   Güncelleştirme değerlendirmesi

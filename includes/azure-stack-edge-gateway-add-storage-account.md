@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 03/12/2021
 ms.author: alkohli
-ms.openlocfilehash: 0c7e011cf8445164e0931f71e390813c9134dd89
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: cf67ea58c4c13756fdc6e437883f12124ca47eb9
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103200954"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105104725"
 ---
 1. [Azure Portal](https://portal.azure.com/), Azure Stack Edge kaynağını seçin ve **genel bakış**' a gidin. Cihazınızın çevrimiçi olması gerekir. **Bulut depolama ağ geçidi > depolama hesaplarına** gidin.
 
@@ -35,4 +35,4 @@ ms.locfileid: "103200954"
 
     ![Depolama hesabı ekleme 2](media/azure-stack-edge-gateway-add-storage-account/add-storage-account-4.png)
 
-    [Azure Resource Manager kullanarak, cihaz yerel API 'Lerine bağlanarak](../articles/databox-online/azure-stack-edge-j-series-connect-resource-manager.md)erişim anahtarlarını alırsınız. 
+    [Azure Resource Manager kullanarak, cihaz yerel API 'Lerine bağlanarak](../articles/databox-online/azure-stack-edge-gpu-connect-resource-manager.md)erişim anahtarlarını alırsınız.

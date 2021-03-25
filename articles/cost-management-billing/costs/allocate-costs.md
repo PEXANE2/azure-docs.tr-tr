@@ -3,17 +3,17 @@ title: Azure maliyetlerini ayırma
 description: Bu makalede aboneliklerin, kaynak gruplarının veya etiketlerin maliyetini diğerlerine dağıtmak amacıyla maliyet ayırma kurallarının nasıl oluşturulacağı açıklanmaktadır.
 author: bandersmsft
 ms.author: banders
-ms.date: 08/11/2020
+ms.date: 03/23/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: 51baa26cf78846bd0a719b8b86056e2ea8176155
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
-ms.translationtype: HT
+ms.openlocfilehash: 414ce626d76c9b7a7d073d6cbfa5a5f4446c3073
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131097"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025535"
 ---
 # <a name="create-and-manage-azure-cost-allocation-rules-preview"></a>Azure maliyet ayırma kurallarını oluşturma ve yönetme (Önizleme)
 
@@ -58,7 +58,7 @@ Maliyetleri işlem, depolama veya ağ maliyeti olarak dağıtırken oran yüzdel
 
 Maliyetleri toplam maliyete orantılı bir şekilde dağıtırken orantı yüzdesi, geçerli fatura ayındaki seçili hedeflerin toplamı veya toplam maliyetine göre atanır.
 
-:::image type="content" source="./media/allocate-costs/cost-distribution.png" alt-text="Kural adı oluşturmayı gösteren örnek" lightbox="./media/allocate-costs/cost-distribution.png" :::
+:::image type="content" source="./media/allocate-costs/cost-distribution.png" alt-text="Ayırma yüzdesini gösteren örnek" lightbox="./media/allocate-costs/cost-distribution.png" :::
 
 Ayarlandıktan sonra, önceden doldurulmuş tanımlı yüzdeler sabit kalır. Bu yüzdeler, devam eden tüm ayırmalarda kullanılır. Yüzdeler yalnızca kural el ile güncelleştirildiğinde değişir.
 
@@ -84,7 +84,7 @@ Maliyet ayırma kuralı etkinleştiğinde, seçili kaynaklardaki maliyetler beli
 
 Ayırma kuralının etkisini maliyet analizinde görebilirsiniz. Azure portalında [Abonelikler](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) sayfasına gidin. Etkin bir maliyet ayırma kuralı tarafından hedeflenen listedeki bir aboneliği seçin. Daha sonra, menüdeki **Maliyet analizi**’ni seçin. Maliyet analizi bölümünde **Gruplandırma ölçütü**’nü ve sonra **Maliyet ayırma**’yı seçin. Elde edilen görünümde, abonelik tarafından oluşturulan hızlı bir maliyet dökümü yer alır. Aboneliğe ayrılan maliyetler de aşağıdaki resimdeki gibi gösterilir.
 
-:::image type="content" source="./media/allocate-costs/cost-breakdown.png" alt-text="Kural adı oluşturmayı gösteren örnek" lightbox="./media/allocate-costs/cost-breakdown.png" :::
+:::image type="content" source="./media/allocate-costs/cost-breakdown.png" alt-text="Maliyet dökümünü gösteren örnek" lightbox="./media/allocate-costs/cost-breakdown.png" :::
 
 ### <a name="view-cost-allocation-for-a-resource-group"></a>Bir kaynak grubunun maliyet ayırmasını görüntüleme
 
@@ -94,7 +94,12 @@ Bir kaynak grubunun maliyet ayırma kuralının etkisi için benzer bir işlemde
 
 Azure portalda **Maliyet Yönetimi + Faturalama** > **Maliyet Yönetimi** > **Maliyet analizi**’ne gidin. Maliyet analizinde **Filtre ekle**’yi seçin. **Etiket**’i seçin, etiket anahtarını ve maliyet ayrılmış olan etiket değerlerini seçin.
 
-:::image type="content" source="./media/allocate-costs/tagged-costs.png" alt-text="Kural adı oluşturmayı gösteren örnek" lightbox="./media/allocate-costs/tagged-costs.png" :::
+:::image type="content" source="./media/allocate-costs/tagged-costs.png" alt-text="Etiketli öğelerin maliyetlerini gösteren örnek" lightbox="./media/allocate-costs/tagged-costs.png" :::
+
+Maliyet ayırma kuralının nasıl oluşturulacağını gösteren bir video aşağıda verilmiştir.
+
+>[!VIDEO https://www.youtube.com/embed/nYzIIs2mx9Q]
+
 
 ## <a name="edit-an-existing-cost-allocation-rule"></a>Mevcut maliyet ayırma kuralını düzenleme
 

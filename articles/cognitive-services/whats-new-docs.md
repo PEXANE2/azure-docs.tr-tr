@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 03/08/2021
-ms.openlocfilehash: b5893ab7c616c30d4febf957c21da56caf7c9673
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 4334166f435612370e7e0b7b380814fe85075f78
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102631379"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046632"
 ---
 # <a name="cognitive-services-docs-whats-new-for-february-1-2021---february-28-2021"></a>Bilişsel hizmetler belgeleri: 1 Şubat 2021 ' deki yenilikler-28 Şubat 2021
 
@@ -28,25 +28,25 @@ ms.locfileid: "102631379"
 
 ### <a name="new-articles"></a>Yeni makaleler
 
-- [Azure bilişsel hizmetler kapsayıcıları sık sorulan sorular (SSS)](/azure/cognitive-services/containers/container-faq)
+- [Azure bilişsel hizmetler kapsayıcıları sık sorulan sorular (SSS)](./containers/container-faq.yml)
 
 ### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
 
-- [Azure bilişsel hizmetler kapsayıcı görüntü etiketleri ve sürüm notları](/azure/cognitive-services/containers/container-image-tags)
+- [Azure bilişsel hizmetler kapsayıcı görüntü etiketleri ve sürüm notları](./containers/container-image-tags.md)
 
 ## <a name="form-recognizer"></a>Form Tanıma
 
 ### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
 
-- [Örnek etiketleme aracını dağıtma](/azure/cognitive-services/form-recognizer/deploy-label-tool)
-- [Form Tanıma nedir?](/azure/cognitive-services/form-recognizer/overview)
-- [Örnek etiketleme aracını kullanarak form tanıyıcı modelini etiketlerle eğitme](/azure/cognitive-services/form-recognizer/quickstarts/label-tool)
+- [Örnek etiketleme aracını dağıtma](./form-recognizer/deploy-label-tool.md)
+- [Form Tanıma nedir?](./form-recognizer/overview.md)
+- [Örnek etiketleme aracını kullanarak form tanıyıcı modelini etiketlerle eğitme](./form-recognizer/quickstarts/label-tool.md)
 
 ## <a name="text-analytics"></a>Metin Analizi
 
 ### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
 
-- [Metin Analizi API'si v3 dil desteği](/azure/cognitive-services/text-analytics/language-support)
-- [Metin Analizi nasıl çağrılacağını REST API](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-call-api)
+- [Metin Analizi API'si v3 dil desteği](./text-analytics/language-support.md)
+- [Metin Analizi nasıl çağrılacağını REST API](./text-analytics/how-tos/text-analytics-how-to-call-api.md)
 
 [!INCLUDE [Service specific updates](./includes/service-specific-updates.md)]

@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/02/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 64299bd05e82cf6f5452cde3f3da5622eff25e56
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1459d4a0f15595c6f658d73fcb9cb533023f0eb8
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121482"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025726"
 ---
 # <a name="tutorial-deploy-configurations-using-gitops-on-an-azure-arc-enabled-kubernetes-cluster"></a>Öğretici: Azure Arc etkin bir Kubernetes kümesinde giler kullanarak yapılandırma dağıtma 
 
@@ -141,7 +141,7 @@ Yalnızca özel anahtarlar gibi, known_hosts içeriğinizi doğrudan veya bir do
 >[!NOTE]
 >* Heln işleç grafik sürümü 1.2.0 +, HTTPS hele sürümü özel kimlik doğrulamasını destekler.
 >* HTTPS helb sürümü, AKS tarafından yönetilen kümeler için desteklenmez.
->* Proxy 'niz aracılığıyla Git deposuna erişmek için Flox 'e ihtiyacınız varsa, Azure Arc aracılarını proxy ayarlarıyla güncelleştirmeniz gerekecektir. Daha fazla bilgi için bkz. [giden ara sunucu kullanarak bağlanma](./connect-cluster.md#connect-using-an-outbound-proxy-server).
+>* Proxy 'niz aracılığıyla Git deposuna erişmek için Flox 'e ihtiyacınız varsa, Azure Arc aracılarını proxy ayarlarıyla güncelleştirmeniz gerekecektir. Daha fazla bilgi için bkz. [giden ara sunucu kullanarak bağlanma](./quickstart-connect-cluster.md#connect-using-an-outbound-proxy-server).
 
 
 ## <a name="additional-parameters"></a>Ek parametreler
@@ -235,7 +235,7 @@ Bir yapılandırma oluşturulduğunda veya güncelleştirilirken birkaç şey me
 
 Sağlama işlemi gerçekleşirken, yapılandırma kaynağı birkaç durum değişikliğine göre hareket eder. Yukarıdaki komutla ilerlemeyi izleyin `az k8s-configuration show ...` :
 
-| Aşama değişikliği | Description |
+| Aşama değişikliği | Açıklama |
 | ------------- | ------------- |
 | `complianceStatus`-> `Pending` | İlk ve devam eden durumları temsil eder. |
 | `complianceStatus` -> `Installed`  | `config-agent` küme başarıyla yapılandırıldı ve `flux` hata olmadan dağıtıldı. |
