@@ -1,14 +1,14 @@
 ---
 title: Kiracılar arası yönetim deneyimleri
 description: Azure Temsilcili kaynak yönetimi, bir çapraz kiracı yönetim deneyimi sunar.
-ms.date: 03/04/2021
+ms.date: 03/23/2021
 ms.topic: conceptual
-ms.openlocfilehash: 4a20f6efde9c3b01b4a2d7a1f111de23aec87647
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ba3cee2ecd7efcbb33c19d7ed159083e843c84a8
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102177928"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952125"
 ---
 # <a name="cross-tenant-management-experiences"></a>Kiracılar arası yönetim deneyimleri
 
@@ -33,7 +33,7 @@ Azure Athouse, farklı kiracılarda farklı hesaplarda oturum açmak zorunda kal
 
 Temsilcili kaynaklar üzerinde doğrudan portalda veya API 'Ler ile yönetim araçlarını kullanarak (Azure CLı ve Azure PowerShell) yönetim görevleri gerçekleştirebilirsiniz. Tüm mevcut API 'Ler, işlevsellik çapraz Kiracı Yönetimi için desteklendiği ve Kullanıcı uygun izinlere sahip olduğu sürece, temsilcili kaynaklarla çalışırken kullanılabilir.
 
-[Get-AzSubscription cmdlet 'i](/powershell/module/Az.Accounts/Get-AzSubscription) , `HomeTenantId` `ManagedByTenantIds` her abonelik için ve özniteliklerini gösterir. Bu, döndürülen bir aboneliğin yönetilen bir kiracıya veya yönetim kiracınıza ait olduğunu tanımlamanızı sağlar. Azure PowerShell
+Azure PowerShell [Get-AzSubscription cmdlet 'i](/powershell/module/Az.Accounts/Get-AzSubscription) , `TenantId` Varsayılan olarak yönetim kiracısı için gösterir. `HomeTenantId` `ManagedByTenantIds` Her abonelik için ve özniteliklerini kullanarak, döndürülen bir aboneliğin yönetilen bir kiracıya veya yönetim kiracınıza ait olduğunu tanımlamanızı sağlayabilirsiniz.
 
 Benzer şekilde, [az Account List](/cli/azure/account#az-account-list) gıbı Azure CLI komutları `homeTenantId` ve özniteliklerini gösterir `managedByTenants` . Azure CLı kullanırken bu değerleri görmüyorsanız, arkasından ' i çalıştırarak Önbelleğinizi temizlemeyi deneyin `az account clear` `az login --identity` .
 

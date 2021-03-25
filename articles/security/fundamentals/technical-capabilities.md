@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/04/2021
 ms.author: terrylan
-ms.openlocfilehash: 00a44bd0a6176270e70eca030fcfada46effe3a5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 54be25317717bcf98b9e296d5c9ed59643cd334e
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101735786"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044762"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure güvenliğe yönelik teknik özellikler
 Bu makalede, Azure 'da verilerinizi, kaynaklarınızı ve uygulamalarınızı korumanıza ve işletmenizin güvenlik ihtiyaçlarını karşılamanıza yardımcı olan güvenlik hizmetlerine giriş sunulmaktadır.
@@ -278,7 +278,7 @@ Azure ağ iletişimi, Azure sanal ağlarınızdaki ağ trafiği için yönlendir
 
 Azure, şirket içi ağınız ve [ExpressRoute](../../expressroute/expressroute-introduction.md)Ile bir Azure sanal ağı IÇIN adanmış WAN bağlantısı bağlantısını destekler. Azure ile siteniz arasındaki bağlantı, genel Internet üzerinden gitmeyecek özel bir bağlantı kullanır. Azure uygulamanız birden çok veri merkezinde çalışıyorsa, kullanıcılardan gelen istekleri uygulama örnekleri arasında akıllıca yönlendirmek için [azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) kullanabilirsiniz. Internet 'ten erişilebiliyorsa, trafiği Azure 'da çalıştırmayan hizmetlere de yönlendirebilirsiniz.
 
-Azure, Azure [özel bağlantısı](https://docs.microsoft.com/azure/private-link/private-link-overview)Ile Azure sanal ağınızdan gelen PaaS kaynaklarınıza (örneğin, Azure depolama ve SQL veritabanı) özel ve güvenli bağlantıları da destekler. PaaS kaynağı, sanal ağınızdaki [özel bir uç nokta](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) ile eşleştirilir. Sanal ağınızdaki özel uç nokta ile PaaS kaynağınız arasındaki bağlantı Microsoft omurga ağını kullanır ve genel Internet üzerinden geçmez. Hizmetinizi genel İnternet 'e sunma artık gerekli değildir. Azure özel bağlantı ' nu Ayrıca, sanal ağınızdaki Azure ile barındırılan müşteri ve iş ortağı hizmetlerine erişmek için de kullanabilirsiniz.  Ayrıca, Azure özel bağlantısı, sanal ağınızda kendi [özel bağlantı hizmetinizi](https://docs.microsoft.com/azure/private-link/private-link-service-overview) oluşturmanızı ve bunları kendi sanal ağlarında özel olarak müşterilerinize sunmanıza olanak sağlar. Azure özel bağlantısını kullanarak kurulum ve tüketim, Azure PaaS, müşteriye ait ve paylaşılan iş ortağı hizmetleri arasında tutarlıdır.
+Azure, Azure [özel bağlantısı](../../private-link/private-link-overview.md)Ile Azure sanal ağınızdan gelen PaaS kaynaklarınıza (örneğin, Azure depolama ve SQL veritabanı) özel ve güvenli bağlantıları da destekler. PaaS kaynağı, sanal ağınızdaki [özel bir uç nokta](../../private-link/private-endpoint-overview.md) ile eşleştirilir. Sanal ağınızdaki özel uç nokta ile PaaS kaynağınız arasındaki bağlantı Microsoft omurga ağını kullanır ve genel Internet üzerinden geçmez. Hizmetinizi genel İnternet 'e sunma artık gerekli değildir. Azure özel bağlantı ' nu Ayrıca, sanal ağınızdaki Azure ile barındırılan müşteri ve iş ortağı hizmetlerine erişmek için de kullanabilirsiniz.  Ayrıca, Azure özel bağlantısı, sanal ağınızda kendi [özel bağlantı hizmetinizi](../../private-link/private-link-service-overview.md) oluşturmanızı ve bunları kendi sanal ağlarında özel olarak müşterilerinize sunmanıza olanak sağlar. Azure özel bağlantısını kullanarak kurulum ve tüketim, Azure PaaS, müşteriye ait ve paylaşılan iş ortağı hizmetleri arasında tutarlıdır.
 
 ## <a name="virtual-machine-security"></a>Sanal makine güvenliği
 

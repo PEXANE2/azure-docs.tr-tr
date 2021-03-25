@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 238ef9ec80b01470e28535d0eb42dbb3a377b005
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: fb1514c146dcd352451597e6182c6d99ed8836d6
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96746446"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044728"
 ---
 # <a name="how-to-create-plans-for-your-saas-offer"></a>SaaS teklifiniz için planlar oluşturma
 
@@ -149,6 +149,10 @@ Bir veya daha fazla plan oluşturduktan sonra plan adı, plan KIMLIĞI, fiyatlan
 
 - Plan durumu **taslak** Ise, **eylem** sütunundaki bağlantı **taslak Sil**' i söylecektir.
 - Plan durumu **canlı** Ise, Eylem sütunundaki bağlantı, satışı veya **özel Izleyiciyi eşitleme** **işlemini** **durdurur** . **Eşitleme özel hedef kitle** bağlantısı, yalnızca özel izleyicilerinizdeki değişiklikleri, teklifte yapmış olabileceğiniz herhangi bir güncelleştirmeyi yayımlamadan yayımlar.
+
+## <a name="before-you-publish-your-offer"></a>Teklifinizi yayımlamadan önce
+
+Henüz yapmadıysanız, üretim teklifinizi canlı yayımlamadan önce teklifinizi test etmek için bir geliştirme ve test (DEV) teklifi oluşturun. Daha fazla bilgi için bkz. [geliştirme ve test teklifi oluşturma](create-saas-dev-test-offer.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

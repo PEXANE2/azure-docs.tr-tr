@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/21/2021
+ms.date: 03/23/2021
 ms.author: alkohli
-ms.openlocfilehash: 4590949f2feb86dc344dce87f3ff447e0e05e8ee
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 60c6d0b7c983aefbca3aec65a3f6562edb1d56ef
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102438123"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104956188"
 ---
 # <a name="update-your-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU 'larınızı güncelleştirin 
 
@@ -24,13 +24,15 @@ Bu makalede, yerel Web Kullanıcı arabirimi aracılığıyla ve Azure portal ar
 Bu makalede açıklanan yordam, yazılımın farklı bir sürümü kullanılarak gerçekleştirilmiştir, ancak işlem geçerli yazılım sürümü için aynı kalır.
 
 > [!IMPORTANT]
-> - Güncelleştirme **2101** geçerli güncelleştirmedir ve şu şekilde karşılık gelir:
->   - Cihaz yazılımı sürümü- **2.2.1473.2521**
+> - Güncelleştirme **2103** geçerli güncelleştirmedir ve şu şekilde karşılık gelir:
+>   - Cihaz yazılımı sürümü- **2.2.1540.2890**
 >   - Kubernetes Server sürümü- **v 1.17.3**
->   - IoT Edge sürüm: **0.1.0-beta10**
+>   - IoT Edge sürüm: **0.1.0-beta13**
+>   - GPU sürücü sürümü: **460.32.03**
+>   - CUDA sürümü: **11,2**
 >    
->    Bu güncelleştirmedeki yenilikler hakkında daha fazla bilgi için, [sürüm notları](azure-stack-edge-gpu-2101-release-notes.md)' na gidin.
-> - 2101 güncelleştirmesini uygulamak için cihazınız 2010 çalıştırıyor olmalıdır.
+>    Bu güncelleştirmedeki yenilikler hakkında daha fazla bilgi için, [sürüm notları](azure-stack-edge-gpu-2103-release-notes.md)' na gidin.
+> - 2103 güncelleştirmesini uygulamak için cihazınız 2010 çalıştırıyor olmalıdır. Desteklenen en düşük sürümü çalıştırmıyorsanız şu hatayı görürsünüz: *Bağımlılıklar karşılanmadığından güncelleştirme paketi* yüklenemiyor.
 > - Güncelleştirme veya düzeltme yüklendiğinde cihazınızın yeniden başlatıldığını aklınızda bulundurun. Bu güncelleştirme, cihaz yazılım güncelleştirmelerini ve Kubernetes güncelleştirmelerini içerir. Azure Stack Edge Pro tek düğümlü bir cihaz olduğundan, sürmekte olan g/ç miktarı bozulur ve cihazınız güncelleştirme için 1,5 saate kadar bir kesinti yaşar.
 
 Güncelleştirmeleri cihazınıza yüklemek için önce güncelleştirme sunucusunun konumunu yapılandırmanız gerekir. Güncelleştirme sunucusu yapılandırıldıktan sonra, Azure portal Kullanıcı arabirimi veya yerel Web Kullanıcı arabirimi aracılığıyla güncelleştirmeleri uygulayabilirsiniz.
@@ -111,10 +113,7 @@ Azure portal aracılığıyla güncelleştirmeleri yüklemenizi öneririz. Cihaz
     
     ![Güncelleştirme 12 ' den sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-11.png)
 
-
-7. Yeniden başlatmadan sonra cihaz yeniden bakım moduna konur ve bunu göstermek için bir bilgi uyarısı görüntülenir.
-
-    En üstteki komut çubuğundan **cihazı Güncelleştir** ' i seçerseniz, güncelleştirmelerin ilerlemesini görebilirsiniz.   
+7. Yeniden başlatmadan sonra, üstteki komut çubuğundan **cihazı Güncelleştir** ' i seçerseniz, güncelleştirmelerin ilerlemesini görebilirsiniz.   
 
 8. Güncelleştirmeler yüklendikten sonra cihaz durumu **çevrimiçi** olarak güncelleştirilir. 
 
@@ -124,23 +123,6 @@ Azure portal aracılığıyla güncelleştirmeleri yüklemenizi öneririz. Cihaz
 
     ![Güncelleştirme 14 ' den sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-15.png)
 
-<!--9. You will again see a notification that updates are available. These are the Kubernetes updates. Select the notification or select **Update device** from the top command bar.
-
-    ![Software version after update 15](./media/azure-stack-edge-gpu-install-update/portal-update-16.png)
-
-10. Download the Kubernetes updates. You can see that the package size is different when compared to the previous update package.
-
-    ![Software version after update 16](./media/azure-stack-edge-gpu-install-update/portal-update-17.png)
-
-    The process of installation is identical to that of device updates. First the updates are downloaded.
-
-    ![Software version after update 17](./media/azure-stack-edge-gpu-install-update/portal-update-18.png)    
-    
-11. Once the updates are downloaded, you can then install the updates. 
-
-    ![Software version after update 18](./media/azure-stack-edge-gpu-install-update/portal-update-19.png)
-
-    As the updates are installed, the device is put into maintenance mode. The device does not restart for the Kubernetes updates. -->
 
 Cihaz yazılımı ve Kubernetes güncelleştirmeleri başarıyla yüklendikten sonra, başlık bildirimi kaybolur. Cihazınız artık cihaz yazılımının en son sürümü ve Kubernetes sürümüdür.
 
@@ -168,11 +150,11 @@ Microsoft Update kataloğundan güncelleştirmeyi indirmek için aşağıdaki ad
 
 2. Microsoft Update kataloğunun arama kutusuna, indirmek istediğiniz güncelleştirme için düzeltme veya koşulların Bilgi Bankası (KB) numarasını girin. Örneğin, **Azure Stack Edge Pro** yazın ve ardından **Ara**' ya tıklayın.
    
-    Güncelleştirme listesi **Azure Stack Edge güncelleştirme 2101** olarak görüntülenir.
+    Güncelleştirme listesi **Azure Stack Edge güncelleştirme 2103** olarak görüntülenir.
    
     <!--![Search catalog 2](./media/azure-stack-edge-gpu-install-update/download-update-2-b.png)-->
 
-4. **İndir**'i seçin. *SoftwareUpdatePackage.exe* ile indirilecek iki dosya vardır ve sırasıyla cihaz yazılım güncelleştirmelerine ve Kubernetes güncelleştirmelerine karşılık gelen *Kubernetes_Package.exe* sonekleri vardır. Dosyaları yerel sistemdeki bir klasöre indirin. Ayrıca, klasörü cihazdan erişilebilen bir ağ paylaşımında da kopyalayabilirsiniz.
+4. **İndir**'i seçin. İndirilecek iki paket vardır: KB 4613486 ve KB 46134867, sırasıyla cihaz yazılım güncelleştirmelerine (*SoftwareUpdatePackage.exe*) ve Kubernetes güncelleştirmelerine (*Kubernetes_Package.exe*) karşılık gelir. Paketleri yerel sistemdeki bir klasöre indirin. Ayrıca, klasörü cihazdan erişilebilen bir ağ paylaşımında da kopyalayabilirsiniz.
 
 ### <a name="install-the-update-or-the-hotfix"></a>Güncelleştirmeyi veya düzeltmeyi yükler
 
@@ -203,7 +185,7 @@ Bu yordamın tamamlandığı 20 dakika sürer. Güncelleştirmeyi veya düzeltme
 
 5. Güncelleştirme başlar. Cihaz başarıyla güncelleştirildikten sonra yeniden başlatılır. Yerel Kullanıcı arabirimine bu süre içinde erişilemiyor.
    
-6. Yeniden başlatma işlemi tamamlandıktan sonra **oturum açma** sayfasına yönlendirilirsiniz. Cihaz yazılımının güncelleştirildiğini doğrulamak için, yerel Web Kullanıcı arabiriminde **bakım**  >  **yazılım güncelleştirmesi**' ne gidin. Geçerli yayın için, görüntülenmiş yazılım sürümü **Azure Stack Edge 2101** olmalıdır. 
+6. Yeniden başlatma işlemi tamamlandıktan sonra **oturum açma** sayfasına yönlendirilirsiniz. Cihaz yazılımının güncelleştirildiğini doğrulamak için, yerel Web Kullanıcı arabiriminde **bakım**  >  **yazılım güncelleştirmesi**' ne gidin. Geçerli yayın için, görüntülenmiş yazılım sürümü **Azure Stack Edge 2103** olmalıdır. 
 
    <!--![update device 6](./media/azure-stack-edge-gpu-install-update/local-ui-update-6.png)-->
 
