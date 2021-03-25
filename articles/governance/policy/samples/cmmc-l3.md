@@ -1,15 +1,15 @@
 ---
 title: CMMC düzey 3 için mevzuat uyumluluk ayrıntıları
 description: CMMC düzey 3 mevzuata uyumluluğu yerleşik girişiminin ayrıntıları. Her denetim, değerlendirmede yardımcı olan bir veya daha fazla Azure Ilke tanımına eşlenir.
-ms.date: 03/17/2021
+ms.date: 03/24/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: a97d6b0971b52baa52786df3433c36f30ec61eec
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f567e195dd25fb69d57d84c76f42567e7411f634
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104590441"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105034563"
 ---
 # <a name="details-of-the-cmmc-level-3-regulatory-compliance-built-in-initiative"></a>CMMC düzey 3 mevzuata uyumluluğu yerleşik girişiminin ayrıntıları
 

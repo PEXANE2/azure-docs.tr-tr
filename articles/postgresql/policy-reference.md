@@ -1,18 +1,18 @@
 ---
 title: PostgreSQL için Azure veritabanı 'nda yerleşik ilke tanımları
 description: PostgreSQL için Azure veritabanı 'nda Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 03/17/2021
+ms.date: 03/24/2021
 ms.topic: reference
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 0f6d2d73ebfdabe11445e2b5d5a1e5b1e83e8120
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4b367890f552f26d3e3d84d1725f7fe4e07d4b34
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104600856"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105035107"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-database-for-postgresql"></a>PostgreSQL için Azure veritabanı 'nda Azure Ilkesi yerleşik tanımları
 

@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 1/30/2021
 ms.author: cavoeg
-ms.openlocfilehash: a31fb48443cf760186faad705b8be21a62846a44
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 9bd61d65d6d64dac6081d3491deb8a15efc4a45b
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103020798"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048428"
 ---
 # <a name="features"></a>Özellikler
 
@@ -35,14 +35,14 @@ Desteklenen en son sürüm: `4.0.1`
 | iyimser kilitleme ile güncelleştirme | Yes       | Yes       | Yes       |                                                     |
 | Güncelleştirme (koşullu)           | Yes       | Yes       | Yes       |                                                     |
 | düzeltmesi                          | Hayır        | Hayır        | Hayır        |                                                     |
-| delete                         | Yes       | Yes       | Yes       |  Aşağıya göz atın                                                   |
+| delete                         | Yes       | Yes       | Yes       |  Aşağıdaki nota bakın.                                   |
 | Sil (koşullu)           | Hayır        | Hayır        | Hayır        |                                                     |
 | geçmiş                        | Yes       | Yes       | Yes       |                                                     |
 | oluşturmaya                         | Yes       | Yes       | Yes       | Her iki GÖNDERI/PUT desteği                               |
 | oluştur (koşullu)           | Yes       | Yes       | Yes       | Sorun [#1382](https://github.com/microsoft/fhir-server/issues/1382) |
-| search                         | Kısmi   | Kısmi   | Kısmi   | Aşağıya bakın                                           |
-| zincirleme arama                 | Hayır        | Yes       | Hayır        |                                                     |
-| ters zincirleme arama         | Hayır        | Yes       | Hayır        |                                                     |
+| search                         | Kısmi   | Kısmi   | Kısmi   | Aşağıdaki arama bölümüne bakın.                           |
+| zincirleme arama                 | Yes       | Yes       | Kısmi   | Aşağıdaki 2. nota bakın.                                   |
+| ters zincirleme arama         | Yes       | Yes       | Kısmi   | Aşağıdaki 2. nota bakın.                                   |
 | özellikler                   | Yes       | Yes       | Yes       |                                                     |
 | toplu iş                          | Yes       | Yes       | Yes       |                                                     |
 | işlem                    | Hayır        | Yes       | Hayır        |                                                     |
@@ -51,6 +51,12 @@ Desteklenen en son sürüm: `4.0.1`
 
 > [!Note]
 > FHıR belirtimi tarafından tanımlanan silme, silindikten sonra, bir kaynağın sonraki sürüme özgü olmayan okumalarının bir 410 HTTP durum kodu döndürdüğünden ve kaynak artık arama yoluyla bulunamamasına gerek duyar. FHıR için Azure API 'SI Ayrıca, kaynağı tamamen silmenizi (tüm geçmiş dahil) sağlar. Kaynağı tamamen silmek için bir parametre ayarlarını `hardDelete` true () değerine geçirebilirsiniz `DELETE {server}/{resource}/{id}?hardDelete=true` . Bu parametreyi geçirmezseniz veya `hardDelete` false olarak ayarlarsanız, kaynağın geçmiş sürümleri kullanılabilir olmaya devam edecektir.
+
+
+ **2. nota**
+* CosmosDB 'de zincirleme ve ters zincirleme FHıR araması için MVP desteği ekler. 
+
+  FHIR için Azure API ve Cosmos tarafından desteklenen açık kaynaklı FHıR sunucusu, zincirleme arama ve ters zincirleme arama bir MVP uygulamasıdır. Cosmos DB üzerinde zincirleme arama gerçekleştirmek için, uygulama arama ifadesinin üzerine gider ve eşleşen kaynakları çözümlemek için alt sorgular verir. Bu, ifadenin her düzeyi için yapılır. Herhangi bir sorgu 100 'den fazla sonuç döndürürse bir hata oluşur. Varsayılan olarak, zincirleme arama özelliği bir özellik bayrağının arkasında bulunur. Cosmos DB üzerinde zincirleme aramayı kullanmak için üst bilgisini kullanın `x-ms-enable-chained-search: true` . Daha ayrıntılı bilgi için bkz. [PR 1695](https://github.com/microsoft/fhir-server/pull/1695).
 
 ## <a name="search"></a>Arayın
 

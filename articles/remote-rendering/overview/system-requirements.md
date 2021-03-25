@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
 ms.custom: references_regions
-ms.openlocfilehash: dd91622344263dc366a76c913ce0be95718550cd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 789233ce1ede751276f965143716694c6feca3ca
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101705169"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105032811"
 ---
 # <a name="system-requirements"></a>Sistem Gereksinimleri
 
@@ -111,12 +111,10 @@ Aşağıdaki yazılım yüklü olmalıdır:
 
 ## <a name="unity"></a>Unity
 
-Unity ile geliştirme için, yüklemesi
-
-* Unity 2019.3.1 [(indirme)](https://unity3d.com/get-unity/download)
-* Bu modülleri Unity 'ye yükler:
-  * **UWP** -Evrensel Windows platformu derleme desteği
-  * **IL2CPP** -Windows derleme DESTEĞI (IL2CPP)
+Unity ile geliştirme için, Unity 2019,3 veya 2019,4 LTS 'nin [(indirme)](https://unity3d.com/get-unity/download)güncel bir sürümünü yükleyin. Yüklemeleri yönetmek için Unity hub kullanmanızı öneririz.
+Unity yüklemenize aşağıdaki modülleri eklediğinizden emin olun:
+* **UWP** -Evrensel Windows platformu derleme desteği
+* **IL2CPP** -Windows derleme DESTEĞI (IL2CPP)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

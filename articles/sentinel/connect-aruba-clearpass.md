@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2021
 ms.author: yelevin
-ms.openlocfilehash: 1b03e2d8715b3d80425ef181dd908978d5df4cf2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8050b4f173476d7af66cb858ff5f785e5a12af43
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101746724"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046581"
 ---
 # <a name="connect-your-aruba-clearpass-to-azure-sentinel"></a>Aruba ClearPass 'nizi Azure Sentinel 'e bağlama
 
@@ -35,7 +35,7 @@ Bu makalede Aruba ClearPass gerecinizi Azure Sentinel 'e nasıl bağlayabileceğ
 
 - Azure Sentinel çalışma alanınızda okuma ve yazma izinlerine sahip olmanız gerekir.
 
-- Çalışma alanı için paylaşılan anahtarlar için okuma izninizin olması gerekir. [Çalışma alanı anahtarları hakkında daha fazla bilgi edinin](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key).
+- Çalışma alanı için paylaşılan anahtarlar için okuma izninizin olması gerekir. [Çalışma alanı anahtarları hakkında daha fazla bilgi edinin](../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key).
 
 ## <a name="send-aruba-clearpass-logs-to-azure-sentinel"></a>Azure Sentinel 'e Aruba ClearPass günlükleri gönderme
 

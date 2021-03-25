@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 458c93fd3e13a958137c762a0979af918a70d930
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 3132ec8fb3cb123653887d92a2f33788f40564c0
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "105023051"
+ms.locfileid: "105033832"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Azure Databricks kullanarak Azure IoT Central özel analiz ile genişletme
 
@@ -117,7 +117,7 @@ Bu bölümde, uygulamayı sanal cihazınızdan Olay Hub 'ınıza Telemetriyi ak�
 
     **Olay Hub 'ı** **centralexport** olarak gösterilir.
 
-    :::image type="content" source="media/howto-create-custom-analytics/data-export-1.png" alt-text="Veri dışa aktarma hedefini gösteren ekran görüntüsü":::
+    :::image type="content" source="media/howto-create-custom-analytics/data-export-1.png" alt-text="Veri dışa aktarma hedefini gösteren ekran görüntüsü.":::
 
 1. **Kaydet**’i seçin.
 
@@ -136,7 +136,7 @@ Dışarı aktarma tanımını oluşturmak için:
 
 1. **Kaydet**’i seçin.
 
-    :::image type="content" source="media/howto-create-custom-analytics/data-export-2.png" alt-text="Veri dışa aktarma tanımını gösteren ekran görüntüsü":::
+    :::image type="content" source="media/howto-create-custom-analytics/data-export-2.png" alt-text="Veri dışa aktarma tanımını gösteren ekran görüntüsü.":::
 
 Devam etmeden önce dışarı aktarma durumunun **veri dışa aktarma** sayfasında **sağlıklı** olmasını bekleyin.
 
@@ -156,7 +156,7 @@ Kümenizi oluşturmak için aşağıdaki tablodaki bilgileri kullanın:
 | Küme modu | Standart |
 | Databricks Runtime sürümü | 5,5 LTS (Scala 2,11, Spark 2.4.5) |
 | Python sürümü | 3 |
-| Otomatik ölçeklendirmeyi etkinleştir | Hayır |
+| Otomatik ölçeklendirmeyi etkinleştir | No |
 | İşlem yapılmadan dakika sonra Sonlandır | 30 |
 | Çalışan türü | Standard_DS3_v2 |
 | Çalışanlarınız | 1 |

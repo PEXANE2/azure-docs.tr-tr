@@ -8,18 +8,18 @@ ms.author: pamistel
 ms.date: 02/11/2021
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 43273ccd7c882bbac6cbc68d359db4ecb100800e
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 13aa12be5a336363bbe3bcbf3e3fb354a8fa3074
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102617412"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048485"
 ---
 # <a name="understanding-the-anchorlocatecriteria-class"></a>AnchorLocateCriteria sınıfını anlama
 Bu makalede, bir bağlayıcıyı sorgularken kullanabileceğiniz farklı seçenekleri öğreneceksiniz. AnchorLocateCriteria sınıfının, seçeneklerinin ve geçerli seçenek birleşimlerinin üzerine gidecağız.
 
 ## <a name="anchor-locate-criteria"></a>Bağlayıcı bulma ölçütü
-[Anchorlocatecriteria sınıfı](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.anchorlocatecriteria) , daha önce oluşturulan bağlantılar için hizmeti sorgulamanızı sağlar. Tek bir AnchorLocateCriteria nesnesi, her zaman izleyici başına kullanılabilir. Her AnchorLocateCriteria nesnesi şu özelliklerden **tam olarak birini** Içermelidir: [tanımlayıcılar](#identifiers), [NearAnchor](#nearanchor)veya daha fazla bir [cihaz](#neardevice). [Strateji](#strategy), [BypassCache](#bypasscache)ve [requestedcategories](#requestedcategories) gibi ek özellikler isteniyorsa ayarlanabilir. 
+[Anchorlocatecriteria sınıfı](/dotnet/api/microsoft.azure.spatialanchors.anchorlocatecriteria) , daha önce oluşturulan bağlantılar için hizmeti sorgulamanızı sağlar. Tek bir AnchorLocateCriteria nesnesi, her zaman izleyici başına kullanılabilir. Her AnchorLocateCriteria nesnesi şu özelliklerden **tam olarak birini** Içermelidir: [tanımlayıcılar](#identifiers), [NearAnchor](#nearanchor)veya daha fazla bir [cihaz](#neardevice). [Strateji](#strategy), [BypassCache](#bypasscache)ve [requestedcategories](#requestedcategories) gibi ek özellikler isteniyorsa ayarlanabilir. 
 
 ### <a name="properties"></a>Özellikler
 İzleyicinizdeki aşağıdaki özelliklerden **tam olarak birini** tanımlayın:
@@ -37,7 +37,7 @@ Bu özellik bir NearAnchorCriteria nesnesi kullanılarak belirtilir.
 #### <a name="neardevice"></a>Yakın cihaz
 *Varsayılan değer: ayarlanmadı*
 
-Daha önce, bir AnchorLocateCriteria, istenen Tutturucular kümesini cihazın fiziksel konumuna yakın olarak kısıtladığını belirtebilirsiniz. Etkin sensörler, cihazınızın çevresindeki bağlantıları bulmaya yardımcı olmak için kullanılır. Bağlantıları bulmanın en iyi ihtimaline sahip olmak için, tüm uygun sensörler için oturum erişimi sağlamak üzere SensorCapabilities özelliğini yapılandırmanız gerekir. Bu özelliği ayarlama ve kullanma hakkında daha fazla bilgi için bkz. [kaba Reyerelleştirme-Azure uzamsal bağlantıları | Microsoft docs](https://docs.microsoft.com/azure/spatial-anchors/concepts/coarse-reloc) ve [C#](https://docs.microsoft.com/azure/spatial-anchors/how-tos/set-up-coarse-reloc-unity), [Amaç-C](https://docs.microsoft.com/azure/spatial-anchors/how-tos/set-up-coarse-reloc-unity), [Swift](https://docs.microsoft.com/azure/spatial-anchors/how-tos/set-up-coarse-reloc-swift), [Java](https://docs.microsoft.com/azure/spatial-anchors/how-tos/set-up-coarse-reloc-java), [c++/NDK](https://docs.microsoft.com/azure/spatial-anchors/how-tos/set-up-coarse-reloc-cpp-ndk), [c++/wınrt](https://docs.microsoft.com/azure/spatial-anchors/how-tos/set-up-coarse-reloc-cpp-winrt)'de *kaba yeniden yerelleştirme kullanarak Tutturucular oluşturma ve bulma* .
+Daha önce, bir AnchorLocateCriteria, istenen Tutturucular kümesini cihazın fiziksel konumuna yakın olarak kısıtladığını belirtebilirsiniz. Etkin sensörler, cihazınızın çevresindeki bağlantıları bulmaya yardımcı olmak için kullanılır. Bağlantıları bulmanın en iyi ihtimaline sahip olmak için, tüm uygun sensörler için oturum erişimi sağlamak üzere SensorCapabilities özelliğini yapılandırmanız gerekir. Bu özelliği ayarlama ve kullanma hakkında daha fazla bilgi için bkz. [kaba Reyerelleştirme-Azure uzamsal bağlantıları | Microsoft docs](./coarse-reloc.md) ve [C#](../how-tos/set-up-coarse-reloc-unity.md), [Amaç-C](../how-tos/set-up-coarse-reloc-unity.md), [Swift](../how-tos/set-up-coarse-reloc-swift.md), [Java](../how-tos/set-up-coarse-reloc-java.md), [c++/NDK](../how-tos/set-up-coarse-reloc-cpp-ndk.md), [c++/wınrt](../how-tos/set-up-coarse-reloc-cpp-winrt.md)'de *kaba yeniden yerelleştirme kullanarak Tutturucular oluşturma ve bulma* .
 Bu özellik, bir bir bir bir bir, bir bir bir, bir, bir bir bir
 
 ### <a name="additional-properties"></a>Ek özellikler
@@ -66,7 +66,7 @@ LocateStrategy Enum değeri | Description
 ---------------|------------
 Anystrateji | Bu strateji, sistemin çıpası bulmak için Visualınformation ve Ilişki stratejileri birleşimlerini kullanmasına izin verir. 
 Visualınformation|Bu strateji, geçerli nesnelerin, bağlayıcının görsel parmak izine ait olduğu görsel bilgilerle eşleşen bağlantıları bulmaya çalışır. Bir bağlayıcının görsel ayak izi, şu anda yer alan ve bağlayıcı ile ilişkili görsel bilgilere başvurur. Bu görsel bilgiler genellikle, bağlayıcı oluşturma sırasında özel olarak toplanmamıştır. Şu anda bu stratejiye yalnızca, kabul eden cihaz veya tanımlayıcı özellikleriyle birlikte izin verilir.
-İlişki|Bu strateji, var olan [bağlantı bağlayıcılarını](https://docs.microsoft.com/azure/spatial-anchors/concepts/anchor-relationships-way-finding#connect-anchors)kullanarak bağlantıları bulmaya çalışır. Şu anda, bu stratejiye yalnızca NearAnchor veya tanımlayıcılar özellikleriyle birlikte izin verilir. Tanımlayıcılar özelliği ile birlikte kullanıldığında, bu, kullanıcının, kimlikleri tanımlayıcı dizisinde belirtilen tutturucularla önceden oluşturulmuş bağlama ilişkilerine sahip bir çapa (ler) daha önce konumlandırmış olması gerekir. 
+İlişki|Bu strateji, var olan [bağlantı bağlayıcılarını](./anchor-relationships-way-finding.md#connect-anchors)kullanarak bağlantıları bulmaya çalışır. Şu anda, bu stratejiye yalnızca NearAnchor veya tanımlayıcılar özellikleriyle birlikte izin verilir. Tanımlayıcılar özelliği ile birlikte kullanıldığında, bu, kullanıcının, kimlikleri tanımlayıcı dizisinde belirtilen tutturucularla önceden oluşturulmuş bağlama ilişkilerine sahip bir çapa (ler) daha önce konumlandırmış olması gerekir. 
 
 
 ### <a name="valid-combinations-of-locatestrategy-and-anchorlocatecriteria-properties"></a>LocateStrategy ve AnchorLocateCriteria özelliklerinin geçerli birleşimleri 
@@ -86,4 +86,4 @@ Yakın cihaz  | &check;    |   | &check;
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-AnchorLocateCriteria sınıfını kullanarak daha fazla örnek için [Azure uzamsal bağlayıcılarını kullanarak bağlantıları oluşturma ve bulma](https://docs.microsoft.com/azure/spatial-anchors/create-locate-anchors-overview) bölümüne bakın.
+AnchorLocateCriteria sınıfını kullanarak daha fazla örnek için [Azure uzamsal bağlayıcılarını kullanarak bağlantıları oluşturma ve bulma](../create-locate-anchors-overview.md) bölümüne bakın.

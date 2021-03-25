@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/04/2021
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: dd92cf24cf007418e52cb5091eb390b46d7a5571
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 7649f9c13db1a10bdb48d19f1019ec3b31244f45
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "104987801"
+ms.locfileid: "105105099"
 ---
 Konuşma hizmetinin temel özelliklerinden biri de insan konuşmanızı tanıyabilme ve (genellikle konuşma-metin olarak adlandırılır). Bu hızlı başlangıçta, uygulama ve ürünlerinize yönelik konuşma SDK 'sını kullanarak yüksek kaliteli bir konuşmayı metne dönüştürme işlemini nasıl gerçekleştireceğinizi öğreneceksiniz.
 
@@ -26,7 +26,7 @@ Bu makalede bir Azure hesabınız ve konuşma hizmeti aboneliğiniz olduğunu va
 
 ## <a name="install-the-speech-sdk"></a>Konuşma SDK 'sını yükler
 
-Herhangi bir şey yapmadan önce, Node.js için konuşma SDK 'sını yüklemeniz gerekir. Yalnızca paket adının yüklenmesini istiyorsanız, öğesini çalıştırın `npm install microsoft-cognitiveservices-speech-sdk` . Kılavuzlu yükleme yönergeleri için [Başlarken](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=dotnet%2Clinux%2Cjre%2Cnodejs&pivots=programming-language-javascript) makalesine bakın.
+Herhangi bir şey yapmadan önce, Node.js için konuşma SDK 'sını yüklemeniz gerekir. Yalnızca paket adının yüklenmesini istiyorsanız, öğesini çalıştırın `npm install microsoft-cognitiveservices-speech-sdk` . Kılavuzlu yükleme yönergeleri için [Başlarken](../../../quickstarts/setup-platform.md?pivots=programming-language-javascript&tabs=dotnet%2clinux%2cjre%2cnodejs) makalesine bakın.
 
 `require`SDK 'yı içeri aktarmak için aşağıdaki ifadeyi kullanın.
 
