@@ -1,5 +1,5 @@
 ---
-title: SQL veritabanı geçişine SQL Server için değerlendirme kuralları
+title: Azure SQL veritabanı geçişine SQL Server için değerlendirme kuralları
 description: Azure SQL veritabanına geçmeden önce değinilmesi gereken kaynak SQL Server örneğiyle ilgili sorunları belirlemek için değerlendirme kuralları.
 ms.service: sql-database
 ms.subservice: migration-guide
@@ -10,14 +10,14 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: MashaMSFT
 ms.date: 12/15/2020
-ms.openlocfilehash: bf825572226bf5d7432fd3ad825f2f3a13355c53
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c407b62b5f0308fbb6d9ff7223a3554ca09592db
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102054968"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105027219"
 ---
-# <a name="assessment-rules-for-sql-server-to-sql-database-migration"></a>SQL veritabanı geçişine SQL Server için değerlendirme kuralları
+# <a name="assessment-rules-for-sql-server-to-azure-sql-database-migration"></a>Azure SQL veritabanı geçişine SQL Server için değerlendirme kuralları
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
 
 Geçiş araçları, SQL Server veritabanınızı Azure SQL veritabanı 'na geçirmeden önce ele geçirilmesi gereken sorunları belirlemek için bir dizi değerlendirme kuralı çalıştırarak kaynak SQL Server örneğinizi doğrular. 
@@ -137,7 +137,7 @@ Veritabanı uyumluluk düzeyi, SQL Server veritabanı altyapısının yükseltil
 **Önerilen**   
 Veritabanı uyumluluk düzeyi, Azure SQL yönetilen örneği üzerinde 100 sürümüne yükseltildiğinde, uygulama işlevselliğinin bozulmadan olduğunu değerlendirin. Alternatif olarak, Azure sanal makinesinde SQL Server 'e geçiş yapın
 
-## <a name="database-mail"></a>Veritabanı postası<a id="DatabaseMail"></a>
+## <a name="database-mail"></a>Veritabanı posta<a id="DatabaseMail"></a>
 
 **Başlık: Veritabanı Postası Azure SQL veritabanı 'nda desteklenmiyor.**   
 **Kategori**: uyarı   
