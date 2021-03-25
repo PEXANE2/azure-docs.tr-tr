@@ -551,6 +551,8 @@
           href: vs-active-directory-error.md
     - name: Uygulama kaydını kaldırma
       href: quickstart-remove-app.md
+    - name: Silinen bir uygulama kaydını geri yükleme veya kaldırma
+      href: quickstart-restore-app.md
 - name: Başvuru
   items:
     - name: Sözlük

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: 5b3e9c944aece3b3e22ee7a5a6144751725ddf67
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3f565f456dde1d802a82faffb4a23f7a6e54d950
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101729972"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105031554"
 ---
 # <a name="quickstart-render-a-model-with-unity"></a>Hızlı başlangıç: Unity ile model Işleme
 
@@ -37,10 +37,7 @@ Aşağıdaki yazılım yüklü olmalıdır:
   * **C++ ile masaüstü geliştirme**
   * **Evrensel Windows Platformu (UWP) geliştirme**
 * GIT [(İndir)](https://git-scm.com/downloads)
-* Unity 2019.3.1 [(indirme)](https://unity3d.com/get-unity/download)
-  * Bu modülleri Unity 'ye yükler:
-    * **UWP** -Evrensel Windows platformu derleme desteği
-    * **IL2CPP** -Windows derleme DESTEĞI (IL2CPP)
+* Unity (desteklenen sürümler için [sistem gereksinimlerine](../overview/system-requirements.md#unity) bakın)
 
 ## <a name="clone-the-sample-app"></a>Örnek uygulamayı kopyalama
 

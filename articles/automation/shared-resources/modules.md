@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 02/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: ae3329401a138bc0566ea93a8fbf2071fd44f02c
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 57dfc388dcba926706a695c93d2afa1956432be8
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102503428"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953944"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Azure Otomasyonu’nda modülleri yönetme
 
@@ -142,10 +142,10 @@ Az modülünün Otomasyon hesabınıza aktarılması, modülün runbook 'ların 
 
 * Bir runbook bir modülden bir cmdlet istediğinde.
 * Bir runbook, modülü [Import-Module](/powershell/module/microsoft.powershell.core/import-module) cmdlet 'i ile açıkça içeri aktardığında.
-* Bir runbook, modülü [using Module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_using#module-syntax) ifadesiyle açıkça içeri aktardığında. Using deyimleri Windows PowerShell 5,0 ile başlayarak desteklenir ve sınıfları ve sabit listesi türü içeri aktarmayı destekler.
+* Bir runbook, modülü [using Module](/powershell/module/microsoft.powershell.core/about/about_using#module-syntax) ifadesiyle açıkça içeri aktardığında. Using deyimleri Windows PowerShell 5,0 ile başlayarak desteklenir ve sınıfları ve sabit listesi türü içeri aktarmayı destekler.
 * Bir runbook başka bir bağımlı modülü içeri aktardığında.
 
-Azure portal az modülleri içeri aktarabilirsiniz. Tüm az. Automation modülünü değil, yalnızca ihtiyacınız olan az modülleri içe aktarmayı unutmayın. [Az. Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) diğer az modüllerle ilgili bir bağımlılık olduğundan, bu modülü diğerlerinden önce içeri aktardığınızdan emin olun.
+Az modules Azure portal Otomasyon hesabına aktarabilirsiniz. Kullanılabilir az modülle değil, yalnızca ihtiyaç duyduğunuz az modülleri içe aktarmayı unutmayın. [Az. Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) diğer az modüllerle ilgili bir bağımlılık olduğundan, bu modülü diğerlerinden önce içeri aktardığınızdan emin olun.
 
 1. Otomasyon hesabınızdan, **paylaşılan kaynaklar** altında **modüller**' i seçin.
 2. **Galeriye gözatamazsınız**' ı seçin.  
