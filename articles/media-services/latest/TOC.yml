@@ -341,13 +341,15 @@
           href: how-to-create-copyallbitratenoninterleaved-transform.md
         - name: REST ile kodlama olmadan video kopyalama
           href: how-to-create-copy-video-audio-transform.md
-        - name: İş oluşturma
+        - name: .NET ile iş oluşturma
           href: cli-create-jobs.md
         - name: Yerel dosya ve .NET ile iş girişi oluşturma
           displayName: upload
           href: job-input-from-local-file-how-to.md
         - name: Birden çok dönüşüm çıkışı olan işler
           href: job-multiple-transform-outputs.md
+        - name: .NET ile iki veya daha fazla video dosyasını birleştirmeyi
+          href: stitch-howto.md
     - name: İçerik kodlama
       items:
         - name: İş girişi olarak HTTPS

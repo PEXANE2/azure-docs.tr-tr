@@ -4,12 +4,12 @@ description: Visual Studio 'da yeni oluşturduğunuz uygulama projesi hakkında 
 ms.topic: conceptual
 ms.date: 12/21/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 59c8eb0737d2cef1c4b1df34d673b74944fef4e1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4d162918644727d4c79ad606f1ed34816f543d81
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97760444"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044388"
 ---
 # <a name="your-service-fabric-application-and-next-steps"></a>Service Fabric uygulamanız ve sonraki adımlar
 Azure Service Fabric uygulamanız oluşturuldu. Bu makalede, bir dizi kaynak, ilgilendiğiniz daha fazla bilgi ve olası [sonraki adımlar](#next-steps)yer alır.
@@ -59,7 +59,7 @@ Uygulamanız, depolama bağlantı dizeleri, parolalar veya düz metin olarak iş
 Diğer platformlarda olduğu gibi, bir Service Fabric uygulama genellikle şu aşamalardan geçer: tasarım, geliştirme, test, dağıtım, yükseltme, bakım ve kaldırma. [Bu makalede](service-fabric-application-lifecycle.md) , API 'lerin yanı sıra Service Fabric uygulama yaşam döngüsünün aşamaları boyunca farklı roller tarafından nasıl kullanıldıkları hakkında genel bakış sunulmaktadır.
 
 ## <a name="learn-about-best-practices"></a>En iyi yöntemler hakkında bilgi edinin
-Service Fabric [en iyi yöntemleri](./service-fabric-best-practices-overview.md)açıklayan birçok makaleye sahiptir. Kümenizin ve uygulamanızın çalışmasını ve mümkün olduğunca emin olmak için bu bilgilerden yararlanın.
+Service Fabric [en iyi yöntemleri](./service-fabric-best-practices-security.md)açıklayan birçok makaleye sahiptir. Kümenizin ve uygulamanızın çalışmasını ve mümkün olduğunca emin olmak için bu bilgilerden yararlanın.
 Kapsanan konular şunları içerir:
 * [Güvenlik](./service-fabric-best-practices-security.md)
 * [Ağ](./service-fabric-best-practices-networking.md)

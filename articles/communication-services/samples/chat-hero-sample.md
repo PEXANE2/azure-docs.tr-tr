@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 0eb396935b42b040ab9f152a4965922664deb451
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b5960238893ae1e4dc307db98f9dc73889a2fa5b
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103487845"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108902"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Grup sohbeti Hero örneği ile çalışmaya başlama
 
@@ -30,7 +30,7 @@ ms.locfileid: "103487845"
 > [Bu örnek GitHub ' da kullanılabilir.](https://github.com/Azure-Samples/communication-services-web-chat-hero)
 
 
-Azure Iletişim Hizmetleri **grubu sohbeti Hero örneği** , Iletişim Hizmetleri sohbet Web istemci kitaplığı 'nın bir grup çağırma deneyimi oluşturmak için nasıl kullanılabileceğini gösterir.
+Azure Iletişim Hizmetleri **grubu sohbeti Hero örneği** , Iletişim Hizmetleri sohbet web SDK 'sının bir grup çağırma deneyimi oluşturmak için nasıl kullanılabileceğini gösterir.
 
 Bu örnek hızlı başlangıçta, örneği yerel makinenizde çalıştırmadan önce örneğin nasıl çalıştığını öğreneceksiniz. Daha sonra Azure Iletişim Hizmetleri kaynaklarınızı kullanarak örneği Azure 'a dağıtırsınız.
 
@@ -111,7 +111,7 @@ Bir Iletişim Hizmetleri aboneliğini temizleyip kaldırmak istiyorsanız, kayna
 Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 - [Sohbet kavramları](../concepts/chat/concepts.md) hakkında bilgi edinin
-- [Sohbet istemci kitaplığımızı](../concepts/chat/sdk-features.md) öğrenmeye
+- [Sohbet SDK](../concepts/chat/sdk-features.md) 'umuzu öğrenmeye
 - [Contoso Med uygulama](https://github.com/Azure-Samples/communication-services-contoso-med-app) örneğini gözden geçirme
 
 ## <a name="additional-reading"></a>Ek okuma

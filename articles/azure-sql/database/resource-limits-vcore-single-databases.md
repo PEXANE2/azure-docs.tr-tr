@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/23/2021
-ms.openlocfilehash: d38dc7b2bf56ba91fcf77ebdb81836c8c398a52d
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: a3cd68b610b0e0db05f60450009bc83a80c3037b
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105023867"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107627"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Sanal çekirdek satın alma modeli kullanıldığında tek veritabanları için kaynak sınırları
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -77,7 +77,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Depolama türü|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|
 |GÇ gecikme süresi (yaklaşık)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|
 |En fazla veri ıOPS *|3200|3840|4480|5120|
-|En fazla günlük hızı (MBps)|36|36|36|36|
+|En fazla günlük hızı (MBps)|45|50|50|50|
 |Maksimum eş zamanlı çalışan (istek)|750|900|1050|1200|
 |Maks. eş zamanlı oturum|30.000|30.000|30.000|30.000|
 |Çoğaltma sayısı|1|1|1|1|
@@ -103,7 +103,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Depolama türü|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|
 |GÇ gecikme süresi (yaklaşık)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|
 |En fazla veri ıOPS *|5760|6400|7680|10240|12800|
-|En fazla günlük hızı (MBps)|36|36|36|36|36|
+|En fazla günlük hızı (MBps)|50|50|50|50|50|
 |Maksimum eş zamanlı çalışan (istek)|1350|1500|1800|2400|3000|
 |Maks. eş zamanlı oturum|30.000|30.000|30.000|30.000|30.000|
 |Çoğaltma sayısı|1|1|1|1|1|
@@ -246,7 +246,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |En fazla günlük boyutu (TB)|Sınırsız |Sınırsız |Sınırsız |Sınırsız |
 |TempDB en fazla veri boyutu (GB)|64|128|192|256|
 |Depolama türü| [1. nota](#notes) |[1. nota](#notes)|[1. nota](#notes) |[1. nota](#notes) |
-|En yüksek yerel SSD ıOPS *|8000 |16000 |24000 |32000 |
+|En yüksek yerel SSD ıOPS *|14000|28000|42000|44800|
 |En fazla günlük hızı (MBps)|100 |100 |100 |100 |
 |GÇ gecikme süresi (yaklaşık)|[2. nota](#notes)|[2. nota](#notes)|[2. nota](#notes)|[2. nota](#notes)|
 |Maksimum eş zamanlı çalışan (istek)|160|320|480|640|
@@ -308,7 +308,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Depolama türü|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|
 |GÇ gecikme süresi (yaklaşık)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)
 |En fazla veri ıOPS *|2240|2560|2880|3200|5120|7680|
-|En fazla günlük hızı (MBps)|31.5|36|36|36|36|36|
+|En fazla günlük hızı (MBps)|31.5|36|40,5|45|50|50|
 |Maksimum eş zamanlı çalışan (istek)|1400|1600|1800|2000|3200|4800|
 |Maks. eş zamanlı oturum|30.000|30.000|30.000|30.000|30.000|30.000|
 |Çoğaltma sayısı|1|1|1|1|1|1|
@@ -335,7 +335,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Depolama türü|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|
 |GÇ gecikme süresi (yaklaşık)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|
 |En fazla veri ıOPS *|640|1280|1920|2560|3200|3840|4480|
-|En fazla günlük hızı (MBps)|9|18|27|36|36|36|36|
+|En fazla günlük hızı (MBps)|9|18|27|36|45|50|50|
 |Maksimum eş zamanlı çalışan (istek)|200|400|600|800|1000|1200|1400|
 |Maks. eş zamanlı oturum|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
 |Çoğaltma sayısı|1|1|1|1|1|1|1|
@@ -360,7 +360,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Depolama türü|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|
 |GÇ gecikme süresi (yaklaşık)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|
 |En fazla veri ıOPS *|5120|5760|6400|7680|10240|12800|12800|
-|En fazla günlük hızı (MBps)|36|36|36|36|36|36|36|
+|En fazla günlük hızı (MBps)|50|50|50|50|50|50|50|
 |Maksimum eş zamanlı çalışan (istek)|1600|1800|2000|2400|3200|4000|8000|
 |Maks. eş zamanlı oturum|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
 |Çoğaltma sayısı|1|1|1|1|1|1|1|
@@ -387,7 +387,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Depolama türü|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|
 |GÇ gecikme süresi (yaklaşık)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|
 |En fazla veri ıOPS *|2560|3200|3840|4480|5120|
-|En fazla günlük hızı (MBps)|36|36|36|36|36|
+|En fazla günlük hızı (MBps)|36|45|50|50|50|
 |Maksimum eş zamanlı çalışan (istek)|400|500|600|700|800|
 |Maks. eş zamanlı oturum|800|1000|1200|1400|1600|
 |Maks. eş zamanlı oturum|30.000|30.000|30.000|30.000|30.000|
@@ -413,7 +413,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Depolama türü|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|
 |GÇ gecikme süresi (yaklaşık)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|
 |En fazla veri ıOPS *|5760|6400|7680|10240|11520|12800|
-|En fazla günlük hızı (MBps)|36|36|36|36|36|36|
+|En fazla günlük hızı (MBps)|50|50|50|50|50|50|
 |Maksimum eş zamanlı çalışan (istek)|900|1000|1200|1600|1800|3600|
 |Maks. eş zamanlı oturum|1800|2000|2400|3200|3600|7200|
 |Maks. eş zamanlı oturum|30.000|30.000|30.000|30.000|30.000|30.000|
@@ -635,7 +635,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |TempDB en fazla veri boyutu (GB)|64|128|192|256|
 |Depolama türü|Yerel SSD|Yerel SSD|Yerel SSD|Yerel SSD|
 |GÇ gecikme süresi (yaklaşık)|1-2 ms (yazma)<br>1-2 ms (okuma)|1-2 ms (yazma)<br>1-2 ms (okuma)|1-2 ms (yazma)<br>1-2 ms (okuma)|1-2 ms (yazma)<br>1-2 ms (okuma)|
-|En fazla veri ıOPS *|14000|28000|42000|56000|
+|En fazla veri ıOPS *|14000|28000|42000|44800|
 |En fazla günlük hızı (MBps)|24|48|72|96|
 |Maksimum eş zamanlı çalışan (istek)|200|400|600|800|
 |Maks. eş zamanlı oturum|200|400|600|800|

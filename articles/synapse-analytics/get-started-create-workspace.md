@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: ee8a192bcfe20c77e47ee9c89dfc3286a979e358
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 695ad1463bb207e9dd61d7b0147adbe15b44df37
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104722302"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108069"
 ---
 # <a name="creating-a-synapse-workspace"></a>SYNAPSE çalışma alanı oluşturma
 
@@ -33,24 +33,22 @@ Bu öğreticinin adımlarını tamamlayabilmeniz için, **sahip** rolü atadığ
 1. Çalışma alanı oluşturmak için **Ekle** ' yi seçin.
 
 ## <a name="basics-tab--project-details"></a>Proje ayrıntıları > temel kavramlar sekmesi
-1. **Temel bilgiler** sekmesi, **proje ayrıntıları** altında aşağıdaki alanları girin:
-      1. **Abonelik** -herhangi bir abonelik seçin.
-      2. **Kaynak grubu** -herhangi bir kaynak grubunu kullanın.
-      3. **Kaynak grubu** -bu alanı boş bırakın.
+Şu alanları doldurun:
+    1. **Abonelik** -herhangi bir abonelik seçin.
+    1. **Kaynak grubu** -herhangi bir kaynak grubunu kullanın.
+    1. **Kaynak grubu** -bu alanı boş bırakın.
 
 
 ## <a name="basics-tab--workspace-details"></a>> çalışma alanı ayrıntılarının temelleri sekmesi
-1. **Temel bilgiler** sekmesinde, **çalışma alanı ayrıntıları** altında aşağıdaki alanları girin:
-      1. **Çalışma alanı adı** -genel olarak benzersiz bir ad seçin. Bu öğreticide, **MyWorkspace** kullanacağız.
-      1. **Bölge** -herhangi bir bölgeyi seçin.
-      1. **Data Lake Storage Gen 2 ' yi seçin**
-        1. **Abonelikle** ilgili düğmeye tıklayın.
-        1. **Hesap adına** göre **Yeni oluştur** ' a tıklayın ve yeni depolama hesabını **contosogölü** veya buna benzer şekilde adlandırın.
-        1. **Dosya sistemi adına** göre, **Yeni oluştur** ' a tıklayın ve BT **kullanıcılarını** adlandırın. Bu, **Kullanıcılar** adlı bir depolama kapsayıcısı oluşturur. Çalışma alanı, bu depolama hesabını Spark tabloları ve Spark uygulama günlükleri için "birincil" depolama hesabı olarak kullanacaktır.
-        1. "Data Lake Storage 2. hesabında Depolama Blobu veri katılımcısı rolünü ata" kutusunu işaretleyin. 
+Şu alanları doldur: 1. **Çalışma alanı adı** -genel olarak benzersiz bir ad seçin. Bu öğreticide, **MyWorkspace** kullanacağız.
+1. **Bölge** -herhangi bir bölgeyi seçin.
+1. **Data Lake Storage Gen 2** ' yi seçin 1. **Abonelikle** ilgili düğmeye tıklayın.
+1. **Hesap adına** göre **Yeni oluştur** ' a tıklayın ve yeni depolama hesabını **contosogölü** veya buna benzer şekilde adlandırın.
+1. **Dosya sistemi adına** göre, **Yeni oluştur** ' a tıklayın ve BT **kullanıcılarını** adlandırın. Bu, **Kullanıcılar** adlı bir depolama kapsayıcısı oluşturur. Çalışma alanı, bu depolama hesabını Spark tabloları ve Spark uygulama günlükleri için "birincil" depolama hesabı olarak kullanacaktır.
+1. "Data Lake Storage 2. hesabında Depolama Blobu veri katılımcısı rolünü ata" kutusunu işaretleyin. 
 
-### <a name="completing-the-process"></a>İşlem Tamamlanıyor
-5. **Gözden geçir ve oluştur** > **Oluştur**'u seçin. Çalışma alanınız birkaç dakika içinde hazırlanıyor.
+## <a name="completing-the-process"></a>İşlem Tamamlanıyor
+**Gözden geçir ve oluştur** > **Oluştur**'u seçin. Çalışma alanınız birkaç dakika içinde hazırlanıyor.
 
 > [!NOTE]
 > Mevcut ayrılmış bir SQL havuzundan (eski adıyla SQL DW) çalışma alanı özelliklerini etkinleştirmek için, [ADANMıŞ SQL havuzunuz (eski ADıYLA SQL DW) için bir çalışma alanı etkinleştirme](./sql-data-warehouse/workspace-connected-create.md)bölümüne bakın.

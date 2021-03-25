@@ -1,5 +1,5 @@
 ---
-title: Özel bir uç noktaya giden trafiği incelemek için Azure Güvenlik Duvarı 'nı kullanma
+title: Azure Güvenlik Duvarı'nı kullanarak özel uç noktaya giden trafiği inceleme
 titleSuffix: Azure Private Link
 description: Azure Güvenlik Duvarı 'nı kullanarak özel bir uç noktaya giden trafiği nasıl inceleyebilirsiniz öğrenin.
 services: private-link
@@ -8,14 +8,14 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: allensu
-ms.openlocfilehash: 3ed349616ae6456913c19bb073f6e9ea28e7d549
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4fe43ec7661cfad25c48819183742c3f33951d92
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100575135"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108154"
 ---
-# <a name="use-azure-firewall-to-inspect-traffic-destined-to-a-private-endpoint"></a>Özel bir uç noktaya giden trafiği incelemek için Azure Güvenlik Duvarı 'nı kullanma
+# <a name="use-azure-firewall-to-inspect-traffic-destined-to-a-private-endpoint"></a>Azure Güvenlik Duvarı'nı kullanarak özel uç noktaya giden trafiği inceleme
 
 Azure özel uç noktası, Azure özel bağlantısı için temel yapı taşıdır. Özel uç noktalar, bir sanal ağda dağıtılan Azure kaynaklarının özel bağlantı kaynaklarıyla özel olarak iletişim kurmasına olanak tanır.
 
@@ -25,8 +25,8 @@ Azure özel uç noktası, Azure özel bağlantısı için temel yapı taşıdır
 
 Aşağıdaki sınırlamalar geçerlidir:
 
-* Ağ güvenlik grupları (NSG 'ler) özel uç noktalara uygulanmaz
-* Kullanıcı tanımlı yollar (UDR) özel uç noktalara uygulanmaz
+* Ağ güvenlik grupları (NSG), Özel uç noktalardan gelen trafik tarafından atlanır
+* Kullanıcı tanımlı yollar (UDR), Özel uç noktalardan gelen trafik tarafından atlanır
 * Tek bir yol tablosu bir alt ağa bağlanabilir
 * Yol tablosu en fazla 400 yolu destekler
 
@@ -35,7 +35,8 @@ Azure Güvenlik Duvarı şu iki kullanarak trafiği filtreler:
 * TCP ve UDP protokolleri için [ağ kurallarında FQDN](../firewall/fqdn-filtering-network-rules.md)
 * HTTP, HTTPS ve MSSQL için [uygulama kurallarında FQDN](../firewall/features.md#application-fqdn-filtering-rules) . 
 
-Özel uç noktalar üzerinden kullanıma sunulan hizmetlerin çoğu HTTPS kullanır. Azure SQL kullanılırken, ağ kuralları üzerinde uygulama kurallarının kullanılması önerilir.
+> [!IMPORTANT] 
+> Akış simetriyi sürdürmek için özel uç noktalara giden trafiği incelerken, ağ kuralları üzerinde uygulama kurallarının kullanılması önerilir. Ağ kuralları kullanılıyorsa veya Azure Güvenlik Duvarı yerine bir NVA kullanılıyorsa, Özel uç noktalara giden trafik için SNAT yapılandırılmalıdır.
 
 > [!NOTE]
 > SQL FQDN filtrelemesi yalnızca [proxy modunda](../azure-sql/database/connectivity-architecture.md#connection-policy) desteklenir (bağlantı noktası 1433). **Ara sunucu** modu, *yeniden yönlendirmeye* kıyasla daha fazla gecikme süresine neden olabilir. Azure 'da bağlanan istemciler için varsayılan olan yeniden yönlendirme modunu kullanmaya devam etmek istiyorsanız, güvenlik duvarı ağ kurallarında FQDN 'yi kullanarak erişimi filtreleyebilirsiniz.
@@ -46,12 +47,9 @@ Azure Güvenlik Duvarı şu iki kullanarak trafiği filtreler:
 
 Bu senaryo, Özel uç noktalar kullanılarak birden çok Azure hizmetine özel olarak bağlanmak için en genişletilebilir mimaridir. Özel uç noktaların dağıtıldığı ağ adresi alanına işaret eden bir yol oluşturulur. Bu yapılandırma, yönetim yükünü azaltır ve 400 rotamın sınırının üzerinde çalışmasını önler.
 
-Sanal ağlar eşlenirse, bir istemci sanal ağından Azure Güvenlik duvarına bir hub sanal ağında yapılan bağlantılar ücretlendirilir.
+Sanal ağlar eşlenirse, bir istemci sanal ağından Azure Güvenlik duvarına bir hub sanal ağında yapılan bağlantılar ücretlendirilir. Bir hub sanal ağındaki Azure Güvenlik duvarının bağlantısı, eşlenmiş bir sanal ağdaki özel uç noktalara ücretlendirilmez.
 
 Eşlenen sanal ağlarla bağlantılarla ilgili ücretler hakkında daha fazla bilgi için, [fiyatlandırma](https://azure.microsoft.com/pricing/details/private-link/) sayfasının SSS bölümüne bakın.
-
->[!NOTE]
-> Bu senaryo, uygulama kuralları yerine herhangi bir üçüncü taraf NVA veya Azure Güvenlik Duvarı ağ kuralları kullanılarak uygulanabilir.
 
 ## <a name="scenario-2-hub-and-spoke-architecture---shared-virtual-network-for-private-endpoints-and-virtual-machines"></a>Senaryo 2: hub ve bağlı bileşen mimarisi-özel uç noktalar ve sanal makineler için paylaşılan sanal ağ
 
@@ -69,21 +67,15 @@ Yönlendirme tablosunun bakımının yönetim yükü, sanal ağda hizmet sunulur
 
 Genel mimarinize bağlı olarak, 400 rota sınırının içinde çalışmak mümkündür. Mümkün olan her durumda Senaryo 1 ' i kullanmanız önerilir.
 
-Sanal ağlar eşlenirse, bir istemci sanal ağından Azure Güvenlik duvarına bir hub sanal ağında yapılan bağlantılar ücretlendirilir.
+Sanal ağlar eşlenirse, bir istemci sanal ağından Azure Güvenlik duvarına bir hub sanal ağında yapılan bağlantılar ücretlendirilir. Bir hub sanal ağındaki Azure Güvenlik duvarının bağlantısı, eşlenmiş bir sanal ağdaki özel uç noktalara ücretlendirilmez.
 
 Eşlenen sanal ağlarla bağlantılarla ilgili ücretler hakkında daha fazla bilgi için, [fiyatlandırma](https://azure.microsoft.com/pricing/details/private-link/) sayfasının SSS bölümüne bakın.
-
->[!NOTE]
-> Bu senaryo, uygulama kuralları yerine herhangi bir üçüncü taraf NVA veya Azure Güvenlik Duvarı ağ kuralları kullanılarak uygulanabilir.
 
 ## <a name="scenario-3-single-virtual-network"></a>Senaryo 3: tek sanal ağ
 
 :::image type="content" source="./media/inspect-traffic-using-azure-firewall/single-vnet.png" alt-text="Tek sanal ağ" border="true":::
 
-Uygulamayla ilgili bazı sınırlamalar vardır: hub ve bağlı bileşen mimarisine geçiş mümkün değildir. Senaryo 2 ' de ile aynı noktalar geçerlidir. Bu senaryoda, sanal ağ eşleme ücretleri uygulanmaz.
-
->[!NOTE]
-> Bu senaryoyu üçüncü taraf NVA veya Azure Güvenlik Duvarı kullanarak uygulamak istiyorsanız, Özel uç noktalara giden SNAT trafiği için uygulama kuralları yerine ağ kuralları gerekir. Aksi halde, sanal makineler ve özel uç noktalar arasındaki iletişim başarısız olur.
+Hub ve bağlı bileşen mimarisine geçiş mümkün olmadığında bu stili kullanın. Senaryo 2 ' de ile aynı noktalar geçerlidir. Bu senaryoda, sanal ağ eşleme ücretleri uygulanmaz.
 
 ## <a name="scenario-4-on-premises-traffic-to-private-endpoints"></a>Senaryo 4: özel uç noktalara şirket içi trafik
 
@@ -97,9 +89,6 @@ Bu mimari, şirket içi ağınızla bağlantı yapılandırdıysanız aşağıda
 Güvenlik gereksinimleriniz, bir güvenlik gereci aracılığıyla yönlendirilmek üzere özel uç noktalar aracılığıyla sunulan hizmetlere istemci trafiği gerektiriyorsa, bu senaryoyu dağıtın.
 
 Yukarıdaki senaryo 2 ile aynı noktalar geçerlidir. Bu senaryoda sanal ağ eşleme ücretleri yoktur. DNS sunucularınızı şirket içi iş yüklerinin özel uç noktalara erişmesine izin verecek şekilde yapılandırma hakkında daha fazla bilgi için, bkz. Şirket [içi iş yükleri BIR DNS ileticisi kullanarak](./private-endpoint-dns.md#on-premises-workloads-using-a-dns-forwarder).
-
->[!NOTE]
-> Bu senaryoyu üçüncü taraf NVA veya Azure Güvenlik Duvarı kullanarak uygulamak istiyorsanız, Özel uç noktalara giden SNAT trafiği için uygulama kuralları yerine ağ kuralları gerekir. Aksi halde, sanal makineler ve özel uç noktalar arasındaki iletişim başarısız olur.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

@@ -147,6 +147,8 @@
       href: /azure/templates/microsoft.netapp/allversions
     - name: Azure Uygulamayla Tutarlı Anlık Görüntü Aracı (AzAcSnap)
       items:
+        - name: AzAcSnap için sürüm notları
+          href: azacsnap-release-notes.md
         - name: AzAcSnap aracını kullanmaya başlama
           href: azacsnap-get-started.md
         - name: AzAcSnap aracını yükleme

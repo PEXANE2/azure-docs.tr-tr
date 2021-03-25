@@ -1,7 +1,7 @@
 ---
-title: İstemci kitaplığına genel bakış arayan Azure Iletişim Hizmetleri
+title: SDK 'ya genel bakış çağıran Azure Iletişim Hizmetleri
 titleSuffix: An Azure Communication Services concept document
-description: Çağıran istemci kitaplığına genel bir bakış sağlar.
+description: Çağıran SDK 'ya genel bakış sağlar.
 author: mikben
 manager: jken
 services: azure-communication-services
@@ -9,25 +9,25 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e154e43f9e9378d6cccd23e2e5892f2a8ccf9a1e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 39331cb83b233f6b91344e6e299ed81f187fe9d9
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104598890"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108409"
 ---
-# <a name="calling-client-library-overview"></a>Arama istemci kitaplığına genel bakış
+# <a name="calling-sdk-overview"></a>SDK 'ya genel bakış
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 
-İstemci kitaplıkları, *istemciler* ve hizmetler için iki ayrı iki farklı aileleri vardır *.* Şu anda kullanılabilir olan istemci kitaplıkları son kullanıcı deneyimleri için tasarlanmıştır: Web siteleri ve yerel uygulamalar.
+*İstemciler* ve hizmetler için SDK 'ların iki ayrı ailesi vardır *.* Şu anda kullanılabilir SDK 'lar son kullanıcı deneyimleri için tasarlanmıştır: Web siteleri ve yerel uygulamalar.
 
-Hizmet istemci kitaplıkları henüz kullanılabilir değildir ve botların ve diğer hizmetlerle tümleştirilmesine uygun ham ses ve video veri düzlemleri için erişim sağlar.
+Hizmet SDK 'Ları henüz kullanılamamaktadır ve botların ve diğer hizmetlerle tümleştirilmesine uygun ham ses ve video veri düzlemleri için erişim sağlar.
 
-## <a name="calling-client-library-capabilities"></a>İstemci kitaplığı yeteneklerini çağırma
+## <a name="calling-sdk-capabilities"></a>SDK yeteneklerini çağırma
 
-Aşağıdaki liste, şu anda istemci kitaplıklarını çağıran Azure Iletişim hizmetlerinde bulunan özellik kümesini gösterir.
+Aşağıdaki liste, şu anda SDK 'Ları çağıran Azure Iletişim hizmetlerinde kullanılabilen özellikler kümesini gösterir.
 
 | Özellik grubu | Özellik                                                                                                          | JS  | Java (Android) | Objective-C (iOS)
 | ----------------- | ------------------------------------------------------------------------------------------------------------------- | ---  | -------------- | -------------
@@ -74,7 +74,7 @@ Aşağıdaki liste, şu anda istemci kitaplıklarını çağıran Azure Iletişi
 
 
 
-## <a name="javascript-calling-client-library-support-by-os-and-browser"></a>İşletim sistemi ve tarayıcı tarafından istemci kitaplığı desteğini çağıran JavaScript
+## <a name="javascript-calling-sdk-support-by-os-and-browser"></a>OS ve tarayıcı tarafından SDK desteğini çağıran JavaScript
 
 Aşağıdaki tablo şu anda kullanılabilir olan desteklenen tarayıcıların kümesini temsil eder. Aksi belirtilmedikçe tarayıcının en son üç sürümünü destekliyoruz.
 
@@ -115,8 +115,8 @@ Uygulamanın bir parçasını farklı bir etki alanından barındırmak için bi
 <iframe allow="camera *; microphone *">
 ```
 
-## <a name="calling-client-library-streaming-support"></a>İstemci kitaplığı akış desteğini çağırma
-İstemci kitaplığını çağıran Iletişim Hizmetleri aşağıdaki akış yapılandırmasını destekler:
+## <a name="calling-sdk-streaming-support"></a>SDK akış desteğini çağırma
+SDK 'Yı çağıran Iletişim Hizmetleri aşağıdaki akış yapılandırmasını destekler:
 
 |           |Web | Android/iOS|
 |-----------|----|------------|

@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: nikuklic
-ms.openlocfilehash: 1bdbfa0966f274d6c026110d7c50bf73266b1189
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 43e3463a3284f57825073888146b38fa14cbf5d3
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "104729473"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109054"
 ---
 [!INCLUDE [Emergency Calling Notice](../../../includes/emergency-calling-notice-include.md)]
 ## <a name="prerequisites"></a>Önkoşullar
@@ -23,7 +23,7 @@ ms.locfileid: "104729473"
 ### <a name="prerequisite-check"></a>Önkoşul denetimi
 
 - Iletişim Hizmetleri kaynağınız ile ilişkili telefon numaralarını görüntülemek için [Azure Portal](https://portal.azure.com/)oturum açın, iletişim hizmetleri kaynağınızı bulun ve sol gezinti bölmesinden **telefon numaraları** sekmesini açın.
-- İOS için istemci kitaplığı 'nı çağıran Azure Iletişim Hizmetleri ile uygulamanızı oluşturabilir ve çalıştırabilirsiniz:
+- İOS için SDK 'Yı çağıran Azure Iletişim Hizmetleri ile uygulamanızı oluşturabilir ve çalıştırabilirsiniz:
 
 ## <a name="setting-up"></a>Ayarlanıyor
 

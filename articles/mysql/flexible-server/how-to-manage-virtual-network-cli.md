@@ -1,17 +1,17 @@
 ---
 title: Sanal ağları yönetme-Azure CLı-MySQL için Azure veritabanı-esnek sunucu
 description: Azure CLı kullanarak MySQL için Azure veritabanı için sanal ağlar oluşturma ve yönetme-esnek sunucu
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: a41cd2ce14ceb452d783b472955de347199d0870
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e60f9010b8fbfb3766aea6b5cffa1e7c001c6eca
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97109479"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105106750"
 ---
 # <a name="create-and-manage-virtual-networks-for-azure-database-for-mysql---flexible-server-using-the-azure-cli"></a>Azure CLı kullanarak MySQL için Azure veritabanı için sanal ağlar oluşturma ve yönetme-esnek sunucu
 

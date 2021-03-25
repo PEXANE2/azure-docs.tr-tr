@@ -8,19 +8,19 @@ ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: 65a968747e7ed12e6ee03bd5fea4b7b4af7ee10e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a861ed27414ed407d00e8e886f20fb952a8ac95e
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104729524"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109055"
 ---
 # <a name="quickstart-call-to-phone"></a>Hızlı başlangıç: telefon araması
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 
-Uygulamanıza PSTN çağrısı eklemek için istemci kitaplığı 'nı çağıran Iletişim hizmetlerini kullanarak Azure Iletişim Hizmetleri 'ni kullanmaya başlayın.
+Uygulamanıza PSTN çağrısı eklemek için SDK 'Yı çağıran Iletişim hizmetlerini kullanarak Azure Iletişim Hizmetleri 'ni kullanmaya başlayın.
 
 ::: zone pivot="platform-web"
 [!INCLUDE [Calling with JavaScript](./includes/pstn-call-js.md)]
@@ -42,5 +42,5 @@ Bir Iletişim Hizmetleri aboneliğini temizleyip kaldırmak istiyorsanız, kayna
 
 Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
-- [İstemci kitaplığı yeteneklerini çağırma](./calling-client-samples.md) hakkında bilgi edinin
+- [SDK yeteneklerini çağırma](./calling-client-samples.md) hakkında bilgi edinin
 - [Nasıl çalıştığını çağırma](../../concepts/voice-video-calling/about-call-types.md) hakkında daha fazla bilgi edinin

@@ -9,19 +9,19 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: eea54be9d159c6aacbbc24e2fe8edf874f8e2d83
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4ecc7033007361e27908e0881b80091ac660398e
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103492345"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108407"
 ---
 # <a name="voice-and-video-concepts"></a>Ses ve görüntü kavramları
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 
-Azure Iletişim Hizmetleri 'ni kullanarak bir veya daha fazla ses ve video çağrısı yapabilirsiniz. Çağrılarınız, Internet 'e bağlı diğer cihazlara ve eski telefonlar için yapılabilir. Kullanıcılarınızın özel konuşmalardaki veya grup tartışmalarında bir diğerine konuşmasını sağlayan uygulamalar oluşturmak için Iletişim Hizmetleri JavaScript, Android veya iOS istemci kitaplıklarını kullanabilirsiniz. Azure Iletişim Hizmetleri, hizmetlere veya botlara yapılan çağrıları destekler.
+Azure Iletişim Hizmetleri 'ni kullanarak bir veya daha fazla ses ve video çağrısı yapabilirsiniz. Çağrılarınız, Internet 'e bağlı diğer cihazlara ve eski telefonlar için yapılabilir. Kullanıcılarınızın özel konuşmalardaki veya grup tartışmalarında bir diğerine konuşmasını sağlayan uygulamalar oluşturmak için Iletişim Hizmetleri JavaScript, Android veya iOS SDK 'larını kullanabilirsiniz. Azure Iletişim Hizmetleri, hizmetlere veya botlara yapılan çağrıları destekler.
 
 ## <a name="call-types-in-azure-communication-services"></a>Azure Iletişim hizmetlerinde çağrı türleri
 
@@ -37,7 +37,7 @@ Kullanıcılarınızın geleneksel telefon numarası ile her etkileşim kurması
 
 ### <a name="one-to-one-call"></a>Bire bir çağrı
 
-Azure Iletişim hizmetlerinde bir bire bir çağrı, kullanıcılarınızın istemci kitaplıklarımızdan birini kullanarak başka bir kullanıcıya bağlanmasından oluşur. Çağrı, VoIP veya PSTN olabilir.
+Azure Iletişim hizmetlerinde bir bire bir çağrı, kullanıcılarınızın SDK 'lerimizden birini kullanarak başka bir kullanıcıya bağlanmasından oluşur. Çağrı, VoIP veya PSTN olabilir.
 
 ### <a name="group-call"></a>Grup çağrısı
 
@@ -61,4 +61,4 @@ Odalar, Web sitenize veya yerel uygulamanıza ses, video, ekran paylaşımı, PS
 Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 - Genel [çağrı akışları](../call-flows.md) hakkında bilgi edinin
 - [Telefon numarası türleri](../telephony-sms/plan-solution.md)
-- [Çağıran istemci kitaplığı özellikleri](../voice-video-calling/calling-sdk-features.md) hakkında bilgi edinin
+- [ÇAĞıRAN SDK özellikleri](../voice-video-calling/calling-sdk-features.md) hakkında bilgi edinin

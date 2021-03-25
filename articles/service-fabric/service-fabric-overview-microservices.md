@@ -3,12 +3,12 @@ title: Azure üzerinde mikro hizmetlere giriş
 description: Mikro hizmet yaklaşımına sahip bulut uygulamalarının neden oluşturulmasına ilişkin genel bakış, modern uygulama geliştirme ve Azure Service Fabric bunun için bir platform sağlar.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: d20e04820c87a7390d9c20e511259ee9860c27f5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 46d4be7321057bd7a5ee19e0aca136c8c60d43bc
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96575661"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044439"
 ---
 # <a name="why-use-a-microservices-approach-to-building-applications"></a>Uygulamaları oluşturmak için neden mikro hizmetler yaklaşımı kullanılmalıdır
 
@@ -194,7 +194,7 @@ Service Fabric amacı, mikro hizmet uygulamalarının oluşturulmasına ilişkin
 
 * [Mikro hizmetler: bulut tarafından desteklenen bir uygulama Devrimi](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)
 * [Azure Mimari Merkezi: Azure 'da mikro hizmetler oluşturma](/azure/architecture/microservices/)
-* [Azure Service Fabric uygulaması ve kümesi için en iyi yöntemler](service-fabric-best-practices-overview.md)
+* [Azure Service Fabric uygulaması ve kümesi için en iyi yöntemler](./service-fabric-best-practices-security.md)
 * [Service Fabric terimlere genel bakış](service-fabric-technical-overview.md)
 
 [Image1]: media/service-fabric-overview-microservices/monolithic-vs-micro.png

@@ -7,16 +7,18 @@ author: viv-liu
 ms.author: viviali
 ms.date: 10/4/2019
 ms.topic: conceptual
-ms.openlocfilehash: 191b57b08ba04844824dd5cf26875c21e494c5ef
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: dd67a4f1a005abc7319723efcc3f2944b18c4f5f
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92123346"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109242"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>Azure IoT Central verilerinizi Power BI panosunda görselleştirin ve çözümleyin
 
 *Bu konu, Yöneticiler ve çözüm geliştiricileri için geçerlidir.*
+
+[!Note] Bu çözüm [eski veri dışa aktarma özelliklerini](./howto-export-data-legacy.md)kullanır. En son veri dışa aktarma kullanarak Power BI bağlanma hakkında daha fazla yönergeler için güncel kalın.
 
 :::image type="content" source="media/howto-connect-powerbi/iot-continuous-data-export.png" alt-text="Power BI çözümü işlem hattı":::
 
@@ -27,7 +29,7 @@ IoT cihazlarınızın performansını izlemek için güçlü bir Power BI panosu
 - Belirli cihazlar tarafından gönderilen verilere filtre uygula
 - Bir tabloda en son telemetri verilerini görüntüleme
 
-Bu çözüm, [sürekli veri dışa aktarma](./howto-export-data.md) Azure Blob Storage hesabınızdan verileri okuyan bir işlem hattı oluşturur. İşlem hattı, verileri işlemek ve dönüştürmek için Azure Işlevleri, Azure Data Factory ve Azure SQL veritabanı 'nı kullanır. verileri, bir PBIX dosyası olarak yüklediğiniz bir Power BI raporunda görselleştirebilir ve çözümleyebilirsiniz. Tüm kaynaklar Azure aboneliğinizde oluşturulur, böylece her bileşeni gereksinimlerinize uyacak şekilde özelleştirebilirsiniz.
+Bu çözüm, [sürekli veri dışa aktarma](./howto-export-data-legacy.md) Azure Blob Storage hesabınızdan verileri okuyan bir işlem hattı oluşturur. İşlem hattı, verileri işlemek ve dönüştürmek için Azure Işlevleri, Azure Data Factory ve Azure SQL veritabanı 'nı kullanır. verileri, bir PBIX dosyası olarak yüklediğiniz bir Power BI raporunda görselleştirebilir ve çözümleyebilirsiniz. Tüm kaynaklar Azure aboneliğinizde oluşturulur, böylece her bileşeni gereksinimlerinize uyacak şekilde özelleştirebilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

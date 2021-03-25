@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: eaa8a4c600864f636d49813d415621d46130fff7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 78cbf94bfc19757a4264c7884c3e47b230de5e46
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100381673"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044099"
 ---
 # <a name="azure-blob-storage-output-binding-for-azure-functions"></a>Azure Işlevleri için Azure Blob depolama çıkış bağlaması
 
@@ -431,8 +431,8 @@ Blob verilerine, dosyanın _function.js_ , bağlamanın Name parametresiyle beli
 
 Blob depolamaya yazmak için aşağıdaki türler olarak işlev parametreleri bildirebilirsiniz:
 
-* Farklı dizeler `func.Out(str)`
-* Farklı akışlar `func.Out(func.InputStream)`
+* Farklı dizeler `func.Out[str]`
+* Farklı akışlar `func.Out[func.InputStream]`
 
 Ayrıntılar için [Çıkış örneğine](#example) bakın.
 

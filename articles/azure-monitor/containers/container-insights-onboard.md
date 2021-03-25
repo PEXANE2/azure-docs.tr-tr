@@ -3,12 +3,12 @@ title: Kapsayıcı öngörülerini etkinleştir | Microsoft Docs
 description: Bu makalede, kapsayıcının nasıl çalıştığını ve performansla ilgili sorunların tanımlandığını anlayabilmeniz için kapsayıcı öngörülerinin nasıl etkinleştirileceği ve yapılandırılacağı açıklanır.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 58797221fa3380e4f7533a710e2f8dc658cb676c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 01246a728f204ed9cb43eee392c637b495208aaf
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101708365"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109361"
 ---
 # <a name="enable-container-insights"></a>Kapsayıcı öngörülerini etkinleştir
 
@@ -64,6 +64,7 @@ Başlamadan önce, aşağıdaki gereksinimleri karşıladığınızdan emin olun
 - İzleme verilerini görüntülemek için, kapsayıcı öngörüleri ile yapılandırılmış Log Analytics çalışma alanında [*Log Analytics okuyucu*](../logs/manage-access.md#manage-access-using-azure-permissions) rolüne sahip olmanız gerekir.
 
 - Prometheus ölçümleri varsayılan olarak toplanmaz. Bir aracıyı ölçümleri toplayacak şekilde [yapılandırmadan](container-insights-prometheus-integration.md) önce, hangi verilerin hangi verileri desteklebileceğini ve hangi yöntemlerin desteklendiğini anlamak Için [Prometheus belgelerini](https://prometheus.io/) gözden geçirmeniz önemlidir.
+- Bir AKS kümesi aynı Azure AD kiracısında farklı bir Azure aboneliğindeki Log Analytics çalışma alanına iliştirilebilir. Bu, şu anda Azure portalı ile yapılamaz, ancak Azure CLı veya Kaynak Yöneticisi şablonuyla yapılabilir.
 
 ## <a name="supported-configurations"></a>Desteklenen yapılandırmalar
 
