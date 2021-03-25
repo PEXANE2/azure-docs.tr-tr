@@ -2,14 +2,14 @@
 title: Kaynakları yeni bir aboneliğe veya kaynak grubuna taşıma
 description: Kaynakları yeni bir kaynak grubuna veya aboneliğe taşımak için Azure Resource Manager kullanın.
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 03/23/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1dd8877324b7eb0aac3ac12e3eeadb7c75b7795e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 31710354d39c5c74fcbd3ce1bfb2917d79dfd670
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104670214"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108647"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma
 
@@ -18,6 +18,12 @@ Bu makalede, Azure kaynaklarını başka bir Azure aboneliğine veya aynı abone
 Taşıma işlemi sırasında hem kaynak grubu hem de hedef grup kilitlenir. Taşıma tamamlanana kadar kaynak gruplarında yazma ve silme işlemleri engellenir. Bu kilit, kaynak gruplarındaki kaynakları ekleyemez, güncelleştiremez veya silemezsiniz. Bu, kaynakların dondurulmuş olduğu anlamına gelmez. Örneğin, bir Azure SQL mantıksal sunucusunu ve veritabanlarını yeni bir kaynak grubuna veya aboneliğe taşırsanız veritabanlarını kullanan uygulamalar kesinti yaşmaz. Yine de veritabanlarına okuma ve yazma yapılabilir. Kilit en fazla dört saat için en fazla dört saat olabilir, ancak çoğu zaman çok daha az zaman tamamlanır.
 
 Bir kaynağı taşıdığınızda yalnızca onu yeni bir kaynak grubuna veya aboneliğe taşımış olursunuz. Bu işlem kaynağın konumunu değiştirmez.
+
+## <a name="changed-resource-id"></a>Değiştirilen kaynak KIMLIĞI
+
+Bir kaynağı taşıdığınızda, kaynak KIMLIĞINI değiştirirsiniz. Kaynak KIMLIĞI için standart biçim `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}` . Bir kaynağı yeni bir kaynak grubuna veya aboneliğe taşıdığınızda, bu yoldaki bir veya daha fazla değeri değiştirirsiniz.
+
+Kaynak KIMLIĞINI her yerde kullanırsanız, bu değeri değiştirmeniz gerekir. Örneğin, portalda bir kaynak KIMLIĞINE başvuruda bulunan [özel bir panonuz](../../azure-portal/quickstart-portal-dashboard-azure-cli.md) varsa, bu değeri güncelleştirmeniz gerekir. Yeni kaynak KIMLIĞI için güncelleştirilmeleri gereken betikleri veya şablonları arayın.
 
 ## <a name="checklist-before-moving-resources"></a>Kaynakları taşımadan önce kullanılacak kontrol listesi
 
@@ -36,7 +42,7 @@ Bir kaynağı taşımadan önce gerçekleştirmeniz gereken bazı önemli adıml
    * [Sanal makineler taşıma Kılavuzu](./move-limitations/virtual-machines-move-limitations.md)
    * Bir Azure aboneliğini yeni bir yönetim grubuna taşımak için bkz. [abonelikleri taşıma](../../governance/management-groups/manage.md#move-subscriptions).
 
-1. Doğrudan kaynağa (veya bir alt kaynağa) atanmış bir Azure rolü olan bir kaynağı taşırsanız, rol ataması taşınmaz ve yalnız bırakılmış olur. Taşıma işleminden sonra, rol atamasını yeniden oluşturmanız gerekir. Sonuç olarak, yalnız bırakılmış rol ataması otomatik olarak kaldırılır, ancak kaynak taşınmadan önce rol atamasını kaldırmak en iyi uygulamadır.
+1. Doğrudan kaynağa (veya bir alt kaynağa) atanmış bir Azure rolü olan bir kaynağı taşırsanız, rol ataması taşınmaz ve yalnız bırakılmış olur. Taşıma işleminden sonra, rol atamasını yeniden oluşturmanız gerekir. Sonuç olarak, yalnız bırakılmış rol ataması otomatik olarak kaldırılır, ancak taşımadan önce rol atamasını kaldırmanızı öneririz.
 
     Rol atamalarının nasıl yönetileceği hakkında daha fazla bilgi için bkz. [Azure rol atamalarını listeleme](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope) ve [Azure rolleri atama](../../role-based-access-control/role-assignments-portal.md).
 
@@ -260,7 +266,7 @@ Bir kaynağın taşınması, farklı aşamalara sahip karmaşık bir işlemdir. 
 
 **Soru: kaynak grupum neden kaynak taşıma sırasında dört saat boyunca kilitlidir?**
 
-Taşıma isteğine en fazla dört saat tamamlanmak için izin verilir. Taşınan kaynaklarda değişiklik yapılmasını engellemek için kaynak ve hedef kaynak gruplarının her ikisi de kaynak taşıma süresince kilitlenir.
+Taşıma isteğine en fazla dört saat tamamlanmak için izin verilir. Taşınan kaynaklarda değişiklik yapılmasını engellemek için kaynak ve hedef kaynak gruplarının her ikisi de kaynak taşıma sırasında kilitlenir.
 
 Taşıma isteğinde iki aşama vardır. İlk aşamada kaynak taşınır. İkinci aşamada, bildirimler, taşınan kaynağa bağımlı diğer kaynak sağlayıcılarına gönderilir. Bir kaynak sağlayıcısı her iki aşamada de başarısız olursa, kaynak grubu dört saatin tamamı için kilitlenebilir. İzin verilen süre boyunca başarısız olan adımı yeniden dener Kaynak Yöneticisi.
 

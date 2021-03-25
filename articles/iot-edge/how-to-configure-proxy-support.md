@@ -10,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - contperf-fy21q1
-ms.openlocfilehash: 888761bb976b9d7a87211a77cb6504a44f108bbd
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9f2ca089a6d885227bd61940d71ec7bb7960fbd6
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103200050"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043164"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>IoT Edge cihazını ara sunucu üzerinden iletişim kuracak şekilde yapılandırma
 
@@ -69,7 +69,11 @@ IoT Edge cihazınızın Windows veya Linux üzerinde çalışıp çalışmadığ
 
 IoT Edge çalışma zamanını bir Linux cihazına yüklüyorsanız, paket yöneticisini, yükleme paketine erişmek için proxy sunucunuzun üzerinden gezinmek üzere yapılandırın. Örneğin, [bir http-proxy kullanmak için apt-get](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy)' i ayarlayın. Paket yöneticiniz yapılandırıldıktan sonra her zamanki gibi [Azure IoT Edge çalışma zamanını Install](how-to-install-iot-edge.md) ' daki yönergeleri izleyin.
 
-### <a name="windows-devices"></a>Windows cihazları
+### <a name="windows-devices-using-iot-edge-for-linux-on-windows"></a>Windows 'da Linux için IoT Edge kullanan Windows cihazları
+
+Windows üzerinde Linux için IoT Edge kullanarak IoT Edge çalışma zamanını yüklüyorsanız, Linux sanal makinenizde varsayılan olarak IoT Edge yüklenir. Ek yükleme veya güncelleştirme adımı gerekmez.
+
+### <a name="windows-devices-using-windows-containers"></a>Windows kapsayıcıları kullanan Windows cihazları
 
 IoT Edge çalışma zamanını bir Windows cihazına yüklüyorsanız, proxy sunucusu üzerinden iki kez gitmeniz gerekir. İlk bağlantı yükleyici betik dosyasını indirir ve ikinci bağlantı yükleme sırasında gerekli bileşenleri indirmek için kullanılır. Windows ayarları 'nda ara sunucu bilgilerini yapılandırabilir veya proxy bilgilerinizi doğrudan PowerShell komutlarına dahil edebilirsiniz.
 
@@ -206,7 +210,17 @@ systemctl show --property=Environment aziot-identityd
 :::moniker-end
 <!--end 1.2-->
 
-#### <a name="windows"></a>Windows
+#### <a name="windows-using-iot-edge-for-linux-on-windows"></a>Windows 'da Linux için IoT Edge kullanan Windows
+
+Windows sanal makinesinde Linux için IoT Edge oturum açın:
+
+```azurepowershell-interactive
+Ssh-EflowVm
+```
+
+IoT Edge Daemon 'ı yapılandırmak için yukarıdaki Linux bölümüyle aynı adımları izleyin.
+
+#### <a name="windows-using-windows-containers"></a>Windows kapsayıcıları kullanan pencereler
 
 Yönetici olarak bir PowerShell penceresi açın ve yeni ortam değişkeniyle kayıt defterini düzenlemek için aşağıdaki komutu çalıştırın. **\<proxy url>** Ara sunucu adresiniz ve bağlantı noktasıyla değiştirin.
 
@@ -249,13 +263,13 @@ Bu adım ilk cihaz kurulumu sırasında IoT Edge cihaza bir kez gerçekleşir.
 
 5. Config. YAML içindeki değişiklikleri kaydedin ve düzenleyiciyi kapatın. Değişikliklerin etkili olması için IoT Edge yeniden başlatın.
 
-   * Linux:
+   * Linux ve Windows üzerinde Linux için IoT Edge:
 
       ```bash
       sudo systemctl restart iotedge
       ```
 
-   * Windows:
+   * Windows kapsayıcıları kullanan pencereler:
 
       ```powershell
       Restart-Service iotedge
