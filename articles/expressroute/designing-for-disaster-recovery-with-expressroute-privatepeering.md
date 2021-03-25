@@ -5,20 +5,20 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: article
-ms.date: 05/25/2019
+ms.date: 03/22/2021
 ms.author: duau
-ms.openlocfilehash: 2a5730cd75ccb76d25897e9109555113f7355c2f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8b1691dc7358c03b924d710684ecd73841b4832d
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92202422"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044609"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>ExpressRoute özel eşlemesi ile olağanüstü durum kurtarma için tasarlama
 
 ExpressRoute, Microsoft kaynaklarına yönelik taşıyıcı sınıfı özel ağ bağlantısı sağlamak için yüksek kullanılabilirlik için tasarlanmıştır. Diğer bir deyişle, Microsoft ağı içindeki ExpressRoute yolunda tek bir hata noktası yoktur. ExpressRoute devresinin kullanılabilirliğini en üst düzeye çıkarmak için tasarım konuları için bkz. [ExpressRoute ile yüksek kullanılabilirlik Için tasarlama][HA].
 
-Bununla birlikte, Murphy 'in popüler AdAge 'yi almak *için bir şey yanlış gidecekse*, bu makalede tek bir ExpressRoute bağlantı hattı kullanılarak ele alınan hatalardan çok daha fazla geçen çözümlere odaklanalım. Bu makalede, diğer bir deyişle, coğrafi olarak yedekli ExpressRoute devreleri kullanarak olağanüstü durum kurtarma için sağlam arka uç ağ bağlantısı oluşturmaya yönelik ağ mimarisi konularına bakmamıza izin verir.
+Bununla birlikte, Murphy 'in popüler AdAge 'yi almak *için bir şey yanlış gidecekse*, bu makalede tek bir ExpressRoute bağlantı hattı kullanılarak ele alınan hatalardan çok daha fazla geçen çözümlere odaklanalım. Coğrafi olarak yedekli ExpressRoute devreleri kullanarak olağanüstü durum kurtarma için sağlam arka uç ağ bağlantısı oluşturmaya yönelik ağ mimarisi konularına bakacağız.
 
 >[!NOTE]
 >Bu makalede açıklanan kavramlar, sanal WAN veya bunun dışında bir ExpressRoute bağlantı hattı oluşturulduğunda geçerlidir.
@@ -26,9 +26,9 @@ Bununla birlikte, Murphy 'in popüler AdAge 'yi almak *için bir şey yanlış g
 
 ## <a name="need-for-redundant-connectivity-solution"></a>Yedekli bağlantı çözümü gerekiyor
 
-Bölgesel bir hizmetin tamamının (Microsoft, ağ hizmeti sağlayıcıları, müşteri veya diğer bulut hizmeti sağlayıcılarının) düştüğü durumlar ve örnekler vardır. Bu bölgesel çapta hizmet etkisinin temel nedeni, doğal Calamity içerir. Bu nedenle, iş sürekliliği ve görev açısından kritik uygulamalar için olağanüstü durum kurtarma planlamanız önemlidir.   
+Bölgesel bir hizmetin tamamının (Microsoft, ağ hizmeti sağlayıcıları, müşteri veya diğer bulut hizmeti sağlayıcılarının) düştüğü durumlar ve örnekler vardır. Bu bölgesel çapta hizmet etkisinin temel nedeni, doğal Calamity içerir. İşte bu nedenle, iş sürekliliği ve görev açısından kritik uygulamalar için olağanüstü durum kurtarma planlamanız önemlidir.   
 
-Görev açısından kritik uygulamalarınızı bir Azure bölgesinde veya şirket içinde ya da başka herhangi bir yerde çalıştırıp çalıştırmadığına bakılmaksızın, yük devretme siteniz olarak başka bir Azure bölgesi de kullanabilirsiniz. Aşağıdaki makalelerde uygulamalardan ve ön uç erişim perspektiflerinden olağanüstü durum kurtarma ele alınmaktadır:
+Görev açısından kritik uygulamalarınızı bir Azure bölgesinde veya şirket içinde ya da başka bir yerde çalıştırıp çalıştırmadığına bakılmaksızın, yük devretme siteniz olarak başka bir Azure bölgesi kullanabilirsiniz. Aşağıdaki makalelerde uygulamalardan ve ön uç erişim perspektiflerinden olağanüstü durum kurtarma ele alınmaktadır:
 
 - [Kurumsal ölçekte olağanüstü durum kurtarma][Enterprise DR]
 - [Azure Site Recovery ile SMB olağanüstü durum kurtarma][SMB DR]
@@ -37,9 +37,19 @@ Görev açısından kritik uygulamalarınızı bir Azure bölgesinde veya şirke
 
 ## <a name="challenges-of-using-multiple-expressroute-circuits"></a>Birden çok ExpressRoute devreleri kullanma sorunları
 
-Birden fazla bağlantı kullanarak aynı ağ kümesini birbirine gönderdiğinizde, ağlar arasında paralel yollar ortaya çıkarabilir. Paralel yollar düzgün şekilde uygun olmadığında, asymmetrik yönlendirmeye yol açabilir. Yolda durum bilgisi olan varlıklara (örneğin NAT, güvenlik duvarı) sahipseniz, asymmetrik yönlendirme trafik akışını engelleyebilir.  Genellikle, ExpressRoute özel eşleme yolu üzerinden NAT veya güvenlik duvarları gibi durum bilgisi olan varlıkların üzerinden gelmezsiniz. Bu nedenle, ExpressRoute özel eşlemesi üzerinden asymmetrik yönlendirme trafik akışını engellemez.
+Birden fazla bağlantı kullanarak aynı ağ kümesini birbirine gönderdiğinizde, ağlar arasında paralel yollar ortaya çıkarabilir. Paralel yollar düzgün şekilde uygun olmadığında, asymmetrik yönlendirmeye yol açabilir. Yolda durum bilgisi olan varlıklara (örneğin NAT, güvenlik duvarı) sahipseniz, asymmetrik yönlendirme trafik akışını engelleyebilir.  Genellikle, ExpressRoute özel eşleme yolu üzerinden NAT veya güvenlik duvarları gibi durum bilgisi olan varlıkların üzerinden gelmezsiniz. Bu nedenle, ExpressRoute özel eşlemesi üzerinden asimetrik yönlendirmenin trafik akışını engellemesi gerekmez.
  
-Bununla birlikte, coğrafi olarak yedekli paralel yollar arasında trafiği dengeleyebiliyorsanız, durum bilgisi olan varlıklara sahip olup olmadıklarına bakılmaksızın tutarsız ağ performansı yaşayabilirsiniz. Bu makalede, bu zorluk sorunlarını nasıl ele vertiğimizden bahsedelim.
+Bununla birlikte, coğrafi olarak yedekli paralel yollar arasında trafiği dengeleyebiliyorsanız, durum bilgisi olan varlıklara sahip olup olmamasına bakılmaksızın tutarsız ağ performansı yaşayabilirsiniz. Bu coğrafi olarak yedekli paralel yollar, [konuma göre sağlayıcılar](expressroute-locations-providers.md#partners) sayfasında bulunan aynı metro veya farklı metro ile olabilir. 
+
+### <a name="same-metro"></a>Aynı metro
+
+Aynı metro 'yı kullanırken, bu yapılandırmanın çalışması için ikinci yolun ikincil konumunu kullanmanız gerekir. Aynı metro ile bir örnek, *Amsterdam* ve *Amsterdam2* olacaktır. Aynı metro 'yı seçmenin avantajı, uygulama yük devretmesinin ne zaman, şirket içi uygulamalarınız arasında uçtan uca gecikme süresinin ve Microsoft 'un aynı kalmasını sağlar. Ancak, doğal bir olağanüstü durum varsa her iki yol için de bağlantı kullanılamaz. 
+
+### <a name="different-metros"></a>Farklı Metros
+
+Standart SKU devreleri için farklı Metros kullanıldığında, ikincil konum aynı [coğrafi politik bölgede](expressroute-locations-providers.md#locations)olmalıdır. Coğrafi politik bölgenin dışında bir konum seçmek için, paralel yollarda her iki devrede Premium SKU kullanmanız gerekir. Bu yapılandırmanın avantajı doğal bir olağanüstü durum olma ihtimaline yol açar, ancak her iki bağlantı da kesintiye neden olur ancak gecikme süresi uçtan uca artar.
+
+Bu makalede, coğrafi olarak yedekli yolları yapılandırırken karşılaşabileceğiniz sorunları nasıl ele vertiğimizden bahsedelim.
 
 ## <a name="small-to-medium-on-premises-network-considerations"></a>Küçük ve orta ölçekli şirket içi ağ konuları
 
@@ -100,13 +110,13 @@ Azure 'u başka bir şekilde kullanarak ExpressRoute 'tan birini tercih edebilir
 
 ## <a name="large-distributed-enterprise-network"></a>Büyük dağıtılmış kurumsal ağ
 
-Büyük bir dağıtılmış kurumsal ağınız olduğunda, muhtemelen birden fazla ExpressRoute devreniz vardır. Bu bölümde, etkin-etkin ExpressRoute devreleri kullanarak olağanüstü durum kurtarmanın nasıl tasarlanacağını, ek tek başına devrelere gerek duymadan görelim. 
+Büyük bir dağıtılmış kurumsal ağınız olduğunda, muhtemelen birden fazla ExpressRoute devreniz vardır. Bu bölümde, etkin-etkin ExpressRoute devreleri kullanarak, başka bir bağımsız devrelere gerek duymadan olağanüstü durum kurtarma tasarlamayı görelim. 
 
 Aşağıdaki diyagramda gösterilen örneği ele alalım. Örnekte, contoso iki farklı eşleme konumunda ExpressRoute devreleri aracılığıyla iki farklı Azure bölgesinde iki adet contoso IaaS dağıtımına bağlı iki şirket içi konum vardır. 
 
 [![inç]][6]
 
-Olağanüstü durum kurtarmanın nasıl mimarilerimiz, çapraz konuma çapraz konum (region1/Region2 to Location2/location1) trafiğinin nasıl yönlendirildiğini etkiler. Çapraz bölge konumu trafiğini farklı yollarla yönlendiren iki farklı olağanüstü durum mimarilerine göz atalım.
+Olağanüstü durum kurtarma 'nın nasıl mimarilerimiz, çapraz-bölgesel konuma (region1/Region2 to Location2/location1) trafiğinin nasıl yönlendirildiğini etkiler. Çapraz bölge konumu trafiğini farklı yollarla yönlendiren iki farklı olağanüstü durum mimarilerine göz atalım.
 
 ### <a name="scenario-1"></a>1\. Senaryo
 

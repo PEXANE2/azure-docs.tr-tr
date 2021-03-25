@@ -9,16 +9,16 @@ ms.author: mariusu
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 824fd19e8acfed75ab3d64048a00f579b70286d2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 0f456581e14f17b0ea3ebbd54d0768d419e800b3
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103496244"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110653"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>Web 'i çağıran örnekle çalışmaya başlama
 
-Web çağıran örnek, Iletişim Hizmetleri Web 'i çağıran istemci kitaplığı tarafından sunulan çeşitli yeteneklere adım adım yönergeler olarak hizmet veren bir Web uygulamasıdır.
+Web çağırma örneği, Iletişim Hizmetleri Web 'in çağrı yapan SDK tarafından sunulan çeşitli yeteneklere adım adım yönergeler olarak hizmet veren bir Web uygulamasıdır.
 
 Bu örnek, geliştiriciler için oluşturulmuştur ve Iletişim Hizmetleri 'ni kullanmaya başlamanıza çok daha kolay hale gelir. Kullanıcı arabirimi, her biri bir "kodu göster" düğmesine sahip olan birden fazla bölüme ayrılmıştır ve bu, kodu doğrudan tarayıcınızdan kendi Iletişim Hizmetleri uygulamanıza kopyalamanızı sağlar.
 
@@ -86,7 +86,7 @@ Bu örnek, aşağıdaki yetenekler için de kod parçacıkları sağlar:
 
 Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
-- [Çağıran istemci kitaplığını kullanma](../quickstarts/voice-video-calling/calling-client-samples.md) hakkında bilgi edinin
+- [Çağıran SDK 'yı kullanma](../quickstarts/voice-video-calling/calling-client-samples.md) hakkında bilgi edinin
 - [Nasıl çalıştığını çağırma](../concepts/voice-video-calling/about-call-types.md) hakkında daha fazla bilgi edinin
 - [API başvuru belgelerini](/javascript/api/azure-communication-services/@azure/communication-calling/) gözden geçirme
 - [Contoso Med uygulama](https://github.com/Azure-Samples/communication-services-contoso-med-app) örneğini gözden geçirme

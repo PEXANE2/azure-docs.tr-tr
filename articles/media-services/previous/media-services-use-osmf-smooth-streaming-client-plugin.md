@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 3/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b0969ffae7963d6a5f9ac249e43750444ab11baa
-ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
+ms.openlocfilehash: e41e33b5f30cd861ae8715e0ad7f6694f8854198
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "105036059"
+ms.locfileid: "105046955"
 ---
 # <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>Adobe açık kaynak medya çerçevesi için Microsoft Kesintisiz Akış eklentisini kullanma
 
@@ -34,7 +34,7 @@ OSMF için SS, eklentinin iki sürümünü içerir:
 * OSMF (. SWC) için statik Kesintisiz Akış eklentisi
 * OSMF için dinamik Kesintisiz Akış eklentisi (. swf)
 
-Bu belge, okuyucunun OSMF ve OSMF eklentileriyle ilgili genel çalışma bilgisine sahip olduğunu varsayar. OSMF hakkında daha fazla bilgi için lütfen [RESMI OSMF sitesindeki](http://osmf.org/)belgelere bakın.
+Bu belge, okuyucunun OSMF ve OSMF eklentileriyle ilgili genel çalışma bilgisine sahip olduğunu varsayar. OSMF hakkında daha fazla bilgi için lütfen resmi OSMF sitesindeki belgelere bakın.
 
 ### <a name="smooth-streaming-plugin-for-osmf-20"></a>OSMF 2,0 için Kesintisiz Akış eklentisi
 Eklenti, isteğe bağlı Kesintisiz Akış içeriğini aşağıdaki özelliklerle yüklemeyi ve kayıttan yürütmeyi destekler:
@@ -62,7 +62,7 @@ OSMF eklentileri statik olarak (derleme zamanında) veya dinamik olarak (çalı�
 Statik ve dinamik yükleme hakkında daha fazla bilgi için bkz. resmi [OSMF eklentisi sayfası](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/IZUHPINFO_PluginsPlanning.htm).
 
 ### <a name="ss-for-osmf-static-loading"></a>OSMF statik yükleme için SS
-Aşağıdaki kod parçacığı, OSMF için SS eklentisinin statik olarak nasıl yükleneceğini ve OSMF MediaFactory sınıfını kullanarak temel bir video oynamasını göstermektedir. OSMF koduna yönelik SS 'yi eklemeden önce lütfen proje başvurusunun "MSAdaptiveStreamingPlugin-v 1.0.3-OSMF 2.0. SWC" statik eklentisini içerdiğinden emin olun.
+Aşağıdaki kod parçacığı, OSMF için SS eklentisinin statik olarak nasıl yükleneceğini ve OSMF MediaFactory sınıfını kullanarak temel bir video oynamasını göstermektedir. OSMF koduna yönelik SS 'yi eklemeden önce lütfen proje başvurusunun "MSAdaptiveStreamingPlugin-v 1.0.3-OSMF 2.0. SWC" statik eklentisini içerdiğinden emin olun. 
 
 ```csharp
 package 
@@ -337,7 +337,7 @@ package
 ## <a name="strobe-media--playback-with-the-ss-odmf-dynamic-plugin"></a>SS ODMF Dynamic eklentisi ile medya kayıttan yürütme
 OSMF dinamik eklentisi için Kesintisiz Akış, STO [medya kayıttan yürütme (SMP)](https://sourceforge.net/adobe/smp/home/Strobe%20Media%20Playback/)ile uyumludur. SMP 'e Kesintisiz Akış içerik yürütme eklemek için OSMF eklentisi için SS kullanabilirsiniz. Bunu yapmak için, aşağıdaki adımları kullanarak HTTP yükü için bir Web sunucusu altına "MSAdaptiveStreamingPlugin-v 1.0.3-OSMF 2.0. swf" öğesini kopyalayın:
 
-1. [Stroz medya kayıttan yürütme kurulum sayfasına](http://osmf.org/dev/2.0gm/setup.html)gözatamazsınız. 
+1. [Stroz medya kayıttan yürütme kurulum sayfasına](http://www.koopman.me/bob3/setup.html)gözatamazsınız. 
 2. Src 'yi bir Kesintisiz Akış kaynağına ayarlayın (örn. http: \/ /devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest) 
 3. İstenen yapılandırma değişikliklerini yapın ve önizleme ve güncelleştirme ' ye tıklayın.
    
@@ -394,7 +394,7 @@ OSMF dinamik eklentisi için Kesintisiz Akış, STO [medya kayıttan yürütme (
 2. HTML sayfanızı kaydedin ve bir Web sunucusuna yayımlayın. En sevdiğiniz Flash &reg; Player etkin Internet tarayıcısını (Internet Explorer, Chrome, Firefox vb.) kullanarak yayınlanan web sayfasına gidin.
 3. Adobe Flash Player içindeki Kesintisiz Akış içeriğin keyfini çıkarın &reg; &reg; .
 
-Genel OSMF geliştirme hakkında daha fazla bilgi için lütfen resmi [OSMF geliştirme sayfasına](http://osmf.org/resources.html)bakın.
+Genel OSMF geliştirme hakkında daha fazla bilgi için lütfen resmi [OSMF geliştirme sayfasına](https://www.adobe.com/devnet/video/articles1/osmf_overview.html)bakın.
 
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

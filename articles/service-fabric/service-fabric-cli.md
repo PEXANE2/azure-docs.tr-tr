@@ -5,12 +5,12 @@ author: jeffj6123
 ms.topic: conceptual
 ms.date: 5/19/2020
 ms.author: jejarry
-ms.openlocfilehash: a1b0598f34fe894e078dc647149cff4ac74e1fea
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: ff322cb3633616e9004bc8fa25b048b6f1263008
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104802157"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046343"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI'sı
 
@@ -58,11 +58,11 @@ pip ve Python'u platformunuza yüklemek için kullanabileceğiniz birçok yol va
 
 Windows 10, Windows Server 2016 ve Windows Server 2012 R2 için standart resmi yükleme talimatlarını kullanın. Python yükleyici pip'i de varsayılan olarak yükler.
 
-1. Resmi [Python İndirmeleri sayfasına](https://www.python.org/downloads/)gidin ve Python 3,7 ' un en son sürümünü indirin.
+1. Resmi [Python İndirmeleri sayfasına](https://www.python.org/downloads/)gidin ve Python 3. x ' in en son sürümünü indirin.
 
 2. Yükleyiciyi başlatın.
 
-3. İsteminin en altında, **yola Python 3,7 Ekle**' yi seçin.
+3. İsteminin en altında, **Python 3. x ' e yol Ekle**' yi seçin.
 
 4. **Şimdi Yükle**'yi seçin ve yüklemeyi tamamlayın.
 
@@ -118,8 +118,8 @@ sudo pip3 install sfctl
 Red Hat 'te CLı Service Fabric yüklemek için aşağıdaki komutları çalıştırın:
 
 ```bash
-sudo yum install -y python34
-sudo yum install python34-setuptools
+sudo yum install -y python38
+sudo yum install python38-setuptools
 sudo easy_install-3.4 pip
 sudo pip3 install sfctl
 ```
@@ -135,7 +135,7 @@ MacOS için [HomeBrew paket yöneticisini](https://brew.sh) kullanmanızı öner
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-Bundan sonra terminalden aşağıdaki komutları çalıştırarak Python 3,7, PIP ve Service Fabric CLı 'yi çalıştırın:
+Ardından terminalden aşağıdaki komutları çalıştırarak, en son Python 3. x, PIP ve Service Fabric CLı sürümünü yüklemelisiniz:
 
 ```bash
 brew install python3

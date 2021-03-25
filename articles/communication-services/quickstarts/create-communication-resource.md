@@ -10,21 +10,21 @@ ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-azp-net
-ms.openlocfilehash: ffb40d7fb45f43349004fc4d18e7582aa3521185
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 91383ecba119959213804e0432f612c3f1ff636c
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495921"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110908"
 ---
 # <a name="quickstart-create-and-manage-communication-services-resources"></a>Hızlı başlangıç: Iletişim Hizmetleri kaynaklarını oluşturma ve yönetme
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
-İlk Iletişim Hizmetleri kaynağınızı sağlayarak Azure Iletişim Hizmetleri ile çalışmaya başlayın. İletişim Hizmetleri kaynakları, [Azure Portal](https://portal.azure.com) veya .net Management istemci kitaplığı ile sağlanabilir. Yönetim istemci kitaplığı ve Azure portal, Azure 'un dağıtım ve yönetim hizmeti [Azure Resource Manager](../../azure-resource-manager/management/overview.md), kaynaklarınızı ve arabirimlerinizi oluşturmanıza, yapılandırmanıza, güncelleştirmenize ve silmesine izin verir. İstemci kitaplıklarında bulunan tüm işlevler Azure portal kullanılabilir. 
+İlk Iletişim Hizmetleri kaynağınızı sağlayarak Azure Iletişim Hizmetleri ile çalışmaya başlayın. İletişim Hizmetleri kaynakları, [Azure Portal](https://portal.azure.com) veya .NET Yönetim SDK 'sı ile sağlanabilir. Yönetim SDK 'Sı ve Azure portal, Azure 'un dağıtım ve yönetim hizmeti [Azure Resource Manager](../../azure-resource-manager/management/overview.md), kaynaklarınızı ve arabirimlerinizi oluşturmanıza, yapılandırmanıza, güncelleştirmenize ve silmesine izin verir. SDK 'larda kullanılabilen tüm işlevler Azure portal kullanılabilir. 
 
 
-İlk Iletişim Hizmetleri kaynağınızı sağlayarak Azure Iletişim Hizmetleri ile çalışmaya başlayın. İletişim Hizmetleri kaynakları, [Azure Portal](https://portal.azure.com) veya .net Management istemci kitaplığı ile sağlanabilir. Yönetim istemci kitaplığı ve Azure portal, Azure 'un dağıtım ve yönetim hizmeti [Azure Resource Manager](../../azure-resource-manager/management/overview.md), kaynaklarınızı ve arabirimlerinizi oluşturmanıza, yapılandırmanıza, güncelleştirmenize ve silmesine izin verir. İstemci kitaplıklarında bulunan tüm işlevler Azure portal kullanılabilir.
+İlk Iletişim Hizmetleri kaynağınızı sağlayarak Azure Iletişim Hizmetleri ile çalışmaya başlayın. İletişim Hizmetleri kaynakları, [Azure Portal](https://portal.azure.com) veya .NET Yönetim SDK 'sı ile sağlanabilir. Yönetim SDK 'Sı ve Azure portal, Azure 'un dağıtım ve yönetim hizmeti [Azure Resource Manager](../../azure-resource-manager/management/overview.md), kaynaklarınızı ve arabirimlerinizi oluşturmanıza, yapılandırmanıza, güncelleştirmenize ve silmesine izin verir. SDK 'larda kullanılabilen tüm işlevler Azure portal kullanılabilir.
 
 > [!WARNING]
 > Iletişim Hizmetleri birden çok coğrafi konumda kullanıma sunulurken, bir telefon numarası alabilmek için kaynağın bir veri konumunun ' US ' olarak ayarlanmış olması gerekir. Ayrıca, genel önizleme sırasında iletişim kaynaklarının farklı bir aboneliğe aktarılamayacağını unutmayın.
@@ -43,9 +43,9 @@ ms.locfileid: "103495921"
 
 ## <a name="access-your-connection-strings-and-service-endpoints"></a>Bağlantı Dizeleriniz ve hizmet uç noktalarınıza erişin
 
-Bağlantı dizeleri Iletişim Hizmetleri istemci kitaplıklarının Azure 'a bağlanmasına ve kimlik doğrulamasından geçmesini sağlar. Iletişim Hizmetleri bağlantı Dizeleriniz ve hizmet uç noktalarınıza Azure portal veya program aracılığıyla Azure Resource Manager API 'lerle erişebilirsiniz.
+Bağlantı dizeleri Iletişim Hizmetleri SDK 'larının Azure 'a bağlanmasına ve kimlik doğrulamasından geçmesini sağlar. Iletişim Hizmetleri bağlantı Dizeleriniz ve hizmet uç noktalarınıza Azure portal veya program aracılığıyla Azure Resource Manager API 'lerle erişebilirsiniz.
 
-Iletişim Hizmetleri kaynağınız üzerinde gezindikten sonra, gezinti menüsünden **anahtarlar** ' ı seçin ve iletişim hizmeti istemci kitaplıklarının kullanımı için **bağlantı dizesini** veya **uç nokta** değerlerini kopyalayın. Birincil ve ikincil anahtarlara erişiminizin olduğunu unutmayın. Bu, Iletişim Hizmetleri kaynaklarınıza üçüncü tarafa veya hazırlama ortamına geçici erişim sağlamak istediğiniz senaryolarda yararlı olabilir.
+Iletişim Hizmetleri kaynağınız üzerinde gezindikten sonra, gezinti menüsünden **anahtarlar** ' ı seçin ve Iletişim hizmeti SDK 'ları tarafından kullanım için **bağlantı dizesini** veya **uç nokta** değerlerini kopyalayın. Birincil ve ikincil anahtarlara erişiminizin olduğunu unutmayın. Bu, Iletişim Hizmetleri kaynaklarınıza üçüncü tarafa veya hazırlama ortamına geçici erişim sağlamak istediğiniz senaryolarda yararlı olabilir.
 
 :::image type="content" source="./media/key.png" alt-text="Iletişim Hizmetleri anahtar sayfasının ekran görüntüsü.":::
 
@@ -59,7 +59,7 @@ az communication list-key --name "<communicationName>" --resource-group "<resour
 
 ## <a name="store-your-connection-string"></a>Bağlantı dizenizi depolayın
 
-İletişim Hizmetleri istemci kitaplıkları Iletişim hizmetlerine yapılan istekleri yetkilendirmek için bağlantı dizelerini kullanır. Bağlantı dizenizi depolamak için çeşitli seçenekleriniz vardır:
+İletişim Hizmetleri SDK 'Ları Iletişim hizmetlerine yapılan istekleri yetkilendirmek için bağlantı dizelerini kullanır. Bağlantı dizenizi depolamak için çeşitli seçenekleriniz vardır:
 
 * Masaüstünde veya cihazda çalışan bir uygulama, bağlantı dizesini bir **app.config** veya **web.config** dosyasında saklayabilir. Bağlantı dizesini bu dosyalardaki **appSettings** bölümüne ekleyin.
 * Azure App Service çalışan bir uygulama, bağlantı dizesini [App Service uygulama ayarlarında](../../app-service/configure-common.md)saklayabilir. Bağlantı dizesini Portal içindeki uygulama ayarları sekmesinin **bağlantı dizeleri** bölümüne ekleyin.

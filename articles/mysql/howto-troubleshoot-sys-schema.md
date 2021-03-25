@@ -6,14 +6,15 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/30/2020
-ms.openlocfilehash: a20510ee2800a54f9a51a2f498ee8ae8a3e51d55
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 939d9f5f4cafc7a08ceb99368e8ede7a81b1eac0
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94543158"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110534"
 ---
 # <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda performans ayarlama ve veritabanı bakımı için sys_schema kullanma
+[!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
 
 MySQL 5,5 ' de bulunan MySQL performance_schema, bellek ayırma, saklı programlar, meta veri kilitleme vb. gibi birçok önemli sunucu kaynağı için izleme sağlar. Ancak, performance_schema 80 'den fazla tablo içerir ve gerekli bilgilerin alınması genellikle performance_schema içindeki tabloların yanı sıra information_schema tablolarının katılmasını gerektirir. Hem performance_schema hem de information_schema üzerinde oluşturma sys_schema, salt okunur bir veritabanında kolay bir şekilde [Kullanıcı dostu görünümler](https://dev.mysql.com/doc/refman/5.7/en/sys-schema-views.html) koleksiyonu sağlar ve MySQL Için Azure veritabanı sürüm 5,7 ' de tam olarak etkinleştirilmiştir.
 

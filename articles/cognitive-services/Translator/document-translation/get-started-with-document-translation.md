@@ -6,12 +6,12 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 03/05/2021
-ms.openlocfilehash: 21df853d9b1c7250e9a6eea37a68835a180f610d
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 70c8bce840bca6f2e99b29dc32f5e71bbad8d379
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104773054"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047244"
 ---
 # <a name="get-started-with-document-translation-preview"></a>Belge çevirisi 'ni kullanmaya başlama (Önizleme)
 
@@ -187,7 +187,7 @@ Bir Batch belge çevirisi isteği, bir POST isteği aracılığıyla Translator 
 
 Her belge çevirisi API isteğine aşağıdaki üstbilgiler dahildir:
 
-|HTTP üstbilgisi|Açıklama|
+|HTTP üstbilgisi|Description|
 |---|--|
 |Ocp-Apim-Subscription-Key|**Gerekli**: değer, çevirmen veya bilişsel hizmetler kaynağınız için Azure abonelik anahtarıdır.|
 |İçerik Türü|**Gerekli**: yükün içerik türünü belirtir. Kabul edilen değerler Application/JSON veya charset = UTF-8 ' dir.|
@@ -272,7 +272,7 @@ Her belge çevirisi API isteğine aşağıdaki üstbilgiler dahildir:
 
 > [!IMPORTANT]
 >
-> Aşağıdaki kod örnekleri için, belirttiğiniz yerlerde anahtarınızı ve uç noktanızı sabit kodlarız. İşiniz bittiğinde kodu koddan kaldırmayı unutmayın ve hiçbir zaman herkese açık bir şekilde nakletmeyin.  Kimlik bilgilerinizi güvenli bir şekilde depolamanıza ve erişmenize yönelik yollar için bkz. Azure bilişsel [Hizmetler güvenliği](/azure/cognitive-services/cognitive-services-security?tabs=command-line%2Ccsharp) .
+> Aşağıdaki kod örnekleri için, belirttiğiniz yerlerde anahtarınızı ve uç noktanızı sabit kodlarız. İşiniz bittiğinde kodu koddan kaldırmayı unutmayın ve hiçbir zaman herkese açık bir şekilde nakletmeyin.  Kimlik bilgilerinizi güvenli bir şekilde depolamanıza ve erişmenize yönelik yollar için bkz. Azure bilişsel [Hizmetler güvenliği](../../cognitive-services-security.md?tabs=command-line%2ccsharp) .
 >
 > İşleme bağlı olarak aşağıdaki alanları güncelleştirmeniz gerekebilir:
 >>>

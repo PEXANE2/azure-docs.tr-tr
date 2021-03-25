@@ -1,7 +1,7 @@
 ---
-title: Azure Iletişim Hizmetleri için sohbet istemci kitaplığına genel bakış
+title: Azure Iletişim Hizmetleri için sohbet SDK 'ya genel bakış
 titleSuffix: An Azure Communication Services concept document
-description: Azure Iletişim Hizmetleri sohbeti istemci kitaplığı hakkında bilgi edinin.
+description: Azure Iletişim Hizmetleri sohbet SDK 'Sı hakkında bilgi edinin.
 author: mikben
 manager: jken
 services: azure-communication-services
@@ -9,22 +9,22 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 705bd926c2ac6f414464254969b5c511c88891f0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b275c3af2e92dc5af677120b5082751d19676b2e
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104656116"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110823"
 ---
-# <a name="chat-client-library-overview"></a>Sohbet istemci kitaplığına genel bakış  
+# <a name="chat-sdk-overview"></a>Sohbet SDK genel bakış 
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]    
 
-Azure Iletişim Hizmetleri sohbet istemci kitaplıkları, uygulamalarınıza zengin ve gerçek zamanlı sohbet eklemek için kullanılabilir.
+Azure Iletişim Hizmetleri sohbet SDK 'Ları, uygulamalarınıza zengin ve gerçek zamanlı sohbet eklemek için kullanılabilir.
     
-## <a name="chat-client-library-capabilities"></a>Sohbet istemci kitaplığı özellikleri 
+## <a name="chat-sdk-capabilities"></a>Sohbet SDK özellikleri    
 
-Aşağıdaki listede, Iletişim Hizmetleri sohbeti istemci kitaplıklarında Şu anda kullanılabilir olan özellikler kümesi sunulmaktadır.  
+Aşağıdaki listede, Iletişim Hizmetleri sohbet SDK 'lerinde Şu anda kullanılabilir olan özellikler kümesi sunulmaktadır.  
 
 | Özellik grubu | Özellik | JavaScript  | Java | .NET | Python | iOS | Android |
 |-----------------|-------------------|---|-----|----|-----|----|----|
@@ -51,13 +51,13 @@ Aşağıdaki listede, Iletişim Hizmetleri sohbeti istemci kitaplıklarında Şu
 
 * * Özel sinyal paketi Web Yuvaları kullanılarak uygulanır. Web Yuvaları desteklenmiyorsa uzun yoklamaya geri dönüş yapılır.  
 
-## <a name="javascript-chat-client-library-support-by-os-and-browser"></a>İşletim sistemi ve tarayıcı tarafından JavaScript chat istemci kitaplığı desteği 
+## <a name="javascript-chat-sdk-support-by-os-and-browser"></a>OS ve tarayıcı tarafından JavaScript sohbet SDK desteği    
 
 Aşağıdaki tablo, şu anda kullanılabilir olan desteklenen tarayıcı ve sürümlerin kümesini temsil eder.
     
 |                                  | Windows          | Mac OS          | Ubuntu | Linux  | Android | iOS    | iPad işletim sistemi|
 |--------------------------------|----------------|--------------|-------|------|------|------|-------|
-| **Sohbet istemci kitaplığı** | Firefox *, Chrome*, yeni kenar | Firefox *, Chrome*, Safari * | Mu  | Mu | Mu | Uygulamasını | Uygulamasını |
+| **Sohbet SDK 'Sı** | Firefox *, Chrome*, yeni kenar | Firefox *, Chrome*, Safari * | Mu  | Mu | Mu | Uygulamasını | Uygulamasını |
 
 * Önceki iki sürüme ek olarak en son sürümün desteklendiğini unutmayın.<br/>   
 

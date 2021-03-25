@@ -8,12 +8,12 @@ ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e5c85d2c3049ea8718d0a9e0e574c13d0d99394c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f3b6bd19d47658e5ad079f0b731cbafc866bb333
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103200267"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045782"
 ---
 # <a name="manage-certificates-on-an-iot-edge-device"></a>IoT Edge cihazda sertifikaları yönetme
 
@@ -67,9 +67,18 @@ Bu sertifikalara bir örnek görmek için, [örnekler ve öğreticiler için tes
 
 Sertifika zincirinizi IoT Edge cihaza yükleyip IoT Edge çalışma zamanını yeni sertifikalara başvuracak şekilde yapılandırın.
 
-IoT Edge cihazınıza üç sertifika ve anahtar dosyasını kopyalayın. Sertifika dosyalarını taşımak için [Azure Key Vault](../key-vault/index.yml) veya [Güvenli kopya Protokolü](https://www.ssh.com/ssh/scp/) gibi bir işlev gibi bir hizmet kullanabilirsiniz.  Sertifikaları IoT Edge cihazında oluşturduysanız, bu adımı atlayabilir ve çalışma dizininin yolunu kullanabilirsiniz.
+IoT Edge cihazınıza üç sertifika ve anahtar dosyasını kopyalayın. Sertifika dosyalarını taşımak için [Azure Key Vault](../key-vault/index.yml) veya [Güvenli kopya Protokolü](https://www.ssh.com/ssh/scp/) gibi bir işlev gibi bir hizmet kullanabilirsiniz. Sertifikaları IoT Edge cihazında oluşturduysanız, bu adımı atlayabilir ve çalışma dizininin yolunu kullanabilirsiniz.
 
-Örneğin, [tanıtım sertifikaları oluşturmak](how-to-create-test-certificates.md)için örnek betikleri kullandıysanız, aşağıdaki dosyaları IoT-Edge cihazınıza kopyalayın:
+Windows üzerinde Linux için IoT Edge kullanıyorsanız, `id_rsa` ana bilgisayar işletim sistemi ve Linux sanal makinesi arasında dosya aktarımlarının kimliğini doğrulamak için Azure IoT Edge dosyasında bulunan SSH anahtarını kullanmanız gerekir. Kimliği doğrulanmış bir SCP 'YI aşağıdaki komutu kullanarak yapabilirsiniz:
+
+   ```powershell-interactive
+   C:\WINDOWS\System32\OpenSSH\scp.exe -i 'C:\Program Files\Azure IoT Edge\id_rsa' <PATH_TO_SOURCE_FILE> iotedge-user@<VM_IP>:<PATH_TO_FILE_DESTINATION>
+   ```
+
+   >[!NOTE]
+   >Linux sanal makinesinin IP adresi komut aracılığıyla sorgulanabilir `Get-EflowVmAddr` .
+
+[Tanıtım sertifikaları oluşturmak](how-to-create-test-certificates.md)için örnek betikleri kullandıysanız, aşağıdaki dosyaları IoT-Edge cihazınıza kopyalayın:
 
 * Cihaz CA sertifikası: `<WRKDIR>\certs\iot-edge-device-MyEdgeDeviceCA-full-chain.cert.pem`
 * Cihaz CA özel anahtarı: `<WRKDIR>\private\iot-edge-device-MyEdgeDeviceCA.key.pem`
@@ -80,21 +89,13 @@ IoT Edge cihazınıza üç sertifika ve anahtar dosyasını kopyalayın. Sertifi
 
 1. IoT Edge güvenliği Daemon yapılandırma dosyasını açın.
 
-   * Windows: `C:\ProgramData\iotedge\config.yaml`
-   * Linux: `/etc/iotedge/config.yaml`
+   * Linux ve Windows üzerinde Linux için IoT Edge: `/etc/iotedge/config.yaml`
+
+   * Windows kapsayıcıları kullanan pencereler: `C:\ProgramData\iotedge\config.yaml`
 
 1. Config. YAML içindeki **sertifika** özelliklerini IoT Edge cihazdaki sertifika ve anahtar dosyaları IÇIN dosya URI yolu olarak ayarlayın. `#`Dört satırın açıklamasını kaldırmak için, sertifika özelliklerinden önceki karakteri kaldırın. **Sertifikalarda:** Line 'ın önünde boşluk olmadığından ve iç içe yerleştirilmiş öğelerin iki boşlukla girintilendiğinden emin olun. Örnek:
 
-   * Windows:
-
-      ```yaml
-      certificates:
-        device_ca_cert: "file:///C:/<path>/<device CA cert>"
-        device_ca_pk: "file:///C:/<path>/<device CA key>"
-        trusted_ca_certs: "file:///C:/<path>/<root CA cert>"
-      ```
-
-   * Linux:
+   * Linux ve Windows üzerinde Linux için IoT Edge:
 
       ```yaml
       certificates:
@@ -103,13 +104,23 @@ IoT Edge cihazınıza üç sertifika ve anahtar dosyasını kopyalayın. Sertifi
         trusted_ca_certs: "file:///<path>/<root CA cert>"
       ```
 
+   * Windows kapsayıcıları kullanan pencereler:
+
+      ```yaml
+      certificates:
+        device_ca_cert: "file:///C:/<path>/<device CA cert>"
+        device_ca_pk: "file:///C:/<path>/<device CA key>"
+        trusted_ca_certs: "file:///C:/<path>/<root CA cert>"
+      ```
+
 1. Linux cihazlarda, kullanıcının **ıotedge** 'in sertifikaları tutan dizin için okuma izinlerine sahip olduğundan emin olun.
 
 1. Daha önce cihazda IoT Edge için başka bir sertifika kullandıysanız, IoT Edge başlatmadan veya yeniden başlatmadan önce aşağıdaki iki dizindeki dosyaları silin:
 
-   * Windows: `C:\ProgramData\iotedge\hsm\certs` ve `C:\ProgramData\iotedge\hsm\cert_keys`
+   * Linux ve Windows üzerinde Linux için IoT Edge: `/var/lib/iotedge/hsm/certs` ve `/var/lib/iotedge/hsm/cert_keys`
 
-   * Linux: `/var/lib/iotedge/hsm/certs` ve `/var/lib/iotedge/hsm/cert_keys`
+   * Windows kapsayıcıları kullanan pencereler: `C:\ProgramData\iotedge\hsm\certs` ve `C:\ProgramData\iotedge\hsm\cert_keys`
+
 :::moniker-end
 <!-- end 1.1 -->
 
@@ -177,34 +188,36 @@ Süre dolduktan sonra, belirtilen gün sayısından sonra, cihaz CA sertifikası
 
 1. `hsm`Önceden oluşturulmuş tüm sertifikaları kaldırmak için klasörün içeriğini silin.
 
-   Windows: `C:\ProgramData\iotedge\hsm\certs` ve `C:\ProgramData\iotedge\hsm\cert_keys` Linux: `/var/lib/iotedge/hsm/certs` ve `/var/lib/iotedge/hsm/cert_keys`
+   * Linux ve Windows üzerinde Linux için IoT Edge: `/var/lib/iotedge/hsm/certs` ve `/var/lib/iotedge/hsm/cert_keys`
+
+   * Windows kapsayıcıları kullanan pencereler: `C:\ProgramData\iotedge\hsm\certs` ve `C:\ProgramData\iotedge\hsm\cert_keys`
 
 1. IoT Edge hizmetini yeniden başlatın.
 
-   Windows:
-
-   ```powershell
-   Restart-Service iotedge
-   ```
-
-   Linux:
+   * Linux ve Windows üzerinde Linux için IoT Edge:
 
    ```bash
    sudo systemctl restart iotedge
    ```
 
-1. Ömür ayarını onaylayın.
-
-   Windows:
+   * Windows kapsayıcıları kullanan pencereler:
 
    ```powershell
-   iotedge check --verbose
+   Restart-Service iotedge
    ```
 
-   Linux:
+1. Ömür ayarını onaylayın.
+
+   * Linux ve Windows üzerinde Linux için IoT Edge:
 
    ```bash
    sudo iotedge check --verbose
+   ```
+
+   * Windows kapsayıcıları kullanan pencereler:
+
+   ```powershell
+   iotedge check --verbose
    ```
 
    Otomatik olarak oluşturulan cihaz CA sertifikalarının sona erene kadar geçen gün sayısını listeleyen **Üretim hazırlığı: sertifika** denetimi çıktısını denetleyin.

@@ -10,16 +10,16 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: cea425a3f133c54fecda06daa57e6e5e6d22a5d8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f1d49aa0583f34327afff229b46d7a366202aded
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104783621"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105152826"
 ---
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
-**İOS Için Hero örneğini çağıran** Azure Iletişim Hizmetleri grubu, iOS istemci kitaplığı 'Nı çağıran iletişim hizmetlerinin, ses ve video içeren bir grup çağırma deneyimi oluşturmak için nasıl kullanılabileceğini gösterir. Bu örnek hızlı başlangıçta, örneği ayarlamayı ve çalıştırmayı öğreneceksiniz. Bağlam için örneğe genel bir bakış sağlanır.
+**İOS Için Hero örneğini çağıran** Azure Iletişim Hizmetleri grubu, IOS SDK 'Sını çağıran iletişim hizmetlerinin, ses ve video içeren bir grup çağırma deneyimi oluşturmak için nasıl kullanılabileceğini gösterir. Bu örnek hızlı başlangıçta, örneği ayarlamayı ve çalıştırmayı öğreneceksiniz. Bağlam için örneğe genel bir bakış sağlanır.
 
 ## <a name="download-code"></a>Kodu indirin
 
@@ -27,7 +27,7 @@ Bu hızlı başlangıç için [GitHub](https://github.com/Azure-Samples/communic
 
 ## <a name="overview"></a>Genel Bakış
 
-Örnek, hem ses hem de video çağrılmasını sağlayan bir arama deneyimi oluşturmak için Azure Iletişim Hizmetleri iOS istemci kitaplıklarını kullanan yerel bir iOS uygulamasıdır. Uygulama, daha sonra Azure Communication Services istemci kitaplığını başlatmak için kullanılan erişim belirteçlerini sağlamak için bir sunucu tarafı bileşeni kullanır. Bu sunucu tarafı bileşeni yapılandırmak için, [Azure işlevleri öğreticisiyle güvenilir hizmeti](../../tutorials/trusted-service-tutorial.md) takip edin.
+Örnek, hem ses hem de video çağrılmasını sağlayan bir arama deneyimi oluşturmak için Azure Iletişim Hizmetleri iOS SDK 'larını kullanan yerel bir iOS uygulamasıdır. Uygulama, daha sonra Azure Iletişim Hizmetleri SDK 'sını başlatmak için kullanılan erişim belirteçlerini sağlamak için bir sunucu tarafı bileşeni kullanır. Bu sunucu tarafı bileşeni yapılandırmak için, [Azure işlevleri öğreticisiyle güvenilir hizmeti](../../tutorials/trusted-service-tutorial.md) takip edin.
 
 Örnek şöyle görünür:
 
@@ -103,7 +103,7 @@ Bir Iletişim Hizmetleri aboneliğini temizleyip kaldırmak istiyorsanız, kayna
 
 Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
-- [Çağıran istemci kitaplığını kullanma](../../quickstarts/voice-video-calling/calling-client-samples.md) hakkında bilgi edinin
+- [Çağıran SDK 'yı kullanma](../../quickstarts/voice-video-calling/calling-client-samples.md) hakkında bilgi edinin
 - [Nasıl çalıştığını çağırma](../../concepts/voice-video-calling/about-call-types.md) hakkında daha fazla bilgi edinin
 
 ### <a name="additional-reading"></a>Ek okuma

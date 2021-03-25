@@ -1,19 +1,19 @@
 ---
 title: 'Hızlı başlangıç: Python kullanarak bağlanma-esnek sunucu için Azure veritabanı'
 description: Bu hızlı başlangıçta, MySQL için Azure veritabanı-esnek sunucusu 'na bağlanmak ve veri sorgulamak için kullanabileceğiniz çeşitli Python kod örnekleri sunulmaktadır.
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.custom: mvc
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 9/21/2020
-ms.openlocfilehash: ff14bb1daeef6fc54ee5d11632ad98a29db2a172
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e99beb024690bf888d0acbb747e98252eced7e06
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90947891"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110143"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-mysql---flexible-server"></a>Hızlı başlangıç: MySQL kullanarak MySQL için Azure veritabanı 'na bağlanma ve veri sorgulama-esnek sunucu
 

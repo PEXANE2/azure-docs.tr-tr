@@ -7,12 +7,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 28813a23b91f75f88e844b9e6b36d6ba0771569a
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: e7f74298b8bf8209a6b1473880b33d64bd17cfd9
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105048094"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108103"
 ---
 # <a name="quickstart-add-11-video-calling-to-your-app-javascript"></a>Hızlı başlangıç: uygulamanıza 1:1 video çağrısı ekleme (JavaScript)
 
@@ -33,9 +33,11 @@ Terminal veya komut pencerenizi açın, uygulamanız için yeni bir dizin oluşt
 mkdir calling-quickstart && cd calling-quickstart
 ```
 ### <a name="install-the-package"></a>Paketi yükler
-`npm install`JavaScript için istemci kitaplığı 'Nı çağıran Azure Iletişim hizmetlerini yüklemek için komutunu kullanın.
+`npm install`JavaScript için SDK 'Yı çağıran Azure Iletişim hizmetlerini yüklemek için komutunu kullanın.
 
-Bu hızlı başlangıç, Istemci kitaplığı 'nı çağıran Azure Iletişimini kullandı `1.0.0.beta-6` . 
+> [!IMPORTANT]
+> Bu hızlı başlangıçta SDK sürümünü çağıran Azure Iletişim Hizmetleri kullanılmaktadır `1.0.0.beta-10` . 
+
 
 ```console
 npm install @azure/communication-common --save
@@ -105,7 +107,7 @@ Kod şu şekildedir:
 `client.js`Bu hızlı başlangıç için uygulama mantığını içeren adlı projenizin kök dizininde bir dosya oluşturun. Çağıran istemciyi içeri aktarmak ve DOM öğelerine başvuru almak için aşağıdaki kodu ekleyin.
 
 ```JavaScript
-import { CallClient, CallAgent, Renderer, LocalVideoStream } from "@azure/communication-calling";
+import { CallClient, CallAgent, VideoStreamRenderer, LocalVideoStream } from "@azure/communication-calling";
 import { AzureCommunicationTokenCredential } from '@azure/communication-common';
 
 let call;
@@ -124,18 +126,18 @@ let rendererRemote;
 ```
 ## <a name="object-model"></a>Nesne modeli
 
-Aşağıdaki sınıflar ve arabirimler, istemci Kitaplığı çağıran Azure Iletişim Hizmetleri 'nin bazı önemli özelliklerinden bazılarını işler:
+Aşağıdaki sınıflar ve arabirimler, Azure Communication Service 'ın SDK 'yi çağıran bazı önemli özelliklerinden bazılarını işler:
 
 | Ad      | Açıklama | 
 | :---        |    :----   |
-| CallClient  | CallClient, çağıran istemci kitaplığı için ana giriş noktasıdır.      |
+| CallClient  | CallClient, çağıran SDK 'ya ana giriş noktasıdır.      |
 | CallAgent  | CallAgent, çağrıları başlatmak ve yönetmek için kullanılır.        |
 | DeviceManager | DeviceManager, medya cihazlarını yönetmek için kullanılır.    |
 | AzureCommunicationTokenCredential | AzureCommunicationTokenCredential sınıfı, CallAgent örneğini oluşturmak için kullanılan CommunicationTokenCredential arabirimini uygular.        |
 
 ## <a name="authenticate-the-client-and-access-devicemanager"></a>İstemci kimliğini doğrulama ve DeviceManager 'a erişme
 
-<USER_ACCESS_TOKEN>, kaynağınız için geçerli bir Kullanıcı erişim belirteci ile değiştirmeniz gerekir. Kullanılabilir bir belirteciniz yoksa, Kullanıcı erişim belirteci belgelerine başvurun. CallClient 'ı kullanarak bir CallAgent örneğini, çağrı yapıp almamızı sağlayacak bir CommunicationUserCredential ile başlatın. DeviceManager 'a erişmek için önce bir callAgent örneği oluşturulmalıdır. Daha sonra öğesini `getDeviceManager` `CallClient` almak için örneğinde yöntemini kullanabilirsiniz `DeviceManager` .
+<USER_ACCESS_TOKEN>, kaynağınız için geçerli bir Kullanıcı erişim belirteci ile değiştirmeniz gerekir. Kullanılabilir bir belirteciniz yoksa, Kullanıcı erişim belirteci belgelerine başvurun. Kullanarak `CallClient` , `CallAgent` bir örneği başlatın, bu, `CommunicationUserCredential` çağrısı yapıp almamızı sağlar. Erişim için `DeviceManager` önce bir callAgent örneğine erişmek gerekir. Daha sonra öğesini `getDeviceManager` `CallClient` almak için örneğinde yöntemini kullanabilirsiniz `DeviceManager` .
 
 Aşağıdaki kodu `client.js` dosyasına ekleyin:
 
@@ -154,7 +156,7 @@ init();
 
 Tıklandığında bir çağrı başlatmak için bir olay dinleyicisi ekleyin `callButton` :
 
-İlk olarak, deviceManager getCameraList API 'sini kullanarak yerel kameraları numaralandırabilirsiniz. Bu hızlı başlangıçta koleksiyondaki ilk kamerayı kullanıyoruz. İstenen kamera seçildikten sonra, bir LocalVideoStream örneği oluşturulur ve bu, video seçenekleri içinde localVideoStream dizisinin içindeki bir öğe olarak çağrı yöntemine geçirilir. Çağrlarınız bağlandıktan sonra otomatik olarak diğer katılımcıya bir video akışı göndermeye başlar. 
+Önce, deviceManager API 'sini kullanarak yerel kameraları listeletmelisiniz `getCameraList` . Bu hızlı başlangıçta koleksiyondaki ilk kamerayı kullanıyoruz. İstenen kamera seçildikten sonra bir LocalVideoStream örneği oluşturulur ve `videoOptions` localvideostream dizisinin içindeki bir öğe olarak çağrı yöntemine geçirilir. Çağrlarınız bağlandıktan sonra otomatik olarak diğer katılımcıya bir video akışı göndermeye başlar. 
 
 ```JavaScript
 callButton.addEventListener("click", async () => {
@@ -179,40 +181,40 @@ callButton.addEventListener("click", async () => {
     callButton.disabled = true;
 });
 ```  
-Bir oluşturmak için `LocalVideoStream` Yeni bir örneği oluşturmanız `Renderer` ve ardından zaman uyumsuz yöntemi kullanarak yeni bir RendererView örneği oluşturmanız gerekir `createView` . Daha sonra `view.target` herhangi bir kullanıcı arabirimi öğesine iliştirebilirsiniz. 
+Bir oluşturmak için `LocalVideoStream` Yeni bir örneği oluşturmanız `VideoStreamRenderer` ve ardından `VideoStreamRendererView` zaman uyumsuz yöntemi kullanarak yeni bir örnek oluşturmanız gerekir `createView` . Daha sonra `view.target` herhangi bir kullanıcı arabirimi öğesine iliştirebilirsiniz. 
 
 ```JavaScript
 async function localVideoView() {
-    rendererLocal = new Renderer(localVideoStream);
+    rendererLocal = new VideoStreamRenderer(localVideoStream);
     const view = await rendererLocal.createView();
     document.getElementById("myVideo").appendChild(view.target);
 }
 ```
-Tüm uzak katılımcılar, `remoteParticipants` bir çağrı örneğindeki koleksiyon aracılığıyla kullanılabilir. Geçerli çağrının uzak katılımcılarına abone olmanız ve `remoteParticipantsUpdated` eklenen uzak katılımcılara abone olmak için olayı dinlemek gerekir.
+Tüm uzak katılımcılar, `remoteParticipants` bir çağrı örneğindeki koleksiyon aracılığıyla kullanılabilir. `remoteParticipantsUpdated`Çağrıya yeni bir uzak katılımcı eklendiğinde bildirilecek olayı dinlemek gerekir. Ayrıca, `remoteParticipants` video akışlarına abone olmak için koleksiyonu her birine abone olmak üzere yineleyemezsiniz. 
 
 ```JavaScript
 function subscribeToRemoteParticipantInCall(callInstance) {
-    callInstance.remoteParticipants.forEach( p => {
-        subscribeToRemoteParticipant(p);
-    })
     callInstance.on('remoteParticipantsUpdated', e => {
         e.added.forEach( p => {
-            subscribeToRemoteParticipant(p);
+            subscribeToParticipantVideoStreams(p);
         })
-    });   
+    }); 
+    callInstance.remoteParticipants.forEach( p => {
+        subscribeToParticipantVideoStreams(p);
+    })
 }
 ```
-`remoteParticipants`Geçerli çağrının koleksiyonuna abone olabilir ve `videoStreams` her katılımcının akışlarını listelemek için koleksiyonları inceleyebilirsiniz. Ayrıca, eklenen uzak katılımcıları işlemek için remoteParticipantsUpdated olayına abone olmanız gerekir. 
+`videoStreamsUpdated`Uzak katılımcıların eklenen video akışlarını işlemek için olaya abone olmanız gerekir. `videoStreams`Geçerli çağrının koleksiyonundan geçiş yaparken her katılımcının akışlarını listelemek için koleksiyonları inceleyebilirsiniz `remoteParticipants` .
 
 ```JavaScript
-function subscribeToRemoteParticipant(remoteParticipant) {
-    remoteParticipant.videoStreams.forEach(v => {
-        handleVideoStream(v);
-    });
+function subscribeToParticipantVideoStreams(remoteParticipant) {
     remoteParticipant.on('videoStreamsUpdated', e => {
         e.added.forEach(v => {
             handleVideoStream(v);
         })
+    });
+    remoteParticipant.videoStreams.forEach(v => {
+        handleVideoStream(v);
     });
 }
 ```
@@ -231,11 +233,11 @@ function handleVideoStream(remoteVideoStream) {
     }
 }
 ```
-Bir oluşturmak için `RemoteVideoStream` Yeni bir örneği oluşturmanız `Renderer` ve ardından `RendererView` zaman uyumsuz yöntemi kullanarak yeni bir örnek oluşturmanız gerekir `createView` . Daha sonra `view.target` herhangi bir kullanıcı arabirimi öğesine iliştirebilirsiniz. 
+Bir oluşturmak için `RemoteVideoStream` Yeni bir örneği oluşturmanız `VideoStreamRenderer` ve ardından `VideoStreamRendererView` zaman uyumsuz yöntemi kullanarak yeni bir örnek oluşturmanız gerekir `createView` . Daha sonra `view.target` herhangi bir kullanıcı arabirimi öğesine iliştirebilirsiniz. 
 
 ```JavaScript
 async function remoteVideoView(remoteVideoStream) {
-    rendererRemote = new Renderer(remoteVideoStream);
+    rendererRemote = new VideoStreamRenderer(remoteVideoStream);
     const view = await rendererRemote.createView();
     document.getElementById("remoteVideo").appendChild(view.target);
 }
@@ -259,7 +261,7 @@ callAgent.on('incomingCall', async e => {
     const addedCall = await e.incomingCall.accept({videoOptions: {localVideoStreams:[localVideoStream]}});
     call = addedCall;
 
-    subscribeToRemoteParticipantInCall(addedCall);   
+    subscribeToRemoteParticipantInCall(addedCall);  
 });
 ```
 ## <a name="end-the-current-call"></a>Geçerli çağrıyı Sonlandır
@@ -334,6 +336,8 @@ Bir Iletişim Hizmetleri aboneliğini temizleyip kaldırmak istiyorsanız, kayna
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
-- [Web çağırma](../../samples/web-calling-sample.md) örneğimize göz atın
-- [İstemci kitaplığı yeteneklerini çağırma](./calling-client-samples.md?pivots=platform-web) hakkında bilgi edinin
-- [Nasıl çalıştığını çağırma](../../concepts/voice-video-calling/about-call-types.md) hakkında daha fazla bilgi edinin
+
+- [Web çağırma](https://docs.microsoft.com/azure/communication-services/samples/web-calling-sample) örneğimize göz atın
+- [SDK yeteneklerini çağırma](https://docs.microsoft.com/azure/communication-services/quickstarts/voice-video-calling/calling-client-samples?pivots=platform-web) hakkında bilgi edinin
+- [Nasıl çalıştığını çağırma](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/about-call-types) hakkında daha fazla bilgi edinin
+
