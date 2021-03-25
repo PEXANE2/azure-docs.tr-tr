@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 86f40944af9fb49b0402a33e5009b99d60be61f0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c5381a93308b5b3c8988cb8e25df541af1043418
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103489194"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105031316"
 ---
 # <a name="custom-email-verification-with-sendgrid"></a>SendGrid ile özel e-posta doğrulama
 
@@ -43,7 +43,7 @@ Sonra, ilkenizin başvurmak için SendGrid API anahtarını bir Azure AD B2C ilk
 1. **Ilke anahtarlarını** seçin ve ardından **Ekle**' yi seçin.
 1. **Seçenekler** Için **el ile**' yi seçin.
 1. İlke anahtarı için bir **ad** girin. Örneğin, `SendGridSecret`. Ön ek, `B2C_1A_` anahtarınızın adına otomatik olarak eklenir.
-1. **Gizli**, daha önce kaydettiğiniz istemci gizli anahtarını girin.
+1. **Gizli**, daha önce kaydettiğiniz SENDGRID API anahtarını girin.
 1. **Anahtar kullanımı** için **imza**' yı seçin.
 1. **Oluştur**’u seçin.
 

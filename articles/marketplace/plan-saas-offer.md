@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/30/2020
-ms.openlocfilehash: e24e1afa0116bc1f240bddef47783b06f4f800d2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/25/2021
+ms.openlocfilehash: b1bb749400cfb1e289a0a335275f4654d37145e9
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104581312"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046513"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>Ticari Market için SaaS teklifi planlaması
 
@@ -37,7 +37,7 @@ Aşağıdaki tabloda, ticari Market 'teki SaaS teklifleri için listeleme seçen
 
 Bu liste seçenekleri hakkında daha fazla bilgi için bkz. [ticari Market Transact özellikleri](marketplace-commercial-transaction-capabilities-and-considerations.md).
 
-Teklifiniz yayımlandıktan sonra teklifiniz için seçtiğiniz listeleme seçeneği, teklifinizin liste sayfasının sol üst köşesinde bir düğme olarak görünür. Örneğin, aşağıdaki ekran görüntüsünde, **benimle Iletişim kurun** ve **sürücü sına** düğmeleriyle Azure Marketi 'nde bir teklif listesi sayfası gösterilmektedir.
+Teklifiniz yayımlandıktan sonra teklifiniz için seçtiğiniz listeleme seçeneği, teklifinizin liste sayfasının sol üst köşesinde bir düğme olarak görünür. Örneğin, aşağıdaki ekran görüntüsünde, **Şimdi al** ve **test sürücüsü** düğmelerini içeren bir teklif listesi sayfası Azure Marketi 'nde gösterilmektedir.
 
 ![Çevrimiçi mağazadaki bir teklif listesini gösterir.](./media/listing-options.png)
 
@@ -68,9 +68,9 @@ Transactable teklifi oluşturuyorsanız, **Teknik yapılandırma** sayfası içi
 
 - **Giriş sayfası URL 'si**: `https://contoso.com/signup` kullanıcının ticari Market 'ten teklifinizi aldıktan sonra, yeni oluşturulan SaaS aboneliğinden yapılandırma işlemini tetikleyen SaaS site URL 'si (örneğin:). Bu URL, etkileşimli kayıt sayfanız için sağlama ayrıntılarını almak üzere karşılama API 'Lerini çağırmak için kullanılabilecek bir belirteç alır.
 
-  Bu URL, belirli müşterinin SaaS satın alımını benzersiz bir şekilde tanımlayan Market satın alma tanımlama belirteci parametresi ile çağırılır. Bu belirteci, [Çözümle API](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription)'sini kullanarak ilgili SaaS aboneliği ayrıntıları için değiş tokuş etmeniz gerekir. Bu ayrıntılar ve toplamak istediğiniz tüm diğerleri, müşteri kaydını tamamlamaya ve satın alımlarını etkinleştirmeye yönelik deneyiminize yerleştirilmiş bir müşteri etkileşimli Web sayfasının parçası olarak kullanılmalıdır. Bu sayfada, Kullanıcı Azure Active Directory (Azure AD) kullanarak tek tıklamayla kimlik doğrulamasından kaydolmalıdır.
+  Bu URL, belirli müşterinin SaaS satın alımını benzersiz bir şekilde tanımlayan Market satın alma tanımlama belirteci parametresi ile çağırılır. Bu belirteci, [Çözümle API](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription)'sini kullanarak ilgili SaaS aboneliği ayrıntıları için değiş tokuş etmeniz gerekir. Bu ayrıntılar ve müşteri etkileşimli Web sayfasının bir parçası olarak toplamak istediğiniz tüm diğerleri, son olarak abonelik süresini başlatmak için API 'de bir etkinleştirme çağrısıyla sonuçlanması gereken müşteri ekleme deneyimini başlatmak için kullanılabilir. Bu sayfada, Kullanıcı Azure Active Directory (Azure AD) kullanarak tek tıklamayla kimlik doğrulamasından kaydolmalıdır.
 
-  Bu URL, Market satın alma tanımlama belirteci parametresi, müşteri Azure portal veya M365 yönetim merkezinden yönetilen SaaS deneyimi başlattığında de çağrılır. Her iki akışı da işlemeniz gerekir: belirteç yeni bir müşteri satın alma sonrasında ilk kez sağlandığında ve SaaS çözümünü yöneten mevcut bir müşteri için yeniden sağlandığında.
+  Bu URL, Market satın alma tanımlama belirteci parametresi, müşteri Azure portal veya Microsoft 365 Yönetim merkezinden yönetilen SaaS deneyimi başlattığında de çağrılır. Her iki akışı da işlemeniz gerekir: belirteç yeni bir müşteri satın alma sonrasında ilk kez sağlandığında ve SaaS çözümünü yöneten mevcut bir müşteri için yeniden sağlandığında.
 
     Yapılandırdığınız giriş sayfası 24/7 olmalıdır ve çalışıyor olmalıdır. Bu, ticari Market 'te sunulan SaaS tekliflerinizin yeni satınalmaları veya bir teklifin etkin bir aboneliği için yapılandırma istekleri hakkında bildirim almanın tek yoludur.
 
@@ -79,7 +79,7 @@ Transactable teklifi oluşturuyorsanız, **Teknik yapılandırma** sayfası içi
   Sağladığınız Web kancası çalışır duruma gelmelidir 24/7. Bu, ticari Market aracılığıyla satın alınan müşterilerinizin SaaS abonelikleriyle ilgili güncelleştirmeler hakkında size bildirimde bulunulinizin tek yoludur.
 
   > [!NOTE]
-  > Azure portal içinde, iki hizmetimiz arasındaki bağlantının kimliğini doğrulamak için bir Azure Uygulama KIMLIĞININ kullanılmasını sağlamak üzere tek kiracılı bir [Azure Active Directory (Azure AD) uygulaması](../active-directory/develop/howto-create-service-principal-portal.md) oluşturmanız gerekir. [KIRACı kimliğini](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)bulmak için Azure Active Directory gidin ve **Özellikler**' i seçin, sonra listelenen dizin kimliği numarasını bulun. Örneğin, `50c464d3-4930-494c-963c-1e951d15360e`.
+  > Azure portal içinde, tek kiracılı bir [Azure Active Directory (Azure AD) uygulama kaydı](../active-directory/develop/howto-create-service-principal-portal.md)oluşturmanızı gerektirir. Market API 'Lerini çağırırken çözümünüzün kimliğini doğrulamak için uygulama kayıt ayrıntılarını kullanın. [KIRACı kimliğini](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)bulmak için Azure Active Directory gidin ve **Özellikler**' i seçin, sonra listelenen dizin kimliği numarasını bulun. Örneğin, `50c464d3-4930-494c-963c-1e951d15360e`.
 
 - **Azure Active Directory KIRACı kimliği**: (dizin kimliği olarak da bilinir). Azure portal içinde, bu uygulamayı çağırma yetkiniz olduğundan emin olmak için API 'nin erişim denetim listesine (ACL) ekleyebilmemiz için [bir Azure Active Directory (ad) uygulamasını kaydetmeniz](../active-directory/develop/howto-create-service-principal-portal.md) gerekir. Azure Active Directory (AD) uygulamanıza ait kiracı KIMLIĞINI bulmak için Azure Active Directory [uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) dikey penceresine gidin. **Görünen ad** sütununda, uygulamayı seçin. Ardından listelenen **Dizin (kiracı) kimliği** numarasını (örneğin, `50c464d3-4930-494c-963c-1e951d15360e` ) arayın.
 
@@ -88,7 +88,7 @@ Transactable teklifi oluşturuyorsanız, **Teknik yapılandırma** sayfası içi
   Azure AD uygulama KIMLIĞI, Iş Ortağı Merkezi hesabınızdaki yayımcı KIMLIĞINIZLE ilişkilidir. Bu hesaptaki tüm teklifler için aynı uygulama KIMLIĞINI kullanmanız gerekir.
 
   > [!NOTE]
-  > Yayımcının Iş Ortağı Merkezi 'nde iki veya daha fazla farklı hesabı varsa, her biri hesaplarından biri için iki veya daha fazla farklı Azure AD uygulama kimliği kullanılmalıdır. Iş Ortağı Merkezi 'ndeki her iş ortağı hesabı, bu hesap aracılığıyla yayınlanan tüm SaaS teklifleri için benzersiz bir Azure AD uygulama KIMLIĞI kullanmalıdır.
+  > Yayımcının Iş Ortağı Merkezi 'nde iki veya daha fazla farklı hesabı varsa, Azure AD uygulama kayıt ayrıntıları yalnızca bir hesapta kullanılabilir. Aynı kiracı KIMLIĞINI kullanan bir teklif için uygulama KIMLIĞI çifti, farklı bir yayımcı hesabı altında desteklenmez.
 
 ## <a name="test-drives"></a>Test sürüşleri
 SaaS uygulamanız için bir test sürücüsü etkinleştirmeyi seçebilirsiniz. Test sürücüleri, müşterilere sabit sayıda saat boyunca önceden yapılandırılmış bir ortama erişim sağlar. Herhangi bir yayımlama seçeneği için test sürücüleri etkinleştirebilirsiniz, ancak bu özellik ek gereksinimlere sahiptir. Sınama sürücüleri hakkında daha fazla bilgi için bkz. [test sürücüsü nedir?](what-is-test-drive.md). Farklı türlerde test sürücüleri yapılandırma hakkında daha fazla bilgi için bkz. [Test Drive Technical Configuration](test-drive-technical-configuration.md).
@@ -209,9 +209,6 @@ Teklifinizi daha kolay bir şekilde oluşturmaya yardımcı olmak için bu öğe
 > [!Note]
 > Teklifinizin, ticari Market 'te yayımlanacak genel [ticari Market sertifika ilkelerini](/legal/marketplace/certification-policies#100-general) ve [hizmet ilkesi olarak yazılımlarını](/legal/marketplace/certification-policies#1000-software-as-a-service-saas) karşılaması gerekir.
 
-## <a name="preview-audience"></a>İzleyiciyi Önizle
-Önizleme hedef kitlesi, canlı yayımlamadan önce uçtan uca işlevselliği test etmek için çevrimiçi mağazalarda canlı olarak yayınlanmadan önce teklifinizin erişimine açabilir. **Izleyiciyi Önizle** sayfasında, sınırlı bir önizleme hedef kitlesi tanımlayabilirsiniz. Teklifinizi Microsoft aracılığıyla satma yerine işlemleri bağımsız olarak işlemeyi tercih ediyorsanız bu ayar kullanılamaz. Bu durumda, bu bölümü atlayabilir ve [ek satış fırsatlarına](#additional-sales-opportunities)gidebilirsiniz.
-
 > [!NOTE]
 > Önizleme hedef kitlesi özel bir plandan farklıdır. Özel bir plan yalnızca seçtiğiniz belirli bir hedef kitle için kullanılabilir hale getirir. Bu, belirli müşterilerle özel bir plana anlaşma yapmanızı sağlar. Daha fazla bilgi için sonraki bölüme bakın: planlar.
 
@@ -251,6 +248,50 @@ Aşağıdaki örnek, acentelerde bir örnek dökümünü ve kurumlar modelini g�
 |||
 
 **`*` Daha az Market servis ücreti** – Microsoft 'un ticari Market 'te yayımladığı belirli SaaS teklifleri için, Microsoft 'un Market hizmet ücretini %20 ' den (Microsoft Publisher anlaşmasında açıklandığı gibi) %10 ' a azaltacak. Tekliflerinizin uygun olmasını sağlamak için teklifinizin Microsoft tarafından Azure IP ortak satışı incentivized olarak belirlenmiş olması gerekir. Uygunluk, en az beş (5) iş günü boyunca her bir takvim ayının sonundan önce, daha düşük Market servis ücretini alacak şekilde sağlanmalıdır. Uygunluk karşılandıktan sonra, sınırlı hizmet ücreti, aşağıdaki ayın ilk gününde geçerli olan tüm işlemlere uygulanır ve Azure IP ortak satışı incentivized durumu kaybolana kadar uygulamaya devam edecektir. IP ortak satışı uygunluğu hakkında daha fazla bilgi için bkz. [ortak satış durumu gereksinimleri](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status). Daha düşük Market hizmet ücreti, Azure IP ortak satış incentivized VM 'Leri, yönetilen uygulamalar ve ticari Market aracılığıyla sunulan diğer tüm nitelikli transactable IaaS teklifleri için de geçerlidir.
+
+## <a name="preview-audience"></a>İzleyiciyi Önizle
+
+Bir önizleme hedef kitlesi, çevrimiçi mağazalarda canlı olarak yayınlanmadan önce teklifinizin erişimine açabilir. Bu kişiler, teklifinizin ticari markette nasıl görüneceğini görebilir ve canlı yayımlamadan önce uçtan uca işlevselliği test edebilir. 
+
+**Izleyiciyi Önizle** sayfasında, sınırlı bir önizleme hedef kitlesi tanımlayabilirsiniz. Teklifinizi Microsoft aracılığıyla satma yerine işlemleri bağımsız olarak işlemeyi tercih ediyorsanız bu ayar kullanılamaz. Bu durumda, bu bölümü atlayabilir ve [ek satış fırsatlarına](#additional-sales-opportunities)gidebilirsiniz.
+
+## <a name="test-offer"></a>Test teklifi
+
+Teklifinizi canlı yayımlamadan önce, farklı fiyatlandırma modelleriyle teknik uygulama, test ve denemenizin geliştirilmesi için Önizleme işlevini kullanmanız gerekir.
+
+SaaS teklifinizi en düşük riskli miktarda geliştirmek ve test etmek için deneme ve test için bir test ve geliştirme (DEV) teklifi oluşturmanızı öneririz. GELIŞTIRME teklifi üretim (ÜRETIM) teklifinizden ayrı olacaktır.
+
+GELIŞTIRME teklifinin yanlışlıkla satın alımlarını engellemek için **canlı çalış** düğmesini hiçbir şekilde göndereceksiniz. geliştirme teklifini canlı olarak yayımlayabilirsiniz.
+
+![Iş Ortağı Merkezi 'nde teklif için teklif genel bakış sayfasını gösterir. Canlı çalış düğmesi ve önizleme bağlantıları gösterilir. Doğrulama raporunu görüntüle bağlantısı da otomatik doğrulama altında gösterilir.](./media/review-publish-offer/publish-status-saas.png)
+
+Geliştirme ekibinin ÜRETIM teklifini geliştirme ve test etme amacıyla kullanması için ayrı bir geliştirme teklifi oluşturmanın bazı nedenleri aşağıda verilmiştir:
+
+- Yanlışlıkla müşteri ücretlerinden kaçının
+- Fiyatlandırma modellerini değerlendir
+- Gerçek müşterileri hedefleyen planlar eklenmiyor
+
+### <a name="avoid-accidental-customer-charges"></a>Yanlışlıkla müşteri ücretlerinden kaçının
+
+ÜRETIM teklifi yerine bir DEV teklifi kullanarak ve bunları geliştirme ve üretim ortamları olarak düşünerek, müşterilere yanlışlıkla ücretlendirmekten kaçınabilirsiniz.
+
+Market API 'Lerini çağırmak için iki farklı Azure AD uygulaması kaydetmenizi öneririz. Geliştiriciler DEV teklifinin ayarlarıyla bir Azure AD uygulaması kullanacaktır ve işlemler ekibi de ÜRETIM uygulaması kaydını kullanacaktır. Bunu yaparak, geliştirme ekibinin, her ay aylık $100 ABD Doları ödeyen bir müşterinin aboneliğini iptal etmek için API 'yi çağırma gibi yanlışlıkla hata yapmasını sağlayabilirsiniz. Ayrıca, bir müşterinin tükettiği tarifeli kullanım için ücretlendirme yapmaktan kaçınabilirsiniz.
+
+### <a name="evaluate-pricing-models"></a>Fiyatlandırma modellerini değerlendir
+
+GELIŞTIRME teklifinin fiyatlandırma modellerini test etmek, geliştiricilerin farklı fiyatlandırma modelleriyle denemeler yaparken riski azaltır.
+
+Yayımcılar, teklif için en iyi şekilde hangi fiyatlandırma modelinin çalışacağını öğrenmek üzere GELIŞTIRME teklifinde ihtiyaç duydukları planları oluşturabilir. Geliştiriciler, farklı fiyatlandırma kombinasyonlarını test etmek için DEV teklifinde birden çok plan oluşturmak isteyebilir. Örneğin, farklı özel ölçülen boyut kümelerine sahip planlar oluşturabilirsiniz. Düz fiyat ve özel ölçülen boyutlar karışımına sahip farklı bir plan oluşturabilirsiniz.
+
+Birden çok fiyatlandırma seçeneğini test etmek için, her benzersiz fiyatlandırma modeli için bir plan oluşturmanız gerekir. Daha fazla bilgi için bkz. [planlar](#plans).
+
+### <a name="not-adding-plans-that-do-not-target-actual-customers"></a>Gerçek müşterileri hedefleyen planlar eklenmiyor
+
+Geliştirme ve test için bir geliştirme teklifi kullanarak, ÜRETIM teklifinde gereksiz dağınıklığı azaltabilirsiniz. Örneğin, farklı fiyatlandırma modellerini veya teknik konfigürasyonları test etmek için oluşturduğunuz planları silemezsiniz (bir destek bileti dosyalamadan). Bu nedenle, DEV teklifinde test için planlar oluşturarak, ÜRETIM teklifinde dağınıklığı azaltabilirsiniz.
+
+ÜRETIM ortamında bulunan dağınıklığı, tüm planların gerçek müşterileri hedeflemesini bekledikleri için, ürün ve pazarlama ekiplerini sunar. Özellikle, farklı korumalı alanlar 'ın birlikte çalışmasını isteyen büyük ekipler sayesinde, iki teklif oluşturmak GELIŞTIRME ve ÜRETIM için iki farklı ortam sağlar. Bazı durumlarda, farklı test senaryoları çalıştıran farklı kişilere sahip daha büyük bir takımı desteklemek için birden çok GELIŞTIRME teklifi oluşturmak isteyebilirsiniz. Farklı takım üyelerinin üretim teklifinden ayrı GELIŞTIRME tekliflerinden çalışmasına izin vermek için üretim planlarını, mümkün olduğunca üretime başlamaya yönelik olarak tutmaya yardımcı olur.
+
+GELIŞTIRME teklifini test etmek, teklif başına 30 özel ölçülen boyut sınırından kaçınmaya yardımcı olur. Geliştiriciler, ÜRETIM teklifinde özel ölçülen boyut limitini etkilemeden DEV teklifinde farklı ölçüm birleşimleri deneyebilir.
 
 ## <a name="additional-sales-opportunities"></a>Ek satış fırsatları
 

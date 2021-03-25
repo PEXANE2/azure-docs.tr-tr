@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: dee692dc6c82ae91272b39093398eba6ad908c1c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7fee393b694bf761cf052702a975239d6dff9a9c
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104612325"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105104834"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -69,7 +69,7 @@ Bir çağrı oluşturup başlatmak için, üzerindeki API 'lerden birini kullan�
 
 ### <a name="place-a-1n-call-to-a-user-or-pstn"></a>Bir kullanıcı veya PSTN 'e 1: n çağrısı yerleştir
 
-Başka bir Iletişim Hizmetleri kullanıcısını çağırmak için, `startCall` üzerinde yöntemini kullanın `callAgent` ve `CommunicationUserIdentifier` [iletişim Hizmetleri yönetim kitaplığıyla oluşturduğunuz](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens)alıcıyı geçirin.
+Başka bir Iletişim Hizmetleri kullanıcısını çağırmak için, `startCall` üzerinde yöntemini kullanın `callAgent` ve `CommunicationUserIdentifier` [iletişim Hizmetleri yönetim kitaplığıyla oluşturduğunuz](../../access-tokens.md)alıcıyı geçirin.
 
 ```js
 const userCallee = { communicationUserId: '<ACS_USER_ID>' }

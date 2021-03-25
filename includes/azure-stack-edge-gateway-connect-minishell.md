@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 5e2ab0b9d7f61539a16fc685134bef6c9047229d
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 0ad760caedffa97599548b8dd1b59a887b5690af
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "104987924"
+ms.locfileid: "105105482"
 ---
 İstemci işletim sistemine bağlı olarak, cihaza uzaktan bağlanma yordamları farklıdır.
 
@@ -21,7 +21,7 @@ ms.locfileid: "104987924"
 Başlamadan önce aşağıdakilerden emin olun:
 
 - Windows istemciniz Windows PowerShell 5,0 veya üstünü çalıştırıyor.
-- Windows istemciniz, cihazda yüklü olan düğüm sertifikasına karşılık gelen imzalama zincirine (kök sertifika) sahiptir. Ayrıntılı yönergeler için bkz. [Windows istemcinizdeki sertifikayı yükler](../articles/databox-online/azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device).
+- Windows istemciniz, cihazda yüklü olan düğüm sertifikasına karşılık gelen imzalama zincirine (kök sertifika) sahiptir. Ayrıntılı yönergeler için bkz. [Windows istemcinizdeki sertifikayı yükler](../articles/databox-online/azure-stack-edge-gpu-manage-certificates.md#import-certificates-on-the-client-accessing-the-device).
 - `hosts` `C:\Windows\System32\drivers\etc` Windows istemciniz için konumunda bulunan dosyası aşağıdaki biçimde düğüm sertifikasına karşılık gelen bir girdiye sahiptir:
 
     `<Device IP>    <Node serial number>.<DNS domain of the device>`

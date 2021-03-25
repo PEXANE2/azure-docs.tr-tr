@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 7357703af41afc913ef63dff6ecae3d230c9eca0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4d771e77fcca05b090e5d47d70ae93ece8f79e3e
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104583301"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865712"
 ---
 # <a name="use-certificates-with-azure-cloud-services-extended-support"></a>Sertifikaları Azure Cloud Services kullanma (genişletilmiş destek)
 
@@ -27,9 +27,8 @@ Key Vault, Cloud Services ilişkili sertifikaları (genişletilmiş destek) depo
 
     :::image type="content" source="media/certs-and-key-vault-1.png" alt-text="Görüntü, Anahtar Kasası dikey penceresinden erişim ilkelerini seçmeyi gösterir.":::
 
-3. Erişim ilkelerinin aşağıdaki özellikleri içerdiğinden emin olun:
+3. Erişim ilkelerinin aşağıdaki özelliği içerdiğinden emin olun:
     - **Dağıtım için Azure sanal makinelerine erişimi etkinleştir**
-    - **Şablon dağıtımı için Azure Resource Manager erişimi etkinleştir** 
 
     :::image type="content" source="media/certs-and-key-vault-2.png" alt-text="Görüntü Azure portal erişim ilkeleri penceresini gösterir.":::
  
@@ -50,6 +49,9 @@ Key Vault, Cloud Services ilişkili sertifikaları (genişletilmiş destek) depo
     ```json
     <Certificate name="<your cert name>" thumbprint="<thumbprint in key vault" thumbprintAlgorithm="sha1" /> 
     ```
+6.  ARM şablonu aracılığıyla dağıtım için, sertifika URL 'si, gizli tanımlayıcı olarak etiketlenmiş anahtar kasasındaki sertifikaya gidilerek bulunabilir
+
+    :::image type="content" source="media/certs-and-key-vault-6.png" alt-text="Görüntü, anahtar kasasındaki gizli dizi tanımlayıcı alanını gösterir.":::
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 - Cloud Services için [dağıtım önkoşullarını](deploy-prerequisite.md) gözden geçirin (genişletilmiş destek).

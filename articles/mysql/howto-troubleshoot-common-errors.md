@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: ca75416a66bcf2c90028c7f1dc11fbe23a9a9bd9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 546f29330b76548ea553cfb7e4e31ac35b19cb1c
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98631376"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105037555"
 ---
 # <a name="common-errors"></a>Sık karşılaşılan hatalar
 
@@ -48,7 +48,7 @@ BEGIN
 END;
 ```
 
-**Çözüm**: hatayı çözümlemek için, Portal 'daki [sunucu parametreleri](howto-server-parameters.md) dikey penceresinden log_bin_trust_function_creators 1 ' i ayarlayın, DDL deyimlerini yürütün veya istenen nesneleri oluşturmak için şemayı içeri aktarın ve oluşturulduktan sonra log_bin_trust_function_creators parametresini önceki değerine geri dönün.
+**Çözüm**: hatayı çözümlemek için, Portal 'daki [sunucu parametreleri](howto-server-parameters.md) dikey penceresinden log_bin_trust_function_creators 1 olarak ayarlayın, DDL deyimlerini yürütün veya istenen nesneleri oluşturmak için şemayı içeri aktarın. Gelecekte hata oluşmasını önlemek için sunucunuz için log_bin_trust_function_creators tutmaya devam edebilirsiniz. MySQL [Community belgelerinde](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) vurgulanan güvenlik riski, hiçbir tehditlere açık olmadığından, MySQL IÇIN Azure DB hizmetinde en az olduğu için log_bin_trust_function_creators ayarlama önerimiz.
 
 #### <a name="error-1227-42000-at-line-101-access-denied-you-need-at-least-one-of-the-super-privileges-for-this-operation-operation-failed-with-exitcode-1"></a>HATA 1227 (42000), satır 101: erişim engellendi; Bu işlem için süper ayrıcalıklar (en az biri) gereklidir. İşlem, ExitCode 1 ile başarısız oldu
 

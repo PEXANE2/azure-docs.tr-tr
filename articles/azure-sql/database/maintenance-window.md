@@ -9,13 +9,13 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
 ms.custom: references_regions
-ms.date: 03/11/2021
-ms.openlocfilehash: bd91c29ca97c2096c4d8f3df19dbb9eab306b8e7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/23/2021
+ms.openlocfilehash: 9c1e5af065e70cf7ec7b7c3b09fc9e3376858481
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103149758"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047261"
 ---
 # <a name="maintenance-window-preview"></a>Bakım penceresi (Önizleme)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -27,14 +27,14 @@ Bakım penceresi özelliği, [Azure SQL veritabanı](sql-database-paas-overview.
 
 ## <a name="overview"></a>Genel Bakış
 
-Azure düzenli olarak SQL veritabanı ve SQL yönetilen örnek kaynakları için [Planlı bakım](planned-maintenance.md) gerçekleştirir. Azure SQL bakım olayı sırasında veritabanları tamamen mevcuttur, ancak bazı durumlarda kaynak yeniden yapılandırması gerekli olduğundan, [SQL veritabanı](https://azure.microsoft.com/support/legal/sla/sql-database) ve [SQL yönetilen örneği](https://azure.microsoft.com/support/legal/sla/azure-sql-sql-managed-instance)için ilgili kullanılabilirlik SLA 'larının içinde kısa bir yük devretme yapılabilir.
+Azure düzenli olarak SQL veritabanı ve SQL yönetilen örnek kaynakları için [Planlı bakım](planned-maintenance.md) gerçekleştirir. Azure SQL bakım olayı sırasında veritabanları tamamen mevcuttur, ancak [SQL veritabanı](https://azure.microsoft.com/support/legal/sla/sql-database) ve [SQL yönetilen örneği](https://azure.microsoft.com/support/legal/sla/azure-sql-sql-managed-instance)Için ilgili kullanılabilirlik SLA 'ları içindeki kısa yeniden yapılandırmalara tabi olabilir.
 
-Bakım penceresi, veritabanı veya örnek yük devretme açısından dayanıklı olmayan üretim iş yükleri için tasarlanmıştır ve planlı bakım olaylarının neden olduğu kısa bağlantı kesintilerini artışlarını devralarak. Tercih ettiğiniz bir bakım penceresini seçerek, en yüksek iş saatlerinizin dışında gerçekleşmeyeceğinden planlı bakımın etkisini en aza indirirsiniz. Esnek iş yükleri ve üretim dışı iş yükleri, Azure SQL 'in varsayılan bakım ilkesini kullanabilir.
+Bakım penceresi, veritabanı veya örnek yeniden yapılandırmalarına dayanıklı olmayan üretim iş yükleri için tasarlanmıştır ve planlı bakım olaylarının neden olduğu kısa bağlantı kesintilerini artışlarını devralarak. Tercih ettiğiniz bir bakım penceresini seçerek, en yüksek iş saatlerinizin dışında gerçekleşmeyeceğinden planlı bakımın etkisini en aza indirirsiniz. Esnek iş yükleri ve üretim dışı iş yükleri, Azure SQL 'in varsayılan bakım ilkesini kullanabilir.
 
 Bakım penceresi, oluşturma veya mevcut Azure SQL kaynakları için yapılandırılabilir. Azure portal, PowerShell, CLı veya Azure API 'SI kullanılarak yapılandırılabilir.
 
 > [!Important]
-> Bakım penceresini yapılandırmak, Azure SQL kaynağının hizmet katmanını değiştirmeye benzer şekilde, uzun süren bir zaman uyumsuz işlemdir. İşlem sırasında, işlemin sonunda gerçekleşen kısa bir yük devretme haricinde ve genellikle uzun süreli işlem durumunda bile 8 saniyeye kadar süren kaynak kullanılabilir. Yük devretmenin etkisini en aza indirmek için işlemi yoğun saatlerin dışında gerçekleştirmeniz gerekir.
+> Bakım penceresini yapılandırmak, Azure SQL kaynağının hizmet katmanını değiştirmeye benzer şekilde, uzun süren bir zaman uyumsuz işlemdir. İşlem sırasında, işlemin sonunda gerçekleşen kısa bir yeniden yapılandırma haricinde ve genellikle uzun süreli işlem durumunda bile 8 saniyeye kadar süren kaynak kullanılabilir. Yeniden yapılandırma işleminin etkisini en aza indirmek için işlemi yoğun saatlerin dışında gerçekleştirmeniz gerekir.
 
 ### <a name="gain-more-predictability-with-maintenance-window"></a>Bakım penceresiyle daha öngörülebilirlik kazanın
 
@@ -98,7 +98,7 @@ Varsayılan dışında bir bakım penceresinin seçilmesi şu bölgelerde kullan
 
 Bakım pencerelerinin en büyük avantajlarından yararlanabilmek için, istemci uygulamalarınızın yeniden yönlendirme bağlantı ilkesini kullandığınızdan emin olun. Yeniden yönlendirme, istemcilerin veritabanını barındıran düğüme doğrudan bağlantı kurmasını, azaltılmış gecikme süresine ve geliştirilmiş aktarım hızına kadar bir bağlantı kurmasını sağlar.  
 
-* Azure SQL veritabanı 'nda, proxy bağlantı ilkesini kullanan tüm bağlantılar, seçilen bakım penceresi ve bir ağ geçidi düğümü bakım penceresinden etkilenebilir. Ancak, önerilen yeniden yönlendirme bağlantı ilkesini kullanan istemci bağlantıları, bir ağ geçidi düğümü Bakımı yük devretmesinin etkilenmemiştir. 
+* Azure SQL veritabanı 'nda, proxy bağlantı ilkesini kullanan tüm bağlantılar, seçilen bakım penceresi ve bir ağ geçidi düğümü bakım penceresinden etkilenebilir. Ancak, önerilen yeniden yönlendirme bağlantı ilkesini kullanan istemci bağlantıları, ağ geçidi düğümü Bakımı yeniden yapılandırması tarafından etkilenmez. 
 
 * Azure SQL yönetilen örneği 'nde, ağ geçidi düğümleri [sanal küme içinde](../../azure-sql/managed-instance/connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture) barındırılır ve yönetilen örnekle aynı bakım penceresine sahiptir, ancak bakım olayı sırasında kesintiler sayısını en aza indirmek için yeniden yönlendirme bağlantı ilkesinin kullanılması yine de önerilir.
 
@@ -115,7 +115,7 @@ Bir sanal kümede barındırılan tüm örnekler bakım penceresini paylaşır. 
 Yönetilen örnekteki bakım penceresini yapılandırmanın beklenen süresi, [örnek yönetimi işlemlerinin tahmini süresi](/azure/azure-sql/managed-instance/management-operations-overview#duration)kullanılarak hesaplanabilir.
 
 > [!Important]
-> Kısa bir yük devretme, bakım işleminin sonunda gerçekleşir ve genellikle uzun süreli işlem durumunda bile 8 saniyeye kadar sürer. Yük devretmenin etkisini en aza indirmek için işlemi yoğun saatlerin dışında zamanlamanız gerekir.
+> Bakım işleminin sonunda kısa bir yeniden yapılandırma gerçekleşir ve genellikle uzun süreli işlem durumunda bile 8 saniyeye kadar sürer. Yeniden yapılandırma etkisini en aza indirmek için işlemi yoğun saatlerin dışında zamanlamanız gerekir.
 
 ### <a name="ip-address-space-requirements"></a>IP adresi alanı gereksinimleri
 Alt ağdaki her yeni sanal küme, [sanal küme IP adresi ayırmaya](/azure/azure-sql/managed-instance/vnet-subnet-determine-size#determine-subnet-size)göre ek IP adresleri gerektirir. Mevcut yönetilen örnek için bakım penceresini değiştirmek, karşılık gelen hizmet katmanı için sanal çekirdekler senaryosunu ölçeklendirirken [geçici ek IP kapasitesi](/azure/azure-sql/managed-instance/vnet-subnet-determine-size#address-requirements-for-update-scenarios) de gerektirir.
@@ -129,7 +129,7 @@ Bakım penceresini yapılandırmak ve değiştirmek, alt ağın IP adresi aralı
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Bildirimleri ilerlet](advance-notifications.md)
-* [Bakım penceresini Yapılandır](maintenance-window-configure.md)
+* [Bakım penceresini yapılandırma](maintenance-window-configure.md)
 
 ## <a name="learn-more"></a>Daha fazla bilgi edinin
 

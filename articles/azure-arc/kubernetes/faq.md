@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 description: Bu makale, Azure Arc etkin Kubernetes ile ilgili sık sorulan soruların bir listesini içerir
 keywords: Kubernetes, yay, Azure, kapsayıcılar, yapılandırma, Gilar, SSS
-ms.openlocfilehash: d7facb842509bdf852957d46d91dfcb3912e99ba
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 84368cc63bd9aaf1df4fb281395b47a6e886cb7f
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121720"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025858"
 ---
 # <a name="frequently-asked-questions---azure-arc-enabled-kubernetes"></a>Sık sorulan sorular-Azure Arc etkin Kubernetes
 
@@ -72,6 +72,6 @@ Bu özellik, uyumluluk ve idare gereksinimlerini karşılamak üzere tüm Kubern
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Bir Kubernetes kümesini Azure yaya bağlamak](./connect-cluster.md)için hızlı başlangıç deneyimimizi gözden geçir.
-* Zaten bir Kubernetes kümesine bağlı Azure yayı zaten var mı? [Arc etkin Kubernetes kümesinde yapılandırma oluşturma](./use-gitops-connected-cluster.md).
+* [Bir Kubernetes kümesini Azure yaya bağlamak](./quickstart-connect-cluster.md)için hızlı başlangıç deneyimimizi gözden geçir.
+* Zaten bir Kubernetes kümesine bağlı Azure yayı zaten var mı? [Arc etkin Kubernetes kümesinde yapılandırma oluşturma](./tutorial-use-gitops-connected-cluster.md).
 * Uygun [ölçekte yapılandırma uygulamak Için Azure ilkesi](./use-azure-policy.md)'ni nasıl kullanacağınızı öğrenin.

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/02/2019
-ms.openlocfilehash: d1979e43adc76f4125097fc809ef137baee05f53
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 70c1dcc133f01cf72392f444192d977440c55cf4
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98939581"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866633"
 ---
 # <a name="use-the-net-sdk-for-apache-hbase"></a>Apache HBase için .NET SDK 'sını kullanma
 
@@ -113,7 +113,7 @@ await client.StoreCellsAsync("RestSDKTable", set);
 
 HBase, [Cloud BigTable](https://cloud.google.com/bigtable/)' ı uygular, bu nedenle veri biçimi aşağıdaki görüntüye benzer şekilde görünür:
 
-![Apache HBase örnek veri çıktısı](./media/apache-hbase-rest-sdk/hdinsight-table-roles.png)
+:::image type="content" source="./media/apache-hbase-rest-sdk/hdinsight-table-roles.png" alt-text="Apache HBase örnek veri çıktısı" border="true":::
 
 ## <a name="select-data"></a>Verileri seçme
 

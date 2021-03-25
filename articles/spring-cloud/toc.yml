@@ -77,20 +77,30 @@
           href: 'https://code.visualstudio.com/docs/java/java-spring-cloud'
         - name: Azure PowerShell ile Azure Spring Cloud dağıtma
           href: how-to-deploy-powershell.md
-    - name: Yapılandırma
+    - name: Yönetme
       items:
         - name: 'Uygulamayı başlatma, durdurma ve silme'
           href: how-to-start-stop-delete.md
         - name: Kalıcı depolama kullanma
           href: how-to-persistent-storage.md
+        - name: Giden genel IP adresleri tanımlama
+          href: how-to-outbound-public-ip.md
     - name: Ölçek
       items:
         - name: Uygulamayı el ile ölçeklendirme
           href: how-to-scale-manual.md
         - name: Uygulamayı otomatik ölçeklendirme
           href: how-to-setup-autoscale.md
-        - name: Giden genel IP adresleri tanımlama
-          href: how-to-outbound-public-ip.md
+    - name: Tümleştirme
+      items:
+        - name: Uygulamayı Azure CosmosDB’ye bağlama
+          href: how-to-bind-cosmos.md
+        - name: Uygulamayı Redis için Azure Cache'e bağlama
+          href: how-to-bind-redis.md
+        - name: Uygulamayı Azure MySQL'e bağlama
+          href: how-to-bind-mysql.md
+        - name: Azure Load Balance Çözümleriyle tümleştirme
+          href: how-to-integrate-azure-load-balancers.md
     - name: İzleme
       items:
         - name: Dağıtılmış izleme ve Uygulama İçgörüleri
@@ -123,16 +133,6 @@
           href: how-to-enable-system-assigned-managed-identity.md
         - name: Rol ve izinler oluşturma
           href: how-to-permissions.md
-    - name: Tümleştirme
-      items:
-        - name: Uygulamayı Azure CosmosDB’ye bağlama
-          href: how-to-bind-cosmos.md
-        - name: Uygulamayı Redis için Azure Cache'e bağlama
-          href: how-to-bind-redis.md
-        - name: Uygulamayı Azure MySQL'e bağlama
-          href: how-to-bind-mysql.md
-        - name: Azure Load Balance Çözümleriyle tümleştirme
-          href: how-to-integrate-azure-load-balancers.md
     - name: Otomatikleştirme
       items:
         - name: Azure DevOps ile CI/CD

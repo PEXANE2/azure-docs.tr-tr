@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: a2bca34f683df27c97b131d57c6c3278f7cb175e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 867f042332457ebc5fdd6b1f10ce7fb636309ba8
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98928893"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865341"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>Azure HDInsight’ta Apache Storm nedir?
 
@@ -42,7 +42,7 @@ Fırtınası kullanmaya başlamak için bkz. [Azure HDInsight 'ta Apache Storm t
 
 Fırtınası, tanıdık olabileceğiniz [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html)  işleri yerine topolojiler çalıştırır. Storm topolojileri döngüsel olmayan yönlü grafikte (DAG) düzenlenmiş birden fazla bileşenden oluşur. Veriler grafikteki bileşenler arasında akar. Her bileşen bir veya daha fazla veri akışı kullanır ve isteğe bağlı olarak bir veya daha fazla akış yayar. Aşağıdaki diyagram, temel bir sözcük sayısı topolojisindeki bileşenler arasında verilerin nasıl aktığını gösterir:
 
-![Bileşenlerin bir Storm topolojisinde nasıl düzenlendiğini gösteren örnek](./media/apache-storm-overview/example-apache-storm-topology-diagram.png)
+:::image type="content" source="./media/apache-storm-overview/example-apache-storm-topology-diagram.png" alt-text="Bileşenlerin bir Storm topolojisinde nasıl düzenlendiğini gösteren örnek" border="false":::
 
 * Spout bileşenleri, verileri bir topolojiye getirir. Bu bileşenler topolojiye bir veya daha fazla akış yayar.
 
@@ -56,11 +56,11 @@ Nimbus düğümü Apache Hadoop JobTracker şuna benzer işlevsellik sağlar. Ni
 
 Apache Storm kümeleri için varsayılan yapılandırma yalnızca bir Nimbus düğümü içerir. HDInsight üzerindeki Storm iki Nimbus düğümü sağlar. Birincil düğüm başarısız olursa birincil düğüm kurtarılırken Storm kümesi ikincil düğüme geçiş yapar. Aşağıdaki diyagramda HDInsight üzerinde Storm için görev akışı yapılandırması gösterilmektedir:
 
-![Nimbus, zookeeper ve supervisor diyagramı](./media/apache-storm-overview/storm-diagram-nimbus.png)
+:::image type="content" source="./media/apache-storm-overview/storm-diagram-nimbus.png" alt-text="Nimbus, zookeeper ve supervisor diyagramı" border="false":::
 
 ## <a name="ease-of-use"></a>Kullanım kolaylığı
 
-|Kullanın |Description |
+|Kullanın |Açıklama |
 |---|---|
 |Secure Shell (SSH) bağlantısı|SSH kullanarak, Internet üzerinden fırtınası kümenizin baş düğümlerine erişebilirsiniz. SSH kullanarak komutları doğrudan kümeniz üzerinde çalıştırabilirsiniz. Daha fazla bilgi için bkz. [HDInsight ile SSH kullanma](../hdinsight-hadoop-linux-use-ssh-unix.md).|
 |Web bağlantısı|Tüm HDInsight kümeleri, ambarı Web Kullanıcı arabirimi sağlar. Ambari web kullanıcı arabirimini kullanarak kümenizdeki hizmetleri kolayca izleyebilir, yapılandırabilir ve yönetebilirsiniz. Storm kümeleri ayrıca Storm Kullanıcı Arabirimini sağlar. Storm kullanıcı arabirimini kullanarak, çalışan Storm topolojilerini tarayıcınızdan izleyip yönetebilirsiniz. Daha fazla bilgi için bkz. [Apache ambarı Web Kullanıcı arabirimini kullanarak HDInsight 'ı yönetme](../hdinsight-hadoop-manage-ambari.md) ve [Apache Storm UI belgelerini kullanarak izleme ve yönetme](apache-storm-deploy-monitor-topology-linux.md#monitor-and-manage-a-topology-using-the-storm-ui) .|

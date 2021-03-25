@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: include
 ms.date: 12/08/2020
 ms.author: pafarley
-ms.openlocfilehash: 859c57fb6caeee730d5ba937bacf5d29a25ca173
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 1904b9aab80fbda5b774a5cd02d0adefac61deea
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102510732"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105027980"
 ---
 Azure Content Moderator REST API kullanmaya başlayın. 
 
@@ -178,4 +178,3 @@ Bu hızlı başlangıçta, denetleme görevlerini yapmak için Content Moderator
 
 * [Görüntü denetleme kavramları](../../image-moderation-api.md)
 * [Metin denetleme kavramları](../../text-moderation-api.md)
-* [Azure Content Moderator nedir?](../../overview.md)

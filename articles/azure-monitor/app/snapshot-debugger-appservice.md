@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 03/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 5a637a6f355be32f82878a52a30c77d020190651
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 26538f48213d025c6fe71fb55abb17a025a23b45
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102211626"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025688"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>Azure App Service .NET uygulamaları için Snapshot Debugger etkinleştirme
 
@@ -56,13 +56,13 @@ Bir uygulamayı dağıttıktan sonra, anlık görüntü hata ayıklayıcısını
 
 ## <a name="enable-snapshot-debugger-for-other-clouds"></a>Diğer bulutlar için Snapshot Debugger etkinleştir
 
-Şu anda yalnızca uç nokta değişiklikleri gerektiren bölgeler [Azure Kamu](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure#application-insights) ve [Azure Çin](https://docs.microsoft.com/azure/china/resources-developer-guide) Application Insights bağlantı dizesi aracılığıyla yapılır.
+Şu anda yalnızca uç nokta değişiklikleri gerektiren bölgeler [Azure Kamu](../../azure-government/compare-azure-government-global-azure.md#application-insights) ve [Azure Çin](/azure/china/resources-developer-guide) Application Insights bağlantı dizesi aracılığıyla yapılır.
 
 |Bağlantı dizesi özelliği    | ABD kamu bulutu | Çin bulutu |   
 |---------------|---------------------|-------------|
 |Anlık görüntü Tendpoint         | `https://snapshot.monitor.azure.us`    | `https://snapshot.monitor.azure.cn` |
 
-Diğer bağlantı geçersiz kılmaları hakkında daha fazla bilgi için bkz. [Application Insights belgeleri](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net#connection-string-with-explicit-endpoint-overrides).
+Diğer bağlantı geçersiz kılmaları hakkında daha fazla bilgi için bkz. [Application Insights belgeleri](./sdk-connection-string.md?tabs=net#connection-string-with-explicit-endpoint-overrides).
 
 ## <a name="disable-snapshot-debugger"></a>Snapshot Debugger devre dışı bırak
 
@@ -120,4 +120,3 @@ Azure App Service için, Azure Resource Manager şablonu içinde uygulama ayarla
 
 [Enablement UI]: ./media/snapshot-debugger/enablement-ui.png
 [snapshot-debugger-app-setting]:./media/snapshot-debugger/snapshot-debugger-app-setting.png
-

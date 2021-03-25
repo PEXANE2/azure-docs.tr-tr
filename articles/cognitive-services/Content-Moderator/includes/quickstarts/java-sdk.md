@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 10/16/2020
 ms.custom: devx-track-java, cog-serv-seo-aug-2020
 ms.author: pafarley
-ms.openlocfilehash: 17acd11b6ebb651be170135ab9789f788d4d8077
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 646b4378c887bb30bfbd945693aacc4e50c2f02c
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102445758"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105027964"
 ---
 Java için Azure Content Moderator istemci kitaplığı 'nı kullanmaya başlayın. Maven paketini yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. 
 
@@ -232,12 +232,13 @@ Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağ
 * [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
+## <a name="source-code"></a>Kaynak kod
+
+* Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java)' da bulunabilir.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu hızlı başlangıçta, Content Moderator Java kitaplığı 'nı kullanarak denetleme görevlerini nasıl kullanacağınızı öğrendiniz. Daha sonra, bir kavramsal kılavuz okuyarak görüntülerin veya diğer ortamların denetimi hakkında daha fazla bilgi edinin.
 
 > [!div class="nextstepaction"]
 > [Görüntü denetleme kavramları](../../image-moderation-api.md)
-
-* [Azure Content Moderator nedir?](../../overview.md)
-* Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java)' da bulunabilir.

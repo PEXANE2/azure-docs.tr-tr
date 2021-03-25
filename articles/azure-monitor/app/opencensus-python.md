@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 09/24/2020
 ms.reviewer: mbullwin
 ms.custom: devx-track-python
-ms.openlocfilehash: d22174b269ba9cea3b2c9cb9de2b5521df2786fa
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 69472da4f774a1dfae86e1891255907ad711175a
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101704421"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047431"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Python uygulamanız için Azure Izleyicisini ayarlama
 
@@ -19,7 +19,7 @@ Azure Izleyici, [Opencensus](https://opencensus.io)ile tümleştirme yoluyla, Py
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
-- Python yüklemesi. Bu makalede [Python 3.7.0](https://www.python.org/downloads/release/python-370/)kullanılmaktadır, ancak diğer sürümler büyük olasılıkla küçük değişikliklerle çalışabilse de. SDK yalnızca Python v 2.7 ve v 3.4-v 3.7 destekler.
+- Python yüklemesi. Bu makalede [Python 3.7.0](https://www.python.org/downloads/release/python-370/)kullanılmaktadır, ancak diğer sürümler büyük olasılıkla küçük değişikliklerle çalışabilse de. SDK yalnızca 2,7 ve 3.6 + Python sürümlerini destekler.
 - Application Insights [kaynağı](./create-new-resource.md)oluşturun. Kaynağınız için kendi izleme anahtarınızı (Ikey) atadınız.
 
 ## <a name="instrument-with-opencensus-python-sdk-for-azure-monitor"></a>Azure Izleyici için OpenCensus Python SDK 'Sı ile işaretleme

@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: conceptual
 ms.date: 05/22/2020
 ms.author: victorh
-ms.openlocfilehash: 66ca039a449e355e47563b689f5f44cced164fea
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0e3073c491b251a1dbb505d4656de9c6a1e0ac7f
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101724158"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048502"
 ---
 # <a name="azure-web-application-firewall-on-azure-front-door"></a>Azure ön kapıda Azure Web uygulaması güvenlik duvarı
 
@@ -24,7 +24,7 @@ WAF, Sanal ağınızı girmeden önce saldırı kaynaklarına yakın kötü ama�
 
 ![Azure web uygulaması güvenlik duvarı](../media/overview/wafoverview.png)
 
-Azure ön kapı [Önizleme sürümünde iki yeni SKU](https://docs.microsoft.com/azure/frontdoor/standard-premium/overview)tanıtır: ön kapı standardı ve ön kapı Premium SKU 'su. WAF, ön kapı Premium SKU 'SU ile tam yetenekler ile yerel olarak tümleşiktir. Ön kapı standart SKU 'SU için yalnızca [özel kurallar](https://docs.microsoft.com/azure/web-application-firewall/afds/afds-overview#custom-authored-rules) desteklenir.
+Azure ön kapı [Önizleme sürümünde iki yeni SKU](../../frontdoor/standard-premium/overview.md)tanıtır: ön kapı standardı ve ön kapı Premium SKU 'su. WAF, ön kapı Premium SKU 'SU ile tam yetenekler ile yerel olarak tümleşiktir. Ön kapı standart SKU 'SU için yalnızca [özel kurallar](#custom-authored-rules) desteklenir.
 
 ## <a name="waf-policy-and-rules"></a>WAF ilkesi ve kuralları
 
