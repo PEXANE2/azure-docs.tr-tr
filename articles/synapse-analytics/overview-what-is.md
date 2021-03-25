@@ -6,15 +6,15 @@ author: saveenr
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: overview
-ms.date: 03/27/2021
+ms.date: 03/24/2021
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 316a78f4725aa3c33a78b00c6de3b8419aea717e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a7dcd630b0d5987c796ebb5a02657af9130221e6
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104600216"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045629"
 ---
 # <a name="what-is-azure-synapse-analytics"></a>Azure Synapse Analytics nedir?
 
@@ -46,7 +46,7 @@ Azure SYNAPSE, SQL ve Spark ile birlikte kullanma arasındaki geleneksel teknolo
 * SQL ve Spark, Veri Gölü içinde depolanan Parquet, CSV, TSV ve JSON dosyalarını doğrudan keşfedebilir ve analiz edebilir.
 * SQL ve Spark veritabanları arasında devam eden veriler için hızlı ölçeklenebilir yükleme ve kaldırma
 
-## <a name="built-in-data-integration-via-pipelines"></a>Ardışık düzen aracılığıyla yerleşik veri tümleştirmesi
+## <a name="built-in-data-integration"></a>Yerleşik veri tümleştirmesi
 
 Azure SYNAPSE, Azure SYNAPSE Analytics 'ten çıkmadan zengin ölçekli ETL işlem hatları oluşturmanıza olanak sağlayan aynı veri tümleştirme altyapısını ve deneyimlerini Azure Data Factory.
 

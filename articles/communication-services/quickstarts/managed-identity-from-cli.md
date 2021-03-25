@@ -9,18 +9,18 @@ ms.topic: how-to
 ms.date: 03/10/2021
 ms.author: jbeauregardb
 ms.reviewer: mikben
-ms.openlocfilehash: b49ee61f3ee4ea8e8a177bca6aa566a07b7ef113
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 2ef5a3b162d62fa79ed01a156345070ee12b4862
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105044745"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110687"
 ---
 # <a name="authorize-access-with-managed-identity-to-your-communication-resource-in-your-development-environment"></a>Geliştirme ortamınızdaki iletişim kaynağınız ile yönetilen kimlik erişimi yetkisi verin
 
-Azure Identity istemci kitaplığı, Azure SDK için Azure Active Directory (Azure AD) belirteç kimlik doğrulama desteği sağlar. .NET, Java, Python ve JavaScript için Azure Communication Services istemci kitaplıklarının en son sürümleri, Azure Iletişim Hizmetleri isteklerinin yetkilendirmesi için bir OAuth 2,0 belirteci elde etmek üzere basit ve güvenli bir yöntem sağlamak üzere Azure Identity Library ile tümleşir.
+Azure Identity SDK, Azure SDK için Azure Active Directory (Azure AD) belirteç kimlik doğrulama desteği sağlar. .NET, Java, Python ve JavaScript için Azure Iletişim Hizmetleri SDK 'larının en son sürümleri, Azure Iletişim Hizmetleri isteklerinin yetkilendirmesi için bir OAuth 2,0 belirteci elde etmek üzere basit ve güvenli bir yöntem sağlamak üzere Azure Identity Library ile tümleşir.
 
-Azure Identity istemci kitaplığı 'nın bir avantajı, uygulamanızın geliştirme ortamında veya Azure 'da çalışıp çalışmadığını birden çok hizmet üzerinde kimlik doğrulaması yapmak için aynı kodu kullanmanıza olanak tanımasıdır. Azure Identity istemci kitaplığı bir güvenlik sorumlusunun kimliğini doğrular. Kodunuz Azure 'da çalışırken, güvenlik sorumlusu Azure kaynakları için yönetilen bir kimliktir. Geliştirme ortamında, yönetilen kimlik yok, bu nedenle istemci kitaplığı Kullanıcı veya test amacıyla kayıtlı bir uygulamanın kimliğini doğrular.
+Azure Identity SDK 'sının bir avantajı, uygulamanızın geliştirme ortamında veya Azure 'da çalışıp çalışmadığını birden çok hizmet üzerinde kimlik doğrulaması yapmak için aynı kodu kullanmanıza olanak tanımasıdır. Azure Identity SDK, bir güvenlik sorumlusunun kimliğini doğrular. Kodunuz Azure 'da çalışırken, güvenlik sorumlusu Azure kaynakları için yönetilen bir kimliktir. Geliştirme ortamında, yönetilen kimlik yok, bu nedenle SDK Kullanıcı veya test amacıyla kayıtlı bir uygulamanın kimliğini doğrular.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -35,7 +35,7 @@ Yönetilen kimlikler, yetkilendirmekte olduğunuz Azure kaynaklarında etkinleş
 - [Azure PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager şablonu](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
-- [Azure Resource Manager istemci kitaplıkları](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
+- [Azure Resource Manager SDK 'lar](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 - [Uygulama hizmetleri](../../app-service/overview-managed-identity.md)
 
 ## <a name="authenticate-a-registered-application-in-the-development-environment"></a>Geliştirme ortamında kayıtlı bir uygulamanın kimliğini doğrulama
@@ -68,7 +68,7 @@ az ad sp create-for-rbac --name <application-name>
 
 #### <a name="set-environment-variables"></a>Ortam değişkenlerini belirleme
 
-Azure Identity istemci kitaplığı, uygulamanın kimliğini doğrulamak için çalışma zamanında üç ortam değişkeninden değerleri okur. Aşağıdaki tabloda her ortam değişkeni için ayarlanacak değer açıklanmaktadır.
+Azure Identity SDK, uygulamanın kimliğini doğrulamak için çalışma zamanında üç ortam değişkeninden değerleri okur. Aşağıdaki tabloda her ortam değişkeni için ayarlanacak değer açıklanmaktadır.
 
 |Ortam değişkeni|Değer
 |-|-
