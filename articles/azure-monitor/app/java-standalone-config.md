@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: e58d69634712a9cc640ba9e4785a7bf1effaf88c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 91ad5a6d95c634300db83d66df8f0407b4544cde
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103224665"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105024175"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Yapılandırma seçenekleri-Java için Azure Izleyici Application Insights
 
@@ -122,6 +122,17 @@ Ayrıca, bir ortam değişkenini kullanarak örnekleme yüzdesini ayarlayabilirs
 > [!NOTE]
 > Örnekleme yüzdesi için, N 'nin bir tamsayı olduğu, 100/N 'e yakın bir yüzde seçin. Şu anda örnekleme diğer değerleri desteklemiyor.
 
+## <a name="sampling-overrides-preview"></a>Örnekleme geçersiz kılmaları (Önizleme)
+
+Bu özellik önizleme aşamasındadır ve 3.0.3-BETA. 2 ' den başlayarak.
+
+Örnekleme geçersiz kılmaları [Varsayılan örnekleme yüzdesini](#sampling)geçersiz kılmanızı sağlar, örneğin:
+* Gürültülü durum denetimleri için örnekleme yüzdesini 0 (veya küçük bir değer) olarak ayarlayın.
+* Gürültülü bağımlılık çağrıları için örnekleme yüzdesini 0 (veya küçük bir değer) olarak ayarlayın.
+* Örnekleme yüzdesini önemli bir istek türü için 100 olarak ayarlayın (örn. `/login` ), varsayılan örneklemenin daha düşük bir değere yapılandırılmış olmasına rağmen.
+
+Daha fazla bilgi için [örnekleme geçersiz kılma](./java-standalone-sampling-overrides.md) belgelerini inceleyin.
+
 ## <a name="jmx-metrics"></a>JMX ölçümleri
 
 Bazı ek JMX ölçümleri toplamak istiyorsanız:
@@ -176,9 +187,13 @@ Bu özellik önizlemede.
 İstek, bağımlılık ve izleme telemetrisine uygulanacak kuralları yapılandırmanıza olanak tanır, örneğin:
  * Hassas verileri maskeleme
  * Koşullu özel boyutlar ekleyin
- * Toplama ve görüntüleme için kullanılan telemetri adını güncelleştirme
+ * Azure portal benzer Telemetriyi toplamak için kullanılan span adını güncelleştirin.
+ * Alım maliyetlerini denetlemek için belirli span özniteliklerini bırakın.
 
 Daha fazla bilgi için [telemetri işlemcisi](./java-standalone-telemetry-processors.md) belgelerini inceleyin.
+
+> [!NOTE]
+> Alım maliyetini denetlemek için belirli (tam) yayılmayı arıyorsanız, bkz. [örnekleme geçersiz kılmaları](./java-standalone-sampling-overrides.md).
 
 ## <a name="auto-collected-logging"></a>Otomatik toplanan günlüğe kaydetme
 

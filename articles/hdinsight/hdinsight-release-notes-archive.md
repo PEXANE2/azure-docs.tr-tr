@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/08/2021
-ms.openlocfilehash: 0a9a58e91202d42640264aba00e1a583be1cde70
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4e7b25315aaadffe7f34b28195c25b77a36fa5f8
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101705662"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872158"
 ---
 # <a name="archived-release-notes"></a>Arşivlenmiş sürüm notları
 
@@ -385,7 +385,7 @@ Hizmet etiketleri, Azure hizmetlerine ağ erişimini kolayca kısıtlayabilmesin
 #### <a name="custom-ambari-db"></a>Özel Ambari DB
 HDInsight artık Apache ambarı için kendi SQL DB 'nizi kullanmanıza olanak tanır. Bu özel ambarı DB 'yi Azure portal veya Kaynak Yöneticisi şablonu aracılığıyla yapılandırabilirsiniz.  Bu özellik, işleme ve kapasite gereksinimleriniz için doğru SQL DB 'yi seçmenizi sağlar. Ayrıca, iş büyüme gereksinimlerini eşleştirmek için kolayca yükseltebilirsiniz. Daha fazla bilgi için bkz. [HDInsight kümelerini özel bir AMBARı DB Ile ayarlama](hdinsight-custom-ambari-db.md).
 
-![Özel Ambari DB](./media/hdinsight-release-notes/custom-ambari-db.png)
+:::image type="content" source="./media/hdinsight-release-notes/custom-ambari-db.png" alt-text="Özel Ambari DB":::
 
 ### <a name="deprecation"></a>Kullanımdan kaldırma
 Bu yayının kullanım dışı bırakılmasıyla ilgili değildir. Yakında kullanım dışı bırakılmaya hazırlanmak için, [yaklaşan değişikliklere](#upcoming-changes)bakın.
@@ -1886,11 +1886,11 @@ Düzeltilen sorunlar, daha önce Hortonsupport desteğiyle günlüğe kaydedilen
 
 |**Apache bileşeni**|**Apache JIRA**|**Özet**|**Ayrıntılar**|
 |--|--|--|--|
-|**Spark 2,3** |**Yok** |**Apache Spark sürüm notlarında belgelendiği gibi değişiklikler** |-"Kullanımdan kaldırma" belgesi ve "davranış değişikliği" kılavuzu vardır. https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />-SQL bölümü için başka bir ayrıntılı "geçiş" Kılavuzu (2,2 ' den 2,3 ' e kadar) vardır. https://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
+|**Spark 2,3** |**yok** |**Apache Spark sürüm notlarında belgelendiği gibi değişiklikler** |-"Kullanımdan kaldırma" belgesi ve "davranış değişikliği" kılavuzu vardır. https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />-SQL bölümü için başka bir ayrıntılı "geçiş" Kılavuzu (2,2 ' den 2,3 ' e kadar) vardır. https://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
 |Spark |[**HIVE-12505**](https://issues.apache.org/jira/browse/HIVE-12505) |Spark işi başarıyla tamamlandı, ancak bir bu işlem için bir sürücü kotası dolu hatası var |**Senaryo:** Komutu çalıştıran kullanıcının çöp kutusu klasöründe bir kota ayarlandığında **Insert üzerine yazma** işlemi çalıştırılıyor.<br /><br />**Önceki davranış:** İş, verileri çöp kutusu 'na taşıyamasa bile başarılı oldu. Sonuç, tabloda daha önce varolan bazı verileri yanlışlıkla içerebilir.<br /><br />**Yeni davranış:** Çöp kutusu klasörüne taşıma başarısız olduğunda, dosyalar kalıcı olarak silinir.|
-|**Kafka 1,0**|**Yok**|**Apache Spark sürüm notlarında belgelendiği gibi değişiklikler** |https://kafka.apache.org/10/documentation.html#upgrade_100_notable|
+|**Kafka 1,0**|**yok**|**Apache Spark sürüm notlarında belgelendiği gibi değişiklikler** |https://kafka.apache.org/10/documentation.html#upgrade_100_notable|
 |**Hive/Ranger** | |EKLEME ÜZERINE yazma için gereken ek Ranger Hive ilkeleri |**Senaryo:** **Ekleme ÜZERINE yazma** için gereken ek Ranger Hive ilkeleri<br /><br />**Önceki davranış:** Hive **ekleme ÜZERINE yazma** sorguları her zamanki gibi başarılı olur.<br /><br />**Yeni davranış:** VP-2.6. x sürümüne yükselttikten sonra Hive **ekleme ÜZERINE yazma** sorguları hata vererek beklenmedik şekilde başarısız oluyor:<br /><br />Bildiri derlenirken hata: başarısız oldu: HiveAccessControlException Izni reddedildi: Kullanıcı jtikan,/tmp/ \* (State = 42000, Code = 40000) ÜZERINDE yazma ayrıcalığına sahip değil<br /><br />HDP-2.6.0 itibariyle, Hive **ekleme üzerine** yazma sorguları, kullanıcının,, bir kullanıcı adına, bu, bir kullanıcı adına, bu da bir SAYGER ilkesi aracılığıyla verilen yazma ayrıcalığına sahip olsa bile,<br /><br />**Geçici çözüm/beklenen müşteri eylemi:**<br /><br />1. Hive deposu altında yeni bir ilke oluşturun.<br />2. veritabanını gördüğünüz açılan menüde URI 'yi seçin.<br />3. yolu güncelleştirin (örnek:/tmp/*)<br />4. kullanıcıları ve grubu ekleyin ve kaydedin.<br />5. ekleme sorgusunu yeniden deneyin.|
-|**HDFS**|**Yok** |Birden çok KMS URI 'si için bir destek gerekir |**Önceki davranış:** KMS sağlayıcısı yolunu yapılandırmak için DFS. ENCRYPTION. Key. Provider. Uri özelliği kullanılmıştır.<br /><br />**Yeni davranış:** DFS. encryption. Key. Provider. Uri artık, KMS sağlayıcısı yolunu yapılandırmak için Hadoop. Security. Key. Provider. Path için kullanım dışı bırakılmıştır.|
+|**HDFS**|**yok** |Birden çok KMS URI 'si için bir destek gerekir |**Önceki davranış:** KMS sağlayıcısı yolunu yapılandırmak için DFS. ENCRYPTION. Key. Provider. Uri özelliği kullanılmıştır.<br /><br />**Yeni davranış:** DFS. encryption. Key. Provider. Uri artık, KMS sağlayıcısı yolunu yapılandırmak için Hadoop. Security. Key. Provider. Path için kullanım dışı bırakılmıştır.|
 |**Zeppelin**|[**ZEPPELIN-3271**](https://issues.apache.org/jira/browse/ZEPPELIN-3271)|Zamanlayıcıyı devre dışı bırakma seçeneği |**Etkilenen bileşen:** Zeppelin-Server<br /><br />**Önceki davranış:** Zeppelin önceki sürümlerinde, Scheduler 'ı devre dışı bırakma seçeneği yoktu.<br /><br />**Yeni davranış:** Varsayılan olarak, varsayılan olarak devre dışı bırakıldığı için kullanıcılar artık Zamanlayıcı 'yı görmez.<br /><br />**Geçici çözüm/beklenen müşteri eylemi:** Zamanlayıcı 'yı etkinleştirmek istiyorsanız,, ambarı 'ndan Zeppelin ayarlarındaki özel Zeppelin sitesi altında, azeppelin. Not defteri. cron. Enable değerini true değeriyle eklemeniz gerekir.|
 
 ### <a name="known-issues"></a>Bilinen sorunlar

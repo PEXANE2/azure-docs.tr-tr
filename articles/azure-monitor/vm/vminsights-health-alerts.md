@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/10/2020
-ms.openlocfilehash: 1b5fd10b3e0bd84aa7d34a918f4f2376130d2e45
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9c4b15fa2a8be32aa7397ae425f28f1deaac6b71
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102052271"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105024617"
 ---
 # <a name="vm-insights-guest-health-alerts-preview"></a>VM öngörüleri Konuk sistem durumu uyarıları (Önizleme)
 VM öngörüleri Konuk durumu, bir sanal makinenin durumunu, düzenli aralıklarla örneklendiği bir dizi performans ölçümlerine göre tanımlanan şekilde görüntülemenize olanak sağlar. Bir sanal makine veya izleyici uygun olmayan bir durumda değiştiğinde bir uyarı oluşturulabilir. Bu uyarıları [Azure izleyici 'de uyarı kuralları tarafından oluşturulanlar](../alerts/alerts-overview.md) ile görüntüleyebilir ve yönetebilir ve yeni bir uyarı oluşturulduğunda, önceden bildirim gönderilmesini seçebilirsiniz.
@@ -35,7 +35,7 @@ Her sanal makine için bir **Uyarı** veya **kritik** duruma her değişiklik ya
 Sanal makine durumu değiştiğinde bir uyarı zaten **başlatılmış durumdaysa,** ikinci bir uyarı oluşturulmaz, ancak aynı uyarının önem derecesi, sanal makinenin durumuyla eşleşecek şekilde değiştirilir. Örneğin, bir **Uyarı** uyarısı zaten **tetiklenme** durumunda sanal makine **kritik** duruma değişirse, bu uyarının önem derecesi **Sev1** olarak değiştirilir. Bir **Sev1** uyarısı zaten **tetiklendiğinde** sanal makine bir **Uyarı** durumuna değişirse, bu uyarının önem derecesi **Sev2** olarak değiştirilir. Sanal makine **sağlıklı** bir duruma geri taşınırsa, uyarı **Sev4** olarak değiştirilen önem derecesine sahip olacak şekilde çözümlenir.
 
 ## <a name="viewing-alerts"></a>Uyarıları görüntüleme
-VM öngörüleri Konuk durumu tarafından oluşturulan uyarıları Azure portal diğer [uyarılarla](../platform/alerts-overview.md#alerts-experience)görüntüleyin. Tüm izlenen kaynakların uyarılarını görüntülemek için **Azure izleyici** menüsünden **Uyarılar** ' ı seçebilir veya yalnızca o sanal makine için uyarıları görüntülemek üzere bir sanal makinenin menüsündeki **uyarıları** seçebilirsiniz.
+VM öngörüleri Konuk durumu tarafından oluşturulan uyarıları Azure portal diğer [uyarılarla](../alerts/alerts-overview.md#alerts-experience)görüntüleyin. Tüm izlenen kaynakların uyarılarını görüntülemek için **Azure izleyici** menüsünden **Uyarılar** ' ı seçebilir veya yalnızca o sanal makine için uyarıları görüntülemek üzere bir sanal makinenin menüsündeki **uyarıları** seçebilirsiniz.
 
 ## <a name="alert-properties"></a>Uyarı Özellikleri
 
