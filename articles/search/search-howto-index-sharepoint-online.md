@@ -8,12 +8,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: 5a44c40838b7f7fa9ca499ade49317ff9ce828fe
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 5888a7cc8aa58d1c6edab191e1243ebc60000fd6
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102498906"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048876"
 ---
 # <a name="how-to-configure-sharepoint-online-indexing-in-cognitive-search-preview"></a>Bilişsel Arama 'da SharePoint Online Dizin oluşturmayı yapılandırma (Önizleme)
 
@@ -147,7 +147,7 @@ api-key: [admin key]
 
 ```
 
-Daha fazla bilgi için bkz. [Dizin oluşturma (REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index).
+Daha fazla bilgi için bkz. [Dizin oluşturma (REST API)](/rest/api/searchservice/create-index).
 
 ### <a name="step-5-create-an-indexer"></a>5. Adım: Dizin Oluşturucu oluşturma
 Dizin Oluşturucu bir veri kaynağını hedef arama diziniyle bağlar ve veri yenilemeyi otomatikleştirmek için bir zamanlama sağlar. Dizin ve veri kaynağı oluşturulduktan sonra Dizin oluşturucuyu oluşturmaya hazırsınız demektir!
@@ -226,7 +226,7 @@ Content-Type: application/json
 api-key: [admin key]
 ```
 
-Dizin Oluşturucu durumu hakkında daha fazla bilgiye buradan [ulaşabilirsiniz: Dizin Oluşturucu durumunu Al](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status).
+Dizin Oluşturucu durumu hakkında daha fazla bilgiye buradan [ulaşabilirsiniz: Dizin Oluşturucu durumunu Al](/rest/api/searchservice/get-indexer-status).
 
 ## <a name="updating-the-data-source"></a>Veri kaynağını güncelleştirme
 Veri kaynağı nesnesinde güncelleştirme yoksa, Dizin Oluşturucu herhangi bir kullanıcı etkileşimi olmadan bir zamanlamaya göre çalıştırılabilir. Ancak, Azure Bilişsel Arama veri kaynağı nesnesi her güncelleştirildiği zaman, dizin oluşturucunun çalışması için yeniden oturum açmanız gerekir. Örneğin, veri kaynağı sorgusunu değiştirirseniz, `https://microsoft.com/devicelogin` ve yeni bir kod kullanarak yeniden oturum açmanız gerekir.
@@ -241,7 +241,7 @@ Veri kaynağı güncelleştirildikten sonra aşağıdaki adımları izleyin:
     api-key: [admin key]
     ```
 
-    Dizin Oluşturucu çalıştırma isteği hakkında daha fazla bilgiye buradan ulaşabilirsiniz: [Dizin oluşturucuyu çalıştırın](https://docs.microsoft.com/rest/api/searchservice/run-indexer).
+    Dizin Oluşturucu çalıştırma isteği hakkında daha fazla bilgiye buradan ulaşabilirsiniz: [Dizin oluşturucuyu çalıştırın](/rest/api/searchservice/run-indexer).
 
 1.  Dizin Oluşturucu durumunu denetleyin. Son Dizin Oluşturucu çalıştırmasında gidilecek bir hata varsa `https://microsoft.com/devicelogin` , bu sayfaya gidin ve yeni kodu sağlayın. 
 
@@ -251,7 +251,7 @@ Veri kaynağı güncelleştirildikten sonra aşağıdaki adımları izleyin:
     api-key: [admin key]
     ```
 
-    Dizin Oluşturucu durumu hakkında daha fazla bilgiye buradan [ulaşabilirsiniz: Dizin Oluşturucu durumunu Al](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status).
+    Dizin Oluşturucu durumu hakkında daha fazla bilgiye buradan [ulaşabilirsiniz: Dizin Oluşturucu durumunu Al](/rest/api/searchservice/get-indexer-status).
 
 1.  Oturum aç
 
@@ -359,7 +359,7 @@ Bazı belgelerde Azure Bilişsel Arama, içerik türünü belirleyemiyor veya ba
 "parameters" : { "configuration" : { "failOnUnprocessableDocument" : false } }
 ```
 
-Azure Bilişsel Arama, dizini oluşturulmuş belgelerin boyutunu sınırlandırır. Bu sınırlar [Azure bilişsel arama hizmet sınırları](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)bölümünde belgelenmiştir. Büyük boyutlu belgeler varsayılan olarak hata olarak değerlendirilir. Ancak, `indexStorageMetadataOnlyForOversizedDocuments` yapılandırma parametresini doğru olarak ayarlarsanız, büyük boyutlu belgelerin depolama meta verilerini dizine almaya devam edebilirsiniz:
+Azure Bilişsel Arama, dizini oluşturulmuş belgelerin boyutunu sınırlandırır. Bu sınırlar [Azure bilişsel arama hizmet sınırları](./search-limits-quotas-capacity.md)bölümünde belgelenmiştir. Büyük boyutlu belgeler varsayılan olarak hata olarak değerlendirilir. Ancak, `indexStorageMetadataOnlyForOversizedDocuments` yapılandırma parametresini doğru olarak ayarlarsanız, büyük boyutlu belgelerin depolama meta verilerini dizine almaya devam edebilirsiniz:
 
 ```http
 "parameters" : { "configuration" : { "indexStorageMetadataOnlyForOversizedDocuments" : true } }

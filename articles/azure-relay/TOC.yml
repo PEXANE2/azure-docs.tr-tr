@@ -37,7 +37,7 @@
         - name: Kimlik doğrulama ve yetkilendirme
           href: relay-authentication-and-authorization.md
         - name: Yerleşik güvenlik denetimleri
-          href: service-bus-relay-security-controls.md
+          href: ../service-bus-messaging/security-baseline.md
         - name: Ağ güvenliği
           href: network-security.md
     - name: Karma Bağlantılar protokolü

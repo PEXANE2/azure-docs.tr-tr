@@ -347,7 +347,7 @@
       items:
         - name: Access 'ten
           href: migration-guides/database/access-to-sql-database-guide.md
-        - name: DB2’den
+        - name: DB2 'den
           href: migration-guides/database/db2-to-sql-database-guide.md
         - name: Oracle 'dan
           href: migration-guides/database/oracle-to-sql-database-guide.md
@@ -759,7 +759,7 @@
               href: managed-instance/replication-two-instances-and-sql-server-configure-tutorial.md
     - name: Geçiş kılavuzları
       items:
-        - name: DB2’den
+        - name: DB2 'den
           href: migration-guides/managed-instance/db2-to-managed-instance-guide.md
         - name: Oracle 'dan
           href: migration-guides/managed-instance/oracle-to-managed-instance-guide.md
@@ -1262,7 +1262,7 @@
       items:
         - name: Genel Bakış
           href: migration-guides/virtual-machines/sql-server-to-sql-on-azure-vm-migration-overview.md
-        - name: DB2’den
+        - name: DB2 'den
           href: migration-guides/virtual-machines/db2-to-sql-on-azure-vm-guide.md
         - name: Oracle 'dan
           href: migration-guides/virtual-machines/oracle-to-sql-on-azure-vm-guide.md

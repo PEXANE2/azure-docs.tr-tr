@@ -1,5 +1,5 @@
 ---
-title: "SQL yönetilen örneği 'ne SQL Server: geçişe genel bakış"
+title: "Azure SQL yönetilen örneği 'ne SQL Server: geçişe genel bakış"
 description: SQL Server veritabanlarınızı Azure SQL yönetilen örneği 'ne geçirebileceğiniz farklı araçlar ve seçenekler hakkında bilgi edinin.
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
@@ -10,14 +10,14 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 02/18/2020
-ms.openlocfilehash: ac2b535b2e6b7a6b4169d08dd1768d69e685a216
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 1c187ae83ce87c9d4d8da4aa1a5dc38163261b52
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102562036"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105024906"
 ---
-# <a name="migration-overview-sql-server-to-sql-managed-instance"></a>Geçişe genel bakış: SQL yönetilen örneğine SQL Server
+# <a name="migration-overview-sql-server-to-azure-sql-managed-instance"></a>Geçişe genel bakış: Azure SQL yönetilen örneği 'ne SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
 
 SQL Server Azure SQL yönetilen örneği 'ne geçirmeye yönelik farklı geçiş seçenekleri ve konuları hakkında bilgi edinin. 
@@ -30,7 +30,7 @@ SQL Server Azure SQL yönetilen örneği 'ne geçirmeye yönelik farklı geçiş
 - İşlem altyapısı (Google Cloud Platform-GCP)  
 - SQL Server için bulut SQL (Google Cloud Platform – GCP) 
 
-Diğer senaryolar için [veritabanı geçiş kılavuzuna](https://datamigration.microsoft.com/)bakın. 
+Diğer geçiş kılavuzlarında, bkz. [Veritabanı geçişi](https://docs.microsoft.com/data-migration). 
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -60,7 +60,7 @@ SQL Server 'larınızı SQL yönetilen örneği 'ne geçirmenin önemli avantajl
 - Dosya alt sisteminin ana hat GÇ gecikmesini kullanarak Genel Amaçlı (5 MS 'den fazla gecikme) ve İş Açısından Kritik (3 MS 'den az gecikme) hizmet katmanlarından birini seçin. 
 - Beklenen GÇ performansına ulaşmak için verilerin ve günlük dosyalarının boyutunu önceden ayırmak üzere temel aktarım hızını kullanın. 
 
-Dağıtım sırasında işlem ve depolama kaynakları ' nı seçebilir ve sonra uygulamanız için kapalı kalma süresi olmadan [Azure Portal](../../database/scale-resources.md) kullanarak bunları değiştirebilirsiniz. 
+Dağıtım sırasında işlem ve depolama kaynakları ' nı seçebilir ve sonra uygulamanız için kapalı kalma süresi olmadan [Azure Portal kullanarak bunları değiştirebilirsiniz](../../database/scale-resources.md) . 
 
 > [!IMPORTANT]
 > [Yönetilen örnek sanal ağ gereksinimlerindeki](../../managed-instance/connectivity-architecture-overview.md#network-requirements) herhangi bir tutarsızlık, yeni örnekler oluşturmanızı veya var olanları kullanmanızı engelleyebilir.  [Yeni oluşturma](../../managed-instance/virtual-network-subnet-create-arm-template.md)   ve [Mevcut ağları yapılandırma](../../managed-instance/vnet-existing-add-subnet.md)hakkında daha fazla bilgi edinin   . 
@@ -100,9 +100,9 @@ Aşağıdaki tabloda önerilen geçiş araçları listelenmektedir:
 
 Aşağıdaki tabloda alternatif geçiş araçları listelenmektedir: 
 
-|Teknoloji |Açıklama  |
+|**Teknoloji** |**Açıklama**  |
 |---------|---------|
-|[İşlem çoğaltması](../../managed-instance/replication-transactional-overview.md) | İşlem tutarlılığını koruyarak bir yayımcı-abone türü geçiş seçeneği sunarak, kaynak SQL Server veritabanı tabloları ile SQL yönetilen örneği arasında veri çoğaltın. |  |
+|[İşlem çoğaltması](../../managed-instance/replication-transactional-overview.md) | İşlem tutarlılığını koruyarak bir yayımcı-abone türü geçiş seçeneği sunarak, kaynak SQL Server veritabanı tabloları ile SQL yönetilen örneği arasında veri çoğaltın. | 
 |[Toplu kopyalama](/sql/relational-databases/import-export/import-and-export-bulk-data-by-using-the-bcp-utility-sql-server)| [Toplu kopyalama programı (bcp) yardımcı programı](/sql/tools/bcp-utility) , verileri bir SQL Server örneğinden bir veri dosyasına kopyalar. Kaynaktaki verileri dışarı aktarmak ve veri dosyasını hedef SQL yönetilen örneğine aktarmak için BCP yardımcı programını kullanın.</br></br> Verileri Azure SQL veritabanına taşımaya yönelik yüksek hızlı toplu kopyalama işlemleri için [akıllı toplu kopyalama aracı](/samples/azure-samples/smartbulkcopy/smart-bulk-copy/) , paralel kopyalama görevlerinden yararlanarak aktarım hızlarını en üst düzeye çıkarmak için kullanılabilir. | 
 |[İçeri aktarma Verme Sihirbazı/BACPAC](../../database/database-import.md?tabs=azure-powershell)| [Bacpac](/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) , bir `.bacpac` veritabanının şemasını ve verilerini kapsülleyen bir uzantıya sahip bir Windows dosyasıdır. BACPAC, kaynak SQL Server verileri dışarı aktarmak ve dosyayı Azure SQL yönetilen örneği 'ne geri aktarmak için kullanılabilir.  |  
 |[Azure Data Factory (ADF)](../../../data-factory/connector-azure-sql-managed-instance.md)| Azure Data Factory [kopyalama etkinliği](../../../data-factory/copy-activity-overview.md) , yerleşik bağlayıcılar ve bir [Integration Runtime](../../../data-factory/concepts-integration-runtime.md)kullanarak VERILERI kaynak SQL Server veritabanından SQL yönetilen örneğine geçirir.</br> </br> ADF, verileri SQL Server kaynaklarından SQL yönetilen örneğine taşımak için çok sayıda [bağlayıcı](../../../data-factory/connector-overview.md) destekler. |
@@ -228,7 +228,7 @@ Bazı özellikler yalnızca [veritabanı uyumluluk düzeyi](/sql/relational-data
 
 Ek Yardım için, gerçek dünya geçiş projeleri için geliştirilen aşağıdaki kaynaklara bakın.
 
-|Varlık  |Description  |
+|Varlık  |Açıklama  |
 |---------|---------|
 |[Veri iş yükü değerlendirmesi modeli ve aracı](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| Bu araç, belirli bir iş yükü için önerilen "en uygun" hedef platformları, bulut hazırlığı ve uygulama/veritabanı düzeltme düzeyini sağlar. Basit ve tek tıklamayla bir hesaplama ve rapor oluşturma olanağı sunarak, ve otomatikleştirilmiş ve Tekdüzen hedef platformu karar süreci sağlayarak büyük Emlak değerlendirmelerini hızlandırmaya yardımcı olur.|
 |[DBLoader yardımcı programı](https://github.com/microsoft/DataMigrationTeam/tree/master/DBLoader%20Utility)|DBLoader, sınırlandırılmış metin dosyalarından SQL Server içine veri yüklemek için kullanılabilir. Bu Windows konsol yardımcı programı, Azure SQL MI dahil olmak üzere tüm SQL Server sürümlerinde çalışan SQL Server Native Client BulkLoad arabirimini kullanır.|
@@ -241,7 +241,7 @@ Bu kaynaklar, Azure veri grubu Mühendisliği ekibi tarafından sponsorlu Data S
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-SQL Server Azure SQL yönetilen örneği 'ne geçirmeye başlamak için, [SQL Server SQL yönetilen örnek geçiş kılavuzuna](sql-server-to-managed-instance-guide.md)bakın.
+SQL Server Azure SQL yönetilen örneği 'ne geçirmeye başlamak için [SQL Server Azure SQL yönetilen örnek geçiş kılavuzuna](sql-server-to-managed-instance-guide.md)bakın.
 
 - Çeşitli veritabanı ve veri geçişi senaryolarında ve özel görevlerin yanı sıra size yardımcı olmak için sunulan Microsoft ve üçüncü taraf hizmet ve araçların bir matrisi için bkz. [veri geçişi Için hizmet ve araçlar](../../../dms/dms-tools-matrix.md).
 

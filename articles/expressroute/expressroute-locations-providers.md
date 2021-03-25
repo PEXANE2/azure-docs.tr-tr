@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/10/2021
 ms.author: duau
-ms.openlocfilehash: 69c600384a7877f3534bae0b57f862187feb32ca
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a43f95ad65e95db2b69b32c3fe8d62db71a98a17
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104581516"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025212"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute ortakları ve eşleme konumları
 
@@ -42,8 +42,8 @@ Aşağıdaki tablo, coğrafi bölge içindeki Azure bölgeler ile ExpressRoute k
 | **Geopolitik bölge** | **Azure bölgeleri** | **ExpressRoute konumları** |
 | --- | --- | --- |
 | **Australia Government** | Orta Avustralya, Orta Avustralya 2 |Kanberra, Kanberra2 |
-| **Avrupa** | Fransa Orta, Fransa Güney, Almanya Kuzey, Almanya Orta Batı, Kuzey Avrupa, Norveç Doğu, Norveç Batı, İsviçre Kuzey, İsviçre Batı, UK Batı, UK Güney, Batı Avrupa |Amsterdam, Amsterdam2, Berlin, Copenhagen, Dublin, Frankfurt, Geneva, Londra, London2, Marseille, MILAN, Münih, Newport (Wales), Oslo, Paris, Stavanger, Stockholm, Zurich |
-| **Kuzey Amerika** | Doğu ABD, Batı ABD, Doğu ABD 2, Batı ABD 2, Orta ABD, Orta Güney ABD, Orta Kuzey ABD, Orta Batı ABD, Orta Kanada, Doğu Kanada |Atlanta, Chicago, Dallas, Denver, Las Vegas, Los Angeles, Los Angeles2, MIAMI, Minneapolis, Montreal, New York, Phoenix, Quebec City, Queretaro (Meksika), Quincy, San Antonio, Seattle, Silicon Valley, Silicon Valley2, Toron, Vantaya dili, Washington DC, Washington DC2 |
+| **Avrupa** | Fransa Orta, Fransa Güney, Almanya Kuzey, Almanya Orta Batı, Kuzey Avrupa, Norveç Doğu, Norveç Batı, İsviçre Kuzey, İsviçre Batı, UK Batı, UK Güney, Batı Avrupa |Amsterdam, Amsterdam2, Berlin, Copenhagen, Dublin, Frankfurt, Frankfurt2, Geneva, Londra, London2, Madrid, Marseille, MILAN, Münih, Newport (Wales), Oslo, Paris, Stavanger, Stockholm, Zurich |
+| **Kuzey Amerika** | Doğu ABD, Batı ABD, Doğu ABD 2, Batı ABD 2, Orta ABD, Orta Güney ABD, Orta Kuzey ABD, Orta Batı ABD, Orta Kanada, Doğu Kanada |Atlanta, Chicago, Dallas, Denver, Las Vegas, Los Angeles, Los Angeles2, MIAMI, Minneapolis, Montreal, New York, Phoenix, Quebec City, Queretaro (Meksika), Quincy, San Antonio, Seattle, Silicon Valley, Silicon Valley2, Toron, Toronto2, Vantaya ver, Washington DC, Washington DC2 |
 | **Asya** | Doğu Asya, Güneydoğu Asya | Bangkok, Hong Kong, Hong Kong2, Jakarta, Kuala Lumpur, Singapur, Singapur2, Taipei |
 | **Hindistan** | Hindistan Batı, Hindistan Orta, Hindistan Güney |Madras, Madras2, Bombay, Bombay2 |
 | **Japonya** | Batı Japonya, Doğu Japonya |Osaka, Tokyo, Tokyo2 |
@@ -51,7 +51,7 @@ Aşağıdaki tablo, coğrafi bölge içindeki Azure bölgeler ile ExpressRoute k
 | **Güney Kore** | Güney Kore - Orta, Güney Kore - Güney |Busan, Seul|
 | **BAE** | BAE Orta, BAE Kuzey | Dubai, Dubai2 |
 | **Güney Afrika** | Güney Afrika Batı, Güney Afrika Kuzey |Cape Town, Johannesburg |
-| **Güney Amerika** | Güney Brezilya |Bogota, Sao Paulo |
+| **Güney Amerika** | Güney Brezilya |Bogota, RIO ve Içeeiro, Sao Paulo |
 
 ## <a name="azure-regions-and-geopolitical-boundaries-for-national-clouds"></a>Ulusal bulutlar için Azure bölgeleri ve geopolitik sınırlar
 Aşağıdaki tablo ulusal bulutlar için bölgeler ve coğrafi sınırlar hakkında bilgi sağlar.
@@ -167,7 +167,7 @@ Azure Ulusal bulutlar birbirinden ve küresel ticari Azure 'dan yalıtılmışt�
 | **Şubesi** | [Equinix DA3](https://www.equinix.com/locations/americas-colocation/united-states-colocation/dallas-data-centers/da3/) | yok | 10G, 100G | Equinix, Megaport, Verizon |
 | **New Yok** | [Equinix NY5](https://www.equinix.com/locations/americas-colocation/united-states-colocation/new-york-data-centers/ny5/) | yok | 10G, 100G | Equinix, CenturyLink Cloud Connect, Verizon |
 | **Phoenix** | [CyrusOne Chandler](https://cyrusone.com/locations/arizona/phoenix-arizona-chandler/) | US Gov Arizona | 10G, 100G | &T Netbono, CenturyLink Cloud Connect, Megaport |
-| **San Antonio** | [CyrusOne SA2](https://cyrusone.com/locations/texas/san-antonio-texas-ii/) | US Gov Texas | yok | CenturyLink Cloud Connect, Megaport |
+| **San Antonio** | [CyrusOne SA2](https://cyrusone.com/locations/texas/san-antonio-texas-ii/) | US Gov Texas | 10G, 100G | CenturyLink Cloud Connect, Megaport |
 | **Silikon Vadisi** | [Equinix SV4](https://www.equinix.com/locations/americas-colocation/united-states-colocation/silicon-valley-data-centers/sv4/) | yok | 10G, 100G | &T, Equinx, düzey 3 Iletişimleri, Verizon |
 | **Seattle** | [Equinix SE2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/seattle-data-centers/se2/) | yok | 10G, 100G | Equinix, Megaport |
 | **Washington DC** | [Equinix DC2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/washington-dc-data-centers/dc2/) | US DoD Doğu, US Gov Virginia | 10G, 100G | &T Netbono, CenturyLink Cloud Connect, Equinx, düzey 3 Communications, Megaport, Verizon |

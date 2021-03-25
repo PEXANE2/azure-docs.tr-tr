@@ -2,18 +2,19 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/17/2021
+ms.date: 03/24/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: bd66044e0b5ac2be592d18dbadfe948793cf6062
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 21b3f13691b5453abf355149f72bc2a8c1f46d83
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104591233"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105036211"
 ---
 |Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
+|[Azure Arc etkin Kubernetes kümelerinde Azure Defender 'ın uzantısı yüklü olmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8dfab9c4-fe7b-49ad-85e4-1e9be085358f) |Azure wiki 'nin Azure Arc için uzantısı, Arc etkin Kubernetes kümeleriniz için tehdit koruması sağlar. Uzantı kümedeki tüm denetim düzlemi (ana) düğümlerinden verileri toplar ve daha fazla analize yönelik olarak bulutta Kubernetes arka ucu için Azure Defender 'a gönderir. Daha fazla bilgi edinin [https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc](https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc) . |Auditınotexists, devre dışı |[1.0.0-Önizleme](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ASC_Audit_Azure_Defender_Kubernetes_Arc_Extension.json) |
 |[Kubernetes kümelerini, HTTPS gizli dizilerini kullanarak belirtilen Gima yapılandırmasıyla yapılandırma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa6f560f4-f582-4b67-b123-a37dcd1bf7ea) |Kümelerin, tanımlanan git deposundan iş yükleri ve yapılandırmalar için Truth kaynaklarını almasını güvence altına almak için, Kubernetes kümelerine ' sourceControlConfiguration ' dağıtın. Bu tanım, Key Vault depolanan HTTPS Kullanıcı ve anahtar gizli dizileri gerektirir. Yönergeler için, adresini ziyaret edin [https://aka.ms/K8sGitOpsPolicy](https://aka.ms/K8sGitOpsPolicy) . |deployIfNotExists, Auditınotexists, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/Deploy-GitOps-to-Kubernetes-cluster-HTTPS-secrets_DINE.json) |
 |[Kubernetes kümelerini, gizli dizi kullanarak belirtilen Gima yapılandırmasıyla yapılandırın](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d61c4d2-aef2-432b-87fc-7f96b019b7e1) |Kümelerin, tanımlanan git deposundan iş yükleri ve yapılandırmalar için Truth kaynaklarını almasını güvence altına almak için, Kubernetes kümelerine ' sourceControlConfiguration ' dağıtın. Bu tanım için gizli dizi yok. Yönergeler için, adresini ziyaret edin [https://aka.ms/K8sGitOpsPolicy](https://aka.ms/K8sGitOpsPolicy) . |deployIfNotExists, Auditınotexists, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/Deploy-GitOps-to-Kubernetes-cluster-no-secrets_DINE.json) |
 |[SSH gizli dizilerini kullanarak Kubernetes kümelerini belirtilen Giuple yapılandırma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc050047b-b21b-4822-8a2d-c1e37c3c0c6a) |Kümelerin, tanımlanan git deposundan iş yükleri ve yapılandırmalar için Truth kaynaklarını almasını güvence altına almak için, Kubernetes kümelerine ' sourceControlConfiguration ' dağıtın. Bu tanım Key Vault için SSH özel anahtar gizli anahtarı gerektirir. Yönergeler için, adresini ziyaret edin [https://aka.ms/K8sGitOpsPolicy](https://aka.ms/K8sGitOpsPolicy) . |deployIfNotExists, Auditınotexists, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/Deploy-GitOps-to-Kubernetes-cluster-SSH-secrets_DINE.json) |

@@ -1,5 +1,5 @@
 ---
-title: "Oracle 'dan SQL 'e yönetilen örnek: geçiş kılavuzu"
+title: "Oracle 'dan Azure SQL yönetilen örneği: geçiş kılavuzu"
 description: Bu kılavuzda Oracle şemalarınızı Oracle için SQL Server Geçiş Yardımcısı kullanarak Azure SQL yönetilen örneği 'ne geçirmenize öğretilir.
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
@@ -10,19 +10,19 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: c54ec2cc6e17d9693e25f1471922da8c7c023e36
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1c2fbc90d3956ab831e6d9fac4e1e2d3540e1c6d
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104602948"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025433"
 ---
 # <a name="migration-guide-oracle-to-azure-sql-managed-instance"></a>Geçiş Kılavuzu: Oracle 'dan Azure SQL yönetilen örneği
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
 
 Bu kılavuzda Oracle şemalarınızı Oracle için SQL Server Geçiş Yardımcısı kullanarak Azure SQL yönetilen örneği 'ne geçirmenize öğretilir. 
 
-Diğer senaryolar için [veritabanı geçiş kılavuzuna](https://datamigration.microsoft.com/)bakın.
+Diğer geçiş kılavuzlarında, bkz. [Veritabanı geçişi](https://docs.microsoft.com/data-migration). 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -49,11 +49,11 @@ Bir değerlendirme oluşturmak için aşağıdaki adımları izleyin:
 
 1. [Oracle için SQL Server Geçiş Yardımcısı](https://www.microsoft.com/en-us/download/details.aspx?id=54258)açın. 
 1. **Dosya** ' yı ve ardından **Yeni proje**' yi seçin. 
-1. Projenizin kaydedileceği bir konum belirtin ve ardından açılan listeden geçiş hedefi olarak Azure SQL yönetilen örneği ' ni seçin. **Tamam**’ı seçin.
+1. Projenizin kaydedileceği bir konum belirtin ve ardından açılan listeden geçiş hedefi olarak Azure SQL yönetilen örneği ' ni seçin. **Tamam ' ı** seçin:
 
    ![Yeni Proje](./media/oracle-to-managed-instance-guide/new-project.png)
 
-1. **Oracle 'A Bağlan**' ı seçin. Oracle **'A Bağlan** Iletişim kutusunda Oracle bağlantı ayrıntıları için değerler girin.
+1. **Oracle 'A Bağlan**' ı seçin. Oracle **'A Bağlan** Iletişim kutusunda Oracle bağlantı ayrıntıları için değerler girin:
 
    ![Oracle 'a Bağlan](./media/oracle-to-managed-instance-guide/connect-to-oracle.png)
 
@@ -61,7 +61,7 @@ Bir değerlendirme oluşturmak için aşağıdaki adımları izleyin:
 
    ![Oracle şeması Seç](./media/oracle-to-managed-instance-guide/select-schema.png)
 
-1. **Oracle meta veri Gezgini**'nde geçirmek istediğiniz Oracle şemasına sağ tıklayıp **rapor oluştur**' u seçin. Bu, bir HTML raporu oluşturur. Alternatif olarak, veritabanını seçtikten sonra gezinti çubuğundan **rapor oluştur** ' u seçebilirsiniz.
+1. **Oracle meta veri Gezgini**'nde geçirmek istediğiniz Oracle şemasına sağ tıklayıp **rapor oluştur**' u seçin. Bu, bir HTML raporu oluşturur. Alternatif olarak, veritabanını seçtikten sonra gezinti çubuğundan **rapor oluştur** ' u de seçebilirsiniz:
 
    ![Rapor oluştur](./media/oracle-to-managed-instance-guide/create-report.png)
 
@@ -78,7 +78,7 @@ Varsayılan veri türü eşlemelerini doğrulayın ve gerekirse gereksinimlere g
 
 1. Menüden **Araçlar** ' ı seçin. 
 1. **Proje ayarları**' nı seçin. 
-1. **Tür eşlemeleri** sekmesini seçin. 
+1. **Tür eşlemeleri** sekmesini seçin:
 
    ![Tür eşlemeleri](./media/oracle-to-managed-instance-guide/type-mappings.png)
 
@@ -91,24 +91,26 @@ Varsayılan veri türü eşlemelerini doğrulayın ve gerekirse gereksinimlere g
 1. Seçim Deyimlere dinamik veya geçici sorgular ekleyin. Düğüme sağ tıklayın ve ardından **deyim Ekle**' yi seçin.
 1. **Azure SQL yönetilen örneği 'Ne Bağlan**' ı seçin. 
     1. Veritabanınızı Azure SQL yönetilen örneği 'ne bağlamak için bağlantı ayrıntılarını girin.
-    1. Açılan listeden hedef veritabanınızı seçin.
-    1. **Bağlan**’ı seçin.
+    1. Açılan listeden hedef veritabanınızı seçin veya yeni bir ad sağlayın, bu durumda hedef sunucuda bir veritabanının oluşturulması gerekir. 
+    1. Kimlik doğrulama ayrıntılarını sağlayın. 
+    1. **Bağlan**' ı seçin:
 
     ![SQL Yönetilen Örneğine bağlanma](./media/oracle-to-managed-instance-guide/connect-to-sql-managed-instance.png)
 
-1. **Oracle meta veri Gezgini** ' nde Oracle şemasına sağ tıklayıp **Şemayı Dönüştür**' ü seçin. Alternatif olarak, şemanızı seçtikten sonra üst gezinti çubuğundan **Şemayı Dönüştür** ' i de seçebilirsiniz.
+1. **Oracle meta veri Gezgini** ' nde Oracle şemasına sağ tıklayıp **Şemayı Dönüştür**' ü seçin. Alternatif olarak, şemanızı seçtikten sonra üst gezinti çubuğundan **Şemayı Dönüştür** ' i de seçebilirsiniz:
 
    ![Şemayı Dönüştür](./media/oracle-to-managed-instance-guide/convert-schema.png)
 
-1. Dönüştürme tamamlandıktan sonra, olası sorunları belirlemek ve bunları önerilere göre ele almak için dönüştürülen nesneleri özgün nesnelere karşılaştırın ve gözden geçirin.
+1. Dönüştürme tamamlandıktan sonra olası sorunları belirlemek ve bunları önerilere göre ele almak için dönüştürülen nesneleri özgün nesnelere karşılaştırın ve gözden geçirin:
 
    ![Tablo önerilerini karşılaştırma](./media/oracle-to-managed-instance-guide/table-comparison.png)
 
-   Dönüştürülmüş Transact-SQL metnini özgün Saklı yordamlarla karşılaştırın ve önerileri gözden geçirin: 
+   Dönüştürülmüş Transact-SQL metnini özgün kodla karşılaştırın ve önerileri gözden geçirin: 
 
    ![Yordam önerilerini karşılaştırın](./media/oracle-to-managed-instance-guide/procedure-comparison.png)
 
-1. Çevrimdışı şema düzeltme alıştırması için projeyi yerel olarak kaydedin. **Dosya** menüsünden **projeyi kaydet** ' i seçin.
+1. Çıkış bölmesinde **sonuçları gözden geçir** ' i seçin ve **hata listesi** bölmesindeki hataları gözden geçirin. 
+1. Çevrimdışı şema düzeltme alıştırması için projeyi yerel olarak kaydedin. **Dosya** menüsünden **projeyi kaydet** ' i seçin. Bu, şemayı SQL yönetilen örneği 'ne yayımlamadan önce, kaynak ve hedef şemaları çevrimdışı olarak değerlendirmek ve düzeltme gerçekleştirmek için bir fırsat sağlar.
 
 ## <a name="migrate"></a>Geçiş
 
@@ -116,7 +118,7 @@ Veritabanlarınızı değerlendirmek ve tutarsızlıkları doğruladıktan sonra
 
 Şemanızı yayımlamak ve verilerinizi geçirmek için şu adımları izleyin:
 
-1. Şemayı yayımlama: **Azure SQL yönetilen örnek meta veri Gezgini** ' nde **veritabanları** düğümünden veritabanına sağ tıklayın ve **veritabanıyla Synchronize**' ı seçin.
+1. Şemayı yayımlama: **Oracle meta veri Gezgini**'nde geçirmek istediğiniz şemaya veya nesneye sağ tıklayın ve **veri geçişi**' ni seçin. Alternatif olarak, üst çizgi gezinti çubuğundan **veri geçişini** seçebilirsiniz. Tüm bir veritabanının verilerini geçirmek için veritabanı adının yanındaki onay kutusunu işaretleyin. Ayrı tablolardan verileri geçirmek için veritabanını genişletin, tablolar ' ı genişletin ve ardından tablonun yanındaki onay kutusunu işaretleyin. Ayrı tablolardaki verileri atlamak için onay kutusunu temizleyin:
 
    ![Veritabanıyla Synchronize](./media/oracle-to-managed-instance-guide/synchronize-with-database.png)
 
@@ -129,18 +131,17 @@ Veritabanlarınızı değerlendirmek ve tutarsızlıkları doğruladıktan sonra
    ![Verileri geçirme](./media/oracle-to-managed-instance-guide/migrate-data.png)
 
 1. Oracle ve Azure SQL yönetilen örneği için bağlantı ayrıntılarını sağlayın.
-1. **Veri geçiş raporunu** görüntüleyin.
+1. Geçiş tamamlandıktan sonra, **veri geçiş raporunu** görüntüleyin:  
 
    ![Veri geçiş raporu](./media/oracle-to-managed-instance-guide/data-migration-report.png)
 
-1. [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) kullanarak Azure SQL yönetilen örneğinize bağlanın ve verileri ve şemayı inceleyerek geçişi doğrulayın.
+1. [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) kullanarak Azure SQL yönetilen örneğinize bağlanın ve verileri ve şemayı inceleyerek geçişi doğrulayın:
 
    ![SSMA 'da doğrula](./media/oracle-to-managed-instance-guide/validate-data.png)
 
 
 Alternatif olarak, geçişi gerçekleştirmek için SQL Server Integration Services (SSIS) de kullanabilirsiniz. Daha fazla bilgi edinmek için şu makalelere bakın: 
 
-- [SQL Server Geçiş Yardımcısı: Microsoft dışı veri platformlarındaki verileri değerlendirme ve SQL Server yapma](https://blogs.msdn.microsoft.com/datamigration/2016/11/16/sql-server-migration-assistant-how-to-assess-and-migrate-databases-from-non-microsoft-data-platforms-to-sql-server/)
 - [SQL Server Integration Services kullanmaya başlama](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services)
 - [SQL Server Integration Services: SSIS for Azure ve hibrit veri hareketi](https://download.microsoft.com/download/D/2/0/D20E1C5F-72EA-4505-9F26-FEF9550EFD44/SSIS%20Hybrid%20and%20Azure.docx)
 
@@ -187,7 +188,7 @@ Bu geçiş senaryosunu tamamlamaya yönelik ek yardım için, lütfen gerçek d�
 | [Oracle envanter betiği yapıtları](https://github.com/Microsoft/DataMigrationTeam/tree/master/Oracle%20Inventory%20Script%20Artifacts)                 | Bu varlık, Oracle sistem tabloları ' nı ziyaret eden bir PL/SQL sorgusu içerir ve şema türüne, nesne türüne ve duruma göre nesne sayısını sağlar. Ayrıca, her şemada ' ham veriler ' ' in kabaca bir tahminini ve her şemadaki tabloların, bir CSV biçiminde depolanmış sonuçlarla birlikte boyutlandırılmasını sağlar.                                                                                                               |
 | [SSMA Oracle değerlendirmesi toplama & birleştirme işlemini otomatikleştirin](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Automate%20SSMA%20Oracle%20Assessment%20Collection%20%26%20Consolidation)                                             | Bu kaynak kümesi, konsol modunda SSMA değerlendirmesi çalıştırmak için gereken XML dosyalarını oluşturmak için bir. csv dosyasını girdi olarak (proje klasörlerinde sources.csv) kullanır. source.csv, müşteri tarafından mevcut Oracle örneklerinin envanterini temel alarak sağlanır. Çıktı dosyaları AssessmentReportGeneration_source_1.xml, ServersConnectionFile.xml ve VariableValueFile.xml.|
 | [Oracle ortak hataları ve bunların nasıl düzeltileceğini gösteren SSMA](https://aka.ms/dmj-wp-ssma-oracle-errors)                                                           | Oracle ile WHERE yan tümcesinde skalar olmayan bir koşul atayabilirsiniz. Ancak SQL Server bu tür bir koşulu desteklemez. Sonuç olarak, Oracle için SQL Server Geçiş Yardımcısı (SSMA), bir hata O2SS0001 oluşturmak yerine WHERE yan tümcesinde skalar olmayan bir koşula sahip sorguları dönüştürmez. Bu Teknik İnceleme, sorun hakkında daha fazla ayrıntı ve sorunu çözmeye yönelik yolları sağlar.          |
-| [SQL Server geçiş el kitabı için Oracle](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20SQL%20Server%20Migration%20Handbook.pdf)                | Bu belge, bir Oracle şemasının en son SQL Server sürümüne geçirilmesi ile ilişkili görevlere odaklanır. Geçiş, özelliklerde/işlevlerde değişiklikler gerektiriyorsa, veritabanını kullanan uygulamalardaki her bir değişikliğin olası etkisi dikkatle düşünülmelidir.                                                     |
+| [SQL Server geçiş el kitabı için Oracle](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20SQL%20Server%20Migration%20Handbook.pdf)                | Bu belge, bir Oracle şemasını SQL Server Base 'in en son sürümüne geçirme ile ilişkili görevlere odaklanır. Geçiş, özelliklerde/işlevlerde değişiklikler gerektiriyorsa, veritabanını kullanan uygulamalardaki her bir değişikliğin olası etkisi dikkatle düşünülmelidir.                                                     |
 
 Bu kaynaklar, Azure veri grubu Mühendisliği ekibi tarafından sponsorlu Data SQL Dokja programının bir parçası olarak geliştirilmiştir. Data SQL Dokja programının temel kreter, Microsoft 'un Azure veri platformuna yönelik karmaşık modernleştirme ve rekabet veri platformu geçiş fırsatlarını engellemeyi ve hızlandırmanızı sağlar. Kuruluşunuzun Data SQL Dokja programına katılım ile ilgilenmesini düşünüyorsanız, lütfen hesap ekibinize başvurarak bir aday göndermesini isteyin.
 
@@ -196,7 +197,7 @@ Bu kaynaklar, Azure veri grubu Mühendisliği ekibi tarafından sponsorlu Data S
 - Çeşitli veritabanı ve veri geçişi senaryolarında ve özel görevlerin yanı sıra size yardımcı olmak için kullanabileceğiniz Microsoft ve üçüncü taraf hizmet ve araçların bir matrisi için, [veri geçişi Için hizmet ve araçlar](https://docs.microsoft.com/azure/dms/dms-tools-matrix)makalesine bakın.
 
 - Azure SQL yönetilen örneği hakkında daha fazla bilgi edinmek için bkz.: 
-  - [Azure SQL yönetilen örneği 'ne genel bakış](../../database/sql-database-paas-overview.md)
+  - [Azure SQL yönetilen örneği 'ne genel bakış](../../managed-instance/sql-managed-instance-paas-overview.md)
   - [Azure toplam sahip olma maliyeti (TCO) Hesaplayıcı](https://azure.microsoft.com/en-us/pricing/tco/calculator/)
 
 

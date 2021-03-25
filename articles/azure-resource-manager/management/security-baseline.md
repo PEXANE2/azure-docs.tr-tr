@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 996159f7014e735c8a4b3e5975c2716ce1ab6910
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cca60ba9948299f4e9557f26097d4a23e4ebea12
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101728554"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025348"
 ---
 # <a name="azure-security-baseline-for-azure-resource-manager"></a>Azure Resource Manager için Azure Güvenlik temeli
 
@@ -32,9 +32,9 @@ Azure Resource Manager Azure Güvenlik kıyaslaması ile tamamen nasıl eşlendi
 
 - [Azure Sentinel 'i ekleme](../../sentinel/quickstart-onboard.md) 
 
-- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](/azure/azure-monitor/platform/diagnostic-settings) 
+- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Azure Izleyici ile Azure sanal makine iç konak günlüklerini toplama](/azure/azure-monitor/learn/quick-collect-azurevm) 
+- [Azure Izleyici ile Azure sanal makine iç konak günlüklerini toplama](../../azure-monitor/vm/quick-collect-azurevm.md) 
 
 - [Azure Izleyici ve üçüncü taraf SıEM tümleştirmesi ile çalışmaya başlama](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -50,9 +50,9 @@ Azure Resource Manager Azure Güvenlik kıyaslaması ile tamamen nasıl eşlendi
 
 **Rehberlik**: Azure Resource Manager olay kaynağını, tarihi, kullanıcıyı, zaman damgasını, kaynak adreslerini, hedef adreslerini ve diğer yararlı öğeleri içerecek şekilde otomatik olarak etkinleştirilen etkinlik günlüklerini kullanır.
 
-- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](/azure/azure-monitor/platform/diagnostic-settings) 
+- [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Azure 'da günlüğe kaydetme ve farklı günlük türlerini anlama](/azure/azure-monitor/platform/platform-logs-overview)
+- [Azure 'da günlüğe kaydetme ve farklı günlük türlerini anlama](../../azure-monitor/essentials/platform-logs-overview.md)
 
 **Sorumluluk**: Müşteri
 
@@ -66,9 +66,9 @@ Alternatif olarak, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri et
 
 - [Azure Sentinel 'i ekleme](../../sentinel/quickstart-onboard.md) 
 
-- [Log Analytics sorguları ile çalışmaya başlama](/azure/azure-monitor/log-query/log-analytics-tutorial)
+- [Log Analytics sorguları ile çalışmaya başlama](../../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Azure Izleyici 'de özel sorgular gerçekleştirme](/azure/azure-monitor/log-query/get-started-queries)
+- [Azure Izleyici 'de özel sorgular gerçekleştirme](../../azure-monitor/logs/get-started-queries.md)
 
 **Sorumluluk**: Paylaşılan
 
@@ -82,7 +82,7 @@ Alternatif olarak, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri et
 
 - [Azure Güvenlik Merkezi 'nde uyarıları yönetme](../../security-center/security-center-managing-and-responding-alerts.md) 
 
-- [Log Analytics günlük verilerinde uyarı alma](/azure/azure-monitor/learn/tutorial-response)
+- [Log Analytics günlük verilerinde uyarı alma](../../azure-monitor/alerts/tutorial-response.md)
 
 **Sorumluluk**: Müşteri
 
@@ -119,7 +119,7 @@ Ayrıca, özel yönetim hesaplarını izlemenize yardımcı olmak için Azure G�
 
 Ayrıca, Azure Active Directory (Azure AD) Privileged Identity Management ve Azure Resource Manager kullanarak tam zamanında erişimi de etkinleştirebilirsiniz.
 
-- [Privileged Identity Management hakkında daha fazla bilgi edinin](/azure/active-directory/privileged-identity-management/)
+- [Privileged Identity Management hakkında daha fazla bilgi edinin](../../active-directory/privileged-identity-management/index.yml)
 
 - [Azure Ilkesini kullanma](../../governance/policy/tutorials/create-and-manage.md)
 
@@ -205,7 +205,7 @@ Ayrıca, Azure Active Directory (Azure AD) Privileged Identity Management ve Azu
 
 **Rehberlik**: Azure Active Directory (Azure AD) eski hesapların keşfedilmesine yardımcı olmak için Günlükler sağlar. Ayrıca, grup üyeliklerini verimli bir şekilde yönetmek, kurumsal uygulamalara erişmek ve rol atamaları için Azure AD kimlik ve erişim gözden geçirmeleri ' nı kullanın. Yalnızca doğru kullanıcıların erişmeye devam ettiğinden emin olmak için, Kullanıcı erişimi düzenli olarak incelenebilir.
 
-- [Azure AD raporlamayı anlama](/azure/active-directory/reports-monitoring/)
+- [Azure AD raporlamayı anlama](../../active-directory/reports-monitoring/index.yml)
 
 - [Azure AD kimlik ve erişim gözden geçirmelerini kullanma](../../active-directory/governance/access-reviews-overview.md)
 
@@ -223,7 +223,7 @@ Ayrıca, Azure Active Directory (Azure AD) Privileged Identity Management ve Azu
 
 Bu işlemi, Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturarak ve Log Analytics çalışma alanına denetim günlüklerini ve oturum açma günlüklerini göndererek kolaylaştırabilirsiniz. İstenen uyarıları Log Analytics çalışma alanı içinde yapılandırabilirsiniz.
 
-- [Azure Izleyici ile Azure etkinlik günlüklerini tümleştirme](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure Izleyici ile Azure etkinlik günlüklerini tümleştirme](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Sorumluluk**: Müşteri
 
@@ -275,7 +275,7 @@ Bu işlemi, Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturar
 
 **Kılavuz**: bekleyen sunucu tarafı şifreleme Için, Microsoft tarafından yönetilen anahtarları destekler Azure Resource Manager.
 
-- [Azure Resource Manager veri korumasını anlayın](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-resource-manager-security-controls#data-protection)
+- [Azure Resource Manager veri korumasını anlayın](#data-protection)
 
 **Sorumluluk**: Müşteri
 
@@ -285,7 +285,7 @@ Bu işlemi, Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturar
 
 **Kılavuz**: Azure Izleyici 'Yi Azure etkinlik günlüğü ile kullanarak, önemli Azure kaynaklarında değişiklik yapıldığında uyarılar oluşturun.
 
-- [Azure etkinlik günlüğü olayları için uyarı oluşturma](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure etkinlik günlüğü olayları için uyarı oluşturma](../../azure-monitor/alerts/alerts-activity-log.md)
 
 **Sorumluluk**: Müşteri
 
@@ -319,7 +319,7 @@ Klasik Azure kaynakları Azure Resource Graph Explorer aracılığıyla bulunabi
 
 **Rehberlik**: varlıkları bir taksonomiye göre mantıksal olarak düzenlemek Için ilke adı, açıklama ve kategori kullanın.
 
-- [Varlıkları etiketleme hakkında daha fazla bilgi için bkz. Kaynak adlandırma ve etiketleme karar Kılavuzu](https://docs.microsoft.com/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)
+- [Varlıkları etiketleme hakkında daha fazla bilgi için bkz. Kaynak adlandırma ve etiketleme karar Kılavuzu](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%2fazure%2fazure-resource-manager%2fmanagement%2ftoc.json)
 
 **Sorumluluk**: Müşteri
 
@@ -379,7 +379,7 @@ Daha ilgili ayrıntılar aşağıda verilmiştir.
 
 - [Azure İlkesi'ni yapılandırma ve yönetme](../../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Ilkesiyle belirli bir kaynak türünü reddetme](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Azure Ilkesiyle belirli bir kaynak türünü reddetme](../../governance/policy/samples/built-in-policies.md#general)
 
 **Sorumluluk**: Müşteri
 
@@ -463,7 +463,7 @@ Ayrıca, bir yönetici olarak, kuruluşunuzdaki diğer kullanıcıların yanlı�
 
 - [Azure İlkesi'ni yapılandırma ve yönetme](../../governance/policy/tutorials/create-and-manage.md)
 
-- [Diğer adları kullanma](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
+- [Diğer adları kullanma](../../governance/policy/concepts/definition-structure.md#aliases)
 
 **Sorumluluk**: Müşteri
 
@@ -587,5 +587,5 @@ Kod içinde kimlik bilgilerini tanımlamak için kimlik bilgisi tarayıcısı uy
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bkz. [Azure Güvenlik Karşılaştırması 2.0 sürümüne genel bakış](/azure/security/benchmarks/overview)
-- [Azure güvenlik temelleri](/azure/security/benchmarks/security-baselines-overview) hakkında daha fazla bilgi edinin
+- Bkz. [Azure Güvenlik Karşılaştırması 2.0 sürümüne genel bakış](../../security/benchmarks/overview.md)
+- [Azure güvenlik temelleri](../../security/benchmarks/security-baselines-overview.md) hakkında daha fazla bilgi edinin

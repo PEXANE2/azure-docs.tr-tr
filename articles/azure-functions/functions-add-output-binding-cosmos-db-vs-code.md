@@ -6,12 +6,12 @@ ms.date: 03/23/2021
 ms.topic: quickstart
 ms.author: thweiss
 zone_pivot_groups: programming-languages-set-functions-temp
-ms.openlocfilehash: 91d27ce0d6f999ac5d13b079c877e49cdf3fcd61
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 0a0c63ee54699185bcd02104b1a3f4d0070ea808
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "104962923"
+ms.locfileid: "105023257"
 ---
 # <a name="connect-azure-functions-to-azure-cosmos-db-using-visual-studio-code"></a>Azure Işlevlerini Visual Studio Code kullanarak Azure Cosmos DB bağlama
 
@@ -20,11 +20,11 @@ ms.locfileid: "104962923"
 Bu makalede, önceki hızlı başlangıç makalesinde oluşturduğunuz işleve [Azure Cosmos DB](../cosmos-db/introduction.md) bağlanmak için Visual Studio Code nasıl kullanılacağı gösterilmektedir. Bu işleve eklediğiniz çıkış bağlaması, HTTP isteğinden verileri Azure Cosmos DB kapsayıcısında depolanan bir JSON belgesine yazar. 
 
 ::: zone pivot="programming-language-csharp"
-Başlamadan önce, [komut satırından hızlı başlangıç: Azure işlevleri projesi oluşturma](create-first-function-cli-csharp.md)makalesini doldurmanız gerekir. Bu makalenin sonunda kaynakları zaten temizlediğinizde, işlev uygulamasını ve ilgili kaynakları Azure 'da yeniden oluşturmak için adımlara tekrar gidin.
+Başlamadan önce, [Visual Studio Code kullanarak Azure 'da bir C# işlevi oluşturma hızlı](create-first-function-vs-code-csharp.md)başlangıcı ' nı doldurmanız gerekir. Bu makalenin sonunda kaynakları zaten temizlediğinizde, işlev uygulamasını ve ilgili kaynakları Azure 'da yeniden oluşturmak için adımlara tekrar gidin.
 ::: zone-end
 ::: zone pivot="programming-language-javascript"  
-Başlamadan önce, [komut satırından hızlı başlangıç: Azure işlevleri projesi oluşturma](create-first-function-cli-node.md)makalesini doldurmanız gerekir. Bu makalenin sonunda kaynakları zaten temizlediğinizde, işlev uygulamasını ve ilgili kaynakları Azure 'da yeniden oluşturmak için adımlara tekrar gidin.  
-::: zone-end   
+Başlamadan önce, [Visual Studio Code kullanarak Azure 'da bir JavaScript Işlevi oluşturma hızlı](create-first-function-vs-code-node.md)başlangıcı ' nı doldurmanız gerekir. Bu makalenin sonunda kaynakları zaten temizlediğinizde, işlev uygulamasını ve ilgili kaynakları Azure 'da yeniden oluşturmak için adımlara tekrar gidin.  
+::: zone-end
 
 ## <a name="configure-your-environment"></a>Ortamınızı yapılandırma
 
