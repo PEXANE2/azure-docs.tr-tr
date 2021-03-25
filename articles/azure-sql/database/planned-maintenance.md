@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
 ms.reviewer: sstein
-ms.date: 1/21/2021
-ms.openlocfilehash: d38ac9731959cf9a23052753b09c9e7819846705
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 3/23/2021
+ms.openlocfilehash: eedbc46ee5feb0aa6f6a26c3f5b3c67ac8ca0a5e
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101664126"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044269"
 ---
 # <a name="plan-for-azure-maintenance-events-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde Azure bakım olaylarını planlayın
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -27,11 +27,11 @@ Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde veritabanınızda pl
 
 Azure SQL veritabanı ve Azure SQL yönetilen örnek hizmetlerini güvenli, uyumlu, kararlı ve iyi durumda tutmak için güncelleştirmeler neredeyse sürekli hizmet bileşenleri üzerinden gerçekleştiriliyor. [Sık yama](https://aka.ms/azuresqlhotpatching)gibi modern ve sağlam hizmet mimarisi ve yenilikçi teknolojiler sayesinde güncelleştirmelerin büyük bölümü, hizmet kullanılabilirliği bakımından tamamen saydamdır ve etkili değildir. Hala, bazı güncelleştirme türleri kısa hizmet kesintileri oluşmasına neden olur ve özel bir işleme gerektirir. 
 
-Her veritabanı için, Azure SQL veritabanı ve Azure SQL yönetilen örneği, bir çoğaltmanın birincil olduğu veritabanı çoğaltmalarının çekirdeğini korur. Her zaman, birincil bir çoğaltmanın çevrimiçi bakım olması ve en az bir ikincil çoğaltmanın sağlıklı olması gerekir. Planlı bakım sırasında, veritabanı çekirdeğinin üyeleri tek seferde çevrimdışı olacak ve istemci kapalı kalma süresi olmamasını sağlamak için en az bir tane yanıt veren birincil çoğaltma ve çevrimiçi bir ikincil çoğaltma olduğundan emin olur. Birincil çoğaltmanın çevrimdışı hale getirilmesi gerektiğinde, bir ikincil çoğaltmanın yeni birincil hale gelmesi için bir yeniden yapılandırma/yük devretme işlemi meydana gelir.  
+Her veritabanı için, Azure SQL veritabanı ve Azure SQL yönetilen örneği, bir çoğaltmanın birincil olduğu veritabanı çoğaltmalarının çekirdeğini korur. Her zaman, birincil bir çoğaltmanın çevrimiçi bakım olması ve en az bir ikincil çoğaltmanın sağlıklı olması gerekir. Planlı bakım sırasında, veritabanı çekirdeğinin üyeleri tek seferde çevrimdışı olacak ve istemci kapalı kalma süresi olmamasını sağlamak için en az bir tane yanıt veren birincil çoğaltma ve çevrimiçi bir ikincil çoğaltma olduğundan emin olur. Birincil çoğaltmanın çevrimdışı hale getirilmesi gerektiğinde, bir ikincil çoğaltmanın yeni birincil hale gelmesi için bir yeniden yapılandırma işlemi meydana gelir.  
 
 ## <a name="what-to-expect-during-a-planned-maintenance-event"></a>Planlı bir bakım olayı sırasında beklenmeniz gerekenler
 
-Bakım olayı, bakım olayının başlangıcında birincil ve ikincil çoğaltmaların yarışmasına bağlı olarak tek veya birden fazla yük devretme üretebilir. Ortalama olarak, 1,7 yük devretme planlı bakım olayı başına gerçekleşir. Yeniden yapılandırma/yük devretme işlemleri genellikle 30 saniye içinde tamamlanır. Ortalama sekiz saniyedir. Zaten bağlantı varsa, uygulamanızın veritabanınızın yeni birincil çoğaltmasına yeniden bağlanması gerekir. Yeni birincil çoğaltma çevrimiçi olmadan önce veritabanı yeniden yapılandırılması sırasında yeni bir bağlantı denendiğinde, 40613 hatasını alırsınız (veritabanı kullanılamıyor): *"' {ServerName} ' sunucusundaki" veritabanı ' {DatabaseName} ' Şu anda kullanılamıyor. Lütfen bağlantıyı daha sonra yeniden deneyin. "* Veritabanınızda uzun süreli bir sorgu varsa, bu sorgu yeniden yapılandırma sırasında kesintiye uğratılacaktır ve yeniden başlatılması gerekir.
+Bakım olayı, bakım olayının başlangıcında birincil ve ikincil çoğaltmaların yarışmasına bağlı olarak, tek veya birden fazla yeniden yapılandırma üretebilir. Ortalama olarak, planlı bakım olayı başına 1,7 yeniden yapılandırma gerçekleştirilir. Yeniden yapılandırma genellikle 30 saniye içinde tamamlanır. Ortalama sekiz saniyedir. Zaten bağlantı varsa, uygulamanızın veritabanınızın yeni birincil çoğaltmasına yeniden bağlanması gerekir. Yeni birincil çoğaltma çevrimiçi olmadan önce veritabanı yeniden yapılandırılması sırasında yeni bir bağlantı denendiğinde, 40613 hatasını alırsınız (veritabanı kullanılamıyor): *"' {ServerName} ' sunucusundaki" veritabanı ' {DatabaseName} ' Şu anda kullanılamıyor. Lütfen bağlantıyı daha sonra yeniden deneyin. "* Veritabanınızda uzun süreli bir sorgu varsa, bu sorgu yeniden yapılandırma sırasında kesintiye uğratılacaktır ve yeniden başlatılması gerekir.
 
 ## <a name="how-to-simulate-a-planned-maintenance-event"></a>Planlı bakım olayının benzetimini yapma
 
@@ -39,7 +39,7 @@ Bakım olayı, bakım olayının başlangıcında birincil ve ikincil çoğaltma
 
 ## <a name="retry-logic"></a>Yeniden deneme mantığı
 
-Bir bulut veritabanı hizmetine bağlanan tüm istemci üretim uygulamaları sağlam bir bağlantı [yeniden deneme mantığı](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors)uygulamalıdır. Bu, yük devretmeleri son kullanıcılara şeffaf hale getirmenize veya en azından negatif etkileri en aza indirmenize yardımcı olur.
+Bir bulut veritabanı hizmetine bağlanan tüm istemci üretim uygulamaları sağlam bir bağlantı [yeniden deneme mantığı](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors)uygulamalıdır. Bu, yeniden yapılandırmaların son kullanıcılara saydam hale getirme veya en azından negatif etkileri en aza indirmenize yardımcı olur.
 
 ## <a name="resource-health"></a>Kaynak durumu
 

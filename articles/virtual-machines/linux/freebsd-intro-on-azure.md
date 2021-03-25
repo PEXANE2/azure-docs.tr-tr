@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: mimckitt
-ms.openlocfilehash: 0451047cd0fa31d27553a33b0c9318e03ffa222e
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: da51fabaaa3c02137770f0b2d9a851b1f6702980
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102558959"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044058"
 ---
 # <a name="introduction-to-freebsd-on-azure"></a>Azure üzerinde FreeBSD’ye giriş
 Bu makalede, Azure 'da FreeBSD sanal makinesini çalıştırmaya ilişkin bir genel bakış sunulmaktadır.
@@ -47,10 +47,10 @@ sudo pkg install bash
 Bir Python, FreeBSD makinenizde yüklü değilse, yüklemeden önce aşağıdaki komutları çalıştırın. 
 
 ```bash
-sudo pkg install python35
+sudo pkg install python38
 cd /usr/local/bin 
 sudo rm /usr/local/bin/python 
-sudo ln -s /usr/local/bin/python3.5 /usr/local/bin/python
+sudo ln -s /usr/local/bin/python3.8 /usr/local/bin/python
 ```
 
 Yükleme sırasında size sorulur `Modify profile to update your $PATH and enable shell/tab completion now? (Y/n)` . Yanıt verirseniz `y` ve girerseniz `/etc/rc.conf` `a path to an rc file to update` , sorunu karşılayabilirsiniz `ERROR: [Errno 13] Permission denied` . Bu sorunu çözmek için, dosyaya göre geçerli kullanıcıya yazma hakkı vermelisiniz `etc/rc.conf` .

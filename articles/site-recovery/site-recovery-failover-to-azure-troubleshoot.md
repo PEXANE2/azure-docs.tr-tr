@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: d2a0444483c382da7c54accf7dca49d097671771
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8fe21ce5b92d672a2e025e0b45b8cbaea5951a8b
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92371996"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043912"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>VMware sanal makinesi veya fiziksel makineden Azure'a yük devretme hatalarını giderme
 
@@ -78,9 +78,9 @@ Azure 'da herhangi bir makineyi getirmek için, Azure ortamı bazı sürücüler
 
 ## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-due-to-grayed-out-connect-button-on-the-virtual-machine"></a>Sanal makinede gri bağlantı düğmesi nedeniyle yük devredilecek sanal makineye/RDP/SSH bağlantısı kurulamıyor
 
-RDP sorunlarıyla ilgili ayrıntılı sorun giderme yönergeleri için lütfen belgelerimize bakın [.](../virtual-machines/troubleshooting/troubleshoot-rdp-connection.md)
+RDP sorunlarıyla ilgili ayrıntılı sorun giderme yönergeleri için lütfen belgelerimize bakın [.](/troubleshoot/azure/virtual-machines/troubleshoot-rdp-connection)
 
-SSH sorunlarıyla ilgili ayrıntılı sorun giderme yönergeleri için lütfen belgelerimize bakın [.](../virtual-machines/troubleshooting/troubleshoot-ssh-connection.md)
+SSH sorunlarıyla ilgili ayrıntılı sorun giderme yönergeleri için lütfen belgelerimize bakın [.](/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
 
 Azure 'daki yük devredilen VM 'deki **Bağlan** düğmesi gri Ise ve Azure 'A bir Express Route veya sıteden siteye VPN bağlantısı aracılığıyla bağlı değilseniz,
 
@@ -94,7 +94,7 @@ Azure 'daki yük devredilen VM 'deki **Bağlan** düğmesi gri Ise ve Azure 'A b
 
 ## <a name="unable-to-connectrdpssh---vm-connect-button-available"></a>Bağlantı kurulamıyor/RDP/SSH-VM Connect düğmesi kullanılabilir
 
-Azure 'daki yük devredilen VM üzerindeki **Bağlan** düğmesi kullanılabiliyorsa (gri değil), sanal makinenizde **önyükleme tanılamayı** denetleyin ve [Bu makalede](../virtual-machines/troubleshooting/boot-diagnostics.md)listelenen hataları denetleyin.
+Azure 'daki yük devredilen VM üzerindeki **Bağlan** düğmesi kullanılabiliyorsa (gri değil), sanal makinenizde **önyükleme tanılamayı** denetleyin ve [Bu makalede](/troubleshoot/azure/virtual-machines/boot-diagnostics)listelenen hataları denetleyin.
 
 1. Sanal makine başlatılmamışsa, daha eski bir kurtarma noktasına yük devretmeyi deneyin.
 2. Sanal makinenin içindeki uygulama yoksa uygulamayla tutarlı bir kurtarma noktasına yük devretmeyi deneyin.
@@ -182,7 +182,7 @@ Bu sorunu çözmek için:
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [WINDOWS VM Ile RDP bağlantısı](../virtual-machines/troubleshooting/troubleshoot-rdp-connection.md) sorunlarını giderme
-- [LINUX VM 'ye SSH bağlantısı](../virtual-machines/troubleshooting/detailed-troubleshoot-ssh-connection.md) sorunlarını giderme
+- [WINDOWS VM Ile RDP bağlantısı](/troubleshoot/azure/virtual-machines/troubleshoot-rdp-connection) sorunlarını giderme
+- [LINUX VM 'ye SSH bağlantısı](/troubleshoot/azure/virtual-machines/detailed-troubleshoot-ssh-connection) sorunlarını giderme
 
 Daha fazla yardıma ihtiyacınız varsa sorgunuzu [Microsoft Q&soru sayfasında Site Recovery](/answers/topics/azure-site-recovery.html) gönderin veya bu belgenin sonunda bir yorum bırakın. Size yardımcı olabilmemiz gereken etkin bir topluluk var.

@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 7fee393b694bf761cf052702a975239d6dff9a9c
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 9aaaece7d60ceead80e51bdc2a1bb342d9a4d237
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105104834"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107779"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -18,12 +18,12 @@ ms.locfileid: "105104834"
 - Çağıran istemciyi etkinleştirmek için bir Kullanıcı erişim belirteci. Daha fazla bilgi için bkz. [erişim belirteçleri oluşturma ve yönetme](../../access-tokens.md).
 - İsteğe bağlı: [uygulamanıza sesli çağrı eklemek](../getting-started-with-calling.md)için hızlı başlangıcı doldurun.
 
-## <a name="install-the-client-library"></a>İstemci kitaplığını yükler
+## <a name="install-the-sdk"></a>SDK Yükleme
 
 > [!NOTE]
-> Bu belge, çağıran istemci kitaplığının 1.0.0-Beta. 6 sürümünü kullanır.
+> Bu belge, çağıran SDK 'nın 1.0.0-Beta. 6 sürümünü kullanır.
 
-`npm install`JavaScript Için Azure Iletişim Hizmetleri 'ni çağıran ve ortak istemci kitaplıklarını yüklemek için komutunu kullanın.
+`npm install`JavaScript için çağrı ve ortak SDK 'ları çağıran Azure Iletişim hizmetlerini yüklemek için komutunu kullanın.
 Bu belge, çağıran kitaplığın 1.0.0-Beta. 5 sürümündeki türlere başvurur.
 
 ```console
@@ -34,11 +34,11 @@ npm install @azure/communication-calling --save
 
 ## <a name="object-model"></a>Nesne modeli
 
-Aşağıdaki sınıflar ve arabirimler, istemci Kitaplığı çağıran Azure Iletişim Hizmetleri 'nin bazı önemli özelliklerinden bazılarını işler:
+Aşağıdaki sınıflar ve arabirimler, Azure Communication Service 'ın SDK 'yi çağıran bazı önemli özelliklerinden bazılarını işler:
 
 | Ad                             | Açıklama                                                                                                                                 |
 | ---------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `CallClient`                      | Ana giriş, çağıran istemci Kitaplığı ' na işaret.                                                                       |
+| `CallClient`                      | Çağıran SDK 'ya ana giriş noktası.                                                                       |
 | `CallAgent`                        | Çağrıları başlatmak ve yönetmek için kullanılır.                                                                                            |
 | `DeviceManager`                    | Medya cihazlarını yönetmek için kullanılır.                                                                                           |
 | `AzureCommunicationTokenCredential` | `CommunicationTokenCredential`Örneğini oluşturmak için kullanılan arabirimini uygular `callAgent` . |
@@ -63,7 +63,7 @@ const deviceManager = await callClient.getDeviceManager()
 
 ## <a name="place-a-call"></a>Bir çağrı yerleştir
 
-Bir çağrı oluşturup başlatmak için, üzerindeki API 'lerden birini kullanın `callAgent` ve Iletişim Hizmetleri kimlik istemci kitaplığı aracılığıyla oluşturduğunuz bir Kullanıcı sağlayın.
+Bir çağrı oluşturup başlatmak için, üzerindeki API 'lerden birini kullanın `callAgent` ve Iletişim Hizmetleri kimlik SDK 'sı aracılığıyla oluşturduğunuz bir Kullanıcı sağlayın.
 
 Çağrı oluşturma ve başlatma zaman uyumludur. Çağrı örneği, çağrı olaylarına abone olmanızı sağlar.
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 3/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 70042a5c4c27ec5d163e5f05089ae50b92140c28
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b0969ffae7963d6a5f9ac249e43750444ab11baa
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103011264"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105036059"
 ---
 # <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>Adobe açık kaynak medya çerçevesi için Microsoft Kesintisiz Akış eklentisini kullanma
 
@@ -59,7 +59,7 @@ OSMF eklentileri statik olarak (derleme zamanında) veya dinamik olarak (çalı�
 * Statik yükleme: statik olarak yüklemek Için bir statik kitaplık (SWC) dosyası gereklidir. Statik Eklentiler, projeye bir başvuru olarak eklenir ve derleme zamanında son çıktı dosyası içinde birleştirilir.
 * Dinamik yükleme: dinamik olarak yüklemek Için önceden derlenmiş (SWF) bir dosya gereklidir. Dinamik eklentiler çalışma zamanına yüklenir ve proje çıktısına dahil edilmez. (Derlenmiş çıkış) Dinamik Eklentiler, HTTP ve dosya protokolleri kullanılarak yüklenebilir.
 
-Statik ve dinamik yükleme hakkında daha fazla bilgi için bkz. resmi [OSMF eklentisi sayfası](http://osmf.org/dev/osmf/OtherPDFs/osmf_plugin_dev_guide.pdf).
+Statik ve dinamik yükleme hakkında daha fazla bilgi için bkz. resmi [OSMF eklentisi sayfası](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/IZUHPINFO_PluginsPlanning.htm).
 
 ### <a name="ss-for-osmf-static-loading"></a>OSMF statik yükleme için SS
 Aşağıdaki kod parçacığı, OSMF için SS eklentisinin statik olarak nasıl yükleneceğini ve OSMF MediaFactory sınıfını kullanarak temel bir video oynamasını göstermektedir. OSMF koduna yönelik SS 'yi eklemeden önce lütfen proje başvurusunun "MSAdaptiveStreamingPlugin-v 1.0.3-OSMF 2.0. SWC" statik eklentisini içerdiğinden emin olun.

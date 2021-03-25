@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/02/2018
 ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: ab7d20a83c4cb8cb7a36c4603a5b0b2e69b0662f
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 24ff0d8089055f83c76156cf5fb163313faf9492
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102560676"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043487"
 ---
 # <a name="run-scripts-in-your-windows-vm"></a>Windows sanal makinenizde betikleri çalıştırma
 
@@ -58,7 +58,7 @@ Görevleri otomatikleştirmek veya sorunları gidermek için, bir VM 'de komutla
 
 ## <a name="serial-console"></a>Seri konsol
 
-[Seri konsol](../troubleshooting/serial-console-windows.md) , VM 'ye bağlı bir klavye olmasına benzer şekilde, bir VM 'ye doğrudan erişim sağlar.
+[Seri konsol](/troubleshoot/azure/virtual-machines/serial-console-windows) , VM 'ye bağlı bir klavye olmasına benzer şekilde, bir VM 'ye doğrudan erişim sağlar.
 
 * Azure sanal makinelerinde komutları çalıştırın.
 * Azure portal makineye metin tabanlı bir konsol kullanılarak çalıştırılabilir.
@@ -72,4 +72,4 @@ Sanal makinelerinizdeki betikleri ve komutları çalıştırmak için kullanıla
 * [Özel Betik Uzantısı](../extensions/custom-script-windows.md)
 * [Çalıştır Komutu](run-command.md)
 * [Karma Runbook Çalışanı](../../automation/automation-hybrid-runbook-worker.md)
-* [Seri konsol](../troubleshooting/serial-console-windows.md)
+* [Seri konsol](/troubleshoot/azure/virtual-machines/serial-console-windows)

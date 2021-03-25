@@ -4,25 +4,20 @@ description: Destek ayarları ve kısıtlamaları için Azure disk yedekleme 'ni
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 922bd532275cdd6b09df83b0e9d36fdec1da0b47
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 38c35824118979c900dacd9c103ae8f9ec11ad65
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101707226"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107287"
 ---
-# <a name="azure-disk-backup-support-matrix-in-preview"></a>Azure disk yedekleme desteği matrisi (önizlemede)
-
->[!IMPORTANT]
->Azure disk yedekleme, bir hizmet düzeyi sözleşmesi olmadan önizlemededir ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
->Önizlemeye kaydolmak için [Bu formu doldurun](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u) .
+# <a name="azure-disk-backup-support-matrix"></a>Azure Disk Yedekleme destek matrisi
 
 Azure disklerini korumak için [Azure Backup](./backup-overview.md) kullanabilirsiniz. Bu makalede bölge kullanılabilirliği, desteklenen senaryolar ve sınırlamalar özetlenmektedir.
 
 ## <a name="supported-regions"></a>Desteklenen bölgeler
 
-Azure disk yedekleme, şu bölgelerde önizlemede kullanılabilir: Batı ABD, Orta Batı ABD, Doğu ABD2, Kanada Orta, UK Batı, İsviçre Kuzey, İsviçre Batı, Avustralya Orta, Avustralya Orta 2, Kore Orta, Kore Güney, Japonya Batı, Doğu Asya, BAE Kuzey, Brezilya Güney, Orta Hindistan. 
+Azure disk yedekleme şu bölgelerde kullanılabilir: Batı ABD, Batı ABD 2, Orta Batı ABD, Doğu ABD, Doğu ABD2, Orta ABD, Orta Güney ABD, Orta Kuzey ABD, Kanada Orta, Brezilya Güney, Güney Afrika Kuzey, UK Güney, UK Batı, Batı Avrupa, Kuzey Avrupa, İsviçre Kuzey, İsviçre Batı, Almanya Orta Batı, Fransa Orta, Norveç Doğu, BAE Kuzey, Avustralya Orta, Avustralya Orta 2 , Avustralya Doğu, Kore Orta, Kore Güney, Japonya Doğu, Japonya Batı, Doğu Asya, Güneydoğu Asya, Orta Hindistan. 
 
 Kullanılabilir olduklarında daha fazla bölge duyurulacaktır.
 
