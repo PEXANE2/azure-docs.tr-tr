@@ -3,12 +3,12 @@ title: Azure Service Bus için sorun giderme kılavuzu | Microsoft Docs
 description: Azure Service Bus kullanırken görebileceğiniz birkaç sorun için sorun giderme ipuçları ve öneriler hakkında bilgi edinin.
 ms.topic: article
 ms.date: 03/03/2021
-ms.openlocfilehash: 7de39e5a3a7b6cbb8e5fa504f073023853e18366
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b44587747a59acb3c0124c0a76b63de68d6d8ae7
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102179706"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105031299"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Azure Service Bus için sorun giderme kılavuzu
 Bu makale, Azure Service Bus kullanırken görebileceğiniz birkaç sorun için sorun giderme ipuçları ve öneriler sağlar. 
@@ -52,7 +52,7 @@ Aşağıdaki adımlar *. servicebus.windows.net altındaki tüm hizmetlerde bağ
     ```
     , Vb. gibi diğer araçları kullanıyorsanız eşdeğer komutları kullanabilirsiniz `tnc` `ping` . 
 - Önceki adımlar [Wireshark](https://www.wireshark.org/)gibi araçları kullanarak yardımcı değilse ve analiz yoksa bir ağ izlemesi elde edin. Gerekirse [Microsoft desteği](https://support.microsoft.com/) başvurun. 
-- Bağlantılarınızın izin verilenler listesine eklenecek doğru IP adreslerini bulmak için, bkz. [izin verilenler listesine eklemek Için HANGI IP adreslerine ihtiyacım var?](service-bus-faq.md#what-ip-addresses-do-i-need-to-add-to-allow-list). 
+- Bağlantılarınız için izin 'e eklenecek doğru IP adreslerini bulmak için, bkz. [izin 'e ne tür IP adreslerini eklemem gerekir?](service-bus-faq.md#what-ip-addresses-do-i-need-to-add-to-allow-list) 
 
 
 ## <a name="issues-that-may-occur-with-service-upgradesrestarts"></a>Hizmet yükseltmeleri/yeniden başlatmalar ile ortaya çıkabilecek sorunlar
@@ -98,6 +98,25 @@ Tek bir Service Bus ad alanına bağlantı kullanarak ileti göndermek ve almak 
 
 ### <a name="resolution"></a>Çözüm
 Daha fazla ileti göndermek için Service Bus ad alanına yeni bir bağlantı açın.
+
+## <a name="adding-virtual-network-rule-using-powershell-fails"></a>PowerShell kullanarak sanal ağ kuralı ekleme başarısız oluyor
+
+### <a name="symptoms"></a>Belirtiler
+Bir sanal ağ kuralındaki tek bir sanal ağdan iki alt ağ yapılandırdınız. [Remove-AzServiceBusVirtualNetworkRule](/powershell/module/az.servicebus/remove-azservicebusvirtualnetworkrule) cmdlet 'ini kullanarak bir alt ağı kaldırmaya çalıştığınızda, alt ağı sanal ağ kuralından kaldırmaz. 
+
+```azurepowershell-interactive
+Remove-AzServiceBusVirtualNetworkRule -ResourceGroupName $resourceGroupName -Namespace $serviceBusName -SubnetId $subnetId
+```
+
+### <a name="cause"></a>Nedeni
+Alt ağ için belirttiğiniz Azure Resource Manager KIMLIĞI geçersiz olabilir. Bu durum, sanal ağ Service Bus ad alanına sahip olan bir kaynak grubundan farklı olduğunda meydana gelebilir. Sanal ağın kaynak grubunu açık bir şekilde belirtmezseniz, CLı komutu Azure Resource Manager KIMLIĞINI Service Bus ad alanının kaynak grubunu kullanarak oluşturur. Bu nedenle, alt ağı ağ kuralından kaldıramazsa. 
+
+### <a name="resolution"></a>Çözüm
+Sanal ağa sahip kaynak grubunun adını içeren alt ağın tam Azure Resource Manager KIMLIĞINI belirtin. Örnek:
+
+```azurepowershell-interactive
+Remove-AzServiceBusVirtualNetworkRule -ResourceGroupName myRG -Namespace myNamespace -SubnetId "/subscriptions/SubscriptionId/resourcegroups/ResourceGroup/myOtherRG/providers/Microsoft.Network/virtualNetworks/myVNet/subnets/mySubnet"
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makalelere bakın: 

@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.author: pafarley
 ms.custom: devx-track-dotnet, cog-serv-seo-aug-2020
-ms.openlocfilehash: d6f27ca3635ff1efb80e5261b7a5a07269304dfd
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: bdf49f16b003c25da9fe8972a3fb7e3837d62819
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102444277"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105105846"
 ---
 .NET için Azure Content Moderator istemci kitaplığı 'nı kullanmaya başlayın. NuGet paketini yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. 
 
@@ -52,7 +52,7 @@ Yeni bir proje oluşturduktan sonra, **Çözüm Gezgini** proje çözümüne sa�
 
 #### <a name="cli"></a>[CLI](#tab/cli)
 
-Konsol penceresinde (cmd, PowerShell veya Bash gibi), `dotnet new` adıyla yeni bir konsol uygulaması oluşturmak için komutunu kullanın `content-moderator-quickstart` . Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: *program.cs*.
+Konsol penceresinde (cmd, PowerShell veya Bash gibi), `dotnet new` adıyla yeni bir konsol uygulaması oluşturmak için komutunu kullanın `content-moderator-quickstart` . Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: *program. cs*.
 
 ```console
 dotnet new console -n content-moderator-quickstart
@@ -87,7 +87,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.ContentModerator --version 
 > [!TIP]
 > Tüm hızlı başlangıç kodu dosyasını aynı anda görüntülemek mi istiyorsunuz? Bu hızlı başlangıçta kod örneklerini içeren [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ContentModerator/Program.cs)'da bulabilirsiniz.
 
-Proje dizininden, *program.cs* dosyasını tercih ettiğiniz DÜZENLEYICIDE veya IDE 'de açın. Aşağıdaki `using` deyimlerini ekleyin:
+Proje dizininden, tercih ettiğiniz düzenleyicide veya IDE 'de *program. cs* dosyasını açın. Aşağıdaki `using` deyimlerini ekleyin:
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_using)]
 
@@ -297,6 +297,3 @@ Bu hızlı başlangıçta, Content Moderator .NET kitaplığını kullanarak den
 
 > [!div class="nextstepaction"]
 > [Görüntü denetleme kavramları](../../image-moderation-api.md)
-
-* [Azure Content Moderator nedir?](../../overview.md)
-* Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ContentModerator/Program.cs)' da bulunabilir.

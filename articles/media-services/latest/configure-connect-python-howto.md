@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 11/18/2020
 ms.author: inhenkel
 ms.custom: devx-track-python
-ms.openlocfilehash: 76df8baaf170b05762b93478a496eb1e9ed802d5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: de78008a4645690cfc900f77670204bb892daf51
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94916755"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105042977"
 ---
 # <a name="connect-to-media-services-v3-api---python"></a>Media Services v3 API 'sine bağlanma-Python
 
@@ -32,7 +32,7 @@ Bu makalede hizmet sorumlusu oturum açma yöntemi kullanılarak Azure Media Ser
 - [Python.org](https://www.python.org/downloads/) 'ten Python indirin
 - Ortam değişkenini ayarladığınızdan emin olun `PATH`
 - [Media Services hesabı oluşturun](./create-account-howto.md). Kaynak grubu adını ve Media Services hesap adını unutduğunuzdan emin olun.
-- [Erişim API 'leri](./access-api-howto.md) konusundaki adımları izleyin. Abonelik KIMLIĞI, uygulama KIMLIĞI (istemci KIMLIĞI), kimlik doğrulama anahtarı (gizli) ve sonraki adımda ihtiyacınız olan kiracı KIMLIĞINI kaydedin.
+- Hizmet sorumlusu kimlik doğrulama yöntemini seçerek, [erişim API 'leri](./access-api-howto.md) konusundaki adımları izleyin. `SubscriptionId`Daha sonraki adımlarda ihtiyacınız olan ABONELIK kimliği (), uygulama ISTEMCI kimliği ( `AadClientId` ), kimlik doğrulama anahtarı () `AadSecret` ve Kiracı kimliğini () kaydedin `AadTenantId` .
 
 > [!IMPORTANT]
 > [Adlandırma kurallarını](media-services-apis-overview.md#naming-conventions)gözden geçirin.
@@ -59,38 +59,34 @@ pip3 install azure-mgmt-media==3.0.0
 1. Dosyayı en sevdiğiniz düzenleyicide açın
 1. Aşağıdaki kodu dosyaya ekleyin. Kod, gerekli modülleri içeri aktarır ve Media Services bağlanmak için gereken Active Directory kimlik bilgileri nesnesini oluşturur.
 
-      Değişkenlerin değerlerini [erişim API 'lerinden](./access-api-howto.md) aldığınız değerlere ayarlayın
+      Değişkenlerin değerlerini, [erişim API 'lerinden](./access-api-howto.md)aldığınız değerlere ayarlayın. `ACCOUNT_NAME`Ve değişkenlerini, `RESOUCE_GROUP_NAME` Bu kaynakları oluştururken kullanılan Media Services hesap adı ve kaynak grubu adlarıyla güncelleştirin.
 
       ```
       import adal
+      from azure.mgmt.media import AzureMediaServices
       from msrestazure.azure_active_directory import AdalAuthentication
       from msrestazure.azure_cloud import AZURE_PUBLIC_CLOUD
-      from azure.mgmt.media import AzureMediaServices
-      from azure.mgmt.media.models import MediaService
 
-      RESOURCE = 'https://management.core.windows.net/'
-      # Tenant ID for your Azure Subscription
-      TENANT_ID = '00000000-0000-0000-000000000000'
-      # Your Service Principal App ID
-      CLIENT = '00000000-0000-0000-000000000000'
-      # Your Service Principal Password
-      KEY = '00000000-0000-0000-000000000000'
-      # Your Azure Subscription ID
-      SUBSCRIPTION_ID = '00000000-0000-0000-000000000000'
+      RESOURCE = "https://management.core.windows.net/"
+      # Tenant ID for your Azure Subscription (AadTenantId)
+      TENANT_ID = "00000000-0000-0000-000000000000"
+      # Your Service Principal App ID (AadClientId)
+      CLIENT = "00000000-0000-0000-000000000000"
+      # Your Service Principal Password (AadSecret)
+      KEY = "00000000-0000-0000-000000000000"
+      # Your Azure Subscription ID (SubscriptionId)
+      SUBSCRIPTION_ID = "00000000-0000-0000-000000000000"
       # Your Azure Media Service (AMS) Account Name
-      ACCOUNT_NAME = 'amsv3account'
+      ACCOUNT_NAME = "amsaccount"
       # Your Resource Group Name
-      RESOUCE_GROUP_NAME = 'AMSv3ResourceGroup'
+      RESOUCE_GROUP_NAME = "amsResourceGroup"
 
       LOGIN_ENDPOINT = AZURE_PUBLIC_CLOUD.endpoints.active_directory
       RESOURCE = AZURE_PUBLIC_CLOUD.endpoints.active_directory_resource_id
 
-      context = adal.AuthenticationContext(LOGIN_ENDPOINT + '/' + TENANT_ID)
+      context = adal.AuthenticationContext(LOGIN_ENDPOINT + "/" + TENANT_ID)
       credentials = AdalAuthentication(
-          context.acquire_token_with_client_credentials,
-          RESOURCE,
-          CLIENT,
-          KEY
+          context.acquire_token_with_client_credentials, RESOURCE, CLIENT, KEY
       )
 
       # The AMS Client
@@ -101,7 +97,7 @@ pip3 install azure-mgmt-media==3.0.0
 
       # Now that you are authenticated, you can manipulate the entities.
       # For example, list assets in your AMS account
-      print (client.assets.list(RESOUCE_GROUP_NAME, ACCOUNT_NAME).get(0))
+      print(client.assets.list(RESOUCE_GROUP_NAME, ACCOUNT_NAME).get(0))
       ```
 
 1. Dosyayı çalıştırma

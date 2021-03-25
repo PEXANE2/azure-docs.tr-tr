@@ -3,12 +3,12 @@ title: IoT Edge SSS-Azure 'da canlı video analizi
 description: Bu makalede, IoT Edge üzerinde canlı video analizi hakkında sıkça sorulan sorular yanıtlanmaktadır.
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: 72a07a1a509aebcd7ba4048d0c84e913481c978e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 661b6155ce2d95e2111a1fa338fd5df438e61e7d
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101702258"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105032812"
 ---
 # <a name="live-video-analytics-on-iot-edge-faq"></a>IoT Edge SSS üzerinde canlı video analizi
 
@@ -129,7 +129,7 @@ Apple HLS veya MPEG-DASH kullanarak içerik teslim edebilirsiniz.
    
 *GRPC protokolünü kullanın*: 
 
-* Canlı video analizi modülü 1,0 ile, genel amaçlı bir uzak yordam çağrısı (gRPC) protokolü kullandığınızda bunu yapmanın tek yolu, gRPC sunucusunun farklı bağlantı noktaları aracılığıyla farklı AI modelleri kullanıma sunamadır. [Bu kod örneğinde](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/grpcExtension/topology.json), tek bir bağlantı noktası olan 44000, tüm Yolo modellerini gösterir. Teorik olarak, bağlantı noktası 44000 ve diğerleri bağlantı noktası 45000 ' de bazı modelleri kullanıma sunmak için Yolo gRPC sunucusu yeniden yazılabilir. 
+* Canlı video analizi modülü 1,0 ile, genel amaçlı bir uzak yordam çağrısı (gRPC) protokolü kullandığınızda bunu yapmanın tek yolu, gRPC sunucusunun farklı bağlantı noktaları aracılığıyla farklı AI modelleri kullanıma sunamadır. [Bu kod örneğinde](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/grpcExtensionOpenVINO/2.0/topology.json), tek bir bağlantı noktası olan 44000, tüm Yolo modellerini gösterir. Teorik olarak, bağlantı noktası 44000 ve diğerleri bağlantı noktası 45000 ' de bazı modelleri kullanıma sunmak için Yolo gRPC sunucusu yeniden yazılabilir. 
 
 * Canlı video analizi modülü 2,0 ile gRPC uzantısı düğümüne yeni bir özellik eklenmiştir. Bu özellik olan **Extensionconfiguration**, GRPC sözleşmesinin bir parçası olarak kullanılabilen isteğe bağlı bir dizedir. Tek bir çıkarım sunucusunda paketlenmiş birden çok AI modeli olduğunda, her AI modeli için bir düğüm kullanıma almanız gerekmez. Bunun yerine, uzantı sağlayıcısı olarak bir grafik örneği için, **Extensionconfiguration** özelliğini kullanarak farklı AI modellerinin nasıl seçkullanılabileceğini tanımlayabilir. Yürütme sırasında, canlı video analizi bu dizeyi, istenen AI modelini çağırmak için onu kullanan ınstrıng sunucusuna geçirir. 
 
