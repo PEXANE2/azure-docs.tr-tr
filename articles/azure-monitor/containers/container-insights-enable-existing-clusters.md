@@ -4,12 +4,12 @@ description: Aboneliğinizde zaten dağıtılan bir Azure Kubernetes hizmeti (AK
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.custom: devx-track-terraform, devx-track-azurecli
-ms.openlocfilehash: e84e1c4ad3aa3950a433218255ccac3d91435231
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fba12fb8dd5c6c91883a88d4acfdca6c6d332c24
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101717681"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109633"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>Azure Kubernetes Service (AKS) kümesinin izlenmesini etkinleştirme zaten dağıtıldı
 
@@ -21,6 +21,8 @@ Desteklenen yöntemlerden birini kullanarak zaten dağıtılmış bir AKS kümes
 * Terraform
 * [Azure Izleyici 'den](#enable-from-azure-monitor-in-the-portal) veya Azure Portal [doğrudan aks kümesinden](#enable-directly-from-aks-cluster-in-the-portal)
 * [Azure Resource Manager şablonuyla](#enable-using-an-azure-resource-manager-template) , Azure PowerShell cmdlet 'Ini `New-AzResourceGroupDeployment` veya Azure CLI ile birlikte.
+
+Mevcut bir AKS kümesini başka bir abonelikteki Azure Log Analytics çalışma alanına bağlıyorsanız, Microsoft. ContainerService kaynak sağlayıcısı, Log Analytics çalışma alanının oluşturulduğu abonelikte kayıtlı olmalıdır. Daha fazla bilgi için bkz. [kaynak sağlayıcısını kaydetme](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 

@@ -1,22 +1,23 @@
 ---
 title: Hızlı başlangıç-Azure Iletişim hizmetlerini kullanarak bir Web uygulamasına çağıran VOıP ekleme
-description: Bu öğreticide, JavaScript için istemci kitaplığı 'nı çağıran Azure Iletişim hizmetlerini kullanmayı öğreneceksiniz
+description: Bu öğreticide, JavaScript için SDK 'Yı çağıran Azure Iletişim hizmetlerini kullanmayı öğreneceksiniz
 author: ddematheu
 ms.author: nimag
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 8dc59250e3c00d161446e7361db0c085e12ab4cf
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 0c70e01aa4f27e40a2de5cddf329cae9ffe261bc
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104598850"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108317"
 ---
-Bu hızlı başlangıçta, JavaScript için istemci kitaplığı 'nı çağıran Azure Iletişim hizmetlerini kullanarak nasıl çağrı başlayacağınızı öğreneceksiniz.
+Bu hızlı başlangıçta, JavaScript için SDK 'Yı çağıran Azure Iletişim hizmetlerini kullanarak nasıl çağrı başlayacağınızı öğreneceksiniz.
 
 > [!NOTE]
-> Bu belge, çağıran istemci kitaplığının 1.0.0-Beta. 6 sürümünü kullanır.
+> Bu belge, çağıran SDK 'nın 1.0.0-Beta. 10 sürümünü kullanır.
+
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -74,11 +75,11 @@ const hangUpButton = document.getElementById("hang-up-button");
 
 ## <a name="object-model"></a>Nesne modeli
 
-Aşağıdaki sınıflar ve arabirimler, istemci Kitaplığı çağıran Azure Iletişim Hizmetleri 'nin bazı önemli özelliklerinden bazılarını işler:
+Aşağıdaki sınıflar ve arabirimler, Azure Communication Service 'ın SDK 'yi çağıran bazı önemli özelliklerinden bazılarını işler:
 
 | Ad                             | Açıklama                                                                                                                                 |
 | ---------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------- |
-| CallClient                       | CallClient, çağıran istemci kitaplığı için ana giriş noktasıdır.                                                                       |
+| CallClient                       | CallClient, çağıran SDK 'ya ana giriş noktasıdır.                                                                       |
 | CallAgent                        | CallAgent, çağrıları başlatmak ve yönetmek için kullanılır.                                                                                            |
 | AzureCommunicationTokenCredential | AzureCommunicationTokenCredential sınıfı, CallAgent örneğini oluşturmak için kullanılan CommunicationTokenCredential arabirimini uygular. |
 

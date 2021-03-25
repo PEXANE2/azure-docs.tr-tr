@@ -8,13 +8,13 @@ ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 03/04/2021
-ms.openlocfilehash: 210f0c52a2b27492bfa2181473043df3537157d2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/23/2021
+ms.openlocfilehash: 8688458d85084f3d3dab4678fa91ed827a337739
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102183208"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047360"
 ---
 # <a name="configure-maintenance-window-preview"></a>Bakım penceresini yapılandırma (Önizleme)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -27,7 +27,7 @@ Kaynak oluşturma sırasında veya bir kaynak oluşturulduktan sonra herhangi bi
 Farklı bir bakım penceresine geçiş özelliği, her hizmet düzeyi veya her bölge için kullanılamaz. Kullanılabilirlik hakkında daha fazla bilgi için bkz. [bakım penceresi kullanılabilirliği](maintenance-window.md#availability).
 
 > [!Important]
-> Bakım penceresini yapılandırmak, Azure SQL kaynağının hizmet katmanını değiştirmeye benzer şekilde, uzun süren bir zaman uyumsuz işlemdir. İşlem sırasında, işlemin sonunda gerçekleşen kısa bir yük devretme haricinde ve genellikle uzun süreli işlem durumunda bile 8 saniyeye kadar süren kaynak kullanılabilir. Yük devretmenin etkisini en aza indirmek için işlemi yoğun saatlerin dışında gerçekleştirmeniz gerekir.
+> Bakım penceresini yapılandırmak, Azure SQL kaynağının hizmet katmanını değiştirmeye benzer şekilde, uzun süren bir zaman uyumsuz işlemdir. İşlem sırasında, işlemin sonunda gerçekleşen kısa bir yeniden yapılandırma haricinde ve genellikle uzun süreli işlem durumunda bile 8 saniyeye kadar süren kaynak kullanılabilir. Yeniden yapılandırma işleminin etkisini en aza indirmek için işlemi yoğun saatlerin dışında gerçekleştirmeniz gerekir.
 
 ## <a name="configure-maintenance-window-during-database-creation"></a>Veritabanı oluşturma sırasında bakım penceresini yapılandırma 
 
@@ -257,7 +257,7 @@ Aşağıdaki örnek, yeni bir yönetilen örnek oluşturur ve [az SQL mı Create
 ## <a name="configure-maintenance-window-for-existing-databases"></a>Mevcut veritabanları için bakım penceresini yapılandırma
 
 
-Bir veritabanına bakım pencere seçimi uygulanırken, Azure 'un gerekli değişiklikleri uyguladığı bazı durumlarda kısa bir yük devretme (birkaç saniye) yaşanmış olabilir.
+Bir veritabanına bakım pencere seçimi uygulanırken, Azure 'un gerekli değişiklikleri uyguladığı bazı durumlarda kısa bir yeniden yapılandırma (birkaç saniye) yaşanmış olabilir.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 

@@ -11,12 +11,12 @@ ms.date: 02/16/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 2966b685e1904102467bf16994ea781556544047
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 0bb17ded6822c477fe2107c66711af5e2dc384d3
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102519206"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107848"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Triton çıkarım sunucusuyla yüksek performanslı hizmet (Önizleme) 
 
@@ -31,6 +31,9 @@ Triton, *çıkarım için iyileştirilmiş* bir çerçevedir. GPU 'ların daha i
 
 > [!TIP]
 > Bu belgedeki kod parçacıkları tanım amaçlıdır ve bir çözümü tamamen gösteremeyebilir. Çalışan örnek kod için [Azure Machine Learning üç aylık dönemin uçtan uca örneklerine](https://aka.ms/triton-aml-sample)bakın.
+
+> [!NOTE]
+> [NVIDIA Triton çıkarım sunucusu](https://aka.ms/nvidia-triton-docs) , Azure Machine Learning ile tümleştirilmiş açık kaynaklı bir üçüncü taraf yazılımdır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -97,7 +100,7 @@ models
         - model_1
             - model_version
                 - model_file
-                - config_file
+            - config_file
         - model_2
             ...
 ```
@@ -114,6 +117,11 @@ az ml model register -n my_triton_model -p models --model-framework=Multi
 ```
 
 Hakkında daha fazla bilgi için `az ml model register` [başvuru belgelerine](/cli/azure/ext/azure-cli-ml/ml/model)bakın.
+
+Model Azure Machine Learning ' de kaydedilirken, parametrenin değeri, `--model-path  -p` üç aylık dönemin üst klasörünün adı olmalıdır.  
+Yukarıdaki örnekte,  `--model-path` ' modeller '.
+
+`--name  -n`Örnekteki ' my_triton_model ' parametresinin değeri, Azure Machine Learning çalışma alanı bilinen model adı olacaktır. 
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -364,13 +372,17 @@ local_service.delete()
 
 
 ---
+## <a name="troubleshoot"></a>Sorun giderme
+
+* [Başarısız bir dağıtımda sorun](how-to-troubleshoot-deployment.md)giderme, bir modeli dağıttığınızda karşılaşabileceğiniz sık karşılaşılan hataları giderme ve çözme veya geçici çözüm yapma hakkında bilgi edinin.
+
+* Dağıtım günlükleri söz konusu **Tritonserver 'ın başlayamadığından**, lütfen [NVIDIA 'nın açık kaynak belgelerine bakın.](https://github.com/triton-inference-server/server)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Machine Learning üç aylık dönemin uçtan uca örneklerine bakın](https://aka.ms/aml-triton-sample)
 * [Triton istemci örneklerine](https://aka.ms/nvidia-client-examples) göz atın
 * [Üç aylık çıkarım sunucusu belgelerini](https://aka.ms/nvidia-triton-docs) okuyun
-* [Başarısız bir dağıtımın sorunlarını giderme](how-to-troubleshoot-deployment.md)
 * [Azure Kubernetes Service’e dağıtma](how-to-deploy-azure-kubernetes-service.md)
 * [Web hizmetini güncelleştirme](how-to-deploy-update-web-service.md)
 * [Üretimde modeller için veri toplama](how-to-enable-data-collection.md)

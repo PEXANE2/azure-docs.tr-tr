@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 8d4e573cefd595669d9cb2cf9a7b83595eea7971
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 40d9f03526e5232c0a7b33f64ff35a8501702609
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103622000"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107774"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -23,9 +23,8 @@ ms.locfileid: "103622000"
 ### <a name="install-the-package"></a>Paketi yükler
 
 > [!NOTE]
-> Bu belge, çağıran istemci kitaplığının 1.0.0-Beta. 8 sürümünü kullanır.
+> Bu belge, çağıran SDK 'nın 1.0.0-Beta. 8 sürümünü kullanır.
 
-<!-- TODO: update with instructions on how to download, install and add package to project -->
 Proje seviyesi Build. Gradle ' i bulun ve `mavenCentral()` altındaki depolar listesine eklediğinizden emin olun. `buildscript``allprojects`
 ```groovy
 buildscript {
@@ -59,11 +58,11 @@ dependencies {
 
 ## <a name="object-model"></a>Nesne modeli
 
-Aşağıdaki sınıflar ve arabirimler, istemci Kitaplığı çağıran Azure Iletişim Hizmetleri 'nin bazı önemli özelliklerinden bazılarını işler:
+Aşağıdaki sınıflar ve arabirimler, Azure Communication Service 'ın SDK 'yi çağıran bazı önemli özelliklerinden bazılarını işler:
 
 | Ad                                  | Açıklama                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| CallClient| CallClient, çağıran istemci kitaplığı için ana giriş noktasıdır.|
+| CallClient| CallClient, çağıran SDK 'ya ana giriş noktasıdır.|
 | CallAgent | CallAgent, çağrıları başlatmak ve yönetmek için kullanılır. |
 | CommunicationTokenCredential | CommunicationTokenCredential, CallAgent örneğini oluşturmak için belirteç kimlik bilgileri olarak kullanılır.|
 | Communicationıdentifier | Communicationıdentifier, bir çağrının parçası olabilecek farklı katılımcı türü olarak kullanılır.|
@@ -224,10 +223,10 @@ Firebase Cloud Messaging 'ten bildirim iletileri alabilmesi için Android uygula
 
 Anında iletme bildirimlerine kaydolmak için uygulamanın bir `registerPushNotification()` cihaz kayıt belirtecine sahip bir *Callagent* örneğinde çağrı yapması gerekir.
 
-Cihaz kayıt belirtecini almak için, aşağıdaki satırları henüz yoksa bölümüne ekleyerek Firebase istemci kitaplığını uygulama modülünüzün *Build. Gradle* dosyasına ekleyin `dependencies` :
+Cihaz kayıt belirtecini almak için, aşağıdaki satırları henüz yoksa bölümüne ekleyerek Firebase SDK 'sını uygulama modülünüzün *Build. Gradle* dosyasına ekleyin `dependencies` :
 
 ```
-    // Add the client library for Firebase Cloud Messaging
+    // Add the SDK for Firebase Cloud Messaging
     implementation 'com.google.firebase:firebase-core:16.0.8'
     implementation 'com.google.firebase:firebase-messaging:20.2.4'
 ```
@@ -244,7 +243,7 @@ Aşağıdaki eklentiyi, zaten orada değilse dosyanın başına ekleyin:
 apply plugin: 'com.google.gms.google-services'
 ```
 
-Araç çubuğunda *Şimdi Eşitle* ' yi seçin. İstemci uygulama örneği için Firebase bulut mesajlaşma istemci kitaplığı tarafından oluşturulan cihaz kayıt belirtecini almak için aşağıdaki kod parçacığını ekleyin. Örneğin, aşağıdaki içeri aktarmaları örnek için ana etkinliğin üstbilgisine eklediğinizden emin olun. Bu kod parçacığı, belirteci almak için gereklidir:
+Araç çubuğunda *Şimdi Eşitle* ' yi seçin. İstemci uygulama örneği için Firebase bulut mesajlaşma SDK 'Sı tarafından oluşturulan cihaz kayıt belirtecini almak için aşağıdaki kod parçacığını ekleyin. Örneğin, aşağıdaki içeri aktarmaları örnek için ana etkinliğin üstbilgisine eklediğinizden emin olun. Bu kod parçacığı, belirteci almak için gereklidir:
 
 ```
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -272,7 +271,7 @@ Belirteci almak için bu kod parçacığını ekleyin:
                     }
                 });
 ```
-Gelen çağrı anında iletme bildirimleri için cihaz kayıt belirtecini çağıran hizmetler istemci kitaplığıyla kaydedin:
+Gelen çağrı anında iletme bildirimleri için cihaz kayıt belirtecini çağıran hizmetler SDK 'Sı ile kaydedin:
 
 ```java
 String deviceRegistrationToken = "<Device Token from previous section>";
@@ -288,7 +287,7 @@ catch(Exception e) {
 
 Gelen çağrı anında iletme bildirimlerini almak için, bir *Callagent* örneğinde yük Ile *handlepushnotification ()* çağırın.
 
-Firebase Cloud Messaging 'ten yük almak için, *Firebasemessagingservice* Firebase istemci kitaplığı sınıfını genişleten yeni bir hizmet (dosya > yeni > Service > Service) oluşturarak başlayın ve yöntemi geçersiz kılın `onMessageReceived` . Bu yöntem, Firebase Cloud Messaging, uygulamaya anında iletme bildirimi teslim edildiğinde çağrılan olay işleyicisidir.
+Firebase Cloud Messaging 'ten yük almak için, *Firebasemessagingservice* FIREBASE SDK sınıfını genişleten yeni bir hizmet (dosya > yeni > Service > Service) oluşturarak başlayın ve yöntemi geçersiz kılın `onMessageReceived` . Bu yöntem, Firebase Cloud Messaging, uygulamaya anında iletme bildirimi teslim edildiğinde çağrılan olay işleyicisidir.
 
 ```java
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
@@ -318,7 +317,7 @@ Dosyasına aşağıdaki hizmet tanımını ekleyin `AndroidManifest.xml` <applic
         </service>
 ```
 
-- Yük alındıktan sonra, bir *Callagent* örneği üzerinde *handlepushnotification* yöntemi çağırarak Işlenecek bir Iç *ıncomingcallınformation* nesnesine ayrıştırılabilmesi için *iletişim hizmetleri* istemci kitaplığına geçirilebilir. `CallAgent`Sınıfında yöntemi çağırarak bir örnek oluşturulur `createCallAgent(...)` `CallClient` .
+- Yük alındıktan sonra, bir *Callagent* örneği üzerinde *handlepushnotification* yöntemi çağırarak Işlenecek bir Iç *ıncomingcallınformation* nesnesine ayrıştırılabilmesi için *iletişim hizmetleri* SDK 'sına geçirilebilir. `CallAgent`Sınıfında yöntemi çağırarak bir örnek oluşturulur `createCallAgent(...)` `CallClient` .
 
 ```java
 try {

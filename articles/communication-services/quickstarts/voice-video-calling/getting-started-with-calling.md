@@ -8,19 +8,19 @@ ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: 0886e3955ba58a5a8edbf3cd72b1065b1000b5b3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: eca80f6353240755a0670fcfa4ca9875107b0d47
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104598835"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108318"
 ---
 # <a name="quickstart-add-voice-calling-to-your-app"></a>Hızlı başlangıç: uygulamanıza sesli çağrı ekleme
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 
-Uygulamanıza ses ve video çağrısı eklemek için istemci kitaplığı 'nı çağıran Iletişim hizmetlerini kullanarak Azure Iletişim Hizmetleri 'ni kullanmaya başlayın.
+Uygulamanıza ses ve video çağrısı eklemek için SDK 'Yı çağıran Iletişim hizmetlerini kullanarak Azure Iletişim Hizmetleri ile çalışmaya başlayın.
 
 [!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
 
@@ -45,5 +45,5 @@ Bir Iletişim Hizmetleri aboneliğini temizleyip kaldırmak istiyorsanız, kayna
 Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 - [Çağıran Hero örnekimize](../../samples/calling-hero-sample.md) göz atın
-- [İstemci kitaplığı yeteneklerini çağırma](./calling-client-samples.md) hakkında bilgi edinin
+- [SDK yeteneklerini çağırma](./calling-client-samples.md) hakkında bilgi edinin
 - [Nasıl çalıştığını çağırma](../../concepts/voice-video-calling/about-call-types.md) hakkında daha fazla bilgi edinin

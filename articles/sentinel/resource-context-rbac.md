@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/03/2021
 ms.author: bagol
-ms.openlocfilehash: 26124f8f650e1006244b4871e26962d417d90fd4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fc1246d079760fd86513840aebbffa34d192f8ed
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102055045"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044184"
 ---
 # <a name="manage-access-to-azure-sentinel-data-by-resource"></a>Kaynağa göre Azure Sentinel verilerine erişimi yönetme
 
@@ -36,7 +36,7 @@ Kullanıcıların Azure Sentinel çalışma alanı yerine erişebileceği kaynak
 
 - **Azure Izleyici aracılığıyla**. Birden fazla kaynağa ve/veya kaynak grubuna yayılan sorgular oluşturmak istediğinizde bu yöntemi kullanın. Azure Izleyici 'de günlüklere ve çalışma kitaplarına gidildiğinde, kapsamınızı bir veya daha fazla belirli kaynak grubu veya kaynak olarak tanımlayın.
 
-Azure Izleyici 'de kaynak bağlamı RBAC 'yi etkinleştirin. Daha fazla bilgi için bkz. [Azure izleyici 'de günlük verilerine ve çalışma alanlarına erişimi yönetme](/azure/azure-monitor/logs/manage-access).
+Azure Izleyici 'de kaynak bağlamı RBAC 'yi etkinleştirin. Daha fazla bilgi için bkz. [Azure izleyici 'de günlük verilerine ve çalışma alanlarına erişimi yönetme](../azure-monitor/logs/manage-access.md).
 
 > [!NOTE]
 > Verileriniz syslog, CEF veya AAD verileri gibi bir Azure kaynağı veya özel bir toplayıcı tarafından toplanan veriler değilse, verileri tanımlamak ve erişimi etkinleştirmek için kullanılan kaynak KIMLIĞINI el ile yapılandırmanız gerekir.
@@ -66,7 +66,7 @@ Aşağıdaki listede, veri erişimi için diğer çözümlerin gereksinimleriniz
 |---------|---------|
 |**Bir yan kuruluş, tam bir Azure Sentinel deneyimi gerektiren BIR SOC ekibine sahiptir**.     |  Bu durumda, veri izinlerinizi ayırmak için bir çoklu çalışma alanı mimarisi kullanın. <br><br>Daha fazla bilgi için bkz. <br>- [Çalışma alanları ve kiracılar arasında Azure Sentinel 'i genişletme](extend-sentinel-across-workspaces-tenants.md)<br>    - [Aynı anda birçok çalışma alanındaki olaylarla çalışma](multiple-workspace-view.md)          |
 |**Belirli bir olay türüne erişim sağlamak istiyorsunuz**.     |  Örneğin, tüm sistemlerde Windows güvenlik olaylarına erişim sağlayan bir Windows Yöneticisi sağlayın. <br><br>Bu gibi durumlarda, her tablo için izinleri tanımlamak üzere [tablo DÜZEYI RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043) kullanın.       |
-| **Erişimi kaynağa bağlı değil daha ayrıntılı bir düzeye veya bir olaydaki alanların yalnızca bir alt kümesine sınırlayın**   |   Örneğin, bir kullanıcının yan kuruluşuna bağlı olarak Office 365 günlüklerine erişimi sınırlandırmak isteyebilirsiniz. <br><br>Bu durumda, [Power BI panoları ve raporları](/azure/azure-monitor/platform/powerbi)ile yerleşik tümleştirmeyi kullanarak verilere erişim sağlayın.      |
+| **Erişimi kaynağa bağlı değil daha ayrıntılı bir düzeye veya bir olaydaki alanların yalnızca bir alt kümesine sınırlayın**   |   Örneğin, bir kullanıcının yan kuruluşuna bağlı olarak Office 365 günlüklerine erişimi sınırlandırmak isteyebilirsiniz. <br><br>Bu durumda, [Power BI panoları ve raporları](../azure-monitor/visualize/powerbi.md)ile yerleşik tümleştirmeyi kullanarak verilere erişim sağlayın.      |
 | | |
 
 ## <a name="explicitly-configure-resource-context-rbac"></a>Kaynak bağlamı RBAC 'yi açıkça yapılandırın
@@ -77,11 +77,11 @@ Kaynak bağlamı RBAC 'yi yapılandırmak istiyorsanız aşağıdaki adımları 
 
 **Kaynak BAĞLAMı RBAC 'yi açıkça yapılandırmak için**:
 
-1. Azure Izleyici 'de [Resource-Context RBAC](/azure/azure-monitor/platform/manage-access) 'i etkinleştirdiğinizden emin olun. 
+1. Azure Izleyici 'de [Resource-Context RBAC](../azure-monitor/logs/manage-access.md) 'i etkinleştirdiğinizden emin olun. 
 
-1. Tüm Azure Sentinel ortamı olmadan kaynaklarınıza erişmesi gereken her Kullanıcı ekibi için [bir kaynak grubu oluşturun](/azure/azure-resource-manager/management/manage-resource-groups-portal) .
+1. Tüm Azure Sentinel ortamı olmadan kaynaklarınıza erişmesi gereken her Kullanıcı ekibi için [bir kaynak grubu oluşturun](../azure-resource-manager/management/manage-resource-groups-portal.md) .
 
-    Takım üyelerinin her biri için [günlük okuyucu izinleri](/azure/azure-monitor/platform/manage-access#resource-permissions) atayın.
+    Takım üyelerinin her biri için [günlük okuyucu izinleri](../azure-monitor/logs/manage-access.md#resource-permissions) atayın.
 
 1. Oluşturduğunuz kaynak ekip gruplarına kaynak atayın ve olayları ilgili kaynak kimlikleriyle etiketleyin.
 
@@ -110,7 +110,7 @@ Birden çok ekibiniz varsa, her ayrı takım için olayları işlerken ayrı gü
 Örneğin, VM 'lerinizi ayırmak A ekibine ait Syslog olaylarının A toplayıcı VM 'Si kullanılarak toplanmasını sağlar.
 
 > [!TIP]
-> - Günlük ileticisi olarak AWS gibi bir şirket içi VM veya başka bir bulut VM kullanırken, [Azure Arc](/azure/azure-arc/servers/overview)'ı uygulayarak BIR kaynak kimliğine sahip olduğundan emin olun.
+> - Günlük ileticisi olarak AWS gibi bir şirket içi VM veya başka bir bulut VM kullanırken, [Azure Arc](../azure-arc/servers/overview.md)'ı uygulayarak BIR kaynak kimliğine sahip olduğundan emin olun.
 > - Günlük iletme VM ortamınızı ölçeklendirmek için, CEF ve sylog günlüklerinizi toplamak üzere bir [VM Ölçek kümesi](https://techcommunity.microsoft.com/t5/azure-sentinel/scaling-up-syslog-cef-collection/ba-p/1185854) oluşturmayı düşünün.
 
 
@@ -145,7 +145,7 @@ Kaynak bağlamı RBAC kullanıyorsanız ve API tarafından toplanan olayların b
 >
 ### <a name="resource-ids-with-the-log-analytics-api-collection"></a>Log Analytics API koleksiyonuyla kaynak kimlikleri
 
-[Log Analytics veri TOPLAYıCı API](/azure/azure-monitor/platform/data-collector-api)'sini kullanarak TOPLARKEN, http [*x-MS-azureresourceıd*](/azure/azure-monitor/platform/data-collector-api#request-headers) istek üst bilgisini kullanarak kaynak kimliği olan olaylara atayabilirsiniz.
+[Log Analytics veri TOPLAYıCı API](../azure-monitor/logs/data-collector-api.md)'sini kullanarak TOPLARKEN, http [*x-MS-azureresourceıd*](../azure-monitor/logs/data-collector-api.md#request-headers) istek üst bilgisini kullanarak kaynak kimliği olan olaylara atayabilirsiniz.
 
 Kaynak bağlamı RBAC kullanıyorsanız ve API tarafından toplanan olayların belirli kullanıcılar tarafından kullanılabilir olmasını istiyorsanız, [kullanıcılarınız için oluşturduğunuz](#explicitly-configure-resource-context-rbac)kaynak grubunun kaynak kimliğini kullanın.
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: erhopf
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 66de81387fe27bd2a81ebcfeab7d86aac7031ff1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 90fbc41edbfea0ea99d436906d3052e43bfb4fb8
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102425303"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043894"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure bilişsel hizmetler güvenliği
 
@@ -29,13 +29,13 @@ HTTP üzerinden sunulan bilişsel hizmetler uç noktaları, TLS 1,2 ' i zorlar. 
 * HTTP çağrısının isteğin bir parçası olarak TLS 1,2 belirtmesini sağlamak için kullanılan dil (ve platform)
   * Dile ve platforma bağlı olarak, TLS belirtmek örtük olarak veya açık olarak yapılır
 
-.NET kullanıcıları için, <a href="https://docs.microsoft.com/dotnet/framework/network-programming/tls" target="_blank">Aktarım Katmanı Güvenliği en iyi yöntemlerini </a>göz önünde bulundurun.
+.NET kullanıcıları için, <a href="/dotnet/framework/network-programming/tls" target="_blank">Aktarım Katmanı Güvenliği en iyi yöntemlerini </a>göz önünde bulundurun.
 
 ## <a name="authentication"></a>Kimlik Doğrulaması
 
 Kimlik doğrulaması tartışırken, yaygın olarak karşılaşılan birkaç yanlış rastlamalar vardır. Kimlik doğrulama ve yetkilendirme genellikle bir diğeri için karıştırılır. Kimlik ayrıca güvenlik ' de bir ana bileşendir. Kimlik, bir <a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">sorumlu </a>hakkındaki bilgilerin koleksiyonudur. Kimlik sağlayıcıları (IDP) kimlik doğrulama hizmetlerine kimlikler sağlar. Kimlik doğrulaması, bir kullanıcının kimliğini doğrulama işlemidir. Yetkilendirme, belirli bir kimlik için kaynaklara yönelik erişim haklarının ve ayrıcalıkların belirtiledir. Bilişsel hizmetler tekliflerinin birkaçı, Azure rol tabanlı erişim denetimi (Azure RBAC) içerir. Azure RBAC, sorumluları el ile yönetme ile ilgili bazı sertifika işlemlerini basitleştirmek için kullanılabilir. Daha ayrıntılı bilgi için bkz. [Azure için Azure rol tabanlı erişim denetimi](../role-based-access-control/overview.md).
 
-Abonelik anahtarları, erişim belirteçleri ve Azure Active Directory (AAD) ile kimlik doğrulaması hakkında daha fazla bilgi için bkz. Azure bilişsel <a href="https://docs.microsoft.com/azure/cognitive-services/authentication" target="_blank">Hizmetler 'e yönelik kimlik doğrulama istekleri</a>.
+Abonelik anahtarları, erişim belirteçleri ve Azure Active Directory (AAD) ile kimlik doğrulaması hakkında daha fazla bilgi için bkz. Azure bilişsel <a href="/azure/cognitive-services/authentication" target="_blank">Hizmetler 'e yönelik kimlik doğrulama istekleri</a>.
 
 ## <a name="environment-variables-and-application-configuration"></a>Ortam değişkenleri ve uygulama yapılandırması
 
@@ -113,7 +113,7 @@ Bir ortam değişkenini almak için, belleğin belleğine okunmalıdır. Kullanm
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-Daha fazla bilgi için bkz <a href="https://docs.microsoft.com/dotnet/api/system.environment.getenvironmentvariable" target="_blank"> `Environment.GetEnvironmentVariable` </a>..
+Daha fazla bilgi için bkz <a href="/dotnet/api/system.environment.getenvironmentvariable" target="_blank"> `Environment.GetEnvironmentVariable` </a>..
 
 ```csharp
 using static System.Environment;
@@ -132,7 +132,7 @@ class Program
 
 # <a name="c"></a>[C++](#tab/cpp)
 
-Daha fazla bilgi için bkz <a href="https://docs.microsoft.com/cpp/c-runtime-library/reference/getenv-wgetenv" target="_blank"> `getenv` </a>..
+Daha fazla bilgi için bkz <a href="/cpp/c-runtime-library/reference/getenv-wgetenv" target="_blank"> `getenv` </a>..
 
 ```cpp
 #include <stdlib.h>

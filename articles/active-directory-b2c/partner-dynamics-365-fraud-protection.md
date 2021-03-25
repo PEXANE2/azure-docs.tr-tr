@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/10/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: cf441108c9fd0ae87f265604f6f0706d92516746
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8b725b7fcde8ad24934d74d3ce849260312d2f5f
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101646563"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043623"
 ---
 # <a name="tutorial-configure-microsoft-dynamics-365-fraud-protection-with-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C ile Microsoft Dynamics 365 sahtekarlık korumasını yapılandırma
 
@@ -102,8 +102,8 @@ Daha fazla bilgi için bkz. [App Service belgeleri](../app-service/app-service-w
 | :-------- | :------------| :-----------|
 |FraudProtectionSettings: InstanceId | Microsoft DFP yapılandırması |     |
 |FraudProtectionSettings: Deviceparmak Izi \ müşteri kimliği | Microsoft cihaz parmak izi müşteri KIMLIĞINIZ |     |
-| FraudProtectionSettings: ApiBaseUrl |  Microsoft DFP portalından temel URL 'niz   | Bunun yerine üretim API 'sini çağırmak için '-int ' öğesini kaldırın
-|  TokenProviderConfig: kaynak | https://api.dfp.dynamics-int.com |   Bunun yerine üretim API 'sini çağırmak için '-int ' öğesini kaldırın  |
+| FraudProtectionSettings: ApiBaseUrl |  Microsoft DFP portalından temel URL 'niz   | Bunun yerine üretim API 'sini çağırmak için '-int ' öğesini kaldırın|
+|  TokenProviderConfig: kaynak  |     | Bunun yerine üretim API 'sini çağırmak için '-int ' öğesini kaldırın|
 |   TokenProviderConfig: ClientID       |Sahtekarlık koruması ticari Azure AD istemci uygulaması KIMLIĞI      |       |
 | TokenProviderConfig: Authority | https://login.microsoftonline.com/<directory_ID> | Sahtekarlık koruması ticari Azure AD kiracı yetkiliniz |
 | TokenProviderConfig: CertificateThumbprint * | Ticari Azure AD İstemci uygulamanızda kimlik doğrulaması yapmak için kullanılan sertifikanın parmak izi |
