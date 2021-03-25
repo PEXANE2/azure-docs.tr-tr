@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3370aac242fb47a133a5f7d6dc9b3444c65e3691
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: dd3596dd7b2cd01e80d9cf4db9bbc179048e7fcf
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103573124"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105035974"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>Öğretici: uzaktan işlenmiş bir modeli görüntüleme
 
@@ -33,10 +33,7 @@ Bu öğreticide şunlar gerekir:
 * Windows SDK 10.0.18362.0 [(İndir)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
 * Visual Studio 2019 ' un en son sürümü [(indirme)](https://visualstudio.microsoft.com/vs/older-downloads/)
 * GIT [(İndir)](https://git-scm.com/downloads)
-* En güncel 2019,3 olan Unity, bu sürüm için Unity hub kullanmanızı öneririz [(indirme)](https://unity3d.com/get-unity/download)
-  * Bu modülleri Unity 'ye yükler:
-    * **UWP** -Evrensel Windows platformu derleme desteği
-    * **IL2CPP** -Windows derleme DESTEĞI (IL2CPP)
+* Unity (desteklenen sürümler için [sistem gereksinimlerine](../../../overview/system-requirements.md#unity) bakın)
 * Unity ve C# dilinin ara bilgisi (örneğin: komut dosyaları ve nesneler oluşturma, Prefabs kullanma, Unity olaylarını yapılandırma vb.)
 
 ## <a name="provision-an-azure-remote-rendering-arr-instance"></a>Azure uzaktan Işleme (ARR) örneği sağlama

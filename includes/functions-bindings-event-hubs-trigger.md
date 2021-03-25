@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: 145db7693db126d4e114e8c8a885ea7fd7809e69
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 4bea0f6091c02f80e381217ab7894ec4ad90d0ed
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102608924"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105104987"
 ---
 Bir olay hub 'ı olay akışına gönderilen olaya yanıt vermek için işlev tetikleyicisini kullanın. Tetikleyiciyi ayarlamak için temeldeki Olay Hub 'ına okuma erişiminizin olması gerekir. İşlev tetiklendiğinde, işleve geçirilen ileti bir dize olarak yazılır.
 
@@ -281,14 +281,14 @@ import azure.functions as func
 
 
 def main(event: func.EventHubEvent):
-    logging.info('Function triggered to process a message: ', event.get_body())
-    logging.info('  EnqueuedTimeUtc =', event.enqueued_time)
-    logging.info('  SequenceNumber =', event.sequence_number)
-    logging.info('  Offset =', event.offset)
+    logging.info(f'Function triggered to process a message: {event.get_body().decode()}')
+    logging.info(f'  EnqueuedTimeUtc = {event.enqueued_time}')
+    logging.info(f'  SequenceNumber = {event.sequence_number}')
+    logging.info(f'  Offset = {event.offset}')
 
     # Metadata
     for key in event.metadata:
-        logging.info(f'Metadata: {key} = ', event.metadata[key])
+        logging.info(f'Metadata: {key} = {event.metadata[key]}')
 ```
 
 # <a name="java"></a>[Java](#tab/java)
@@ -375,12 +375,12 @@ Tetikleyici olay hub 'ı için aşağıdaki parametre türlerini kullanabilirsin
 * `string`
 * `byte[]`
 * `POCO`
-* `EventData` -EventData 'ın varsayılan özellikleri, [Microsoft. Azure. EventHubs ad alanı](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)için ' de verilmiştir.
+* `EventData` -EventData 'ın varsayılan özellikleri, [Microsoft. Azure. EventHubs ad alanı](/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)için ' de verilmiştir.
 
 ### <a name="additional-types"></a>Ek türler 
-Olay Hub uzantısının 5.0.0 veya daha yüksek sürümünü kullanan uygulamalar, `EventData` [Microsoft. Azure. eventhubs ad alanı](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)yerine [Azure. Messaging. eventhubs](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) türünü kullanır. Bu sürüm, `Body` aşağıdaki türlerin yerine eski tür için desteği bırakır:
+Olay Hub uzantısının 5.0.0 veya daha yüksek sürümünü kullanan uygulamalar, `EventData` [Microsoft. Azure. eventhubs ad alanı](/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)yerine [Azure. Messaging. eventhubs](/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) türünü kullanır. Bu sürüm, `Body` aşağıdaki türlerin yerine eski tür için desteği bırakır:
 
-- [EventBody](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
+- [EventBody](/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
 
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
@@ -391,12 +391,12 @@ Tetikleyici olay hub 'ı için aşağıdaki parametre türlerini kullanabilirsin
 * `string`
 * `byte[]`
 * `POCO`
-* `EventData` -EventData 'ın varsayılan özellikleri, [Microsoft. Azure. EventHubs ad alanı](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)için ' de verilmiştir.
+* `EventData` -EventData 'ın varsayılan özellikleri, [Microsoft. Azure. EventHubs ad alanı](/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)için ' de verilmiştir.
 
 ### <a name="additional-types"></a>Ek türler 
-Olay Hub uzantısının 5.0.0 veya daha yüksek sürümünü kullanan uygulamalar, `EventData` [Microsoft. Azure. eventhubs ad alanı](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)yerine [Azure. Messaging. eventhubs](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) türünü kullanır. Bu sürüm, `Body` aşağıdaki türlerin yerine eski tür için desteği bırakır:
+Olay Hub uzantısının 5.0.0 veya daha yüksek sürümünü kullanan uygulamalar, `EventData` [Microsoft. Azure. eventhubs ad alanı](/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)yerine [Azure. Messaging. eventhubs](/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) türünü kullanır. Bu sürüm, `Body` aşağıdaki türlerin yerine eski tür için desteği bırakır:
 
-- [EventBody](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
+- [EventBody](/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
 
 # <a name="java"></a>[Java](#tab/java)
 

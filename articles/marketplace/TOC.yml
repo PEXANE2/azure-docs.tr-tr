@@ -258,9 +258,11 @@
               href: create-new-saas-offer-technical.md
             - name: Plan oluşturma
               href: create-new-saas-offer-plans.md
+            - name: Test teklifi oluşturma
+              href: create-saas-dev-test-offer.md
             - name: SaaS teklifini test etme ve yayımlama
               href: test-publish-saas-offer.md
-        - name: SaaS teklifinizi pazara sunma
+        - name: SaaS teklifinizi satma
           href: create-new-saas-offer-marketing.md
     - name: Teklifleri inceleme ve yayımlama
       href: review-publish-offer.md

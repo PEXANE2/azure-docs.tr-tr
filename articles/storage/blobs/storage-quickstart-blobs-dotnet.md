@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bb26a865ab8b8beba99fcba51e2d05e166b1e84b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 82dcfa0942f21f01424c4744aa0b23f4672a135f
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102095366"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105106726"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>Hızlı başlangıç: .NET için Azure Blob depolama istemci kitaplığı V12
 
@@ -164,7 +164,7 @@ Bu kodu yönteminin sonuna ekleyin `Main` :
 
 ### <a name="download-blobs"></a>Blob’ları indirme
 
-[Downloadasync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadasync) yöntemini çağırarak önceden oluşturulmuş blobu indirin. Örnek kod, yerel dosya sisteminde her iki dosyayı da görebilmeniz için dosya adına "INDIRILMIŞ" bir sonek ekler.
+[Downloadasync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadtoasync) yöntemini çağırarak önceden oluşturulmuş blobu indirin. Örnek kod, yerel dosya sisteminde her iki dosyayı da görebilmeniz için dosya adına "INDIRILMIŞ" bir sonek ekler.
 
 Bu kodu yönteminin sonuna ekleyin `Main` :
 

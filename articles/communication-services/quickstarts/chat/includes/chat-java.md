@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 146053ffd72b24216bfa86577787727257da2516
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 3cbed124963fe6e56d6721669d0feedc6e34ffc6
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495431"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107058"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -48,7 +48,7 @@ Uygulamanızın Pod dosyasını Java 8 veya üstünü kullanacak şekilde günce
 </properties>
 ```
 
-### <a name="add-the-package-references-for-the-chat-client-library"></a>Sohbet istemci kitaplığı için paket başvurularını ekleme
+### <a name="add-the-package-references-for-the-chat-sdk"></a>Sohbet SDK 'Sı için paket başvurularını ekleme
 
 Pod dosyanızda, `azure-communication-chat` sohbet API 'leriyle pakete başvurun:
 
@@ -72,7 +72,7 @@ Kimlik doğrulaması için, istemcinizin pakete başvurması gerekir `azure-comm
 
 ## <a name="object-model"></a>Nesne modeli
 
-Aşağıdaki sınıflar ve arabirimler, Java için Azure Iletişim Hizmetleri sohbeti istemci kitaplığı 'nın bazı önemli özelliklerinden bazılarını işler.
+Aşağıdaki sınıflar ve arabirimler, Java için Azure Communication Services sohbet SDK 'sının önemli özelliklerinden bazılarını idare edebilir.
 
 | Ad                                  | Açıklama                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
@@ -82,7 +82,7 @@ Aşağıdaki sınıflar ve arabirimler, Java için Azure Iletişim Hizmetleri so
 | ChatThreadAsyncClient | Bu sınıf, zaman uyumsuz sohbet Iş parçacığı işlevselliği için gereklidir. ChatAsyncClient aracılığıyla bir örnek edinirsiniz ve bu örneği kullanarak ileti gönderebilir/alabilir/güncelleştirebilir/silebilirsiniz, kullanıcıları ekleyin/kaldırın/alın, yazma bildirimleri gönderin ve okundu bilgilerini okuyun. |
 
 ## <a name="create-a-chat-client"></a>Sohbet istemcisi oluşturma
-Bir sohbet istemcisi oluşturmak için, Iletişim hizmeti uç noktasını ve önkoşul adımlarının bir parçası olarak oluşturulan erişim belirtecini kullanacaksınız. Kullanıcı erişimi belirteçleri, Azure Iletişim hizmetlerinde doğrudan kimlik doğrulayan istemci uygulamaları oluşturmanızı sağlar. Bu belirteçleri sunucunuzda oluşturduktan sonra bunları bir istemci cihazına geri geçirin. Belirteci sohbet istemcinize geçirmek için ortak istemci kitaplığındaki CommunicationTokenCredential sınıfını kullanmanız gerekir. 
+Bir sohbet istemcisi oluşturmak için, Iletişim hizmeti uç noktasını ve önkoşul adımlarının bir parçası olarak oluşturulan erişim belirtecini kullanacaksınız. Kullanıcı erişimi belirteçleri, Azure Iletişim hizmetlerinde doğrudan kimlik doğrulayan istemci uygulamaları oluşturmanızı sağlar. Bu belirteçleri sunucunuzda oluşturduktan sonra bunları bir istemci cihazına geri geçirin. Belirteci sohbet istemcinize geçirmek için ortak SDK 'daki CommunicationTokenCredential sınıfını kullanmanız gerekir. 
 
 [Sohbet mimarisi](../../../concepts/chat/concepts.md) hakkında daha fazla bilgi edinin
 

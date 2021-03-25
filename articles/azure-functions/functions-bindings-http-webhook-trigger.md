@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: e8641cada03577cf22e6627bdf53b2a8a0e836ef
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4550be7ae8c543eea1bdfa085db6f23fe668a121
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102216392"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025705"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Işlevleri HTTP tetikleyicisi
 
@@ -547,7 +547,7 @@ Tüm bir örnek için bkz. [tetikleyici örneği](#example).
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `HttpTrigger` .
 
-|function.jsözelliği | Öznitelik özelliği |Description|
+|function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
 | **türüyle** | yok| Gerekli-olarak ayarlanmalıdır `httpTrigger` . |
 | **Görünüm** | yok| Gerekli-olarak ayarlanmalıdır `in` . |
@@ -596,7 +596,7 @@ Bu yapılandırmayı kullanarak, işlev artık özgün yol yerine aşağıdaki r
 http://<APP_NAME>.azurewebsites.net/api/products/electronics/357
 ```
 
-Bu yapılandırma, işlev kodunun adreste, _kategoride_ ve _kimliğinde_ iki parametreyi desteklemesini sağlar. Yönlendirme parametrelerinin bir URL 'de nasıl simgeleştirilmiş olduğu hakkında daha fazla bilgi için bkz. [ASP.NET Core yönlendirme](https://docs.microsoft.com/aspnet/core/fundamentals/routing#route-constraint-reference).
+Bu yapılandırma, işlev kodunun adreste, _kategoride_ ve _kimliğinde_ iki parametreyi desteklemesini sağlar. Yönlendirme parametrelerinin bir URL 'de nasıl simgeleştirilmiş olduğu hakkında daha fazla bilgi için bkz. [ASP.NET Core yönlendirme](/aspnet/core/fundamentals/routing#route-constraint-reference).
 
 # <a name="c"></a>[C#](#tab/csharp)
 

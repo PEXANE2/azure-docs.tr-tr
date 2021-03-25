@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: Metinden konuşmaya
-ms.openlocfilehash: 7722c9387e8d6475c6da4c771e9a0e355a4ac0af
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e42f81ce0f06b3782972dbf4322f0590763d8704
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104654858"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026334"
 ---
 # <a name="what-is-text-to-speech"></a>Metin okuma nedir?
 
@@ -41,7 +41,10 @@ Bu genel bakışta, uygulamanızın, araçların veya cihazların metni insan be
 
 * SSML ile konuşma stillerini ayarlama-konuşma Sensleme dili (SSML), konuşmadan metne çıktıları özelleştirmek için kullanılan XML tabanlı bir biçimlendirme dilidir. SSML ile, aralığı ayarlayabilir, duraklamalar ekleyebilir, söylenişi artırabilir veya yavaşlatır, konuşma hızını artırabilir veya azaltabilir, hacmi artırabilir veya azaltabilirsiniz ve tek bir belgeye birden çok ses özniteliği ekleyebilirsiniz. Konuşma stillerini [ayarlama için bkz](speech-synthesis-markup.md) ..
 
-* Visemes- [visemes](how-to-speech-synthesis-viseme.md) , belirli bir phoneme oluştururken LIP 'ler, Jaw ve dil düzeyi dahil olmak üzere gözlemlenen konuşmayla ilgili önemli pozlardır. Visemes, sesler ve phonemes ile güçlü bir bağıntı vardır. Konuşma SDK 'sında viseme olaylarını kullanarak, LIP 'yi okuma, eğitim, eğlence ve müşteri hizmetleri gibi yüzlere animasyon eklemek için kullanılabilecek yüz animasyon verileri oluşturabilirsiniz. 
+* Visemes- [visemes](how-to-speech-synthesis-viseme.md) , belirli bir phoneme oluştururken LIP 'ler, Jaw ve dil düzeyi dahil olmak üzere gözlemlenen konuşmayla ilgili önemli pozlardır. Visemes, sesler ve phonemes ile güçlü bir bağıntı vardır. Konuşma SDK 'sında viseme olaylarını kullanarak, LIP 'yi okuma, eğitim, eğlence ve müşteri hizmetleri gibi yüzlere animasyon eklemek için kullanılabilecek yüz animasyon verileri oluşturabilirsiniz.
+
+> [!NOTE]
+> Viseme `en-US-AriaNeural` , şimdilik yalnızca Voice for Batı ABD 2 ( `westus2` ) bölgesinde kullanılabilir.
 
 ## <a name="get-started"></a>başlarken
 

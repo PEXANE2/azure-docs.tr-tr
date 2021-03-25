@@ -3,12 +3,12 @@ title: Kavramlar-kimlik ve erişim
 description: Azure VMware çözümünün kimlik ve erişim kavramları hakkında bilgi edinin
 ms.topic: conceptual
 ms.date: 03/22/2021
-ms.openlocfilehash: f3a79c79acef07721bd0883fa70c835bee14ef0d
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 7b1880ccdee1d4c3ce25e264c004b1a949134a96
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104799284"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026913"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Azure VMware Çözüm kimliği kavramları
 
@@ -101,11 +101,11 @@ NSX-T Yöneticisi 'ne erişmek için *yönetici* hesabını kullanın. Tam ayrı
 
 Azure VMware Çözüm erişimi ve kimlik kavramlarını kapsadığınıza göre, şunları öğrenmek isteyebilirsiniz:
 
-- [Özel bulut yükseltmesi kavramları](concepts-upgrades.md).
-- [Azure VMware Çözüm kaynağını etkinleştirme](enable-azure-vmware-solution.md).
-- [Her ayrıcalığın ayrıntıları](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html).
-- [Azure VMware çözümü özel bulutları nasıl izler ve onarır](concepts-monitor-repair-private-cloud.md).
-- [Azure VMware Çözüm kaynağını etkinleştirme](enable-azure-vmware-solution.md).
+- [Özel bulut yükseltmesi kavramları](concepts-upgrades.md)
+- [Azure VMware Çözüm kaynağını etkinleştirme](enable-azure-vmware-solution.md)
+- [Her ayrıcalığın ayrıntıları](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html)
+- [Azure VMware çözümü özel bulutları nasıl izler ve onarır](concepts-monitor-repair-private-cloud.md)
+- [Azure VMware Çözüm kaynağını etkinleştirme](enable-azure-vmware-solution.md)
 
 
 <!-- LINKS - external-->

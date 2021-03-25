@@ -8,12 +8,12 @@ ms.author: manoskow
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: daa89380894a57e58191edd95303a2160846da04
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 80db53a5ed8d2edc90bc847578d5df4d603cc437
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103492702"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107236"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Azure Iletişim hizmetlerinde sorun giderme
 
@@ -33,11 +33,11 @@ Belirli sorun türleriyle ilgili sorunları gidermenize yardımcı olması için
 
 ## <a name="access-your-ms-cv-id"></a>MS-CV KIMLIĞINIZE erişin
 
-MS-CV KIMLIĞI, `clientOptions` istemci kitaplıklarınızı başlatırken nesne örneğinde tanılama yapılandırılarak erişilebilir. Tanılama, kimlik ve VoIP çağrısı dahil olmak üzere Azure istemci kitaplıklarının herhangi birine yönelik olarak yapılandırılabilir.
+SDK 'larınızı başlatırken nesne örneğindeki tanılamayı yapılandırarak MS-CV KIMLIĞI erişilebilir `clientOptions` . Tanılama; sohbet, kimlik ve VoIP çağrısı dahil olmak üzere herhangi bir Azure SDK 'Sı için yapılandırılabilir.
 
 ### <a name="client-options-example"></a>İstemci seçenekleri örneği
 
-Aşağıdaki kod parçacıkları tanılama yapılandırmasını gösterir. İstemci kitaplıkları tanılama etkinken kullanıldığında, tanılama ayrıntıları yapılandırılan olay dinleyicisine yayılır:
+Aşağıdaki kod parçacıkları tanılama yapılandırmasını gösterir. SDK 'lar tanılama etkinken kullanıldığında, tanılama ayrıntıları yapılandırılan olay dinleyicisine yayılır:
 
 # <a name="c"></a>[C#](#tab/csharp)
 ```
@@ -79,7 +79,7 @@ chat_client = ChatClient(
 
 ## <a name="access-your-call-id"></a>Çağrı KIMLIĞINIZE erişin
 
-Çağrı sorunlarıyla ilgili Azure portal bir destek isteği dosyalayarak, başvurduğunuz çağrının KIMLIĞINI sağlamanız istenebilir. Bu, çağıran istemci kitaplığı aracılığıyla erişilebilir:
+Çağrı sorunlarıyla ilgili Azure portal bir destek isteği dosyalayarak, başvurduğunuz çağrının KIMLIĞINI sağlamanız istenebilir. Bu, çağıran SDK aracılığıyla erişilebilir:
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 ```javascript
@@ -127,7 +127,7 @@ console.log(result); // your message ID will be in the result
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Aşağıdaki kod, `AzureLogger` JavaScript istemci kitaplığı kullanılarak günlükleri konsola çıkarmak için yapılandırmak üzere kullanılabilir:
+Aşağıdaki kod, `AzureLogger` JavaScript SDK 'sı kullanılarak günlüklere günlüklere çıktı olarak yapılandırmak için kullanılabilir:
 
 ```javascript
 import { AzureLogger } from '@azure/logger';
@@ -157,16 +157,16 @@ Android Studio, hem Benzetici hem de cihazdan cihaz dosya Gezgini > > araç penc
 
 ---
 
-## <a name="calling-client-library-error-codes"></a>İstemci kitaplığı hata kodlarını çağırma
+## <a name="calling-sdk-error-codes"></a>SDK hata kodlarını çağırma
 
-İstemci kitaplığını çağıran Azure Iletişim Hizmetleri, sorunları gidermeye yardımcı olması için aşağıdaki hata kodlarını kullanır. Bu hata kodları, `call.callEndReason` bir çağrı bittikten sonra özelliği aracılığıyla gösterilir.
+SDK 'Yı çağıran Azure Iletişim Hizmetleri, sorunları gidermeye yardımcı olması için aşağıdaki hata kodlarını kullanır. Bu hata kodları, `call.callEndReason` bir çağrı bittikten sonra özelliği aracılığıyla gösterilir.
 
 | Hata kodu | Description | Gerçekleştirilecek eylem |
 | -------- | ---------------| ---------------|
 | 403 | Yasak/kimlik doğrulama hatası. | Iletişim Hizmetleri belirtecinizin geçerli olduğundan ve geçerliliği dolmadığından emin olun. |
 | 404 | Çağrı bulunamadı. | Çağırdığınız numaranın (veya katılmakta olduğunuz çağrı) bulunduğundan emin olun. |
 | 408 | Çağrı denetleyicisi zaman aşımına uğradı. | Arama denetleyicisi, Kullanıcı uç noktalarından protokol iletilerini beklerken zaman aşımına uğradı. İstemcilerin bağlı ve kullanılabilir olduğundan emin olun. |
-| 410 | Yerel Medya yığını veya medya altyapısı hatası. | Desteklenen bir ortamda en son istemci kitaplığını kullandığınızdan emin olun. |
+| 410 | Yerel Medya yığını veya medya altyapısı hatası. | Desteklenen bir ortamda en son SDK 'Yı kullandığınızdan emin olun. |
 | 430 | İleti istemci uygulamasına teslim edilemiyor. | İstemci uygulamasının çalıştığından ve kullanılabilir olduğundan emin olun. |
 | 480 | Uzak istemci uç noktası kayıtlı değil. | Uzak uç noktanın kullanılabilir olduğundan emin olun. |
 | 481 | Gelen çağrı işlenemedi. | Azure portal aracılığıyla bir destek isteği dosyası oluşturma. |

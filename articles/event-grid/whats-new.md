@@ -3,12 +3,12 @@ title: Yenilikler Sürüm notları-Azure Event Grid
 description: En son sürüm notları, bilinen sorunlar, hata düzeltmeleri, kullanım dışı işlevler ve yaklaşan değişiklikler gibi Azure Event Grid yenilikleri öğrenin.
 ms.topic: overview
 ms.date: 07/23/2020
-ms.openlocfilehash: 7528cef7007704bbf434f16622707da8920eec2b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: da0b26e4f163f428e6955a37636ceb19bb34abc5
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96350016"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107542"
 ---
 # <a name="whats-new-in-azure-event-grid"></a>Azure Event Grid yenilikler nelerdir?
 
@@ -73,14 +73,14 @@ Azure Event Grid iyileştirmeleri sürekli olarak alır. En son gelişmelerden h
 - Bu sürüm, `2019-06-01` API sürümüne karşılık gelir.
 - Aşağıdaki yeni işlevlere destek ekler:
     * [Etki Alanları](event-domains.md)
-    * Kaynak listeleme işlemleri için sayfalandırma ve arama filtresi. Bir örnek için bkz. [konulara göre liste listesi](/rest/api/eventgrid/version2020-04-01-preview/topics/listbysubscription).
+    * Kaynak listeleme işlemleri için sayfalandırma ve arama filtresi. Bir örnek için bkz. [konulara göre liste listesi](/rest/api/eventgrid/version2020-10-15-preview/partnernamespaces/listbysubscription).
     * [Kuyruğu hedef olarak Service Bus](handler-service-bus.md)
     * [Gelişmiş filtreleme](event-filtering.md#advanced-filtering)
 
 ## <a name="410-preview-2019-03"></a>4.1.0-Önizleme (2019-03)
 - Bu sürüm 2019-02-01-Preview API sürümüne karşılık gelir.
 - Aşağıdaki yeni işlevlere destek ekler:
-    * Kaynak listeleme işlemleri için sayfalandırma ve arama filtresi. Bir örnek için bkz. [konulara göre liste listesi](/rest/api/eventgrid/version2020-04-01-preview/topics/listbysubscription).
+    * Kaynak listeleme işlemleri için sayfalandırma ve arama filtresi. Bir örnek için bkz. [konulara göre liste listesi](/rest/api/eventgrid/version2020-10-15-preview/partnernamespaces/listbysubscription).
     * [Etki alanını el ile oluşturma/silme konuları](how-to-event-domains.md)
     * [Kuyruğu hedef olarak Service Bus](handler-service-bus.md)
 

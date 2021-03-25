@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: 913f2bc5569dc9bdd058c38902ad0c99acee5d48
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 3ff31c5dd99e347805ad69018909137294d27c34
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104803412"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107167"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -49,7 +49,7 @@ ms.locfileid: "104803412"
 
 ### <a name="install-the-package"></a>Paketi yükler
 
-Hala uygulama dizininde, komutunu kullanarak Python paketi için Azure Iletişim Hizmetleri kimlik istemci Kitaplığı ' nı da yükleyebilirsiniz `pip install` .
+Hala uygulama dizininde, komutunu kullanarak Python için Azure Communication Services Identity SDK 'sını yükleyebilirsiniz `pip install` .
 
 ```console
 pip install azure-communication-identity

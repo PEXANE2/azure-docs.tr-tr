@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/04/2019
+ms.date: 03/22/2021
 ms.author: apimpm
-ms.openlocfilehash: 2d3f382635e9a8b8a562f7a7f60f256d68b90b8f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 743a7e7d34457405aa4be42b196dc994506c6587
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91363214"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105035820"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Azure API Management'ta geliştirici hesaplarını yetkilendirmek için Azure Active Directory kullanın
 
@@ -47,7 +47,15 @@ Bu makalede, kullanıcıların Azure Active Directory (Azure AD) aracılığıyl
     Diğer gerekli bilgileri girmenize olanak sağlayan denetimler bölmesinde görünür. Denetimler **ISTEMCI kimliğini** ve **istemci gizli** anahtarını içerir. (Makalede daha sonra bu denetimler hakkında bilgi alırsınız.)
 9. **Yeniden YÖNLENDIRME URL**'sinin içeriğini bir yere göz önünde alın.
     
-   ![Azure portal bir kimlik sağlayıcısı ekleme adımları](./media/api-management-howto-aad/api-management-with-aad001.png)  
+
+    :::image type="content" source="media/api-management-howto-aad/api-management-with-aad001.png" alt-text="Azure portal kimlik sağlayıcısı ekleme":::
+    > [!NOTE]
+    > İki yeniden yönlendirme URL 'Si vardır:<br/>
+    > **Yönlendirme URL 'si** -API Management en son geliştirici portalına işaret eder.<br/>
+    > **Yeniden yönlendirme URL 'si (kullanım dışı portal)** -API Management kullanım dışı olan geliştirici portalına işaret eder.
+    >
+    > En son geliştirici portalı yeniden yönlendirme URL 'sini kullanmanız önerilir.
+   
 10. Tarayıcınızda, farklı bir sekme açın. 
 11. Bir uygulamayı Active Directory kaydetmek için [Azure portal uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) gidin.
 12. **Yönet**'in altında **Uygulama kayıtları** nı seçin.
