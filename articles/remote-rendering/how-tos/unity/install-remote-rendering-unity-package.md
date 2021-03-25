@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/26/2020
 ms.topic: how-to
-ms.openlocfilehash: 9454bef52798650fc431f8df994e1a964662b453
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bfb383a7079e98db1db1f9b5077558c187bcea96
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101720837"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047737"
 ---
 # <a name="install-the-remote-rendering-package-for-unity"></a>Unity için Remote Rendering paketini yükleme
 
@@ -22,11 +22,11 @@ Unity paketini yüklemek için aşağıdaki seçeneklerden birini belirleyebilir
 
 ## <a name="install-remote-rendering-package-using-the-mixed-reality-feature-tool"></a>Karma Gerçeklik Özellik aracını kullanarak uzaktan Işleme paketini yükler
 
-[Karma gerçeklik özelliği aracı](https://aka.ms/MRFeatureToolDocs) ([Indirme](https://aka.ms/mrfeaturetool)), karma gerçeklik özellik paketlerini Unity projelerine bütünleştirmek için kullanılan bir araçtır. Paket, [ARR örnekleri deposunun](https://github.com/Azure/azure-remote-rendering)bir parçası değildir ve Unity 'nin iç paket kayıt defterinde kullanılamaz.
+[Karma gerçeklik özelliği aracı](/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool) ([Indirme](https://aka.ms/mrfeaturetool)), karma gerçeklik özellik paketlerini Unity projelerine bütünleştirmek için kullanılan bir araçtır. Paket, [ARR örnekleri deposunun](https://github.com/Azure/azure-remote-rendering)bir parçası değildir ve Unity 'nin iç paket kayıt defterinde kullanılamaz.
 
 Paketi bir projeye eklemek için şunları yapmanız gerekir:
 1. [Karma Gerçeklik Özellik aracını indirin](https://aka.ms/mrfeaturetool)
-1. Aracının nasıl kullanılacağına ilişkin [tüm yönergeleri](https://aka.ms/MRFeatureToolDocs) izleyin.
+1. Aracının nasıl kullanılacağına ilişkin [tüm yönergeleri](/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool) izleyin.
 1. **Özellikleri bul** sayfasında, **uzaktan işleme paketinin Microsoft Azure** onay kutusunu işaretleyin ve projenize eklemek istediğiniz paketin sürümünü seçin
 
 ![Mixed_Reality_feature_tool_package](media/mixed-reality-feature-tool-package.png)

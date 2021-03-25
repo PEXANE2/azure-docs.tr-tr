@@ -5,12 +5,12 @@ author: athinanthny
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.author: atsenthi
-ms.openlocfilehash: 1da70c37c8a6ed93e7abe1b5d329e808c592e43a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a0131960d356e4862d1379c308e240e19e76205c
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "86034990"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048077"
 ---
 # <a name="read-and-update-a-reliable-collections-backup-by-using-backup-explorer"></a>Yedek gezgin kullanarak güvenilir koleksiyonlar yedeklemesini okuma ve güncelleştirme
 
@@ -45,4 +45,4 @@ Yedekleme Gezgini için NuGet (Microsoft. ServiceFabric. ReliableCollectionBacku
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Service Fabric durum bilgisi olan hizmetlerde güvenilir koleksiyonlar](service-fabric-reliable-services-reliable-collections.md)hakkında daha fazla bilgi edinin.
-* [En iyi Service Fabric uygulamaları](service-fabric-best-practices-overview.md)inceleyin.
+* [En iyi Service Fabric uygulamaları](./service-fabric-best-practices-security.md)inceleyin.
