@@ -10,13 +10,13 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 01/22/2021
-ms.openlocfilehash: 1fec13eefad7f27bcaac8f2c690b99909cd24e59
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/23/2021
+ms.openlocfilehash: d38dc7b2bf56ba91fcf77ebdb81836c8c398a52d
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100518054"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023867"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Sanal çekirdek satın alma modeli kullanıldığında tek veritabanları için kaynak sınırları
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -383,7 +383,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Bellek içi OLTP depolaması (GB)|Yok|Yok|Yok|Yok|Yok|
 |En fazla veri boyutu (GB)|1024|1024|1024|1024|1536|
 |En fazla günlük boyutu (GB)|336|336|336|336|512|
-|TempDB en fazla veri boyutu (GB)|333|333|333|333|333|
+|TempDB en fazla veri boyutu (GB)|37|46|56|65|74|
 |Depolama türü|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|
 |GÇ gecikme süresi (yaklaşık)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|
 |En fazla veri ıOPS *|2560|3200|3840|4480|5120|
@@ -409,7 +409,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Bellek içi OLTP depolaması (GB)|Yok|Yok|Yok|Yok|Yok|Yok|
 |En fazla veri boyutu (GB)|1536|1536|1536|3072|3072|4096|
 |En fazla günlük boyutu (GB)|512|512|512|1024|1024|1024|
-|TempDB en fazla veri boyutu (GB)|83,25|92,5|111|148|166,5|333|
+|TempDB en fazla veri boyutu (GB)|83|93|111|148|167|333|
 |Depolama türü|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|
 |GÇ gecikme süresi (yaklaşık)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|
 |En fazla veri ıOPS *|5760|6400|7680|10240|11520|12800|

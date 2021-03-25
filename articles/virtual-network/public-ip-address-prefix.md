@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/29/2020
 ms.author: allensu
-ms.openlocfilehash: 874cb283f0076905393aa529e4ff9e1bad3ae047
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8bfc76afc1ef799be0fb29654bd341f53d1b0a8c
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103419686"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048468"
 ---
 # <a name="public-ip-address-prefix"></a>Genel IP adresi ön eki
 
@@ -63,7 +63,7 @@ Aşağıdaki kaynakları bir önekten statik bir genel IP adresi ile ilişkilend
 |Sanal makineler| Azure 'daki sanal makinelerinize genel IP 'Lerin bir önekden ilişkilendirilmesi, güvenlik duvarında bir izin verilenler listesine IP adresleri eklerken yönetim yükünü azaltır. Tek bir güvenlik duvarı kuralıyla tüm ön eki ekleyebilirsiniz. Azure 'daki sanal makinelerle ölçeklendirdiğinizde, IP 'Leri aynı önek tasarrufu, zaman ve yönetim yüküyle ilişkilendirebilirsiniz.| IP 'Leri bir önekten sanal makinenize ilişkilendirmek için: </br> 1. [bir ön ek oluşturun.](manage-public-ip-address-prefix.md) </br> 2. [önekten BIR IP oluşturun.](manage-public-ip-address-prefix.md) </br> 3. [IP 'yi sanal makinenizin ağ arabirimiyle ilişkilendirin.](virtual-network-network-interface-addresses.md#add-ip-addresses) </br> Ayrıca [, IP 'leri bir sanal makine ölçek kümesi ile ilişkilendirebilirsiniz](https://azure.microsoft.com/resources/templates/101-vmms-with-public-ip-prefix/).
 | Standart yük dengeleyiciler | Genel IP 'Leri bir önekten ön uç IP yapılandırmanıza veya bir yük dengeleyicinin giden kuralına ilişkilendirirken, Azure genel IP adresi alanının basitleştirilmesini sağlar. Bitişik bir IP adresi aralığından giden bağlantıları taşıyarak senaryonuzu kolaylaştırın. | IP 'Leri bir önekden yük dengeleyicinizle ilişkilendirmek için: </br> 1. [bir ön ek oluşturun.](manage-public-ip-address-prefix.md) </br> 2. [önekten BIR IP oluşturun.](manage-public-ip-address-prefix.md) </br> 3. yük dengeleyici oluştururken yukarıdaki 2. adımda oluşturulan IP 'yi yük dengeleyicinizin ön uç IP 'si olarak seçin veya güncelleştirin. |
 | Azure Güvenlik Duvarı | Giden SNAT için bir önekte ortak IP kullanabilirsiniz. Tüm giden sanal ağ trafiği [Azure Güvenlik Duvarı](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) genel IP 'ye çevrilir. | Bir IP 'yi bir önekten güvenlik duvarınızla ilişkilendirmek için: </br> 1. [bir ön ek oluşturun.](manage-public-ip-address-prefix.md) </br> 2. [önekten BIR IP oluşturun.](manage-public-ip-address-prefix.md) </br> 3. [Azure Güvenlik duvarını dağıtırken](../firewall/tutorial-firewall-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-the-firewall), daha önce ÖNEKDEN verdiğiniz IP 'yi seçtiğinizden emin olun.|
-| VPN Gateway (AZ SKU) veya Application Gateway v2 | Bölgesel olarak yedekli VPN veya Application Gateway v2 için bir önekten ortak IP kullanabilirsiniz. | Bir IP 'yi bir önekten ağ geçidinize ilişkilendirmek için: </br> 1. [bir ön ek oluşturun.](manage-public-ip-address-prefix.md) </br> 2. [önekten BIR IP oluşturun.](manage-public-ip-address-prefix.md) </br> 3. [VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/tutorial-create-gateway-portal) veya [Application Gateway](../application-gateway/quick-create-portal.md#create-an-application-gateway)dağıtırken, ön EKTEN daha önce verdiğiniz IP 'yi seçtiğinizden emin olun.|
+| VPN Gateway (AZ SKU) veya Application Gateway v2 | Bölgesel olarak yedekli VPN veya Application Gateway v2 için bir önekten ortak IP kullanabilirsiniz. | Bir IP 'yi bir önekten ağ geçidinize ilişkilendirmek için: </br> 1. [bir ön ek oluşturun.](manage-public-ip-address-prefix.md) </br> 2. [önekten BIR IP oluşturun.](manage-public-ip-address-prefix.md) </br> 3. [VPN Gateway](../vpn-gateway/tutorial-create-gateway-portal.md) veya [Application Gateway](../application-gateway/quick-create-portal.md#create-an-application-gateway)dağıtırken, ön EKTEN daha önce verdiğiniz IP 'yi seçtiğinizden emin olun.|
 
 ## <a name="constraints"></a>Kısıtlamalar
 

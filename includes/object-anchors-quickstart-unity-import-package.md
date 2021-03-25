@@ -4,12 +4,12 @@ ms.service: azure-object-anchors
 ms.topic: include
 ms.date: 11/19/2020
 ms.author: crtreasu
-ms.openlocfilehash: 7aa4e244b88b3793f1b480aeb21bfec69d52591d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c740fa294fe2b3de9687a76b90d90a021d4efdbc
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102044824"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105104070"
 ---
 # <a name="web-download"></a>[Web 'den yükleme](#tab/unity-package-web-ui)
 
@@ -21,12 +21,12 @@ Unity paket yöneticisi 'Ni kullanarak Unity projesine indirdiğiniz Azure nesne
 
 # <a name="mixed-reality-feature-tool-beta"></a>[Karma Gerçeklik Özellik Aracı (Beta)](#tab/unity-package-mixed-reality-feature-tool)
 
-Bu adım, <a href="https://aka.ms/MRFeatureToolDocs" target="_blank">karma gerçeklik özelliği aracının</a> indirilip kullanılabilir olmasını gerektirir.
+Bu adım, <a href="/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool" target="_blank">karma gerçeklik özelliği aracının</a> indirilip kullanılabilir olmasını gerektirir.
 
 > [!NOTE]
-> <a a href="https://aka.ms/MRFeatureToolDocs" target="_blank">Karma gerçeklik özelliği aracı</a> Şu anda yalnızca Windows 'ı destekliyor.
+> <a a href="/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool" target="_blank">Karma gerçeklik özelliği aracı</a> Şu anda yalnızca Windows 'ı destekliyor.
 
-1. Aracı kurmak ve nasıl kullanacağınızı öğrenmek için <a href="https://aka.ms/MRFeatureToolDocs" target="_blank">karma gerçeklik özelliği aracı</a> belgelerini izleyin.
+1. Aracı kurmak ve nasıl kullanacağınızı öğrenmek için <a href="/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool" target="_blank">karma gerçeklik özelliği aracı</a> belgelerini izleyin.
 2. "Microsoft Azure nesne bağlantıları" özellik paketini Unity proje klasörüne yükler.
 
 ---

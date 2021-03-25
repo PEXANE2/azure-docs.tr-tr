@@ -5,28 +5,27 @@ author: mimcco
 ms.author: mimcco
 ms.service: azure-percept
 ms.topic: conceptual
-ms.date: 02/18/2021
+ms.date: 03/23/2021
 ms.custom: template-concept
-ms.openlocfilehash: f40d9a1285f1eb625a9e33387f2cc9fafcbc3322
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4abe8e07a8311bab9b6e98746d0fc05bd2e89395
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102098409"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104956120"
 ---
 # <a name="advanced-development-with-azure-percept"></a>Azure Percept ile gelişmiş geliştirme
-Azure Percept ile yazılım geliştiricileri ve veri bilimcileri, AI yaşam döngüsü yönetimi için gelişmiş kod iş akışlarını kullanabiliyor. Büyümekte olan bir açık kaynak kitaplığı aracılığıyla, kendi AI geliştirme yolculuğuna başlamak ve üretime yönelik kullanıma yönelik çözümleri oluşturmak için örnekleri kullanabilirler.
 
-## <a name="get-started-with-the-advanced-development-tutorials"></a>Gelişmiş geliştirme öğreticileri ile çalışmaya başlama
+Azure Percept ile yazılım geliştiricileri ve veri bilimcileri, AI yaşam döngüsü yönetimi için gelişmiş kod iş akışlarını kullanabilir. Büyümekte olan bir açık kaynak kitaplığı aracılığıyla, AI geliştirme yolculuğuna başlamak ve üretime hazırlamış çözümler oluşturmak için örnekleri kullanabilirler.
 
-Tüm kullanılabilir [Azure PERCEPT AI modelleri](./overview-ai-models.md)hakkında bilgi edinin.
+## <a name="get-started-with-advanced-development"></a>Gelişmiş geliştirme ile çalışmaya başlama
 
-Lütfen güncel rehberlik, öğreticiler ve örnekler için bkz. [Azure PERCEPT dk gelişmiş geliştirme GitHub](https://github.com/microsoft/azure-percept-advanced-development) , şunun gibi şeyler:
+Güncel rehberlik, öğreticiler ve örnekler için bkz. [Azure PERCEPT dk gelişmiş geliştirme GitHub](https://github.com/microsoft/azure-percept-advanced-development) :
 
-* Cihaza özel bir AI modeli getiriliyor
-* Aktarım öğrenimi ile zaten desteklediğimiz bir modeli güncelleştirme
-* Ve daha fazlası
+- Azure Percept DK 'ye özel bir AI modeli dağıtma
+- Desteklenen bir modeli aktarma öğrenimiyle güncelleştirme
+- Ve daha fazlası
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Tüm kullanılabilir [Azure PERCEPT AI modelleri](./overview-ai-models.md)hakkında bilgi edinin. Bu modellerden hiçbiri ihtiyaçlarınıza uygun değilse, kendi modelinizi veya görüntü işleme işlem hattınızı Percept DK 'ye getirmek için gelişmiş kod yolculuğunu kullanın ve başkalarının yardımcı olacağını düşünüyorsanız, bir çekme isteği de açabilirsiniz!
+Kullanılabilir [Azure PERCEPT AI modelleri](./overview-ai-models.md)hakkında daha fazla bilgi edinin. Bu modellerden hiçbiri ihtiyaçlarınıza uygun değilse, kendi modelinizi veya görüntü işleme işlem hattınızı Percept DK 'ye getirmek için gelişmiş kod yolculuğu kullanın. Başkalarına yardım eden bir katkıınız varsa, ücretsiz olarak bir çekme isteği açın.

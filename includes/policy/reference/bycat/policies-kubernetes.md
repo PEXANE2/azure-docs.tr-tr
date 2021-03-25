@@ -2,18 +2,19 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/17/2021
+ms.date: 03/24/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: c57db8f55eb831f2da1b839c4dc5d4a7287ac6b6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b2b9bad685bc26b0da4ba6eabe0785b112ff0a20
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104605706"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105033623"
 ---
 |Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
+|[\[Önizleme \] : Azure Arc etkin Kubernetes kümelerinde Azure Defender 'ın uzantısı yüklü olmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8dfab9c4-fe7b-49ad-85e4-1e9be085358f) |Azure wiki 'nin Azure Arc için uzantısı, Arc etkin Kubernetes kümeleriniz için tehdit koruması sağlar. Uzantı kümedeki tüm denetim düzlemi (ana) düğümlerinden verileri toplar ve daha fazla analize yönelik olarak bulutta Kubernetes arka ucu için Azure Defender 'a gönderir. Daha fazla bilgi edinin [https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc](https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc) . |Auditınotexists, devre dışı |[1.0.0-Önizleme](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ASC_Audit_Azure_Defender_Kubernetes_Arc_Extension.json) |
 |[Azure Kubernetes hizmeti özel kümeleri etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F040732e8-d947-40b8-95d6-854c95024bf8) |API sunucunuz ve düğüm havuzlarınız arasındaki ağ trafiğinin yalnızca özel ağda kalmasını sağlamak için Azure Kubernetes hizmet kümeniz için özel küme özelliğini etkinleştirin. Bu, birçok mevzuata ve sektör uyumluluk standartlarında yaygın bir gereksinimdir. |Denetim, reddetme, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_PrivateCluster_Deny.json) |
 |[Kubernetes hizmeti (AKS) için Azure Ilke eklentisi, kümelerinizde yüklü ve etkin olmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0a15ec92-a229-4763-bb14-0ea34a568f8d) |Kubernetes hizmeti (AKS) için Azure Ilke eklentisi, açık Ilke Aracısı (OPA) için bir giriş denetleyicisi Web kancası olan v3 'i genişleterek, kümelerinizde merkezi ve tutarlı bir şekilde ölçeklenebilir ve koruma uygulamalarını uygular. |Denetim, devre dışı |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_AzurePolicyAddOn_Audit.json) |
 |[Azure Kubernetes hizmet kümelerindeki her iki işletim sistemi ve veri diski, müşteri tarafından yönetilen anahtarlarla şifrelenmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7d7be79c-23ba-4033-84dd-45e2a5ccdd67) |Müşteri tarafından yönetilen anahtarları kullanarak işletim sistemi ve veri disklerini şifrelemek, anahtar yönetiminde daha fazla denetim ve esneklik sağlar. Bu, birçok mevzuata ve sektör uyumluluk standartlarında yaygın bir gereksinimdir. |Denetim, reddetme, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_CMK_Deny.json) |

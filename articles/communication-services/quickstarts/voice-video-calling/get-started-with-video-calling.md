@@ -7,12 +7,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 82f4d9028fa94d4df0ff089fda213d64e13d56ec
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 28813a23b91f75f88e844b9e6b36d6ba0771569a
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103487879"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048094"
 ---
 # <a name="quickstart-add-11-video-calling-to-your-app-javascript"></a>Hızlı başlangıç: uygulamanıza 1:1 video çağrısı ekleme (JavaScript)
 
@@ -23,8 +23,8 @@ Bu hızlı başlangıç için [GitHub](https://github.com/Azure-Samples/communic
 ## <a name="prerequisites"></a>Önkoşullar
 - Etkin abonelikle bir Azure hesabı edinin. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Node.js](https://nodejs.org/en/) Etkin LTS ve bakım LTS sürümleri (8.11.1 ve 10.14.1)
-- Etkin bir Iletişim Hizmetleri kaynağı oluşturun. [Iletişim Hizmetleri kaynağı oluşturun](https://docs.microsoft.com/azure/communication-services/quickstarts/create-communication-resource?tabs=windows&pivots=platform-azp).
-- Arama istemcisini başlatmak için bir Kullanıcı erişim belirteci oluşturun. [Kullanıcı erişim belirteçleri oluşturmayı ve yönetmeyi öğrenin](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens?pivots=programming-language-csharp).
+- Etkin bir Iletişim Hizmetleri kaynağı oluşturun. [Iletişim Hizmetleri kaynağı oluşturun](../create-communication-resource.md?pivots=platform-azp&tabs=windows).
+- Arama istemcisini başlatmak için bir Kullanıcı erişim belirteci oluşturun. [Kullanıcı erişim belirteçleri oluşturmayı ve yönetmeyi öğrenin](../access-tokens.md?pivots=programming-language-csharp).
 
 ## <a name="setting-up"></a>Ayarlanıyor
 ### <a name="create-a-new-nodejs-application"></a>Yeni bir Node.js uygulaması oluşturma
@@ -330,10 +330,10 @@ Metin alanına bir kullanıcı KIMLIĞI sağlayarak ve çağrıya başla düğme
 Örnek uygulamayı [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-1-on-1-video-calling)'dan indirebilirsiniz.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
-Bir Iletişim Hizmetleri aboneliğini temizleyip kaldırmak istiyorsanız, kaynağı veya kaynak grubunu silebilirsiniz. Kaynak grubunun silinmesi, onunla ilişkili diğer tüm kaynakları da siler. [Kaynakları Temizleme](https://docs.microsoft.com/azure/communication-services/quickstarts/create-communication-resource?tabs=windows&pivots=platform-azp#clean-up-resources)hakkında daha fazla bilgi edinin.
+Bir Iletişim Hizmetleri aboneliğini temizleyip kaldırmak istiyorsanız, kaynağı veya kaynak grubunu silebilirsiniz. Kaynak grubunun silinmesi, onunla ilişkili diğer tüm kaynakları da siler. [Kaynakları Temizleme](../create-communication-resource.md?pivots=platform-azp&tabs=windows#clean-up-resources)hakkında daha fazla bilgi edinin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
-- [Web çağırma](https://docs.microsoft.com/azure/communication-services/samples/web-calling-sample) örneğimize göz atın
-- [İstemci kitaplığı yeteneklerini çağırma](https://docs.microsoft.com/azure/communication-services/quickstarts/voice-video-calling/calling-client-samples?pivots=platform-web) hakkında bilgi edinin
-- [Nasıl çalıştığını çağırma](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/about-call-types) hakkında daha fazla bilgi edinin
+- [Web çağırma](../../samples/web-calling-sample.md) örneğimize göz atın
+- [İstemci kitaplığı yeteneklerini çağırma](./calling-client-samples.md?pivots=platform-web) hakkında bilgi edinin
+- [Nasıl çalıştığını çağırma](../../concepts/voice-video-calling/about-call-types.md) hakkında daha fazla bilgi edinin
