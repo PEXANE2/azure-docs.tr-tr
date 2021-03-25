@@ -9,12 +9,12 @@ metadata:
   author: mikben
   ms.author: mikben
   ms.date: 03/10/2021
-  ms.openlocfilehash: ec491509c80f69e000a67e40288b6e298ba9fb85
-  ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+  ms.openlocfilehash: b2aec44f3e80267d18844d887f5e2607192ea208
+  ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
   ms.translationtype: MT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 03/19/2021
-  ms.locfileid: "104655793"
+  ms.lasthandoff: 03/25/2021
+  ms.locfileid: "105108086"
 landingContent:
 - title: Azure İletişim Hizmetleri hakkında
   linkLists:
@@ -24,7 +24,7 @@ landingContent:
       url: overview.md
   - linkListType: concept
     links:
-    - text: İstemci kitaplığı seçenekleri
+    - text: SDK seçenekleri
       url: concepts/sdk-options.md
     - text: Takımlar birlikte çalışma
       url: concepts/teams-interop.md
@@ -52,13 +52,13 @@ landingContent:
     links:
     - text: Uygulamanıza sesli ve görüntülü arama özelliği ekleyin
       url: quickstarts/voice-video-calling/getting-started-with-calling.md
-    - text: Arama istemci kitaplığını kullanma
+    - text: Çağıran SDK 'Yı kullanma
       url: quickstarts/voice-video-calling/calling-client-samples.md
   - linkListType: concept
     links:
     - text: Ses ve görüntü kavramları
       url: concepts/voice-video-calling/about-call-types.md
-    - text: Arama istemci kitaplığına genel bakış
+    - text: SDK 'ya genel bakış
       url: concepts/voice-video-calling/calling-sdk-features.md
     - text: Arama akışları
       url: concepts/call-flows.md
@@ -76,7 +76,7 @@ landingContent:
     links:
     - text: SMS kavramları
       url: concepts/telephony-sms/concepts.md
-    - text: SMS istemci kitaplığına genel bakış
+    - text: SMS SDK genel bakış
       url: concepts/telephony-sms/sdk-features.md
     - text: Aramaya genel bakış
       url: concepts/voice-video-calling/calling-sdk-features.md
@@ -92,7 +92,7 @@ landingContent:
     links:
     - text: Sohbet kavramları
       url: concepts/chat/concepts.md
-    - text: Sohbet istemci kitaplığına genel bakış
+    - text: Sohbet SDK genel bakış
       url: concepts/chat/sdk-features.md
 - title: Örnekler
   linkLists:

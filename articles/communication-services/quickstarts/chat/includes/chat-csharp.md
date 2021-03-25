@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 80d6c4d3f0b2eef5bc6012f2aab3fcbeab0e31b8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 127031479d7ef414298d3096ebef814df1fe9a18
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495432"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105027936"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 Başlamadan önce şunları yaptığınızdan emin olun:
@@ -115,6 +115,17 @@ string threadId = "<THREAD_ID>";
 ChatThreadClient chatThreadClient = chatClient.GetChatThreadClient(threadId: threadId);
 ```
 
+## <a name="list-all-chat-threads"></a>Tüm sohbet iş parçacıklarını Listele
+`GetChatThreads`Kullanıcının parçası olduğu tüm sohbet iş parçacıklarını almak için kullanın.
+
+```csharp
+AsyncPageable<ChatThreadItem> chatThreadItems = chatClient.GetChatThreadsAsync();
+await foreach (ChatThreadItem chatThreadItem in chatThreadItems)
+{
+    Console.WriteLine($"{ chatThreadItem.Id}");
+}
+```
+
 ## <a name="send-a-message-to-a-chat-thread"></a>Sohbet iş parçacığına ileti gönderin
 
 `SendMessage`Bir iş parçacığına ileti göndermek için kullanın.
@@ -125,16 +136,6 @@ ChatThreadClient chatThreadClient = chatClient.GetChatThreadClient(threadId: thr
 
 ```csharp
 var messageId = await chatThreadClient.SendMessageAsync(content:"hello world", type: ChatMessageType.Text);
-```
-## <a name="get-a-message"></a>İleti Al
-
-`GetMessage`Hizmetten bir ileti almak için kullanın.
-`messageId` iletinin benzersiz KIMLIĞIDIR.
-
-`ChatMessage` ileti alma işleminden döndürülen yanıt, diğer alanlar arasında iletinin benzersiz tanımlayıcısı olan bir KIMLIK içerir. Lütfen Azure. Communication. chat. ChatMessage adresine başvurun
-
-```csharp
-ChatMessage chatMessage = await chatThreadClient.GetMessageAsync(messageId: messageId);
 ```
 
 ## <a name="receive-chat-messages-from-a-chat-thread"></a>Sohbet iş parçacığından sohbet iletileri alma
@@ -167,25 +168,6 @@ await foreach (ChatMessage message in allMessages)
 
 Daha ayrıntılı bilgi için bkz. [Ileti türleri](../../../concepts/chat/concepts.md#message-types).
 
-## <a name="update-a-message"></a>İleti güncelleştirme
-
-Üzerinde çağrılarak daha önce gönderilen bir iletiyi güncelleştirebilirsiniz `UpdateMessage` `ChatThreadClient` .
-
-```csharp
-string id = "id-of-message-to-edit";
-string content = "updated content";
-await chatThreadClient.UpdateMessageAsync(messageId: id, content: content);
-```
-
-## <a name="deleting-a-message"></a>İleti silme
-
-' İ çağırarak bir iletiyi silebilirsiniz `DeleteMessage` `ChatThreadClient` .
-
-```csharp
-string id = "id-of-message-to-delete";
-await chatThreadClient.DeleteMessageAsync(messageId: id);
-```
-
 ## <a name="add-a-user-as-a-participant-to-the-chat-thread"></a>Sohbet iş parçacığına katılımcı olarak Kullanıcı ekleme
 
 Bir iş parçacığı oluşturulduktan sonra, bundan sonra kullanıcı ekleyebilir ve kaldırabilirsiniz. Kullanıcıları ekleyerek, onlara iş parçacığına ileti gönderebilecek ve diğer katılımcı ekleyebilir/kaldırabilirler erişim izni verirsiniz. Çağrılmadan önce `AddParticipants` , bu kullanıcı için yeni bir erişim belirteci ve kimliği aldığınızdan emin olun. Kullanıcının sohbet istemcisini başlatması için bu erişim belirtecine ihtiyacı olacak.
@@ -209,14 +191,6 @@ var participants = new[]
 
 await chatThreadClient.AddParticipantsAsync(participants: participants);
 ```
-## <a name="remove-user-from-a-chat-thread"></a>Kullanıcı sohbet iş parçacığından kaldır
-
-Bir iş parçacığına kullanıcı eklemeye benzer şekilde, bir sohbet iş parçacığından kullanıcıları kaldırabilirsiniz. Bunu yapmak için, eklediğiniz katılımcının kimliğini izlemeniz gerekir `CommunicationUser` .
-
-```csharp
-var gloria = new CommunicationUserIdentifier(id: "<Access_ID_For_Gloria>");
-await chatThreadClient.RemoveParticipantAsync(identifier: gloria);
-```
 
 ## <a name="get-thread-participants"></a>İş parçacığı katılımcıları al
 
@@ -230,14 +204,6 @@ await foreach (ChatParticipant participant in allParticipants)
 }
 ```
 
-## <a name="send-typing-notification"></a>Yazma bildirimi gönder
-
-`SendTypingNotification`Kullanıcının iş parçacığına bir yanıt yazdığını göstermek için kullanın.
-
-```csharp
-await chatThreadClient.SendTypingNotificationAsync();
-```
-
 ## <a name="send-read-receipt"></a>Okundu bilgisi gönder
 
 `SendReadReceipt`İletinin Kullanıcı tarafından okunduğunu diğer katılımcılara bildirmek için kullanın.
@@ -246,17 +212,6 @@ await chatThreadClient.SendTypingNotificationAsync();
 await chatThreadClient.SendReadReceiptAsync(messageId: messageId);
 ```
 
-## <a name="get-read-receipts"></a>Okundu alındıları al
-
-`GetReadReceipts`Bir sohbet iş parçacığının diğer katılımcıları tarafından okunan iletileri görmek için iletilerin durumunu denetlemek üzere kullanın.
-
-```csharp
-AsyncPageable<ChatMessageReadReceipt> allReadReceipts = chatThreadClient.GetReadReceiptsAsync();
-await foreach (ChatMessageReadReceipt readReceipt in allReadReceipts)
-{
-    Console.WriteLine($"{readReceipt.ChatMessageId}:{((CommunicationUserIdentifier)readReceipt.Sender).Id}:{readReceipt.ReadOn}");
-}
-```
 ## <a name="run-the-code"></a>Kodu çalıştırma
 
 Uygulamayı komut ile uygulama dizininizden çalıştırın `dotnet run` .

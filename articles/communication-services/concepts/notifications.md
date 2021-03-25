@@ -9,19 +9,19 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 21c247c2fb9e1532c4580eea894c97e2bff84f92
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9bf3067737ee1f4e15deaf31677513e5ac99cbd1
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104657051"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108137"
 ---
 # <a name="communication-services-notifications"></a>İletişim Hizmetleri bildirimleri
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 
-Azure Iletişim Hizmetleri sohbeti ve arama istemci kitaplıkları, sinyal iletilerinin bağlı istemcilere verimli ve güvenilir bir şekilde gönderilmesine izin veren gerçek zamanlı bir mesajlaşma kanalı oluşturur. Bu, karmaşık HTTP yoklama mantığını uygulamaya gerek kalmadan uygulamalarınıza zengin ve gerçek zamanlı iletişim işlevleri oluşturmanıza olanak sağlar. Ancak, mobil uygulamalarda, bu sinyal kanalı yalnızca uygulamanız ön planda etkin olduğunda bağlı kalır. Uygulamanız arka planda olduğunda kullanıcılarınızın gelen çağrıları veya sohbet iletilerini almasını istiyorsanız anında iletme bildirimleri kullanmanız gerekir.
+Azure Iletişim Hizmetleri sohbeti ve çağrı SDK 'Ları, sinyal iletilerinin bağlı istemcilere verimli ve güvenilir bir şekilde gönderilmesine izin veren gerçek zamanlı bir mesajlaşma kanalı oluşturur. Bu, karmaşık HTTP yoklama mantığını uygulamaya gerek kalmadan uygulamalarınıza zengin ve gerçek zamanlı iletişim işlevleri oluşturmanıza olanak sağlar. Ancak, mobil uygulamalarda, bu sinyal kanalı yalnızca uygulamanız ön planda etkin olduğunda bağlı kalır. Uygulamanız arka planda olduğunda kullanıcılarınızın gelen çağrıları veya sohbet iletilerini almasını istiyorsanız anında iletme bildirimleri kullanmanız gerekir.
 
 Anında iletme bildirimleri uygulamanızdan kullanıcıların mobil cihazlarına bilgi göndermenize olanak tanır. Bir iletişim kutusu göstermek, ses çalmak veya gelen çağrı Kullanıcı arabirimini görüntülemek için anında iletme bildirimlerini kullanabilirsiniz. Azure Iletişim Hizmetleri, uygulamalarınıza anında iletme bildirimleri eklemenize olanak tanıyan [Azure Event Grid](../../event-grid/overview.md) ve [Azure Notification Hubs](../../notification-hubs/notification-hubs-push-notification-overview.md) tümleştirmelerini sağlar.
 

@@ -7,16 +7,16 @@ ms.service: data-catalog
 ms.subservice: data-catalog-gen2
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 149a70ea9b3fad919e771e8eb279e01d1492b3b3
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 4dc1af590a1965c155a7af7b233b431f982a73d2
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "104952465"
+ms.locfileid: "105024243"
 ---
-# <a name="how-to-bulk-edit-assets-to-tag-glossary-terms"></a>Sözlük koşullarını etiketlemek için varlıkları toplu düzenleme
+# <a name="how-to-bulk-edit-assets-to-annotate-classifications-glossary-terms-and-modify-contacts"></a>Varlıkları not ekleme sınıflandırmaları, Sözlük terimleri ve değişiklik kişileri için toplu düzenleme
 
-Bu makalede, birden çok sözlük terimi tek bir eylemde seçili varlıkların listesine nasıl etiketleneceğini açıklanmaktadır.
+Bu makalede birden çok sözlük terimi, sınıflandırmalar, sahipler ve uzmanların tek bir eylemde seçili varlıkların bir listesine nasıl etiketleneceğini açıklanmaktadır.
 
 ### <a name="add-assets-to-view-selected-list-using-search"></a>Arama kullanarak seçilen listeyi görüntülemek için varlıklar ekleme
 

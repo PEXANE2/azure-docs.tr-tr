@@ -5,12 +5,12 @@ author: rashi-ms
 ms.author: rajosh
 ms.topic: tutorial
 ms.date: 02/07/2021
-ms.openlocfilehash: d3077878dc02066b8ca5dd4441217e584f961725
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 2bdb6a085bd9fa0e9967d723db63f2310a8e02db
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104782274"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023104"
 ---
 # <a name="tutorial-assess-sql-instances-for-migration-to-azure-sql"></a>Öğretici: Azure SQL 'e geçiş için SQL örneklerini değerlendirme
 
@@ -32,6 +32,8 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 - Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturun.
 
 - Azure SQL 'e geçiş için SQL Server örneklerinizi değerlendirmek üzere bu öğreticiyi izlemeden önce Azure geçişi gereci kullanarak değerlendirmek istediğiniz SQL örneklerini bulduğunuzdan emin olun, [Bu öğreticiyi izleyin](tutorial-discover-vmware.md)
+- Bu özelliği mevcut bir projede denemek istiyorsanız, lütfen bu makaledeki [önkoşulları](how-to-discover-sql-existing-project.md) tamamladığınızdan emin olun.
+
 
 ## <a name="run-an-assessment"></a>Değerlendirme çalıştırma
 Bir değerlendirmeyi aşağıdaki gibi çalıştırın:

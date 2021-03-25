@@ -7,14 +7,14 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 3/2/2021
 ms.author: rahugup
-ms.openlocfilehash: ffc97984a335b72a3aa8c8d8cca65a3fddf7af38
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 422a911c2c0bb6aa1252ebb649368b61aa350b6e
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104780744"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025586"
 ---
-# <a name="containerize-aspnet-applications-and-migrate-to-azure-kubernetes-service"></a>ASP.NET uygulamaları Kapsayılaştırır ve Azure Kubernetes hizmetine geçiş yapın
+# <a name="aspnet-app-containerization-and-migration-to-azure-kubernetes-service"></a>Azure Kubernetes hizmetine ASP.NET uygulama kapsayıcılama ve geçiş
 
 Bu makalede, Azure geçişi: uygulama Kapsayıcılama aracı 'nı kullanarak ASP.NET uygulamalarını kapsayılaştırma ve [Azure Kubernetes Service 'e (AKS)](https://azure.microsoft.com/services/kubernetes-service/) geçirme hakkında bilgi edineceksiniz. Kapsayıcı oluşturma işlemi, kod tabanınıza erişim gerektirmez ve mevcut uygulamaları kapsayıtabilecek kolay bir yol sağlar. Araç, uygulama bileşenlerini belirleyebilmek ve bunları bir kapsayıcı görüntüsünde paketlemenize yardımcı olmak için bir sunucudaki uygulamaların çalışma durumunu kullanarak çalışır. Kapsayıcılı uygulama daha sonra Azure Kubernetes Service (AKS) üzerinde dağıtılabilir.
 

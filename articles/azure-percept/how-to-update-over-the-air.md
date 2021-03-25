@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: b8f9e6f4bc091abbd1bb08ecbd649c1411e5ab20
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2e627e582b47c5174e70f5d21d758148cde8dbdd
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102095400"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105022866"
 ---
 # <a name="update-your-azure-percept-dk-over-the-air"></a>Azure Percept DK 'nizi AIR üzerinde güncelleştirme
 
@@ -66,7 +66,7 @@ Grup etiketi gereksinimleri:
 
 1. Cihazınıza bir etiket ekleyin.
     1. Sol gezinti bölmesindeki **IoT Edge** , Azure Percept dk 'nizi bulun ve **cihaz ikizi** sayfasına gidin.
-    1. IoT Hub Tag değeri için aşağıda gösterildiği gibi yeni bir **cihaz güncelleştirmesi** ekleyin ( ```<CustomTagValue>``` değer olarak AzurePerceptGroup1). Device ikizi [JSON belge etiketleri](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins#device-twins)hakkında daha fazla bilgi edinin.
+    1. IoT Hub Tag değeri için aşağıda gösterildiği gibi yeni bir **cihaz güncelleştirmesi** ekleyin ( ```<CustomTagValue>``` değer olarak AzurePerceptGroup1). Device ikizi [JSON belge etiketleri](../iot-hub/iot-hub-devguide-device-twins.md#device-twins)hakkında daha fazla bilgi edinin.
 
     ```
     "tags": {

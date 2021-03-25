@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 03/05/2021
 ms.topic: conceptual
 keywords: sorun giderme, güncelleştirme, hata, Kinect, geri bildirim, kurtarma, günlüğe kaydetme, ipuçları
-ms.openlocfilehash: 32a86deb0b6ab70e42ae3d659504256baae76202
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6b83e2952a9039a52aa3b905e376e5d3beccaf8c
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104654773"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026598"
 ---
 # <a name="azure-kinect-known-issues-and-troubleshooting"></a>Azure Kinect bilinen sorunlar ve sorun giderme
 
@@ -189,11 +189,17 @@ Gövde Izleme SDK 'Sı C# belgeleri [burada](https://microsoft.github.io/Azure-K
 
 Gövde Izleme SDK 'Sı, poz tahmini modelinin çıkarımını sağlamak için CPU, CUDA, DirectML (yalnızca Windows) ve TensorRT yürütme ortamlarını destekler. `K4ABT_TRACKER_PROCESSING_MODE_GPU`Linux üzerinde CUDA yürütme ve Windows üzerinde DirectML yürütmesi varsayılan değerdir. Belirli yürütme ortamlarını seçmek için üç ek mod eklenmiştir: `K4ABT_TRACKER_PROCESSING_MODE_GPU_CUDA` , `K4ABT_TRACKER_PROCESSING_MODE_GPU_DIRECTML` , ve `K4ABT_TRACKER_PROCESSING_MODE_GPU_TENSORRT` .
 
+> [!NOTE]  
+> ONNX çalışma zamanı, hızlandırılmış olmayan opkodlara yönelik uyarıları görüntüler. Bunlar güvenle yoksayılabilir.
+
 ONNX çalışma zamanı, TensorRT modelinin önbelleğe alınmasını denetlemek için ortam değişkenlerini içerir. Önerilen değerler şunlardır:
-- ORT_TENSORRT_ENGINE_CACHE_ENABLE = 1 
-- ORT_TENSORRT_ENGINE_CACHE_PATH = "PATHNAME"
+- ORT_TENSORRT_CACHE_ENABLE = 1 
+- ORT_TENSORRT_CACHE_PATH = "PATHNAME"
 
 Gövde izlemeye başlamadan önce klasörün oluşturulması gerekir.
+
+> [!IMPORTANT]  
+> TensorRT, diğer yürütme ortamlarına kıyasla, çıkarım öncesinde modeli ön işleme ve genişletilmiş başlangıç süreleriyle sonuçlanır. Motor önbelleğe alma işlemi ilk yürütmeyi kısıtlar, ancak bu, deneysel ve modele, ONNX Runtime sürümüne, TensorRT sürümüne ve GPU modeline özgüdür.
 
 TensorRT yürütme ortamı hem FP32 (varsayılan) hem de FP16 destekler. FP16 tesis, en az doğruluk azalması için 2x performans artışı. FP16 belirtmek için:
 - ORT_TENSORRT_FP16_ENABLE = 1

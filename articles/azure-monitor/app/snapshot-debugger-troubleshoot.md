@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: a285f26a406caa88d91da5647b3b79cffc9b614f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: bd83367ae073e03f03188cdf62cb60faaad7ac97
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102217423"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026462"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> Application Insights Snapshot Debugger etkinleştirme veya anlık görüntüleri görüntüleme sorunlarını giderme
 Uygulamanız için Application Insights Snapshot Debugger etkinleştirdiyseniz, ancak özel durumlar için anlık görüntüler görmüyorsanız, bu yönergeleri kullanarak sorun giderme yapabilirsiniz.
@@ -20,7 +20,7 @@ Anlık görüntülerin üretilmesinin pek çok farklı nedeni olabilir. Olası y
 
 ## <a name="make-sure-youre-using-the-appropriate-snapshot-debugger-endpoint"></a>Uygun Snapshot Debugger uç noktasını kullandığınızdan emin olun
 
-Şu anda yalnızca uç nokta değişiklikleri gerektiren bölgeler [Azure Kamu](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure#application-insights) ve [Azure Çin](https://docs.microsoft.com/azure/china/resources-developer-guide)' dir.
+Şu anda yalnızca uç nokta değişiklikleri gerektiren bölgeler [Azure Kamu](../../azure-government/compare-azure-government-global-azure.md#application-insights) ve [Azure Çin](/azure/china/resources-developer-guide)' dir.
 
 Application Insights SDK 'sını kullanan App Service ve uygulamalar için, aşağıda tanımlanan Snapshot Debugger için desteklenen geçersiz kılmaları kullanarak bağlantı dizesini güncelleştirmeniz gerekir:
 
@@ -28,7 +28,7 @@ Application Insights SDK 'sını kullanan App Service ve uygulamalar için, aşa
 |---------------|---------------------|-------------|
 |Anlık görüntü Tendpoint         | `https://snapshot.monitor.azure.us`    | `https://snapshot.monitor.azure.cn` |
 
-Diğer bağlantı geçersiz kılmaları hakkında daha fazla bilgi için bkz. [Application Insights belgeleri](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net#connection-string-with-explicit-endpoint-overrides).
+Diğer bağlantı geçersiz kılmaları hakkında daha fazla bilgi için bkz. [Application Insights belgeleri](./sdk-connection-string.md?tabs=net#connection-string-with-explicit-endpoint-overrides).
 
 İşlev Uygulaması için `host.json` aşağıdaki desteklenen geçersiz kılmaları kullanarak öğesini güncelleştirmeniz gerekir:
 

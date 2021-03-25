@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 07/11/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 02d1bd9d204d88ba90218b1254c66ac0da80be85
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a1d77016fdf94de4fdd574b0d4cbd22d6b0b8490
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87323511"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105024753"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Application Insights 'de Kullanıcı davranışı analiz araçlarının sorunlarını giderme
 [Application Insights ' deki Kullanıcı davranışı analizi araçları](usage-overview.md)hakkında sorularınız var: [Kullanıcılar, oturumlar, etkinlikler](usage-segmentation.md), [funyls](usage-funnels.md), [Kullanıcı akışları](usage-flows.md), [bekletme](usage-retention.md)veya cohorts İşte bazı yanıtlar.
@@ -23,7 +23,7 @@ Application Insights tüm telemetri olaylarının, standart özelliklerinden iki
 
 Bir Web uygulamasını izliyorsanız, en kolay çözüm [Application Insights JavaScript SDK 'sını](./javascript.md) uygulamanıza eklemektir ve komut dosyası parçacığının izlemek istediğiniz her sayfada yüklü olduğundan emin olun. JavaScript SDK 'Sı otomatik olarak anonim kullanıcı ve oturum kimliklerini oluşturur ve ardından, bu kimliklerle telemetri olaylarını, uygulamanızdan gönderildikleri şekilde doldurur.
 
-Bir Web hizmetini (Kullanıcı arabirimi olmadan) izliyorsanız, [Anonim Kullanıcı kimliği ve oturum kimliği özelliklerini](usage-send-user-context.md) hizmetinizin benzersiz kullanıcı ve oturumlarınıza göre dolduran bir telemetri başlatıcısı oluşturun.
+Bir Web hizmetini (Kullanıcı arabirimi olmadan) izliyorsanız, [Anonim Kullanıcı kimliği ve oturum kimliği özelliklerini](./usage-overview.md) hizmetinizin benzersiz kullanıcı ve oturumlarınıza göre dolduran bir telemetri başlatıcısı oluşturun.
 
 Uygulamanız [kimliği doğrulanmış kullanıcı kimlikleri](./api-custom-events-metrics.md#authenticated-users)gönderiyorsa, kullanıcılar aracında kimliği doğrulanmış kullanıcı kimlikleri ' ne göre sayım yapabilirsiniz. "Göster" açılan menüsünde "kimliği doğrulanmış kullanıcılar" ı seçin.
 
@@ -50,4 +50,3 @@ Uygulamanız çok fazla özel olay adı gönderiyorsa, koddaki adı daha az öze
 
 ## <a name="get-help"></a>Yardım alın
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
-
