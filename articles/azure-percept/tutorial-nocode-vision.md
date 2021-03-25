@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: tutorial
 ms.date: 02/10/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: e661dbbe31e7624cba0a3d5421b81de16d0a5363
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 49e5db729dab7abaa440b1adf6a61e9e52a1efbc
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104608206"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023138"
 ---
 # <a name="create-a-no-code-vision-solution-in-azure-percept-studio"></a>Azure Percept Studio 'da kod içermeyen bir Vision çözümü oluşturma
 
@@ -106,7 +106,7 @@ Modelinize eğitim vermeden önce resimlerinize Etiketler ekleyin.
 
 1. Önceki adımda topladığınız görüntüleri görüntülemek için **özel görüntü işleme** sayfasının sol tarafında **Etiketler** altında **etiketsiz** ' e tıklayın. Etiketlenmemiş görüntülerinizden birini veya birkaçını seçin.
 
-1. **Resim ayrıntısı** penceresinde, etiketlemeyi başlamak için görüntüye tıklayın. Proje türü olarak nesne algılamayı seçtiyseniz etiketlemek istediğiniz belirli nesneler etrafında de bir [sınırlayıcı kutu](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/get-started-build-detector#upload-and-tag-images) çizmeniz gerekir. Sınırlama kutusunu gereken şekilde ayarlayın. Nesne etiketinizi yazın ve **+** etiketi uygulamak için tıklayın. Örneğin, bir mağaza rafı yeniden daha geri çekmesini gerektiren bir adım adım çözüm oluşturuyorsanız, "boş raf" etiketini boş raflamaın görüntülerine ekleyin ve "tam raf" etiketini tam olarak stoklama raflarını ekleyin. Etiketlenmemiş tüm görüntüler için tekrarlayın.
+1. **Resim ayrıntısı** penceresinde, etiketlemeyi başlamak için görüntüye tıklayın. Proje türü olarak nesne algılamayı seçtiyseniz etiketlemek istediğiniz belirli nesneler etrafında de bir [sınırlayıcı kutu](../cognitive-services/custom-vision-service/get-started-build-detector.md#upload-and-tag-images) çizmeniz gerekir. Sınırlama kutusunu gereken şekilde ayarlayın. Nesne etiketinizi yazın ve **+** etiketi uygulamak için tıklayın. Örneğin, bir mağaza rafı yeniden daha geri çekmesini gerektiren bir adım adım çözüm oluşturuyorsanız, "boş raf" etiketini boş raflamaın görüntülerine ekleyin ve "tam raf" etiketini tam olarak stoklama raflarını ekleyin. Etiketlenmemiş tüm görüntüler için tekrarlayın.
 
     :::image type="content" source="./media/tutorial-nocode-vision/image-tagging.png" alt-text="Özel Görüntü İşleme resim etiketleme ekranı.":::
 
@@ -116,7 +116,7 @@ Modelinize eğitim vermeden önce resimlerinize Etiketler ekleyin.
 
     :::image type="content" source="./media/tutorial-nocode-vision/train-model.png" alt-text="Tren düğmesi vurgulanmış şekilde eğitim resmi seçimi.":::
 
-1. Eğitim tamamlandığında, ekranınız model performansınızı gösterir. Bu sonuçları değerlendirme hakkında daha fazla bilgi için lütfen [model değerlendirme belgelerine](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/get-started-build-detector#evaluate-the-detector)bakın. Eğitiminden sonra modelinizi ek görüntülerle [Test](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/test-your-model) etmek ve gerektiğinde yeniden eğmek isteyebilirsiniz. Modelinize her eğişinizde, yeni bir yineleme olarak kaydedilir. Model performansını geliştirme hakkında daha fazla bilgi için [özel görüntü işleme belgelerine](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier) başvurun.
+1. Eğitim tamamlandığında, ekranınız model performansınızı gösterir. Bu sonuçları değerlendirme hakkında daha fazla bilgi için lütfen [model değerlendirme belgelerine](../cognitive-services/custom-vision-service/get-started-build-detector.md#evaluate-the-detector)bakın. Eğitiminden sonra modelinizi ek görüntülerle [Test](../cognitive-services/custom-vision-service/test-your-model.md) etmek ve gerektiğinde yeniden eğmek isteyebilirsiniz. Modelinize her eğişinizde, yeni bir yineleme olarak kaydedilir. Model performansını geliştirme hakkında daha fazla bilgi için [özel görüntü işleme belgelerine](../cognitive-services/custom-vision-service/getting-started-improving-your-classifier.md) başvurun.
 
     :::image type="content" source="./media/tutorial-nocode-vision/iteration.png" alt-text="Eğitim sonuçlarını modelleyin.":::
 
@@ -143,7 +143,7 @@ Bu pencereyi kapattıktan sonra, Azure Percept Studio giriş sayfasındaki **AI 
 
 ## <a name="improve-your-model-by-setting-up-retraining"></a>Yeniden eğitim ayarlayarak modelinizi geliştirme
 
-Modelinizi eğitip cihaza dağıttıktan sonra, daha fazla eğitim verisi yakalamak için yeniden eğitim parametreleri ayarlayarak model performansını artırabilirsiniz. Bu özellik, bir olasılık aralığına göre görüntüleri yakalama olanağı sunarak eğitilen bir modelin performansını geliştirmek için kullanılır. Örneğin, Cihazınızı yalnızca olasılık düşük olduğunda eğitim görüntülerini yakalamaya ayarlayabilirsiniz. Daha fazla görüntü ekleme ve eğitim verileri dengeleme hakkında bazı [ek yönergeler](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier) aşağıda verilmiştir.
+Modelinizi eğitip cihaza dağıttıktan sonra, daha fazla eğitim verisi yakalamak için yeniden eğitim parametreleri ayarlayarak model performansını artırabilirsiniz. Bu özellik, bir olasılık aralığına göre görüntüleri yakalama olanağı sunarak eğitilen bir modelin performansını geliştirmek için kullanılır. Örneğin, Cihazınızı yalnızca olasılık düşük olduğunda eğitim görüntülerini yakalamaya ayarlayabilirsiniz. Daha fazla görüntü ekleme ve eğitim verileri dengeleme hakkında bazı [ek yönergeler](../cognitive-services/custom-vision-service/getting-started-improving-your-classifier.md) aşağıda verilmiştir.
 
 1. Yeniden eğitimi ayarlamak için **projenize** dönün ve ardından **Proje Özeti** ' ne gidin
 1. **Görüntü yakalama** sekmesinde **Otomatik görüntü yakalama** ve **yeniden eğitim ayarla**' yı seçin.

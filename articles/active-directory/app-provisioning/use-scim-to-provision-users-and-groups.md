@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/01/2021
+ms.date: 03/22/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 1445e7959906966c58730521123ae03590bef1b3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8d517aaa6121120399e09bfef8aa6dd36e745563
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101652105"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105022951"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>Öğretici: SCıM uç noktası için geliştirme ve plan sağlama
 
@@ -198,6 +198,7 @@ Bir SCıM 2,0 kullanıcı yönetim API 'sini desteklemek için, bu bölümde AAD
 |Grup kaynağı sorgulanırken filtre [Excludedattributes = Üyeler](#get-group)|Bölüm 3.4.2.5|
 |Uygulamanızda AAD 'nin kimlik doğrulaması ve yetkilendirmesi için tek bir taşıyıcı belirtecini kabul edin.||
 |Bir kullanıcıyı geçici olarak silme `active=false` ve kullanıcıyı geri yükleme `active=true`|Kullanıcı nesnesi, kullanıcının etkin olup olmadığı bir istekte döndürülmelidir. Kullanıcının döndürülmediği tek zaman, uygulamadan kalıcı olarak silinir.|
+|/Schemas uç noktasını destekleme|[Bölüm 7](https://tools.ietf.org/html/rfc7643#page-30) Şema bulma uç noktası ek öznitelikleri bulmak için kullanılacaktır.|
 
 AAD ile uyumluluğu sağlamak için bir SCıM uç noktası uygularken genel yönergeleri kullanın:
 
@@ -210,7 +211,12 @@ AAD ile uyumluluğu sağlamak için bir SCıM uç noktası uygularken genel yön
 * Microsoft AAD, uç noktanın ve kimlik bilgilerinin geçerli olduğundan emin olmak için rastgele bir Kullanıcı ve grup getirme istekleri yapar. Ayrıca, [Azure Portal](https://portal.azure.com) **Test bağlantı** akışının bir parçası olarak da yapılır. 
 * Kaynakların sorgulanabileceği öznitelik, [Azure Portal](https://portal.azure.com)uygulamada eşleşen bir öznitelik olarak ayarlanmalıdır, bkz. [Kullanıcı sağlama öznitelik eşlemelerini özelleştirme](customize-application-attributes.md).
 * SCıM uç noktanıza HTTPS desteği
-
+* [Şema bulma](#schema-discovery)
+  * Şema bulma işlemi şu anda özel uygulamada desteklenmiyor, ancak belirli Galeri uygulamalarında kullanılıyor. İleri, şema bulma bir bağlayıcıya ek öznitelikler eklemek için birincil yöntem olarak kullanılacaktır. 
+  * Bir değer yoksa, null değerler göndermez.
+  * Özellik değerleri ortası (örn. readWrite) olmalıdır.
+  * Bir liste yanıtı döndürmelidir.
+  
 ### <a name="user-provisioning-and-deprovisioning"></a>Kullanıcı hazırlama ve sağlamayı kaldırma
 
 Aşağıdaki çizimde, AAD 'nin uygulamanızın kimlik deposundaki bir kullanıcının yaşam döngüsünü yönetmek için bir SCıM hizmetine gönderdiği iletiler gösterilmektedir.  
@@ -252,6 +258,9 @@ Bu bölümde AAD SCıM istemcisi tarafından yayılan örnek SCıM istekleri ve 
   - [Güncelleştirme grubu [Üye Ekleme]](#update-group-add-members) ([istek](#request-11)  /  [yanıtı](#response-11))
   - [Güncelleştirme grubu [üyeleri kaldır]](#update-group-remove-members) ([istek](#request-12)  /  [yanıtı](#response-12))
   - [Grup silme](#delete-group) ([istek](#request-13)  /  [yanıtı](#response-13))
+
+[Şema bulma](#schema-discovery)
+  - [Şemayı bul](#discover-schema) ([istek](#request-15)  /  [yanıtı](#response-15))
 
 ### <a name="user-operations"></a>Kullanıcı Işlemleri
 
@@ -749,6 +758,105 @@ Bu bölümde AAD SCıM istemcisi tarafından yayılan örnek SCıM istekleri ve 
 ##### <a name="response"></a><a name="response-13"></a>Yanıt
 
 *HTTP/1.1 204 Içerik yok*
+
+### <a name="schema-discovery"></a>Şema bulma
+#### <a name="discover-schema"></a>Şemayı bul
+
+##### <a name="request"></a><a name="request-15"></a>İstek
+*/Schemas al* 
+##### <a name="response"></a><a name="response-15"></a>Yanıt
+*HTTP/1.1 200 TAMAM*
+```json
+{
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:ListResponse"
+    ],
+    "itemsPerPage": 50,
+    "startIndex": 1,
+    "totalResults": 3,
+    "Resources": [
+  {
+    "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Schema"],
+    "id" : "urn:ietf:params:scim:schemas:core:2.0:User",
+    "name" : "User",
+    "description" : "User Account",
+    "attributes" : [
+      {
+        "name" : "userName",
+        "type" : "string",
+        "multiValued" : false,
+        "description" : "Unique identifier for the User, typically
+used by the user to directly authenticate to the service provider.
+Each User MUST include a non-empty userName value.  This identifier
+MUST be unique across the service provider's entire set of Users.
+REQUIRED.",
+        "required" : true,
+        "caseExact" : false,
+        "mutability" : "readWrite",
+        "returned" : "default",
+        "uniqueness" : "server"
+      },                
+    ],
+    "meta" : {
+      "resourceType" : "Schema",
+      "location" :
+        "/v2/Schemas/urn:ietf:params:scim:schemas:core:2.0:User"
+    }
+  },
+  {
+    "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Schema"],
+    "id" : "urn:ietf:params:scim:schemas:core:2.0:Group",
+    "name" : "Group",
+    "description" : "Group",
+    "attributes" : [
+      {
+        "name" : "displayName",
+        "type" : "string",
+        "multiValued" : false,
+        "description" : "A human-readable name for the Group.
+REQUIRED.",
+        "required" : false,
+        "caseExact" : false,
+        "mutability" : "readWrite",
+        "returned" : "default",
+        "uniqueness" : "none"
+      },
+    ],
+    "meta" : {
+      "resourceType" : "Schema",
+      "location" :
+        "/v2/Schemas/urn:ietf:params:scim:schemas:core:2.0:Group"
+    }
+  },
+  {
+    "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Schema"],
+    "id" : "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
+    "name" : "EnterpriseUser",
+    "description" : "Enterprise User",
+    "attributes" : [
+      {
+        "name" : "employeeNumber",
+        "type" : "string",
+        "multiValued" : false,
+        "description" : "Numeric or alphanumeric identifier assigned
+to a person, typically based on order of hire or association with an
+organization.",
+        "required" : false,
+        "caseExact" : false,
+        "mutability" : "readWrite",
+        "returned" : "default",
+        "uniqueness" : "none"
+      },
+    ],
+    "meta" : {
+      "resourceType" : "Schema",
+      "location" :
+"/v2/Schemas/urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
+    }
+  }
+]
+}
+```
 
 ### <a name="security-requirements"></a>Güvenlik gereksinimleri
 **TLS protokol sürümleri**

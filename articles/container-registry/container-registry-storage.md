@@ -1,15 +1,15 @@
 ---
 title: Kapsayıcı görüntüsü depolaması
 description: Kapsayıcı görüntülerinizin ve diğer yapılarınızın güvenlik, artıklık ve kapasite dahil Azure Container Registry nasıl depolandığı hakkında ayrıntılar.
-ms.topic: article
-ms.date: 03/03/2021
+ms.topic: conceptual
+ms.date: 03/24/2021
 ms.custom: references_regions
-ms.openlocfilehash: ec4328b44d5493b8d765fa30c548adc3d747d446
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a9c8ec877ddb17603e82b763223278a2e5e36714
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102183276"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047754"
 ---
 # <a name="container-image-storage-in-azure-container-registry"></a>Azure Container Registry kapsayıcı görüntüsü depolaması
 
@@ -21,11 +21,9 @@ Kayıt defterinizde bulunan tüm kapsayıcı görüntüleri ve diğer yapıtlar 
 
 ## <a name="regional-storage"></a>Bölgesel depolama
 
-Azure Container Registry, müşterilerin veri fazlalığını ve uyumluluk gereksinimlerini karşılamasına yardımcı olmak için kayıt defterinin oluşturulduğu bölgedeki verileri depolar.
+Azure Container Registry, müşterilerin veri fazlalığını ve uyumluluk gereksinimlerini karşılamasına yardımcı olmak için kayıt defterinin oluşturulduğu bölgedeki verileri depolar. Brezilya Güney ve Güneydoğu Asya dışındaki tüm bölgelerde Azure, kayıt defteri verilerini aynı coğrafya içindeki eşleştirilmiş bir bölgede de saklayabilir. Brezilya Güney ve Güneydoğu Asya bölgelerinde, kayıt defteri verileri her zaman bölgeye göre sınırlandırılan bu bölgeler için veri yerleşimi gereksinimlerine uyum sağlar.
 
-Veri merkezi kesintilerine karşı koruma sağlamaya yardımcı olmak için bazı bölgeler, verilerin belirli bir bölgedeki birden çok veri merkezinde çoğaltılacağı [bölge yedekliliği](zone-redundancy.md)sunar.
-
-Farklı coğrafi bölgeler arasında daha iyi performans sağlamak veya bir bölgesel kesinti durumunda dayanıklılık sağlamak isteyen müşterilerin, verilerinin birden çok bölgede depolanmasını isteyen müşteriler [Coğrafi çoğaltmayı](container-registry-geo-replication.md)etkinleştirmelidir.
+Bölgesel bir kesinti oluşursa, kayıt defteri verileri kullanılamaz hale gelebilir ve otomatik olarak kurtarılamaz. Farklı coğrafi bölgeler arasında daha iyi performans sağlamak veya bir bölgesel kesinti durumunda dayanıklılık sağlamak isteyen bir veya daha fazla esneklik sağlamak için kayıt defteri verilerinin birden çok bölgede depolanmasını isteyen müşteriler [Coğrafi çoğaltmayı](container-registry-geo-replication.md)etkinleştirmelidir.
 
 ## <a name="geo-replication"></a>Coğrafi çoğaltma
 

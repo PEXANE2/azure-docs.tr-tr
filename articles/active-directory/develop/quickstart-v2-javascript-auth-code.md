@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: dcb82e6cc50a2ff3291d5a900ec9367d69dcdde6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1e99e8ff25d895ba2248ddd1ba2520e9f14871a7
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103224920"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105022815"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow-with-pkce"></a>Hızlı başlangıç: Kullanıcı oturum açma ve bir JavaScript SPA 'da, PKCE ile kimlik doğrulama kod akışını kullanarak bir erişim belirteci edinme 
 
@@ -25,7 +25,7 @@ Bu hızlı başlangıçta, JavaScript tek sayfalı uygulamanın (SPA) Kullanıc�
 
 Örneğin bir çizim için [nasıl çalıştığını](#how-the-sample-works) görün.
 
-Bu hızlı başlangıçta yetkilendirme kodu akışıyla MSAL.js 2,0 kullanılır. Örtük akışta MSAL.js 1,0 kullanan benzer bir hızlı başlangıç için bkz. [hızlı başlangıç: JavaScript tek sayfalı uygulamalarda oturum açma kullanıcıları](./quickstart-v2-javascript.md).
+Bu hızlı başlangıçta yetkilendirme kodu akışıyla MSAL.js v2 kullanılır. Örtük Flow ile MSAL.js v1 kullanan benzer bir hızlı başlangıç için bkz. [hızlı başlangıç: JavaScript tek sayfalı uygulamalarda oturum açma](./quickstart-v2-javascript.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 

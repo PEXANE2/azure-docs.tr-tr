@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 03/10/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: bd16f0ef330d1d4a33dd796af0ec3e94dda5acfc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 45c52e141ed2d93f89c9d7c1426a9d7cbbbd47f5
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98684602"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023937"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Sanal makine ölçek kümesini değiştirme
 
@@ -350,7 +350,7 @@ Bazı özellikler, geçerli değere bağlı olarak özel durumlarla birlikte de�
 
 - **singleplacementgroup** -singleplacementgroup true ise, false olarak değiştirilebilir. Ancak, singlePlacementGroup false ise true **olarak değiştirilemez.**
 - **alt ağ** -bir ölçek kümesinin alt ağı, özgün alt ağ ve yeni alt ağ aynı sanal ağ içinde olduğu sürece değiştirilebilir.
-- **ımagereferencesku** -Image Reference SKU 'su, [plan bilgileri](../virtual-machines/linux/cli-ps-findimage.md#view-plan-properties)olmayan, desteklenen [Linux Distro 'lara](../virtual-machines/linux/endorsed-distros.md), Windows Server/istemci görüntüleri ve görüntüleri için güncelleştirilemeyebilir. 
+- **ımagereferencesku** -Image Reference SKU 'su, [plan bilgileri](../virtual-machines/linux/cli-ps-findimage.md#check-the-purchase-plan-information)olmayan, desteklenen [Linux Distro 'lara](../virtual-machines/linux/endorsed-distros.md), Windows Server/istemci görüntüleri ve görüntüleri için güncelleştirilemeyebilir. 
 
 ### <a name="properties-that-require-deallocation-to-change"></a>Değişikliğe göre ayırmayı gerektiren özellikler
 Ölçek kümesindeki VM 'Ler serbest bırakıldığında bazı özellikler yalnızca belirli değerlere değiştirilebilir. Bu özellikler şunları içerir:

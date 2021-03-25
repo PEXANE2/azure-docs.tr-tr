@@ -4,12 +4,12 @@ description: Bir Azure sanal ağında HDInsight kümesi oluştururken kullanıla
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: d5b8bdf5577642290cee7250e0f21f8a69dfd248
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 43640a9de91b6b44a236090ff029a49313ee0247
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98931163"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871682"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Azure HDInsight sanal ağ mimarisi
 
@@ -19,7 +19,7 @@ Bu makalede, bir HDInsight kümesini özel bir Azure sanal ağına dağıtırken
 
 Azure HDInsight kümelerinde farklı türlerde sanal makineler veya düğümler vardır. Her düğüm türü, sistem işleminde bir rol oynar. Aşağıdaki tabloda bu düğüm türleri ve bunların rolleri kümede özetlenmektedir.
 
-| Tür | Description |
+| Tür | Açıklama |
 | --- | --- |
 | Baş düğüm |  Apache Storm dışındaki tüm küme türleri için baş düğümler, dağıtılmış uygulamanın yürütülmesini yöneten süreçler barındırır. Baş düğüm aynı zamanda, SSH ve küme kaynakları genelinde çalışacak şekilde koordine ettiğiniz uygulamaları yürütebilmeniz için de düğümdür. Baş düğümlerin sayısı, tüm küme türleri için iki olarak düzeltilir. |
 | ZooKeeper düğümü | Zookeeper, veri işleme yapan düğümler arasındaki görevleri düzenler. Ayrıca baş düğümün öncü seçimi de yapar ve hangi baş düğümün belirli bir ana hizmetin çalıştığını izler. ZooKeeper düğümlerinin sayısı üç olarak düzeltilir. |
@@ -43,7 +43,7 @@ Yalnızca ana bilgisayar adına ihtiyacınız varsa, FQDN 'nin yalnızca ilk kı
 
 Aşağıdaki diyagramda HDInsight düğümlerinin ve ağ kaynaklarının Azure 'da yerleştirilmesi gösterilmektedir.
 
-![Azure özel VNET 'te oluşturulan HDInsight varlıklarının diyagramı](./media/hdinsight-virtual-network-architecture/hdinsight-vnet-diagram.png)
+:::image type="content" source="./media/hdinsight-virtual-network-architecture/hdinsight-vnet-diagram.png" alt-text="Azure özel VNET 'te oluşturulan HDInsight varlıklarının diyagramı" border="false":::
 
 Bir Azure sanal ağındaki varsayılan kaynaklar, önceki tabloda belirtilen küme düğümü türlerini içerir. Ve sanal ağ ve dış ağlar arasındaki iletişimi destekleyen ağ cihazları.
 

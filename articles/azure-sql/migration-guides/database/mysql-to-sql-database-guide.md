@@ -9,26 +9,27 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: ff7b2115b396bf42cdeffa9c58bffb1802e980d1
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 14b2c1f98ae977548edb635b8a8a7a956b3f2dd7
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104721894"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023784"
 ---
 # <a name="migration-guide--mysql-to-azure-sql-database"></a>Geçiş Kılavuzu: MySQL to Azure SQL veritabanı
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
 Bu kılavuzda MySQL veritabanınızı MySQL için SQL Server Geçiş Yardımcısı (MySQL için SıMMA) kullanarak Azure SQL veritabanı 'na geçirmeniz öğretilir. 
 
-Diğer geçiş kılavuzlarında, bkz. [Veritabanı geçişi](https://datamigration.microsoft.com/). 
+Diğer geçiş kılavuzlarında, bkz. [Veritabanı geçişi](https://docs.microsoft.com/data-migration). 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 MySQL veritabanınızı Azure SQL veritabanı 'na geçirmek için şunlar gerekir:
 
 - Kaynak ortamınızın desteklendiğini doğrulamak için. Şu anda MySQL 5,6 ve 5,7 desteklenir. 
-- [MySQL için SQL Server Geçiş Yardımcısı](https://www.microsoft.com/download/confirmation.aspx?id=54257)
+- [MySQL için SQL Server Geçiş Yardımcısı](https://www.microsoft.com/download/details.aspx?id=54257)
+- Hem kaynak hem de hedefe erişmek için bağlantı ve yeterli izinler. 
 
 
 ## <a name="pre-migration"></a>Geçiş öncesi 
@@ -37,32 +38,29 @@ MySQL veritabanınızı Azure SQL veritabanı 'na geçirmek için şunlar gereki
 
 ### <a name="assess"></a>Değerlendirme 
 
-[MySQL için SQL Server Geçiş Yardımcısı](https://www.microsoft.com/download/confirmation.aspx?id=54257)kullanarak veritabanı nesnelerini ve verileri gözden geçirebilir ve geçiş için veritabanlarını değerlendirebilirsiniz.
+Veritabanı nesneleri ve verilerini gözden geçirmek ve geçiş için veritabanlarını değerlendirmek üzere MySQL için SQL Server Geçiş Yardımcısı (SSMA) kullanın. 
 
-Bir değerlendirme oluşturmak için aşağıdaki adımları gerçekleştirin.
+Bir değerlendirme oluşturmak için aşağıdaki adımları gerçekleştirin: 
 
-1. MySQL için SQL Server Geçiş Yardımcısı açın. 
-1. Menüden **Dosya** ' yı seçin ve ardından **Yeni proje**' yi seçin. Projenizin kaydedileceği bir konum olan proje adını belirtin. Geçiş hedefi olarak **Azure SQL veritabanı** ' nı seçin. 
+1. [MySQL için SQL Server Geçiş Yardımcısı](https://www.microsoft.com/download/details.aspx?id=54257)açın. 
+1. Menüden **Dosya** ' yı seçin ve ardından **Yeni proje**' yi seçin. 
+1. Projenizin kaydedileceği bir konum olan proje adını belirtin. Geçiş hedefi olarak **Azure SQL veritabanı** ' nı seçin. **Tamam ' ı** seçin:
 
    ![Yeni Proje](./media/mysql-to-sql-database-guide/new-project.png)
 
-1. MySQL sunucusuna **Bağlan** ' ı seçin ve MySQL sunucunuzu bağlamak için bağlantı ayrıntılarını sağlayın. 
+1. MySQL sunucusuna **Bağlan** ' ı seçin ve MySQL sunucunuzu bağlamak için bağlantı ayrıntıları sağlayın:
 
    ![MySQL 'e Bağlan](./media/mysql-to-sql-database-guide/connect-to-mysql.png)
 
-1. **MySQL meta veri Gezgini** 'nde MySQL şemasına sağ tıklayın ve **rapor oluştur**' u seçin. Alternatif olarak, üst çizgi gezinti çubuğundan **rapor oluştur** ' u seçebilirsiniz. 
+1. **MySQL meta veri Gezgini** 'nde MySQL şemasına sağ tıklayın ve **rapor oluştur**' u seçin. Alternatif olarak, üst çizgi gezinti çubuğundan **rapor oluştur** ' u seçebilirsiniz:
 
    ![Rapor oluştur](./media/mysql-to-sql-database-guide/create-report.png)
 
-1. Hata ve uyarıların yanı sıra dönüştürme istatistiklerinin HTML raporunu gözden geçirin. Dönüştürme sorunlarını ve çözümlerini anlamak için bunu çözümleyin. 
-
-   Bu rapora, ilk ekranda seçili olan SSMA projeleri klasöründen de erişilebilir. Yukarıdaki örnekte report.xml dosyasını bulun:
+1. Dönüştürme istatistiklerini ve hataları ya da uyarıları anlamak için HTML raporunu gözden geçirin. Ayrıca, bu raporu Excel 'de açarak, MySQL nesnelerinin envanterini ve şema dönüştürmeleri gerçekleştirmek için gereken çabayı alabilirsiniz. Rapor için varsayılan konum SSMAProjects içindeki rapor klasöründedir.
  
-   `drive:\Users\<username>\Documents\SSMAProjects\MySQLMigration\report\report_2016_11_12T02_47_55\`
+   Örnek: `drive:\Users\<username>\Documents\SSMAProjects\MySQLMigration\report\report_2016_11_12T02_47_55\`
  
-   ve bu dosyayı Excel 'de açarak, MySQL nesnelerinin envanterini ve şema dönüştürmeleri gerçekleştirmek için gereken çabayı öğrenin.
-
-    ![Dönüştürme raporu](./media/mysql-to-sql-database-guide/conversion-report.png)
+   ![Dönüştürme raporu](./media/mysql-to-sql-database-guide/conversion-report.png)
 
 ### <a name="validate-data-types"></a>Veri türlerini doğrula
 
@@ -70,7 +68,7 @@ Varsayılan veri türü eşlemelerini doğrulayın ve gerekirse gereksinimlere g
 
 1. Menüden **Araçlar** ' ı seçin. 
 1. **Proje ayarları**' nı seçin. 
-1. **Tür eşlemeleri** sekmesini seçin. 
+1. **Tür eşlemeleri** sekmesini seçin:
 
    ![Tür eşlemeleri](./media/mysql-to-sql-database-guide/type-mappings.png)
 
@@ -81,32 +79,38 @@ Varsayılan veri türü eşlemelerini doğrulayın ve gerekirse gereksinimlere g
 Şemayı dönüştürmek için aşağıdaki adımları izleyin: 
 
 1. Seçim Dinamik veya geçici sorguları dönüştürmek için, düğümüne sağ tıklayın ve **Ekstre Ekle**' yi seçin. 
-1. Üst çizgi gezinti çubuğundan **Azure SQL veritabanı 'Na Bağlan** ' ı seçin ve bağlantı ayrıntılarını sağlayın. Mevcut bir veritabanına bağlanmayı veya yeni bir ad sağlamayı seçebilirsiniz; Bu durumda hedef sunucuda bir veritabanı oluşturulur.
+1. **Azure SQL veritabanı 'Na Bağlan**' ı seçin. 
+    1. Veritabanınızı Azure SQL veritabanı 'na bağlamak için bağlantı ayrıntılarını girin.
+    1. Açılan listeden hedef SQL veritabanınızı seçin veya yeni bir ad sağlayın, bu durumda hedef sunucuda bir veritabanının oluşturulması gerekir. 
+    1. Kimlik doğrulama ayrıntılarını sağlayın. 
+    1. **Bağlan**' ı seçin:
 
    ![SQL 'e Bağlan](./media/mysql-to-sql-database-guide/connect-to-sqldb.png)
  
-1. Şemaya sağ tıklayıp **Şemayı Dönüştür**' ü seçin. 
+1. Şemaya sağ tıklayıp **Şemayı Dönüştür**' ü seçin. Alternatif olarak, veritabanınızı seçtikten sonra üst çizgi gezinti çubuğundan **Şemayı Dönüştür** ' i de seçebilirsiniz:
 
    ![Şemayı Dönüştür](./media/mysql-to-sql-database-guide/convert-schema.png)
 
-1. Şemanın dönüştürülmesi bittikten sonra, olası sorunları belirlemek için dönüştürülen kodu özgün kodla karşılaştırın. 
+1. Dönüştürme tamamlandıktan sonra olası sorunları belirlemek ve bunları önerilere göre ele almak için dönüştürülen nesneleri özgün nesnelere karşılaştırın ve gözden geçirin:
 
-   Dönüştürülmüş nesneleri özgün nesnelerle karşılaştırın: 
+   ![Dönüştürülen nesneler, kaynak ile karşılaştırılabilir](./media/mysql-to-sql-database-guide/table-comparison.png)
 
-   ![ Nesneyi Karşılaştır ve ıncele ](./media/mysql-to-sql-database-guide/table-comparison.png)
+   Dönüştürülmüş Transact-SQL metnini özgün kodla karşılaştırın ve önerileri gözden geçirin:
 
-   Dönüştürülmüş yordamları özgün yordamlarla karşılaştırın: 
+   ![Dönüştürülen sorgular, kaynak kodla karşılaştırılabilir](./media/mysql-to-sql-database-guide/procedure-comparison.png)
 
-   ![Nesne kodunu Karşılaştır ve ıncele](./media/mysql-to-sql-database-guide/procedure-comparison.png)
+1. Çıkış bölmesinde **sonuçları gözden geçir** ' i seçin ve **hata listesi** bölmesindeki hataları gözden geçirin. 
+1. Çevrimdışı şema düzeltme alıştırması için projeyi yerel olarak kaydedin. **Dosya** menüsünden **projeyi kaydet** ' i seçin. Bu, şemayı SQL veritabanı 'na yayımlamadan önce kaynak ve hedef şemaları çevrimdışına almak ve düzeltmeyi gerçekleştirmek için bir fırsat sağlar.
+
 
 
 ## <a name="migrate"></a>Geçiş 
 
 Veritabanlarınızı değerlendirmek ve tutarsızlıkları doğruladıktan sonra, bir sonraki adım geçiş işlemini yürütmeniz gerekir. Geçiş iki adımdan oluşur: şemayı yayımlama ve verileri geçirme. 
 
-Şemayı yayımlamak ve verileri geçirmek için şu adımları izleyin: 
+Şemanızı yayımlamak ve verileri geçirmek için şu adımları izleyin: 
 
-1. **Azure SQL veritabanı meta veri Gezgini** ' nden veritabanına sağ tıklayın ve **veritabanıyla Synchronize**' ı seçin. Bu eylem MySQL şemasını Azure SQL veritabanı 'na yayımlar.
+1. Şemayı yayımlama: **Azure SQL veritabanı meta veri Gezgini** ' nden veritabanına sağ tıklayın ve **veritabanıyla Synchronize**' ı seçin. Bu eylem MySQL şemasını Azure SQL veritabanı 'na yayımlar:
 
    ![Veritabanıyla Synchronize](./media/mysql-to-sql-database-guide/synchronize-database.png)
 
@@ -114,7 +118,7 @@ Veritabanlarınızı değerlendirmek ve tutarsızlıkları doğruladıktan sonra
 
    ![Veritabanı Incelemesinin eşitlenmesi](./media/mysql-to-sql-database-guide/synchronize-database-review.png)
 
-1. **MySQL meta veri Gezgini** ' nden MySQL şemasına sağ tıklayın ve **veri geçişi**' ni seçin. Alternatif olarak, üst çizgi gezintiden **veri geçişini** seçebilirsiniz. 
+1. Verileri geçirme: **MySQL meta veri Gezgini**'nde geçirmek istediğiniz veritabanına veya nesneye sağ tıklayın ve **veri geçişi**' ni seçin. Alternatif olarak, üst çizgi gezinti çubuğundan **veri geçişini** seçebilirsiniz. Tüm bir veritabanının verilerini geçirmek için veritabanı adının yanındaki onay kutusunu işaretleyin. Ayrı tablolardan verileri geçirmek için veritabanını genişletin, tablolar ' ı genişletin ve ardından tablonun yanındaki onay kutusunu işaretleyin. Ayrı tablolardaki verileri atlamak için onay kutusunu temizleyin:
 
    ![Geçiş verileri](./media/mysql-to-sql-database-guide/migrate-data.png)
 
@@ -122,7 +126,7 @@ Veritabanlarınızı değerlendirmek ve tutarsızlıkları doğruladıktan sonra
 
    ![Veri geçiş raporu](./media/mysql-to-sql-database-guide/data-migration-report.png)
 
-1.  SQL Server Management Studio (SSMS) kullanarak Azure SQL veritabanı 'ndaki verileri ve şemayı inceleyerek geçişi doğrulayın.
+1. [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) kullanarak Azure SQL veritabanınıza bağlanın ve verileri ve şemayı inceleyerek geçişi doğrulayın:
 
     ![SSMA 'da doğrula](./media/mysql-to-sql-database-guide/validate-in-ssms.png)
 
@@ -158,7 +162,7 @@ Bu sorunlar ve bu sorunları azaltmaya yönelik belirli adımlar hakkında daha 
 
 Bu geçiş senaryosunu tamamlamaya yönelik ek yardım için, lütfen gerçek dünyada geçiş projesi katılımı desteğiyle geliştirilen aşağıdaki kaynaklara bakın.
 
-| Başlık/bağlantı     | Description    |
+| Başlık/bağlantı     | Açıklama    |
 | ---------------------------------------------- | ---------------------------------------------------- |
 | [Veri Iş yükü değerlendirmesi modeli ve aracı](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | Bu araç, belirli bir iş yükü için önerilen "en uygun" hedef platformları, bulut hazırlığı ve uygulama/veritabanı düzeltme düzeyini sağlar. Basit, tek tıklamayla hesaplama ve rapor oluşturma işlemlerini ve otomatikleştirilmiş ve Tekdüzen hedef platformu karar sürecini sağlayarak büyük Emlak değerlendirmelerinin hızlandırmasına büyük ölçüde yardımcı olur. |
 

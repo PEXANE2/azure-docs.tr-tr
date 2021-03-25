@@ -1,69 +1,41 @@
 ---
-title: Azure CLı ile Linux VM görüntülerini seçme
-description: Azure CLı kullanarak Market VM görüntüleri için yayımcı, teklif, SKU ve sürümü belirleme hakkında bilgi edinin.
+title: CLı kullanarak Market satın alma planı bilgilerini bulma ve kullanma
+description: Market VM görüntüleri için yayımcı, teklif, SKU ve sürüm gibi görüntü URNs ve satın alma planı parametrelerini bulmak için Azure CLı 'yi nasıl kullanacağınızı öğrenin.
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: imaging
 ms.topic: how-to
-ms.date: 01/25/2019
+ms.date: 03/22/2021
 ms.author: cynthn
 ms.collection: linux
-ms.openlocfilehash: efa0b91c9c0e43104f36017c3b1a1f3167190d63
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.custom: contperf-fy21q3-portal
+ms.openlocfilehash: 70cb4cc54c6f9a376d3bd38dc8bb6cd3a059a20c
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102562818"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105022865"
 ---
-# <a name="find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Azure CLI ile Azure Market'te Linux VM görüntülerini bulma
+# <a name="find-azure-marketplace-image-information-using-the-azure-cli"></a>Azure CLı kullanarak Azure Marketi görüntü bilgilerini bulma
 
 Bu konu başlığında, Azure Marketi 'nde VM görüntülerini bulmak için Azure CLı 'nın nasıl kullanılacağı açıklanmaktadır. CLı, Kaynak Yöneticisi şablonları veya diğer araçlarla programlı bir şekilde VM oluştururken Market görüntüsü belirtmek için bu bilgileri kullanın.
 
-Ayrıca, [Azure Marketi](https://azuremarketplace.microsoft.com/) storefront, [Azure Portal](https://portal.azure.com)veya  [Azure PowerShell](../windows/cli-ps-findimage.md)kullanarak kullanılabilir görüntülere ve tekliflere de gözatın. 
+Ayrıca, [Azure Marketi](https://azuremarketplace.microsoft.com/) veya  [Azure PowerShell](../windows/cli-ps-findimage.md)kullanarak kullanılabilir görüntülere ve tekliflere de gidebilirsiniz. 
 
-Bir Azure hesabında () oturum açtığınızdan emin olun `az login` .
+## <a name="terminology"></a>Terminoloji
 
-[!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
+Azure 'da Market görüntüsü aşağıdaki özniteliklere sahiptir:
 
-[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
+* **Yayımcı**: görüntüyü oluşturan kuruluş. Örnekler: Canonical, MicrosoftWindowsServer
+* **Teklif**: Yayımcı tarafından oluşturulan ilgili görüntü grubunun adı. Örnekler: UbuntuServer, WindowsServer
+* **SKU**: bir dağıtımın ana sürümü gibi bir teklifin örneği. Örnekler: 18,04-LTS, 2019-Datacenter
+* **Sürüm**: BIR görüntü SKU 'sunun sürüm numarası. 
 
-## <a name="deploy-from-a-vhd-using-purchase-plan-parameters"></a>Satın alma planı parametrelerini kullanarak bir VHD 'den dağıtma
+Bu değerler ayrı ayrı veya bir görüntü *urn*'si olarak geçirilebilir ve iki nokta üst üste (:) ile ayrılmış değerler birleştiren. Örneğin: *Yayımcı*:*teklif*:*SKU*:*Sürüm*. URN 'deki sürüm numarasını `latest` görüntünün en son sürümünü kullanacak şekilde değiştirebilirsiniz. 
 
-Ücretli bir Azure Marketi görüntüsü kullanılarak oluşturulmuş bir VHD varsa, bu VHD 'den yeni bir sanal makine oluştururken satın alma planı bilgilerini sağlamanız gerekebilir. 
+Görüntü yayımcısı ek lisans ve satın alma koşulları sağlıyorsa, görüntüyü kullanabilmeniz için önce bunları kabul etmelisiniz.  Daha fazla bilgi için bkz. [Satınalma planı bilgilerini denetleme](#check-the-purchase-plan-information).
 
-Hala orijinal VM veya aynı Market görüntüsü kullanılarak oluşturulmuş başka bir VM varsa, [az VM Get-instance-View](/cli/azure/vm#az_vm_get_instance_view)kullanarak bu bilgisayardan plan adı, yayımcı ve ürün bilgilerini alabilirsiniz. Bu örnek *Myresourcegroup* kaynak grubundaki *myvm* adlı bir VM 'yi alır ve ardından satın alma planı bilgilerini görüntüler.
 
-```azurepowershell-interactive
-az vm get-instance-view -g myResourceGroup -n myVM --query plan
-```
-
-Özgün VM silinmeden önce plan bilgilerini almadıysanız, bir [destek isteği](https://ms.portal.azure.com/#create/Microsoft.Support)dosyası gönderebilirsiniz. Bu, VM adı, abonelik KIMLIĞI ve silme işleminin zaman damgasına ihtiyaç duyar.
-
-Plan bilgilerine sahip olduktan sonra, `--attach-os-disk` VHD 'yi belirtmek için parametresini kullanarak yenı VM 'yi oluşturabilirsiniz.
-
-```azurecli-interactive
-az vm create \
-   --resource-group myResourceGroup \
-  --name myNewVM \
-  --nics myNic \
-  --size Standard_DS1_v2 --os-type Linux \
-  --attach-os-disk myVHD \
-  --plan-name planName \
-  --plan-publisher planPublisher \
-  --plan-product planProduct 
-```
-
-## <a name="deploy-a-new-vm-using-purchase-plan-parameters"></a>Satın alma planı parametrelerini kullanarak yeni bir VM dağıtma
-
-Görüntüyle ilgili bilgilere zaten sahipseniz komutunu kullanarak dağıtabilirsiniz `az vm create` . Bu örnekte, Bıbbitmq sertifikalı bir sanal makineyi BitNami görüntüsüne dağıdık:
-
-```azurecli
-az group create --name myResourceGroupVM --location westus
-
-az vm create --resource-group myResourceGroupVM --name myVM --image bitnami:rabbitmq:rabbitmq:latest --plan-name rabbitmq --plan-product rabbitmq --plan-publisher bitnami
-```
-
-Görüntü koşullarını kabul etme hakkında bir ileti alırsanız, bu makalenin ilerleyen kısımlarında yer alarak [Koşulları kabul](#accept-the-terms) edin bölümüne bakın.
 
 ## <a name="list-popular-images"></a>Popüler görüntüleri listeleme
 
@@ -73,20 +45,23 @@ Azure Marketi 'nde popüler VM görüntülerinin listesini görmek için, seçen
 az vm image list --output table
 ```
 
-Çıktı URN ( *urn* sütunundaki değer) resmini içerir. Bu popüler Market görüntülerinden birine sahip bir VM oluştururken alternatif olarak, *Ubuntults* gibi kısaltılmış bir form olan *urnalias*'i de belirtebilirsiniz.
+Çıktı, URN resmini içerir. *Ubuntults* gibi popüler görüntüler için oluşturulan kısaltılmış bir sürüm olan *urnalias* 'i de kullanabilirsiniz.
 
 ```output
-You are viewing an offline list of images, use --all to retrieve an up-to-date list
 Offer          Publisher               Sku                 Urn                                                             UrnAlias             Version
 -------------  ----------------------  ------------------  --------------------------------------------------------------  -------------------  ---------
 CentOS         OpenLogic               7.5                 OpenLogic:CentOS:7.5:latest                                     CentOS               latest
 CoreOS         CoreOS                  Stable              CoreOS:CoreOS:Stable:latest                                     CoreOS               latest
-Debian         credativ                8                   credativ:Debian:8:latest                                        Debian               latest
+debian-10      Debian                  10                  Debian:debian-10:10:latest                                      Debian               latest
 openSUSE-Leap  SUSE                    42.3                SUSE:openSUSE-Leap:42.3:latest                                  openSUSE-Leap        latest
-RHEL           RedHat                  7-RAW               RedHat:RHEL:7-RAW:latest                                        RHEL                 latest
-SLES           SUSE                    12-SP2              SUSE:SLES:12-SP2:latest                                         SLES                 latest
-UbuntuServer   Canonical               16.04-LTS           Canonical:UbuntuServer:16.04-LTS:latest                         UbuntuLTS            latest
-...
+RHEL           RedHat                  7-LVM               RedHat:RHEL:7-LVM:latest                                        RHEL                 latest
+SLES           SUSE                    15                  SUSE:SLES:15:latest                                             SLES                 latest
+UbuntuServer   Canonical               18.04-LTS           Canonical:UbuntuServer:18.04-LTS:latest                         UbuntuLTS            latest
+WindowsServer  MicrosoftWindowsServer  2019-Datacenter     MicrosoftWindowsServer:WindowsServer:2019-Datacenter:latest     Win2019Datacenter    latest
+WindowsServer  MicrosoftWindowsServer  2016-Datacenter     MicrosoftWindowsServer:WindowsServer:2016-Datacenter:latest     Win2016Datacenter    latest
+WindowsServer  MicrosoftWindowsServer  2012-R2-Datacenter  MicrosoftWindowsServer:WindowsServer:2012-R2-Datacenter:latest  Win2012R2Datacenter  latest
+WindowsServer  MicrosoftWindowsServer  2012-Datacenter     MicrosoftWindowsServer:WindowsServer:2012-Datacenter:latest     Win2012Datacenter    latest
+WindowsServer  MicrosoftWindowsServer  2008-R2-SP1         MicrosoftWindowsServer:WindowsServer:2008-R2-SP1:latest         Win2008R2SP1         latest
 ```
 
 ## <a name="find-specific-images"></a>Belirli görüntüleri bulma
@@ -97,228 +72,77 @@ Market 'te belirli bir VM görüntüsünü bulmak için `az vm image list` komut
 
 ```azurecli
 az vm image list --offer Debian --all --output table 
-
 ```
 
 Kısmi çıkış: 
 
 ```output
-Offer              Publisher    Sku                  Urn                                                    Version
------------------  -----------  -------------------  -----------------------------------------------------  --------------
-Debian             credativ     7                    credativ:Debian:7:7.0.201602010                        7.0.201602010
-Debian             credativ     7                    credativ:Debian:7:7.0.201603020                        7.0.201603020
-Debian             credativ     7                    credativ:Debian:7:7.0.201604050                        7.0.201604050
-Debian             credativ     7                    credativ:Debian:7:7.0.201604200                        7.0.201604200
-Debian             credativ     7                    credativ:Debian:7:7.0.201606280                        7.0.201606280
-Debian             credativ     7                    credativ:Debian:7:7.0.201609120                        7.0.201609120
-Debian             credativ     7                    credativ:Debian:7:7.0.201611020                        7.0.201611020
-Debian             credativ     7                    credativ:Debian:7:7.0.201701180                        7.0.201701180
-Debian             credativ     8                    credativ:Debian:8:8.0.201602010                        8.0.201602010
-Debian             credativ     8                    credativ:Debian:8:8.0.201603020                        8.0.201603020
-Debian             credativ     8                    credativ:Debian:8:8.0.201604050                        8.0.201604050
-Debian             credativ     8                    credativ:Debian:8:8.0.201604200                        8.0.201604200
-Debian             credativ     8                    credativ:Debian:8:8.0.201606280                        8.0.201606280
-Debian             credativ     8                    credativ:Debian:8:8.0.201609120                        8.0.201609120
-Debian             credativ     8                    credativ:Debian:8:8.0.201611020                        8.0.201611020
-Debian             credativ     8                    credativ:Debian:8:8.0.201701180                        8.0.201701180
-Debian             credativ     8                    credativ:Debian:8:8.0.201703150                        8.0.201703150
-Debian             credativ     8                    credativ:Debian:8:8.0.201704110                        8.0.201704110
-Debian             credativ     8                    credativ:Debian:8:8.0.201704180                        8.0.201704180
-Debian             credativ     8                    credativ:Debian:8:8.0.201706190                        8.0.201706190
-Debian             credativ     8                    credativ:Debian:8:8.0.201706210                        8.0.201706210
-Debian             credativ     8                    credativ:Debian:8:8.0.201708040                        8.0.201708040
-Debian             credativ     8                    credativ:Debian:8:8.0.201710090                        8.0.201710090
-Debian             credativ     8                    credativ:Debian:8:8.0.201712040                        8.0.201712040
-Debian             credativ     8                    credativ:Debian:8:8.0.201801170                        8.0.201801170
-Debian             credativ     8                    credativ:Debian:8:8.0.201803130                        8.0.201803130
-Debian             credativ     8                    credativ:Debian:8:8.0.201803260                        8.0.201803260
-Debian             credativ     8                    credativ:Debian:8:8.0.201804020                        8.0.201804020
-Debian             credativ     8                    credativ:Debian:8:8.0.201804150                        8.0.201804150
-Debian             credativ     8                    credativ:Debian:8:8.0.201805160                        8.0.201805160
-Debian             credativ     8                    credativ:Debian:8:8.0.201807160                        8.0.201807160
-Debian             credativ     8                    credativ:Debian:8:8.0.201901221                        8.0.201901221
+Offer                                    Publisher                         Sku                                      Urn                                                                                                   Version
+---------------------------------------  --------------------------------  ---------------------------------------  ----------------------------------------------------------------------------------------------------  --------------
+apache-solr-on-debian                    apps-4-rent                       apache-solr-on-debian                    apps-4-rent:apache-solr-on-debian:apache-solr-on-debian:1.0.0                                         1.0.0
+atomized-h-debian10-v1                   atomizedinc1587939464368          hdebian10plan                            atomizedinc1587939464368:atomized-h-debian10-v1:hdebian10plan:1.0.0                                   1.0.0
+atomized-h-debian9-v1                    atomizedinc1587939464368          hdebian9plan                             atomizedinc1587939464368:atomized-h-debian9-v1:hdebian9plan:1.0.0                                     1.0.0
+atomized-r-debian10-v1                   atomizedinc1587939464368          rdebian10plan                            atomizedinc1587939464368:atomized-r-debian10-v1:rdebian10plan:1.0.0                                   1.0.0
+atomized-r-debian9-v1                    atomizedinc1587939464368          rdebian9plan                             atomizedinc1587939464368:atomized-r-debian9-v1:rdebian9plan:1.0.0                                     1.0.0
+cis-debian-linux-10-l1                   center-for-internet-security-inc  cis-debian10-l1                          center-for-internet-security-inc:cis-debian-linux-10-l1:cis-debian10-l1:1.0.7                         1.0.7
+cis-debian-linux-10-l1                   center-for-internet-security-inc  cis-debian10-l1                          center-for-internet-security-inc:cis-debian-linux-10-l1:cis-debian10-l1:1.0.8                         1.0.8
+cis-debian-linux-10-l1                   center-for-internet-security-inc  cis-debian10-l1                          center-for-internet-security-inc:cis-debian-linux-10-l1:cis-debian10-l1:1.0.9                         1.0.9
+cis-debian-linux-9-l1                    center-for-internet-security-inc  cis-debian9-l1                           center-for-internet-security-inc:cis-debian-linux-9-l1:cis-debian9-l1:1.0.18                          1.0.18
+cis-debian-linux-9-l1                    center-for-internet-security-inc  cis-debian9-l1                           center-for-internet-security-inc:cis-debian-linux-9-l1:cis-debian9-l1:1.0.19                          1.0.19
+cis-debian-linux-9-l1                    center-for-internet-security-inc  cis-debian9-l1                           center-for-internet-security-inc:cis-debian-linux-9-l1:cis-debian9-l1:1.0.20                          1.0.20
+apache-web-server-with-debian-10         cognosys                          apache-web-server-with-debian-10         cognosys:apache-web-server-with-debian-10:apache-web-server-with-debian-10:1.2019.1008                1.2019.1008
+docker-ce-with-debian-10                 cognosys                          docker-ce-with-debian-10                 cognosys:docker-ce-with-debian-10:docker-ce-with-debian-10:1.2019.0710                                1.2019.0710
+Debian                                   credativ                          8                                        credativ:Debian:8:8.0.201602010                                                                       8.0.201602010
+Debian                                   credativ                          8                                        credativ:Debian:8:8.0.201603020                                                                       8.0.201603020
+Debian                                   credativ                          8                                        credativ:Debian:8:8.0.201604050                                                                       8.0.201604050
 ...
 ```
 
-`--location`, Ve seçenekleriyle benzer filtreler uygulayın `--publisher` `--sku` . Bir filtrede, `--offer Deb` Tüm Deley görüntülerini bulmak için arama gibi kısmi eşleşmeler gerçekleştirebilirsiniz.
 
-Seçeneğiyle belirli bir konum belirtmezseniz `--location` , varsayılan konum için değerler döndürülür. (Çalıştırarak farklı bir varsayılan konum ayarlayın `az configure --defaults location=<location>` .)
-
-Örneğin, aşağıdaki komut Batı Avrupa konumdaki tüm 8 SKU 'Larını listeler:
-
-```azurecli
-az vm image list --location westeurope --offer Deb --publisher credativ --sku 8 --all --output table
-```
-
-Kısmi çıkış:
-
-```output
-Offer    Publisher    Sku                Urn                                              Version
--------  -----------  -----------------  -----------------------------------------------  -------------
-Debian   credativ     8                  credativ:Debian:8:8.0.201602010                  8.0.201602010
-Debian   credativ     8                  credativ:Debian:8:8.0.201603020                  8.0.201603020
-Debian   credativ     8                  credativ:Debian:8:8.0.201604050                  8.0.201604050
-Debian   credativ     8                  credativ:Debian:8:8.0.201604200                  8.0.201604200
-Debian   credativ     8                  credativ:Debian:8:8.0.201606280                  8.0.201606280
-Debian   credativ     8                  credativ:Debian:8:8.0.201609120                  8.0.201609120
-Debian   credativ     8                  credativ:Debian:8:8.0.201611020                  8.0.201611020
-Debian   credativ     8                  credativ:Debian:8:8.0.201701180                  8.0.201701180
-Debian   credativ     8                  credativ:Debian:8:8.0.201703150                  8.0.201703150
-Debian   credativ     8                  credativ:Debian:8:8.0.201704110                  8.0.201704110
-Debian   credativ     8                  credativ:Debian:8:8.0.201704180                  8.0.201704180
-Debian   credativ     8                  credativ:Debian:8:8.0.201706190                  8.0.201706190
-Debian   credativ     8                  credativ:Debian:8:8.0.201706210                  8.0.201706210
-Debian   credativ     8                  credativ:Debian:8:8.0.201708040                  8.0.201708040
-Debian   credativ     8                  credativ:Debian:8:8.0.201710090                  8.0.201710090
-Debian   credativ     8                  credativ:Debian:8:8.0.201712040                  8.0.201712040
-Debian   credativ     8                  credativ:Debian:8:8.0.201801170                  8.0.201801170
-Debian   credativ     8                  credativ:Debian:8:8.0.201803130                  8.0.201803130
-Debian   credativ     8                  credativ:Debian:8:8.0.201803260                  8.0.201803260
-Debian   credativ     8                  credativ:Debian:8:8.0.201804020                  8.0.201804020
-Debian   credativ     8                  credativ:Debian:8:8.0.201804150                  8.0.201804150
-Debian   credativ     8                  credativ:Debian:8:8.0.201805160                  8.0.201805160
-Debian   credativ     8                  credativ:Debian:8:8.0.201807160                  8.0.201807160
-Debian   credativ     8                  credativ:Debian:8:8.0.201901221                  8.0.201901221
-...
-```
-
-## <a name="navigate-the-images"></a>Görüntülerde gezin
+## <a name="look-at-all-available-images"></a>Tüm kullanılabilir görüntülere bakın
  
 Bir konumda görüntü bulmanın diğer bir yolu da [az VM image List-Publishers](/cli/azure/vm/image), [az VM Image List-tekliflerini](/cli/azure/vm/image)ve sırasıyla, az VM image [list-SKU](/cli/azure/vm/image) komutlarının çalıştırılacağı bir yoldur. Bu komutlarla, şu değerleri belirlersiniz:
 
-1. Görüntü yayımcılarını listeleyin.
-2. Belirli bir yayımcı varsa yayımcının tekliflerini listeleyin.
-3. Belirli bir teklif varsa SKU’larını listeleyin.
+1. Bir konumun görüntü yayımcılarını listeleyin. Bu örnekte, *Batı ABD* bölgesine bakıyoruz.
+    
+    ```azurecli
+    az vm image list-publishers --location westus --output table
+    ```
 
-Daha sonra, seçilen bir SKU için, dağıtılacak bir sürüm seçebilirsiniz.
+1. Belirli bir yayımcı varsa yayımcının tekliflerini listeleyin. Bu örnekte, yayımcı olarak *kurallı* bir ekliyoruz.
+    
+    ```azurecli
+    az vm image list-offers --location westus --publisher Canonical --output table
+    ```
 
-Örneğin, aşağıdaki komut Batı ABD konumdaki görüntü yayımcılarını listeler:
+1. Belirli bir teklif varsa SKU’larını listeleyin. Bu örnekte, teklif olarak *Ubuntuserver* ekleyeceğiz.
+    ```azurecli
+    az vm image list-skus --location westus --publisher Canonical --offer UbuntuServer --output table
+    ```
 
-```azurecli
-az vm image list-publishers --location westus --output table
-```
+1. Belirli bir yayımcı, teklif ve SKU için görüntünün tüm sürümlerini gösterir. Bu örnekte, SKU olarak *18,04-LTS* ekleyeceğiz.
 
-Kısmi çıkış:
+    ```azurecli
+    az vm image list \
+        --location westus \
+        --publisher Canonical \  
+        --offer UbuntuServer \    
+        --sku 18.04-LTS \
+        --all --output table
+    ```
 
-```output
-Location    Name
-----------  ----------------------------------------------------
-westus      128technology
-westus      1e
-westus      4psa
-westus      5nine-software-inc
-westus      7isolutions
-westus      a10networks
-westus      abiquo
-westus      accellion
-westus      accessdata-group
-westus      accops
-westus      Acronis
-westus      Acronis.Backup
-westus      actian-corp
-westus      actian_matrix
-westus      actifio
-westus      activeeon
-westus      advantech-webaccess
-westus      aerospike
-westus      affinio
-westus      aiscaler-cache-control-ddos-and-url-rewriting-
-westus      akamai-technologies
-westus      akumina
-...
-```
-
-Belirli bir yayımcının tekliflerini bulmak için bu bilgileri kullanın. Örneğin, Batı ABD konumdaki *kurallı* yayımcı için, çalıştırarak teklifleri bulun `azure vm image list-offers` . Aşağıdaki örnekte olduğu gibi konumu ve yayımcıyı geçirin:
-
-```azurecli
-az vm image list-offers --location westus --publisher Canonical --output table
-```
-
-Çıkış:
-
-```output
-Location    Name
-----------  -------------------------
-westus      Ubuntu15.04Snappy
-westus      Ubuntu15.04SnappyDocker
-westus      UbunturollingSnappy
-westus      UbuntuServer
-westus      Ubuntu_Core
-```
-Batı ABD bölgesinde, kurallı olarak *Ubuntuserver* teklifini Azure üzerinde yayımladığında görürsünüz. Peki bunların SKU’su ne? Bu değerleri almak için, öğesini çalıştırın `azure vm image list-skus` ve bulduğunuz konum, yayımcı ve teklifi ayarlayın:
-
-```azurecli
-az vm image list-skus --location westus --publisher Canonical --offer UbuntuServer --output table
-```
-
-Çıkış:
-
-```output
-Location    Name
-----------  -----------------
-westus      12.04.3-LTS
-westus      12.04.4-LTS
-westus      12.04.5-LTS
-westus      14.04.0-LTS
-westus      14.04.1-LTS
-westus      14.04.2-LTS
-westus      14.04.3-LTS
-westus      14.04.4-LTS
-westus      14.04.5-DAILY-LTS
-westus      14.04.5-LTS
-westus      16.04-DAILY-LTS
-westus      16.04-LTS
-westus      16.04.0-LTS
-westus      18.04-DAILY-LTS
-westus      18.04-LTS
-westus      18.10
-westus      18.10-DAILY
-westus      19.04-DAILY
-```
-
-Son olarak, `az vm image list` ISTEDIĞINIZ SKU 'nun belirli bir sürümünü bulmak için komutunu kullanın, örneğin, *18,04-LTS*:
-
-```azurecli
-az vm image list --location westus --publisher Canonical --offer UbuntuServer --sku 18.04-LTS --all --output table
-```
-
-Kısmi çıkış:
-
-```output
-Offer         Publisher    Sku        Urn                                               Version
-------------  -----------  ---------  ------------------------------------------------  ---------------
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201804262  18.04.201804262
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201805170  18.04.201805170
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201805220  18.04.201805220
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201806130  18.04.201806130
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201806170  18.04.201806170
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201807240  18.04.201807240
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201808060  18.04.201808060
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201808080  18.04.201808080
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201808140  18.04.201808140
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201808310  18.04.201808310
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201809110  18.04.201809110
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201810030  18.04.201810030
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201810240  18.04.201810240
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201810290  18.04.201810290
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201811010  18.04.201811010
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201812031  18.04.201812031
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201812040  18.04.201812040
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201812060  18.04.201812060
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201901140  18.04.201901140
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201901220  18.04.201901220
-...
-```
-
-Artık, URN değerini göz önünde bulundurularak kullanmak istediğiniz görüntüyü tam olarak seçebilirsiniz. `--image` [Az VM Create](/cli/azure/vm) komutuyla bir VM oluşturduğunuzda bu değeri parametresiyle geçirin. İsteğe bağlı olarak URN 'deki sürüm numarasını "en son" ile değiştirebileceğinizi unutmayın. Bu sürüm, her zaman görüntünün en son sürümüdür. 
+`--image` [Az VM Create](/cli/azure/vm) komutuyla bir VM oluşturduğunuzda, urn sütununun bu değerini parametresiyle geçirin. Ayrıca, yalnızca görüntünün en son sürümünü kullanmak için URN 'deki sürüm numarasını "en son" ile değiştirebilirsiniz. 
 
 Bir sanal makineyi Kaynak Yöneticisi şablonuyla dağıtırsanız, görüntü parametrelerini özelliklerde tek tek ayarlarsınız `imageReference` . Bkz. [şablon başvurusu](/azure/templates/microsoft.compute/virtualmachines).
 
-[!INCLUDE [virtual-machines-common-marketplace-plan](../../../includes/virtual-machines-common-marketplace-plan.md)]
 
-### <a name="view-plan-properties"></a>Plan özelliklerini görüntüle
+## <a name="check-the-purchase-plan-information"></a>Satın alma planı bilgilerini denetleyin
 
-Bir görüntünün satın alma planı bilgilerini görüntülemek için [az VM Image Show](/cli/azure/image) komutunu çalıştırın. `plan`Çıktıda özelliği yoksa `null` , görüntü, programlı dağıtımdan önce kabul etmeniz gereken koşulları içerir.
+Azure Marketi 'ndeki bazı sanal makine görüntülerinin, programlama yoluyla dağıtmadan önce kabul etmeniz gereken ek lisans ve satın alma koşulları vardır.  
+
+Bu tür bir görüntüden bir VM dağıtmak için, her abonelik için bir kez ilk kez kullandığınızda görüntünün koşullarını kabul etmeniz gerekir. Ayrıca, bu görüntüden bir VM dağıtmak için *satın alma planı* parametreleri belirtmeniz gerekir
+
+Bir görüntünün satın alma planı bilgilerini görüntülemek için [az VM Image Show](/cli/azure/image) komutunu görüntünün urn 'si ile çalıştırın. `plan`Çıktıda özelliği yoksa `null` , görüntü, programlı dağıtımdan önce kabul etmeniz gereken koşulları içerir.
 
 Örneğin, kurallı Ubuntu Server 18,04 LTS görüntüsünün ek terimleri yoktur, çünkü `plan` bilgiler şu şekilde olur `null` :
 
@@ -342,7 +166,7 @@ az vm image show --location westus --urn Canonical:UbuntuServer:18.04-LTS:latest
 }
 ```
 
-BitNami görüntüsü tarafından Minbbitmq sertifikalı benzer bir komutun çalıştırılması aşağıdaki `plan` özellikleri gösterir: `name` , `product` ve `publisher` . (Bazı görüntülerin bir özelliği de vardır `promotion code` .) Bu görüntüyü dağıtmak için, koşulları kabul etmek ve programlı dağıtımı etkinleştirmek için aşağıdaki bölümlere bakın.
+BitNami görüntüsü tarafından Minbbitmq sertifikalı benzer bir komutun çalıştırılması aşağıdaki `plan` özellikleri gösterir: `name` , `product` ve `publisher` . (Bazı görüntülerin bir özelliği de vardır `promotion code` .) 
 
 ```azurecli
 az vm image show --location westus --urn bitnami:rabbitmq:rabbitmq:latest
@@ -367,12 +191,14 @@ az vm image show --location westus --urn bitnami:rabbitmq:rabbitmq:latest
 }
 ```
 
+Bu görüntüyü dağıtmak için, bu görüntüyü kullanarak bir VM dağıtırken koşulları kabul etmeniz ve satın alma planı parametrelerini sağlamanız gerekir.
+
 ## <a name="accept-the-terms"></a>Koşulları kabul edin
 
-Lisans koşullarını görüntülemek ve kabul etmek için [az VM Image Accept-terms](/cli/azure/vm/image?) komutunu kullanın. Koşulları kabul ettiğinizde, aboneliğinizde programlı dağıtımı etkinleştirirsiniz. Her görüntü için abonelik başına koşulları kabul etmeniz yeterlidir. Örnek:
+Lisans koşullarını görüntülemek ve kabul etmek için [az VM Image Accept-terms](/cli/azure/vm/image/terms) komutunu kullanın. Koşulları kabul ettiğinizde, aboneliğinizde programlı dağıtımı etkinleştirirsiniz. Her görüntü için abonelik başına koşulları kabul etmeniz yeterlidir. Örnek:
 
 ```azurecli
-az vm image accept-terms --urn bitnami:rabbitmq:rabbitmq:latest
+az vm image terms show --urn bitnami:rabbitmq:rabbitmq:latest
 ``` 
 
 Çıktı, `licenseTextLink` lisans koşullarına bir içerir ve değerinin şu olduğunu gösterir `accepted` `true` :
@@ -393,6 +219,75 @@ az vm image accept-terms --urn bitnami:rabbitmq:rabbitmq:latest
   "type": "Microsoft.MarketplaceOrdering/offertypes"
 }
 ```
+
+Koşulları kabul etmek için şunu yazın:
+
+```azurecli
+az vm image terms accept --urn bitnami:rabbitmq:rabbitmq:latest
+``` 
+
+## <a name="deploy-a-new-vm-using-the-image-parameters"></a>Görüntü parametrelerini kullanarak yeni bir VM dağıtma
+
+Görüntüyle ilgili bilgilerle, komutunu kullanarak dağıtımı yapabilirsiniz `az vm create` . 
+
+En son Ubuntu Server 18,04 görüntüsü gibi plan bilgilerine sahip olmayan bir görüntü dağıtmak için URN 'yi geçirin `--image` :
+
+```azurecli-interactive
+az group create --name myURNVM --location westus
+az vm create \
+   --resource-group myURNVM \
+   --name myVM \
+   --admin-username azureuser \
+   --generate-ssh-keys \
+   --image Canonical:UbuntuServer:18.04-LTS:latest 
+```
+
+
+BitNami görüntüsü tarafından verilen Kbbitmq sertifikalı gibi satın alma planı parametrelerine sahip bir görüntü için, URN 'yi geçirirsiniz `--image` ve satın alma planı parametrelerini de sağlarsınız:
+
+```azurecli
+az group create --name myPurchasePlanRG --location westus
+
+az vm create \
+   --resource-group myPurchasePlanRG \
+   --name myVM \
+   --admin-username azureuser \
+   --generate-ssh-keys \
+   --image bitnami:rabbitmq:rabbitmq:latest \
+   --plan-name rabbitmq \
+   --plan-product rabbitmq \
+   --plan-publisher bitnami
+```
+
+Görüntü koşullarını kabul etme hakkında bir ileti alırsanız, bölümü gözden geçirin [Koşulları kabul edin](#accept-the-terms). Çıkışının, `az vm image accept-terms` görüntünün şartlarını kabul ettiğinizi gösteren değeri döndürdüğünden emin olun `"accepted": true,` .
+
+
+## <a name="using-an-existing-vhd-with-purchase-plan-information"></a>Satın alma planı bilgileriyle mevcut bir VHD 'YI kullanma
+
+Ücretli bir Azure Marketi görüntüsü kullanılarak oluşturulmuş bir VM 'den mevcut bir VHD varsa, bu VHD 'den yeni bir VM oluşturduğunuzda satın alma planı bilgilerini sağlamanız gerekebilir. 
+
+Hala orijinal VM veya aynı Market görüntüsü kullanılarak oluşturulmuş başka bir VM varsa, [az VM Get-instance-View](/cli/azure/vm#az_vm_get_instance_view)kullanarak bu bilgisayardan plan adı, yayımcı ve ürün bilgilerini alabilirsiniz. Bu örnek *Myresourcegroup* kaynak grubundaki *myvm* adlı bir VM 'yi alır ve ardından satın alma planı bilgilerini görüntüler.
+
+```azurepowershell-interactive
+az vm get-instance-view -g myResourceGroup -n myVM --query plan
+```
+
+Özgün VM silinmeden önce plan bilgilerini almadıysanız, bir [destek isteği](https://ms.portal.azure.com/#create/Microsoft.Support)dosyası gönderebilirsiniz. Bu, VM adı, abonelik KIMLIĞI ve silme işleminin zaman damgasına ihtiyaç duyar.
+
+Plan bilgilerine sahip olduktan sonra, `--attach-os-disk` VHD 'yi belirtmek için parametresini kullanarak yenı VM 'yi oluşturabilirsiniz.
+
+```azurecli-interactive
+az vm create \
+  --resource-group myResourceGroup \
+  --name myNewVM \
+  --nics myNic \
+  --size Standard_DS1_v2 --os-type Linux \
+  --attach-os-disk myVHD \
+  --plan-name planName \
+  --plan-publisher planPublisher \
+  --plan-product planProduct 
+```
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Görüntü bilgilerini kullanarak hızlı bir şekilde sanal makine oluşturmak için bkz. [Azure CLI Ile Linux VM 'Leri oluşturma ve yönetme](tutorial-manage-vm.md).

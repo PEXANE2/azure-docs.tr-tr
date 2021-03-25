@@ -9,14 +9,14 @@ author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.date: 10/02/2020
-ms.openlocfilehash: 0ce9575f078058c821ffffe1b9fe45eed5a4ad94
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 22411e5a80f555a3ead05d39466a7a175923d9bc
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101724186"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105104675"
 ---
-* [Platform ayarlarını yapılandırma](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app#configure-platform-settings) adım 4 ' te uygun platformu seçtikten sonra, arka planda **yeniden yönlendirme URI 'Leri** ve **erişim belirteçlerinizi** Kullanıcı arabiriminin sağına doğru yapılandırın.
+* [Platform ayarlarını yapılandırma](../articles/active-directory/develop/quickstart-register-app.md#configure-platform-settings) adım 4 ' te uygun platformu seçtikten sonra, arka planda **yeniden yönlendirme URI 'Leri** ve **erişim belirteçlerinizi** Kullanıcı arabiriminin sağına doğru yapılandırın.
 
     * **Yeniden yönlendirme URI 'leri** , kimlik doğrulama isteği tarafından sağlanan adresle eşleşmelidir:
 
@@ -41,4 +41,4 @@ ms.locfileid: "101724186"
 
     [![Uygulamanızın gerektirdiği API izninin türünü belirtin](media/time-series-insights-aad-registration/active-directory-app-permission-grant.png)](media/time-series-insights-aad-registration/active-directory-app-permission-grant.png#lightbox)
 
-* Uygulama ortamınızın API 'lerinizi kendisi olarak çağırmak için [kimlik bilgilerini ekleyin](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app#add-credentials) . Kimlik bilgileri, uygulamanızın çalışma zamanında Kullanıcı etkileşimi gerektirmeksizin kendisi olarak kimlik doğrulaması yapmasına olanak sağlar.
+* Uygulama ortamınızın API 'lerinizi kendisi olarak çağırmak için [kimlik bilgilerini ekleyin](../articles/active-directory/develop/quickstart-register-app.md#add-credentials) . Kimlik bilgileri, uygulamanızın çalışma zamanında Kullanıcı etkileşimi gerektirmeksizin kendisi olarak kimlik doğrulaması yapmasına olanak sağlar.

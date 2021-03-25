@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
-ms.openlocfilehash: 417819cad3bc2ee258381426dfcee7c800b69d42
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fb57992c8e26560061faf68443c4993801f9713d
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98929182"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871580"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Azure HDInsight 'ta Apache Storm topolojileri dağıtma ve yönetme
 
@@ -43,7 +43,7 @@ Visual Studio için Data Lake araçlarını kullanarak, fırtınası kümenize C
 
 1. Yeni projeyi **yapılandırın** penceresinde, bir **Proje adı** girin ve ' a gidin veya yeni projenin kaydedileceği **konumu** oluşturun. Ardından **Oluştur**’u seçin.
 
-    ![Yeni proje pencerenizi, Visual Studio 'yu yapılandırın](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-sample1.png)
+    :::image type="content" source="./media/apache-storm-deploy-monitor-topology-linux/apache-storm-sample1.png" alt-text="Yeni proje pencerenizi, Visual Studio 'yu yapılandırın" border="true":::
 
 1. **Sunucu Gezgini**, **Azure** ' a sağ tıklayın ve **Microsoft Azure aboneliğine Bağlan...** öğesini seçin ve oturum açma işlemini doldurun.
 
@@ -83,7 +83,7 @@ Nimbus hizmetini kullanarak bir topolojiyi programlı bir şekilde dağıtabilir
 
 Visual Studio kullanarak bir topoloji gönderdiğinizde, **fırtınası topolojileri görünümü** penceresi görüntülenir. Çalışan topoloji hakkındaki bilgileri görüntülemek için listeden topolojiyi seçin.
 
-![İzleyici topolojisi, fırtınası topolojileri Görünüm penceresi, Visual Studio](./media/apache-storm-deploy-monitor-topology-linux/visual-studio-monitor.png)
+:::image type="content" source="./media/apache-storm-deploy-monitor-topology-linux/visual-studio-monitor.png" alt-text="İzleyici topolojisi, fırtınası topolojileri Görünüm penceresi, Visual Studio" border="true":::
 
 > [!NOTE]  
 > Ayrıca, **Sunucu Gezgini** karşı **fırtınası topolojilerini** görüntüleyebilirsiniz. **Azure**  >  **HDInsight**' ı genişletin, HDInsight kümesinde bir fırtınası ' a sağ tıklayın ve ardından **fırtınası topolojilerini görüntüle**' yi seçin.
@@ -169,7 +169,7 @@ Fırtınası Kullanıcı arabirimi, çalışan topolojilerle çalışmaya yönel
 
 Fırtınası Kullanıcı arabiriminin ana sayfası aşağıdaki bilgileri sağlar:
 
-| Section | Description |
+| Section | Açıklama |
 | --- | --- |
 | Küme özeti| Fırtınası kümesiyle ilgili temel bilgiler. |
 | Nimbus Özeti | Temel Nimbus bilgilerinin listesi. |
@@ -179,13 +179,13 @@ Fırtınası Kullanıcı arabiriminin ana sayfası aşağıdaki bilgileri sağla
 
 Fırtınası Kullanıcı arabirimi ana sayfası bu Web sayfasına benzer şekilde görünür:
 
-![Ana sayfa, fırtınası Kullanıcı arabirimi, Apache Storm topolojileri, Azure](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-main-page.png)
+:::image type="content" source="./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-main-page.png" alt-text="Ana sayfa, fırtınası Kullanıcı arabirimi, Apache Storm topolojileri, Azure" border="true":::
 
 #### <a name="topology-summary"></a>Topoloji Özeti
 
 **Topoloji Özeti** bölümünden bir bağlantı seçmek topolojiyle ilgili aşağıdaki bilgileri görüntüler:
 
-| Section | Description |
+| Section | Açıklama |
 | --- | --- |
 | Topoloji Özeti | Topolojiyle ilgili temel bilgiler. |
 | Topoloji eylemleri| Topoloji için yapabileceğiniz yönetim eylemleri. Kullanılabilir eylemler, bu bölümün ilerleyen kısımlarında açıklanmıştır. |
@@ -198,11 +198,11 @@ Fırtınası Kullanıcı arabirimi ana sayfası bu Web sayfasına benzer şekild
 
 Fırtınası topolojisi Özet sayfası, bu Web sayfasına benzer şekilde görünür:
 
-![Topoloji Özet sayfası, fırtınası Kullanıcı arabirimi, Apache Storm, Azure](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-topology-summary.png)
+:::image type="content" source="./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-topology-summary.png" alt-text="Topoloji Özet sayfası, fırtınası Kullanıcı arabirimi, Apache Storm, Azure" border="true":::
 
 **Topoloji eylemleri** bölümünde, bir eylem yapmak için aşağıdaki düğmeleri seçebilirsiniz:
 
-| Düğme | Description |
+| Düğme | Açıklama |
 | --- | --- |
 | Etkinleştir | Devre dışı bırakılan bir topoloji işlemeyi sürdürür. |
 | Devre dışı bırak | Çalışan bir topolojiyi duraklatır. |
@@ -216,7 +216,7 @@ Fırtınası topolojisi Özet sayfası, bu Web sayfasına benzer şekilde görü
 
 **Spout** veya **cıvatalar** bölümlerinden bir biriktirmede seçim yapmak seçili öğeyle ilgili aşağıdaki bilgileri görüntüler:
 
-| Section | Description |
+| Section | Açıklama |
 | --- | --- |
 | Bileşen Özeti | Spout veya cıvam hakkındaki temel bilgiler. |
 | Bileşen eylemleri | **Hata Ayıkla ve** **Hata Ayıkla** düğmeleri. |
@@ -229,7 +229,7 @@ Fırtınası topolojisi Özet sayfası, bu Web sayfasına benzer şekilde görü
 
 Fırtınası Özeti sayfası, bu Web sayfasına benzer şekilde görünür:
 
-![Cıvata Özet sayfası, fırtınası Kullanıcı arabirimi, Apache Storm, Azure](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-bolt-summary.png)
+:::image type="content" source="./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-bolt-summary.png" alt-text="Cıvata Özet sayfası, fırtınası Kullanıcı arabirimi, Apache Storm, Azure" border="true":::
 
 ## <a name="monitor-and-manage-the-topology-using-the-rest-api"></a>REST API kullanarak topolojiyi izleyin ve yönetin
 
@@ -246,7 +246,7 @@ Linux tabanlı HDInsight kümelerinde REST API için temel URI, `https://HEADNOD
 
 Küme baş düğümü için tam etki alanı adını (FQDN) çeşitli yollarla bulabilirsiniz:
 
-| FQDN bulma yöntemi | Description |
+| FQDN bulma yöntemi | Açıklama |
 | --- | --- |
 | SSH oturumu | `headnode -f`Kümeden BIR SSH oturumunda komutunu kullanın. |
 | Ambarı web | Ambarı küme Web sayfasında ( `https://CLUSTERNAME.azurehdinsight.net` ), sayfanın üst kısmından **Hizmetler** ' i seçin ve ardından **fırtınası**' yi seçin. **Özet** sekmesinden, **fırtınası Kullanıcı arabirimi sunucusu**' nu seçin. Fırtınası Kullanıcı arabirimini barındıran düğümün FQDN 'SI ve REST API sayfanın en üstünde görüntülenir. |
