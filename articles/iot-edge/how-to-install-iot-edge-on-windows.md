@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 94c3917b0912835799818597f94f3880ea3a7639
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: c291bb701aca385a11631504f1a312b25cced633
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889544"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045680"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>Windows cihazı üzerinde Linux için Azure IoT Edge'i yükleme ve sağlama (Önizleme)
 
@@ -370,4 +370,6 @@ Windows üzerinde Linux için IoT Edge IoT Edge cihazınıza başarıyla yüklen
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Modülleri cihazınıza dağıtmayı öğrenmek için [IoT Edge modüllerini dağıtmaya](how-to-deploy-modules-portal.md) devam edin.
+* Modülleri cihazınıza dağıtmayı öğrenmek için [IoT Edge modüllerini dağıtmaya](how-to-deploy-modules-portal.md) devam edin.
+* [Windows sanal makinesinde Linux için IoT Edge sertifikaları yönetmeyi](how-to-manage-device-certificates.md) ve konak Işletim sisteminden Linux sanal makinenize dosya aktarmayı öğrenin.
+* [IoT Edge cihazlarınızı bir ara sunucu üzerinden iletişim kurmak üzere nasıl yapılandıracağınızı](how-to-configure-proxy-support.md)öğrenin.

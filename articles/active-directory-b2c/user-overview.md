@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c42b79cb8b92b5f96f31eb58f091ff0ce79b84f5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: b2c-support
+ms.openlocfilehash: f2473955db5439911280360b169f469b8c93eb93
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101652139"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043606"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Azure Active Directory B2C Kullanıcı hesaplarına genel bakış
 
@@ -36,7 +37,8 @@ Aşağıdaki hesap türleri kullanılabilir:
 
 Yeni bir iş hesabı eklediğinizde aşağıdaki yapılandırma ayarlarını göz önünde bulundurmanız gerekir:
 
-- **Ad** ve **Kullanıcı adı** - **Name** özelliği, kullanıcının verilen ve soyadını içerir. **Kullanıcı adı** , kullanıcının oturum açmak için girdiği tanıtıcıdır. Kullanıcı adı, tam etki alanını içerir. Kullanıcı adının etki alanı adı bölümü, ilk varsayılan etki alanı adı *Your-Domain.onmicrosoft.com* veya *contoso.com* gibi doğrulanmış, Federasyon dışı bir [özel etki alanı](../active-directory/fundamentals/add-custom-domain.md) adı olmalıdır.
+- **Ad** ve **Kullanıcı adı** - **Name** özelliği, kullanıcının verilen ve soyadını içerir. **Kullanıcı adı** , kullanıcının oturum açmak için girdiği tanıtıcıdır. Kullanıcı adı, tam etki alanını içerir. Kullanıcı adının etki alanı adı bölümü, ilk varsayılan etki alanı adı *Your-Domain.onmicrosoft.com* veya *contoso.com* gibi doğrulanmış, Federasyon dışı bir [özel etki alanı](../active-directory/fundamentals/add-custom-domain.md) adı olmalıdır. 
+- **E-posta** -Yeni Kullanıcı bir e-posta adresi kullanarak da oturum açabilir. E-postada, örneğin Japonca karakterlerle özel karakter veya çok baytlı karakterler desteklemiyoruz.
 - **Profil** -hesap, Kullanıcı verileri profiliyle ayarlanır. Ad, soyadı, iş unvanı ve bölüm adı girme şansınız vardır. Hesap oluşturulduktan sonra profili düzenleyebilirsiniz.
 - **Gruplar** -tek seferde birçok kullanıcıya veya cihaza lisans veya izin atama gibi yönetim görevlerini gerçekleştirmek için grupları kullanın. Yeni hesabı kiracınızdaki mevcut bir [gruba](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) koyabilirsiniz.
 - **Dizin rolü** -Kullanıcı hesabının kiracınızdaki kaynaklara sahip olduğu erişim düzeyini belirtmeniz gerekir. Aşağıdaki izin düzeyleri kullanılabilir:

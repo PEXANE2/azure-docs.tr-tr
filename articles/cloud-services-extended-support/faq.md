@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 4db23982dfaed1447023edb417a3732dac94bdc4
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 9cac6cdd8e68af77b611c89e8b62e6f8d8845fd0
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105025246"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107525"
 ---
 # <a name="frequently-asked-questions-for-azure-cloud-services-extended-support"></a>Azure Cloud Services (genişletilmiş destek) hakkında sık sorulan sorular
 Bu makalede, Azure Cloud Services ile ilgili sık sorulan sorular (genişletilmiş destek) yer almaktadır.
@@ -93,7 +93,7 @@ Hayır, bulut hizmeti (genişletilmiş destek) dağıtımları Cloud Services (k
 ### <a name="when-do-i-need-to-migrate"></a>Ne zaman geçiş yapmam gerekir? 
 Gerekli süreyi tahmin etme ve karmaşıklık geçişi, bir dizi değişkene bağlıdır. Planlama, çalışma kapsamını, engelleyiciler ve geçişin karmaşıklığını anlamak için en etkili adımdır.
 
-## <a name="networking"></a>Ağ
+## <a name="networking"></a>Ağ 
 
 ### <a name="why-cant-i-create-a-deployment-without-virtual-network"></a>Sanal ağ olmadan neden bir dağıtım oluşturamıyorum?
 Sanal ağlar, Azure Resource Manager dağıtım için gerekli bir kaynaktır. Cloud Services (genişletilmiş destek) dağıtımı bir sanal ağ içinde canlı olmalıdır. 
@@ -112,6 +112,9 @@ Müşteriler, sanal makinelerle ilişkili IP adresleri için faturalandırıldik
 
 ### <a name="can-i-use-a-dns-name-with-cloud-services-extended-support"></a>Cloud Services bir DNS adı kullanabilir miyim (genişletilmiş destek)? 
 Evet. Cloud Services (genişletilmiş destek), DNS adı da verilebilir. Azure Resource Manager, DNS etiketi, bulut hizmetine atanan genel IP adresinin isteğe bağlı bir özelliğidir. Azure Resource Manager tabanlı dağıtımlar için DNS adının biçimi `<userlabel>.<region>.cloudapp.azure.com`
+
+### <a name="can-i-update-or-change-the-virtual-network-reference-for-an-existing-cloud-service-extended-support"></a>Var olan bir bulut hizmeti (genişletilmiş destek) için sanal ağ başvurusunu güncelleştirebilir veya değiştirebilir miyim? 
+Hayır. Sanal ağ başvurusu, bir bulut hizmetinin oluşturulması sırasında zorunludur. Mevcut bir bulut hizmeti için, sanal ağ başvurusu değiştirilemez. Sanal ağ adres alanının kendisi VNet API 'Leri kullanılarak değiştirilebilir. 
 
 ## <a name="certificates--key-vault"></a>Sertifikalar & Key Vault
 

@@ -10,16 +10,16 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: f3da6fd75ac485a3e22a428934928795f1feae28
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 07aa1cb361f5f1853dbf93e5f4e064b1ed14f1de
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103487963"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105152781"
 ---
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
-**Hero örneğini çağıran** Azure Iletişim Hizmetleri grubu, bir grup çağırma deneyimi oluşturmak için Web istemcisi kitaplığı 'Nı çağıran iletişim hizmetlerinin nasıl kullanılabileceğini gösterir.
+**Hero örneğini çağıran** Azure Iletişim Hizmetleri grubu, bir grup çağırma deneyimi oluşturmak için Web SDK 'Sını çağıran iletişim hizmetleri 'nin nasıl kullanılabileceğini gösterir.
 
 Bu örnek hızlı başlangıçta, örneği yerel makinenizde çalıştırmadan önce örneğin nasıl çalıştığını öğreneceksiniz. Daha sonra Azure Iletişim Hizmetleri kaynaklarınızı kullanarak örneği Azure 'a dağıtırsınız.
 
@@ -96,7 +96,7 @@ Bir Iletişim Hizmetleri aboneliğini temizleyip kaldırmak istiyorsanız, kayna
 
 Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
-- [Çağıran istemci kitaplığını kullanma](../../quickstarts/voice-video-calling/calling-client-samples.md) hakkında bilgi edinin
+- [Çağıran SDK 'yı kullanma](../../quickstarts/voice-video-calling/calling-client-samples.md) hakkında bilgi edinin
 - [Nasıl çalıştığını çağırma](../../concepts/voice-video-calling/about-call-types.md) hakkında daha fazla bilgi edinin
 
 ### <a name="additional-reading"></a>Ek okuma

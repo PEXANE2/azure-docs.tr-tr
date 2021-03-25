@@ -3,12 +3,12 @@ title: Container Insights 'ı yapılandırma Prometheus tümleştirmesi | Micros
 description: Bu makalede, Kubernetes kümenizle birlikte Prometheus 'tan kapsayıcı içgörüleri aracısını nasıl yapılandırabileceğinizi açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: 8affeb472b9452e4d234e99e5ea6bb4509770fac
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 149cdc8613d5034989c7660608a29309353cdabe
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101731740"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109650"
 ---
 # <a name="configure-scraping-of-prometheus-metrics-with-container-insights"></a>Kapsayıcı öngörüleri ile Prometheus ölçümlerinin korumasını yapılandırın
 
@@ -48,7 +48,7 @@ Bir URL belirtildiğinde, kapsayıcı öngörüleri yalnızca uç noktayı Scrap
 |------|-----|-----------|-------|-------------|
 | Küme genelinde | | | | Ölçümler için atık uç noktalarına aşağıdaki üç yöntemden birini belirtin. |
 | | `urls` | Dize | Virgülle ayrılmış dizi | HTTP uç noktası (IP adresi veya geçerli URL yolu belirtildi). Örneğin: `urls=[$NODE_IP/metrics]`. ($NODE _IP, belirli bir kapsayıcı öngörüleri parametresidir ve düğüm IP adresi yerine kullanılabilir. Tümü büyük harf olmalıdır.) |
-| | `kubernetes_services` | Dize | Virgülle ayrılmış dizi | Kuin-State-ölçümlerini kullanarak bir Kubernetes hizmeti dizisi. Örneğin `kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics",http://my-service-dns.my-namespace:9100/metrics]`.|
+| | `kubernetes_services` | Dize | Virgülle ayrılmış dizi | Kuin-State-ölçümlerini kullanarak bir Kubernetes hizmeti dizisi. Tam etki alanı adlarının burada kullanılması gerekir. Örneğin `kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics",http://my-service-dns.my-namespace.svc.cluster.local:9100/metrics]`.|
 | | `monitor_kubernetes_pods` | Boole | true veya false | `true`, Küme genelinde ayarlar halinde olarak ayarlandığında, kapsayıcı öngörüleri Aracısı aşağıdaki Prometheus ek açıklamaları için tüm küme genelinde atık olarak çalışır:<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
 | | `prometheus.io/scrape` | Boole | true veya false | Pod 'un scraping öğesini sunar. `monitor_kubernetes_pods` olarak ayarlanmalıdır `true` . |
 | | `prometheus.io/scheme` | Dize | http veya https | Varsayılan olarak HTTP üzerinden atık yapılır. Gerekirse, olarak ayarlayın `https` . | 

@@ -144,6 +144,8 @@
           href: expressroute-howto-add-ipv6-powershell.md
     - name: İzleme
       items:
+        - name: Ağ İçgörüleri
+          href: expressroute-network-insights.md
         - name: 'ExpressRoute izleme, ölçümler ve uyarılar'
           href: expressroute-monitoring-metrics-alerts.md
         - name: ExpressRoute için Ağ Performansı İzleyicisi’ni Yapılandırma

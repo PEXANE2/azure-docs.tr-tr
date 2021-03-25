@@ -10,14 +10,14 @@ ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
 ms.author: lakshmans
-ms.openlocfilehash: f064e0c3ac00b4ab7aeb23356dd24fd89c91021e
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 727e2166bad7f0d8980ffe4fa18c292a206c37d7
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105105327"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110385"
 ---
-SMS mesajları göndermek için Iletişim Hizmetleri Python SMS istemci Kitaplığı ' nı kullanarak Azure Iletişim Hizmetleri ile çalışmaya başlayın.
+SMS mesajları göndermek için Iletişim Hizmetleri Python SMS SDK 'sını kullanarak Azure Iletişim Hizmetleri ile çalışmaya başlayın.
 
 Bu hızlı başlangıcı tamamlamak, Azure hesabınızda birkaç ABD Doları veya daha kısa bir ücret doğurur.
 
@@ -62,7 +62,7 @@ except Exception as ex:
 
 ### <a name="install-the-package"></a>Paketi yükler
 
-Hala uygulama dizininde, komutunu kullanarak Python paketi için Azure Iletişim Hizmetleri SMS istemci Kitaplığı ' nı da yükleyebilirsiniz `pip install` .
+Hala uygulama dizininde, komutunu kullanarak Python paketi için Azure Communication Services SMS SDK 'sını yükleyebilirsiniz `pip install` .
 
 ```console
 pip install azure-communication-sms --pre
@@ -70,7 +70,7 @@ pip install azure-communication-sms --pre
 
 ## <a name="object-model"></a>Nesne modeli
 
-Aşağıdaki sınıflar ve arabirimler, Python için Azure Iletişim Hizmetleri SMS istemci kitaplığı 'nın bazı önemli özelliklerinden bazılarını işler.
+Aşağıdaki sınıflar ve arabirimler, Python için Azure Communication Services SMS SDK 'sının önemli özelliklerinden bazılarını işler.
 
 | Ad                                  | Açıklama                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
@@ -79,16 +79,14 @@ Aşağıdaki sınıflar ve arabirimler, Python için Azure Iletişim Hizmetleri 
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
-Bağlantı dizeniz ile bir **SmsClient** örneği oluşturun. Aşağıdaki kod, adlı bir ortam değişkeninden kaynak için bağlantı dizesini alır `COMMUNICATION_SERVICES_CONNECTION_STRING` . [Kaynak bağlantı dizesini yönetme](../../create-communication-resource.md#store-your-connection-string)hakkında bilgi edinin.
+Bağlantı dizeniz ile bir **SmsClient** örneği oluşturun. [Kaynak bağlantı dizesini yönetme](../../create-communication-resource.md#store-your-connection-string)hakkında bilgi edinin.
 
 ```python
-# This code demonstrates how to fetch your connection string
-# from an environment variable.
-connection_string = os.getenv('COMMUNICATION_SERVICES_CONNECTION_STRING')
-
 # Create the SmsClient object which will be used to send SMS messages
-sms_client = SmsClient.from_connection_string(connection_string)
+sms_client = SmsClient.from_connection_string(<connection_string>)
 ```
+Kolaylık olması için bu hızlı başlangıçta bağlantı dizeleri kullanıyoruz, ancak üretim ortamlarında daha güvenli ve ölçeklenebilir olduklarından, [Yönetilen kimlikler](../../../quickstarts/managed-identity.md) kullanmanızı öneririz.
+
 
 ## <a name="send-a-11-sms-message"></a>1:1 SMS Iletisi gönder
 
@@ -107,6 +105,9 @@ sms_responses = sms_client.send(
 ```
 
 `<from-phone-number>`İletişim hizmetinize ve `<to-phone-number>` ileti göndermek istediğiniz telefon numarasıyla ILIŞKILI bir SMS etkin telefon numarasıyla değiştirmelisiniz. 
+
+> [!WARNING]
+> Telefon numaralarının E. 164 uluslararası standart biçiminde sağlanması gerektiğini unutmayın. (ör: + 12223334444).
 
 ## <a name="send-a-1n-sms-message"></a>1: N SMS Iletisi gönder
 
@@ -133,9 +134,31 @@ sms_responses = sms_client.send(
 `tag`Parametresi, özel etiketleme yapılandırmak için kullanabileceğiniz isteğe bağlı bir parametredir.
 
 ## <a name="run-the-code"></a>Kodu çalıştırma
-
 Uygulamayı komut ile uygulama dizininizden çalıştırın `python` .
 
 ```console
 python send-sms.py
+```
+
+Tüm Python betiği şöyle görünmelidir:
+
+```python
+
+import os
+from azure.communication.sms import SmsClient
+
+try:
+    # Create the SmsClient object which will be used to send SMS messages
+    sms_client = SmsClient.from_connection_string("<connection string>")
+    # calling send() with sms values
+    sms_responses = sms_client.send(
+       from_="<from-phone-number>",
+       to="<to-phone-number>",
+       message="Hello World via SMS",
+       enable_delivery_report=True, # optional property
+       tag="custom-tag") # optional property
+
+except Exception as ex:
+    print('Exception:')
+    print(ex)
 ```

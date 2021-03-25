@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: virtual-machines-windows
 ms.collection: windows
 ms.subservice: imaging
-ms.openlocfilehash: 01b253747791fc29abf4434bebfd85865099f9ee
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 69718b219d239ac13e5d932b05a7dd29619adaa3
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103602027"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045595"
 ---
 # <a name="create-a-windows-virtual-desktop-image-using-azure-vm-image-builder-and-powershell"></a>Azure VM Image Builder ve PowerShell kullanarak Windows sanal masaüstü görüntüsü oluşturma
 
@@ -22,11 +22,11 @@ Bu makalede, bu özelleştirmelerle bir Windows sanal masaüstü görüntüsün�
 
 * [Fslogix](https://github.com/DeanCefola/Azure-WVD/blob/master/PowerShell/FSLogixSetup.ps1)yükleniyor.
 * Topluluk deposundan bir [Windows sanal masaüstü iyileştirmesi betiği](https://github.com/The-Virtual-Desktop-Team/Virtual-Desktop-Optimization-Tool) çalıştırma.
-* [Microsoft ekipleri](https://docs.microsoft.com/azure/virtual-desktop/teams-on-wvd)'nı yükler.
-* [Yeniden başlat](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-json?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fbreadcrumb%2Ftoc.json#windows-restart-customizer)
-* [Windows Update](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-json?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fbreadcrumb%2Ftoc.json#windows-update-customizer) Çalıştır
+* [Microsoft ekipleri](../../virtual-desktop/teams-on-wvd.md)'nı yükler.
+* [Yeniden başlat](../linux/image-builder-json.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#windows-restart-customizer)
+* [Windows Update](../linux/image-builder-json.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#windows-update-customizer) Çalıştır
 
-Bunu Azure VM görüntü Oluşturucu kullanarak nasıl otomatikleştirebileceğinizi ve görüntüyü diğer bölgelere çoğaltabileceğiniz, ölçeği denetleyebildiğiniz ve kuruluşunuzun içindeki ve dışındaki görüntüyü paylaştığınız [paylaşılan bir görüntü galerisine](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)nasıl dağıtacağınızı göstereceğiz.
+Bunu Azure VM görüntü Oluşturucu kullanarak nasıl otomatikleştirebileceğinizi ve görüntüyü diğer bölgelere çoğaltabileceğiniz, ölçeği denetleyebildiğiniz ve kuruluşunuzun içindeki ve dışındaki görüntüyü paylaştığınız [paylaşılan bir görüntü galerisine](../shared-image-galleries.md)nasıl dağıtacağınızı göstereceğiz.
 
 
 Bu örnek, bir görüntü Oluşturucu yapılandırmasını dağıtmak için, içinde iç içe geçmiş görüntü Oluşturucu şablonuyla bir Azure Resource Manager şablonu kullanır. Bu, değişkenler ve parametre girişleri gibi bazı diğer avantajlar sağlar. Ayrıca komut satırından parametreleri geçirebilirsiniz.
@@ -73,7 +73,7 @@ Bu makalenin bir kopyalama ve yapıştırma alıştırması olması amaçlanmı�
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-En son Azure PowerShell cmdlet 'Lerinin yüklü olması gerekir, Yükleme ayrıntıları için [buraya](https://docs.microsoft.com/powershell/azure/overview) bakın.
+En son Azure PowerShell cmdlet 'Lerinin yüklü olması gerekir, Yükleme ayrıntıları için [buraya](/powershell/azure/overview) bakın.
 
 ```PowerShell
 # Register for Azure Image Builder Feature
@@ -279,7 +279,7 @@ $getStatus.LastRunStatusMessage
 $getStatus.LastRunStatusRunSubState
 ```
 ## <a name="create-a-vm"></a>VM oluşturma
-Artık derleme tamamlanmıştır, görüntüden bir VM oluşturabilirsiniz, [buradan](https://docs.microsoft.com/powershell/module/az.compute/new-azvm#examples)örnekleri kullanın.
+Artık derleme tamamlanmıştır, görüntüden bir VM oluşturabilirsiniz, [buradan](/powershell/module/az.compute/new-azvm#examples)örnekleri kullanın.
 
 ## <a name="clean-up"></a>Temizleme
 

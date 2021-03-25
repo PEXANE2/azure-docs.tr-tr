@@ -10,14 +10,14 @@ ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
 ms.author: peiliu
-ms.openlocfilehash: 96cdeb7c35cd1ccd503f7ce01e1098a6b83884c3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: caca5f5a05a136248f7453337629fdd2b22f956a
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103622251"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110391"
 ---
-SMS mesajları göndermek için Iletişim Hizmetleri C# SMS istemci Kitaplığı ' nı kullanarak Azure Iletişim Hizmetleri ile çalışmaya başlayın.
+SMS mesajları göndermek için Iletişim Hizmetleri C# SMS SDK 'sını kullanarak Azure Iletişim Hizmetleri ile çalışmaya başlayın.
 
 Bu hızlı başlangıcı tamamlamak, Azure hesabınızda birkaç ABD Doları veya daha kısa bir ücret doğurur.
 
@@ -28,13 +28,13 @@ Bu hızlı başlangıcı tamamlamak, Azure hesabınızda birkaç ABD Doları vey
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- İşletim sisteminiz için en son sürüm [.NET Core istemci kitaplığı](https://dotnet.microsoft.com/download/dotnet-core) .
+- İşletim sisteminiz için en son sürüm [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core) .
 - Etkin bir Iletişim Hizmetleri kaynağı ve bağlantı dizesi. [Iletişim Hizmetleri kaynağı oluşturun](../../create-communication-resource.md).
 - SMS etkin telefon numarası. [Telefon numarası alın](../get-phone-number.md).
 
 ### <a name="prerequisite-check"></a>Önkoşul denetimi
 
-- Bir Terminal veya komut penceresinde, `dotnet` .NET istemci kitaplığı 'nın yüklü olup olmadığını denetlemek için komutunu çalıştırın.
+- Bir Terminal veya komut penceresinde, `dotnet` .NET SDK 'nın yüklü olup olmadığını denetlemek için komutunu çalıştırın.
 - Iletişim Hizmetleri kaynağınız ile ilişkili telefon numaralarını görüntülemek için [Azure Portal](https://portal.azure.com/)oturum açın, iletişim hizmetleri kaynağınızı bulun ve sol gezinti bölmesinden **telefon numaraları** sekmesini açın.
 
 ## <a name="setting-up"></a>Ayarlanıyor
@@ -56,7 +56,7 @@ dotnet build
 
 ### <a name="install-the-package"></a>Paketi yükler
 
-Hala uygulama dizininde, komutunu kullanarak .NET için Azure Iletişim Hizmetleri SMS istemci Kitaplığı ' nı yükleyebilirsiniz `dotnet add package` .
+Hala uygulama dizininde, komutunu kullanarak .NET için Azure Communication Services SMS SDK 'sını yükleyebilirsiniz `dotnet add package` .
 
 ```console
 dotnet add package Azure.Communication.Sms --version 1.0.0-beta.4
@@ -77,7 +77,7 @@ using Azure.Communication.Sms;
 
 ## <a name="object-model"></a>Nesne modeli
 
-Aşağıdaki sınıflar ve arabirimler, C# için Azure Iletişim Hizmetleri SMS istemci kitaplığı 'nın bazı önemli özelliklerinden bazılarını işler.
+Aşağıdaki sınıflar ve arabirimler, C# için Azure Communication Services SMS SDK 'sının önemli özelliklerinden bazılarını işler.
 
 | Ad                                       | Açıklama                                                                                                                                                       |
 | ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |

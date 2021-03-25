@@ -4,23 +4,23 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: bf00b0829868b7099579c1a35113dbca1741cfe3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 443595a52458d7ff7c168f4c120257cfb60fad2e
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495920"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110907"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/dotnet/).
-- İşletim sisteminiz için en son sürüm [.NET Core istemci kitaplığı](https://dotnet.microsoft.com/download/dotnet-core) .
-- [.NET Identity istemci kitaplığının](/dotnet/api/azure.identity)en son sürümünü alın.
-- [.Net Management istemci kitaplığının](../../concepts/sdk-options.md)en son sürümünü alın.
+- İşletim sisteminiz için en son sürüm [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core) .
+- [.NET Identity SDK 'sının](/dotnet/api/azure.identity)en son sürümünü alın.
+- [.NET Yönetim SDK 'sının](../../concepts/sdk-options.md)en son sürümünü alın.
 
-## <a name="installing-the-client-library"></a>İstemci kitaplığını yükleme
+## <a name="installing-the-sdk"></a>SDK 'Yı yükleme
 
-İlk olarak, C# projenize Iletişim Hizmetleri Yönetimi istemci kitaplığını dahil edin:
+İlk olarak, C# projenize Iletişim Hizmetleri Yönetim SDK 'sını ekleyin:
 
 ```csharp
 using Azure.ResourceManager.Communication;
@@ -121,11 +121,11 @@ Artık kimliğiniz doğrulandıktan sonra, API çağrıları yapmak için yönet
 
 Aşağıdaki örneklerden her biri için, Iletişim Hizmetleri kaynaklarınızı var olan bir kaynak grubuna atacağız.
 
-Bir kaynak grubu oluşturmanız gerekiyorsa, [Azure Portal](../../../azure-resource-manager/management/manage-resource-groups-portal.md) veya [Azure Resource Manager istemci kitaplığını](https://github.com/Azure/azure-sdk-for-net/blob/master/doc/mgmt_preview_quickstart.md)kullanarak bunu yapabilirsiniz.
+Bir kaynak grubu oluşturmanız gerekiyorsa, [Azure Portal](../../../azure-resource-manager/management/manage-resource-groups-portal.md) veya [Azure Resource Manager SDK 'sını](https://github.com/Azure/azure-sdk-for-net/blob/master/doc/mgmt_preview_quickstart.md)kullanarak bunu yapabilirsiniz.
 
 ### <a name="create-and-manage-a-communication-services-resource"></a>Iletişim Hizmetleri kaynağı oluşturma ve yönetme
 
-İletişim hizmetleri yönetimi istemci kitaplığı istemcisi () örneğimiz, ``Azure.ResourceManager.Communication.CommunicationManagementClient`` Iletişim Hizmetleri kaynakları üzerinde işlemler gerçekleştirmek için kullanılabilir.
+İletişim Hizmetleri Yönetimi SDK 'Sı istemcisi () örneğimiz, ``Azure.ResourceManager.Communication.CommunicationManagementClient`` Iletişim Hizmetleri kaynakları üzerinde işlemler gerçekleştirmek için kullanılabilir.
 
 #### <a name="create-a-communication-services-resource"></a>İletişim Hizmetleri kaynağı oluşturma
 
@@ -173,7 +173,7 @@ await acsClient.CommunicationService.StartDeleteAsync(resourceGroupName, resourc
 
 ## <a name="managing-keys-and-connection-strings"></a>Anahtarları ve bağlantı dizelerini yönetme
 
-Her Iletişim Hizmetleri kaynağında, bir dizi erişim anahtarı ve karşılık gelen bağlantı dizesi vardır. Bu anahtarlara yönetim istemci kitaplığıyla erişilebilir ve ardından diğer Iletişim Hizmetleri istemci kitaplıkları tarafından Azure Iletişim hizmetlerinde kimlik doğrulaması yapmak için kullanılır.
+Her Iletişim Hizmetleri kaynağında, bir dizi erişim anahtarı ve karşılık gelen bağlantı dizesi vardır. Bu anahtarlara Yönetim SDK 'Sı ile erişilebilir ve ardından diğer Iletişim Hizmetleri SDK 'Ları tarafından Azure Iletişim hizmetlerinde kimlik doğrulaması için kullanılır.
 
 #### <a name="get-access-keys-for-a-communication-services-resource"></a>Iletişim Hizmetleri kaynağı için erişim anahtarları alın
 

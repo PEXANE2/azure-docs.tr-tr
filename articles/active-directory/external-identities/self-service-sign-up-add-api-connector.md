@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d5e25df68bbf793535b22602ad581db24a1426f
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 0c9bbdb831df9c51c6d80e6c441ac7bdd2778428
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "105022917"
+ms.locfileid: "105044558"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>Kullanıcı akışına API Bağlayıcısı ekleme
 
@@ -59,6 +59,8 @@ Bir sertifika oluşturmak için, imzalanmış sertifikalara yönelik sertifika v
 - **Konu**: `CN=<yourapiname>.<tenantname>.onmicrosoft.com`
 - **Içerik türü**: `PKCS #12`
 - **Yaşam süresi Acton türü**: `Email all contacts at a given percentage lifetime` veya `Email all contacts a given number of days before expiry`
+- **Anahtar türü**: `RSA`
+- **Anahtar boyutu**: `2048`
 - **Dışarı aktarılabilir özel anahtar**: `Yes` (PFX dosyasını verebilmek için)
 
 Daha sonra [sertifikayı dışarı aktarabilirsiniz](../../key-vault/certificates/how-to-export-certificate.md). Alternatif olarak, otomatik olarak imzalanan bir sertifika oluşturmak için PowerShell 'in [New-SelfSignedCertificate cmdlet 'ini](../../active-directory-b2c/secure-rest-api.md#prepare-a-self-signed-certificate-optional) kullanabilirsiniz.
@@ -268,8 +270,8 @@ Content-type: application/json
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | sürüm                                            | Dize            | Yes      | API sürümü.                                                                                                                                                                                                                                                                |
 | eylem                                             | Dize            | Yes      | Değer olmalıdır `Continue` .                                                                                                                                                                                                                                                              |
-| \<builtInUserAttribute>                            | \<attribute-type> | Hayır       | Bir Kullanıcı akışı için API Bağlayıcısı yapılandırmasında ve **Kullanıcı özniteliklerinde** **alma talebi** olarak seçilirse, değerler dizinde depolanabilir. Bir **uygulama talebi** olarak seçilirse, belirteçte değerler döndürülür.                                              |
-| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Hayır       | Döndürülen talebin içermesi gerekmez `_<extensions-app-id>_` . Döndürülen değerler, bir kullanıcıdan toplanan değerlerin üzerine yazabilir. Ayrıca, uygulamanın bir parçası olarak yapılandırıldıysa belirtece da döndürülebilecek.  |
+| \<builtInUserAttribute>                            | \<attribute-type> | No       | Bir Kullanıcı akışı için API Bağlayıcısı yapılandırmasında ve **Kullanıcı özniteliklerinde** **alma talebi** olarak seçilirse, değerler dizinde depolanabilir. Bir **uygulama talebi** olarak seçilirse, belirteçte değerler döndürülür.                                              |
+| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | No       | Döndürülen talebin içermesi gerekmez `_<extensions-app-id>_` . Döndürülen değerler, bir kullanıcıdan toplanan değerlerin üzerine yazabilir. Ayrıca, uygulamanın bir parçası olarak yapılandırıldıysa belirtece da döndürülebilecek.  |
 
 ### <a name="example-of-a-blocking-response"></a>Engelleme yanıtı örneği
 

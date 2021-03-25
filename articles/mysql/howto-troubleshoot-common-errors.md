@@ -7,14 +7,16 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: 546f29330b76548ea553cfb7e4e31ac35b19cb1c
-ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
+ms.openlocfilehash: 3bfcfee0f5dab2d978eb1856bdc915c270d43ed6
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105037555"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109806"
 ---
-# <a name="common-errors"></a>Sık karşılaşılan hatalar
+# <a name="commonly-encountered-errors-during-or-post-migration-to-azure-database-for-mysql-service"></a>MySQL için Azure veritabanı hizmetine geçiş sırasında sıkça karşılaşılan hatalarla karşılaşıldı
+
+[!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
 
 MySQL için Azure veritabanı, MySQL 'in topluluk sürümü tarafından desteklenen tam olarak yönetilen bir hizmettir. Yönetilen bir hizmet ortamındaki MySQL deneyimi, kendi ortamınızda MySQL 'i çalıştırmanın farklı olabilir. Bu makalede, kullanıcıların MySQL için Azure veritabanı hizmetine geçiş yaparken veya geliştirme sırasında karşılaşabilecekleri yaygın hatalardan bazılarını görürsünüz.
 
@@ -84,6 +86,14 @@ Döküm dosyası almanın veya bir betik çalıştırmanın parçası olarak DEF
 
 > [!Tip] 
 > DEFINER = ifadesini değiştirmek için bir döküm dosyasını veya SQL betiğini değiştirmek üzere SED veya Perl kullanın
+
+#### <a name="error-1227-42000-at-line-18-access-denied-you-need-at-least-one-of-the-super-privileges-for-this-operation"></a>18. satırdaki hata 1227 (42000): erişim engellendi; Bu işlem için süper ayrıcalıklar (en az biri) gerekiyor
+
+Bu hata, GTıD özellikli MySQL sunucusundan bir döküm dosyasını MySQL sunucusu için hedef Azure veritabanı sunucusuna aktarmaya çalışmak üzere kullanıyorsanız ortaya çıkabilir. Mysqldump, SET @ @SESSION.sql_log_bin = 0 ifadesini, GTIDs 'nin kullanıldığı bir sunucudan bir döküm dosyasına ekler. Bu, döküm dosyası yeniden yüklenirken ikili günlüğü devre dışı bırakır.
+
+**Çözüm**: Bu hatayı içeri aktarırken, mysqldump dosyanızdaki aşağıdaki satırları kaldırın veya not alın ve başarılı olduğundan emin olmak için içeri aktarmayı yeniden çalıştırın. 
+
+AYARLA @MYSQLDUMP_TEMP_LOG_BIN = @ @SESSION.SQL_LOG_BIN ; AYARLA @ @SESSION.SQL_LOG_BIN = 0; AYARLA @ @GLOBAL.GTID_PURGED = ' '; AYARLA @ @SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN ;
 
 ## <a name="common-connection-errors-for-server-admin-login"></a>Sunucu Yöneticisi oturum açma için ortak bağlantı hataları
 

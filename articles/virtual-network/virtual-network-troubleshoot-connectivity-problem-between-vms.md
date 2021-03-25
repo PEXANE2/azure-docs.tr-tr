@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 6ece3e639e0ef3516696e2a0bad7deeb833433a6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5e602f8bbdf6ad92acacac6688326a555a0420b6
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98219207"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105042875"
 ---
 # <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>Azure VM’leri arasında bağlantı sorunlarını giderme
 
@@ -49,7 +49,7 @@ Sorunu gidermek için aşağıdaki adımları izleyin. Her adımı tamamladıkta
 
 ### <a name="step-1-check-whether-nic-is-misconfigured"></a>1. Adım: NIC 'in yanlış yapılandırılmış olup olmadığını denetleme
 
-[Azure WINDOWS VM için ağ arabirimini sıfırlama](../virtual-machines/troubleshooting/reset-network-interface.md)bölümündeki adımları izleyin. 
+[Azure WINDOWS VM için ağ arabirimini sıfırlama](/troubleshoot/azure/virtual-machines/reset-network-interface)bölümündeki adımları izleyin. 
 
 Ağ arabirimini (NIC) değiştirdikten sonra sorun oluşursa, aşağıdaki adımları izleyin:
 
@@ -62,8 +62,8 @@ Daha fazla bilgi için bkz. [sanal makinelere ağ arabirimleri ekleme veya sanal
 
 **Tek NIC sanal makinesi** 
 
-- [Windows VM 'yi yeniden dağıtma](../virtual-machines/troubleshooting/redeploy-to-new-node-windows.md)
-- [Linux VM 'yi yeniden dağıtma](../virtual-machines/troubleshooting/redeploy-to-new-node-linux.md)
+- [Windows VM 'yi yeniden dağıtma](/troubleshoot/azure/virtual-machines/redeploy-to-new-node-windows)
+- [Linux VM 'yi yeniden dağıtma](/troubleshoot/azure/virtual-machines/redeploy-to-new-node-linux)
 
 ### <a name="step-2-check-whether-network-traffic-is-blocked-by-nsg-or-udr"></a>2. Adım: ağ trafiğinin NSG veya UDR tarafından engellenip engellenmeyeceğini denetleyin
 
@@ -107,7 +107,7 @@ Klasik dağıtım modelini kullanarak Azure 'da oluşturduğunuz tüm VM 'Ler, a
 
 ### <a name="step-8-try-to-connect-to-a-vm-network-share"></a>8. Adım: bir VM ağ paylaşımından bağlanmayı deneyin
 
-Bir VM ağ paylaşımıyla bağlantı bağlanamazsanız, bu sorun VM 'de kullanılamayan NIC 'lerden kaynaklanıyor olabilir. Kullanılamayan NIC 'Leri silmek için bkz [. kullanılamayan NIC 'leri silme](../virtual-machines/troubleshooting/reset-network-interface.md#delete-the-unavailable-nics)
+Bir VM ağ paylaşımıyla bağlantı bağlanamazsanız, bu sorun VM 'de kullanılamayan NIC 'lerden kaynaklanıyor olabilir. Kullanılamayan NIC 'Leri silmek için bkz [. kullanılamayan NIC 'leri silme](/troubleshoot/azure/virtual-machines/reset-network-interface#delete-the-unavailable-nics)
 
 ### <a name="step-9-check-inter-vnet-connectivity"></a>9. Adım: Inter-Vnet bağlantıyı denetleme
 

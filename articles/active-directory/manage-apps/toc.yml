@@ -47,7 +47,39 @@
         - name: Parolaların ve sertifikaların süresi gereken tarihten sonra dışarı aktarma
           href: ./scripts/powershell-export-apps-with-secrets-beyond-required.md
     - name: Uygulama proxy 'Si PowerShell örnekleri
-      href: application-proxy-powershell-samples.md
+      items:
+        - name: Uygulama proxy 'Si örneklerine genel bakış
+          href: application-proxy-powershell-samples.md
+        - name: Uygulamalar hakkındaki temel bilgileri listeleyin
+          href: ./scripts/powershell-get-all-app-proxy-apps-basic.md
+        - name: Uygulamalar hakkında genişletilmiş bilgileri listeleyin
+          href: ./scripts/powershell-get-all-app-proxy-apps-extended.md
+        - name: Uygulamaları bağlayıcı grubuna göre Listele
+          href: ./scripts/powershell-get-all-app-proxy-apps-by-connector-group.md
+        - name: Belirteç ömrü ilkesiyle uygulamaları listeleme
+          href: ./scripts/powershell-get-all-app-proxy-apps-with-policy.md
+        - name: Bağlayıcı gruplarını ve bağlayıcıları listeleme
+          href: ./scripts/powershell-get-all-connectors.md
+        - name: Uygulamaları bağlayıcı grupları arasında taşıma
+          href: ./scripts/powershell-move-all-apps-to-connector-group.md
+        - name: Uygulamaya atanan kullanıcıları ve grupları listeleme
+          href: ./scripts/powershell-display-users-group-of-app.md
+        - name: Bir uygulamaya Kullanıcı atama
+          href: ./scripts/powershell-assign-user-to-app.md
+        - name: Bir uygulamaya Grup atama
+          href: ./scripts/powershell-assign-group-to-app.md
+        - name: Varsayılan etki alanlarını kullanarak uygulamaları listeleme
+          href: ./scripts/powershell-get-all-default-domain-apps.md
+        - name: Joker karakter yayımlamayı kullanarak uygulamaları listeleme
+          href: ./scripts/powershell-get-all-wildcard-apps.md
+        - name: Tüm özel etki alanlarını ve sertifikaları listeleme
+          href: ./scripts/powershell-get-all-custom-domains-and-certs.md
+        - name: Sertifikaları sertifikasız Listele
+          href: ./scripts/powershell-get-all-custom-domain-no-cert.md
+        - name: Özdeş sertifikaları olan uygulamaları listeleyin
+          href: ./scripts/powershell-get-custom-domain-identical-cert.md
+        - name: Özdeş sertifikaları Değiştir
+          href: ./scripts/powershell-get-custom-domain-replace-cert.md
 - name: Kavramlar
   expanded: true
   items:

@@ -7,18 +7,18 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/24/2020
+ms.date: 03/24/2021
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 25c87971455ed3c5f59c92748794720d61e599e3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 668b987dd8b367c143a91dc5adb11848321a9d5a
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96339617"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044422"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps-using-azure-cognitive-search"></a>Azure Bilişsel Arama kullanarak istemci uygulamalarına otomatik tamamlama ve öneriler ekleme
 
-Yazarken ara, Kullanıcı tarafından başlatılan sorguların üretkenliğini iyileştirmeye yönelik ortak bir tekniktir. Azure Bilişsel Arama, bu deneyim kısmi girişe dayalı bir terimi veya tümceciği tamamlayan *AutoComplete* aracılığıyla desteklenir ("Micro" ile "Microsoft" arasında tamamlanır). İkinci bir kullanıcı deneyimi, *öneriler* veya eşleşen belgelerin kısa bir listesidir (Bu kitapta bir ayrıntı sayfasına bağlantı yapabilmeniz IÇIN bir kimliğe sahip kitap başlıkları döndürülüyor). Hem otomatik tamamlama hem de öneriler dizindeki bir eşleşmeden tahmin edilir. Hizmet, sıfır sonuç döndüren sorgular sunmaz.
+Yazarken ara, sorgu üretkenliğini iyileştirmeye yönelik yaygın bir tekniktir. Azure Bilişsel Arama, bu deneyim kısmi girişe dayalı bir terimi veya tümceciği tamamlayan *AutoComplete* aracılığıyla desteklenir ("Micro" ile "Microsoft" arasında tamamlanır). İkinci bir kullanıcı deneyimi, *öneriler* veya eşleşen belgelerin kısa bir listesidir (Bu kitapta bir ayrıntı sayfasına bağlantı yapabilmeniz IÇIN bir kimliğe sahip kitap başlıkları döndürülüyor). Hem otomatik tamamlama hem de öneriler dizindeki bir eşleşmeden tahmin edilir. Hizmet, sıfır sonuç döndüren sorgular sunmaz.
 
 Bu deneyimleri Azure Bilişsel Arama uygulamak için şunlar gerekir:
 
@@ -63,13 +63,16 @@ REST ve .NET SDK başvuru sayfaları için bu bağlantıları izleyin:
 
 Otomatik tamamlama ve önerilerle ilgili yanıtlar, bu model için beklediğiniz şeydir: [otomatik tamamlama](/rest/api/searchservice/autocomplete#response) bir terim listesi döndürüyor, [ÖNERILER](/rest/api/searchservice/suggestions#response) bir belge kimliği ve belgeyi alabilmeniz için (belirli bir belgeyi bir ayrıntı sayfasına getirmek üzere [Arama belgesi](/rest/api/searchservice/lookup-document) API 'sini kullanın) sağlar.
 
-Yanıtlar istekteki parametrelere göre şekillendirilir. Otomatik tamamlama için, bir veya iki terimde metin tamamlanmasının yapılıp yapılmayacağını öğrenmek için [**autocompleteMode**](/rest/api/searchservice/autocomplete#autocomplete-modes) ayarlayın. Öneriler için, seçtiğiniz alan yanıtın içeriğini belirler.
+Yanıtlar istekteki parametrelere göre şekillendirilir:
 
-Öneriler için, yinelemeleri önlemek için yanıtı daha da belirginleştirin veya ilişkisiz sonuçlar olarak görünür. Sonuçları denetlemek için, isteğe daha fazla parametre ekleyin. Aşağıdaki parametreler hem otomatik tamamlama hem de öneriler için geçerlidir, ancak özellikle de bir öneri aracı birden çok alan içerdiğinde öneriler için daha fazla gerekli olabilir.
++ Otomatik tamamlama için, bir veya iki terim üzerinde metin tamamlanmasının yapılıp yapılmayacağını anlamak için [**autocompleteMode**](/rest/api/searchservice/autocomplete#query-parameters) ayarlayın. 
+
++ Öneriler için [**$Select**](/rest/api/searchservice/suggestionse#query-parameters) , adlar ve açıklama gibi benzersiz veya farklılaştırıcı değerler içeren alanları döndürecek şekilde ayarlayın. Yinelenen değerler içeren alanlardan kaçının (örneğin, kategori veya şehir).
+
+Aşağıdaki ek parametreler hem otomatik tamamlama hem de öneriler için geçerlidir, ancak özellikle de bir öneri aracı birden çok alan içerdiğinde öneriler için daha fazla gerekli olabilir.
 
 | Parametre | Kullanım |
 |-----------|-------|
-| **$select** | Bir öneri aracı içinde birden çok **Sourcefields** varsa, hangi alanın () değer katkıda bulunduğunu seçmek için **$Select** kullanın `$select=GameTitle` . |
 | **searchFields** | Sorguyu belirli alanlarla sınırlayın. |
 | **$filter** | Sonuç kümesinde () eşleşme ölçütlerini uygulayın `$filter=Category eq 'ActionAdventure'` . |
 | **$top** | Sonuçları belirli bir sayıyla ( `$top=5` ) sınırlayın.|

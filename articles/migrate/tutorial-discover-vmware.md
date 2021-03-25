@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/17/2021
 ms.custom: mvc
-ms.openlocfilehash: d0acf83ddfb0d2a3aff0db0f3d151869bce1c710
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 1a0ad751a216e8da772fd5fdc96a0dc67cb27d01
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104771745"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109870"
 ---
 # <a name="tutorial-discover-servers-running-in-vmware-environment-with-azure-migrate-discovery-and-assessment"></a>Öğretici: Azure geçişi: bulma ve değerlendirme ile VMware ortamında çalışan sunucuları bulma
 
@@ -46,12 +46,10 @@ Bu öğreticiye başlamadan önce, bu önkoşulların yerinde olup olmadığın�
 **Elektrikli** | vCenter Server Azure geçiş gereci için bir sunucu ayırmak üzere kaynaklara ihtiyaç duyuyor:<br/><br/> -32 GB RAM, 8 vCPU ve yaklaşık 80 GB disk depolaması.<br/><br/> -Bir dış sanal anahtar ve doğrudan ya da bir proxy aracılığıyla gereç sunucusunda internet erişimi.
 **Sunucular** | Tüm Windows ve Linux işletim sistemi sürümleri, yapılandırma ve performans meta verilerinin bulunması için desteklenir. <br/><br/> Sunucularda uygulama bulma işlemini gerçekleştirmek için, tüm Windows ve Linux işletim sistemi sürümleri desteklenir. Aracısız bağımlılık analizi için desteklenen işletim sistemi sürümleri için [buraya](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) bakın.<br/><br/> Yüklü uygulamalar bulmayı ve aracısız bağımlılık analizini yapmak için, VMware araçlarının (10.2.0 ' den sonraki sürümler) sunucularda yüklü ve çalışıyor olması gerekir. Windows sunucularında PowerShell sürüm 2,0 veya üzeri yüklü olmalıdır.<br/><br/> SQL Server örnekleri ve veritabanlarını öğrenmek için, desteklenen Windows işletim sistemi sürümleri ve kimlik doğrulama mekanizmaları, desteklenen SQL Server sürümleri ve sürümleri için [buraya](migrate-support-matrix-vmware.md#requirements-for-discovery-of-sql-server-instances-and-databases) bakın.
 
-> [!Note]
-> VMware ortamınızda çalışan SQL Server örnekleri ve veritabanlarının keşfi ve değerlendirmesi artık önizlemededir. Bu özelliği denemek için [**bu bağlantıyı**](https://aka.ms/AzureMigrate/SQL) kullanarak **Doğu Avustralya** bölgesinde bir proje oluşturun. Zaten Doğu Avustralya bölgesinde bir projeniz varsa ve bu özelliği denemek istiyorsanız, lütfen portalda bu [**önkoşulları**](how-to-discover-sql-existing-project.md) tamamladığınızdan emin olun.
-
 ## <a name="prepare-an-azure-user-account"></a>Azure Kullanıcı hesabı hazırlama
 
 Bir proje oluşturmak ve Azure geçişi gerecini kaydettirmek için, şu bir hesaba sahip olmanız gerekir:
+
 - Azure aboneliğinde katkıda bulunan veya sahip izinleri
 - Azure Active Directory (AAD) uygulamalarını kaydetme izinleri
 - Sahip veya katkıda bulunan, Azure aboneliğinde aracısız sunucu geçişi sırasında kullanılan bir Key Vault oluşturmak için Kullanıcı erişimi Yöneticisi izinleri
@@ -96,14 +94,13 @@ VSphere Web Istemcisinde bir hesabı aşağıdaki şekilde ayarlayın:
 3. **Kullanıcılar**' da yeni bir kullanıcı ekleyin.
 4. **Yeni Kullanıcı**' da hesap ayrıntılarını yazın. Daha sonra, **Tamam**'a tıklayın.
 5. **Genel izinler**' de, Kullanıcı hesabını seçin ve hesaba **salt okunurdur** rolünü atayın. Daha sonra, **Tamam**'a tıklayın.
-6.  Ayrıca yüklü uygulamalar bulmayı ve aracısız bağımlılık analizini yapmak istiyorsanız, **Roller** ' e gidin > **salt oku** rolünü seçin ve **ayrıcalıklar** bölümünde **Konuk işlemler**' i seçin. "Alt öğelere yay" onay kutusunu seçerek ayrıcalıkları vCenter Server altındaki tüm nesnelere yayabilirsiniz.
+6. Ayrıca yüklü uygulamalar bulmayı ve aracısız bağımlılık analizini yapmak istiyorsanız, **Roller** ' e gidin > **salt oku** rolünü seçin ve **ayrıcalıklar** bölümünde **Konuk işlemler**' i seçin. "Alt öğelere yay" onay kutusunu seçerek ayrıcalıkları vCenter Server altındaki tüm nesnelere yayabilirsiniz.
 
     :::image type="content" source="./media/tutorial-discover-vmware/guest-operations.png" alt-text="Salt okuma rolünde Konuk işlemlere izin vermek için onay kutusu":::
 
 
 > [!NOTE]
 > Bulmayı belirli vCenter Server veri merkezleri, kümeler, bir küme klasörü, konaklar, konaklar klasörü veya vCenter Server hesabını tanımlayarak tek tek sunucular ile sınırlayabilirsiniz. VCenter Server Kullanıcı hesabının kapsamını belirleme hakkında [**daha fazla bilgi edinin**](set-discovery-scope.md) .
-
 
 ### <a name="create-an-account-to-access-servers"></a>Sunuculara erişmek için bir hesap oluşturma
 
@@ -154,7 +151,7 @@ Bir OVA şablonunu kullanarak gereci ayarlamak için:
 1. **Geçiş hedefleri**  >  **Windows, Linux ve SQL Server**  >  **Azure geçişi: bulma ve değerlendirme** bölümünde **bul**' u seçin.
 2. Sunucularınızdaki **sunucular**  >  **sanallaştırılmış mı?**, **VMware vSphere hiper yöneticiyle Evet '** i seçin.
 3. **1: proje anahtarı oluştur**' da, VMware ortamınızda sunucu keşfi Için ayarladığınız Azure geçiş gereci için bir ad sağlayın. Ad 14 karakter veya daha kısa bir harf olmalıdır.
-1. Gerekli Azure kaynaklarını oluşturmaya başlamak için **anahtar oluştur** ' a tıklayın. Lütfen kaynak oluşturma sırasında bul sayfasını kapatmayın.
+1. Gerekli Azure kaynaklarını oluşturmaya başlamak için **anahtar oluştur** ' a tıklayın. Kaynak oluşturma sırasında bul sayfasını kapatmayın.
 1. Azure kaynakları başarıyla oluşturulduktan sonra bir **Proje anahtarı** oluşturulur.
 1. Yapılandırma sırasında gereç kaydını tamamlamamak için gerekli olacak şekilde anahtarı kopyalayın.
 
@@ -234,7 +231,6 @@ Gereci ilk kez ayarlayın.
 
     :::image type="content" source="./media/tutorial-discover-vmware/appliance-prerequisites.png" alt-text="Gereç Yapılandırma Yöneticisi 'nde Panel 1":::
 
-
 ### <a name="register-the-appliance-with-azure-migrate"></a>Gereci Azure geçişi ile kaydetme
 
 1. Portaldan kopyalanmış **Proje anahtarını** yapıştırın. Anahtarınız yoksa **Azure geçişi: bulma ve değerlendirme> var olan gereçlerini bulmak> yönetmek** için, anahtar oluşturma sırasında verdiğiniz gereç adını seçin ve karşılık gelen anahtarı kopyalayın.
@@ -274,9 +270,6 @@ Gereçinin, sunucuların yapılandırma ve performans verilerini bulması için 
 
 :::image type="content" source="./media/tutorial-discover-vmware/appliance-server-credentials-mapping.png" alt-text="Sunucu ayrıntıları için gereç Yapılandırma Yöneticisi 'nde panel 3":::
 
-> [!Note]
-> VMware ortamınızda çalışan SQL Server örnekleri ve veritabanlarının keşfi ve değerlendirmesi artık önizlemededir. Bu özelliği denemek için [**bu bağlantıyı**](https://aka.ms/AzureMigrate/SQL) kullanarak **Doğu Avustralya** bölgesinde bir proje oluşturun. Zaten Doğu Avustralya bölgesinde bir projeniz varsa ve bu özelliği denemek istiyorsanız, lütfen portalda bu [**önkoşulları**](how-to-discover-sql-existing-project.md) tamamladığınızdan emin olun.
-
 Bu özellikleri kullanmak istiyorsanız, aşağıdaki adımları izleyerek sunucu kimlik bilgileri sağlayabilirsiniz. Gereç, bulma özelliklerini gerçekleştirmek için kimlik bilgilerini sunucularla otomatik olarak eşlemeye çalışır.
 
 - **Kimlik bilgileri ekle** düğmesine tıklayarak sunucu kimlik bilgilerini ekleyebilirsiniz. Bu işlem, açılan listeden **kimlik bilgileri türünü** seçebileceğiniz kalıcı bir şekilde açılır.
@@ -289,6 +282,7 @@ Bu özellikleri kullanmak istiyorsanız, aşağıdaki adımları izleyerek sunuc
 - Kimlik bilgileri tablosundaki tüm etki alanı kimlik bilgileri için **doğrulama durumunu** görebilirsiniz. Yalnızca etki alanı kimlik bilgileri doğrulanacak.
 - Doğrulama başarısız olursa, karşılaşılan hatayı görmek için **başarısız** durumuna tıklayabilir ve başarısız etki alanı kimlik bilgilerini yeniden doğrulamak için sorunu düzelttikten sonra **kimlik bilgilerini yeniden doğrula** ' ya tıklayabilirsiniz.
 
+     :::image type="content" source="./media/tutorial-discover-vmware/add-server-credentials-multiple.png" alt-text="Birden çok kimlik bilgisi sağlamak için gereç Yapılandırma Yöneticisi 'nde panel 3":::
 
 ### <a name="start-discovery"></a>Bulmayı başlat
 

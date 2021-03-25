@@ -1,17 +1,17 @@
 ---
 title: Sunucu parametreleri-MySQL için Azure veritabanı-esnek sunucu
 description: Bu konu, MySQL için Azure veritabanı-esnek sunucu 'da sunucu parametrelerini yapılandırmaya ilişkin yönergeler sağlar.
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: 58978f120578afeca129b0d8928713835def8418
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f83f743b692ae5a625a4c881b12cbad999f1f606
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94497010"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105106777"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql---flexible-server"></a>MySQL için Azure veritabanı 'nda sunucu parametreleri-esnek sunucu
 

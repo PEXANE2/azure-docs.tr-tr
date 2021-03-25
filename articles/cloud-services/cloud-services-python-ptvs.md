@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 16aa6918c0f4b0df5ebf23f28268f8cbe5223fce
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2822f719928515efc70eeed3d7c182e347627418
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98743296"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045527"
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Visual Studio için Python web ve çalışan rolleri içeren Python Araçları
 
@@ -28,7 +28,7 @@ Bu makalede, [Visual Studio için Python Araçları][Python Tools for Visual Stu
 * [VS 2013 için Azure SDK Araçları][Azure SDK Tools for VS 2013] veya  
 [VS 2015 için Azure SDK Araçları][Azure SDK Tools for VS 2015] veya  
 [VS 2017 için Azure SDK Araçları][Azure SDK Tools for VS 2017]
-* [Python 2.7 32 bit][Python 2.7 32-bit] veya [Python 3.5 32 bit][Python 3.5 32-bit]
+* [Python 2,7 32-bit][Python 2.7 32-bit] veya [Python 3,8 32-bit][Python 3.8 32-bit]
 
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
@@ -71,7 +71,7 @@ Bulut hizmetiniz farklı dillerde uygulanan roller içerebilir.  Örneğin, Pyth
 
 Ayar betikleri ile ilgili temel sorun python yüklememesidir. İlk olarak, [ServiceDefinition.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) dosyasında iki [başlangıç görevi](cloud-services-startup-tasks.md) tanımlayın. İlk görev (**PrepPython.ps1**) Python çalışma zamanını indirir ve yükler. İkinci görev (**PipInstaller.ps1**) sahip olabileceğiniz tüm bağımlılıkları yüklemek üzere pip çalıştırır.
 
-Aşağıdaki betikler Python 3.5 hedeflenerek yazılmıştır. Python 2.x sürümünü kullanmak istiyorsanız **PYTHON2** değişken dosyasını iki başlangıç görevi ve `<Variable name="PYTHON2" value="<mark>on</mark>" />` çalışma zamanı görevi için **açık** olarak ayarlayın.
+Aşağıdaki betikler Python 3,8 ' i hedefleyen olarak yazılmıştır. Python 2.x sürümünü kullanmak istiyorsanız **PYTHON2** değişken dosyasını iki başlangıç görevi ve `<Variable name="PYTHON2" value="<mark>on</mark>" />` çalışma zamanı görevi için **açık** olarak ayarlayın.
 
 ```xml
 <Startup>
@@ -167,7 +167,7 @@ Aşağıdaki betikler Python 3.5 hedeflenerek yazılmıştır. Python 2.x sürü
 Ardından, rolünüzün **./bin** klasöründe **PrepPython.ps1** ve **PipInstaller.ps1** dosyalarını oluşturun.
 
 #### <a name="preppythonps1"></a>PrepPython.ps1
-Bu betik python yükler. **PYTHON2** ortam değişkeni **açık** olarak ayarlanırsa Python 2.7 yüklenir, aksi takdirde Python 3.5 yüklenir.
+Bu betik python yükler. **PYTHON2** ortam değişkeni **Açık** olarak ayarlanırsa Python 2,7 yüklenir, aksi takdirde Python 3,8 yüklenir.
 
 ```powershell
 [Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"
@@ -186,12 +186,12 @@ if (-not $is_emulated){
 
     if (-not $?) {
 
-        $url = "https://www.python.org/ftp/python/3.5.2/python-3.5.2-amd64.exe"
-        $outFile = "${env:TEMP}\python-3.5.2-amd64.exe"
+        $url = "https://www.python.org/ftp/python/3.8.8/python-3.8.8-amd64.exe"
+        $outFile = "${env:TEMP}\python-3.8.8-amd64.exe"
 
         if ($is_python2) {
-            $url = "https://www.python.org/ftp/python/2.7.12/python-2.7.12.amd64.msi"
-            $outFile = "${env:TEMP}\python-2.7.12.amd64.msi"
+            $url = "https://www.python.org/ftp/python/2.7.18/python-2.7.18.amd64.msi"
+            $outFile = "${env:TEMP}\python-2.7.18.amd64.msi"
         }
 
         Write-Output "Not found, downloading $url to $outFile$nl"
@@ -214,7 +214,7 @@ if (-not $is_emulated){
 ```
 
 #### <a name="pipinstallerps1"></a>PipInstaller.ps1
-Bu betik pip çağırır ve tüm bağımlılıkları **requirements.txt** dosyasına yükler. **PYTHON2** ortam değişkeni **açık** olarak ayarlanırsa Python 2.7 kullanılır, aksi takdirde Python 3.5 kullanılır.
+Bu betik pip çağırır ve tüm bağımlılıkları **requirements.txt** dosyasına yükler. **PYTHON2** ortam değişkeni **Açık** olarak ayarlanırsa Python 2,7 kullanılır, aksi takdirde Python 3,8 kullanılır.
 
 ```powershell
 $is_emulated = $env:EMULATED -eq "true"
@@ -249,7 +249,7 @@ if (-not $is_emulated){
 
 **bin\LaunchWorker.ps1** başlangıçta çok fazla hazırlık çalışması yapmak için oluşturulmuştur, ancak gerçekten çalışmamaktadır. Bu dosyanın içeriğini aşağıdaki betikle değiştirin.
 
-Bu betik python projenizden **worker.py** dosyasını çağırır. **PYTHON2** ortam değişkeni **açık** olarak ayarlanırsa Python 2.7 kullanılır, aksi takdirde Python 3.5 kullanılır.
+Bu betik python projenizden **worker.py** dosyasını çağırır. **PYTHON2** ortam değişkeni **Açık** olarak ayarlanırsa Python 2,7 kullanılır, aksi takdirde Python 3,8 kullanılır.
 
 ```powershell
 $is_emulated = $env:EMULATED -eq "true"
@@ -364,4 +364,4 @@ Web ve çalışan rollerinizden Azure Storage veya Service Bus gibi Azure hizmet
 [Azure SDK Tools for VS 2015]: https://go.microsoft.com/fwlink/?LinkId=746481
 [Azure SDK Tools for VS 2017]: https://go.microsoft.com/fwlink/?LinkId=746483
 [Python 2.7 32-bit]: https://www.python.org/downloads/
-[Python 3.5 32-bit]: https://www.python.org/downloads/
+[Python 3.8 32-bit]: https://www.python.org/downloads/

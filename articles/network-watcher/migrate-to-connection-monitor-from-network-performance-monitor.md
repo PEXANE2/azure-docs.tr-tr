@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: 998b0cb04d465f675423e2472a7ca8c6441b1fed
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 18d0a24de6f0775fdb35799512f9796a323d353a
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103010414"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045493"
 ---
 # <a name="migrate-to-connection-monitor-from-network-performance-monitor"></a>Ağ Performansı İzleyicisi bağlantı Izleyicisi 'ne geçir
 
@@ -31,7 +31,7 @@ Ağ Performansı İzleyicisi (NPM) ' den yeni, iyileştirilmiş bağlantı Izley
 
 Geçiş, aşağıdaki sonuçları üretmenize yardımcı olur:
 
-* Şirket içi aracılar ve güvenlik duvarı ayarları olduğu gibi çalışır. Değişiklik gerekmiyor. Azure sanal makinelerinde yüklü Log Analytics aracıların [Ağ İzleyicisi uzantısıyla](https://docs.microsoft.com/azure/virtual-machines/extensions/network-watcher-windows)değiştirilmeleri gerekir.
+* Şirket içi aracılar ve güvenlik duvarı ayarları olduğu gibi çalışır. Değişiklik gerekmiyor. Azure sanal makinelerinde yüklü Log Analytics aracıların [Ağ İzleyicisi uzantısıyla](../virtual-machines/extensions/network-watcher-windows.md)değiştirilmeleri gerekir.
 * Mevcut testler, > test grubu > test biçimiyle bağlantı Izleyicisine eşlenir. **Düzenle**' yi seçerek yeni bağlantı izleyicisinin özelliklerini görüntüleyip değiştirebilir, değişiklikler yapmak için bir şablon indirebilir ve Azure Resource Manager aracılığıyla şablonu gönderebilirsiniz.
 * Aracılar Log Analytics çalışma alanına ve ölçümlere veri gönderir.
 * Veri izleme:

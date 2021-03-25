@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: afb396bc364a2fa2db923fbcbe6bfe1b7aedbc26
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c2fad19bd84418d41aca1b2e0770eaa3cde488b0
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103467553"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043368"
 ---
 # <a name="recommended-settings-for-network-isolation"></a>Ağ yalıtımı için önerilen ayarlar
 
@@ -60,7 +60,7 @@ Bilişsel Arama örnek, Soru-Cevap Oluşturma kaynakları oluşturulduktan sonra
 
 Soru-Cevap Oluşturma App Service bir App Service Ortamı kullanarak kısıtlanmışsa, Bilişsel Arama örneğine özel bir uç nokta bağlantısı oluşturmak için aynı VNet 'i kullanın. Bilişsel Arama uç noktasını Bilişsel Arama özel uç nokta IP adresine eşlemek için sanal ağda yeni bir DNS girişi oluşturun. 
 
-App Service Ortamı QnAMaker App Service için kullanılmıyorsa, önce yeni bir VNet kaynağı oluşturun ve ardından Bilişsel Arama örneğine özel uç nokta bağlantısını oluşturun. Bu durumda, Bilişsel Arama örneğine bağlanmak için Soru-Cevap Oluşturma App Service [VNET ile tümleştirilmesi](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet) gerekir. 
+App Service Ortamı QnAMaker App Service için kullanılmıyorsa, önce yeni bir VNet kaynağı oluşturun ve ardından Bilişsel Arama örneğine özel uç nokta bağlantısını oluşturun. Bu durumda, Bilişsel Arama örneğine bağlanmak için Soru-Cevap Oluşturma App Service [VNET ile tümleştirilmesi](../../../app-service/web-sites-integrate-with-vnet.md) gerekir. 
 
 #  <a name="qna-maker-managed-preview-release"></a>[Soru-Cevap Oluşturma Managed (Önizleme sürümü)](#tab/v2)
 

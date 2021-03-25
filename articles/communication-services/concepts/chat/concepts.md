@@ -9,20 +9,20 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e71917d917491037100b4ee666cbeb030b0a4786
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e05bf1df503a13efc8e4ca30b3341216e01e678e
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104656150"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110840"
 ---
 # <a name="chat-concepts"></a>Sohbet kavramları 
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]    
 
-Azure Iletişim Hizmetleri sohbet istemci kitaplıkları, uygulamalarınıza gerçek zamanlı metin sohbeti eklemek için kullanılabilir. Bu sayfa, önemli sohbet kavramlarını ve yeteneklerini özetler.    
+Azure Iletişim Hizmetleri sohbeti SDK 'Ları, uygulamalarınıza gerçek zamanlı metin sohbeti eklemek için kullanılabilir. Bu sayfa, önemli sohbet kavramlarını ve yeteneklerini özetler.    
 
-Belirli istemci kitaplığı dilleri ve özellikleri hakkında daha fazla bilgi edinmek için [Iletişim Hizmetleri sohbeti istemci kitaplığına genel bakış](./sdk-features.md) bölümüne bakın.    
+Belirli SDK dilleri ve özellikleri hakkında daha fazla bilgi için bkz. [Iletişim Hizmetleri sohbet SDK 'Sına genel bakış](./sdk-features.md) .  
 
 ## <a name="chat-overview"></a>Sohbete genel bakış    
 
@@ -117,7 +117,7 @@ Güvenilen hizmet katmanını kullanarak erişim belirteçleri oluşturmamız ö
 
 ## <a name="real-time-signaling"></a>Gerçek zamanlı sinyal  
 
-Sohbet JavaScript istemci kitaplığı gerçek zamanlı sinyal içerir. Bu, istemcilerin API 'Leri yoklamaya gerek kalmadan bir sohbet iş parçacığına gerçek zamanlı güncelleştirmeleri ve gelen iletileri dinlemesine olanak tanır. Kullanılabilir olaylar şunlardır:
+Sohbet JavaScript SDK 'Sı gerçek zamanlı sinyal içerir. Bu, istemcilerin API 'Leri yoklamaya gerek kalmadan bir sohbet iş parçacığına gerçek zamanlı güncelleştirmeleri ve gelen iletileri dinlemesine olanak tanır. Kullanılabilir olaylar şunlardır:
 
  - `ChatMessageReceived` -bir sohbet iş parçacığına yeni bir ileti gönderildiğinde. Bu olay, önceki konu başlığında ele alınan otomatik oluşturulan sistem iletileri için gönderilmez.   
  - `ChatMessageEdited` -bir sohbet iş parçacığında bir ileti düzenlendiğinde. 
@@ -136,9 +136,9 @@ Sohbet JavaScript istemci kitaplığı gerçek zamanlı sinyal içerir. Bu, iste
 Gerçek zamanlı sinyal, kullanıcılarınızın gerçek zamanlı olarak sohbet etmesine olanak tanır. Hizmetleriniz, sohbet ile ilgili olaylara abone olmak için Azure Event Grid kullanabilir. Daha ayrıntılı bilgi için bkz. [olay işleme kavramsal](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services?tabs=event-grid-event-schema).
 
 
-## <a name="using-cognitive-services-with-chat-client-library-to-enable-intelligent-features"></a>Akıllı özellikleri etkinleştirmek için öğretici hizmetlerini sohbet istemci kitaplığı ile kullanma 
+## <a name="using-cognitive-services-with-chat-sdk-to-enable-intelligent-features"></a>Akıllı özellikleri etkinleştirmek için öğretici hizmetlerini sohbet SDK ile kullanma    
 
-Uygulamalarınıza akıllı özellikler eklemek için sohbet istemci kitaplığıyla Azure bilişsel [API 'leri](../../../cognitive-services/index.yml) kullanabilirsiniz. Örneğin, şunları yapabilirsiniz:  
+Uygulamalarınıza akıllı özellikler eklemek için sohbet SDK ile Azure bilişsel [API 'leri](../../../cognitive-services/index.yml) kullanabilirsiniz. Örneğin, şunları yapabilirsiniz: 
 
 - Kullanıcıların farklı dillerde birbirleriyle sohbet kurmasını sağlar.  
 - Bir müşterinin gelen bir sorunun olumsuz bir yaklaşımını algılayarak, destek aracısına bilet önceliklendirmesine yardımcı olun.   
@@ -156,4 +156,4 @@ Bu şekilde, ileti geçmişi hem özgün hem de çevrilmiş iletileri içerir. �
 > [Sohbetle çalışmaya başlama](../../quickstarts/chat/get-started.md)    
 
 Aşağıdaki belgeler sizin için ilginç olabilir:  
-- [Sohbet istemci kitaplığı](sdk-features.md) hakkında bilgi edinin
+- [Sohbet SDK 'sını](sdk-features.md) öğrenmeye

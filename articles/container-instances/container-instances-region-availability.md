@@ -4,12 +4,12 @@ description: Farklı Azure bölgelerindeki Azure Container Instances hizmeti iç
 ms.topic: article
 ms.date: 04/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: 4decf29be23c2f1ed51f422052869e99abe4a511
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b1783204ae416412579e63654ff236fbc6cf1a18
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103573617"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046020"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure bölgelerindeki Azure Container Instances kaynak kullanılabilirliği
 
@@ -88,21 +88,21 @@ Aşağıdaki bölgeler ve en fazla kaynaklar, [desteklenen ve önizleme](contain
 | Güney Brezilya | 4 | 16 | 4 | 16 | 20 |
 | Orta Kanada | 2 | 8 | 2 | 3,5 | 20 |
 | Orta Hindistan | 2 | 3,5 | 2 | 3,5 | 20 |
-| Central US | 2 | 3,5 | 2 | 3,5 | 20 |
+| Central US | 2 | 8 | 2 | 3,5 | 20 |
 | Doğu Asya | 2 | 3,5 | 2 | 3,5 | 20 |
-| Doğu ABD | 4 | 16 | 2 | 8 | 20 |
-| Doğu ABD 2 | 2 | 3,5 | 4 | 16 | 20 |
+| Doğu ABD | 2 | 8 | 2 | 8 | 20 |
+| Doğu ABD 2 | 2 | 8 | 4 | 16 | 20 |
 | Doğu Japonya | 4 | 16 | 4 | 16 | 20 |
 | Güney Kore - Orta | 4 | 16 | 4 | 16 | 20 |
-| Orta Kuzey ABD | 4 | 16 | 4 | 16 | 20 |
+| Orta Kuzey ABD | 2 | 8 | 4 | 16 | 20 |
 | Kuzey Avrupa | 2 | 8 | 2 | 8 | 20 |
-| Orta Güney ABD | 2 | 3,5 | 2 | 8 | 20 |
+| Orta Güney ABD | 2 | 8 | 2 | 8 | 20 |
 | Güneydoğu Asya | Yok | Yok | 2 | 3,5 | 20 |
 | Güney Hindistan | 2 | 3,5 | 2 | 3,5 | 20 |
 | Güney Birleşik Krallık | 2 | 8 | 2 | 3,5 | 20 |
-| Orta Batı ABD | 4 | 16 | 2 | 8 | 20 |
+| Orta Batı ABD | 2 | 8 | 2 | 8 | 20 |
 | West Europe | 4 | 16 | 4 | 16 | 20 |
-| Batı ABD | 4 | 16 | 2 | 8 | 20 |
+| Batı ABD | 2 | 8 | 2 | 8 | 20 |
 | Batı ABD 2 | 2 | 8 | 2 | 3,5 | 20 |
 
 

@@ -7,17 +7,20 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 03/10/2021
-ms.openlocfilehash: ea647591194dfd6ba0bf818f4ce4d3a2005f0bc4
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.date: 03/25/2021
+ms.openlocfilehash: aeab671c9283d64f9c1ca37cf184b80b1eca8f35
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102630796"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045255"
 ---
 # <a name="how-to-test-and-publish-a-saas-offer-to-the-commercial-marketplace"></a>Ticari Market 'e SaaS teklifini test etme ve yayımlama
 
 Bu makalede, Iş Ortağı Merkezi 'ni yayımlama için SaaS teklifinizi göndermek, teklifinizin önizlemesi, test etmek ve ardından ticari Market 'te canlı yayımlamak için nasıl kullanacağınız açıklanmaktadır. Yayımlamak istediğiniz bir teklifi önceden oluşturmuş olmanız gerekir.
+
+> [!NOTE]
+> Üretim (ÜRETIM) teklifinizi yayımlamadan önce test etmek için düşük riskli bir yöntem olarak ayrı bir test ve geliştirme (DEV) teklifi oluşturmanızı öneririz. (ÜRETIM) teklifinizi yayımlamadan önce GELIŞTIRME teklifini oluşturmak ve test etmek için aşağıdaki adımları izleyin.
 
 ## <a name="submit-your-offer-for-publishing"></a>Teklifinizi yayımlama için gönderme
 
@@ -48,7 +51,7 @@ Teklifinizi önizlemek için aşağıdaki adımları kullanın.
 
 1. **Teklif genel bakış** sayfasında, **canlı çalış** düğmesinin altında bir önizleme bağlantısı seçin.
 
-1. Uçtan uca satın alma ve kurulum akışını doğrulamak için, önizleme aşamasında teklifinizi satın alın. İlk olarak, bir ücreti işlememenizi sağlamak için Microsoft 'u bir [destek bileti](https://aka.ms/marketplacesupport) ile bilgilendirin.
+1. Uçtan uca satın alma ve kurulum akışını doğrulamak için, önizleme aşamasında olan planları teklifinizdeki satın alın. İlk olarak, bir ücreti işlememenizi sağlamak için Microsoft 'u bir [destek bileti](https://aka.ms/marketplacesupport) ile bilgilendirin.
 
 1. SaaS teklifiniz, [ticari Market ölçüm hizmeti kullanılarak ölçülen faturalandırmayı](./partner-center-portal/saas-metered-billing.md)destekliyorsa, [Market ölçümlü faturalandırma API 'lerinde](./partner-center-portal/marketplace-metering-service-apis.md#development-and-testing-best-practices)ayrıntılı test en iyi yöntemlerini gözden geçirin ve izleyin.
 
@@ -60,10 +63,10 @@ Teklifinizi önizlemek için aşağıdaki adımları kullanın.
 
 ## <a name="publish-your-offer-live"></a>Teklifinizi canlı yayımlayın
 
-Önizlemeinizdeki tüm testleri tamamladıktan sonra, teklifinizi ticari Market 'te canlı yayımlamak için **canlı ol** ' u seçin.
+Önizlemeinizdeki tüm testleri tamamladıktan sonra, teklifinizi ticari Market 'te canlı yayımlamak için **canlı ol** ' u seçin. Teklifiniz ticari Market 'te zaten yaşıyorsanız, yaptığınız güncelleştirmeler **canlı git**' i seçene kadar canlı olmayacaktır.
 
-   > [!TIP]
-   > Teklifiniz ticari Market 'te zaten yaşıyorsanız, yaptığınız güncelleştirmeler **canlı git**' i seçene kadar canlı olmayacaktır.
+> [!IMPORTANT]
+> Bir [geliştirme/test teklifi](create-saas-dev-test-offer.md)Için **canlı çalış** ' ı seçmeyin.
 
 Teklifinizi ticari Market 'te kullanılabilir yapmayı seçtiğinizden, canlı teklifin yalnızca teklifin önizleme sürümü gibi yapılandırıldığından emin olmak için bir dizi son doğrulama denetimi gerçekleştirdik. Bu doğrulama denetimleri hakkında daha fazla bilgi için bkz. [Yayımlama aşaması](review-publish-offer.md#publish-phase).
 

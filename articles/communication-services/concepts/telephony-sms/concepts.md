@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: c866629677790447d0ed730ae9cc62cb37e338e9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 0ddc9bfeb0df32614d835e0eaef9da52e917ee91
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495513"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108443"
 ---
 # <a name="sms-concepts"></a>SMS kavramları
 
@@ -23,9 +23,9 @@ ms.locfileid: "103495513"
 
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
-Azure Iletişim Hizmetleri, Iletişim Hizmetleri SMS istemci kitaplıklarını kullanarak SMS metin iletilerini göndermenizi ve almanızı sağlar. Bu istemci kitaplıkları, müşteri hizmeti senaryolarını, randevu anımsatıcıları, iki öğeli kimlik doğrulaması ve diğer gerçek zamanlı iletişim ihtiyaçlarını desteklemek için kullanılabilir. İletişim Hizmetleri SMS, kampanyalarınızı çevreleyen teslimat ve yanıt oranı öngörülerini açığa çıkarırken iletileri güvenilir bir şekilde göndermenize olanak tanır.
+Azure Iletişim Hizmetleri, Iletişim Hizmetleri SMS SDK 'larını kullanarak SMS metin iletilerini göndermenizi ve almanızı sağlar. Bu SDK 'lar müşteri hizmeti senaryolarını, randevu anımsatıcıları, iki öğeli kimlik doğrulaması ve diğer gerçek zamanlı iletişim ihtiyaçlarını desteklemek için kullanılabilir. İletişim Hizmetleri SMS, kampanyalarınızı çevreleyen teslimat ve yanıt oranı öngörülerini açığa çıkarırken iletileri güvenilir bir şekilde göndermenize olanak tanır.
 
-Azure Iletişim Hizmetleri SMS istemci kitaplıklarının temel özellikleri şunlardır:
+Azure Iletişim Hizmetleri SMS SDK 'larının temel özellikleri şunlardır:
 
 -  Uygulamalarınıza SMS özelliği eklemek için **basit** kurulum deneyimi.
 - A2P (uygulamadan kişiye) için ücretsiz numaralar üzerinden **yüksek hız** iletisi desteği Birleşik Devletler kullanım örnekleri.
@@ -46,6 +46,6 @@ Azure Iletişim Hizmetleri SMS istemci kitaplıklarının temel özellikleri şu
 
 Aşağıdaki belgeler sizin için ilginç olabilir:
 
-- [SMS istemci kitaplığı](../telephony-sms/sdk-features.md) hakkında bilgi edinin
+- [SMS SDK 'sını](../telephony-sms/sdk-features.md) öğrenmeye
 - SMS özellikli [telefon numarası](../../quickstarts/telephony-sms/get-phone-number.md) alın
 - [Azure Iletişim hizmetlerindeki telefon numarası türleri](../telephony-sms/plan-solution.md)
