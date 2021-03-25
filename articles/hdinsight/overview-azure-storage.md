@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: f171ab9619f2bcb8ecf15c4bfb3b17146ab5a0ff
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 419b4939c19ee03651a406db44244897e17087f2
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98938943"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865477"
 ---
 # <a name="azure-storage-overview-in-hdinsight"></a>HDInsight 'ta Azure depolama 'ya genel bakış
 
@@ -24,7 +24,7 @@ Depolama hesabınızı **Seçili ağlardaki** **güvenlik duvarları ve sanal a�
 
 Aşağıdaki diyagramda Azure Storage 'ın HDInsight mimarisinin soyut bir görünümü sunulmaktadır:
 
-![' HDInsight depolama mimarisi '](./media/overview-azure-storage/storage-architecture.png "HDInsight depolama mimarisi")
+:::image type="content" source="./media/overview-azure-storage/storage-architecture.png" alt-text="HDInsight depolama mimarisi" border="false":::
 
 HDInsight, işlem düğümlerine yerel olarak bağlı olan dağıtılmış dosya sistemine erişim imkanı sağlar. Bu dosya sistemine tam uygun URI kullanılarak erişilebilir, örneğin:
 
@@ -40,7 +40,7 @@ HDInsight kümeleri ile Azure depolama hesabı kullanırken aşağıdaki ilkeler
 
 * **Bir kümeye bağlı olmayan depolama hesaplarındaki genel kapsayıcılar veya genel Bloblar:** Kapsayıcılarda bloblara salt okuma izninizin olması gerekir.
   
-  > [!NOTE]  
+  > [!NOTE]
   > Ortak kapsayıcılar, bu kapsayıcıda kullanılabilen tüm Blobların bir listesini almanızı ve kapsayıcı meta verilerini almanızı sağlar. Genel blob'lar, yalnızca tam URL'yi biliyorsanız blob erişiminize izin verir. Daha fazla bilgi için bkz. [Kapsayıcılara ve bloblara anonim okuma erişimini yönetme](../storage/blobs/anonymous-read-access-configure.md).
 
 * **Bir kümeye bağlı olmayan depolama hesaplarındaki özel kapsayıcılar:** Web Hcat işlerini gönderdiğinizde depolama hesabını tanımlamadığınız müddetçe kapsayıcılardaki bloblara erişemezsiniz.

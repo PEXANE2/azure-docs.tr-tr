@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: 2008e014e9f160b643ed5f591fff81c0b215e24a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8f300f214ed36b7a5257b7276364027b91edc746
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102175073"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048111"
 ---
 # <a name="register-and-scan-teradata-source-preview"></a>Teradata kaynağını kaydetme ve tarama (Önizleme)
 
@@ -25,7 +25,7 @@ Teradata kaynağı bir Teradata veritabanından meta verileri ayıklamak için *
 ## <a name="prerequisites"></a>Önkoşullar
 
 1.  En son [kendi kendine barındırılan tümleştirme çalışma zamanını](https://www.microsoft.com/download/details.aspx?id=39717)ayarlayın.
-    Daha fazla bilgi için, bkz. [Şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma ve yapılandırma](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime).
+    Daha fazla bilgi için, bkz. [Şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma ve yapılandırma](../data-factory/create-self-hosted-integration-runtime.md).
 
 2.  Şirket içinde barındırılan tümleştirme çalışma zamanının yüklü olduğu sanal makinenizde [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) ' in yüklü olduğundan emin olun.
 
@@ -70,7 +70,7 @@ Veri kataloğunuza yeni bir Teradata kaynağı kaydetmek için aşağıdakileri 
 
 Yeni bir tarama oluşturup çalıştırmak için aşağıdakileri yapın:
 
-1.  Yönetim Merkezi 'nde **tümleştirme çalışma zamanları**' na tıklayın. Şirket içinde barındırılan bir tümleştirme çalışma zamanının ayarlandığından emin olun. Ayarlanmamışsa, şirket içinde barındırılan bir tümleştirme çalışma zamanı ayarlamak için [burada](https://docs.microsoft.com/azure/purview/manage-integration-runtimes) bahsedilen adımları kullanın
+1.  Yönetim Merkezi 'nde **tümleştirme çalışma zamanları**' na tıklayın. Şirket içinde barındırılan bir tümleştirme çalışma zamanının ayarlandığından emin olun. Ayarlanmamışsa, şirket içinde barındırılan bir tümleştirme çalışma zamanı ayarlamak için [burada](./manage-integration-runtimes.md) bahsedilen adımları kullanın
 
 2.  **Kaynaklara** gidin
 
@@ -90,7 +90,7 @@ Yeni bir tarama oluşturup çalıştırmak için aşağıdakileri yapın:
     -   Kullanıcı adı giriş alanındaki veritabanı sunucusuna bağlanmak için bir Kullanıcı adı belirtin
     -   Veritabanı sunucusu parolasını gizli anahtar olarak depolayın.
 
-        Kimlik bilgileri hakkında daha fazla bilgi edinmek için [buradaki](https://docs.microsoft.com/azure/purview/manage-credentials) bağlantıya bakın
+        Kimlik bilgileri hakkında daha fazla bilgi edinmek için [buradaki](./manage-credentials.md) bağlantıya bakın
 
 6.  **Şema**: içeri aktarılacak, noktalı virgülle ayrılmış bir liste olarak ifade edilen şemaların alt kümesini listeleyin. ör., Schema1; schema2. Tüm Kullanıcı şemaları, bu liste boşsa içeri aktarılır. Tüm sistem şemaları (örneğin, SysAdmin) ve nesneler varsayılan olarak yok sayılır. Liste boş olduğunda, kullanılabilir tüm şemalar içeri aktarılır.
 

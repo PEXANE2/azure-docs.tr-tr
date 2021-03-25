@@ -1,26 +1,24 @@
 ---
-title: .NET-Azure depolama ile Blobları listeleme
-description: .NET istemci kitaplığını kullanarak Azure Storage hesabınızdaki bir kapsayıcıdaki Blobları listeleyeceğinizi öğrenin. Kod örnekleri, blob 'ların bir düz listede nasıl ekleneceğini ya da dizin veya klasörler halinde düzenlendikleri gibi Blobları hiyerarşik olarak nasıl listelemiş olduğunu gösterir.
+title: Azure depolama API 'Leri ile Blobları listeleme
+description: Azure depolama istemci kitaplıklarını kullanarak Depolama hesabınızdaki Blobları listeleme hakkında bilgi edinin. Kod örnekleri, blob 'ların bir düz listede nasıl ekleneceğini ya da dizin veya klasörler halinde düzenlendikleri gibi Blobları hiyerarşik olarak nasıl listelemiş olduğunu gösterir.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 03/24/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ddd19c90c8c47016497e2c3b00e04595a94e7715
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ff20b8bd0aab94cadadddbb7a4b7b32b1db1ee85
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95543077"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046951"
 ---
-# <a name="list-blobs-with-net"></a>.NET ile Blobları listeleme
+# <a name="list-blobs-with-azure-storage-client-libraries"></a>Azure Storage istemci kitaplıkları ile Blobları listeleme
 
 Kodlarınızdan blob 'ları listelürsünüz, sonuçların Azure depolama 'dan nasıl döndürüleceğini yönetmek için bir dizi seçenek belirtebilirsiniz. Her bir sonuç kümesinde döndürülecek sonuç sayısını belirtebilir ve ardından sonraki kümeleri elde edebilirsiniz. Adları bu karakterle veya dizeyle başlayan Blobları döndürmek için bir ön ek belirtebilirsiniz. Blob 'ları düz bir liste yapısında veya hiyerarşik olarak listeleyebilirsiniz. Hiyerarşik bir liste Blobları klasörler halinde düzenlenmiş gibi döndürür.
-
-Bu makalede, [.net Için Azure Storage istemci kitaplığı](/dotnet/api/overview/azure/storage)kullanılarak Blobların nasıl listeyapılacağı gösterilmektedir.  
 
 ## <a name="understand-blob-listing-options"></a>Blob listeleme seçeneklerini anlama
 
@@ -45,7 +43,9 @@ Bir kapsayıcıdaki Blobları listelemek için şu yöntemlerden birini çağır
 - [CloudBlobContainer. Listblobskesimli](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmented)
 - [CloudBlobContainer. ListBlobsSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmentedasync)
 
-Bu yöntemlerin aşırı yüklemeleri, Blobların listeleme işlemi tarafından nasıl döndürüldüğünü yönetmek için ek seçenekler sağlar. Bu seçenekler aşağıdaki bölümlerde açıklanmıştır.
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+- [ContainerClient.list_blobs](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.containerclient#list-blobs-name-starts-with-none--include-none----kwargs-)
 
 ---
 
@@ -61,13 +61,25 @@ Blobların listesini filtrelemek için, parametre için bir dize belirtin `prefi
 
 Sonuçlarla blob meta verileri döndürebilirsiniz.
 
-- .NET V12 SDK kullanıyorsanız [Blobnitelikleri](/dotnet/api/azure.storage.blobs.models.blobtraits) numaralandırması Için **meta veri** değerini belirtin.
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
-- .NET v11 SDK kullanıyorsanız, [Bloblistingdetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) numaralandırması Için **meta veri** değerini belirtin. Azure depolama, her blob döndürülen meta verileri içerir, bu nedenle blob meta verilerini almak için bu bağlamdaki **Fetchattributes** yöntemlerinden birini çağırmanız gerekmez.
+[Blobnitelikleri](/dotnet/api/azure.storage.blobs.models.blobtraits) numaralandırması Için **meta veri** değerini belirtin.
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
+[Bloblistingdetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) numaralandırması Için **meta veri** değerini belirtin. Azure depolama, her blob döndürülen meta verileri içerir, bu nedenle blob meta verilerini almak için bu bağlamdaki **Fetchattributes** yöntemlerinden birini çağırmanız gerekmez.
+
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+`metadata` `include=` [List_blobs](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.containerclient#list-blobs-name-starts-with-none--include-none----kwargs-)çağrılırken parametre için belirtin.
+
+---
 
 ### <a name="list-blob-versions-or-snapshots"></a>Blob sürümlerini veya anlık görüntülerini Listele
 
-Blob sürümlerini veya anlık görüntüleri .NET V12 istemci kitaplığı ile listelemek için **Sürüm** veya **anlık görüntü** alanıyla [blobstates](/dotnet/api/azure.storage.blobs.models.blobstates) parametresini belirtin. Sürümler ve anlık görüntüler en eskiden en yeniye listelenmiştir. Sürümleri listeleme hakkında daha fazla bilgi için bkz. [BLOB sürümlerini listeleme](versioning-enable.md#list-blob-versions).
+- Blob sürümlerini veya anlık görüntüleri .NET V12 istemci kitaplığı ile listelemek için **Sürüm** veya **anlık görüntü** alanıyla [blobstates](/dotnet/api/azure.storage.blobs.models.blobstates) parametresini belirtin. Sürümler ve anlık görüntüler en eskiden en yeniye listelenmiştir. Sürümleri listeleme hakkında daha fazla bilgi için bkz. [BLOB sürümlerini listeleme](versioning-enable.md#list-blob-versions).
+
+- Python V12 istemci kitaplığı ile anlık görüntü sayısını listelemek için `num_snapshots` `include=` [list_blobs](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.containerclient#list-blobs-name-starts-with-none--include-none----kwargs-)çağrılırken parametresini belirtin.
 
 ### <a name="flat-listing-versus-hierarchical-listing"></a>Düz liste ve hiyerarşik listeye karşı
 
@@ -135,11 +147,15 @@ private static async Task ListBlobsFlatListingAsync(CloudBlobContainer container
 }
 ```
 
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/list_blobs.py" id="Snippet_ListBlobs":::
+
 ---
 
 Örnek çıkış şuna benzerdir:
 
-```
+```console
 Blob name: FolderA/blob1.txt
 Blob name: FolderA/blob2.txt
 Blob name: FolderA/blob3.txt
@@ -153,7 +169,7 @@ Blob name: FolderA/FolderB/FolderC/blob3.txt
 
 ## <a name="use-a-hierarchical-listing"></a>Hiyerarşik bir liste kullanın
 
-Bir Listeleme işlemini hiyerarşik olarak çağırdığınızda, Azure Storage hiyerarşinin ilk düzeyindeki sanal dizinleri ve Blobları döndürür. Her sanal dizinin [önek](/dotnet/api/microsoft.azure.storage.blob.cloudblobdirectory.prefix) özelliği, bir sonraki dizini almak için bir özyinelemeli çağrıda öneki geçirebilmeniz için ayarlanır.
+Bir Listeleme işlemini hiyerarşik olarak çağırdığınızda, Azure Storage hiyerarşinin ilk düzeyindeki sanal dizinleri ve Blobları döndürür.
 
 # <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
@@ -164,6 +180,8 @@ Aşağıdaki örnek, belirtilen kapsayıcıdaki Blobları, isteğe bağlı bir k
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ListBlobsHierarchicalListing":::
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
+Her sanal dizinin [önek](/dotnet/api/microsoft.azure.storage.blob.cloudblobdirectory.prefix) özelliği, bir sonraki dizini almak için bir özyinelemeli çağrıda öneki geçirebilmeniz için ayarlanır.
 
 Blobları hiyerarşik olarak listelemek için, `useFlatBlobListing` Listeleme yönteminin parametresini **false** olarak ayarlayın.
 
@@ -222,11 +240,19 @@ private static async Task ListBlobsHierarchicalListingAsync(CloudBlobContainer c
 }
 ```
 
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+Blobları hiyerarşik olarak listelemek için [walk_blobs](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.containerclient#walk-blobs-name-starts-with-none--include-none--delimiter--------kwargs-) yöntemini çağırın.
+
+Aşağıdaki örnek, belirtilen kapsayıcıdaki Blobları, isteğe bağlı bir kesim boyutuyla belirtilen hiyerarşik bir liste kullanılarak listeler ve BLOB adını konsol penceresine yazar.
+
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/list_blobs.py" id="Snippet_WalkHierarchy":::
+
 ---
 
 Örnek çıkış şuna benzerdir:
 
-```
+```console
 Virtual directory prefix: FolderA/
 Blob name: FolderA/blob1.txt
 Blob name: FolderA/blob2.txt

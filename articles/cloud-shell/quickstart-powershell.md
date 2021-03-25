@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 10/18/2018
-ms.openlocfilehash: d4a7f1453ec686cfa16d260101ba81f429ce1da0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7ff58c4e463b4ad47680b9140403e9ae5e22b057
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89469465"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045289"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Azure Cloud Shell 'de PowerShell için hızlı başlangıç
 
@@ -51,107 +51,6 @@ ResourceGroupName       Name       Location                VmSize   OsType     P
 MyResourceGroup2        Demo        westus         Standard_DS1_v2  Windows    Succeeded           running
 MyResourceGroup         MyVM1       eastus            Standard_DS1  Windows    Succeeded           running
 MyResourceGroup         MyVM2       eastus   Standard_DS2_v2_Promo  Windows    Succeeded           deallocated
-```
-
-## <a name="navigate-azure-resources"></a>Azure kaynaklarında gezin
-
- 1. Tüm aboneliklerinizi sürücüden listeleyin `Azure`
-
-    ```azurepowershell-interactive
-    PS Azure:\> dir
-    ```
-
- 2. `cd` tercih ettiğiniz abonelik için
-
-    ```azurepowershell-interactive
-    PS Azure:\> cd MySubscriptionName
-    PS Azure:\MySubscriptionName>
-    ```
-
- 3. Geçerli abonelik kapsamındaki tüm Azure kaynaklarınızı görüntüleyin
-
-    `dir`Azure kaynaklarınızın birden çok görünümünü listelemek için yazın.
-
-    ```azurepowershell-interactive
-    PS Azure:\MySubscriptionName> dir
-
-        Directory: azure:\MySubscriptionName
-
-    Mode Name
-    ---- ----
-    +    AllResources
-    +    ResourceGroups
-    +    StorageAccounts
-    +    VirtualMachines
-    +    WebApps
-    ```
-
-### <a name="allresources-view"></a>AllResources görünümü
-
-`dir` `AllResources` Azure kaynaklarınızı görüntülemek için dizin altına yazın.
-
-```azurepowershell-interactive
-PS Azure:\MySubscriptionName> dir AllResources
-```
-
-### <a name="explore-resource-groups"></a>Kaynak gruplarını keşfet
-
- `ResourceGroups`Sanal makineler bulmak için dizine ve belirli bir kaynak grubunun içine gidebilirsiniz.
-
-```azurepowershell-interactive
-PS Azure:\MySubscriptionName> cd ResourceGroups\MyResourceGroup1\Microsoft.Compute\virtualMachines
-
-PS Azure:\MySubscriptionName\ResourceGroups\MyResourceGroup1\Microsoft.Compute\virtualMachines> dir
-
-
-    Directory: Azure:\MySubscriptionName\ResourceGroups\MyResourceGroup1\Microsoft.Compute\virtualMachines
-
-
-VMName    Location   ProvisioningState VMSize          OS            SKU             OSVersion AdminUserName  NetworkInterfaceName
-------    --------   ----------------- ------          --            ---             --------- -------------  --------------------
-TestVm1   westus     Succeeded         Standard_DS2_v2 WindowsServer 2016-Datacenter Latest    AdminUser      demo371
-TestVm2   westus     Succeeded         Standard_DS1_v2 WindowsServer 2016-Datacenter Latest    AdminUser      demo271
-```
-
-> [!NOTE]
-> İkinci kez yazdığınızda `dir` Cloud Shell öğeleri çok daha hızlı bir şekilde görüntüleyebileceğini fark edebilirsiniz.
-> Bunun nedeni, daha iyi bir kullanıcı deneyimi için alt öğelerin bellekte önbelleğe alınmasıdır.
-Ancak, `dir -Force` yeni verileri almak için her zaman kullanabilirsiniz.
-
-### <a name="navigate-storage-resources"></a>Depolama kaynaklarında gezin
-
-`StorageAccounts`Dizine girerek, tüm depolama kaynaklarınızda kolayca gezinebilirsiniz
-
-```azurepowershell-interactive
-PS Azure:\MySubscriptionName\StorageAccounts\MyStorageAccountName\Files> dir
-
-    Directory: Azure:\MySubscriptionNameStorageAccounts\MyStorageAccountName\Files
-
-Name          ConnectionString
-----          ----------------
-MyFileShare1  \\MyStorageAccountName.file.core.windows.net\MyFileShare1;AccountName=MyStorageAccountName AccountKey=<key>
-MyFileShare2  \\MyStorageAccountName.file.core.windows.net\MyFileShare2;AccountName=MyStorageAccountName AccountKey=<key>
-MyFileShare3  \\MyStorageAccountName.file.core.windows.net\MyFileShare3;AccountName=MyStorageAccountName AccountKey=<key>
-```
-
-Bağlantı dizesiyle, Azure dosya paylaşımının bağlanması için aşağıdaki komutu kullanabilirsiniz.
-
-```azurepowershell-interactive
-net use <DesiredDriveLetter>: \\<MyStorageAccountName>.file.core.windows.net\<MyFileShareName> <AccountKey> /user:Azure\<MyStorageAccountName>
-```
-
-Ayrıntılar için bkz. [Azure dosya paylaşma bağlama ve Windows 'da paylaşıma erişme][azmount].
-
-Ayrıca, Azure dosyaları paylaşımının altındaki dizinlere aşağıdaki gibi gidebilirsiniz:
-
-```azurepowershell-interactive
-PS Azure:\MySubscriptionName\StorageAccounts\MyStorageAccountName\Files> cd .\MyFileShare1\
-PS Azure:\MySubscriptionName\StorageAccounts\MyStorageAccountName\Files\MyFileShare1> dir
-
-Mode  Name
-----  ----
-+     TestFolder
-.     hello.ps1
 ```
 
 ### <a name="interact-with-virtual-machines"></a>Sanal makinelerle etkileşim kurma

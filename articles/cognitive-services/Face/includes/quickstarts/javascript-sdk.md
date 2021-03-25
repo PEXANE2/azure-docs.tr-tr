@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 11/05/2020
 ms.author: v-jawe
-ms.openlocfilehash: b4a63f76cbcd9e98295f5edcf7ff2d06979e6556
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 590ad577f3648ea9214ec4dcb6b6cab59dd5a3f1
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102244681"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105105655"
 ---
 ## <a name="quickstart-face-client-library-for-javascript"></a>Hızlı başlangıç: JavaScript için yüz istemci kitaplığı
 
@@ -79,7 +79,7 @@ Kaynağınızın Azure uç noktası ve anahtarı için değişkenler oluşturun.
 > [!IMPORTANT]
 > Azure portala gidin. **Önkoşullar** bölümünde oluşturduğunuz yüz kaynağı başarıyla dağıtılırsa, **sonraki adımlar** altında **Kaynağa Git** düğmesine tıklayın. Anahtar ve uç noktanızı kaynağın **anahtar ve uç nokta** sayfasında, **kaynak yönetimi** altında bulabilirsiniz. 
 >
-> İşiniz bittiğinde kodu koddan kaldırmayı unutmayın ve hiçbir zaman herkese açık bir şekilde nakletmeyin. Üretim için, kimlik bilgilerinizi depolamak ve bunlara erişmek için güvenli bir yol kullanmayı düşünün. Daha fazla bilgi için bilişsel Hizmetler [güvenlik](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security) makalesine bakın.
+> İşiniz bittiğinde kodu koddan kaldırmayı unutmayın ve hiçbir zaman herkese açık bir şekilde nakletmeyin. Üretim için, kimlik bilgilerinizi depolamak ve bunlara erişmek için güvenli bir yol kullanmayı düşünün. Daha fazla bilgi için bilişsel Hizmetler [güvenlik](../../../cognitive-services-security.md) makalesine bakın.
 
 ```javascript
 key = "<paste-your-face-key-here>"
@@ -114,7 +114,7 @@ Aşağıdaki kod parçacıkları, .NET için yüz istemci kitaplığı ile aşa�
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
-Uç noktanız ve anahtarınızla bir istemci örneği oluşturun. Anahtarınızla bir **[Apikeycredentials](https://docs.microsoft.com/javascript/api/@azure/ms-rest-js/apikeycredentials)** nesnesi oluşturun ve bir **[faceclient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/faceclient)** nesnesi oluşturmak için bunu uç noktanızla birlikte kullanın.
+Uç noktanız ve anahtarınızla bir istemci örneği oluşturun. Anahtarınızla bir **[Apikeycredentials](/javascript/api/@azure/ms-rest-js/apikeycredentials)** nesnesi oluşturun ve bir **[faceclient](/javascript/api/@azure/cognitiveservices-face/faceclient)** nesnesi oluşturmak için bunu uç noktanızla birlikte kullanın.
 
 :::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="credentials":::
 
@@ -216,7 +216,7 @@ Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağ
 Bu hızlı başlangıçta, temel olarak yüz tanıma görevlerini yapmak için yüz istemci kitaplığını JavaScript için nasıl kullanacağınızı öğrendiniz. Daha sonra, kitaplık hakkında daha fazla bilgi edinmek için başvuru belgelerini inceleyin.
 
 > [!div class="nextstepaction"]
-> [Yüz Tanıma API'si Başvurusu (JavaScript)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/)
+> [Yüz Tanıma API'si Başvurusu (JavaScript)](/javascript/api/@azure/cognitiveservices-face/)
 
 * [Yüz Tanıma hizmeti nedir?](../../overview.md)
 * Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/Face/sdk_quickstart.js)' da bulunabilir.

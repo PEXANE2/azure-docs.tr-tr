@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 2/11/2021
-ms.openlocfilehash: 104e6503ba47d17c17cfec2b4e62ec3f69f18330
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f7463b6234c03a9ed79f1c4a9fb310db7067a428
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103200024"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043572"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>PostgreSQL için Azure veritabanı 'nda bağlantı mimarisi
 Bu makalede PostgreSQL için Azure veritabanı bağlantı mimarisi ve trafiğin Azure 'daki ve dışındaki istemcilerden PostgreSQL için Azure veritabanı örneğine nasıl yönlendirildiği açıklanmaktadır.
@@ -99,7 +99,7 @@ Yalnızca ağ geçidi düğümlerinin yetkisi alınacaktır. Kullanıcılar sunu
 ### <a name="how-can-you-validate-if-your-connections-are-going-to-old-gateway-nodes-or-new-gateway-nodes"></a>Bağlantılarınızın eski ağ geçidi düğümlerine veya yeni ağ geçidi düğümlerine gittiğini nasıl doğrulayabileceğiniz?
 Örneğin, sunucunuzun FQDN 'sine ping gönderin  ``ping xxx.postgres.database.azure.com`` . Döndürülen IP adresi, yukarıdaki belgede ağ geçidi IP adresleri (yetki alma) altında listelenen IP 'lerden biri ise, bağlantınızın eski ağ geçidi üzerinden gittiğini gösterir. Yazdığında, döndürülen IP adresi ağ geçidi IP adresleri altında listelenen IP 'lerden biri ise, bağlantınızın yeni ağ geçidi üzerinden gittiğini gösterir.
 
-Ayrıca, bağlantı noktası 3306 ile istemci uygulamanızdan veritabanı sunucusunu [Psping](https://docs.microsoft.com/sysinternals/downloads/psping) veya bir şekilde görüntüleyerek test edebilir ve dönüş IP adresi, YETKI alma IP adreslerinden biri olmadığından emin olabilirsiniz
+Ayrıca, bağlantı noktası 3306 ile istemci uygulamanızdan veritabanı sunucusunu [Psping](/sysinternals/downloads/psping) veya bir şekilde görüntüleyerek test edebilir ve dönüş IP adresi, YETKI alma IP adreslerinden biri olmadığından emin olabilirsiniz
 
 ### <a name="how-do-i-know-when-the-maintenance-is-over-and-will-i-get-another-notification-when-old-ip-addresses-are-decommissioned"></a>Nasıl yaparım?, bakımın ne zaman üzerinde olduğunu ve eski IP adresleri kullanımdan çalıştırıldığında başka bir bildirim alabilirim mi?
 Bakım işini başlatacağız sizi bilgilendirmek için bir e-posta alacaksınız. Bakım, al bölgelerinde geçirilmesi gereken sunucu sayısına bağlı olarak bir aya kadar sürebilir. Lütfen istemcinizi FQDN kullanarak veya yukarıdaki tablodaki yeni IP adresini kullanarak veritabanı sunucusuna bağlanmasını hazırlayın. 

@@ -3,12 +3,12 @@ title: Uygulama senaryoları ve tasarımı
 description: Service Fabric içindeki bulut uygulamalarının kategorilerine genel bakış. Durum bilgisiz ve durum bilgisi olmayan hizmetler kullanan uygulama tasarımını açıklar.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 6c3cc931a85b91fc02b8086ca5c2481153691e54
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7d9459e6e0168657cf8e9062331fec0237f58c70
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96575678"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105045765"
 ---
 # <a name="service-fabric-application-scenarios"></a>Service Fabric uygulama senaryoları
 
@@ -68,7 +68,7 @@ Durum bilgisi olmayan hizmetler kullanan uygulama aşağıda verilmiştir: ![][I
 
 * Service Fabric [Reliable Services](service-fabric-reliable-services-quick-start.md) ve [Reliable Actors](service-fabric-reliable-actors-get-started.md) programlama modelleriyle durum bilgisiz ve durum bilgisi olmayan hizmetler oluşturmaya başlayın.
 * [Azure 'da mikro hizmetler oluşturma](/azure/architecture/microservices/)konusunda rehberlik için Azure mimari Merkezi ziyaret edin.
-* Uygulama tasarım kılavuzu için [Azure Service Fabric uygulama ve küme en iyi uygulamalarına](service-fabric-best-practices-overview.md) gidin.
+* Uygulama tasarım kılavuzu için [Azure Service Fabric uygulama ve küme en iyi uygulamalarına](./service-fabric-best-practices-security.md) gidin.
 
 * Ayrıca bkz:
   * [Mikro hizmetleri anlama](service-fabric-overview-microservices.md)

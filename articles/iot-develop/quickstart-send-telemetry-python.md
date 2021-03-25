@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/11/2021
-ms.openlocfilehash: d0dcca0c4be801f385a48afcd41b6a547bab3fbe
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5d872dd7c94a0b3ab23623bb246ff7ae81609779
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "100654960"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047176"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-azure-iot-central-python"></a>Hızlı başlangıç: cihazdan Azure IoT Central telemetri gönderme (Python)
 
@@ -266,5 +266,5 @@ Bu hızlı başlangıçta, bir cihazı buluta güvenli bir şekilde bağlamak ve
 Sonraki adım olarak, uygulama örnekleri aracılığıyla Azure IoT Python SDK 'sını keşfedebilirsiniz.
 
 - [Zaman uyumsuz örnekler](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-hub-scenarios): Bu dizin, ek IoT Hub senaryolar için zaman uyumsuz Python örnekleri içerir.
-- [Zaman uyumlu örnekler](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/sync-samples): Bu dizin Python 2,7 ile kullanmak için Python örnekleri veya Python 3.5 + için zaman uyumlu uyumluluk senaryoları içerir
+- [Zaman uyumlu örnekler](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/sync-samples): Bu dizin Python 2,7 ile kullanmak için Python örnekleri veya Python 3.6 + için zaman uyumlu uyumluluk senaryoları içerir
 - [IoT Edge örnekleri](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-edge-scenarios): Bu dizin, Edge modülleri ve aşağı akış cihazlarıyla çalışmak için Python örnekleri içerir.
