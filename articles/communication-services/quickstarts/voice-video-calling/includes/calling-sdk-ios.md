@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: e9c889dcffe42fde244f8a35ce42032e84d78fff
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d36bf92a1b1bdef4e45b22b934728b3e8c46c3da
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103488142"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107768"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -23,7 +23,7 @@ ms.locfileid: "103488142"
 ### <a name="creating-the-xcode-project"></a>Xcode projesi oluşturma
 
 > [!NOTE]
-> Bu belge, çağıran istemci kitaplığının 1.0.0-Beta. 8 sürümünü kullanır.
+> Bu belge, çağıran SDK 'nın 1.0.0-Beta. 8 sürümünü kullanır.
 
 Xcode 'da yeni bir iOS projesi oluşturun ve **tek görünüm uygulama** şablonunu seçin. Bu hızlı başlangıç, [swiftuı çerçevesini](https://developer.apple.com/xcode/swiftui/)kullanır, bu nedenle **dili** **Swift** ve **Kullanıcı arabirimine** **swiftuı** olarak ayarlamanız gerekir. Bu hızlı başlangıç sırasında birim testleri veya UI testleri oluşturuyoruz. **Birim testlerini dahil etme** işaretini kaldırın ve ayrıca **UI testlerini Ekle** seçeneğinin işaretini kaldırın.
 
@@ -68,12 +68,12 @@ import AVFoundation
 
 ## <a name="object-model"></a>Nesne modeli
 
-Aşağıdaki sınıflar ve arabirimler, Azure Iletişim hizmetlerinin iOS için istemci kitaplığını çağıran bazı önemli özelliklerinden bazılarını işler.
+Aşağıdaki sınıflar ve arabirimler, iOS için SDK 'Yı çağıran Azure Iletişim Hizmetleri 'nin bazı önemli özelliklerinden bazılarını işler.
 
 
 | Ad                                  | Açıklama                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| CallClient | CallClient, çağıran istemci kitaplığı için ana giriş noktasıdır.|
+| CallClient | CallClient, çağıran SDK 'ya ana giriş noktasıdır.|
 | CallAgent | CallAgent, çağrıları başlatmak ve yönetmek için kullanılır. |
 | CommunicationTokenCredential | CommunicationTokenCredential, CallAgent örneğini oluşturmak için belirteç kimlik bilgileri olarak kullanılır.| 
 | Communicationıdentifier | Communicationıdentifier, aşağıdakilerin biri olabilecek Kullanıcı kimliğini göstermek için kullanılır: Communicationuserıdentifier/Phonenumberıdentifier/CallingApplication. |
@@ -131,7 +131,7 @@ callClient?.createCallAgent(userCredential: userCredential!,
 
 ## <a name="place-an-outgoing-call"></a>Giden bir çağrı yerleştir
 
-Bir çağrı oluşturmak ve başlatmak için, üzerindeki API 'lerden birini çağırmanız `CallAgent` ve Iletişim Hizmetleri Yönetimi istemci kitaplığı aracılığıyla sağladığınız bir kullanıcının Iletişim Hizmetleri kimliğini sağlamanız gerekir.
+Bir çağrı oluşturmak ve başlatmak için, üzerindeki API 'lerden birini çağırmanız `CallAgent` ve Iletişim Hizmetleri Yönetim SDK 'sını kullanarak sağladığınız bir kullanıcının Iletişim Hizmetleri kimliğini sağlamanız gerekir.
 
 Çağrı oluşturma ve başlatma zaman uyumludur. Çağrıda tüm olaylara abone olmanızı sağlayan bir çağrı örneği alacaksınız.
 

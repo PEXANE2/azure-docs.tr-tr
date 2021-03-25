@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: fc5da3f4ac5bf9a08e16a931d54dfbf6a2fb9f48
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ad88a7a6c91128bb863eeb51cc7f26c8d71b9eed
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495802"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107916"
 ---
 # <a name="pricing-scenarios"></a>Fiyatlandırma senaryoları
 
@@ -25,7 +25,7 @@ Azure Iletişim Hizmetleri için fiyatlara genellikle Kullandıkça Öde modeli 
 
 ## <a name="voicevideo-calling-and-screen-sharing"></a>Ses/video çağırma ve ekran paylaşımı
 
-Azure Iletişim Hizmetleri, uygulamalarınıza ses/video çağırma ve ekran paylaşımı ekleme için izin verir. JavaScript, amaç-C (Apple), Java (Android) veya .NET istemci kitaplıklarını kullanarak deneyimlerinizi uygulamalarınıza ekleyebilirsiniz. [Kullanılabilir istemci kitaplıklarının tam listesini](./sdk-options.md)inceleyin.
+Azure Iletişim Hizmetleri, uygulamalarınıza ses/video çağırma ve ekran paylaşımı ekleme için izin verir. JavaScript, amaç-C (Apple), Java (Android) veya .NET SDK 'Ları kullanarak deneyimlerinizi uygulamalarınıza ekleyebilirsiniz. [Kullanılabilir SDK 'ların tam listesini](./sdk-options.md)inceleyin.
 
 ### <a name="pricing"></a>Fiyatlandırma
 
@@ -33,9 +33,9 @@ Azure Iletişim Hizmetleri, uygulamalarınıza ses/video çağırma ve ekran pay
 
 Her çağrının katılımcısı, çağrıya bağlı oldukları her dakika için faturalandırmaya göre sayılır. Bu, kullanıcının video çağırma, sesli arama veya ekran paylaşımı olmasına bakılmaksızın doğru bir şekilde geçerlidir.
 
-### <a name="pricing-example-group-audiovideo-call-using-js-and-ios-client-libraries"></a>Fiyatlandırma örneği: JS ve iOS istemci kitaplıklarını kullanarak ses/video çağrısını gruplayın
+### <a name="pricing-example-group-audiovideo-call-using-js-and-ios-sdks"></a>Fiyatlandırma örneği: JS ve iOS SDK 'larını kullanarak ses/video çağrısını gruplayın
 
-Çiğdem, iş arkadaşları, Bob ve Charlie ile bir grup çağrısı yaptı. Gamze ve Bob, JS istemci kitaplıklarını, Charlie iOS istemci kitaplıklarını kullandı.
+Çiğdem, iş arkadaşları, Bob ve Charlie ile bir grup çağrısı yaptı. Gamze ve Bob, JS SDK 'Ları, Charlie iOS SDK 'Ları kullandı.
 
 - Çağrı toplam 60 dakika sürer.
 - Çiğdem ve Bob tüm çağrı için katılmış. Çiğdem, videosunu beş dakika boyunca açmıştır ve ekranı 23 dakika boyunca paylaşıyordu. Bob, tüm çağrı (60 dakika) için videoyu ve 12 dakika boyunca paylaşılan ekranını içeriyordu.
@@ -48,9 +48,9 @@ Her çağrının katılımcısı, çağrıya bağlı oldukları her dakika için
 
 **Grup çağrısı Için toplam maliyet**: $0,48 + $0,172 = $0,652
 
-### <a name="pricing-example-a-user-of-the-communication-services-js-client-library-joins-a-scheduled-microsoft-teams-meeting"></a>Fiyatlandırma örneği: Iletişim Hizmetleri JS istemci kitaplığı 'nın bir kullanıcısı, zamanlanmış bir Microsoft ekipleri toplantısı 'nı birleştirir
+### <a name="pricing-example-a-user-of-the-communication-services-javascript-sdk-joins-a-scheduled-microsoft-teams-meeting"></a>Fiyatlandırma örneği: Iletişim Hizmetleri JavaScript SDK 'sının bir kullanıcısı, zamanlanmış bir Microsoft ekipleri toplantısı 'nı birleştirir
 
-Çiğdem, hasta, Bob ile bir doktor toplantısı. Çiğdem, takımlar masaüstü uygulamasından ziyaret eden öğesine katılacaktır. Bob, Iletişim Hizmetleri JS istemci kitaplığı 'nı kullanarak toplantıya bağlanan sağlık sağlayıcısı Web sitesini kullanarak katılması için bir bağlantı gönderilir. Bob, bir Web tarayıcısı (Safari ile iPhone) kullanarak toplantıyı girmek için cep telefonuyla birlikte kullanır. Sohbet, sanal ziyaret sırasında kullanılabilir olacaktır.
+Çiğdem, hasta, Bob ile bir doktor toplantısı. Çiğdem, takımlar masaüstü uygulamasından ziyaret eden öğesine katılacaktır. Bob, Iletişim Hizmetleri JavaScript SDK 'sını kullanarak toplantıya bağlanan sağlık sağlayıcısı Web sitesini kullanarak katılması için bir bağlantı gönderilir. Bob, bir Web tarayıcısı (Safari ile iPhone) kullanarak toplantıyı girmek için cep telefonuyla birlikte kullanır. Sohbet, sanal ziyaret sırasında kullanılabilir olacaktır.
 
 - Çağrı toplam 30 dakika sürer.
 - Çiğdem ve Bob tüm çağrıya katılın. Çiğdem, çağrı başladıktan beş dakika sonra videoyu etkinleştirir ve ekranı 13 dakika boyunca paylaşır. Bob 'un tüm çağrı için videosunu sunun.
@@ -67,13 +67,13 @@ Her çağrının katılımcısı, çağrıya bağlı oldukları her dakika için
 * Çiğdem 'in katılımı takımlar lisanslarından alınmıştır. Azure faturanızda, ekip kullanıcılarının Iletişim Hizmetleri kullanıcılarına sahip olduğu dakika ve sohbet iletileri, ancak takımlar istemcisinden kaynaklanan bu dakikalar ve mesajlar ücretlendirilecektir.
 
 **Ziyaret Için toplam maliyet**:
-- Iletişim Hizmetleri JS istemci kitaplığı 'nı kullanarak katılan Kullanıcı: $0,12 + $0,0024 = $0,1224
+- Iletişim Hizmetleri JavaScript SDK 'Sı kullanılarak katılan Kullanıcı: $0,12 + $0,0024 = $0,1224
 - Ekipler için Kullanıcı katılım masaüstü uygulaması: $0 (takımlar lisansı kapsamında)
 
 
 ## <a name="chat"></a>Sohbet
 
-Iletişim hizmetleriyle, iki veya daha fazla kullanıcı arasında sohbet iletileri gönderme ve alma özelliğiyle uygulamanızı geliştirebilirsiniz. Sohbet istemci kitaplıkları JavaScript, .NET, Python ve Java için kullanılabilir. [İstemci kitaplıkları hakkında bilgi edinmek için bu sayfaya](./sdk-options.md) bakın
+Iletişim hizmetleriyle, iki veya daha fazla kullanıcı arasında sohbet iletileri gönderme ve alma özelliğiyle uygulamanızı geliştirebilirsiniz. Sohbet SDK 'Ları JavaScript, .NET, Python ve Java için kullanılabilir. SDK 'lar [hakkında bilgi edinmek için bu sayfaya](./sdk-options.md) bakın
 
 ### <a name="price"></a>Fiyat
 

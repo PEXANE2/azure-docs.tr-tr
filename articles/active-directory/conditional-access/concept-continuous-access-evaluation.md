@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 562c90dcc4f802290b0ed8b4d544fce9d526fa10
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9a2c83fc0f4776e1ded2c8c12cb990ab227f048b
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99524677"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105109021"
 ---
 # <a name="continuous-access-evaluation"></a>Sürekli erişim değerlendirmesi
 
@@ -52,6 +52,9 @@ Sürekli erişim değerlendirmesi, Exchange Online, SharePoint Online ve takıml
 
 Bu işlem, kullanıcıların kurumsal SharePoint Online dosyalarına, e-postaya, takvime veya görevlere ve bu kritik olaylardan biri dakika içinde Microsoft 365 istemci uygulamalarından gelen takımlara erişimi kaybettiği senaryoya olanak sağlar. 
 
+> [!NOTE] 
+> Takımlar henüz Kullanıcı risk olaylarını desteklemez.
+
 ### <a name="conditional-access-policy-evaluation-preview"></a>Koşullu erişim ilkesi değerlendirmesi (Önizleme)
 
 Exchange ve SharePoint, hizmet içinde değerlendirilebilecek şekilde anahtar koşullu erişim ilkelerini eşitlenebilir.
@@ -59,11 +62,11 @@ Exchange ve SharePoint, hizmet içinde değerlendirilebilecek şekilde anahtar k
 Bu işlem, kullanıcıların ağ konumu değişikliklerinden hemen sonra Microsoft 365 istemci uygulamalarından veya SharePoint Online 'dan kurumsal dosyalara, e-postaya, takvime veya görevlere erişimi kaybetmediği senaryoyu sağlar.
 
 > [!NOTE]
-> Tüm uygulama ve kaynak sağlayıcısı birleşimi desteklenmez. Aşağıdaki tabloya bakın. Office, Word, Excel ve PowerPoint 'e başvurur
+> Tüm uygulama ve kaynak sağlayıcısı birleşimi desteklenmez. Aşağıdaki tabloya bakın. Office, Word, Excel ve PowerPoint 'e başvurur.
 
 | | Outlook Web | Outlook Win32 | Outlook iOS | Outlook Android | Outlook Mac |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **SharePoint Online** | Desteklenir | Desteklenir | Desteklenmiyor | Desteklenmiyor | Desteklenir |
+| **SharePoint Online** | Desteklenir | Desteklenir | Desteklenir | Desteklenir | Desteklenir |
 | **Exchange Online** | Desteklenir | Desteklenir | Desteklenir | Desteklenir | Desteklenir |
 
 | | Office Web uygulamaları | Office Win32 uygulamaları | İOS için Office | Android için Office | Mac için Office |
@@ -71,23 +74,20 @@ Bu işlem, kullanıcıların ağ konumu değişikliklerinden hemen sonra Microso
 | **SharePoint Online** | Desteklenmiyor | Desteklenir | Desteklenir | Desteklenir | Desteklenir |
 | **Exchange Online** | Desteklenmiyor | Desteklenir | Desteklenir | Desteklenir | Desteklenir |
 
+| | OneDrive web | OneDrive Win32 | OneDrive iOS | OneDrive Android | OneDrive Mac |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **SharePoint Online** | Desteklenir | Desteklenir | Desteklenir | Desteklenir | Desteklenir |
+
 ### <a name="client-side-claim-challenge"></a>İstemci tarafı talebi sınaması
 
 Sürekli erişim değerlendirmesinden önce istemciler, süresi dolmayan sürece erişim belirtecini her zaman kendi önbelleğinden yeniden yürütmeye çalışır. CAE sayesinde, bir kaynak sağlayıcının, zaman aşımına ermese bile bir belirteci reddedebileceği yeni bir durum sunuyoruz. Önbelleğe alınmış belirteçlerin dolmasa bile, istemcilerin önbelleğini atlamasına bildirmek için, belirtecin reddedildiğini ve Azure AD tarafından yeni bir erişim belirtecinin verilmesi gerektiğini göstermek için **talep sınama** adlı bir mekanizma tanıtıldık. CAE, talep sınamasını anlamak için bir istemci güncelleştirmesi gerektirir. Aşağıdaki uygulamaların en son sürümü talep sınamasını destekler:
 
-- Outlook pencereleri
-- Outlook iOS
-- Outlook Android
-- Outlook Mac
-- Outlook Web App
-- Windows için takımlar (yalnızca takımlar kaynağı için)
-- Takımlar iOS (yalnızca takımlar kaynağı için)
-- Takımlar Android (yalnızca takımlar kaynağı için)
-- Takımlar Mac (yalnızca takımlar kaynağı için)
-- Windows için Word/Excel/PowerPoint
-- İOS için Word/Excel/PowerPoint
-- Android için Word/Excel/PowerPoint
-- Mac için Word/Excel/PowerPoint
+| | Web | Win32 | iOS | Android | Mac |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **Outlook** | Desteklenir | Desteklenir | Desteklenir | Desteklenir | Desteklenir |
+| **Teams** | Desteklenir | Desteklenir | Desteklenir | Desteklenir | Desteklenir |
+| **Office** | Desteklenmiyor | Desteklenir | Desteklenir | Desteklenir | Desteklenir |
+| **OneDrive** | Desteklenir | Desteklenir | Desteklenir | Desteklenir | Desteklenir |
 
 ### <a name="token-lifetime"></a>Belirteç ömrü
 
@@ -165,9 +165,9 @@ Office Update kanallarının bir açıklaması için bkz. [Microsoft 365 uygulam
 
 ### <a name="policy-change-timing"></a>İlke değiştirme zamanlaması
 
-Azure AD ve kaynak sağlayıcıları arasındaki çoğaltma gecikmesi nedeniyle, yöneticiler tarafından yapılan ilke değişikliklerinin Exchange Online için geçerli olması 2 saate kadar sürebilir.
+Yöneticiler tarafından yapılan ilke değişikliklerinin etkili olması bir gün sürebilir. Gecikme süresi iki saate kadar azaltılacağı için bazı iyileştirme yapıldı. Ancak, henüz tüm senaryoları kapsamaz. 
 
-Örnek: yönetici, bir IP adresi aralığının 11:00 ' de e-postaya erişmesini engellemek için bir ilke ekler. daha önce bu IP aralığından gelen bir Kullanıcı, 1:00 PM 'e kadar e-postaya erişmeye devam edebilir.
+Bir acil durum varsa ve güncelleştirilmiş ilkelerinizin belirli kullanıcılara hemen uygulanması gerekiyorsa, kullanıcıların oturumunu iptal etmek için Kullanıcı profili sayfasında bu [PowerShell komutunu](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) veya "oturumu iptal et" i kullanmanız gerekir. Bu, güncelleştirilmiş ilkelerin hemen uygulandığından emin olmanızı sağlar.
 
 ### <a name="coauthoring-in-office-apps"></a>Office uygulamalarında birlikte yazma
 

@@ -6,13 +6,13 @@ ms.author: timlt
 ms.service: iot-develop
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 01/11/2021
-ms.openlocfilehash: d73f8eeb7b69440f8db67d0b95b40ed6258ee8e7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/24/2021
+ms.openlocfilehash: f28ad8f93769bc95c87095a545f608827c319dd3
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102201796"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105106828"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-azure-iot-hub-python"></a>Hızlı başlangıç: cihazdan Azure IoT Hub 'a (Python) telemetri gönderme
 
@@ -25,7 +25,7 @@ Bu hızlı başlangıçta, temel bir IoT cihaz uygulama geliştirme iş akışı
 - Azure CLI. Bu hızlı başlangıçta, tarayıcınızda çalışan etkileşimli bir CLı kabuğu olan Azure Cloud Shell kullanarak tüm komutları çalıştırabilirsiniz. Cloud Shell kullanıyorsanız, herhangi bir şey yüklemeniz gerekmez. CLı 'yi yerel olarak kullanmayı tercih ediyorsanız bu hızlı başlangıç, Azure CLı sürüm 2.0.76 veya üstünü gerektirir. Sürümü bulmak için az --version komutunu çalıştırın. Yüklemek veya yükseltmek için bkz. [Azure CLI’yı yükleme]( /cli/azure/install-azure-cli).
 - [Python 3.7 +](https://www.python.org/downloads/). Desteklenen Python 'un diğer sürümleri için bkz. [Azure IoT cihaz özellikleri](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device#azure-iot-device-features).
     
-    Python sürümünüzün güncel olduğundan emin olmak için çalıştırın `python --version` . Hem Python 2 hem de Python 3 ' ü yüklediyseniz ve Python 3 ortamı kullanıyorsanız, kullanarak tüm kitaplıkları yükleyebilirsiniz `pip3` . Bu, kitaplıkların Python 3 çalışma zamanına yüklenmesini sağlar.
+    Python sürümünüzün güncel olduğundan emin olmak için çalıştırın `python --version` . Hem Python 2 hem de Python 3 ' ü yüklediyseniz ve Python 3 ortamı kullanıyorsanız, kullanarak tüm kitaplıkları yükleyebilirsiniz `pip3` . Bu komut, kitaplıkların Python 3 çalışma zamanına yüklenmesini sağlar.
     > [!IMPORTANT]
     > Python Yükleyicisi ' nde, **yola Python ekleme** seçeneğini belirleyin. Python 3,7 veya üzeri bir sürümü zaten yüklüyse, Python yükleme klasörünü ortam değişkenine eklediğini onaylayın `PATH` .
 
@@ -41,84 +41,76 @@ Bu bölümde, sanal cihazınızdan IoT Hub 'ınıza ileti göndermek için Pytho
     ```console
     git clone https://github.com/Azure/azure-iot-sdk-python
     ```
-
-    ve *Azure-IoT-SDK-Python/Azure-IoT-Device/Samples* dizinine gidiliyor:
+1. *Azure-IoT-SDK-Python/Azure-IoT-Device/Samples/PNP* dizinine gidin:
 
     ```console
-    cd azure-iot-sdk-python/azure-iot-device/samples
+    cd azure-iot-sdk-python/azure-iot-device/samples/pnp
     ```
 1. Azure IoT Python SDK 'sını yükler:
 
     ```console
     pip install azure-iot-device
     ```
-1. Cihaz bağlantı dizesini adında bir ortam değişkeni olarak ayarlayın `IOTHUB_DEVICE_CONNECTION_STRING` . Bu, sanal Python cihazınızı oluşturduktan sonra önceki bölümde edindiğiniz dizedir.
+1. Sanal cihazınızın Azure IoT 'ye bağlanmasını sağlamak için aşağıdaki ortam değişkenlerinin her ikisini de ayarlayın.
+    * Adlı bir ortam değişkeni ayarlayın `IOTHUB_DEVICE_CONNECTION_STRING` . Değişken değeri için, önceki bölümde kaydettiğiniz cihaz bağlantı dizesini kullanın.
+    * Adlı bir ortam değişkeni ayarlayın `IOTHUB_DEVICE_SECURITY_TYPE` . Değişkeni için, sabit dize değerini kullanın `connectionString` .
 
     **Windows (cmd)**
 
     ```console
     set IOTHUB_DEVICE_CONNECTION_STRING=<your connection string here>
     ```
+    ```console
+    set IOTHUB_DEVICE_SECURITY_TYPE=connectionString
+    ```
 
     > [!NOTE]
-    > Windows CMD için bağlantı dizesini çevreleyen tırnak işareti yoktur.
+    > Windows CMD için her değişken için dize değerlerini çevreleyen tırnak işareti yoktur.
 
-    **Linux (Bash)**
+    **PowerShell**
+
+    ```azurepowershell
+    $env:IOTHUB_DEVICE_CONNECTION_STRING='<your connection string here>'
+    ```
+    ```azurepowershell
+    $env:IOTHUB_DEVICE_SECURITY_TYPE='connectionString'
+    ```
+
+    **Bash (Linux veya Windows)**
 
     ```bash
     export IOTHUB_DEVICE_CONNECTION_STRING="<your connection string here>"
     ```
+    ```bash
+    export IOTHUB_DEVICE_SECURITY_TYPE="connectionString"
+    ```
 
-1. Açık CLı kabuğunuzun içinde, sanal IoT cihazınızdan olayları izlemeye başlamak için [az IoT Hub Monitor-Events](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-monitor-events) komutunu çalıştırın.  Olay iletileri, geldikçe terminalde yazdırılacaktır.
+1. Açık CLı kabuğunuzun içinde, sanal IoT cihazınızdan olayları izlemeye başlamak için [az IoT Hub Monitor-Events](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-monitor-events) komutunu çalıştırın.  Olay iletileri, geldikçe terminalde yazdırılır.
 
     ```azurecli
     az iot hub monitor-events --output table --hub-name {YourIoTHubName}
     ```
 
-1. Python terminalinizde, yüklü örnek dosya *simple_send_message. Kopyala* için kodu çalıştırın. Bu kod, sanal IoT cihazına erişir ve IoT Hub 'ına bir ileti gönderir.
+1. Python terminalinizde, yüklü örnek dosya *simple_thermostat. Kopyala* için kodu çalıştırın. Bu kod, sanal IoT cihazına erişir ve IoT Hub 'ına bir ileti gönderir.
 
     Terminalden Python örneğini çalıştırmak için:
     ```console
-    python ./simple_send_message.py
+    python ./simple_thermostat.py
     ```
+    > [!NOTE]
+    > Bu kod örneği, Azure IoT Tak ve Kullan kullanır ve bu, akıllı cihazları el ile herhangi bir yapılandırma olmadan çözümlerinizle tümleştirmenize imkan tanır.  Varsayılan olarak, bu belgelerde birçok örnek IoT Tak ve Kullan kullanır. IoT PnP 'nin avantajları ve bunu kullanma ya da kullanmayan durumlar hakkında daha fazla bilgi edinmek için bkz. [IoT nedir Tak ve kullan?](../iot-pnp/overview-iot-plug-and-play.md)
 
-    İsteğe bağlı olarak, Python IDE 'niz içindeki örnekteki Python kodunu çalıştırabilirsiniz:
-    ```python
-    import os
-    import asyncio
-    from azure.iot.device.aio import IoTHubDeviceClient
-
-
-    async def main():
-        # Fetch the connection string from an environment variable
-        conn_str = os.getenv("IOTHUB_DEVICE_CONNECTION_STRING")
-
-        # Create instance of the device client using the authentication provider
-        device_client = IoTHubDeviceClient.create_from_connection_string(conn_str)
-
-        # Connect the device client.
-        await device_client.connect()
-
-        # Send a single message
-        print("Sending message...")
-        await device_client.send_message("This is a message that is being sent")
-        print("Message successfully sent!")
-
-        # finally, disconnect
-        await device_client.disconnect()
-
-
-    if __name__ == "__main__":
-        asyncio.run(main())
-    ```
-
-Python kodu, cihazınızdan IoT Hub 'ına bir ileti gönderdiğinde, bu ileti CLı kabuğunuzun olayları izleyen şekilde görünür:
+ Python kodu, cihazınızdan IoT Hub 'ına bir ileti gönderdiğinde, bu ileti CLı kabuğunuzun olayları izleyen şekilde görünür:
 
 ```output
 Starting event monitor, use ctrl-c to stop...
 event:
-origin: <your Device name>
-payload: This is a message that is being sent
+  component: ''
+  interface: dtmi:com:example:Thermostat;1
+  module: ''
+  origin: <your device name>
+  payload:
+    temperature: 35
 ```
 
 Cihazınız artık güvenli bir şekilde bağlı ve Azure IoT Hub telemetri gönderiyor.
@@ -130,7 +122,7 @@ Bu hızlı başlangıçta oluşturulan Azure kaynaklarına artık ihtiyacınız 
 > Silinen kaynak grupları geri alınamaz. Kaynak grubu ve içindeki tüm kaynaklar kalıcı olarak silinir. Yanlış kaynak grubunu veya kaynakları yanlışlıkla silmediğinizden emin olun.
 
 Bir kaynak grubunu adıyla silmek için:
-1. [Az Group Delete](/cli/azure/group#az-group-delete) komutunu çalıştırın. Bu, kaynak grubunu, IoT Hub ve oluşturduğunuz cihaz kaydını kaldırır.
+1. [Az Group Delete](/cli/azure/group#az-group-delete) komutunu çalıştırın. Bu komut, kaynak grubunu, IoT Hub ve oluşturduğunuz cihaz kaydını kaldırır.
 
     ```azurecli
     az group delete --name MyResourceGroup
@@ -146,6 +138,6 @@ Bu hızlı başlangıçta, bir cihazı buluta güvenli bir şekilde bağlamak ve
 
 Sonraki adım olarak, uygulama örnekleri aracılığıyla Azure IoT Python SDK 'sını keşfedebilirsiniz.
 
-- [Zaman uyumsuz örnekler](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-hub-scenarios): Bu dizin, ek IoT Hub senaryolar için zaman uyumsuz Python örnekleri içerir.
-- [Zaman uyumlu örnekler](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/sync-samples): Bu dizin Python 2,7 ile kullanmak için Python örnekleri veya Python 3.5 + için zaman uyumlu uyumluluk senaryoları içerir
+- [Zaman uyumsuz örnekler](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-hub-scenarios): Bu dizin, daha fazla IoT Hub senaryo için zaman uyumsuz Python örnekleri içerir.
+- [Zaman uyumlu örnekler](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/sync-samples): Bu dizin Python 2,7 ile kullanmak için Python örnekleri veya Python 3.6 + için zaman uyumlu uyumluluk senaryoları içerir
 - [IoT Edge örnekleri](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-edge-scenarios): Bu dizin, Edge modülleri ve aşağı akış cihazlarıyla çalışmak için Python örnekleri içerir.

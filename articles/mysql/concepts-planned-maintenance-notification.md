@@ -1,17 +1,17 @@
 ---
 title: Planlı bakım bildirimi-MySQL için Azure veritabanı-tek sunucu
 description: Bu makalede, MySQL için Azure veritabanı-tek sunucu 'da planlı bakım bildirimi özelliği açıklanmaktadır
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: ff197f8add65782a594d64661ffecdaced4598c2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c6d1bfbf1592da3a5e632eb875221225630aed3f
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94919633"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108681"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-mysql---single-server"></a>MySQL için Azure veritabanı 'nda planlı bakım bildirimi-tek sunucu
 
@@ -23,13 +23,13 @@ MySQL için Azure veritabanı hizmeti, temel alınan donanım, işletim sistemi 
 
 Planlı bakım, bu hizmet güncelleştirmeleri belirli bir Azure bölgesindeki sunuculara dağıtıldığında bakım penceresidir. Planlı bakım sırasında, sunucularını barındıran Azure bölgesinde hizmet güncelleştirmesinin ne zaman dağıtılacağını müşteriye bildirmek için bir bildirim olayı oluşturulur. İki planlı bakım arasındaki en az süre 30 gündür. Sonraki bakım penceresi için 72 saat önce bildirim alırsınız.
 
-## <a name="planned-maintenance---duration-and-customer-impact"></a>Planlı bakım-süre ve müşteri etkisi
+## <a name="planned-maintenance---duration-and-customer-impact"></a>Planlı bakım - süre ve müşteri etkisi
 
-Belirli bir Azure bölgesinin planlı bir bakımının genellikle 15 saat çalıştırması beklenir. Bu pencere, gerekirse bir geri alma planının yürütülmesi için arabellek süresini de içerir. Planlı bakım sırasında, veritabanı sunucusu yeniden başlatmaları veya yük devretme işlemleri, son kullanıcılar için veritabanı sunucularının kısa bir kullanım dışı kalmasına yol açabilir. MySQL için Azure veritabanı sunucuları, veritabanı sunucusu yeniden başlatmaları genellikle hızlı, genellikle 60-120 saniye içinde tamamlanmak üzere kapsayıcılarda çalışmaktadır. Her sunucu yeniden başlatmalarının dahil olduğu tüm planlı bakım olayı, mühendislik ekibi tarafından dikkatle izlenir. Sunucu yük devretmesi süresi, veritabanı kurtarma zamanına bağlıdır. Bu, sunucuda yük devretme sırasında ağır işlem etkinliğinizi varsa veritabanının daha uzun sürmesine neden olabilir. Yeniden başlatma zamanından daha uzun bir süre önlemek için planlı bakım olayları sırasında çalışan uzun işlemleri (toplu yükleme) önlemek önerilir.
+Belirli bir Azure bölgesi için planlı bakımın 15 saat çalıştırılması beklenir. Bu pencere, gerekirse bir geri alma planının yürütülmesi için arabellek süresini de içerir. Planlı bakım sırasında, veritabanı sunucusu yeniden başlatmaları veya yük devretme işlemleri, son kullanıcılar için veritabanı sunucularının kısa bir kullanım dışı kalmasına yol açabilir. MySQL için Azure veritabanı sunucuları, veritabanı sunucusu yeniden başlatmaları genellikle hızlı, genellikle 60-120 saniye içinde tamamlanmak üzere kapsayıcılarda çalışmaktadır. Her sunucu yeniden başlatmalarının dahil olduğu tüm planlı bakım olayı, mühendislik ekibi tarafından dikkatle izlenir. Sunucu yük devretmesi süresi, veritabanı kurtarma zamanına bağlıdır. Bu, sunucuda yük devretme sırasında ağır işlem etkinliğinizi varsa veritabanının daha uzun sürmesine neden olabilir. Yeniden başlatma zamanından daha uzun bir süre önlemek için planlı bakım olayları sırasında çalışan uzun işlemleri (toplu yükleme) önlemek önerilir.
 
 Özet olarak, planlanan bakım olayı 15 saat boyunca çalışırken, tek tek sunucu etkisi, sunucudaki hareketsel etkinliğe bağlı olarak genellikle 60 saniye sürer. Planlı bakım başlamadan önce bir bildirim 72 takvim saati, belirli bir bölge için bakım devam ederken ise başka bir uyarı gönderilir.
 
-## <a name="how-can-i-get-notified-of-planned-maintenance"></a>Planlı bakım hakkında nasıl bildirim alabilirim?
+## <a name="how-can-i-get-notified-of-planned-maintenance"></a>Planlı bakımla ilgili nasıl bildirim alabilirim?
 
 Planlı bakım bildirimleri özelliğini, yaklaşan bir planlı bakım olayına yönelik uyarılar almak için kullanabilirsiniz. Gelecekteki bakım 72 takvim saatleriyle ilgili bildirim, belirli bir bölge için bakım devam ederken olay ve başka bir durum hakkında bildirim alacaksınız.
 
@@ -63,11 +63,11 @@ Azure portal planlı bakım bildirimini denetleyebilir ya da uyarıları bildiri
 
 **Hizmet durumu uyarıları** oluşturma hakkında ayrıntılı adımlar için, [hizmet bildirimlerinde etkinlik günlüğü uyarıları oluşturma](../service-health/alerts-activity-log-service-notifications-portal.md)konusuna bakın.
 
-## <a name="can-i-cancel-or-postpone-planned-maintenance"></a>Planlı Bakımı iptal edebilir veya erteleyebilir miyim?
+## <a name="can-i-cancel-or-postpone-planned-maintenance"></a>Planlı bakımı iptal edebilir veya erteleyebilir miyim?
 
 Sunucunuzu güvenli, kararlı ve güncel tutmak için bakım yapmanız gerekir. Planlı bakım olayı iptal edilemez veya ertelenemez. Bildirim, belirli bir Azure bölgesine gönderildikten sonra, bu bölgedeki herhangi bir sunucu için düzeltme eki uygulama değişiklikleri yapılamaz. Düzeltme Eki, tüm bölge için aynı anda kullanıma alınır. MySQL için Azure veritabanı-tek sunucu hizmeti, hizmet için ayrıntılı denetim veya özelleştirme gerektirmeyen bulut Yerel uygulaması için tasarlanmıştır. Sunucularınız için bakım zamanlanmasını istiyorsanız [Esnek sunucuları](./flexible-server/overview.md)düşünmeniz önerilir.
 
-## <a name="are-all-the-azure-regions-patched-at-the-same-time"></a>Tüm Azure bölgeleri aynı zamanda düzeltme eki uygulandı mı?
+## <a name="are-all-the-azure-regions-patched-at-the-same-time"></a>Tüm Azure bölgelerine düzeltme eki aynı zamanda mı uygulanır?
 
 Hayır, dağıtım Wise pencere zamanlamaları sırasında tüm Azure bölgelerinin düzeltme eki uygulanır. Dağıtım Wise penceresi genellikle belirli bir Azure bölgesinde 5 PM-8 ile yerel saat olan bir sonraki günden uzatılır. Coğrafi eşlenmiş Azure bölgeleri, farklı günlerde düzeltme eki uygulanmış. Veritabanı sunucularının yüksek kullanılabilirlik ve iş sürekliliği için, [çapraz bölge okuma Çoğaltmalarından](./concepts-read-replicas.md#cross-region-replication) yararlanmak önerilir.
 

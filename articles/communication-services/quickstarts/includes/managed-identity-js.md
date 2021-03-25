@@ -1,14 +1,14 @@
 ---
-ms.openlocfilehash: 3626ca4cc3e7377f1c6778bc77e5e48ef0dcad0c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 3ec650f82b95cdfabc923e92325959c63f2846de
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103439077"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110776"
 ---
 ## <a name="add-managed-identity-to-your-communication-services-solution-js"></a>Iletişim Hizmetleri çözümünüze (JS) yönetilen kimlik ekleme
 
-### <a name="install-the-client-library-packages"></a>İstemci kitaplığı paketlerini yükler
+### <a name="install-the-sdk-packages"></a>SDK paketlerini yükler
 
 ```console
 npm install @azure/communication-identity
@@ -17,9 +17,9 @@ npm install @azure/communication-sms
 npm install @azure/identity
 ```
 
-### <a name="use-the-client-library-packages"></a>İstemci kitaplığı paketlerini kullanma
+### <a name="use-the-sdk-packages"></a>SDK paketlerini kullanma
 
-`import`Azure kimlik ve Azure depolama istemci kitaplıklarını kullanmak için aşağıdaki yönergeleri kodunuza ekleyin.
+`import`Azure kimliğini ve Azure Storage SDK 'larını kullanmak için aşağıdaki yönergeleri kodunuza ekleyin.
 
 ```typescript
 import { DefaultAzureCredential } from "@azure/identity";
