@@ -10,16 +10,16 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 8262b0c9abc4911c1e5c039eb02920c18e7de90b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f71f394f190c5de1c3d64d02fd6113817ecda1ea
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104783620"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105152714"
 ---
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
-**Android Için Hero örneğini çağıran** Azure Iletişim Hizmetleri grubu, Android istemci kitaplığı 'Nı çağıran iletişim hizmetleri, ses ve video içeren bir grup çağırma deneyimi oluşturmak için nasıl kullanılabileceğini gösterir. Bu örnek hızlı başlangıçta, örneği ayarlamayı ve çalıştırmayı öğreneceksiniz. Bağlam için örneğe genel bir bakış sağlanır.
+**Android Için Hero örneğini çağıran** Azure Iletişim Hizmetleri grubu, Android SDK çağıran iletişim hizmetlerinin, ses ve video içeren bir grup çağırma deneyimi oluşturmak için nasıl kullanılabileceğini gösterir. Bu örnek hızlı başlangıçta, örneği ayarlamayı ve çalıştırmayı öğreneceksiniz. Bağlam için örneğe genel bir bakış sağlanır.
 
 ## <a name="download-code"></a>Kodu indirin
 
@@ -27,7 +27,7 @@ Bu hızlı başlangıç için [GitHub](https://github.com/Azure-Samples/communic
 
 ## <a name="overview"></a>Genel Bakış
 
-Örnek, hem ses hem de video çağırma özelliği sunan bir arama deneyimi oluşturmak için Azure Iletişim Hizmetleri Android istemci kitaplıklarını kullanan yerel bir Android uygulamasıdır. Uygulama, daha sonra Azure Communication Services istemci kitaplığını başlatmak için kullanılan erişim belirteçlerini sağlamak için bir sunucu tarafı bileşeni kullanır. Bu sunucu tarafı bileşeni yapılandırmak için, [Azure işlevleri öğreticisiyle güvenilir hizmeti](../../tutorials/trusted-service-tutorial.md) takip edin.
+Örnek, hem ses hem de video çağrılmasını sağlayan bir arama deneyimi oluşturmak için Azure Iletişim Hizmetleri Android SDK 'larını kullanan yerel bir Android uygulamasıdır. Uygulama, daha sonra Azure Iletişim Hizmetleri SDK 'sını başlatmak için kullanılan erişim belirteçlerini sağlamak için bir sunucu tarafı bileşeni kullanır. Bu sunucu tarafı bileşeni yapılandırmak için, [Azure işlevleri öğreticisiyle güvenilir hizmeti](../../tutorials/trusted-service-tutorial.md) takip edin.
 
 Örnek şöyle görünür:
 
@@ -133,7 +133,7 @@ Bir Iletişim Hizmetleri aboneliğini temizleyip kaldırmak istiyorsanız, kayna
 
 Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
-- [Çağıran istemci kitaplığını kullanma](../../quickstarts/voice-video-calling/calling-client-samples.md) hakkında bilgi edinin
+- [Çağıran SDK 'yı kullanma](../../quickstarts/voice-video-calling/calling-client-samples.md) hakkında bilgi edinin
 - [Nasıl çalıştığını çağırma](../../concepts/voice-video-calling/about-call-types.md) hakkında daha fazla bilgi edinin
 
 ### <a name="additional-reading"></a>Ek okuma

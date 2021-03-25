@@ -3,19 +3,14 @@ title: Azure disk yedekleme hakkında sık sorulan sorular
 description: Azure disk yedekleme hakkında sık sorulan soruların yanıtlarını alın
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 3ef18a7d178075194e24889477768583f05f0cdd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7729bc1120fc0e2f4361739a8e05f3a82ccb4268
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98734571"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107321"
 ---
-# <a name="frequently-asked-questions-about-azure-disk-backup-in-preview"></a>Azure disk yedeklemesi hakkında sık sorulan sorular (önizlemede)
-
->[!IMPORTANT]
->Azure disk yedekleme, bir hizmet düzeyi sözleşmesi olmadan önizlemededir ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Bölge kullanılabilirliği için bkz. [destek matrisi](disk-backup-support-matrix.md).
->
->Önizlemeye kaydolmak için [Bu formu doldurun](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u) .
+# <a name="frequently-asked-questions-about-azure-disk-backup"></a>Azure disk yedekleme hakkında sık sorulan sorular
 
 Bu makalede, Azure disk yedekleme hakkında sık sorulan sorular yanıtlanmaktadır. [Azure disk yedekleme](disk-backup-overview.md) bölgesi kullanılabilirliği, desteklenen senaryolar ve sınırlamalar hakkında daha fazla bilgi için bkz. [destek matrisi](disk-backup-support-matrix.md).
 

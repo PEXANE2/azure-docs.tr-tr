@@ -1,15 +1,15 @@
 ---
 title: NıST SP 800-53 R4 için mevzuat uyumluluk ayrıntıları
 description: NıST SP 800-53 R4 mevzuatı uyumluluğu yerleşik girişiminin ayrıntıları. Her denetim, değerlendirmede yardımcı olan bir veya daha fazla Azure Ilke tanımına eşlenir.
-ms.date: 03/17/2021
+ms.date: 03/24/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 35562ff72c054cc3295af5e1e0f971aa36d9e473
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 0544b3fe00ce68b248c8275e71f799993d01b568
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104606540"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105032506"
 ---
 # <a name="details-of-the-nist-sp-800-53-r4-regulatory-compliance-built-in-initiative"></a>NıST SP 800-53 R4 mevzuatı uyumluluğu yerleşik girişiminin ayrıntıları
 

@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/17/2021
+ms.date: 03/24/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 4062375bbde1dce1e20ac04ff16562d892de808e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9bc4bd7c557f21c29949938411c76a88d979b3c2
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104600192"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105037044"
 ---
 |Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
@@ -24,5 +24,5 @@ ms.locfileid: "104600192"
 |[Azure SYNAPSE çalışma alanlarında yönetilen çalışma alanı sanal ağı etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2d9dbfa3-927b-4cf0-9d0f-08747f971650) |Yönetilen bir çalışma alanı sanal ağını etkinleştirmek, çalışma alanınızın diğer çalışma alanlarından yalıtılmış olmasını sağlar. Bu sanal ağda dağıtılan veri tümleştirme ve Spark kaynakları, Spark etkinlikleri için Kullanıcı düzeyi yalıtımı da sağlar. |Denetim, reddetme, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/SynapseWorkspaceManagedVnet_Audit.json) |
 |[SYNAPSE yönetilen özel uç noktalar yalnızca onaylanan Azure Active Directory kiracılardaki kaynaklara bağlanmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3a003702-13d2-4679-941b-937e58c443f0) |SYNAPSE çalışma alanınızı yalnızca onaylanan Azure Active Directory (Azure AD) kiracılarındaki kaynaklarla bağlantı kurmasına izin vererek koruyun. Onaylanan Azure AD kiracılar, ilke ataması sırasında tanımlanabilir. |Denetim, devre dışı, reddetme |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/Workspace_DataExfiltrationPrevention_Deny.json) |
 |[SYNAPSE çalışma alanı denetim ayarları, kritik etkinlikleri yakalamak için yapılandırılmış eylem gruplarına sahip olmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2b18f286-371e-4b80-9887-04759970c0d3) |Denetim günlüklerinizin mümkün olduğunca kapsamlı olduğundan emin olmak için, AuditActionsAndGroups özelliği tüm ilgili grupları içermelidir. En az SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP ve BATCH_COMPLETED_GROUP eklemeniz önerilir. Bu, bazen mevzuat standartlarıyla uyumluluk için gereklidir. |Auditınotexists, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/SynapseWorkspaceSqlAuditing_ActionsAndGroups_Audit.json) |
-|[SYNAPSE çalışma alanları, 90 gün veya daha yüksek denetim bekletme ile yapılandırılmalıdır.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F529ea018-6afc-4ed4-95bd-7c9ee47b00bc) |Olay araştırma amacıyla, SYNAPSE çalışma alanınızın Audit için veri bekletmenin en az 90 güne ayarlanmasını öneririz. Çalıştırdığınız bölgeler için gereken bekletme kurallarını karşıladığınızı doğrulayın. Bu, bazen mevzuat standartlarıyla uyumluluk için gereklidir. |Auditınotexists, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/SynapseWorkspaceSqlAuditingRetentionDays_Audit.json) |
+|[Depolama hesabı hedefine SQL denetimi olan SYNAPSE çalışma alanları 90 gün bekletme veya daha yüksek bir şekilde yapılandırılmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F529ea018-6afc-4ed4-95bd-7c9ee47b00bc) |Olay araştırma amacıyla, SYNAPSE çalışma alanınızın SQL denetimi için veri bekletmesini en az 90 güne kadar depolama hesabı hedefine ayarlamayı öneririz. Çalıştırdığınız bölgeler için gerekli bekletme kurallarını karşılatığınızdan emin olun. Bu, bazen mevzuat standartlarıyla uyumluluk için gereklidir. |Auditınotexists, devre dışı |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/SynapseWorkspaceSqlAuditingRetentionDays_Audit.json) |
 |[SYNAPSE çalışma alanlarınızdaki güvenlik açığı değerlendirmesi etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0049a6b3-a662-4f3e-8635-39cf44ace45a) |SYNAPSE çalışma alanlarınızda yinelenen SQL güvenlik açığı değerlendirme taramalarını yapılandırarak olası güvenlik açıklarını bulun, izleyin ve düzeltin. |Auditınotexists, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/ASC_SQLVulnerabilityAssessmentOnSynapse_Audit.json) |

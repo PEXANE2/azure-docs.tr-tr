@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: 22e48239631850d82cbb3e3208748416087da87c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ccee8537c2543b67c1bb60711737ec761ebc8cbf
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103422206"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043079"
 ---
 # <a name="efficiently-scale-out-a-custom-skill"></a>Özel bir yeteneğin etkin bir şekilde ölçeğini genişletme
 
@@ -42,7 +42,7 @@ Dizin oluşturma işleminin aktarım hızını en üst düzeye çıkarmak için 
 
 3. `timeout`Niteliğin geçerli bir Yanıtla yanıt vermesi için yeterince bir değere ayarlayın.
 
-4. `indexer`Tanımında, [`batchSize`](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-parameters) veri kaynağından okunmalı ve aynı anda zenginleştirilmiş belge sayısına ayarlayın.
+4. `indexer`Tanımında, [`batchSize`](/rest/api/searchservice/create-indexer#indexer-parameters) veri kaynağından okunmalı ve aynı anda zenginleştirilmiş belge sayısına ayarlayın.
 
 ### <a name="considerations"></a>Dikkat edilmesi gerekenler
 
@@ -106,5 +106,5 @@ Tebrikler! Özel Beceri, Dizin oluşturucudaki aktarım hızını en üst düzey
 
 + [Güç becerileri: özel yeteneklerin bir deposu](https://github.com/Azure-Samples/azure-search-power-skills)
 + [Bir AI zenginleştirme ardışık düzenine özel yetenek ekleme](cognitive-search-custom-skill-interface.md)
-+ [Azure Machine Learning yetenek ekleme](https://docs.microsoft.com/azure/search/cognitive-search-aml-skill)
-+ [Değişiklikleri test etmek için hata ayıklama oturumlarını kullanın](https://docs.microsoft.com/azure/search/cognitive-search-debug-session)
++ [Azure Machine Learning yetenek ekleme](./cognitive-search-aml-skill.md)
++ [Değişiklikleri test etmek için hata ayıklama oturumlarını kullanın](./cognitive-search-debug-session.md)

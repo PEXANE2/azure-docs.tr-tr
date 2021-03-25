@@ -3,19 +3,14 @@ title: Azure disk yedekleme 'de yedekleme hatalarıyla ilgili sorunları giderme
 description: Azure disk yedekleme 'de yedekleme hatalarıyla ilgili sorunları nasıl giderebileceğinizi öğrenin
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 855c6c5b19b10bdb699a25f89ebc29001b7941ac
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f6e9bcbbd618cf820ce91f8a3092d5be4aa045cb
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98737736"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105107253"
 ---
-# <a name="troubleshooting-backup-failures-in-azure-disk-backup-in-preview"></a>Azure disk yedekleme 'de yedekleme hatalarının sorunlarını giderme (önizlemede)
-
->[!IMPORTANT]
->Azure disk yedekleme, bir hizmet düzeyi sözleşmesi olmadan önizlemededir ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Bölge kullanılabilirliği için bkz. [destek matrisi](disk-backup-support-matrix.md).
->
->Önizlemeye kaydolmak için [Bu formu doldurun](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u) .
+# <a name="troubleshooting-backup-failures-in-azure-disk-backup"></a>Azure disk yedekleme 'de yedekleme hatalarıyla ilgili sorunları giderme
 
 Bu makalede, Azure disk ile ilgili yedekleme ve geri yükleme sorunları hakkında sorun giderme bilgileri sağlanmaktadır. [Azure disk yedekleme](disk-backup-overview.md) bölgesi kullanılabilirliği, desteklenen senaryolar ve sınırlamalar hakkında daha fazla bilgi için bkz. [destek matrisi](disk-backup-support-matrix.md).
 
@@ -157,7 +152,7 @@ Hata Iletisi: Bu geri yükleme noktası için disk anlık görüntüsü meta ver
 
 Hata Iletisi: yedekleme kasasının yapılandırma korumasını denediğiniz bölgede disk yedeklemesi henüz kullanılamıyor.
 
-Önerilen eylem: Yedekleme Kasası, önizleme desteklenen bir bölgede olmalıdır. Bölge kullanılabilirliği için [destek matrisine](disk-backup-support-matrix.md)bakın.
+Önerilen eylem: Yedekleme Kasası desteklenen bir bölgede olmalıdır. Bölge kullanılabilirliği için [destek matrisine](disk-backup-support-matrix.md)bakın.
 
 ### <a name="error-code-usererrordppdatasourcealreadyhasbackupinstance"></a>Hata kodu: Usererrordppdatasourcealreadyhasbackupınstance
 
