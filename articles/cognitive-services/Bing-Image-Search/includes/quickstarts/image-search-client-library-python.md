@@ -8,20 +8,20 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: aahi
-ms.openlocfilehash: d5d47f097fa216d69b8ed59fdb057378724c2228
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 338e4f0c1c47a7786e21ad98bb3e56a1505f9bb2
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94625327"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105105455"
 ---
 API için bir sarmalayıcı olan ve aynı özellikleri içeren Bing Resim Arama istemci kitaplığını kullanarak ilk görüntünüzü aramanızı sağlamak için bu hızlı başlangıcı kullanın. Bu basit Python uygulaması, bir görüntü arama sorgusu gönderir, JSON yanıtını ayrıştırır ve döndürülen ilk görüntünün URL’sini görüntüler.
 
 Bu örneğe ilişkin kaynak kodu, ek hata işleme ve ek açıklama ile [GitHub 'da](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/image-search-quickstart.py) kullanılabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* [Python 2.7 veya 3.4](https://www.python.org/) ve üzeri.
+* [Python 2,7 veya 3.6 +](https://www.python.org/).
 
 * Python için [Azure resim arama istemci kitaplığı](https://pypi.org/project/azure-cognitiveservices-search-imagesearch/)
     * `pip install azure-cognitiveservices-search-imagesearch` kullanarak yükleme
@@ -84,5 +84,5 @@ else:
 * [Bing Resim Arama nedir?](../../overview.md)  
 * [Çevrimiçi etkileşimli bir tanıtımı deneyin](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
 * [Azure Bilişsel Hizmetler SDK’sı için Python örnekleri](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)  
-* [Azure Bilişsel Hizmetler Belgeleri](../../../index.yml)
+* [Azure bilişsel hizmetler belgeleri](../../../index.yml)
 * [Bing Resim Arama API’si başvurusu](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

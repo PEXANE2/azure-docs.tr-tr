@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 00ddc7cd806a9275de7b4ec579bdef62bdf8062d
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 5e2ab0b9d7f61539a16fc685134bef6c9047229d
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102603370"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104987924"
 ---
 İstemci işletim sistemine bağlı olarak, cihaza uzaktan bağlanma yordamları farklıdır.
 
@@ -95,7 +95,7 @@ NFS istemcisinden uzaktan bağlanmak için aşağıdaki adımları izleyin.
  
 2. Uzak istemciyi kullanarak bağlanmak için şunu yazın:
 
-    `Enter-PSSession -ComputerName $ip -Authentication Negotiate -ConfigurationName Minishell -Credential ~\EdgeUser -UseSSL`
+    `Enter-PSSession -ComputerName $ip -Authentication Negotiate -ConfigurationName Minishell -Credential ~\EdgeUser`
 
     İstendiğinde, cihazınızda oturum açmak için kullanılan parolayı belirtin.
  

@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 09/17/2020
-ms.openlocfilehash: 081eea7842652884363603bc5ba742ba48539f85
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 7c89527218e34bea0819a1e2446441216cde45ae
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102503628"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105105514"
 ---
 **İşlem hedefleri bir eğitim işinden sonrakine yeniden kullanılabilir.** Örneğin, çalışma alanınıza uzak bir VM iliştirdikten sonra, birden fazla iş için onu yeniden kullanabilirsiniz. Makine öğrenimi ardışık düzenleri için, her işlem hedefi için uygun işlem [hattı adımını](/python/api/azureml-pipeline-steps/azureml.pipeline.steps) kullanın.
 
@@ -30,3 +30,6 @@ ms.locfileid: "102503628"
 |[Azure Data Lake Analytics](../articles/machine-learning/how-to-attach-compute-targets.md#adla) | &nbsp; | Yes | &nbsp; |
 |[Azure HDInsight](../articles/machine-learning/how-to-attach-compute-targets.md#hdinsight) | &nbsp; | Yes | &nbsp; |
 |[Azure Batch](../articles/machine-learning/how-to-attach-compute-targets.md#azbatch) | &nbsp; | Yes | &nbsp; |
+
+> [!TIP]
+> İşlem örneğinde 12GB işletim sistemi diski vardır. Disk alanını tükenseniz, işlem örneğini durdurmayı/yeniden başlatmayı denemeden önce yeterli alanı temizleyin.

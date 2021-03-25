@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: 56ef6563982c315d34cfeb87070b9ebfa3d27a30
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 49122421f04ee6eef8828ca305cfb235aceee3fb
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102500436"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105035702"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Azure İzleyici'de günlük verileri alım süresi
 Azure Izleyici, her ay büyüyen bir hızda çok sayıda müşteriye hizmet veren binlerce müşteriyi sunan yüksek ölçekli bir veri hizmetidir. Genellikle günlük verilerinin toplandıktan sonra kullanılabilir hale gelmesi için geçen süre hakkında sık sorulan sorular vardır. Bu makalede, bu gecikmeyi etkileyen farklı faktörler açıklanmaktadır.
@@ -81,8 +81,8 @@ Alım süresi farklı koşullarda farklı kaynaklar için farklılık gösterebi
 | Adım | Özellik veya Işlev | Yorumlar |
 |:---|:---|:---|
 | Veri kaynağında oluşturulan kayıt | [TimeGenerated](./log-standard-columns.md#timegenerated-and-timestamp) <br>Veri kaynağı bu değeri ayarlanmamışsa, _TimeReceived ile aynı saate ayarlanır. |
-| Azure Izleyici alma uç noktası tarafından alınan kayıt | [_TimeReceived](./log-standard-columns.md#_timereceived) | |
-| Kayıt, çalışma alanında depolandı ve sorgular için kullanılabilir | [ingestion_time ()](/azure/kusto/query/ingestiontimefunction) | |
+| Azure Izleyici alma uç noktası tarafından alınan kayıt | [_TimeReceived](./log-standard-columns.md#_timereceived) | Bu alan, yığın işleme için en iyi duruma getirilmemiştir ve büyük veri kümelerini filtrelemek için kullanılmamalıdır. |
+| Kayıt, çalışma alanında depolandı ve sorgular için kullanılabilir | [ingestion_time ()](/azure/kusto/query/ingestiontimefunction) | Yalnızca belirli bir zaman penceresinde giriş yapılan kayıtları filtrelemeye gerek varsa ingestion_time () kullanılması önerilir. Böyle bir durumda, aynı zamanda daha büyük bir aralığa sahip TimeGenerated filtresi eklemeniz önerilir. |
 
 ### <a name="ingestion-latency-delays"></a>Alma gecikmesi gecikme gecikmeleri
 [İngestion_time ()](/azure/kusto/query/ingestiontimefunction) Işlevinin sonucunu _TimeGenerated_ özelliği ile karşılaştırarak belirli bir kaydın gecikmesini ölçebilirsiniz. Bu veriler, alma gecikmesini nasıl davranacağını bulmak için çeşitli toplamalar ile birlikte kullanılabilir. Büyük miktarda veri için Öngörüler elde etmek üzere alma süresinin bazı yüzdelerini inceleyin. 

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: lajanuar
-ms.openlocfilehash: 47e145c5d96ba54b02f5453ff97d16dec302eabd
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 81115f5a9ed802f1d07c45ec928dc4b84ea2917b
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103493518"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048757"
 ---
 <!-- markdownlint-disable MD024 -->
 # <a name="whats-new-in-form-recognizer"></a>Form Tanıma'daki yenilikler
@@ -117,7 +117,7 @@ GitHub 'da **yeni örnekler** mevcuttur.
 * **Para birimi desteği** -genel para birimi simgelerinin algılanması ve ayıklanması.
 * **Azure gov** -form tanıyıcı artık Azure gov 'de de kullanılabilir.
 * **Gelişmiş güvenlik özellikleri**: 
-  * **Kendi anahtar** formu tanıyıcı, buluta kalıcı hale geldiğinde verilerinizi otomatik olarak şifreler ve kuruluşunuzun güvenlik ve uyumluluk taahhütlerinizi karşılamanıza yardımcı olur. Aboneliğiniz varsayılan olarak Microsoft tarafından yönetilen şifreleme anahtarlarını kullanır. Ayrıca, aboneliğinizi kendi şifreleme anahtarlarınız ile yönetebilirsiniz. [Kendi anahtarını getir (BYOK) olarak da bilinen, müşteri tarafından yönetilen anahtarlar](./form-recognizer-encryption-of-data-at-rest.md), erişim denetimlerini oluşturma, döndürme, devre dışı bırakma ve iptal etme için daha fazla esneklik sunar. Verilerinizi korumak için kullanılan şifreleme anahtarlarını da denetleyebilirsiniz.  
+  * **Kendi anahtar** formu tanıyıcı, buluta kalıcı hale geldiğinde verilerinizi otomatik olarak şifreler ve kuruluşunuzun güvenlik ve uyumluluk taahhütlerinizi karşılamanıza yardımcı olur. Aboneliğiniz varsayılan olarak Microsoft tarafından yönetilen şifreleme anahtarlarını kullanır. Ayrıca, aboneliğinizi kendi şifreleme anahtarlarınız ile yönetebilirsiniz. [Kendi anahtarını getir (BYOK) olarak da bilinen, müşteri tarafından yönetilen anahtarlar](./encrypt-data-at-rest.md), erişim denetimlerini oluşturma, döndürme, devre dışı bırakma ve iptal etme için daha fazla esneklik sunar. Verilerinizi korumak için kullanılan şifreleme anahtarlarını da denetleyebilirsiniz.  
   * **Özel uç noktalar** – [özel bir bağlantı üzerinden verilerinize güvenli](../../private-link/private-link-overview.md) bir şekilde erişmek için bir sanal ağ (VNet) sağlar.
 
 ## <a name="june-2020"></a>Haziran 2020

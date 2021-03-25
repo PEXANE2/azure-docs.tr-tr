@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/23/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 6986651d2b48d82382aa26a0a3947104c7e09981
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5d631d8492ed1869bdc244e2cc90595183892822
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96026190"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105105269"
 ---
 Sanal ağınıza dağıtılmış VM’ye, sanal makinenizle bir Uzak Masaüstü Bağlantısı oluşturarak bağlanabilirsiniz. Sanal makinenize bağlanabildiğinizi doğrulamanın en iyi yolu, bilgisayar yerine özel IP adresini kullanarak bağlantı kurmaktır. Bu yolla, ad çözünürlüğünün düzgün şekilde yapılandırılıp yapılandırılmadığını değil, bağlantı kurup kuramadığınızı test edersiniz.
 
@@ -50,4 +50,4 @@ VPN bağlantınız üzerinden bir sanal makineye bağlanmakta sorun yaşıyorsan
 
 * Bilgisayar adı yerine özel IP adresini kullanarak VM ile bağlantı kurabiliyorsanız, DNS’i düzgün yapılandırdığınızdan emin olun. VM’ler için ad çözümlemesinin nasıl çalıştığı hakkında daha fazla bilgi için bkz. [VM'ler için Ad Çözümlemesi](../articles/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
 
-* RDP bağlantıları hakkında daha fazla bilgi için bkz. [Bir VM ile Uzak Masaüstü bağlantılarında sorun giderme](../articles/virtual-machines/troubleshooting/troubleshoot-rdp-connection.md).
+* RDP bağlantıları hakkında daha fazla bilgi için bkz. [Bir VM ile Uzak Masaüstü bağlantılarında sorun giderme](/troubleshoot/azure/virtual-machines/troubleshoot-rdp-connection).

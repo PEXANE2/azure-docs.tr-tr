@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 03/02/2021
 ms.topic: conceptual
 ms.service: azure-object-anchors
-ms.openlocfilehash: 74663f05c5ff995a090c7cd35e4edf46a754da17
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 551374824610c0257aaf52c45768d31849026524
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102034617"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047550"
 ---
 # <a name="runtime-sdk-overview"></a>Çalışma zamanı SDK 'sına genel bakış
 
@@ -25,59 +25,59 @@ Aşağıda açıklanan türlerin tümü **Microsoft. MixedReality. ObjectAnchors
 
 ### <a name="objectmodel"></a>ObjectModel
 
-[ObjectModel](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectmodel) bir fiziksel nesnenin geometrisini temsil eder ve algılama ve poz tahmini için gerekli parametreleri kodlar. [Nesne bağlayıcıları hizmeti](../quickstarts/get-started-model-conversion.md)kullanılarak oluşturulması gerekir. Ardından bir uygulama, nesne bağlantıları API 'sini kullanarak oluşturulan model dosyasını yükleyebilir ve görselleştirme için bu modele gömülü olan ağı sorgulayabilir.
+[ObjectModel](/dotnet/api/microsoft.azure.objectanchors.objectmodel) bir fiziksel nesnenin geometrisini temsil eder ve algılama ve poz tahmini için gerekli parametreleri kodlar. [Nesne bağlayıcıları hizmeti](../quickstarts/get-started-model-conversion.md)kullanılarak oluşturulması gerekir. Ardından bir uygulama, nesne bağlantıları API 'sini kullanarak oluşturulan model dosyasını yükleyebilir ve görselleştirme için bu modele gömülü olan ağı sorgulayabilir.
 
 ### <a name="objectsearcharea"></a>ObjectSearchArea
 
-[Objectsearcharea](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectsearcharea) bir veya daha fazla nesne aramak için alanı belirtir. Uzamsal grafik düğüm KIMLIĞI ile temsil edilen koordinat sisteminde uzamsal bir grafik düğüm KIMLIĞI ve uzamsal sınırlar tarafından tanımlanır. Nesne tutturucular çalışma zamanı SDK 'Sı dört tür sınır destekler, yani **Görünüm alanı**, **sınırlayıcı kutusu**, **Sphere** ve bir **konum**.
+[Objectsearcharea](/dotnet/api/microsoft.azure.objectanchors.objectsearcharea) bir veya daha fazla nesne aramak için alanı belirtir. Uzamsal grafik düğüm KIMLIĞI ile temsil edilen koordinat sisteminde uzamsal bir grafik düğüm KIMLIĞI ve uzamsal sınırlar tarafından tanımlanır. Nesne tutturucular çalışma zamanı SDK 'Sı dört tür sınır destekler, yani **Görünüm alanı**, **sınırlayıcı kutusu**, **Sphere** ve bir **konum**.
 
 ### <a name="objectquery"></a>ObjectQuery
 
-Bir [ObjectQuery](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectquery) , bir **nesneye gözlemciye** belirli bir modelin nesnelerinin nasıl bulunacağını söyler. Varsayılan değerleri bir nesne modelinden alınabilecek aşağıdaki ayarlanabilir parametrelerini sağlar.
+Bir [ObjectQuery](/dotnet/api/microsoft.azure.objectanchors.objectquery) , bir **nesneye gözlemciye** belirli bir modelin nesnelerinin nasıl bulunacağını söyler. Varsayılan değerleri bir nesne modelinden alınabilecek aşağıdaki ayarlanabilir parametrelerini sağlar.
 
 #### <a name="minsurfacecoverage"></a>Minsurçok yönlü kapsam
 
-[Minsurcecoverage](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectquery.minsurfacecoverage) özelliği, algılanan bir örneği kabul etmek için değeri gösterir.
+[Minsurcecoverage](/dotnet/api/microsoft.azure.objectanchors.objectquery.minsurfacecoverage) özelliği, algılanan bir örneği kabul etmek için değeri gösterir.
 
 Her bir nesne adayı için, bir **gözlemci** , dönüştürülmüş nesne modeli ve sahne arasındaki örtüşen yüzeylerin oranını hesaplar ve ardından, yalnızca kapsam oranının belirli bir eşiğin üstünde olduğu durumlarda bu aday uygulamayı uygulamaya bildirir.
 
 #### <a name="isexpectedtobestandingongroundplane"></a>IsExpectedToBeStandingOnGroundPlane
 
-[IsExpectedToBeStandingOnGroundPlane](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectquery.isexpectedtobestandingongroundplane) özelliği, hedef nesnenin taban düzlemde tek başına beklenip beklenmediğini belirtir.
+[IsExpectedToBeStandingOnGroundPlane](/dotnet/api/microsoft.azure.objectanchors.objectquery.isexpectedtobestandingongroundplane) özelliği, hedef nesnenin taban düzlemde tek başına beklenip beklenmediğini belirtir.
 
 Zemin düzlemi, arama alanındaki en düşük yatay tabandır. Olası nesne pozları üzerinde iyi bir kısıtlama sağlar. Bu bayrağı açmak, **gözlemciye** sınırlı bir alanda pozu tahmin etmeye kılavuzluk eder ve doğruluğu iyileştirebilir. Modelin taban düzlede tek olması gerekiyorsa bu parametre yok sayılır.
 
 #### <a name="expectedmaxverticalorientationindegrees"></a>ExpectedMaxVerticalOrientationInDegrees
 
-[ExpectedMaxVerticalOrientationInDegrees](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectquery.expectedmaxverticalorientationindegrees) özelliği, bir nesne örneğinin yukarı yönü ve yerçekimi arasındaki derece cinsinden beklenen maksimum açıyı gösterir.
+[ExpectedMaxVerticalOrientationInDegrees](/dotnet/api/microsoft.azure.objectanchors.objectquery.expectedmaxverticalorientationindegrees) özelliği, bir nesne örneğinin yukarı yönü ve yerçekimi arasındaki derece cinsinden beklenen maksimum açıyı gösterir.
 
 Bu parametre, tahmini bir poz için yukarı yönde başka bir kısıtlama sağlar. Örneğin, bir nesne sağ, bu parametre 0 olabilir. Nesne çıpası modelden farklı olan nesneleri algılamamalıdır. Bir model yukarı doğru ise, açılan bir örneği algılamaz. Yan yana düzen için yeni bir model kullanılacak. İfade için aynı kural geçerlidir.
 
 #### <a name="maxscalechange"></a>MaxScaleChange
 
-[Maxscalechange](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectquery.maxscalechange) özelliği, uzamsal eşlemeye göre en fazla nesne ölçeği değişikliğini (0 ~ 1 içinde) gösterir. Tahmini ölçek, kaynak ve eksen hizalı olarak ortalanmış dönüştürülmüş nesne köşelerine uygulanır. Tahmini ölçekler, bir CAD modeli ve fiziksel temsili arasındaki gerçek ölçek olamaz, ancak uygulamanın bir nesne modelini fiziksel nesne üzerinde uzamsal eşlemeye yakın bir şekilde işlemesine izin veren bazı değerler olabilir.
+[Maxscalechange](/dotnet/api/microsoft.azure.objectanchors.objectquery.maxscalechange) özelliği, uzamsal eşlemeye göre en fazla nesne ölçeği değişikliğini (0 ~ 1 içinde) gösterir. Tahmini ölçek, kaynak ve eksen hizalı olarak ortalanmış dönüştürülmüş nesne köşelerine uygulanır. Tahmini ölçekler, bir CAD modeli ve fiziksel temsili arasındaki gerçek ölçek olamaz, ancak uygulamanın bir nesne modelini fiziksel nesne üzerinde uzamsal eşlemeye yakın bir şekilde işlemesine izin veren bazı değerler olabilir.
 
 #### <a name="searchareas"></a>SearchAreas
 
-[Searchareas](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectquery.searchareas) özelliği, nesne (ler) in bulunacağı bir uzamsal sınır dizisini gösterir.
+[Searchareas](/dotnet/api/microsoft.azure.objectanchors.objectquery.searchareas) özelliği, nesne (ler) in bulunacağı bir uzamsal sınır dizisini gösterir.
 
 **Gözlemci** , bir sorguda belirtilen tüm arama alanlarının birleşim alanındaki nesneleri arayacaktır. Bu sürümde, gecikme süresini azaltmak için en yüksek güvenle bir nesne döndürüyoruz.
 
 ### <a name="objectinstance"></a>ObjectInstance
 
-Bir [ObjectInstance](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectinstance) , belirli bir modelin bir örneğinin HoloLens koordinat sisteminde bulunabileceği kuramsal bir konumu temsil eder. Her örnek `SurfaceCoverage` , tahmini pozun ne kadar iyi olduğunu göstermek için bir özellik ile birlikte gelir.
+Bir [ObjectInstance](/dotnet/api/microsoft.azure.objectanchors.objectinstance) , belirli bir modelin bir örneğinin HoloLens koordinat sisteminde bulunabileceği kuramsal bir konumu temsil eder. Her örnek `SurfaceCoverage` , tahmini pozun ne kadar iyi olduğunu göstermek için bir özellik ile birlikte gelir.
 
 Bir örnek yöntemi çağırarak oluşturulur `ObjectObserver.DetectAsync` ve sonra etkin olduğunda arka planda otomatik olarak güncelleştirilir. Bir uygulama belirli bir örnekteki durum değişikliği olayını dinleyebilir veya güncelleştirmeyi duraklatmak/devam etmek için izleme modunu değiştirebilir. İzleme kaybolduğunda bir örnek otomatik olarak **gözlemci** 'den kaldırılacaktır.
 
 ### <a name="objectobserver"></a>ObjectObserver
 
-Bir [Objectobserver](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectobserver) nesne modellerini yükler, örneklerini algılar ve, Hololens koordinat sisteminde her bir örneğe ait 6-DOF pozlarını algılar.
+Bir [Objectobserver](/dotnet/api/microsoft.azure.objectanchors.objectobserver) nesne modellerini yükler, örneklerini algılar ve, Hololens koordinat sisteminde her bir örneğe ait 6-DOF pozlarını algılar.
 
 Bir **gözlemci** içinden herhangi bir nesne modeli veya örnek oluşturulsa da, bunların yaşam süreleri bağımsızdır. Bir uygulama bir gözlemci elden çıkarıp nesne modelini veya örneğini kullanmaya devam edebilir.
 
 ### <a name="objectdiagnosticssession"></a>ObjectDiagnosticsSession
 
-[Objectdiagnosticsession](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.diagnostics.objectdiagnosticssession) , tanılamayı kaydeder ve verileri bir arşive yazar.
+[Objectdiagnosticsession](/dotnet/api/microsoft.azure.objectanchors.diagnostics.objectdiagnosticssession) , tanılamayı kaydeder ve verileri bir arşive yazar.
 
 Bir tanılama Arşivi, sahne noktası bulutu, gözlemcinin durumunu ve modeller hakkındaki bilgileri içerir. Bu bilgiler, olası çalışma zamanı sorunlarını belirlemek için faydalıdır. Daha fazla bilgi için bkz. [SSS](../faq.md).
 

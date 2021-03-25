@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: wiassaf, sstein
 ms.date: 06/25/2019
-ms.openlocfilehash: 453d7e118b946d60eb3d84c6a66abdbea7db2410
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ca1a2edec70b13f111ffd89278aa39d1ddea7f67
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96499229"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105035651"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>Veritabanı kaynaklarını en az kapalı kalma süresiyle dinamik olarak ölçeklendirin
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -60,6 +60,9 @@ Azure SQL yönetilen örneği, ölçeklendirmenize de olanak tanır:
 - [SQL yönetilen örneği](../managed-instance/sql-managed-instance-paas-overview.md) [vçekirdekler](../managed-instance/sql-managed-instance-paas-overview.md#vcore-based-purchasing-model) modunu KULLANıR ve en yüksek CPU çekirdeğini ve örneğiniz için ayrılan en fazla depolama alanını tanımlamanıza olanak sağlar. Yönetilen örnek içindeki tüm veritabanları örneğe ayrılan kaynakları paylaşır.
 
 Herhangi bir türde ölçek artırma veya ölçek azaltma eylemini başlatmak, veritabanı motoru işlemini yeniden başlatır ve gerekirse farklı bir sanal makineye taşır. Veritabanı altyapısı işleminin yeni bir sanal makineye taşınması, işlem devam ederken mevcut Azure SQL veritabanı hizmetinizi kullanmaya devam edebileceğiniz **çevrimiçi bir işlemdir** . Hedef veritabanı altyapısı tam olarak başlatıldıktan ve sorguları işlemeye hazırlandıktan sonra, bağlantılar [kaynaktan hedef veritabanı altyapısına geçiş](single-database-scale.md#impact)yapılır.
+
+> [!NOTE]
+> Verilerin içeri aktarılması, veri işleme işleri, dizin yeniden oluşturma, vb. gibi uzun süreli bir işlem çalışıyorsa veya örnek üzerinde etkin bir bağlantınız varsa, yönetilen örneğinizin ölçeklendirilmesi önerilmez. Ölçeklendirmeyi normalden uzun zaman almasını engellemek için, uzun süre çalışan tüm işlemlerin tamamlanmasından sonra örneği ölçeklendirmelisiniz.
 
 > [!NOTE]
 > Ölçek Genişletme/ölçek azaltma işlemi tamamlandığında kısa bir bağlantı kesmesi bekleyebilir. [Standart geçici hatalar Için yeniden deneme mantığı](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors)uyguladıysanız, yük devretmeyi fark edersiniz.

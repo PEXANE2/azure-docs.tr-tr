@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: how-to
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: d7a8a598ab2d0c873cf07510cf40a08c22c0f1d4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 369905ed5ee0ce9a93ec2be879b5e40114b0a380
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102608606"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048672"
 ---
 # <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>Bir tam ekran okuyucu kaynağı oluşturma ve Azure Active Directory kimlik doğrulamasını yapılandırma
 
@@ -198,7 +198,7 @@ Komut dosyası esnek olacak şekilde tasarlanmıştır. Bu, öncelikle aboneliğ
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Node.js kullanarak modern Okuyucu SDK 'Sı ile neler yapabileceğinizi görmek için [Node.js hızlı](./quickstarts/client-libraries.md?pivots=programming-language-nodejs) başlangıcı 'nı görüntüleyin.
-* Java ya da Android için Kotlin kullanarak modern Okuyucu SDK 'Sı ile neler yapabileceğinizi öğrenmek için [Android öğreticisini](./tutorial-android.md) görüntüleyin
-* İOS için Swift kullanarak modern Okuyucu SDK 'Sı ile neler yapabileceğinizi öğrenmek için [iOS öğreticisini](./tutorial-ios.md) görüntüleyin
-* Python kullanarak modern Okuyucu SDK 'Sı ile neler yapabileceğinizi öğrenmek için [Python öğreticisini](./tutorial-python.md) görüntüleyin
+* Java ya da Android için Kotlin kullanarak modern Okuyucu SDK 'Sı ile neler yapabileceğinizi öğrenmek için [Android öğreticisini](./how-to-launch-immersive-reader.md) görüntüleyin
+* İOS için Swift kullanarak modern Okuyucu SDK 'Sı ile neler yapabileceğinizi öğrenmek için [iOS öğreticisini](./how-to-launch-immersive-reader.md) görüntüleyin
+* Python kullanarak modern Okuyucu SDK 'Sı ile neler yapabileceğinizi öğrenmek için [Python öğreticisini](./how-to-launch-immersive-reader.md) görüntüleyin
 * [Modern Okuyucu SDK 'sını](https://github.com/microsoft/immersive-reader-sdk) ve [tam ekran okuyucu SDK başvurusunu](./reference.md) keşfet

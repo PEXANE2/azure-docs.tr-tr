@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2020
 ms.author: rdhillon
-ms.openlocfilehash: 9766379807e6d2708fd6935dd2ffbd7660f9988f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 633d0b9e454fe2906d98624ac2cdbcc9a8b6c7fa
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98216657"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105022271"
 ---
 # <a name="virtual-network-service-endpoint-policies-for-azure-storage"></a>Azure Depolama için sanal ağ hizmet uç noktası ilkeleri
 
@@ -109,6 +109,8 @@ Hizmet uç noktası ilkelerinde hiçbir merkezi günlük sağlanmaz. Hizmet kayn
   - Hesapların alt ağdaki hizmet uç noktası ilkelerine sahip **Klasik depolama hesapları** olmadığından emin olun.
 - Yönetilen bir Azure hizmeti, alt ağ üzerinden bir hizmet uç noktası Ilkesi uygulandıktan sonra çalışmayı durdurdu
   - Yönetilen hizmetler şu anda hizmet uç noktası ilkeleriyle desteklenmez. *Güncelleştirmeler için bu alanı izleyin*.
+- Yönetilen depolama hesaplarına erişim, alt ağ üzerinden bir hizmet uç noktası Ilkesi uygulandıktan sonra çalışmayı durdurdu
+  - Yönetilen depolama hesapları, hizmet uç noktası ilkeleriyle desteklenmez. Yapılandırıldıysa, ilkeler varsayılan olarak tüm yönetilen depolama hesaplarına erişimi reddeder. Uygulamanızın yönetilen depolama hesaplarına erişmesi gerekiyorsa, bu trafik için uç nokta ilkeleri kullanılmamalıdır.
 
 ## <a name="provisioning"></a>Sağlama
 

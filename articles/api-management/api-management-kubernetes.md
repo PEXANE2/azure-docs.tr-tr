@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/14/2019
 ms.author: apimpm
-ms.openlocfilehash: 293a47bc3e8499d7eda4e64bb68bc95eb4c85ab0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 36dfc8c906c52c6822e583db3a08c891306f7e78
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98108407"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105047941"
 ---
 # <a name="use-azure-api-management-with-microservices-deployed-in-azure-kubernetes-service"></a>Azure Kubernetes hizmetinde dağıtılan mikro hizmetlerle Azure API Management kullanma
 
@@ -95,7 +95,7 @@ API 'Lere erişim için bir abonelik anahtarı almak üzere bir abonelik gerekir
 
 ### <a name="option-3-deploy-apim-inside-the-cluster-vnet"></a>Seçenek 3: küme VNet içinde APıM dağıtma
 
-Bazı durumlarda, mevzuata kısıtlamalar veya katı güvenlik gereksinimleri olan müşteriler, genel kullanıma sunulan uç noktalar nedeniyle 1. ve 2. seçenek önemli çözümler bulabilir. Diğer bir deyişle, AKS kümesi ve mikro hizmetleri kullanan uygulamalar aynı VNet içinde bulunabilir, bu nedenle tüm API trafiği VNet içinde kalacak şekilde kümeyi genel kullanıma sunmak için bir neden yoktur. Bu senaryolar için API Management küme VNet 'ine dağıtabilirsiniz. [API Management Premium katmanı](https://aka.ms/apimpricing) , VNET dağıtımını destekler. 
+Bazı durumlarda, mevzuata kısıtlamalar veya katı güvenlik gereksinimleri olan müşteriler, genel kullanıma sunulan uç noktalar nedeniyle 1. ve 2. seçenek önemli çözümler bulabilir. Diğer bir deyişle, AKS kümesi ve mikro hizmetleri kullanan uygulamalar aynı VNet içinde bulunabilir, bu nedenle tüm API trafiği VNet içinde kalacak şekilde kümeyi genel kullanıma sunmak için bir neden yoktur. Bu senaryolar için API Management küme VNet 'ine dağıtabilirsiniz. [API Management geliştirici ve Premium katmanları](https://aka.ms/apimpricing) VNET dağıtımını destekler. 
 
 [Sanal ağa API Management dağıtmanın](./api-management-using-with-vnet.md) iki modu vardır: dış ve iç. 
 
