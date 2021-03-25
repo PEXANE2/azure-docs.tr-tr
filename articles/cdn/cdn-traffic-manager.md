@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: d2d3bd43a0f17167e855d7e678a96cd79fe42237
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a003becba0bc1e42d8fe0c0c5b199402a430a8e1
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92777750"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105034767"
 ---
 # <a name="failover-across-multiple-endpoints-with-azure-traffic-manager"></a>Azure Traffic Manager ile birden fazla uç nokta arasında yük devretme
 
@@ -94,7 +94,10 @@ CDN ve Traffic Manager profillerinizi yapılandırdıktan sonra, DNS eşlemesi e
     > [!NOTE]
     > Etki alanınız Şu anda etkin ve kesintiye uğrarsa, bu adımı son yapın. Özel etki alanı DNS 'nizi Traffic Manager için güncelleştirmeden önce CDN uç noktaları ve Traffic Manager etki alanlarının canlı olduğunu doğrulayın.
     >
-
+   
+    > [!NOTE]
+    > Bu yük devretmek için, her iki uç noktanın farklı profillerde olması gerekir ve etki alanı adı çakışmalarını önlemek için farklı profillerin farklı CDN sağlayıcısı tarafından olması gerekir.
+    > 
 
 2.  Azure CDN profilinizde, ilk CDN uç noktasını (Akamai) seçin. **Özel etki alanı Ekle** ve giriş **cdndemo101.dustydogpetcare.Online**' ı seçin. Özel etki alanını doğrulama onay işareti yeşil olduğunu doğrulayın. 
 

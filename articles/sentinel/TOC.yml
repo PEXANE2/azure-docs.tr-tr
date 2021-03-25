@@ -320,7 +320,7 @@
         - name: Kusto sorgu dili hızlı başvurusu
           href: /azure/data-explorer/kql-quick-reference
         - name: Azure Izleyici günlük sorgusu iyileştirmeleri
-          href: /azure/azure-monitor/logs/query-optimization
+          href: ../azure-monitor/logs/query-optimization.md
     - name: UEBA zenginleştirmeleri
       href: ueba-enrichments.md
     - name: CEF günlük alanı eşleme

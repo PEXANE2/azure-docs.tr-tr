@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: e62333f241cf24620773314fb7aa4846af651eaf
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b558d4b3be64f82775eb9caf2f3ea8c5a8f95c6d
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98185878"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025229"
 ---
 # <a name="automatic-language-detection-for-speech-to-text"></a>Konuşmayı metne dönüştürme için otomatik dil algılama
 
@@ -30,7 +30,7 @@ Bu makalede, `AutoDetectSourceLanguageConfig` bir `SpeechRecognizer` nesnesi olu
 
 ## <a name="automatic-language-detection-with-the-speech-sdk"></a>Konuşma SDK 'Sı ile otomatik dil algılama
 
-Otomatik dil algılama 'nın Şu anda algılama başına dört dilin hizmet tarafı sınırı vardır. Nesnenizin oluşturulması sırasında bu sınırlamayı aklınızda bulundurun `AudoDetectSourceLanguageConfig` . Aşağıdaki örneklerde bir oluşturacak `AutoDetectSourceLanguageConfig` ve bunu bir oluşturmak için kullanacaksınız `SpeechRecognizer` .
+Otomatik dil algılama 'nın Şu anda algılama başına dört dilin hizmet tarafı sınırı vardır. Nesnenizin oluşturulması sırasında bu sınırlamayı aklınızda bulundurun `AutoDetectSourceLanguageConfig` . Aşağıdaki örneklerde bir oluşturacak `AutoDetectSourceLanguageConfig` ve bunu bir oluşturmak için kullanacaksınız `SpeechRecognizer` .
 
 > [!TIP]
 > Ayrıca, metinde konuşma yaparken kullanılacak özel bir model de belirtebilirsiniz. Daha fazla bilgi için bkz. [Otomatik dil algılama için özel model kullanma](#use-a-custom-model-for-automatic-language-detection).

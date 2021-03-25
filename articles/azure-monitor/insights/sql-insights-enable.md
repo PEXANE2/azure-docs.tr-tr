@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/15/2021
-ms.openlocfilehash: ac37a6de4197d5e7cae20d2bde759b98fe474047
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: e8dd887d151eb553131048f232940555dbef324b
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889629"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105025042"
 ---
 # <a name="enable-sql-insights-preview"></a>SQL Insights 'ı etkinleştir (Önizleme)
 Bu makalede, SQL dağıtımlarınızı izlemek için [SQL Insights](sql-insights-overview.md) 'ın nasıl etkinleştirileceği açıklanır. İzleme, SQL dağıtımlarınıza bir bağlantı yapan ve izleme verilerini toplamak için dinamik yönetim görünümleri (DMVs) kullanan bir Azure sanal makineden gerçekleştirilir. Hangi veri kümelerinin toplanacağını ve bir izleme profili kullanan koleksiyon sıklığını denetleyebilirsiniz.
@@ -40,7 +40,7 @@ Kullanıcının oluşturulduğunu doğrulayın.
 :::image type="content" source="media/sql-insights-enable/telegraf-user-database-verify.png" alt-text="Telegraf Kullanıcı betiğini doğrulayın." lightbox="media/sql-insights-enable/telegraf-user-database-verify.png":::
 
 ### <a name="azure-sql-managed-instance"></a>Azure SQL Yönetilen Örnek
-Azure SQL yönetilen Örneğinizde oturum açın ve gereken izinlerle izleme kullanıcısını oluşturmak için aşağıdaki betiği çalıştırmak üzere [SSMS](../../azure-sql/database/connect-query-ssms.md) veya benzer bir araç kullanın. *Kullanıcıyı* bir Kullanıcı adı ve *mystrongpassword* ile parolayla değiştirin.
+Azure SQL yönetilen Örneğinizde oturum açın ve [SQL Server Management Studio](../../azure-sql/database/connect-query-ssms.md) veya benzer bir aracı kullanarak izleme kullanıcısını gereken izinlerle oluşturmak için aşağıdaki betiği çalıştırın. *Kullanıcıyı* bir Kullanıcı adı ve *mystrongpassword* ile parolayla değiştirin.
 
  
 ```
@@ -85,7 +85,7 @@ Azure sanal makineleri aşağıdaki gereksinimlere sahiptir.
 > [!NOTE]
 > Standard_B2s (2 CPU, 4 GiB belleği) sanal makine boyutu en fazla 100 bağlantı dizesini destekleyecektir. Tek bir sanal makineye 100 'den fazla bağlantı ayıramamanız gerekir.
 
-Sanal makinelerin, izleme verilerini toplamak üzere ağ bağlantıları yapabilmesi için SQL sistemlerinizle aynı VNET 'e yerleştirilmesi gerekir. Azure sanal makinelerinde çalışan SQL 'i izlemek için izleme sanal makinesini veya Azure yönetilen örneği olarak kullanıyorsanız, SQL Server 'ı izlemek için bir genel ağ uç noktası sağlamanız gerekmiyorsa izleme sanal makinesini bu kaynaklarla bir uygulama güvenlik grubuna veya aynı sanal ağa yerleştirmeyi göz önünde bulundurun. 
+SQL kaynaklarınızın ağ ayarlarına bağlı olarak, sanal makinelerin izleme verilerini toplamak üzere ağ bağlantıları yapabilmesi için SQL kaynaklarınızla aynı sanal ağa yerleştirilmesi gerekebilir.  
 
 ## <a name="configure-network-settings"></a>Ağ ayarlarını yapılandırma
 Her SQL türü, izleme sanal makinenizin SQL 'e güvenli bir şekilde erişmesi için yöntemler sunar.  Aşağıdaki bölümler, SQL türüne göre seçenekleri kapsar.
@@ -100,8 +100,6 @@ Genel uç nokta üzerinden erişim için, **güvenlik duvarı ayarları** sayfas
 
 :::image type="content" source="media/sql-insights-enable/firewall-settings.png" alt-text="Güvenlik Duvarı ayarları." lightbox="media/sql-insights-enable/firewall-settings.png":::
 
-> [!NOTE]
-> SQL Insights Şu anda Azure SQL veritabanı için Azure özel uç noktasını desteklememektedir.  [Azure izleyici aracısının desteklediği](https://docs.microsoft.com/azure/azure-monitor/agents/azure-monitor-agent-overview#networking)ağ güvenlik grubunuzda veya sanal ağ güvenlik duvarı ayarlarınızda [hizmet etiketlerinin](https://docs.microsoft.com/azure/virtual-network/service-tags-overview) kullanılmasını öneririz.
 
 ### <a name="azure-sql-managed-instances"></a>Azure SQL Yönetilen Örnekleri 
 
@@ -213,12 +211,16 @@ Okunabilir bir ikinciyi izlemek için bağlantı dizesine anahtar değerini ekle
 
 
 
-## <a name="profile-created"></a>Profil oluşturuldu 
-Sanal makineyi SQL dağıtımlarınızdan veri toplayacak şekilde yapılandırmak için **izleme sanal makinesi Ekle** ' yi seçin. **Genel bakış** sekmesine dönmeyin.  Durum sütunu, birkaç dakika içinde "toplanıyor" olarak değiştirilmelidir, izlemek üzere seçtiğiniz sistemlere yönelik verileri görmeniz gerekir.
+## <a name="monitoring-profile-created"></a>İzleme profili oluşturuldu 
+
+Sanal makineyi SQL kaynaklarınızdan veri toplayacak şekilde yapılandırmak için **izleme sanal makinesi Ekle** ' yi seçin. **Genel bakış** sekmesine dönmeyin.  Birkaç dakika içinde, durum sütunu "toplamayı" okumak için değişmelidir, izlemeyi seçtiğiniz SQL kaynakları için verileri görmeniz gerekir.
 
 Veri görmüyorsanız, bkz. sorunu belirlemek için [SQL Insights sorunlarını giderme](sql-insights-troubleshoot.md) . 
 
 :::image type="content" source="media/sql-insights-enable/profile-created.png" alt-text="Profil oluşturuldu" lightbox="media/sql-insights-enable/profile-created.png":::
+
+> [!NOTE]
+> İzleme profilinizi veya izleme sanal makinelerinizdeki bağlantı dizelerini güncelleştirmeniz gerekiyorsa, bunu SQL Insights **Yönetim profili** sekmesi aracılığıyla yapabilirsiniz.  Güncelleştirmeleriniz kaydedildikten sonra değişiklikler yaklaşık 5 dakika içinde uygulanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
