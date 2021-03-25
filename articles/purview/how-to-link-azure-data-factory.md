@@ -6,13 +6,13 @@ ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 03/08/2021
-ms.openlocfilehash: 8812806e535e8e34ca07fdb13e6223bfa0c91d6b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/24/2021
+ms.openlocfilehash: c9f2a21a1183637ec4648868cccd6f343b003f0c
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102449620"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026632"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Azure Data Factory ve Azure purview 'a bağlanma
 
@@ -147,6 +147,11 @@ Data Factory ile takip görünümü arasındaki tümleştirme, aşağıdaki böl
 - Dosya tabanlı mağazaların kaynak bölümü bulma seçeneği.
 - Dosya başına en fazla satır ayarı ile verileri dosya tabanlı havuza kopyalayın.
 - Kopyalama sırasında ek sütunlar ekleyin.
+
+Kökenini ek olarak, veri varlık şeması (varlık > Şeması sekmesinde gösterilir) aşağıdaki bağlayıcılar için raporlanır:
+
+- Azure blob, Azure dosya depolama, ADLS 1., ADLS 2. ve Amazon S3 üzerindeki CSV ve Parquet dosyaları
+- Azure Veri Gezgini, Azure SQL veritabanı, Azure SQL yönetilen örneği, Azure SYNAPSE Analytics, SQL Server, Teradata
 
 ### <a name="data-factory-data-flow-support"></a>Data Factory veri akışı desteği
 

@@ -6,12 +6,12 @@ ms.author: v-elqu
 ms.service: azure-percept
 ms.topic: reference
 ms.date: 03/03/2021
-ms.openlocfilehash: a04e53c8444a01bc42f3ce71393fc842f3419e74
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a3f44f3d0cdf024bca12b0023891f21175f52b47
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102193539"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026947"
 ---
 # <a name="known-issues"></a>Bilinen sorunlar
 
@@ -30,7 +30,7 @@ Bu sorunlardan biriyle karşılaşırsanız, bir hatayı açmak gerekli değildi
 | Cihaz güncelleştirme | Kullanıcılar, başarılı olsa bile güncelleştirmenin başarısız olduğunu belirten bir ileti alabilir. | IoT Hub cihaz için cihaz Ikizi gezinerek, cihazın güncelleştirildiğini onaylayın. Bu, ilk güncelleştirmeden sonra düzeltilir. |
 | Cihaz güncelleştirme | Kullanıcılar, ilk güncelleştirmesinden sonra Wi-Fi bağlantı ayarlarını kaybedebilir. | Wi-Fi bağlantısını kurmak için güncelleştirdikten sonra taslak deneyimini çalıştırın. Bu, ilk güncelleştirmeden sonra düzeltilir. |
 | Cihaz güncelleştirme | OTA güncelleştirmesini gerçekleştirdikten sonra, kullanıcılar daha önce oluşturulan kullanıcı hesaplarını kullanarak SSH aracılığıyla oturum açabilirler ve yeni SSH kullanıcıları taslak deneyimi aracılığıyla oluşturulamaz. Bu sorun, aşağıdaki önceden yüklenmiş görüntü sürümlerinden OTA güncelleştirmeleri gerçekleştiren sistemleri etkiler: 2020.110.114.105 ve 2020.109.101.105. | Kullanıcı profillerinizi kurtarmak için, OTA güncelleştirmesinden sonra şu adımları uygulayın: <br> Kullanıcı adı olarak "root" kullanarak [devkit 'e SSH](./how-to-ssh-into-percept-dk.md) . SSH "root" Kullanıcı oturum açma bilgilerini taslak deneyimle devre dışı bırakırsanız, yeniden etkinleştirmeniz gerekir. Başarıyla bağlandıktan sonra bu komutu Çalıştır: <br> ```mkdir -p /var/custom-configs/home; chmod 755 /var/custom-configs/home``` <br> Önceki Kullanıcı giriş verilerini kurtarmak için aşağıdaki komutu çalıştırın: <br> ```mkdir -p /tmp/prev-rootfs && mount /dev/mmcblk0p3 /tmp/prev-rootfs && [ ! -L /tmp/prev-rootfs/home ] && cp -a /tmp/prev-rootfs/home/* /var/custom-configs/home/. && echo "User home migrated!"; umount /tmp/prev-rootfs``` |
-| Cihaz güncelleştirme | OTA güncelleştirmesini gerçekleştirdikten sonra, güncelleştirme grupları kaybedilir. | [Bu yönergeleri](https://docs.microsoft.com/azure/azure-percept/how-to-update-over-the-air#create-a-device-update-group)izleyerek cihazın etiketini güncelleştirin. |
+| Cihaz güncelleştirme | OTA güncelleştirmesini gerçekleştirdikten sonra, güncelleştirme grupları kaybedilir. | [Bu yönergeleri](./how-to-update-over-the-air.md#create-a-device-update-group)izleyerek cihazın etiketini güncelleştirin. |
 | Geliştirme araçları paketi yükleyicisi | Docker sistemde düzgün çalışmıyorsa isteğe bağlı Caffe yüklemesi başarısız olabilir. | Docker 'ın yüklü olduğundan ve çalıştığından emin olun ve ardından Caffe yüklemesini yeniden deneyin. |
 | Geliştirme araçları paketi yükleyicisi | İsteğe bağlı CUDA yüklemesi uyumsuz sistemlerde başarısız olur. | Yükleyiciyi çalıştırmadan önce CUDA ile sistem uyumluluğunu doğrulayın. |
 | Docker, ağ, IoT Edge | İç ağınız 172. x. x. x kullanıyorsa Docker Kapsayıcıları Edge 'e bağlanamaz. | Aşağıdaki gibi,/etc/Docker/daemon.jsdosyasına özel bir bip bölümü ekleyin: `{    "bip": "192.168.168.1/24"}` |

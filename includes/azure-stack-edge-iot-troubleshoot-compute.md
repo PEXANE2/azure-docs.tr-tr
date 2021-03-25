@@ -4,12 +4,12 @@ ms.service: databox
 ms.author: alkohli
 ms.topic: include
 ms.date: 03/23/2021
-ms.openlocfilehash: 34d0d55ba6eb403055be96758b57b7bd0c2ab704
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 0d912d0ac3f0fcf4c52116e67909038a1973304b
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "104987942"
+ms.locfileid: "105105661"
 ---
 İşlem ile ilgili hataları gidermek için IoT Edge Aracısı çalışma zamanı yanıtlarını kullanın. Olası yanıtların bir listesi aşağıda verilmiştir:
 
@@ -32,7 +32,7 @@ Cihazdaki tüm modüller bilinmeyen bir durum gösterir ve kullanılamaz. Bilinm
 
 #### <a name="suggested-solution"></a>Önerilen çözüm
 
-IoT Edge hizmetini silip modülleri yeniden dağıtın. Daha fazla bilgi için bkz. [IoT Edge hizmeti 'Ni kaldırma](../articles/databox-online/azure-stack-edge-j-series-manage-compute.md#remove-iot-edge-service).
+IoT Edge hizmetini silip modülleri yeniden dağıtın. Daha fazla bilgi için bkz. [IoT Edge hizmeti 'Ni kaldırma](../articles/databox-online/azure-stack-edge-gpu-manage-compute.md#remove-iot-edge-service).
 
 
 ### <a name="modules-show-as-running-but-are-not-working"></a>Modüller çalışıyor olarak gösterilir ancak çalışmıyor
@@ -65,7 +65,7 @@ Cihazınızın yerel Web Kullanıcı arabiriminde aşağıdaki adımları uygula
 1. **Kubernetes dış hizmet IP 'leri** için statik ve bitişik bir IP aralığı girin. Hizmet için 1 IP gerekir `edgehub` . Ayrıca, her bir IoT Edge modülü için ve dağıtabileceğiniz her VM için bir IP 'ye ihtiyacınız vardır. 
 1. **Uygula**’yı seçin. Değiştirilen IP aralığı hemen geçerli olacaktır.
 
-Daha fazla bilgi için bkz. [kapsayıcılar için dış hizmet IP 'Lerini değiştirme](../articles/databox-online/azure-stack-edge-j-series-manage-compute.md#change-external-service-ips-for-containers).
+Daha fazla bilgi için bkz. [kapsayıcılar için dış hizmet IP 'Lerini değiştirme](../articles/databox-online/azure-stack-edge-gpu-manage-compute.md#change-external-service-ips-for-containers).
 
 ### <a name="configure-static-ips-for-iot-edge-modules"></a>IoT Edge modülleri için statik IP 'Leri yapılandırma
 

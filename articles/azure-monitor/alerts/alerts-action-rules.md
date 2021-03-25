@@ -3,16 +3,16 @@ title: Azure Izleyici uyarıları için eylem kuralları
 description: Azure Izleyici 'deki eylem kurallarının ne olduğunu ve bunların nasıl yapılandırılacağını ve yönetileceğini anlamak.
 ms.topic: conceptual
 ms.date: 03/15/2021
-ms.openlocfilehash: f70d798270ad82193f7ae5935d34f8f418d35e05
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 12e7cf8e72c5423b4a2edd6ea2a0f4537e328b08
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103471684"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105036790"
 ---
 # <a name="action-rules-preview"></a>Eylem kuralları (Önizleme)
 
-Eylem kuralları herhangi bir Azure Resource Manager kapsamında (Azure aboneliği, kaynak grubu veya hedef kaynak) eylemleri tanımlamanıza veya gösterkullanmanıza yardımcı olur. Üzerinde işlem yapmak istediğiniz uyarı örneklerinin belirli bir alt kümesini daraltmanıza yardımcı olan çeşitli filtreleri vardır.
+Eylem kuralları, tetiklenen uyarılarınıza eylem grupları eklemenize veya bunları göstermenizi sağlar. Tek bir kural, örneğin belirli bir kaynaktaki (belirli bir sanal makine gibi) veya bir abonelikteki herhangi bir kaynakta tetiklenen herhangi bir uyarı gibi farklı hedef kaynak kapsamlarını kapsayabilir. İsteğe bağlı olarak, bir kural tarafından hangi uyarıların kapsanacak ve bir zamanlama tanımlayacağınızı denetlemek için çeşitli filtreler ekleyebilirsiniz. Örneğin, yalnızca iş saatleri dışında veya planlanan bakım penceresi sırasında etkin olması için.
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4rBZ2]
 
@@ -31,7 +31,7 @@ Uyarı kuralları, uyarı oluşturulduğunda tetiklenen eylem grubunu tanımlama
 Eylem kuralları bu işlemi basitleştirmeye yardımcı olur. Eylemleri ölçekli olarak tanımlayarak, yapılandırılmış kapsamda oluşturulan herhangi bir uyarı için bir eylem grubu tetiklenebilir. Önceki örnekte, takım, içinde oluşturulan tüm uyarılar için aynı eylem grubunu tetikleyecek **ContosoRG** üzerinde bir eylem kuralı tanımlayabilir.
 
 > [!NOTE]
-> Eylem kuralları şu anda Azure hizmet durumu uyarıları için geçerli değildir.
+> Eylem kuralları Azure hizmet durumu uyarıları için geçerlidir.
 
 ## <a name="configuring-an-action-rule"></a>Eylem kuralı yapılandırma
 
@@ -308,7 +308,7 @@ Uyarı kuralınız için hedef kaynağı tanımladıktan sonra, **Eylemler** bö
 
 Gizleme her zaman aynı kapsamda öncelik alır.
 
-### <a name="what-happens-if-i-have-a-resource-thats-monitored-in-two-separate-action-rules-do-i-get-one-or-two-notifications-for-example-vm2-in-the-following-scenario"></a>İki ayrı eylem kurallarında izlenen bir kaynağınız varsa ne olur? Bir veya iki bildirim alıyorum? Örneğin, aşağıdaki senaryoda **VM2** :
+### <a name="what-happens-if-i-have-a-resource-that-is-covered-by-two-action-rules-do-i-get-one-or-two-notifications-for-example-vm2-in-the-following-scenario"></a>İki eylem kuralı kapsamındaki bir kaynağınız varsa ne olur? Bir veya iki bildirim alıyorum? Örneğin, aşağıdaki senaryoda **VM2** :
 
    `action rule AR1 defined for VM1 and VM2 with action group AG1`
 
