@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 7c3950b1aeae2b4e90b1ae4acfb9439c2cb159ca
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: bf5c4c39ea8f5705cc9788fdcf2cddd01dcb4087
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "105026011"
+ms.locfileid: "105034716"
 ---
 # <a name="configure-a-dnn-listener-for-an-availability-group"></a>Kullanılabilirlik grubu için DNN dinleyicisi yapılandırma
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -145,7 +145,7 @@ SELECT * FROM SYS.AVAILABILITY_GROUP_LISTENERS
 
 ## <a name="update-connection-string"></a>Bağlantı dizesini Güncelleştir
 
-Uygulamalar için bağlantı dizelerini DNN dinleyicisine bağlanacak şekilde güncelleştirin. Yük devretme sonrasında hızlı bağlantı sağlamak için, `MultiSubnetFailover=True` SQL istemcisi destekliyorsa bağlantı dizesine ekleyin.
+Uygulamalar için bağlantı dizelerini DNN dinleyicisine bağlanacak şekilde güncelleştirin. DNN dinleyicilerinin bağlantı dizeleri DNN bağlantı noktası numarasını sağlamalıdır. Yük devretme sonrasında hızlı bağlantı sağlamak için, `MultiSubnetFailover=True` SQL istemcisi destekliyorsa bağlantı dizesine ekleyin.
 
 ## <a name="test-failover"></a>Yük devretme testi
 

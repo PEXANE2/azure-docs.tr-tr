@@ -5,12 +5,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/01/2021
 ms.custom: template-concept
-ms.openlocfilehash: be11c32cf06b9873e10247d7ccc4a84133a6c688
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 4da685c247427e78297df1753779ee9b5c7866b8
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104774941"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023206"
 ---
 # <a name="guide-for-running-functions-on-net-50-in-azure"></a>Azure 'da .NET 5,0 üzerinde işlev çalıştırmaya yönelik kılavuz
 
@@ -147,15 +147,17 @@ Bir çıkış bağlamasına yazmak için, işlev yöntemine bir çıkış bağla
 
 ### <a name="multiple-output-bindings"></a>Birden çok çıkış bağlaması
 
-Bir çıkış bağlamasına yazılan veriler her zaman işlevin dönüş değeridir. Birden fazla çıkış bağlamaya yazmanız gerekiyorsa, özel bir dönüş türü oluşturmanız gerekir. Bu dönüş türü, sınıfın bir veya daha fazla özelliklerine uygulanmış çıkış bağlama özniteliğine sahip olmalıdır. Aşağıdaki örnek hem HTTP yanıtına hem de bir sıra çıkış bağlamaya Yazar:
+Bir çıkış bağlamasına yazılan veriler her zaman işlevin dönüş değeridir. Birden fazla çıkış bağlamaya yazmanız gerekiyorsa, özel bir dönüş türü oluşturmanız gerekir. Bu dönüş türü, sınıfın bir veya daha fazla özelliklerine uygulanmış çıkış bağlama özniteliğine sahip olmalıdır. Bir HTTP tetikleyicisinden alınan aşağıdaki örnek hem HTTP yanıtına hem de bir sıra çıkış bağlamasına Yazar:
 
 :::code language="csharp" source="~/azure-functions-dotnet-worker/samples/Extensions/MultiOutput/MultiOutput.cs" id="docsnippet_multiple_outputs":::
+
+HTTP tetikleyicisinden gelen yanıt her zaman bir çıktı olarak kabul edilir, bu nedenle dönüş değeri özniteliği gerekli değildir.
 
 ### <a name="http-trigger"></a>HTTP tetikleyicisi
 
 HTTP Tetikleyicileri gelen HTTP istek iletisini, işleve geçirilen bir [Httprequestdata] nesnesine çevirir. Bu nesne,,,, `Headers` `Cookies` `Identities` `URL` ve isteğe bağlı bir ileti dahil olmak üzere istekten veri sağlar `Body` . Bu nesne, isteğin kendisi değil HTTP istek nesnesinin bir gösterimidir. 
 
-Benzer şekilde, işlev ileti `StatusCode` , `Headers` ve isteğe bağlı olarak bir ILETI gibi http yanıtı oluşturmak için kullanılan verileri sağlayan bir [HttpReponseData] nesnesi döndürür `Body` .  
+Benzer şekilde, işlev, ileti [] `StatusCode` , `Headers` ve isteğe bağlı olarak bir ileti gibi http yanıtı oluşturmak için kullanılan verileri sağlayan bir httpresponsedata nesnesi döndürür `Body` .  
 
 Aşağıdaki kod bir HTTP tetikleyicisine sahiptir 
 
