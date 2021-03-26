@@ -7,24 +7,24 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/24/2020
+ms.date: 03/26/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 748ad9fdab781ba03135f026ab846099fe50c51f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6bf5e53d9f4a867c146cb01376fcd28d2797819c
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104604415"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606224"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Sorgu için otomatik tamamlamayı ve önerilen sonuçları etkinleştirmek üzere bir öneri aracı oluşturun
 
-Azure Bilişsel Arama 'de, "sizin yazarken arama" bir *öneri aracı* aracılığıyla etkinleştirilir. Bir öneri aracı, alanlar koleksiyonundan oluşan bir iç veri yapısıdır. Alanlar, kısmi şartlarda eşleşmeleri desteklemek için önek dizileri oluşturarak ek simgeleştirme özelliğine sahiptir.
+Azure Bilişsel Arama 'de, typeahead veya "sizin yazarken arama" bir *öneri aracı* aracılığıyla etkinleştirilir. Bir öneri aracı, alanlar koleksiyonundan oluşan bir iç veri yapısıdır. Alanlar, kısmi şartlarda eşleşmeleri desteklemek için önek dizileri oluşturarak ek simgeleştirme özelliğine sahiptir. Örneğin, bir şehir alanı içeren bir öneri aracı "Seattle" teriminin "Sea", "koltuk", "Seatt" ve "seattl" önek birleşimlerine sahip olacaktır.
 
-Örneğin, bir öneri aracı bir şehir alanı içeriyorsa, "Seattle" terimi için "Sea", "koltuk", "Seatt" ve "seattl" sonuç ön eki birleşimleri oluşturulur. Ön ekler, bir öneri aracı Fields koleksiyonunda belirtilen her alan için bir tane ters dizinler halinde depolanır.
+Kısmi şartlardan eşleşme bir oto tamamlanmış sorgu veya önerilen eşleşme olabilir. Aynı öneri aracı her iki deneyimde desteklemektedir.
 
 ## <a name="typeahead-experiences-in-cognitive-search"></a>Bilişsel Arama 'de typeahead deneyimleri
 
-Bir öneri aracı iki deneyimi destekler: *otomatik tamamlama*, bir dönem sorgusunun tamamına yönelik kısmi bir girişi tamamlar ve davet eden *öneriler* ile belirli bir eşleştirmeye kadar tıklamıştır. AutoComplete bir sorgu oluşturur. Öneriler, eşleşen bir belge oluşturur.
+Typeahead, tam bir terim sorgusunun kısmi bir girişini veya belirli bir eşleştirmeye tıklamanın *önerilerini* tamamlayan *AutoComplete* olabilir. AutoComplete bir sorgu oluşturur. Öneriler, eşleşen bir belge oluşturur.
 
 [C# ' de ilk uygulamanızı oluşturma bölümündeki](tutorial-csharp-type-ahead-and-suggestions.md) aşağıdaki ekran görüntüsünde her ikisi de gösterilmektedir. Otomatik tamamlama anticipates olası bir dönem, "tw" ile "ın" ile tamamlanıyor. Otel adı gibi bir alan, dizinden eşleşen bir otel arama belgesini temsil ettiğinde, öneriler mini arama sonuçlardır. Öneriler için, açıklayıcı bilgiler sağlayan herhangi bir alanı yüzeysel yapabilirsiniz.
 
@@ -40,11 +40,11 @@ Bu özellikleri ayrı olarak veya birlikte kullanabilirsiniz. Bu davranışları
 
 ## <a name="how-to-create-a-suggester"></a>Öneri aracı oluşturma
 
-Bir öneri aracı oluşturmak için bir [Dizin tanımına](/rest/api/searchservice/create-index)bir tane ekleyin. Bir öneri aracı, typeahead deneyiminin etkinleştirildiği bir ad ve alan koleksiyonu alır. ve [her bir özelliği ayarlayın](#property-reference). Bir öneri aracı oluşturmak için en iyi zaman, onu kullanacak alanı da tanımlamanız durumunda olur.
+Bir öneri aracı oluşturmak için bir [Dizin tanımına](/rest/api/searchservice/create-index)bir tane ekleyin. Bir öneri aracı, typeahead deneyiminin etkinleştirildiği bir ad ve alan koleksiyonu alır. Bir öneri aracı oluşturmak için en iyi zaman, onu kullanacak alanı da tanımlamanız durumunda olur.
 
 + Yalnızca dize alanlarını kullanın.
 
-+ Dize alanı bir karmaşık türün parçasıysa (örneğin, adres içindeki bir şehir alanı), üst öğeyi şu alana ekleyin: `"Address/City"` (REST ve C# ve Python) veya `["Address"]["City"]` (JavaScript).
++ Dize alanı bir karmaşık türün parçasıysa (örneğin, adres içindeki bir şehir alanı), üst öğeyi alan yoluna ekleyin: `"Address/City"` (REST ve C# ve Python) veya `["Address"]["City"]` (JavaScript).
 
 + Alanda varsayılan standart Lucene Analyzer ( `"analyzer": null` ) veya bir [dil Çözümleyicisi](index-add-language-analyzers.md) (örneğin,) kullanın `"analyzer": "en.Microsoft"` .
 
@@ -58,7 +58,7 @@ Ek içeriğin daha fazla terim tamamlanma olasılığı olduğu için, öğesind
 
 Öneriler, diğer yandan, alan seçiminiz seçmeli olduğunda daha iyi sonuçlar üretir. Önerinizin bir arama belgesi için bir ara sunucu olduğunu unutmayın, böylece tek bir sonucu en iyi temsil eden alanları isteyeceksiniz. Adlar, başlıklar veya birden çok eşleşme arasında ayrım yapan diğer benzersiz alanlar en iyi şekilde çalışır. Alanlar Yinelenen değerlerden oluşur, öneriler aynı sonuçlardan oluşur ve bir Kullanıcı hangisinin tıklayabileceklerini bilmez.
 
-Her iki arama türü deneyiminden de faydalanmak için, otomatik tamamlama için ihtiyacınız olan tüm alanları ekleyin, ancak **$Select**, **$top**, **$Filter** ve **searchfields** değerlerini kullanarak önerilerin sonuçlarını denetleyin.
+Her iki arama türü deneyiminden de faydalanmak için, otomatik tamamlama için ihtiyacınız olan tüm alanları ekleyin, ancak öneriler için sonuçları denetlemek üzere "$select", "$top", "$filter" ve "searchFields" kullanın.
 
 ### <a name="choose-analyzers"></a>Çözümleyiciler seçin
 
@@ -142,9 +142,9 @@ private static void CreateIndex(string indexName, SearchIndexClient indexClient)
 
 |Özellik      |Açıklama      |
 |--------------|-----------------|
-|`name`        | Öneri aracı tanımında belirtilmiştir, ancak otomatik tamamlama veya öneriler isteği üzerinde de çağırılır. |
-|`sourceFields`| Öneri aracı tanımında belirtilmiştir. Bu, içeriğin kaynağı olan dizindeki bir veya daha fazla alanın listesidir. Alanların ve türünde olması gerekir `Edm.String` `Collection(Edm.String)` . Alanda bir çözümleyici belirtilmişse, [Bu listeden](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername) bir adlandırılmış sözlü Çözümleyicisi olmalıdır (özel çözümleyici değil).<p/> En iyi uygulama olarak, bir arama çubuğunda veya açılan listede bir tamamlanmış dize olup olmadığı için, yalnızca beklenen ve uygun bir yanıta ödünç veren alanları belirtin.<p/>Bir otel adı duyarlık içerdiğinden iyi bir adaydır. Açıklamalar ve açıklamalar gibi ayrıntılı alanlar çok yoğun. Benzer şekilde, Kategoriler ve Etiketler gibi yinelenen alanlar daha az etkilidir. Örneklerde, birden fazla alanı dahil etbileceğinizi göstermek için, "Category" de yer alır. |
-|`searchMode`  | Yalnızca REST parametresi, portalda da görünür. Bu parametre .NET SDK 'da kullanılamaz. Aday tümcecikleri aramak için kullanılan stratejiyi gösterir. Şu anda desteklenen tek mod, `analyzingInfixMatching` bir terimin başlangıcında Şu anda eşleşen.|
+| name        | Öneri aracı tanımında belirtilmiştir, ancak otomatik tamamlama veya öneriler isteği üzerinde de çağırılır. |
+| sourceFields | Öneri aracı tanımında belirtilmiştir. Bu, içeriğin kaynağı olan dizindeki bir veya daha fazla alanın listesidir. Alanların ve türünde olması gerekir `Edm.String` `Collection(Edm.String)` . Alanda bir çözümleyici belirtilmişse, [Bu listeden](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername) bir adlandırılmış sözlü Çözümleyicisi olmalıdır (özel çözümleyici değil). </br></br>En iyi uygulama olarak, bir arama çubuğunda veya açılan listede bir tamamlanmış dize olup olmadığı için, yalnızca beklenen ve uygun bir yanıta ödünç veren alanları belirtin. </br></br>Bir otel adı duyarlık içerdiğinden iyi bir adaydır. Açıklamalar ve açıklamalar gibi ayrıntılı alanlar çok yoğun. Benzer şekilde, Kategoriler ve Etiketler gibi yinelenen alanlar daha az etkilidir. Örneklerde, birden fazla alanı dahil etbileceğinizi göstermek için, "Category" de yer alır. |
+| searchMode  | Yalnızca REST parametresi, portalda da görünür. Bu parametre .NET SDK 'da kullanılamaz. Aday tümcecikleri aramak için kullanılan stratejiyi gösterir. Şu anda desteklenen tek mod, `analyzingInfixMatching` bir terimin başlangıcında Şu anda eşleşen.|
 
 <a name="how-to-use-a-suggester"></a>
 
@@ -157,9 +157,9 @@ Bir sorguda bir öneri aracı kullanılır. Bir öneri aracı oluşturulduktan s
 + [Mümütasync yöntemi](/dotnet/api/azure.search.documents.searchclient.suggestasync)
 + [Oto Tamteasync yöntemi](/dotnet/api/azure.search.documents.searchclient.autocompleteasync)
 
-Bir arama uygulamasında, istemci kodu, kısmi sorguyu toplamak ve eşleşmeyi sağlamak için [jQuery UI AutoComplete](https://jqueryui.com/autocomplete/) gibi bir kitaplıktan faydalanmalıdır. Bu görev hakkında daha fazla bilgi için bkz. [otomatik tamamlama veya önerilen sonuçları istemci koduna ekleme](search-autocomplete-tutorial.md).
+Bir arama uygulamasında, istemci kodu, kısmi sorguyu toplamak ve eşleşmeyi sağlamak için [jQuery UI AutoComplete](https://jqueryui.com/autocomplete/) gibi bir kitaplıktan faydalanmalıdır. Bu görev hakkında daha fazla bilgi için bkz. [otomatik tamamlama veya önerilen sonuçları istemci koduna ekleme](search-add-autocomplete-suggestions.md).
 
-API kullanımı, AutoComplete REST API aşağıdaki çağrısında gösterilmiştir. Bu örnekte iki örnek vardır. İlk olarak, tüm sorgularda olduğu gibi, işlem bir dizinin belgeler koleksiyonuna karşı yapılır ve sorgu, bu örnekte kısmi sorgu sağlayan bir **arama** parametresi içerir. İkinci olarak, isteğe **suggesterName** eklemeniz gerekir. Dizinde tanımlı bir öneri aracı yoksa otomatik tamamlama veya önerilere çağrı başarısız olur.
+API kullanımı, AutoComplete REST API aşağıdaki çağrısında gösterilmiştir. Bu örnekte iki örnek vardır. İlk olarak, tüm sorgularda olduğu gibi, işlem bir dizinin belgeler koleksiyonuna karşılık gelir ve sorgu, bu örnekte kısmi sorgu sağlayan bir "arama" parametresi içerir. İkinci olarak, isteğe "suggesterName" eklemeniz gerekir. Dizinde tanımlı bir öneri aracı yoksa otomatik tamamlama veya önerilere çağrı başarısız olur.
 
 ```http
 POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
@@ -178,4 +178,4 @@ POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
 İsteklerin formül oluşturma hakkında daha fazla bilgi edinmek için aşağıdaki makaleye önerilir.
 
 > [!div class="nextstepaction"]
-> [İstemci koduna otomatik tamamlama ve öneriler ekleme](search-autocomplete-tutorial.md)
+> [İstemci koduna otomatik tamamlama ve öneriler ekleme](search-add-autocomplete-suggestions.md)

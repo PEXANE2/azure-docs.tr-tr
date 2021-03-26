@@ -5,15 +5,15 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 03/18/2021
+ms.date: 03/25/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 65a06a60b502b0e189ebe8a5e203553494f5d128
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 4ab2c599bea4b2e3e682755a80a2ee348e4de7ef
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104721291"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606785"
 ---
 # <a name="scaling-hpc-applications"></a>HPC uygulamalarını ölçeklendirme
 
@@ -43,6 +43,9 @@ En iyi uygulama ölçeklendirme verimliliği, performansı ve tutarlılığı i�
    ```bash
    Max Connections = (processes per node) x (number of nodes per job) x (number of nodes per job) 
    ```
+
+## <a name="adaptive-routing"></a>Uyarlamalı yönlendirme
+Uyarlamalı yönlendirme (AR), EDR ve HDR InfiniBand çalıştıran Azure sanal makinelerinin (VM 'Ler), daha iyi en iyi ağ yolunu dinamik olarak seçerek ağ tıkanıklığını otomatik olarak algılamasına ve ortadan kaldırmanıza Sonuç olarak, "InfiniBand ağında gelişmiş gecikme süresi ve bant genişliği, daha yüksek performans ve ölçeklendirme verimliliği sağlar. Daha fazla ayrıntı için, [Techcommunity makalesine](https://techcommunity.microsoft.com/t5/azure-compute/adaptive-routing-on-azure-hpc/ba-p/1205217)başvurun.
 
 ## <a name="process-pinning"></a>İşlem sabitleme
 

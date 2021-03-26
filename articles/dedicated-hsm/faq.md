@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/10/2020
+ms.date: 03/25/2021
 ms.author: keithp
-ms.openlocfilehash: 1f349931fb479be3b3ba936b3d0a665427357f29
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f6705b5f72aaa8f990aaf3b1daa33697b690d1f1
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97369047"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608893"
 ---
 # <a name="frequently-asked-questions-faq"></a>Sık sorulan sorular (SSS)
 
@@ -32,11 +32,11 @@ Donanım güvenlik modülü (HSM), şifreleme anahtarlarını korumak ve yönetm
 
 ### <a name="q-what-is-the-azure-dedicated-hsm-offering"></a>S: Azure adanmış HSM teklifi nedir?
 
-Azure adanmış HSM, bir müşterinin sanal ağına doğrudan bağlı olan Azure veri merkezlerinde barındırılan HSM 'leri sağlayan bulut tabanlı bir hizmettir. Bu HSM 'ler, adanmış ağ gereçlerine (Thales Network Luna HSM 7) sahiptir. Bunlar doğrudan müşterilerin özel IP adresi alanına dağıtılır ve Microsoft, HSM 'lerin şifreleme işlevlerine erişemez. Bu cihazlar üzerinde yalnızca müşterinin tam yönetim ve şifreleme denetimi vardır. Müşteriler, cihazın yönetiminden sorumludur ve doğrudan cihazlarından tam etkinlik günlükleri alabilirler. Adanmış HSMs müşterileri, FIPS 140-2 düzey 3, HIPAA, PCI-DSS, ve eIDAS ve diğer birçok farklı uyumluluk/yasal gereksinimleri karşılar.
+Azure adanmış HSM, bir müşterinin sanal ağına doğrudan bağlı olan Azure veri merkezlerinde barındırılan HSM 'leri sağlayan bulut tabanlı bir hizmettir. Bu HSM 'ler adanmış [Thales Luna 7 HSM ağ gereçlerini](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms) kullanır. Bunlar doğrudan müşterilerin özel IP adresi alanına dağıtılır ve Microsoft, HSM 'lerin şifreleme işlevlerine erişemez. Bu cihazlar üzerinde yalnızca müşterinin tam yönetim ve şifreleme denetimi vardır. Müşteriler, cihazın yönetiminden sorumludur ve doğrudan cihazlarından tam etkinlik günlükleri alabilirler. Adanmış HSMs müşterileri, FIPS 140-2 düzey 3, HIPAA, PCI-DSS, ve eIDAS ve diğer birçok farklı uyumluluk/yasal gereksinimleri karşılar.
 
 ### <a name="q-what-hardware-is-used-for-dedicated-hsm"></a>S: adanmış HSM için hangi donanım kullanılıyor?
 
-Microsoft, Azure ayrılmış HSM hizmetini sunmaya yönelik Thales ile işbirliği yaptı. Kullanılan belirli cihaz [Thales Network Luna HSM 7 '](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms)dir. Bu cihaz yalnızca FIPS 140-2 düzey 3 tarafından doğrulanan bellenim sağlamaz, ancak 10 bölüm aracılığıyla düşük gecikme süresi, yüksek performans ve yüksek kapasite sağlar. 
+Microsoft, Azure ayrılmış HSM hizmetini sunmaya yönelik Thales ile işbirliği yaptı. Kullanılan belirli cihaz [Thales Luna 7 HSM modeli A790](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms). Bu cihaz yalnızca [fıps 140-2 düzey 3 tarafından](https://csrc.nist.gov/publications/detail/fips/140/2/final) doğrulanan bir bellenim sağlamaz, ancak 10 bölüm aracılığıyla düşük gecikme süresi, yüksek performans ve yüksek kapasiteye sahiptir. 
 
 ### <a name="q-what-is-an-hsm-used-for"></a>S: için kullanılan HSM nedir?
 
@@ -48,7 +48,7 @@ Müşteriler, PowerShell veya komut satırı arabirimini kullanarak belirli böl
 
 ### <a name="q-what-software-is-provided-with-the-dedicated-hsm-service"></a>S: adanmış HSM hizmeti ile hangi yazılım sağlanır?
 
-Thales, Microsoft tarafından sağlandıktan sonra HSM cihazının tüm yazılımlarını sağlar. Yazılım, [Thales müşteri destek portalında](https://supportportal.gemalto.com/csm/)kullanılabilir. Ayrılmış HSM hizmetini kullanan müşterilerin Thales desteği için kaydedilmesi gerekir ve ilgili yazılımın erişimine ve indirilmesine olanak tanıyan bir müşteri KIMLIĞI vardır. Desteklenen istemci yazılımı, FIPS 140-2 düzey 3 ile doğrulanan bellenim sürümü 7.0.3 ile uyumlu olan sürüm 7,2 ' dir. 
+Thales, Microsoft tarafından sağlandıktan sonra HSM cihazının tüm yazılımlarını sağlar. Yazılım, [Thales müşteri destek portalında](https://supportportal.thalesgroup.com/csm)kullanılabilir. Ayrılmış HSM hizmetini kullanan müşterilerin Thales desteği için kaydedilmesi gerekir ve ilgili yazılımın erişimine ve indirilmesine olanak tanıyan bir müşteri KIMLIĞI vardır. Desteklenen istemci yazılımı, FIPS 140-2 düzey 3 ile doğrulanan bellenim sürümü 7.0.3 ile uyumlu olan sürüm 7,2 ' dir. 
 
 ### <a name="q-what-extra-costs-may-be-incurred-with-dedicated-hsm-service"></a>S: adanmış HSM hizmeti ile hangi ekstra maliyetler tahakkuk edebilir?
 
@@ -63,11 +63,11 @@ Azure ayrılmış HSM, şu anda yalnızca parola tabanlı kimlik doğrulama ile 
 
 ### <a name="q-will-azure-dedicated-hsm-host-my-hsms-for-me"></a>S: Azure adanmış HSM ana bilgisayar, HSMs benim için mi?
 
-Microsoft, yalnızca özel HSM hizmeti aracılığıyla Thales Network Luna HSM 7 ' yi sunar ve müşterinin sağladığı cihazları barındıramaz.
+Microsoft, özel HSM hizmeti aracılığıyla Thales Luna 7 HSM modeli A790 sunar ve müşterinin sağladığı cihazları barındıramaz.
 
 ### <a name="q-does-azure-dedicated-hsm-support-payment-pineft-features"></a>S: Azure adanmış HSM destek ödemesi (PIN/EFT) özellikleri mi?
 
-Azure ayrılmış HSM hizmeti Thales Network Luna HSM 7 cihazlarını kullanır. Bu cihazlar, HSM 'ye özgü ödeme işlevlerini (PIN veya EFT gibi) veya sertifikaları desteklemez. Azure ayrılmış HSM hizmeti 'nin gelecekte ödeme HSM 'leri desteklemesini istiyorsanız, Microsoft hesap temsilcinizle ilgili geri bildirimleri geçirin.
+Azure ayrılmış HSM hizmeti Thales Luna 7 HSMs kullanır. Bu cihazlar, ödeme HSM 'ye özgü işlevselliği (PIN veya EFT gibi) veya sertifikaları desteklemez. Azure ayrılmış HSM hizmeti 'nin gelecekte ödeme HSM 'leri desteklemesini istiyorsanız, Microsoft hesap temsilcinizle ilgili geri bildirimleri geçirin.
 
 ### <a name="q-which-azure-regions-is-dedicated-hsm-available-in"></a>S: hangi Azure bölgeleri için adanmış HSM kullanılabilir?
 
@@ -101,7 +101,7 @@ En geç 2019 itibarıyla, adanmış HSM aşağıda listelenen 14 bölgede kullan
 
 ### <a name="q-how-does-my-application-connect-to-a-dedicated-hsm"></a>S: Uygulamam adanmış bir HSM 'ye nasıl bağlanır?
 
-Uygulamalarınızdan şifreleme işlemleri gerçekleştirmek için Thales tarafından sunulan HSM istemci araçları/SDK/Yazılım ' nu kullanırsınız. Yazılım, [Thales müşteri destek portalında](https://supportportal.gemalto.com/csm/)kullanılabilir. Ayrılmış HSM hizmetini kullanan müşterilerin Thales desteği için kaydedilmesi gerekir ve ilgili yazılımın erişimine ve indirilmesine olanak tanıyan bir müşteri KIMLIĞI vardır.
+Uygulamalarınızdan şifreleme işlemleri gerçekleştirmek için Thales tarafından sunulan HSM istemci araçları/SDK/Yazılım ' nu kullanırsınız. Yazılım, [Thales müşteri destek portalında](https://supportportal.thalesgroup.com/csm)kullanılabilir. Ayrılmış HSM hizmetini kullanan müşterilerin Thales desteği için kaydedilmesi gerekir ve ilgili yazılımın erişimine ve indirilmesine olanak tanıyan bir müşteri KIMLIĞI vardır.
 
 ### <a name="q-can-an-application-connect-to-dedicated-hsm-from-a-different-vnet-in-or-across-regions"></a>S: bir uygulama, bölgelere veya bölgeler arasında farklı bir VNET 'ten adanmış HSM 'ye bağlanabilir mi?
 
@@ -117,7 +117,7 @@ Hayır. Azure adanmış HSM 'ler yalnızca sanal ağınızın içinden erişileb
 
 ### <a name="q-can-i-import-keys-from-an-existing-on-premises-hsm-to-dedicated-hsm"></a>S: mevcut bir şirket içi HSM 'den adanmış HSM 'ye anahtar aktarabilir miyim?
 
-Evet, şirket içi Thales Network Luna HSM 7 HSMs varsa. Birden çok yöntem vardır. [Thales HSM belgelerine](https://thalesdocs.com/gphsm/luna/7.2/docs/network/Content/Home_network.htm)bakın.
+Evet, şirket içi Thales Luna 7 HSM 'leri varsa. Birden çok yöntem vardır. [Thales HSM belgelerine](https://thalesdocs.com/gphsm/luna/7.2/docs/network/Content/Home_network.htm)bakın.
 
 ### <a name="q-what-operating-systems-are-supported-by-dedicated-hsm-client-software"></a>S: adanmış HSM istemci yazılımı tarafından hangi işletim sistemleri destekleniyor?
 
@@ -130,7 +130,7 @@ Yüksek kullanılabilirlik sağlamak için, HSM istemci uygulaması yapılandır
 
 ### <a name="q-what-authentication-mechanisms-are-supported-by-dedicated-hsm"></a>S: adanmış HSM tarafından hangi kimlik doğrulama mekanizmaları desteklenir?
 
-Azure adanmış HSM, SafeNet Network HSM 7 gereçlerini (model A790) kullanır ve parola tabanlı kimlik doğrulamasını destekler.
+Azure adanmış HSM, [Thales Luna 7 HSM model A790](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms) cihazlarını kullanır ve parola tabanlı kimlik doğrulamasını destekler.
 
 ### <a name="q-what-sdks-apis-client-software-is-available-to-use-with-dedicated-hsm"></a>S: adanmış HSM ile kullanılabilecek SDK 'Lar, API 'Ler, istemci yazılımı nedir?
 
@@ -207,7 +207,7 @@ Evet. Yüksek kullanılabilirlik yapılandırması ve kurulumu Thales tarafında
 
 ### <a name="q-can-i-add-hsms-from-my-on-premises-network-to-a-high-availability-group-with-azure-dedicated-hsm"></a>S: şirket içi ağınızdan Azure ayrılmış HSM ile yüksek kullanılabilirlik grubuna HSM 'ler ekleyebilir miyim?
 
-Evet. SafeNet Luna ağ HSM 7 için yüksek kullanılabilirlik gereksinimlerini karşılamalıdır.
+Evet. [Thales Luna 7 HSM](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms) 'ler için yüksek kullanılabilirlik gereksinimlerini karşılamalıdır
 
 ### <a name="q-can-i-add-luna-56-hsms-from-on-premises-networks-to-a-high-availability-group-with-azure-dedicated-hsm"></a>S: Azure ayrılmış HSM ile şirket içi ağlardan bir yüksek kullanılabilirlik grubuna Luna 5/6 HSMs ekleyebilir miyim?
 
@@ -229,7 +229,7 @@ Azure veri merkezlerinde kapsamlı fiziksel ve yordamsal güvenlik denetimleri v
 
 ### <a name="q-what-happens-if-there-is-a-security-breach-or-hardware-tampering-event"></a>S: güvenlik ihlali veya donanım üzerinde değişiklik olayı varsa ne olur?
 
-Adanmış HSM hizmeti Thales Network Luna HSM 7 gereçlerini kullanır. Bu gereçler fiziksel ve mantıksal yeniden algılama algılamasını destekler. Bir yetkisiz hale getirilmiş bir olay varsa, HSM 'ler otomatik olarak sıfırlaması yapılır.
+Adanmış HSM hizmeti [Thales Luna 7 HSM gereçlerini](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms) kullanır. Bu cihazlar fiziksel ve mantıksal yeniden algılama algılamasını destekler. Bir yetkisiz hale getirilmiş bir olay varsa, HSM 'ler otomatik olarak sıfırlaması yapılır.
 
 ### <a name="q-how-do-i-ensure-that-keys-in-my-dedicated-hsms-are-not-lost-due-to-error-or-a-malicious-insider-attack"></a>S: adanmış HSM 'mdeki anahtarların hata veya kötü amaçlı bir Insider saldırısı nedeniyle kaybolmamasını sağlamak Nasıl yaparım? emin misiniz?
 
@@ -239,7 +239,7 @@ Olağanüstü durum kurtarma için HSM 'lerin düzenli aralıklarla düzenli yed
 
 Destek, hem Microsoft hem de Thales tarafından sağlanır.  Donanımla veya ağ erişimiyle ilgili bir sorununuz varsa, Microsoft ile bir destek talebi yükseltin ve HSM yapılandırması, yazılım ve uygulama geliştirme ile ilgili bir sorununuz varsa Thales ile bir destek isteği yükseltir. Belirlenemeyen bir sorununuz varsa, Microsoft ile bir destek isteği oluşturup Thales, gereken şekilde kullanılabilir. 
 
-### <a name="q-how-do-i-get-the-client-software-documentation-and-access-to-integration-guidance-for-the-thales-network-luna-hsm-7"></a>S: istemci yazılımını, belgeleri ve Thales ağı Luna HSM 7 için tümleştirme yönergelerine erişimi almak Nasıl yaparım? istiyor musunuz?
+### <a name="q-how-do-i-get-the-client-software-documentation-and-access-to-integration-guidance-for-the-thales-luna-7-hsm"></a>S: Nasıl yaparım?, istemci yazılımı, belgeleri ve Thales Luna 7 HSM için tümleştirme yönergelerine erişin mi?
 
 Hizmete kaydolduktan sonra Thales müşteri destek portalı 'nda kayda izin veren bir Thales müşteri KIMLIĞI sunulacaktır. Bu, tüm yazılım ve belgelere erişimin yanı sıra doğrudan Thales ile destek istekleri etkinleştirmeyi etkinleştirir.
 
@@ -255,11 +255,11 @@ HSM 'nin bir komut satırı yeniden başlatma seçeneği vardır, ancak yeniden 
 
 ### <a name="q-is-it-safe-to-store-encryption-keys-for-my-most-important-data-in-dedicated-hsm"></a>S: en önemli veriler için şifreleme anahtarlarını ayrılmış HSM 'de depolamak güvenli mi?
 
-Evet, adanmış HSM, FIPS 140-2 düzey 3 doğrulanan HSM 'leri kullanan Thales Network Luna HSM 7 gereçlerini sağlar. 
+Evet, adanmış HSM, [fıps 140-2 düzey 3](https://csrc.nist.gov/publications/detail/fips/140/2/final) ' ün doğrulandığı Thales Luna 7 HSM 'leri sağlar. 
 
 ### <a name="q-what-cryptographic-keys-and-algorithms-are-supported-by-dedicated-hsm"></a>S: adanmış HSM tarafından desteklenen şifreleme anahtarları ve algoritmaları nelerdir?
 
-Adanmış HSM hizmeti Thales Network Luna HSM 7 gereçlerini sağlar. Bunlar aşağıdakiler dahil olmak üzere çok çeşitli şifreleme anahtar türlerini ve algoritmaları destekler: tam Suite B desteği
+Adanmış HSM hizmeti Thales Luna 7 HSM gereçlerini sağlar. Bunlar aşağıdakiler dahil olmak üzere çok çeşitli şifreleme anahtar türlerini ve algoritmaları destekler: tam Suite B desteği
 
 * Sertifikasında
   * RSA
@@ -283,11 +283,11 @@ Adanmış HSM hizmeti Thales Network Luna HSM 7 gereçlerini sağlar. Bunlar aş
 
 ### <a name="q-is-dedicated-hsm-fips-140-2-level-3-validated"></a>S: adanmış HSM FIPS 140-2 düzey 3 doğrulanmadı mi?
 
-Evet. Adanmış HSM hizmeti, FIPS 140-2 düzey 3 tarafından doğrulanan HSM 'leri kullanan Thales Network Luna HSM 7 gereçlerini sağlar.
+Evet. Adanmış HSM hizmeti, [fıps 140-2 düzey 3](https://csrc.nist.gov/publications/detail/fips/140/2/final) ' ün doğrulandığı [Thales Luna 7 HSM model A790 gereçlerini](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms) sağlar.
 
 ### <a name="q-what-do-i-need-to-do-to-make-sure-i-operate-dedicated-hsm-in-fips-140-2-level-3-validated-mode"></a>S: FIPS 140-2 düzey 3 tarafından doğrulanan modda adanmış HSM 'yi işlediğimde emin olmak için ne yapmam gerekir?
 
-Adanmış HSM hizmeti Thales Network Luna HSM 7 gereçlerini sağlar. Bu gereçler FIPS 140-2 düzey 3 doğrulanan HSM 'leri kullanır. Varsayılan olarak dağıtılan yapılandırma, işletim sistemi ve üretici yazılımı da FIPS olarak onaylanır. FIPS 140-2 düzey 3 uyumluluğu için herhangi bir işlem gerçekleştirmeniz gerekmez.
+Adanmış HSM hizmeti Thales Luna 7 HSM gereçlerini sağlar. Bu cihazlar FIPS 140-2 düzey 3 doğrulanan HSM 'ler. Varsayılan olarak dağıtılan yapılandırma, işletim sistemi ve üretici yazılımı da FIPS olarak onaylanır. FIPS 140-2 düzey 3 uyumluluğu için herhangi bir işlem gerçekleştirmeniz gerekmez.
 
 ### <a name="q-how-does-a-customer-ensure-that-when-an-hsm-is-deprovisioned-all-the-key-material-is-wiped-out"></a>S: bir HSM, bir HSM 'nin sağlanması ne zaman sağlandıysa, tüm anahtar malzemeler silinir mi?
 
@@ -297,7 +297,7 @@ Sağlamayı kaldırma istenmeden önce, müşterinin Thales, HSM istemci araçla
 
 ### <a name="q-how-many-cryptographic-operations-are-supported-per-second-with-dedicated-hsm"></a>S: adanmış HSM ile saniye başına kaç tane şifreleme işlemi destekleniyor?
 
-Adanmış HSM, Thales Network Luna HSM 7 HSM 'leri sağlar. Bazı işlemler için en yüksek performans özeti aşağıda verilmiştir: 
+Adanmış HSM, Thales Luna 7 HSM 'leri sağlar. Bazı işlemler için en yüksek performans özeti aşağıda verilmiştir: 
 
 * RSA-2048:10.000 işlem/saniye
 * ECC P256:20.000 işlem/saniye
@@ -305,7 +305,7 @@ Adanmış HSM, Thales Network Luna HSM 7 HSM 'leri sağlar. Bazı işlemler içi
 
 ### <a name="q-how-many-partitions-can-be-created-in-dedicated-hsm"></a>S: adanmış HSM 'de kaç bölüm oluşturulabilirler?
 
-Kullanılan SafeNet Luna HSM 7 modeli A790, hizmet maliyetinde 10 bölüm için bir lisans içerir. Cihazda 100 bölümden oluşan bir sınır bulunur ve bu sınıra kadar bölüm eklemek ek lisanslama maliyetlerine neden olur ve cihazda yeni bir lisans dosyası yüklemesi gerektirir.
+Kullanılan [Thales Luna 7 HSM modeli A790](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms) , hizmet maliyetinde 10 bölüm için bir lisans içerir. Cihazda 100 bölümden oluşan bir sınır bulunur ve bu sınıra kadar bölüm eklemek ek lisanslama maliyetlerine neden olur ve cihazda yeni bir lisans dosyası yüklemesi gerektirir.
 
 ### <a name="q-how-many-keys-can-be-supported-in-dedicated-hsm"></a>S: adanmış HSM 'de kaç anahtar desteklenebilir?
 

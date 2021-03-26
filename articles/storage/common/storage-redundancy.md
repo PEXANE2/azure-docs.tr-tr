@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 03/05/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 7ecf3d23f745d9281008433eee471c14c7afe337
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: d01e125ef3e905191d76c9f4888e790958211dff
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104802208"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105607329"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Depolama yedekliliği
 
@@ -73,9 +73,9 @@ Aşağıdaki tabloda hangi depolama hesabı türlerinin hangi bölgelerde ZRS de
 
 | Depolama hesabı türü | Desteklenen bölgeler | Desteklenen hizmetler |
 |--|--|--|
-| Genel amaçlı v2<sup>1</sup> | Güneydoğu Asya<br /> Doğu Avustralya<br /> Kuzey Avrupa<br />  Batı Avrupa<br /> Orta Fransa<br /> Doğu Japonya<br /> Güney Afrika - Kuzey<br /> Güney Birleşik Krallık<br /> ABD Orta<br /> ABD Doğu<br /> ABD Doğu 2<br /> ABD Batı 2 | Blok blobları<br /> Sayfa Blobları<sup>2</sup><br /> Dosya paylaşımları (Standart)<br /> Tables<br /> Kuyruklar<br /> |
-| BlockBlobStorage<sup>1</sup> | Güneydoğu Asya<br /> Doğu Avustralya<br /> Kuzey Avrupa<br /> Batı Avrupa<br /> Orta Fransa <br /> Doğu Japonya<br /> Güney Birleşik Krallık <br /> ABD Doğu <br /> ABD Doğu 2 <br /> ABD Batı 2| Yalnızca Premium blok Blobları |
-| Dosya depolama | Güneydoğu Asya<br /> Doğu Avustralya<br /> Kuzey Avrupa<br /> Batı Avrupa<br /> Orta Fransa <br /> Doğu Japonya<br /> Güney Birleşik Krallık <br /> ABD Doğu <br /> ABD Doğu 2 <br /> ABD Batı 2 | Yalnızca Premium dosya paylaşımları |
+| Genel amaçlı v2<sup>1</sup> | Doğu Güney Afrika Kuzey<br /> (Asya Pasifik) Doğu Asya<br /> (Asya Pasifik) Güneydoğu Asya<br /> (Asya Pasifik) Avustralya Doğu<br /> (Asya Pasifik) Orta Hindistan<br /> (Asya Pasifik) Doğu Japonya<br /> (Asya Pasifik) Kore Orta<br /> 'Da Kanada Orta<br /> 'Ya Kuzey Avrupa<br /> 'Ya Batı Avrupa<br /> 'Ya Fransa Orta<br /> 'Ya Almanya Orta Batı<br /> 'Ya Norveç Doğu<br /> 'Ya İsviçre Kuzey<br /> 'Ya UK Güney<br /> (Orta Doğu) BAE Kuzey<br /> (Güney Amerika) Brezilya Güney<br /> ABD Orta ABD<br /> (ABD) Doğu ABD<br /> ABD Doğu ABD 2<br /> ABD Orta Kuzey ABD<br />ABD Orta Güney ABD<br /> ABD Batı ABD<br /> ABD Batı ABD 2 | Blok blobları<br /> Sayfa Blobları<sup>2</sup><br /> Dosya paylaşımları (Standart)<br /> Tables<br /> Kuyruklar<br /> |
+| BlockBlobStorage<sup>1</sup> | Doğu Güney Afrika Kuzey<br /> (Asya Pasifik) Doğu Asya<br /> (Asya Pasifik) Güneydoğu Asya<br /> (Asya Pasifik) Avustralya Doğu<br /> (Asya Pasifik) Orta Hindistan<br /> (Asya Pasifik) Doğu Japonya<br /> (Asya Pasifik) Kore Orta<br /> 'Da Kanada Orta<br /> 'Ya Kuzey Avrupa<br /> 'Ya Batı Avrupa<br /> 'Ya Fransa Orta<br /> 'Ya Almanya Orta Batı<br /> 'Ya Norveç Doğu<br /> 'Ya İsviçre Kuzey<br /> 'Ya UK Güney<br /> (Orta Doğu) BAE Kuzey<br /> (Güney Amerika) Brezilya Güney<br /> ABD Orta ABD<br /> (ABD) Doğu ABD<br /> ABD Doğu ABD 2<br /> ABD Orta Kuzey ABD<br />ABD Orta Güney ABD<br /> ABD Batı ABD<br /> ABD Batı ABD 2 | Yalnızca Premium blok Blobları |
+| Dosya depolama | Doğu Güney Afrika Kuzey<br /> (Asya Pasifik) Doğu Asya<br /> (Asya Pasifik) Güneydoğu Asya<br /> (Asya Pasifik) Avustralya Doğu<br /> (Asya Pasifik) Orta Hindistan<br /> (Asya Pasifik) Doğu Japonya<br /> (Asya Pasifik) Kore Orta<br /> 'Da Kanada Orta<br /> 'Ya Kuzey Avrupa<br /> 'Ya Batı Avrupa<br /> 'Ya Fransa Orta<br /> 'Ya Almanya Orta Batı<br /> 'Ya Norveç Doğu<br /> 'Ya İsviçre Kuzey<br /> 'Ya UK Güney<br /> (Orta Doğu) BAE Kuzey<br /> (Güney Amerika) Brezilya Güney<br /> ABD Orta ABD<br /> (ABD) Doğu ABD<br /> ABD Doğu ABD 2<br /> ABD Orta Kuzey ABD<br />ABD Orta Güney ABD<br /> ABD Batı ABD<br /> ABD Batı ABD 2 | Yalnızca Premium dosya paylaşımları |
 
 <sup>1</sup> arşiv katmanı Şu anda ZRS hesapları için desteklenmiyor.<br />
 <sup>2</sup> sanal makineler için Azure yönetilen diskleri içeren depolama hesapları her zaman LRS kullanır. Azure yönetilmeyen diskler de LRS kullanmalıdır. GRS kullanan Azure yönetilmeyen diskler için bir depolama hesabı oluşturmak mümkündür, ancak zaman uyumsuz coğrafi çoğaltma üzerinde tutarlılık nedeniyle olası sorunlar nedeniyle bu önerilmez. Yönetilen veya yönetilmeyen diskler ZRS veya GZRS 'yi desteklemez. Yönetilen diskler hakkında daha fazla bilgi için bkz. [Azure yönetilen diskler fiyatlandırması](https://azure.microsoft.com/pricing/details/managed-disks/).
@@ -127,15 +127,30 @@ GZRS ve RA-GZRS desteği yalnızca genel amaçlı v2 depolama hesaplarıdır. De
 
 GZRS ve RA-GZRS aşağıdaki bölgelerde desteklenir:
 
-- Güneydoğu Asya
-- Kuzey Avrupa
-- Batı Avrupa
-- Doğu Japonya
-- Güney Birleşik Krallık
-- ABD Orta
-- ABD Doğu
-- ABD Doğu 2
-- ABD Batı 2
+- Doğu Güney Afrika Kuzey
+- (Asya Pasifik) Doğu Asya
+- (Asya Pasifik) Güneydoğu Asya
+- (Asya Pasifik) Avustralya Doğu
+- (Asya Pasifik) Orta Hindistan
+- (Asya Pasifik) Doğu Japonya
+- (Asya Pasifik) Kore Orta
+- 'Da Kanada Orta
+- 'Ya Kuzey Avrupa
+- 'Ya Batı Avrupa
+- 'Ya Fransa Orta
+- 'Ya Almanya Orta Batı
+- 'Ya Norveç Doğu
+- 'Ya İsviçre Kuzey
+- 'Ya UK Güney
+- (Orta Doğu) BAE Kuzey
+- (Güney Amerika) Brezilya Güney
+- ABD Orta ABD
+- (ABD) Doğu ABD
+- ABD Doğu ABD 2
+- ABD Orta Kuzey ABD
+- ABD Orta Güney ABD
+- ABD Batı ABD
+- ABD Batı ABD 2
 
 Fiyatlandırma hakkında daha fazla bilgi için bkz. [Bloblar](https://azure.microsoft.com/pricing/details/storage/blobs), [dosyalar](https://azure.microsoft.com/pricing/details/storage/files/), [Kuyruklar](https://azure.microsoft.com/pricing/details/storage/queues/)ve [Tablolar](https://azure.microsoft.com/pricing/details/storage/tables/)için fiyatlandırma ayrıntıları.
 

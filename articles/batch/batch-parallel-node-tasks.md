@@ -2,35 +2,35 @@
 title: Toplu işlem düğümlerinin kullanımını en üst düzeye çıkarmak için görevleri eşzamanlı olarak çalıştırın
 description: Azure Batch havuzundaki her düğümde daha az işlem düğümü kullanarak ve görevleri paralel olarak çalıştırarak verimliliği ve daha düşük maliyetleri artırın
 ms.topic: how-to
-ms.date: 10/08/2020
+ms.date: 03/25/2021
 ms.custom: H1Hack27Feb2017, devx-track-csharp
-ms.openlocfilehash: 8bc9f03f05d52df6e400be5c57033ab2a38fa8eb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2a8f2d6a040bee0e32359f4860d7b346ac08c48e
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92102974"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105607992"
 ---
 # <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>Toplu işlem düğümlerinin kullanımını en üst düzeye çıkarmak için görevleri eşzamanlı olarak çalıştırın
 
 Her düğümde aynı anda birden fazla görev çalıştırarak, havuzunuzdaki daha az sayıda işlem düğümünde kaynak kullanımını en üst düzeye çıkarabilirsiniz.
 
-Bazı senaryolar tek bir göreve adanmış tüm düğüm kaynaklarıyla en iyi şekilde çalıştıkları sürece, bazı iş yükleri bu kaynakları paylaşan birden çok görev olduğunda daha kısa iş süresi ve daha düşük maliyetler görebilir:
+Bazı senaryolar tek bir göreve adanmış tüm düğüm kaynaklarıyla en iyi şekilde çalıştıkları sürece, bazı iş yükleri bu kaynakları paylaşan birden çok görev olduğunda daha kısa iş süresi ve daha düşük maliyetler görebilirler. Aşağıdaki senaryoları göz önünde bulundurun:
 
 - Veri paylaşamayacak görevler için **veri aktarımını en aza indirin** . Paylaşılan verileri daha az sayıda düğüme kopyalayarak ve ardından her düğümde paralel olarak görevleri yürüterek veri aktarımı ücretlerini ciddi ölçüde azaltabilirsiniz. Bu özellikle, her düğüme kopyalanabilecek verilerin coğrafi bölgeler arasında aktarılması gerekiyorsa geçerlidir.
-- Büyük miktarda bellek gerektiren görevler için **bellek kullanımını en üst düzeye çıkarın** , ancak yalnızca kısa süreler boyunca ve yürütme sırasında değişken saatlerinde. Bu tür artışları verimli bir şekilde işlemek için daha fazla belleğe sahip daha az, ancak daha büyük işlem düğümleri kullanabilirsiniz. Bu düğümlerde her düğüm üzerinde paralel olarak çalışan birden çok görev olur, ancak her görev farklı zamanlarda düğümlerin plentiful belleğinden faydalanır.
+- Büyük miktarda bellek gerektiren görevler için **bellek kullanımını en üst düzeye çıkarın** , ancak yalnızca kısa süreler boyunca ve yürütme sırasında değişken saatlerinde. Bu tür artışları verimli bir şekilde işlemek için daha fazla belleğe sahip daha az, ancak daha büyük işlem düğümleri kullanabilirsiniz. Bu düğümlerde her düğüm üzerinde paralel olarak çalışan birden çok görev olacaktır, ancak her görev farklı zamanlarda düğümlerin plentiful belleğinden faydalanabilir.
 - Bir havuz içinde düğümler arası iletişim gerektiğinde **düğüm sayısı sınırlarını azaltır** . Şu anda, düğümler arası iletişim için yapılandırılan havuzlar 50 işlem düğümüyle sınırlıdır. Bu tür bir havuzdaki her düğüm görevleri paralel olarak yürütebiliyor ise, daha fazla sayıda görev aynı anda yürütülebilir.
 - Bir işlem ortamını Azure 'a ilk kez taşırken olduğu gibi, **Şirket içi bir bilgi işlem kümesini çoğaltın**. Mevcut şirket içi çözümünüz işlem düğümü başına birden çok görev çalıştırırsa, bu yapılandırmayı daha yakından yansıtmak için en fazla düğüm görevi sayısını artırabilirsiniz.
 
 ## <a name="example-scenario"></a>Örnek senaryo
 
-Örnek olarak, [Standart \_ D1](../cloud-services/cloud-services-sizes-specs.md) düğümlerinin yeterlı olması için CPU ve bellek gereksinimleriyle bir görev uygulaması düşünün. Ancak, işi gerekli zamanda tamamlaması için bu düğümlerin 1.000 olması gerekir.
+Örnek olarak, [Standart \_ D1](../cloud-services/cloud-services-sizes-specs.md#d-series) düğümlerinin yeterlı olması için CPU ve bellek gereksinimleriyle bir görev uygulaması düşünün. Ancak, işi gerekli zamanda tamamlaması için bu düğümlerin 1.000 olması gerekir.
 
-\_1 CPU çekirdeği olan standart D1 düğümlerini kullanmak yerine, her biri 16 çekirdeğe sahip [Standart \_ D14](../cloud-services/cloud-services-sizes-specs.md) düğümlerini kullanabilir ve paralel görev yürütmeyi etkinleştirebilirsiniz. Bu, 1.000 düğüm yerine, *16 kat daha az düğüm* kullanılabileceği anlamına gelir, ancak yalnızca 63 gereklidir. Her düğüm için büyük uygulama dosyaları veya başvuru verileri gerekliyse, veriler yalnızca 63 düğümlere kopyalandıklarından iş süresi ve verimlilik yeniden geliştirilmiştir.
+\_1 CPU çekirdeği olan standart D1 düğümlerini kullanmak yerine, her biri 16 çekirdeğe sahip [Standart \_ D14](../cloud-services/cloud-services-sizes-specs.md#d-series) düğümlerini kullanabilir ve paralel görev yürütmeyi etkinleştirebilirsiniz. Bu, 1.000 düğüm yerine, 16 kat daha az düğüm kullanılabileceği anlamına gelir, ancak yalnızca 63 gereklidir. Her düğüm için büyük uygulama dosyaları veya başvuru verileri gerekliyse, veriler yalnızca 63 düğümlere kopyalandıklarından iş süresi ve verimlilik iyileştirilir.
 
 ## <a name="enable-parallel-task-execution"></a>Paralel görev yürütmeyi etkinleştir
 
-Paralel görev yürütme için işlem düğümlerini havuz düzeyinde yapılandırırsınız. Batch .NET kitaplığı ile bir havuz oluştururken [Cloudpool. TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool) özelliğini ayarlayın. Batch REST API kullanıyorsanız, havuz oluşturma sırasında istek gövdesinde [Taskslotspernode](/rest/api/batchservice/pool/add) öğesini ayarlayın.
+Paralel görev yürütme için işlem düğümlerini havuz düzeyinde yapılandırırsınız. Batch .NET kitaplığı ile bir havuz oluştururken [Cloudpool. TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool.taskslotspernode) özelliğini ayarlayın. Batch REST API kullanıyorsanız, havuz oluşturma sırasında istek gövdesinde [Taskslotspernode](/rest/api/batchservice/pool/add) öğesini ayarlayın.
 
 > [!NOTE]
 > `taskSlotsPerNode`Element ve [Taskslotspernode](/dotnet/api/microsoft.azure.batch.cloudpool) özelliğini yalnızca havuz oluşturma zamanında ayarlayabilirsiniz. Havuz zaten oluşturulduktan sonra değiştirilemez.
@@ -44,23 +44,22 @@ Azure Batch, düğüm başına görev yuvalarını, düğüm çekirdekleri sayı
 
 Eşzamanlı görevleri etkinleştirirken, bu görevlerin havuzdaki düğümlerde nasıl dağıtılmasını istediğinizi belirtmek önemlidir.
 
-[Cloudpool. TaskSchedulingPolicy](/dotnet/api/microsoft.azure.batch.cloudpool) özelliğini kullanarak, bu görevlerin havuzdaki tüm düğümlerde eşit olarak atanmasını belirtebilirsiniz ("yayma"). Ya da görevler havuzdaki başka bir düğüme atanmadan önce her düğüme olabildiğince fazla görevin atanması gerektiğini belirtebilirsiniz ("paketleme").
+[Cloudpool. TaskSchedulingPolicy](/dotnet/api/microsoft.azure.batch.cloudpool.taskschedulingpolicy) özelliğini kullanarak, bu görevlerin havuzdaki tüm düğümlerde eşit olarak atanmasını belirtebilirsiniz ("yayma"). Ya da görevler havuzdaki başka bir düğüme atanmadan önce her düğüme olabildiğince fazla görevin atanması gerektiğini belirtebilirsiniz ("paketleme").
 
-Örnek olarak, bir [Cloudpool. TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool) değeri 16 Ile yapılandırılan [Standart \_ D14](../cloud-services/cloud-services-sizes-specs.md) düğümlerinin havuzunu (Yukarıdaki örnekte) göz önünde bulundurun. [Cloudpool. TaskSchedulingPolicy](/dotnet/api/microsoft.azure.batch.cloudpool) , bir [Computenodefilltype](/dotnet/api/microsoft.azure.batch.common.computenodefilltype) *paketi* ile yapılandırıldıysa, her düğümün 16 çekirdeğin tüm kullanımlarını en üst düzeye çıkarabilir ve bir [Otomatik ölçeklendirme havuzunun](batch-automatic-scaling.md) , havuzdan kullanılmayan düğümleri (atanmış herhangi bir görev olmadan düğümler) kaldırmasına izin verir. Bu, kaynak kullanımını en aza indirir ve para tasarrufu sağlar.
+Örnek olarak, bir [Cloudpool. TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool.taskslotspernode) değeri 16 Ile yapılandırılan [Standart \_ D14](../cloud-services/cloud-services-sizes-specs.md#d-series) düğümlerinin havuzunu (Yukarıdaki örnekte) göz önünde bulundurun. [Cloudpool. TaskSchedulingPolicy](/dotnet/api/microsoft.azure.batch.cloudpool.taskschedulingpolicy) , bir [Computenodefilltype](/dotnet/api/microsoft.azure.batch.common.computenodefilltype) *paketi* ile yapılandırıldıysa, her düğümün 16 çekirdeğin tüm kullanımlarını en üst düzeye çıkarabilir ve bir [Otomatik ölçeklendirme havuzunun](batch-automatic-scaling.md) , havuzdan kullanılmayan düğümleri (atanmış herhangi bir görev olmadan düğümler) kaldırmasına izin verir. Bu, kaynak kullanımını en aza indirir ve para tasarrufu sağlar.
 
 ## <a name="define-variable-slots-per-task"></a>Görev başına değişken yuvaları tanımlama
 
-Bir görev, bir işlem düğümünde çalışması gereken yuva sayısını belirterek [Cloudtask. Requiredslotlar](/dotnet/api/microsoft.azure.batch.cloudtask.requiredslots) özelliği ile tanımlanabilir. Varsayılan değer 1 ' dir. Görevlerinizin, işlem düğümündeki kaynak kullanımı ile ilgili farklı ağırlıkları varsa değişken görev yuvaları ayarlayabilirsiniz. Bu, her bir işlem düğümünün CPU veya bellek gibi sistem kaynaklarını çok fazla sayıda eşzamanlı çalışan göreve sahip olmasını sağlar.
+Bir görev, bir işlem düğümünde çalışması gereken yuva sayısını belirterek [Cloudtask. Requiredslotlar](/dotnet/api/microsoft.azure.batch.cloudtask.requiredslots) özelliği ile tanımlanabilir. Varsayılan değer 1’dir. Görevlerinizin, işlem düğümündeki kaynak kullanımı ile ilgili farklı ağırlıkları varsa değişken görev yuvaları ayarlayabilirsiniz. Bu, her bir işlem düğümünün CPU veya bellek gibi sistem kaynaklarını çok fazla sayıda eşzamanlı çalışan göreve sahip olmasını sağlar.
 
 Örneğin, özelliği olan bir havuz için `taskSlotsPerNode = 8` , `requiredSlots = 8` diğer görevlerin olarak ayarlanmaları halinde, ile çok ÇEKIRDEKLI gerekli CPU yoğun görevleri gönderebilirsiniz `requiredSlots = 1` . Bu karma iş yükü zamanlandığında, CPU yoğun görevler özel olarak kendi işlem düğümlerinde çalışır, diğer görevler ise diğer düğümlerde aynı anda (her seferinde sekiz göreve kadar) çalışabilir. Bu, iş yükünüzü işlem düğümleri genelinde dengelemenize ve kaynak kullanımı verimliliğini artırmaya yardımcı olur.
+
+Bir görevin `requiredSlots` havuzdan daha büyük olmasını belirtmemenizi unutmayın `taskSlotsPerNode` . Bu, görevin hiçbir şekilde çalışmasına neden olur. Bir iş, gönderme zamanında bir havuza bağlı olmadığından veya devre dışı bırakarak/yeniden etkinleştirilerek farklı bir havuza değiştirilebildiğinden Batch hizmeti şu anda bu çakışmayı doğrulamaz.
 
 > [!TIP]
 > Değişken görev yuvaları kullanılırken, bazı düğümlerde hala boş yuvalara sahip olsa bile, herhangi bir işlem düğümünde yeterli sayıda yuva olmadığı için, daha gerekli yuvalara sahip büyük görevler geçici olarak zamanlanamaz. Düğümlerdeki kullanılabilir yuvalara rekabet şansını artırmak için bu görevler için iş önceliğini yükseltebilirsiniz.
 >
 > Batch hizmeti [Taskschedulefailevent](batch-task-schedule-fail-event.md) 'i bir görevi çalıştırmak için zamanlamazsa ve gerekli yuvalar kullanılabilir olana kadar zamanlamayı yeniden denemeye devam eder. Potansiyel görev zamanlama sorunlarını tespit etmek ve uygun şekilde azaltmak için bu olayı dinleyebilirsiniz.
-
-> [!NOTE]
-> Bir görevin `requiredSlots` havuzdan daha büyük olması için belirtmeyin `taskSlotsPerNode` . Bu, görevin hiçbir şekilde çalışmasına neden olur. Bir iş, gönderme zamanında bir havuza bağlı olmadığından veya devre dışı bırakarak/yeniden etkinleştirilerek farklı bir havuza değiştirilebildiğinden Batch hizmeti şu anda bu çakışmayı doğrulamaz.
 
 ## <a name="batch-net-example"></a>Batch .NET örneği
 
@@ -70,7 +69,7 @@ Aşağıdaki [Batch .net](/dotnet/api/microsoft.azure.batch) API kod parçacıkl
 
 Bu kod parçacığı, düğüm başına dört adet görev yuvası ile dört düğüm içeren bir havuz oluşturma isteğini gösterir. Bu işlem, havuzdaki başka bir düğüme görev atamadan önce her bir düğümü görevlerle dolduracak bir görev zamanlama İlkesi belirtir.
 
-Batch .NET API 'sini kullanarak havuz ekleme hakkında daha fazla bilgi için bkz. [Batchclient. PoolOperations. CreatePool](/dotnet/api/microsoft.azure.batch.pooloperations).
+Batch .NET API 'sini kullanarak havuz ekleme hakkında daha fazla bilgi için bkz. [Batchclient. PoolOperations. CreatePool](/dotnet/api/microsoft.azure.batch.pooloperations.createpool).
 
 ```csharp
 CloudPool pool =
@@ -169,7 +168,7 @@ Bu kod parçacığında varsayılan olmayan bir görev ekleme isteği gösterilm
 
 ## <a name="code-sample-on-github"></a>GitHub 'da kod örneği
 
-GitHub 'daki [Paralleltasks](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ParallelTasks) projesi [Cloudpool. TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool) özelliğinin kullanımını gösterir.
+GitHub 'daki [Paralleltasks](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ParallelTasks) projesi [Cloudpool. TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool.taskslotspernode) özelliğinin kullanımını gösterir.
 
 Bu C# konsol uygulaması, bir veya daha fazla işlem düğümü içeren bir havuz oluşturmak için [Batch .net](/dotnet/api/microsoft.azure.batch) kitaplığını kullanır. Bir değişken yükünün benzetimini yapmak için bu düğümlerde yapılandırılabilir sayıda görevi yürütür. Uygulamanın çıktısı, her bir görevi yürüten düğümleri gösterir. Uygulama, iş parametrelerinin ve sürenin bir özetini de sağlar.
 

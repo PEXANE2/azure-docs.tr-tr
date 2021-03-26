@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: d80caf767d923ce2539ca254a8312371155a3104
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 015fa201fe1c31dde2e30c2fe689ac13452b1b01
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102553740"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105607601"
 ---
 # <a name="troubleshoot-shared-image-galleries-in-azure"></a>Azure 'da paylaşılan görüntü galerilerine sorun giderme
 
@@ -52,7 +52,7 @@ Paylaşılan görüntü galerileri, görüntü tanımları ve görüntü sürüm
 **Neden**: var olan en az bir görüntü tanımı içeren bir galeriyi silmeye çalıştınız. Bir galeri silinmeden önce boş olmalıdır.  
 **Geçici çözüm**: galerinin içindeki tüm görüntü tanımlarını silin ve sonra galeriyi silmeye devam edin. Görüntü tanımı görüntü sürümlerini içeriyorsa, görüntü tanımlarını silmeden önce görüntü sürümlerini silmeniz gerekir.
 
-**İleti**: *' <gallername ' Galeri adı \> ' ' aboneliği içinde benzersiz değil <subscriptionId> . Lütfen başka bir galeri adı seçin.*  
+**İleti**: *' <gallername ' Galeri adı \> ' ' aboneliği içinde benzersiz değil <subscriptionID> . Lütfen başka bir galeri adı seçin.*  
 **Neden**: aynı adlı bir galeriniz var ve aynı ada sahip başka bir galeri oluşturmaya çalıştınız.  
 **Geçici çözüm**: Galeri için farklı bir ad seçin.
 
@@ -127,7 +127,7 @@ Paylaşılan görüntü galerileri, görüntü tanımları ve görüntü sürüm
 **Neden**: görüntü sürümlerini içeren bir görüntü tanımını silmeye çalıştınız. Bir görüntü tanımının silinebilmesi için önce boş olması gerekir.  
 **Geçici çözüm**: görüntü tanımının içindeki tüm görüntü sürümlerini silin ve ardından görüntü tanımını silmeye devam edin.
 
-**İleti**: *parametre <özelliği bağlanamıyor \> . Değer <değeri \> <propertyType türüne dönüştürülemiyor \> . Tanımlayıcı adı <değeri \> geçerli bir Numaralandırıcı adı ile eşleşmiyor. Aşağıdaki Numaralandırıcı adlarından birini belirtip yeniden deneyin: <choice1 \> , <choice2 \> ,...*  
+**İleti**: *parametre <özelliği bağlanamıyor \> . Değer <değeri \> <propertyType türüne dönüştürülemiyor \> . Tanımlayıcı adı <değeri \> geçerli bir Numaralandırıcı adı ile eşleşmiyor. Aşağıdaki Numaralandırıcı adlarından birini belirtip yeniden deneyin: <seçim \_ 1 \> , <seçimi \_ 2 \> ,.* ..  
 **Neden**: özellikte olası değerler listesi bulunur ve <değeri \> bunlardan biri değil.  
 **Geçici çözüm**: olası <seçim değerlerinden birini seçin \> .
 
@@ -185,7 +185,7 @@ Paylaşılan görüntü galerileri, görüntü tanımları ve görüntü sürüm
 **Neden**: bir disk ve/veya disk anlık görüntülerinin listesini kullanarak bir görüntü sürümü oluştururken, iki veya daha fazla disk ya da disk anlık görüntüsünün aynı kaynak kimliği vardır.  
 **Geçici çözüm**: yinelenen disk kaynağı kimliklerini kaldırın veya değiştirin.
 
-**İleti**: *\> ' Properties. Storageprofile. <diskımages. Source.id ' yolundaki <ResourceId Özellik kimliği \> geçersiz. '/Subscriptions/{SubscriptionID} ' veya '/providers/{resourceProviderNamespace}/' ile başlayan tam kaynak kimliği beklenmelidir.*  
+**İleti**: *\> ' Properties. Storageprofile. <diskımages. Source.id ' yolundaki <ResourceId Özellik kimliği \> geçersiz. '/Subscriptions/ <subscriptionID> ' veya '/Providers/ <resourceProviderNamespace> /' ile başlayan tam kaynak kimliği beklenmelidir.*  
 **Neden**: <RESOURCEID \> değeri hatalı biçimlendirilmiş.  
 **Geçici çözüm**: kaynak kimliğinin doğru olduğundan emin olun.
 
@@ -303,7 +303,7 @@ Paylaşılan görüntü galerileri, görüntü tanımları ve görüntü sürüm
 **Neden**: sanal makineyi dağıtmak için kullandığınız görüntü tanımı, en son içinde yer alan herhangi bir görüntü sürümü içermiyor.  
 **Geçici çözüm**: ' en sonuncuyu hariç tut ' değeri false olarak ayarlanmış en az bir görüntü sürümü olduğundan emin olun. 
 
-**İleti**: *Istemci, <RESOURCEID kapsamındaki ' Microsoft. COMPUTE/galeriler/Images/Versions/Read ' eylemini gerçekleştirme iznine sahip \> , ancak geçerli kiracı <tenantId1 \> <subscriptionId2 bağlantılı aboneliğe erişim yetkisi yok \> .*  
+**İleti**: *istemci, RESOURCEID <kapsamında ' Microsoft. COMPUTE/galeriler/Images/Versions/Read ' eylemini gerçekleştirme iznine sahip \> ancak geçerli kiracı <tenantıd, \> bağlı aboneliğe <SubscriptionID 'ye erişim yetkisine sahip değil \> .*  
 **Neden**: sanal makine veya ölçek kümesi, başka bir KIRACıDAKI bir SIG görüntüsü kullanılarak oluşturulmuştur. Sanal makinede veya ölçek kümesinde değişiklik yapmayı denediniz, ancak görüntünün sahibi olan aboneliğe erişiminiz yok.  
 **Geçici çözüm**: görüntü sürümüne okuma erişimi sağlamak için görüntü sürümüne ait aboneliğin sahibine başvurun.
 
@@ -327,12 +327,17 @@ Paylaşılan görüntü galerileri, görüntü tanımları ve görüntü sürüm
 **Neden**: ölçek kümesi için geçerli kaynak görüntüsü genelleştirilmiş bir kaynak görüntüdür, ancak özelleştirilmiş bir kaynak görüntüyle güncelleştiriliyor. Geçerli kaynak görüntüsü ve bir ölçek kümesi için yeni kaynak görüntüsü aynı durumda olmalıdır.  
 **Geçici çözüm**: ölçek kümesini güncelleştirmek için genelleştirilmiş bir görüntü sürümü kullanın.
 
-**İleti**: *paylaşılan görüntü galerisinde <Diskencryptionsetıd adlı Disk şifreleme kümesi \> <versionıd, \> abonelik <subscriptionId1 aittir \> ve abonelikte ' ' kaynağıyla kullanılamaz <subscriptionId2 \>*  
+**İleti**: *paylaşılan görüntü galerisinde <Diskencryptionsetıd adlı Disk şifreleme kümesi \> <VersionId, \> SubscriptionID 1 <aboneliğe \_ aittir \> ve abonelik <abonelik kimliği ' \_ \> ' olan ' ' kaynağıyla kullanılamaz*  
 **Neden**: görüntü sürümünü şifrelemek için kullanılan disk şifreleme kümesi, görüntü sürümünü barındırmak için abonelikten farklı bir abonelikte bulunuyor.  
 **Geçici çözüm**: görüntü sürümü ve disk şifreleme kümesi için aynı aboneliği kullanın.
 
 **İleti**: *VM veya sanal makine ölçek kümesi oluşturma uzun bir süre sürer.*  
 **Geçici çözüm**: VM 'yi ya da sanal makine ölçek kümesini oluşturmaya çalıştığınız görüntü sürümünün **OSType** öğesinin görüntü sürümünü oluşturmak Için kullandığınız kaynağın aynı **OSType** öğesine sahip olduğunu doğrulayın. 
+
+**İleti**: *kimliği <VMID olan kaynak, \> \" \" \" <name> \" \" üst Galeri görüntüsü planı [' null '] olan farklı bir plana [' {Name:, Publisher \" : \" <publisher> \" , \" Product \" : \" <product> \" , \" promotioncode \" : \" <promotionCode> \" } '] sahip.*  
+**Neden**: dağıtılmakta olan görüntü sürümü için üst görüntü tanımının bir satın alma planı bilgisi yok.  
+**Geçici çözüm**: hata iletisinden aynı satın alma planı ayrıntılarına sahip bir görüntü tanımı oluşturun ve görüntü tanımı içinde görüntü sürümünü oluşturun.
+
 
 ## <a name="creating-a-disk-from-an-image-version"></a>Görüntü sürümünden disk oluşturma ##
 

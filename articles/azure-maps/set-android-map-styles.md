@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: aef8fbacf8302fb5dd4b5fe28afc615c6bf56090
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9dcb5b84faa47b7307ce8441003e8591d7c2757b
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102100993"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604796"
 ---
 # <a name="set-map-style-android-sdk"></a>Harita stilini ayarla (Android SDK)
 
@@ -83,7 +83,7 @@ Aşağıdaki ekran görüntüsünde, uydu yol etiketleri stiliyle bir eşlemeyi 
 
 ## <a name="setting-the-map-camera"></a>Harita kamerayı ayarlama
 
-Harita Kamerası haritanın hangi kısmının haritada görüntülendiğini denetler. Kamera, programlama yoluyla kodda bir düzende olabilir. Kodda ayarlanırken haritanın konumunu ayarlamak için iki ana yöntem vardır; Merkezi ve yakınlaştırmayı kullanarak ya da bir sınırlayıcı kutuya geçirerek. Aşağıdaki kod, ve kullanırken tüm isteğe bağlı kamera seçeneklerinin nasıl ayarlanacağını gösterir `center` `zoom` .
+Harita Kamerası, dünyanın hangi bölümünün harita Görünüm penceresinde görüntülendiğini denetler. Kamera, programlama yoluyla kodda bir düzende olabilir. Kodda ayarlanırken haritanın konumunu ayarlamak için iki ana yöntem vardır; Merkezi ve yakınlaştırmayı kullanarak ya da bir sınırlayıcı kutuya geçirerek. Aşağıdaki kod, ve kullanırken tüm isteğe bağlı kamera seçeneklerinin nasıl ayarlanacağını gösterir `center` `zoom` .
 
 ::: zone pivot="programming-language-java-android"
 
@@ -104,7 +104,7 @@ map.setCamera(
     //The minimum zoom level the map will zoom-out to when animating from one location to another on the map.
     minZoom(10),
     
-    //The maximium zoom level the map will zoom-in to when animating from one location to another on the map.
+    //The maximum zoom level the map will zoom-in to when animating from one location to another on the map.
     maxZoom(14)
 );
 ```
@@ -130,7 +130,7 @@ map.setCamera(
     //The minimum zoom level the map will zoom-out to when animating from one location to another on the map.
     minZoom(10),
     
-    //The maximium zoom level the map will zoom-in to when animating from one location to another on the map.
+    //The maximum zoom level the map will zoom-in to when animating from one location to another on the map.
     maxZoom(14)
 )
 ```
@@ -162,7 +162,7 @@ map.setCamera(
     //Amount of pixel buffer around the bounding box to provide extra space around the bounding box.
     padding(20),
 
-    //The maximium zoom level the map will zoom-in to when animating from one location to another on the map.
+    //The maximum zoom level the map will zoom-in to when animating from one location to another on the map.
     maxZoom(14)
 );
 ```
@@ -192,14 +192,14 @@ map.setCamera(
     //Amount of pixel buffer around the bounding box to provide extra space around the bounding box.
     padding(20),
 
-    //The maximium zoom level the map will zoom-in to when animating from one location to another on the map.
+    //The maximum zoom level the map will zoom-in to when animating from one location to another on the map.
     maxZoom(14)
 )
 ```
 
 ::: zone-end
 
-Bir sınırlayıcı kutunun en boy oranının haritanın en boy oranıyla aynı olamayacağını unutmayın. bu nedenle, haritada genellikle tam sınırlayıcı kutu alanı gösterilir, ancak genellikle en fazla dikey veya yatay olur.
+Bir sınırlayıcı kutunun en boy oranı haritanın en boy oranıyla aynı olamaz, bu nedenle eşleme genellikle tam sınırlayıcı kutu alanını gösterir, ancak genellikle yalnızca dikey veya yatay olarak görünür olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

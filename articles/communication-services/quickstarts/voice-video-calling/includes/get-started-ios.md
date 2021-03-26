@@ -6,12 +6,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 5d3a282d108d197ea0c5c616e9ee84fb7b952026
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 536b9a9a0d1a7b48841938eef44d181d22b87bf4
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105108323"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105609503"
 ---
 Bu hızlı başlangıçta, iOS için SDK 'Yı çağıran Azure Iletişim Hizmetleri 'ni kullanarak bir çağrı başlatmayı öğreneceksiniz.
 
@@ -38,7 +38,7 @@ Xcode 'da yeni bir iOS projesi oluşturun ve **tek görünüm uygulama** şablon
 ### <a name="install-the-package-and-dependencies-with-cocoapods"></a>CocoaPods ile paketi ve bağımlılıkları yükler
 
 1. Uygulamanız için bir pod dosyası oluşturmak için terminali açın ve proje klasörüne gidip şunu çalıştırın ```pod init```
-3. Aşağıdaki kodu Pod dosyasına ekleyin ve kaydedin:
+3. Aşağıdaki kodu Pod dosyasına ekleyin ve kaydedin ("target" öğesinin projenizin adıyla eşleştiğinden emin olun):
 
    ```
    platform :ios, '13.0'

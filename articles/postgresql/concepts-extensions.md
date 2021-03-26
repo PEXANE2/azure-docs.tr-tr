@@ -1,17 +1,17 @@
 ---
 title: Uzantılar-PostgreSQL için Azure veritabanı-tek sunucu
 description: PostgreSQL için Azure veritabanı 'nda kullanılabilen Postgres uzantıları-tek sunucu hakkında bilgi edinin
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/14/2020
-ms.openlocfilehash: 78395873457f9fe53d45dfbfd94aa9ccdccd614d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.openlocfilehash: de395bed885804445146b01745edf5e93426cb13
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92485469"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606326"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure Veritabanı'ndaki PostgreSQL uzantıları - Tek Sunucu
 PostgreSQL, uzantıları kullanarak veritabanınızın işlevselliğini genişletmenizi sağlar. Uzantılar birden çok ilgili SQL nesnesini tek bir komutla veritabanınıza yüklenip kaldırılabilecek bir paket haline getirir. Veritabanınıza yüklenen uzantılar, yerleşik özellikler gibi çalışır.
@@ -62,7 +62,7 @@ Aşağıdaki uzantılar Postgres sürüm 11 ' in PostgreSQL sunucuları için Az
 > |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.5.1           | PostGIS topolojisi uzamsal türleri ve işlevleri|
 > |[postgres_fdw](https://www.postgresql.org/docs/11/postgres-fdw.html)                 | 1.0             | uzak PostgreSQL sunucuları için yabancı veri sarmalayıcısı|
 > |[tablofunc](https://www.postgresql.org/docs/11/tablefunc.html)                    | 1.0             | çapraz tablo dahil olmak üzere tüm tabloları işleyen işlevler|
-> |[timescaledb](https://docs.timescale.com/latest)                    | 1.3.2             | Zaman serisi verilerine yönelik ölçeklenebilir eklemeleri ve karmaşık sorguları sunar|
+> |[timescaledb](https://docs.timescale.com/latest)                    | 1.3.2, 1.7.4             | Zaman serisi verilerine yönelik ölçeklenebilir eklemeleri ve karmaşık sorguları sunar|
 > |[vurgu kaldır](https://www.postgresql.org/docs/11/unaccent.html)                     | 1.1             | vurguları kaldıran metin arama sözlüğü|
 > |[UUID-ossp](https://www.postgresql.org/docs/11/uuid-ossp.html)                    | 1.1             | evrensel benzersiz tanımlayıcılar oluşturma (UUID 'ler)|
 
@@ -108,7 +108,7 @@ Aşağıdaki uzantılar Postgres sürüm 10 ' a sahip PostgreSQL için Azure ver
 > |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.4.3           | PostGIS topolojisi uzamsal türleri ve işlevleri|
 > |[postgres_fdw](https://www.postgresql.org/docs/10/postgres-fdw.html)                 | 1.0             | uzak PostgreSQL sunucuları için yabancı veri sarmalayıcısı|
 > |[tablofunc](https://www.postgresql.org/docs/10/tablefunc.html)                    | 1.0             | çapraz tablo dahil olmak üzere tüm tabloları işleyen işlevler|
-> |[timescaledb](https://docs.timescale.com/latest)                    | 1.1.1             | Zaman serisi verilerine yönelik ölçeklenebilir eklemeleri ve karmaşık sorguları sunar|
+> |[timescaledb](https://docs.timescale.com/latest)                    | 1.1.1, 1.7.4             | Zaman serisi verilerine yönelik ölçeklenebilir eklemeleri ve karmaşık sorguları sunar|
 > |[vurgu kaldır](https://www.postgresql.org/docs/10/unaccent.html)                     | 1.1             | vurguları kaldıran metin arama sözlüğü|
 > |[UUID-ossp](https://www.postgresql.org/docs/10/uuid-ossp.html)                    | 1.1             | evrensel benzersiz tanımlayıcılar oluşturma (UUID 'ler)|
 
@@ -154,11 +154,14 @@ Postgres sürüm 9,6 ' den PostgreSQL için Azure veritabanı sunucuları 'nda a
 > |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.3.2           | PostGIS topolojisi uzamsal türleri ve işlevleri|
 > |[postgres_fdw](https://www.postgresql.org/docs/9.6/postgres-fdw.html)                 | 1.0             | uzak PostgreSQL sunucuları için yabancı veri sarmalayıcısı|
 > |[tablofunc](https://www.postgresql.org/docs/9.6/tablefunc.html)                    | 1.0             | çapraz tablo dahil olmak üzere tüm tabloları işleyen işlevler|
-> |[timescaledb](https://docs.timescale.com/latest)                    | 1.1.1             | Zaman serisi verilerine yönelik ölçeklenebilir eklemeleri ve karmaşık sorguları sunar|
+> |[timescaledb](https://docs.timescale.com/latest)                    | 1.1.1, 1.7.4             | Zaman serisi verilerine yönelik ölçeklenebilir eklemeleri ve karmaşık sorguları sunar|
 > |[vurgu kaldır](https://www.postgresql.org/docs/9.6/unaccent.html)                     | 1.1             | vurguları kaldıran metin arama sözlüğü|
 > |[UUID-ossp](https://www.postgresql.org/docs/9.6/uuid-ossp.html)                    | 1.1             | evrensel benzersiz tanımlayıcılar oluşturma (UUID 'ler)|
 
-## <a name="postgres-95-extensions"></a>Postgres 9,5 uzantıları 
+## <a name="postgres-95-extensions"></a>Postgres 9,5 uzantıları
+
+>[!NOTE]
+> PostgreSQL sürüm 9,5 kullanımdan kaldırıldı.
 
 Postgres sürüm 9,5 ' den PostgreSQL için Azure veritabanı sunucuları 'nda aşağıdaki uzantılar mevcuttur.
 

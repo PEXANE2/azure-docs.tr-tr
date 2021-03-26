@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 54ce9438f768e347e306432a1874ab1816a1ae95
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d1b2cbefe64add5048d4e3c7946277b1461a5434
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104719913"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105607103"
 ---
 [Dayanıklı işlevler](../articles/azure-functions/durable/durable-functions-overview.md)için yapılandırma ayarları.
 
@@ -121,7 +121,7 @@ Görev hub 'ı adları bir harfle başlamalı ve yalnızca harf ve sayılardan o
 |Eventgridpublishretryınterval|5 dakika|Event Grid, *HH: mm: ss* biçiminde yeniden deneme aralığı yayımlar.|
 |eventGridPublishEventTypes||Event Grid yayımlanacak olay türlerinin listesi. Belirtilmezse, tüm olay türleri yayımlanır. İzin verilen değerler şunlardır,,, `Started` `Completed` `Failed` `Terminated` .|
 |useAppLease|true|Olarak ayarlandığında `true` , uygulamalar, görev hub 'ı iletilerini işlemeden önce uygulama düzeyi blob kirası almak için gerekli olacaktır. Daha fazla bilgi için [olağanüstü durum kurtarma ve coğrafi dağıtım](../articles/azure-functions/durable/durable-functions-disaster-recovery-geo-distribution.md) belgelerine bakın. V 2.3.0 'dan başlayarak kullanılabilir.
-|useLegacyPartitionManagement|true|Olarak ayarlandığında `false` , ölçekleme sırasında yinelenen işlev yürütme olasılığını azaltan bir bölüm yönetimi algoritması kullanır.  V 2.3.0 'dan başlayarak kullanılabilir. Varsayılan değer `false` gelecek bir sürümde olarak değiştirilir.|
+|useLegacyPartitionManagement|yanlış|Olarak ayarlandığında `false` , ölçekleme sırasında yinelenen işlev yürütme olasılığını azaltan bir bölüm yönetimi algoritması kullanır.  V 2.3.0 'dan başlayarak kullanılabilir.|
 |useGracefulShutdown|yanlış|Önizle İşlem sırasında işlev yürütmelerinin başarısız olmasına neden olan konak kapanmalarının olasılığını azaltmak için düzgün bir şekilde kapatmayı etkinleştirin.|
 
 Bu ayarların birçoğu performansı iyileştirmek için kullanılır. Daha fazla bilgi için bkz. [performans ve ölçek](../articles/azure-functions/durable/durable-functions-perf-and-scale.md).

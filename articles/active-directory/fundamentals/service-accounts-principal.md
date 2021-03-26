@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bab8e8c6dfb944e496c636d53217e63175be9fbc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 297c0a53fb2ab4ee0b2c5291cabf5a63c8841664
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104587857"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604711"
 ---
 # <a name="securing-service-principals"></a>Hizmet sorumlularının güvenliğini sağlama
 
@@ -96,6 +96,7 @@ Daha fazla bilgi için bkz. [Get-AzureADServicePrincipal](/powershell/module/azu
 Hizmet sorumlularınızın güvenliğini değerlendirmek için, ayrıcalıkları ve kimlik bilgisi depolamayı değerlendirdiğinizden emin olun.
 
 Aşağıdaki bilgileri kullanarak olası zorlukları azaltabilirsiniz.
+
 |Zorluklar | Risk Azaltıcı Etkenler|
 | - | - |
 | Çok kiracılı bir uygulamaya onay veren kullanıcıyı algılayın ve çok kiracılı bir uygulamaya izin vermesini tespit edin | Çok kiracılı uygulamaları bulmak için aşağıdaki PowerShell 'i çalıştırın.<br>`Get-AzureADServicePrincipal -All:$true ? {$_.Tags -eq WindowsAzureActiveDirectoryIntegratedApp"}`<br>Kullanıcı onayını devre dışı bırakın. <br>Seçili izinler için doğrulanan yayımcıların Kullanıcı onaylamasına izin ver (önerilir) <br> Güvenilmeyen konumlardan gelen hizmet sorumlularını engellemek için koşullu erişimi kullanın. Bunları Kullanıcı bağlamı altında yapılandırın ve bunların belirteçleri hizmet sorumlusunu tetiklemek için kullanılmalıdır.|

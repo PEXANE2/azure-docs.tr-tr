@@ -10,14 +10,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/07/2018
-ms.author: mbaldwin
-ms.openlocfilehash: ede1af4625d06af4e280eda86d09ae1db3dfdfd1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/25/2021
+ms.author: keithp
+ms.openlocfilehash: 8437d12075a148a3e8062f62e195bc019d89a85b
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "70881035"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606972"
 ---
 # <a name="azure-dedicated-hsm-physical-security"></a>Azure ayrılmış HSM fiziksel güvenliği
 
@@ -25,7 +25,7 @@ Azure adanmış HSM, anahtar depolamaya yönelik gelişmiş güvenlik gereksinim
 
 ## <a name="security-through-procurement"></a>Tedarik üzerinden güvenlik
 
-Microsoft, güvenli bir tedarik sürecini takip eder. Koruyucu zincirini yönetiyoruz ve sipariş edilen ve sevk edilen belirli bir cihazın veri merkezlerimize ulaşan cihaz olduğundan emin olun. Cihazlar, yetkisiz olay plastik durumunda. Bunlar veri merkezinin veri galerisinde, güvenli bir depolama alanında depolanır.  HSM cihazlarını içeren raflar, yüksek iş etkisi (HBı) olarak değerlendirilir. Cihazlar kilitlenir ve her zaman önde ve geri doğru video gözetimi altında.
+Microsoft, güvenli bir tedarik sürecini takip eder. Koruyucu zincirini yönetiyoruz ve sipariş edilen ve sevk edilen belirli bir cihazın veri merkezlerimize ulaşan cihaz olduğundan emin olun. Cihazlar, serileştirilmiş ve olay Plastik plastik ve kapsayıcılardır. Bunlar veri merkezinin veri galerisinde, güvenli bir depolama alanında depolanır.  HSM cihazlarını içeren raflar, yüksek iş etkisi (HBı) olarak değerlendirilir. Cihazlar kilitlenir ve her zaman önde ve geri doğru video gözetimi altında.
 
 ## <a name="security-through-deployment"></a>Dağıtım üzerinden güvenlik
 
@@ -49,7 +49,7 @@ Bir Microsoft mühendisinin HSM cihazları tarafından kullanılan rafa erişmes
 
 ## <a name="logical-level-security-considerations"></a>Mantıksal düzey güvenlik konuları
 
-HSM 'ler, müşteri tarafından oluşturulan bir sanal ağ için sağlanır. Bu bir müşterinin özel bir adres alanıdır.  Bu yapılandırma, değerli bir mantıksal ağ düzeyi yalıtımı sağlar ve yalnızca müşteri tarafından erişim sağlar. Bu, tüm mantıksal düzey güvenlik denetimlerinin müşterinin sorumluluğu olduğunu gösterir.
+HSM 'ler, müşterinin özel IP adresi alanındaki müşteri tarafından oluşturulan bir sanal ağ için sağlanır.  Bu yapılandırma, değerli bir mantıksal ağ düzeyi yalıtımı sağlar ve yalnızca müşteri tarafından erişim sağlar. Bu, tüm mantıksal düzey güvenlik denetimlerinin müşterinin sorumluluğu olduğunu gösterir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 86d1b9ec8a507a5cfaa5502efcb239bceabca665
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ebe61e5956dc0f35794211a336eb7d884ee18d76
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102097355"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608910"
 ---
 # <a name="interact-with-the-map-android-sdk"></a>Eşlemele etkileşim kurma (Android SDK)
 
@@ -30,13 +30,13 @@ Map, tüm olaylarını özelliği aracılığıyla yönetir `events` . Aşağıd
 | `OnCameraMove`         | `()`                 | Bir görünümden diğerine animasyon eklenmiş bir geçiş sırasında, Kullanıcı etkileşimi ya da yöntemlerinin sonucu olarak tekrar tekrar tetiklenir. |
 | `OnCameraMoveCanceled` | `()`                 | Kameraya bir taşıma isteği iptal edildiğinde harekete geçirilir. |
 | `OnCameraMoveStarted`  | `(int reason)`       | Eşleme, Kullanıcı etkileşimi ya da yöntemlerinin sonucu olarak bir görünümden diğerine geçiş yapmaya başlamadan hemen önce tetiklenir. `reason`Olay dinleyicisinin bağımsız değişkeni, kamera hareketinin nasıl başlatılmasının ayrıntılarını sağlayan bir tamsayı değeri döndürür. Aşağıdaki listede olası nedenler özetlenmektedir:<ul><li>1: hareket</li><li>2: Geliştirici animasyonu</li><li>3: API animasyonu</li></ul>   |
-| `OnClick`              | `(double lat, double lon)` | Eşleme basıldığında ve haritada aynı noktada bırakıldığında harekete geçirilir. |
-| `OnFeatureClick`       | `(List<Feature>)`    | Eşleme basıldığında harekete geçirilir ve bir özellikte aynı noktada serbest bırakılır.  |
+| `OnClick`              | `(double lat, double lon): boolean` | Eşleme basıldığında ve haritada aynı noktada bırakıldığında harekete geçirilir. Bu olay işleyicisi, olayın diğer olay dinleyicilerine daha fazla harcanması veya geçirilmesi gerektiğini belirten bir Boole değeri döndürür. |
+| `OnFeatureClick`       | `(List<Feature>): boolean`    | Eşleme basıldığında harekete geçirilir ve bir özellikte aynı noktada serbest bırakılır. Bu olay işleyicisi, olayın diğer olay dinleyicilerine daha fazla harcanması veya geçirilmesi gerektiğini belirten bir Boole değeri döndürür. |
 | `OnLayerAdded` | `(Layer layer)` | Haritaya bir katman eklendiğinde harekete geçirildi. |
 | `OnLayerRemoved` | `(Layer layer)` | Eşlemden bir katman kaldırıldığında harekete geçirilir. |
 | `OnLoaded` | `()` | Tüm gerekli kaynaklar indirildikten ve haritanın ilk görsel olarak işlenmesi tamamlandıktan hemen sonra harekete geçirilir. |
-| `OnLongClick`          | `(double lat, double lon)` | Eşleme basıldığında harekete geçirilir, bir süre tutulur ve sonra haritada aynı noktada serbest bırakılır. |
-| `OnLongFeatureClick `  | `(List<Feature>)`    | Eşleme basıldığında harekete geçirilir, bir süre tutulur ve sonra bir özellikte aynı noktada serbest bırakılır. |
+| `OnLongClick`          | `(double lat, double lon): boolean` | Eşleme basıldığında harekete geçirilir, bir süre tutulur ve sonra haritada aynı noktada serbest bırakılır. Bu olay işleyicisi, olayın diğer olay dinleyicilerine daha fazla harcanması veya geçirilmesi gerektiğini belirten bir Boole değeri döndürür. |
+| `OnLongFeatureClick `  | `(List<Feature>): boolean`    | Eşleme basıldığında harekete geçirilir, bir süre tutulur ve sonra bir özellikte aynı noktada serbest bırakılır. Bu olay işleyicisi, olayın diğer olay dinleyicilerine daha fazla harcanması veya geçirilmesi gerektiğini belirten bir Boole değeri döndürür. |
 | `OnReady`              | `(AzureMap map)`     | Eşleme başlangıçta yüklendiğinde veya uygulama yönü değiştiğinde ve gereken en az sayıda eşleme kaynağı yüklendiğinde ve eşleme, program aracılığıyla ile etkileşim için hazırlanmaya hazırsa tetiklenir. |
 | `OnSourceAdded` | `(Source source)` | `DataSource`Eşlemeye bir veya `VectorTileSource` eklendiğinde tetiklenir. |
 | `OnSourceRemoved` | `(Source source)` | `DataSource`Eşlemden bir veya `VectorTileSource` kaldırıldığında tetiklenir. |
@@ -49,10 +49,16 @@ Aşağıdaki kod,, `OnClick` `OnFeatureClick` ve olaylarının haritaya nasıl e
 ```java
 map.events.add((OnClick) (lat, lon) -> {
     //Map clicked.
+
+    //Return true indicating if event should be consumed and not passed further to other listeners registered afterwards, false otherwise.
+    return true;
 });
 
 map.events.add((OnFeatureClick) (features) -> {
     //Feature clicked.
+
+    //Return true indicating if event should be consumed and not passed further to other listeners registered afterwards, false otherwise.
+    return true;
 });
 
 map.events.add((OnCameraMove) () -> {
@@ -67,10 +73,16 @@ map.events.add((OnCameraMove) () -> {
 ```kotlin
 map.events.add(OnClick { lat: Double, lon: Double -> 
     //Map clicked.
+
+    //Return true indicating if event should be consumed and not passed further to other listeners registered afterwards, false otherwise.
+    return false
 })
 
 map.events.add(OnFeatureClick { features: List<Feature?>? -> 
     //Feature clicked.
+
+    //Return true indicating if event should be consumed and not passed further to other listeners registered afterwards, false otherwise.
+    return false
 })
 
 map.events.add(OnCameraMove {
@@ -103,11 +115,17 @@ map.layers.add(layer);
 //Add a feature click event to the map and pass the layer ID to limit the event to the specified layer.
 map.events.add((OnFeatureClick) (features) -> {
     //One or more features clicked.
+
+    //Return true indicating if event should be consumed and not passed further to other listeners registered afterwards, false otherwise.
+    return true;
 }, layer);
 
 //Add a long feature click event to the map and pass the layer ID to limit the event to the specified layer.
 map.events.add((OnLongFeatureClick) (features) -> {
     //One or more features long clicked.
+
+    //Return true indicating if event should be consumed and not passed further to other listeners registered afterwards, false otherwise.
+    return true;
 }, layer);
 ```
 
@@ -131,6 +149,9 @@ map.layers.add(layer)
 map.events.add(
     OnFeatureClick { features: List<Feature?>? -> 
         //One or more features clicked.
+
+        //Return true indicating if event should be consumed and not passed further to other listeners registered afterwards, false otherwise.
+        return false
     },
     layer
 )
@@ -139,6 +160,9 @@ map.events.add(
 map.events.add(
     OnLongFeatureClick { features: List<Feature?>? -> 
          //One or more features long clicked.
+
+        //Return true indicating if event should be consumed and not passed further to other listeners registered afterwards, false otherwise.
+        return false
     },
     layer
 )

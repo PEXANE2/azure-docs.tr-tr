@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/18/2021
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: d3d10eb496899287e93a96f0cbb06dedf83c601d
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 86a656630f6c41e2cf6682d0160cce345d1f564d
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105048638"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606632"
 ---
 # <a name="speech-service-release-notes"></a>Konuşma hizmeti sürüm notları
 
@@ -711,13 +711,13 @@ Bu bir hata çözme sürümüdür ve yalnızca yerel/yönetilen SDK 'yi etkiliyo
 **Hata düzeltmeleri**
 
 - Konuşma dökümü ile kullanıldığında FromSubscription 'ı onarın.
-- Sesli Yardımcılar için anahtar sözcük biriktirmesiyle ilgili hatayı düzeltir.
+- Sesli Yardımcılar için anahtar sözcük tanıma 'da hatayı düzeltir.
 
 ## <a name="speech-sdk-150-2019-may-release"></a>Konuşma SDK 1.5.0:2019-yayın Mayıs
 
 **Yeni özellikler**
 
-- Anahtar sözcük biriktirme (KWS) artık Windows ve Linux için kullanılabilir. KWS işlevselliği herhangi bir mikrofon türü ile çalışabilir, ancak resmi KWS desteği şu anda Azure Kinect DK donanımında veya konuşma cihazları SDK 'sında bulunan mikrofon dizileri ile sınırlıdır.
+- Anahtar sözcük tanıma özelliği artık Windows ve Linux 'ta kullanılabilir. Bu işlevsellik herhangi bir mikrofon türü ile çalışabilir, ancak resmi destek şu anda Azure Kinect DK donanımında veya konuşma cihazları SDK 'sında bulunan mikrofon dizileri ile sınırlıdır.
 - Tümcecik ipucu işlevselliği SDK aracılığıyla kullanılabilir. Daha fazla bilgi için [buraya](./get-started-speech-to-text.md)bakın.
 - Konuşma dökümü işlevselliği SDK aracılığıyla kullanılabilir. [Buraya](./conversation-transcription.md)bakın.
 - Doğrudan hat konuşma kanalını kullanarak sesli Yardımcılar için destek ekleyin.

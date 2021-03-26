@@ -4,15 +4,15 @@ description: .NET işlevlerinde Hizmetleri kaydetmek ve kullanmak için bağıml
 author: ggailey777
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.date: 01/27/2021
+ms.date: 03/24/2021
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: 66e2cd22f4bcb95be65d6d04345dcac622436a04
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 32cd2760eadc94466cdf55883611c78ac0cf24e6
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98955097"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608128"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>.NET Azure İşlevleri'nde bağımlılık eklemeyi kullanma
 
@@ -21,6 +21,11 @@ Azure Işlevleri, sınıflar ve bunların bağımlılıkları arasında [denetim
 - Azure Işlevlerine bağımlılık ekleme, .NET Core bağımlılığı ekleme özellikleri üzerine kurulmuştur. [.NET Core bağımlılığı ekleme](/aspnet/core/fundamentals/dependency-injection) konusunda benzerlik yapmanız önerilir. Bağımlılıkları geçersiz kılma ve yapılandırma değerlerinin tüketim planında Azure Işlevleri ile nasıl okunduğu konusunda farklılıklar vardır.
 
 - Bağımlılık ekleme desteği, Azure Işlevleri 2. x ile başlar.
+
+- Bağımlılık ekleme desenleri, C# işlevlerinizin [işlem içinde](functions-dotnet-class-library.md) veya [işlem dışı](dotnet-isolated-process-guide.md)çalışmasına bağlı olarak farklılık gösterir.  
+
+> [!IMPORTANT]
+> Bu makaledeki kılavuz yalnızca çalışma zamanında işlem içinde çalışan [C# sınıf kitaplığı işlevleri](functions-dotnet-class-library.md)için geçerlidir. Bu özel bağımlılık ekleme modeli, .NET 5,0 işlevlerini işlem dışı çalıştırmanıza olanak sağlayan [.net yalıtılmış işlevleri](dotnet-isolated-process-guide.md)için uygulanmaz. .NET yalıtılmış işlem modeli, normal ASP.NET Core bağımlılığı ekleme desenlerine dayanır. Daha fazla bilgi edinmek için bkz. .NET yalıtılmış işlem kılavuzu 'nda [bağımlılık ekleme](dotnet-isolated-process-guide.md#dependency-injection) .
 
 ## <a name="prerequisites"></a>Önkoşullar
 

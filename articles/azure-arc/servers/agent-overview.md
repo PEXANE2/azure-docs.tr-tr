@@ -1,14 +1,14 @@
 ---
 title: Bağlı makine aracısına genel bakış
 description: Bu makalede, karma ortamlarda barındırılan sanal makinelerin izlenmesini destekleyen Azure Arc etkin sunucu aracısına sunulan ayrıntılı bir genel bakış sunulmaktadır.
-ms.date: 03/15/2021
+ms.date: 03/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: 1fd863ccacc7768401e35254a98c7bb494b3d358
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2db1758240dca448409af9f4ec00c01d684c920a
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103470498"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105609245"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Azure Arc etkin sunucular aracısına genel bakış
 
@@ -18,6 +18,8 @@ Azure Arc etkin sunucular bağlı makine Aracısı, kurumsal ağınızda veya di
 >Eylül 2020 ' de Azure Arc etkin sunucularının genel sürümünden itibaren, Azure bağlı makine aracısının tüm yayın öncesi sürümleri (1,0 ' den küçük olan aracılar) **2 şubat 2021** tarihinde **kullanımdan kaldırılmıştır** .  Bu zaman dilimi, önceden yayınlanan aracıların Azure Arc etkin sunucular hizmeti ile iletişim kurabilmesi için sürüm 1,0 veya sonraki bir sürüme yükseltmenizi sağlar.
 
 ## <a name="agent-component-details"></a>Aracı bileşeni ayrıntıları
+
+:::image type="content" source="media/agent-overview/connected-machine-agent.png" alt-text="Yay etkin sunucular aracısına genel bakış." border="false":::
 
 Azure bağlı makine Aracısı paketi, birlikte paketlenmiş çeşitli mantıksal bileşenler içerir.
 

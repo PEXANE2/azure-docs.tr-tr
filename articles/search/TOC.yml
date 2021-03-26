@@ -343,7 +343,7 @@
             - name: Öneri oluşturucu oluşturma
               href: index-add-suggesters.md
             - name: Otomatik tamamlama ve öneriler ekleme
-              href: search-autocomplete-tutorial.md
+              href: search-add-autocomplete-suggestions.md
         - name: Sayfalama ve sayımlar
           href: search-pagination-page-layout.md
         - name: Söz dizimi başvurusu
@@ -440,7 +440,7 @@
           href: cognitive-search-common-errors-warnings.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/search
     - name: Azure PowerShell
       href: /powershell/module/az.search

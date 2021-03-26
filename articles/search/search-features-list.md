@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: 7615e1dbce040002d9d1a13502637f78100965fb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 65ee741ee928a4883def68a5c0b6d20beee441c7
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99538916"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105609216"
 ---
 # <a name="features-of-azure-cognitive-search"></a>Azure Bilişsel Arama özellikleri
 
@@ -43,7 +43,7 @@ Azure Bilişsel Arama, daha fazla metin ve yapıyı ve API 'Leri ve araçları a
 | İlgi düzeyi | [**Basit skor**](index-add-scoring-profiles.md) , Azure bilişsel arama 'ın önemli bir avantajıdır. Belgelerdeki değer işlevi olarak ilgi düzeyini modellemek için puanlama profilleri kullanılır. Örneğin, yeni ürünlerin veya indirimli ürünlerin arama sonuçlarında daha yukarıda görüntülenmesini isteyebilirsiniz. Ayrı olarak izleyip depoladığınız müşteri arama tercihlerine göre kişiselleştirilmiş puanlama için etiketleri kullanarak da puanlama profilleri derleyebilirsiniz. |
 | Coğrafi arama | Azure Bilişsel Arama, coğrafi konumları işler, filtreler ve görüntüler. Kullanıcıların, bir arama sonucunun fiziksel bir konuma göre yakınlığına göre verileri bulmasını sağlar. Daha fazla bilgi edinmek için [bu videoyu izleyin](https://channel9.msdn.com/Shows/Data-Exposed/Azure-Search-and-Geospatial-Data) veya [bu örneği gözden geçirin](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs). |
 | Filtreler ve modeller | [**Modellenmiş gezinti**](search-faceted-navigation.md), tek bir sorgu parametresi aracılığıyla etkinleştirilir. Azure Bilişsel Arama, kendi kendine yönlendirilmiş filtreleme için (örneğin, katalog öğelerini fiyat aralığına veya markaya göre filtrelemek için) bir Kategoriler listesinin arkasında kod olarak kullanabileceğiniz, çok yönlü bir gezinti yapısı döndürür. <br/><br/> [**Filtreler**](query-odata-filter-orderby-syntax.md), uygulamanın kullanıcı arabiriminde çok yönlü gezintiye yer vermek, sorgu oluşumunu geliştirmek ve kullanıcı veya geliştirici tarafından belirtilen ölçütlere göre filtreleme yapmak için kullanılabilir. OData söz dizimini kullanarak filtreler oluşturun. |
-| Kullanıcı deneyimi | [**Otomatik tamamlama**](search-autocomplete-tutorial.md) , bir arama çubuğundaki tür ilerlek sorguları için etkinleştirilebilir. <br/><br/>[**Arama önerileri**](/rest/api/searchservice/suggesters) de arama çubuğuna girilen kısmi metinler için kullanılabilir ancak sonuçlar sorgu terimi yerine dizininizdeki gerçek belgeler olur. <br/><br/>[**Eş anlamlılar**](search-synonyms.md), kullanıcının alternatif terim belirtmesine gerek kalmadan bir sorguyu kapsamını genişleten eşdeğer terimlerle ilişkilendirir. <br/><br/>[**İsabet vurgulama**](/rest/api/searchservice/Search-Documents), arama sonuçlarında eşleşen bir anahtar sözcüğe metin biçimlendirmesi uygular. Hangi alanların vurgulanan kod parçacıklarını döndürdüğünü seçebilirsiniz.<br/><br/>Dizin şeması aracılığıyla birden fazla alan için [**Sıralama**](/rest/api/searchservice/Search-Documents) sunulur ve sonra tek bir arama parametresi ile sorgu zamanında açılıp kapatılır.<br/><br/> Arama sonuçlarınızı [**sayfalama**](search-pagination-page-layout.md) ve daraltma, Azure bilişsel arama 'nin arama sonuçlarınız üzerinde sunduğu ince ayar denetimi ile kolay bir şekilde ayarlanır.  <br/><br/>|
+| Kullanıcı deneyimi | [**Otomatik tamamlama**](search-add-autocomplete-suggestions.md) , bir arama çubuğundaki tür ilerlek sorguları için etkinleştirilebilir. <br/><br/>[**Arama önerileri**](/rest/api/searchservice/suggesters) de arama çubuğuna girilen kısmi metinler için kullanılabilir ancak sonuçlar sorgu terimi yerine dizininizdeki gerçek belgeler olur. <br/><br/>[**Eş anlamlılar**](search-synonyms.md), kullanıcının alternatif terim belirtmesine gerek kalmadan bir sorguyu kapsamını genişleten eşdeğer terimlerle ilişkilendirir. <br/><br/>[**İsabet vurgulama**](/rest/api/searchservice/Search-Documents), arama sonuçlarında eşleşen bir anahtar sözcüğe metin biçimlendirmesi uygular. Hangi alanların vurgulanan kod parçacıklarını döndürdüğünü seçebilirsiniz.<br/><br/>Dizin şeması aracılığıyla birden fazla alan için [**Sıralama**](/rest/api/searchservice/Search-Documents) sunulur ve sonra tek bir arama parametresi ile sorgu zamanında açılıp kapatılır.<br/><br/> Arama sonuçlarınızı [**sayfalama**](search-pagination-page-layout.md) ve daraltma, Azure bilişsel arama 'nin arama sonuçlarınız üzerinde sunduğu ince ayar denetimi ile kolay bir şekilde ayarlanır.  <br/><br/>|
 
 ## <a name="security-features"></a>Güvenlik özellikleri
 

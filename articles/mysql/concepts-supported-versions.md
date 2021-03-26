@@ -6,21 +6,31 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/3/2020
-ms.openlocfilehash: 8b85307f01a11366a2147c947f26658f548932e8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 314462517ba4e63694266b5e49231cb8536f3635
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103467723"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604740"
 ---
-# <a name="supported-azure-database-for-mysql-server-versions"></a>MySQL sunucu sürümleri için desteklenen Azure veritabanı
+# <a name="supported-azure-database-for-mysql-server-versions"></a>Desteklenen MySQL için Azure Veritabanı sunucu sürümleri
 
 MySQL için Azure veritabanı, InnoDB depolama altyapısı kullanılarak [MySQL Community Edition](https://www.mysql.com/products/community/)'dan geliştirilmiştir. Hizmet, topluluk tarafından desteklenen tüm geçerli ana sürümü destekler, burada MySQL 5,6, 5,7 ve 8,0. MySQL, X 'in ana sürüm olan X. Y. Z adlandırma şemasını kullanır, Y ise ikincil sürümdür ve Z hata çözme sürümüdür. Düzen hakkında daha fazla bilgi için [MySQL belgelerine](https://dev.mysql.com/doc/refman/5.7/en/which-version.html)bakın.
 
-> [!NOTE]
-> Tek sunuculu dağıtım seçeneğinde, sunucu örneklerine bağlantıları yeniden yönlendirmek için bir ağ geçidi kullanılır. Bağlantı kurulduktan sonra, MySQL istemcisi MySQL sunucu örneğinizde çalışan gerçek sürümü değil ağ geçidinde belirlenen MySQL sürümünü görüntüler. MySQL sunucu örneğinizin sürümünü öğrenmek için MySQL komut isteminde `SELECT VERSION();` komutunu kullanın.
 
-MySQL için Azure veritabanı şu anda MySQL 'in aşağıdaki büyük ve küçük sürümlerini desteklemektedir:
+
+## <a name="connect-to-a-gateway-node-that-is-running-a-specific-mysql-version"></a>Belirli bir MySQL sürümünü çalıştıran bir ağ geçidi düğümüne bağlanma
+
+Tek sunuculu dağıtım seçeneğinde, sunucu örneklerine bağlantıları yeniden yönlendirmek için bir ağ geçidi kullanılır. Bağlantı kurulduktan sonra, MySQL istemcisi MySQL sunucu örneğinizde çalışan gerçek sürümü değil ağ geçidinde belirlenen MySQL sürümünü görüntüler. MySQL sunucu örneğinizin sürümünü öğrenmek için MySQL komut isteminde `SELECT VERSION();` komutunu kullanın. MySQL için Azure veritabanı hizmet mimarisinde ağ geçitleri hakkında daha fazla bilgi edinmek için [bağlantı mimarisini](https://docs.microsoft.com/azure/mysql/concepts-connectivity-architecture#connectivity-architecture) gözden geçirin.
+
+MySQL için Azure veritabanı, ana sürüm v 5.6, v 5.7 ve v 8.0 'ı desteklediğinden, MySQL için Azure veritabanı 'na bağlanmak üzere varsayılan bağlantı noktası 3306, tüm 3 desteklenen ana sürümlerin sunucularıyla bağlantıları desteklemek için MySQL Client sürüm 5,6 ' yi (en az ortak paydası) çalıştırır. Ancak, uygulamanızın belirli ana sürüme bağlanmak için v 5.7 veya v 8.0 gereksinimi varsa, sunucu bağlantı dizinizdeki bağlantı noktasını değiştirerek bunu yapabilirsiniz.
+
+MySQL için Azure veritabanı hizmetinde, ağ geçidi düğümleri v 5.7 istemcileri için 3308 bağlantı noktasını ve v 8.0 istemcileri için bağlantı noktası 3309 ' i dinler. Diğer bir deyişle, v 5.7 Gateway istemcisine bağlanmak istiyorsanız, istemci uygulamasından sunucunuza bağlanmak için tam sunucu adını ve bağlantı noktası 3308 ' i kullanmanız gerekir. Benzer şekilde, v 8.0 Gateway istemcisine bağlanmak istiyorsanız, sunucunuza bağlanmak için tam sunucu adı ve bağlantı noktası 3309 ' yı kullanabilirsiniz. Daha fazla açıklık için aşağıdaki örneğe bakın.
+
+:::image type="content" source="./media/concepts-supported-versions/concepts-supported-versions-gateway.png" alt-text="Farklı ağ geçidi MySQL sürümleri aracılığıyla bağlanan örnek":::
+
+
+## <a name="azure-database-for-mysql-currently-supports-the-following-major-and-minor-versions-of-mysql"></a>MySQL için Azure veritabanı şu anda MySQL 'in aşağıdaki büyük ve küçük sürümlerini desteklemektedir:
 
 
 | Sürüm | Tek sunucu <br/> Geçerli ikincil sürüm |Esnek Sunucu (Önizleme) <br/> Geçerli ikincil sürüm  |

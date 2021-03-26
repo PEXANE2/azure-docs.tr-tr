@@ -5,14 +5,14 @@ author: mimcco
 ms.author: mimcco
 ms.service: azure-percept
 ms.topic: how-to
-ms.date: 02/18/2021
+ms.date: 03/25/2021
 ms.custom: template-how-to
-ms.openlocfilehash: f34013bdb14481bfe872a9b3c4234d603bc2d7ec
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c4fc7d7564ecd30326fbec832639b2a81d55e6d5
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102635578"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105605663"
 ---
 # <a name="azure-percept-audio-and-speech-module-troubleshooting"></a>Azure Percept ses ve konuşma modülü sorunlarını giderme
 
@@ -20,16 +20,24 @@ Ses Yardımcısı uygulama sorunlarını gidermek için aşağıdaki yönergeler
 
 ## <a name="collecting-speech-module-logs"></a>Konuşma modülü günlüklerini toplama
 
-Bu komutları çalıştırmak için, [Azure PERCEPT DK Wi-Fi erişim noktasına bağlanın ve SSH üzerinden Dev Kit 'e bağlanın](./how-to-ssh-into-percept-dk.md) ve SSH terminaline komutları girin.
+Bu komutları çalıştırmak için, [Geliştirme Seti ' ne SSH ekleyin](./how-to-ssh-into-percept-dk.md) ve SSH istemci istemine komutları girin.
+
+Konuşma modülü günlüklerini topla:
 
 ```console
 sudo iotedge logs azureearspeechclientmodule
 ```
 
-Daha fazla analiz için herhangi bir çıktıyı bir. txt dosyasına yönlendirmek için aşağıdaki sözdizimini kullanın:
+Daha fazla analiz için çıktıyı bir. txt dosyasına yeniden yönlendirmek için aşağıdaki sözdizimini kullanın:
 
 ```console
 sudo [command] > [file name].txt
+```
+
+. Txt dosyasının kopyalanabilmesi için izinleri değiştirin:
+
+```console
+sudo chmod 666 [file name].txt
 ```
 
 Çıktıyı bir. txt dosyasına yönlendirdikten sonra SCP aracılığıyla dosyayı ana bilgisayara kopyalayın:
@@ -38,11 +46,11 @@ sudo [command] > [file name].txt
 scp [remote username]@[IP address]:[remote file path]/[file name].txt [local host file path]
 ```
 
-[yerel ana bilgisayar dosyası yolu], ana bilgisayarınızdaki. txt dosyasını kopyalamak istediğiniz konumu ifade eder. [Uzak Kullanıcı adı], [görsel taslak deneyimi](./quickstart-percept-dk-set-up.md)SıRASıNDA seçilen SSH kullanıcı adıdır. Azure Percept DK oluşturma deneyiminde bir SSH oturumu oluşturmadıysanız, uzak kullanıcı adınız köküdür.
+[yerel ana bilgisayar dosyası yolu], ana bilgisayarınızdaki. txt dosyasını kopyalamak istediğiniz konumu ifade eder. [Uzak Kullanıcı adı], [kurulum deneyimi](./quickstart-percept-dk-set-up.md)SıRASıNDA seçilen SSH kullanıcı adıdır.
 
 ## <a name="checking-runtime-status-of-the-speech-module"></a>Konuşma modülünün çalışma zamanı durumu denetleniyor
 
-**Azureearspeechclientmodule** çalışma zamanı durumunun **çalışır** durumda olup olmadığını denetleyin. Cihaz modüllerinizin çalışma zamanı durumunu bulmak için [Azure Portal](https://portal.azure.com/) açın ve **tüm kaynaklar**  ->  **\<your IoT hub>**  ->  **IoT Edge** gidin  ->  **\<your device ID>** . Tüm yüklü modüllerin çalışma zamanı durumunu görmek için **modüller** sekmesine tıklayın.
+**Azureearspeechclientmodule** çalışma zamanı durumunun **çalışır** durumda olup olmadığını denetleyin. Cihaz modüllerinizin çalışma zamanı durumunu bulmak için [Azure Portal](https://portal.azure.com/) açın ve **tüm kaynaklar**  ->  **[IoT Hub 'ınız]**  ->  **IoT Edge**  ->  **[cihazınızın kimliği]**' ne gidin. Tüm yüklü modüllerin çalışma zamanı durumunu görmek için **modüller** sekmesine tıklayın.
 
 :::image type="content" source="./media/troubleshoot-audio-accessory-speech-module/over-the-air-iot-edge-device-page.png" alt-text="Azure portal uç cihaz sayfası.":::
 
@@ -50,10 +58,10 @@ scp [remote username]@[IP address]:[remote file path]/[file name].txt [local hos
 
 ## <a name="understanding-ear-som-led-indicators"></a>Ear SoM göstergelerini anlama
 
-Cihazın hangi durumda olduğunu anlamak için LED göstergelerini kullanabilirsiniz. Genellikle modülün *Güç açma* sonrasında tamamen başlatılması 2 dakika sürer. Başlatma adımlarını izleyerek, şunları görürsünüz:
+Cihazın hangi durumda olduğunu anlamak için LED göstergelerini kullanabilirsiniz. Genellikle modülün cihaz üzerindeki güçden sonra tam olarak başlatılması 2 dakika sürer. Başlatma adımlarında olduğu gibi şunları görürsünüz:
 
-1. 1 merkezden beyaz ışığı-cihaz açık.
-2. 1 Merkez beyaz yanıp sönen-kimlik doğrulama devam ediyor.
+1. (Statik) Merkezi beyaz ışığı: cihaz açık.
+2. Orta beyaz (yanıp sönen): kimlik doğrulama devam ediyor.
 3. Cihaz kimlik doğrulamasından ve kullanıma hazırlandıktan sonra, üç LED 'in tümü mavi olarak değişir.
 
 |GELIŞTIRMESINE|LED durumu|Ear SoM durumu|

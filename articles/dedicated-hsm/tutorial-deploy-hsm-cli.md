@@ -11,14 +11,14 @@ ms.topic: tutorial
 ms.custom: mvc, seodec18, devx-track-azurecli
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/20/2020
-ms.author: mbaldwin
-ms.openlocfilehash: 1ca8bc5c82540b0dc02959d26b452554ef294368
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/25/2021
+ms.author: keithp
+ms.openlocfilehash: fa1c01c2d9da19ec1f60878de83a509b7cf561e8
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102200538"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606836"
 ---
 # <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-the-azure-cli"></a>Öğretici: Azure CLı kullanarak mevcut bir sanal ağa HSMs dağıtma
 
@@ -233,14 +233,14 @@ SSH kullanarak HSM 'ye bağlandığınızda, HSM 'nin çalışır durumda olduğ
 
 ![Ekran görüntüsü, PowerShell penceresinde çıktıyı gösterir.](media/tutorial-deploy-hsm-cli/hsm-show-output.png)
 
-Bu noktada, yüksek oranda kullanılabilir, iki HSM dağıtımı ve doğrulanan erişim ve işlemsel durum için tüm kaynakları ayırmış olursunuz. Daha fazla yapılandırma veya test, HSM cihazının kendisi ile daha fazla iş içerir. Bu şekilde, HSM 'yi başlatmak ve bölüm oluşturmak için Thales Luna ağ HSM 7 Yönetim Kılavuzu Bölüm 7 ' deki yönergeleri izlemelisiniz. Thales müşteri destek portalına kaydolduktan ve müşterinin KIMLIĞI varsa, tüm belgeler ve yazılımlar doğrudan karşıdan yüklenmek üzere kullanılabilir. Gerekli tüm bileşenleri almak için Istemci yazılımı 7,2 sürümünü indirin.
+Bu noktada, yüksek oranda kullanılabilir, iki HSM dağıtımı ve doğrulanan erişim ve işlemsel durum için tüm kaynakları ayırmış olursunuz. Daha fazla yapılandırma veya test, HSM cihazının kendisi ile daha fazla iş içerir. Bunun için, HSM 'yi başlatmak ve bölüm oluşturmak üzere Thales Luna 7 HSM Yönetim Kılavuzu Bölüm 7 ' deki yönergeleri izlemelisiniz. [Thales müşteri destek portalına](https://supportportal.thalesgroup.com/csm) kaydolduktan ve müşterinin kimliği varsa, tüm belgeler ve yazılımlar doğrudan karşıdan yüklenmek üzere kullanılabilir. Gerekli tüm bileşenleri almak için Istemci yazılımı 7,2 sürümünü indirin.
 
 ## <a name="delete-or-clean-up-resources"></a>Kaynakları silme veya temizleme
 
 Yalnızca HSM cihazını tamamladıysanız, kaynak olarak silinebilir ve ücretsiz havuza geri döndürülebilecek. Bu, cihazdaki önemli müşteri verileri olduğunda bu sorunu giderin. Bir cihazı "sıfırlama" yapmanın en iyi yolu, HSM Yönetici parolasının yanlış 3 kez alınacağını (Not: Bu gereç Yöneticisi değil, gerçek HSM Yöneticisi). Anahtar malzemesini korumanın bir güvenlik önlemi olarak, cihaz, sıfırlama durumunda olana kadar bir Azure kaynağı olarak silinemez.
 
 > [!NOTE]
-> herhangi bir Thales cihaz yapılandırmasıyla ilgili sorun yaşıyorsanız [Thales müşteri desteği](https://safenet.gemalto.com/technical-support/)'ne başvurmalısınız.
+> herhangi bir Thales cihaz yapılandırmasıyla ilgili sorun yaşıyorsanız [Thales müşteri desteği](https://supportportal.thalesgroup.com/csm)'ne başvurmalısınız.
 
 Bu kaynak grubundaki tüm kaynakları tamamladıysanız, bunları aşağıdaki komutla kaldırabilirsiniz:
 

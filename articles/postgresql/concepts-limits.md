@@ -1,18 +1,18 @@
 ---
 title: Sınırlar-PostgreSQL için Azure veritabanı-tek sunucu
 description: Bu makalede PostgreSQL için Azure veritabanı 'nda, bağlantı ve depolama altyapısı seçenekleri gibi tek bir sunucu sınırları açıklanmaktadır.
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c8fa6e108550b1417f736d1caff5cafd3e16f63a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7cee2be3c1d7a97b87560873d6cef07ec361ee99
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104595014"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105605187"
 ---
 # <a name="limits-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nın sınırları-tek sunucu
 Aşağıdaki bölümlerde, veritabanı hizmetindeki kapasite ve işlevsel sınırlar açıklanır. Kaynak (işlem, bellek, depolama) katmanları hakkında bilgi edinmek istiyorsanız [fiyatlandırma katmanları](concepts-pricing-tiers.md) makalesine bakın.

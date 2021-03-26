@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/23/2021
+ms.date: 03/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 60c6d0b7c983aefbca3aec65a3f6562edb1d56ef
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 8bb858bc29ac18d110f2679c3681fd4d27b72baa
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104956188"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105607788"
 ---
 # <a name="update-your-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU 'larınızı güncelleştirin 
 
@@ -33,6 +33,7 @@ Bu makalede açıklanan yordam, yazılımın farklı bir sürümü kullanılarak
 >    
 >    Bu güncelleştirmedeki yenilikler hakkında daha fazla bilgi için, [sürüm notları](azure-stack-edge-gpu-2103-release-notes.md)' na gidin.
 > - 2103 güncelleştirmesini uygulamak için cihazınız 2010 çalıştırıyor olmalıdır. Desteklenen en düşük sürümü çalıştırmıyorsanız şu hatayı görürsünüz: *Bağımlılıklar karşılanmadığından güncelleştirme paketi* yüklenemiyor.
+> - Bu güncelleştirme, sırayla iki güncelleştirme uygulamanızı gerektiriyor. Önce cihaz yazılım güncelleştirmelerini ve ardından Kubernetes güncelleştirmelerini uygularsınız.
 > - Güncelleştirme veya düzeltme yüklendiğinde cihazınızın yeniden başlatıldığını aklınızda bulundurun. Bu güncelleştirme, cihaz yazılım güncelleştirmelerini ve Kubernetes güncelleştirmelerini içerir. Azure Stack Edge Pro tek düğümlü bir cihaz olduğundan, sürmekte olan g/ç miktarı bozulur ve cihazınız güncelleştirme için 1,5 saate kadar bir kesinti yaşar.
 
 Güncelleştirmeleri cihazınıza yüklemek için önce güncelleştirme sunucusunun konumunu yapılandırmanız gerekir. Güncelleştirme sunucusu yapılandırıldıktan sonra, Azure portal Kullanıcı arabirimi veya yerel Web Kullanıcı arabirimi aracılığıyla güncelleştirmeleri uygulayabilirsiniz.
@@ -60,7 +61,7 @@ Bu adımların her biri aşağıdaki bölümlerde açıklanmıştır.
 Azure portal aracılığıyla güncelleştirmeleri yüklemenizi öneririz. Cihaz güncelleştirmeler için günde bir kez otomatik olarak tarama yapar. Güncelleştirmeler kullanılabilir olduktan sonra portalda bir bildirim görürsünüz. Bundan sonra güncelleştirmeleri indirebilir ve yükleyebilirsiniz.
 
 > [!NOTE]
-> Güncelleştirmeleri yüklemeye devam etmeden önce cihazın sağlıklı ve durum ' un **çevrimiçi** olarak göründüğünden emin olun.
+> Cihazın sağlıklı olduğundan ve durumun **düzgün çalıştığı** şekilde göründüğünden emin olun! güncelleştirmeleri yüklemeye devam etmeden önce.
 
 1. Cihazınız için güncelleştirmeler kullanılabilir olduğunda bir bildirim görürsünüz. Bildirimi veya üstteki komut çubuğundan **cihazı Güncelleştir**' i seçin. Bu, cihaz yazılım güncelleştirmelerini uygulamanıza olanak tanır.
 
@@ -91,17 +92,9 @@ Azure portal aracılığıyla güncelleştirmeleri yüklemenizi öneririz. Cihaz
 
 4. İndirme işlemi tamamlandıktan sonra, tamamlanma olduğunu göstermek için bildirim başlığı güncellenir. Güncelleştirmeleri indirip yüklemeyi seçerseniz, yükleme otomatik olarak başlatılır.
 
-    ![Güncelleştirme 7 ' den sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-6.png)
-
     Yalnızca güncelleştirmeleri indirmeyi seçerseniz, **cihaz güncelleştirmeleri** dikey penceresini açmak için bildirimi seçin. **Yükle**'yi seçin.
   
-    ![Güncelleştirme 8 ' den sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-7.png)
-
-5. Yüklemenin devam ettiğini belirten bir bildirim görürsünüz.
-
-    ![Güncelleştirme 9 ' dan sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-8.png)
- 
-    Portal ayrıca yüklemenin devam ettiğini göstermek için bir bilgilendirme uyarısı görüntüler. Cihaz çevrimdışı ve bakım modunda.
+5. Yüklemenin devam ettiğini belirten bir bildirim görürsünüz. Portal ayrıca yüklemenin devam ettiğini göstermek için bir bilgilendirme uyarısı görüntüler. Cihaz çevrimdışı ve bakım modunda.
    
     ![Güncelleştirme 10 ' dan sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-9.png)
 
@@ -113,15 +106,29 @@ Azure portal aracılığıyla güncelleştirmeleri yüklemenizi öneririz. Cihaz
     
     ![Güncelleştirme 12 ' den sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-11.png)
 
-7. Yeniden başlatmadan sonra, üstteki komut çubuğundan **cihazı Güncelleştir** ' i seçerseniz, güncelleştirmelerin ilerlemesini görebilirsiniz.   
+7. Yeniden başlatmadan sonra cihaz yazılımının güncelleştirilmesi tamamlanır. Güncelleştirme tamamlandıktan sonra, yerel Web kullanıcı arabiriminden cihaz yazılımının güncelleştirildiğini doğrulayabilirsiniz. Kubernetes yazılım sürümü güncelleştirilmemiş.
 
-8. Güncelleştirmeler yüklendikten sonra cihaz durumu **çevrimiçi** olarak güncelleştirilir. 
+    ![Güncelleştirme 13 ' den sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-12.png)
 
-    ![Güncelleştirme 13 ' den sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-14.png)
+8. Cihaz güncelleştirmelerinin kullanılabildiğini belirten bir bildirim başlığı görürsünüz. Cihazınızda Kubernetes yazılımını güncelleştirmeye başlamak için bu başlığı seçin. 
 
-    Üstteki komut çubuğundan **cihaz güncelleştirmeleri**' ni seçin. Güncelleştirmenin başarıyla yüklendiğini ve cihaz yazılımı sürümünün bu işlemi yansıttığını doğrulayın.
+    ![Güncelleştirme 13 ' den sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-13.png) 
 
-    ![Güncelleştirme 14 ' den sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-15.png)
+
+    ![Güncelleştirme 14 ' den sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-14-a.png) 
+
+    En üstteki komut çubuğundan **cihazı Güncelleştir** ' i seçerseniz, güncelleştirmelerin ilerlemesini görebilirsiniz.  
+
+    ![Güncelleştirme 15 ' den sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-14-b.png) 
+
+
+8. Cihazınıza cihaz durumu güncelleştirmeleri, güncelleştirmeler yüklendikten sonra **sorunsuz çalışıyor** . 
+
+    ![Güncelleştirme 16 ' dan sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-15.png)
+
+    Yerel Web Kullanıcı arabirimine gidin ve ardından **yazılım güncelleştirme** sayfasına gidin. Kubernetes güncelleştirmesinin başarıyla yüklendiğini ve yazılım sürümünün bu durumu gösterdiğinden emin olun.
+
+    ![Güncelleştirme 17 ' den sonra yazılım sürümü](./media/azure-stack-edge-gpu-install-update/portal-update-16.png)
 
 
 Cihaz yazılımı ve Kubernetes güncelleştirmeleri başarıyla yüklendikten sonra, başlık bildirimi kaybolur. Cihazınız artık cihaz yazılımının en son sürümü ve Kubernetes sürümüdür.

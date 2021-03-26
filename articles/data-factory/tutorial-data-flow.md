@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2021
-ms.openlocfilehash: 52509dbf529076eaa0af73ea48db9a7f3fd10241
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2363afc4c84ee7606410ceecd6819c12d0333dbb
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104584542"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563302"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>Eşleme veri akışlarını kullanarak verileri dönüştürme
 
@@ -24,7 +24,7 @@ Azure Data Factory kullanmaya yeni başlıyorsanız bkz. [Azure Data Factory'ye 
 Bu öğreticide, veri akışını eşleme kullanarak bir Azure Data Lake Storage (ADLS) Gen2 kaynağından bir ADLS 2. havuzuna verileri kopyalayan ve dönüştüren bir işlem hattı oluşturmak için Azure Data Factory Kullanıcı arabirimini (UX) kullanacaksınız. Bu öğreticideki yapılandırma deseninin verileri, eşleme veri akışı kullanılarak dönüştürülürken Genişletilebilir
 
  >[!NOTE]
-   >Bu öğretici, genel olarak veri akışlarını eşlemek için tasarlanmıştır. Veri akışları hem Azure Data Factory hem de SYNAPSE işlem hatları ile kullanılabilir. Azure SYNAPSE işlem hatlarında veri akışlarından yeni bir işlem yapıyorsanız lütfen [Azure SYNAPSE Işlem hatlarını kullanarak veri akışını](https://docs.microsoft.com/azure/synapse-analytics/concepts-data-flow-overview) izleyin 
+   >Bu öğretici, genel olarak veri akışlarını eşlemek için tasarlanmıştır. Veri akışları hem Azure Data Factory hem de SYNAPSE işlem hatları ile kullanılabilir. Azure SYNAPSE işlem hatlarında veri akışlarından yeni bir işlem yapıyorsanız lütfen [Azure SYNAPSE Işlem hatlarını kullanarak veri akışını](../synapse-analytics/concepts-data-flow-overview.md) izleyin 
    
 Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 

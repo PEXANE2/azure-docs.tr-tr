@@ -1,5 +1,5 @@
 ---
-title: HPC-Azure sanal makineleri için Ileti geçirme arabirimini ayarlama | Microsoft Docs
+title: HPC için Ileti geçirme arabirimi (MPı) ayarlama-Azure sanal makineleri | Microsoft Docs
 description: Azure 'da HPC için MPı ayarlamayı öğrenin.
 author: vermagit
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/18/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 8f071dfe817d15b745575fbfb70ff662a643db70
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 66de34c43ab1b3a6b4245f77196793bf9ad8530c
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104721367"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606649"
 ---
 # <a name="set-up-message-passing-interface-for-hpc"></a>HPC için Ileti geçirme arabirimini ayarlama
 
@@ -64,6 +64,11 @@ HPC-X Çalıştır
 ```bash
 ${HPCX_PATH}mpirun -np 2 --map-by ppr:2:node -x UCX_TLS=rc ${HPCX_PATH}/ompi/tests/osu-micro-benchmarks-5.3.2/osu_latency
 ```
+
+### <a name="optimizing-mpi-collectives"></a>MPı collectları iyileştirme
+
+MPı toplu iletişim temelleri, Grup iletişim işlemlerini uygulamak için esnek ve taşınabilir bir yöntem sunar. Bunlar, çeşitli bilimsel paralel uygulamalar genelinde yaygın olarak kullanılır ve genel uygulama performansı üzerinde önemli bir etkiye sahiptir. Toplu iletişim için HPC-X ve HCOLL kitaplığı kullanılarak toplu iletişim performansını iyileştirmek üzere yapılandırma parametreleriyle ilgili ayrıntılar için [Techcommunity makalesine](https://techcommunity.microsoft.com/t5/azure-compute/optimizing-mpi-collective-communication-using-hpc-x-on-azurehpc/ba-p/1356740) başvurun.
+
 > [!NOTE] 
 > HPC-X 2.7.4 + ile, MOFED üzerindeki UCX sürümü, HPC-X ' de farklıysa LD_LIBRARY_PATH açıkça geçirmek gerekebilir.
 

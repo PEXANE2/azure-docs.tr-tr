@@ -9,16 +9,16 @@ ms.author: mikben
 ms.date: 03/25/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: b5115355133bdcf33825a05d4baa16408cb3fccd
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 92324d68eabfb1885a482a7f539140f93be77596
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105562452"
+ms.locfileid: "105605204"
 ---
 # <a name="sdks-and-rest-apis"></a>SDK 'Lar ve REST API 'Leri
 
-Azure Iletişim Hizmetleri Özellikleri, kavramsal olarak altı alan halinde düzenlenir. Çoğu alan, doğrudan Internet üzerinden kullanabileceğiniz, yayımlanan REST API 'Lerine karşı programlanan tamamen açık kaynaklı istemci kitaplıklarına sahiptir. Çağıran istemci kitaplığı, özel ağ arabirimlerini kullanır ve şu anda kapalı kaynağıdır. SDK 'lar için örnekler ve daha fazla teknik ayrıntı [Azure Iletişim Hizmetleri GitHub](https://github.com/Azure/communication)deposunda yayımlanır.
+Azure Iletişim Hizmetleri Özellikleri, kavramsal olarak altı alan halinde düzenlenir. Çoğu alan, doğrudan Internet üzerinden kullanabileceğiniz, yayımlanan REST API 'Lerine karşı programlanan tam açık kaynaklı SDK 'Lara sahiptir. Çağıran SDK özel ağ arabirimlerini kullanır ve şu anda kapalı kaynağıdır. SDK 'lar için örnekler ve daha fazla teknik ayrıntı [Azure Iletişim Hizmetleri GitHub](https://github.com/Azure/communication)deposunda yayımlanır.
 
 ## <a name="rest-apis"></a>REST API'leri
 İletişim Hizmetleri API 'Leri, [docs.Microsoft.com](/rest/api/azure/)' deki DIĞER Azure REST API 'leri ile birlikte belgelenmiştir. Bu belgede, HTTP iletilerinizi nasıl yapılandıracağınızı ve Postman kullanmaya yönelik yönergeler sunulmaktadır. Bu belge [GitHub](https://github.com/Azure/azure-rest-api-specs)'da Swagger biçiminde de sunulur.
@@ -29,14 +29,14 @@ Azure Iletişim Hizmetleri Özellikleri, kavramsal olarak altı alan halinde dü
 | Bütünleştirilmiş Kod | Ad alanları| Protokoller | Özellikler |
 |------------------------|-------------------------------------|---------------------------------|--------------------------------------------------------------------------------------------|
 | Azure Resource Manager | Azure. ResourceManager. Communication | [REST](https://docs.microsoft.com/rest/api/communication/communicationservice)| Iletişim Hizmetleri kaynaklarını sağlama ve yönetme|
-| Common | Azure. Communication. Common| REST | Diğer istemci kitaplıkları için temel türleri sağlar |
+| Common | Azure. Communication. Common| REST | Diğer SDK 'lar için temel türleri sağlar |
 | Kimlik | Azure. Communication. Identity| [REST](https://docs.microsoft.com/rest/api/communication/communicationidentity)| Kullanıcıları yönetme, belirteçleri erişim|
 | Telefon numaraları _(Beta)_| Azure. Communication. PhoneNumbers| [REST](https://docs.microsoft.com/rest/api/communication/phonenumberadministration)| Telefon numaralarını edinin ve yönetin |
 | Sohbet | Azure. Communication. sohbet| Özel sinyalle [rest](https://docs.microsoft.com/rest/api/communication/) | Uygulamalarınıza gerçek zamanlı metin tabanlı sohbet ekleyin |
 | SMS| Azure. Communication. SMS | [REST](https://docs.microsoft.com/rest/api/communication/sms)| SMS iletileri gönderme ve alma|
 | Events| Azure. Communication. çağrılıyor | Özel aktarım | Ses, video, ekran paylaşımı ve diğer gerçek zamanlı veri iletişim yeteneklerini kullanın |
 
-Azure Resource Manager, kimlik ve SMS istemci kitaplıkları, hizmet tümleştirmesine odaklanır ve çoğu durumda, bu işlevleri Son Kullanıcı uygulamalarıyla tümleştirirseniz güvenlik sorunları ortaya çıkar. Ortak ve sohbet istemci kitaplıkları hizmet ve istemci uygulamaları için uygundur. Çağıran istemci kitaplığı, istemci uygulamaları için tasarlanmıştır. Hizmet senaryolarına odaklanan bir istemci kitaplığı geliştirmede.
+Azure Resource Manager, kimlik ve SMS SDK 'Ları, hizmet tümleştirmesine odaklanır ve çoğu durumda, bu işlevleri Son Kullanıcı uygulamalarıyla tümleştirirseniz güvenlik sorunları ortaya çıkar. Ortak ve sohbet SDK 'Ları hizmet ve istemci uygulamalarına uygundur. Çağıran SDK, istemci uygulamaları için tasarlanmıştır. Hizmet senaryolarına odaklanan bir SDK geliştirme aşamasındadır.
 
 
 ### <a name="languages-and-publishing-locations"></a>Diller ve yayımlama konumları
@@ -61,7 +61,7 @@ Bazı REST API 'Leri ve karşılık gelen SDK yöntemlerinin kısıtlama limitle
 | API                                                                                                                          | Kısıtlama            |
 |------------------------------------------------------------------------------------------------------------------------------|---------------------|
 | [Tüm arama telefon numarası plan API 'Leri](https://docs.microsoft.com/rest/api/communication/phonenumberadministration)         | 4 istek/gün      |
-| [Satın alma telefon numarası planı](https://docs.microsoft.com/rest/api/communication/phonenumberadministration/purchasesearch) | 1 istek/gün       |
+| [Satın alma telefon numarası planı](https://docs.microsoft.com/rest/api/communication/phonenumberadministration/purchasesearch) | 1 aylık satın alma  |
 | [SMS gönder](https://docs.microsoft.com/rest/api/communication/sms/send)                                                       | 200 istek/dakika |
 
 

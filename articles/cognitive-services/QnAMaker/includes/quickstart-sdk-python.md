@@ -3,12 +3,12 @@ title: 'Hızlı başlangıç: Python için Soru-Cevap Oluşturma istemci kitapl�
 description: Bu hızlı başlangıçta, Python için Soru-Cevap Oluşturma istemci kitaplığı ile çalışmaya başlama gösterilmektedir.
 ms.topic: include
 ms.date: 06/18/2020
-ms.openlocfilehash: 39eeb00ba8b59219054c7743f19f6f378d941d5d
-ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
+ms.openlocfilehash: 7c897b524f7038f4ff7b18e273202bd02886c0e8
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105104105"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105609496"
 ---
 # <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/version-1)
 
@@ -104,14 +104,15 @@ Kaynağınızın Azure uç noktası ve anahtarı için değişkenler oluşturun.
 
 # <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/version-1)
 
-> [!IMPORTANT]
-> Azure portal gidin ve önkoşullarda oluşturduğunuz Soru-Cevap Oluşturma kaynak için anahtar ve uç noktayı bulun. Kaynak **yönetimi** altında kaynağın **anahtar ve uç nokta** sayfasında yer alır.
+- Abonelik anahtarı ve yazma anahtarı ınterchangabkullanın. Yazma anahtarı hakkında daha fazla ayrıntı için [soru-cevap oluşturma anahtarları](../concepts/azure-resources.md?tabs=v1#keys-in-qna-maker)izleyin.
 
-- QNA_MAKER_ENDPOINT değeri biçimindedir `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Azure portal Soru-Cevap Oluşturma kaynağına gidin ve yazma (abonelik) anahtarını ve Soru-Cevap Oluşturma uç noktasını bulmak için **anahtarlar ve uç nokta** ' a tıklayın.
+- QNA_MAKER_ENDPOINT değeri biçimindedir `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Azure portal gidin ve önkoşullarda oluşturduğunuz Soru-Cevap Oluşturma kaynağını bulun. Yazma (abonelik) anahtarını ve Soru-Cevap Oluşturma uç noktasını bulmak için **kaynak yönetimi** altındaki **anahtarlar ve uç nokta** sayfasına tıklayın.
 
  ![Soru-Cevap Oluşturma yazma uç noktası](../media/keys-endpoint.png)
- 
-- QNA_MAKER_RUNTIME_ENDPOINT değeri biçimindedir `https://YOUR-RESOURCE-NAME.azurewebsites.net` .
+
+- QNA_MAKER_RUNTIME_ENDPOINT değeri biçimindedir `https://YOUR-RESOURCE-NAME.azurewebsites.net` . Azure portal gidin ve önkoşullarda oluşturduğunuz Soru-Cevap Oluşturma kaynağını bulun. Çalışma zamanı uç noktasını bulmak için **Otomasyon** altındaki **şablonu dışarı aktar** sayfasına tıklayın.
+
+ ![Soru-Cevap Oluşturma çalışma zamanı uç noktası](../media/runtime-endpoint.png)
    
 - Üretim için, kimlik bilgilerinizi depolamak ve bunlara erişmek için güvenli bir yol kullanmayı düşünün. Örneğin, [Azure Anahtar Kasası](../../../key-vault/general/overview.md) güvenli anahtar depolama alanı sağlar.
 
@@ -119,10 +120,9 @@ Kaynağınızın Azure uç noktası ve anahtarı için değişkenler oluşturun.
 
 # <a name="qna-maker-managed-preview-release"></a>[Soru-Cevap Oluşturma Managed (Önizleme sürümü)](#tab/version-2)
 
-> [!IMPORTANT]
-> Azure portal gidin ve önkoşullarda oluşturduğunuz Soru-Cevap Oluşturma kaynak için anahtar ve uç noktayı bulun. Kaynak **yönetimi** altında kaynağın **anahtar ve uç nokta** sayfasında yer alır.
+- Abonelik anahtarı ve yazma anahtarı ınterchangabkullanın. Yazma anahtarı hakkında daha fazla ayrıntı için [soru-cevap oluşturma anahtarları](../concepts/azure-resources.md?tabs=v2#keys-in-qna-maker)izleyin.
 
-- QNA_MAKER_ENDPOINT değeri biçimindedir `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Azure portal Soru-Cevap Oluşturma kaynağına gidin ve yazma (abonelik) anahtarını ve Soru-Cevap Oluşturma uç noktasını bulmak için **anahtarlar ve uç nokta** ' a tıklayın.
+- QNA_MAKER_ENDPOINT değeri biçimindedir `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Azure portal gidin ve önkoşullarda oluşturduğunuz Soru-Cevap Oluşturma kaynağını bulun. Yazma (abonelik) anahtarını ve Soru-Cevap Oluşturma uç noktasını bulmak için **kaynak yönetimi** altındaki **anahtarlar ve uç nokta** sayfasına tıklayın.
 
  ![Soru-Cevap Oluşturma yazma uç noktası](../media/keys-endpoint.png)
  

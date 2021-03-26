@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/25/2021
-ms.openlocfilehash: b1bb749400cfb1e289a0a335275f4654d37145e9
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 2f12f33bf6108784b2eec252fb12d03eebd2a45c
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105046513"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604948"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>Ticari Market için SaaS teklifi planlaması
 
@@ -37,9 +37,9 @@ Aşağıdaki tabloda, ticari Market 'teki SaaS teklifleri için listeleme seçen
 
 Bu liste seçenekleri hakkında daha fazla bilgi için bkz. [ticari Market Transact özellikleri](marketplace-commercial-transaction-capabilities-and-considerations.md).
 
-Teklifiniz yayımlandıktan sonra teklifiniz için seçtiğiniz listeleme seçeneği, teklifinizin liste sayfasının sol üst köşesinde bir düğme olarak görünür. Örneğin, aşağıdaki ekran görüntüsünde, **Şimdi al** ve **test sürücüsü** düğmelerini içeren bir teklif listesi sayfası Azure Marketi 'nde gösterilmektedir.
+Teklifiniz yayımlandıktan sonra teklifiniz için seçtiğiniz listeleme seçeneği, teklifinizin liste sayfasının sol üst köşesinde bir düğme olarak görünür. Örneğin, aşağıdaki ekran görüntüsünde, **Şimdi al** düğmesine sahip Azure Marketi 'nde bir teklif listesi sayfası gösterilmektedir.
 
-![Çevrimiçi mağazadaki bir teklif listesini gösterir.](./media/listing-options.png)
+![Çevrimiçi mağazadaki bir teklif listesini gösterir.](./media/saas/listing-options-saas-full.png)
 
 ## <a name="technical-requirements"></a>Teknik gereksinimler
 
@@ -138,7 +138,7 @@ Standart sözleşmeyi kullanmayı seçerseniz, standart sözleşmeye genel deği
 
 Iş Ortağı Merkezi 'nde [Yeni bir SaaS teklifi oluşturduğunuzda](create-new-saas-offer.md) , **teklif listesi** sayfasına metin, görüntü, isteğe bağlı videolar ve diğer ayrıntıları girersiniz. Bu, aşağıdaki örnekte gösterildiği gibi, müşterilerin, ticari Market 'te teklif listelerinizi bulduklarında göreceği bilgiler.
 
-:::image type="content" source="./media/example-saas-1.png" alt-text="Bu teklifin Microsoft AppSource nasıl göründüğünü gösterir.":::
+:::image type="content" source="./media/saas/example-saas-1.png" alt-text="Bu teklifin Microsoft AppSource nasıl göründüğünü gösterir.":::
 
 **Çağrı açıklamaları**
 

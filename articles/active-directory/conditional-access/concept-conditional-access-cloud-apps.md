@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ff9fe969c90a2bb4aa9f954b984f511fb490ba3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8c8024a2083d09fcbd53a37f0d391c4589748eea
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104579153"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105605085"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Koşullu erişim: bulut uygulamaları veya eylemleri
 
@@ -31,7 +31,7 @@ Bulut uygulamaları veya eylemleri, koşullu erişim ilkesindeki önemli sinyald
 
 Mevcut Microsoft bulut uygulamalarının birçoğu, arasından seçim yapmak için kullanabileceğiniz uygulamalar listesine dahildir. 
 
-Yöneticiler, Microsoft 'tan aşağıdaki bulut uygulamalarına koşullu erişim ilkesi atayabilir. Office 365 ve Microsoft Azure yönetimi gibi bazı uygulamalar birden çok ilgili alt uygulama veya hizmet içerir. Aşağıdaki liste ayrıntılı değildir ve değişikliğe tabidir.
+Yöneticiler, Microsoft 'tan aşağıdaki bulut uygulamalarına koşullu erişim ilkesi atayabilir. Office 365 ve Microsoft Azure yönetimi gibi bazı uygulamalar birden çok ilgili alt uygulama veya hizmet içerir. Sürekli olarak daha fazla uygulama ekleyeceğiz, bu nedenle aşağıdaki liste ayrıntılı değildir ve değişikliğe tabidir.
 
 - [Office 365](#office-365)
 - Azure Analysis Services
@@ -61,11 +61,13 @@ Yöneticiler, Microsoft 'tan aşağıdaki bulut uygulamalarına koşullu erişim
 - Office Delve
 - Office Sway
 - Outlook Groups
-- Power BI hizmeti
+- Power BI Hizmeti
 - Project Online
 - Skype Kurumsal Çevrimiçi Sürüm
 - Sanal özel ağ (VPN)
 - Windows Defender ATP
+
+Koşullu erişim için kullanılabilen uygulamalar, bir ekleme ve doğrulama işleminden geçer. Bu, arka uç hizmetleri olmak üzere tüm Microsoft uygulamalarını içermez ve ilkenin doğrudan uygulanmasına izin vermez. Eksik bir uygulama arıyorsanız, belirli uygulama takımına başvurabilirsiniz veya [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=167259)üzerinde bir istek yapabilirsiniz.
 
 ### <a name="office-365"></a>Office 365
 

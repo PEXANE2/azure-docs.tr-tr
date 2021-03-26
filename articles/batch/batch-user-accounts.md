@@ -2,21 +2,22 @@
 title: Görevleri Kullanıcı hesapları altında Çalıştır
 description: Kullanıcı hesaplarının türlerini ve bunların nasıl yapılandırılacağını öğrenin.
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 03/25/2021
 ms.custom: seodec18
-ms.openlocfilehash: cce374e7d7ffb513bed882b048ea54bcbad81b0b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b19e0c10834b3c5215d14c6c5ae20caaacb4bc64
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88719368"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105606615"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Batch 'de Kullanıcı hesapları altında görevleri çalıştırma
 
 > [!NOTE]
 > Bu makalede ele alınan kullanıcı hesapları, güvenlik nedenleriyle Uzak Masaüstü Protokolü (RDP) veya Secure Shell (SSH) için kullanılan kullanıcı hesaplarından farklıdır.
 >
-> Linux sanal makine yapılandırmasını SSH aracılığıyla çalıştıran bir düğüme bağlanmak için bkz. [Azure 'Da LINUX VM 'ye uzak masaüstü kullanma](../virtual-machines/linux/use-remote-desktop.md). Windows çalıştıran düğümlere RDP aracılığıyla bağlanmak için bkz. [Windows Server VM 'ye bağlanma](../virtual-machines/windows/connect-logon.md).<br /><br />
+> Linux sanal makine yapılandırmasını SSH aracılığıyla çalıştıran bir düğüme bağlanmak için bkz. [Ubuntu Ile uzak masaüstü kullanmak için xrdp 'Yi yükleyip yapılandırma](../virtual-machines/linux/use-remote-desktop.md). Windows çalıştıran düğümlere RDP aracılığıyla bağlanmak için bkz. [Windows çalıştıran bir Azure sanal makinesine bağlanma ve oturum açma](../virtual-machines/windows/connect-logon.md).
+>
 > RDP aracılığıyla bulut hizmeti yapılandırmasını çalıştıran bir düğüme bağlanmak için bkz. [Azure Cloud Services bir rol için Uzak Masaüstü bağlantısı etkinleştirme](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md).
 
 Azure Batch bir görev her zaman bir kullanıcı hesabı altında çalışır. Varsayılan olarak, görevler yönetici izinleri olmadan standart Kullanıcı hesapları altında çalışır. Belirli senaryolarda, bir görevin çalışmasını istediğiniz kullanıcı hesabını yapılandırmak isteyebilirsiniz. Bu makalede, Kullanıcı hesaplarının türleri ve senaryonuz için nasıl yapılandırılacağı açıklanmaktadır.
@@ -30,7 +31,7 @@ Azure Batch, görevleri çalıştırmak için iki tür Kullanıcı hesabı sağl
 - **Adlandırılmış bir kullanıcı hesabı.** Havuzu oluştururken bir havuz için bir veya daha fazla adlandırılmış Kullanıcı hesabı belirtebilirsiniz. Her Kullanıcı hesabı, havuzun her bir düğümünde oluşturulur. Hesap adının yanı sıra, Kullanıcı hesabı parolası, yükseltme düzeyi ve Linux havuzları için SSH özel anahtarı ' nı belirtirsiniz. Bir görev eklediğinizde, altında görevin çalıştırılacağı adlandırılmış Kullanıcı hesabını belirtebilirsiniz.
 
 > [!IMPORTANT]
-> Batch hizmeti sürüm 2017 -01-01.4.0, bu sürümü çağırmak için kodunuzun güncelleştirilmesini gerektiren bir son değişiklik sunar. Toplu Işin eski bir sürümünden kod geçiriyorsanız, **Runyükseltilmiş** özelliğinin REST API veya Batch istemci kitaplıklarında artık desteklenmediğini unutmayın. Yükseltme düzeyini belirtmek için bir görevin yeni **UserIdentity** özelliğini kullanın. İstemci kitaplıklarından birini kullanıyorsanız Batch kodunuzu güncelleştirmek için hızlı yönergeler için bkz. [kodunuzu en son Batch istemci kitaplığı Ile güncelleştirme](#update-your-code-to-the-latest-batch-client-library) .
+> Batch hizmeti sürüm 2017 -01-01.4.0, bu sürümü veya sonraki bir sürümü çağırmak için kodunuzu güncelleştirmenizi gerektiren bir son değişiklik getirmiştir. Toplu iş kodunuzu eski bir sürümden güncelleştirmek için hızlı yönergeler için bkz. [kodunuzu en son Batch istemci kitaplığı Ile güncelleştirme](#update-your-code-to-the-latest-batch-client-library) .
 
 ## <a name="user-account-access-to-files-and-directories"></a>Dosya ve dizinlere Kullanıcı hesabı erişimi
 
@@ -77,6 +78,7 @@ Aşağıdaki kod parçacıkları, otomatik Kullanıcı belirtiminin nasıl yapı
 ```csharp
 task.UserIdentity = new UserIdentity(new AutoUserSpecification(elevationLevel: ElevationLevel.Admin, scope: AutoUserScope.Task));
 ```
+
 #### <a name="batch-java"></a>Batch Java
 
 ```java
@@ -278,7 +280,7 @@ task.UserIdentity = new UserIdentity(AdminUserAccountName);
 
 ## <a name="update-your-code-to-the-latest-batch-client-library"></a>Kodunuzu en son Batch istemci kitaplığı 'nda güncelleştirme
 
-Batch hizmeti sürüm 2017 -01-01.4.0, daha önceki sürümlerde bulunan **Runayrýcalproperty** özelliğini **UserIdentity** özelliği ile değiştirerek bir son değişiklik sunar. Aşağıdaki tablolar, kodunuzu istemci kitaplıklarının önceki sürümlerinden güncelleştirmek için kullanabileceğiniz basit bir eşleme sağlar.
+Batch hizmeti sürüm 2017 -01-01.4.0, daha önceki sürümlerde bulunan **Runyükseltilmiş** özelliği **UserIdentity** özelliği ile değiştirerek bir son değişiklik getirmiştir. Aşağıdaki tablolar, kodunuzu istemci kitaplıklarının önceki sürümlerinden güncelleştirmek için kullanabileceğiniz basit bir eşleme sağlar.
 
 ### <a name="batch-net"></a>Batch .NET
 

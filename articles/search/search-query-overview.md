@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: c088625528190ad116676fbb51cec9f8de4b1578
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 21012848ba3624df6110eaea182beccc4646d234
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104600811"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105609284"
 ---
 # <a name="querying-in-azure-cognitive-search"></a>Azure Bilişsel Arama sorgulama
 
@@ -77,7 +77,7 @@ Büyük metin blokları (bir içerik alanı veya uzun açıklamalar) içeren diz
 
 ## <a name="autocomplete-and-suggested-queries"></a>Otomatik tamamlama ve önerilen sorgular
 
-[Otomatik tamamlama veya önerilen sonuçlar](search-autocomplete-tutorial.md) , **`search`** bir arama türü deneyimindeki kısmi dize girdilerine (her bir karakterden sonra) göre art arda yapılan sorgu isteklerinin tetikleneceği alternatiflerdir. **`autocomplete`** **`suggestions`** [Bu öğreticide](tutorial-csharp-type-ahead-and-suggestions.md)açıklandığı gibi, ve parametresini birlikte veya ayrı ayrı kullanabilirsiniz, ancak ile kullanamazsınız **`search`** . Hem tamamlanan terimler hem de önerilen sorgular, Dizin içeriğinden türetilir. Motor, dizininizdeki mevcut olmayan bir dizeyi veya öneriyi hiçbir şekilde döndürmez. Daha fazla bilgi için bkz. [AutoComplete (REST API)](/rest/api/searchservice/autocomplete) ve [öneriler (REST API)](/rest/api/searchservice/suggestions).
+[Otomatik tamamlama veya önerilen sonuçlar](search-add-autocomplete-suggestions.md) , **`search`** bir arama türü deneyimindeki kısmi dize girdilerine (her bir karakterden sonra) göre art arda yapılan sorgu isteklerinin tetikleneceği alternatiflerdir. **`autocomplete`** **`suggestions`** [Bu öğreticide](tutorial-csharp-type-ahead-and-suggestions.md)açıklandığı gibi, ve parametresini birlikte veya ayrı ayrı kullanabilirsiniz, ancak ile kullanamazsınız **`search`** . Hem tamamlanan terimler hem de önerilen sorgular, Dizin içeriğinden türetilir. Motor, dizininizdeki mevcut olmayan bir dizeyi veya öneriyi hiçbir şekilde döndürmez. Daha fazla bilgi için bkz. [AutoComplete (REST API)](/rest/api/searchservice/autocomplete) ve [öneriler (REST API)](/rest/api/searchservice/suggestions).
 
 ## <a name="filter-search"></a>Arama filtrele
 
