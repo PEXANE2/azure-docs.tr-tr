@@ -7,12 +7,12 @@ ms.custom:
 - seo-python-october2019
 - mvc
 - devx-track-python
-ms.openlocfilehash: e3792a88104c359b014a7a12cf6e48e690c2a865
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e213ec7aee7172bb5ebb49097ad9fd09f9106255
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88511023"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046819"
 ---
 # <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>Hızlı başlangıç: Azure Batch işini çalıştırmak için Python API kullanma
 
@@ -28,7 +28,7 @@ Bu hızlı başlangıcı tamamladıktan sonra Batch hizmetinin temel kavramları
 
 - Bir Batch hesabı ve bağlı bir Azure Depolama hesabı. Bu hesapları oluşturmak için [Azure portalı](quick-create-portal.md) veya [Azure CLI](quick-create-cli.md) kullanan Batch hızlı başlangıçlarına bakın.
 
-- [PIP](https://pip.pypa.io/en/stable/installing/) Paket Yöneticisi de dahil olmak üzere [Python](https://python.org/downloads) sürüm 2,7 veya 3,3 veya üzeri
+- [PIP](https://pip.pypa.io/en/stable/installing/) Package Manager dahil [Python](https://python.org/downloads) sürüm 2,7 veya 3,6
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 

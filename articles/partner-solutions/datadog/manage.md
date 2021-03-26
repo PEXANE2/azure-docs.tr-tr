@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 02/19/2021
 author: tfitzmac
 ms.author: tomfitz
-ms.openlocfilehash: 1a76f79f31d1f4518c069afb7fccbad5bd22d4e2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 04aef540bc134e5ec307be6a232ce47f0923e528
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101746316"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105046360"
 ---
 # <a name="manage-the-datadog-resource"></a>Dataköpek kaynağını yönetme
 
@@ -61,7 +61,7 @@ Kaynak türüne, kaynak grubu adına, konuma ve kaynağın günlükleri ve ölç
 Sütun, **veri köpeye Günlükler** , kaynağın dataköpek 'a günlük gönderip göndermediğini belirtir. Kaynak, günlükleri göndermemişse, bu alan günlüklerin neden veri Köbir şekilde gönderilmediğini belirtir. Nedenler şunlar olabilir:
 
 - Kaynak, günlüklerin gönderilmesini desteklemiyor. Yalnızca izleme günlüğü kategorileri olan kaynak türleri, günlükleri veri kökten gönderecek şekilde yapılandırılabilir.
-- Beş tanılama ayarı sınırına ulaşıldı. Her Azure kaynağının en fazla beş tanılama ayarı olabilir. Daha fazla bilgi için bkz. [Tanılama ayarları](../../azure-monitor/platform/diagnostic-settings.md).
+- Beş tanılama ayarı sınırına ulaşıldı. Her Azure kaynağının en fazla beş tanılama ayarı olabilir. Daha fazla bilgi için bkz. [Tanılama ayarları](../../azure-monitor/essentials/diagnostic-settings.md).
 - Hata. Kaynak, günlükleri veri köpeye gönderecek şekilde yapılandırılmış, ancak bir hata tarafından engelleniyor.
 - Günlükler yapılandırılmadı. Yalnızca uygun kaynak etiketlere sahip Azure kaynakları veri Köline Günlükler gönderecek şekilde yapılandırılmıştır.
 - Bölge desteklenmiyor. Azure kaynağı, şu anda veri Köbir şekilde günlük göndermeyi desteklemeyen bir bölgedir.

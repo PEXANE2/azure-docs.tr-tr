@@ -7,12 +7,12 @@ ms.date: 03/30/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: mainframe-rehosting
-ms.openlocfilehash: 7c9a9f355def492f04f47b49045fadb5afb6acd6
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 9ef9dd27183b6c23762dcdc2d5a844123d35559a
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "104950544"
+ms.locfileid: "105045969"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Azure 'da Micro Focus Enterprise Developer 4,0 için Micro Focus CICS BankDemo ayarlama
 
@@ -276,5 +276,5 @@ Tebrikler! Artık Azure 'da Micro Focus Enterprise Server kullanarak bir CICS Ap
 - [Azure 'da Docker kapsayıcılarında kurumsal sunucu çalıştırma](run-enterprise-server-container.md)
 - [Ana bilgisayar geçişi-Portal](/archive/blogs/azurecat/mainframe-migration-to-azure-portal)
 - [Sanal Makineler](../../../linux/overview.md)
-- [Sorun giderme](../../../troubleshooting/index.yml)
+- [Sorun giderme](/troubleshoot/azure/virtual-machines/welcome-virtual-machines)
 - [Azure geçişine Demystifying ana bilgisayar](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/en-us/)

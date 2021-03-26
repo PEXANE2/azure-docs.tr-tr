@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 0c73d0394486472c2c3c92450aab6a1a0d329cf7
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 32b41c1c4446ba34e3bfad52f1d3cbd7ed72096d
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104878814"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108818"
 ---
 # <a name="customer-responsibilities-for-running-azure-spring-cloud-in-vnet"></a>VNET 'te Azure Spring Cloud çalıştırmaya yönelik müşteri sorumlulukları
 Bu belge, bir sanal ağda Azure Spring Cloud 'ın kullanımına yönelik belirtimleri içerir.
@@ -54,7 +54,8 @@ Azure Güvenlik Duvarı, aşağıdaki yapılandırmaların basitleşmesi için *
   | *. cdn.mscr.io | HTTPS: 443 | Azure CDN tarafından desteklenen MCR Storage. |
   | *. data.mcr.microsoft.com | HTTPS: 443 | Azure CDN tarafından desteklenen MCR Storage. |
   | <i>management.azure.com</i> | HTTPS: 443 | Temel Kubernetes küme yönetimi. |
-  | <i>login.microsoftonline.com</i> | HTTPS: 443 | Azure Active Directory kimlik doğrulaması. |
+  | <i>* login.microsoftonline.com</i> | HTTPS: 443 | Azure Active Directory kimlik doğrulaması. |
+  | <i>* login.microsoft.com</i> | HTTPS: 443 | Azure Active Directory kimlik doğrulaması. |
   |<i>packages.microsoft.com</i>    | HTTPS: 443 | Microsoft paketleri deposu. |
   | <i>acs-mirror.azureedge.net</i> | HTTPS: 443 | Kubernetes kullanan ve Azure CNı gibi gerekli ikilileri yüklemek için depo gereklidir. |
   | *mscrl.microsoft.com* | HTTPS: 80 | Gerekli Microsoft sertifika zinciri yolları. |
@@ -62,5 +63,5 @@ Azure Güvenlik Duvarı, aşağıdaki yapılandırmaların basitleşmesi için *
   | *crl3.digicert.com* | HTTPS: 80 | 3. taraf SSL sertifika zinciri yolları. |
 
 ## <a name="see-also"></a>Ayrıca bkz.
-* [Uygulamanıza özel bir ağda erişin](spring-cloud-access-app-virtual-network.md)
-* [Application Gateway ve Azure Güvenlik Duvarı kullanarak uygulamaları kullanıma sunma](spring-cloud-expose-apps-gateway-azure-firewall.md)
+* [Uygulamanıza özel bir ağda erişin](access-app-virtual-network.md)
+* [Application Gateway ve Azure Güvenlik Duvarı kullanarak uygulamaları kullanıma sunma](expose-apps-gateway-azure-firewall.md)

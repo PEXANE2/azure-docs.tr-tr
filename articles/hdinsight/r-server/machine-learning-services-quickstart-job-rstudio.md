@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 06/19/2019
 ms.custom: mvc
-ms.openlocfilehash: 7604a327c43ed1942d336399b6d8b9dbb1e64d75
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8abd485bff885868d7865cf273cb161974106013
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98935724"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104862842"
 ---
 # <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-rstudio-server"></a>Hızlı başlangıç: RStudio Server kullanarak Azure HDInsight 'ta bir ML Hizmetleri kümesinde R betiği yürütme
 
@@ -34,7 +34,7 @@ https://CLUSTERNAME.azurehdinsight.net/rstudio/
 
 Bağlandıktan sonra ekranınız aşağıdaki ekran görüntüsüne benzemelidir:
 
-![R Studio web konsoluna genel bakış](./media/ml-services-quickstart-job-rstudio/connect-to-r-studio1.png)
+:::image type="content" source="./media/ml-services-quickstart-job-rstudio/connect-to-r-studio1.png" alt-text="R Studio web konsoluna genel bakış" border="true":::
 
 ## <a name="use-a-compute-context"></a>İşlem bağlamı kullanma
 

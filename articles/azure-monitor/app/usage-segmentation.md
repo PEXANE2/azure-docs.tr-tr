@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 5d1076239938988119d8a9838d0e060d70a22082
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6eb91734afac81e103cebea48865793fa687ad71
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100583366"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105024838"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>Application Insights Kullanıcı, oturum ve olay Analizi
 
@@ -63,5 +63,4 @@ Kullanıcılar, oturumlar veya olaylar raporundaki verilerin bir kopyasını pay
     - [Deposuna](usage-retention.md)
     - [Kullanıcı Akışları](usage-flows.md)
     - [Çalışma Kitapları](../visualize/workbooks-overview.md)
-    - [Kullanıcı bağlamı Ekle](usage-send-user-context.md)
-
+    - [Kullanıcı bağlamı Ekle](./usage-overview.md)

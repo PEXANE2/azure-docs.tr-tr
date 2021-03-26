@@ -4,15 +4,15 @@ description: Azure müşterilerinin SaaS tekliflerine abone olmalarını sağlam
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/11/2019
+ms.date: 03/19/2021
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 4c5d8b438764fa9aa3838b2225c63d412afc519b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 760e7210d054e44dfec6d6a6e480baecd04d6807
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88606807"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105044133"
 ---
 # <a name="common-questions-about-saas-fulfillment-apis"></a>SaaS 'in API 'Leri karşılama hakkında genel sorular
 
@@ -40,7 +40,10 @@ SaaS teklifine abone olurken, Kullanıcı Microsoft Platformu aracılığıyla S
 
 Bir teklifine abone olduktan sonra Azure kullanıcısı tüm tekliflerini Azure 'da bulabilir ve yönetebilir. Varsayılan olarak, yeni abone olunan SaaS teklifinin durumu **sağlama, bekleyen karşılama** olarak gösterilir. Bu durumda, Azure kullanıcısına, Azure portal SaaS Abonelik yönetimi deneyimine gitmek için **Hesap Yapılandırma** eylemiyle karşılaşacaktır.
 
-Kullanıcı **hesabı Yapılandır**' ı seçtiğinde, SaaS hizmeti Web sitesine yönlendirilir. Yayımcı, teklifi yayınlama sırasında URL 'YI yapılandırdı. Bu sayfa, yayımcının giriş sayfası olarak adlandırılır. Azure kullanıcıları, Azure 'daki mevcut AAD kimlik bilgilerine göre SaaS giriş sayfasında oturum açabilirler.
+Kullanıcı **hesabı Yapılandır**' ı seçtiğinde, SaaS hizmeti Web sitesine yönlendirilir. Yayımcı, teklifi yayınlama sırasında URL 'YI yapılandırdı. Bu sayfa, yayımcının giriş sayfası olarak adlandırılır. Azure kullanıcıları, Azure 'daki mevcut Azure Active Directory (Azure AD) kimlik bilgilerini temel alarak SaaS giriş sayfasında oturum açabilirler.
+
+> [!IMPORTANT]
+> [İlke](/legal/marketplace/certification-policies?context=/azure/marketplace/context/context)tarafından yönlendirilen Azure Active Directory, çoklu oturum açma (Azure AD SSO) kullanarak satın alma kullanıcısına oturum açmalısınız. `mail`MICROSOFT Graph API 'sinden alınan Kullanıcı kaynağındaki özellik, Azure AD ve MSA için iletişim bilgilerini sağlar `userPrincipalName` . "Mail" alanı Azure AD için boş ve kullanıcının kayıtlı bir e-postası olmayabilir. Bu durumda, bunu saptamanız ve bir iletişim e-postası sormanız önerilir. Bu, müşteri tarafından taslak işleme sırasında veya sonrasında müşteriye ulaşmak üzere bir iletişim e-postası alma şansınız olur.
 
 Azure kullanıcısı giriş sayfasına yeniden yönlendirildiğinde sorgu URL 'sine bir belirteç eklenir. Bu belirteç kısa süreli ve 24 saatlik bir süre için geçerlidir. Daha sonra bu belirtecin varlığını algılayabilir ve belirteçle ilişkili daha fazla bağlam almak için Microsoft 'un API 'sini çağırabilirsiniz.
 

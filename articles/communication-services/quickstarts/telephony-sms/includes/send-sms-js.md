@@ -10,14 +10,14 @@ ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
 ms.author: bertong
-ms.openlocfilehash: 0d142c477e1de2a2a34a8abfd948800cc0b607ee
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b0a173d605da859830e288aebf355117b928090a
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103622148"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110392"
 ---
-SMS mesajları göndermek için Iletişim Hizmetleri JavaScript SMS istemci Kitaplığı ' nı kullanarak Azure Iletişim Hizmetleri ile çalışmaya başlayın.
+SMS mesajları göndermek için Iletişim Hizmetleri JavaScript SMS SDK 'sını kullanarak Azure Iletişim Hizmetleri ile çalışmaya başlayın.
 
 Bu hızlı başlangıcı tamamlamak, Azure hesabınızda birkaç ABD Doları veya daha kısa bir ücret doğurur.
 
@@ -57,7 +57,7 @@ Proje kök dizininde **send-sms.js** adlı bir dosya oluşturmak için bir metin
 
 ### <a name="install-the-package"></a>Paketi yükler
 
-`npm install`JavaScript Için Azure Iletişim HIZMETLERI SMS istemci kitaplığı 'nı yüklemek için komutunu kullanın.
+`npm install`JavaScript Için Azure Communication SERVICES SMS SDK 'sını yüklemek için komutunu kullanın.
 
 ```console
 npm install @azure/communication-sms --save
@@ -67,7 +67,7 @@ npm install @azure/communication-sms --save
 
 ## <a name="object-model"></a>Nesne modeli
 
-Aşağıdaki sınıflar ve arabirimler, Node.js için Azure Communication Services SMS istemci kitaplığı 'nın bazı önemli özelliklerinden bazılarını işler.
+Aşağıdaki sınıflar ve arabirimler, Node.js için Azure Communication Services SMS SDK 'sının önemli özelliklerinden bazılarını işler.
 
 | Ad                                  | Açıklama                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
@@ -78,7 +78,7 @@ Aşağıdaki sınıflar ve arabirimler, Node.js için Azure Communication Servic
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
-**SmsClient** istemci kitaplığından içeri aktarın ve bağlantı dizeniz ile örneğini oluşturun. Aşağıdaki kod, adlı bir ortam değişkeninden kaynak için bağlantı dizesini alır `COMMUNICATION_SERVICES_CONNECTION_STRING` . [Kaynak bağlantı dizesini yönetme](../../create-communication-resource.md#store-your-connection-string)hakkında bilgi edinin.
+SDK 'dan **SmsClient** içeri aktarın ve bağlantı dizeniz ile örneğini oluşturun. Aşağıdaki kod, adlı bir ortam değişkeninden kaynak için bağlantı dizesini alır `COMMUNICATION_SERVICES_CONNECTION_STRING` . [Kaynak bağlantı dizesini yönetme](../../create-communication-resource.md#store-your-connection-string)hakkında bilgi edinin.
 
 Aşağıdaki kodu **send-sms.js** ekleyin:
 

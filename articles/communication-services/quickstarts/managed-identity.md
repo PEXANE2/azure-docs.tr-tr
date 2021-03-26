@@ -10,17 +10,17 @@ ms.date: 03/10/2021
 ms.author: peiliu
 ms.reviewer: mikben
 zone_pivot_groups: acs-js-csharp-java-python
-ms.openlocfilehash: ffda88da451e25b79112a7adf85026158bd27acc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e4b71cc889615fd4784f11c9edd77b44ef421d9e
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103492362"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105110782"
 ---
 # <a name="use-managed-identities"></a>Yönetilen kimlikleri kullanma
-Yönetilen kimlikleri kullanarak Azure Iletişim Hizmetleri ile çalışmaya başlayın. Iletişim Hizmetleri kimliği ve SMS istemci kitaplıkları, [Azure kaynakları için yönetilen kimliklerle](../../active-directory/managed-identities-azure-resources/overview.md)Azure Active Directory (Azure AD) kimlik doğrulamasını destekler.
+Yönetilen kimlikleri kullanarak Azure Iletişim Hizmetleri ile çalışmaya başlayın. Iletişim Hizmetleri kimliği ve SMS SDK 'Ları, [Azure kaynakları için yönetilen kimliklerle](../../active-directory/managed-identities-azure-resources/overview.md)Azure Active Directory (Azure AD) kimlik doğrulamasını destekler.
 
-Bu hızlı başlangıçta, yönetilen kimlikleri destekleyen bir Azure ortamından kimlik ve SMS istemci kitaplıklarına erişim yetkisi verme işlemleri gösterilir. Ayrıca, kodunuzun bir geliştirme ortamında nasıl test edileceğini açıklar.
+Bu hızlı başlangıçta, yönetilen kimlikleri destekleyen bir Azure ortamından kimliğe ve SMS SDK 'larına erişim yetkisi verme işlemleri gösterilir. Ayrıca, kodunuzun bir geliştirme ortamında nasıl test edileceğini açıklar.
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [.NET](./includes/managed-identity-net.md)]

@@ -9,12 +9,12 @@ ms.author: chpalm
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: b7d992961fc165ce643bd0d6aba4d8a9bda1d38e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8b641ec37d134303ae6b31c092cd3c50811477a7
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495598"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105108426"
 ---
 # <a name="teams-interoperability"></a>Teams ile birlikte çalışabilirlik
 
@@ -29,7 +29,7 @@ Takımlar birlikte çalışabilirliği, kullanıcıları takımlar toplantılar�
 1. Toplantı ayrıntıları, özel uygulamanız aracılığıyla dış kullanıcılarla paylaşılır.
    * **Graph API kullanma** Özel Iletişim Hizmetleri uygulamanız, paylaşılan toplantı ayrıntılarına erişmek için Microsoft Graph API 'Lerini kullanır. 
    * **Diğer seçenekleri kullanma** Örneğin, Toplantı bağlantınız Microsoft ekiplerinde takviminizden kopyalanabilir.
-1. Dış kullanıcılar, takım toplantısına katmak için özel uygulamanızı kullanır (Iletişim Hizmetleri çağırma ve sohbet istemci kitaplıkları aracılığıyla)
+1. Dış kullanıcılar, takım toplantısına katmak için özel uygulamanızı kullanır (Iletişim Hizmetleri çağırma ve sohbet SDK 'Ları aracılığıyla)
 
 Bu kullanım örneği için üst düzey mimari şöyle görünür: 
 
@@ -37,7 +37,7 @@ Bu kullanım örneği için üst düzey mimari şöyle görünür:
 
 Belirli takımlar, kabarık, birlikte modu ve bir arada bulunan odalar gibi özellikler de yalnızca takımlar kullanıcıları tarafından kullanılabilir olacaktır, ancak özel uygulamanız toplantının çekirdek ses, video, sohbet ve ekran paylaşım özelliklerine erişebilir. Toplantı sohbeti, çağrıdayken özel uygulama kullanıcılarınız tarafından erişilebilecektir. Çağrıdan çıkmadan veya çağrıdan önce iletileri gönderemezler veya alamaz. 
 
-Bir Iletişim Hizmetleri kullanıcısı takımlar toplantısına katıldığında, çağıran istemci kitaplığı aracılığıyla verilen görünen ad takımlar kullanıcıları tarafından gösterilir. Iletişim Hizmetleri kullanıcısı başka şekilde ekiplerde anonim bir kullanıcı gibi ele alınacaktır.  Özel uygulamanız, takımlar toplantılarını korumak için Kullanıcı kimlik doğrulamasını ve diğer güvenlik önlemlerini göz önünde bulundurmalıdır. Anonim kullanıcıların toplantılara katılmasına imkan tanıyan güvenlik etkilerine karşı dikkatli olun ve anonim kullanıcılara sunulan özellikleri yapılandırmak için [takımlar güvenlik kılavuzunu](/microsoftteams/teams-security-guide#addressing-threats-to-teams-meetings) kullanın.
+Bir Iletişim Hizmetleri kullanıcısı takımlar toplantısına katıldığında, çağıran SDK aracılığıyla verilen görünen ad takımlar kullanıcıları tarafından gösterilir. Iletişim Hizmetleri kullanıcısı başka şekilde ekiplerde anonim bir kullanıcı gibi ele alınacaktır.  Özel uygulamanız, takımlar toplantılarını korumak için Kullanıcı kimlik doğrulamasını ve diğer güvenlik önlemlerini göz önünde bulundurmalıdır. Anonim kullanıcıların toplantılara katılmasına imkan tanıyan güvenlik etkilerine karşı dikkatli olun ve anonim kullanıcılara sunulan özellikleri yapılandırmak için [takımlar güvenlik kılavuzunu](/microsoftteams/teams-security-guide#addressing-threats-to-teams-meetings) kullanın.
 
 İletişim hizmetleri ekiplerinin birlikte çalışması şu anda özel önizlemededir. Genel olarak kullanılabilir olduğunda, Iletişim Hizmetleri kullanıcıları "dış erişim kullanıcıları" gibi kabul edilir. [Microsoft ekiplerinde kuruluşunuzun dışındaki kişilerle çağrı, sohbet ve işbirliği yapma](/microsoftteams/communicate-with-users-from-other-organizations)hakkında daha fazla bilgi edinin.
 

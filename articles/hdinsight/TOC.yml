@@ -190,6 +190,8 @@
                   href: ./optimize-hive-ambari.md
                 - name: Apache Pig’i iyileştirme
                   href: ./optimize-pig-ambari.md
+            - name: Küme düğümlerinin konak adlarını bul
+              href: ./find-host-name.md
             - name: Küme düğümlerini yeniden başlatma
               href: ./cluster-reboot-vm.md
             - name: Apache Ambari REST API'sini kullanma

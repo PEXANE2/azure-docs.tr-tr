@@ -5,12 +5,12 @@ author: rashi-ms
 ms.author: rajosh
 ms.topic: tutorial
 ms.date: 02/07/2021
-ms.openlocfilehash: 21553adf81d5b34813785db7cd6bbe3caf71c210
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: e9243fc750843c83b7ca8c295655853d20dcd083
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104780505"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105024993"
 ---
 # <a name="create-an-azure-sql-assessment"></a>Azure SQL değerlendirmesi oluşturma
 
@@ -18,7 +18,7 @@ Azure 'a geçiş sürecinizin bir parçası olarak, bulut hazırlığını ölç
 Bu makalede, Azure geçişi: bulma ve değerlendirme aracı kullanılarak Azure SQL 'e geçiş hazırlığı sırasında keşfedilen SQL örneklerinin nasıl değerlendirireceğiniz gösterilmektedir.
 
 > [!Note]
-> VMware ortamınızda çalışan SQL Server örnekleri ve veritabanlarının keşfi ve değerlendirmesi artık önizlemededir. 
+> VMware ortamınızda çalışan SQL Server örnekleri ve veritabanlarının keşfi ve değerlendirmesi artık önizlemededir. [Bu öğreticiyi](tutorial-discover-vmware.md)kullanmaya başlayın. Bu özelliği mevcut bir projede denemek istiyorsanız, lütfen bu makaledeki [önkoşulları](how-to-discover-sql-existing-project.md) tamamladığınızdan emin olun.
 
 ## <a name="before-you-start"></a>Başlamadan önce
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: 3e54991f6afd2ace19bf7b70e57bda6f551f7780
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4512c9d9fdb66713ba24fbf30278e5d5dbb2ae23
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98943173"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863760"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Visual Studio için Data Lake araçlarını kullanarak Apache Hive sorgularını çalıştırma
 
@@ -49,11 +49,11 @@ Geçici sorgular **toplu** veya **etkileşimli** modda çalıştırılabilir.
 
 5. **Yürüt**’ü seçin. Yürütme modu varsayılan olarak **etkileşimli** olur.
 
-    ![Etkileşimli Hive sorgusu yürütme, Visual Studio](./media/apache-hadoop-use-hive-visual-studio/vs-execute-hive-query.png)
+    :::image type="content" source="./media/apache-hadoop-use-hive-visual-studio/vs-execute-hive-query.png" alt-text="Etkileşimli Hive sorgusu yürütme, Visual Studio" border="true":::
 
 6. **Toplu iş** modunda aynı sorguyu çalıştırmak için açılan listeyi **etkileşimli** moddan **Toplu işe** değiştirin. Yürütme düğmesi **Execute** iken **Gönder** olarak değişir.
 
-    ![Toplu işlem Hive sorgusu, Visual Studio 'Yu gönder](./media/apache-hadoop-use-hive-visual-studio/visual-studio-batch-query.png)
+    :::image type="content" source="./media/apache-hadoop-use-hive-visual-studio/visual-studio-batch-query.png" alt-text="Toplu işlem Hive sorgusu, Visual Studio 'Yu gönder" border="true":::
 
     Hive düzenleyicisi IntelliSense’i destekler. Visual Studio için Data Lake Araçları, Hive betiğinizi düzenlerken uzak meta verilerin yüklenmesini destekler. Örneğin, yazarsanız `SELECT * FROM` , IntelliSense önerilen tüm tablo adlarını listeler. Bir tablo adı belirtildiğinde, IntelliSense sütun adlarını listeler. Araçlar çoğu Hive DML deyimlerini, alt sorguları ve yerleşik UDF'leri destekler. IntelliSense yalnızca HDInsight araç çubuğunda seçilen kümelerin meta verilerini önerir.
 
@@ -61,7 +61,7 @@ Geçici sorgular **toplu** veya **etkileşimli** modda çalıştırılabilir.
 
 8. Gelişmiş gönder seçeneğini belirlediyseniz, **betik gönder** Iletişim kutusunda **iş adı**, **bağımsız değişkenler**, **ek konfigürasyonlar** ve **durum dizini** ' ni yapılandırın. Sonra **Gönder**' i seçin.
 
-    ![Betik Gönder iletişim kutusu, HDInsight Hadoop Hive sorgusu](./media/apache-hadoop-use-hive-visual-studio/vs-tools-submit-jobs-advanced.png)
+    :::image type="content" source="./media/apache-hadoop-use-hive-visual-studio/vs-tools-submit-jobs-advanced.png" alt-text="Betik Gönder iletişim kutusu, HDInsight Hadoop Hive sorgusu" border="true":::
 
 ### <a name="create-a-hive-application"></a>Hive uygulaması oluşturma
 
@@ -109,7 +109,7 @@ Hive uygulaması oluşturarak Hive sorgusu çalıştırmak için aşağıdaki ad
 
    **Hive Iş Özeti** görünür ve çalışan iş hakkında bilgileri görüntüler. İş **durumu** **tamamlanana** kadar değişene kadar Iş bilgilerini yenilemek için **Yenile** bağlantısını kullanın.
 
-   ![Tamamlanan Hive iş Özeti, Hive uygulaması, Visual Studio](./media/apache-hadoop-use-hive-visual-studio/hdinsight-job-summary.png)
+   :::image type="content" source="./media/apache-hadoop-use-hive-visual-studio/hdinsight-job-summary.png" alt-text="Tamamlanan Hive iş Özeti, Hive uygulaması, Visual Studio" border="true":::
 
 7. Bu işin çıkışını görüntülemek için **Iş çıkışı** ' nı seçin. `[ERROR] 3`Bu sorgu tarafından döndürülen değer olan öğesini görüntüler.
 

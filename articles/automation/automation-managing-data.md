@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 03/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: e41e9af418b08210f5f0f40de9951d03711dc8e7
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: c3d1dfc5d6ea16a128f5f3bc1129f5f50bc9cb61
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102616125"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954682"
 ---
 # <a name="management-of-azure-automation-data"></a>Azure Otomasyonu verilerinin yönetilmesi
 
@@ -56,7 +56,7 @@ Aşağıdaki tabloda, farklı kaynaklar için bekletme ilkesi özetlenmektedir.
 | Düğüm raporları |Düğüm raporu, bu düğüm için yeni rapor oluşturulduktan 90 gün sonra kalıcı olarak kaldırılır. |
 | Runbook'lar |Bir runbook, bir Kullanıcı kaynağı sildikten 30 gün sonra veya bir Kullanıcı kaynak<sup>1</sup>' i tutan hesabı sildikten sonra 30 gün sonra kalıcı olarak kaldırılır. |
 
-<sup>1</sup> Runbook, Microsoft Azure desteğiyle bir Azure destek olayı kaydederek 30 günlük bir pencere içinde kurtarılabilir. [Azure destek sitesine](/support/options) gidin ve **destek isteği gönder**' i seçin.
+<sup>1</sup> Runbook, Microsoft Azure desteğiyle bir Azure destek olayı kaydederek 30 günlük bir pencere içinde kurtarılabilir. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve **destek isteği gönder**' i seçin.
 
 ## <a name="data-backup"></a>Veri yedekleme
 
