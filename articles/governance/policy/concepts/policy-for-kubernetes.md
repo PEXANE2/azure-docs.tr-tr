@@ -3,12 +3,12 @@ title: Kubernetes için Azure Ilkesi öğrenin
 description: Azure Ilkesi 'nin Azure 'da veya şirket içinde Kubernetes çalıştıran kümeleri yönetmek için rego 'ı ve açık Ilke aracısını nasıl kullandığını öğrenin.
 ms.date: 03/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 60ffcfac688eb40f47efefb74f79d27a2cb82446
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 4a6ca7fb5086401cab58d4bfb6a412089c11ef05
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104868163"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564314"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Kubernetes kümeleri için Azure İlkesi'ni anlama
 
@@ -61,7 +61,7 @@ Aşağıdaki genel sınırlamalar, Kubernetes kümeleri için Azure Ilke eklenti
 
 Aşağıdaki sınırlamalar yalnızca AKS için Azure Ilke eklentisi için geçerlidir:
 
-- [Aks Pod güvenlik ilkesinin](../../../aks/use-pod-security-policies.md) ve aks Için Azure ilke eklentisinin her ikisi de etkinleştirilebilir. Daha fazla bilgi için bkz. [aks Pod güvenlik sınırlaması](../../../aks/use-pod-security-on-azure-policy.md#limitations).
+- [Aks Pod güvenlik ilkesinin](../../../aks/use-pod-security-policies.md) ve aks Için Azure ilke eklentisinin her ikisi de etkinleştirilebilir. Daha fazla bilgi için bkz. [aks Pod güvenlik sınırlaması](../../../aks/use-azure-policy.md).
 - Ad alanları, değerlendirme için Azure Ilke eklentisi tarafından otomatik olarak dışlanır: _KUVE sistem_, _Gatekeeper-System_ ve _aks-Periscope_.
 
 ## <a name="recommendations"></a>Öneriler
@@ -139,7 +139,7 @@ Yukarıdaki önkoşul adımları tamamlandıktan sonra, yönetmek istediğiniz A
      > 1. Eklentinin v2 sürümünü yüklemek için **eklentiyi etkinleştir** düğmesini seçin.
      > 1. [V1 yerleşik ilke tanımlarınızın V2 sürümlerini atayın](#assign-a-built-in-policy-definition)
 
-- Azure CLI
+- Azure CLI’si
 
   ```azurecli-interactive
   # Log in first with az login if you're not using Cloud Shell
@@ -179,7 +179,7 @@ Azure Ilke eklentisini yüklemeden veya hizmet özelliklerinden herhangi birini 
 
 1. Kaynak sağlayıcısını etkinleştirmek için [kaynak sağlayıcıları ve türlerindeki](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) adımları izleyin ya da Azure clı veya Azure PowerShell komutunu çalıştırın:
 
-   - Azure CLI
+   - Azure CLI’si
 
      ```azurecli-interactive
      # Log in first with az login if you're not using Cloud Shell
@@ -201,7 +201,7 @@ Azure Ilke eklentisini yüklemeden veya hizmet özelliklerinden herhangi birini 
 
 1. [Held 3](https://v3.helm.sh/docs/intro/install/)' ü yükler.
 
-1. Azure Arc için Kubernetes kümeniz etkinleştirildi. Daha fazla bilgi için bkz. [Azure yaya bir Kubernetes kümesi ekleme](../../../azure-arc/kubernetes/connect-cluster.md).
+1. Azure Arc için Kubernetes kümeniz etkinleştirildi. Daha fazla bilgi için bkz. [Azure yaya bir Kubernetes kümesi ekleme](../../../azure-arc/kubernetes/quickstart-connect-cluster.md).
 
 1. Azure Arc etkin Kubernetes kümesinin tam Azure Kaynak KIMLIĞINE sahip olmalıdır.
 
@@ -216,7 +216,7 @@ Azure Ilke eklentisini yüklemeden veya hizmet özelliklerinden herhangi birini 
 
 1. Azure Arc etkin Kubernetes kümesine ' Policy Insights veri yazıcısı (Önizleme) ' rolü atamasını atayın. `<subscriptionId>` `<rg>` Azure Arc 'ın, Kubernetes kümesinin kaynak grubuyla ve `<clusterName>` Azure Arc etkinleştirilmiş Kubernetes kümesinin ADıYLA birlikte abonelik Kimliğinizle değiştirin. Yükleme adımları için _uygulama kimliği_, _parola_ ve _kiracı_ için döndürülen değerleri izleyin.
 
-   - Azure CLI
+   - Azure CLI’si
 
      ```azurecli-interactive
      az ad sp create-for-rbac --role "Policy Insights Data Writer (Preview)" --scopes "/subscriptions/<subscriptionId>/resourceGroups/<rg>/providers/Microsoft.Kubernetes/connectedClusters/<clusterName>"
@@ -283,7 +283,7 @@ Azure Ilke eklentisini yüklemeden veya hizmet özelliklerinden herhangi birini 
 
 1. Kaynak sağlayıcısını etkinleştirmek için [kaynak sağlayıcıları ve türlerindeki](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) adımları izleyin ya da Azure clı veya Azure PowerShell komutunu çalıştırın:
 
-   - Azure CLI
+   - Azure CLI’si
 
      ```azurecli-interactive
      # Log in first with az login if you're not using Cloud Shell
@@ -477,7 +477,7 @@ Azure Ilke eklentisini AKS kümenizdeki kaldırmak için Azure portal veya Azure
 
   1. Ana sayfada, **eklentiyi devre dışı bırak** düğmesini seçin.
 
-- Azure CLI
+- Azure CLI’si
 
   ```azurecli-interactive
   # Log in first with az login if you're not using Cloud Shell

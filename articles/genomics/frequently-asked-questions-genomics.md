@@ -9,12 +9,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: troubleshooting
 ms.date: 12/07/2017
-ms.openlocfilehash: e8806bc4f761214e6740a22093b7e18030fdf881
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 40fff49aa3ed46417cdd9a6190f928707e41accb
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96018333"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608621"
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft Genomiks: genel sorular
 
@@ -58,6 +58,10 @@ Hizmetin kullanımını kesintiye uğramadan güncelleştirmek (yeniden oluştur
 
 ## <a name="do-you-save-my-storage-account-keys"></a>Depolama hesabı anahtarlarımı Kaydet?
 Depolama hesabı anahtarınız, giriş dosyalarınızı okumak ve çıktı dosyalarını yazmak üzere Microsoft Genomiks hizmeti için kısa süreli erişim belirteçleri oluşturmak üzere kullanılır. Varsayılan belirteç süresi 48 saattir. Belirteç süresi, `-sas/--sas-duration` Gönder komutu seçeneğiyle değiştirilebilir; değer saat cinsinden olur.
+
+## <a name="does-microsoft-genomics-store-customer-data"></a>Microsoft, müşteri verilerini mi depolukoşsın?
+
+Hayır. Microsoft Genomiks hiçbir müşteri verisi depolamaz.
 
 ## <a name="what-genome-references-can-i-use"></a>Hangi genom başvurularını kullanabilirim?
 

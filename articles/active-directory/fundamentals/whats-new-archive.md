@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e820194d36d2b80fcd28de7972dd5abe8a746345
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 40dafe13dc0e8866c99e56879bed419808a0487c
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104592966"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105560191"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory yenilikler için arşiv var mı?
 
@@ -1481,7 +1481,7 @@ Yöneticiler kullanıcıların uygulamalarını düzenlemek üzere yapılandıra
 **Hizmet kategorisi:** B2C-tüketici kimlik yönetimi  
 **Ürün yeteneği:** B2B/B2C
  
-Telefon numarası kaydolma ve oturum açma ile, geliştiriciler ve kuruluşlar müşterilerinin SMS aracılığıyla kullanıcının telefon numarasına gönderilen tek seferlik bir parola kullanarak kaydolmasına ve oturum açmalarına izin verebilir. Bu özellik ayrıca müşterinin telefonlarına erişimi Kayıplarsa telefon numaralarını değiştirmesine de olanak tanır. Özel ilkelerin ve telefon kayıt ve oturum açma gücü sayesinde, geliştiricilerin ve kuruluşların markalarını sayfa özelleştirmesine iletişim kurmasına izin verir. [Azure AD B2C 'de özel ilkelerle telefon kaydı ve oturum açma ayarlamayı](../../active-directory-b2c/phone-authentication.md)öğrenin.
+Telefon numarası kaydolma ve oturum açma ile, geliştiriciler ve kuruluşlar müşterilerinin SMS aracılığıyla kullanıcının telefon numarasına gönderilen tek seferlik bir parola kullanarak kaydolmasına ve oturum açmalarına izin verebilir. Bu özellik ayrıca müşterinin telefonlarına erişimi Kayıplarsa telefon numaralarını değiştirmesine de olanak tanır. Özel ilkelerin ve telefon kayıt ve oturum açma gücü sayesinde, geliştiricilerin ve kuruluşların markalarını sayfa özelleştirmesine iletişim kurmasına izin verir. [Azure AD B2C 'de özel ilkelerle telefon kaydı ve oturum açma ayarlamayı](../../active-directory-b2c/phone-authentication-user-flows.md)öğrenin.
  
 ---
  

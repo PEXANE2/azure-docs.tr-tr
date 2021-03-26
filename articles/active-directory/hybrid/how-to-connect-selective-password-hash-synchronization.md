@@ -12,12 +12,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 774c78cbb09d2e5e60dfc0cafc0082b25e9b1b45
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 248d5e163eb046edd130d69307a1c553d434b92d
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103603220"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105604677"
 ---
 # <a name="selective-password-hash-synchronization-configuration-for-azure-ad-connect"></a>Azure AD Connect için seçmeli Parola karması eşitleme yapılandırması
 
@@ -36,6 +36,9 @@ Yapılandırma yönetim çabalarını azaltmak için, önce parola karması eşi
 
 > [!Important]
 > Her iki yapılandırma seçeneği de, değişiklikleri uygulamak için gereken bir ilk eşitleme (tam eşitleme), sonraki eşitleme döngüsünün üzerinde otomatik olarak gerçekleştirilir.
+
+> [!Important]
+> Seçmeli parola karma eşitlemesini yapılandırmak, parola geri yazmayı doğrudan etkiler. Azure Active Directory içinde başlatılan parola değişiklikleri veya parola sıfırlamaları, yalnızca kullanıcı parola karması eşitleme kapsamınlarsa şirket içi Active Directory geri yazılır. 
 
 ### <a name="the-admindescription-attribute"></a>AdminDescription özniteliği
 Her iki senaryo da kullanıcıların adminDescription özniteliğini belirli bir değere ayarlamayı kullanır.  Bu kuralların uygulanmasını sağlar ve seçmeli PHS 'yi işler.
@@ -134,6 +137,9 @@ Tüm yapılandırma işlemleri tamamlandıktan sonra, Active Directory ' deki Pa
    
   ![Özniteliği düzenleme](media/how-to-connect-selective-password-hash-synchronization/exclude-11.png)
 
+Bir kullanıcının **adminDescription** özniteliğini düzenlemek Için aşağıdaki PowerShell komutunu da kullanabilirsiniz:
+
+```Set-ADUser myuser -Replace @{adminDescription="PHSFiltered"}```
 
 ## <a name="excluded-users-is-larger-than-included-users"></a>Dışlanan kullanıcılar dahil edilen kullanıcılardan daha büyük
 Aşağıdaki bölümde, **dışlanacak** Kullanıcı sayısı Kullanıcı sayısından **daha büyük** olduğunda seçmeli Parola karması eşitlemesinin nasıl etkinleştirileceği **açıklanmaktadır.**
@@ -202,7 +208,9 @@ Tüm yapılandırma işlemleri tamamlandıktan sonra, Active Directory içinde p
 
   ![Öznitelikleri Düzenle](media/how-to-connect-selective-password-hash-synchronization/include-11.png)
  
- 
+ Bir kullanıcının **adminDescription** özniteliğini düzenlemek Için aşağıdaki PowerShell komutunu da kullanabilirsiniz:
+
+ ```Set-ADUser myuser -Replace @{adminDescription="PHSIncluded"}``` 
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 - [Parola karması eşitleme nedir?](whatis-phs.md)

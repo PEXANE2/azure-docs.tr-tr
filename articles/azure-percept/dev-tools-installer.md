@@ -5,20 +5,20 @@ author: mimcco
 ms.author: mimcco
 ms.service: azure-percept
 ms.topic: how-to
-ms.date: 02/18/2021
+ms.date: 03/25/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 7639af0c6e616a6fd8683f2a529a570f7e856973
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: f81f7922431f85cfc2a98261a128ba66d23a984f
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105047343"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608604"
 ---
 # <a name="dev-tools-pack-installer-overview"></a>Geliştirme araçları paketi yükleyicisine genel bakış
 
-Geliştirme araçları paketi yükleyicisi, akıllı bir uç çözümü geliştirmek için gereken tüm araçları yükleyen ve yapılandıran tek bir-stop çözümüdür. Aşağıda listelenen yazılım paketlerinden herhangi birini zaten yüklediyseniz, araçlarınızın yükleyici yazılım sürümleriyle tutarlı olması için geliştirme araçları paketi yükleyicisi bu paketleri yeniden yükler.
+Geliştirme araçları paketi yükleyicisi, gelişmiş bir akıllı kenar çözümü geliştirmek için gereken tüm araçları yükleyen ve yapılandıran tek bir durdurma çözümüdür.
 
-## <a name="mandatory-tools-installed"></a>Zorunlu araçlar yüklendi
+## <a name="mandatory-tools"></a>Zorunlu Araçlar
 
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Python 3,6 veya üzeri](https://www.python.org/)
@@ -27,7 +27,7 @@ Geliştirme araçları paketi yükleyicisi, akıllı bir uç çözümü gelişti
 * [TensorFlow 1,13](https://www.tensorflow.org/)
 * [Azure Machine Learning SDK 1,1](/python/api/overview/azure/ml/)
 
-## <a name="optional-tools-available-for-installation"></a>Yükleme için kullanılabilen isteğe bağlı Araçlar
+## <a name="optional-tools"></a>İsteğe bağlı Araçlar
 
 * [NVIDIA ayrıntılı AKıŞ SDK 5](https://developer.nvidia.com/deepstream-sdk) (NVIDIA Hızlandırıcılar için çözümler geliştirmek için araç seti)
 * [Intel OpenVino Toolkit 2020,2](https://docs.openvinotoolkit.org/) (Intel hızlandırıcıları için çözüm geliştirmeye yönelik araç seti)
@@ -40,106 +40,99 @@ Geliştirme araçları paketi yükleyicisi, akıllı bir uç çözümü gelişti
 * [CUDA araç seti 10.0.130](https://developer.nvidia.com/cuda-toolkit)
 * [Microsoft Cognitive Toolkit 2.5.1](https://www.microsoft.com/research/product/cognitive-toolkit/?lang=fr_ca)
 
-## <a name="known-issues"></a>Bilinen Sorunlar
+## <a name="known-issues"></a>Bilinen sorunlar
 
-- Docker sistemde düzgün çalışmıyorsa isteğe bağlı Caffe yüklemesi başarısız olabilir. Caffe 'yi yüklemek isterseniz, geliştirme araçları paketi yükleyicisi aracılığıyla Caffe yüklemesine çalışmadan önce Docker 'ın yüklü olduğundan ve çalıştığından emin olun. 
+- Docker düzgün çalışmıyorsa isteğe bağlı Caffe yüklemesi başarısız olabilir. Caffe 'yi yüklemek isterseniz, Caffe yüklemesini geliştirme araçları paketi yükleyicisi aracılığıyla denemeden önce Docker 'ın yüklü olduğundan ve çalıştığından emin olun.
 
 - İsteğe bağlı CUDA yüklemesi uyumsuz sistemlerde başarısız olur. Dev araçları paketi yükleyicisi aracılığıyla [CUDA araç setini 10.0.130](https://developer.nvidia.com/cuda-toolkit) yüklemeye çalışmadan önce sistem uyumluluklarını doğrulayın.
 
-## <a name="minimum-requirements"></a>Minimum gereksinimler
+## <a name="docker-minimum-requirements"></a>Docker minimum gereksinimleri
 
-* Docker minimum gereksinimleri:
+### <a name="windows"></a>Windows
 
-    * Windows:
-        * https://docs.docker.com/docker-for-windows/install/#system-requirements
+- Windows 10 64-bit: Pro, Enterprise veya eğitim (derleme 16299 veya üzeri).
 
-        - Windows 10 64-bit: Pro, Enterprise veya eğitim (derleme 16299 veya üzeri).
+- Hyper-V ve kapsayıcılar Windows özelliklerinin etkinleştirilmesi gerekir. Windows 10 ' da Hyper-V ' d e başarıyla çalıştırmak için aşağıdaki donanım önkoşulları gereklidir:
 
-             Windows 10 Home için bkz. Windows Home 'da Docker Desktop 'ı Install.
-           - Hyper-V ve kapsayıcılar Windows özelliklerinin etkinleştirilmesi gerekir.
-           - Windows 10 ' da Istemci Hyper-V ' d e başarıyla çalıştırılması için aşağıdaki donanım önkoşulları gereklidir:
+    - [Ikinci düzey adres çevirisi (SLAT)](https://en.wikipedia.org/wiki/Second_Level_Address_Translation) ile 64 bit işlemci
+    - 4 GB sistem RAM 'i
+    - BIOS düzeyinde donanım sanallaştırma desteğinin BIOS ayarları etkinleştirilmiş olması gerekir. Daha fazla bilgi için bkz. sanallaştırma.
 
-              - [Ikinci düzey adres çevirisi (SLAT)](https://en.wikipedia.org/wiki/Second_Level_Address_Translation) ile 64 bit işlemci
-              - 4 GB sistem RAM 'i
-              - BIOS düzeyinde donanım sanallaştırma desteğinin BIOS ayarları etkinleştirilmiş olması gerekir. Daha fazla bilgi için bkz. sanallaştırma.
+> [!NOTE]
+> Docker, Microsoft 'un Windows 10 işletim sistemi için destek yaşam döngüsünü temel alan Windows 'da Docker Desktop 'ı destekler. Daha fazla bilgi için bkz. [Windows yaşam döngüsü olgu sayfası](https://support.microsoft.com/help/13853/windows-lifecycle-fact-sheet).
 
-        > [!NOTE]
-        > Docker, Microsoft 'un Windows 10 işletim sistemi için destek yaşam döngüsünü temel alan Windows 'da Docker Desktop 'ı destekler. Daha fazla bilgi için bkz. [Windows yaşam döngüsü olgu sayfası](https://support.microsoft.com/help/13853/windows-lifecycle-fact-sheet).
+[Windows 'A Docker Desktop yükleme](https://docs.docker.com/docker-for-windows/install/#install-docker-desktop-on-windows)hakkında daha fazla bilgi edinin.
 
-    * Mac:
-        * https://docs.docker.com/docker-for-mac/install/#system-requirements
-       
-        Docker Desktop 'ı başarıyla yüklemek için Mac 'nizin aşağıdaki gereksinimleri karşılaması gerekir:
-         
-         - Mac donanımı, genişletilmiş sayfa tabloları (EPT) ve Kısıtlanmamış mod da dahil olmak üzere, Intel işlemcisinin bellek yönetimi birimi (MMU) **sanallaştırmasına sahip bir 2010 veya daha yeni bir model olmalıdır**. Bir terminalde aşağıdaki komutu çalıştırarak makinenizin bu desteğe sahip olup olmadığını kontrol edebilirsiniz: ```sysctl kern.hv_support```
+### <a name="mac"></a>Mac
 
-        Mac 'niz hiper yönetici çerçevesini destekliyorsa, komut yazdırılır ```kern.hv_support: 1``` .
+- Mac, aşağıdaki özniteliklere sahip bir 2010 veya daha yeni bir model olmalıdır:
+    - Intel işlemcisi
+    - Genişletilmiş sayfa tabloları (EPT) ve Kısıtlanmamış mod dahil olmak üzere, bellek yönetimi birimi (MMU) sanallaştırmaya yönelik Intel 'in donanım desteği. Bir terminalde aşağıdaki komutu çalıştırarak makinenizin bu desteğe sahip olup olmadığını kontrol edebilirsiniz: ```sysctl kern.hv_support``` . Mac 'niz hiper yönetici çerçevesini destekliyorsa, komut yazdırılır ```kern.hv_support: 1``` .
 
-         - **MacOS sürüm 10,14 veya daha yeni olmalıdır**. Yani, Mojave, Catalina veya Big Sur. MacOS 'un en son sürümüne yükseltmenizi öneririz.
+- macOS sürüm 10,14 veya üzeri (Mojave, Catalina veya Big Sur). MacOS 'un en son sürümüne yükseltmenizi öneririz. MacOS sürümünüzü sürüm 10,15 ' e yükselttikten sonra herhangi bir sorunla karşılaşırsanız, macOS 'un bu sürümü ile uyumlu olması için Docker Desktop 'ın en son sürümünü yüklemelisiniz.
 
-        MacOS sürümünüzü sürüm 10,15 ' e yükselttikten sonra herhangi bir sorunla karşılaşırsanız, macOS 'un bu sürümü ile uyumlu olması için Docker Desktop 'ın en son sürümünü yüklemelisiniz.
+- En az 4 GB RAM.
 
-        - En az 4 GB RAM.
-        - Sürüm 4.3.30 öncesindeki VirtualBox, Docker Desktop ile uyumlu olmadığından yüklenmemelidir.
+- Sürüm 4.3.30 'den önce VirtualBox yüklemeyin; Docker Desktop ile uyumlu değildir.
 
-        > [!NOTE]
-        > Docker, macOS 'un en son sürümlerinde Docker Desktop 'ı destekler. Yani, macOS 'un geçerli sürümü ve önceki iki sürüm. MacOS 'un yeni ana sürümleri genel kullanıma sunulduğunda, Docker en eski sürümü desteklemeyi durduruyor ve macOS 'ın en yeni sürümünü (önceki iki sürüme ek olarak) destekler. Docker Desktop Şu anda macOS Mojave, macOS Catalina ve macOS Big Sur 'i desteklemektedir.
-        > 
-        - Yükleyici, Apple M1 üzerinde desteklenmez.
+- Yükleyici, Apple M1 üzerinde desteklenmez.
 
-## <a name="instructions"></a>Yönergeler
+[Mac 'e Docker Desktop yükleme](https://docs.docker.com/docker-for-mac/install/#system-requirements)hakkında daha fazla bilgi edinin.
 
-1. [Windows](https://go.microsoft.com/fwlink/?linkid=2132187), [Linux](https://go.microsoft.com/fwlink/?linkid=2132186)ve [Mac](https://go.microsoft.com/fwlink/?linkid=2132296)için geliştirme araçları paketi yükleyicisini indirin.
+## <a name="launch-the-installer"></a>Yükleyiciyi başlatın
 
-1. Platformunuza bağlı olarak, yükleyiciyi başlatırken bazı farklılıklar olacaktır.
+[Windows](https://go.microsoft.com/fwlink/?linkid=2132187), [Linux](https://go.microsoft.com/fwlink/?linkid=2132186)veya [Mac](https://go.microsoft.com/fwlink/?linkid=2132296)için geliştirme araçları paketi yükleyicisini indirin. Yükleyiciyi, aşağıda açıklandığı gibi platformunuza uygun olarak başlatın.
 
-    1. Windows için:
-    
-        1. Yükleme Sihirbazı 'nı açmak için **geliştirme-Araçlar-paketi-yükleyicisi** ' ne tıklayın.
-        
-    1. Mac için:
-    
-        1. İndirdikten sonra, Dev-Tools-Pack-Installer.app dosyasını uygulamalar klasörüne taşıyın.
-        
-        1. Yükleme Sihirbazı 'nı açmak için **dev-Tools-Pack-Installer.app** 'ye tıklayın.
-        
-        1. "Tanımlanamayan bir geliştirici" güvenlik iletişim kutusu alırsanız:
-        
-            1. Sistem Tercihleri-> güvenlik & gizlilik-> Genel ' e gidin ve "Dev-Tools-Pack-Installer.app" yanındaki "yine de aç" düğmesine tıklayın
-        
-            1. Dock 'ta yeniden elektron simgesine tıklayın
-        
-            1. Güvenlik iletişim kutusunda "Aç" düğmesine tıklayın
-    
-    1. Linux için:
-    
-        1. Tarayıcı tarafından istendiğinde, yükleyiciyi karşıdan yüklemeyi tamamlaması için "Kaydet" e tıklayın
-        
-        1. **. Appımage** dosyası Yöntem 1 ' e (CommandLine) yürütme izinleri ekleyin:
-            
-            1. Linux terminalini açma
-            
-            1. Yüklemeler klasörüne gitmek için terminaline aşağıdakini yazın
-            
-                1. CD ~/downloads/
-                
-            1. Appımage çalıştırılabilir dosyasını açmak için terminale aşağıdakini yazın
-            
-                1. chmod + x **geliştirme-Araçlar-paketi-yükleyici. Appımage**
-                
-            1. Yükleyiciyi çalıştırmak için terminalde şunları yazın
-            
-                1. ./Dev-\ımage-Pack-Installer.exe
-        
-        1. **. Appımage** dosyası yöntemi 2 ' ye (UI) yürütme izinleri ekleyin:
-        
-            1. . Appımage dosyasına sağ tıklayın ve Özellikler ' i seçin
-            
-            1. Izinleri aç sekmesi
-            
-            1. ' Program olarak dosya yürütmeye Izin ver ' kutusunu işaretleyin
-            
-            1. Özellikleri kapatın ve. appımage dosyasını açın
+### <a name="windows"></a>Windows
+
+1. Yükleme Sihirbazı 'nı açmak için **geliştirme-Araçlar-paketi-yükleyicisi** ' ne tıklayın.
+
+### <a name="mac"></a>Mac
+
+1. İndirdikten sonra, **dev-Tools-Pack-Installer.app** dosyasını **uygulamalar** klasörüne taşıyın.
+
+1. Yükleme Sihirbazı 'nı açmak için **dev-Tools-Pack-Installer.app** 'ye tıklayın.
+
+1. "Tanımlanamayan bir geliştirici" güvenlik iletişim kutusu alırsanız:
+
+    1. **Sistem Tercihleri**  ->  **güvenlik & gizlilik**  ->  **genel** ' e gidin ve **dev-Tools-Pack-Installer.app**' nin yanındaki **yine aç** ' a tıklayın.
+    1. Elektron simgesine tıklayın.
+    1. Güvenlik iletişim kutusunda **Aç** ' a tıklayın.
+
+### <a name="linux"></a>Linux
+
+1. Tarayıcı tarafından istendiğinde **Kaydet** ' e tıklayarak yükleyici indirmeyi doldurun.
+
+1. **. Appımage** dosyasına yürütme izinleri ekleyin:
+
+    1. Bir Linux terminali açın.
+
+    1. **İndirmeler** klasörüne gitmek için terminalde aşağıdakileri girin:
+
+        ```bash
+        cd ~/Downloads/
+        ```
+
+    1. Appımage çalıştırılabilir dosyasını oluşturun:
+
+        ```bash
+        chmod +x Dev-Tools-Pack-Installer.AppImage
+        ```
+
+    1. Yükleyiciyi çalıştırın:
+
+        ```bash
+        ./Dev-Tools-Pack-Installer.AppImage
+        ```
+
+1. **. Appımage** dosyasına yürütme izinleri ekleyin:
+
+    1. . Appımage dosyasına sağ tıklayın ve **Özellikler**' i seçin.
+    1. **İzinler** sekmesini açın.
+    1. **Dosya yürütmeye Izin ver**' in yanındaki kutuyu işaretleyin.
+    1. **Özellikleri** kapatın ve **. appımage** dosyasını açın.
+
+## <a name="run-the-installer"></a>Yükleyiciyi çalıştırma
 
 1. **Geliştirme araçları paketi yükleyicisini yükleme** sayfasında, yükleyicide bulunan her yazılım paketinin lisans sözleşmelerini görüntülemek Için **lisansı görüntüle** ' ye tıklayın. Lisans sözleşmeleri içindeki koşulları kabul ediyorsanız, kutuyu işaretleyin ve **İleri**' ye tıklayın.
 
@@ -165,21 +158,19 @@ Geliştirme araçları paketi yükleyicisi, akıllı bir uç çözümü gelişti
 
 Yükleyici, Docker Desktop 'ın iyi çalışan bir durumda olduğunu doğrulamak için size bildirimde bulunursa aşağıdaki adımlara bakın:
 
-   1. Windows:
-   
-      1. Sistem tepsisindeki gizli simgeleri Genişlet:
-      
-         1. Gizliyse sistem tepsisindeki gizli simgeler ' i Genişlet:
+### <a name="windows"></a>Windows
 
-            :::image type="content" source="./media/dev-tools-installer/system-tray.png" alt-text="Sistem tepsisi.":::
-         
-         1. Docker masaüstü simgesinin ' Docker Desktop çalışıyor ' olduğunu doğrulayın:
+1. Sistem tepsisindeki gizli simgeler ' i genişletin.
 
-            :::image type="content" source="./media/dev-tools-installer/docker-status-running.png" alt-text="Docker durumu.":::
-         
-         1. Sistem tepsisinde yukarıdaki simgeyi görmüyorsanız, Başlat menüsünden Docker Desktop ' ı başlatın.
-         
-         1. Docker yeniden başlatmanızı isterse, yükleyiciyi kapatmak ve yeniden başlatma tamamlandıktan sonra Docker çalışır durumda olduktan sonra yeniden başlatmak iyi olur. Başarıyla yüklenen üçüncü taraf uygulamaların algılanması ve otomatik olarak yeniden yüklenmesi gerekir.
+    :::image type="content" source="./media/dev-tools-installer/system-tray.png" alt-text="Sistem tepsisi.":::
+
+1. Docker Desktop **simgesinin çalıştığını doğrulayın.**
+
+    :::image type="content" source="./media/dev-tools-installer/docker-status-running.png" alt-text="Docker durumu.":::
+
+1. Sistem tepsisinde yukarıdaki simgeyi görmüyorsanız, Başlat menüsünden Docker Desktop ' ı başlatın.
+
+1. Docker yeniden başlatmanızı isterse, yükleyiciyi kapatmak ve yeniden başlatma tamamlandıktan sonra Docker çalışır durumda olduktan sonra yeniden başlatmak iyi olur. Başarıyla yüklenen üçüncü taraf uygulamaların algılanması ve otomatik olarak yeniden yüklenmesi gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

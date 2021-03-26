@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 38b6251c4b464214d66f7240dab9d5d23812f946
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: f07eece54bfe456e173e664b19777cfc98b71368
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105023223"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566872"
 ---
 # <a name="azure-security-baseline-for-azure-cache-for-redis"></a>Redsıs için Azure önbelleği için Azure Güvenlik temeli
 
@@ -443,7 +443,7 @@ Microsoft, Redsıs için Azure önbelleği için temel altyapıyı yönetir ve m
 
 **Sorumluluk**: Paylaşılan
 
-**Azure Güvenlik Merkezi izleme**: [Azure Güvenlik kıyaslaması](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) , Güvenlik Merkezi için varsayılan Ilke girişimidir ve [Güvenlik Merkezi 'nin önerilerine](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)yöneliktir. Bu denetimle ilgili Azure Ilke tanımları, Güvenlik Merkezi tarafından otomatik olarak etkinleştirilir. Bu denetimle ilgili uyarılar, ilgili hizmetler için bir [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) planı gerektirebilir.
+**Azure Güvenlik Merkezi izleme**: [Azure Güvenlik kıyaslaması](/azure/governance/policy/samples/azure-security-benchmark) , Güvenlik Merkezi için varsayılan Ilke girişimidir ve [Güvenlik Merkezi 'nin önerilerine](/azure/security-center/security-center-recommendations)yöneliktir. Bu denetimle ilgili Azure Ilke tanımları, Güvenlik Merkezi tarafından otomatik olarak etkinleştirilir. Bu denetimle ilgili uyarılar, ilgili hizmetler için bir [Azure Defender](/azure/security-center/azure-defender) planı gerektirebilir.
 
 **Azure ilkesi yerleşik tanımları-Microsoft. Cache**:
 

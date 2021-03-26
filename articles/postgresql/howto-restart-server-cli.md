@@ -1,18 +1,18 @@
 ---
 title: Sunucuyu yeniden başlatma-Azure CLı-PostgreSQL için Azure veritabanı-tek sunucu
 description: Bu makalede, Azure CLı kullanarak bir PostgreSQL için Azure veritabanı 'nı (tek sunucu) nasıl yeniden başlatabileceğinizi açıklanmaktadır
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e812b7872dd4d41d9a6cb87d75403524106c5981
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: af870c495ae707dd8319645eca979f0906234b4f
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97706873"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608400"
 ---
 # <a name="restart-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Azure CLı kullanarak PostgreSQL için Azure veritabanı 'nı yeniden başlatma-tek sunucu
 Bu konuda, PostgreSQL için Azure veritabanı sunucusunu nasıl yeniden başlatabileceğinizi açıklar. Sunucu işlemi gerçekleştirdiğinden kısa süreli bir kesinti oluşmasına neden olan bakım nedenleriyle sunucunuzu yeniden başlatmanız gerekebilir.

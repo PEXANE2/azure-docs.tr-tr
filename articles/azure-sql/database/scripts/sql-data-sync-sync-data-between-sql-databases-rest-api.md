@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: ef2823b870f76922dd0dc157341aea9b502fb4bb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d3ff8114c11b224a0bdbb0bd2d0e5686a7e57b55
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103565548"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565920"
 ---
 # <a name="use-rest-api-to-sync-data-between-multiple-databases"></a>Birden çok veritabanı arasında veri eşitlemek için REST API kullanma 
 
@@ -31,7 +31,7 @@ SQL Data Sync genel bir bakış için bkz. [Azure 'da SQL Data Sync ile birden �
 
 ## <a name="create-sync-group"></a>Eşitleme grubu oluştur
 
-Bir eşitleme grubu oluşturmak için [Oluştur veya Güncelleştir](https://docs.microsoft.com/rest/api/sql/syncgroups/createorupdate) şablonunu kullanın.
+Bir eşitleme grubu oluşturmak için [Oluştur veya Güncelleştir](/rest/api/sql/syncgroups/createorupdate) şablonunu kullanın.
  
 Eşitleme grubu oluştururken, eşitleme şemasında (table\column) geçiş yapmaz ve masterSyncMemberName içinde geçirmeyin çünkü bu zaman eşitleme grubunda henüz table\column bilgileri yok.
 
@@ -91,7 +91,7 @@ Durum kodu: 201
 
 ## <a name="create-sync-member"></a>Eşitleme üyesi oluştur
 
-Bir eşitleme üyesi oluşturmak için [Oluştur veya Güncelleştir](https://docs.microsoft.com/rest/api/sql/syncmembers/createorupdate) şablonunu kullanın.
+Bir eşitleme üyesi oluşturmak için [Oluştur veya Güncelleştir](/rest/api/sql/syncmembers/createorupdate) şablonunu kullanın.
 
 Eşitleme üyesi oluşturmak için örnek istek:
 
@@ -151,7 +151,7 @@ Durum kodu: 201
 
 Eşitleme grubunuz başarıyla oluşturulduktan sonra, aşağıdaki şablonları kullanarak şemayı yenileyin.
 
-Hub veritabanı şemasını yenilemek için [hub şemasını Yenile](https://docs.microsoft.com/rest/api/sql/syncgroups/refreshhubschema)  şablonunu kullanın. 
+Hub veritabanı şemasını yenilemek için [hub şemasını Yenile](/rest/api/sql/syncgroups/refreshhubschema)  şablonunu kullanın. 
 
 Bir hub veritabanı şemasını yenilemeye yönelik örnek istek: 
 
@@ -165,17 +165,17 @@ Durum kodu: 200
 
 Durum kodu: 202
 
-Merkez veritabanı şemasını listelemek için [liste Merkezi şemaları](https://docs.microsoft.com/rest/api/sql/syncgroups/listhubschemas) şablonunu kullanın. 
+Merkez veritabanı şemasını listelemek için [liste Merkezi şemaları](/rest/api/sql/syncgroups/listhubschemas) şablonunu kullanın. 
 
-Üye veritabanı şemasını yenilemek için [üye şemasını Yenile](https://docs.microsoft.com/rest/api/sql/syncmembers/refreshmemberschema) şablonunu kullanın. 
+Üye veritabanı şemasını yenilemek için [üye şemasını Yenile](/rest/api/sql/syncmembers/refreshmemberschema) şablonunu kullanın. 
 
-Üye veritabanı şemasını listelemek için [liste üyesi şema](https://docs.microsoft.com/rest/api/sql/syncmembers/listmemberschemas) şablonunu kullanın. 
+Üye veritabanı şemasını listelemek için [liste üyesi şema](/rest/api/sql/syncmembers/listmemberschemas) şablonunu kullanın. 
 
 Yalnızca şemanız başarıyla yenilendiğinde bir sonraki adıma geçin. 
 
 ## <a name="update-sync-group"></a>Eşitleme grubunu Güncelleştir 
 
-Eşitleme grubunuzu güncelleştirmek için [Oluştur veya Güncelleştir](https://docs.microsoft.com/rest/api/sql/syncgroups/createorupdate) şablonunu kullanın.
+Eşitleme grubunuzu güncelleştirmek için [Oluştur veya Güncelleştir](/rest/api/sql/syncgroups/createorupdate) şablonunu kullanın.
 
 Eşitleme şemasını belirterek eşitleme grubunu güncelleştirin. Kullanmak istediğiniz şemayı tutan ad olan şemanızı ve masterSyncMemberName 'i ekleyin. 
 
@@ -232,7 +232,7 @@ Eşitleme grubunu güncelleştirmek için örnek yanıt:
 ```
 ## <a name="update-sync-member"></a>Eşitleme üyesini Güncelleştir
 
-Eşitleme üyesini güncelleştirmek için [Oluştur veya Güncelleştir](https://docs.microsoft.com/rest/api/sql/syncmembers/createorupdate) şablonunu kullanın.
+Eşitleme üyesini güncelleştirmek için [Oluştur veya Güncelleştir](/rest/api/sql/syncmembers/createorupdate) şablonunu kullanın.
 
 Bir eşitleme üyesini güncelleştirmek için örnek istek: 
 
@@ -291,7 +291,7 @@ Durum kodu: 201
 
 ## <a name="trigger-sync"></a>Eşitlemeyi Tetikle
 
-Eşitleme işlemi tetiklemek için [tetikleyici eşitleme](https://docs.microsoft.com/rest/api/sql/syncgroups/triggersync) şablonunu kullanın.
+Eşitleme işlemi tetiklemek için [tetikleyici eşitleme](/rest/api/sql/syncgroups/triggersync) şablonunu kullanın.
 
 Eşitleme işleminin tetiklenmesi için örnek istek: 
 

@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 02/24/2021
 ms.author: lle
-ms.openlocfilehash: fa410441203c50d96c0de1d9188fb73b6fd4d577
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5e94ea989002d3d3c6d0e96123d5b8ddb5f078c3
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101706190"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568051"
 ---
 # <a name="troubleshoot-azure-data-factory-security-and-access-control-issues"></a>Azure Data Factory güvenlik ve erişim denetimi sorunlarını giderme
 
@@ -182,7 +182,7 @@ Azure Blob depolama hesabı genel erişimi ile veri kopyalarken işlem hattı ç
 
 #### <a name="cause"></a>Nedeni
 
-ADF hala yönetilen VNet IR kullanabilir, ancak yönetilen VNet 'teki Azure Blob depolama alanına genel uç nokta, test sonucuna göre güvenilir olmadığından ve Azure Blob depolama ve Azure Data Lake Gen2 ' nin, [yönetilen sanal ağ & yönetilen özel uç noktalarına](https://docs.microsoft.com/azure/data-factory/managed-virtual-network-private-endpoint#outbound-communications-through-public-endpoint-from-adf-managed-virtual-network)göre ADF tarafından yönetilen sanal ağdan ortak uç nokta ile bağlı olması desteklenmediği için bu hatayla karşılaşabilirsiniz.
+ADF hala yönetilen VNet IR kullanabilir, ancak yönetilen VNet 'teki Azure Blob depolama alanına genel uç nokta, test sonucuna göre güvenilir olmadığından ve Azure Blob depolama ve Azure Data Lake Gen2 ' nin, [yönetilen sanal ağ & yönetilen özel uç noktalarına](./managed-virtual-network-private-endpoint.md#outbound-communications-through-public-endpoint-from-adf-managed-virtual-network)göre ADF tarafından yönetilen sanal ağdan ortak uç nokta ile bağlı olması desteklenmediği için bu hatayla karşılaşabilirsiniz.
 
 #### <a name="solution"></a>Çözüm
 

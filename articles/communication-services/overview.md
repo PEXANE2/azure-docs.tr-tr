@@ -8,12 +8,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: fe580848e3bbea701718463123a6bbcd4848a9f3
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 9559e79673d1b49ff33ff5dd81677f956657016b
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105564611"
+ms.locfileid: "105605391"
 ---
 # <a name="what-is-azure-communication-services"></a>Azure İletişim Hizmetleri nedir?
 
@@ -47,18 +47,18 @@ Azure Iletişim Hizmetleri 'ni kullanmaya başlamak için aşağıdaki kaynaklar
 
 | Kaynak                               |Açıklama                           |
 |---                                    |---                                   |
-|**[İletişim Hizmetleri kaynağı oluşturma](./quickstarts/create-communication-resource.md)**|İlk Iletişim Hizmetleri kaynağınızı sağlamak için Azure portal veya Iletişim Hizmetleri istemci kitaplığını kullanarak Azure Iletişim hizmetlerini kullanmaya başlayabilirsiniz. Iletişim Hizmetleri kaynak bağlantı dizeniz olduktan sonra, ilk Kullanıcı erişim belirteçlerinizi sağlayabilirsiniz.|
+|**[İletişim Hizmetleri kaynağı oluşturma](./quickstarts/create-communication-resource.md)**|İlk Iletişim Hizmetleri kaynağınızı sağlamak için Azure portal veya Iletişim Hizmetleri SDK 'sını kullanarak Azure Iletişim hizmetlerini kullanmaya başlayabilirsiniz. Iletişim Hizmetleri kaynak bağlantı dizeniz olduktan sonra, ilk Kullanıcı erişim belirteçlerinizi sağlayabilirsiniz.|
 |**[Telefon numarası alın](./quickstarts/telephony-sms/get-phone-number.md)**|Azure Iletişim hizmetlerini kullanarak telefon numaralarını temin edebilir ve serbest bırakabilirsiniz. Bu telefon numaraları, giden çağrıları başlatmak ve SMS iletişim çözümleri oluşturmak için kullanılabilir.|
-|**[Uygulamanızdan SMS gönderin](./quickstarts/telephony-sms/send.md)**|Azure Iletişim Hizmetleri SMS istemci kitaplığı, .NET ve JavaScript uygulamalarınızdan SMS mesajları göndermenizi ve almanızı sağlar.|
+|**[Uygulamanızdan SMS gönderin](./quickstarts/telephony-sms/send.md)**|Azure Iletişim Hizmetleri SMS SDK 'Sı, .NET ve JavaScript uygulamalarınızdan SMS mesajları göndermenizi ve almanızı sağlar.|
 
 Iletişim Hizmetleri kaynağı oluşturduktan sonra, ses ve video çağırma veya kısa sohbet gibi istemci senaryoları oluşturmaya başlayabilirsiniz.
 
 | Kaynak                               |Açıklama                           |
 |---                                    |---                                   |
-|**[İlk Kullanıcı erişim belirtecinizi oluşturma](./quickstarts/access-tokens.md)**|Kullanıcı erişim belirteçleri, hizmetlerinizin kimlik doğrulaması için Azure Iletişim Hizmetleri kaynağına karşı kullanılır. Bu belirteçler, Iletişim Hizmetleri istemci kitaplığı kullanılarak sağlanır ve yeniden yayımlandı.|
-|**[Ses ve video çağırma ile çalışmaya başlama](./quickstarts/voice-video-calling/getting-started-with-calling.md)**| Azure Iletişim Hizmetleri, çağıran istemci kitaplığını kullanarak uygulamalarınıza ses ve video çağrısı eklemenize olanak tanır. Bu kitaplık WebRTC tarafından desteklenmektedir ve uygulamalarınızda eşler arası, çoklu ortam, gerçek zamanlı iletişim kurmanızı sağlar.|
+|**[İlk Kullanıcı erişim belirtecinizi oluşturma](./quickstarts/access-tokens.md)**|Kullanıcı erişim belirteçleri, hizmetlerinizin kimlik doğrulaması için Azure Iletişim Hizmetleri kaynağına karşı kullanılır. Bu belirteçler, Iletişim Hizmetleri SDK 'Sı kullanılarak sağlanır ve yeniden yayımlandı.|
+|**[Ses ve video çağırma ile çalışmaya başlama](./quickstarts/voice-video-calling/getting-started-with-calling.md)**| Azure Iletişim Hizmetleri, arama SDK 'sını kullanarak uygulamalarınıza ses ve video çağırma olanağı eklemenize olanak tanır. Bu kitaplık WebRTC tarafından desteklenmektedir ve uygulamalarınızda eşler arası, çoklu ortam, gerçek zamanlı iletişim kurmanızı sağlar.|
 |**[Arama uygulamanızla bir Teams toplantısına katılma](./quickstarts/voice-video-calling/get-started-teams-interop.md)**|Azure Iletişim Hizmetleri, Microsoft ekipleriyle etkileşime geçen özel toplantı deneyimleri oluşturmak için kullanılabilir. Iletişim Hizmetleri çözümünüzün kullanıcıları ses, video, sohbet ve ekran paylaşımı üzerinde takımlar katılımcıları ile etkileşime geçebilir.|
-|**[Sohbetle çalışmaya başlama](./quickstarts/chat/get-started.md)**|Azure Iletişim Hizmetleri sohbeti istemci kitaplığı, gerçek zamanlı sohbeti uygulamalarınıza bütünleştirmek için kullanılabilir.|
+|**[Sohbetle çalışmaya başlama](./quickstarts/chat/get-started.md)**|Azure Iletişim Hizmetleri sohbet SDK 'Sı, gerçek zamanlı sohbeti uygulamalarınıza entegre etmek için kullanılabilir.|
 
 ## <a name="samples"></a>Örnekler
 
@@ -77,7 +77,7 @@ Aşağıdaki kaynaklar Azure Iletişim Hizmetleri SDK 'Ları hakkında bilgi edi
 
 | Kaynak                               | Açıklama                           |
 |---                                    |---                                   |
-|**[İstemci kitaplıkları ve REST API’leri](./concepts/sdk-options.md)**|Azure Iletişim Hizmetleri Özellikleri, kavramsal olarak, her biri bir SDK tarafından temsil edilen altı alan halinde düzenlenir. Gerçek zamanlı iletişim gereksinimlerinize göre hangi SDK 'ların kullanılacağına karar verebilirsiniz.|
+|**[SDK 'Lar ve REST API 'Leri](./concepts/sdk-options.md)**|Azure Iletişim Hizmetleri Özellikleri, kavramsal olarak, her biri bir SDK tarafından temsil edilen altı alan halinde düzenlenir. Gerçek zamanlı iletişim gereksinimlerinize göre hangi SDK 'ların kullanılacağına karar verebilirsiniz.|
 |**[SDK 'ya genel bakış](./concepts/voice-video-calling/calling-sdk-features.md)**|SDK 'ya genel bakış çağıran Iletişim hizmetlerini gözden geçirin.|
 |**[Sohbet SDK genel bakış](./concepts/chat/sdk-features.md)**|Iletişim Hizmetleri sohbet SDK 'sına genel bakış konusunu inceleyin.|
 |**[SMS SDK genel bakış](./concepts/telephony-sms/sdk-features.md)**|Iletişim Hizmetleri SMS SDK 'sına genel bakış ' a bakın.|

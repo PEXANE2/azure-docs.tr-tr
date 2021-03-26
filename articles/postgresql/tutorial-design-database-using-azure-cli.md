@@ -1,19 +1,19 @@
 ---
 title: 'Öğretici: PostgreSQL için Azure veritabanı tasarlama-tek sunucu-Azure CLı'
 description: Bu öğreticide, Azure CLı kullanarak ilk PostgreSQL için Azure veritabanı-tek sunucu oluşturma, yapılandırma ve sorgulama işlemlerinin nasıl yapılacağı gösterilir.
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.custom: mvc, devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: 019e6e738ea312b7e6a16c44354c7dcd54e24f2f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 478fc175304a24536d28807915f4a4ec05a7158e
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93331905"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105605884"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-azure-cli"></a>Öğretici: Azure CLı kullanarak bir PostgreSQL için Azure veritabanı tasarlama-tek sunucu 
 Bu öğreticide, şunları nasıl yapacağınızı öğrenmek için Azure CLI (komut satırı arabirimi) ve diğer yardımcı programları kullanırsınız:

@@ -7,12 +7,12 @@ ms.date: 03/13/2021
 ms.topic: troubleshooting
 ms.author: susabat
 ms.reviewer: susabat
-ms.openlocfilehash: f5039e5a49da202b2dbfa20e56639365ed597c79
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 72f2a5eec25b9acc2aedd7b006fe3380141781c8
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103462006"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563421"
 ---
 # <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>Azure Data Factory 'da işlem hattı düzenleme ve Tetikleyicileri sorunlarını giderme
 
@@ -95,7 +95,7 @@ Azure Data Factory tüm yaprak düzeyindeki etkinliklerin sonucunu değerlendiri
 
 * İşlem [hattı hatalarının ve hatalarının nasıl işleneceğini](https://techcommunity.microsoft.com/t5/azure-data-factory/understanding-pipeline-failures-and-error-handling/ba-p/1630459)izleyerek etkinlik düzeyi denetimleri uygulayın.
 * İşlem hatlarını [fabrika tarafından sorgu](/rest/api/datafactory/pipelineruns/querybyfactory)izleyen düzenli aralıklarla izlemek için Azure Logic Apps kullanın.
-* [Görsel olarak Izleme işlem hattı](https://docs.microsoft.com/azure/data-factory/monitor-visually)
+* [Görsel olarak Izleme işlem hattı](./monitor-visually.md)
 
 ### <a name="how-to-monitor-pipeline-failures-in-regular-intervals"></a>Düzenli aralıklarla işlem hattı başarısızlıklarını izleme
 
@@ -105,7 +105,7 @@ Başarısız Data Factory işlem hatlarını dakikalar içinde izlemeniz, 5 daki
 
 **Çözünürlük**
 * Bir Azure mantıksal uygulamasını, [fabrika tarafından sorgu](/rest/api/datafactory/pipelineruns/querybyfactory)bölümünde açıklandığı gibi, 5 dakikada bir tüm başarısız işlem hatlarını sorgulamak için ayarlayabilirsiniz. Daha sonra, olayları bilet sistemine bildirebilirsiniz.
-* [Görsel olarak Izleme işlem hattı](https://docs.microsoft.com/azure/data-factory/monitor-visually)
+* [Görsel olarak Izleme işlem hattı](./monitor-visually.md)
 
 ### <a name="degree-of-parallelism--increase-does-not-result-in-higher-throughput"></a>Paralellik artışının derecesi daha yüksek verimlilik elde etmez
 
@@ -146,8 +146,8 @@ Bu durum, veri akışı veya iyileştirilmiş KııR için yaşam süresi özell
 
 **Çözünürlük**
 
-* Her kopyalama etkinliğinin başlaması 2 dakika kadar sürüyorsa ve bu sorun birincil olarak bir sanal ağ birleştirmede ( Azure IR yerine) oluşuyorsa, bu bir kopyalama performansı sorunu olabilir. Sorun giderme adımlarını gözden geçirmek için, [kopyalama performansı geliştirmesi](https://docs.microsoft.com/azure/data-factory/copy-activity-performance-troubleshooting) ' ne gidin.
-* Veri akışı etkinlikleri için küme başlangıç süresini azaltmak üzere yaşam süresi özelliğini kullanabilirsiniz. Lütfen [veri akışı Integration Runtime](https://docs.microsoft.com/azure/data-factory/control-flow-execute-data-flow-activity#data-flow-integration-runtime) gözden geçirin.
+* Her kopyalama etkinliğinin başlaması 2 dakika kadar sürüyorsa ve bu sorun birincil olarak bir sanal ağ birleştirmede ( Azure IR yerine) oluşuyorsa, bu bir kopyalama performansı sorunu olabilir. Sorun giderme adımlarını gözden geçirmek için, [kopyalama performansı geliştirmesi](./copy-activity-performance-troubleshooting.md) ' ne gidin.
+* Veri akışı etkinlikleri için küme başlangıç süresini azaltmak üzere yaşam süresi özelliğini kullanabilirsiniz. Lütfen [veri akışı Integration Runtime](./control-flow-execute-data-flow-activity.md#data-flow-integration-runtime) gözden geçirin.
 
  ### <a name="hitting-capacity-issues-in-shirself-hosted-integration-runtime"></a>Shar (Şirket içinde barındırılan Integration Runtime) içindeki kapasite sorunlarını vurun
  
@@ -157,7 +157,7 @@ Bu durum, iş yükünüze göre kır ölçeğini ölçeklendirmezseniz meydana g
 
 **Çözünürlük**
 
-* SHıR 'den bir kapasite sorunuyla karşılaşırsanız, etkinlikleri dengelemek için düğümü yükseltmek üzere VM 'yi yükseltin. Şirket içinde barındırılan bir IR genel hatası veya hatası, kendinden konak IR yükseltmesi veya şirket içinde barındırılan IR bağlantı sorunları hakkında bir hata iletisi alırsanız, [Şirket içinde barındırılan tümleştirme çalışma zamanına sorun giderme](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-troubleshoot-guide) bölümüne gidin.
+* SHıR 'den bir kapasite sorunuyla karşılaşırsanız, etkinlikleri dengelemek için düğümü yükseltmek üzere VM 'yi yükseltin. Şirket içinde barındırılan bir IR genel hatası veya hatası, kendinden konak IR yükseltmesi veya şirket içinde barındırılan IR bağlantı sorunları hakkında bir hata iletisi alırsanız, [Şirket içinde barındırılan tümleştirme çalışma zamanına sorun giderme](./self-hosted-integration-runtime-troubleshoot-guide.md) bölümüne gidin.
 
 ### <a name="error-messages-due-to-long-queues-for-adf-copy-and-data-flow"></a>ADF kopyalama ve veri akışı için uzun kuyruklardan kaynaklanan hata iletileri
 
@@ -166,10 +166,10 @@ Bu durum, iş yükünüze göre kır ölçeğini ölçeklendirmezseniz meydana g
 Uzun kuyruk ile ilgili hata iletileri çeşitli nedenlerle görünebilir. 
 
 **Çözünürlük**
-* Bağlayıcılar aracılığıyla herhangi bir kaynaktan veya hedefle bir hata iletisi alırsanız, uzun bir kuyruk üretebilir, [bağlayıcı sorun giderme kılavuzu](https://docs.microsoft.com/azure/data-factory/connector-troubleshoot-guide) ' na gidin.
-* Veri akışı eşleme hakkında uzun bir sıra oluşturabilen bir hata iletisi alırsanız, [veri akışları sorun giderme kılavuzu](https://docs.microsoft.com/azure/data-factory/data-flow-troubleshoot-guide) ' na gidin.
-* Databricks, özel etkinlikler veya HDI gibi diğer etkinliklerle ilgili, uzun bir sıra oluşturabilen bir hata iletisi alırsanız, [etkinlik sorun giderme kılavuzu](https://docs.microsoft.com/azure/data-factory/data-factory-troubleshoot-guide) ' na gidin.
-* Uzun bir sıra oluşturabilen SSIS paketlerini çalıştırmaya yönelik bir hata iletisi alırsanız, [Azure-SSIS paketi yürütme sorun giderme kılavuzu](https://docs.microsoft.com/azure/data-factory/ssis-integration-runtime-ssis-activity-faq) ve [Integration Runtime yönetimi sorun giderme kılavuzu](https://docs.microsoft.com/azure/data-factory/ssis-integration-runtime-management-troubleshoot) ' na gidin.
+* Bağlayıcılar aracılığıyla herhangi bir kaynaktan veya hedefle bir hata iletisi alırsanız, uzun bir kuyruk üretebilir, [bağlayıcı sorun giderme kılavuzu](./connector-troubleshoot-guide.md) ' na gidin.
+* Veri akışı eşleme hakkında uzun bir sıra oluşturabilen bir hata iletisi alırsanız, [veri akışları sorun giderme kılavuzu](./data-flow-troubleshoot-guide.md) ' na gidin.
+* Databricks, özel etkinlikler veya HDI gibi diğer etkinliklerle ilgili, uzun bir sıra oluşturabilen bir hata iletisi alırsanız, [etkinlik sorun giderme kılavuzu](./data-factory-troubleshoot-guide.md) ' na gidin.
+* Uzun bir sıra oluşturabilen SSIS paketlerini çalıştırmaya yönelik bir hata iletisi alırsanız, [Azure-SSIS paketi yürütme sorun giderme kılavuzu](./ssis-integration-runtime-ssis-activity-faq.md) ve [Integration Runtime yönetimi sorun giderme kılavuzu](./ssis-integration-runtime-management-troubleshoot.md) ' na gidin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

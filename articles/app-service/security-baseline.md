@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3193acf8ef19cdac97f6733a657610801d614f32
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 7607b1726900423498a58502494c015f62da8829
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104952312"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559443"
 ---
 # <a name="azure-security-baseline-for-app-service"></a>App Service için Azure Güvenlik temeli
 
@@ -59,7 +59,7 @@ Aboneliklerinizde ve sanal ağlarınızda uygulama ve ağ bağlantısı ilkeleri
 
 **Sorumluluk**: Müşteri
 
-**Azure Güvenlik Merkezi izleme**: [Azure Güvenlik kıyaslaması](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) , Güvenlik Merkezi için varsayılan Ilke girişimidir ve [Güvenlik Merkezi 'nin önerilerine](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)yöneliktir. Bu denetimle ilgili Azure Ilke tanımları, Güvenlik Merkezi tarafından otomatik olarak etkinleştirilir. Bu denetimle ilgili uyarılar, ilgili hizmetler için bir [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) planı gerektirebilir.
+**Azure Güvenlik Merkezi izleme**: [Azure Güvenlik kıyaslaması](/azure/governance/policy/samples/azure-security-benchmark) , Güvenlik Merkezi için varsayılan Ilke girişimidir ve [Güvenlik Merkezi 'nin önerilerine](/azure/security-center/security-center-recommendations)yöneliktir. Bu denetimle ilgili Azure Ilke tanımları, Güvenlik Merkezi tarafından otomatik olarak etkinleştirilir. Bu denetimle ilgili uyarılar, ilgili hizmetler için bir [Azure Defender](/azure/security-center/azure-defender) planı gerektirebilir.
 
 **Azure ilkesi yerleşik tanımları-Microsoft. Network**:
 
@@ -83,7 +83,7 @@ Azure Güvenlik Duvarı 'nı kullanarak trafik gönderin ve abonelikler ve sanal
 
 **Sorumluluk**: Müşteri
 
-**Azure Güvenlik Merkezi izleme**: [Azure Güvenlik kıyaslaması](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) , Güvenlik Merkezi için varsayılan Ilke girişimidir ve [Güvenlik Merkezi 'nin önerilerine](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)yöneliktir. Bu denetimle ilgili Azure Ilke tanımları, Güvenlik Merkezi tarafından otomatik olarak etkinleştirilir. Bu denetimle ilgili uyarılar, ilgili hizmetler için bir [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) planı gerektirebilir.
+**Azure Güvenlik Merkezi izleme**: [Azure Güvenlik kıyaslaması](/azure/governance/policy/samples/azure-security-benchmark) , Güvenlik Merkezi için varsayılan Ilke girişimidir ve [Güvenlik Merkezi 'nin önerilerine](/azure/security-center/security-center-recommendations)yöneliktir. Bu denetimle ilgili Azure Ilke tanımları, Güvenlik Merkezi tarafından otomatik olarak etkinleştirilir. Bu denetimle ilgili uyarılar, ilgili hizmetler için bir [Azure Defender](/azure/security-center/azure-defender) planı gerektirebilir.
 
 **Azure ilkesi yerleşik tanımları-Microsoft. Network**:
 
@@ -122,7 +122,7 @@ Ayrıca, App Service Ortamı bir belgeyi kilitleyen önerileri gözden geçirin 
 
 **Sorumluluk**: Müşteri
 
-**Azure Güvenlik Merkezi izleme**: [Azure Güvenlik kıyaslaması](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) , Güvenlik Merkezi için varsayılan Ilke girişimidir ve [Güvenlik Merkezi 'nin önerilerine](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)yöneliktir. Bu denetimle ilgili Azure Ilke tanımları, Güvenlik Merkezi tarafından otomatik olarak etkinleştirilir. Bu denetimle ilgili uyarılar, ilgili hizmetler için bir [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) planı gerektirebilir.
+**Azure Güvenlik Merkezi izleme**: [Azure Güvenlik kıyaslaması](/azure/governance/policy/samples/azure-security-benchmark) , Güvenlik Merkezi için varsayılan Ilke girişimidir ve [Güvenlik Merkezi 'nin önerilerine](/azure/security-center/security-center-recommendations)yöneliktir. Bu denetimle ilgili Azure Ilke tanımları, Güvenlik Merkezi tarafından otomatik olarak etkinleştirilir. Bu denetimle ilgili uyarılar, ilgili hizmetler için bir [Azure Defender](/azure/security-center/azure-defender) planı gerektirebilir.
 
 **Azure ilkesi yerleşik tanımları-Microsoft. Web**:
 
@@ -148,7 +148,7 @@ Web uygulamanıza erişimi bir Azure sanal ağından kısıtlamak için hizmet u
 
 **Sorumluluk**: Müşteri
 
-**Azure Güvenlik Merkezi izleme**: [Azure Güvenlik kıyaslaması](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) , Güvenlik Merkezi için varsayılan Ilke girişimidir ve [Güvenlik Merkezi 'nin önerilerine](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)yöneliktir. Bu denetimle ilgili Azure Ilke tanımları, Güvenlik Merkezi tarafından otomatik olarak etkinleştirilir. Bu denetimle ilgili uyarılar, ilgili hizmetler için bir [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) planı gerektirebilir.
+**Azure Güvenlik Merkezi izleme**: [Azure Güvenlik kıyaslaması](/azure/governance/policy/samples/azure-security-benchmark) , Güvenlik Merkezi için varsayılan Ilke girişimidir ve [Güvenlik Merkezi 'nin önerilerine](/azure/security-center/security-center-recommendations)yöneliktir. Bu denetimle ilgili Azure Ilke tanımları, Güvenlik Merkezi tarafından otomatik olarak etkinleştirilir. Bu denetimle ilgili uyarılar, ilgili hizmetler için bir [Azure Defender](/azure/security-center/azure-defender) planı gerektirebilir.
 
 **Azure ilkesi yerleşik tanımları-Microsoft. Network**:
 
@@ -162,7 +162,7 @@ Web uygulamanıza erişimi bir Azure sanal ağından kısıtlamak için hizmet u
 
 **Sorumluluk**: Müşteri
 
-**Azure Güvenlik Merkezi izleme**: [Azure Güvenlik kıyaslaması](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) , Güvenlik Merkezi için varsayılan Ilke girişimidir ve [Güvenlik Merkezi 'nin önerilerine](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)yöneliktir. Bu denetimle ilgili Azure Ilke tanımları, Güvenlik Merkezi tarafından otomatik olarak etkinleştirilir. Bu denetimle ilgili uyarılar, ilgili hizmetler için bir [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) planı gerektirebilir.
+**Azure Güvenlik Merkezi izleme**: [Azure Güvenlik kıyaslaması](/azure/governance/policy/samples/azure-security-benchmark) , Güvenlik Merkezi için varsayılan Ilke girişimidir ve [Güvenlik Merkezi 'nin önerilerine](/azure/security-center/security-center-recommendations)yöneliktir. Bu denetimle ilgili Azure Ilke tanımları, Güvenlik Merkezi tarafından otomatik olarak etkinleştirilir. Bu denetimle ilgili uyarılar, ilgili hizmetler için bir [Azure Defender](/azure/security-center/azure-defender) planı gerektirebilir.
 
 **Azure ilkesi yerleşik tanımları-Microsoft. Network**:
 
@@ -192,7 +192,7 @@ Ek bilgi için başvurulan bağlantıları gözden geçirin.
 
 - [Portal ile Application Gateway kullanarak uçtan uca TLS Yapılandırma](../application-gateway/end-to-end-ssl-portal.md)
 
-- [Bir App Service kilitleme konusunda açıklandığı gibi Ao 'un güvenliğini sağlama](/azure/app-service/environment/firewall-integrationEnvironment:)
+- [Bir App Service kilitleme konusunda açıklandığı gibi Ao 'un güvenliğini sağlama](/azure/app-service/environment/firewall-integration)
 
 **Sorumluluk**: Müşteri
 
@@ -229,7 +229,7 @@ Ek bilgi için başvurulan bağlantıları gözden geçirin.
 
 - [Portal ile Application Gateway kullanarak uçtan uca TLS Yapılandırma](../application-gateway/end-to-end-ssl-portal.md)
 
-- [Bir App Service kilitleme konusunda açıklandığı gibi Ao 'un güvenliğini sağlama](/azure/app-service/environment/firewall-integrationEnvironment:)
+- [Bir App Service kilitleme konusunda açıklandığı gibi Ao 'un güvenliğini sağlama](/azure/app-service/environment/firewall-integration)
 
 **Sorumluluk**: Müşteri
 
@@ -245,7 +245,7 @@ Tüm kaynakların etiketlerle oluşturulduğundan ve var olan etiketsiz kaynakla
 
 - [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
-- [Azure App Service erişim kısıtlamaları](/azure/app-service/app-service-ip-restriction)
+- [Azure App Service erişim kısıtlamaları](/azure/app-service/app-service-ip-restrictions)
 
 **Sorumluluk**: Müşteri
 
@@ -313,7 +313,7 @@ Ayrıca, Azure Key Vault erişim ilkeleri ve denetim geçmişi ile merkezi gizli
 
 **Sorumluluk**: Müşteri
 
-**Azure Güvenlik Merkezi izleme**: [Azure Güvenlik kıyaslaması](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) , Güvenlik Merkezi için varsayılan Ilke girişimidir ve [Güvenlik Merkezi 'nin önerilerine](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)yöneliktir. Bu denetimle ilgili Azure Ilke tanımları, Güvenlik Merkezi tarafından otomatik olarak etkinleştirilir. Bu denetimle ilgili uyarılar, ilgili hizmetler için bir [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) planı gerektirebilir.
+**Azure Güvenlik Merkezi izleme**: [Azure Güvenlik kıyaslaması](/azure/governance/policy/samples/azure-security-benchmark) , Güvenlik Merkezi için varsayılan Ilke girişimidir ve [Güvenlik Merkezi 'nin önerilerine](/azure/security-center/security-center-recommendations)yöneliktir. Bu denetimle ilgili Azure Ilke tanımları, Güvenlik Merkezi tarafından otomatik olarak etkinleştirilir. Bu denetimle ilgili uyarılar, ilgili hizmetler için bir [Azure Defender](/azure/security-center/azure-defender) planı gerektirebilir.
 
 **Azure ilkesi yerleşik tanımları-Microsoft. Web**:
 
@@ -623,7 +623,7 @@ Microsoft, App Service için temel altyapıyı yönetir ve verilerinizin kaybın
 
 **Sorumluluk**: Müşteri
 
-**Azure Güvenlik Merkezi izleme**: [Azure Güvenlik kıyaslaması](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) , Güvenlik Merkezi için varsayılan Ilke girişimidir ve [Güvenlik Merkezi 'nin önerilerine](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)yöneliktir. Bu denetimle ilgili Azure Ilke tanımları, Güvenlik Merkezi tarafından otomatik olarak etkinleştirilir. Bu denetimle ilgili uyarılar, ilgili hizmetler için bir [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) planı gerektirebilir.
+**Azure Güvenlik Merkezi izleme**: [Azure Güvenlik kıyaslaması](/azure/governance/policy/samples/azure-security-benchmark) , Güvenlik Merkezi için varsayılan Ilke girişimidir ve [Güvenlik Merkezi 'nin önerilerine](/azure/security-center/security-center-recommendations)yöneliktir. Bu denetimle ilgili Azure Ilke tanımları, Güvenlik Merkezi tarafından otomatik olarak etkinleştirilir. Bu denetimle ilgili uyarılar, ilgili hizmetler için bir [Azure Defender](/azure/security-center/azure-defender) planı gerektirebilir.
 
 **Azure ilkesi yerleşik tanımları-Microsoft. Web**:
 
@@ -1006,7 +1006,7 @@ Azure Ilkesi [Denetim], [reddetme] ve [dağıtım yoksa dağıt] uygulama, Azure
 
 **Sorumluluk**: Müşteri
 
-**Azure Güvenlik Merkezi izleme**: [Azure Güvenlik kıyaslaması](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) , Güvenlik Merkezi için varsayılan Ilke girişimidir ve [Güvenlik Merkezi 'nin önerilerine](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)yöneliktir. Bu denetimle ilgili Azure Ilke tanımları, Güvenlik Merkezi tarafından otomatik olarak etkinleştirilir. Bu denetimle ilgili uyarılar, ilgili hizmetler için bir [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) planı gerektirebilir.
+**Azure Güvenlik Merkezi izleme**: [Azure Güvenlik kıyaslaması](/azure/governance/policy/samples/azure-security-benchmark) , Güvenlik Merkezi için varsayılan Ilke girişimidir ve [Güvenlik Merkezi 'nin önerilerine](/azure/security-center/security-center-recommendations)yöneliktir. Bu denetimle ilgili Azure Ilke tanımları, Güvenlik Merkezi tarafından otomatik olarak etkinleştirilir. Bu denetimle ilgili uyarılar, ilgili hizmetler için bir [Azure Defender](/azure/security-center/azure-defender) planı gerektirebilir.
 
 **Azure ilkesi yerleşik tanımları-Microsoft. Web**:
 

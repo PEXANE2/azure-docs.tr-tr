@@ -6,12 +6,12 @@ ms.author: mimcco
 ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 03/25/2021
-ms.openlocfilehash: 086d7ec9d2bcae96ee64745a4382c4748aea291e
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: cfc20a30104e24a3950c71bdd8377544803d2f25
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105572570"
+ms.locfileid: "105604422"
 ---
 # <a name="azure-percept-firewall-configuration-and-security-recommendations"></a>Azure Percept güvenlik duvarı yapılandırması ve güvenlik önerileri
 
@@ -38,3 +38,8 @@ Azure Percept DK, kutudan çıkan çok çeşitli güvenlik özellikleri sunar. M
 - Rest verisinin etkin olduğundan emin olun
 - Cihaz duruşunu sürekli izleyin ve uyarılara hızlı bir şekilde yanıt verin
 - Cihaza erişimi olan yönetici sayısını sınırlayın
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+> [!div class="nextstepaction"]
+> [Azure Percept güvenliği hakkında daha fazla bilgi edinin](./overview-percept-security.md)

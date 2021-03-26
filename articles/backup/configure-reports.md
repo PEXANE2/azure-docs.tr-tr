@@ -3,12 +3,12 @@ title: Azure Backup raporlarını yapılandırma
 description: Log Analytics ve Azure çalışma kitaplarını kullanarak Azure Backup raporlarını yapılandırma ve görüntüleme
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: e9f3d9dfa33e71d827a338258001f2b52af62b06
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0720af0848aa8263587dfd9573d205abf73303d4
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102509378"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105562333"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup raporlarını yapılandırma
 
@@ -148,7 +148,7 @@ Bu sekmeyi kullanarak tüm yedekleme örneklerinizin her gün en az bir başarı
 
 * **Zaman aralığına göre Ilke uyumluluğu**: Bu görünümü kullanarak, belirli bir günde en az bir başarılı yedeklemeye sahip olduğunu ve bu gün için kaç tane başarılı bir yedekleme kalmadığını belirleyebilirsiniz. Seçili günde tetiklenen tüm yedekleme işlerinin ayrıntılarını görmek için bir satıra tıklayabilirsiniz. Zaman aralığını, son 60 gün gibi daha büyük bir değere artırdıysanız, kılavuz haftalık görünümde işlenir ve verilen hafta her gününde en az bir başarılı yedeklemeye sahip olan tüm öğelerin sayısını görüntüler. Benzer şekilde, daha büyük zaman aralıkları için aylık bir görünüm vardır.
 
-Haftalık olarak yedeklenen öğeler söz konusu olduğunda, bu kılavuz verilen hafta içinde en az bir başarılı yedeklemeye sahip olan tüm öğeleri belirlemenize yardımcı olur. Son 120 gün gibi daha büyük bir zaman aralığı için kılavuz aylık görünümde işlenir ve verilen aydaki her hafta en az bir başarılı yedeklemeye sahip olan tüm öğelerin sayısını görüntüler. Günlük, haftalık ve aylık görünümler hakkında daha fazla ayrıntı için [yedekleme raporlarında kullanılan kurallara](https://docs.microsoft.com/azure/backup/configure-reports#conventions-used-in-backup-reports) bakın.
+Haftalık olarak yedeklenen öğeler söz konusu olduğunda, bu kılavuz verilen hafta içinde en az bir başarılı yedeklemeye sahip olan tüm öğeleri belirlemenize yardımcı olur. Son 120 gün gibi daha büyük bir zaman aralığı için kılavuz aylık görünümde işlenir ve verilen aydaki her hafta en az bir başarılı yedeklemeye sahip olan tüm öğelerin sayısını görüntüler. Günlük, haftalık ve aylık görünümler hakkında daha fazla ayrıntı için [yedekleme raporlarında kullanılan kurallara](#conventions-used-in-backup-reports) bakın.
 
 ![Döneme göre ilke bağlılığı](./media/backup-azure-configure-backup-reports/policy-adherence-by-time-period.png)
 
@@ -166,7 +166,7 @@ Mantıksal uygulama oluşturulduktan sonra Azure Izleyici günlüklerine ve Offi
 
 Yedekleme raporları, [Azure izleyici günlüklerinde sistem işlevlerini](backup-reports-system-functions.md)kullanır. Bu işlevler, LA 'daki ham Azure Backup tablolarındaki veriler üzerinde çalışır ve basit sorgular kullanarak yedeklemeyle ilgili tüm varlıklarınızın bilgilerini kolayca almanıza yardımcı olan biçimli verileri döndürür. 
 
-Yedekleme raporlarını temel olarak kullanarak kendi raporlama çalışma kitaplarınızı oluşturmak için, yedekleme raporları ' na gidebilir, raporun en üstünde **Düzenle** ' ye tıklayabilir ve raporlarda kullanılan sorguları görüntüleyebilir/düzenleyebilirsiniz. Özel raporların nasıl oluşturulacağı hakkında daha fazla bilgi edinmek için [Azure çalışma kitapları belgelerine](https://docs.microsoft.com/azure/azure-monitor/visualize/workbooks-overview) bakın. 
+Yedekleme raporlarını temel olarak kullanarak kendi raporlama çalışma kitaplarınızı oluşturmak için, yedekleme raporları ' na gidebilir, raporun en üstünde **Düzenle** ' ye tıklayabilir ve raporlarda kullanılan sorguları görüntüleyebilir/düzenleyebilirsiniz. Özel raporların nasıl oluşturulacağı hakkında daha fazla bilgi edinmek için [Azure çalışma kitapları belgelerine](../azure-monitor/visualize/workbooks-overview.md) bakın. 
 
 ## <a name="export-to-excel"></a>Excel'e aktar
 

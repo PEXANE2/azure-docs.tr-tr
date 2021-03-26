@@ -12,12 +12,12 @@ ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/05/2021
-ms.openlocfilehash: 2744d51b6d68ed494050be10a9f0e4d1f59cdc49
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a426ee39ba3c0f50b9a6c1fb9c7de1ef8e7291b2
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102204074"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566362"
 ---
 # <a name="configure-azure-ssis-integration-runtime-for-business-continuity-and-disaster-recovery-bcdr"></a>İş sürekliliği ve olağanüstü durum kurtarma (BCDR) için Azure-SSIS tümleştirme çalışma zamanını yapılandırma 
 
@@ -25,7 +25,7 @@ ms.locfileid: "102204074"
 
 Azure Data Factory (ADF) içindeki Azure SQL veritabanı/yönetilen örnek ve SQL Server Integration Services (SSIS), SQL Server geçiş için önerilen tüm hizmet olarak platform (PaaS) çözümü olarak birleştirilebilir. SSIS projelerinizi Azure SQL veritabanı/yönetilen örnek tarafından barındırılan SSIS Katalog veritabanına (SSSıSDB) dağıtabilir ve ADF 'de Azure SSIS Integration Runtime (IR) üzerinde SSIS paketlerinizi çalıştırabilirsiniz.
 
-İş sürekliliği ve olağanüstü durum kurtarma (BCDR) için Azure SQL veritabanı/yönetilen örnek, [coğrafi çoğaltma/yük devretme grubuyla](https://docs.microsoft.com/azure/azure-sql/database/auto-failover-group-overview)yapılandırılabilir. burada, okuma/yazma erişimi olan birincil bir Azure bölgesindeki SSISDB, salt okuma erişimi (ikincil rol) ile bir ikincil bölgeye sürekli olarak çoğaltılır. Birincil bölgede bir olağanüstü durum oluştuğunda, birincil ve ikincil Ssisdb rolleri değiştirdikleri için bir yük devretme tetiklenecektir.
+İş sürekliliği ve olağanüstü durum kurtarma (BCDR) için Azure SQL veritabanı/yönetilen örnek, [coğrafi çoğaltma/yük devretme grubuyla](../azure-sql/database/auto-failover-group-overview.md)yapılandırılabilir. burada, okuma/yazma erişimi olan birincil bir Azure bölgesindeki SSISDB, salt okuma erişimi (ikincil rol) ile bir ikincil bölgeye sürekli olarak çoğaltılır. Birincil bölgede bir olağanüstü durum oluştuğunda, birincil ve ikincil Ssisdb rolleri değiştirdikleri için bir yük devretme tetiklenecektir.
 
 BCDR için, Azure SQL veritabanı/yönetilen örnek yük devretme grubuyla eşitlenmiş bir Azure SSIS IR çifti de yapılandırabilirsiniz. Bu, belirli bir zamanda Azure-SSIS IRS çalıştıran bir çiftiyle, paket yürütme günlükleri (birincil rol) yazmak ve yürütmek için birincil SSSıSDB 'ye erişebilir, diğeri ise yalnızca başka bir yerde dağıtılan paketler için (ikincil rol) aynı anda uygulanabilir. SSıSDB yük devretmesi gerçekleştiğinde, birincil ve ikincil Azure-SSIS IRS de rolleri takas eder ve her ikisi de çalışıyorsa neredeyse sıfır kapalı kalma süresi olacaktır.
 
@@ -39,7 +39,7 @@ Azure SQL veritabanı yük devretme grubuyla eşitlenmiş bir çift bekleme Azur
 
    **Tümleştirme çalışma zamanı kurulum** bölmesinin **dağıtım ayarları** sayfasında [SSISDB kullanmayı seçerken](./tutorial-deploy-ssis-packages-azure.md#creating-ssisdb) , **sssısdb yük devretmesi ile çift bekleme Azure-SSIS Integration Runtime çiftini kullan** onay kutusunu da seçin. **Çift bekleme çifti adı** için, birincil ve ikincil Azure-SSIS IRS çiftini tanımlayacak bir ad girin. Birincil Azure-SSIS IR oluşturma işlemi tamamlandığında, başlatılır ve okuma/yazma erişimiyle sizin adınıza oluşturulacak birincil bir SSıSDB 'ye eklenir. Yalnızca yeniden yapılandırdıysanız, yeniden başlatmanız gerekir.
 
-1. Azure portal kullanarak, birincil SSSıSDB 'nin birincil Azure SQL veritabanı sunucunuzun **genel bakış** sayfasında oluşturulup oluşturulmayacağını kontrol edebilirsiniz. Oluşturulduktan sonra, [birincil ve Ikincil Azure SQL veritabanı sunucularınız için bir yük devretme grubu oluşturabilir ve bu gruba](https://docs.microsoft.com/azure/azure-sql/database/failover-group-add-single-database-tutorial?tabs=azure-portal#2---create-the-failover-group) , **Yük devretme grupları** sayfasında SSISDB ekleyebilirsiniz. Yük devretme grubunuz oluşturulduktan sonra, birincil SSSıSDB 'nin ikincil Azure SQL veritabanı sunucunuzun **genel bakış** sayfasında salt okuma erişimiyle ikincil bir sunucuya çoğaltılıp çoğaltılmadığını kontrol edebilirsiniz.
+1. Azure portal kullanarak, birincil SSSıSDB 'nin birincil Azure SQL veritabanı sunucunuzun **genel bakış** sayfasında oluşturulup oluşturulmayacağını kontrol edebilirsiniz. Oluşturulduktan sonra, [birincil ve Ikincil Azure SQL veritabanı sunucularınız için bir yük devretme grubu oluşturabilir ve bu gruba](../azure-sql/database/failover-group-add-single-database-tutorial.md?tabs=azure-portal#2---create-the-failover-group) , **Yük devretme grupları** sayfasında SSISDB ekleyebilirsiniz. Yük devretme grubunuz oluşturulduktan sonra, birincil SSSıSDB 'nin ikincil Azure SQL veritabanı sunucunuzun **genel bakış** sayfasında salt okuma erişimiyle ikincil bir sunucuya çoğaltılıp çoğaltılmadığını kontrol edebilirsiniz.
 
 1. Azure portal/ADF Kullanıcı arabirimini kullanarak, ikincil bölgede SSıSDB barındırmak için ikincil Azure SQL veritabanı sunucunuz ile başka bir Azure-SSIS IR oluşturabilirsiniz. Bu, ikincil Azure-SSIS IR olacaktır. Tüm BCDR için, bağımlı olduğu tüm kaynakların ikincil bölgede da oluşturulduğundan emin olun. Örneğin, özel kurulum betiği/dosyaları depolamak için Azure depolama, düzenleme/zamanlama paketi yürütmeleri için ADF, vb.
 
@@ -51,13 +51,13 @@ Azure SQL veritabanı yük devretme grubuyla eşitlenmiş bir çift bekleme Azur
 
 1. [Düzenleme/zamanlama paket yürütmesi IÇIN ADF kullanıyorsanız](./how-to-invoke-ssis-package-ssis-activity.md), WSIS paketi etkinliklerini ve ilişkili TETIKLEYICILERLE ılgılı ADF işlem hatlarının tümünün, başlangıçta devre dışı bırakılan tetikleyicilerle ikincil ADF 'nize kopyalandığından emin olun. SSıSDB yük devretmesi gerçekleştiğinde, bunları etkinleştirmeniz gerekir.
 
-1. Birincil ve ikincil Azure-SSIS IRS 'nın rolleri takas etmeksizin [Azure SQL veritabanı yük devretme grubunuzu test](https://docs.microsoft.com/azure/azure-sql/database/failover-group-add-single-database-tutorial?tabs=azure-portal#3---test-failover) edebılır ve [ADF portalındaki Azure-SSIS IR izleme sayfasını](./monitor-integration-runtime.md#monitor-the-azure-ssis-integration-runtime-in-azure-portal) kontrol edebilirsiniz. 
+1. Birincil ve ikincil Azure-SSIS IRS 'nın rolleri takas etmeksizin [Azure SQL veritabanı yük devretme grubunuzu test](../azure-sql/database/failover-group-add-single-database-tutorial.md?tabs=azure-portal#3---test-failover) edebılır ve [ADF portalındaki Azure-SSIS IR izleme sayfasını](./monitor-integration-runtime.md#monitor-the-azure-ssis-integration-runtime-in-azure-portal) kontrol edebilirsiniz. 
 
 ## <a name="configure-a-dual-standby-azure-ssis-ir-pair-with-azure-sql-managed-instance-failover-group"></a>Azure SQL yönetilen örnek yük devretme grubu ile çift bekleme Azure-SSIS IR çifti yapılandırma
 
 Azure SQL yönetilen örnek yük devretme grubuyla eşitlenmiş bir çift bekleme Azure-SSIS IR çifti yapılandırmak için aşağıdaki adımları izleyin.
 
-1. Azure portal kullanarak birincil [ve Ikincil Azure SQL yönetilen örneklerinizin](https://docs.microsoft.com/azure/azure-sql/managed-instance/failover-group-add-instance-tutorial?tabs=azure-portal) BIRINCIL Azure SQL yönetilen örneğinizin **Yük devretme grupları** sayfasında bir yük devretme grubu oluşturabilirsiniz.
+1. Azure portal kullanarak birincil [ve Ikincil Azure SQL yönetilen örneklerinizin](../azure-sql/managed-instance/failover-group-add-instance-tutorial.md?tabs=azure-portal) BIRINCIL Azure SQL yönetilen örneğinizin **Yük devretme grupları** sayfasında bir yük devretme grubu oluşturabilirsiniz.
 
 1. Azure portal/ADF Kullanıcı arabirimini kullanarak, birincil bölgede SSıSDB barındırmak üzere birincil Azure SQL yönetilen örneğiniz ile yeni bir Azure-SSIS IR oluşturabilirsiniz. Birincil Azure SQL yönetilen örneğiniz tarafından barındırılan SSıDB 'ye zaten çalışmakta olan bir Azure-SSIS IR varsa ve hala çalışıyorsa, yeniden yapılandırmak için önce durdurmanız gerekir. Bu, birincil Azure-SSIS IR olacaktır.
 
@@ -112,7 +112,7 @@ Azure SQL yönetilen örnek yük devretme grubuyla eşitlenmiş bir çift beklem
 
 1. [Düzenleme/zamanlama paket yürütmesi IÇIN ADF kullanıyorsanız](./how-to-invoke-ssis-package-ssis-activity.md), WSIS paketi etkinliklerini ve ilişkili TETIKLEYICILERLE ılgılı ADF işlem hatlarının tümünün, başlangıçta devre dışı bırakılan tetikleyicilerle ikincil ADF 'nize kopyalandığından emin olun. SSıSDB yük devretmesi gerçekleştiğinde, bunları etkinleştirmeniz gerekir.
 
-1. [Azure SQL yönetilen örnek yük devretme grubunuzu test](https://docs.microsoft.com/azure/azure-sql/managed-instance/failover-group-add-instance-tutorial?tabs=azure-portal#test-failover) edebilir ve birincil ve ikincil Azure-SSIS IRS 'nin rolleri takas ETMEKSIZIN [ADF portalındaki Azure-SSIS IR izleme sayfasını](./monitor-integration-runtime.md#monitor-the-azure-ssis-integration-runtime-in-azure-portal) gözden geçirin. 
+1. [Azure SQL yönetilen örnek yük devretme grubunuzu test](../azure-sql/managed-instance/failover-group-add-instance-tutorial.md?tabs=azure-portal#test-failover) edebilir ve birincil ve ikincil Azure-SSIS IRS 'nin rolleri takas ETMEKSIZIN [ADF portalındaki Azure-SSIS IR izleme sayfasını](./monitor-integration-runtime.md#monitor-the-azure-ssis-integration-runtime-in-azure-portal) gözden geçirin. 
 
 ## <a name="attach-a-new-azure-ssis-ir-to-existing-ssisdb-hosted-by-azure-sql-databasemanaged-instance"></a>Azure SQL veritabanı/yönetilen örnek tarafından barındırılan var olan SSSıSDB 'ye yeni Azure-SSIS IR iliştirme
 

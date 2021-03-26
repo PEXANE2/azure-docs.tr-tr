@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: ccabffc0e5a65e41f31c3c80703e67f78e8b5f9e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 87cd32dcace6fd38180cc09ba999efca76f5ae16
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102101010"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105605476"
 ---
 # <a name="add-a-polygon-extrusion-layer-to-the-map-android-sdk"></a>Haritaya Çokgen kalıp ekleme (Android SDK)
 
@@ -106,7 +106,7 @@ map.layers.add(layer, "labels")
 
 ::: zone-end
 
-Aşağıdaki ekran görüntüsünde, çokgen bir katman kullanarak dikey olarak uzatılmış bir çokgen olan yukarıdaki kod gösterilmektedir.
+Aşağıdaki ekran görüntüsünde, çokgen bir katman kullanılarak dikey olarak uzatılmış bir çokgen işlenen kod gösterilmektedir.
 
 ![Çokgen katman kullanarak dikey olarak uzatılmış çokgen ile eşleme](media/map-extruded-polygon-android/polygon-extrusion-layer.jpg)
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: f4baca7f261aa7544b54992a5e1ddf620794774f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 785567685b77183df0f212897b923d911ac045f6
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94962289"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567316"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Yaygın Azure veritabanı geçiş hizmeti sorunlarını ve hatalarını giderme
 
@@ -102,7 +102,7 @@ Azure Veritabanı Geçiş Hizmeti proje sihirbazında kaynağa bağlanmayı dene
 
 | Nedeni         | Çözüm    |
 | ------------- | ------------- |
-| [ExpressRoute](https://azure.microsoft.com/services/expressroute/)kullanılırken, Azure veritabanı geçiş hizmeti, hizmetle Ilişkili sanal ağ alt ağında üç hizmet uç noktası sağlanması [gerekir](./tutorial-sql-server-azure-sql-online.md) :<br> --Service Bus uç noktası<br> --Depolama uç noktası<br> --Hedef veritabanı uç noktası (örneğin, SQL uç noktası, Cosmos DB uç noktası)<br><br><br><br><br> | Kaynak ve Azure veritabanı geçiş hizmeti arasında ExpressRoute bağlantısı için gerekli hizmet uç noktalarını [etkinleştirin](./tutorial-sql-server-azure-sql-online.md) . <br><br><br><br><br><br><br><br> |
+| [ExpressRoute](https://azure.microsoft.com/services/expressroute/)kullanılırken, Azure veritabanı geçiş hizmeti, hizmetle Ilişkili sanal ağ alt ağında üç hizmet uç noktası sağlanması [gerekir](./tutorial-sql-server-to-azure-sql.md) :<br> --Service Bus uç noktası<br> --Depolama uç noktası<br> --Hedef veritabanı uç noktası (örneğin, SQL uç noktası, Cosmos DB uç noktası)<br><br><br><br><br> | Kaynak ve Azure veritabanı geçiş hizmeti arasında ExpressRoute bağlantısı için gerekli hizmet uç noktalarını [etkinleştirin](./tutorial-sql-server-to-azure-sql.md) . <br><br><br><br><br><br><br><br> |
 
 ## <a name="lock-wait-timeout-error-when-migrating-a-mysql-database-to-azure-db-for-mysql"></a>MySQL için Azure DB 'ye bir MySQL veritabanını geçirirken kilit bekleme zaman aşımı hatası
 
@@ -126,7 +126,7 @@ Azure veritabanı geçiş hizmeti 'ni adlandırılmış örnek veya dinamik bir 
 
 ## <a name="additional-known-issues"></a>Bilinen diğer sorunlar
 
-* [Azure SQL veritabanı 'na çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları](./known-issues-azure-sql-online.md)
+* [Azure SQL veritabanı 'na çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları](./index.yml)
 * [MySQL için Azure veritabanı 'na çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları](./known-issues-azure-mysql-online.md)
 * [PostgreSQL için Azure veritabanı 'na çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları](./known-issues-azure-postgresql-online.md)
 

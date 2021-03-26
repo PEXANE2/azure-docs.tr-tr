@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/03/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 7374c2727048e323ce0483dd42c574134e7315bd
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f1d3223114e9f691bfb3802a65abea003a7aec6e
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102040558"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105582574"
 ---
 İş ortakları tarafından sunulan hizmetler hakkında daha fazla bilgi için bu bölümdeki bağlantıları kontrol edebilirsiniz. Dal cihazı ortağınız aşağıdaki bölümde listelenmiyorsa, dal cihaz sağlayıcınızın bizimle iletişim kurun. E-posta göndererek bizimle iletişim kurabilirler azurevirtualwan@microsoft.com .
 
@@ -26,7 +26,7 @@ ms.locfileid: "102040558"
 | [Cloudgenx](https://www.cloudgenix.com/microsoft-azure/) |[Cloudgenx Azure sanal WAN CloudBlade dağıtım kılavuzu](https://sd-wan.cloudgenix.com/Q319ConfigurationGuide_Registration.html)|
 | [Fortinet](https://www.fortinet.com/azure-vwan) |[Fortigate ve Microsoft Azure sanal WAN tümleştirmesi dağıtım kılavuzu](https://www.fortinet.com/content/dam/fortinet/assets/deployment-guides/dg-fortigate-azure-wan-integration.pdf),[yönlendirme senaryosu blogu ](https://www.fortinet.com/blog/business-and-technology/fortinet-secure-sd-wan-enhances-azure-virtual-wan-integrations)|
 |[HPE Aruba]( https://www.arubanetworks.com/microsoft-vwan/)|[Aruba SD-WAN ve Microsoft Azure sanal WAN dağıtım kılavuzu](https://www.arubanetworks.com/assets/tg/DG_Using-Aruba-SD-WAN-with-Microsoft-Azure-Virtual-WAN.pdf)|
-| [Netlen Ry](https://netfoundry.io/solutions/netfoundry-for-microsoft-azure-virtual-wan/)|[Netbulunan Destek Merkezi: Azure sanal WAN](https://support.netfoundry.io/hc/en-us/articles/360018137891-Introduction-to-Azure-Virtual-WAN-sites)|
+| [Netlen Ry](https://netfoundry.io/solutions/netfoundry-for-microsoft-azure-virtual-wan/)|[Netbulunan Destek Merkezi: Azure sanal WAN](https://support.netfoundry.io/hc/articles/360054527871-Configure-NetFoundry-Network-for-Azure-Windows-Virtual-Desktop-Short-Path)|
 |[Nuage/Nokia](https://www.nuagenetworks.net/our-partners/nuage-networks-virtualized-cloud-interconnect-for-azure/)|[Nuage ve Azure sanal WAN dağıtım kılavuzu](https://onestore.nokia.com/asset/210073)|
 |[Açık sistemler]( https://open-systems.com/solutions/microsoft-azure-virtual-wan)|[Açık sistemler ve Azure sanal WAN dağıtım kılavuzu](https://open-systems.com/wp-content/uploads/2020/07/Azure-Virtual-WAN-UserGuide.pdf)|
 |[Palo Alto Networks](https://researchcenter.paloaltonetworks.com/2018/09/azure-vwan-integration/) |[Palo Alto Networks Azure sanal WAN dağıtım kılavuzu](https://github.com/PaloAltoNetworks/microsoft_azure_virtual_wan)|

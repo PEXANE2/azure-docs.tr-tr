@@ -3,12 +3,12 @@ title: 'Hızlı başlangıç: REST API bir şema oluşturma'
 description: Bu hızlı başlangıçta, REST API kullanarak yapıtlar oluşturmak, tanımlamak ve dağıtmak için Azure şemaları kullanırsınız.
 ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: eaf6dbb2ff14106ba8d2798d86a8f093855de85e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ceea54957e52f3b33d2c3fb2af190f15e6c94ec3
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98915650"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105558984"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Hızlı başlangıç: REST API Azure Blueprint tanımlama ve atama
 
@@ -329,7 +329,7 @@ Her bir REST API URI'sinde kendi değerlerinizle değiştirmeniz gereken değiş
 - `{YourMG}` -Yönetim grubunuzun KIMLIĞIYLE değiştirin
 - `{subscriptionId}` - Abonelik kimliğinizle değiştirin
 
-1. Azure Blueprints hizmet sorumlusuna hedef abonelikte **Sahip** rolünü atayın. AppID statiktir ( `f71766dc-90d9-4b7d-bd9d-4499c4331c3f` ), ancak hizmet sorumlusu kimliği kiracıya göre değişir. Aşağıdaki REST API ile kiracınıza ait ayrıntılı bilgileri isteyebilirsiniz. Farklı yetkilere sahip [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md)kullanır.
+1. Azure Blueprints hizmet sorumlusuna hedef abonelikte **Sahip** rolünü atayın. AppID statiktir ( `f71766dc-90d9-4b7d-bd9d-4499c4331c3f` ), ancak hizmet sorumlusu kimliği kiracıya göre değişir. Aşağıdaki REST API ile kiracınıza ait ayrıntılı bilgileri isteyebilirsiniz. Farklı yetkilere sahip [Azure Active Directory Graph API](/graph/migrate-azure-ad-graph-planning-checklist)kullanır.
 
    - REST API URI'si
 
@@ -337,7 +337,7 @@ Her bir REST API URI'sinde kendi değerlerinizle değiştirmeniz gereken değiş
      GET https://graph.windows.net/{tenantId}/servicePrincipals?api-version=1.6&$filter=appId eq 'f71766dc-90d9-4b7d-bd9d-4499c4331c3f'
      ```
 
-1. Bir aboneliğe atayarak şema dağıtımını çalıştırın. **contributors** ve **owners** parametreleri, rol ataması için sorumluların objectId değerlerinden oluşan bir diziye ihtiyaç duyduğu için [Azure Active Directory Graph API'sini](../../active-directory/develop/active-directory-graph-api.md) kullanarak kendi kullanıcılarınızın, gruplarınızın veya hizmet sorumlularınızın objectId değerlerini toplayıp **İstek Gövdesinde** kullanabilirsiniz.
+1. Bir aboneliğe atayarak şema dağıtımını çalıştırın. **contributors** ve **owners** parametreleri, rol ataması için sorumluların objectId değerlerinden oluşan bir diziye ihtiyaç duyduğu için [Azure Active Directory Graph API'sini](/graph/migrate-azure-ad-graph-planning-checklist) kullanarak kendi kullanıcılarınızın, gruplarınızın veya hizmet sorumlularınızın objectId değerlerini toplayıp **İstek Gövdesinde** kullanabilirsiniz.
 
    - REST API URI'si
 

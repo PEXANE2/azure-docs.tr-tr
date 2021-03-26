@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: c952fe33b434aac972be6a1eb03b63698eb64fc6
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 995914fab0e7112327ebf6ab8e32fb67181f481e
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104782325"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608927"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Azure geçişi Gereç ve bulma sorunlarını giderme
 
@@ -260,6 +260,34 @@ Tipik uygulama bulma hataları tabloda özetlenir.
 | 10007: keşfedilen meta veriler işlenemiyor. | JSON seri durumdan çıkarılmaya çalışılırken hata oluştu. | Bir çözüm için Microsoft Desteği başvurun. |
 | 10008: sunucuda bir dosya oluşturulamıyor. | Sorun bir iç hata nedeniyle oluşabilir. | Bir çözüm için Microsoft Desteği başvurun. |
 | 10009: keşfedilen meta veriler sunucudaki bir dosyaya yazılamıyor. | Sorun, bir iç hata nedeniyle oluşabilir. | Bir çözüm için Microsoft Desteği başvurun. |
+
+## <a name="common-sql-server-instances-and-database-discovery-errors"></a>Ortak SQL Server örnekleri ve veritabanı bulma hataları
+
+Azure geçişi, Azure geçişi: bulma ve değerlendirme kullanılarak şirket içi makinelerde çalışan SQL Server örneklerinin ve veritabanlarının bulunmasını destekler. SQL bulma Şu anda yalnızca VMware için destekleniyor. Başlamak için [bulma](tutorial-discover-vmware.md) öğreticisine bakın.
+
+Tipik SQL bulma hataları tabloda özetlenmiştir.
+
+| **Hata** | **Neden** | **Eylem** |
+|--|--|--|
+|30000: Bu SQL Server ilişkili kimlik bilgileri çalışmadı.|El ile ilişkili kimlik bilgileri geçersiz veya otomatik olarak ilişkilendirilen kimlik bilgileri artık SQL Server erişemez.|Gereç üzerinde SQL Server kimlik bilgileri ekleyin ve sonraki SQL bulma döngüsüne veya yenilemeyi zorlamaya kadar bekleyin.|
+|30001: gereç SQL Server bağlantı kurulamıyor.|1. gereç SQL Server için ağ üzerinde bir görüş satırı yok.<br/>2. SQL Server ile gereç arasındaki bağlantıyı engelleyen güvenlik duvarı.|1. SQL Server gereç 'tan erişilebilir hale getirin.<br/>2. gerecden gelen bağlantılara SQL Server izin verin.|
+|30003: sertifika güvenilir değil.|SQL Server çalıştıran bilgisayarda güvenilir bir sertifika yüklü değil.|Lütfen sunucuda güvenilir bir sertifika ayarlayın. [Daha fazla bilgi edinin](https://go.microsoft.com/fwlink/?linkid=2153616)|
+|30004: Izinler yetersiz.|SQL Server örneklerini taramak için gereken izinlerin bulunmaması nedeniyle bu hata oluşabilir. |SQL Server örnekleri ve veritabanlarını bulmak için gereç üzerinde sunulan kimlik bilgileri/hesaba sysadmin rolü verin. [Daha fazla bilgi edinin](https://go.microsoft.com/fwlink/?linkid=2153511)|
+|30005: SQL Server oturum açma, varsayılan ana veritabanı ile ilgili bir sorun nedeniyle bağlanamadı.|Veritabanı geçersiz ya da oturum açma, veritabanında bağlanma iznine sahip değil.|Varsayılan veritabanını ana veritabanına ayarlamak için ALTER LOGıN kullanın.<br/>SQL Server örnekleri ve veritabanlarını bulmak için gereç üzerinde sunulan kimlik bilgileri/hesaba sysadmin rolü verin. [Daha fazla bilgi edinin](https://go.microsoft.com/fwlink/?linkid=2153615)|
+|30006: SQL Server oturum açma, Windows kimlik doğrulamasıyla kullanılamaz.|1. oturum açma SQL Server bir oturum açma olabilir, ancak sunucu yalnızca Windows kimlik doğrulamasını kabul eder.<br/>2. SQL Server kimlik doğrulaması kullanarak bağlanmaya çalışıyorsunuz, ancak kullanılan oturum açma SQL Server yok.<br/>3. oturum açma Windows kimlik doğrulaması kullanabilir, ancak oturum açma tanınmayan bir Windows sorumlusuyla yapılır. Tanınmayan bir Windows sorumlusu, oturum açmanın Windows tarafından doğrulanamadığı anlamına gelir. Bunun nedeni, Windows oturumunun güvenilmeyen bir etki alanından olması olabilir.|SQL Server kimlik doğrulaması kullanarak bağlanmaya çalışıyorsanız, SQL Server karma kimlik doğrulama modunda yapılandırıldığını ve SQL Server oturum açma var olduğunu doğrulayın.<br/>Windows kimlik doğrulamasını kullanarak bağlanmaya çalışıyorsanız doğru etki alanında doğru şekilde oturum açtığınızı doğrulayın. [Daha fazla bilgi edinin](https://go.microsoft.com/fwlink/?linkid=2153421)|
+|30007: parola zaman aşımına uğradı.|Hesabın parolasının süresi doldu.|SQL Server oturum açma parolasının süresi doldu, parolayı yeniden ayarlayıp/veya parola sona erme tarihini uzatamazsınız. [Daha fazla bilgi edinin](https://go.microsoft.com/fwlink/?linkid=2153419)|
+|30008: parolanın değiştirilmesi gerekiyor.|Hesabın parolasının değiştirilmesi gerekiyor.|SQL Server bulma için belirtilen kimlik bilgisinin parolasını değiştirin. [Daha fazla bilgi edinin](https://go.microsoft.com/fwlink/?linkid=2153318)|
+|30009: bir iç hata oluştu.|SQL Server örnekleri ve veritabanları bulunurken iç hata oluştu. |Sorun devam ederse lütfen Microsoft desteği 'ne başvurun.|
+|30010: veritabanı bulunamadı.|Seçili sunucu örneğinden herhangi bir veritabanı bulunamadı.|SQL veritabanlarını bulmak için gereçte belirtilen kimlik bilgilerine/hesaba sysadmin rolü verin.|
+|30011: bir SQL örneği veya veritabanı değerlendirilirken bir iç hata oluştu.|Değerlendirme gerçekleştirilirken iç hata oluştu.|Sorun devam ederse lütfen Microsoft desteği 'ne başvurun.|
+|30012: SQL bağlantısı başarısız oldu.|1. sunucudaki güvenlik duvarı bağlantıyı reddetti.<br/>2. SQL Server Browser hizmeti (sqlbrowser) başlatılmadı.<br/>3. sunucu büyük olasılıkla başlatılmadığı için SQL Server istemci isteğine yanıt vermedi.<br/>4. SQL Server istemcisi sunucuya bağlanamıyor. Sunucu uzak bağlantıları kabul edecek şekilde yapılandırılmadığı için bu hata oluşabilir.<br/>5. SQL Server istemcisi sunucuya bağlanamıyor. İstemci sunucunun adını çözümleyemediği veya sunucu adı yanlış olduğu için hata oluşabilir.<br/>6. TCP veya adlandırılmış kanal protokolleri etkin değildir.<br/>7. belirtilen SQL Server örneği adı geçerli değil.|Bağlantı sorununu gidermek için lütfen [Bu](https://go.microsoft.com/fwlink/?linkid=2153317) etkileşimli kullanıcı kılavuzunu kullanın. Lütfen hizmette güncelleştirilecek verilerin kılavuzunu tamamladıktan sonra 24 saat bekleyin. Sorun devam ederse lütfen Microsoft desteği 'ne başvurun.|
+|30013: SQL Server örneğiyle bağlantı kurulurken bir hata oluştu.|1. SQL Server adı gereç tarafından çözümlenemiyor.<br/>2. SQL Server uzak bağlantılara izin vermez.|SQL Server 'ı gerecten ping yapabiliyorsanız, bu sorunun otomatik olarak çözümlendiğini denetlemek için lütfen 24 saat bekleyin. Değilse, lütfen Microsoft desteği 'ne başvurun. [Daha fazla bilgi edinin](https://go.microsoft.com/fwlink/?linkid=2153316)|
+|30014: Kullanıcı adı veya parola geçersiz.| Bu hata, hatalı bir parola veya Kullanıcı adı içeren bir kimlik doğrulama hatası nedeniyle oluşabilir.|Lütfen geçerli bir Kullanıcı adı ve parola ile kimlik bilgisi girin. [Daha fazla bilgi edinin](https://go.microsoft.com/fwlink/?linkid=2153315)|
+|30015: SQL örneği bulunurken bir iç hata oluştu.|SQL örneği bulunurken bir iç hata oluştu.|Sorun devam ederse lütfen Microsoft desteği 'ne başvurun.|
+|30016: '% Instance; ' örneğine olan bağlantı bir zaman aşımı nedeniyle başarısız oldu.| Bu, sunucuda güvenlik duvarı bağlantıyı reddederse meydana gelebilir.|SQL Server güvenlik duvarının bağlantıları kabul edecek şekilde yapılandırılıp yapılandırılmadığını doğrulayın. Hata devam ederse, lütfen Microsoft desteğine başvurun. [Daha fazla bilgi edinin](https://go.microsoft.com/fwlink/?linkid=2153611)|
+|30017: iç hata oluştu.|İşlenmeyen özel durum.|Sorun devam ederse lütfen Microsoft desteği 'ne başvurun.|
+|30018: iç hata oluştu.|SQL örneğinin geçici DB boyutu, dosya boyutu gibi veriler toplanırken bir iç hata oluştu.|Lütfen 24 saat bekleyin ve sorun devam ederse Microsoft desteği 'ne başvurun.|
+|30019: bir iç hata oluştu.|Bir veritabanının veya örneğin bellek kullanımı gibi performans ölçümleri toplanırken bir iç hata oluştu.|Lütfen 24 saat bekleyin ve sorun devam ederse Microsoft desteği 'ne başvurun.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

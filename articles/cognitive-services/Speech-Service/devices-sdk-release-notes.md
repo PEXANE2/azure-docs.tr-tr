@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: wellsi
-ms.openlocfilehash: 37bbc8c7c2b81c22ffd8704e655805cc63cd9d45
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: f9215469b1436ce9dc95c140e6969366d80d1ced
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105045000"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105607142"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>Sürüm notları: konuşma cihazları SDK 'Sı
 
@@ -107,7 +107,7 @@ Aşağıdaki bölümlerde en son sürümlerde değişiklikler listelenmiştir.
 **Yeni değişiklikler**
 
 - Bu sürümde, bir dizi Son değişiklik yapılmıştır. API 'Lerle ilgili ayrıntılar için lütfen [Bu sayfayı](https://aka.ms/csspeech/breakingchanges_1_0_0) kontrol edin.
-- KWS model dosyaları, konuşma cihazları SDK 1.0.1 ile uyumlu değildir. Yeni anahtar sözcük dosyaları cihaza yazıldıktan sonra var olan anahtar sözcük dosyaları silinir.
+- Anahtar sözcük tanıma modeli dosyaları, konuşma cihazları SDK 1.0.1 ile uyumlu değildir. Yeni anahtar sözcük dosyaları cihaza yazıldıktan sonra var olan anahtar sözcük dosyaları silinir.
 
 ## <a name="speech-devices-sdk-050-2018-aug-release"></a>Konuşma cihazları SDK 0.5.0:2018-Ağu yayını
 

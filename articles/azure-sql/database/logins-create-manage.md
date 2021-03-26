@@ -13,12 +13,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 03/23/2020
-ms.openlocfilehash: d03bce1566d4f56a576c980723571f587296236f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6383c0fa3aad15da8abaea79136a75732ce9ea01
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96452420"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105605782"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>SQL Veritabanı’na, SQL Yönetilen Örneği’ne ve Azure Synapse Analytics’e veritabanı erişimini yetkilendirme
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -142,7 +142,7 @@ Bir veritabanında bir oturum açma ya da kapsanan Kullanıcı olarak bir kullan
   - Sabit bir veritabanı rolüne kullanıcı eklemek için:
 
     - Azure SQL veritabanı 'nda [alter role](/sql/t-sql/statements/alter-role-transact-sql) deyimini kullanın. Örnekler için bkz. [alter role örnekleri](/sql/t-sql/statements/alter-role-transact-sql#examples)
-    - Azure SYNAPSE, [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) ifadesini kullanın. Örnekler için bkz. [sp_addrolemember örnekleri](/sql/t-sql/statements/alter-role-transact-sql).
+    - Azure SYNAPSE, [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) ifadesini kullanın. Örnekler için bkz. [sp_addrolemember örnekleri](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql#examples).
 
 - **Özel veritabanı rolü**
 

@@ -7,12 +7,12 @@ ms.author: jingwang
 author: linda33wj
 ms.custom: seo-lt-2019
 ms.date: 03/17/2021
-ms.openlocfilehash: ec24fa1bde21c70aa95fc33c92048aebc9f6659c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f2db75fdcd4519b5ba0869bf4ef89c8323435539
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104597396"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105565988"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-servicemicrosoft-dataverse-or-dynamics-crm-by-using-azure-data-factory"></a>Ve Azure Data Factory kullanarak Dynamics 365 ' den (Common Data Service/Microsoft Dataverse) veya Dynamics CRM 'den veri kopyalama
 
@@ -370,7 +370,7 @@ Dynamics 365 Online için, [her kuruluş için iki eş zamanlı toplu çağrı](
 
 Dynamics görünümlerinden verileri almak için, görünümün kayıtlı sorgusunu almanız ve verileri almak için sorguyu kullanmanız gerekir.
 
-Farklı görünüm türlerini depolayan iki varlık vardır: "kaydedilen sorgu" sistem görünümünü depolar ve "Kullanıcı sorgusu" Kullanıcı görünümünü depolar. Görünümlerin bilgilerini almak için aşağıdaki FetchXML sorgusuna başvurun ve "TARGETENTITY" ifadesini veya ile değiştirin `savedquery` `userquery` . Her varlık türünün, ihtiyaınıza göre sorguya ekleyebileceğiniz daha fazla kullanılabilir özniteliği vardır. [Savedquery varlığı](https://docs.microsoft.com/dynamics365/customer-engagement/web-api/savedquery) ve [userquery varlığı](https://docs.microsoft.com/dynamics365/customer-engagement/web-api/userquery)hakkında daha fazla bilgi edinin.
+Farklı görünüm türlerini depolayan iki varlık vardır: "kaydedilen sorgu" sistem görünümünü depolar ve "Kullanıcı sorgusu" Kullanıcı görünümünü depolar. Görünümlerin bilgilerini almak için aşağıdaki FetchXML sorgusuna başvurun ve "TARGETENTITY" ifadesini veya ile değiştirin `savedquery` `userquery` . Her varlık türünün, ihtiyaınıza göre sorguya ekleyebileceğiniz daha fazla kullanılabilir özniteliği vardır. [Savedquery varlığı](/dynamics365/customer-engagement/web-api/savedquery) ve [userquery varlığı](/dynamics365/customer-engagement/web-api/userquery)hakkında daha fazla bilgi edinin.
 
 ```xml
 <fetch top="5000" >

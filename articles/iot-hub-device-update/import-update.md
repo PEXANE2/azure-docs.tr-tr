@@ -6,22 +6,22 @@ ms.author: andbrown
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 15f76488790249f7e301d4474772c500c8829b77
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 3644f26f989fec05ee76afd9f930c31b25234c7f
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 03/26/2021
-ms.locfileid: "105565648"
+ms.locfileid: "105608536"
 ---
 # <a name="import-new-update"></a>Yeni güncelleştirme al
 IoT Hub için yeni bir güncelleştirmeyi cihaz güncelleştirmesine aktarmayı öğrenin. Henüz yapmadıysanız, temel [içeri aktarma kavramlarını öğrendiğinizden](import-concepts.md)emin olun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* [IoT Hub etkinleştirilmiş cihaz güncelleştirmesiyle bir IoT Hub erişim](create-device-update-account.md). IoT Hub için bir S1 (Standart) katmanı veya üstünü kullanmanız önerilir. 
+* [IoT Hub etkinleştirilmiş cihaz güncelleştirmesiyle bir IoT Hub erişim](create-device-update-account.md). 
 * IoT Hub içinde cihaz güncelleştirmesi için sağlanan bir IoT cihazı (veya simülatör).
    * Gerçek bir cihaz kullanıyorsanız, görüntü güncelleştirmesi için bir güncelleştirme görüntü dosyası veya paket güncelleştirmesi için [apt bildirim dosyası](device-update-apt-manifest.md) gerekir.
-* [PowerShell 5](/powershell/scripting/install/installing-powershell) veya üzeri.
+* [PowerShell 5](/powershell/scripting/install/installing-powershell) veya üzeri (Linux, MacOS ve Windows yüklemelerini içerir)
 * Desteklenen tarayıcılar:
   * [Microsoft Edge](https://www.microsoft.com/edge)
   * Google Chrome

@@ -8,12 +8,12 @@ ms.topic: how-to
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 03/08/2021
-ms.openlocfilehash: fda34a7ee06d35846bcec571e904297d0421c38f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7cdf016d7de66c33973ec7818fa92df28c4639dd
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103565367"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566974"
 ---
 # <a name="migrate-to-azure-machine-learning"></a>Azure Machine Learning’e geçiş
 
@@ -46,7 +46,7 @@ Azure Machine Learning geçiş yapmak için aşağıdaki yaklaşımı öneririz:
 
 3. Kritik Studio (klasik) modüllerinizin Azure Machine Learning tasarımcısında desteklendiğinden emin olun. Daha fazla bilgi için aşağıdaki [Studio (klasik) ve tasarımcı modülü eşleme](#studio-classic-and-designer-module-mapping) tablosuna bakın.
 
-4. [Azure Machine Learning çalışma alanı oluşturun](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace?tabs=azure-portal).
+4. [Azure Machine Learning çalışma alanı oluşturun](../how-to-manage-workspace.md?tabs=azure-portal).
 
 ## <a name="step-2-create-a-migration-plan"></a>2. Adım: geçiş planı oluşturma
 
@@ -162,9 +162,3 @@ Bu makalede, Azure Machine Learning geçirmek için üst düzey gereksinimleri �
 1. [Bir Studio (klasik) Web hizmetini yeniden derleyin](migrate-rebuild-web-service.md).
 1. [İstemci uygulamalarıyla bir Azure Machine Learning Web hizmetini tümleştirin](migrate-rebuild-integrate-with-client-app.md).
 1. [Execute R betiğini geçirin](migrate-execute-r-script.md).
-
-
-
-
-
-

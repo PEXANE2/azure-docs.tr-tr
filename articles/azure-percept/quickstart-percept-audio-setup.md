@@ -1,18 +1,17 @@
 ---
-title: Azure Percept Audio ile çalışmaya başlama
+title: Azure Percept ses ayarlama
 description: Azure Percept ses cihazınızı Azure Percept DK 'nize bağlamayı öğrenin
-author: elqu20
-ms.author: v-elqu
+author: mimcco
+ms.author: mimcco
 ms.service: azure-percept
 ms.topic: quickstart
-ms.date: 02/18/2021
-ms.custom: template-quickstart
-ms.openlocfilehash: 660f03ce248a27a00fdd443964fbdba2fe3adeb0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/25/2021
+ms.openlocfilehash: fa3dad8cdd38e6db621d8194cc9472430c7c5008
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102179281"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105605799"
 ---
 # <a name="azure-percept-audio-setup"></a>Azure Percept ses kurulumu
 
@@ -28,17 +27,18 @@ Azure Percept Audio, Azure Percept DK ile kullanıma hazır. Benzersiz kurulum g
 
 ## <a name="connecting-your-devices"></a>Cihazlarınızı bağlama
 
-1. Azure Percept Audio cihazını, dahil edilen mikro USB ile USB türü-bir kabloyla Azure Percept DK taşıyıcı panosuna bağlayın. Kablonun mikro USB bitiş düzeyini ınterposer (Geliştirici) panosuna ve tür-A sonunu Percept DK taşıyıcı panosuna bağlayın.
-1. (İsteğe bağlı) hoparlör veya kulaklığınızdan "satır dışı" etiketli ses jakı aracılığıyla Azure Percept seslerinizi bağlayın. Bu, sesli yardımcınızın ses yanıtlarını duymanıza imkan tanır. Konuşmacı veya kulaklıklar bağlantısını yapmazsanız, yanıtları demo penceresinde metin olarak görebilirsiniz. 
+1. Azure Percept Audio cihazını, dahil edilen mikro USB ile USB türü-bir kabloyla Azure Percept DK taşıyıcı panosuna bağlayın. Kablonun mikro USB sonunu ses bağlama (Geliştirici) panosuna ve tür-A sonunu Percept DK taşıyıcısı panosuna bağlayın.
 
-1. Devkit üzerinde güç. Interposer panosundaki LED L02, cihazın açık olduğunu ve ses SoM 'un kimlik doğrulaması olduğunu göstermek için yanıp sönen beyaz olarak değişir.
+1. (İsteğe bağlı) hoparlör veya kulaklığınızdan "çıkış" etiketli ses jakı aracılığıyla Azure Percept ses cihazınıza bağlanın. Bu, ses yanıtlarını duymanızı sağlar.
+
+1. Devkit üzerinde güç. Ses örgü panoda LED L02, cihazın açık olduğunu ve ses SoM 'un kimlik doğrulaması olduğunu göstermek için yanıp sönen beyaz olarak değişir.
 
 1. Kimlik doğrulama işleminin tamamlanmasını bekleyin--bu, 3 dakikaya kadar sürebilir.
 
 1. Aşağıdakilerden birini gördüğünüzde prototipsiz başlamaya hazırsınız:
 
-    - LED L02, düz beyaz olarak değişecektir. Bu, kimlik doğrulamasının tamamlandığını ve devkit 'in henüz bir anahtar sözcükle yapılandırılmadığını gösterir.
-    - Üç LED 'in hepsi mavi. Bu, kimlik doğrulamanın tamamlandığını ve devkit 'in bir anahtar sözcükle yapılandırıldığını gösterir.
+    - LED L02, düz beyaz olarak değiştirilecek: Bu, kimlik doğrulamanın tamamlandığını ve devkit 'in henüz bir anahtar sözcükle yapılandırılmadığını gösterir.
+    - Üç LED 'in tümü mavi: Bu, kimlik doğrulamanın tamamlandığını ve devkit 'in bir anahtar sözcükle yapılandırıldığını gösterir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

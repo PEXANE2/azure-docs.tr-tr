@@ -9,14 +9,14 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 1/14/2020
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: f77a41a172bc868ad056d74d018b50f734286f0f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 07e43bdb0969c26120231013cc0c0354e6968ceb
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101702462"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105567959"
 ---
 # <a name="feature-gaps-between-azure-media-services-v2-and-v3"></a>Azure Media Services V2 ve v3 arasındaki özellik boşlukları
 
@@ -48,6 +48,6 @@ V3 API, v2 API 'SI ile aşağıdaki özellik boşluklarını içerir. V2 API 'Le
 
 - Rest 'teki varlıkların korunması için istemci tarafı depolama şifrelemesi v3 API 'sinde kaldırılmıştır ve bekleyen veriler için depolama hizmeti şifrelemesi ile değiştirilmiştir. V3 API 'Leri mevcut depolama şifrelenmiş varlıklarla çalışmaya devam eder, ancak yenilerini oluşturulmasına izin vermez.
 
-## <a name="next-steps"></a>Sonraki adımlar
+## <a name="terminology-and-entity-changes"></a>Terminoloji ve varlık değişiklikleri
 
-[!INCLUDE [migration guide next steps](./includes/migration-guide-next-steps.md)]
+API üzerinde ek değişiklikler için bkz. [terminoloji ve varlık](migrate-v-2-v-3-differences-terminology.md) değişiklikleri.

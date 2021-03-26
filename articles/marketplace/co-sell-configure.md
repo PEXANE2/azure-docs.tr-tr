@@ -8,16 +8,16 @@ author: palanis-MSFT
 ms.author: palanis
 ms.reviewer: stmummer
 ms.date: 3/17/2021
-ms.openlocfilehash: e8019a30d4f5bf24814d88fc749cefd6b529b73b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: db502f4652a6ae541a504249475898e3e771f90d
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104610037"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105563404"
 ---
 # <a name="configure-co-sell-for-a-commercial-marketplace-offer"></a>Ticari Market teklifi için ortak satışı yapılandırma
 
-Bu makalede, ticari bir market teklifi için **ortak satışın Microsoft sekmesi ile** nasıl yapılandırılacağı açıklanır. Bu sekmeye bilgi sağlanması tamamen isteğe bağlıdır, ancak [ortak satış Için hazırlık ve IP ortak satışı Incentivized durumu](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)elde etmek gerekir. Sağladığınız bilgiler, Microsoft Sales ekipleri tarafından müşteri gereksinimlerine uygun olarak değerlendirme yaparken teklifiniz hakkında daha fazla bilgi edinmek için kullanılacaktır. Bu bilgiler doğrudan müşterilere açık değildir. Ortak satış hakkında daha fazla bilgi için bkz. [Microsoft satıcıları ve iş ortaklarına genel bakış](marketplace-co-sell.md) ve [Microsoft ile ortak satış](https://partner.microsoft.com/membership/co-sell-with-microsoft).
+Bu makalede, ticari bir market teklifi için **ortak satışın Microsoft sekmesi ile** nasıl yapılandırılacağı açıklanır. Bu sekmeye bilgi sağlanması tamamen isteğe bağlıdır, ancak [ortak satış Için hazırlık ve IP ortak satışı Incentivized durumu](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)elde etmek gerekir. Sağladığınız bilgiler, Microsoft Sales ekipleri tarafından müşteri gereksinimlerine uygun olarak değerlendirme yaparken teklifiniz hakkında daha fazla bilgi edinmek için kullanılacaktır. Bu bilgiler doğrudan müşterilere açık değildir. Ortak satış hakkında daha fazla bilgi için bkz. [Microsoft satıcıları ve iş ortaklarına genel bakış](marketplace-co-sell.md) ve [Microsoft ile ortak satış](https://partner.microsoft.com/membership/co-sell-with-microsoft).
 
 Ortak satış seçeneği aşağıdaki teklif türleri için kullanılabilir.
 

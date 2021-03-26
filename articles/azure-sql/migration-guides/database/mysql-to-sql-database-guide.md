@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: 14b2c1f98ae977548edb635b8a8a7a956b3f2dd7
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 6b8d3afc214f6b78fcc11b3592cd51dadf37bf96
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105023784"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105564169"
 ---
 # <a name="migration-guide--mysql-to-azure-sql-database"></a>Geçiş Kılavuzu: MySQL to Azure SQL veritabanı
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
@@ -162,7 +162,7 @@ Bu sorunlar ve bu sorunları azaltmaya yönelik belirli adımlar hakkında daha 
 
 Bu geçiş senaryosunu tamamlamaya yönelik ek yardım için, lütfen gerçek dünyada geçiş projesi katılımı desteğiyle geliştirilen aşağıdaki kaynaklara bakın.
 
-| Başlık/bağlantı     | Açıklama    |
+| Başlık/bağlantı     | Description    |
 | ---------------------------------------------- | ---------------------------------------------------- |
 | [Veri Iş yükü değerlendirmesi modeli ve aracı](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | Bu araç, belirli bir iş yükü için önerilen "en uygun" hedef platformları, bulut hazırlığı ve uygulama/veritabanı düzeltme düzeyini sağlar. Basit, tek tıklamayla hesaplama ve rapor oluşturma işlemlerini ve otomatikleştirilmiş ve Tekdüzen hedef platformu karar sürecini sağlayarak büyük Emlak değerlendirmelerinin hızlandırmasına büyük ölçüde yardımcı olur. |
 
@@ -172,7 +172,7 @@ Bu kaynaklar, Azure veri grubu Mühendisliği ekibi tarafından sponsorlu Data S
 
 - İş yüklerinizi Azure 'a taşıyarak elde edebileceğiniz maliyet tasarruflarını tahmin etmeye yardımcı olması için [Azure toplam sahip olma maliyeti (TCO) hesaplayıcısını](https://aka.ms/azure-tco) kullanıma aldığınızdan emin olun.
 
-- Çeşitli veritabanı ve veri geçişi senaryolarında ve özel görevlerin yanı sıra size yardımcı olmak için kullanabileceğiniz Microsoft ve üçüncü taraf hizmet ve araçların bir matrisi için, [veri geçişi Için hizmet ve araçlar](https://docs.microsoft.com/azure/dms/dms-tools-matrix)makalesine bakın.
+- Çeşitli veritabanı ve veri geçişi senaryolarında ve özel görevlerin yanı sıra size yardımcı olmak için kullanabileceğiniz Microsoft ve üçüncü taraf hizmet ve araçların bir matrisi için, [veri geçişi Için hizmet ve araçlar](../../../dms/dms-tools-matrix.md)makalesine bakın.
 
 - Diğer geçiş kılavuzlarında, bkz. [Veritabanı geçişi](https://datamigration.microsoft.com/). 
 

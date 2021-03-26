@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 10/16/2020
-ms.openlocfilehash: d125bca5ed67476897eec7cd32a586776d8b1ea8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 15b67c969cb0464256caed58a2e7388eb7a76b9c
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102176629"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105608801"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>Öğretici: SYNAPSE Studio 'da Apache Spark iş tanımı oluşturma
 
@@ -25,8 +25,11 @@ Bu öğretici aşağıdaki görevleri kapsar:
 > - PySpark (Python) için Apache Spark iş tanımı oluşturma
 > - Spark (Scala) için Apache Spark iş tanımı oluşturma
 > - .NET Spark için Apache Spark iş tanımı oluşturma (C#/F #)
+> - JSON dosyasını içeri aktararak iş tanımı oluşturma
+> - Apache Spark iş tanımı dosyasını yerel olarak dışarı aktarma
 > - Apache Spark iş tanımını toplu iş olarak gönderme
 > - Ardışık düzene Apache Spark iş tanımı ekleme
+
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -36,6 +39,7 @@ Bu öğreticiye başlamadan önce aşağıdaki gereksinimlerin karşılandığı
 * Sunucusuz Apache Spark Havuzu.
 * ADLS 2. depolama hesabı. Birlikte çalışmak istediğiniz ADLS 2. FileSystem 'ın **Depolama Blobu veri katılımcısı** olması gerekir. Aksi takdirde, izni el ile eklemeniz gerekir.
 * Çalışma alanı varsayılan depolama alanını kullanmak istemiyorsanız, SYNAPSE Studio 'daki gerekli ADLS 2. Depolama hesabını bağlayın. 
+
 
 ## <a name="create-an-apache-spark-job-definition-for-pyspark-python"></a>PySpark (Python) için Apache Spark iş tanımı oluşturma
 
@@ -160,6 +164,57 @@ Bu bölümde, .NET Spark (C#/F #) için Apache Spark iş tanımı oluşturursunu
 
       ![DotNet tanımını Yayımla](./media/apache-spark-job-definitions/publish-dotnet-definition.png)
 
+## <a name="create-apache-spark-job-definition-by-importing-a-json-file"></a>JSON dosyasını içeri aktararak Apache Spark iş tanımı oluşturma
+
+ Yeni bir Apache Spark iş tanımı oluşturmak için Apache Spark iş tanımı Gezgini ' nin **Eylemler** (...) menüsünden mevcut BIR yerel JSON dosyasını Azure SYNAPSE çalışma alanına aktarabilirsiniz.
+
+ ![İçeri aktarma tanımı oluştur](./media/apache-spark-job-definitions/create-import-definition.png)
+
+ 
+ Spark iş tanımı Livy API 'siyle tamamen uyumludur. Yerel JSON dosyasına diğer Livy özellikleri [(Livy docs-REST API (Apache.org)](https://livy.incubator.apache.org/docs/latest/rest-api.html) için ek parametreler ekleyebilirsiniz. Aşağıda gösterildiği gibi, yapılandırma özelliğindeki Spark yapılandırması ile ilgili parametreleri de belirtebilirsiniz. Ardından, Batch işiniz için yeni bir Apache Spark iş tanımı oluşturmak üzere JSON dosyasını geri alabilirsiniz. Spark tanımı içeri aktarması için örnek JSON:
+ 
+```Scala
+   {
+  "targetBigDataPool": {
+    "referenceName": "socdemolarge",
+    "type": "BigDataPoolReference"
+  },
+  "requiredSparkVersion": "2.3",
+  "language": "scala",
+  "jobProperties": {
+    "name": "robinSparkDefinitiontest",
+    "file": "adl://socdemo-c14.azuredatalakestore.net/users/robinyao/wordcount.jar",
+    "className": "WordCount",
+    "args": [
+      "adl://socdemo-c14.azuredatalakestore.net/users/robinyao/shakespeare.txt"
+    ],
+    "jars": [],
+    "files": [],
+    "conf": {
+      "spark.dynamicAllocation.enabled": "false",
+      "spark.dynamicAllocation.minExecutors": "2",
+      "spark.dynamicAllocation.maxExecutors": "2"
+    },
+    "numExecutors": 2,
+    "executorCores": 8,
+    "executorMemory": "24g",
+    "driverCores": 8,
+    "driverMemory": "24g"
+  }
+}
+
+```
+
+![diğer Livy özellikleri](./media/apache-spark-job-definitions/other-livy-properties.png)
+
+## <a name="export-an-existing-apache-spark-job-definition-file"></a>Mevcut bir Apache Spark iş tanımı dosyasını dışarı aktar
+
+ Mevcut Apache Spark iş tanımı dosyalarını dosya Gezgini 'nin **Eylemler** (...) menüsünden yerel olarak dışarı aktarabilirsiniz. Ek Livy özellikleri için JSON dosyasını daha sonra güncelleştirebilir ve gerekirse yeni iş tanımı oluşturmak için geri aktarabilirsiniz.
+
+ ![dışarı aktarma tanımı oluştur](./media/apache-spark-job-definitions/create-export-definition.png)
+
+ ![dışarı aktarma tanımı oluştur 2](./media/apache-spark-job-definitions/create-export-definition-2.png)
+
 ## <a name="submit-an-apache-spark-job-definition-as-a-batch-job"></a>Apache Spark iş tanımını toplu iş olarak gönderme
 
 Apache Spark iş tanımı oluşturduktan sonra, bir Apache Spark havuzuna gönderebilirsiniz. Birlikte çalışmak istediğiniz ADLS 2. FileSystem 'ın **Depolama Blobu veri katılımcısı** olduğunuzdan emin olun. Aksi takdirde, izni el ile eklemeniz gerekir.
@@ -202,6 +257,7 @@ Bu bölümde, işlem hattına bir Apache Spark iş tanımı eklersiniz.
      ![pipeline1 'e Ekle](./media/apache-spark-job-definitions/add-to-pipeline01.png)
 
      ![pipeline2 'e Ekle](./media/apache-spark-job-definitions/add-to-pipeline02.png)
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

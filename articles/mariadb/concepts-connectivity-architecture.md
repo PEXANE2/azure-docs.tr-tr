@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 2/11/2021
-ms.openlocfilehash: 50aaae9e71ac9de366ee4db1981e633491094946
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f2ea671a6d44d12b3b37d5d06fa9405b7c589cdf
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103199968"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559426"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda bağlantı mimarisi
 Bu makalede, MariaDB bağlantı mimarisi için Azure veritabanı 'nın yanı sıra trafiğin Azure 'daki ve dışındaki istemcilerden MariaDB örneğine nasıl yönlendirildiği açıklanmaktadır.
@@ -111,7 +111,7 @@ Yalnızca ağ geçidi düğümlerinin yetkisi alınacaktır. Kullanıcılar sunu
 ### <a name="how-can-you-validate-if-your-connections-are-going-to-old-gateway-nodes-or-new-gateway-nodes"></a>Bağlantılarınızın eski ağ geçidi düğümlerine veya yeni ağ geçidi düğümlerine gittiğini nasıl doğrulayabileceğiniz?
 Örneğin, sunucunuzun FQDN 'sine ping gönderin  ``ping xxx.mariadb.database.azure.com`` . Döndürülen IP adresi, yukarıdaki belgede ağ geçidi IP adresleri (yetki alma) altında listelenen IP 'lerden biri ise, bağlantınızın eski ağ geçidi üzerinden gittiğini gösterir. Yazdığında, döndürülen IP adresi ağ geçidi IP adresleri altında listelenen IP 'lerden biri ise, bağlantınızın yeni ağ geçidi üzerinden gittiğini gösterir.
 
-Ayrıca, bağlantı noktası 3306 ile istemci uygulamanızdan veritabanı sunucusunu [Psping](https://docs.microsoft.com/sysinternals/downloads/psping) veya bir şekilde görüntüleyerek test edebilir ve dönüş IP adresi, YETKI alma IP adreslerinden biri olmadığından emin olabilirsiniz
+Ayrıca, bağlantı noktası 3306 ile istemci uygulamanızdan veritabanı sunucusunu [Psping](/sysinternals/downloads/psping) veya bir şekilde görüntüleyerek test edebilir ve dönüş IP adresi, YETKI alma IP adreslerinden biri olmadığından emin olabilirsiniz
 
 ### <a name="how-do-i-know-when-the-maintenance-is-over-and-will-i-get-another-notification-when-old-ip-addresses-are-decommissioned"></a>Nasıl yaparım?, bakımın ne zaman üzerinde olduğunu ve eski IP adresleri kullanımdan çalıştırıldığında başka bir bildirim alabilirim mi?
 Bakım işini başlatacağız sizi bilgilendirmek için bir e-posta alacaksınız. Bakım, al bölgelerinde geçirilmesi gereken sunucu sayısına bağlı olarak bir aya kadar sürebilir. Lütfen istemcinizi FQDN kullanarak veya yukarıdaki tablodaki yeni IP adresini kullanarak veritabanı sunucusuna bağlanmasını hazırlayın. 

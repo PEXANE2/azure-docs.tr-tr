@@ -2,13 +2,13 @@
 title: Azure VMware Çözüm sınırları
 description: Azure VMware Çözüm sınırlamaları.
 ms.topic: include
-ms.date: 03/16/2021
-ms.openlocfilehash: 0e2359d951f5348b69e95ab7fa046981b2b7b32d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/24/2021
+ms.openlocfilehash: 997a5ae96ff30226d055b7b966b128d7ec0ae5bd
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103622240"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105582742"
 ---
 <!-- Used in /azure/azure-resource-manager/management/azure-subscription-service-limits.md -->
 
@@ -19,7 +19,7 @@ Aşağıdaki tabloda, Azure VMware çözümü için en fazla sınır açıklanma
 | Özel bulut başına kümeler | 12 |
 | Küme başına en az düğüm sayısı | 3 |
 | Küme başına en fazla düğüm sayısı | 16 |
-| Özel bulut başına düğümler | 64 |
+| Özel bulut başına düğümler | 96 |
 | özel bulut başına vCenter | 1  |
 | HCX site eşleştirmeleri | 3 Advanced Edition ile 10 Enterprise Edition |
 | AVS ExpressRoute maksimum bağlı SDDC | 4 |

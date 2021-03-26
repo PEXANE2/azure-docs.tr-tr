@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 02/18/2020
-ms.openlocfilehash: 1c187ae83ce87c9d4d8da4aa1a5dc38163261b52
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 529bc5468c74ac9d50f64decad29fd070a7bda83
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105024906"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105566940"
 ---
 # <a name="migration-overview-sql-server-to-azure-sql-managed-instance"></a>Geçişe genel bakış: Azure SQL yönetilen örneği 'ne SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -90,7 +90,7 @@ Aşağıdaki tabloda önerilen geçiş araçları listelenmektedir:
 
 |Teknoloji | Açıklama|
 |---------|---------|
-| [Azure Geçişi](/azure/migrate/how-to-create-azure-sql-assessment) | Azure SQL için Azure geçişi, VMware 'de SQL verilerinizi keşfetmenize ve değerlendirmenize, Azure SQL dağıtım önerileri, hedef boyutlandırma ve aylık tahminler sağlar. | 
+| [Azure Geçişi](../../../migrate/how-to-create-azure-sql-assessment.md) | Azure SQL için Azure geçişi, VMware 'de SQL verilerinizi keşfetmenize ve değerlendirmenize, Azure SQL dağıtım önerileri, hedef boyutlandırma ve aylık tahminler sağlar. | 
 |[Azure Veritabanı Geçiş Hizmeti (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md)  | Geçiş işlemi sırasında kesinti süresini karşılayabilen uygulamalar için çevrimdışı modda geçişi destekleyen ilk taraf Azure hizmeti. Çevrimiçi modda sürekli geçişin aksine, çevrimdışı mod geçişi kaynaktan hedefe tam bir veritabanı yedeklemesi için tek seferlik bir geri yükleme çalıştırır. | 
 |[Yerel yedekleme ve geri yükleme](../../managed-instance/restore-sample-database-quickstart.md) | SQL yönetilen örneği, yerel SQL Server veritabanı yedeklerinin (. bak dosyaları) geri yüklenmesini destekler, böylece Azure depolama 'ya tam veritabanı yedeklemeleri sağlayabilen müşteriler için en kolay geçiş seçeneği sağlanır. Tam ve fark yedeklemeleri, bu makalenin ilerleyen bölümlerinde yer alarak [geçiş varlıkları bölümünde](#migration-assets) de desteklenir ve belgelenmiştir.| 
 |[Günlük yeniden yürütme hizmeti (LRS)](../../managed-instance/log-replay-service-migrate.md) | Bu, Azure depolama 'ya tam, değişiklik ve günlük veritabanı yedeklemeleri sağlayabilen müşteriler için bir geçiş seçeneği sunarak, SQL Server günlük aktarma teknolojisine bağlı olarak yönetilen örnek için etkinleştirilmiş bir bulut hizmetidir. LRS, yedekleme dosyalarını Azure Blob depolamadan SQL yönetilen örneğine geri yüklemek için kullanılır.| 
@@ -212,7 +212,7 @@ SELECT * FROM sys.table_types WHERE is_memory_optimized=1
 SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 ```
 
-Bellek içi teknolojiler hakkında daha fazla bilgi edinmek için bkz. [Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde bellek içi teknolojileri kullanarak performansı iyileştirme](https://docs.microsoft.com/azure/azure-sql/in-memory-oltp-overview)
+Bellek içi teknolojiler hakkında daha fazla bilgi edinmek için bkz. [Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde bellek içi teknolojileri kullanarak performansı iyileştirme](../../in-memory-oltp-overview.md)
 
 ## <a name="leverage-advanced-features"></a>Gelişmiş özelliklerden yararlanın 
 
@@ -228,7 +228,7 @@ Bazı özellikler yalnızca [veritabanı uyumluluk düzeyi](/sql/relational-data
 
 Ek Yardım için, gerçek dünya geçiş projeleri için geliştirilen aşağıdaki kaynaklara bakın.
 
-|Varlık  |Açıklama  |
+|Varlık  |Description  |
 |---------|---------|
 |[Veri iş yükü değerlendirmesi modeli ve aracı](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| Bu araç, belirli bir iş yükü için önerilen "en uygun" hedef platformları, bulut hazırlığı ve uygulama/veritabanı düzeltme düzeyini sağlar. Basit ve tek tıklamayla bir hesaplama ve rapor oluşturma olanağı sunarak, ve otomatikleştirilmiş ve Tekdüzen hedef platformu karar süreci sağlayarak büyük Emlak değerlendirmelerini hızlandırmaya yardımcı olur.|
 |[DBLoader yardımcı programı](https://github.com/microsoft/DataMigrationTeam/tree/master/DBLoader%20Utility)|DBLoader, sınırlandırılmış metin dosyalarından SQL Server içine veri yüklemek için kullanılabilir. Bu Windows konsol yardımcı programı, Azure SQL MI dahil olmak üzere tüm SQL Server sürümlerinde çalışan SQL Server Native Client BulkLoad arabirimini kullanır.|
